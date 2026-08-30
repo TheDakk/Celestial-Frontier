@@ -30,9 +30,17 @@ export interface SceneMemoryLegacyBudget {
   heartbeatElapsedMsMax: number;
 }
 
-export interface SceneMemoryBudget extends SceneMemoryLegacyBudget {
+export interface SceneMemoryRawBudget extends SceneMemoryLegacyBudget {
   surfaceVistaCacheEntriesMax: number;
   surfaceVistaCachePixelsMax: number;
+}
+
+export interface SceneMemoryBudget
+  extends Omit<SceneMemoryRawBudget, 'heapUsedBytesMax' | 'heapAggregateBytesMax'> {
+  initialHeapUsedBytesMax: number;
+  initialHeapAggregateBytesMax: number;
+  heapUsedGrowthBytesMax: number;
+  heapNormalizedWorkingSetBytesMax: number;
 }
 
 export interface SceneRegistrySnapshot {
@@ -230,7 +238,7 @@ export interface SceneMemoryLegacyProfileMeasurement {
   bfcache: SceneMemoryLegacyBfcacheWitness;
 }
 
-export interface SceneMemoryProfileMeasurement {
+export interface SceneMemoryV4ProfileMeasurement {
   initialVista: SceneMemoryVistaState;
   firstSurfaceVista: SceneMemoryVistaState;
   precondition: SceneMemoryPoint;
@@ -239,19 +247,32 @@ export interface SceneMemoryProfileMeasurement {
   reloadCleanup: SceneMemoryReloadCleanupWitness;
 }
 
+export interface SceneMemoryProfileMeasurement extends SceneMemoryV4ProfileMeasurement {
+  initial: {
+    documentToken: string;
+    heap: SceneMemoryPoint['heap'];
+  };
+}
+
 export interface SceneMemoryLegacyInput {
   schema: 'cf-v2-scene-memory-input/v3';
   profiles: Record<SceneMemoryProfileName, SceneMemoryLegacyProfileMeasurement>;
-  budgets: Record<SceneMemoryProfileName, SceneMemoryLegacyBudget | SceneMemoryBudget>;
+  budgets: Record<SceneMemoryProfileName, SceneMemoryLegacyBudget | SceneMemoryRawBudget>;
+}
+
+export interface SceneMemoryV4Input {
+  schema: 'cf-v2-scene-memory-input/v4';
+  profiles: Record<SceneMemoryProfileName, SceneMemoryV4ProfileMeasurement>;
+  budgets: Record<SceneMemoryProfileName, SceneMemoryRawBudget>;
 }
 
 export interface SceneMemoryCurrentInput {
-  schema: 'cf-v2-scene-memory-input/v4';
+  schema: 'cf-v2-scene-memory-input/v5';
   profiles: Record<SceneMemoryProfileName, SceneMemoryProfileMeasurement>;
   budgets: Record<SceneMemoryProfileName, SceneMemoryBudget>;
 }
 
-export type SceneMemoryInput = SceneMemoryLegacyInput | SceneMemoryCurrentInput;
+export type SceneMemoryInput = SceneMemoryLegacyInput | SceneMemoryV4Input | SceneMemoryCurrentInput;
 
 export interface SceneMemoryOutcome {
   readonly id: string;
@@ -261,7 +282,10 @@ export interface SceneMemoryOutcome {
 }
 
 export interface SceneMemoryVerdict {
-  readonly schema: 'cf-v2-scene-memory-verdict/v2' | 'cf-v2-scene-memory-verdict/v3';
+  readonly schema:
+    | 'cf-v2-scene-memory-verdict/v2'
+    | 'cf-v2-scene-memory-verdict/v3'
+    | 'cf-v2-scene-memory-verdict/v4';
   readonly status: 'pass' | 'fail';
   readonly outcomes: readonly SceneMemoryOutcome[];
   readonly failures: readonly SceneMemoryOutcome[];

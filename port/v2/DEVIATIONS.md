@@ -1,6 +1,28 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **2026-08-30 current exact-`8bdf474…` repair overlay (supersedes narrower “current”
+> **2026-08-30 current SceneMemory source-normalization overlay (matches local code and supersedes
+> only narrower current ruler-status sentences below):** exact signed clean source
+> `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied exactly three one-attempt/no-retry
+> calibration-only observations under one unchanged 52-file build and Edge `152.0.4191.53` / CDP
+> `1.3`. All three completed 44/44 calibration outcomes with stable route topology, range, slope,
+> resource ownership and cleanup. Worst phone/desktop V8 growth over the scored fixed-second initial
+> snapshot was 5,387,552 / 5,677,328 bytes; worst growth-plus-embedder-plus-backing working set was
+> 11,098,217 / 11,352,882 bytes.
+>
+> Current report-v4/profile-v3/input-v5/verdict-v4/budget-v5 retains broad 12 MiB initial-V8 and
+> 18 MiB initial-aggregate safety stops, then admits at most 6 MiB V8 growth and 12 MiB normalized
+> working set. Raw totals remain diagnostic, and all existing component, range/slope, DOM/listener,
+> resource, ownership, pending, BFCache, answerability and surface-vista rules remain unchanged.
+> Exact/+1, equal-offset, post-initial-allocation, missing/detached-initial and historical v3/v4
+> replay controls are green. Input-v5 serializes exactly the three scored initial heap counters;
+> raw CDP `totalSize` and synthetic future fields remain outside the contract. The three carriers
+> and derivation are preserved under `../../audits/`.
+> A fresh clean input-v5 browser certificate is pending; historical input-v4 evidence remains bound
+> to its original source and semantics. Compatible Edge point versions are provenance only. No
+> hosted, HUMAN, merge, release, version or deployment authority follows.
+
+> **2026-08-30 historical exact-`8bdf474…` repair overlay (superseded by the current handoff;
+> also supersedes narrower “current”
 > implementation status below; every dated decision/evidence checkpoint remains immutable):**
 > exact clean SSH-signed source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium
 > **78/78** once/no-retry, then its unchanged Slice
@@ -16,20 +38,20 @@
 > contracts over exact product parity plus the complete absolute Pertar route, rendered scene, open
 > card, canonical CF1 payload and exact-key target, with isolated mutations. Earlier bounded
 > Research/Fabricator focus, exact Survey predecessor/coordinator and Arc 5 v3 diagnostic repairs
-> remain. Final browser-free validation is green at **251 files / 2,501 passed / 1 skipped**, with
+> remain. At that checkpoint browser-free validation was green at **251 files / 2,501 passed / 1 skipped**, with
 > all TypeScript programs green. The
 > cumulative **74-bullet** development bulletin has rendered ordered SHA-256
 > `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
 >
-> Active derived Compendium producer / index / owner / generated-service-worker authority is
+> At that historical checkpoint, derived Compendium producer / index / owner / generated-service-worker authority was
 > `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3` /
 > `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c` /
 > `assets/main-BYnoCcc9.js` (`13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`) /
-> `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Current Scene build
-> authority is `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17`; Compendium / Scene
-> budget-file SHA-256 is `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` /
+> `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Scene build
+> authority was `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17`; Compendium / Scene
+> budget-file SHA-256 was `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` /
 > `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. Fixed rulers, numeric
-> ceilings, historical samples and 78 outcomes are unchanged; compatible Edge point versions are
+> ceilings, historical samples and 78 outcomes were unchanged; compatible Edge point versions are
 > provenance only. No fresh repaired-head browser, Glass, Recovery, Gate, HUMAN, hosted, merge,
 > release, version or deployment authority is claimed.
 
@@ -83,8 +105,10 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   mismatches are faults. The BFCache away page is one minimal 404-by-default document on an
   ephemeral second loopback origin, outside product service-worker scope, and its server closes in
   `finally`. Earth plus the gas, abyss and reef product envelopes are prevalidated. SceneMemory
-  remains the same **44-outcome** input-v4 contract with unchanged numeric rulers. This local
-  hardening grants no `[HUMAN]`, hosted, whole-Gate, preview, merge or release authority; see
+  retained the then-current **44-outcome** input-v4 contract and its numeric rulers. The current
+  successor is the source-normalized input-v5 overlay at the top of this file; historical input-v4
+  evidence is unchanged. This local hardening grants no `[HUMAN]`, hosted, whole-Gate, preview,
+  merge or release authority; see
   `../../audits/PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md`.
 - ★ **D-PR35-SURFACE-LIFECYCLE — closed surfaces retain state, not dormant owners.** Approach
   ecology, Capture, Combat and every Compendium action controller attach listeners only while their
@@ -719,8 +743,8 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   delegated owner and restores the exact registered opener for nested clicks. Standalone consumers
   retain the historical eager default unless they explicitly select the production lifecycle.
 
-- ★ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — shell cleanup, clean calibration, activation and
-  signed current-source recertification are complete.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
+- ★ **D-SCENEMEM-ACTIONABLE-HEAP-CALIBRATION — historical absolute-ruler shell cleanup,
+  calibration, activation and recertification.** Signed `862a75b…` run `20260827-phase4-successor-scenemem` is preserved at
   40/42 with exact node/listener and heap breaches, one attempt, zero retries and complete cleanup.
   The evaluator now names field/value/ceiling and retains valid zero-valued heap components. Dirty
   diagnostic `20260827165427809-91398-352d7132df` proves the repaired 676/673 nodes and 71/70
@@ -746,9 +770,9 @@ historical Final12 boundary and the current Final13 green boundary are recorded 
   phone/desktop vista lifecycle and cleanup inside the once-only verified serial chain. This adds no
   numeric-ceiling, historical-sample or browser-authority change.
 
-- ★ **D-SCENEMEM-V4-SURFACE-VISTA — current contract; historical exact-source browser evidence green; HUMAN/physical evidence open.**
-  The current `cf-v2-scene-memory-input/v4` keeps historical input-v3/42 reports replayable as
-  history but requires **44** outcomes for terminal certification. One new phone and one new desktop
+- ★ **D-SCENEMEM-V4-SURFACE-VISTA — historical/superseded contract; exact-source browser evidence green; HUMAN/physical evidence open.**
+  The then-current `cf-v2-scene-memory-input/v4` kept historical input-v3/42 reports replayable as
+  history and required **44** outcomes for terminal certification. One new phone and one new desktop
   `surface-vista-lifecycle` outcome bind raw `surfaceVistaWorkerActive`,
   `surfaceVistaMounted`, `surfaceVistaCacheEntries` and `surfaceVistaCachePixels` evidence from a
   cold zero state through first mount, every surface/ascent cycle, BFCache and an observed

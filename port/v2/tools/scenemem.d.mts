@@ -77,6 +77,16 @@ export function sceneMemoryHeapPhaseControlSlopes(
   pairs: unknown,
 ): Readonly<{ probe: number; scored: number }>;
 
+export function sceneMemoryInitialHeapProjection(heap: unknown): Readonly<{
+  usedSize: number;
+  embedderHeapUsedSize: number;
+  backingStorageSize: number;
+}>;
+
+export function sceneMemoryMetricSummary(
+  measurement: unknown,
+): Readonly<Record<string, number>>;
+
 export function sceneMemoryShipyardOpenSettlementReasons(value: unknown): readonly string[];
 
 export function sceneMemorySurfaceVistaFaultReasons(value: unknown): readonly string[];
@@ -116,6 +126,7 @@ export function terminalProfileEvidenceErrors(
   profiles: unknown,
   surfaceVistaRequired?: boolean,
   fixedSecondRequired?: boolean,
+  sourceNormalizedRequired?: boolean,
 ): string[];
 
 export function terminalSourceAuthorityErrors(

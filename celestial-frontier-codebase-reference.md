@@ -1,5 +1,26 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-08-30 current SceneMemory source-normalized admission overlay (matches local code):**
+> exact signed source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied exactly three
+> calibration-only observations, once each with zero retry, under one unchanged 52-file build and
+> Edge `152.0.4191.53` / CDP `1.3`. Every candidate completed 44/44 calibration outcomes with
+> stable route topology, warm range/slope, ownership and cleanup. Worst phone/desktop V8 growth over
+> the scored fixed-second initial snapshot was 5,387,552 / 5,677,328 bytes; worst growth plus
+> embedder plus backing storage was 11,098,217 / 11,352,882 bytes.
+>
+> The current serialized boundary is report-v4/profile-v3/input-v5/verdict-v4/budget-v5. It retains
+> 12 MiB initial-V8 and 18 MiB initial-aggregate safety stops, then caps V8 growth at 6 MiB and the
+> normalized working set at 12 MiB. Raw totals remain report diagnostics; existing component,
+> range/slope, DOM/listener, resource, ownership, pending, BFCache, answerability and surface-vista
+> semantics are unchanged. Exact/+1, equal-offset, post-initial retained-allocation,
+> missing/detached-initial and historical input-v3/v4 replay controls are green. The old absolute
+> 12 MiB post-route V8 cap would reject two of the three identical-source desktop BFCache samples.
+> The v5 initial heap carrier is an exact three-field projection (`usedSize`,
+> `embedderHeapUsedSize`, `backingStorageSize`); raw CDP `totalSize` and synthetic future fields are
+> rejected rather than becoming browser-version-sensitive contract authority.
+> A fresh clean input-v5 browser certificate remains pending; historical evidence is never
+> relabelled, and compatible Edge point versions remain provenance only.
+
 > **2026-08-30 current local Arc 4/9 open-card publication correction (matches local code):**
 > `runCaptureCardAction()` may resume after its committed Capture has already queued and yielded to
 > `runArc9ProgressionRefresh()`. The shared coordinator then correctly makes
@@ -13,8 +34,8 @@
 > RNG, Yield and Arc 4/5 ownership are untouched. Exact 656 browser evidence preserves the original
 > one-scope pre-arm stale-disabled result; focused source/mutation and replay tests cover the repair.
 
-> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches local
-> code):** exact clean SSH-signed evidence source
+> **2026-08-30 historical exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay
+> (superseded by the current handoff):** exact clean SSH-signed evidence source
 > `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
 > **64,108 ms**. Its unchanged Slice
 > `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
@@ -26,13 +47,13 @@
 > same 1,876-byte / `e353f175…e78` identity; both retained the correct open Pertar post-Survey card.
 > The stale instrument also applied a pre-Survey helper requiring that card to be closed. The
 > immutable replay proves that contradiction and records its missing historical held
-> `cardCode`/target capture. The current uncommitted runner atomically captures those values and
-> evaluates live-product parity plus complete route/rendered-scene/card/share/target evidence through
+> `cardCode`/target capture. The then-uncommitted runner atomically captured those values and
+> evaluated live-product parity plus complete route/rendered-scene/card/share/target evidence through
 > shared browser-free contracts and field-level controls. Earlier Research/Fabricator focus lineage, explicit
 > Survey predecessor, exact coordinator, Arc 5 v3 diagnostics and Guide-inventory repairs remain.
 >
 > No timeout, retry, browser rebaseline, product schema bump, save/gameplay redesign or
-> creature/genome/art/audio change follows. Final repair-batch browser-free validation is green:
+> creature/genome/art/audio change followed. At that checkpoint browser-free validation was green:
 > **251 files / 2,501 passed / 1 skipped**, with all TypeScript programs green. Fresh exact-source
 > browser authority remains pending.
 
@@ -69,7 +90,8 @@
 > capability, save schema/migration, achievement/rank/reward policy, retry, browser rebaseline or
 > player-facing change.
 
-> **2026-08-30 current sealed-worker/PWA + Guide/Release/named-CF1 overlay (matches local code;
+> **2026-08-30 sealed-worker/PWA + Guide/Release/named-CF1 design with historical authority
+> checkpoint (product design matches local code;
 > supersedes the
 > execution-late `clients.get()` repair and narrower current-authority language below; every named
 > run remains immutable history):** exact signed source
@@ -97,24 +119,25 @@
 > pruning, but no post-start worker chunk depends on enumeration, lookup, timing, network fallback,
 > cross-build inference, sleep or retry.
 >
-> Current Compendium measurement / contract / collector authorities are
+> At that historical sealed-worker checkpoint, Compendium measurement / contract / collector
+> authorities were
 > `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 > `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
 > `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`.
-> Final derived changed-head producer authority is
+> Its final derived changed-head producer authority was
 > `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3`; it binds index
 > `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c`, owner
 > `assets/main-BYnoCcc9.js` / `13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`, and generated
 > `service-worker.js` `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`.
 > Combined worker/painter `assets/species-art.worker-DnnSDKMy.js` remains
-> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Current Scene build /
-> game-main, Compendium budget-file and Scene budget-file authorities are
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. At that checkpoint, Scene
+> build / game-main, Compendium budget-file and Scene budget-file authorities were
 > `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` /
 > `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`,
 > `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b`, and
 > `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. The green printer binds a
 > **964-module / 52-file** build. The sealed-worker portion changes worker packaging and PWA
-> ownership only. The current head also includes the bounded Engineering focus repair, its 74th
+> ownership only. That checkpoint also included the bounded Engineering focus repair, its 74th
 > release-note bullet and evidence-assessor repairs; no save schema, painter pixel, seed, genome,
 > anatomy, art structure, ruler, numeric ceiling or 78-outcome inventory changed.
 >
@@ -214,13 +237,13 @@
 > SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`, with independent 8/8
 > replay.
 >
-> Current Compendium producer authority is history-safe schema
+> At that historical d33 checkpoint, Compendium producer authority was history-safe schema
 > `cf-v2-compendium-producer-authority/v2`, SHA-256
 > `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. Its exact inputs are the
 > generated `service-worker.js` (`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`)
 > plus index, owner, species worker and painter. Deleting the post-claim repair changes authority;
-> historical v1 producer records remain replayable under their own shape. Current Scene build
-> authority is `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
+> historical v1 producer records remain replayable under their own shape. Scene build
+> authority was `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; Compendium
 > measurement / contract / collector authorities are
 > `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
 > `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
@@ -781,12 +804,15 @@
 > and CDP `1.3`, then emits that exact tuple. Compatible point versions are accepted and never
 > baseline selectors.
 >
-> The current SceneMemory input-v4 contract expands the historical 42-outcome ruler to **44** by
-> adding one phone and one desktop `surface-vista-lifecycle` outcome. Each binds the raw
+> The current SceneMemory input-v5 contract retains **44 outcomes**: the historical 42 scene/resource
+> outcomes plus one phone and one desktop `surface-vista-lifecycle` outcome. Each binds the raw
 > `surfaceVistaWorkerActive`, `surfaceVistaMounted`, `surfaceVistaCacheEntries` and
 > `surfaceVistaCachePixels` diagnostics through cold zero, first mount, repeated surface/ascent,
 > BFCache and reload-clear/replacement cleanup, with the semantic cache ceiling fixed at one entry /
-> 412,800 pixels. The current collector captures Land's result plus bounded route, persistence and
+> 412,800 pixels. The heap admission retains 12 MiB initial-V8 / 18 MiB initial-aggregate safety,
+> then caps `max(0, point.usedSize - initial.usedSize)` at 6 MiB and that growth plus embedder plus
+> backing storage at 12 MiB. Raw totals remain diagnostic; warm aggregate range/slope and every
+> non-heap ruler are unchanged. The current collector captures Land's result plus bounded route, persistence and
 > landing evidence in one CDP evaluation, requires accepted Surface state with no scheduled
 > convergence reload, and retains full settlement diagnostics on every poll. Coherent vista fault
 > diagnostics, including the bounded last cause, are terminal immediately rather than degrading
@@ -794,7 +820,9 @@
 > outside the product service worker's scope, and its owner stays live until the history return is
 > requested. Browser-free contract/budget/tool controls retain missing-field,
 > vacuous-zero, worker/mount leak, cache overflow and retained-on-reload mutations. Exact signed
-> `3f69e88…` run `20260829-universe-polish-3f69e88ea8e3-scenemem` passed 44/44 in 10,561 ms with
+> Historical input-v3/verdict-v2 and input-v4/verdict-v3 reports replay under their original raw
+> semantics; current terminal verification requires input-v5/verdict-v4. Exact signed historical
+> source `3f69e88…` run `20260829-universe-polish-3f69e88ea8e3-scenemem` passed input-v4 44/44 in 10,561 ms with
 > complete cleanup inside that historical serial certificate. Every 42/42 statement below remains bound
 > to its historical source and schema.
 >
@@ -3418,7 +3446,7 @@ preserved at
 SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`; independent replay is
 8/8.
 
-The final derived current producer record is `cf-v2-compendium-producer-authority/v2` /
+The final derived producer record at that historical checkpoint was `cf-v2-compendium-producer-authority/v2` /
 `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3`. It binds index
 `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c`, owner
 `assets/main-BYnoCcc9.js` / `13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`,
@@ -3427,22 +3455,22 @@ the unchanged statically bundled species worker/painter
 `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`, and generated
 `service-worker.js` SHA-256
 `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Historical schema-v1 and
-earlier schema-v2 producer records remain replayable. Current Scene build / game-main authority is
+earlier schema-v2 producer records remain replayable. At that checkpoint, Scene build / game-main authority was
 `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` /
-`07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; current Compendium
-measurement / contract / collector authorities are
+`07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; Compendium
+measurement / contract / collector authorities were
 `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
 `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`.
-Current Compendium and Scene budget-file SHA-256 values are
+Compendium and Scene budget-file SHA-256 values were
 `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` and
 `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. The green authority printer
-binds a **964-module / 52-file** build. Worker construction remains
+bound a **964-module / 52-file** build. Worker construction remains
 lazy, but the species painter and biome renderer are statically owned by their worker entries; the
 production build rejects worker `import()` and external static JavaScript imports. Fetch-time pin
-adoption is removed and unpinned non-navigation requests remain 503. The fixed ruler, every numeric
-ceiling and the 78-outcome inventory remain unchanged. Exact `941ba45…` generated values remain
-historical authority for its passed Compendium and red Slice only; this changed head has no browser
+adoption is removed and unpinned non-navigation requests remain 503. At that checkpoint the fixed
+ruler, every numeric ceiling and the 78-outcome inventory were unchanged. Exact `941ba45…`
+generated values remain historical authority for its passed Compendium and red Slice only; that changed head had no browser
 certificate.
 
 The former local ruler is retained as historical evidence under measurement authority
@@ -4093,11 +4121,12 @@ Synchronous Slice/Glass/Recovery selftests use explicit 15-second child and
 20-second outer limits with separate timeout/nonzero/missing-marker controls. This gate does not
 replace the strict browser evidence chain or authorize hosted work.
 
-**Current exact `8bdf474…` evidence / Arc 0 publication-oracle repair boundary (2026-08-30):** the immutable
+**Historical exact `8bdf474…` evidence / Arc 0 publication-oracle repair boundary (2026-08-30;
+superseded by the current handoff):** the immutable
 8bdf Slice remains terminal FAIL with exactly one Landing publication-oracle finding and no
 Glass/Recovery successor. Its retained old-document live product matches the pre-action product
 exactly and keeps the open Pertar card; the obsolete check simultaneously required that card to be
-closed. The current uncommitted runner repair moves live-product parity plus complete held
+closed. The then-uncommitted runner repair moved live-product parity plus complete held
 route/rendered-scene/card/share/target judgment into shared browser-free contracts with field-level
 controls and immutable real-report replay.
 
@@ -4111,12 +4140,12 @@ a retained setup/reload fault are independently red. A malformed positive setup 
 mutants are constructed, so it retains the Arc 0 diagnosis instead of becoming a generic harness
 exception. The composite Survey-plus-Landing helper is not the judged action.
 
-The same current evidence path exact-key validates `state().ownershipV2` v3 over every base field
+That same historical evidence path exact-key validated `state().ownershipV2` v3 over every base field
 and all four Feed/Breed/Rename/Scout diagnostic subtrees. Baseline replay is green only for the
 complete current shape; wrong, missing and extra-field mutants for each subtree are red. Historical
 v2 base-only evidence remains available only through the explicit legacy option. This is an
 assessor catch-up to an existing product schema, not a schema bump. Final repair-batch browser-free
-validation is green: 251 files / 2,501 passed / one skipped, with all TypeScript programs green.
+validation was green: 251 files / 2,501 passed / one skipped, with all TypeScript programs green.
 Fresh exact-source browser authority remains pending.
 
 **Historical exact e4f5 evidence/oracle boundary (2026-08-30):** Compendium run

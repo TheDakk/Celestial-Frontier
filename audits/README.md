@@ -10,6 +10,35 @@ summary of it.
 
 ## Contents
 
+### Clean `553b06b…` three-candidate SceneMemory source-normalization evidence
+
+Exact clean signed source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied exactly three
+one-attempt/no-retry calibration-only SceneMemory observations under one unchanged 52-file build,
+Microsoft Edge `152.0.4191.53` and CDP `1.3`. All three completed 44/44 calibration outcomes with
+identical route/resource topology, stable range/slope, no findings or fatal events and complete
+browser/server/workspace-lock cleanup. Their deterministic carriers are:
+
+- `ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION1_20260830_553B06B.json.gz` — 45,001 gzip /
+  786,775 raw bytes; gzip/raw SHA-256 `7beffdb6ee47b26c96d0d37448dd4685c5ac89c90bd9927de97df416c4db52fe` /
+  `44ee4f8395ff1acf20902233cba37c114ce249077cb9843b1414f08600287fd6`.
+- `ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION2_20260830_553B06B.json.gz` — 44,996 gzip /
+  787,056 raw bytes; gzip/raw SHA-256 `833a7e92166a28a8466c4b7c855564e3884c25a657302f26decdc416c0819fbb` /
+  `f46c978ce56ae96d864e2059809fcb6356c3955c872ae1a266778c79805a7ac4`.
+- `ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION3_20260830_553B06B.json.gz` — 44,938 gzip /
+  786,758 raw bytes; gzip/raw SHA-256 `380b06b8b3d2f91fa7369c5103aacb0fd8fc9ae26a42d2aa06c77b5a8466a373` /
+  `0212064dd859e8fb60fe8e4df3c04e89f76844653ede182803e6db21b6e1f34d`.
+
+`ARC1C_SCENEMEM_SOURCE_NORMALIZATION_2026-08-30.md` records the exact derivation. Current
+input-v5 retains broad 12 MiB initial-V8 / 18 MiB initial-aggregate safety stops, then judges at
+most 6 MiB V8 growth over the scored fixed-second initial snapshot and a 12 MiB normalized working
+set. Worst retained headroom is 614,128 / 1,230,030 bytes. Raw post-route V8/aggregate totals remain
+diagnostics; all component, range/slope, DOM/listener, ownership, resource, BFCache, answerability
+and surface-vista controls remain active. The baseline is bound to its exact profile, document and
+`${profile}-initial` role, and profile-v3 metrics are re-derived from retained raw evidence during
+named verification. Historical input-v3/v4 reports replay unchanged. These
+three observations are not certificates and grant no later browser, hosted, merge or release
+authority.
+
 ### Signed `ebf172c…` SceneMemory stop — one over-tight absolute V8 outcome, no retained-owner drift
 
 Exact clean SSH-signed source `ebf172cc62417c9e193c7fcc1c9e751a1e0a028a` (tree

@@ -138,6 +138,12 @@ function arc9MainErrors(source: string): string[] {
     && clearPersist > settleProduct && refreshCapture > clearPersist)) {
     errors.push('progression release does not precede guarded Capture republish');
   }
+  if (!run.includes(
+    '    if (activePersist === actionBarrier) activePersist = null;\n'
+      + '    refreshOpenCaptureSurfaceAfterArc9Progression(runtime);',
+  )) {
+    errors.push('post-release Capture republish is narrowed by operation reason');
+  }
 
   const explorerNameAction = section(
     source,
@@ -306,6 +312,16 @@ describe('Arc 9 Main/Records integration', () => {
       '    refreshOpenCaptureSurfaceAfterArc9Progression(runtime);\n'
         + '    if (activePersist === actionBarrier) activePersist = null;',
     ))).toContain('progression release does not precede guarded Capture republish');
+
+    expect(arc9MainErrors(replaceInSectionExact(
+      mainSource,
+      'async function runArc9ProgressionRefresh(',
+      '\nlet smokeRejectNextArc3ActionStorage',
+      '    refreshOpenCaptureSurfaceAfterArc9Progression(runtime);',
+      "    if (reason.startsWith('after:arc4.capture.')) {\n"
+        + '      refreshOpenCaptureSurfaceAfterArc9Progression(runtime);\n'
+        + '    }',
+    ))).toContain('post-release Capture republish is narrowed by operation reason');
 
     expect(arc9MainErrors(replaceInSectionExact(
       mainSource,

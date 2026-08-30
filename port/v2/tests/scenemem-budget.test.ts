@@ -7,9 +7,11 @@ import { describe, expect, it } from 'vitest';
 import {
   evaluateSceneMemory,
   type SceneMemoryBudget,
+  type SceneMemoryCurrentInput,
   type SceneMemoryInput,
   type SceneMemoryLegacyProfileMeasurement,
   type SceneMemoryProfileMeasurement,
+  type SceneMemoryRawBudget,
   type SceneMemoryVerdict,
 } from '../tools/scenemem-contract.mjs';
 import {
@@ -93,6 +95,39 @@ const FIXED_SECOND_CANDIDATES = [
     gzipSha256: 'f3f4f1f71c4c33cf665e24b5aa208af9b6872222988e020902a3646b9ed62788',
   },
 ] as const;
+const SOURCE_NORMALIZED_CALIBRATION_SOURCE_COMMIT =
+  '553b06bc5b477a90e0d7284360fa84ab99704fb7';
+const SOURCE_NORMALIZED_BUILD = Object.freeze({
+  sha256: '82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b',
+  fileCount: 52,
+  filesSha256: '742bc6cef53605362fbac5e50909bb668c4f91db7cfd6ec197e8009147107ec7',
+});
+const SOURCE_NORMALIZED_CANDIDATES = [
+  {
+    runId: '20260830-pr35-553b06b-v8-growth-calibration1',
+    file: 'ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION1_20260830_553B06B.json.gz',
+    rawBytes: 786_775,
+    rawSha256: '44ee4f8395ff1acf20902233cba37c114ce249077cb9843b1414f08600287fd6',
+    gzipBytes: 45_001,
+    gzipSha256: '7beffdb6ee47b26c96d0d37448dd4685c5ac89c90bd9927de97df416c4db52fe',
+  },
+  {
+    runId: '20260830-pr35-553b06b-v8-growth-calibration2',
+    file: 'ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION2_20260830_553B06B.json.gz',
+    rawBytes: 787_056,
+    rawSha256: 'f46c978ce56ae96d864e2059809fcb6356c3955c872ae1a266778c79805a7ac4',
+    gzipBytes: 44_996,
+    gzipSha256: '833a7e92166a28a8466c4b7c855564e3884c25a657302f26decdc416c0819fbb',
+  },
+  {
+    runId: '20260830-pr35-553b06b-v8-growth-calibration3',
+    file: 'ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION3_20260830_553B06B.json.gz',
+    rawBytes: 786_758,
+    rawSha256: '0212064dd859e8fb60fe8e4df3c04e89f76844653ede182803e6db21b6e1f34d',
+    gzipBytes: 44_938,
+    gzipSha256: '380b06b8b3d2f91fa7369c5103aacb0fd8fc9ae26a42d2aa06c77b5a8466a373',
+  },
+] as const;
 const HISTORICAL_CALIBRATION_CANDIDATES = [
   {
     runId: 'arc1c-candidate-1',
@@ -171,22 +206,22 @@ type BudgetRecord = {
 };
 type FixedSecondSnapshot = {
   label: string;
-  raw: Record<string, unknown>;
+  raw: Record<string, unknown> & { scene: { documentToken: string } };
   heapPhaseProbe: {
     label: string;
-    raw: Record<string, unknown>;
+    raw: Record<string, unknown> & { scene: { documentToken: string } };
   };
 };
-type CalibrationProfile = SceneMemoryProfileMeasurement & {
+type CalibrationProfile = Omit<SceneMemoryProfileMeasurement, 'initial'> & {
   schema: string;
-  initial: FixedSecondSnapshot;
+  initial: FixedSecondSnapshot & { heap: SceneMemoryProfileMeasurement['initial']['heap'] };
   warmup: FixedSecondSnapshot;
   warmups: FixedSecondSnapshot[];
   measured: FixedSecondSnapshot[];
   bfcacheSnapshot: FixedSecondSnapshot;
   targetId: string;
   documentToken: string;
-  metrics: Record<keyof SceneMemoryBudget, number>;
+  metrics: Record<string, number>;
 };
 type CalibrationReport = {
   schema: string;
@@ -346,6 +381,8 @@ const FIXED_SECOND_PRODUCER_AUTHORITY = Object.freeze({
 });
 const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
   ...FIXED_SECOND_PRODUCER_AUTHORITY,
+  collector: '266b348c502ba80bb26d6790857c0497304b228f567340523189f764ad8460c5',
+  verdictContract: 'da6dce07590d14a0e7bb44f242669220717e8c0556f119d92266c64cfe744c7a',
   package: 'cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7',
   packageLock: 'a2dcb380866a57618ae345c2559c1483dd781833f1a258d604a8254b7acf6a9f',
   buildDist: '82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b',
@@ -403,6 +440,20 @@ const SELECTED_PROFILES = Object.freeze({
     targetElapsedMsMax: 1000,
     heartbeatElapsedMsMax: 100,
   }),
+}) satisfies Readonly<Record<ProfileName, SceneMemoryRawBudget>>;
+const sourceNormalizedProfile = (profile: SceneMemoryRawBudget): SceneMemoryBudget => {
+  const { heapUsedBytesMax: _rawV8, heapAggregateBytesMax: _rawAggregate, ...rest } = profile;
+  return Object.freeze({
+    initialHeapUsedBytesMax: 12 * 1024 * 1024,
+    initialHeapAggregateBytesMax: 18 * 1024 * 1024,
+    heapUsedGrowthBytesMax: 6 * 1024 * 1024,
+    heapNormalizedWorkingSetBytesMax: 12 * 1024 * 1024,
+    ...rest,
+  });
+};
+const CURRENT_PROFILES = Object.freeze({
+  phone: sourceNormalizedProfile(SELECTED_PROFILES.phone),
+  desktop: sourceNormalizedProfile(SELECTED_PROFILES.desktop),
 }) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
 const FIXED_SECOND_CERTIFICATION_METRICS = Object.freeze({
   phone: Object.freeze({
@@ -455,7 +506,7 @@ const FIXED_SECOND_CERTIFICATION_METRICS = Object.freeze({
     targetElapsedMsMax: 8.84245799999917,
     heartbeatElapsedMsMax: 0.30970799999886367,
   }),
-}) satisfies Readonly<Record<ProfileName, Readonly<Record<keyof SceneMemoryBudget, number>>>>;
+}) satisfies Readonly<Record<ProfileName, Readonly<Record<keyof SceneMemoryRawBudget, number>>>>;
 const CURRENT_PRE_ACTIVATION_PROFILES = Object.freeze({
   phone: Object.freeze({
     ...SELECTED_PROFILES.phone,
@@ -467,7 +518,7 @@ const CURRENT_PRE_ACTIVATION_PROFILES = Object.freeze({
     heapUsedBytesMax: 10485760,
     heapAggregateBytesMax: 16777216,
   }),
-}) satisfies Readonly<Record<ProfileName, SceneMemoryBudget>>;
+}) satisfies Readonly<Record<ProfileName, SceneMemoryRawBudget>>;
 const PRE_ACTIVATION_PROFILES = Object.freeze({
   phone: Object.freeze(Object.fromEntries(Object.entries(CURRENT_PRE_ACTIVATION_PROFILES.phone)
     .filter(([field]) => !field.startsWith('surfaceVistaCache')))),
@@ -479,13 +530,14 @@ const ORIGINAL_250_PROFILES = Object.freeze({
   desktop: Object.freeze({ ...PRE_ACTIVATION_PROFILES.desktop, targetElapsedMsMax: 250 }),
 });
 
-const BUDGET_FIELDS = Object.keys(SELECTED_PROFILES.phone) as Array<keyof SceneMemoryBudget>;
+const BUDGET_FIELDS = Object.keys(SELECTED_PROFILES.phone) as Array<keyof SceneMemoryRawBudget>;
+const CURRENT_BUDGET_FIELDS = Object.keys(CURRENT_PROFILES.phone) as Array<keyof SceneMemoryBudget>;
 const FIXED_SEMANTIC_BUDGET_FIELDS = Object.freeze([
   'surfaceVistaCacheEntriesMax', 'surfaceVistaCachePixelsMax',
 ] as const);
 const CALIBRATED_BUDGET_FIELDS = BUDGET_FIELDS.filter((field) =>
   !(FIXED_SEMANTIC_BUDGET_FIELDS as readonly string[]).includes(field));
-const ZERO_POINT_FIELDS: Readonly<Partial<Record<keyof SceneMemoryBudget, string>>> = Object.freeze({
+const ZERO_POINT_FIELDS: Readonly<Partial<Record<keyof SceneMemoryRawBudget, string>>> = Object.freeze({
   localCanvasCacheEntriesMax: 'localCanvasCacheEntries',
   productRenderTargetsMax: 'productRenderTargets',
   ringCacheEntriesMax: 'ringCacheEntries',
@@ -495,12 +547,12 @@ const sha256 = (value: Uint8Array): string =>
   createHash('sha256').update(value).digest('hex');
 
 const budget = JSON.parse(fs.readFileSync(budgetPath, 'utf8')) as BudgetRecord;
-const loadEvidence = (candidates: ReadonlyArray<{
+const loadEvidence = <T extends {
   runId: string;
   file: string;
   rawSha256: string;
   gzipSha256: string;
-}>) => candidates.map((candidate) => {
+}>(candidates: readonly T[]) => candidates.map((candidate) => {
   const compressed = fs.readFileSync(path.join(auditRoot, candidate.file));
   const raw = gunzipSync(compressed);
   return {
@@ -514,6 +566,8 @@ const evidence = loadEvidence(CANDIDATES);
 const reports = evidence.map(({ report }) => report);
 const fixedSecondEvidence = loadEvidence(FIXED_SECOND_CANDIDATES);
 const fixedSecondReports = fixedSecondEvidence.map(({ report }) => report);
+const sourceNormalizedEvidence = loadEvidence(SOURCE_NORMALIZED_CANDIDATES);
+const sourceNormalizedReports = sourceNormalizedEvidence.map(({ report }) => report);
 const historicalCalibrationEvidence = loadEvidence(HISTORICAL_CALIBRATION_CANDIDATES);
 
 const profilePoints = (
@@ -523,6 +577,15 @@ const profilePoints = (
   ...measurement.cycles,
   measurement.bfcache,
 ];
+const contractInitialHeap = (heap: {
+  usedSize: number;
+  embedderHeapUsedSize: number;
+  backingStorageSize: number;
+}) => ({
+  usedSize: heap.usedSize,
+  embedderHeapUsedSize: heap.embedderHeapUsedSize,
+  backingStorageSize: heap.backingStorageSize,
+});
 
 const authorityProjection = (
   record: Readonly<Record<string, string | null>>,
@@ -536,7 +599,18 @@ const collectedProfileProjection = (
 ): SceneMemoryInput['profiles'] => Object.fromEntries(
   PROFILE_NAMES.map((profile) => {
     const measurement = report.profiles[profile];
-    return [profile, report.contractInput.schema === 'cf-v2-scene-memory-input/v4' ? {
+    return [profile, report.contractInput.schema === 'cf-v2-scene-memory-input/v5' ? {
+      initial: {
+        documentToken: measurement.initial.raw.scene.documentToken,
+        heap: contractInitialHeap(measurement.initial.heap),
+      },
+      initialVista: measurement.initialVista,
+      firstSurfaceVista: measurement.firstSurfaceVista,
+      precondition: measurement.precondition,
+      cycles: measurement.cycles,
+      bfcache: measurement.bfcache,
+      reloadCleanup: measurement.reloadCleanup,
+    } : report.contractInput.schema === 'cf-v2-scene-memory-input/v4' ? {
       initialVista: measurement.initialVista,
       firstSurfaceVista: measurement.firstSurfaceVista,
       precondition: measurement.precondition,
@@ -550,6 +624,26 @@ const collectedProfileProjection = (
     }];
   }),
 ) as SceneMemoryInput['profiles'];
+
+const sourceNormalizedInput = (report: CalibrationReport): SceneMemoryCurrentInput => ({
+  schema: 'cf-v2-scene-memory-input/v5',
+  profiles: Object.fromEntries(PROFILE_NAMES.map((profile) => {
+    const measurement = report.profiles[profile];
+    return [profile, {
+      initial: {
+        documentToken: measurement.initial.raw.scene.documentToken,
+        heap: contractInitialHeap(measurement.initial.heap),
+      },
+      initialVista: measurement.initialVista,
+      firstSurfaceVista: measurement.firstSurfaceVista,
+      precondition: measurement.precondition,
+      cycles: measurement.cycles,
+      bfcache: measurement.bfcache,
+      reloadCleanup: measurement.reloadCleanup,
+    }];
+  })) as SceneMemoryCurrentInput['profiles'],
+  budgets: structuredClone(CURRENT_PROFILES),
+});
 
 const expectExactBuildInventory = (
   report: CalibrationReport,
@@ -582,7 +676,7 @@ const FIXED_SECOND_BUILD = Object.freeze({
 const metric = (
   report: CalibrationReport,
   profile: ProfileName,
-  field: keyof SceneMemoryBudget,
+  field: keyof SceneMemoryRawBudget,
 ): number => {
   const value = report.profiles[profile].metrics[field];
   if (typeof value !== 'number') throw new Error(`missing ${profile}.${field} calibration metric`);
@@ -603,8 +697,8 @@ const slope = (values: readonly number[]): number => {
 };
 
 const metricSummary = (
-  measurement: SceneMemoryProfileMeasurement,
-): Record<keyof SceneMemoryBudget, number> => {
+  measurement: Pick<SceneMemoryProfileMeasurement, 'precondition' | 'cycles' | 'bfcache'>,
+): Record<keyof SceneMemoryRawBudget, number> => {
   const points = [measurement.precondition, ...measurement.cycles, measurement.bfcache];
   const warmAggregates = measurement.cycles.map((point) => point.heap.usedSize
     + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize);
@@ -616,7 +710,7 @@ const metricSummary = (
   ].map(slope));
   const max = (select: (point: typeof points[number]) => number): number =>
     Math.max(...points.map(select));
-  const summary: Partial<Record<keyof SceneMemoryBudget, number>> = {
+  const summary: Partial<Record<keyof SceneMemoryRawBudget, number>> = {
     heapUsedBytesMax: max((point) => point.heap.usedSize),
     embedderHeapUsedBytesMax: max((point) => point.heap.embedderHeapUsedSize),
     backingStorageBytesMax: max((point) => point.heap.backingStorageSize),
@@ -645,69 +739,59 @@ const metricSummary = (
     summary.surfaceVistaCacheEntriesMax = max((point) => point.surfaceVistaCacheEntries);
     summary.surfaceVistaCachePixelsMax = max((point) => point.surfaceVistaCachePixels);
   }
-  return summary as Record<keyof SceneMemoryBudget, number>;
+  return summary as Record<keyof SceneMemoryRawBudget, number>;
+};
+
+const normalizedHeapMetrics = (measurement: CalibrationProfile) => {
+  const points = profilePoints(measurement);
+  const initial = measurement.initial.heap;
+  const growth = (point: typeof points[number]): number =>
+    Math.max(0, point.heap.usedSize - initial.usedSize);
+  return Object.freeze({
+    initialHeapUsedBytesMax: initial.usedSize,
+    initialHeapAggregateBytesMax:
+      initial.usedSize + initial.embedderHeapUsedSize + initial.backingStorageSize,
+    heapUsedGrowthBytesMax: Math.max(...points.map(growth)),
+    heapNormalizedWorkingSetBytesMax: Math.max(...points.map((point) =>
+      growth(point) + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize)),
+  });
 };
 
 describe('Arc 1C scene-memory active budget', () => {
-  it('locks the heap-only activation to one Edge-family capability/profile authority and producer', () => {
+  it('locks the source-normalized activation to one Edge-family capability/profile authority and producer', () => {
     expect(budget).toEqual({
-      schema: 'cf-v2-scene-memory-budget/v4',
+      schema: 'cf-v2-scene-memory-budget/v5',
       authority: {
         browser: EXPECTED_BROWSER_AUTHORITY,
         producer: EXPECTED_PRODUCER_AUTHORITY,
       },
-      profiles: SELECTED_PROFILES,
+      profiles: CURRENT_PROFILES,
     });
-    expect(Object.keys(budget.profiles.phone)).toEqual(BUDGET_FIELDS);
-    expect(Object.keys(budget.profiles.desktop)).toEqual(BUDGET_FIELDS);
+    expect(Object.keys(budget.profiles.phone).sort()).toEqual([...CURRENT_BUDGET_FIELDS].sort());
+    expect(Object.keys(budget.profiles.desktop).sort()).toEqual([...CURRENT_BUDGET_FIELDS].sort());
     expect(validateSceneMemoryBudget(budget)).toEqual({ ok: true, errors: [] });
   });
 
-  it('changes only the two selected heap ceilings in each profile', () => {
-    const changes = PROFILE_NAMES.flatMap((profile) => BUDGET_FIELDS
-      .filter((field) => CURRENT_PRE_ACTIVATION_PROFILES[profile][field]
-        !== SELECTED_PROFILES[profile][field])
-      .map((field) => ({
-        profile,
-        field,
-        before: CURRENT_PRE_ACTIVATION_PROFILES[profile][field],
-        after: SELECTED_PROFILES[profile][field],
-      })));
-    expect(changes).toEqual([
-      {
-        profile: 'phone',
-        field: 'heapUsedBytesMax',
-        before: 10485760,
-        after: 12582912,
-      },
-      {
-        profile: 'phone',
-        field: 'heapAggregateBytesMax',
-        before: 16777216,
-        after: 18874368,
-      },
-      {
-        profile: 'desktop',
-        field: 'heapUsedBytesMax',
-        before: 10485760,
-        after: 12582912,
-      },
-      {
-        profile: 'desktop',
-        field: 'heapAggregateBytesMax',
-        before: 16777216,
-        after: 18874368,
-      },
-    ]);
-    const currentBudgetSha256 = sha256(fs.readFileSync(budgetPath));
-    expect(currentBudgetSha256).toBe(CURRENT_ACTIVATED_BUDGET_SHA256);
-    expect(currentBudgetSha256).not.toBe(HISTORICAL_ACTIVATED_BUDGET_SHA256);
-    const preActivationBudget = { ...budget, profiles: CURRENT_PRE_ACTIVATION_PROFILES };
-    const currentPreActivationSha256 = sha256(Buffer.from(
-      `${JSON.stringify(preActivationBudget, null, 2)}\n`,
-    ));
-    expect(currentPreActivationSha256).toBe(CURRENT_PRE_ACTIVATION_BUDGET_SHA256);
-    expect(currentPreActivationSha256).not.toBe(HISTORICAL_PRE_ACTIVATION_BUDGET_SHA256);
+  it('replaces only the two raw heap admission fields with normalized equivalents', () => {
+    for (const profile of PROFILE_NAMES) {
+      expect(budget.profiles[profile]).toMatchObject({
+        initialHeapUsedBytesMax: 12 * 1024 * 1024,
+        initialHeapAggregateBytesMax: 18 * 1024 * 1024,
+        heapUsedGrowthBytesMax: 6 * 1024 * 1024,
+        heapNormalizedWorkingSetBytesMax: 12 * 1024 * 1024,
+      });
+      expect(budget.profiles[profile]).not.toHaveProperty('heapUsedBytesMax');
+      expect(budget.profiles[profile]).not.toHaveProperty('heapAggregateBytesMax');
+      const unchanged = Object.fromEntries(Object.entries(budget.profiles[profile])
+        .filter(([field]) => ![
+          'initialHeapUsedBytesMax', 'initialHeapAggregateBytesMax',
+          'heapUsedGrowthBytesMax',
+          'heapNormalizedWorkingSetBytesMax',
+        ].includes(field)));
+      const rawUnchanged = Object.fromEntries(Object.entries(SELECTED_PROFILES[profile])
+        .filter(([field]) => !['heapUsedBytesMax', 'heapAggregateBytesMax'].includes(field)));
+      expect(unchanged).toEqual(rawUnchanged);
+    }
   });
 
   it('negative controls: browser capability and profile authority drift cannot validate', () => {
@@ -1065,10 +1149,7 @@ describe('Arc 1C scene-memory active budget', () => {
 
   it('replays all fixed-second candidates under unchanged ceilings with strict measured headroom', () => {
     for (const report of fixedSecondReports) {
-      const replay = evaluateSceneMemory({
-        ...report.contractInput,
-        budgets: budget.profiles,
-      });
+      const replay = evaluateSceneMemory(sourceNormalizedInput(report));
       expect(replay.status, report.runId).toBe('pass');
       expect(replay.outcomes).toHaveLength(44);
       expect(replay.outcomes.every((outcome) => outcome.pass)).toBe(true);
@@ -1076,17 +1157,132 @@ describe('Arc 1C scene-memory active budget', () => {
     }
 
     for (const profile of PROFILE_NAMES) {
+      for (const field of [
+        'initialHeapUsedBytesMax',
+        'initialHeapAggregateBytesMax',
+        'heapUsedGrowthBytesMax',
+        'heapNormalizedWorkingSetBytesMax',
+      ] as const) {
+        const observed = Math.max(...fixedSecondReports.map((report) =>
+          normalizedHeapMetrics(report.profiles[profile])[field]));
+        expect(budget.profiles[profile][field], `${profile}.${field}`)
+          .toBeGreaterThan(observed);
+      }
       for (const field of CALIBRATED_BUDGET_FIELDS) {
         const observed = Math.max(...fixedSecondReports
           .map((report) => metric(report, profile, field)));
-        expect(budget.profiles[profile][field], `${profile}.${field}`)
+        expect(SELECTED_PROFILES[profile][field], `${profile}.${field}`)
           .toBeGreaterThan(observed);
       }
       for (const field of FIXED_SEMANTIC_BUDGET_FIELDS) {
         expect(new Set(fixedSecondReports.map((report) => metric(report, profile, field))))
-          .toEqual(new Set([budget.profiles[profile][field]]));
+          .toEqual(new Set([SELECTED_PROFILES[profile][field]]));
       }
     }
+  });
+
+  it('binds three clean current-source candidates and independently derives the normalized ruler', () => {
+    expect(sourceNormalizedReports.map(({ runId }) => runId)).toEqual(
+      SOURCE_NORMALIZED_CANDIDATES.map(({ runId }) => runId),
+    );
+    for (const { candidate, compressed, raw, report } of sourceNormalizedEvidence) {
+      expect(compressed.byteLength, `${candidate.runId} gzip bytes`).toBe(candidate.gzipBytes);
+      expect(sha256(compressed), `${candidate.runId} gzip`).toBe(candidate.gzipSha256);
+      expect(raw.byteLength, `${candidate.runId} raw bytes`).toBe(candidate.rawBytes);
+      expect(sha256(raw), `${candidate.runId} raw`).toBe(candidate.rawSha256);
+      expect(report).toMatchObject({
+        schema: 'cf-v2-scene-memory-report/v3',
+        runId: candidate.runId,
+        status: 'calibration',
+        certification: 'calibration-only-not-certified',
+        lifecycle: {
+          schema: 'cf-v2-scene-memory-report-lifecycle/v1',
+          status: 'complete',
+        },
+        cleanup: { browser: true, server: true, workspaceLock: true },
+      });
+      expect(report.source.begin).toEqual(report.source.end);
+      expect(report.source.begin).toMatchObject({
+        commit: SOURCE_NORMALIZED_CALIBRATION_SOURCE_COMMIT,
+        branch: 'openai/mac',
+        state: 'committed',
+        statusSha256: 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855',
+        workingTreeSha256: CLEAN_WORKING_TREE_SHA256,
+      });
+      expect(report.browser).toEqual(FIXED_SECOND_EDGE_53_PROVENANCE);
+      expectExactBuildInventory(report, SOURCE_NORMALIZED_BUILD);
+      expect(report.contractInput.schema).toBe('cf-v2-scene-memory-input/v4');
+      expect(report.outcomes).toHaveLength(44);
+      expect(report.outcomes.every(({ pass }) => pass)).toBe(true);
+      expect(report.findings).toEqual([]);
+      expect(report.fatalEvents).toEqual([]);
+      expect(terminalProfileEvidenceErrors(report.profiles, true, true)).toEqual([]);
+      expect(evaluateSceneMemory(report.contractInput)).toEqual(report.verdict);
+
+      const normalizedInput = sourceNormalizedInput(report);
+      for (const profile of PROFILE_NAMES) {
+        expect(normalizedInput.profiles[profile].initial).toEqual({
+          documentToken: report.profiles[profile].initial.raw.scene.documentToken,
+          heap: contractInitialHeap(report.profiles[profile].initial.heap),
+        });
+        expect(Object.keys(normalizedInput.profiles[profile].initial.heap).sort()).toEqual([
+          'backingStorageSize', 'embedderHeapUsedSize', 'usedSize',
+        ]);
+      }
+      const normalizedReplay = evaluateSceneMemory(normalizedInput);
+      expect(normalizedReplay).toMatchObject({
+        schema: 'cf-v2-scene-memory-verdict/v4',
+        status: 'pass',
+        failures: [],
+      });
+      expect(normalizedReplay.outcomes).toHaveLength(44);
+    }
+
+    expect(new Set(sourceNormalizedReports.map((report) => report.startedAt)).size).toBe(3);
+    expect(new Set(sourceNormalizedReports.map((report) => report.build.sha256)))
+      .toEqual(new Set([SOURCE_NORMALIZED_BUILD.sha256]));
+    for (const profile of PROFILE_NAMES) {
+      expect(new Set(sourceNormalizedReports.map((report) =>
+        report.profiles[profile].targetId)).size).toBe(3);
+      expect(new Set(sourceNormalizedReports.map((report) =>
+        report.profiles[profile].documentToken)).size).toBe(3);
+    }
+
+    const observed = Object.fromEntries(PROFILE_NAMES.map((profile) => [profile,
+      Object.fromEntries(([
+        'initialHeapUsedBytesMax',
+        'initialHeapAggregateBytesMax',
+        'heapUsedGrowthBytesMax',
+        'heapNormalizedWorkingSetBytesMax',
+      ] as const).map((field) => [field, Math.max(...sourceNormalizedReports.map((report) =>
+        normalizedHeapMetrics(report.profiles[profile])[field]))])),
+    ])) as Record<ProfileName, Record<
+      'initialHeapUsedBytesMax' | 'initialHeapAggregateBytesMax'
+      | 'heapUsedGrowthBytesMax' | 'heapNormalizedWorkingSetBytesMax', number
+    >>;
+    expect(observed).toEqual({
+      phone: {
+        initialHeapUsedBytesMax: 6_957_192,
+        initialHeapAggregateBytesMax: 12_151_518,
+        heapUsedGrowthBytesMax: 5_387_552,
+        heapNormalizedWorkingSetBytesMax: 11_098_217,
+      },
+      desktop: {
+        initialHeapUsedBytesMax: 6_963_660,
+        initialHeapAggregateBytesMax: 11_306_464,
+        heapUsedGrowthBytesMax: 5_677_328,
+        heapNormalizedWorkingSetBytesMax: 11_352_882,
+      },
+    });
+    for (const profile of PROFILE_NAMES) {
+      for (const field of Object.keys(observed[profile]) as Array<keyof typeof observed[ProfileName]>) {
+        expect(budget.profiles[profile][field] - observed[profile][field], `${profile}.${field}`)
+          .toBeGreaterThan(0);
+      }
+    }
+    const rawDesktopBfcache = sourceNormalizedReports.map((report) =>
+      report.profiles.desktop.bfcache.heap.usedSize);
+    expect(rawDesktopBfcache.filter((bytes) => bytes > 12 * 1024 * 1024)).toHaveLength(2);
   });
 
   it('preserves the original three calibration carriers as immutable historical evidence', () => {
@@ -1244,8 +1440,8 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(recomputed.failures).toEqual([]);
     const currentBudgetReplay = evaluateSceneMemory({
       ...report.contractInput,
-      budgets: budget.profiles,
-    });
+      budgets: SELECTED_PROFILES,
+    } as SceneMemoryInput);
     expect(currentBudgetReplay.status).toBe('pass');
     expect(currentBudgetReplay.outcomes).toHaveLength(42);
     expect(currentBudgetReplay.failures).toEqual([]);
@@ -1323,8 +1519,8 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(recomputed.failures).toEqual([]);
     const currentBudgetReplay = evaluateSceneMemory({
       ...report.contractInput,
-      budgets: budget.profiles,
-    });
+      budgets: SELECTED_PROFILES,
+    } as SceneMemoryInput);
     expect(currentBudgetReplay.status).toBe('pass');
     expect(currentBudgetReplay.outcomes).toHaveLength(42);
     expect(currentBudgetReplay.failures).toEqual([]);
@@ -1394,8 +1590,8 @@ describe('Arc 1C scene-memory active budget', () => {
 
     const replay = evaluateSceneMemory({
       ...report.contractInput,
-      budgets: budget.profiles,
-    });
+      budgets: SELECTED_PROFILES,
+    } as SceneMemoryInput);
     expect(replay.status).toBe('fail');
     expect(replay.failures.map(({ id }) => id)).toEqual([
       'phone/heap-dom-budget',
@@ -1418,11 +1614,11 @@ describe('Arc 1C scene-memory active budget', () => {
     const pairedReplay = evaluateSceneMemory({
       ...report.contractInput,
       budgets: Object.fromEntries(PROFILE_NAMES.map((profile) => [profile, {
-        ...budget.profiles[profile],
+        ...SELECTED_PROFILES[profile],
         heapUsedBytesMax: Number.MAX_SAFE_INTEGER,
         heapAggregateBytesMax: Number.MAX_SAFE_INTEGER,
-      }])) as typeof budget.profiles,
-    });
+      }])) as Record<ProfileName, SceneMemoryRawBudget>,
+    } as SceneMemoryInput);
     expect(pairedReplay.failures.map(({ id }) => id)).toEqual([
       'phone/heap-dom-budget',
       'desktop/heap-dom-budget',
@@ -1559,7 +1755,9 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(budget.profiles.desktop.targetElapsedMsMax).toBe(1000);
     expect(budget.profiles.phone.targetElapsedMsMax).toBeLessThan(targetTimeoutMs);
 
-    const repaired = evaluateSceneMemory({ ...report.contractInput, budgets: budget.profiles });
+    const repaired = evaluateSceneMemory({
+      ...report.contractInput, budgets: SELECTED_PROFILES,
+    } as SceneMemoryInput);
     expect(repaired.status).toBe('pass');
     expect(repaired.outcomes).toHaveLength(42);
     expect(repaired.failures).toEqual([]);
@@ -1571,7 +1769,7 @@ describe('Arc 1C scene-memory active budget', () => {
 
     const targetBoundaryInput = (elapsedMs: number): SceneMemoryInput => {
       const input = structuredClone(report.contractInput);
-      input.budgets = structuredClone(budget.profiles);
+      input.budgets = structuredClone(SELECTED_PROFILES);
       for (const profile of PROFILE_NAMES) {
         for (const point of profilePoints(input.profiles[profile])) {
           point.answerability.target.elapsedMs = elapsedMs;
@@ -1620,13 +1818,13 @@ describe('Arc 1C scene-memory active budget', () => {
     ];
     for (const mutate of negativeMutations) {
       const input = structuredClone(report.contractInput);
-      input.budgets = structuredClone(budget.profiles);
+      input.budgets = structuredClone(SELECTED_PROFILES);
       mutate(input);
       expect(evaluateSceneMemory(input).outcomes
         .find(({ id }) => id === 'phone/answerability')?.pass).toBe(false);
     }
     const retainedMemoryRed = structuredClone(report.contractInput);
-    retainedMemoryRed.budgets = structuredClone(budget.profiles);
+    retainedMemoryRed.budgets = structuredClone(SELECTED_PROFILES);
     retainedMemoryRed.profiles.phone.precondition.pending = 1;
     const memoryVerdict = evaluateSceneMemory(retainedMemoryRed);
     expect(memoryVerdict.status).toBe('fail');
@@ -1638,8 +1836,8 @@ describe('Arc 1C scene-memory active budget', () => {
     for (const report of reports) {
       const replay = evaluateSceneMemory({
         ...report.contractInput,
-        budgets: budget.profiles,
-      });
+        budgets: SELECTED_PROFILES,
+      } as SceneMemoryInput);
       expect(replay.status, report.runId).toBe('pass');
       expect(replay.outcomes).toHaveLength(42);
       expect(replay.outcomes.every((outcome) => outcome.pass)).toBe(true);
@@ -1648,7 +1846,7 @@ describe('Arc 1C scene-memory active budget', () => {
     for (const profile of PROFILE_NAMES) {
       for (const field of CALIBRATED_BUDGET_FIELDS) {
         const observed = Math.max(...reports.map((report) => metric(report, profile, field)));
-        expect(budget.profiles[profile][field], `${profile}.${field}`).toBeGreaterThan(observed);
+        expect(SELECTED_PROFILES[profile][field], `${profile}.${field}`).toBeGreaterThan(observed);
       }
     }
   });
@@ -1656,7 +1854,7 @@ describe('Arc 1C scene-memory active budget', () => {
   it('accepts each activated heap ceiling exactly and rejects the next byte', () => {
     for (const profile of PROFILE_NAMES) {
       const heapUsedExact = structuredClone(reports[0]!.contractInput);
-      heapUsedExact.budgets = structuredClone(budget.profiles);
+      heapUsedExact.budgets = structuredClone(SELECTED_PROFILES);
       heapUsedExact.profiles[profile].precondition.heap.usedSize = 12582912;
       heapUsedExact.profiles[profile].precondition.heap.embedderHeapUsedSize = 0;
       heapUsedExact.profiles[profile].precondition.heap.backingStorageSize = 0;
@@ -1672,7 +1870,7 @@ describe('Arc 1C scene-memory active budget', () => {
       }]);
 
       const aggregateExact = structuredClone(reports[0]!.contractInput);
-      aggregateExact.budgets = structuredClone(budget.profiles);
+      aggregateExact.budgets = structuredClone(SELECTED_PROFILES);
       aggregateExact.profiles[profile].precondition.heap.usedSize = 11534336;
       aggregateExact.profiles[profile].precondition.heap.embedderHeapUsedSize = 4194304;
       aggregateExact.profiles[profile].precondition.heap.backingStorageSize = 3145728;
@@ -1703,10 +1901,10 @@ describe('Arc 1C scene-memory active budget', () => {
         const replay = evaluateSceneMemory({
           ...report.contractInput,
           budgets: {
-            ...budget.profiles,
-            [profile]: { ...budget.profiles[profile], [field]: justBelow },
+            ...SELECTED_PROFILES,
+            [profile]: { ...SELECTED_PROFILES[profile], [field]: justBelow },
           },
-        });
+        } as SceneMemoryInput);
         expect(replay.status, `${profile}.${field}`).toBe('fail');
         expect(replay.outcomes.some((outcome) => !outcome.pass), `${profile}.${field}`).toBe(true);
       }
@@ -1722,11 +1920,13 @@ describe('Arc 1C scene-memory active budget', () => {
       for (const field of observedZeroFields) {
         const pointField = ZERO_POINT_FIELDS[field];
         if (!pointField) throw new Error(`missing point mutation for ${field}`);
-        expect(budget.profiles[profile][field]).toBe(0.5);
+        expect(SELECTED_PROFILES[profile][field]).toBe(0.5);
         const input = structuredClone(reports[0]!.contractInput);
         const firstCycle = input.profiles[profile].cycles[0] as unknown as Record<string, number>;
         firstCycle[pointField] = 1;
-        const replay = evaluateSceneMemory({ ...input, budgets: budget.profiles });
+        const replay = evaluateSceneMemory({
+          ...input, budgets: SELECTED_PROFILES,
+        } as SceneMemoryInput);
         expect(replay.status, `${profile}.${field}`).toBe('fail');
       }
     }

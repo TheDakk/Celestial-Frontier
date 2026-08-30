@@ -1,5 +1,5 @@
 {
-  "schema": "cf-v2-scene-memory-budget/v4",
+  "schema": "cf-v2-scene-memory-budget/v5",
   "authority": {
     "browser": {
       "schema": "cf-v2-scene-memory-browser-authority/v2",
@@ -12,12 +12,12 @@
       "profileContractSha256": "f565ba2a38577f80c16c41762a5fb4e2214f3b320c50e017f1262c0784a6a0ef"
     },
     "producer": {
-      "collector": "7a1dc670327fed3f04fa120a78be64a5a87227a355292f47d37353522f50d931",
+      "collector": "266b348c502ba80bb26d6790857c0497304b228f567340523189f764ad8460c5",
       "browserCdp": "6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce",
       "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
       "workspaceLock": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606",
       "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
-      "verdictContract": "7776b3dd3d2009107f14f71526c375c2ed821d9f5f4f4ec984f0351e24ed1184",
+      "verdictContract": "da6dce07590d14a0e7bb44f242669220717e8c0556f119d92266c64cfe744c7a",
       "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
       "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
       "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
@@ -39,10 +39,12 @@
   },
   "profiles": {
     "phone": {
-      "heapUsedBytesMax": 12582912,
+      "initialHeapUsedBytesMax": 12582912,
+      "initialHeapAggregateBytesMax": 18874368,
+      "heapUsedGrowthBytesMax": 6291456,
       "embedderHeapUsedBytesMax": 4194304,
       "backingStorageBytesMax": 3145728,
-      "heapAggregateBytesMax": 18874368,
+      "heapNormalizedWorkingSetBytesMax": 12582912,
       "warmHeapAggregateRangeBytesMax": 524288,
       "warmHeapSlopeBytesPerCycleMax": 131072,
       "documentsMax": 3.5,
@@ -64,10 +66,12 @@
       "heartbeatElapsedMsMax": 100
     },
     "desktop": {
-      "heapUsedBytesMax": 12582912,
+      "initialHeapUsedBytesMax": 12582912,
+      "initialHeapAggregateBytesMax": 18874368,
+      "heapUsedGrowthBytesMax": 6291456,
       "embedderHeapUsedBytesMax": 4194304,
       "backingStorageBytesMax": 3145728,
-      "heapAggregateBytesMax": 18874368,
+      "heapNormalizedWorkingSetBytesMax": 12582912,
       "warmHeapAggregateRangeBytesMax": 524288,
       "warmHeapSlopeBytesPerCycleMax": 131072,
       "documentsMax": 3.5,

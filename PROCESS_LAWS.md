@@ -139,7 +139,8 @@
 > local repair bytes grant fresh
 > browser successor authority.
 
-> **2026-08-30 current sealed single-file worker authority (matches local code; supersedes the
+> **2026-08-30 sealed single-file worker design with historical authority checkpoint (product
+> design still matches local code; exact hashes below are checkpoint-bound and supersede the
 > execution-late `clients.get()` repair and the narrower 38d/830/d33 “current” boundaries below;
 > every named run and carrier remains immutable history):** exact signed source
 > `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` first preserved the 3,115 ms painter-import
@@ -166,28 +167,29 @@
 > post-start worker chunk whose safety depends on enumeration, lookup, timing, network fallback,
 > cross-build inference, sleep or retry.
 >
-> Current Compendium measurement / contract / collector authorities are
+> At that historical sealed-worker checkpoint, Compendium measurement / contract / collector
+> authorities were
 > `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 > `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
 > `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`.
-> Final derived changed-head producer authority is
+> Its final derived changed-head producer authority was
 > `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3`; it binds index
 > `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c`, owner
 > `assets/main-BYnoCcc9.js` / `13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`, and generated
 > `service-worker.js` `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. The combined
 > worker/painter asset is `assets/species-art.worker-DnnSDKMy.js`, SHA-256
-> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Current Scene build /
-> game-main, Compendium budget-file and Scene budget-file authorities are
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. At that checkpoint, Scene
+> build / game-main, Compendium budget-file and Scene budget-file authorities were
 > `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` /
 > `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`,
 > `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b`, and
 > `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. The green authority printer
-> binds a **964-module / 52-file** build.
-> The sealed-worker portion changes worker packaging and PWA ownership only. The current head also
-> includes the bounded Engineering focus repair, its 74th release-note bullet and evidence-assessor
+> bound a **964-module / 52-file** build.
+> The sealed-worker portion changed worker packaging and PWA ownership only. That checkpoint also
+> included the bounded Engineering focus repair, its 74th release-note bullet and evidence-assessor
 > repairs; no save schema, painter pixel, seed, genome, anatomy, art structure, ruler, numeric
 > ceiling or 78-outcome inventory changed. Fresh signed
-> browser certification remains pending; this derived reseal grants no browser or later-stage authority.
+> browser certification remained pending; this derived reseal granted no browser or later-stage authority.
 
 ⚠⚠ **A REPLACEMENT CLEARS OLD HISTORY; ITS HELD BOOTSTRAP IS A DIFFERENT TRANSACTION**
 (2026-08-30). Exact `ae2a002…` first proved that a valid new ordinal-zero
@@ -739,14 +741,16 @@ must name every breached field, observed value and ceiling rather than collapse 
 counters into “heap or DOM exceeded,” and its exact-boundary/next-unit controls must preserve valid
 zero-valued heap components.
 
-Only after product cleanup may a genuine fixed-growth ruler change be considered: collect exactly
+For the then-active absolute input-v4 ruler, only after product cleanup could a genuine fixed-growth
+ruler change be considered: collect exactly
 three independent clean, one-attempt/no-retry candidates from one unchanged signed producer, retain
 and replay their raw observations, select strict operational headroom, and change only the V8-used
 and aggregate-heap ceilings actually supported by all three. The preserved `862a75b…` baseline must
 still fail on its unchanged node/listener excess after activation. Microsoft Edge family + CDP
 `1.3` capability/profile authority is stable across compatible point updates; exact version,
 revision, JavaScript version, executable path and user agent are per-run provenance. An Edge update
-alone never starts calibration, repins a ruler or moves a threshold.
+alone never starts calibration, repins a ruler or moves a threshold. The source-normalized input-v5
+law below supersedes only this historical choice of absolute post-route heap ruler.
 
 The completed application of that law used signed source
 `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
@@ -772,6 +776,47 @@ record, so it is chronology-associated result provenance rather than exact-sourc
 an evidence oracle changes the campaign source regardless: the final fail-fast chain must restart at
 Layout on one newly signed unchanged commit. A browser point update still has no role in that
 decision.
+
+⚠⚠ **JUDGE CURRENT-SOURCE HEAP GROWTH, NOT A MOVING ABSOLUTE POST-ROUTE V8
+FOOTPRINT** (2026-08-30). Exact signed source `ebf172cc62417c9e193c7fcc1c9e751a1e0a028a`
+passed the complete hermetic develop profile and every changed-instrument control, then its one
+no-retry SceneMemory run stopped at 43/44 because desktop BFCache V8 was 12,594,592 bytes—only
+11,680 bytes / 0.093% above the old absolute 12 MiB ceiling. Range, slope, aggregate heap,
+DOM/listeners, textures, caches, pending owners, BFCache lifecycle, answerability and cleanup were
+all green. The same Edge `152.0.4191.53` / CDP `1.3` tuple had already passed recent unchanged
+rulers. That is exhausted absolute-footprint headroom, not retained-owner evidence and not an Edge
+rebaseline trigger.
+
+For a shipped source that legitimately grows, retain a broad initial safety stop and judge the work
+added after the scored fixed-second initial snapshot. For every scored heap point `q`, define
+`growth(q) = max(0, q.usedSize - initial.usedSize)` and
+`normalized(q) = growth(q) + q.embedderHeapUsedSize + q.backingStorageSize`. Raw totals remain in
+the report for diagnosis; they are not the current route-admission ruler. Keep the existing raw warm
+aggregate range/slope, DOM/listener, resource, ownership, pending, BFCache, answerability and
+surface-vista rules unchanged.
+
+The completed application used exact signed clean source
+`553b06bc5b477a90e0d7284360fa84ab99704fb7` for exactly three independent calibration-only
+observations, each once with zero retry under one unchanged 52-file build and Edge/CDP tuple. All
+three completed 44/44 calibration outcomes with stable topology and complete cleanup. Worst
+phone/desktop growth was 5,387,552 / 5,677,328 bytes; worst normalized working set was
+11,098,217 / 11,352,882 bytes. Input-v5 therefore retains 12 MiB initial-V8 and 18 MiB
+initial-aggregate safety ceilings, and selects 6 MiB growth plus 12 MiB normalized-working-set
+ceilings—at least 614,128 / 1,230,030 bytes of observed headroom. The old raw 12 MiB post-route
+V8 ceiling would reject two of these three identical-source desktop BFCache samples.
+
+Serialize the changed meaning explicitly: current terminal evidence is report-v4/profile-v3/
+input-v5/verdict-v4/budget-v5. Preserve and replay historical input-v3/verdict-v2 and
+input-v4/verdict-v3 evidence under their original raw semantics; never relabel it. Bind the baseline
+to the exact profile, document token and `${profile}-initial` scored snapshot role, and re-derive the
+profile-v3 metric summary from retained raw evidence during named verification. Project the v5
+initial heap authority to exactly `usedSize`, `embedderHeapUsedSize` and `backingStorageSize`;
+unscored CDP fields such as `totalSize`, and any future fields, remain raw diagnostics and must not
+silently enter the versioned contract. Negative-control
+exact/+1 on all four new limits, an equal persistent initial offset, a post-initial retained
+allocation, cross-profile and same-profile-warmup substitution, missing/detached initial evidence,
+raw-to-contract projection and metric-summary mutation. Compatible Edge point versions remain
+provenance only and never trigger rebaseline, recalibration or threshold movement.
 
 ⚠⚠ **DERIVE CURRENT PRODUCER AUTHORITY FROM CURRENT SOURCE AND THE STANDARD BUILD BEFORE A
 BROWSER CAMPAIGN** (2026-08-27). Final3's ordinary test battery was green while both SceneMemory's
