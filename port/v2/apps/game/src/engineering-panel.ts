@@ -935,6 +935,16 @@ export class EngineeringPanelController {
     const settlement = this.#settlementFocus;
     const activeBefore = this.#document.activeElement;
     const ownedBefore = settlement !== null && this.#focusBelongsToSettlement(settlement);
+    const exactActionOwnedBefore = settlement !== null
+      && activeBefore === this.#focusKeyTarget(settlement.focusKey, settlement.semanticKey);
+    /* Edge completes a native Enter activation's focused-button -> BODY
+       transition after the click listener returns. Park focus on the exact
+       semantic row before disabling a research/recipe action so that delayed
+       native blur cannot erase the settlement lineage. Mine/Skim have no
+       semantic row and retain the explicit disable-to-BODY proof below. */
+    if (settlement !== null && ownedBefore && exactActionOwnedBefore && settlement.semanticKey !== null) {
+      this.#restoreElement(this.#semanticTarget(settlement.semanticKey));
+    }
     this.#applyActionAvailability();
     if (ownedBefore && activeBefore !== this.#document.body
       && this.#document.activeElement === this.#document.body) {
@@ -1008,10 +1018,7 @@ export class EngineeringPanelController {
        semantic row. The original action identity remains in settlementFocus;
        unlock decides from the final model and current focus lineage whether
        the exact replacement action may receive focus. */
-    const semanticTarget = receipt.semanticKey === null ? null
-      : [...this.#body.querySelectorAll<HTMLElement>('[data-semantic-key]')]
-        .find((element) => element.dataset.semanticKey === receipt.semanticKey) ?? null;
-    this.#restoreElement(semanticTarget);
+    this.#restoreElement(this.#semanticTarget(receipt.semanticKey));
   }
 
   #disabled(element: HTMLElement): boolean {
@@ -1038,6 +1045,12 @@ export class EngineeringPanelController {
     return [...this.#body.querySelectorAll<HTMLElement>('[data-focus-key]')]
       .find((element) => element.dataset.focusKey === focusKey
         && (element.closest<HTMLElement>('[data-semantic-key]')?.dataset.semanticKey ?? null) === semanticKey) ?? null;
+  }
+
+  #semanticTarget(semanticKey: string | null): HTMLElement | null {
+    if (semanticKey === null) return null;
+    return [...this.#body.querySelectorAll<HTMLElement>('[data-semantic-key]')]
+      .find((element) => element.dataset.semanticKey === semanticKey) ?? null;
   }
 
   #restoreFocusKey(focusKey: string | null, semanticKey: string | null): boolean {

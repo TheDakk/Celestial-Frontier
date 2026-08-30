@@ -1146,6 +1146,65 @@ function arc5OwnershipV2SelftestState(evidence) {
         lastFault: null,
       },
     },
+    breed: {
+      lastOutcome: null,
+      lastResult: null,
+      controller: {
+        schema: 'cf-v2-compendium-breed-diagnostics/v1',
+        attachedMountCount: 0,
+        retainedDomCount: 0,
+        pendingWork: 0,
+        convergenceLatched: false,
+        delegatedListenerCount: 2,
+        renderedParentControlCount: 0,
+        selectedPrimaryId: null,
+        selectedMateId: null,
+        primaryPage: 0,
+        matePage: 0,
+        surfaceKey: null,
+        contextKey: null,
+        lastRequest: null,
+        lastOutcome: null,
+      },
+    },
+    rename: {
+      lastOutcome: null,
+      lastResult: null,
+      controller: {
+        schema: 'cf-v2-compendium-rename-diagnostics/v1',
+        attachedMountCount: 0,
+        retainedDomCount: 0,
+        pendingWork: 0,
+        convergenceLatched: false,
+        delegatedListenerCount: 3,
+        creatureControlCount: 0,
+        surfaceKey: null,
+        contextKey: null,
+        selectedCreatureId: null,
+        currentPage: 0,
+        lastRequest: null,
+        lastOutcome: null,
+      },
+    },
+    scout: {
+      lastOutcome: null,
+      lastResult: null,
+      controller: {
+        schema: 'cf-v2-compendium-scout-diagnostics/v1',
+        attachedMountCount: 0,
+        retainedDomCount: 0,
+        pendingWork: 0,
+        convergenceLatched: false,
+        delegatedListenerCount: 2,
+        creatureControlCount: 0,
+        surfaceKey: null,
+        contextKey: null,
+        selectedCreatureId: null,
+        currentPage: 0,
+        lastRequest: null,
+        lastOutcome: null,
+      },
+    },
   };
 }
 
@@ -4389,6 +4448,21 @@ function arc4GlassSelftest() {
     previewRowCount: oracle.previewCount, worldKey,
   };
   const presentation = assessArc4GlassPresentation({ ui, planetside });
+  const wrongArc5Diagnostics = structuredClone(ui);
+  wrongArc5Diagnostics.ownershipV2.breed.controller.delegatedListenerCount = 1;
+  const wrongArc5DiagnosticsAssessment = assessArc4GlassPresentation({
+    ui: wrongArc5Diagnostics, planetside,
+  });
+  const missingArc5Diagnostics = structuredClone(ui);
+  delete missingArc5Diagnostics.ownershipV2.rename.controller.currentPage;
+  const missingArc5DiagnosticsAssessment = assessArc4GlassPresentation({
+    ui: missingArc5Diagnostics, planetside,
+  });
+  const extraArc5Diagnostics = structuredClone(ui);
+  extraArc5Diagnostics.ownershipV2.scout.controller.selftestExtra = true;
+  const extraArc5DiagnosticsAssessment = assessArc4GlassPresentation({
+    ui: extraArc5Diagnostics, planetside,
+  });
   const wrongTitle = structuredClone(ui);
   wrongTitle.cardTitle = 'Not Homeworld';
   const wrongTitleAssessment = assessArc4GlassPresentation({ ui: wrongTitle, planetside });
@@ -4721,6 +4795,12 @@ function arc4GlassSelftest() {
     && exactJson(arc4FailedChecks(durableArc5MutationAssessment),
       ['arc5DeltaFixedPoint', 'arc5TargetFixedPoint'])
     && arc4IsolatedFailure(canonicalAuthorityAssessment, 'f4Authority')
+    && wrongArc5Diagnostics.ownershipV2.breed.controller.delegatedListenerCount === 1
+    && !Object.hasOwn(missingArc5Diagnostics.ownershipV2.rename.controller, 'currentPage')
+    && extraArc5Diagnostics.ownershipV2.scout.controller.selftestExtra === true
+    && arc4IsolatedFailure(wrongArc5DiagnosticsAssessment, 'uiComplete')
+    && arc4IsolatedFailure(missingArc5DiagnosticsAssessment, 'uiComplete')
+    && arc4IsolatedFailure(extraArc5DiagnosticsAssessment, 'uiComplete')
     && arc4IsolatedFailure(wrongTitleAssessment, 'homeworldTitle')
     && arc4IsolatedFailure(wrongCountsAssessment, 'rosterCounts')
     && arc4IsolatedFailure(wrongFingerprintAssessment, 'rosterFingerprint')
@@ -4767,6 +4847,9 @@ function arc4GlassSelftest() {
   return {
     ok, fixturePreflight, wrongFixtureRawAssessment, wrongFixtureEpochAssessment,
     wrongFixtureContactAssessment, wrongFixtureLoadoutAssessment,
+    wrongArc5Diagnostics: wrongArc5DiagnosticsAssessment,
+    missingArc5Diagnostics: missingArc5DiagnosticsAssessment,
+    extraArc5Diagnostics: extraArc5DiagnosticsAssessment,
     presentation, wrongTitle: wrongTitleAssessment, wrongCounts: wrongCountsAssessment,
     wrongFingerprint: wrongFingerprintAssessment, wrongYield: wrongYieldAssessment,
     wrongOdds: wrongOddsAssessments,
@@ -10413,7 +10496,7 @@ async function main() {
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
-          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=73;
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=74;
           const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
@@ -10702,7 +10785,7 @@ async function main() {
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 73-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 74-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -10968,7 +11051,7 @@ async function main() {
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&publishing?.textContent===publishingText&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===72
+            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===73
               &&identity?.ok===false&&identity?.identity===false
               &&truthfulFeatureClaims.length===8
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)

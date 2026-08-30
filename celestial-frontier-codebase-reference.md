@@ -1,30 +1,31 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-30 current exact-`4a82d9b…` Mine/Survey oracle overlay (matches local code):** signed
-> clean source `4a82d9b82521ea9bd1ac5e7c0754a473bcadd997` passed Compendium **78/78** in
-> 64,895 ms, then Slice `20260830152819879-75689-abf2a37ffd4d` stopped terminal red once/no-retry
-> after 99,332 ms with `arc-3-mine-action`, derivative Mine controls and Survey `harness` scopes.
-> Exact carriers, sizes and SHA-256 identities are registered in `audits/README.md`; Glass and
-> Recovery did not run.
+> **2026-08-30 current exact-`20d8598…` / `9382f8e…` evidence overlay (matches local code):** exact
+> clean SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium
+> **78/78** once/no-retry in **63,431 ms**, then unchanged-source Slice
+> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry after
+> **120,493 ms** with six ordered findings: Research, fixed Fabrication, three Arc 0 Landing fault
+> scopes and final Pertar `harness`. Signed evidence successor
+> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` binds the exact reports/log, source tuple,
+> finding order and absence of PASS/Glass/Recovery authority. Exact carrier identities remain in
+> `audits/README.md`; the stored Slice remains FAIL, and Glass/Recovery did not run.
 >
-> The Mine product successor was correct. The exact action projection now owns its legitimate
-> coupled Starter Charter settlement: append `st-mine` to `chs`, canonicalize `chp['st-mine']` to
-> 1, remove it from `chacc`, increment `charters`, and add 15 to both `essence` and
-> `essenceEarned`, alongside the existing extraction/cooldown changes. All six fields are required
-> and the predecessor mirrors production Charter ID/bound/uniqueness/overlap/plain-progress rules.
-> Six successor, ten report-backed malformed-predecessor and live-only mutants for every
-> durable-mapped field/statistic prevent the allowance or publication boundary from widening, while every unrelated row/extension
-> remains exact. The exact replay binds the Compendium, Slice JSON and raw-log carriers. Slice
-> fail-stops after each held baseline/control, real Mine outcome, durable control and final control
-> boundary before dependent work.
+> Diagnosis separated three bounded repairs. Engineering now parks a trusted Research/Fabricator
+> settlement on its stable semantic row before the exact action is disabled, preserving lineage
+> across Edge's delayed native Enter focused-button-to-BODY transition; it restores the replacement
+> action only while lineage remains and respects later user focus movement. Mine/Skim have no
+> semantic row and keep their explicit disable-to-BODY proof. Arc 0 Landing fault evidence now
+> performs and verifies one explicit Survey transaction, waits for its exact receipt/current Pertar
+> route and card/live publication/coordinator-idle writable fixed point, resamples raw/live
+> authority, then arms the fault and invokes `landHere()` once. Pre-Survey, missing-receipt,
+> wrong-route/card and wrong-live-publication controls reject before Landing. Arc 5's assessor now
+> exact-key validates the existing `cf-v2-arc5-app-state/v3` base plus Feed, Breed, Rename and Scout
+> subtrees; historical v2 base-only diagnostics require explicit legacy replay.
 >
-> The Survey target was source-valid and within Stage-1 reach. Escape/ascent had correctly queued
-> `persistView`; the harness sent its one-shot Search Enter while `activePersist` still owned the
-> write, so Search correctly refused. Coupled F4 writable readiness now precedes Enter, post-route
-> stabilization remains, and failure evidence includes Search/focus, Follow, action-owner and
-> persistence causes. No app/gameplay source, timeout, retry, save schema, creature/genome/art
-> structure or browser baseline changed. Browser-free acceptance is **249 files / 2,488 passed /
-> 1 skipped**, with all TypeScript programs green; fresh browser authority remains pending.
+> No timeout, retry, browser rebaseline, product schema bump, save/gameplay redesign or
+> creature/genome/art/audio change follows. Final repair-batch browser-free validation is green:
+> **250 files / 2,495 passed / 1 skipped**, with all TypeScript programs green. Fresh exact-source
+> browser authority remains pending.
 
 > **2026-08-30 historical exact-`e4f5af4…` Slice-oracle overlay:** exact signed source
 > `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium **78/78** once/no-retry in
@@ -92,20 +93,21 @@
 > `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
 > `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`.
 > Final derived changed-head producer authority is
-> `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b`; it binds index
-> `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0`, owner
-> `assets/main-C621myNE.js` / `2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`, and generated
-> `service-worker.js` `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`.
+> `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3`; it binds index
+> `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c`, owner
+> `assets/main-BYnoCcc9.js` / `13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`, and generated
+> `service-worker.js` `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`.
 > Combined worker/painter `assets/species-art.worker-DnnSDKMy.js` remains
 > `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Current Scene build /
 > game-main, Compendium budget-file and Scene budget-file authorities are
-> `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+> `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` /
 > `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`,
-> `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c`, and
-> `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. The green printer binds a
-> **964-module / 52-file** build. This changes worker
-> packaging and PWA ownership only: no save schema, painter pixel, seed, genome, anatomy, art
-> structure, ruler, numeric ceiling or 78-outcome inventory changed.
+> `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b`, and
+> `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. The green printer binds a
+> **964-module / 52-file** build. The sealed-worker portion changes worker packaging and PWA
+> ownership only. The current head also includes the bounded Engineering focus repair, its 74th
+> release-note bullet and evidence-assessor repairs; no save schema, painter pixel, seed, genome,
+> anatomy, art structure, ruler, numeric ceiling or 78-outcome inventory changed.
 >
 > Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` then passed the
 > once-only named Compendium run
@@ -1224,6 +1226,12 @@
 > Arc 3 stale outcomes refuse before durability; after `commitAction()` reports committed, any
 > verification/publication failure is a committed action that suppresses the stale live projection
 > and converges through one read-only reload—never a second derivation, receipt or write.
+> Research/Fabricator focus settlement also owns native default-action timing. If the exact trusted
+> action still owns focus, the controller parks focus on its stable `data-semantic-key` row before
+> disabling the action, so a delayed native Enter button-to-BODY transition cannot erase lineage.
+> Settlement may restore the exact replacement action only while that lineage remains; a later user
+> move to BODY, a summary or another control wins. Mine/Skim expose no semantic row and retain their
+> separately proved disable-to-BODY behavior.
 >
 > Arc 5A stages only after the exact Arc 4 source fixed point. `prepareArc5OwnershipMigration()`
 > creates the version-2 manifest plus exactly four fixed generic delta shards, upgrades an aligned
@@ -1231,6 +1239,12 @@
 > future/corrupt/misplaced/source-drift outcome cancels all earlier boot candidates and restores the
 > durable saved view, ordered Atlas routes and Arc 2 `items`/`equip`/`equipAff` mirror before runtime
 > creation. `main.ts` exposes this non-player state only through `state().ownershipV2` diagnostics.
+> Its current `cf-v2-arc5-app-state/v3` shape is exact-keyed over the base migration fields plus
+> `feed`, `breed`, `rename` and `scout`. Feed includes its controller and action-coordinator
+> diagnostics; Breed, Rename and Scout each bind their own controller schema and exact fields.
+> Recovery/Slice assessment rejects wrong, missing or extra fields in every subtree. Historical
+> `cf-v2-arc5-app-state/v2` base-only evidence is accepted only under the explicit legacy-replay
+> option; v3 was already the product schema, so this assessor repair is not a schema migration.
 >
 > Arc 4's current local boundary adds `arc4-capture-capacity.ts`, `arc4-capture-action.ts`, and the
 > `main.ts` adapter to `fullWorldRoster`, explicit epoch ownership, capture-contact capability,
@@ -3396,24 +3410,24 @@ SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`; inde
 8/8.
 
 The final derived current producer record is `cf-v2-compendium-producer-authority/v2` /
-`baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b`. It binds index
-`0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0`, owner
-`assets/main-C621myNE.js` / `2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`,
+`f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3`. It binds index
+`45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c`, owner
+`assets/main-BYnoCcc9.js` / `13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`,
 the unchanged statically bundled species worker/painter
 `assets/species-art.worker-DnnSDKMy.js` /
 `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`, and generated
 `service-worker.js` SHA-256
-`927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Historical schema-v1 and
+`5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Historical schema-v1 and
 earlier schema-v2 producer records remain replayable. Current Scene build / game-main authority is
-`96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+`9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` /
 `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; current Compendium
 measurement / contract / collector authorities are
 `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
 `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`.
 Current Compendium and Scene budget-file SHA-256 values are
-`eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` and
-`6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. The green authority printer
+`c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` and
+`670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. The green authority printer
 binds a **964-module / 52-file** build. Worker construction remains
 lazy, but the species painter and biome renderer are statically owned by their worker entries; the
 production build rejects worker `import()` and external static JavaScript imports. Fetch-time pin
@@ -3693,8 +3707,9 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
-  by the 56 legacy releases. Its exact 73-bullet implemented-outcome
-  inventory is checked structurally and in the rendered Guide, including real-scroll
+  by the 56 legacy releases. Its exact 74-bullet implemented-outcome inventory has rendered
+  ordered SHA-256 `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`
+  and is checked structurally and in the rendered Guide, including real-scroll
   tail reach and unchanged shipped-release state. That version is development identity
   only. `getCurrentV2Release()` returns nothing while
   `V2_CURRENT_RELEASE_VERSION === null`; `showUnseenV2Release()` therefore
@@ -4068,6 +4083,26 @@ dependencies, generated artifacts, command order/execution, soft-fail and workfl
 Synchronous Slice/Glass/Recovery selftests use explicit 15-second child and
 20-second outer limits with separate timeout/nonzero/missing-marker controls. This gate does not
 replace the strict browser evidence chain or authorize hosted work.
+
+**Current exact `20d8598…` / `9382f8e…` Slice repair boundary (2026-08-30):** the immutable
+20d Slice remains terminal FAIL with six ordered findings and no Glass/Recovery successor. Its
+Landing repair treats Survey as an owned fixture predecessor: it verifies exactly one Survey
+receipt, the current Pertar route/card, durable-to-live publication, coordinator idle and F4
+writability, then resamples raw/live authority before arming each fault and invoking direct
+`landHere()` once. Pre-Survey baselines, missing receipts, wrong route/card and wrong live
+publication are independent red controls. Coordinator-idle requires the exact owner, hold and
+three-key fault-latch projections: missing/renamed/extra/armed latches, stale hold diagnostics and
+a retained setup/reload fault are independently red. A malformed positive setup fail-stops before
+mutants are constructed, so it retains the Arc 0 diagnosis instead of becoming a generic harness
+exception. The composite Survey-plus-Landing helper is not the judged action.
+
+The same current evidence path exact-key validates `state().ownershipV2` v3 over every base field
+and all four Feed/Breed/Rename/Scout diagnostic subtrees. Baseline replay is green only for the
+complete current shape; wrong, missing and extra-field mutants for each subtree are red. Historical
+v2 base-only evidence remains available only through the explicit legacy option. This is an
+assessor catch-up to an existing product schema, not a schema bump. Final repair-batch browser-free
+validation is green: 250 files / 2,495 passed / one skipped, with all TypeScript programs green.
+Fresh exact-source browser authority remains pending.
 
 **Historical exact e4f5 evidence/oracle boundary (2026-08-30):** Compendium run
 `20260830-pr35-slice-oracle-e4f5af4bf628-compendium-certification` passed 78/78 once/no-retry.

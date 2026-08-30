@@ -1,27 +1,31 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Current local PR #35 Mine/Survey evidence repair (2026-08-30; supersedes the narrower
-> `e4f5af4…` changed-head boundary below):** exact clean signed source
-> `4a82d9b82521ea9bd1ac5e7c0754a473bcadd997` passed Compendium 78/78 once/no-retry in
-> 64,895 ms. Its unchanged-source Slice `20260830152819879-75689-abf2a37ffd4d` then stopped
-> terminal red once/no-retry after 99,332 ms with three scopes. The real Mine action was correct:
-> it atomically completed accepted `st-mine`, canonicalized its progress, removed its acceptance,
-> advanced honored Charters and paid 15 current/lifetime Stardust while preserving unrelated
-> evidence. The oracle omitted those coupled fields, so its real-outcome and control scopes were
-> false. Survey independently sent a one-shot Search Enter before Escape/ascent persistence
-> released `activePersist`; the valid in-reach route was correctly refused and never retried.
+> **Current local PR #35 `20d8598…` / `9382f8e…` evidence repair (2026-08-30; supersedes the
+> prior 4a82 current overlay and the narrower e4f5 boundary below):** exact clean SSH-signed source
+> `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium 78/78 once/no-retry in
+> 63,431 ms. Its unchanged-source Slice
+> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry after
+> 120,493 ms with six ordered findings: Research, fixed Fabrication, three Arc 0 Landing fault
+> scopes and final Pertar harness. Signed successor
+> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact evidence replay; Glass and
+> Recovery did not run, and the immutable Slice remains FAIL.
 >
-> Current tooling derives the exact coupled Mine successor only from the product-canonical required
-> predecessor, with six successor, ten preserved-evidence predecessor and live-only mutants for
-> every durable-mapped field/statistic plus a direct non-plain-record control. It cryptographically replay-binds all
-> three preserved carriers, fail-stops every Mine dependency boundary, waits for coupled writable
-> authority before Survey Enter, keeps post-route stabilization and captures cause-bearing
-> diagnostics. No product/gameplay source, timeout, retry, save schema, creature/genome/art
-> structure, ruler or Edge baseline changed.
-> Browser-free acceptance is **249 files / 2,488 passed / 1 skipped** with all TypeScript programs
-> green. Exact carriers are in `audits/README.md`. This changed head still needs a fresh unchanged-
-> source Compendium → Slice → Glass → Recovery chain and grants no HUMAN, hosted, merge, release,
-> version or deployment authority.
+> Three bounded local repairs follow. Engineering parks a trusted Research/Fabricator settlement on
+> its stable semantic row before disabling the exact action, preserving focus lineage across
+> delayed native Enter blur and restoring the replacement action only while that lineage remains.
+> Landing fault evidence explicitly settles and verifies one Survey receipt/current Pertar
+> route/card/live publication and writable fixed point, resamples raw/live authority, then arms the
+> fault and calls `landHere()` once; pre-Survey, missing-receipt, wrong-route/card and wrong-live
+> publication controls fail-stop. Its coordinator-idle preflight exact-key rejects missing,
+> renamed, extra or armed latches, non-idle/stale hold diagnostics and retained setup/reload faults;
+> a red positive setup stops before mutant construction. Recovery/Pertar assessment now exact-key validates the existing
+> Arc 5 v3 diagnostics across Feed, Breed, Rename and Scout, with wrong/missing/extra controls and
+> explicit legacy-v2 replay only. No product schema bump, timeout, retry, save/gameplay redesign,
+> creature/genome/art/audio change, ruler change or Edge rebaseline is introduced. Final
+> repair-batch browser-free validation is green: **250 files / 2,495 passed / 1 skipped**, with all
+> TypeScript programs green. Exact carriers are in
+> `audits/README.md`. A fresh unchanged-source Compendium → Slice → Glass → Recovery chain remains
+> required, and no HUMAN, hosted, merge, release, version or deployment authority follows.
 
 > **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
 > signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
@@ -311,18 +315,18 @@
 > `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
 > `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`. Final derived changed-head
 > producer / index / owner / service-worker authority is
-> `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b` /
-> `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0` /
-> `assets/main-C621myNE.js` (`2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`) /
-> `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Scene build / game-main is
-> `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+> `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3` /
+> `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c` /
+> `assets/main-BYnoCcc9.js` (`13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`) /
+> `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Scene build / game-main is
+> `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` /
 > `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; Compendium / Scene budget
-> files are `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` /
-> `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. The unchanged worker/painter
+> files are `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` /
+> `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. The unchanged worker/painter
 > remains `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`; the green printer binds a
 > **964-module / 52-file** build.
-> Fixed rulers, ceilings, 78 outcomes and the **73-row release-inventory count** remain unchanged;
-> the current repair updates the CF1 row's sequencing truth.
+> Fixed rulers, ceilings and 78 outcomes remain unchanged. The current **74-row release inventory**
+> adds the Engineering keyboard-focus repair note and retains the CF1 row's sequencing truth.
 >
 > Exact clean signed successor `941ba45a96e5baabadc255d53db86fa935cefe81` then ran
 > `20260830-pr35-sealed-worker-941ba45a96e5-compendium-certification` once/no-retry on Edge
@@ -2017,6 +2021,12 @@ source `7cb0969…` now supplies current-input exact-head/full-chain browser evi
 simulation, HUMAN comprehension, authored variable construction/new loot and later progression
 depth remain open; therefore the Arc and its exit evidence are not declared complete.
 
+Current focus ownership is explicit: a trusted Research/Fabricator settlement parks focus on its
+stable semantic row before disabling the exact action, survives delayed native Enter blur and
+restores the replacement action only while lineage remains. Later user focus movement wins;
+Mine/Skim retain their separate disable-to-BODY behavior. Exact `20d8598…` preserves the prior
+failure as terminal red, so this local repair still needs fresh exact-source browser evidence.
+
 **Player promise:** surveyed worlds reveal finite, understandable opportunities. Gathering and
 engineering visibly improve what the player can build, see, and reach.
 
@@ -2179,8 +2189,15 @@ publication or one read-only convergence reload. Source-only Arc 4 growth leaves
 empty-shard bytes invariant, explicitly preventing a second Arc 4 mirror and keeping unchanged-state
 growth O(1). The internal source-successor and V2-only successor bridges each produce exact
 five-carrier authority and are not exported from the public package root. No broader companion
-mission, care/healing, bond or Chronicle owner exists. The pure model now applies the
-approved care inheritance during new-child construction: exactly
+mission, care/healing, bond or Chronicle owner exists.
+
+The current evidence assessor treats `state().ownershipV2` v3 as one exact schema: base migration
+fields plus Feed, Breed, Rename and Scout diagnostic subtrees, including each controller's exact
+schema and fields. Wrong, missing and extra-field controls exist for every subtree. Historical v2
+base-only evidence is accepted only through the explicit legacy-replay option; this is assessor
+parity with an existing product schema, not a new Arc 5 schema version.
+
+The pure model now applies the approved care inheritance during new-child construction: exactly
 `0.5 * min(clampedLeftFed, clampedRightFed)` over the bounded 0–200 parent inputs, symmetrically and
 once; later child `fed` remains independently mutable. Focused tests cover that invariant. The
 headless Feed foundation accepts only one owner-minted preflight for one exact unassigned living

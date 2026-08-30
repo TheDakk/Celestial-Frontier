@@ -1905,6 +1905,86 @@ const arc5FeedDiagnosticsShape = (value) => exactKeys(value, [
   && arc5FeedControllerDiagnosticsShape(value.controller)
   && arc5FeedCoordinatorDiagnosticsShape(value.actionCoordinator);
 
+const arc5BreedControllerDiagnosticsShape = (value) => exactKeys(value, [
+  'schema', 'attachedMountCount', 'retainedDomCount', 'pendingWork',
+  'convergenceLatched', 'delegatedListenerCount',
+  'renderedParentControlCount', 'selectedPrimaryId', 'selectedMateId',
+  'primaryPage', 'matePage', 'surfaceKey', 'contextKey', 'lastRequest',
+  'lastOutcome',
+])
+  && value.schema === 'cf-v2-compendium-breed-diagnostics/v1'
+  && [0, 1].includes(value.attachedMountCount)
+  && counter(value.retainedDomCount)
+  && [0, 1].includes(value.pendingWork)
+  && typeof value.convergenceLatched === 'boolean'
+  && [0, 2].includes(value.delegatedListenerCount)
+  && counter(value.renderedParentControlCount)
+  && nullableBoundedText(value.selectedPrimaryId, 512)
+  && nullableBoundedText(value.selectedMateId, 512)
+  && counter(value.primaryPage) && counter(value.matePage)
+  && nullableBoundedText(value.surfaceKey, 2_048)
+  && nullableBoundedText(value.contextKey, 2_048)
+  && nullableRecord(value.lastRequest) && nullableRecord(value.lastOutcome);
+
+const arc5BreedDiagnosticsShape = (value) => exactKeys(value, [
+  'lastOutcome', 'lastResult', 'controller',
+])
+  && nullableBoundedText(value.lastOutcome, 256)
+  && nullableRecord(value.lastResult)
+  && arc5BreedControllerDiagnosticsShape(value.controller);
+
+const arc5RenameControllerDiagnosticsShape = (value) => exactKeys(value, [
+  'schema', 'attachedMountCount', 'retainedDomCount', 'pendingWork',
+  'convergenceLatched', 'delegatedListenerCount', 'creatureControlCount',
+  'surfaceKey', 'contextKey', 'selectedCreatureId', 'currentPage',
+  'lastRequest', 'lastOutcome',
+])
+  && value.schema === 'cf-v2-compendium-rename-diagnostics/v1'
+  && [0, 1].includes(value.attachedMountCount)
+  && counter(value.retainedDomCount)
+  && [0, 1].includes(value.pendingWork)
+  && typeof value.convergenceLatched === 'boolean'
+  && [0, 3].includes(value.delegatedListenerCount)
+  && counter(value.creatureControlCount)
+  && nullableBoundedText(value.surfaceKey, 2_048)
+  && nullableBoundedText(value.contextKey, 2_048)
+  && nullableBoundedText(value.selectedCreatureId, 512)
+  && counter(value.currentPage)
+  && nullableRecord(value.lastRequest) && nullableRecord(value.lastOutcome);
+
+const arc5RenameDiagnosticsShape = (value) => exactKeys(value, [
+  'lastOutcome', 'lastResult', 'controller',
+])
+  && nullableBoundedText(value.lastOutcome, 256)
+  && nullableRecord(value.lastResult)
+  && arc5RenameControllerDiagnosticsShape(value.controller);
+
+const arc5ScoutControllerDiagnosticsShape = (value) => exactKeys(value, [
+  'schema', 'attachedMountCount', 'retainedDomCount', 'pendingWork',
+  'convergenceLatched', 'delegatedListenerCount', 'creatureControlCount',
+  'surfaceKey', 'contextKey', 'selectedCreatureId', 'currentPage',
+  'lastRequest', 'lastOutcome',
+])
+  && value.schema === 'cf-v2-compendium-scout-diagnostics/v1'
+  && [0, 1].includes(value.attachedMountCount)
+  && counter(value.retainedDomCount)
+  && [0, 1].includes(value.pendingWork)
+  && typeof value.convergenceLatched === 'boolean'
+  && [0, 2].includes(value.delegatedListenerCount)
+  && counter(value.creatureControlCount)
+  && nullableBoundedText(value.surfaceKey, 2_048)
+  && nullableBoundedText(value.contextKey, 2_048)
+  && nullableBoundedText(value.selectedCreatureId, 512)
+  && counter(value.currentPage)
+  && nullableRecord(value.lastRequest) && nullableRecord(value.lastOutcome);
+
+const arc5ScoutDiagnosticsShape = (value) => exactKeys(value, [
+  'lastOutcome', 'lastResult', 'controller',
+])
+  && nullableBoundedText(value.lastOutcome, 256)
+  && nullableRecord(value.lastResult)
+  && arc5ScoutControllerDiagnosticsShape(value.controller);
+
 const ARC5_APP_DIAGNOSTIC_BASE_KEYS = Object.freeze([
   'schema', 'stateKind', 'mode', 'representationVersion', 'protection',
   'bootstrapPending', 'bootstrapOutcome', 'revision', 'sourceRevision',
@@ -1942,10 +2022,13 @@ const arc5AppDiagnosticsCoreShape = (value) => ['loaded', 'unavailable'].include
       && value.deltaShardDigests.length === 0);
 
 const arc5AppDiagnosticsShape = (value) => exactKeys(value, [
-  ...ARC5_APP_DIAGNOSTIC_BASE_KEYS, 'feed',
+  ...ARC5_APP_DIAGNOSTIC_BASE_KEYS, 'feed', 'breed', 'rename', 'scout',
 ])
   && value.schema === 'cf-v2-arc5-app-state/v3'
   && arc5FeedDiagnosticsShape(value.feed)
+  && arc5BreedDiagnosticsShape(value.breed)
+  && arc5RenameDiagnosticsShape(value.rename)
+  && arc5ScoutDiagnosticsShape(value.scout)
   && arc5AppDiagnosticsCoreShape(value);
 
 const legacyArc5AppDiagnosticsShape = (value) => exactKeys(
@@ -6138,6 +6221,68 @@ const appArc5FeedState = () => ({
   },
 });
 
+const appArc5BreedState = () => ({
+  lastOutcome: null,
+  lastResult: null,
+  controller: {
+    schema: 'cf-v2-compendium-breed-diagnostics/v1',
+    attachedMountCount: 0,
+    retainedDomCount: 0,
+    pendingWork: 0,
+    convergenceLatched: false,
+    delegatedListenerCount: 2,
+    renderedParentControlCount: 0,
+    selectedPrimaryId: null,
+    selectedMateId: null,
+    primaryPage: 0,
+    matePage: 0,
+    surfaceKey: null,
+    contextKey: null,
+    lastRequest: null,
+    lastOutcome: null,
+  },
+});
+
+const appArc5RenameState = () => ({
+  lastOutcome: null,
+  lastResult: null,
+  controller: {
+    schema: 'cf-v2-compendium-rename-diagnostics/v1',
+    attachedMountCount: 0,
+    retainedDomCount: 0,
+    pendingWork: 0,
+    convergenceLatched: false,
+    delegatedListenerCount: 3,
+    creatureControlCount: 0,
+    surfaceKey: null,
+    contextKey: null,
+    selectedCreatureId: null,
+    currentPage: 0,
+    lastRequest: null,
+    lastOutcome: null,
+  },
+});
+
+const appArc5ScoutState = () => ({
+  lastOutcome: null,
+  lastResult: null,
+  controller: {
+    schema: 'cf-v2-compendium-scout-diagnostics/v1',
+    attachedMountCount: 0,
+    retainedDomCount: 0,
+    pendingWork: 0,
+    convergenceLatched: false,
+    delegatedListenerCount: 2,
+    creatureControlCount: 0,
+    surfaceKey: null,
+    contextKey: null,
+    selectedCreatureId: null,
+    currentPage: 0,
+    lastRequest: null,
+    lastOutcome: null,
+  },
+});
+
 const appOwnershipV2State = (raw, {
   unavailable = false, boot = false, bootstrapOutcome = undefined,
 } = {}) => {
@@ -6177,6 +6322,9 @@ const appOwnershipV2State = (raw, {
     specimenTombstones: unavailable ? 0 : target.specimenTombstones.length,
     biospheres: unavailable ? 0 : source.biosphereProgress.length,
     feed: appArc5FeedState(),
+    breed: appArc5BreedState(),
+    rename: appArc5RenameState(),
+    scout: appArc5ScoutState(),
   };
 };
 
@@ -6399,6 +6547,41 @@ const uiSnapshot = (capture, {
 const firstExpected = ARC4_PERTAR_FIXTURE.actions.firstHit;
 const secondExpected = ARC4_PERTAR_FIXTURE.actions.secondMiss;
 const beforeRawSelftest = makeDurable(emptyMirror());
+const arc5AppDiagnosticsBaselineSelftest = appOwnershipV2State(
+  beforeRawSelftest, { boot: true },
+);
+const arc5AppDiagnosticsMutationSelftest = (subtree, kind) => {
+  const mutant = structuredClone(arc5AppDiagnosticsBaselineSelftest);
+  if (kind === 'wrong') {
+    mutant[subtree].controller.schema = 'cf-v2-selftest-wrong-diagnostics/v1';
+  } else if (kind === 'missing') {
+    delete mutant[subtree].lastResult;
+  } else if (kind === 'extra') {
+    mutant[subtree].selftestExtra = true;
+  } else {
+    throw new Error(`Arc 5 diagnostics selftest mutation is unknown: ${kind}`);
+  }
+  return Object.freeze({
+    mutationApplied: !same(mutant, arc5AppDiagnosticsBaselineSelftest),
+    mutantRejected: arc5AppDiagnosticsShape(mutant) === false,
+  });
+};
+const arc5AppDiagnosticsShapeControlsSelftest = Object.freeze(
+  Object.fromEntries(
+    ['feed', 'breed', 'rename', 'scout'].flatMap((subtree) => (
+      ['wrong', 'missing', 'extra'].map((kind) => [
+        `${subtree}:${kind}`,
+        arc5AppDiagnosticsMutationSelftest(subtree, kind),
+      ])
+    )),
+  ),
+);
+if (!arc5AppDiagnosticsShape(arc5AppDiagnosticsBaselineSelftest)
+  || Object.values(arc5AppDiagnosticsShapeControlsSelftest).some((control) => (
+    control.mutationApplied !== true || control.mutantRejected !== true
+  ))) {
+  throw new Error('Arc 5 app diagnostics shape selftest failed');
+}
 const hitManifestDigest = inspectArc4Ownership(inspectV5Rows(
   makeDurable(hitMirror()),
 ).rows).manifest.stateDigest;

@@ -1,5 +1,34 @@
 # Development Preview — Separate-Origin Human Playtesting
 
+> **2026-08-30 current exact-`20d8598…` / `9382f8e…` repair overlay (supersedes narrower
+> “current-local” status below; every dated run and preview boundary remains immutable):** exact clean
+> SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium **78/78**
+> once/no-retry, then its unchanged Slice
+> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry with six
+> ordered Engineering/Landing/Pertar findings. Signed evidence-only successor
+> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay. The stored
+> Slice remains FAIL; Glass, Recovery, persona capture and preview publication did not run.
+>
+> Three bounded roots are repaired locally: Engineering preserves trusted semantic-row focus across
+> delayed native Enter blur; Arc 0 Landing fault evidence proves one exact Survey receipt/current
+> Pertar route-card/live publication and resamples the post-Survey baseline; and Recovery/Pertar
+> exact-key validates Arc 5 v3 Feed/Breed/Rename/Scout diagnostics. Final browser-free validation is
+> green at **250 files / 2,495 passed / 1 skipped**, with all TypeScript programs green. The
+> cumulative **74-bullet** development bulletin has rendered ordered SHA-256
+> `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
+>
+> Active derived Compendium producer / index / owner / generated-service-worker authority is
+> `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3` /
+> `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c` /
+> `assets/main-BYnoCcc9.js` (`13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`) /
+> `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Current Scene build
+> authority is `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17`; Compendium / Scene
+> budget-file SHA-256 is `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` /
+> `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. Fixed rulers, numeric
+> ceilings, historical samples and 78 outcomes are unchanged; compatible Edge point versions are
+> provenance only. No repaired-head browser certificate, Gate/HUMAN closure, hosted attempt,
+> preview publication, merge, release, version or deployment authority exists.
+
 > **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
 > signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean

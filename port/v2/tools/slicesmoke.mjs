@@ -39,6 +39,8 @@ import {
   assessCompendiumFeedCommittedOutcome,
   assessCompendiumFeedPendingWindow,
   assessCompendiumFeedTwoDocumentStaleOutcome,
+  assessArc0LandingAwaitBoundary,
+  arc0LandingCoordinatorIsIdle,
   compendiumFeedWebAudioEndpointFailureIsInstrument,
   compendiumFeedWebAudioRouteNodeIds,
   projectCompendiumFeedWebAudioGraph,
@@ -1111,7 +1113,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 73;
+const V2_DRAFT_BULLET_COUNT = 74;
 const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save — nothing was stored.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -6102,8 +6104,8 @@ try {
     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
-    count: 73,
-    sha256: '91c6be33eb1f02494f25cc64c26d873fb335352b68952c347eddd6ea4bf799ec',
+    count: 74,
+    sha256: '050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -14104,12 +14106,15 @@ try {
      be sampled independently, then released exactly once into a fresh fixed
      point. No captured outcome is reused as another action input. */
   const arc0LandingOperationPattern = /^arc0[.]land:[0-9a-f]{64}$/u;
+  const arc0LandingSurveyReceiptPattern = /^arc9sv1:[0-9a-f]{64}$/u;
+  const ARC0_PERTAR_SURVEY_RECEIPT_WITNESS =
+    'arc9sv1:21678a94072ba2e5d0df32cdde8454d265cf0edac9310acf98576d2696244ece';
   const arc0LandingWorldIdentityBytes = (raw) => Object.fromEntries(
     Object.entries(raw?.catalogRow?.extensions ?? {})
       .filter(([namespace]) => namespace.startsWith('world.identity.'))
       .sort(([left], [right]) => left < right ? -1 : left > right ? 1 : 0),
   );
-  const arc0LandingReceipts = (raw) => (Array.isArray(raw?.receiptRows)
+  const arc0LandingProductReceipts = (raw) => (Array.isArray(raw?.receiptRows)
     ? raw.receiptRows.map((row, index) => {
       let witness = null;
       try { witness = JSON.parse(row?.witness ?? 'null'); } catch {}
@@ -14119,8 +14124,20 @@ try {
         row,
         witness,
       };
-    }).filter(({ row }) => row?.kind === 'arc0-land')
+    })
     : []);
+  const arc0LandingReceipts = (raw) => arc0LandingProductReceipts(raw)
+    .filter(({ row }) => row?.kind === 'arc0-land');
+  const arc0LandingSurveyReceipts = (raw) => arc0LandingProductReceipts(raw)
+    .filter(({ row }) => row?.kind === 'arc9-survey-v1');
+  const arc0LandingReceiptArraysAligned = (raw) => Array.isArray(raw?.receiptKeys)
+    && Array.isArray(raw?.receiptRawRows) && Array.isArray(raw?.receiptRows)
+    && raw.receiptKeys.length === raw.receiptRawRows.length
+    && raw.receiptRawRows.length === raw.receiptRows.length
+    && raw.receiptRows.every((row, index) => (
+      raw.receiptRawRows[index] === JSON.stringify(row)
+        && raw.receiptKeys[index] === `receipt:${row?.ordinal}`
+    ));
   const arc0LandingLiveProduct = (state) => ({
     mode: state?.mode ?? null,
     gal: state?.gal ?? null,
@@ -14145,16 +14162,9 @@ try {
   const arc0LandingSnapshotExact = (left, right) => left?.revision === right?.revision
     && left?.revisionRaw === right?.revisionRaw
     && arc0LandingRowsAndReceiptsExact(left, right);
-  const arc0LandingCoordinatorIdle = (state, { clearFault = false } = {}) => {
-    const landing = state?.landing;
-    const coordinator = landing?.actionCoordinator;
-    return landing?.schema === 'cf-v2-arc0-landing-app-state/v1'
-      && coordinator?.inFlight === false
-      && coordinator?.owner?.schema === 'cf-v2-product-action-coordinator-diagnostics/v1'
-      && coordinator.owner.busy === false && coordinator.owner.operation === null
-      && Object.values(coordinator?.faultArmed ?? {}).every((value) => value === false)
-      && (!clearFault || coordinator.lastFault === null);
-  };
+  const arc0LandingCoordinatorIdle = (state, options) => (
+    arc0LandingCoordinatorIsIdle(state, options)
+  );
   const arc0LandingSourceExact = (fixture) => {
     const raw = fixture?.raw;
     const state = fixture?.state;
@@ -14169,9 +14179,160 @@ try {
       && !state?.save?.landed?.includes(ARC4_PERTAR_FIXTURE.planet.seed)
       && !raw?.legacy?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed)
       && !raw?.catalogRow?.data?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed)
+      && !raw?.legacy?.surveyed?.includes(ARC4_PERTAR_FIXTURE.worldKey)
+      && !raw?.catalogRow?.data?.surveyed?.includes(ARC4_PERTAR_FIXTURE.worldKey)
+      && canonicalJson(raw?.legacy?.surveyed)
+        === canonicalJson(raw?.catalogRow?.data?.surveyed)
+      && arc0LandingReceiptArraysAligned(raw)
       && arc0LandingReceipts(raw).length === 0
-      && arc0LandingCoordinatorIdle(state);
+      && arc0LandingSurveyReceipts(raw).length === 0
+      && arc0LandingCoordinatorIdle(state, { clearFault: true });
   };
+  const arc0LandingSurveyRouteExact = (state, cardCode, target) => {
+    const payload = decodeCF1Payload(cardCode);
+    return arc4PertarSourceRouteExact({ ...state, cardOpen: false })
+      && state?.cardOpen === true && state?.cardTitle === 'Pertar'
+      && payload?.t === 'p'
+      && Array.isArray(payload?.g)
+      && payload.g[0] === ARC4_PERTAR_FIXTURE.galaxy.x
+      && payload.g[1] === ARC4_PERTAR_FIXTURE.galaxy.y
+      && payload.g[6] === ARC4_PERTAR_FIXTURE.galaxy.seed
+      && Array.isArray(payload?.s)
+      && payload.s[0] === ARC4_PERTAR_FIXTURE.publicStar.x
+      && payload.s[1] === ARC4_PERTAR_FIXTURE.publicStar.y
+      && payload.s[2] === ARC4_PERTAR_FIXTURE.publicStar.seed
+      && payload.p === ARC4_PERTAR_FIXTURE.planet.seed
+      && target?.seed === ARC4_PERTAR_FIXTURE.planet.seed
+      && target?.ordinal === ARC4_PERTAR_FIXTURE.planet.ordinal;
+  };
+  const arc0LandingReceiptDeltaExact = (beforeRaw, afterRaw, addedKey) => {
+    const before = arc0LandingProductReceipts(beforeRaw);
+    const after = arc0LandingProductReceipts(afterRaw);
+    const beforeByKey = new Map(before.map((receipt) => [receipt.key, receipt.raw]));
+    const afterByKey = new Map(after.map((receipt) => [receipt.key, receipt.raw]));
+    return arc0LandingReceiptArraysAligned(beforeRaw)
+      && arc0LandingReceiptArraysAligned(afterRaw)
+      && beforeByKey.size === before.length && afterByKey.size === after.length
+      && after.length === before.length + 1
+      && after.filter(({ key }) => !beforeByKey.has(key)).length === 1
+      && after.some(({ key }) => key === addedKey && !beforeByKey.has(key))
+      && before.every(({ key, raw }) => afterByKey.get(key) === raw);
+  };
+  const arc0LandingSurveyReceiptDeltaExact = (beforeRaw, afterRaw) => {
+    const before = arc0LandingSurveyReceipts(beforeRaw);
+    const after = arc0LandingSurveyReceipts(afterRaw);
+    const receipt = after[0];
+    return before.length === 0 && after.length === 1
+      && receipt?.key === `receipt:${receipt?.row?.ordinal}`
+      && receipt?.raw === JSON.stringify(receipt?.row)
+      && receipt?.row?.ordinal === beforeRaw?.authority?.sessionRng?.ordinal
+      && receipt?.row?.kind === 'arc9-survey-v1'
+      && arc0LandingSurveyReceiptPattern.test(receipt?.row?.witness ?? '')
+      && receipt?.row?.witness === ARC0_PERTAR_SURVEY_RECEIPT_WITNESS
+      && arc0LandingReceiptDeltaExact(beforeRaw, afterRaw, receipt?.key);
+  };
+  const arc0LandingSurveyOwnedProjection = (raw) => ({
+    surveyed: structuredClone(raw?.legacy?.surveyed ?? null),
+    ptypes: structuredClone(raw?.legacy?.ptypes ?? null),
+    starKinds: structuredClone(raw?.legacy?.starK ?? null),
+    bestRank: raw?.legacy?.br ?? null,
+    unlocked: structuredClone(raw?.legacy?.ach ?? null),
+  });
+  const arc0LandingSurveyDeltaExact = (beforeRaw, afterRaw) => {
+    const before = arc0LandingSurveyOwnedProjection(beforeRaw);
+    const after = arc0LandingSurveyOwnedProjection(afterRaw);
+    return Array.isArray(before.surveyed) && Array.isArray(before.ptypes)
+      && Array.isArray(before.starKinds) && Array.isArray(before.unlocked)
+      && !before.surveyed.includes(ARC4_PERTAR_FIXTURE.worldKey)
+      && canonicalJson(after.surveyed)
+        === canonicalJson([...before.surveyed, ARC4_PERTAR_FIXTURE.worldKey])
+      && after.surveyed.filter((key) => key === ARC4_PERTAR_FIXTURE.worldKey).length === 1
+      && !before.ptypes.includes('ocean')
+      && canonicalJson(after.ptypes) === canonicalJson([...before.ptypes, 'ocean'])
+      && after.ptypes.filter((planetType) => planetType === 'ocean').length === 1
+      && canonicalJson(after.starKinds) === canonicalJson(before.starKinds)
+      && before.bestRank === 3 && after.bestRank === 3
+      && canonicalJson(after.unlocked) === canonicalJson(before.unlocked);
+  };
+  const arc0LandingSurveyLivePublicationExact = (sourceFixture, fixture) => {
+    const raw = fixture?.raw;
+    const state = fixture?.state;
+    const legacy = raw?.legacy;
+    const catalog = raw?.catalogRow?.data;
+    const player = raw?.playerRow?.data;
+    const authority = raw?.authority?.sessionRng;
+    const runtime = state?.persistence?.runtime;
+    try {
+      return canonicalJson(JSON.parse(raw?.legacyRaw ?? 'null')) === canonicalJson(legacy)
+        && canonicalJson(JSON.parse(raw?.catalogRaw ?? 'null'))
+          === canonicalJson(raw?.catalogRow)
+        && canonicalJson(JSON.parse(raw?.playerRaw ?? 'null'))
+          === canonicalJson(raw?.playerRow)
+        && canonicalJson(legacy?.surveyed) === canonicalJson(catalog?.surveyed)
+        && canonicalJson(legacy?.ptypes) === canonicalJson(catalog?.ptypes)
+        && canonicalJson(legacy?.starK) === canonicalJson(catalog?.starK)
+        && canonicalJson(legacy?.ach) === canonicalJson(player?.ach)
+        && legacy?.br === player?.br
+        && state?.save?.stats?.surveys === legacy?.surveyed?.length
+        && state?.save?.stats?.bestRank === legacy?.br
+        && canonicalJson(state?.save?.unlocked) === canonicalJson(legacy?.ach)
+        && state?.persistence?.lastOutcome === `arc9-survey-committed:${raw?.revision}`
+        && runtime?.revision === raw?.revision
+        && runtime?.sessionSeed === authority?.seed
+        && runtime?.sessionOrdinal === authority?.ordinal
+        && canonicalJson(runtime?.sessionDraws) === canonicalJson(authority?.draws)
+        && runtime?.commits === sourceFixture?.state?.persistence?.runtime?.commits + 1
+        && state?.sceneResources?.pendingPersistenceWrites === 0
+        && state?.landing?.lastOutcome === null
+        && arc0LandingCoordinatorIdle(state, { clearFault: true });
+    } catch { return false; }
+  };
+  const assessArc0LandingSurveySetup = (evidence) => {
+    const sourceFixture = evidence?.sourceFixture;
+    const fixture = evidence?.fixture;
+    const beforeRaw = sourceFixture?.raw;
+    const afterRaw = fixture?.raw;
+    const beforeAuthority = beforeRaw?.authority?.sessionRng;
+    const afterAuthority = afterRaw?.authority?.sessionRng;
+    const checks = {
+      source: arc0LandingSourceExact(sourceFixture),
+      explicitSurvey: evidence?.surveyAction?.accepted === true
+        && evidence?.surveyAction?.documentToken === sourceFixture?.token,
+      awaitedSettlement: evidence?.surveySettledState?.persistence?.runtime?.revision
+          === afterRaw?.revision
+        && evidence?.surveySettledState?.persistence?.lastOutcome
+          === `arc9-survey-committed:${afterRaw?.revision}`
+        && arc0LandingCoordinatorIdle(evidence?.surveySettledState, { clearFault: true }),
+      sameDocument: fixture?.token === sourceFixture?.token
+        && evidence?.surveyedReady?.token === sourceFixture?.token
+        && fixture?.state?.persistence?.documentToken === sourceFixture?.token,
+      oneAtomicCommit: afterRaw?.revision === beforeRaw?.revision + 1
+        && afterRaw?.revisionRaw === String(afterRaw.revision)
+        && afterAuthority?.seed === beforeAuthority?.seed
+        && afterAuthority?.ordinal === beforeAuthority?.ordinal + 1
+        && canonicalJson(afterAuthority?.draws) === canonicalJson(beforeAuthority?.draws),
+      oneSurveyReceipt: arc0LandingSurveyReceiptDeltaExact(beforeRaw, afterRaw),
+      durableSurveyDelta: arc0LandingSurveyDeltaExact(beforeRaw, afterRaw),
+      currentRoute: arc0LandingSurveyRouteExact(
+        fixture?.state, evidence?.surveyCardCode, evidence?.surveyTarget,
+      ),
+      currentLivePublication: arc0LandingSurveyLivePublicationExact(
+        sourceFixture, fixture,
+      ),
+      landingStillUnlanded: !fixture?.state?.save?.landed?.includes(
+        ARC4_PERTAR_FIXTURE.planet.seed,
+      ) && !afterRaw?.legacy?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed)
+        && !afterRaw?.catalogRow?.data?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed)
+        && arc0LandingReceipts(afterRaw).length === 0
+        && arc4PertarSavedStarRouteExact(fixture?.state)
+        && arc4PertarLegacyRouteExact(afterRaw, arc4PertarSavedStarView)
+        && arc4PertarSplitRouteExact(afterRaw, arc4PertarSavedStarView),
+    };
+    return { ok: Object.values(checks).every((value) => value === true), checks };
+  };
+  const arc0LandingSurveyBaselineExact = (evidence) => (
+    assessArc0LandingSurveySetup(evidence).ok
+  );
   const arc0LandingConvergenceHeld = (state) => (
     state?.persistence?.hold === 'transient-read'
     && state?.persistence?.mutationBlocked === true
@@ -14264,6 +14425,7 @@ try {
     const receipt = committedReceipts[0];
     const facts = receipt?.witness;
     const sample = facts?.sample;
+    const beforeAuthorityOrdinal = beforeRaw?.authority?.sessionRng?.ordinal;
     const expectedCargo = arc0LandingExpectedCargo(beforeState?.save?.cargo, sample?.materials);
     const actualCargo = arc0LandingCargoProjection(reloadedState?.save?.cargo);
     const materialFactsExact = sample?.kind === 'reward'
@@ -14272,9 +14434,14 @@ try {
         && Number.isSafeInteger(material?.quantityAfter)
         && new Map(actualCargo).get(material.id) === material.quantityAfter);
     return beforeReceipts.length === 0 && committedReceipts.length === 1
-      && receipt?.key === `receipt:${receipt?.row?.ordinal}`
+      && arc0LandingSurveyReceipts(beforeRaw).length === 1
+      && arc0LandingReceiptDeltaExact(beforeRaw, committedRaw, receipt?.key)
+      && receipt?.raw === JSON.stringify(receipt?.row)
+      && Number.isSafeInteger(beforeAuthorityOrdinal)
+      && receipt?.key === `receipt:${beforeAuthorityOrdinal}`
       && receipt?.row?.kind === 'arc0-land'
-      && receipt?.row?.ordinal === facts?.receiptOrdinal
+      && receipt?.row?.ordinal === beforeAuthorityOrdinal
+      && facts?.receiptOrdinal === beforeAuthorityOrdinal
       && facts?.schema === 'cf-v2-arc0-landing-witness/v1'
       && facts?.worldKey === ARC4_PERTAR_FIXTURE.worldKey
       && facts?.planetSeed === ARC4_PERTAR_FIXTURE.planet.seed
@@ -14319,7 +14486,7 @@ try {
     const heldRaw = evidence?.heldRaw;
     const detail = 'Arc 0 landing transaction:slice-smoke injected Arc 0 landing storage failure';
     return arc0LandingAssessment('Arc 0 Landing storage refusal', {
-      fixture: arc0LandingSourceExact(evidence?.fixture),
+      fixture: arc0LandingSurveyBaselineExact(evidence),
       oneAwaitedAction: arc0LandingOneAwaitedActionExact(evidence),
       faultWitness: evidence?.holdArmed === true && evidence?.faultArmed === true
         && arc0LandingFaultExact(evidence, 'storage-failure', 'storage-error')
@@ -14347,7 +14514,7 @@ try {
     const fault = evidence?.heldState?.landing?.actionCoordinator?.lastFault;
     const detail = 'Arc 0 landing transaction:stale';
     return arc0LandingAssessment('Arc 0 Landing stale convergence', {
-      fixture: arc0LandingSourceExact(evidence?.fixture),
+      fixture: arc0LandingSurveyBaselineExact(evidence),
       oneAwaitedAction: arc0LandingOneAwaitedActionExact(evidence),
       faultWitness: evidence?.holdArmed === true && evidence?.faultArmed === true
         && arc0LandingFaultExact(evidence, 'stale-authority', 'stale')
@@ -14378,7 +14545,7 @@ try {
     const beforeAuthority = beforeRaw?.authority?.sessionRng;
     const committedAuthority = committedRaw?.authority?.sessionRng;
     return arc0LandingAssessment('Arc 0 Landing publication convergence', {
-      fixture: arc0LandingSourceExact(evidence?.fixture),
+      fixture: arc0LandingSurveyBaselineExact(evidence),
       oneAwaitedAction: arc0LandingOneAwaitedActionExact(evidence),
       faultWitness: evidence?.holdArmed === true && evidence?.faultArmed === true
         && arc0LandingFaultExact(
@@ -14416,33 +14583,329 @@ try {
           === committedAuthority?.ordinal,
     });
   };
+  const arc0LandingSurveyIsolatedControl = (assessment, check) => (
+    assessment?.ok === false && assessment?.checks?.[check] === false
+      && Object.entries(assessment?.checks ?? {}).every(([name, value]) => (
+        name === check ? value === false : value === true
+      ))
+  );
   const collectArc0LandingFaultEvidence = async ({
-    label, faultHook, injection, faultOutcome, accepted,
+    label, findingLabel, faultHook, injection, faultOutcome, accepted,
   }) => {
-    const fixture = await installArc0LandingFaultFixture(label);
+    const sourceFixture = await installArc0LandingFaultFixture(label);
+    const sourcePrerequisite = arc0LandingSourceExact(sourceFixture);
+    if (!sourcePrerequisite) {
+      failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: source fixture was not exact before Survey; no product action was issued: '
+        + JSON.stringify({ sourcePrerequisite, sourceFixture }));
+    }
+    const sourceRetainedFaultControl = structuredClone(sourceFixture);
+    sourceRetainedFaultControl.state.landing.actionCoordinator.lastFault = {
+      phase: 'settled-control',
+    };
+    const sourceRetainedFaultRejected = !arc0LandingSourceExact(
+      sourceRetainedFaultControl,
+    );
+    if (!sourceRetainedFaultRejected) {
+      failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: retained source fault control did not reject before Survey; no product action was issued: '
+        + JSON.stringify({ sourceRetainedFaultRejected, sourceRetainedFaultControl }));
+    }
+    const expectedSurveyRevision = sourceFixture.raw.revision + 1;
+    let surveyAction;
+    try {
+      surveyAction = await evalIn(`(async()=>{const S=window.__CF_SLICE__;
+        const accepted=await S.api.surveyOn(${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)});
+        return {accepted,documentToken:S.documentToken}})()`);
+    } catch (error) {
+      const boundary = assessArc0LandingAwaitBoundary({
+        actualAccepted: undefined, expectedAccepted: true,
+        actionDocumentToken: null, expectedDocumentToken: sourceFixture.token,
+        waitError: String(error?.message || error),
+      });
+      failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: exact Survey invocation failed before its settlement wait: '
+        + JSON.stringify({ boundary }));
+    }
+    const surveyActionBoundary = assessArc0LandingAwaitBoundary({
+      actualAccepted: surveyAction?.accepted, expectedAccepted: true,
+      actionDocumentToken: surveyAction?.documentToken,
+      expectedDocumentToken: sourceFixture.token,
+    });
+    if (!surveyActionBoundary.ok) {
+      failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: explicit Survey was refused or changed document before its settlement wait: '
+        + JSON.stringify({ boundary: surveyActionBoundary, surveyAction, sourceFixture }));
+    }
+    let surveySettledState;
+    try {
+      surveySettledState = await waitDesktopValue(`${label} Survey settlement`, `(()=>{const S=window.__CF_SLICE__,s=S.api.state();
+        return S.documentToken===${JSON.stringify(sourceFixture.token)}&&s.mode==='system'
+          &&s.gal===${ARC4_PERTAR_FIXTURE.galaxy.seed}&&s.galX===${ARC4_PERTAR_FIXTURE.galaxy.x}
+          &&s.galY===${ARC4_PERTAR_FIXTURE.galaxy.y}&&s.star===${ARC4_PERTAR_FIXTURE.publicStar.seed}
+          &&s.starX===${ARC4_PERTAR_FIXTURE.publicStar.x}&&s.starY===${ARC4_PERTAR_FIXTURE.publicStar.y}
+          &&s.planet===null&&s.planetOrdinal===null&&s.cardOpen===true&&s.cardTitle==='Pertar'
+          &&s.persistence?.runtime?.revision===${expectedSurveyRevision}
+          &&s.persistence?.lastOutcome==='arc9-survey-committed:${expectedSurveyRevision}'
+          &&s.sceneResources?.pendingPersistenceWrites===0
+          &&s.landing?.actionCoordinator?.inFlight===false
+          &&s.landing?.actionCoordinator?.owner?.busy===false?s:null})()`);
+    } catch (error) {
+      const retainedState = await evalIn('window.__CF_SLICE__?.api?.state?.()??null')
+        .catch((captureError) => ({ captureError: String(captureError?.message || captureError) }));
+      const boundary = assessArc0LandingAwaitBoundary({
+        actualAccepted: surveyAction?.accepted, expectedAccepted: true,
+        actionDocumentToken: surveyAction?.documentToken,
+        expectedDocumentToken: sourceFixture.token,
+        waitError: String(error?.message || error),
+      });
+      failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: accepted Survey did not reach its exact current-route settlement: '
+        + JSON.stringify({ boundary, retainedState, surveyAction }));
+    }
+    let surveyedReady;
+    try {
+      surveyedReady = await waitForF4Writable(
+        `${label} post-Survey writable authority`,
+        { previousToken: sourceFixture.priorToken },
+      );
+    } catch (error) {
+      const retainedState = await evalIn('window.__CF_SLICE__?.api?.state?.()??null')
+        .catch((captureError) => ({ captureError: String(captureError?.message || captureError) }));
+      const boundary = assessArc0LandingAwaitBoundary({
+        actualAccepted: surveyAction?.accepted, expectedAccepted: true,
+        actionDocumentToken: surveyAction?.documentToken,
+        expectedDocumentToken: sourceFixture.token,
+        waitError: String(error?.message || error),
+      });
+      failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: settled Survey did not reacquire exact writable authority: '
+        + JSON.stringify({ boundary, retainedState, surveyAction }));
+    }
+    const surveyBaseline = await evalIn(`(async()=>{const S=window.__CF_SLICE__,
+      raw=await (${ARC4_DURABLE_READ_EXPRESSION});return {state:S.api.state(),raw,
+        cardCode:S.api.cardShareCode(),target:S.api.planetScreenTarget(
+          ${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)})}})()`);
+    const fixture = {
+      ...sourceFixture, state: surveyBaseline.state, raw: surveyBaseline.raw,
+    };
+    const surveyEvidence = {
+      sourceFixture, fixture, surveyAction, surveySettledState, surveyedReady,
+      surveyCardCode: surveyBaseline.cardCode, surveyTarget: surveyBaseline.target,
+    };
+    const surveyAssessment = assessArc0LandingSurveySetup(surveyEvidence);
+    if (!surveyAssessment.ok) {
+      failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: explicit Survey positive baseline was not exact; controls and Landing faults were not issued: '
+        + JSON.stringify({ assessment: surveyAssessment, evidence: surveyEvidence }));
+    }
+    const preSurveyBaselineControl = structuredClone(surveyEvidence);
+    preSurveyBaselineControl.fixture = structuredClone(
+      preSurveyBaselineControl.sourceFixture,
+    );
+    const surveyReceiptControl = structuredClone(surveyEvidence);
+    const surveyReceiptControlAligned = arc0LandingReceiptArraysAligned(
+      surveyReceiptControl.fixture.raw,
+    );
+    const surveyReceiptIndex = surveyReceiptControl.fixture.raw.receiptRows.findIndex(
+      (row) => row?.kind === 'arc9-survey-v1',
+    );
+    if (surveyReceiptControlAligned && surveyReceiptIndex >= 0) {
+      surveyReceiptControl.fixture.raw.receiptRows.splice(surveyReceiptIndex, 1);
+      surveyReceiptControl.fixture.raw.receiptKeys.splice(surveyReceiptIndex, 1);
+      surveyReceiptControl.fixture.raw.receiptRawRows.splice(surveyReceiptIndex, 1);
+    }
+    const surveyWitnessControl = structuredClone(surveyEvidence);
+    let surveyWitnessControlMutated = false;
+    if (surveyReceiptControlAligned && surveyReceiptIndex >= 0) {
+      const row = surveyWitnessControl.fixture.raw.receiptRows[surveyReceiptIndex];
+      row.witness = `arc9sv1:${'0'.repeat(64)}`;
+      surveyWitnessControl.fixture.raw.receiptRawRows[surveyReceiptIndex]
+        = JSON.stringify(row);
+      surveyWitnessControlMutated = row.witness !== ARC0_PERTAR_SURVEY_RECEIPT_WITNESS
+        && arc0LandingReceiptArraysAligned(surveyWitnessControl.fixture.raw);
+    }
+    const surveyRouteControl = structuredClone(surveyEvidence);
+    surveyRouteControl.fixture.state.cardTitle = 'Not Pertar';
+    const surveyPublicationControl = structuredClone(surveyEvidence);
+    surveyPublicationControl.fixture.state.save.stats.surveys += 1;
+    const surveyCoordinatorControl = (mutate) => {
+      const control = structuredClone(surveyEvidence);
+      mutate(control.fixture.state.landing.actionCoordinator);
+      return control;
+    };
+    const surveyFaultMissingControl = surveyCoordinatorControl((coordinator) => {
+      delete coordinator.faultArmed.storageFailure;
+    });
+    const surveyFaultWrongKeyControl = surveyCoordinatorControl((coordinator) => {
+      delete coordinator.faultArmed.storageFailure;
+      coordinator.faultArmed.storageFailureRenamed = false;
+    });
+    const surveyFaultExtraControl = surveyCoordinatorControl((coordinator) => {
+      coordinator.faultArmed.unexpectedFault = false;
+    });
+    const surveyFaultArmedControl = surveyCoordinatorControl((coordinator) => {
+      coordinator.faultArmed.storageFailure = true;
+    });
+    const surveyHoldSchemaControl = surveyCoordinatorControl((coordinator) => {
+      coordinator.hold.schema = 'cf-v2-product-action-hold-diagnostics/control';
+    });
+    const surveyHoldPhaseControl = surveyCoordinatorControl((coordinator) => {
+      coordinator.hold.phase = 'armed';
+    });
+    const surveyHoldOperationControl = surveyCoordinatorControl((coordinator) => {
+      coordinator.hold.operation = 'arc0.landing-control';
+    });
+    const surveyHoldSequenceControl = surveyCoordinatorControl((coordinator) => {
+      coordinator.hold.sequence = 1;
+    });
+    const surveyDeltaControl = (mutate) => {
+      const control = structuredClone(surveyEvidence);
+      mutate(control.fixture.raw, control.fixture.state);
+      control.fixture.raw.legacyRaw = JSON.stringify(control.fixture.raw.legacy);
+      control.fixture.raw.catalogRaw = JSON.stringify(control.fixture.raw.catalogRow);
+      control.fixture.raw.playerRaw = JSON.stringify(control.fixture.raw.playerRow);
+      return control;
+    };
+    const surveyPtypeControl = surveyDeltaControl((raw) => {
+      raw.legacy.ptypes[raw.legacy.ptypes.length - 1] = 'control-ocean';
+      raw.catalogRow.data.ptypes[raw.catalogRow.data.ptypes.length - 1]
+        = 'control-ocean';
+    });
+    const surveyRankControl = surveyDeltaControl((raw, state) => {
+      raw.legacy.br = 4;
+      raw.playerRow.data.br = 4;
+      state.save.stats.bestRank = 4;
+    });
+    const surveyUnlockedControl = surveyDeltaControl((raw, state) => {
+      raw.legacy.ach.push('arc0-survey-control');
+      raw.playerRow.data.ach.push('arc0-survey-control');
+      state.save.unlocked.push('arc0-survey-control');
+    });
+    const surveyControls = {
+      preSurveyBaseline: assessArc0LandingSurveySetup(preSurveyBaselineControl),
+      receipt: assessArc0LandingSurveySetup(surveyReceiptControl),
+      witness: assessArc0LandingSurveySetup(surveyWitnessControl),
+      route: assessArc0LandingSurveySetup(surveyRouteControl),
+      publication: assessArc0LandingSurveySetup(surveyPublicationControl),
+      faultMissing: assessArc0LandingSurveySetup(surveyFaultMissingControl),
+      faultWrongKey: assessArc0LandingSurveySetup(surveyFaultWrongKeyControl),
+      faultExtra: assessArc0LandingSurveySetup(surveyFaultExtraControl),
+      faultArmed: assessArc0LandingSurveySetup(surveyFaultArmedControl),
+      holdSchema: assessArc0LandingSurveySetup(surveyHoldSchemaControl),
+      holdPhase: assessArc0LandingSurveySetup(surveyHoldPhaseControl),
+      holdOperation: assessArc0LandingSurveySetup(surveyHoldOperationControl),
+      holdSequence: assessArc0LandingSurveySetup(surveyHoldSequenceControl),
+      ptype: assessArc0LandingSurveySetup(surveyPtypeControl),
+      rank: assessArc0LandingSurveySetup(surveyRankControl),
+      unlocked: assessArc0LandingSurveySetup(surveyUnlockedControl),
+    };
+    if (!surveyReceiptControlAligned || !surveyWitnessControlMutated
+      || surveyControls.preSurveyBaseline.ok
+      || !arc0LandingSurveyIsolatedControl(surveyControls.receipt, 'oneSurveyReceipt')
+      || !arc0LandingSurveyIsolatedControl(surveyControls.witness, 'oneSurveyReceipt')
+      || !arc0LandingSurveyIsolatedControl(surveyControls.route, 'currentRoute')
+      || !arc0LandingSurveyIsolatedControl(
+        surveyControls.publication, 'currentLivePublication',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.faultMissing, 'currentLivePublication',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.faultWrongKey, 'currentLivePublication',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.faultExtra, 'currentLivePublication',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.faultArmed, 'currentLivePublication',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.holdSchema, 'currentLivePublication',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.holdPhase, 'currentLivePublication',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.holdOperation, 'currentLivePublication',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.holdSequence, 'currentLivePublication',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.ptype, 'durableSurveyDelta',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.rank, 'durableSurveyDelta',
+      ) || !arc0LandingSurveyIsolatedControl(
+        surveyControls.unlocked, 'durableSurveyDelta',
+      )) {
+      failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: explicit Survey did not settle as one current-route receipt before Landing faults were armed: '
+        + JSON.stringify({ assessment: surveyAssessment, controls: surveyControls,
+          evidence: surveyEvidence }));
+    }
     const beforeToken = fixture.token;
     const convergenceMark = events.length;
     const holdArmed = await evalIn(
       'window.__CF_SLICE__.api.__smokeArmF4ConvergenceReloadHold()',
     );
+    if (holdArmed !== true) {
+      failSliceWithoutCascade(`${findingLabel}: convergence hold did not arm; fault and Landing were not issued: `
+        + JSON.stringify({ holdArmed }));
+    }
     const faultArmed = await evalIn(`window.__CF_SLICE__.api.${faultHook}()`);
-    const action = await evalIn(`(async()=>{const S=window.__CF_SLICE__;
-      const accepted=await S.api.landOn(${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)});
-      return {accepted,documentToken:S.documentToken}})()`);
-    const heldState = await waitDesktopValue(`${label} held convergence`, `(()=>{const s=window.__CF_SLICE__.api.state(),
-      fault=s?.landing?.actionCoordinator?.lastFault;return s?.persistence?.convergenceReloadHold?.phase==='holding'
-        &&s?.landing?.actionCoordinator?.inFlight===false
-        &&s?.landing?.actionCoordinator?.owner?.busy===false
-        &&fault?.injection===${JSON.stringify(injection)}&&fault?.outcome===${JSON.stringify(faultOutcome)}?s:null})()`, 10_000);
+    if (faultArmed !== true) {
+      failSliceWithoutCascade(`${findingLabel}: scenario fault did not arm; Landing was not issued: `
+        + JSON.stringify({ holdArmed, faultArmed }));
+    }
+    let action;
+    try {
+      action = await evalIn(`(async()=>{const S=window.__CF_SLICE__;
+        const accepted=await S.api.landHere();
+        return {accepted,documentToken:S.documentToken}})()`);
+    } catch (error) {
+      const boundary = assessArc0LandingAwaitBoundary({
+        actualAccepted: undefined, expectedAccepted: accepted,
+        actionDocumentToken: null, expectedDocumentToken: beforeToken,
+        waitError: String(error?.message || error),
+      });
+      failSliceWithoutCascade(`${findingLabel}: exact Landing invocation failed before held settlement: `
+        + JSON.stringify({ boundary }));
+    }
+    const actionBoundary = assessArc0LandingAwaitBoundary({
+      actualAccepted: action?.accepted, expectedAccepted: accepted,
+      actionDocumentToken: action?.documentToken,
+      expectedDocumentToken: beforeToken,
+    });
+    if (!actionBoundary.ok) {
+      failSliceWithoutCascade(`${findingLabel}: one awaited Landing returned the wrong acceptance or document identity before held settlement: `
+        + JSON.stringify({ boundary: actionBoundary, action }));
+    }
+    let heldState;
+    try {
+      heldState = await waitDesktopValue(`${label} held convergence`, `(()=>{const s=window.__CF_SLICE__.api.state(),
+        fault=s?.landing?.actionCoordinator?.lastFault;return s?.persistence?.convergenceReloadHold?.phase==='holding'
+          &&s?.landing?.actionCoordinator?.inFlight===false
+          &&s?.landing?.actionCoordinator?.owner?.busy===false
+          &&fault?.injection===${JSON.stringify(injection)}&&fault?.outcome===${JSON.stringify(faultOutcome)}?s:null})()`, 10_000);
+    } catch (error) {
+      const retainedState = await evalIn('window.__CF_SLICE__?.api?.state?.()??null')
+        .catch((captureError) => ({ captureError: String(captureError?.message || captureError) }));
+      const boundary = assessArc0LandingAwaitBoundary({
+        actualAccepted: action?.accepted, expectedAccepted: accepted,
+        actionDocumentToken: action?.documentToken,
+        expectedDocumentToken: beforeToken,
+        waitError: String(error?.message || error),
+      });
+      failSliceWithoutCascade(`${findingLabel}: one awaited Landing did not reach its exact held coordinator/fault settlement: `
+        + JSON.stringify({ boundary, retainedState, action }));
+    }
     const heldRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
     const release = await evalIn(
       'window.__CF_SLICE__.api.__smokeReleaseF4ConvergenceReload()',
     );
-    await waitForSlice(sess, `${label} replacement`, { previousToken: beforeToken });
-    await assertBootTickerRunning(`${label} replacement`);
-    const reloadedReady = await waitForF4Writable(`${label} replacement authority`, {
-      previousToken: beforeToken,
-    });
+    let reloadedReady;
+    try {
+      await waitForSlice(sess, `${label} replacement`, { previousToken: beforeToken });
+      await assertBootTickerRunning(`${label} replacement`);
+      reloadedReady = await waitForF4Writable(`${label} replacement authority`, {
+        previousToken: beforeToken,
+      });
+    } catch (error) {
+      const retainedState = await evalIn('window.__CF_SLICE__?.api?.state?.()??null')
+        .catch((captureError) => ({ captureError: String(captureError?.message || captureError) }));
+      const boundary = assessArc0LandingAwaitBoundary({
+        actualAccepted: action?.accepted, expectedAccepted: accepted,
+        actionDocumentToken: action?.documentToken,
+        expectedDocumentToken: beforeToken,
+        waitError: String(error?.message || error),
+      });
+      failSliceWithoutCascade(`${findingLabel}: released Landing convergence did not reach its exact replacement authority: `
+        + JSON.stringify({ boundary, retainedState, action, release }));
+    }
     const reloadedHeartbeat = await evalIn(
       'window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()',
     );
@@ -14450,7 +14913,10 @@ try {
     const reloadedRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
     const convergenceWitnesses = f4ConvergenceWitnessesSince(sess, convergenceMark);
     return {
-      fixture, beforeToken, holdArmed, faultArmed,
+      sourceFixture, fixture, surveyAction, surveySettledState, surveyedReady,
+      surveyCardCode: surveyBaseline.cardCode, surveyTarget: surveyBaseline.target,
+      surveyAssessment, surveyControls,
+      beforeToken, holdArmed, faultArmed,
       accepted: action?.accepted, actionDocumentToken: action?.documentToken,
       heldState, heldRaw, release, reloadedReady, reloadedHeartbeat,
       reloadedState, reloadedRaw,
@@ -14468,6 +14934,7 @@ try {
 
   const arc0LandingStorageEvidence = await collectArc0LandingFaultEvidence({
     label: 'Arc 0 Landing storage-failure replacement',
+    findingLabel: 'ARC 0 LANDING STORAGE REFUSAL',
     faultHook: '__smokeRejectNextArc0LandingStorage',
     injection: 'storage-failure', faultOutcome: 'storage-error', accepted: false,
   });
@@ -14494,13 +14961,14 @@ try {
     || !arc0LandingIsolatedControl(
       arc0LandingStorageControls.coordinator, 'coordinatorReleased',
     )) {
-    fails.push('ARC 0 LANDING STORAGE REFUSAL: one awaited landing changed durable/live product, retained its coordinator, or retried after storage rejection: '
+    failSliceWithoutCascade('ARC 0 LANDING STORAGE REFUSAL: one awaited landing changed durable/live product, retained its coordinator, or retried after storage rejection: '
       + JSON.stringify({ assessment: arc0LandingStorageAssessment,
         controls: arc0LandingStorageControls, evidence: arc0LandingStorageEvidence }));
   }
 
   const arc0LandingStaleEvidence = await collectArc0LandingFaultEvidence({
     label: 'Arc 0 Landing stale-authority replacement',
+    findingLabel: 'ARC 0 LANDING STALE CONVERGENCE',
     faultHook: '__smokeStaleNextArc0LandingAuthority',
     injection: 'stale-authority', faultOutcome: 'stale', accepted: false,
   });
@@ -14519,13 +14987,14 @@ try {
   if (!arc0LandingStaleAssessment.ok
     || !arc0LandingIsolatedControl(arc0LandingStaleControls.laterWriter, 'laterWriterOnly')
     || !arc0LandingIsolatedControl(arc0LandingStaleControls.token, 'reloadFixedPoint')) {
-    fails.push('ARC 0 LANDING STALE CONVERGENCE: later-writer revision did not remain the sole durable change through held/released reload: '
+    failSliceWithoutCascade('ARC 0 LANDING STALE CONVERGENCE: later-writer revision did not remain the sole durable change through held/released reload: '
       + JSON.stringify({ assessment: arc0LandingStaleAssessment,
         controls: arc0LandingStaleControls, evidence: arc0LandingStaleEvidence }));
   }
 
   const arc0LandingPublicationEvidence = await collectArc0LandingFaultEvidence({
     label: 'Arc 0 Landing postcommit-publication replacement',
+    findingLabel: 'ARC 0 LANDING PUBLICATION CONVERGENCE',
     faultHook: '__smokeRejectNextArc0LandingPublication',
     injection: 'publication-failure', faultOutcome: 'committed-publication-reload',
     accepted: true,
@@ -14561,6 +15030,61 @@ try {
       raw.receiptRawRows[landingReceiptIndex] = JSON.stringify(receiptRow);
     }
   }
+  const arc0LandingPublicationPrefixControl = structuredClone(
+    arc0LandingPublicationEvidence,
+  );
+  let arc0LandingPublicationPrefixControlPrepared = true;
+  for (const raw of [arc0LandingPublicationPrefixControl.heldRaw,
+    arc0LandingPublicationPrefixControl.reloadedRaw]) {
+    const surveyReceiptIndexes = raw.receiptRows.map((row, index) => (
+      row?.kind === 'arc9-survey-v1' ? index : -1
+    )).filter((index) => index >= 0);
+    if (!arc0LandingReceiptArraysAligned(raw) || surveyReceiptIndexes.length !== 1) {
+      arc0LandingPublicationPrefixControlPrepared = false;
+      continue;
+    }
+    const surveyReceiptIndex = surveyReceiptIndexes[0];
+    raw.receiptRows[surveyReceiptIndex].witness += ':prefix-control';
+    raw.receiptRawRows[surveyReceiptIndex] = JSON.stringify(
+      raw.receiptRows[surveyReceiptIndex],
+    );
+    arc0LandingPublicationPrefixControlPrepared
+      &&= arc0LandingReceiptArraysAligned(raw);
+  }
+  const arc0LandingPublicationOrdinalControl = structuredClone(
+    arc0LandingPublicationEvidence,
+  );
+  const arc0LandingPublicationForgedOrdinal
+    = arc0LandingPublicationEvidence.fixture.raw.authority.sessionRng.ordinal + 1;
+  let arc0LandingPublicationOrdinalControlPrepared = Number.isSafeInteger(
+    arc0LandingPublicationForgedOrdinal,
+  );
+  for (const raw of [arc0LandingPublicationOrdinalControl.heldRaw,
+    arc0LandingPublicationOrdinalControl.reloadedRaw]) {
+    const landingReceiptIndexes = raw.receiptRows.map((row, index) => (
+      row?.kind === 'arc0-land' ? index : -1
+    )).filter((index) => index >= 0);
+    if (!arc0LandingReceiptArraysAligned(raw) || landingReceiptIndexes.length !== 1) {
+      arc0LandingPublicationOrdinalControlPrepared = false;
+      continue;
+    }
+    const landingReceiptIndex = landingReceiptIndexes[0];
+    const receiptRow = raw.receiptRows[landingReceiptIndex];
+    let facts = null;
+    try { facts = JSON.parse(receiptRow.witness); } catch {}
+    if (facts === null || typeof facts !== 'object' || Array.isArray(facts)) {
+      arc0LandingPublicationOrdinalControlPrepared = false;
+      continue;
+    }
+    receiptRow.ordinal = arc0LandingPublicationForgedOrdinal;
+    facts.receiptOrdinal = arc0LandingPublicationForgedOrdinal;
+    receiptRow.witness = JSON.stringify(facts);
+    raw.receiptKeys[landingReceiptIndex]
+      = `receipt:${arc0LandingPublicationForgedOrdinal}`;
+    raw.receiptRawRows[landingReceiptIndex] = JSON.stringify(receiptRow);
+    arc0LandingPublicationOrdinalControlPrepared
+      &&= arc0LandingReceiptArraysAligned(raw);
+  }
   const arc0LandingPublicationReloadControl = structuredClone(
     arc0LandingPublicationEvidence,
   );
@@ -14575,11 +15099,19 @@ try {
     witness: assessArc0LandingPublicationConvergence(
       arc0LandingPublicationWitnessControl,
     ),
+    prefix: assessArc0LandingPublicationConvergence(
+      arc0LandingPublicationPrefixControl,
+    ),
+    ordinal: assessArc0LandingPublicationConvergence(
+      arc0LandingPublicationOrdinalControl,
+    ),
     reload: assessArc0LandingPublicationConvergence(
       arc0LandingPublicationReloadControl,
     ),
   };
   if (!arc0LandingPublicationAssessment.ok
+    || !arc0LandingPublicationPrefixControlPrepared
+    || !arc0LandingPublicationOrdinalControlPrepared
     || !arc0LandingIsolatedControl(
       arc0LandingPublicationControls.optimism, 'localPublicationWithheld',
     )
@@ -14587,9 +15119,15 @@ try {
       arc0LandingPublicationControls.witness, 'durableLandingReward',
     )
     || !arc0LandingIsolatedControl(
+      arc0LandingPublicationControls.prefix, 'durableLandingReward',
+    )
+    || !arc0LandingIsolatedControl(
+      arc0LandingPublicationControls.ordinal, 'durableLandingReward',
+    )
+    || !arc0LandingIsolatedControl(
       arc0LandingPublicationControls.reload, 'reloadFixedPoint',
     )) {
-    fails.push('ARC 0 LANDING PUBLICATION CONVERGENCE: durable one-receipt landing/reward was published locally, retried, or lost across reload: '
+    failSliceWithoutCascade('ARC 0 LANDING PUBLICATION CONVERGENCE: durable one-receipt landing/reward was published locally, retried, or lost across reload: '
       + JSON.stringify({ assessment: arc0LandingPublicationAssessment,
         controls: arc0LandingPublicationControls,
         evidence: arc0LandingPublicationEvidence }));
@@ -24904,7 +25442,7 @@ if (OUTCOME_CONTROLS_ONLY) {
   console.log('SLICE OUTCOME CONTROLS: PASS — two source-generated leaf-seed-colliding worlds retain distinct Search/name/Atlas/Land/save-reload/share identity, and F4 heartbeat lease-storage plus revision-read failures stop answerability/accrual/audio/heartbeat without automatic reacquisition before a read-only convergence reload.');
   process.exit(0);
 }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact 73-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact 74-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
 console.log('SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.');
 console.log(sliceScreenshotInventoryLine());
