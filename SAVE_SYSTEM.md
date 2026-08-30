@@ -1,5 +1,23 @@
 # Celestial Frontier — Save System
 
+> **2026-08-30 current F4 replacement-prefix clarification:** a successful expedition replacement
+> atomically clears the prior receipt store, but the replacement document may immediately own its
+> new ordinal zero. The exact imported fixture used by Slice requires Arc 9 aggregate catch-up, so
+> boot validly commits one `arc9-progression-refresh-v1` receipt/CAS before the document becomes the
+> writable sample; the next judged F4 outcome therefore owns ordinal one. An imported expedition
+> already at the aggregate fixed point instead remains empty and gives the judged outcome ordinal
+> zero. The instrument must choose between those branches from an independent projection of the
+> imported canonical state and bind the replacement revision, the fixture's one expected receipt-
+> free product/bootstrap commit at revision +1 with ordinal still zero, cleared old witness, exact aggregate-
+> only delta, seed/draw parity, receipt witness and immediate successor. It must never accept an
+> arbitrary optional receipt. Thus `current` resets at replacement revision +1, while `ready`
+> commits Arc 9 at replacement revision +2; Smoke advances either accepted reset once more.
+>
+> Exact signed `ae2a0023da3a90a98e548452113395149847aee5` passed Compendium **78/78**, then
+> Slice `20260830132231723-50968-0e9bd00aee77` stopped red once/no-retry with **8 findings / 8
+> scopes**. The F4 finding is preserved oracle evidence, not a failed atomic clear or a Slice PASS.
+> Glass and Recovery did not run.
+
 > **2026-08-30 current sealed-worker/PWA + Guide/Release/named-CF1 boundary (matches local code;
 > supersedes
 > the execution-late `clients.get()` repair and narrower current statements below while preserving

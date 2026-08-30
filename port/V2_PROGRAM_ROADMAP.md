@@ -338,6 +338,23 @@
 > so Slice → Glass → Recovery, HUMAN, hosted, merge, release/version and deployment remain open.
 > Edge point version is provenance only and never triggers rebaseline or threshold movement.
 
+> **Exact `ae2a002…` successor evidence and bounded instrument repair:** Compendium passed 78/78
+> once/no-retry, then Slice `20260830132231723-50968-0e9bd00aee77` stopped terminal red once/no-
+> retry with eight instrument findings; Glass and Recovery did not run. The retained F4 finding
+> requires an independently selected replacement prefix: an imported aggregate fixed point leaves
+> the new ledger empty for the judged ordinal-zero outcome, while a projection that is `ready`
+> permits exactly one aggregate-only, silent, fixed-point Arc 9 boot receipt at ordinal zero before
+> the judged ordinal-one outcome. The old expedition receipt must still be atomically cleared, and
+> the fixture's one independently expected receipt-free product/bootstrap commit must occur at
+> replacement revision +1 without advancing ordinal; ready Arc 9 follows at revision +2. Exact
+> revision, seed/draw, witness, state-delta and adjacency controls remain fail-closed. Atlas
+> now judges its semantic source row separately from its nested native Travel action, including
+> reload continuity. Exact trusted pointer/keydown action-and-row receipts are proven before entering
+> dependent navigation waits, and red prerequisites terminate with their root diagnosis rather than
+> cascading into timeouts. Guide contradiction controls mutate current rendered text or republish a fresh
+> exact DOM identity; changing source strings behind an already-rendered node is not evidence. This
+> is browser-free repair scope only and does not close Slice or any `[HUMAN]`/hosted/release gate.
+
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
 > 2026-08-30.
 > **Scope:** the complete approved v2 program—foundation repairs, product Arcs 0–10,

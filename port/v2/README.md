@@ -348,6 +348,30 @@
 > and deployment remain open. Edge point version remains provenance only and never triggers
 > rebaseline or threshold movement.
 
+> **Exact `ae2a002…` browser boundary and current Slice-oracle repair (2026-08-30):** signed clean
+> source `ae2a0023da3a90a98e548452113395149847aee5` passed Compendium 78/78 once/no-retry in
+> 63,446 ms, then Slice `20260830132231723-50968-0e9bd00aee77` stopped red once/no-retry after
+> 91,465 ms with eight findings across eight scopes. Immutable Compendium / Slice JSON / Slice log
+> carriers are **451,761 / 78,146 / 37,399 gzip bytes**, SHA-256 `c41e40c0…` / `f2749443…` /
+> `9d57cded…`; full raw identities are registered in `audits/README.md`. Glass and Recovery did not
+> run, and this remains terminal-red historical evidence.
+>
+> The F4 replacement assessor now selects its prefix from an independent projection of the exact
+> imported canonical state: `current` requires an empty ledger and gives the judged outcome ordinal
+> zero; `ready` requires exactly one aggregate-only, fixed-point, silent boot
+> `arc9-progression-refresh-v1` receipt at ordinal zero and gives the judged outcome ordinal one.
+> Both branches bind the atomic old-receipt clear, replacement base revision, the fixture's exact
+> one receipt-free product/bootstrap revision with unchanged ordinal, exact receipt witness,
+> seed/draw parity, unrelated-state stability and immediate successor; no arbitrary optional prefix
+> is accepted. The retained chronology is staged 7 → replacement 8 → bootstrap 9 → Arc 9 receipt
+> 0/revision 10 → Smoke receipt 1/revision 11. Atlas authorization separately proves the semantic
+> world row and its nested native Travel button, including after reload. Trusted pointer/keydown
+> receipts bind the exact native button, `data-atlas-travel`, parent `data-aid`, role and coordinates
+> before any dependent navigation wait begins; a red prerequisite stops once at its exact diagnosis
+> rather than cascading into a timeout. Guide text controls mutate the exact rendered node or force
+> its real publication owner to publish a fresh exact identity before judgment; mutating only source
+> strings while reading stale DOM is instrument failure.
+
 > **Current local Arc 5/6/7/8/9 successor (2026-08-29; browser-free evidence only):** the verified
 > real-fauna Compendium detail now exposes four exact-instance companion writers: Feed, one-draw
 > nonlethal Breed with active-play Recovery, identity-only Rename and role-only Field Scout. A

@@ -20,6 +20,15 @@ const canonicalJson = (value) => {
   }
   return JSON.stringify(value);
 };
+const legacyProductDigest = (raw) => {
+  if (typeof raw !== 'string') return null;
+  try {
+    const state = JSON.parse(raw);
+    if (!state || typeof state !== 'object' || Array.isArray(state)) return null;
+    delete state.at; // export clock is transaction metadata, not progression product state
+    return createHash('sha256').update(canonicalJson(state)).digest('hex');
+  } catch { return null; }
+};
 
 export const SLICE_SCREENSHOT_LOGICAL_NAMES = Object.freeze([
   'codex',
@@ -37,6 +46,147 @@ export const SLICE_SCREENSHOT_LOGICAL_NAMES = Object.freeze([
 export function sliceScreenshotInventoryLine() {
   return 'screenshots: apps/game/smoke/ '
     + SLICE_SCREENSHOT_LOGICAL_NAMES.map((logicalName) => `slice-${logicalName}`).join(' · ');
+}
+
+const exactJson = (left, right) => canonicalJson(left) === canonicalJson(right);
+
+/**
+ * A whole-expedition replacement owns an ordinal-zero boundary, but boot may
+ * immediately append one independently expected aggregate-progression
+ * receipt. This assessor never chooses that branch from the observed ledger:
+ * the fixture-owned expectation decides `current` versus `ready` first.
+ */
+export function assessF4ReplacementOutcome({
+  staged, replacement, reset, outcome, after, productStable, expectation,
+}) {
+  const reasons = [];
+  const add = (reason, condition) => { if (!condition) reasons.push(reason); };
+  const expectedStores = [
+    'catalog', 'creatures', 'inventory', 'journal',
+    'meta', 'player', 'receipts', 'settings',
+  ];
+  const expectedShape = expectation && typeof expectation === 'object'
+    && expectation.schema === 'cf-v2-f4-replacement-expectation/v1'
+    && hexDigest(expectation.fixtureSha256)
+    && hexDigest(expectation.sourceLegacySha256)
+    && hexDigest(expectation.successorLegacyProductSha256)
+    && (expectation.preparation === 'current' || expectation.preparation === 'ready')
+    && Array.isArray(expectation.sourceUnlockedIds)
+    && Array.isArray(expectation.addedAchievementIds)
+    && Array.isArray(expectation.successorUnlockedIds)
+    && Number.isSafeInteger(expectation.priorBestRankIndex)
+    && Number.isSafeInteger(expectation.nextBestRankIndex)
+    && Number.isSafeInteger(expectation.receiptFreeBootCommits)
+    && expectation.receiptFreeBootCommits >= 0
+    && exactJson(expectation.successorUnlockedIds, [
+      ...expectation.sourceUnlockedIds, ...expectation.addedAchievementIds,
+    ])
+    && (expectation.preparation === 'current'
+      ? expectation.addedAchievementIds.length === 0
+        && expectation.priorBestRankIndex === expectation.nextBestRankIndex
+        && expectation.progressionWitness === null
+      : typeof expectation.progressionWitness === 'string'
+        && /^arc9p1:[0-9a-f]{64}$/u.test(expectation.progressionWitness));
+  add('fixture authority', expectedShape === true);
+
+  add('old receipt fixture', staged?.ordinal === 1
+    && exactJson(staged?.receiptKeys, ['receipt:0'])
+    && staged?.receiptRows?.length === 1
+    && staged.receiptRows[0]?.ordinal === 0
+    && staged.receiptRows[0]?.kind === 'slice-smoke-old-expedition'
+    && staged.receiptRows[0]?.witness === 'old-expedition:0');
+
+  add('native atomic clear', replacement?.schema === 'cf-v2-f4-replacement-native/v2'
+    && replacement?.fixtureSha256 === expectation?.fixtureSha256
+    && replacement?.clearCalls === 1
+    && replacement?.store === 'receipts'
+    && replacement?.mode === 'readwrite'
+    && replacement?.nativeRequest === true
+    && exactJson([...(replacement?.stores ?? [])].sort(), expectedStores)
+    && replacement?.putRequestsNative === true);
+
+  add('replacement boundary', Number.isSafeInteger(replacement?.replacementRevision)
+    && replacement.replacementRevision >= 1
+    && replacement?.playerSchema === 5
+    && replacement?.carrierVersion === 1
+    && Number.isSafeInteger(replacement?.replacementSeed)
+    && replacement.replacementSeed >= 0 && replacement.replacementSeed <= 0xFFFF_FFFF
+    && replacement?.replacementOrdinal === 0
+    && exactJson(replacement?.replacementDraws, {})
+    && sha256Text(replacement?.legacyRaw) === expectation?.sourceLegacySha256);
+
+  const branch = expectedShape === true ? expectation.preparation : null;
+  const expectedPrefix = branch === 'ready' ? 1 : 0;
+  const expectedResetKeys = branch === 'ready' ? ['receipt:0'] : [];
+  const expectedResetRows = branch === 'ready' ? [{
+    ordinal: 0,
+    kind: 'arc9-progression-refresh-v1',
+    witness: expectation.progressionWitness,
+  }] : [];
+  add('branch selection', branch !== null
+    && reset?.raw?.ordinal === expectedPrefix
+    && reset?.state?.persistence?.runtime?.sessionOrdinal === expectedPrefix
+    && exactJson(reset?.raw?.receiptKeys, expectedResetKeys)
+    && exactJson(reset?.raw?.receiptRows, expectedResetRows));
+
+  const expectedBootCommits = (expectation?.receiptFreeBootCommits ?? -1) + expectedPrefix;
+  add('boot revision and RNG', Number.isSafeInteger(reset?.raw?.revision)
+    && reset.raw.revision === replacement?.replacementRevision + expectedBootCommits
+    && reset?.state?.persistence?.runtime?.revision === reset.raw.revision
+    && reset?.state?.persistence?.runtime?.commits === expectedBootCommits
+    && reset?.raw?.seed === replacement?.replacementSeed
+    && reset?.state?.persistence?.runtime?.sessionSeed === reset.raw.seed
+    && exactJson(reset?.raw?.draws, replacement?.replacementDraws)
+    && exactJson(reset?.state?.persistence?.runtime?.sessionDraws, reset?.raw?.draws));
+
+  const resetUnlocked = reset?.state?.save?.unlocked;
+  const resetBestRank = reset?.state?.save?.stats?.bestRank;
+  add('aggregate progression delta', branch !== null
+    && exactJson(resetUnlocked, expectation?.successorUnlockedIds)
+    && resetBestRank === expectation?.nextBestRankIndex
+    && (branch === 'current'
+      ? reset?.state?.persistence?.lastOutcome !== `arc9-progression-committed:${reset?.raw?.revision}`
+      : reset?.state?.persistence?.lastOutcome === `arc9-progression-committed:${reset?.raw?.revision}`));
+  add('unrelated replacement state', legacyProductDigest(reset?.raw?.legacyRaw)
+    === expectation?.successorLegacyProductSha256);
+  add('boot presentation silence', reset?.ceremony?.toastOn === false
+    && reset?.ceremony?.toastSerial === 0
+    && reset?.ceremony?.queuedFx === 0);
+
+  const smokeOrdinal = expectedPrefix;
+  add('real outcome receipt', outcome?.kind === 'committed'
+    && outcome?.beforeOrdinal === smokeOrdinal
+    && outcome?.afterOrdinal === smokeOrdinal + 1
+    && outcome?.plan?.receiptOrdinal === smokeOrdinal
+    && outcome?.receipt?.ordinal === smokeOrdinal
+    && outcome?.receipt?.kind === 'slice-smoke-f4-outcome'
+    && Number.isFinite(outcome?.plan?.value)
+    && outcome?.receipt?.witness === `slice-smoke-f4:${smokeOrdinal}:${outcome?.plan?.value}`);
+  add('outcome revision', outcome?.beforeRevision === reset?.raw?.revision
+    && outcome?.afterRevision === outcome?.beforeRevision + 1
+    && outcome?.revision === outcome?.afterRevision
+    && after?.raw?.revision === outcome?.revision
+    && after?.state?.persistence?.runtime?.revision === after?.raw?.revision);
+
+  const expectedFinalRows = [...expectedResetRows, {
+    ordinal: smokeOrdinal,
+    kind: 'slice-smoke-f4-outcome',
+    witness: outcome?.receipt?.witness,
+  }];
+  const expectedFinalKeys = expectedFinalRows.map(({ ordinal }) => `receipt:${ordinal}`);
+  add('durable outcome parity', after?.raw?.ordinal === smokeOrdinal + 1
+    && after?.state?.persistence?.runtime?.sessionOrdinal === after?.raw?.ordinal
+    && after?.raw?.seed === reset?.raw?.seed
+    && after?.state?.persistence?.runtime?.sessionSeed === after?.raw?.seed
+    && after?.state?.persistence?.runtime?.commits === expectedBootCommits + 1
+    && exactJson(after?.raw?.receiptKeys, expectedFinalKeys)
+    && exactJson(after?.raw?.receiptRows, expectedFinalRows)
+    && after?.raw?.draws?.['diagnostics.slice-smoke.f4'] === 1
+    && after?.state?.persistence?.runtime?.sessionDraws?.['diagnostics.slice-smoke.f4'] === 1
+    && legacyProductDigest(after?.raw?.legacyRaw) === expectation?.successorLegacyProductSha256
+    && after?.state?.persistence?.lastOutcome === `outcome-committed:${after?.raw?.revision}`);
+  add('product changed', productStable === true);
+  return { ok: reasons.length === 0, reasons };
 }
 
 /* A scrollable Inventory row is reachable only after the harness performs

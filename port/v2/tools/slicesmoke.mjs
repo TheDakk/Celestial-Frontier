@@ -20,6 +20,7 @@ import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import {
+  assessF4ReplacementOutcome,
   assessInventoryActionActivation,
   assessInventoryDetailClose,
   assessInventoryPanelClose,
@@ -855,6 +856,54 @@ const VETERAN_ATLAS_RAW = (() => {
 const INVENTORY_VETERAN_RAW = fs.readFileSync(
   path.join(here, 'fixtures', 'arc2-live-outcomes-v1.json'), 'utf8',
 ).trim();
+const F4_REPLACEMENT_EXPECTATION = (() => {
+  const fixtureSha256 = createHash('sha256').update(INVENTORY_VETERAN_RAW).digest('hex');
+  const envelope = JSON.parse(INVENTORY_VETERAN_RAW);
+  const sourceLegacyRaw = envelope?.legacyV4;
+  const source = typeof sourceLegacyRaw === 'string' ? JSON.parse(sourceLegacyRaw) : null;
+  const sourceUnlockedIds = Object.freeze(['first', 'field10', 'fake']);
+  const addedAchievementIds = Object.freeze([
+    'hybrid', 'rare', 'crafter', 'geared', 'lastvein', 'cosmicfind',
+    'skimmer', 'event1', 'event5', 'guard1', 'essence500', 'bred1',
+    'bredfail', 'feed5', 'feedfail', 'duel1', 'duelw1', 'jumps5',
+  ]);
+  const successorUnlockedIds = Object.freeze([
+    ...sourceUnlockedIds, ...addedAchievementIds,
+  ]);
+  const successor = structuredClone(source);
+  successor.ach = [...successorUnlockedIds];
+  successor.br = 3;
+  delete successor.at;
+  const canonical = (value) => {
+    if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
+    if (value && typeof value === 'object') {
+      return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonical(value[key])}`).join(',')}}`;
+    }
+    return JSON.stringify(value);
+  };
+  const expectation = Object.freeze({
+    schema: 'cf-v2-f4-replacement-expectation/v1',
+    fixtureSha256,
+    sourceLegacySha256: createHash('sha256').update(sourceLegacyRaw).digest('hex'),
+    successorLegacyProductSha256: createHash('sha256').update(canonical(successor)).digest('hex'),
+    preparation: 'ready',
+    sourceUnlockedIds,
+    addedAchievementIds,
+    successorUnlockedIds,
+    priorBestRankIndex: 3,
+    nextBestRankIndex: 3,
+    receiptFreeBootCommits: 1,
+    progressionWitness: 'arc9p1:a8f5961bf107300e280aa9cda8160e051e02ab691c80cda40eaf87642d4f62c9',
+  });
+  if (fixtureSha256 !== 'bf908135e38024ee5d11eb9e5811c23c1b2f6c79b8c8a9c9bfc81b94fe24c8a3'
+    || expectation.sourceLegacySha256 !== '57e9d86d1847ab0bd7d8ba4579b2bfd5a51f9b65715fc1ef412db050a6fadd88'
+    || expectation.successorLegacyProductSha256 !== 'c332919c0697072dbeed7965a487f08fdea58039c122d45024002ed174693339'
+    || JSON.stringify(source?.ach) !== JSON.stringify(sourceUnlockedIds)
+    || source?.br !== expectation.priorBestRankIndex) {
+    throw new Error('F4 replacement progression fixture authority drifted');
+  }
+  return expectation;
+})();
 const ENGINEERING_VETERAN_RAW = (() => {
   const save = JSON.parse(VETERAN_ATLAS_RAW);
   save.me = 'Arc 3 Engineering Gate';
@@ -1099,11 +1148,12 @@ const READ_F4_AUTHORITY_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v
     tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('F4 read aborted'))});
     const get=(store,key)=>new Promise((resolve,reject)=>{const q=tx.objectStore(store).get(key);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
     const getAll=(method)=>new Promise((resolve,reject)=>{const q=tx.objectStore('receipts')[method]();q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
-    const [revisionRaw,playerRaw,receiptKeys,receiptRows]=await Promise.all([
-      get('meta','f3:revision'),get('player','v5:player'),getAll('getAllKeys'),getAll('getAll')]);await done;
+    const [revisionRaw,legacyRaw,playerRaw,receiptKeys,receiptRows]=await Promise.all([
+      get('meta','f3:revision'),get('meta','save'),get('player','v5:player'),getAll('getAllKeys'),getAll('getAll')]);await done;
     let row=null,carrier=null,authority=null;try{row=JSON.parse(String(playerRaw));carrier=row?.extensions?.['f4.authority']??null;
       authority=carrier?JSON.parse(carrier.json):null}catch{}
     return {revisionRaw:revisionRaw===undefined?null:String(revisionRaw),revision:Number(revisionRaw),
+      legacyRaw:legacyRaw===undefined?null:String(legacyRaw),
       playerSchema:row?.schema??null,carrierVersion:carrier?.version??null,
       activePlayMs:authority?.activePlayMs??null,seed:authority?.sessionRng?.seed??null,
       ordinal:authority?.sessionRng?.ordinal??null,draws:authority?.sessionRng?.draws??null,
@@ -1226,14 +1276,35 @@ const STAGE_OLD_F4_RECEIPT_EXPRESSION = `(async()=>{const open=indexedDB.open('c
     tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('receipt stage aborted'))});
     tx.objectStore('receipts').put(JSON.stringify({ordinal:0,kind:'slice-smoke-old-expedition',witness:'old-expedition:0'}),'receipt:0');
     await done;return true}finally{db.close()}})()`;
-const ARM_F4_REPLACEMENT_TRACE_EXPRESSION = `(()=>{const key='cf_slice_f4_replacement_trace',proto=IDBObjectStore.prototype;
-  localStorage.removeItem(key);if(window.__cfF4ClearPatch)return false;const descriptor=Object.getOwnPropertyDescriptor(proto,'clear');
-  if(!descriptor||typeof descriptor.value!=='function'||!descriptor.writable)return false;const original=descriptor.value;
-  Object.defineProperty(proto,'clear',{...descriptor,value:function(){const request=Reflect.apply(original,this,arguments);
+const ARM_F4_REPLACEMENT_TRACE_EXPRESSION = `(()=>{const key='cf_slice_f4_replacement_trace',proto=IDBObjectStore.prototype,
+  fixtureSha256=${JSON.stringify(F4_REPLACEMENT_EXPECTATION.fixtureSha256)};
+  localStorage.removeItem(key);if(window.__cfF4ClearPatch)return false;
+  const clearDescriptor=Object.getOwnPropertyDescriptor(proto,'clear'),putDescriptor=Object.getOwnPropertyDescriptor(proto,'put');
+  if(!clearDescriptor||typeof clearDescriptor.value!=='function'||!clearDescriptor.writable
+    ||!putDescriptor||typeof putDescriptor.value!=='function'||!putDescriptor.writable)return false;
+  const originalClear=clearDescriptor.value,originalPut=putDescriptor.value,
+    update=(fields)=>{const prior=JSON.parse(localStorage.getItem(key)||'null')||{};
+      localStorage.setItem(key,JSON.stringify({...prior,schema:'cf-v2-f4-replacement-native/v2',fixtureSha256,...fields}));};
+  Object.defineProperty(proto,'clear',{...clearDescriptor,value:function(){const request=Reflect.apply(originalClear,this,arguments);
     if(this?.name==='receipts'){const prior=JSON.parse(localStorage.getItem(key)||'null'),tx=this.transaction;
-      localStorage.setItem(key,JSON.stringify({schema:'cf-v2-f4-replacement-native/v1',clearCalls:(prior?.clearCalls||0)+1,
-        store:this.name,mode:tx?.mode||null,stores:tx?[...tx.objectStoreNames]:[],nativeRequest:request instanceof IDBRequest}));}
-    return request;}});window.__cfF4ClearPatch=true;return true})()`;
+      update({clearCalls:(prior?.clearCalls||0)+1,store:this.name,mode:tx?.mode||null,
+        stores:tx?[...tx.objectStoreNames]:[],nativeRequest:request instanceof IDBRequest});}
+    return request;}});
+  Object.defineProperty(proto,'put',{...putDescriptor,value:function(){const request=Reflect.apply(originalPut,this,arguments),
+    tx=this?.transaction,names=tx?[...tx.objectStoreNames]:[],prior=JSON.parse(localStorage.getItem(key)||'null')||{},fields={};
+    if(tx?.mode==='readwrite'&&names.includes('receipts')){
+      fields.putRequestsNative=(prior.putRequestsNative??true)&&(request instanceof IDBRequest);
+      const value=arguments[0],rowKey=arguments[1];
+      if(this.name==='meta'&&rowKey==='f3:revision')fields.replacementRevision=Number(value);
+      if(this.name==='meta'&&rowKey==='save')fields.legacyRaw=typeof value==='string'?value:null;
+      if(this.name==='player'&&rowKey==='v5:player')try{const row=JSON.parse(String(value)),carrier=row?.extensions?.['f4.authority'],
+        authority=carrier?JSON.parse(carrier.json):null;Object.assign(fields,{playerSchema:row?.schema??null,
+          carrierVersion:carrier?.version??null,replacementSeed:authority?.sessionRng?.seed??null,
+          replacementOrdinal:authority?.sessionRng?.ordinal??null,replacementDraws:authority?.sessionRng?.draws??null});}catch{}
+      update(fields);
+    }
+    return request;}});
+  window.__cfF4ClearPatch=true;return true})()`;
 
 /* A smoke that reads a stale build can pass for source that no longer
    exists—the species-audit failure class. Build unconditionally, then drive
@@ -1630,7 +1701,7 @@ const collisionShareMatches = (code, world) => {
     && payload.n === world.name;
 };
 const assessCollisionWorldOutcome = ({
-  setup, baselineRecords, actions, reloaded, atlas, records, atlasTravel, searches,
+  setup, baselineRecords, actions, reloaded, atlas, records, atlasOpeners, atlasTravel, searches,
 }) => {
   const reasons = [];
   if (COLLISION_REACH_WORLDS.length !== 2
@@ -1668,19 +1739,25 @@ const assessCollisionWorldOutcome = ({
     reasons.push('reload adoption');
   }
   const expectedRows = COLLISION_REACH_WORLDS.map((world) => ({
-    id: `w|${world.key}`, title: world.name, disabled: false,
+    id: `w|${world.key}`, title: world.name, rowTag: 'DIV', rowInteractive: false,
+    travelId: `w|${world.key}`, travelTag: 'BUTTON', travelType: 'button',
+    disabled: false, ariaDisabled: null,
   })).sort((left, right) => left.id.localeCompare(right.id));
   const actualRows = Array.isArray(atlas?.rows)
     ? [...atlas.rows].sort((left, right) => left.id.localeCompare(right.id)) : null;
   if (atlas?.count !== 2 || canonicalJson(actualRows) !== canonicalJson(expectedRows)) {
     reasons.push('distinct Atlas rows');
   }
+  if (!Array.isArray(atlasOpeners) || atlasOpeners.length !== 2
+    || atlasOpeners.some((press) => !assessAtlasOpenerPress(press).ok)) {
+    reasons.push('Atlas opener identity');
+  }
   if (!Number.isSafeInteger(baselineRecords?.worldsLanded)
     || records?.worldsLanded !== baselineRecords.worldsLanded + 2) reasons.push('distinct landing ledger');
   if (!Array.isArray(atlasTravel) || atlasTravel.length !== 2
     || atlasTravel.some((entry, index) => {
       const world = COLLISION_REACH_WORLDS[index];
-      return entry?.pointer?.trusted !== true || entry.pointer.id !== `w|${world.key}`
+      return !assessAtlasPointerPress(entry, { atlasId: `w|${world.key}` }).ok
         || entry.state?.mode !== 'system' || entry.state?.cardTitle !== world.name
         || entry.state?.starX !== world.star.x || entry.state?.starY !== world.star.y;
     })) reasons.push('Atlas route identity');
@@ -2062,6 +2139,101 @@ const assessArc2InventoryAction = ({ before, after, beforeState, afterState, poi
     || canonicalJson(after?.legacy?.log) !== canonicalJson(before?.legacy?.log)) reasons.push('Atlas/product continuity');
   return { ok: reasons.length === 0, reasons };
 };
+const atlasTravelTargetExpression = (atlasId, { scroll = true, focus = false } = {}) => {
+  const exactId = JSON.stringify(String(atlasId));
+  return `(async()=>{const S=window.__CF_SLICE__,panel=document.getElementById('atlaspanel'),
+    row=[...document.querySelectorAll('#atlaspanel [data-sel="atlas-entry"][data-aid]')]
+      .find((candidate)=>candidate.getAttribute('data-aid')===${exactId})||null,
+    travel=[...(row?.querySelectorAll(':scope > .atlas-entry-actions > [data-atlas-travel]')??[])]
+      .find((candidate)=>candidate.getAttribute('data-atlas-travel')===${exactId})||null;
+    ${scroll ? "travel?.scrollIntoView({block:'center',inline:'nearest',behavior:'auto'});" : ''}
+    ${focus ? 'travel?.focus();' : ''}
+    await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(resolve,0)));
+    const rect=travel?.getBoundingClientRect()??null,x=rect?(rect.left+rect.right)/2:null,
+      y=rect?(rect.top+rect.bottom)/2:null,hit=rect?document.elementFromPoint(x,y):null,
+      style=travel?getComputedStyle(travel):null;return {
+      settled:true,panelOpen:S?.api?.state?.().panelOpen??null,panelScrollTop:panel?.scrollTop??null,
+      row:{exists:!!row,id:row?.getAttribute('data-aid')??null,tag:row?.tagName??null,
+        interactive:row?.matches('button,[role="button"],[tabindex]')??null,
+        travelCount:row?.querySelectorAll(':scope > .atlas-entry-actions > [data-atlas-travel]').length??0,
+        favoriteCount:row?.querySelectorAll(':scope > .atlas-entry-actions > [data-atlas-favorite]').length??0},
+      travel:{exists:!!travel,id:travel?.getAttribute('data-atlas-travel')??null,
+        tag:travel?.tagName??null,type:travel instanceof HTMLButtonElement?travel.type:null,
+        disabled:travel instanceof HTMLButtonElement?travel.disabled:null,
+        ariaDisabled:travel?.getAttribute('aria-disabled')??null,
+        ariaLabel:travel?.getAttribute('aria-label')??null,
+        rendered:!!rect&&rect.width>0&&rect.height>0&&travel?.getClientRects().length>0
+          &&style?.display!=='none'&&style?.visibility!=='hidden',
+        width:rect?.width??0,height:rect?.height??0,x,y,
+        hit:!!hit&&(hit===travel||travel?.contains(hit)===true),focus:document.activeElement===travel}};})()`;
+};
+const assessAtlasTravelTarget = (observation, {
+  atlasId, enabled = true, focus = false, panelOpen = 'atlas', requireHit = true,
+} = {}) => {
+  const checks = {
+    settled: observation?.settled === true,
+    panel: observation?.panelOpen === panelOpen,
+    rowIdentity: observation?.row?.exists === true && observation.row.id === atlasId,
+    rowStructure: observation?.row?.tag === 'DIV' && observation.row.interactive === false
+      && observation.row.travelCount === 1 && observation.row.favoriteCount === 1,
+    travelIdentity: observation?.travel?.exists === true && observation.travel.id === atlasId,
+    nativeButton: observation?.travel?.tag === 'BUTTON' && observation.travel.type === 'button',
+    availability: enabled
+      ? observation?.travel?.disabled === false && observation.travel.ariaDisabled !== 'true'
+      : observation?.travel?.disabled === true && observation.travel.ariaDisabled === 'true',
+    accessibleName: typeof observation?.travel?.ariaLabel === 'string'
+      && observation.travel.ariaLabel.startsWith('Travel to '),
+    geometry: observation?.travel?.rendered === true
+      && observation.travel.width > 0 && observation.travel.height >= 44
+      && Number.isFinite(observation.travel.x) && Number.isFinite(observation.travel.y),
+    hit: requireHit ? observation?.travel?.hit === true : true,
+    focus: focus ? observation?.travel?.focus === true : true,
+  };
+  return { ok: Object.values(checks).every((value) => value === true), checks };
+};
+const assessAtlasKeyReceipt = (receipt, { atlasId, key, code } = {}) => {
+  const checks = {
+    trusted: receipt?.trusted === true,
+    key: receipt?.key === key && receipt?.code === code && receipt?.repeat === false,
+    nativeButton: receipt?.tag === 'BUTTON',
+    travelIdentity: receipt?.atlasTravelId === atlasId,
+    rowIdentity: receipt?.atlasRowId === atlasId,
+  };
+  return { ok: Object.values(checks).every((value) => value === true), checks };
+};
+const assessAtlasPointerPress = (press, { atlasId } = {}) => {
+  const checks = {
+    target: press?.target?.settled === true && press.target.tag === 'BUTTON'
+      && press.target.type === 'button' && press.target.atlasTravelId === atlasId
+      && press.target.atlasRowId === atlasId,
+    geometry: press?.target?.hit === true && press.target.width > 0 && press.target.height >= 44
+      && Number.isFinite(press.target.x) && Number.isFinite(press.target.y),
+    pointer: press?.pointer?.trusted === true && press.pointer.pointerType === 'mouse'
+      && press.pointer.tag === 'BUTTON' && press.pointer.id === atlasId
+      && press.pointer.atlasTravelId === atlasId && press.pointer.atlasRowId === atlasId,
+    coordinates: Number.isFinite(press?.pointer?.x) && Number.isFinite(press?.pointer?.y)
+      && Number.isFinite(press?.target?.x) && Number.isFinite(press?.target?.y)
+      && Math.abs(press.pointer.x - press.target.x) <= 0.75
+      && Math.abs(press.pointer.y - press.target.y) <= 0.75,
+  };
+  return { ok: Object.values(checks).every((value) => value === true), checks };
+};
+const assessAtlasOpenerPress = (press, { ids = ['railatlas', 'dockatlas'] } = {}) => {
+  const checks = {
+    target: press?.target?.settled === true && press.target.tag === 'BUTTON'
+      && press.target.type === 'button' && ids.includes(press.target.id),
+    geometry: press?.target?.hit === true && press.target.width > 0 && press.target.height >= 44
+      && Number.isFinite(press.target.x) && Number.isFinite(press.target.y),
+    pointer: press?.pointer?.trusted === true && press.pointer.pointerType === 'mouse'
+      && press.pointer.tag === 'BUTTON' && press.pointer.id === press.target.id
+      && press.pointer.atlasTravelId === null && press.pointer.atlasRowId === null,
+    coordinates: Number.isFinite(press?.pointer?.x) && Number.isFinite(press?.pointer?.y)
+      && Number.isFinite(press?.target?.x) && Number.isFinite(press?.target?.y)
+      && Math.abs(press.pointer.x - press.target.x) <= 0.75
+      && Math.abs(press.pointer.y - press.target.y) <= 0.75,
+  };
+  return { ok: Object.values(checks).every((value) => value === true), checks };
+};
 const assessArc2InventoryReload = ({ committed, reloaded, committedState, reloadedState, surface,
   instanceId, removedInstanceId, operations, previousToken, token }) => {
   const reasons = [];
@@ -2102,9 +2274,8 @@ const assessArc2InventoryReload = ({ committed, reloaded, committedState, reload
     || surface?.atlasPreClick?.ok !== true || surface?.atlasPreClick?.targetId !== 'railatlas'
     || !Number.isFinite(surface?.atlasPreClick?.x) || !Number.isFinite(surface?.atlasPreClick?.y)
     || surface?.panelOpen !== 'atlas' || surface?.inventoryHidden !== true
-    || surface?.inventoryExpanded !== 'false' || surface?.atlasRow?.id !== 'p133'
-    || surface?.atlasRow?.tag !== 'BUTTON' || surface?.atlasRow?.disabled
-    || surface?.atlasRow?.ariaDisabled === 'true' || !(surface?.atlasRow?.height >= 44)
+    || surface?.inventoryExpanded !== 'false'
+    || !assessAtlasTravelTarget(surface?.atlasTarget, { atlasId: 'p133' }).ok
     || surface?.atlasPointer?.targetId !== 'railatlas' || surface?.atlasPointer?.trusted !== true
     || surface?.atlasPointer?.pointerType !== 'mouse'
     || !Number.isFinite(surface?.atlasPointer?.x) || !Number.isFinite(surface?.atlasPointer?.y)
@@ -3868,29 +4039,6 @@ const assessF4PersistReload = ({ before, persisted, reloaded }) => {
     || reloaded.token === persisted.token) reasons.push('reload adoption');
   return { ok: reasons.length === 0, reasons };
 };
-const assessF4ReplacementOutcome = ({ staged, reset, outcome, after, productStable }) => {
-  const reasons = [];
-  if (JSON.stringify(staged.receiptKeys) !== JSON.stringify(['receipt:0'])
-    || staged.receiptRows?.[0]?.kind !== 'slice-smoke-old-expedition') reasons.push('old receipt fixture');
-  if (reset.raw.ordinal !== 0 || reset.state.persistence.runtime.sessionOrdinal !== 0
-    || reset.raw.receiptKeys.length !== 0) reasons.push('atomic replacement reset');
-  if (reset.trace?.schema !== 'cf-v2-f4-replacement-native/v1' || reset.trace?.clearCalls !== 1
-    || reset.trace?.store !== 'receipts' || reset.trace?.mode !== 'readwrite'
-    || reset.trace?.nativeRequest !== true
-    || !['meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'receipts']
-      .every((store) => reset.trace?.stores?.includes(store))) reasons.push('native atomic clear');
-  if (outcome.kind !== 'committed' || outcome.beforeOrdinal !== 0 || outcome.afterOrdinal !== 1
-    || outcome.plan?.receiptOrdinal !== 0 || outcome.receipt?.ordinal !== 0
-    || outcome.receipt?.kind !== 'slice-smoke-f4-outcome'
-    || outcome.receipt?.witness !== `slice-smoke-f4:0:${outcome.plan?.value}`) reasons.push('real outcome receipt');
-  if (outcome.afterRevision !== outcome.beforeRevision + 1 || outcome.revision !== outcome.afterRevision
-    || after.raw.revision !== reset.raw.revision + 1 || after.raw.revision !== outcome.revision) reasons.push('outcome revision');
-  if (after.raw.ordinal !== 1 || after.state.persistence.runtime.sessionOrdinal !== 1
-    || JSON.stringify(after.raw.receiptKeys) !== JSON.stringify(['receipt:0'])
-    || after.raw.receiptRows?.[0]?.witness !== outcome.receipt?.witness) reasons.push('durable outcome parity');
-  if (!productStable) reasons.push('product changed');
-  return { ok: reasons.length === 0, reasons };
-};
 const assessF4HideFailureRelease = ({ armed, hidden, shown }) => {
   const reasons = [];
   const witness = hidden?.persistence?.hideWitness;
@@ -4690,15 +4838,29 @@ try {
     delete window.__cfPanelPointer;const controller=new AbortController();window.__cfPanelPointerAbort=controller;
     document.addEventListener('pointerdown',(event)=>{ const target=event.target instanceof Element?event.target:null,
       close=target?.closest('#inventorysheet [data-inventory-sheet-close]'),
-      panelClose=target?.closest('.panel > [data-pnx]');
+      panelClose=target?.closest('.panel > [data-pnx]'),
+      atlasTravel=target?.closest('[data-atlas-travel]'),atlasRow=atlasTravel?.closest('[data-aid]');
       window.__cfPanelPointer={targetId:target?.id||null,tag:target?.tagName||null,
         closeOwner:close?.closest('#inventorysheet')?.id==='inventorysheet'?'inventory-sheet':null,
-        panelCloseOwner:panelClose?.getAttribute('data-pnx')||null,x:event.clientX,y:event.clientY,
+        panelCloseOwner:panelClose?.getAttribute('data-pnx')||null,
+        atlasTravelId:atlasTravel?.getAttribute('data-atlas-travel')||null,
+        atlasRowId:atlasRow?.getAttribute('data-aid')||null,
+        atlasActionTag:atlasTravel?.tagName||null,x:event.clientX,y:event.clientY,
         pointerType:event.pointerType||null,trusted:event.isTrusted===true};window.__cfPanelPointerAbort=null; },
       {capture:true,once:true,signal:controller.signal});return true; })()`);
   const takeDesktopPointerReceipt = async () => evalIn(`(()=>{ const receipt=window.__cfPanelPointer||null;
     window.__cfPanelPointerAbort?.abort();delete window.__cfPanelPointerAbort;delete window.__cfPanelPointer;
     return receipt; })()`);
+  const armDesktopAtlasKeyReceipt = async () => evalIn(`(()=>{ window.__cfAtlasKeyAbort?.abort();
+    delete window.__cfAtlasKey;const controller=new AbortController();window.__cfAtlasKeyAbort=controller;
+    document.addEventListener('keydown',(event)=>{const target=event.target instanceof Element?event.target:null,
+      travel=target?.closest('[data-atlas-travel]'),row=travel?.closest('[data-aid]');
+      window.__cfAtlasKey={trusted:event.isTrusted===true,key:event.key,code:event.code,repeat:event.repeat===true,
+        tag:target?.tagName||null,atlasTravelId:travel?.getAttribute('data-atlas-travel')||null,
+        atlasRowId:row?.getAttribute('data-aid')||null};window.__cfAtlasKeyAbort=null;},
+      {capture:true,once:true,signal:controller.signal});return true;})()`);
+  const takeDesktopAtlasKeyReceipt = async () => evalIn(`(()=>{const receipt=window.__cfAtlasKey||null;
+    window.__cfAtlasKeyAbort?.abort();delete window.__cfAtlasKeyAbort;delete window.__cfAtlasKey;return receipt;})()`);
   const waitDesktopValue = async (label, expr, timeoutMs = 6000, accept = (value) => !!value) => {
     const deadline = Date.now() + timeoutMs;
     let last = null;
@@ -6345,6 +6507,60 @@ try {
         + JSON.stringify(control));
     }
   }
+  /* Guide copy is rendered HTML, so an exact sentence may cross inline
+     elements even though its visible text is contiguous. Mutate the one exact
+     rendered occurrence rather than assuming one Text node owns the claim.
+     Zero or duplicate targets are deliberate control failures and never
+     mutate the article. Keep this helper self-contained: focused JSDOM tests
+     execute the same function that Slice serializes into the browser. */
+  const replaceExactRenderedGuideText = (root, anchor, replacement) => {
+    const text = root?.textContent ?? '';
+    if (!root || typeof anchor !== 'string' || anchor.length === 0
+      || typeof replacement !== 'string' || replacement === anchor) {
+      return { count: 0, changed: false, start: null };
+    }
+    let count = 0;
+    let start = -1;
+    let cursor = 0;
+    while (cursor <= text.length - anchor.length) {
+      const found = text.indexOf(anchor, cursor);
+      if (found < 0) break;
+      count += 1;
+      if (count === 1) start = found;
+      cursor = found + anchor.length;
+    }
+    if (count !== 1) return { count, changed: false, start: count === 0 ? null : start };
+    const end = start + anchor.length;
+    const walker = root.ownerDocument.createTreeWalker(root, 4);
+    let offset = 0;
+    let startNode = null;
+    let endNode = null;
+    let startOffset = 0;
+    let endOffset = 0;
+    let node;
+    while ((node = walker.nextNode())) {
+      const value = node.nodeValue ?? '';
+      const next = offset + value.length;
+      if (!startNode && start >= offset && start < next) {
+        startNode = node;
+        startOffset = start - offset;
+      }
+      if (!endNode && end > offset && end <= next) {
+        endNode = node;
+        endOffset = end - offset;
+      }
+      offset = next;
+      if (startNode && endNode) break;
+    }
+    if (!startNode || !endNode) return { count, changed: false, start };
+    const range = root.ownerDocument.createRange();
+    range.setStart(startNode, startOffset);
+    range.setEnd(endNode, endOffset);
+    range.deleteContents();
+    range.insertNode(root.ownerDocument.createTextNode(replacement));
+    const expected = text.slice(0, start) + replacement + text.slice(end);
+    return { count, changed: root.textContent === expected && expected !== text, start };
+  };
   const compendiumGuideSpecs = [
     { id: 'kingdoms', title: 'The four kingdoms', required: [
       'Compendium presents up to 1,500 logical entries', 'Search filters those saved records',
@@ -6426,7 +6642,7 @@ try {
     ] },
   ];
   const renderedCompendiumGuideCheck = (spec) => `(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
-    text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
+    text=[...(article?.childNodes??[])].map((node)=>node.textContent||'').join(' ').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
     required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),unnegated=${hasUnnegatedSentenceClaim},
     contradictory=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(text)
@@ -6503,15 +6719,18 @@ try {
     const restored=${renderedCompendiumGuideCheck(compendiumGuideSpecs[2])};return {nodeFound:!!node,missing,contradictions,restored};})()`);
   const breedingGuide = await renderCompendiumGuideTopic(compendiumGuideSpecs[3]);
   const breedingGuideCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
-    walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,anchor='successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save',
-    marker=document.createElement('p');let node=null;while(walker&&(node=walker.nextNode())&&!(node.nodeValue||'').includes(anchor)){}
-    const prior=node?.nodeValue||'';if(node)node.nodeValue=prior.replace(anchor,'Charter co-delivery omitted');
-    const missing=${renderedCompendiumGuideCheck(compendiumGuideSpecs[3])};if(node)node.nodeValue=prior;
+    replaceExactRenderedGuideText=${replaceExactRenderedGuideText},anchor='successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save',
+    marker=document.createElement('p'),beforeHtml=article?.innerHTML??null;let mutation={count:0,changed:false,start:null},missing=null;
+    try{mutation=replaceExactRenderedGuideText(article,anchor,'Charter co-delivery omitted');
+      missing=${renderedCompendiumGuideCheck(compendiumGuideSpecs[3])};}
+    finally{if(article&&beforeHtml!==null)article.innerHTML=beforeHtml;}
     const contradictions=[];for(const copy of ['Both parents are consumed after breeding.','Recovery advances while the game is closed.',
       'The same exact companion can occupy both parent roles.','A failed attempt creates one child.','Breeding automatically retries after a stale result.',
       'A failed pairing also banks the Charter hybrid bloodline goal.']){
-      marker.textContent=copy;article?.appendChild(marker);contradictions.push({copy,result:${renderedCompendiumGuideCheck(compendiumGuideSpecs[3])}});marker.remove();}
-    const restored=${renderedCompendiumGuideCheck(compendiumGuideSpecs[3])};return {nodeFound:!!node,missing,contradictions,restored};})()`);
+      marker.textContent=copy;article?.appendChild(marker);try{contradictions.push({copy,result:${renderedCompendiumGuideCheck(compendiumGuideSpecs[3])}});}
+      finally{marker.remove();}}
+    const exactRestore=article?.innerHTML===beforeHtml,restored=${renderedCompendiumGuideCheck(compendiumGuideSpecs[3])};
+    return {mutation,missing,contradictions,exactRestore,restored};})()`);
   if (!kingdomsGuide.ok || !specimenGuide.ok || !feedingGuide.ok || !breedingGuide.ok) {
     fails.push('GUIDE Compendium virtualization/art/focus/Feed/Breed/Rename contract did not render in the current topics: '
       + JSON.stringify({ kingdomsGuide, specimenGuide, feedingGuide, breedingGuide }));
@@ -6526,11 +6745,11 @@ try {
     || renameGuideCtl.contradictions?.length !== 5
     || renameGuideCtl.contradictions.some((row) => row.result?.ok || !row.result?.contradictory)
     || !renameGuideCtl.restored?.ok
-    || !breedingGuideCtl.nodeFound || breedingGuideCtl.missing?.ok
+    || breedingGuideCtl.mutation?.count !== 1 || !breedingGuideCtl.mutation?.changed || breedingGuideCtl.missing?.ok
     || !breedingGuideCtl.missing?.missing?.includes('successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save')
     || breedingGuideCtl.contradictions?.length !== 6
     || breedingGuideCtl.contradictions.some((row) => row.result?.ok || !row.result?.contradictory)
-    || !breedingGuideCtl.restored?.ok) {
+    || !breedingGuideCtl.exactRestore || !breedingGuideCtl.restored?.ok) {
     fails.push('GUIDE COMPENDIUM COPY CONTROL FAILED — stale art/Feed/Breed/Rename truth stayed current or failed to restore: '
       + JSON.stringify({ kingdomsGuideCtl, specimenGuideCtl, feedingGuideCtl, renameGuideCtl, breedingGuideCtl }));
   }
@@ -6560,7 +6779,7 @@ try {
     ] },
   ];
   const renderedAudioGuideCheck = (spec) => `(()=>{const article=document.querySelector('#guidepanel .guide-topic'),
-   text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
+   text=[...(article?.childNodes??[])].map((node)=>node.textContent||'').join(' ').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
    status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
     required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),unnegated=${hasUnnegatedSentenceClaim},
     contradictory=unnegated(text,/(?:Compendium list|browsing|filtering|focus|navigation)[^.!?]{0,96}auto[- ]?plays?(?:[^.!?]{0,48})(?:call|voice|expression)/i)
@@ -6582,26 +6801,28 @@ try {
   for (const spec of audioGuideSpecs) {
     const rendered = await renderAudioGuideTopic(spec);
     const controls = await evalIn(`(()=>{const article=document.querySelector('#guidepanel .guide-topic'),
-      walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,anchor=${JSON.stringify(spec.missingAnchor)},marker=document.createElement('p');
-      let node=null;while(walker&&(node=walker.nextNode())&&!(node.nodeValue||'').includes(anchor)){}
-      const prior=node?.nodeValue||'';if(node)node.nodeValue=prior.replace(anchor,'audio ownership boundary omitted');
-      const missing=${renderedAudioGuideCheck(spec)};if(node)node.nodeValue=prior;
+      replaceExactRenderedGuideText=${replaceExactRenderedGuideText},anchor=${JSON.stringify(spec.missingAnchor)},marker=document.createElement('p'),
+      beforeHtml=article?.innerHTML??null;let mutation={count:0,changed:false,start:null},missing=null;
+      try{mutation=replaceExactRenderedGuideText(article,anchor,'audio ownership boundary omitted');missing=${renderedAudioGuideCheck(spec)};}
+      finally{if(article&&beforeHtml!==null)article.innerHTML=beforeHtml;}
       const contradictions=[];for(const copy of ['Compendium filtering auto-plays the selected creature call.',
         'Listen to biosphere reveals a hidden species and spends 1 Yield.',
         'The biosphere signal grants a discovery reward and changes the save.',
         'Creature voices Off silences the generic biosphere ambience.',
         'Sound Off still permits the owned creature call.',
         'Combat sound remains future work.']){
-        marker.textContent=copy;article?.appendChild(marker);contradictions.push({copy,result:${renderedAudioGuideCheck(spec)}});marker.remove();}
-      const restored=${renderedAudioGuideCheck(spec)};return {nodeFound:!!node,missing,contradictions,restored};})()`);
+        marker.textContent=copy;article?.appendChild(marker);try{contradictions.push({copy,result:${renderedAudioGuideCheck(spec)}});}
+        finally{marker.remove();}}
+      const exactRestore=article?.innerHTML===beforeHtml,restored=${renderedAudioGuideCheck(spec)};
+      return {mutation,missing,contradictions,exactRestore,restored};})()`);
     audioGuideRows.push({ id: spec.id, anchor: spec.missingAnchor, rendered, controls });
   }
   if (audioGuideRows.length !== 2 || audioGuideRows.some((row) => !row.rendered?.ok
-    || !row.controls?.nodeFound || row.controls?.missing?.ok
+    || row.controls?.mutation?.count !== 1 || !row.controls?.mutation?.changed || row.controls?.missing?.ok
     || !row.controls?.missing?.missing?.includes(row.anchor)
     || row.controls?.contradictions?.length !== 6
     || row.controls.contradictions.some((control) => control.result?.ok || !control.result?.contradictory)
-    || !row.controls?.restored?.ok)) {
+    || !row.controls?.exactRestore || !row.controls?.restored?.ok)) {
     fails.push('GUIDE AUDIO OWNERSHIP CONTROL FAILED — exact-companion/world Listen truth or its missing/contradictory controls failed: '
       + JSON.stringify(audioGuideRows));
   }
@@ -6609,7 +6830,7 @@ try {
      render the live writers and owned-reach boundary. Pure content lookup
      cannot establish that fillGuide actually placed the revised body. */
   const renderedCharterGuideCheck = (expectedTitle) => `(()=>{ const panel=document.getElementById('guidepanel'),article=panel?.querySelector('.guide-topic'),
-    text=article?.textContent||'',title=article?.querySelector('h4')?.textContent?.trim()||'',
+    text=[...(article?.childNodes??[])].map((node)=>node.textContent||'').join(' ').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null;
     const unnegated=${hasUnnegatedSentenceClaim};
     const required=[/first landfalls/i,/successful Mine actions/i,/successful fixed Fabricator outputs/i,
@@ -6632,12 +6853,12 @@ try {
       missing=required.map((pattern)=>pattern.source).filter((_,index)=>!required[index].test(text)),
       stale=/only Charter outcome this slice writes|only new Charter goal progress|requires (?:a )?(?:real )?(?:newly )?banked landfall|only after a newly changed/i.test(text),
       contradictory=unnegated(text,/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i)
-        ||unnegated(text,/chapter (?:numbers?|progress)[^.!?]{0,64}(?:alone )?(?:grants?|creates?|mints?)[^.!?]{0,48}(?:drive|system|reach)/i)
+        ||unnegated(text,/chapter (?:numbers?|progress)[^.!?]{0,64}(?:alone )?(?:grants?|creates?|mints?)[^.!?]{0,48}(?:drive|system|reach|one)/i)
         ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(text)
       ||/(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(text)
       ||/\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(text)
       ||/(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)/i.test(text)
-      ||/(?:failed pairing|refusal|stale (?:tab|result)|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(text)
+      ||unnegated(text,/(?:failed pairing|refusal|stale (?:Breed )?(?:tab|result)|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i)
       ||/Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)/i.test(text)
       ||/Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i.test(text)
       ||/accepted weekly conquest[^.!?]{0,96}(?:completes?|pays?|awards?)/i.test(text);
@@ -6660,27 +6881,28 @@ try {
   }
   const charterGuideCopyCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
     staleMarker=document.createElement('p'),contradictionMarker=document.createElement('p'),
-    walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,
-    breedAnchor='One successful Breed banks Breed a hybrid bloodline in the same offspring save';
-    let breedNode=null;while(walker&&(breedNode=walker.nextNode())&&!(breedNode.nodeValue||'').includes(breedAnchor)){}
-    const breedPrior=breedNode?.nodeValue||'';if(breedNode)breedNode.nodeValue=breedPrior.replace(breedAnchor,'Breed Charter co-delivery omitted');
-    const breedMissing=${renderedCharterGuideCheck('Chapters')};if(breedNode)breedNode.nodeValue=breedPrior;
+    replaceExactRenderedGuideText=${replaceExactRenderedGuideText},breedAnchor='One successful Breed banks Breed a hybrid bloodline in the same offspring save',
+    beforeHtml=article?.innerHTML??null;let breedMutation={count:0,changed:false,start:null},breedMissing=null;
+    try{breedMutation=replaceExactRenderedGuideText(article,breedAnchor,'Breed Charter co-delivery omitted');
+      breedMissing=${renderedCharterGuideCheck('Chapters')};}
+    finally{if(article&&beforeHtml!==null)article.innerHTML=beforeHtml;}
     staleMarker.textContent='First landfall banks live; it is the only Charter outcome this slice writes.';
-    article?.appendChild(staleMarker);const stale=${renderedCharterGuideCheck('Chapters')};staleMarker.remove();
+    article?.appendChild(staleMarker);let stale;try{stale=${renderedCharterGuideCheck('Chapters')};}finally{staleMarker.remove();}
     contradictionMarker.textContent='Research banks a fabrication Charter goal, and chapter progress alone grants the next drive.';
-    article?.appendChild(contradictionMarker);const contradiction=${renderedCharterGuideCheck('Chapters')};contradictionMarker.remove();
+    article?.appendChild(contradictionMarker);let contradiction;try{contradiction=${renderedCharterGuideCheck('Chapters')};}finally{contradictionMarker.remove();}
     const bioscanContradictions=[];for(const copy of ['Capture advances the Charter bioscan milestone.',
       'A miss banks one Chapter 2 life-discovery tick.','A successful capture on Sol banks one Charter bioscan tick.',
       'A later success on the same world banks another life-discovery tick.','A stale tab still banks one life-discovery tick.',
       'A failed write advances the Charter bioscan.','The separate Discover Life action is now available.']){
      contradictionMarker.textContent=copy;article?.appendChild(contradictionMarker);
-     bioscanContradictions.push({copy,result:${renderedCharterGuideCheck('Chapters')}});contradictionMarker.remove();}
+     try{bioscanContradictions.push({copy,result:${renderedCharterGuideCheck('Chapters')}});}finally{contradictionMarker.remove();}}
     const breedContradictions=[];for(const copy of ['A failed pairing also banks the Charter hybrid bloodline goal.',
       'A stale Breed result grants breeding credit.','Conquest goals remain hidden.']){
       contradictionMarker.textContent=copy;article?.appendChild(contradictionMarker);
-      breedContradictions.push({copy,result:${renderedCharterGuideCheck('Chapters')}});contradictionMarker.remove();}
-    const restored=${renderedCharterGuideCheck('Chapters')};return {breedNodeFound:!!breedNode,breedMissing,stale,contradiction,bioscanContradictions,breedContradictions,restored};})()`);
-  if (!charterGuideCopyCtl.breedNodeFound || charterGuideCopyCtl.breedMissing?.ok
+      try{breedContradictions.push({copy,result:${renderedCharterGuideCheck('Chapters')}});}finally{contradictionMarker.remove();}}
+    const exactRestore=article?.innerHTML===beforeHtml,restored=${renderedCharterGuideCheck('Chapters')};
+    return {breedMutation,breedMissing,stale,contradiction,bioscanContradictions,breedContradictions,exactRestore,restored};})()`);
+  if (charterGuideCopyCtl.breedMutation?.count !== 1 || !charterGuideCopyCtl.breedMutation?.changed || charterGuideCopyCtl.breedMissing?.ok
     || !charterGuideCopyCtl.breedMissing?.missing?.includes('One successful Breed banks Breed a hybrid bloodline in the same offspring save')
     || charterGuideCopyCtl.stale?.ok || !charterGuideCopyCtl.stale?.stale
     || charterGuideCopyCtl.contradiction?.ok || !charterGuideCopyCtl.contradiction?.contradictory
@@ -6688,7 +6910,7 @@ try {
    || charterGuideCopyCtl.bioscanContradictions.some((row) => row.result?.ok || !row.result?.contradictory)
     || charterGuideCopyCtl.breedContradictions?.length !== 3
     || charterGuideCopyCtl.breedContradictions.some((row) => row.result?.ok || !row.result?.contradictory)
-    || !charterGuideCopyCtl.restored?.ok) {
+    || !charterGuideCopyCtl.exactRestore || !charterGuideCopyCtl.restored?.ok) {
     fails.push('GUIDE CHARTER COPY CONTROL FAILED — stale/contradictory Charter or bioscan wording stayed current or failed to restore: '
       + JSON.stringify(charterGuideCopyCtl));
   }
@@ -6696,37 +6918,43 @@ try {
      has no `never mint` text. A mutation that forgets to render Charters must
      remain visibly red instead of becoming a vacuous polarity pass. */
   const charterGuidePolaritySequenceCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
-    walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null;let node=null;
-    while(walker&&(node=walker.nextNode())&&!node.nodeValue.includes('never mint')){}
-    return {targetFound:!!node,wrongTopic:${renderedCharterGuideCheck('Expedition Charters')}};})()`);
+    anchor='chapter progress alone never mints one',text=article?.textContent||'';
+    let targetCount=0,cursor=0;while(cursor<=text.length-anchor.length){const at=text.indexOf(anchor,cursor);if(at<0)break;targetCount+=1;cursor=at+anchor.length;}
+    return {targetCount,targetFound:targetCount>0,wrongTopic:${renderedCharterGuideCheck('Expedition Charters')}};})()`);
   const charterGuidePolarityTarget = await renderCharterGuideTopic(
     'charters', 'charters', 'Expedition Charters',
   );
   const charterGuidePolarityCtl = await evalIn(`(()=>{ const article=document.querySelector('#guidepanel .guide-topic'),
-    walker=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null;let node=null;
-    while(walker&&(node=walker.nextNode())&&!node.nodeValue.includes('never mint')){}
-    if(!node)return {changed:false,exactRestore:false,result:null,clause:null,restored:null};const prior=node.nodeValue,
-      beforeHtml=article.innerHTML,matches=prior.match(/never mint/g)||[];node.nodeValue=prior.replace('never mint','mint');
-    const changed=matches.length===1&&node.nodeValue!==prior,result=${renderedCharterGuideCheck('Expedition Charters')};
-    node.nodeValue=prior;const marker=document.createElement('p');
-    marker.textContent='Chapter progress does not merely record milestones; it grants system reach.';article.appendChild(marker);
-    const clause=${renderedCharterGuideCheck('Expedition Charters')};marker.remove();
-    const restored=${renderedCharterGuideCheck('Expedition Charters')};
-    return {changed,exactRestore:node.nodeValue===prior&&article.innerHTML===beforeHtml,result,clause,restored};})()`);
+    replaceExactRenderedGuideText=${replaceExactRenderedGuideText},anchor='chapter progress alone never mints one',
+    beforeHtml=article?.innerHTML??null,marker=document.createElement('p');let mutation={count:0,changed:false,start:null},result=null;
+    try{mutation=replaceExactRenderedGuideText(article,anchor,'chapter progress alone mints one');
+      result=${renderedCharterGuideCheck('Expedition Charters')};}
+    finally{if(article&&beforeHtml!==null)article.innerHTML=beforeHtml;}
+    marker.textContent='Chapter progress does not merely record milestones; it grants system reach.';article?.appendChild(marker);
+    let clause;try{clause=${renderedCharterGuideCheck('Expedition Charters')};}finally{marker.remove();}
+    marker.textContent='Chapter progress alone never grants system reach.';article?.appendChild(marker);
+    let negatedClause;try{negatedClause=${renderedCharterGuideCheck('Expedition Charters')};}finally{marker.remove();}
+    const exactRestore=article?.innerHTML===beforeHtml,restored=${renderedCharterGuideCheck('Expedition Charters')};
+    return {mutation,exactRestore,result,clause,negatedClause,restored};})()`);
   const chartersGuideAfterPolarity = await renderCharterGuideTopic('charters', 'charters', 'Expedition Charters');
   const ascentGuideAfterPolarity = await renderCharterGuideTopic('ascent', 'ascent', 'Chapters');
   if (charterGuidePolaritySequenceCtl.targetFound
     || charterGuidePolaritySequenceCtl.wrongTopic?.ok !== false
     || !/Chapters/.test(charterGuidePolaritySequenceCtl.wrongTopic?.title ?? '')
     || !charterGuidePolarityTarget.ok
-    || !charterGuidePolarityCtl.changed || !charterGuidePolarityCtl.exactRestore
+    || charterGuidePolarityCtl.mutation?.count !== 1 || !charterGuidePolarityCtl.mutation?.changed || !charterGuidePolarityCtl.exactRestore
     || charterGuidePolarityCtl.result?.ok !== false
     || !Array.isArray(charterGuidePolarityCtl.result?.missing)
-    || charterGuidePolarityCtl.result.missing.length !== 0
+    || charterGuidePolarityCtl.result.missing.length !== 1
+    || !charterGuidePolarityCtl.result.missing.includes('(?:invents? no|without invented) goals?|chapter progress alone never mints one')
     || charterGuidePolarityCtl.result?.stale !== false
     || charterGuidePolarityCtl.result?.contradictory !== true
     || charterGuidePolarityCtl.clause?.ok !== false
+    || charterGuidePolarityCtl.clause?.missing?.length !== 0
     || charterGuidePolarityCtl.clause?.contradictory !== true
+    || charterGuidePolarityCtl.negatedClause?.ok !== true
+    || charterGuidePolarityCtl.negatedClause?.missing?.length !== 0
+    || charterGuidePolarityCtl.negatedClause?.contradictory !== false
     || charterGuidePolarityCtl.restored?.ok !== true
     || !chartersGuideAfterPolarity.ok || !ascentGuideAfterPolarity.ok) {
     fails.push('GUIDE CHARTER POLARITY CONTROL FAILED — never-mint/semicolon-claim polarity or exact two-topic restore was not independently enforced: '
@@ -8880,18 +9108,23 @@ try {
     fails.push('SAVED ROUTE AUTHORIZATION: persisted repair changed more than the view/normal export projection: '
       + JSON.stringify(outerAuthRepairedRaw));
   }
-  const outerAtlasSetup = await evalIn(`(()=>{ document.getElementById('railatlas').click();
-    const row=document.querySelector('#atlaspanel [data-aid="outer-galaxy"]'),r=row?.getBoundingClientRect(),s=window.__CF_SLICE__.api.state();
-    return {row:{exists:!!row,tag:row?.tagName||null,disabled:!!row?.disabled,aria:row?.getAttribute('aria-disabled')||null,
-      x:r?(r.left+r.right)/2:null,y:r?(r.top+r.bottom)/2:null,h:r?.height||0},before:s};})()`);
+  await evalIn(`document.getElementById('railatlas')?.click()`);
+  const outerAtlasSetup = {
+    target: await evalIn(atlasTravelTargetExpression('outer-galaxy')),
+    before: await evalIn(`window.__CF_SLICE__.api.state()`),
+  };
+  const outerAtlasTargetAssessment = assessAtlasTravelTarget(outerAtlasSetup.target, {
+    atlasId: 'outer-galaxy',
+  });
   const outerAtlasRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
-  if (!outerAtlasSetup.row.exists || outerAtlasSetup.row.tag !== 'BUTTON' || outerAtlasSetup.row.disabled
-    || outerAtlasSetup.row.aria === 'true' || !(outerAtlasSetup.row.h >= 44)
-    || outerAtlasSetup.before.panelOpen !== 'atlas') {
-    fails.push('ATLAS AUTHORIZATION SETUP: source-proven outer route was not an enabled real row: '
-      + JSON.stringify(outerAtlasSetup));
+  let outerAtlasPointer = null;
+  if (!outerAtlasTargetAssessment.ok) {
+    fails.push('ATLAS AUTHORIZATION SETUP: source-proven outer route did not expose one enabled, settled native Travel action: '
+      + JSON.stringify({ setup: outerAtlasSetup, assessment: outerAtlasTargetAssessment }));
   } else {
-    await clickDesktopPoint({ x: outerAtlasSetup.row.x, y: outerAtlasSetup.row.y });
+    await armDesktopPointerReceipt();
+    await clickDesktopPoint({ x: outerAtlasSetup.target.travel.x, y: outerAtlasSetup.target.travel.y });
+    outerAtlasPointer = await takeDesktopPointerReceipt();
   }
   await sleep(120);
   const outerAtlasAfter = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -8903,14 +9136,33 @@ try {
     panelOpen: state.panelOpen, cardOpen: state.cardOpen, cardTitle: state.cardTitle,
     renderedScene: state.renderedScene, atlasCount: state.atlasCount, save: state.save,
   });
-  const outerAtlasBoundary = outerAtlasAfter.toastSerial > outerAtlasSetup.before.toastSerial
-    && /Beyond Your Saved Reach/.test(outerAtlasAfter.toastText)
-    && !/Beyond Your Charter/.test(outerAtlasAfter.toastText);
-  if (atlasAuthStableProjection(outerAtlasAfter) !== atlasAuthStableProjection(outerAtlasSetup.before)
-    || outerAtlasRawAfter !== outerAtlasRawBefore || !outerAtlasBoundary) {
+  const assessOuterAtlasAuthorization = ({ before, after, rawBefore, rawAfter, target, pointer }) => {
+    const targetAssessment = assessAtlasTravelTarget(target, { atlasId: 'outer-galaxy' });
+    const checks = {
+      target: targetAssessment.ok,
+      pointer: pointer?.trusted === true && pointer.pointerType === 'mouse'
+        && pointer.atlasTravelId === 'outer-galaxy' && pointer.atlasRowId === 'outer-galaxy'
+        && pointer.atlasActionTag === 'BUTTON'
+        && Math.abs(pointer.x - target?.travel?.x) <= 0.75
+        && Math.abs(pointer.y - target?.travel?.y) <= 0.75,
+      state: atlasAuthStableProjection(after) === atlasAuthStableProjection(before),
+      storage: rawAfter === rawBefore,
+      boundary: after?.toastSerial > before?.toastSerial
+        && String(after?.toastText || '').startsWith('⬆ Beyond Your Saved Reach')
+        && !String(after?.toastText || '').includes('Beyond Your Charter'),
+    };
+    return { ok: Object.values(checks).every((value) => value === true), checks, targetAssessment };
+  };
+  const outerAtlasAuthorization = assessOuterAtlasAuthorization({
+    before: outerAtlasSetup.before, after: outerAtlasAfter,
+    rawBefore: outerAtlasRawBefore, rawAfter: outerAtlasRawAfter,
+    target: outerAtlasSetup.target, pointer: outerAtlasPointer,
+  });
+  if (outerAtlasTargetAssessment.ok && !outerAtlasAuthorization.ok) {
     fails.push('ATLAS AUTHORIZATION: enabled outer route bypassed/closed navigation, changed ledger/storage, or missed its exact boundary: '
       + JSON.stringify({ before: outerAtlasSetup.before, after: outerAtlasAfter,
-        rawStable: outerAtlasRawAfter === outerAtlasRawBefore, outerAtlasBoundary }));
+        rawStable: outerAtlasRawAfter === outerAtlasRawBefore, target: outerAtlasSetup.target,
+        pointer: outerAtlasPointer, assessment: outerAtlasAuthorization }));
   }
   const atlasAuthBypassCtl = {
     ...outerAtlasAfter,
@@ -8918,8 +9170,39 @@ try {
     galX: OUTER_REACH_GALAXY.x, galY: OUTER_REACH_GALAXY.y,
     panelOpen: null,
   };
-  if (atlasAuthStableProjection(atlasAuthBypassCtl) === atlasAuthStableProjection(outerAtlasSetup.before)) {
-    fails.push('ATLAS AUTHORIZATION CONTROL FAILED — injected direct outer-galaxy bypass stayed green');
+  if (outerAtlasAuthorization.ok) {
+    const atlasAuthControl = (mutate) => {
+      const candidate = structuredClone({
+        before: outerAtlasSetup.before, after: outerAtlasAfter,
+        rawBefore: outerAtlasRawBefore, rawAfter: outerAtlasRawAfter,
+        target: outerAtlasSetup.target, pointer: outerAtlasPointer,
+      });
+      mutate(candidate);
+      return assessOuterAtlasAuthorization(candidate);
+    };
+    const atlasAuthorizationControls = {
+      directBypass: atlasAuthControl((candidate) => { candidate.after = atlasAuthBypassCtl; }),
+      wrapperBecomesAction: atlasAuthControl((candidate) => {
+        candidate.target.row.tag = 'BUTTON'; candidate.target.row.interactive = true;
+      }),
+      wrongTarget: atlasAuthControl((candidate) => { candidate.target.travel.id = 'p133'; }),
+      unhitTarget: atlasAuthControl((candidate) => { candidate.target.travel.hit = false; }),
+      wrongAction: atlasAuthControl((candidate) => { candidate.pointer.atlasTravelId = 'p133'; }),
+      wrongRow: atlasAuthControl((candidate) => { candidate.pointer.atlasRowId = 'p133'; }),
+      untrusted: atlasAuthControl((candidate) => { candidate.pointer.trusted = false; }),
+      coordinateDrift: atlasAuthControl((candidate) => { candidate.pointer.x += 2; }),
+      storageDrift: atlasAuthControl((candidate) => { candidate.rawAfter += ' '; }),
+      missingBoundary: atlasAuthControl((candidate) => {
+        candidate.after.toastSerial = candidate.before.toastSerial;
+      }),
+      wrongBoundary: atlasAuthControl((candidate) => {
+        candidate.after.toastText = '⬆ Beyond Your Charter';
+      }),
+    };
+    if (Object.values(atlasAuthorizationControls).some((control) => control.ok)) {
+      fails.push('ATLAS AUTHORIZATION CONTROLS FAILED — a route bypass, wrong native target, storage drift, or boundary mutation stayed green: '
+        + JSON.stringify(atlasAuthorizationControls));
+    }
   }
   if (outerAtlasAfter.panelOpen === 'atlas') await closeDesktopPanel();
 
@@ -9122,10 +9405,11 @@ try {
       + JSON.stringify(f4PersistControls));
   }
 
-  /* Seed a genuine old ordinal-zero receipt, arm a native clear witness, and
-     invoke the real validated import replacement. The next document must see
-     an empty raw receipt store and freshly durable ordinal zero before its
-     diagnostics-only no-product derivation commits one real F4 outcome. */
+  /* Seed a genuine old ordinal-zero receipt, arm a native replacement
+     witness, and invoke the real validated import. The replacement boundary
+     must reset receipts/RNG atomically. The fixture-owned progression oracle
+     then selects either an empty current prefix or exactly one boot-catch-up
+     Arc 9 receipt before Smoke appends the immediately following outcome. */
   const f4StageStarted = await evalIn(STAGE_OLD_F4_RECEIPT_EXPRESSION);
   const f4StagedRaw = await evalIn(READ_F4_AUTHORITY_EXPRESSION);
   const f4TraceArmed = await evalIn(ARM_F4_REPLACEMENT_TRACE_EXPRESSION);
@@ -9135,10 +9419,16 @@ try {
   await waitForSlice(sess, 'F4 receipt-reset import replacement', { previousToken: f4ReplacementToken });
   await assertBootTickerRunning('F4 receipt-reset replacement');
   await waitForF4Writable('F4 replacement authority', { previousToken: f4ReplacementToken });
+  const f4ResetState = await evalIn(`window.__CF_SLICE__.api.state()`);
   const f4Reset = {
-    state: await evalIn(`window.__CF_SLICE__.api.state()`),
+    state: f4ResetState,
     raw: await evalIn(READ_F4_AUTHORITY_EXPRESSION),
     trace: await evalIn(`JSON.parse(localStorage.getItem('cf_slice_f4_replacement_trace')||'null')`),
+    ceremony: {
+      toastOn: f4ResetState.toastOn,
+      toastSerial: f4ResetState.toastSerial,
+      queuedFx: await evalIn(`document.querySelectorAll('[data-progression-ceremony-fx]').length`),
+    },
   };
   const f4ProductBeforeOutcome = JSON.stringify(f4Reset.state.save);
   const f4Outcome = await evalIn(`window.__CF_SLICE__.api.__smokeCommitF4Outcome()`);
@@ -9148,24 +9438,52 @@ try {
   };
   const f4ReplacementBundle = {
     staged: f4StagedRaw,
+    replacement: f4Reset.trace,
     reset: f4Reset,
     outcome: f4Outcome,
     after: f4AfterOutcome,
     productStable: JSON.stringify(f4AfterOutcome.state.save) === f4ProductBeforeOutcome,
+    expectation: F4_REPLACEMENT_EXPECTATION,
   };
   const f4ReplacementAssessment = assessF4ReplacementOutcome(f4ReplacementBundle);
   if (!f4StageStarted || !f4TraceArmed || !f4ReplacementAssessment.ok) {
-    fails.push('F4 REPLACEMENT/OUTCOME: old receipt was not atomically reset before one real ordinal-zero outcome: '
+    fails.push('F4 REPLACEMENT/OUTCOME: replacement reset, expected boot prefix, or immediate Smoke outcome disagreed: '
       + JSON.stringify({ f4StageStarted, f4TraceArmed, assessment: f4ReplacementAssessment, bundle: f4ReplacementBundle }));
   }
   const f4ReplacementControls = [
-    assessF4ReplacementOutcome({ ...f4ReplacementBundle, reset: { ...f4Reset, raw: { ...f4Reset.raw, receiptKeys: ['receipt:0'] } } }),
-    assessF4ReplacementOutcome({ ...f4ReplacementBundle, reset: { ...f4Reset, trace: { ...f4Reset.trace, stores: ['receipts'] } } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, staged: { ...f4StagedRaw,
+      receiptRows: [{ ...f4StagedRaw.receiptRows[0], witness: 'wrong-old-expedition' }] } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, replacement: { ...f4Reset.trace, stores: ['receipts'] } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, replacement: {
+      ...f4Reset.trace, replacementRevision: f4Reset.trace.replacementRevision + 1,
+    } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, reset: { ...f4Reset, raw: { ...f4Reset.raw,
+      receiptRows: [{ ...f4Reset.raw.receiptRows[0], witness: 'arc9p1:wrong' }],
+    } } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, reset: { ...f4Reset,
+      state: { ...f4Reset.state, save: { ...f4Reset.state.save,
+        unlocked: f4Reset.state.save.unlocked.slice(0, -1),
+      } },
+    } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, reset: { ...f4Reset,
+      raw: { ...f4Reset.raw, legacyRaw: JSON.stringify({
+        ...JSON.parse(f4Reset.raw.legacyRaw), essence: Number(JSON.parse(f4Reset.raw.legacyRaw).essence) + 1,
+      }) },
+    } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, reset: { ...f4Reset,
+      ceremony: { ...f4Reset.ceremony, toastOn: true },
+    } }),
     assessF4ReplacementOutcome({ ...f4ReplacementBundle, outcome: { ...f4Outcome, kind: 'duplicate-receipt' } }),
-    assessF4ReplacementOutcome({ ...f4ReplacementBundle, after: { ...f4AfterOutcome, raw: { ...f4AfterOutcome.raw, ordinal: 0 } } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, outcome: { ...f4Outcome,
+      beforeOrdinal: f4Outcome.beforeOrdinal - 1,
+    } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, after: { ...f4AfterOutcome,
+      raw: { ...f4AfterOutcome.raw, ordinal: f4AfterOutcome.raw.ordinal - 1 },
+    } }),
+    assessF4ReplacementOutcome({ ...f4ReplacementBundle, productStable: false }),
   ];
   if (f4ReplacementControls.some((control) => control.ok)) {
-    fails.push('F4 REPLACEMENT/OUTCOME CONTROL FAILED — uncleared/non-atomic/duplicate/non-advanced evidence stayed green: '
+    fails.push('F4 REPLACEMENT/OUTCOME CONTROL FAILED — replacement, boot-prefix, progression-delta, presentation, or Smoke mutation stayed green: '
       + JSON.stringify(f4ReplacementControls));
   }
 
@@ -10303,12 +10621,9 @@ try {
           { alreadyReported: true });
       }
       const reloadSurface = await evalIn(`(()=>{const S=window.__CF_SLICE__,inventory=document.getElementById('inventorypanel'),
-        inventoryOpener=document.getElementById('railinventory'),row=document.querySelector('#atlaspanel [data-aid="p133"]'),
-        r=row?.getBoundingClientRect();return {panelOpen:S?.api?.state?.().panelOpen??null,
+        inventoryOpener=document.getElementById('railinventory');return {panelOpen:S?.api?.state?.().panelOpen??null,
           inventoryHidden:inventory?.style.display==='none'&&inventory?.getAttribute('aria-hidden')==='true',
           inventoryExpanded:inventoryOpener?.getAttribute('aria-expanded')||null,
-          atlasRow:{id:row?.getAttribute('data-aid')||null,tag:row?.tagName||null,disabled:!!row?.disabled,
-            ariaDisabled:row?.getAttribute('aria-disabled')||null,height:r?.height||0},
           inventoryDiagnostics:S?.api?.inventoryDiagnostics?.()||null};})()`);
       Object.assign(reloadSurface, {
         inventoryPointer: inventoryReloadPointer,
@@ -10320,6 +10635,7 @@ try {
         },
         atlasPreClick,
         atlasPointer,
+        atlasTarget: await evalIn(atlasTravelTargetExpression('p133')),
       });
       const reloadBundle = {
         committed: inventoryCommittedRaw, reloaded: inventoryReloadRaw,
@@ -10433,11 +10749,27 @@ try {
           atlasPanelState: reloadSurfaceControl((surface) => { surface.panelOpen = 'inventory'; }),
           inventoryStillVisible: reloadSurfaceControl((surface) => { surface.inventoryHidden = false; }),
           inventoryStillExpanded: reloadSurfaceControl((surface) => { surface.inventoryExpanded = 'true'; }),
-          atlasRowIdentity: reloadSurfaceControl((surface) => { surface.atlasRow.id = 'not-earth'; }),
-          atlasRowRole: reloadSurfaceControl((surface) => { surface.atlasRow.tag = 'DIV'; }),
-          atlasRowHeight: reloadSurfaceControl((surface) => { surface.atlasRow.height = 43; }),
+          atlasTargetUnsettled: reloadSurfaceControl((surface) => { surface.atlasTarget.settled = false; }),
+          atlasTargetPanel: reloadSurfaceControl((surface) => { surface.atlasTarget.panelOpen = 'inventory'; }),
+          atlasRowMissing: reloadSurfaceControl((surface) => { surface.atlasTarget.row.exists = false; }),
+          atlasRowIdentity: reloadSurfaceControl((surface) => { surface.atlasTarget.row.id = 'not-earth'; }),
+          atlasRowRole: reloadSurfaceControl((surface) => { surface.atlasTarget.row.tag = 'BUTTON'; }),
+          atlasRowInteractive: reloadSurfaceControl((surface) => { surface.atlasTarget.row.interactive = true; }),
+          atlasTravelDuplicate: reloadSurfaceControl((surface) => { surface.atlasTarget.row.travelCount = 2; }),
+          atlasFavoriteMissing: reloadSurfaceControl((surface) => { surface.atlasTarget.row.favoriteCount = 0; }),
+          atlasTravelMissing: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.exists = false; }),
+          atlasTravelIdentity: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.id = 'not-earth'; }),
+          atlasTravelRole: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.tag = 'DIV'; }),
+          atlasTravelType: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.type = 'submit'; }),
+          atlasTravelAria: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.ariaDisabled = 'true'; }),
+          atlasTravelLabel: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.ariaLabel = 'Homeworld'; }),
+          atlasTravelRendered: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.rendered = false; }),
+          atlasTravelWidth: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.width = 0; }),
+          atlasTravelHeight: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.height = 43; }),
+          atlasTravelCoordinate: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.x = null; }),
+          atlasTravelHit: reloadSurfaceControl((surface) => { surface.atlasTarget.travel.hit = false; }),
           atlasDisabled: reloadSurfaceControl((surface) => {
-            surface.atlasRow.disabled = true; surface.atlasRow.ariaDisabled = 'true';
+            surface.atlasTarget.travel.disabled = true; surface.atlasTarget.travel.ariaDisabled = 'true';
           }),
           retainedModal: reloadSurfaceControl((surface) => {
             surface.inventoryDiagnostics.activeCount = 1; surface.inventoryDiagnostics.retainedCount = 1;
@@ -19422,22 +19754,56 @@ try {
      remain a canonical Atlas action, and reach explicit planetfall with a
      non-null ordinal/key receipt. */
   const atlasBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
-  const atlasSetup = await evalIn(`(()=>{const opener=document.getElementById('railatlas');opener?.click();
-    const row=document.querySelector('#atlaspanel [data-aid=${JSON.stringify(`w|${ARC3_OTHER_WORLD_CONTROL_ADDRESS.key}`)}]');row?.focus();
-    return {row:!!row,disabled:row?.disabled??null,focus:document.activeElement===row};})()`);
+  const dtrainAtlasId = `w|${ARC3_OTHER_WORLD_CONTROL_ADDRESS.key}`;
+  await evalIn(`document.getElementById('railatlas')?.click()`);
+  const atlasSetup = await evalIn(atlasTravelTargetExpression(dtrainAtlasId, { focus: true }));
+  const atlasSetupAssessment = assessAtlasTravelTarget(atlasSetup, {
+    atlasId: dtrainAtlasId, focus: true,
+  });
+  if (!atlasSetupAssessment.ok) {
+    fails.push('D-TRAIN EARTH ATLAS SETUP: restored row did not own one exact focused native Travel action: '
+      + JSON.stringify({ atlasSetup, atlasSetupAssessment }));
+    failSliceWithoutCascade('D-TRAIN EARTH ATLAS SETUP: red exact Travel target stopped keyboard travel and Land', {
+      alreadyReported: true,
+    });
+  }
+  await armDesktopAtlasKeyReceipt();
   await dispatchKeyPress(sess, 'Enter', 'Enter');
+  const atlasKeyReceipt = await takeDesktopAtlasKeyReceipt();
+  const atlasKeyAssessment = assessAtlasKeyReceipt(atlasKeyReceipt, {
+    atlasId: dtrainAtlasId, key: 'Enter', code: 'Enter',
+  });
   const atlasSurvey = await waitDesktopValue('D-TRAIN canonical Earth Atlas travel', `(()=>{const s=window.__CF_SLICE__.api.state();
-    return s.panelOpen===null&&s.mode==='system'&&s.star===424242&&s.cardOpen&&s.cardTitle==='Earth'?s:null;})()`);
+    return s.panelOpen===null&&s.mode==='system'&&s.star===424242&&s.cardOpen&&s.cardTitle==='Earth'?s:null;})()`)
+    .catch(() => null);
+  if (!atlasKeyAssessment.ok || !atlasSurvey
+    || atlasSurvey.navGalaxyKey === null || atlasSurvey.navStarKey === null || atlasSurvey.navWorldKey !== null
+    || !renderedSceneAdvanced(atlasBefore, atlasSurvey)) {
+    fails.push('D-TRAIN EARTH ATLAS KEYBOARD TRAVEL: trusted Enter on the exact Travel action did not reach the canonical system survey: '
+      + JSON.stringify({ atlasSetup, atlasKeyReceipt, atlasKeyAssessment, atlasSurvey }));
+    failSliceWithoutCascade('D-TRAIN EARTH ATLAS KEYBOARD TRAVEL: red exact action receipt/outcome stopped dependent Land', {
+      alreadyReported: true,
+    });
+  }
+  const dtrainAtlasKeyControl = assessAtlasKeyReceipt({
+    ...atlasKeyReceipt, atlasRowId: 'wrong-dtrain-row',
+  }, { atlasId: dtrainAtlasId, key: 'Enter', code: 'Enter' });
+  if (dtrainAtlasKeyControl.ok) {
+    failSliceWithoutCascade('D-TRAIN EARTH ATLAS KEY CONTROL FAILED — wrong parent row identity stayed green');
+  }
   const atlasLand = await evalIn(`(()=>{const button=document.querySelector('#survey [data-act="landcta"]');
     button?.click();return !!button;})()`);
-  const atlasSurface = await waitDesktopValue('D-TRAIN explicit Earth planetfall', `(()=>{const s=window.__CF_SLICE__.api.state();
-    return s.mode==='surface'&&s.planet===133&&s.planetOrdinal===2?s:null;})()`);
-  if (!atlasSetup.row || atlasSetup.disabled !== false || !atlasSetup.focus || !atlasLand
-    || atlasSurvey.navGalaxyKey === null || atlasSurvey.navStarKey === null || atlasSurvey.navWorldKey !== null
-    || atlasSurface.navWorldKey === null || !renderedSceneAdvanced(atlasBefore, atlasSurvey)
+  const atlasSurface = atlasLand
+    ? await waitDesktopValue('D-TRAIN explicit Earth planetfall', `(()=>{const s=window.__CF_SLICE__.api.state();
+      return s.mode==='surface'&&s.planet===133&&s.planetOrdinal===2?s:null;})()`).catch(() => null)
+    : null;
+  if (!atlasLand || !atlasSurface || atlasSurface.navWorldKey === null
     || !renderedSceneAdvanced(atlasSurvey, atlasSurface)) {
-    fails.push('D-TRAIN EARTH ATLAS: restored row was not a canonical system-survey → explicit Land route: '
-      + JSON.stringify({ atlasSetup, atlasSurvey, atlasLand, atlasSurface }));
+    fails.push('D-TRAIN EARTH ATLAS PLANETFALL: canonical system survey did not complete the explicit Land route: '
+      + JSON.stringify({ atlasSurvey, atlasLand, atlasSurface }));
+    failSliceWithoutCascade('D-TRAIN EARTH ATLAS PLANETFALL: red explicit Land outcome stopped dependent mutable work', {
+      alreadyReported: true,
+    });
   }
 
   /* Opposite arbitration direction: Import claims first while waiting on an
@@ -20060,59 +20426,104 @@ try {
 
   /* The Star Atlas uses the same native contract, but its outcome is travel:
      Space and Enter must both route through jumpToView and return focus to
-     the canvas. A focusable span and a 20px button are deliberate controls. */
-  const atlasRowCheck = `(()=>{ const row=document.querySelector('#atlaspanel [data-aid]'),r=row?.getBoundingClientRect();
-    return {ok:row?.tagName==='BUTTON'&&row?.type==='button'&&!!r&&r.height>=44,
-      id:row?.getAttribute('data-aid')||null,tag:row?.tagName||null,type:row?.type||null,
-      height:r?.height||0,focus:document.activeElement===row}; })()`;
-  const atlasRow = await evalIn(`(()=>{ const opener=document.getElementById('railatlas'); opener.focus(); opener.click();
-    const row=document.querySelector('#atlaspanel [data-aid]'); row?.focus(); return ${atlasRowCheck}; })()`);
-  if (!atlasRow.ok || !atlasRow.focus || atlasRow.id !== 'p133') {
-    fails.push('ATLAS KEYBOARD: veteran Earth row is not a focused native 44px action: ' + JSON.stringify(atlasRow));
+     the canvas. The row is intentionally a non-interactive DIV; a focusable
+     span substituted for its exact Travel button and a 20px Travel button are
+     deliberate controls. */
+  await evalIn(`(()=>{const opener=document.getElementById('railatlas');opener?.focus();opener?.click();return true})()`);
+  const atlasRow = await evalIn(atlasTravelTargetExpression('p133', { focus: true }));
+  const atlasRowAssessment = assessAtlasTravelTarget(atlasRow, { atlasId: 'p133', focus: true });
+  if (!atlasRowAssessment.ok) {
+    fails.push('ATLAS KEYBOARD: veteran Earth row did not own one focused native 44px Travel action: '
+      + JSON.stringify({ atlasRow, atlasRowAssessment }));
+    failSliceWithoutCascade('ATLAS KEYBOARD SETUP: red exact Travel target stopped disabled-route and keyboard judgments', {
+      alreadyReported: true,
+    });
   }
   const unavailableAtlasRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
-  const unavailableAtlas = await evalIn(`(()=>{ const ids=['legacy-star','forged-earth'],S=window.__CF_SLICE__;
-    const shape=()=>{const s=S.api.state();return JSON.stringify({mode:s.mode,gal:s.gal,star:s.star,planet:s.planet,
-      panel:s.panelOpen,card:s.cardOpen,atlas:s.atlasCount,save:s.save,rendered:s.renderedScene});};
-    const before=shape();const rows=ids.map((id)=>{const row=document.querySelector('#atlaspanel [data-aid="'+id+'"]');
-      const result={id,exists:!!row,tag:row?.tagName||null,disabled:!!row?.disabled,
-        aria:row?.getAttribute('aria-disabled')||null,honest:/route unavailable/i.test(row?.textContent||'')};
-      row?.click();return result;});const after=shape();
-    const controlRow=document.querySelector('#atlaspanel [data-aid="forged-earth"]');
-    let controlRejected=false;if(controlRow){controlRow.disabled=false;controlRow.removeAttribute('aria-disabled');
-      controlRejected=!(controlRow.disabled||controlRow.getAttribute('aria-disabled')==='true');
-      controlRow.disabled=true;controlRow.setAttribute('aria-disabled','true');}
-    return {rows,stable:before===after,controlRejected};})()`);
+  const atlasUnavailableProjection = (state) => canonicalJson({
+    mode: state?.mode, gal: state?.gal, star: state?.star, planet: state?.planet,
+    panel: state?.panelOpen, card: state?.cardOpen, atlas: state?.atlasCount,
+    save: state?.save, rendered: state?.renderedScene,
+  });
+  const unavailableAtlasBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const unavailableAtlasRows = [];
+  for (const id of ['legacy-star', 'forged-earth']) {
+    const target = await evalIn(atlasTravelTargetExpression(id));
+    const assessment = assessAtlasTravelTarget(target, { atlasId: id, enabled: false });
+    const honest = await evalIn(`(()=>{const row=[...document.querySelectorAll('#atlaspanel [data-sel="atlas-entry"][data-aid]')]
+      .find((candidate)=>candidate.getAttribute('data-aid')===${JSON.stringify(id)});return /route unavailable/i.test(row?.textContent||'')})()`);
+    await armDesktopPointerReceipt();
+    const dispatch = assessment.ok
+      ? await clickDesktopPoint({ x: target.travel.x, y: target.travel.y }) : null;
+    const pointer = await takeDesktopPointerReceipt();
+    unavailableAtlasRows.push({ id, target, assessment, honest, dispatch, pointer });
+  }
+  const unavailableAtlasAfter = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const unavailableAtlas = {
+    rows: unavailableAtlasRows,
+    stable: atlasUnavailableProjection(unavailableAtlasBefore)
+      === atlasUnavailableProjection(unavailableAtlasAfter),
+  };
   const unavailableAtlasRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
   if (unavailableAtlas.rows.length !== 2
-    || unavailableAtlas.rows.some((row) => !row.exists || row.tag !== 'BUTTON' || !row.disabled
-      || row.aria !== 'true' || !row.honest)
-    || !unavailableAtlas.stable || !unavailableAtlas.controlRejected
+    || unavailableAtlas.rows.some((row) => !row.assessment.ok || !row.honest
+      || row.dispatch?.kind !== 'cdp-mouse'
+      || Math.abs(row.dispatch.x - row.target.travel.x) > 0.75
+      || Math.abs(row.dispatch.y - row.target.travel.y) > 0.75
+      || (row.pointer !== null && (row.pointer.trusted !== true || row.pointer.pointerType !== 'mouse'
+        || row.pointer.atlasTravelId !== row.id || row.pointer.atlasRowId !== row.id
+        || row.pointer.atlasActionTag !== 'BUTTON')))
+    || !unavailableAtlas.stable
     || unavailableAtlasRawAfter !== unavailableAtlasRawBefore) {
     fails.push('ATLAS UNAVAILABLE ROUTES: incomplete/forged imports were not visible, disabled, honest, and byte-stable: '
       + JSON.stringify({ unavailableAtlas, rawStable: unavailableAtlasRawAfter === unavailableAtlasRawBefore }));
   }
-  const atlasPointerSetup = await evalIn(`(()=>{ const row=document.querySelector('#atlaspanel [data-aid]'); if(!row)return false;
-    const old=document.createElement('span'); old.id='cf-pointer-atlas-row'; old.tabIndex=0; old.dataset.aid=row.dataset.aid;
-    old.innerHTML=row.innerHTML; old.className=row.className; window.__cfNativeAtlasRow=row; row.replaceWith(old); old.focus(); return true; })()`);
+  const unavailableAtlasAssessmentControl = structuredClone(unavailableAtlasRows[1]?.target ?? null);
+  if (unavailableAtlasAssessmentControl?.travel) {
+    unavailableAtlasAssessmentControl.travel.disabled = false;
+    unavailableAtlasAssessmentControl.travel.ariaDisabled = null;
+  }
+  if (assessAtlasTravelTarget(unavailableAtlasAssessmentControl, {
+    atlasId: 'forged-earth', enabled: false,
+  }).ok) {
+    fails.push('ATLAS UNAVAILABLE CONTROL FAILED — an enabled forged route stayed disabled-green');
+  }
+  const atlasPointerSetup = await evalIn(`(()=>{ const native=document.querySelector('#atlaspanel [data-aid="p133"] [data-atlas-travel="p133"]');
+    if(!(native instanceof HTMLButtonElement))return false;const old=document.createElement('span');
+    old.id='cf-pointer-atlas-travel';old.tabIndex=0;old.dataset.atlasTravel=native.dataset.atlasTravel;
+    old.setAttribute('aria-label',native.getAttribute('aria-label')||'');old.textContent=native.textContent;
+    old.className=native.className;window.__cfNativeAtlasTravel=native;native.replaceWith(old);old.focus();return true})()`);
   if (atlasPointerSetup) await keyIn('Enter', 'Enter');
-  const atlasPointerCtl = await evalIn(`(()=>{ const old=document.getElementById('cf-pointer-atlas-row'),native=window.__cfNativeAtlasRow;
+  const atlasPointerCtl = await evalIn(`(()=>{ const old=document.getElementById('cf-pointer-atlas-travel'),native=window.__cfNativeAtlasTravel;
     const s=window.__CF_SLICE__.api.state(); const result={panel:s.panelOpen,mode:s.mode,card:s.cardOpen,
-      tag:old?.tagName||null,focus:document.activeElement===old};
-    if(old&&native){old.replaceWith(native);native.focus();} delete window.__cfNativeAtlasRow; return result; })()`);
+      id:old?.getAttribute('data-atlas-travel')||null,tag:old?.tagName||null,focus:document.activeElement===old};
+    if(old&&native){old.replaceWith(native);native.focus();} delete window.__cfNativeAtlasTravel; return result; })()`);
   if (!atlasPointerSetup || atlasPointerCtl.panel !== 'atlas' || atlasPointerCtl.mode !== 'surface'
-    || atlasPointerCtl.card || atlasPointerCtl.tag !== 'SPAN' || !atlasPointerCtl.focus) {
-    fails.push('ATLAS CONTROL FAILED — injected pointer-only row travelled on real Enter: '
+    || atlasPointerCtl.card || atlasPointerCtl.id !== 'p133'
+    || atlasPointerCtl.tag !== 'SPAN' || !atlasPointerCtl.focus) {
+    fails.push('ATLAS CONTROL FAILED — injected pointer-only Travel action travelled on real Enter: '
       + JSON.stringify({ atlasPointerSetup, atlasPointerCtl }));
   }
-  const atlasSizeCtl = await evalIn(`(()=>{ const row=document.querySelector('#atlaspanel [data-aid]'); if(!row)return null;
-    const prior=row.getAttribute('style'); row.style.setProperty('min-height','0','important');
-    row.style.setProperty('height','20px','important'); row.style.setProperty('max-height','20px','important');
-    row.style.setProperty('padding','0','important'); row.style.setProperty('overflow','hidden','important');
-    const height=row.getBoundingClientRect().height;
-    if(prior===null) row.removeAttribute('style'); else row.setAttribute('style',prior); row.focus(); return {height,ok:height>=44}; })()`);
+  const atlasSizeCtl = await evalIn(`(()=>{ const travel=document.querySelector('#atlaspanel [data-aid="p133"] [data-atlas-travel="p133"]');
+    if(!(travel instanceof HTMLButtonElement))return null;const prior=travel.getAttribute('style');
+    travel.style.setProperty('min-height','0','important');travel.style.setProperty('height','20px','important');
+    travel.style.setProperty('max-height','20px','important');travel.style.setProperty('padding','0','important');
+    travel.style.setProperty('overflow','hidden','important');const height=travel.getBoundingClientRect().height;
+    if(prior===null)travel.removeAttribute('style');else travel.setAttribute('style',prior);travel.focus();
+    return {id:travel.getAttribute('data-atlas-travel'),tag:travel.tagName,height,ok:height>=44};})()`);
   if (!atlasSizeCtl || atlasSizeCtl.ok) {
-    fails.push('ATLAS CONTROL FAILED — injected undersized row stayed 44px: ' + JSON.stringify(atlasSizeCtl));
+    fails.push('ATLAS CONTROL FAILED — injected undersized Travel action stayed 44px: ' + JSON.stringify(atlasSizeCtl));
+  }
+  const atlasSpaceSetup = await evalIn(atlasTravelTargetExpression('p133', { focus: true }));
+  const atlasSpaceSetupAssessment = assessAtlasTravelTarget(atlasSpaceSetup, {
+    atlasId: 'p133', focus: true,
+  });
+  if (!atlasSpaceSetupAssessment.ok) {
+    fails.push('ATLAS KEYBOARD: Earth Travel action was not restored after controls: '
+      + JSON.stringify({ atlasSpaceSetup, atlasSpaceSetupAssessment }));
+    failSliceWithoutCascade('ATLAS SPACE SETUP: red restored Travel target stopped key dispatch and dependent Enter', {
+      alreadyReported: true,
+    });
   }
   const atlasTravelLedger = (state) => JSON.stringify({
     ...state.save,
@@ -20120,31 +20531,77 @@ try {
     savedView: null,
   });
   const atlasBeforeTravel = await evalIn(`window.__CF_SLICE__.api.state()`);
+  await armDesktopAtlasKeyReceipt();
   await keyIn(' ', 'Space');
+  const atlasSpaceKeyReceipt = await takeDesktopAtlasKeyReceipt();
+  const atlasSpaceKeyAssessment = assessAtlasKeyReceipt(atlasSpaceKeyReceipt, {
+    atlasId: 'p133', key: ' ', code: 'Space',
+  });
   const atlasSpace = await waitDesktopValue('Atlas Space travel', `(()=>{ const s=window.__CF_SLICE__.api.state();
-    return s.panelOpen===null&&s.mode==='system'&&s.cardOpen?{...s,focus:document.activeElement===document.querySelector('canvas')}:null; })()`);
+    return s.panelOpen===null&&s.mode==='system'&&s.cardOpen?{...s,focus:document.activeElement===document.querySelector('canvas')}:null; })()`)
+    .catch(() => null);
   /* The veteran fixture names p133 “Homeworld”. Atlas travel must reopen the
      live customized survey, not regress it to the Atlas row's stale label. */
-  if (atlasSpace.star !== 424242 || atlasSpace.starX !== 560 || atlasSpace.starY !== 170
+  if (!atlasSpaceKeyAssessment.ok || !atlasSpace
+    || atlasSpace.star !== 424242 || atlasSpace.starX !== 560 || atlasSpace.starY !== 170
     || atlasSpace.galSize !== 78 || atlasSpace.cardTitle !== 'Homeworld' || !atlasSpace.focus
+    || !renderedSceneAdvanced(atlasBeforeTravel, atlasSpace)
     || atlasTravelLedger(atlasSpace) !== atlasTravelLedger(atlasBeforeTravel)) {
-    fails.push('ATLAS KEYBOARD: Space did not travel to the live Earth survey and return canvas focus: ' + JSON.stringify(atlasSpace));
+    fails.push('ATLAS KEYBOARD: trusted Space on the exact Travel action did not reach the live Earth survey and return canvas focus: '
+      + JSON.stringify({ atlasSpaceKeyReceipt, atlasSpaceKeyAssessment, atlasSpace }));
+    failSliceWithoutCascade('ATLAS SPACE TRAVEL: red exact key receipt/outcome stopped dependent Enter', {
+      alreadyReported: true,
+    });
   }
-  requireRenderedSceneAdvance('ATLAS PROVEN SPACE ROUTE', atlasBeforeTravel, atlasSpace);
-  const atlasEnterSetup = await evalIn(`(()=>{ const opener=document.getElementById('railatlas'); opener.focus(); opener.click();
-    const row=document.querySelector('#atlaspanel [data-aid="p133"]'); row?.focus(); return ${atlasRowCheck}; })()`);
-  if (!atlasEnterSetup.ok || !atlasEnterSetup.focus) {
-    fails.push('ATLAS KEYBOARD: Earth row did not restore for Enter: ' + JSON.stringify(atlasEnterSetup));
+  await evalIn(`(()=>{const opener=document.getElementById('railatlas');opener?.focus();opener?.click();return true})()`);
+  const atlasEnterSetup = await evalIn(atlasTravelTargetExpression('p133', { focus: true }));
+  const atlasEnterSetupAssessment = assessAtlasTravelTarget(atlasEnterSetup, {
+    atlasId: 'p133', focus: true,
+  });
+  if (!atlasEnterSetupAssessment.ok) {
+    fails.push('ATLAS KEYBOARD: Earth Travel action did not restore for Enter: '
+      + JSON.stringify({ atlasEnterSetup, atlasEnterSetupAssessment }));
+    failSliceWithoutCascade('ATLAS ENTER SETUP: red restored Travel target stopped key dispatch', {
+      alreadyReported: true,
+    });
   }
+  await armDesktopAtlasKeyReceipt();
   await keyIn('Enter', 'Enter');
+  const atlasEnterKeyReceipt = await takeDesktopAtlasKeyReceipt();
+  const atlasEnterKeyAssessment = assessAtlasKeyReceipt(atlasEnterKeyReceipt, {
+    atlasId: 'p133', key: 'Enter', code: 'Enter',
+  });
   const atlasEnter = await waitDesktopValue('Atlas Enter travel', `(()=>{ const s=window.__CF_SLICE__.api.state();
-    return s.panelOpen===null&&s.mode==='system'&&s.cardOpen?{...s,focus:document.activeElement===document.querySelector('canvas')}:null; })()`);
-  if (atlasEnter.star !== 424242 || atlasEnter.starX !== 560 || atlasEnter.starY !== 170
+    return s.panelOpen===null&&s.mode==='system'&&s.cardOpen?{...s,focus:document.activeElement===document.querySelector('canvas')}:null; })()`)
+    .catch(() => null);
+  if (!atlasEnterKeyAssessment.ok || !atlasEnter
+    || atlasEnter.star !== 424242 || atlasEnter.starX !== 560 || atlasEnter.starY !== 170
     || atlasEnter.galSize !== 78 || atlasEnter.cardTitle !== 'Homeworld' || !atlasEnter.focus
+    || !renderedSceneAdvanced(atlasSpace, atlasEnter)
     || atlasTravelLedger(atlasEnter) !== atlasTravelLedger(atlasBeforeTravel)) {
-    fails.push('ATLAS KEYBOARD: Enter did not travel to the live Earth survey and return canvas focus: ' + JSON.stringify(atlasEnter));
+    fails.push('ATLAS KEYBOARD: trusted Enter on the exact Travel action did not reach the live Earth survey and return canvas focus: '
+      + JSON.stringify({ atlasEnterKeyReceipt, atlasEnterKeyAssessment, atlasEnter }));
+    failSliceWithoutCascade('ATLAS ENTER TRAVEL: red exact key receipt/outcome stopped dependent Records', {
+      alreadyReported: true,
+    });
   }
-  requireRenderedSceneAdvance('ATLAS PROVEN ENTER ROUTE', atlasSpace, atlasEnter);
+  const atlasKeyReceiptControls = [
+    assessAtlasKeyReceipt({ ...atlasSpaceKeyReceipt, trusted: false }, {
+      atlasId: 'p133', key: ' ', code: 'Space',
+    }),
+    assessAtlasKeyReceipt({ ...atlasSpaceKeyReceipt, atlasTravelId: 'wrong-action' }, {
+      atlasId: 'p133', key: ' ', code: 'Space',
+    }),
+    assessAtlasKeyReceipt({ ...atlasEnterKeyReceipt, atlasRowId: 'wrong-row' }, {
+      atlasId: 'p133', key: 'Enter', code: 'Enter',
+    }),
+    assessAtlasKeyReceipt({ ...atlasEnterKeyReceipt, tag: 'DIV' }, {
+      atlasId: 'p133', key: 'Enter', code: 'Enter',
+    }),
+  ];
+  if (atlasKeyReceiptControls.some((control) => control.ok)) {
+    failSliceWithoutCascade('ATLAS KEYBOARD CONTROLS FAILED — an untrusted or wrong action/row/role receipt stayed green');
+  }
   /* 4c-records. Records over the real save: ordinary imported exploration
      rows remain, worlds-landed is the only visible Arc 3 writer, and Journal
      remains the only live subsection. Persisted Mine/Skim/Fabricator stats
@@ -23644,19 +24101,30 @@ try {
     return assessF4ReadyAuthority({ ...snapshot, state, previousToken }).ok;
   });
   const nativeControlClick = async (session, selector) => {
-    const target = await evalF4Control(session, `(()=>{window.__cfOutcomePointerAbort?.abort();
+    const target = await evalF4Control(session, `(async()=>{window.__cfOutcomePointerAbort?.abort();
       const control=[...document.querySelectorAll(${JSON.stringify(selector)})].find((candidate)=>candidate instanceof HTMLElement
         &&candidate.getClientRects().length===1&&candidate.getBoundingClientRect().width>0&&candidate.getBoundingClientRect().height>0
         &&getComputedStyle(candidate).display!=='none'&&getComputedStyle(candidate).visibility!=='hidden');
       if(!(control instanceof HTMLElement))return null;
-      control.scrollIntoView({block:'nearest',inline:'nearest'});const rect=control.getBoundingClientRect(),x=(rect.left+rect.right)/2,
-        y=(rect.top+rect.bottom)/2,controller=new AbortController();window.__cfOutcomePointerAbort=controller;
+      control.scrollIntoView({block:'center',inline:'nearest',behavior:'auto'});
+      await new Promise((resolve)=>requestAnimationFrame(()=>setTimeout(resolve,0)));
+      const rect=control.getBoundingClientRect(),x=(rect.left+rect.right)/2,y=(rect.top+rect.bottom)/2,
+        hit=document.elementFromPoint(x,y),controller=new AbortController();window.__cfOutcomePointerAbort=controller;
       window.__cfOutcomePointer=null;document.addEventListener('pointerdown',(event)=>{const element=event.target instanceof Element
-        ?event.target.closest('[data-act],[data-aid],button'):null;window.__cfOutcomePointer={trusted:event.isTrusted===true,
-          pointerType:event.pointerType||null,act:element?.getAttribute('data-act')||null,id:element?.getAttribute('data-aid')
-            ||element?.id||null};},{capture:true,once:true,signal:controller.signal});
-      return {x,y,width:rect.width,height:rect.height,hit:document.elementFromPoint(x,y)===control
-        ||control.contains(document.elementFromPoint(x,y))};})()`);
+        ?event.target.closest('[data-act],[data-atlas-travel],[data-aid],button'):null,
+        atlasTravel=event.target instanceof Element?event.target.closest('[data-atlas-travel]'):null,
+        atlasRow=atlasTravel?.closest('[data-aid]')||null;window.__cfOutcomePointer={trusted:event.isTrusted===true,
+          pointerType:event.pointerType||null,tag:element?.tagName||null,act:element?.getAttribute('data-act')||null,
+          atlasTravelId:atlasTravel?.getAttribute('data-atlas-travel')||null,
+          atlasRowId:atlasRow?.getAttribute('data-aid')||null,
+          id:atlasTravel?.getAttribute('data-atlas-travel')||element?.getAttribute('data-aid')||element?.id||null,
+          x:event.clientX,y:event.clientY};
+        },{capture:true,once:true,signal:controller.signal});
+      return {settled:true,x,y,width:rect.width,height:rect.height,id:control.id||null,tag:control.tagName,
+        type:control instanceof HTMLButtonElement?control.type:null,
+        atlasTravelId:control.getAttribute('data-atlas-travel'),
+        atlasRowId:control.closest('[data-aid]')?.getAttribute('data-aid')||null,
+        hit:hit===control||control.contains(hit)};})()`);
     if (!target || target.width < 1 || target.height < 1 || !target.hit) return { target, pointer: null };
     await send('Input.dispatchMouseEvent', {
       type: 'mousePressed', x: target.x, y: target.y, button: 'left', clickCount: 1,
@@ -23764,21 +24232,50 @@ try {
   const collisionRecords = await waitControlValue(collisionTarget.session, 'collision Records landing count',
     `(()=>{const panel=document.getElementById('recpanel'),row=[...panel?.querySelectorAll('.row')??[]].find((entry)=>
       entry.querySelector('label')?.textContent==='worlds landed');if(!row)return null;return {worldsLanded:Number(row.querySelector('span')?.textContent)};})()`);
-  await nativeControlClick(collisionTarget.session, '#railatlas,#dockatlas');
+  const collisionAtlasOpeners = [];
+  const collisionAtlasOpening = await nativeControlClick(
+    collisionTarget.session, '#railatlas,#dockatlas',
+  );
+  const collisionAtlasOpeningAssessment = assessAtlasOpenerPress(collisionAtlasOpening);
+  if (!collisionAtlasOpeningAssessment.ok) {
+    failSliceWithoutCascade('WORLD IDENTITY COLLISION ATLAS OPEN: exact native opener receipt was red before row observation: '
+      + JSON.stringify({ press: collisionAtlasOpening, assessment: collisionAtlasOpeningAssessment }));
+  }
+  collisionAtlasOpeners.push(collisionAtlasOpening);
   const collisionAtlas = await waitControlValue(collisionTarget.session, 'collision Atlas rows',
     `(()=>{const state=window.__CF_SLICE__.api.state(),panel=document.getElementById('atlaspanel');if(state.panelOpen!=='atlas')return null;
       return {count:Number(panel.querySelector('[data-sel="atlas-count"]')?.textContent),rows:[...panel.querySelectorAll('[data-sel="atlas-entry"]')]
-        .map((row)=>({id:row.getAttribute('data-aid'),title:row.querySelector('b')?.textContent||'',disabled:row.disabled===true}))};})()`);
+        .map((row)=>{const travel=row.querySelector(':scope > .atlas-entry-actions > [data-atlas-travel]');return {
+          id:row.getAttribute('data-aid'),title:row.querySelector('b')?.textContent||'',rowTag:row.tagName,
+          rowInteractive:row.matches('button,[role="button"],[tabindex]'),
+          travelId:travel?.getAttribute('data-atlas-travel')||null,travelTag:travel?.tagName||null,
+          travelType:travel instanceof HTMLButtonElement?travel.type:null,
+          disabled:travel instanceof HTMLButtonElement?travel.disabled:null,
+          ariaDisabled:travel?.getAttribute('aria-disabled')||null};})};})()`);
   const collisionAtlasTravel = [];
   for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
     const world = COLLISION_REACH_WORLDS[index];
-    if (index > 0) await nativeControlClick(collisionTarget.session, '#railatlas,#dockatlas');
+    if (index > 0) {
+      const reopen = await nativeControlClick(collisionTarget.session, '#railatlas,#dockatlas');
+      const reopenAssessment = assessAtlasOpenerPress(reopen);
+      if (!reopenAssessment.ok) {
+        failSliceWithoutCascade(`WORLD IDENTITY COLLISION ATLAS REOPEN ${index}: exact native opener receipt was red before Travel: `
+          + JSON.stringify({ press: reopen, assessment: reopenAssessment }));
+      }
+      collisionAtlasOpeners.push(reopen);
+    }
+    const atlasId = `w|${world.key}`;
     const press = await nativeControlClick(collisionTarget.session,
-      `[data-sel="atlas-entry"][data-aid=${JSON.stringify(`w|${world.key}`)}]`);
+      `#atlaspanel [data-sel="atlas-entry"][data-aid=${JSON.stringify(atlasId)}] > .atlas-entry-actions > [data-atlas-travel=${JSON.stringify(atlasId)}]`);
+    const pressAssessment = assessAtlasPointerPress(press, { atlasId });
+    if (!pressAssessment.ok) {
+      failSliceWithoutCascade(`WORLD IDENTITY COLLISION ATLAS TRAVEL ${index}: exact native Travel receipt was red before navigation wait: `
+        + JSON.stringify({ press, assessment: pressAssessment }));
+    }
     const state = await waitControlValue(collisionTarget.session, `collision Atlas travel ${index}`,
       `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='system'&&state.cardTitle===${JSON.stringify(world.name)}
         &&state.starX===${world.star.x}&&state.starY===${world.star.y}?state:null;})()`);
-    collisionAtlasTravel.push({ pointer: press.pointer, state });
+    collisionAtlasTravel.push({ target: press.target, pointer: press.pointer, state });
   }
   const collisionReloadSearches = [];
   for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
@@ -23797,7 +24294,7 @@ try {
   const collisionBundle = {
     setup: collisionSetup, baselineRecords: collisionBaselineRecords,
     actions: collisionActions, reloaded: collisionReloaded,
-    atlas: collisionAtlas, records: collisionRecords,
+    atlas: collisionAtlas, records: collisionRecords, atlasOpeners: collisionAtlasOpeners,
     atlasTravel: collisionAtlasTravel, searches: collisionReloadSearches,
   };
   const collisionAssessment = assessCollisionWorldOutcome(collisionBundle);
@@ -23825,6 +24322,34 @@ try {
     }),
     alphaAtlasMissing: collisionControl((candidate) => { candidate.atlas.rows.splice(0, 1); }),
     betaAtlasMissing: collisionControl((candidate) => { candidate.atlas.rows.splice(1, 1); }),
+    atlasRowBecomesAction: collisionControl((candidate) => {
+      candidate.atlas.rows[0].rowTag = 'BUTTON';
+      candidate.atlas.rows[0].rowInteractive = true;
+    }),
+    atlasTravelBecomesWrapper: collisionControl((candidate) => {
+      candidate.atlas.rows[0].travelTag = 'DIV';
+    }),
+    atlasTravelIdentityDrift: collisionControl((candidate) => {
+      candidate.atlas.rows[0].travelId = candidate.atlas.rows[1].travelId;
+    }),
+    atlasPointerIdentityDrift: collisionControl((candidate) => {
+      candidate.atlasTravel[0].pointer.atlasTravelId = candidate.atlas.rows[1].travelId;
+    }),
+    atlasPointerCoordinateDrift: collisionControl((candidate) => {
+      candidate.atlasTravel[0].pointer.x += 2;
+    }),
+    atlasTargetHitLost: collisionControl((candidate) => {
+      candidate.atlasTravel[0].target.hit = false;
+    }),
+    atlasTargetUndersized: collisionControl((candidate) => {
+      candidate.atlasTravel[0].target.height = 43;
+    }),
+    atlasOpenerRoleDrift: collisionControl((candidate) => {
+      candidate.atlasOpeners[0].target.tag = 'DIV';
+    }),
+    atlasOpenerPointerDrift: collisionControl((candidate) => {
+      candidate.atlasOpeners[1].pointer.id = 'railrecords';
+    }),
     alphaShareUsesBetaParent: collisionControl((candidate) => {
       candidate.searches[0].shareCode = candidate.searches[1].shareCode;
     }),

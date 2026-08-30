@@ -55,7 +55,15 @@ function installDom(): void {
       <button data-arc5-scout-confirm>Field Scout</button>
     </div>
     <div id="recpanel"><button data-pnx="rec">Close Records</button><button>Records row</button></div>
-    <div id="atlaspanel"><button>Earth row</button></div>
+    <div id="atlaspanel">
+      <div class="centry atlas-entry" data-sel="atlas-entry" data-aid="p133">
+        <b>Earth</b>
+        <div class="atlas-entry-actions">
+          <button type="button" data-atlas-travel="p133" aria-label="Travel to Earth">Travel</button>
+          <button type="button" data-atlas-favorite="p133" aria-label="Favorite Earth">Favorite</button>
+        </div>
+      </div>
+    </div>
     <div id="chpanel"><button>Charters</button></div>
     <div id="shipyardpanel">
       <button data-pnx="shipyard">Close Shipyard</button>

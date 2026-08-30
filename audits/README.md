@@ -10,6 +10,43 @@ summary of it.
 
 ## Contents
 
+### Signed `ae2a002…` Guide/CF1-repair Compendium PASS, then terminal-red Slice instrument drift
+
+Exact clean signed source `ae2a0023da3a90a98e548452113395149847aee5` ran Compendium
+`20260830-pr35-guide-cf1-ae2a0023da3a-compendium-certification` exactly once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`. It passed **78/78** outcomes across phone and desktop
+in **63,446 ms**. Its immutable carrier
+`ARC1C_COMPENDIUM_PR35_GUIDE_CF1_REPAIR_PASS_20260830_AE2A002.json.gz` is **451,761 gzip /
+10,869,876 raw bytes**, SHA-256
+`c41e40c0f7da7829d894f762fe4dee94b1d4a5dd663c07211e76f3700cc56d0f` /
+`864efc28836ca5aaff9ea3efa286169f4fd49f49e6811e68375fb5837f72098d`.
+
+The same unchanged source then ran Slice `20260830132231723-50968-0e9bd00aee77` exactly once
+with zero retry. It stopped terminal red after **91,465 ms** with **8 findings / 8 scopes**:
+four rendered-Guide mutation controls, Atlas setup plus outcome, F4 replacement/outcome, and
+Arc 2 reload/Atlas continuity. These are retained instrument/oracle findings. In particular, the
+F4 replacement did atomically clear the old expedition receipt. The exact chronology is staged
+revision 7 → replacement revision 8 → one independently expected receipt-free product/bootstrap
+commit at revision 9 with ordinal still zero → required `arc9-progression-refresh-v1` receipt zero
+at revision 10 → Smoke receipt one at revision 11; replacement-document runtime commit count was
+two before Smoke. The old oracle incorrectly required the
+post-boot sample itself to remain empty at ordinal zero. Atlas likewise rendered its world row as
+a semantic container with a separate real Travel button, while the old setup conflated the two
+owners. Source-string mutation controls did not alter already-rendered Guide DOM.
+
+- `ARC4_SLICE_PR35_POST_REPAIR_INSTRUMENT_DRIFT_20260830_AE2A002.json.gz` is **78,146 gzip /
+  905,230 raw bytes**, SHA-256
+  `f2749443714acbfebcfd12a0527502b1156a67560eaec068f751ddcde665f045` /
+  `585b006d26970ef9f9e4d2cd954f6f8791df935594535dd3b1dde0b51312412c`.
+- `ARC4_SLICE_PR35_POST_REPAIR_INSTRUMENT_DRIFT_20260830_AE2A002.log.gz` is **37,399 gzip /
+  420,442 raw bytes**, SHA-256
+  `9d57cded083613decc33233db185d0c53d6c6bf1ae7d65f2b74209705cfbc699` /
+  `73fd34e7c3126ad57b15b794e26e1b8f36ef2848dd523ebb4c55ee101b043262`.
+
+Seven partial screenshots—Earth, Galaxy, Guide, Settings, Sol, Sol marker and Universe—remain
+bound inside the exact report. Glass and Recovery did not run. This evidence remains red and grants
+no changed-head PASS, HUMAN, hosted, merge, release, version or deployment authority.
+
 ### Signed `941ba45…` sealed-worker Compendium PASS, then terminal Slice Guide/Release + named-CF1 red
 
 Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` first ran
