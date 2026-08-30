@@ -99,6 +99,7 @@ describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
     const prefix = ARC4_PERTAR_LEDGER_PREFIX_SELFTEST as Readonly<{
       sourceReady: Assessment;
       actionReady: Assessment;
+      actionReadyTameVariant: Assessment;
       controls: Readonly<Record<string, Assessment>>;
     }>;
     const progression = ARC4_PERTAR_PROGRESSION_TAIL_SELFTEST as Readonly<{
@@ -119,10 +120,11 @@ describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
     });
     expect(prefix.sourceReady.ok).toBe(true);
     expect(prefix.actionReady.ok).toBe(true);
+    expect(prefix.actionReadyTameVariant.ok).toBe(true);
     expect(Object.keys(prefix.controls)).toEqual([
       'staleEmptyLedger', 'missingReceipt', 'extraReceipt', 'reorderedReceipts',
-      'bootWitness', 'surveyWitness', 'landingWitness', 'authorityOrdinal',
-      'runtimeOrdinal',
+      'bootWitness', 'surveyWitness', 'landingWitness', 'landingStateSuccessorSeal',
+      'authorityOrdinal', 'runtimeOrdinal',
     ]);
     expect(Object.values(prefix.controls).every((control) => control.ok === false)).toBe(true);
     expect(progression.positive.ok).toBe(true);

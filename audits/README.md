@@ -10,6 +10,55 @@ summary of it.
 
 ## Contents
 
+### Signed `7f89bb2…` right-sized admission predecessors, then one-scope Tame fixture-oracle red
+
+Exact clean SSH-signed source `7f89bb2a70604da5b79673bd22d25786cab468d2` (tree
+`9007559da57a52c26510df4c7398287fde7b4839`, parent
+`d611d18ad12bb8587863846ef3799300d2396e6a`) passed its tracked-input develop profile at
+**253 files / 2,510 passed / 1 skipped**, all three TypeScript programs and the art/route/spec
+gates. The conditional SceneMemory heap and Chromium launcher controls passed. The unchanged
+source then ran the browser chain once per stage with zero retry on Microsoft Edge
+`152.0.4191.53` / CDP `1.3`: SceneMemory passed **44/44** in **12,753 ms** and Compendium passed
+**78/78** in **63,310 ms**. Their named verifiers passed. The deterministic carriers are:
+
+- `ARC1C_SCENEMEM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz`: **45,066 gzip /
+  787,362 raw bytes**; gzip/raw SHA-256
+  `d0598401c43cf0d8d0b60f145de501c21ae86d3825d161b88b28f6d95ab2a778` /
+  `2b825b7ba33152ef882f5601ef7dea2b032ef042903bb7e3824740741e495709`.
+- `ARC1C_COMPENDIUM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz`: **451,063 gzip /
+  10,821,649 raw bytes**; gzip/raw SHA-256
+  `5ea6181267661e15b19005316e7871050113ed25e6bfe32873a93b0a8a708a50` /
+  `c4b962d76555d3cdc58383904820db12303d9d93d1b9fc63926aec0f0539db5c`.
+
+Slice `20260830-pr35-7f89bb2-battery-rightsizing-slice` then stopped terminal red after
+**159,754 ms** with exactly one scope, `arc-4-tame-greeting-audio`, and zero automatic retry.
+Glass and Recovery did not run.
+
+- `ARC4_SLICE_PR35_TAME_LEDGER_VARIANT_ORACLE_RED_20260830_7F89BB2.json.gz`: **74,024 gzip /
+  608,802 raw bytes**; gzip/raw SHA-256
+  `ad77a941b6b29518e18cfa30faa6be516d124567c78eb4c6b4d46f877dc1edab` /
+  `751415db662857fd0e03a09fc8d9713d31de7d86db4a6b71fe4fec4587bcfb10`.
+- `ARC4_SLICE_PR35_TAME_LEDGER_VARIANT_ORACLE_RED_20260830_7F89BB2.log.gz`: **34,961 gzip /
+  257,710 raw bytes**; gzip/raw SHA-256
+  `da56722b8962fac1ecfcb21012fa93208c0dab26c44421b1bcc76854da27d97c` /
+  `d2d071d20b8bc8d642aa2e8cfc13195b796df045bd64c1f48455dcab8acffc5a`.
+
+Every product/audio outcome was green: native Tame, release, one claimed/started/completed voice,
+assertive-toast counterpart, close/reopen/refresh/wait, reload-no-replay, fresh-fixture isolation,
+the exact classifier and all its mutations. Causal stop reduced d611's five scopes to one. The
+only red was fixture setup `actionAuthorityPrefix`. The new prefix contract had pinned the complete
+Landing witness from the Sample fixture, including its `stateSuccessorSeal` `9ccc8a03…`; the
+equally valid Tame fixture differs only because its different source state derives seal
+`10d953c3…`. All causal Landing fields, ordered receipts, world-identity seal, runtime authority and
+Capture freshness match.
+
+The bounded repair compares every Landing witness field except that source-derived seal against the
+exact invariant baseline, while requiring the seal itself to be a lowercase 64-hex SHA-256. Both
+retained real variants are positive; malformed seals and changed route/receipt fields are negative.
+It changes no game/product, save, creature/genome, art/audio, threshold, retry, timeout or browser
+baseline. The stored `7f89bb2…` Slice remains FAIL and grants no Glass/Recovery/hosted/merge/release
+authority. A changed signed successor must start a fresh no-retry develop chain.
+
 ### Signed `d611d18…` consolidated admission predecessors, then terminal-red Pertar ledger oracle
 
 Exact clean SSH-signed source `d611d18ad12bb8587863846ef3799300d2396e6a` (tree
