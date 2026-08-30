@@ -1,5 +1,18 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-30 current local aggregate-follow-up UI release correction (matches local code and
+> supersedes narrower current overlays below):** aggregate progression still owns only its one
+> coalesced receipt/F4 CAS, canonical achievement append and monotonic best-rank mirror. A capture
+> can queue that follow-up before its awaiting Survey repaint; the repaint is correctly read-only
+> while Arc 9 owns the shared coordinator. Arc 9 now fully releases product/persistence authority
+> before guardedly republishing a still-current visible writable non-Training Capture surface.
+> Replacement, convergence, ecology, coordinator or presentation failure remains fail-closed. This
+> changes no achievement/rank rule, reward, receipt ordering, Capture pool/Yield/RNG, save schema or
+> creature identity. Exact 656 evidence isolated the stale-disabled card before any storage hook;
+> the bounded successor is focused browser-free green and awaits a fresh no-retry browser chain.
+> Its cumulative **A New Foundation** bulletin has 75 unique bullets with rendered ordered SHA-256
+> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`.
+
 > **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
 > working tree and supersedes narrower “current” status below; dated progression evidence remains
 > immutable):** exact clean SSH-signed evidence source

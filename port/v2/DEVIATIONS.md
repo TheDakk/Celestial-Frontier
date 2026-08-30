@@ -376,8 +376,8 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   remain open. Settings now offers `Auto` (`-1`) or an exact
   earned `0..bestRank` nameplate; one F4 receipt/CAS verifies durability before AppChrome changes,
   with no optimistic render or retry and convergence reload on ambiguity. The current Guide is
-  34 partial / 7 unavailable and **A New Foundation** is a 74-bullet development draft with rendered
-  ordered SHA-256 `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
+  34 partial / 7 unavailable and **A New Foundation** is a 75-bullet development draft with rendered
+  ordered SHA-256 `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`.
 - ★ **D-PWA-1 — v2 installed updates are exact-build and explorer-controlled.** Build output now
   carries a same-origin manifest and generated worker whose build identity joins the SHA-256-verified
   final runtime inventory with an automatic worker-template revision before its completion marker
@@ -2757,8 +2757,8 @@ duplicates).
 - ★ **D-RELEASE-1 — legacy history, v2 development identity and a shipped version are three different states
   (updated 2026-08-29).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
   398 bullets, v1.8.9 first and v1.0 last. **A New Foundation** is the separate cumulative v2.0
-  development bulletin: a 74-bullet categorized, implemented-outcome technical outline with rendered
-  ordered SHA-256 `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892` whose explicit
+  development bulletin: a 75-bullet categorized, implemented-outcome technical outline with rendered
+  ordered SHA-256 `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1` whose explicit
   `draft`, `version:"2.0"` and `Unreleased` state does not turn open roadmap work into a promise.
   `release-identity.ts` keeps only development identity and `V2_CURRENT_RELEASE_VERSION` eager;
   `release-content.ts` and its archives load on Guide demand through one retryable in-flight import.

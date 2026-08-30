@@ -25,7 +25,15 @@
 > origin play surface, not merge or release evidence. Every certifier retains its own fresh build
 > until a separately reviewed content-addressed build-carrier contract exists.
 
-> **Historical `8bdf474…` evidence law (superseded by later d611 → 7f → 961 boundaries):** exact clean SSH-signed
+> **A FOLLOW-UP RECEIPT MUST RELEASE BEFORE IT REPUBLISHES THE SURFACE IT TEMPORARILY
+> DISABLED.** An awaiting action continuation can repaint while a queued aggregate writer owns the
+> shared coordinator, making the honest model read-only. When that follow-up settles, any still-open
+> surface it made stale must be reprojected only after the coordinator and exact persistence barrier
+> release, with current-route/runtime/replacement/Training guards. Do not mask this race with a test
+> sleep, heartbeat wait, easier verb or close/reopen fixture; a publication fault clears the action
+> fence and converges read-only.
+
+> **Historical `8bdf474…` evidence law (superseded by later d611 → 7f → 961 → 656 boundaries):** exact clean SSH-signed
 > source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium 78/78 in 64,108 ms
 > once/no-retry, then its unchanged-source Slice
 > `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after

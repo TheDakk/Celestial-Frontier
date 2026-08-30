@@ -17,22 +17,41 @@
 > `stateSuccessorSeal` values. The current contract requires the full witness bytes to match one
 > invariant template after substituting only one canonical lowercase SHA-256. Both retained real
 > variants pass; malformed seals and changed causal fields fail. It neither allowlists observed
-> hashes nor duplicates the private product codec. No product/app, schema, creature/genome,
-> art/audio, timeout, retry, numeric ruler or Edge-version baseline changes. Signed successor
+> hashes nor duplicates the private product codec. That repair changed no product/app, schema,
+> creature/genome, art/audio, timeout, retry, numeric ruler or Edge-version baseline. Signed successor
 > `961d1071d059e0f73e14a6a4ead61f5e4696535b` then passed the same tracked profile, SceneMemory
 > 44/44 and Compendium 78/78 once/no-retry. Slice reached Arc 4 Storage and stopped after 171,033 ms
 > with exactly one generic timeout scope; Glass and Recovery did not run. Because the old runner
 > discarded its arm/target/coordinator/product/raw/UI state before classification, this proves
-> neither a product failure nor valid setup. The current runner-only successor proves native
+> neither a product failure nor valid setup. Signed successor
+> `656c85e43a59fe775efac102b21a7530c033e5ff` passed the same tracked profile, SceneMemory 44/44
+> and Compendium 78/78 once/no-retry. Its Slice stopped after 160,092 ms at exactly one
+> `arc-4-storage-precondition` scope; Glass and Recovery did not run. The repaired runner proved
+> native
 > target/focus/coordinator readiness before arming, requires both the hook return and visible latch
 > before input, focus-gates dispatch, retains ordered pre-arm/post-arm/post-press/deadline state plus
 > terminal durable/UI/interaction evidence, supplies real wait/capture errors to the existing
-> assessor, and fail-stops later Arc 4 work. The right-sized
+> assessor, and fail-stops later Arc 4 work. It retained Sample + Arc 9 durable at revisions
+> 108/109, 15/16 Yield, current Arc 4/5 and idle coordinator/card/hold/fault state, then stopped
+> before hook arm or input because Tame remained model-disabled. This is no storage verdict.
+>
+> Source tracing isolated one presentation race: Capture repainted read-only while the queued Arc 9
+> follow-up legitimately owned the coordinator, but Arc 9 released without republishing the still-
+> open card. Pertar still had nine eligible fauna and canonical next action Tame. The bounded local
+> successor releases product/coordinator/persistence authority first, then republishes only the same
+> current visible writable non-Training Capture surface; replacement, convergence, ecology,
+> Training and publication faults remain fail-closed. Focused source/mutation plus immutable replay
+> evidence is **3 files / 7 PASS** and all three TypeScript programs pass. Capture pools, Yield,
+> RNG, ownership, creature/genome, save schema, art/audio, timeout, retry and browser rulers do not
+> change. **A New Foundation** now has 75 unique bullets with rendered ordered SHA-256
+> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`. The exact 656 right-sized
 > develop profile is green at **253 files / 2,510 passed / 1 skipped** plus all three TypeScript
 > programs, art/route/spec gates; its 2,510 assertions are one roughly 23-second process, not
 > thousands of jobs. Compendium's 591 ruler mutations are conditional on production or changed
 > instrument inputs, specification controls are folded into the normal command, and Recovery plus
-> package smoke are production-only. A changed clean successor still requires one fresh unchanged-
+> package smoke are production-only. The classifier closure now includes the directly imported
+> sealed-worker graph helper, so its rare changes cannot skip the conditional Compendium controls
+> while ordinary gameplay work remains on the smaller path. A changed clean successor still requires one fresh unchanged-
 > source SceneMemory → Compendium → Slice → Glass develop chain. No HUMAN, hosted, merge, release,
 > version or deployment
 > authority follows; exact carriers and hashes are in `audits/README.md`.

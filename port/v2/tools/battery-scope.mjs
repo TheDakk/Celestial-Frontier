@@ -41,6 +41,7 @@ const BROWSER_INSTRUMENT_EXACT = exact(
   'port/v2/tools/compendiummem-browser-preflight.mjs',
   'port/v2/tools/compendiummem-selftest.mjs',
   'port/v2/tools/compendiummem-fixture.mjs',
+  'port/v2/tools/sealed-worker-graph.mjs',
   'port/v2/tools/speciesart-build.mjs',
   'port/v2/tools/workspacelock.mjs',
   'port/v2/tools/fixtures/compendium-1500-v1.json',

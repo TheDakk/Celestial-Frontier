@@ -149,8 +149,8 @@
 > protected. Settings also exposes a durable nameplate selector limited to `Auto` or an already-
 > earned rank; it publishes to AppChrome only after its one receipt/CAS verifies. The current Guide
 > catalogue is **34 partial / 7 unavailable**, and **A New Foundation** is a
-> **74-bullet** development draft (rendered ordered SHA-256
-> `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`). These local successors do
+> **75-bullet** development draft (rendered ordered SHA-256
+> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`). These local successors do
 > not inherit the older browser certificate
 > and authorize no push, hosted run, production version, release or deployment.
 >
