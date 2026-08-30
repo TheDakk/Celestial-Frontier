@@ -29,6 +29,12 @@ import {
   CANDIDATE_BROWSER_LABEL, CANDIDATE_COMMAND_SCHEMA, CANDIDATE_TRANSPORT_TIMEOUT_MS,
   COMMAND_TIMEOUT_MS, EXPECTED_OUTCOMES,
   FILTER_TRANSITION_SCHEMA, PARTIAL_FAILURE_SCHEMA, PARTIAL_PROFILE_SCHEMA,
+  FOREGROUND_SERVICE_OBSERVATION_SCHEMA, THUMB_SETTLEMENT_OBSERVATION_SCHEMA,
+  FOREGROUND_SERVICE_RECEIPT_SCHEMA, FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS,
+  THUMB_SETTLEMENT_ACTIVE_SCHEMA, THUMB_SETTLEMENT_RECEIPT_PLAN,
+  THUMB_SETTLEMENT_RECEIPT_SCHEMA, THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS,
+  MAX_PARTIAL_COMMAND_LEDGER_BYTES, MAX_PARTIAL_COMMAND_LEDGER_ENTRIES,
+  MAX_THUMB_SETTLEMENT_FILTER_COUNT, MAX_THUMB_SETTLEMENT_IMAGES,
   PRODUCER_ERROR_ARM_MESSAGE, PRODUCER_ERROR_ARM_SENTINEL,
   PRODUCER_ERROR_WITNESS_SCHEMA,
   RAW_CDP_COMMAND_SCHEMA,
@@ -40,9 +46,12 @@ import {
   compendiumMeasurementAuthority, compendiumProducerAuthority,
   compendiumBrowserAuthorityMatches, compendiumBudgetBrowserAuthority,
   validCompendiumBrowserAuthority,
+  compendiumThumbSettlementReceiptToken,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
   CandidateObservationError,
+  classifyCompendiumForegroundServiceTurnReceipt,
+  classifyCompendiumThumbSettlement,
   evaluateCandidateExpression, evaluateProfile, installBrokenBaselineThumbObserver,
   installBrokenBaselineInitialListArm,
   sealBrokenBaselineInitialListObservation,
@@ -51,6 +60,9 @@ import {
   isCandidateObservationError, waitForCandidateValue,
   phaseObservationAccepted, remainingCommandTimeoutMs, validateBudgetRecord, verifyTerminalReport,
   validBrokenBaselineThumbObservation, validCompendiumRawSnapshotExpression,
+  validCompendiumForegroundServiceObservation,
+  validCompendiumActiveThumbSettlement, validCompendiumThumbSettlementReceipt,
+  validCompendiumThumbSettlementObservation,
   validFilterInputObservation, validFilterTargetObservation, validFilterTelemetrySnapshot,
   validFilterTransitionObservation,
   validProducerErrorPreArmObservation, validProducerErrorWorkObservation,
@@ -610,10 +622,20 @@ export function createCandidateCollectorObservations({
   const runWait = async (
     sessionId, label, expression, {
       timeoutMs = 20000, acceptValue = Boolean, onObservation = () => {},
+      onWaitStarted = () => {},
     } = {},
   ) => {
-    const phaseDeadlineMs = now() + timeoutMs;
+    assert(typeof onWaitStarted === 'function',
+      `${profile} ${label}: candidate wait-start observer is invalid`);
+    const phaseIssuedAtMs = now('phase-issued');
+    const phaseDeadlineMs = phaseIssuedAtMs + timeoutMs;
     onStageStarted(label);
+    onWaitStarted(Object.freeze({
+      issuedAtMs: phaseIssuedAtMs,
+      deadlineMs: phaseDeadlineMs,
+      receivedAtMs: null,
+      timeoutMs,
+    }));
     let terminalCommand = null;
     const value = await waitForCandidateValue({
       send, sessionId, expression, profile, label, phaseDeadlineMs,
@@ -689,8 +711,30 @@ export function createCandidateCommandRecorder({
     && producerErrorCandidateLabels instanceof Set
     && typeof getProducerErrorWitness === 'function',
   'candidate command recorder dependencies are invalid');
+  let serializedBytes = Buffer.byteLength(JSON.stringify(commandLedger), 'utf8');
+  const thumbnailLabels = new Set(THUMB_SETTLEMENT_RECEIPT_PLAN.map(
+    (entry) => `${entry.label} thumb settlement`,
+  ));
   return (command) => {
-    commandLedger.push(command);
+    const priorIndex = command?.schema === CANDIDATE_COMMAND_SCHEMA
+      && thumbnailLabels.has(command.label)
+      && commandLedger.at(-1)?.schema === CANDIDATE_COMMAND_SCHEMA
+      && commandLedger.at(-1)?.label === command.label
+      && commandLedger.at(-1)?.phaseDeadlineMs === command.phaseDeadlineMs
+      ? commandLedger.length - 1 : -1;
+    const encoded = Buffer.byteLength(JSON.stringify(command), 'utf8');
+    const priorEncoded = priorIndex < 0 ? 0
+      : Buffer.byteLength(JSON.stringify(commandLedger[priorIndex]), 'utf8');
+    const projectedEntries = commandLedger.length + (priorIndex < 0 ? 1 : 0);
+    const projectedBytes = serializedBytes + encoded - priorEncoded
+      + (priorIndex < 0 && commandLedger.length > 0 ? 1 : 0);
+    assert(projectedEntries <= MAX_PARTIAL_COMMAND_LEDGER_ENTRIES
+      && projectedBytes <= MAX_PARTIAL_COMMAND_LEDGER_BYTES,
+    `candidate command ledger exceeded its sealed ${MAX_PARTIAL_COMMAND_LEDGER_ENTRIES}-entry/`
+      + `${MAX_PARTIAL_COMMAND_LEDGER_BYTES}-byte failure carrier before ${String(command?.label)}`);
+    if (priorIndex < 0) commandLedger.push(command);
+    else commandLedger[priorIndex] = command;
+    serializedBytes = projectedBytes;
     const witness = getProducerErrorWitness();
     if (witness !== null && command?.schema === CANDIDATE_COMMAND_SCHEMA
       && producerErrorCandidateLabels.has(command.label)) {
@@ -803,36 +847,299 @@ export function validCandidateProducerErrorExpression(source, kind) {
   return true;
 }
 
-export function candidateThumbSettlementExpression(surface, expectedCount = null) {
+function validCandidatePageAuthority(pageAuthority) {
+  return pageAuthority !== null && typeof pageAuthority === 'object'
+    && !Array.isArray(pageAuthority)
+    && Object.keys(pageAuthority).sort().join('\0') === 'documentToken\0sessionId\0targetId'
+    && ['targetId', 'sessionId', 'documentToken'].every((field) =>
+      typeof pageAuthority[field] === 'string' && pageAuthority[field].length > 0
+        && pageAuthority[field].length <= 512);
+}
+
+/* Always return one bounded observation. The Node-side contract recomputes
+   `ready` and `reasons` in place before the waiter tests acceptance, so a
+   timeout retains the exact image/decode/queue/worker/page miss instead of a
+   generic `null`. */
+export function candidateThumbSettlementExpression(
+  surface, expectedCount = null, pageAuthority = null, receiptToken = null,
+) {
   assert(surface === 'list' || surface === 'planetside',
     'candidate thumbnail settlement surface is invalid');
-  assert(expectedCount === null
-    || (Number.isSafeInteger(expectedCount) && expectedCount >= 0),
+  assert((surface === 'planetside' && expectedCount === null)
+    || (surface === 'list' && (expectedCount === null
+      || (Number.isSafeInteger(expectedCount) && expectedCount >= 0
+        && expectedCount <= MAX_THUMB_SETTLEMENT_FILTER_COUNT))),
   'candidate thumbnail settlement count is invalid');
+  assert(validCandidatePageAuthority(pageAuthority),
+    'candidate thumbnail settlement page authority is invalid');
+  assert(typeof receiptToken === 'string' && receiptToken.length > 0
+    && receiptToken.length <= 256,
+  'candidate thumbnail settlement receipt token is invalid');
   const selector = surface === 'list'
     ? '#codexpanel [data-sel="codex-entry"] img'
     : '#planetside [data-sel="planetside-sp"] img';
   const surfacePath = surface === 'list' ? 'list' : 'planetside';
-  const ownership = surface === 'list'
-    ? `d.panel.mode==='list'${expectedCount === null ? '' : `&&d.panel.filteredCount===${expectedCount}`}`
-    : `d.surfaces.planetside.visible`;
-  return `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),s=d.surfaces.${surfacePath}.thumbStates;
-    const imgs=[...document.querySelectorAll(${JSON.stringify(selector)})];
-    return ${ownership}&&s.length>0&&imgs.length===s.length&&s.every(x=>x==='ready')
-      &&imgs.every(img=>!!img.getAttribute('src')&&img.complete===true
-        &&img.naturalWidth===132&&img.naturalHeight===132)
-      &&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0?d:null;
-  })()`;
+  return `(()=>{const S=window.__CF_SLICE__,d=S?.api?.compendiumDiagnostics?.(),sd=d?.surfaces?.${surfacePath};
+    const text=(value,max=512)=>typeof value==='string'&&value.length>0&&value.length<=max?value:null;
+    const count=value=>Number.isSafeInteger(value)&&value>=0&&value<=${MAX_THUMB_SETTLEMENT_FILTER_COUNT}?value:null;
+    const duration=value=>typeof value==='number'&&Number.isFinite(value)&&value>=0&&value<=1000000000?value:null;
+    const selector=${JSON.stringify(selector)},nodes=document.querySelectorAll(selector),imgs=[];
+    for(let index=0;index<Math.min(nodes.length,${MAX_THUMB_SETTLEMENT_IMAGES});index++)imgs.push(nodes[index]);
+    const images=imgs.map((img,index)=>({index,logicalId:text(img.closest?.('[data-cid]')?.dataset?.cid),
+      visualKey:text(img.dataset?.visualKey),thumbState:text(img.dataset?.thumbState),
+      srcPresent:!!img.getAttribute('src'),complete:img.complete===true,
+      naturalWidth:Number.isSafeInteger(img.naturalWidth)&&img.naturalWidth>=0&&img.naturalWidth<=8192?img.naturalWidth:null,
+      naturalHeight:Number.isSafeInteger(img.naturalHeight)&&img.naturalHeight>=0&&img.naturalHeight<=8192?img.naturalHeight:null}));
+    const art=d?.art&&typeof d.art==='object'?d.art:null,lazy=d?.lazyArt&&typeof d.lazyArt==='object'?d.lazyArt:null;
+    const worker=lazy?.worker&&typeof lazy.worker==='object'?lazy.worker:null,live=art?.live&&typeof art.live==='object'?art.live:null;
+    const identity=lazy?.identity&&typeof lazy.identity==='object'?{documentToken:text(lazy.identity.documentToken),
+      lastProducerEpoch:count(lazy.identity.lastProducerEpoch),lastWorkerInstanceId:count(lazy.identity.lastWorkerInstanceId)}:null;
+    const lastEvent=lazy?.lastEvent&&typeof lazy.lastEvent==='object'?{producerEpoch:count(lazy.lastEvent.producerEpoch),
+      workerInstanceId:count(lazy.lastEvent.workerInstanceId),jobId:count(lazy.lastEvent.jobId),
+      kind:text(lazy.lastEvent.kind,64),event:text(lazy.lastEvent.event,64)}:null;
+    const phases=lazy?.phases&&typeof lazy.phases==='object'?{importStarts:count(lazy.phases.importStarts),
+      importCompletes:count(lazy.phases.importCompletes),thumbJobStarts:count(lazy.phases.thumbJobStarts),
+      thumbRenderCompletes:count(lazy.phases.thumbRenderCompletes),thumbEncodeStarts:count(lazy.phases.thumbEncodeStarts),
+      thumbEncodeCompletes:count(lazy.phases.thumbEncodeCompletes),portraitJobStarts:count(lazy.phases.portraitJobStarts),
+      portraitRenderCompletes:count(lazy.phases.portraitRenderCompletes),portraitEncodeStarts:count(lazy.phases.portraitEncodeStarts),
+      portraitEncodeCompletes:count(lazy.phases.portraitEncodeCompletes)}:null;
+    const results=lazy?.results&&typeof lazy.results==='object'?{count:count(lazy.results.count),
+      maxImportDurationMs:duration(lazy.results.maxImportDurationMs),maxRenderDurationMs:duration(lazy.results.maxRenderDurationMs),
+      maxEncodeDurationMs:duration(lazy.results.maxEncodeDurationMs)}:null;
+    const errors=lazy?.errors&&typeof lazy.errors==='object'?{capability:count(lazy.errors.capability),
+      protocol:count(lazy.errors.protocol),import:count(lazy.errors.import),paint:count(lazy.errors.paint),
+      encode:count(lazy.errors.encode)}:null;
+    const observation={schema:${JSON.stringify(THUMB_SETTLEMENT_OBSERVATION_SCHEMA)},
+      surface:${JSON.stringify(surface)},expectedCount:${JSON.stringify(expectedCount)},
+      receiptToken:${JSON.stringify(receiptToken)},ready:false,reasons:[],
+      ownership:{selector,rawImageCount:count(nodes.length),rawLogicalIds:images.map(image=>image.logicalId),
+        diagnosticImageCount:count(sd?.imageCount),
+        diagnosticLogicalIds:Array.isArray(sd?.logicalIds)?sd.logicalIds.slice(0,${MAX_THUMB_SETTLEMENT_IMAGES}).map(value=>text(value)):[]},
+      diagnostic:{panelMode:text(d?.panel?.mode,32),filteredCount:count(d?.panel?.filteredCount),
+        visible:${surface === 'list' ? "d?.panel?.mode==='list'" : 'sd?.visible===true'},
+        thumbStates:Array.isArray(sd?.thumbStates)?sd.thumbStates.slice(0,${MAX_THUMB_SETTLEMENT_IMAGES}).map(value=>text(value,64)):[]},images,
+      art:art?{available:true,schema:text(art.schema),queuedJobs:count(live?.queuedJobs),
+        activeJobs:count(live?.activeJobs)}:{available:false,schema:null,queuedJobs:null,activeJobs:null},
+      lazyArt:lazy?{available:true,schema:text(lazy.schema),state:text(lazy.state,64),
+        importStarts:count(lazy.importStarts),identity,lastEvent,phases,results,errors}
+        :{available:false,schema:null,state:null,importStarts:null,identity:null,lastEvent:null,
+          phases:null,results:null,errors:null},
+      worker:worker?{available:true,live:typeof worker.live==='boolean'?worker.live:null,
+        starts:count(worker.starts),ready:count(worker.ready),disposals:count(worker.disposals),
+        fatals:count(worker.fatals),protocolErrors:count(worker.protocolErrors)}
+        :{available:false,live:null,starts:null,ready:null,disposals:null,fatals:null,protocolErrors:null},
+      broker:live?{available:true,cacheEntries:count(live.cacheEntries),leases:count(live.leases),
+        subscribers:count(live.subscribers),queuedJobs:count(live.queuedJobs),activeJobs:count(live.activeJobs)}
+        :{available:false,cacheEntries:null,leases:null,subscribers:null,queuedJobs:null,activeJobs:null},
+      page:{targetId:${JSON.stringify(pageAuthority.targetId)},sessionId:${JSON.stringify(pageAuthority.sessionId)},
+        documentToken:text(d?.documentToken)||text(S?.documentToken),
+        visibilityState:text(document.visibilityState,32),hidden:document.hidden,focused:document.hasFocus()}};
+    return observation})()`;
 }
 
-export function validCandidateThumbSettlementExpression(source, surface, expectedCount = null) {
+export function validCandidateThumbSettlementExpression(
+  source, surface, expectedCount = null, pageAuthority = null, receiptToken = null,
+) {
   let expected;
-  try { expected = candidateThumbSettlementExpression(surface, expectedCount); }
+  try {
+    expected = candidateThumbSettlementExpression(
+      surface, expectedCount, pageAuthority, receiptToken,
+    );
+  } catch { return false; }
+  if (source !== expected) return false;
+  try { new Function(`"use strict"; return (${source});`); }
+  catch { return false; }
+  return true;
+}
+
+export const COMPENDIUM_FOREGROUND_SERVICE_TIMEOUT_MS =
+  FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS;
+const COMPENDIUM_FOREGROUND_SERVICE_KEY = '__CF_COMPENDIUM_FOREGROUND_SERVICE__';
+const COMPENDIUM_FOREGROUND_CLEANUP_KEY = '__CF_COMPENDIUM_FOREGROUND_CLEANUP__';
+
+export function candidateForegroundServiceExpression({
+  activationTargetId, sessionId, serviceToken,
+}) {
+  assert([activationTargetId, sessionId, serviceToken].every((value) =>
+    typeof value === 'string' && value.length > 0),
+  'candidate foreground service identity is invalid');
+  return `(()=>{const serviceKey=${JSON.stringify(COMPENDIUM_FOREGROUND_SERVICE_KEY)},
+    cleanupKey=${JSON.stringify(COMPENDIUM_FOREGROUND_CLEANUP_KEY)},token=${JSON.stringify(serviceToken)};
+    const sample=()=>({visibilityState:document.visibilityState,hidden:document.hidden,focused:document.hasFocus()});
+    const phase=(value,sequence)=>({observed:true,sequence,visibilityState:value.visibilityState,
+      hidden:value.hidden,focused:value.focused});
+    const pending=()=>({observed:false,sequence:null,visibilityState:null,hidden:null,focused:null});
+    let service=window[serviceKey];
+    if(!service||service.token!==token){if(typeof window[cleanupKey]==='function')window[cleanupKey]();
+      delete window[serviceKey];const arm=sample();service={token,visibilityChanges:0,focusLosses:0,
+        arm:phase(arm,0),raf:pending(),laterTask:pending()};
+      const visibility=()=>{service.visibilityChanges++},blur=()=>{service.focusLosses++};
+      document.addEventListener('visibilitychange',visibility);window.addEventListener('blur',blur);
+      window[cleanupKey]=()=>{document.removeEventListener('visibilitychange',visibility);
+        window.removeEventListener('blur',blur);delete window[cleanupKey]};window[serviceKey]=service;
+      requestAnimationFrame(()=>{service.raf=phase(sample(),1);
+        setTimeout(()=>{service.laterTask=phase(sample(),2)},0)})}
+    const S=window.__CF_SLICE__;return {schema:${JSON.stringify(FOREGROUND_SERVICE_OBSERVATION_SCHEMA)},
+      targetId:${JSON.stringify(activationTargetId)},sessionId:${JSON.stringify(sessionId)},
+      documentToken:typeof S?.documentToken==='string'?S.documentToken:'unavailable',
+      visibilityState:document.visibilityState,hidden:document.hidden,focused:document.hasFocus(),
+      service:{token:service.token,visibilityChanges:service.visibilityChanges,focusLosses:service.focusLosses,
+        arm:{...service.arm},raf:{...service.raf},laterTask:{...service.laterTask}}}})()`;
+}
+
+export function validCandidateForegroundServiceExpression(source, identities) {
+  let expected;
+  try { expected = candidateForegroundServiceExpression(identities); }
   catch { return false; }
   if (source !== expected) return false;
   try { new Function(`"use strict"; return (${source});`); }
   catch { return false; }
   return true;
+}
+
+export function candidateForegroundCleanupExpression() {
+  return `(()=>{const serviceKey=${JSON.stringify(COMPENDIUM_FOREGROUND_SERVICE_KEY)},
+    cleanupKey=${JSON.stringify(COMPENDIUM_FOREGROUND_CLEANUP_KEY)};
+    if(typeof window[cleanupKey]==='function')window[cleanupKey]();delete window[serviceKey];
+    return {cleanupPresent:typeof window[cleanupKey]==='function',servicePresent:window[serviceKey]!==undefined}})()`;
+}
+
+function surfaceCandidateForegroundCleanupFailures(primary, failures) {
+  if (!failures.length) return primary;
+  const retained = Object.freeze(failures.map((failure) => Object.freeze({ ...failure })));
+  const detail = retained.map((failure) => `${failure.step}: ${failure.error}`).join('; ');
+  if (primary instanceof Error) {
+    const originalMessage = primary.message;
+    primary.compendiumForegroundPrimaryMessage = originalMessage;
+    primary.compendiumForegroundCleanupFailures = retained;
+    primary.message = `${originalMessage}; foreground failure cleanup also failed (${detail})`;
+    return primary;
+  }
+  const wrapped = new Error(
+    `${String(primary)}; foreground failure cleanup also failed (${detail})`,
+    { cause: primary },
+  );
+  wrapped.compendiumForegroundPrimaryFailure = primary;
+  wrapped.compendiumForegroundCleanupFailures = retained;
+  return wrapped;
+}
+
+/* Own one attach-derived page before judging any rAF-dependent outcome. The
+   activation identity is observed independently from the expected attachment,
+   so activating one page while evaluating another cannot manufacture a pass. */
+export async function ownCandidateForeground({
+  attachment, activationTargetId, serviceToken, label,
+  sendStage, waitValue, evaluate, sendCleanup = null,
+}) {
+  assert(validCandidatePageAuthority(attachment)
+    && typeof activationTargetId === 'string' && activationTargetId.length > 0
+    && typeof serviceToken === 'string' && serviceToken.length > 0
+    && typeof label === 'string' && label.length > 0
+    && typeof sendStage === 'function' && typeof waitValue === 'function'
+    && typeof evaluate === 'function'
+    && (sendCleanup === null || typeof sendCleanup === 'function'),
+  'candidate foreground service dependencies are invalid');
+  const cleanupSender = sendCleanup === null
+    ? async (method, params, sessionId, options) => await sendStage(
+      `${label} failed foreground cleanup ${method}`,
+      method, params, sessionId, options,
+    )
+    : sendCleanup;
+  try {
+    await sendStage(`${label} foreground activation`, 'Target.activateTarget', {
+      targetId: activationTargetId,
+    });
+    await sendStage(`${label} foreground focus emulation`,
+      'Emulation.setFocusEmulationEnabled', { enabled: true }, attachment.sessionId);
+    await sendStage(`${label} foreground bring-to-front`,
+      'Page.bringToFront', {}, attachment.sessionId);
+    const identities = {
+      activationTargetId, sessionId: attachment.sessionId, serviceToken,
+    };
+    const expression = candidateForegroundServiceExpression(identities);
+    assert(validCandidateForegroundServiceExpression(expression, identities),
+      'candidate foreground service expression is invalid');
+    const expected = Object.freeze({
+      targetId: attachment.targetId, sessionId: attachment.sessionId,
+      documentToken: attachment.documentToken, serviceToken,
+    });
+    let decision = null;
+    let timing = null;
+    const observation = await waitValue(
+      attachment.sessionId, `${label} foreground service`, expression, {
+        timeoutMs: COMPENDIUM_FOREGROUND_SERVICE_TIMEOUT_MS,
+        acceptValue: () => decision?.status === 'ready',
+        onObservation: (value, command) => {
+          if (!validCompendiumForegroundServiceObservation(value)) {
+            const error = new Error(`${label} foreground observation shape: ${JSON.stringify(value)}`);
+            error.compendiumObservation = value;
+            throw error;
+          }
+          decision = classifyCompendiumForegroundServiceTurnReceipt(
+            value, expected, command.phaseDeadlineMs, command.target.completedAtMs,
+          );
+          if (decision.status === 'ready') {
+            timing = Object.freeze({
+              issuedAtMs: command.phaseDeadlineMs - COMPENDIUM_FOREGROUND_SERVICE_TIMEOUT_MS,
+              deadlineMs: command.phaseDeadlineMs,
+              receivedAtMs: command.target.completedAtMs,
+              timeoutMs: COMPENDIUM_FOREGROUND_SERVICE_TIMEOUT_MS,
+            });
+          }
+          if (decision.status === 'error') {
+            const error = new Error(`${label} foreground authority: ${JSON.stringify({
+              reasons: decision.reasons, expected, observation: value,
+            })}`);
+            error.compendiumObservation = value;
+            throw error;
+          }
+        },
+      },
+    );
+    assert(decision?.status === 'ready' && timing !== null,
+      `${label} foreground service did not settle ready with receipt timing`);
+    const cleanup = await evaluate(
+      attachment.sessionId, candidateForegroundCleanupExpression(),
+      `${label} foreground cleanup`,
+    );
+    assert(cleanup?.cleanupPresent === false && cleanup?.servicePresent === false,
+      `${label} foreground service cleanup retained document globals`);
+    return Object.freeze({
+      schema: FOREGROUND_SERVICE_RECEIPT_SCHEMA,
+      label, expected, observation, timing,
+      cleanup: Object.freeze({
+        cleanupPresent: cleanup.cleanupPresent,
+        servicePresent: cleanup.servicePresent,
+      }),
+    });
+  } catch (primary) {
+    const failures = [];
+    try {
+      const result = await cleanupSender('Runtime.evaluate', {
+        expression: candidateForegroundCleanupExpression(),
+        returnByValue: true,
+        awaitPromise: true,
+      }, attachment.sessionId, { timeoutMs: CANDIDATE_TRANSPORT_TIMEOUT_MS });
+      const cleanup = result?.result?.value;
+      if (result?.exceptionDetails) {
+        throw new Error(result.exceptionDetails.exception?.description
+          || result.exceptionDetails.text || 'page cleanup exception');
+      }
+      if (cleanup?.cleanupPresent !== false || cleanup?.servicePresent !== false) {
+        throw new Error(`cleanup retained document globals (${JSON.stringify(cleanup)})`);
+      }
+    } catch (error) {
+      failures.push({ step: 'document globals/listeners', error: lifecycleErrorMessage(error) });
+    }
+    try {
+      await cleanupSender('Emulation.setFocusEmulationEnabled',
+        { enabled: false }, attachment.sessionId,
+        { timeoutMs: CANDIDATE_TRANSPORT_TIMEOUT_MS });
+    } catch (error) {
+      failures.push({ step: 'focus emulation', error: lifecycleErrorMessage(error) });
+    }
+    throw surfaceCandidateForegroundCleanupFailures(primary, failures);
+  }
 }
 
 export function candidateFilterInputExpression({ expectedPanelMode, expectedValue, phase }) {
@@ -948,14 +1255,14 @@ export async function settleCandidateRowActivationPoint({
   const expression = candidateRowPointExpression(logicalId);
   let last = null;
   for (let attempt = 1; attempt <= maxAttempts; attempt++) {
-    await scrollToIndex(sessionId);
+    await scrollToIndex(sessionId, attempt);
     const before = await evaluate(
       sessionId, expression, `row ${logicalId} pre-render point ${attempt}`,
     );
     await evaluate(sessionId,
       'new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))',
       `row ${logicalId} deferred-layout settlement ${attempt}`);
-    await waitReady(sessionId);
+    await waitReady(sessionId, attempt);
     const after = await evaluate(
       sessionId, expression, `row ${logicalId} post-render point ${attempt}`,
     );
@@ -1176,11 +1483,11 @@ export async function collectCandidateSettledThumbnailSnapshot({
 }) {
   assert(typeof waitReady === 'function',
     'settled thumbnail snapshot requires a readiness observer');
-  await waitReady(sessionId);
+  await waitReady(sessionId, 'pre');
   await evaluate(sessionId,
     `new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))`,
     `${label} deferred-window settlement`);
-  await waitReady(sessionId);
+  await waitReady(sessionId, 'post');
   return await collectCandidateSnapshot({
     sessionId, label, rawSnapshotExpression, evaluate, sendStage,
   });
@@ -1196,6 +1503,16 @@ async function collectProfile({
   const commandLedger = [];
   const filterTransitions = [];
   const resourceOrder = [];
+  const attachmentsBySession = new Map();
+  const foregroundServices = [];
+  const thumbnailSettlements = new Map();
+  const thumbnailSettlementHistory = [];
+  const thumbnailSettlementAttempts = new Map();
+  let activeThumbnailSettlement = null;
+  let lazyPageAuthority = null;
+  let mainPageAuthority = null;
+  let foregroundOwner = null;
+  let foregroundServiceSequence = 0;
   let producerErrorWitness = null;
   const errorStages = producerErrorStages(profile);
   const producerErrorCandidateLabels = new Set([
@@ -1220,6 +1537,13 @@ async function collectProfile({
     currentStage = `after ${label}`;
   };
   const disposeAll = async () => {
+    if (foregroundOwner) {
+      try {
+        await send('Emulation.setFocusEmulationEnabled',
+          { enabled: false }, foregroundOwner.sessionId);
+      } catch { /* context disposal remains authoritative */ }
+      foregroundOwner = null;
+    }
     for (const sessionId of sessions) {
       try { await send('Target.detachFromTarget', { sessionId }); } catch { /* browser cleanup owns the rest */ }
     }
@@ -1253,14 +1577,58 @@ async function collectProfile({
       emulation.deviceMetrics, attached.sessionId);
     await sendStage('set initial touch emulation', 'Emulation.setTouchEmulationEnabled',
       emulation.touch, attached.sessionId);
-    return { browserContextId: context.browserContextId, targetId: target.targetId, sessionId: attached.sessionId };
+    const attachment = {
+      browserContextId: context.browserContextId,
+      targetId: target.targetId,
+      sessionId: attached.sessionId,
+      documentToken: null,
+    };
+    attachmentsBySession.set(attached.sessionId, attachment);
+    return attachment;
   };
   const navigate = async (sessionId, url, label) => {
     await sendStage(`${label} navigation`, 'Page.navigate', { url }, sessionId);
-    return await waitValue(sessionId, `${label} readiness`, `(()=>{
+    const documentToken = await waitValue(sessionId, `${label} readiness`, `(()=>{
       const S=window.__CF_SLICE__; return S&&S.api&&typeof S.api.compendiumDiagnostics==='function'
         &&S.api.__compendiumEvidence&&typeof S.documentToken==='string'?S.documentToken:null;
     })()`, { timeoutMs: 20000 });
+    const attachment = attachmentsBySession.get(sessionId);
+    assert(attachment && typeof documentToken === 'string' && documentToken.length > 0,
+      `${profile} ${label}: attach-derived document identity was unavailable`);
+    attachment.documentToken = documentToken;
+    return documentToken;
+  };
+  const pageAuthority = (sessionId) => {
+    const attachment = attachmentsBySession.get(sessionId);
+    assert(attachment && typeof attachment.documentToken === 'string'
+      && attachment.documentToken.length > 0,
+    `${profile}: session has no current attach-derived document authority`);
+    return Object.freeze({
+      targetId: attachment.targetId, sessionId: attachment.sessionId,
+      documentToken: attachment.documentToken,
+    });
+  };
+  const claimForeground = async (attachment, label) => {
+    assert(attachmentsBySession.get(attachment.sessionId) === attachment,
+      `${profile} ${label}: foreground attachment was not collector-owned`);
+    if (foregroundOwner && foregroundOwner.sessionId !== attachment.sessionId) {
+      await sendStage(`${label} release prior foreground focus`,
+        'Emulation.setFocusEmulationEnabled', { enabled: false }, foregroundOwner.sessionId);
+    }
+    /* Once a prior release succeeds (or this is a same-session re-claim), the
+       attempted attachment is the only possible focus owner. Leave the slot
+       empty until its complete service receipt succeeds; its failure path
+       independently disables that attempted session. */
+    foregroundOwner = null;
+    const receipt = await ownCandidateForeground({
+      attachment: pageAuthority(attachment.sessionId),
+      activationTargetId: attachment.targetId,
+      serviceToken: `${profile}-compendium-foreground-${++foregroundServiceSequence}`,
+      label, sendStage, waitValue, evaluate, sendCleanup: send,
+    });
+    foregroundOwner = attachment;
+    foregroundServices.push(receipt);
+    return receipt;
   };
   const seedSave = async (sessionId) => {
     await sendStage('seed document navigation', 'Page.navigate', {
@@ -1302,14 +1670,177 @@ async function collectProfile({
     });
     completeStage(`review ${state}`);
   };
-  const waitListReady = (sessionId, expectedCount = null) => waitValue(
-    sessionId, 'list thumb settlement',
-    candidateThumbSettlementExpression('list', expectedCount), { timeoutMs: 30000 },
-  );
-  const waitPlanetsideReady = (sessionId) => waitValue(
-    sessionId, 'Planetside thumb settlement',
-    candidateThumbSettlementExpression('planetside'), { timeoutMs: 30000 },
-  );
+  const waitThumbSettlement = async (sessionId, surface, expectedCount, phaseLabel) => {
+    assert(activeThumbnailSettlement === null,
+      `${profile} ${phaseLabel}: another thumbnail settlement phase is active`);
+    const planIndex = THUMB_SETTLEMENT_RECEIPT_PLAN.findIndex(
+      (entry) => entry.label === phaseLabel,
+    );
+    const planEntry = THUMB_SETTLEMENT_RECEIPT_PLAN[planIndex];
+    assert(planIndex >= 0 && planEntry.surface === surface
+      && planEntry.expectedCount === expectedCount,
+    `${profile} ${phaseLabel}: thumbnail settlement plan identity is invalid`);
+    const recordedLabels = [...thumbnailSettlements.keys()];
+    const recordedIndex = recordedLabels.indexOf(phaseLabel);
+    const isRetry = recordedIndex >= 0;
+    if (!isRetry) {
+      assert(planIndex === thumbnailSettlements.size,
+        `${profile} ${phaseLabel}: thumbnail settlement skipped or reordered a phase`);
+    } else {
+      assert(recordedIndex === planIndex
+        && planIndex === thumbnailSettlements.size - 1,
+      `${profile} ${phaseLabel}: only the latest thumbnail settlement phase may retry`);
+    }
+    const attempt = (thumbnailSettlementAttempts.get(phaseLabel) ?? 0) + 1;
+    assert(attempt <= 50,
+      `${profile} ${phaseLabel}: thumbnail settlement exceeded 50 attempts`);
+    thumbnailSettlementAttempts.set(phaseLabel, attempt);
+    const authority = pageAuthority(sessionId);
+    const receiptToken = compendiumThumbSettlementReceiptToken(
+      profile, phaseLabel, attempt,
+    );
+    const expected = Object.freeze({
+      surface, expectedCount, receiptToken, ...authority,
+    });
+    const expression = candidateThumbSettlementExpression(
+      surface, expectedCount, authority, receiptToken,
+    );
+    assert(validCandidateThumbSettlementExpression(
+      expression, surface, expectedCount, authority, receiptToken,
+    ), `${profile} ${phaseLabel}: thumbnail settlement expression is invalid`);
+    let decision = null;
+    const commandLabel = `${phaseLabel} thumb settlement`;
+    try {
+      const value = await waitValue(sessionId, commandLabel, expression, {
+        timeoutMs: THUMB_SETTLEMENT_RECEIPT_TIMEOUT_MS,
+        onWaitStarted: (timing) => {
+          activeThumbnailSettlement = Object.freeze({
+            schema: THUMB_SETTLEMENT_ACTIVE_SCHEMA,
+            label: phaseLabel,
+            attempt,
+            expected,
+            lastObservation: null,
+            lastDecision: null,
+            lastCommand: null,
+            timing,
+          });
+          assert(validCompendiumActiveThumbSettlement(activeThumbnailSettlement, {
+            profile, pageAuthority: authority, browserProduct: browser.browser.product, planIndex,
+          }), `${profile} ${phaseLabel}: initial thumbnail settlement tail is invalid`);
+        },
+        acceptValue: () => decision?.status === 'ready',
+        onObservation: (observation, command) => {
+          decision = classifyCompendiumThumbSettlement(observation, expected);
+          if (observation !== null && typeof observation === 'object'
+            && !Array.isArray(observation)) {
+            observation.ready = decision.status === 'ready';
+            observation.reasons = [...decision.reasons];
+          }
+          const timing = Object.freeze({
+            ...activeThumbnailSettlement.timing,
+            receivedAtMs: Math.max(
+              command.target.completedAtMs, command.heartbeat.completedAtMs,
+            ),
+          });
+          const observedTail = Object.freeze({
+            ...activeThumbnailSettlement,
+            lastObservation: observation,
+            lastDecision: decision,
+            lastCommand: command,
+            timing,
+          });
+          if (observation === null || typeof observation !== 'object'
+            || Array.isArray(observation)) {
+            activeThumbnailSettlement = observedTail;
+            const error = new Error(
+              `${profile} ${phaseLabel}: thumbnail observation was not an object (${JSON.stringify(observation)})`,
+            );
+            error.compendiumObservation = observation;
+            throw error;
+          }
+          if (!validCompendiumThumbSettlementObservation(observation, expected)) {
+            activeThumbnailSettlement = observedTail;
+            const error = new Error(
+              `${profile} ${phaseLabel}: thumbnail observation failed strict validation (${JSON.stringify(observation)})`,
+            );
+            error.compendiumObservation = observation;
+            throw error;
+          }
+          if (decision.status === 'error') {
+            activeThumbnailSettlement = observedTail;
+            const error = new Error(
+              `${profile} ${phaseLabel}: thumbnail observation lost authority (${JSON.stringify(observation)})`,
+            );
+            error.compendiumObservation = observation;
+            throw error;
+          }
+          if (decision.status === 'ready') {
+            const receipt = Object.freeze({
+              schema: THUMB_SETTLEMENT_RECEIPT_SCHEMA,
+              label: phaseLabel,
+              attempt,
+              expected,
+              observation,
+              command,
+              timing,
+            });
+            if (!validCompendiumThumbSettlementReceipt(receipt, {
+              profile, pageAuthority: authority, browserProduct: browser.browser.product, planIndex,
+            })) {
+              activeThumbnailSettlement = observedTail;
+              const error = new Error(
+                `${profile} ${phaseLabel}: accepted thumbnail settlement receipt is invalid`,
+              );
+              error.compendiumObservation = observation;
+              throw error;
+            }
+            thumbnailSettlementHistory.push(receipt);
+            thumbnailSettlements.set(phaseLabel, receipt);
+            activeThumbnailSettlement = null;
+          } else {
+            activeThumbnailSettlement = observedTail;
+            assert(validCompendiumActiveThumbSettlement(activeThumbnailSettlement, {
+              profile, pageAuthority: authority, browserProduct: browser.browser.product, planIndex,
+            }), `${profile} ${phaseLabel}: pending thumbnail settlement tail is invalid`);
+          }
+        },
+      });
+      assert(thumbnailSettlements.get(phaseLabel)?.observation === value
+        && activeThumbnailSettlement === null,
+      `${profile} ${phaseLabel}: thumbnail settlement receipt was not retained`);
+      return value;
+    } catch (caught) {
+      const error = caught instanceof Error ? caught : new Error(String(caught));
+      const command = isCandidateObservationError(error)
+        ? error.command : error.compendiumCommand || null;
+      if (activeThumbnailSettlement !== null && command?.schema === CANDIDATE_COMMAND_SCHEMA
+        && activeThumbnailSettlement.lastCommand !== command) {
+        activeThumbnailSettlement = Object.freeze({
+          ...activeThumbnailSettlement,
+          lastObservation: null,
+          lastDecision: null,
+          lastCommand: command,
+          timing: Object.freeze({
+            ...activeThumbnailSettlement.timing,
+            receivedAtMs: Math.max(
+              command.target.completedAtMs, command.heartbeat.completedAtMs,
+            ),
+          }),
+        });
+      }
+      throw caught;
+    }
+  };
+  const waitListReady = (sessionId, phaseLabel, expectedCount = null) => {
+    assert(typeof phaseLabel === 'string' && phaseLabel.length > 0,
+      `${profile}: list thumbnail settlement phase identity is required`);
+    return waitThumbSettlement(sessionId, 'list', expectedCount, phaseLabel);
+  };
+  const waitPlanetsideReady = (sessionId, phaseLabel) => {
+    assert(typeof phaseLabel === 'string' && phaseLabel.length > 0,
+      `${profile}: Planetside thumbnail settlement phase identity is required`);
+    return waitThumbSettlement(sessionId, 'planetside', null, phaseLabel);
+  };
   const elementPoint = async (
     sessionId, selector, label, { targetWitness = null } = {},
   ) => await waitValue(sessionId, `${label} target`, `(()=>{
@@ -1339,18 +1870,28 @@ async function collectProfile({
       type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
   };
-  const clickRow = async (sessionId, logicalId) => {
+  const clickRow = async (sessionId, logicalId, scrollPhaseLabel, rowPhaseLabel) => {
+    assert(typeof scrollPhaseLabel === 'string' && scrollPhaseLabel.length > 0
+      && typeof rowPhaseLabel === 'string' && rowPhaseLabel.length > 0,
+    `${profile}: row activation settlement phase identity is invalid`);
     const expression = candidateRowPointExpression(logicalId);
     assert(validCandidateRowPointExpression(expression, logicalId),
       `${profile}: row activation expression was invalid`);
     const point = await settleCandidateRowActivationPoint({
       sessionId, logicalId,
-      scrollToIndex: async (ownedSessionId) => {
+      scrollToIndex: async (ownedSessionId, attempt) => {
         const wanted = fixture.rows.findIndex(([candidateId]) => candidateId === logicalId);
         assert(wanted >= 0, `${profile}: row activation identity is absent from the fixture`);
-        await scrollToIndex(ownedSessionId, wanted);
+        await scrollToIndex(
+          ownedSessionId, wanted, attempt === 1 ? scrollPhaseLabel : rowPhaseLabel,
+          { expectedCount: attempt === 1 ? null : 1500 },
+        );
       },
-      waitReady: (ownedSessionId) => waitListReady(ownedSessionId, 1500),
+      waitReady: (ownedSessionId, attempt) => {
+        assert(Number.isSafeInteger(attempt) && attempt >= 1,
+          `${profile}: row activation readiness attempt is invalid`);
+        return waitListReady(ownedSessionId, rowPhaseLabel, 1500);
+      },
       evaluate,
     });
     await sendStage(`row ${logicalId} mouse press`, 'Input.dispatchMouseEvent', {
@@ -1381,7 +1922,11 @@ async function collectProfile({
     });
   const scrollerPoint = (sessionId) => waitValue(sessionId, 'Compendium scroller', `(()=>{const e=document.querySelector('[data-sel="codex-scroll"]');
     if(!e)return null;const r=e.getBoundingClientRect();return r.width>0&&r.height>0?{x:(r.left+r.right)/2,y:(r.top+r.bottom)/2}:null})()`);
-  const scrollToIndex = async (sessionId, wanted, { settle = true } = {}) => {
+  const scrollToIndex = async (
+    sessionId, wanted, phaseLabel, { settle = true, expectedCount = null } = {},
+  ) => {
+    assert(typeof phaseLabel === 'string' && phaseLabel.length > 0,
+      `${profile}: native scroll settlement phase identity is invalid`);
     const point = await scrollerPoint(sessionId);
     for (let step = 0; step < 50; step++) {
       const windowState = await evaluate(sessionId, `window.__CF_SLICE__.api.compendiumDiagnostics().window`, 'scroll window');
@@ -1397,7 +1942,7 @@ async function collectProfile({
       if (wanted >= windowState.start && wanted < windowState.end
         && visibility.fullyContained) {
         if (settle) {
-          await waitListReady(sessionId);
+          await waitListReady(sessionId, phaseLabel, expectedCount);
           const settled = await evaluate(sessionId, `(()=>{const row=[...document.querySelectorAll('#codexpanel [data-cid]')]
             .find(x=>x.dataset.cid===${JSON.stringify(logicalId)});const s=document.querySelector('[data-sel="codex-scroll"]');
             if(!row||!s)return false;const r=row.getBoundingClientRect(),sr=s.getBoundingClientRect(),inset=8;
@@ -1476,6 +2021,8 @@ async function collectProfile({
        species art before the lazy-import sentinel is sampled. */
     const lazyTarget = await createTarget();
     await navigate(lazyTarget.sessionId, `${origin}/`, 'fresh lazy-control boot');
+    lazyPageAuthority = pageAuthority(lazyTarget.sessionId);
+    await claimForeground(lazyTarget, 'fresh lazy-control');
     const lazyBoot = await snapshot(lazyTarget.sessionId, 'fresh lazy-control');
     const lazySpeciesResources = await evaluate(lazyTarget.sessionId, `(()=>{const suffix=${JSON.stringify(`/${candidateSpeciesArt.painter.relativePath}`)};
       return performance.getEntriesByType('resource').map(entry=>entry.name)
@@ -1486,7 +2033,9 @@ async function collectProfile({
     const sessionId = mainTarget.sessionId;
     await seedSave(sessionId);
     await navigate(sessionId, `${origin}/`, 'veteran Earth boot');
-    await waitPlanetsideReady(sessionId);
+    mainPageAuthority = pageAuthority(mainTarget.sessionId);
+    await claimForeground(mainTarget, 'veteran Earth');
+    await waitPlanetsideReady(sessionId, 'veteran-earth-planetside');
     const initial = await snapshot(sessionId, 'main initial');
     await evaluate(sessionId, `window.__CF_SLICE__.api.__compendiumEvidence.trimArtNow(${JSON.stringify(profile)})`, 'set device class');
     const installed = await evaluate(sessionId,
@@ -1555,7 +2104,7 @@ async function collectProfile({
     const first = await snapshot(sessionId, 'first rows');
     await captureReview(sessionId, 'list');
     const resizeBase = first;
-    const resizeTo = async (height, label, predicate) => {
+    const resizeTo = async (height, label, predicate, settlementPhaseLabel) => {
       await sendStage(`${label} device metrics`, 'Emulation.setDeviceMetricsOverride', {
         width: viewport.width, height, deviceScaleFactor: viewport.dpr, mobile: viewport.mobile,
       }, sessionId);
@@ -1563,21 +2112,24 @@ async function collectProfile({
         `${label} layout settlement`);
       await waitValue(sessionId, `${label} viewport/window`, `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
         return window.innerHeight===${height}&&(${predicate})?d:null})()`);
-      await waitListReady(sessionId, 1500);
+      await waitListReady(sessionId, settlementPhaseLabel, 1500);
       return await snapshot(sessionId, label);
     };
     const contractedHeight = Math.max(480, viewport.height - 180);
     const resizeContracted = await resizeTo(contractedHeight, 'contracted viewport',
       `document.querySelector('[data-sel="codex-scroll"]')?.clientHeight<${resizeBase.raw.scrollerHeight}
-        &&d.window.end<${resizeBase.diagnostics.window.end}`);
+        &&d.window.end<${resizeBase.diagnostics.window.end}`,
+      'viewport-contracted-list');
     const expandedHeight = viewport.height + 240;
     const resizeExpanded = await resizeTo(expandedHeight, 'expanded viewport',
       `document.querySelector('[data-sel="codex-scroll"]')?.clientHeight>${resizeContracted.raw.scrollerHeight}
         &&d.window.end>${resizeContracted.diagnostics.window.end}
-        &&d.window.mountedRowCount>${resizeContracted.raw.mountedRowCount}`);
+        &&d.window.mountedRowCount>${resizeContracted.raw.mountedRowCount}`,
+      'viewport-expanded-list');
     const resizeRestored = await resizeTo(viewport.height, 'restored viewport',
       `document.querySelector('[data-sel="codex-scroll"]')?.clientHeight>${resizeContracted.raw.scrollerHeight}
-        &&d.window.end>${resizeContracted.diagnostics.window.end}`);
+        &&d.window.end>${resizeContracted.diagnostics.window.end}`,
+      'viewport-restored-list');
     for (let tabs = 0; tabs < 4; tabs++) {
       const active = await evaluate(sessionId,
         `document.activeElement?.closest?.('[data-cid]')?.dataset.cid||null`,
@@ -1623,7 +2175,7 @@ async function collectProfile({
     await captureReview(sessionId, 'focus-pinned');
     await closeCompendium(sessionId);
     await openCompendium(sessionId);
-    await waitListReady(sessionId, 1500);
+    await waitListReady(sessionId, 'identity-reopen-list', 1500);
     const identity = await evaluate(sessionId, `(()=>{const ids=${JSON.stringify(fixture.sameSeedPair)};
       const key=id=>[...document.querySelectorAll('#codexpanel [data-cid]')].find(e=>e.dataset.cid===id)?.querySelector('img')?.dataset.visualKey||null;
       return {alphaKey:key(ids[0]),betaKey:key(ids[1])}})()`, 'complete identity keys');
@@ -1634,7 +2186,7 @@ async function collectProfile({
     const dedupeBefore = await evaluate(sessionId,
       `window.__CF_SLICE__.api.compendiumDiagnostics().art.totals.dedupeHits`, 'pre-dedupe total');
     await search(sessionId, 'visible', 'Same Seed Sentinel', 2);
-    await waitListReady(sessionId, 2);
+    await waitListReady(sessionId, 'sentinel-filter-list', 2);
     const dedupeAfter = await evaluate(sessionId,
       `window.__CF_SLICE__.api.compendiumDiagnostics().art.totals.dedupeHits`, 'post-dedupe total');
 
@@ -1653,24 +2205,27 @@ async function collectProfile({
       }, sessionId);
     }
     await closeCompendium(sessionId);
-    await waitPlanetsideReady(sessionId);
+    await waitPlanetsideReady(sessionId, 'post-churn-planetside');
     const churnAfter = await evaluate(sessionId,
       `window.__CF_SLICE__.api.compendiumDiagnostics().art.totals.jobCancels`, 'post-churn cancel total');
     await openCompendium(sessionId);
-    await waitListReady(sessionId, 1500);
+    await waitListReady(sessionId, 'post-churn-reopen-list', 1500);
 
-    await scrollToIndex(sessionId, 750);
+    await scrollToIndex(sessionId, 750, 'middle-scroll-list');
     const middle = await snapshot(sessionId, 'middle rows');
-    await scrollToIndex(sessionId, 1499);
+    await scrollToIndex(sessionId, 1499, 'last-scroll-list');
     const last = await snapshot(sessionId, 'last rows');
 
     await search(sessionId, 'hidden', 'Compendium Filter Beacon', 1);
-    await waitListReady(sessionId, 1);
+    await waitListReady(sessionId, 'filter-beacon-list', 1);
     const filtered = await snapshot(sessionId, 'filtered row');
     await search(sessionId, 'reopen', '', 1500);
-    await waitListReady(sessionId, 1500);
-    await scrollToIndex(sessionId, 777);
-    await clickRow(sessionId, targets.detail);
+    await waitListReady(sessionId, 'filter-reset-list', 1500);
+    await scrollToIndex(sessionId, 777, 'detail-primary-scroll-list');
+    await clickRow(
+      sessionId, targets.detail,
+      'detail-primary-scroll-list', 'detail-primary-row-activation-list',
+    );
     await waitValue(sessionId, '440 detail', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
       return d.panel.mode==='detail'&&d.surfaces.detail.logicalId===${JSON.stringify(targets.detail)}
         &&d.surfaces.detail.naturalWidth===440&&d.surfaces.detail.naturalHeight===440?d:null})()`, { timeoutMs: 30000 });
@@ -1683,30 +2238,33 @@ async function collectProfile({
     /* Re-enter through the native filter/detail path so Back focus is an
        independent outcome rather than inferred from the Close lifecycle. */
     await openCompendium(sessionId);
-    await waitListReady(sessionId, 1500);
-    await scrollToIndex(sessionId, 777);
+    await waitListReady(sessionId, 'detail-back-reopen-list', 1500);
+    await scrollToIndex(sessionId, 777, 'detail-back-scroll-list');
     const backAnchorBefore = await scrollAnchor(sessionId, 'pre-detail Back anchor', targets.detail);
     assert(backAnchorBefore?.logicalId, `${profile}: deep-list Back anchor was not observable`);
-    await clickRow(sessionId, targets.detail);
+    await clickRow(
+      sessionId, targets.detail,
+      'detail-back-scroll-list', 'detail-back-row-activation-list',
+    );
     await waitValue(sessionId, 'second 440 detail', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
       return d.panel.mode==='detail'&&d.surfaces.detail.logicalId===${JSON.stringify(targets.detail)}
         &&d.surfaces.detail.naturalWidth===440&&d.surfaces.detail.naturalHeight===440?d:null})()`, { timeoutMs: 30000 });
     await click(sessionId, '#codexback', 'Back');
     await waitValue(sessionId, 'Back focus', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),a=document.activeElement?.closest?.('[data-cid]');
       return d.panel.mode==='list'&&a?.dataset.cid===${JSON.stringify(targets.detail)}?d:null})()`);
-    await waitListReady(sessionId, 1500);
+    await waitListReady(sessionId, 'detail-back-return-list', 1500);
     const back = await snapshot(sessionId, 'Back');
     const backAnchorAfter = await scrollAnchor(sessionId, 'post-Back settled anchor', targets.detail);
     await evaluate(sessionId, `new Promise(resolve=>requestAnimationFrame(()=>setTimeout(()=>resolve(true),0)))`,
       'second post-Back layout settlement');
-    await waitListReady(sessionId, 1500);
+    await waitListReady(sessionId, 'detail-back-post-layout-list', 1500);
     const backAnchorSettled = await scrollAnchor(
       sessionId, 'second post-Back settled anchor', targets.detail,
     );
 
     await closeCompendium(sessionId);
     await openCompendium(sessionId);
-    await waitListReady(sessionId, 1500);
+    await waitListReady(sessionId, 'focus-reopen-list', 1500);
     for (let tabs = 0; tabs < 4; tabs++) {
       const active = await evaluate(sessionId, `document.activeElement?.closest?.('[data-cid]')?.dataset.cid||null`, 'focus entry');
       if (active === targets.pinned) break;
@@ -1715,25 +2273,33 @@ async function collectProfile({
     assert(await evaluate(sessionId,
       `document.activeElement?.closest?.('[data-cid]')?.dataset.cid===${JSON.stringify(targets.pinned)}`,
       'first-row focus'), `${profile}: native Tab did not focus the first logical row`);
-    await scrollToIndex(sessionId, 750);
+    await scrollToIndex(sessionId, 750, 'focus-off-window-scroll-list');
     const focusPinned = await collectCandidateSettledThumbnailSnapshot({
       sessionId,
       label: 'focused off-window row',
       rawSnapshotExpression,
       evaluate,
       sendStage,
-      waitReady: (candidateSessionId) => waitListReady(candidateSessionId, 1500),
+      waitReady: (candidateSessionId, marker) => {
+        assert(marker === 'pre' || marker === 'post',
+          `${profile}: focused snapshot settlement marker is invalid`);
+        return waitListReady(
+          candidateSessionId,
+          marker === 'pre' ? 'focus-snapshot-pre-list' : 'focus-snapshot-post-list',
+          1500,
+        );
+      },
     });
 
     /* Reopen from the dock so final Close focus provenance belongs to the
        dock/rail opener rather than the earlier global search control. */
     await closeCompendium(sessionId);
     await openCompendium(sessionId);
-    await waitListReady(sessionId, 1500);
+    await waitListReady(sessionId, 'close-reopen-list', 1500);
     const closeBefore = await evaluate(sessionId, `(()=>{const a=window.__CF_SLICE__.api.compendiumDiagnostics().art;
       return {leases:a.live.leases,releases:a.totals.releases}})()`, 'pre-close ownership');
     await closeCompendium(sessionId);
-    await waitPlanetsideReady(sessionId);
+    await waitPlanetsideReady(sessionId, 'close-planetside');
     const closeAfter = await evaluate(sessionId, `(()=>{const a=window.__CF_SLICE__.api.compendiumDiagnostics().art;
       return {leases:a.live.leases,releases:a.totals.releases}})()`, 'post-close ownership');
     const closed = await snapshot(sessionId, 'closed cleanup');
@@ -1761,7 +2327,7 @@ async function collectProfile({
         ?{computedHidden:true,liveLeases:d.art.live.leases,images}:null})()`);
     await evaluate(sessionId, `(()=>{document.body.classList.remove('training');return true})()`,
       'reveal Planetside lifecycle control');
-    await waitPlanetsideReady(sessionId);
+    await waitPlanetsideReady(sessionId, 'lifecycle-reveal-planetside');
     const revealedPlanetside = await evaluate(sessionId, `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return {
       liveLeases:d.art.live.leases,logicalIds:d.surfaces.planetside.logicalIds,
       images:[...document.querySelectorAll('#planetside [data-sel="planetside-sp"] img')].map(img=>({
@@ -1776,31 +2342,36 @@ async function collectProfile({
        of unowned thumbnails; the later cap control separately proves full-cap
        trimming without substituting that artificial occupancy for real Close. */
     await openCompendium(sessionId);
-    await waitListReady(sessionId, 1500);
+    await waitListReady(sessionId, 'warm-fill-open-list', 1500);
     const cacheFillIndices = [
       ...Array.from({ length: 20 }, (_, index) => index * 75), 1499,
     ];
-    for (const index of cacheFillIndices) {
-      await scrollToIndex(sessionId, index);
+    for (const [fillIndex, index] of cacheFillIndices.entries()) {
+      await scrollToIndex(
+        sessionId, index,
+        `warm-fill-scroll-${String(fillIndex + 1).padStart(2, '0')}-list`,
+      );
     }
     /* End the fill on one deterministic retained window. Reopening that same
        window measures cache reuse; traversing several disjoint windows larger
        than the phone cap would measure intentional LRU replacement instead of
        a warm plateau. */
     const warmAnchorIndex = 0;
-    await scrollToIndex(sessionId, warmAnchorIndex);
+    await scrollToIndex(sessionId, warmAnchorIndex, 'warm-anchor-scroll-list');
     await closeCompendium(sessionId);
-    await waitPlanetsideReady(sessionId);
+    await waitPlanetsideReady(sessionId, 'warm-precondition-planetside');
     const warmCachePrecondition = await snapshot(sessionId, 'warm cache precondition');
     resourceOrder.push('warm-precondition');
 
     const warm = [];
     for (let cycle = 0; cycle < REQUIRED_WARM_CYCLES; cycle++) {
       await openCompendium(sessionId);
-      await waitListReady(sessionId, 1500);
-      await scrollToIndex(sessionId, warmAnchorIndex);
+      await waitListReady(sessionId, `warm-cycle-${cycle + 1}-open-list`, 1500);
+      await scrollToIndex(
+        sessionId, warmAnchorIndex, `warm-cycle-${cycle + 1}-anchor-scroll-list`,
+      );
       await closeCompendium(sessionId);
-      await waitPlanetsideReady(sessionId);
+      await waitPlanetsideReady(sessionId, `warm-cycle-${cycle + 1}-planetside`);
       warm.push(await snapshot(sessionId, `warm cycle ${cycle + 1}`));
       resourceOrder.push(`warm-${cycle + 1}`);
     }
@@ -1822,11 +2393,14 @@ async function collectProfile({
        plateau. Run it only after warm[] is sealed, then close back to the
        ordinary Planetside state before collecting terminal evidence. */
     await openCompendium(sessionId);
-    await waitListReady(sessionId, 1500);
+    await waitListReady(sessionId, 'cap-open-list', 1500);
     await evaluate(sessionId,
       `window.__CF_SLICE__.api.__compendiumEvidence.trimArtNow('desktop')`, 'raise to desktop cap');
-    for (const index of cacheFillIndices) {
-      await scrollToIndex(sessionId, index);
+    for (const [fillIndex, index] of cacheFillIndices.entries()) {
+      await scrollToIndex(
+        sessionId, index,
+        `cap-fill-scroll-${String(fillIndex + 1).padStart(2, '0')}-list`,
+      );
     }
     const capBefore = await evaluate(sessionId,
       `window.__CF_SLICE__.api.compendiumDiagnostics().art`, 'pre-shrink diagnostics');
@@ -1853,18 +2427,22 @@ async function collectProfile({
     capShrink.restoredDeviceClass = capRestored.deviceClass;
     resourceOrder.push('profile-restored');
     await closeCompendium(sessionId);
-    await waitPlanetsideReady(sessionId);
+    await waitPlanetsideReady(sessionId, 'post-cap-planetside');
     const postCapRestored = await snapshot(sessionId, 'post-cap restored');
     resourceOrder.push('post-cap-restored');
 
-    await sendStage('activate final lazy-control target', 'Target.activateTarget', {
-      targetId: lazyTarget.targetId,
-    });
+    await claimForeground(lazyTarget, 'final lazy-control');
     const lazyEnd = await snapshot(lazyTarget.sessionId, 'final lazy-control');
     const lazySpeciesResourcesEnd = await evaluate(lazyTarget.sessionId, `(()=>{const suffix=${JSON.stringify(`/${candidateSpeciesArt.painter.relativePath}`)};
       return performance.getEntriesByType('resource').map(entry=>entry.name)
         .filter(name=>{try{return new URL(name,location.href).pathname.endsWith(suffix)}catch{return false}})})()`,
     'final species-art resource absence');
+    assert(activeThumbnailSettlement === null
+      && thumbnailSettlements.size === THUMB_SETTLEMENT_RECEIPT_PLAN.length
+      && [...thumbnailSettlements.keys()].every(
+        (label, index) => label === THUMB_SETTLEMENT_RECEIPT_PLAN[index].label,
+      ),
+    `${profile}: complete thumbnail settlement receipt plan is missing or reordered`);
     return {
       profile, viewport, reviewPacket,
       lazySpeciesResource: {
@@ -1891,6 +2469,10 @@ async function collectProfile({
         lazy: lazyBoot.diagnostics.documentToken, lazyEnd: lazyEnd.diagnostics.documentToken,
         main: initial.diagnostics.documentToken,
       },
+      pageAuthorities: {
+        lazy: lazyPageAuthority,
+        main: mainPageAuthority,
+      },
       targets, identity,
       phases: {
         dedupe: { before: dedupeBefore, after: dedupeAfter, dedupeHitsDelta: dedupeAfter - dedupeBefore },
@@ -1908,6 +2490,9 @@ async function collectProfile({
         resourceOrder,
         producerErrorWitness,
         filterTransitions,
+        foregroundServices,
+        thumbnailSettlements: [...thumbnailSettlements.values()],
+        thumbnailSettlementHistory: [...thumbnailSettlementHistory],
         close: {
           beforeLeases: closeBefore.leases, afterLeases: closeAfter.leases,
           releasesDelta: closeAfter.releases - closeBefore.releases,
@@ -1920,6 +2505,8 @@ async function collectProfile({
     };
   } catch (caught) {
     const error = caught instanceof Error ? caught : new Error(String(caught));
+    const retainedThumbnailSettlements = [...thumbnailSettlements.values()];
+    const retainedThumbnailSettlementHistory = [...thumbnailSettlementHistory];
     const command = isCandidateObservationError(error)
       ? error.command : error.compendiumCommand || null;
     const classification = isCandidateObservationError(error)
@@ -1936,6 +2523,14 @@ async function collectProfile({
       producerErrorWitness,
       filterTransitions,
       reviewPacket: [...reviewPacket],
+      diagnosis: error.message,
+      pageAuthorities: {
+        lazy: lazyPageAuthority,
+        main: mainPageAuthority,
+      },
+      thumbnailSettlements: retainedThumbnailSettlements,
+      thumbnailSettlementHistory: retainedThumbnailSettlementHistory,
+      activeThumbnailSettlement,
     };
     error.compendiumPartialEvidence = {
       partialFailure: {
@@ -1945,6 +2540,7 @@ async function collectProfile({
         lastCompletedStage,
         failingStage: currentStage,
         command,
+        diagnosis: error.message,
       },
       profile: partialProfile,
       reviewPacket: [...reviewPacket],
@@ -2302,10 +2898,20 @@ function lifecycleFindings(failures) {
 export function candidateLifecycleFailureReport(provisionalReport, failures) {
   const endedAt = new Date();
   if (provisionalReport.status === 'instrument-fail') {
+    const diagnosis = [
+      provisionalReport.partialFailure?.diagnosis,
+      ...failures.map((failure) => `${failure.stage}: ${failure.message}`),
+    ].filter(Boolean).join('; ');
+    const profiles = Object.fromEntries(Object.entries(provisionalReport.profiles || {})
+      .map(([profile, measurement]) => [profile,
+        measurement?.schema === PARTIAL_PROFILE_SCHEMA
+          ? { ...measurement, diagnosis } : measurement]));
     return {
       ...provisionalReport, endedAt: endedAt.toISOString(),
       durationMs: endedAt.getTime() - Date.parse(provisionalReport.startedAt),
-      findings: [...provisionalReport.findings, ...lifecycleFindings(failures)],
+      findings: [`instrument: ${diagnosis}`],
+      profiles,
+      partialFailure: { ...provisionalReport.partialFailure, diagnosis },
     };
   }
   const preserveCompleteProfiles = provisionalReport.partialFailure === null
@@ -2313,15 +2919,18 @@ export function candidateLifecycleFailureReport(provisionalReport, failures) {
   const profiles = preserveCompleteProfiles ? provisionalReport.profiles : {};
   const reviewPacket = preserveCompleteProfiles
     ? Object.values(profiles).flatMap((measurement) => measurement.reviewPacket || []) : [];
+  const diagnosis = failures.map((failure) =>
+    `${failure.stage}: ${failure.message}`).join('; ');
   return {
     ...provisionalReport,
     status: 'instrument-fail', endedAt: endedAt.toISOString(),
     durationMs: endedAt.getTime() - Date.parse(provisionalReport.startedAt),
-    outcomes: [], findings: lifecycleFindings(failures), profiles, reviewPacket,
+    outcomes: [], findings: [`instrument: ${diagnosis}`], profiles, reviewPacket,
     partialFailure: {
       schema: PARTIAL_FAILURE_SCHEMA, classification: 'instrument', profile: null,
       lastCompletedStage: preserveCompleteProfiles ? 'sealed outcome evaluation' : null,
       failingStage: 'post-collection resource cleanup', command: null,
+      diagnosis,
     },
     blockedOutcomes: [...EXPECTED_OUTCOMES],
   };
@@ -2783,6 +3392,7 @@ async function runGate({ calibrate }) {
       lastCompletedStage: null,
       failingStage: gateStage,
       command: null,
+      diagnosis: error.message,
     };
     const profiles = Object.fromEntries(measurements.map((measurement) =>
       [measurement.profile, measurement]));
