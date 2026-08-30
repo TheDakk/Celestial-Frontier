@@ -235,6 +235,16 @@ const routeProjectionOwner = section(
   'const arc3RemnantRouteProjection = (state) => ({',
   'const STALE_SAVED_ROUTE_RAW = (() => {',
 );
+const surveyObservationOwner = section(
+  sliceSource,
+  'const ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION = `',
+  'const assessArc3OrbitalSurvey = ({ observation, owned }) => {',
+);
+const biomeRouteOwner = section(
+  sliceSource,
+  "  const biomeRouteClose = await closeEngineeringPanel('Arc 3 biome Survey route');",
+  '  const biomePreObservation = await evalIn(ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION);',
+);
 const remnantOwner = section(
   sliceSource,
   "  const engineeringRouteClose = await closeEngineeringPanel('Arc 3 route to remnant');",
@@ -310,6 +320,33 @@ const SELFTEST_FIELDS = [
 
 const SLICE_GLOBAL_FIELDS = [
   ['projected ecology epoch', 'epoch: state?.epoch ?? null,'],
+] as const satisfies readonly Field[];
+
+const BIOME_ROUTE_FIELDS = [
+  ['ascent outcome', "const biomeLifted = await waitDesktopValue('Arc 3 biome Survey lift'"],
+  ['route-setup fail-stop',
+    "failSliceWithoutCascade('ARC 3 BIOME SURVEY ROUTE: red native close/lift/code setup stopped"],
+  ['pre-route writable barrier',
+    "await waitForF4Writable('Arc 3 biome Survey pre-purchase route authority');"],
+  ['native Search value/focus',
+    'input.value=${JSON.stringify(biomeSurveyCode)};input.focus();'],
+  ['native Search Enter', "await keyIn('Enter', 'Enter');"],
+  ['route outcome', "'Arc 3 biome Survey pre-purchase route',"],
+  ['post-route writable stabilization',
+    "await waitForF4Writable('Arc 3 biome Survey pre-purchase post-route authority');"],
+] as const satisfies readonly Field[];
+
+const BIOME_ROUTE_DIAGNOSTIC_FIELDS = [
+  ['pending persistence writes',
+    'pendingPersistenceWrites:state?.sceneResources?.pendingPersistenceWrites??null'],
+  ['Search value', 'searchValue:search?.value??null'],
+  ['Search focus', 'searchFocused:document.activeElement===search'],
+  ['Follow outcome', 'shareFollowOutcome:state?.sharing?.followOutcome??null'],
+  ['global product-action owner',
+    'productActionOwner:state?.engineering?.actionCoordinator?.owner??null'],
+  ['persistence outcome', 'persistenceLastOutcome:state?.persistence?.lastOutcome??null'],
+  ['persistence mutation fence',
+    'persistenceMutationBlocked:state?.persistence?.mutationBlocked??null'],
 ] as const satisfies readonly Field[];
 
 const REMNANT_SEARCH_FAIL_CALL =
@@ -461,6 +498,39 @@ const STORAGE_STALE_BOUNDARY_ORDER = [
     label: 'storage-control red -> stale path boundary',
     first: STORAGE_CONTROL_FAIL_CALL,
     second: STALE_PATH_CALL,
+  },
+] as const satisfies readonly OrderRule[];
+
+const BIOME_ROUTE_ORDER = [
+  {
+    label: 'route-setup fail-stop -> writable barrier',
+    first: "failSliceWithoutCascade('ARC 3 BIOME SURVEY ROUTE: red native close/lift/code setup stopped",
+    second: "await waitForF4Writable('Arc 3 biome Survey pre-purchase route authority');",
+  },
+  {
+    label: 'ascent outcome -> writable barrier',
+    first: "const biomeLifted = await waitDesktopValue('Arc 3 biome Survey lift'",
+    second: "await waitForF4Writable('Arc 3 biome Survey pre-purchase route authority');",
+  },
+  {
+    label: 'writable barrier -> Search value/focus',
+    first: "await waitForF4Writable('Arc 3 biome Survey pre-purchase route authority');",
+    second: 'input.value=${JSON.stringify(biomeSurveyCode)};input.focus();',
+  },
+  {
+    label: 'Search value/focus -> native Enter',
+    first: 'input.value=${JSON.stringify(biomeSurveyCode)};input.focus();',
+    second: "await keyIn('Enter', 'Enter');",
+  },
+  {
+    label: 'native Enter -> route outcome',
+    first: "await keyIn('Enter', 'Enter');",
+    second: "'Arc 3 biome Survey pre-purchase route',",
+  },
+  {
+    label: 'route outcome -> post-route writable stabilization',
+    first: "'Arc 3 biome Survey pre-purchase route',",
+    second: "await waitForF4Writable('Arc 3 biome Survey pre-purchase post-route authority');",
   },
 ] as const satisfies readonly OrderRule[];
 
@@ -635,6 +705,13 @@ describe('Slice Arc 3 remnant and Storage lifecycle harness', () => {
     expect(orderErrors(remnantOwner, REMNANT_ORDER)).toEqual([]);
   });
 
+  it('settles ascent persistence before one-shot Survey Search and preserves cause-bearing diagnostics', () => {
+    expect(fieldErrors(biomeRouteOwner, BIOME_ROUTE_FIELDS)).toEqual([]);
+    expect(orderErrors(biomeRouteOwner, BIOME_ROUTE_ORDER)).toEqual([]);
+    expect(fieldErrors(surveyObservationOwner, BIOME_ROUTE_DIAGNOSTIC_FIELDS)).toEqual([]);
+    expect(sliceSource).toContain('pendingPersistenceWrite.state.sceneResources.pendingPersistenceWrites = 1;');
+  });
+
   it('keeps reload Survey -> Close -> lifecycle -> guarded Storage order exact', () => {
     expect(fieldErrors(storageOwner, STORAGE_FIELDS)).toEqual([]);
     expect(orderErrors(storageOwner, STORAGE_ORDER)).toEqual([]);
@@ -652,6 +729,8 @@ describe('Slice Arc 3 remnant and Storage lifecycle harness', () => {
       );
     }
     const fieldOwners: ReadonlyArray<readonly [string, readonly Field[]]> = [
+      [biomeRouteOwner, BIOME_ROUTE_FIELDS],
+      [surveyObservationOwner, BIOME_ROUTE_DIAGNOSTIC_FIELDS],
       [remnantOwner, REMNANT_FIELDS],
       [storageOwner, STORAGE_FIELDS],
     ];
@@ -666,6 +745,7 @@ describe('Slice Arc 3 remnant and Storage lifecycle harness', () => {
       }
     }
     const orderOwners: ReadonlyArray<readonly [string, readonly OrderRule[]]> = [
+      [biomeRouteOwner, BIOME_ROUTE_ORDER],
       [remnantOwner, REMNANT_ORDER],
       [storageOwner, STORAGE_ORDER],
     ];

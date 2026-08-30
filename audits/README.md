@@ -10,6 +10,57 @@ summary of it.
 
 ## Contents
 
+### Signed `4a82d9b…` Compendium PASS, then terminal-red Slice Mine-Charter/Survey harness evidence
+
+Exact clean signed source `4a82d9b82521ea9bd1ac5e7c0754a473bcadd997` ran Compendium
+`20260830-pr35-f4-oracle-4a82d9b82521-compendium-certification` exactly once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`. It passed **78/78** outcomes (39 phone + 39 desktop),
+with zero findings or blocked outcomes, in **64,895 ms** and passed its exact named verifier.
+`ARC1C_COMPENDIUM_PR35_F4_ORACLE_PASS_20260830_4A82D9B.json.gz` is **522,115 gzip /
+10,834,839 raw bytes**, SHA-256
+`61b3eae4153668e670ae598dd8239a6f746154d3612f60fd56942706df00f2e4` /
+`8ba9115c844d411c260b8a931ce24561746da6fe8878488a34235c0a5c721bff`.
+
+The same unchanged source then ran Slice `20260830152819879-75689-abf2a37ffd4d` exactly once.
+It stopped terminal red after **99,332 ms**, with zero automatic retries and three ordered scopes:
+`arc-3-mine-action`, `arc-3-mine-action-controls-failed`, and `harness`.
+
+- `ARC4_SLICE_PR35_MINE_CHARTER_ORACLE_RED_20260830_4A82D9B.json.gz` is **82,153 gzip /
+  632,179 raw bytes**, SHA-256
+  `c544c705b1e5095457876d7b4b025660105325199ab1220270b9057da549d0d3` /
+  `8a2b7308cd28b81035e386ea705791c8f19521581b834b23a7714e11c254b285`.
+- `ARC4_SLICE_PR35_MINE_CHARTER_ORACLE_RED_20260830_4A82D9B.log.gz` is **37,544 gzip /
+  260,179 raw bytes**, SHA-256
+  `5504f772d9ef6f7ce36c023fb3695bcc59aff99748273f601674137433091b16` /
+  `502a0d2e2eb5032d5f6ab1fd45cb05c99ff46e341de65a141e19d154c536ec20`.
+
+The first finding is an oracle defect, not a product failure. One real trusted Mine atomically
+committed its extraction/cooldown and completed accepted Starter Charter `st-mine`: `chs` appended
+`st-mine`, `chp['st-mine']` canonicalized to 1, `chacc` removed it, `charters` advanced 2→3 and
+both current/lifetime Stardust (`essence` / `essenceEarned`) advanced by 15. Every unrelated row
+and extension was preserved. The old exact-action whitelist mislabeled those six coupled fields as
+unrelated drift; the second controls finding inherited that same false premise.
+
+The Survey timeout is a separate harness-sequencing defect, not a navigation or reach failure.
+Escape correctly lifted from Mars and scheduled `persistView`; Slice then sent a one-shot Search
+Enter while that write still owned `activePersist`. Product Search correctly refused and does not
+retry. The formerly post-timeout F4-writable barrier now runs before Enter, remains again after the
+route for stabilization, and the observation retains Search value/focus, Follow outcome, global
+action owner and persistence diagnostics. Mine baseline, Mine controls, Mine outcome, durable
+controls and final controls also fail-stop before dependent mutable work, preventing one root from
+manufacturing later findings.
+
+`port/v2/tests/pr35-4a82-mine-charter-evidence-replay.test.ts` binds all three gzip/raw carriers,
+the exact Compendium/Slice source and run semantics, raw child/log parity, the accepted six-field
+Charter successor and the absence of Glass/Recovery authority. It rejects six successor field
+families, ten structurally valid but product-invalid predecessor pairs and live-only mutations for
+every durable-mapped field/statistic while retaining an unrelated-live-state positive. The executable contract
+also rejects a non-plain progress predecessor and accepts the production-allowed null-prototype
+record. Current browser-free acceptance after the repair is **249 files / 2,488 passed / 1
+skipped**, with all TypeScript programs green. No app/gameplay source, save schema,
+creature/genome/art structure, timeout, retry policy or browser baseline changed. Glass and Recovery
+did not run and have no `4a82d9b…` authority; a fresh clean signed source must earn its own chain.
+
 ### Signed `e4f5af4…` Compendium PASS, then terminal-red Slice replacement/Engineering/Survey evidence
 
 Exact clean signed source `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` ran Compendium
