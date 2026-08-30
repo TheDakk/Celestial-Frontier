@@ -1,40 +1,43 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
-> **2026-08-30 current local execution-late worker/PWA correction (supersedes the narrower
+> **2026-08-30 current sealed single-file worker/PWA correction (supersedes the execution-late repair and narrower
 > 2026-08-29 PWA description below; its vista evidence remains historical):** exact signed source
 > `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran the one-attempt/no-retry Compendium certificate
 > `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` and stopped terminal
-> `product-fail` after **3,115 ms** at phone Planetside when the first species-painter lazy import
-> failed. Zero of 78 outcomes ran and all 78 were blocked. The immutable 6,053-byte gzip carrier
+> `product-fail` after **3,115 ms** at phone Planetside when the first species-painter import failed.
+> Exact descendant `dc6004cf4426df72bea141ac77b0be927f36886c` failed the same boundary after
+> **3,112 ms** in `20260830-pr35-execution-late-dc6004cf4426-compendium-certification`, despite the
+> worker reaching `ready`; both runs had zero outcomes and all 78 blocked, with no retry or successor.
+> The immutable 38d 6,053-byte gzip carrier
 > (`e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`) expands to 37,825 bytes
 > (`63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`) and replays **4/4**.
 >
-> The generated service worker now closes the execution-ready gap shared by lazy species and vista
-> workers. `matchAll` and `claim` may both omit a not-yet-ready worker; on its first controlled lazy
-> fetch, `clientId` plus `clients.get()` may inherit the one exact active cache only when
-> `activeBuildId === BUILD_ID`, there is no retained prior, the id is valid, and the live client is
-> a worker/sharedworker. Unknown, window, retained-prior and wrong-active clients remain exact 503;
-> adoption/type/prior/active mutants seal the boundary. This is cache-only identity inheritance,
-> not network fallback or retry.
+> Fetch-time adoption was falsified. Worker construction remains lazy, but the species-art worker
+> statically owns its painter and the biome-vista worker statically owns its renderer. Production
+> builds reject `import()` and external static JavaScript imports in either entry. The generated
+> service worker removes fetch-time adoption; every unpinned non-navigation request remains exact
+> 503, with no network fallback, mixed-build guess or retry.
 >
-> Current Compendium producer / generated-service-worker / Scene-build authorities are
-> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf` /
-> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` /
-> `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; current Compendium / Scene
-> budget hashes are `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
-> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`.
-> Four focused files / **74 tests**, all TypeScript programs, and the full browser-free **240 files /
-> 2,437 passed / 1 skipped** are green. Biome selection/profile content, vista composition, painter
+> Current measurement / contract / collector authorities are
+> `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+> `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; producer / SW / Scene-build
+> are `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
+> `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
+> `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; Compendium / Scene budgets
+> are `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
+> `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Combined worker/painter asset
+> `assets/species-art.worker-DnnSDKMy.js` is
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Biome selection/profile content, vista composition, painter
 > pixels, seeds, genomes, anatomy, art structure, rulers, ceilings and the 78-outcome inventory did
-> not change; fresh browser and HUMAN/physical-device evidence remain open.
+> not change; certification and HUMAN/physical-device evidence remain open.
 
 > **2026-08-29 current local vista/PWA evidence correction (supersedes narrower same-date
-> descriptions below where they differ):** the service worker now carries an initiating window's
+> descriptions below where they differ; superseded at the worker graph by the boundary above):** the service worker carries an initiating window's
 > exact selected build pin onto a valid module-worker or shared-worker `resultingClientId` before the
 > child can issue lazy imports. Live-build retention includes all client types; pin cleanup confirms
-> a worker omitted from `matchAll` with `clients.get()` before pruning it. This keeps the biome-vista
-> worker entry module and its dynamically imported compositor chunk on one retained build through
-> activation or rollback.
+> a worker omitted from `matchAll` with `clients.get()` before pruning it. The current biome-vista
+> worker instead statically owns its compositor, so no post-start compositor chunk exists.
 >
 > Product behavior remains fail-soft: construction, request, protocol, post-message, worker,
 > copy, mount and deadline failures preserve the fitted globe. Diagnostics now also retain the

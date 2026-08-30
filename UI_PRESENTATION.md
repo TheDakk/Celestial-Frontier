@@ -1,8 +1,35 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-30 current local execution-ready species-art/Compendium/PWA overlay (matches the
-> current local code; clean signed browser closure remains pending; supersedes narrower same-date
-> diagnostics and PWA descriptions below):** exact signed source
+> **2026-08-30 current sealed single-file species-art/biome-vista/PWA overlay (matches local code;
+> supersedes the execution-late repair below):** exact signed source
+> `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` preserved the 3,115 ms painter-import
+> `product-fail`, zero outcomes and all 78 blocked. Exact descendant
+> `dc6004cf4426df72bea141ac77b0be927f36886c` ran
+> `20260830-pr35-execution-late-dc6004cf4426-compendium-certification` once/no-retry and failed the
+> same phone veteran-Earth Planetside boundary after **3,112 ms** despite worker `ready`; zero
+> outcomes ran and all 78 were blocked. Neither red was retried or followed by Slice, Glass or
+> Recovery.
+>
+> Fetch-time adoption was falsified. Worker construction remains lazy, but the species-art worker
+> statically owns its painter and the biome-vista worker statically owns its renderer. Production
+> builds reject `import()` and external static JavaScript imports in either entry. The service worker
+> no longer adopts unpinned fetches; every unpinned non-navigation request remains exact 503. Current
+> measurement / contract / collector authorities are
+> `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+> `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; producer / SW / Scene-build
+> are `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
+> `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
+> `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`. Combined worker/painter asset
+> `assets/species-art.worker-DnnSDKMy.js` is
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`; Compendium / Scene budgets are
+> `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
+> `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. This changes packaging and
+> PWA ownership only; presentation structure, pixels, seeds, genomes, rulers, ceilings and the
+> 78-outcome inventory are unchanged. Certification remains pending.
+
+> **2026-08-30 historical execution-ready species-art/Compendium/PWA overlay (matched its named
+> sources; superseded by the sealed single-file overlay above):** exact signed source
 > `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
 > `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` once with no retry and stopped
 > after 33,217 ms at phone veteran-Earth Planetside settlement with zero outcomes and all 78
@@ -70,26 +97,26 @@
 > SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`, and its independent replay
 > passes **4/4**. The red was not retried and no successor ran.
 >
-> The second first-install race is execution readiness. A newly controlled dedicated/shared worker
+> At that historical repair, the second first-install race was execution readiness. A newly controlled dedicated/shared worker
 > can still be omitted from both the post-claim `clients.matchAll()` inventory and its claim-era
-> snapshot until its first controlled request. The service worker now uses that request's exact
+> snapshot until its first controlled request. That source's service worker used the request's exact
 > `clientId`, waits for `clients.get()` to confirm the live realm, and adopts it only when this
 > generated `BUILD_ID` is the current active build, no prior build is retained, and the client type
 > is exactly `worker` or `sharedworker`. Unknown clients, windows, retained-prior/update states and a
 > wrong active build still receive the exact 503. Source mutants prove the adoption, type, prior and
 > active-build guards. This is neither a network/mixed-build fallback nor a player-facing retry.
 >
-> Current producer authority is history-safe schema v2,
+> Its then-current producer authority was history-safe schema v2,
 > `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`, and binds generated
 > `service-worker.js` SHA-256
 > `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` together with index, owner,
-> species worker and painter. Historical producer records remain replayable. Current Scene build
+> species worker and painter. Historical producer records remain replayable. Its Scene build
 > authority is `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; current Compendium
 > measurement / contract / collector remain
 > `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
 > `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 > `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
-> Active Compendium/Scene budget SHA-256 is
+> Its Compendium/Scene budget SHA-256 was
 > `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
 > `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`.
 > The focused PWA, budget and carrier boundary passes **74/74 across four files**, all three
@@ -102,9 +129,9 @@
 > invokes Survey once, drains Survey's replacement product checkpoint, and invokes Land once. No
 > retry or optimistic transition was added. Exact PWA build ownership follows valid module-worker
 > and shared-worker creation through `resultingClientId`; retention considers all client realms and
-> confirms a missing reserved worker before pruning its pin. On first install only, a realm omitted
-> until execution-ready may additionally inherit the sole current build on its first controlled
-> request after exact `clients.get()` type confirmation; any retained-prior/update state refuses.
+> confirms a missing reserved worker before pruning its pin. Current species-art and biome-vista
+> workers are statically complete; there is no fetch-time pin adoption, and every unpinned
+> non-navigation request refuses with exact 503.
 >
 > A failed biome-vista worker still leaves the usable fitted globe in place, but diagnostics now
 > expose the fault count plus one bounded exact last-error string. SceneMemory fails that condition

@@ -1,5 +1,6 @@
 /* Browser-free worker state machine. The WebWorker adapter supplies the
-   worker-only canvas encoder and lazy painter import; tests supply fakes. */
+   worker-only canvas encoder and async painter-acquisition boundary; the
+   production adapter returns its statically owned graph and tests use fakes. */
 import { speciesVisualKey } from '@cf/art/species-identity';
 import {
   SPECIES_ART_WORKER_RESPONSE_SCHEMA,
@@ -134,6 +135,9 @@ export class SpeciesArtWorkerCore {
     }
 
     this.busyJobId = raw.jobId;
+    /* Schema-stable `import*` names now measure the asynchronous painter-
+       acquisition hook. Production returns its already evaluated static
+       namespace; tests may still inject asynchronous or rejected acquisition. */
     let importDurationMs = 0;
     try {
       if (!this.painter) {

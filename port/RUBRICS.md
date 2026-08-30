@@ -122,7 +122,7 @@
 > worker-error ownership is rejected unless `jobId`, `kind` and `key` are either all null or all
 > present; recovered cumulative telemetry remains nonterminal.
 >
-> **Current recovered-worker oracle boundary:** exact signed source
+> **Historical recovered-worker oracle boundary:** exact signed source
 > `d33abdfd513236e72294b81e3bb46b1362f810e1` ran
 > `20260830-pr35-first-install-d33abdfd5132-compendium-certification` exactly once/no-retry on Edge
 > `152.0.4191.53` / CDP `1.3`. It completed all 78 outcomes at **74 pass / four fail**; phone and
@@ -160,7 +160,7 @@
 > fixed ruler, numeric ceilings, 78-outcome inventory, historical samples, thresholds and exact-
 > source verdicts remain unchanged.
 >
-> **Current execution-late first-install boundary:** exact signed source
+> **Historical execution-late first-install boundary:** exact signed source
 > `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
 > `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` exactly once/no-retry on
 > Edge `152.0.4191.53` / CDP `1.3`. It stopped terminal `product-fail` after **3,115 ms** at phone
@@ -171,25 +171,40 @@
 > and **37,825 raw bytes** / SHA-256
 > `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`; replay is 4/4.
 >
-> Current `[EXEC]` acceptance covers the execution-ready gap: `matchAll` and claim may both omit a
-> first-install realm before its first later controlled request. That request's `clientId` is
-> confirmed with `clients.get()` and adopted only when active build equals `BUILD_ID`, prior pin is
-> null, and the live client is worker/sharedworker. Unknown clients, windows, prior pins and wrong-
-> active states stay exact 503; adoption, type, prior and active mutants remain red.
+> The first repair attempted fetch-time adoption only when `clients.get()` resolved the request
+> `clientId` to a live worker/sharedworker under the sole active build. At that boundary, focused
+> closure passed **4 files / 74 tests**, typecheck was green, and the full browser-free suite passed
+> **240 files / 2,437 passed / 1 skipped**. Those results remain historical browser-free evidence.
+>
+> Exact signed descendant `dc6004cf4426df72bea141ac77b0be927f36886c` then ran
+> `20260830-pr35-execution-late-dc6004cf4426-compendium-certification` once/no-retry and stopped
+> terminal `product-fail` after **3,112 ms** at phone veteran-Earth Planetside. Zero of 78 outcomes
+> ran, all **78** were blocked, and no desktop, review PNG or successor gate ran. Immutable carrier
+> `audits/ARC1C_COMPENDIUM_PR35_EXECUTION_LATE_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_DC6004C.json.gz`
+> retains raw / gzip SHA-256
+> `c48e48a5385799bdf4535bf97b7bacf545b24182998978067b68c9bb08f27a38` /
+> `2e65494085d46cf4b68b62d3df58884b22b9d5a5c9ad1378c018a73c036f6b53`; replay is **4/4**. This
+> falsified fetch-time `clients.get()` adoption and is immutable historical red, not an unchanged
+> retry candidate.
+>
+> Current `[EXEC]` acceptance keeps species-art and biome-vista `Worker` construction lazy but
+> requires each production entry to seal its complete module graph into one exact JavaScript
+> response. Production rejects runtime `import()` and every external static JavaScript edge.
+> Fetch-time adoption is removed; unpinned non-navigation requests remain fail-closed. Exact
+> worker-entry `resultingClientId` pinning, post-claim reconciliation and cache-only routing remain.
 >
 > Current measurement / outcome contract / collector are
-> `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
-> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
-> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`. Producer-v2 / generated
-> service-worker / Scene build is
-> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf` /
-> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` /
-> `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; Compendium / Scene budget
-> is `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
-> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`. Focused closure passes
-> **4 files / 74 tests**, typecheck is green, and the full suite passes **240 files / 2,437 passed /
-> 1 skipped**. Fixed rulers, ceilings, 78 outcomes, 73 release bullets and all `[HUMAN]`, hosted,
-> merge, release/version and deployment statuses remain unchanged; no fresh certificate exists.
+> `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+> `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`. Producer-v2 / service-
+> worker / Scene build is
+> `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
+> `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
+> `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; Compendium / Scene budget
+> is `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
+> `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Fixed rulers, ceilings,
+> 78 outcomes, 73 release bullets and all `[HUMAN]` statuses remain unchanged. Fresh changed-head
+> Compendium certification and Slice → Glass → Recovery remain pending; no unchanged retry exists.
 
 > **2026-08-29 current local gameplay-evidence overlay:** Arc 5 now has four player-live exact-
 > instance writers—Feed, one-draw nonlethal Breed with active-play Recovery, identity-only Rename,
@@ -589,16 +604,17 @@ The current-local performance criterion includes the exact resource controls abo
 cache is not automatically a plateau if it recreates workers and render jobs every route cycle, and
 a bounded logical cache is not sufficient if base64 strings retain backing storage. Acceptance
 therefore requires bounded warm reuse plus explicit revocable external-resource ownership. Clean
-signed SceneMemory **44/44** evidence now exists. Compendium remains open because the latest signed
-attempt was an instrument-only foreground stop and the repaired receipt-bound collector has not yet
-run on one clean signed source; physical heat/battery/true-GPU work also remains open.
+signed SceneMemory **44/44** evidence now exists. Compendium remains open because exact signed
+`dc6004cf…` falsified fetch-time worker adoption with a terminal painter-import product stop, while
+the sealed-worker changed head has not received fresh Compendium or successor-chain certification;
+physical heat/battery/true-GPU work also remains open.
 
 | | Criterion | Evidence |
 |---|---|---|
 | **`[HUMAN]`** | Physical iOS / iPadOS / Android / desktop matrix | ⛔ Outstanding for **four rounds**. No harness has ever seen this game on real iOS |
 | `[EXEC-TODO]` | Accessibility audit | **Bounded historical exact-source executable evidence is green; the full audit remains open.** Exact signed `3f69e88…` passed Layout 787/787 and Slice-bound 12-viewport Glass with zero findings/instrument failures. The contract independently reveals Sound and Creature voices, binds settled current nodes, control/panel/bounds/Close, 44px centre ownership, no overlap, trusted receipt, exact state/focus and unconditional restoration; the Feed result is the sole polite/atomic announcement and its toast is visual-only. Current browser-free controls additionally cover the post-settlement Combat Chronicle’s named timed transcript, two native HP meters, silent Skip and plain-text Share with a visible selected-text fallback. Native **Visual effects** and **Screen shake** plus reduced-motion/device policies are present. Physical assistive-technology/screen-reader review and broader accessibility judgment remain `[HUMAN]`/open, so this row and Gate I do not close. |
 | `[EXEC-TODO]` | Performance and heat budgets | **Bounded historical exact-source executable evidence is green; physical closure remains open.** Exact signed `3f69e88…` passed Layout 787/787, SceneMemory input-v4 44/44, Compendium 78/78, Slice, Glass and Recovery under the active numeric rulers; Recovery retained a real uninterrupted 1,200,297.5 ms observation. The one-pass Canvas finishers, lazy one-worker/one-entry `960×430` vista owner and bounded static/animated effect policies retain historical exact-source structural/browser evidence; current structural controls remain browser-free. Browser authority remains compatible Edge family + CDP `1.3`; `.107` is provenance only. Chromium exposes no portable true GPU-byte counter, and no physical-device frame-time/heat/battery/true-GPU measurements exist, so this row and Gate I stay open. |
-| `[EXEC]` | PWA offline / update rollback | **`[CURRENT-LOCAL]` automatable implementation is green; physical closure remains open.** The build-only Vite plugin emits a same-origin manifest/icons and generated worker whose canonical identity joins the path-sorted SHA-256 final-byte runtime table with an automatic worker-template revision. Install verifies every exact response and writes its completion marker last; failure deletes the partial set. Activate re-verifies, keeps current plus one complete prior build, persists exact client-realm pins, enumerates every controlled/uncontrolled client type and confirms an omitted reserved client with `clients.get()` before pruning. A successor never claims running pages; navigation selects and pins the active build, while Worker and SharedWorker entry routing pins a valid `resultingClientId` to the initiator-selected build before any lazy import. Every subresource remains cache-only on its realm pin. Third-build activation refuses while any prior-pinned document or worker realm lives, with no external/network fallback or cross-build mixing. Settings binds explicit Check, Activate, Reload and Roll back status/results to the exact worker and reveals Reload from matching active status, not `controllerchange`. Main refuses conflicting reloads, joins active persistence, checkpoints a canceled debounce and rearms it on durability failure before any exclusive teardown/navigation. Rollback changes app assets rather than IndexedDB expedition data. The focused VM/JSDOM/static PWA controls, independent built-output inventory/digest verification, build and all TypeScript programs are green. Physical install/offline reopen/update/rollback on the device matrix, browser install UI, assistive-technology and HUMAN judgment remain open, so Gate I does not close. |
+| `[EXEC]` | PWA offline / update rollback | **`[CURRENT-LOCAL]` automatable implementation is changed-head pending; physical closure remains open.** The build-only Vite plugin emits a same-origin manifest/icons and generated worker whose canonical identity joins the path-sorted SHA-256 final-byte runtime table with an automatic worker-template revision. Install verifies every exact response and writes its completion marker last; failure deletes the partial set. Activate re-verifies, keeps current plus one complete prior build, persists exact client-realm pins, enumerates every controlled/uncontrolled client type and confirms an omitted reserved client with `clients.get()` before pruning. A successor never claims running pages; navigation selects and pins the active build, while Worker and SharedWorker entry routing pins a valid `resultingClientId` to the initiator-selected build. Species-art and biome-vista construction remains lazy, but each production entry is a sealed one-response module graph; runtime `import()` and external static JavaScript edges are rejected. Fetch-time adoption has been removed, every unpinned subresource remains fail-closed, and every pinned subresource remains cache-only. Third-build activation refuses while any prior-pinned document or worker realm lives, with no external/network fallback or cross-build mixing. Settings binds explicit Check, Activate, Reload and Roll back status/results to the exact worker and reveals Reload from matching active status, not `controllerchange`. Main refuses conflicting reloads, joins active persistence, checkpoints a canceled debounce and rearms it on durability failure before any exclusive teardown/navigation. Rollback changes app assets rather than IndexedDB expedition data. Fresh changed-head Compendium and Slice → Glass → Recovery certification remain pending. Physical install/offline reopen/update/rollback on the device matrix, browser install UI, assistive-technology and HUMAN judgment remain open, so Gate I does not close. |
 | `[HUMAN]` | Save export and recovery path works for a real player | Same blocker as Gate C |
 
 ---

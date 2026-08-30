@@ -37,12 +37,13 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   by the eventual commit, so raw gameplay successors are compared with same-commit codec-canonical
   state without wall clock, retry, schema, reward or RNG drift.
 - ★ **D-PR35-PWA-REALM — exact build ownership crosses worker realms.** Worker and shared-worker
-  entries inherit the initiating document's selected build through a required valid
-  `resultingClientId`; their own lazy imports therefore resolve against the same retained cache.
-  Retention enumerates every client type, confirms a temporarily omitted/reserved client with
-  `clients.get()` before deletion, refuses a third build while any realm owns the predecessor, and
-  prunes a pin only after termination is proved. There is no external/network or cross-build
-  fallback, and Edge point versions remain provenance only.
+  objects remain lazily constructed, while species and biome painter/renderer semantics are sealed
+  into their respective one-file generated worker graphs. Build authority rejects worker
+  `import()`, external static JavaScript dependencies, Window import/preload and Blob routes while
+  retaining one exact Window module-Worker edge. The service worker performs no fetch-time
+  adoption; an unpinned realm remains exact-503 fail-closed. Retention still refuses a third build
+  while a predecessor is owned. There is no external/network or cross-build fallback, and Edge
+  point versions remain provenance only.
 - ★ **D-PR35-SCENEMEM — actionable vista faults and an instrument-owned BFCache origin.** Every
   current biome-vista failure carries a bounded cause; missing, malformed, negative or inconsistent
   diagnostics fail closed, while genuinely stale replies remain stale drops and current identity
@@ -151,8 +152,9 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   `port/v2/tests/compendium-worker-import-failure-carrier.test.ts`.
 
   Deterministic harness evidence reproduces the code-supported first-activation claim-gap cause and
-  exact 503 `This document has no retained Celestial Frontier build.` The local product repair
-  re-runs all-client pin reconciliation inside the post-claim activation barrier. Species
+  exact 503 `This document has no retained Celestial Frontier build.` The then-local attempted
+  product repair re-ran all-client pin reconciliation inside the post-claim activation barrier;
+  the later `dc6004c…` exact-source stop below falsified that path as closure. Species
   diagnostics v2 retains one bounded trusted `lastError`; later adapter protocol/external fatals
   clear stale `lastError`, while a replacement producer clears both `lastEvent` and `lastError` and
   trusted worker-fatal evidence remains.
@@ -221,27 +223,36 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   and **37,825 raw bytes** / SHA-256
   `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`; replay passes 4/4.
 
-  The current deviation remains fail-closed: an execution-late first-install realm may be omitted
-  by both `matchAll` and claim before its first later controlled request. The generated worker
-  confirms that request's `clientId` with `clients.get()` and adopts it only when active build equals
-  `BUILD_ID`, prior pin is null and the live client is worker/sharedworker. Unknown clients, windows,
-  prior pins and wrong-active states retain exact 503; adoption, type, prior and active mutants stay
-  red.
+  That boundary's diagnosis observed that an execution-not-ready first-install realm may be omitted
+  by both `matchAll` and claim. Its attempted fetch-time repair confirmed the later request's
+  `clientId` with `clients.get()` before conditional worker/sharedworker adoption. Exact clean signed
+  successor `dc6004cf4426df72bea141ac77b0be927f36886c` tested that repair exactly once/no-retry as
+  `20260830-pr35-execution-late-dc6004cf4426-compendium-certification`. It again stopped terminal
+  `product-fail` after **3,112 ms** at phone `veteran-earth-planetside`, with zero outcomes, all
+  **78** blocked, eight errored rows, no desktop, review PNG or successor browser gate. The immutable
+  `audits/ARC1C_COMPENDIUM_PR35_EXECUTION_LATE_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_DC6004C.json.gz`
+  carrier is **6,127 gzip bytes** / SHA-256
+  `2e65494085d46cf4b68b62d3df58884b22b9d5a5c9ad1378c018a73c036f6b53` and **38,665 raw bytes** /
+  SHA-256 `c48e48a5385799bdf4535bf97b7bacf545b24182998978067b68c9bb08f27a38`; replay passes 4/4.
+  This exact successor falsifies fetch-time `clients.get()` adoption as the current repair without
+  relabelling either historical product stop.
 
-  Current measurement / outcome-contract / collector remain
-  `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
-  `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
-  `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`. Producer-v2 / generated
+  The current design preserves lazy construction while sealing the complete species and biome
+  painter/renderer execution graphs into their respective one-file worker outputs. Generated
+  workers contain neither `import()` nor an external static JavaScript dependency; there is no
+  fetch-time adoption, and unpinned requests retain exact 503. Current measurement /
+  outcome-contract / collector SHA-256 is
+  `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+  `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+  `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; producer-v2 / generated
   service-worker / Scene build is
-  `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf` /
-  `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` /
-  `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; Compendium / Scene budget
-  is `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
-  `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`.
-  Focused closure passes **4 files / 74 tests**, typecheck is green, and the full browser-free suite
-  passes **240 files / 2,437 passed / 1 skipped**. Fixed rulers, ceilings, 78 outcomes, 73 release
-  bullets and HUMAN/hosted/merge/release/version/deployment status remain unchanged; certification
-  is still pending.
+  `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
+  `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
+  `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; Compendium / Scene budget
+  is `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
+  `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Fixed rulers, ceilings,
+  78 outcomes and 73 release bullets remain unchanged. Fresh changed-head certification is pending;
+  no successor browser gate, HUMAN/hosted/merge/release/version/deployment authority exists.
 
 - ★ **D-ARC5-LIVE — four bounded exact-instance companion writers.** Verified real-fauna
   Compendium detail exposes Feed, one-draw nonlethal Breed with active-play Recovery, identity-only
@@ -297,8 +308,10 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   final runtime inventory with an automatic worker-template revision before its completion marker
   exists. A partial or altered candidate is deleted. Exact per-document pins survive build
   activation/rollback until explicit reload; navigation pins the selected build and subresources are
-  cache-only from that pin. Successors do not claim running pages, stale pins prune only after their
-  clients disappear, and third-build activation refuses while a prior-pinned tab lives, so only
+  cache-only from that pin. Species and biome workers are lazily constructed but each owns one sealed
+  generated execution graph with no worker `import()` or external static JavaScript dependency;
+  unpinned fetches receive exact 503 and are never adopted at fetch time. Successors do not claim
+  running pages, and third-build activation refuses while a prior-pinned tab lives, so only
   current plus one verified predecessor remain without cross-build/external/network fallback.
   Settings binds accessible explicit Check, Activate, Reload and Roll back status/results to the exact
   worker and reveals Reload from matching active status. Main refuses conflicting reloads, joins
@@ -1020,9 +1033,10 @@ the current-state boundary above.
   hide/release/reacquire; list work does not route through the renderer's 440px compatibility
   facade. After complete app wiring, every default broker pump waits for a rendering opportunity
   and then a later task before dispatch. At most one serial dedicated module worker at a time owns
-  painter import, 440px scratch paint, 132px downsample, and PNG encoding. It has no synchronous
+  the statically bundled painter, 440px scratch paint, 132px downsample, and PNG encoding. It has no synchronous
   renderer fallback and terminates after active work settles and its queue is empty; a later
-  genuinely new producer burst owns a fresh instance/import. Exact document/producer/instance/job/
+  genuinely new producer burst owns a fresh instance and first-job painter-acquisition phase.
+  Schema-stable `import*` evidence does not claim to time static module evaluation. Exact document/producer/instance/job/
   phase evidence is retained. Capability/import/protocol/worker fatal paths settle active plus
   queued owners once without automatic retry; paint and content-specific encode failures remain
   per-job. Detail owns an asynchronous 440px request through the same broker. A generation token

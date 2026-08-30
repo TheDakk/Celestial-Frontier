@@ -1,7 +1,7 @@
 /* species-art-loader.ts — Window-side ownership for the dedicated species-art
-   producer. The broker is cheap and safe at boot; the Worker and its heavy
-   painter chunk are constructed only after a real owner exists AND the app
-   explicitly activates background work after its first serviced turn. */
+   producer. The broker is cheap and safe at boot; the sealed Worker graph is
+   constructed only after a real owner exists AND the app explicitly activates
+   background work after its first serviced turn. */
 import {
   SpeciesArtBroker,
   type Portrait440,
@@ -39,8 +39,9 @@ export type SpeciesArtLazyState = 'idle' | 'loading' | 'ready' | 'error';
 export interface SpeciesArtLazyDiagnostics {
   readonly schema: 'cf-v2-species-art-worker-diagnostics/v2';
   readonly state: SpeciesArtLazyState;
-  /** Historical name retained for the Arc 1A lazy-import contract. Each
-   * producer instance owns one fresh worker-local painter import. */
+  /** Historical name retained for the Arc 1A protocol. On the sealed worker
+   * graph this counts one first-job painter-acquisition phase per producer;
+   * static module evaluation occurs before worker code and is not timed here. */
   readonly importStarts: number;
   readonly identity: Readonly<{
     documentToken: string;
@@ -85,6 +86,7 @@ export interface SpeciesArtLazyDiagnostics {
   }>;
   readonly results: Readonly<{
     count: number;
+    /** Historical field: maximum first-job painter-acquisition hook duration. */
     maxImportDurationMs: number;
     maxRenderDurationMs: number;
     maxEncodeDurationMs: number;

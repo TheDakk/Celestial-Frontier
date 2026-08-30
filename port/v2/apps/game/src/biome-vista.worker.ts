@@ -2,6 +2,7 @@ import {
   installSpeciesCanvasFactory,
   type ArtCanvas,
 } from '@cf/art/species-canvas';
+import { renderBiomeVistaV1 } from '@cf/art/biome-vista';
 import { BIOME_VISUAL_PROFILES_V1 } from '@cf/art/biome-visual-profile';
 import { createVisualTreatmentV1 } from '@cf/art/visual-treatment';
 import { polishBiomeCanvasV1 } from '@cf/art/surface-polish';
@@ -27,7 +28,6 @@ scope.addEventListener('message', (event: MessageEvent<unknown>) => {
   void (async () => {
     try {
       if (typeof OffscreenCanvas !== 'function') throw new Error('worker OffscreenCanvas unavailable');
-      const { renderBiomeVistaV1 } = await import('@cf/art/biome-vista');
       const canvas = renderBiomeVistaV1({
         scene: message.request.scene,
         biomeKey: message.request.biomeKey,

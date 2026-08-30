@@ -2485,7 +2485,7 @@ describe('legacy and v2 release channels', () => {
       /thumbnail scratch art is downsampled to 132px before it crosses the worker boundary/,
       /Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column/,
       /Loading and painting the first specimen thumbnails now happens away from the renderer thread/,
-      /A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn/,
+      /A dedicated worker is constructed only after a real owner and a serviced boot turn, with its complete portrait graph sealed into that exact worker entry/,
       /terminates an idle or replaced producer without a synchronous renderer fallback/,
       /ENGINEERING TURNS OPPORTUNITY INTO REACH/,
       /finite grounded Mine and Jump-gated Skim actions/,

@@ -6667,9 +6667,11 @@ try {
       workspaceContract=headingFor(workspace)==='UI Enhancements'
         &&(workspace?.textContent||'').includes('Opening the Compendium now gives its variable-height rows a full safe-height left workspace while Search, Survey, and the dock remain visible and usable in a separate right column'),
       coldArtContract=headingFor(coldArt)==='Bug Fixes'
-        &&(coldArt?.textContent||'').includes('Loading and painting the first specimen thumbnails now happens away from the renderer thread'),
+        &&(coldArt?.textContent||'').includes('Loading and painting the first specimen thumbnails now happens away from the renderer thread')
+        &&(coldArt?.textContent||'').includes('each now owns one complete verified module response')
+        &&(coldArt?.textContent||'').includes('Production rejects any split worker graph'),
       workerContract=headingFor(worker)==='Under the Hood'
-        &&(worker?.textContent||'').includes('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn')
+        &&(worker?.textContent||'').includes('A dedicated worker is constructed only after a real owner and a serviced boot turn, with its complete portrait graph sealed into that exact worker entry')
         &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback'),
       shipyardContradiction=/all six Research rows can (?:currently )?be purchased/i.test(shipyardText)
         ||/current Survey card does not yet (?:render|paint|show)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
@@ -7181,7 +7183,7 @@ try {
     const workspaceChanged=workspace.textContent!==workspaceText,workspaceStale=${releaseDraftCheck};workspace.textContent=workspaceText;
     coldArt.textContent=coldArtText.replace('Loading and painting the first specimen thumbnails now happens away from the renderer thread','cold renderer-answerability outcome removed');
     const coldArtChanged=coldArt.textContent!==coldArtText,coldArtStale=${releaseDraftCheck};coldArt.textContent=coldArtText;
-    worker.textContent=workerText.replace('A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn','worker ownership outcome removed');
+    worker.textContent=workerText.replace('A dedicated worker is constructed only after a real owner and a serviced boot turn, with its complete portrait graph sealed into that exact worker entry','worker ownership outcome removed');
     const workerChanged=worker.textContent!==workerText,workerStale=${releaseDraftCheck};worker.textContent=workerText;
     worker.textContent=workerText.replace('terminates an idle or replaced producer without a synchronous renderer fallback','worker release/fallback outcome removed');
     const workerReleaseChanged=worker.textContent!==workerText,workerReleaseStale=${releaseDraftCheck};worker.textContent=workerText;

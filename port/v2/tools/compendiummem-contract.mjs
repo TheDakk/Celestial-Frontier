@@ -4063,6 +4063,11 @@ export function evaluateProfile(measurement, budget, fixture) {
       },
     } : {}),
   });
+  const splitWorkerPainter = lazyResource?.workerPath !== lazyResource?.path
+    && lazyResource?.ownership === 'dedicated-worker-dynamic-import';
+  const sealedWorkerPainter = lazyResource?.workerPath === lazyResource?.path
+    && lazyResource?.workerSha256 === lazyResource?.sha256
+    && lazyResource?.ownership === 'dedicated-worker-sealed-entry';
   add('lazy-art-not-eager', foregroundAuthorityValid && thumbnailSettlementAuthorityValid
     && workerArtDormant(initial) && initial?.diagnostics?.art === null
     && lazyEnd?.diagnostics?.documentToken === initial?.diagnostics?.documentToken
@@ -4074,7 +4079,6 @@ export function evaluateProfile(measurement, budget, fixture) {
     && typeof lazyResource?.path === 'string' && lazyResource.path.endsWith('.js')
     && /^[a-f0-9]{64}$/.test(String(lazyResource?.sha256 || ''))
     && typeof lazyResource?.workerPath === 'string' && lazyResource.workerPath.endsWith('.js')
-    && lazyResource.workerPath !== lazyResource.path
     && /^[a-f0-9]{64}$/.test(String(lazyResource?.workerSha256 || ''))
     && (budget?.producerAuthority?.schema === HISTORICAL_COMPENDIUM_PRODUCER_AUTHORITY_SCHEMA
       || lazyResource?.serviceWorkerPath === 'service-worker.js'
@@ -4082,7 +4086,7 @@ export function evaluateProfile(measurement, budget, fixture) {
     && measuredProducerAuthority !== null
     && validProducerAuthority(budget?.producerAuthority)
     && sameJson(measuredProducerAuthority, budget.producerAuthority)
-    && lazyResource?.ownership === 'dedicated-worker-dynamic-import'
+    && (splitWorkerPainter || sealedWorkerPainter)
     && Array.isArray(lazyResource?.matches) && lazyResource.matches.length === 0
     && Array.isArray(lazyResource?.endMatches) && lazyResource.endMatches.length === 0,
   'the semantically identified species-art executable loaded before a Compendium/Planetside owner requested it, or the exact foreground/thumbnail receipt authority was incomplete',

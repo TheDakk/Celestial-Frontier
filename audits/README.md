@@ -54,6 +54,39 @@ worker `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a`.
 This exact red grants no fresh Compendium certificate, same-source retry, Slice, Glass, Recovery,
 HUMAN, hosted, merge, release, version-bump or deploy authority. No successor browser stage ran.
 
+The current local successor removes the failed execution-late fetch instead of broadening service-
+worker adoption. Both dedicated worker graphs now statically own their complete renderer dependency:
+the generated species worker contains the species painter and the generated biome-vista worker
+contains the biome renderer. Each remains lazily constructed by the game, but neither worker contains
+`import()` nor an external static import/re-export, so first-install execution has no second worker-
+local module request to cross the `clients.claim()` boundary. Production build enforcement checks
+these properties on both generated worker files in `generateBundle` and again on the final bytes in
+`writeBundle`; source, emitted-graph and two-direction mutants independently make violations red.
+The falsified fetch-time `clients.get()` adoption path is removed, and an unpinned worker request
+continues to receive the exact fail-closed 503 without network fallback, mixed-build service or
+version-specific handling.
+
+Current Compendium producer authority v2 is
+`0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb`, binding index
+`720060efe570bb9c6a802eaad8ea94751b6f38bd35059487e07c36e0afbbc180`, owner
+`7b9bf1843eae0f914a43049bc618524314361a585c1b845cfcedf10e9c069319`, the single-file species
+worker/painter
+`25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`, and generated service
+worker `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b`. Current measurement /
+outcome-contract / collector / species-build-graph authorities are
+`5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+`9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+`0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010` /
+`e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66`. Current Scene build
+authority is `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`;
+Compendium/Scene budget SHA-256 is
+`d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
+`4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. The full browser-free
+suite passes **242 files / 2,443 passed / 1 skipped**, all three TypeScript programs pass, both
+generated workers contain zero `import()` expressions, and fixed rulers, numeric ceilings, all
+**78** Compendium outcomes and all **73** v2.0 development bullets remain unchanged. This changed
+source is deliberately browser-uncertified until one clean signed head runs once with no retry.
+
 ### Signed `38d8848c…` Compendium painter-import product stop — 0/78, all blocked
 
 Exact signed source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
@@ -92,28 +125,11 @@ outcome-contract / collector / producer-v2 authority at this exact historical in
 service-worker authority was
 `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
 
-The current local successor closes the newly proved execution-ready gap without weakening exact-
-build isolation. `clients.matchAll()` plus `clients.claim()` can omit a dedicated/shared worker
-until that realm becomes execution-ready. Its first controlled request supplies one exact
-`clientId`; `clients.get()` must confirm that live client, and adoption is allowed only when this
-generated `BUILD_ID` is the current active build, there is no retained prior, and the client type is
-exactly `worker` or `sharedworker`. Unknown clients, windows, a wrong active build and any retained-
-prior/update state still receive exact 503. Source mutants independently make the missing adoption,
-type guard, prior guard and active-build guard red. This is no network fallback, mixed-build path,
-retry or browser-version rebaseline.
-
-Current Compendium producer authority v2 is
-`06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`, binding generated
-`service-worker.js` SHA-256
-`a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` plus index, owner, species
-worker and painter. Current Scene build authority is
-`aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; Compendium/Scene budget
-SHA-256 is `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
-`15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`. Measurement, outcome
-contract and collector remain the exact values above. The focused PWA/budget/carrier boundary passes
-**74/74 across four files**, all three TypeScript programs pass, and the full browser-free suite
-passes **240 files / 2,437 passed / 1 skipped**. Fixed rulers, numeric ceilings and the 78-outcome
-inventory are unchanged.
+The immediate local successor at that historical point used guarded fetch-time `clients.get()`
+adoption. The exact later `dc6004c…` run preserved above falsified that repair: the worker client was
+still not available for portable fetch-time adoption before its execution-late painter import. That
+intermediate code and its authorities remain recorded here as history, not current design or fresh
+certification. The current sealed-worker successor is documented with the later stop above.
 
 This exact red grants no fresh Compendium certificate, same-source retry, Slice, Glass, Recovery,
 HUMAN, hosted, merge, release, version-bump or deploy authority. The repaired successor remains

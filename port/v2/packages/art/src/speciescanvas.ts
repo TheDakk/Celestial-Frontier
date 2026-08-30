@@ -1,8 +1,9 @@
 /* Portable species-painter canvas ownership. The painter graph uses the
    OffscreenCanvas structural contract in both realms. Window compatibility
    installs one real HTMLCanvasElement factory behind its sole audited cast;
-   the worker installs the native OffscreenCanvas constructor before importing
-   any painter module. No DOM global belongs in this file. */
+   the worker installs the native OffscreenCanvas factory before its statically
+   owned painter performs the first canvas allocation. No DOM global belongs
+   in this file. */
 
 export type ArtCanvas = OffscreenCanvas;
 export type ArtContext2D = OffscreenCanvasRenderingContext2D;

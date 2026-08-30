@@ -167,34 +167,49 @@ review PNG and no successor browser stage. Immutable carrier
 SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`; independent replay
 passes 4/4.
 
-The exact root is an execution-late first-install worker that both `matchAll` and claim can omit
-before its later controlled lazy request. The generated service worker confirms that request's
-`clientId` with `clients.get()` and adopts only a live worker/sharedworker with active build equal to
-`BUILD_ID` and no prior pin. Unknown clients, windows, prior pins and wrong-active state remain
-exact 503; adoption/type/prior/active mutants independently enforce those guards.
+The first repair attempted to recover an execution-late first-install worker at its later controlled
+lazy request only when `clients.get()` resolved that request's `clientId` to a live worker/sharedworker
+under the sole active build. At that boundary, focused closure passed **4 files / 74 tests**,
+typecheck was green, and the full browser-free suite passed **240 files / 2,437 passed / 1 skipped**.
+Those results remain historical browser-free evidence, not browser certification.
 
-Current measurement / outcome-contract / collector remain
-`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
-`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
-`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`. Current producer-v2 /
-generated service-worker / Scene build is
-`06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf` /
-`a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` /
-`aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; active Compendium /
-Scene budget is `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
-`15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`.
-Focused closure passes **4 files / 74 tests**, typecheck is green, and the full browser-free suite
-passes **240 files / 2,437 passed / 1 skipped**. Fixed rulers, numeric ceilings, 78 outcomes and
-canonical 73 release bullets are unchanged. This is not a preview candidate or certificate; HUMAN,
-hosted, merge, release/version and deployment status remain open and unchanged.
+Exact signed descendant `dc6004cf4426df72bea141ac77b0be927f36886c` then ran
+`20260830-pr35-execution-late-dc6004cf4426-compendium-certification` exactly once with zero retries.
+It stopped terminal `product-fail` after **3,112 ms** at phone veteran-Earth Planetside: zero of 78
+outcomes ran, all **78** were blocked, and no desktop, review PNG or successor gate ran. Immutable
+carrier `../audits/ARC1C_COMPENDIUM_PR35_EXECUTION_LATE_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_DC6004C.json.gz`
+retains raw / gzip SHA-256
+`c48e48a5385799bdf4535bf97b7bacf545b24182998978067b68c9bb08f27a38` /
+`2e65494085d46cf4b68b62d3df58884b22b9d5a5c9ad1378c018a73c036f6b53`; replay is **4/4**. This
+falsified fetch-time `clients.get()` adoption as a complete repair and remains immutable historical
+red; it must not be retried unchanged.
+
+Current repair removes fetch-time adoption. Species-art and biome-vista `Worker` construction stays
+lazy, while each production entry seals its complete module graph into one exact JavaScript response;
+production rejects runtime `import()` and external static JavaScript edges. Unpinned non-navigation
+requests remain fail-closed. Current measurement / outcome-contract / collector are
+`5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+`9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+`0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`. Current producer-v2 /
+service-worker / Scene build is
+`0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
+`7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
+`4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; active Compendium /
+Scene budget is `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
+`4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Fixed rulers, ceilings,
+78 outcomes and 73 release bullets are unchanged. Fresh changed-head Compendium certification and
+Slice → Glass → Recovery remain pending; HUMAN, hosted, merge, release/version and deployment
+status remain open and unchanged.
 
 The local repair is deliberately product/instrument hardening rather than a packaging shortcut.
 Survey → Landing now drains the incoming route checkpoint, calls Survey once, drains Survey's
 replacement checkpoint, and calls Landing once. Save fixed points use an owner-minted canonicalizer
 with the exact commit registry snapshot and checked `codecNow`. PWA worker/shared-worker entries
 inherit the initiating document's exact build pin through `resultingClientId`; all client types are
-retained, temporarily omitted clients are confirmed with `clients.get()` before pruning, and no
-network or mixed-build fallback exists. SceneMemory reports bounded biome-vista causes, fails closed
+retained and temporarily omitted clients are confirmed with `clients.get()` before pruning.
+Species-art and biome-vista workers stay lazy but own sealed single-response module graphs;
+fetch-time adoption is absent, and no unpinned, network or mixed-build fallback exists. SceneMemory
+reports bounded biome-vista causes, fails closed
 on malformed diagnostics, and moves its minimal BFCache away document to an ephemeral second
 loopback origin outside product service-worker scope, closing that server in `finally`. None of
 this changes the **44-outcome** SceneMemory contract, any numeric ruler, or historical carrier.
@@ -219,8 +234,9 @@ retains only the 17 newest unleased thumbnails; live leases survive and every in
 oversize, duplicate, evicted or final-dispose asset releases ownership exactly once. The earlier
 dirty SceneMemory diagnostic `20260829-pr35-blob-url-warm-cache-dirty-budget1` exercised **44/44**
 outcomes green; signed clean `20460008…` later supplied the certifying 44/44 result. The current
-Compendium oracle repair requires a materially changed signed source and one new no-retry exact-
-source run before any later browser stage or preview packaging can proceed.
+sealed-worker repair is a materially changed signed source and requires one fresh no-retry exact-
+source Compendium run before any later browser stage or preview packaging can proceed; the historical
+`dc6004c…` failure is not retried unchanged.
 
 The guarded packaging workflow now extracts and named-verifies one immutable Slice result, passes
 that exact ID into Glass, named-verifies the resulting Glass/Slice pair and retains the immutable

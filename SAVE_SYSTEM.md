@@ -1,48 +1,48 @@
 # Celestial Frontier — Save System
 
-> **2026-08-30 current local execution-late PWA/save boundary (matches code as of 2026-08-30;
-> supersedes the narrower post-claim/current authority statements below while preserving their
-> named runs as history):** exact signed source
-> `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
-> `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` once/no-retry and stopped
-> terminal `product-fail` after **3,115 ms** at phone veteran-Earth Planetside. The first controlled
-> painter lazy import failed; zero of 78 outcomes ran and all 78 were blocked. Its exact carrier is
+> **2026-08-30 current sealed single-file worker/PWA/save boundary (matches local code; supersedes
+> the execution-late `clients.get()` repair and narrower current statements below while preserving
+> their named runs as history):** exact signed source
+> `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` first preserved the 3,115 ms painter-import
+> `product-fail`, zero outcomes and all 78 blocked. Exact descendant
+> `dc6004cf4426df72bea141ac77b0be927f36886c` then ran
+> `20260830-pr35-execution-late-dc6004cf4426-compendium-certification` once/no-retry and failed again
+> after **3,112 ms** at phone veteran-Earth Planetside: its worker reached `ready`, but its first
+> painter import failed, zero outcomes ran and all 78 were blocked. Neither red was retried or
+> followed by a downstream browser stage. The 38d carrier is
 > `audits/ARC1C_COMPENDIUM_PR35_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_38D8848.json.gz`, 6,053
 > gzip bytes / SHA-256
 > `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`, 37,825 raw bytes /
 > SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`, with independent
 > **4/4** replay. No downstream browser stage ran.
 >
-> `matchAll` and `claim` may both omit a worker whose realm is not execution-ready, so the earlier
-> post-claim pass remains necessary but cannot be the final ownership proof. On the first
-> controlled lazy fetch, the service worker uses `FetchEvent.clientId` plus `clients.get()` and
-> adopts a missing pin only when `activeBuildId === BUILD_ID`, `priorBuildId === null`, the id is
-> valid, and the live client is exactly `worker` or `sharedworker`. Unknown clients, windows,
-> retained-prior state and wrong-active-build state receive the exact 503 and no pin. Adoption,
-> client type, prior state and active identity each have a direct mutant. The selected response
-> still comes only from the exact verified cache; no network fallback or retry was added.
+> Fetch-time adoption was falsified as a product repair. Worker construction stays lazy, while the
+> species-art worker statically owns the complete painter and the biome-vista worker statically owns
+> the complete renderer. Production builds reject `import()` and every external static JavaScript
+> import in both worker entries. The generated service worker performs no fetch-time adoption, so
+> every unpinned non-navigation request remains exact 503. This preserves cache-only mixed-build
+> safety without a network fallback, cross-build guess, sleep or retry.
 >
-> Current Compendium producer authority is schema-v2 SHA-256
-> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`; generated
-> `service-worker.js` is
-> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a`. Current Scene build,
-> Compendium budget and Scene budget SHA-256 values are
-> `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`,
-> `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af`, and
-> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`. Measurement / contract /
-> collector remain `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
-> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
-> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
-> Focused repair coverage is four files / **74 passed**, all three TypeScript programs are green,
-> and the full browser-free suite is **240 files / 2,437 passed / 1 skipped**.
+> Current measurement / contract / collector authorities are
+> `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+> `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; producer /
+> service-worker / Scene-build authorities are
+> `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
+> `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
+> `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`. Combined worker/painter
+> asset `assets/species-art.worker-DnnSDKMy.js` has SHA-256
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`; current Compendium / Scene
+> budgets are `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
+> `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Certification is pending.
 >
 > This changes disposable exact-app-byte routing only. It adds no expedition field, save schema,
 > migration, write, clock, retry, rollback of IndexedDB, or product-state fallback. Painter pixels,
 > seeds, genomes, anatomy, art structure, rulers, ceilings and the 78-outcome inventory are also
 > unchanged.
 
-> **2026-08-30 current local post-claim PWA/save boundary (matches code as of 2026-08-30;
-> supersedes narrower same-date/2026-08-29 PWA descriptions below):** exact signed source
+> **2026-08-30 historical post-claim PWA/save boundary (matched code at that source; superseded by
+> the sealed single-file boundary above):** exact signed source
 > `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
 > `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` once with no retry. It stopped
 > after 33,217 ms at phone veteran-Earth Planetside settlement with zero outcomes and all 78
@@ -121,8 +121,9 @@
 > exact Survey settlement to return true, then invoke Land exactly once. A synchronous refusal or
 > later durable false stops before Land. The handoff owns no persistence, clock, state or retry behavior. Exact-build PWA
 > ownership also extends from each window to valid worker and shared-worker children: their creation
-> request inherits the initiating client's selected build onto its `resultingClientId` before any
-> child-local lazy import, live-build retention inspects all client types, and an absent reserved
+> request inherits the initiating client's selected build onto its `resultingClientId`; current
+> species-art and biome-vista worker entries are statically complete, live-build retention inspects
+> all client types, and an absent reserved
 > worker is confirmed with `clients.get()` before its pin is pruned. Historical exact-source evidence
 > below remains evidence only for its named source; this local successor still requires fresh proof.
 

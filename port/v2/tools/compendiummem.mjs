@@ -2489,7 +2489,7 @@ async function collectProfile({
         workerSha256: candidateSpeciesArt.worker.sha256,
         serviceWorkerPath: candidateSpeciesArt.serviceWorker.relativePath,
         serviceWorkerSha256: candidateSpeciesArt.serviceWorker.sha256,
-        ownership: 'dedicated-worker-dynamic-import',
+        ownership: 'dedicated-worker-sealed-entry',
         matches: lazySpeciesResources,
         endMatches: lazySpeciesResourcesEnd,
       },
