@@ -53,11 +53,10 @@ const EDGE_WORKFLOW_CONTRACTS = Object.freeze([
     relative: '.github/workflows/test.yml',
     jobName: 'v2-compendium-memory',
     jobBrowser: CHROME_BROWSER,
-    preflightStepName: 'Compendium live preflight and bounded selftest',
+    preflightStepName: 'Compendium live preflight',
     preflightBrowser: EDGE_EXTRACTED_BROWSER,
     preflightCommands: Object.freeze([
       'node tools/compendiummem-browser-preflight.mjs',
-      'npm run compendiummem:selftest',
     ]),
     certificationId: 'compendium',
     certificationBrowser: EDGE_EXTRACTED_BROWSER,

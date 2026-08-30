@@ -13,6 +13,11 @@ const SCENE_BROWSER_ENV =
 const STATIC_PROFILE_NAME = 'v2 base-profile static gates';
 const HEAP_PHASE_SELFTEST_NAME = 'scene-memory fixed-second heap-phase selftest';
 const HEAP_PHASE_SELFTEST_COMMAND = 'node tools/scenemem.mjs --heap-phase-selftest';
+const COMPENDIUM_INSTRUMENT_SELFTEST_NAME =
+  'changed-or-production Compendium browser instrument selftests';
+const COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND = 'npm run compendiummem:selftest';
+const CHANGED_OR_PRODUCTION_CONDITION =
+  "        if: >-\n          github.event.pull_request.base.ref == 'main' ||\n          steps.scope.outputs.browser_instrument_changed == 'true'";
 const HEAP_PHASE_SELFTEST_HEADER = `      - name: ${HEAP_PHASE_SELFTEST_NAME}`;
 const SCENEMEM_CERTIFICATION_HEADER = '      - name: one-attempt scene-memory certification';
 const SCENEMEM_VERIFY_HEADER = '      - name: verify current scene-memory evidence';
@@ -60,9 +65,10 @@ const ORDERED_CONTRACT = [
   'run: node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json',
   '- name: verify current scene-memory evidence',
   'run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json',
-  '- name: changed-or-production Compendium browser instrument selftests',
+  `- name: ${COMPENDIUM_INSTRUMENT_SELFTEST_NAME}`,
   'node tools/browserpath.mjs --selftest',
   'node tools/compendiummem-browser-preflight.mjs --selftest',
+  COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND,
   '- name: install exact Arc 1A Edge calibration browser',
 ] as const;
 const ORDERED_STEP_NAMES = [
@@ -74,7 +80,7 @@ const ORDERED_STEP_NAMES = [
   HEAP_PHASE_SELFTEST_NAME,
   'one-attempt scene-memory certification',
   'verify current scene-memory evidence',
-  'changed-or-production Compendium browser instrument selftests',
+  COMPENDIUM_INSTRUMENT_SELFTEST_NAME,
   'install exact Arc 1A Edge calibration browser',
 ] as const;
 
@@ -130,7 +136,11 @@ const satisfiesSceneWorkflow = (
   const staticProfile = workflowStep(source, STATIC_PROFILE_NAME);
   const certification = workflowStep(source, 'one-attempt scene-memory certification');
   const verifier = workflowStep(source, 'verify current scene-memory evidence');
-  if (!staticProfile || !certification || !verifier) return false;
+  const compendiumInstrumentSelftest = workflowStep(
+    source, COMPENDIUM_INSTRUMENT_SELFTEST_NAME,
+  );
+  if (!staticProfile || !certification || !verifier
+    || !compendiumInstrumentSelftest) return false;
   if (!staticProfile.includes('develop) node tools/check-profile.mjs --profile=develop ;;')
     || !staticProfile.includes('main) node tools/check-profile.mjs --profile=production ;;')
     || staticProfile.includes('npm run check:')) return false;
@@ -147,6 +157,15 @@ const satisfiesSceneWorkflow = (
     || verifier.includes('github.event.pull_request.base.ref')) return false;
 
   if (source.split(HEAP_PHASE_SELFTEST_COMMAND).length !== 2) return false;
+  if (source.split(COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND).length !== 2
+    || !compendiumInstrumentSelftest.includes(CHANGED_OR_PRODUCTION_CONDITION)
+    || !compendiumInstrumentSelftest.includes('node tools/browserpath.mjs --selftest')
+    || !compendiumInstrumentSelftest.includes(
+      'node tools/compendiummem-browser-preflight.mjs --selftest',
+    )
+    || !compendiumInstrumentSelftest.includes(
+      COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND,
+    )) return false;
   if (!source.includes(`${HEAP_PHASE_SELFTEST_BLOCK}\n${SCENEMEM_CERTIFICATION_HEADER}`)) return false;
   const env = 'CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem';
   if (source.split(env).length !== 2) return false;
@@ -273,6 +292,17 @@ describe('scene-memory test-battery workflow contract', () => {
       HEAP_PHASE_SELFTEST_BLOCK.replace(
         SCENE_BROWSER_ENV,
         'CF_BROWSER: /usr/bin/microsoft-edge-stable',
+      ),
+    ))).toBe(false);
+    const compendiumSelftest = workflowStep(
+      workflow, COMPENDIUM_INSTRUMENT_SELFTEST_NAME,
+    );
+    expect(compendiumSelftest).not.toBeNull();
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      compendiumSelftest!,
+      compendiumSelftest!.replace(
+        CHANGED_OR_PRODUCTION_CONDITION,
+        "        if: github.event.pull_request.base.ref == 'develop'",
       ),
     ))).toBe(false);
     expect(satisfiesSceneWorkflow(workflow.replace(

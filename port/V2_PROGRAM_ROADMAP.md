@@ -1,24 +1,32 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Current local PR #35 exact-`8bdf474…` evidence / Arc 0 publication-oracle repair (2026-08-30; supersedes
-> the prior 20d/938, 4a82 and e4f5 current overlays below):** exact clean SSH-signed evidence source
-> `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium 78/78 once/no-retry in
-> 64,108 ms. Its unchanged-source Slice
-> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
-> 111,490 ms with exactly one Arc 0 Landing publication-oracle scope. Exact carriers and replay
-> preserve that immutable FAIL; Glass and Recovery did not run.
+> **Current local PR #35 battery/right-sizing and Arc 4 shared-ledger boundary (2026-08-30;
+> supersedes the historical current overlays below):** exact clean signed source
+> `d611d18ad12bb8587863846ef3799300d2396e6a` passed Layout 787/787, SceneMemory 44/44 and
+> Compendium 78/78 once/no-retry. Its unchanged-source Slice stopped terminal red after 170,889 ms
+> with five scopes; Glass and Recovery did not run. Immutable replay proves those scopes reduce to
+> one stale shared-ledger premise, one stale one-receipt successor premise and missing causal stop,
+> not five product failures. Pertar action readiness owns boot receipt 0, Survey 1 and Landing 2;
+> first Sample owns Capture receipt 3 / revision `R+1` followed by required Arc 9 progression
+> receipt 4 / final revision `R+2`, adding `rare` and `legend` while best rank remains 3.
 >
-> The retained pre-action and held old-document live products are byte-identical and both retain
-> the open Pertar post-Survey card; the stale oracle also required that card to be closed. The
-> immutable replay proves that contradiction and binds its missing historical held
-> `cardCode`/target capture. The current uncommitted runner atomically captures those values and
-> moves complete future judgment into browser-free contracts. Earlier Engineering focus-lineage, explicit Survey
-> predecessor, exact coordinator and Arc 5 v3 diagnostic repairs remain. No product schema bump,
-> timeout, retry, save/gameplay redesign, creature/genome/art/audio change, ruler change or Edge
-> rebaseline is introduced. Final repair-batch browser-free validation is green: **251 files /
-> 2,501 passed / 1 skipped**, with all TypeScript programs green. Exact carriers are in
-> `audits/README.md`. A fresh unchanged-source Compendium → Slice → Glass → Recovery chain remains
-> required, and no HUMAN, hosted, merge, release, version or deployment authority follows.
+> The repaired browser-free contract composes that exact prefix/tail, isolates every negative
+> control and stops before Storage on a red Sample. No product/app, schema, creature/genome,
+> art/audio, timeout, retry, numeric ruler or Edge-version baseline changes. The right-sized
+> develop profile is green at **253 files / 2,510 passed / 1 skipped** plus all three TypeScript
+> programs, art/route/spec gates; its 2,510 assertions are one roughly 23-second process, not
+> thousands of jobs. Compendium's 591 ruler mutations are conditional on production or changed
+> instrument inputs, specification controls are folded into the normal command, and Recovery plus
+> package smoke are production-only. A fresh unchanged-source SceneMemory → Compendium → Slice →
+> Glass develop chain remains required. No HUMAN, hosted, merge, release, version or deployment
+> authority follows; exact carriers and hashes are in `audits/README.md`.
+
+> **Historical exact-`8bdf474…` Arc 0 publication-oracle boundary:** exact clean signed source
+> `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium 78/78 once/no-retry, then its
+> unchanged-source Slice stopped terminal red once/no-retry with one impossible Landing oracle:
+> the held product correctly retained the open post-Survey card while the stale predicate also
+> required it closed. Its immutable FAIL and missing historical held capture remain preserved;
+> Glass and Recovery did not run. The later repair changed no product, timeout, retry or ruler.
 
 > **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
 > signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree

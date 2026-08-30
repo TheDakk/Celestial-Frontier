@@ -1,16 +1,21 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
 > **Current local engineering boundary (2026-08-30; exact resumption details in `ROADMAP.md`):**
-> committed base `d1b0202fae029d54a8495a3cadcb5d598ad0d8c8` repairs the two bounded harness/
-> fixture false negatives exposed by exact-source `4ac4d3cf8b717e0a2a52d53a4e6e2c5eb89637a1`.
-> That immutable `4ac4d3c…` chain passed Compendium **78/78** once, then stopped Slice once with
-> the two preserved false-red scopes; it has no Glass or Recovery successor. The current dirty
-> batch changes only check orchestration, workflow contracts and synchronized documentation: no
-> product source, package manifest, memory ruler, budget, retry, save/gameplay schema, release
-> identity or browser baseline changed. The shared develop profile is green at **251 files / 2,505
-> passed / 1 skipped**, all three TypeScript programs and the nonduplicated art/routing/spec gates
-> in **26.8 seconds**. This browser-free result is not a fresh browser, HUMAN, hosted, merge,
-> release or deployment certificate.
+> exact SSH-signed checkpoint `d611d18ad12bb8587863846ef3799300d2396e6a` (tree
+> `f2ab61ec…`, parent `d1b0202…`) owns the consolidated dev/develop/production profiles. Its clean
+> browser-free develop profile passed **253 files / 2,510 tests / 1 skipped** in about 23 seconds;
+> root Layout passed **787/787**, SceneMemory **44/44**, and Compendium **78/78** on Microsoft Edge
+> `152.0.4191.53` / CDP `1.3`. The unchanged-source Slice then stopped once/no-retry with five
+> scopes and Glass did not run. The retained evidence proves those scopes reduce to two stale Arc 4
+> oracle assumptions plus one missing causal stop, not five product defects: the valid Pertar
+> action-ready ledger is boot receipt 0 → Survey 1 → Landing 2, and the first Sample correctly adds
+> Capture receipt 3 then Arc 9 progression receipt 4. The current local successor repairs only that
+> shared evidence oracle, causal-stop wiring, and the last two battery-ownership inefficiencies.
+> The repaired successor's full develop profile is green at the 253/2,510 boundary; the Compendium
+> ruler's 591 synthetic controls are now conditional on production or changed instrument inputs,
+> and the specification audit's five controls run inside its one normal command. It
+> changes no game/product source, save schema, creature/genome/art/audio system, numeric ruler,
+> browser baseline, retry policy or release identity. Fresh browser certification remains pending.
 
 > **Historical exact-`8bdf474…` evidence boundary (superseded by the later `4ac4`/`d1` boundary):** exact clean SSH-signed source
 > `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
@@ -560,10 +565,11 @@
 > adoption as closure. The current changed-head repair instead seals both worker execution graphs;
 > certification is still required before Slice, Glass or Recovery.
 
-Local develop admission runs the SceneMemory certificate once from `port/v2`. Production adds the
-heap-phase instrument control immediately before that same one-attempt certificate. On macOS, each
-browser-owning command requires the approved out-of-sandbox execution path; the production control
-is never a retry, best-of lane or duplicate development preflight. The complete copy-ready
+Local develop admission runs the SceneMemory certificate once from `port/v2`. Production, or a
+develop candidate that changed the browser instrument/workflow, adds the heap-phase control
+immediately before that same one-attempt certificate. On macOS, each browser-owning command requires
+the approved out-of-sandbox execution path; the conditional control is never a retry, best-of lane
+or duplicate development preflight. The complete copy-ready
 SceneMemory → Compendium → Slice → Glass sequence, including exact named verifiers, is under
 **Strict current browser evidence chain** below.
 
@@ -2975,7 +2981,7 @@ node tools/check-profile.mjs --profile=develop
 
 The `dev` profile is the complete fast Vitest suite plus the root, game and worker TypeScript programs.
 The `develop` profile adds the nonduplicated art audit, exact route/coverage owner and inert-spec gate.
-The 2,505 assertions reported at the current boundary are assertions within one approximately
+The roughly 2,500 assertions in the current inventory are assertions within one approximately
 22-second browser-free run, not separate Actions jobs or browser launches. While editing, prefer
 the focused touched tests; use these aggregate commands once at their named boundaries.
 
@@ -2997,7 +3003,9 @@ hosted workflow repeats it. The stricter root no-unused TypeScript pass owns the
 the old `artunused` alias remains available but is not a second gate. `overridecheck` already fails
 closed on incomplete kingdom-qualified catalogue coverage, so `coveragegap` remains an on-demand
 planning report rather than a duplicate merge gate. The `production` profile adds `overridecontrol`, the
-107-mutation selftest that temporarily rewrites audited art sources under the workspace lock. HEAD,
+107-mutation selftest that temporarily rewrites audited art sources under the workspace lock. The
+ordinary specification scan runs its five parser/oracle controls inside that same `speccheck`
+command, so no second stage is required. HEAD,
 tracked cleanliness and forgotten tests are rechecked immediately before PASS so concurrent work
 cannot relabel an older snapshot. Unrelated ambient files and outputs generated inside the snapshot
 are allowed; no workspace `node_modules` is linked or reused.
@@ -3039,11 +3047,11 @@ rejected before Glass can reserve a run ID or replace the last terminal current 
 ```sh
 set -euo pipefail
 
-evidence_edge_browser="/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge"
-evidence_chrome_browser="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+evidence_chromium_browser="${CF_BROWSER_PATH:-/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge}"
+evidence_edge_browser="${CF_EDGE_BROWSER_PATH:-$evidence_chromium_browser}"
 
 # Production, or a changed browser instrument/workflow, runs this control once:
-# CF_BROWSER="$evidence_chrome_browser" node tools/browserpath.mjs --selftest
+# CF_BROWSER="$evidence_chromium_browser" node tools/browserpath.mjs --selftest
 # CF_BROWSER="$evidence_edge_browser" node tools/scenemem.mjs --heap-phase-selftest
 
 CF_BROWSER="$evidence_edge_browser" node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json
@@ -3052,27 +3060,27 @@ CF_BROWSER="$evidence_edge_browser" node tools/scenemem.mjs --verify-run="$scene
 
 # Production, or a changed browser instrument/workflow, runs this control once:
 # CF_BROWSER="$evidence_edge_browser" node tools/compendiummem-browser-preflight.mjs --selftest
+# CF_BROWSER="$evidence_edge_browser" npm run compendiummem:selftest
 
 CF_BROWSER="$evidence_edge_browser" node tools/compendiummem-browser-preflight.mjs
-CF_BROWSER="$evidence_edge_browser" npm run compendiummem:selftest
 CF_BROWSER="$evidence_edge_browser" npm run compendiummem
 compendium_run_id="$(jq -er '.runId' apps/game/smoke/compendiummem-report.json)"
 CF_BROWSER="$evidence_edge_browser" node tools/compendiummem.mjs --verify-run="$compendium_run_id"
 
 # Production, or a changed browser instrument/workflow, runs this control once:
-# CF_BROWSER="$evidence_chrome_browser" node tools/browsercdp.mjs --selftest
+# CF_BROWSER="$evidence_chromium_browser" node tools/browsercdp.mjs --selftest
 
-CF_BROWSER="$evidence_chrome_browser" npm run smoke:ci
+CF_BROWSER="$evidence_chromium_browser" npm run smoke:ci
 slice_run_id="$(jq -er '.run.id' apps/game/smoke/slice-smoke-report.json)"
 node tools/smokereport.mjs --verify-run="$slice_run_id"
 
-CF_BROWSER="$evidence_chrome_browser" node tools/glassmatrix.mjs --slice-run="$slice_run_id"
+CF_BROWSER="$evidence_chromium_browser" node tools/glassmatrix.mjs --slice-run="$slice_run_id"
 glass_run_id="$(jq -er '.run.id' apps/game/smoke/glassmatrix-report.json)"
 node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"
 
 # Production/release candidate only. The aggregate production profile has
 # already run the evidence-tool selftests once on these unchanged bytes.
-CF_BROWSER="$evidence_chrome_browser" node tools/arc4recovery.mjs --slice-run="$slice_run_id" --glass-run="$glass_run_id"
+CF_BROWSER="$evidence_chromium_browser" node tools/arc4recovery.mjs --slice-run="$slice_run_id" --glass-run="$glass_run_id"
 recovery_run_id="$(jq -er '.runId' apps/game/smoke/arc4-recovery-report.json)"
 node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_run_id" --glass-run="$glass_run_id"
 ```
@@ -3080,7 +3088,7 @@ node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_
 | Tool | Role |
 |---|---|
 | **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |
-| **Current Arc 3 Engineering / Arc 0 Landing boundary inside `npm run smoke:ci` (2026-08-30)** | Exact `8bdf474…` evidence passed Compendium 78/78, then preserved one terminal single-scope Slice red with no Glass/Recovery successor. The Landing product was exact; the instrument contradicted its certified open post-Survey card with a pre-Survey closed-card predicate. The immutable replay proves that contradiction and binds its missing historical held `cardCode`/target capture. The new runner atomically captures those values before release; the complete absolute Pertar route/card/share/target predicate and product-parity decision run in the shared browser-free contract with independent mutations over every route, rendered-scene, CF1 payload, target and optimistic-product field. Earlier Research/Fabricator focus-lineage, exact Survey predecessor, coordinator-idle and current Arc 5 v3 repairs remain. Current browser-free validation is green at 251 files / 2,505 passed / 1 skipped with typecheck green. No retry, sleep, timeout increase, product schema bump or Edge rebaseline is used. |
+| **Current Arc 4 Pertar ledger boundary inside `npm run smoke:ci` (2026-08-30)** | Exact `d611d18…` evidence passed Layout 787/787, SceneMemory 44/44 and Compendium 78/78, then preserved a terminal five-scope Slice red with no Glass/Recovery successor. The game was correct: fresh Arc 4 ownership coexists with the independently owned boot/Survey/Landing receipt prefix at ordinal 3; the first Sample commits Capture at revision/ordinal +1 and its required Arc 9 aggregate refresh at +2, adding exactly `rare` then `legend` while best rank remains 3. The shared browser-free contract now composes that exact five-receipt ledger, binds Capture result/ownership to +1 and final persistence to +2, rejects missing/extra/mutated successors, and makes every dependent Arc 4 stage fail-stop before later mutable work. Earlier Landing, Research/Fabricator, focus-lineage, coordinator-idle and Arc 5 carrier repairs remain. No product/save/creature/art/audio change, retry, sleep, timeout increase, numeric ruler change or Edge rebaseline is used. |
 | `node tools/tracked-input-preflight.mjs --selftest` / `node tools/tracked-input-preflight.mjs --profile=develop|production` | Mutation-controls the tracked-only boundary, then—only from a clean committed candidate—exports the exact index, installs in isolation and invokes exactly one selected shared browser-free/static profile with start/end source stability. This is the mandatory preauthorization rehearsal, not hosted or browser evidence. |
 | `npx vitest run tests/current-producer-authorities.test.ts` / `node tools/print-producer-authorities.mjs` | Before browser installation or campaign work, performs one standard app build under the shared workspace lock and compares SceneMemory plus Compendium's live budget records directly to independently derived current source/dist authorities. The test is automatically included in `npm test`; source, build, forged duplicate-constant, recomputed index and recomputed owner mutants must fail with exact mismatch paths. The printer reports those paths and exits nonzero on any mismatch. It never rewrites budgets or historical samples and is not a browser certificate. |
 | **Historical Final11 campaign evidence** | Signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc` passed Layout 787/787, SceneMemory 42/42, Compendium 78/78 with six PNGs, Slice with zero findings/ten PNGs and all 12 Glass viewports with zero findings or instrument failures; every stage ran once and passed named verification. Recovery ran once for 1,291,034 ms and passed all 15 observation outcomes/309 samples, the uninterrupted 20-minute window, exact next-cycle boundary and recovered UI. Its final assessor failed only `activePlayProjection` and `closeCheckpoint`; cleanup passed and no retry occurred. Final11 is immutable, instrument-red rather than product-red, and not a Recovery certificate. Exact carriers are in `audits/README.md`. |

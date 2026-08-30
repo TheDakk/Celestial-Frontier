@@ -1,7 +1,8 @@
-# GitHub Actions is a finite 3,000-unit monthly budget. This full battery is
-# deliberately NOT triggered by pushes, PR synchronization, or branch merges.
-# Only the repository owner adding the exact `actions-budget-approved` label
-# starts one fail-fast run for that PR merge ref. See GITHUB_ACTIONS_BUDGET.md.
+# Standard GitHub-hosted runners are free while this repository remains public;
+# the 3,000-minute cap applies fail-closed if visibility changes. This explicit
+# efficiency/intent gate is deliberately NOT triggered by pushes, PR sync, or
+# branch merges. Only the repository owner adding `actions-budget-approved`
+# starts one fail-fast run for that exact PR merge ref. See GITHUB_ACTIONS_BUDGET.md.
 name: test-battery
 
 on:
@@ -229,6 +230,7 @@ jobs:
         run: |
           node tools/browserpath.mjs --selftest
           node tools/compendiummem-browser-preflight.mjs --selftest
+          npm run compendiummem:selftest
 
       # Compendium retains its separately sealed extract -> preflight -> live
       # certificate chain after the shorter SceneMemory ruler is terminal-green.
@@ -250,13 +252,12 @@ jobs:
           dpkg-deb --extract "$edge_package" "$edge_root"
           edge_browser="$edge_root/opt/microsoft/msedge/microsoft-edge"
           test -x "$edge_browser"
-      - name: Compendium live preflight and bounded selftest
+      - name: Compendium live preflight
         working-directory: port/v2
         env:
           CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: |
           node tools/compendiummem-browser-preflight.mjs
-          npm run compendiummem:selftest
       - name: one-attempt Compendium memory certification
         id: compendium
         timeout-minutes: 40
