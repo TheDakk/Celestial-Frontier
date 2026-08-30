@@ -404,7 +404,7 @@ describe('species thumbnail lease binding', () => {
 });
 
 describe('panel visible-to-hidden lifecycle', () => {
-  it('uses one delegated capture owner and restores the exact clicked opener', async () => {
+  it('uses delegated capture/toggle owners and restores the exact clicked opener', async () => {
     document.body.innerHTML = `
       <button id="a-open"><span id="a-icon">A</span></button>
       <aside id="a" aria-label="A"></aside>
@@ -421,7 +421,6 @@ describe('panel visible-to-hidden lifecycle', () => {
     );
     expect(captureClickOwners()).toHaveLength(1);
 
-    opener.addEventListener('click', () => panels.togglePanel('a'));
     document.getElementById('a-icon')!.dispatchEvent(new dom.window.Event('click', { bubbles: true }));
     expect(panels.openPanelId()).toBe('a');
     expect(document.activeElement).toBe(document.querySelector('[data-pnx="a"]'));

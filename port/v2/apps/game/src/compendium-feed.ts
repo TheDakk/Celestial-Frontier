@@ -484,9 +484,6 @@ export class CompendiumFeedController {
     this.#isCurrent = options.isCurrent;
     this.#onNativeFeedGesture = options.onNativeFeedGesture ?? null;
     this.#onAction = options.onAction ?? null;
-    this.#root.addEventListener('change', this.#onChange);
-    this.#root.addEventListener('click', this.#onClick);
-    this.#listenersInstalled = true;
   }
 
   attach(mount: HTMLElement): void {
@@ -502,11 +499,13 @@ export class CompendiumFeedController {
     }
     if (this.#mount !== null && this.#mount !== mount) this.#disposeMount(this.#mount);
     this.#mount = mount;
+    this.#installListeners();
     this.#render();
   }
 
   detach(): void {
-    this.#assertLive();
+    if (this.#disposed) return;
+    this.#removeListeners();
     if (this.#mount !== null) this.#disposeMount(this.#mount);
     this.#mount = null;
   }
@@ -575,11 +574,7 @@ export class CompendiumFeedController {
 
   dispose(): void {
     if (this.#disposed) return;
-    if (this.#listenersInstalled) {
-      this.#root.removeEventListener('change', this.#onChange);
-      this.#root.removeEventListener('click', this.#onClick);
-      this.#listenersInstalled = false;
-    }
+    this.#removeListeners();
     if (this.#mount !== null) this.#disposeMount(this.#mount);
     this.#mount = null;
     this.#state = null;
@@ -590,6 +585,20 @@ export class CompendiumFeedController {
     this.#lastOutcome = null;
     this.#convergenceLatched = false;
     this.#disposed = true;
+  }
+
+  #installListeners(): void {
+    if (this.#listenersInstalled) return;
+    this.#root.addEventListener('change', this.#onChange);
+    this.#root.addEventListener('click', this.#onClick);
+    this.#listenersInstalled = true;
+  }
+
+  #removeListeners(): void {
+    if (!this.#listenersInstalled) return;
+    this.#root.removeEventListener('change', this.#onChange);
+    this.#root.removeEventListener('click', this.#onClick);
+    this.#listenersInstalled = false;
   }
 
   readonly #onChange = (event: Event): void => {
@@ -652,8 +661,7 @@ export class CompendiumFeedController {
     const mount = this.#mount;
     if (mount === null) return;
     if (!this.#isRootVisible()) {
-      this.#disposeMount(mount);
-      this.#mount = null;
+      this.detach();
       return;
     }
     const focus = this.#captureFocus();

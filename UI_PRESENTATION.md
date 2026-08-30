@@ -15,6 +15,34 @@
 > observability corrections, not a new visible control, layout, art structure or player-facing error
 > surface. Historical exact-source browser evidence below remains bound to its named source.
 
+> **2026-08-29 current local closed-surface and lazy-archive overlay (matches the dirty source;
+> clean certification pending):** a Survey whose route identity is no longer current is destroyed,
+> not merely hidden. Its ecology/audio owner, Capture/Combat controllers, models, action fences,
+> selected context and obsolete child DOM are released together. Compendium Audition, Feed, Breed,
+> Rename and Scout plus Capture, Combat and Approach Ecology install their root DOM listeners only
+> while attached; detach/dispose removes them, and a later valid attach installs one copy. The panel
+> registry now uses one delegated document-level bubble toggle for all dock/rail openers, paired with
+> the existing delegated capture owner for exact focus restoration, rather than one dormant toggle
+> closure per button.
+>
+> Guide and release-history authored archives are now lazy. Opening Guide immediately presents a
+> loading state while the required module imports; a failed import presents an accessible honest
+> error, clears the failed promise and permits Close/reopen retry without changing the expedition.
+> Publication is fenced by the exact request generation, exact Guide body and currently open Guide
+> panel. Cached content still waits one microtask because `onOpen` runs before panel exposure; a late
+> success after Close, refill or a newer request cannot overwrite the current surface.
+>
+> Closed Compendium/Planetside presentation retains at most the most-recent **17** unleased 132px
+> thumbnails, the exact nine-plus-eight desktop route union, so the next equal route is genuinely
+> warm rather than starting another painter worker. Visible images remain protected by their leases.
+> Settled worker PNG evidence is materialized as Window-owned revocable Blob URLs only for 132px
+> thumbnails; selected 440px detail portraits retain their existing data-URL behavior. Eviction,
+> explicit release, cap trimming, rejection, protocol mismatch, a late invalidated-producer result
+> and final non-BFCache teardown revoke their external owner exactly once. BFCache preserves the
+> same live-document cache for restore. These changes alter no creature, plant, biome, ship or
+> portrait structure. A dirty-source diagnostic exercised all **44/44** SceneMemory outcomes, but it
+> is diagnostic repair evidence—not a clean exact-source certificate or inherited browser approval.
+
 > **2026-08-29 current local PWA presentation overlay (matches code):** build output now mounts one
 > Settings-contained, accessible **App status** disclosure only when the generated PWA marker is
 > present. Its polite/atomic status becomes an alert on errors; Check, Activate, Reload and Roll back

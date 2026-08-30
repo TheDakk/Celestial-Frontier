@@ -187,6 +187,41 @@ describe('orbital approach ecology join', () => {
     expect(status?.getAttribute('aria-atomic')).toBe('true');
   });
 
+  it('owns exactly one delegated listener only while attached and reattaches it once', () => {
+    const state = projectApproachEcologyAudioV1({
+      generation: 11,
+      ecologyEpoch: 0,
+      roster: roster(),
+    });
+    dom = new JSDOM('<!doctype html><body><aside id="card"><div id="mount"></div></aside></body>');
+    const document = dom.window.document;
+    const root = document.getElementById('card') as HTMLElement;
+    const mount = document.getElementById('mount') as HTMLElement;
+    const add = vi.spyOn(root, 'addEventListener');
+    const remove = vi.spyOn(root, 'removeEventListener');
+    controller = new ApproachEcologyController({
+      root,
+      isCurrent: () => true,
+      onListen: vi.fn(),
+    });
+
+    controller.setState(state);
+    expect(add).not.toHaveBeenCalled();
+    controller.attach(mount);
+    controller.attach(mount);
+    expect(add.mock.calls.map(([type]) => type)).toEqual(['click']);
+
+    controller.detach();
+    controller.detach();
+    expect(remove.mock.calls.map(([type]) => type)).toEqual(['click']);
+    controller.attach(mount);
+    expect(add.mock.calls.map(([type]) => type)).toEqual(['click', 'click']);
+
+    controller.dispose();
+    controller.detach();
+    expect(remove.mock.calls.map(([type]) => type)).toEqual(['click', 'click']);
+  });
+
   it('rejects stale surfaces, model clones, and counterpart loss without dispatch', () => {
     const canonical = roster();
     const state = projectApproachEcologyAudioV1({

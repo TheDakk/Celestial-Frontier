@@ -324,6 +324,35 @@ afterEach(() => {
 });
 
 describe('Arc 5 Compendium Feed projection and controller', () => {
+  it('owns exactly two delegated listeners only while attached and reattaches once', () => {
+    const f = fixture();
+    const view = shell();
+    controller = new CompendiumFeedController({ root: view.root, isCurrent: () => true });
+    controller.setState(model(f));
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
+
+    controller.attach(view.mount);
+    controller.attach(view.mount);
+    expect(controller.diagnostics().delegatedListenerCount).toBe(2);
+    controller.detach();
+    controller.detach();
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 0,
+      retainedDomCount: 0,
+      delegatedListenerCount: 0,
+    });
+
+    controller.attach(view.mount);
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 1,
+      delegatedListenerCount: 2,
+      contextKey: model(f).contextKey,
+    });
+    controller.dispose();
+    controller.detach();
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
+  });
+
   it('projects exact same-species individuals and flora-only lots from registered V2 authority', () => {
     const f = fixture();
     const projected = model(f);
@@ -601,7 +630,11 @@ describe('Arc 5 Compendium Feed projection and controller', () => {
     view.root.style.display = 'none';
     controller.refresh();
     expect(closedMount.childElementCount).toBe(0);
-    expect(controller.diagnostics()).toMatchObject({ attachedMountCount: 0, pendingWork: 1 });
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 0,
+      pendingWork: 1,
+      delegatedListenerCount: 0,
+    });
     controller.settle(outcome(request!, {
       kind: 'committed',
       title: 'Meal complete.',
@@ -621,6 +654,10 @@ describe('Arc 5 Compendium Feed projection and controller', () => {
     controller.attach(nextMount);
     expect(nextMount.querySelector<HTMLElement>('[data-arc5-feed-status]')!.hidden).toBe(true);
     expect(nextMount.textContent).not.toContain('Meal complete.');
-    expect(controller.diagnostics()).toMatchObject({ attachedMountCount: 1, pendingWork: 0 });
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 1,
+      pendingWork: 0,
+      delegatedListenerCount: 2,
+    });
   });
 });

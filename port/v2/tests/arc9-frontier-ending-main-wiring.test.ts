@@ -48,7 +48,7 @@ function frontierEndingMainErrors(source: string): string[] {
     ["from './prime-codex-panel.js';", 'panel import'],
     ["id: 'prime',", 'panel registration'],
     ["const primeCodexOpener = appChrome.primeCodexOpener();", 'Prime opener port'],
-    ["primeCodexOpener.addEventListener('click', () => togglePanel('prime'));", 'Prime opener'],
+    ["btns: [primeCodexOpener],", 'delegated Prime opener registration'],
     ["event.target.closest<HTMLButtonElement>('[data-frontier-ending-id]')", 'ending delegation'],
   ] as const) if (!source.includes(needle)) errors.push(`missing ${label}`);
 

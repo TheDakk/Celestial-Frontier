@@ -332,6 +332,31 @@
 > changes retain the **44-outcome** ruler, every numeric ceiling and all immutable historical
 > evidence, including exact signed `3f69e88…`.
 >
+> The current local browser-resource successor treats hidden UI as non-ownership. When its source
+> route is invalid, Survey clears controller models, fences, route references, listeners and DOM;
+> same-system Surface/orbit retention remains source-proven. Compendium audition/breed/feed/rename/
+> scout, Capture, Combat and ecology-audio controllers install listeners only while attached and
+> detach idempotently. `panels.ts` owns one delegated capture listener for opener focus plus one
+> delegated bubble listener for opener toggle, replacing per-opener closures. Guide and release
+> archives load through dynamic imports: lightweight `release-identity.ts` remains eager, while
+> Guide/release content publishes only for the current request generation and still-visible panel;
+> loading, failure and retry states are explicit, and a cached import still crosses a microtask so
+> `openPanel()` visibility has settled before publication.
+>
+> `species-art-loader.ts` preserves each worker's validated immutable PNG data URL as protocol
+> evidence, but converts a settled 132px thumbnail to a window-owned Blob URL before handing it to
+> `SpeciesArtBroker`; 440px portraits remain data URLs. The broker's `disposeAsset` boundary owns
+> revocation for invalid, oversize, dropped-consumer, duplicate, evicted, protocol-mismatched, late-
+> generation and final-dispose results. Live leases make cached thumbnails ineligible for eviction.
+> `releaseUnownedCachedArt({ retainRecentThumbEntries: 17 })` idempotently removes portraits and all
+> excess unleased thumbnails while retaining the exact phone/desktop route working set; BFCache
+> suspends producer work but preserves the live document's bounded cache. Dirty exact-budget run
+> `20260829-pr35-blob-url-warm-cache-dirty-budget1` passed all 44 SceneMemory outcomes with complete
+> cleanup: phone retained 16 thumbnails, one import/16 jobs and 2,971,348 backing bytes; desktop
+> retained 17, one import/17 jobs and 2,972,520 backing bytes. That result proves the repair on its
+> dirty working-tree hash but is not a clean exact-source certificate. Numeric rulers, browser-
+> version policy, genome/anatomy structure and gameplay semantics are unchanged.
+>
 > `port/v2/tools/tracked-input-preflight.mjs` is the mandatory preauthorization rehearsal. From a
 > clean committed candidate it exports only the exact Git index, installs inside an owned temporary
 > snapshot and executes the exact ordered hosted browser-free/static command block. It rejects

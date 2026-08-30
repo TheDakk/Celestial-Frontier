@@ -568,7 +568,7 @@ function surfaceSurveyExitErrors(source: string): string[] {
   const hide = section(
     source,
     'function hideSurvey(',
-    '\nfunction closeVisibleSurveyAndAscend(',
+    '\nfunction discardSurveyPresentation(',
   );
   const closeAndAscend = section(
     source,
@@ -710,7 +710,7 @@ function runSurfaceSurveyExitFromSource(
   const hide = section(
     source,
     'function hideSurvey(',
-    '\nfunction closeVisibleSurveyAndAscend(',
+    '\nfunction discardSurveyPresentation(',
   );
   const closeAndAscend = section(
     source,

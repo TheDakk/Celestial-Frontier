@@ -30,6 +30,10 @@ This is not a release record.
 the one-attempt phone product stage then stopped at **Earth planetfall was rejected**, so
 Compendium, Slice, Glass, personas, preview packaging and every later browser stage correctly did
 not run. The attempt is consumed and no replacement hosted attempt or publication is authorized.
+The lifecycle/resource repair descends from signed local implementation base
+`eba00e03f3376c67ab38c5067e9a32da66ce3a3`; the remote PR head remains `017fa6d…` until a later
+exact-head authorization. Neither the current descendant nor the diagnostic below is a preview
+candidate.
 
 The local repair is deliberately product/instrument hardening rather than a packaging shortcut.
 Survey → Landing now drains the incoming route checkpoint, calls Survey once, drains Survey's
@@ -44,6 +48,25 @@ this changes the **44-outcome** SceneMemory contract, any numeric ruler, or hist
 HUMAN/device review remains open. A preview candidate still requires a final clean signed source,
 its exact local evidence chain, and separate exact-SHA publication authority; no provisional local
 count or hash is promoted here. Full diagnosis: `../audits/PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md`.
+
+The current local extension also removes dormant surface ownership. Approach ecology, Capture,
+Combat and Compendium action controllers attach listeners only while their exact surface is live;
+detach/dispose are idempotent. Panel opener focus lineage and bubble toggling each use one shared
+delegated owner. A route-invalid Survey releases its ecology/audio and Capture/Combat owners before
+clearing card/action/focus/DOM references, while the explicit same-system source-proven preservation
+path remains intact.
+
+Guide development identity stays eager in `release-identity.ts`, but Guide content and the release
+archives now load only on demand through separate one-in-flight, retry-on-failure imports. Loading,
+failure and stale-publication fences remain accessible and panel-owned; the null production pointer
+still prevents boot-time release history, `releasePending` and `rnSeen` mutation. Species-art worker
+results remain immutable data URLs; only settled 132px thumbnails become window-owned revocable
+Blob URLs. After a closed surface releases its leases, the broker removes unowned portraits and
+retains only the 17 newest unleased thumbnails; live leases survive and every invalid, dropped,
+oversize, duplicate, evicted or final-dispose asset releases ownership exactly once. Dirty
+SceneMemory diagnostic `20260829-pr35-blob-url-warm-cache-dirty-budget1` exercised **44/44** outcomes
+green, but its dirty-source status is non-certifying and grants no preview, hosted or publication
+authority.
 
 The guarded packaging workflow now extracts and named-verifies one immutable Slice result, passes
 that exact ID into Glass, named-verifies the resulting Glass/Slice pair and retains the immutable

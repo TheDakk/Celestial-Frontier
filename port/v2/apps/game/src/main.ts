@@ -32,7 +32,7 @@ import {
 } from '@cf/audio';
 import type { AudioContextLike, AudioCounterpartReceipt } from '@cf/audio';
 import {
-  registerPanel, fillPanel, togglePanel, openPanel, closePanels, openPanelId,
+  registerPanel, fillPanel, openPanel, closePanels, openPanelId,
   createPanelOpenController,
 } from './panels.js';
 import {
@@ -183,14 +183,14 @@ import {
   polishGalaxyCanvasV1,
   polishSystemCanvasV1,
 } from '@cf/art/surface-polish';
-import {
-  getGuideCatalogue, getGuideTopic, searchGuide,
-  type GuideCategoryId, type GuideTopicId, type GuideTopicView,
+import type {
+  GuideCategoryId, GuideCategoryView, GuideTopicId, GuideTopicView,
 } from './guide-content.js';
+import type { ReleaseNoteView, V2ShippedRelease } from './release-content.js';
 import {
-  getCurrentV2Release, getReleaseHistory, hasUnseenV2Release, V2_DEVELOPMENT_VERSION,
-  type ReleaseNoteView, type V2ShippedRelease,
-} from './release-content.js';
+  V2_CURRENT_RELEASE_VERSION,
+  V2_DEVELOPMENT_VERSION,
+} from './release-identity.js';
 import { projectDisplayRarity } from './rarity-presentation.js';
 import {
   createSearchTravelController,
@@ -565,6 +565,10 @@ const DOCUMENT_TOKEN = crypto.randomUUID();
    same JS realm and therefore correctly retains this token. */
 const F4_TAB_TOKEN = DOCUMENT_TOKEN;
 const speciesArtLoader = new SpeciesArtLoader(DOCUMENT_TOKEN);
+/* Keep one exact SceneMemory route's 9 Compendium + 8 Planetside thumbs warm.
+   Repainting the same bounded set on every navigation grows V8's worker/task
+   churn even after every cache, lease and DOM owner has been released. */
+const QUIESCENT_SPECIES_ART_CACHE = Object.freeze({ retainRecentThumbEntries: 17 });
 const F4_LEASE_TTL_MS = 10_000;
 const F4_HEARTBEAT_MS = F4_LEASE_TTL_MS / 2;
 const F4_CHECKPOINT_MS = 30_000;
@@ -2129,6 +2133,27 @@ function hideSurvey(restoreFocus = false): void {
     queueMicrotask(() => target.focus());
   }
 }
+function discardSurveyPresentation(reason: string): void {
+  /* Hidden is not ownership. Once navigation invalidates the selected scene,
+     release every controller/model and its detached DOM immediately. A same-
+     system Surface ↔ orbit transition deliberately retains its source-proven
+     planet card so the existing dock reconstruction contract still works. */
+  releaseApproachEcology(reason);
+  approachEcologyController.setState(null);
+  captureCardController.detach();
+  captureCardController.setState(null);
+  combatCardController.detach();
+  combatCardController.setState(null);
+  currentCapturePresentationFence = null;
+  currentArc6CombatProjection = null;
+  currentArc6ChampionId = null;
+  lastCard = null;
+  cardCtx = null;
+  cardTravelAction = null;
+  surveyFocusReturn = null;
+  card.replaceChildren();
+  delete card.dataset.ecologyEpoch;
+}
 function closeVisibleSurveyAndAscend(restoreFocus: boolean): void {
   /* Survey Close remains available while an action settles, but the shared
      goUp() fence still owns whether this same input may change route. Idle
@@ -2264,12 +2289,8 @@ surveyDockEl.addEventListener('click', () => {
      none, so its native dock activation may source-prove and present the
      current rendered surface without replaying a Survey action. */
   if (cardCtx && !activeCardPlanetWhere()) {
-    cardCtx = null;
-    captureCardController.detach();
-    combatCardController.detach();
-    currentArc6CombatProjection = null;
-    card.innerHTML = '';
     hideSurvey();
+    discardSurveyPresentation('survey-route-stale');
     return;
   }
   const staleCaptureMount = card.querySelector<HTMLElement>('[data-capture-card-body]');
@@ -2649,13 +2670,103 @@ function fillSettings(): void {
 /* ---- GUIDE + RELEASE HISTORY — one source-addressed continuation of the
    mature v1 manual, not a second seven-topic manual. All 43 authored IDs and
    the 56-release archive remain synchronized to v1.8.9; current capability
-   copy replaces any legacy promise whose mechanic is not yet live in v2. ---- */
-const GUIDE_CATALOGUE = getGuideCatalogue();
+   copy replaces any legacy promise whose mechanic is not yet live in v2.
+   Both authored archives are lazy: a player who never opens Guide must not
+   retain hundreds of kilobytes of dormant copy for the whole expedition. ---- */
+type GuideContentModule = typeof import('./guide-content.js');
+type ReleaseContentModule = typeof import('./release-content.js');
+let guideContentModule: GuideContentModule | null = null;
+let guideContentPromise: Promise<GuideContentModule> | null = null;
+let guideCatalogue: readonly GuideCategoryView[] | null = null;
+let releaseContentModule: ReleaseContentModule | null = null;
+let releaseContentPromise: Promise<ReleaseContentModule> | null = null;
+let guideViewRequest = 0;
+
+function loadGuideContent(): Promise<GuideContentModule> {
+  if (guideContentModule !== null) return Promise.resolve(guideContentModule);
+  guideContentPromise ??= import('./guide-content.js').then((module) => {
+    guideContentModule = module;
+    guideCatalogue = module.getGuideCatalogue();
+    return module;
+  }, (error: unknown) => {
+    guideContentPromise = null;
+    throw error;
+  });
+  return guideContentPromise;
+}
+function loadReleaseContent(): Promise<ReleaseContentModule> {
+  if (releaseContentModule !== null) return Promise.resolve(releaseContentModule);
+  releaseContentPromise ??= import('./release-content.js').then((module) => {
+    releaseContentModule = module;
+    return module;
+  }, (error: unknown) => {
+    releaseContentPromise = null;
+    throw error;
+  });
+  return releaseContentPromise;
+}
 function guideBodyEl(): HTMLElement | null {
   return document.querySelector('#guidepanel [data-sel="guide-body"]');
 }
-function guideCategoryOf(id: GuideTopicId): (typeof GUIDE_CATALOGUE)[number] | undefined {
-  return GUIDE_CATALOGUE.find((category) => category.topics.some((topic) => topic.id === id));
+function guideCategoryOf(
+  catalogue: readonly GuideCategoryView[],
+  id: GuideTopicId,
+): GuideCategoryView | undefined {
+  return catalogue.find((category) => category.topics.some((topic) => topic.id === id));
+}
+function guideLoadingBody(body: HTMLElement): void {
+  body.innerHTML = '<div class="empty" data-guide-loading>Opening the expedition archive…</div>';
+}
+function guideLoadFailure(body: HTMLElement): void {
+  body.innerHTML = '<div class="empty" role="alert">The Guide archive could not be opened. Close Guide and try again; your expedition is unchanged.</div>';
+}
+function requestGuideContent(
+  render: (module: GuideContentModule, catalogue: readonly GuideCategoryView[]) => void,
+): void {
+  const body = guideBodyEl();
+  if (body === null) return;
+  const request = ++guideViewRequest;
+  const publish = (module: GuideContentModule): void => {
+    if (request !== guideViewRequest || guideBodyEl() !== body || openPanelId() !== 'guide') return;
+    const catalogue = guideCatalogue ?? module.getGuideCatalogue();
+    guideCatalogue = catalogue;
+    document.querySelector<HTMLInputElement>('#guidepanel #guidesearch')?.removeAttribute('disabled');
+    render(module, catalogue);
+  };
+  if (guideContentModule !== null) {
+    const module = guideContentModule;
+    /* openPanel() invokes onOpen before it exposes the panel. Defer cached
+       publication by one microtask so the same visibility fence used by the
+       cold import also holds when Guide is reopened from memory. */
+    queueMicrotask(() => publish(module));
+    return;
+  }
+  guideLoadingBody(body);
+  void loadGuideContent().then(publish, () => {
+    if (request === guideViewRequest && guideBodyEl() === body && openPanelId() === 'guide') {
+      guideLoadFailure(body);
+    }
+  });
+}
+function requestReleaseContent(render: (module: ReleaseContentModule) => void): void {
+  const body = guideBodyEl();
+  if (body === null) return;
+  const request = ++guideViewRequest;
+  const publish = (module: ReleaseContentModule): void => {
+    if (request !== guideViewRequest || guideBodyEl() !== body || openPanelId() !== 'guide') return;
+    render(module);
+  };
+  if (releaseContentModule !== null) {
+    const module = releaseContentModule;
+    queueMicrotask(() => publish(module));
+    return;
+  }
+  guideLoadingBody(body);
+  void loadReleaseContent().then(publish, () => {
+    if (request === guideViewRequest && guideBodyEl() === body && openPanelId() === 'guide') {
+      guideLoadFailure(body);
+    }
+  });
 }
 function guideTopicRow(topic: GuideTopicView, icon = '•'): string {
   const status = topic.availability === 'unavailable' ? 'Not yet in v2'
@@ -2683,60 +2794,74 @@ function focusGuide(selector: string): void {
   guideBodyEl()?.querySelector<HTMLElement>(selector)?.focus();
 }
 function renderGuideMenu(focusResult = false): void {
-  const body = guideBodyEl(); if (!body) return;
-  body.innerHTML = GUIDE_CATALOGUE.map((category) =>
-    `<button class="guide-item guide-category" data-guide-category="${category.id}"><span class="guide-icon">${category.icon}</span>` +
-    `<span><b>${esc(category.title)}</b><small>${esc(category.blurb)} · ${category.topics.length} topics</small></span><span aria-hidden="true">›</span></button>`).join('');
-  body.scrollTop = 0;
-  if (focusResult) focusGuide('[data-guide-category]');
+  requestGuideContent((_module, catalogue) => {
+    const body = guideBodyEl(); if (!body) return;
+    body.innerHTML = catalogue.map((category) =>
+      `<button class="guide-item guide-category" data-guide-category="${category.id}"><span class="guide-icon">${category.icon}</span>` +
+      `<span><b>${esc(category.title)}</b><small>${esc(category.blurb)} · ${category.topics.length} topics</small></span><span aria-hidden="true">›</span></button>`).join('');
+    body.scrollTop = 0;
+    if (focusResult) focusGuide('[data-guide-category]');
+  });
 }
 function renderGuideCategory(id: GuideCategoryId, focusResult = false): void {
-  const category = GUIDE_CATALOGUE.find((candidate) => candidate.id === id);
-  const body = guideBodyEl(); if (!category || !body) return;
-  body.innerHTML = `<button class="guide-back" data-guide-home>‹ All topics</button>` +
-    category.topics.map((topic) => guideTopicRow(topic, category.icon)).join('');
-  body.scrollTop = 0;
-  if (focusResult) focusGuide('[data-guide-home]');
+  requestGuideContent((_module, catalogue) => {
+    const category = catalogue.find((candidate) => candidate.id === id);
+    const body = guideBodyEl(); if (!category || !body) return;
+    body.innerHTML = `<button class="guide-back" data-guide-home>‹ All topics</button>` +
+      category.topics.map((topic) => guideTopicRow(topic, category.icon)).join('');
+    body.scrollTop = 0;
+    if (focusResult) focusGuide('[data-guide-home]');
+  });
 }
 function renderGuideTopic(id: GuideTopicId, focusResult = false): void {
-  const topic = getGuideTopic(id);
-  const category = guideCategoryOf(id);
-  const body = guideBodyEl(); if (!topic || !category || !body) return;
-  const status = topic.availability === 'unavailable' ? 'Not yet available in v2'
-    : topic.availability === 'partial' ? 'Partly available in this development build'
-      : 'Available in this development build';
-  const siblings = category.topics.filter((candidate) => candidate.id !== id).slice(0, 4);
-  body.innerHTML = `<button class="guide-back" data-guide-category="${category.id}">‹ ${esc(category.title)}</button>` +
-    `<article class="guide-topic"><h4 tabindex="-1" data-guide-heading>${category.icon} ${esc(topic.title)}</h4>` +
-    `<div class="guide-status" data-guide-status="${topic.availability}">${esc(status)}</div>${interactiveGuideBody(topic.body)}` +
-    (siblings.length ? `<div class="guide-related"><b>Also in ${esc(category.title)}</b>` +
-      siblings.map((candidate) => `<button data-guide-topic="${candidate.id}">${esc(candidate.title)}</button>`).join('') + '</div>' : '') +
-    '</article>';
-  body.scrollTop = 0;
-  if (focusResult) focusGuide('[data-guide-category]');
+  requestGuideContent((module, catalogue) => {
+    const topic = module.getGuideTopic(id);
+    const category = guideCategoryOf(catalogue, id);
+    const body = guideBodyEl(); if (!topic || !category || !body) return;
+    const status = topic.availability === 'unavailable' ? 'Not yet available in v2'
+      : topic.availability === 'partial' ? 'Partly available in this development build'
+        : 'Available in this development build';
+    const siblings = category.topics.filter((candidate) => candidate.id !== id).slice(0, 4);
+    body.innerHTML = `<button class="guide-back" data-guide-category="${category.id}">‹ ${esc(category.title)}</button>` +
+      `<article class="guide-topic"><h4 tabindex="-1" data-guide-heading>${category.icon} ${esc(topic.title)}</h4>` +
+      `<div class="guide-status" data-guide-status="${topic.availability}">${esc(status)}</div>${interactiveGuideBody(topic.body)}` +
+      (siblings.length ? `<div class="guide-related"><b>Also in ${esc(category.title)}</b>` +
+        siblings.map((candidate) => `<button data-guide-topic="${candidate.id}">${esc(candidate.title)}</button>`).join('') + '</div>' : '') +
+      '</article>';
+    body.scrollTop = 0;
+    if (focusResult) focusGuide('[data-guide-category]');
+  });
 }
 function renderGuideSearch(query: string): void {
-  const body = guideBodyEl(); if (!body) return;
-  const hits = searchGuide(query);
   if (query.trim().length < 2) { renderGuideMenu(); return; }
-  body.innerHTML = hits.length
-    ? hits.map((topic) => guideTopicRow(topic, guideCategoryOf(topic.id)?.icon || '•')).join('')
-    : `<div class="empty">Nothing matches “${esc(query.trim())}”. Try “landing”, “save”, “breeding”, or “stardust”.</div>`;
-  body.scrollTop = 0;
+  requestGuideContent((module, catalogue) => {
+    const body = guideBodyEl(); if (!body) return;
+    const hits = module.searchGuide(query);
+    body.innerHTML = hits.length
+      ? hits.map((topic) => guideTopicRow(topic, guideCategoryOf(catalogue, topic.id)?.icon || '•')).join('')
+      : `<div class="empty">Nothing matches “${esc(query.trim())}”. Try “landing”, “save”, “breeding”, or “stardust”.</div>`;
+    body.scrollTop = 0;
+  });
 }
 function renderReleaseHistory(focusResult = false): void {
-  const body = guideBodyEl(); if (!body) return;
-  const releases = getReleaseHistory({ includeDraft: true });
-  body.innerHTML = '<button class="guide-back" data-guide-home>‹ Guide</button>' +
-    '<div class="guide-release-intro"><b>Expedition bulletins</b><br>' +
-    `v${esc(V2_DEVELOPMENT_VERSION)} names this development playtest but cannot trigger a production update popup. The complete v1 history below remains immutable.</div>` +
-    releases.map((release, index) => `<button class="guide-item" data-release-index="${index}">` +
-      `<span class="guide-icon">${release.status === 'draft' ? '🧪' : '✦'}</span><span><b>${release.version ? 'v' + esc(release.version) + ' · ' : ''}${esc(release.title)}</b>` +
-      `<small>${release.status === 'draft' ? 'UNRELEASED DEVELOPMENT' : esc(release.date) + (release.status === 'shipped' ? ' · v2 release' : ' · legacy release')}</small></span><span aria-hidden="true">›</span></button>`).join('');
-  body.scrollTop = 0;
-  if (focusResult) focusGuide('[data-guide-home]');
+  requestReleaseContent((module) => {
+    const body = guideBodyEl(); if (!body) return;
+    const releases = module.getReleaseHistory({ includeDraft: true });
+    body.innerHTML = '<button class="guide-back" data-guide-home>‹ Guide</button>' +
+      '<div class="guide-release-intro"><b>Expedition bulletins</b><br>' +
+      `v${esc(V2_DEVELOPMENT_VERSION)} names this development playtest but cannot trigger a production update popup. The complete v1 history below remains immutable.</div>` +
+      releases.map((release, index) => `<button class="guide-item" data-release-index="${index}">` +
+        `<span class="guide-icon">${release.status === 'draft' ? '🧪' : '✦'}</span><span><b>${release.version ? 'v' + esc(release.version) + ' · ' : ''}${esc(release.title)}</b>` +
+        `<small>${release.status === 'draft' ? 'UNRELEASED DEVELOPMENT' : esc(release.date) + (release.status === 'shipped' ? ' · v2 release' : ' · legacy release')}</small></span><span aria-hidden="true">›</span></button>`).join('');
+    body.scrollTop = 0;
+    if (focusResult) focusGuide('[data-guide-home]');
+  });
 }
-function renderRelease(index: number, focusResult = false, releases = getReleaseHistory({ includeDraft: true })): void {
+function renderReleaseView(
+  index: number,
+  focusResult: boolean,
+  releases: readonly ReleaseNoteView[],
+): void {
   const release = releases[index];
   const body = guideBodyEl(); if (!release || !body) return;
   body.innerHTML = '<button class="guide-back" data-guide-releases>‹ All bulletins</button>' +
@@ -2746,12 +2871,39 @@ function renderRelease(index: number, focusResult = false, releases = getRelease
   body.scrollTop = 0;
   if (focusResult) focusGuide('[data-guide-releases]');
 }
+function renderRelease(
+  index: number,
+  focusResult = false,
+  releases?: readonly ReleaseNoteView[],
+): void {
+  if (releases !== undefined) {
+    guideViewRequest++;
+    renderReleaseView(index, focusResult, releases);
+    return;
+  }
+  requestReleaseContent((module) => {
+    renderReleaseView(index, focusResult, module.getReleaseHistory({ includeDraft: true }));
+  });
+}
+function shippedReleaseView(release: V2ShippedRelease): ReleaseNoteView {
+  return Object.freeze({
+    channel: 'v2',
+    status: 'shipped',
+    version: release.version,
+    title: release.title,
+    date: release.date,
+    sections: Object.freeze(release.sections.map((section) => Object.freeze({
+      heading: section.category,
+      bullets: Object.freeze(section.bullets.slice()),
+    }))),
+  });
+}
 let pendingReleaseBulletin: V2ShippedRelease | null = null;
 function showV2ReleaseBulletin(
   current: V2ShippedRelease,
-  history: readonly ReleaseNoteView[] = getReleaseHistory(),
+  history: readonly ReleaseNoteView[] = Object.freeze([shippedReleaseView(current)]),
 ): boolean {
-  if (!hasUnseenV2Release(save.rnSeen, current)) return false;
+  if (save.rnSeen === current.version) return false;
   /* A first expedition owns one blocking onboarding surface at a time. Queue
      a shipped bulletin until Training is finished/skipped instead of opening
      the Guide underneath its lesson card and marking unseen copy as read. */
@@ -2770,26 +2922,29 @@ function showV2ReleaseBulletin(
 function showUnseenV2Release(): boolean {
   /* The mature one-time bulletin rule is ready before the first production
      v2 release, but the v2.0 development identity can never trigger it. */
-  const current = getCurrentV2Release();
-  if (!current) return false;
-  const history = getReleaseHistory({ includeDraft: true });
-  return showV2ReleaseBulletin(current, history);
+  if (V2_CURRENT_RELEASE_VERSION === null) return false;
+  void loadReleaseContent().then((module) => {
+    const current = module.getCurrentV2Release(V2_CURRENT_RELEASE_VERSION);
+    if (current !== undefined) showV2ReleaseBulletin(current);
+  }, () => {
+    toast('Release bulletin unavailable', 'Your expedition is unchanged. Open Guide to try the archive again.');
+  });
+  return true;
 }
 function flushPendingReleaseBulletin(): void {
   const current = pendingReleaseBulletin;
   if (!current || trainingActive()) return;
-  const history = getReleaseHistory({ includeDraft: true, shippedReleases: [current] });
-  showV2ReleaseBulletin(current, history);
+  showV2ReleaseBulletin(current);
 }
 function fillGuide(): void {
   if (!save) return;
   fillPanel('guide',
     '<h3>Guide to the Universe</h3>' +
     guideBuildIdentity() +
-    '<div class="guide-tools"><input id="guidesearch" type="search" autocomplete="off" aria-label="Search the Guide" placeholder="Search 41 Guide topics">' +
+    '<div class="guide-tools"><input id="guidesearch" type="search" autocomplete="off" aria-label="Search the Guide" placeholder="Search 41 Guide topics" disabled>' +
     '<button data-guide-releases>Release history</button></div>' +
     '<div class="sub guide-scope">The mature manual, adapted to what is actually live in this v2 development build. Unported active systems stay visible and honestly marked; intentionally dormant topics remain recorded but hidden.</div>' +
-    '<div class="guide-body" data-sel="guide-body"></div>');
+    '<div class="guide-body" data-sel="guide-body"><div class="empty" data-guide-loading>Opening the expedition archive…</div></div>');
   renderGuideMenu();
   if (!save.seenGuide && !blockPlayerMutation('guide-seen')) {
     save.seenGuide = true;
@@ -3062,6 +3217,7 @@ function closeCodexSurface(): void {
   for (const image of document.querySelectorAll<HTMLImageElement>('#codexpanel img')) {
     image.removeAttribute('src');
   }
+  speciesArtLoader.releaseUnownedCachedArt(QUIESCENT_SPECIES_ART_CACHE);
   codexRows = Object.freeze([]);
   codexMode = 'closed';
   codexDetailLogicalId = null;
@@ -3528,8 +3684,6 @@ function fillCharters(): void {
   );
 }
 registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
-document.getElementById('dockcharters')!.addEventListener('click', () => togglePanel('ch'));
-document.getElementById('railcharters')!.addEventListener('click', () => togglePanel('ch'));
 document.getElementById('chpanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
   const button = event.target.closest<HTMLButtonElement>('[data-starter-charter-accept]');
@@ -3546,7 +3700,6 @@ registerPanel({
   btns: [primeCodexOpener],
   onOpen: fillPrimeCodex,
 });
-primeCodexOpener.addEventListener('click', () => togglePanel('prime'));
 document.getElementById('primepanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
   const button = event.target.closest<HTMLButtonElement>('[data-frontier-ending-id]');
@@ -3579,8 +3732,6 @@ registerPanel({
   onClose: () => combatChronicleController.close(),
 });
 registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [document.getElementById('dockatlas'), document.getElementById('railatlas')], onOpen: () => { fillAtlas(); gameEvent('atlas-open', { open: true }); } });
-document.getElementById('dockatlas')!.addEventListener('click', () => togglePanel('atlas'));
-document.getElementById('railatlas')!.addEventListener('click', () => togglePanel('atlas'));
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
 registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
 const codexOpenController = createPanelOpenController({
@@ -3649,16 +3800,6 @@ function shipyardDiagnostics(): unknown {
     engineering: diagnostics,
   });
 }
-document.getElementById('docksets')!.addEventListener('click', () => togglePanel('set'));
-document.getElementById('dockguide')!.addEventListener('click', () => togglePanel('guide'));
-document.getElementById('dockcodex')!.addEventListener('click', () => togglePanel('codex'));
-document.getElementById('railcodex')!.addEventListener('click', () => togglePanel('codex'));
-document.getElementById('dockrecords')!.addEventListener('click', () => togglePanel('rec'));
-document.getElementById('railrecords')!.addEventListener('click', () => togglePanel('rec'));
-document.getElementById('dockshipyard')!.addEventListener('click', () => togglePanel('shipyard'));
-document.getElementById('railshipyard')!.addEventListener('click', () => togglePanel('shipyard'));
-document.getElementById('dockinventory')!.addEventListener('click', () => togglePanel('inventory'));
-document.getElementById('railinventory')!.addEventListener('click', () => togglePanel('inventory'));
 /* codex list rows open the detail card (delegated — rows refill often) */
 document.getElementById('codexpanel')!.addEventListener('click', (e) => {
   const row = (e.target as HTMLElement).closest('[data-ci]');
@@ -6190,8 +6331,10 @@ function rerender(options: { preserveSurvey?: boolean; skipPersist?: boolean } =
      object. Navigation transitions invalidate the card as before; monitor/
      DPR changes preserve its exact DOM, full-identity context, and action. */
   if (!options.preserveSurvey) {
+    const discardSurvey = cardCtx === null || activeCardPlanetWhere() === null;
     invalidateSurveyTravel();
     hideSurvey();
+    if (discardSurvey) discardSurveyPresentation('survey-navigation-invalidated');
   }
   document.body.classList.toggle('surface-mode', nav.mode === 'surface');
   if (nav.mode !== 'surface') {
@@ -7351,6 +7494,7 @@ function clearPlanetside(): void {
   releasePlanetsideEcology('planetside-cleared');
   planetsideGeneration++;
   releasePlanetsideThumbs();
+  speciesArtLoader.releaseUnownedCachedArt(QUIESCENT_SPECIES_ART_CACHE);
   planetsideWorldKey = null;
   planetsideAudioRoster = null;
   delete sideEl.dataset.rosterState;
@@ -7366,6 +7510,7 @@ function showPlanetsideRosterFailure(reason: string): void {
   releasePlanetsideEcology('roster-failed');
   planetsideGeneration++;
   releasePlanetsideThumbs();
+  speciesArtLoader.releaseUnownedCachedArt(QUIESCENT_SPECIES_ART_CACHE);
   planetsideWorldKey = null;
   planetsideAudioRoster = null;
   sideEl.dataset.rosterState = 'authority-error';
@@ -7401,7 +7546,10 @@ addEventListener('resize', syncPlanetsideLayout, { passive: true });
 new MutationObserver(() => {
   if (getComputedStyle(sideEl).display === 'none') {
     releasePlanetsideEcology('planetside-hidden');
-    if (planetsideBindings.size) releasePlanetsideThumbs();
+    if (planetsideBindings.size) {
+      releasePlanetsideThumbs();
+      speciesArtLoader.releaseUnownedCachedArt(QUIESCENT_SPECIES_ART_CACHE);
+    }
     return;
   }
   if (nav.mode === 'surface' && nav.star && nav.planet && !planetsideBindings.size) {
@@ -12669,15 +12817,10 @@ function suppressEcologyProjection(
     ? ecologyEpochAuthority.suppressProjection()
     : ecologyEpochAuthority.failProjectionRefresh(refreshToken);
   if (outcome.kind === 'invalid-token') ecologyEpochAuthority.suppressProjection();
-  currentCapturePresentationFence = null;
-  captureCardController.setState(null);
-  currentArc6CombatProjection = null;
-  combatCardController.setState(null);
   clearPlanetside();
   invalidateSurveyTravel();
   hideSurvey();
-  lastCard = null;
-  cardCtx = null;
+  discardSurveyPresentation('ecology-projection-suppressed');
   try { clearWorld(); } catch { /* the convergence reload owns final cleanup */ }
 }
 
@@ -12713,8 +12856,7 @@ function refreshCommittedEcologyProjection(): void {
       )) {
         invalidateSurveyTravel();
         hideSurvey();
-        lastCard = null;
-        cardCtx = null;
+        discardSurveyPresentation('ecology-survey-rebuild-refused');
       }
       restoreSurveyFocusIdentity(focusIdentity);
     } else if (cardWasOpen) {
@@ -12723,8 +12865,7 @@ function refreshCommittedEcologyProjection(): void {
          replaced; a stale transient descriptor must not survive the edge. */
       invalidateSurveyTravel();
       hideSurvey();
-      lastCard = null;
-      cardCtx = null;
+      discardSurveyPresentation('ecology-generic-survey-invalidated');
       if (focusIdentity !== null) app.canvas.focus();
     }
     if (card.style.display !== 'none'
@@ -15637,8 +15778,7 @@ async function loadSave(): Promise<void> {
           status: 'shipped', version, title: 'Browser fixture bulletin', date: 'Test only',
           sections: [{ category: 'Under the Hood', bullets: ['Positive-path fixture; not a release.'] }],
         };
-        const history = getReleaseHistory({ includeDraft: true, shippedReleases: [fixture] });
-        return showV2ReleaseBulletin(fixture, history);
+        return showV2ReleaseBulletin(fixture);
       },
       fineStarTarget: () => {
         for (const target of fineStarTargets) {
