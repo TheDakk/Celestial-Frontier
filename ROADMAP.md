@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · E4F5 EVIDENCE PRESERVED · F4 ORACLES REPAIRED LOCALLY · SIGN NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · E4F5 EVIDENCE PRESERVED · F4 ORACLES SIGNED GREEN · BROWSER CHAIN NEXT ◀◀◀
 
 ### Exact current boundary
 
@@ -30,9 +30,12 @@ the archive verbatim and refresh this handoff in place.
   **e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c** (tree
   **38664e8cee474c359eed8b0ffc2f3aa0b5dca3c0**, parent
   **95c2bea727a014b8b181d83e4b0f04a5444b3993**) supplied the one-attempt browser evidence below.
-  It was **22 commits ahead** of origin/openai/mac and has an embedded SSH signature. The current
-  native-transaction/strict-clock/causal-stop repair is an **uncommitted changed-source
-  successor**. Do not claim a final candidate commit/tree or inherit e4f5 browser authority.
+  It was **22 commits ahead** of origin/openai/mac and has an embedded SSH signature. The repaired
+  native-transaction/strict-clock/causal-stop candidate is signed commit
+  **d335d78a8f4f152e844627c2f28658c03168d1a1** (tree
+  **76da593f16b39a99340aa435d5361554fd948ceb**, parent e4f5af4…), **23 commits ahead** of
+  origin/openai/mac, with an embedded SSH signature. It has browser-free authority only and does
+  not inherit e4f5 browser authority.
 - **PR boundary:** draft PR **#35**, base **develop**, source **openai/mac**, remains blocked and
   unmerged. Remote head **017fa6decbc41809188768ccdb98ab86ef1b9ebc** and fetched base
   **7a9f4c1370dd84292388d718c38ff34214f6203b** remain unchanged. Nothing here has been pushed.
@@ -90,7 +93,7 @@ identities, clean source begin/end, 78/78 Compendium PASS, four ordered Slice sc
 structured reasons, raw output and explicit denial of Glass/Recovery authority; its focused
 acceptance is **5/5**. The report remains a four-scope historical red, never a single-scope PASS.
 
-### Current uncommitted repair from the exact findings
+### Signed local repair from the exact findings
 
 - **Native replacement transaction:** the v3 tracer inventories every IndexedDB readwrite first
   observed before the eight-store replacement completes and requires exactly one. It freezes at
@@ -127,19 +130,17 @@ acceptance is **5/5**. The report remains a four-scope historical red, never a s
 - Full V2 suite: **248 files / 2,481 passed / 1 skipped**.
 - **npm run typecheck: green**.
 - Focused F4 + e4f5 + ae2 replay set: **17/17 green**.
-- The current repair and this handoff are uncommitted. This acceptance is browser-free authority
-  only. It is not a signed final candidate, fresh browser PASS, HUMAN visual acceptance, hosted CI
-  green, merge authority or release/deployment authority.
+- Signed candidate **d335d78a…** contains the repair, immutable e4f5 carriers, evidence replay and
+  synchronized current references. This acceptance is browser-free authority only. It is not a
+  fresh browser PASS, HUMAN visual acceptance, hosted CI green, merge authority or
+  release/deployment authority.
 - The superseded ae2 handoff is archived byte-verbatim with SHA-256
   **90be1b5cdd1731881152e323e9c2274ced74f611e7198b4d49dab487e18c56a9**.
 
-### Exact next work — signed candidate and one immutable browser chain
+### Exact next work — one immutable browser chain
 
-1. Finish synchronizing all affected current reference docs with the F4 evidence repair, inspect
-   the complete V2-only diff, rerun the focused contracts, full browser-free suite,
-   npm run typecheck and git diff --check, then create one signed local candidate commit. Require a
-   clean worktree and resolve its exact commit/tree/ahead state; do not amend or relabel e4f5.
-2. From port/v2 on that exact clean signed head, stop on any nonzero:
+1. From port/v2 on the exact clean signed docs-closure successor of **d335d78a…**, stop on any
+   nonzero:
 
        node tools/tracked-input-preflight.mjs
        npm run compendiummem:selftest
@@ -147,21 +148,21 @@ acceptance is **5/5**. The report remains a four-scope historical red, never a s
        node tools/compendiummem-browser-preflight.mjs
 
    Browser-owning commands run outside the macOS sandbox. No automatic retry or fallback exists.
-3. Reserve one new commit-derived Compendium ID and run it once:
+2. Reserve one new commit-derived Compendium ID and run it once:
 
        CF_COMPENDIUMMEM_RUN_ID=<exact-id> npm run compendiummem
        node tools/compendiummem.mjs --verify-run=<exact-id>
 
    Preserve and stop on any product-red or instrument-red.
-4. Only if Compendium is terminal-green, keep committed source unchanged and run the exact README
+3. Only if Compendium is terminal-green, keep committed source unchanged and run the exact README
    sequence: smoke:report:selftest → one smoke:ci → named Slice verification. Preserve and stop if
    Slice is red; do not run Glass or Recovery and do not retry.
-5. Only if Slice is terminal-green, run glassmatrix:selftest → one Glass bound to the exact Slice
+4. Only if Slice is terminal-green, run glassmatrix:selftest → one Glass bound to the exact Slice
    ID → exact two-ID verification → arc4recovery:selftest → one Recovery bound to both exact
    predecessors → exact three-ID verification. Stop at the first nonzero/red/instrument result.
-6. Preserve exact reports/logs/PNGs, update audits/README.md and this handoff, sign the
+5. Preserve exact reports/logs/PNGs, update audits/README.md and this handoff, sign the
    evidence/docs closure, then rerun tracked-input preflight on the final clean committed index.
-7. Report the immutable final head/base to Nick. Only a new authorization naming that exact pair
+6. Report the immutable final head/base to Nick. Only a new authorization naming that exact pair
    may push, apply actions-budget-approved, run the one 92-minute hosted battery and, if
    terminal-green, merge PR #35 normally into develop.
 
@@ -182,9 +183,9 @@ judgment. Current system references and port/V2_PROGRAM_ROADMAP.md own those bou
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** remain in this worktree, finish the current local repair/docs, sign the
-  clean candidate and complete exactly one serial local browser chain. Make no GitHub write
-  without exact authorization.
+- **OpenAI/Codex now:** remain in this worktree, sign this docs-only closure over exact candidate
+  d335d78a…, then complete exactly one serial local browser chain. Make no GitHub write without
+  exact authorization.
 - **GitHub step now:** none.
 - **PR #35:** existing draft; base **develop**, source **openai/mac**, title
   **feat(v2): complete roadmap campaign and harden CI parity**.
@@ -195,7 +196,7 @@ judgment. Current system references and port/V2_PROGRAM_ROADMAP.md own those bou
       universe-wide art/audio and save-schema boundaries. It preserves exact e4f5 Compendium
       78/78 PASS plus its terminal four-scope Slice red, and repairs the native F4 replacement
       transaction oracle, strict production-codec clock projection and causal stop locally.
-      Current browser-free acceptance is 248 files with 2,481 passed and 1 skipped; npm run
+      Current signed browser-free acceptance is 248 files with 2,481 passed and 1 skipped; npm run
       typecheck is green. A fresh exact clean-head Compendium → Slice → Glass → Recovery chain
       remains required before this draft can become Ready or use one authorized hosted battery.
       No legacy-v1 source, production release, version bump, preview publication or deployment is
