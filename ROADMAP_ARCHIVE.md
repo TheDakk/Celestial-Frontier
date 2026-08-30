@@ -1,3 +1,242 @@
++## ARCHIVED 2026-08-29 — PR #35 static-parity candidate superseded by browser-lifecycle repair
+
+> Moved byte-verbatim from `ROADMAP.md` after hosted run 33278630671 exposed the later real-browser
+> lifecycle boundary. Historical claims below describe their own checkpoint and are not current
+> authority.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: PR35 PERMANENT CI-PARITY REPAIR -->
+## ▶▶▶ SESSION HANDOFF — 2026-08-29 · PR #35 PERMANENT CI-PARITY REPAIR · DRAFT PR CANDIDATE ◀◀◀
+
+### Exact current boundary
+
+- **Scope/owner:** OpenAI/Codex desktop on macOS at
+  /Users/nick/Projects/celestial-frontier-openai-mac, branch **openai/mac**, upstream
+  **origin/openai/mac**. The implementation campaign changed `port/v2` and current reference
+  Markdown; this repair also adds fail-closed selftest wiring to the two guarded workflows. Legacy
+  `main.js` / `celestial-frontier.html`, the other-agent worktree and the sibling live-site
+  repository remain untouched.
+- **Git/PR boundary:** draft PR **#35** exists from **`openai/mac` → `develop`** against base
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**. Its consumed run tested prior pushed head
+  **390e8708086d413fc7d636441ec0523cf9d4b9ea**. Exact signed implementation-repair commit
+  **9192b1aa66c38508cd19f5db0e4825b0a31d5516** passed the tracked-only rehearsal; the final signed
+  documentation-closed descendant passes it too and is synchronized to **`origin/openai/mac`** and
+  PR #35 by this handoff. Resolve that inherently self-referential full identity with
+  `git rev-parse HEAD` and the PR head, and provide it in the Git handoff. Preserve every existing
+  user change.
+- **Consumed hosted attempt:** Nick authorized exactly one `test-battery` run for that head/base with
+  `actions-budget-approved`, a 92-minute maximum and no retry. Run **33273328362** is terminal-red
+  and consumed; the label was removed, later browser stages were skipped, and PR #35 remains
+  Draft/unmerged. Nick separately authorized the final branch push and PR metadata refresh; that
+  update carries no Actions label and authorizes no workflow. No replacement run, merge, version
+  bump, preview publication, release or deployment is authorized. Actions is **UNFROZEN**, but
+  **zero exact hosted attempts are currently authorized**.
+- **Glass boundary:** the earlier Glass evidence-chain repair is part of pushed head `390e870…`.
+  Bare Glass invocation still fails preflight by design without the immutable Slice predecessor ID.
+- **Naming:** **Pureforged** is the approved current v2 player-facing name for fully exceptional
+  supported fixed crafts. Exceptional remains the material grade; stable internal
+  `exceptional-v1` identifiers, receipts and save identity remain unchanged. Frozen v1.8.9
+  “Exceptionally Forged” history remains byte-identical.
+- **Historical browser certificate:** signed source
+  **3f69e88ea8e34fdb8d9913276601b426ada783ae** owns the completed once-only
+  Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain: Layout 787/787,
+  SceneMemory 44/44, Compendium 78/78, zero-finding Slice, all 12 Glass viewports and the real
+  20-minute Recovery observation. This later candidate does not inherit or relabel it.
+- Edge/Chrome/Chromium point versions are provenance only. A compatible browser update never
+  requires rebaseline, recalibration or threshold movement.
+
+### Completed dependency-ready local campaign
+
+“Complete” here means every dependency-ready item selected for this local campaign is implemented,
+documented and browser-free green. It does not pretend that absent canonical product tables, HUMAN
+judgment, physical-device evidence, a fresh immutable browser certificate, whole Gates A–I or a
+production release are complete.
+
+- **Universe-wide visual language:** deterministic finishing spans galaxies, systems, planets, all
+  43 canonical biomes, fauna, flora, fungi, microbes, ships and bounded effects without changing
+  seeds, anatomy, silhouettes, proportions, topology, share identity or interaction geometry.
+- **Durable action foundation:** Landing, world Rename, Atlas, Mine, fixed Fabrication, capture,
+  Feed, Breed, companion Rename, Field Scout, combat, identity/share/travel/progression, Starter
+  Charter, Binder and Frontier-ending writes use their owning receipt/CAS fixed point. Runtime,
+  revision, checkpoint and canonical-state proof precede publication; stale, forged, Training-held,
+  ambiguous and postcommit-failure paths refuse, roll back or converge read-only without retry or
+  optimism.
+- **Exploration/economy:** exact-instance Inventory, finite Mine/Skim, Deep Scanners, the connected
+  fixed recipes, Pureforged exact-item modifiers, source-proven Search/Survey/Travel/Atlas routes,
+  Arc 4 Tame/Scavenge/Sample and first-find rewards are player-live.
+- **Companions:** Feed, Breed, Rename and Field Scout preserve exact individual identity and the
+  existing creature/genome work. Breed preserves both parents, draws once after successor
+  certification, creates one deterministic child only on success, grants that child +2 XP and the
+  first canonical unordered species pair +5, supports v1 pair-alias evidence, and keeps exact
+  active-play Recovery/overflow/archive authority.
+- **Combat/Guardians/Prime:** explorer or eligible living owned fauna/Guardian/Titan champions use
+  the deterministic forecast, transcript and one settlement. Conquest, XP, Stardust, injury/loss,
+  acquisition, Prime claims, Starter Conquest and progression share the verified fixed point.
+  Prime Codex exposes all nine Signature rows; its ninth distinct claim opens five established
+  Frontier endings, including the exact Balance predicate and one-choice/unknown-import protection.
+- **Presentation/audio:** the timed accessible Combat Chronicle, native HP meters, statistics,
+  silent Skip and plain-text Share are live. Exact transcript-owned impact/critical/ability cues use
+  the bounded master-Sound combat bus. Tame greeting, Feed acknowledgement, owned-fauna Listen and
+  generic no-spoiler biosphere Listen remain explicit, no-autoplay and presentation-only.
+- **Progression/records:** the ten-rank ladder, 96 achievements, 68 aggregate rows and 23 true event
+  owners are live. Achievement/rank ceremonies occur only after exact committed publication and
+  remain silent during boot, replay, Training, convergence and refusal. Settings supports earned
+  nameplates and identity-only Explorer rename; valid Share/Follow, Survey, Travel and Atlas
+  Favorite own their exact joins.
+- **Starter Charters/Binder:** the board owns both progressive Starter chains, next-link reveal,
+  explicit Accept and a three-active cap. Landing, Mine, eligible fixed Fabrication, Field Scout and
+  verified Conquest settle their authored 10–25 Stardust, supported Gear, achievement and rank
+  outcomes atomically. Binder owns six legacy pages and seven non-Paragon 25–150-Stardust claims;
+  the Fifty Paragons and imported evidence remain protected.
+- **PWA/install boundary:** exact-build inventory/digest, completion-marker-last install,
+  current-plus-one-prior retention, per-document pinning and explicit Check/Activate/Reload/Roll
+  back controls are locally implemented; physical install/update/rollback remains a later device
+  review.
+- **Guide/release truth:** the mature Guide remains 41 visible topics, now **34 partial / 7
+  unavailable**. **A New Foundation** remains a cumulative **73-bullet**, explicitly unreleased v2
+  development bulletin. No current production v2 version or update-popup authority exists.
+
+### Final browser-free evidence
+
+- **Exact committed rehearsal:** the signed current HEAD passes
+  `node tools/tracked-input-preflight.mjs` from an isolated export of its Git index. The ordered
+  result is **233 files / 2,333 passed / 1 skipped / 0 failed**, all three TypeScript programs,
+  `artunused`, **34 art sources / 0 findings**, **1,014/1,014** override routes plus all controls,
+  **1,010/1,010** coverage, **454 declared / 0 never-read / 0 inert** spec fields and **3/3**
+  current-producer tests.
+  This is exact local browser-free/static parity, not hosted or browser authority.
+- **Consolidated campaign focus:** **19 files / 207 passed**. The final semantic-hardening subset
+  separately passed **15 files / 139 tests**; the repaired Arc 9 and Chronicle instruments passed
+  their direct negative-controlled sets.
+- **TypeScript:** root, game-app and worker configurations all pass `npm run typecheck`.
+- **Compendium instrument:** `npm run compendiummem:selftest` passes **222 independent product
+  controls**.
+- **Current authority:** `node tools/print-producer-authorities.mjs` exits 0; SceneMemory,
+  Compendium measurement and Compendium producer all match their budgets. The three authority/
+  budget files pass **45/45** focused tests.
+- **Exact current identities:** Scene build `30ac9f97753a8b44fdd75ff0299c48ac5b9b9cced3cd465909b1a598e4f08750`,
+  Scene budget `158ed95e0936810ef25c0e21d5eceae9d1a73c7111fa087e58a38aa76c1dc308`;
+  Compendium measurement `7e9b1e11295ddc5682f9609711422dd3af969a257e3d02cf11848ae8ef6b18b4`,
+  producer `053f520c5149e66cbf1ee843c0873a531757b598f5830a7712a728537607890d`,
+  budget `5dbb5c80caf63c789fa15fc0acc9e4683613e221a1b1edb413ef980a9d8d2eb4`.
+  Numeric ceilings, fixed rulers, historical calibration samples and browser-family policy did not
+  change.
+- Staged and unstaged diff hygiene is green at this checkpoint.
+- **No browser-owning command was run for this later source.** A fresh clean,
+  committed-source immutable browser chain remains post-review work; the historical `3f69e88…`
+  certificate is not evidence for these later additions.
+
+### PR #35 permanent CI-parity repair
+
+- **Tracked-input root cause:** five suites read ignored root `main.js`. It existed on Nick's Mac but
+  is absent from both the PR head and base, so the ordinary workspace could pass while a clean
+  checkout failed. All legacy-source tests now consume one fail-closed, byte-exact extraction of the
+  unique inline script in tracked `celestial-frontier.html`; there is no ignored-file fallback,
+  trimming or newline normalization.
+- **Linux timeout root cause:** two synchronous evidence selftests inherited Vitest's five-second
+  case limit while their child processes had no hard kill. The child contract now has an explicit
+  15-second hard timeout below a 20-second outer case and distinguishes timeout, spawn failure,
+  nonzero exit and missing success marker. A 24-way contention control reproduced the old failure
+  band at 5.711–6.066 seconds and passed 24/24 with zero retries/timeouts.
+- **Preauthorization prevention:** `node tools/tracked-input-preflight.mjs` runs only from a clean
+  committed candidate, exports the exact index into an owned temporary tree, installs there and
+  executes the complete hosted browser-free/static command sequence. It rejects forgotten
+  source-owned untracked/ignored tests, excludes dependency-owned `node_modules` tests, rechecks
+  HEAD and cleanliness before PASS, allows unrelated ambient and run-generated files, and has
+  bidirectional fixture/workflow/order/soft-fail controls. Both guarded
+  workflows run its selftest immediately after the v2 install.
+- **Gate self-diagnosis:** the first exact clean-commit rehearsal stopped before install because the
+  ignored-test scan classified seven `node_modules/ismobilejs` dependency tests as source-owned.
+  The classifier now excludes only paths with a literal `node_modules` segment; its synthetic
+  control carries a dependency-owned test while source-owned ignored and untracked tests remain
+  terminal-red. This was a preflight false positive, not a product-suite failure or hosted retry.
+- **Previously hidden static blockers:** `artunused` exposed four unused locals/imports before the
+  next hosted attempt. The three test-only findings were removed; the one production local was
+  reduced to its validation call. An isolated same-path HEAD/current build comparison proved all 29
+  non-map runtime files and PWA build ID byte-identical; only `main-R61RQSgI.js.map` changed by 20
+  bytes. SceneMemory's exact build provenance was rebound to that full-dist identity without moving
+  a numeric ceiling, browser contract, collector or runtime byte.
+- **Documentation closure:** `ROADMAP.md`, `GITHUB_ACTIONS_BUDGET.md`, `PROCESS_LAWS.md`,
+  `port/v2/README.md` and `celestial-frontier-codebase-reference.md` now agree on the causes, repair,
+  controls, evidence, authority and next Git/Claude steps. No player-facing release entry or
+  per-system gameplay reference changed because save/gameplay/runtime bytes and behavior are
+  unchanged. This is the live handoff, so it remains here rather than moving to
+  `ROADMAP_ARCHIVE.md` before review.
+- Run `33273328362` remains immutable terminal-red evidence. This repair is not a retry and claims
+  no hosted green, browser certificate, HUMAN acceptance, merge, release or deployment authority.
+
+### Protected/deferred scope — do not invent
+
+- **Charters/progression:** Discover life, accepted bioscan and weekly wall-week/slate/acceptance/
+  rollover authority remain protected. Exactly `daily`, `decade`, `survivor`, `fieldmedic` and
+  `gambler` lack true event owners. Achievement reward claims and Fifty Paragons remain unported.
+- **Companions/combat:** canonical mission catalogues, care/taste/bond/healing, friendly-duel
+  progression, party/retreat and broader Chronicle/Museum history still lack complete approved
+  product rules. Preserve the existing creature/genome/ownership structures.
+- **Loot/Guardians:** D-ARC6-AFFIX-1 still needs the explicit 40% conquest-imbue coexistence policy.
+  D-ARC6-GUARDIAN-REWARD-1 still lacks an authored extra Guardian Gear/material table; do not infer
+  either from adjacent systems.
+- **Production media/depth:** recorded assets, authored continuous ambience/music, Guardian motifs,
+  remaining non-impact combat cues, projects/outposts and later Ascent/Legacy consequences remain
+  separately authored work.
+- **Polish/evidence:** first-interaction optimization, fresh exact-source Slice/Glass/Recovery,
+  real-veteran-save import, screen-reader/device install and phone/tablet frame/heat/battery/true-GPU
+  checks remain review/evidence work. HUMAN first-journey, attachment, strategic-combat,
+  visual/listening and accessibility judgment cannot be closed by unit tests.
+
+### Claude Fable polish-review package
+
+Review only **`port/v2` plus the current root/reference Markdown diff**. Do not modify legacy v1,
+recreate established systems, change deterministic identities, alter save meanings, weaken tests,
+move calibrated ceilings, or invent any protected table above. First inspect source and current
+references together, then report precise findings with severity, file/line evidence, affected
+invariant and the smallest safe correction. Review these axes:
+
+1. gameplay loop clarity, retention pacing and honest No Man’s Sky / Diablo / Path of Exile /
+   Pokémon / Minecraft / Satisfactory-inspired depth without manipulative pressure;
+2. transaction authority, exact-once rewards, CAS/rollback/convergence, save compatibility and
+   deterministic identity;
+3. creature/genome/ownership preservation, combat/Guardian/Prime/Charter/Binder progression and
+   canonical rule fidelity;
+4. UI/accessibility/mobile-first presentation, universe-wide visual cohesion and audio lifecycle;
+5. performance, dead/unreachable code, duplicate owners, package boundaries, tests/instruments and
+   Markdown/source agreement.
+6. PR #35's hermetic CI repair specifically: verify `test-support/tracked-v1-source.ts` preserves
+   exact committed legacy bytes with no ignored fallback; every production evidence-selftest caller
+   pins the 15-second child / 20-second outer contract and cannot pass on timeout, spawn failure,
+   nonzero exit or missing marker; `tracked-input-preflight.mjs` executes the exact ordered
+   hosted-static plan from only the clean committed index, rechecks the candidate before PASS and
+   cannot be softened or bypassed in either guarded workflow; and the SceneMemory rebind changes
+   only full-dist source-map provenance while all 29 runtime files, the PWA build ID, numeric
+   ceilings, browser contract and collector remain unchanged. Lightweight helper controls
+   deliberately retain shorter 5-second and 100-millisecond bounds.
+
+The review should distinguish a product defect from an instrument defect, preserve historical
+evidence verbatim and leave policy/HUMAN items explicitly open. OpenAI/Codex repairs accepted
+findings only after that review.
+
+### Paired handoff / Git protocol
+
+- **OpenAI/Codex:** the PR #35 repair is signed, clean, tracked-only green and synchronized from
+  `openai/mac` to `origin/openai/mac`. Its draft metadata is current. Do not label, request a hosted
+  battery, mark Ready, merge, release or deploy until Nick authorizes that exact next operation.
+- **Anthropic/Claude Code:** Nick does not need to open Claude in this OpenAI-owned worktree. When
+  Nick starts the polish review, Claude works only from an `anthropic/*` branch/worktree created
+  from the exact handed-off candidate—never by editing or copying files out of this worktree. Its
+  review scope and six axes are complete above.
+- **GitHub step now:** none. [PR #35](https://github.com/TheDakk/Celestial-Frontier/pull/35)
+  remains Draft at the synchronized repair head with no approval label. A later authorization must
+  name that full head/base, `actions-budget-approved`, 92-minute maximum, one attempt/no retry,
+  label removal and merge-on-green decision.
+- **Existing PR details:** base **develop**, source **openai/mac**, title
+  **`feat(v2): complete roadmap campaign and harden CI parity`**. Its refreshed description names
+  the exact base/head, campaign scope, both CI root causes and bounded repairs, exact local
+  verification, retained historical browser authority, Claude/cross-agent synchronization effect,
+  pending HUMAN/browser evidence and the explicit no-release/no-deployment boundary.
+- **Release status:** `develop`, `main` and the live site are unchanged; no production release or
+  deployment is in progress.
+<!-- END VERBATIM ROADMAP BLOCK: PR35 PERMANENT CI-PARITY REPAIR -->
+
+
 ## ARCHIVED 2026-08-29 — Active hardcore v2 campaign superseded by completed local review candidate
 
 > Moved byte-verbatim from `ROADMAP.md` after the dependency-ready local campaign reached its

@@ -1,6 +1,6 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **Current universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
+> **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
 > signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
 > and unchanged through one serial **Layout → SceneMemory → Compendium → Slice → Glass →
@@ -9,10 +9,10 @@
 > viewport classes with zero findings or instrument failures; Recovery consumed both exact
 > predecessors and passed all ten stages with a real uninterrupted 1,200,297.5 ms active-browser
 > observation. Every stage ran once with zero automatic retries and passed its exact
-> source/predecessor-bound verifier. The full v2 battery is 163 files / 1,712 passed + one skipped,
-> and all TypeScript configurations are green.
+> source/predecessor-bound verifier. At that checkpoint, the full v2 battery was 163 files / 1,712
+> passed + one skipped, and all TypeScript configurations were green.
 >
-> This exact local certificate covers the universe-wide visual treatment and bounded Arc 5 Feed
+> This exact historical-source certificate covers the universe-wide visual treatment and bounded Arc 5 Feed
 > scope only. It is not a development-preview package or HUMAN visual, listening, screen-reader or
 > first-journey judgment; physical-device heat/battery/true-GPU evidence, Gate G distant playback
 > and D-9e remain open, as do whole Gates A–I. No hosted attempt, merge, preview publication,
@@ -24,6 +24,26 @@
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
 as of 2026-08-29. The budget mode is `UNFROZEN`, but no hosted attempt or publication is authorized.
 This is not a release record.
+
+**Current-local PR #35 evidence boundary:** consumed hosted run `33278630671` tested exact head
+`017fa6decbc41809188768ccdb98ab86ef1b9ebc`. Every predecessor and SceneMemory control passed;
+the one-attempt phone product stage then stopped at **Earth planetfall was rejected**, so
+Compendium, Slice, Glass, personas, preview packaging and every later browser stage correctly did
+not run. The attempt is consumed and no replacement hosted attempt or publication is authorized.
+
+The local repair is deliberately product/instrument hardening rather than a packaging shortcut.
+Survey → Landing now drains the incoming route checkpoint, calls Survey once, drains Survey's
+replacement checkpoint, and calls Landing once. Save fixed points use an owner-minted canonicalizer
+with the exact commit registry snapshot and checked `codecNow`. PWA worker/shared-worker entries
+inherit the initiating document's exact build pin through `resultingClientId`; all client types are
+retained, temporarily omitted clients are confirmed with `clients.get()` before pruning, and no
+network or mixed-build fallback exists. SceneMemory reports bounded biome-vista causes, fails closed
+on malformed diagnostics, and moves its minimal BFCache away document to an ephemeral second
+loopback origin outside product service-worker scope, closing that server in `finally`. None of
+this changes the **44-outcome** SceneMemory contract, any numeric ruler, or historical carrier.
+HUMAN/device review remains open. A preview candidate still requires a final clean signed source,
+its exact local evidence chain, and separate exact-SHA publication authority; no provisional local
+count or hash is promoted here. Full diagnosis: `../audits/PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md`.
 
 The guarded packaging workflow now extracts and named-verifies one immutable Slice result, passes
 that exact ID into Glass, named-verifies the resulting Glass/Slice pair and retains the immutable
@@ -87,12 +107,12 @@ publication authority, no development-preview candidate exists. `--allow-dirty` 
 diagnosis only and can never become a promotion artifact. Edge `151.0.4129.107` / CDP `1.3` is
 provenance only; a compatible point update never triggers rebaselining or threshold changes.
 
-Exact signed source `3f69e88…` now supplies the complete current local automated chain for the
+Exact signed source `3f69e88…` retains the complete historical exact-source automated chain for the
 universe-wide visual treatment and bounded Arc 5 Feed scope, including SceneMemory input-v4 44/44,
 zero-finding Slice, Slice-bound 12-viewport Glass and predecessor-bound Recovery with a real
 1,200,297.5 ms observation. It is still not a preview package or a HUMAN playtest. A preview
 candidate separately requires an exact-source guarded package, exact publication authorization and
-the required HUMAN/device review; this local certificate grants none of those authorities.
+the required HUMAN/device review; that historical certificate grants none of those authorities.
 
 ## Separate-origin requirement; approved branch site
 

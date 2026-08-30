@@ -169,10 +169,16 @@ import type { VisualPolicyDeviceTierV1 } from './visual-policy-contract.js';
 import { selectFogParticleCandidatesV1 } from './fog-particle-selection.js';
 import {
   BIOME_VISTA_WORKER_REQUEST_SCHEMA,
+  validBiomeVistaWorkerRenderMessageV1,
   validBiomeVistaWorkerResponseV1,
+  type BiomeVistaWorkerRenderMessageV1,
   type BiomeVistaWorkerResponseV1,
 } from './biome-vista-protocol.js';
-import { containBiomeVistaWorkerErrorV1 } from './biome-vista-worker-error.js';
+import {
+  biomeVistaWorkerResponseDispositionV1,
+  biomeVistaWorkerResponseIdentityMatchesV1,
+  containBiomeVistaWorkerErrorV1,
+} from './biome-vista-worker-error.js';
 import {
   polishGalaxyCanvasV1,
   polishSystemCanvasV1,
@@ -486,6 +492,7 @@ import {
   type Arc9SurveyActionOutcomeV1,
   type Arc9SurveyAddressV1,
 } from './arc9-survey-action.js';
+import { runSurveyLandHandoffV1 } from './survey-land-handoff.js';
 import {
   commitArc9AtlasFavoriteV1,
   operationForArc9AtlasFavoriteV1,
@@ -4971,8 +4978,14 @@ let surfaceVistaCacheHits = 0;
 let surfaceVistaStaleDrops = 0;
 let surfaceVistaFaults = 0;
 let surfaceVistaLastBiome: string | null = null;
+let surfaceVistaLastError: string | null = null;
 const surfaceVistaCanvasCache = new Map<string, HTMLCanvasElement>();
 const SURFACE_VISTA_DEADLINE_MS = 12_000;
+function noteSurfaceVistaFault(error: unknown, fallback: string): void {
+  const raw = error instanceof Error ? error.message : typeof error === 'string' ? error : fallback;
+  surfaceVistaFaults++;
+  surfaceVistaLastError = (raw.trim() || fallback).slice(0, 512);
+}
 const surfaceVistaCacheOwner = Object.freeze({
   cache: surfaceVistaCanvasCache,
   mount: mountSurfaceVistaCanvas,
@@ -5057,7 +5070,7 @@ function requestSurfaceVista(
   const provenWorldKey = getProvenPlanetKey(state.planet);
   if (provenWorldKey === null || roster.worldKey !== provenWorldKey
     || roster.starSeed !== state.star.seed) {
-    surfaceVistaFaults++;
+    noteSurfaceVistaFault(null, 'biome vista roster identity mismatch');
     return;
   }
   let request: ReturnType<typeof buildBiomeVistaRenderRequestV1>;
@@ -5069,14 +5082,16 @@ function requestSurfaceVista(
       systemFor(state.star.seed) as Record<string, unknown>,
       roster,
     );
-  } catch {
-    surfaceVistaFaults++;
+  } catch (error) {
+    noteSurfaceVistaFault(error, 'biome vista request construction failed');
     return;
   }
   const cacheKey = `vista-v1|${request.environmentFingerprint}|${roster.fullRosterFingerprint}|${request.scene}|${request.biomeKey}`;
   const cachedOutcome = mountCachedBiomeVistaV1(surfaceVistaCacheOwner, cacheKey);
   if (cachedOutcome !== 'miss') {
-    if (cachedOutcome === 'fault') surfaceVistaFaults++;
+    if (cachedOutcome === 'fault') {
+      noteSurfaceVistaFault(null, 'biome vista cache mount failed');
+    }
     else {
       surfaceVistaCacheHits++;
       surfaceVistaLastBiome = request.biomeKey;
@@ -5091,11 +5106,11 @@ function requestSurfaceVista(
       new URL('./biome-vista.worker.ts', import.meta.url),
       { type: 'module', name: 'cf-biome-vista' },
     );
-  } catch {
+  } catch (error) {
     /* Module-worker/CSP support is an enhancement boundary: the already
        painted globe remains a complete usable surface when construction is
        unavailable. */
-    surfaceVistaFaults++;
+    noteSurfaceVistaFault(error, 'biome vista worker construction failed');
     return;
   }
   surfaceVistaWorker = worker;
@@ -5124,12 +5139,14 @@ function requestSurfaceVista(
   worker.addEventListener('error', (event) => {
     containBiomeVistaWorkerErrorV1(event, {
       stale,
-      noteFault: () => { surfaceVistaFaults++; },
+      noteFault: () => noteSurfaceVistaFault(event.message, 'biome vista worker error event'),
       finish: finishWorker,
     });
   }, { once: true });
   worker.addEventListener('messageerror', () => {
-    if (!stale()) surfaceVistaFaults++;
+    if (!stale()) {
+      noteSurfaceVistaFault(null, 'biome vista worker message could not be deserialized');
+    }
     finishWorker();
   }, { once: true });
   worker.addEventListener('message', (event: MessageEvent<unknown>) => {
@@ -5138,33 +5155,37 @@ function requestSurfaceVista(
       try {
         if (typeof raw?.bitmap?.close === 'function') raw.bitmap.close();
       } catch { /* malformed worker data stays fail-soft */ }
-      if (!stale()) surfaceVistaFaults++;
+      if (!stale()) noteSurfaceVistaFault(null, 'biome vista worker response violated protocol');
       finishWorker();
       return;
     }
     const response: BiomeVistaWorkerResponseV1 = event.data;
-    const identityMatches = response.documentToken === DOCUMENT_TOKEN
-      && response.generation === generation
-      && response.worldKey === request.worldKey
-      && response.environmentFingerprint === request.environmentFingerprint
-      && response.profileSchema === request.profileSchema
-      && response.profileDigest === request.profileDigest;
-    if (!identityMatches || stale()) {
+    const identityMatches = biomeVistaWorkerResponseIdentityMatchesV1(response, {
+      documentToken: DOCUMENT_TOKEN,
+      generation: generation,
+      worldKey: request.worldKey,
+      environmentFingerprint: request.environmentFingerprint,
+      profileSchema: request.profileSchema,
+      profileDigest: request.profileDigest,
+    });
+    const disposition = biomeVistaWorkerResponseDispositionV1(stale(), identityMatches);
+    if (disposition !== 'current') {
       if (response.type === 'result') {
         try { response.bitmap.close(); } catch { /* transferable cleanup is fail-soft */ }
       }
-      surfaceVistaStaleDrops++;
+      if (disposition === 'stale') surfaceVistaStaleDrops++;
+      else noteSurfaceVistaFault(null, 'biome vista worker response authority mismatch');
       finishWorker();
       return;
     }
     if (response.type === 'error') {
-      surfaceVistaFaults++;
+      noteSurfaceVistaFault(response.message, 'biome vista worker render failed');
       finishWorker();
       return;
     }
     if (response.scene !== request.scene || response.biomeKey !== request.biomeKey) {
       try { response.bitmap.close(); } catch { /* transferable cleanup is fail-soft */ }
-      surfaceVistaFaults++;
+      noteSurfaceVistaFault(null, 'biome vista worker response identity mismatch');
       finishWorker();
       return;
     }
@@ -5175,11 +5196,11 @@ function requestSurfaceVista(
       const context = canvas.getContext('2d');
       if (!context) throw new Error('biome vista copy context unavailable');
       context.drawImage(response.bitmap, 0, 0);
-    } catch {
+    } catch (error) {
       try { response.bitmap.close(); } catch { /* transferable cleanup is fail-soft */ }
       canvas.width = 1;
       canvas.height = 1;
-      surfaceVistaFaults++;
+      noteSurfaceVistaFault(error, 'biome vista bitmap copy failed');
       finishWorker();
       return;
     }
@@ -5192,7 +5213,7 @@ function requestSurfaceVista(
       return;
     }
     if (mountAndCommitBiomeVistaV1(surfaceVistaCacheOwner, cacheKey, canvas) === 'fault') {
-      surfaceVistaFaults++;
+      noteSurfaceVistaFault(null, 'biome vista cache commit failed');
       finishWorker();
       return;
     }
@@ -5201,19 +5222,25 @@ function requestSurfaceVista(
     finishWorker();
   });
   surfaceVistaDeadline = setTimeout(() => {
-    if (!stale()) surfaceVistaFaults++;
+    if (!stale()) noteSurfaceVistaFault(null, 'biome vista worker deadline exceeded');
     finishWorker();
   }, SURFACE_VISTA_DEADLINE_MS);
+  const message = Object.freeze({
+    schema: BIOME_VISTA_WORKER_REQUEST_SCHEMA,
+    type: 'render' as const,
+    documentToken: DOCUMENT_TOKEN,
+    generation,
+    request,
+  }) satisfies BiomeVistaWorkerRenderMessageV1;
+  if (!validBiomeVistaWorkerRenderMessageV1(message)) {
+    noteSurfaceVistaFault(null, 'biome vista product request violated worker protocol');
+    finishWorker();
+    return;
+  }
   try {
-    worker.postMessage(Object.freeze({
-      schema: BIOME_VISTA_WORKER_REQUEST_SCHEMA,
-      type: 'render' as const,
-      documentToken: DOCUMENT_TOKEN,
-      generation,
-      request,
-    }));
-  } catch {
-    if (!stale()) surfaceVistaFaults++;
+    worker.postMessage(message);
+  } catch (error) {
+    if (!stale()) noteSurfaceVistaFault(error, 'biome vista worker postMessage failed');
     finishWorker();
   }
 }
@@ -6363,13 +6390,22 @@ function presentPlanetSurvey(
   );
   return true;
 }
-function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet): boolean {
-  if (!presentPlanetSurvey(p, star, supplied)) return false;
+function startPlanetSurvey(
+  p: PlanetNode,
+  star: ProvenStar,
+  supplied?: ProvenPlanet,
+): Promise<boolean> | null {
+  if (!presentPlanetSurvey(p, star, supplied)) return null;
   const address = activeCardWorldAddress();
-  if (address === null) return false;
+  if (address === null) return null;
   playSurveyPing();   /* the ACT of surveying answers back (main.js) */
   gameEvent('survey', { planetSeed: p.seed });
-  void settleArc9Survey(address);
+  return settleArc9Survey(address);
+}
+function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet): boolean {
+  const settlement = startPlanetSurvey(p, star, supplied);
+  if (settlement === null) return false;
+  void settlement;
   return true;
 }
 function buildCardActions(p: PlanetNode): string {
@@ -6399,11 +6435,15 @@ function refreshPlanetSurveyCard(): boolean {
   return presentPlanetSurvey(context.p, context.star, context.planet);
 }
 async function surveyAndLand(p: PlanetNode, star: ProvenStar): Promise<boolean> {
-  /* the api's one-call path (smoke compatibility): survey, then land */
-  if (!surveyPlanet(p, star)) return false;
-  const surveySettlement = productActionInFlight ? activePersist : null;
-  if (surveySettlement !== null) await surveySettlement.catch(() => false);
-  return doLand();
+  /* The API's one-call path can follow a synchronous route change whose
+     ordinary checkpoint is still settling. The tested handoff drains that
+     barrier, then Survey's replacement barrier, and requires that exact
+     Survey settlement before Landing without retrying either product action. */
+  return runSurveyLandHandoffV1({
+    waitForCurrentBarrier: waitForActivePersist,
+    startSurvey: () => startPlanetSurvey(p, star),
+    land: doLand,
+  });
 }
 function activeCardPlanetState(): Extract<NavState, { mode: 'surface' }> | null {
   if (!cardCtx || (nav.mode !== 'system' && nav.mode !== 'surface')
@@ -6651,12 +6691,24 @@ function publishArc0LandingFields(
   }
 }
 async function doLand(): Promise<boolean> {
-  if (blockPlayerMutation('land')) return false;
-  if (!cardCtx || nav.mode !== 'system') return false;
+  if (blockPlayerMutation('land')) {
+    lastArc0LandingOutcome = 'blocked:read-only';
+    return false;
+  }
+  if (!cardCtx || nav.mode !== 'system') {
+    lastArc0LandingOutcome = 'rejected:route-or-card-unavailable';
+    return false;
+  }
   const surface = activeCardPlanetState();
-  if (!surface) return false;
+  if (!surface) {
+    lastArc0LandingOutcome = 'rejected:surface-unavailable';
+    return false;
+  }
   const address = canonicalWorldAddressForNav(surface);
-  if (address === null) return false;
+  if (address === null) {
+    lastArc0LandingOutcome = 'rejected:world-address-unproven';
+    return false;
+  }
   const p = cardCtx.p;
   const training = trainingActive();
 
@@ -6682,7 +6734,18 @@ async function doLand(): Promise<boolean> {
 
   const runtime = f4Runtime;
   if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
-    || replacementTransaction || replacementReloadPending) return false;
+    || replacementTransaction || replacementReloadPending) {
+    lastArc0LandingOutcome = !f4RuntimeMayMutate(runtime)
+      ? 'rejected:write-authority-unavailable'
+      : activePersist
+        ? 'rejected:action-settlement-pending'
+        : importWriteInFlight
+          ? 'rejected:import-pending'
+          : replacementTransaction
+            ? 'rejected:replacement-pending'
+            : 'rejected:replacement-reload-pending';
+    return false;
+  }
   let opportunity: ReturnType<typeof projectWorldOpportunity>;
   try { opportunity = projectWorldOpportunity(address); }
   catch {
@@ -6691,7 +6754,10 @@ async function doLand(): Promise<boolean> {
   }
   const operation = operationForArc0Landing(address);
   const actionClaim = productActionCoordinator.tryClaim(operation);
-  if (actionClaim === null) return false;
+  if (actionClaim === null) {
+    lastArc0LandingOutcome = 'rejected:action-coordinator-busy';
+    return false;
+  }
   const actionBarrier = actionClaim.barrier;
   const priorLandingPublication = Object.freeze({
     savedView: save.savedView,
@@ -7629,6 +7695,7 @@ function sceneResourceDiagnostics(): unknown {
     surfaceVistaStaleDrops,
     surfaceVistaFaults,
     surfaceVistaLastBiome,
+    surfaceVistaLastError,
     pendingSystemRefreshes: systemPlanetTextureRefreshTimer === null ? 0 : 1,
     pendingPersistenceWrites: activePersist === null ? 0 : 1,
     ringGeometryEntries: _rgCache.size,
@@ -8191,6 +8258,10 @@ async function persistView(
 let _persistT = 0;
 let importWriteInFlight = false;
 let activePersist: Promise<boolean> | null = null;
+async function waitForActivePersist(): Promise<void> {
+  const pending = activePersist;
+  if (pending !== null) await pending.catch(() => false);
+}
 let productActionInFlight = false;
 function requestEcologyEpochCheckpoint(): void {
   if (ecologyEdgeCheckpointInFlight !== null || activePersist || productActionInFlight
@@ -9087,7 +9158,7 @@ async function settleArc9Survey(address: Arc9SurveyAddressV1): Promise<boolean> 
       lastArc9SurveyOutcome = `committed-convergence:${outcome.detail}`;
       scheduleF4AuthorityConvergenceReload(
         runtime,
-        `Arc 9 Survey committed; ${outcome.detail}`,
+        `Arc 9 Survey committed; ${outcome.detail} (${outcome.mismatch.join(',')})`,
       );
       return true;
     }
@@ -10044,12 +10115,20 @@ async function commitArc3EngineeringAction(spec: Readonly<{
         operation: actionClaim.operation,
         receiptKind: spec.receiptKind,
         codecNow,
-        derive: ({ draft, extensions, activePlayMs, receiptOrdinal }) => {
+        derive: ({ draft, extensions, activePlayMs, receiptOrdinal, canonicalizeState }) => {
           const derived = spec.derive({
             draft, extensions, activePlayMs, receiptOrdinal, codecNow,
           });
           if (derived.kind !== 'ready') throw new Error(derived.detail);
-          plannedHolder.value = derived.derivation;
+          /* The transaction must commit the raw domain derivation so the
+             persistence owner remains the sole codec authority. Retained
+             postcommit expectations use that owner's exact registry/clock
+             canonicalizer, or an unrelated veteran timestamp floor can make
+             a valid durable successor look forged. */
+          plannedHolder.value = Object.freeze({
+            ...derived.derivation,
+            state: canonicalizeState(derived.derivation.state),
+          });
           return {
             state: derived.derivation.state,
             extensionWrites: derived.derivation.extensionWrites,

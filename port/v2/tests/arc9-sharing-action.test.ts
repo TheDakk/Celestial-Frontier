@@ -337,6 +337,32 @@ describe('Arc 9 CF1 sharing preparation', () => {
 });
 
 describe('Arc 9 durable CF1 Share/Follow transactions', () => {
+  it('commits the codec-canonical sharing state when an unrelated veteran mining stamp moves', async () => {
+    const state = baseState();
+    state.mined = [['veteran-clock-floor', NOW - 30 * 6e5]];
+    state.mineX = [['veteran-clock-floor', 1]];
+    const test = await fixture(state);
+    const before = JSON.stringify(test.state);
+    const outcome = await commitArc9SharingActionV1({
+      runtime: test.runtime,
+      state: test.state,
+      actionKind: 'send',
+      code: EARTH,
+      acceptedSavedView: null,
+      codecNow: NOW + 1,
+    });
+
+    expect(outcome).toMatchObject({
+      kind: 'committed', durability: 'committed', convergence: 'none',
+    });
+    expect(JSON.stringify(test.state)).toBe(before);
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.transaction.state).toEqual(outcome.transaction.saved.canonicalState);
+    expect(new Map(outcome.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(NOW + 1 - 30 * 6e5);
+    await test.runtime.release();
+  });
+
   it('commits Share in one receipt/CAS and increments again without duplicating its event id', async () => {
     const test = await fixture();
     let commitCalls = 0;

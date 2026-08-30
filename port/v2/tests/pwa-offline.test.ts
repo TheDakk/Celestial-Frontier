@@ -104,6 +104,8 @@ function createWorkerHarness(
     caches?: MemoryCacheStorage;
     workerRevision?: string;
     clientIds?: readonly string[];
+    clientTypes?: Readonly<Record<string, 'window' | 'worker' | 'sharedworker'>>;
+    matchAllOmittedClientIds?: readonly string[];
   }> = Object.freeze({}),
 ): WorkerHarness {
   const workerRevision = options.workerRevision ?? pwaWorkerRevisionV1();
@@ -114,8 +116,10 @@ function createWorkerHarness(
   const broadcasts: unknown[] = [];
   const replies: unknown[] = [];
   const state = { skipWaitingCount: 0, claimCount: 0 };
+  const matchAllOmittedClientIds = new Set(options.matchAllOmittedClientIds ?? []);
   const clients = (options.clientIds ?? Object.freeze(['client-current'])).map((id) => ({
     id,
+    type: options.clientTypes?.[id] ?? 'window',
     postMessage(message: unknown) { broadcasts.push(message); },
   }));
   const self = {
@@ -123,7 +127,13 @@ function createWorkerHarness(
     registration: { scope: 'https://game.test/' },
     clients: {
       async claim() { state.claimCount++; },
-      async matchAll() { return clients; },
+      async get(id: string) { return clients.find((client) => client.id === id); },
+      async matchAll(query: Readonly<{ type?: string }> = Object.freeze({})) {
+        const visible = clients.filter((client) => !matchAllOmittedClientIds.has(client.id));
+        return !query.type || query.type === 'all'
+          ? visible
+          : visible.filter((client) => client.type === query.type);
+      },
     },
     async skipWaiting() { state.skipWaitingCount++; },
     addEventListener(type: string, listener: (event: Record<string, unknown>) => void) {
@@ -432,7 +442,7 @@ describe('Celestial Frontier exact-build PWA', () => {
     expect(newHarness.fetches).toHaveLength(Object.keys(newRows).length);
   });
 
-  it('refuses a third-build activation while a live document still owns the retained prior', async () => {
+  it('refuses a third-build activation while a live worker still owns the retained prior', async () => {
     const caches = new MemoryCacheStorage();
     const priorId = await seedCompleteBuild(
       caches,
@@ -452,6 +462,7 @@ describe('Celestial Frontier exact-build PWA', () => {
       caches,
       workerRevision: '3'.repeat(64),
       clientIds: ['client-prior'],
+      clientTypes: { 'client-prior': 'worker' },
     });
     await candidate.dispatch('install');
     await candidate.dispatch('message', {
@@ -539,6 +550,136 @@ describe('Celestial Frontier exact-build PWA', () => {
     }) as Response;
     expect(external.status).toBe(403);
     expect(harness.fetches).toHaveLength(installFetchCount);
+  });
+
+  it('pins created worker clients to their owner build before serving worker-local lazy chunks', async () => {
+    const rows = {
+      '/index.html': 'index-v1',
+      '/assets/main-v1.js': 'main-v1',
+      '/assets/worker-v1.js': 'worker-v1',
+      '/assets/worker-lazy-v1.js': 'worker-lazy-v1',
+    };
+    const harness = createWorkerHarness(assetsFor(rows), rows, {
+      clientIds: ['window-client'],
+    });
+    await harness.dispatch('install');
+    await harness.dispatch('activate');
+
+    for (const destination of ['worker', 'sharedworker'] as const) {
+      const clientId = `${destination}-client`;
+      const unownedLazy = await harness.dispatch('fetch', {
+        clientId,
+        request: {
+          method: 'GET', url: 'https://game.test/assets/worker-lazy-v1.js',
+          mode: 'cors', destination: 'script',
+        },
+      }) as Response;
+      expect(unownedLazy.status).toBe(503);
+
+      const workerEntry = await harness.dispatch('fetch', {
+        clientId: 'window-client',
+        resultingClientId: clientId,
+        request: {
+          method: 'GET', url: 'https://game.test/assets/worker-v1.js',
+          mode: 'same-origin', destination,
+        },
+      }) as Response;
+      expect(await workerEntry.text()).toBe('worker-v1');
+      expect(await readClientPin(harness.caches, clientId)).toBe(harness.buildId);
+
+      const lazyChunk = await harness.dispatch('fetch', {
+        clientId,
+        request: {
+          method: 'GET', url: 'https://game.test/assets/worker-lazy-v1.js',
+          mode: 'cors', destination: 'script',
+        },
+      }) as Response;
+      expect(await lazyChunk.text()).toBe('worker-lazy-v1');
+    }
+  });
+
+  it('keeps a prior-owned worker entry and lazy chunk on the exact prior build', async () => {
+    const caches = new MemoryCacheStorage();
+    const priorRows = {
+      '/index.html': 'index-prior',
+      '/assets/main.js': 'main-prior',
+      '/assets/worker.js': 'worker-prior',
+      '/assets/worker-lazy.js': 'worker-lazy-prior',
+    };
+    const activeRows = {
+      '/index.html': 'index-active',
+      '/assets/main.js': 'main-active',
+      '/assets/worker.js': 'worker-active',
+      '/assets/worker-lazy.js': 'worker-lazy-active',
+      '/assets/active-only.js': 'active-only',
+    };
+    const priorId = await seedCompleteBuild(caches, priorRows, '1'.repeat(64));
+    const active = createWorkerHarness(assetsFor(activeRows), activeRows, {
+      caches,
+      workerRevision: '2'.repeat(64),
+      clientIds: ['prior-window'],
+    });
+    await active.dispatch('install');
+    await seedControlState(caches, active.buildId, priorId);
+    await seedClientPin(caches, 'prior-window', priorId);
+
+    const missingIdentity = await active.dispatch('fetch', {
+      clientId: 'prior-window',
+      request: {
+        method: 'GET', url: 'https://game.test/assets/worker.js',
+        mode: 'same-origin', destination: 'worker',
+      },
+    }) as Response;
+    expect(missingIdentity.status).toBe(503);
+    expect(await readClientPin(caches, 'prior-worker')).toBeNull();
+
+    const workerEntry = await active.dispatch('fetch', {
+      clientId: 'prior-window',
+      resultingClientId: 'prior-worker',
+      request: {
+        method: 'GET', url: 'https://game.test/assets/worker.js',
+        mode: 'same-origin', destination: 'worker',
+      },
+    }) as Response;
+    expect(await workerEntry.text()).toBe('worker-prior');
+    expect(await readClientPin(caches, 'prior-worker')).toBe(priorId);
+
+    const lazyChunk = await active.dispatch('fetch', {
+      clientId: 'prior-worker',
+      request: {
+        method: 'GET', url: 'https://game.test/assets/worker-lazy.js',
+        mode: 'cors', destination: 'script',
+      },
+    }) as Response;
+    expect(await lazyChunk.text()).toBe('worker-lazy-prior');
+    const forbiddenMix = await active.dispatch('fetch', {
+      clientId: 'prior-worker',
+      request: {
+        method: 'GET', url: 'https://game.test/assets/active-only.js',
+        mode: 'cors', destination: 'script',
+      },
+    }) as Response;
+    expect(forbiddenMix.status).toBe(503);
+  });
+
+  it('confirms a just-created worker before pruning stale client pins', async () => {
+    const rows = { '/index.html': 'index-v1', '/assets/main-v1.js': 'main-v1' };
+    const harness = createWorkerHarness(assetsFor(rows), rows, {
+      clientIds: ['window-client', 'reserved-worker'],
+      clientTypes: { 'reserved-worker': 'worker' },
+      matchAllOmittedClientIds: ['reserved-worker'],
+    });
+    await harness.dispatch('install');
+    await harness.dispatch('activate');
+    await seedClientPin(harness.caches, 'reserved-worker', harness.buildId);
+    await seedClientPin(harness.caches, 'terminated-worker', harness.buildId);
+
+    await harness.dispatch('message', {
+      data: { type: 'CF_PWA_ACTIVATE', buildId: harness.buildId },
+    });
+
+    expect(await readClientPin(harness.caches, 'reserved-worker')).toBe(harness.buildId);
+    expect(await readClientPin(harness.caches, 'terminated-worker')).toBeNull();
   });
 
   it('requires an exact user activation message and can select the retained prior build for rollback', async () => {

@@ -39,6 +39,9 @@ const here = path.dirname(fileURLToPath(import.meta.url));
 const REGISTRY = JSON.parse(fs.readFileSync(path.join(
   here, '..', '..', 'baseline-v1.8.9', 'content-registry.json',
 ), 'utf8')) as ContentRegistry;
+const VETERAN_RICH_RAW = JSON.stringify(JSON.parse(fs.readFileSync(path.join(
+  here, '..', '..', 'baseline-v1.8.9', 'save-fixtures.json',
+), 'utf8')).inputs.veteran_rich);
 const NOW = 1_753_900_080_000;
 const HOME_GALAXY = Object.freeze({ seed: 999, x: 90, y: -60 });
 
@@ -122,6 +125,12 @@ function baseState(): SaveStateV2 {
   return imported.state;
 }
 
+function veteranState(): SaveStateV2 {
+  const imported = importSaveV2(VETERAN_RICH_RAW, REGISTRY, NOW);
+  if (!imported.ok) throw new Error(`Arc 9 Survey veteran save failed: ${imported.reason}`);
+  return imported.state;
+}
+
 async function fixture(
   sourceState: SaveStateV2 = baseState(),
   options: Readonly<{ failStorage?: boolean }> = {},
@@ -174,6 +183,44 @@ async function fixture(
 }
 
 describe('Arc 9 canonical Survey fact and settlement preparation', () => {
+  it('verifies the codec-canonical successor when an unrelated veteran mining stamp moves', async () => {
+    const state = baseState();
+    state.mined = [['veteran-clock-floor', NOW - 30 * 6e5]];
+    state.mineX = [['veteran-clock-floor', 1]];
+    const live = await fixture(state);
+    const before = JSON.stringify(live.state);
+    const outcome = await commitArc9SurveySettlementV1({
+      runtime: live.runtime,
+      state: live.state,
+      address: world('earth'),
+      codecNow: NOW + 1,
+    });
+
+    expect(outcome).toMatchObject({
+      kind: 'committed', durability: 'committed', convergence: 'none',
+    });
+    expect(JSON.stringify(live.state)).toBe(before);
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.transaction.state).toEqual(outcome.transaction.saved.canonicalState);
+    expect(new Map(outcome.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(NOW + 1 - 30 * 6e5);
+    await live.runtime.release();
+  });
+
+  it('commits Earth Survey from the exact SceneMemory veteran migration without convergence', async () => {
+    const prepared = prepareArc9SurveySettlementV1(veteranState(), world('earth'));
+    expect(prepared).toMatchObject({ kind: 'ready', facts: { target: 'world', planetSeed: 133 } });
+    const live = await fixture(veteranState());
+    const outcome = await commitArc9SurveySettlementV1({
+      runtime: live.runtime, state: live.state, address: world('earth'), codecNow: NOW + 1,
+    });
+    expect(outcome).toMatchObject({ kind: 'committed', durability: 'committed', convergence: 'none' });
+    if (outcome.kind !== 'committed') return;
+    expect(new Map(outcome.transaction.state.conquered).get(101)?.t)
+      .toBe(NOW + 1 - 3_600_000);
+    await live.runtime.release();
+  });
+
   it('regenerates life/civilization and keeps Advanced as one atomic civ + spacefar product', () => {
     const state = baseState();
     state.stats.surveys = 99;

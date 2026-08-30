@@ -2,13 +2,16 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** PR #35 run `33273328362` tested head
-`390e8708086d413fc7d636441ec0523cf9d4b9ea` against base
-`7a9f4c1370dd84292388d718c38ff34214f6203b` once under `actions-budget-approved`, a
-92-minute maximum and no-retry rule. It is consumed terminal-red; the label was removed, PR #35
-remains Draft/unmerged, and no replacement attempt is authorized. Nick separately authorized the
-final repair-branch push and PR metadata refresh; that update carries no approval label and grants
-no hosted attempt. PR #34 runs
+**Hosted attempt state: none authorized.** Draft PR #35 has two consumed terminal-red
+`test-battery` attempts against base `7a9f4c1370dd84292388d718c38ff34214f6203b`, each guarded by
+`actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. Run
+`33273328362` tested head `390e8708086d413fc7d636441ec0523cf9d4b9ea` and stopped in the
+browser-free suite on untracked-input and bounded-child defects. Run `33278630671` tested repaired
+head `017fa6decbc41809188768ccdb98ab86ef1b9ebc`; every predecessor through SceneMemory controls
+passed, then the one-attempt phone SceneMemory product stage stopped at `Earth planetfall was
+rejected`. Both labels are absent, PR #35 remains Draft/unmerged, and no retry or replacement
+attempt is authorized. Current repairs remain local/unpushed until their complete local evidence,
+references, source-authority records, and signed commit are finished. PR #34 runs
 `32665404776` and `32677088518` are
 consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
 labels were removed. Its repaired third authorized changed-head attempt, run `32681394532`, passed
@@ -288,7 +291,7 @@ the 14-phone/13-desktop broken-baseline breaches. Exact-budget run
 hosted run `32681394532` and merged normally. That consumed run is integration evidence only and
 does not authorize a new changed-head hosted attempt.
 
-## Consumed PR #35 attempt
+## Consumed PR #35 attempts
 
 Nick authorized exactly one `test-battery` attempt for draft PR #35 head
 `390e8708086d413fc7d636441ec0523cf9d4b9ea` against base
@@ -306,12 +309,33 @@ case, and adds the clean committed tracked-only rehearsal described above. Its c
 and repaired four `artunused` findings that the stopped run never reached. SceneMemory build
 provenance changed only because one source map changed by 20 bytes: all 29 runtime files and the PWA
 build ID are byte-identical, and no numeric memory ceiling, browser contract or runtime asset moved.
-Exact signed repair commit `9192b1aa66c38508cd19f5db0e4825b0a31d5516` and the final
+Exact signed repair commit `9192b1aa66c38508cd19f5db0e4825b0a31d5516` and its
 documentation-closed signed HEAD pass the exact tracked-only isolated rehearsal: 233/233 files,
 2,333 tests passed + one skipped, all TypeScript/unused/art/override/coverage/spec gates and 3/3
-current-producer tests. The final repair branch and refreshed draft-PR metadata are synchronized;
-this remains local/static evidence rather than a hosted green. No replacement hosted attempt,
-Ready transition, merge, release, version bump, preview, publication or deployment is authorized.
+current-producer tests. That repair branch and refreshed draft-PR metadata were synchronized, but
+this first consumed run never became hosted green.
+
+A second guarded attempt then tested exact PR head
+`017fa6decbc41809188768ccdb98ab86ef1b9ebc` against the same base. Run `33278630671` began at
+2026-08-29T22:27:19Z and completed terminal-red at 22:35:18Z. Its authorization job passed. Root
+validation/smoke/checkpoint/layout/rarity/dead-code, tracked-input controls, the complete v2
+browser-free/type/art/coverage battery, current producer binding, current Edge installation, and
+SceneMemory instrument/calibration controls all passed. The one-attempt SceneMemory certification
+then stopped on the phone profile with `Earth planetfall was rejected`; the always-run verifier's
+incomplete-report errors were downstream fallout. Compendium, Slice, Glass, personas, preview, and
+all later browser stages were correctly skipped.
+
+The second run exposed a real route-lifecycle coverage gap, not an Edge-version or numeric-ruler
+failure. The bounded local repair drains both the predecessor route checkpoint and Survey's
+replacement checkpoint before one Landing call, uses the transaction owner's exact checked-clock
+canonicalizer for expected successors, propagates exact PWA build pins to worker/shared-worker
+clients before their lazy imports, and makes SceneMemory preserve actionable worker and BFCache
+diagnostics. Numeric memory ceilings, browser-family authority, and version-tolerant no-rebaseline
+policy remain unchanged. The detailed same-day account is in
+`audits/PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md`.
+
+Both PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
+transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard
 

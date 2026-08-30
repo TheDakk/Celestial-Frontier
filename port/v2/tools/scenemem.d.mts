@@ -36,7 +36,31 @@ export function sceneMemoryBrowserCapabilityInventoryErrors(input?: Readonly<{
 
 export function sceneMemoryCollectorCommandTimeoutMs(timeoutMs?: number): number;
 
+export type SceneMemoryProfileName = 'phone' | 'desktop';
+
+export type SceneMemoryProfileViewport = Readonly<{
+  width: number;
+  height: number;
+  dpr: number;
+  mobile: boolean;
+}>;
+
+export function sceneMemoryCollectProfilesOnce<T>(
+  collect: (
+    profile: SceneMemoryProfileName,
+    viewport: SceneMemoryProfileViewport,
+  ) => Promise<T>,
+): Promise<Readonly<Record<SceneMemoryProfileName, T>>>;
+
 export function sceneMemoryShipyardOpenSettlementReasons(value: unknown): readonly string[];
+
+export function sceneMemorySurfaceVistaFaultReasons(value: unknown): readonly string[];
+
+export function sceneMemoryBfcacheAwayResponse(pathname: string): Readonly<{
+  status: 200 | 404;
+  headers: Readonly<Record<string, string>>;
+  body: string;
+}>;
 
 export function sceneMemoryVeteranRaw(): string;
 

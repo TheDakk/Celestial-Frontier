@@ -252,7 +252,7 @@ export async function commitArc5ScoutActionV1(
       operation: ARC5_SCOUT_ACTION_KIND_V1,
       receiptKind: ARC5_SCOUT_RECEIPT_KIND_V1,
       codecNow: captured.codecNow,
-      derive: ({ receiptOrdinal, draft, extensions }) => {
+      derive: ({ receiptOrdinal, draft, extensions, canonicalizeState }) => {
         const settlement = settleArc5ScoutV1(preflight.preflight, receiptOrdinal);
         const prepared = prepareArc5OwnershipV2Successor({
           baseExtensions: extensions,
@@ -282,7 +282,7 @@ export async function commitArc5ScoutActionV1(
         selected = Object.freeze({
           settlement,
           prepared,
-          expectedState: structuredClone(draft),
+          expectedState: canonicalizeState(draft),
           extensionWrites,
           starterCharter: charter === null ? null : charter.fact,
           witness,

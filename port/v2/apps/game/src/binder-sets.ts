@@ -442,7 +442,7 @@ export async function commitArc9BinderSetClaimV1(input: Readonly<{
     operation,
     receiptKind: ARC9_BINDER_SET_CLAIM_RECEIPT_KIND_V1,
     codecNow: input.codecNow,
-    derive: ({ draft, receiptOrdinal }) => {
+    derive: ({ draft, receiptOrdinal, canonicalizeState }) => {
       const current = projectArc9BinderReadModelV1(draft);
       if (current.kind !== 'projected') throw new Error(current.reason);
       const row = claimableSet(current.model, input.setId);
@@ -477,7 +477,11 @@ export async function commitArc9BinderSetClaimV1(input: Readonly<{
         receiptOrdinal,
       });
       const witness = `${ARC9_BINDER_SET_CLAIM_WITNESS_SCHEMA_V1}:${sha256Hex(canonicalJson(facts))}`;
-      selected = Object.freeze({ facts, witness, expectedStateJson: canonicalJson(draft) });
+      selected = Object.freeze({
+        facts,
+        witness,
+        expectedStateJson: canonicalJson(canonicalizeState(draft)),
+      });
       return Object.freeze({ state: draft, witness });
     },
   });

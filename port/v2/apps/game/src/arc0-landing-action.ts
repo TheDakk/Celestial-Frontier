@@ -152,7 +152,7 @@ export interface Arc0LandingWitnessFacts {
   readonly starterCharters: Arc0LandingStarterCharterFact;
   /** Present only for the complete canonical Earth address. */
   readonly achievement: Arc0LandingAchievementFact | null;
-  /** Full detached product successor, independent of F4's returned copy. */
+  /** Full codec-canonical product successor, independent of F4's returned copy. */
   readonly stateSuccessorSeal: string;
   /** Full world-identity successor, including unrelated registered rows. */
   readonly worldIdentitySuccessorSeal: string;
@@ -808,7 +808,7 @@ export async function commitArc0LandingAction(
       operation,
       receiptKind: ARC0_LANDING_RECEIPT_KIND,
       codecNow: input.codecNow,
-      derive: ({ draft, extensions, receiptOrdinal }) => {
+      derive: ({ draft, extensions, receiptOrdinal, canonicalizeState }) => {
         const identityRead = readWorldIdentity(extensions);
         if (identityRead.kind !== 'loaded') {
           deriveRefusal = identityRead.kind === 'future-version'
@@ -989,7 +989,7 @@ export async function commitArc0LandingAction(
             nextBestRankIndex: starterCharters.facts.nextBestRankIndex,
           }),
           achievement,
-          stateSuccessorSeal: successorSeal('state', draft),
+          stateSuccessorSeal: successorSeal('state', canonicalizeState(draft)),
           worldIdentitySuccessorSeal: successorSeal('world-identity', identityState),
           receiptOrdinal,
         };

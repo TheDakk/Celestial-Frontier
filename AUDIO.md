@@ -1,6 +1,6 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
-> **Current universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
+> **Historical signed universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
 > signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
 > chain on Edge `151.0.4129.107` / CDP `1.3`. Layout passed **787/787** in 76,603 ms,
@@ -109,8 +109,8 @@ zero. The first later enabled sting lazily chooses standard `AudioContext` first
 context. The Creature voices toggle synchronizes the shared expression owner immediately: Off
 stops Tame, Feed and explicit Compendium-audition creature voices synchronously; On creates nothing
 and never replays a previous result. The generic distant-biosphere pulse is an ambience-category
-voice and the post-settlement damage impact is a combat/gameplay-category voice; both are governed
-by Sound, not Creature voices. Sound Off still stops every live path.
+voice and the post-settlement Combat Chronicle cues are combat/gameplay-category voices; both are
+governed by Sound, not Creature voices. Sound Off still stops every live path.
 A bounded package/app suite exercises import/pre-init safety, public operations, settings ordering,
 live mute state, constructor precedence/fallback, unavailable or throwing constructors, suspended-
 context rejection and teardown races. During the awaited save-load, the app assigns the save and
@@ -316,23 +316,26 @@ The v2 package grows in stages behind one typed event boundary:
 
 The injected package runtime provides the structural mixer/limiter/meter, voice ownership,
 priority/cooldown/concurrency/stealing, mute/hidden/restart/context-loss and disposal foundation
-behind an injected `AudioContextLike`. The shared audio owner now drives one bounded instance for
-deterministic Tame, Feed and explicit owned-fauna Compendium expressions plus the generic current-
-world biosphere pulse. It still does not own the compatibility stings, a general current-system
-soundscape or an asset renderer. Exact signed source
-`3f69e88…` exercises the implemented controls and sound witness. The current Slice oracle now requires the Feed
-oscillator's successful `start()` plus a complete graph path to exactly one
-`AudioDestinationNode`, with every endpoint and intermediate edge in the source oscillator's same
-WebAudio context; disconnected, wrong-destination and cross-context graphs are controlled. That
-strengthened endpoint-context oracle is browser-free covered and passed on exact signed source
-`3f69e88…`; physical-device evidence remains pending.
+behind an injected `AudioContextLike`. The shared audio owner now drives one bounded instance across
+six explicit no-autoplay surfaces: deterministic Tame, committed Feed, explicit owned-fauna
+Compendium Listen, orbital Survey biosphere, Planetside biosphere and the post-settlement Combat
+Chronicle. The two biosphere controls share the generic deterministic neutral ecology signal. The
+Chronicle owns every already-modelled registered cue, including Guardian/Titan motifs, dodge, stun,
+impacts, criticals, abilities, burn, regeneration, defeat and resolution. It still does not own a
+recorded-asset renderer or authored continuous ambience/music. Historical exact signed source
+`3f69e88…` exercised only the then-current bounded Tame/Feed controls and sound witness. The current
+Slice oracle retains the Feed oscillator's successful `start()` plus a complete graph path to
+exactly one `AudioDestinationNode`, with every endpoint and intermediate edge in the source
+oscillator's same WebAudio context; disconnected, wrong-destination and cross-context graphs are
+controlled. That strengthened endpoint-context oracle is browser-free covered and passed on
+historical exact signed source `3f69e88…`; current physical-device evidence remains pending.
 
 The approved v2 settings surface retains master volume and adds category gains only as their buses
 become real. Independent Creature voices is now restored from `vce` for the bounded Tame, Feed and
-Compendium-audition expressions; the generic biosphere pulse remains governed by master Sound.
-Battle sound remains a preserved `cbx` field without a current control or live battle bus. Later
-work may add dynamic-range profile, mono output, reduced-intensity/high-frequency
-comfort, meaningful-sound captions and mute-when-unfocused. Reduced motion remains a visual choice;
+Compendium-audition expressions; the two biosphere paths and complete Chronicle bus remain governed
+by master Sound. Recorded assets and authored continuous soundscape depth—including broader or
+more-specific expressions/ecology—remain open alongside real-browser/device and HUMAN listening
+evidence. Reduced motion remains a visual choice;
 it must not silently infer a hearing preference. No essential state, danger or success may be
 audio-only: every meaningful cue has text, icon, animation or another equivalent.
 
@@ -826,7 +829,7 @@ master-Sound/Creature-voices separation, bounded two-voice combat concurrency,
 and synchronous cancellation across presentation/lifecycle loss. The strengthened Slice oracle requires one started
 Feed oscillator to route through same-context WebAudio nodes to an `AudioDestinationNode` and
 rejects disconnected, wrong-type and cross-context evidence. It does not listen, inspect real media
-bytes or judge comfort. Exact signed source `3f69e88…` now supplies the fresh terminal-green Slice
+bytes or judge comfort. Historical exact signed source `3f69e88…` supplied that terminal-green Slice
 graph proof and its exact Glass/Recovery successors. Physical-device and perceptual evidence remains
 pending.
 

@@ -1,8 +1,8 @@
 # Celestial Frontier — Species & Genome System
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
-ownership, four bounded companion writers, Guardian/Titan acquisition, rarity presentation and four
-explicit audio-path overlays match the local `port/v2` candidate as of 2026-08-29. ⚠ v1.8.9: every reader of the
+ownership, four bounded companion writers, Guardian/Titan acquisition, rarity presentation and six
+explicit audio-surface overlays match the local `port/v2` candidate as of 2026-08-29. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
@@ -34,12 +34,14 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > protected boundary: an imported `para10` claim is retained, but no Paragon is generated,
 > discovered, awarded, or exposed as a current claim target by the Binder.
 >
-> Four creature/ecology presentation-only audio paths are live: the durable Tame greeting,
-> committed Feed acknowledgement, explicit exact-owned-fauna Compendium Listen, and explicit
-> visible inhabited-world **Listen to biosphere**. The biosphere pulse is generic and reveals no
-> species. Combat separately owns its registered synthesized transcript/Guardian/Titan cues after
-> verified settlement; authored or recorded combat voices, broader creature expressions,
-> continuous ambience and music remain open.
+> Six presentation-only audio surfaces are live: the durable Tame greeting, committed Feed
+> acknowledgement, explicit exact-owned-fauna Compendium Listen, orbital Survey and visible
+> inhabited-world Planetside **Listen to biosphere**, and the post-settlement Combat Chronicle. Both
+> biosphere controls use the same generic no-spoiler signal. The Chronicle owns every already-
+> modelled registered cue, including Guardian/Titan motifs, dodge, stun, impacts/criticals/abilities,
+> burn, regeneration, defeat and resolution. Recorded assets, authored continuous ambience/music,
+> broader or more-specific creature expressions and ecology, device evidence and HUMAN listening
+> remain open.
 
 > **2026-08-27 current-candidate correction:** the Tame greeting can truthfully retain an unmuted
 > preference even when no AudioContext exists; “contextless” means blocked/not created, not muted.

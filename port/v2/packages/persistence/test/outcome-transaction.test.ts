@@ -32,6 +32,7 @@ import {
   type F4MultiOutcomeTransactionInput,
   type F4MultiOutcomePreDrawTransactionInput,
   type F4NoRngProductTransactionInput,
+  type SaveStateV2,
   type StorageBackend,
   type StorageCheck,
   type StorageOperation,
@@ -1688,6 +1689,54 @@ describe('@cf/persistence — deterministic product transaction owner', () => {
     });
     expect(await createRevisionedRepository(harness.backend).readReceipt(9))
       .toEqual(result.receipt);
+  });
+
+  it('mints the exact detached-registry/save-clock canonical successor for receipt evidence', async () => {
+    const harness = await seededHarness();
+    const callerBefore = structuredClone(harness.writable.state);
+    const mutableRegistry = structuredClone(REGISTRY);
+    const owner = createF4DeterministicProductTransactionOwner(
+      createRevisionedRepository(harness.backend),
+      mutableRegistry,
+    );
+    /* The owner must already own its registry snapshot. A later mutation of
+       the supplied object cannot change either certification or persistence. */
+    (mutableRegistry.materials as string[]).length = 0;
+    const codecNow = NOW + 6 * 60 * 60 * 1_000;
+    const captured: { raw: SaveStateV2 | null; canonical: SaveStateV2 | null } = {
+      raw: null,
+      canonical: null,
+    };
+
+    const result = await owner.commit({
+      expectedRevision: harness.revision,
+      grant: harness.grant,
+      writable: harness.writable,
+      snapshot: { activePlayMs: 275 },
+      operation: 'research:codec-fixed-point',
+      receiptKind: 'arc3-research',
+      now: codecNow,
+      derive: ({ canonicalizeState, draft }) => {
+        expect(Object.isFrozen(canonicalizeState)).toBe(true);
+        draft.essence += 1;
+        captured.raw = structuredClone(draft);
+        captured.canonical = canonicalizeState(draft);
+        expect(captured.canonical).not.toBe(draft);
+        expect(canonicalizeState(draft)).toEqual(captured.canonical);
+        return { state: draft, witness: 'research:codec-fixed-point:1' };
+      },
+    });
+
+    expect(result.kind).toBe('committed');
+    const rawSuccessor = captured.raw;
+    const canonicalSuccessor = captured.canonical;
+    if (result.kind !== 'committed' || rawSuccessor === null || canonicalSuccessor === null) return;
+    expect(result.saved.canonicalState).toEqual(canonicalSuccessor);
+    expect(result.saved.canonicalState).not.toEqual(rawSuccessor);
+    expect(result.saved.canonicalState.mined[0]?.[1])
+      .toBeGreaterThan(rawSuccessor.mined[0]?.[1] ?? Number.MAX_SAFE_INTEGER);
+    expect(result.saved.canonicalState.cargo).toEqual(rawSuccessor.cargo);
+    expect(harness.writable.state).toEqual(callerBefore);
   });
 
   it('protects authority, bounds identity, and replays the same ordinal after storage failure', async () => {

@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Current universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
+> **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
 > signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
 > and unchanged through one serial **Layout → SceneMemory → Compendium → Slice → Glass →
@@ -10,10 +10,10 @@
 > all 12 viewport classes in 85,823 ms with zero findings or instrument failures (`2a67a258…`);
 > Recovery consumed both exact predecessors and passed all ten stages in 1,290,953 ms with a real
 > uninterrupted 1,200,297.5 ms active-browser observation (`b78e8a52…`). Every stage ran once with
-> zero automatic retries and passed its exact source/predecessor-bound verifier. The full v2 battery
-> is 163 files / 1,712 passed + one skipped, and all TypeScript configurations are green.
+> zero automatic retries and passed its exact source/predecessor-bound verifier. At that checkpoint,
+> the full v2 battery was 163 files / 1,712 passed + one skipped, and all TypeScript configurations were green.
 >
-> This is the complete local automated certificate for the universe-wide visual treatment and
+> For that exact source, this is the complete historical automated certificate for the universe-wide visual treatment and
 > bounded Arc 5 Feed scope. It is not HUMAN visual, listening, screen-reader or first-journey
 > judgment; physical-device heat/battery/true-GPU evidence, Gate G distant playback and D-9e remain
 > open, as do whole Gates A–I. It grants no hosted attempt, merge, release/version or deployment
@@ -21,13 +21,14 @@
 > version is provenance only; compatible updates never trigger rebaseline or recalibration.
 > Earlier Final13/Final12/Final11/Final10 wording below is historical where superseded.
 >
-> **Current local Arc 4 successor (later than `3f69e88…`):** first durable successful capture on
+> **Earlier local Arc 4 checkpoint (later than `3f69e88…`):** first durable successful capture on
 > each exact source-proven world beyond Sol can bank one Chapter 2 life-discovery tick atomically;
 > all non-qualifying paths leave Charter state and chapter reconciliation untouched. Parent-aware
 > reach rejects same-seed/wrong-coordinate galaxy or star collisions in capture and Search travel.
-> The final full browser-free battery is 230 files / 2,315 passed + one skipped with all three
-> TypeScript programs green. `compendiummem:selftest` passes 222 independent controls; the authority
-> printer exits 0 and current-authority tests pass 45/45. Live producer bindings are current without changing numeric rulers or historical
+> At that checkpoint, the final full browser-free battery was 230 files / 2,315 passed + one skipped
+> with all three TypeScript programs green. `compendiummem:selftest` passed 222 independent controls;
+> the authority printer exited 0 and then-current-authority tests passed 45/45. Producer bindings at
+> that checkpoint were current without changing numeric rulers or historical
 > samples. Fresh exact-source browser evidence and HUMAN acceptance of the deliberate D-ARC4-BIOSCAN
 > deviation remain open.
 >
@@ -36,10 +37,9 @@
 > Stable species identity and imported v1 pair-claim evidence prevent rename, parent order, reload or
 > archive rollover from re-arming the claim. The exact verified Arc 6 settlement
 > now opens one accessible timed Combat Chronicle with named transcript rows, two native HP meters,
-> statistics/result, silent Skip completion and plain-text Share/fallback. Registered damage rows may
-> synthesize only their exact impact/critical/ability layers on the master-Sound-governed combat bus;
-> Creature Voices does not gate them. Guardian motifs and every non-impact cue remain unsynthesized,
-> with authored ambience/music still absent. Live captured Guardians/Titans now re-enter that same
+> statistics/result, silent Skip completion and plain-text Share/fallback. The complete registered
+> transcript cue inventory uses the master-Sound-governed combat bus; Creature Voices does not gate
+> it. Recorded assets and authored ambience/music remain absent. Live captured Guardians/Titans now re-enter that same
 > combat forecast/settlement/Chronicle/audio path through a separate `arc6.guardian-companions`
 > XP/injury/tombstone overlay rather than Arc 5. Fatal defeat is permanent; tombstones remain absent
 > from the combat roster and composite Compendium across reload/Training/capture reconciliation,
@@ -68,8 +68,27 @@
 > cache-pixel diagnostics through cold, surface/ascent, BFCache and reload-clear/replacement cleanup
 > at a fixed one-entry / 412,800-pixel ceiling. Exact run
 > `20260829-universe-polish-3f69e88ea8e3-scenemem` passed 44/44 with complete cleanup inside the
-> current serial certificate. Every Final13 42/42 statement remains exact historical evidence for
+> historical serial certificate. Every Final13 42/42 statement remains exact historical evidence for
 > its older source/schema.
+>
+> **Current-local PR #35 repair overlay (later than the signed certificate above):** consumed hosted
+> run `33278630671` tested exact head `017fa6decbc41809188768ccdb98ab86ef1b9ebc`; every predecessor
+> and SceneMemory control passed before the one-attempt phone product stage stopped at **Earth
+> planetfall was rejected**. Compendium, Slice, Glass and later browser stages correctly did not run,
+> the run is not retryable, and no replacement attempt is authorized. The local repair makes the
+> one-call Survey → Landing handoff drain the pre-existing route barrier, start Survey once, drain
+> Survey's replacement barrier, require that exact settlement to return true, then invoke Landing
+> once. A synchronous refusal or later durable false stops before Landing. F4 now compares committed state with an
+> owner-minted canonical prediction using the exact registry snapshot and checked `codecNow` that
+> the same commit uses. PWA worker/shared-worker entry fetches inherit their initiating document's
+> exact build through `resultingClientId`; retention scans all client types and confirms omitted
+> clients with `clients.get()` before pruning a pin. SceneMemory records bounded biome-vista fault
+> causes, fails closed on malformed diagnostics, distinguishes stale replies from current authority
+> mismatches, and navigates to a minimal ephemeral second origin for BFCache so the product service
+> worker cannot capture the fixture. The SceneMemory contract remains **44 outcomes**, all numeric
+> rulers and historical evidence remain unchanged, and every `[HUMAN]` criterion remains open. This
+> is current-local repair state, not a clean exact-source certificate; see
+> `../audits/PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md`.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
 > 2026-08-29.
@@ -225,15 +244,15 @@
 > external authority exists. Edge `151.0.4129.107` / CDP `1.3` is Final13 provenance only and never triggers a rebaseline or
 > threshold change. Exact carriers, sizes and hashes are inventoried in `audits/README.md`.
 >
-> **Current local universe-wide visual checkpoint (automated chain certified; HUMAN/physical review open):** the shared
+> **Historical signed universe-wide visual checkpoint (current implementation retained; HUMAN/physical review open):** the shared
 > deterministic treatment now crosses galaxies, systems, planets, all 43 live biomes, creatures,
 > plants, fungi, microbes and the current ship without changing seeds, identities, anatomy,
 > silhouettes, proportions, scale, authored structure, interaction geometry or gameplay readability.
 > Normal landings use the preserved full `960×430` compositor through a lazy identity-fenced,
 > fail-soft worker, and Visual effects/Screen shake now resolve bounded live policies. Focused
-> browser-free authority, route, policy and fault controls are present. The converged 163-file / 1,712-
-> pass + one-skip battery and exact signed `3f69e88…` Layout → SceneMemory → Compendium → Slice →
-> Glass → Recovery chain are green. Fixed-seed images remain inputs to HUMAN judgment rather than a
+> browser-free authority, route, policy and fault controls are present. At that historical source,
+> the 163-file / 1,712-pass + one-skip battery and exact signed `3f69e88…` Layout → SceneMemory →
+> Compendium → Slice → Glass → Recovery chain were green. Fixed-seed images remain inputs to HUMAN judgment rather than a
 > substitute for it; HUMAN visual/accessibility review and physical-device frame/heat/battery/true-
 > GPU evidence remain open. This is bounded automated evidence, not whole-Gate or release proof.
 >
@@ -265,8 +284,8 @@
 > changes only the chosen companion nickname, and
 > Field Scout changes only the exact role assignment. Each uses the compact exact-five ownership and
 > F4 receipt/CAS path without retry or optimistic publication. Broader care, injury interception,
-> assignment beyond Field Scout, mission and dispatch systems remain unavailable. Arc 7/8 has five intentionally
-> narrow live audio seams: an exact registered current-owned-creature
+> assignment beyond Field Scout, mission and dispatch systems remain unavailable. Arc 7/8 has six intentionally
+> narrow live audio surfaces. An exact registered current-owned-creature
 > projector, app-owned five-bus fail-closed lifecycle, persisted Creature Voices setting and bounded
 > asset-free renderer allow one accessible greeting only after a native Tame gesture and the exact
 > committed durable nonconverging fauna result. That result retains the global F3 transaction
@@ -276,13 +295,14 @@
 > gesture may likewise emit one contented expression only after its exact durable successor and
 > settled accessible status agree. A real owned-fauna Compendium detail may explicitly audition the
 > exact companion's stable `selected` / `contact` expression; list/filter/focus/navigation never
-> auto-play it. An inhabited Planetside may explicitly play one generic biosphere pulse only after
-> the exact current-world biosphere visual is visible; it reveals and awards nothing and writes no
-> state. After exact combat durability, each visible registered damage row in the accessible timed
-> Combat Chronicle may synthesize its matching impact and proved critical/ability-proc layers on the
-> master-Sound-governed combat bus; Creature Voices does not gate it, and Skip completes remaining
-> rows silently. Other creature expressions, broader/authored ambience, music, Guardian motifs,
-> non-impact combat cues, recorded assets, device plateaus and HUMAN listening remain open.
+> auto-play it. Orbital Survey and inhabited Planetside each explicitly play the same generic
+> biosphere pulse only after their distinct exact current-world lead is visible; they reveal and
+> award nothing and write no state. After exact combat durability, the accessible timed Combat
+> Chronicle owns every already-modelled registered cue, including Guardian/Titan motifs, dodge,
+> stun, impacts/criticals/abilities, burn, regeneration, defeat and resolution, on the master-Sound-
+> governed combat bus; Creature Voices does not gate it, and Skip completes remaining rows silently.
+> Recorded assets, authored continuous ambience/music, broader or more-specific expressions/ecology,
+> device plateaus and HUMAN listening remain open.
 >
 > Current execution law is an immutable Slice → Glass → recovery chain on one unchanged clean
 > committed source: named-verify the exact Slice run, pass that ID to full Glass and named-verify the
@@ -677,7 +697,7 @@ flowchart TD
   A7 --> A8Core["Arc 8 current-system audio/content"]
   A45 --> A55["Arc 5.5 Combat decision model [HUMAN]"]
   A55 --> A6["Arc 6 Combat + Guardians"]
-  A6 --> A8Combat["Arc 8 combat/Guardian audio closure"]
+  A6 --> A8Combat["Arc 8 authored combat/Guardian soundscape closure"]
   A8Core --> A8Combat
   A8Combat --> A9["Arc 9 Legacy + projects"]
   A9 --> A10["Arc 10 Integration beta"]
@@ -1514,7 +1534,7 @@ without flattening them into v4. This authority is exercised by Arc 2 Inventory/
 Engineering, the player-live Arc 4 capture writer and Arc 5A's source-bound compact five-carrier
 authority. Arc 5A joins boot and genuine legacy Training without a second CAS, and every Arc 4
 successor advances all five carriers in the same receipt transaction. Arc 4 has focused plus native-browser
-stale/storage/publication/reload controls. Exact signed source `3f69e88…` now supplies the clean
+stale/storage/publication/reload controls. Exact signed source `3f69e88…` supplies the historical exact-source clean
 real-browser F3 seven-stage proof: native IndexedDB v1→v2 upgrade, v4→v5 migration, two-backend CAS,
 checked-transaction rollback, external v3 `versionchange`, and disposable-database cleanup all passed
 inside its zero-finding Slice run. The wider F3 exit still awaits representative distinct-tab coverage
@@ -1962,11 +1982,11 @@ acceptance and rollover lifecycle have no owner. The legacy 40% conquest-imbue b
 selected until its relationship to natural and Pureforged modifiers is decided, and no authored
 extra Guardian cache is invented. The verified settlement now feeds an accessible timed Combat
 Chronicle with native HP meters, deterministic transcript/statistics/result, silent Skip and exact
-plain-text Share/fallback. Matching damage rows may synthesize only their registered per-blow impact,
-critical and ability-proc layers on the master-Sound-governed combat/gameplay bus; Creature Voices
-does not gate them. Party roles, tactics, retreat, broader Guardian care/breeding/mission/Recovery,
-Guardian motifs and every non-impact combat cue, broader reward tables, browser/HUMAN combat review and the final Arc 5.5
-decision gate remain open.
+plain-text Share/fallback. Its master-Sound-governed combat/gameplay bus owns every already-modelled
+registered cue, including Guardian/Titan motifs, dodge, stun, impacts/criticals/abilities, burn,
+regeneration, defeat and resolution; Creature Voices does not gate it. Party roles, tactics, retreat,
+broader Guardian care/breeding/mission/Recovery, broader reward tables, recorded/authored audio,
+browser/HUMAN combat review and the final Arc 5.5 decision gate remain open.
 
 **Player promise:** duels, conquest, and Guardians are readable decisions with memorable stakes,
 not visual noise around a hidden roll.
@@ -1988,20 +2008,21 @@ Guardian encounters are memorable and strategically legible.
 ### 5.8 Arc 7 — audio foundation
 
 **Campaign placement:** after F4 and alongside Arcs 2–5 under §4.10; it is no longer deferred behind
-combat. The bounded Arc 6 settlement and registered damage-impact integration are player-live, while
-Guardian motifs, every non-impact combat cue and broad authored content remain Arc 6/8 obligations.
+combat. The bounded Arc 6 settlement and complete already-modelled registered Chronicle cue
+integration are player-live, while recorded assets and broad authored content remain Arc 6/8
+obligations.
 
 **Goal:** build the platform that can deliver premium, distinctive audio safely before broad sound
 content is added.
 
-**Current truth (2026-08-29; five-path app partial):** compatibility survey/navigation stings remain,
+**Current truth (2026-08-29; six-surface app partial):** compatibility survey/navigation stings remain,
 and `@cf/audio` still owns resolver-v1 signature/profile/call plans, the 1,014-route/1,010-identity
 coarse witness, distant-ecology/settled-expression plans, the five-category runtime, lab and empty
 rights authority. The app now adds a strict canonical bridge for the exact current registered owned
 creature, excluding mutable XP/hurt/fed/bond/assignment/brood fields; constructs the fail-closed
 five-bus runtime; persists **Creature Voices**; and renders deterministic asset-free fauna, generic
-ecology and registered combat-impact graphs. Fauna/ecology remain one-oscillator/one-gain paths;
-combat impact has its own bounded legacy-shaped graph and at-most-two-voice concurrency.
+ecology and registered Combat Chronicle cue graphs. Fauna/ecology remain one-oscillator/one-gain
+paths; combat has its own bounded legacy-shaped graph and at-most-two-voice concurrency.
 
 The first player-live creature event is a greeting armed by the native Tame gesture and admitted
 after the exact committed durable nonconverging fauna result, matching world/species, the global F3
@@ -2030,14 +2051,14 @@ be constructed. The renderer recanonicalizes and accepts only a generic biospher
 with null kingdom/family/identity, so it reveals no species, consumes no SessionRNG, awards nothing
 and writes no save. Render, landing, roster fill and navigation have no playback path.
 
-The sixth path is exact post-settlement combat damage. A trusted native Challenge may arm the shared
+The sixth path is the exact post-settlement Combat Chronicle. A trusted native Challenge may arm the shared
 runtime, but Main claims a session only after the exact committed, non-converging Arc 6 outcome and
 registered cue plan agree. The accessible Chronicle emits one same-granularity counterpart for each
-visible damage row; deterministic synthesis reproduces the legacy per-blow impact and only its proved
-critical/ability-proc layers. Master Sound governs the combat/gameplay bus and Creature Voices does
-not. Skip/Close/replace, hidden/unanswerable state, route/counterpart loss, Sound Off, context loss and
-disposal cancel playback; Skip renders the rest silently. Guardian motifs and all non-impact cues
-remain facts without synthesis.
+visible registered row; deterministic synthesis covers the complete already-modelled initiative,
+dodge, stun-skipped, impact/critical/ability, burn, regeneration, defeat, resolution and Guardian/
+Titan motif set. Master Sound governs the combat/gameplay bus and Creature Voices does not. Skip/
+Close/replace, hidden/unanswerable state, route/counterpart loss, Sound Off, context loss and
+disposal cancel playback; Skip renders the rest silently.
 
 Each runtime voice now carries one exact immutable versioned category-mix intent. Active intents
 combine by per-category minimum against the saved music/ambience/creature/combat-gameplay/UI base
@@ -2045,15 +2066,15 @@ gains, and their ownership is released on every completion, stop, steal, mute, h
 dispose path. Prospective policy is installed behind an inaudible candidate before victim stealing;
 partial writes roll back, and irrecoverable or non-settling reentrant adapters quarantine and close
 within a 12-pass bound. Diagnostics/lab evidence carries exact owners, factors and effective gains.
-All five current paths use the neutral intent, so no audible mix, category setting, save
+All six current surfaces use the neutral intent, so no audible mix, category setting, save
 field or extra bus write changes yet. Product-authored non-neutral ducking and HUMAN listening remain
 open Arc 7/8 work.
 
-Compatibility stings remain outside that runtime's accounting. Compendium audition, generic
-biosphere playback and combat impact have focused browser-free domain/app/Main controls only; they do
-not inherit the older exact-source browser certificate. Other creature expressions,
-authored/continuous ambience, music, Guardian motifs and non-impact combat integration, recorded
-assets, UI/combat ducking, reduced-intensity behavior,
+Compatibility stings remain outside that runtime's accounting. Compendium audition, both generic
+biosphere controls and the Combat Chronicle have focused browser-free domain/app/Main controls only;
+they do not inherit the older exact-source browser certificate. Broader or more-specific creature/
+ecology expressions, authored continuous ambience/music, recorded assets, UI/combat ducking,
+reduced-intensity behavior,
 browser/device plateau, complete accessibility and HUMAN listening remain open. Exact signed
 `3f69e88…` Slice passed only the bounded Tame/Feed live-expression evidence, including the Feed
 source→destination graph and replay/stale controls; it does not prove these later paths or broader
@@ -2098,19 +2119,20 @@ so app/browser/device plateau evidence is still required.
 
 **Campaign placement:** current-system audio/content may proceed after Arc 7 under §4.10. The bounded
 combat, Guardian, conquest and post-combat state owner is now live. Its accessible timed Combat
-Chronicle and exact registered damage-impact/critical/ability-proc synthesis are also live; Guardian
-motifs, every non-impact combat cue, music, foley and authored content remain explicit Arc 6/8 work
-whose absence must stay visible in manifests and player copy.
+Chronicle and complete already-modelled registered cue synthesis are also live; recorded assets,
+music, foley and broader authored content remain explicit Arc 6/8 work whose absence must stay
+visible in manifests and player copy.
 
 **Current truth (2026-08-29):** bounded synthesized fauna Tame, accepted Feed and explicit
-Compendium selection expressions, one generic current-world biosphere pulse and exact post-settlement
-registered combat-damage impacts are player-live through the Arc 7 owner described above. Combat
+Compendium selection expressions, distinct orbital Survey and Planetside generic biosphere pulses,
+and the complete registered post-settlement Combat Chronicle cue set are player-live through the
+Arc 7 owner described above. Combat
 sound is governed by master Sound rather than Creature Voices and is cancelled by Skip/Close,
 replacement, route/counterpart loss, hidden state, Sound Off, context loss and disposal. These are
 asset-free platform sounds, not recorded assets or a broad Arc 8 content pass. The machine-readable
 rights authority remains empty and the coarse sound witness remains an intake/design foundation;
-there is no route-family listening, media-file integrity, authored ambience/music, Guardian motif,
-non-impact combat content or real-device evidence.
+there is no broader authored route-family coverage, media-file integrity, authored continuous
+ambience/music or real-device evidence.
 
 **Goal:** turn the proven audio platform into a full local, distinctive, legally safe soundscape.
 
@@ -2123,15 +2145,14 @@ non-impact combat content or real-device evidence.
 - The bounded Compendium detail-card audition is implemented for exact current owned fauna and
   uses its stable call plan; list mount, focus, filtering and virtualization never auto-play it.
   Travel/return/combat reuse and broader catalogue-only audition policy remain open.
-- The bounded current Planetside implementation adds a presentation-only generic biosphere pulse
-  after the exact visible biosphere lead. It keys on canonical world/roster/environment evidence,
-  cannot reveal an unsurfaced species, create a discovery or consume gameplay RNG, and carries the
-  same biosphere granularity in its status counterpart. Approach integration, recognizable
+- The bounded current orbital Survey and Planetside implementations each add the same presentation-
+  only generic biosphere pulse after their distinct exact visible lead. They key on canonical world/
+  roster/environment evidence, cannot reveal an unsurfaced species, create a discovery or consume
+  gameplay RNG, and carry the same biosphere granularity in their status counterparts. Recognizable
   kingdom/family/species content, UI/combat ducking and audio reduced intensity remain open.
-- The bounded current Combat Chronicle maps each visible damage row to its exact registered cue and
-  may synthesize only the corresponding impact plus proved critical/ability-proc layers after the
-  settlement is durable. Guardian motifs, dodge, stun, burn, regeneration, defeat, resolution and
-  other non-impact cues remain unsynthesized; no authored combat asset or broader score is implied.
+- The bounded current Combat Chronicle maps every visible registered row to its exact cue only after
+  settlement is durable. It includes Guardian/Titan motifs, dodge, stun, impacts/criticals/abilities,
+  burn, regeneration, defeat and resolution; no authored combat asset or broader score is implied.
 - Add event-owned hurt/fed/care/bond/greeting expression cues selected from an immutable call-plan
   repertoire. Expression may change articulation, never serialized signature/profile/plan, and may
   not become an absence or attendance-pressure signal.

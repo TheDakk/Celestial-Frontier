@@ -38,8 +38,12 @@ function baseState(): SaveStateV2 {
   return imported.state;
 }
 
-async function fixture(options: Readonly<{ failStorage?: boolean }> = {}) {
+async function fixture(options: Readonly<{
+  failStorage?: boolean;
+  configureState?: (state: SaveStateV2) => void;
+}> = {}) {
   const state = baseState();
+  options.configureState?.(state);
   const f4 = prepareF4AuthorityUpdate(
     {}, { activePlayMs: 0 }, createSessionRNG(0xA9000003).state(),
   );
@@ -130,6 +134,32 @@ describe('Arc 9 explorer self-rename preparation', () => {
 });
 
 describe('Arc 9 explorer self-rename transaction', () => {
+  it('commits the codec-canonical renamed state when an unrelated veteran mining stamp moves', async () => {
+    const test = await fixture({
+      configureState(state) {
+        state.mined = [['veteran-clock-floor', NOW - 30 * 6e5]];
+        state.mineX = [['veteran-clock-floor', 1]];
+      },
+    });
+    const before = JSON.stringify(test.state);
+    const outcome = await commitArc9ExplorerNameChangeV1({
+      runtime: test.runtime,
+      state: test.state,
+      rawName: 'Nova Prime',
+      codecNow: NOW + 1,
+    });
+
+    expect(outcome).toMatchObject({
+      kind: 'committed', durability: 'committed', convergence: 'none',
+    });
+    expect(JSON.stringify(test.state)).toBe(before);
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.transaction.state).toEqual(outcome.transaction.saved.canonicalState);
+    expect(new Map(outcome.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(NOW + 1 - 30 * 6e5);
+    await test.runtime.release();
+  });
+
   it('commits one receipt/CAS, changes no other field, and unlocks no discovery achievement', async () => {
     const test = await fixture();
     let commitCalls = 0;

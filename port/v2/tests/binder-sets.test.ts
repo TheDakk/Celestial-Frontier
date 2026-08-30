@@ -25,6 +25,7 @@ import { makeGenome } from '@cf/domain-genome';
 import { createSessionRNG } from '@cf/domain-sessionrng';
 
 const REGISTRY = REGISTRY_JSON as unknown as ContentRegistry;
+const VETERAN_CODEC_NOW = 1_700_000_000_000;
 type CommittedAction = Extract<
   Awaited<ReturnType<F4RuntimeAuthority['commitAction']>>,
   { readonly kind: 'committed' }
@@ -59,7 +60,7 @@ function kingdomCodex(): SaveStateV2['codex'] {
   }) as SaveStateV2['codex'];
 }
 
-async function fixture(save: SaveStateV2): Promise<Readonly<{
+async function fixture(save: SaveStateV2, codecNow = 10): Promise<Readonly<{
   runtime: F4RuntimeAuthority;
   state: SaveStateV2;
   repository: ReturnType<typeof createRevisionedRepository>;
@@ -68,9 +69,9 @@ async function fixture(save: SaveStateV2): Promise<Readonly<{
     {}, { activePlayMs: 0 }, createSessionRNG(0xB1D3_0001).state(),
   );
   const backend = createMemoryBackend();
-  const initial = prepareV5SaveWrite({ state: save, extensions: f4.extensions }, REGISTRY, 10);
+  const initial = prepareV5SaveWrite({ state: save, extensions: f4.extensions }, REGISTRY, codecNow);
   await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: initial.legacyV4Raw }]);
-  const migration = await migrateStoredV4ToV5(backend, REGISTRY, 10);
+  const migration = await migrateStoredV4ToV5(backend, REGISTRY, codecNow);
   if (migration.kind !== 'migrated') throw new Error(`Binder fixture was ${migration.kind}`);
   await backend.apply(initial.operations);
   const repository = createRevisionedRepository(backend);
@@ -134,6 +135,29 @@ describe('Arc 9 Binder', () => {
     })).kind).toBe('current');
     expect(runtime.sessionRng.ordinal).toBe(priorOrdinal + 1);
     await runtime.release();
+  });
+
+  it('commits the codec-canonical set claim when an unrelated veteran mining stamp moves', async () => {
+    const save = state();
+    save.codex = kingdomCodex();
+    save.mined = [['veteran-clock-floor', VETERAN_CODEC_NOW - 30 * 6e5]];
+    save.mineX = [['veteran-clock-floor', 1]];
+    const built = await fixture(save, VETERAN_CODEC_NOW);
+    const before = JSON.stringify(built.state);
+    const claimed = await commitArc9BinderSetClaimV1({
+      state: built.state,
+      setId: 'kingdoms',
+      codecNow: VETERAN_CODEC_NOW + 1,
+      authority: built.runtime,
+    });
+
+    expect(claimed.kind).toBe('committed');
+    expect(JSON.stringify(built.state)).toBe(before);
+    if (claimed.kind !== 'committed') return;
+    expect(claimed.transaction.state).toEqual(claimed.transaction.saved.canonicalState);
+    expect(new Map(claimed.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(VETERAN_CODEC_NOW + 1 - 30 * 6e5);
+    await built.runtime.release();
   });
 
   it('refuses incomplete, Paragon, corrupt and stale writes without publishing a reward', async () => {

@@ -302,7 +302,12 @@ export async function commitArc9ExplorerNameChangeV1(
     });
   }
 
-  let selected: Readonly<{ plan: Arc9ExplorerNameReadyV1; witness: string }> | null = null;
+  let selected: Readonly<{
+    plan: Arc9ExplorerNameReadyV1;
+    witness: string;
+    expectedState: SaveStateV2;
+    expectedSourceState: SaveStateV2;
+  }> | null = null;
   let transaction: F4RuntimeActionCommitOutcome;
   try {
     transaction = await captured.commit({
@@ -310,7 +315,7 @@ export async function commitArc9ExplorerNameChangeV1(
       operation: ARC9_EXPLORER_NAME_OPERATION_V1,
       receiptKind: ARC9_EXPLORER_NAME_RECEIPT_KIND_V1,
       codecNow: captured.codecNow,
-      derive: ({ receiptOrdinal, draft }) => {
+      derive: ({ receiptOrdinal, draft, canonicalizeState }) => {
         const plan = prepareArc9ExplorerNameChangeV1(draft, captured.rawName);
         if (plan.kind !== 'ready'
           || plan.previousName !== preflight.previousName
@@ -320,7 +325,12 @@ export async function commitArc9ExplorerNameChangeV1(
           throw new Error('Arc 9 explorer name parent changed before derivation');
         }
         const witness = witnessFor(plan, receiptOrdinal);
-        selected = Object.freeze({ plan, witness });
+        selected = Object.freeze({
+          plan,
+          witness,
+          expectedState: canonicalizeState(plan.successorState),
+          expectedSourceState: canonicalizeState(plan.sourceState),
+        });
         return Object.freeze({ state: plan.successorState, witness });
       },
     });
@@ -341,6 +351,8 @@ export async function commitArc9ExplorerNameChangeV1(
   const committedSelection = selected as Readonly<{
     plan: Arc9ExplorerNameReadyV1;
     witness: string;
+    expectedState: SaveStateV2;
+    expectedSourceState: SaveStateV2;
   }> | null;
   if (committedSelection === null) {
     return Object.freeze({
@@ -362,9 +374,10 @@ export async function commitArc9ExplorerNameChangeV1(
     || transaction.receipt.witness !== witness
     || transaction.state.explorerName !== plan.explorerName
     || !sameJson(transaction.state, transaction.saved.canonicalState)
-    || !sameJson(transaction.state, plan.successorState)
-    || !sameJson(unrelatedRestored, plan.sourceState)
-    || canonicalStateDigest(transaction.state) !== plan.successorDigest) {
+    || !sameJson(transaction.state, committedSelection.expectedState)
+    || !sameJson(unrelatedRestored, committedSelection.expectedSourceState)
+    || canonicalStateDigest(transaction.state)
+      !== canonicalStateDigest(committedSelection.expectedState)) {
     return Object.freeze({
       kind: 'committed-convergence', durability: 'committed',
       convergence: 'read-only-reload',

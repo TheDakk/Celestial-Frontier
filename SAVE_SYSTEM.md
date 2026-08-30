@@ -1,5 +1,26 @@
 # Celestial Frontier — Save System
 
+> **2026-08-29 current local fixed-point, route and PWA correction (supersedes narrower
+> same-date descriptions below where they differ):** the deterministic product-transaction owner
+> now detaches its codec registry once, validates the injected commit clock once, and gives the
+> product derivation an owner-minted `canonicalizeState`. That capability uses the same detached
+> registry and exact clock as the eventual write, so expected-state and seal checks cannot compare a
+> raw draft, a caller-owned clock or a differently sanitized successor with the canonical committed
+> save. The converted consumers are Arc 0 Atlas, Landing and world naming; Arc 5 Field Scout; Arc 9
+> Atlas Favorite, explorer naming, Frontier ending, nameplate, Sharing, Survey and Travel; Binder set
+> claims; and Starter Charter acceptance/staging. This changes compatibility proof, not gameplay RNG,
+> receipt ownership, schema or migration.
+>
+> Survey-to-Landing now crosses two distinct barriers in order: drain the route checkpoint, invoke
+> Survey exactly once, capture and drain Survey's replacement product checkpoint, require that
+> exact Survey settlement to return true, then invoke Land exactly once. A synchronous refusal or
+> later durable false stops before Land. The handoff owns no persistence, clock, state or retry behavior. Exact-build PWA
+> ownership also extends from each window to valid worker and shared-worker children: their creation
+> request inherits the initiating client's selected build onto its `resultingClientId` before any
+> child-local lazy import, live-build retention inspects all client types, and an absent reserved
+> worker is confirmed with `clients.get()` before its pin is pruned. Historical exact-source evidence
+> below remains evidence only for its named source; this local successor still requires fresh proof.
+
 > **2026-08-29 current local PWA/save boundary (matches code):** the generated service worker's
 > CacheStorage runtime sets are disposable app assets, never expedition authority. A candidate build
 > receives its completion marker only after every exact emitted runtime file is fetched and
@@ -146,7 +167,7 @@
 > progression schema or migration was added. Exactly `daily`, `decade`, `survivor`, `fieldmedic`,
 > and `gambler` remain owner-blocked.
 
-> **Current universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
+> **Historical signed universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
 > signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
 > chain on Edge `151.0.4129.107` / CDP `1.3`. Layout passed **787/787** in 76,603 ms,
@@ -166,7 +187,7 @@
 > remain open. Compatible browser point updates remain provenance only. Earlier dated evidence blocks
 > below remain historical verbatim where superseded.
 
-> **2026-08-29 current local Arc 4 Charter transaction:** qualifying capture capacity now includes
+> **Earlier local Arc 4 Charter transaction checkpoint (2026-08-29):** qualifying capture capacity included
 > the exact legacy-v4 Charter successor before either random value exists. Only the first durable
 > successful Tame, Scavenge, or Sample on one complete source-proven world beyond Sol can add one
 > `c2-scan` tick. The same prepared save commits Charter progress, capture ownership/reward, all Arc
@@ -181,20 +202,20 @@
 > No persistence schema was added: exact ownership discovery provenance already supplies the world
 > ledger. The legacy `surveyed` array and `stats.surveys` stay unchanged, preserving their existing
 > mixed-era compatibility boundary; this writer does not pretend the separate v1.8.9 Discover Life
-> action, Survey Records or accepted/weekly bioscan Charters exist. Focused and full browser-free
-> tests are green at 230 files / 2,315 passed + one skipped; the signed `3f69e88…` certificate above
+> action, Survey Records or accepted/weekly bioscan Charters exist. At that checkpoint, focused and
+> full browser-free tests were green at 230 files / 2,315 passed + one skipped; the signed `3f69e88…` certificate above
 > predates this successor and is not relabelled.
 
-> **2026-08-29 Arc 0 durable action closure (current local worktree):** Landing, canonical world
+> **Earlier Arc 0 durable action checkpoint (2026-08-29):** Landing, canonical world
 > naming and Atlas each own one receipt-bearing F4 action; ordinary route checkpoints project from
 > the exact durable parent and cannot absorb their product fields. A Training replacement/quarantine
 > write hold now refuses Landing or Atlas whenever Training is not actively owning their explicit
 > route-only lesson behavior, and the same hold is rechecked after the heartbeat before a mutation
 > may begin. An already-durable Atlas observation now rebinds the exact live row to its source-proven
 > route sidecar; failure to bind leaves the durable row intact and enters read-only convergence reload
-> instead of claiming a travelable chart. Focused Arc 0 tests and all TypeScript programs pass. The
-> full suite is green at 230 files / 2,315 passed + one skipped, including the exact current
-> SceneMemory and Compendium producer-authority bindings. That browser-free source rebind changes no
+> instead of claiming a travelable chart. At that checkpoint, focused Arc 0 tests and all TypeScript
+> programs passed. The full suite was green at 230 files / 2,315 passed + one skipped, including the
+> then-current SceneMemory and Compendium producer-authority bindings. That browser-free source rebind changed no
 > ruler or threshold and never depends on an Edge point version.
 
 > **2026-08-27 exact-evidence correction:** the browser fixture now observes the staged ecology
@@ -235,7 +256,7 @@
 > persistence bytes, semantics, rulers and numeric ceilings do not change. The complete
 > browser-free battery, authority printer and root validator are green; three independent final
 > binding/test, whole-diff, and documentation/evidence reviews are CLEAR. Exact signed descendant
-> `3f69e88…` now owns the completed Layout → SceneMemory → Compendium → Slice → Glass → Recovery
+> `3f69e88…` owns the historical exact-source Layout → SceneMemory → Compendium → Slice → Glass → Recovery
 > chain recorded above.
 
 > **2026-08-27 persistence authority/race reconciliation (current source truth):** legacy backup
@@ -278,7 +299,7 @@
 > three independent current-byte reviews are CLEAR. Final3 then stopped pre-measurement on stale
 > memory-budget bindings. The source-derived binding repair is fully browser-free green and
 > three independent final binding/test, whole-diff, and documentation/evidence reviews are CLEAR.
-> Exact signed descendant `3f69e88…` now supplies the complete exact-head browser chain and Recovery
+> Exact signed descendant `3f69e88…` supplied that historical exact-source browser chain and Recovery
 > certificate recorded above.
 > Engineering protection follows the same ownership split: exact Engineering details and every
 > action remain unavailable, while the current-ship preview stays readable because it derives from
@@ -349,13 +370,16 @@
 >
 > Player rarity is a strict ten-name projection of valid raw tiers (`0..8` unchanged, raw `9..14`
 > shown as Transcendent); invalid or absent input is omitted rather than relabelled Common, and
-> internal grade/art labels and raw tier numbers stay out of player surfaces. The only new creature
-> playback is the narrow Tame-fauna greeting and exact accepted Feed acknowledgement after their
-> durable current-system results and matching current ownership revisions; neither writes save state
-> or reward. Broader creature,
-> Compendium, ambience, music and combat audio remain absent. Exact signed source `3f69e88…`
-> completed the uninterrupted 20-minute Arc 4 Recovery certificate after its exact Slice and Glass
-> predecessors; HUMAN review remains open.
+> internal grade/art labels and raw tier numbers stay out of player surfaces. Current presentation
+> playback has six explicit surfaces: durable Tame, committed Feed, exact-owned-fauna Compendium
+> Listen, orbital Survey, Planetside biosphere and the post-settlement Combat Chronicle. The
+> Chronicle owns every already-modelled registered cue, including Guardian/Titan motifs and its
+> dodge, stun, impact/critical/ability, burn, regeneration, defeat and resolution layers. None is a
+> save or reward writer. Recorded assets, authored continuous ambience/music, broader or more-
+> specific expressions/ecology, device evidence and HUMAN listening remain open. Exact signed source
+> `3f69e88…` completed the uninterrupted 20-minute Arc 4 Recovery certificate after its exact Slice
+> and Glass predecessors, but certifies only its then-current bounded Feed-era scope; HUMAN review
+> remains open.
 
 > **2026-08-25 Arc 3–5 persistence overlay — recorded local boundary and exact-input evidence:** Arc 3 adds the strict
 > `engineering/arc3.state` carrier and a bounded legacy seed-only migration that resolves every

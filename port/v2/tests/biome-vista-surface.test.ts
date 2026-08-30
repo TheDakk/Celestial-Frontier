@@ -17,6 +17,10 @@ import {
   buildBiomeVistaRenderRequestV1,
   hasCanonicalEarthMagneticFieldV1,
 } from '../apps/game/src/biome-vista-surface.js';
+import {
+  BIOME_VISTA_WORKER_REQUEST_SCHEMA,
+  validBiomeVistaWorkerRenderMessageV1,
+} from '../apps/game/src/biome-vista-protocol.js';
 
 const HOME_GALAXY = Object.freeze({ seed: 999, x: 90, y: -60 });
 type StarRoute = Readonly<{ seed: number; x: number; y: number }>;
@@ -111,6 +115,7 @@ function hasFailSoftWorkerBoundary(source: string): boolean {
     && section.includes("worker.addEventListener('messageerror'")
     && section.includes('surfaceVistaDeadline = setTimeout(')
     && section.includes('}, SURFACE_VISTA_DEADLINE_MS);')
+    && section.includes('if (!validBiomeVistaWorkerRenderMessageV1(message)) {')
     && section.includes('response.scene !== request.scene || response.biomeKey !== request.biomeKey')
     && /try\s*\{\s*worker\.postMessage\(/u.test(section);
 }
@@ -123,9 +128,10 @@ function hasEnvironmentBoundWorkerBoundary(source: string): boolean {
     && section.includes('request.environmentFingerprint}|${roster.fullRosterFingerprint}')
     && section.includes('surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;')
     && section.includes('surfaceVistaEnvironmentFingerprint !== request.environmentFingerprint')
-    && section.includes('response.environmentFingerprint === request.environmentFingerprint')
-    && section.includes('response.profileSchema === request.profileSchema')
-    && section.includes('response.profileDigest === request.profileDigest');
+    && section.includes('biomeVistaWorkerResponseIdentityMatchesV1(response, {')
+    && section.includes('environmentFingerprint: request.environmentFingerprint,')
+    && section.includes('profileSchema: request.profileSchema,')
+    && section.includes('profileDigest: request.profileDigest,');
 }
 
 function hasWorkerPolishBoundary(source: string): boolean {
@@ -205,6 +211,29 @@ describe('surface biome-vista projection', () => {
     expect(foreign.biomeKey).toBe(foreignFixture.roster.biomeProfileKey);
   });
 
+  it('proves the real canonical Earth projection satisfies the exact worker envelope', () => {
+    const fixture = canonicalFixture(STARS.sol, WORLD_SEEDS.earth);
+    const request = buildBiomeVistaRenderRequestV1(
+      fixture.planet,
+      STARS.sol.seed,
+      fixture.roster.worldKey,
+      fixture.system,
+      fixture.roster,
+    );
+    const envelope = {
+      schema: BIOME_VISTA_WORKER_REQUEST_SCHEMA,
+      type: 'render',
+      documentToken: 'canonical-earth-document',
+      generation: 1,
+      request,
+    };
+    expect(validBiomeVistaWorkerRenderMessageV1(envelope)).toBe(true);
+    expect(validBiomeVistaWorkerRenderMessageV1({
+      ...envelope,
+      request: { ...request, environmentFingerprint: 'cwe1:149:DEADBEEF' },
+    })).toBe(false);
+  });
+
   it('routes gas, abyssal and reef identities through their dedicated preserved compositors', () => {
     const cases = [
       [canonicalFixture(STARS.sol, WORLD_SEEDS.banded), 'gas', 'banded'],
@@ -228,6 +257,13 @@ describe('surface biome-vista projection', () => {
       });
       expect(request.options.seed).toBe(planet.seed);
       expect(JSON.stringify(request)).not.toMatch(/NaN|Infinity/u);
+      expect(validBiomeVistaWorkerRenderMessageV1({
+        schema: BIOME_VISTA_WORKER_REQUEST_SCHEMA,
+        type: 'render',
+        documentToken: `canonical-${scene}-document`,
+        generation: 1,
+        request,
+      }), `${scene} real projection violates the Worker envelope`).toBe(true);
     }
   });
 
@@ -370,6 +406,7 @@ describe('surface biome-vista projection', () => {
     for (const token of [
       "worker.addEventListener('messageerror'",
       'surfaceVistaDeadline = setTimeout(',
+      'if (!validBiomeVistaWorkerRenderMessageV1(message)) {',
       'response.scene !== request.scene || response.biomeKey !== request.biomeKey',
       'try {\n    worker.postMessage(',
     ]) {
@@ -384,9 +421,10 @@ describe('surface biome-vista projection', () => {
       'request.environmentFingerprint}|${roster.fullRosterFingerprint}',
       'surfaceVistaEnvironmentFingerprint = request.environmentFingerprint;',
       'surfaceVistaEnvironmentFingerprint !== request.environmentFingerprint',
-      'response.environmentFingerprint === request.environmentFingerprint',
-      'response.profileSchema === request.profileSchema',
-      'response.profileDigest === request.profileDigest',
+      'biomeVistaWorkerResponseIdentityMatchesV1(response, {',
+      'environmentFingerprint: request.environmentFingerprint,',
+      'profileSchema: request.profileSchema,',
+      'profileDigest: request.profileDigest,',
     ]) {
       expect(hasEnvironmentBoundWorkerBoundary(source.replace(token, '/* removed binding */')), token)
         .toBe(false);

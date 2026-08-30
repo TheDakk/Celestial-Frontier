@@ -719,7 +719,7 @@ export async function commitArc0AtlasAction(
       operation,
       receiptKind: ARC0_ATLAS_RECEIPT_KIND,
       codecNow: input.codecNow,
-      derive: ({ draft, extensions, receiptOrdinal }) => {
+      derive: ({ draft, extensions, receiptOrdinal, canonicalizeState }) => {
         const identityRead = readWorldIdentity(extensions);
         if (identityRead.kind !== 'loaded') {
           deriveRefusal = identityRead.kind === 'future-version'
@@ -796,7 +796,7 @@ export async function commitArc0AtlasAction(
             evictedId,
             homeIdAfter: draft.homeId,
           }),
-          stateSuccessorSeal: successorSeal('state', draft),
+          stateSuccessorSeal: successorSeal('state', canonicalizeState(draft)),
           worldIdentitySuccessorSeal: successorSeal('world-identity', identityState),
           receiptOrdinal,
         };

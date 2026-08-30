@@ -612,7 +612,11 @@ export async function commitArc9AtlasFavoriteV1(
     });
   }
 
-  let selected: Readonly<{ plan: Arc9AtlasFavoriteReadyV1; witness: string }> | null = null;
+  let selected: Readonly<{
+    plan: Arc9AtlasFavoriteReadyV1;
+    witness: string;
+    expectedState: SaveStateV2;
+  }> | null = null;
   let transaction: F4RuntimeActionCommitOutcome;
   try {
     transaction = await captured.commit({
@@ -620,7 +624,7 @@ export async function commitArc9AtlasFavoriteV1(
       operation: preflight.operation,
       receiptKind: preflight.receiptKind,
       codecNow: captured.codecNow,
-      derive: ({ receiptOrdinal, draft }) => {
+      derive: ({ receiptOrdinal, draft, canonicalizeState }) => {
         const plan = prepareArc9AtlasFavoriteV1(
           draft,
           captured.atlasId,
@@ -630,7 +634,11 @@ export async function commitArc9AtlasFavoriteV1(
           throw new Error('Arc 9 Atlas favorite parent changed before derivation');
         }
         const witness = witnessFor(plan, receiptOrdinal);
-        selected = Object.freeze({ plan, witness });
+        selected = Object.freeze({
+          plan,
+          witness,
+          expectedState: canonicalizeState(plan.successorState),
+        });
         return Object.freeze({
           state: plan.successorState,
           extensionWrites: Object.freeze([]),
@@ -656,6 +664,7 @@ export async function commitArc9AtlasFavoriteV1(
   const committedSelection = selected as Readonly<{
     plan: Arc9AtlasFavoriteReadyV1;
     witness: string;
+    expectedState: SaveStateV2;
   }> | null;
   if (committedSelection === null) {
     return Object.freeze({
@@ -680,7 +689,7 @@ export async function commitArc9AtlasFavoriteV1(
     || transaction.receipt.kind !== plan.receiptKind
     || transaction.receipt.witness !== committedSelection.witness
     || !sameJson(transaction.state, transaction.saved.canonicalState)
-    || !sameJson(transaction.state, plan.successorState)
+    || !sameJson(transaction.state, committedSelection.expectedState)
     || !sameJson(fixedPoint.projection.unlockedIds, plan.nextUnlockedIds)
     || fixedPoint.projection.savedBestRankIndex !== plan.nextBestRankIndex) {
     return Object.freeze({

@@ -46,6 +46,9 @@ function wiringErrors(main: string): string[] {
     'type Arc9SurveyActionOutcomeV1,',
     'type Arc9SurveyAddressV1,',
   ]) if (!surveyImport.includes(imported)) errors.push(`survey-import:${imported}`);
+  if (!main.includes("import { runSurveyLandHandoffV1 } from './survey-land-handoff.js';")) {
+    errors.push('survey-land-handoff-import');
+  }
   if (!main.includes('resolveCF1StarAddress, resolveCF1WorldAddress,')) {
     errors.push('star-address-resolver-import');
   }
@@ -71,15 +74,27 @@ function wiringErrors(main: string): string[] {
     errors.push('star-source-owner');
   }
 
-  const planet = section(main, 'function surveyPlanet(', '\nfunction buildCardActions(');
-  if (!ordered(planet, [
-    'if (!presentPlanetSurvey(p, star, supplied)) return false;',
+  const planetStart = section(main, 'function startPlanetSurvey(', '\nfunction surveyPlanet(');
+  if (!ordered(planetStart, [
+    'if (!presentPlanetSurvey(p, star, supplied)) return null;',
     'const address = activeCardWorldAddress();',
-    'if (address === null) return false;',
+    'if (address === null) return null;',
     'playSurveyPing();',
     "gameEvent('survey', { planetSeed: p.seed });",
-    'void settleArc9Survey(address);',
-  ]) || occurrences(planet, 'void settleArc9Survey(address);') !== 1) {
+    'return settleArc9Survey(address);',
+  ]) || occurrences(planetStart, 'settleArc9Survey(address)') !== 1) {
+    errors.push('world-source-owner');
+  }
+  const planet = section(main, 'function surveyPlanet(', '\nfunction buildCardActions(');
+  if (!ordered(planet, [
+    'const settlement = startPlanetSurvey(p, star, supplied);',
+    'if (settlement === null) return false;',
+    'void settlement;',
+    'return true;',
+  ]) || occurrences(planet, 'startPlanetSurvey(p, star, supplied)') !== 1
+    || planet.includes('settleArc9Survey(')
+    || planet.includes('playSurveyPing(')
+    || planet.includes("gameEvent('survey',")) {
     errors.push('world-source-owner');
   }
   const surveyAndLand = section(
@@ -88,11 +103,17 @@ function wiringErrors(main: string): string[] {
     '\nfunction activeCardPlanetState(',
   );
   if (!ordered(surveyAndLand, [
-    'if (!surveyPlanet(p, star)) return false;',
-    'const surveySettlement = productActionInFlight ? activePersist : null;',
-    'if (surveySettlement !== null) await surveySettlement.catch(() => false);',
-    'return doLand();',
-  ])) errors.push('survey-before-land');
+    'return runSurveyLandHandoffV1({',
+    'waitForCurrentBarrier: waitForActivePersist,',
+    'startSurvey: () => startPlanetSurvey(p, star),',
+    'land: doLand,',
+  ])
+    || occurrences(surveyAndLand, 'runSurveyLandHandoffV1({') !== 1
+    || !main.includes('async function waitForActivePersist(): Promise<void> {')
+    || !main.includes('const pending = activePersist;')
+    || !main.includes('if (pending !== null) await pending.catch(() => false);')) {
+    errors.push('survey-before-land');
+  }
 
   if (occurrences(main, 'surveyStar(s);') !== 2
     || occurrences(main, 'surveyStar(star);') !== 1
@@ -175,11 +196,11 @@ describe('Arc 9 canonical Survey Main wiring', () => {
     );
     expect(wiringErrors(wrongParent)).toContain('star-source-owner');
 
-    const worldOwner = section(source, 'function surveyPlanet(', '\nfunction buildCardActions(');
+    const worldOwner = section(source, 'function startPlanetSurvey(', '\nfunction surveyPlanet(');
     const forgedWorldOwner = replaceOnce(
       worldOwner,
-      '  void settleArc9Survey(address);',
-      '  void settleArc9Survey({ ...address } as never);',
+      '  return settleArc9Survey(address);',
+      '  return settleArc9Survey({ ...address } as never);',
     );
     expect(wiringErrors(source.replace(worldOwner, forgedWorldOwner))).toContain('world-source-owner');
   });
@@ -215,7 +236,7 @@ describe('Arc 9 canonical Survey Main wiring', () => {
     );
   });
 
-  it('negative-controls skipped input surfaces and travel before settlement', () => {
+  it('negative-controls skipped input surfaces, travel, and tested handoff delegation', () => {
     const skippedFineStar = source.replace(
       "        spr.on('pointertap', () => { surveyStar(s); });",
       "        spr.on('pointertap', () => { surveyCard(s); });",
@@ -229,11 +250,42 @@ describe('Arc 9 canonical Survey Main wiring', () => {
     );
     expect(wiringErrors(unfencedTravel)).toContain('travel-settlement-fence');
 
-    const rushedLanding = replaceOnce(
+    const surveyAndLand = section(
       source,
-      '  if (surveySettlement !== null) await surveySettlement.catch(() => false);',
-      '  /* mutation control skips Survey durability */',
+      'async function surveyAndLand(',
+      '\nfunction activeCardPlanetState(',
     );
-    expect(wiringErrors(rushedLanding)).toContain('survey-before-land');
+    const skippedRouteBarrier = replaceOnce(
+      surveyAndLand,
+      '    waitForCurrentBarrier: waitForActivePersist,',
+      '    /* mutation control omits the route/Survey barrier owner */',
+    );
+    expect(wiringErrors(source.replace(surveyAndLand, skippedRouteBarrier)))
+      .toContain('survey-before-land');
+    const skippedSurvey = replaceOnce(
+      surveyAndLand,
+      '    startSurvey: () => startPlanetSurvey(p, star),',
+      '    startSurvey: () => Promise.resolve(true),',
+    );
+    expect(wiringErrors(source.replace(surveyAndLand, skippedSurvey)))
+      .toContain('survey-before-land');
+    const skippedLanding = replaceOnce(
+      surveyAndLand,
+      '    land: doLand,',
+      '    land: async () => true,',
+    );
+    expect(wiringErrors(source.replace(surveyAndLand, skippedLanding)))
+      .toContain('survey-before-land');
+
+    const retriedSurvey = replaceOnce(
+      surveyAndLand,
+      '    startSurvey: () => startPlanetSurvey(p, star),',
+      '    startSurvey: () => {\n' +
+        '      void startPlanetSurvey(p, star);\n' +
+        '      return startPlanetSurvey(p, star);\n' +
+        '    },',
+    );
+    expect(wiringErrors(source.replace(surveyAndLand, retriedSurvey)))
+      .toContain('survey-before-land');
   });
 });

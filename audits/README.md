@@ -10,6 +10,20 @@ summary of it.
 
 ## Contents
 
+### PR #35 SceneMemory hosted stop and systemic local diagnosis
+
+Hosted run `33278630671` tested draft PR #35 head `017fa6decbc41809188768ccdb98ab86ef1b9ebc`
+against `develop` base `7a9f4c1370dd84292388d718c38ff34214f6203b`. Every predecessor through
+the SceneMemory controls passed; the one-attempt phone product stage stopped at `Earth planetfall
+was rejected`, its verifier reported downstream incompleteness, and all later browser stages were
+skipped. No hosted artifact is copied here, so this index assigns no invented carrier hash.
+
+The same-day [failure diagnosis](PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md) records the
+Survey → Landing two-barrier race, same-commit persistence canonicalization boundary, exact-build
+worker-client pin omission, BFCache fixture/service-worker scope collision, bounded diagnostics,
+negative controls, and the local evidence boundary. The run is consumed; no retry, merge, release,
+version bump, or deployment authority follows.
+
 ### Signed `3f69e88e…` universe-polish + bounded Arc 5 Feed certificate — complete local chain PASS
 
 Signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree

@@ -586,13 +586,6 @@ function serveDist() {
       response.end('<!doctype html><meta charset="utf-8"><title>Scene memory seed</title>');
       return;
     }
-    if (url.pathname === '/__scenemem_away__.html') {
-      response.writeHead(200, {
-        'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store',
-      });
-      response.end('<!doctype html><meta charset="utf-8"><title>Scene memory away</title><script>globalThis.__CF_SCENEMEM_AWAY__=true<\/script>');
-      return;
-    }
     if (url.pathname === '/favicon.ico') {
       response.writeHead(204, { 'cache-control': 'public, max-age=86400' });
       response.end();
@@ -632,6 +625,40 @@ function serveDist() {
   });
 }
 
+export function sceneMemoryBfcacheAwayResponse(pathname) {
+  if (pathname !== '/__scenemem_bfcache_away__.html') {
+    return Object.freeze({ status: 404, headers: Object.freeze({}), body: '' });
+  }
+  return Object.freeze({
+    status: 200,
+    headers: Object.freeze({
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'no-store',
+    }),
+    body: '<!doctype html><meta charset="utf-8"><link rel="icon" href="data:,"><title>Scene memory away</title><script>globalThis.__CF_SCENEMEM_AWAY__=true<\/script>',
+  });
+}
+
+function serveBfcacheAwayPage() {
+  const server = http.createServer((request, response) => {
+    const url = new URL(request.url || '/', 'http://127.0.0.1');
+    const projected = sceneMemoryBfcacheAwayResponse(url.pathname);
+    response.writeHead(projected.status, projected.headers);
+    response.end(projected.body);
+  });
+  return new Promise((resolve, reject) => {
+    server.once('error', reject);
+    server.listen(0, '127.0.0.1', () => {
+      const address = server.address();
+      assert(address && typeof address === 'object', 'bfcache away server has no TCP address');
+      resolve(Object.freeze({
+        origin: `http://127.0.0.1:${address.port}`,
+        close: () => closeStaticServer(server),
+      }));
+    });
+  });
+}
+
 function evaluationValue(response, label) {
   if (response?.exceptionDetails) {
     const description = response.exceptionDetails.exception?.description
@@ -654,7 +681,7 @@ function makeCollector(send, profile) {
   };
   const waitValue = async (
     sessionId, label, expression, accept = Boolean, timeoutMs = ROUTE_TIMEOUT_MS,
-    diagnose = null,
+    diagnose = null, terminalFailure = null,
   ) => {
     const deadline = performance.now() + timeoutMs;
     let last = null;
@@ -663,6 +690,13 @@ function makeCollector(send, profile) {
       const remaining = Math.max(1, Math.floor(deadline - performance.now()));
       last = await evaluate(sessionId, expression, label, Math.min(COMMAND_TIMEOUT_MS, remaining));
       observations++;
+      if (typeof terminalFailure === 'function' && terminalFailure(last)) {
+        throw new ProductFailure(`${profile} ${label}: product reported a terminal fault`, {
+          observations,
+          last,
+          ...(typeof diagnose === 'function' ? { reasons: diagnose(last) } : {}),
+        });
+      }
       if (accept(last)) return last;
       await sleep(Math.min(50, Math.max(1, deadline - performance.now())));
     }
@@ -745,6 +779,24 @@ function surfaceVistaState(scene) {
     surfaceVistaCacheEntries: scene.surfaceVistaCacheEntries,
     surfaceVistaCachePixels: scene.surfaceVistaCachePixels,
   });
+}
+
+export function sceneMemorySurfaceVistaFaultReasons(value) {
+  const faults = value?.surfaceVistaFaults;
+  if (!Number.isInteger(faults) || faults < 0) {
+    return Object.freeze(['surface vista fault diagnostics are missing or invalid']);
+  }
+  if (faults === 0) {
+    if (value?.surfaceVistaLastError !== null) {
+      return Object.freeze(['surface vista fault diagnostics are inconsistent']);
+    }
+    return Object.freeze([]);
+  }
+  const detail = typeof value.surfaceVistaLastError === 'string'
+    && value.surfaceVistaLastError.length > 0
+    ? value.surfaceVistaLastError
+    : 'cause unavailable';
+  return Object.freeze([`surface vista fault (${faults}): ${detail}`]);
 }
 
 async function postRenderAnswerability(send, sessionId, profile, token) {
@@ -976,9 +1028,38 @@ async function driveCycle({ collector, sessionId, profile }) {
   sceneObjectsByRoute.system = system.worldChildren;
   visitedRoutes.push('system');
 
-  const landAccepted = await collector.evaluate(sessionId,
-    `window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`, 'land on Earth');
-  productAssert(landAccepted === true, `${profile}: Earth planetfall was rejected`);
+  /* Capture a rejected product and its bounded state witness in the same
+     browser task. A convergence reload scheduled by the product cannot erase
+     the actionable reason between two separate CDP evaluations. */
+  const landAttempt = await collector.evaluate(sessionId, `(async () => {
+    const api = window.__CF_SLICE__?.api;
+    const accepted = await api.landOn(${JSON.stringify(EARTH)});
+    const state = api?.state?.() ?? null;
+    return {
+      accepted,
+      evidence: state === null ? null : {
+        route: {
+          mode: state.mode ?? null,
+          gal: state.gal ?? null,
+          star: state.star ?? null,
+          planet: state.planet ?? null,
+          planetOrdinal: state.planetOrdinal ?? null,
+        },
+        persistence: state.persistence == null ? null : {
+          protectedDetail: state.persistence.protectedDetail ?? null,
+          convergenceReloadScheduled: state.persistence.convergenceReloadScheduled ?? null,
+          mutationBlockWitness: state.persistence.mutationBlockWitness ?? null,
+          runtime: state.persistence.runtime ?? null,
+        },
+        landing: state.landing ?? null,
+      },
+    };
+  })()`, 'land on Earth with rejection evidence');
+  productAssert(landAttempt?.accepted === true,
+    `${profile}: Earth planetfall was rejected`, landAttempt?.evidence ?? landAttempt);
+  productAssert(landAttempt?.evidence?.route?.mode === 'surface'
+    && landAttempt?.evidence?.persistence?.convergenceReloadScheduled === false,
+  `${profile}: Earth landing scheduled convergence before surface observation`, landAttempt?.evidence);
   const surfaceRoute = await observe('route Earth 133 settled', (value) => exactMode('surface', {
     gal: 999, star: 424242, planet: 133, planetOrdinal: 2,
   })(value) && value?.panel === null, ART_TIMEOUT_MS);
@@ -991,7 +1072,7 @@ async function driveCycle({ collector, sessionId, profile }) {
   productAssert(surfaceDemand?.requested === true,
     `${profile}: surface HD demand was not applied`, surfaceDemand);
   const surface = await collector.waitValue(sessionId, 'surface texture settlement',
-    `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),r=S.api.sceneResourceDiagnostics();return r.mode==='surface'
+    `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),r=S.api.sceneResourceDiagnostics(),settled=r.mode==='surface'
       &&S.documentToken===${JSON.stringify(surfaceDemand.documentToken)}
       &&r.generation===${surfaceDemand.sceneGeneration}&&s.tickerTicks>${surfaceDemand.beforeTicker}
       &&s.rendererDpr===${expectedRendererDpr}
@@ -1005,8 +1086,10 @@ async function driveCycle({ collector, sessionId, profile }) {
       &&r.surfaceCurrentTierPx===${expectedTierPx}&&r.surfaceRequestedTierPx===0
       &&r.surfaceCurrentBackingWidth===${expectedTierPx}
       &&r.surfaceCurrentBackingHeight===${expectedTierPx}
-      &&r.registry.coherent===true?{...r,rendererDpr:s.rendererDpr}:null})()`,
-  Boolean, ART_TIMEOUT_MS);
+      &&r.registry.coherent===true;return {...r,rendererDpr:s.rendererDpr,settled}})()`,
+  (value) => value?.settled === true, ART_TIMEOUT_MS,
+  sceneMemorySurfaceVistaFaultReasons,
+  (value) => sceneMemorySurfaceVistaFaultReasons(value).length > 0);
   sceneObjectsByRoute.surface = surfaceRoute.worldChildren;
   visitedRoutes.push('surface');
   inventory.surface = {
@@ -1189,7 +1272,7 @@ function routeInventory(stages) {
   }));
 }
 
-async function collectBfcache({ send, collector, sessionId, origin, profile, documentToken }) {
+async function collectBfcache({ send, collector, sessionId, profile, documentToken }) {
   const before = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__,r=S.api.sceneResourceDiagnostics();return {
     documentToken:S.documentToken,pagehide:r.persistedPagehideCount,pageshow:r.persistedPageshowCount}})()`,
   'bfcache precondition');
@@ -1200,14 +1283,19 @@ async function collectBfcache({ send, collector, sessionId, origin, profile, doc
   });
   const gameEntryId = history.entries?.[history.currentIndex]?.id;
   assert(Number.isInteger(gameEntryId), `${profile}: current game history entry is absent`);
-  await send('Page.navigate', { url: `${origin}/__scenemem_away__.html` }, sessionId, {
-    timeoutMs: COMMAND_TIMEOUT_MS,
-  });
-  await collector.waitValue(sessionId, 'away-page readiness',
-    `globalThis.__CF_SCENEMEM_AWAY__===true?'away':null`, Boolean, ROUTE_TIMEOUT_MS);
-  await send('Page.navigateToHistoryEntry', { entryId: gameEntryId }, sessionId, {
-    timeoutMs: COMMAND_TIMEOUT_MS,
-  });
+  const away = await serveBfcacheAwayPage();
+  try {
+    await send('Page.navigate', {
+      url: `${away.origin}/__scenemem_bfcache_away__.html`,
+    }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+    await collector.waitValue(sessionId, 'away-page readiness',
+      `globalThis.__CF_SCENEMEM_AWAY__===true?'away':null`, Boolean, ROUTE_TIMEOUT_MS);
+    await send('Page.navigateToHistoryEntry', { entryId: gameEntryId }, sessionId, {
+      timeoutMs: COMMAND_TIMEOUT_MS,
+    });
+  } finally {
+    await away.close();
+  }
   const deadline = performance.now() + ROUTE_TIMEOUT_MS;
   let resumed = null;
   let lastError = null;
@@ -1513,7 +1601,7 @@ async function collectProfile({
       onProgress(measurement);
     }
     const bfcacheEvidence = await collectBfcache({
-      send, collector, sessionId, origin, profile, documentToken: measurement.documentToken,
+      send, collector, sessionId, profile, documentToken: measurement.documentToken,
     });
     measurement.bfcache = bfcacheEvidence.point;
     measurement.bfcacheSnapshot = bfcacheEvidence.snapshot;
@@ -1614,6 +1702,15 @@ function unavailableSource(reason) {
   });
 }
 
+export async function sceneMemoryCollectProfilesOnce(collect) {
+  assert(typeof collect === 'function', 'SceneMemory profile collector must be a function');
+  const measurements = {};
+  for (const [profile, viewport] of Object.entries(PROFILES)) {
+    measurements[profile] = await collect(profile, viewport);
+  }
+  return Object.freeze(measurements);
+}
+
 async function runGate(options) {
   const releaseLock = acquireWorkspaceLock('v2 Arc 1C scene memory/resource evidence');
   let lockOwned = true;
@@ -1710,7 +1807,7 @@ async function runGate(options) {
     if (budget) assertBudgetBinding(budget, inputs, launchedBrowser);
 
     const veteranRaw = sceneMemoryVeteranRaw();
-    for (const [profile, viewport] of Object.entries(PROFILES)) {
+    await sceneMemoryCollectProfilesOnce(async (profile, viewport) => {
       const measurement = await collectProfile({
         send: browser.send, origin: server.origin,
         fixture, veteranRaw, profile, viewport, fatalEvents, sessionProfiles,
@@ -1727,7 +1824,8 @@ async function runGate(options) {
         fatalEvents: [...fatalEvents],
       };
       atomicWriteJson(reportPath, running);
-    }
+      return measurement;
+    });
     const contractBudgets = budget?.profiles ?? Object.fromEntries(
       Object.entries(profiles).map(([profile, measurement]) => [
         profile, calibrationBudget(measurement.metrics),

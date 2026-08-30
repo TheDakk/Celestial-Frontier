@@ -1,6 +1,23 @@
 # Celestial-Frontier
 
-> **Current universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact signed source
+> **Current draft PR #35 repair boundary (2026-08-29):** `openai/mac` is pushed only through
+> `017fa6decbc41809188768ccdb98ab86ef1b9ebc`; draft PR #35 targets `develop` base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Its consumed one-attempt run `33278630671`
+> passed every root/browser-free/type/art/coverage/current-authority predecessor and then stopped
+> in phone SceneMemory at `Earth planetfall was rejected`; later browser stages were skipped. The
+> approval label is absent and no retry or replacement hosted attempt is authorized.
+>
+> The current local, unpushed repair drains both Survey → Landing persistence barriers without
+> retry, predicts save successors with the transaction owner's exact checked-clock codec, carries
+> exact-build pins into worker/shared-worker clients before lazy imports, and makes SceneMemory
+> retain bounded Landing/worker/BFCache diagnoses. The complete v2 browser-free suite is green at
+> **234 files / 2,373 passed + 1 skipped**, all three TypeScript configurations and the full static
+> art/override/coverage/spec battery pass, and SceneMemory plus Compendium producer authorities
+> match without changing numeric ceilings or browser baselines. A signed local commit and fresh
+> clean exact-source browser proof remain the next local boundary; no merge, release, version bump,
+> publication, or deployment has occurred.
+
+> **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact signed source
 > `3f69e88ea8e34fdb8d9913276601b426ada783ae` remained clean and unchanged through one serial,
 > zero-retry **Layout → SceneMemory → Compendium → Slice → Glass → Recovery** campaign. Layout
 > passed **787/787**, SceneMemory **44/44**, Compendium **78/78**, Slice passed with zero findings,
@@ -13,16 +30,17 @@
 > effects—never only Sol—and completes the bounded Arc 5 Feed scope with exact creature/flora settlement, stale-CAS
 > convergence, reload durability, accessible status and expression audio. Existing anatomy,
 > silhouettes, proportions, topology, seeds, share identity and interaction geometry remain intact.
-> The full v2 battery is **1,712 passed + 1 skipped**, all TypeScript configurations are green, and
+> At that checkpoint, the full v2 battery was **1,712 passed + 1 skipped**, all TypeScript configurations were green, and
 > the final seven compressed evidence carriers, sizes and hashes are preserved in
 > [`audits/README.md`](audits/README.md).
 >
 > Edge `151.0.4129.107` / CDP `1.3` is run provenance only; compatible browser updates do not
 > trigger rebaselining. HUMAN visual/listening/screen-reader/first-journey and physical-device
 > heat/battery/GPU review remain open, as do Gate G distant playback/D-9e and whole Gates A–I.
-> Nothing has been pushed, merged, released, version-bumped or deployed.
+> That historical certificate itself authorized no push, merge, release, version bump or deploy;
+> the later draft-PR boundary is stated above and does not relabel this evidence.
 >
-> **Current local Arc 4 Charter successor (2026-08-29; later than the certificate above):** the
+> **Earlier local Arc 4 Charter checkpoint (2026-08-29; later than the certificate above):** the
 > first durable successful Tame, Scavenge, or Sample on each exact source-proven world beyond Sol
 > can now bank that world's one Chapter 2 life-discovery tick in the same pre-draw-certified
 > receipt/CAS as capture ownership, reward and F4. Misses, Sol, unreachable/past-chapter sources,
@@ -31,10 +49,11 @@
 > hierarchy, so equal seeds at different coordinates cannot inherit Sol or home-galaxy reach; only
 > a capture that actually banks the deed may reconcile an imported Charter chapter.
 > This deliberately replaces the separate v1.8.9 Discover Life interaction for that one deed; it
-> does not change legacy Survey Records or restore accepted/weekly bioscan Charters. Focused
-> and final full browser-free evidence is green at **230 files / 2,315 passed + 1 skipped**. All
-> three TypeScript programs are green, `compendiummem:selftest` passes **222 independent controls**,
-> the authority printer exits 0, and the current-authority tests pass **45/45**. Fresh clean exact-
+> does not change legacy Survey Records or restore accepted/weekly bioscan Charters. At that
+> checkpoint, focused and final full browser-free evidence was green at
+> **230 files / 2,315 passed + 1 skipped**. All three TypeScript programs were green,
+> `compendiummem:selftest` passed **222 independent controls**, the authority printer exited 0, and
+> the then-current-authority tests passed **45/45**. Fresh clean exact-
 > source browser/HUMAN evidence remains open, so the signed `3f69e88…` result is preserved rather
 > than relabelled.
 >
@@ -44,15 +63,19 @@
 > successful Breed gives the child +2 XP; the first successful union of each canonical unordered
 > species pair gives that child another +5 XP. Stable species identity plus imported v1 pair-claim
 > evidence prevents rename, parent-order, reload or archive rollover from re-arming that bonus. The
-> four explicit audio paths are durable Tame greeting, committed Feed acknowledgement, exact-owned-
-> fauna Compendium Listen, and visible inhabited-world Planetside **Listen to biosphere**; combat/
-> Guardian audio and authored continuous ambience remain absent.
+> six explicit audio surfaces are durable Tame greeting, committed Feed acknowledgement,
+> exact-owned-fauna Compendium Listen, orbital Survey, visible inhabited-world Planetside
+> **Listen to biosphere**, and the post-settlement Combat Chronicle. The Chronicle owns its complete
+> registered synthetic cue inventory; recorded assets and authored continuous ambience/music remain
+> open.
 >
-> A bounded landed Arc 6 challenge now offers the explorer or eligible owned fauna against the exact
-> Titan, Guardian or strongest-fauna defender, shows a deterministic 160-run forecast and settles one
+> A bounded landed Arc 6 challenge now offers the explorer, eligible owned fauna or a captured
+> Guardian/Titan champion against the exact Titan, Guardian or strongest-fauna defender, shows a
+> deterministic 160-run forecast and settles one
 > transcript/receipt/CAS. It persists conquest, XP, wounds/loss, Stardust, Guardian/Titan acquisition,
 > Prime/Frontier, `c2-conq`, `settle1`, `brink`, and accepted starter `st-conq` +25 Stardust. Authored
-> extra Guardian loot, conquest-modifier coexistence, party/retreat and combat audio remain open.
+> extra Guardian loot, conquest-modifier coexistence, party/retreat, recorded audio assets and
+> continuous ambience/music remain open.
 >
 > The Charters board now owns the two established progressive Starter chains, reveals only the next
 > incomplete link, supports explicit Accept with the exact three-active cap, and settles live
@@ -95,8 +118,8 @@
 > physical-device heat/GPU evidence remains open. The seven evidence carriers and synchronized
 > references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
 > Keep temporary full caffeinate active while authorized local work continues, then restore it when
-> that work is complete. Next complete the full-code review/polish checkpoint, then begin authorized
-> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is provenance only
+> that work is complete. At that historical checkpoint, review and Arc 7/8 polish were still next;
+> the live candidate/verification/merge/Claude sequence is owned by `ROADMAP.md`. Edge `.107` / CDP `1.3` is provenance only
 > and compatible point updates never trigger rebaseline. Earlier Final12/Final11/Final10 wording
 > below is historical where superseded.
 Master the infinite
@@ -241,12 +264,15 @@ owners remain future work.
 
 Audio is no longer package-only, but remains deliberately narrow. The app projects exact current
 owned fauna into the deterministic signature/profile/call-plan pipeline, owns a fail-closed five-bus
-runtime lifecycle and persists **Creature Voices**. It exposes four explicit paths: the durable Tame
-greeting, committed Feed acknowledgement, exact-owned-fauna Compendium Listen, and the generic
-visible inhabited-world **Listen to biosphere** signal. Native gesture, exact durable/current owner,
-accessible counterpart, Sound and lifecycle guards remain mandatory; list/navigation/render never
-autoplay. Authored or continuous ambience, music, combat/Guardian audio, recorded assets, full audio
-accessibility, device plateaus and HUMAN listening remain open.
+runtime lifecycle and persists **Creature Voices**. It exposes six explicit surfaces: the durable
+Tame greeting, committed Feed acknowledgement, exact-owned-fauna Compendium Listen, orbital Survey
+and Planetside **Listen to biosphere**, and the post-settlement Combat Chronicle. The Chronicle owns
+the complete already-modelled registered cue set, including Guardian/Titan motifs, dodge, stun,
+impacts/criticals/abilities, burn, regeneration, defeat and resolution. Native gesture, exact
+durable/current owner, accessible counterpart, Sound and lifecycle guards remain mandatory;
+list/navigation/render never autoplay. Recorded assets, authored continuous ambience/music,
+broader or more-specific expressions/ecology, full audio accessibility, device plateaus and HUMAN
+listening remain open.
 
 The dedicated no-forged-time Arc 4 recovery collector and its mutation-sensitive selftest are
 ready, but the collector is not standalone: it may run only after the same unchanged clean commit

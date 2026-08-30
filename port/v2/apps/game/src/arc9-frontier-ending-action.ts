@@ -309,7 +309,11 @@ export async function commitArc9FrontierEndingChoiceV1(
     });
   }
 
-  let selected: Readonly<{ plan: Arc9FrontierEndingReadyV1; witness: string }> | null = null;
+  let selected: Readonly<{
+    plan: Arc9FrontierEndingReadyV1;
+    witness: string;
+    expectedState: SaveStateV2;
+  }> | null = null;
   let transaction: F4RuntimeActionCommitOutcome;
   try {
     transaction = await captured.commit({
@@ -317,7 +321,7 @@ export async function commitArc9FrontierEndingChoiceV1(
       operation: ARC9_FRONTIER_ENDING_OPERATION_V1,
       receiptKind: ARC9_FRONTIER_ENDING_RECEIPT_KIND_V1,
       codecNow: captured.codecNow,
-      derive: ({ receiptOrdinal, draft }) => {
+      derive: ({ receiptOrdinal, draft, canonicalizeState }) => {
         const plan = prepareArc9FrontierEndingChoiceV1(draft, captured.requestedEndingId);
         if (plan.kind !== 'ready'
           || plan.endingId !== preflight.endingId
@@ -326,7 +330,11 @@ export async function commitArc9FrontierEndingChoiceV1(
           throw new Error('Arc 9 Frontier ending parent changed before derivation');
         }
         const witness = witnessFor(plan, receiptOrdinal);
-        selected = Object.freeze({ plan, witness });
+        selected = Object.freeze({
+          plan,
+          witness,
+          expectedState: canonicalizeState(plan.successorState),
+        });
         return Object.freeze({ state: plan.successorState, witness });
       },
     });
@@ -347,6 +355,7 @@ export async function commitArc9FrontierEndingChoiceV1(
   const committedSelection = selected as Readonly<{
     plan: Arc9FrontierEndingReadyV1;
     witness: string;
+    expectedState: SaveStateV2;
   }> | null;
   if (committedSelection === null) {
     return Object.freeze({
@@ -364,7 +373,7 @@ export async function commitArc9FrontierEndingChoiceV1(
     || transaction.receipt.witness !== witness
     || transaction.state.frontierEnding !== plan.endingId
     || !sameJson(transaction.state, transaction.saved.canonicalState)
-    || !sameJson(transaction.state, plan.successorState)
+    || !sameJson(transaction.state, committedSelection.expectedState)
     || projectionDigest(committedProjection) !== projectionDigest(plan.successor)) {
     return Object.freeze({
       kind: 'committed-convergence', durability: 'committed',

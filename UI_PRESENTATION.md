@@ -1,5 +1,20 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-29 current local route/PWA/vista correction (supersedes narrower same-date descriptions
+> below where they differ):** the Survey-to-Landing interaction now drains the route checkpoint,
+> invokes Survey once, drains Survey's replacement product checkpoint, and invokes Land once. No
+> retry or optimistic transition was added. Exact PWA build ownership now follows valid module-worker
+> and shared-worker creation through `resultingClientId`; retention considers all client realms and
+> confirms a missing reserved worker before pruning its pin, so a worker's later lazy import cannot
+> cross builds after activation or rollback.
+>
+> A failed biome-vista worker still leaves the usable fitted globe in place, but diagnostics now
+> expose the fault count plus one bounded exact last-error string. SceneMemory fails that condition
+> immediately with the actionable cause, and performs its BFCache away navigation on a separate
+> temporary loopback origin outside the product service worker's scope. These are lifecycle and
+> observability corrections, not a new visible control, layout, art structure or player-facing error
+> surface. Historical exact-source browser evidence below remains bound to its named source.
+
 > **2026-08-29 current local PWA presentation overlay (matches code):** build output now mounts one
 > Settings-contained, accessible **App status** disclosure only when the generated PWA marker is
 > present. Its polite/atomic status becomes an alert on errors; Check, Activate, Reload and Roll back
@@ -42,12 +57,14 @@
 > Field Scout. Each keeps Back/Close available, paints the old durable state while pending, pages at
 > most 24 candidates, distinguishes same-species twins, announces one accessible committed result
 > and enters read-only reload convergence on durable ambiguity. Tame and accepted Feed can play their
-> exact settled creature expressions; an explicit owned-fauna detail Listen and an explicit generic
-> inhabited-Planetside Listen are also live. List mount/focus/filter/navigation and ordinary scene
-> rendering never autoplay. Exact registered post-settlement Chronicle captions may play bounded
+> exact settled creature expressions; an explicit owned-fauna detail Listen plus distinct orbital
+> Survey and inhabited-Planetside generic biosphere Listen controls are also live. List mount/focus/
+> filter/navigation and ordinary scene rendering never autoplay. Exact registered post-settlement
+> Chronicle captions may play bounded
 > synthesized initiative, dodge, stun, impact/critical/ability, burn, regeneration, defeat,
 > resolution and Guardian/Titan entrance/phase/outcome sound. Authored continuous ambience, music,
-> recorded combat assets and HUMAN/device listening remain open.
+> recorded assets, broader or more-specific expressions/ecology and HUMAN/device listening remain
+> open.
 >
 > A landed non-Training Surface now renders one deterministic combat card with explorer/eligible-
 > ordinary-fauna/live-captured-Guardian-or-Titan champion selection, Titan/Guardian/strongest-fauna defender, exact 160-run forecast, stakes,
@@ -114,7 +131,7 @@
 > bullets. These current local surfaces do not inherit the older browser certificate below; fresh
 > exact-source browser, physical-device, screen-reader and HUMAN experience review remain open.
 
-> **Current universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
+> **Historical signed universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
 > signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
 > chain on Edge `151.0.4129.107` / CDP `1.3`. Layout passed **787/787** in 76,603 ms,
@@ -207,7 +224,7 @@
 > were repair evidence only and the next signed source had to restart the complete chain. Final10
 > supersedes that browser chronology as recorded above.
 >
-> **2026-08-28 current local universe-wide visual checkpoint:** the richer warm/cool, depth,
+> **Historical 2026-08-28 universe-wide visual checkpoint — current implementation retained:** the richer warm/cool, depth,
 > material and light treatment now reaches galaxy/system/planet canvases, all 43 biome profiles,
 > every creature/plant/fungus/microbe portrait route, and the deterministic Shipyard SVG. Existing
 > painters still own every seed, path, anatomy, silhouette, proportion, placement and hit target;
@@ -242,7 +259,8 @@
 > review plus physical-device frame-time, touch, heat, battery and true GPU/resource evidence remain
 > open, so no whole-Gate, hosted, release or deployment claim follows.
 
-> **2026-08-27 audio/rarity presentation overlay — current local candidate:** Settings now renders
+> **Historical 2026-08-27 audio/rarity presentation checkpoint — current controls retained; later
+> audio surfaces are documented above:** Settings now renders
 > persistent **Sound**, **Volume** and **Creature voices** controls from the actual saved values.
 > Sound Off immediately retapers the existing sting bus to effective zero, refuses new sources and
 > asks an existing context to suspend; it does not destroy the saved Volume choice. Live Volume
@@ -272,8 +290,11 @@
 > The audio owner keeps only the latest successful Feed ownership/key, rejecting the same result and
 > every superseded result in constant space. Lost detail, route, counterpart, visibility or
 > answerability; replay, refusal, convergence and disabled Sound or Creature voices remain silent.
-> Scavenge, Sample, distant ecology, ambience, music and combat audio remain outside this Feed-only
-> certificate boundary; their later current-local implementations do not inherit that evidence.
+> Scavenge and Sample audio remain outside this Feed-only certificate boundary. The later orbital
+> Survey and Planetside biosphere controls plus the complete registered Combat Chronicle are current-
+> local implementations, but do not inherit that evidence. Recorded assets, authored continuous
+> ambience/music, broader or more-specific expressions/ecology, device evidence and HUMAN listening
+> remain open.
 >
 > Survey plus Compendium list/detail rarity now pass through one strict app projector. Only integer
 > raw grades 0–14 are accepted: 0–9 use the canonical display row (including Transcendent at 9),

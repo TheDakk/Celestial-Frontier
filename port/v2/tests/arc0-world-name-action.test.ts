@@ -248,6 +248,34 @@ function actionInput(
 }
 
 describe('Arc 0 durable canonical-world naming action', () => {
+  it('seals the codec-canonical successor when an unrelated veteran mining stamp moves', async () => {
+    const state = baseState();
+    state.mined = [['veteran-clock-floor', NOW - 30 * 6e5]];
+    state.mineX = [['veteran-clock-floor', 1]];
+    const fixture = await runtimeFixture({ state });
+    const before = JSON.stringify(fixture.state);
+    const address = solWorld(134);
+    const outcome = await commitArc0WorldNameAction({
+      ...actionInput(fixture, address, 'Veteran Clock'),
+      codecNow: NOW + 1,
+    });
+
+    expect(outcome).toMatchObject({
+      kind: 'committed', durability: 'committed', convergence: 'none',
+    });
+    expect(JSON.stringify(fixture.state)).toBe(before);
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.transaction.state).toEqual(outcome.transaction.saved.canonicalState);
+    expect(new Map(outcome.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(NOW + 1 - 30 * 6e5);
+    expect(verifyArc0WorldNamePostcommit({
+      transaction: outcome.transaction,
+      address,
+      witness: outcome.witness,
+    })).toMatchObject({ kind: 'verified' });
+    await fixture.runtime.release();
+  });
+
   it('commits one cleaned name to exact identity and legacy mirror with one no-RNG receipt', async () => {
     const address = solWorld(134);
     const unrelated = solWorld(135);

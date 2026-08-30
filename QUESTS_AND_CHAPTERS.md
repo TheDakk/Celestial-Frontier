@@ -1,5 +1,14 @@
 # Celestial Frontier — Quests & Chapters
 
+> **2026-08-29 current local Charter fixed-point correction (supersedes narrower same-date
+> descriptions below where they differ):** Starter Charter acceptance and staged deed successors now
+> use the deterministic transaction owner's `canonicalizeState`, bound to the same detached registry
+> and one validated commit clock as the persisted write. Landing's joined Charter successor follows
+> the same owner-minted canonical proof. This does not alter chain visibility, deed eligibility,
+> counters, rewards, gear, capacity, schema, exact-once receipt ownership or the no-retry rule; it
+> prevents a raw or separately clocked expected state from disagreeing with the committed codec
+> fixed point. Historical exact-source evidence below remains scoped to its named source.
+
 > **2026-08-29 current local Starter Charter board and writers (matches code):** v2 now owns the
 > bounded two-chain Starter board, not merely imported Charter bytes. `trades` remains
 > `st-land → st-mine → st-scan → st-scout → st-conq`; `tour` remains

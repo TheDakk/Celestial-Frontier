@@ -22,14 +22,17 @@
 > exact owned fauna by changing only its role pointer. Tastes, stat growth, injury healing, bond,
 > missions, Scout injury interception and Scout +2 fresh-species XP remain separate open owners.
 >
-> The audio owner now exposes five explicit noncombat no-autoplay controls: durable Tame greeting, committed
+> The audio owner now exposes six explicit no-autoplay surfaces: durable Tame greeting, committed
 > Feed acknowledgement, exact-owned-fauna Compendium Listen, pre-landing orbital Survey **Listen to
 > biosphere**, and visible inhabited-world Planetside **Listen to biosphere**. The last two join only
 > their already-visible generic biosphere lead to the same no-spoiler signal, consume no Yield or
-> gameplay RNG, grant nothing and write no save. Authored or continuous biome ambience, music and
-> recorded audio remain absent; the registered post-settlement Combat Chronicle is a separate owner.
+> gameplay RNG, grant nothing and write no save. The sixth surface is the post-settlement Combat
+> Chronicle, which owns every already-modelled registered cue including Guardian/Titan motifs,
+> dodge, stun, impacts/criticals/abilities, burn, regeneration, defeat and resolution. Recorded
+> assets, authored continuous ambience/music, broader or more-specific expressions/ecology, device
+> evidence and HUMAN listening remain open.
 
-> **Current universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
+> **Historical signed universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
 > signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
 > chain on Edge `151.0.4129.107` / CDP `1.3`. Layout passed **787/787** in 76,603 ms,
@@ -64,8 +67,8 @@
 > This is an explicit v2 replacement for the separate v1.8.9 Discover Life button, not a claim of
 > bug-for-bug parity. Landing still only reveals the roster, and the legacy `surveyed`/Records
 > projection plus `stats.surveys` remain unchanged. The separate control, Survey Records behavior
-> and accepted/weekly bioscan Charters are still unavailable. Focused and full browser-free
-> evidence is green at 230 files / 2,315 passed + one skipped; a fresh clean
+> and accepted/weekly bioscan Charters are still unavailable. At that Charter-join checkpoint,
+> focused and full browser-free evidence was green at 230 files / 2,315 passed + one skipped; a fresh clean
 > Slice/Glass/Recovery chain and HUMAN acceptance remain outstanding.
 
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
@@ -157,15 +160,15 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > Compendium and SceneMemory own separate sealed Edge-family + CDP `1.3` capability/profile
 > authorities; neither uses the exact browser build as a perpetual baseline identity.
 
-> **2026-08-26 current-candidate ecology/presentation correction:** the capture epoch is the sole
+> **Historical 2026-08-26 ecology/presentation checkpoint — current mechanics retained where unchanged:** the capture epoch is the sole
 > **published** F4 ecology epoch, derived from visible-and-answerable, lease-owned `activePlayMs`.
 > Crossing an integer edge stages a private candidate; exactly one receipt-free lease/revision CAS
 > must commit it before publication and exact scene/Survey/Planetside/capture reprojection. Those
 > consumers remain fenced while the projection is dirty, and hidden/unanswered time adds nothing.
 > The ordinary Slice deliberately records `recoveryClaimed:false`; elapsed recovery is certified
-> separately. Exact signed source `3f69e88…` passed the dedicated uninterrupted 20-minute Arc 4
-> Recovery run with exact boundary crossing and recovered controls, bound to its exact Slice and
-> Glass predecessors.
+> separately. Historical exact signed source `3f69e88…` passed the then-current dedicated
+> uninterrupted 20-minute Arc 4 Recovery run with exact boundary crossing and recovered controls,
+> bound to its exact Slice and Glass predecessors.
 >
 > Capture mechanics continue to use raw deterministic grade internally, but player rarity is a
 > strict ten-name projection only. Integer tiers `0..8` map directly, raw `9..14` show as
@@ -262,7 +265,7 @@ the current v2 authority is the TypeScript port named in the overlay below.
 > `[PARTIAL]`: its ownership authority is foundational, and the later narrow Feed interaction is
 > player-live without completing the wider care/breeding/companion scope.
 
-## 0. v2.0 ecology/audio and companion link (four explicit audio paths and four companion writers live — 2026-08-29)
+## 0. v2.0 ecology/audio and companion link (six explicit audio surfaces and four companion writers live — 2026-08-29)
 
 The current v2 development slice exposes player Tame, Scavenge, Sample and Biosphere Yield through
 the native Survey card, plus exact-instance Feed, Breed/Recovery, Rename and Field Scout controls
@@ -293,8 +296,8 @@ The boundary is intentionally narrow:
 - The separate real-fauna Compendium Feed action may emit one exact contented expression after its
   committed durable successor and inline polite/atomic status settle. That status is the sole
   accessible announcement; the simultaneous corner toast is visual-only. One constant-size latest-
-  successful-ownership fence rejects the same and every superseded result. Exact signed source
-  `3f69e88…` passed the current Slice oracle requiring the started Feed oscillator to reach one
+  successful-ownership fence rejects the same and every superseded result. Historical exact signed
+  source `3f69e88…` passed the then-current Slice oracle requiring the started Feed oscillator to reach one
   `AudioDestinationNode` entirely within one WebAudio context, followed by exact-bound Glass and
   Recovery passes.
 - Explicit **Listen** on one exact current owned-fauna Compendium detail projects the existing
@@ -306,10 +309,13 @@ The boundary is intentionally narrow:
 - Explicit Planetside **Listen to biosphere** requires the exact current inhabited world and its
   visible biosphere lead, then renders one generic deterministic neutral signal. It reveals no
   species, spends no Yield, grants nothing and writes no save.
+- The post-settlement **Combat Chronicle** owns every already-modelled registered cue, including
+  Guardian/Titan motifs, dodge, stun, impacts/criticals/abilities, burn, regeneration, defeat and
+  resolution. Master Sound governs this separate bounded bus; Creature Voices does not.
 - Feed, Breed/Recovery, Rename and Field Scout are the four current Companion controls. Broader
-  tastes/care/bond, injury healing, missions and Scout consequences remain open; authored/continuous
-  biome ambience, music and recorded audio remain absent, while the registered Combat Chronicle is
-  governed separately by master Sound.
+  tastes/care/bond, injury healing, missions and Scout consequences remain open. Recorded assets,
+  authored continuous ambience/music, broader or more-specific expressions/ecology, device evidence
+  and HUMAN listening also remain open.
 
 The durable acquisition writer remains explicit and separate from the broader future audio
 presentation layer:

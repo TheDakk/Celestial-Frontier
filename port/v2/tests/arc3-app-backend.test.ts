@@ -257,12 +257,15 @@ function runtimeMine(
     operation: 'arc3.mine-world',
     receiptKind: 'arc3-mine-world',
     codecNow,
-    derive: ({ draft, extensions, activePlayMs, receiptOrdinal }) => {
+    derive: ({ draft, extensions, activePlayMs, receiptOrdinal, canonicalizeState }) => {
       const outcome = deriveArc3MineAction({
         draft, extensions, currentSurface, activePlayMs, receiptOrdinal, codecNow,
       });
       if (outcome.kind !== 'ready') throw new Error(outcome.detail);
-      onPlan(outcome.derivation);
+      onPlan(Object.freeze({
+        ...outcome.derivation,
+        state: canonicalizeState(outcome.derivation.state),
+      }));
       return {
         state: outcome.derivation.state,
         extensionWrites: outcome.derivation.extensionWrites,
@@ -277,18 +280,22 @@ function runtimeResearch(
   save: SaveStateV2,
   researchId: string,
   onPlan: (plan: Arc3AppDerivation) => void = () => undefined,
+  codecNow = NOW,
 ) {
   return runtime.commitAction({
     state: save,
     operation: 'arc3.purchase-research',
     receiptKind: 'arc3-purchase-research',
-    codecNow: NOW,
-    derive: ({ draft, extensions, receiptOrdinal }) => {
+    codecNow,
+    derive: ({ draft, extensions, receiptOrdinal, canonicalizeState }) => {
       const outcome = deriveArc3ResearchAction({
-        draft, extensions, researchId, receiptOrdinal, codecNow: NOW,
+        draft, extensions, researchId, receiptOrdinal, codecNow,
       });
       if (outcome.kind !== 'ready') throw new Error(outcome.detail);
-      onPlan(outcome.derivation);
+      onPlan(Object.freeze({
+        ...outcome.derivation,
+        state: canonicalizeState(outcome.derivation.state),
+      }));
       return {
         state: outcome.derivation.state,
         extensionWrites: outcome.derivation.extensionWrites,
@@ -303,18 +310,22 @@ function runtimeFixedFabrication(
   save: SaveStateV2,
   baseId: string,
   onPlan: (plan: Arc3AppDerivation) => void = () => undefined,
+  codecNow = NOW,
 ) {
   return runtime.commitAction({
     state: save,
     operation: 'arc3.fabricate-fixed',
     receiptKind: 'arc3-fabricate-fixed',
-    codecNow: NOW,
-    derive: ({ draft, extensions, activePlayMs, receiptOrdinal }) => {
+    codecNow,
+    derive: ({ draft, extensions, activePlayMs, receiptOrdinal, canonicalizeState }) => {
       const outcome = deriveArc3FixedFabricationAction({
-        draft, extensions, baseId, activePlayMs, receiptOrdinal, codecNow: NOW,
+        draft, extensions, baseId, activePlayMs, receiptOrdinal, codecNow,
       });
       if (outcome.kind !== 'ready') throw new Error(outcome.detail);
-      onPlan(outcome.derivation);
+      onPlan(Object.freeze({
+        ...outcome.derivation,
+        state: canonicalizeState(outcome.derivation.state),
+      }));
       return {
         state: outcome.derivation.state,
         extensionWrites: outcome.derivation.extensionWrites,
@@ -550,6 +561,128 @@ describe('Arc 3 app bootstrap boundary', () => {
 });
 
 describe('Arc 3 app action transaction seam', () => {
+  it('retains the codec-canonical Mine expectation when an unrelated veteran stamp moves', async () => {
+    const save = freshSave();
+    save.mineX = [[135, 1]];
+    save.mined = [[135, NOW - 30 * 6e5]];
+    const mars = surface(world(MARS));
+    const jupiter = surface(world(JUPITER));
+    const extensions = productExtensions({
+      save,
+      sources: { current: mars, saved: null, atlas: [jupiter] },
+    });
+    const { runtime } = await seededRuntime({ save, extensions, seed: 0xA3C3C101 });
+    const before = JSON.stringify(save);
+    const holder: { value: Arc3AppDerivation | null } = { value: null };
+    const committed = await runtimeMine(
+      runtime,
+      save,
+      mars,
+      NOW + 1,
+      (plan) => { holder.value = plan; },
+    );
+
+    expect(committed.kind).toBe('committed');
+    expect(JSON.stringify(save)).toBe(before);
+    const plan = holder.value;
+    if (committed.kind !== 'committed' || plan === null) return;
+    expect(new Map(plan.state.mined).get(135)).toBe(NOW + 1 - 30 * 6e5);
+    expect(plan.state).toEqual(committed.saved.canonicalState);
+    expect(verifyArc3CommittedMineAction({
+      extensions: committed.saved.extensions,
+      committed: committed.state,
+      expectedOwnedState: plan.state,
+      expectedEngineeringState: plan.nextEngineeringState,
+      expectedArc2State: plan.nextArc2State,
+      codecNow: NOW + 1,
+      minedTimestampIntent: plan.minedTimestampIntent,
+    })).toMatchObject({ kind: 'verified' });
+    await runtime.release();
+  });
+
+  it('retains the codec-canonical Research expectation when a veteran stamp moves', async () => {
+    const save = freshSave();
+    save.cargo = [['Fe', 8], ['Si', 5]];
+    save.essence = 20;
+    save.items = [['jumpdrive', 1]];
+    save.mineX = [[135, 1]];
+    save.mined = [[135, NOW - 30 * 6e5]];
+    const mars = surface(world(MARS));
+    const jupiter = surface(world(JUPITER));
+    const extensions = productExtensions({
+      save,
+      sources: { current: mars, saved: null, atlas: [jupiter] },
+      items: save.items,
+    });
+    const { runtime } = await seededRuntime({ save, extensions, seed: 0xA3C3C102 });
+    const before = JSON.stringify(save);
+    const holder: { value: Arc3AppDerivation | null } = { value: null };
+    const committed = await runtimeResearch(
+      runtime,
+      save,
+      'scan1',
+      (plan) => { holder.value = plan; },
+      NOW + 1,
+    );
+
+    expect(committed.kind).toBe('committed');
+    expect(JSON.stringify(save)).toBe(before);
+    const plan = holder.value;
+    if (committed.kind !== 'committed' || plan === null) return;
+    expect(new Map(plan.state.mined).get(135)).toBe(NOW + 1 - 30 * 6e5);
+    expect(plan.state).toEqual(committed.saved.canonicalState);
+    expect(verifyArc3CommittedResearchAction({
+      extensions: committed.saved.extensions,
+      committed: committed.state,
+      expectedOwnedState: plan.state,
+      expectedState: plan.nextEngineeringState,
+      codecNow: NOW + 1,
+      minedTimestampIntent: plan.minedTimestampIntent,
+    })).toMatchObject({ kind: 'verified' });
+    await runtime.release();
+  });
+
+  it('retains the codec-canonical ordinary Fixed Fabrication expectation when a veteran stamp moves', async () => {
+    const save = freshSave();
+    save.cargo = [['Fe', 10]];
+    save.mineX = [[135, 1]];
+    save.mined = [[135, NOW - 30 * 6e5]];
+    const mars = surface(world(MARS));
+    const jupiter = surface(world(JUPITER));
+    const extensions = productExtensions({
+      save,
+      sources: { current: mars, saved: null, atlas: [jupiter] },
+    });
+    const { runtime } = await seededRuntime({ save, extensions, seed: 0xA3C3C103 });
+    const before = JSON.stringify(save);
+    const holder: { value: Arc3AppDerivation | null } = { value: null };
+    const committed = await runtimeFixedFabrication(
+      runtime,
+      save,
+      'plate',
+      (plan) => { holder.value = plan; },
+      NOW + 1,
+    );
+
+    expect(committed.kind).toBe('committed');
+    expect(JSON.stringify(save)).toBe(before);
+    const plan = holder.value;
+    if (committed.kind !== 'committed' || plan === null || plan.nextArc2State === null) return;
+    expect(plan.minedTimestampIntent).toEqual({ kind: 'preserve' });
+    expect(new Map(plan.state.mined).get(135)).toBe(NOW + 1 - 30 * 6e5);
+    expect(plan.state).toEqual(committed.saved.canonicalState);
+    expect(verifyArc3CommittedFixedFabricationAction({
+      extensions: committed.saved.extensions,
+      committed: committed.state,
+      expectedOwnedState: plan.state,
+      expectedEngineeringState: plan.nextEngineeringState,
+      expectedArc2State: plan.nextArc2State,
+      codecNow: NOW + 1,
+      minedTimestampIntent: plan.minedTimestampIntent,
+    })).toMatchObject({ kind: 'verified' });
+    await runtime.release();
+  });
+
   it('banks one mined action tick in the same candidate even when Auto-Extractor grants many loads', () => {
     const save = freshSave();
     save.items = [['autoext', 1]];

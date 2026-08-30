@@ -611,7 +611,11 @@ export async function commitArc9SharingActionV1(
     });
   }
 
-  let selected: Readonly<{ plan: Arc9SharingReadyV1; witness: string }> | null = null;
+  let selected: Readonly<{
+    plan: Arc9SharingReadyV1;
+    witness: string;
+    expectedState: SaveStateV2;
+  }> | null = null;
   let transaction: F4RuntimeActionCommitOutcome;
   try {
     transaction = await captured.commit({
@@ -619,7 +623,7 @@ export async function commitArc9SharingActionV1(
       operation: preflight.operation,
       receiptKind: preflight.receiptKind,
       codecNow: captured.codecNow,
-      derive: ({ receiptOrdinal, draft }) => {
+      derive: ({ receiptOrdinal, draft, canonicalizeState }) => {
         const plan = prepareArc9SharingActionV1(
           draft,
           captured.actionKind,
@@ -630,7 +634,11 @@ export async function commitArc9SharingActionV1(
           throw new Error('Arc 9 sharing parent changed before derivation');
         }
         const witness = witnessFor(plan, captured.code, receiptOrdinal);
-        selected = Object.freeze({ plan, witness });
+        selected = Object.freeze({
+          plan,
+          witness,
+          expectedState: canonicalizeState(plan.successorState),
+        });
         return Object.freeze({
           state: plan.successorState,
           extensionWrites: Object.freeze([]),
@@ -655,6 +663,7 @@ export async function commitArc9SharingActionV1(
   const committedSelection = selected as Readonly<{
     plan: Arc9SharingReadyV1;
     witness: string;
+    expectedState: SaveStateV2;
   }> | null;
   if (committedSelection === null) {
     return Object.freeze({
@@ -677,7 +686,7 @@ export async function commitArc9SharingActionV1(
     || transaction.receipt.witness !== committedSelection.witness
     || !sameNoRngPlan(transaction.plan)
     || !sameJson(transaction.state, transaction.saved.canonicalState)
-    || !sameJson(transaction.state, plan.successorState)
+    || !sameJson(transaction.state, committedSelection.expectedState)
     || transaction.state.stats[plan.counterKey] !== plan.counterAfter
     || !sameJson(transaction.state.unlocked, plan.nextUnlockedIds)
     || (plan.actionKind === 'follow'

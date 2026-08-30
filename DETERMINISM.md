@@ -1,5 +1,18 @@
 # Celestial Frontier — Determinism Discipline
 
+> **2026-08-29 current local commit-clock correction (supersedes narrower same-date descriptions
+> below where they differ):** deterministic product derivation still receives no wall clock and
+> spends no additional gameplay RNG. The transaction owner now detaches the content registry once,
+> validates the caller-injected save clock once, and supplies `canonicalizeState`, bound to that same
+> registry and clock, for predicting the exact codec-normalized successor that the transaction will
+> persist. Arc 0 Atlas/Landing/world naming, Arc 5 Field Scout, Arc 9 Atlas Favorite/explorer
+> naming/Frontier ending/nameplate/Sharing/Survey/Travel, Binder set claims and Starter Charters use
+> that owner capability rather than recanonicalizing with a fresh clock or comparing raw drafts.
+> Survey-to-Landing separately waits the route checkpoint, starts Survey once, waits Survey's newly
+> installed checkpoint, requires that exact Survey settlement to return true, and calls Land once;
+> a synchronous refusal or later false stops the chain. Its ordering helper reads no clock, state or
+> RNG and never retries. Historical certificates below remain bound to their named sources.
+
 > **2026-08-29 current local Arc 5/6/7/9 deterministic authority:** the compact Arc 5 owner now
 > exposes four player-live exact-instance writers without changing genome or world identity. Feed
 > commits one creature/one flora successor without an outcome draw; Breed pre-certifies both complete
@@ -25,12 +38,15 @@
 > limited to earned indices `0..bestRank`, and one F4 receipt/CAS verifies the save before AppChrome
 > changes. It does not retry or render an optimistic choice; durable ambiguity schedules reload.
 >
-> Audio remains presentation-only and consumes no product RNG. The four noncombat paths are the exact
-> durable Tame greeting, committed Feed acknowledgement, explicit exact-owned-fauna Compendium
-> Listen, and explicit visible inhabited-world Planetside **Listen to biosphere**. The last path is a
-> generic no-spoiler biosphere signal that grants and writes nothing. The Combat Chronicle may also
-> synthesize only registered transcript-owned impact, critical and ability layers through its bounded
-> master-Sound-governed combat bus; Guardian motifs and non-impact combat cues remain absent. Exact
+> Audio remains presentation-only and consumes no product RNG. Its six explicit surfaces are the
+> exact durable Tame greeting, committed Feed acknowledgement, explicit exact-owned-fauna Compendium
+> Listen, orbital Survey and visible inhabited-world Planetside **Listen to biosphere**, and the
+> post-settlement Combat Chronicle. Both biosphere controls use a generic no-spoiler signal that
+> grants and writes nothing. The master-Sound-governed Chronicle owns every already-modelled
+> registered transcript cue, including Guardian/Titan motifs, dodge, stun, impacts/criticals/
+> abilities, burn, regeneration, defeat and resolution. Recorded assets, authored continuous
+> ambience/music, broader or more-specific expressions/ecology, device evidence and HUMAN listening
+> remain open. Exact
 > signed `3f69e88…` completed its source-bound Slice → Glass → uninterrupted 20-minute
 > Recovery certificate once/no-retry. That certificate predates the later Arc 5/6/7/9 product work
 > and is not relabelled as evidence for it.
