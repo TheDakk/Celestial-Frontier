@@ -10,6 +10,60 @@ summary of it.
 
 ## Contents
 
+### Signed `4ac4d3c…` Compendium PASS, then terminal-red compact/audio fixture evidence
+
+Exact clean SSH-signed source `4ac4d3cf8b717e0a2a52d53a4e6e2c5eb89637a1` (tree
+`a00c83dd5867c88b89d9474f868f3e930cc18d42`, parent
+`8bdf474e92467652729a6980f706ca3a2813682c`) ran Compendium
+`20260830183843086-13837-7b626b40e8` exactly once with zero retry on Microsoft Edge
+`152.0.4191.53` / CDP `1.3`. It passed all **78/78** outcomes (39 phone + 39 desktop), produced
+all six review PNG identities, and passed its exact named verifier in **65,002 ms**.
+`ARC1C_COMPENDIUM_PR35_EXACTNESS_PASS_20260830_4AC4D3C.json.gz` is **519,732 gzip /
+10,777,529 raw bytes**; gzip/raw SHA-256 is
+`64d9b29a20e0841bbfedc427fffa831895402b1c49bc2db69073e62f2cb8db6b` /
+`ac188c49aaaefff92f1efc9ea5d856de39dc418d6c89407ea974b9aba2fba85b`.
+
+The same unchanged source then ran Slice `20260830184013566-14221-2941ac202e95` exactly once.
+It stopped terminal red after **152,754 ms**, with zero automatic retries and two independent
+scopes: `arc-5-compact-carrier-boot` and `arc-4-tame-greeting-audio-start`. Glass and Recovery did
+not run and have no `4ac4d3c…` successor authority.
+
+- `ARC4_SLICE_PR35_COMPACT_AUDIO_FIXTURE_RED_20260830_4AC4D3C.json.gz` is **140,191 gzip /
+  1,101,615 raw bytes**, SHA-256
+  `4df4d3d0a8f165d9eba78480acff7461e08d79ad278e2e24dbf1280e2ec9c6ab` /
+  `6c39ea537d2647f1439df8efbf7376661d891f9df4b8d3b4df7384597c59ea88`.
+- `ARC4_SLICE_PR35_COMPACT_AUDIO_FIXTURE_RED_20260830_4AC4D3C.log.gz` is **65,708 gzip /
+  455,499 raw bytes**, SHA-256
+  `7012e78bf0d3db3f204a7353fe6ee0ba19563acaca2c300e1352059d84e3efcb` /
+  `026aa75231e0fd08f1a91b00f2d48b80d01fd5cdf516db2fe0390d6cd179151a`.
+
+Both findings are instrument/fixture false negatives, not product defects. Compact-carrier
+upgrade, one-CAS migration, receipt and RNG preservation, four-shard integrity, aligned zero-write
+reload, document replacement and both mutation controls all passed. Its only outer red was the
+shared `fixtureCurrent`; the only nested red required the global F4 runtime to report exactly one
+commit even though the valid Arc 5 boot plus independently valid Arc 9 progression catch-up
+reported two. The repair removes only those two global commit-total predicates, retains both exact
+Arc 5 runtime projections and the isolated upgrade document's one-CAS assertion, and makes this
+stage use the existing fail-stop path so one future red cannot manufacture later work.
+
+The audio fixture separately inherited the veteran save's later Charter chapter `asc === 2`, while
+its sealed scenario and oracle explicitly own Chapter index `1` and the first alien-world bioscan.
+The product therefore correctly returned `charterBioscanBanked: false`; the impossible predicate
+kept polling until the normal 3.6-second toast expiry. The terminal observation still proves one
+real Tame hit and one natural greeting: one claimed event, one voice started/completed, peak one,
+one creature emitter, and zero stops, steals, rejections or faults. The repair restores only the
+shared Pertar fixture to Chapter `1` with `c2-scan` absent/zero and updates its audio-source digest.
+The derived Arc 0 landing-fault fixture remains at its prior later Charter chapter because it owns
+landing publication, not this bioscan reward. The strict live assertive-toast, Charter-copy,
+one-start and no-replay classifiers remain unchanged.
+
+No app/gameplay, save schema, creature/genome, art, balance, audio implementation, timeout, retry,
+numeric ruler or browser baseline changed. No new test or stage was added. Focused coverage is
+**89/89** and the complete browser-free suite remains **251 files / 2,501 passed / 1 skipped** in
+**23.39 seconds**, with all three TypeScript configurations green. This is repair admission only;
+a fresh exact clean signed source must earn one new no-retry Compendium → Slice → Glass → Recovery
+chain.
+
 ### Signed `8bdf474…` Compendium PASS, then terminal-red Arc 0 publication-oracle evidence
 
 Exact clean SSH-signed source `8bdf474e92467652729a6980f706ca3a2813682c` (tree

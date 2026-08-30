@@ -658,6 +658,10 @@ const ARC4_PERTAR_RAW = (() => {
   save.me = 'Arc 4 Pertar Browser Fixture';
   save.essence = 100;
   save.essenceEarned = 100;
+  /* This fixture owns the Chapter-2 alien-bioscan outcome. Do not inherit
+     the veteran fixture's later Charter chapter or completed bioscan goal. */
+  save.asc = 1;
+  delete save.ascp['c2-scan'];
   /* The mapped seed-68 result includes the capped +0.25 capture bonus.
      Close the source first: no veteran system/contact item or orphan Sol skim
      cursor may leak into the Pertar-only replacement. Then add the one real
@@ -712,6 +716,9 @@ const ARC4_PERTAR_RAW = (() => {
 const ARC0_LANDING_FAULT_RAW = (() => {
   const save = JSON.parse(ARC4_PERTAR_RAW);
   save.me = 'Arc 0 Landing Fault Browser Fixture';
+  /* Arc 0 owns landing publication, not the Chapter-2 bioscan scenario. Keep
+     its prior later-Charter state isolated from the shared Pertar fixture. */
+  save.asc = 2;
   save.land = Array.isArray(save.land)
     ? save.land.filter((seed) => seed !== ARC4_PERTAR_FIXTURE.planet.seed)
     : [];
@@ -725,7 +732,7 @@ const ARC4_PERTAR_AUDIO_RAW = (() => {
   return JSON.stringify(save);
 })();
 const ARC4_PERTAR_AUDIO_RAW_SHA256 =
-  'f6ab3bacccb0a1a2061bfaed3e199023f0f138fc529a5f832e43f628242c608f';
+  '9d807647e3b1f3c10b0bd3bb1e3f679afa383bfe50b3373735f757deb7edc168';
 const ARC4_PERTAR_AUDIO_SOURCE_SAVE = JSON.parse(ARC4_PERTAR_AUDIO_RAW);
 const arc4PertarAudioRawDeltaOutcome = (base, audio) => {
   const baseKeys = Object.keys(base ?? {}).sort();
@@ -762,8 +769,8 @@ if (JSON.stringify(ARC4_PERTAR_SOURCE_SAVE.items) !== JSON.stringify([
 }) || JSON.stringify(ARC4_PERTAR_SOURCE_SAVE.ea) !== JSON.stringify({
   helmet: { k: 'strike', v: 0.05, forId: 'headlamp' },
 }) || JSON.stringify(ARC4_PERTAR_SOURCE_SAVE.skx) !== '[]'
-  || ARC4_PERTAR_SOURCE_SAVE.asc !== SAVE_FIXTURES.veteran_rich.asc
-  || ARC4_PERTAR_SOURCE_SAVE.asc !== 2
+  || ARC4_PERTAR_SOURCE_SAVE.asc !== 1
+  || (ARC4_PERTAR_SOURCE_SAVE.ascp?.['c2-scan'] ?? 0) !== 0
   || ARC4_PERTAR_SOURCE_SAVE.snd !== 0
   || ARC4_PERTAR_SOURCE_SAVE.vce !== 0
   || ARC4_PERTAR_AUDIO_SOURCE_SAVE.snd !== 1
@@ -13446,8 +13453,6 @@ try {
         && sourceState?.persistence?.documentToken === sourceReady.token
         && sourceReady.token !== priorToken,
       bootArc5FixedPoint: arc4DurableEvidenceComplete(wrongOrdinal?.rawBefore)
-        && sourceState?.persistence?.runtime?.commits === 1
-        && wrongOrdinal?.stateBefore?.persistence?.runtime?.commits === 1
         && arc5OwnershipV2RuntimeExact(wrongOrdinal?.rawBefore, sourceState, {
           bootstrapOutcome: 'committed-published',
         })
@@ -15287,7 +15292,7 @@ try {
     shardMutation: !arc4DurableEvidenceComplete(arc5UpgradeShardControl),
   };
   if (!Object.values(arc5UpgradeChecks).every((value) => value === true)) {
-    fails.push('ARC 5 COMPACT CARRIER BOOT: exact v1 certificate did not upgrade once then remain an aligned zero-write v2 fixed point: '
+    failSliceWithoutCascade('ARC 5 COMPACT CARRIER BOOT: exact v1 certificate did not upgrade once then remain an aligned zero-write v2 fixed point: '
       + JSON.stringify({ checks: arc5UpgradeChecks, fixture: arc5UpgradeFixture,
         legacyStage: arc5LegacyStage, legacyRaw: arc5LegacyRaw,
         before: arc5UpgradeBeforeRaw, upgraded: arc5UpgradeRaw,
