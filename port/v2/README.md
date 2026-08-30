@@ -95,6 +95,9 @@
 > SceneMemory then stopped on the phone profile because the real Earth planetfall returned false.
 > The desktop SceneMemory leg and every later browser stage were correctly skipped. That run remains
 > immutable red and consumes its exact authorization; it is not evidence for another attempt.
+> The repair descends from signed local implementation base
+> `eba00e03f3376c67ab38c5067e9a32da66ce3a3`; remote PR #35 remains at `017fa6d…` until a later
+> exact-head authorization. The current descendant has no hosted or preview authorization.
 >
 > Diagnosis exposed two lifecycle boundaries that the earlier static wiring proof did not execute.
 > The one-call Survey → Landing path could meet the route checkpoint still in flight and then the
@@ -119,6 +122,33 @@
 > **44-outcome** SceneMemory ruler nor its numeric ceilings, and they do not relabel historical
 > `3f69e88…` evidence. No replacement hosted attempt, Ready transition, merge, HUMAN acceptance,
 > release, version bump or deployment is authorized.
+
+> The current local repair also makes open-surface ownership explicit. Approach ecology, Capture,
+> Combat and every Compendium action controller attach their root listeners only while their exact
+> surface is live, and detach/dispose are idempotent. One shared panel owner now delegates both
+> opener-focus lineage and opener bubble toggling instead of installing a closure per opener. When a
+> Survey presentation becomes route-invalid, Main releases its ecology/audio, Capture and Combat
+> owners, clears its action/focus/card references and removes the card DOM; ordinary same-system
+> Surface↔orbit movement may still preserve the source-proven Survey it owns.
+
+> Guide and release archives are no longer boot-owned. The small `release-identity.ts` module keeps
+> v2.0 development identity and the null production-release pointer eager, while Guide content and
+> the 56-release/398-bullet legacy archive plus 73-bullet development bulletin load only when the
+> Guide requests them. Each archive has one retryable in-flight import. Loading and failure remain
+> accessible, and publication is fenced to the current Guide request/body/open-panel identity;
+> cached publication waits one microtask because `onOpen` precedes panel exposure. With the shipped
+> pointer still null, boot neither imports release history nor creates `releasePending` or mutates
+> `rnSeen`.
+
+> Species-art ownership is bounded without changing the worker protocol: the worker still returns
+> immutable data URLs, and the window converts only settled 132px thumbnails to revocable Blob URLs;
+> 440px detail portraits remain data URLs. Closed Compendium and Planetside surfaces release their
+> leases before asking the broker to evict unowned portraits and retain at most the 17 most-recently
+> used unleased thumbnails (the exact nine-Compendium/eight-Planetside SceneMemory route). Live
+> leases survive trimming, reacquisition is supported, and invalid, dropped, oversize, duplicate,
+> evicted and final-dispose assets all release their Blob ownership exactly once. Dirty diagnostic
+> `20260829-pr35-blob-url-warm-cache-dirty-budget1` exercised all 44/44 SceneMemory outcomes green,
+> but its dirty source state is explicitly non-certifying and grants no current certificate.
 
 ## Current port status — 2026-08-29
 
@@ -1009,6 +1039,14 @@ The calibration path is complete:
 > empty, and a later genuinely new producer burst owns a fresh instance/import. Pump-generation
 > invalidation rejects a callback armed before bfcache suspension or disposal; resume schedules a
 > fresh serviced turn.
+> The current-local PR #35 successor keeps that data-URL worker protocol but externalizes only
+> settled 132px thumbnails into window-owned Blob URLs. The broker accepts an explicit asset
+> disposer and revokes ownership on invalid, dropped, oversize, duplicate, eviction and final-
+> disposal paths. `releaseUnownedCachedArt({ retainRecentThumbEntries: 17 })` is deterministic and
+> idempotent: it preserves live leases, removes every unowned portrait, keeps only the 17 newest
+> unleased thumbnails for the exact warm route, and permits a later reacquisition. Compendium and
+> Planetside invoke it only after releasing their visible owners; BFCache suspension preserves the
+> live document's bounded cache, while final app disposal revokes it.
 > Capability/import/protocol/worker failures terminate once and settle active
 > plus queued owners without retrying every tile, while paint/content-encode errors are
 > per-job. Exact main-to-worker-to-painter ownership and document/epoch/instance/job/
@@ -1662,7 +1700,12 @@ seven claims, postcommit progression ceremonies, the complete nine-row Prime Cod
 ending choices without presenting protected weeklies, Paragons or later prestige as live.
 Intentionally dormant topics remain source-recorded and player-hidden. No legacy promise is
 presented as current behavior.
-Opening it persists the existing `seenGuide` field. The Guide also carries the full
+The current local implementation keeps only `release-identity.ts` eager. `guide-content.ts` and
+`release-content.ts` load through separate one-in-flight, retry-on-failure dynamic imports after the
+Guide requests them; loading/error copy stays accessible, Search remains disabled until content
+settles, and request/body/open-panel fences prevent a closed or replaced Guide from receiving stale
+publication. A cached archive publishes on the following microtask because panel `onOpen` runs
+before the manager exposes the open panel. Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
 categorized v2.0 development bulletin, now 73 bullets. The draft summarizes the implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
@@ -1701,7 +1744,11 @@ root instead of relying on an asymmetric ID list: a real pointer in either deskt
 rail's measured 8px gap preserves the active panel/ARIA state, removing either marker
 recreates dismissal, and genuine unmarked canvas space still closes. Search retains
 its established outside-dismiss/focus behavior; modal, Training, coexistence and Escape
-policy are unchanged. Survey rendering filters the legacy `Spectral class` row without
+policy are unchanged. Panel opener focus lineage and bubble toggling each use one shared delegated
+owner for all registered openers, including nested-icon targets; open-surface controllers attach
+their listeners only while live and remove them on detach/dispose. Route-invalid Survey teardown
+releases ecology/audio, Capture and Combat state before clearing its card/action/focus DOM, while
+the explicitly source-proven same-system preservation path remains available. Survey rendering filters the legacy `Spectral class` row without
 changing deterministic descriptor data: planet rarity is absent before landing and
 plain after landing, while internal seeded spectral colors and real stellar
 classification remain intact.

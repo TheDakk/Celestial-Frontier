@@ -209,6 +209,38 @@ afterEach(() => {
 });
 
 describe('Arc 5 Compendium Breed projection and controller', () => {
+  it('owns exactly two delegated listeners only while attached and reattaches once', () => {
+    const value = fixture();
+    const view = shell();
+    controller = new CompendiumBreedController({ root: view.root, isCurrent: () => true });
+    controller.setState(model(value));
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
+
+    controller.attach(view.mount);
+    controller.attach(view.mount);
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 1,
+      delegatedListenerCount: 2,
+    });
+    controller.detach();
+    controller.detach();
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 0,
+      retainedDomCount: 0,
+      delegatedListenerCount: 0,
+    });
+
+    controller.attach(view.mount);
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 1,
+      delegatedListenerCount: 2,
+      contextKey: model(value).contextKey,
+    });
+    controller.dispose();
+    controller.detach();
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
+  });
+
   it('projects exact current-species primaries, universe fauna mates, and visible locks', () => {
     const value = fixture();
     const projected = model(value);

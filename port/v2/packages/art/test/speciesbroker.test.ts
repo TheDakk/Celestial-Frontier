@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   SpeciesArtBroker,
+  type SpeciesArtAsset,
   type Portrait440,
   type SpeciesArtProducerPort,
   type SpeciesArtProducerRequest,
@@ -15,7 +16,10 @@ interface ProducerRecord {
   readonly disposals: string[];
 }
 
-function harness(deviceClass: 'phone' | 'desktop' = 'desktop') {
+function harness(
+  deviceClass: 'phone' | 'desktop' = 'desktop',
+  disposeAsset?: (asset: SpeciesArtAsset) => void,
+) {
   let currentDeviceClass = deviceClass;
   const tasks: Array<() => void> = [];
   const producers: ProducerRecord[] = [];
@@ -31,6 +35,7 @@ function harness(deviceClass: 'phone' | 'desktop' = 'desktop') {
       };
       return port;
     },
+    disposeAsset,
   });
   const runTask = (): void => {
     const task = tasks.shift();
@@ -76,6 +81,31 @@ function succeed(record: ProducerRecord, request: SpeciesArtProducerRequest): vo
     kind: request.kind,
     key: request.key,
     asset: assetFor(request),
+  });
+}
+
+function blobThumbAsset(request: SpeciesArtProducerRequest, url: string): Thumb132 {
+  return Object.freeze({
+    key: request.key,
+    url,
+    width: 132,
+    height: 132,
+    encodedBytes: 64,
+    decodedPixels: 132 * 132,
+  });
+}
+
+function succeedBlob(
+  record: ProducerRecord,
+  request: SpeciesArtProducerRequest,
+  url: string,
+): void {
+  record.sink.result({
+    status: 'success',
+    jobId: request.jobId,
+    kind: request.kind,
+    key: request.key,
+    asset: blobThumbAsset(request, url),
   });
 }
 
@@ -352,6 +382,335 @@ describe('SpeciesArtBroker producer ownership', () => {
        refreshDeviceClass would leave both values at their desktop-era 97. */
     for (const lease of queued) lease.release();
     broker.dispose('device-change test complete');
+  });
+
+  it('releases only unowned cached art idempotently and reacquires evicted assets', () => {
+    const { broker, producers, runTask } = harness();
+    broker.activate();
+
+    const retained = broker.leaseThumb(genome(8801));
+    runTask();
+    succeed(producers[0]!, producers[0]!.requests[0]!);
+    const retainedAsset = retained.current;
+    expect(retainedAsset).not.toBeNull();
+
+    let releaseDuringOwnedPortrait: ReturnType<SpeciesArtBroker['releaseUnownedCachedArt']> | null = null;
+    const firstPortrait = broker.requestPortrait('release-first', genome(8803), (asset) => {
+      if (asset) releaseDuringOwnedPortrait = broker.releaseUnownedCachedArt();
+    });
+    const secondPortrait = broker.requestPortrait('release-second', genome(8803), () => {});
+    runTask();
+    succeed(producers[1]!, producers[1]!.requests[0]!);
+    const evictedPortraitAsset = firstPortrait.current;
+    expect(evictedPortraitAsset).not.toBeNull();
+    expect(secondPortrait.current).toBe(evictedPortraitAsset);
+    expect(releaseDuringOwnedPortrait).toEqual({
+      schema: 'cf-v2-species-art-unowned-cache-release/v1',
+      releasedThumbEntries: 0,
+      releasedPortraitEntries: 0,
+      releasedEntries: 0,
+    });
+
+    const evictable = broker.leaseThumb(genome(8802));
+    runTask();
+    succeed(producers[2]!, producers[2]!.requests[0]!);
+    const evictedThumbAsset = evictable.current;
+    expect(evictedThumbAsset).not.toBeNull();
+    evictable.release();
+
+    const before = broker.diagnostics();
+    expect(before.live).toMatchObject({ thumbCacheEntries: 2, portraitCacheEntries: 1 });
+    expect(before.totals.cacheDisposals).toBe(0);
+    const released = broker.releaseUnownedCachedArt();
+    expect(released).toEqual({
+      schema: 'cf-v2-species-art-unowned-cache-release/v1',
+      releasedThumbEntries: 1,
+      releasedPortraitEntries: 1,
+      releasedEntries: 2,
+    });
+    expect(Object.isFrozen(released)).toBe(true);
+    expect(retained.current).toBe(retainedAsset);
+    expect(broker.diagnostics()).toMatchObject({
+      live: { thumbCacheEntries: 1, portraitCacheEntries: 0, thumbLeases: 1 },
+      totals: { cacheDisposals: 2 },
+    });
+
+    const repeated = broker.releaseUnownedCachedArt();
+    expect(repeated).toEqual({
+      schema: 'cf-v2-species-art-unowned-cache-release/v1',
+      releasedThumbEntries: 0,
+      releasedPortraitEntries: 0,
+      releasedEntries: 0,
+    });
+    expect(broker.diagnostics().totals.cacheDisposals).toBe(2);
+
+    const reacquiredThumb = broker.leaseThumb(genome(8802));
+    expect(reacquiredThumb.current).toBeNull();
+    runTask();
+    succeed(producers[3]!, producers[3]!.requests[0]!);
+    expect(reacquiredThumb.current).not.toBe(evictedThumbAsset);
+    expect(reacquiredThumb.current?.url).not.toBe(evictedThumbAsset?.url);
+
+    const reacquiredPortrait = broker.requestPortrait('release-reacquire', genome(8803), () => {});
+    expect(reacquiredPortrait.current).toBeNull();
+    runTask();
+    succeed(producers[4]!, producers[4]!.requests[0]!);
+    expect(reacquiredPortrait.current).not.toBe(evictedPortraitAsset);
+    expect(reacquiredPortrait.current?.url).not.toBe(evictedPortraitAsset?.url);
+
+    retained.release();
+    reacquiredThumb.release();
+    broker.dispose('unowned cache release test complete');
+  });
+
+  it('preserves an unleased cached Blob across BFCache suspension and revokes it only on disposal', () => {
+    const disposedUrls: string[] = [];
+    const { broker, producers, runTask, tasks } = harness(
+      'desktop',
+      (asset) => { disposedUrls.push(asset.url); },
+    );
+    broker.activate();
+    const first = broker.leaseThumb(genome(8850));
+    runTask();
+    succeedBlob(producers[0]!, producers[0]!.requests[0]!, 'blob:bfcache-cached');
+    const cached = first.current;
+    expect(cached?.url).toBe('blob:bfcache-cached');
+    first.release();
+
+    broker.suspendForBfcache();
+    expect(disposedUrls).toEqual([]);
+    expect(broker.diagnostics()).toMatchObject({
+      state: { suspended: true },
+      live: { thumbCacheEntries: 1, thumbLeases: 0 },
+    });
+    broker.resumeFromBfcache();
+    expect(tasks).toHaveLength(0);
+    const reused = broker.leaseThumb(genome(8850));
+    expect(reused.current).toBe(cached);
+    expect(disposedUrls).toEqual([]);
+
+    reused.release();
+    broker.dispose('bfcache cached-Blob test complete');
+    expect(disposedUrls).toEqual(['blob:bfcache-cached']);
+  });
+
+  it('revokes a duplicate incoming Blob once while retaining the canonical cached asset', () => {
+    const disposedUrls: string[] = [];
+    const { broker, producers, runTask } = harness(
+      'desktop',
+      (asset) => { disposedUrls.push(asset.url); },
+    );
+    broker.activate();
+    const first = broker.leaseThumb(genome(8851));
+    runTask();
+    const request = producers[0]!.requests[0]!;
+    succeedBlob(producers[0]!, request, 'blob:duplicate-cached');
+    const cached = first.current!;
+    first.release();
+
+    /* A duplicate successful producer result is defensive protocol coverage:
+       it must surrender only its own external URL and reuse the canonical
+       cache entry. The public broker API ordinarily deduplicates this path. */
+    const cacheThumb = (broker as unknown as {
+      cacheThumb(asset: Thumb132): Thumb132 | null;
+    }).cacheThumb.bind(broker);
+    const incoming = blobThumbAsset(request, 'blob:duplicate-incoming');
+    expect(cacheThumb(incoming)).toBe(cached);
+    expect(disposedUrls).toEqual(['blob:duplicate-incoming']);
+
+    const reused = broker.leaseThumb(genome(8851));
+    expect(reused.current).toBe(cached);
+    expect(reused.current?.url).toBe('blob:duplicate-cached');
+    reused.release();
+    broker.dispose('duplicate cached-Blob test complete');
+    expect(disposedUrls).toEqual(['blob:duplicate-incoming', 'blob:duplicate-cached']);
+  });
+
+  it('revokes exact device-trim and LRU victims while protecting a live Blob lease', () => {
+    const disposedUrls: string[] = [];
+    const { broker, producers, runTask, setDeviceClass } = harness(
+      'desktop',
+      (asset) => { disposedUrls.push(asset.url); },
+    );
+    const leases = Array.from(
+      { length: 97 }, (_, index) => broker.leaseThumb(genome(8860 + index)),
+    );
+    broker.activate();
+    for (let index = 0; index < leases.length; index++) {
+      runTask();
+      succeedBlob(producers[0]!, producers[0]!.requests[index]!, `blob:trim-${index}`);
+      if (index !== 0) leases[index]!.release();
+    }
+    const protectedAsset = leases[0]!.current;
+    expect(protectedAsset?.url).toBe('blob:trim-0');
+    expect(broker.diagnostics().live.thumbCacheEntries).toBe(97);
+
+    setDeviceClass('phone');
+    expect(disposedUrls).toEqual(['blob:trim-1']);
+    expect(leases[0]!.current).toBe(protectedAsset);
+    expect(broker.diagnostics()).toMatchObject({
+      state: { deviceClass: 'phone' },
+      live: { thumbCacheEntries: 96, thumbLeases: 1 },
+    });
+
+    const newcomer = broker.leaseThumb(genome(8999));
+    runTask();
+    const newestProducer = producers.at(-1)!;
+    succeedBlob(newestProducer, newestProducer.requests[0]!, 'blob:lru-new');
+    expect(disposedUrls).toEqual(['blob:trim-1', 'blob:trim-2']);
+    expect(leases[0]!.current).toBe(protectedAsset);
+    expect(newcomer.current?.url).toBe('blob:lru-new');
+
+    newcomer.release();
+    leases[0]!.release();
+    broker.dispose('device-trim/LRU Blob test complete');
+    expect(disposedUrls.filter((url) => url === 'blob:trim-0')).toHaveLength(1);
+    expect(disposedUrls.filter((url) => url === 'blob:trim-1')).toHaveLength(1);
+    expect(disposedUrls.filter((url) => url === 'blob:trim-2')).toHaveLength(1);
+    expect(disposedUrls.filter((url) => url === 'blob:lru-new')).toHaveLength(1);
+  });
+
+  it('retains only the most-recent bounded unowned thumbnails for route reuse', () => {
+    const disposedUrls: string[] = [];
+    const { broker, producers, runTask } = harness(
+      'desktop',
+      (asset) => { disposedUrls.push(asset.url); },
+    );
+    broker.activate();
+    const keys: Array<ThumbLease['key']> = [];
+    const urls: string[] = [];
+    for (let index = 0; index < 3; index++) {
+      const lease = broker.leaseThumb(genome(8901 + index));
+      keys.push(lease.key);
+      runTask();
+      succeed(producers[index]!, producers[index]!.requests[0]!);
+      urls.push(lease.current!.url);
+      lease.release();
+    }
+
+    expect(broker.diagnostics().keys.cachedThumbs).toEqual(keys);
+    expect(broker.releaseUnownedCachedArt({ retainRecentThumbEntries: 2 })).toEqual({
+      schema: 'cf-v2-species-art-unowned-cache-release/v1',
+      releasedThumbEntries: 1,
+      releasedPortraitEntries: 0,
+      releasedEntries: 1,
+    });
+    expect(disposedUrls).toEqual([urls[0]]);
+    expect(broker.diagnostics().keys.cachedThumbs).toEqual(keys.slice(1));
+
+    /* Negative controls: zero is the full-release policy and invalid caps
+       cannot silently become an unbounded retention request. */
+    expect(broker.releaseUnownedCachedArt({ retainRecentThumbEntries: 0 }).releasedEntries).toBe(2);
+    expect(disposedUrls).toEqual(urls);
+    expect(() => broker.releaseUnownedCachedArt({ retainRecentThumbEntries: -1 })).toThrow(
+      'recent species thumbnail retention must be a non-negative safe integer',
+    );
+    broker.dispose('bounded warm-cache test complete');
+  });
+
+  it('disposes externally owned assets that cannot enter or remain in cache', () => {
+    const runCase = (
+      url: string,
+      mutate: (asset: Thumb132, request: SpeciesArtProducerRequest) => Thumb132,
+      dropOwner = false,
+    ): readonly string[] => {
+      const disposedUrls: string[] = [];
+      const { broker, producers, runTask } = harness(
+        'desktop',
+        (asset) => { disposedUrls.push(asset.url); },
+      );
+      const lease = broker.leaseThumb(genome(8950));
+      broker.activate();
+      runTask();
+      const request = producers[0]!.requests[0]!;
+      if (dropOwner) lease.release();
+      const base = Object.freeze({
+        key: request.key,
+        url,
+        width: 132 as const,
+        height: 132 as const,
+        encodedBytes: 64,
+        decodedPixels: 132 * 132,
+      });
+      producers[0]!.sink.result({
+        status: 'success', jobId: request.jobId, kind: request.kind, key: request.key,
+        asset: mutate(base, request),
+      });
+      lease.release();
+      broker.dispose('external asset rejection case complete');
+      return disposedUrls;
+    };
+
+    expect(runCase('blob:dropped', (asset) => asset, true)).toEqual(['blob:dropped']);
+    expect(runCase('blob:invalid', (asset) => Object.freeze({
+      ...asset, key: 'wrong-key' as ThumbLease['key'],
+    }))).toEqual(['blob:invalid']);
+    expect(runCase('blob:oversize', (asset) => Object.freeze({
+      ...asset, encodedBytes: Number.MAX_SAFE_INTEGER,
+    }))).toEqual(['blob:oversize']);
+  });
+
+  it('disposes a successful external asset exactly once when its result mismatches the active job', () => {
+    const disposedUrls: string[] = [];
+    const { broker, producers, runTask } = harness(
+      'desktop',
+      (asset) => { disposedUrls.push(asset.url); },
+    );
+    const lease = broker.leaseThumb(genome(8951));
+    broker.activate();
+    runTask();
+    const request = producers[0]!.requests[0]!;
+
+    producers[0]!.sink.result({
+      status: 'success',
+      jobId: request.jobId + 1,
+      kind: request.kind,
+      key: request.key,
+      asset: Object.freeze({
+        key: request.key,
+        url: 'blob:protocol-mismatch',
+        width: 132,
+        height: 132,
+        encodedBytes: 64,
+        decodedPixels: 132 * 132,
+      }),
+    });
+
+    expect(disposedUrls).toEqual(['blob:protocol-mismatch']);
+    expect(broker.diagnostics().totals.protocolErrors).toBe(1);
+    lease.release();
+    broker.dispose('protocol mismatch cleanup complete');
+    expect(disposedUrls).toEqual(['blob:protocol-mismatch']);
+  });
+
+  it('disposes a late successful external asset exactly once after producer invalidation', () => {
+    const disposedUrls: string[] = [];
+    const { broker, producers, runTask } = harness(
+      'desktop',
+      (asset) => { disposedUrls.push(asset.url); },
+    );
+    broker.leaseThumb(genome(8952));
+    broker.activate();
+    runTask();
+    const request = producers[0]!.requests[0]!;
+    broker.dispose('invalidate producer before late result');
+
+    producers[0]!.sink.result({
+      status: 'success',
+      jobId: request.jobId,
+      kind: request.kind,
+      key: request.key,
+      asset: Object.freeze({
+        key: request.key,
+        url: 'blob:late-generation',
+        width: 132,
+        height: 132,
+        encodedBytes: 64,
+        decodedPixels: 132 * 132,
+      }),
+    });
+
+    expect(disposedUrls).toEqual(['blob:late-generation']);
   });
 
   it('detaches the producer request from post-acquisition genome mutation', () => {

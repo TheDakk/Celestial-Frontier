@@ -445,7 +445,10 @@ describe('Arc 4 Capture card controller', () => {
     const onAction = vi.fn();
     controller = new CaptureCardController({ root: view.root, onAction });
     controller.setState(readModel());
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
     controller.attach(view.mount);
+    controller.attach(view.mount);
+    expect(controller.diagnostics().delegatedListenerCount).toBe(1);
     button(view, 'tame').click();
 
     const firstMount = view.mount;
@@ -456,14 +459,19 @@ describe('Arc 4 Capture card controller', () => {
       retainedDomCount: 0,
       pendingWork: 1,
       actionControlCount: 0,
-      delegatedListenerCount: 1,
+      delegatedListenerCount: 0,
     });
+    controller.detach();
+    controller.setState(readModel());
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
     firstMount.remove();
     const nextMount = view.document.createElement('div');
     nextMount.setAttribute('data-capture-card-body', '');
     view.root.append(nextMount);
     view.mount = nextMount;
     controller.attach(nextMount);
+    controller.setState(readModel());
+    expect(controller.diagnostics().delegatedListenerCount).toBe(1);
     expect(nextMount.getAttribute('aria-busy')).toBe('true');
     expect(status(view).textContent).toContain('Tame attempt pending');
     expect(nextMount.querySelectorAll('button[data-capture-action]:not(:disabled)')).toHaveLength(0);
@@ -477,6 +485,9 @@ describe('Arc 4 Capture card controller', () => {
     expect(view.mount.getAttribute('aria-busy')).toBe('false');
     expect(status(view).textContent).toContain('The durable attempt spent one charge');
     expect(onAction).toHaveBeenCalledOnce();
+    controller.dispose();
+    controller.detach();
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
   });
 
   it('follows a native disable-to-BODY lineage through rerender and back to the exact verb', () => {

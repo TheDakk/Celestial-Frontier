@@ -37,6 +37,19 @@
 > outcomes**, numeric ceilings and historical carriers remain unchanged, and every `[HUMAN]`
 > criterion remains open. The consumed red run grants no retry, merge, preview, release or Gate
 > authority; current local bytes still require clean exact-source evidence.
+>
+> Current-local resource acceptance additionally requires: route-invalid Survey destroys its DOM,
+> controller model and listeners; every Compendium/Capture/Combat/ecology controller has symmetric
+> attach/detach ownership; panel openers use one delegated capture owner and one delegated bubble
+> toggle owner; stale Guide/release imports cannot publish into a closed or superseded panel; and
+> unowned art-cache release is idempotent, preserves live leases and reacquires evicted assets.
+> Settled 132px worker thumbnails become revocable Blob URLs before caching, while 440px portraits
+> remain data URLs. Rejection, oversize, dropped consumer, duplicate, eviction, protocol mismatch,
+> late producer generation and final document disposal each revoke exactly once. At most 17
+> most-recent unleased thumbnails may remain warm. Dirty diagnostic
+> `20260829-pr35-blob-url-warm-cache-dirty-budget1` passed **44/44** SceneMemory outcomes with one
+> import and 16/17 thumbnail jobs on phone/desktop, but dirty-source status is not a clean
+> certificate and closes no `[HUMAN]` row.
 
 > **2026-08-29 current local gameplay-evidence overlay:** Arc 5 now has four player-live exact-
 > instance writers—Feed, one-draw nonlethal Breed with active-play Recovery, identity-only Rename,
@@ -431,6 +444,13 @@ or engagement pressure.
 | `[HUMAN]` | Durable Expedition Chronicle/Museum and any later optional Outpost/project layer feel authored and readable, not like a score wall or maintenance chore | Distinct from the transient Battle Combat Chronicle; review chosen memories, companion/ship/world history and project before/after states. Finite inputs and optionality remain obvious, with no daily/idle-income/urgency pressure. |
 
 ## Gate I — release
+
+The current-local performance criterion includes the exact resource controls above: a zero-entry
+cache is not automatically a plateau if it recreates workers and render jobs every route cycle, and
+a bounded logical cache is not sufficient if base64 strings retain backing storage. Acceptance
+therefore requires bounded warm reuse plus explicit revocable external-resource ownership. The
+44/44 dirty diagnostic is causal evidence only; fresh clean exact-source SceneMemory and
+Compendium certificates plus physical heat/battery/true-GPU work remain open.
 
 | | Criterion | Evidence |
 |---|---|---|

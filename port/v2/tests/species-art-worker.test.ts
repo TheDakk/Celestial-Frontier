@@ -255,6 +255,10 @@ describe('species art worker protocol', () => {
     }
     const workers: FakeWorker[] = [];
     const tasks: Array<() => void> = [];
+    const createThumbObjectUrl = vi.spyOn(URL, 'createObjectURL')
+      .mockReturnValue('blob:loader-thumb-1');
+    const revokeThumbObjectUrl = vi.spyOn(URL, 'revokeObjectURL')
+      .mockImplementation(() => {});
     const loader = new SpeciesArtLoader('loader-document', {
       workerFactory: () => {
         const worker = new FakeWorker();
@@ -342,7 +346,11 @@ describe('species art worker protocol', () => {
       encodeDurationMs: 3,
     });
     expect(received).toHaveLength(1);
-    expect(received[0]).toMatchObject({ key: KEY, width: 132, height: 132, url });
+    expect(received[0]).toMatchObject({
+      key: KEY, width: 132, height: 132, url: 'blob:loader-thumb-1',
+    });
+    expect(createThumbObjectUrl).toHaveBeenCalledOnce();
+    expect(createThumbObjectUrl.mock.calls[0]![0]).toBeInstanceOf(Blob);
     expect(lease.current).toMatchObject({ key: KEY, width: 132, height: 132 });
     expect(loader.artDiagnostics()?.live).toMatchObject({ queuedJobs: 0, activeJobs: 0, leases: 1 });
     expect(loader.diagnostics()).toMatchObject({
@@ -367,7 +375,118 @@ describe('species art worker protocol', () => {
     lease.release();
     loader.dispose('test complete');
     expect(worker.terminated).toBe(1);
+    expect(revokeThumbObjectUrl).toHaveBeenCalledExactlyOnceWith('blob:loader-thumb-1');
     expect(workers).toHaveLength(1);
+    vi.restoreAllMocks();
+  });
+
+  it('keeps successful portrait worker data URLs outside thumbnail Blob ownership', () => {
+    class FakeWorker implements SpeciesArtWorkerLike {
+      readonly sent: unknown[] = [];
+      readonly listeners = new Map<string, Array<(event: MessageEvent<unknown> | Event) => void>>();
+      terminated = 0;
+      postMessage(message: unknown): void { this.sent.push(message); }
+      terminate(): void { this.terminated++; }
+      addEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
+        const group = this.listeners.get(type) ?? [];
+        group.push(listener as (event: MessageEvent<unknown> | Event) => void);
+        this.listeners.set(type, group);
+      }
+      emitMessage(data: unknown): void {
+        for (const listener of this.listeners.get('message') ?? []) {
+          listener({ data } as MessageEvent<unknown>);
+        }
+      }
+    }
+    const workers: FakeWorker[] = [];
+    const tasks: Array<() => void> = [];
+    // Negative control: either ownership hook becoming reachable for a portrait is terminal.
+    const createObjectUrl = vi.spyOn(URL, 'createObjectURL').mockImplementation(() => {
+      throw new Error('portrait must not acquire a thumbnail Blob URL');
+    });
+    const revokeObjectUrl = vi.spyOn(URL, 'revokeObjectURL').mockImplementation(() => {
+      throw new Error('portrait must not revoke a thumbnail Blob URL');
+    });
+    try {
+      const loader = new SpeciesArtLoader('portrait-document', {
+        workerFactory: () => {
+          const worker = new FakeWorker();
+          workers.push(worker);
+          return worker;
+        },
+        getDeviceClass: () => 'phone',
+        scheduleTask: (task) => { tasks.push(task); },
+      });
+      const received: unknown[] = [];
+      const request = loader.requestPortrait('portrait-owner', GENOME, (asset, error) => {
+        received.push(error ?? asset);
+      });
+      loader.activate();
+      tasks.shift()!();
+
+      const worker = workers[0]!;
+      worker.emitMessage({
+        schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA,
+        type: 'ready',
+        documentToken: 'portrait-document',
+        producerEpoch: 1,
+        workerInstanceId: 1,
+      });
+      const renderRequest = worker.sent[1] as SpeciesArtWorkerRenderRequest;
+      expect(renderRequest).toMatchObject({
+        type: 'render', jobId: 1, kind: 'portrait440', key: KEY,
+      });
+      const emitPhase = (phase: SpeciesArtWorkerPhase): void => {
+        worker.emitMessage({
+          schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA,
+          type: 'phase',
+          documentToken: 'portrait-document',
+          producerEpoch: 1,
+          workerInstanceId: 1,
+          jobId: 1,
+          kind: 'portrait440',
+          key: KEY,
+          phase,
+          performanceNow: 1,
+        });
+      };
+      for (const phase of [
+        'import-start', 'import-complete', 'job-start',
+        'render-complete', 'encode-start', 'encode-complete',
+      ] as const) emitPhase(phase);
+
+      const url = 'data:image/png;base64,cG9ydHJhaXQ=';
+      worker.emitMessage({
+        schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA,
+        type: 'result',
+        documentToken: 'portrait-document',
+        producerEpoch: 1,
+        workerInstanceId: 1,
+        jobId: 1,
+        kind: 'portrait440',
+        key: KEY,
+        width: 440,
+        height: 440,
+        url,
+        encodedBytes: new TextEncoder().encode(url).byteLength,
+        pngBytes: 8,
+        decodedPixels: 440 * 440,
+        importDurationMs: 1,
+        renderDurationMs: 2,
+        encodeDurationMs: 3,
+      });
+
+      expect(received).toHaveLength(1);
+      expect(received[0]).toMatchObject({ key: KEY, width: 440, height: 440, url });
+      expect(request.current).toMatchObject({ key: KEY, width: 440, height: 440, url });
+      expect(createObjectUrl).not.toHaveBeenCalled();
+      loader.dispose('portrait bypass test complete');
+      expect(revokeObjectUrl).not.toHaveBeenCalled();
+      expect(worker.terminated).toBe(1);
+      expect(workers).toHaveLength(1);
+    } finally {
+      vi.restoreAllMocks();
+    }
   });
 
   it('services one animation frame and one later task before every default broker pump', () => {
@@ -473,6 +592,75 @@ describe('species art worker protocol', () => {
       vi.useRealTimers();
       vi.unstubAllGlobals();
     }
+  });
+
+  it('exposes deterministic unowned-cache release without disturbing a live loader lease', () => {
+    let sink: SpeciesArtProducerSink | null = null;
+    const requests: SpeciesArtProducerRequest[] = [];
+    const tasks: Array<() => void> = [];
+    const loader = new SpeciesArtLoader('cache-release-document', {
+      createProducer: (next) => {
+        sink = next;
+        return {
+          render: (request) => { requests.push(request); },
+          dispose: () => {},
+        };
+      },
+      scheduleTask: (task) => { tasks.push(task); },
+    });
+    const complete = (request: SpeciesArtProducerRequest): void => {
+      const url = `data:image/png;base64,cache-release-${request.jobId}`;
+      sink!.result({
+        status: 'success', jobId: request.jobId, kind: request.kind, key: request.key,
+        asset: {
+          key: request.key, width: 132, height: 132, url,
+          encodedBytes: new TextEncoder().encode(url).byteLength,
+          decodedPixels: 132 * 132,
+        },
+      });
+    };
+
+    const dormant = loader.releaseUnownedCachedArt();
+    expect(dormant).toEqual({
+      schema: 'cf-v2-species-art-unowned-cache-release/v1',
+      releasedThumbEntries: 0,
+      releasedPortraitEntries: 0,
+      releasedEntries: 0,
+    });
+    expect(Object.isFrozen(dormant)).toBe(true);
+    expect(loader.artDiagnostics()).toBeNull();
+
+    const retained = loader.leaseThumb(GENOME);
+    loader.activate();
+    tasks.shift()!();
+    complete(requests[0]!);
+    const retainedAsset = retained.current;
+    expect(retainedAsset).not.toBeNull();
+    expect(loader.releaseUnownedCachedArt().releasedEntries).toBe(0);
+    expect(retained.current).toBe(retainedAsset);
+
+    retained.release();
+    expect(loader.releaseUnownedCachedArt()).toEqual({
+      schema: 'cf-v2-species-art-unowned-cache-release/v1',
+      releasedThumbEntries: 1,
+      releasedPortraitEntries: 0,
+      releasedEntries: 1,
+    });
+    expect(loader.releaseUnownedCachedArt().releasedEntries).toBe(0);
+    expect(loader.artDiagnostics()).toMatchObject({
+      live: { cacheEntries: 0, leases: 0 },
+      totals: { disposals: 1 },
+    });
+
+    const reacquired = loader.leaseThumb(GENOME);
+    expect(reacquired.current).toBeNull();
+    tasks.shift()!();
+    complete(requests[1]!);
+    expect(reacquired.current).not.toBeNull();
+    expect(reacquired.current).not.toBe(retainedAsset);
+    expect(reacquired.current?.url).not.toBe(retainedAsset?.url);
+    reacquired.release();
+    loader.dispose('cache release test complete');
   });
 
   it('owns one real device-class subscription and trims a narrowed queue immediately', () => {

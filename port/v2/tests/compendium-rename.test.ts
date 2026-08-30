@@ -135,6 +135,35 @@ afterEach(() => {
 });
 
 describe('Arc 5 Compendium companion rename projection and controller', () => {
+  it('owns exactly three delegated listeners only while attached and reattaches once', () => {
+    const value = fixture();
+    const { root, mount } = shell();
+    controller = new CompendiumRenameController({ root, isCurrent: () => true });
+    controller.setState(model(value));
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
+
+    controller.attach(mount);
+    controller.attach(mount);
+    expect(controller.diagnostics().delegatedListenerCount).toBe(3);
+    controller.detach();
+    controller.detach();
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 0,
+      retainedDomCount: 0,
+      delegatedListenerCount: 0,
+    });
+
+    controller.attach(mount);
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 1,
+      delegatedListenerCount: 3,
+      contextKey: model(value).contextKey,
+    });
+    controller.dispose();
+    controller.detach();
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
+  });
+
   it('keeps same-species twins distinct and permits identity-only rename while assigned or hurt', () => {
     const value = fixture();
     const projected = model(value);
@@ -228,6 +257,7 @@ describe('Arc 5 Compendium companion rename projection and controller', () => {
     }));
     expect(controller.diagnostics()).toMatchObject({
       attachedMountCount: 0, pendingWork: 0, convergenceLatched: true,
+      delegatedListenerCount: 0,
     });
   });
 });

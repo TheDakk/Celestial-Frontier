@@ -259,6 +259,7 @@ export class CompendiumAuditionController {
   #state: CompendiumAuditionReadModelV1 | null = null;
   #activeRequest: CompendiumAuditionActionRequestV1 | null = null;
   #lastResult: CompendiumAuditionPlayResultV1 | null = null;
+  #listenerInstalled = false;
   #disposed = false;
 
   constructor(options: CompendiumAuditionControllerOptions) {
@@ -270,7 +271,6 @@ export class CompendiumAuditionController {
     this.#isCurrent = options.isCurrent;
     this.#onNativeAuditionGesture = options.onNativeAuditionGesture;
     this.#onAudition = options.onAudition;
-    this.#root.addEventListener('click', this.#onClick);
   }
 
   attach(mount: HTMLElement): void {
@@ -280,11 +280,13 @@ export class CompendiumAuditionController {
     this.#mount = mount;
     this.#activeRequest = null;
     this.#lastResult = null;
+    this.#installListener();
     this.#render();
   }
 
   detach(): void {
     if (this.#disposed) return;
+    this.#removeListener();
     this.#mount?.replaceChildren();
     this.#mount = null;
     this.#activeRequest = null;
@@ -339,10 +341,21 @@ export class CompendiumAuditionController {
 
   dispose(): void {
     if (this.#disposed) return;
-    this.#root.removeEventListener('click', this.#onClick);
     this.detach();
     this.#state = null;
     this.#disposed = true;
+  }
+
+  #installListener(): void {
+    if (this.#listenerInstalled) return;
+    this.#root.addEventListener('click', this.#onClick);
+    this.#listenerInstalled = true;
+  }
+
+  #removeListener(): void {
+    if (!this.#listenerInstalled) return;
+    this.#root.removeEventListener('click', this.#onClick);
+    this.#listenerInstalled = false;
   }
 
   readonly #onClick = (event: Event): void => {

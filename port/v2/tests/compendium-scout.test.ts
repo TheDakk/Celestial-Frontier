@@ -135,6 +135,35 @@ afterEach(() => {
 });
 
 describe('Arc 5 Compendium Field Scout projection and controller', () => {
+  it('owns exactly two delegated listeners only while attached and reattaches once', () => {
+    const value = fixture();
+    const { root, mount } = shell();
+    controller = new CompendiumScoutController({ root, isCurrent: () => true });
+    controller.setState(model(value));
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
+
+    controller.attach(mount);
+    controller.attach(mount);
+    expect(controller.diagnostics().delegatedListenerCount).toBe(2);
+    controller.detach();
+    controller.detach();
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 0,
+      retainedDomCount: 0,
+      delegatedListenerCount: 0,
+    });
+
+    controller.attach(mount);
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 1,
+      delegatedListenerCount: 2,
+      contextKey: model(value).contextKey,
+    });
+    controller.dispose();
+    controller.detach();
+    expect(controller.diagnostics().delegatedListenerCount).toBe(0);
+  });
+
   it('keeps same-species twins distinct and preserves legacy role-only eligibility', () => {
     const value = fixture();
     const projected = model(value);
@@ -266,6 +295,7 @@ describe('Arc 5 Compendium Field Scout projection and controller', () => {
     }));
     expect(controller.diagnostics()).toMatchObject({
       attachedMountCount: 0, pendingWork: 0, convergenceLatched: true,
+      delegatedListenerCount: 0,
     });
   });
 });

@@ -30,6 +30,56 @@ roughly by how often they have bitten.
 
 ---
 
+⚠⚠ **A CLOSED PRESENTATION OWNS NO DETACHED DOM OR LISTENERS; ASYNC COPY MUST
+REPROVE ITS OPEN GENERATION** (2026-08-29). Hiding a route-invalid Survey card left its controller
+models, action fences, context and detached descendants alive, while several Compendium and Survey
+controllers installed root listeners for the lifetime of the document. Separately, a cached Guide
+module could publish synchronously from `onOpen` before the panel manager exposed Guide, while a
+late import could publish into a replaced or closed body.
+
+Destroy presentation whose route identity is gone: release its audio/action owner, detach the
+controllers, clear their models and presentation fences, replace the obsolete DOM, and clear the
+saved card context. A controller installs DOM listeners only while attached, removes all of them on
+detach/dispose, and reattaches exactly once; semantic model or pending state may survive only when
+the still-current product contract requires it. Registered panel buttons use one delegated bubble
+toggle owner for the whole registry, paired with the existing single capture owner that records
+focus lineage. Per-button toggle closures are dormant ownership, not harmless convenience.
+
+Large authored Guide and release archives load only after Guide opens. The panel owns an explicit
+loading state and an honest failure state; a rejected import clears its promise so Close/reopen can
+retry. Every publication rechecks one request generation, the exact body element and
+`openPanelId()`. A cached module still publishes on a microtask because the panel manager invokes
+`onOpen` before exposing the panel. A late success may populate only that still-open generation;
+Close, replacement or a newer request makes it inert.
+
+⚠⚠ **WARM REUSE MUST HAVE AN EXPLICIT BYTE OWNER; MOVING MEMORY OUT OF ONE COUNTER IS
+NOT RESOURCE RELEASE** (2026-08-29). Releasing every unowned species thumbnail made settled cache,
+DOM and listener counters look ideal, but it also made all four nominal SceneMemory warmups and all
+four measured cycles cold: the same route started another worker/import and repainted the same 16
+phone or 17 desktop thumbnails each time. That recurring work raised the desktop V8 warm slope even
+though DOM, listeners, embedder, backing store and registered scene resources were flat. Retaining
+the old base64 data URLs avoided worker churn but charged their much larger strings to page backing
+storage. Neither extreme is a sound lifecycle policy.
+
+The current bounded owner keeps exactly the most-recent **17** unleased 132px thumbnails: one
+SceneMemory desktop route's nine Compendium plus eight Planetside identities (and enough for the
+16-item phone union). The worker protocol remains immutable data-URL evidence. Only after a
+successful, identity-current `thumb132` result settles in the Window realm may the loader decode it
+to a Window-owned revocable Blob URL for broker caching; 440px detail portraits remain on their
+existing data-URL path. An active thumbnail lease protects the URL used by a visible image. Oldest
+unleased eviction, explicit unowned-cache release, device-cap trimming, rejected/invalid/oversize or
+consumerless results, duplicate assets, protocol-mismatched results, late results from an invalidated
+producer generation, non-BFCache pagehide and final loader disposal each relinquish the external
+asset exactly once. BFCache is different: it retains the same live Document cache through suspend
+and resumes it rather than revoking a resource the restored page still owns.
+
+A Blob URL shortens the string retained in V8/backing storage; it does not make the PNG bytes cease
+to exist. Keep the broker's encoded-byte/cache diagnostics and caps truthful, negative-control every
+revocation exit, and do not raise a heap ceiling merely because bytes moved to the browser Blob
+registry. The current dirty-source SceneMemory diagnostic reached **44/44**, but dirty diagnostic
+green is repair evidence only—not clean exact-source certification, calibration authority or
+permission to relabel an earlier red.
+
 ⚠⚠ **PROVE IDENTITY WITH EXACT SET MEMBERSHIP, NOT CARDINALITY** (2026-08-27). Final5's
 Compendium instrument saw eight mounted fixture keys and eight cached Planetside keys, so its
 `mountedDistinctVisualKeys > cachedKeyCount` heuristic failed even though the errored row's exact

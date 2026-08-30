@@ -195,6 +195,37 @@ describe('Arc 7 Compendium detail audition', () => {
       .toBe('polite');
   });
 
+  it('owns exactly one delegated listener only while attached and reattaches it once', () => {
+    const f = fixture();
+    dom = new JSDOM('<!doctype html><body><aside id="codexpanel"><div id="mount"></div></aside></body>');
+    const document = dom.window.document;
+    const root = document.getElementById('codexpanel') as HTMLElement;
+    const mount = document.getElementById('mount') as HTMLElement;
+    const add = vi.spyOn(root, 'addEventListener');
+    const remove = vi.spyOn(root, 'removeEventListener');
+    controller = new CompendiumAuditionController({
+      root,
+      isCurrent: () => true,
+      onAudition: vi.fn(),
+    });
+
+    controller.setState(model(f));
+    expect(add).not.toHaveBeenCalled();
+    controller.attach(mount);
+    controller.attach(mount);
+    expect(add.mock.calls.map(([type]) => type)).toEqual(['click']);
+
+    controller.detach();
+    controller.detach();
+    expect(remove.mock.calls.map(([type]) => type)).toEqual(['click']);
+    controller.attach(mount);
+    expect(add.mock.calls.map(([type]) => type)).toEqual(['click', 'click']);
+
+    controller.dispose();
+    controller.detach();
+    expect(remove.mock.calls.map(([type]) => type)).toEqual(['click', 'click']);
+  });
+
   it('keeps native gesture activation guarded and ordered before playback dispatch', () => {
     const source = readFileSync(fileURLToPath(
       new URL('../apps/game/src/compendium-audition.ts', import.meta.url),

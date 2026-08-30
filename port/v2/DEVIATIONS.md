@@ -52,6 +52,26 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   remains the same **44-outcome** input-v4 contract with unchanged numeric rulers. This local
   hardening grants no `[HUMAN]`, hosted, whole-Gate, preview, merge or release authority; see
   `../../audits/PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md`.
+- ★ **D-PR35-SURFACE-LIFECYCLE — closed surfaces retain state, not dormant owners.** Approach
+  ecology, Capture, Combat and every Compendium action controller attach listeners only while their
+  exact surface is live and detach/dispose idempotently. Panel opener focus and bubble toggling each
+  have one delegated owner for all registered openers. Route-invalid Survey teardown releases its
+  ecology/audio and Capture/Combat owners before clearing card, action, focus and DOM references;
+  the explicit same-system source-proven preservation path remains intact.
+- ★ **D-PR35-LAZY-ARCHIVES — Guide identity is eager; authored archives are requested.** The
+  small `release-identity.ts` module owns development identity and the null shipped-release pointer.
+  Guide content and release history each use one retryable dynamic-import owner, accessible loading/
+  failure states and request/body/open-panel publication fences; cached publication waits one
+  microtask for panel exposure. Boot cannot import the full release archive, create
+  `releasePending`, or mutate `rnSeen` while the production pointer is null.
+- ★ **D-PR35-THUMB-CACHE — warm reuse has revocable bounded ownership.** The worker protocol
+  remains data-URL based; only settled 132px thumbnails become window-owned Blob URLs, while 440px
+  portraits remain data URLs. After visible leases release, closed Compendium/Planetside surfaces
+  evict unowned portraits and retain the 17 newest unleased thumbnails. Live leases survive,
+  reacquisition works, and invalid/dropped/oversize/duplicate/evicted/final-dispose assets revoke
+  exactly once. Dirty diagnostic `20260829-pr35-blob-url-warm-cache-dirty-budget1` exercised the
+  unchanged 44 outcomes green but is non-certifying; numeric rulers and historical certificates did
+  not move.
 
 - ★ **D-ARC5-LIVE — four bounded exact-instance companion writers.** Verified real-fauna
   Compendium detail exposes Feed, one-draw nonlethal Breed with active-play Recovery, identity-only
@@ -2461,14 +2481,16 @@ duplicates).
   Browser smoke drives the real touch and desktop outcomes and rejects injected density, buried-
   action and same-seed/different-coordinate stale-card regressions.
 - ★ **D-GUIDE-1 — the port continues the mature Guide; it does not fork a second manual
-  (updated 2026-08-28).** The temporary seven-topic literal is gone. `guide-content.ts` carries an exact,
+  (updated 2026-08-29).** The temporary seven-topic literal is gone. `guide-content.ts` carries an exact,
   SHA-256-bound v1.8.9 Guide snapshot: 9 categories, 43 authored stable topic ids and 41 legacy-live
-  topics (`beacon` / `events` retained as dormant), currently 32 partial and 9 unavailable, with
+  topics (`beacon` / `events` retained as dormant), currently 34 partial and 7 unavailable, with
   category drill-down, keyword/body search and
   live `data-gt` cross-links. A typed capability table substitutes v2-current copy for partially
   ported systems and an explicit **Not yet in v2** explanation for unported systems, so stable ids
   remain linkable without advertising dead mechanics. Its test fails on source-hash drift, missing or
-  duplicate ids, a broken cross-link, capability overclaim and a capability underclaim. First open
+  duplicate ids, a broken cross-link, capability overclaim and a capability underclaim. Main loads
+  this archive only on a Guide request through one retryable in-flight import, disables Search while
+  pending and fences publication to the current Guide request/body/open-panel identity. First open
   persists `seenGuide`. Import remains at **Settings → Bring expedition** through the one guarded
   loader and its named, top-layer `aria-modal` dialog with internal Tab wrapping and Escape/focus
   restoration. Guide uses z24 above the z23 survey card. Tooltip deep-links and Advanced Briefings
@@ -2478,6 +2500,8 @@ duplicates).
   398 bullets, v1.8.9 first and v1.0 last. **A New Foundation** is the separate cumulative v2.0
   development bulletin: a 73-bullet categorized, implemented-outcome technical outline whose explicit
   `draft`, `version:"2.0"` and `Unreleased` state does not turn open roadmap work into a promise.
+  `release-identity.ts` keeps only development identity and `V2_CURRENT_RELEASE_VERSION` eager;
+  `release-content.ts` and its archives load on Guide demand through one retryable in-flight import.
   `V2_CURRENT_RELEASE_VERSION` is `null` and the shipped-v2 list is empty. Therefore draft copy
   can appear in the cumulative Guide history but can never fire the mature one-time update rule,
   create `releasePending`, or mutate `rnSeen`, including after persistence/reload. Structure,
@@ -2706,7 +2730,9 @@ duplicates).
   to recreate dismissal, and proves that temporarily owning then unowning the same canvas point
   distinguishes chrome from genuine empty sky. Synthetic document-target `pointerdown` and `click`
   also remain quiet because both delegated handlers now runtime-guard `Element` before `closest`.
-  This closes UI-P1 dismissal classification only; UI-P2/P3/P4, layered coexistence, Training
+  Current-local ownership additionally delegates opener focus lineage and bubble toggling through
+  one shared owner apiece, including nested opener targets; open-surface controllers attach/remove
+  listeners only across their live attach/detach boundary. This closes UI-P1 dismissal classification only; UI-P2/P3/P4, layered coexistence, Training
   allow-scope, modal lifecycle and Escape ownership remain open.
 - ★ **D-TRAIN-2 — a bounded tutorial must graduate honestly (2026-08-11).** The current slice runs
   six live lesson cards (welcome through Land) and then says **Finish for now**. Lessons advance from
@@ -2733,7 +2759,12 @@ duplicates).
   Shipyard extension for its exact inputs. Later terminal-green run `32646110946` merged PR #33.
   That `7d8dc380…` / Edge `.101` certificate is historical, not current authority; the
   version-tolerant SceneMemory ruler kept the same numeric budget at that historical boundary. The
-  repair completed its three-candidate and paired-red calibration, and signed `4a54c0d…`
+  current-local successor preserves worker data URLs and converts only settled 132px thumbnails to
+  revocable window Blob URLs. Deterministic idempotent unowned-cache release preserves live leases,
+  evicts all unowned portraits, retains the 17 newest unleased thumbnails and supports reacquisition;
+  invalid, dropped, oversize, duplicate, eviction and final-dispose paths release asset ownership.
+  Closed Compendium and Planetside surfaces invoke it only after releasing their visible owners.
+  The historical repair completed its three-candidate and paired-red calibration, and signed `4a54c0d…`
   completed the selected heap-only activation. Signed `7362a0e…` then passed standalone and serial
   SceneMemory 42/42; at that historical pre-Final4 boundary, its evidence-oracle-only successor
   still required a full chain restart from Layout. The Arc 1A HUMAN
@@ -2854,7 +2885,11 @@ duplicates).
   remain open; this closes only D-CHARTER-CAP presentation plus SCN-1/SCN-2/SCN-6 hardening.
 - ★ **D-COMPENDIUM-MEM — historical eager-catalogue finding, product repair implemented
   (2026-08-13).** The current 1,500-row product uses a bounded virtual window and broker-owned
-  132px/440px work instead of eager row data URLs. Historical plateau certificates remain scoped to
+  132px/440px work instead of eager row data URLs. The current-local cache keeps no unowned portrait and at most 17 MRU unleased
+  132px thumbnails; those thumbnails alone use revocable Blob URLs in the window. Live leases are
+  never evicted, all disposal paths are exact-once, and a released key can be acquired again. Dirty
+  SceneMemory run `20260829-pr35-blob-url-warm-cache-dirty-budget1` exercised 44/44 outcomes green
+  but cannot certify dirty source. Historical plateau certificates remain scoped to
   their own producer. Former producer `587d3bdf…` had an active ruler and exact-budget certificate
   under signed activation `d33e540…`; that evidence is now historical and remains separate from the
   dated structural finding. At that later historical calibration boundary, signed source

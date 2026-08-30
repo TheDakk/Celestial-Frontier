@@ -266,6 +266,32 @@ function trustedChallengeGestureContract(source: string): boolean {
 }
 
 describe('Arc 6 combat card', () => {
+  it('owns exactly two delegated listeners only while attached and reattaches them once', () => {
+    const view = shell();
+    const add = vi.spyOn(view.root, 'addEventListener');
+    const remove = vi.spyOn(view.root, 'removeEventListener');
+    controller = new CombatCardController({ root: view.root, onAction: vi.fn() });
+    controller.setState(readModel());
+    expect(add).not.toHaveBeenCalled();
+
+    controller.attach(view.mount);
+    controller.attach(view.mount);
+    expect(add.mock.calls.map(([type]) => type)).toEqual(['change', 'click']);
+    controller.detach();
+    controller.detach();
+    expect(remove.mock.calls.map(([type]) => type)).toEqual(['change', 'click']);
+
+    controller.attach(view.mount);
+    expect(add.mock.calls.map(([type]) => type)).toEqual([
+      'change', 'click', 'change', 'click',
+    ]);
+    controller.dispose();
+    controller.detach();
+    expect(remove.mock.calls.map(([type]) => type)).toEqual([
+      'change', 'click', 'change', 'click',
+    ]);
+  });
+
   it('renders one labelled 44px champion decision, honest odds, explicit stakes, and a live status region', () => {
     const view = shell();
     controller = new CombatCardController({ root: view.root, onAction: vi.fn() });

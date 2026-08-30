@@ -105,6 +105,74 @@ fixture without weakening or bypassing the product PWA.
 - The real product render envelope is validated before `postMessage` for Earth and the non-Earth
   gas, abyss, and reef compositor families.
 
+## Local SceneMemory resource-repair chronology
+
+### Stopped premeasurement invocation — no evidence
+
+Invocation `20260829-pr35-resource-repair-dirty-budget` was manually terminated after its Vite
+build and before browser measurement when the independent Guide reopen audit found a real
+cached-publication race. It produced no product report or certificate and is neither an automatic retry
+nor a SceneMemory product failure. This record therefore assigns it no invented carrier hash or
+verdict.
+
+### Zero-cache diagnostic — valid V8-churn red
+
+After the Guide repair, dirty exact-budget diagnostic
+`20260829-pr35-resource-repair-guidefix-dirty-budget1` completed on Edge `152.0.4191.53`, built
+product `ac61f70c7bf8dc8793a4a686dbf34bc2b48a5ac1c3e5c775476ffc326addf7cc`, and budget
+`86d31c25b8f3c075d1b4d20f6a2e6504d43c2683d0c59806e3802c61f62a0e30`. It passed 42/44
+outcomes with complete cleanup. Releasing every unowned thumbnail left both profiles with zero
+cache entries and repainted the same bounded route on every cycle: phone recorded eight imports /
+128 thumbnail jobs; desktop recorded eight imports / 136 jobs. Only desktop failed: BFCache V8
+used 12,587,632 bytes against 12,582,912 (+4,720), and its V8 least-squares slope was
+154,531.2 B/cycle against 131,072. Aggregate slope, heap range, backing, DOM, listeners, managed
+resources and lifecycle all passed. This isolated deterministic worker/task churn from destroying
+a reusable route cache; it did not justify a threshold change or an Edge-version rebaseline.
+
+### Bounded base64 cache — valid backing-only red
+
+Retaining the 17 most-recent thumbnails restored one-worker route reuse. Dirty exact-budget
+diagnostic `20260829-pr35-bounded-route-cache-dirty-budget1`, built product
+`959eafaf8b5975641bd2d1167af3a6542eb97a895ab137ac549bca03a03569c3`, budget
+`35407aa1807b3cd3ad91a303cd7095a809c49eb287b8cfc93ce453fec17d9ccd`, and working-tree
+SHA-256 `009196b648021bc7847bf8ec51b7fbf0e143e924bd9cf44c720ba9715eef6990`, again completed
+42/44 with no fatal event and complete cleanup. Phone retained 16 entries with one import / 16
+jobs; desktop retained 17 with one import / 17 jobs. V8 and slope now passed on both profiles:
+94,881.6 B/cycle phone and 119,998.4 B/cycle desktop. The only failures were fixed backing-storage
+footprints:
+
+- phone: 3,480,312 bytes against 3,145,728 (+334,584);
+- desktop: 3,512,766 bytes against 3,145,728 (+367,038).
+
+Relative to the zero-cache report, backing increased 523,565 bytes phone and 555,615 bytes
+desktop, closely matching retained data-URL payloads of 511,340 and 542,686 bytes. Backing was
+constant across all four measured cycles apart from the normal 22-byte BFCache witness. This was
+retained base64 representation cost, not accumulating ownership.
+
+### Revocable Blob warm cache — valid dirty diagnostic green
+
+The follow-on repair kept the exact bounded working set while converting each settled worker
+thumbnail data URL into a page-owned revocable Blob URL before caching. The worker protocol and
+original encoded-byte accounting remain unchanged. Broker disposal ownership revokes an external
+URL on cache eviction, explicit cache release, broker teardown, dropped/invalid/oversize results,
+duplicate-cache results, protocol mismatches and late revoked-generation output; portrait behavior
+is unchanged.
+
+Dirty exact-budget diagnostic `20260829-pr35-blob-url-warm-cache-dirty-budget1` completed the
+contract **PASS 44/44** on Edge `152.0.4191.53`, built product
+`b9b0beed19c123fb4d219f44f8843f24c4b6e3f33850760777f682e9e99a5781`, budget
+`6e02abb7b795263632eedcc775ff51fd3b2a2ae11c80c6f1e6da03e400fedaa9`, and working-tree
+SHA-256 `36b059d929d997c0d1439e44dea8f07b595587863b54c311a076b7d695af648b`. Phone retained
+16 cache entries with one import / 16 jobs, backing storage 2,971,348 bytes and slope
+89,506.8 B/cycle. Desktop retained 17 entries with one import / 17 jobs, backing storage
+2,972,520 bytes and slope 113,378.4 B/cycle. It recorded no fatal events and completed browser,
+server and workspace-lock cleanup.
+
+That green contract verdict is **diagnostic only** because the source was intentionally dirty. It
+is not a clean-source SceneMemory certificate, named verification, serial-chain predecessor,
+hosted result, HUMAN approval or merge authority. No numeric ceiling, calibration, browser
+baseline or historical carrier changed.
+
 ## Local evidence boundary
 
 Dirty diagnostic run `20260829233652913-23084-4b4362f86b` completed the full phone and desktop

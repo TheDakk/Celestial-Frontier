@@ -143,6 +143,7 @@ export class ApproachEcologyController {
   #state: ApproachEcologyReadModelV1 | null = null;
   #activePlayback: CurrentWorldDistantEcologyPlaybackV1 | null = null;
   #lastResult: ApproachEcologyPlayResultV1 | null = null;
+  #listenerInstalled = false;
   #disposed = false;
 
   constructor(options: ApproachEcologyControllerOptions) {
@@ -154,7 +155,6 @@ export class ApproachEcologyController {
     this.#isCurrent = options.isCurrent;
     this.#onNativeListenGesture = options.onNativeListenGesture;
     this.#onListen = options.onListen;
-    this.#root.addEventListener('click', this.#onClick);
   }
 
   attach(mount: HTMLElement): void {
@@ -164,11 +164,13 @@ export class ApproachEcologyController {
     this.#mount = mount;
     this.#activePlayback = null;
     this.#lastResult = null;
+    this.#installListener();
     this.#render();
   }
 
   detach(): void {
     if (this.#disposed) return;
+    this.#removeListener();
     this.#mount?.replaceChildren();
     this.#mount = null;
     this.#activePlayback = null;
@@ -232,10 +234,21 @@ export class ApproachEcologyController {
 
   dispose(): void {
     if (this.#disposed) return;
-    this.#root.removeEventListener('click', this.#onClick);
     this.detach();
     this.#state = null;
     this.#disposed = true;
+  }
+
+  #installListener(): void {
+    if (this.#listenerInstalled) return;
+    this.#root.addEventListener('click', this.#onClick);
+    this.#listenerInstalled = true;
+  }
+
+  #removeListener(): void {
+    if (!this.#listenerInstalled) return;
+    this.#root.removeEventListener('click', this.#onClick);
+    this.#listenerInstalled = false;
   }
 
   readonly #onClick = (event: Event): void => {

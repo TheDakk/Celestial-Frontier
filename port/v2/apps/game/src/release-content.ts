@@ -7,9 +7,15 @@
  * V2_CURRENT_RELEASE_VERSION stays null until a production release is
  * separately authorized.
  */
-import VERSION_DATA from '../../../version.json';
+import {
+  V2_CURRENT_RELEASE_VERSION,
+  V2_DEVELOPMENT_VERSION,
+} from './release-identity.js';
 
-export const V2_DEVELOPMENT_VERSION = VERSION_DATA.version;
+export {
+  V2_CURRENT_RELEASE_VERSION,
+  V2_DEVELOPMENT_VERSION,
+} from './release-identity.js';
 
 export type LegacyReleaseSection =
   readonly [heading: string, bullets: readonly string[]];
@@ -929,7 +935,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
         '🔐 ONE DURABLE AUTHORITY AT A TIME: Versioned split-store saves, a per-document tab lease, revision fences, immutable receipts, an active-play-only clock, and isolated SessionRNG counters commit product state together. A lease-storage failure or rejected repository-revision read immediately stops eligibility and accrual and converges through protected reload instead of silently reacquiring; a losing tab cannot rebase, and a failed transaction publishes neither the reward nor its entropy advance.',
         '🔢 THE REVISION CEILING FAILS CLOSED: The maximum safe revision remains readable, but a mutation that would overflow it returns a typed protected outcome before changing product rows, receipts, F4 state, or revision bytes.',
         '🌐 BROWSER UPDATES ARE PROVENANCE, NOT BASELINES: Local Chromium-driving art and layout tools resolve an explicit or installed compatible Edge/Chrome executable across macOS, Windows, and Linux. Before art evidence, the connected browser must report complete Chromium-family identity, version, executable, revision, user agent, JavaScript, and CDP 1.3 provenance. Any compatible point version is accepted and never demands a visual rebaseline by itself.',
-        '📦 ART ARRIVES WHEN IT IS NEEDED: Species art loads on demand. The read-only Compendium supports up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side (about two viewports total), plus at most the focused pinned row; each visible row moves from a neutral placeholder to an exact 132px thumbnail keyed by the complete genome. Search filters the logical count, Back restores the saved row and focus, and Close returns focus to the exact opener. Planetside shares the same bounded thumbnail lease path, leases release with their visible owners, and only specimen detail publishes and retains an exact 440px portrait; thumbnail scratch art is downsampled to 132px before it crosses the worker boundary.',
+        '📦 ART ARRIVES WHEN IT IS NEEDED: Species art loads on demand. The read-only Compendium supports up to 1,500 logical entries while mounting the visible viewport plus half a viewport of overscan on each side (about two viewports total), plus at most the focused pinned row; each visible row moves from a neutral placeholder to an exact 132px thumbnail keyed by the complete genome. Search filters the logical count, Back restores the saved row and focus, and Close returns focus to the exact opener. Planetside shares the same bounded thumbnail lease path, leases release with their visible owners, and only specimen detail publishes and retains an exact 440px portrait; thumbnail scratch art is downsampled to 132px before it crosses the worker boundary. The worker keeps its immutable data-URL handoff, while the window converts only settled 132px thumbnails into revocable Blob URLs. Closed surfaces release their visible owners, evict unowned portraits, and retain only the 17 most-recently used unleased thumbnails for bounded warm reuse; live leases survive, reacquisition works, and invalid, dropped, oversize, duplicate, evicted, or finally disposed art releases its Blob ownership.',
         '🧵 ONE BACKGROUND PAINTER AT A TIME, OWNED END TO END: A dedicated worker imports the heavy portrait graph only after a real owner and a serviced boot turn. One broker serializes work, deduplicates complete-genome keys, bounds caches and leases, validates every 132px/440px result, contains failed tiles, revokes stale bfcache work, and terminates an idle or replaced producer without a synchronous renderer fallback.',
         '🪐 HD SURFACES HAVE ONE NAMED OWNER: A named HD surface-planet texture attachment binds each completion to the exact surface generation and planet identity, retains the displayed predecessor until an acquired successor publishes, rejects stale work, suppresses same-texture swaps, and cancels and releases its timer and leases at the owning scene boundary.',
         '📚 HISTORY STAYS HISTORY: All 56 v1 releases and 398 legacy bullets remain byte-parity checked and separate from the v2.0 development bulletin; this draft cannot trigger the shipped-update popup or mutate the seen-release marker.',
@@ -942,8 +948,6 @@ export const V2_DRAFT_RELEASE = Object.freeze({
   ]),
 } as const satisfies V2DraftRelease);
 
-/** No v2 production release has been authorized or shipped. */
-export const V2_CURRENT_RELEASE_VERSION: null = null;
 export const V2_SHIPPED_RELEASES =
   Object.freeze([] as V2ShippedRelease[]);
 

@@ -64,9 +64,9 @@ export function fillPanel(id: string, html: string): void {
 let _opener: HTMLElement | null = null;   /* FOCUS RESTORATION: closing returns focus to what opened */
 let _pendingOpener: HTMLElement | null = null;
 /* Pointer activation does not focus buttons consistently on every desktop
-   browser. One capture owner records the exact registered opener before
-   main.ts's toggle handlers run. Per-opener closures made listener count grow
-   with every new panel even while every panel was closed. */
+   browser. One capture owner records the exact registered opener before the
+   shared bubble toggle owner runs. Per-opener closures made listener count
+   grow with every new panel even while every panel was closed. */
 document.addEventListener('click', (event) => {
   const target = event.target;
   if (!(target instanceof Element)) return;
@@ -178,6 +178,22 @@ export function openPanelId(): string | null {
   const p = PANELS.find((q) => q.el.style.display !== 'none');
   return p ? p.id : null;
 }
+
+/* Every registered opener shares one bubble owner. This pairs with the
+   capture-phase focus lineage above and prevents closed panels from retaining
+   one dormant closure per dock/rail copy. */
+document.addEventListener('click', (event) => {
+  const target = event.target;
+  if (!(target instanceof Element)) return;
+  for (const panel of PANELS) {
+    for (const button of panel.btns || []) {
+      if (button?.contains(target)) {
+        togglePanel(panel.id);
+        return;
+      }
+    }
+  }
+});
 
 /* tap-empty-to-close + the delegated corner ✕ (main.js 16056/16070) */
 document.addEventListener('pointerdown', (e) => {

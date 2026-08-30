@@ -8,6 +8,34 @@ decisions we actually made). Content catalogs (`BIOME_ATLAS.md` at the repo root
 fauna/flora data-pack CSVs) remain the *content* source of truth; this is the *direction* source
 of truth.
 
+## 2026-08-29 current local Compendium thumbnail lifetime overlay — dirty diagnostic only
+
+The thumbnail repair changes resource materialization and lifetime, not art structure. The worker
+still paints the same deterministic 440px scratch portrait, downsamples the same settled 132px PNG
+and publishes the same identity-checked data-URL protocol evidence. Only a successful settled
+`thumb132` result is decoded in the Window realm and cached behind a Window-owned revocable Blob
+URL. Selected 440px detail portraits remain data URLs. No seed, genome, painter, rig, silhouette,
+proportion, palette, crop, pixel output, biome treatment or creature/plant/fungus/microbe structure
+changes at this boundary.
+
+Closed surfaces retain at most the most-recent **17** unleased thumbnails—the exact nine
+Compendium plus eight Planetside identities exercised by one desktop SceneMemory route, also
+covering the 16-item phone union. This bounded warm owner prevents the same route from starting a
+fresh worker/import and repainting every thumbnail on every cycle. An active lease protects every
+Blob URL used by a visible image. Oldest-unleased eviction, explicit cache release, device-cap trim,
+consumerless/invalid/oversize/duplicate result, protocol mismatch, late invalidated-producer result,
+non-BFCache pagehide and final loader disposal revoke the external URL exactly once. A BFCache
+suspend retains the same live Document cache and resume reuses it; it does not revoke art the
+restored document still owns.
+
+The earned lesson is two-sided: zero closed-cache entries can manufacture repeated cold worker/V8
+churn, while retaining base64 data URLs can breach page backing storage. Blob URLs remove those
+large base64 strings from the page heap/backing representation, but their PNG bytes remain real
+browser-owned resources. Broker cache counts and encoded-byte ceilings therefore remain truthful
+and must not be weakened merely because storage moved to the Blob registry. The current dirty-source
+SceneMemory diagnostic reached **44/44** and is useful repair evidence only; it is not clean
+exact-source certification and does not supersede the historical signed evidence below.
+
 ## 2026-08-29 current v2 universe-wide visual implementation — historical exact-source automation
 
 The richer treatment is now a live **universe-wide** rendering language, not a Sol-specific filter.

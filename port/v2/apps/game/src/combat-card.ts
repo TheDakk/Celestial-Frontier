@@ -354,6 +354,7 @@ export class CombatCardController {
   #pending: Readonly<{ championId: string; contextKey: string }> | null = null;
   #outcome: CombatCardActionOutcomeV1 | null = null;
   #convergence = false;
+  #listenersInstalled = false;
   #disposed = false;
   #onChange = (event: Event): void => {
     const target = event.target;
@@ -391,17 +392,18 @@ export class CombatCardController {
     this.#root = options.root;
     this.#onNativeChallengeGesture = options.onNativeChallengeGesture ?? null;
     this.#onAction = options.onAction;
-    this.#root.addEventListener('change', this.#onChange);
-    this.#root.addEventListener('click', this.#onClick);
   }
 
   attach(mount: HTMLElement): void {
     if (this.#disposed) throw new Error('combat card controller is disposed');
     this.#mount = mount;
+    this.#installListeners();
     this.#render();
   }
 
   detach(): void {
+    if (this.#disposed) return;
+    this.#removeListeners();
     this.#mount?.replaceChildren();
     this.#mount = null;
   }
@@ -436,12 +438,24 @@ export class CombatCardController {
   dispose(): void {
     if (this.#disposed) return;
     this.detach();
-    this.#root.removeEventListener('change', this.#onChange);
-    this.#root.removeEventListener('click', this.#onClick);
     this.#model = null;
     this.#pending = null;
     this.#outcome = null;
     this.#disposed = true;
+  }
+
+  #installListeners(): void {
+    if (this.#listenersInstalled) return;
+    this.#root.addEventListener('change', this.#onChange);
+    this.#root.addEventListener('click', this.#onClick);
+    this.#listenersInstalled = true;
+  }
+
+  #removeListeners(): void {
+    if (!this.#listenersInstalled) return;
+    this.#root.removeEventListener('change', this.#onChange);
+    this.#root.removeEventListener('click', this.#onClick);
+    this.#listenersInstalled = false;
   }
 
   #render(): void {

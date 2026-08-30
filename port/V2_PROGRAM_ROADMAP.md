@@ -89,6 +89,22 @@
 > rulers and historical evidence remain unchanged, and every `[HUMAN]` criterion remains open. This
 > is current-local repair state, not a clean exact-source certificate; see
 > `../audits/PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md`.
+>
+> The same repair batch now closes the fixed browser-resource roots exposed after that product-path
+> repair. Route-invalid Survey presentation destroys its controller model, listeners and DOM;
+> Compendium, Capture, Combat and ecology controllers own listeners only while attached; and all
+> registered panel openers share one capture owner plus one bubble-toggle owner. Guide and release
+> archives are lazy chunks with loading/failure/retry UI and both request-generation and visible-
+> panel publication fences. The 132px species worker result remains immutable data-URL evidence,
+> then becomes a window-owned revocable Blob URL before broker caching; 440px portraits remain data
+> URLs. Live leases protect visible art, every reject/drop/duplicate/evict/final-dispose exit releases
+> external ownership exactly once, and at most the 17 most-recent unleased thumbnails remain warm.
+> Dirty exact-budget diagnostic `20260829-pr35-blob-url-warm-cache-dirty-budget1` passed all **44/44**
+> SceneMemory outcomes on Edge `152.0.4191.53`: phone retained 16 thumbnails with one import/16 jobs
+> and 2,971,348 backing bytes; desktop retained 17 with one import/17 jobs and 2,972,520 backing
+> bytes. It is valid product diagnosis but cannot certify dirty source. Clean signed SceneMemory and
+> Compendium evidence is still required; no threshold, browser baseline, gameplay structure or
+> `[HUMAN]` state changed.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
 > 2026-08-29.

@@ -317,8 +317,6 @@ export class CaptureCardController {
     this.#document = options.root.ownerDocument;
     this.#onNativeTameGesture = options.onNativeTameGesture ?? null;
     this.#onAction = options.onAction ?? null;
-    this.#root.addEventListener('click', this.#onClick);
-    this.#listenerInstalled = true;
   }
 
   /** Attach the persistent controller to the one mount created by a Survey
@@ -336,11 +334,13 @@ export class CaptureCardController {
     }
     if (this.#mount !== null && this.#mount !== mount) this.#disposeMount(this.#mount);
     this.#mount = mount;
+    this.#installListener();
     this.#render();
   }
 
   detach(): void {
-    this.#assertLive();
+    if (this.#disposed) return;
+    this.#removeListener();
     if (this.#mount !== null) this.#disposeMount(this.#mount);
     this.#mount = null;
   }
@@ -361,6 +361,7 @@ export class CaptureCardController {
     }
     if (state !== null) this.#lastContextKey = state.contextKey;
     this.#state = state;
+    if (this.#mount !== null) this.#installListener();
     this.#render();
   }
 
@@ -444,10 +445,7 @@ export class CaptureCardController {
 
   dispose(): void {
     if (this.#disposed) return;
-    if (this.#listenerInstalled) {
-      this.#root.removeEventListener('click', this.#onClick);
-      this.#listenerInstalled = false;
-    }
+    this.#removeListener();
     if (this.#mount !== null) this.#disposeMount(this.#mount);
     this.#mount = null;
     this.#state = null;
@@ -461,6 +459,18 @@ export class CaptureCardController {
     this.#pendingDisabledBodyFocus = false;
     this.#settlementFallbackFocused = false;
     this.#disposed = true;
+  }
+
+  #installListener(): void {
+    if (this.#listenerInstalled) return;
+    this.#root.addEventListener('click', this.#onClick);
+    this.#listenerInstalled = true;
+  }
+
+  #removeListener(): void {
+    if (!this.#listenerInstalled) return;
+    this.#root.removeEventListener('click', this.#onClick);
+    this.#listenerInstalled = false;
   }
 
   readonly #onClick = (event: Event): void => {

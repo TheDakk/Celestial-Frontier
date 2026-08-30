@@ -15,6 +15,8 @@ import {
   type SpeciesArtProducerResult,
   type SpeciesArtProducerSink,
   type SpeciesArtTaskScheduler,
+  type SpeciesArtUnownedCacheReleaseV1,
+  type SpeciesArtUnownedCacheReleaseOptions,
   type Thumb132,
   type ThumbLease,
 } from '@cf/art/species-broker';
@@ -29,6 +31,7 @@ import {
 
 export type {
   Portrait440, PortraitListener, PortraitRequest, SpeciesArtDeviceClass,
+  SpeciesArtUnownedCacheReleaseOptions, SpeciesArtUnownedCacheReleaseV1,
   SpeciesVisualKey, Thumb132, ThumbLease,
 };
 
@@ -149,6 +152,8 @@ export type SpeciesArtWorkerFactory = () => SpeciesArtWorkerLike;
 export interface SpeciesArtLoaderOptions {
   readonly createProducer?: SpeciesArtProducerFactory;
   readonly workerFactory?: SpeciesArtWorkerFactory;
+  readonly createThumbObjectUrl?: (dataUrl: string) => string;
+  readonly revokeThumbObjectUrl?: (url: string) => void;
   readonly getDeviceClass?: () => SpeciesArtDeviceClass;
   readonly subscribeDeviceClassChange?: (listener: () => void) => () => void;
   readonly scheduleTask?: SpeciesArtTaskScheduler;
@@ -186,6 +191,21 @@ const defaultWorkerFactory: SpeciesArtWorkerFactory = () => new Worker(
   new URL('./species-art.worker.ts', import.meta.url),
   { type: 'module', name: 'cf-species-art' },
 );
+
+/* The worker protocol remains immutable data-URL evidence. The window turns
+   settled thumbnails into revocable Blob URLs before caching so warm route
+   reuse does not retain the much larger base64 strings in V8 backing store. */
+const defaultCreateThumbObjectUrl = (dataUrl: string): string => {
+  const prefix = 'data:image/png;base64,';
+  if (!dataUrl.startsWith(prefix) || dataUrl.length <= prefix.length) {
+    throw new Error('species thumbnail producer did not provide PNG data');
+  }
+  const binary = atob(dataUrl.slice(prefix.length));
+  const bytes = new Uint8Array(binary.length);
+  for (let index = 0; index < binary.length; index++) bytes[index] = binary.charCodeAt(index);
+  return URL.createObjectURL(new Blob([bytes], { type: 'image/png' }));
+};
+const defaultRevokeThumbObjectUrl = (url: string): void => { URL.revokeObjectURL(url); };
 
 const workerError = (value: unknown): Error => value instanceof Error
   ? value : new Error(typeof value === 'string' ? value : 'species art worker failed');
@@ -259,6 +279,7 @@ function createWorkerProducer(
   workerFactory: SpeciesArtWorkerFactory,
   identity: WorkerIdentity,
   sink: SpeciesArtProducerSink,
+  createThumbObjectUrl: (dataUrl: string) => string,
   onWorkerReady: () => void,
   onPhase: (response: Extract<SpeciesArtWorkerResponse, { readonly type: 'phase' }>) => void,
   onResult: (response: Extract<SpeciesArtWorkerResponse, { readonly type: 'result' }>) => void,
@@ -390,11 +411,23 @@ function createWorkerProducer(
     pending = null;
     phasePlan = Object.freeze([]);
     phaseIndex = 0;
+    let assetUrl = response.url;
+    if (request.kind === 'thumb132') {
+      try {
+        assetUrl = createThumbObjectUrl(response.url);
+        if (!assetUrl.startsWith('blob:') || assetUrl.length <= 'blob:'.length) {
+          throw new Error('species thumbnail object URL factory returned invalid ownership');
+        }
+      } catch (error) {
+        terminateFatal(error);
+        return;
+      }
+    }
     const result: SpeciesArtProducerResult = Object.freeze({
       status: 'success', jobId: request.jobId, kind: request.kind, key: request.key,
       asset: Object.freeze({
         key: request.key,
-        url: response.url,
+        url: assetUrl,
         width: response.width,
         height: response.height,
         encodedBytes: response.encodedBytes,
@@ -481,6 +514,11 @@ export class SpeciesArtLoader {
     options: SpeciesArtLoaderOptions = {},
   ) {
     if (!documentToken) throw new TypeError('species art document token must be non-empty');
+    const createThumbObjectUrl = options.createThumbObjectUrl ?? defaultCreateThumbObjectUrl;
+    const revokeThumbObjectUrl = options.revokeThumbObjectUrl ?? defaultRevokeThumbObjectUrl;
+    if (typeof createThumbObjectUrl !== 'function' || typeof revokeThumbObjectUrl !== 'function') {
+      throw new TypeError('species thumbnail object URL ownership must be callable');
+    }
     this.workerFactory = options.workerFactory ?? defaultWorkerFactory;
     const createProducer: SpeciesArtProducerFactory = options.createProducer
       ? (sink) => {
@@ -507,7 +545,7 @@ export class SpeciesArtLoader {
         this.importStarts0++;
         try {
           return createWorkerProducer(
-            this.workerFactory, identity, sink,
+            this.workerFactory, identity, sink, createThumbObjectUrl,
             () => { this.workerReady0++; },
             (response) => {
               const { phase, kind } = response;
@@ -572,6 +610,9 @@ export class SpeciesArtLoader {
       };
     this.broker = new SpeciesArtBroker({
       createProducer,
+      disposeAsset: (asset) => {
+        if (asset.url.startsWith('blob:')) revokeThumbObjectUrl(asset.url);
+      },
       getDeviceClass: options.getDeviceClass ?? defaultDeviceClass,
       scheduleTask: options.scheduleTask ?? defaultScheduleTask,
     });
@@ -632,6 +673,12 @@ export class SpeciesArtLoader {
   ): PortraitRequest {
     this.requested = true;
     return this.broker.requestPortrait(owner, genome, listener);
+  }
+
+  releaseUnownedCachedArt(
+    options: SpeciesArtUnownedCacheReleaseOptions = {},
+  ): SpeciesArtUnownedCacheReleaseV1 {
+    return this.broker.releaseUnownedCachedArt(options);
   }
 
   trimArtNow(deviceClass: SpeciesArtDeviceClass): SpeciesArtDiagnosticsV1 {
