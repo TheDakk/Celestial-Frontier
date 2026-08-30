@@ -1,20 +1,22 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-30 current exact-`20d8598…` / `9382f8e…` repair overlay (matches the local
+> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
 > working tree and supersedes narrower “current” status below; dated progression evidence remains
-> immutable):** exact clean SSH-signed source
-> `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium **78/78** once/no-retry, then its
-> unchanged Slice `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red
-> once/no-retry with six ordered Engineering/Landing/Pertar findings. Signed evidence-only
-> successor `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay. The
-> stored Slice remains FAIL; Glass and Recovery did not run.
+> immutable):** exact clean SSH-signed evidence source
+> `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
+> **64,108 ms**. Its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> **111,490 ms** with exactly one Arc 0 Landing publication-oracle scope. The exact carriers and
+> replay are preserved; the stored Slice remains FAIL, and Glass and Recovery did not run.
 >
-> The three local repairs preserve progression policy: Engineering retains focus across delayed
-> native Enter blur; Arc 0 Landing fault evidence establishes an exact Survey-owned postcommit
-> baseline before testing Landing; and Recovery/Pertar accepts only the complete exact Arc 5 v3
-> diagnostic shape. No Charter, reward, rank, achievement, save schema, gameplay, retry or timeout
-> changes follow. Final browser-free validation is green at **250 files / 2,495 passed / 1 skipped**,
-> with all TypeScript programs green. The cumulative **74-bullet** development bulletin has rendered
+> The retained old-document state proves the Landing product was exact and its Pertar card correctly
+> remained open; the stale oracle also required that post-Survey card to be closed. The replay
+> binds that contradiction and its missing historical held `cardCode`/target capture; the current
+> uncommitted runner atomically captures those values and moves the complete future decision into
+> browser-free contracts. No Charter, reward, rank, achievement, save schema, gameplay, retry or timeout changes
+> follow; prior focus, Survey-predecessor, coordinator and Arc 5 v3 repairs remain. Final
+> browser-free validation is green at **251 files / 2,501 passed / 1 skipped**, with all TypeScript
+> programs green. The cumulative **74-bullet** development bulletin has rendered
 > ordered SHA-256
 > `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
 >
@@ -41,9 +43,10 @@
 > The oracle accepts them only from the same canonical required predecessor as the production
 > Starter-Charter owner, and separately proves every durable field reached the live SaveState;
 > malformed predecessors and live-only publication drift remain red without launching a browser.
-> The exact `4a82d9b…` Slice red that exposed the stale oracle remains FAIL; its changed-head repair
-> is browser-free green at 250 files / 2,495 passed / 1 skipped with typecheck green and changes no
-> player-facing progression rule.
+> The exact `4a82d9b…` Slice red that exposed the stale oracle remains FAIL; at that historical
+> changed-head checkpoint its repair was browser-free green at 250 files / 2,495 passed / 1 skipped
+> with typecheck green and changed no player-facing progression rule. The current aggregate boundary
+> is stated at this file's top.
 
 > **2026-08-30 current replacement boot-catch-up clarification:** aggregate progression still owns
 > one receipt/F4 CAS and only the canonical achievement append plus monotonic `stats.bestRank`.

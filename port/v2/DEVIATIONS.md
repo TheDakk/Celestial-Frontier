@@ -1,20 +1,23 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **2026-08-30 current exact-`20d8598…` / `9382f8e…` repair overlay (supersedes narrower
-> “current” implementation status below; every dated decision/evidence checkpoint remains
-> immutable):** exact clean SSH-signed source
-> `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium **78/78** once/no-retry, then its
-> unchanged Slice `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red
-> once/no-retry with six ordered Engineering/Landing/Pertar findings. Signed evidence-only
-> successor `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay. The
-> stored Slice remains FAIL; Glass and Recovery did not run.
+> **2026-08-30 current exact-`8bdf474…` repair overlay (supersedes narrower “current”
+> implementation status below; every dated decision/evidence checkpoint remains immutable):**
+> exact clean SSH-signed source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium
+> **78/78** once/no-retry, then its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> 111,490 ms with exactly one Arc 0 Landing publication scope. The exact carriers and browser-free
+> replay preserve that FAIL; Glass and Recovery did not run.
 >
-> The current local deviations are three bounded evidence repairs, not a gameplay redesign:
-> Research/Fabricator preserves trusted semantic-row focus across delayed native Enter blur; each
-> Arc 0 Landing fault scenario establishes one explicit Survey receipt/current Pertar route-card/
-> live publication and resamples the post-Survey baseline; and Recovery/Pertar exact-key validates
-> the full Arc 5 v3 Feed/Breed/Rename/Scout diagnostic schema. Final browser-free validation is
-> green at **250 files / 2,495 passed / 1 skipped**, with all TypeScript programs green. The
+> No product deviation was required. The old document's pre-action and held live products were
+> byte-identical and both correctly retained the open Pertar post-Survey card; the instrument had
+> also required a pre-Survey closed card. The immutable replay proves that contradiction and binds
+> the historical absence of held `cardCode`/target evidence. The new runner captures those values
+> atomically before release; publication-withheld then uses shared executable browser-free
+> contracts over exact product parity plus the complete absolute Pertar route, rendered scene, open
+> card, canonical CF1 payload and exact-key target, with isolated mutations. Earlier bounded
+> Research/Fabricator focus, exact Survey predecessor/coordinator and Arc 5 v3 diagnostic repairs
+> remain. Final browser-free validation is green at **251 files / 2,501 passed / 1 skipped**, with
+> all TypeScript programs green. The
 > cumulative **74-bullet** development bulletin has rendered ordered SHA-256
 > `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
 >

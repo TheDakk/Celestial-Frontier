@@ -2,7 +2,9 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import {
   arc0LandingCoordinatorIsIdle,
+  arc0LandingSurveyRouteIsExact,
   assessArc0LandingAwaitBoundary,
+  assessArc0LandingPublicationWithheld,
 } from '../tools/slicesmoke-contract.mjs';
 
 const sliceSource = readFileSync(
@@ -149,6 +151,54 @@ const publicationScenarioOwner = section(
   '  /* ARC 0 LANDING FAULT EVIDENCE END. */',
 );
 
+const PERTAR_GALAXY_KEY = 'CF1|g:999@90,-60';
+const PERTAR_STAR_KEY = `${PERTAR_GALAXY_KEY}|s:1347060996@414.31,168.49`;
+const PERTAR_PAYLOAD = Object.freeze({
+  t: 'p',
+  g: Object.freeze([90, -60, 78, 0, 0.62, 0.5, 999, 1]),
+  s: Object.freeze([414.31, 168.49, 1_347_060_996]),
+  p: 546_621_068,
+});
+const encodeCf1 = (payload: unknown): string => (
+  `CF1-${Buffer.from(JSON.stringify(payload)).toString('base64url')}`
+);
+const exactPertarSurveyRouteEvidence = () => ({
+  state: {
+    mode: 'system',
+    gal: 999,
+    galX: 90,
+    galY: -60,
+    star: 1_347_060_996,
+    starX: 414.31,
+    starY: 168.49,
+    planet: null,
+    planetOrdinal: null,
+    navGalaxyKey: PERTAR_GALAXY_KEY,
+    navStarKey: PERTAR_STAR_KEY,
+    navWorldKey: null,
+    cardOpen: true,
+    cardTitle: 'Pertar',
+    epoch: 0,
+    renderedScene: {
+      serial: 7,
+      mode: 'system',
+      ecologyEpoch: 0,
+      galaxyKey: PERTAR_GALAXY_KEY,
+      starKey: PERTAR_STAR_KEY,
+      worldKey: null,
+    },
+  },
+  cardCode: encodeCf1(PERTAR_PAYLOAD),
+  target: {
+    seed: 546_621_068,
+    ordinal: 3,
+    screenX: 433.36161745314564,
+    screenY: 294.0991033542126,
+    width: 30.497786755310813,
+    height: 30.497786755310813,
+  },
+});
+
 describe('Slice Arc 0 Landing fault evidence contract', () => {
   it('classifies refused, wrong-document and never-settled actions before generic harness handling', () => {
     const exact = {
@@ -183,6 +233,193 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
     });
     expect(controls.wrongAcceptedRefusal).toEqual({
       ok: false, reasons: ['accepted true !== false'],
+    });
+  });
+
+  it('evaluates every absolute post-Survey Pertar route/card/share field browser-free', () => {
+    const exact = exactPertarSurveyRouteEvidence();
+    expect(arc0LandingSurveyRouteIsExact(exact)).toBe(true);
+    const mutateState = (change: (state: any) => void) => {
+      const control = structuredClone(exact);
+      change(control.state);
+      return arc0LandingSurveyRouteIsExact(control);
+    };
+    const mutatePayload = (change: (payload: any) => void) => {
+      const control = structuredClone(exact);
+      const payload = structuredClone(PERTAR_PAYLOAD);
+      change(payload);
+      control.cardCode = encodeCf1(payload);
+      return arc0LandingSurveyRouteIsExact(control);
+    };
+    expect({
+      mode: mutateState((state) => { state.mode = 'surface'; }),
+      galaxySeed: mutateState((state) => { state.gal += 1; }),
+      galaxyX: mutateState((state) => { state.galX += 1; }),
+      galaxyY: mutateState((state) => { state.galY += 1; }),
+      starSeed: mutateState((state) => { state.star += 1; }),
+      starX: mutateState((state) => { state.starX += 1; }),
+      starY: mutateState((state) => { state.starY += 1; }),
+      planet: mutateState((state) => { state.planet = 546_621_068; }),
+      planetOrdinal: mutateState((state) => { state.planetOrdinal = 3; }),
+      galaxyKey: mutateState((state) => { state.navGalaxyKey += ':control'; }),
+      starKey: mutateState((state) => { state.navStarKey += ':control'; }),
+      worldKey: mutateState((state) => { state.navWorldKey = 'control'; }),
+      cardClosed: mutateState((state) => { state.cardOpen = false; }),
+      cardTitle: mutateState((state) => { state.cardTitle = 'Not Pertar'; }),
+      stateEpoch: mutateState((state) => { state.epoch += 1; }),
+      renderedSerial: mutateState((state) => { state.renderedScene.serial = 0; }),
+      renderedMode: mutateState((state) => { state.renderedScene.mode = 'surface'; }),
+      renderedEpoch: mutateState((state) => { state.renderedScene.ecologyEpoch += 1; }),
+      renderedGalaxy: mutateState((state) => { state.renderedScene.galaxyKey += ':control'; }),
+      renderedStar: mutateState((state) => { state.renderedScene.starKey += ':control'; }),
+      renderedWorld: mutateState((state) => { state.renderedScene.worldKey = 'control'; }),
+      renderedExtra: mutateState((state) => { state.renderedScene.extra = true; }),
+      invalidCode: arc0LandingSurveyRouteIsExact({ ...exact, cardCode: 'not-cf1' }),
+      nonCanonicalCode: arc0LandingSurveyRouteIsExact({
+        ...exact, cardCode: `${exact.cardCode}!`,
+      }),
+      payloadType: mutatePayload((payload) => { payload.t = 's'; }),
+      payloadGalaxyX: mutatePayload((payload) => { payload.g[0] += 1; }),
+      payloadGalaxyY: mutatePayload((payload) => { payload.g[1] += 1; }),
+      payloadGalaxySize: mutatePayload((payload) => { payload.g[2] += 1; }),
+      payloadGalaxySp: mutatePayload((payload) => { payload.g[3] += 1; }),
+      payloadGalaxyTilt: mutatePayload((payload) => { payload.g[4] += 1; }),
+      payloadGalaxyRot: mutatePayload((payload) => { payload.g[5] += 1; }),
+      payloadGalaxySeed: mutatePayload((payload) => { payload.g[6] += 1; }),
+      payloadGalaxyFlags: mutatePayload((payload) => { payload.g[7] += 1; }),
+      payloadGalaxyLength: mutatePayload((payload) => { payload.g.push(0); }),
+      payloadStarX: mutatePayload((payload) => { payload.s[0] += 1; }),
+      payloadStarY: mutatePayload((payload) => { payload.s[1] += 1; }),
+      payloadStarSeed: mutatePayload((payload) => { payload.s[2] += 1; }),
+      payloadStarLength: mutatePayload((payload) => { payload.s.push(0); }),
+      payloadPlanet: mutatePayload((payload) => { payload.p += 1; }),
+      payloadExtra: mutatePayload((payload) => { payload.extra = true; }),
+      targetSeed: arc0LandingSurveyRouteIsExact({
+        ...exact, target: { ...exact.target, seed: exact.target.seed + 1 },
+      }),
+      targetOrdinal: arc0LandingSurveyRouteIsExact({
+        ...exact, target: { ...exact.target, ordinal: exact.target.ordinal + 1 },
+      }),
+      targetScreenX: arc0LandingSurveyRouteIsExact({
+        ...exact, target: { ...exact.target, screenX: Number.NaN },
+      }),
+      targetScreenY: arc0LandingSurveyRouteIsExact({
+        ...exact, target: { ...exact.target, screenY: Number.POSITIVE_INFINITY },
+      }),
+      targetWidth: arc0LandingSurveyRouteIsExact({
+        ...exact, target: { ...exact.target, width: 0 },
+      }),
+      targetHeight: arc0LandingSurveyRouteIsExact({
+        ...exact, target: { ...exact.target, height: -1 },
+      }),
+      targetExtra: arc0LandingSurveyRouteIsExact({
+        ...exact, target: { ...exact.target, extra: true },
+      }),
+    }).toEqual(Object.fromEntries([
+      'mode', 'galaxySeed', 'galaxyX', 'galaxyY', 'starSeed', 'starX', 'starY',
+      'planet', 'planetOrdinal', 'galaxyKey', 'starKey', 'worldKey', 'cardClosed',
+      'cardTitle', 'stateEpoch', 'renderedSerial', 'renderedMode', 'renderedEpoch',
+      'renderedGalaxy', 'renderedStar', 'renderedWorld', 'renderedExtra', 'invalidCode',
+      'nonCanonicalCode', 'payloadType', 'payloadGalaxyX', 'payloadGalaxyY',
+      'payloadGalaxySize', 'payloadGalaxySp', 'payloadGalaxyTilt', 'payloadGalaxyRot',
+      'payloadGalaxySeed', 'payloadGalaxyFlags', 'payloadGalaxyLength', 'payloadStarX',
+      'payloadStarY', 'payloadStarSeed', 'payloadStarLength', 'payloadPlanet',
+      'payloadExtra', 'targetSeed', 'targetOrdinal', 'targetScreenX', 'targetScreenY',
+      'targetWidth', 'targetHeight', 'targetExtra',
+    ].map((key) => [key, false])));
+  });
+
+  it('admits an exact post-Survey held publication and rejects product or route drift locally', () => {
+    const beforeProduct = {
+      mode: 'system',
+      gal: 31337,
+      galX: 4,
+      galY: -2,
+      star: 4242,
+      starX: 1,
+      starY: 3,
+      planet: null,
+      planetOrdinal: null,
+      navGalaxyKey: 'g:pertar',
+      navStarKey: 'g:pertar|s:pertar',
+      navWorldKey: null,
+      save: { landed: [], cargo: [['ferrite', 2]], stats: { landings: 0 } },
+    };
+    const route = exactPertarSurveyRouteEvidence();
+    const exact = {
+      beforeProduct,
+      heldProduct: structuredClone(beforeProduct),
+      heldState: route.state,
+      cardCode: route.cardCode,
+      target: route.target,
+    };
+    expect(assessArc0LandingPublicationWithheld(exact)).toEqual({
+      ok: true, reasons: [],
+    });
+
+    const productMutations: Record<string, (product: any) => void> = {
+      mode: (product) => { product.mode = 'surface'; },
+      gal: (product) => { product.gal += 1; },
+      galX: (product) => { product.galX += 1; },
+      galY: (product) => { product.galY += 1; },
+      star: (product) => { product.star += 1; },
+      starX: (product) => { product.starX += 1; },
+      starY: (product) => { product.starY += 1; },
+      planet: (product) => { product.planet = 546_621_068; },
+      planetOrdinal: (product) => { product.planetOrdinal = 3; },
+      navGalaxyKey: (product) => { product.navGalaxyKey += ':control'; },
+      navStarKey: (product) => { product.navStarKey += ':control'; },
+      navWorldKey: (product) => { product.navWorldKey = 'control'; },
+      save: (product) => { product.save.stats.landings += 1; },
+    };
+    expect(Object.fromEntries(Object.entries(productMutations).map(([name, mutate]) => {
+      const heldProduct = structuredClone(beforeProduct);
+      mutate(heldProduct);
+      return [name, assessArc0LandingPublicationWithheld({ ...exact, heldProduct })];
+    }))).toEqual(Object.fromEntries(Object.keys(productMutations).map((name) => [name, {
+      ok: false,
+      reasons: ['old document live product changed before replacement'],
+    }])));
+
+    const optimisticProduct = structuredClone(beforeProduct);
+    optimisticProduct.save.stats.landings = 1;
+    expect(assessArc0LandingPublicationWithheld({
+      ...exact,
+      heldProduct: optimisticProduct,
+    })).toEqual({
+      ok: false,
+      reasons: ['old document live product changed before replacement'],
+    });
+    expect(assessArc0LandingPublicationWithheld({
+      ...exact,
+      heldState: { ...route.state, cardOpen: false },
+    })).toEqual({
+      ok: false,
+      reasons: ['old document did not retain its exact post-Survey route/card/share/target'],
+    });
+    expect(assessArc0LandingPublicationWithheld({
+      ...exact,
+      cardCode: 'CF1-not-a-valid-card',
+    })).toEqual({
+      ok: false,
+      reasons: ['old document did not retain its exact post-Survey route/card/share/target'],
+    });
+    expect(assessArc0LandingPublicationWithheld({
+      ...exact,
+      target: { ...route.target, ordinal: route.target.ordinal + 1 },
+    })).toEqual({
+      ok: false,
+      reasons: ['old document did not retain its exact post-Survey route/card/share/target'],
+    });
+    expect(assessArc0LandingPublicationWithheld({
+      beforeProduct: undefined,
+      heldProduct: undefined,
+      heldState: route.state,
+      cardCode: route.cardCode,
+      target: route.target,
+    })).toEqual({
+      ok: false,
+      reasons: ['old document live product evidence was incomplete'],
     });
   });
 
@@ -295,11 +532,7 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['Survey receipt hash schema', 'const arc0LandingSurveyReceiptPattern = /^arc9sv1:[0-9a-f]{64}$/u;'],
       ['exact Pertar Survey witness authority', "'arc9sv1:21678a94072ba2e5d0df32cdde8454d265cf0edac9310acf98576d2696244ece';"],
       ['Survey receipt kind', ".filter(({ row }) => row?.kind === 'arc9-survey-v1');"],
-      ['current source route', 'arc4PertarSourceRouteExact({ ...state, cardOpen: false })'],
-      ['current card', "state?.cardOpen === true && state?.cardTitle === 'Pertar'"],
-      ['planet share payload', "payload?.t === 'p'"],
-      ['exact share planet', 'payload.p === ARC4_PERTAR_FIXTURE.planet.seed'],
-      ['exact target ordinal', 'target?.ordinal === ARC4_PERTAR_FIXTURE.planet.ordinal'],
+      ['shared exact post-Survey route', 'arc0LandingSurveyRouteIsExact({ state, cardCode, target })'],
       ['one receipt delta', 'after.length === before.length + 1'],
       ['pre-receipt arrays aligned', 'arc0LandingReceiptArraysAligned(beforeRaw)'],
       ['post-receipt arrays aligned', 'arc0LandingReceiptArraysAligned(afterRaw)'],
@@ -358,7 +591,7 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['Survey writable wait', '`${label} post-Survey writable authority`,'],
       ['same-document writable check', 'previousToken: sourceFixture.priorToken'],
       ['post-Survey durable sample', 'raw=await (${ARC4_DURABLE_READ_EXPRESSION});return {state:S.api.state(),raw,'],
-      ['post-Survey card sample', 'cardCode:S.api.cardShareCode(),target:S.api.planetScreenTarget('],
+      ['post-Survey card sample', 'raw=await (${ARC4_DURABLE_READ_EXPRESSION});return {state:S.api.state(),raw,\n        cardCode:S.api.cardShareCode(),target:S.api.planetScreenTarget('],
       ['post-Survey baseline fixture', '...sourceFixture, state: surveyBaseline.state, raw: surveyBaseline.raw,'],
       ['Survey setup assessment', 'const surveyAssessment = assessArc0LandingSurveySetup(surveyEvidence);'],
       ['pre-Survey baseline control', 'preSurveyBaselineControl.fixture = structuredClone('],
@@ -399,6 +632,10 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['held phase wait', "s?.persistence?.convergenceReloadHold?.phase==='holding'"],
       ['settled owner wait', "s?.landing?.actionCoordinator?.inFlight===false"],
       ['exact fault wait', 'fault?.injection===${JSON.stringify(injection)}&&fault?.outcome===${JSON.stringify(faultOutcome)}'],
+      ['atomic held route/card sample', '?{state:s,cardCode:S.api.cardShareCode(),target:S.api.planetScreenTarget('],
+      ['held state extracted before release', 'const heldState = heldObservation.state;'],
+      ['held card code extracted before release', 'const heldCardCode = heldObservation.cardCode;'],
+      ['held target extracted before release', 'const heldTarget = heldObservation.target;'],
       ['held durable read', 'const heldRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);'],
       ['single release', "'window.__CF_SLICE__.api.__smokeReleaseF4ConvergenceReload()'"],
       ['new document wait', 'await waitForSlice(sess, `${label} replacement`, { previousToken: beforeToken });'],
@@ -612,8 +849,12 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['split landed field', 'committedRaw?.catalogRow?.data?.land?.includes(ARC4_PERTAR_FIXTURE.planet.seed)'],
       ['world identity changed', 'canonicalJson(arc0LandingWorldIdentityBytes(beforeRaw))'],
       ['world identity reload parity', 'canonicalJson(arc0LandingWorldIdentityBytes(evidence?.reloadedRaw))'],
-      ['old document withheld', '=== canonicalJson(arc0LandingLiveProduct(evidence?.heldState))'],
-      ['old source route retained', 'arc4PertarSourceRouteExact(evidence?.heldState)'],
+      ['browser-free publication assessor', 'localPublicationWithheld: assessArc0LandingPublicationWithheld({'],
+      ['pre-action product', 'beforeProduct: arc0LandingLiveProduct(evidence?.fixture?.state)'],
+      ['old document product', 'heldProduct: arc0LandingLiveProduct(evidence?.heldState)'],
+      ['held state route input', 'heldState: evidence?.heldState'],
+      ['held card-code input', 'cardCode: evidence?.heldCardCode'],
+      ['held target input', 'target: evidence?.heldTarget'],
       ['coordinator released', 'coordinatorReleased: arc0LandingCoordinatorIdle(evidence?.heldState)'],
       ['convergence held', 'convergenceHeld: arc0LandingConvergenceHeld(evidence?.heldState)'],
       ['publication release witness', "evidence, 'publication', committedRaw, detail"],
@@ -628,7 +869,11 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['publication hook', "faultHook: '__smokeRejectNextArc0LandingPublication'"],
       ['publication expected outcome', "injection: 'publication-failure', faultOutcome: 'committed-publication-reload'"],
       ['durable success return', 'accepted: true,'],
+      ['positive evidence fail-stop', 'if (!arc0LandingPublicationAssessment.ok) {\n    failSliceWithoutCascade(\'ARC 0 LANDING PUBLICATION CONVERGENCE: positive held publication evidence was not exact; controls were not constructed: \''],
       ['old-state optimism mutation', 'arc0LandingPublicationOptimismControl.heldState.save = structuredClone('],
+      ['post-Survey route control', 'arc0LandingPublicationRouteControl.heldState.cardOpen = false;'],
+      ['held card-code control', "arc0LandingPublicationCardCodeControl.heldCardCode = 'CF1-not-a-valid-card';"],
+      ['held target control', 'arc0LandingPublicationTargetControl.heldTarget.ordinal += 1;'],
       ['both durable snapshots mutated', 'for (const raw of [arc0LandingPublicationWitnessControl.heldRaw,'],
       ['field-sample witness mutation', 'witness.sample.stardust += 1;'],
       ['prefix control pair', 'for (const raw of [arc0LandingPublicationPrefixControl.heldRaw,'],
@@ -645,14 +890,17 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       ['reload revision mutation', 'arc0LandingPublicationReloadControl.reloadedRaw.revision += 1;'],
       ['prefix control assessment', 'prefix: assessArc0LandingPublicationConvergence('],
       ['ordinal control assessment', 'ordinal: assessArc0LandingPublicationConvergence('],
-      ['prefix control prepared', '|| !arc0LandingPublicationPrefixControlPrepared'],
+      ['prefix control prepared', 'if (!arc0LandingPublicationPrefixControlPrepared'],
       ['ordinal control prepared', '|| !arc0LandingPublicationOrdinalControlPrepared'],
       ['optimism isolated red', "arc0LandingPublicationControls.optimism, 'localPublicationWithheld'"],
+      ['route isolated red', "arc0LandingPublicationControls.route, 'localPublicationWithheld'"],
+      ['card-code isolated red', "arc0LandingPublicationControls.cardCode, 'localPublicationWithheld'"],
+      ['target isolated red', "arc0LandingPublicationControls.target, 'localPublicationWithheld'"],
       ['witness isolated red', "arc0LandingPublicationControls.witness, 'durableLandingReward'"],
       ['prefix isolated red', "arc0LandingPublicationControls.prefix, 'durableLandingReward'"],
       ['ordinal isolated red', "arc0LandingPublicationControls.ordinal, 'durableLandingReward'"],
       ['reload isolated red', "arc0LandingPublicationControls.reload, 'reloadFixedPoint'"],
-      ['causal fail-stop', "failSliceWithoutCascade('ARC 0 LANDING PUBLICATION CONVERGENCE:"],
+      ['causal fail-stop', "failSliceWithoutCascade('ARC 0 LANDING PUBLICATION CONVERGENCE: durable one-receipt landing/reward was published locally, retried, or lost across reload:"],
     ]);
     expect(publicationScenarioOwner).not.toContain(
       "fails.push('ARC 0 LANDING PUBLICATION CONVERGENCE:",

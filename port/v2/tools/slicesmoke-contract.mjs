@@ -4,6 +4,7 @@
    string alone as publication evidence. */
 
 import { createHash } from 'node:crypto';
+import { ARC4_PERTAR_FIXTURE } from './arc4-browser-contract.mjs';
 
 const safeInt = (value) => Number.isSafeInteger(value) && value >= 0;
 const nonEmptyString = (value) => typeof value === 'string' && value.length > 0;
@@ -2184,6 +2185,113 @@ export function assessArc0LandingAwaitBoundary({
   if (waitError !== null) {
     const message = typeof waitError === 'string' ? waitError : String(waitError);
     reasons.push(`expected stage did not settle: ${message.slice(0, 2_048)}`);
+  }
+  return Object.freeze({ ok: reasons.length === 0, reasons: Object.freeze(reasons) });
+}
+
+/* Publication-failure evidence is evaluated browser-free as two independent
+   facts: the old document retained its exact live product, and it retained
+   the already-certified post-Survey route/card. Keeping this executable
+   decision outside the browser driver prevents a contradictory route oracle
+   from consuming another full Slice certification attempt. */
+const ARC0_LANDING_LIVE_PRODUCT_KEYS = Object.freeze([
+  'mode', 'gal', 'galX', 'galY', 'star', 'starX', 'starY', 'planet',
+  'planetOrdinal', 'navGalaxyKey', 'navStarKey', 'navWorldKey', 'save',
+]);
+const ARC0_PERTAR_GALAXY_KEY = ARC4_PERTAR_FIXTURE.worldKey.slice(
+  0, ARC4_PERTAR_FIXTURE.worldKey.indexOf('|s:'),
+);
+const ARC0_PERTAR_STAR_KEY = ARC4_PERTAR_FIXTURE.worldKey.slice(
+  0, ARC4_PERTAR_FIXTURE.worldKey.lastIndexOf('|p:'),
+);
+const ARC0_PERTAR_SHARE_PAYLOAD = Object.freeze({
+  t: 'p',
+  g: Object.freeze([
+    ARC4_PERTAR_FIXTURE.worldAddress.galaxy.x,
+    ARC4_PERTAR_FIXTURE.worldAddress.galaxy.y,
+    ARC4_PERTAR_FIXTURE.worldAddress.galaxy.size,
+    ARC4_PERTAR_FIXTURE.worldAddress.galaxy.sp,
+    ARC4_PERTAR_FIXTURE.worldAddress.galaxy.tilt,
+    ARC4_PERTAR_FIXTURE.worldAddress.galaxy.rot,
+    ARC4_PERTAR_FIXTURE.worldAddress.galaxy.seed,
+    (ARC4_PERTAR_FIXTURE.worldAddress.galaxy.home ? 1 : 0)
+      | (ARC4_PERTAR_FIXTURE.worldAddress.galaxy.quasar ? 2 : 0)
+      | (ARC4_PERTAR_FIXTURE.worldAddress.galaxy.dwarf ? 4 : 0),
+  ]),
+  s: Object.freeze([
+    ARC4_PERTAR_FIXTURE.publicStar.x,
+    ARC4_PERTAR_FIXTURE.publicStar.y,
+    ARC4_PERTAR_FIXTURE.publicStar.seed,
+  ]),
+  p: ARC4_PERTAR_FIXTURE.planet.seed,
+});
+const decodeArc0Cf1Payload = (code) => {
+  if (typeof code !== 'string' || !code.startsWith('CF1-')) return null;
+  try {
+    const payload = JSON.parse(Buffer.from(code.slice(4), 'base64url').toString('utf8'));
+    return payload && typeof payload === 'object' && !Array.isArray(payload) ? payload : null;
+  } catch { return null; }
+};
+
+/* This is the complete absolute post-Survey Pertar route/card/share predicate.
+   It remains browser-free: the browser collects only plain state, CF1 code and
+   target evidence, while this contract owns the verdict and its mutations. */
+export function arc0LandingSurveyRouteIsExact({ state, cardCode, target } = {}) {
+  const payload = decodeArc0Cf1Payload(cardCode);
+  const canonicalCardCode = payload === null ? null
+    : `CF1-${Buffer.from(JSON.stringify(payload)).toString('base64url')}`;
+  return state?.mode === 'system'
+    && state?.gal === ARC4_PERTAR_FIXTURE.galaxy.seed
+    && state?.galX === ARC4_PERTAR_FIXTURE.galaxy.x
+    && state?.galY === ARC4_PERTAR_FIXTURE.galaxy.y
+    && state?.star === ARC4_PERTAR_FIXTURE.publicStar.seed
+    && state?.starX === ARC4_PERTAR_FIXTURE.publicStar.x
+    && state?.starY === ARC4_PERTAR_FIXTURE.publicStar.y
+    && state?.planet === null && state?.planetOrdinal === null
+    && state?.navGalaxyKey === ARC0_PERTAR_GALAXY_KEY
+    && state?.navStarKey === ARC0_PERTAR_STAR_KEY && state?.navWorldKey === null
+    && state?.cardOpen === true && state?.cardTitle === 'Pertar'
+    && state?.epoch === ARC4_PERTAR_FIXTURE.ecologyEpoch
+    && exactKeys(state?.renderedScene, [
+      'serial', 'mode', 'ecologyEpoch', 'galaxyKey', 'starKey', 'worldKey',
+    ])
+    && Number.isInteger(state?.renderedScene?.serial) && state.renderedScene.serial > 0
+    && state.renderedScene.mode === 'system'
+    && state.renderedScene.ecologyEpoch === ARC4_PERTAR_FIXTURE.ecologyEpoch
+    && state.renderedScene.galaxyKey === ARC0_PERTAR_GALAXY_KEY
+    && state.renderedScene.starKey === ARC0_PERTAR_STAR_KEY
+    && state.renderedScene.worldKey === null
+    && exactKeys(payload, ['t', 'g', 's', 'p'])
+    && exactJson(payload, ARC0_PERTAR_SHARE_PAYLOAD)
+    && cardCode === canonicalCardCode
+    && exactKeys(target, [
+      'seed', 'ordinal', 'screenX', 'screenY', 'width', 'height',
+    ])
+    && target?.seed === ARC4_PERTAR_FIXTURE.planet.seed
+    && target?.ordinal === ARC4_PERTAR_FIXTURE.planet.ordinal
+    && Number.isFinite(target.screenX) && Number.isFinite(target.screenY)
+    && Number.isFinite(target.width) && target.width > 0
+    && Number.isFinite(target.height) && target.height > 0;
+}
+
+export function assessArc0LandingPublicationWithheld({
+  beforeProduct,
+  heldProduct,
+  heldState,
+  cardCode,
+  target,
+} = {}) {
+  const reasons = [];
+  const complete = (product) => exactKeys(product, ARC0_LANDING_LIVE_PRODUCT_KEYS)
+    && product.save !== null && typeof product.save === 'object'
+    && !Array.isArray(product.save);
+  if (!complete(beforeProduct) || !complete(heldProduct)) {
+    reasons.push('old document live product evidence was incomplete');
+  } else if (!exactJson(beforeProduct, heldProduct)) {
+    reasons.push('old document live product changed before replacement');
+  }
+  if (!arc0LandingSurveyRouteIsExact({ state: heldState, cardCode, target })) {
+    reasons.push('old document did not retain its exact post-Survey route/card/share/target');
   }
   return Object.freeze({ ok: reasons.length === 0, reasons: Object.freeze(reasons) });
 }

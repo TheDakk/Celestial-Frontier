@@ -1,19 +1,18 @@
 # Celestial Frontier — PROCESS LAWS
 
-> **2026-08-30 current `20d8598…` / `9382f8e…` evidence law (matches local code):** exact clean
-> SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium 78/78
+> **2026-08-30 current `8bdf474…` evidence law (matches local code):** exact clean SSH-signed
+> source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium 78/78 in 64,108 ms
 > once/no-retry, then its unchanged-source Slice
-> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry after
-> 120,493 ms with six ordered findings: Research, fixed Fabrication, three Landing fault scopes and
-> the final Pertar harness scope. Signed evidence successor
-> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay; the stored
-> Slice remains FAIL, and Glass/Recovery did not run. Diagnosis separated three roots: Edge can
-> finish native Enter's focused-button-to-BODY transition after the click listener, erasing the
-> Engineering settlement's focus lineage; the Landing fixture sampled authority before an owned
-> Survey transaction and then judged Landing against that stale baseline; and the recovery/Pertar
-> assessor rejected legitimate current Arc 5 v3 diagnostics because its exact schema knew only the
-> Feed subtree. No browser retry, timeout increase, version rebaseline, save/gameplay redesign or
-> schema bump follows.
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> 111,490 ms with exactly one scope, `arc-0-landing-publication-convergence`. Glass and Recovery did
+> not run. The old document's pre-action and held live products had zero differing fields and the
+> same 1,876-byte / `e353f175…e78` identity; both correctly retained the open Pertar post-Survey
+> card. The sole false term reapplied a pre-Survey helper requiring a closed card after setup had
+> explicitly certified an open card. This is an instrument false negative, not a product defect.
+> The immutable red stays red; its browser-free replay proves the contradiction and explicitly
+> binds the historical absence of held `cardCode`/target capture. The new runner must capture those
+> held values before the corrected assessor can pass. No browser retry, timeout increase, version
+> rebaseline, product/save/schema change or gameplay redesign follows.
 >
 > **PARK NATIVE-ACTION FOCUS BEFORE DISABLING IT.** When a trusted native Enter activation can
 > disable its exact action before the browser finishes default focus handling, synchronously park
@@ -26,6 +25,16 @@
 > coordinator-idle and writable fixed point, then resample raw and live authority. Arm the fault only
 > after that green baseline and invoke the direct action under test once. A composite helper that
 > silently performs the predecessor cannot supply the judged baseline.
+>
+> **A POST-ACTION FIXTURE MUST USE A POST-ACTION ORACLE.** Do not certify a post-Survey state and
+> then recheck it with a pre-Survey UI predicate. The exact `8bdf474…` red required the held state
+> both to equal an open Pertar-card fixture and to have the card closed, so no correct product could
+> pass. Every captured-evidence decision that does not require browser APIs belongs in a shared
+> browser-free contract with one positive baseline and isolated negative controls. Replay the real
+> retained red inside `npm test` to prove both the diagnosis and any evidence it omitted; never
+> substitute pre-action fields for missing held capture just to make the historical report green.
+> Source-marker checks alone prove syntax is present, not that its predicates can ever be jointly
+> true.
 >
 > **VERSIONED DIAGNOSTICS ARE EXACT SCHEMAS.** The current Arc 5 v3 app diagnostic owns its base
 > migration fields plus exact Feed, Breed, Rename and Scout subtrees; wrong, missing and extra fields
@@ -69,8 +78,8 @@
 > mutants; a green negative control stops later controls; and a red stage stops every mutable
 > successor. Source-order removal and reversal controls must prove each stop. Historical multi-scope
 > reports stay immutable, but current execution must not manufacture derivative stages after a root
-> has already invalidated their premise. Final repair-batch browser-free validation is green: 250
-> files / 2,495 passed / 1 skipped with all TypeScript programs green. Neither that green result nor
+> has already invalidated their premise. Final repair-batch browser-free validation is green: 251
+> files / 2,501 passed / 1 skipped with all TypeScript programs green. Neither that green result nor
 > local repair bytes grant fresh
 > browser successor authority.
 

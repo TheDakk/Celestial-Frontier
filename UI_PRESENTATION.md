@@ -1,21 +1,20 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-30 current exact-`20d8598…` / `9382f8e…` repair overlay (matches the local
+> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
 > working tree and supersedes narrower “current” status below; dated evidence remains immutable):**
-> exact clean SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium
-> **78/78** once/no-retry, then its unchanged Slice
-> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry with
-> six ordered Engineering/Landing/Pertar findings. Signed evidence-only successor
-> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact carriers and replay. The stored
-> Slice remains FAIL; Glass and Recovery did not run.
+> exact clean SSH-signed evidence source `8bdf474e92467652729a6980f706ca3a2813682c` passed
+> Compendium **78/78** once/no-retry in **64,108 ms**. Its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> **111,490 ms** with exactly one Arc 0 Landing publication-oracle scope. The exact carriers and
+> replay are preserved; the stored Slice remains FAIL, and Glass and Recovery did not run.
 >
-> Three bounded roots are repaired locally: trusted Research/Fabricator settlement parks its stable
-> semantic-row focus before native Enter can finish a delayed button-to-BODY blur; each Arc 0
-> Landing fault scenario first proves one explicit Survey receipt/current Pertar route-card/live
-> publication and resamples that authority; and the Recovery/Pertar assessor exact-key validates the
-> complete Arc 5 v3 Feed/Breed/Rename/Scout diagnostics. Final browser-free validation is green at
-> **250 files / 2,495 passed / 1 skipped**, with all three TypeScript programs green. The cumulative
-> **74-bullet** development bulletin has rendered ordered SHA-256
+> The old document correctly retained its open Pertar post-Survey card and exact live product; the
+> stale oracle also required that card to be closed. The replay binds that contradiction and its
+> missing historical held `cardCode`/target capture; the current uncommitted runner atomically
+> captures those values and moves complete future judgment into browser-free contracts. It changes no product UI
+> behavior; prior focus-lineage, explicit Survey predecessor, coordinator and Arc 5 v3 repairs
+> remain. Final browser-free validation is green at **251 files / 2,501 passed / 1 skipped**, with
+> all three TypeScript programs green. The cumulative **74-bullet** development bulletin has rendered ordered SHA-256
 > `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
 >
 > Active derived Compendium producer / index / owner / generated-service-worker authority is
@@ -704,8 +703,8 @@
 > action is disabled. This preserves focus lineage when Edge finishes native Enter's focused-button-
 > to-BODY transition after the click listener. The exact replacement action receives focus only if
 > that lineage remains; a later user move to BODY, a disclosure summary or another control wins.
-> Mine/Skim have no semantic row and retain their explicit disable-to-BODY behavior. Exact
-> `20d8598…` evidence preserved the delayed-blur failure as terminal red; the repair does not force
+> Mine/Skim have no semantic row and retain their explicit disable-to-BODY behavior. Historical
+> exact `20d8598…` evidence preserved the delayed-blur failure as terminal red; the repair does not force
 > focus back after user movement or claim fresh browser authority. The
 > existing Arc 1C paragraphs below are retained as historical pre-Engineering evidence. The
 > historical Engineering implementation and browser evidence were committed through `c4a02be`.

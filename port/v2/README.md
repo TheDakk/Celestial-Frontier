@@ -1,33 +1,25 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
 > **Current local evidence boundary (2026-08-30):** exact clean SSH-signed source
-> `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium **78/78** once/no-retry in
-> **63,431 ms**. Its unchanged-source Slice
-> `20260830-pr35-arc3-20d8598913e1-slice-certification` then stopped terminal red once/no-retry
-> after **120,493 ms** with six ordered findings: `arc-3-research-action`,
-> `arc-3-fixed-fabrication`, the three Arc 0 Landing fault scopes and final `harness`. Signed
-> evidence successor `9382f8e5835612bddfbb3c05593f98b6a5e8126c` binds the exact reports/log,
-> source tuple, ordered findings and absence of PASS/Glass/Recovery authority. The immutable Slice
-> remains FAIL; Glass and Recovery did not run.
+> `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
+> **64,108 ms**. Its unchanged-source Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` then stopped terminal red once/no-retry
+> after **111,490 ms** with exactly one scope, `arc-0-landing-publication-convergence`. The exact
+> report/log and 78/78 predecessor are preserved under `audits/`; Glass and Recovery did not run.
 >
-> Diagnosis found three bounded causes. Research/Fabricator needed to preserve focus lineage across
-> Edge's delayed native Enter button-to-BODY transition: settlement now parks the exact stable
-> semantic row before disabling the action and restores the replacement action only while that
-> lineage remains; later user focus movement wins, while Mine/Skim retain their explicit
-> disable-to-BODY proof. The three Landing findings came from a stale fixture/oracle baseline, not
-> three product defects: each fault scenario now performs and verifies one explicit Survey, waits
-> for its exact receipt/route/live publication and writable fixed point, resamples raw/live
-> authority, then arms the fault and calls `landHere()` once. Coordinator-idle is now an exact
-> owner/hold/three-latch contract: missing, renamed, extra or armed latches, stale hold diagnostics
-> and retained setup/reload faults are red, and malformed positive setup stops before controls are
-> constructed. The final Pertar timeout came from a
-> stale Arc 5 diagnostics assessor: current `cf-v2-arc5-app-state/v3` is exact-key validated across
-> Feed, Breed, Rename and Scout, with wrong/missing/extra controls for every subtree; historical v2
-> remains explicit opt-in only. No timeout, retry, browser rebaseline, product schema bump,
-> save/gameplay redesign or creature/genome/art/audio change is introduced. Final repair-batch
-> browser-free validation is green: **250 files / 2,495 passed / 1 skipped**, with root, game and
-> worker typechecks green. A new clean signed source must complete
-> the copy-ready chain below once, stopping without retry at the first red or nonzero result.
+> This was an impossible instrument assertion, not another game-system failure. The pre-action and
+> held old-document live products had zero differing fields and the same 1,876-byte identity; both
+> correctly retained the open Pertar post-Survey card. The stale second conjunct simultaneously
+> required that same card to be closed. The immutable replay proves that contradiction and records
+> that the historical runner did not capture held `cardCode`/target evidence. The repaired runner
+> now captures those values atomically before release; shared browser-free contracts and independent
+> field controls judge live-product parity plus the complete absolute Pertar route, rendered scene,
+> open card, canonical CF1 payload and exact-key target. No product code, timeout, retry,
+> browser ruler, Edge baseline, save/gameplay schema, creature/genome/art/audio system or numeric
+> ceiling changed. Current browser-free validation is **251 files / 2,501 passed / 1 skipped** in
+> **23.49 seconds**, with root, game and worker typechecks green. A new clean signed source must
+> complete the copy-ready browser chain below once, stopping without retry at the first red or
+> nonzero result.
 
 > **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact signed source
 > `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
@@ -3042,7 +3034,7 @@ node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_
 | Tool | Role |
 |---|---|
 | **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |
-| **Current Arc 3 Engineering / Arc 0 Landing boundary inside `npm run smoke:ci` (2026-08-30)** | Exact `20d8598…` evidence passed Compendium 78/78, then preserved one terminal six-finding Slice red with no Glass/Recovery successor. Research/Fabricator settlement parks exact semantic-row focus before action disable so Edge's delayed native Enter blur cannot erase lineage; the replacement action is restored only while that lineage remains, and later user focus movement wins. Every Landing fault scenario explicitly settles one Survey receipt, current Pertar route/card and live publication, waits for writable authority, resamples its raw/live baseline, then arms the fault and calls direct `landHere()` once. Pre-Survey, missing-receipt, wrong-route/card and wrong-live-publication controls stay red, and every red setup/assessment fail-stops before dependent mutation. The final Pertar readiness path consumes exact current Arc 5 v3 diagnostics rather than treating legitimate subtrees as product failure. Final repair-batch browser-free validation is green at 250 files / 2,495 passed / 1 skipped with typecheck green. No retry, sleep, timeout increase, product schema bump or Edge rebaseline is used. |
+| **Current Arc 3 Engineering / Arc 0 Landing boundary inside `npm run smoke:ci` (2026-08-30)** | Exact `8bdf474…` evidence passed Compendium 78/78, then preserved one terminal single-scope Slice red with no Glass/Recovery successor. The Landing product was exact; the instrument contradicted its certified open post-Survey card with a pre-Survey closed-card predicate. The immutable replay proves that contradiction and binds its missing historical held `cardCode`/target capture. The new runner atomically captures those values before release; the complete absolute Pertar route/card/share/target predicate and product-parity decision run in the shared browser-free contract with independent mutations over every route, rendered-scene, CF1 payload, target and optimistic-product field. Earlier Research/Fabricator focus-lineage, exact Survey predecessor, coordinator-idle and current Arc 5 v3 repairs remain. Browser-free validation is green at 251 files / 2,501 passed / 1 skipped with typecheck green. No retry, sleep, timeout increase, product schema bump or Edge rebaseline is used. |
 | `node tools/tracked-input-preflight.mjs --selftest` / `node tools/tracked-input-preflight.mjs` | Mutation-controls the tracked-only boundary, then—only from a clean committed candidate—exports the exact index, installs in isolation and executes the complete hosted browser-free/static command plan with start/end source stability. This is the mandatory preauthorization rehearsal, not hosted or browser evidence. |
 | `npx vitest run tests/current-producer-authorities.test.ts` / `node tools/print-producer-authorities.mjs` | Before browser installation or campaign work, performs one standard app build under the shared workspace lock and compares SceneMemory plus Compendium's live budget records directly to independently derived current source/dist authorities. The test is automatically included in `npm test`; source, build, forged duplicate-constant, recomputed index and recomputed owner mutants must fail with exact mismatch paths. The printer reports those paths and exits nonzero on any mismatch. It never rewrites budgets or historical samples and is not a browser certificate. |
 | **Historical Final11 campaign evidence** | Signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc` passed Layout 787/787, SceneMemory 42/42, Compendium 78/78 with six PNGs, Slice with zero findings/ten PNGs and all 12 Glass viewports with zero findings or instrument failures; every stage ran once and passed named verification. Recovery ran once for 1,291,034 ms and passed all 15 observation outcomes/309 samples, the uninterrupted 20-minute window, exact next-cycle boundary and recovered UI. Its final assessor failed only `activePlayProjection` and `closeCheckpoint`; cleanup passed and no retry occurred. Final11 is immutable, instrument-red rather than product-red, and not a Recovery certificate. Exact carriers are in `audits/README.md`. |

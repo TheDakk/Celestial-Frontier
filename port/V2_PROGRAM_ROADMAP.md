@@ -1,29 +1,22 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Current local PR #35 `20d8598…` / `9382f8e…` evidence repair (2026-08-30; supersedes the
-> prior 4a82 current overlay and the narrower e4f5 boundary below):** exact clean SSH-signed source
-> `20d8598913e1009e03538085e59a8b63ac7a6655` passed Compendium 78/78 once/no-retry in
-> 63,431 ms. Its unchanged-source Slice
-> `20260830-pr35-arc3-20d8598913e1-slice-certification` stopped terminal red once/no-retry after
-> 120,493 ms with six ordered findings: Research, fixed Fabrication, three Arc 0 Landing fault
-> scopes and final Pertar harness. Signed successor
-> `9382f8e5835612bddfbb3c05593f98b6a5e8126c` preserves the exact evidence replay; Glass and
-> Recovery did not run, and the immutable Slice remains FAIL.
+> **Current local PR #35 exact-`8bdf474…` evidence / Arc 0 publication-oracle repair (2026-08-30; supersedes
+> the prior 20d/938, 4a82 and e4f5 current overlays below):** exact clean SSH-signed evidence source
+> `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium 78/78 once/no-retry in
+> 64,108 ms. Its unchanged-source Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> 111,490 ms with exactly one Arc 0 Landing publication-oracle scope. Exact carriers and replay
+> preserve that immutable FAIL; Glass and Recovery did not run.
 >
-> Three bounded local repairs follow. Engineering parks a trusted Research/Fabricator settlement on
-> its stable semantic row before disabling the exact action, preserving focus lineage across
-> delayed native Enter blur and restoring the replacement action only while that lineage remains.
-> Landing fault evidence explicitly settles and verifies one Survey receipt/current Pertar
-> route/card/live publication and writable fixed point, resamples raw/live authority, then arms the
-> fault and calls `landHere()` once; pre-Survey, missing-receipt, wrong-route/card and wrong-live
-> publication controls fail-stop. Its coordinator-idle preflight exact-key rejects missing,
-> renamed, extra or armed latches, non-idle/stale hold diagnostics and retained setup/reload faults;
-> a red positive setup stops before mutant construction. Recovery/Pertar assessment now exact-key validates the existing
-> Arc 5 v3 diagnostics across Feed, Breed, Rename and Scout, with wrong/missing/extra controls and
-> explicit legacy-v2 replay only. No product schema bump, timeout, retry, save/gameplay redesign,
-> creature/genome/art/audio change, ruler change or Edge rebaseline is introduced. Final
-> repair-batch browser-free validation is green: **250 files / 2,495 passed / 1 skipped**, with all
-> TypeScript programs green. Exact carriers are in
+> The retained pre-action and held old-document live products are byte-identical and both retain
+> the open Pertar post-Survey card; the stale oracle also required that card to be closed. The
+> immutable replay proves that contradiction and binds its missing historical held
+> `cardCode`/target capture. The current uncommitted runner atomically captures those values and
+> moves complete future judgment into browser-free contracts. Earlier Engineering focus-lineage, explicit Survey
+> predecessor, exact coordinator and Arc 5 v3 diagnostic repairs remain. No product schema bump,
+> timeout, retry, save/gameplay redesign, creature/genome/art/audio change, ruler change or Edge
+> rebaseline is introduced. Final repair-batch browser-free validation is green: **251 files /
+> 2,501 passed / 1 skipped**, with all TypeScript programs green. Exact carriers are in
 > `audits/README.md`. A fresh unchanged-source Compendium → Slice → Glass → Recovery chain remains
 > required, and no HUMAN, hosted, merge, release, version or deployment authority follows.
 
@@ -2024,7 +2017,7 @@ depth remain open; therefore the Arc and its exit evidence are not declared comp
 Current focus ownership is explicit: a trusted Research/Fabricator settlement parks focus on its
 stable semantic row before disabling the exact action, survives delayed native Enter blur and
 restores the replacement action only while lineage remains. Later user focus movement wins;
-Mine/Skim retain their separate disable-to-BODY behavior. Exact `20d8598…` preserves the prior
+Mine/Skim retain their separate disable-to-BODY behavior. Historical exact `20d8598…` preserves the prior
 failure as terminal red, so this local repair still needs fresh exact-source browser evidence.
 
 **Player promise:** surveyed worlds reveal finite, understandable opportunities. Gathering and
