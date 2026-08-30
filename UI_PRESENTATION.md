@@ -1,7 +1,8 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-30 current local species-art/Compendium observation overlay (matches code as of
-> 2026-08-30; supersedes narrower diagnostics descriptions below):** exact signed source
+> **2026-08-30 current local execution-ready species-art/Compendium/PWA overlay (matches the
+> current local code; clean signed browser closure remains pending; supersedes narrower same-date
+> diagnostics and PWA descriptions below):** exact signed source
 > `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
 > `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` once with no retry and stopped
 > after 33,217 ms at phone veteran-Earth Planetside settlement with zero outcomes and all 78
@@ -37,7 +38,8 @@
 > required the deliberately induced paint fault's `lastError` to remain non-null after replacement
 > recovery. The report remains immutable red, with no successor browser stage.
 >
-> Current released-worker evidence requires `lastError === null` on every selected current v2
+> The subsequently repaired released-worker evidence requires `lastError === null` on every
+> selected current v2
 > released/recovered snapshot, including non-final and post-cap samples. The deliberate paint fault
 > remains proved by exact cumulative paint/phase/result arithmetic. Terminal current product errors
 > still require their exact non-null trusted receipt; historical diagnostics v1 remains replayable.
@@ -46,39 +48,63 @@
 > have SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`, and the independent
 > replay passes 8/8.
 >
-> The deterministic PWA harness reproduced the presentation's historical lazy-import boundary: a
+> The then-current deterministic PWA harness reproduced the presentation's historical lazy-import
+> boundary: a
 > worker created between first activation's initial client snapshot and `clients.claim()` entered
 > uncontrolled, then its lazy import became controlled without a retained-build pin and received
-> exact 503 `This document has no retained Celestial Frontier build.` Activation now repeats the
-> complete all-client preservation pass after claim inside the same `waitUntil`. The repaired
-> harness pins/serves the exact lazy bytes, the no-post-claim-reconciliation mutant recreates the
-> 503, post-claim worker entries still pin their lazy children, and unrelated unpinned requests
-> remain visibly red. No player-facing retry, fallback or inferred error message was added.
+> exact 503 `This document has no retained Celestial Frontier build.` The repair at that historical
+> boundary repeated the complete all-client preservation pass after claim inside the same
+> `waitUntil`; its then-current mutant without that pass recreated the 503. That was a truthful
+> intermediate repair, not a claim that `clients.matchAll()` can already see every newly controlled
+> realm.
+>
+> Exact clean signed descendant `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` then ran
+> `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` exactly once with zero
+> retries on Edge `152.0.4191.53` / CDP `1.3`. It stopped terminal `product-fail` after **3,115
+> ms** at phone veteran-Earth Planetside settlement: zero outcomes, all **78** blocked, all eight
+> rows errored, and no desktop profile, review PNG or successor stage. The current diagnostics did
+> their job: they retained the trusted worker-local stage `import`, code `painter-import` and its
+> exact bounded 101-character message rather than laundering the failure into a timeout. The exact
+> 6,053-byte gzip carrier has SHA-256
+> `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`; its 37,825 raw bytes have
+> SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`, and its independent replay
+> passes **4/4**. The red was not retried and no successor ran.
+>
+> The second first-install race is execution readiness. A newly controlled dedicated/shared worker
+> can still be omitted from both the post-claim `clients.matchAll()` inventory and its claim-era
+> snapshot until its first controlled request. The service worker now uses that request's exact
+> `clientId`, waits for `clients.get()` to confirm the live realm, and adopts it only when this
+> generated `BUILD_ID` is the current active build, no prior build is retained, and the client type
+> is exactly `worker` or `sharedworker`. Unknown clients, windows, retained-prior/update states and a
+> wrong active build still receive the exact 503. Source mutants prove the adoption, type, prior and
+> active-build guards. This is neither a network/mixed-build fallback nor a player-facing retry.
 >
 > Current producer authority is history-safe schema v2,
-> `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`, and binds generated
+> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`, and binds generated
 > `service-worker.js` SHA-256
-> `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14` together with index, owner,
-> species worker and painter. Removing the post-claim repair therefore changes authority;
-> historical v1 records remain replayable. Current Scene build authority is
-> `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
-> measurement / contract / collector are
+> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` together with index, owner,
+> species worker and painter. Historical producer records remain replayable. Current Scene build
+> authority is `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; current Compendium
+> measurement / contract / collector remain
 > `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
 > `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 > `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
-> Browser-free repair coverage is green at 591 Compendium selftest controls, independent 8/8
-> preserved-carrier replay, the full **239 files / 2,431 passed / 1 skipped** suite, all three
-> TypeScript programs and the green authority printer. The fixed ruler, numeric ceilings and 78-outcome inventory did not
-> change. Certification remains open; only a materially changed signed source may make one new no-
-> retry Compendium attempt.
+> Active Compendium/Scene budget SHA-256 is
+> `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
+> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`.
+> The focused PWA, budget and carrier boundary passes **74/74 across four files**, all three
+> TypeScript programs pass, and the full browser-free suite passes **240 files / 2,437 passed / 1
+> skipped**. Fixed rulers, numeric ceilings and the 78-outcome inventory are unchanged. Current-
+> source Compendium certification and every successor stage remain open.
 
 > **2026-08-29 current local route/PWA/vista correction (supersedes narrower same-date descriptions
 > below where they differ):** the Survey-to-Landing interaction now drains the route checkpoint,
 > invokes Survey once, drains Survey's replacement product checkpoint, and invokes Land once. No
-> retry or optimistic transition was added. Exact PWA build ownership now follows valid module-worker
+> retry or optimistic transition was added. Exact PWA build ownership follows valid module-worker
 > and shared-worker creation through `resultingClientId`; retention considers all client realms and
-> confirms a missing reserved worker before pruning its pin, so a worker's later lazy import cannot
-> cross builds after activation or rollback.
+> confirms a missing reserved worker before pruning its pin. On first install only, a realm omitted
+> until execution-ready may additionally inherit the sole current build on its first controlled
+> request after exact `clients.get()` type confirmation; any retained-prior/update state refuses.
 >
 > A failed biome-vista worker still leaves the usable fitted globe in place, but diagnostics now
 > expose the fault count plus one bounded exact last-error string. SceneMemory fails that condition

@@ -1,5 +1,46 @@
 # Celestial Frontier — Save System
 
+> **2026-08-30 current local execution-late PWA/save boundary (matches code as of 2026-08-30;
+> supersedes the narrower post-claim/current authority statements below while preserving their
+> named runs as history):** exact signed source
+> `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
+> `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` once/no-retry and stopped
+> terminal `product-fail` after **3,115 ms** at phone veteran-Earth Planetside. The first controlled
+> painter lazy import failed; zero of 78 outcomes ran and all 78 were blocked. Its exact carrier is
+> `audits/ARC1C_COMPENDIUM_PR35_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_38D8848.json.gz`, 6,053
+> gzip bytes / SHA-256
+> `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`, 37,825 raw bytes /
+> SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`, with independent
+> **4/4** replay. No downstream browser stage ran.
+>
+> `matchAll` and `claim` may both omit a worker whose realm is not execution-ready, so the earlier
+> post-claim pass remains necessary but cannot be the final ownership proof. On the first
+> controlled lazy fetch, the service worker uses `FetchEvent.clientId` plus `clients.get()` and
+> adopts a missing pin only when `activeBuildId === BUILD_ID`, `priorBuildId === null`, the id is
+> valid, and the live client is exactly `worker` or `sharedworker`. Unknown clients, windows,
+> retained-prior state and wrong-active-build state receive the exact 503 and no pin. Adoption,
+> client type, prior state and active identity each have a direct mutant. The selected response
+> still comes only from the exact verified cache; no network fallback or retry was added.
+>
+> Current Compendium producer authority is schema-v2 SHA-256
+> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`; generated
+> `service-worker.js` is
+> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a`. Current Scene build,
+> Compendium budget and Scene budget SHA-256 values are
+> `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`,
+> `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af`, and
+> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`. Measurement / contract /
+> collector remain `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
+> Focused repair coverage is four files / **74 passed**, all three TypeScript programs are green,
+> and the full browser-free suite is **240 files / 2,437 passed / 1 skipped**.
+>
+> This changes disposable exact-app-byte routing only. It adds no expedition field, save schema,
+> migration, write, clock, retry, rollback of IndexedDB, or product-state fallback. Painter pixels,
+> seeds, genomes, anatomy, art structure, rulers, ceilings and the 78-outcome inventory are also
+> unchanged.
+
 > **2026-08-30 current local post-claim PWA/save boundary (matches code as of 2026-08-30;
 > supersedes narrower same-date/2026-08-29 PWA descriptions below):** exact signed source
 > `830e601b8f16092d6f9193ecde329cfefd279bcd` ran

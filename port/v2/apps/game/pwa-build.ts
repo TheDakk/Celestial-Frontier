@@ -244,6 +244,19 @@ async function writeClientPin(clientId,buildId){
   const cache=await caches.open(CONTROL_CACHE);
   await cache.put(clientPinUrl(clientId),new Response(JSON.stringify({schema:SCHEMA,clientId,buildId}),{headers:{'content-type':'application/json'}}));
 }
+async function adoptLateFirstInstallWorker(state,clientId){
+  if(state.activeBuildId!==BUILD_ID||state.priorBuildId!==null||!validClientId(clientId))return null;
+  /* clients.matchAll() and clients.claim() can both omit a dedicated/shared
+     worker until that realm is execution-ready. If worker-client creation and
+     registration matching later make its lazy fetch controlled, that fetch
+     supplies the one identity clients.get() can wait for and confirm. With no
+     retained prior build there is exactly one cache identity to inherit;
+     windows, absent clients and every two-build update remain fail-closed. */
+  const client=await self.clients.get(clientId);
+  if(!client||(client.type!=='worker'&&client.type!=='sharedworker'))return null;
+  await writeClientPin(clientId,state.activeBuildId);
+  return state.activeBuildId;
+}
 async function preserveLiveClientBuilds(state,requireActiveOnly){
   const clients=await self.clients.matchAll({type:'all',includeUncontrolled:true});
   const cache=await caches.open(CONTROL_CACHE);
@@ -370,7 +383,8 @@ self.addEventListener('fetch',(event)=>{
     const navigation=request.mode==='navigate'||request.destination==='document';
     const workerCreation=request.destination==='worker'||request.destination==='sharedworker';
     if(!navigation&&!validClientId(event.clientId))return new Response('This resource request has no Celestial Frontier document owner.',{status:503});
-    const pinned=navigation?null:await readClientPin(event.clientId);
+    let pinned=navigation?null:await readClientPin(event.clientId);
+    if(!navigation&&pinned===null)pinned=await adoptLateFirstInstallWorker(state,event.clientId);
     if(!navigation&&pinned===null)return new Response('This document has no retained Celestial Frontier build.',{status:503});
     if(pinned!==null&&pinned!==state.activeBuildId&&pinned!==state.priorBuildId)return new Response('This document no longer owns a retained Celestial Frontier build.',{status:503});
     const selectedBuildId=pinned??state.activeBuildId;

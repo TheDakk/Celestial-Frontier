@@ -1,5 +1,45 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-08-30 current local execution-late PWA/species-art overlay (supersedes the narrower
+> post-claim/current authority language below; its exact 830/d33 runs remain historical):** exact
+> signed source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
+> `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` once with no retry. It
+> stopped terminal `product-fail` after **3,115 ms** at phone veteran-Earth Planetside when the
+> first controlled species-painter lazy import failed; zero of 78 outcomes ran and all 78 were
+> blocked. The exact report is preserved as
+> `audits/ARC1C_COMPENDIUM_PR35_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_38D8848.json.gz`, 6,053
+> gzip bytes / SHA-256
+> `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`, 37,825 raw bytes /
+> SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`; independent replay is
+> **4/4**. No Slice, Glass or Recovery stage followed.
+>
+> Both `clients.matchAll({type:'all', includeUncontrolled:true})` and `clients.claim()` may omit a
+> worker whose realm is not execution-ready, so the prior post-claim pass is necessary but not
+> exhaustive. If worker-client creation and registration matching later make its first lazy fetch
+> controlled, `FetchEvent.clientId` identifies the initiating client and `clients.get(clientId)`
+> confirms it. A missing pin is adopted only when `activeBuildId === BUILD_ID`,
+> `priorBuildId === null`, the id is valid, and the resolved live type is exactly `worker` or
+> `sharedworker`. Unknown clients, windows, a retained prior and a wrong active build keep the exact
+> 503/no-pin result. Direct source mutants seal adoption, type, prior and active-build clauses. The
+> response remains cache-only from one unambiguous verified build; there is no network fallback,
+> cross-build inference, sleep or retry.
+>
+> Current history-safe Compendium producer authority is schema-v2 SHA-256
+> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`; generated
+> `service-worker.js` is
+> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a`. Current Scene build,
+> Compendium budget and Scene budget SHA-256 values are
+> `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`,
+> `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af`, and
+> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`. Compendium measurement /
+> contract / collector remain `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
+> Focused repair coverage is four files / **74 passed**, all three TypeScript programs are green,
+> and the full browser-free suite is **240 files / 2,437 passed / 1 skipped**. This PWA repair changes
+> no save schema, painter pixels, seed, genome, anatomy, art structure, ruler, numeric ceiling or
+> 78-outcome inventory. Fresh signed browser certification remains required.
+
 > **2026-08-30 current local post-claim PWA/species-art overlay (matches code as of 2026-08-30;
 > supersedes narrower 2026-08-29 descriptions below):** exact signed source
 > `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
@@ -3248,22 +3288,26 @@ SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`; inde
 8/8.
 
 The history-safe current producer record is `cf-v2-compendium-producer-authority/v2` /
-`2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. It binds index, owner,
+`06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`. It binds index, owner,
 species worker, painter and generated `service-worker.js` SHA-256
-`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`; deleting the post-claim
-repair therefore changes producer authority. Historical schema-v1 producer records remain
-replayable. Current Scene build authority is
-`49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
+`a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a`; deleting the post-claim or
+execution-late fetch repair therefore changes producer authority. Historical schema-v1 and earlier
+schema-v2 producer records remain replayable. Current Scene build authority is
+`aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; current Compendium
 measurement / contract / collector authorities are
 `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
 `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
-The current browser-free repair boundary is green at 591 `compendiummem:selftest` controls,
-independent 8/8 carrier replay, the full **239 files / 2,431 passed / 1 skipped** suite, all three
-TypeScript programs and the green authority printer. The fixed ruler, every numeric ceiling and the 78-outcome inventory
-remain unchanged. Browser certification still requires a materially changed signed source to make
-one new no-retry Compendium attempt with named verification before the serial Slice → Glass →
-Recovery chain may continue on that unchanged successor.
+Current Compendium and Scene budget SHA-256 values are
+`1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` and
+`15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`. The current browser-free
+repair boundary is green at 591 `compendiummem:selftest` controls, independent 8/8 recovered-worker
+carrier replay, independent **4/4** execution-late carrier replay, focused four files / **74 passed**,
+the full **240 files / 2,437 passed / 1 skipped** suite, all three TypeScript programs and the green
+authority printer. The fixed ruler, every numeric ceiling and the 78-outcome inventory remain
+unchanged. Browser certification still requires a materially changed signed source to make one new
+no-retry Compendium attempt with named verification before the serial Slice → Glass → Recovery chain
+may continue on that unchanged successor.
 
 The former local ruler is retained as historical evidence under measurement authority
 `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer authority
@@ -3559,8 +3603,12 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   imports remain cache-only from the same build. A successor does not claim existing pages. On
   first installation, the worker takes its initial all-client preservation snapshot, calls
   `clients.claim()`, then repeats the complete preservation pass inside that same activation
-  `waitUntil`; this pins a worker created in the snapshot/claim gap before its newly controlled lazy
-  fetch. All client types retain their pins, an omitted snapshot client must also fail
+  `waitUntil`; this pins a worker created in the snapshot/claim gap when that worker is enumerable.
+  Because both `matchAll` and `claim` may omit a realm that is not execution-ready, the first
+  controlled worker-local lazy fetch has one additional fail-closed seam: its `clientId` is confirmed
+  with `clients.get()` and inherits the active pin only when the active id is this generated
+  `BUILD_ID`, there is no prior build, and the live type is worker/sharedworker. Unknown, window,
+  prior-retaining and wrong-active cases remain 503/no-pin. All client types retain their pins, an omitted snapshot client must also fail
   `clients.get()` before pruning, and third-build activation refuses while any live client owns the
   retained prior.
   Settings accepts exact-worker status/results and exposes

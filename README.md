@@ -1,21 +1,32 @@
 # Celestial-Frontier
 
-> **Current draft PR #35 repair boundary (2026-08-29):** `openai/mac` is pushed only through
+> **Current draft PR #35 repair boundary (2026-08-30):** `openai/mac` is pushed only through
 > `017fa6decbc41809188768ccdb98ab86ef1b9ebc`; draft PR #35 targets `develop` base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Its consumed one-attempt run `33278630671`
-> passed every root/browser-free/type/art/coverage/current-authority predecessor and then stopped
-> in phone SceneMemory at `Earth planetfall was rejected`; later browser stages were skipped. The
-> approval label is absent and no retry or replacement hosted attempt is authorized.
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`; no later local work has been pushed. The earlier
+> consumed hosted attempt remains immutable red and authorizes no retry or replacement run.
 >
-> The current local, unpushed repair drains both Survey → Landing persistence barriers without
-> retry, predicts save successors with the transaction owner's exact checked-clock codec, carries
-> exact-build pins into worker/shared-worker clients before lazy imports, and makes SceneMemory
-> retain bounded Landing/worker/BFCache diagnoses. The complete v2 browser-free suite is green at
-> **234 files / 2,373 passed + 1 skipped**, all three TypeScript configurations and the full static
-> art/override/coverage/spec battery pass, and SceneMemory plus Compendium producer authorities
-> match without changing numeric ceilings or browser baselines. A signed local commit and fresh
-> clean exact-source browser proof remain the next local boundary; no merge, release, version bump,
-> publication, or deployment has occurred.
+> Exact clean signed local source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran Compendium
+> exactly once with zero retries as
+> `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification`. It stopped terminal
+> `product-fail` after **3,115 ms** at phone veteran-Earth Planetside: zero outcomes, all **78**
+> blocked, eight errored thumbnail rows, and no desktop profile, review PNG or successor stage. Its
+> trusted diagnostics retained exact worker stage `import` and code `painter-import`; the immutable
+> 6,053-byte gzip / 37,825-byte raw carrier and independent 4/4 replay are indexed in
+> [`audits/README.md`](audits/README.md). That exact source was not retried.
+>
+> The current local, unpushed repair closes the remaining first-install execution-ready race. A
+> newly controlled worker can be absent from `clients.matchAll()` until its first controlled
+> request; the service worker now confirms that request's exact `clientId` through `clients.get()`
+> and adopts only a live worker/shared-worker when the generated build is current and no prior build
+> exists. Unknown clients, windows, wrong-active and retained-prior/update states still fail closed
+> with no network, mixed-build or retry fallback. Current Compendium producer authority is
+> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`; generated service-worker
+> SHA-256 is `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a`. The full browser-free
+> suite is green at **240 files / 2,437 passed / 1 skipped**, the focused PWA/budget/carrier boundary
+> is **74/74**, and all three TypeScript configurations pass. Fixed rulers, numeric ceilings and the
+> 78-outcome inventory are unchanged. A clean signed local commit and one fresh exact-source
+> Compendium proof remain next; no merge, release, version bump, publication or deployment has
+> occurred.
 
 > **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact signed source
 > `3f69e88ea8e34fdb8d9913276601b426ada783ae` remained clean and unchanged through one serial,

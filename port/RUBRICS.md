@@ -141,24 +141,55 @@
 > `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e` and passes independent
 > replay 8/8.
 >
-> Independent review closure requires history-safe Compendium producer authority v2 over generated
-> `service-worker.js` plus index, owner, worker and painter. A service-worker mutant changes current
-> authority, while historical v1 reports replay unchanged. Current measurement / outcome contract /
-> collector / producer-v2 SHA-256 is
+> At that recovered-worker repair boundary, independent review required history-safe Compendium
+> producer authority v2 over generated `service-worker.js` plus index, owner, worker and painter. A
+> service-worker mutant changed that authority, while historical v1 reports replayed unchanged.
+> Measurement / outcome contract / collector / producer-v2 SHA-256 was
 > `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
 > `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 > `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
-> `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; service-worker SHA-256 is
-> `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. SceneMemory current build
-> authority is `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; its exact
+> `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; service-worker SHA-256 was
+> `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. SceneMemory build
+> authority was `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; its exact
 > `2046000…` certificate remains immutable historical evidence.
 >
-> Current repair coverage passes **591** Compendium selftest controls, independent **8/8** carrier
+> That repair coverage passed **591** Compendium selftest controls, independent **8/8** carrier
 > replay, the full **239 files / 2,431 passed / 1 skipped** suite, all three TypeScript programs and
 > the green authority printer. This local repair is not a fresh Compendium certificate and closes no `[HUMAN]`
-> row. Only a materially changed signed source may make one new no-retry Compendium attempt. The
+> row. It required a materially changed signed source for any new no-retry Compendium attempt. The
 > fixed ruler, numeric ceilings, 78-outcome inventory, historical samples, thresholds and exact-
 > source verdicts remain unchanged.
+>
+> **Current execution-late first-install boundary:** exact signed source
+> `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
+> `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` exactly once/no-retry on
+> Edge `152.0.4191.53` / CDP `1.3`. It stopped terminal `product-fail` after **3,115 ms** at phone
+> `veteran-earth-planetside`, judged zero outcomes, blocked all **78**, and produced no desktop,
+> review PNG or successor gate. Immutable carrier
+> `audits/ARC1C_COMPENDIUM_PR35_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_38D8848.json.gz` is **6,053
+> gzip bytes** / SHA-256 `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`
+> and **37,825 raw bytes** / SHA-256
+> `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`; replay is 4/4.
+>
+> Current `[EXEC]` acceptance covers the execution-ready gap: `matchAll` and claim may both omit a
+> first-install realm before its first later controlled request. That request's `clientId` is
+> confirmed with `clients.get()` and adopted only when active build equals `BUILD_ID`, prior pin is
+> null, and the live client is worker/sharedworker. Unknown clients, windows, prior pins and wrong-
+> active states stay exact 503; adoption, type, prior and active mutants remain red.
+>
+> Current measurement / outcome contract / collector are
+> `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`. Producer-v2 / generated
+> service-worker / Scene build is
+> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf` /
+> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` /
+> `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; Compendium / Scene budget
+> is `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
+> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`. Focused closure passes
+> **4 files / 74 tests**, typecheck is green, and the full suite passes **240 files / 2,437 passed /
+> 1 skipped**. Fixed rulers, ceilings, 78 outcomes, 73 release bullets and all `[HUMAN]`, hosted,
+> merge, release/version and deployment statuses remain unchanged; no fresh certificate exists.
 
 > **2026-08-29 current local gameplay-evidence overlay:** Arc 5 now has four player-live exact-
 > instance writers—Feed, one-draw nonlethal Breed with active-play Recovery, identity-only Rename,

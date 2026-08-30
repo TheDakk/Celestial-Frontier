@@ -1,5 +1,50 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **2026-08-30 current execution-late first-install worker authority (supersedes the
+> narrower 830/d33 “current” boundaries below; those exact runs and carriers remain immutable
+> historical evidence):** exact signed source
+> `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
+> `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` once with no retry. It
+> stopped terminal `product-fail` after **3,115 ms** at phone veteran-Earth Planetside settlement:
+> the first species-painter dynamic import failed, zero of 78 outcomes ran, and all 78 were blocked.
+> The exact report is preserved as
+> `audits/ARC1C_COMPENDIUM_PR35_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_38D8848.json.gz`, 6,053
+> gzip bytes / SHA-256
+> `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`, 37,825 raw bytes /
+> SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`; independent replay is
+> **4/4**. No Slice, Glass or Recovery stage followed that red.
+>
+> The prior post-claim preservation pass is necessary but not exhaustive. Both
+> `clients.matchAll({type:'all', includeUncontrolled:true})` and `clients.claim()` may omit a
+> dedicated/shared worker whose realm is not execution-ready. When worker-client creation and
+> registration matching later make its first lazy fetch controlled, `FetchEvent.clientId` names
+> the initiating worker and `clients.get(clientId)` can wait for and confirm that exact live
+> client. Recover a missing pin at that fetch boundary only when the control state has
+> `activeBuildId === BUILD_ID`, `priorBuildId === null`, the id is valid, and the resolved client
+> type is exactly `worker` or `sharedworker`. Unknown clients, windows, any retained-prior state,
+> and any wrong-active-build state keep the exact unowned-client **503**. This is exact cache
+> inheritance for one unambiguous build, never a network fallback, cross-build guess, sleep or
+> retry. Direct mutants independently seal the adoption seam and the client-type, prior-build and
+> active-build guards.
+>
+> Current Compendium producer authority is history-safe schema v2 SHA-256
+> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`, binding generated
+> `service-worker.js` SHA-256
+> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` with index, owner,
+> species worker and painter. Current Scene build authority is
+> `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; current Compendium and
+> Scene budget SHA-256 values are
+> `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` and
+> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`. Compendium measurement /
+> contract / collector authorities remain
+> `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
+> Focused repair coverage is four files / **74 passed**, all three TypeScript programs are green,
+> and the full browser-free suite is **240 files / 2,437 passed / 1 skipped**. The repair changes
+> no save schema, painter pixels, seed/genome/anatomy rule, art structure, ruler, numeric ceiling or
+> 78-outcome inventory. Fresh signed browser certification remains required.
+
 > **2026-08-29 exact-chain law — historical exact-source certificate:** repair an oracle on preserved evidence, then
 > certify only a fresh unchanged-source chain; never relabel or retry the stored red. Exact signed
 > source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
@@ -29,6 +74,20 @@ shipped, or with a check that went green while the thing it guarded was broken. 
 roughly by how often they have bitten.
 
 ---
+
+⚠⚠ **AN ACTIVATION SNAPSHOT IS NOT COMPLETE OWNERSHIP OF A NON-EXECUTION-READY WORKER;
+THE FIRST CONTROLLED LAZY FETCH MUST CLOSE THE SINGLE-BUILD PIN** (2026-08-30). The current
+authority and exact red are recorded above. Keep the activation-time pre/post-claim preservation
+passes, but never infer that either `matchAll` or `claim` enumerated a realm the browser had not made
+execution-ready. Use the fetch event's UA-owned `clientId`, confirm it with `clients.get`, inherit
+only the exact current `BUILD_ID` when no prior build exists, and keep every ambiguous client/build
+combination at 503. Negative-control all four clauses independently; a broad “adopt every unpinned
+request” is cross-build corruption disguised as recovery.
+
+The following 830/d33 first-activation and recovered-receipt laws are historical precursor
+boundaries. Their exact observations and authorities remain valid for their named sources; any
+unqualified “current” wording inside those preserved blocks means current at that historical
+boundary and is superseded by the execution-late authority above.
 
 ⚠⚠ **FIRST-ACTIVATION OWNERSHIP MUST BE RECONCILED AFTER `clients.claim()` IN THE SAME
 `waitUntil`; A PRE-CLAIM SNAPSHOT CANNOT OWN A REALM CREATED IN THE CLAIM GAP** (2026-08-30).
