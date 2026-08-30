@@ -76,9 +76,13 @@ and resumes it rather than revoking a resource the restored page still owns.
 A Blob URL shortens the string retained in V8/backing storage; it does not make the PNG bytes cease
 to exist. Keep the broker's encoded-byte/cache diagnostics and caps truthful, negative-control every
 revocation exit, and do not raise a heap ceiling merely because bytes moved to the browser Blob
-registry. The current dirty-source SceneMemory diagnostic reached **44/44**, but dirty diagnostic
-green is repair evidence only—not clean exact-source certification, calibration authority or
-permission to relabel an earlier red.
+registry. Clean signed activation `2046000873f98318c767db53d2ffb2abac71cc94` subsequently passed
+the exact SceneMemory input-v4 **44/44** once with zero retries and named verification. That
+certificate remains SceneMemory-only: later signed Compendium source `3fb958f…` stopped
+instrument-only before any product verdict, and signed implementation `3eefbbcf…` repairs its
+foreground/structured observation. The repair is browser-free green at 546 selftest controls,
+focused 31/31, 236 files / 2,409 passed + one skipped, all three TypeScript programs and the
+producer-authority printer, but is not browser-certified.
 
 ⚠⚠ **A CAPACITY CEILING IS NOT REQUIRED QUIESCENT OCCUPANCY; CERTIFY THE REAL CLOSED
 STATE** (2026-08-30). After Close correctly compacted the Compendium thumbnail cache to eight live
@@ -115,8 +119,11 @@ the four measured samples so warming and measurement cannot be conflated. A live
 released backing storage from **2,097,191** bytes to **39**, proving the fixed second lane still sees
 and releases real growth. Numeric ceilings, browser-family authority and product build/game bytes
 do not move. The new sampler changes producer authority and requires fresh clean calibration,
-authority activation and then one clean no-retry certificate; Compendium remains skipped until that
-SceneMemory certificate is green.
+authority activation and then one clean no-retry certificate. That required SceneMemory certificate
+is now the signed `2046000873f98318c767db53d2ffb2abac71cc94` **44/44** result; Compendium advanced,
+first exposed the obsolete quiescent-cache oracle and then stopped instrument-only on exact signed
+source `3fb958f…`. Signed implementation `3eefbbcf…` owns the browser-free-green 85-phase/history
+repair, but no current Compendium certification follows yet.
 
 ⚠⚠ **PROVE IDENTITY WITH EXACT SET MEMBERSHIP, NOT CARDINALITY** (2026-08-27). Final5's
 Compendium instrument saw eight mounted fixture keys and eight cached Planetside keys, so its
@@ -1667,6 +1674,36 @@ page's witness. Negative-control wrong target, stale document/service identity, 
 arm and phases, phase reversal, and intervening visibility/focus changes. A timeout must retain the
 last non-null image/decode, queue/active, worker identity/phase/result/error, broker, and foreground
 state; a generic `null` cannot distinguish product from a missing test precondition.
+The exact `3fb958f…` PR #35 recurrence therefore makes the ordered fresh-lazy → veteran-Earth →
+final-lazy service receipts and each target/session/document-bound structured list or Planetside
+observation part of complete-profile terminal evidence; missing, reordered, duplicated, stale,
+hidden/unfocused, loss-bearing, phase-invalid or late evidence is an instrument stop, never a
+product verdict.
+
+The current recurrence seals exactly **85 semantic settlement phases per profile**—**75 list** and
+**10 Planetside**—and never treats polling frequency as plan progress. Each accepted invocation is
+append-only history with contiguous attempts and an exact token/page/browser/command/timing binding;
+the latest 85-entry projection must equal the final receipt in every plan group. A v6 partial keeps
+the diagnosis, full accepted history and latest completed prefix plus the active next-phase or
+latest-phase-retry tail. Terminal verification must reject omission, reorder and coordinated
+attempt/token/history/page/browser/command/timing laundering. Partial page authority is independent:
+lazy/main identities must remain distinct whenever both exist. Polling compacts to exactly one
+terminal command per semantic deadline group, the partial command ledger fails closed above **2,048
+entries or 2 MiB**, receipt tokens are capped at **256 characters**, and a ready-but-unreceipted tail
+is valid only under its exact receipt-assembly instrument diagnosis.
+
+Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
+`66639419129ea0db68114ef70f0106a58abb91d0`, parent
+`3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns current capability / measurement / contract /
+collector / budget authority:
+`35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
+`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
+`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
+`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
+`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; producer remains
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. This is browser-free
+instrument authority, not a browser-certified product result; one fresh exact-source Compendium
+certificate and named verification remain mandatory.
 
 **Correction earned by PR #32's exact-ef6 D-TRAIN Smoke:** a direct fixture write does not own
 setup while an older product writer can still commit. Clean committed

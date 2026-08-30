@@ -21,7 +21,7 @@
 > updates never rebaseline or recalibrate. Earlier Final13/Final12/Final11/Final10 wording below is
 > historical where superseded.
 
-> **PR #35 current-local truth overlay (2026-08-29):** consumed hosted run `33278630671` tested
+> **PR #35 current-local truth overlay (2026-08-30):** consumed hosted run `33278630671` tested
 > exact head `017fa6decbc41809188768ccdb98ab86ef1b9ebc`; all predecessors and SceneMemory controls
 > passed, then the one-attempt phone product stage stopped at **Earth planetfall was rejected** and
 > every later browser stage remained unrun. Local acceptance controls now require the one-call Survey
@@ -46,10 +46,44 @@
 > Settled 132px worker thumbnails become revocable Blob URLs before caching, while 440px portraits
 > remain data URLs. Rejection, oversize, dropped consumer, duplicate, eviction, protocol mismatch,
 > late producer generation and final document disposal each revoke exactly once. At most 17
-> most-recent unleased thumbnails may remain warm. Dirty diagnostic
-> `20260829-pr35-blob-url-warm-cache-dirty-budget1` passed **44/44** SceneMemory outcomes with one
-> import and 16/17 thumbnail jobs on phone/desktop, but dirty-source status is not a clean
-> certificate and closes no `[HUMAN]` row.
+> most-recent unleased thumbnails may remain warm. Clean signed `20460008…` subsequently passed
+> SceneMemory **44/44** once with named verification. Its following Compendium run retained all 78
+> outcomes and stopped **76/78** only because the historical warm-precondition expected full
+> 96/256 cache occupancy instead of the product's correct eight live leases plus 17 bounded
+> unleased thumbnails. Signed `3fb958f8…` then stopped before verdict: 577 timely phone Planetside
+> observations and timely root heartbeats were collapsed to `null` by an instrument that had not
+> re-established and proved the measured tab's foreground rendering turn. All 78 outcomes were
+> blocked; desktop, screenshots and successors did not run.
+>
+> Current acceptance therefore requires exact independent lazy/main target-session-document
+> authorities and exactly three ordered foreground receipts: activate target, enable focus
+> emulation, bring the page forward, then prove visible/focused arm → rAF → later-task service with
+> no visibility/focus loss, strict pre-deadline timing and cleared document listeners/globals.
+> Thumbnail settlement retains bounded image/decode, art, lazy-worker, broker and page facts rather
+> than a falsy `null` through an exact **85-phase** plan per profile (**75 list / 10 Planetside**).
+> Every accepted semantic invocation is append-only history with contiguous attempts and exact token/
+> page/browser/command/timing authority; the 85-entry latest projection must equal each plan group's
+> final receipt. Partial v6 retains diagnosis, full accepted history and latest prefix plus the active
+> next-phase or latest-phase-retry tail. Terminal verification rejects omission/reorder and coordinated
+> attempt/token/history/page/browser/command/timing laundering, not merely stale or residue-bearing
+> receipts. Partial lazy/main page authorities are independently bound and distinct whenever both
+> exist. Each semantic deadline group retains exactly one terminal poll command; the partial command
+> ledger fails closed above **2,048 entries or 2 MiB**; receipt tokens cap at **256 characters**; and a
+> ready-but-unreceipted tail requires its exact receipt-assembly instrument diagnosis.
+>
+> Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
+> `66639419129ea0db68114ef70f0106a58abb91d0`, parent
+> `3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns current capability / measurement / contract /
+> collector / budget SHA-256:
+> `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
+> `326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
+> `7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
+> `ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
+> `c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; producer remains
+> `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The browser-free repair
+> passes **546** selftest controls, focused **31/31**, **236 files / 2,409 passed + one skipped**, all
+> three TypeScript programs and the producer-authority printer. It has not run a fresh exact-source
+> Compendium browser certificate and closes no `[HUMAN]` row.
 
 > **2026-08-29 current local gameplay-evidence overlay:** Arc 5 now has four player-live exact-
 > instance writers—Feed, one-draw nonlethal Breed with active-play Recovery, identity-only Rename,
@@ -448,9 +482,10 @@ or engagement pressure.
 The current-local performance criterion includes the exact resource controls above: a zero-entry
 cache is not automatically a plateau if it recreates workers and render jobs every route cycle, and
 a bounded logical cache is not sufficient if base64 strings retain backing storage. Acceptance
-therefore requires bounded warm reuse plus explicit revocable external-resource ownership. The
-44/44 dirty diagnostic is causal evidence only; fresh clean exact-source SceneMemory and
-Compendium certificates plus physical heat/battery/true-GPU work remain open.
+therefore requires bounded warm reuse plus explicit revocable external-resource ownership. Clean
+signed SceneMemory **44/44** evidence now exists. Compendium remains open because the latest signed
+attempt was an instrument-only foreground stop and the repaired receipt-bound collector has not yet
+run on one clean signed source; physical heat/battery/true-GPU work also remains open.
 
 | | Criterion | Evidence |
 |---|---|---|

@@ -22,7 +22,7 @@
 > historical where superseded.
 
 **Status:** process reference, matches preview packaging and the Actions-budget publication guard
-as of 2026-08-29. The budget mode is `UNFROZEN`, but no hosted attempt or publication is authorized.
+as of 2026-08-30. The budget mode is `UNFROZEN`, but no hosted attempt or publication is authorized.
 This is not a release record.
 
 **Current-local PR #35 evidence boundary:** consumed hosted run `33278630671` tested exact head
@@ -32,8 +32,49 @@ Compendium, Slice, Glass, personas, preview packaging and every later browser st
 not run. The attempt is consumed and no replacement hosted attempt or publication is authorized.
 The lifecycle/resource repair descends from signed local implementation base
 `eba00e03f3376c67ab38c5067e9a32da66ce3a3`; the remote PR head remains `017fa6d…` until a later
-exact-head authorization. Neither the current descendant nor the diagnostic below is a preview
-candidate.
+exact-head authorization. Neither the current descendant nor any local diagnostic below is a
+preview candidate.
+
+**Current local Compendium boundary:** signed clean `20460008…` passed SceneMemory **44/44** once
+with named verification. Its once-only Compendium successor retained all 78 outcomes and stopped
+**76/78** because the historical warm-cache oracle demanded full 96/256 occupancy instead of the
+product's correct eight live thumbnail leases plus 17 bounded unleased thumbnails. Signed clean
+`3fb958f8…` then ran the revised Compendium collector once with zero retry, but stopped before any
+product verdict: all 577 phone Planetside-settlement evaluations and their independent root
+heartbeats completed on time, while the old instrument collapsed every falsy observation to
+`null`. It measured zero outcomes, blocked 78/78, created no desktop profile or review PNG and
+authorized no successor stage. The immutable carrier and independent replay binding are recorded in
+`../audits/README.md`.
+
+Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
+`66639419129ea0db68114ef70f0106a58abb91d0`, parent
+`3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) requires independent exact lazy/main target-session-
+document authority and exactly three foreground-service receipts total: fresh lazy-control, veteran
+Earth and final lazy-control. Each receipt proves activate → focus emulation → bring-to-front →
+visible/focused arm → animation frame → later task within one strict deadline, with no visibility/
+focus loss and no document residue. List and Planetside settlement then follow one exact **85-phase**
+plan per profile (**75 list / 10 Planetside**). Every accepted semantic invocation appends its exact
+attempt/token/page/browser/command/timing receipt to history before updating the 85-entry latest
+projection; each latest receipt must equal its plan group's final history receipt. Partial schema v6
+retains the diagnosis, full accepted history and latest completed prefix, plus a structured active
+next-phase or latest-phase-retry tail. Its lazy/main page authorities are independently bound and must
+be distinct whenever both exist. Terminal verification rejects omission/reorder and coordinated
+attempt/token/history/page/browser/command/timing laundering, retains exactly one terminal poll
+command per semantic deadline group, fails closed above a **2,048-entry / 2 MiB** command ledger or a
+**256-character** receipt token, and accepts a ready-but-unreceipted tail only under its exact receipt-
+assembly instrument diagnosis.
+
+Current capability / measurement / contract / collector / budget SHA-256 is
+`35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
+`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
+`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
+`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
+`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; producer remains
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The browser-free repair
+passes **546** Compendium selftest controls, focused **31/31**, **236 files / 2,409 passed + one
+skipped**, all three TypeScript programs and the producer-authority printer. It has not run a fresh
+exact-source Compendium browser certificate and grants no Slice, Glass, Recovery, preview, hosted,
+publication, merge, release or deployment authority.
 
 The local repair is deliberately product/instrument hardening rather than a packaging shortcut.
 Survey → Landing now drains the incoming route checkpoint, calls Survey once, drains Survey's
@@ -63,10 +104,11 @@ still prevents boot-time release history, `releasePending` and `rnSeen` mutation
 results remain immutable data URLs; only settled 132px thumbnails become window-owned revocable
 Blob URLs. After a closed surface releases its leases, the broker removes unowned portraits and
 retains only the 17 newest unleased thumbnails; live leases survive and every invalid, dropped,
-oversize, duplicate, evicted or final-dispose asset releases ownership exactly once. Dirty
-SceneMemory diagnostic `20260829-pr35-blob-url-warm-cache-dirty-budget1` exercised **44/44** outcomes
-green, but its dirty-source status is non-certifying and grants no preview, hosted or publication
-authority.
+oversize, duplicate, evicted or final-dispose asset releases ownership exactly once. The earlier
+dirty SceneMemory diagnostic `20260829-pr35-blob-url-warm-cache-dirty-budget1` exercised **44/44**
+outcomes green; signed clean `20460008…` later supplied the certifying 44/44 result. The current
+Compendium instrument repair still requires one fresh clean signed exact-source run before any
+later browser stage or preview packaging can proceed.
 
 The guarded packaging workflow now extracts and named-verifies one immutable Slice result, passes
 that exact ID into Glass, named-verifies the resulting Glass/Slice pair and retains the immutable

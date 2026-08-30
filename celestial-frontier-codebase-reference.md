@@ -350,12 +350,27 @@
 > generation and final-dispose results. Live leases make cached thumbnails ineligible for eviction.
 > `releaseUnownedCachedArt({ retainRecentThumbEntries: 17 })` idempotently removes portraits and all
 > excess unleased thumbnails while retaining the exact phone/desktop route working set; BFCache
-> suspends producer work but preserves the live document's bounded cache. Dirty exact-budget run
-> `20260829-pr35-blob-url-warm-cache-dirty-budget1` passed all 44 SceneMemory outcomes with complete
-> cleanup: phone retained 16 thumbnails, one import/16 jobs and 2,971,348 backing bytes; desktop
-> retained 17, one import/17 jobs and 2,972,520 backing bytes. That result proves the repair on its
-> dirty working-tree hash but is not a clean exact-source certificate. Numeric rulers, browser-
-> version policy, genome/anatomy structure and gameplay semantics are unchanged.
+> suspends producer work but preserves the live document's bounded cache. The earlier dirty-only
+> diagnosis has been superseded as current status by signed source
+> `2046000873f98318c767db53d2ffb2abac71cc94`: its one-attempt/no-retry SceneMemory run
+> `20260830-pr35-fixed-second-2046000-scenemem-certification` passed all 44/44 outcomes plus named
+> verification. The immediately following one-attempt/no-retry Compendium run
+> `20260830-pr35-2046000-compendium-certification` preserved 76/78; only phone/desktop
+> `warm-precondition` were red because the truthful plateau was eight live Planetside leases plus 17
+> unleased warm entries, 25 total, rather than the obsolete 96/256 capacity-fill assumption.
+>
+> Signed child `3fb958f859ff0ea28b4e8bb720adaea98ad3c001` then supplied one no-retry attempt
+> `20260830-pr35-quiescent-3fb958f-compendium-certification`. It stopped terminal
+> `instrument-fail` at phone Planetside settlement after 32,946 ms on Edge `152.0.4191.53` / CDP
+> `1.3`: 585 ledger observations included 577 on-time value observations plus timely heartbeats, but
+> the old collector returned generic `null`. All 78 outcomes were consequently blocked; only one
+> partial phone profile exists, with no desktop profile and no outcome/review PNGs. No successor ran.
+> This adjudicates the instrument only—not product behavior, Edge compatibility or numeric rulers.
+> Signed implementation `3eefbbcf…` is browser-free green at 546 selftest controls, focused 31/31,
+> 236 files / 2,409 passed + one skipped, all three TypeScript programs and the producer-authority
+> printer. Its exact 85-phase append-only settlement history is not browser-certified; one fresh clean
+> exact-source Compendium run and named verification is still required before any serial Slice → Glass
+> → Recovery continuation.
 >
 > `port/v2/tools/tracked-input-preflight.mjs` is the mandatory preauthorization rehearsal. From a
 > clean committed candidate it exports only the exact Git index, installs inside an owned temporary
@@ -364,19 +379,20 @@
 > and rechecks HEAD plus tracked state before terminal PASS. Both
 > guarded workflows run its mutation-sensitive selftest immediately after v2 installation. The
 > earlier static repair also clears four `artunused` findings hidden behind its consumed stop and
-> remains the hermetic browser-free preauthorization boundary. The newer product/instrument repair
-> must receive final exact-source authority and local closure before any separately authorized hosted
-> attempt. Neither repair is a hosted green, browser certificate, HUMAN judgment, merge, release,
+> remains the hermetic browser-free preauthorization boundary. Signed implementation `3eefbbcf…`
+> gives the newer product/instrument repair exact-source authority and browser-free local closure
+> before any separately authorized hosted attempt. Neither repair is a hosted green, browser
+> certificate, HUMAN judgment, merge, release,
 > version bump or deployment authority.
 
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 reference overlay matches the current local v2 worktree as of 2026-08-29.**
+> **Current port/v2 reference overlay matches the current local v2 worktree as of 2026-08-30.**
 > Historical browser claims remain bound only to their named signed sources, including `3f69e88…`;
-> the newer PR #35 product/instrument repair has no clean exact-source certificate until final source
-> freeze and authority closure.
+> the newer PR #35 instrument repair has no browser certificate until the pending clean exact-source
+> Compendium attempt passes on its final frozen source.
 >
 > **Historical 2026-08-28 Final10 offline-reopened oracle stop (superseded by Final11 above):**
 > signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` supplied Layout
@@ -3021,6 +3037,59 @@ detail/Back, resize, and close. Native Arc 4 Tame/Scavenge/Sample controls can d
 catalogue compatibility data after the exact committed transaction verifies; eligible repeats add
 only the appropriate stable fauna individual or specimen lot. Failed or refused attempts do not
 publish optimistic ownership, reroll, or perform a second write.
+
+The current PR #35 foreground-service authority treats a serviced turn as target-bound evidence,
+not a generic root heartbeat. For each accepted attachment the collector binds exact target,
+session, document and logical observation identity; enables focus emulation, brings that page to the
+front, arms visible/focused witnesses, then requires a real `requestAnimationFrame` followed by a
+later browser task with zero visibility/focus loss before the single 5,000 ms phase deadline. Each
+success uses top-level schema `cf-v2-compendium-foreground-service-receipt/v1` and retains
+`timing: { issuedAtMs, deadlineMs, receivedAtMs, timeoutMs }`, exact expected/observed identities,
+and a cleanup witness proving document globals/listeners are gone. Successful focus emulation remains
+owned until the caller hands off or disposes that attachment. Every failed claim best-effort removes
+its globals/listeners and disables its attempted focus emulation while preserving the original
+product/instrument classification and surfacing any independent cleanup fault.
+
+A complete measurement requires the ordered fresh-lazy-control, veteran-Earth and final-lazy-control
+receipts and independently re-reads `pageAuthorities` for the lazy and main sessions. This prevents
+coordinated mutation of expected and observed receipt identity from manufacturing success.
+List and Planetside settlement are structured at the page boundary: every poll retains raw and diagnostic
+target/session/document identity, image `src`/decode/dimensions, art, lazy-loader, worker, broker and
+page state. Node recomputes readiness and a bounded reason list from those fields. `null` or any
+non-object page result becomes explicit terminal diagnostic evidence rather than being mutated or
+collapsed into a product finding.
+
+Each profile executes one exact **85-phase** settlement plan: **75 list** phases and **10
+Planetside** phases in sealed order. A semantic invocation, not a poll command, owns one attempt.
+Every accepted invocation appends its strict receipt to `thumbnailSettlementHistory` before the
+phase's latest receipt is inserted or replaced; attempts are contiguous `1..N`, tokens are unique,
+timing is strictly serial, and the 85-entry latest projection must equal the final history receipt
+for each plan group. Partial-profile schema v6 retains its diagnosis, the full accepted history and
+latest completed prefix, plus one structured active next-phase or latest-phase-retry tail. Terminal
+verification rejects omission/reorder and coordinated attempt/token/history/page/browser/command/
+timing laundering.
+
+Partial carriers bind lazy/main page authority independently and require distinct identities whenever
+both are present. The retained command ledger has exactly one terminal polling command per semantic
+deadline group and fails closed above **2,048 entries or 2 MiB**. Receipt tokens are capped at **256
+characters**, and a ready-but-unreceipted tail survives only under its exact receipt-assembly
+instrument diagnosis.
+
+Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
+`66639419129ea0db68114ef70f0106a58abb91d0`, parent
+`3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns the current authority tuple: capability SHA-256
+`35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341`, measurement
+`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b`, contract
+`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24`, collector
+`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690`, budget
+`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`, and unchanged producer
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The capability inventory
+includes focus emulation and `Page.bringToFront`; no cache, timing or memory ceiling, gameplay
+structure, genome/anatomy rule, or browser point-version policy changed. Browser-free validation is
+green at 546 `compendiummem:selftest` controls, focused 31/31, 236 files / 2,409 passed + one skipped,
+all three TypeScript programs and the producer-authority printer. This is not browser certification:
+exactly one fresh clean exact-source Compendium run with zero retries and named verification remains
+required before the serial Slice → Glass → Recovery chain may continue on that unchanged source.
 
 The former local ruler is retained as historical evidence under measurement authority
 `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer authority
