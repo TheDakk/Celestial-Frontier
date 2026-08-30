@@ -83,7 +83,7 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   were blocked, and desktop, review PNGs and successor gates were never reached. Its immutable
   raw/gzip report hashes are `bf18cff6d43fcf5d6bf1c128471630a338cefb34a4a04762a5d25699f80ce5e5` /
   `ecb786c00f7261ce3306c73d512133ce3e2e74035cf83172e3fe8c735442a0dd`.
-  Signed implementation `3eefbbcf…` reclaims and proves foreground ownership in the exact fresh-lazy →
+  Signed implementation `3eefbbcf…` reclaimed and proved foreground ownership in the exact fresh-lazy →
   veteran-Earth → final-lazy order. Each receipt binds the independently attach-derived target,
   session and document to a fresh service token; records visible, focused arm → rAF → later-task
   phases with zero visibility/focus loss; arrives inside its fixed deadline; and proves listener/
@@ -101,21 +101,39 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   tokens cap at **256 characters**, and a ready-but-unreceipted tail requires its exact receipt-
   assembly instrument diagnosis.
 
-  Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
-  `66639419129ea0db68114ef70f0106a58abb91d0`, parent
-  `3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns current capability / measurement / contract /
+  Signed source `b2eecfbd9379f50c25208ca8bcd72501b07e303c` then ran the new instrument exactly once with
+  no retry as `20260830-pr35-settlement-evidence-b2eecfbd9379-compendium-certification`. Edge
+  `152.0.4191.53` / CDP `1.3` reached eight distinct ready/decoded 132×132 Planetside images, but
+  all projected `visualKey` fields were `null`: the v1 generic 512-character text projector had
+  rejected the real 766–779-character canonical identities. The run stopped instrument-only after
+  33,041 ms with zero outcomes, all 78 blocked, no desktop and no successor. Its immutable carrier
+  is `audits/ARC1C_COMPENDIUM_PR35_PLANETSIDE_VISUALKEY_INSTRUMENT_FAILURE_20260830_B2EECFB.json.gz`:
+  7,010 gzip bytes / `b973b596870ae4180a4b82fb9357194548be67c4dad9aa3560c9ec1186538027`,
+  48,213 raw bytes / `461241011d8c0d80585befaf3a25e631019bc0a3cc0f73bf5b02a7957c815f02`.
+  Historical measurement / contract / collector / budget `326d3b…` / `7ac505…` / `ece4ed…` /
+  `c272a1…` remain bound to that red.
+
+  Signed implementation commit `d9d79025794c95d5491ab9c9e1139b66eea7be5e` (tree
+  `d4bc3a04bec6243045a6941feadd9074a7722e79`, parent
+  `b2eecfbd9379f50c25208ca8bcd72501b07e303c`) changes no product byte. Observation v2 validates
+  the complete opaque key inside the page realm and serializes only its length plus exact membership
+  indices into independently produced leased/cache inventories. Each inventory caps at exactly 256
+  before `indexOf`/`Set`; every image must prove membership and distinctness, each inventory length
+  must equal its live lease/cache count, and both inventories must be internally distinct. A literal 256-entry inventory passes, a 257-entry
+  inventory is an explicit error,
+  and realistic 768–831-character keys pass. The commit owns current capability / measurement / contract /
   collector / budget authority:
   `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
-  `326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
-  `7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
-  `ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
-  `c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; product producer remains
+  `87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d` /
+  `abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138` /
+  `b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e` /
+  `7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; product producer remains
   `0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. The repair is green at
-  **546** Compendium selftest controls, **31/31** focused tests, **236 files / 2,409 passed + one
-  skipped**, all three TypeScript programs and the producer-authority printer, but it is not
-  browser-certified. It changes no product/game byte, automatic-retry policy, memory ruler, cache
-  policy or browser-version baseline; the preserved `3fb958f…` stop remains historical instrument
-  evidence.
+  **565** Compendium selftest controls, **35/35** focused tests, **237 files / 2,413 passed + one
+  skipped**, all three TypeScript programs and the producer-authority printer with both budget
+  matches true; independent review is clear. It is not browser-certified and has no Slice, Glass or
+  Recovery successor. It changes no automatic-retry policy, memory ruler, cache policy or browser-
+  version baseline; the preserved `3fb958f…` and `b2eecfbd…` stops remain historical instrument evidence.
 
 - ★ **D-ARC5-LIVE — four bounded exact-instance companion writers.** Verified real-fauna
   Compendium detail exposes Feed, one-draw nonlethal Breed with active-play Recovery, identity-only

@@ -79,10 +79,13 @@ revocation exit, and do not raise a heap ceiling merely because bytes moved to t
 registry. Clean signed activation `2046000873f98318c767db53d2ffb2abac71cc94` subsequently passed
 the exact SceneMemory input-v4 **44/44** once with zero retries and named verification. That
 certificate remains SceneMemory-only: later signed Compendium source `3fb958f…` stopped
-instrument-only before any product verdict, and signed implementation `3eefbbcf…` repairs its
-foreground/structured observation. The repair is browser-free green at 546 selftest controls,
-focused 31/31, 236 files / 2,409 passed + one skipped, all three TypeScript programs and the
-producer-authority printer, but is not browser-certified.
+instrument-only before any product verdict, and signed implementation `3eefbbcf…` repaired its
+foreground/structured observation. Exact successor `b2eecfbd…` then exposed a second instrument
+fault: a generic 512-character projector nullified eight valid 766–779-character visual identities.
+Signed implementation `d9d79025…` repairs that evidence boundary without changing product bytes.
+It is browser-free green at 565 selftest controls, focused 35/35, 237 files / 2,413 passed + one
+skipped, all three TypeScript programs and the producer-authority printer with both budget matches
+true, but is not browser-certified.
 
 ⚠⚠ **A CAPACITY CEILING IS NOT REQUIRED QUIESCENT OCCUPANCY; CERTIFY THE REAL CLOSED
 STATE** (2026-08-30). After Close correctly compacted the Compendium thumbnail cache to eight live
@@ -122,8 +125,26 @@ do not move. The new sampler changes producer authority and requires fresh clean
 authority activation and then one clean no-retry certificate. That required SceneMemory certificate
 is now the signed `2046000873f98318c767db53d2ffb2abac71cc94` **44/44** result; Compendium advanced,
 first exposed the obsolete quiescent-cache oracle and then stopped instrument-only on exact signed
-source `3fb958f…`. Signed implementation `3eefbbcf…` owns the browser-free-green 85-phase/history
-repair, but no current Compendium certification follows yet.
+source `3fb958f…`. Signed `3eefbbcf…` supplied the browser-free-green 85-phase/history repair;
+`b2eecfbd…` then stopped on the separately preserved opaque-key projection defect, and signed
+`d9d79025…` owns the current observation-v2 repair. No current Compendium certification follows yet.
+
+⚠⚠ **NEVER PROJECT OPAQUE CANONICAL IDENTITY THROUGH A GENERIC TEXT CAP; VALIDATE IT IN
+THE OWNER REALM AND SERIALIZE BOUNDED MEMBERSHIP EVIDENCE** (2026-08-30). Exact signed source
+`b2eecfbd…` reached eight distinct ready, decoded 132×132 Planetside images, yet the structured
+instrument stopped before all 78 outcomes because observation v1 sent each canonical `visualKey`
+through a generic 512-character text projector. The real keys were 766–779 characters, so every
+projected key became `null`. A bounded carrier had converted valid owner-realm identity into false
+absence.
+
+Opaque identity is judged where its complete representation is authoritative. The page realm must
+validate each full key, then serialize only bounded length and exact membership indices into
+independently produced leased/cache inventories. Cap both inventories at exactly 256 entries before
+`indexOf` or `Set`; require per-image membership and distinctness, require each inventory length to
+equal its live lease/cache count, and require internal distinctness of each inventory. Negative-control a literal 257-entry inventory and keep
+a literal 256-entry inventory green. Positive-control realistic 768–831-character canonical keys so
+a future generic string cap cannot silently reappear. A serialization limit protects evidence size;
+it never authorizes truncating or rejecting the identity whose membership the evidence claims.
 
 ⚠⚠ **PROVE IDENTITY WITH EXACT SET MEMBERSHIP, NOT CARDINALITY** (2026-08-27). Final5's
 Compendium instrument saw eight mounted fixture keys and eight cached Planetside keys, so its
@@ -1692,18 +1713,30 @@ terminal command per semantic deadline group, the partial command ledger fails c
 entries or 2 MiB**, receipt tokens are capped at **256 characters**, and a ready-but-unreceipted tail
 is valid only under its exact receipt-assembly instrument diagnosis.
 
-Signed implementation commit `3eefbbcf520b36ee6edb6d27c9f27c17bde4ffa5` (tree
-`66639419129ea0db68114ef70f0106a58abb91d0`, parent
-`3fb958f859ff0ea28b4e8bb720adaea98ad3c001`) owns current capability / measurement / contract /
+Exact source `b2eecfbd…` proved why bounded structured evidence must not reuse a generic text cap:
+its eight ready/decoded 132×132 rows carried valid 766–779-character page-realm keys, but each v1
+projection became `null`. The one-attempt/no-retry run stopped instrument-only after 33,041 ms with
+zero outcomes, all 78 blocked and no desktop/successor. Its historical measurement / contract /
+collector / budget tuple `326d3b…` / `7ac505…` / `ece4ed…` / `c272a1…` remains bound to that red.
+
+Signed implementation commit `d9d79025794c95d5491ab9c9e1139b66eea7be5e` (tree
+`d4bc3a04bec6243045a6941feadd9074a7722e79`, parent
+`b2eecfbd9379f50c25208ca8bcd72501b07e303c`) changes no product byte. Observation v2 validates
+the full opaque key in the page realm, then serializes only key length and exact membership indices
+into independently produced leased/cache inventories. Cap both inventories at exactly 256 entries
+before `indexOf`/`Set`; require per-image membership/distinctness, require each inventory length to
+equal its live lease/cache count, and require internal inventory distinctness. A literal 256-entry inventory must pass, 257 must fail explicitly, and
+realistic 768–831-character keys must pass. The signed commit owns current capability / measurement / contract /
 collector / budget authority:
 `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
-`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
-`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
-`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
-`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; producer remains
-`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. This is browser-free
-instrument authority, not a browser-certified product result; one fresh exact-source Compendium
-certificate and named verification remain mandatory.
+`87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d` /
+`abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138` /
+`b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e` /
+`7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; producer remains
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free closure is
+565 selftest controls, focused 35/35, 237 files / 2,413 passed + one skipped, three green typechecks,
+green authority/budget matches and independent review CLEAR. This is not a browser-certified product
+result; one fresh exact-source Compendium certificate and named verification remain mandatory.
 
 **Correction earned by PR #32's exact-ef6 D-TRAIN Smoke:** a direct fixture write does not own
 setup while an older product writer can still commit. Clean committed
