@@ -83,7 +83,7 @@ export interface Arc0WorldNameWitnessFacts {
   readonly legacyNameAfter: string;
   readonly legacyMirrorChanged: boolean;
   readonly achievement: Arc0WorldNameAchievementFact;
-  /** Full detached product successor, independent of F4's returned copy. */
+  /** Full codec-canonical product successor, independent of F4's returned copy. */
   readonly stateSuccessorSeal: string;
   /** Full identity successor, including every unrelated registered row. */
   readonly worldIdentitySuccessorSeal: string;
@@ -610,7 +610,7 @@ export async function commitArc0WorldNameAction(
       operation,
       receiptKind: ARC0_WORLD_NAME_RECEIPT_KIND,
       codecNow: input.codecNow,
-      derive: ({ draft, extensions, receiptOrdinal }) => {
+      derive: ({ draft, extensions, receiptOrdinal, canonicalizeState }) => {
         const identityRead = readWorldIdentity(extensions);
         if (identityRead.kind !== 'loaded') {
           deriveRefusal = identityRead.kind === 'future-version'
@@ -684,7 +684,7 @@ export async function commitArc0WorldNameAction(
             priorUnlockedCount: join.priorUnlockedCount,
             unlockedCountAfter: join.nextUnlockedIds.length,
           }),
-          stateSuccessorSeal: successorSeal('state', draft),
+          stateSuccessorSeal: successorSeal('state', canonicalizeState(draft)),
           worldIdentitySuccessorSeal: successorSeal('world-identity', naming.state),
           receiptOrdinal,
         };

@@ -29,7 +29,7 @@ function replaceUnique(source: string, needle: string, replacement: string): str
 function assess(source: string): string[] {
   const failures: string[] = [];
   const show = section(source, 'function showSurvey(', '\nfunction hideSurvey(');
-  const present = section(source, 'function presentPlanetSurvey(', '\nfunction surveyPlanet(');
+  const present = section(source, 'function presentPlanetSurvey(', '\nfunction startPlanetSurvey(');
   const actions = section(source, 'function buildCardActions(', '\nfunction refreshPlanetSurveyCard(');
   const share = section(source, 'function cardShareCode(', '\nasync function copyShareCode(');
   const land = section(source, 'async function doLand(', '\nlet lastArc0AtlasOutcome:');

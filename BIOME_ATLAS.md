@@ -1,8 +1,27 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
-**STATUS:** §1's legacy source facts remain verified against **v1.8.9**; the current v2 exact
-43-biome domain-profile authority and live full-vista route match exact signed source
-`3f69e88ea8e34fdb8d9913276601b426ada783ae` as of **2026-08-29**. §§2–4 remain design-pack content and are NOT derivable from source — see PROVENANCE
+> **2026-08-29 current local vista/PWA evidence correction (supersedes narrower same-date
+> descriptions below where they differ):** the service worker now carries an initiating window's
+> exact selected build pin onto a valid module-worker or shared-worker `resultingClientId` before the
+> child can issue lazy imports. Live-build retention includes all client types; pin cleanup confirms
+> a worker omitted from `matchAll` with `clients.get()` before pruning it. This keeps the biome-vista
+> worker entry module and its dynamically imported compositor chunk on one retained build through
+> activation or rollback.
+>
+> Product behavior remains fail-soft: construction, request, protocol, post-message, worker,
+> copy, mount and deadline failures preserve the fitted globe. Diagnostics now also retain the
+> monotonically counted `surfaceVistaFaults` and a bounded 512-character `surfaceVistaLastError`.
+> SceneMemory treats any observed vista fault as terminal immediately and reports that exact bounded
+> cause instead of waiting for a generic settlement timeout. Its BFCache excursion is served by a
+> separate temporary loopback origin outside the product service worker's scope and is closed during
+> cleanup, so lifecycle evidence does not accidentally exercise PWA update routing. The signed
+> certificate named below remains immutable historical evidence; fresh exact-source browser evidence
+> for this local successor is still required, with no ruler or threshold claim made here.
+
+**STATUS:** §1's legacy source facts remain verified against **v1.8.9**; the historical v2 exact
+43-biome domain-profile authority and live full-vista route matched exact signed source
+`3f69e88ea8e34fdb8d9913276601b426ada783ae` on **2026-08-29**. The current local successor retains
+that content boundary with the vista/PWA lifecycle correction above. §§2–4 remain design-pack content and are NOT derivable from source — see PROVENANCE
 below. The environmental-audio overlay matches the pure canonical current-world plan plus its
 bounded explicit no-spoiler v2 playback join as of **2026-08-29**. Audited and promoted from `tools/` to the repo root during port
 **Phase 0** (Gate A); the file itself dates from 2026-07-20.

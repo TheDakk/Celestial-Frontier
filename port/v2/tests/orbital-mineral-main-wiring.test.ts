@@ -116,7 +116,7 @@ function wiringErrors(source: string): string[] {
     }
   }
 
-  const present = section(source, 'function presentPlanetSurvey(', '\nfunction surveyPlanet(');
+  const present = section(source, 'function presentPlanetSurvey(', '\nfunction startPlanetSurvey(');
   const proof = present.indexOf('|| !planetNodeForProof(star, resolved.planet)) return false;');
   const append = present.indexOf(PRESENT_PLANET_SURVEY_CALL);
   if (!(proof >= 0 && append > proof)) errors.push('planet-proof-before-projection');
@@ -140,7 +140,7 @@ function wiringErrors(source: string): string[] {
     errors.push('postcommit-research-refresh');
   }
 
-  const surveyAction = section(source, 'function surveyPlanet(', '\nfunction buildCardActions(');
+  const surveyAction = section(source, 'function startPlanetSurvey(', '\nfunction buildCardActions(');
   if (occurrences(surveyAction, 'playSurveyPing();') !== 1
     || occurrences(surveyAction, "gameEvent('survey',") !== 1) errors.push('survey-event-single-owner');
 
@@ -197,7 +197,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const skippedProof = replaceInSectionExact(
       mainSource,
       'function presentPlanetSurvey(',
-      '\nfunction surveyPlanet(',
+      '\nfunction startPlanetSurvey(',
       '|| !planetNodeForProof(star, resolved.planet)) return false;',
       '|| false) return false;',
     );
@@ -260,7 +260,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const duplicatePing = replaceInSectionExact(
       mainSource,
       'function presentPlanetSurvey(',
-      '\nfunction surveyPlanet(',
+      '\nfunction startPlanetSurvey(',
       PRESENT_PLANET_SURVEY_CALL,
       `  playSurveyPing();\n${PRESENT_PLANET_SURVEY_CALL}`,
     );

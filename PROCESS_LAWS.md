@@ -1,6 +1,6 @@
 # Celestial Frontier — PROCESS LAWS
 
-> **2026-08-29 exact-chain law — certified locally:** repair an oracle on preserved evidence, then
+> **2026-08-29 exact-chain law — historical exact-source certificate:** repair an oracle on preserved evidence, then
 > certify only a fresh unchanged-source chain; never relabel or retry the stored red. Exact signed
 > source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
@@ -8,8 +8,8 @@
 > 12-viewport Glass and Recovery each ran once with zero automatic retries and passed its exact
 > source/predecessor-bound verifier. Recovery bound the exact Slice (`33aa30b3…`) and Glass
 > (`2a67a258…`) predecessors, passed all ten stages in 1,290,953 ms and retained a real uninterrupted
-> 1,200,297.5 ms active-browser observation (`b78e8a52…`). The full v2 battery is 163 files / 1,712
-> passed + one skipped, with all TypeScript configurations green.
+> 1,200,297.5 ms active-browser observation (`b78e8a52…`). At that checkpoint, the full v2 battery
+> was 163 files / 1,712 passed + one skipped, with all TypeScript configurations green.
 >
 > That evidence certifies the universe-wide visual treatment and bounded Arc 5 Feed scope only.
 > HUMAN visual/listening/screen-reader/first-journey judgment, physical-device heat/battery/true-GPU
@@ -597,6 +597,61 @@ child that prints the marker and an exit-zero child that omits it. A 24-way cont
 old band—every process took 5.711–6.066 seconds—and passed 24/24 under the bounded contract with no
 retry. Stress is diagnosis, not the contract: never answer with automatic retry, an unbounded wait
 or a timeout increase that cannot terminate its child.
+
+⚠⚠ **A GREEN STATIC WIRING CHECK DOES NOT PROVE A CHAINED ACTION'S LIVE BARRIERS**
+(2026-08-29). PR #35 run `33278630671` passed the complete browser-free/type/art/coverage and
+current-authority battery, then real phone SceneMemory stopped at `Earth planetfall was rejected`.
+The one-call Survey → Landing path can begin while the route into a system still owns an ordinary
+checkpoint; Survey then installs a replacement checkpoint. Waiting only the barrier observed after
+Survey is not enough. A chained action must dynamically capture and drain its predecessor barrier,
+start action A exactly once, capture and drain A's replacement barrier, then require A's exact
+settlement promise to succeed before invoking action B exactly once. Both an initial refusal and a
+later durable false stop the chain. Negative-control each omitted barrier, an ignored late false and
+each duplicate call with manually controlled promises; a source-order assertion or retry is not
+equivalent proof.
+
+The always-run SceneMemory verifier's incomplete-inventory failures were downstream fallout from
+the product stop, not additional root causes. Hermetic browser-free parity prevents local-only input
+drift; it cannot, by construction, certify real-browser task ordering, service-worker client-realm
+ownership, or BFCache navigation behavior. Keep those scopes explicit before spending another
+hosted attempt.
+
+⚠⚠ **EXPECTED SAVE SUCCESSORS MUST USE THE TRANSACTION OWNER'S EXACT COMMIT CODEC**
+(2026-08-29). A raw gameplay derivation can differ honestly from its persisted compatibility
+projection when save housekeeping applies an injected-clock floor to an unrelated veteran field.
+Comparing that raw full or owned state with the committed canonical state produces a false
+postcommit-convergence finding after a successful CAS. The F4 deterministic product owner must
+detach its registry once, validate `codecNow` once, and mint the canonicalizer passed to derive from
+that exact registry and clock. Consumers return raw derivation state to the transaction but use the
+owner-minted canonical successor for seals and expected-state comparisons. They must not call the
+codec with a fresh clock, duplicate its rules, or canonicalize state before handing it to the
+owner. Later-clock controls must prove both committed equality and untouched caller state.
+
+⚠⚠ **AN EXACT-BUILD PWA PIN MUST FOLLOW THE CLIENT REALM, NOT STOP AT THE WINDOW**
+(2026-08-29). The biome-vista module-worker entry was served from its initiating window's exact
+build, but its dynamic import arrived under the new worker client. Without copying the selected
+build to the fetch event's valid `resultingClientId`, the correct fail-closed service worker returned
+503 to that lazy import. Worker and shared-worker creation must persist the initiator-selected pin
+for the resulting child before returning the entry response. Live-build retention must enumerate
+`clients.matchAll({type:'all', includeUncontrolled:true})`; before pruning a pin omitted from that
+snapshot, confirm it with `clients.get()` to cover the reserved-client race. Tests must use distinct
+active/prior bytes and prove that a prior-pinned owner creates a prior-pinned child whose lazy
+imports cannot mix with active assets. Invalid or missing child identity remains terminal.
+
+⚠⚠ **A FAIL-SOFT PRODUCT NEEDS FAIL-CLOSED DIAGNOSTIC EVIDENCE** (2026-08-29). The game may keep
+its already-painted globe usable after a biome-vista worker fault, but SceneMemory must not wait 30
+seconds and report only “did not settle.” Maintain a monotonic fault count plus a bounded exact last
+cause. Positive, missing, malformed, negative, or internally inconsistent fault diagnostics are
+terminal instrument findings; zero alone is accepted only with a coherent empty cause. Treat a
+genuinely stale response as a stale drop, but a current response with mismatched document,
+generation, world, environment, profile, scene, or biome authority as a fault. Capture Landing and
+its bounded rejection witness in one browser task so a convergence reload cannot erase the cause.
+
+A BFCache away document used by an instrument must also live outside the product service-worker
+scope. Serve one minimal page from a separate ephemeral loopback origin, keep it alive through the
+history-entry return, use no external favicon, reject every other path, and close it in `finally`.
+The same-origin fixture once became the app index because the exact-build PWA correctly handled the
+navigation; weakening the product worker would have hidden an instrument bug.
 
 ⚠⚠ **A MARKDOWN POLICY CARRIER IS EXECUTABLE INPUT, NOT A DOCS-ONLY DESCENDANT** (2026-08-20).
 PR #32 run `32440536261` spent its one authorized attempt and failed before browser work because

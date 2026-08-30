@@ -758,7 +758,7 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
     operation: operationForStarterCharterAcceptV1(input.id),
     receiptKind: STARTER_CHARTER_ACCEPT_RECEIPT_KIND_V1,
     codecNow: input.codecNow,
-    derive: ({ draft, extensions, receiptOrdinal }) => {
+    derive: ({ draft, extensions, receiptOrdinal, canonicalizeState }) => {
       const source = publicationFields(draft);
       const staged = stageStarterCharterAcceptV1({
         draft, extensions, id: input.id, receiptOrdinal,
@@ -775,7 +775,11 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
         successor: publicationFields(draft),
       });
       const witness = `${STARTER_CHARTER_ACCEPT_WITNESS_SCHEMA_V1}:${sha256Hex(canonicalJson(facts))}`;
-      selected = Object.freeze({ facts, witness, expectedStateJson: canonicalJson(draft) });
+      selected = Object.freeze({
+        facts,
+        witness,
+        expectedStateJson: canonicalJson(canonicalizeState(draft)),
+      });
       return Object.freeze({
         state: draft,
         extensionWrites: staged.facts.extensionWrites,

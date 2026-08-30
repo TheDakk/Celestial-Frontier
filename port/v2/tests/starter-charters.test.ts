@@ -37,6 +37,7 @@ import {
 import REGISTRY_JSON from '../../baseline-v1.8.9/content-registry.json';
 
 const REGISTRY = REGISTRY_JSON as unknown as ContentRegistry;
+const VETERAN_CODEC_NOW = 1_700_000_000_000;
 
 beforeAll(() => installCaptureHooks());
 
@@ -95,7 +96,7 @@ function landedIdentityExtensions(candidate: unknown): V5Extensions {
   return applyV5ExtensionWrites({}, encodeWorldIdentityExtensionWrites(landed.state)).extensions;
 }
 
-async function fixture(save: SaveStateV2) {
+async function fixture(save: SaveStateV2, codecNow = 10) {
   const f4 = prepareF4AuthorityUpdate(
     {}, { activePlayMs: 0 }, createSessionRNG(0xC4A7_0001).state(),
   );
@@ -106,9 +107,9 @@ async function fixture(save: SaveStateV2) {
   });
   if (loot.kind !== 'prepared') throw new Error(`starter Charter loot fixture was ${loot.kind}`);
   const backend = createMemoryBackend();
-  const initial = prepareV5SaveWrite({ state: save, extensions: loot.extensions }, REGISTRY, 10);
+  const initial = prepareV5SaveWrite({ state: save, extensions: loot.extensions }, REGISTRY, codecNow);
   await backend.apply([{ store: 'meta', key: V4_PRIMARY_KEY, value: initial.legacyV4Raw }]);
-  const migration = await migrateStoredV4ToV5(backend, REGISTRY, 10);
+  const migration = await migrateStoredV4ToV5(backend, REGISTRY, codecNow);
   if (migration.kind !== 'migrated') throw new Error(`starter Charter fixture was ${migration.kind}`);
   await backend.apply(initial.operations);
   const repository = createRevisionedRepository(backend);
@@ -286,6 +287,28 @@ describe('starter Charters', () => {
       state: built.state, id: 'st-land', codecNow: 10, authority: built.runtime,
     })).kind).toBe('current');
     expect(built.runtime.sessionRng.ordinal).toBe(ordinal + 1);
+    await built.runtime.release();
+  });
+
+  it('commits the codec-canonical acceptance when an unrelated veteran mining stamp moves', async () => {
+    const save = state();
+    save.mined = [['veteran-clock-floor', VETERAN_CODEC_NOW - 30 * 6e5]];
+    save.mineX = [['veteran-clock-floor', 1]];
+    const built = await fixture(save, VETERAN_CODEC_NOW);
+    const before = JSON.stringify(built.state);
+    const outcome = await commitStarterCharterAcceptV1({
+      state: built.state,
+      id: 'st-land',
+      codecNow: VETERAN_CODEC_NOW + 1,
+      authority: built.runtime,
+    });
+
+    expect(outcome.kind).toBe('committed');
+    expect(JSON.stringify(built.state)).toBe(before);
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.transaction.state).toEqual(outcome.transaction.saved.canonicalState);
+    expect(new Map(outcome.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(VETERAN_CODEC_NOW + 1 - 30 * 6e5);
     await built.runtime.release();
   });
 

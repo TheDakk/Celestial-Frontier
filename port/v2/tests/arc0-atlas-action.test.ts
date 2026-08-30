@@ -302,6 +302,33 @@ function atlasRows(count: number, address = solWorld(135)): Array<[string, Recor
 }
 
 describe('Arc 0 durable Atlas action', () => {
+  it('seals the codec-canonical successor when an unrelated veteran mining stamp moves', async () => {
+    const state = baseState();
+    state.mined = [['veteran-clock-floor', NOW - 30 * 6e5]];
+    state.mineX = [['veteran-clock-floor', 1]];
+    const fixture = await runtimeFixture({ state });
+    const before = JSON.stringify(fixture.state);
+    const address = solWorld(134);
+    const outcome = await commitArc0AtlasAction(actionInput(fixture, address, {
+      codecNow: NOW + 1,
+    }));
+
+    expect(outcome).toMatchObject({
+      kind: 'committed', durability: 'committed', convergence: 'none',
+    });
+    expect(JSON.stringify(fixture.state)).toBe(before);
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.transaction.state).toEqual(outcome.transaction.saved.canonicalState);
+    expect(new Map(outcome.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(NOW + 1 - 30 * 6e5);
+    expect(verifyArc0AtlasPostcommit({
+      transaction: outcome.transaction,
+      address,
+      witness: outcome.witness,
+    })).toMatchObject({ kind: 'verified' });
+    await fixture.runtime.release();
+  });
+
   it('commits one exact composite row and identity carrier with no RNG draw or live mutation', async () => {
     const address = solWorld(134);
     const fixture = await runtimeFixture();

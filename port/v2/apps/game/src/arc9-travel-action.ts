@@ -800,7 +800,11 @@ async function commitCapturedTravelSettlement(
     });
   }
 
-  let selected: Readonly<{ plan: Arc9TravelSettlementReadyV1; witness: string }> | null = null;
+  let selected: Readonly<{
+    plan: Arc9TravelSettlementReadyV1;
+    witness: string;
+    expectedState: SaveStateV2;
+  }> | null = null;
   let transaction: F4RuntimeActionCommitOutcome;
   try {
     transaction = await captured.commit({
@@ -808,13 +812,17 @@ async function commitCapturedTravelSettlement(
       operation: preflight.operation,
       receiptKind: preflight.receiptKind,
       codecNow: captured.codecNow,
-      derive: ({ receiptOrdinal, draft }) => {
+      derive: ({ receiptOrdinal, draft, canonicalizeState }) => {
         const plan = prepareCapturedTravelSettlement(draft, captured);
         if (plan.kind !== 'ready' || !samePlan(plan, preflight)) {
           throw new Error('Arc 9 Travel parent changed before derivation');
         }
         const witness = witnessFor(plan, receiptOrdinal);
-        selected = Object.freeze({ plan, witness });
+        selected = Object.freeze({
+          plan,
+          witness,
+          expectedState: canonicalizeState(plan.successorState),
+        });
         return Object.freeze({
           state: plan.successorState,
           extensionWrites: Object.freeze([]),
@@ -840,6 +848,7 @@ async function commitCapturedTravelSettlement(
   const committedSelection = selected as Readonly<{
     plan: Arc9TravelSettlementReadyV1;
     witness: string;
+    expectedState: SaveStateV2;
   }> | null;
   if (committedSelection === null) {
     return Object.freeze({
@@ -856,7 +865,7 @@ async function commitCapturedTravelSettlement(
     || transaction.receipt.witness !== committedSelection.witness
     || !sameNoRngPlan(transaction.plan)
     || !sameJson(transaction.state, transaction.saved.canonicalState)
-    || !sameJson(transaction.state, plan.successorState)
+    || !sameJson(transaction.state, committedSelection.expectedState)
     || !sameCanonical(fixedPoint.facts, plan.facts)
     || !sameCanonical(fixedPoint.route, plan.route)
     || !sameCanonical(fixedPoint.projection.unlockedIds, plan.successor.unlocked)

@@ -1,5 +1,16 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-29 current local canonical-successor correction (supersedes narrower same-date
+> descriptions below where they differ):** progression-bearing product writers now verify their
+> expected successor with the deterministic transaction owner's `canonicalizeState`, which is bound
+> to the same detached registry and one validated commit clock used by the write. The converted set
+> is Arc 0 Atlas, Landing and world naming; Arc 5 Field Scout; Arc 9 Atlas Favorite, explorer naming,
+> Frontier ending, nameplate, Sharing, Survey and Travel; Binder set claims; and Starter Charter
+> acceptance/staging. Their existing receipt, reward, achievement, rank, idempotence and no-retry
+> rules are unchanged; the correction prevents codec housekeeping from making a valid committed
+> fixed point disagree with a raw or differently clocked prediction. Historical evidence below is
+> not relabelled as proof of this local successor.
+
 > **2026-08-29 current local Binder and Prime-Frontier progression overlay:** Records now appends
 > the legacy Binder as six exact type-collection pages—**The Spectrum, The Sixteen Realms, Body
 > Plans, Ability Themes, Flora Flavors, and Size Classes**—derived from canonical Compendium species,
@@ -125,7 +136,7 @@
 > the exact-five ownership successor. Rename remains identity-only and may join `namer`; Field Scout
 > designation changes only the role and does not yet grant fresh-species XP or redirect injury.
 
-> **2026-08-29 current local Arc 4 Charter successor:** the playable capture writer now prepares
+> **Earlier local Arc 4 Charter checkpoint (2026-08-29):** the playable capture writer prepared
 > one Chapter 2 `c2-scan` tick only for the first durable successful Tame, Scavenge, or Sample on
 > each complete source-proven world beyond Sol. Exact pre-action ownership discovery provenance
 > supplies world uniqueness; the Charter change shares the capture's pre-draw capacity proof,
@@ -139,8 +150,8 @@
 > This deliberately replaces, rather than claims parity with, v1.8.9's separate Discover Life
 > control. It does not append to the legacy survey/Records ledger or change `stats.surveys`; Survey
 > Records and accepted/weekly bioscan Charters remain unavailable. Guide, Training and the v2 draft
-> say so explicitly. Focused and full browser-free product/copy evidence is green at 230 files /
-> 2,315 passed + one skipped; the older signed
+> said so explicitly. At that checkpoint, focused and full browser-free product/copy evidence was
+> green at 230 files / 2,315 passed + one skipped; the older signed
 > `3f69e88…` browser certificate predates this writer, so fresh exact-source browser and HUMAN
 > evidence remain open. No release, version, deployment or hosted-write authority follows.
 

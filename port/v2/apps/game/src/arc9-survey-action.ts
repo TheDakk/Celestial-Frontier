@@ -619,6 +619,7 @@ export type Arc9SurveyActionOutcomeV1 =
     durability: 'committed';
     convergence: 'read-only-reload';
     detail: 'committed-survey-evidence-missing' | 'committed-survey-fixed-point-mismatch';
+    mismatch: readonly string[];
     transaction: Extract<F4RuntimeActionCommitOutcome, { readonly kind: 'committed' }>;
   }>
   | Readonly<{
@@ -656,7 +657,11 @@ export async function commitArc9SurveySettlementV1(
     });
   }
 
-  let selected: Readonly<{ plan: Arc9SurveySettlementReadyV1; witness: string }> | null = null;
+  let selected: Readonly<{
+    plan: Arc9SurveySettlementReadyV1;
+    witness: string;
+    expectedState: SaveStateV2;
+  }> | null = null;
   let transaction: F4RuntimeActionCommitOutcome;
   try {
     transaction = await captured.commit({
@@ -664,13 +669,17 @@ export async function commitArc9SurveySettlementV1(
       operation: preflight.operation,
       receiptKind: preflight.receiptKind,
       codecNow: captured.codecNow,
-      derive: ({ receiptOrdinal, draft }) => {
+      derive: ({ receiptOrdinal, draft, canonicalizeState }) => {
         const plan = prepareArc9SurveySettlementV1(draft, captured.address);
         if (plan.kind !== 'ready' || !samePlan(plan, preflight)) {
           throw new Error('Arc 9 Survey parent changed before derivation');
         }
         const witness = witnessFor(plan, receiptOrdinal);
-        selected = Object.freeze({ plan, witness });
+        selected = Object.freeze({
+          plan,
+          witness,
+          expectedState: canonicalizeState(plan.successorState),
+        });
         return Object.freeze({
           state: plan.successorState,
           extensionWrites: Object.freeze([]),
@@ -696,28 +705,39 @@ export async function commitArc9SurveySettlementV1(
   const committedSelection = selected as Readonly<{
     plan: Arc9SurveySettlementReadyV1;
     witness: string;
+    expectedState: SaveStateV2;
   }> | null;
   if (committedSelection === null) {
     return Object.freeze({
       kind: 'committed-convergence', durability: 'committed',
-      convergence: 'read-only-reload', detail: 'committed-survey-evidence-missing', transaction,
+      convergence: 'read-only-reload', detail: 'committed-survey-evidence-missing',
+      mismatch: Object.freeze(['selection']), transaction,
     });
   }
   const fixedPoint = prepareArc9SurveySettlementV1(transaction.state, captured.address);
   const plan = committedSelection.plan;
-  if (fixedPoint.kind !== 'current'
-    || transaction.plan.operation !== plan.operation
-    || transaction.plan.receiptOrdinal !== transaction.receipt.ordinal
-    || transaction.receipt.kind !== plan.receiptKind
-    || transaction.receipt.witness !== committedSelection.witness
-    || !sameJson(transaction.state, transaction.saved.canonicalState)
-    || !sameJson(transaction.state, plan.successorState)
-    || !sameJson(fixedPoint.facts, plan.facts)
-    || !sameJson(fixedPoint.projection.unlockedIds, plan.successor.unlocked)
-    || !sameJson(ownedState(transaction.state), plan.successor)) {
+  if (fixedPoint.kind !== 'current') {
     return Object.freeze({
       kind: 'committed-convergence', durability: 'committed',
-      convergence: 'read-only-reload', detail: 'committed-survey-fixed-point-mismatch', transaction,
+      convergence: 'read-only-reload', detail: 'committed-survey-fixed-point-mismatch',
+      mismatch: Object.freeze([`fixed-point:${fixedPoint.kind}`]), transaction,
+    });
+  }
+  const mismatch = Object.freeze([
+    transaction.plan.operation !== plan.operation ? 'operation' : null,
+    transaction.plan.receiptOrdinal !== transaction.receipt.ordinal ? 'receipt-ordinal' : null,
+    transaction.receipt.kind !== plan.receiptKind ? 'receipt-kind' : null,
+    transaction.receipt.witness !== committedSelection.witness ? 'receipt-witness' : null,
+    !sameJson(transaction.state, transaction.saved.canonicalState) ? 'canonical-state' : null,
+    !sameJson(transaction.state, committedSelection.expectedState) ? 'successor-state' : null,
+    !sameJson(fixedPoint.facts, plan.facts) ? 'facts' : null,
+    !sameJson(fixedPoint.projection.unlockedIds, plan.successor.unlocked) ? 'unlocked' : null,
+    !sameJson(ownedState(transaction.state), plan.successor) ? 'owned-state' : null,
+  ].filter((value): value is string => value !== null));
+  if (mismatch.length > 0) {
+    return Object.freeze({
+      kind: 'committed-convergence', durability: 'committed',
+      convergence: 'read-only-reload', detail: 'committed-survey-fixed-point-mismatch', mismatch, transaction,
     });
   }
   return Object.freeze({

@@ -13,10 +13,13 @@ import {
   SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA,
   sceneMemoryBrowserAuthorityMatches,
   sceneMemoryBrowserCapabilityInventoryErrors,
+  sceneMemoryCollectProfilesOnce,
   sceneMemoryCollectorCommandTimeoutMs,
   sceneMemoryProfileRawBindingErrors,
   sceneMemoryShipyardOpenSettlementReasons,
+  sceneMemorySurfaceVistaFaultReasons,
   sceneMemoryVeteranRaw,
+  sceneMemoryBfcacheAwayResponse,
   reportBrowserAuthorityErrors,
   terminalOutcomeInventoryErrors,
   terminalPassEvidenceErrors,
@@ -202,6 +205,11 @@ function surfaceTierSettlementBindingErrors(source: string): string[] {
     'r.surfaceCurrentTierPx===${expectedTierPx}&&r.surfaceRequestedTierPx===0',
     'r.surfaceCurrentBackingWidth===${expectedTierPx}',
     'r.surfaceCurrentBackingHeight===${expectedTierPx}',
+    'return {...r,rendererDpr:s.rendererDpr,settled}',
+    '(value) => value?.settled === true, ART_TIMEOUT_MS',
+    'sceneMemorySurfaceVistaFaultReasons,',
+    '(value) => sceneMemorySurfaceVistaFaultReasons(value).length > 0',
+    'product reported a terminal fault',
     'r.surfaceVistaWorkerActive===false&&r.surfaceVistaMounted===true',
     'r.surfaceVistaCacheEntries===${SURFACE_VISTA_CACHE_ENTRIES_MAX}',
     'r.surfaceVistaCachePixels<=${SURFACE_VISTA_CACHE_PIXELS_MAX}',
@@ -230,6 +238,51 @@ function collectorTimeoutBindingErrors(source: string): string[] {
   return exactBindings.filter((binding) => !source.includes(binding));
 }
 
+function bfcacheAwayBoundaryErrors(source: string): string[] {
+  const exactBindings = [
+    'function serveBfcacheAwayPage() {',
+    'const projected = sceneMemoryBfcacheAwayResponse(url.pathname);',
+    "server.listen(0, '127.0.0.1', () => {",
+    'const away = await serveBfcacheAwayPage();',
+    'url: `${away.origin}/__scenemem_bfcache_away__.html`',
+    '<link rel="icon" href="data:,">',
+    "await send('Page.navigateToHistoryEntry', { entryId: gameEntryId }, sessionId, {",
+    'await away.close();',
+  ];
+  const errors = exactBindings.filter((binding) => !source.includes(binding));
+  if (source.includes('`${origin}/__scenemem_away__.html`')) {
+    errors.push('bfcache away navigation remains inside the product service-worker scope');
+  }
+  return errors;
+}
+
+function landingRejectionEvidenceBindingErrors(source: string): string[] {
+  const start = source.indexOf('const landAttempt = await collector.evaluate(');
+  const end = source.indexOf('\n  const surfaceRoute = await observe(', start);
+  const owner = start >= 0 && end > start ? source.slice(start, end) : '';
+  const bindings = [
+    'const accepted = await api.landOn(',
+    'const state = api?.state?.() ?? null;',
+    'protectedDetail: state.persistence.protectedDetail ?? null,',
+    'convergenceReloadScheduled: state.persistence.convergenceReloadScheduled ?? null,',
+    'mutationBlockWitness: state.persistence.mutationBlockWitness ?? null,',
+    'runtime: state.persistence.runtime ?? null,',
+    'landing: state.landing ?? null,',
+    'productAssert(landAttempt?.accepted === true,',
+    'landAttempt?.evidence ?? landAttempt',
+    "landAttempt?.evidence?.route?.mode === 'surface'",
+    'landAttempt?.evidence?.persistence?.convergenceReloadScheduled === false',
+  ];
+  const errors = bindings.filter((binding) => !owner.includes(binding));
+  if (owner.split('collector.evaluate(').length - 1 !== 1) {
+    errors.push('Earth Landing and its rejection witness do not share exactly one browser task');
+  }
+  if (owner.includes('__smokeArmF4ConvergenceReloadHold')) {
+    errors.push('SceneMemory suppresses the production convergence reload');
+  }
+  return errors;
+}
+
 function buildGraphAuthorityBindingErrors(source: string): string[] {
   const exactBindings = [
     "'package', 'packageLock', 'appPackage', 'buildDist', 'gameHtml', 'gameMain'",
@@ -240,6 +293,17 @@ function buildGraphAuthorityBindingErrors(source: string): string[] {
     'exactInputs(fixture, authoritativeBudgetFile, currentBuild.sha256)',
   ];
   return exactBindings.filter((binding) => !source.includes(binding));
+}
+
+function profileAttemptBindingErrors(source: string): string[] {
+  const start = source.indexOf('async function runGate(options)');
+  const end = source.indexOf('\nfunction surfaceInventoryFromObservation(', start);
+  const owner = start >= 0 && end > start ? source.slice(start, end) : '';
+  const exactBindings = [
+    'await sceneMemoryCollectProfilesOnce(async (profile, viewport) => {',
+    'const measurement = await collectProfile({',
+  ];
+  return exactBindings.filter((binding) => owner.split(binding).length - 1 !== 1);
 }
 
 const settledShipyardOpenObservation = Object.freeze({
@@ -298,6 +362,46 @@ describe('scene-memory terminal verifier', () => {
     userAgent: 'Mozilla/5.0 HeadlessChrome/151.0.0.0 Edg/151.0.0.0',
     jsVersion: '15.1.23.9',
     protocolVersion: '1.3',
+  });
+
+  it('attempts each exact profile once and never reinvokes after a failure', async () => {
+    const calls: string[] = [];
+    const measurements = await sceneMemoryCollectProfilesOnce(async (profile, viewport) => {
+      calls.push(profile);
+      return viewport.width;
+    });
+    expect(calls).toEqual(['phone', 'desktop']);
+    expect(measurements).toEqual({ phone: 390, desktop: 1280 });
+
+    for (const [failedProfile, expectedCalls] of [
+      ['phone', ['phone']],
+      ['desktop', ['phone', 'desktop']],
+    ] as const) {
+      const failedCalls: string[] = [];
+      await expect(sceneMemoryCollectProfilesOnce(async (profile) => {
+        failedCalls.push(profile);
+        if (profile === failedProfile) throw new Error(`terminal ${profile} fault`);
+        return profile;
+      })).rejects.toThrow(`terminal ${failedProfile} fault`);
+      expect(failedCalls, failedProfile).toEqual(expectedCalls);
+    }
+  });
+
+  it('binds runGate to one one-shot owner and one collector call per profile', () => {
+    expect(profileAttemptBindingErrors(collectorSource)).toEqual([]);
+    for (const token of [
+      'await sceneMemoryCollectProfilesOnce(async (profile, viewport) => {',
+      'const measurement = await collectProfile({',
+    ]) {
+      const start = collectorSource.indexOf('async function runGate(options)');
+      const end = collectorSource.indexOf('\nfunction surfaceInventoryFromObservation(', start);
+      const owner = collectorSource.slice(start, end);
+      const duplicated = collectorSource.slice(0, start)
+        + owner.replace(token, `${token}\n      ${token}`)
+        + collectorSource.slice(end);
+      expect(duplicated, token).not.toBe(collectorSource);
+      expect(profileAttemptBindingErrors(duplicated), token).toContain(token);
+    }
   });
 
   it('keeps the protected veteran baseline exact except for the existing null view seat', () => {
@@ -665,8 +769,74 @@ describe('scene-memory terminal verifier', () => {
     );
   });
 
+  it('captures a rejected Earth Landing and bounded failure state in one browser task', () => {
+    expect(landingRejectionEvidenceBindingErrors(collectorSource)).toEqual([]);
+  });
+
+  it('negative controls: split evidence, held reload, and a missing convergence assertion turn red', () => {
+    const split = collectorSource.replace(
+      'const state = api?.state?.() ?? null;',
+      'const state = null; /* mutation control loses the rejected document */',
+    );
+    expect(split).not.toBe(collectorSource);
+    expect(landingRejectionEvidenceBindingErrors(split)).toContain(
+      'const state = api?.state?.() ?? null;',
+    );
+    const held = collectorSource.replace(
+      'const accepted = await api.landOn(',
+      'api.__smokeArmF4ConvergenceReloadHold();\n    const accepted = await api.landOn(',
+    );
+    expect(held).not.toBe(collectorSource);
+    expect(landingRejectionEvidenceBindingErrors(held)).toContain(
+      'SceneMemory suppresses the production convergence reload',
+    );
+    const convergenceBlind = collectorSource.replace(
+      '&& landAttempt?.evidence?.persistence?.convergenceReloadScheduled === false',
+      '',
+    );
+    expect(convergenceBlind).not.toBe(collectorSource);
+    expect(landingRejectionEvidenceBindingErrors(convergenceBlind)).toContain(
+      'landAttempt?.evidence?.persistence?.convergenceReloadScheduled === false',
+    );
+  });
+
   it('waits for the published surface tier after pending HD work clears', () => {
     expect(surfaceTierSettlementBindingErrors(collectorSource)).toEqual([]);
+  });
+
+  it('fails a surface settlement immediately with the bounded worker cause', () => {
+    expect(sceneMemorySurfaceVistaFaultReasons({
+      surfaceVistaFaults: 0,
+      surfaceVistaLastError: null,
+    })).toEqual([]);
+    expect(sceneMemorySurfaceVistaFaultReasons({
+      surfaceVistaFaults: 1,
+      surfaceVistaLastError: 'worker rendering failed exactly',
+    })).toEqual(['surface vista fault (1): worker rendering failed exactly']);
+    for (const malformed of [
+      {},
+      { surfaceVistaFaults: '0', surfaceVistaLastError: null },
+      { surfaceVistaFaults: -1, surfaceVistaLastError: null },
+    ]) {
+      expect(sceneMemorySurfaceVistaFaultReasons(malformed)).toEqual([
+        'surface vista fault diagnostics are missing or invalid',
+      ]);
+    }
+    expect(sceneMemorySurfaceVistaFaultReasons({
+      surfaceVistaFaults: 0,
+      surfaceVistaLastError: 'orphaned failure detail',
+    })).toEqual(['surface vista fault diagnostics are inconsistent']);
+  });
+
+  it('negative control: removing the surface worker terminal-fault predicate turns red', () => {
+    const missingTerminal = collectorSource.replace(
+      '(value) => sceneMemorySurfaceVistaFaultReasons(value).length > 0',
+      '() => false',
+    );
+    expect(missingTerminal).not.toBe(collectorSource);
+    expect(surfaceTierSettlementBindingErrors(missingTerminal)).toContain(
+      '(value) => sceneMemorySurfaceVistaFaultReasons(value).length > 0',
+    );
   });
 
   it('negative control: a cleared requested tier cannot impersonate publication', () => {
@@ -715,6 +885,41 @@ describe('scene-memory terminal verifier', () => {
       'SceneMemory collector command timeout must be a positive integer',
     );
     expect(collectorTimeoutBindingErrors(collectorSource)).toEqual([]);
+  });
+
+  it('owns a separate minimal origin for the bfcache away document', () => {
+    expect(bfcacheAwayBoundaryErrors(collectorSource)).toEqual([]);
+  });
+
+  it('projects only the bfcache readiness document at the runtime server boundary', () => {
+    const ready = sceneMemoryBfcacheAwayResponse('/__scenemem_bfcache_away__.html');
+    expect(ready).toMatchObject({
+      status: 200,
+      headers: {
+        'content-type': 'text/html; charset=utf-8',
+        'cache-control': 'no-store',
+      },
+    });
+    expect(ready.body).toContain('globalThis.__CF_SCENEMEM_AWAY__=true');
+    expect(sceneMemoryBfcacheAwayResponse('/not-the-away-page')).toEqual({
+      status: 404,
+      headers: {},
+      body: '',
+    });
+  });
+
+  it('negative controls: the bfcache away document cannot re-enter product scope or leak its server', () => {
+    const sameOrigin = collectorSource.replace(
+      'url: `${away.origin}/__scenemem_bfcache_away__.html`',
+      'url: `${origin}/__scenemem_away__.html`',
+    );
+    expect(sameOrigin).not.toBe(collectorSource);
+    expect(bfcacheAwayBoundaryErrors(sameOrigin)).toContain(
+      'bfcache away navigation remains inside the product service-worker scope',
+    );
+    const leaked = collectorSource.replace('await away.close();', '/* close removed */');
+    expect(leaked).not.toBe(collectorSource);
+    expect(bfcacheAwayBoundaryErrors(leaked)).toContain('await away.close();');
   });
 
   it('negative controls: a transport-cap bypass or reload command widened to the phase budget turns red', () => {

@@ -1199,6 +1199,9 @@ export interface F4DeterministicProductDeriveInput {
   readonly receiptOrdinal: number;
   /** Exact leased active-play snapshot committed by this same transaction. */
   readonly activePlayMs: number;
+  /** Owner-minted compatibility canonicalizer bound to this attempt's exact
+   * detached registry and injected save clock. */
+  readonly canonicalizeState: (state: SaveStateV2) => SaveStateV2;
   readonly draft: SaveStateV2;
   readonly extensions: V5Extensions;
 }
@@ -1270,6 +1273,9 @@ export function createF4DeterministicProductTransactionOwner(
   repository: Pick<RevisionedRepository, 'mutate'>,
   registry: ContentRegistry,
 ): F4DeterministicProductTransactionOwner {
+  /* Neither a later caller mutation nor a registry object shared with another
+     owner may change the codec used to certify and persist this product. */
+  const codecRegistry = detachedContentRegistry(registry);
   return Object.freeze({
     async commit(
       input: F4DeterministicProductTransactionInput,
@@ -1280,18 +1286,33 @@ export function createF4DeterministicProductTransactionOwner(
       const planned = planF4DeterministicProductReceipt(input.writable.extensions, operation);
       if (planned.kind !== 'planned') return planned;
       const { plan } = planned;
-      return commitPlannedProduct(repository, registry, {
+      let now: number;
+      try { now = checkedCodecNow(input.now); } catch (error) {
+        return {
+          kind: 'rejected', stage: 'product-prepare', message: messageOf(error), plan,
+        };
+      }
+      const emptyExtensions: V5Extensions = Object.freeze({});
+      const canonicalizeState = Object.freeze((state: SaveStateV2): SaveStateV2 => (
+        prepareV5SaveWrite(
+          { state, extensions: emptyExtensions },
+          codecRegistry,
+          now,
+        ).canonicalState
+      ));
+      return commitPlannedProduct(repository, codecRegistry, {
         expectedRevision: input.expectedRevision,
         fence,
         writable: input.writable,
         snapshot: input.snapshot,
-        now: input.now,
+        now,
         receiptKind,
         plan,
         derive: (draft, extensions) => input.derive(Object.freeze({
           operation,
           receiptOrdinal: plan.receiptOrdinal,
           activePlayMs: input.snapshot.activePlayMs,
+          canonicalizeState,
           draft,
           extensions,
         })),

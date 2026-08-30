@@ -472,11 +472,11 @@ function captureReconstructionErrors(source: string): string[] {
   const presenter = section(
     source,
     'function presentPlanetSurvey(',
-    '\nfunction surveyPlanet(',
+    '\nfunction startPlanetSurvey(',
   );
   const surveyAction = section(
     source,
-    'function surveyPlanet(',
+    'function startPlanetSurvey(',
     '\nfunction buildCardActions(',
   );
   if (reconstruction.length === 0 || dock.length === 0
@@ -545,13 +545,19 @@ function captureReconstructionErrors(source: string): string[] {
     if (presentationOnly.includes(forbidden)) errors.push('capture-reconstruction-side-effects');
   }
 
-  const presentCall = surveyAction.indexOf('if (!presentPlanetSurvey(p, star, supplied)) return false;');
+  const presentCall = surveyAction.indexOf('if (!presentPlanetSurvey(p, star, supplied)) return null;');
   const address = surveyAction.indexOf('const address = activeCardWorldAddress();');
   const audio = surveyAction.indexOf('playSurveyPing();');
   const event = surveyAction.indexOf("gameEvent('survey', { planetSeed: p.seed });");
-  const progression = surveyAction.indexOf('void settleArc9Survey(address);');
+  const progression = surveyAction.indexOf('return settleArc9Survey(address);');
+  const synchronousOwner = surveyAction.indexOf('function surveyPlanet(', progression);
+  const delegatedStart = surveyAction.indexOf(
+    'const settlement = startPlanetSurvey(p, star, supplied);',
+    synchronousOwner,
+  );
   if (!(presentCall >= 0 && address > presentCall && audio > address
-    && event > audio && progression > event)) {
+    && event > audio && progression > event && synchronousOwner > progression
+    && delegatedStart > synchronousOwner)) {
     errors.push('capture-normal-survey-effects');
   }
   return [...new Set(errors)];
@@ -914,14 +920,19 @@ function runReconstructionFromSource(source: string, options: ReconstructionRunO
 function runNormalSurveyFromSource(source: string, presentationAccepted: boolean) {
   const surveyAction = section(
     source,
-    'function surveyPlanet(',
+    'function startPlanetSurvey(',
     '\nfunction buildCardActions(',
   );
   if (surveyAction.length === 0) throw new Error('normal Survey source is missing');
-  const javascript = surveyAction.replace(
-    /^function surveyPlanet\([^)]*\): boolean \{/u,
-    'function surveyPlanet(p, star, supplied) {',
-  );
+  const javascript = surveyAction
+    .replace(
+      /^function startPlanetSurvey\([\s\S]*?\): Promise<boolean> \| null \{/u,
+      'function startPlanetSurvey(p, star, supplied) {',
+    )
+    .replace(
+      /\nfunction surveyPlanet\([^)]*\): boolean \{/u,
+      '\nfunction surveyPlanet(p, star, supplied) {',
+    );
   if (javascript === surveyAction) throw new Error('normal Survey signature was not transformed');
   const trace = { present: 0, audio: 0, events: [] as unknown[], settlements: 0 };
   const evaluator = new Function(
@@ -933,7 +944,7 @@ function runNormalSurveyFromSource(source: string, presentationAccepted: boolean
     () => ({ key: 'world' }),
     () => { trace.audio += 1; },
     (...args: unknown[]) => { trace.events.push(args); },
-    () => { trace.settlements += 1; },
+    () => { trace.settlements += 1; return Promise.resolve(true); },
   );
   return { result, trace };
 }
@@ -1639,7 +1650,7 @@ describe('Arc 4 main authority wiring', () => {
 
     const missingAudio = replaceInSectionExact(
       mainSource,
-      'function surveyPlanet(',
+      'function startPlanetSurvey(',
       '\nfunction buildCardActions(',
       '  playSurveyPing();   /* the ACT of surveying answers back (main.js) */',
       '  /* Survey audio omitted */',
@@ -1649,7 +1660,7 @@ describe('Arc 4 main authority wiring', () => {
 
     const missingEvent = replaceInSectionExact(
       mainSource,
-      'function surveyPlanet(',
+      'function startPlanetSurvey(',
       '\nfunction buildCardActions(',
       "  gameEvent('survey', { planetSeed: p.seed });",
       '  /* Survey event omitted */',

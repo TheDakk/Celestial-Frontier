@@ -65,7 +65,7 @@ function audit(main: string, ecology: string, approach: string): readonly string
     'function surveyOwnsCurrentCaptureSurface()',
   );
   const surveyCard = section(main, 'function showSurvey(', 'function hideSurvey(');
-  const planetSurvey = section(main, 'function presentPlanetSurvey(', 'function surveyPlanet(');
+  const planetSurvey = section(main, 'function presentPlanetSurvey(', 'function startPlanetSurvey(');
   const approachClick = section(approach, 'readonly #onClick', '  #render():');
   const approachRender = section(approach, '  #render():', '  #canInteract():');
 

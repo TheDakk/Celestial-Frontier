@@ -12,14 +12,17 @@
 > responses or digest drift, writes the completion marker last and deletes the candidate on any
 > failure.
 >
-> Activate verifies the complete candidate and preserves every live document's exact persisted
+> Activate verifies the complete candidate and preserves every live client type's exact persisted
 > build pin before switching the selected build. A successor never claims already-running pages;
 > each remains on its pinned complete build until an explicit navigation/reload. Navigation selects
-> the globally active build and pins the resulting document, while every non-navigation fetch is
-> cache-only from that document's pin. If a prior-pinned tab would make a third retained build
-> necessary, activation refuses before `skipWaiting`; pins are pruned only after
-> `clients.matchAll()` proves their documents are gone. Current plus one verified prior cache remain,
-> with local 4xx/5xx refusals and no undeclared, cross-build, external or network fallback.
+> the globally active build and pins the resulting document. A module-worker or shared-worker entry
+> request inherits that selected pin through its valid `resultingClientId`, so the worker's lazy
+> imports and other non-navigation fetches are cache-only from the same immutable build. If a prior-
+> pinned client would make a third retained build necessary, activation refuses before
+> `skipWaiting`. Retention enumerates `clients.matchAll({type:'all'})`, and an apparently absent
+> pinned client must also be absent from `clients.get()` before its pin is pruned; this closes the
+> ready-snapshot/worker-creation race. Current plus one verified prior cache remain, with local
+> 4xx/5xx refusals and no undeclared, cross-build, external or network fallback.
 >
 > `src/pwa-update.ts` mounts an accessible Settings-contained App-status controller only in emitted
 > PWA builds. Registration bypasses HTTP cache; update status is polite/atomic and errors are alerts.
@@ -33,10 +36,10 @@
 > by the exclusive replacement claim. A failed durability boundary releases ownership and rearms
 > that debounce; only success releases audio, F4/runtime, chrome, the PWA controller, Pixi and both
 > canvases before navigation. Runtime caches never contain or roll back IndexedDB expedition data.
-> VM, JSDOM, static wiring, independent built-output digest/inventory verification and all
-> TypeScript programs are
-> current-local green; physical install/offline/update/rollback, assistive-technology, browser/device
-> and HUMAN acceptance remain open.
+> VM, JSDOM, static wiring and independent built-output digest/inventory mutation coverage exercise
+> this contract; final exact-source authority remains part of the current local closure. Physical
+> install/offline/update/rollback, assistive-technology, browser/device and HUMAN acceptance remain
+> open.
 
 > **2026-08-29 current local Binder and Prime-Frontier overlay:**
 > `port/v2/apps/game/src/binder-sets.ts` is a strict read projection over canonical `codex` and
@@ -246,7 +249,7 @@
 > route/counterpart drift, Sound Off, context loss and disposal cancel the session. Skip never plays
 > unrendered remainder or result cues; no authored/recorded combat assets, ambience or music are implied.
 
-> **Current universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
+> **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
 > signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
 > and unchanged through one serial **Layout → SceneMemory → Compendium → Slice → Glass →
@@ -257,10 +260,10 @@
 > with zero findings or instrument failures (`2a67a258…`); Recovery consumed both exact
 > predecessors and passed all ten stages in 1,290,953 ms with a real uninterrupted 1,200,297.5 ms
 > active-browser observation (`b78e8a52…`). Every stage ran once with zero automatic retries and
-> passed its exact source/predecessor-bound verifier. The full v2 battery is 163 files / 1,712
-> passed + one skipped, and all TypeScript configurations are green.
+> passed its exact source/predecessor-bound verifier. At that checkpoint, the full v2 battery was
+> 163 files / 1,712 passed + one skipped, and all TypeScript configurations were green.
 >
-> This is the complete local automated certificate for the universe-wide visual treatment and
+> For that exact source, this is the complete historical automated certificate for the universe-wide visual treatment and
 > bounded Arc 5 Feed scope. It is not HUMAN visual, listening, screen-reader or first-journey
 > judgment; physical-device heat/battery/true-GPU evidence, Gate G distant playback and D-9e remain
 > open, as do whole Gates A–I. It grants no hosted attempt, merge, release/version or deployment
@@ -268,7 +271,8 @@
 > version is provenance only; compatible updates never trigger rebaseline or recalibration.
 > Earlier Final13/Final12/Final11/Final10 wording below is historical where superseded.
 
-> **Current local Arc 4 Charter successor (2026-08-29; not part of `3f69e88…`):** the capture
+> **Earlier local Arc 4 Charter checkpoint (2026-08-29; not part of `3f69e88…`, predecessor to the
+> PR #35 lifecycle repair below):** the capture
 > capacity certificate now stages one `c2-scan` tick only in successful scenarios whose exact
 > registered CF1 world has no prior world-provenance discovery, is beyond the exact Sol hierarchy,
 > is reachable from owned systems and remains within the current/future Chapter 2 goal boundary.
@@ -284,8 +288,8 @@
 > This is a documented v2 semantics deviation: capture success replaces v1.8.9's separate Discover
 > Life interaction for this one Chapter deed, while exact Sol exclusion makes the “alien worlds”
 > copy literal. The legacy survey/Records ledger and `stats.surveys` do not change, and the separate
-> interaction plus accepted/weekly bioscan systems remain unavailable. Focused and full
-> browser-free tests are green at 233 files / 2,333 passed + one skipped; fresh clean browser
+> interaction plus accepted/weekly bioscan systems remain unavailable. At that checkpoint focused
+> and full browser-free tests were green at 233 files / 2,333 passed + one skipped; fresh clean browser
 > evidence and HUMAN acceptance remain open, with no hosted/release/
 > version/deployment authority.
 
@@ -297,18 +301,36 @@
 > is checked both before and after an action heartbeat. An Atlas `already-durable` observation binds
 > its exact existing row back into the app's private source-proven route `WeakMap`, or latches a
 > read-only convergence reload if that sidecar cannot be restored. No action retries or optimistically
-> republishes durable state.
+> republishes durable state. The one-call Survey → Landing API additionally drains the route's
+> current persistence barrier, starts Survey exactly once, drains Survey's replacement barrier,
+> requires that exact settlement to return true and invokes Land exactly once. A synchronous
+> refusal or later durable false stops before Land. The pure choreography helper owns no save,
+> clock, route or retry policy.
 
-> **PR #35 tracked-CI parity overlay (synchronized draft repair, 2026-08-29):** authorized no-retry
-> `test-battery` run `33273328362` tested pushed head `390e870…` against base `7a9f4c1…` and stopped
-> in the v2 static suite. Five suites consumed ignored root `main.js`, which was present on the Mac
-> but absent from both Git trees. Port legacy-source tests now use one fail-closed byte-exact helper
-> over the unique inline script in tracked `celestial-frontier.html`; they never fall back to the
-> ignored edit source or normalize its bytes. Two synchronous evidence selftests also crossed the
-> inherited five-second outer limit under Linux contention. Their shared helper now owns an explicit
-> 15-second child kill below a 20-second outer case and independently diagnoses timeout, spawn
-> failure, nonzero exit and missing PASS marker; 24 simultaneous controls reproduced 5.711–6.066
-> second runtimes and passed 24/24 without retry.
+> **PR #35 permanent lifecycle overlay (current local repair, 2026-08-29):** the consumed one-time/
+> no-retry `test-battery` run `33278630671` tested exact pushed head `017fa6d…` against base
+> `7a9f4c1…`. Its browser-free/static predecessors were green; SceneMemory stopped on the phone
+> profile because real Earth planetfall returned false, and its desktop leg plus every later browser
+> stage were correctly skipped. The run remains immutable red and consumes its exact authorization.
+> No replacement hosted attempt is authorized.
+>
+> Two systemic repairs close the actual product path. The Survey → Landing barrier choreography is
+> the exact one-call ordering described above. At the deterministic transaction boundary,
+> `outcome-transaction.ts` detaches its content registry when the F4 owner is created, validates the
+> injected codec clock exactly once per commit, and gives the derive callback an owner-minted
+> `canonicalizeState` bound to that same registry and clock. Product derivations still submit their
+> raw state to the persistence owner; every full-state expected successor is independently retained
+> in canonical form for postcommit comparison. Arc 3 likewise canonicalizes its retained owned-state
+> expectation while preserving the exact owned extension derivation. This prevents veteran
+> compatibility timestamp floors from turning a correct durable successor into a false mismatch.
+>
+> The exact-build PWA repair propagates the parent's selected build to valid worker/shared-worker
+> `resultingClientId`s and retains all client types with `clients.get()` confirmation before pin
+> pruning. SceneMemory binds Land and its bounded witness in one browser task, requires no scheduled
+> convergence before Surface observation, fails fast on coherent cause-bearing vista diagnostics,
+> and uses a separate-origin BFCache helper beyond the product worker's interception scope. These
+> changes retain the **44-outcome** ruler, every numeric ceiling and all immutable historical
+> evidence, including exact signed `3f69e88…`.
 >
 > `port/v2/tools/tracked-input-preflight.mjs` is the mandatory preauthorization rehearsal. From a
 > clean committed candidate it exports only the exact Git index, installs inside an owned temporary
@@ -316,16 +338,11 @@
 > forgotten source-owned untracked/ignored tests, excludes dependency-owned `node_modules` tests,
 > and rechecks HEAD plus tracked state before terminal PASS. Both
 > guarded workflows run its mutation-sensitive selftest immediately after v2 installation. The
-> repair also clears four `artunused` findings hidden behind the consumed stop. The only product
-> source cleanup changed one source map by 20 bytes; an isolated same-path comparison proved all 29
-> runtime files and PWA build ID byte-identical. SceneMemory full-dist authority is therefore
-> `30ac9f97…8750` under budget `158ed95e…c308`, with every numeric ceiling, browser contract,
-> collector and runtime byte unchanged. Exact signed repair commit
-> `9192b1aa66c38508cd19f5db0e4825b0a31d5516` and the final documentation-closed signed HEAD pass the
-> exact isolated rehearsal: 233/233 files, 2,333 passed + one skipped, all TypeScript/unused/art/
-> override/coverage/spec checks and 3/3 current-producer tests. The final branch and refreshed draft
-> metadata are synchronized without an approval label. This is hermetic browser-free parity, not a
-> hosted green, browser certificate, HUMAN judgment, merge, release or deployment authority.
+> earlier static repair also clears four `artunused` findings hidden behind its consumed stop and
+> remains the hermetic browser-free preauthorization boundary. The newer product/instrument repair
+> must receive final exact-source authority and local closure before any separately authorized hosted
+> attempt. Neither repair is a hosted green, browser certificate, HUMAN judgment, merge, release,
+> version bump or deployment authority.
 
 > A complete technical reference for the game, written so any future session can pick up
 > full context without re-reading the source. When in doubt, source wins. The long-form
@@ -333,7 +350,8 @@
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 reference overlay matches the current local v2 worktree as of 2026-08-29.**
 > Historical browser claims remain bound only to their named signed sources, including `3f69e88…`;
-> the newer Arc 0/5/6/9 product work is browser-free until final source freeze.
+> the newer PR #35 product/instrument repair has no clean exact-source certificate until final source
+> freeze and authority closure.
 >
 > **Historical 2026-08-28 Final10 offline-reopened oracle stop (superseded by Final11 above):**
 > signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` supplied Layout
@@ -452,9 +470,12 @@
 > route projects only from an exact proven world plus matching canonical roster, separating land,
 > aquatic, aerial and ground-flora evidence without a Sol/leaf-seed shortcut. `biome-vista.worker.ts`
 > renders lazily with OffscreenCanvas; its protocol rejects inexact scene options and result identity/
-> dimensions. The app fences stale document/generation/world/scene/biome work, owns a 12-second
+> dimensions. Main validates the exact product render envelope before `postMessage`, fences stale
+> work with the exact document token, generation, world key, environment fingerprint, profile schema
+> and profile digest authority, then separately requires the exact scene and biome key. It owns a 12-second
 > deadline, and publishes only after successful copy/mount into a one-entry fail-soft cache. Any
-> worker/protocol/copy/mount failure leaves the already complete globe usable. Portrait layout fits
+> worker/protocol/copy/mount failure records one bounded cause in scene diagnostics and leaves the
+> already complete globe usable. Portrait layout fits
 > the entire source as a horizon band above the globe; landscape/desktop centers it without crop.
 >
 > `visual-effect-policy.ts` and `camera-shake-policy.ts` now consume the persisted **Visual effects**,
@@ -471,8 +492,7 @@
 > `biome-vista-ecology` suites plus app `biome-vista-surface`, `biome-vista-protocol`,
 > `biome-vista-cache`, `universe-polish-main-wiring`, `visual-effect-policy`,
 > `camera-shake-policy`, `visual-policy-main-wiring`, `shipyard-preview` and
-> `art-tools-browser-resolution`. The full v2 battery is current-source green at 233 files / 2,333
-> passed + one skipped with all TypeScript configurations green. Their controls cover exact-set/field/identity mismatches,
+> `art-tools-browser-resolution`. Their controls cover exact-set/field/identity mismatches,
 > disconnected finishers, changed compositor routes, stale/faulted cache publication, cropped phone
 > layout, policy bypasses and hard-coded browser paths. Raw-CDP art tools share
 > `tools/browserpath.mjs`; explicit `CF_BROWSER` fails closed. Before evidence, each of the seven
@@ -486,13 +506,19 @@
 > `surfaceVistaWorkerActive`, `surfaceVistaMounted`, `surfaceVistaCacheEntries` and
 > `surfaceVistaCachePixels` diagnostics through cold zero, first mount, repeated surface/ascent,
 > BFCache and reload-clear/replacement cleanup, with the semantic cache ceiling fixed at one entry /
-> 412,800 pixels. Browser-free contract/budget/tool controls are green, including missing-field,
+> 412,800 pixels. The current collector captures Land's result plus bounded route, persistence and
+> landing evidence in one CDP evaluation, requires accepted Surface state with no scheduled
+> convergence reload, and retains full settlement diagnostics on every poll. Coherent vista fault
+> diagnostics, including the bounded last cause, are terminal immediately rather than degrading
+> into a 30-second timeout. The BFCache away document is served from a separate loopback origin,
+> outside the product service worker's scope, and its owner stays live until the history return is
+> requested. Browser-free contract/budget/tool controls retain missing-field,
 > vacuous-zero, worker/mount leak, cache overflow and retained-on-reload mutations. Exact signed
 > `3f69e88…` run `20260829-universe-polish-3f69e88ea8e3-scenemem` passed 44/44 in 10,561 ms with
-> complete cleanup inside the current serial certificate. Every 42/42 statement below remains bound
+> complete cleanup inside that historical serial certificate. Every 42/42 statement below remains bound
 > to its historical source and schema.
 >
-> Exact signed source `3f69e88…` now owns the complete local automated certificate: Layout 787/787,
+> Exact signed source `3f69e88…` retains its complete historical exact-source automated certificate: Layout 787/787,
 > SceneMemory input-v4 44/44, Compendium 78/78, zero-finding Slice, 12-viewport zero-finding Glass
 > and ten-stage Recovery with a real 1,200,297.5 ms active-browser observation, all once/no-retry and
 > exact source/predecessor-bound verified. That certificate is limited to the universe-wide visual
@@ -1053,10 +1079,12 @@
 > V5 continues to split the canonical v4 envelope into owner rows with exact source snapshot/journal,
 > revision and bounded extension namespaces.
 >
-> `outcome-transaction.ts` is the shared F3/F4 product assembly owner. It detaches state/extensions,
-> rejects product writes to protected `player/f4.authority`, applies product namespaces, prepares the
-> next active-play/SessionRNG authority, serializes one complete save and submits product + immutable
-> receipt + next revision under the lease fence. Random plans retain their draw after failure.
+> `outcome-transaction.ts` is the shared F3/F4 product assembly owner. It detaches state/extensions
+> plus its codec registry, rejects product writes to protected `player/f4.authority`, validates the
+> injected save clock once per commit, and supplies one same-registry/same-clock canonicalizer for
+> expected postcommit successors. It applies product namespaces, prepares the next active-play/
+> SessionRNG authority, serializes one complete save and submits product + immutable receipt + next
+> revision under the lease fence. Random plans retain their draw after failure.
 > Equip/Unequip/Salvage/pending-claim use its no-RNG sibling, advancing only the global ordinal and
 > preserving seed/domain counters byte-for-byte.
 >
@@ -3258,10 +3286,12 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `src/pwa-update.ts`, `vite.config.ts`, wired by `main.ts`): emitted builds contain one exact
   final-byte runtime inventory plus an automatic worker-template revision, and a completion marker
   written last. A partial or altered candidate is deleted. Exact per-document build pins survive
-  activation/rollback until explicit reload; navigation selects and pins the active build, while
-  subresources are cache-only from that pin. A successor does not claim existing pages, stale pins
-  are removed only after their clients disappear, and third-build activation refuses while a live
-  tab still owns the retained prior. Settings accepts exact-worker status/results and exposes
+  activation/rollback until explicit reload; navigation selects and pins the active build. Worker
+  and shared-worker creation propagates that selected pin to the valid resulting client, so lazy
+  imports remain cache-only from the same build. A successor does not claim existing pages, all
+  client types retain their pins, an omitted snapshot client must also fail `clients.get()` before
+  pruning, and third-build activation refuses while any live client owns the retained prior.
+  Settings accepts exact-worker status/results and exposes
   accessible explicit Check, Activate, Reload and Roll back actions; active status—not controller
   change—reveals Reload. Main refuses conflicting reloads, joins active persistence and
   checkpoints/rearms canceled debounce work across the exclusive reload boundary. Only current plus
@@ -3360,7 +3390,7 @@ greeting as `arc4:taming-succeeded:${recordId}`. The current repair requires rel
 `true` before `collectArc4TameGreetingStart()` retains its exact result, global, ownership, claim,
 counterpart, runtime and toast clauses, and accepts one start that is either still active or has naturally
 completed before its first read. Generic Arc 4 ownership-revision and reload-result-null controls
-are included. Exact signed `3f69e88…` Slice passed this current-source evidence inside the
+are included. Exact signed `3f69e88…` Slice passed this historical exact-source evidence inside the
 immutable chain. Sound off,
 persisted **Creature Voices** off, hidden/unanswerable play, miss/refusal, stale/reload convergence,
 route or counterpart loss, replacement and disposal stay silent and stop/release the audio/runtime
@@ -3598,15 +3628,15 @@ Synchronous Slice/Glass/Recovery selftests use explicit 15-second child and
 20-second outer limits with separate timeout/nonzero/missing-marker controls. This gate does not
 replace the strict browser evidence chain or authorize hosted work.
 
-**Current evidence snapshot (2026-08-29):** exact signed source
+**Historical exact-source evidence snapshot (2026-08-29):** exact signed source
 `3f69e88ea8e34fdb8d9913276601b426ada783ae` completed the once-only, zero-retry
 Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain. Layout passed 787/787,
 SceneMemory input-v4 44/44 and Compendium 78/78; Slice passed with zero findings, Glass consumed
 that exact Slice and passed all 12 viewport classes with zero findings or instrument failures, and
 Recovery consumed both exact predecessors and passed all ten stages with a real uninterrupted
 1,200,297.5 ms active-browser observation. Every immutable report passed its exact source/
-predecessor-bound verifier. The full v2 battery is 163 files / 1,712 passed + one skipped and all
-TypeScript configurations are green. This exact evidence certifies the universe-wide visual
+predecessor-bound verifier. At that checkpoint, the full v2 battery was 163 files / 1,712 passed +
+one skipped and all TypeScript configurations were green. This exact evidence certifies the universe-wide visual
 treatment and bounded Arc 5 Feed scope only; HUMAN visual/listening/screen-reader/first-journey,
 physical-device heat/battery/true-GPU, Gate G distant playback, D-9e, whole-Gate and hosted/release
 authority remain open. Exact carriers, sizes and hashes are in `audits/README.md`.

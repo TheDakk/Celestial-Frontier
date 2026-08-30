@@ -273,6 +273,31 @@ describe('Arc 9 Atlas favorite pure settlement', () => {
 });
 
 describe('Arc 9 durable Atlas favorite transaction and publication', () => {
+  it('commits the codec-canonical favorite state when an unrelated veteran mining stamp moves', async () => {
+    const state = atlasState();
+    state.mined = [['veteran-clock-floor', NOW - 30 * 6e5]];
+    state.mineX = [['veteran-clock-floor', 1]];
+    const test = await fixture(state);
+    const before = JSON.stringify(test.state);
+    const outcome = await commitArc9AtlasFavoriteV1({
+      runtime: test.runtime,
+      state: test.state,
+      atlasId: TARGET_ID,
+      desired: true,
+      codecNow: NOW + 1,
+    });
+
+    expect(outcome).toMatchObject({
+      kind: 'committed', durability: 'committed', convergence: 'none',
+    });
+    expect(JSON.stringify(test.state)).toBe(before);
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.transaction.state).toEqual(outcome.transaction.saved.canonicalState);
+    expect(new Map(outcome.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(NOW + 1 - 30 * 6e5);
+    await test.runtime.release();
+  });
+
   it('commits exactly one receipt/CAS without RNG, reloads, publishes in place, and becomes receipt-free current', async () => {
     const test = await fixture();
     let commitCalls = 0;

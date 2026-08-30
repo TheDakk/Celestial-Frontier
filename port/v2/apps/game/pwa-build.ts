@@ -245,25 +245,29 @@ async function writeClientPin(clientId,buildId){
   await cache.put(clientPinUrl(clientId),new Response(JSON.stringify({schema:SCHEMA,clientId,buildId}),{headers:{'content-type':'application/json'}}));
 }
 async function preserveLiveClientBuilds(state,requireActiveOnly){
-  const clients=await self.clients.matchAll({type:'window',includeUncontrolled:true});
+  const clients=await self.clients.matchAll({type:'all',includeUncontrolled:true});
   const cache=await caches.open(CONTROL_CACHE);
   const liveIds=new Set();
   let safe=true;
-  for(const client of clients){
-    if(!validClientId(client.id)){safe=false;continue;}
+  const retain=async(client)=>{
+    if(!validClientId(client.id)){safe=false;return;}
     liveIds.add(client.id);
     const pinned=await readClientPin(client.id);
     const buildId=pinned??state.activeBuildId;
     if(pinned===null)await writeClientPin(client.id,buildId);
     if((buildId!==state.activeBuildId&&buildId!==state.priorBuildId)||(requireActiveOnly&&buildId!==state.activeBuildId))safe=false;
-  }
+  };
+  for(const client of clients)await retain(client);
   const prefix=clientPinPathPrefix();
   for(const request of await cache.keys()){
     const url=new URL(request.url);
     if(url.origin!==self.location.origin||!url.pathname.startsWith(prefix))continue;
     let clientId='';
     try{clientId=decodeURIComponent(url.pathname.slice(prefix.length));}catch{clientId='';}
-    if(!validClientId(clientId)||!liveIds.has(clientId))await cache.delete(request);
+    if(!validClientId(clientId)){await cache.delete(request);continue;}
+    if(liveIds.has(clientId))continue;
+    const client=await self.clients.get(clientId);
+    if(client)await retain(client);else await cache.delete(request);
   }
   return safe;
 }
@@ -359,6 +363,7 @@ self.addEventListener('fetch',(event)=>{
     const state=await readState();
     if(!state)return new Response('No complete Celestial Frontier build is active.',{status:503});
     const navigation=request.mode==='navigate'||request.destination==='document';
+    const workerCreation=request.destination==='worker'||request.destination==='sharedworker';
     if(!navigation&&!validClientId(event.clientId))return new Response('This resource request has no Celestial Frontier document owner.',{status:503});
     const pinned=navigation?null:await readClientPin(event.clientId);
     if(!navigation&&pinned===null)return new Response('This document has no retained Celestial Frontier build.',{status:503});
@@ -376,6 +381,9 @@ self.addEventListener('fetch',(event)=>{
     if(navigation){
       const nextClientId=validClientId(event.resultingClientId)?event.resultingClientId:event.clientId;
       if(validClientId(nextClientId))await writeClientPin(nextClientId,selectedBuildId);
+    }else if(workerCreation){
+      if(!validClientId(event.resultingClientId))return new Response('The worker has no retained Celestial Frontier build identity.',{status:503});
+      await writeClientPin(event.resultingClientId,selectedBuildId);
     }
     return response;
   })());

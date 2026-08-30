@@ -401,6 +401,31 @@ describe('Arc 9 canonical Travel fact and fixed-point preparation', () => {
 });
 
 describe('Arc 9 durable Travel settlement', () => {
+  it('commits the codec-canonical route state when an unrelated veteran mining stamp moves', async () => {
+    const state = baseState();
+    state.mined = [['veteran-clock-floor', NOW - 30 * 6e5]];
+    state.mineX = [['veteran-clock-floor', 1]];
+    const test = await fixture(state);
+    const before = JSON.stringify(test.state);
+    const outcome = await commitArc9TravelSettlementV1({
+      runtime: test.runtime,
+      state: test.state,
+      actionKind: 'galaxy-arrival',
+      galaxyNav: galaxy('quasar'),
+      codecNow: NOW + 1,
+    });
+
+    expect(outcome).toMatchObject({
+      kind: 'committed', durability: 'committed', convergence: 'none',
+    });
+    expect(JSON.stringify(test.state)).toBe(before);
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.transaction.state).toEqual(outcome.transaction.saved.canonicalState);
+    expect(new Map(outcome.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(NOW + 1 - 30 * 6e5);
+    await test.runtime.release();
+  });
+
   it('commits arrival in one receipt/CAS, preserves RNG domains, publishes, and becomes current', async () => {
     const source = baseState();
     source.galSeen = ['legacy:a', 'legacy:b', 'legacy:c', 'legacy:d'];

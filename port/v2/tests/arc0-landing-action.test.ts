@@ -262,6 +262,34 @@ function actionInput(
 }
 
 describe('Arc 0 durable landing action', () => {
+  it('seals the codec-canonical successor when an unrelated veteran mining stamp moves', async () => {
+    const state = baseState();
+    state.mined = [['veteran-clock-floor', NOW - 30 * 6e5]];
+    state.mineX = [['veteran-clock-floor', 1]];
+    const fixture = await runtimeFixture({ state });
+    const before = JSON.stringify(fixture.state);
+    const address = solWorld(134);
+    const outcome = await commitArc0LandingAction({
+      ...actionInput(fixture, address),
+      codecNow: NOW + 1,
+    });
+
+    expect(outcome).toMatchObject({
+      kind: 'committed', durability: 'committed', convergence: 'none',
+    });
+    expect(JSON.stringify(fixture.state)).toBe(before);
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.transaction.state).toEqual(outcome.transaction.saved.canonicalState);
+    expect(new Map(outcome.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(NOW + 1 - 30 * 6e5);
+    expect(verifyArc0LandingPostcommit({
+      transaction: outcome.transaction,
+      address,
+      witness: outcome.witness,
+    })).toMatchObject({ kind: 'verified' });
+    await fixture.runtime.release();
+  });
+
   it('commits one first landing, sample payout, Charter delta, route, identity, and no-RNG receipt', async () => {
     const address = solWorld(134);
     const fixture = await runtimeFixture();

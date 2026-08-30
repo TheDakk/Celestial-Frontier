@@ -218,6 +218,30 @@ async function receiptKeys(backend: StorageBackend): Promise<readonly string[]> 
 }
 
 describe('Arc 5 headless durable Field Scout action', () => {
+  it('commits the codec-canonical scout state when an unrelated veteran mining stamp moves', async () => {
+    const fixture = await runtimeFixture({
+      configureState(state) {
+        state.mined = [['veteran-clock-floor', NOW - 30 * 6e5]];
+        state.mineX = [['veteran-clock-floor', 1]];
+      },
+    });
+    const before = JSON.stringify(fixture.state);
+    const outcome = await commitArc5ScoutActionV1({
+      ...actionInput(fixture),
+      codecNow: NOW + 1,
+    });
+
+    expect(outcome).toMatchObject({
+      kind: 'committed', durability: 'committed', convergence: 'none',
+    });
+    expect(JSON.stringify(fixture.state)).toBe(before);
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.transaction.state).toEqual(outcome.transaction.saved.canonicalState);
+    expect(new Map(outcome.transaction.state.mined).get('veteran-clock-floor'))
+      .toBe(NOW + 1 - 30 * 6e5);
+    await fixture.runtime.release();
+  });
+
   it('switches one exact twin through five writes and reloads byte-identically', async () => {
     const fixture = await runtimeFixture();
     const beforeState = JSON.stringify(fixture.state);
@@ -436,6 +460,7 @@ describe('Arc 5 headless durable Field Scout action', () => {
           receiptOrdinal: number;
           draft: SaveStateV2;
           extensions: V5Extensions;
+          canonicalizeState: (state: SaveStateV2) => SaveStateV2;
         }>) => Readonly<{
           state: SaveStateV2;
           extensionWrites: readonly unknown[];
@@ -446,6 +471,9 @@ describe('Arc 5 headless durable Field Scout action', () => {
           receiptOrdinal: 0,
           draft: fixture.state,
           extensions: fixture.runtime.extensions,
+          canonicalizeState: (state) => prepareV5SaveWrite(
+            { state, extensions: {} }, REGISTRY, input.codecNow,
+          ).canonicalState,
         });
         return {
           kind: 'committed' as const,

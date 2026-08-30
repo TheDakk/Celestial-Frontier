@@ -235,6 +235,14 @@ function arc3ActionBindingErrors(source: string): string[] {
     || !generic.includes('JSON.stringify(outcome.state) !== JSON.stringify(outcome.saved.canonicalState)')) {
     errors.push('Arc 3 postcommit verifier omits its exact runtime checkpoint');
   }
+  if (!generic.includes(
+    'derive: ({ draft, extensions, activePlayMs, receiptOrdinal, canonicalizeState }) => {',
+  )
+    || !generic.includes('plannedHolder.value = Object.freeze({')
+    || !generic.includes('state: canonicalizeState(derived.derivation.state),')
+    || !generic.includes('state: derived.derivation.state,')) {
+    errors.push('Arc 3 must retain a codec-canonical expected state while committing the raw derivation');
+  }
   if ((source.match(/await runtime\.commitAction\(\{/g) ?? []).length !== 1) {
     errors.push('All four Arc 3 operations must share the sole commitAction call');
   }
@@ -544,6 +552,28 @@ describe('shared Arc 2/Arc 3 product-action coordinator', () => {
   });
 
   it('negative-controls action-specific verifier selection and post-durable publication', () => {
+    const rawExpectedState = replaceInSourceSectionExact(
+      mainSource,
+      'async function commitArc3EngineeringAction(',
+      '\nasync function mineCurrentSurface()',
+      '            state: canonicalizeState(derived.derivation.state),',
+      '            state: derived.derivation.state,',
+    );
+    expect(arc3ActionBindingErrors(rawExpectedState)).toContain(
+      'Arc 3 must retain a codec-canonical expected state while committing the raw derivation',
+    );
+
+    const canonicalizedCommitCandidate = replaceInSourceSectionExact(
+      mainSource,
+      'async function commitArc3EngineeringAction(',
+      '\nasync function mineCurrentSurface()',
+      '            state: derived.derivation.state,',
+      '            state: canonicalizeState(derived.derivation.state),',
+    );
+    expect(arc3ActionBindingErrors(canonicalizedCommitCandidate)).toContain(
+      'Arc 3 must retain a codec-canonical expected state while committing the raw derivation',
+    );
+
     const weakMineVerifier = replaceInSourceSectionExact(
       mainSource,
       'async function mineCurrentSurface()',
