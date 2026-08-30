@@ -20,13 +20,37 @@ const canonicalJson = (value) => {
   }
   return JSON.stringify(value);
 };
-const legacyProductDigest = (raw) => {
+/* The compatibility writer advances one wall-clock anchor plus exactly two
+   bounded cooldown-stamp families. Encode those stamps as ages from `at` and
+   retain every other field exactly—including complete saved-route geometry
+   and every Atlas `where`. The independently derived expected digest can
+   therefore tolerate clock passage without tolerating route/product drift. */
+export const legacyPostBootProductDigest = (raw) => {
   if (typeof raw !== 'string') return null;
   try {
     const state = JSON.parse(raw);
     if (!state || typeof state !== 'object' || Array.isArray(state)) return null;
-    delete state.at; // export clock is transaction metadata, not progression product state
+    if (!Number.isSafeInteger(state.at) || state.at < 0) return null;
+    const at = state.at;
+    state.at = 0;
+    if (!Array.isArray(state.conq) || !state.conq.every((entry) => Array.isArray(entry)
+      && entry.length === 2 && entry[1] && typeof entry[1] === 'object'
+      && !Array.isArray(entry[1]) && Number.isSafeInteger(entry[1].t)
+      && entry[1].t >= 0 && entry[1].t <= at)) return null;
+    state.conq = state.conq.map(([key, value]) => [key, { ...value, t: at - value.t }]);
+    if (!Array.isArray(state.minedw) || !state.minedw.every((entry) => Array.isArray(entry)
+      && entry.length === 2 && Number.isSafeInteger(entry[1])
+      && entry[1] >= 0 && entry[1] <= at)) return null;
+    state.minedw = state.minedw.map(([key, stamp]) => [key, at - stamp]);
     return createHash('sha256').update(canonicalJson(state)).digest('hex');
+  } catch { return null; }
+};
+
+const legacyCodecClock = (raw) => {
+  if (typeof raw !== 'string') return null;
+  try {
+    const value = JSON.parse(raw)?.at;
+    return Number.isSafeInteger(value) && value >= 0 ? value : null;
   } catch { return null; }
 };
 
@@ -50,93 +74,264 @@ export function sliceScreenshotInventoryLine() {
 
 const exactJson = (left, right) => canonicalJson(left) === canonicalJson(right);
 
-/**
- * A whole-expedition replacement owns an ordinal-zero boundary, but boot may
- * immediately append one independently expected aggregate-progression
- * receipt. This assessor never chooses that branch from the observed ledger:
- * the fixture-owned expectation decides `current` versus `ready` first.
- */
-export function assessF4ReplacementOutcome({
-  staged, replacement, reset, outcome, after, productStable, expectation,
+const exactF4OldReceiptFixture = (staged) => staged?.ordinal === 1
+  && exactJson(staged?.receiptKeys, ['receipt:0'])
+  && staged?.receiptRows?.length === 1
+  && staged.receiptRows[0]?.ordinal === 0
+  && staged.receiptRows[0]?.kind === 'slice-smoke-old-expedition'
+  && staged.receiptRows[0]?.witness === 'old-expedition:0';
+
+/** Everything in this assessment is available before import. A malformed
+ * staged receipt is therefore just as terminal as a failed stage or tracer
+ * arm and must not be deferred until after replacement mutates the source. */
+export function assessF4ReplacementSetup({
+  heartbeatQuiescence, documentToken, stageStarted, traceArmed, staged,
 }) {
+  const reasons = [];
+  if (!nonEmptyString(documentToken)
+    || heartbeatQuiescence?.schema !== 'cf-v2-f4-heartbeat-quiescence/v1'
+    || heartbeatQuiescence?.documentToken !== documentToken
+    || heartbeatQuiescence?.wasRunning !== true
+    || heartbeatQuiescence?.stopped !== true
+    || heartbeatQuiescence?.cycleSettled !== true) {
+    reasons.push('heartbeat quiescence');
+  }
+  if (stageStarted !== true) reasons.push('old receipt stage');
+  if (traceArmed !== true) reasons.push('native replacement tracer arm');
+  if (!exactF4OldReceiptFixture(staged)) reasons.push('old receipt fixture');
+  return { ok: reasons.length === 0, reasons };
+}
+
+/** Start a side-effecting Slice continuation only after its immediately
+ * preceding F4 authority assessment is green. Keeping the decision here lets
+ * the browser-free contract execute the red path and prove the callback was
+ * never invoked; callers still own the terminal finding and throw. */
+export function beginF4GreenContinuation(assessment, continuation) {
+  if (typeof continuation !== 'function') {
+    throw new TypeError('F4 continuation must be a function');
+  }
+  if (assessment?.ok !== true) return Object.freeze({ kind: 'blocked' });
+  return Object.freeze({ kind: 'started', value: continuation() });
+}
+
+const F4_REPLACEMENT_NATIVE_CALLS = Object.freeze([
+  ['get', 'meta', 'f3:revision', 1],
+  ['get', 'meta', 'f3:lease:active-play', 1],
+  ['clear', 'receipts', null, 0],
+  ['put', 'player', 'v5:player', 2],
+  ['put', 'creatures', 'v5:creatures', 2],
+  ['put', 'catalog', 'v5:catalog', 2],
+  ['put', 'inventory', 'v5:inventory', 2],
+  ['put', 'settings', 'v5:settings', 2],
+  ['put', 'meta', 'save', 2],
+  ['delete', 'meta', 'save_bak', 1],
+  ['put', 'journal', 'v5:pre-migration-v4', 2],
+  ['put', 'journal', 'v5:migration', 2],
+  ['put', 'meta', 'f3:revision', 2],
+]);
+
+const parsedRecord = (raw) => {
+  if (typeof raw !== 'string') return null;
+  try {
+    const value = JSON.parse(raw);
+    return value && typeof value === 'object' && !Array.isArray(value) ? value : null;
+  } catch { return null; }
+};
+
+/** Validate one exact native whole-expedition replacement transaction. The
+ * tracer publishes only from the transaction lifecycle; this assessor then
+ * binds its complete request ledger back to the immutable portable fixture. */
+export function assessF4NativeReplacementTrace({ staged, replacement, expectation }) {
   const reasons = [];
   const add = (reason, condition) => { if (!condition) reasons.push(reason); };
   const expectedStores = [
     'catalog', 'creatures', 'inventory', 'journal',
     'meta', 'player', 'receipts', 'settings',
   ];
-  const expectedShape = expectation && typeof expectation === 'object'
-    && expectation.schema === 'cf-v2-f4-replacement-expectation/v1'
-    && hexDigest(expectation.fixtureSha256)
-    && hexDigest(expectation.sourceLegacySha256)
-    && hexDigest(expectation.successorLegacyProductSha256)
-    && (expectation.preparation === 'current' || expectation.preparation === 'ready')
-    && Array.isArray(expectation.sourceUnlockedIds)
-    && Array.isArray(expectation.addedAchievementIds)
-    && Array.isArray(expectation.successorUnlockedIds)
-    && Number.isSafeInteger(expectation.priorBestRankIndex)
-    && Number.isSafeInteger(expectation.nextBestRankIndex)
-    && Number.isSafeInteger(expectation.receiptFreeBootCommits)
-    && expectation.receiptFreeBootCommits >= 0
-    && exactJson(expectation.successorUnlockedIds, [
-      ...expectation.sourceUnlockedIds, ...expectation.addedAchievementIds,
-    ])
-    && (expectation.preparation === 'current'
-      ? expectation.addedAchievementIds.length === 0
-        && expectation.priorBestRankIndex === expectation.nextBestRankIndex
-        && expectation.progressionWitness === null
-      : typeof expectation.progressionWitness === 'string'
-        && /^arc9p1:[0-9a-f]{64}$/u.test(expectation.progressionWitness));
-  add('fixture authority', expectedShape === true);
-
-  add('old receipt fixture', staged?.ordinal === 1
-    && exactJson(staged?.receiptKeys, ['receipt:0'])
-    && staged?.receiptRows?.length === 1
-    && staged.receiptRows[0]?.ordinal === 0
-    && staged.receiptRows[0]?.kind === 'slice-smoke-old-expedition'
-    && staged.receiptRows[0]?.witness === 'old-expedition:0');
-
-  add('native atomic clear', replacement?.schema === 'cf-v2-f4-replacement-native/v2'
-    && replacement?.fixtureSha256 === expectation?.fixtureSha256
-    && replacement?.clearCalls === 1
-    && replacement?.store === 'receipts'
+  add('transaction lifecycle', replacement?.schema === 'cf-v2-f4-replacement-native/v3'
+    && replacement?.status === 'complete'
+    && replacement?.candidateCount === 1
+    && replacement?.transactionError === false
     && replacement?.mode === 'readwrite'
-    && replacement?.nativeRequest === true
-    && exactJson([...(replacement?.stores ?? [])].sort(), expectedStores)
-    && replacement?.putRequestsNative === true);
+    && exactJson(replacement?.stores, expectedStores)
+    && replacement?.fixtureSha256 === expectation?.fixtureSha256);
 
-  add('replacement boundary', Number.isSafeInteger(replacement?.replacementRevision)
-    && replacement.replacementRevision >= 1
+  const calls = Array.isArray(replacement?.calls) ? replacement.calls : [];
+  add('native request ledger', calls.length === F4_REPLACEMENT_NATIVE_CALLS.length
+    && calls.every((call, index) => {
+      const expected = F4_REPLACEMENT_NATIVE_CALLS[index];
+      return call?.method === expected[0]
+        && call?.store === expected[1]
+        && call?.key === expected[2]
+        && call?.argumentCount === expected[3]
+        && call?.keyPath === null
+        && call?.autoIncrement === false
+        && exactJson(call?.indexNames, [])
+        && call?.nativeRequest === true
+        && call?.requestSucceeded === true;
+    }));
+
+  const predecessorRevisionRaw = calls[0]?.result;
+  const leaseRaw = calls[1]?.result;
+  const finalRevisionRaw = calls[12]?.value;
+  const predecessorRevision = typeof predecessorRevisionRaw === 'string'
+    && /^(0|[1-9]\d*)$/u.test(predecessorRevisionRaw)
+    ? Number(predecessorRevisionRaw) : null;
+  const finalRevision = typeof finalRevisionRaw === 'string'
+    && /^(0|[1-9]\d*)$/u.test(finalRevisionRaw)
+    ? Number(finalRevisionRaw) : null;
+  const lease = parsedRecord(leaseRaw);
+  add('checked predecessor fences', predecessorRevision === staged?.revision
+    && finalRevision === predecessorRevision + 1
+    && replacement?.replacementRevision === finalRevision
+    && lease !== null
+    && exactKeys(lease, ['schema', 'held', 'ownerId', 'token', 'heartbeat'])
+    && lease.schema === 1 && lease.held === true
+    && nonEmptyString(lease.ownerId) && nonEmptyString(lease.token)
+    && Number.isSafeInteger(lease.heartbeat) && lease.heartbeat >= 0);
+
+  const playerRow = parsedRecord(calls[3]?.value);
+  const creaturesRow = parsedRecord(calls[4]?.value);
+  const catalogRow = parsedRecord(calls[5]?.value);
+  const inventoryRow = parsedRecord(calls[6]?.value);
+  const settingsRow = parsedRecord(calls[7]?.value);
+  const legacyRaw = calls[8]?.value;
+  const snapshot = parsedRecord(calls[10]?.value);
+  const migration = parsedRecord(calls[11]?.value);
+  const fixtureRaw = snapshot?.raw;
+  const fixture = parsedRecord(fixtureRaw);
+  const rows = [playerRow, creaturesRow, catalogRow, inventoryRow, settingsRow];
+  const segments = ['player', 'creatures', 'catalog', 'inventory', 'settings'];
+  const rowShapes = rows.every((row, index) => row !== null
+    && row.schema === 5 && row.segment === segments[index]
+    && exactKeys(row, index === 3
+      ? ['schema', 'segment', 'data', 'extensions']
+      : ['schema', 'segment', 'data'])
+    && row.data && typeof row.data === 'object' && !Array.isArray(row.data));
+  add('replacement rows', rowShapes
+    && playerRow !== null
+    && !Object.prototype.hasOwnProperty.call(playerRow, 'extensions')
     && replacement?.playerSchema === 5
-    && replacement?.carrierVersion === 1
-    && Number.isSafeInteger(replacement?.replacementSeed)
-    && replacement.replacementSeed >= 0 && replacement.replacementSeed <= 0xFFFF_FFFF
-    && replacement?.replacementOrdinal === 0
-    && exactJson(replacement?.replacementDraws, {})
-    && sha256Text(replacement?.legacyRaw) === expectation?.sourceLegacySha256);
+    && replacement?.authorityCarrierPresent === false
+    && replacement?.carrierVersion === null);
 
+  const merged = {};
+  let duplicateField = false;
+  if (rowShapes) {
+    for (const row of rows) {
+      for (const [key, value] of Object.entries(row.data)) {
+        if (Object.prototype.hasOwnProperty.call(merged, key)) duplicateField = true;
+        merged[key] = value;
+      }
+    }
+  }
+  add('fixture-bound replacement product', !duplicateField
+    && typeof legacyRaw === 'string'
+    && sha256Text(legacyRaw) === expectation?.sourceLegacySha256
+    && replacement?.legacyRaw === legacyRaw
+    && fixture !== null
+    && sha256Text(fixtureRaw) === expectation?.fixtureSha256
+    && fixture?.legacyV4 === legacyRaw
+    && exactJson(inventoryRow?.extensions, fixture?.extensions?.inventory)
+    && exactJson(merged, parsedRecord(legacyRaw)));
+  add('replacement journal', snapshot !== null
+    && exactKeys(snapshot, ['schema', 'sourceSchema', 'raw'])
+    && snapshot.schema === 5 && snapshot.sourceSchema === 5
+    && migration !== null
+    && exactJson(migration, {
+      schema: 5,
+      kind: 'trusted-portable-v5-replacement',
+      phase: 'complete',
+      snapshotKey: 'v5:pre-migration-v4',
+      codec: 'legacy-v4-split-v1',
+    }));
+  return { ok: reasons.length === 0, reasons };
+}
+
+const f4ReplacementExpectationShape = (expectation) => expectation
+  && typeof expectation === 'object'
+  && expectation.schema === 'cf-v2-f4-replacement-expectation/v2'
+  && hexDigest(expectation.fixtureSha256)
+  && hexDigest(expectation.sourceLegacySha256)
+  && hexDigest(expectation.successorProductProjectionSha256)
+  && (expectation.preparation === 'current' || expectation.preparation === 'ready')
+  && Array.isArray(expectation.sourceUnlockedIds)
+  && Array.isArray(expectation.addedAchievementIds)
+  && Array.isArray(expectation.successorUnlockedIds)
+  && Number.isSafeInteger(expectation.priorBestRankIndex)
+  && Number.isSafeInteger(expectation.nextBestRankIndex)
+  && Number.isSafeInteger(expectation.receiptFreeBootCommits)
+  && expectation.receiptFreeBootCommits >= 0
+  && exactJson(expectation.successorUnlockedIds, [
+    ...expectation.sourceUnlockedIds, ...expectation.addedAchievementIds,
+  ])
+  && (expectation.preparation === 'current'
+    ? expectation.addedAchievementIds.length === 0
+      && expectation.priorBestRankIndex === expectation.nextBestRankIndex
+      && expectation.progressionWitness === null
+    : typeof expectation.progressionWitness === 'string'
+      && /^arc9p1:[0-9a-f]{64}$/u.test(expectation.progressionWitness));
+
+const f4ReplacementPrefixFacts = (expectation, expectedShape) => {
   const branch = expectedShape === true ? expectation.preparation : null;
   const expectedPrefix = branch === 'ready' ? 1 : 0;
-  const expectedResetKeys = branch === 'ready' ? ['receipt:0'] : [];
   const expectedResetRows = branch === 'ready' ? [{
     ordinal: 0,
     kind: 'arc9-progression-refresh-v1',
     witness: expectation.progressionWitness,
   }] : [];
+  return {
+    branch,
+    expectedPrefix,
+    expectedResetRows,
+    expectedResetKeys: expectedResetRows.map(({ ordinal }) => `receipt:${ordinal}`),
+    expectedBootCommits: (expectation?.receiptFreeBootCommits ?? -1) + expectedPrefix,
+  };
+};
+
+/**
+ * Validate every replacement/reset fact that must be authoritative before the
+ * diagnostics-only Smoke outcome is allowed to mutate the new expedition.
+ * The fixture—not the observed receipt ledger—selects the current/ready boot
+ * branch, and this prefix owns its own pre-outcome wall-clock window.
+ */
+export function assessF4ReplacementPrefix({
+  staged, replacement, reset, codecWindow, expectation,
+}) {
+  const reasons = [];
+  const add = (reason, condition) => {
+    if (!condition && !reasons.includes(reason)) reasons.push(reason);
+  };
+  const expectedShape = f4ReplacementExpectationShape(expectation);
+  add('fixture authority', expectedShape === true);
+
+  add('old receipt fixture', exactF4OldReceiptFixture(staged));
+
+  const nativeReplacement = assessF4NativeReplacementTrace({ staged, replacement, expectation });
+  add('native atomic clear', nativeReplacement.ok);
+  add('replacement boundary', Number.isSafeInteger(replacement?.replacementRevision)
+    && replacement.replacementRevision >= 1
+    && replacement?.playerSchema === 5
+    && replacement?.authorityCarrierPresent === false
+    && replacement?.carrierVersion === null
+    && sha256Text(replacement?.legacyRaw) === expectation?.sourceLegacySha256);
+
+  const {
+    branch, expectedPrefix, expectedResetKeys, expectedResetRows, expectedBootCommits,
+  } = f4ReplacementPrefixFacts(expectation, expectedShape);
   add('branch selection', branch !== null
     && reset?.raw?.ordinal === expectedPrefix
     && reset?.state?.persistence?.runtime?.sessionOrdinal === expectedPrefix
     && exactJson(reset?.raw?.receiptKeys, expectedResetKeys)
     && exactJson(reset?.raw?.receiptRows, expectedResetRows));
-
-  const expectedBootCommits = (expectation?.receiptFreeBootCommits ?? -1) + expectedPrefix;
   add('boot revision and RNG', Number.isSafeInteger(reset?.raw?.revision)
     && reset.raw.revision === replacement?.replacementRevision + expectedBootCommits
     && reset?.state?.persistence?.runtime?.revision === reset.raw.revision
     && reset?.state?.persistence?.runtime?.commits === expectedBootCommits
-    && reset?.raw?.seed === replacement?.replacementSeed
+    && Number.isSafeInteger(reset?.raw?.seed)
+    && reset.raw.seed >= 0 && reset.raw.seed <= 0xFFFF_FFFF
     && reset?.state?.persistence?.runtime?.sessionSeed === reset.raw.seed
-    && exactJson(reset?.raw?.draws, replacement?.replacementDraws)
+    && exactJson(reset?.raw?.draws, {})
     && exactJson(reset?.state?.persistence?.runtime?.sessionDraws, reset?.raw?.draws));
 
   const resetUnlocked = reset?.state?.save?.unlocked;
@@ -147,11 +342,59 @@ export function assessF4ReplacementOutcome({
     && (branch === 'current'
       ? reset?.state?.persistence?.lastOutcome !== `arc9-progression-committed:${reset?.raw?.revision}`
       : reset?.state?.persistence?.lastOutcome === `arc9-progression-committed:${reset?.raw?.revision}`));
-  add('unrelated replacement state', legacyProductDigest(reset?.raw?.legacyRaw)
-    === expectation?.successorLegacyProductSha256);
+  const resetCodecClock = legacyCodecClock(reset?.raw?.legacyRaw);
+  add('codec clock', Number.isSafeInteger(codecWindow?.startedAt)
+    && Number.isSafeInteger(codecWindow?.endedAt)
+    && codecWindow.startedAt >= 0
+    && codecWindow.endedAt >= codecWindow.startedAt
+    && resetCodecClock !== null
+    && resetCodecClock >= codecWindow.startedAt
+    && resetCodecClock <= codecWindow.endedAt);
+  add('unrelated replacement state', legacyPostBootProductDigest(reset?.raw?.legacyRaw)
+    === expectation?.successorProductProjectionSha256);
   add('boot presentation silence', reset?.ceremony?.toastOn === false
     && reset?.ceremony?.toastSerial === 0
     && reset?.ceremony?.queuedFx === 0);
+  return { ok: reasons.length === 0, reasons };
+}
+
+/**
+ * A whole-expedition replacement owns an ordinal-zero boundary, but boot may
+ * immediately append one independently expected aggregate-progression
+ * receipt. The already-green prefix is re-evaluated from the immutable bundle
+ * before the exact Smoke receipt and durable successor are accepted.
+ */
+export function assessF4ReplacementOutcome({
+  staged, replacement, reset, outcome, after, productStable, codecWindow, expectation,
+}) {
+  const prefix = assessF4ReplacementPrefix({
+    staged,
+    replacement,
+    reset,
+    codecWindow: {
+      startedAt: codecWindow?.startedAt,
+      endedAt: codecWindow?.prefixEndedAt,
+    },
+    expectation,
+  });
+  const reasons = [...prefix.reasons];
+  const add = (reason, condition) => {
+    if (!condition && !reasons.includes(reason)) reasons.push(reason);
+  };
+  const expectedShape = f4ReplacementExpectationShape(expectation);
+  const {
+    expectedPrefix, expectedResetRows, expectedBootCommits,
+  } = f4ReplacementPrefixFacts(expectation, expectedShape);
+
+  const resetCodecClock = legacyCodecClock(reset?.raw?.legacyRaw);
+  const afterCodecClock = legacyCodecClock(after?.raw?.legacyRaw);
+  add('codec clock', Number.isSafeInteger(codecWindow?.prefixEndedAt)
+    && Number.isSafeInteger(codecWindow?.endedAt)
+    && codecWindow.endedAt >= codecWindow.prefixEndedAt
+    && resetCodecClock !== null && afterCodecClock !== null
+    && afterCodecClock >= resetCodecClock
+    && afterCodecClock >= codecWindow.prefixEndedAt
+    && afterCodecClock <= codecWindow.endedAt);
 
   const smokeOrdinal = expectedPrefix;
   add('real outcome receipt', outcome?.kind === 'committed'
@@ -183,7 +426,8 @@ export function assessF4ReplacementOutcome({
     && exactJson(after?.raw?.receiptRows, expectedFinalRows)
     && after?.raw?.draws?.['diagnostics.slice-smoke.f4'] === 1
     && after?.state?.persistence?.runtime?.sessionDraws?.['diagnostics.slice-smoke.f4'] === 1
-    && legacyProductDigest(after?.raw?.legacyRaw) === expectation?.successorLegacyProductSha256
+    && legacyPostBootProductDigest(after?.raw?.legacyRaw)
+      === expectation?.successorProductProjectionSha256
     && after?.state?.persistence?.lastOutcome === `outcome-committed:${after?.raw?.revision}`);
   add('product changed', productStable === true);
   return { ok: reasons.length === 0, reasons };

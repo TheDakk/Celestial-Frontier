@@ -211,21 +211,33 @@
 > `[HUMAN]` statuses remain unchanged; one CF1 release row was refreshed. Fresh changed-head
 > Compendium certification and Slice → Glass → Recovery remain pending; no unchanged retry exists.
 
-> **2026-08-30 exact `ae2a002…` EXEC evidence boundary:** Compendium passed 78/78 once/no-retry;
-> the exact successor Slice stopped terminal red once/no-retry with eight instrument scopes, so
-> Glass and Recovery did not run. Current `[EXEC]` acceptance does not require an atomically replaced
-> expedition to remain receipt-empty after the replacement document boots. Instead it independently
-> projects the imported canonical state: a current projection gives the judged outcome ordinal zero;
-> a ready projection permits exactly one fixed-point, aggregate-only, silent Arc 9 boot receipt at
-> ordinal zero and gives the judged outcome ordinal one. Before either branch, bind the fixture's
-> one expected receipt-free product/bootstrap commit at replacement revision +1 without ordinal
-> advance; ready Arc 9 is therefore replacement revision +2. Exact clear, revision, seed/draw, receipt,
-> delta, unrelated-state and adjacency controls are mandatory. Atlas row identity and the nested
-> Travel action are separate criteria; their trusted native pointer/keydown receipt must bind exact
-> action/row identity before a navigation waiter starts, and a red prerequisite must stop dependent
-> judgment without a timeout cascade. Rendered Guide mutation controls must operate on current DOM
-> or force fresh publication; source-only mutation cannot satisfy a browser outcome. This repair is
-> browser-uncertified and changes no `[HUMAN]` status.
+> **2026-08-30 exact `e4f5af4…` EXEC evidence boundary and current local repair:** exact signed clean
+> source `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium 78/78 once/no-retry, then
+> unchanged-source Slice `20260830-pr35-slice-oracle-e4f5af4bf628-slice-certification` stopped
+> terminal red once/no-retry with four ordered scopes: `f4-replacement-outcome`,
+> `arc-3-mine-action`, `arc-3-mine-action-controls-failed`, and the dependent Survey `harness`
+> timeout. Glass and Recovery did not run and have no successor authority. Immutable gzip carriers
+> and `pr35-e4f5-slice-oracle-evidence-replay.test.ts` retain that exact PASS → red chronology;
+> the earlier `ae2a002…` eight-scope evidence remains separately historical and is never relabelled.
+>
+> Current changed-source `[EXEC]` acceptance replaces the lossy replacement summary with
+> `cf-v2-f4-replacement-native/v3`: every readwrite first observed before replacement completion is
+> inventoried and exactly one eight-store replacement may exist. The witness then freezes before the
+> required later lease-release CAS. It must expose every available object-store request method and
+> index access, then satisfy the exact 13-call get/clear/put/delete order, explicit keys/argument
+> counts, empty index inventories,
+> keyPath/auto-increment shape, native request settlement, predecessor revision/lease fences, rows,
+> fixture/legacy mirrors and journals. Hidden add/cursor/index work and successful pre-completion
+> subset/superset side transactions are red; the post-completion lease-release control stays green.
+> `cf-v2-f4-replacement-expectation/v2` independently selects the
+> current or ready prefix. Its strict production-codec projection SHA-256 is
+> `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`: only the export anchor and
+> exact conquest/mined-world ages may move with the bounded codec clock; route, Atlas and all other
+> product fields remain exact. Red setup stops before import, red prefix stops before its diagnostic
+> outcome, and red outcome/control stops hide and Arc 3. Focused F4 contract and evidence-replay
+> tests also bind a stopped/settled exact-document heartbeat before staging/arming, eliminating the
+> timer race. This is browser-uncertified
+> instrument repair only and changes no Gate or `[HUMAN]` status.
 
 > **2026-08-29 current local gameplay-evidence overlay:** Arc 5 now has four player-live exact-
 > instance writers—Feed, one-draw nonlethal Breed with active-play Recovery, identity-only Rename,
@@ -495,6 +507,13 @@ ever substitute for a person, and it is deliberately expensive.
 | `[EXEC-TODO]` | Every legacy outcome roll uses that authority through its real action | The exact 24-site audit classifies 14 outcome and 10 presentation calls. Arc 4 capture consumes isolated persisted `captureCandidate` then `captureSuccess` domains after pre-draw certification. Arc 5 Breed pre-certifies both successors before one persisted `breedOutcome`; Feed, Rename and Scout are no-RNG transactions. Arc 6 combat seals the deterministic transcript and settlement before its receipt/CAS rather than consuming an uncontrolled claim-time roll. Care/taste/poison, training outcomes and the remaining audited writers stay open. |
 
 ## Gate C — save safety
+
+> **Current local F4 replacement-evidence semantics:** whole-save replacement proof comes from the
+> complete settled native trace-v3 transaction, not inferred summary fields. Expectation-v2 binds
+> the independently projected current/ready boot prefix and strict
+> `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` codec-clock product
+> projection; malformed/split/aborted requests, clock escape, route/product drift and successor
+> cascades remain red. This adds no real-veteran evidence and does not change Gate C's HUMAN blocker.
 
 | | Criterion | Evidence |
 |---|---|---|

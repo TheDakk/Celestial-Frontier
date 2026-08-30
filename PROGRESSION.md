@@ -2,19 +2,28 @@
 
 > **2026-08-30 current replacement boot-catch-up clarification:** aggregate progression still owns
 > one receipt/F4 CAS and only the canonical achievement append plus monotonic `stats.bestRank`.
-> After import replacement, the exact fixture first owns one independently expected receipt-free
-> product/bootstrap revision without advancing the RNG ordinal. An independently projected `current` state then consumes no receipt; a
-> projected `ready` state legitimately uses the new expedition's ordinal-zero
-> `arc9-progression-refresh-v1` receipt before the document is published writable. Boot presentation
-> remains silent, the successor must be a fixed point, event-owned achievements remain excluded,
-> and every unrelated save field remains exact. The next product outcome owns ordinal zero or one
-> according to that independently selected branch—never according to an observed optional prefix.
-> For the retained fixture, replacement revision 8 becomes bootstrap revision 9, Arc 9 revision 10,
-> then Smoke revision 11.
+> Whole-expedition replacement first clears the old receipt history; the replacement document then
+> owns one independently expected receipt-free bootstrap without advancing ordinal. An independently
+> projected `current` state consumes no progression receipt. A projected `ready` state legitimately
+> commits the new expedition's silent ordinal-zero `arc9-progression-refresh-v1` fixed point before
+> publication, so the next judged outcome owns ordinal one. For the retained fixture the exact
+> sequence is replacement revision 8 → bootstrap 9 → Arc 9 revision 10 → Smoke revision 11.
 >
-> Exact `ae2a002…` passed Compendium 78/78 before its once-only Slice stopped red with eight
-> instrument findings, including the stale empty-ledger assumption above. No Glass or Recovery ran,
-> and no historical red has been relabelled as a browser PASS.
+> The fixture begins with `first`, `field10` and bounded unknown `fake`. Its exact aggregate-only
+> append is `hybrid`, `rare`, `crafter`, `geared`, `lastvein`, `cosmicfind`, `skimmer`, `event1`,
+> `event5`, `guard1`, `essence500`, `bred1`, `bredfail`, `feed5`, `feedfail`, `duel1`, `duelw1` and
+> `jumps5`; `stats.bestRank` remains 3 and the successor is a fixed point. The receipt witness remains
+> `arc9p1:a8f5961bf107300e280aa9cda8160e051e02ab691c80cda40eaf87642d4f62c9`. Event-owned
+> achievements remain excluded and every non-owned save field remains exact.
+>
+> Exact signed `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium 78/78 before its
+> once-only Slice stopped terminal red after 98,988 ms with four scopes. Its F4 finding came from an
+> obsolete native-boundary/raw cross-clock oracle, not aggregate policy or product failure. The
+> strict post-boot product projection is
+> `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`; it keeps the full
+> achievement append, route/Atlas repair and unrelated state exact while allowing only bounded
+> clock-age normalization. No achievement, rank, reward, save-schema or player-facing policy changed.
+> Glass and Recovery did not run, and the historical red remains FAIL.
 
 > **2026-08-30 current local canonical-successor + named-CF1 correction (supersedes narrower same-date
 > descriptions below where they differ):** progression-bearing product writers now verify their

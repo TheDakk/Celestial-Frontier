@@ -20,6 +20,8 @@ import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
 import {
+  assessF4ReplacementPrefix,
+  assessF4ReplacementSetup,
   assessF4ReplacementOutcome,
   assessInventoryActionActivation,
   assessInventoryDetailClose,
@@ -42,6 +44,7 @@ import {
   projectCompendiumFeedWebAudioGraph,
   selectArc5FeedFixtureBurnVerb,
   assessTrainingBusyRefusalPrecondition,
+  beginF4GreenContinuation,
   classifyCompendiumDetailReceipt,
   classifyForegroundServiceTurn,
   classifyForegroundServiceTurnReceipt,
@@ -870,22 +873,11 @@ const F4_REPLACEMENT_EXPECTATION = (() => {
   const successorUnlockedIds = Object.freeze([
     ...sourceUnlockedIds, ...addedAchievementIds,
   ]);
-  const successor = structuredClone(source);
-  successor.ach = [...successorUnlockedIds];
-  successor.br = 3;
-  delete successor.at;
-  const canonical = (value) => {
-    if (Array.isArray(value)) return `[${value.map(canonical).join(',')}]`;
-    if (value && typeof value === 'object') {
-      return `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonical(value[key])}`).join(',')}}`;
-    }
-    return JSON.stringify(value);
-  };
   const expectation = Object.freeze({
-    schema: 'cf-v2-f4-replacement-expectation/v1',
+    schema: 'cf-v2-f4-replacement-expectation/v2',
     fixtureSha256,
     sourceLegacySha256: createHash('sha256').update(sourceLegacyRaw).digest('hex'),
-    successorLegacyProductSha256: createHash('sha256').update(canonical(successor)).digest('hex'),
+    successorProductProjectionSha256: 'e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c',
     preparation: 'ready',
     sourceUnlockedIds,
     addedAchievementIds,
@@ -897,7 +889,8 @@ const F4_REPLACEMENT_EXPECTATION = (() => {
   });
   if (fixtureSha256 !== 'bf908135e38024ee5d11eb9e5811c23c1b2f6c79b8c8a9c9bfc81b94fe24c8a3'
     || expectation.sourceLegacySha256 !== '57e9d86d1847ab0bd7d8ba4579b2bfd5a51f9b65715fc1ef412db050a6fadd88'
-    || expectation.successorLegacyProductSha256 !== 'c332919c0697072dbeed7965a487f08fdea58039c122d45024002ed174693339'
+    || expectation.successorProductProjectionSha256
+      !== 'e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c'
     || JSON.stringify(source?.ach) !== JSON.stringify(sourceUnlockedIds)
     || source?.br !== expectation.priorBestRankIndex) {
     throw new Error('F4 replacement progression fixture authority drifted');
@@ -1277,34 +1270,59 @@ const STAGE_OLD_F4_RECEIPT_EXPRESSION = `(async()=>{const open=indexedDB.open('c
     tx.objectStore('receipts').put(JSON.stringify({ordinal:0,kind:'slice-smoke-old-expedition',witness:'old-expedition:0'}),'receipt:0');
     await done;return true}finally{db.close()}})()`;
 const ARM_F4_REPLACEMENT_TRACE_EXPRESSION = `(()=>{const key='cf_slice_f4_replacement_trace',proto=IDBObjectStore.prototype,
-  fixtureSha256=${JSON.stringify(F4_REPLACEMENT_EXPECTATION.fixtureSha256)};
-  localStorage.removeItem(key);if(window.__cfF4ClearPatch)return false;
-  const clearDescriptor=Object.getOwnPropertyDescriptor(proto,'clear'),putDescriptor=Object.getOwnPropertyDescriptor(proto,'put');
-  if(!clearDescriptor||typeof clearDescriptor.value!=='function'||!clearDescriptor.writable
-    ||!putDescriptor||typeof putDescriptor.value!=='function'||!putDescriptor.writable)return false;
-  const originalClear=clearDescriptor.value,originalPut=putDescriptor.value,
-    update=(fields)=>{const prior=JSON.parse(localStorage.getItem(key)||'null')||{};
-      localStorage.setItem(key,JSON.stringify({...prior,schema:'cf-v2-f4-replacement-native/v2',fixtureSha256,...fields}));};
-  Object.defineProperty(proto,'clear',{...clearDescriptor,value:function(){const request=Reflect.apply(originalClear,this,arguments);
-    if(this?.name==='receipts'){const prior=JSON.parse(localStorage.getItem(key)||'null'),tx=this.transaction;
-      update({clearCalls:(prior?.clearCalls||0)+1,store:this.name,mode:tx?.mode||null,
-        stores:tx?[...tx.objectStoreNames]:[],nativeRequest:request instanceof IDBRequest});}
-    return request;}});
-  Object.defineProperty(proto,'put',{...putDescriptor,value:function(){const request=Reflect.apply(originalPut,this,arguments),
-    tx=this?.transaction,names=tx?[...tx.objectStoreNames]:[],prior=JSON.parse(localStorage.getItem(key)||'null')||{},fields={};
-    if(tx?.mode==='readwrite'&&names.includes('receipts')){
-      fields.putRequestsNative=(prior.putRequestsNative??true)&&(request instanceof IDBRequest);
-      const value=arguments[0],rowKey=arguments[1];
-      if(this.name==='meta'&&rowKey==='f3:revision')fields.replacementRevision=Number(value);
-      if(this.name==='meta'&&rowKey==='save')fields.legacyRaw=typeof value==='string'?value:null;
-      if(this.name==='player'&&rowKey==='v5:player')try{const row=JSON.parse(String(value)),carrier=row?.extensions?.['f4.authority'],
-        authority=carrier?JSON.parse(carrier.json):null;Object.assign(fields,{playerSchema:row?.schema??null,
-          carrierVersion:carrier?.version??null,replacementSeed:authority?.sessionRng?.seed??null,
-          replacementOrdinal:authority?.sessionRng?.ordinal??null,replacementDraws:authority?.sessionRng?.draws??null});}catch{}
-      update(fields);
-    }
-    return request;}});
-  window.__cfF4ClearPatch=true;return true})()`;
+  fixtureSha256=${JSON.stringify(F4_REPLACEMENT_EXPECTATION.fixtureSha256)},
+  expectedStores=['catalog','creatures','inventory','journal','meta','player','receipts','settings'];
+  localStorage.removeItem(key);if(window.__cfF4ReplacementTracePatch)return false;
+  const requiredMethods=['get','clear','put','delete'],excludedMethods=new Set(['constructor','createIndex','deleteIndex']),
+    methodNames=Object.getOwnPropertyNames(proto).filter((name)=>!excludedMethods.has(name)
+      &&typeof Object.getOwnPropertyDescriptor(proto,name)?.value==='function'),
+    descriptors=Object.fromEntries(methodNames.map((name)=>[name,Object.getOwnPropertyDescriptor(proto,name)]));
+  if(requiredMethods.some((name)=>!methodNames.includes(name))
+    ||Object.values(descriptors).some((descriptor)=>!descriptor||(!descriptor.writable&&!descriptor.configurable)))return false;
+  const originals=Object.fromEntries(Object.entries(descriptors).map(([name,descriptor])=>[name,descriptor.value])),
+    candidates=new WeakMap(),sameExpectedStores=(stores)=>JSON.stringify([...stores].sort())===JSON.stringify(expectedStores),
+    traceState={observedCount:0,frozen:false},
+    finish=(candidate,status)=>{if(candidate.finalized)return;candidate.finalized=true;
+      if(traceState.frozen)return;
+      if(status==='complete'&&sameExpectedStores(candidate.stores))traceState.frozen=true;
+      localStorage.setItem(key,JSON.stringify({...candidate,status,candidateCount:traceState.observedCount,
+        finalized:undefined}));},
+    candidateFor=(store)=>{const tx=store?.transaction;
+      if(!tx||tx.mode!=='readwrite'||traceState.frozen)return null;
+      let candidate=candidates.get(tx);if(candidate)return candidate;
+      candidate={schema:'cf-v2-f4-replacement-native/v3',fixtureSha256,mode:tx.mode,
+        stores:[...tx.objectStoreNames].sort(),transactionError:false,calls:[],replacementRevision:null,
+        legacyRaw:null,playerSchema:null,authorityCarrierPresent:null,carrierVersion:null,
+        observedOrdinal:traceState.observedCount++,finalized:false};
+      candidates.set(tx,candidate);
+      tx.addEventListener('error',()=>{candidate.transactionError=true});
+      tx.addEventListener('abort',()=>finish(candidate,'aborted'),{once:true,capture:true});
+      tx.addEventListener('complete',()=>finish(candidate,'complete'),{once:true,capture:true});
+      return candidate;},
+    record=(store,method,args,request)=>{const candidate=candidateFor(store);if(!candidate)return;
+      const rawKey=method==='clear'?null:method==='put'?args[1]:args[0],value=method==='put'?args[0]:undefined,
+        call={method,store:store.name,key:rawKey===undefined||rawKey===null?null:String(rawKey),
+          argumentCount:args.length,keyPath:store.keyPath===null?null:String(store.keyPath),
+          autoIncrement:store.autoIncrement===true,indexNames:store.indexNames?[...store.indexNames].map(String).sort():null,
+          nativeRequest:request instanceof IDBRequest,
+          requestSucceeded:null,...(method==='put'?{value:typeof value==='string'?value:null}:{})};
+      candidate.calls.push(call);
+      if(call.nativeRequest){request.addEventListener('success',()=>{call.requestSucceeded=true;
+          if(method==='get')call.result=request.result===undefined?null:String(request.result)} ,{once:true});
+        request.addEventListener('error',()=>{call.requestSucceeded=false},{once:true});}
+      else call.requestSucceeded=false;
+      if(method==='put'&&store.name==='meta'&&call.key==='f3:revision')candidate.replacementRevision=Number(value);
+      if(method==='put'&&store.name==='meta'&&call.key==='save')candidate.legacyRaw=typeof value==='string'?value:null;
+      if(method==='put'&&store.name==='player'&&call.key==='v5:player')try{const row=JSON.parse(String(value)),
+        extensionsOwn=Object.prototype.hasOwnProperty.call(row,'extensions'),carrier=extensionsOwn?row.extensions?.['f4.authority']:undefined;
+        candidate.playerSchema=row?.schema??null;candidate.authorityCarrierPresent=carrier!==undefined;
+        candidate.carrierVersion=carrier?.version??null}catch{}
+    };
+  for(const name of methodNames){const descriptor=descriptors[name],original=originals[name];
+    Object.defineProperty(proto,name,{...descriptor,value:function(){const args=[...arguments];let request;
+      try{request=Reflect.apply(original,this,args)}catch(error){record(this,name,args,null);throw error}
+      record(this,name,args,request);return request;}})}
+  window.__cfF4ReplacementTracePatch=true;return true})()`;
 
 /* A smoke that reads a stale build can pass for source that no longer
    exists—the species-audit failure class. Build unconditionally, then drive
@@ -9410,11 +9428,34 @@ try {
      must reset receipts/RNG atomically. The fixture-owned progression oracle
      then selects either an empty current prefix or exactly one boot-catch-up
      Arc 9 receipt before Smoke appends the immediately following outcome. */
+  const f4ReplacementToken = await sliceToken(sess);
+  const f4ReplacementHeartbeatQuiescence = await evalIn(
+    `window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()`,
+  );
+  const f4ReplacementStartedAt = Date.now();
   const f4StageStarted = await evalIn(STAGE_OLD_F4_RECEIPT_EXPRESSION);
   const f4StagedRaw = await evalIn(READ_F4_AUTHORITY_EXPRESSION);
   const f4TraceArmed = await evalIn(ARM_F4_REPLACEMENT_TRACE_EXPRESSION);
-  const f4ReplacementToken = await sliceToken(sess);
-  try { await evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(vrRaw)})`); }
+  const f4ReplacementSetupAssessment = assessF4ReplacementSetup({
+    heartbeatQuiescence: f4ReplacementHeartbeatQuiescence,
+    documentToken: f4ReplacementToken,
+    stageStarted: f4StageStarted,
+    traceArmed: f4TraceArmed,
+    staged: f4StagedRaw,
+  });
+  const f4ImportContinuation = beginF4GreenContinuation(
+    f4ReplacementSetupAssessment,
+    () => evalIn(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(vrRaw)})`),
+  );
+  if (f4ImportContinuation.kind !== 'started') {
+    fails.push('F4 REPLACEMENT/SETUP: import was denied before mutation because its old-receipt/tracer prefix was red: '
+      + JSON.stringify({ heartbeatQuiescence: f4ReplacementHeartbeatQuiescence,
+        assessment: f4ReplacementSetupAssessment }));
+    failSliceWithoutCascade('F4 REPLACEMENT/SETUP: red setup stopped import and every dependent mutable successor', {
+      alreadyReported: true,
+    });
+  }
+  try { await f4ImportContinuation.value; }
   catch { /* successful replacement destroys this execution context */ }
   await waitForSlice(sess, 'F4 receipt-reset import replacement', { previousToken: f4ReplacementToken });
   await assertBootTickerRunning('F4 receipt-reset replacement');
@@ -9430,12 +9471,33 @@ try {
       queuedFx: await evalIn(`document.querySelectorAll('[data-progression-ceremony-fx]').length`),
     },
   };
+  const f4ReplacementPrefixEndedAt = Date.now();
+  const f4ReplacementPrefixBundle = {
+    staged: f4StagedRaw,
+    replacement: f4Reset.trace,
+    reset: f4Reset,
+    codecWindow: { startedAt: f4ReplacementStartedAt, endedAt: f4ReplacementPrefixEndedAt },
+    expectation: F4_REPLACEMENT_EXPECTATION,
+  };
+  const f4ReplacementPrefixAssessment = assessF4ReplacementPrefix(f4ReplacementPrefixBundle);
   const f4ProductBeforeOutcome = JSON.stringify(f4Reset.state.save);
-  const f4Outcome = await evalIn(`window.__CF_SLICE__.api.__smokeCommitF4Outcome()`);
+  const f4OutcomeContinuation = beginF4GreenContinuation(
+    f4ReplacementPrefixAssessment,
+    () => evalIn(`window.__CF_SLICE__.api.__smokeCommitF4Outcome()`),
+  );
+  if (f4OutcomeContinuation.kind !== 'started') {
+    fails.push('F4 REPLACEMENT/PREFIX: native replacement/reset authority was red before the Smoke outcome: '
+      + JSON.stringify({ assessment: f4ReplacementPrefixAssessment, bundle: f4ReplacementPrefixBundle }));
+    failSliceWithoutCascade('F4 REPLACEMENT/PREFIX: red replacement authority stopped the Smoke outcome and every dependent mutable successor', {
+      alreadyReported: true,
+    });
+  }
+  const f4Outcome = await f4OutcomeContinuation.value;
   const f4AfterOutcome = {
     state: await evalIn(`window.__CF_SLICE__.api.state()`),
     raw: await evalIn(READ_F4_AUTHORITY_EXPRESSION),
   };
+  const f4ReplacementEndedAt = Date.now();
   const f4ReplacementBundle = {
     staged: f4StagedRaw,
     replacement: f4Reset.trace,
@@ -9443,12 +9505,20 @@ try {
     outcome: f4Outcome,
     after: f4AfterOutcome,
     productStable: JSON.stringify(f4AfterOutcome.state.save) === f4ProductBeforeOutcome,
+    codecWindow: {
+      startedAt: f4ReplacementStartedAt,
+      prefixEndedAt: f4ReplacementPrefixEndedAt,
+      endedAt: f4ReplacementEndedAt,
+    },
     expectation: F4_REPLACEMENT_EXPECTATION,
   };
   const f4ReplacementAssessment = assessF4ReplacementOutcome(f4ReplacementBundle);
-  if (!f4StageStarted || !f4TraceArmed || !f4ReplacementAssessment.ok) {
+  if (!f4ReplacementAssessment.ok) {
     fails.push('F4 REPLACEMENT/OUTCOME: replacement reset, expected boot prefix, or immediate Smoke outcome disagreed: '
       + JSON.stringify({ f4StageStarted, f4TraceArmed, assessment: f4ReplacementAssessment, bundle: f4ReplacementBundle }));
+    failSliceWithoutCascade('F4 REPLACEMENT/OUTCOME: red replacement authority stopped every dependent mutable successor', {
+      alreadyReported: true,
+    });
   }
   const f4ReplacementControls = [
     assessF4ReplacementOutcome({ ...f4ReplacementBundle, staged: { ...f4StagedRaw,
@@ -9485,6 +9555,9 @@ try {
   if (f4ReplacementControls.some((control) => control.ok)) {
     fails.push('F4 REPLACEMENT/OUTCOME CONTROL FAILED — replacement, boot-prefix, progression-delta, presentation, or Smoke mutation stayed green: '
       + JSON.stringify(f4ReplacementControls));
+    failSliceWithoutCascade('F4 REPLACEMENT/OUTCOME CONTROL FAILED: a green mutant stopped every dependent mutable successor', {
+      alreadyReported: true,
+    });
   }
 
   const f4HideArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextF4HideCheckpoint()`);

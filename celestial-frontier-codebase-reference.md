@@ -1,29 +1,37 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-30 current exact-`ae2a002…` Slice-instrument overlay:** exact signed source
-> `ae2a0023da3a90a98e548452113395149847aee5` passed Compendium **78/78** once/no-retry, then
-> Slice `20260830132231723-50968-0e9bd00aee77` stopped terminal red once/no-retry with **8
-> findings / 8 scopes**. Glass and Recovery did not run. The three immutable carriers and full
-> gzip/raw identities are registered in `audits/README.md`; this chronology remains red.
+> **2026-08-30 current exact-`e4f5af4…` Slice-oracle overlay:** exact signed source
+> `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium **78/78** once/no-retry in
+> 64,831 ms, then Slice `20260830-pr35-slice-oracle-e4f5af4bf628-slice-certification` stopped
+> terminal red once/no-retry after **98,988 ms** with four ordered scopes:
+> `f4-replacement-outcome`, `arc-3-mine-action`, `arc-3-mine-action-controls-failed` and `harness`.
+> Seven partial screenshots and the three immutable carrier identities are registered in
+> `audits/README.md`. Glass and Recovery did not run; this chronology remains FAIL.
 >
-> The corrected F4 oracle independently projects the exact imported canonical state. A `current`
-> projection requires an empty replacement-document ledger and assigns the judged outcome ordinal
-> zero. A `ready` projection requires exactly one silent, aggregate-only, fixed-point
-> `arc9-progression-refresh-v1` boot receipt at ordinal zero and assigns the judged outcome ordinal
-> one. Both paths prove the native atomic clear of the old receipt, replacement base revision, the
-> fixture's one expected receipt-free product/bootstrap commit at revision +1 with unchanged ordinal,
-> seed/draw and runtime/raw parity, exact receipt witness, unrelated-state stability and immediate
-> successor; a ready Arc 9 commit is therefore replacement revision +2. The retained exact sequence
-> is 7 staged → 8 replacement → 9 bootstrap → 10 Arc 9 receipt 0 → 11 Smoke receipt 1; observed
-> optional prefixes are never accepted. Atlas evidence treats its source-
-> identified rendered row and nested native Travel button as separate owners. Trusted pointer and
-> keydown receipts bind the exact native role, action ID, parent row ID and coordinates before any
-> dependent navigation wait; red prerequisites stop once at their root rather than creating a timeout
-> cascade. Guide mutation
-> controls change the current rendered node or force real republication with a fresh exact identity;
-> source-only mutation followed by stale-DOM judgment is instrument failure. These repairs have no
-> fresh browser certificate and change no save schema, achievement/rank policy, route authorization
-> or player-facing capability.
+> The corrected F4 oracle treats native replacement and held bootstrap as separate transactions. It
+> inventories every readwrite first observed before replacement completion and requires exactly one
+> eight-store replacement, then freezes before the required later lease-release CAS. It captures
+> every available object-store request method and index access, requires the exact 13-request
+> lifecycle with empty index inventories that clears old receipts and writes source v5
+> rows without F4 authority, then requires the replacement document's one receipt-free seed/bootstrap
+> commit. `current` assigns the judged outcome ordinal zero; `ready` requires exactly one silent,
+> aggregate-only, fixed-point `arc9-progression-refresh-v1` receipt at ordinal zero and assigns the
+> judged outcome ordinal one. The retained sequence is 7 staged → 8 replacement → 9 bootstrap →
+> 10 Arc 9 receipt 0 → 11 Smoke receipt 1. Prefix selection comes from an independent production
+> projection, never the observed ledger.
+>
+> Exact source legacy bytes remain bound by
+> `57e9d86d1847ab0bd7d8ba4579b2bfd5a51f9b65715fc1ef412db050a6fadd88`; the independently
+> derived post-boot projection is
+> `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`. Only the absolute
+> `at` anchor and exact conquest/mined ages may normalize between codec clocks; both absolute clocks
+> remain run-bounded and monotonic. Full saved-view geometry, canonical Earth Atlas route, rejected
+> forged-Earth route, achievements/rank and every unrelated product field stay exact. Red setup
+> stops before import, red prefix stops before the diagnostic outcome, and red outcome/control stops
+> hide and Arc 3 before a timeout cascade. The live periodic heartbeat is stopped, settled and bound
+> to the exact document before staging/arming. This repair adds no product
+> capability, save schema/migration, achievement/rank/reward policy, retry, browser rebaseline or
+> player-facing change.
 
 > **2026-08-30 current sealed-worker/PWA + Guide/Release/named-CF1 overlay (matches local code;
 > supersedes the
@@ -3896,6 +3904,15 @@ lease-fenced CAS, while product actions join their carrier/compatibility/F4 chan
 and next revision. This schema number is independent of the development display identity and
 production `GAME_VERSION`.
 
+The current replacement evidence contract separates three authorities: exact imported source
+bytes, the one complete native replacement transaction, and the later replacement-document
+bootstrap/product fixed point. Cross-clock equality uses the production codec plus independently
+expected route repair. It replaces `at` with a sentinel and represents `conq[].t` / `minedw[]` only
+as exact ages from `at`, while separately bounding the observed absolute anchors. It never removes
+saved-view geometry or Atlas `where` rows and never ignores achievements, rank, cargo, Prime,
+Compendium or other unrelated fields. The strict retained-fixture projection SHA-256 is
+`e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`.
+
 Three bounded compatibility seams are now separately executable. Notification stamps use only the
 injected clock and converge to identical later-v5 bytes. A missing conquest epoch `conq[].e`
 imports as exactly one legacy-ready cycle, hostile values clamp to `[0, EPOCH_BASE]`, and the result
@@ -4025,6 +4042,20 @@ dependencies, generated artifacts, command order/execution, soft-fail and workfl
 Synchronous Slice/Glass/Recovery selftests use explicit 15-second child and
 20-second outer limits with separate timeout/nonzero/missing-marker controls. This gate does not
 replace the strict browser evidence chain or authorize hosted work.
+
+**Current exact e4f5 evidence/oracle boundary (2026-08-30):** Compendium run
+`20260830-pr35-slice-oracle-e4f5af4bf628-compendium-certification` passed 78/78 once/no-retry.
+Its unchanged-source Slice successor ran once and stopped terminal red after 98,988 ms with the four
+ordered scopes listed in the current overlay, seven partial screenshots and no PASS marker. The
+browser-free evidence replay binds all three gzip/raw carriers, exact source/run identity, finding
+order/message hashes, child/log evidence and the absence of any Glass/Recovery successor. Focused
+F4 controls now execute the exact native transaction trace, independently derive both replacement
+branches, bind the absolute codec window and strict clock-age product projection, and mutation-test
+conquest/mined stamps, complete saved-route geometry, both relevant Atlas routes, achievements,
+essence, cargo, Prime and Compendium state. Red setup stops before import, red prefix stops before
+its diagnostic outcome, and red outcome/control stops hide and Arc 3. These browser-free repairs do
+not relabel the immutable Slice or supply a changed-head
+browser certificate.
 
 **Historical exact-source evidence snapshot (2026-08-29):** exact signed source
 `3f69e88ea8e34fdb8d9913276601b426ada783ae` completed the once-only, zero-retry

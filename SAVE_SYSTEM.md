@@ -1,22 +1,32 @@
 # Celestial Frontier — Save System
 
-> **2026-08-30 current F4 replacement-prefix clarification:** a successful expedition replacement
-> atomically clears the prior receipt store, but the replacement document may immediately own its
-> new ordinal zero. The exact imported fixture used by Slice requires Arc 9 aggregate catch-up, so
-> boot validly commits one `arc9-progression-refresh-v1` receipt/CAS before the document becomes the
-> writable sample; the next judged F4 outcome therefore owns ordinal one. An imported expedition
-> already at the aggregate fixed point instead remains empty and gives the judged outcome ordinal
-> zero. The instrument must choose between those branches from an independent projection of the
-> imported canonical state and bind the replacement revision, the fixture's one expected receipt-
-> free product/bootstrap commit at revision +1 with ordinal still zero, cleared old witness, exact aggregate-
-> only delta, seed/draw parity, receipt witness and immediate successor. It must never accept an
-> arbitrary optional receipt. Thus `current` resets at replacement revision +1, while `ready`
-> commits Arc 9 at replacement revision +2; Smoke advances either accepted reset once more.
+> **2026-08-30 current F4 replacement/codec-oracle clarification:** whole-expedition replacement
+> and replacement-document bootstrap are two exact transactions. The native replacement clears the
+> prior receipt store and writes the trusted source v5 rows without an F4 carrier; one later held,
+> receipt-free bootstrap mints seed/draw authority without advancing the ordinal. An independently
+> projected `current` import then gives the judged outcome ordinal zero. A projected `ready` import
+> instead owns exactly one silent aggregate-only fixed-point `arc9-progression-refresh-v1` receipt at
+> ordinal zero before the judged ordinal-one outcome. For the retained fixture the exact chronology
+> is staged revision 7 → replacement 8 → bootstrap 9 → Arc 9 revision 10 → Smoke revision 11.
 >
-> Exact signed `ae2a0023da3a90a98e548452113395149847aee5` passed Compendium **78/78**, then
-> Slice `20260830132231723-50968-0e9bd00aee77` stopped red once/no-retry with **8 findings / 8
-> scopes**. The F4 finding is preserved oracle evidence, not a failed atomic clear or a Slice PASS.
-> Glass and Recovery did not run.
+> Source bytes and the post-boot product are separate authorities. The source legacy SHA is
+> `57e9d86d1847ab0bd7d8ba4579b2bfd5a51f9b65715fc1ef412db050a6fadd88`; the independently
+> derived strict successor projection is
+> `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`. It normalizes only
+> `at` plus conquest/mined timestamps as exact ages from that anchor, while separately bounding the
+> absolute reset/after clocks to the run and requiring monotonicity. Complete saved-view geometry,
+> the canonical Earth Atlas route, the rejected forged-Earth route and every unrelated product field
+> remain exact; none is stripped from the digest.
+>
+> Exact signed `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium **78/78**, then
+> Slice `20260830-pr35-slice-oracle-e4f5af4bf628-slice-certification` stopped terminal red
+> once/no-retry after **98,988 ms** with **4 findings / 4 scopes** and seven partial screenshots.
+> The old native-boundary and raw cross-clock comparisons were oracle evidence, not product/schema
+> failure or a Slice PASS. Current controls capture the exact native transaction, reject broad
+> exclusions. Red setup stops before import, red prefix stops before its diagnostic outcome, and red
+> outcome/control stops hide and Arc 3. Glass and Recovery did not run.
+> Slice also stops and settles the live periodic heartbeat before staging or arming the trace, so a
+> legitimate timer CAS cannot enter the pre-replacement transaction inventory.
 
 > **2026-08-30 current sealed-worker/PWA + Guide/Release/named-CF1 boundary (matches local code;
 > supersedes
@@ -176,6 +186,13 @@
 > Atlas Favorite, explorer naming, Frontier ending, nameplate, Sharing, Survey and Travel; Binder set
 > claims; and Starter Charter acceptance/staging. This changes compatibility proof, not gameplay RNG,
 > receipt ownership, schema or migration.
+>
+> Cross-clock evidence uses a narrower rule than an action's same-clock canonical successor. It
+> derives the expected post-import/boot state through the production codec and exact route repair,
+> then replaces `at` with a sentinel and represents only `conq[].t` and `minedw[]` as exact ages
+> from that anchor. Every other compatibility field remains exact. Zeroing stamp families,
+> truncating a saved route to seed/x/y, or deleting Atlas `where` entries is an instrument
+> false-green, not save equivalence.
 >
 > Survey-to-Landing now crosses two distinct barriers in order: drain the route checkpoint, invoke
 > Survey exactly once, capture and drain Survey's replacement product checkpoint, require that
