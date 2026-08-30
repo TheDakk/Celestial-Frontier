@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · AE2 EVIDENCE PRESERVED · SLICE ORACLES REPAIRED · SIGN/CERTIFY NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · AE2 EVIDENCE PRESERVED · SLICE ORACLES SIGNED · CERTIFY NEXT ◀◀◀
 
 ### Exact current boundary
 
@@ -26,14 +26,14 @@ the archive verbatim and refresh this handoff in place.
   **origin/openai/mac**. This batch is V2-only: port/v2 evidence tooling/tests, immutable audit
   carriers and current Markdown. Legacy main.js / celestial-frontier.html, develop, main, the live
   site and every other worktree remain untouched.
-- **Last signed clean source:** **ae2a0023da3a90a98e548452113395149847aee5** (tree
-  **0588ff7bc7e978e75be92227cdad3eb1b3a2fe29**, parent
-  **0f814a6f39912d81a3a738e0c70297e9b697550c**) contains the Guide/Release and named-CF1 product
-  repair plus the clean-candidate handoff. It is **20 commits ahead** of origin/openai/mac.
-- **Current worktree:** an unsigned changed-source successor of ae2a002… contains the preserved ae2
-  evidence, three bounded Slice-oracle repairs, executable negative controls and synchronized
-  references described below. It has browser-free acceptance but no changed-head browser
-  certificate. Resolve and record its exact signed commit/tree only after committing this batch.
+- **Signed repair/evidence closure:** **95c2bea727a014b8b181d83e4b0f04a5444b3993** (tree
+  **b10c3963f80ea690aaefe8a27f4351ab84dfaadc**, parent
+  **ae2a0023da3a90a98e548452113395149847aee5**) contains the preserved ae2 evidence, three bounded
+  Slice-oracle repairs, executable negative controls and synchronized references described below.
+  It is **21 commits ahead** of origin/openai/mac and contains an embedded SSH signature.
+- **Documentation closure:** this protocol-only exact-candidate amendment is the direct signed
+  successor to 95c2bea…. Resolve its exact clean head/tree with git rev-parse after committing. It
+  changes no product, harness, evidence, test, ruler, budget or threshold bytes.
 - **PR boundary:** draft PR **#35**, base **develop**, source **openai/mac**, remains blocked and
   unmerged. Remote head **017fa6decbc41809188768ccdb98ab86ef1b9ebc** and fetched base
   **7a9f4c1370dd84292388d718c38ff34214f6203b** remain unchanged. Nothing here has been pushed.
@@ -159,8 +159,8 @@ visual acceptance, hosted CI green, merge authority or release/deployment author
 
 ### Exact next work — sign, preflight and one immutable browser chain
 
-1. Sign this complete code/evidence/docs batch and require a clean worktree. Record its exact commit,
-   tree and branch-ahead relationship in a signed docs-only closure if needed.
+1. Sign this protocol-only handoff closure and require a clean worktree. Resolve the exact candidate
+   commit/tree with git rev-parse; do not amend or relabel 95c2bea….
 2. From port/v2 on that exact clean signed head, stop on any nonzero:
 
        node tools/tracked-input-preflight.mjs
