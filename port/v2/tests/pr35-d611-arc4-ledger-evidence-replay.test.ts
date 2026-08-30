@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest';
 const AUDIT_ROOT = new URL('../../../audits/', import.meta.url);
 const SOURCE = 'd611d18ad12bb8587863846ef3799300d2396e6a';
 const RIGHT_SIZED_SOURCE = '7f89bb2a70604da5b79673bd22d25786cab468d2';
+const STORAGE_SOURCE = '961d1071d059e0f73e14a6a4ead61f5e4696535b';
 const carriers = Object.freeze({
   layout: Object.freeze({
     file: 'ROOT_LAYOUT_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz',
@@ -70,6 +71,34 @@ const carriers = Object.freeze({
     gzipSha256: 'da56722b8962fac1ecfcb21012fa93208c0dab26c44421b1bcc76854da27d97c',
     rawSha256: 'd2d071d20b8bc8d642aa2e8cfc13195b796df045bd64c1f48455dcab8acffc5a',
   }),
+  storageScene: Object.freeze({
+    file: 'ARC1C_SCENEMEM_PR35_STORAGE_REFUSAL_PREDECESSOR_PASS_20260830_961D107.json.gz',
+    gzipBytes: 44_946,
+    rawBytes: 786_692,
+    gzipSha256: '6c1e2180e6d3523bf5b07021c24ad8aa9f6e67c1e0fc72b2433691afad3144aa',
+    rawSha256: '77607fd1b824e12f973a85d82d45f7b09997523125f839a664ba7a42f224c648',
+  }),
+  storageCompendium: Object.freeze({
+    file: 'ARC1C_COMPENDIUM_PR35_STORAGE_REFUSAL_PREDECESSOR_PASS_20260830_961D107.json.gz',
+    gzipBytes: 450_967,
+    rawBytes: 10_834_118,
+    gzipSha256: '3f39cfca848e5aaa790e0f6e27448881d8985501313c2027f78f0064b53d2b36',
+    rawSha256: 'cc1b28217c57a0ff90051afcb676d24082c3f0426c0650e504ba0e65ce567799',
+  }),
+  storageSlice: Object.freeze({
+    file: 'ARC4_SLICE_PR35_STORAGE_REFUSAL_TIMEOUT_RED_20260830_961D107.json.gz',
+    gzipBytes: 1_689,
+    rawBytes: 5_263,
+    gzipSha256: '304d65abf8ed652420e282897eefdd9f57a34f7f2b41bed780f3fc27a18e822f',
+    rawSha256: '6b69f8bd2445b3e23979e28a89f78f94d8572ea257f99a121dc893a632e57f4a',
+  }),
+  storageSliceLog: Object.freeze({
+    file: 'ARC4_SLICE_PR35_STORAGE_REFUSAL_TIMEOUT_RED_20260830_961D107.log.gz',
+    gzipBytes: 1_509,
+    rawBytes: 3_745,
+    gzipSha256: 'bbc957bd99f265d068d487a184a5a96f0bb8525ba7cbd5724e694f95cc8f328a',
+    rawSha256: 'd86d79fa031fb9002ad495a8579993aeb426461395fd116c78ae99458cfb249a',
+  }),
 });
 
 const sha256 = (bytes: Uint8Array): string => createHash('sha256').update(bytes).digest('hex');
@@ -91,7 +120,7 @@ describe('PR #35 d611 consolidated-chain Arc 4 ledger evidence', () => {
     }
   });
 
-  it('preserves the five-scope diagnosis and its causal one-scope successor without retry', () => {
+  it('preserves the causal five-to-one-to-one scope sequence without retry', () => {
     const layout = decoded.layout!.value as Record<string, any>;
     const scene = decoded.scene!.value as Record<string, any>;
     const compendium = decoded.compendium!.value as Record<string, any>;
@@ -195,5 +224,42 @@ describe('PR #35 d611 consolidated-chain Arc 4 ledger evidence', () => {
         receiptOrdinal: 2,
       });
     expect(decoded.rightSizedSliceLog!.value).toContain('SLICE SMOKE: FAIL');
+
+    const storageScene = decoded.storageScene!.value as Record<string, any>;
+    const storageCompendium = decoded.storageCompendium!.value as Record<string, any>;
+    const storageSlice = decoded.storageSlice!.value as Record<string, any>;
+
+    expect(storageScene).toMatchObject({
+      status: 'pass',
+      runId: '20260830-pr35-961d107-battery-rightsizing-scenemem',
+      durationMs: 12_912,
+    });
+    expect(storageScene.source.begin.commit).toBe(STORAGE_SOURCE);
+    expect(storageScene.source.end.commit).toBe(STORAGE_SOURCE);
+    expect(storageScene.outcomes).toHaveLength(44);
+
+    expect(storageCompendium).toMatchObject({
+      status: 'pass',
+      runId: '20260830-pr35-961d107-battery-rightsizing-compendium',
+      durationMs: 63_695,
+    });
+    expect(storageCompendium.source.begin.commit).toBe(STORAGE_SOURCE);
+    expect(storageCompendium.source.end.commit).toBe(STORAGE_SOURCE);
+    expect(storageCompendium.outcomes).toHaveLength(78);
+
+    expect(storageSlice).toMatchObject({
+      status: 'fail', terminal: true, durationMs: 171_033,
+      summary: { findingCount: 1, scopeCount: 1 },
+      retryPolicy: { automaticRetries: 0 },
+      source: { commit: STORAGE_SOURCE, state: 'committed' },
+      sourceEnd: { commit: STORAGE_SOURCE, state: 'committed' },
+      sourceChange: { detected: false, ending: null },
+    });
+    expect(storageSlice.findings).toEqual([{
+      index: 0,
+      scope: 'harness',
+      message: 'harness: Arc 4 storage refusal did not reach its browser outcome within 10000ms (last null)',
+    }]);
+    expect(decoded.storageSliceLog!.value).toContain('SLICE SMOKE: FAIL');
   });
 });

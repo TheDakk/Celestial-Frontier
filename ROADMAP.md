@@ -17,20 +17,23 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · BATTERY RIGHT-SIZED · ONE-SCOPE VARIANT ORACLE REPAIRED ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · BATTERY RIGHT-SIZED · STORAGE DIAGNOSIS FAIL-CLOSED ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
   **origin/openai/mac**. Exact signed tested source
-  **7f89bb2a70604da5b79673bd22d25786cab468d2** (tree
-  **9007559da57a52c26510df4c7398287fde7b4839**, parent
-  **d611d18ad12bb8587863846ef3799300d2396e6a**) is **33 commits ahead** of the fetched remote
+  **961d1071d059e0f73e14a6a4ead61f5e4696535b** (tree
+  **e1acc7753e8f89ca13bc7dd0fce300c5fba454f3**, parent
+  **7f89bb2a70604da5b79673bd22d25786cab468d2**) is **34 commits ahead** of the fetched remote
   agent branch. Its signature was cryptographically verified with the configured SSH identity.
-- **Current local successor:** only the Arc 4 evidence contract/tests, exact 7f browser carriers
-  and synchronized documentation are dirty. No game/app source, creature/genome structure, save
-  schema, art/audio system, balance, numeric browser ruler, release identity, retry or
+- **Current local successor:** only the Slice browser runner, its existing focused causal-source
+  test, exact 961 evidence replay/carriers and synchronized documentation are dirty. The runner
+  now proves target/focus/coordinator readiness before arming, observes the latch before input,
+  refuses an unfocused dispatch, and retains pre-arm/post-arm/post-press/deadline state plus final
+  raw/UI/interaction evidence. No game/app source, creature/genome structure, save schema,
+  art/audio system, balance, numeric browser ruler, timeout, retry, release identity or
   Edge-version baseline changed.
 - **PR boundary:** draft PR **#35**, base **develop**, source **openai/mac**, remains blocked,
   unmerged and unpushed at remote head **017fa6decbc41809188768ccdb98ab86ef1b9ebc** against
@@ -46,7 +49,7 @@ the archive verbatim and refresh this handoff in place.
 ### Decision — the battery is now proportional to the promotion risk
 
 - The apparently large number is **2,510 passing assertions plus 1 intentional skip inside one
-  23.24-second Vitest process**. It is not 2,510 Actions jobs, browser launches or sequential
+  roughly 23-second Vitest process**. It is not 2,510 Actions jobs, browser launches or sequential
   workflows. Those fast assertions cover independent product invariants and remain the cheapest
   protection against regressions.
 - One fail-fast owner now defines the only static profiles:
@@ -71,7 +74,7 @@ the archive verbatim and refresh this handoff in place.
   includes every Compendium fixture, builder, lock, budget and instrument dependency, so a
   relevant change cannot silently skip the ruler controls while ordinary gameplay changes do.
 
-### Immutable d611 → 7f evidence and the repaired Arc 4 boundary
+### Immutable d611 → 7f → 961 evidence and the repaired Arc 4 boundary
 
 - Exact d611 passed root Layout **787/787**, SceneMemory **44/44** and Compendium **78/78** once,
   unchanged and with zero retry. Slice then stopped terminal red after **170,889 ms** with five
@@ -99,8 +102,20 @@ the archive verbatim and refresh this handoff in place.
   Landing witness byte template. Both retained real variants are positive; malformed seal and
   changed invariant-field controls are red. It does not allowlist versions or digests and does not
   duplicate the private product codec. The 7f report remains immutable FAIL.
+- Exact signed 961 then passed the complete tracked-input develop profile, SceneMemory **44/44**
+  in **12,912 ms** and Compendium **78/78** in **63,695 ms**, all unchanged, named-verified and
+  once/no-retry. Slice reached Storage and stopped after **171,033 ms** with exactly one generic
+  `harness` timeout; Glass correctly did not run. The old runner discarded the arm, target,
+  coordinator, product, durable and UI state before its assessor could classify the timeout, so
+  that immutable report proves neither a product failure nor a safe setup.
+- The current runner-only repair follows the already-proven Arc 3 pattern: exact native Tame
+  readiness precedes the one-shot hook; the hook return and visible latch must both be true before
+  input; keyboard dispatch additionally requires real focus; and any wait/capture/classifier red
+  retains four ordered phase snapshots and causal-stops before stale-authority or later Arc 4 work.
+  The existing assessor now receives the real `waitError` and `captureErrors` instead of hard-coded
+  green placeholders. Historical 961 evidence stays red.
 
-### Acceptance on exact 7f and the current bounded successor
+### Acceptance on exact 961 and the current bounded successor
 
 - `node tools/check-profile.mjs --profile=develop`: **PASS** —
   **253 files / 2,510 passed / 1 skipped**, all three TypeScript programs, **34** art sources
@@ -115,15 +130,21 @@ the archive verbatim and refresh this handoff in place.
 - Exact 7f conditional controls: Scene fixed-second heap **PASS** at 524,288 B/cycle; Chromium
   launcher/deadline/cleanup selftest **PASS**. SceneMemory and Compendium browser predecessors are
   green as recorded above; Slice remains red and grants no Glass/HUMAN/hosted/merge/release claim.
-- Current seal-variant repair: Arc 4 module import, retained-red reassessment, focused Arc 4/audio/
-  evidence tests and strict root TypeScript are green. Full clean admission remains next.
+- Exact 961 tracked admission passed at the same **253 files / 2,510 passed / 1 skipped** profile,
+  then its browser predecessors passed as recorded above. Its terminal Slice report is preserved
+  under `audits/` with raw/gzip identities and zero retry.
+- Current runner/evidence repair: focused Arc 4 causality plus immutable replay is **2 files / 5
+  PASS**; the complete develop profile remains **253 files / 2,510 passed / 1 skipped**, all three
+  TypeScript programs, art/route/spec gates and integrated 5/5 spec controls green. Independent
+  review found no product-path change, unsafe dispatch, null/control hazard or cleanup leak; its two
+  test-only mutation gaps were added and pass.
 
 ### Exact next work — one clean local admission and one no-retry browser chain
 
-1. Finish synchronized docs/diff/syntax checks and commit the bounded seal-variant repair plus
-   immutable 7f evidence as one SSH-signed successor; verify its signature and a clean worktree.
+1. Finish synchronized docs/diff/syntax checks and commit the bounded storage diagnostic plus
+   immutable 961 evidence as one SSH-signed successor; verify its signature and a clean worktree.
 2. Run `node tools/tracked-input-preflight.mjs --profile=develop` once on that exact clean commit.
-3. The current change touches only the evidence contract/tests, not the browser launcher/memory
+3. The current change touches only Slice evidence/dispatch diagnosis, not the browser launcher/memory
    instrument dependency closure, so do not repeat its already-green conditional controls. Run one
    exact SceneMemory → Compendium → Slice → Glass chain on the changed source. Stop on the first
    nonzero, red or instrument result; never retry automatically. Glass runs only after green Slice.
@@ -148,7 +169,7 @@ judgment. Automation must not invent those decisions merely to call the roadmap 
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** sign the bounded variant-oracle repair/evidence, run one clean tracked
+- **OpenAI/Codex now:** sign the bounded storage-diagnostic repair/evidence, run one clean tracked
   admission, then one final local develop browser chain with causal stop and no retry.
 - **GitHub step now:** none. Zero hosted attempts are authorized.
 - **PR #35 after local green:** existing draft, base **develop**, source **openai/mac**, title

@@ -18,7 +18,16 @@
 > invariant template after substituting only one canonical lowercase SHA-256. Both retained real
 > variants pass; malformed seals and changed causal fields fail. It neither allowlists observed
 > hashes nor duplicates the private product codec. No product/app, schema, creature/genome,
-> art/audio, timeout, retry, numeric ruler or Edge-version baseline changes. The right-sized
+> art/audio, timeout, retry, numeric ruler or Edge-version baseline changes. Signed successor
+> `961d1071d059e0f73e14a6a4ead61f5e4696535b` then passed the same tracked profile, SceneMemory
+> 44/44 and Compendium 78/78 once/no-retry. Slice reached Arc 4 Storage and stopped after 171,033 ms
+> with exactly one generic timeout scope; Glass and Recovery did not run. Because the old runner
+> discarded its arm/target/coordinator/product/raw/UI state before classification, this proves
+> neither a product failure nor valid setup. The current runner-only successor proves native
+> target/focus/coordinator readiness before arming, requires both the hook return and visible latch
+> before input, focus-gates dispatch, retains ordered pre-arm/post-arm/post-press/deadline state plus
+> terminal durable/UI/interaction evidence, supplies real wait/capture errors to the existing
+> assessor, and fail-stops later Arc 4 work. The right-sized
 > develop profile is green at **253 files / 2,510 passed / 1 skipped** plus all three TypeScript
 > programs, art/route/spec gates; its 2,510 assertions are one roughly 23-second process, not
 > thousands of jobs. Compendium's 591 ruler mutations are conditional on production or changed

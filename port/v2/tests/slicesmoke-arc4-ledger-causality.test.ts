@@ -56,12 +56,82 @@ const sampleOwner = section(
   '  const arc4HitReleased = await evalIn(',
   '  const arc4StorageBeforeState = arc4HitState;',
 );
+const storageOwner = section(
+  sliceSource,
+  '  const arc4StorageBeforeState = arc4HitState;',
+  "  const arc4StaleFaultKey = 'cf_slice_arc4_stale_fault_capture_v1';",
+);
+const pressOwner = section(
+  sliceSource,
+  '  const pressArc4Keyboard = async (verb) => {',
+  '  const pressArc4SurveyDockKeyboard = async () => {',
+);
+
+function ordered(source: string, needles: readonly string[]): boolean {
+  let cursor = -1;
+  return needles.every((needle) => {
+    const next = source.indexOf(needle, cursor + 1);
+    if (next < 0) return false;
+    cursor = next;
+    return true;
+  });
+}
+
+function storageRunnerContractPasses(storage: string, press: string): boolean {
+  return press.includes('const dispatched = armed === true && target.ok === true')
+    && press.includes('&& target.focus === true;')
+    && press.includes("if (dispatched) await keyIn('Enter', 'Enter');")
+    && press.includes('return { armed, target, dispatched };')
+    && storage.includes("captureArc4StoragePhase('pre-arm')")
+    && storage.includes("captureArc4StoragePhase('post-arm')")
+    && storage.includes("captureArc4StoragePhase('post-press')")
+    && storage.includes("captureArc4StoragePhase('deadline')")
+    && storage.includes("arc4StorageTargetReady?.verb === 'tame'")
+    && storage.includes('arc4StorageTargetReady?.focus === true')
+    && storage.includes('arc4StoragePreArmCoordinator?.owner?.busy === false')
+    && storage.includes('arc4StoragePreArm.state?.capture?.card?.pendingWork === 0')
+    && storage.includes("failSliceWithoutCascade('ARC 4 STORAGE PRECONDITION: native Tame")
+    && storage.includes('arc4StorageArmed === true')
+    && storage.includes('arc4StoragePostArmCoordinator?.faultArmed?.storageFailure === true')
+    && storage.includes("failSliceWithoutCascade('ARC 4 STORAGE PRECONDITION: storage-failure hook")
+    && storage.includes('arc4StoragePress.dispatched !== true')
+    && storage.includes("failSliceWithoutCascade('ARC 4 STORAGE ACTION:")
+    && storage.includes('arc4StorageWaitError = String(cause?.message || cause);')
+    && storage.includes('waitError: arc4StorageWaitError,')
+    && storage.includes('captureErrors: arc4StorageCaptureErrors,')
+    && storage.includes('snapshots: { preArm: arc4StoragePreArm, postArm: arc4StoragePostArm,')
+    && storage.includes('postPress: arc4StoragePostPress, deadline: arc4StorageDeadline },')
+    && !storage.includes('waitError: null, captureErrors: []')
+    && ordered(storage, [
+      "captureArc4StoragePhase('pre-arm')",
+      'if (!Object.values(arc4StoragePreArmChecks).every(Boolean)) {',
+      "failSliceWithoutCascade('ARC 4 STORAGE PRECONDITION: native Tame",
+      'window.__CF_SLICE__.api.__smokeRejectNextArc4ActionStorage()',
+      "captureArc4StoragePhase('post-arm')",
+      'if (!Object.values(arc4StorageArmChecks).every(Boolean)) {',
+      "failSliceWithoutCascade('ARC 4 STORAGE PRECONDITION: storage-failure hook",
+      "const arc4StoragePress = await pressArc4Keyboard('tame');",
+      "captureArc4StoragePhase('post-press')",
+      'if (arc4StoragePress.armed !== true',
+      "failSliceWithoutCascade('ARC 4 STORAGE ACTION:",
+      "await waitDesktopValue('Arc 4 storage refusal'",
+      'arc4StorageWaitError = String(cause?.message || cause);',
+      "captureArc4StoragePhase('deadline')",
+      'if (arc4StorageTerminalFailure !== null) {',
+      'failSliceWithoutCascade(arc4StorageTerminalFailure);',
+      'const arc4StorageFaultControlState = structuredClone(arc4StorageState);',
+      "failSliceWithoutCascade('ARC 4 STORAGE REFUSAL CONTROLS:",
+    ]);
+}
+
 function runnerContractPasses(owners: {
   setup: string;
   reset: string;
   tame: string;
   precondition: string;
   sample: string;
+  storage: string;
+  press: string;
 }): boolean {
   const setupCalls = owners.setup.match(/assessArc4PertarLedgerPrefix\(\{/gu) ?? [];
   return setupCalls.length === 2
@@ -83,7 +153,8 @@ function runnerContractPasses(owners: {
     && owners.sample.includes('const arc4HitFinalOrdinal = arc4PreRaw.authority.sessionRng.ordinal + 2;')
     && owners.sample.includes('arc9-progression-committed:')
     && owners.sample.includes('requireProgressionTail: true,')
-    && owners.sample.includes("failSliceWithoutCascade('ARC 4 SAMPLE HIT:");
+    && owners.sample.includes("failSliceWithoutCascade('ARC 4 SAMPLE HIT:")
+    && storageRunnerContractPasses(owners.storage, owners.press);
 }
 
 const currentOwners = Object.freeze({
@@ -92,6 +163,8 @@ const currentOwners = Object.freeze({
   tame: tameVerdictOwner,
   precondition: preconditionOwner,
   sample: sampleOwner,
+  storage: storageOwner,
+  press: pressOwner,
 });
 
 describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
@@ -162,6 +235,80 @@ describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
         "failSliceWithoutCascade('ARC 4 SAMPLE HIT:",
         "fails.push('ARC 4 SAMPLE HIT:",
       ),
+    })).toBe(false);
+    for (const phase of ['pre-arm', 'post-arm', 'post-press', 'deadline']) {
+      expect(runnerContractPasses({
+        ...currentOwners,
+        storage: storageOwner.replace(
+          `captureArc4StoragePhase('${phase}')`,
+          `captureArc4StoragePhase('missing-${phase}')`,
+        ),
+      }), phase).toBe(false);
+    }
+    expect(runnerContractPasses({
+      ...currentOwners,
+      storage: storageOwner.replace(
+        "failSliceWithoutCascade('ARC 4 STORAGE PRECONDITION: native Tame",
+        "fails.push('ARC 4 STORAGE PRECONDITION: native Tame",
+      ),
+    })).toBe(false);
+    expect(runnerContractPasses({
+      ...currentOwners,
+      storage: storageOwner.replace(
+        "failSliceWithoutCascade('ARC 4 STORAGE PRECONDITION: storage-failure hook",
+        "fails.push('ARC 4 STORAGE PRECONDITION: storage-failure hook",
+      ),
+    })).toBe(false);
+    expect(runnerContractPasses({
+      ...currentOwners,
+      storage: storageOwner.replace(
+        "failSliceWithoutCascade('ARC 4 STORAGE ACTION:",
+        "fails.push('ARC 4 STORAGE ACTION:",
+      ),
+    })).toBe(false);
+    expect(runnerContractPasses({
+      ...currentOwners,
+      storage: storageOwner.replace(
+        'failSliceWithoutCascade(arc4StorageTerminalFailure);',
+        'fails.push(arc4StorageTerminalFailure);',
+      ),
+    })).toBe(false);
+    const hookLine = 'const arc4StorageArmed = await evalIn(`window.__CF_SLICE__.api.__smokeRejectNextArc4ActionStorage()`);';
+    const pressLine = "const arc4StoragePress = await pressArc4Keyboard('tame');";
+    const swappedStorage = storageOwner.replace(hookLine, '__ARC4_STORAGE_HOOK__')
+      .replace(pressLine, hookLine)
+      .replace('__ARC4_STORAGE_HOOK__', pressLine);
+    expect(runnerContractPasses({
+      ...currentOwners, storage: swappedStorage,
+    })).toBe(false);
+    const preArmPhaseLine = "const arc4StoragePreArm = await captureArc4StoragePhase('pre-arm');";
+    const postArmPhaseLine = "const arc4StoragePostArm = await captureArc4StoragePhase('post-arm');";
+    const swappedPhaseStorage = storageOwner
+      .replace(preArmPhaseLine, '__ARC4_STORAGE_PRE_ARM__')
+      .replace(postArmPhaseLine, preArmPhaseLine)
+      .replace('__ARC4_STORAGE_PRE_ARM__', postArmPhaseLine);
+    expect(runnerContractPasses({
+      ...currentOwners, storage: swappedPhaseStorage,
+    })).toBe(false);
+    expect(runnerContractPasses({
+      ...currentOwners,
+      storage: storageOwner.replace(
+        'postPress: arc4StoragePostPress, deadline: arc4StorageDeadline },',
+        'postPress: null, deadline: null },',
+      ),
+    })).toBe(false);
+    expect(runnerContractPasses({
+      ...currentOwners,
+      press: pressOwner.replace(
+        'const dispatched = armed === true && target.ok === true\n      && target.focus === true;',
+        'const dispatched = armed && target.ok;',
+      ),
+    })).toBe(false);
+    expect(runnerContractPasses({
+      ...currentOwners,
+      storage: storageOwner
+        .replace('waitError: arc4StorageWaitError,', 'waitError: null,')
+        .replace('captureErrors: arc4StorageCaptureErrors,', 'captureErrors: [],'),
     })).toBe(false);
   });
 });
