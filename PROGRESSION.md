@@ -1,5 +1,20 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-30 current Mine/Starter-Charter atomicity clarification (matches local code):** a real
+> durable Mine action owns both extraction and any qualifying accepted `st-mine` settlement in its
+> single F4 receipt/CAS. For the exact retained veteran fixture, the valid successor appends
+> `st-mine` to `chs`, canonicalizes `chp['st-mine']` from the imported over-complete value 2 to the
+> authored completion target 1, removes `st-mine` from `chacc`, advances honored `charters` 2→3,
+> and pays 15 Stardust to both the current balance (`essence`) and lifetime earned counter
+> (`essenceEarned`). Extraction, cooldown, full-address source proof and all unrelated state remain
+> exact. These six Charter/reward fields are coupled Mine-owned effects, never preservation drift.
+> The oracle accepts them only from the same canonical required predecessor as the production
+> Starter-Charter owner, and separately proves every durable field reached the live SaveState;
+> malformed predecessors and live-only publication drift remain red without launching a browser.
+> The exact `4a82d9b…` Slice red that exposed the stale oracle remains FAIL; its changed-head repair
+> is browser-free green at 249 files / 2,488 passed / 1 skipped with typecheck green and changes no
+> player-facing progression rule.
+
 > **2026-08-30 current replacement boot-catch-up clarification:** aggregate progression still owns
 > one receipt/F4 CAS and only the canonical achievement append plus monotonic `stats.bestRank`.
 > Whole-expedition replacement first clears the old receipt history; the replacement document then

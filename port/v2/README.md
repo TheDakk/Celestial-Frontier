@@ -1,5 +1,25 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+> **Current local evidence boundary (2026-08-30):** exact signed source
+> `4a82d9b82521ea9bd1ac5e7c0754a473bcadd997` passed Compendium 78/78 once/no-retry, then its
+> unchanged-source Slice `20260830152819879-75689-abf2a37ffd4d` stopped once/no-retry with three
+> harness/oracle scopes. Mine correctly completed accepted `st-mine` and paid its 15 current/lifetime
+> Stardust in the same durable action; the stale exact-action oracle had omitted those coupled
+> fields. Survey then dispatched a one-shot Search Enter before Escape/ascent persistence released
+> `activePersist`, so product Search correctly refused the valid Stage-1-reachable route.
+>
+> The local successor models the exact Mine/Charter transaction only from a product-canonical,
+> all-fields-present predecessor. Six successor mutants, ten preserved-evidence predecessor pairs,
+> a direct non-plain-record control and live-only mutants for every durable-mapped field/statistic are browser-free red;
+> all three preserved gzip/raw carriers and their run/log semantics are replay-bound. The harness
+> also fail-stops every Mine dependency boundary, waits for F4 writable authority before Survey
+> Enter, retains post-route stabilization and emits cause-bearing Search/action/persistence
+> diagnostics. No game/app source, timeout, retry, save schema, creature/genome/art structure,
+> numeric ruler or browser baseline changed. Browser-free acceptance is **249 files / 2,488 passed /
+> 1 skipped** and `npm run typecheck` is green. The exact red evidence remains FAIL; Glass and
+> Recovery did not run. A new clean signed source must complete the copy-ready chain below once,
+> stopping without retry at the first red or nonzero result.
+
 > **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact signed source
 > `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
@@ -348,7 +368,7 @@
 > and deployment remain open. Edge point version remains provenance only and never triggers
 > rebaseline or threshold movement.
 
-> **Exact `e4f5af4…` browser boundary and current Slice-oracle repair (2026-08-30):** signed clean
+> **Historical `e4f5af4…` browser boundary and F4 Slice-oracle repair (2026-08-30):** signed clean
 > source `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium 78/78 once/no-retry in
 > 64,831 ms as `20260830-pr35-slice-oracle-e4f5af4bf628-compendium-certification`. Its exact
 > unchanged-source Slice `20260830-pr35-slice-oracle-e4f5af4bf628-slice-certification` stopped
@@ -3011,6 +3031,7 @@ node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_
 | Tool | Role |
 |---|---|
 | **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |
+| **Current Arc 3 Mine/Survey boundary inside `npm run smoke:ci` (2026-08-30)** | Exact `4a82d9b…` evidence proved Mine's accepted `st-mine` completion and 15 current/lifetime Stardust award are coupled action-owned fields, not unrelated preservation drift. `tests/pr35-4a82-mine-charter-evidence-replay.test.ts` binds the immutable three-scope Slice red, exact six-field successor and six synchronized negative mutants while denying Glass/Recovery authority. Slice now fail-stops after each held baseline/control, real Mine outcome, durable control and final Mine control before dependent work. Mars Escape/ascent must satisfy `waitForF4Writable` before the one-shot Survey Search Enter; post-route stabilization remains, and failures retain Search value/focus, Follow outcome, global action owner and persistence cause. No retry, sleep, timeout increase, product change or Edge rebaseline is used. Current browser-free acceptance is 249 files / 2,488 passed / 1 skipped with typecheck green. |
 | `node tools/tracked-input-preflight.mjs --selftest` / `node tools/tracked-input-preflight.mjs` | Mutation-controls the tracked-only boundary, then—only from a clean committed candidate—exports the exact index, installs in isolation and executes the complete hosted browser-free/static command plan with start/end source stability. This is the mandatory preauthorization rehearsal, not hosted or browser evidence. |
 | `npx vitest run tests/current-producer-authorities.test.ts` / `node tools/print-producer-authorities.mjs` | Before browser installation or campaign work, performs one standard app build under the shared workspace lock and compares SceneMemory plus Compendium's live budget records directly to independently derived current source/dist authorities. The test is automatically included in `npm test`; source, build, forged duplicate-constant, recomputed index and recomputed owner mutants must fail with exact mismatch paths. The printer reports those paths and exits nonzero on any mismatch. It never rewrites budgets or historical samples and is not a browser certificate. |
 | **Historical Final11 campaign evidence** | Signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc` passed Layout 787/787, SceneMemory 42/42, Compendium 78/78 with six PNGs, Slice with zero findings/ten PNGs and all 12 Glass viewports with zero findings or instrument failures; every stage ran once and passed named verification. Recovery ran once for 1,291,034 ms and passed all 15 observation outcomes/309 samples, the uninterrupted 20-minute window, exact next-cycle boundary and recovered UI. Its final assessor failed only `activePlayProjection` and `closeCheckpoint`; cleanup passed and no retry occurred. Final11 is immutable, instrument-red rather than product-red, and not a Recovery certificate. Exact carriers are in `audits/README.md`. |

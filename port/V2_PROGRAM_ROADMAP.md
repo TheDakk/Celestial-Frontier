@@ -1,5 +1,28 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
+> **Current local PR #35 Mine/Survey evidence repair (2026-08-30; supersedes the narrower
+> `e4f5af4…` changed-head boundary below):** exact clean signed source
+> `4a82d9b82521ea9bd1ac5e7c0754a473bcadd997` passed Compendium 78/78 once/no-retry in
+> 64,895 ms. Its unchanged-source Slice `20260830152819879-75689-abf2a37ffd4d` then stopped
+> terminal red once/no-retry after 99,332 ms with three scopes. The real Mine action was correct:
+> it atomically completed accepted `st-mine`, canonicalized its progress, removed its acceptance,
+> advanced honored Charters and paid 15 current/lifetime Stardust while preserving unrelated
+> evidence. The oracle omitted those coupled fields, so its real-outcome and control scopes were
+> false. Survey independently sent a one-shot Search Enter before Escape/ascent persistence
+> released `activePersist`; the valid in-reach route was correctly refused and never retried.
+>
+> Current tooling derives the exact coupled Mine successor only from the product-canonical required
+> predecessor, with six successor, ten preserved-evidence predecessor and live-only mutants for
+> every durable-mapped field/statistic plus a direct non-plain-record control. It cryptographically replay-binds all
+> three preserved carriers, fail-stops every Mine dependency boundary, waits for coupled writable
+> authority before Survey Enter, keeps post-route stabilization and captures cause-bearing
+> diagnostics. No product/gameplay source, timeout, retry, save schema, creature/genome/art
+> structure, ruler or Edge baseline changed.
+> Browser-free acceptance is **249 files / 2,488 passed / 1 skipped** with all TypeScript programs
+> green. Exact carriers are in `audits/README.md`. This changed head still needs a fresh unchanged-
+> source Compendium → Slice → Glass → Recovery chain and grants no HUMAN, hosted, merge, release,
+> version or deployment authority.
+
 > **Historical signed universe-polish + bounded Arc 5 Feed automated certificate (2026-08-29):** exact
 > signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
 > `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
@@ -333,12 +356,12 @@
 > defers/coalesces ordinary save checkpoints and re-arms one after the route/catch-up enqueue; exact
 > heartbeat/lifecycle owners retain their private boundary. Timeout remains diagnostic; no sleep/
 > retry was added. No
-> unrelated gameplay system, creature, genome or save-schema structure changed. The changed head has
-> no browser certificate,
+> unrelated gameplay system, creature, genome or save-schema structure changed. That historical changed head had
+> no complete browser certificate,
 > so Slice → Glass → Recovery, HUMAN, hosted, merge, release/version and deployment remain open.
 > Edge point version is provenance only and never triggers rebaseline or threshold movement.
 
-> **Exact `e4f5af4…` successor evidence and bounded instrument repair:** exact signed clean source
+> **Historical exact `e4f5af4…` successor evidence and bounded F4 instrument repair:** exact signed clean source
 > `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium run
 > `20260830-pr35-slice-oracle-e4f5af4bf628-compendium-certification` 78/78 once/no-retry. Its
 > unchanged-source Slice `20260830-pr35-slice-oracle-e4f5af4bf628-slice-certification` then stopped
@@ -348,7 +371,7 @@
 > `pr35-e4f5-slice-oracle-evidence-replay.test.ts` retain that exact chronology; the earlier
 > `ae2a002…` eight-scope evidence remains historical.
 >
-> The current changed-source repair uses native trace-v3 to inventory every readwrite first observed
+> That changed-source F4 repair uses native trace-v3 to inventory every readwrite first observed
 > before replacement completion and require exactly one settled eight-store IndexedDB replacement;
 > it then freezes before the required later lease-release CAS. It observes every
 > available object-store request method and index access, then requires the exact 13-call

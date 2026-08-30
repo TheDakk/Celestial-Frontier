@@ -67,6 +67,7 @@ import {
   assessArc3RemnantSkimRoutePrecondition,
   assessArc3StorageRefusal,
   assessEngineeringNoOptimismUi as assessArc3NoOptimismUi,
+  arc3ActionLivePublicationParity,
   arc3ActionUnrelatedEvidencePreserved,
   arc3DurableEvidenceComplete,
   arc3MineBrowserOutcomePasses,
@@ -1496,7 +1497,8 @@ const canonicalJson = (value) => {
   return JSON.stringify(value);
 };
 const ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
-  card=document.getElementById('survey'),cardCode=S?.api?.cardShareCode?.()??null,
+  card=document.getElementById('survey'),search=document.getElementById('searchbox'),
+  cardCode=S?.api?.cardShareCode?.()??null,
   planetTarget=S?.api?.planetScreenTarget?.({seed:${ARC3_BIOME_SURVEY_TARGET.planetSeed},ordinal:${ARC3_BIOME_SURVEY_TARGET.planetOrdinal}})??null,
   text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),
   rows=[...card?.querySelectorAll('[data-row="Mineral veins"]')??[]].map((row)=>{const label=text(row.querySelector('span')),
@@ -1510,6 +1512,11 @@ const ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION = `(()=>{const S=window.__CF_SL
     navWorldKey:state?.navWorldKey??null,cardOpen:state?.cardOpen??null,cardTitle:state?.cardTitle??null,
     cardCode,planetTarget,renderedScene:state?.renderedScene??null,
     pendingPersistenceWrites:state?.sceneResources?.pendingPersistenceWrites??null,
+    searchValue:search?.value??null,searchFocused:document.activeElement===search,
+    shareFollowOutcome:state?.sharing?.followOutcome??null,
+    productActionOwner:state?.engineering?.actionCoordinator?.owner??null,
+    persistenceLastOutcome:state?.persistence?.lastOutcome??null,
+    persistenceMutationBlocked:state?.persistence?.mutationBlocked??null,
     rowCount:rows.length,rows,sensitiveCount:sensitive,mineActionCount:mine}})()`;
 const assessArc3OrbitalSurvey = ({ observation, owned }) => {
   const row = observation?.rows?.[0] ?? null;
@@ -2796,18 +2803,15 @@ const assessArc3EngineeringAction = ({
       ? pointer.length !== 1 || pointer[0]?.trusted !== true || pointer[0]?.pointerType !== 'mouse' || keys.length !== 0
       : keys.length !== 1 || keys[0]?.trusted !== true || keys[0]?.key !== 'Enter'
         || keys[0]?.code !== 'Enter' || pointer.length !== 0)) reasons.push('one trusted native visible action');
-  if (durableEvidenceComplete && (afterState?.engineering?.stateKind !== 'loaded'
-    || afterState?.engineering?.protection !== null
-    || afterState?.engineering?.revision !== after?.arc3?.revision
-    || canonicalJson(afterState?.engineering?.research) !== canonicalJson(after?.arc3?.research)
-    || (!publicationReload && afterState?.engineering?.lastOutcome !== `${operation}-committed`)
-    || canonicalJson(afterState?.save?.cargo) !== canonicalJson(after?.legacy?.cargo)
-    || canonicalJson(afterState?.save?.cgx) !== canonicalJson(after?.legacy?.cgx)
-    || canonicalJson(afterState?.save?.items) !== canonicalJson(after?.legacy?.items)
-    || canonicalJson(afterState?.save?.mineX) !== canonicalJson(after?.legacy?.mx)
-    || canonicalJson(afterState?.save?.mined) !== canonicalJson(after?.legacy?.minedw)
-    || canonicalJson(afterState?.save?.skimX) !== canonicalJson(after?.legacy?.skx)
-    || canonicalJson(afterState?.save?.techOwned) !== canonicalJson(after?.legacy?.tech))) {
+  checks.livePublication = !durableEvidenceComplete || (
+    afterState?.engineering?.stateKind === 'loaded'
+    && afterState?.engineering?.protection === null
+    && afterState?.engineering?.revision === after?.arc3?.revision
+    && canonicalJson(afterState?.engineering?.research) === canonicalJson(after?.arc3?.research)
+    && (publicationReload || afterState?.engineering?.lastOutcome === `${operation}-committed`)
+    && arc3ActionLivePublicationParity(after, afterState)
+  );
+  if (!checks.livePublication) {
     reasons.push('post-durable live publication parity');
   }
   checks.replacementReadOnly = !publicationReload || (
@@ -11156,6 +11160,9 @@ try {
     fails.push('ARC 3 MINE HOLD/LIFECYCLE: no-optimism, single-flight, Close, or reopen-pending outcome failed: '
       + JSON.stringify({ mineHoldArmed, minePoint, pendingClose, pendingReopen,
         assessment: minePendingAssessment, bundle: minePendingBundle }));
+    failSliceWithoutCascade('ARC 3 MINE HOLD/LIFECYCLE: red held-action baseline stopped its controls and every dependent mutable successor', {
+      alreadyReported: true,
+    });
   }
   const minePendingUiControls = {
     renderedFacts: assessArc3PendingLifecycle({ ...minePendingBundle,
@@ -11231,6 +11238,9 @@ try {
     fails.push('ARC 3 MINE HOLD CONTROLS FAILED — optimistic/simultaneous/retained/unlatched mutation stayed green: '
       + JSON.stringify({ minePendingControls, minePendingUiControlsIsolated,
         minePendingIdentityControls, minePendingIdentityControlsIsolated }));
+    failSliceWithoutCascade('ARC 3 MINE HOLD CONTROLS FAILED: a green mutant stopped the real Mine action and every dependent mutable successor', {
+      alreadyReported: true,
+    });
   }
   const mineReleased = await evalIn(`window.__CF_SLICE__.api.__smokeReleaseArc3ActionHold()`);
   await waitDesktopValue('Arc 3 Mine commit', `(()=>{const s=window.__CF_SLICE__.api.state(),d=window.__CF_SLICE__.api.shipyardDiagnostics();
@@ -11247,6 +11257,9 @@ try {
   })) {
     fails.push('ARC 3 MINE ACTION: one trusted visible Mine did not commit carrier/legacy/receipt/Charter truth: '
       + JSON.stringify({ mineReleased, assessment: mineAssessment, bundle: mineBundle }));
+    failSliceWithoutCascade('ARC 3 MINE ACTION: red native outcome stopped every dependent Mine control and mutable successor', {
+      alreadyReported: true,
+    });
   }
   const mineDurableDeletionControls = mineAssessment.ok
     ? arc3ActionDurableDeletionControls(mineBundle) : null;
@@ -11265,6 +11278,9 @@ try {
     fails.push('ARC 3 ACTION DURABLE-EVIDENCE CONTROLS FAILED — a missing raw/row/schema/carrier/receipt or split-only/legacy-only action-owned `at` mismatch was not isolated red: '
       + JSON.stringify({ mineDurableDeletionControls, mineDurableDeletionControlsIsolated,
         mineSplitMirrorControls, mineSplitMirrorControlsIsolated }));
+    failSliceWithoutCascade('ARC 3 ACTION DURABLE-EVIDENCE CONTROLS FAILED: a green durable mutant stopped later Mine controls and every mutable successor', {
+      alreadyReported: true,
+    });
   }
   const mineReceiptKey = `receipt:${mineBeforeRaw.authority.sessionRng.ordinal}`;
   const withoutMineReceipt = (rows) => (Array.isArray(rows) ? rows : [])
@@ -11405,6 +11421,51 @@ try {
   const mineF4RuntimeLagControlIsolated = isolatesNamedCheck(
     mineF4RuntimeLagControl, 'f4RuntimeAuthority',
   );
+  const mineLivePublicationControl = (mutate) => {
+    const afterState = structuredClone(mineAfterState);
+    mutate(afterState.save);
+    return assessArc3EngineeringAction({ ...mineBundle, afterState });
+  };
+  const mineLiveRequiredStatFields = [
+    'landings', 'charters', 'breeds', 'breedwins', 'feeds', 'feedfails',
+    'harvests', 'essenceEarned', 'guardians', 'paragons', 'bestRank', 'mines',
+    'crafts', 'minedout', 'skims', 'cosmics', 'shares', 'jumps', 'anomalies',
+    'events', 'duels', 'duelwins', 'hybrids', 'best', 'maxGen', 'surveys',
+  ];
+  const mineLivePublicationControls = {
+    chDone: mineLivePublicationControl((save) => {
+      save.chDone = structuredClone(mineBeforeState.save.chDone);
+    }),
+    chProg: mineLivePublicationControl((save) => {
+      save.chProg = structuredClone(mineBeforeState.save.chProg);
+    }),
+    chacc: mineLivePublicationControl((save) => {
+      save.chacc = structuredClone(mineBeforeState.save.chacc);
+    }),
+    essence: mineLivePublicationControl((save) => {
+      save.essence = mineBeforeState.save.essence;
+    }),
+    unlocked: mineLivePublicationControl((save) => {
+      save.unlocked = [...save.unlocked, 'arc3-live-publication-control'];
+    }),
+    ...Object.fromEntries([
+      ...mineLiveRequiredStatFields.flatMap((field) => [
+        [`stats.${field}.value`, mineLivePublicationControl((save) => {
+          save.stats[field] = Number(save.stats[field]) + 1;
+        })],
+        [`stats.${field}.presence`, mineLivePublicationControl((save) => {
+          delete save.stats[field];
+        })],
+      ]),
+      ...['scanhits', 'arrivals'].map((field) => [
+        `stats.${field}.optional`, mineLivePublicationControl((save) => {
+          save.stats[field] = Number(save.stats[field] ?? 0) + 1;
+        }),
+      ]),
+    ]),
+  };
+  const mineLivePublicationControlsIsolated = Object.values(mineLivePublicationControls)
+    .every((assessment) => isolatesNamedCheck(assessment, 'livePublication'));
   const mineActionControls = {
     double: assessArc3EngineeringAction({ ...mineBundle, interaction: { ...mineInteraction,
       clicks: [...(Array.isArray(mineInteraction?.clicks) ? mineInteraction.clicks : []),
@@ -11452,7 +11513,7 @@ try {
     || !mineUnrelatedPreservationControlsIsolated || !mineNarrowOwnershipControlsIsolated
     || !mineOtherWorldControlIsolated || !mineOwnerShapeControlsIsolated
     || !mineF4MalformedControlsIsolated || !mineF4BackwardControlIsolated
-    || !mineF4RuntimeLagControlIsolated) {
+    || !mineF4RuntimeLagControlIsolated || !mineLivePublicationControlsIsolated) {
     fails.push('ARC 3 MINE ACTION CONTROLS FAILED — double/revision/receipt/full-address/duplicate/cooldown/Arc2/Charter loss stayed green: '
       + JSON.stringify({ mineActionControls, mineHierarchyAddressRejectedSpecifically,
         mineDuplicateRejectedSpecifically, mineMissingCooldownRejectedSpecifically,
@@ -11462,7 +11523,11 @@ try {
         mineOtherWorldControlIsolated, mineOwnerShapeControls, mineOwnerShapeControlsIsolated,
         mineF4MalformedControls, mineF4MalformedControlsIsolated,
         mineF4BackwardControl, mineF4BackwardControlIsolated,
-        mineF4RuntimeLagControl, mineF4RuntimeLagControlIsolated }));
+        mineF4RuntimeLagControl, mineF4RuntimeLagControlIsolated,
+        mineLivePublicationControls, mineLivePublicationControlsIsolated }));
+    failSliceWithoutCascade('ARC 3 MINE ACTION CONTROLS FAILED: a green Mine mutant stopped Survey and every later mutable successor', {
+      alreadyReported: true,
+    });
   }
 
   /* Deep Scanners must be proved through the real orbital Survey consumer,
@@ -11483,7 +11548,14 @@ try {
     || biomeLifted.planet !== null || typeof biomeSurveyCode !== 'string') {
     fails.push('ARC 3 BIOME SURVEY ROUTE: native close/lift or strict CF1 target was unavailable: '
       + JSON.stringify({ biomeRouteClose, biomeLifted, biomeSurveyCode }));
+    failSliceWithoutCascade('ARC 3 BIOME SURVEY ROUTE: red native close/lift/code setup stopped Search and every dependent mutable successor', {
+      alreadyReported: true,
+    });
   }
+  /* Escape ascent schedules one durable view write. Search is intentionally
+     one-shot and refuses while that write owns activePersist, so prove the
+     shared authority is writable before sending the native Enter. */
+  await waitForF4Writable('Arc 3 biome Survey pre-purchase route authority');
   if (biomeSurveyCode) {
     await evalIn(`(()=>{const input=document.getElementById('searchbox');input.value=${JSON.stringify(biomeSurveyCode)};input.focus();return true})()`);
     await keyIn('Enter', 'Enter');
@@ -11500,7 +11572,7 @@ try {
       && observation?.cardOpen === true
       && observation?.pendingPersistenceWrites === 0,
   );
-  await waitForF4Writable('Arc 3 biome Survey pre-purchase authority');
+  await waitForF4Writable('Arc 3 biome Survey pre-purchase post-route authority');
   const biomePreObservation = await evalIn(ARC3_ORBITAL_SURVEY_OBSERVATION_EXPRESSION);
   const biomePreAssessment = assessArc3OrbitalSurvey({ observation: biomePreObservation, owned: false });
   const biomePreAuthorityControls = biomePreAssessment.ok ? {

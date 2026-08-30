@@ -1,5 +1,26 @@
 # Celestial Frontier — Save System
 
+> **2026-08-30 current Arc 3 action/readiness clarification (matches local code):** exact action
+> preservation is computed around the complete transaction, not around one domain in isolation.
+> Mine may atomically update extraction/cooldown plus accepted `st-mine` completion and its 15
+> current/lifetime Stardust award (`chs`, `chp`, `chacc`, `charters`, `essence`,
+> `essenceEarned`); those six fields must match that exact successor in both legacy and player-row
+> mirrors while every genuinely unrelated row/extension remains byte-exact. The action oracle now
+> requires all six fields and mirrors production completed/accepted/progress canonicality before it
+> derives the successor. After durability, live `chDone`/`chProg`/`chacc`, current/lifetime reward,
+> Charter/rank stats and unlocked publication must match their exact legacy mappings; live-only
+> mutants cover every durable-mapped field/statistic and prove a correct raw commit cannot hide a
+> partial publisher. The immutable
+> `4a82d9b…` Slice proved the product transaction correct and the old preservation whitelist stale.
+>
+> A route input that is intentionally one-shot must also begin only after prior view persistence
+> releases the shared authority. Mars Escape/ascent schedules `persistView`; the Survey Search
+> harness now requires coupled F4 writable readiness—including zero pending persistence writes and
+> no mutation fence—before native Enter, then rechecks after the committed route. It neither retries
+> nor lengthens the fixed diagnostic timeout. Every red Mine boundary now terminates before its
+> dependent controls or Survey. Current browser-free acceptance is 249 files / 2,488 passed /
+> 1 skipped with all TypeScript programs green; no save schema or migration changed.
+
 > **2026-08-30 current F4 replacement/codec-oracle clarification:** whole-expedition replacement
 > and replacement-document bootstrap are two exact transactions. The native replacement clears the
 > prior receipt store and writes the trusted source v5 rows without an F4 carrier; one later held,

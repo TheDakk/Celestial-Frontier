@@ -99,6 +99,39 @@ const ORDER_RULES = [
   },
 ] as const;
 
+const MINE_CAUSAL_STOP_RULES = [
+  {
+    label: 'held Mine baseline -> pending controls',
+    finding: "fails.push('ARC 3 MINE HOLD/LIFECYCLE:",
+    stop: "failSliceWithoutCascade('ARC 3 MINE HOLD/LIFECYCLE: red held-action baseline stopped",
+    dependent: 'const minePendingUiControls = {',
+  },
+  {
+    label: 'held Mine controls -> real Mine release',
+    finding: "fails.push('ARC 3 MINE HOLD CONTROLS FAILED",
+    stop: "failSliceWithoutCascade('ARC 3 MINE HOLD CONTROLS FAILED: a green mutant stopped",
+    dependent: 'const mineReleased = await evalIn',
+  },
+  {
+    label: 'real Mine outcome -> durable deletion controls',
+    finding: "fails.push('ARC 3 MINE ACTION: one trusted",
+    stop: "failSliceWithoutCascade('ARC 3 MINE ACTION: red native outcome stopped",
+    dependent: 'const mineDurableDeletionControls = mineAssessment.ok',
+  },
+  {
+    label: 'durable deletion controls -> later Mine controls',
+    finding: "fails.push('ARC 3 ACTION DURABLE-EVIDENCE CONTROLS FAILED",
+    stop: "failSliceWithoutCascade('ARC 3 ACTION DURABLE-EVIDENCE CONTROLS FAILED: a green durable mutant stopped",
+    dependent: 'const mineReceiptKey = `receipt:${mineBeforeRaw.authority.sessionRng.ordinal}`;',
+  },
+  {
+    label: 'final Mine controls -> Survey',
+    finding: "fails.push('ARC 3 MINE ACTION CONTROLS FAILED",
+    stop: "failSliceWithoutCascade('ARC 3 MINE ACTION CONTROLS FAILED: a green Mine mutant stopped",
+    dependent: "const biomeRouteClose = await closeEngineeringPanel('Arc 3 biome Survey route');",
+  },
+] as const;
+
 function occurrenceCount(haystack: string, needle: string): number {
   return haystack.split(needle).length - 1;
 }
@@ -137,6 +170,26 @@ function ownerErrors(owner: string): string[] {
       errors.push(`${label}: non-unique order fields (${firstCount}, ${secondCount})`);
     } else if (owner.indexOf(first) >= owner.indexOf(second)) {
       errors.push(`${label}: reversed`);
+    }
+  }
+  return errors;
+}
+
+function mineCausalStopErrors(candidate: string): string[] {
+  const errors: string[] = [];
+  for (const { label, finding, stop, dependent } of MINE_CAUSAL_STOP_RULES) {
+    const findingCount = occurrenceCount(candidate, finding);
+    const stopCount = occurrenceCount(candidate, stop);
+    const dependentCount = occurrenceCount(candidate, dependent);
+    if (findingCount !== 1 || stopCount !== 1 || dependentCount !== 1) {
+      errors.push(`${label}: non-unique causal fields (${findingCount}, ${stopCount}, ${dependentCount})`);
+      continue;
+    }
+    const findingIndex = candidate.indexOf(finding);
+    const stopIndex = candidate.indexOf(stop);
+    const dependentIndex = candidate.indexOf(dependent);
+    if (!(findingIndex < stopIndex && stopIndex < dependentIndex)) {
+      errors.push(`${label}: red finding does not fail-stop before dependent work`);
     }
   }
   return errors;
@@ -186,6 +239,25 @@ describe('Slice Arc 3 Survey/panel lifecycle evidence', () => {
       expect(occurrenceCount(mutant, rule.first), rule.label).toBe(1);
       expect(occurrenceCount(mutant, rule.second), rule.label).toBe(1);
       expect(ownerErrors(mutant), rule.label).toContain(`${rule.label}: reversed`);
+    }
+  });
+
+  it('fail-stops every Mine dependency boundary before controls or mutable successor stages', () => {
+    expect(mineCausalStopErrors(source)).toEqual([]);
+  });
+
+  it('makes every removed or reordered Mine causal stop focused red', () => {
+    for (const [index, rule] of MINE_CAUSAL_STOP_RULES.entries()) {
+      expect(occurrenceCount(source, rule.stop), rule.label).toBe(1);
+      const removed = source.replace(rule.stop, `__ARC3_MINE_STOP_REMOVED_${index}__`);
+      expect(mineCausalStopErrors(removed), `${rule.label} removal`).toContain(
+        `${rule.label}: non-unique causal fields (1, 0, 1)`,
+      );
+
+      const reversed = swapUnique(source, rule.stop, rule.dependent, index + 100);
+      expect(mineCausalStopErrors(reversed), `${rule.label} reversal`).toContain(
+        `${rule.label}: red finding does not fail-stop before dependent work`,
+      );
     }
   });
 

@@ -406,7 +406,10 @@ export const arc3TrainingDurableEvidenceComplete = (evidence) => (
 
 const ARC3_ACTION_OWNED_DATA_FIELDS = Object.freeze({
   'mine-world': Object.freeze({
-    player: Object.freeze(['at', 'mines', 'asc', 'ascp']),
+    player: Object.freeze([
+      'at', 'mines', 'asc', 'ascp',
+      'chs', 'chp', 'chacc', 'charters', 'essence', 'essenceEarned',
+    ]),
     inventory: Object.freeze(['cargo', 'mx', 'minedw']),
   }),
   'skim-star': Object.freeze({
@@ -484,6 +487,49 @@ const applyToolStampedRewrite = (expected, before, afterStamp) => {
   }
   return true;
 };
+const TOOL_STARTER_CHARTER_IDS = Object.freeze([
+  'st-land', 'st-mine', 'st-scan', 'st-scout', 'st-conq',
+  'st-mercury', 'st-mars', 'st-giants', 'st-ice', 'st-comp',
+]);
+const exactToolMineCharterState = (before) => {
+  const fields = ['chs', 'chp', 'chacc', 'charters', 'essence', 'essenceEarned'];
+  if (!fields.every((field) => Object.prototype.hasOwnProperty.call(before, field))
+    || !Array.isArray(before.chs) || before.chs.length > TOOL_STARTER_CHARTER_IDS.length
+    || before.chs.some((id) => typeof id !== 'string'
+      || !TOOL_STARTER_CHARTER_IDS.includes(id))
+    || new Set(before.chs).size !== before.chs.length
+    || !Array.isArray(before.chacc) || before.chacc.length > 50
+    || before.chacc.some((id) => typeof id !== 'string' || id.length < 1 || id.length > 24)
+    || new Set(before.chacc).size !== before.chacc.length
+    || before.chacc.some((id) => before.chs.includes(id))
+    || !isToolRecord(before.chp)
+    || (Object.getPrototypeOf(before.chp) !== Object.prototype
+      && Object.getPrototypeOf(before.chp) !== null)
+    || Object.entries(before.chp).some(([id, progress]) => (
+      id.length < 1 || id.length >= 24
+      || !Number.isSafeInteger(progress) || progress < 0 || progress > 999
+    ))
+    || !Number.isSafeInteger(before.charters) || before.charters < 0
+    || !Number.isSafeInteger(before.essence) || before.essence < 0
+    || !Number.isSafeInteger(before.essenceEarned) || before.essenceEarned < 0) return false;
+  return true;
+};
+const applyToolMineCharterTransition = (expected, before) => {
+  if (!exactToolMineCharterState(before)) return false;
+  const accepted = before.chacc.includes('st-mine');
+  const done = before.chs.includes('st-mine');
+  if (!accepted) return true;
+  if (done || before.charters >= Number.MAX_SAFE_INTEGER
+    || before.essence > Number.MAX_SAFE_INTEGER - 15
+    || before.essenceEarned > Number.MAX_SAFE_INTEGER - 15) return false;
+  expected.chs = [...before.chs, 'st-mine'];
+  expected.chp = { ...structuredClone(before.chp), 'st-mine': 1 };
+  expected.chacc = before.chacc.filter((id) => id !== 'st-mine');
+  expected.charters = before.charters + 1;
+  expected.essence = before.essence + 15;
+  expected.essenceEarned = before.essenceEarned + 15;
+  return true;
+};
 const exactToolActionLegacy = (before, after, operation) => {
   if (!isToolRecord(before) || !isToolRecord(after)
     || !Number.isSafeInteger(before.at) || !Number.isSafeInteger(after.at)
@@ -492,6 +538,7 @@ const exactToolActionLegacy = (before, after, operation) => {
   expected.at = after.at;
   if (!applyToolStampedRewrite(expected, before, after.at)) return false;
   if (operation === 'mine-world') {
+    if (!applyToolMineCharterTransition(expected, before)) return false;
     expected.cargo = adjustedToolCountRows(before.cargo, [['Ca', 2], ['Cl', 3]]);
     expected.mx = adjustedToolCountRows(before.mx, [[134, 1]], { numeric: true });
     expected.minedw = adjustedToolCountRows(expected.minedw, [[134, after.at]], { numeric: true });
@@ -564,6 +611,69 @@ const exactToolActionArc2 = (before, after, operation) => {
   expected.inventory.revision = before.inventory.revision + 1;
   expected.stackableCounts = adjustedToolStackables(before.stackableCounts, 'plate', 1);
   return expected.stackableCounts !== null && sameToolValue(expected, after);
+};
+const ARC3_LIVE_STAT_LEGACY_FIELDS = Object.freeze([
+  Object.freeze(['landings', 'landings']), Object.freeze(['charters', 'charters']),
+  Object.freeze(['breeds', 'breeds']), Object.freeze(['breedwins', 'breedwins']),
+  Object.freeze(['feeds', 'feeds']), Object.freeze(['feedfails', 'feedfails']),
+  Object.freeze(['harvests', 'harvests']), Object.freeze(['essenceEarned', 'essenceEarned']),
+  Object.freeze(['guardians', 'guardians']), Object.freeze(['paragons', 'paragons']),
+  Object.freeze(['bestRank', 'br']), Object.freeze(['mines', 'mines']),
+  Object.freeze(['crafts', 'crafts']), Object.freeze(['minedout', 'minedout']),
+  Object.freeze(['skims', 'skims']), Object.freeze(['cosmics', 'cosmics']),
+  Object.freeze(['shares', 'shares']), Object.freeze(['jumps', 'jumps']),
+  Object.freeze(['anomalies', 'anomalies']), Object.freeze(['events', 'events']),
+  Object.freeze(['duels', 'duels']), Object.freeze(['duelwins', 'duelwins']),
+]);
+const ARC3_LIVE_EVER_REQUIRED_STAT_FIELDS = Object.freeze([
+  'hybrids', 'best', 'maxGen',
+]);
+export const arc3ActionLivePublicationParity = (evidence, state) => {
+  const legacy = evidence?.legacy;
+  const save = state?.save;
+  const stats = save?.stats;
+  const surveyed = legacy?.surveyed;
+  const legacyArrivals = Object.prototype.hasOwnProperty.call(legacy?.ever ?? {}, 'arrivals');
+  const liveArrivals = Object.prototype.hasOwnProperty.call(stats ?? {}, 'arrivals');
+  const sysv = legacy?.sysv;
+  return isToolRecord(legacy) && isToolRecord(legacy.ever)
+    && isToolRecord(save) && isToolRecord(stats)
+    && sameToolValue(save.cargo, legacy.cargo)
+    && sameToolValue(save.cgx, legacy.cgx)
+    && sameToolValue(save.items, legacy.items)
+    && sameToolValue(save.mineX, legacy.mx)
+    && sameToolValue(save.mined, legacy.minedw)
+    && sameToolValue(save.skimX, legacy.skx)
+    && sameToolValue(save.techOwned, legacy.tech)
+    && sameToolValue(save.chDone, legacy.chs)
+    && sameToolValue(save.chProg, legacy.chp)
+    && sameToolValue(save.chacc, legacy.chacc)
+    && save.essence === legacy.essence
+    && ARC3_LIVE_STAT_LEGACY_FIELDS.every(([statField, legacyField]) => (
+      Object.prototype.hasOwnProperty.call(stats, statField)
+      && stats[statField] === legacy[legacyField]
+    ))
+    && ARC3_LIVE_EVER_REQUIRED_STAT_FIELDS.every((statField) => (
+      Object.prototype.hasOwnProperty.call(stats, statField)
+      && stats[statField] === legacy.ever[statField]
+    ))
+    && (Object.prototype.hasOwnProperty.call(stats, 'scanhits')
+      ? stats.scanhits === legacy.ever.scanhits : legacy.ever.scanhits === 0)
+    && Array.isArray(surveyed)
+    && surveyed.every((id) => typeof id === 'string' && id.length > 0)
+    && new Set(surveyed).size === surveyed.length
+    && stats.surveys === surveyed.length
+    && legacyArrivals === liveArrivals
+    && (!legacyArrivals || (
+      Array.isArray(sysv)
+      && sysv.every((seed) => Number.isSafeInteger(seed) && seed >= 0 && seed <= 0xffff_ffff)
+      && new Set(sysv).size === sysv.length
+      && legacy.ever.arrivals === sysv.length
+      && stats.arrivals === sysv.length
+    ))
+    && sameToolValue(save.unlocked, legacy.ach)
+    && save.ascCh === legacy.asc
+    && sameToolValue(save.ascProg, legacy.ascp);
 };
 const omittedToolRecord = (value, omitted) => Object.fromEntries(
   Object.entries(value ?? {}).filter(([key]) => !omitted.includes(key)),
@@ -1359,7 +1469,10 @@ const exactActionLegacySelftestBefore = Object.freeze({
   cargo: Object.freeze([Object.freeze(['Fe', 100]), Object.freeze(['Si', 100])]),
   mx: Object.freeze([]), minedw: Object.freeze([]), skx: Object.freeze([]),
   mines: 10, asc: 0, ascp: Object.freeze({}), hp: 55, skims: 2, cosmics: 1,
-  essence: 100, tech: Object.freeze([]), items: Object.freeze([Object.freeze(['plate', 3])]),
+  chs: Object.freeze(['st-land']), chp: Object.freeze({ 'st-mine': 2 }),
+  chacc: Object.freeze(['st-mine']), charters: 2,
+  essence: 100, essenceEarned: 9_000,
+  tech: Object.freeze([]), items: Object.freeze([Object.freeze(['plate', 3])]),
   crafts: 2,
 });
 const exactActionStamp = 4_000_000;
@@ -1377,6 +1490,8 @@ const exactActionLegacySelftestAfter = Object.freeze({
     mx: Object.freeze([Object.freeze([134, 1])]),
     minedw: Object.freeze([Object.freeze([134, exactActionStamp])]),
     mines: 11, ascp: Object.freeze({ 'c1-mine': 1, 'c3-mine': 1 }),
+    chs: Object.freeze(['st-land', 'st-mine']), chp: Object.freeze({ 'st-mine': 1 }),
+    chacc: Object.freeze([]), charters: 3, essence: 115, essenceEarned: 9_015,
   }),
   'skim-star': Object.freeze({
     ...exactActionStampedBase,
@@ -1450,6 +1565,49 @@ const exactToolActionTransformSelftestPasses = Object.keys(ARC3_ACTION_OWNED_DAT
       { baseId: 'plate', count: 4 }, { baseId: 'wire', count: 3 },
     ],
   }, 'fabricate-fixed');
+const exactToolMineCharterControlsPass = [
+  ['chs', exactActionLegacySelftestBefore.chs],
+  ['chp', exactActionLegacySelftestBefore.chp],
+  ['chacc', exactActionLegacySelftestBefore.chacc],
+  ['charters', exactActionLegacySelftestBefore.charters],
+  ['essence', exactActionLegacySelftestBefore.essence],
+  ['essenceEarned', exactActionLegacySelftestBefore.essenceEarned],
+].every(([field, value]) => !exactToolActionLegacy(
+  exactActionLegacySelftestBefore,
+  { ...exactActionLegacySelftestAfter['mine-world'], [field]: structuredClone(value) },
+  'mine-world',
+));
+const exactToolMineCharterMalformedPredecessors = [
+  { ...exactActionLegacySelftestBefore, chs: ['st-land', 'unknown-starter'] },
+  { ...exactActionLegacySelftestBefore,
+    chacc: ['st-mine', ...Array.from({ length: 50 }, (_, index) => `wk-${index}`)] },
+  { ...exactActionLegacySelftestBefore, chacc: ['st-mine', 'x'.repeat(25)] },
+  { ...exactActionLegacySelftestBefore, chacc: ['st-mine', 'st-land'] },
+  { ...exactActionLegacySelftestBefore, chp: { 'st-mine': 2, '': 1 } },
+  { ...exactActionLegacySelftestBefore, chp: { 'st-mine': 2, ['x'.repeat(24)]: 1 } },
+  { ...exactActionLegacySelftestBefore, chp: { 'st-mine': 2, bad: -1 } },
+  { ...exactActionLegacySelftestBefore, chp: { 'st-mine': 2, bad: 1_000 } },
+  { ...exactActionLegacySelftestBefore, chp: { 'st-mine': 2, bad: 1.5 } },
+  (() => {
+    const progress = Object.assign(Object.create({ inherited: 1 }), { 'st-mine': 2 });
+    return { ...exactActionLegacySelftestBefore, chp: progress };
+  })(),
+  (() => {
+    const predecessor = { ...exactActionLegacySelftestBefore };
+    for (const field of ['chs', 'chp', 'chacc', 'charters', 'essence', 'essenceEarned']) {
+      delete predecessor[field];
+    }
+    return predecessor;
+  })(),
+];
+const exactToolMineCharterPredecessorControlsPass = (() => {
+  const nullPrototypeProgress = Object.assign(Object.create(null), { 'st-mine': 2 });
+  return applyToolMineCharterTransition(
+    {}, { ...exactActionLegacySelftestBefore, chp: nullPrototypeProgress },
+  ) && exactToolMineCharterMalformedPredecessors.every((predecessor) => (
+    !applyToolMineCharterTransition({}, predecessor)
+  ));
+})();
 const arc3ActionArc2ChangeSelftest = mutateV5SelftestRow(
   storageSelftestRaw, 'inventory', (row) => {
     row.extensions['arc2.loot'].json = '{"schema":"arc2-control/v1"}';
@@ -1994,6 +2152,8 @@ if (ENGINEERING_RESEARCH_IDS.length !== 6
   || !f4ToolAuthoritySelftestPasses
   || !trainingEvidenceModeSelftestPasses
   || !exactToolActionTransformSelftestPasses
+  || !exactToolMineCharterControlsPass
+  || !exactToolMineCharterPredecessorControlsPass
   || !arc3ActionPreservationSelftestPasses
   || !storageContractSelftestPasses
   || !engineeringUiContractSelftestPasses) {

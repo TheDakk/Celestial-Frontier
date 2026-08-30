@@ -1,5 +1,45 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **2026-08-30 current Mine/Survey evidence law (matches local code):** exact signed source
+> `4a82d9b82521ea9bd1ac5e7c0754a473bcadd997` passed Compendium 78/78 once/no-retry, then its
+> unchanged-source Slice `20260830152819879-75689-abf2a37ffd4d` stopped once/no-retry with three
+> scopes. All three were harness/oracle defects: Mine legitimately completed accepted `st-mine`
+> and paid 15 current/lifetime Stardust in the same durable action; the stale preservation oracle
+> called those coupled fields unrelated, contaminating its controls; later Survey Search sent its
+> one-shot Enter before the preceding ascent save released `activePersist`.
+>
+> **A SAME-TRANSACTION SUBSYSTEM IS OWNED, NOT UNRELATED.** When an action can settle a Charter,
+> achievement, reward, progression refresh or other coupled subsystem inside its one CAS, the exact
+> action oracle must derive that whole successor. It may not freeze those fields as “unrelated.”
+> Prove the accepted successor and independently mutate every coupled field family so broadening the
+> allowance is red.
+>
+> **VALIDATE THE PREDECESSOR THE WAY THE PRODUCT DOES.** A mathematically plausible successor is not
+> evidence if its predecessor could never enter the production action. Mirror required fields,
+> bounds, known-ID rules, uniqueness, overlap and plain-record/integer constraints before deriving
+> an exact transition. Include malformed-predecessor controls and an all-required-fields-absent
+> control; structural codec validity alone is not product authority.
+>
+> **A DURABLE PASS MUST ALSO PROVE LIVE PUBLICATION.** Exact raw rows can be correct while a targeted
+> publisher omits one coupled field. Compare every action-owned durable mapping to the live SaveState
+> after commit, then mutate each live-only field family while leaving raw evidence untouched. Those
+> controls must isolate the publication check before a browser campaign can trust the oracle.
+> Required zero-valued properties need presence controls too: coalescing missing to zero is a false
+> green unless the product schema explicitly defines absence as canonical zero.
+>
+> **PUT READINESS BEFORE THE ONE-SHOT ACTION.** If a native input correctly refuses while an earlier
+> write, barrier or coordinator owns authority—and deliberately does not retry—wait for the exact
+> shared writable predicate before dispatch. A barrier after the outcome timeout proves only that
+> the refusal eventually cleared. Do not repair this class with a longer timeout, sleep or retry;
+> retain input value/focus, action owner, named outcome and persistence state in the failure witness.
+>
+> **STOP AT THE CAUSAL BOUNDARY.** A red setup stops its real action; a red real outcome stops its
+> mutants; a green negative control stops later controls; and a red stage stops every mutable
+> successor. Source-order removal and reversal controls must prove each stop. Historical multi-scope
+> reports stay immutable, but current execution must not manufacture derivative stages after a root
+> has already invalidated their premise. Current browser-free acceptance is 249 files / 2,488 passed
+> / 1 skipped with all TypeScript programs green; this grants no fresh browser successor authority.
+
 > **2026-08-30 current sealed single-file worker authority (matches local code; supersedes the
 > execution-late `clients.get()` repair and the narrower 38d/830/d33 “current” boundaries below;
 > every named run and carrier remains immutable history):** exact signed source

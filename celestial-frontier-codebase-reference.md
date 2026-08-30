@@ -1,6 +1,32 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-30 current exact-`e4f5af4…` Slice-oracle overlay:** exact signed source
+> **2026-08-30 current exact-`4a82d9b…` Mine/Survey oracle overlay (matches local code):** signed
+> clean source `4a82d9b82521ea9bd1ac5e7c0754a473bcadd997` passed Compendium **78/78** in
+> 64,895 ms, then Slice `20260830152819879-75689-abf2a37ffd4d` stopped terminal red once/no-retry
+> after 99,332 ms with `arc-3-mine-action`, derivative Mine controls and Survey `harness` scopes.
+> Exact carriers, sizes and SHA-256 identities are registered in `audits/README.md`; Glass and
+> Recovery did not run.
+>
+> The Mine product successor was correct. The exact action projection now owns its legitimate
+> coupled Starter Charter settlement: append `st-mine` to `chs`, canonicalize `chp['st-mine']` to
+> 1, remove it from `chacc`, increment `charters`, and add 15 to both `essence` and
+> `essenceEarned`, alongside the existing extraction/cooldown changes. All six fields are required
+> and the predecessor mirrors production Charter ID/bound/uniqueness/overlap/plain-progress rules.
+> Six successor, ten report-backed malformed-predecessor and live-only mutants for every
+> durable-mapped field/statistic prevent the allowance or publication boundary from widening, while every unrelated row/extension
+> remains exact. The exact replay binds the Compendium, Slice JSON and raw-log carriers. Slice
+> fail-stops after each held baseline/control, real Mine outcome, durable control and final control
+> boundary before dependent work.
+>
+> The Survey target was source-valid and within Stage-1 reach. Escape/ascent had correctly queued
+> `persistView`; the harness sent its one-shot Search Enter while `activePersist` still owned the
+> write, so Search correctly refused. Coupled F4 writable readiness now precedes Enter, post-route
+> stabilization remains, and failure evidence includes Search/focus, Follow, action-owner and
+> persistence causes. No app/gameplay source, timeout, retry, save schema, creature/genome/art
+> structure or browser baseline changed. Browser-free acceptance is **249 files / 2,488 passed /
+> 1 skipped**, with all TypeScript programs green; fresh browser authority remains pending.
+
+> **2026-08-30 historical exact-`e4f5af4…` Slice-oracle overlay:** exact signed source
 > `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium **78/78** once/no-retry in
 > 64,831 ms, then Slice `20260830-pr35-slice-oracle-e4f5af4bf628-slice-certification` stopped
 > terminal red once/no-retry after **98,988 ms** with four ordered scopes:
@@ -117,7 +143,7 @@
 > catch-up enqueue. Exact heartbeat and pagehide-lifecycle owner tokens remain nondeferrable; the
 > heartbeat owner already refuses to queue behind product work and lifecycle may supersede the route.
 > The bounded timeout retains actionable diagnostics; it is not a retry.
-> No creature/genome/save-schema contract changed. This changed head has no browser certificate yet,
+> No creature/genome/save-schema contract changed. That historical changed head had no complete browser certificate,
 > and browser point version remains provenance only—never a rebaseline or threshold input.
 
 > **2026-08-30 historical post-claim PWA/species-art overlay (matched code at that source;
@@ -594,7 +620,7 @@
 > **Current port/v2 reference overlay matches the current local v2 worktree as of 2026-08-30.**
 > Historical browser claims remain bound only to their named signed sources, including `3f69e88…` and
 > exact `941ba45…`: the latter passed Compendium 78/78 before its exact-source Slice successor stopped
-> red, so Glass and Recovery did not run. The current changed head has no browser certificate.
+> red, so Glass and Recovery did not run. At that historical boundary the changed head had no complete browser certificate.
 >
 > **Historical 2026-08-28 Final10 offline-reopened oracle stop (superseded by Final11 above):**
 > signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` supplied Layout
@@ -4043,7 +4069,7 @@ Synchronous Slice/Glass/Recovery selftests use explicit 15-second child and
 20-second outer limits with separate timeout/nonzero/missing-marker controls. This gate does not
 replace the strict browser evidence chain or authorize hosted work.
 
-**Current exact e4f5 evidence/oracle boundary (2026-08-30):** Compendium run
+**Historical exact e4f5 evidence/oracle boundary (2026-08-30):** Compendium run
 `20260830-pr35-slice-oracle-e4f5af4bf628-compendium-certification` passed 78/78 once/no-retry.
 Its unchanged-source Slice successor ran once and stopped terminal red after 98,988 ms with the four
 ordered scopes listed in the current overlay, seven partial screenshots and no PASS marker. The
