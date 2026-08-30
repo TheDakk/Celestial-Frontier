@@ -3,6 +3,7 @@ import {
   installSpeciesCanvasFactory,
   type ArtCanvas,
 } from '@cf/art/species-canvas';
+import * as speciesPainter from '@cf/art/species-painter';
 import { SpeciesArtWorkerCore, type SpeciesArtEncodedCanvas } from './species-art-worker-core.js';
 import type { SpeciesArtWorkerResponse } from './species-art-protocol.js';
 
@@ -39,9 +40,11 @@ const encodeCanvas = async (portable: { readonly width: number; readonly height:
 const core = new SpeciesArtWorkerCore({
   checkCapabilities,
   loadPainter: async () => {
-    /* The heavy painter stays a worker-local lazy chunk. The canvas factory is
-       installed above before this import evaluates any generated painter. */
-    return await import('@cf/art/species-painter');
+    /* Worker construction remains lazy, while the worker's complete module
+       graph is one exact build-owned response. Keep this promise boundary so
+       the schema-stable import phases preserve ordering as first-job painter
+       acquisition; static module evaluation is deliberately not timed. */
+    return speciesPainter;
   },
   encodeCanvas,
   emit: post,

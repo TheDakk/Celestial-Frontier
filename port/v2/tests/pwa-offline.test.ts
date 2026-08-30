@@ -278,6 +278,60 @@ async function readClientPin(caches: MemoryCacheStorage, clientId: string): Prom
 }
 
 describe('Celestial Frontier exact-build PWA', () => {
+  it('seals both production Worker graphs and reserves ambiguous platform-loader names', () => {
+    const falsePositiveControls = [
+      'const cssHex = /^#[0-9a-f]{6}$/u;',
+      'const workerWords = /new\\s+Worker\\s*\\(/u;',
+      'const importWords = /importScripts\\(/u;',
+      'const quoted = "new Worker(";',
+      'const templateRaw = `importScripts(`;',
+      '// new Worker("./comment-only.js");',
+      '/* importScripts("./comment-only.js"); */',
+      'const harmless = { importScripts() { return "local"; } }; harmless.importScripts();',
+    ].join('\n');
+    const sealed = [
+      {
+        fileName: 'assets/species-art.worker-species.js',
+        source: `${falsePositiveControls}\nconst speciesPainter = true;`,
+      },
+      {
+        fileName: 'assets/biome-vista.worker-biome.js',
+        source: `${falsePositiveControls}\nconst biomeVista = true;`,
+      },
+      { fileName: 'assets/main-owner.js', source: 'import("./ordinary-window-chunk.js");' },
+    ] as const;
+    expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs(sealed)).not.toThrow();
+
+    const edgeMutants = [
+      'import/* comment-separated */("./late-worker-chunk.js");',
+      'import/* comment-separated */"./shared-painter.js";',
+      'new/* comment-separated */Worker/* comment-separated */("./nested-worker.js");',
+      'new (self["SharedWorker"])("./nested-shared-worker.js");',
+      'importScripts/* comment-separated */("./classic-worker-dependency.js");',
+      '(0, importScripts)("./indirect-classic-worker-dependency.js");',
+      'importScripts.call(self, "./called-classic-worker-dependency.js");',
+      'self["importScripts"]("./qualified-classic-worker-dependency.js");',
+      // Direct platform-loader names stay reserved even when shadowed: the
+      // generated sealed entry must never make global ownership ambiguous.
+      'class Worker {} new Worker();',
+      'function importScripts() {} importScripts();',
+    ] as const;
+    for (const workerName of ['species-art.worker-species.js', 'biome-vista.worker-biome.js']) {
+      for (const edgeMutant of edgeMutants) {
+        const mutant = sealed.map((record) => record.fileName.endsWith(workerName)
+          ? { ...record, source: `${record.source}\n${edgeMutant}` }
+          : record);
+        expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs(mutant))
+          .toThrow(/JavaScript dependency edges/u);
+      }
+    }
+
+    expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs(sealed.slice(0, 1)))
+      .toThrow(/exactly one sealed assets\/biome-vista\.worker-/u);
+    expect(() => __pwaBuildTestOnly.assertSealedWorkerGraphs([...sealed, sealed[0]]))
+      .toThrow(/exactly one sealed assets\/species-art\.worker-/u);
+  });
+
   it('derives a stable build identity from sorted exact paths and bytes', () => {
     const left = assetsFor({ '/index.html': 'index-a', '/assets/main-a.js': 'main-a' });
     const right = [...left].reverse();
@@ -559,7 +613,7 @@ describe('Celestial Frontier exact-build PWA', () => {
     expect(harness.fetches).toHaveLength(installFetchCount);
   });
 
-  it('pins created worker clients to their owner build before serving worker-local lazy chunks', async () => {
+  it('pins created worker clients before serving any later exact worker-owned subresource', async () => {
     const rows = {
       '/index.html': 'index-v1',
       '/assets/main-v1.js': 'main-v1',
@@ -649,11 +703,12 @@ describe('Celestial Frontier exact-build PWA', () => {
         mode: 'cors', destination: 'script',
       },
     }) as Response;
-    expect(await fallbackLazy.text()).toBe('worker-lazy-v1');
-    expect(await readClientPin(mutant.caches, 'claim-gap-worker')).toBe(mutant.buildId);
+    expect(fallbackLazy.status).toBe(503);
+    expect(await fallbackLazy.text()).toBe('This document has no retained Celestial Frontier build.');
+    expect(await readClientPin(mutant.caches, 'claim-gap-worker')).toBeNull();
   });
 
-  it('pins an execution-late first-install worker on its first controlled lazy fetch', async () => {
+  it('keeps execution-late worker subresources fail-closed instead of guessing build ownership', async () => {
     const rows = {
       '/index.html': 'index-v1',
       '/assets/worker-v1.js': 'worker-v1',
@@ -672,156 +727,21 @@ describe('Celestial Frontier exact-build PWA', () => {
       expect(await readClientPin(repaired.caches, lateClientId)).toBeNull();
       const networkFetches = repaired.fetches.length;
 
-      const lazy = await repaired.dispatch('fetch', {
+      const rejected = await repaired.dispatch('fetch', {
         clientId: lateClientId,
         request: {
           method: 'GET', url: 'https://game.test/assets/worker-lazy-v1.js',
           mode: 'cors', destination: 'script',
         },
       }) as Response;
-      expect(await lazy.text()).toBe('worker-lazy-v1');
-      expect(await readClientPin(repaired.caches, lateClientId)).toBe(repaired.buildId);
+      expect(rejected.status).toBe(503);
+      expect(await rejected.text()).toBe('This document has no retained Celestial Frontier build.');
+      expect(await readClientPin(repaired.caches, lateClientId)).toBeNull();
       expect(repaired.fetches).toHaveLength(networkFetches);
     }
-
-    const adoption = '    if(!navigation&&pinned===null)pinned=await adoptLateFirstInstallWorker(state,event.clientId);\n';
-    const mutant = createWorkerHarness(assetsFor(rows), rows, {
-      clientIds: ['window-client', 'execution-late-worker'],
-      clientTypes: { 'execution-late-worker': 'worker' },
-      matchAllOmittedClientIds: ['execution-late-worker'],
-      sourceTransform: (source) => {
-        expect(source.split(adoption)).toHaveLength(2);
-        return source.replace(adoption, '');
-      },
-    });
-    await mutant.dispatch('install');
-    await mutant.dispatch('activate');
-    const rejected = await mutant.dispatch('fetch', {
-      clientId: 'execution-late-worker',
-      request: {
-        method: 'GET', url: 'https://game.test/assets/worker-lazy-v1.js',
-        mode: 'cors', destination: 'script',
-      },
-    }) as Response;
-    expect(rejected.status).toBe(503);
-    expect(await rejected.text()).toBe('This document has no retained Celestial Frontier build.');
-    expect(await readClientPin(mutant.caches, 'execution-late-worker')).toBeNull();
   });
 
-  it('keeps late worker adoption closed to unknown clients, windows and retained-prior states', async () => {
-    const rows = {
-      '/index.html': 'index-v1',
-      '/assets/worker-lazy-v1.js': 'worker-lazy-v1',
-    };
-    const request = {
-      method: 'GET', url: 'https://game.test/assets/worker-lazy-v1.js',
-      mode: 'cors', destination: 'script',
-    } as const;
-
-    const guarded = createWorkerHarness(assetsFor(rows), rows, {
-      clientIds: ['window-client', 'late-worker'],
-      clientTypes: { 'late-worker': 'worker' },
-      matchAllOmittedClientIds: ['late-worker'],
-    });
-    await guarded.dispatch('install');
-    await seedControlState(guarded.caches, guarded.buildId, null);
-    for (const clientId of ['unknown-client', 'window-client']) {
-      const response = await guarded.dispatch('fetch', { clientId, request }) as Response;
-      expect(response.status).toBe(503);
-      expect(await response.text()).toBe('This document has no retained Celestial Frontier build.');
-      expect(await readClientPin(guarded.caches, clientId)).toBeNull();
-    }
-
-    const priorId = await seedCompleteBuild(guarded.caches, rows, '1'.repeat(64));
-    await seedControlState(guarded.caches, guarded.buildId, priorId);
-    const retainedPrior = await guarded.dispatch('fetch', {
-      clientId: 'late-worker', request,
-    }) as Response;
-    expect(retainedPrior.status).toBe(503);
-    expect(await retainedPrior.text()).toBe('This document has no retained Celestial Frontier build.');
-    expect(await readClientPin(guarded.caches, 'late-worker')).toBeNull();
-
-    const foreign = createWorkerHarness(assetsFor(rows), rows, {
-      clientIds: ['late-worker'],
-      clientTypes: { 'late-worker': 'worker' },
-    });
-    await foreign.dispatch('install');
-    const foreignRows = {
-      '/index.html': 'index-foreign',
-      '/assets/worker-lazy-v1.js': 'worker-lazy-foreign',
-    };
-    const foreignBuildId = await seedCompleteBuild(
-      foreign.caches, foreignRows, '3'.repeat(64),
-    );
-    await seedControlState(foreign.caches, foreignBuildId, null);
-    const wrongActiveWorker = await foreign.dispatch('fetch', {
-      clientId: 'late-worker', request,
-    }) as Response;
-    expect(wrongActiveWorker.status).toBe(503);
-    expect(await wrongActiveWorker.text()).toBe('This document has no retained Celestial Frontier build.');
-    expect(await readClientPin(foreign.caches, 'late-worker')).toBeNull();
-
-    const typeGuard = "  if(!client||(client.type!=='worker'&&client.type!=='sharedworker'))return null;\n";
-    const typeMutant = createWorkerHarness(assetsFor(rows), rows, {
-      clientIds: ['window-client'],
-      sourceTransform: (source) => {
-        expect(source.split(typeGuard)).toHaveLength(2);
-        return source.replace(typeGuard, '  if(!client)return null;\n');
-      },
-    });
-    await typeMutant.dispatch('install');
-    await seedControlState(typeMutant.caches, typeMutant.buildId, null);
-    const adoptedWindow = await typeMutant.dispatch('fetch', {
-      clientId: 'window-client', request,
-    }) as Response;
-    expect(await adoptedWindow.text()).toBe('worker-lazy-v1');
-    expect(await readClientPin(typeMutant.caches, 'window-client')).toBe(typeMutant.buildId);
-
-    const stateGuard = '  if(state.activeBuildId!==BUILD_ID||state.priorBuildId!==null||!validClientId(clientId))return null;\n';
-    const priorMutant = createWorkerHarness(assetsFor(rows), rows, {
-      clientIds: ['late-worker'],
-      clientTypes: { 'late-worker': 'worker' },
-      sourceTransform: (source) => {
-        expect(source.split(stateGuard)).toHaveLength(2);
-        return source.replace(
-          stateGuard,
-          '  if(state.activeBuildId!==BUILD_ID||!validClientId(clientId))return null;\n',
-        );
-      },
-    });
-    await priorMutant.dispatch('install');
-    const mutantPriorId = await seedCompleteBuild(priorMutant.caches, rows, '2'.repeat(64));
-    await seedControlState(priorMutant.caches, priorMutant.buildId, mutantPriorId);
-    const adoptedAcrossPrior = await priorMutant.dispatch('fetch', {
-      clientId: 'late-worker', request,
-    }) as Response;
-    expect(await adoptedAcrossPrior.text()).toBe('worker-lazy-v1');
-    expect(await readClientPin(priorMutant.caches, 'late-worker')).toBe(priorMutant.buildId);
-
-    const activeMutant = createWorkerHarness(assetsFor(rows), rows, {
-      clientIds: ['late-worker'],
-      clientTypes: { 'late-worker': 'worker' },
-      sourceTransform: (source) => {
-        expect(source.split(stateGuard)).toHaveLength(2);
-        return source.replace(
-          stateGuard,
-          '  if(state.priorBuildId!==null||!validClientId(clientId))return null;\n',
-        );
-      },
-    });
-    await activeMutant.dispatch('install');
-    const mutantForeignBuildId = await seedCompleteBuild(
-      activeMutant.caches, foreignRows, '4'.repeat(64),
-    );
-    await seedControlState(activeMutant.caches, mutantForeignBuildId, null);
-    const adoptedAcrossActive = await activeMutant.dispatch('fetch', {
-      clientId: 'late-worker', request,
-    }) as Response;
-    expect(await adoptedAcrossActive.text()).toBe('worker-lazy-foreign');
-    expect(await readClientPin(activeMutant.caches, 'late-worker')).toBe(mutantForeignBuildId);
-  });
-
-  it('keeps a prior-owned worker entry and lazy chunk on the exact prior build', async () => {
+  it('keeps a prior-owned worker entry and later subresource on the exact prior build', async () => {
     const caches = new MemoryCacheStorage();
     const priorRows = {
       '/index.html': 'index-prior',

@@ -1,36 +1,40 @@
 # Celestial Frontier — Master Art Direction
 
-> **2026-08-30 current execution-late first-install worker overlay (supersedes narrower PWA
+> **2026-08-30 current sealed single-file worker overlay (supersedes the execution-late repair and narrower PWA
 > authority language below; all named earlier art certificates remain immutable history):** exact
 > signed source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
 > `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` once/no-retry and stopped
-> terminal `product-fail` after **3,115 ms** at phone Planetside: the first species-painter dynamic
-> import failed, zero of 78 outcomes ran and all 78 were blocked. Its preserved carrier is 6,053
+> terminal `product-fail` after **3,115 ms** at phone Planetside: the first species-painter import
+> failed, zero of 78 outcomes ran and all 78 were blocked. Exact descendant
+> `dc6004cf4426df72bea141ac77b0be927f36886c` repeated that product failure after **3,112 ms** in
+> `20260830-pr35-execution-late-dc6004cf4426-compendium-certification`, despite worker `ready`;
+> neither red was retried or followed by a successor stage. The 38d carrier is 6,053
 > gzip bytes / SHA-256
 > `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`, 37,825 raw bytes /
 > SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`, and independently
 > replays **4/4**.
 >
-> This was an exact-build routing defect, not an art-generation defect. `matchAll` and `claim` can
-> both omit a worker before its realm is execution-ready. Its first controlled lazy fetch now uses
-> `clientId` plus `clients.get()` and may inherit only the current generated `BUILD_ID` when there
-> is no prior build and the live client is exactly worker/sharedworker. Unknown clients, windows,
-> retained-prior state and wrong-active state stay 503/no-pin; adoption/type/prior/active mutants
-> prove both directions. No network fallback, cross-build guess or retry exists.
+> This was worker packaging/PWA ownership, not art generation. Worker construction remains lazy,
+> while the species-art worker statically owns the painter and the biome-vista worker statically owns
+> the renderer. Production builds reject `import()` and external static JavaScript imports in both
+> entries. Fetch-time adoption is removed; every unpinned non-navigation request remains exact 503.
+> No network fallback, cross-build guess or retry exists.
 >
-> Current Compendium producer / service-worker / Scene-build authorities are
-> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf` /
-> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` /
-> `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; current Compendium / Scene
-> budget hashes are `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
-> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`.
-> Four focused files / **74 tests**, all TypeScript programs and the full browser-free **240 files /
-> 2,437 passed / 1 skipped** are green. The repair changes no painter byte/pixel path, seed, genome,
+> Current measurement / contract / collector authorities are
+> `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+> `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; producer / SW / Scene-build
+> are `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
+> `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
+> `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; Compendium / Scene budgets
+> are `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
+> `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Combined worker/painter asset
+> `assets/species-art.worker-DnnSDKMy.js` is
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. The repair changes no painter byte/pixel path, seed, genome,
 > anatomy, silhouette, palette, crop, organism/biome/vista structure, art ruler, ceiling or
-> 78-outcome inventory. Fresh exact-source browser, HUMAN art and physical-device judgment remain
-> required.
+> 78-outcome inventory. Certification, HUMAN art and physical-device judgment remain pending.
 
-**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` universe-wide visual implementation remains live as of 2026-08-30 under the execution-late PWA boundary above. Its completed local automated browser chain belongs only to historical exact signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae`; current local successors do not inherit that evidence. HUMAN and physical-device judgment remain open. The Arc 1A/1C and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
+**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` universe-wide visual implementation remains live as of 2026-08-30 under the sealed single-file worker/PWA boundary above. Its completed local automated browser chain belongs only to historical exact signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae`; current local successors do not inherit that evidence. HUMAN and physical-device judgment remain open. The Arc 1A/1C and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the

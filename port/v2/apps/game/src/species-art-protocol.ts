@@ -6,6 +6,9 @@ export const SPECIES_ART_WORKER_REQUEST_SCHEMA = 'cf-v2-species-art-worker-reque
 export const SPECIES_ART_WORKER_RESPONSE_SCHEMA = 'cf-v2-species-art-worker-response/v1' as const;
 
 export type SpeciesArtRenderKind = 'thumb132' | 'portrait440';
+/* `import-*` names are schema-stable history. In the sealed production worker
+   they describe first-job painter acquisition; static graph evaluation occurs
+   before worker code and is not represented by these phases. */
 export type SpeciesArtWorkerPhase =
   | 'import-start'
   | 'import-complete'
@@ -65,6 +68,7 @@ export interface SpeciesArtWorkerResultResponse extends SpeciesArtWorkerResponse
   readonly encodedBytes: number;
   readonly pngBytes: number;
   readonly decodedPixels: number;
+  /** Schema-stable name for the first-job painter-acquisition hook duration. */
   readonly importDurationMs: number;
   readonly renderDurationMs: number;
   readonly encodeDurationMs: number;

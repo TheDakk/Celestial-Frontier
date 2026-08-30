@@ -1,9 +1,13 @@
 /* Build-output authority shared by smoke and the Arc 1A memory gate. The
-   worker entry names its imported functions, so those names alone are not
-   enough: the heavy painter chunk also retains its exported size constant. */
+   dedicated worker must own both its protocol and painter semantics in one
+   exact generated file, with no worker-side JavaScript dependency edge. */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import {
+  javascriptModuleImports,
+  sealedWorkerJavaScriptDependencyEdges,
+} from './sealed-worker-graph.mjs';
 
 const WORKER_REQUEST_SCHEMA = 'cf-v2-species-art-worker-request/v1';
 const WORKER_RESPONSE_SCHEMA = 'cf-v2-species-art-worker-response/v1';
@@ -78,23 +82,15 @@ const chunkIdentity = ({ relativePath, bytes }) => Object.freeze({
 });
 
 const literalDynamicImports = (source) => {
-  const specifiers = [];
-  const pattern = /\bimport\s*\(\s*(?:"([^"\\\r\n]*)"|'([^'\\\r\n]*)'|`([^`\\\r\n$]*)`)\s*\)/gu;
-  let match;
-  while ((match = pattern.exec(source)) !== null) {
-    specifiers.push(match[1] ?? match[2] ?? match[3]);
-  }
-  return specifiers;
+  return javascriptModuleImports(source)
+    .filter(({ kind, specifier }) => kind === 'module-dynamic' && specifier !== null)
+    .map(({ specifier }) => specifier);
 };
 
 const literalStaticImports = (source) => {
-  const specifiers = [];
-  const pattern = /\b(?:from|import)\s*(?:"([^"\\\r\n]*)"|'([^'\\\r\n]*)')/gu;
-  let match;
-  while ((match = pattern.exec(source)) !== null) {
-    specifiers.push(match[1] ?? match[2]);
-  }
-  return specifiers;
+  return javascriptModuleImports(source)
+    .filter(({ kind, specifier }) => kind === 'module-static' && specifier !== null)
+    .map(({ specifier }) => specifier);
 };
 
 const resolveBuiltReference = (importerRelativePath, specifier) => {
@@ -245,38 +241,6 @@ export function candidateLegacyWindowSpeciesArtSource(source) {
     && source.includes('toDataURL');
 }
 
-/* The generated offline worker records every final runtime file by path and
-   digest so it can verify/cache exact bytes. That declarative inventory is not
-   an execution edge into the worker-local painter. Admit only the generated
-   root service worker's exact one-row path+digest entry, and only when the
-   painter basename occurs nowhere outside the parsed immutable asset table.
-   Static/dynamic imports and arbitrary string references remain foreign. */
-const declarativePwaPainterInventoryReference = (record, painterRecord) => {
-  if (record.relativePath !== 'service-worker.js'
-    || !record.source.includes("self.addEventListener('install'")
-    || !record.source.includes("self.addEventListener('activate'")
-    || !record.source.includes("self.addEventListener('fetch'")) return false;
-  const match = /const ASSETS=Object\.freeze\((\[[^\r\n]*\])\);/u.exec(record.source);
-  if (!match || match.index === undefined) return false;
-  let assets;
-  try { assets = JSON.parse(match[1]); } catch { return false; }
-  if (!Array.isArray(assets)) return false;
-  const expectedPath = `/${painterRecord.relativePath}`;
-  const expectedDigest = hashBytes(painterRecord.bytes);
-  const matches = assets.filter((asset) => asset && typeof asset === 'object'
-    && !Array.isArray(asset) && asset.path === expectedPath);
-  if (matches.length !== 1
-    || Reflect.ownKeys(matches[0]).length !== 2
-    || matches[0].sha256 !== expectedDigest) return false;
-  const painterBasename = path.posix.basename(painterRecord.relativePath);
-  const outsideTable = record.source.slice(0, match.index)
-    + record.source.slice(match.index + match[0].length);
-  if (outsideTable.includes(painterBasename)) return false;
-  return [...literalStaticImports(record.source), ...literalDynamicImports(record.source)]
-    .every((specifier) =>
-      resolveBuiltReference(record.relativePath, specifier) !== painterRecord.relativePath);
-};
-
 export function findCandidateSpeciesPainterChunk(candidateDist) {
   const records = collectCandidateJavaScript(candidateDist);
   return chunkIdentity(semanticMatches(
@@ -303,49 +267,23 @@ export function findCandidateSpeciesArtBuildGraph(candidateDist, options = {}) {
     candidateSpeciesWorkerEntrySource,
     'dedicated species-art worker entry',
   );
-  if (painterRecord.relativePath === workerRecord.relativePath) {
-    throw new Error('candidate species-art painter and worker entry must be separate chunks');
-  }
-
-  const painterBasename = path.posix.basename(painterRecord.relativePath);
-  const referringChunks = records.filter(({ relativePath, source }) =>
-    relativePath !== painterRecord.relativePath && source.includes(painterBasename));
-  const foreignReferrers = referringChunks.filter((record) =>
-    record.relativePath !== workerRecord.relativePath
-      && !declarativePwaPainterInventoryReference(record, painterRecord));
-  if (foreignReferrers.length !== 0) {
+  if (painterRecord.relativePath !== workerRecord.relativePath) {
     throw new Error(
-      `candidate species painter is referenced outside its dedicated worker: ${foreignReferrers.map(({ relativePath }) => relativePath).join(', ')}`,
+      'candidate species-art painter and worker semantics must share one exact generated file',
     );
   }
-  if (!referringChunks.some(({ relativePath }) => relativePath === workerRecord.relativePath)) {
-    throw new Error('candidate dedicated species-art worker does not reference the species painter chunk');
-  }
 
-  const dynamicPainterImports = literalDynamicImports(workerRecord.source).filter((specifier) =>
-    resolveBuiltReference(workerRecord.relativePath, specifier) === painterRecord.relativePath);
-  if (dynamicPainterImports.length !== 1) {
+  const workerDependencies = sealedWorkerJavaScriptDependencyEdges(workerRecord.source);
+  if (workerDependencies.length !== 0) {
+    const diagnoses = workerDependencies.map(({ kind, position, specifier }) =>
+      `${kind}@${position}${specifier === null ? '' : `:${JSON.stringify(specifier)}`}`);
     throw new Error(
-      `candidate dedicated species-art worker must dynamically import the exact species painter chunk once; found ${dynamicPainterImports.length}`,
+      `candidate dedicated species-art worker must not retain JavaScript dependency edges: ${diagnoses.join(', ')}`,
     );
-  }
-  const staticPainterImports = literalStaticImports(workerRecord.source).filter((specifier) =>
-    resolveBuiltReference(workerRecord.relativePath, specifier) === painterRecord.relativePath);
-  if (staticPainterImports.length !== 0) {
-    throw new Error('candidate dedicated species-art worker must not statically import the species painter chunk');
   }
 
   const index = readCandidateIndex(root, options.indexPath);
   const windowGraph = reachableModuleRecords(records, index);
-  const painterPreloads = modulePreloadHrefs(index.source).filter((href) =>
-    href.includes(painterBasename)
-    || resolveBuiltReference(index.relativePath, href) === painterRecord.relativePath);
-  if (painterPreloads.length !== 0) {
-    throw new Error(
-      `candidate index must not modulepreload the worker-local species painter: ${painterPreloads.join(', ')}`,
-    );
-  }
-
   const workerBasename = path.posix.basename(workerRecord.relativePath);
   const workerPreloads = modulePreloadHrefs(index.source).filter((href) =>
     href.includes(workerBasename)
@@ -365,6 +303,14 @@ export function findCandidateSpeciesArtBuildGraph(candidateDist, options = {}) {
       `candidate Window module graph must construct, not import, the species-art worker: ${importedWorker.join(', ')}`,
     );
   }
+  const blobWorkerPaths = windowGraph.records.filter(({ source }) =>
+    source.includes(workerBasename)
+      && /\bnew\s+Worker\s*\(\s*(?:URL\.)?createObjectURL\s*\(/u.test(source));
+  if (blobWorkerPaths.length !== 0) {
+    throw new Error(
+      `candidate Window module graph must not construct the species-art worker through a blob path: ${blobWorkerPaths.map(({ relativePath }) => relativePath).join(', ')}`,
+    );
+  }
   const workerEdges = windowGraph.records.flatMap((record) =>
     literalWorkerConstructors(record.source)
       .filter(({ specifier }) =>
@@ -375,11 +321,14 @@ export function findCandidateSpeciesArtBuildGraph(candidateDist, options = {}) {
       `candidate index module graph must own one exact module cf-species-art Worker edge; found ${workerEdges.length}`,
     );
   }
-  const workerMentions = windowGraph.records.filter(({ source }) => source.includes(workerBasename));
+  const workerMentions = windowGraph.records.flatMap((record) => {
+    const count = record.source.split(workerBasename).length - 1;
+    return Array.from({ length: count }, () => record.relativePath);
+  });
   if (workerMentions.length !== 1
-    || workerMentions[0].relativePath !== workerEdges[0].record.relativePath) {
+    || workerMentions[0] !== workerEdges[0].record.relativePath) {
     throw new Error(
-      `candidate Window module graph has ambiguous species-art worker ownership: ${workerMentions.map(({ relativePath }) => relativePath).join(', ')}`,
+      `candidate Window module graph has ambiguous species-art worker ownership: ${workerMentions.join(', ')}`,
     );
   }
   const legacyWindowPainters = windowGraph.records.filter(({ source }) =>
@@ -390,9 +339,10 @@ export function findCandidateSpeciesArtBuildGraph(candidateDist, options = {}) {
     );
   }
 
+  const workerIdentity = chunkIdentity(workerRecord);
   return Object.freeze({
     owner: chunkIdentity(workerEdges[0].record),
-    painter: chunkIdentity(painterRecord),
-    worker: chunkIdentity(workerRecord),
+    painter: workerIdentity,
+    worker: workerIdentity,
   });
 }

@@ -4,6 +4,7 @@ import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import type { Plugin, ResolvedConfig } from 'vite';
+import { sealedWorkerJavaScriptDependencyEdges } from '../../tools/sealed-worker-graph.mjs';
 
 export const CF_PWA_SCHEMA = 'cf-v2-pwa-build/v1' as const;
 export const CF_PWA_SERVICE_WORKER = 'service-worker.js' as const;
@@ -17,6 +18,11 @@ export interface PwaAssetDigestV1 {
 }
 
 const textEncoder = new TextEncoder();
+const textDecoder = new TextDecoder();
+const SEALED_WORKER_ENTRY_PREFIXES = Object.freeze([
+  'assets/species-art.worker-',
+  'assets/biome-vista.worker-',
+]);
 
 function normalizeBase(base: string): string {
   if (!base.startsWith('/') || base.startsWith('//') || !base.endsWith('/')) {
@@ -244,19 +250,6 @@ async function writeClientPin(clientId,buildId){
   const cache=await caches.open(CONTROL_CACHE);
   await cache.put(clientPinUrl(clientId),new Response(JSON.stringify({schema:SCHEMA,clientId,buildId}),{headers:{'content-type':'application/json'}}));
 }
-async function adoptLateFirstInstallWorker(state,clientId){
-  if(state.activeBuildId!==BUILD_ID||state.priorBuildId!==null||!validClientId(clientId))return null;
-  /* clients.matchAll() and clients.claim() can both omit a dedicated/shared
-     worker until that realm is execution-ready. If worker-client creation and
-     registration matching later make its lazy fetch controlled, that fetch
-     supplies the one identity clients.get() can wait for and confirm. With no
-     retained prior build there is exactly one cache identity to inherit;
-     windows, absent clients and every two-build update remain fail-closed. */
-  const client=await self.clients.get(clientId);
-  if(!client||(client.type!=='worker'&&client.type!=='sharedworker'))return null;
-  await writeClientPin(clientId,state.activeBuildId);
-  return state.activeBuildId;
-}
 async function preserveLiveClientBuilds(state,requireActiveOnly){
   const clients=await self.clients.matchAll({type:'all',includeUncontrolled:true});
   const cache=await caches.open(CONTROL_CACHE);
@@ -326,10 +319,9 @@ self.addEventListener('activate',(event)=>{
     if(!previous){
       if(!await preserveLiveClientBuilds(state,false))throw new Error('Refusing invalid first-install client ownership');
       await self.clients.claim();
-      /* A worker can be created after the pre-claim snapshot but before the
-         claim takes effect. Its entry loaded uncontrolled, so only this
-         post-claim reconciliation can pin its first worker-local lazy fetch
-         to the exact retained build. Activation remains the fetch barrier. */
+      /* Reconcile clients that became execution-ready across claim. Production
+         worker entries are sealed single-response module graphs, so correctness
+         never depends on recovering an omitted worker from a later import. */
       if(!await preserveLiveClientBuilds(state,false))throw new Error('Refusing invalid post-claim client ownership');
     }
     await broadcast(statusMessage(state,'active'));
@@ -384,7 +376,6 @@ self.addEventListener('fetch',(event)=>{
     const workerCreation=request.destination==='worker'||request.destination==='sharedworker';
     if(!navigation&&!validClientId(event.clientId))return new Response('This resource request has no Celestial Frontier document owner.',{status:503});
     let pinned=navigation?null:await readClientPin(event.clientId);
-    if(!navigation&&pinned===null)pinned=await adoptLateFirstInstallWorker(state,event.clientId);
     if(!navigation&&pinned===null)return new Response('This document has no retained Celestial Frontier build.',{status:503});
     if(pinned!==null&&pinned!==state.activeBuildId&&pinned!==state.priorBuildId)return new Response('This document no longer owns a retained Celestial Frontier build.',{status:503});
     const selectedBuildId=pinned??state.activeBuildId;
@@ -430,6 +421,40 @@ function outputBytes(output: { readonly type: string; readonly code?: string; re
   throw new Error('Celestial Frontier PWA received an asset without bytes');
 }
 
+interface BuiltWorkerGraphRecord {
+  readonly fileName: string;
+  readonly source: string;
+}
+
+/** Every production Worker stays lazy at the Window boundary, but once its
+ * exact content-hashed entry is requested it must be a complete module graph.
+ * A later worker-local import can straddle first-install clients.claim() in
+ * Chromium and become controlled without ever receiving a retained build pin.
+ * Reject that build shape instead of guessing ownership from a subresource
+ * FetchEvent whose client identity is not interoperable in that race. */
+function assertSealedWorkerGraphs(records: readonly BuiltWorkerGraphRecord[]): void {
+  for (const prefix of SEALED_WORKER_ENTRY_PREFIXES) {
+    const matches = records.filter(({ fileName }) =>
+      fileName.startsWith(prefix) && fileName.endsWith('.js'));
+    if (matches.length !== 1) {
+      throw new Error(
+        `Celestial Frontier requires exactly one sealed ${prefix} JavaScript entry; found ${matches.length}`,
+      );
+    }
+    const match = matches[0];
+    if (!match) throw new Error(`Celestial Frontier lost sealed worker ${prefix}`);
+    const { fileName, source } = match;
+    const dependencyEdges = sealedWorkerJavaScriptDependencyEdges(source);
+    if (dependencyEdges.length !== 0) {
+      const diagnoses = dependencyEdges.map(({ kind, position, specifier }) =>
+        `${kind}@${position}${specifier === null ? '' : `:${JSON.stringify(specifier)}`}`);
+      throw new Error(
+        `Celestial Frontier worker ${fileName} contains JavaScript dependency edges: ${diagnoses.join(', ')}`,
+      );
+    }
+  }
+}
+
 export function celestialFrontierPwaPlugin(): Plugin {
   let resolved: ResolvedConfig | null = null;
   let base = '/';
@@ -467,6 +492,11 @@ export function celestialFrontierPwaPlugin(): Plugin {
       runtimeFileNames = Object.keys(bundle)
         .filter((fileName) => fileName !== CF_PWA_SERVICE_WORKER && !fileName.endsWith('.map'))
         .sort();
+      assertSealedWorkerGraphs(runtimeFileNames.map((fileName) => {
+        const output = bundle[fileName];
+        if (!output) throw new Error(`Celestial Frontier PWA lost build output ${fileName}`);
+        return Object.freeze({ fileName, source: textDecoder.decode(outputBytes(output)) });
+      }));
       const assets = runtimeFileNames
         .map((fileName) => {
           const output = bundle[fileName];
@@ -491,6 +521,10 @@ export function celestialFrontierPwaPlugin(): Plugin {
         const outDir = options.dir
           ? resolve(resolved.root, options.dir)
           : resolve(resolved.root, resolved.build.outDir);
+        assertSealedWorkerGraphs(runtimeFileNames.map((fileName) => Object.freeze({
+          fileName,
+          source: readFileSync(resolve(outDir, fileName), 'utf8'),
+        })));
         /* Some Vite/Rolldown finalizers append source-map references after
            generateBundle. Hash the bytes that were actually written, then
            replace only the generated worker. This prevents a plausible
@@ -510,6 +544,7 @@ export function celestialFrontierPwaPlugin(): Plugin {
 }
 
 export const __pwaBuildTestOnly = Object.freeze({
+  assertSealedWorkerGraphs,
   assetPath,
   iconSvg,
   normalizeBase,

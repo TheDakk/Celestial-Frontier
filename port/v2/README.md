@@ -54,8 +54,8 @@
 > Exact raw/gzip carrier hashes are `c43bda32…c4d` / `42ee43f8…f4d0`; point-version provenance is
 > not a baseline. That certificate authorized only the one following Compendium attempt.
 
-> **Current PR #35 Compendium quiescent/settlement-contract boundary (2026-08-30; repaired
-> current authority, fresh green certificate still required):** clean signed source
+> **Historical PR #35 Compendium quiescent/settlement-contract boundary (2026-08-30; superseded
+> authority preserved for its named runs):** clean signed source
 > `2046000873f98318c767db53d2ffb2abac71cc94` ran exact
 > Compendium run `20260830-pr35-2046000-compendium-certification` once with zero retries on Edge
 > `152.0.4191.53` / CDP `1.3` and stopped at **76/78**. Only the phone and desktop
@@ -252,7 +252,8 @@
 > Certification remained pending and required a materially changed signed source for any new no-
 > retry Compendium attempt.
 
-> **Current PR #35 execution-late first-install boundary (2026-08-30; certification pending):**
+> **Historical PR #35 execution-late first-install boundaries and current sealed-worker repair
+> (2026-08-30; changed-head certification pending):**
 > exact signed source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
 > `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` exactly once with zero
 > retries on Edge `152.0.4191.53` / CDP `1.3`. It stopped terminal `product-fail` after **3,115 ms**
@@ -264,26 +265,41 @@
 > `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`; independent replay is
 > **4/4**.
 >
-> Both `matchAll` and claim can omit an execution-not-ready first-install realm before its first
-> later controlled request. The generated service worker confirms that request's `clientId` with
-> `clients.get()` and adopts only a live worker/sharedworker when active build equals `BUILD_ID` and
-> prior pin is null. Unknown clients, windows, prior pins and wrong-active states retain exact 503;
-> adoption, type, prior and active mutants independently preserve every refusal.
+> The then-current diagnosis observed that both `matchAll` and claim can omit an execution-not-ready
+> first-install realm before its first later controlled request. Its fetch-time repair confirmed the
+> request's `clientId` with `clients.get()` and conditionally adopted a live worker/sharedworker.
+> Exact clean signed successor `dc6004cf4426df72bea141ac77b0be927f36886c` tested that repair once,
+> with zero retry, as
+> `20260830-pr35-execution-late-dc6004cf4426-compendium-certification`. It again stopped terminal
+> `product-fail` after **3,112 ms** at phone `veteran-earth-planetside`, with zero outcomes, all
+> **78** blocked, eight errored rows, no desktop, review PNG or successor browser gate. That exact
+> result falsifies fetch-time `clients.get()` adoption as the current repair; the historical
+> diagnosis and controls remain evidence rather than present behavior. Immutable carrier
+> `audits/ARC1C_COMPENDIUM_PR35_EXECUTION_LATE_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_DC6004C.json.gz`
+> is **6,127 gzip bytes** / SHA-256
+> `2e65494085d46cf4b68b62d3df58884b22b9d5a5c9ad1378c018a73c036f6b53` and **38,665 raw bytes** /
+> SHA-256 `c48e48a5385799bdf4535bf97b7bacf545b24182998978067b68c9bb08f27a38`; independent replay is
+> **4/4**.
 >
-> Current measurement / outcome-contract / collector remain
-> `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
-> `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
-> `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`. Producer-v2 / generated
+> The current repair preserves lazy worker construction but seals each species and biome worker's
+> complete execution graph into its one exact generated worker file. Generated workers contain the
+> painter/renderer semantics directly and retain neither `import()` nor an external static
+> JavaScript dependency. Direct `Worker`, `SharedWorker` and `importScripts` spellings are reserved
+> inside those generated entries—even lexical shadowing is rejected rather than making loader
+> ownership ambiguous. The service worker performs no fetch-time adoption; any unpinned realm
+> remains fail-closed with exact 503. Current measurement / outcome-contract / collector SHA-256 is
+> `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+> `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; producer-v2 / generated
 > service-worker / Scene build is
-> `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf` /
-> `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` /
-> `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; Compendium / Scene budget
-> is `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
-> `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`.
-> Focused closure passes **4 files / 74 tests**, typecheck is green, and the full browser-free suite
-> passes **240 files / 2,437 passed / 1 skipped**. Fixed rulers, numeric ceilings, 78 outcomes and
-> the canonical 73 release bullets are unchanged. There is no fresh certificate; HUMAN, hosted,
-> merge, release/version and deployment status remain open and unchanged.
+> `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
+> `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
+> `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; Compendium / Scene budget
+> is `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
+> `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Fixed rulers, numeric
+> ceilings, all 78 outcomes and the canonical 73 release bullets are unchanged. No changed-head
+> Compendium certificate or successor browser gate exists yet; HUMAN, hosted, merge,
+> release/version and deployment status remain open and unchanged.
 
 > **Current local Arc 5/6/7/8/9 successor (2026-08-29; browser-free evidence only):** the verified
 > real-fauna Compendium detail now exposes four exact-instance companion writers: Feed, one-draw
@@ -329,15 +345,15 @@
 > topics and the cumulative development bulletin has **73 bullets**. No later successor inherits the
 > older browser certificate or grants hosted, release/version or deployment authority.
 
-> **PR #35 permanent lifecycle repair (2026-08-29; current local worktree, no new hosted
-> authorization):** the consumed one-time/no-retry `test-battery` run `33278630671` tested exact
+> **Historical PR #35 lifecycle-repair predecessor (2026-08-29; later PWA details superseded by
+> the sealed-worker boundary above):** the consumed one-time/no-retry `test-battery` run `33278630671` tested exact
 > pushed head `017fa6d…` against base `7a9f4c1…`. Its browser-free/static predecessors were green;
 > SceneMemory then stopped on the phone profile because the real Earth planetfall returned false.
 > The desktop SceneMemory leg and every later browser stage were correctly skipped. That run remains
 > immutable red and consumes its exact authorization; it is not evidence for another attempt.
 > The repair descends from signed local implementation base
 > `eba00e03f3376c67ab38c5067e9a32da66ce3a3`; remote PR #35 remains at `017fa6d…` until a later
-> exact-head authorization. The current descendant has no hosted or preview authorization.
+> exact-head authorization. The then-current descendant had no hosted or preview authorization.
 >
 > Diagnosis exposed two lifecycle boundaries that the earlier static wiring proof did not execute.
 > The one-call Survey → Landing path could meet the route checkpoint still in flight and then the
@@ -351,10 +367,11 @@
 > derivation remains the transaction input; this includes Arc 3's retained owned-state expectation.
 > A veteran timestamp floor can therefore no longer make a valid durable successor look forged.
 >
-> The exact-build PWA owner now propagates the selected document build to a module worker or shared
-> worker's valid `resultingClientId`, so the biome worker's lazy import stays on the same immutable
-> build. Live-build retention enumerates every client type and confirms an apparently absent pin with
-> `clients.get()` before pruning it. SceneMemory now captures Land's boolean plus bounded route,
+> At that historical repair boundary, the exact-build PWA owner propagated the selected document
+> build to a module worker or shared worker's valid `resultingClientId`, and live-build retention
+> confirmed an apparently absent pin with `clients.get()` before pruning it. The later `dc6004c…`
+> browser stop falsified fetch-time adoption as a complete repair; current worker ownership is the
+> sealed single-file design above. SceneMemory captures Land's boolean plus bounded route,
 > persistence and landing evidence in one browser task, requires a settled Surface with no scheduled
 > convergence, and terminates immediately on coherent vista fault diagnostics instead of laundering
 > them into a timeout. Its BFCache away page is served from a separate loopback origin so the product
@@ -426,9 +443,11 @@
 > 577 timely observations to `null`. Signed `3eefbbcf…` supplied the structured instrument;
 > exact source `b2eecfbd…` then preserved the separate long-opaque-key projection failure, and signed
 > `d9d79025…` owns the browser-free observation-v2 repair. Signed `830e601b…` then preserved the
-> first-import stop, and signed `d33abdfd…` completed 78 outcomes at 74/4 before the recovered-worker
-> receipt oracle stopped the chain. Only a materially changed signed source may make one new no-
-> retry Compendium attempt; certification is still required before Slice, Glass or Recovery.
+> first-import stop, signed `d33abdfd…` completed 78 outcomes at 74/4 before the recovered-worker
+> receipt oracle stopped the chain, and signed `38d8848…` plus `dc6004c…` each preserved the later
+> phone-only painter-import product stop at 0/78. The latter falsified fetch-time `clients.get()`
+> adoption as closure. The current changed-head repair instead seals both worker execution graphs;
+> certification is still required before Slice, Glass or Recovery.
 
 Local SceneMemory authority uses this exact adjacent order from `port/v2`; on macOS, both
 browser-owning commands require the approved out-of-sandbox execution path. The selftest runs once
@@ -458,10 +477,12 @@ Activation verifies the candidate again, retains it plus at most one verified pr
 prunes older build caches. Before a switch it persists every live client type's exact build pin; a
 successor does not claim existing pages, which continue cache-only on that complete build until an
 explicit navigation/reload. Navigation selects the active build and pins the resulting document.
-Creation of a module worker or shared worker propagates that selected build to the worker's valid
-`resultingClientId`, so its lazy imports and other subresources remain cache-only on the same pin.
-An apparently absent client is checked with `clients.get()` before its pin may be pruned, closing
-the ready-snapshot/worker-creation race. Activation refuses before `skipWaiting` if a prior-pinned
+Species and biome workers remain lazily constructed, but each complete painter/renderer execution
+graph is sealed into its one exact generated worker file. Build authority rejects any worker
+`import()`, external static JavaScript dependency, Window import, preload or Blob path while
+requiring one exact Window module-Worker edge. The service worker performs no fetch-time adoption;
+an unpinned realm receives exact 503 rather than network, external or cross-build fallback.
+Activation refuses before `skipWaiting` if a prior-pinned
 client would require a third retained cache. No undeclared, external, missing, cross-build or
 wrong-build asset can fall through to the network.
 
@@ -1324,10 +1345,12 @@ The calibration path is complete:
 > asynchronous 440px image; and Planetside acquires/releases through the same lease
 > path instead of bypassing resource ownership. After app wiring, every default broker pump waits
 > for one rendering opportunity and then one later task (`requestAnimationFrame` followed by
-> `setTimeout(0)`) before dispatch. At most one serial dedicated module worker at a time owns the painter import,
+> `setTimeout(0)`) before dispatch. At most one serial dedicated module worker at a time owns the statically bundled painter,
 > 440px scratch paint, 132px downsample, and PNG encoding. The renderer has no
 > synchronous painter fallback; the worker terminates after active work settles and its queue is
-> empty, and a later genuinely new producer burst owns a fresh instance/import. Pump-generation
+> empty, and a later genuinely new producer burst owns a fresh instance plus one first-job painter-
+> acquisition phase. The schema-stable `import*` counters time that acquisition hook, not static
+> worker-module evaluation. Pump-generation
 > invalidation rejects a callback armed before bfcache suspension or disposal; resume schedules a
 > fresh serviced turn.
 > The current-local PR #35 successor keeps that data-URL worker protocol but externalizes only
@@ -2930,7 +2953,7 @@ node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_
 | `npm run compendiummem:selftest` / `npm run compendiummem` / `node tools/compendiummem.mjs --verify-run=<run-id>` | Negative-controls the browser-free Compendium instrument, performs one standalone browser run without automatic retry, and independently verifies the named report. The current browser authority is version-tolerant Edge family + CDP `1.3` + a hashed source-inventoried capability contract; exact version/revision/JavaScript/path/UA remain per-run provenance. Exact cold identity is proved by set membership, not cardinality: the named fixture row/key must be absent from the pre-arm cache and bind its publication, producer error and `jobError`; cached/wrong-key mutants fail. The preserved 74/78 red binds measurement `3c811274c4f67cf706b621142db2001d614ba6b1a3c3669daf6ce1dacf67b574`; at that earlier calibration checkpoint, measurement, producer, index and owner authorities were `cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78` / `d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271` / `259c4ad7beff2242c01cedb1376b5b73d3c5e8663d5f322bb05a1c3e236efaa2` / `5d166994ccf89218f74d56b0bd537310c18353671eb2246f614abd931d3ecffb`. Exact `55126af…` run `20260828-universe-polish-55126af50f3f-compendium` completed 78 outcomes once and named-verified its terminal product red; stable plateau/cleanup and green ownership counts isolate the intentional visual producer's PNG/heap cost. Signed `b65fd5d…` supplied exactly three independent candidates and paired broken baseline `3844701…`, each once without retry, with four faults and 14 phone / 13 desktop breaches preserved. Signed activation `27513798…` owns active budget `02ee0ada…29f0`; exact run `20260829-universe-polish-27513798bedd-compendium-certification` passed 78/78 once without retry in 44,432 ms and passed named verification. Its raw/gzip carrier hashes are `3b0116f9…e7a6` / `1415773e…0e7`. Exact historical source `3f69e88…` repeated Compendium **78/78** in 46,239 ms after green Layout/SceneMemory, then completed Slice, Glass and Recovery with exact predecessor bindings. Historical candidates, baselines, activations and certificates stay bound to their own authorities/producers and must not be relabelled. The gate still owns the 1,500-row fixture, authority graph, six review PNGs and instrument/product distinction; automation never supplies HUMAN judgment. |
 | **Compendium worker-import/settlement repair sequence (2026-08-30; historical exact-run boundary)** | Historical signed `20460008…` stopped truthfully at **76/78** on the obsolete full-capacity warm predicate; `3fb958f8…` stopped instrument-only on its nullable witness; `b2eecfbd…` stopped instrument-only on observation-v1 long-key projection. Signed `830e601b8f16092d6f9193ecde329cfefd279bcd` then ran `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` once/no-retry on Edge `152.0.4191.53` / CDP `1.3`. All long keys worked, proving observation v2, before the first lazy painter import failed and the run stopped instrument-only after **33,217 ms** at phone `veteran-earth-planetside`: zero outcomes, all 78 blocked, no successor. Old v1 diagnostics discarded the exact product error code/message, so none is claimed. The immutable carrier is 7,357 gzip bytes / SHA-256 `90d61baeee297041a2afc7bf776fb504c5ac803140cf0613785859714c5f2aa9` and 54,172 raw bytes / SHA-256 `ef3cec79cf181323705d8a9eff82d9bb8023275590a23a0589515248e626d6b5`, with independent replay. Deterministic controls reproduce the code-supported first-activation claim gap and exact 503 `This document has no retained Celestial Frontier build.` None of these historical reports is relabelled by current authority. |
 | **Historical Compendium recovered-worker oracle repair (2026-08-30; superseded)** | Exact signed `d33abdfd…` run `20260830-pr35-first-install-d33abdfd5132-compendium-certification` ran once/no-retry on Edge `152.0.4191.53` / CDP `1.3` and stored 74/78: phone/desktop `cap-shrink` and `settled-jobs` were false-red despite exact 256 → 96 shrink, 6,690,816 decoded bytes, 160 disposals, four sealed warm cycles, restored class and balanced released workers. The immutable 451,743-byte gzip / 10,813,681-byte raw carrier is independently replayed 8/8. That repair required released/recovered snapshots to have `lastError === null` while cumulative paint/phase/result arithmetic still proved the induced paint fault; terminal current errors still required an exact non-null trusted receipt, and historical v1 remained replayable. Measurement / outcome contract / collector / producer-v2 was `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` / `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` / `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` / `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; service-worker SHA-256 was `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. Its closure was 591 selftest controls, 239 files / 2,431 passed / 1 skipped, all three TypeScript programs and a green authority printer. Fixed rulers, ceilings and 78 outcomes were unchanged; no successor gate or fresh certificate existed. |
-| **Current Compendium execution-late first-install repair (2026-08-30; certification pending)** | Exact signed `38d8848c…` run `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` stopped `product-fail` once/no-retry after 3,115 ms at phone Planetside: 0/78, all blocked, no desktop/PNG/successor. The immutable 6,053-byte gzip / 37,825-byte raw carrier has SHA-256 `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa` / `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5` and replay 4/4. `matchAll` and claim can omit an execution-not-ready realm; its later controlled `clientId` is confirmed with `clients.get()` and adopted only for active `BUILD_ID`, null prior pin and live worker/sharedworker. Unknown/window/prior/wrong-active retain 503, with four guard-mutant families. Current measurement / contract / collector remains `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` / `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` / `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`; producer / service-worker / Scene build is `06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf` / `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a` / `aacc61fc7cf22a0199e6a4b35f0170d266ef3b54e43429f23542acb23229315e`; Compendium / Scene budget is `1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` / `15b35f6e1c39f8a49ff39eee3dbe3430c6a8e7bc34f46518f22254264002d327`. Focused 4 files / 74 tests, typecheck and full 240-file / 2,437-pass / 1-skip suite are green. Rulers, ceilings, 78 outcomes, 73 bullets and HUMAN/hosted/release status remain unchanged. |
+| **Current Compendium sealed-worker repair (2026-08-30; changed-head certification pending)** | Historical signed `38d8848c…` run `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` stopped phone-only `product-fail` once/no-retry after 3,115 ms at 0/78, all blocked. Its carrier remains 6,053-byte gzip / 37,825-byte raw, SHA-256 `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa` / `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`, replay 4/4. Exact clean signed successor `dc6004cf4426df72bea141ac77b0be927f36886c` then tested fetch-time `clients.get()` adoption once/no-retry as `20260830-pr35-execution-late-dc6004cf4426-compendium-certification` and stopped the same phone-only `product-fail` after 3,112 ms: 0/78, all blocked, eight errored rows, no desktop/PNG/successor. Its 6,127-byte gzip / 38,665-byte raw carrier has SHA-256 `2e65494085d46cf4b68b62d3df58884b22b9d5a5c9ad1378c018a73c036f6b53` / `c48e48a5385799bdf4535bf97b7bacf545b24182998978067b68c9bb08f27a38`, replay 4/4. That result makes adoption historical/falsified. Current lazy construction instead seals species and biome painter/renderer semantics into their respective one-file worker outputs, forbids worker `import()` and external static JavaScript dependencies, performs no fetch-time adoption and leaves unpinned requests exact-503 fail-closed. Current measurement / contract / collector is `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` / `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` / `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; producer / service-worker / Scene build is `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` / `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` / `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; Compendium / Scene budget is `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` / `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Rulers, ceilings, 78 outcomes and 73 bullets remain unchanged; no changed-head certificate or successor browser gate exists. |
 | `npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts tests/scenemem-workflow.test.ts` / `node tools/scenemem.mjs --heap-phase-selftest` / `node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json` / `node tools/scenemem.mjs --verify-run=<run-id> --budget=budgets/scene-memory-v2.json` | Negative-controls the Arc 1 scene-memory contract, tracked v2 budget, workflow binding and terminal verifier; proves the fixed second pass's exact answerable → GC → heap → carrier → DOM phase order once under the same explicit Edge executable immediately before one no-retry raw-CDP certification; then independently verifies the exact named report. Current input-v4 requires **44 outcomes**: the original 42 bind exact scene ownership/work, transient peaks, canonical Pixi inventory, heap/DOM/resource bounds, target answerability, independent heartbeat, zero pending work, BFCache survival and cleanup; one added phone and one added desktop outcome bind the four raw surface-vista worker/mount/cache diagnostics through cold, mounted, ascent, BFCache and reload-clear/replacement lifecycle with an exact one-entry / 412,800-pixel cache ceiling. Current terminal certification rejects historical input-v3 reports; historical report replay remains available only as historical evidence. Exact historical source `3f69e88…` passed **44/44** with complete phone/desktop lifecycle and cleanup in 10,561 ms after its named-verified Layout predecessor, then the full chain through Recovery completed on the same clean source. Exact Edge provenance is mandatory but not baseline identity; a compatible point update never triggers a rebaseline. Automation supplies neither HUMAN nor merge authority. |
 | **Historical Final10 SceneMemory evidence and calibration boundary (superseded by Final11)** | Signed `4405fb2…` was the historical Final10 42/42 report, Final10 run `20260828-phase4-final10-4405fb2b4ba7-scenemem`; its raw/gzip SHA-256 are `00161fd6c4d8b5457776dc1768ea2022a142a73c892c8a4cdff207073e88116a` / `99abfc6d0a084ce0ed874cf5516c833d1d73735e4ebb8c44c0d3ce870075a0e3`. Signed `862a75b…` remains the paired 40/42 heap/DOM red; signed `6c9ad855…` supplied three clean calibration candidates; signed activation `4a54c0d…` set 12 MiB V8 /18 MiB aggregate with every other ceiling and paired discrimination intact. Final10 changes no ceiling or sample and passed the full responsive chain through Glass. Signed implementation/evidence repair `3fbfcd5…` and the synchronized signed clean docs-only descendant supplied immutable Final11; the historical assessor/tests/docs-only repair replayed immutable Final11 green and supplied Final12, whose distinct immutable Slice control stop is recorded above; compatible Edge updates remain provenance only and never trigger rebaseline, recalibration or threshold movement. |
 | `node tools/compendiummem-browser-preflight.mjs --selftest` / `node tools/compendiummem-browser-preflight.mjs` | Owns the Compendium workflow's one cold compatibility proof without changing numeric ceilings. One 45-second startup / 15-second socket / sealed 5-second candidate-command / 2-second shutdown launch must use the selected executable, report canonical Microsoft Edge with nonempty exact version/revision/JavaScript/path/UA provenance and CDP `1.3`, then create/attach/close a fresh target and enable Runtime/Page/HeapProfiler. The full collector exercises the separately hashed required-CDP inventory; adding/removing an inventoried method changes measurement authority instead of masquerading as version drift. `.101`, `.107` and synthetically later canonical Edge controls are accepted; Chrome, malformed/incomplete Edge, protocol mismatch, executable mismatch, command/sentinel failure and cleanup leak are terminal. Phone/desktop evidence from one run must retain the same exact provenance tuple. There is no warmup, retry, fallback, alternate browser, version-triggered rebaseline or automatic ceiling change. Its evaluate return and exact-marker, same-session console event share one immutable 5-second monotonic phase; just-before receipts pass while exact/late/missing/wrong-session/backward-clock controls fail. Both PR certification and development-preview packaging workflows SHA-verify the sealed `.101` deb, validate its embedded package/version metadata and extract it into a fresh Compendium-owned `RUNNER_TEMP` root without apt. Preflight, certification and named verification each pin that extracted executable directly while the job remains Chrome-owned. The structural selftest rejects apt installation, missing extraction, wrong URL/hash/package/version/root, missing or system-Edge owner pins, softened owners, broken extract → preflight → certificate → verifier order, renamed certification IDs and false/otherwise-disabled verifier conditions. The exact package/path is workflow provenance; compatible Edge point versions do not alter the browser capability authority or numeric ruler. Historical run `32394244417` stopped before product when the runner's resident `.86` made the old plain apt install a no-op; run `32462323775` later confirmed the historical reinstall path before isolation superseded system-package mutation. |

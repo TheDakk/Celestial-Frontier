@@ -215,41 +215,61 @@ function syntheticThumbSettlementVisualKeys(surface, count) {
   const workerPath = path.join(assets, 'species-art.worker-selftest.js');
   const mainPath = path.join(assets, 'main-selftest.js');
   const legacyPath = path.join(assets, 'legacy-species-selftest.js');
-  const serviceWorkerPath = path.join(root, 'service-worker.js');
   const indexPath = path.join(root, 'index.html');
   const painter = 'export const SPECIES_PORTRAIT_SIZE=440;export function renderSpeciesPortraitCanvas(){};export function renderSpeciesThumbCanvas(){};';
-  const worker = 'const a="cf-v2-species-art-worker-request/v1",b="cf-v2-species-art-worker-response/v1";OffscreenCanvas;FileReaderSync;postMessage;addEventListener;import("./speciespainter-selftest.js");';
+  const workerShell = 'const a="cf-v2-species-art-worker-request/v1",b="cf-v2-species-art-worker-response/v1";OffscreenCanvas;FileReaderSync;postMessage;addEventListener;';
+  const worker = `${painter}${workerShell}`;
   const main = 'new Worker(new URL("/assets/species-art.worker-selftest.js",import.meta.url),{type:"module",name:"cf-species-art"});';
   try {
-    fs.writeFileSync(painterPath, painter);
     fs.writeFileSync(workerPath, worker);
     fs.writeFileSync(mainPath, main);
     fs.writeFileSync(legacyPath,
       'export const counter="fullPortraitRendersForThumb";document.createElement("canvas").toDataURL();');
     fs.writeFileSync(indexPath, '<script type="module" src="/assets/main-selftest.js"></script>');
     const graph = findCandidateSpeciesArtBuildGraph(root);
-    assert(graph.painter.relativePath === 'assets/speciespainter-selftest.js'
+    assert(graph.painter.relativePath === 'assets/species-art.worker-selftest.js'
+      && graph.painter.sha256 === graph.worker.sha256
       && graph.worker.relativePath === 'assets/species-art.worker-selftest.js'
       && graph.owner.relativePath === 'assets/main-selftest.js',
-    'exact index->worker->painter build graph was not identified');
+    'exact index->single-file-worker/painter build graph was not identified');
 
-    const painterDigest = sha256(Buffer.from(painter));
-    const pwaInventory = `const ASSETS=Object.freeze(${JSON.stringify([
-      { path: '/assets/speciespainter-selftest.js', sha256: painterDigest },
-    ])});self.addEventListener('install',()=>{});self.addEventListener('activate',()=>{});self.addEventListener('fetch',()=>{});`;
-    fs.writeFileSync(serviceWorkerPath, pwaInventory);
-    assert(findCandidateSpeciesArtBuildGraph(root).painter.relativePath
-      === 'assets/speciespainter-selftest.js',
-    'the exact declarative PWA asset inventory impersonated a foreign painter execution edge');
-    fs.writeFileSync(serviceWorkerPath,
-      pwaInventory.replace(painterDigest, '0'.repeat(64)));
+    fs.writeFileSync(workerPath,
+      `${workerShell}import("./speciespainter-selftest.js");`);
+    fs.writeFileSync(painterPath, painter);
     assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
-      'a PWA painter inventory with the wrong byte digest was accepted');
-    fs.writeFileSync(serviceWorkerPath,
-      `${pwaInventory}console.log('speciespainter-selftest.js');`);
+      'the historical split worker and dynamically imported painter were accepted');
+    fs.rmSync(painterPath);
+    fs.writeFileSync(workerPath, worker);
+    assert(findCandidateSpeciesArtBuildGraph(root).worker.sha256 === sha256(Buffer.from(worker)),
+      'restoring the single-file worker/painter did not restore authority');
+
+    fs.writeFileSync(workerPath, `${worker}import("./foreign-selftest.js");`);
     assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
-      'an executable painter reference escaped through the PWA inventory allowance');
-    fs.rmSync(serviceWorkerPath);
+      'a merged species worker with a literal dynamic import was accepted');
+    fs.writeFileSync(workerPath, `${worker}import/*comment*/("./foreign-selftest.js");`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a merged species worker with a comment-separated dynamic import was accepted');
+    fs.writeFileSync(workerPath, `${worker}import("./"+name+".js");`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a merged species worker with a computed dynamic import was accepted');
+    fs.writeFileSync(workerPath, `import "./foreign-selftest.js";${worker}`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a merged species worker with an external static import was accepted');
+    fs.writeFileSync(workerPath, `import/*comment*/"./foreign-selftest.js";${worker}`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a merged species worker with a comment-separated static import was accepted');
+    fs.writeFileSync(workerPath, `export { foreign } from "./foreign-selftest.js";${worker}`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a merged species worker with an external static re-export was accepted');
+    fs.writeFileSync(workerPath,
+      `${worker}new/*comment*/Worker/*comment*/("./nested-selftest.js");`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a merged species worker with a nested Worker dependency was accepted');
+    fs.writeFileSync(workerPath,
+      `${worker}importScripts/*comment*/("./classic-selftest.js");`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a merged species worker with an importScripts dependency was accepted');
+    fs.writeFileSync(workerPath, worker);
 
     fs.writeFileSync(mainPath, 'console.log("orphan worker")');
     assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
@@ -265,6 +285,12 @@ function syntheticThumbSettlementVisualKeys(surface, count) {
       'duplicate species-art Worker edges were accepted');
     fs.writeFileSync(mainPath, main);
 
+    fs.writeFileSync(mainPath,
+      `${main}new Worker(URL.createObjectURL(new Blob(['import "/assets/species-art.worker-selftest.js"'])),{type:"module"});`);
+    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
+      'a Window blob path to the species-art worker was accepted');
+    fs.writeFileSync(mainPath, main);
+
     fs.writeFileSync(mainPath, `import "./species-art.worker-selftest.js";${main}`);
     assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
       'a Window static import of the species-art worker was accepted');
@@ -278,27 +304,20 @@ function syntheticThumbSettlementVisualKeys(surface, count) {
       'a renderer-reachable legacy synchronous species-art facade was accepted');
     fs.writeFileSync(mainPath, main);
 
-    fs.writeFileSync(mainPath, `${main}console.log("speciespainter-selftest.js")`);
+    fs.writeFileSync(mainPath, `${main}console.log("species-art.worker-selftest.js")`);
     assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
-      'renderer reference to the worker-local painter was accepted');
+      'a second Window reference to the single-file species worker was accepted');
     fs.writeFileSync(mainPath, main);
-
-    fs.writeFileSync(indexPath,
-      '<link rel="modulepreload" href="/assets/speciespainter-selftest.js"><script type="module" src="/assets/main-selftest.js"></script>');
-    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
-      'index modulepreload of the worker-local painter was accepted');
-    fs.writeFileSync(indexPath, '<script type="module" src="/assets/main-selftest.js"></script>');
 
     fs.writeFileSync(indexPath,
       '<link rel="modulepreload" href="/assets/species-art.worker-selftest.js"><script type="module" src="/assets/main-selftest.js"></script>');
     assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
       'index modulepreload of the dedicated species-art worker was accepted');
     fs.writeFileSync(indexPath, '<script type="module" src="/assets/main-selftest.js"></script>');
-
-    fs.writeFileSync(workerPath,
-      'import "./speciespainter-selftest.js";const a="cf-v2-species-art-worker-request/v1",b="cf-v2-species-art-worker-response/v1";OffscreenCanvas;FileReaderSync;postMessage;addEventListener;');
-    assertThrows(() => findCandidateSpeciesArtBuildGraph(root),
-      'static-only worker painter import was accepted');
+    const restored = findCandidateSpeciesArtBuildGraph(root);
+    assert(restored.worker.sha256 === graph.worker.sha256
+      && restored.painter.sha256 === graph.painter.sha256,
+    'negative controls did not restore the original single-file worker authority');
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
@@ -1601,7 +1620,7 @@ function activeBudget(fixture) {
     index: { relativePath: 'index.html', sha256: '1'.repeat(64) },
     owner: { relativePath: 'assets/main-selftest.js', sha256: 'd'.repeat(64) },
     worker: { relativePath: 'assets/species-art.worker-selftest.js', sha256: 'f'.repeat(64) },
-    painter: { relativePath: 'assets/speciespainter-selftest.js', sha256: 'e'.repeat(64) },
+    painter: { relativePath: 'assets/species-art.worker-selftest.js', sha256: 'f'.repeat(64) },
     serviceWorker: { relativePath: 'service-worker.js', sha256: 'c'.repeat(64) },
   });
   assert(producerAuthority, 'synthetic producer authority did not canonicalize');
@@ -2365,10 +2384,10 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
     lazySpeciesResource: {
       indexPath: 'index.html', indexSha256: '1'.repeat(64),
       ownerPath: 'assets/main-selftest.js', ownerSha256: 'd'.repeat(64),
-      path: 'assets/speciespainter-selftest.js', sha256: 'e'.repeat(64),
+      path: 'assets/species-art.worker-selftest.js', sha256: 'f'.repeat(64),
       workerPath: 'assets/species-art.worker-selftest.js', workerSha256: 'f'.repeat(64),
       serviceWorkerPath: 'service-worker.js', serviceWorkerSha256: 'c'.repeat(64),
-      ownership: 'dedicated-worker-dynamic-import', matches: [], endMatches: [],
+      ownership: 'dedicated-worker-sealed-entry', matches: [], endMatches: [],
     },
     documentTokens: {
       lazy: 'selftest-lazy-document', lazyEnd: 'selftest-lazy-document',
@@ -4874,8 +4893,9 @@ export async function runCompendiumMemSelftest() {
     ['species painter Window owner missing', (m) => {
       m.lazySpeciesResource.ownerPath = m.lazySpeciesResource.workerPath;
     }, 'lazy-art-not-eager'],
-    ['species painter and worker chunk merged', (m) => {
-      m.lazySpeciesResource.workerPath = m.lazySpeciesResource.path;
+    ['species painter split out of sealed worker', (m) => {
+      m.lazySpeciesResource.path = 'assets/speciespainter-selftest.js';
+      m.lazySpeciesResource.sha256 = 'e'.repeat(64);
     }, 'lazy-art-not-eager'],
     ['service-worker producer drift', (m) => {
       m.lazySpeciesResource.serviceWorkerSha256 = '0'.repeat(64);
