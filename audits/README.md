@@ -10,6 +10,50 @@ summary of it.
 
 ## Contents
 
+### Signed `dc6004c…` execution-late successor painter-import product stop — 0/78, all blocked
+
+Exact clean signed source `dc6004cf4426df72bea141ac77b0be927f36886c` ran
+`20260830-pr35-execution-late-dc6004cf4426-compendium-certification` exactly once with zero
+automatic retries under Microsoft Edge `152.0.4191.53` / CDP `1.3`. The complete-lifecycle report
+stopped terminal `product-fail` after **3,112 ms** at phone `veteran-earth-planetside` thumb
+settlement, retained zero outcomes, blocked all **78**, and produced no desktop profile, review PNG
+or successor browser-stage evidence.
+
+All eight leased Planetside rows reached `error`. The trusted current-schema worker receipt retained
+epoch 1, worker 1, job 1, kind `thumb132`, stage `import`, code `painter-import`, and the exact
+101-character message `Failed to fetch dynamically imported module:
+http://127.0.0.1:61368/assets/speciespainter-DJWZf0vw.js`. Its SHA-256 is
+`90440d44f6d316cd1f3cfc45d816162f1267eef27eddcddcb413e5cd854e2a08`. Worker arithmetic remains
+coherent: one start/ready/disposal/fatal, one import start, zero import completes or results, and
+exactly one import error. The report remains immutable stored red and is not rewritten as green.
+
+- `ARC1C_COMPENDIUM_PR35_EXECUTION_LATE_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_DC6004C.json.gz`:
+  **6,127** compressed bytes, SHA-256
+  `2e65494085d46cf4b68b62d3df58884b22b9d5a5c9ad1378c018a73c036f6b53`; **38,665** raw bytes,
+  SHA-256 `c48e48a5385799bdf4535bf97b7bacf545b24182998978067b68c9bb08f27a38`.
+- `port/v2/tests/compendium-execution-late-painter-import-product-failure-carrier.test.ts`
+  independently binds the exact gzip/raw bytes and hashes, clean source at both boundaries,
+  one-attempt lifecycle, exact browser/current authorities, zero outcomes/all 78 blocked,
+  phone-only product classification, all eight terminal rows, the complete trusted v2 error receipt
+  and the absence of PNG/successor evidence. It imports neither the live evaluator nor the live
+  budget and passes **4/4** focused assertions.
+
+The carrier passes deterministic `gzip -9 -n` reproduction and gzip integrity. Exact input budget,
+measurement, outcome-contract, collector and producer-v2 SHA-256 values are
+`1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
+`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+`06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`. The exact producer record
+binds index `4ae1f01cf82354a8812393ba9b2e95f869bcdde996cfa7bd7ed05d568b330fc7`, owner
+`26418744ec36102969f681b7ad0905ad864de78c72ddcf9d81d41a4537dd0fd1`, species worker
+`901c40143b09d43241fb311a877c422df6fb5d997350cf0da91220ef8a973c1e`, painter
+`de44ec89c54ab8e8d168e369bfdada554a08a9af4fd02f2ca777b7430d2b6686`, and generated service
+worker `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a`.
+
+This exact red grants no fresh Compendium certificate, same-source retry, Slice, Glass, Recovery,
+HUMAN, hosted, merge, release, version-bump or deploy authority. No successor browser stage ran.
+
 ### Signed `38d8848c…` Compendium painter-import product stop — 0/78, all blocked
 
 Exact signed source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
