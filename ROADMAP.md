@@ -17,24 +17,24 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · BATTERY RIGHT-SIZED · POST-CAPTURE UI RACE ISOLATED ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · BATTERY RIGHT-SIZED · EXACT EBF SCENEMEM STOP PRESERVED ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
   **origin/openai/mac**. Exact signed tested source
-  **656c85e43a59fe775efac102b21a7530c033e5ff** (tree
-  **7fa36c8470030352b3d8ac497b47354b61d81b2b**, parent
-  **961d1071d059e0f73e14a6a4ead61f5e4696535b**) is **35 commits ahead** of the fetched remote
-  agent branch. Its signature was cryptographically verified with the configured SSH identity.
-- **Current local successor:** exact 656 SceneMemory/Compendium PASS and one-scope Slice red carriers,
-  their replay/docs, one narrow `main.ts` post-Arc-9 Capture-card republication fix, its existing
-  Arc 9 wiring test and the v2 draft bug-fix note are dirty. **A New Foundation** now has exactly
-  **75** unique bullets with rendered ordered SHA-256
+  **ebf172cc62417c9e193c7fcc1c9e751a1e0a028a** (tree
+  **0ba7fe322bc4f21e00f3a76216ef41cecef184e1**, parent
+  **656c85e43a59fe775efac102b21a7530c033e5ff**) is **36 commits ahead** of the fetched remote
+  agent branch. Its embedded SSH signature was cryptographically verified with the configured
+  identity.
+- **Current local successor:** the exact ebf SceneMemory terminal red, deterministic gzip carrier,
+  immutable replay and current docs are dirty. **A New Foundation** has exactly **75** unique
+  bullets with rendered ordered SHA-256
   **52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1**. No creature/genome structure, capture
-  pool, Yield cycle, save schema, art/audio system, balance, numeric browser ruler, timeout, retry,
-  release identity or Edge-version baseline changed.
+  pool, Yield cycle, save schema, art/audio system, balance, timeout, retry, release identity or
+  Edge-version baseline changed. The numeric ruler has not yet moved.
 - **Current derived inputs:** Scene build / budget SHA-256 is
   **82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b** /
   **476b85e9e38d0382015663741d08766239688082db0db4536e4d734b98912ee6**.
@@ -172,19 +172,49 @@ the archive verbatim and refresh this handoff in place.
   with exact raw/gzip hashes. The current UI-race repair plus immutable replay has focused evidence
   at **3 files / 7 PASS**, and all three TypeScript programs pass.
 
-### Exact next work — one clean local admission and one no-retry browser chain
+### Exact ebf SceneMemory stop — diagnosis and bounded calibration boundary
 
-1. Synchronized docs/diff review, the complete develop profile and every classifier-triggered
-   exceptional control are green on the bounded successor.
-2. Commit the complete batch as one SSH-signed successor, verify its signature and clean worktree,
-   then run `node tools/tracked-input-preflight.mjs --profile=develop` once on that exact commit.
-3. The changed-instrument controls are already green once. Run one exact
+- Exact ebf passed the full hermetic tracked-input develop profile at **253 files / 2,510 passed /
+  1 skipped**, all TypeScript and static gates. All conditional browser-instrument controls also
+  passed once. Its one-shot SceneMemory run `20260830224113863-74114-9e38e9d458` then completed
+  lifecycle/cleanup in **12,928 ms** at **43/44** and correctly stopped the chain before
+  Compendium. No retry ran.
+- The sole red was desktop BFCache V8 **12,594,592** against the raw **12,582,912** ceiling: only
+  **11,680 bytes / 0.093%** over. The exact same Edge `152.0.4191.53`, JavaScript and CDP `1.3`
+  tuple passed 7f/961/656, so this is neither an Edge update nor rebaseline authority.
+- BFCache itself is not accumulating: cycle 4 → BFCache added **208,688 bytes**, below the
+  **209,248–214,544** range of the recent passes. Every DOM/listener/texture/cache/pending-owner
+  witness is unchanged, while range **355,208 < 524,288**, slope **115,843.2 < 131,072** and
+  aggregate heap **18,302,798 < 18,874,368** remain green. The raw absolute V8 band has exhausted
+  its original fixed-growth margin; the report does not prove a retained-resource regression.
+- The post-Arc-9 Capture republish is real bounded Landing/Capture work in this route, not disposable
+  boot noise. Removing or scoping it away would recreate the stale-disabled native action race.
+  The exact red is preserved under `audits/` with gzip/raw hashes and replayed without relabelling.
+- Per the existing fixed-growth law, no threshold moves from one red. The next step is exactly three
+  clean current-source calibration-only candidates, each one attempt/no retry. They must retain the
+  same topology, range, slope and cleanup before a source-growth-tolerant successor ruler may be
+  selected. Any ownership or slope drift returns to product diagnosis.
+
+### Exact next work — bounded ruler evidence, then one no-retry browser chain
+
+1. Commit the immutable ebf red carrier/replay/handoff as one SSH-signed evidence descendant and
+   verify its signature and clean worktree.
+2. On that one unchanged signed producer, collect exactly three calibration-only SceneMemory
+   candidates, once each with zero retry, preserving each report before the next run. Recompute
+   current maxima/headroom and prove topology/range/slope/cleanup remain stable before changing a
+   ruler. Do not use Edge point version as calibration authority.
+3. Implement only the evidence-supported source-growth-tolerant SceneMemory budget/contract
+   successor, preserve historical v3/v4 replay, negative-control exact/+1 boundaries and the known
+   retention/DOM reds, update owning docs/authorities, and sign the activation.
+4. Run the complete develop profile, required changed-instrument controls and
+   `node tools/tracked-input-preflight.mjs --profile=develop` once on that exact activation.
+5. Run one exact
    SceneMemory → Compendium → Slice → Glass chain on the committed source. Stop on the first
    nonzero, red or instrument result; never retry automatically. Glass runs only after green Slice.
-4. Preserve and named-verify each available immutable report. Do **not** run Recovery for this
+6. Preserve and named-verify each available immutable report. Do **not** run Recovery for this
    agent → `develop` admission; Recovery belongs to the later separately authorized
    `develop` → `main` production candidate.
-5. Refresh this handoff with the exact clean source and final local evidence. Report the exact
+7. Refresh this handoff with the exact clean source and final local evidence. Report the exact
    base/head to Nick. A GitHub write still requires a separately authorized exact attempt.
 
 ### Product-roadmap and HUMAN boundary
@@ -203,8 +233,9 @@ judgment. Automation must not invent those decisions merely to call the roadmap 
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** finish the bounded Capture republication fix/evidence/docs, sign it, run one
-  clean tracked admission, then one final local develop browser chain with causal stop and no retry.
+- **OpenAI/Codex now:** preserve/sign the exact ebf red, collect the three bounded current-product
+  calibration candidates, activate only the evidence-supported successor ruler, then run one clean
+  tracked admission and one final local develop browser chain with causal stop and no retry.
 - **GitHub step now:** none. Zero hosted attempts are authorized.
 - **PR #35 after local green:** existing draft, base **develop**, source **openai/mac**, title
   **feat(v2): complete roadmap campaign and harden CI parity**. Its exact push/hosted head is not

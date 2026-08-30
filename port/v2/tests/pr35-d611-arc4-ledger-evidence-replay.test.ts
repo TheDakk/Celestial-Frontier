@@ -8,6 +8,7 @@ const SOURCE = 'd611d18ad12bb8587863846ef3799300d2396e6a';
 const RIGHT_SIZED_SOURCE = '7f89bb2a70604da5b79673bd22d25786cab468d2';
 const STORAGE_SOURCE = '961d1071d059e0f73e14a6a4ead61f5e4696535b';
 const PRECONDITION_SOURCE = '656c85e43a59fe775efac102b21a7530c033e5ff';
+const CURRENT_HEAD_SOURCE = 'ebf172cc62417c9e193c7fcc1c9e751a1e0a028a';
 const carriers = Object.freeze({
   layout: Object.freeze({
     file: 'ROOT_LAYOUT_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz',
@@ -127,6 +128,13 @@ const carriers = Object.freeze({
     rawBytes: 22_103,
     gzipSha256: 'e6964fd2d9ac946172703ea74ffeff0dc32ef19f883672ade66cfebfa305b68d',
     rawSha256: '6ac40bfe6d0cce87aee1dad6dfe6c788e7ad3c4b1f953123c056483408c3cf9a',
+  }),
+  currentHeadSceneRed: Object.freeze({
+    file: 'ARC1C_SCENEMEM_PR35_CURRENT_HEAD_V8_BUDGET_RED_20260830_EBF172C.json.gz',
+    gzipBytes: 45_097,
+    rawBytes: 787_600,
+    gzipSha256: '8060c10871ac0a31ff0eef8183da8f91ec79c8dd09c69a277d1f9855a86a14ac',
+    rawSha256: 'a19654d003e04a947a0719150eb332a9bde038c02d41b16f00b2bbffa005ad46',
   }),
 });
 
@@ -366,5 +374,40 @@ describe('PR #35 d611 consolidated-chain Arc 4 ledger evidence', () => {
     });
     expect(preconditionBundle.captureErrors).toEqual([]);
     expect(decoded.preconditionSliceLog!.value).toContain('SLICE SMOKE: FAIL');
+
+    const currentHeadSceneRed = decoded.currentHeadSceneRed!.value as Record<string, any>;
+    expect(currentHeadSceneRed).toMatchObject({
+      status: 'fail',
+      runId: '20260830224113863-74114-9e38e9d458',
+      durationMs: 12_928,
+      lifecycle: { status: 'complete' },
+      cleanup: { browser: true, server: true, workspaceLock: true },
+      policy: { attemptCount: 1, automaticRetries: 0 },
+      browser: { product: 'Edg/152.0.4191.53', protocolVersion: '1.3' },
+    });
+    expect(currentHeadSceneRed.source.begin.commit).toBe(CURRENT_HEAD_SOURCE);
+    expect(currentHeadSceneRed.source.end.commit).toBe(CURRENT_HEAD_SOURCE);
+    expect(currentHeadSceneRed.outcomes).toHaveLength(44);
+    expect(currentHeadSceneRed.outcomes.filter(({ pass }: { pass: boolean }) => !pass)).toEqual([{
+      id: 'desktop/heap-dom-budget',
+      pass: false,
+      message: 'bfcache: V8 heap used bytes 12594592 exceeded ceiling 12582912',
+    }]);
+    expect(currentHeadSceneRed.profiles.desktop.metrics).toMatchObject({
+      heapUsedBytesMax: 12_594_592,
+      heapAggregateBytesMax: 18_302_798,
+      warmHeapAggregateRangeBytesMax: 355_208,
+      warmHeapSlopeBytesPerCycleMax: 115_843.2,
+      documentsMax: 2,
+      nodesMax: 480,
+      jsEventListenersMax: 70,
+      managedTextureCountMax: 43,
+      managedTexturePixelsMax: 5_647_874,
+    });
+    expect(currentHeadSceneRed.profiles.desktop.bfcacheSnapshot.heap).toMatchObject({
+      usedSize: 12_594_592,
+      embedderHeapUsedSize: 2_379_360,
+      backingStorageSize: 2_974_380,
+    });
   });
 });
