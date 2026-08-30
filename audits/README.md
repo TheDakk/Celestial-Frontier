@@ -10,6 +10,57 @@ summary of it.
 
 ## Contents
 
+### Signed `20d8598…` Compendium PASS, then terminal-red Slice research/fabrication/landing/Pertar evidence
+
+Exact clean SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` (tree
+`14d49ce60f84ca47daf831975f28491a7c8302e1`, parent
+`aa88d916e5141d6f2f8e8969288064ffba0cfc85`) ran Compendium
+`20260830-pr35-arc3-20d8598913e1-compendium-certification` exactly once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`. It completed **78/78** outcomes (39 phone + 39
+desktop), with zero findings or blocked outcomes, in **63,431 ms**. Its report binds the six
+phone/desktop list, focus-pinned and detail review-image identities.
+
+`ARC1C_COMPENDIUM_PR35_ARC3_REPAIR_PASS_20260830_20D8598.json.gz` is **452,409 gzip /
+10,870,954 raw bytes**, SHA-256
+`3a65d9d53f3efb4139357011db1dd96dc438b3b9632c95436d296e9b4263cd49` /
+`3edd72a72f471b9e702956f13d217c940ab989514be8bc86568af1f0fe19ffc0`.
+
+The same unchanged source then ran Slice
+`20260830-pr35-arc3-20d8598913e1-slice-certification` exactly once. It stopped terminal red after
+**120,493 ms**, with zero automatic retries and six findings in this exact order:
+
+1. `arc-3-research-action` — native Enter did not commit Deep Scanners and restore semantic row
+   focus.
+2. `arc-3-fixed-fabrication` — native Enter did not couple Plate into the Arc 2 / Arc 3 / legacy /
+   Charter outcome and restore action focus.
+3. `arc-0-landing-storage-refusal` — the awaited storage-refusal Landing outcome did not satisfy
+   its exact durable/live/coordinator/no-retry contract.
+4. `arc-0-landing-stale-convergence` — the held/released reload did not satisfy the exact
+   later-writer-only convergence contract.
+5. `arc-0-landing-publication-convergence` — the durable one-receipt Landing/reward did not satisfy
+   the exact local-publication/no-retry/reload contract.
+6. `harness` — the legacy-carrier upgrade rehearsal did not reach the exact Pertar
+   surface/card/three-enabled-row outcome within 10,000 ms.
+
+These labels record the immutable observation only. They do not classify six independent product
+defects or assign product/oracle/harness root cause before diagnosis.
+
+- `ARC4_SLICE_PR35_RESEARCH_FABRICATION_LANDING_PERTAR_RED_20260830_20D8598.json.gz` is
+  **317,389 gzip / 2,365,817 raw bytes**, SHA-256
+  `275913fda5c64eb382c7fce361ffa3e23aafe659f5d2fb7313050df9b3c5925e` /
+  `c7e10726de611e32b55978976dd7bea37334cf8cfc282e286700b887a076b889`.
+- `ARC4_SLICE_PR35_RESEARCH_FABRICATION_LANDING_PERTAR_RED_20260830_20D8598.log.gz` is
+  **144,568 gzip / 971,878 raw bytes**, SHA-256
+  `eef6c29cf568c0bb602b18b468f38227c0b5177f9a94b6faad8eb0bd95206585` /
+  `4d83e68ddd21b6a164a7b5245e24e38cb5e418eb239cb2e9a00b29fd0c19f318`.
+
+`port/v2/tests/pr35-20d8598-slice-evidence-replay.test.ts` binds all three gzip/raw identities,
+the exact source/tree/parent tuple, complete Compendium result and browser provenance, six review
+image identities, exact ordered Slice scopes and message hashes, raw-log/child-output parity, seven
+partial screenshot identities, zero PASS markers and the explicit absence of Glass/Recovery
+authority. The stored Slice remains FAIL and is never promoted by a later repair. Glass and
+Recovery did not run and have no `20d8598…` successor authority.
+
 ### Signed `4a82d9b…` Compendium PASS, then terminal-red Slice Mine-Charter/Survey harness evidence
 
 Exact clean signed source `4a82d9b82521ea9bd1ac5e7c0754a473bcadd997` ran Compendium
