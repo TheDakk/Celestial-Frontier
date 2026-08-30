@@ -10,6 +10,7 @@ const workflow = fs.readFileSync(workflowPath, 'utf8');
 const sceneMemoryTool = fs.readFileSync(sceneMemoryToolPath, 'utf8');
 const SCENE_BROWSER_ENV =
   'CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge';
+const STATIC_PROFILE_NAME = 'v2 base-profile static gates';
 const HEAP_PHASE_SELFTEST_NAME = 'scene-memory fixed-second heap-phase selftest';
 const HEAP_PHASE_SELFTEST_COMMAND = 'node tools/scenemem.mjs --heap-phase-selftest';
 const HEAP_PHASE_SELFTEST_HEADER = `      - name: ${HEAP_PHASE_SELFTEST_NAME}`;
@@ -17,6 +18,9 @@ const SCENEMEM_CERTIFICATION_HEADER = '      - name: one-attempt scene-memory ce
 const SCENEMEM_VERIFY_HEADER = '      - name: verify current scene-memory evidence';
 const HEAP_PHASE_SELFTEST_BLOCK = [
   HEAP_PHASE_SELFTEST_HEADER,
+  '        if: >-',
+  "          github.event.pull_request.base.ref == 'main' ||",
+  "          steps.scope.outputs.browser_instrument_changed == 'true'",
   '        env:',
   `          ${SCENE_BROWSER_ENV}`,
   '        working-directory: port/v2',
@@ -36,17 +40,18 @@ const ZERO_DEFAULT_CONTRACT = [
   'needs: authorize',
 ] as const;
 const ORDERED_CONTRACT = [
-  '- name: v2 parity, type, art, and coverage gates',
-  'npm test',
-  '- name: current producer authority binding',
-  '\n        run: npx vitest run tests/current-producer-authorities.test.ts\n',
+  `- name: ${STATIC_PROFILE_NAME}`,
+  'develop) node tools/check-profile.mjs --profile=develop ;;',
+  'main) node tools/check-profile.mjs --profile=production ;;',
+  '- name: develop changed-art mutation control',
+  'run: npm run overridecontrol',
+  '- name: layout (10 viewports)',
+  '- name: verify root layout evidence freshness',
   '- name: install current Arc 1C Edge scene-memory browser',
   'EDGE_PACKAGE_URL: https://go.microsoft.com/fwlink/?linkid=2149051',
   'test "$(dpkg-deb --field "$scene_edge_package" Package)" = "microsoft-edge-stable"',
   'dpkg-deb --extract "$scene_edge_package" "$scene_edge_root"',
   'test -x "$scene_edge_browser"',
-  '- name: scene-memory instrument and calibration controls',
-  'npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts',
   `- name: ${HEAP_PHASE_SELFTEST_NAME}`,
   `run: ${HEAP_PHASE_SELFTEST_COMMAND}`,
   '- name: one-attempt scene-memory certification',
@@ -55,18 +60,33 @@ const ORDERED_CONTRACT = [
   'run: node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json',
   '- name: verify current scene-memory evidence',
   'run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json',
+  '- name: changed-or-production Compendium browser instrument selftests',
+  'node tools/browserpath.mjs --selftest',
+  'node tools/compendiummem-browser-preflight.mjs --selftest',
   '- name: install exact Arc 1A Edge calibration browser',
 ] as const;
 const ORDERED_STEP_NAMES = [
-  'v2 parity, type, art, and coverage gates',
-  'current producer authority binding',
+  STATIC_PROFILE_NAME,
+  'develop changed-art mutation control',
+  'layout (10 viewports)',
+  'verify root layout evidence freshness',
   'install current Arc 1C Edge scene-memory browser',
-  'scene-memory instrument and calibration controls',
   HEAP_PHASE_SELFTEST_NAME,
   'one-attempt scene-memory certification',
   'verify current scene-memory evidence',
+  'changed-or-production Compendium browser instrument selftests',
   'install exact Arc 1A Edge calibration browser',
 ] as const;
+
+const workflowStep = (source: string, name: string): string | null => {
+  const header = `      - name: ${name}`;
+  const starts = [...source.matchAll(new RegExp(`^${header}$`, 'gmu'))].map((match) => match.index!);
+  if (starts.length !== 1) return null;
+  const start = starts[0]!;
+  const tail = source.slice(start + header.length);
+  const next = tail.search(/^      - (?:name:|uses:)/mu);
+  return source.slice(start, next < 0 ? source.length : start + header.length + next);
+};
 
 const satisfiesZeroDefaultPolicy = (source: string): boolean => {
   const permissions = source.indexOf('\npermissions:');
@@ -102,22 +122,35 @@ const satisfiesSceneWorkflow = (
     if (index <= cursor || owned.indexOf(token, index + 1) !== -1) return false;
     cursor = index;
   }
-  const directSteps = [...owned.matchAll(/^(?: {6})?- (.+)$/gm)].map((match) => match[1]);
+  const directSteps = [...owned.matchAll(/^(?: {6})?- (.+)$/gmu)].map((match) => match[1]);
   if (JSON.stringify(directSteps) !== JSON.stringify(
     ORDERED_STEP_NAMES.map((name) => `name: ${name}`),
   )) return false;
-  const authorityHeader = '      - name: current producer authority binding';
-  const authorityStart = source.indexOf(authorityHeader);
-  const authorityEnd = source.indexOf('\n\n', authorityStart + 1);
-  if (authorityStart < 0 || authorityEnd < 0) return false;
-  const authorityBlock = source.slice(authorityStart, authorityEnd + 2);
-  if (authorityBlock !== `${authorityHeader}\n        working-directory: port/v2\n        run: npx vitest run tests/current-producer-authorities.test.ts\n\n`) return false;
+
+  const staticProfile = workflowStep(source, STATIC_PROFILE_NAME);
+  const certification = workflowStep(source, 'one-attempt scene-memory certification');
+  const verifier = workflowStep(source, 'verify current scene-memory evidence');
+  if (!staticProfile || !certification || !verifier) return false;
+  if (!staticProfile.includes('develop) node tools/check-profile.mjs --profile=develop ;;')
+    || !staticProfile.includes('main) node tools/check-profile.mjs --profile=production ;;')
+    || staticProfile.includes('npm run check:')) return false;
+  if (source.includes('npx vitest run tests/current-producer-authorities.test.ts')
+    || source.includes('npx vitest run tests/scenemem-contract.test.ts')
+    || source.includes('node --check tools/scenemem.mjs')
+    || source.includes('node --check tools/scenemem-contract.mjs')) return false;
+  if (/^ {8}if:/mu.test(certification)
+    || certification.includes('continue-on-error')
+    || certification.includes("github.event.pull_request.base.ref == 'main'")) return false;
+  if (!verifier.includes('always() &&')
+    || !verifier.includes("steps.scenemem.outcome == 'success'")
+    || !verifier.includes("steps.scenemem.outcome == 'failure'")
+    || verifier.includes('github.event.pull_request.base.ref')) return false;
+
   if (source.split(HEAP_PHASE_SELFTEST_COMMAND).length !== 2) return false;
   if (!source.includes(`${HEAP_PHASE_SELFTEST_BLOCK}\n${SCENEMEM_CERTIFICATION_HEADER}`)) return false;
   const env = 'CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem';
   if (source.split(env).length !== 2) return false;
   const sceneBrowserOwners = [
-    'scene-memory instrument and calibration controls',
     HEAP_PHASE_SELFTEST_NAME,
     'one-attempt scene-memory certification',
     'verify current scene-memory evidence',
@@ -146,9 +179,9 @@ const satisfiesSceneWorkflow = (
     && !owned.includes('$GITHUB_ENV')
     && !owned.includes('151.0.4129.101')
     && !owned.includes('EDGE_PACKAGE_SHA256')
-    && source.includes('- name: archive scene-memory evidence')
-    && source.includes('name: v2-scene-memory-evidence')
-    && source.includes('path: port/v2/apps/game/smoke/scenemem-report.json');
+    && source.includes('- name: archive battery reports')
+    && source.includes('name: battery-evidence')
+    && source.includes('port/v2/apps/game/smoke/scenemem-report.json');
 };
 
 const replaceOwnedToken = (source: string, token: string): string => {
@@ -169,11 +202,11 @@ describe('scene-memory test-battery workflow contract', () => {
     }
   });
 
-  it('keeps current Edge-family setup, one attempt, verification, and artifact ownership ordered', () => {
+  it('keeps the two static profiles ahead of current Edge, one attempt, verification, and evidence', () => {
     expect(satisfiesSceneWorkflow(workflow)).toBe(true);
   });
 
-  it('binds the hosted heap-phase selftest to its exact collector source contract', () => {
+  it('binds the changed-instrument/production heap-phase selftest to its exact collector source contract', () => {
     expect(bindsHeapPhaseSelftestSource(sceneMemoryTool)).toBe(true);
     for (const token of HEAP_PHASE_SOURCE_CONTRACT) {
       expect(
@@ -187,19 +220,17 @@ describe('scene-memory test-battery workflow contract', () => {
     )).toBe(false);
   });
 
-  it('rejects every missing or drifted owned step', () => {
+  it('rejects every missing or drifted owned step and any restored focused duplicate', () => {
     for (const token of ORDERED_CONTRACT) {
       expect(satisfiesSceneWorkflow(replaceOwnedToken(workflow, token)), token).toBe(false);
     }
-    for (const bypass of [
-      '        run: npx vitest run tests/current-producer-authorities.test.ts -- --exclude tests/current-producer-authorities.test.ts',
-      '        run: npx vitest run tests/current-producer-authorities.test.ts || true',
-      '        run: |\n          set +e\n          npx vitest run tests/current-producer-authorities.test.ts',
+    const anchor = '      - name: install current Arc 1C Edge scene-memory browser';
+    for (const duplicate of [
+      '      - name: duplicate current producer authority\n        run: npx vitest run tests/current-producer-authorities.test.ts\n',
+      '      - name: duplicate SceneMemory contracts\n        run: npx vitest run tests/scenemem-contract.test.ts\n',
+      '      - name: duplicate SceneMemory syntax\n        run: node --check tools/scenemem.mjs\n',
     ]) {
-      expect(satisfiesSceneWorkflow(workflow.replace(
-        '        run: npx vitest run tests/current-producer-authorities.test.ts',
-        bypass,
-      )), bypass).toBe(false);
+      expect(satisfiesSceneWorkflow(workflow.replace(anchor, `${duplicate}${anchor}`))).toBe(false);
     }
   });
 
@@ -221,7 +252,7 @@ describe('scene-memory test-battery workflow contract', () => {
     ))).toBe(false);
   });
 
-  it('rejects an omitted, duplicated, late, or differently bound heap-phase selftest', () => {
+  it('keeps heap-phase changed-instrument/production-only while certification and verification remain common', () => {
     const selftestWithTrailingNewline = `${HEAP_PHASE_SELFTEST_BLOCK}\n`;
     const withoutSelftest = workflow.replace(selftestWithTrailingNewline, '');
     expect(satisfiesSceneWorkflow(withoutSelftest)).toBe(false);
@@ -234,17 +265,29 @@ describe('scene-memory test-battery workflow contract', () => {
       `${selftestWithTrailingNewline}${SCENEMEM_VERIFY_HEADER}`,
     ))).toBe(false);
     expect(satisfiesSceneWorkflow(workflow.replace(
+      "        if: >-\n          github.event.pull_request.base.ref == 'main' ||\n          steps.scope.outputs.browser_instrument_changed == 'true'",
+      "        if: github.event.pull_request.base.ref == 'develop'",
+    ))).toBe(false);
+    expect(satisfiesSceneWorkflow(workflow.replace(
       HEAP_PHASE_SELFTEST_BLOCK,
       HEAP_PHASE_SELFTEST_BLOCK.replace(
         SCENE_BROWSER_ENV,
         'CF_BROWSER: /usr/bin/microsoft-edge-stable',
       ),
     ))).toBe(false);
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      SCENEMEM_CERTIFICATION_HEADER,
+      `${SCENEMEM_CERTIFICATION_HEADER}\n        if: github.event.pull_request.base.ref == 'main'`,
+    ))).toBe(false);
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      "          always() &&\n          (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')",
+      "          always() &&\n          github.event.pull_request.base.ref == 'main' &&\n          (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')",
+    ))).toBe(false);
   });
 
   it('rejects SceneMemory browser scope drift or leakage into the exact Compendium boundary', () => {
     let cursor = 0;
-    for (let occurrence = 0; occurrence < 4; occurrence++) {
+    for (let occurrence = 0; occurrence < 3; occurrence++) {
       const at = workflow.indexOf(SCENE_BROWSER_ENV, cursor);
       expect(at).toBeGreaterThanOrEqual(0);
       expect(satisfiesSceneWorkflow(
@@ -253,14 +296,13 @@ describe('scene-memory test-battery workflow contract', () => {
       cursor = at + SCENE_BROWSER_ENV.length;
     }
     expect(satisfiesSceneWorkflow(workflow.replace(
-      '          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge',
-      '          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge\n'
-        + '          CF_BROWSER_COPY: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge',
-    ))).toBe(false);
-    expect(satisfiesSceneWorkflow(workflow.replace(
       '          test -x "$scene_edge_browser"',
       '          test -x "$scene_edge_browser"\n'
         + '          printf \'CF_BROWSER=%s\\n\' "$scene_edge_browser" >> "$GITHUB_ENV"',
+    ))).toBe(false);
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      'port/v2/apps/game/smoke/scenemem-report.json',
+      'port/v2/apps/game/smoke/missing-scene-report.json',
     ))).toBe(false);
   });
 });

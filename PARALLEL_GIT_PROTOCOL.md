@@ -208,6 +208,13 @@ hosted attempt. There is no automatic post-merge battery or branch publication
 under the conservation policy.
 As of 2026-08-23, the active `develop` ruleset names `battery` as its only required
 status context; `branch-flow-guard` is a manual diagnostic, not a merge prerequisite.
+That context is profile-aware but never weaker than its destination: agent → `develop`
+runs the final-head V2 static admission plus SceneMemory, Compendium and the immutable
+Slice → Glass chain, adding the legacy root gate when those tracked inputs changed.
+`develop` → `main` is a separate production authorization and adds exhaustive instrument
+controls, Recovery and package smoke. A manual development preview is not another battery
+and cannot supply this context. Do not manually repeat an aggregate command or instrument
+selftest that the selected profile already owns.
 Do not request or wait for a second review/guard/merge approval after that exact
 battery is terminal-green. A new changed head still needs Nick's separate exact
 Actions-attempt authorization.
@@ -304,11 +311,12 @@ Before the Git handoff, the current agent must record:
 3. refreshed current-state system references and codebase map, plus the lean
    `ROADMAP.md` handoff; chronological history is appended/archived under the
    standing doc-hygiene law rather than deleted;
-4. every check run, its result, and the deliberate failing control for each new
-   instrument; a rerun is never used to erase or conceal a red result. For the
-   current v2 UI contract, retain the exact-run slice-smoke report/log/screenshots,
-   the 12-viewport glass report including 8K, and the matching-provenance automated-
-   persona JSON/Markdown; automated personas never count as a human playtest;
+4. every check actually run, its result, and the deliberate failing control for each new
+   instrument; a rerun is never used to erase or conceal a red result. Ordinary coding batches do
+   not pay a browser tax. When a final develop admission runs, retain the exact-run Slice report/
+   log/screenshots and the 12-viewport Glass report including 8K. If an on-demand automated-persona
+   review runs, retain its matching-provenance JSON/Markdown separately; personas are not required
+   for `battery` and never count as a human playtest;
 5. open findings, the exact next implementation/retest step, and its owner;
 6. for a human preview, the separate origin, full source commit, `preview.json`
    content hash, tester/device lens, and the committed report under

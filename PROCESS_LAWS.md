@@ -1,6 +1,31 @@
 # Celestial Frontier — PROCESS LAWS
 
-> **2026-08-30 current `8bdf474…` evidence law (matches local code):** exact clean SSH-signed
+> **CHECK COUNTS ARE NOT EXECUTION TIERS; RUN EACH OWNER ONCE** (2026-08-30). The current
+> 2,505 Vitest assertions are browser-free regression facts inside one roughly 22-second command,
+> not 2,505 hosted jobs or browser launches. Keep those fast product assertions. Remove exact
+> duplicate executions around them: the producer-authority test already belongs to `npm test`, the
+> stricter root TypeScript pass subsumes the looser one, and evidence selftests need one owner rather
+> than a second workflow invocation. `overridecontrol` is a 107-mutation, source-rewriting checker
+> selftest (55.46 seconds on the audited Mac); run it when its checker/audited grammar changes and in
+> the production profile, never in the ordinary coding loop. `coveragegap` is a planning report;
+> complete route coverage is already fail-closed in `overridecheck`, so do not present both as
+> independent merge gates.
+>
+> The execution tiers are explicit. During coding, run touched tests and the touched TypeScript
+> program. At a local batch boundary, `node tools/check-profile.mjs --profile=dev` owns the complete
+> fast suite plus all TypeScript programs. `--profile=develop` adds the nonduplicated static
+> art/routing/spec gates, and the final clean
+> `develop` candidate runs one SceneMemory → Compendium → Slice → Glass browser admission with exact
+> named predecessors and causal stop. Changed browser instruments run their negative controls once
+> on `develop`; ordinary product work skips them, while production always owns them. A production
+> candidate uses `--profile=production`, the full
+> legacy gate when applicable, launcher/instrument controls, and extends the exact Slice/Glass pair
+> through the uninterrupted Recovery certificate and package smoke. Do not run Recovery on every
+> development edit or make a manual human-preview package recertify the game; preview is a separate-
+> origin play surface, not merge or release evidence. Every certifier retains its own fresh build
+> until a separately reviewed content-addressed build-carrier contract exists.
+
+> **Historical `8bdf474…` evidence law (superseded by the current `4ac4`/`d1` boundary):** exact clean SSH-signed
 > source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium 78/78 in 64,108 ms
 > once/no-retry, then its unchanged-source Slice
 > `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
@@ -10,8 +35,8 @@
 > card. The sole false term reapplied a pre-Survey helper requiring a closed card after setup had
 > explicitly certified an open card. This is an instrument false negative, not a product defect.
 > The immutable red stays red; its browser-free replay proves the contradiction and explicitly
-> binds the historical absence of held `cardCode`/target capture. The new runner must capture those
-> held values before the corrected assessor can pass. No browser retry, timeout increase, version
+> binds the historical absence of held `cardCode`/target capture. Its successor runner captured those
+> held values before the corrected assessor could pass. No browser retry, timeout increase, version
 > rebaseline, product/save/schema change or gameplay redesign follows.
 >
 > **PARK NATIVE-ACTION FOCUS BEFORE DISABLING IT.** When a trusted native Enter activation can
@@ -78,7 +103,8 @@
 > mutants; a green negative control stops later controls; and a red stage stops every mutable
 > successor. Source-order removal and reversal controls must prove each stop. Historical multi-scope
 > reports stay immutable, but current execution must not manufacture derivative stages after a root
-> has already invalidated their premise. Final repair-batch browser-free validation is green: 251
+> has already invalidated their premise. At the historical `8bdf474…` repair checkpoint,
+> browser-free validation was green: 251
 > files / 2,501 passed / 1 skipped with all TypeScript programs green. Neither that green result nor
 > local repair bytes grant fresh
 > browser successor authority.
@@ -255,7 +281,8 @@ gap worker's exact lazy bytes, a mutant without the second reconciliation must r
 must remain red. Claim is a realm-ownership transition, not proof that the pre-claim inventory is
 still complete.
 
-The current history-safe producer record is `cf-v2-compendium-producer-authority/v2`, SHA-256
+The historical history-safe producer record at that checkpoint (superseded by the current
+`f2f1629a…` producer boundary above) was `cf-v2-compendium-producer-authority/v2`, SHA-256
 `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. It binds the exact
 generated `service-worker.js` (`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`)
 beside index, owner, species worker and painter. Deleting the post-claim repair therefore changes
@@ -311,16 +338,16 @@ carrier is
 SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`, with independent 8/8
 replay. No Slice, Glass or Recovery stage followed this red.
 
-The current browser-free boundary is 591 `compendiummem:selftest` controls, including the released-
+The historical browser-free boundary at that checkpoint was 591 `compendiummem:selftest` controls, including the released-
 snapshot stale-receipt controls, independent 8/8 carrier replay, the full **239 files / 2,431 passed
-/ 1 skipped** suite, all three TypeScript programs and the green authority printer. Current Scene build authority is
-`49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
-measurement / contract / collector authorities are
+/ 1 skipped** suite, all three TypeScript programs and the green authority printer. Scene build authority at that boundary was
+`49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; Compendium
+measurement / contract / collector authorities at that boundary were
 `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
 `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
 `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
-Producer authority remains `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`
-and generated service-worker SHA-256 remains
+Producer authority at that boundary remained `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`
+and generated service-worker SHA-256 remained
 `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. The fixed ruler, all
 numeric ceilings and the 78-outcome inventory remain unchanged. Certification remains open; only a
 materially changed signed source may make one new no-retry Compendium attempt.
@@ -422,7 +449,8 @@ is now the signed `2046000873f98318c767db53d2ffb2abac71cc94` **44/44** result; C
 first exposed the obsolete quiescent-cache oracle and then stopped instrument-only on exact signed
 source `3fb958f…`. Signed `3eefbbcf…` supplied the browser-free-green 85-phase/history repair;
 `b2eecfbd…` then stopped on the separately preserved opaque-key projection defect, and signed
-`d9d79025…` owns the current observation-v2 repair. No current Compendium certification follows yet.
+`d9d79025…` owned the then-current observation-v2 repair. No Compendium certification followed at
+that checkpoint.
 
 ⚠⚠ **NEVER PROJECT OPAQUE CANONICAL IDENTITY THROUGH A GENERIC TEXT CAP; VALIDATE IT IN
 THE OWNER REALM AND SERIALIZE BOUNDED MEMBERSHIP EVIDENCE** (2026-08-30). Exact signed source
@@ -548,7 +576,7 @@ the same cycle/RNG and revision delta at most one. Missing, swapped, coherently 
 chronology or coherently recomputed route/card/runtime/pending receipts are instrument-red, as are
 internally assessment-green retiming, +2-revision and next-cycle mutants.
 
-The current local Recovery repair's exact six-region SHA-256/UTF-8-byte inventory is: full collector
+The historical Final10-era local Recovery repair's exact six-region SHA-256/UTF-8-byte inventory was: full collector
 source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
 boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
 helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
@@ -559,7 +587,7 @@ suppression preparation/collector
 `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
 seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
 helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
-Browser-free current-byte checks at locally signed implementation/evidence commit
+Browser-free checks for those then-current bytes at locally signed implementation/evidence commit
 `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
 `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
@@ -987,7 +1015,8 @@ the unique inline script in tracked `celestial-frontier.html` through one byte-e
 fall back to local `main.js`, trim it, normalize line endings or let two extractors disagree.
 
 Before authorizing hosted work, commit the candidate and run `node
-tools/tracked-input-preflight.mjs` from `port/v2`. It exports only the exact index into an owned
+tools/tracked-input-preflight.mjs --profile=develop` from `port/v2` (or the explicit `production`
+profile for `develop` → `main`). It exports only the exact index into an owned
 temporary tree, performs a fresh install and runs the complete hosted browser-free/static sequence.
 It rejects dirty tracked state and forgotten source-owned untracked/ignored test files, excludes
 dependency-owned `node_modules` tests, and allows unrelated ambient files and artifacts generated
@@ -2330,8 +2359,8 @@ This normalization changes no package URL/hash/version, browser product/revision
 45/15/5/2-second preflight, 15-second candidate startup, 2-second product observation, attempt/retry
 policy, launcher, preflight, collector, product, measurement `6ba58522…`, producer `d3223177…`,
 budget `74e88c2b…`, or test `485be9da…`. It adds no warmup, sleep, relaunch, fallback, DBus wrapper,
-or recalibration. Because the same shell contract exists in both PR certification and manual preview
-workflows, the preflight selftest now statically requires each unique owned install step's exact
+or recalibration. At that historical point, the same shell contract existed in both PR certification
+and manual-preview workflows, so the preflight selftest then required each unique owned install step's exact
 ordered URL/SHA/download/hash → reinstall → version/executable verification → following preflight
 chain. Its controls reject removal from either workflow and outside-step decoys. The control is green
 and proves workflow configuration only; the next one-attempt browser run still owned the outcome.
@@ -2339,12 +2368,12 @@ and proves workflow configuration only; the next one-attempt browser run still o
 **Correction earned by the 2026-08-27 whole-diff audit: an exact package must not take ownership
 of the runner's shared system browser.** Reinstalling or downgrading the sealed Compendium Edge
 package through apt can mutate the executable inherited by another ruler and makes later provenance
-depend on package-manager state. The current workflows SHA-verify the exact `.101` deb, verify its
-embedded package name and version, and extract those bytes into a fresh owner-named directory under
+depend on package-manager state. The current owner-authorized test-battery workflow SHA-verifies the exact `.101` deb, verifies its
+embedded package name and version, and extracts those bytes into a fresh owner-named directory under
 `RUNNER_TEMP` with `dpkg-deb`; they never install the package. The job remains Chrome-owned, while
 Compendium preflight, certification and named verification each declare the exact extracted
 `CF_BROWSER` path directly. SceneMemory keeps its separate version-tolerant current-package
-extraction. Static controls reject apt installation, missing extraction, wrong URL/hash/package/
+extraction. Its static controls reject apt installation, missing extraction, wrong URL/hash/package/
 version/root, missing or system-browser step pins, softened owners and broken extract → preflight →
 certificate → verifier order. They also bind the certification step's exact ID and the named
 verifier's executable condition, so renaming the producer ID or disabling the verifier cannot turn

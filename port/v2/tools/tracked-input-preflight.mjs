@@ -20,17 +20,24 @@ const CHILD_TIMEOUT_MS = 30 * 60 * 1_000;
 const TEST_KINDS = ['test', 'spec'];
 const TEST_EXTENSIONS = ['ts', 'tsx', 'mts', 'cts', 'js', 'jsx', 'mjs', 'cjs'];
 
-export const HOSTED_STATIC_COMMANDS = Object.freeze([
-  Object.freeze(['npm', 'test']),
-  Object.freeze(['npm', 'run', 'typecheck']),
-  Object.freeze(['npm', 'run', 'artunused']),
-  Object.freeze(['npm', 'run', 'artaudit']),
-  Object.freeze(['npm', 'run', 'overridecheck']),
-  Object.freeze(['npm', 'run', 'overridecontrol']),
-  Object.freeze(['npm', 'run', 'coveragegap']),
-  Object.freeze(['node', 'tools/speccheck.mjs']),
-  Object.freeze(['npm', 'exec', '--', 'vitest', 'run', 'tests/current-producer-authorities.test.ts']),
-]);
+const HOSTED_STATIC_COMMANDS_BY_PROFILE = Object.freeze({
+  develop: Object.freeze([
+    Object.freeze(['node', 'tools/check-profile.mjs', '--profile=develop']),
+  ]),
+  production: Object.freeze([
+    Object.freeze(['node', 'tools/check-profile.mjs', '--profile=production']),
+  ]),
+});
+
+export const HOSTED_STATIC_COMMANDS = HOSTED_STATIC_COMMANDS_BY_PROFILE.develop;
+
+export function hostedStaticCommands(profile = 'develop') {
+  if (!Object.hasOwn(HOSTED_STATIC_COMMANDS_BY_PROFILE, profile)) {
+    throw new Error(`unsupported tracked-input profile: ${String(profile)}`);
+  }
+  const commands = HOSTED_STATIC_COMMANDS_BY_PROFILE[profile];
+  return commands;
+}
 
 export function commandInvocation(
   name,
@@ -183,11 +190,15 @@ function runHostedStaticCommand(command, cwd) {
   });
 }
 
-export function runHostedStaticCommands(cwd, runner = runHostedStaticCommand) {
-  for (const command of HOSTED_STATIC_COMMANDS) runner(command, cwd);
+export function runHostedStaticCommands(
+  cwd,
+  runner = runHostedStaticCommand,
+  profile = 'develop',
+) {
+  for (const command of hostedStaticCommands(profile)) runner(command, cwd);
 }
 
-function runTrackedInputPreflight() {
+function runTrackedInputPreflight(profile = 'develop') {
   const discoveredRoot = gitCapture(['rev-parse', '--show-toplevel']).trim();
   if (resolve(discoveredRoot) !== REPOSITORY_ROOT) {
     throw new Error(`script repository mismatch: expected ${REPOSITORY_ROOT}, found ${discoveredRoot}`);
@@ -213,7 +224,7 @@ function runTrackedInputPreflight() {
       stdio: 'inherit',
       timeout: CHILD_TIMEOUT_MS,
     });
-    runHostedStaticCommands(snapshotV2);
+    runHostedStaticCommands(snapshotV2, runHostedStaticCommand, profile);
     requireStableCandidate(head);
     console.log(`\nTRACKED INPUT PREFLIGHT: PASS (${head})`);
   } finally {
@@ -373,10 +384,17 @@ function main() {
     runSelftest();
     return;
   }
-  if (args.length !== 0) {
-    throw new Error('usage: node tools/tracked-input-preflight.mjs [--selftest]');
+  if (args.length === 0) {
+    runTrackedInputPreflight('develop');
+    return;
   }
-  runTrackedInputPreflight();
+  const profile = args.length === 1
+    ? /^--profile=(develop|production)$/.exec(args[0])?.[1]
+    : undefined;
+  if (!profile) {
+    throw new Error('usage: node tools/tracked-input-preflight.mjs [--selftest | --profile=develop | --profile=production]');
+  }
+  runTrackedInputPreflight(profile);
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

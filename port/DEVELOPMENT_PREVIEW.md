@@ -1,6 +1,19 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (supersedes narrower
+> **2026-08-30 current preview boundary:** the manual preview workflow is a playtest packager, not
+> a second integration battery. It keeps owner-only manual authorization, the approved branch and
+> separate HTTPS origin checks, runs the fast `check-profile --profile=dev` boundary and the
+> package-specific `preview:selftest` once each, builds the clean exact commit into its isolated
+> manifest-bound package, browser-smokes that package, and uploads it. It
+> does **not** separately rerun Compendium, Slice, Glass, Recovery, automated personas, or their
+> certification instrument selftests; the retained preview selftest owns package/origin/tamper and
+> preview-browser behavior rather than recertifying gameplay.
+> Live certification belongs to the merge/production profiles and cannot be inferred from a preview.
+> A preview artifact therefore grants no `battery` status, merge, `main`, release, version,
+> publication, or deployment authority. This supersedes older statements below that describe the
+> manual preview workflow as recertifying Slice → Glass; their historical run records remain true.
+
+> **2026-08-30 historical exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (supersedes narrower
 > “current-local” status below; every dated run and preview boundary remains immutable):** exact
 > clean SSH-signed evidence source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium
 > **78/78** once/no-retry in **64,108 ms**. Its unchanged Slice
@@ -11,7 +24,7 @@
 >
 > The retained old-document live product was exact and its Pertar card correctly stayed open; the
 > stale oracle also required that card to be closed. The replay binds that contradiction and its
-> missing historical held `cardCode`/target capture; the current uncommitted runner atomically
+> missing historical held `cardCode`/target capture; the then-uncommitted runner atomically
 > captures those values and moves complete future judgment into browser-free contracts. Earlier focus-lineage,
 > explicit Survey predecessor, coordinator and Arc 5 v3 repairs remain. Final browser-free
 > validation is green at **251 files / 2,501 passed / 1 skipped**, with all TypeScript programs
@@ -65,7 +78,7 @@ The lifecycle/resource repair descends from signed local implementation base
 exact-head authorization. Neither the current descendant nor any local diagnostic below is a
 preview candidate.
 
-**Current local Compendium boundary:** signed clean `20460008…` passed SceneMemory **44/44** once
+**Historical local Compendium boundary (superseded by the current `4ac4`/`d1` boundary in `ROADMAP.md` and `port/v2/README.md`):** signed clean `20460008…` passed SceneMemory **44/44** once
 with named verification. Its once-only Compendium successor retained all 78 outcomes and stopped
 **76/78** because the historical warm-cache oracle demanded full 96/256 occupancy instead of the
 product's correct eight live thumbnail leases plus 17 bounded unleased thumbnails. Signed clean
@@ -270,15 +283,15 @@ oversize, duplicate, evicted or final-dispose asset releases ownership exactly o
 dirty SceneMemory diagnostic `20260829-pr35-blob-url-warm-cache-dirty-budget1` exercised **44/44**
 outcomes green; signed clean `20460008…` later supplied the certifying 44/44 result. The current
 sealed-worker repair is a materially changed signed source and requires one fresh no-retry exact-
-source Compendium run before any later browser stage or preview packaging can proceed; the historical
+source Compendium run before any later certification browser stage can proceed; the historical
 `dc6004c…` failure is not retried unchanged.
 
-The guarded packaging workflow now extracts and named-verifies one immutable Slice result, passes
-that exact ID into Glass, named-verifies the resulting Glass/Slice pair and retains the immutable
-carriers before persona synthesis or packaging. A bare Glass invocation is rejected by both the
-workflow contract and the tool before it can alter the last terminal report pointer. The workflow
-is still an artifact producer, not the separate uninterrupted 20-minute Recovery certificate; a
-package must never be described as full automated certification on that basis.
+The current guarded packaging workflow runs the shared browser-free `dev` profile and the dedicated
+preview producer/integrity selftest once each, builds one clean exact-commit separate-origin package,
+browser-smokes that package and uploads it. It does not
+repeat Compendium, Slice, Glass, Recovery or persona certification. Those browser authorities stay
+with the owner-approved integration/production battery, and a preview package must never be
+described as merge or release certification.
 
 **Historical Final10 campaign boundary (superseded by Final11 above):** the playable implementation extends through the local
 Arc 4.5 Survey → Gather → Build → Tame → ship improvement → farther reach → Return slice, but it is
@@ -522,14 +535,13 @@ endpoint for 16 seconds, proving the generic allowance rejects without stealing
 startup time from the exact preview caller. This is a bounded repair for browser
 startup variance, not a retry or a workflow/job timeout increase.
 
-Browser provenance is owned by each process. A `CF_BROWSER` value attached to one GitHub
-Actions step does not carry into the next step merely because both belong to the same job.
-The preview contract therefore requires effective exact `/usr/bin/google-chrome` on the step that
-owns `preview:smoke`: one exact step mapping may override a different job browser, or one exact job
-mapping may supply Chrome when the step has none. Missing, wrong, duplicate, previous-step-only, and
-inline-command overrides reject. The serialized test job may own Edge while its preview step owns
-Chrome; the manual workflow may own Chrome at job scope and override only its Edge steps. Do not
-depend on fallback ordering when a runner has several Chromium-family browsers installed.
+Browser provenance is owned by each process. A `CF_BROWSER` value attached to one GitHub Actions
+step does not carry into the next merely because both belong to the same job. Both current workflow
+jobs are Chrome-owned at job scope. The test battery overrides only the SceneMemory and Compendium
+owner steps with their exact Edge executables; its production preview-smoke step inherits Chrome.
+The manual preview workflow has no Edge stage and remains Chrome-owned throughout. Missing, wrong,
+duplicate, previous-step-only, and inline-command overrides reject. Do not depend on fallback
+ordering when a runner has several Chromium-family browsers installed.
 
 Exact committed `9d5247f0d6e7c36015d465cef0961a460d1a27d3` includes the effective-owner
 checker repair and passed the complete local battery: root/v2 static, layout 787/787, exact-Edge
@@ -564,17 +576,21 @@ no-retry run `32681394532` and merged normally in PR #34 as `7a9f4c1…`. This r
 evidence only, not release authority.
 Executable path and user agent remain recorded provenance, not cross-host match fields.
 
-Ubuntu provisions `/usr/bin/microsoft-edge-stable` only for the ordinary Compendium job and
-the manual Compendium selftest/run/verify steps. The package is the exact Microsoft
+Historical `.101` preview-certification workflow record (superseded by the current packaging-only
+boundary at the top of this reference): Ubuntu provisioned `/usr/bin/microsoft-edge-stable` only
+for the ordinary Compendium job and the manual Compendium selftest/run/verify steps. The package
+was the exact Microsoft
 `microsoft-edge-stable_151.0.4129.101-1_amd64.deb` from
 `https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb`,
 with SHA-256 `bd7604025424914a61c06293cb6bf269141a29d8c54cf1997110bc96d3365d60`;
-both workflows check those bytes, request
-`sudo apt-get install --reinstall --yes "$edge_package"`, then verify the installed package version
-and executable before use. The preflight selftest statically requires that unique owned install
+both workflows checked those bytes, requested
+`sudo apt-get install --reinstall --yes "$edge_package"`, then verified the installed package version
+and executable before use. The preflight selftest statically required that unique owned install
 step's exact ordered URL/SHA/download/hash/reinstall/version/executable chain followed by preflight,
-and negative-controls removal from either workflow plus outside-step decoys. This reinstall is a
-preserved hosted-runner normalization transition.
+and negative-controlled removal from either workflow plus outside-step decoys. This reinstall is a
+preserved hosted-runner normalization transition, not the current preview workflow contract; the
+current test-battery workflow instead uses isolated exact-package extraction, and preview packaging
+does not own or repeat Compendium.
 
 Historical `.86` normalization history: activation head `96464d5…` passed its complete
 local battery, but run `32394244417`, attempt 1,
@@ -664,23 +680,27 @@ Engineering details/actions are unavailable. SceneMemory certifies that Arc 1C r
 it does not certify or require loaded Mine, Skim, Research or Fabricator authority.
 
 The guarded ordinary `test-battery` runs version-tolerant Edge-family/CDP SceneMemory first, then
-the independently sealed exact-package Compendium ruler before the Chrome smoke/Glass/persona/
-preview steps. SceneMemory records the full executable/version/revision/JavaScript/user-agent/CDP
+the independently sealed exact-package Compendium ruler before the Chrome Slice/Glass chain. A
+production candidate extends that exact chain through Recovery and package smoke; the integration
+battery does not synthesize personas or publish a preview. SceneMemory records the full
+executable/version/revision/JavaScript/user-agent/CDP
 tuple as provenance but does not use the point version as a rebaseline key. It runs the browser-
 free instrument controls, performs one no-retry active-budget certification, always verifies the
-named terminal report, and uploads whatever that attempt produced as `v2-scene-memory-evidence`.
-This is part of the single fail-fast
-owner-label-authorized battery, not a new parallel job or automatic retry. Hosted attempt 4 is
+named terminal report, and retains whatever that attempt produced in `battery-evidence`.
+This is part of the single fail-fast owner-label-authorized battery, not a new parallel job or
+automatic retry, and its report is retained in the consolidated `battery-evidence` artifact. Hosted attempt 4 is
 consumed and terminal-red. A later authorized PR #33 battery, `32646110946`, passed terminal-green
 and merged `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`; its label was removed. No new hosted attempt
 is authorized. Exact signed `3f69e88…` local 44/44 evidence and its downstream chain still do not
 authorize publication, release, or deployment.
 
-The separate manual `development-preview-package` workflow still owns preview packaging and its
-current exact `.101` Compendium/Chrome sequence; it does not run or certify the Arc 1
-scene-memory-v2 ruler. A future preview artifact may include the current product bytes only after
-its own exact-source workflow authorization, but package verification remains distinct from scene-memory,
-hosted-battery, HUMAN, merge, and release authority.
+The separate manual `development-preview-package` workflow owns preview packaging only. It runs
+the shared browser-free `dev` profile and package-specific preview selftest once each, then builds
+and Chrome-smokes one exact-source package; it
+does not provision Edge or run SceneMemory, Compendium, Slice, Glass, Recovery or personas. A
+future preview artifact may include the current product bytes only after its own exact-source
+workflow authorization, but package verification remains distinct from the hosted battery, HUMAN,
+merge, and release authority.
 
 `preview:verify` proves package integrity and the safety metadata. It does not assert that a
 commit is still the newest development commit. The full 40-character commit and
@@ -896,8 +916,16 @@ made green by lengthening startup or clearing D-Bus. This infrastructure repair
 does not authorize publication. The separate-origin hosting choice and genuine
 human playtest remain required before PR #11 may leave draft or merge.
 
-The ordinary guarded battery's single serialized, fail-fast product job emits these artifacts.
-Report/log evidence is still uploaded when its owning step is red:
+The current guarded battery has one consolidated always-run `battery-evidence` artifact. Depending
+on destination and changed scope it retains the root fingerprint/layout reports, SceneMemory,
+Compendium report and review images, immutable Slice/Glass carriers, production-only Recovery and
+browser screenshots. A terminal-red stage leaves its available evidence in that same bundle; it
+does not manufacture missing successors. Only a fully green production (`develop` → `main`) run
+uploads `v2-development-preview`. The separate manual packaging workflow uploads only
+`manual-development-preview` and never emits or claims battery evidence.
+
+Historical pre-consolidation artifact inventory follows. Report/log evidence was still uploaded
+when its owning step was red:
 
 - `root-reports` + `root-layout-evidence`: the root fingerprint/current report and the
   atomic uilayout evidence, retained by the serial battery job's always-run upload steps;
@@ -944,7 +972,7 @@ creates files; it does not publish or deploy them. Retain its `preview.json` and
 output with the human-playtest record. After this workflow reaches `develop`, subsequent branch
 candidates should use the reviewed manual workflow instead of recreating that local bootstrap.
 
-When available on the default branch, the manual workflow:
+The current manual workflow:
 
 1. defaults to `DO_NOT_RUN`; a tiny authorization/source job requires Nick's exact one-workflow
    budget token, and the sealed package job depends on it without adding a forbidden job-level `if`;
@@ -953,20 +981,14 @@ When available on the default branch, the manual workflow:
 3. uses the `development-preview-package` GitHub Environment, where required reviewers
    should be configured before the first candidate run (the environment name alone does
    not create reviewer protection);
-4. reruns deterministic, type, art, browser, and preview-producer controls;
-5. provisions exact Edge `151.0.4129.101` with same-package `--reinstall` only for the Compendium browser
-   preflight, memory selftest,
-   one-attempt/no-retry active-budget run, and exact-run verification; the preflight binds exact
-   product/revision/JS/protocol/executable and a fresh target's Runtime/Page/HeapProfiler plus
-   evaluate/event outcome under 45/15/5/2-second bounds, with no retry or authority-input change;
-   its selftest owns the fail-closed ordered workflow-package control; retains the current report
-   plus every same-run review artifact even on failure; then keeps Chrome for the later browser
-   gates. The reinstall is preserved runner-image history; current authority instead requires the
-   lifecycle-calibrated exact head; exact `731b2e2…` passed locally, while hosted run
-   `32420327368` was consumed at the 40-minute lifecycle-pending ceiling and cannot be retried;
-6. passes the explicit `--approved-publication-candidate` producer flag and uploads
-   evidence plus that candidate for 14 days;
-7. has only `contents: read` permission—no Pages token, deployment token, repository write,
+4. runs `node tools/check-profile.mjs --profile=dev` once, with no duplicate aggregate or
+   certification selftest invocation;
+5. runs `npm run preview:selftest` once, then passes the explicit
+   `--approved-publication-candidate` producer flag, builds one clean exact-commit package for the
+   approved separate origin, browser-smokes that package in Chrome and
+   uploads only `manual-development-preview` for 14 days. It does not provision Edge or run
+   Compendium, Slice, Glass, Recovery or persona certification;
+6. has only `contents: read` permission—no Pages token, deployment token, repository write,
    or production capability.
 
 The automated-persona synthesis joins only passing slice-smoke and 12-viewport glass reports
