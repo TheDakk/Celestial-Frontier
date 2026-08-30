@@ -10,6 +10,42 @@ summary of it.
 
 ## Contents
 
+### Signed `ebf172c…` SceneMemory stop — one over-tight absolute V8 outcome, no retained-owner drift
+
+Exact clean SSH-signed source `ebf172cc62417c9e193c7fcc1c9e751a1e0a028a` (tree
+`0ba7fe322bc4f21e00f3a76216ef41cecef184e1`, parent
+`656c85e43a59fe775efac102b21a7530c033e5ff`) passed its hermetic tracked-input develop profile at
+**253 files / 2,510 passed / 1 skipped**, all three TypeScript programs and every art/route/spec
+gate. The complete conditional browser-instrument controls were also green. SceneMemory then ran
+once with zero retry as `20260830224113863-74114-9e38e9d458` on Microsoft Edge
+`152.0.4191.53` / CDP `1.3`. It completed cleanly in **12,928 ms** at **43/44** and stopped the
+serial chain. Compendium, Slice, Glass and Recovery did not run.
+
+`ARC1C_SCENEMEM_PR35_CURRENT_HEAD_V8_BUDGET_RED_20260830_EBF172C.json.gz` preserves the exact
+terminal report at **45,097 gzip / 787,600 raw bytes**. Gzip/raw SHA-256 is
+`8060c10871ac0a31ff0eef8183da8f91ec79c8dd09c69a277d1f9855a86a14ac` /
+`a19654d003e04a947a0719150eb332a9bde038c02d41b16f00b2bbffa005ad46`.
+The sole failure is
+`desktop/heap-dom-budget: bfcache: V8 heap used bytes 12594592 exceeded ceiling 12582912`:
+**11,680 bytes (0.093%)** above the 12 MiB absolute V8 ceiling.
+
+This is not an Edge-version rebaseline and the BFCache transition is not the growth owner. The
+same Edge/JavaScript/CDP tuple passed exact 7f/961/656; current desktop cycle 4 → BFCache added
+208,688 bytes, below the 209,248–214,544-byte range of those passes. Every retained-owner witness
+is unchanged: 1 active scope, 19 leases/textures, 18,350,080 live canvas bytes, exact 81/72 peaks,
+43 managed textures / 5,647,874 pixels, 13 shared TextStyle listeners, zero pending/ring/local-
+canvas/render-target owners, one 412,800-pixel vista cache, and BFCache DOM 480 nodes / 70
+listeners. Warm aggregate range **355,208 < 524,288**, V8 slope **115,843.2 < 131,072**, and
+aggregate heap **18,302,798 < 18,874,368** all remain green. The Capture repair's second
+post-Arc-9 publication is real bounded work on the exercised Landing path; removing it would
+recreate the stale-disabled action race rather than repair memory ownership.
+
+The raw absolute V8 ceiling has therefore exhausted its original operational margin as the fixed
+product grew. This report stays immutable FAIL. The next ruler decision requires exactly three
+clean, one-attempt/no-retry calibration candidates on one unchanged signed current producer,
+retained raw replay and preserved slope/range/ownership controls. No threshold is changed from this
+single red, and no browser, product action, timeout or failed stage is retried automatically.
+
 ### Signed `656c85e…` green admission predecessors, then exact post-Sample Tame-disabled red
 
 Exact clean SSH-signed source `656c85e43a59fe775efac102b21a7530c033e5ff` (tree
