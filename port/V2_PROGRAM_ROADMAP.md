@@ -2,23 +2,30 @@
 
 > **Current local PR #35 battery/right-sizing and Arc 4 shared-ledger boundary (2026-08-30;
 > supersedes the historical current overlays below):** exact clean signed source
-> `d611d18ad12bb8587863846ef3799300d2396e6a` passed Layout 787/787, SceneMemory 44/44 and
-> Compendium 78/78 once/no-retry. Its unchanged-source Slice stopped terminal red after 170,889 ms
-> with five scopes; Glass and Recovery did not run. Immutable replay proves those scopes reduce to
-> one stale shared-ledger premise, one stale one-receipt successor premise and missing causal stop,
-> not five product failures. Pertar action readiness owns boot receipt 0, Survey 1 and Landing 2;
-> first Sample owns Capture receipt 3 / revision `R+1` followed by required Arc 9 progression
+> `d611d18ad12bb8587863846ef3799300d2396e6a` first passed Layout 787/787, SceneMemory 44/44 and
+> Compendium 78/78 before a five-scope Slice oracle red. Signed successor
+> `7f89bb2a70604da5b79673bd22d25786cab468d2` passed the right-sized tracked profile, conditional
+> heap/launcher controls, SceneMemory 44/44 and Compendium 78/78 once/no-retry. Its unchanged-source
+> Slice stopped after 159,754 ms at exactly one causal Tame-audio fixture scope; Glass and Recovery
+> did not run. This proves the earlier causal-stop repair worked. Every Tame/audio/action/classifier/
+> mutation/reload result was green. Pertar action readiness owns boot receipt 0, Survey 1 and Landing
+> 2; first Sample owns Capture receipt 3 / revision `R+1` followed by required Arc 9 progression
 > receipt 4 / final revision `R+2`, adding `rare` and `legend` while best rank remains 3.
 >
-> The repaired browser-free contract composes that exact prefix/tail, isolates every negative
-> control and stops before Storage on a red Sample. No product/app, schema, creature/genome,
+> The sole 7f red was another overfit evidence term: Sample and Tame have byte-identical invariant
+> Landing facts, but their different complete source states legitimately derive different
+> `stateSuccessorSeal` values. The current contract requires the full witness bytes to match one
+> invariant template after substituting only one canonical lowercase SHA-256. Both retained real
+> variants pass; malformed seals and changed causal fields fail. It neither allowlists observed
+> hashes nor duplicates the private product codec. No product/app, schema, creature/genome,
 > art/audio, timeout, retry, numeric ruler or Edge-version baseline changes. The right-sized
 > develop profile is green at **253 files / 2,510 passed / 1 skipped** plus all three TypeScript
 > programs, art/route/spec gates; its 2,510 assertions are one roughly 23-second process, not
 > thousands of jobs. Compendium's 591 ruler mutations are conditional on production or changed
 > instrument inputs, specification controls are folded into the normal command, and Recovery plus
-> package smoke are production-only. A fresh unchanged-source SceneMemory → Compendium → Slice →
-> Glass develop chain remains required. No HUMAN, hosted, merge, release, version or deployment
+> package smoke are production-only. A changed clean successor still requires one fresh unchanged-
+> source SceneMemory → Compendium → Slice → Glass develop chain. No HUMAN, hosted, merge, release,
+> version or deployment
 > authority follows; exact carriers and hashes are in `audits/README.md`.
 
 > **Historical exact-`8bdf474…` Arc 0 publication-oracle boundary:** exact clean signed source

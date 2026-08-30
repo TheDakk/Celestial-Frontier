@@ -1,21 +1,24 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
 > **Current local engineering boundary (2026-08-30; exact resumption details in `ROADMAP.md`):**
-> exact SSH-signed checkpoint `d611d18ad12bb8587863846ef3799300d2396e6a` (tree
-> `f2ab61ec…`, parent `d1b0202…`) owns the consolidated dev/develop/production profiles. Its clean
+> exact SSH-signed checkpoint `7f89bb2a70604da5b79673bd22d25786cab468d2` (tree
+> `9007559d…`, parent `d611d18…`) owns the consolidated dev/develop/production profiles. Its clean
 > browser-free develop profile passed **253 files / 2,510 tests / 1 skipped** in about 23 seconds;
-> root Layout passed **787/787**, SceneMemory **44/44**, and Compendium **78/78** on Microsoft Edge
-> `152.0.4191.53` / CDP `1.3`. The unchanged-source Slice then stopped once/no-retry with five
-> scopes and Glass did not run. The retained evidence proves those scopes reduce to two stale Arc 4
-> oracle assumptions plus one missing causal stop, not five product defects: the valid Pertar
+> changed-instrument controls passed, SceneMemory passed **44/44**, and Compendium **78/78** on
+> Microsoft Edge `152.0.4191.53` / CDP `1.3`. The unchanged-source Slice then stopped once/no-retry
+> with exactly one Tame-audio fixture scope and Glass did not run. This is the causally reduced
+> successor to d611's five-scope red. Retained evidence proves the game/audio action, exact
+> classifier, mutations and reload behavior all passed: the valid Pertar
 > action-ready ledger is boot receipt 0 → Survey 1 → Landing 2, and the first Sample correctly adds
-> Capture receipt 3 then Arc 9 progression receipt 4. The current local successor repairs only that
-> shared evidence oracle, causal-stop wiring, and the last two battery-ownership inefficiencies.
-> The repaired successor's full develop profile is green at the 253/2,510 boundary; the Compendium
+> Capture receipt 3 then Arc 9 progression receipt 4. The only 7f red pinned Sample's source-derived
+> Landing state seal inside the otherwise-identical Tame fixture. The current local successor
+> requires the full Landing witness bytes to match one invariant template after substituting only
+> that canonical lowercase SHA-256; both retained real variants pass and malformed/changed facts
+> reject. The Compendium
 > ruler's 591 synthetic controls are now conditional on production or changed instrument inputs,
-> and the specification audit's five controls run inside its one normal command. It
-> changes no game/product source, save schema, creature/genome/art/audio system, numeric ruler,
-> browser baseline, retry policy or release identity. Fresh browser certification remains pending.
+> and the specification audit's five controls run inside its one normal command. No game/product
+> source, save schema, creature/genome/art/audio system, numeric ruler, browser baseline, retry
+> policy or release identity changes. A changed clean successor still needs fresh browser evidence.
 
 > **Historical exact-`8bdf474…` evidence boundary (superseded by the later `4ac4`/`d1` boundary):** exact clean SSH-signed source
 > `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
@@ -3088,7 +3091,7 @@ node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_
 | Tool | Role |
 |---|---|
 | **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |
-| **Current Arc 4 Pertar ledger boundary inside `npm run smoke:ci` (2026-08-30)** | Exact `d611d18…` evidence passed Layout 787/787, SceneMemory 44/44 and Compendium 78/78, then preserved a terminal five-scope Slice red with no Glass/Recovery successor. The game was correct: fresh Arc 4 ownership coexists with the independently owned boot/Survey/Landing receipt prefix at ordinal 3; the first Sample commits Capture at revision/ordinal +1 and its required Arc 9 aggregate refresh at +2, adding exactly `rare` then `legend` while best rank remains 3. The shared browser-free contract now composes that exact five-receipt ledger, binds Capture result/ownership to +1 and final persistence to +2, rejects missing/extra/mutated successors, and makes every dependent Arc 4 stage fail-stop before later mutable work. Earlier Landing, Research/Fabricator, focus-lineage, coordinator-idle and Arc 5 carrier repairs remain. No product/save/creature/art/audio change, retry, sleep, timeout increase, numeric ruler change or Edge rebaseline is used. |
+| **Current Arc 4 Pertar ledger boundary inside `npm run smoke:ci` (2026-08-30)** | Exact d611 evidence passed Layout 787/787, SceneMemory 44/44 and Compendium 78/78, then preserved a terminal five-scope Slice red. Signed 7f repaired the shared boot/Survey/Landing prefix, Sample + Arc 9 two-receipt tail and causal stop; its unchanged-source SceneMemory 44/44 and Compendium 78/78 passed before Slice reduced to exactly one Tame fixture-oracle scope. Every Tame/audio/classifier/mutation/reload check was green. The remaining stale term pinned Sample's full-state Landing seal even though Tame's different source state legitimately derives another seal. The current exact-byte template substitutes only one canonical 64-hex state seal; both retained real variants pass, while malformed seals and changed invariant Landing facts fail. Capture result/ownership remains +1 and final progression persistence +2, adding exactly `rare` then `legend` while best rank remains 3. Earlier Landing, Research/Fabricator, focus-lineage, coordinator-idle and Arc 5 repairs remain. No product/save/creature/art/audio change, retry, sleep, timeout, numeric ruler or Edge rebaseline is used. |
 | `node tools/tracked-input-preflight.mjs --selftest` / `node tools/tracked-input-preflight.mjs --profile=develop|production` | Mutation-controls the tracked-only boundary, then—only from a clean committed candidate—exports the exact index, installs in isolation and invokes exactly one selected shared browser-free/static profile with start/end source stability. This is the mandatory preauthorization rehearsal, not hosted or browser evidence. |
 | `npx vitest run tests/current-producer-authorities.test.ts` / `node tools/print-producer-authorities.mjs` | Before browser installation or campaign work, performs one standard app build under the shared workspace lock and compares SceneMemory plus Compendium's live budget records directly to independently derived current source/dist authorities. The test is automatically included in `npm test`; source, build, forged duplicate-constant, recomputed index and recomputed owner mutants must fail with exact mismatch paths. The printer reports those paths and exits nonzero on any mismatch. It never rewrites budgets or historical samples and is not a browser certificate. |
 | **Historical Final11 campaign evidence** | Signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc` passed Layout 787/787, SceneMemory 42/42, Compendium 78/78 with six PNGs, Slice with zero findings/ten PNGs and all 12 Glass viewports with zero findings or instrument failures; every stage ran once and passed named verification. Recovery ran once for 1,291,034 ms and passed all 15 observation outcomes/309 samples, the uninterrupted 20-minute window, exact next-cycle boundary and recovered UI. Its final assessor failed only `activePlayProjection` and `closeCheckpoint`; cleanup passed and no retry occurred. Final11 is immutable, instrument-red rather than product-red, and not a Recovery certificate. Exact carriers are in `audits/README.md`. |

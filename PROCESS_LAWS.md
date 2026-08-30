@@ -88,7 +88,11 @@
 > adding exactly `rare` then `legend` while best rank remains 3. Tame has no forged progression tail.
 > Compose those predecessors and successors in one browser-free positive, reject missing/extra/
 > reordered receipts and split revision ownership, and wait for the exact final fixed point before
-> reading browser evidence. A red prefix or Sample verdict stops before Storage or later Arc 4 work.
+> reading browser evidence. A witness field derived from the fixture's complete canonical source
+> state is opaque to a bounded state projection: validate its exact digest format and require the
+> full witness bytes to match one invariant template after substituting only that field. Do not pin
+> one fixture's digest, allowlist observed digests, or duplicate the product codec inside the
+> oracle. A red prefix or Sample verdict stops before Storage or later Arc 4 work.
 >
 > **VALIDATE THE PREDECESSOR THE WAY THE PRODUCT DOES.** A mathematically plausible successor is not
 > evidence if its predecessor could never enter the production action. Mirror required fields,

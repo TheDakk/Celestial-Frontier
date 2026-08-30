@@ -149,8 +149,8 @@ const ARC4_PERTAR_SURVEY_WITNESS =
   'arc9sv1:21678a94072ba2e5d0df32cdde8454d265cf0edac9310acf98576d2696244ece';
 const ARC4_PERTAR_LANDING_WITNESS =
   '{"schema":"cf-v2-arc0-landing-witness/v1","worldKey":"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3","planetSeed":546621068,"planetOrdinal":3,"landing":"unresolved-already-landed","permanentLanding":true,"training":false,"landingKnownBefore":true,"identityLandedAfter":true,"claimedLegacyIdentity":true,"legacyMirrorContainsSeedAfter":true,"savedView":{"type":"planet","gal":{"x":90,"y":-60,"size":78,"sp":0,"tilt":0.62,"rot":0.5,"seed":999,"home":true,"quasar":false,"dwarf":false},"star":{"x":414.31,"y":168.49,"seed":1347060996},"pseed":546621068},"sample":{"kind":"suppressed","reason":"unresolved-already-landed"},"charter":{"banked":false,"ascChBefore":1,"ascChAfter":1,"stage":1,"progressSeal":"479d7c8742762c9fb5fa62cfdb8b9621bf70959410c8c2aece801e707f8a27a1","delta":{}},"starterCharters":{"changed":false,"progressIds":[],"completions":[],"priorUnlockedIds":[],"nextUnlockedIds":[],"addedAchievementIds":[],"priorBestRankIndex":0,"nextBestRankIndex":0},"achievement":null,"stateSuccessorSeal":"9ccc8a03c32960e4eef9322cf2aee9e02d8942dcfc9c9cc78c092259e7ae1e65","worldIdentitySuccessorSeal":"040de02d9a443e9d6a6ee3091492ea098daf3cb8663efae0b323333b8a51442b","receiptOrdinal":2}';
-const ARC4_PERTAR_LANDING_WITNESS_SHA256 =
-  '283161d76c733854f6323796b95e1f7bd400136bca86360c301868264e4379cf';
+const ARC4_PERTAR_TAME_LANDING_STATE_SEAL =
+  '10d953c315de7295a53d221ea1d2f93899de8f7ab127db26d3e5cdff170e7533';
 const ARC4_PERTAR_SAMPLE_PROGRESSION_WITNESS =
   'arc9p1:ca4c7dff47e0659ad90ee11f24441920e8fde2ccbc6cd474bd4b174338f4f6a1';
 const ARC4_PERTAR_SOURCE_FACTS = Object.freeze({
@@ -2842,10 +2842,12 @@ const exactArc4PertarPrefixRows = (raw, phase) => {
   if (!same(boot, ARC4_PERTAR_FIXTURE.sourceReadyReceipt)) return false;
   if (phase === 'source-ready') return true;
   const landingFacts = parseJson(landing?.witness);
+  const expectedLandingFacts = parseJson(ARC4_PERTAR_LANDING_WITNESS);
+  if (!record(landingFacts) || !record(expectedLandingFacts)) return false;
+  expectedLandingFacts.stateSuccessorSeal = landingFacts.stateSuccessorSeal;
   return survey?.ordinal === 1 && survey?.kind === 'arc9-survey-v1'
     && survey?.witness === ARC4_PERTAR_SURVEY_WITNESS
     && landing?.ordinal === 2 && landing?.kind === 'arc0-land'
-    && sha256(landing.witness) === ARC4_PERTAR_LANDING_WITNESS_SHA256
     && exactKeys(landingFacts, [
       'schema', 'worldKey', 'planetSeed', 'planetOrdinal', 'landing',
       'permanentLanding', 'training', 'landingKnownBefore',
@@ -2854,11 +2856,8 @@ const exactArc4PertarPrefixRows = (raw, phase) => {
       'starterCharters', 'achievement', 'stateSuccessorSeal',
       'worldIdentitySuccessorSeal', 'receiptOrdinal',
     ])
-    && landingFacts.schema === 'cf-v2-arc0-landing-witness/v1'
-    && landingFacts.worldKey === ARC4_PERTAR_FIXTURE.worldKey
-    && landingFacts.planetSeed === ARC4_PERTAR_FIXTURE.planet.seed
-    && landingFacts.planetOrdinal === ARC4_PERTAR_FIXTURE.planet.ordinal
-    && landingFacts.receiptOrdinal === 2;
+    && landing.witness === JSON.stringify(expectedLandingFacts)
+    && hexDigest(landingFacts.stateSuccessorSeal);
 };
 
 /** Exact composed ledger phase for the Pertar browser fixture. Fresh means a
@@ -6733,6 +6732,14 @@ const pertarActionReadyUiSelftest = uiSnapshot(
 const pertarPrefixAssessmentSelftest = (raw, state, phase = 'action-ready') => (
   assessArc4PertarLedgerPrefix({ raw, state, phase })
 );
+const pertarLandingSealVariantSelftest = (seal) => {
+  const raw = structuredClone(pertarActionReadyRawSelftest);
+  const facts = JSON.parse(raw.receiptRows[2].witness);
+  facts.stateSuccessorSeal = seal;
+  raw.receiptRows[2].witness = JSON.stringify(facts);
+  raw.receiptRawRows[2] = JSON.stringify(raw.receiptRows[2]);
+  return raw;
+};
 const pertarPrefixMutationSelftest = (mutate) => {
   const raw = structuredClone(pertarActionReadyRawSelftest);
   const state = structuredClone(pertarActionReadyStateSelftest);
@@ -6776,6 +6783,12 @@ const pertarPrefixControlsSelftest = Object.freeze({
     raw.receiptRows[2].witness = JSON.stringify(facts);
     raw.receiptRawRows[2] = JSON.stringify(raw.receiptRows[2]);
   }),
+  landingStateSuccessorSeal: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[2].witness);
+    facts.stateSuccessorSeal = 'not-a-sha256-digest';
+    raw.receiptRows[2].witness = JSON.stringify(facts);
+    raw.receiptRawRows[2] = JSON.stringify(raw.receiptRows[2]);
+  }),
   authorityOrdinal: pertarPrefixMutationSelftest((raw) => {
     raw.authority.sessionRng.ordinal += 1;
   }),
@@ -6785,9 +6798,12 @@ const pertarPrefixControlsSelftest = Object.freeze({
 });
 const pertarPrefixControlNamesSelftest = Object.freeze([
   'staleEmptyLedger', 'missingReceipt', 'extraReceipt', 'reorderedReceipts',
-  'bootWitness', 'surveyWitness', 'landingWitness', 'authorityOrdinal',
-  'runtimeOrdinal',
+  'bootWitness', 'surveyWitness', 'landingWitness', 'landingStateSuccessorSeal',
+  'authorityOrdinal', 'runtimeOrdinal',
 ]);
+const pertarTameLandingRawSelftest = pertarLandingSealVariantSelftest(
+  ARC4_PERTAR_TAME_LANDING_STATE_SEAL,
+);
 export const ARC4_PERTAR_LEDGER_PREFIX_SELFTEST = Object.freeze({
   sourceReady: pertarPrefixAssessmentSelftest(
     pertarSourceReadyRawSelftest, pertarSourceReadyStateSelftest, 'source-ready',
@@ -6795,10 +6811,15 @@ export const ARC4_PERTAR_LEDGER_PREFIX_SELFTEST = Object.freeze({
   actionReady: pertarPrefixAssessmentSelftest(
     pertarActionReadyRawSelftest, pertarActionReadyStateSelftest,
   ),
+  actionReadyTameVariant: pertarPrefixAssessmentSelftest(
+    pertarTameLandingRawSelftest,
+    appState(pertarTameLandingRawSelftest, appCaptureState(pertarTameLandingRawSelftest)),
+  ),
   controls: pertarPrefixControlsSelftest,
 });
 if (ARC4_PERTAR_LEDGER_PREFIX_SELFTEST.sourceReady.ok !== true
   || ARC4_PERTAR_LEDGER_PREFIX_SELFTEST.actionReady.ok !== true
+  || ARC4_PERTAR_LEDGER_PREFIX_SELFTEST.actionReadyTameVariant.ok !== true
   || !same(Object.keys(pertarPrefixControlsSelftest),
     pertarPrefixControlNamesSelftest)
   || Object.values(pertarPrefixControlsSelftest).some((control) => control.ok !== false)) {

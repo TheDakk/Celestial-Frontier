@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 
 const AUDIT_ROOT = new URL('../../../audits/', import.meta.url);
 const SOURCE = 'd611d18ad12bb8587863846ef3799300d2396e6a';
+const RIGHT_SIZED_SOURCE = '7f89bb2a70604da5b79673bd22d25786cab468d2';
 const carriers = Object.freeze({
   layout: Object.freeze({
     file: 'ROOT_LAYOUT_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz',
@@ -41,6 +42,34 @@ const carriers = Object.freeze({
     gzipSha256: '7b4c6c6daefbceb585cedc4aac5cff135b4153dd7a6baa9f104fb4fbeea58f9b',
     rawSha256: 'd7b4fbde305a9f6dcf5debe430430a2b56ddb4310b6f328a0689151db0ecc20c',
   }),
+  rightSizedScene: Object.freeze({
+    file: 'ARC1C_SCENEMEM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz',
+    gzipBytes: 45_066,
+    rawBytes: 787_362,
+    gzipSha256: 'd0598401c43cf0d8d0b60f145de501c21ae86d3825d161b88b28f6d95ab2a778',
+    rawSha256: '2b825b7ba33152ef882f5601ef7dea2b032ef042903bb7e3824740741e495709',
+  }),
+  rightSizedCompendium: Object.freeze({
+    file: 'ARC1C_COMPENDIUM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz',
+    gzipBytes: 451_063,
+    rawBytes: 10_821_649,
+    gzipSha256: '5ea6181267661e15b19005316e7871050113ed25e6bfe32873a93b0a8a708a50',
+    rawSha256: 'c4b962d76555d3cdc58383904820db12303d9d93d1b9fc63926aec0f0539db5c',
+  }),
+  rightSizedSlice: Object.freeze({
+    file: 'ARC4_SLICE_PR35_TAME_LEDGER_VARIANT_ORACLE_RED_20260830_7F89BB2.json.gz',
+    gzipBytes: 74_024,
+    rawBytes: 608_802,
+    gzipSha256: 'ad77a941b6b29518e18cfa30faa6be516d124567c78eb4c6b4d46f877dc1edab',
+    rawSha256: '751415db662857fd0e03a09fc8d9713d31de7d86db4a6b71fe4fec4587bcfb10',
+  }),
+  rightSizedSliceLog: Object.freeze({
+    file: 'ARC4_SLICE_PR35_TAME_LEDGER_VARIANT_ORACLE_RED_20260830_7F89BB2.log.gz',
+    gzipBytes: 34_961,
+    rawBytes: 257_710,
+    gzipSha256: 'da56722b8962fac1ecfcb21012fa93208c0dab26c44421b1bcc76854da27d97c',
+    rawSha256: 'd2d071d20b8bc8d642aa2e8cfc13195b796df045bd64c1f48455dcab8acffc5a',
+  }),
 });
 
 const sha256 = (bytes: Uint8Array): string => createHash('sha256').update(bytes).digest('hex');
@@ -62,7 +91,7 @@ describe('PR #35 d611 consolidated-chain Arc 4 ledger evidence', () => {
     }
   });
 
-  it('preserves three passing predecessors, one terminal five-scope Slice red, and no retry', () => {
+  it('preserves the five-scope diagnosis and its causal one-scope successor without retry', () => {
     const layout = decoded.layout!.value as Record<string, any>;
     const scene = decoded.scene!.value as Record<string, any>;
     const compendium = decoded.compendium!.value as Record<string, any>;
@@ -116,5 +145,55 @@ describe('PR #35 d611 consolidated-chain Arc 4 ledger evidence', () => {
       required: false, ok: null, ledger: null, passMarkerCount: 0,
     });
     expect(decoded.sliceLog!.value).toContain('SLICE SMOKE: FAIL');
+
+    const rightSizedScene = decoded.rightSizedScene!.value as Record<string, any>;
+    const rightSizedCompendium = decoded.rightSizedCompendium!.value as Record<string, any>;
+    const rightSizedSlice = decoded.rightSizedSlice!.value as Record<string, any>;
+    expect(rightSizedScene).toMatchObject({
+      status: 'pass',
+      runId: '20260830-pr35-7f89bb2-battery-rightsizing-scenemem',
+      durationMs: 12_753,
+    });
+    expect(rightSizedScene.source.begin.commit).toBe(RIGHT_SIZED_SOURCE);
+    expect(rightSizedScene.source.end.commit).toBe(RIGHT_SIZED_SOURCE);
+    expect(rightSizedScene.outcomes).toHaveLength(44);
+    expect(rightSizedCompendium).toMatchObject({
+      status: 'pass',
+      runId: '20260830-pr35-7f89bb2-battery-rightsizing-compendium',
+      durationMs: 63_310,
+    });
+    expect(rightSizedCompendium.source.begin.commit).toBe(RIGHT_SIZED_SOURCE);
+    expect(rightSizedCompendium.source.end.commit).toBe(RIGHT_SIZED_SOURCE);
+    expect(rightSizedCompendium.outcomes).toHaveLength(78);
+    expect(rightSizedSlice).toMatchObject({
+      status: 'fail', terminal: true, durationMs: 159_754,
+      summary: { findingCount: 1, scopeCount: 1 },
+      retryPolicy: { automaticRetries: 0 },
+      source: { commit: RIGHT_SIZED_SOURCE, state: 'committed' },
+      sourceEnd: { commit: RIGHT_SIZED_SOURCE, state: 'committed' },
+    });
+    expect(rightSizedSlice.findings.map(({ scope }: { scope: string }) => scope))
+      .toEqual(['arc-4-tame-greeting-audio']);
+    const message = rightSizedSlice.findings[0].message as string;
+    const bundle = JSON.parse(message.slice(message.indexOf('{'))) as Record<string, any>;
+    expect(bundle.checks).toMatchObject({ fixture: false, exactClassifier: true });
+    expect(Object.entries(bundle.checks)
+      .filter(([name]) => name !== 'fixture')
+      .every(([, value]) => value === true)).toBe(true);
+    expect(bundle.fixture.setupAssessment.checks).toMatchObject({
+      sourceAuthorityPrefix: true,
+      actionAuthorityPrefix: false,
+      exactSetupRevisionSpan: true,
+    });
+    expect(bundle.assessment.ok).toBe(true);
+    expect(Object.values(bundle.assessment.checks)
+      .every((value) => value === true)).toBe(true);
+    expect(JSON.parse(bundle.fixture.landedRaw.receiptRows[2].witness))
+      .toMatchObject({
+        schema: 'cf-v2-arc0-landing-witness/v1',
+        stateSuccessorSeal: '10d953c315de7295a53d221ea1d2f93899de8f7ab127db26d3e5cdff170e7533',
+        receiptOrdinal: 2,
+      });
+    expect(decoded.rightSizedSliceLog!.value).toContain('SLICE SMOKE: FAIL');
   });
 });
