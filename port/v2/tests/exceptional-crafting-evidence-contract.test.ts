@@ -96,6 +96,11 @@ function sliceExceptionalCopyContract(source: string): boolean {
     '  const releaseDraftCheck = `',
     '  const releaseDuplicateCtl = await evalIn',
   );
+  const releaseBulletAuthority = exactSpan(
+    source,
+    '  const releaseDraftAuthority = assessGuideOrderedAuthority(',
+    '  const releaseInventoryCtl = await evalIn',
+  );
   const releaseControls = exactSpan(
     source,
     '  const releaseShipyardCopyCtl = await evalIn',
@@ -106,7 +111,7 @@ function sliceExceptionalCopyContract(source: string): boolean {
     '  const releaseOverclaimCtl = await evalIn',
     ' const releaseAuthorityCtl = await evalIn',
   );
-  if (!research || !crafting || !renderedGuide || !releaseAssessment
+  if (!research || !crafting || !renderedGuide || !releaseAssessment || !releaseBulletAuthority
     || !releaseControls || !featureControls) return false;
 
   return RESEARCH_GUIDE_TRUTH.every((copy) => research.includes(copy))
@@ -119,6 +124,11 @@ function sliceExceptionalCopyContract(source: string): boolean {
     && RELEASE_TRUTH.every((copy) => releaseAssessment.includes(copy))
     && releaseAssessment.includes('(?:mixed stock|mixed-material craft)')
     && releaseAssessment.includes('Pureforged[^.!?]{0,80}(?:rerolls?|changes?)')
+    && releaseBulletAuthority.includes('releaseDraft.bulletRows, GUIDE_DRAFT_BULLET_AUTHORITY')
+    && releaseBulletAuthority.includes('!releaseDraftAuthority.ok')
+    && releaseBulletAuthority.includes('releaseDraftAuthorityCtl.replaced.ok')
+    && releaseBulletAuthority.includes('releaseDraftAuthorityCtl.swapped.ok')
+    && releaseBulletAuthority.includes('!releaseDraftAuthorityCtl.restored.ok')
     && releaseControls.includes('exceptionalMissing')
     && releaseControls.includes('effectSetMissing')
     && releaseControls.includes('mixedMissing')
@@ -127,7 +137,7 @@ function sliceExceptionalCopyContract(source: string): boolean {
     && RELEASE_TRUTH.every((copy) => releaseControls.includes(copy))
     && FALSE_CLAIMS.every((copy) => releaseControls.includes(copy))
     && featureControls.includes(TRUTHFUL_FEATURE_CLAIM)
-    && featureControls.includes('releaseOverclaimCtl.truthful?.length !== 8')
+    && featureControls.includes('releaseOverclaimCtl.truthful?.length !== 10')
     && featureControls.includes('releaseOverclaimCtl.unavailable?.length !== 18')
     && !source.includes('Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable');
 }
@@ -238,6 +248,7 @@ describe('Pureforged browser-evidence truth', () => {
       ["    { id: 'crafting', title: 'The Fabricator & gear'", "    { id: 'achievements', title: 'Achievements'", CRAFTING_GUIDE_TRUTH[0]!],
       ['  const renderedArc3GuideCheck = (spec) => `', '  for (const spec of arc3GuideSpecs)', '(?:mixed stock|mixed-material craft)'],
       ['  const releaseDraftCheck = `', '  const releaseDuplicateCtl = await evalIn', RELEASE_TRUTH[0]!],
+      ['  const releaseDraftAuthority = assessGuideOrderedAuthority(', '  const releaseInventoryCtl = await evalIn', 'releaseDraftAuthorityCtl.replaced.ok'],
       ['  const releaseShipyardCopyCtl = await evalIn', '  const releaseCaptureCopyCtl = await evalIn', 'releaseShipyardCopyCtl.exceptionalMissing?.shipyardContract'],
       ['  const releaseOverclaimCtl = await evalIn', ' const releaseAuthorityCtl = await evalIn', TRUTHFUL_FEATURE_CLAIM],
     ] as const;

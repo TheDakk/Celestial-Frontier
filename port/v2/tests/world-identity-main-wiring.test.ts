@@ -57,6 +57,9 @@ function assess(source: string): string[] {
     ['search-name-training-fence', searchName, '|| trainingCheckpointWriteHeld'],
     ['search-name-legacy-publication', searchName, 'save.customNames = attempt.transaction.state.customNames.map('],
     ['search-name-identity-publication', searchName, 'worldIdentityState = attempt.verification.worldIdentity.state;'],
+    ['search-name-sequence', searchCommit, 'return commitSearchTravelSequence({'],
+    ['search-name-unjoined-catchup', searchCommit,
+      'queueArc9ProgressionRefresh(operationForArc0WorldName(namedWorld));'],
     ['search-name-checkpoint', searchPublication, 'rerender(skipPersist ? { skipPersist: true } : undefined);'],
     ['survey-name-read', present, 'const customName = worldIdentityName(worldIdentityState, address);'],
     ['rarity-land-read', show, 'hasCanonicalWorldLanded(worldIdentityState, shownWorld)'],
@@ -94,17 +97,30 @@ function assess(source: string): string[] {
     && compatibilityPublication > nameDurable && namePublication > compatibilityPublication
     && nameSettle > namePublication)
     || searchName.includes('persistView(')
-    || searchName.includes('setCanonicalWorldName(')) {
+    || searchName.includes('setCanonicalWorldName(')
+    || searchName.includes('queueArc9ProgressionRefresh(')) {
     failures.push('search-name-transaction-order');
   }
-  const namedCommit = searchCommit.indexOf('const naming = await commitArc0WorldNameForSearch(');
-  const acceptedRoute = searchCommit.indexOf('return commitArc9AcceptedSearchRoute(plan);', namedCommit);
+  const sequence = searchCommit.indexOf('return commitSearchTravelSequence({');
+  const namedCommit = searchCommit.indexOf(
+    'commitArc0WorldNameForSearch(target, namedWorld, customPlanetName)',
+    sequence,
+  );
+  const acceptedRoute = searchCommit.indexOf(
+    'const committed = await commitArc9AcceptedSearchRoute(plan);',
+    namedCommit,
+  );
+  const unjoinedCatchup = searchCommit.indexOf(
+    'queueArc9ProgressionRefresh(operationForArc0WorldName(namedWorld));',
+    acceptedRoute,
+  );
   const navPublication = searchPublication.indexOf('nav = committedNav;');
   const render = searchPublication.indexOf(
     'rerender(skipPersist ? { skipPersist: true } : undefined);',
     navPublication,
   );
-  if (namedCommit < 0 || acceptedRoute <= namedCommit || navPublication < 0 || render <= navPublication
+  if (sequence < 0 || namedCommit <= sequence || acceptedRoute <= namedCommit
+    || unjoinedCatchup <= acceptedRoute || navPublication < 0 || render <= navPublication
     || searchPublication.includes('void persistView()')
     || searchPublication.includes('rerender();')) {
     failures.push('search-name-checkpoint');

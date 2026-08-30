@@ -1,6 +1,7 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-30 current sealed single-file worker/PWA overlay (matches local code; supersedes the
+> **2026-08-30 current sealed-worker/PWA + Guide/Release/named-CF1 overlay (matches local code;
+> supersedes the
 > execution-late `clients.get()` repair and narrower current-authority language below; every named
 > run remains immutable history):** exact signed source
 > `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` first preserved the 3,115 ms painter-import
@@ -31,18 +32,60 @@
 > `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 > `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
 > `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`.
-> Producer authority is `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb`,
-> generated `service-worker.js` is
-> `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b`, and combined worker/painter
-> asset `assets/species-art.worker-DnnSDKMy.js` has SHA-256
-> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Current Scene build,
-> Compendium budget and Scene budget authorities are
-> `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`,
-> `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17`, and
-> `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. This changes worker
+> Final derived changed-head producer authority is
+> `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b`; it binds index
+> `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0`, owner
+> `assets/main-C621myNE.js` / `2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`, and generated
+> `service-worker.js` `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`.
+> Combined worker/painter `assets/species-art.worker-DnnSDKMy.js` remains
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Current Scene build /
+> game-main, Compendium budget-file and Scene budget-file authorities are
+> `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+> `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`,
+> `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c`, and
+> `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. The green printer binds a
+> **964-module / 52-file** build. This changes worker
 > packaging and PWA ownership only: no save schema, painter pixel, seed, genome, anatomy, art
-> structure, ruler, numeric ceiling or 78-outcome inventory changed. Fresh signed browser
-> certification remains pending.
+> structure, ruler, numeric ceiling or 78-outcome inventory changed.
+>
+> Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` then passed the
+> once-only named Compendium run
+> `20260830-pr35-sealed-worker-941ba45a96e5-compendium-certification` at **78/78** in **65,731
+> ms**, with both profiles, all six review PNGs and Edge `152.0.4191.53` / CDP `1.3`. Its immutable
+> report is **452,127 gzip / 10,881,302 raw bytes**, SHA-256
+> `e6f2aa4dfcbf94830f3c0059a8e64239956ac0d2e0685c8e267a338faba2f6f8` /
+> `d4b2b2aa07f3b1f4a70903d4d8ae82abe1eaf755523a51d7ecc85d1e610c109b`.
+>
+> Its exact-source Slice `20260830115041916-36220-7ed2dd2ef398` then ran once/no-retry and stopped
+> terminal red after **63,106 ms**, **63 findings / 42 scopes**, and six partial screenshots. The
+> first 62 findings are Guide/Release instrument drift from both synchronous reads of the previous
+> DOM before deliberate microtask publication and stale 26-partial/15-unavailable plus player-copy
+> expectations rather than current 9/41/34/7 authority and live Scout, conquest, reward and audio
+> truth. The independent
+> final finding is product-red named-CF1 Follow starvation after accepted custom-world naming. Glass
+> and Recovery
+> did not run. Immutable Slice JSON is **40,180 gzip / 522,130 raw bytes**, SHA-256
+> `c7b314352c65e5dd24120eb5982a78e87a899f488a78e3c205156a2e134eedad` /
+> `65917019eeb8c74d258b89ab793ad13db2fc2619da1f21d7b0b2b6550e44c07d`; its log is **19,473
+> gzip / 253,140 raw bytes**, SHA-256
+> `d5321f9ea85d949f32f6b688ddbc11b8638ae6e776a97feb6502b7ca392416f9` /
+> `c54bd170a95eedf884bf591dd4c17241a1460cfcde7dc3a79cfa32bcdc56113c`.
+>
+> Current `slicesmoke.mjs` Guide/Release interaction owners await the exact requested DOM identity
+> after every category, topic, search, home, release-list and release-article transition. Their
+> browser-free controls bind **9 categories / 41 unique topics / 34 partial / 7 unavailable**, the
+> exact topic-to-category mapping and current gameplay copy; reverse-direction deferred publication,
+> wrong mapping, stale identity and mutation/restore all fail. The product repair removes Main's
+> early post-name aggregate catch-up. Direct Travel owns its accepted route, arrival, galaxy visit
+> and any proved galaxy-kind event; Follow additionally owns Follow/Jumps/`wayfarer`. A post-name
+> route that refuses or otherwise does not join progression
+> queues exactly one catch-up only after the name transaction settles. The adapter synchronously
+> reserves this handoff, defers/coalesces ordinary persistence attempts and re-arms one after route/
+> catch-up enqueue. Exact heartbeat and pagehide-lifecycle owner tokens remain nondeferrable; the
+> heartbeat owner already refuses to queue behind product work and lifecycle may supersede the route.
+> The bounded timeout retains actionable diagnostics; it is not a retry.
+> No creature/genome/save-schema contract changed. This changed head has no browser certificate yet,
+> and browser point version remains provenance only—never a rebaseline or threshold input.
 
 > **2026-08-30 historical post-claim PWA/species-art overlay (matched code at that source;
 > superseded by the sealed single-file overlay above):** exact signed source
@@ -491,12 +534,12 @@
 > Signed implementation `3eefbbcf…` supplied the structured instrument; its exact successor source
 > `b2eecfbd…` then stopped instrument-only after 33,041 ms because a generic 512-character projector
 > nullified eight real 766–779-character `visualKey` identities despite ready decoded 132×132 images.
-> Signed implementation `d9d79025…` repairs only that evidence projection and is browser-free green
+> Historical signed implementation `d9d79025…` repaired only that evidence projection and was browser-free green
 > at 565 selftest controls, focused 35/35, 237 files / 2,413 passed + one skipped, all three TypeScript
 > programs and the producer-authority printer with both budget matches true. Its exact 85-phase
-> history plus observation-v2 identity evidence is not browser-certified; one fresh clean exact-source
-> Compendium run and named verification is still required before any serial Slice → Glass → Recovery
-> continuation.
+> history plus observation-v2 identity evidence was not browser-certified at that boundary. Later exact signed
+> `941ba45…` passed Compendium 78/78 before its exact-source Slice successor stopped red; Glass and Recovery did
+> not run. The changed head still requires a fresh clean exact-source browser chain.
 >
 > `port/v2/tools/tracked-input-preflight.mjs` is the mandatory preauthorization rehearsal. From a
 > clean committed candidate it exports only the exact Git index, installs inside an owned temporary
@@ -505,9 +548,9 @@
 > and rechecks HEAD plus tracked state before terminal PASS. Both
 > guarded workflows run its mutation-sensitive selftest immediately after v2 installation. The
 > earlier static repair also clears four `artunused` findings hidden behind its consumed stop and
-> remains the hermetic browser-free preauthorization boundary. Signed implementation `d9d79025…`
-> gives the current instrument-only repair exact-source authority and browser-free local closure
-> before any separately authorized hosted attempt. Neither repair is a hosted green, browser
+> remains the hermetic browser-free preauthorization boundary. At that historical boundary, signed implementation
+> `d9d79025…` gave the instrument-only repair exact-source authority and browser-free local closure.
+> Neither repair is a hosted green, browser
 > certificate, HUMAN judgment, merge, release,
 > version bump or deployment authority.
 
@@ -516,9 +559,9 @@
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
 > **Current port/v2 reference overlay matches the current local v2 worktree as of 2026-08-30.**
-> Historical browser claims remain bound only to their named signed sources, including `3f69e88…`;
-> the newer PR #35 instrument repair has no browser certificate until the pending clean exact-source
-> Compendium attempt passes on its final frozen source.
+> Historical browser claims remain bound only to their named signed sources, including `3f69e88…` and
+> exact `941ba45…`: the latter passed Compendium 78/78 before its exact-source Slice successor stopped
+> red, so Glass and Recovery did not run. The current changed head has no browser certificate.
 >
 > **Historical 2026-08-28 Final10 offline-reopened oracle stop (superseded by Final11 above):**
 > signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` supplied Layout
@@ -3293,26 +3336,32 @@ preserved at
 SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`; independent replay is
 8/8.
 
-The history-safe current producer record is `cf-v2-compendium-producer-authority/v2` /
-`0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb`. It binds index, owner,
-the statically bundled species worker/painter asset
+The final derived current producer record is `cf-v2-compendium-producer-authority/v2` /
+`baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b`. It binds index
+`0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0`, owner
+`assets/main-C621myNE.js` / `2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`,
+the unchanged statically bundled species worker/painter
 `assets/species-art.worker-DnnSDKMy.js` /
 `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`, and generated
 `service-worker.js` SHA-256
-`7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b`. Historical schema-v1 and
-earlier schema-v2 producer records remain replayable. Current Scene build authority is
-`4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; current Compendium
+`927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Historical schema-v1 and
+earlier schema-v2 producer records remain replayable. Current Scene build / game-main authority is
+`96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+`07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; current Compendium
 measurement / contract / collector authorities are
 `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
 `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`.
-Current Compendium and Scene budget SHA-256 values are
-`d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` and
-`4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Worker construction remains
+Current Compendium and Scene budget-file SHA-256 values are
+`eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` and
+`6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. The green authority printer
+binds a **964-module / 52-file** build. Worker construction remains
 lazy, but the species painter and biome renderer are statically owned by their worker entries; the
 production build rejects worker `import()` and external static JavaScript imports. Fetch-time pin
 adoption is removed and unpinned non-navigation requests remain 503. The fixed ruler, every numeric
-ceiling and the 78-outcome inventory remain unchanged. Browser certification is pending.
+ceiling and the 78-outcome inventory remain unchanged. Exact `941ba45…` generated values remain
+historical authority for its passed Compendium and red Slice only; this changed head has no browser
+certificate.
 
 The former local ruler is retained as historical evidence under measurement authority
 `cb5cd9f86ac99435028f98af800bc0d89de96bd7db88694214d832eed83fb15d` and producer authority

@@ -286,16 +286,57 @@
 > Current measurement / outcome-contract / collector authority is
 > `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 > `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
-> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`. Current producer-v2 /
-> service-worker / Scene build authority is
-> `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
-> `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
-> `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; Compendium / Scene budget is
-> `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
-> `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`.
-> Fixed rulers, ceilings, 78 outcomes and 73 release bullets remain unchanged. Fresh changed-head
-> Compendium certification and Slice → Glass → Recovery remain pending; no unchanged retry exists.
-> HUMAN, hosted, merge, release/version and deployment status remain open and unchanged.
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`. Final derived changed-head
+> producer / index / owner / service-worker authority is
+> `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b` /
+> `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0` /
+> `assets/main-C621myNE.js` (`2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`) /
+> `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Scene build / game-main is
+> `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+> `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; Compendium / Scene budget
+> files are `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` /
+> `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. The unchanged worker/painter
+> remains `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`; the green printer binds a
+> **964-module / 52-file** build.
+> Fixed rulers, ceilings, 78 outcomes and the **73-row release-inventory count** remain unchanged;
+> the current repair updates the CF1 row's sequencing truth.
+>
+> Exact clean signed successor `941ba45a96e5baabadc255d53db86fa935cefe81` then ran
+> `20260830-pr35-sealed-worker-941ba45a96e5-compendium-certification` once/no-retry on Edge
+> `152.0.4191.53` / CDP `1.3`. Compendium passed **78/78** in **65,731 ms**, completed both
+> profiles, emitted all six review PNGs and passed exact named verification. Immutable report gzip/
+> raw sizes are **452,127 / 10,881,302 bytes** with SHA-256
+> `e6f2aa4dfcbf94830f3c0059a8e64239956ac0d2e0685c8e267a338faba2f6f8` /
+> `d4b2b2aa07f3b1f4a70903d4d8ae82abe1eaf755523a51d7ecc85d1e610c109b`.
+>
+> The exact-source Slice `20260830115041916-36220-7ed2dd2ef398` ran next exactly once with no
+> retry and stopped terminal red after **63,106 ms**, with **63 findings / 42 scopes** and six
+> partial screenshots. The first **62** are Guide/Release instrument drift from both synchronous
+> reads of the preceding DOM before deliberate microtask publication and stale
+> 26-partial/15-unavailable plus player-copy expectations rather than current 9/41/34/7 authority.
+> The independent final finding is product-red named-CF1 Follow starvation after accepted custom-
+> world naming.
+> Glass and Recovery did not run. The immutable Slice JSON is **40,180 gzip / 522,130 raw bytes**,
+> SHA-256 `c7b314352c65e5dd24120eb5982a78e87a899f488a78e3c205156a2e134eedad` /
+> `65917019eeb8c74d258b89ab793ad13db2fc2619da1f21d7b0b2b6550e44c07d`; its log is **19,473
+> gzip / 253,140 raw bytes**, SHA-256
+> `d5321f9ea85d949f32f6b688ddbc11b8638ae6e776a97feb6502b7ca392416f9` /
+> `c54bd170a95eedf884bf591dd4c17241a1460cfcde7dc3a79cfa32bcdc56113c`.
+>
+> The bounded current repair makes Guide/Release probes await exact requested DOM identity and binds
+> the canonical **9 categories / 41 unique topics / 34 partial / 7 unavailable** mapping with
+> bidirectional publication, mapping, stale and mutation/restore controls plus current gameplay
+> copy. Product-side, the custom-world name transaction no longer starts aggregate catch-up before
+> the route. Direct Travel owns its accepted route/arrival and source-proved galaxy-event aggregate;
+> Follow additionally owns Follow/Jumps/wayfarer. A post-name route that refuses or does
+> not join progression queues exactly one catch-up after naming settles. A synchronous reservation
+> defers/coalesces ordinary save checkpoints and re-arms one after the route/catch-up enqueue; exact
+> heartbeat/lifecycle owners retain their private boundary. Timeout remains diagnostic; no sleep/
+> retry was added. No
+> unrelated gameplay system, creature, genome or save-schema structure changed. The changed head has
+> no browser certificate,
+> so Slice → Glass → Recovery, HUMAN, hosted, merge, release/version and deployment remain open.
+> Edge point version is provenance only and never triggers rebaseline or threshold movement.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
 > 2026-08-30.
@@ -1392,8 +1433,10 @@ accessibility, or approved static art.
 **Current state (2026-08-30): Arc 1A product integration is complete. Signed PR #35 sources
 `d33abdfd…`, `38d8848c…` and `dc6004cf…` retain the recovered-worker oracle red and two
 execution-late painter-import product stops. The dc600 result falsified fetch-time `clients.get()`
-adoption; current local repair seals each production worker graph while keeping construction lazy.
-Fresh changed-head Compendium certification remains pending; no unchanged retry is allowed.** Product
+adoption; exact clean signed `941ba45…` then passed Compendium 78/78 once/no-retry before its exact-
+source Slice stopped terminal red at 63 findings / 42 scopes, so no Glass or Recovery ran. Current
+local repair seals each production worker graph while keeping construction lazy. The later derived-
+authority changed head remains browser-uncertified; no unchanged retry is allowed.** Product
 virtualization, serviced-turn scheduling, compact-phone layout,
 displayed-demand texture ownership, bounded static-server shutdown, and the repaired ruler are
 present. Exact changed-head run

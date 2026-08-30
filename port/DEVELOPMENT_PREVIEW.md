@@ -190,14 +190,19 @@ production rejects runtime `import()` and external static JavaScript edges. Unpi
 requests remain fail-closed. Current measurement / outcome-contract / collector are
 `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
-`0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`. Current producer-v2 /
-service-worker / Scene build is
-`0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
-`7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
-`4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`; active Compendium /
-Scene budget is `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
-`4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. Fixed rulers, ceilings,
-78 outcomes and 73 release bullets are unchanged. Fresh changed-head Compendium certification and
+`0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`. Final derived changed-head
+producer / index / owner / service-worker is
+`baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b` /
+`0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0` /
+`assets/main-C621myNE.js` (`2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`) /
+`927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Scene build / game-main is
+`96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+`07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; active Compendium / Scene
+budget-file authority is `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` /
+`6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. The unchanged worker/painter
+is `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`; the green printer binds a
+964-module / 52-file build. Fixed rulers, ceilings and 78 outcomes are unchanged; the release inventory
+still has 73 rows with one CF1 row refreshed. Fresh changed-head Compendium certification and
 Slice → Glass → Recovery remain pending; HUMAN, hosted, merge, release/version and deployment
 status remain open and unchanged.
 

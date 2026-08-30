@@ -1,6 +1,6 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-30 current sealed single-file species-art/biome-vista/PWA overlay (matches local code;
+> **2026-08-30 current sealed-worker/PWA + Guide/Release/named-CF1 overlay (matches local code;
 > supersedes the execution-late repair below):** exact signed source
 > `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` preserved the 3,115 ms painter-import
 > `product-fail`, zero outcomes and all 78 blocked. Exact descendant
@@ -17,16 +17,53 @@
 > measurement / contract / collector authorities are
 > `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
 > `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
-> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; producer / SW / Scene-build
-> are `0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb` /
-> `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b` /
-> `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`. Combined worker/painter asset
-> `assets/species-art.worker-DnnSDKMy.js` is
-> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`; Compendium / Scene budgets are
-> `d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
-> `4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. This changes packaging and
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`. Final derived changed-head
+> producer / index / owner / SW is `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b` /
+> `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0` /
+> `assets/main-C621myNE.js` (`2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`) /
+> `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Scene build / game-main is
+> `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+> `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; the unchanged worker/painter
+> remains `assets/species-art.worker-DnnSDKMy.js` /
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Compendium / Scene budget-file
+> authorities are `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` /
+> `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`; the green printer binds a
+> **964-module / 52-file** build. This changes packaging and
 > PWA ownership only; presentation structure, pixels, seeds, genomes, rulers, ceilings and the
-> 78-outcome inventory are unchanged. Certification remains pending.
+> 78-outcome inventory are unchanged.
+>
+> Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` then ran
+> `20260830-pr35-sealed-worker-941ba45a96e5-compendium-certification` once/no-retry on Edge
+> `152.0.4191.53` / CDP `1.3`. It passed **78/78** in **65,731 ms**, completed both profiles and
+> bound all six phone/desktop list, focus-pinned and detail review PNGs; exact named verification
+> passed. Its immutable report is **452,127 gzip / 10,881,302 raw bytes**, SHA-256
+> `e6f2aa4dfcbf94830f3c0059a8e64239956ac0d2e0685c8e267a338faba2f6f8` /
+> `d4b2b2aa07f3b1f4a70903d4d8ae82abe1eaf755523a51d7ecc85d1e610c109b`.
+>
+> The same exact source's required Slice `20260830115041916-36220-7ed2dd2ef398` ran once/no-retry
+> and stopped after **63,106 ms** with **63 findings / 42 scopes**. Sixty-two findings are instrument
+> drift from both synchronous reads of the preceding DOM before deliberate microtask publication and
+> stale 26-partial/15-unavailable plus player-copy expectations rather than current 9/41/34/7 and
+> live Scout, conquest, reward and audio truth. The
+> remaining independent finding is product-red named-CF1 Follow starvation after accepted custom-
+> world naming.
+> Six partial Earth/Galaxy/Guide/Settings/Sol/Universe screenshots remain bound; Glass and Recovery
+> did not run.
+>
+> The bounded changed-head instrument now waits for the exact requested DOM identity—not elapsed
+> time—before reading a Guide category/topic/search result, release list/article or returning home.
+> It seals the canonical **9 categories / 41 unique topics / 34 partial / 7 unavailable** mapping and
+> current gameplay copy with bidirectional publication, exact-mapping, stale-DOM and mutation/
+> restore controls. The named-CF1 product repair lets direct Travel own its accepted route/arrival
+> and source-proved galaxy-event aggregate, while Follow additionally owns Follow/Jumps/wayfarer. It
+> removes the world-name transaction's early catch-up and queues
+> exactly one catch-up after naming when the post-name route refuses or otherwise does not join
+> progression. The handoff also defers/coalesces ordinary save checkpoints and re-arms one afterward;
+> exact heartbeat/lifecycle owners retain their private boundary. The fixed timeout stays diagnostic;
+> no browser
+> sleep or retry was added. These repairs change no visual layout, art, creature, plant, biome,
+> genome or save schema. The changed head has no browser certificate yet, and Edge point version is
+> provenance only—never a rebaseline or threshold key.
 
 > **2026-08-30 historical execution-ready species-art/Compendium/PWA overlay (matched its named
 > sources; superseded by the sealed single-file overlay above):** exact signed source
@@ -1689,7 +1726,7 @@
 > merge/release/deploy/version authority follows.
 
 **STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
-current v2 overlays match the local `port/v2` candidate as of 2026-08-29. The addenda at the end preserve
+current v2 overlays match the local `port/v2` candidate as of 2026-08-30. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson

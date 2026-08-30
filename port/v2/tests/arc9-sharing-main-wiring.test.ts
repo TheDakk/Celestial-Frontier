@@ -121,16 +121,24 @@ function wiringErrors(main: string): string[] {
 
   const searchCommit = section(main, '  commitNavigation:', '\n  onPrimeReachBlocked:');
   if (!ordered(searchCommit, [
+    'return commitSearchTravelSequence({',
+    'commitRoute: async (nameCommitted) => {',
     'if (followedCode !== null) {',
     'if (arc9TravelInspectionOnly()) {',
     'publishAcceptedSearchNavigation(plan, true);',
     "lastArc9ShareFollowOutcome = 'inspection-only:no-follow-credit';",
-    'return commitArc9FollowedSearchRoute(plan);',
-    'return commitArc9AcceptedSearchRoute(plan);',
+    'const committed = await commitArc9FollowedSearchRoute(plan);',
+    'return Object.freeze({ committed, progressionJoined: committed });',
+    'const committed = await commitArc9AcceptedSearchRoute(plan);',
+    'queueUnjoinedNameProgression: () => {',
   ])
+    || occurrences(searchCommit, 'commitSearchTravelSequence({') !== 1
     || occurrences(searchCommit, 'if (followedCode !== null) {') !== 1
-    || occurrences(searchCommit, 'return commitArc9FollowedSearchRoute(plan);') !== 1
-    || occurrences(searchCommit, 'return commitArc9AcceptedSearchRoute(plan);') !== 1) {
+    || occurrences(searchCommit, 'const committed = await commitArc9FollowedSearchRoute(plan);') !== 1
+    || occurrences(searchCommit, 'const committed = await commitArc9AcceptedSearchRoute(plan);') !== 1
+    || occurrences(searchCommit,
+      'return Object.freeze({ committed, progressionJoined: committed });') !== 1
+    || occurrences(searchCommit, 'progressionJoined: false') !== 2) {
     errors.push('accepted-follow-only');
   }
   const shareHandler = section(main, "else if (a === 'share') {", '\n  }\n});');
@@ -214,6 +222,14 @@ describe('Arc 9 CF1 Share/Follow Main durability wiring', () => {
       "        lastArc9ShareFollowOutcome = 'inspection-only:credited';",
     );
     expect(wiringErrors(source.replace(searchCommit, creditedInspectionOwner)))
+      .toContain('accepted-follow-only');
+
+    const followWithoutJoinedProgression = replaceOnce(
+      searchCommit,
+      '          return Object.freeze({ committed, progressionJoined: committed });',
+      '          return Object.freeze({ committed, progressionJoined: false });',
+    );
+    expect(wiringErrors(source.replace(searchCommit, followWithoutJoinedProgression)))
       .toContain('accepted-follow-only');
   });
 

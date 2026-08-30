@@ -1,7 +1,27 @@
 import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
+import { getGuideCatalogue } from '../apps/game/src/guide-content.js';
+import { getReleaseHistory, V2_DRAFT_RELEASE } from '../apps/game/src/release-content.js';
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { assessArc4EpochSnapshot } from '../tools/arc4-browser-contract.mjs';
+// @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
+import { hasUnnegatedSentenceClaim } from '../tools/engineering-browser-contract.mjs';
+
+interface TestWindow {
+  readonly document: Document;
+  __CF_SLICE__?: unknown;
+  eval(source: string): unknown;
+  close(): void;
+}
+
+interface TestDom { readonly window: TestWindow }
+
+const require = createRequire(import.meta.url);
+const { JSDOM } = require('jsdom') as {
+  JSDOM: new (html: string, options?: Record<string, unknown>) => TestDom;
+};
 
 const sliceSource = readFileSync(
   new URL('../tools/slicesmoke.mjs', import.meta.url),
@@ -48,7 +68,379 @@ function proveEachMarkerRequired(owner: string, markers: readonly Marker[]): voi
   });
 }
 
+function sha256Json(value: unknown): string {
+  return createHash('sha256').update(JSON.stringify(value)).digest('hex');
+}
+
+function stringConstant(source: string, name: string): string {
+  const match = source.match(new RegExp(`\\b${name}: '([a-f0-9]{64})'`));
+  expect(match, `missing exact ${name}`).not.toBeNull();
+  return match?.[1] ?? '';
+}
+
+function numberConstant(source: string, name: string): number {
+  const match = source.match(new RegExp(`\\b${name}: ([0-9]+)`));
+  expect(match, `missing exact ${name}`).not.toBeNull();
+  return Number(match?.[1] ?? Number.NaN);
+}
+
+function executableDeclaration<T>(name: string, nextDeclaration: string): T {
+  const prefix = `  const ${name} = `;
+  const owner = section(sliceSource, prefix, nextDeclaration);
+  const expression = owner.slice(prefix.length).trim().replace(/;\s*$/u, '');
+  return Function(
+    'hasUnnegatedSentenceClaim',
+    'V2_DRAFT_BULLET_COUNT',
+    `return (${expression});`,
+  )(hasUnnegatedSentenceClaim, 73) as T;
+}
+
+interface GuideSpec {
+  readonly id: string;
+  readonly title: string;
+  readonly required: readonly string[];
+}
+
+interface RenderedGuideResult {
+  readonly ok: boolean;
+  readonly missing: readonly string[];
+  readonly contradictory: boolean;
+}
+
+function escapeHtml(value: string): string {
+  return value.replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('>', '&gt;');
+}
+
 describe('sixth Slice red contract repairs', () => {
+  it('binds Guide navigation to publication and the exact current 41-topic capability identity', () => {
+    const owner = section(
+      sliceSource,
+      '  const GUIDE_CATEGORY_AUTHORITY = Object.freeze([',
+      '  /* Inline Guide cross-links were spans',
+    );
+    const catalogue = getGuideCatalogue();
+    const expected = catalogue.flatMap((category) => category.topics.map((topic) => ({
+      categoryId: category.id,
+      id: topic.id,
+      availability: topic.availability,
+    })));
+    const expectedCategoryIds = catalogue.map((category) => category.id);
+    expect(catalogue).toHaveLength(9);
+    expect(expected).toHaveLength(41);
+    expect(expected.filter((topic) => topic.availability === 'partial')).toHaveLength(34);
+    expect(expected.filter((topic) => topic.availability === 'unavailable')).toHaveLength(7);
+    const categoryAuthorityOwner = section(
+      sliceSource,
+      '  const GUIDE_CATEGORY_AUTHORITY = Object.freeze([',
+      '  const GUIDE_TOPIC_AVAILABILITY_AUTHORITY = Object.freeze([',
+    );
+    const parseCategoryAuthority = (source: string): string[] =>
+      [...source.matchAll(/'([a-z]+(?:-[a-z]+)*)'/gu)].map((match) => match[1] ?? '');
+    const declaredCategories = parseCategoryAuthority(categoryAuthorityOwner);
+    expect(declaredCategories).toEqual(expectedCategoryIds);
+    const categoryAuthorityMutants = {
+      stale: categoryAuthorityOwner.replace("'getting-around'", "'navigation'"),
+      wrong: categoryAuthorityOwner.replace("'life-compendium'", "'unknown-category'"),
+      reordered: categoryAuthorityOwner.replace(
+        "'getting-around', 'life-compendium'",
+        "'life-compendium', 'getting-around'",
+      ),
+      missing: categoryAuthorityOwner.replace("'getting-around', ", ''),
+    };
+    for (const [label, mutant] of Object.entries(categoryAuthorityMutants)) {
+      expect(mutant, `${label} category mutation changed no source`).not.toBe(categoryAuthorityOwner);
+      expect(parseCategoryAuthority(mutant), `${label} category authority stayed exact`)
+        .not.toEqual(expectedCategoryIds);
+    }
+    const declaredAuthority = [...section(
+      sliceSource,
+      '  const GUIDE_TOPIC_AVAILABILITY_AUTHORITY = Object.freeze([',
+      '  const guideMenuExpression = `',
+    ).matchAll(/\['([^']+)', '([^']+)', '(available|partial|unavailable)'\]/g)]
+      .map((match) => ({ categoryId: match[1], id: match[2], availability: match[3] }));
+    expect(declaredAuthority).toEqual(expected);
+    for (const topic of expected) {
+      expect(owner, `${topic.categoryId}/${topic.id}/${topic.availability}`).toContain(
+        `['${topic.categoryId}', '${topic.id}', '${topic.availability}']`,
+      );
+    }
+    proveEachMarkerRequired(owner, [
+      ['menu publication waiter', 'const waitGuideMenu = (label) => waitDesktopValue('],
+      ['category publication waiter', '`${label} ${categoryId} publication`, guideCategoryPublicationExpression'],
+      ['category return waiter', 'await waitGuideMenu(`${label} ${categoryId} return`)'],
+      ['search publication waiter', 'return waitDesktopValue(`${label} search publication`'],
+      ['topic publication waiter', 'return waitDesktopValue(`${label} topic publication`'],
+      ['exact identity comparison', 'JSON.stringify(inventory.topics) === JSON.stringify(GUIDE_TOPIC_AVAILABILITY_AUTHORITY)'],
+      ['exact category comparison', 'JSON.stringify(categoryIds) === JSON.stringify(GUIDE_CATEGORY_AUTHORITY)'],
+      ['whole-Guide copy assessor', 'const assessGuideCopy = (copy) => {'],
+      ['whole-topic copy collection', 'topicCopy.push({ categoryId, id: row.id, text: topic.text })'],
+      ['stale topic mutation control', "const staleCopyTarget = staleCopySource.topics.find((row) => row.id === 'zoom')"],
+      ['canonical stale-copy control', 'mutated: assessGuideCopy(staleCopySource)'],
+      ['search ingress assessor', 'const assessGuideSearchIngress = (search) => ({'],
+      ['disabled search ingress control', 'input.disabled=true;const disabled=${guideMenuExpression};input.disabled=false;'],
+      ['missing-category control', 'missingCategory: mutateGuideInventory('],
+      ['omitted-wait control', 'omittedWait: { publicationReady: guideCategoryPublished('],
+      ['partial-to-unavailable control', 'partialToUnavailable: mutateGuideInventory('],
+      ['unavailable-to-partial control', 'unavailableToPartial: mutateGuideInventory('],
+      ['constant-count swap control', 'constantCountSwap: mutateGuideInventory('],
+      ['stale-category control', 'staleCategory: mutateGuideInventory('],
+      ['restoration control', 'restored: assessGuideInventory(guideInventory)'],
+    ]);
+    expect(owner).not.toContain('partialCount !== 26');
+    expect(owner).not.toContain('unavailableCount !== 15');
+  });
+
+  it('keeps every rendered Guide and release oracle green on current exact copy before browser spend', () => {
+    const catalogue = getGuideCatalogue();
+    const topics = new Map<string, (typeof catalogue)[number]['topics'][number]>(
+      catalogue.flatMap((category) =>
+        category.topics.map((topic) => [topic.id, topic] as const)),
+    );
+    const evaluateGuide = (id: string, expression: string): RenderedGuideResult => {
+      const topic = topics.get(id);
+      expect(topic, `missing current Guide topic: ${id}`).toBeDefined();
+      if (!topic) throw new Error(`missing current Guide topic: ${id}`);
+      const dom = new JSDOM(
+        `<div id="guidepanel"><article class="guide-topic">`
+          + `<h4 data-guide-heading>${escapeHtml(topic.title)}</h4>`
+          + `<span data-guide-status="${topic.availability}"></span>${topic.body}</article></div>`,
+        { runScripts: 'outside-only' },
+      );
+      const result = dom.window.eval(expression) as RenderedGuideResult;
+      dom.window.close();
+      return result;
+    };
+    const specGroups = [
+      {
+        specs: executableDeclaration<readonly GuideSpec[]>(
+          'arc3GuideSpecs',
+          '  const renderedArc3GuideCheck = ',
+        ),
+        check: executableDeclaration<(spec: GuideSpec) => string>(
+          'renderedArc3GuideCheck',
+          '  for (const spec of arc3GuideSpecs) {',
+        ),
+      },
+      {
+        specs: executableDeclaration<readonly GuideSpec[]>(
+          'compendiumGuideSpecs',
+          '  const renderedCompendiumGuideCheck = ',
+        ),
+        check: executableDeclaration<(spec: GuideSpec) => string>(
+          'renderedCompendiumGuideCheck',
+          '  const renderCompendiumGuideTopic = ',
+        ),
+      },
+      {
+        specs: executableDeclaration<readonly GuideSpec[]>(
+          'audioGuideSpecs',
+          '  const renderedAudioGuideCheck = ',
+        ),
+        check: executableDeclaration<(spec: GuideSpec) => string>(
+          'renderedAudioGuideCheck',
+          '  const renderAudioGuideTopic = ',
+        ),
+      },
+    ];
+    for (const group of specGroups) {
+      for (const spec of group.specs) {
+        expect(evaluateGuide(spec.id, group.check(spec)), spec.id).toMatchObject({
+          ok: true,
+          missing: [],
+          contradictory: false,
+        });
+      }
+    }
+
+    const charterCheck = executableDeclaration<(title: string) => string>(
+      'renderedCharterGuideCheck',
+      '  const renderCharterGuideTopic = ',
+    );
+    expect(evaluateGuide('charters', charterCheck('Expedition Charters'))).toMatchObject({
+      ok: true,
+      missing: [],
+      contradictory: false,
+    });
+    expect(evaluateGuide('ascent', charterCheck('Chapters'))).toMatchObject({
+      ok: true,
+      missing: [],
+      contradictory: false,
+    });
+    const trainingRestoreCheck = executableDeclaration<(title: string) => string>(
+      'renderedTrainingRestoreGuideCheck',
+      '  const renderTrainingRestoreGuideTopic = ',
+    );
+    expect(evaluateGuide('settings', trainingRestoreCheck('Settings'))).toMatchObject({
+      ok: true,
+      missing: [],
+      contradictory: false,
+    });
+    expect(evaluateGuide('saving', trainingRestoreCheck('Your save & reset'))).toMatchObject({
+      ok: true,
+      missing: [],
+      contradictory: false,
+    });
+
+    const releaseCheck = executableDeclaration<string>(
+      'releaseDraftCheck',
+      "  await evalIn(`document.querySelector('#guidepanel [data-release-index=\"0\"]')?.click()`);",
+    );
+    const releaseSections = V2_DRAFT_RELEASE.sections.map((releaseSection) =>
+      `<h5>${escapeHtml(releaseSection.category)}</h5><ul>`
+        + releaseSection.bullets.map((bullet) => `<li>${escapeHtml(bullet)}</li>`).join('')
+        + '</ul>').join('');
+    const releaseDom = new JSDOM(
+      `<div id="guidepanel"><article class="guide-topic">`
+        + '<h4 data-guide-heading>v2.0 · A New Foundation</h4>'
+        + `<span data-guide-status="draft"></span>${releaseSections}</article></div>`,
+      { runScripts: 'outside-only' },
+    );
+    releaseDom.window.__CF_SLICE__ = {
+      api: { state: () => ({ rnSeen: '0', releasePending: null }) },
+    };
+    const releaseBaseline = releaseDom.window.eval(releaseCheck) as {
+      readonly complete: boolean;
+      readonly honest: boolean;
+      readonly populated: boolean;
+      readonly canonical: boolean;
+      readonly liveProgressionContract: boolean;
+      readonly liveProgressionContradiction: boolean;
+    };
+    expect(releaseBaseline).toMatchObject({
+      complete: true,
+      honest: true,
+      populated: true,
+      canonical: true,
+      liveProgressionContract: true,
+      liveProgressionContradiction: false,
+    });
+    const currentGuideCopy = catalogue.flatMap((category) => category.topics).map((topic) => {
+      const dom = new JSDOM(`<article>${topic.body}</article>`);
+      const copy = dom.window.document.querySelector('article')?.textContent ?? '';
+      dom.window.close();
+      return copy;
+    }).join('\n');
+    const currentReleaseCopy = V2_DRAFT_RELEASE.sections
+      .flatMap((releaseSection) => releaseSection.bullets).join('\n');
+    const expectedReleaseHistory = getReleaseHistory({ includeDraft: true }).map((release, index) => ({
+      index: String(index),
+      title: `${release.version ? `v${release.version} · ` : ''}${release.title}`,
+      meta: release.status === 'draft' ? 'UNRELEASED DEVELOPMENT'
+        : `${release.date}${release.status === 'shipped' ? ' · v2 release' : ' · legacy release'}`,
+    }));
+    const releaseHistoryAuthoritySource = section(
+      sliceSource,
+      '  const GUIDE_RELEASE_HISTORY_AUTHORITY = Object.freeze({',
+      '  const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({',
+    );
+    expect(numberConstant(releaseHistoryAuthoritySource, 'count')).toBe(expectedReleaseHistory.length);
+    expect(stringConstant(releaseHistoryAuthoritySource, 'sha256'))
+      .toBe(sha256Json(expectedReleaseHistory));
+    const expectedDraftBullets = V2_DRAFT_RELEASE.sections.flatMap((releaseSection) =>
+      releaseSection.bullets);
+    const draftBulletDom = new JSDOM(
+      `<ul>${expectedDraftBullets.map((bullet) => `<li>${bullet}</li>`).join('')}</ul>`,
+    );
+    const renderedDraftBullets = [...draftBulletDom.window.document.querySelectorAll('li')]
+      .map((row) => row.textContent ?? '');
+    draftBulletDom.window.close();
+    expect(renderedDraftBullets).toEqual(expectedDraftBullets);
+    const draftBulletAuthoritySource = section(
+      sliceSource,
+      '  const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({',
+      '  const assessGuideOrderedAuthority = (rows, authority) => {',
+    );
+    expect(numberConstant(draftBulletAuthoritySource, 'count')).toBe(renderedDraftBullets.length);
+    expect(stringConstant(draftBulletAuthoritySource, 'sha256'))
+      .toBe(sha256Json(renderedDraftBullets));
+    const guideReleaseOwner = section(
+      sliceSource,
+      '  const GUIDE_CATEGORY_AUTHORITY = Object.freeze([',
+      '  const guideFocusBack = await evalIn(',
+    );
+    const replacementAnchors = [...guideReleaseOwner.matchAll(/\.replace\('((?:\\.|[^'])*)'/gu)]
+      .map((match) => Function(`return '${match[1]}'`)() as string);
+    expect(replacementAnchors).toHaveLength(43);
+    expect([...new Set(replacementAnchors)].filter((anchor) =>
+      !`${currentGuideCopy}\n${currentReleaseCopy}`.includes(anchor))).toEqual([]);
+    const starter = [...releaseDom.window.document.querySelectorAll('#guidepanel li')]
+      .find((row) => /THE CHARTER STOPS AT THE LIVE FRONTIER/u.test(row.textContent ?? ''));
+    expect(starter).toBeDefined();
+    if (!starter) throw new Error('missing Starter Charter release control row');
+    const prior = starter.textContent ?? '';
+    starter.textContent = prior.replace(
+      'first planetfall beyond canonical Earth, one Mine, a non-null Field Scout assignment or switch, verified conquest',
+      'live writer identity removed',
+    );
+    expect(releaseDom.window.eval(releaseCheck)).toMatchObject({
+      complete: false,
+      liveProgressionContract: false,
+    });
+    starter.textContent = `${prior} Starter Charter rewards remain unavailable.`;
+    expect(releaseDom.window.eval(releaseCheck)).toMatchObject({
+      complete: false,
+      honest: false,
+      liveProgressionContradiction: true,
+    });
+    starter.textContent = prior;
+    expect(releaseDom.window.eval(releaseCheck)).toMatchObject({
+      complete: true,
+      honest: true,
+    });
+    releaseDom.window.close();
+  });
+
+  it('keeps Guide Release and valid-CF1 waiters diagnostic instead of truthy or lossy', () => {
+    const guideRelease = section(
+      sliceSource,
+      "  await evalIn(`document.querySelector('#guidepanel [data-guide-releases]')?.click()`);",
+      '  const guideFocusBack = await evalIn(',
+    );
+    proveEachMarkerRequired(guideRelease, [
+      ['release-history waiter', "waitDesktopValue('Guide release-history publication'"],
+      ['draft waiter', "waitDesktopValue('Guide v2 draft publication'"],
+      ['draft outcome predicate', "value?.identity === true && value?.status === 'draft' && value?.bulletCount > 0"],
+      ['Starter/Binder/Scout/Conquest contract', 'liveProgressionContract=starterCharterText.includes('],
+      ['live progression polarity', 'liveProgressionContradiction=/Charter rewards?'],
+      ['live progression controls', 'const releaseLiveProgressionCtl = await evalIn('],
+    ]);
+    const cf1 = section(
+      sliceSource,
+      '  const validPlanetSearchCheck = `',
+      '  const validPlanetSizeCtl = await evalIn(',
+    );
+    proveEachMarkerRequired(cf1, [
+      ['direct exact waiter', "'valid CF1 keyboard focus handoff', validPlanetSearchCheck, 6000, (value) => value?.ok === true"],
+      ['world naming diagnostic', 'worldNaming:st.worldNaming??null'],
+      ['persistence diagnostic', 'persistence:st.persistence??null'],
+      ['share-Follow owner source', 'shareFollowOwner=st.landing?.actionCoordinator?.owner??null'],
+      ['share-Follow owner diagnostic', 'shareFollowOwner,shareFollowOutcome,customNames:st.save?.customNames??null'],
+      ['share-Follow committed outcome', 'shareFollowOutcome===${JSON.stringify(expectedShareFollowOutcome)}'],
+      ['share-Follow committed persistence', "/^arc9-share-follow-committed:[0-9]+$/u.test(shareFollowPersistence)"],
+      ['share-Follow saved Sol route', "st.save?.viewType==='star'&&st.save?.savedView?.gal?.seed===999"],
+      ['share-Follow exact Jumps advance', 'st.save?.stats?.jumps===${shareFollowJumpsAfter}'],
+      ['share-Follow unchanged-counter control', 'const validPlanetJumpsCtl = await evalIn('],
+      ['share-Follow inspection-only control', 'const validPlanetInspectionCtl = await evalIn('],
+      ['share-Follow persistence control', 'const validPlanetPersistenceCtl = await evalIn('],
+      ['share-Follow saved-route control', 'const validPlanetSavedRouteCtl = await evalIn('],
+      ['custom-name diagnostic', 'customNames:st.save?.customNames??null'],
+      ['saved-view diagnostic', 'savedView:st.save?.savedView??null'],
+      ['jump diagnostic', 'jumps:st.save?.stats?.jumps??null'],
+      ['nonmatching object sentinel', "diagnosticSentinel:'retained-nonmatching-valid-planet'"],
+      ['timeout diagnostic assertion', "message.includes('retained-nonmatching-valid-planet')"],
+    ]);
+    const validPlanetPrefix = '  const validPlanetSearchCheck = `';
+    const validPlanetExpressionStart = cf1.indexOf(validPlanetPrefix) + validPlanetPrefix.length;
+    const validPlanetExpressionEnd = cf1.indexOf('`;\n  const validPlanetSearch = ', validPlanetExpressionStart);
+    expect(validPlanetExpressionStart).toBeGreaterThanOrEqual(validPlanetPrefix.length);
+    expect(validPlanetExpressionEnd).toBeGreaterThan(validPlanetExpressionStart);
+    const validPlanetExpression = cf1.slice(validPlanetExpressionStart, validPlanetExpressionEnd)
+      .replace('${shareFollowJumpsAfter}', '1')
+      .replace('${JSON.stringify(expectedShareFollowOutcome)}', JSON.stringify('committed:0->1'));
+    expect(() => Function(`return (${validPlanetExpression});`)).not.toThrow();
+    expect(cf1).not.toContain("result.mode==='system'&&result.title==='Blue Earth'?result:null");
+  });
+
   it('keeps a fixed 73-row Guide oracle with five independent population controls', () => {
     expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 73;');
     const owner = section(
@@ -58,8 +450,13 @@ describe('sixth Slice red contract repairs', () => {
     );
     proveEachMarkerRequired(owner, [
       ['fixed positive count', 'populated:bullets.length===${V2_DRAFT_BULLET_COUNT}'],
+      ['rendered bullet identity rows', 'bulletRows:bulletRaw'],
       ['raw nonempty and trim clauses',
         'bulletRaw.every((bullet)=>bullet.length>0&&bullet===bullet.trim())'],
+      ['exact draft-bullet assessor', 'const releaseDraftAuthority = assessGuideOrderedAuthority('],
+      ['constant-count replacement control', "replacedDraftBullets[12] += ' unchecked replacement'"],
+      ['constant-count swap control', '[swappedDraftBullets[0], swappedDraftBullets[1]] = [swappedDraftBullets[1], swappedDraftBullets[0]]'],
+      ['exact draft-bullet restoration', 'restored:assessGuideOrderedAuthority(releaseDraft.bulletRows, GUIDE_DRAFT_BULLET_AUTHORITY)'],
       ['count deletion control', 'const releaseInventoryCtl = await evalIn('],
       ['uniqueness control', 'const releaseDuplicateCtl = await evalIn('],
       ['section population control', 'const releaseEmptySectionCtl = await evalIn('],
@@ -67,6 +464,20 @@ describe('sixth Slice red contract repairs', () => {
       ['raw trim control', 'const releaseWhitespaceBulletCtl = await evalIn('],
       ['removal delta',
         'releaseInventoryCtl.removed?.bulletCount !== V2_DRAFT_BULLET_COUNT - 1'],
+      ['release-heading mutation result', 'const mutated=${releaseDraftCheck};headings[0].textContent=a;headings[1].textContent=b;'],
+      ['release-heading restored result', 'const restored=${releaseDraftCheck};return {mutated,restored};'],
+    ]);
+    const historyOwner = section(
+      sliceSource,
+      "  await evalIn(`document.querySelector('#guidepanel [data-guide-releases]')?.click()`);",
+      '  const releaseDraftCheck = `',
+    );
+    proveEachMarkerRequired(historyOwner, [
+      ['57-row rendered identity', "title:(row.querySelector('b')?.textContent||'').trim(),meta:(row.querySelector('small')?.textContent||'').trim()"],
+      ['exact history assessor', 'releaseGuideRaw.rows, GUIDE_RELEASE_HISTORY_AUTHORITY'],
+      ['history duplicate control', 'duplicate:assessGuideOrderedAuthority(duplicateReleaseHistory, GUIDE_RELEASE_HISTORY_AUTHORITY)'],
+      ['history reorder control', 'reordered:assessGuideOrderedAuthority(reorderedReleaseHistory, GUIDE_RELEASE_HISTORY_AUTHORITY)'],
+      ['history restoration control', 'restored:assessGuideOrderedAuthority(releaseGuide.rows, GUIDE_RELEASE_HISTORY_AUTHORITY)'],
     ]);
     expect(glassSource).toContain('expectedBulletCount=73');
     expect(glassSource).toContain('inventory?.bulletCount===72');
@@ -209,11 +620,11 @@ describe('sixth Slice red contract repairs', () => {
       ['publishing contradiction contract member',
         '&&!publishingContradiction;'],
       ['publishing completeness member',
-        '&&shipyardContract&&captureContract&&audioContract&&mealContract&&breedContract&&renameContract&&hdSurfaceContract&&publishingContract'],
+        '&&shipyardContract&&captureContract&&liveProgressionContract&&audioContract&&mealContract&&breedContract&&renameContract&&hdSurfaceContract&&publishingContract'],
       ['publishing contradiction diagnostic',
         'publishingHeading,publishingContract,publishingContradiction,overclaim'],
       ['publishing honesty member',
-        '&&!captureContradiction&&!audioContradiction&&!mealContradiction&&!breedContradiction&&!renameContradiction&&!publishingContradiction'],
+        '&&!captureContradiction&&!liveProgressionContradiction&&!audioContradiction&&!mealContradiction&&!breedContradiction&&!renameContradiction&&!publishingContradiction'],
     ]);
     expect(sliceOracle.split('(?:published|deployed|shipped)').length - 1).toBe(2);
     const sliceControls = section(

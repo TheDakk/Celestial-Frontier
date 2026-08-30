@@ -65,7 +65,7 @@ export interface SearchTravelControllerPorts {
   readonly planetNodeForProof: (star: ProvenStar, planet: ProvenPlanet) => PlanetNode | null;
   /** Return false when a durable name action or later route publication is
       refused; Search then retains the exact submitted text. Name durability
-      precedes the route's separate receipt-free checkpoint. */
+      precedes the route's distinct receipt-bearing transaction. */
   readonly commitNavigation: (plan: SearchTravelCommitPlan) => Promise<boolean>;
   readonly onPrimeReachBlocked: () => void;
   readonly onCharterReachBlocked: () => void;
@@ -96,6 +96,66 @@ export interface SearchTravelController {
   readonly selectForManualCopy: (text: string) => void;
   readonly blurIfFocused: () => boolean;
   readonly dispose: () => void;
+}
+
+export type SearchTravelNameCommit = 'committed' | 'committed-reload' | 'refused';
+
+export interface SearchTravelRouteCommit {
+  readonly committed: boolean;
+  /** True only when the route owner verified or absorbed the committed name's
+      achievement/rank projection into its durable fixed point. */
+  readonly progressionJoined: boolean;
+}
+
+export interface SearchTravelCommitSequencePorts {
+  readonly commitName: (() => Promise<SearchTravelNameCommit>) | null;
+  readonly commitRoute: (nameCommitted: boolean) => Promise<SearchTravelRouteCommit>;
+  readonly queueUnjoinedNameProgression: () => void;
+  /** Reserve the name -> route handoff from ordinary persistence tails. The
+      returned release must re-arm any ordinary checkpoint that was deferred. */
+  readonly reserveInterposedPersistence: () => (() => void) | null;
+}
+
+/** Settle a possible canonical-world name before the route transaction that
+ * consumes its updated save parent. A committed name must never enqueue its
+ * generic progression microtask or admit an ordinary persistence tail before
+ * Follow/Travel has had the synchronous opportunity to claim the shared
+ * product-action coordinator. */
+export async function commitSearchTravelSequence(
+  ports: SearchTravelCommitSequencePorts,
+): Promise<boolean> {
+  const releasePersistenceReservation = ports.commitName === null
+    ? null
+    : ports.reserveInterposedPersistence();
+  if (ports.commitName !== null && releasePersistenceReservation === null) return false;
+
+  let nameCommitted = false;
+  try {
+    if (ports.commitName !== null) {
+      const naming = await ports.commitName();
+      if (naming === 'refused') return false;
+      if (naming === 'committed-reload') return true;
+      nameCommitted = true;
+    }
+
+    let route: SearchTravelRouteCommit = Object.freeze({
+      committed: false,
+      progressionJoined: false,
+    });
+    try {
+      route = await ports.commitRoute(nameCommitted);
+      if (route.progressionJoined && !route.committed) {
+        throw new Error('Search route cannot join progression without committing');
+      }
+      return route.committed;
+    } finally {
+      if (nameCommitted && (!route.committed || !route.progressionJoined)) {
+        ports.queueUnjoinedNameProgression();
+      }
+    }
+  } finally {
+    releasePersistenceReservation?.();
+  }
 }
 
 export function resolveStrictCF1Address(parsed: ValidStrictCF1Code): CanonicalCF1Address | null {

@@ -1,6 +1,6 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-29 current local canonical-successor correction (supersedes narrower same-date
+> **2026-08-30 current local canonical-successor + named-CF1 correction (supersedes narrower same-date
 > descriptions below where they differ):** progression-bearing product writers now verify their
 > expected successor with the deterministic transaction owner's `canonicalizeState`, which is bound
 > to the same detached registry and one validated commit clock used by the write. The converted set
@@ -10,6 +10,28 @@
 > rules are unchanged; the correction prevents codec housekeeping from making a valid committed
 > fixed point disagree with a raw or differently clocked prediction. Historical evidence below is
 > not relabelled as proof of this local successor.
+>
+> Accepted custom-world naming no longer starts aggregate progression catch-up before a submitted
+> route can own the shared coordinator. Direct Travel atomically owns its accepted route, arrival,
+> galaxy visit and any proved galaxy-kind event; Follow owns that arrival aggregate plus Jumps and
+> `wayfarer` in one receipt. Direct Travel remains ineligible for Follow/Jumps/`wayfarer`. If the
+> post-name route refuses or otherwise does not join progression, the world-name transaction queues
+> exactly one aggregate catch-up after its own settlement. A synchronous composite reservation
+> defers/coalesces ordinary save checkpoints across that handoff and re-arms one afterward, so a
+> debounce cannot replace the removed progression race.
+> The bounded wait retains its diagnostic timeout; it does not retry, sleep past a refusal or infer a
+> route outcome.
+>
+> This boundary was isolated by exact clean signed source
+> `941ba45a96e5baabadc255d53db86fa935cefe81`: Compendium passed **78/78** once/no-retry in
+> 65,731 ms, then Slice `20260830115041916-36220-7ed2dd2ef398` stopped once/no-retry after 63,106
+> ms with **63 findings / 42 scopes**. Sixty-two are Guide/Release instrument drift from both early
+> reads before deferred DOM publication and stale inventory/player-copy expectations (the superseded
+> 26-partial/15-unavailable split and older Scout, conquest, reward and audio claims instead of the
+> current 9/41/34/7 authority and live copy); the independent final product finding is the named-CF1 Follow
+> starvation repaired above. No Glass or Recovery ran. The current changed head has no browser
+> certificate yet and changes no rank formula, achievement manifest, reward, creature, genome or
+> save schema.
 
 > **2026-08-29 current local Binder and Prime-Frontier progression overlay:** Records now appends
 > the legacy Binder as six exact type-collection pages—**The Spectrum, The Sixteen Realms, Body
@@ -459,7 +481,7 @@
 > replay may still receive its lesson event without receiving progression credit.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlays
-match the local `port/v2` candidate as of 2026-08-29, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
+match the local `port/v2` candidate as of 2026-08-30, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
