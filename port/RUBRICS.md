@@ -211,6 +211,22 @@
 > `[HUMAN]` statuses remain unchanged; one CF1 release row was refreshed. Fresh changed-head
 > Compendium certification and Slice → Glass → Recovery remain pending; no unchanged retry exists.
 
+> **2026-08-30 exact `ae2a002…` EXEC evidence boundary:** Compendium passed 78/78 once/no-retry;
+> the exact successor Slice stopped terminal red once/no-retry with eight instrument scopes, so
+> Glass and Recovery did not run. Current `[EXEC]` acceptance does not require an atomically replaced
+> expedition to remain receipt-empty after the replacement document boots. Instead it independently
+> projects the imported canonical state: a current projection gives the judged outcome ordinal zero;
+> a ready projection permits exactly one fixed-point, aggregate-only, silent Arc 9 boot receipt at
+> ordinal zero and gives the judged outcome ordinal one. Before either branch, bind the fixture's
+> one expected receipt-free product/bootstrap commit at replacement revision +1 without ordinal
+> advance; ready Arc 9 is therefore replacement revision +2. Exact clear, revision, seed/draw, receipt,
+> delta, unrelated-state and adjacency controls are mandatory. Atlas row identity and the nested
+> Travel action are separate criteria; their trusted native pointer/keydown receipt must bind exact
+> action/row identity before a navigation waiter starts, and a red prerequisite must stop dependent
+> judgment without a timeout cascade. Rendered Guide mutation controls must operate on current DOM
+> or force fresh publication; source-only mutation cannot satisfy a browser outcome. This repair is
+> browser-uncertified and changes no `[HUMAN]` status.
+
 > **2026-08-29 current local gameplay-evidence overlay:** Arc 5 now has four player-live exact-
 > instance writers—Feed, one-draw nonlethal Breed with active-play Recovery, identity-only Rename,
 > and role-only Field Scout—through the compact V2 exact-five/F4/F3 receipt authority. Breed gives a

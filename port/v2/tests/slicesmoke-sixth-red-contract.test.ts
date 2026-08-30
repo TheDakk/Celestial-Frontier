@@ -360,7 +360,7 @@ describe('sixth Slice red contract repairs', () => {
     );
     const replacementAnchors = [...guideReleaseOwner.matchAll(/\.replace\('((?:\\.|[^'])*)'/gu)]
       .map((match) => Function(`return '${match[1]}'`)() as string);
-    expect(replacementAnchors).toHaveLength(43);
+    expect(replacementAnchors).toHaveLength(42);
     expect([...new Set(replacementAnchors)].filter((anchor) =>
       !`${currentGuideCopy}\n${currentReleaseCopy}`.includes(anchor))).toEqual([]);
     const starter = [...releaseDom.window.document.querySelectorAll('#guidepanel li')]
@@ -388,6 +388,302 @@ describe('sixth Slice red contract repairs', () => {
       honest: true,
     });
     releaseDom.window.close();
+  });
+
+  it('executes Guide split-markup, contradiction, polarity, and exact-restoration controls', () => {
+    interface RenderedMutation {
+      readonly count: number;
+      readonly changed: boolean;
+      readonly start: number | null;
+    }
+    const replaceExactRenderedGuideText = executableDeclaration<(
+      root: Element | null,
+      anchor: string,
+      replacement: string,
+    ) => RenderedMutation>(
+      'replaceExactRenderedGuideText',
+      '  const compendiumGuideSpecs = ',
+    );
+    const compendiumSpecs = executableDeclaration<readonly GuideSpec[]>(
+      'compendiumGuideSpecs',
+      '  const renderedCompendiumGuideCheck = ',
+    );
+    const compendiumCheck = executableDeclaration<(spec: GuideSpec) => string>(
+      'renderedCompendiumGuideCheck',
+      '  const renderCompendiumGuideTopic = ',
+    );
+    const audioSpecs = executableDeclaration<readonly (GuideSpec & { readonly missingAnchor: string })[]>(
+      'audioGuideSpecs',
+      '  const renderedAudioGuideCheck = ',
+    );
+    const audioCheck = executableDeclaration<(spec: GuideSpec) => string>(
+      'renderedAudioGuideCheck',
+      '  const renderAudioGuideTopic = ',
+    );
+    const charterCheck = executableDeclaration<(title: string) => string>(
+      'renderedCharterGuideCheck',
+      '  const renderCharterGuideTopic = ',
+    );
+    const catalogue = getGuideCatalogue();
+    const topics = new Map<string, (typeof catalogue)[number]['topics'][number]>(
+      catalogue.flatMap((category) =>
+        category.topics.map((topic) => [topic.id, topic] as const)),
+    );
+    const createGuideDom = (id: string): { dom: TestDom; article: HTMLElement } => {
+      const topic = topics.get(id);
+      expect(topic, `missing current Guide topic: ${id}`).toBeDefined();
+      if (!topic) throw new Error(`missing current Guide topic: ${id}`);
+      const dom = new JSDOM(
+        `<div id="guidepanel"><article class="guide-topic">`
+          + `<h4 data-guide-heading>${escapeHtml(topic.title)}</h4>`
+          + `<span data-guide-status="${topic.availability}"></span>${topic.body}</article></div>`,
+        { runScripts: 'outside-only' },
+      );
+      const article = dom.window.document.querySelector<HTMLElement>('#guidepanel .guide-topic');
+      expect(article, id).not.toBeNull();
+      if (!article) throw new Error(`missing rendered Guide article: ${id}`);
+      return { dom, article };
+    };
+    const oneTextNodeContains = (article: Element, anchor: string): boolean => {
+      const walker = article.ownerDocument.createTreeWalker(article, 4);
+      let node: Node | null;
+      while ((node = walker.nextNode())) {
+        if ((node.nodeValue ?? '').includes(anchor)) return true;
+      }
+      return false;
+    };
+
+    const breedingSpec = compendiumSpecs.find((spec) => spec.id === 'breeding');
+    expect(breedingSpec).toBeDefined();
+    if (!breedingSpec) throw new Error('missing Breeding Guide spec');
+    const breedingAnchor = 'successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save';
+    {
+      const { dom, article } = createGuideDom('breeding');
+      try {
+        const beforeHtml = article.innerHTML;
+        expect(article.textContent).toContain(breedingAnchor);
+        expect(oneTextNodeContains(article, breedingAnchor)).toBe(false);
+        expect(replaceExactRenderedGuideText(
+          article,
+          breedingAnchor,
+          'Charter co-delivery omitted',
+        )).toEqual({ count: 1, changed: true, start: expect.any(Number) });
+        expect(dom.window.eval(compendiumCheck(breedingSpec))).toMatchObject({
+          ok: false,
+          missing: [breedingAnchor],
+          contradictory: false,
+        });
+        article.innerHTML = beforeHtml;
+        expect(article.innerHTML).toBe(beforeHtml);
+        expect(dom.window.eval(compendiumCheck(breedingSpec))).toMatchObject({
+          ok: true,
+          missing: [],
+          contradictory: false,
+        });
+
+        const zeroBefore = article.innerHTML;
+        expect(replaceExactRenderedGuideText(
+          article,
+          'absent rendered Guide target',
+          'must not publish',
+        )).toEqual({ count: 0, changed: false, start: null });
+        expect(article.innerHTML).toBe(zeroBefore);
+
+        const duplicate = article.ownerDocument.createElement('p');
+        duplicate.textContent = breedingAnchor;
+        article.appendChild(duplicate);
+        const duplicateBefore = article.innerHTML;
+        expect(replaceExactRenderedGuideText(
+          article,
+          breedingAnchor,
+          'must not publish',
+        )).toEqual({ count: 2, changed: false, start: expect.any(Number) });
+        expect(article.innerHTML).toBe(duplicateBefore);
+        duplicate.remove();
+        expect(article.innerHTML).toBe(beforeHtml);
+      } finally {
+        dom.window.close();
+      }
+    }
+
+    const audioContradictions = [
+      'Compendium filtering auto-plays the selected creature call.',
+      'Listen to biosphere reveals a hidden species and spends 1 Yield.',
+      'The biosphere signal grants a discovery reward and changes the save.',
+      'Creature voices Off silences the generic biosphere ambience.',
+      'Sound Off still permits the owned creature call.',
+      'Combat sound remains future work.',
+    ];
+    for (const spec of audioSpecs) {
+      const { dom, article } = createGuideDom(spec.id);
+      try {
+        const beforeHtml = article.innerHTML;
+        expect(replaceExactRenderedGuideText(
+          article,
+          spec.missingAnchor,
+          'audio ownership boundary omitted',
+        )).toEqual({ count: 1, changed: true, start: expect.any(Number) });
+        expect(dom.window.eval(audioCheck(spec))).toMatchObject({
+          ok: false,
+          missing: [spec.missingAnchor],
+          contradictory: false,
+        });
+        article.innerHTML = beforeHtml;
+        expect(article.innerHTML).toBe(beforeHtml);
+
+        const footer = article.ownerDocument.createElement('div');
+        footer.textContent = 'Passive evolution';
+        article.appendChild(footer);
+        const footerHtml = article.innerHTML;
+        for (const copy of audioContradictions) {
+          const marker = article.ownerDocument.createElement('p');
+          marker.textContent = copy;
+          article.appendChild(marker);
+          if (copy.startsWith('Combat sound')) {
+            expect(article.textContent).toContain(`Passive evolution${copy}`);
+          }
+          expect(dom.window.eval(audioCheck(spec)), `${spec.id}: ${copy}`).toMatchObject({
+            ok: false,
+            missing: [],
+            contradictory: true,
+          });
+          marker.remove();
+          expect(article.innerHTML).toBe(footerHtml);
+        }
+        footer.remove();
+        expect(article.innerHTML).toBe(beforeHtml);
+        expect(dom.window.eval(audioCheck(spec))).toMatchObject({
+          ok: true,
+          missing: [],
+          contradictory: false,
+        });
+      } finally {
+        dom.window.close();
+      }
+    }
+
+    const charterBreedAnchor = 'One successful Breed banks Breed a hybrid bloodline in the same offspring save';
+    {
+      const { dom, article } = createGuideDom('ascent');
+      try {
+        const beforeHtml = article.innerHTML;
+        expect(article.textContent).toContain(charterBreedAnchor);
+        expect(oneTextNodeContains(article, charterBreedAnchor)).toBe(false);
+        expect(replaceExactRenderedGuideText(
+          article,
+          charterBreedAnchor,
+          'Breed Charter co-delivery omitted',
+        )).toEqual({ count: 1, changed: true, start: expect.any(Number) });
+        expect(dom.window.eval(charterCheck('Chapters'))).toMatchObject({
+          ok: false,
+          missing: [charterBreedAnchor],
+          stale: false,
+          contradictory: false,
+        });
+        article.innerHTML = beforeHtml;
+        expect(article.innerHTML).toBe(beforeHtml);
+
+        const positive = article.ownerDocument.createElement('p');
+        positive.textContent = 'A stale Breed result grants breeding credit.';
+        article.appendChild(positive);
+        expect(dom.window.eval(charterCheck('Chapters'))).toMatchObject({
+          ok: false,
+          missing: [],
+          stale: false,
+          contradictory: true,
+        });
+        positive.remove();
+        expect(article.innerHTML).toBe(beforeHtml);
+
+        const negated = article.ownerDocument.createElement('p');
+        negated.textContent = 'A stale Breed result grants no breeding credit.';
+        article.appendChild(negated);
+        expect(dom.window.eval(charterCheck('Chapters'))).toMatchObject({
+          ok: true,
+          missing: [],
+          stale: false,
+          contradictory: false,
+        });
+        negated.remove();
+        expect(article.innerHTML).toBe(beforeHtml);
+        expect(dom.window.eval(charterCheck('Chapters'))).toMatchObject({
+          ok: true,
+          missing: [],
+          stale: false,
+          contradictory: false,
+        });
+      } finally {
+        dom.window.close();
+      }
+    }
+
+    const neverMintAnchor = 'chapter progress alone never mints one';
+    const neverMintRequirement = '(?:invents? no|without invented) goals?|chapter progress alone never mints one';
+    {
+      const { dom, article } = createGuideDom('charters');
+      try {
+        const beforeHtml = article.innerHTML;
+        expect(replaceExactRenderedGuideText(
+          article,
+          neverMintAnchor,
+          'chapter progress alone mints one',
+        )).toEqual({ count: 1, changed: true, start: expect.any(Number) });
+        expect(dom.window.eval(charterCheck('Expedition Charters'))).toMatchObject({
+          ok: false,
+          missing: [neverMintRequirement],
+          stale: false,
+          contradictory: true,
+        });
+        article.innerHTML = beforeHtml;
+        expect(article.innerHTML).toBe(beforeHtml);
+
+        const positive = article.ownerDocument.createElement('p');
+        positive.textContent = 'Chapter progress does not merely record milestones; it grants system reach.';
+        article.appendChild(positive);
+        expect(dom.window.eval(charterCheck('Expedition Charters'))).toMatchObject({
+          ok: false,
+          missing: [],
+          stale: false,
+          contradictory: true,
+        });
+        positive.remove();
+        expect(article.innerHTML).toBe(beforeHtml);
+
+        const negated = article.ownerDocument.createElement('p');
+        negated.textContent = 'Chapter progress alone never grants system reach.';
+        article.appendChild(negated);
+        expect(dom.window.eval(charterCheck('Expedition Charters'))).toMatchObject({
+          ok: true,
+          missing: [],
+          stale: false,
+          contradictory: false,
+        });
+        negated.remove();
+        expect(article.innerHTML).toBe(beforeHtml);
+        expect(dom.window.eval(charterCheck('Expedition Charters'))).toMatchObject({
+          ok: true,
+          missing: [],
+          stale: false,
+          contradictory: false,
+        });
+      } finally {
+        dom.window.close();
+      }
+    }
+
+    const guideControlOwner = section(
+      sliceSource,
+      '  const replaceExactRenderedGuideText = ',
+      '  const renderedTrainingRestoreGuideCheck = ',
+    );
+    proveEachMarkerRequired(guideControlOwner, [
+      ['split-markup helper definition', 'const replaceExactRenderedGuideText = (root, anchor, replacement) =>'],
+      ['Breeding split mutation', "replaceExactRenderedGuideText(article,anchor,'Charter co-delivery omitted')"],
+      ['audio exact mutation', "replaceExactRenderedGuideText(article,anchor,'audio ownership boundary omitted')"],
+      ['Charter Breed split mutation', "replaceExactRenderedGuideText(article,breedAnchor,'Breed Charter co-delivery omitted')"],
+      ['never-mint full-clause polarity mutation', "replaceExactRenderedGuideText(article,anchor,'chapter progress alone mints one')"],
+      ['truthfully negated polarity control', "marker.textContent='Chapter progress alone never grants system reach.'"],
+    ]);
   });
 
   it('keeps Guide Release and valid-CF1 waiters diagnostic instead of truthy or lossy', () => {

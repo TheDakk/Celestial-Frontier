@@ -1,5 +1,21 @@
 # Celestial Frontier — Player Progression
 
+> **2026-08-30 current replacement boot-catch-up clarification:** aggregate progression still owns
+> one receipt/F4 CAS and only the canonical achievement append plus monotonic `stats.bestRank`.
+> After import replacement, the exact fixture first owns one independently expected receipt-free
+> product/bootstrap revision without advancing the RNG ordinal. An independently projected `current` state then consumes no receipt; a
+> projected `ready` state legitimately uses the new expedition's ordinal-zero
+> `arc9-progression-refresh-v1` receipt before the document is published writable. Boot presentation
+> remains silent, the successor must be a fixed point, event-owned achievements remain excluded,
+> and every unrelated save field remains exact. The next product outcome owns ordinal zero or one
+> according to that independently selected branch—never according to an observed optional prefix.
+> For the retained fixture, replacement revision 8 becomes bootstrap revision 9, Arc 9 revision 10,
+> then Smoke revision 11.
+>
+> Exact `ae2a002…` passed Compendium 78/78 before its once-only Slice stopped red with eight
+> instrument findings, including the stale empty-ledger assumption above. No Glass or Recovery ran,
+> and no historical red has been relabelled as a browser PASS.
+
 > **2026-08-30 current local canonical-successor + named-CF1 correction (supersedes narrower same-date
 > descriptions below where they differ):** progression-bearing product writers now verify their
 > expected successor with the deterministic transaction owner's `canonicalizeState`, which is bound

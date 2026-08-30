@@ -48,6 +48,46 @@
 > anatomy, art structure, ruler, numeric ceiling or 78-outcome inventory changed. Fresh signed
 > browser certification remains pending; this derived reseal grants no browser or later-stage authority.
 
+⚠⚠ **A REPLACEMENT CLEARS OLD HISTORY; THE REPLACEMENT DOCUMENT MAY THEN LEGITIMATELY OWN
+ORDINAL ZERO** (2026-08-30). Exact signed `ae2a002…` passed Compendium 78/78, then Slice stopped
+red once/no-retry. Its F4 oracle sampled after boot and called a valid
+`arc9-progression-refresh-v1` receipt at ordinal zero evidence that replacement had failed to clear
+the old expedition. The native replacement had cleared the old receipt atomically; boot then
+derived missing aggregate achievements from the imported expedition and committed the first new
+receipt before Slice sampled the writable document.
+
+Select the accepted prefix from an independent projection of the exact imported fixture. First bind
+the fixture's one independently expected receipt-free product/bootstrap commit: replacement
+revision +1 with ordinal still zero. If progression is already current, require an empty post-boot
+ledger at that revision and let the judged outcome own ordinal zero. If it requires refresh, require
+exactly one boot-catch-up receipt at ordinal zero at replacement revision +2, its exact aggregate-
+only unlocked/best-rank successor and fixed point, then let the judged outcome own ordinal one.
+Never accept an arbitrary optional prefix. Bind the replacement base revision, cleared old witness,
+seed/draw parity, exact revision/ordinal advances, receipt kind/witness, unrelated-state stability,
+silent boot presentation and immediate judged successor. Negative-control both branches and every
+field independently. For the retained run the chronology is staged revision 7 → replacement 8 →
+receipt-free bootstrap 9 → Arc 9 receipt 0 at revision 10 → Smoke receipt 1 at revision 11;
+replacement-document runtime commit count is exactly two before Smoke.
+
+⚠⚠ **A SEMANTIC ROW AND ITS ACTION BUTTON ARE DIFFERENT OWNERS** (2026-08-30). The same Slice
+treated an Atlas world row as though the row itself had to be an enabled activation control. The
+current UI correctly uses the row as a rendered data container and a nested Travel button as the
+native action owner. Prove the row's exact source identity, visibility and geometry separately;
+then prove the current nested button is enabled, reachable, hit-owned and produces the authorized
+route. A `DIV` row is not a disabled Travel action, and a valid button cannot excuse a stale or
+wrong row. Bind the trusted pointer or keydown receipt to the exact native `BUTTON`, its
+`data-atlas-travel`, and its parent `data-aid`; do not enter a navigation waiter until that exact
+prerequisite is green. A red target/receipt stops its dependent action once with the root diagnosis
+instead of manufacturing a timeout cascade. Mutate row identity, action ownership, input identity,
+geometry and coordinates independently, including after reload.
+
+⚠⚠ **MUTATING SOURCE TEXT DOES NOT MUTATE DOM THAT WAS ALREADY RENDERED** (2026-08-30). Four
+Guide controls changed their source-side bulletin strings after publication, then judged the old
+DOM and reported that contradictions stayed green. A rendered-text control must mutate the exact
+current DOM node, or mutate the source and force the real publication owner to emit a new exact
+identity before judging it. Bind requested identity, rendered text and restoration in both
+directions. A source-only edit plus stale rendered node is instrument failure, never product truth.
+
 > **2026-08-29 exact-chain law — historical exact-source certificate:** repair an oracle on preserved evidence, then
 > certify only a fresh unchanged-source chain; never relabel or retry the stored red. Exact signed
 > source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree

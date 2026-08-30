@@ -1,5 +1,30 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-08-30 current exact-`ae2a002…` Slice-instrument overlay:** exact signed source
+> `ae2a0023da3a90a98e548452113395149847aee5` passed Compendium **78/78** once/no-retry, then
+> Slice `20260830132231723-50968-0e9bd00aee77` stopped terminal red once/no-retry with **8
+> findings / 8 scopes**. Glass and Recovery did not run. The three immutable carriers and full
+> gzip/raw identities are registered in `audits/README.md`; this chronology remains red.
+>
+> The corrected F4 oracle independently projects the exact imported canonical state. A `current`
+> projection requires an empty replacement-document ledger and assigns the judged outcome ordinal
+> zero. A `ready` projection requires exactly one silent, aggregate-only, fixed-point
+> `arc9-progression-refresh-v1` boot receipt at ordinal zero and assigns the judged outcome ordinal
+> one. Both paths prove the native atomic clear of the old receipt, replacement base revision, the
+> fixture's one expected receipt-free product/bootstrap commit at revision +1 with unchanged ordinal,
+> seed/draw and runtime/raw parity, exact receipt witness, unrelated-state stability and immediate
+> successor; a ready Arc 9 commit is therefore replacement revision +2. The retained exact sequence
+> is 7 staged → 8 replacement → 9 bootstrap → 10 Arc 9 receipt 0 → 11 Smoke receipt 1; observed
+> optional prefixes are never accepted. Atlas evidence treats its source-
+> identified rendered row and nested native Travel button as separate owners. Trusted pointer and
+> keydown receipts bind the exact native role, action ID, parent row ID and coordinates before any
+> dependent navigation wait; red prerequisites stop once at their root rather than creating a timeout
+> cascade. Guide mutation
+> controls change the current rendered node or force real republication with a fresh exact identity;
+> source-only mutation followed by stale-DOM judgment is instrument failure. These repairs have no
+> fresh browser certificate and change no save schema, achievement/rank policy, route authorization
+> or player-facing capability.
+
 > **2026-08-30 current sealed-worker/PWA + Guide/Release/named-CF1 overlay (matches local code;
 > supersedes the
 > execution-late `clients.get()` repair and narrower current-authority language below; every named
