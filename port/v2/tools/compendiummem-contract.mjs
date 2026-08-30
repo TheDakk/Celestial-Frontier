@@ -88,7 +88,7 @@ export const PRODUCER_ERROR_WITNESS_SCHEMA =
 export const PRODUCER_ERROR_ARM_MESSAGE = 'compendiummem injected producer error';
 export const PRODUCER_ERROR_ARM_SENTINEL = 'cf-v2-compendium-producer-error-armed/v1';
 export const THUMB_SETTLEMENT_OBSERVATION_SCHEMA =
-  'cf-v2-compendium-thumb-settlement-observation/v1';
+  'cf-v2-compendium-thumb-settlement-observation/v2';
 export const THUMB_SETTLEMENT_RECEIPT_SCHEMA =
   'cf-v2-compendium-thumb-settlement-receipt/v1';
 export const THUMB_SETTLEMENT_ACTIVE_SCHEMA =
@@ -103,6 +103,7 @@ export const FOREGROUND_SERVICE_RECEIPT_LABELS = Object.freeze([
 ]);
 export const FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS = 5_000;
 export const MAX_THUMB_SETTLEMENT_IMAGES = 64;
+export const MAX_THUMB_SETTLEMENT_BROKER_KEYS = 256;
 export const MAX_THUMB_SETTLEMENT_FILTER_COUNT = 1_000_000;
 export const MAX_THUMB_SETTLEMENT_REASONS = 384;
 export const REQUIRED_WARM_CYCLES = 4;
@@ -1549,7 +1550,7 @@ const THUMB_SETTLEMENT_TOP_KEYS = Object.freeze([
   'ownership', 'diagnostic', 'images', 'art', 'lazyArt', 'worker', 'broker', 'page',
 ]);
 const THUMB_SETTLEMENT_IMAGE_KEYS = Object.freeze([
-  'index', 'logicalId', 'visualKey', 'thumbState',
+  'index', 'logicalId', 'visualKeyLength', 'leasedIndex', 'cachedIndex', 'thumbState',
   'srcPresent', 'complete', 'naturalWidth', 'naturalHeight',
 ]);
 const THUMB_SETTLEMENT_LAZY_PHASE_FIELDS = Object.freeze([
@@ -1658,7 +1659,15 @@ function thumbSettlementObservationShapeErrors(observation) {
         errors.push(`${where} index shape`);
       }
       if (!nullableBoundedString(image.logicalId)) errors.push(`${where} logical id shape`);
-      if (!nullableBoundedString(image.visualKey)) errors.push(`${where} visual key shape`);
+      for (const [field, label, max] of [
+        ['visualKeyLength', 'visual key length', MAX_THUMB_SETTLEMENT_FILTER_COUNT],
+        ['leasedIndex', 'leased index', MAX_THUMB_SETTLEMENT_BROKER_KEYS - 1],
+        ['cachedIndex', 'cached index', MAX_THUMB_SETTLEMENT_BROKER_KEYS - 1],
+      ]) {
+        if (image[field] !== null && !boundedCount(image[field], max)) {
+          errors.push(`${where} ${label} shape`);
+        }
+      }
       if (!nullableBoundedString(image.thumbState)) errors.push(`${where} thumb state shape`);
       if (typeof image.srcPresent !== 'boolean') errors.push(`${where} source shape`);
       if (typeof image.complete !== 'boolean') errors.push(`${where} completion shape`);
@@ -1773,6 +1782,8 @@ function thumbSettlementObservationShapeErrors(observation) {
 
   const brokerKeys = [
     'available', 'cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs',
+    'leasedKeyCount', 'cachedKeyCount',
+    'leasedDistinctKeyCount', 'cachedDistinctKeyCount',
   ];
   if (exactKeys(observation.broker, brokerKeys, 'thumb settlement broker', errors)) {
     const broker = observation.broker;
@@ -1780,10 +1791,24 @@ function thumbSettlementObservationShapeErrors(observation) {
       errors.push('thumb settlement broker availability shape');
     }
     if (broker.available === true) {
-      for (const field of ['cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs']) {
+      for (const field of [
+        'cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs',
+      ]) {
         if (!boundedCount(broker[field])) errors.push(`thumb settlement broker ${field} shape`);
       }
-    } else if (['cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs']
+      for (const field of [
+        'leasedKeyCount', 'cachedKeyCount',
+        'leasedDistinctKeyCount', 'cachedDistinctKeyCount',
+      ]) {
+        if (!boundedCount(broker[field], MAX_THUMB_SETTLEMENT_BROKER_KEYS)) {
+          errors.push(`thumb settlement broker ${field} shape`);
+        }
+      }
+    } else if ([
+      'cacheEntries', 'leases', 'subscribers', 'queuedJobs', 'activeJobs',
+      'leasedKeyCount', 'cachedKeyCount',
+      'leasedDistinctKeyCount', 'cachedDistinctKeyCount',
+    ]
       .some((field) => broker[field] !== null)) {
       errors.push('thumb settlement unavailable broker carried values');
     }
@@ -1870,7 +1895,9 @@ export function classifyCompendiumThumbSettlement(observation, expected) {
 
   const images = observation.images;
   const rawLogicalIds = images.map((image) => image.logicalId);
-  const visualKeys = images.map((image) => image.visualKey);
+  const visualKeyLengths = images.map((image) => image.visualKeyLength);
+  const leasedIndices = images.map((image) => image.leasedIndex);
+  const cachedIndices = images.map((image) => image.cachedIndex);
   const thumbStates = images.map((image) => image.thumbState);
   if (images.length < 1 || images.length > MAX_THUMB_SETTLEMENT_IMAGES) {
     pending.push(`raw image array count ${images.length}/1..${MAX_THUMB_SETTLEMENT_IMAGES}`);
@@ -1893,8 +1920,26 @@ export function classifyCompendiumThumbSettlement(observation, expected) {
   if (new Set(rawLogicalIds).size !== images.length || rawLogicalIds.some((id) => !id)) {
     pending.push('raw logical ids absent or non-distinct');
   }
-  if (new Set(visualKeys).size !== images.length || visualKeys.some((key) => !key)) {
-    pending.push('raw visual keys absent or non-distinct');
+  if (visualKeyLengths.some((length) => !Number.isSafeInteger(length) || length <= 0)) {
+    pending.push('raw visual keys absent');
+  }
+  const allLeasedIndicesPresent = leasedIndices.every((index) =>
+    observation.broker.available === true
+    && Number.isSafeInteger(index) && index >= 0
+    && index < observation.broker.leasedKeyCount);
+  if (!allLeasedIndicesPresent) {
+    pending.push('raw visual keys absent from broker lease inventory');
+  } else if (new Set(leasedIndices).size !== images.length) {
+    pending.push('raw visual keys non-distinct in broker lease inventory');
+  }
+  const allCachedIndicesPresent = cachedIndices.every((index) =>
+    observation.broker.available === true
+    && Number.isSafeInteger(index) && index >= 0
+    && index < observation.broker.cachedKeyCount);
+  if (!allCachedIndicesPresent) {
+    pending.push('raw visual keys absent from broker cache inventory');
+  } else if (new Set(cachedIndices).size !== images.length) {
+    pending.push('raw visual keys non-distinct in broker cache inventory');
   }
   images.forEach((image, index) => {
     if (image.index !== index) pending.push(`image ${index} index ${image.index}`);
@@ -1965,6 +2010,18 @@ export function classifyCompendiumThumbSettlement(observation, expected) {
     pending.push('broker/art availability mismatch');
   }
   if (observation.broker.available === true && observation.art.available === true) {
+    if (observation.broker.leasedKeyCount !== observation.broker.leases) {
+      pending.push(`broker leased key count ${observation.broker.leasedKeyCount}/${observation.broker.leases}`);
+    }
+    if (observation.broker.cachedKeyCount !== observation.broker.cacheEntries) {
+      pending.push(`broker cached key count ${observation.broker.cachedKeyCount}/${observation.broker.cacheEntries}`);
+    }
+    if (observation.broker.leasedDistinctKeyCount !== observation.broker.leasedKeyCount) {
+      pending.push(`broker leased keys non-distinct ${observation.broker.leasedDistinctKeyCount}/${observation.broker.leasedKeyCount}`);
+    }
+    if (observation.broker.cachedDistinctKeyCount !== observation.broker.cachedKeyCount) {
+      pending.push(`broker cached keys non-distinct ${observation.broker.cachedDistinctKeyCount}/${observation.broker.cachedKeyCount}`);
+    }
     if (observation.broker.queuedJobs !== observation.art.queuedJobs) {
       pending.push('broker/art queued-job mismatch');
     }

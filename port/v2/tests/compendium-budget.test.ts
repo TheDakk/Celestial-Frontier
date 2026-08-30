@@ -234,9 +234,23 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b';
+  '87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d';
+const EXPECTED_OUTCOME_CONTRACT_AUTHORITY =
+  'abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138';
 const EXPECTED_COLLECTOR_AUTHORITY =
-  'ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690';
+  'b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e';
+const HISTORICAL_VISUAL_KEY_INSTRUMENT_FAILURE = Object.freeze({
+  file: 'ARC1C_COMPENDIUM_PR35_PLANETSIDE_VISUALKEY_INSTRUMENT_FAILURE_20260830_B2EECFB.json.gz',
+  runId: '20260830-pr35-settlement-evidence-b2eecfbd9379-compendium-certification',
+  sourceCommit: 'b2eecfbd9379f50c25208ca8bcd72501b07e303c',
+  measurementAuthoritySha256:
+    '326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b',
+  outcomeContractSha256:
+    '7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24',
+  collectorSha256: 'ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690',
+  rawSha256: '461241011d8c0d80585befaf3a25e631019bc0a3cc0f73bf5b02a7957c815f02',
+  gzipSha256: 'b973b596870ae4180a4b82fb9357194548be67c4dad9aa3560c9ec1186538027',
+});
 const UNIVERSE_POLISH_COLLECTOR_AUTHORITY =
   'c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab';
 const HISTORICAL_RULER_COLLECTOR_AUTHORITY =
@@ -1475,6 +1489,12 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(activeBudget.browserAuthority).toEqual(EXPECTED_BROWSER_AUTHORITY);
     expect(activeBudget.ceilings).not.toBeNull();
     expect(activeBudget.measurementAuthority.sha256).toBe(EXPECTED_MEASUREMENT_AUTHORITY);
+    expect((budget.measurementAuthority as { inputs: Record<string, string> })
+      .inputs.outcomeContract)
+      .toBe(EXPECTED_OUTCOME_CONTRACT_AUTHORITY);
+    expect((budget.measurementAuthority as { inputs: Record<string, string> })
+      .inputs.collector)
+      .toBe(EXPECTED_COLLECTOR_AUTHORITY);
     expect(activeBudget.producerAuthority.sha256).toBe(EXPECTED_PRODUCER_AUTHORITY);
     const candidateRuns = activeBudget.calibration.samples.phone.map((sample) => sample.runId);
     expect(candidateRuns).toEqual(EXPECTED_CANDIDATE_RUNS);
@@ -1543,6 +1563,19 @@ describe('Arc 1A Compendium budget authority', () => {
     expect(activeBudget.calibration.selectionRule).toContain('fresh exact certificate');
     expect(activeBudget.calibration.selectionRule)
       .toContain('does not re-pin the Gate-A/global browser');
+    for (const authority of Object.values(HISTORICAL_VISUAL_KEY_INSTRUMENT_FAILURE)) {
+      expect(activeBudget.calibration.selectionRule).toContain(authority);
+    }
+    expect(activeBudget.calibration.selectionRule)
+      .toContain('512-character string projector');
+    expect(activeBudget.calibration.selectionRule)
+      .toContain('never serializes full visual keys');
+    expect(activeBudget.calibration.selectionRule)
+      .toContain('caps each broker-key array at 256');
+    expect(activeBudget.calibration.selectionRule)
+      .toContain(EXPECTED_OUTCOME_CONTRACT_AUTHORITY);
+    expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_COLLECTOR_AUTHORITY);
+    expect(activeBudget.calibration.selectionRule).toContain(EXPECTED_MEASUREMENT_AUTHORITY);
   });
 
   it('binds active ruler authority while preserving calibration-required and drift controls', () => {

@@ -47,7 +47,7 @@ export const PRODUCER_ERROR_WITNESS_SCHEMA:
 export const PRODUCER_ERROR_ARM_MESSAGE: 'compendiummem injected producer error';
 export const PRODUCER_ERROR_ARM_SENTINEL: 'cf-v2-compendium-producer-error-armed/v1';
 export const THUMB_SETTLEMENT_OBSERVATION_SCHEMA:
-  'cf-v2-compendium-thumb-settlement-observation/v1';
+  'cf-v2-compendium-thumb-settlement-observation/v2';
 export const THUMB_SETTLEMENT_RECEIPT_SCHEMA:
   'cf-v2-compendium-thumb-settlement-receipt/v1';
 export const THUMB_SETTLEMENT_ACTIVE_SCHEMA:
@@ -62,6 +62,7 @@ export const FOREGROUND_SERVICE_RECEIPT_LABELS: readonly [
 ];
 export const FOREGROUND_SERVICE_RECEIPT_TIMEOUT_MS: 5000;
 export const MAX_THUMB_SETTLEMENT_IMAGES: 64;
+export const MAX_THUMB_SETTLEMENT_BROKER_KEYS: 256;
 export const MAX_THUMB_SETTLEMENT_FILTER_COUNT: 1000000;
 export const MAX_THUMB_SETTLEMENT_REASONS: 384;
 export const REQUIRED_WARM_CYCLES: number;
@@ -229,7 +230,9 @@ export type CompendiumThumbSettlementObservation = Readonly<{
   images: readonly Readonly<{
     index: number;
     logicalId: string | null;
-    visualKey: string | null;
+    visualKeyLength: number | null;
+    leasedIndex: number | null;
+    cachedIndex: number | null;
     thumbState: string | null;
     srcPresent: boolean;
     complete: boolean;
@@ -301,6 +304,10 @@ export type CompendiumThumbSettlementObservation = Readonly<{
     subscribers: number | null;
     queuedJobs: number | null;
     activeJobs: number | null;
+    leasedKeyCount: number | null;
+    cachedKeyCount: number | null;
+    leasedDistinctKeyCount: number | null;
+    cachedDistinctKeyCount: number | null;
   }>;
   page: Readonly<{
     targetId: string;
