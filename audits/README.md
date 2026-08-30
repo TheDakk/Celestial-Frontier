@@ -10,6 +10,62 @@ summary of it.
 
 ## Contents
 
+### Signed `e4f5af4…` Compendium PASS, then terminal-red Slice replacement/Engineering/Survey evidence
+
+Exact clean signed source `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` ran Compendium
+`20260830-pr35-slice-oracle-e4f5af4bf628-compendium-certification` exactly once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`. It passed **78/78** outcomes (39 phone + 39 desktop)
+in **64,831 ms** and passed its exact named verifier. Its immutable carrier
+`ARC1C_COMPENDIUM_PR35_SLICE_ORACLE_REPAIR_PASS_20260830_E4F5AF4.json.gz` is **521,190 gzip /
+10,798,329 raw bytes**, SHA-256
+`62836b0c47307b77a4656fa82075a7eabb7c18332288272b6eab4e1256e0de61` /
+`23f93aaf9af016ffd9c6aeaf137539041a63e10ad339495f1837442e73a2a7ca`.
+
+The same unchanged source then ran Slice
+`20260830-pr35-slice-oracle-e4f5af4bf628-slice-certification` exactly once with zero retry. It
+stopped terminal red after **98,988 ms** with four findings in this exact order:
+`f4-replacement-outcome`, `arc-3-mine-action`, `arc-3-mine-action-controls-failed`, and `harness`.
+The old F4 trace merged requests across transactions and then demanded an F4 carrier inside the
+atomic replacement player row. The real replacement correctly removed the prior authority and
+receipt history at revision 8; the replacement document minted the fresh seed in its separate held
+bootstrap commit at revision 9, then progression and Smoke committed at revisions 10 and 11. The
+old product comparison also treated valid clock normalization and exact route repair as unrelated
+drift. The Arc 3 findings were derivative of that stale product oracle; the final six-second Survey
+timeout was downstream cascade after the root red, not independent permission to continue.
+
+- `ARC4_SLICE_PR35_REPLACEMENT_ENGINEERING_SURVEY_RED_20260830_E4F5AF4.json.gz` is **106,663
+  gzip / 784,482 raw bytes**, SHA-256
+  `405ba09fb441dee907a2a03fa116acd54acfcccd821b10d919e02419f083c3c1` /
+  `4d588a0e6e49fee7b85f662ff26266ef009bff09bdb9d316cd75b1531c5f3ca3`.
+- `ARC4_SLICE_PR35_REPLACEMENT_ENGINEERING_SURVEY_RED_20260830_E4F5AF4.log.gz` is **43,745
+  gzip / 323,366 raw bytes**, SHA-256
+  `f84f5d14529b4b8e1476d7d1f14a8715cda3dd9d0ba75241a076d2b0088acc7a` /
+  `f3fb5deaf0a87b7be832345a8256bea872307fa2c91ea23b0783e0217303861a`.
+
+The report retains seven partial screenshots and zero PASS markers. Glass and Recovery did not run
+and have no `e4f5af4…` authority. The browser-free
+`port/v2/tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` binds all three gzip/raw identities,
+the exact clean source and named runs, the complete 78/78 Compendium ledger, the ordered four-scope
+Slice red and its reason/message hashes, raw child/log evidence, and the explicit absence of any
+Glass or Recovery successor. It replays the immutable evidence; it never promotes that Slice red.
+
+The changed-source repair replaces the cross-transaction trace with schema v3 evidence for one
+complete native replacement transaction and expectation schema v2. It inventories every readwrite
+first observed before replacement completion, requires exactly one eight-store transaction, then
+freezes so the required later lease-release CAS cannot overwrite the witness. It observes every
+available object-store request method plus index access, then requires the exact 13-request ledger
+and empty index inventories; hidden add/cursor/index work and pre-completion subset/superset side
+transactions are red, while a post-completion lease-release control remains green. Its strict
+post-boot projection SHA-256 is
+`e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`: only conquest and mined-
+world stamps become exact ages from the separately run-bounded `at` clock, while complete saved-
+route geometry, every Atlas `where` and all unrelated product state remain exact. Red setup stops
+before import, red prefix stops before its diagnostic outcome, and red outcome/control stops hide
+and Arc 3. The live periodic heartbeat is stopped, settled and bound to the exact document before
+staging or arming, eliminating the arm→import timer race. Focused transaction,
+clock, route, lifecycle, publication and causal-order mutants fail in both directions; this grants
+no fresh browser authority until a new clean signed source completes its own chain.
+
 ### Signed `ae2a002…` Guide/CF1-repair Compendium PASS, then terminal-red Slice instrument drift
 
 Exact clean signed source `ae2a0023da3a90a98e548452113395149847aee5` ran Compendium

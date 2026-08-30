@@ -48,26 +48,42 @@
 > anatomy, art structure, ruler, numeric ceiling or 78-outcome inventory changed. Fresh signed
 > browser certification remains pending; this derived reseal grants no browser or later-stage authority.
 
-⚠⚠ **A REPLACEMENT CLEARS OLD HISTORY; THE REPLACEMENT DOCUMENT MAY THEN LEGITIMATELY OWN
-ORDINAL ZERO** (2026-08-30). Exact signed `ae2a002…` passed Compendium 78/78, then Slice stopped
-red once/no-retry. Its F4 oracle sampled after boot and called a valid
-`arc9-progression-refresh-v1` receipt at ordinal zero evidence that replacement had failed to clear
-the old expedition. The native replacement had cleared the old receipt atomically; boot then
-derived missing aggregate achievements from the imported expedition and committed the first new
-receipt before Slice sampled the writable document.
+⚠⚠ **A REPLACEMENT CLEARS OLD HISTORY; ITS HELD BOOTSTRAP IS A DIFFERENT TRANSACTION**
+(2026-08-30). Exact `ae2a002…` first proved that a valid new ordinal-zero
+`arc9-progression-refresh-v1` receipt does not mean the old expedition survived replacement. Exact
+signed `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` then passed Compendium 78/78 and stopped its
+once-only Slice terminal red after 98,988 ms with four scopes. Its old F4 trace collapsed the native
+replacement and later held bootstrap boundaries, then expected the replacement player row itself
+to contain F4 seed/ordinal/draw authority. The replacement had correctly cleared the receipt store
+and written the source v5 rows at revision 8 without that later authority. The replacement document
+then minted seed/draw authority in one receipt-free held bootstrap at revision 9, committed the
+independently required Arc 9 receipt zero at revision 10, and let Smoke own receipt one/revision 11.
 
-Select the accepted prefix from an independent projection of the exact imported fixture. First bind
-the fixture's one independently expected receipt-free product/bootstrap commit: replacement
-revision +1 with ordinal still zero. If progression is already current, require an empty post-boot
-ledger at that revision and let the judged outcome own ordinal zero. If it requires refresh, require
-exactly one boot-catch-up receipt at ordinal zero at replacement revision +2, its exact aggregate-
-only unlocked/best-rank successor and fixed point, then let the judged outcome own ordinal one.
-Never accept an arbitrary optional prefix. Bind the replacement base revision, cleared old witness,
-seed/draw parity, exact revision/ordinal advances, receipt kind/witness, unrelated-state stability,
-silent boot presentation and immediate judged successor. Negative-control both branches and every
-field independently. For the retained run the chronology is staged revision 7 → replacement 8 →
-receipt-free bootstrap 9 → Arc 9 receipt 0 at revision 10 → Smoke receipt 1 at revision 11;
-replacement-document runtime commit count is exactly two before Smoke.
+Inventory every readwrite transaction first observed before the exact replacement completes and
+require exactly one complete native replacement, including exact request order, settlement, source
+bytes, cleared receipts and absent replacement F4 carrier. Pre-completion subset/superset side
+transactions are evidence failure even when they settle. Freeze the witness at replacement
+completion so the required later lease-release CAS cannot overwrite it. Then select the accepted
+boot prefix from an independent production projection of the exact imported fixture. `current` requires
+only the expected receipt-free bootstrap and gives the judged outcome ordinal zero; `ready` requires
+exactly one silent aggregate-only fixed-point receipt at ordinal zero and gives the judged outcome
+ordinal one. Never infer either branch from the observed ledger or accept an arbitrary optional
+prefix. Before staging or arming, stop and settle the live periodic heartbeat and bind its exact
+document witness; otherwise a legitimate timer CAS in the arm→import gap becomes a false second
+transaction.
+
+Bind the exact source legacy SHA separately from the post-import product successor. Across separate
+codec clocks, normalize only the absolute `at` anchor and express every `conq[].t` and `minedw[]`
+stamp as its exact age from `at`; independently require both absolute anchors inside the measured
+run window and monotonic. Preserve every other field exactly, including complete saved-view
+geometry, every Atlas `where`, achievements, rank, cargo, Prime and Compendium state. The current
+strict successor projection is
+`e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`. Controls mutate each
+allowed clock field, every repaired route and unrelated product families independently. A red
+staged-receipt/tracer setup stops before import; a red replacement prefix stops before its
+diagnostic outcome; and a red outcome/control stops hide and Arc 3, rather than manufacturing
+derivative findings or a Survey timeout. The immutable e4f5 Slice remains FAIL; Glass and Recovery
+did not run.
 
 ⚠⚠ **A SEMANTIC ROW AND ITS ACTION BUTTON ARE DIFFERENT OWNERS** (2026-08-30). The same Slice
 treated an Atlas world row as though the row itself had to be an enabled activation control. The
@@ -936,6 +952,13 @@ that exact registry and clock. Consumers return raw derivation state to the tran
 owner-minted canonical successor for seals and expected-state comparisons. They must not call the
 codec with a fresh clock, duplicate its rules, or canonicalize state before handing it to the
 owner. Later-clock controls must prove both committed equality and untouched caller state.
+
+That same-clock action rule is distinct from comparing two honest persisted snapshots taken at
+different codec clocks. A cross-clock evidence oracle must derive its expected product independently,
+bind each absolute clock to the run, and normalize only explicitly owned clock-relative fields. It
+must not delete timestamps, route geometry, Atlas sidecars or arbitrary "unrelated" state to make
+two digests agree. Every excluded field needs a bidirectional control; every field not explicitly
+excluded remains exact.
 
 ⚠⚠ **AN EXACT-BUILD PWA PIN MUST FOLLOW THE CLIENT REALM, NOT STOP AT THE WINDOW**
 (2026-08-29). The biome-vista module-worker entry was served from its initiating window's exact

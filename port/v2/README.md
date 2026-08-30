@@ -348,29 +348,36 @@
 > and deployment remain open. Edge point version remains provenance only and never triggers
 > rebaseline or threshold movement.
 
-> **Exact `ae2a002…` browser boundary and current Slice-oracle repair (2026-08-30):** signed clean
-> source `ae2a0023da3a90a98e548452113395149847aee5` passed Compendium 78/78 once/no-retry in
-> 63,446 ms, then Slice `20260830132231723-50968-0e9bd00aee77` stopped red once/no-retry after
-> 91,465 ms with eight findings across eight scopes. Immutable Compendium / Slice JSON / Slice log
-> carriers are **451,761 / 78,146 / 37,399 gzip bytes**, SHA-256 `c41e40c0…` / `f2749443…` /
-> `9d57cded…`; full raw identities are registered in `audits/README.md`. Glass and Recovery did not
-> run, and this remains terminal-red historical evidence.
+> **Exact `e4f5af4…` browser boundary and current Slice-oracle repair (2026-08-30):** signed clean
+> source `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium 78/78 once/no-retry in
+> 64,831 ms as `20260830-pr35-slice-oracle-e4f5af4bf628-compendium-certification`. Its exact
+> unchanged-source Slice `20260830-pr35-slice-oracle-e4f5af4bf628-slice-certification` stopped
+> terminal red once/no-retry after 98,988 ms with four ordered scopes: `f4-replacement-outcome`,
+> `arc-3-mine-action`, `arc-3-mine-action-controls-failed`, and the continued Survey `harness`
+> timeout. Immutable Compendium / Slice JSON / Slice log carriers are **521,190 / 106,663 / 43,745
+> gzip bytes**, SHA-256 `62836b0c…` / `405ba09f…` / `f84f5d14…`; full raw identities are registered
+> in `audits/README.md` and exact-bound by
+> `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts`. Glass and Recovery did not run and have no
+> e4f5 successor authority. The earlier `ae2a002…` eight-scope carriers remain immutable history.
 >
-> The F4 replacement assessor now selects its prefix from an independent projection of the exact
-> imported canonical state: `current` requires an empty ledger and gives the judged outcome ordinal
-> zero; `ready` requires exactly one aggregate-only, fixed-point, silent boot
-> `arc9-progression-refresh-v1` receipt at ordinal zero and gives the judged outcome ordinal one.
-> Both branches bind the atomic old-receipt clear, replacement base revision, the fixture's exact
-> one receipt-free product/bootstrap revision with unchanged ordinal, exact receipt witness,
-> seed/draw parity, unrelated-state stability and immediate successor; no arbitrary optional prefix
-> is accepted. The retained chronology is staged 7 → replacement 8 → bootstrap 9 → Arc 9 receipt
-> 0/revision 10 → Smoke receipt 1/revision 11. Atlas authorization separately proves the semantic
-> world row and its nested native Travel button, including after reload. Trusted pointer/keydown
-> receipts bind the exact native button, `data-atlas-travel`, parent `data-aid`, role and coordinates
-> before any dependent navigation wait begins; a red prerequisite stops once at its exact diagnosis
-> rather than cascading into a timeout. Guide text controls mutate the exact rendered node or force
-> its real publication owner to publish a fresh exact identity before judgment; mutating only source
-> strings while reading stale DOM is instrument failure.
+> Native trace-v3 replaces the lossy F4 summary: it inventories every readwrite first observed before
+> replacement completion and requires exactly one eight-store IndexedDB replacement. It freezes at
+> that boundary before the required later lease-release CAS, publishes only at transaction
+> settlement and observes every available object-store request method and index access, then binds
+> the exact 13-call get/clear/put/delete order, keys,
+> arguments, empty index inventories, keyPath/auto-increment shape, native request results,
+> revision/lease fences, rows, fixture/legacy mirrors and journals; hidden add/cursor/index work is
+> red, as are successful pre-completion subset/superset side transactions; the post-completion
+> lease-release control stays green. Expectation-v2 still selects `current`
+> versus `ready` independently and preserves the staged 7 → replacement 8 → bootstrap 9 → Arc 9 receipt
+> 0/revision 10 → Smoke receipt 1/revision 11 ready chronology. Its strict production-codec
+> projection SHA-256 is `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`:
+> only the bounded export anchor and exact conquest/mined-world ages may move; saved-route, Atlas and
+> every other product field remain exact. Red setup stops before import, red prefix stops before its
+> diagnostic outcome, and red outcome/control stops hide and Arc 3. Focused
+> `tests/slicesmoke-f4-replacement-contract.test.ts` and the e4f5 replay
+> also bind a stopped/settled exact-document heartbeat before staging/arming and are green. No sleep,
+> retry, timeout increase, rebaseline or product behavior change is used.
 
 > **Current local Arc 5/6/7/8/9 successor (2026-08-29; browser-free evidence only):** the verified
 > real-fauna Compendium detail now exposes four exact-instance companion writers: Feed, one-draw
@@ -3003,6 +3010,7 @@ node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_
 
 | Tool | Role |
 |---|---|
+| **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |
 | `node tools/tracked-input-preflight.mjs --selftest` / `node tools/tracked-input-preflight.mjs` | Mutation-controls the tracked-only boundary, then—only from a clean committed candidate—exports the exact index, installs in isolation and executes the complete hosted browser-free/static command plan with start/end source stability. This is the mandatory preauthorization rehearsal, not hosted or browser evidence. |
 | `npx vitest run tests/current-producer-authorities.test.ts` / `node tools/print-producer-authorities.mjs` | Before browser installation or campaign work, performs one standard app build under the shared workspace lock and compares SceneMemory plus Compendium's live budget records directly to independently derived current source/dist authorities. The test is automatically included in `npm test`; source, build, forged duplicate-constant, recomputed index and recomputed owner mutants must fail with exact mismatch paths. The printer reports those paths and exits nonzero on any mismatch. It never rewrites budgets or historical samples and is not a browser certificate. |
 | **Historical Final11 campaign evidence** | Signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc` passed Layout 787/787, SceneMemory 42/42, Compendium 78/78 with six PNGs, Slice with zero findings/ten PNGs and all 12 Glass viewports with zero findings or instrument failures; every stage ran once and passed named verification. Recovery ran once for 1,291,034 ms and passed all 15 observation outcomes/309 samples, the uninterrupted 20-minute window, exact next-cycle boundary and recovered UI. Its final assessor failed only `activePlayProjection` and `closeCheckpoint`; cleanup passed and no retry occurred. Final11 is immutable, instrument-red rather than product-red, and not a Recovery certificate. Exact carriers are in `audits/README.md`. |

@@ -338,22 +338,33 @@
 > so Slice → Glass → Recovery, HUMAN, hosted, merge, release/version and deployment remain open.
 > Edge point version is provenance only and never triggers rebaseline or threshold movement.
 
-> **Exact `ae2a002…` successor evidence and bounded instrument repair:** Compendium passed 78/78
-> once/no-retry, then Slice `20260830132231723-50968-0e9bd00aee77` stopped terminal red once/no-
-> retry with eight instrument findings; Glass and Recovery did not run. The retained F4 finding
-> requires an independently selected replacement prefix: an imported aggregate fixed point leaves
-> the new ledger empty for the judged ordinal-zero outcome, while a projection that is `ready`
-> permits exactly one aggregate-only, silent, fixed-point Arc 9 boot receipt at ordinal zero before
-> the judged ordinal-one outcome. The old expedition receipt must still be atomically cleared, and
-> the fixture's one independently expected receipt-free product/bootstrap commit must occur at
-> replacement revision +1 without advancing ordinal; ready Arc 9 follows at revision +2. Exact
-> revision, seed/draw, witness, state-delta and adjacency controls remain fail-closed. Atlas
-> now judges its semantic source row separately from its nested native Travel action, including
-> reload continuity. Exact trusted pointer/keydown action-and-row receipts are proven before entering
-> dependent navigation waits, and red prerequisites terminate with their root diagnosis rather than
-> cascading into timeouts. Guide contradiction controls mutate current rendered text or republish a fresh
-> exact DOM identity; changing source strings behind an already-rendered node is not evidence. This
-> is browser-free repair scope only and does not close Slice or any `[HUMAN]`/hosted/release gate.
+> **Exact `e4f5af4…` successor evidence and bounded instrument repair:** exact signed clean source
+> `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium run
+> `20260830-pr35-slice-oracle-e4f5af4bf628-compendium-certification` 78/78 once/no-retry. Its
+> unchanged-source Slice `20260830-pr35-slice-oracle-e4f5af4bf628-slice-certification` then stopped
+> terminal red once/no-retry with four ordered scopes: F4 replacement, derivative Arc 3 Mine,
+> derivative Mine controls, and the continued Survey harness timeout. Glass and Recovery did not run
+> and have no successor authority. The three immutable gzip carriers and focused browser-free
+> `pr35-e4f5-slice-oracle-evidence-replay.test.ts` retain that exact chronology; the earlier
+> `ae2a002…` eight-scope evidence remains historical.
+>
+> The current changed-source repair uses native trace-v3 to inventory every readwrite first observed
+> before replacement completion and require exactly one settled eight-store IndexedDB replacement;
+> it then freezes before the required later lease-release CAS. It observes every
+> available object-store request method and index access, then requires the exact 13-call
+> get/clear/put/delete ledger, keys, argument/store
+> shape, empty index inventories, native request results, revision/lease fences, replacement rows
+> and journals; hidden add/cursor/index work and successful pre-completion subset/superset side
+> transactions are red, while the post-completion lease-release control stays green. Independent
+> expectation-v2 retains the current/ready boot split and binds strict production-codec projection
+> SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` while allowing only
+> the bounded export anchor and exact conquest/mined-world ages to move; route, Atlas and unrelated
+> product state remain exact. Red setup stops before import, red prefix stops before its diagnostic
+> outcome, and red outcome/control stops hide and Arc 3. Focused F4 contract and evidence-replay
+> tests also bind a stopped/settled exact-document heartbeat before staging/arming. No sleep, retry,
+> timeout increase, rebaseline or
+> product behavior change is introduced, and no Slice/Glass/Recovery, `[HUMAN]`, hosted, merge,
+> release/version or deployment gate closes.
 
 > **Status:** comprehensive planning baseline, created 2026-08-14; implementation state updated
 > 2026-08-30.
@@ -1846,6 +1857,18 @@ Auto-Extractor accrual from the prior active-play cursor, caps it by finite rese
 time as authority and reanchors newly fabricated extractors. The remaining legacy outcome call
 sites still belong to their own Arcs and cannot be claimed migrated by Inventory or Engineering.
 
+**Current Slice replacement-evidence semantics (2026-08-30):** trace-v3 proves the complete native
+replacement transaction from transaction lifecycle plus its exact request ledger; it publishes
+only on settlement and rejects split, duplicate, reordered, aborted, failed or malformed evidence.
+Expectation-v2 independently selects the current/ready prefix. Production import/export fixed-point
+tests bind strict codec-clock projection SHA-256
+`e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`: only `at` and the exact
+`conq`/`minedw` ages relative to `at` may advance inside the measured codec window, while saved-route,
+Atlas and every other product field remain exact. The focused
+`slicesmoke-f4-replacement-contract.test.ts` and immutable e4f5 evidence replay are green; red setup
+stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide
+and Arc 3. Nothing is retried.
+
 ### 4.10 Approved 2026-08-24 campaign sequencing
 
 Nick authorizes one local, commit-preserving campaign through F3, F4, the remaining Arc 0 dependency
@@ -2797,6 +2820,11 @@ restoration without allocating per-opener closures.
 - New art/audio: fixed-seed proof, phone/desktop review, and required [HUMAN] acceptance.
 - Browser/preview evidence comes from a clean exact commit with manifest/tree/lock/byte binding.
   Mutating negative-control tools never overlap browser/build/evidence processes.
+- Whole-save replacement evidence must bind one complete settled native transaction and its exact
+  request ledger, then compare an independently selected expectation-v2 prefix against the strict
+  codec-clock product projection. Each red boundary stops before its dependent mutation; historical
+  PASS/red carriers remain immutable, and no sleep, retry or version-triggered rebaseline may turn
+  them green.
 
 **Recurring code-health, optimization, and balance rail:**
 
