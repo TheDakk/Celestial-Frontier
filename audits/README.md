@@ -130,6 +130,45 @@ browser-family/version authority, product build or game byte changes. Both carri
 integrity, but neither is a clean SceneMemory certificate, named green predecessor, calibration or
 budget authority, hosted result, HUMAN approval, merge, release or deployment authority.
 
+### Clean `4f1ed65d…` fixed-second calibration — three 44/44 candidates and authority activation
+
+Clean committed source `4f1ed65db421f16386bc06a167a52a5af9dc51d3` (tree
+`e07c19e10ed1f7f1026d6d7b80d407591c353b53`) supplied exactly three independent
+fixed-second calibration candidates. Every report is schema `cf-v2-scene-memory-report/v3` with
+input `cf-v2-scene-memory-input/v4`, records the same clean commit at source begin and end, keeps
+the product build byte-identical at
+`8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254`, completed all
+browser/server/workspace-lock cleanup, and passed **44/44**. Microsoft Edge `152.0.4191.53` / CDP
+`1.3` is exact run provenance only, not a version baseline or rebaseline event.
+
+- `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CALIBRATION_CANDIDATE1_20260829.json.gz`, run
+  `20260829-pr35-fixed-second-4f1ed65-candidate1`: 786,292 raw bytes, SHA-256
+  `30863b06f0cf383518c47f3b36b87bb1b0ba38e0b3da586d96c4924e88c1c98b`; 49,848 gzip
+  bytes, SHA-256 `248286a1ddbec6b66494a31be2f58ffe05e4cc1d9d9067228191467d3f7849ac`.
+- `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CALIBRATION_CANDIDATE2_20260829.json.gz`, run
+  `20260829-pr35-fixed-second-4f1ed65-candidate2`: 786,927 raw bytes, SHA-256
+  `d60224544f44eabc512465b515623e1c87522fc2014b5ebb571b03f966ae7841`; 49,800 gzip
+  bytes, SHA-256 `03eb43e77669a11d3dbd8ab01c80ff069e5ff0fb2cc0cca0e936727be2b9ced5`.
+- `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CALIBRATION_CANDIDATE3_20260829.json.gz`, run
+  `20260829-pr35-fixed-second-4f1ed65-candidate3`: 786,955 raw bytes, SHA-256
+  `941b9e580bf744c7b5a8aca8e1edad61701227a8f7074d0bc4e9065cf73848ad`; 49,833 gzip
+  bytes, SHA-256 `f3f4f1f71c4c33cf665e24b5aa208af9b6872222988e020902a3646b9ed62788`.
+
+The phone/desktop fixed-second aggregate slopes were respectively 90,528.8 / 115,485.6,
+98,815.2 / 119,155.1 and 97,813.6 / 123,150 B/cycle. Maximum aggregate ranges across the trio
+were 296,020 B phone and 366,268 B desktop, below the unchanged 131,072 B/cycle slope and 524,288
+B range ceilings. All three carriers pass gzip integrity. They are calibration observations, not
+exact-budget certificates or serial-chain predecessors.
+
+Authority-only activation changes only collector
+identity from `aa5c3711eb21277fbf24fc539f2a4564915692259bb874aff662066d4ec67f3a` to
+`7a1dc670327fed3f04fa120a78be64a5a87227a355292f47d37353522f50d931`, producing budget
+SHA-256 `304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184`. Product build,
+input, measurements, samples and numeric ceilings remain unchanged. Its complete browser-free
+battery passed **235 files / 2,404 tests / 1 skipped**, and all three TypeScript programs passed.
+The activation is not an Edge rebaseline; one clean no-retry exact-budget certification plus named
+verification is still pending before Compendium or any later browser stage may run.
+
 ### Signed `3f69e88e…` universe-polish + bounded Arc 5 Feed certificate — complete local chain PASS
 
 Signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree

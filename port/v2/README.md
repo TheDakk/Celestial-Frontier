@@ -161,10 +161,27 @@
 > schema `cf-v2-scene-memory-profile/v2`. A live isolated **512 KiB/cycle** control made both lanes report
 > exactly **524,288 B/cycle** and released backing storage from **2,097,191** bytes to **39**.
 >
-> No numeric ceiling, Edge-family authority, product build or game byte changed. The collector's
-> producer identity did change, so this source still requires fresh clean calibration and authority
-> activation followed by one clean no-retry SceneMemory certification. Compendium and every later
-> browser stage remain skipped until that exact SceneMemory report is green and named-verified.
+> No numeric ceiling, Edge-family authority, product build or game byte changed. Clean source
+> `4f1ed65db421f16386bc06a167a52a5af9dc51d3` (tree
+> `e07c19e10ed1f7f1026d6d7b80d407591c353b53`) then supplied exactly three fixed-second
+> schema-v3/input-v4 calibration candidates on unchanged build
+> `8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254`. Runs
+> `20260829-pr35-fixed-second-4f1ed65-candidate1`, `…-candidate2` and `…-candidate3` each
+> retained clean identical source at begin/end, completed all cleanup and passed **44/44**.
+> Their phone/desktop slopes were 90,528.8 / 115,485.6, 98,815.2 / 119,155.1 and 97,813.6 /
+> 123,150 B/cycle; maximum phone/desktop ranges were 296,020 / 366,268 B. The 131,072 B/cycle
+> slope and 524,288 B range ceilings are unchanged. Exact carriers and raw/gzip hashes are indexed
+> in `audits/README.md` and the PR #35 diagnosis.
+>
+> Authority-only activation changes only collector
+> `aa5c3711eb21277fbf24fc539f2a4564915692259bb874aff662066d4ec67f3a` to
+> `7a1dc670327fed3f04fa120a78be64a5a87227a355292f47d37353522f50d931`; the activated
+> budget SHA-256 is `304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184`.
+> Its complete browser-free battery passed **235 files / 2,404 tests / 1 skipped**, and all three
+> TypeScript programs passed. Edge `152.0.4191.53` / CDP `1.3` is provenance only, never a version
+> rebaseline. Calibration does not substitute for certification: one clean no-retry exact-budget run
+> and named verification remain pending, and Compendium plus every later browser stage stay skipped
+> until then.
 
 Local SceneMemory authority uses this exact adjacent order from `port/v2`; on macOS, both
 browser-owning commands require the approved out-of-sandbox execution path. The selftest runs once
