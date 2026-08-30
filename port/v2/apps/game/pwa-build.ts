@@ -313,6 +313,11 @@ self.addEventListener('activate',(event)=>{
     if(!previous){
       if(!await preserveLiveClientBuilds(state,false))throw new Error('Refusing invalid first-install client ownership');
       await self.clients.claim();
+      /* A worker can be created after the pre-claim snapshot but before the
+         claim takes effect. Its entry loaded uncontrolled, so only this
+         post-claim reconciliation can pin its first worker-local lazy fetch
+         to the exact retained build. Activation remains the fetch barrier. */
+      if(!await preserveLiveClientBuilds(state,false))throw new Error('Refusing invalid post-claim client ownership');
     }
     await broadcast(statusMessage(state,'active'));
   })());

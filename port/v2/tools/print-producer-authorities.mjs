@@ -144,6 +144,10 @@ function compendiumAuthorities(fixture) {
       sha256: hashFile(path.join(distDir, 'index.html')),
     }),
     ...findCandidateSpeciesArtBuildGraph(distDir),
+    serviceWorker: Object.freeze({
+      relativePath: 'service-worker.js',
+      sha256: hashFile(path.join(distDir, 'service-worker.js')),
+    }),
   });
   const producer = compendiumProducerAuthority(graph);
   if (producer === null) throw new Error('Compendium producer authority is unavailable');

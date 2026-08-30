@@ -234,11 +234,11 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d';
+  'e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97';
 const EXPECTED_OUTCOME_CONTRACT_AUTHORITY =
-  'abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138';
+  '2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21';
 const EXPECTED_COLLECTOR_AUTHORITY =
-  'b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e';
+  '2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237';
 const HISTORICAL_VISUAL_KEY_INSTRUMENT_FAILURE = Object.freeze({
   file: 'ARC1C_COMPENDIUM_PR35_PLANETSIDE_VISUALKEY_INSTRUMENT_FAILURE_20260830_B2EECFB.json.gz',
   runId: '20260830-pr35-settlement-evidence-b2eecfbd9379-compendium-certification',
@@ -308,26 +308,30 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  '0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13';
+  '2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
-  schema: 'cf-v2-compendium-producer-authority/v1',
+  schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: '184b73ee41aa91fd13ba681ca07caad99820621675a7db736084a4c7a24d0b9d',
+      sha256: '85d018e14af75479b6d6b4ee27d2a51484f85c5acbde2a0f07cce462b067e881',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/main-CLGcJIQS.js',
-      sha256: 'dd407ec15819851084d4df1aa36e6bc8f5c23650cd9d68c82ee756e564b90fda',
+      relativePath: 'assets/main-DLGn5scU.js',
+      sha256: '5db21431a40fbd1c8d8676a382cf973bf7e2a0007d9701f5b4f7318317c82103',
     }),
     worker: Object.freeze({
-      relativePath: 'assets/species-art.worker-szNwNYEk.js',
-      sha256: 'cebbbb892d71828eef1b5d90e2c601f0f197ba01d080ceb9050ee1f252848cdf',
+      relativePath: 'assets/species-art.worker-Cy4x5RO-.js',
+      sha256: '901c40143b09d43241fb311a877c422df6fb5d997350cf0da91220ef8a973c1e',
     }),
     painter: Object.freeze({
-      relativePath: 'assets/speciespainter-EmdmLeiA.js',
-      sha256: '570cb72699a577bda85502be46b54bcbdec9ffa41df5702bd5cb865f4bf08eba',
+      relativePath: 'assets/speciespainter-DJWZf0vw.js',
+      sha256: 'de44ec89c54ab8e8d168e369bfdada554a08a9af4fd02f2ca777b7430d2b6686',
+    }),
+    serviceWorker: Object.freeze({
+      relativePath: 'service-worker.js',
+      sha256: '81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14',
     }),
   }),
 });

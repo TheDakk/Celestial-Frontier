@@ -47,6 +47,7 @@ import {
   compendiumMeasurementAuthority, compendiumProducerAuthority,
   compendiumBrowserAuthorityMatches, compendiumBudgetBrowserAuthority,
   validCompendiumBrowserAuthority,
+  compendiumThumbSettlementProductErrorDiagnosis,
   compendiumThumbSettlementReceiptToken,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
   compendiumRawSnapshotExpression,
@@ -449,6 +450,10 @@ function candidateProducerAuthorityFromDist() {
       relativePath: 'index.html', sha256: hashFile(path.join(distDir, 'index.html')),
     }),
     ...findCandidateSpeciesArtBuildGraph(distDir),
+    serviceWorker: Object.freeze({
+      relativePath: 'service-worker.js',
+      sha256: hashFile(path.join(distDir, 'service-worker.js')),
+    }),
   });
   const authority = compendiumProducerAuthority(graph);
   assert(authority, 'candidate producer authority is unavailable');
@@ -904,6 +909,12 @@ export function candidateThumbSettlementExpression(
     const lastEvent=lazy?.lastEvent&&typeof lazy.lastEvent==='object'?{producerEpoch:count(lazy.lastEvent.producerEpoch),
       workerInstanceId:count(lazy.lastEvent.workerInstanceId),jobId:count(lazy.lastEvent.jobId),
       kind:text(lazy.lastEvent.kind,64),event:text(lazy.lastEvent.event,64)}:null;
+    const lastError=lazy?.lastError===null?null:lazy?.lastError&&typeof lazy.lastError==='object'?{
+      producerEpoch:count(lazy.lastError.producerEpoch),workerInstanceId:count(lazy.lastError.workerInstanceId),
+      jobId:lazy.lastError.jobId===null?null:count(lazy.lastError.jobId),
+      kind:lazy.lastError.kind===null?null:text(lazy.lastError.kind,64),
+      stage:text(lazy.lastError.stage,64),code:text(lazy.lastError.code,48),
+      message:text(lazy.lastError.message,512)}:undefined;
     const phases=lazy?.phases&&typeof lazy.phases==='object'?{importStarts:count(lazy.phases.importStarts),
       importCompletes:count(lazy.phases.importCompletes),thumbJobStarts:count(lazy.phases.thumbJobStarts),
       thumbRenderCompletes:count(lazy.phases.thumbRenderCompletes),thumbEncodeStarts:count(lazy.phases.thumbEncodeStarts),
@@ -928,8 +939,8 @@ export function candidateThumbSettlementExpression(
       art:art?{available:true,schema:text(art.schema),queuedJobs:count(live?.queuedJobs),
         activeJobs:count(live?.activeJobs)}:{available:false,schema:null,queuedJobs:null,activeJobs:null},
       lazyArt:lazy?{available:true,schema:text(lazy.schema),state:text(lazy.state,64),
-        importStarts:count(lazy.importStarts),identity,lastEvent,phases,results,errors}
-        :{available:false,schema:null,state:null,importStarts:null,identity:null,lastEvent:null,
+        importStarts:count(lazy.importStarts),identity,lastEvent,lastError,phases,results,errors}
+        :{available:false,schema:null,state:null,importStarts:null,identity:null,lastEvent:null,lastError:null,
           phases:null,results:null,errors:null},
       worker:worker?{available:true,live:typeof worker.live==='boolean'?worker.live:null,
         starts:count(worker.starts),ready:count(worker.ready),disposals:count(worker.disposals),
@@ -1786,6 +1797,16 @@ async function collectProfile({
             error.compendiumObservation = observation;
             throw error;
           }
+          if (decision.status === 'product-error') {
+            activeThumbnailSettlement = observedTail;
+            assert(validCompendiumActiveThumbSettlement(activeThumbnailSettlement, {
+              profile, pageAuthority: authority, browserProduct: browser.browser.product, planIndex,
+            }), `${profile} ${phaseLabel}: terminal thumbnail settlement tail is invalid`);
+            throw new CandidateObservationError(
+              'product-fail',
+              compendiumThumbSettlementProductErrorDiagnosis(profile, phaseLabel),
+            );
+          }
           if (decision.status === 'ready') {
             const receipt = Object.freeze({
               schema: THUMB_SETTLEMENT_RECEIPT_SCHEMA,
@@ -2466,6 +2487,8 @@ async function collectProfile({
         sha256: candidateSpeciesArt.painter.sha256,
         workerPath: candidateSpeciesArt.worker.relativePath,
         workerSha256: candidateSpeciesArt.worker.sha256,
+        serviceWorkerPath: candidateSpeciesArt.serviceWorker.relativePath,
+        serviceWorkerSha256: candidateSpeciesArt.serviceWorker.sha256,
         ownership: 'dedicated-worker-dynamic-import',
         matches: lazySpeciesResources,
         endMatches: lazySpeciesResourcesEnd,
@@ -3393,10 +3416,10 @@ async function runGate({ calibrate }) {
       }
     }
     const partial = error.compendiumPartialEvidence || null;
-    const classification = partial?.partialFailure?.classification === 'product-unanswerable'
-      ? 'product-unanswerable' : 'instrument';
-    const status = classification === 'product-unanswerable'
-      ? 'product-unanswerable' : 'instrument-fail';
+    const classification = ['product-unanswerable', 'product-fail']
+      .includes(partial?.partialFailure?.classification)
+      ? partial.partialFailure.classification : 'instrument';
+    const status = classification === 'instrument' ? 'instrument-fail' : classification;
     const partialFailure = partial?.partialFailure || {
       schema: PARTIAL_FAILURE_SCHEMA,
       classification: 'instrument',
@@ -3417,11 +3440,11 @@ async function runGate({ calibrate }) {
       ...running, status, endedAt: endedAt.toISOString(),
       durationMs: endedAt.getTime() - startedAt.getTime(),
       source: { begin: sourceBegin, end: sourceEnd }, browser: browser?.browser || null,
-      outcomes: [], findings: [`${classification === 'product-unanswerable' ? 'product' : 'instrument'}: ${error.message}`],
+      outcomes: [], findings: [`${classification === 'instrument' ? 'instrument' : 'product'}: ${error.message}`],
       profiles, reviewPacket, partialFailure, blockedOutcomes: [...EXPECTED_OUTCOMES],
     };
     provisionalReport = report;
-    provisionalExitCode = status === 'product-unanswerable' ? 1 : 2;
+    provisionalExitCode = status === 'instrument-fail' ? 2 : 1;
   }
   const finalized = await finalizeCompendiumLifecycle({
     provisionalReport, provisionalExitCode,
@@ -3441,7 +3464,7 @@ async function runGate({ calibrate }) {
     console.log(`  candidate measurements: ${successSample.path}`);
   }
   const terminal = `COMPENDIUM MEMORY: ${finalReport.status.toUpperCase()} — ${runId}`;
-  if (['instrument-fail', 'product-unanswerable'].includes(finalReport.status)) {
+  if (['instrument-fail', 'product-unanswerable', 'product-fail'].includes(finalReport.status)) {
     console.error(terminal);
     for (const finding of finalReport.findings) console.error(`  ${finding}`);
   } else {

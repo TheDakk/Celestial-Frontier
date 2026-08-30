@@ -106,10 +106,13 @@ function createWorkerHarness(
     clientIds?: readonly string[];
     clientTypes?: Readonly<Record<string, 'window' | 'worker' | 'sharedworker'>>;
     matchAllOmittedClientIds?: readonly string[];
+    revealClientIdsAtClaim?: readonly string[];
+    sourceTransform?: (source: string) => string;
   }> = Object.freeze({}),
 ): WorkerHarness {
   const workerRevision = options.workerRevision ?? pwaWorkerRevisionV1();
-  const source = __pwaBuildTestOnly.serviceWorkerSource('/', assets, workerRevision);
+  const generatedSource = __pwaBuildTestOnly.serviceWorkerSource('/', assets, workerRevision);
+  const source = options.sourceTransform?.(generatedSource) ?? generatedSource;
   const listeners = new Map<string, (event: Record<string, unknown>) => void>();
   const caches = options.caches ?? new MemoryCacheStorage();
   const fetches: string[] = [];
@@ -117,6 +120,7 @@ function createWorkerHarness(
   const replies: unknown[] = [];
   const state = { skipWaitingCount: 0, claimCount: 0 };
   const matchAllOmittedClientIds = new Set(options.matchAllOmittedClientIds ?? []);
+  const revealClientIdsAtClaim = new Set(options.revealClientIdsAtClaim ?? []);
   const clients = (options.clientIds ?? Object.freeze(['client-current'])).map((id) => ({
     id,
     type: options.clientTypes?.[id] ?? 'window',
@@ -126,7 +130,10 @@ function createWorkerHarness(
     location: new URL('https://game.test/service-worker.js'),
     registration: { scope: 'https://game.test/' },
     clients: {
-      async claim() { state.claimCount++; },
+      async claim() {
+        state.claimCount++;
+        for (const id of revealClientIdsAtClaim) matchAllOmittedClientIds.delete(id);
+      },
       async get(id: string) { return clients.find((client) => client.id === id); },
       async matchAll(query: Readonly<{ type?: string }> = Object.freeze({})) {
         const visible = clients.filter((client) => !matchAllOmittedClientIds.has(client.id));
@@ -596,6 +603,54 @@ describe('Celestial Frontier exact-build PWA', () => {
       }) as Response;
       expect(await lazyChunk.text()).toBe('worker-lazy-v1');
     }
+  });
+
+  it('reconciles a worker created between the first-install snapshot and clients.claim', async () => {
+    const rows = {
+      '/index.html': 'index-v1',
+      '/assets/worker-v1.js': 'worker-v1',
+      '/assets/worker-lazy-v1.js': 'worker-lazy-v1',
+    };
+    const raceOptions = {
+      clientIds: ['window-client', 'claim-gap-worker'],
+      clientTypes: { 'claim-gap-worker': 'worker' as const },
+      matchAllOmittedClientIds: ['claim-gap-worker'],
+      revealClientIdsAtClaim: ['claim-gap-worker'],
+    } as const;
+    const repaired = createWorkerHarness(assetsFor(rows), rows, raceOptions);
+    await repaired.dispatch('install');
+    await repaired.dispatch('activate');
+    expect(repaired.self.claimCount).toBe(1);
+    expect(await readClientPin(repaired.caches, 'claim-gap-worker')).toBe(repaired.buildId);
+    const repairedLazy = await repaired.dispatch('fetch', {
+      clientId: 'claim-gap-worker',
+      request: {
+        method: 'GET', url: 'https://game.test/assets/worker-lazy-v1.js',
+        mode: 'cors', destination: 'script',
+      },
+    }) as Response;
+    expect(await repairedLazy.text()).toBe('worker-lazy-v1');
+
+    const postClaimReconciliation = "      if(!await preserveLiveClientBuilds(state,false))throw new Error('Refusing invalid post-claim client ownership');\n";
+    const mutant = createWorkerHarness(assetsFor(rows), rows, {
+      ...raceOptions,
+      sourceTransform: (source) => {
+        expect(source.split(postClaimReconciliation)).toHaveLength(2);
+        return source.replace(postClaimReconciliation, '');
+      },
+    });
+    await mutant.dispatch('install');
+    await mutant.dispatch('activate');
+    expect(await readClientPin(mutant.caches, 'claim-gap-worker')).toBeNull();
+    const rejectedLazy = await mutant.dispatch('fetch', {
+      clientId: 'claim-gap-worker',
+      request: {
+        method: 'GET', url: 'https://game.test/assets/worker-lazy-v1.js',
+        mode: 'cors', destination: 'script',
+      },
+    }) as Response;
+    expect(rejectedLazy.status).toBe(503);
+    expect(await rejectedLazy.text()).toBe('This document has no retained Celestial Frontier build.');
   });
 
   it('keeps a prior-owned worker entry and lazy chunk on the exact prior build', async () => {

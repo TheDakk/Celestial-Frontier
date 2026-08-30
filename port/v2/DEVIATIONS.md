@@ -135,6 +135,52 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   Recovery successor. It changes no automatic-retry policy, memory ruler, cache policy or browser-
   version baseline; the preserved `3fb958f…` and `b2eecfbd…` stops remain historical instrument evidence.
 
+  Exact signed source `830e601b8f16092d6f9193ecde329cfefd279bcd` then ran
+  `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` exactly once with no retry
+  under Edge `152.0.4191.53` / CDP `1.3`. The full long `visualKey` evidence was accepted, proving
+  the observation-v2 projection repair. The run stopped terminal `instrument-fail` after **33,217
+  ms** at phone `veteran-earth-planetside`; zero outcomes were judged, all **78** were blocked and
+  no successor ran. The first lazy painter import had actually failed, but the retained v1 worker
+  diagnostics discarded its exact error code/message, so this carrier does not invent them. Exact
+  immutable evidence is
+  `audits/ARC1C_COMPENDIUM_PR35_WORKER_IMPORT_INSTRUMENT_FAILURE_20260830_830E601.json.gz`:
+  **7,357 gzip bytes** / SHA-256
+  `90d61baeee297041a2afc7bf776fb504c5ac803140cf0613785859714c5f2aa9`, **54,172 raw bytes** /
+  SHA-256 `ef3cec79cf181323705d8a9eff82d9bb8023275590a23a0589515248e626d6b5`, independently replayed by
+  `port/v2/tests/compendium-worker-import-failure-carrier.test.ts`.
+
+  Deterministic harness evidence reproduces the code-supported first-activation claim-gap cause and
+  exact 503 `This document has no retained Celestial Frontier build.` The local product repair
+  re-runs all-client pin reconciliation inside the post-claim activation barrier. Species
+  diagnostics v2 retains one bounded trusted `lastError`; later adapter protocol/external fatals
+  clear stale `lastError`, while a replacement producer clears both `lastEvent` and `lastError` and
+  trusted worker-fatal evidence remains.
+  Compendium observation v3 classifies a current trusted product error immediately as `product-fail`
+  with no retry only when broker, art, lazy-worker and worker diagnostics are complete and the art/
+  lazy schemas are exact. Malformed worker-error ownership is rejected unless `jobId`, `kind` and
+  `key` are either all null or all present; recovered cumulative telemetry is nonterminal.
+
+  Independent review closure makes Compendium producer authority history-safe schema v2: current
+  authority binds generated `service-worker.js` plus index, owner, worker and painter, a service-
+  worker mutant changes authority, and historical v1 reports still replay unchanged. Current
+  measurement / outcome contract / collector / producer-v2 SHA-256 is
+  `e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
+  `2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+  `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+  `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; generated service-worker
+  SHA-256 is `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
+  SceneMemory current build authority is
+  `49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; the exact `2046000…`
+  certificate remains immutable historical evidence.
+
+  Current browser-free closure is green at **589** Compendium selftest controls, worker **20/20**,
+  the focused authority/PWA/worker/budget/carrier run **96/96**, and all three TypeScript programs.
+  The canonical **73-bullet** release inventory is preserved, and the full browser-free suite passes
+  **238 files / 2,423 passed / 1 skipped**. This is local repair only,
+  not a fresh Compendium certificate. Next: sign a clean head, then make one new no-retry
+  Compendium attempt. The fixed Compendium ruler, numeric ceilings,
+  historical samples and thresholds remain unchanged.
+
 - ★ **D-ARC5-LIVE — four bounded exact-instance companion writers.** Verified real-fauna
   Compendium detail exposes Feed, one-draw nonlethal Breed with active-play Recovery, identity-only
   Rename and role-only Field Scout. All four use the compact V2 exact-five successor plus one F4/F3

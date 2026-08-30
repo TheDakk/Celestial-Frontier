@@ -42,9 +42,9 @@ const HISTORICAL_PRE_ACTIVATION_BUDGET_SHA256 =
 const HISTORICAL_ACTIVATED_BUDGET_SHA256 =
   'e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375';
 const CURRENT_PRE_ACTIVATION_BUDGET_SHA256 =
-  '054457046e45fc6bd7bc7a9520923c37c3583f9ba28ccab6ecd396a54f362a72';
+  'b7ca21c7b0fdebd54b9ea503ad11a5ac9242e68125b0a609fe2fdcbf23a3d5c5';
 const CURRENT_ACTIVATED_BUDGET_SHA256 =
-  '304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184';
+  '82166755fac8eea288090bf58845c629f416dd4749ef927327c5f4d346cb539f';
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
 const CANDIDATES = [
   {
@@ -138,7 +138,7 @@ const FIXED_SECOND_CERTIFICATION = Object.freeze({
   rawSha256: 'c43bda32846fe4539d9136bac6d0f002af68b259c01ec43beb447a12dbad5c4d',
   gzipBytes: 49_762,
   gzipSha256: '42ee43f8cf7250a88a0498da62dedb492843be775535a4caa0c4cd6a4229f4d0',
-  budgetSha256: CURRENT_ACTIVATED_BUDGET_SHA256,
+  budgetSha256: '304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184',
 });
 const CURRENT_INPUT_BROKEN_BASELINE = Object.freeze({
   runId: '20260827-phase4-successor-scenemem',
@@ -333,7 +333,7 @@ const CALIBRATION_PRODUCER_AUTHORITY = Object.freeze({
   pixiBatchTextureArray: '95ea401f9f05a933f17c9a327b94109bfcc46b0a21cc59789a66537a5b62deb3',
   sceneText: '7ea78c599fed72ab1ba65991270b72d642f6ec2f9768f63ad64d280ce9147731',
 });
-const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
+const FIXED_SECOND_PRODUCER_AUTHORITY = Object.freeze({
   ...CALIBRATION_PRODUCER_AUTHORITY,
   collector: '7a1dc670327fed3f04fa120a78be64a5a87227a355292f47d37353522f50d931',
   verdictContract: '7776b3dd3d2009107f14f71526c375c2ed821d9f5f4f4ec984f0351e24ed1184',
@@ -343,6 +343,10 @@ const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
   gameHtml: '124376463bf5c5931bbbc73b31f480519aca41ef9fed2b479363034a098b3868',
   gameMain: '0a54536bfc363b12c668aa276a2987e98bba32e41c5dbf546609d621972a840c',
   shipyardPreview: '8b9d4196254f133faa01878915ad4501b257284efef6ca729442ca2e81eb41d8',
+});
+const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
+  ...FIXED_SECOND_PRODUCER_AUTHORITY,
+  buildDist: '49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc',
 });
 
 const SELECTED_PROFILES = Object.freeze({
@@ -867,16 +871,16 @@ describe('Arc 1C scene-memory active budget', () => {
       });
       expect(report.fixture).toEqual({
         count: 1500,
-        rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
+        rowsSha256: FIXED_SECOND_PRODUCER_AUTHORITY.fixtureRows,
       });
       expectExactBuildInventory(report, FIXED_SECOND_BUILD);
       expect(report.inputs.budget).toBeNull();
       expect(report.budget).toEqual({ schema: null, path: null, sha256: null });
       expect(Object.keys(report.inputs).sort()).toEqual(
-        [...Object.keys(EXPECTED_PRODUCER_AUTHORITY), 'budget'].sort(),
+        [...Object.keys(FIXED_SECOND_PRODUCER_AUTHORITY), 'budget'].sort(),
       );
-      expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
-        EXPECTED_PRODUCER_AUTHORITY,
+      expect(authorityProjection(report.inputs, FIXED_SECOND_PRODUCER_AUTHORITY)).toEqual(
+        FIXED_SECOND_PRODUCER_AUTHORITY,
       );
       expect(report.browser).toEqual(FIXED_SECOND_EDGE_53_PROVENANCE);
       expect(sceneMemoryBrowserAuthorityMatches(report.browser, EXPECTED_BROWSER_AUTHORITY))
@@ -990,7 +994,7 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(sceneMemoryBrowserAuthorityMatches(report.browser, EXPECTED_BROWSER_AUTHORITY)).toBe(true);
     expect(report.fixture).toEqual({
       count: 1_500,
-      rowsSha256: EXPECTED_PRODUCER_AUTHORITY.fixtureRows,
+      rowsSha256: FIXED_SECOND_PRODUCER_AUTHORITY.fixtureRows,
     });
     expectExactBuildInventory(report, FIXED_SECOND_BUILD);
     expect(report.budget).toEqual({
@@ -999,12 +1003,13 @@ describe('Arc 1C scene-memory active budget', () => {
       sha256: FIXED_SECOND_CERTIFICATION.budgetSha256,
     });
     expect(report.inputs.budget).toBe(FIXED_SECOND_CERTIFICATION.budgetSha256);
-    expect(sha256(fs.readFileSync(budgetPath))).toBe(FIXED_SECOND_CERTIFICATION.budgetSha256);
+    expect(sha256(fs.readFileSync(budgetPath)))
+      .not.toBe(FIXED_SECOND_CERTIFICATION.budgetSha256);
     expect(Object.keys(report.inputs).sort()).toEqual(
-      [...Object.keys(EXPECTED_PRODUCER_AUTHORITY), 'budget'].sort(),
+      [...Object.keys(FIXED_SECOND_PRODUCER_AUTHORITY), 'budget'].sort(),
     );
-    expect(authorityProjection(report.inputs, EXPECTED_PRODUCER_AUTHORITY)).toEqual(
-      EXPECTED_PRODUCER_AUTHORITY,
+    expect(authorityProjection(report.inputs, FIXED_SECOND_PRODUCER_AUTHORITY)).toEqual(
+      FIXED_SECOND_PRODUCER_AUTHORITY,
     );
 
     expect(report.contractInput.schema).toBe('cf-v2-scene-memory-input/v4');

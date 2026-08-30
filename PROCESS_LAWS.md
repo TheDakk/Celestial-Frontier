@@ -30,6 +30,70 @@ roughly by how often they have bitten.
 
 ---
 
+⚠⚠ **FIRST-ACTIVATION OWNERSHIP MUST BE RECONCILED AFTER `clients.claim()` IN THE SAME
+`waitUntil`; A PRE-CLAIM SNAPSHOT CANNOT OWN A REALM CREATED IN THE CLAIM GAP** (2026-08-30).
+Exact signed source `830e601b8f16092d6f9193ecde329cfefd279bcd` ran Compendium once with no retry as
+`20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification`. It stopped after **33,217 ms**
+at phone veteran-Earth Planetside settlement with zero outcomes and all 78 blocked. The long visual-
+key contract worked, but the first lazy species painter import failed; the then-current v1 Window
+diagnostics retained the import stage/count while discarding the worker's code and message. Preserve
+that observation-v2 report and carrier unchanged: the original message cannot be reconstructed from
+evidence that never retained it.
+
+The deterministic PWA harness reproduced the code-supported cause. First activation snapshotted
+clients before `clients.claim()`; a worker created in that gap loaded its entry uncontrolled, then
+became service-worker-controlled at claim without an exact retained-build pin. Its first lazy import
+therefore received the exact **503** `This document has no retained Celestial Frontier build.` A
+worker entry created after claim already pins through `resultingClientId`, which does not repair the
+gap worker. Re-run the complete all-client `preserveLiveClientBuilds` reconciliation after
+`clients.claim()` inside the same activation `waitUntil`. The repaired harness must pin and serve the
+gap worker's exact lazy bytes, a mutant without the second reconciliation must recreate that exact
+503, post-claim worker creation must retain its entry-to-lazy pin, and unrelated unpinned requests
+must remain red. Claim is a realm-ownership transition, not proof that the pre-claim inventory is
+still complete.
+
+The current history-safe producer record is `cf-v2-compendium-producer-authority/v2`, SHA-256
+`2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. It binds the exact
+generated `service-worker.js` (`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`)
+beside index, owner, species worker and painter. Deleting the post-claim repair therefore changes
+producer authority instead of leaving Compendium apparently source-identical. Historical v1
+producer records remain replayable under their own schema and exact inputs; never rewrite or
+reinterpret them as v2.
+
+⚠⚠ **AN ANSWERABLE, AUTHORITY-VALID PRODUCT FAILURE IS TERMINAL PRODUCT EVIDENCE, NOT
+PENDING WORK OR AN INSTRUMENT TIMEOUT** (2026-08-30). Species-art diagnostics now require the
+nullable immutable `lastError` member in schema `cf-v2-species-art-worker-diagnostics/v2`, carrying
+exactly `{producerEpoch,workerInstanceId,jobId,kind,stage,code,message}`; the message is bounded to
+1–512 characters, and only a trusted, protocol-valid worker error may populate the record. A local
+constructor throw or malformed/untrusted worker message may change current state but must not invent
+that cause-bearing evidence. Worker error ownership is well-formed only when `jobId`, `kind` and
+`key` are either all null or all present and valid. A replacement producer clears both `lastEvent`
+and `lastError`; a later adapter-protocol failure or external/untrusted fatal clears `lastError` too,
+while an exact trusted worker fatal retains its validated record. Producer identity alone cannot
+make stale same-worker evidence current.
+
+Compendium live observation v3 validates authority and exact shape before it classifies product
+state. It refuses terminal product attribution unless broker, worker, exact art schema
+`cf-v2-species-art-diagnostics/v1` and exact lazy schema
+`cf-v2-species-art-worker-diagnostics/v2` are all present. Only then is a current error state with a
+trusted `lastError` matching the current producer immediately `product-error`; the collector
+preserves that terminal tail as `product-fail` with no sleep, repoll or retry. Historical error
+counters or an older `lastError` are cumulative telemetry: if the current producer is coherent and
+`ready`, they remain nonterminal recovery evidence. Do not wait for a known answerable failure to
+become a timeout, and do not let missing authority or stale cumulative telemetry manufacture a
+current failure.
+
+The review-closed browser-free boundary is 589 `compendiummem:selftest` controls, worker loader/
+protocol 20/20, the focused authority/PWA/worker/budget/carrier run 96/96, and green TypeScript
+programs. Current Scene build authority is
+`49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; current Compendium
+measurement / contract / collector authorities are
+`e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
+`2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
+The fixed ruler and every ceiling remain unchanged. Those checks close the local repair only; a
+fresh exact Compendium certificate remains open.
+
 ⚠⚠ **A CLOSED PRESENTATION OWNS NO DETACHED DOM OR LISTENERS; ASYNC COPY MUST
 REPROVE ITS OPEN GENERATION** (2026-08-29). Hiding a route-invalid Survey card left its controller
 models, action fences, context and detached descendants alive, while several Compendium and Survey
