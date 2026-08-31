@@ -1,11 +1,12 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-31 current signed Compendium Back failure-evidence boundary:** exact SSH-signed
-> implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
-> `f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) contains the collector-only raw
-> failure-cleanup repair and all four historical 3ca carriers. Current HEAD is its signed
-> documentation-only descendant; its SHA is intentionally not embedded here, and `openai/mac` is
-> three commits ahead of `origin/openai/mac`. No fresh browser certificate exists for it.
+> **2026-08-31 current terminal-green Compendium Back presentation boundary (supersedes older
+> “current” labels below):** exact clean
+> SSH-signed source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
+> `e05e48c807597e86530e9b258a11e93d9533cd3c`, parent `4ea8198c…`) contains and certifies the raw
+> failure-cleanup repair. Current HEAD is its signed evidence/docs-only descendant; its SHA is
+> intentionally not embedded here, and `openai/mac` is four commits ahead of `origin/openai/mac`.
+> The descendant adds only the four exact 9b37 carriers and synchronized references.
 >
 > If native Back input failed after witness arming, the former failure path released the listener
 > and carrier through the normal tracked observation wrapper. Successful cleanup could therefore
@@ -23,11 +24,13 @@
 > producer remain unchanged. Product markup,
 > focus/scroll behavior, CSS, ±2px tolerance, rulers/ceilings, timeouts, retry and browser-version
 > policy are unchanged. Exact `3ca7d30…` presentation evidence below is historical for its own
-> bytes. The then-dirty implementation candidate passed the complete browser-free develop profile at
-> **254/254 files / 2,567 passed / 1 skipped**, with all TypeScript, art, route and specification
-> owners green; that result remains classified as dirty-source evidence. The current signed source
-> still needs a fresh exact-clean-source Compendium → Slice → Glass chain. No hosted run, retry,
-> merge, release or deployment is authorized.
+> bytes. Exact clean 9b37 passed the complete develop profile at **254/254 files / 2,567 passed / 1
+> skipped** and every required browser-instrument selftest. On unchanged source, Compendium passed
+> **78/78** with one trusted witness/cleanup per profile and desktop `-46 / -46 / -46` plus phone
+> `-2 / -2 / -2`; develop Slice passed with zero findings and ten screenshots; full Glass passed
+> **12/12** viewports and **104/104** controls with zero findings or instrument failures. Every stage
+> ran once/no-retry and every named verifier passed. Exact run IDs, carrier sizes and hashes are in
+> `audits/README.md`. No hosted run, retry, merge, release or deployment is authorized.
 
 > **2026-08-31 historical exact-source terminal-green local Compendium Back presentation boundary:**
 > exact clean
@@ -46,7 +49,7 @@
 > the **±2px** tolerance, numeric rulers/ceilings, historical samples, timeouts, one-click/no-retry
 > rule and browser-version policy are unchanged. The four exact carriers are indexed in
 > `audits/README.md`. Those four carriers remain historical exact-source evidence and do not certify
-> the signed 4ea collector or its documentation descendant; they are committed by 4ea. No hosted
+> current signed 9b37 or its evidence/docs descendant; they are committed by 4ea. No hosted
 > run, merge, release or deployment is authorized.
 
 > **2026-08-31 current Compendium Back presentation-evidence boundary:** PR #35 GitHub run

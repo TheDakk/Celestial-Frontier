@@ -12,26 +12,23 @@ passed, then the one-attempt phone SceneMemory product stage stopped at `Earth p
 rejected`. Run `33437596315` tested head `8eb0b1bd901c7b36d8900f43f4de7d3a54158a0c` and stopped
 terminal-red after **37m14s**: every pre-Compendium gate passed, then Compendium passed **77/78**
 with sole red `desktop/back-restores-focus`; Slice and Glass were skipped. All three labels are
-absent, PR #35 remains Draft/unmerged, and no retry or replacement attempt is authorized. Exact
-SSH-signed implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
-`f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) contains the raw bounded
-Back-action failure-cleanup repair, its Compendium expected-authority/budget update and all four
-historical 3ca carriers. Current HEAD is its signed documentation-only descendant; after that docs
-commit `openai/mac` is three commits ahead of the remote branch. Its SHA is intentionally not
-embedded. The 3ca develop profile and no-retry Compendium → Slice → Glass chain remain historical
-exact-source evidence only. Focused budget coverage passes **28/28**, the changed Compendium
-selftest passes **618 controls**, and typecheck, syntax and diff checks are green. The first full
-develop-profile run correctly refused three stale expected-authority constants (**3 failed / 2,564
-passed / 1 skipped**); those constants are fixed, and the then-dirty implementation candidate's
-complete rerun is green at **254/254 files / 2,567 passed / 1 skipped**, with all TypeScript, art,
-route and specification owners green. The relevant implementation/test/budget bytes are committed
-by exact 4ea, while that run remains recorded as dirty-source browser-free evidence. There is no
-current-source browser chain. Current authority is producer
+absent, PR #35 remains Draft/unmerged, and no retry or replacement attempt is authorized. Exact clean
+SSH-signed source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
+`e05e48c807597e86530e9b258a11e93d9533cd3c`, parent `4ea8198c…`) is terminal-green locally. Its
+develop profile passed **254/254 files / 2,567 passed / 1 skipped** with every TypeScript, art, route
+and specification owner green; all required browser instrument selftests passed, including the
+**618-control** Compendium selftest. One unchanged-source/no-retry Compendium → Slice → Glass chain
+passed **78/78**, zero-finding Slice with ten screenshots and **12/12 Glass viewports / 104/104
+controls**, with every exact named verifier green. Current HEAD is 9b37's signed evidence/docs-only
+descendant, which adds only the four exact PASS carriers and synchronized references; after that
+commit `openai/mac` is four commits ahead of the remote branch. Its SHA is intentionally not
+embedded. Current authority is producer
 `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7`, collector
 `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d`, outcome contract
 `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692`, measurement
 `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` and budget
-`454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`. PR #34 runs
+`454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`. The 3ca chain/carriers
+remain historical exact-source evidence only. No hosted attempt is authorized. PR #34 runs
 `32665404776` and `32677088518` are
 consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
 labels were removed. Its repaired third authorized changed-head attempt, run `32681394532`, passed
@@ -519,7 +516,7 @@ controls. On that same unchanged source, the one-attempt/no-retry Compendium run
 run `20260831-pr35-back-action-3ca7d30-glass-certification` passed **12/12** viewports and
 **104/104** controls. Every named verifier passed. That chain and its four gzip-verified carriers
 are committed by exact implementation source 4ea and retained as historical exact-source 3ca
-evidence; they do not certify 4ea or its documentation descendant.
+evidence; they do not certify current exact source 9b37 or its evidence/docs descendant.
 
 Exact signed implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
 `f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) repairs a separate
@@ -536,18 +533,30 @@ contract `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692`, mea
 `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` and budget
 `454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`.
 
-Focused Compendium budget coverage passes **28/28**, the changed selftest passes **618 controls**,
-and typecheck, syntax and diff checks are green. The first full develop-profile run correctly
-refused three stale expected-authority constants in `compendium-budget.test.ts` (**3 failed / 2,564
-passed / 1 skipped**). Those constants are now fixed and focused coverage is green; the complete
-profile rerun passed **254/254 files / 2,567 passed / 1 skipped**, with all TypeScript, art, route
-and specification owners green. This remains accurately classified as then-dirty browser-free
-evidence; exact 4ea commits the relevant implementation/test/budget bytes. Current HEAD is 4ea's
-signed documentation-only descendant, and after that docs commit `openai/mac` is three commits ahead
-of its remote. The fresh exact-clean-source browser chain remains pending. Product, CSS,
-tolerance, numeric ceilings, timeout/retry behavior and the version-tolerant Edge-family/CDP 1.3
-policy remain unchanged. This does not authorize a push, label, new hosted attempt, Ready
-transition or merge; the eventual exact final head requires fresh authorization.
+Exact clean SSH-signed descendant `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
+`e05e48c807597e86530e9b258a11e93d9533cd3c`) then passed the complete develop profile at
+**254/254 files / 2,567 passed / 1 skipped** and every TypeScript, art, route and specification
+owner. Browser-path, Compendium preflight, the **618-control** Compendium selftest, SceneMemory
+heap-phase and browser-CDP selftests all passed. Live Edge `152.0.4191.53` / CDP `1.3` preflight
+passed; the point version is provenance only.
+
+On unchanged 9b37 source, Compendium
+`20260831-pr35-back-cleanup-9b37ffcdb587-compendium-certification` passed **78/78** with zero
+findings/blocked outcomes in **63,594 ms**; phone setup/action/return was `-2 / -2 / -2`, desktop
+was `-46 / -46 / -46`, and each profile proved exactly one trusted witness plus cleanup. Slice
+`20260831-pr35-back-cleanup-9b37ffcdb587-slice-certification` passed with zero findings/scopes,
+ten screenshots and named verification in **358,221 ms**. Glass
+`20260831-pr35-back-cleanup-9b37ffcdb587-glass-certification` passed **12/12** viewports and
+**104/104** controls with zero findings, instrument failures, blocked or omitted work in **111,201
+ms**; exact predecessor-bound verification passed. Every stage ran once with no retry. SceneMemory
+certification and Recovery did not run by develop policy.
+
+The four gzip-verified exact 9b37 PASS carriers are retained under `audits/` and committed by the
+signed evidence/docs-only descendant, which is four commits ahead of `origin/openai/mac`; its SHA
+is intentionally not embedded. Product, CSS, tolerance, numeric ceilings, timeout/retry behavior
+and the version-tolerant Edge-family/CDP 1.3 policy remain unchanged. This does not authorize a push,
+label, new hosted attempt, Ready transition or merge; the final full head requires fresh exact
+authorization.
 
 All three PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.

@@ -10,44 +10,64 @@ summary of it.
 
 ## Contents
 
-### Current signed raw Back-action failure-cleanup implementation
+### Current exact-source `9b37ffc…` terminal-green Back cleanup develop chain
 
-Exact SSH-signed implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
-`f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) contains the collector, selftest,
-derived budget-authority repair and all four historical 3ca carriers indexed below. Current HEAD is
-its signed documentation-only descendant; its SHA is intentionally not embedded here, and
-`openai/mac` is three commits ahead of `origin/openai/mac`. No current-source browser carrier or
-certificate is claimed.
+Exact clean SSH-signed certified source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
+`e05e48c807597e86530e9b258a11e93d9533cd3c`, parent
+`4ea8198c9022cc814e5948ed89c756ffb1fe6c11`) passed the complete local admission. Current HEAD is
+its signed evidence/docs-only descendant; its SHA is intentionally not embedded here, and
+`openai/mac` is four commits ahead of `origin/openai/mac`. The descendant adds only the four exact
+carriers below and synchronized references, without rebinding the certificate.
 
-The prior exceptional path had one first-causal-boundary defect. After an armed Back action's native
-input command failed, `catch` performed listener/carrier cleanup through the normal tracked
-observation wrapper. If cleanup succeeded, that wrapper advanced current/last-completed stages,
-completed-stage history and command tracking before partial-report assembly, allowing cleanup to
-replace the original rejected `Input.dispatchMouseEvent` as the apparent terminal boundary. The
-success path and cleanup effect were correct; the partial failure evidence was not.
-
-The bounded repair owns cleanup through one raw transport evaluation outside observation tracking.
-It retains the primary error's exact original command/stage, requires the exact cleanup result
-`{controllerAborted: true, carrierPresent: false}`, and appends an independent residue/cleanup
-failure without overwriting the primary. The **618-control** Compendium selftest makes the former
-tracked-cleanup path red, proves raw cleanup leaves the stage/ledger frozen, and verifies a terminal
-partial report still names the original failed command.
-
-Current measurement / outcome-contract / collector / producer / budget-file authority is
+The repair preserves the first causal boundary after an armed Back action's native input failure.
+One raw bounded cleanup evaluation outside observation tracking requires exact
+`{controllerAborted: true, carrierPresent: false}`, retains the primary error's original
+command/stage/history and records any cleanup residue or failure independently. It never replaces or
+retries the primary error. Current measurement / outcome-contract / collector / producer /
+budget-file authority is
 `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` /
 `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
 `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d` /
 `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
-`454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`. Contract and producer,
-product/CSS, the fixed ±2px tolerance, numeric rulers/ceilings, historical samples, timeouts,
-one-click/no-retry rule, 78-outcome inventory and version-tolerant Edge-family + CDP `1.3` policy
-are unchanged. Exact `3ca7d30…` and the four carriers in the next section remain immutable
-historical evidence for those bytes only; they are committed by 4ea but are not rebound. The
-then-dirty implementation candidate passed the complete browser-free develop profile at **254/254
-files / 2,567 passed / 1 skipped**, with all TypeScript, art, route and specification owners green;
-that result remains classified as dirty-source evidence. The current signed source requires one
-fresh exact-clean-source fail-fast/no-retry Compendium → Slice → Glass chain. No push, hosted
-attempt/retry, Ready transition, merge, release or deployment is authorized.
+`454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`.
+
+Exact 9b37 passed **254/254 files / 2,567 passed / 1 skipped**, with every TypeScript, art, route and
+specification owner green. Browser-path, Compendium preflight, the **618-control** Compendium
+selftest, SceneMemory heap-phase and browser-CDP selftests all passed. Live preflight accepted Edge
+`152.0.4191.53` / CDP `1.3`; the point version is provenance only. The unchanged source then ran
+each browser stage exactly once with no retry, and every exact named verifier passed:
+
+- Compendium `20260831-pr35-back-cleanup-9b37ffcdb587-compendium-certification` passed **78/78**
+  with zero findings/blocked outcomes in **63,594 ms**. Phone setup/action/return stayed
+  `-2 / -2 / -2`; desktop stayed `-46 / -46 / -46`. Each profile bound exactly one trusted witness
+  and proved cleanup. Raw report: **10,866,044 bytes**, SHA-256
+  `7547faf3a3374014c89f61eb6c80ff9d728beba451f14999c8909580e41896f2`.
+- Develop Slice `20260831-pr35-back-cleanup-9b37ffcdb587-slice-certification` passed with zero
+  findings/scopes and ten screenshots in **358,221 ms**. Raw JSON: **6,678 bytes**, SHA-256
+  `60a459fcd101bd234c71ea82482b71d776f02dddee656dcfc70a66a517b7c9fc`. Raw log: **6,973
+  bytes**, SHA-256 `e7d345e32864216052c59e90e6aad5604a6124d3abffc0034fffeb16fb79ac82`.
+- Full-certifying Glass `20260831-pr35-back-cleanup-9b37ffcdb587-glass-certification` passed
+  **12/12** isolated viewport classes and **104/104** controls with zero findings, instrument
+  failures, blocked or omitted work in **111,201 ms**. It binds the exact Slice report SHA-256.
+  Raw report: **898,849 bytes**, SHA-256
+  `e42ee81470650aa84c495878e5fa1dba4a648c5767ed18e850af5c1106f1a045`.
+
+All four exact carriers pass gzip integrity and are committed by the signed evidence/docs descendant:
+
+- `ARC1A_COMPENDIUM_PR35_BACK_CLEANUP_PASS_20260831_9B37FFC.json.gz`: **525,472 bytes**,
+  SHA-256 `b21c3a31c5e82d5fe33d94dc3e5bbe656047e7697ea2ee300708e69b449f551e`.
+- `ARC4_SLICE_PR35_BACK_CLEANUP_PASS_20260831_9B37FFC.json.gz`: **1,967 bytes**, SHA-256
+  `88ad409c2e61afcbab79c3054f958e13a70d1121549b756e5a0999c9ff41bc2b`.
+- `ARC4_SLICE_PR35_BACK_CLEANUP_PASS_20260831_9B37FFC.log.gz`: **3,305 bytes**, SHA-256
+  `df926681aa48d8868daed3d35293b30b8dd20fc136b9e67b5c5549a1894bd499`.
+- `ARC4_GLASS_PR35_BACK_CLEANUP_PASS_20260831_9B37FFC.json.gz`: **82,880 bytes**, SHA-256
+  `d44e4f5cbb50cc3554abb1f25abca745ab7c7068c11fa14d8e3ef498c374bc9d`.
+
+Contract and producer, product/CSS, the fixed ±2px tolerance, numeric rulers/ceilings, historical
+samples, timeouts, one-click/no-retry rule, 78-outcome inventory and version-tolerant Edge-family +
+CDP `1.3` policy are unchanged. SceneMemory certification and Recovery did not run by develop
+policy. Exact `3ca7d30…` and its four carriers remain immutable historical evidence for those bytes
+only. No push, hosted attempt/retry, Ready transition, merge, release or deployment is authorized.
 
 ### Historical exact-source `3ca7d30…` terminal-green Compendium Back action-time develop chain
 
@@ -77,7 +97,7 @@ exact named verifier passing:
   `e436d044d0db026a398104a8b6cc9a5884d1e022613f7f88bd4fbb3e636860ff`.
 
 This is the complete historical local `develop` browser certificate for exact `3ca7d30…`; it does
-not certify signed implementation source 4ea or its documentation descendant. The
+not certify current exact source 9b37 or its evidence/docs descendant. The
 hosted 77/78 report and its stale pre-helper comparator remain immutable in the next section; this
 historical successor does not rewrite or relabel them. At that exact source, measurement /
 outcome-contract / collector / producer / budget-file authority was

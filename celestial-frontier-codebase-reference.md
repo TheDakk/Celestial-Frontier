@@ -1,11 +1,12 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-31 current signed Compendium raw failure-cleanup boundary:** exact SSH-signed
-> implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
-> `f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) contains the collector failure
-> cleanup, selftest, derived budget authority and all four historical 3ca carriers. Current HEAD is
-> its signed documentation-only descendant; its SHA is intentionally not embedded here, and
-> `openai/mac` is three commits ahead of `origin/openai/mac`. No current browser certificate exists.
+> **2026-08-31 current terminal-green Compendium raw failure-cleanup boundary (supersedes older
+> “current” labels below):** exact clean
+> SSH-signed certified source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
+> `e05e48c807597e86530e9b258a11e93d9533cd3c`, parent `4ea8198c…`) contains the collector failure
+> cleanup, selftest and derived budget authority. Current HEAD is its signed evidence/docs-only
+> descendant; its SHA is intentionally not embedded here, and `openai/mac` is four commits ahead of
+> `origin/openai/mac`. The descendant adds only four exact PASS carriers and current references.
 >
 > Before this repair, a native Back-input rejection after action-witness arming entered `catch` and
 > ran cleanup through the normal tracked observation wrapper. Successful cleanup advanced the
@@ -24,11 +25,14 @@
 > producer remain unchanged. Product/CSS, ±2px
 > restoration tolerance, numeric rulers/ceilings, historical samples, timeouts, retry/click policy,
 > outcome inventory and Edge-family + CDP `1.3` policy are unchanged. Exact `3ca7d30…` is
-> historical exact-source evidence only. The then-dirty implementation candidate passed the
-> complete browser-free develop profile at **254/254 files / 2,567 passed / 1 skipped**, with all
-> TypeScript, art, route and specification owners green; that result remains classified as
-> dirty-source evidence. A fresh exact-clean-source fail-fast/no-retry unchanged-source Compendium →
-> Slice → Glass develop chain remains required; no hosted run or merge is authorized.
+> historical exact-source evidence only. Exact clean 9b37 passed the complete develop profile at
+> **254/254 files / 2,567 passed / 1 skipped**, every TypeScript, art, route and specification owner,
+> and all required browser-instrument selftests. On unchanged source, Compendium passed **78/78**
+> with desktop `-46 / -46 / -46` and phone `-2 / -2 / -2`; develop Slice passed with zero findings
+> and ten screenshots; full Glass passed **12/12** viewports and **104/104** controls with zero
+> findings or instrument failures. Every stage ran once/no-retry and every exact named verifier
+> passed. SceneMemory certification and Recovery did not run by develop policy. Exact carriers,
+> sizes and hashes are in `audits/README.md`; no hosted run or merge is authorized.
 
 > **2026-08-31 historical exact-source terminal-green local Compendium action-time boundary:** exact
 > clean committed
@@ -60,7 +64,7 @@
 > outcome inventory and version-tolerant Edge-family + CDP `1.3` authority are unchanged. The hosted
 > 77/78 red below remains immutable diagnosis. SceneMemory certification and Recovery did not run.
 > Its four carriers remain historical exact-source evidence, are committed by exact 4ea, and do not
-> certify 4ea or its documentation descendant.
+> certify current exact source 9b37 or its evidence/docs descendant.
 
 > **2026-08-31 current Compendium action-time Back-witness boundary:** GitHub run
 > `33437596315` tested authorized PR #35 head
@@ -3498,13 +3502,23 @@ success contract for its own bytes: desktop retains setup/action/return offset `
 `-2`, each profile records exactly one trusted event, aborts its witness controller and leaves no
 carrier. Its unchanged-source Compendium, develop Slice and full Glass reports are terminal green,
 independently named-verified and indexed in `audits/README.md`; they do not certify the current
-signed 4ea collector or its documentation descendant.
+signed 9b37 source or its evidence/docs descendant.
 
 The current exceptional cleanup owner is deliberately outside the tracked observation wrapper.
 After a primary native-input failure it evaluates only the exact cleanup expression under the
 existing transport bound, requires an aborted controller and absent carrier, and leaves
 `currentStage`, `lastCompletedStage`, completed stages and the original command ledger untouched.
 An independent cleanup failure augments the primary diagnosis but never replaces its causal stage.
+
+Exact clean signed source `9b37ffcdb5879d243288e511b7d70c59ea935dae` certifies this combined
+success/failure boundary. Compendium run
+`20260831-pr35-back-cleanup-9b37ffcdb587-compendium-certification` passed **78/78** in **63,594
+ms** with one trusted witness and complete cleanup per profile; desktop stayed
+`-46 / -46 / -46` and phone stayed `-2 / -2 / -2`. Its unchanged-source develop Slice passed with
+zero findings/scopes and ten screenshots in **358,221 ms**; full Glass passed **12/12** viewports
+and **104/104** controls with zero findings, instrument failures, blocked or omitted work in
+**111,201 ms**. Every exact named verifier passed. The four exact report/log carriers and raw/gzip
+hashes are indexed in `audits/README.md` and committed by the signed evidence/docs descendant.
 
 The current PR #35 foreground-service authority treats a serviced turn as target-bound evidence,
 not a generic root heartbeat. For each accepted attachment the collector binds exact target,
