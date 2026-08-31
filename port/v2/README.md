@@ -1,32 +1,35 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-08-31 current local a9d successor boundary (supersedes every older “current” status label
+> **2026-08-31 current local a046 repair boundary (supersedes every older “current” status label
 > below; dated evidence remains immutable):** exact clean SSH-signed source
-> `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed tracked-input and Edge preflight, then
-> Compendium (**catalog/art stress**) **78/78** once/no-retry as
-> `20260831151644196-18841-d75ab40c38`. Its exact-source develop Slice (**playable journey**)
-> `20260831151855955-19270-13860f3fb838` stopped terminal red once/no-retry after **328,043 ms**
-> with exactly **1 finding / 1 scope** (`drill-engineering-tour`). Named verification rejected the
-> non-PASS predecessor, Glass (**cross-device presentation**) did not run, and a9d2a57 will never
-> be retried or relabelled.
+> `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium (**catalog/art stress**)
+> **78/78** once/no-retry in **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; exact named
+> verification passed. Its exact-source develop Slice (**playable journey**)
+> `20260831155943782-24588-a98f13f2c7b7` stopped terminal red once/no-retry after **359,647 ms**
+> with exactly **1 finding / 1 scope** (`world-identity-collision-controls-failed`). Named
+> verification correctly exited 2, Glass (**cross-device presentation**) did not run, and a0460c6
+> will never be retried or relabelled.
 >
-> The product outcome was green: exact step-9 announcement/focus, active Training hold, available
-> Engineering board and all **70/70** action controls locked. Slice alone searched the panel body
-> for lesson prose owned by `#tutlive`. The bounded successor changes that one predicate to
-> `engineeringTour.announcement` and adds directional/provenance mutants; it changes no product,
-> copy, gameplay, save, creature/genome/organism/biome/art structure, timeout, retry, browser ruler
-> or Edge baseline. Focused coverage is **2 files / 23 tests**, all three TypeScript programs pass,
-> diff hygiene is clean, and independent review is **CLEAR**. **A New Foundation** remains **77
-> bullets**, SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+> The collision base product outcome was green across distinct Search/name, Atlas, native Travel,
+> landing, persistence, reload and Share identity. Only `atlasPointerIdentityDrift` was inert:
+> newest-first rendered rows were **[Beta, Alpha]**, while measured Travel receipts retained fixture
+> order **[Alpha, Beta]**, so the stale row-index carrier reassigned Alpha to Alpha. Exact SSH-signed
+> repair `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives the mutant from the distinct measured
+> sibling, rejects missing/equal/no-op receipts, causal-stops after a red collision base, and
+> executable-tests the reversed display order. It changes no product, copy, gameplay, save,
+> creature/genome/organism/plant/biome/art structure, timeout, retry, browser ruler or Edge baseline.
+> Focused coverage is **1 file / 6 tests**, all three TypeScript programs pass, diff hygiene is clean,
+> and independent review is **CLEAR**. **A New Foundation** remains **77 bullets**, SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> The complete develop profile is green at **253 files / 2,560 passed / 1 skipped**, all three
+> The complete develop profile is green at **253 files / 2,561 passed / 1 skipped**, all three
 > TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields.
 > Current Compendium producer/budget authority remains
 > `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
-> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. After clean signed-source
-> preflight, a fresh candidate receives exactly one unchanged-source **Compendium → Slice → Glass**
-> chain. SceneMemory remains production-only. No hosted attempt, push, merge, release, version bump,
-> preview/publication or deployment is authorized.
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. After a clean signed
+> documentation descendant and tracked-input preflight, a fresh candidate receives exactly one
+> unchanged-source **Compendium → Slice → Glass** chain. SceneMemory remains production-only. No
+> hosted attempt, push, merge, release, version bump, preview/publication or deployment is authorized.
 
 > **Historical SceneMemory production-quarantine boundary (2026-08-30; exact resumption details in
 > `ROADMAP.md`):** exact clean SSH-signed checkpoint

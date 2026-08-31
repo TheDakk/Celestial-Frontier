@@ -1,22 +1,25 @@
 # Celestial Frontier — Save System
 
-> **2026-08-31 current a9d protected-Training/final-successor overlay (supersedes every older
-> “current” label below; dated evidence remains immutable):** exact signed `a9d2a57…` passed
-> Compendium **78/78** before exact-source Slice `20260831151855955-19270-13860f3fb838` stopped
-> once/no-retry after **328,043 ms** with exactly **1 finding / 1 scope**; Glass did not run. The
-> retained step-9 state, Training hold and all 70 disabled Engineering controls were coherent. The
-> sole red searched panel text for lesson prose owned by the live announcement; it exposed no save
-> or product defect.
+> **2026-08-31 current a046 collision-control repair overlay (supersedes every older “current”
+> label below; dated evidence remains immutable):** exact signed
+> `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry as
+> `20260831155807329-24237-1c6d2e89d5` in **64,166 ms** with named verification. Its exact-source
+> Slice `20260831155943782-24588-a98f13f2c7b7` stopped once/no-retry after **359,647 ms** with one
+> `world-identity-collision-controls-failed` scope; named verification exited 2 and Glass did not
+> run. The base collision product outcome was green and exposed no save or product defect.
 >
-> The bounded successor changes only that Slice carrier and adds directional/provenance controls.
-> It inherits the exact revision-2 branch-specific receipt/projection, practice-only Atlas/Land and
-> preserved outer-ledger laws; it adds no save field, schema, migration, retry or timeout. Focused
-> tests pass **2 files / 23 tests**; the complete develop profile is green at **253 files / 2,560
-> passed / 1 skipped**, all TypeScript/art/route/specification owners green, and independent review
-> is **CLEAR**. Current Compendium producer/budget authority remains
+> The runner mixed newest-first Atlas rows `[Beta, Alpha]` with receipt order `[Alpha, Beta]`, so
+> the pointer mutant selected the same row and was inert. Signed repair/evidence commit
+> `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives a distinct measured sibling, rejects inert/equal
+> cases, causal-stops a red base and executes a reversed-order regression. It adds no save field,
+> schema or migration and changes no gameplay, art, creature, biome, ruler, timeout, retry or Edge
+> contract. Focused tests pass **1 file / 6 tests**; the
+> complete develop profile is green at **253 files / 2,561 passed / 1 skipped**, all TypeScript
+> programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields, and independent
+> review is **CLEAR**. Current Compendium producer/budget authority remains
 > `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
-> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`; only the clean signed
-> candidate and its new browser chain remain pending.
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`; only the fresh clean
+> signed candidate and its new browser chain remain pending.
 
 > **2026-08-31 historical 4002/4822 local successor overlay (superseded above;
 > dated transaction and evidence checkpoints remain immutable):** exact clean signed source

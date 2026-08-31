@@ -73,6 +73,9 @@
 > carrier, restore that carrier in `finally`, and resample the original outcome to prove exact
 > restoration before any later scope. A red base, red control or failed restoration causal-stops the
 > chain; weakening the assertion, extending time or continuing into dependent findings is not a repair.
+> Never use the index of one ordered view to mutate an independently ordered action trace; choose a
+> distinct measured sibling inside the carrier being mutated and prove the target value changed before
+> assessment.
 
 > **A WRITE-HELD TRAINING ROUTE CANNOT BORROW A WRITE-BEARING SURVEY.** A restored Training
 > checkpoint deliberately refuses ordinary product writes, including Arc 9 Survey. If a browser

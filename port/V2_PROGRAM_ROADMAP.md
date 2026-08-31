@@ -1,29 +1,33 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **2026-08-31 current local a9d successor overlay (supersedes every older “current” label below
-> while preserving its dated evidence):** exact clean SSH-signed source
-> `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed Compendium **78/78** once/no-retry as
-> `20260831151644196-18841-d75ab40c38`. Its exact-source develop Slice
-> `20260831151855955-19270-13860f3fb838` stopped terminal red once/no-retry after **328,043 ms**
-> with exactly **1 finding / 1 scope**. Named verification correctly rejected the red predecessor;
-> Glass did not run and a9d2a57 will not be retried.
+> **2026-08-31 current local a046 repair overlay (supersedes every older “current” label below while
+> preserving its dated evidence):** exact clean SSH-signed source
+> `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry in
+> **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; exact named verification passed. Its
+> exact-source develop Slice `20260831155943782-24588-a98f13f2c7b7` stopped terminal red
+> once/no-retry after **359,647 ms** with exactly **1 finding / 1 scope**
+> (`world-identity-collision-controls-failed`). Named verification correctly exited 2; Glass did
+> not run and a0460c6 will not be retried or relabelled.
 >
-> The retained product state was correct at Training step 9 with all 70 Engineering actions locked.
-> The sole stale evidence predicate read panel text for lesson prose owned by the announcement. The
-> bounded successor changes only that carrier and adds directional/provenance mutants. It changes
-> no product, creature, genome, painter, organism, biome or art structure, reward, save schema,
-> timeout, retry, ruler or Edge baseline. Focused coverage is **2 files / 23 tests**, all three
-> TypeScript programs pass, diff hygiene is clean, and independent review is **CLEAR**. **A New
-> Foundation** remains **77** bullets with rendered ordered SHA-256
+> The complete collision product outcome was green. The sole red was an inert evidence mutant:
+> newest-first Atlas rows were **[Beta, Alpha]**, while measured Travel receipts were fixture-ordered
+> **[Alpha, Beta]**; row index 1 therefore assigned Alpha back to Alpha. Exact SSH-signed repair
+> `23eb6dabeaf40cf0bc7878272b4f4893ad422113` takes the distinct measured sibling identity,
+> guards missing/equal/no-op carriers, causal-stops after a genuine collision failure, and
+> executable-tests the reversed row order. It changes no product, creature, genome, painter,
+> organism, plant, biome or art structure, gameplay, reward, save schema, timeout, retry, ruler or
+> Edge baseline. Focused coverage is **1 file / 6 tests**, all three TypeScript programs pass, diff
+> hygiene is clean, and independent review is **CLEAR**. **A New Foundation** remains **77** bullets
+> with rendered ordered SHA-256
 > `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> The complete develop profile is green at **253 files / 2,560 passed / 1 skipped**, **34** art
+> The complete develop profile is green at **253 files / 2,561 passed / 1 skipped**, **34** art
 > sources, **1,014/1,014** routes and **454** non-inert fields. Current Compendium producer/budget
 > authority remains `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
-> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A clean signed candidate
-> and one unchanged-source **Compendium → Slice → Glass** develop chain remain. SceneMemory is
-> production-only. No hosted attempt, push, merge, release, version bump, publication or deployment
-> is authorized.
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A clean signed
+> documentation descendant and one unchanged-source **Compendium → Slice → Glass** develop chain
+> remain. SceneMemory is production-only. No hosted attempt, push, merge, release, version bump,
+> publication or deployment is authorized.
 
 > **Historical local PR #35 battery/right-sizing and Arc 4 shared-ledger boundary (2026-08-30;
 > supersedes the historical current overlays below):** exact clean signed source

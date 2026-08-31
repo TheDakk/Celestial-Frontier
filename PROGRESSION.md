@@ -1,26 +1,29 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-31 current local a9d successor overlay (supersedes every older “current” label below;
-> dated progression and evidence checkpoints remain immutable):** exact clean SSH-signed source
-> `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed Compendium **78/78** once/no-retry as
-> `20260831151644196-18841-d75ab40c38`. Its exact-source develop Slice
-> `20260831151855955-19270-13860f3fb838` stopped terminal red once/no-retry after **328,043 ms**
-> with exactly **1 finding / 1 scope**; Glass did not run. Exact step-9 progression/training state,
-> focus, hold and all 70 Engineering locks were correct. The sole red was a lesson-copy carrier
-> mistake and exposed no progression defect.
+> **2026-08-31 current local a046 collision-control repair overlay (supersedes every older
+> “current” label below; dated progression and evidence checkpoints remain immutable):** exact
+> clean SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium
+> **78/78** once/no-retry as `20260831155807329-24237-1c6d2e89d5` in **64,166 ms** with named
+> verification. Its exact-source develop Slice `20260831155943782-24588-a98f13f2c7b7` stopped
+> terminal red once/no-retry after **359,647 ms** with one
+> `world-identity-collision-controls-failed` scope; named verification exited 2 and Glass did not
+> run. The base world-identity collision outcome and all product progression state were green.
 >
-> The bounded successor changes only that Slice predicate and its directional/provenance controls.
-> The prior exact revision-2 Arc 9 fixed point, practice-only Atlas, unpublished Training Compendium
-> and preserved `[901]` landed ledger remain bound. Existing Charter rules, rewards, achievements,
-> ranks, creature/genome identity, biome and art structures are unchanged. Focused coverage is **2
-> files / 23 tests**, all TypeScript programs pass, diff hygiene is clean, and independent review is
-> **CLEAR**. **A New Foundation** remains **77** bullets with ordered SHA-256
+> The runner mixed newest-first Atlas rows `[Beta, Alpha]` with receipt order `[Alpha, Beta]`,
+> leaving its pointer mutant inert. Signed repair/evidence commit
+> `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives a distinct measured sibling, rejects inert/equal
+> cases, causal-stops a red base and executes a reversed-order regression. Existing Charter rules,
+> rewards, achievements, ranks, save authority, creature/genome identity, biome and art structures
+> are unchanged; no gameplay, ruler, timeout, retry or Edge contract changed. Focused coverage is
+> **1 file / 6 tests** and independent review is **CLEAR**.
+> **A New Foundation** remains **77** bullets with ordered SHA-256
 > `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> The complete develop profile is green at **253 files / 2,560 passed / 1 skipped**, **34** art
-> sources, **1,014/1,014** routes and **454** non-inert fields. Current Compendium producer/budget
-> authority remains `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
-> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A clean signed candidate
+> The complete develop profile is green at **253 files / 2,561 passed / 1 skipped**, all TypeScript
+> programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields. Current
+> Compendium producer/budget authority remains
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A fresh signed candidate
 > and one unchanged-source **Compendium → Slice → Glass** chain remain. SceneMemory is
 > production-only. No hosted attempt, push, merge, release, version bump, publication or deployment
 > is authorized.

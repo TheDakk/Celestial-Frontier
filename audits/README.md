@@ -10,6 +10,47 @@ summary of it.
 
 ## Contents
 
+### Signed `a0460c6…` Compendium PASS, then inert Atlas-pointer control Slice red
+
+Exact clean SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed one/no-retry
+Compendium run `20260831155807329-24237-1c6d2e89d5` at **78/78** with zero findings in **64,166
+ms**; its exact named verifier passed. Its unchanged-source develop Slice run
+`20260831155943782-24588-a98f13f2c7b7` then stored terminal `fail` once/no-retry after **359,647
+ms** with exactly **1 finding / 1 scope** (`world-identity-collision-controls-failed`). The named
+Slice verifier correctly exited 2. Glass did not run; a0460c6 will not be retried or relabelled.
+
+The complete collision base product outcome was green: both source-proven same-leaf worlds retained
+distinct Search/name, Atlas rows, native Travel routes and pointers, landing records, durable
+reload identity and Share parents. The sole red came from an inert control. Atlas rows render
+newest-first **[Beta, Alpha]**, while the measured Travel receipts remain fixture-ordered **[Alpha,
+Beta]**. The stale control assigned `atlas.rows[1].travelId` to Alpha's pointer, therefore assigning
+Alpha back to Alpha and manufacturing green.
+
+Exact SSH-signed repair `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives the mutation from
+the distinct measured sibling Travel receipt, refuses missing/equal/no-op carriers, causal-stops
+before controls and later origins when the real collision product assessment is red, and executes
+the former reversed-row order as a browser-free regression. Focused coverage is **1 file / 6
+tests**; the complete develop profile is green at **253 files / 2,561 passed / 1 skipped**, all
+three TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields;
+independent review is **CLEAR**. This changes no product, save, gameplay, art, creature, genome,
+flora, fauna, biome, ruler, timeout, retry or Edge-version behavior. Current Compendium
+producer/budget authority remains
+`8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+`e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`.
+
+- `ARC1A_COMPENDIUM_PR35_ATLAS_POINTER_IDENTITY_CONTROL_PASS_20260831_A0460C6.json.gz`:
+  **451,780 gzip / 10,844,302 raw bytes**; gzip/raw SHA-256
+  `5a37fdb930f4a4085ca62faefa18e4f96a385fb5019d956e6c23d249880c7ca5` /
+  `381d4e04f77a57bca33c59253723922edea56758689427c996d20a6f5bad8752`.
+- `ARC4_SLICE_PR35_ATLAS_POINTER_IDENTITY_CONTROL_RED_20260831_A0460C6.json.gz`: **2,235 gzip /
+  8,721 raw bytes**; gzip/raw SHA-256
+  `e5313e19076298421576fb628726f1d64e7a6b0abaa3cf76448e7597bb601e20` /
+  `f67c7d390142f93751aef87a7cb17a32529d31ec259672681eb9ed336f8a33c5`.
+- `ARC4_SLICE_PR35_ATLAS_POINTER_IDENTITY_CONTROL_RED_20260831_A0460C6.log.gz`: **1,802 gzip /
+  5,003 raw bytes**; gzip/raw SHA-256
+  `27679b59442ab5460ad3d48047b27df2cc364a401e75dc39a51e0f232751cfad` /
+  `ce3698737649c7897aeebbf8f79bdada20ef486ca5bde0a181e29f58dbf3eeb9`.
+
 ### Signed `a9d2a57…` Compendium PASS, then Engineering lesson-carrier Slice red
 
 Exact clean SSH-signed source `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed its tracked-input
