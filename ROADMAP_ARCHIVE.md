@@ -1,3 +1,228 @@
+## ARCHIVED 2026-08-30 — input-v5 and Feed evidence sequence superseded by four-pass phase validity
+
+> Moved byte-verbatim from the live ROADMAP during the 8792 SceneMemory phase-validity batch.
+> Historical reports remain bound to their exact producers and verdicts; none is retried or
+> relabelled by the current four-pass instrument work.
+
+<!-- BEGIN VERBATIM ROADMAP BLOCK: INPUT-v5 / FEED / ARC 4 / SCENEMEM CALIBRATION -->
+### Exact 51a input-v5 activation and the one terminal Slice boundary
+
+- Source-normalized SceneMemory landed as signed `e2ff953…`; its first strict root TypeScript pass
+  found four dead historical budget constants after every focused assertion was green. Signed
+  descendant `51a8ac4…` removed those dead aliases while retaining the exact active-v5 and rejected-
+  v4 authority assertions. This is test ownership, not a product or ruler change.
+- Exact `51a8ac4…` then passed its hermetic tracked-input develop profile once: **253 files / 2,524
+  passed / 1 skipped**, all three TypeScript programs, **34** art sources / zero findings,
+  **1,014/1,014** routes and **454** specification fields / zero inert fields. Browser resolver,
+  fixed-second heap, live Compendium preflight, **591-control** Compendium mutation suite and raw-CDP
+  launcher controls also passed once.
+- On the same unchanged clean source and Edge `152.0.4191.53` / CDP `1.3`, SceneMemory
+  `20260830-pr35-51a8ac4-input-v5-scenemem-certification` passed **44/44** in **13,495 ms** and
+  Compendium `20260830-pr35-51a8ac4-input-v5-compendium-certification` passed **78/78** in
+  **63,118 ms**. Both named verifiers passed with complete cleanup.
+- Slice `20260830-pr35-51a8ac4-input-v5-slice-certification` ran exactly once, then stopped after
+  **162,524 ms** with one `harness` finding: Feed preview timed out with `last null`. Glass correctly
+  did not run. All three reports plus the Slice log are preserved deterministically under `audits/`
+  with raw/gzip sizes and hashes in `audits/README.md`; the red remains immutable.
+- Diagnosis proves the red occurred before the first durable read, confirmation trace/hold,
+  coordinator claim, writer or persistence comparison. The old helper clicked a `LABEL`, tested its
+  meaningless `disabled` property, retained no native input/change receipt and collapsed all five
+  preview predicates to `null`. This is inconclusive instrument evidence, not a Feed product red.
+- The dirty successor now targets the exact nested radio, binds label/control/document/generation/
+  surface/context/listener ownership at preparation and dispatch, records one trusted pointerdown,
+  click, input and change, proves the current radio and controller selection after
+  each choice, then assesses a full structured preview before any downstream action. Native
+  detach/reattach product coverage and more than 60 independent choice/preview mutations are green.
+  Both the initial loser and separate winner document use the same helper; no synthetic click,
+  timeout increase or retry was added. Final independent read-only re-audit found the runner,
+  contract, declarations and controls field-for-field consistent with no remaining finding.
+
+### Exact f219 native-Feed attempt and generated-expression closure
+
+- Exact signed `f219d46…` single-sourced the native label↔radio activation and structured preview,
+  preserved the 51a evidence, and passed its hermetic tracked-input develop profile at **253 files /
+  2,528 passed / 1 skipped**. Browser resolver, fixed-second heap, Compendium preflight, **591**
+  Compendium mutations and the raw-CDP launcher all passed once on Edge `152.0.4191.53` / CDP
+  `1.3`.
+- SceneMemory `20260830-pr35-f219d46-feed-native-scenemem` passed **44/44** in **13,239 ms** and
+  Compendium `20260830-pr35-f219d46-feed-native-compendium` passed **78/78** in **64,447 ms**.
+  Both exact named verifiers passed with complete cleanup.
+- Slice `20260830-pr35-f219d46-feed-native-slice-certification` ran exactly once, then stopped after
+  **155,668 ms** with one `harness` scope: the post-click settlement program ended with five
+  closing braces where four were required, so `Runtime.evaluate` returned
+  `SyntaxError: Unexpected token '}'`. Its PASS verifier correctly rejected the red report; Glass
+  did not run.
+- Preparation and the raw-CDP creature-radio click had occurred, but settlement assessment, the
+  flora choice, preview, durable read, confirmation, writer and persistence comparison had not.
+  This is an instrument-only red and supplies no Feed product verdict. Exact predecessor/red
+  carriers, gzip/raw sizes and hashes are in `audits/README.md`.
+- Existing focused tests missed it because TypeScript parses only the containing template literal,
+  assessor tests used materialized witnesses, and the source-shape control checked marker order but
+  never compiled the generated program. The bounded successor removes the surplus closure, uses one
+  pure expression builder in runner and test, compiles its exact output and proves missing/surplus
+  closure mutations both fail. No timeout, retry, product or browser-ruler change is involved.
+
+### Exact fc18 Feed-expression attempt and semantic-summary ownership boundary
+
+- Exact signed `fc18f04…` passed its tracked-input develop profile at **253 files / 2,529 passed /
+  1 skipped**, all three TypeScript programs, the art/route/spec gates and the five required changed-
+  instrument controls. SceneMemory
+  `20260830-pr35-fc18f04-feed-expression-scenemem-certification` passed **44/44** in **13,132 ms**;
+  Compendium `20260830-pr35-fc18f04-feed-expression-compendium-certification` passed **78/78** in
+  **65,485 ms**. Their reports retained zero findings, exact unchanged source and complete cleanup.
+- Slice `20260830-pr35-fc18f04-feed-expression-slice-certification` ran once/no-retry and stopped
+  after **162,206 ms** with exactly one `harness` finding. Both native Feed radios had settled to
+  the exact creature/flora identities in DOM and controller, with one mount, two listeners, zero
+  pending work, current authority, enabled confirmation and an idle coordinator. The preview text
+  was instead Rename's `New companion name…` block, so only the Meals and Quantity terms were red.
+- Rename, Feed and Breed deliberately share `.compendium-feed-summary`; the instrument selected the
+  first global match even though Feed already owns `[data-arc5-feed-summary]` under its exact mount.
+  This is instrument-only. The stop occurred before durable read, trace/hold arm, confirm dispatch,
+  coordinator claim, writer, persistence comparison or contender document; Glass did not run.
+- The bounded successor scopes the semantic selector to Feed's mount, requires exactly one owner and
+  negative-controls zero, duplicate and shared-class lookup mutations. Focused Feed coverage is
+  **17/17** and typecheck/strict unused-symbol checks pass. No product code, timeout or retry changed.
+
+### Immutable d611 → 7f → 961 → 656 evidence and the isolated Arc 4 boundary
+
+- Exact d611 passed root Layout **787/787**, SceneMemory **44/44** and Compendium **78/78** once,
+  unchanged and with zero retry. Slice then stopped terminal red after **170,889 ms** with five
+  scopes; Glass correctly did not run. All useful raw carriers are preserved deterministically
+  under `audits/` with hashes and sizes in `audits/README.md`.
+- The retained report proves this was **not five product defects**. Pertar's real shared ledger at
+  action readiness is boot progression receipt **0** → Survey **1** → Landing **2**. First Sample
+  correctly commits Capture receipt **3** at revision +1, then the eligible Arc 9 progression
+  receipt **4** at revision +2, adding `rare` and `legend` while best rank stays 3.
+- The obsolete Arc 4 oracle wrongly required an empty cross-system ledger and exactly one new
+  receipt. The repair now proves the exact ordered prefix, the exact two-receipt progression tail,
+  independent negative controls, and a causal stop before Storage when Sample is red. A redundant
+  campaign-wide source-shape assertion was pruned; the focused Sample boundary owns the rule.
+- Immutable-evidence replay verifies every retained raw/gzip identity and the original red facts.
+  The historical report remains red; no result was relabelled and no browser retry occurred.
+- Exact signed 7f then passed its tracked-input develop profile, conditional heap/launcher controls,
+  SceneMemory **44/44** in **12,753 ms** and Compendium **78/78** in **63,310 ms**, all unchanged,
+  named-verified and once/no-retry. Slice stopped after **159,754 ms** with exactly one causal scope,
+  `arc-4-tame-greeting-audio`; Glass correctly did not run.
+- Every Tame/audio/action/classifier/mutation/reload outcome was green. Only fixture setup
+  `actionAuthorityPrefix` was red because the new prefix check pinned Sample's complete Landing
+  witness, including state-derived seal `9ccc8a03…`. The equally valid Tame fixture differs only at
+  that opaque full-state seal (`10d953c3…`); all causal fields and the world-identity seal agree.
+- The bounded successor substitutes only the observed canonical lowercase SHA-256 into one exact
+  Landing witness byte template. Both retained real variants are positive; malformed seal and
+  changed invariant-field controls are red. It does not allowlist versions or digests and does not
+  duplicate the private product codec. The 7f report remains immutable FAIL.
+- Exact signed 961 then passed the complete tracked-input develop profile, SceneMemory **44/44**
+  in **12,912 ms** and Compendium **78/78** in **63,695 ms**, all unchanged, named-verified and
+  once/no-retry. Slice reached Storage and stopped after **171,033 ms** with exactly one generic
+  `harness` timeout; Glass correctly did not run. The old runner discarded the arm, target,
+  coordinator, product, durable and UI state before its assessor could classify the timeout, so
+  that immutable report proves neither a product failure nor a safe setup.
+- The current runner-only repair follows the already-proven Arc 3 pattern: exact native Tame
+  readiness precedes the one-shot hook; the hook return and visible latch must both be true before
+  input; keyboard dispatch additionally requires real focus; and any wait/capture/classifier red
+  retains four ordered phase snapshots and causal-stops before stale-authority or later Arc 4 work.
+  The existing assessor now receives the real `waitError` and `captureErrors` instead of hard-coded
+  green placeholders. Historical 961 evidence stays red.
+- Exact signed 656 then passed the tracked develop profile, SceneMemory **44/44** in **12,948 ms**
+  and Compendium **78/78** in **67,187 ms**, unchanged, named-verified and once/no-retry. Slice
+  stopped after **160,092 ms** with exactly one `arc-4-storage-precondition` scope; Glass correctly
+  did not run. The repaired runner retained the actual pre-arm state and stopped before hook arm or
+  input: Sample + Arc 9 were durable at revisions 108/109, 15/16 Yield remained, capture/Arc 5 were
+  current and the coordinator/card/hold/fault state was clean, but Tame remained model-disabled.
+- That report is not a storage failure. Source tracing proved a deterministic open-card publication
+  race: Sample queued Arc 9 before its awaiting UI continuation, so Capture correctly painted
+  read-only while Arc 9 owned the coordinator; Arc 9 then released without repainting. Pertar still
+  had nine eligible fauna and canonical next action Tame. The bounded successor republishes only a
+  still-current, visible, writable Survey Capture surface after Arc 9 fully releases, with runtime,
+  replacement, Training, ecology, coordinator and convergence guards. A publication exception
+  clears the action fence and schedules the existing fail-closed convergence reload.
+
+### Historical exact 656 acceptance and Capture-publication successor
+
+- `node tools/check-profile.mjs --profile=develop`: **PASS** —
+  **253 files / 2,510 passed / 1 skipped**, all three TypeScript programs, **34** art sources
+  with zero findings, **1,014/1,014** routes covering **1,010/1,010** Earth species, and
+  **454** declared specification fields with zero unread/inert fields. The complete Vitest owner
+  finished in **22.30 seconds**; the profile has seven commands, not thousands of jobs.
+- Integrated specification controls: **5/5 PASS**. Because this batch closes one classifier-input
+  gap, all exceptional controls also ran once: the **107-control** art mutation suite, Scene
+  fixed-second heap phase at **524,288 B/cycle**, browser resolver, Compendium browser preflight,
+  **591 independent Compendium controls**, and the raw-CDP launcher all **PASS**.
+- Focused release/Arc 4/Arc 9/evidence contracts: **6 files / 62 PASS**; the narrow product-fix
+  core plus immutable 656 replay is **3 files / 7 PASS**. Independent read-only review found no
+  product-path, capture/creature ownership, authority-order, fail-closed or negative-control gap.
+- Honest local stops during this successor validation were resolved at their owner. The Guide test
+  rejected the old 74-row oracle after the new player-visible fix note; it now binds 75 and the new
+  ordered hash. The first full profile then rejected stale source/build producer identities; only
+  those derived hashes and their exact tests/notes changed. No numeric ceiling, historical sample,
+  browser version, timeout or retry changed, and no browser certificate was retried.
+- The first consolidated profile attempt exposed one misplaced TypeScript suppression comment
+  after all assertions passed. It was corrected test-only, TypeScript passed independently, and
+  the complete profile then passed. This is retained as diagnosis, not hidden as a game failure.
+- Exact 7f conditional controls: Scene fixed-second heap **PASS** at 524,288 B/cycle; Chromium
+  launcher/deadline/cleanup selftest **PASS**. SceneMemory and Compendium browser predecessors are
+  green as recorded above; Slice remains red and grants no Glass/HUMAN/hosted/merge/release claim.
+- Exact 961 tracked admission passed at the same **253 files / 2,510 passed / 1 skipped** profile,
+  then its browser predecessors passed as recorded above. Its terminal Slice report is preserved
+  under `audits/` with raw/gzip identities and zero retry.
+- Exact 656 hermetic tracked-input preflight passed the same **253 files / 2,510 passed / 1 skipped**
+  develop profile. Its SceneMemory/Compendium predecessors and single-cause Slice red are preserved
+  with exact raw/gzip hashes. The current UI-race repair plus immutable replay has focused evidence
+  at **3 files / 7 PASS**, and all three TypeScript programs pass.
+
+### Exact ebf SceneMemory stop — diagnosis and bounded calibration boundary
+
+- Exact ebf passed the full hermetic tracked-input develop profile at **253 files / 2,510 passed /
+  1 skipped**, all TypeScript and static gates. All conditional browser-instrument controls also
+  passed once. Its one-shot SceneMemory run `20260830224113863-74114-9e38e9d458` then completed
+  lifecycle/cleanup in **12,928 ms** at **43/44** and correctly stopped the chain before
+  Compendium. No retry ran.
+- The sole red was desktop BFCache V8 **12,594,592** against the raw **12,582,912** ceiling: only
+  **11,680 bytes / 0.093%** over. The exact same Edge `152.0.4191.53`, JavaScript and CDP `1.3`
+  tuple passed 7f/961/656, so this is neither an Edge update nor rebaseline authority.
+- BFCache itself is not accumulating: cycle 4 → BFCache added **208,688 bytes**, below the
+  **209,248–214,544** range of the recent passes. Every DOM/listener/texture/cache/pending-owner
+  witness is unchanged, while range **355,208 < 524,288**, slope **115,843.2 < 131,072** and
+  aggregate heap **18,302,798 < 18,874,368** remain green. The raw absolute V8 band has exhausted
+  its original fixed-growth margin; the report does not prove a retained-resource regression.
+- The post-Arc-9 Capture republish is real bounded Landing/Capture work in this route, not disposable
+  boot noise. Removing or scoping it away would recreate the stale-disabled native action race.
+  The exact red is preserved under `audits/` with gzip/raw hashes and replayed without relabelling.
+- Per the existing fixed-growth law, no threshold moves from one red. The next step is exactly three
+  clean current-source calibration-only candidates, each one attempt/no retry. They must retain the
+  same topology, range, slope and cleanup before a source-growth-tolerant successor ruler may be
+  selected. Any ownership or slope drift returns to product diagnosis.
+
+### Three-candidate result and input-v5 activation
+
+- Exact signed clean source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied exactly three
+  calibration-only observations, once each with zero retry, under one unchanged build and Edge/CDP
+  tuple. Every candidate completed 44/44 calibration outcomes, stable topology/range/slope and
+  complete cleanup. Raw/gzip carriers, sizes and hashes are bound in `audits/README.md` and
+  `audits/ARC1C_SCENEMEM_SOURCE_NORMALIZATION_2026-08-30.md`.
+- Worst phone/desktop V8 growth over the scored initial snapshot is 5,387,552 / 5,677,328 bytes;
+  worst normalized working set is 11,098,217 / 11,352,882 bytes. The selected 6 MiB / 12 MiB
+  limits retain at least 614,128 / 1,230,030 bytes of headroom. The former raw 12 MiB post-route
+  V8 cap would fail two of these three unchanged-source desktop samples.
+- Input-v5 therefore judges same-run growth rather than fixed shipped-source footprint. It retains
+  broad 12 MiB initial-V8 and 18 MiB initial-aggregate safety stops plus every existing component,
+  range/slope, DOM/listener, resource, ownership, pending, BFCache, answerability and surface-vista
+  control. Raw totals remain report diagnostics. Exact/+1, equal-offset, point-only allocation,
+  boot-safety, missing/detached-initial and historical v3/v4 replay controls are green.
+- Final adversarial review found and closed one pre-certification loophole: the numeric baseline is
+  now bound to the exact profile, document token and `${profile}-initial` scored role, and named
+  verification re-derives profile-v3 metrics from retained raw evidence. The v5 initial heap
+  carrier exact-keys only its three scored counters, so raw CDP `totalSize` or future fields cannot
+  become version-sensitive authority. Cross-profile, same-profile-warmup, extra-field and
+  metric-summary substitutions are red. The focused SceneMemory/workflow/
+  authority/Arc 9 set is **6 files / 150 passed**, and all three TypeScript programs are green.
+- The post-Arc-9 Capture republish remains deliberately broad: Landing and durable Atlas build
+  Survey while product authority is busy, and any shared-coordinator owner can repaint a pending
+  Capture action disabled. Scoping the final republish by operation reason would recreate that
+  stale-readiness race; the wiring test now rejects such narrowing.
+
+<!-- END VERBATIM ROADMAP BLOCK: INPUT-v5 / FEED / ARC 4 / SCENEMEM CALIBRATION -->
+
 ## ARCHIVED 2026-08-30 — d611 consolidation handoff superseded by Arc 4 oracle repair
 
 > Moved byte-verbatim from the live ROADMAP during the d611 successor batch. Exact signed

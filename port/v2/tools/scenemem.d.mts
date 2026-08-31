@@ -60,12 +60,17 @@ export type SceneMemorySnapshotCollectorInput = Readonly<{
   label: string;
 }>;
 
+export type SceneMemoryFixedSnapshotCollectorInput = SceneMemorySnapshotCollectorInput & Readonly<{
+  phaseThresholdBytes: number;
+  stableResourcesRequired?: boolean;
+}>;
+
 export function sceneMemoryCollectSnapshotPass(
   input: SceneMemorySnapshotCollectorInput,
 ): Promise<any>;
 
 export function sceneMemoryCollectFixedSnapshot(
-  input: SceneMemorySnapshotCollectorInput,
+  input: SceneMemoryFixedSnapshotCollectorInput,
 ): Promise<any>;
 
 export function sceneMemorySnapshotPairErrors(
@@ -73,9 +78,24 @@ export function sceneMemorySnapshotPairErrors(
   stableResourcesRequired?: boolean,
 ): string[];
 
+export function sceneMemorySnapshotPhaseErrors(
+  snapshot: unknown,
+  stableResourcesRequired?: boolean,
+  expectedThresholdBytes?: number,
+): string[];
+
+export function sceneMemoryPhaseThresholdForMaximum(maxObservedBytes: number): number | null;
+
+export function sceneMemoryProfilePhaseMaximum(measurement: unknown): Readonly<{
+  snapshotCount: number;
+  fieldCount: number;
+  maximumBytes: number;
+  deltas: readonly Readonly<Record<string, number>>[];
+}>;
+
 export function sceneMemoryHeapPhaseControlSlopes(
-  pairs: unknown,
-): Readonly<{ probe: number; scored: number }>;
+  snapshots: unknown,
+): Readonly<Record<string, number>>;
 
 export function sceneMemoryInitialHeapProjection(heap: unknown): Readonly<{
   usedSize: number;
@@ -122,11 +142,17 @@ export function terminalPassEvidenceErrors(
 
 export function sceneMemoryProfileRawBindingErrors(measurement: unknown): string[];
 
+export function sceneMemoryProfilePhaseBudgetErrors(
+  measurement: unknown,
+  phaseThresholdBytes: number,
+): string[];
+
 export function terminalProfileEvidenceErrors(
   profiles: unknown,
   surfaceVistaRequired?: boolean,
   fixedSecondRequired?: boolean,
   sourceNormalizedRequired?: boolean,
+  fixedFourthRequired?: boolean,
 ): string[];
 
 export function terminalSourceAuthorityErrors(

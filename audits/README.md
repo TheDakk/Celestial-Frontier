@@ -10,6 +10,48 @@ summary of it.
 
 ## Contents
 
+### Signed `8792e8a…` Feed-summary successor, then two-pass SceneMemory phase-inconclusive red
+
+Exact clean SSH-signed source `8792e8acc5c20562ae3e17c48d46050824eb99d5` (tree
+`3a6f3639caae6521ed2b6c4fa20fa5392a6fee61`, parent
+`fc18f0416d7b58b2f5b4ed3a0829e259f3dd951b`) fixed only the Slice instrument's Feed-summary
+evidence owner. Its hermetic develop preflight passed **253 files / 2,529 passed / 1 skipped**, all
+three strict TypeScript programs, **34** art sources with zero findings, **1,014/1,014** override
+routes and **454** specification fields with zero inert fields. All five changed-instrument browser
+controls passed once on Microsoft Edge `152.0.4191.53` / CDP `1.3`.
+
+The exact no-retry SceneMemory run
+`20260830-pr35-8792e8a-feed-summary-scenemem-certification` then stopped after **13,322 ms** at
+**43/44**, with only `desktop/heap-plateau` red, one attempt, zero automatic retries, no fatal events
+and complete browser/server/workspace-lock cleanup. The product build remained byte-identical at
+`82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b`. Compendium, Slice and Glass
+did not run.
+
+- `ARC1C_SCENEMEM_PR35_FEED_SUMMARY_HEAP_PLATEAU_RED_20260830_8792E8A.json.gz`: **49,864 gzip /
+  788,479 raw bytes**; gzip/raw SHA-256
+  `ddffe7c9c6a3f70be691bbf2aace67dcaf589c9d51bed49815faaeca80e9b2ab` /
+  `26123f30de359a2a89802f8b52a085eca44383b9326135e4f426f0846b34ba13`.
+
+Desktop warm aggregates were 17,946,666 / 18,091,706 / 18,199,046 / 18,472,382 bytes: range
+**525,716** versus 524,288 and maximum positive slope **168,448.8** versus 131,072. The final
+cycle's fixed probe/scored embedder readings fell from **3,402,288** to **3,105,136** bytes, while
+the later BFCache reading fell again to **2,382,592**. All product-owned facts stayed flat across
+every cycle: one scope, 19 leases/textures, 18,350,080 live Canvas bytes, 87 managed entries, 469
+nodes, 70 listeners and zero pending work. V8 slope was ordinary and backing slope was zero.
+
+The original producer's verdict remains an honest two-pass red and is never retried or relabelled.
+Because it retained no third sample, it cannot establish whether its scored endpoint was at a
+repeatable native allocator phase; the replacement instrument therefore treats this failure class
+as phase-inconclusive and requires a fresh fixed validity pair before any product verdict. The
+bounded repair always runs four full passes, uses P1/P2 only to settle, requires P3/P4 absolute
+deltas in V8/embedder/backing/aggregate to fit one calibrated per-profile ceiling, and scores only
+P4. Invalid phase stops as instrument evidence before the contract. Product bytes and the existing
+524,288-byte range / 131,072-byte-per-cycle slope limits do not change.
+
+`ARC1C_SCENEMEM_PHASE_VALIDITY_2026-08-30.md` owns the reviewed four-pass protocol, its
+precommitted `calibration-required` state machine, discrimination controls, current producer/budget
+hashes and the pending three-candidate activation/certificate sequence.
+
 ### Signed `fc18f04…` expression predecessors, then shared-summary-selector instrument red
 
 Exact clean SSH-signed source `fc18f0416d7b58b2f5b4ed3a0829e259f3dd951b` (tree

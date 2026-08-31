@@ -1128,18 +1128,33 @@ describe('Arc 1C scene-memory contract', () => {
     expect(resultFor(result, 'phone/registry-coherence').pass).toBe(true);
   });
 
-  it('negative control: monotonic backing growth fails positive heap slope independently', () => {
-    const broken = input();
-    broken.profiles.phone.cycles.forEach((measured, index) => {
-      measured.heap.backingStorageSize += index * 15;
-    });
-    const result = evaluateSceneMemory(broken);
-    expect(resultFor(result, 'phone/heap-plateau')).toMatchObject({ pass: false });
-    expect(resultFor(result, 'phone/heap-dom-budget').pass).toBe(true);
-    expect(resultFor(result, 'phone/warm-resource-plateau').pass).toBe(true);
+  it('negative control: persistent growth remains red in every heap lane', () => {
+    for (const field of [
+      'usedSize', 'embedderHeapUsedSize', 'backingStorageSize',
+    ] as const) {
+      const broken = input();
+      broken.profiles.phone.cycles.forEach((measured, index) => {
+        measured.heap[field] += index * 15;
+      });
+      const result = evaluateSceneMemory(broken);
+      expect(resultFor(result, 'phone/heap-plateau'), field).toMatchObject({ pass: false });
+      expect(resultFor(result, 'phone/heap-dom-budget').pass, field).toBe(true);
+      expect(resultFor(result, 'phone/warm-resource-plateau').pass, field).toBe(true);
 
-    broken.budgets.phone.warmHeapSlopeBytesPerCycleMax = 25;
-    expect(resultFor(evaluateSceneMemory(broken), 'phone/heap-plateau').pass).toBe(true);
+      broken.budgets.phone.warmHeapSlopeBytesPerCycleMax = 25;
+      expect(resultFor(evaluateSceneMemory(broken), 'phone/heap-plateau').pass, field).toBe(true);
+    }
+
+    const aggregateOnly = input();
+    aggregateOnly.profiles.phone.cycles.forEach((measured, index) => {
+      measured.heap.usedSize += index * 4;
+      measured.heap.embedderHeapUsedSize += index * 4;
+      measured.heap.backingStorageSize += index * 4;
+    });
+    expect(resultFor(evaluateSceneMemory(aggregateOnly), 'phone/heap-plateau'))
+      .toMatchObject({ pass: false });
+    aggregateOnly.budgets.phone.warmHeapSlopeBytesPerCycleMax = 22;
+    expect(resultFor(evaluateSceneMemory(aggregateOnly), 'phone/heap-plateau').pass).toBe(true);
   });
 
   it('negative control: a transient heap spike fails range with a nonpositive slope', () => {

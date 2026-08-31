@@ -35,6 +35,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
+import { gunzipSync } from 'node:zlib';
 import { openChromiumCdp } from './browsercdp.mjs';
 import {
   COMPENDIUM_FIXTURE_SPEC_PATH,
@@ -55,6 +56,9 @@ const appDir = path.join(v2Root, 'apps', 'game');
 const distDir = path.join(appDir, 'dist');
 const outputDir = path.join(appDir, 'smoke');
 const reportPath = path.join(outputDir, 'scenemem-report.json');
+const auditRoot = path.join(repoRoot, 'audits');
+const CALIBRATION_BUDGET_RELATIVE_PATH = 'port/v2/budgets/scene-memory-v2.json';
+const calibrationBudgetPath = path.join(repoRoot, ...CALIBRATION_BUDGET_RELATIVE_PATH.split('/'));
 const baselineSavePath = path.join(v2Root, '..', 'baseline-v1.8.9', 'save-fixtures.json');
 const collectorPath = fileURLToPath(import.meta.url);
 const browserCdpPath = fileURLToPath(new URL('./browsercdp.mjs', import.meta.url));
@@ -76,9 +80,14 @@ const pixiManagedResourceOwnerPath = path.join(appDir, 'src', 'pixi-managed-reso
 const pixiBatchTextureArrayPath = path.join(appDir, 'src', 'pixi-batch-texture-array.ts');
 const sceneTextPath = path.join(appDir, 'src', 'scene-text.ts');
 
-const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v4';
+const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v5';
 const LIFECYCLE_SCHEMA = 'cf-v2-scene-memory-report-lifecycle/v1';
-const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v5';
+const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v6';
+const PROFILE_SCHEMA = 'cf-v2-scene-memory-profile/v4';
+const HEAP_PHASE_VALIDITY_SCHEMA = 'cf-v2-scene-memory-heap-phase-validity/v1';
+const HEAP_PHASE_POLICY_SCHEMA = 'cf-v2-scene-memory-heap-phase-policy/v1';
+const HEAP_PHASE_DERIVATION_SCHEMA = 'cf-v2-scene-memory-heap-phase-derivation/v1';
+const HEAP_PHASE_DERIVATION_RULE = 'smallest-power-of-two-strictly-greater';
 export const SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA =
   'cf-v2-scene-memory-browser-authority/v2';
 export const SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE = 'arc1c-scene-memory-only';
@@ -114,6 +123,14 @@ const SURFACE_VISTA_CACHE_ENTRIES_MAX = 1;
 const SURFACE_VISTA_CACHE_PIXELS_MAX = 960 * 430;
 const HEAP_PHASE_CONTROL_ALLOCATION_BYTES = 512 * 1024;
 const HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES = 128 * 1024;
+const HEAP_PHASE_SNAPSHOT_PASSES = 4;
+const HEAP_PHASE_SETTLING_PASSES = 2;
+const HEAP_PHASE_VALIDITY_PASSES = Object.freeze([3, 4]);
+const HEAP_PHASE_SCORED_PASS = 4;
+const HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES = 64 * 1024;
+const HEAP_PHASE_ALLOWED_THRESHOLDS_BYTES = Object.freeze(
+  [4, 8, 16, 32, 64].map((kilobytes) => kilobytes * 1024),
+);
 const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
 const SURFACE_VISTA_RELOAD_CLEANUP_BINDING = '__cfSceneMemoryVistaCacheCleanup';
 const BUDGET_FIELDS = Object.freeze([
@@ -472,15 +489,103 @@ export function sceneMemoryBrowserCapabilityInventoryErrors({
   return errors;
 }
 
+function sceneMemoryHeapPhasePolicyErrors(policy, budgetStatus, authority) {
+  const errors = [];
+  const expectedKeys = [
+    'schema', 'status', 'snapshotPasses', 'settlingPasses', 'validityPasses',
+    'scoredSnapshotPass', 'calibrationHardCapBytes', 'derivation', 'profiles',
+  ];
+  if (!policy || typeof policy !== 'object' || Array.isArray(policy)
+    || !same(Object.keys(policy).sort(), expectedKeys.sort())) {
+    return ['budget heapPhase policy keys are incomplete or invalid'];
+  }
+  if (policy.schema !== HEAP_PHASE_POLICY_SCHEMA || policy.status !== budgetStatus
+    || policy.snapshotPasses !== HEAP_PHASE_SNAPSHOT_PASSES
+    || policy.settlingPasses !== HEAP_PHASE_SETTLING_PASSES
+    || !same(policy.validityPasses, HEAP_PHASE_VALIDITY_PASSES)
+    || policy.scoredSnapshotPass !== HEAP_PHASE_SCORED_PASS
+    || policy.calibrationHardCapBytes !== HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES) {
+    errors.push('budget heapPhase fixed four-pass policy drifted');
+  }
+  const derivation = policy.derivation;
+  const derivationKeys = [
+    'schema', 'rule', 'candidateCount', 'candidateSetSha256', 'candidates',
+  ];
+  if (!derivation || typeof derivation !== 'object' || Array.isArray(derivation)
+    || !same(Object.keys(derivation).sort(), derivationKeys.sort())) {
+    errors.push('budget heapPhase derivation is incomplete');
+  } else {
+    if (derivation.schema !== HEAP_PHASE_DERIVATION_SCHEMA
+      || derivation.rule !== HEAP_PHASE_DERIVATION_RULE
+      || derivation.candidateCount !== 3) {
+      errors.push('budget heapPhase derivation rule/count drifted');
+    }
+    const candidates = derivation.candidates;
+    const validCandidate = (candidate) => candidate && typeof candidate === 'object'
+      && !Array.isArray(candidate)
+      && same(Object.keys(candidate).sort(), [
+        'file', 'gzipBytes', 'gzipSha256', 'rawBytes', 'rawSha256', 'runId',
+      ])
+      && /^[a-z0-9][a-z0-9-]{0,95}$/i.test(candidate.runId || '')
+      && /^[A-Z0-9][A-Z0-9_.-]*\.json\.gz$/i.test(candidate.file || '')
+      && Number.isSafeInteger(candidate.rawBytes) && candidate.rawBytes > 0
+      && Number.isSafeInteger(candidate.gzipBytes) && candidate.gzipBytes > 0
+      && /^[a-f0-9]{64}$/.test(candidate.rawSha256 || '')
+      && /^[a-f0-9]{64}$/.test(candidate.gzipSha256 || '');
+    if (budgetStatus === 'calibration-required') {
+      if (!Array.isArray(candidates) || candidates.length !== 0
+        || derivation.candidateSetSha256 !== null) {
+        errors.push('calibration-required heapPhase authority must not claim candidate carriers');
+      }
+    } else if (!Array.isArray(candidates) || candidates.length !== 3
+      || !candidates.every(validCandidate)
+      || new Set(candidates.map((candidate) => candidate.runId)).size !== 3
+      || new Set(candidates.map((candidate) => candidate.file)).size !== 3
+      || new Set(candidates.map((candidate) => candidate.rawSha256)).size !== 3
+      || new Set(candidates.map((candidate) => candidate.gzipSha256)).size !== 3) {
+      errors.push('active heapPhase candidates must be three distinct exact carriers');
+    } else if (derivation.candidateSetSha256 !== sha256(stableJson(candidates))) {
+      errors.push('active heapPhase candidate-set hash is detached from its carriers');
+    } else {
+      errors.push(...sceneMemoryHeapPhaseCandidateAuthorityErrors(
+        candidates, policy.profiles, authority?.producer, authority?.browser,
+      ));
+    }
+  }
+  if (!policy.profiles || typeof policy.profiles !== 'object' || Array.isArray(policy.profiles)
+    || !same(Object.keys(policy.profiles).sort(), Object.keys(PROFILES).sort())) {
+    errors.push('budget heapPhase profiles must be exactly phone and desktop');
+  } else {
+    for (const profile of Object.keys(PROFILES)) {
+      const value = policy.profiles[profile];
+      if (!value || typeof value !== 'object' || Array.isArray(value)
+        || !same(Object.keys(value), ['maxAbsolutePhaseDeltaBytes'])) {
+        errors.push(`budget heapPhase profile ${profile} is malformed`);
+      } else if (budgetStatus === 'calibration-required'
+        ? value.maxAbsolutePhaseDeltaBytes !== null
+        : !HEAP_PHASE_ALLOWED_THRESHOLDS_BYTES.includes(value.maxAbsolutePhaseDeltaBytes)) {
+        errors.push(`budget heapPhase profile ${profile} has an invalid phase ceiling for ${budgetStatus}`);
+      }
+    }
+  }
+  return errors;
+}
+
 export function validateSceneMemoryBudget(record) {
   const errors = [];
   if (!record || typeof record !== 'object' || Array.isArray(record)) {
     return { ok: false, errors: ['budget must be an object'] };
   }
   if (record.schema !== BUDGET_SCHEMA) errors.push(`budget schema must be ${BUDGET_SCHEMA}`);
-  if (!same(Object.keys(record).sort(), ['authority', 'profiles', 'schema'])) {
-    errors.push('budget keys must be exactly schema, authority, and profiles');
+  if (!same(Object.keys(record).sort(), ['authority', 'heapPhase', 'profiles', 'schema', 'status'])) {
+    errors.push('budget keys must be exactly schema, status, authority, heapPhase, and profiles');
   }
+  if (record.status !== 'active' && record.status !== 'calibration-required') {
+    errors.push('budget status must be active or calibration-required');
+  }
+  errors.push(...sceneMemoryHeapPhasePolicyErrors(
+    record.heapPhase, record.status, record.authority,
+  ));
   const browserAuthority = record.authority?.browser;
   const producerAuthority = record.authority?.producer;
   if (!same(Object.keys(record.authority || {}).sort(), ['browser', 'producer'])) {
@@ -546,6 +651,8 @@ export function reportBrowserAuthorityErrors(browser, expectedBrowserAuthority) 
 }
 
 function assertBudgetBinding(record, inputs, browser) {
+  assert(record.status === 'active',
+    'scene-memory certification requires an active calibrated budget');
   assert(same(record.authority.producer, producerAuthority(inputs)),
     'scene-memory budget producer authority does not match this collector/input set');
   const browserErrors = reportBrowserAuthorityErrors(browser, record.authority.browser);
@@ -884,21 +991,33 @@ export async function sceneMemoryCollectSnapshotPass({
 }
 
 export async function sceneMemoryCollectFixedSnapshot({
-  send, sessionId, collector, profile, label,
+  send, sessionId, collector, profile, label, phaseThresholdBytes,
+  stableResourcesRequired = false,
 }) {
-  const heapPhaseProbe = await sceneMemoryCollectSnapshotPass({
-    send, sessionId, collector, profile, label: `${label}-phase-probe`,
+  assert(Number.isSafeInteger(phaseThresholdBytes) && phaseThresholdBytes > 0
+    && phaseThresholdBytes <= HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
+  `${profile} ${label}: heap phase threshold must be an integer from 1 through ${HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES}`);
+  const labels = [
+    `${label}-phase-settle-1`,
+    `${label}-phase-settle-2`,
+    `${label}-phase-validity`,
+    label,
+  ];
+  const passes = [];
+  for (const passLabel of labels) {
+    passes.push(await sceneMemoryCollectSnapshotPass({
+      send, sessionId, collector, profile, label: passLabel,
+    }));
+  }
+  const scored = passes[HEAP_PHASE_SCORED_PASS - 1];
+  const provisional = Object.freeze({
+    ...scored,
+    heapPhasePasses: Object.freeze(passes.slice(0, HEAP_PHASE_SCORED_PASS - 1)),
   });
-  const authoritative = await sceneMemoryCollectSnapshotPass({
-    send, sessionId, collector, profile, label,
-  });
-  const snapshot = Object.freeze({ ...authoritative, heapPhaseProbe });
-  const pairErrors = sceneMemorySnapshotPairErrors(
-    snapshot, /-(?:warmup|warm)-\d+$/.test(label),
+  const heapPhaseValidity = deriveSceneMemoryHeapPhaseValidity(
+    provisional, stableResourcesRequired, phaseThresholdBytes,
   );
-  assert(pairErrors.length === 0,
-    `${profile} ${label}: fixed second snapshot pair is invalid (${pairErrors.join('; ')})`);
-  return snapshot;
+  return Object.freeze({ ...provisional, heapPhaseValidity });
 }
 
 function contractPoint(snapshot) {
@@ -990,7 +1109,8 @@ function snapshotPassCarrierErrors(snapshot) {
   if (!snapshotAggregateMatches(snapshot)) errors.push('heap aggregate is detached from raw counters');
   const target = snapshot?.answerability?.target;
   const targetValue = target?.value;
-  if (target?.ok !== true || !Number.isFinite(target?.durationMs)
+  if (snapshot?.answerability?.token !== snapshot?.label
+    || target?.ok !== true || !Number.isFinite(target?.durationMs)
     || target.durationMs < 0 || targetValue?.started !== true
     || !Number.isSafeInteger(targetValue?.before) || !Number.isSafeInteger(targetValue?.after)
     || targetValue.after <= targetValue.before
@@ -1009,6 +1129,10 @@ function snapshotPassCarrierErrors(snapshot) {
   if (!object(snapshot?.raw?.state) || !object(snapshot?.raw?.scene)
     || !object(snapshot?.raw?.compendium) || !object(snapshot?.raw?.shipyard)) {
     errors.push('resource carrier is incomplete');
+  } else if (snapshot.raw.scene.documentToken !== targetValue?.documentTokenBefore
+    || !Number.isSafeInteger(snapshot.raw.state.tickerTicks)
+    || snapshot.raw.state.tickerTicks < targetValue?.after) {
+    errors.push('resource carrier is detached from answerability');
   }
   const dom = snapshot?.dom;
   if (!Number.isSafeInteger(dom?.documents) || dom.documents <= 0
@@ -1041,19 +1165,386 @@ export function sceneMemorySnapshotPairErrors(snapshot, stableResourcesRequired 
   return errors;
 }
 
-export function sceneMemoryHeapPhaseControlSlopes(pairs) {
-  assert(Array.isArray(pairs) && pairs.length === WARM_CYCLES,
-    'heap phase control requires four fixed pairs');
-  const lane = (key) => pairs.map((pair) => {
-    const value = pair?.[key]?.heap?.backingStorageSize;
-    assert(Number.isFinite(value) && value >= 0,
-      `heap phase control ${key} backing sample is invalid`);
+function sceneMemoryHeapPhasePasses(snapshot) {
+  if (!Array.isArray(snapshot?.heapPhasePasses)
+    || snapshot.heapPhasePasses.length !== HEAP_PHASE_SCORED_PASS - 1) return [];
+  return [...snapshot.heapPhasePasses, snapshot];
+}
+
+function heapPhaseDeltas(third, fourth) {
+  const fields = ['usedSize', 'embedderHeapUsedSize', 'backingStorageSize'];
+  const deltas = {};
+  for (const field of fields) {
+    const left = third?.heap?.[field];
+    const right = fourth?.heap?.[field];
+    if (!Number.isFinite(left) || left < 0 || !Number.isFinite(right) || right < 0) return null;
+    deltas[field] = Math.abs(right - left);
+  }
+  if (!snapshotAggregateMatches(third) || !snapshotAggregateMatches(fourth)) return null;
+  deltas.aggregate = Math.abs(fourth.heapAggregateBytes - third.heapAggregateBytes);
+  return Object.freeze(deltas);
+}
+
+function deriveSceneMemoryHeapPhaseValidity(
+  snapshot, stableResourcesRequired, phaseThresholdBytes,
+) {
+  const reasons = [];
+  const passes = sceneMemoryHeapPhasePasses(snapshot);
+  if (passes.length !== HEAP_PHASE_SNAPSHOT_PASSES) {
+    reasons.push('heap phase pass inventory must contain exactly four fixed passes');
+  } else {
+    passes.forEach((pass, index) => {
+      reasons.push(...snapshotPassCarrierErrors(pass)
+        .map((error) => `heap phase pass ${index + 1} ${error}`));
+    });
+    const expectedLabels = [
+      `${snapshot.label}-phase-settle-1`,
+      `${snapshot.label}-phase-settle-2`,
+      `${snapshot.label}-phase-validity`,
+      snapshot.label,
+    ];
+    if (!same(passes.map((pass) => pass?.label), expectedLabels)) {
+      reasons.push('heap phase pass order/labels are invalid');
+    }
+    for (let index = 1; index < passes.length; index++) {
+      const previousAfter = passes[index - 1]?.answerability?.target?.value?.after;
+      const currentBefore = passes[index]?.answerability?.target?.value?.before;
+      if (!Number.isSafeInteger(previousAfter) || !Number.isSafeInteger(currentBefore)
+        || currentBefore < previousAfter) {
+        reasons.push(`heap phase ticker progression is invalid between passes ${index} and ${index + 1}`);
+      }
+    }
+    try {
+      const compared = [passes[2], passes[3]];
+      if (!same(snapshotResourcePoint(compared[0]), snapshotResourcePoint(compared[1]))) {
+        reasons.push('heap phase validity resource fingerprint drifted between passes 3 and 4');
+      }
+      if (stableResourcesRequired) {
+        const scoredResource = snapshotResourcePoint(passes[3]);
+        for (let index = 0; index < passes.length - 1; index++) {
+          if (!same(snapshotResourcePoint(passes[index]), scoredResource)) {
+            reasons.push(`heap phase resource fingerprint drifted between passes ${index + 1} and 4`);
+          }
+        }
+      }
+    } catch (error) {
+      reasons.push(`heap phase resource fingerprint is invalid (${error instanceof Error
+        ? error.message : String(error)})`);
+    }
+  }
+  if (!Number.isSafeInteger(phaseThresholdBytes) || phaseThresholdBytes <= 0
+    || phaseThresholdBytes > HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES) {
+    reasons.push(`heap phase threshold must be an integer from 1 through ${HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES}`);
+  }
+  const deltas = passes.length === HEAP_PHASE_SNAPSHOT_PASSES
+    ? heapPhaseDeltas(passes[2], passes[3]) : null;
+  if (deltas === null) reasons.push('heap phase validity deltas are absent or invalid');
+  else if (Number.isSafeInteger(phaseThresholdBytes) && phaseThresholdBytes > 0) {
+    for (const [field, delta] of Object.entries(deltas)) {
+      if (delta > phaseThresholdBytes) {
+        reasons.push(`${field} absolute phase delta ${delta} exceeded ceiling ${phaseThresholdBytes}`);
+      }
+    }
+  }
+  return Object.freeze({
+    schema: HEAP_PHASE_VALIDITY_SCHEMA,
+    status: reasons.length === 0 ? 'valid' : 'invalid',
+    comparedPasses: HEAP_PHASE_VALIDITY_PASSES,
+    scoredSnapshotPass: HEAP_PHASE_SCORED_PASS,
+    maxAbsolutePhaseDeltaBytes: phaseThresholdBytes,
+    deltas,
+    reasons: Object.freeze(reasons),
+  });
+}
+
+export function sceneMemorySnapshotPhaseErrors(
+  snapshot, stableResourcesRequired = false, expectedThresholdBytes = undefined,
+) {
+  const threshold = expectedThresholdBytes === undefined
+    ? snapshot?.heapPhaseValidity?.maxAbsolutePhaseDeltaBytes : expectedThresholdBytes;
+  const expected = deriveSceneMemoryHeapPhaseValidity(
+    snapshot, stableResourcesRequired, threshold,
+  );
+  const errors = [...expected.reasons];
+  if (!same(snapshot?.heapPhaseValidity, expected)) {
+    errors.push('heap phase validity evidence is detached from the retained raw passes');
+  }
+  return errors;
+}
+
+export function sceneMemoryPhaseThresholdForMaximum(maxObservedBytes) {
+  assert(Number.isSafeInteger(maxObservedBytes) && maxObservedBytes >= 0,
+    'heap phase calibration maximum must be a nonnegative integer');
+  return HEAP_PHASE_ALLOWED_THRESHOLDS_BYTES.find(
+    (threshold) => threshold > maxObservedBytes,
+  ) ?? null;
+}
+
+export function sceneMemoryProfilePhaseMaximum(measurement) {
+  const snapshots = [
+    measurement?.initial,
+    ...(Array.isArray(measurement?.warmups) ? measurement.warmups : []),
+    ...(Array.isArray(measurement?.measured) ? measurement.measured : []),
+    measurement?.bfcacheSnapshot,
+  ];
+  assert(snapshots.length === 10 && snapshots.every(Boolean),
+    'heap phase calibration profile must retain exactly 10 snapshots');
+  const deltas = snapshots.map((snapshot) => {
+    const passes = sceneMemoryHeapPhasePasses(snapshot);
+    assert(passes.length === HEAP_PHASE_SNAPSHOT_PASSES,
+      'heap phase calibration snapshot must retain exactly four passes');
+    const value = heapPhaseDeltas(passes[2], passes[3]);
+    assert(value !== null, 'heap phase calibration snapshot deltas are invalid');
     return value;
   });
   return Object.freeze({
-    probe: leastSquaresSlope(lane('probe')),
-    scored: leastSquaresSlope(lane('scored')),
+    snapshotCount: snapshots.length,
+    fieldCount: 4,
+    maximumBytes: Math.max(...deltas.flatMap((value) => Object.values(value))),
+    deltas: Object.freeze(deltas),
   });
+}
+
+function sceneMemoryContractProfilesFromEvidence(profiles) {
+  return Object.fromEntries(Object.entries(profiles || {}).map(
+    ([profile, measurement]) => [profile, {
+      initial: {
+        documentToken: measurement.initial.raw.scene.documentToken,
+        heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),
+      },
+      initialVista: measurement.initialVista,
+      firstSurfaceVista: measurement.firstSurfaceVista,
+      precondition: measurement.precondition,
+      cycles: measurement.cycles,
+      bfcache: measurement.bfcache,
+      reloadCleanup: measurement.reloadCleanup,
+    }],
+  ));
+}
+
+function sceneMemoryCalibrationBudgetsFromEvidence(profiles) {
+  return Object.fromEntries(Object.entries(profiles || {}).map(
+    ([profile, measurement]) => [
+      profile, calibrationBudget(sceneMemoryMetricSummary(measurement)),
+    ],
+  ));
+}
+
+function sceneMemoryHeapPhaseCandidateAuthorityErrors(
+  candidates, selectedProfiles, expectedProducerAuthority, expectedBrowserAuthority,
+) {
+  const errors = [];
+  const reports = [];
+  const maxima = Object.fromEntries(Object.keys(PROFILES).map((profile) => [profile, []]));
+  const expectedPolicy = {
+    attemptCount: 1,
+    automaticRetries: 0,
+    warmupCycles: WARMUP_CYCLES,
+    measuredWarmCycles: WARM_CYCLES,
+    commandTimeoutMs: COMMAND_TIMEOUT_MS,
+    snapshotPasses: HEAP_PHASE_SNAPSHOT_PASSES,
+    settlingPasses: HEAP_PHASE_SETTLING_PASSES,
+    validityPasses: HEAP_PHASE_VALIDITY_PASSES,
+    scoredSnapshotPass: HEAP_PHASE_SCORED_PASS,
+    phaseInvalidity: 'instrument-fail-before-contract',
+    phaseCalibrationHardCapBytes: HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
+    targetTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
+    heartbeatTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
+  };
+  for (const candidate of candidates) {
+    try {
+      const file = path.resolve(auditRoot, candidate.file);
+      if (path.dirname(file) !== auditRoot || path.basename(file) !== candidate.file) {
+        throw new Error('carrier path escapes the audits root');
+      }
+      const carrierStat = fs.lstatSync(file);
+      if (!carrierStat.isFile() || carrierStat.isSymbolicLink()) {
+        throw new Error('carrier must be a regular non-symlink file');
+      }
+      const trackedCarrier = portable(path.relative(repoRoot, file));
+      let trackedOutput;
+      try {
+        trackedOutput = execFileSync(
+          'git', ['ls-files', '--error-unmatch', '--', trackedCarrier],
+          { cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] },
+        ).trim();
+      } catch {
+        throw new Error('carrier is not tracked by Git');
+      }
+      if (trackedOutput !== trackedCarrier) {
+        throw new Error('carrier Git identity is ambiguous');
+      }
+      const compressed = fs.readFileSync(file);
+      if (compressed.byteLength !== candidate.gzipBytes
+        || sha256(compressed) !== candidate.gzipSha256) {
+        throw new Error('gzip carrier bytes/hash drifted');
+      }
+      const raw = gunzipSync(compressed);
+      if (raw.byteLength !== candidate.rawBytes || sha256(raw) !== candidate.rawSha256) {
+        throw new Error('raw carrier bytes/hash drifted');
+      }
+      const report = JSON.parse(raw.toString('utf8'));
+      if (report.schema !== REPORT_SCHEMA || report.runId !== candidate.runId
+        || report.status !== 'calibration'
+        || report.certification !== 'calibration-only-not-certified'
+        || report.lifecycle?.schema !== LIFECYCLE_SCHEMA
+        || report.lifecycle?.status !== 'complete'
+        || !same(report.policy, expectedPolicy)
+        || !same(report.cleanup, { browser: true, server: true, workspaceLock: true })
+        || !same(report.source?.begin, report.source?.end)
+        || !same(Object.keys(report.source?.begin || {}).sort(), [
+          'branch', 'commit', 'state', 'statusSha256', 'workingTreeSha256',
+        ])
+        || !/^[a-f0-9]{40}$/.test(report.source?.begin?.commit || '')
+        || typeof report.source?.begin?.branch !== 'string'
+        || report.source.begin.branch.length === 0
+        || report.source?.begin?.state !== 'committed'
+        || report.source?.begin?.statusSha256 !== sha256('')
+        || !/^[a-f0-9]{64}$/.test(report.source?.begin?.workingTreeSha256 || '')
+        || report.inputs?.budget !== null
+        || !same(report.budget, { schema: null, path: null, sha256: null })
+        || !same(Object.keys(report.calibrationBoundary || {}).sort(), [
+          'path', 'schema', 'sha256', 'status',
+        ])
+        || report.calibrationBoundary?.schema !== BUDGET_SCHEMA
+        || report.calibrationBoundary?.status !== 'calibration-required'
+        || report.calibrationBoundary?.path !== CALIBRATION_BUDGET_RELATIVE_PATH
+        || !/^[a-f0-9]{64}$/.test(report.calibrationBoundary?.sha256 || '')
+        || report.contractInput?.schema !== 'cf-v2-scene-memory-input/v5'
+        || !report.build || report.build.schema !== 'cf-v2-scene-memory-build/v1'
+        || !Array.isArray(report.build.files)
+        || report.build.sha256 !== sha256(stableJson(report.build.files))
+        || report.inputs?.buildDist !== report.build.sha256
+        || !same(producerAuthority(report.inputs || {}), expectedProducerAuthority)
+        || !sceneMemoryBrowserAuthorityMatches(report.browser, expectedBrowserAuthority)
+        || !Array.isArray(report.outcomes) || report.outcomes.length !== OUTCOME_COUNT
+        || report.outcomes.some((outcome) => outcome?.pass !== true)
+        || !same(report.findings, []) || !same(report.fatalEvents, [])) {
+        throw new Error('terminal calibration identity/lifecycle is incomplete or red');
+      }
+      const resolvedCommit = execFileSync(
+        'git', ['rev-parse', '--verify', `${report.source.begin.commit}^{commit}`],
+        { cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] },
+      ).trim();
+      if (resolvedCommit !== report.source.begin.commit) {
+        throw new Error('calibration source commit is not one immutable literal commit');
+      }
+      const boundaryBlob = execFileSync(
+        'git', [
+          'show', `${report.source.begin.commit}:${CALIBRATION_BUDGET_RELATIVE_PATH}`,
+        ],
+        { cwd: repoRoot, stdio: ['ignore', 'pipe', 'ignore'] },
+      );
+      if (sha256(boundaryBlob) !== report.calibrationBoundary.sha256) {
+        throw new Error('calibration boundary hash is detached from the source commit');
+      }
+      const boundaryBudget = JSON.parse(boundaryBlob.toString('utf8'));
+      const boundaryValidation = validateSceneMemoryBudget(boundaryBudget);
+      if (!boundaryValidation.ok || boundaryBudget.status !== 'calibration-required'
+        || !same(boundaryBudget.authority?.producer, expectedProducerAuthority)
+        || !same(boundaryBudget.authority?.browser, expectedBrowserAuthority)) {
+        throw new Error('source commit lacks the exact calibration-required producer boundary');
+      }
+      const profileErrors = terminalProfileEvidenceErrors(
+        report.profiles, true, false, true, true,
+      );
+      if (profileErrors.length) {
+        throw new Error(`raw profile evidence is invalid (${profileErrors.join('; ')})`);
+      }
+      for (const profile of Object.keys(PROFILES)) {
+        const phaseErrors = sceneMemoryProfilePhaseBudgetErrors(
+          report.profiles[profile], HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
+        );
+        if (phaseErrors.length) {
+          throw new Error(`${profile} calibration phase is invalid (${phaseErrors.join('; ')})`);
+        }
+        maxima[profile].push(sceneMemoryProfilePhaseMaximum(
+          report.profiles[profile],
+        ).maximumBytes);
+      }
+      const expectedContractProfiles = sceneMemoryContractProfilesFromEvidence(
+        report.profiles,
+      );
+      const expectedCalibrationBudgets = sceneMemoryCalibrationBudgetsFromEvidence(
+        report.profiles,
+      );
+      if (!same(report.contractInput.profiles, expectedContractProfiles)
+        || !same(report.contractInput.budgets, expectedCalibrationBudgets)) {
+        throw new Error('calibration contract input is detached from raw profile evidence');
+      }
+      const recomputed = evaluateSceneMemory(report.contractInput);
+      if (recomputed.status !== 'pass' || !same(report.verdict, recomputed)
+        || !same(report.outcomes, recomputed.outcomes)) {
+        throw new Error('calibration product verdict is detached or red');
+      }
+      reports.push(report);
+    } catch (error) {
+      errors.push(`${candidate.runId}: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  }
+  if (reports.length === candidates.length) {
+    const identity = (report) => ({
+      source: report.source.begin,
+      build: report.build,
+      browser: report.browser,
+      inputs: report.inputs,
+      calibrationBoundary: report.calibrationBoundary,
+    });
+    if (!reports.every((report) => same(identity(report), identity(reports[0])))) {
+      errors.push('heapPhase calibration carriers do not share one source/build/browser/input tuple');
+    }
+    if (new Set(reports.map((report) => report.startedAt)).size !== reports.length) {
+      errors.push('heapPhase calibration carriers are not independent attempts');
+    }
+    const targetIds = reports.flatMap((report) => Object.keys(PROFILES)
+      .map((profile) => report.profiles[profile]?.targetId));
+    const documentTokens = reports.flatMap((report) => Object.keys(PROFILES)
+      .map((profile) => report.profiles[profile]?.documentToken));
+    if (targetIds.some((value) => typeof value !== 'string' || value.length === 0)
+      || new Set(targetIds).size !== targetIds.length
+      || documentTokens.some((value) => typeof value !== 'string' || value.length === 0)
+      || new Set(documentTokens).size !== documentTokens.length) {
+      errors.push('heapPhase calibration profile target/document identities are not independent');
+    }
+    for (const profile of Object.keys(PROFILES)) {
+      const observedMaximum = Math.max(...maxima[profile]);
+      const expectedThreshold = sceneMemoryPhaseThresholdForMaximum(observedMaximum);
+      const selected = selectedProfiles?.[profile]?.maxAbsolutePhaseDeltaBytes;
+      if (expectedThreshold === null) {
+        errors.push(`${profile} heapPhase maximum ${observedMaximum} reached the 64 KiB refusal boundary`);
+      } else if (selected !== expectedThreshold) {
+        errors.push(`${profile} heapPhase ceiling ${String(selected)} is not the derived ${expectedThreshold} for maximum ${observedMaximum}`);
+      }
+    }
+  }
+  return errors;
+}
+
+function assertSceneMemoryHeapPhaseSnapshot(
+  snapshot, profile, label, stableResourcesRequired, phaseThresholdBytes,
+) {
+  const errors = sceneMemorySnapshotPhaseErrors(
+    snapshot, stableResourcesRequired, phaseThresholdBytes,
+  );
+  assert(errors.length === 0,
+    `${profile} ${label}: fixed fourth snapshot phase is invalid (${errors.join('; ')})`);
+}
+
+export function sceneMemoryHeapPhaseControlSlopes(snapshots) {
+  assert(Array.isArray(snapshots) && snapshots.length === WARM_CYCLES,
+    'heap phase control requires four fixed snapshots');
+  const lane = (passIndex) => snapshots.map((snapshot) => {
+    const passes = sceneMemoryHeapPhasePasses(snapshot);
+    const value = passes[passIndex]?.heap?.backingStorageSize;
+    assert(Number.isFinite(value) && value >= 0,
+      `heap phase control pass ${passIndex + 1} backing sample is invalid`);
+    return value;
+  });
+  return Object.freeze(Object.fromEntries(
+    Array.from({ length: HEAP_PHASE_SNAPSHOT_PASSES }, (_, index) => [
+      `pass${index + 1}`, leastSquaresSlope(lane(index)),
+    ]),
+  ));
 }
 
 async function runHeapPhaseSelftest() {
@@ -1066,7 +1557,7 @@ async function runHeapPhaseSelftest() {
   let evidence = null;
   try {
     browser = await openChromiumCdp({
-      label: 'SceneMemory fixed-second retained-allocation control',
+      label: 'SceneMemory fixed-fourth retained-allocation control',
       userDataPrefix: 'cf-scenemem-heap-phase-control',
       commandTimeoutMs: COMMAND_TIMEOUT_MS, startupTimeoutMs: 45_000,
       webSocketOpenTimeoutMs: 15_000, shutdownTimeoutMs: 2_000,
@@ -1097,14 +1588,17 @@ async function runHeapPhaseSelftest() {
     const collector = Object.freeze({
       evaluate: async (ownedSessionId) => {
         const response = await browser.send('Runtime.evaluate', {
-          expression: `({schema:'cf-v2-scene-memory-heap-phase-control-carrier/v1',
-            retained:globalThis.__cfHeapPhaseRetained.length})`,
+          expression: `(()=>{const S=globalThis.__CF_SLICE__,tickerTicks=S.api.state().tickerTicks;
+            return {state:{mode:'control',tickerTicks},
+              scene:{documentToken:S.documentToken,registry:{},managedResources:{}},
+              compendium:{},shipyard:{}}})()`,
           returnByValue: true,
         }, ownedSessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
         return evaluationValue(response, 'heap phase control carrier');
       },
     });
-    const pairs = [];
+    const snapshots = [];
+    const phaseDeltas = [];
     for (let index = 0; index < WARM_CYCLES; index++) {
       const allocation = await browser.send('Runtime.evaluate', {
         expression: `(()=>{const value=new Uint8Array(${HEAP_PHASE_CONTROL_ALLOCATION_BYTES});
@@ -1115,20 +1609,22 @@ async function runHeapPhaseSelftest() {
       assert(evaluationValue(allocation, `heap phase retained allocation ${index + 1}`)
         === HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
       `heap phase retained allocation ${index + 1} was incomplete`);
-      const probe = await sceneMemoryCollectSnapshotPass({
-        send: browser.send, sessionId, collector, profile: 'control',
-        label: `control-${index + 1}-phase-probe`,
-      });
-      const scored = await sceneMemoryCollectSnapshotPass({
+      const snapshot = await sceneMemoryCollectFixedSnapshot({
         send: browser.send, sessionId, collector, profile: 'control',
         label: `control-${index + 1}`,
+        phaseThresholdBytes: HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
       });
-      pairs.push(Object.freeze({ probe, scored }));
+      const validityErrors = sceneMemorySnapshotPhaseErrors(
+        snapshot, false, HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
+      );
+      assert(validityErrors.length === 0,
+        `fixed-fourth sampler did not converge its validity pair (${validityErrors.join('; ')})`);
+      snapshots.push(snapshot);
+      phaseDeltas.push(snapshot.heapPhaseValidity.deltas);
     }
-    const slopes = sceneMemoryHeapPhaseControlSlopes(pairs);
-    assert(slopes.probe > HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES
-      && slopes.scored > HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES,
-    `fixed-second sampler erased retained growth (${JSON.stringify(slopes)})`);
+    const slopes = sceneMemoryHeapPhaseControlSlopes(snapshots);
+    assert(Object.values(slopes).every((slope) => slope > HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES),
+    `fixed-fourth sampler erased retained growth (${JSON.stringify(slopes)})`);
     const cleared = await browser.send('Runtime.evaluate', {
       expression: 'globalThis.__cfHeapPhaseRetained=[];true', returnByValue: true,
     }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
@@ -1138,14 +1634,16 @@ async function runHeapPhaseSelftest() {
       send: browser.send, sessionId, collector, profile: 'control', label: 'control-release',
     });
     assert(released.heap.backingStorageSize
-      < pairs.at(-1).scored.heap.backingStorageSize - HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
-    'fixed-second sampler did not distinguish released backing storage from retained growth');
+      < snapshots.at(-1).heap.backingStorageSize - HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
+    'fixed-fourth sampler did not distinguish released backing storage from retained growth');
     evidence = Object.freeze({
       browser: controlBrowser,
       allocationBytesPerCycle: HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
       minimumSlopeBytesPerCycle: HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES,
+      maximumPhaseDeltaBytes: HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
       slopes,
-      retainedBackingBytes: pairs.at(-1).scored.heap.backingStorageSize,
+      phaseDeltas,
+      retainedBackingBytes: snapshots.at(-1).heap.backingStorageSize,
       releasedBackingBytes: released.heap.backingStorageSize,
     });
   } catch (error) {
@@ -1530,7 +2028,9 @@ function routeInventory(stages) {
   }));
 }
 
-async function collectBfcache({ send, collector, sessionId, profile, documentToken }) {
+async function collectBfcache({
+  send, collector, sessionId, profile, documentToken, phaseThresholdBytes,
+}) {
   const before = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__,r=S.api.sceneResourceDiagnostics();return {
     documentToken:S.documentToken,pagehide:r.persistedPagehideCount,pageshow:r.persistedPageshowCount}})()`,
   'bfcache precondition');
@@ -1580,12 +2080,11 @@ async function collectBfcache({ send, collector, sessionId, profile, documentTok
   `${profile}: persisted pagehide/pageshow did not complete`, { before, resumed, lastError });
   const snapshot = await sceneMemoryCollectFixedSnapshot({
     send, sessionId, collector, profile, label: `${profile}-bfcache`,
+    phaseThresholdBytes,
   });
-  const point = contractPoint(snapshot);
   return Object.freeze({
     snapshot,
-    point: Object.freeze({
-      ...point,
+    lifecycle: Object.freeze({
       pagehidePersisted: resumed.pagehide === before.pagehide + 1,
       pageshowPersisted: resumed.pageshow === before.pageshow + 1,
       resumed: true,
@@ -1727,7 +2226,7 @@ export function sceneMemoryMetricSummary(measurement) {
   const points = [measurement.precondition, ...measurement.cycles, measurement.bfcache].filter(Boolean);
   const initialHeapUsed = measurement.initial?.heap?.usedSize;
   assert(Number.isFinite(initialHeapUsed) && initialHeapUsed >= 0,
-    'source-normalized heap metrics require the scored fixed-second initial V8 baseline');
+    'source-normalized heap metrics require the scored fixed-fourth initial V8 baseline');
   const warmAggregates = measurement.cycles.map((point) => point.heap.usedSize
     + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize);
   const warmHeapSlope = Math.max(0, ...[
@@ -1788,10 +2287,10 @@ function calibrationBudget(metrics) {
 
 async function collectProfile({
   send, origin, fixture, veteranRaw, profile, viewport, fatalEvents, sessionProfiles,
-  bindingEvents, onProgress,
+  bindingEvents, onProgress, phaseThresholdBytes,
 }) {
   const measurement = {
-    schema: 'cf-v2-scene-memory-profile/v3', profile, viewport,
+    schema: PROFILE_SCHEMA, profile, viewport,
     targetId: null, documentToken: null, initial: null, warmup: null, warmups: [], precondition: null,
     initialVista: null, firstSurfaceVista: null, surfaceVistaObservations: [],
     warmupInventory: null, measured: [], cycles: [], bfcache: null, bfcacheSnapshot: null,
@@ -1839,7 +2338,12 @@ async function collectProfile({
       `${profile}: fixture installed ${String(installed?.installed)} of ${fixture.count}`, installed);
     measurement.initial = await sceneMemoryCollectFixedSnapshot({
       send, sessionId, collector, profile, label: `${profile}-initial`,
+      phaseThresholdBytes,
     });
+    onProgress(measurement);
+    assertSceneMemoryHeapPhaseSnapshot(
+      measurement.initial, profile, `${profile}-initial`, false, phaseThresholdBytes,
+    );
     measurement.initialVista = surfaceVistaState(measurement.initial.raw.scene);
     onProgress(measurement);
 
@@ -1853,9 +2357,14 @@ async function collectProfile({
       measurement.routeInventories.push(routeInventory(warmupRoute.stages));
       measurement.warmup = await sceneMemoryCollectFixedSnapshot({
         send, sessionId, collector, profile, label: `${profile}-warmup-${index + 1}`,
+        phaseThresholdBytes, stableResourcesRequired: true,
       });
       measurement.warmups.push(measurement.warmup);
       onProgress(measurement);
+      assertSceneMemoryHeapPhaseSnapshot(
+        measurement.warmup, profile, `${profile}-warmup-${index + 1}`,
+        true, phaseThresholdBytes,
+      );
     }
     measurement.precondition = contractPoint(measurement.warmup);
     productAssert(measurement.precondition.registry.observationWindow === 0,
@@ -1871,8 +2380,13 @@ async function collectProfile({
       measurement.routeInventories.push(routeInventory(driven.stages));
       const snapshot = await sceneMemoryCollectFixedSnapshot({
         send, sessionId, collector, profile, label: `${profile}-warm-${index + 1}`,
+        phaseThresholdBytes, stableResourcesRequired: true,
       });
       measurement.measured.push(snapshot);
+      onProgress(measurement);
+      assertSceneMemoryHeapPhaseSnapshot(
+        snapshot, profile, `${profile}-warm-${index + 1}`, true, phaseThresholdBytes,
+      );
       measurement.cycles.push(Object.freeze({
         cycle: index + 1,
         inventory: driven.inventory,
@@ -1882,9 +2396,18 @@ async function collectProfile({
     }
     const bfcacheEvidence = await collectBfcache({
       send, collector, sessionId, profile, documentToken: measurement.documentToken,
+      phaseThresholdBytes,
     });
-    measurement.bfcache = bfcacheEvidence.point;
     measurement.bfcacheSnapshot = bfcacheEvidence.snapshot;
+    onProgress(measurement);
+    assertSceneMemoryHeapPhaseSnapshot(
+      measurement.bfcacheSnapshot, profile, `${profile}-bfcache`, false,
+      phaseThresholdBytes,
+    );
+    measurement.bfcache = Object.freeze({
+      ...contractPoint(measurement.bfcacheSnapshot),
+      ...bfcacheEvidence.lifecycle,
+    });
     onProgress(measurement);
     measurement.reloadCleanup = await collectReloadCleanup({
       collector, sessionId, profile, documentToken: measurement.documentToken,
@@ -1933,7 +2456,9 @@ function browserSample(browser) {
   });
 }
 
-function makeRunningReport({ id, startedAt, source, inputs, mode, budgetFile }) {
+function makeRunningReport({
+  id, startedAt, source, inputs, mode, budgetFile, calibrationBoundary = null,
+}) {
   return {
     schema: REPORT_SCHEMA, status: 'running', runId: id,
     lifecycle: { schema: LIFECYCLE_SCHEMA, status: 'pending' },
@@ -1941,7 +2466,12 @@ function makeRunningReport({ id, startedAt, source, inputs, mode, budgetFile }) 
     policy: {
       attemptCount: 1, automaticRetries: 0, warmupCycles: WARMUP_CYCLES,
       measuredWarmCycles: WARM_CYCLES, commandTimeoutMs: COMMAND_TIMEOUT_MS,
-      snapshotPasses: 2, scoredSnapshotPass: 2,
+      snapshotPasses: HEAP_PHASE_SNAPSHOT_PASSES,
+      settlingPasses: HEAP_PHASE_SETTLING_PASSES,
+      validityPasses: HEAP_PHASE_VALIDITY_PASSES,
+      scoredSnapshotPass: HEAP_PHASE_SCORED_PASS,
+      phaseInvalidity: 'instrument-fail-before-contract',
+      phaseCalibrationHardCapBytes: HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
       targetTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
       heartbeatTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
     },
@@ -1956,6 +2486,7 @@ function makeRunningReport({ id, startedAt, source, inputs, mode, budgetFile }) 
     fixture: { count: 1500, rowsSha256: inputs.fixtureRows },
     budget: budgetFile ? { schema: BUDGET_SCHEMA, path: portable(budgetFile), sha256: inputs.budget }
       : { schema: null, path: null, sha256: null },
+    calibrationBoundary,
     profiles: {}, contractInput: null, verdict: null, outcomes: [], findings: [], fatalEvents: [],
     cleanup: { browser: false, server: false, workspaceLock: false },
   };
@@ -2006,6 +2537,7 @@ async function runGate(options) {
   let build = null;
   let budget = null;
   let authoritativeBudgetFile = null;
+  let calibrationBoundary = null;
   let fixture = null;
   const profiles = {};
   let contractInput = null;
@@ -2027,11 +2559,27 @@ async function runGate(options) {
     assert(options.calibrate || options.budgetFile,
       'normal scene-memory runs require --budget; use --calibrate for non-certifying evidence');
     fixture = buildCompendiumFixture();
-    if (options.budgetFile) {
+    if (options.calibrate) {
+      const boundaryFile = assertBudgetAuthority(calibrationBudgetPath);
+      const boundaryBudget = readJson(boundaryFile);
+      const validation = validateSceneMemoryBudget(boundaryBudget);
+      assert(validation.ok,
+        `scene memory calibration boundary invalid: ${validation.errors.join('; ')}`);
+      assert(boundaryBudget.status === 'calibration-required',
+        'scene memory calibration requires the tracked budget to be calibration-required');
+      calibrationBoundary = Object.freeze({
+        schema: BUDGET_SCHEMA,
+        status: boundaryBudget.status,
+        path: CALIBRATION_BUDGET_RELATIVE_PATH,
+        sha256: hashFile(boundaryFile),
+      });
+    } else if (options.budgetFile) {
       authoritativeBudgetFile = assertBudgetAuthority(options.budgetFile);
       budget = readJson(authoritativeBudgetFile);
       const validation = validateSceneMemoryBudget(budget);
       assert(validation.ok, `scene memory budget invalid: ${validation.errors.join('; ')}`);
+      assert(budget.status === 'active',
+        'scene memory budget is calibration-required; run --calibrate instead of certifying');
       /* The imported contract is also the only semantic validator for a
          budget. Empty measurements intentionally yield a red verdict but
          must not throw when the budget shape is authoritative. */
@@ -2046,7 +2594,7 @@ async function runGate(options) {
     running = makeRunningReport({
       id, startedAt, source: sourceBegin, inputs,
       mode: options.calibrate ? 'calibration-only-not-certified' : 'contract-budget',
-      budgetFile: authoritativeBudgetFile,
+      budgetFile: authoritativeBudgetFile, calibrationBoundary,
     });
     atomicWriteJson(reportPath, running);
     assert(options.allowDirty || sourceBegin.state === 'committed',
@@ -2089,10 +2637,12 @@ async function runGate(options) {
 
     const veteranRaw = sceneMemoryVeteranRaw();
     await sceneMemoryCollectProfilesOnce(async (profile, viewport) => {
+      const phaseThresholdBytes = budget?.heapPhase?.profiles?.[profile]
+        ?.maxAbsolutePhaseDeltaBytes ?? HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES;
       const measurement = await collectProfile({
         send: browser.send, origin: server.origin,
         fixture, veteranRaw, profile, viewport, fatalEvents, sessionProfiles,
-        bindingEvents,
+        bindingEvents, phaseThresholdBytes,
         onProgress: (partial) => {
           profiles[profile] = partial;
           running = { ...running, profiles: { ...profiles }, fatalEvents: [...fatalEvents] };
@@ -2231,6 +2781,7 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
   try {
     const fixedSecondRequired = measurement?.schema === 'cf-v2-scene-memory-profile/v2'
       || measurement?.schema === 'cf-v2-scene-memory-profile/v3';
+    const fixedFourthRequired = measurement?.schema === PROFILE_SCHEMA;
     if (!measurement?.initial || !same(
       measurement.initialVista,
       surfaceVistaState(measurement.initial.raw?.scene || {}),
@@ -2271,6 +2822,42 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
           errors.push('final warmup alias is detached from retained warmup evidence');
         }
       }
+    } else if (fixedFourthRequired) {
+      errors.push(...sceneMemorySnapshotPhaseErrors(measurement.initial)
+        .map((error) => `initial ${error}`));
+      if (measurement.initial?.label !== `${measurement.profile}-initial`) {
+        errors.push('initial snapshot label/profile drifted');
+      }
+      const initialSceneToken = measurement.initial?.raw?.scene?.documentToken;
+      const initialTarget = measurement.initial?.answerability?.target?.value;
+      if (typeof measurement.documentToken !== 'string'
+        || measurement.documentToken.length === 0
+        || initialSceneToken !== measurement.documentToken
+        || initialTarget?.documentTokenBefore !== measurement.documentToken
+        || initialTarget?.documentTokenAfter !== measurement.documentToken) {
+        errors.push('initial snapshot document identity drifted');
+      }
+      if (!same(measurement.metrics, sceneMemoryMetricSummary(measurement))) {
+        errors.push('normalized metric summary is detached from retained profile evidence');
+      }
+    }
+    if (fixedFourthRequired) {
+      if (!Array.isArray(measurement.warmups)
+        || measurement.warmups.length !== WARMUP_CYCLES) {
+        errors.push('retained warmup snapshot inventory is incomplete');
+      } else {
+        for (let index = 0; index < WARMUP_CYCLES; index++) {
+          const snapshot = measurement.warmups[index];
+          if (snapshot?.label !== `${measurement.profile}-warmup-${index + 1}`) {
+            errors.push(`warmup snapshot ${index + 1} label/order drifted`);
+          }
+          errors.push(...sceneMemorySnapshotPhaseErrors(snapshot, true)
+            .map((error) => `warmup snapshot ${index + 1} ${error}`));
+        }
+        if (!same(measurement.warmup, measurement.warmups.at(-1))) {
+          errors.push('final warmup alias is detached from retained warmup evidence');
+        }
+      }
     }
     if (!measurement?.warmup || !same(
       measurement.precondition,
@@ -2305,13 +2892,20 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
     } else {
       for (let index = 0; index < WARM_CYCLES; index++) {
         const { cycle, inventory, ...point } = measurement.cycles[index];
-        void cycle;
         void inventory;
+        if (cycle !== index + 1) errors.push(`cycle ${index + 1} ordinal drifted`);
+        if (fixedFourthRequired
+          && measurement.measured[index]?.label !== `${measurement.profile}-warm-${index + 1}`) {
+          errors.push(`cycle ${index + 1} snapshot label/order drifted`);
+        }
         if (!same(point, contractPoint(measurement.measured[index]))) {
           errors.push(`cycle ${index + 1} is detached from its raw snapshot`);
         }
         if (fixedSecondRequired) {
           errors.push(...sceneMemorySnapshotPairErrors(measurement.measured[index], true)
+            .map((error) => `cycle ${index + 1} ${error}`));
+        } else if (fixedFourthRequired) {
+          errors.push(...sceneMemorySnapshotPhaseErrors(measurement.measured[index], true)
             .map((error) => `cycle ${index + 1} ${error}`));
         }
       }
@@ -2334,8 +2928,15 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
       if (!same(point, contractPoint(measurement.bfcacheSnapshot))) {
         errors.push('bfcache point is detached from its raw snapshot');
       }
+      if (fixedFourthRequired
+        && measurement.bfcacheSnapshot?.label !== `${measurement.profile}-bfcache`) {
+        errors.push('bfcache snapshot label/profile drifted');
+      }
       if (fixedSecondRequired) {
         errors.push(...sceneMemorySnapshotPairErrors(measurement.bfcacheSnapshot)
+          .map((error) => `bfcache ${error}`));
+      } else if (fixedFourthRequired) {
+        errors.push(...sceneMemorySnapshotPhaseErrors(measurement.bfcacheSnapshot)
           .map((error) => `bfcache ${error}`));
       }
     }
@@ -2346,9 +2947,30 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
   return errors;
 }
 
+export function sceneMemoryProfilePhaseBudgetErrors(measurement, phaseThresholdBytes) {
+  if (measurement?.schema !== PROFILE_SCHEMA) {
+    return [`profile schema must be ${PROFILE_SCHEMA} for fixed-fourth phase authority`];
+  }
+  const snapshots = [
+    ['initial', measurement.initial, false],
+    ...(Array.isArray(measurement.warmups) ? measurement.warmups.map(
+      (snapshot, index) => [`warmup ${index + 1}`, snapshot, true],
+    ) : []),
+    ...(Array.isArray(measurement.measured) ? measurement.measured.map(
+      (snapshot, index) => [`cycle ${index + 1}`, snapshot, true],
+    ) : []),
+    ['bfcache', measurement.bfcacheSnapshot, false],
+  ];
+  if (snapshots.length !== 10) return ['phase-authority snapshot inventory must contain 10 snapshots'];
+  return snapshots.flatMap(([label, snapshot, stableResourcesRequired]) =>
+    sceneMemorySnapshotPhaseErrors(
+      snapshot, stableResourcesRequired, phaseThresholdBytes,
+    ).map((error) => `${label} ${error}`));
+}
+
 export function terminalProfileEvidenceErrors(
   profiles, surfaceVistaRequired = false, fixedSecondRequired = false,
-  sourceNormalizedRequired = false,
+  sourceNormalizedRequired = false, fixedFourthRequired = false,
 ) {
   const errors = [];
   const profileKeys = Object.keys(profiles || {}).sort();
@@ -2359,11 +2981,13 @@ export function terminalProfileEvidenceErrors(
     const measurement = profiles?.[profile];
     if (!measurement || measurement.profile !== profile
       || !same(measurement.viewport, PROFILES[profile])
-      || (sourceNormalizedRequired
-        ? measurement.schema !== 'cf-v2-scene-memory-profile/v3'
+      || (fixedFourthRequired
+        ? measurement.schema !== PROFILE_SCHEMA
+        : sourceNormalizedRequired
+          ? measurement.schema !== 'cf-v2-scene-memory-profile/v3'
         : fixedSecondRequired && measurement.schema !== 'cf-v2-scene-memory-profile/v2')
       || !measurement.precondition
-      || (fixedSecondRequired && (!Array.isArray(measurement.warmups)
+      || ((fixedSecondRequired || fixedFourthRequired) && (!Array.isArray(measurement.warmups)
         || measurement.warmups.length !== WARMUP_CYCLES
         || !same(measurement.warmup, measurement.warmups.at(-1))))
       || !Array.isArray(measurement.measured) || measurement.measured.length !== WARM_CYCLES
@@ -2403,15 +3027,20 @@ function verifyReport(report, expectedRunId, options) {
   if (report?.policy?.attemptCount !== 1 || report?.policy?.automaticRetries !== 0
     || report?.policy?.warmupCycles !== WARMUP_CYCLES
     || report?.policy?.measuredWarmCycles !== WARM_CYCLES
-    || report?.policy?.snapshotPasses !== 2
-    || report?.policy?.scoredSnapshotPass !== 2) {
-    errors.push('one-attempt/warm-cycle/fixed-second policy drifted');
+    || report?.policy?.snapshotPasses !== HEAP_PHASE_SNAPSHOT_PASSES
+    || report?.policy?.settlingPasses !== HEAP_PHASE_SETTLING_PASSES
+    || !same(report?.policy?.validityPasses, HEAP_PHASE_VALIDITY_PASSES)
+    || report?.policy?.scoredSnapshotPass !== HEAP_PHASE_SCORED_PASS
+    || report?.policy?.phaseInvalidity !== 'instrument-fail-before-contract'
+    || report?.policy?.phaseCalibrationHardCapBytes
+      !== HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES) {
+    errors.push('one-attempt/warm-cycle/fixed-fourth phase policy drifted');
   }
   if (!same(report?.cleanup, { browser: true, server: true, workspaceLock: true })) {
     errors.push('terminal cleanup is incomplete');
   }
   errors.push(...terminalProfileEvidenceErrors(
-    report?.profiles, surfaceVistaRequired, true, sourceNormalizedRequired,
+    report?.profiles, surfaceVistaRequired, false, sourceNormalizedRequired, true,
   ));
   errors.push(...terminalOutcomeInventoryErrors(
     report?.outcomes, null, surfaceVistaRequired ? OUTCOME_COUNT : 42,
@@ -2419,6 +3048,9 @@ function verifyReport(report, expectedRunId, options) {
   errors.push(...terminalPassEvidenceErrors(report?.fatalEvents, report?.findings));
   if (report?.certification !== 'contract-budget') {
     errors.push('report certification must be contract-budget');
+  }
+  if (report?.calibrationBoundary !== null) {
+    errors.push('certifying report must not claim a calibration boundary');
   }
   if (!sourceNormalizedRequired) {
     errors.push('terminal certification requires the current source-normalized input contract');
@@ -2430,6 +3062,17 @@ function verifyReport(report, expectedRunId, options) {
       const currentBudget = readJson(authoritativeBudgetFile);
       const validation = validateSceneMemoryBudget(currentBudget);
       if (!validation.ok) errors.push(...validation.errors);
+      else if (currentBudget.status !== 'active') {
+        errors.push('terminal verification requires an active calibrated budget');
+      } else {
+        for (const profile of Object.keys(PROFILES)) {
+          const threshold = currentBudget.heapPhase.profiles[profile]
+            .maxAbsolutePhaseDeltaBytes;
+          errors.push(...sceneMemoryProfilePhaseBudgetErrors(
+            report?.profiles?.[profile], threshold,
+          ).map((error) => `${profile} ${error}`));
+        }
+      }
       const expectedReportBudget = {
         schema: BUDGET_SCHEMA,
         path: portable(authoritativeBudgetFile),
@@ -2446,22 +3089,7 @@ function verifyReport(report, expectedRunId, options) {
   try {
     if (!report?.contractInput || !report?.verdict) errors.push('contract input/verdict is absent');
     else {
-      const expectedProfiles = Object.fromEntries(Object.entries(report.profiles || {})
-        .map(([profile, measurement]) => [profile, {
-          ...(sourceNormalizedRequired
-            ? { initial: {
-              documentToken: measurement.initial.raw.scene.documentToken,
-              heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),
-            } } : {}),
-          ...(surfaceVistaRequired ? {
-            initialVista: measurement.initialVista,
-            firstSurfaceVista: measurement.firstSurfaceVista,
-          } : {}),
-          precondition: measurement.precondition,
-          cycles: measurement.cycles,
-          bfcache: measurement.bfcache,
-          ...(surfaceVistaRequired ? { reloadCleanup: measurement.reloadCleanup } : {}),
-        }]));
+      const expectedProfiles = sceneMemoryContractProfilesFromEvidence(report.profiles);
       if (!same(report.contractInput.profiles, expectedProfiles)) {
         errors.push('contract input is detached from the collected profile evidence');
       }
