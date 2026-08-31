@@ -1,6 +1,6 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-31 current local successor overlay (matches the working tree and supersedes older
+> **2026-08-31 current signed implementation overlay (matches source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` and supersedes older
 > candidate-status labels):** exact signed predecessor `7a528c7798434ae4ab8765d4898b59df9931f9de`
 > passed Compendium **78/78** once/no-retry; its exact-source develop Slice stopped after
 > **305,022 ms** with **7 findings across 5 scopes**, and Glass did not run. The local successor

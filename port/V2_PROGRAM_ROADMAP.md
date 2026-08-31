@@ -7,7 +7,7 @@
 > `20260831064707724-71924-76b0bac73a0f` stopped terminal red once/no-retry after **305,022 ms**
 > with **7 findings across 5 scopes**; Glass did not run.
 >
-> The bounded dirty successor repairs measured phone Prime/Guide geometry, topology-based lazy-
+> Exact SSH-signed implementation source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` repairs measured phone Prime/Guide geometry, topology-based lazy-
 > producer settlement, exact one-commit F4 causality for Survey/Add/Share, and Charter ledger
 > topology with causal-stop. It changes no creature, genome, painter, organism, biome or art
 > structure. The right-sized develop profile is green at **253 files / 2,556 passed / 1

@@ -4,7 +4,7 @@
 > descriptions below remain current unless source says otherwise):** exact clean signed source
 > `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium **78/78** once/no-retry, then its
 > exact-source develop Slice stopped after **305,022 ms** with **7 findings across 5 scopes**;
-> Glass did not run. The bounded local successor places the native phone Prime control in a measured
+> Glass did not run. Exact SSH-signed implementation source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` places the native phone Prime control in a measured
 > second chrome tier below the live topbar, keeps it minimum-44-pixel, centered, reachable and clear
 > of HP/player/search/trail geometry, and hides it while a phone Survey card or dock panel owns that
 > same vertical band. The Guide is judged only after real content publication plus two animation

@@ -8,7 +8,7 @@
 > once/no-retry after **305,022 ms** with **7 findings across 5 scopes**; Glass
 > (**cross-device presentation**) did not run.
 >
-> The bounded local successor replaces stale count/snapshot oracles with measured layout and exact
+> Exact SSH-signed implementation source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` replaces stale count/snapshot oracles with measured layout and exact
 > lifecycle/receipt topology, proves one causal F4 commit for Survey/Add/Share, and causal-stops
 > Charter descendants after a red predecessor. The fast develop boundary is green at **253 files /
 > 2,556 passed / 1 skipped**, all three TypeScript programs, **34** clean art sources,

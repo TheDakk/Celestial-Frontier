@@ -38,7 +38,7 @@ The retained evidence separates product truth from obsolete observations:
   `ascended`/ending reconciliation as unrelated drift; the desktop Land descendant then ran after
   the invalid predecessor and produced a cascade finding.
 
-The bounded local successor replaces count snapshots with per-kind lifecycle/result topology,
+Exact SSH-signed implementation source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` replaces count snapshots with per-kind lifecycle/result topology,
 waits for exact same-document F4 revision/receipt settlement before dependent presses, causal-stops
 every descendant after a red predecessor/control, uses measured phone/Guide geometry with exact
 `finally` restoration, distinguishes action settlement from lost authority, and binds Charter Land
