@@ -1,5 +1,76 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+> **2026-08-31 current signed raw Back-action failure-cleanup implementation (supersedes older
+> “current” labels below; all hosted/local evidence remains immutable):** exact SSH-signed source
+> `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
+> `f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) contains the Compendium
+> collector/selftest/budget-authority repair and all four historical 3ca carriers. Current HEAD is
+> its signed documentation-only descendant; its SHA is intentionally not embedded here, and
+> `openai/mac` is three commits ahead of `origin/openai/mac`. No current-source browser certificate
+> exists yet.
+>
+> The first-causal-boundary defect existed only on an exceptional path. If native Back input failed
+> after the witness was armed, cleanup used the normal tracked `evaluate` wrapper. A successful
+> listener/carrier cleanup then advanced `currentStage`, `lastCompletedStage`, completed stages and
+> the command ledger, allowing a partial report to name cleanup instead of the original rejected
+> `Input.dispatchMouseEvent`. The repair invokes one raw bounded cleanup evaluation outside that
+> tracking wrapper, validates exact aborted-controller/absent-carrier state, preserves the primary
+> error's original command and failing stage, and appends any independent cleanup failure without
+> replacing it. The Compendium selftest now passes **618 controls**, including a red historical
+> tracked-cleanup mutant and a contract-verifiable original-command partial report.
+>
+> Current measurement / outcome-contract / collector / producer / budget-file authority is
+> `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` /
+> `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+> `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d` /
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`. Contract and product
+> producer are unchanged. Product behavior/source, CSS, the **±2px** tolerance, numeric
+> rulers/ceilings, historical samples, timeouts, one-click/no-retry rule, 78-outcome inventory and
+> version-tolerant Edge-family + CDP `1.3` policy are unchanged. Exact `3ca7d30…` and its four
+> carriers below are committed by 4ea but remain historical exact-source evidence only and are not
+> rebound. The then-dirty implementation candidate passed the complete browser-free develop profile
+> at **254/254 files / 2,567 passed / 1 skipped**, with all TypeScript, art, route and specification
+> owners green; this remains recorded as dirty-source evidence. A fresh exact-clean-source
+> **Compendium → Slice (`develop`) → Glass (`develop`)** chain remains pending. No push, hosted attempt, retry,
+> Ready transition, merge, release, version bump, preview/publication or deployment is authorized.
+
+> **2026-08-31 historical exact-source terminal-green local Compendium Back action-time boundary
+> (not current-source certification; evidence remains immutable):** exact clean
+> committed source `3ca7d300f4c8192fef596d4f08e8c493a8875863` (tree
+> `7801ead641bf88eb4480767adb816eb5d1e39865`) passed the isolated develop profile at **254 files /
+> 2,567 passed / 1 skipped** plus all TypeScript programs. The Actions-budget selftest's 64 controls,
+> `browserpath` selftest, Compendium browser-preflight selftest, **611-control** Compendium selftest,
+> SceneMemory heap-phase selftest and `browsercdp` selftest were green. Live Compendium preflight
+> accepted Edge `152.0.4191.53` / CDP `1.3`; the point version remains provenance only.
+>
+> The unchanged exact source completed one fail-fast/no-retry **Compendium → Slice (`develop`) →
+> Glass (`develop`)** chain, with each exact named verifier green. Compendium
+> `20260831-pr35-back-action-3ca7d30-compendium-certification` passed **78/78** in **66,094 ms**.
+> Its one trusted capture-phase event and cleanup prove desktop setup/action/return
+> `-46 / -46 / -46` and phone `-2 / -2 / -2`; the witness controller is aborted and its carrier is
+> absent. Slice `20260831-pr35-back-action-3ca7d30-slice-certification` passed in **365,285 ms** with
+> zero findings/scopes and ten screenshots. Full-certifying Glass
+> `20260831-pr35-back-action-3ca7d30-glass-certification` passed in **111,353 ms** across all **12**
+> viewport classes with zero findings, zero instrument failures and all **104/104** planned controls
+> executed—none blocked or omitted. The four immutable carriers and their hashes are indexed in
+> `audits/README.md`.
+>
+> That exact source's measurement / outcome-contract / collector / producer / budget-file authority
+> was
+> `20a1b773e7eec309de31772c2b1c0a174c0f175cfc798e573f20a53b966aba2e` /
+> `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+> `a5afcffd2f75e7cc2db1284194bc3eb76bde22bf4a1b4741f5157ce25339df51` /
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `c60b2f1fb50e978c0d6f522ee52a0274e9a45cd63a51f1643808229b1e25ce60`. Product behavior and
+> source, CSS, the **±2px** tolerance, numeric rulers/ceilings, historical samples, timeouts,
+> one-click/no-retry rule, 78-outcome inventory and version-tolerant Edge-family + CDP `1.3` policy
+> are unchanged. SceneMemory certification remains production-only/quarantined and Recovery is not
+> part of develop; neither ran. The four carriers remain historical evidence for exact `3ca7d30…`
+> and are committed by 4ea, but do not certify 4ea or its documentation descendant. No push,
+> hosted attempt, Ready transition, merge, release, version bump, preview/publication or deployment
+> is authorized.
+
 > **2026-08-31 current Compendium action-time Back-witness repair (supersedes every older
 > “current” status label below; dated evidence remains immutable):** PR #35's one authorized
 > `test-battery` attempt, GitHub run `33437596315`, tested exact head
@@ -3354,7 +3425,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 
 | Tool | Role |
 |---|---|
-| **Current Compendium Back action-time boundary (2026-08-31)** | `compendiummem` retains a pre-helper `setup` anchor only as chronology, accepts the virtual row's final settled native activation point, then arms one exact capture-phase `cf-v2-compendium-back-action-witness/v1` carrier before press/release. The carrier must observe exactly one trusted delegated click on the current document and bind row/index, target/hit/point, input phase, panel identity and action-time anchor; `before` is that anchor, and Back must return it immediately and after settlement within the existing ±2px ruler. Read/failure paths abort the listener and remove the carrier. GitHub run `33437596315` remains immutable 77/78 red under its stale pre-helper comparator; the retained carrier and current authority hashes are indexed in `audits/README.md`. Product/CSS, numeric ceilings, timeout, retry, one-click and browser-version policies are unchanged. |
+| **Current Compendium Back action-time boundary (2026-08-31)** | `compendiummem` retains a pre-helper `setup` anchor only as chronology, accepts the virtual row's final settled native activation point, then arms one exact capture-phase `cf-v2-compendium-back-action-witness/v1` carrier before press/release. The carrier must observe exactly one trusted delegated click on the current document and bind row/index, target/hit/point, input phase, panel identity and action-time anchor; `before` is that anchor, and Back must return it immediately and after settlement within the existing ±2px ruler. If native input fails after arming, raw bounded cleanup now bypasses the tracked observation wrapper, proves controller-aborted/carrier-absent state and preserves the original failed command/stage; cleanup failure is independent. GitHub run `33437596315` remains immutable 77/78 red under its stale pre-helper comparator. Exact clean `3ca7d30…` historically passed Compendium 78/78 with desktop `-46 / -46 / -46` and phone `-2 / -2 / -2`, then passed unchanged-source develop Slice and full Glass with their exact named verifiers. Those four carriers certify only `3ca7d30…` and are committed by signed implementation source `4ea8198…`; the current implementation/documentation descendant requires a fresh exact-clean-source chain. Historical carriers and current authority hashes are indexed in `audits/README.md`. Product/CSS, numeric ceilings, timeout, retry, one-click and browser-version policies are unchanged. |
 | **Current Glass causal/presentation boundary (2026-08-31)** | The first instrument red retains one root, blocks dependent controls and stops later viewport work. The first product red stops dependent product work and records a complete disjoint blocked suffix; blocked controls are never reported as executed. Rendered Guide ingress reopens and re-queries the unique current topic carrier, judges all 22 required current-copy baselines before mutations, classifies copy mismatch as product-red and setup/control/restoration defects as instrument-red, and arms mutants only from green. Generic visibility walks ancestor `<details>` elements: while closed, only the direct first Summary subtree is rendered; retained rectangles/computed style/requested scroll do not admit hidden actions, while opening does. Product controls keep Capture actions base-centered with a 44px floor while preserving ≤390px full width and short landscape; rarity-removal controls independently cover Compendium badges and owned/non-missing Binder slots while `.missing` semantics remain distinct. |
 | **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |
 | **Current Arc 4 Pertar ledger/storage boundary inside `npm run smoke:ci` (2026-08-30)** | Exact d611 evidence passed Layout 787/787, SceneMemory 44/44 and Compendium 78/78, then preserved a terminal five-scope Slice red. Signed 7f repaired the shared boot/Survey/Landing prefix, Sample + Arc 9 two-receipt tail and causal stop; 961 repaired its source-derived Landing-seal oracle and retained a one-scope generic Storage timeout. Signed 656 then passed the tracked profile plus SceneMemory 44/44 and Compendium 78/78 before Slice stopped once/no-retry at exactly one pre-arm scope. The runner proved Sample/Arc 9 durable at +1/+2 with 15/16 Yield and idle current authority, but native Tame remained model-disabled; it stopped before the storage hook or input, so this is no storage verdict. Source tracing found Arc 9 temporarily owned the coordinator during Capture's repaint and released without republishing the open card. The bounded successor releases product/coordinator/persistence authority first, then guardedly republishes only the same current visible writable non-Training Capture surface; failure clears the fence and converges read-only. The runner still proves target/focus/coordinator readiness before arming, visible latch before dispatch, ordered state plus terminal raw/UI/interaction, real errors and causal stop. Capture pools/Yield/RNG/save/creature/art/audio, retry, sleep, timeout, numeric ruler and Edge baseline are unchanged. |

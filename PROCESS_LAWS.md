@@ -22,6 +22,44 @@
 > the version-tolerant Edge-family + CDP `1.3` policy are unchanged. Do not repair this class by
 > changing the product, widening tolerance, extending a timeout, retrying the click or pinning an
 > Edge point version.
+>
+> Exact clean committed source `3ca7d300f4c8192fef596d4f08e8c493a8875863` historically proved
+> the action-time success path end to end for its exact bytes. Its develop profile passed **254
+> files / 2,567 tests / 1 skipped**, all
+> TypeScript programs and the changed-browser-instrument controls; live preflight accepted Edge
+> `152.0.4191.53` / CDP `1.3`. Compendium passed **78/78** once/no-retry with exactly one trusted
+> action event and complete listener/carrier cleanup. Desktop setup → action → return stayed
+> `-46 → -46 → -46`; phone stayed `-2 → -2 → -2`. The unchanged source then passed develop Slice
+> with zero findings/ten screenshots and full Glass across all 12 viewports with zero findings,
+> zero instrument failures and **104/104** controls executed. The four immutable carriers are
+> indexed in `audits/README.md`. This proves the action-time witness without weakening the law or
+> changing product/CSS, tolerance, timeout, retry, numeric-ruler or browser-version policy. It does
+> not certify the later signed raw failure-cleanup implementation.
+
+> **FAILURE CLEANUP MAY RELEASE RESOURCES, BUT IT MUST NOT REWRITE THE FIRST CAUSAL BOUNDARY**
+> (2026-08-31). If native Back input fails after its action witness is armed, running cleanup through
+> the normal tracked observation wrapper can turn successful cleanup into the apparent last
+> completed/failing stage. That launders the original rejected CDP command from the partial report
+> even though listener/carrier release was correct. Keep the primary error's exact stage and command
+> ledger frozen. Run cleanup through one raw, bounded transport evaluation that owns no observation
+> stage, require exact `{controllerAborted: true, carrierPresent: false}`, and report residue or
+> cleanup failure independently without replacing the primary error.
+>
+> Exact SSH-signed implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
+> `f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) implements that raw owner under
+> measurement
+> `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` and collector
+> `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d`, with unchanged contract
+> `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` and budget-file SHA-256
+> `454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`. Its **618-control**
+> selftest makes the old tracked-cleanup overwrite red and requires a contract-verifiable partial
+> report retaining the original command. Contract, product producer, timeout, retry, numeric ruler,
+> CSS and browser-version policy are unchanged. Exact `3ca7d30…` remains historical evidence; the
+> four historical carriers are committed by 4ea but remain bound only to 3ca. The then-dirty
+> implementation candidate passed the complete browser-free develop profile at **254/254 files /
+> 2,567 passed / 1 skipped**, with all TypeScript, art, route and specification owners green. The
+> current signed documentation-only descendant records that result without rebinding it; a fresh
+> exact-clean-source Compendium → Slice → Glass chain remains required.
 
 > **A COPY ORACLE READS THE COPY'S AUTHORITATIVE CARRIER.** A visible panel and the lesson that
 > explains it are separate surfaces even when they describe the same system. Judge tutorial copy
