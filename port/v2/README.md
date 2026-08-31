@@ -67,6 +67,18 @@
 > creature, save, timeout, retry, browser ruler or Edge baseline changed. A fresh unchanged-source
 > Compendium → Slice → Glass run is still required before this repair is locally green.
 >
+> Exact clean SSH-signed Feed-harness source `e66babed3773c2f6343fb60f8f7d1e05802f4ba3`
+> subsequently passed that hermetic develop profile, live Edge preflight, Compendium **78/78**
+> once/no-retry and named verification. Its exact-source Slice successor
+> `20260830-pr35-feed-reopen-e66babe-slice-certification` stopped terminal-red once/no-retry after
+> 224,355 ms at the earlier `arc-4-publication-convergence` scope, before the repaired Feed reopen
+> executed. Read-only diagnosis proves the normal product sequence was coherent: Capture committed
+> revision 135 and the required progression tail committed revision 136. The stale synthetic-fault
+> oracle still required a Capture-only revision-135 endpoint. The result is instrument-red, not
+> product-bug evidence; its five later findings have no valid predecessor. Glass and Recovery did
+> not run, the Slice is never retried, and the proposed production-only tier for this isolated chaos
+> scenario is not yet implemented.
+>
 > The Compendium ruler's 591 synthetic controls remain conditional on production or changed
 > instrument inputs, and the specification audit's five controls remain folded into its one normal
 > command. **A New Foundation** contains 75 unique bullets with rendered ordered SHA-256

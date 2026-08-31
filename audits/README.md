@@ -10,6 +10,58 @@ summary of it.
 
 ## Contents
 
+### Signed `e66babe…` Compendium PASS, then Arc 4 publication-convergence Slice red
+
+Exact clean SSH-signed source `e66babed3773c2f6343fb60f8f7d1e05802f4ba3` passed its hermetic
+tracked develop preflight at **253 files / 2,546 passed / 1 skipped**, all three TypeScript
+programs, **34** art sources, **1,014/1,014** routes and **454** specification fields. Live Edge
+preflight then passed on `152.0.4191.53` / CDP `1.3`. Compendium run
+`20260830-pr35-feed-reopen-e66babe-compendium-certification` passed **78/78** in **65,469 ms**,
+once/no-retry, and its named verifier passed.
+
+The exact-source Slice successor
+`20260830-pr35-feed-reopen-e66babe-slice-certification` stopped terminal-red once/no-retry after
+**224,355 ms**. Its first causal scope was `arc-4-publication-convergence`: the isolated seed-68
+native Sample scenario did not satisfy its committed-hit convergence/reload assessor. The report
+retains five later consequences (`arc-4-structured-ledger`, two Training setup scopes, D-TRAIN
+post-write publication rejection and the final lazy-art harness observation) for **6 findings / 6
+scopes** total. Slice's named verifier correctly rejected the non-PASS predecessor. Glass and
+Recovery did not run; the repaired Feed reopen was not reached. No retry is authorized or implied.
+
+- `ARC1A_COMPENDIUM_PR35_FEED_REOPEN_PASS_20260830_E66BABE.json.gz`: **521,054 gzip / 10,787,598
+  raw bytes**; gzip/raw SHA-256
+  `eb82453f36c4fd4611d8f157cbc504371101a9744fe5851c8f3aab5b238363bf` /
+  `af1440b8ccad9c119baefd02a9d1b46ed5ed9ff30d81a400aca7a6a5b871753e`.
+- `ARC4_SLICE_PR35_PUBLICATION_CONVERGENCE_RED_20260830_E66BABE.json.gz`: **141,514 gzip /
+  1,114,326 raw bytes**; gzip/raw SHA-256
+  `0fe5f108fb3a7daecb4f5dc78adf9f04ee9a5bc45f98fb7179b89691742d60bb` /
+  `eefc766509bb673b6a4373d44813328220c876943e1a5556a037f02f5f0177e4`.
+- `ARC4_SLICE_PR35_PUBLICATION_CONVERGENCE_RED_20260830_E66BABE.log.gz`: **63,304 gzip / 474,009
+  raw bytes**; gzip/raw SHA-256
+  `392616eef198a447068fa8dbcba9aa2af6766b7bc7145021eb9e4584f95d89dc` /
+  `8423b98e5d26951e4ea9f52fa1ecfdb66787c2456e0da5fea611cb941622dda9`.
+
+The changed source relative to `134f62e…` is limited to the post-Feed browser oracle, its
+browser-free controls/evidence and synchronized documentation; it executes after Arc 4 and does
+not explain this earlier stop. The immutable report is therefore retained for bounded read-only
+diagnosis rather than retried or silently treated as proof that the Feed repair failed.
+
+Bounded read-only diagnosis classifies the first scope as an **instrument defect inside an
+exhaustive injected post-durable publication-failure scenario**, not a product defect. The fixture
+begins at revision `134`, seed `68`, ordinal `3`. The trusted Sample correctly commits Capture at
+revision `135` without optimism; replacement boot then correctly reaches the required Arc 9
+progression fixed point at revision `136`, ordinal `5`, with the exact `rare` then `legend`
+successor. The stale assessor reads final `R+2` authority as if it were the Capture `R+1` boundary,
+making its detail attribution, release authority, committed outcome, fault settlement and
+read-only-reload terms impossible for the coherent product result. The five later findings have no
+valid predecessor and are not independent defects. An unchanged retry could merely race before
+catch-up and produce a timing-dependent green, so it is forbidden.
+
+The smallest safe gate split is to retain normal Capture/progression and the pure assessor/mutation
+controls on every develop run while moving only the deliberate browser publication-failure
+injection to production assurance. That profile-bound source change is not implemented or claimed
+by this evidence checkpoint.
+
 ### Signed `134f62e…` Compendium PASS, then phase-blind Feed-reopen Slice red
 
 Exact clean SSH-signed quarantine source `134f62e08b8a7180f798394e08a404ed935e2782`

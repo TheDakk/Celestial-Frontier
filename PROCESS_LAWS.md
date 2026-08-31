@@ -25,6 +25,18 @@
 > origin play surface, not merge or release evidence. Every certifier retains its own fresh build
 > until a separately reviewed content-addressed build-carrier contract exists.
 
+> **FAULT-INJECTION CHAOS IS NOT ORDINARY DEVELOP ADMISSION** (2026-08-30). Keep the normal native
+> product action, its durable/live/reload outcome and every pure assessor mutation in the develop
+> boundary. Run an isolated post-durable browser publication-failure injection only in production
+> assurance unless that instrument itself changes. Profile it out before execution; never execute it
+> on develop and ignore its red. If production runs it, its first red stops every dependent scenario.
+> Bind the exact `develop|production` profile through the Slice report, named verification, Glass
+> predecessor and Recovery predecessor so evidence cannot cross tiers. The exact `e66babe…` Slice
+> earned this law: Capture correctly committed `R+1` and required progression correctly committed
+> `R+2`, while a stale Capture-only chaos oracle treated final `R+2` authority as the `R+1` action
+> boundary. An unchanged retry could merely race before catch-up and manufacture a timing-dependent
+> green; preserve the red, repair the pure oracle, and do not change product code, timeout or retry.
+
 > **A PRESENTATION CLASS IS NOT AN EVIDENCE OWNER.** CSS classes may intentionally be shared by
 > sibling features, so a browser instrument must never use the first global class match as proof of
 > one exact product surface. Bind the observation to the current semantic mount, query its dedicated

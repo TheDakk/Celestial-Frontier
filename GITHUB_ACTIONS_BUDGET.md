@@ -40,6 +40,19 @@ pre-action-only `ready` predicate reused after commit. Its bounded local harness
 game, timeout or retry behavior and still requires a fresh signed unchanged-source Compendium →
 Slice → Glass chain. This local diagnosis/repair authorizes no push, label, hosted run or merge.
 
+Exact clean signed Feed-harness source `e66babed3773c2f6343fb60f8f7d1e05802f4ba3` passed its
+hermetic tracked develop preflight and one/no-retry Compendium stage (**78/78**) plus named
+verification. Its exact-source Slice successor
+`20260830-pr35-feed-reopen-e66babe-slice-certification` stopped terminal-red once/no-retry after
+224,355 ms at the earlier `arc-4-publication-convergence` scope, before the repaired Feed reopen
+executed. The immutable report retains six findings/scopes; Glass and Recovery did not run and the
+red Slice is not retried. Read-only diagnosis found a stale Capture-only oracle in a deliberately
+injected post-durable publication-failure scenario: the product correctly committed Capture at
+revision 135 and its required progression tail at revision 136, while the oracle still demanded a
+single revision-135 endpoint. This is no product-bug evidence. The proposed develop/production
+profile split remains local and unimplemented at this checkpoint; no push, label, hosted run or
+merge is authorized.
+
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
 initially set this mode after exhausting the private-repository monthly allowance of **3,000**.

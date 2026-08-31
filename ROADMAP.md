@@ -17,17 +17,19 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · SCENEMEMORY QUARANTINED · FEED HARNESS REPAIR READY ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · FEED REPAIR SIGNED · E66 SLICE STOP PRESERVED ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Exact clean SSH-signed quarantine source
-  **134f62e08b8a7180f798394e08a404ed935e2782** (tree
-  **f37a74970fe288f672fdf843f5a205ba1fb499e5**, parent
-  **cc15e1f967f6644405cad7c3460cd8181b6a043f**) is **45 commits ahead** of the fetched remote
-  agent branch. The bounded Feed harness successor is locally modified and not yet signed.
+  **origin/openai/mac**. Exact clean SSH-signed Feed-harness source
+  **e66babed3773c2f6343fb60f8f7d1e05802f4ba3** (tree
+  **daa0938a3b34f3619a406f630222030368457001**, parent
+  **134f62e08b8a7180f798394e08a404ed935e2782**) is **46 commits ahead** of the fetched remote agent
+  branch. Its embedded SSH signature uses the same trusted signer fingerprint as prior checkpoints;
+  the local allowed-signers file remains absent. This handoff is the one docs/evidence-only
+  descendant of that executable source, so branch HEAD is **47 commits ahead** after its commit.
 - **Exact 134f static boundary:** the hermetic tracked develop preflight passed **253 files / 2,544
   passed / 1 skipped**, all three strict TypeScript programs, **34** art sources with zero findings,
   **1,014/1,014** routes and **454** specification fields with zero inert fields.
@@ -47,6 +49,33 @@ the archive verbatim and refresh this handoff in place.
   all three TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** specification
   fields. Independent product review is CLOSED. No game, creature, save, timeout, retry, browser
   ruler or Edge baseline changed.
+- **Exact e66 develop-chain stop:** the tracked preflight repeated the same **253 / 2,546 / 1**
+  static boundary. Live Edge preflight passed; Compendium run
+  `20260830-pr35-feed-reopen-e66babe-compendium-certification` passed **78/78** in **65,469 ms**
+  once/no-retry and named-verified. Exact Slice successor
+  `20260830-pr35-feed-reopen-e66babe-slice-certification` stopped terminal-red once/no-retry after
+  **224,355 ms**. Its first causal scope is `arc-4-publication-convergence`; five later consequences
+  produce **6 findings / 6 scopes** total. The named verifier correctly rejected the red report.
+  Glass and Recovery did not run, the repaired Feed reopen was not reached, and Slice is not retried.
+- **Exact e66 evidence:** immutable Compendium PASS plus Slice JSON/log carriers and all raw/gzip
+  sizes/hashes are recorded at the top of `audits/README.md`. The only source delta from `134f…`
+  executes after Arc 4, so this earlier stop is retained for bounded read-only diagnosis rather than
+  attributed to the Feed repair or used to justify another blind attempt.
+- **Exact e66 diagnosis:** this is an instrument defect in an exhaustive injected publication-failure
+  scenario, not product-bug evidence. The fixture begins at revision `134`, seed `68`, ordinal `3`;
+  the native Sample correctly commits Capture revision `135` without optimistic UI, then replacement
+  boot correctly commits the required Arc 9 progression tail at revision `136` / ordinal `5` with
+  the exact `rare` then `legend` successor. The stale assessor treats final `R+2` authority as the
+  Capture `R+1` boundary, so its detail attribution, release authority, committed outcome, fault
+  settlement and read-only reload terms cannot pass for the correct successor. The remaining five
+  findings are dependent consequences, not independent defects. No product, Feed, creature, save,
+  timeout, retry or browser-version change is indicated.
+- **Gate-tier decision (implementation pending):** keep ordinary Capture/progression, refusal,
+  stale-authority, miss, burn-down and suppression coverage in develop. Move only the isolated
+  post-durable publication-failure browser injection to production assurance; retain its pure
+  action-`R+1` / progression-`R+2` assessor and mutation controls browser-free on every profile.
+  The profile-bound source/evidence-chain change has not yet been implemented and therefore is not
+  claimed by this checkpoint.
 - **Exact 8792 browser-free boundary:** the hermetic tracked develop preflight passed **253 files /
   2,529 passed / 1 skipped**, all three strict TypeScript programs, **34** art sources with zero
   findings, **1,014/1,014** routes and **454** specification fields with zero inert fields. All five
@@ -152,21 +181,28 @@ the archive verbatim and refresh this handoff in place.
 ### Exact next work
 
 1. Preserve the fixed-eight carrier and quarantine policy; do not retry or redesign SceneMemory.
-2. Review/sign the bounded Feed harness repair and run its tracked exact-source preflight.
-3. Run one fresh fail-fast **Compendium → Slice → Glass** chain on that unchanged committed source.
-   Stop after the first nonzero, red or instrument result; do not retry.
-4. Preserve and named-verify each available report and refresh this handoff. Do **not** run Recovery
-   for agent → `develop`; Recovery belongs to a separately authorized production candidate.
-5. Production remains **SceneMemory → Compendium → Slice → Glass → Recovery** and requires a
+2. Keep exact e66 Slice red immutable. Do not retry it, start Glass, or infer that its five later
+   findings are independent defects; the first Arc 4 scope is now classified as a stale oracle in an
+   exhaustive injected-fault scenario, with no product-bug evidence.
+3. Implement one explicit fail-closed `develop|production` Slice profile: omit only that synthetic
+   browser injection from develop, retain normal Capture/progression and all pure negative controls,
+   and require it in production with its corrected `R+1`/`R+2` assessor.
+4. Bind the profile through Slice report verification, Glass predecessor authority, Recovery's
+   production-only predecessor contract and the hosted base mapping. Run focused browser-free
+   controls once. Do not start another browser chain until this complete structural change is signed.
+5. After that changed-source checkpoint, run at most one fresh fail-fast develop chain; never retry
+   unchanged red. Recovery remains production-only.
+6. Production remains **SceneMemory → Compendium → Slice → Glass → Recovery** and requires a
    later explicit SceneMemory activation decision.
 
 ### Product-roadmap and HUMAN boundary
 
-This pass does not recreate or redesign the implemented V2 systems. The current batch changes only
-develop admission and Feed evidence semantics. The landed Feed product behavior, Capture publication
-repair, universe-wide art treatment, creature/genome identity, capture math/pools, Guardians/Prime
-Codex, loot/Pureforged, exploration, crafting, combat, care/progression, audio and deterministic
-persistence remain otherwise untouched.
+This pass does not recreate or redesign the implemented V2 systems. The signed executable batch
+changes only Feed evidence semantics; this docs/evidence checkpoint records the planned develop /
+production admission split without implementing it. The landed Feed product behavior, Capture
+publication repair, universe-wide art treatment, creature/genome identity, capture math/pools,
+Guardians/Prime Codex, loot/Pureforged, exploration, crafting, combat, care/progression, audio and
+deterministic persistence remain otherwise untouched.
 
 Still-open work that requires authored product decisions or HUMAN/device proof remains explicit in
 the system references and `port/V2_PROGRAM_ROADMAP.md`: conquest-imbue coexistence, another
