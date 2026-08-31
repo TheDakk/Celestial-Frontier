@@ -25385,7 +25385,7 @@ try {
     || !/Field Training, step 9 of 15/i.test(engineeringTour.announcement)
     || !engineeringHold.held || engineeringHold.unavailable
     || engineeringHold.actions !== ENGINEERING_ACTION_CONTROL_COUNT || !engineeringHold.allLocked
-    || !/source-proven opportunities/i.test(engineeringTour.text)
+    || !/source-proven opportunities/i.test(engineeringTour.announcement)
     || !/Pureforged/i.test(engineeringTourFocus.announcement)) {
     fails.push('DRILL ENGINEERING TOUR: populated board, held authority, or read-only lock drifted: '
       + JSON.stringify({ tour: engineeringTour, focus: engineeringTourFocus, hold: engineeringHold }));

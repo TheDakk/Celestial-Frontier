@@ -143,6 +143,24 @@ function sliceTrainingTourErrors(source: string): string[] {
   for (const [index, marker] of required.entries()) {
     if (!owner.includes(marker)) errors.push(`slice-training-oracle-${index + 1}`);
   }
+  const engineeringCopyAnnouncementCarrier =
+    '!/source-proven opportunities/i.test(engineeringTour.announcement)';
+  if (owner.split(engineeringCopyAnnouncementCarrier).length - 1 !== 1) {
+    errors.push('slice-engineering-copy-announcement-carrier');
+  }
+  if (owner.includes('!/source-proven opportunities/i.test(engineeringTour.text)')) {
+    errors.push('slice-engineering-copy-panel-carrier');
+  }
+  const boardTourAnnouncementProvenance =
+    "announcement:document.getElementById('tutlive')?.textContent||''";
+  const boardTourCheck = section(
+    source,
+    '  const trainingBoardTourCheck = (panelId, expectedStep) => {',
+    '  const step = async () =>',
+  );
+  if (boardTourCheck.split(boardTourAnnouncementProvenance).length - 1 !== 1) {
+    errors.push('slice-engineering-announcement-provenance');
+  }
   return errors;
 }
 
@@ -331,5 +349,30 @@ describe('Field Training authoritative Slice journey', () => {
     );
     expect(sliceTrainingTourErrors(vacuousEngineering))
       .toContain('slice-training-oracle-7');
+  });
+
+  it('binds Engineering lesson copy to the live announcement rather than duplicating it in the panel', () => {
+    const correctCarrier =
+      '!/source-proven opportunities/i.test(engineeringTour.announcement)';
+    const stalePanelCarrier =
+      '!/source-proven opportunities/i.test(engineeringTour.text)';
+    const staleCopyOracle = replaceUnique(sliceSource, correctCarrier, stalePanelCarrier);
+    expect(sliceTrainingTourErrors(staleCopyOracle)).toEqual(expect.arrayContaining([
+      'slice-engineering-copy-announcement-carrier',
+      'slice-engineering-copy-panel-carrier',
+    ]));
+
+    const boardCheck = section(
+      sliceSource,
+      '  const trainingBoardTourCheck = (panelId, expectedStep) => {',
+      '  const step = async () =>',
+    );
+    const liveAnnouncement =
+      "announcement:document.getElementById('tutlive')?.textContent||''";
+    const forgedPanelAnnouncement = "announcement:(panel?.textContent||'').trim()";
+    const forgedBoardCheck = replaceUnique(boardCheck, liveAnnouncement, forgedPanelAnnouncement);
+    const forgedProvenance = replaceUnique(sliceSource, boardCheck, forgedBoardCheck);
+    expect(sliceTrainingTourErrors(forgedProvenance))
+      .toContain('slice-engineering-announcement-provenance');
   });
 });
