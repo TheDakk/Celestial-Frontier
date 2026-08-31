@@ -55,11 +55,19 @@
 > selftest makes the old tracked-cleanup overwrite red and requires a contract-verifiable partial
 > report retaining the original command. Contract, product producer, timeout, retry, numeric ruler,
 > CSS and browser-version policy are unchanged. Exact `3ca7d30…` remains historical evidence; the
-> four historical carriers are committed by 4ea but remain bound only to 3ca. The then-dirty
-> implementation candidate passed the complete browser-free develop profile at **254/254 files /
-> 2,567 passed / 1 skipped**, with all TypeScript, art, route and specification owners green. The
-> current signed documentation-only descendant records that result without rebinding it; a fresh
-> exact-clean-source Compendium → Slice → Glass chain remains required.
+> four historical carriers are committed by 4ea but remain bound only to 3ca.
+>
+> Exact clean signed source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
+> `e05e48c807597e86530e9b258a11e93d9533cd3c`) then certified the law. Its develop profile passed
+> **254/254 files / 2,567 passed / 1 skipped** and all TypeScript, art, route and specification
+> owners. Browser-path, Compendium preflight, all **618** Compendium selftest controls, SceneMemory
+> heap-phase and browser-CDP selftests passed. Live Edge `152.0.4191.53` / CDP `1.3` preflight
+> passed; the point version is provenance only. On unchanged source, Compendium passed **78/78** with
+> one trusted witness and exact desktop `-46 / -46 / -46` plus phone `-2 / -2 / -2`; develop Slice
+> passed with zero findings/ten screenshots; full Glass passed **12/12** viewports and **104/104**
+> controls with zero findings or instrument failures. Every stage ran once/no-retry and every named
+> verifier passed. The signed evidence/docs descendant commits the four exact carriers without
+> rebinding 9b37. SceneMemory certification and Recovery did not run by develop policy.
 
 > **A COPY ORACLE READS THE COPY'S AUTHORITATIVE CARRIER.** A visible panel and the lesson that
 > explains it are separate surfaces even when they describe the same system. Judge tutorial copy
