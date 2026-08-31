@@ -10,6 +10,47 @@ summary of it.
 
 ## Contents
 
+### Signed `4002b2d…` Compendium PASS, then whole-style property-carrier Slice red
+
+Exact clean SSH-signed source `4002b2d59508fce70d8e9eed404fd3544635f54d` (tree
+`052ff99ce52045a30c4911259b3bbcad05575bbc`, parent
+`0dc9168a1adbbc80a5e99503c02ab34d58b46a50`) passed its tracked-input preflight on Edge
+`152.0.4191.53` / CDP `1.3`. Its one/no-retry Compendium run
+`20260831130356666-917-5be54ef202` passed **78/78** with zero findings in **65,803 ms**, and the
+exact named verifier accepted it. Exact-source develop Slice
+`20260831130558500-1306-cb8d7cf92834` then stored terminal `fail` once/no-retry after
+**303,148 ms** with **3 findings / 3 scopes**. Its named verifier correctly exited 2 because the
+predecessor status was not PASS. Glass did not run; 4002 will not be retried or relabelled.
+
+The real geometry and both negative controls behaved correctly. Hidden Prime and forced HP overlap
+made the phone ruler red; forcing Prime visible over the real Earth Survey card also produced the
+required measured overlap. Both controls then falsely failed because they compared the entire
+serialized `style` attribute after mutating only named CSS properties. The later protected-save
+`harness` finding ran without a valid predecessor after those early reds and is a cascade, not an
+independent product diagnosis.
+
+The bounded successor changes no product CSS or game byte. One shared executable helper captures,
+restores and inspects only exact value/priority pairs: Prime tier owns `display`, `top`, `left` and
+`transform`; Prime-over-Guide and Prime-over-Survey own `display`; Guide height owns `min-height`.
+Originally absent properties are removed, original priorities are restored, unrelated inline
+publication is preserved, and every affected base/control/restoration red immediately
+causal-stops. Its browser-free develop profile passes **253 files / 2,557 passed / 1 skipped**, all
+three TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields.
+No timeout, retry, Edge baseline, product mechanic or browser ruler changed.
+
+- `ARC1A_COMPENDIUM_PR35_PHONE_PRIME_STYLE_CARRIER_PASS_20260831_4002B2D.json.gz`: **452,863 gzip /
+  10,891,033 raw bytes**; gzip/raw SHA-256
+  `82abacc2ef0e9ad3e3e24f3c940478c8eb03ee0166c5036d8b92654c44dec078` /
+  `c2f52c0679be78b384ad15657d0bbcc28facd4c830258b49b69051635cd0d480`.
+- `ARC4_SLICE_PR35_PHONE_PRIME_STYLE_CARRIER_RED_20260831_4002B2D.json.gz`: **2,690 gzip / 9,797
+  raw bytes**; gzip/raw SHA-256
+  `74158ca73aab4de135e2e4980d6f1039bb336d2799c3b32dcf8d4f41dc09149f` /
+  `6ec2dde3260c9576f9be0659cff3464d24375dac1412230138fcbd0d0229cd24`.
+- `ARC4_SLICE_PR35_PHONE_PRIME_STYLE_CARRIER_RED_20260831_4002B2D.log.gz`: **2,286 gzip / 5,502
+  raw bytes**; gzip/raw SHA-256
+  `fc0c532ef58614ea0b098fa7727f1e9e84d283512ff53913b7c3ea48b8d94479` /
+  `67f6960969b25ffc1ded46a1308796df32a4d1690465fd7ecdbade51ca0d2fb0`.
+
 ### Signed `7a528c7…` Compendium PASS, then stale Slice-oracle red
 
 Exact clean SSH-signed source `7a528c7798434ae4ab8765d4898b59df9931f9de` (tree
@@ -46,6 +87,11 @@ to the exact ordinal-keyed receipt/witness/route/save/reload topology. Routine e
 tests and the fast browser-free profiles; the full Compendium → Slice → Glass chain remains a
 single attempt on the final clean committed candidate, not an edit-loop tax. No timeout, retry,
 Edge-version baseline, product mechanics, hosted authority or release identity was weakened.
+
+The later exact 4002 run above narrowed that historical causal-stop claim: F4/Charter descendants
+were guarded, but the phone presentation base/control branches still accumulated findings, and
+their whole-attribute restoration carrier was not authoritative. The newer property-scoped repair
+supersedes only those instrument details; the retained 7a528/0dc evidence remains immutable.
 
 The repaired local successor now passes the complete browser-free develop boundary at **253 files /
 2,556 passed / 1 skipped**, all three TypeScript programs, 34 art sources, 1,014/1,014 routes and

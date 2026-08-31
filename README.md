@@ -2,30 +2,31 @@
 
 > **2026-08-31 current local successor overlay (supersedes every older “current” label below;
 > dated evidence remains immutable):** exact clean signed source
-> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium (**catalog/art stress**)
-> **78/78** once/no-retry as `20260831064534612-71571-8e4856c2fe`. Its exact-source develop Slice
-> (**playable journey**)
-> `20260831064707724-71924-76b0bac73a0f` then stopped terminal red once/no-retry after
-> **305,022 ms** with **7 findings across 5 scopes**; Glass (**cross-device presentation**) did not
-> run.
+> `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium (**catalog/art stress**)
+> **78/78** once/no-retry as `20260831130356666-917-5be54ef202`. Its exact-source develop Slice
+> (**playable journey**) `20260831130558500-1306-cb8d7cf92834` stopped terminal red once/no-retry
+> after **303,148 ms** with **3 findings / 3 scopes**; Glass (**cross-device presentation**) did not
+> run. The two root controls proved the real phone geometry and intended hidden/overlap mutants,
+> then falsely rejected restoration by comparing the element's whole serialized `style`; the later
+> protected-save finding is a dependent cascade. Exact evidence is retained under `audits/`, and
+> 4002 will not be retried.
 >
-> Exact SSH-signed implementation/evidence source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50`
-> repairs the evidence that produced those findings: measured phone
-> Prime/Guide geometry, topology-based lazy-producer settlement, exact one-commit F4 causality for
-> Survey/Add/Share, and Charter ledger topology with causal-stop. It does not redesign any creature,
-> genome, painter, organism, biome or art structure. The fast develop profile is green at **253
-> files / 2,556 passed / 1 skipped**, all three TypeScript programs are green, and the art,
-> route and specification gates remain green (**34** art sources, **1,014** routes and **454**
-> declared specification fields). **A New Foundation** now contains **77** unique bullets with
-> rendered ordered SHA-256
+> The local successor changes only the Slice instrument and its contracts: it captures/restores
+> exact value/priority pairs for each owned CSS property, removes originally absent properties,
+> preserves unrelated inline publication, rechecks intermediate/final restoration, and immediately
+> causal-stops every affected phone base/control/restoration red. Product CSS and all creature,
+> genome, painter, organism, biome and art structures are unchanged. The complete browser-free
+> develop profile is green at **253 files / 2,557 passed / 1 skipped**, all three TypeScript
+> programs, **34** art sources, **1,014** routes and **454** declared specification fields.
+> **A New Foundation** remains **77** unique bullets with rendered ordered SHA-256
 > `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> Current Compendium producer authority is
+> Current Compendium producer authority remains
 > `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d`; its budget-file SHA-256 is
-> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. From the final clean
-> signed candidate, develop runs exactly **Compendium → Slice → Glass** once, unchanged-source and
-> causal-stop; SceneMemory remains production-only. No Edge rebaseline, timeout increase, retry,
-> hosted attempt, merge, release, version bump, publication or deployment is authorized.
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. A new clean signed
+> candidate must restart exactly one unchanged-source **Compendium → Slice → Glass** chain;
+> SceneMemory remains production-only. No Edge rebaseline, timeout increase, retry, hosted attempt,
+> merge, release, version bump, publication or deployment is authorized.
 
 > **2026-08-30 historical exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
 > working tree and supersedes the older “current” status paragraphs below; dated run records remain

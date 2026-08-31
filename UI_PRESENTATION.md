@@ -2,23 +2,24 @@
 
 > **2026-08-31 current presentation overlay (supersedes older candidate-status labels; system
 > descriptions below remain current unless source says otherwise):** exact clean signed source
-> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium **78/78** once/no-retry, then its
-> exact-source develop Slice stopped after **305,022 ms** with **7 findings across 5 scopes**;
-> Glass did not run. Exact SSH-signed implementation source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` places the native phone Prime control in a measured
-> second chrome tier below the live topbar, keeps it minimum-44-pixel, centered, reachable and clear
-> of HP/player/search/trail geometry, and hides it while a phone Survey card or dock panel owns that
-> same vertical band. The Guide is judged only after real content publication plus two animation
-> frames. Collision controls derive from the measured green geometry and restore exact
-> styles in `finally`. Player mutation refusal copy now distinguishes an action that is still
-> settling from a genuinely read-only save boundary.
+> `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry, then its
+> exact-source develop Slice `20260831130558500-1306-cb8d7cf92834` stopped after **303,148 ms**
+> with **3 findings / 3 scopes**; Glass did not run. The phone Prime tier and Prime-over-Survey
+> geometry mutants turned red correctly, but the instrument compared the whole serialized `style`
+> attribute after owning only named properties. The later protected-save finding is a dependent
+> cascade, not evidence of product presentation drift.
 >
-> The complete fast develop boundary is green at **253 files / 2,556 passed / 1 skipped**, all three
-> TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert specification
-> fields. **A New Foundation** has **77** bullets, SHA-256
-> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`. The final clean signed
-> develop candidate runs one unchanged-source **Compendium → Slice → Glass** chain; SceneMemory is
-> production-only. No Edge rebaseline, timeout, retry, hosted, merge, release or deployment authority
-> follows from this local work.
+> The local successor leaves the native minimum-44-pixel Prime/Guide/Survey product layout unchanged.
+> Its controls now capture exact CSS value/priority pairs for only `display`, `top`, `left`,
+> `transform` or Guide `min-height`, restore originally absent properties by removal, preserve
+> unrelated inline publication, and causal-stop immediately on a red base/control/restoration.
+> The complete browser-free develop boundary is green at **253 files / 2,557 passed / 1 skipped**,
+> all three TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert
+> specification fields. **A New Foundation** remains **77** bullets, SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`. A new clean signed
+> candidate restarts one unchanged-source **Compendium → Slice → Glass** chain; SceneMemory remains
+> production-only. No Edge rebaseline, timeout, retry, hosted, merge, release or deployment
+> authority follows from this local work.
 
 > **2026-08-30 historical local post-Capture presentation correction (matches local code):** after a
 > durable Capture queues the aggregate Arc 9 receipt, the awaiting Survey continuation may repaint
