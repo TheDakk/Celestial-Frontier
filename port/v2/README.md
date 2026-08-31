@@ -1,35 +1,48 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-08-31 current local a046 repair boundary (supersedes every older “current” status label
-> below; dated evidence remains immutable):** exact clean SSH-signed source
-> `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium (**catalog/art stress**)
-> **78/78** once/no-retry in **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; exact named
-> verification passed. Its exact-source develop Slice (**playable journey**)
-> `20260831155943782-24588-a98f13f2c7b7` stopped terminal red once/no-retry after **359,647 ms**
-> with exactly **1 finding / 1 scope** (`world-identity-collision-controls-failed`). Named
-> verification correctly exited 2, Glass (**cross-device presentation**) did not run, and a0460c6
-> will never be retried or relabelled.
+> **2026-08-31 current local Glass causal-stop and product-presentation repair (supersedes every
+> older “current” status label below; dated evidence remains immutable):** exact clean SSH-signed
+> source `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed Compendium (**catalog/art stress**)
+> **78/78** once/no-retry in **65,580 ms** as `20260831163047925-29421-21d080b288`, then passed
+> its exact-source develop Slice (**playable journey**) once/no-retry in **359,973 ms** as
+> `20260831163239186-29786-f5192730fcd5` with zero findings and ten screenshots. Both named
+> verifiers passed. Full Glass (**cross-device presentation**)
+> `20260831163921002-30283-9bd10ae7a9bb` then stopped once/no-retry after **102,462 ms** with
+> terminal `instrument-fail`, **9 instrument failures** and **88 provisional finding rows**; it is
+> immutable red evidence, not a Glass certificate.
 >
-> The collision base product outcome was green across distinct Search/name, Atlas, native Travel,
-> landing, persistence, reload and Share identity. Only `atlasPointerIdentityDrift` was inert:
-> newest-first rendered rows were **[Beta, Alpha]**, while measured Travel receipts retained fixture
-> order **[Alpha, Beta]**, so the stale row-index carrier reassigned Alpha to Alpha. Exact SSH-signed
-> repair `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives the mutant from the distinct measured
-> sibling, rejects missing/equal/no-op receipts, causal-stops after a red collision base, and
-> executable-tests the reversed display order. It changes no product, copy, gameplay, save,
-> creature/genome/organism/plant/biome/art structure, timeout, retry, browser ruler or Edge baseline.
-> Focused coverage is **1 file / 6 tests**, all three TypeScript programs pass, diff hygiene is clean,
-> and independent review is **CLEAR**. **A New Foundation** remains **77 bullets**, SHA-256
-> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+> Diagnosis separated two real presentation defects from harness false positives and cascades.
+> Large-phone Capture actions inherited a stretch owner, producing oversized controls and a
+> Scavenge overflow; completed Binder slots left Exotic text on translucent glass. Capture actions
+> now center at the base cascade while retaining the 44px floor and narrow-phone full width, and
+> only owned Binder slots receive the shared opaque `#05070d` reading surface. Missing Binder slots
+> retain their distinct transparent semantics. Directional cascade/rendered tests cover portrait,
+> narrow and landscape geometries plus specificity/order mutants.
 >
-> The complete develop profile is green at **253 files / 2,561 passed / 1 skipped**, all three
-> TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields.
-> Current Compendium producer/budget authority remains
-> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
-> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. After a clean signed
-> documentation descendant and tracked-input preflight, a fresh candidate receives exactly one
-> unchanged-source **Compendium → Slice → Glass** chain. SceneMemory remains production-only. No
-> hosted attempt, push, merge, release, version bump, preview/publication or deployment is authorized.
+> Glass now stops the viewport loop on the first product red and creates a complete, disjoint
+> blocked-suffix ledger. Rendered Guide copy baselines are classified before any instrument control,
+> so a product red cannot be relabelled as an instrument failure. Closed `<details>` descendants are
+> no longer treated as visible merely because Chromium retains a stale DOM rectangle; the Summary
+> subtree remains visible and opening the disclosure admits the action. Stale Guide regex/paragraph
+> mappings, portrait restoration evidence and five omitted Shipyard diagnostic carriers are also
+> corrected. Shared runtime/selftest helpers, two-direction controls and three independent reviews
+> are **CLEAR**.
+>
+> Exact SSH-signed implementation commit
+> `2b9e9effe35af2e8a585f4fdfe5f769bca372c5f` passes the focused product/harness boundary at
+> **7 files / 51 tests**, producer authority at **2 files / 32 tests**, Glass selftest, syntax and
+> diff hygiene. Targeted primary-phone, large-phone and phone-landscape diagnostics pass; the latter
+> two bind the final helper source. The complete develop profile is green at **253 files / 2,562
+> passed / 1 skipped**, all three TypeScript programs, **34** art sources, **1,014/1,014** routes
+> and **454** non-inert fields. Current Compendium producer/budget authority is
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `80a2b8b39d400419a5527f9737a92ea2e0c54916ba8c3966411e607fd950fd79`; fixed numeric ceilings,
+> samples, ruler and version-tolerant Edge-family + CDP `1.3` policy are unchanged. **A New
+> Foundation** remains **77 bullets** with the existing responsive/opaque-reading claims; no new
+> release bullet was needed. This signed documentation/evidence descendant next runs tracked-input
+> preflight, then one unchanged-source **Compendium → Slice → Glass** chain. SceneMemory stays
+> production-only. No hosted attempt, push, merge, release, version bump, preview/publication or
+> deployment is authorized.
 
 > **Historical SceneMemory production-quarantine boundary (2026-08-30; exact resumption details in
 > `ROADMAP.md`):** exact clean SSH-signed checkpoint
@@ -3273,6 +3286,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 
 | Tool | Role |
 |---|---|
+| **Current Glass causal/presentation boundary (2026-08-31)** | The first instrument red retains one root, blocks dependent controls and stops later viewport work. The first product red stops dependent product work and records a complete disjoint blocked suffix; blocked controls are never reported as executed. Rendered Guide ingress reopens and re-queries the unique current topic carrier, judges all 22 required current-copy baselines before mutations, classifies copy mismatch as product-red and setup/control/restoration defects as instrument-red, and arms mutants only from green. Generic visibility walks ancestor `<details>` elements: while closed, only the direct first Summary subtree is rendered; retained rectangles/computed style/requested scroll do not admit hidden actions, while opening does. Product controls keep Capture actions base-centered with a 44px floor while preserving ≤390px full width and short landscape; rarity-removal controls independently cover Compendium badges and owned/non-missing Binder slots while `.missing` semantics remain distinct. |
 | **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |
 | **Current Arc 4 Pertar ledger/storage boundary inside `npm run smoke:ci` (2026-08-30)** | Exact d611 evidence passed Layout 787/787, SceneMemory 44/44 and Compendium 78/78, then preserved a terminal five-scope Slice red. Signed 7f repaired the shared boot/Survey/Landing prefix, Sample + Arc 9 two-receipt tail and causal stop; 961 repaired its source-derived Landing-seal oracle and retained a one-scope generic Storage timeout. Signed 656 then passed the tracked profile plus SceneMemory 44/44 and Compendium 78/78 before Slice stopped once/no-retry at exactly one pre-arm scope. The runner proved Sample/Arc 9 durable at +1/+2 with 15/16 Yield and idle current authority, but native Tame remained model-disabled; it stopped before the storage hook or input, so this is no storage verdict. Source tracing found Arc 9 temporarily owned the coordinator during Capture's repaint and released without republishing the open card. The bounded successor releases product/coordinator/persistence authority first, then guardedly republishes only the same current visible writable non-Training Capture surface; failure clears the fence and converges read-only. The runner still proves target/focus/coordinator readiness before arming, visible latch before dispatch, ordered state plus terminal raw/UI/interaction, real errors and causal stop. Capture pools/Yield/RNG/save/creature/art/audio, retry, sleep, timeout, numeric ruler and Edge baseline are unchanged. |
 | `node tools/tracked-input-preflight.mjs --selftest` / `node tools/tracked-input-preflight.mjs --profile=develop|production` | Mutation-controls the tracked-only boundary, then—only from a clean committed candidate—exports the exact index, installs in isolation and invokes exactly one selected shared browser-free/static profile with start/end source stability. This is the mandatory preauthorization rehearsal, not hosted or browser evidence. |

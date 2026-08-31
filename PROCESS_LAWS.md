@@ -409,7 +409,21 @@ Guide controls changed their source-side bulletin strings after publication, the
 DOM and reported that contradictions stayed green. A rendered-text control must mutate the exact
 current DOM node, or mutate the source and force the real publication owner to emit a new exact
 identity before judging it. Bind requested identity, rendered text and restoration in both
-directions. A source-only edit plus stale rendered node is instrument failure, never product truth.
+directions. Re-query the reopened current Guide, require exactly one authored carrier, and classify
+all required current-copy baselines before arming any mutation. A required-copy mismatch is a
+product red; missing/nonunique setup, a control that stays green, or failed restoration is an
+instrument red. Only a fully green baseline may run controls, and any red causal-stops later Guide
+or viewport work. A source-only edit plus stale rendered node is instrument failure, never product
+truth.
+
+⚠⚠ **A CLOSED DISCLOSURE'S RETAINED RECT IS NOT VISIBILITY** (2026-08-31). Chromium may retain a
+nonzero `DOMRect`, computed `display`, focusability metadata and a requested scroll position for an
+action inside a closed `<details>`, even though that action is unpainted and excluded from scroll
+overflow. A visibility owner must walk ancestor disclosures: while closed, only the direct first
+`<summary>` subtree is rendered; other descendants become eligible only after the disclosure opens.
+Negative-control both directions—closed keeps Summary and excludes the action from visibility and
+interactive inventories; open admits the same action. Geometry, style and scroll requests cannot
+substitute for paint/reachability.
 
 > **2026-08-29 exact-chain law — historical exact-source certificate:** repair an oracle on preserved evidence, then
 > certify only a fresh unchanged-source chain; never relabel or retry the stored red. Exact signed
@@ -430,7 +444,7 @@ directions. A source-only edit plus stale rendered node is instrument failure, n
 > rebaseline or recalibrate. Earlier Final13/Final12/Final11/Final10 evidence remains immutable
 > history.
 
-**STATUS:** current as of 2026-08-30. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+**STATUS:** current as of 2026-08-31. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.

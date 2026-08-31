@@ -10,6 +10,52 @@ summary of it.
 
 ## Contents
 
+### Signed `0d4b72a…` Compendium + Slice PASS, then Glass trail/control instrument red
+
+Exact clean SSH-signed source `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed one/no-retry
+Compendium run `20260831163047925-29421-21d080b288` at **78/78** with zero findings in **65,580
+ms**, then passed its unchanged-source develop Slice run
+`20260831163239186-29786-f5192730fcd5` once/no-retry in **359,973 ms** with zero findings, zero
+scopes and ten screenshots. Both exact named verifiers passed. Full-certifying Glass run
+`20260831163921002-30283-9bd10ae7a9bb` then stopped once/no-retry after **102,462 ms** with
+terminal `instrument-fail`, **9 instrument failures** and **88 provisional finding rows**. It is
+immutable red evidence and is not relabelled as a Glass certificate. The first instrument red was
+the trail-restoration policy injection staying green; the missing causal stop made later controls
+and viewport rows derivative diagnostics rather than independent findings.
+
+Diagnosis separated actual presentation defects from instrument false positives and dependent
+rows. Large-phone Capture controls inherited stretch sizing, while completed Binder slots left
+Exotic text over translucent glass. The successor centers Capture actions at the base cascade,
+keeps narrow-phone full width and the 44px floor, and gives only owned Binder slots the established
+opaque `#05070d` reading surface. Glass now causal-stops the viewport loop at the first product red,
+records the complete disjoint blocked suffix, classifies all rendered Guide copy baselines before
+instrument controls, excludes unpainted descendants of closed `<details>` while retaining Summary,
+and repairs stale copy mappings, portrait restoration evidence and omitted Shipyard carriers.
+
+Exact SSH-signed implementation commit `2b9e9effe35af2e8a585f4fdfe5f769bca372c5f` is green at the
+focused **7 files / 51 tests**, focused producer **2 files / 32 tests**, Glass selftest, all three
+TypeScript programs and complete develop profile (**253 files / 2,562 passed / 1 skipped**).
+Independent causal-stop, Guide-ingress and product-presentation reviews are **CLEAR**. No creature,
+genome, plant, biome, painter, save, RNG, balance, timeout, retry, numeric ruler or Edge-version
+baseline changed.
+
+- `ARC1A_COMPENDIUM_PR35_GLASS_TRAIL_CONTROL_PREDECESSOR_PASS_20260831_0D4B72A.json.gz`:
+  **453,667 gzip / 10,886,505 raw bytes**; gzip/raw SHA-256
+  `51f1b2637235d298fc8134d81edb3b5972f6f9df493feb89469e902e327c88f7` /
+  `c2ad9e64a27d42be762c160b2c1522c886568bbc5bfc73c804c12806113353fe`.
+- `ARC4_SLICE_PR35_GLASS_TRAIL_CONTROL_PREDECESSOR_PASS_20260831_0D4B72A.json.gz`:
+  **1,960 gzip / 6,126 raw bytes**; gzip/raw SHA-256
+  `c17d94a615ef23957395c0496618a082eac8eaca880671bf6cb17d0f88d6edbd` /
+  `25adb7c571223a743b120c001eb05be46da70077dd4715a3fe2e42bda91dda99`.
+- `ARC4_SLICE_PR35_GLASS_TRAIL_CONTROL_PREDECESSOR_PASS_20260831_0D4B72A.log.gz`:
+  **3,293 gzip / 6,950 raw bytes**; gzip/raw SHA-256
+  `2a74ab8be030ece12ffeef02881988eb2bdd44fcf7c0501c424499292c3b830d` /
+  `8c3e2d9131b0c58d3b531e179b49a625cdf1c30b0f58113763d82e61d4c65c39`.
+- `ARC4_GLASS_PR35_TRAIL_RESTORATION_CONTROL_INSTRUMENT_RED_20260831_0D4B72A.json.gz`:
+  **155,093 gzip / 2,123,374 raw bytes**; gzip/raw SHA-256
+  `c66e345ef7d7d9b21af7e8536731f6ba9ab2dddf12288bdb58aed4bf95db822f` /
+  `edcf57a01447d4d81f6663d7dd74c2708b3c283679e45cfa2cb20ad761065a5c`.
+
 ### Signed `a0460c6…` Compendium PASS, then inert Atlas-pointer control Slice red
 
 Exact clean SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed one/no-retry

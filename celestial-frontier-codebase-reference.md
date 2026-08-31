@@ -1,24 +1,30 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-31 current a046 collision-control overlay (supersedes older candidate-status labels):**
-> exact clean signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium
-> **78/78** once/no-retry as `20260831155807329-24237-1c6d2e89d5` with zero findings in **64,166
-> ms** and passed named verification. Its exact-source develop Slice
-> `20260831155943782-24588-a98f13f2c7b7` stopped once/no-retry after **359,647 ms** with one
-> `world-identity-collision-controls-failed` scope; named verification exited 2 and Glass did not
-> run. The base world-identity collision product outcome was green.
+> **2026-08-31 current Glass/product-presentation overlay (supersedes older candidate-status
+> labels):** exact clean signed source `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed
+> Compendium **78/78** and develop Slice with zero findings/ten screenshots, each once/no-retry with
+> named verification. Exact-source Glass `20260831163921002-30283-9bd10ae7a9bb` stopped immutable
+> `instrument-fail` after **102,462 ms**; its old noncausal continuation accumulated 88 provisional
+> rows and 9 instrument failures, which are not independent-defect counts or a Glass certificate.
 >
-> The instrument mixed newest-first Atlas rows `[Beta, Alpha]` with receipt order `[Alpha, Beta]`,
-> so the pointer mutant selected the same row and was inert. Signed repair/evidence commit
-> `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives a distinct measured sibling, guards inert/equal
-> cases, causal-stops a red base and includes an executable reversed-order regression. It changes no
-> product, save, gameplay, art, creature, biome, ruler, timeout, retry or Edge contract. Focused
-> tests pass **1 file / 6 tests**; the complete develop profile is green at **253 files / 2,561
-> passed / 1 skipped**, all TypeScript programs, **34** art sources, **1,014/1,014** routes and
-> **454** non-inert fields, and independent review is **CLEAR**. Current Compendium producer/budget
-> authority remains `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
-> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A fresh signed unchanged-
-> source Compendium → Slice → Glass chain remains pending; no hosted/release/deploy authority exists.
+> Exact signed implementation `2b9e9effe35af2e8a585f4fdfe5f769bca372c5f` centers Capture
+> actions at base grid scope while preserving 44px/narrow/landscape contracts and gives only
+> owned/non-missing Binder rarity slots the opaque `#05070d` surface. Glass now causal-stops the
+> first product red with a complete blocked suffix, classifies current rendered Guide copy before
+> instrument controls, excludes unpainted closed-`details` descendants, and repairs stale
+> copy/restoration/Shipyard carriers. Creature/genome/biome/plant/Guardian structure, Capture
+> mechanics, raw rarity, save, RNG, balance, browser ruler, timeout and retry are unchanged.
+>
+> Focused product/harness **7 files / 51 tests**, producer authority **2 files / 32 tests**, Glass
+> selftest, syntax and diff checks pass; three independent reviews are **CLEAR**. Targeted
+> primary-phone, large-phone and phone-landscape diagnostics pass but are not a full certificate.
+> The complete develop profile is green at **253 files / 2,562 passed / 1 skipped**, all TypeScript
+> programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields. Current
+> Compendium producer/budget authority is
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `80a2b8b39d400419a5527f9737a92ea2e0c54916ba8c3966411e607fd950fd79`; fixed rulers, samples and
+> version-tolerant Edge-family + CDP `1.3` policy are unchanged. One fresh signed unchanged-source
+> Compendium → Slice → Glass chain remains pending; no hosted/release/deploy authority exists.
 
 > **2026-08-31 historical 4002/4822 instrument overlay (superseded above):** exact clean
 > signed source `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry as
@@ -343,7 +349,7 @@
 > install/offline/update/rollback, assistive-technology, browser/device and HUMAN acceptance remain
 > open.
 
-> **2026-08-29 current local Binder and Prime-Frontier overlay:**
+> **2026-08-31 current local Binder and Prime-Frontier overlay:**
 > `port/v2/apps/game/src/binder-sets.ts` is a strict read projection over canonical `codex` and
 > bounded `claimedSets`. It retains the six legacy pages—The Spectrum, The Sixteen Realms, Body
 > Plans, Ability Themes, Flora Flavors and Size Classes—and proves seven non-Paragon sets from
@@ -361,6 +367,8 @@
 > point, and incomplete/corrupt/overflow/stale/storage paths cannot pay. Main mounts the projection
 > below Records rank, delegates only one of the seven registered ids, rechecks Training and write
 > authority after the heartbeat, and enters read-only convergence on ambiguous durability.
+> Owned/non-missing rarity slots use opaque `#05070d` behind the canonical tier foreground;
+> `.missing` slots retain their separate dim/transparent semantics and are not treated as owned.
 >
 > `prime-codex-panel.ts` consumes only `PRIME_SIGNATURES_V1` and Persistence's five registered
 > ending ids. The nine ordered Signature rows are Earth/`stone`, Fire/`flame`, Air/`sky`,
@@ -892,8 +900,9 @@
 > (`earpiece`, `diplobeacon`, `rl-mind`) as connected, with a live-mapping mutation control.
 >
 > Product presentation keeps the canonical Exotic foreground `#9A5CFF` and places written rarity
-> tokens on the shared opaque `#05070d` badge, yielding effective text contrast of at least 4.5:1
-> across supported glass. Panels reserve a 58px right gutter, translate their 44px Close owner by
+> tokens from Survey, Compendium and owned/non-missing Binder slots on the shared opaque `#05070d`
+> badge, yielding effective text contrast of at least 4.5:1 across supported glass. Missing Binder
+> slots retain their missing-state surface. Panels reserve a 58px right gutter, translate their 44px Close owner by
 > 44px into it, and clear headings below the floated header geometry; neighboring controls and focus
 > can no longer occupy the sticky Close hit target. Removal controls independently recreate the
 > transparent-rarity contrast failure and the laptop Settings overlap. These repairs change no
@@ -1358,7 +1367,10 @@
 > reload without reroll or second write. `capture-card.ts` presents a source-bound uniform random
 > eligible pool—not targeted species selection—with preview/full counts, aggregate and individual
 > odds, one shared hit-or-miss Biosphere Yield, active-play recovery, pending non-optimism and
-> native Close/reopen/focus behavior. At that historical checkpoint, Guide Capture/Discover copy was
+> native Close/reopen/focus behavior. Its CSS action owner centers Tame/Scavenge/Sample at the base
+> four-row grid scope instead of stretching them, retains the 44px floor, and preserves ≤390px
+> full-width plus short-landscape behavior without changing Capture mechanics. At that historical
+> checkpoint, Guide Capture/Discover copy was
 > live/partial within the 24-partial/17-unavailable inventory; **A New Foundation** contained 54 draft bullets. Training
 > remained six lessons plus graduation with no Capture lesson. The historical exact-input Slice passed the exact
 > nine-stage capture ledger in 336,913 ms (report
@@ -4159,17 +4171,32 @@ for a name.
 
 ## 12. Test suites (all must pass)
 
-**Current tracked-only preauthorization gate (2026-08-29):** from `port/v2`, a clean committed
-candidate must pass `node tools/tracked-input-preflight.mjs`. It exports only the exact index into
-an isolated temporary tree, installs there and runs the ordered hosted browser-free/static sequence:
-full Vitest, all TypeScript programs, unused-local analysis, art audit, override audit plus its
-controls, coverage, spec reachability and independent current-producer authority. It rechecks HEAD,
+**Current tracked-only preauthorization gate (2026-08-31):** from `port/v2`, a clean committed
+develop candidate must pass `node tools/tracked-input-preflight.mjs --profile=develop`. It exports
+only the exact index into an isolated temporary tree, installs there and runs the shared develop
+browser-free/static profile exactly once: full Vitest, all TypeScript programs, art audit, exact
+route/coverage ownership and spec reachability. The test owner derives current Compendium producer
+authority as part of that run; production alone adds the source-mutating override controls and
+quarantined SceneMemory producer binding. It rechecks HEAD,
 tracked cleanliness and forgotten source-owned untracked/ignored tests before PASS while excluding
 dependency-owned `node_modules` tests. Its selftest mutation-controls ambient-versus-tracked
 dependencies, generated artifacts, command order/execution, soft-fail and workflow adjacency.
 Synchronous Slice/Glass/Recovery selftests use explicit 15-second child and
 20-second outer limits with separate timeout/nonzero/missing-marker controls. This gate does not
 replace the strict browser evidence chain or authorize hosted work.
+
+**Current Glass causal/presentation contract (2026-08-31):** the first instrument red retains one
+root failure, blocks dependent controls and stops later viewport work. The first product red likewise
+stops dependent product work and records a complete, disjoint blocked suffix rather than pretending
+those controls executed. Rendered Guide ingress reopens and re-queries the unique current topic
+carrier, judges all required-copy baselines first, classifies copy mismatch as product-red and
+setup/control/restoration defects as instrument-red, and arms mutants only from green. Generic
+visibility walks ancestor `<details>` elements: a closed disclosure admits only its direct first
+Summary subtree; retained rectangles, computed style or requested scroll do not make hidden actions
+visible. Opening the disclosure admits the same action. Product-direction controls keep Capture
+actions base-centered with a 44px floor while preserving ≤390px full width and short landscape;
+rarity-removal controls independently cover Compendium badges and owned Binder slots while missing
+Binder semantics remain distinct.
 
 **Historical exact `8bdf474…` evidence / Arc 0 publication-oracle repair boundary (2026-08-30;
 superseded by the current handoff):** the immutable
