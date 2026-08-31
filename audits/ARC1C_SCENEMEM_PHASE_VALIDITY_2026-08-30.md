@@ -1,7 +1,7 @@
 # Arc 1C SceneMemory fixed phase-validity repair — 2026-08-30
 
-Status: **immutable four-pass instrument red preserved; fixed-eight browser-free implementation
-complete; clean signed source freeze and browser calibration pending**.
+Status: **immutable four-pass and fixed-eight instrument reds preserved; SceneMemory quarantined to
+production; develop calibration closed**.
 
 This audit owns the replacement sequence for the two-pass SceneMemory heap sampler after exact signed source
 `8792e8acc5c20562ae3e17c48d46050824eb99d5` produced one honest but phase-inconclusive
@@ -10,8 +10,8 @@ or any earlier report. Exact signed four-pass source
 `5691e77ea470434dd5352901b0a6240a242a48ad` then refused its first calibration attempt before any
 product verdict because its fixed P3/P4 initial pair exceeded the 64 KiB hard cap. That red is
 preserved below. The implemented successor uses a fixed P7/P8 validity pair after six unconditional
-settling passes. Its browser-free schemas, authority hashes and controls are complete below; clean
-source signing, browser controls, fresh candidates, activation and certification remain pending.
+settling passes. Its browser-free schemas, authority hashes and controls are complete below. Exact
+signed `cc15e1f…` then crossed the hard refusal, closing this develop calibration as recorded below.
 
 ## Immutable predecessor
 
@@ -96,9 +96,9 @@ failure, resource drift or any excessive delta remains `instrument-fail` before 
 Persistent cross-cycle product growth remains visible because P8 is preselected and scored in every
 snapshot. The existing 524,288-byte range and 131,072-byte/cycle slope rulers remain unchanged.
 
-## Precommitted calibration rule
+## Precommitted calibration rule — hard-stopped
 
-Exactly three **fresh** calibration-only reports must run once each, without retry, on one unchanged
+The plan required exactly three **fresh** calibration-only reports once each, without retry, on one unchanged
 clean signed fixed-eight source/build/browser tuple. Each report retains ten P7/P8 pairs per profile
 and four delta fields per pair. For each profile:
 
@@ -111,7 +111,7 @@ rule, the eight fixed pass roles and the selected phone/desktop thresholds. The 
 enter that set. Calibration reports are not certificates. Activation is not certification.
 
 The calibration source is explicitly precommitted: the canonical Git-tracked
-`port/v2/budgets/scene-memory-v2.json` must validate as v7 `calibration-required` before a browser
+`port/v2/budgets/scene-memory-v2.json` had to validate as v7 `calibration-required` before a browser
 can launch. Each candidate records the exact blob hash. Activation replay resolves the candidate's
 literal 40-hex clean source commit, reads that exact budget blob with Git, revalidates its state and
 cross-binds its producer and browser authority. Candidate report carriers must themselves be
@@ -149,9 +149,26 @@ verdict is rejected.
 - No game product file, product ceiling, retry, timeout, browser-family contract or release
   identity changed.
 
-The implementation checkpoint is not yet a source or browser evidence checkpoint. Whole-diff/doc
-freeze, exact clean commit, SSH signature verification, changed browser controls and all three fresh
-calibration candidates remain pending. None may reuse the four-pass identities above.
+## Immutable fixed-eight candidate-1 hard stop
+
+- Source: `cc15e1f967f6644405cad7c3460cd8181b6a043f`
+- Run: `20260830-pr35-fixedeight-cc15e1f-candidate1`; one attempt, zero retries
+- Browser: Edge `152.0.4191.53`, CDP `1.3`
+- Lifecycle/cleanup: complete; browser, server and workspace lock all released
+- Finding: phone `warm-1` P8−P7 embedder **287,192 bytes** and aggregate **299,720 bytes** versus
+  the **65,536-byte** hard refusal
+- Contract/verdict/outcomes: null / null / empty
+- Not run: desktop, candidates 2–3, activation and certification
+- Carrier: `ARC1C_SCENEMEM_PR35_FIXEDEIGHT_CALIBRATION_INSTRUMENT_RED_20260830_CC15E1F_CANDIDATE1.json.gz`
+- Gzip: 32,448 bytes,
+  `702a6ca1ff8ae508f215aa961a946844f0095b7777ac67f6ec7ec6a9d3d0180f`
+- Raw: 745,707 bytes,
+  `f4c5940efcd2deeea9ce7cbc68bb9e13022b889bf57e015d5c1bec04db4692a4`
+
+This is immutable instrument evidence, not a product verdict or browser PASS. Per the precommitted
+hard stop, candidates 2–3, retry, widening, added passes and another redesign are forbidden in this
+campaign. SceneMemory is production-only/quarantined and never a `develop` merge blocker. Its live
+selftest remains changed-instrument-or-production.
 
 ## Required discrimination controls
 
@@ -167,16 +184,8 @@ calibration candidates remain pending. None may reuse the four-pass identities a
 - Named verification re-derives every raw delta against the exact tracked profile threshold before
   replaying the current input-v6/verdict-v5 product contract.
 
-## Remaining immutable steps
+## Remaining boundary
 
-1. Complete whole-diff/documentation freeze, then commit, sign and verify one clean fixed-eight
-   calibration source.
-2. Run the changed browser-instrument controls once on that unchanged signed source.
-3. Capture and preserve exactly three fresh calibration-only candidates once each. The four-pass
-   instrument red is not candidate 1 of this new set. Any new nonzero or `M >= 64 KiB` result ends
-   this campaign for a production-only/quarantine decision; it does not authorize another pass-count
-   redesign, threshold widening or retry.
-4. Derive and activate the successor authority without changing product source or product rulers.
-5. Sign the activation and run one fresh no-retry SceneMemory certificate and named verification.
-6. Only after SceneMemory passes may the unchanged-source chain advance to Compendium, Slice and
-   Glass.
+1. Develop continues with one no-retry **Compendium → Slice → Glass** chain.
+2. Production remains **SceneMemory → Compendium → Slice → Glass → Recovery** and requires a
+   later explicit SceneMemory activation decision before it can begin.

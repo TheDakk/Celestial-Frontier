@@ -23,6 +23,14 @@ removed, and it merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41
 Runs `32609389977`, `32611053651`, `32614177932`, and `32618995487` remain consumed terminal-red
 historical evidence; their labels were removed. Details are below.
 
+Local signed source `cc15e1f967f6644405cad7c3460cd8181b6a043f` also consumed its one/no-retry
+fixed-eight SceneMemory candidate-1 attempt. Run `20260830-pr35-fixedeight-cc15e1f-candidate1`
+stopped instrument-red at phone `warm-1` P8−P7 embedder/aggregate **287,192 / 299,720 bytes**
+against the **65,536-byte** hard refusal, with complete lifecycle/cleanup, null contract/verdict and
+empty outcomes. Desktop and candidates 2–3 did not run. Per the documented hard stop, SceneMemory
+is now production-only/quarantined and is not a `develop` merge blocker. This local result does not
+authorize a hosted attempt or claim a browser PASS.
+
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
 initially set this mode after exhausting the private-repository monthly allowance of **3,000**.
@@ -83,11 +91,12 @@ merges, and successful batteries now start **zero hosted runners by default**:
   source-mutating 107-case override control runs for production or when its audited art grammar
   changes. All browser-free/static work precedes browser evidence and the first red stops later
   work.
-- The `develop` browser admission remains one attempt each: version-tolerant SceneMemory, sealed-
-  package Compendium with live preflight, exact Slice and its exact-ID Glass successor. Changed
-  browser instruments run their launcher/heap/preflight controls once on `develop`; production
-  always owns those controls. The `develop` → `main` profile adds the exact Slice+Glass-bound
-  uninterrupted Recovery certificate and package smoke. Recovery is therefore a production
+- The `develop` browser admission remains one attempt each: sealed-package Compendium with live
+  preflight, exact Slice and its exact-ID Glass successor. SceneMemory certification is quarantined
+  to production and never blocks `develop`; its live heap selftest runs on changed instrument inputs
+  or production. The `develop` → `main` profile adds SceneMemory certification, the exact
+  Slice+Glass-bound uninterrupted Recovery certificate and package smoke, and requires a later
+  explicit SceneMemory activation decision. Recovery is therefore a production
   assurance boundary rather than a 20-minute tax on every coding batch. Compendium separately
   SHA-verifies its sealed `.101` package and pins that extracted executable directly; the package
   version is provenance, not a rebaseline trigger.
@@ -251,8 +260,9 @@ ordinary workspace pass while the tracked snapshot fails, that tracking the depe
 snapshot green, and that run-generated artifacts remain allowed. This rehearsal is mandatory
 preauthorization evidence, not a hosted green or browser certificate.
 
-`test-battery` currently has a two-minute authorization runner plus one battery capped at 90 minutes,
-with SceneMemory independently capped at 10 minutes before Compendium's independent 40-minute cap.
+`test-battery` currently has a two-minute authorization runner plus one battery capped at 90 minutes.
+Develop skips quarantined SceneMemory certification and retains Compendium's independent 40-minute
+cap; production retains SceneMemory's independent 10-minute cap after explicit activation.
 The old parallel form
 could start seven runners with 175 combined
 configured job-minutes on every PR update, then repeat on `develop` and fan out into sync/publication.

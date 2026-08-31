@@ -18,6 +18,14 @@ const COMPENDIUM_INSTRUMENT_SELFTEST_NAME =
 const COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND = 'npm run compendiummem:selftest';
 const CHANGED_OR_PRODUCTION_CONDITION =
   "        if: >-\n          github.event.pull_request.base.ref == 'main' ||\n          steps.scope.outputs.browser_instrument_changed == 'true'";
+const PRODUCTION_ONLY_CONDITION =
+  "        if: github.event.pull_request.base.ref == 'main'";
+const PRODUCTION_VERIFY_CONDITION = [
+  '        if: >-',
+  '          always() &&',
+  "          github.event.pull_request.base.ref == 'main' &&",
+  "          (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')",
+].join('\n');
 const HEAP_PHASE_SELFTEST_HEADER = `      - name: ${HEAP_PHASE_SELFTEST_NAME}`;
 const SCENEMEM_CERTIFICATION_HEADER = '      - name: one-attempt scene-memory certification';
 const SCENEMEM_VERIFY_HEADER = '      - name: verify current scene-memory evidence';
@@ -94,6 +102,16 @@ const workflowStep = (source: string, name: string): string | null => {
   return source.slice(start, next < 0 ? source.length : start + header.length + next);
 };
 
+const hasExactStepCondition = (step: string, expected: string): boolean => {
+  const lines = step.split(/\r?\n/);
+  const starts = lines.flatMap((line, index) => /^ {8}if:/u.test(line) ? [index] : []);
+  if (starts.length !== 1) return false;
+  const start = starts[0]!;
+  let end = start + 1;
+  while (end < lines.length && !/^ {8}\S/u.test(lines[end] ?? '')) end += 1;
+  return lines.slice(start, end).join('\n') === expected;
+};
+
 const satisfiesZeroDefaultPolicy = (source: string): boolean => {
   const permissions = source.indexOf('\npermissions:');
   if (permissions < 0) return false;
@@ -134,12 +152,14 @@ const satisfiesSceneWorkflow = (
   )) return false;
 
   const staticProfile = workflowStep(source, STATIC_PROFILE_NAME);
+  const installation = workflowStep(source, 'install current Arc 1C Edge scene-memory browser');
+  const heapPhaseSelftest = workflowStep(source, HEAP_PHASE_SELFTEST_NAME);
   const certification = workflowStep(source, 'one-attempt scene-memory certification');
   const verifier = workflowStep(source, 'verify current scene-memory evidence');
   const compendiumInstrumentSelftest = workflowStep(
     source, COMPENDIUM_INSTRUMENT_SELFTEST_NAME,
   );
-  if (!staticProfile || !certification || !verifier
+  if (!staticProfile || !installation || !heapPhaseSelftest || !certification || !verifier
     || !compendiumInstrumentSelftest) return false;
   if (!staticProfile.includes('develop) node tools/check-profile.mjs --profile=develop ;;')
     || !staticProfile.includes('main) node tools/check-profile.mjs --profile=production ;;')
@@ -148,17 +168,15 @@ const satisfiesSceneWorkflow = (
     || source.includes('npx vitest run tests/scenemem-contract.test.ts')
     || source.includes('node --check tools/scenemem.mjs')
     || source.includes('node --check tools/scenemem-contract.mjs')) return false;
-  if (/^ {8}if:/mu.test(certification)
-    || certification.includes('continue-on-error')
-    || certification.includes("github.event.pull_request.base.ref == 'main'")) return false;
-  if (!verifier.includes('always() &&')
-    || !verifier.includes("steps.scenemem.outcome == 'success'")
-    || !verifier.includes("steps.scenemem.outcome == 'failure'")
-    || verifier.includes('github.event.pull_request.base.ref')) return false;
+  if (!hasExactStepCondition(installation, CHANGED_OR_PRODUCTION_CONDITION)
+    || !hasExactStepCondition(heapPhaseSelftest, CHANGED_OR_PRODUCTION_CONDITION)
+    || !hasExactStepCondition(certification, PRODUCTION_ONLY_CONDITION)
+    || certification.includes('continue-on-error')) return false;
+  if (!hasExactStepCondition(verifier, PRODUCTION_VERIFY_CONDITION)) return false;
 
   if (source.split(HEAP_PHASE_SELFTEST_COMMAND).length !== 2) return false;
   if (source.split(COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND).length !== 2
-    || !compendiumInstrumentSelftest.includes(CHANGED_OR_PRODUCTION_CONDITION)
+    || !hasExactStepCondition(compendiumInstrumentSelftest, CHANGED_OR_PRODUCTION_CONDITION)
     || !compendiumInstrumentSelftest.includes('node tools/browserpath.mjs --selftest')
     || !compendiumInstrumentSelftest.includes(
       'node tools/compendiummem-browser-preflight.mjs --selftest',
@@ -271,7 +289,7 @@ describe('scene-memory test-battery workflow contract', () => {
     ))).toBe(false);
   });
 
-  it('keeps heap-phase changed-instrument/production-only while certification and verification remain common', () => {
+  it('keeps heap-phase controls changed-or-production and native-heap certification production-only', () => {
     const selftestWithTrailingNewline = `${HEAP_PHASE_SELFTEST_BLOCK}\n`;
     const withoutSelftest = workflow.replace(selftestWithTrailingNewline, '');
     expect(satisfiesSceneWorkflow(withoutSelftest)).toBe(false);
@@ -305,13 +323,48 @@ describe('scene-memory test-battery workflow contract', () => {
         "        if: github.event.pull_request.base.ref == 'develop'",
       ),
     ))).toBe(false);
+    const certification = workflowStep(workflow, 'one-attempt scene-memory certification');
+    expect(certification).not.toBeNull();
     expect(satisfiesSceneWorkflow(workflow.replace(
-      SCENEMEM_CERTIFICATION_HEADER,
-      `${SCENEMEM_CERTIFICATION_HEADER}\n        if: github.event.pull_request.base.ref == 'main'`,
+      certification!, certification!.replace(PRODUCTION_ONLY_CONDITION, ''),
+    ))).toBe(false);
+    const verifier = workflowStep(workflow, 'verify current scene-memory evidence');
+    expect(verifier).not.toBeNull();
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      verifier!, verifier!.replace(
+        "          github.event.pull_request.base.ref == 'main' &&\n",
+        '',
+      ),
+    ))).toBe(false);
+    const developFallback = "          || github.event.pull_request.base.ref == 'develop'";
+    for (const name of [
+      'install current Arc 1C Edge scene-memory browser',
+      HEAP_PHASE_SELFTEST_NAME,
+      COMPENDIUM_INSTRUMENT_SELFTEST_NAME,
+    ]) {
+      const step = workflowStep(workflow, name);
+      expect(step).not.toBeNull();
+      expect(satisfiesSceneWorkflow(workflow.replace(
+        step!,
+        step!.replace(
+          CHANGED_OR_PRODUCTION_CONDITION,
+          `${CHANGED_OR_PRODUCTION_CONDITION}\n${developFallback}`,
+        ),
+      )), name).toBe(false);
+    }
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      certification!,
+      certification!.replace(
+        PRODUCTION_ONLY_CONDITION,
+        `${PRODUCTION_ONLY_CONDITION} || github.event.pull_request.base.ref == 'develop'`,
+      ),
     ))).toBe(false);
     expect(satisfiesSceneWorkflow(workflow.replace(
-      "          always() &&\n          (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')",
-      "          always() &&\n          github.event.pull_request.base.ref == 'main' &&\n          (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')",
+      verifier!,
+      verifier!.replace(
+        PRODUCTION_VERIFY_CONDITION,
+        `${PRODUCTION_VERIFY_CONDITION}\n${developFallback}`,
+      ),
     ))).toBe(false);
   });
 

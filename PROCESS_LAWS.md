@@ -15,11 +15,11 @@
 > program. At a local batch boundary, `node tools/check-profile.mjs --profile=dev` owns the complete
 > fast suite plus all TypeScript programs. `--profile=develop` adds the nonduplicated static
 > art/routing/spec gates, and the final clean
-> `develop` candidate runs one SceneMemory → Compendium → Slice → Glass browser admission with exact
+> `develop` candidate runs one Compendium → Slice → Glass browser admission with exact
 > named predecessors and causal stop. Changed browser instruments run their negative controls once
 > on `develop`; ordinary product work skips them, while production always owns them. A production
-> candidate uses `--profile=production`, the full
-> legacy gate when applicable, launcher/instrument controls, and extends the exact Slice/Glass pair
+> candidate uses `--profile=production`, the full legacy gate when applicable, quarantined
+> SceneMemory certification, launcher/instrument controls, and extends the exact Slice/Glass pair
 > through the uninterrupted Recovery certificate and package smoke. Do not run Recovery on every
 > development edit or make a manual human-preview package recertify the game; preview is a separate-
 > origin play surface, not merge or release evidence. Every certifier retains its own fresh build
@@ -549,13 +549,22 @@ after release. Calibration may launch only while the canonical tracked budget is
 budget SHA-256 `5edac549b6ee0fa79afe5b6f282d68f0439c4385f0afe5d8f2ac58035d8eb96a`. Its genuine-current
 fixture control closes **158/158** focused checks across four files; the complete browser-free suite
 is **253 files / 2,543 passed / 1 skipped**, all three strict TypeScript programs pass and the
-producer-authority printer is green. This is implementation evidence only: exact clean source
-freeze/signature, browser controls and all three fresh candidates remain pending. After that freeze,
-bind each fresh candidate to that exact budget blob at its literal clean 40-hex
-source commit; activation must reopen and revalidate the blob from that commit, replay the raw
-profiles/budgets/verdict and require three Git-tracked regular non-symlink carriers from the same
-producer/build/browser tuple. Product range/slope ceilings, browser-family authority and product
-bytes do not move.
+producer-authority printer is green. Exact clean signed source
+`cc15e1f967f6644405cad7c3460cd8181b6a043f` then ran
+`20260830-pr35-fixedeight-cc15e1f-candidate1` once with zero retries on Edge
+`152.0.4191.53` / CDP `1.3`. Lifecycle and all cleanup completed, but phone `warm-1` P8−P7
+embedder/aggregate deltas were **287,192 / 299,720 bytes** against **65,536**. Contract and verdict
+were null, outcomes were empty, and desktop plus candidates 2–3 did not run. Preserve the 32,448-byte
+gzip / 745,707-byte raw carrier at gzip/raw SHA-256
+`702a6ca1ff8ae508f215aa961a946844f0095b7777ac67f6ec7ec6a9d3d0180f` /
+`f4c5940efcd2deeea9ce7cbc68bb9e13022b889bf57e015d5c1bec04db4692a4`.
+
+That result triggers the precommitted hard stop. Do not run candidates 2–3, widen the ceiling, add
+passes, retry or start another SceneMemory redesign in this campaign. SceneMemory certification is
+production-only/quarantined and never blocks a `develop` merge. Its live heap selftest runs only
+when the SceneMemory instrument changes or in production. Production remains SceneMemory →
+Compendium → Slice → Glass → Recovery and requires an explicit future activation decision.
+No SceneMemory browser PASS or product verdict is claimed; product rulers and bytes do not move.
 
 ⚠⚠ **NEVER PROJECT OPAQUE CANONICAL IDENTITY THROUGH A GENERIC TEXT CAP; VALIDATE IT IN
 THE OWNER REALM AND SERIALIZE BOUNDED MEMBERSHIP EVIDENCE** (2026-08-30). Exact signed source

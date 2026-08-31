@@ -25,6 +25,10 @@ const claudeInstructions = readFileSync(
   fileURLToPath(new URL('../../../CLAUDE.md', import.meta.url)),
   'utf8',
 );
+const portReadme = readFileSync(
+  fileURLToPath(new URL('../README.md', import.meta.url)),
+  'utf8',
+);
 const activeLines = (value: string): string[] => value.split(/\r?\n/)
   .map((line) => line.trim())
   .filter((line) => line.length > 0 && !line.startsWith('#'));
@@ -185,13 +189,13 @@ const glassCurrentPointer = fileURLToPath(
 );
 
 describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
-  it('keeps Claude on the tiered immutable predecessor chain instead of the rejected bare Glass call', () => {
+  it('keeps agent instructions and copy-ready develop commands on the tiered evidence chain', () => {
     const callerErrors = (value: string): string[] => {
       const errors: string[] = [];
-      if (!value.includes('The `develop` admission browser boundary runs the distinct SceneMemory and Compendium certificates, then one immutable **Slice → Glass** chain')) {
+      if (!value.includes('The `develop` admission browser boundary runs the sealed Compendium certificate, then one immutable **Slice → Glass** chain')) {
         errors.push('missing-develop-chain');
       }
-      if (!value.includes('A production/release candidate extends that exact Slice/Glass pair with **Recovery**')) {
+      if (!value.includes('A production/release candidate runs **SceneMemory → Compendium → Slice → Glass → Recovery**')) {
         errors.push('missing-production-recovery');
       }
       if (!value.includes('passing both exact predecessor IDs')) errors.push('missing-predecessor-ids');
@@ -212,13 +216,32 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
       `${claudeInstructions}\nRun node tools/glassmatrix.mjs before review.\n`,
     )).toContain('bare-glass');
     expect(callerErrors(claudeInstructions.replace(
-      'The `develop` admission browser boundary runs the distinct SceneMemory and Compendium certificates, then one immutable **Slice → Glass** chain',
+      'The `develop` admission browser boundary runs the sealed Compendium certificate, then one immutable **Slice → Glass** chain',
       'Browser proof instructions removed.',
     ))).toContain('missing-develop-chain');
     expect(callerErrors(claudeInstructions.replace(
-      'A production/release candidate extends that exact Slice/Glass pair with **Recovery**',
+      'A production/release candidate runs **SceneMemory → Compendium → Slice → Glass → Recovery**',
       'Production recovery instructions removed.',
     ))).toContain('missing-production-recovery');
+
+    const strictHeading = portReadme.indexOf('### Strict current browser evidence chain');
+    const shellStart = portReadme.indexOf('```sh', strictHeading);
+    const shellEnd = portReadme.indexOf('\n```', shellStart);
+    expect(strictHeading).toBeGreaterThanOrEqual(0);
+    expect(shellStart).toBeGreaterThan(strictHeading);
+    expect(shellEnd).toBeGreaterThan(shellStart);
+    const copyReady = portReadme.slice(shellStart, shellEnd);
+    const recoveryOnlyCommands = [
+      'CF_BROWSER="$evidence_chromium_browser" node tools/arc4recovery.mjs --slice-run="$slice_run_id" --glass-run="$glass_run_id"',
+      'recovery_run_id="$(jq -er \'.runId\' apps/game/smoke/arc4-recovery-report.json)"',
+      'node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_run_id" --glass-run="$glass_run_id"',
+    ];
+    const copyReadyActive = activeLines(copyReady);
+    for (const command of recoveryOnlyCommands) {
+      expect(copyReadyActive).not.toContain(command);
+      expect(copyReady).toContain(`# ${command}`);
+      expect(activeLines(copyReady.replace(`# ${command}`, command))).toContain(command);
+    }
   });
 
   it('keeps immutable Slice evidence, interruption red, and its named verifier mutation-sensitive', () => {

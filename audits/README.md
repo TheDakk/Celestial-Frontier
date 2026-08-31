@@ -10,6 +10,28 @@ summary of it.
 
 ## Contents
 
+### Signed `cc15e1f…` fixed-eight hard stop; SceneMemory production quarantine
+
+Exact clean SSH-signed source `cc15e1f967f6644405cad7c3460cd8181b6a043f` (tree
+`cb53bbd79e64e5aa8701683219edf2b18e8859d6`, parent
+`5691e77ea470434dd5352901b0a6240a242a48ad`) ran
+`20260830-pr35-fixedeight-cc15e1f-candidate1` once with zero retries on Edge `152.0.4191.53` / CDP
+`1.3`. Lifecycle and browser/server/workspace-lock cleanup completed. Phone `warm-1` P8−P7
+embedder/aggregate deltas were **287,192 / 299,720 bytes** against the **65,536-byte** hard refusal.
+Contract and verdict are null; outcomes are empty. Desktop and candidates 2–3 did not run.
+
+- `ARC1C_SCENEMEM_PR35_FIXEDEIGHT_CALIBRATION_INSTRUMENT_RED_20260830_CC15E1F_CANDIDATE1.json.gz`:
+  **32,448 gzip / 745,707 raw bytes**; gzip/raw SHA-256
+  `702a6ca1ff8ae508f215aa961a946844f0095b7777ac67f6ec7ec6a9d3d0180f` /
+  `f4c5940efcd2deeea9ce7cbc68bb9e13022b889bf57e015d5c1bec04db4692a4`.
+
+This immutable report is instrument-red, not a product verdict or browser PASS. It triggers the
+documented hard stop: no candidates 2–3, retry, wider threshold, extra pass or another redesign.
+SceneMemory certification is production-only/quarantined and never blocks `develop`; its live
+selftest remains changed-instrument-or-production. Develop admission continues as Compendium →
+Slice → Glass. Production remains SceneMemory → Compendium → Slice → Glass → Recovery and
+requires a later explicit SceneMemory activation decision.
+
 ### Signed `5691e77…` four-pass instrument red; fixed-eight browser-free implementation complete
 
 Exact clean SSH-signed source `5691e77ea470434dd5352901b0a6240a242a48ad` (tree
@@ -44,9 +66,8 @@ Collector / verdict-contract / calibration-required-budget SHA-256 is
 `5edac549b6ee0fa79afe5b6f282d68f0439c4385f0afe5d8f2ac58035d8eb96a`. The genuine-current
 fixture control closes **4 files / 158 passed**; the complete browser-free suite is **253 files /
 2,543 passed / 1 skipped**, all three strict TypeScript programs pass and the producer-authority
-printer is green. Clean source freeze/signature, browser controls and three fresh clean no-retry
-candidates remain pending. `ARC1C_SCENEMEM_PHASE_VALIDITY_2026-08-30.md` owns the complete decision
-and next steps.
+printer is green. Exact signed `cc15e1f…` then produced the immutable fixed-eight hard stop above;
+no later calibration candidate or activation follows in develop.
 
 ### Signed `8792e8a…` Feed-summary successor, then two-pass SceneMemory phase-inconclusive red
 
@@ -89,8 +110,8 @@ existing 524,288-byte range / 131,072-byte-per-cycle slope limits do not change.
 
 `ARC1C_SCENEMEM_PHASE_VALIDITY_2026-08-30.md` owns the immutable four-pass evidence, reviewed
 fixed-eight protocol, precommitted `calibration-required` state machine, discrimination controls
-and completed browser-free implementation hashes plus the pending signed-source/browser-control/
-three-candidate activation/certificate sequence.
+and completed browser-free implementation hashes plus the fixed-eight hard stop and production-
+quarantine boundary.
 
 ### Signed `fc18f04…` expression predecessors, then shared-summary-selector instrument red
 
