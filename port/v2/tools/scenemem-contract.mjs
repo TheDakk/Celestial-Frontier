@@ -939,7 +939,9 @@ function profileOutcomes(
 }
 
 export function evaluateSceneMemory(input) {
-  const sourceNormalizedRequired = input?.schema === 'cf-v2-scene-memory-input/v5';
+  const fixedEighthRequired = input?.schema === 'cf-v2-scene-memory-input/v6';
+  const sourceNormalizedRequired = fixedEighthRequired
+    || input?.schema === 'cf-v2-scene-memory-input/v5';
   const surfaceVistaRequired = sourceNormalizedRequired
     || input?.schema === 'cf-v2-scene-memory-input/v4';
   if (!object(input)
@@ -959,7 +961,8 @@ export function evaluateSceneMemory(input) {
   }
   const failures = outcomes.filter((entry) => !entry.pass);
   return Object.freeze({
-    schema: sourceNormalizedRequired ? 'cf-v2-scene-memory-verdict/v4'
+    schema: fixedEighthRequired ? 'cf-v2-scene-memory-verdict/v5'
+      : sourceNormalizedRequired ? 'cf-v2-scene-memory-verdict/v4'
       : surfaceVistaRequired ? 'cf-v2-scene-memory-verdict/v3'
         : 'cf-v2-scene-memory-verdict/v2',
     status: failures.length === 0 ? 'pass' : 'fail',

@@ -10,6 +10,44 @@ summary of it.
 
 ## Contents
 
+### Signed `5691e77…` four-pass instrument red; fixed-eight browser-free implementation complete
+
+Exact clean SSH-signed source `5691e77ea470434dd5352901b0a6240a242a48ad` (tree
+`da82bd9340736240cada13c856b81cbdb82e74f1`, parent
+`8792e8acc5c20562ae3e17c48d46050824eb99d5`) implemented the first fixed-validity replacement:
+P1/P2 settled, P3/P4 formed the validity pair and P4 alone was scored. Its browser-free checkpoint
+passed **154/154** focused SceneMemory tests, **253 files / 2,539 passed / 1 skipped**, all three
+strict TypeScript programs and the producer-authority printer.
+
+Calibration-only run `20260830-pr35-fourpass-5691e77-candidate1` ran once/no-retry on Microsoft
+Edge `152.0.4191.53` / CDP `1.3` and stopped after **8,352 ms** with status
+**`instrument-fail`**. Lifecycle is complete and browser/server/workspace-lock cleanup are all true.
+Desktop initial P4−P3 `usedSize` and aggregate deltas were **68,472 bytes** against the fixed
+**65,536-byte** hard cap. The report has no product contract, verdict or outcomes. Candidates 2 and
+3 did not run; no Compendium, Slice or Glass successor ran.
+
+- `ARC1C_SCENEMEM_PR35_FOURPASS_CALIBRATION_INSTRUMENT_RED_20260830_5691E77_CANDIDATE1.json.gz`:
+  **38,936 gzip / 688,360 raw bytes**; gzip/raw SHA-256
+  `53bf343e503c7a9898ca64116c03c0926aed3221ba224bcb22ae739ae945fcf8` /
+  `5bb037c4e8d1f8e1b24bb902d31fac747410a35e62b2f37f552c91db276d7557`.
+
+The completed phone profile and desktop initial carrier show the same delayed initial V8 rise,
+while later phone snapshots were tightly phase-stable. That makes the four-pass run immutable
+instrument evidence, not a calibration candidate, product verdict, retry allowance or threshold-
+widening authority. The reviewed deterministic successor always takes eight complete passes:
+P1–P6 settle, P7/P8 validate and P8 alone is scored. It retains all eight raw carriers and keeps the
+same four delta fields, deterministic 4/8/16/32/64 KiB derivation and `M >= 64 KiB` refusal. Its
+browser-free implementation is **report v6 / profile v5 / input v6 / verdict v5 / budget v7**.
+Collector / verdict-contract / calibration-required-budget SHA-256 is
+`c4968d0a2cfb489c46df94f603d9730c995760b3ca2a289b1f3774662d663b71` /
+`e973f8c8f3eeae05c1c9c1328926f2ccf6f4aba7b3602f6bf5ab623a6163d599` /
+`5edac549b6ee0fa79afe5b6f282d68f0439c4385f0afe5d8f2ac58035d8eb96a`. The genuine-current
+fixture control closes **4 files / 158 passed**; the complete browser-free suite is **253 files /
+2,543 passed / 1 skipped**, all three strict TypeScript programs pass and the producer-authority
+printer is green. Clean source freeze/signature, browser controls and three fresh clean no-retry
+candidates remain pending. `ARC1C_SCENEMEM_PHASE_VALIDITY_2026-08-30.md` owns the complete decision
+and next steps.
+
 ### Signed `8792e8a…` Feed-summary successor, then two-pass SceneMemory phase-inconclusive red
 
 Exact clean SSH-signed source `8792e8acc5c20562ae3e17c48d46050824eb99d5` (tree
@@ -43,14 +81,16 @@ The original producer's verdict remains an honest two-pass red and is never retr
 Because it retained no third sample, it cannot establish whether its scored endpoint was at a
 repeatable native allocator phase; the replacement instrument therefore treats this failure class
 as phase-inconclusive and requires a fresh fixed validity pair before any product verdict. The
-bounded repair always runs four full passes, uses P1/P2 only to settle, requires P3/P4 absolute
-deltas in V8/embedder/backing/aggregate to fit one calibrated per-profile ceiling, and scores only
-P4. Invalid phase stops as instrument evidence before the contract. Product bytes and the existing
-524,288-byte range / 131,072-byte-per-cycle slope limits do not change.
+first bounded repair at signed `5691e77…` always ran four full passes, used P1/P2 only to settle,
+required P3/P4 absolute deltas in V8/embedder/backing/aggregate to fit the 64 KiB refusal ceiling,
+and scored only P4. Its first attempt is the immutable instrument red above. The reviewed successor
+uses six fixed settling passes and a fixed P7/P8 pair, with P8 scoring. Product bytes and the
+existing 524,288-byte range / 131,072-byte-per-cycle slope limits do not change.
 
-`ARC1C_SCENEMEM_PHASE_VALIDITY_2026-08-30.md` owns the reviewed four-pass protocol, its
-precommitted `calibration-required` state machine, discrimination controls, current producer/budget
-hashes and the pending three-candidate activation/certificate sequence.
+`ARC1C_SCENEMEM_PHASE_VALIDITY_2026-08-30.md` owns the immutable four-pass evidence, reviewed
+fixed-eight protocol, precommitted `calibration-required` state machine, discrimination controls
+and completed browser-free implementation hashes plus the pending signed-source/browser-control/
+three-candidate activation/certificate sequence.
 
 ### Signed `fc18f04…` expression predecessors, then shared-summary-selector instrument red
 

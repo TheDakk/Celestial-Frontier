@@ -266,13 +266,20 @@ export interface SceneMemoryV4Input {
   budgets: Record<SceneMemoryProfileName, SceneMemoryRawBudget>;
 }
 
-export interface SceneMemoryCurrentInput {
+export interface SceneMemoryV5Input {
   schema: 'cf-v2-scene-memory-input/v5';
   profiles: Record<SceneMemoryProfileName, SceneMemoryProfileMeasurement>;
   budgets: Record<SceneMemoryProfileName, SceneMemoryBudget>;
 }
 
-export type SceneMemoryInput = SceneMemoryLegacyInput | SceneMemoryV4Input | SceneMemoryCurrentInput;
+export interface SceneMemoryCurrentInput {
+  schema: 'cf-v2-scene-memory-input/v6';
+  profiles: Record<SceneMemoryProfileName, SceneMemoryProfileMeasurement>;
+  budgets: Record<SceneMemoryProfileName, SceneMemoryBudget>;
+}
+
+export type SceneMemoryInput = SceneMemoryLegacyInput | SceneMemoryV4Input
+  | SceneMemoryV5Input | SceneMemoryCurrentInput;
 
 export interface SceneMemoryOutcome {
   readonly id: string;
@@ -285,7 +292,8 @@ export interface SceneMemoryVerdict {
   readonly schema:
     | 'cf-v2-scene-memory-verdict/v2'
     | 'cf-v2-scene-memory-verdict/v3'
-    | 'cf-v2-scene-memory-verdict/v4';
+    | 'cf-v2-scene-memory-verdict/v4'
+    | 'cf-v2-scene-memory-verdict/v5';
   readonly status: 'pass' | 'fail';
   readonly outcomes: readonly SceneMemoryOutcome[];
   readonly failures: readonly SceneMemoryOutcome[];

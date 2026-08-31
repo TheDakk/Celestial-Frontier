@@ -84,6 +84,12 @@ export function sceneMemorySnapshotPhaseErrors(
   expectedThresholdBytes?: number,
 ): string[];
 
+export function sceneMemorySnapshotHistoricalFourPassErrors(
+  snapshot: unknown,
+  stableResourcesRequired?: boolean,
+  expectedThresholdBytes?: number,
+): string[];
+
 export function sceneMemoryPhaseThresholdForMaximum(maxObservedBytes: number): number | null;
 
 export function sceneMemoryProfilePhaseMaximum(measurement: unknown): Readonly<{
@@ -152,7 +158,7 @@ export function terminalProfileEvidenceErrors(
   surfaceVistaRequired?: boolean,
   fixedSecondRequired?: boolean,
   sourceNormalizedRequired?: boolean,
-  fixedFourthRequired?: boolean,
+  fixedFinalRequired?: boolean,
 ): string[];
 
 export function terminalSourceAuthorityErrors(
