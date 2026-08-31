@@ -17,19 +17,19 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · FEED REPAIR SIGNED · E66 SLICE STOP PRESERVED ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-31 · DEVELOP ASSURANCE SPLIT SIGNED · STATIC GREEN ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Exact clean SSH-signed Feed-harness source
-  **e66babed3773c2f6343fb60f8f7d1e05802f4ba3** (tree
-  **daa0938a3b34f3619a406f630222030368457001**, parent
-  **134f62e08b8a7180f798394e08a404ed935e2782**) is **46 commits ahead** of the fetched remote agent
-  branch. Its embedded SSH signature uses the same trusted signer fingerprint as prior checkpoints;
-  the local allowed-signers file remains absent. This handoff is the one docs/evidence-only
-  descendant of that executable source, so branch HEAD is **47 commits ahead** after its commit.
+  **origin/openai/mac**. Exact clean SSH-signed assurance-split source
+  **186b653456542588c2e4fe5db46234ccdebeb1d0** (tree
+  **8e91b6b34ed70092ac1fe74fd989e691002a74b9**, parent
+  **42f1acdb38ff7ea24f7f9853238a6329c56f3580**) is **48 commits ahead** of the remote agent branch.
+  Its embedded SSH signature is present; local verification still reports the known absent
+  allowed-signers file. This live handoff is the one docs-only descendant of that executable
+  checkpoint, so branch HEAD becomes **49 commits ahead** after its signed commit.
 - **Exact 134f static boundary:** the hermetic tracked develop preflight passed **253 files / 2,544
   passed / 1 skipped**, all three strict TypeScript programs, **34** art sources with zero findings,
   **1,014/1,014** routes and **454** specification fields with zero inert fields.
@@ -70,12 +70,28 @@ the archive verbatim and refresh this handoff in place.
   settlement and read-only reload terms cannot pass for the correct successor. The remaining five
   findings are dependent consequences, not independent defects. No product, Feed, creature, save,
   timeout, retry or browser-version change is indicated.
-- **Gate-tier decision (implementation pending):** keep ordinary Capture/progression, refusal,
-  stale-authority, miss, burn-down and suppression coverage in develop. Move only the isolated
-  post-durable publication-failure browser injection to production assurance; retain its pure
-  action-`R+1` / progression-`R+2` assessor and mutation controls browser-free on every profile.
-  The profile-bound source/evidence-chain change has not yet been implemented and therefore is not
-  claimed by this checkpoint.
+- **Gate-tier implementation complete:** full Slice and named verification now require exactly one
+  fail-closed `develop|production` assurance profile. Develop retains normal Capture/progression,
+  pending/no-optimism, storage refusal, stale convergence, miss, burn-down and disabled suppression.
+  Production adds only the isolated post-durable publication-failure browser injection. The shared
+  assessor now binds the Capture action at `R+1` and the Arc 9 progression fixed point at `R+2`,
+  with isolated State/UI reload mutations. This fixes the exact e66 stale oracle without retrying or
+  relabelling its immutable red evidence.
+- **Evidence-chain binding complete:** Slice report/ledger v2, its named verifier, Glass predecessor
+  authority, production-only Recovery, persona JSON/Markdown and the hosted base mapping carry one
+  exact profile. Legacy Slice v1 is explicit read-only compatibility and cannot enter the current
+  chain. Empty/missing/unsupported/duplicate profile or predecessor/verifier arguments fail before
+  browser launch, run-ID reservation or current-pointer publication.
+- **Exact 186b browser-free boundary:** the hermetic develop profile passed **253/253 files / 2,548
+  passed / 1 skipped**, all three strict TypeScript programs, **34** art sources with zero findings,
+  **1,014/1,014** routes and **454** specification fields with zero inert fields. Focused final
+  Arc 4/evidence coverage passed **4 files / 32 tests**; both independent whole-diff/profile reviews
+  are CLEAR. The first aggregate checkpoint exposed only a redundant four-process Glass parser
+  control timing out under parallel load; the duplicate subprocess matrix was pruned to one
+  mutation-sensitive pointer-preserving case and the timeout was not raised.
+- **Scope preserved:** no `apps/game/src` product byte, creature/genome system, save format, Capture
+  math/pool, art/audio, balance, browser ruler, Edge version baseline, timeout, retry, SceneMemory
+  budget or release identity changed. No browser gate was run after e66 and no hosted attempt ran.
 - **Exact 8792 browser-free boundary:** the hermetic tracked develop preflight passed **253 files /
   2,529 passed / 1 skipped**, all three strict TypeScript programs, **34** art sources with zero
   findings, **1,014/1,014** routes and **454** specification fields with zero inert fields. All five
@@ -184,22 +200,22 @@ the archive verbatim and refresh this handoff in place.
 2. Keep exact e66 Slice red immutable. Do not retry it, start Glass, or infer that its five later
    findings are independent defects; the first Arc 4 scope is now classified as a stale oracle in an
    exhaustive injected-fault scenario, with no product-bug evidence.
-3. Implement one explicit fail-closed `develop|production` Slice profile: omit only that synthetic
-   browser injection from develop, retain normal Capture/progression and all pure negative controls,
-   and require it in production with its corrected `R+1`/`R+2` assessor.
-4. Bind the profile through Slice report verification, Glass predecessor authority, Recovery's
-   production-only predecessor contract and the hosted base mapping. Run focused browser-free
-   controls once. Do not start another browser chain until this complete structural change is signed.
-5. After that changed-source checkpoint, run at most one fresh fail-fast develop chain; never retry
-   unchanged red. Recovery remains production-only.
-6. Production remains **SceneMemory → Compendium → Slice → Glass → Recovery** and requires a
+3. Use signed `186b653…` plus this docs-only handoff as the changed-source freeze. Do not add another
+   static, parser, threshold, baseline or calibration redesign before browser evidence.
+4. Run at most one fresh fail-fast **Compendium → Slice (`develop`) → Glass (`develop`)** chain on
+   the unchanged clean handoff HEAD. Named-verify each exact predecessor and stop immediately on any
+   nonzero, red or instrument result; never retry unchanged red. Do not run SceneMemory or Recovery.
+5. If that one chain is green, update the immutable local evidence/handoff once, then prepare the
+   exact PR #35 head for Nick's separately authorized push/hosted attempt. Do not spend Actions or
+   move the draft without that exact authorization.
+6. Production remains **SceneMemory → Compendium → Slice (`production`) → Glass (`production`) → Recovery** and requires a
    later explicit SceneMemory activation decision.
 
 ### Product-roadmap and HUMAN boundary
 
 This pass does not recreate or redesign the implemented V2 systems. The signed executable batch
-changes only Feed evidence semantics; this docs/evidence checkpoint records the planned develop /
-production admission split without implementing it. The landed Feed product behavior, Capture
+changes only browser-evidence authority and implements the develop/production admission split. The
+landed Feed product behavior, Capture
 publication repair, universe-wide art treatment, creature/genome identity, capture math/pools,
 Guardians/Prime Codex, loot/Pureforged, exploration, crafting, combat, care/progression, audio and
 deterministic persistence remain otherwise untouched.
@@ -213,8 +229,8 @@ judgment. Automation must not invent those decisions merely to call the roadmap 
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** preserve the fixed-eight red/quarantine boundary and run the no-retry
-  **Compendium → Slice → Glass** develop chain.
+- **OpenAI/Codex now:** from the clean docs-only child of signed `186b653…`, run at most one no-retry
+  **Compendium → Slice (`develop`) → Glass (`develop`)** chain, stopping on the first red.
 - **GitHub step now:** none. Zero hosted attempts are authorized.
 - **PR #35 after local green:** existing draft, base **develop**, source **openai/mac**, title
   **feat(v2): complete roadmap campaign and harden CI parity**. Its next exact push/hosted head is
