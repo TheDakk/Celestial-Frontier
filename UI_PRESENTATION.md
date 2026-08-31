@@ -1,25 +1,29 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-31 current a046 collision-control presentation overlay (supersedes older
-> candidate-status labels):** exact signed `a0460c6aca37ca923768828cde876e449a76cff8` passed
-> Compendium **78/78** once/no-retry as `20260831155807329-24237-1c6d2e89d5` in **64,166 ms**
-> with named verification. Its exact-source Slice `20260831155943782-24588-a98f13f2c7b7`
-> stopped once/no-retry after **359,647 ms** with one
-> `world-identity-collision-controls-failed` scope; named verification exited 2 and Glass did not
-> run. The base product collision and presentation outcome were green.
+> **2026-08-31 current Glass/product-presentation overlay (supersedes older candidate-status
+> labels):** exact signed `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed Compendium
+> **78/78** and its develop Slice with zero findings/ten screenshots, each once/no-retry with named
+> verification. Exact-source Glass `20260831163921002-30283-9bd10ae7a9bb` then stopped immutable
+> `instrument-fail` after **102,462 ms**. Its old noncausal continuation accumulated 88 provisional
+> rows and 9 instrument failures; those are not 97 independent defects or a Glass certificate.
 >
-> Slice mixed newest-first Atlas rows `[Beta, Alpha]` with receipt order `[Alpha, Beta]`, so its
-> pointer mutant selected the same row and was inert. Signed repair/evidence commit
-> `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives a distinct measured sibling, refuses inert/equal
-> controls, causal-stops a red base and executes a reversed-order regression. It changes no product
-> copy, DOM, CSS, layout, Atlas behavior, save, gameplay, art, painter, creature, biome, ruler,
-> timeout, retry, Edge contract or responsive geometry.
-> Focused **1 file / 6 tests** pass; the complete develop profile is green at **253 files / 2,561
-> passed / 1 skipped**, all TypeScript programs, **34** art sources, **1,014/1,014** routes and
-> **454** non-inert fields, and independent review is **CLEAR**. Current Compendium producer/budget
-> authority remains `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
-> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`; only a fresh clean signed
-> unchanged-source Compendium → Slice → Glass chain remains pending.
+> Exact signed repair `2b9e9effe35af2e8a585f4fdfe5f769bca372c5f` closes two real product
+> findings: Capture actions center at base scope instead of stretching across their four-row grid,
+> retaining the 44px floor, narrow-phone full width and short-landscape behavior; owned/non-missing
+> Binder rarity slots now use opaque `#05070d`, while missing slots stay visually distinct. Glass
+> now stops on the first product red with a complete blocked suffix, separates current rendered
+> Guide copy from instrument controls, excludes unpainted closed-`details` descendants, and repairs
+> stale copy/restoration/Shipyard carriers. Three independent reviews are **CLEAR**.
+>
+> Focused product/harness **7 files / 51 tests**, focused producer **2 files / 32 tests**, Glass
+> selftest, syntax and diff checks pass. Targeted primary-phone, large-phone and phone-landscape
+> diagnostics pass but are not a full certificate. The complete develop profile is green at **253
+> files / 2,562 passed / 1 skipped**, all TypeScript programs, **34** art sources,
+> **1,014/1,014** routes and **454** non-inert fields. Current Compendium producer/budget authority
+> is `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `80a2b8b39d400419a5527f9737a92ea2e0c54916ba8c3966411e607fd950fd79`; fixed rulers, samples and
+> Edge-family + CDP `1.3` policy are unchanged. One fresh clean signed unchanged-source
+> Compendium → Slice → Glass chain remains pending.
 
 > **2026-08-31 historical 4002/4822 presentation overlay (superseded above; system
 > descriptions below remain current unless source says otherwise):** exact clean signed source
@@ -316,6 +320,9 @@
 > replacement authority disables every Claim control while leaving the panel readable. One verified
 > result refreshes Records/AppChrome and may queue its achievement/rank ceremony; refusal preserves
 > the old board, while durable ambiguity reloads the single committed result without retry.
+> Owned/non-missing rarity slots use the same opaque `#05070d` reading surface as other written
+> rarity callouts. Missing Binder slots remain dim/transparent missing-state cells and are never
+> promoted into owned rarity surfaces.
 >
 > AppChrome's Prime Codex chip is a pointer-enabled native minimum-44-pixel button opening a bounded
 > labelled panel. Nine native disclosure rows show the exact Earth, Fire, Air, Stellar, Water,
@@ -586,7 +593,9 @@
 > ambience/music, broader or more-specific expressions/ecology, device evidence and HUMAN listening
 > remain open.
 >
-> Survey plus Compendium list/detail rarity now pass through one strict app projector. Only integer
+> Survey plus Compendium list/detail rarity pass through one strict app projector. Owned Records
+> Binder slots instead use the domain's canonical `displayRarity` / `RARITY_V17` ladder and color,
+> then apply the same opaque CSS reading surface. Only integer
 > raw grades 0–14 are accepted: 0–9 use the canonical display row (including Transcendent at 9),
 > while 10–14 display as Transcendent. Missing, fractional, coercible or out-of-range data renders no
 > rarity instead of inventing Common or leaking a raw/art label. Planet rarity remains absent before
@@ -594,7 +603,7 @@
 > unchanged. The written rarity token now sits on one shared opaque `#05070d` reading badge while
 > retaining its canonical foreground, including Exotic `#9A5CFF`; effective text contrast is at
 > least 4.5:1 even over the brightest supported glass rather than depending on the translucent panel
-> behind it.
+> behind it. Binder missing slots keep their separate missing-state semantics.
 >
 > Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` contains that bounded
 > Final4 presentation/harness repair. Its historical Final5 Layout and SceneMemory reports passed
@@ -712,8 +721,10 @@
 > exact source projection. Pending action state keeps Close reachable, disables competing actions,
 > owns focus, and publishes no optimistic catalogue, creature, specimen, Stardust or budget change.
 > Storage/stale paths remain visibly refused or reload-converged; committed publication faults use
-> one read-only convergence reload. Short phone landscape vertically centers action controls within
-> their cards while retaining 44px floors, containment, owned hit points and keyboard-visible focus.
+> one read-only convergence reload. Capture actions center at the base grid scope rather than
+> stretching across the four text rows, while retaining 44px floors, narrow-phone full width,
+> containment, owned hit points and keyboard-visible focus. Short phone landscape keeps that same
+> centered behavior.
 >
 > Player copy now has 41 Guide topics classified **24 partial / 17 unavailable** and a 54-bullet
 > cumulative v2.0 development draft. Field Training remains exactly six lessons plus graduation;

@@ -1,6 +1,6 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-> **2026-08-30 current local post-capture readiness correction (matches local code):** a durable
+> **2026-08-31 current local Capture presentation/readiness overlay (matches local code):** a durable
 > Tame, Scavenge or Sample may queue the existing aggregate Arc 9 achievement/rank receipt before
 > its awaiting Survey UI continuation repaints. While that follow-up owns the shared coordinator,
 > Capture correctly projects read-only. After Arc 9 fully releases, Main now republishes only a
@@ -10,6 +10,10 @@
 > all fail closed, and a publication exception clears the action fence and schedules the existing
 > read-only convergence reload. Capture pools, odds, RNG, hit/miss spending, Yield cycle, ownership,
 > creature/genome identity, rewards and save schema are unchanged.
+> The three Tame/Scavenge/Sample actions now center at the base card-grid scope rather than
+> stretching through all four text rows, retain their minimum 44px target at 412×915 A++/Max/Mono,
+> and preserve the existing ≤390px full-width and short-landscape rules. This is presentation-only;
+> pools, odds, Yield, action ownership and settlement semantics do not change.
 >
 > Exact signed source `656c85e43a59fe775efac102b21a7530c033e5ff` exposed this through a
 > causal pre-arm stop after Sample + Arc 9 were durable at revisions 108/109 with 15/16 Yield,

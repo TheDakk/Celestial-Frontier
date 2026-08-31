@@ -5,18 +5,22 @@
 two places where the shipped implementation differs from the §3 plan, and one instruction that is retracted.
 *(Previously: "awaiting Nick's deploy call", matched-as-of 2026-07-22 — both stale.)*
 
-> **2026-08-27 strict v2 display overlay — current local candidate:** the app now owns an explicit,
+> **2026-08-31 strict v2 display overlay — current local candidate:** the app now owns an explicit,
 > immutable `RawGradeTier` → `DisplayRarityTier` presentation boundary. It accepts only primitive
 > integer raw values 0–14: raw 0–9 uses the matching canonical ten-name row, and raw 10–14 collapses
 > to display tier 9, **Transcendent** / `#F7F1FF`. Missing, malformed, coercible, fractional or
 > out-of-range input produces no rarity callout; it never defaults to Common.
 >
-> The foreground vocabulary and palette remain canonical. Compendium list/detail present each
-> written rarity token on a shared opaque `#05070d` reading badge; Exotic therefore remains
-> `#9A5CFF` while the evaluated foreground/background pair stays at or above 4.5:1 across supported
-> glass. This is a presentation backdrop, not a ladder, roll, persistence or art-color change.
+> The foreground vocabulary and palette remain canonical. Compendium list/detail plus
+> owned/non-missing Records Binder rarity slots present each written rarity token on a shared opaque
+> `#05070d` reading surface; Exotic therefore remains `#9A5CFF` while the evaluated
+> foreground/background pair stays at or above 4.5:1 across supported glass. Missing Binder slots
+> retain their separate missing-state surface. This is a presentation backdrop, not a ladder, roll,
+> persistence or art-color change.
 >
-> Survey and Compendium list/detail use that strict projector. Planet rarity remains absent before
+> Survey and Compendium list/detail use that strict app projector. Owned Binder slots instead use
+> the domain's canonical `displayRarity` / `RARITY_V17` ladder and color, then apply the same opaque
+> reading surface in CSS. Planet rarity remains absent before
 > landing; Compendium presentation reads the stored raw tier rather than an art/designation label.
 > This is the explicit port mechanism the older re-verification note below required. It changes no
 > `rarityRoll` threshold or draw, raw tier, save field, sort/balance authority, deterministic
