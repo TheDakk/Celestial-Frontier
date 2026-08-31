@@ -38,22 +38,22 @@ const { JSDOM } = require('jsdom') as {
 const here = path.dirname(fileURLToPath(import.meta.url));
 const gameIndexSource = fs.readFileSync(path.join(here, '..', 'apps', 'game', 'index.html'), 'utf8');
 
-const CAPTURE_LANDSCAPE_MEDIA = '(max-width:900px)and(orientation:landscape)';
-const CAPTURE_LANDSCAPE_REPAIR = '      .capture-card-action { align-self: center; }\n';
+const CAPTURE_BASE_REPAIR =
+  '    .capture-card-action { grid-column: 2; grid-row: 1 / span 4; align-self: center;\n';
+const CAPTURE_BASE_STRETCH =
+  '    .capture-card-action { grid-column: 2; grid-row: 1 / span 4; align-self: stretch;\n';
+const CAPTURE_LANDSCAPE_SCOPE =
+  '    @media (max-width: 900px) and (orientation: landscape) {\n'
+  + '      /* The short landscape safe rectangle';
 
-interface CaptureLandscapeCascade {
+interface CaptureActionCascade {
   readonly alignSelf: string;
   readonly minHeight: string;
-  readonly repairOwnerCount: number;
+  readonly width: string;
+  readonly baseRepairOwnerCount: number;
 }
 
-function normalizedMediaCondition(value: string): string {
-  return value.toLowerCase().replace(/\s+/gu, '');
-}
-
-function mediaAppliesAtPhoneLandscape(condition: string): boolean {
-  const width = 844;
-  const height = 390;
+function mediaAppliesAtViewport(condition: string, width: number, height: number): boolean {
   return condition.split(/\s+and\s+/giu).every((rawTerm) => {
     const term = rawTerm.trim().toLowerCase();
     const widthBound = /^\((min|max)-width:\s*([0-9]+)px\)$/u.exec(term);
@@ -67,16 +67,16 @@ function mediaAppliesAtPhoneLandscape(condition: string): boolean {
   });
 }
 
-function captureLandscapeCascade(source: string): CaptureLandscapeCascade {
+function captureActionCascade(source: string, width: number, height: number): CaptureActionCascade {
   const sourceDom = new JSDOM(source);
   const applicableRules: string[] = [];
-  let repairOwnerCount = 0;
+  let baseRepairOwnerCount = 0;
 
   const visit = (rules: CSSRuleList, mediaStack: readonly string[]): void => {
     for (const rule of Array.from(rules)) {
       if (rule.type === 4) {
         const mediaRule = rule as CSSMediaRule;
-        if (mediaAppliesAtPhoneLandscape(mediaRule.conditionText)) {
+        if (mediaAppliesAtViewport(mediaRule.conditionText, width, height)) {
           visit(mediaRule.cssRules, [...mediaStack, mediaRule.conditionText]);
         }
         continue;
@@ -84,14 +84,11 @@ function captureLandscapeCascade(source: string): CaptureLandscapeCascade {
       if (rule.type !== 1) continue;
       const styleRule = rule as CSSStyleRule;
       applicableRules.push(styleRule.cssText);
-      const exactLandscapeOwner = mediaStack.some(
-        (condition) => normalizedMediaCondition(condition) === CAPTURE_LANDSCAPE_MEDIA,
-      );
       const exactSelector = styleRule.selectorText.split(',').map((selector) => selector.trim())
         .includes('.capture-card-action');
-      if (exactLandscapeOwner && exactSelector
+      if (mediaStack.length === 0 && exactSelector
         && styleRule.style.getPropertyValue('align-self').trim() === 'center') {
-        repairOwnerCount++;
+        baseRepairOwnerCount++;
       }
     }
   };
@@ -109,7 +106,8 @@ function captureLandscapeCascade(source: string): CaptureLandscapeCascade {
   const result = {
     alignSelf: computed.alignSelf,
     minHeight: computed.minHeight,
-    repairOwnerCount,
+    width: computed.width,
+    baseRepairOwnerCount,
   };
   cascadeDom.window.close();
   sourceDom.window.close();
@@ -269,48 +267,54 @@ afterEach(() => {
 });
 
 describe('Arc 4 Capture card controller', () => {
-  it('keeps the 44px capture action centered in the final short-landscape cascade', () => {
-    expect(captureLandscapeCascade(gameIndexSource)).toEqual({
+  it('keeps capture actions centered and 44px across large portrait, narrow, and landscape cascades', () => {
+    expect(captureActionCascade(gameIndexSource, 412, 915)).toEqual({
       alignSelf: 'center',
       minHeight: '44px',
-      repairOwnerCount: 1,
+      width: 'auto',
+      baseRepairOwnerCount: 1,
+    });
+    expect(captureActionCascade(gameIndexSource, 390, 844)).toMatchObject({
+      alignSelf: 'center',
+      minHeight: '44px',
+      width: '100%',
+      baseRepairOwnerCount: 1,
+    });
+    expect(captureActionCascade(gameIndexSource, 844, 390)).toMatchObject({
+      alignSelf: 'center',
+      minHeight: '44px',
+      baseRepairOwnerCount: 1,
     });
 
-    const missing = replaceExactOnce(gameIndexSource, CAPTURE_LANDSCAPE_REPAIR, '');
-    expect(captureLandscapeCascade(missing)).toMatchObject({
+    const stretched = replaceExactOnce(gameIndexSource, CAPTURE_BASE_REPAIR, CAPTURE_BASE_STRETCH);
+    expect(captureActionCascade(stretched, 412, 915)).toMatchObject({
       alignSelf: 'stretch',
-      repairOwnerCount: 0,
+      baseRepairOwnerCount: 0,
     });
 
-    const early = replaceExactOnce(
-      missing,
-      '    .capture-card-action { grid-column: 2;',
-      `    @media (max-width: 900px) and (orientation: landscape) {\n${CAPTURE_LANDSCAPE_REPAIR}    }\n    .capture-card-action { grid-column: 2;`,
-    );
-    expect(captureLandscapeCascade(early)).toMatchObject({
-      alignSelf: 'stretch',
-      repairOwnerCount: 1,
-    });
-
-    const overridden = replaceExactOnce(
+    const earlyThenOverridden = replaceExactOnce(
       gameIndexSource,
-      CAPTURE_LANDSCAPE_REPAIR,
-      `${CAPTURE_LANDSCAPE_REPAIR}      .capture-card-action { align-self: stretch; }\n`,
+      CAPTURE_BASE_REPAIR,
+      `    .capture-card-action { align-self: center; }\n${CAPTURE_BASE_STRETCH}`,
     );
-    expect(captureLandscapeCascade(overridden)).toMatchObject({
+    expect(captureActionCascade(earlyThenOverridden, 412, 915)).toMatchObject({
       alignSelf: 'stretch',
-      repairOwnerCount: 1,
+      baseRepairOwnerCount: 1,
     });
 
-    const wrongScope = replaceExactOnce(gameIndexSource, CAPTURE_LANDSCAPE_REPAIR, '');
-    const portraitScoped = replaceExactOnce(
-      wrongScope,
-      '    @media (max-width: 900px) and (orientation: portrait) {\n',
-      `    @media (max-width: 900px) and (orientation: portrait) {\n${CAPTURE_LANDSCAPE_REPAIR}`,
+    const wrongScope = replaceExactOnce(stretched,
+      CAPTURE_LANDSCAPE_SCOPE,
+      '    @media (max-width: 900px) and (orientation: landscape) {\n'
+        + '      .capture-card-action { align-self: center; }\n'
+        + '      /* The short landscape safe rectangle',
     );
-    expect(captureLandscapeCascade(portraitScoped)).toMatchObject({
+    expect(captureActionCascade(wrongScope, 412, 915)).toMatchObject({
       alignSelf: 'stretch',
-      repairOwnerCount: 0,
+      baseRepairOwnerCount: 0,
+    });
+    expect(captureActionCascade(wrongScope, 844, 390)).toMatchObject({
+      alignSelf: 'center',
+      baseRepairOwnerCount: 0,
     });
 
     const undersized = replaceExactOnce(
@@ -318,10 +322,36 @@ describe('Arc 4 Capture card controller', () => {
       '      min-width: 88px; min-height: 44px;',
       '      min-width: 88px; min-height: 20px;',
     );
-    expect(captureLandscapeCascade(undersized)).toMatchObject({
+    expect(captureActionCascade(undersized, 412, 915)).toMatchObject({
       alignSelf: 'center',
       minHeight: '20px',
-      repairOwnerCount: 1,
+      baseRepairOwnerCount: 1,
+    });
+
+    const narrowOverride = replaceExactOnce(
+      gameIndexSource,
+      '      .capture-card-action { grid-column: 1; grid-row: auto; width: 100%; }',
+      '      .capture-card-action { grid-column: 1; grid-row: auto; align-self: stretch; width: 100%; }',
+    );
+    expect(captureActionCascade(narrowOverride, 390, 844)).toMatchObject({
+      alignSelf: 'stretch',
+      baseRepairOwnerCount: 1,
+    });
+    expect(captureActionCascade(narrowOverride, 412, 915)).toMatchObject({
+      alignSelf: 'center',
+      baseRepairOwnerCount: 1,
+    });
+
+    const landscapeOverride = replaceExactOnce(
+      gameIndexSource,
+      CAPTURE_LANDSCAPE_SCOPE,
+      '    @media (max-width: 900px) and (orientation: landscape) {\n'
+        + '      .capture-card-action { align-self: stretch; }\n'
+        + '      /* The short landscape safe rectangle',
+    );
+    expect(captureActionCascade(landscapeOverride, 844, 390)).toMatchObject({
+      alignSelf: 'stretch',
+      baseRepairOwnerCount: 1,
     });
   });
 

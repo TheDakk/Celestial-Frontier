@@ -166,6 +166,116 @@ class ProductAnswerabilityFinding extends Error {
     this.finding = finding;
   }
 }
+class GlassInstrumentControlStop extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'GlassInstrumentControlStop';
+  }
+}
+
+function stopAtFirstGlassInstrumentFailure(state, failures, message) {
+  if (!state || typeof state !== 'object' || !Array.isArray(failures)) {
+    throw new TypeError('Glass instrument causal-stop requires mutable state and a failure ledger');
+  }
+  if (!(state.error instanceof GlassInstrumentControlStop)) {
+    if (failures.length > 1) failures.splice(1);
+    const failure = failures.length
+      ? String(failures[0])
+      : String(message || 'unknown Glass instrument control failure');
+    if (!failures.length) failures.push(failure);
+    state.error = new GlassInstrumentControlStop(failure);
+  }
+  throw state.error;
+}
+
+function recordGlassInstrumentFailure(state, failures, message, armed = false) {
+  if (!state || typeof state !== 'object' || !Array.isArray(failures)) {
+    throw new TypeError('Glass instrument failure recording requires mutable state and a failure ledger');
+  }
+  Array.prototype.push.call(failures, String(message));
+  if (armed === true) stopAtFirstGlassInstrumentFailure(state, failures, failures[0]);
+  return failures.length;
+}
+
+function recordGlassProductFinding(findings, viewport, surface, row, armed = false) {
+  if (!Array.isArray(findings) || typeof viewport !== 'string' || !viewport
+    || typeof surface !== 'string' || !surface || !row || typeof row !== 'object'
+    || typeof row.code !== 'string' || !row.code) {
+    throw new TypeError('Glass product finding recording requires a ledger, viewport, surface, and coded row');
+  }
+  Array.prototype.push.call(findings, { context: { viewport, surface }, row });
+  if (armed === true) {
+    throw new ProductAnswerabilityFinding(
+      `${viewport}: ${row.code} was the first product red, so dependent outcomes were not run`,
+      row.actual ?? row,
+      {
+        code: row.code,
+        surface: typeof row.surface === 'string' && row.surface ? row.surface : surface,
+        element: row.element ?? surface,
+        expected: row.expected,
+        alreadyRecorded: true,
+      },
+    );
+  }
+  return findings.length;
+}
+
+function collectGlassProductRows(findings, viewport, surface, rows, armed = false) {
+  for (const row of rows || []) {
+    recordGlassProductFinding(findings, viewport, surface, row, armed);
+  }
+  return findings.length;
+}
+
+function collectGlassProductOutcome(findings, viewport, surface, code, element, outcome, expected, armed = false) {
+  if (outcome?.ok !== true) {
+    recordGlassProductFinding(findings, viewport, surface,
+      { code, surface, element, actual: outcome, expected }, armed);
+  }
+  return findings.length;
+}
+
+function productBlockedRowsForCausalStop(selectedViewport, viewport, findingCode, executedControls = []) {
+  const executed = new Set(executedControls);
+  return selectedViewport
+    ? productBlockedSuffixForViewport(viewport, findingCode, executedControls)
+    : NEGATIVE_CONTROLS.filter((name) => !executed.has(name))
+      .map((name) => ({ name, viewport, findingCode }));
+}
+
+function shouldStopGlassViewportLoop(causalProductStop) {
+  return causalProductStop !== null && causalProductStop !== undefined;
+}
+
+function recordRenderedGuideIngressResult({
+  findings, instrumentState, instrumentFailures, viewport, ingress, armed = false,
+}) {
+  if (ingress?.product === null || ingress?.product === undefined) {
+    recordGlassInstrumentFailure(instrumentState, instrumentFailures,
+      `${viewport}: rendered F2 Guide baseline setup failed (${JSON.stringify(ingress)})`, armed);
+    return { productFindings: findings.length, instrumentFailures: instrumentFailures.length };
+  }
+  collectGlassProductOutcome(findings, viewport, 'guide-rendered-copy',
+    'GUIDE_RENDERED_COPY_CONTRACT', '#guidepanel .guide-topic', ingress?.product,
+    'all current Guide topics render their exact current-slice required copy without stale claims', armed);
+  if (ingress.product.ok !== true) {
+    return { productFindings: findings.length, instrumentFailures: instrumentFailures.length };
+  }
+  if (ingress?.instrument?.ok !== true) {
+    recordGlassInstrumentFailure(instrumentState, instrumentFailures,
+      `${viewport}: rendered F2 Guide negative controls failed (${JSON.stringify(ingress)})`, armed);
+  }
+  return { productFindings: findings.length, instrumentFailures: instrumentFailures.length };
+}
+
+function stopAfterRecordedProductOutcome(viewport, surface, code, element, outcome, expected) {
+  if (outcome?.ok === true) return;
+  throw new ProductAnswerabilityFinding(
+    `${viewport}: ${code} was red, so dependent outcomes in this viewport were not run`,
+    outcome,
+    { code, surface, element, expected, alreadyRecorded: true },
+  );
+}
 /* Read the durable Arc 2 carrier rather than trusting Main's diagnostics as
    its own oracle. The Inventory outcome joins these exact bytes to the DOM;
    a stale UI and a stale diagnostic cannot agree their way to green. */
@@ -1707,6 +1817,16 @@ function settingsAudioToggleOutcome(evidence, expected) {
   );
   const audio = evidence?.audio;
   const runtime = audio?.runtime;
+  const expectedCreatureGain = expected.voiceOn ? 1 : 0;
+  const masterGain = runtime?.gains?.master;
+  const audioPolicy = {
+    masterMute: runtime?.muted === !expected.soundOn,
+    effectiveMaster: Number.isFinite(masterGain)
+      && runtime?.gains?.effectiveMaster === (expected.soundOn ? masterGain : 0),
+    creatureCategory: runtime?.gains?.categories?.creature === expectedCreatureGain,
+    effectiveCreatureCategory:
+      runtime?.voiceMix?.effectiveCategoryGains?.creature === expectedCreatureGain,
+  };
   const settingsState = evidence?.state?.sndOn === expected.soundOn
     && evidence?.state?.voiceOn === expected.voiceOn;
   const focus = evidence?.focus === expected.focus;
@@ -1716,7 +1836,7 @@ function settingsAudioToggleOutcome(evidence, expected) {
     && audio.counterpart?.key === null && audio.counterpart?.generation === null
     && audio.counterpart?.status === 'none'
     && runtime?.contextState === null && runtime?.contextGeneration === 0
-    && runtime?.muted === !(expected.soundOn && expected.voiceOn)
+    && Object.values(audioPolicy).every(Boolean)
     && runtime?.nodes?.active === 0
     && runtime?.voices?.active === 0
     && Array.isArray(runtime?.voices?.ids) && runtime.voices.ids.length === 0
@@ -1743,7 +1863,7 @@ function settingsAudioToggleOutcome(evidence, expected) {
     uiOk,
     audioOk,
     checks,
-    productDetails: { sound: soundProduct, voice: voiceProduct },
+    productDetails: { sound: soundProduct, voice: voiceProduct, audioPolicy },
     expected,
     evidence,
   };
@@ -1906,7 +2026,8 @@ function settingsAudioViewportCoverageOutcome(expectedLabels, baselineLabels, co
     uniqueExpected: expected.size === expectedLabels.length,
     noUnexpected: unexpected.length === 0,
     disjointTerminalState: overlap.length === 0,
-    terminalRequiresBaseline: [...accounted].every((label) => baseline.has(label)),
+    completedRequiresBaseline: [...completed].every((label) => baseline.has(label)),
+    baselineHasTerminalState: [...baseline].every((label) => accounted.has(label)),
     allExpectedAccounted: expected.size === accounted.size
       && [...expected].every((label) => accounted.has(label)),
   };
@@ -1989,7 +2110,15 @@ function settingsAudioEvidenceSelftest() {
       counterpart: { key: null, generation: null, status: 'none' },
       runtime: {
         state: 'blocked', contextState: null, contextGeneration: 0,
-        muted: !(soundOn && voiceOn),
+        muted: !soundOn,
+        gains: {
+          master: 0.5,
+          effectiveMaster: soundOn ? 0.5 : 0,
+          categories: { creature: voiceOn ? 1 : 0 },
+        },
+        voiceMix: {
+          effectiveCategoryGains: { creature: voiceOn ? 1 : 0 },
+        },
         nodes: { active: 0 }, voices: { active: 0, ids: [], started: 0 },
         creatureEmitters: { active: 0 },
         reservations: { voices: { active: 0 }, nodes: { active: 0 } },
@@ -2045,6 +2174,11 @@ function settingsAudioEvidenceSelftest() {
     ['context', (row) => { row.audio.runtime.contextState = 'running'; }],
     ['context generation', (row) => { row.audio.runtime.contextGeneration = 1; }],
     ['mute policy', (row) => { row.audio.runtime.muted = true; }],
+    ['effective master policy', (row) => { row.audio.runtime.gains.effectiveMaster = 0; }],
+    ['creature category policy', (row) => { row.audio.runtime.gains.categories.creature = 0; }],
+    ['effective creature category policy', (row) => {
+      row.audio.runtime.voiceMix.effectiveCategoryGains.creature = 0;
+    }],
     ['nodes', (row) => { row.audio.runtime.nodes.active = 1; }],
     ['voices', (row) => { row.audio.runtime.voices.active = 1; }],
     ['voice ids', (row) => { row.audio.runtime.voices.ids.push('voice:1'); }],
@@ -2059,6 +2193,25 @@ function settingsAudioEvidenceSelftest() {
     const outcome = settingsAudioToggleOutcome(row, expected);
     if (outcome.ok || !outcome.instrumentOk) {
       failures.push(`${label} Settings audio mutation stayed green`);
+    }
+  }
+  for (const [label, soundOn, voiceOn, mutate] of [
+    ['enabled master incorrectly muted', true, false,
+      (row) => { row.audio.runtime.muted = true; }],
+    ['disabled master incorrectly unmuted', false, true,
+      (row) => { row.audio.runtime.muted = false; }],
+    ['disabled creature category incorrectly open', true, false,
+      (row) => { row.audio.runtime.gains.categories.creature = 1; }],
+    ['disabled effective creature category incorrectly open', true, false,
+      (row) => { row.audio.runtime.voiceMix.effectiveCategoryGains.creature = 1; }],
+  ]) {
+    const row = structuredClone(fixture(soundOn, voiceOn));
+    mutate(row);
+    const outcome = settingsAudioToggleOutcome(
+      row, { soundOn, voiceOn, focus: 'setvoice' },
+    );
+    if (outcome.ok || !outcome.instrumentOk) {
+      failures.push(`${label} Settings audio policy mutation stayed green`);
     }
   }
   const evidenceMutations = [
@@ -2272,6 +2425,13 @@ function settingsAudioEvidenceSelftest() {
   if (!productBlockedCoverage.instrumentOk || productBlockedCoverage.productOk || productBlockedCoverage.ok) {
     failures.push('product-blocked Settings viewport coverage was misclassified');
   }
+  const preBaselineProductBlockedCoverage = settingsAudioViewportCoverageOutcome(
+    expectedViewports, ['phone'], ['phone'], ['desktop'],
+  );
+  if (!preBaselineProductBlockedCoverage.instrumentOk
+    || preBaselineProductBlockedCoverage.productOk || preBaselineProductBlockedCoverage.ok) {
+    failures.push('pre-baseline product-blocked Settings viewport coverage was misclassified');
+  }
   for (const [label, coverage] of [
     ['premature baseline credit', settingsAudioViewportCoverageOutcome(
       expectedViewports, expectedViewports, ['phone'], [],
@@ -2281,6 +2441,9 @@ function settingsAudioEvidenceSelftest() {
     )],
     ['unknown viewport credit', settingsAudioViewportCoverageOutcome(
       expectedViewports, [...expectedViewports, 'tablet'], expectedViewports, [],
+    )],
+    ['completed without baseline', settingsAudioViewportCoverageOutcome(
+      expectedViewports, ['phone'], expectedViewports, [],
     )],
   ]) {
     if (coverage.instrumentOk) failures.push(`${label} stayed instrument-green`);
@@ -4179,6 +4342,31 @@ function exactGuideRenderedRequiredControlRejected({
     });
 }
 
+function classifyRenderedGuideIngress({
+  baselineComplete, baselineRows, expectedCount,
+  predicateControls, controlRows, error,
+}) {
+  const product = baselineComplete === true ? {
+    ok: Array.isArray(baselineRows)
+      && baselineRows.length === expectedCount
+      && baselineRows.every((row) => row?.current?.ok === true),
+    expectedCount,
+    rows: Array.isArray(baselineRows) ? baselineRows : [],
+  } : null;
+  const instrument = product?.ok === true ? {
+    ok: error === null
+      && predicateControls && Object.values(predicateControls).every((value) => value === true)
+      && Array.isArray(controlRows) && controlRows.length === expectedCount
+      && controlRows.every((row) => row?.controlRejected === true
+        && row?.requiredControlsRejected === true
+        && row?.contradictionRejected === true
+        && row?.restored === true),
+    predicateControls,
+    rows: Array.isArray(controlRows) ? controlRows : [],
+  } : null;
+  return { ok: product?.ok === true && instrument?.ok === true, product, instrument, error };
+}
+
 /* Reconstruct the exact generated Shipyard predicate from this source for a
    browser-free missing-owner control. A selector added to that predicate
    cannot silently reintroduce `null.querySelectorAll(...)`: selftest executes
@@ -4995,6 +5183,306 @@ async function reportSelftest() {
     || inlineStyleRestoration.malformedBefore || inlineStyleRestoration.malformedAfter) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: inline-style restoration controls failed (${JSON.stringify(inlineStyleRestoration)})`);
   }
+  const visiblePortraitBaseline = {
+    ok: true, trailVisible: true, fallback: false, gap: 8,
+  };
+  const hiddenPortraitBaseline = {
+    ok: true, trailVisible: false, fallback: true, gap: null,
+  };
+  const trailControl = {
+    baseline: { ok: true },
+    prior: { value: '', priority: '', computed: 'none' },
+    mutation: {
+      requested: 'block', property: { value: 'block', priority: 'important' },
+      computed: 'block', outcome: { ok: false },
+    },
+    restored: {
+      property: { value: '', priority: '' }, computed: 'none', outcome: { ok: true },
+    },
+  };
+  const visibleTrailControl = {
+    ...structuredClone(trailControl),
+    prior: { value: 'grid', priority: '', computed: 'grid' },
+    mutation: {
+      requested: 'none', property: { value: 'none', priority: 'important' },
+      computed: 'none', outcome: { ok: false },
+    },
+    restored: {
+      property: { value: 'grid', priority: '' }, computed: 'grid', outcome: { ok: true },
+    },
+  };
+  const trailControls = {
+    hiddenToVisible: trailRestorationControlOutcome(trailControl),
+    visibleToHidden: trailRestorationControlOutcome(visibleTrailControl),
+    noOp: trailRestorationControlOutcome({
+      ...structuredClone(trailControl),
+      mutation: { ...trailControl.mutation, requested: 'none', computed: 'none',
+        property: { value: 'none', priority: 'important' } },
+    }),
+    stayedGreen: trailRestorationControlOutcome({
+      ...structuredClone(trailControl),
+      mutation: { ...trailControl.mutation, outcome: { ok: true } },
+    }),
+    wrongRestoration: trailRestorationControlOutcome({
+      ...structuredClone(trailControl),
+      restored: { ...trailControl.restored,
+        property: { value: '', priority: 'important' } },
+    }),
+  };
+  const bandControl = {
+    baseline: visiblePortraitBaseline,
+    prior: { value: '', priority: '', computed: 'none' },
+    mutation: {
+      requested: 'translateY(-7px)',
+      property: { value: 'translateY(-7px)', priority: 'important' },
+      computed: 'matrix(1, 0, 0, 1, 0, -7)',
+      outcome: { ok: false, trailVisible: true, fallback: false, gap: 1 },
+    },
+    restored: {
+      property: { value: '', priority: '' }, computed: 'none',
+      outcome: visiblePortraitBaseline,
+    },
+  };
+  const bandControls = {
+    positive: portraitBandControlOutcome(bandControl),
+    noOp: portraitBandControlOutcome({
+      ...structuredClone(bandControl),
+      mutation: { ...bandControl.mutation, computed: 'none' },
+    }),
+    ineligible: portraitBandControlOutcome({
+      ...structuredClone(bandControl), baseline: hiddenPortraitBaseline,
+    }),
+    wrongRestoration: portraitBandControlOutcome({
+      ...structuredClone(bandControl),
+      restored: { ...bandControl.restored,
+        property: { value: 'translateY(-7px)', priority: 'important' } },
+    }),
+  };
+  const fallbackControl = {
+    baseline: visiblePortraitBaseline,
+    prior: { value: '', priority: '', computed: '0px' },
+    mutation: {
+      requested: '72px', property: { value: '72px', priority: 'important' },
+      computed: '72px', baseSafe: 0, forcedSafe: 72,
+      outcome: {
+        ok: true, fallback: true, trailDisplay: 'none', meaningful: true,
+        side: [0, 100, 320, 172], clientHeight: 72, scrollHeight: 120,
+        overflowY: 'auto', scrollOk: true, fixedClear: true,
+        fixedRows: [
+          { id: 'playerchip', visible: true, gap: 8 },
+          { id: 'hpbar', visible: true, gap: 8 },
+          { id: 'searchbox', visible: true, gap: 8 },
+          { id: 'objchip', visible: false, gap: -40 },
+        ],
+      },
+    },
+    restored: {
+      property: { value: '', priority: '' }, computed: '0px',
+      outcome: visiblePortraitBaseline,
+    },
+  };
+  const fallbackControls = {
+    positive: portraitFallbackControlOutcome(fallbackControl),
+    noOp: portraitFallbackControlOutcome({
+      ...structuredClone(fallbackControl),
+      mutation: { ...fallbackControl.mutation, requested: '0px',
+        property: { value: '0px', priority: 'important' }, computed: '0px', forcedSafe: 0 },
+    }),
+    ineligible: portraitFallbackControlOutcome({
+      ...structuredClone(fallbackControl), baseline: hiddenPortraitBaseline,
+    }),
+    wrongRestoration: portraitFallbackControlOutcome({
+      ...structuredClone(fallbackControl),
+      restored: { ...fallbackControl.restored,
+        property: { value: '72px', priority: 'important' } },
+    }),
+    collapsedStrip: portraitFallbackControlOutcome({
+      ...structuredClone(fallbackControl),
+      mutation: { ...structuredClone(fallbackControl.mutation),
+        outcome: { ...structuredClone(fallbackControl.mutation.outcome),
+          meaningful: false, side: [0, 100, 320, 164], clientHeight: 64 } },
+    }),
+    inaccessibleScroll: portraitFallbackControlOutcome({
+      ...structuredClone(fallbackControl),
+      mutation: { ...structuredClone(fallbackControl.mutation),
+        outcome: { ...structuredClone(fallbackControl.mutation.outcome),
+          scrollOk: false, overflowY: 'hidden' } },
+    }),
+    fixedRowOverlap: portraitFallbackControlOutcome({
+      ...structuredClone(fallbackControl),
+      mutation: { ...structuredClone(fallbackControl.mutation),
+        outcome: { ...structuredClone(fallbackControl.mutation.outcome), fixedClear: false,
+          fixedRows: structuredClone(fallbackControl.mutation.outcome.fixedRows)
+            .map((row, index) => index === 0 ? { ...row, gap: 1 } : row) } },
+    }),
+  };
+  const portraitCampaignControls = {
+    positive: portraitControlCampaignOutcome({
+      planned: 5, observed: 5, eligible: 2, bandRuns: 1, fallbackRuns: 1,
+    }),
+    noEligible: portraitControlCampaignOutcome({
+      planned: 5, observed: 5, eligible: 0, bandRuns: 0, fallbackRuns: 0,
+    }),
+    missingBaseline: portraitControlCampaignOutcome({
+      planned: 5, observed: 4, eligible: 1, bandRuns: 1, fallbackRuns: 1,
+    }),
+    duplicateRun: portraitControlCampaignOutcome({
+      planned: 5, observed: 5, eligible: 2, bandRuns: 2, fallbackRuns: 1,
+    }),
+  };
+  const causalState = { error: null };
+  const causalFailures = [];
+  const causalTrace = ['before-first-control'];
+  let firstCausalError = null;
+  try {
+    stopAtFirstGlassInstrumentFailure(causalState, causalFailures, 'first control red');
+    causalTrace.push('later-control-ran', 'later-viewport-ran', 'later-finding-recorded');
+  } catch (error) {
+    firstCausalError = error;
+  }
+  let repeatedCausalError = null;
+  try {
+    stopAtFirstGlassInstrumentFailure(causalState, causalFailures, 'later control red');
+  } catch (error) {
+    repeatedCausalError = error;
+  }
+  let malformedCausalStateRejected = false;
+  try { stopAtFirstGlassInstrumentFailure(null, [], 'malformed'); }
+  catch (error) { malformedCausalStateRejected = error instanceof TypeError; }
+  const preexistingCausalState = { error: null };
+  const preexistingCausalFailures = ['first preexisting red', 'derivative red'];
+  try { stopAtFirstGlassInstrumentFailure(preexistingCausalState, preexistingCausalFailures, 'later red'); }
+  catch { /* the exact first retained failure is asserted below */ }
+  const integratedCausalState = { error: null };
+  const integratedCausalFailures = [];
+  const integratedCausalTrace = ['before-runtime-record'];
+  let integratedCausalError = null;
+  try {
+    recordGlassInstrumentFailure(integratedCausalState, integratedCausalFailures,
+      'runtime-recorded red', true);
+    integratedCausalTrace.push('later-control-ran', 'later-viewport-ran', 'later-finding-recorded');
+  } catch (error) {
+    integratedCausalError = error;
+  }
+  let productCausalError = null;
+  const productCausalTrace = ['before-product-outcome'];
+  stopAfterRecordedProductOutcome('primary-phone', 'planetside', 'PRODUCT_CONTROL',
+    '#planetside', { ok: true }, 'truthful baseline');
+  try {
+    stopAfterRecordedProductOutcome('primary-phone', 'planetside', 'PRODUCT_CONTROL',
+      '#planetside', { ok: false, reason: 'injected' }, 'truthful baseline');
+    productCausalTrace.push('dependent-control-ran', 'duplicate-finding-recorded');
+  } catch (error) {
+    productCausalError = error;
+  }
+  const malformedProductStops = [];
+  for (const outcome of [null, {}, { ok: 1 }, { ok: 'true' }]) {
+    try {
+      stopAfterRecordedProductOutcome('primary-phone', 'planetside', 'PRODUCT_CONTROL',
+        '#planetside', outcome, 'truthful baseline');
+    } catch (error) {
+      malformedProductStops.push(error instanceof ProductAnswerabilityFinding);
+    }
+  }
+  const collectorFindings = [];
+  const collectorTrace = ['before-product-collector'];
+  const collectorExecuted = NEGATIVE_CONTROLS.slice(0, 2);
+  let collectorError = null, collectorStop = null, collectorBlocked = [];
+  for (const viewport of ['large-phone', 'desktop']) {
+    collectorTrace.push(`viewport:${viewport}`);
+    try {
+      if (viewport === 'large-phone') {
+        collectGlassProductRows(collectorFindings, viewport, 'settings', [{
+          code: 'CONTROL_OUTSIDE_VIEWPORT', surface: 'settings', element: '#fixture-control',
+          actual: { reason: 'injected product red' }, expected: 'reachable control',
+        }, {
+          code: 'DEPENDENT_DUPLICATE', surface: 'settings', element: '#dependent-control',
+          actual: { reason: 'must never be recorded' }, expected: 'causally blocked',
+        }], true);
+        collectorTrace.push('dependent-callback-ran', 'duplicate-finding-recorded');
+      } else {
+        collectorTrace.push('later-viewport-ran');
+      }
+    } catch (error) {
+      collectorError = error;
+      collectorStop ??= { viewport, findingCode: error?.finding?.code || 'UNKNOWN_PRODUCT_RED' };
+      collectorBlocked = productBlockedRowsForCausalStop(
+        null, viewport, collectorStop.findingCode, collectorExecuted,
+      );
+    }
+    if (shouldStopGlassViewportLoop(collectorStop)) break;
+  }
+  const collectorCoverage = controlCoverageOutcome(collectorExecuted, collectorBlocked);
+  const outcomeCollectorFindings = [], outcomeCollectorTrace = ['before-outcome-collector'];
+  let outcomeCollectorError = null;
+  try {
+    collectGlassProductOutcome(outcomeCollectorFindings, 'primary-phone', 'settings',
+      'SETTINGS_SOUND_GREEN', '#setsnd', { ok: true }, 'green outcome', true);
+    collectGlassProductOutcome(outcomeCollectorFindings, 'primary-phone', 'settings',
+      'SETTINGS_SOUND_RED', '#setsnd', { ok: false, reason: 'injected' }, 'green outcome', true);
+    outcomeCollectorTrace.push('dependent-outcome-ran');
+  } catch (error) {
+    outcomeCollectorError = error;
+  }
+  if (!trailControls.hiddenToVisible.ok || !trailControls.visibleToHidden.ok
+    || trailControls.noOp.ok || trailControls.stayedGreen.ok || trailControls.wrongRestoration.ok
+    || !portraitControlBaselineEligible(visiblePortraitBaseline)
+    || portraitControlBaselineEligible(hiddenPortraitBaseline)
+    || portraitControlBaselineEligible({ ...visiblePortraitBaseline, ok: false })
+    || !bandControls.positive.ok || bandControls.noOp.ok || bandControls.ineligible.ok
+    || bandControls.wrongRestoration.ok
+    || !fallbackControls.positive.ok || fallbackControls.noOp.ok || fallbackControls.ineligible.ok
+    || fallbackControls.wrongRestoration.ok || fallbackControls.collapsedStrip.ok
+    || fallbackControls.inaccessibleScroll.ok || fallbackControls.fixedRowOverlap.ok
+    || !portraitCampaignControls.positive.ok || portraitCampaignControls.noEligible.ok
+    || portraitCampaignControls.missingBaseline.ok || portraitCampaignControls.duplicateRun.ok
+    || causalTrace.length !== 1
+    || !(firstCausalError instanceof GlassInstrumentControlStop)
+    || repeatedCausalError !== firstCausalError
+    || causalFailures.length !== 1 || causalFailures[0] !== 'first control red'
+    || preexistingCausalFailures.length !== 1
+    || preexistingCausalFailures[0] !== 'first preexisting red'
+    || integratedCausalTrace.length !== 1
+    || !(integratedCausalError instanceof GlassInstrumentControlStop)
+    || integratedCausalFailures.length !== 1
+    || integratedCausalFailures[0] !== 'runtime-recorded red'
+    || productCausalTrace.length !== 1
+    || !(productCausalError instanceof ProductAnswerabilityFinding)
+    || productCausalError.finding?.code !== 'PRODUCT_CONTROL'
+    || productCausalError.finding?.alreadyRecorded !== true
+    || productCausalError.evidence?.reason !== 'injected'
+    || malformedProductStops.length !== 4 || malformedProductStops.some((stopped) => !stopped)
+    || collectorTrace.length !== 2 || collectorTrace[1] !== 'viewport:large-phone'
+    || !(collectorError instanceof ProductAnswerabilityFinding)
+    || collectorError.finding?.alreadyRecorded !== true
+    || collectorError.finding?.code !== 'CONTROL_OUTSIDE_VIEWPORT'
+    || collectorFindings.length !== 1
+    || collectorFindings[0]?.context?.viewport !== 'large-phone'
+    || collectorFindings[0]?.row?.code !== 'CONTROL_OUTSIDE_VIEWPORT'
+    || !collectorCoverage.ok || collectorCoverage.omitted.length !== 0
+    || collectorCoverage.executed.length !== 2
+    || collectorCoverage.blocked.length !== NEGATIVE_CONTROLS.length - 2
+    || outcomeCollectorTrace.length !== 1
+    || !(outcomeCollectorError instanceof ProductAnswerabilityFinding)
+    || outcomeCollectorError.finding?.code !== 'SETTINGS_SOUND_RED'
+    || outcomeCollectorFindings.length !== 1
+    || outcomeCollectorFindings[0]?.row?.code !== 'SETTINGS_SOUND_RED'
+    || !malformedCausalStateRejected) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: trail/portrait eligibility, mutation, restoration, or causal-stop controls failed (${JSON.stringify({
+      trailControls, bandControls, fallbackControls, portraitCampaignControls,
+      causalTrace, causalFailures, firstCausalError: firstCausalError?.message,
+      repeatedCausalError: repeatedCausalError?.message, preexistingCausalFailures,
+      integratedCausalTrace, integratedCausalFailures,
+      integratedCausalError: integratedCausalError?.message,
+      productCausalTrace, productCausalError: productCausalError?.message,
+      productCausalFinding: productCausalError?.finding, malformedProductStops,
+      collectorTrace, collectorError: collectorError?.message,
+      collectorFinding: collectorError?.finding, collectorFindings, collectorCoverage,
+      outcomeCollectorTrace, outcomeCollectorError: outcomeCollectorError?.message,
+      outcomeCollectorFinding: outcomeCollectorError?.finding, outcomeCollectorFindings,
+      malformedCausalStateRejected,
+    })})`);
+  }
   const toastAnchorRestoration = {
     positive: toastAnchorControlOutcome({
       priorStyle: 'right: 24px; bottom: 40px;', restoredStyle: 'right: 24px; bottom: 40px;',
@@ -5151,18 +5639,103 @@ async function reportSelftest() {
       restoredPredicate: false,
     }),
   };
+  const renderedGuideBaselineRows = [
+    { id: 'landing', current: { ok: true } },
+    { id: 'settings', current: { ok: true } },
+  ];
+  const renderedGuideControlRows = [
+    { id: 'landing', controlRejected: true, requiredControlsRejected: true,
+      contradictionRejected: true, restored: true },
+    { id: 'settings', controlRejected: true, requiredControlsRejected: true,
+      contradictionRejected: true, restored: true },
+  ];
+  const renderedGuideClassification = {
+    green: classifyRenderedGuideIngress({
+      baselineComplete: true, baselineRows: renderedGuideBaselineRows, expectedCount: 2,
+      predicateControls: { positive: true, noOp: true },
+      controlRows: renderedGuideControlRows, error: null,
+    }),
+    productRed: classifyRenderedGuideIngress({
+      baselineComplete: true,
+      baselineRows: [renderedGuideBaselineRows[0], { id: 'settings', current: { ok: false } }],
+      expectedCount: 2, predicateControls: null, controlRows: [], error: null,
+    }),
+    instrumentRed: classifyRenderedGuideIngress({
+      baselineComplete: true, baselineRows: renderedGuideBaselineRows, expectedCount: 2,
+      predicateControls: { positive: true, noOp: true },
+      controlRows: [renderedGuideControlRows[0], {
+        ...renderedGuideControlRows[1], controlRejected: false,
+      }], error: null,
+    }),
+    setupRed: classifyRenderedGuideIngress({
+      baselineComplete: false, baselineRows: [], expectedCount: 2,
+      predicateControls: null, controlRows: [], error: 'Guide panel/search missing',
+    }),
+  };
+  const exerciseRenderedGuidePhase = (ingress) => {
+    const findings = [], instrumentFailures = [], instrumentState = { error: null }, trace = [];
+    let error = null;
+    try {
+      recordRenderedGuideIngressResult({
+        findings, instrumentState, instrumentFailures,
+        viewport: 'primary-phone', ingress, armed: true,
+      });
+      trace.push('dependent-work-ran');
+    } catch (cause) {
+      error = cause;
+    }
+    return { findings, instrumentFailures, trace, error };
+  };
+  const exerciseUnarmedRenderedGuidePhase = (ingress) => {
+    const findings = [], instrumentFailures = [], instrumentState = { error: null };
+    const result = recordRenderedGuideIngressResult({
+      findings, instrumentState, instrumentFailures,
+      viewport: 'primary-phone', ingress, armed: false,
+    });
+    return { findings, instrumentFailures, result, error: instrumentState.error };
+  };
+  const renderedGuideProductIngress = {
+    ...renderedGuideClassification.productRed, baselineRows: renderedGuideBaselineRows,
+    predicateControls: null, rows: [],
+  };
+  const renderedGuidePhase = {
+    productRed: exerciseRenderedGuidePhase(renderedGuideProductIngress),
+    noOpControl: exerciseRenderedGuidePhase(renderedGuideClassification.instrumentRed),
+    nonUniqueControl: exerciseRenderedGuidePhase(classifyRenderedGuideIngress({
+      baselineComplete: true, baselineRows: renderedGuideBaselineRows, expectedCount: 2,
+      predicateControls: { positive: true, noOp: true },
+      controlRows: [renderedGuideControlRows[0], {
+        ...renderedGuideControlRows[1], requiredControlsRejected: false,
+      }], error: null,
+    })),
+    restoration: exerciseRenderedGuidePhase(classifyRenderedGuideIngress({
+      baselineComplete: true, baselineRows: renderedGuideBaselineRows, expectedCount: 2,
+      predicateControls: { positive: true, noOp: true },
+      controlRows: [renderedGuideControlRows[0], {
+        ...renderedGuideControlRows[1], restored: false,
+      }], error: null,
+    })),
+    unarmedProductRed: exerciseUnarmedRenderedGuidePhase(renderedGuideProductIngress),
+    unarmedSetupRed: exerciseUnarmedRenderedGuidePhase(renderedGuideClassification.setupRed),
+  };
   const selfSource = fs.readFileSync(fileURLToPath(import.meta.url), 'utf8');
-  const renderedTextWiring = 'exactGuideRenderedTextMutation(target.'
-    + "textContent||'',part,'required Training contract removed')";
+  const renderedTextWiring = 'exactGuideRenderedTextMutation(controlTarget.'
+    + "textContent||'',part,'required Guide contract removed')";
   const staleHtmlMutation = 'const changed=prior.' + 'replace(part';
-  const htmlRestorationWiring = 'guideRenderedControlHtmlRestored(prior,target.'
+  const htmlRestorationWiring = 'guideRenderedControlHtmlRestored(controlPrior,controlTarget.'
     + 'innerHTML)';
   const observedMutationWiring = 'exactGuideRenderedRequiredControlRejected({mutation,'
     + 'observedAfter,needle:part';
+  const uniqueCarrierWiring = 'rejected:carriers.length===1&&exactGuideRendered'
+    + 'RequiredControlRejected';
+  const renderedGuideControlGateWiring = 'if(baselineRows.length===specs.length'
+    + '&&baselineRows.every((row)=>row.current.ok)){\n              predicateControls={';
   const renderedTextWiringCount = selfSource.split(renderedTextWiring).length - 1;
   const staleHtmlMutationCount = selfSource.split(staleHtmlMutation).length - 1;
   const htmlRestorationWiringCount = selfSource.split(htmlRestorationWiring).length - 1;
   const observedMutationWiringCount = selfSource.split(observedMutationWiring).length - 1;
+  const uniqueCarrierWiringCount = selfSource.split(uniqueCarrierWiring).length - 1;
+  const renderedGuideControlGateWiringCount = selfSource.split(renderedGuideControlGateWiring).length - 1;
   if (renderedGuideMutation.positive.targetCount !== 1
     || renderedGuideMutation.positive.changeCount !== 1
     || renderedGuideMutation.positive.after.includes('Meals by 1, capped at 200')
@@ -5187,11 +5760,44 @@ async function reportSelftest() {
     || renderedControlAssessment.htmlNotRestored !== false
     || renderedControlAssessment.textNotRestored !== false
     || renderedControlAssessment.predicateNotRestored !== false
+    || renderedGuideClassification.green.ok !== true
+    || renderedGuideClassification.green.product?.ok !== true
+    || renderedGuideClassification.green.instrument?.ok !== true
+    || renderedGuideClassification.productRed.ok !== false
+    || renderedGuideClassification.productRed.product?.ok !== false
+    || renderedGuideClassification.productRed.instrument !== null
+    || renderedGuideClassification.instrumentRed.ok !== false
+    || renderedGuideClassification.instrumentRed.product?.ok !== true
+    || renderedGuideClassification.instrumentRed.instrument?.ok !== false
+    || renderedGuideClassification.setupRed.ok !== false
+    || renderedGuideClassification.setupRed.product !== null
+    || renderedGuideClassification.setupRed.instrument !== null
+    || renderedGuideProductIngress.rows.length !== 0
+    || renderedGuidePhase.productRed.trace.length !== 0
+    || !(renderedGuidePhase.productRed.error instanceof ProductAnswerabilityFinding)
+    || renderedGuidePhase.productRed.findings.length !== 1
+    || renderedGuidePhase.productRed.findings[0]?.row?.code !== 'GUIDE_RENDERED_COPY_CONTRACT'
+    || renderedGuidePhase.productRed.instrumentFailures.length !== 0
+    || Object.entries(renderedGuidePhase).filter(([name]) => ![
+      'productRed', 'unarmedProductRed', 'unarmedSetupRed',
+    ].includes(name))
+      .some(([, phase]) => phase.trace.length !== 0
+        || !(phase.error instanceof GlassInstrumentControlStop)
+        || phase.findings.length !== 0 || phase.instrumentFailures.length !== 1)
+    || renderedGuidePhase.unarmedProductRed.findings.length !== 1
+    || renderedGuidePhase.unarmedProductRed.findings[0]?.row?.code !== 'GUIDE_RENDERED_COPY_CONTRACT'
+    || renderedGuidePhase.unarmedProductRed.instrumentFailures.length !== 0
+    || renderedGuidePhase.unarmedProductRed.error !== null
+    || renderedGuidePhase.unarmedSetupRed.findings.length !== 0
+    || renderedGuidePhase.unarmedSetupRed.instrumentFailures.length !== 1
+    || renderedGuidePhase.unarmedSetupRed.error !== null
     || renderedTextWiringCount !== 1
     || staleHtmlMutationCount !== 0
     || htmlRestorationWiringCount !== 1
-    || observedMutationWiringCount !== 1) {
-    throw new Error(`GLASS MATRIX REPORT SELFTEST: rendered Guide exact-text mutation failed closed incorrectly (${JSON.stringify({ renderedGuideMutation, renderedGuideRestoration, renderedControlAssessment, renderedTextWiringCount, staleHtmlMutationCount, htmlRestorationWiringCount, observedMutationWiringCount })})`);
+    || observedMutationWiringCount !== 1
+    || uniqueCarrierWiringCount !== 1
+    || renderedGuideControlGateWiringCount !== 1) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: rendered Guide exact-text mutation failed closed incorrectly (${JSON.stringify({ renderedGuideMutation, renderedGuideRestoration, renderedControlAssessment, renderedGuideClassification, renderedGuidePhase: Object.fromEntries(Object.entries(renderedGuidePhase).map(([name, phase]) => [name, { findings: phase.findings, instrumentFailures: phase.instrumentFailures, trace: phase.trace, error: phase.error?.message }])), renderedTextWiringCount, staleHtmlMutationCount, htmlRestorationWiringCount, observedMutationWiringCount, uniqueCarrierWiringCount, renderedGuideControlGateWiringCount })})`);
   }
   const fixture = {
     status: 'fail', exitCode: 1,
@@ -5243,6 +5849,27 @@ async function reportSelftest() {
     || productBlockedCoverage.blocked.length !== 1
     || overlapCoverage.ok) {
     throw new Error(`GLASS MATRIX REPORT SELFTEST: product-blocked control accounting failed (${JSON.stringify({ productBlockedCoverage, overlapCoverage })})`);
+  }
+  const fullCausalExecuted = NEGATIVE_CONTROLS.slice(0, 3);
+  const fullCausalBlocked = NEGATIVE_CONTROLS.slice(3).map((name) => ({
+    name, viewport: 'large-phone', findingCode: 'ARC4_CAPTURE_GEOMETRY_FOCUS',
+  }));
+  const fullCausalCoverage = controlCoverageOutcome(fullCausalExecuted, fullCausalBlocked);
+  const allViewportLabels = MATRIX_VIEWPORTS.map((viewport) => viewport.label);
+  const fullCausalSettingsCoverage = settingsAudioViewportCoverageOutcome(
+    allViewportLabels, [], [], allViewportLabels,
+  );
+  if (!fullCausalCoverage.ok
+    || fullCausalCoverage.omitted.length !== 0
+    || fullCausalCoverage.executed.length !== 3
+    || fullCausalCoverage.blocked.length !== NEGATIVE_CONTROLS.length - 3
+    || !fullCausalSettingsCoverage.instrumentOk
+    || fullCausalSettingsCoverage.productOk
+    || fullCausalSettingsCoverage.ok
+    || fullCausalSettingsCoverage.baseline.length !== 0
+    || fullCausalSettingsCoverage.completed.length !== 0
+    || fullCausalSettingsCoverage.productBlocked.length !== allViewportLabels.length) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: full causal product-stop accounting failed (${JSON.stringify({ fullCausalCoverage, fullCausalSettingsCoverage })})`);
   }
   const pointerPass = ultraPointerOutcome({ x: 53, y: 47 }, 53, 47);
   const missingPointer = ultraPointerOutcome(null, 53, 47);
@@ -5572,6 +6199,7 @@ async function reportSelftest() {
   console.log('  missing Shipyard generated expression returns {ok:false} without throw; import, release, exact boot subphases, twin-canvas budgets, navigation, and boot-ready deadlines fail closed');
   console.log('  source provenance: physical repository + actual full HEAD accepted; required Git failure and empty/malformed/wrong hosted SHA rejected');
   console.log('  evidence chain: exact clean Slice predecessor accepted; stale/interrupted/dirty/wrong/targeted/missing/mismatched bindings rejected');
+  console.log('  trail/portrait controls: measured-opposite mutation, eligible baseline, exact property restoration, no-op rejection, and first-red causal stop accepted');
   console.log('  rendered Guide controls mutate one exact text target across inline markup, reject absent/multiple/no-op targets, and restore authored HTML');
 }
 
@@ -5590,6 +6218,17 @@ function installAuditHarness() {
   const issue = (code, surface, element, actual, expected) => ({ code, surface, element, actual, expected });
   const visible = (el) => {
     if (!(el instanceof Element)) return false;
+    /* Chromium can retain geometry/computed display for descendants hidden by
+       a closed disclosure even though they are not painted, reachable, or in
+       the disclosure's scroll overflow. Only the direct summary subtree is
+       rendered while an ancestor <details> is closed. */
+    for (let node = el.parentElement; node; node = node.parentElement) {
+      if (node instanceof HTMLDetailsElement && !node.open) {
+        const summary = [...node.children].find((child) => child instanceof HTMLElement
+          && child.tagName === 'SUMMARY');
+        if (!(summary instanceof HTMLElement) || !summary.contains(el)) return false;
+      }
+    }
     const s = getComputedStyle(el), r = el.getBoundingClientRect();
     const clippedAway = (s.clip && s.clip !== 'auto' && /rect\(0(?:px)?[, ]+0(?:px)?[, ]+0(?:px)?[, ]+0(?:px)?\)/.test(s.clip))
       || (s.clipPath && s.clipPath !== 'none' && /inset\((?:50|100)%/.test(s.clipPath));
@@ -5619,7 +6258,7 @@ function installAuditHarness() {
   const selectorName = (el) => {
     if (!(el instanceof Element)) return String(el);
     if (el.id) return '#' + CSS.escape(el.id);
-    const stable = ['data-pref', 'data-value', 'data-sel', 'data-act', 'data-pnx', 'data-cid', 'data-ci', 'data-motion', 'data-gt', 'data-release-index', 'name'];
+    const stable = ['data-pref', 'data-value', 'data-sel', 'data-act', 'data-pnx', 'data-cid', 'data-ci', 'data-motion', 'data-gt', 'data-release-index', 'data-arc9-explorer-name-open', 'name'];
     const attrs = stable.filter((name) => el.hasAttribute(name))
       .map((name) => `[${name}=${JSON.stringify(el.getAttribute(name))}]`).join('');
     let part = el.tagName.toLowerCase() + attrs;
@@ -6188,6 +6827,7 @@ function installAuditHarness() {
         element: selectorName(n), rect: box(n), overflowX: s.overflowX, overflowY: s.overflowY,
         clientWidth: n.clientWidth, clientHeight: n.clientHeight,
         scrollWidth: n.scrollWidth, scrollHeight: n.scrollHeight,
+        scrollLeft: round(n.scrollLeft), scrollTop: round(n.scrollTop),
       });
       if (n === root) break;
     }
@@ -6195,24 +6835,50 @@ function installAuditHarness() {
     bounds.height = round(Math.max(0, bounds.bottom - bounds.top));
     return { bounds, ancestors };
   };
+  const setExactScrollPosition = (owner, left, top) => {
+    const style = owner.style;
+    const prior = {
+      value: style.getPropertyValue('scroll-behavior'),
+      priority: style.getPropertyPriority('scroll-behavior'),
+    };
+    try {
+      style.setProperty('scroll-behavior', 'auto', 'important');
+      owner.scrollLeft = left;
+      owner.scrollTop = top;
+      void owner.getBoundingClientRect();
+    } finally {
+      if (prior.value) style.setProperty('scroll-behavior', prior.value, prior.priority);
+      else style.removeProperty('scroll-behavior');
+    }
+    return { left: owner.scrollLeft, top: owner.scrollTop };
+  };
   const scrollControlIntoView = (el, root, viewport, rememberScroll = null) => {
     let r = box(el), clipped = clippedBounds(el, root, viewport);
-    if (inside(r, clipped.bounds)) return { rect: r, ...clipped };
+    const scrollAttempts = [];
+    if (inside(r, clipped.bounds)) return { rect: r, ...clipped, scrollAttempts };
     for (let n = el.parentElement; n; n = n.parentElement) {
       const s = getComputedStyle(n);
       if ((n.scrollHeight > n.clientHeight + 1 && /(auto|scroll)/.test(s.overflowY))
         || (n.scrollWidth > n.clientWidth + 1 && /(auto|scroll)/.test(s.overflowX))) {
         rememberScroll?.(n);
+        const before = { left: round(n.scrollLeft), top: round(n.scrollTop) };
         const nr = n.getBoundingClientRect(), er = el.getBoundingClientRect();
-        if (n.scrollHeight > n.clientHeight + 1) n.scrollTop += (er.top + er.bottom - nr.top - nr.bottom) / 2;
-        if (n.scrollWidth > n.clientWidth + 1) n.scrollLeft += (er.left + er.right - nr.left - nr.right) / 2;
+        const top = n.scrollHeight > n.clientHeight + 1
+          ? n.scrollTop + (er.top + er.bottom - nr.top - nr.bottom) / 2 : n.scrollTop;
+        const left = n.scrollWidth > n.clientWidth + 1
+          ? n.scrollLeft + (er.left + er.right - nr.left - nr.right) / 2 : n.scrollLeft;
+        const observed = setExactScrollPosition(n, left, top);
         r = box(el);
         clipped = clippedBounds(el, root, viewport);
-        if (inside(r, clipped.bounds)) return { rect: r, ...clipped };
+        scrollAttempts.push({ owner: selectorName(n), before,
+          requested: { left: round(left), top: round(top) },
+          observed: { left: round(observed.left), top: round(observed.top) },
+          rect: r, bounds: clipped.bounds });
+        if (inside(r, clipped.bounds)) return { rect: r, ...clipped, scrollAttempts };
       }
       if (n === root) break;
     }
-    return { rect: r, ...clipped };
+    return { rect: r, ...clipped, scrollAttempts };
   };
   const focusEvidence = (el) => {
     try { el.blur(); } catch { /* non-focusable */ }
@@ -6349,6 +7015,7 @@ function installAuditHarness() {
       }
       if (!inside(r, controlBounds)) controlIssue(issue('CONTROL_OUTSIDE_VIEWPORT', surface, name, {
         rect: r, bounds: controlBounds, ...identity, clippingAncestors: scrolled.ancestors,
+        scrollAttempts: scrolled.scrollAttempts,
       }, 'control scrolls fully inside every clipping ancestor, the visual viewport, and safe area'));
       if (!h.ok) controlIssue(issue('CONTROL_NOT_HITTABLE', surface, name, h, 'control owns its centre point after scrolling into reach'));
       const a11y = accessibleName(el);
@@ -6358,7 +7025,7 @@ function installAuditHarness() {
         controlIssue(issue('KEYBOARD_UNREACHABLE', surface, name, { tag: el.tagName.toLowerCase(), tabIndex: el.tabIndex }, 'native keyboard control or tabIndex >= 0'));
       }
       for (const [owner, [left, top]] of scrollState) {
-        owner.scrollLeft = left; owner.scrollTop = top;
+        setExactScrollPosition(owner, left, top);
       }
     }
     for (const [code, count] of controlCounts) {
@@ -6503,6 +7170,21 @@ function installAuditHarness() {
     reject('positive geometry', list, 'TARGET_TOO_SMALL', '#cf-control-button');
     reject('positive focus', list, 'FOCUS_INVISIBLE', '#cf-control-button');
     reject('positive contrast', list, 'TEXT_CONTRAST_LOW', '#cf-control-copy');
+    const closedDetails = document.createElement('details');
+    closedDetails.innerHTML = '<summary id="cf-control-details-summary">App status</summary>'
+      + '<div><button id="cf-control-details-action" style="width:180px;height:44px">Check for updates</button></div>';
+    root.appendChild(closedDetails);
+    const closedSummary = closedDetails.querySelector('#cf-control-details-summary');
+    const closedAction = closedDetails.querySelector('#cf-control-details-action');
+    if (!visible(closedSummary) || visible(closedAction)
+      || interactives([root]).includes(closedAction)) {
+      failures.push('closed disclosure visibility control did not retain Summary while excluding its unreachable action');
+    }
+    closedDetails.open = true;
+    if (!visible(closedAction) || !interactives([root]).includes(closedAction)) {
+      failures.push('open disclosure visibility control did not admit its reachable action');
+    }
+    closedDetails.remove();
     button.style.width = '20px'; list = audit(base); expect('small target injection', list, 'TARGET_TOO_SMALL', '#cf-control-button'); button.style.width = '44px';
     button.style.setProperty('outline', 'none', 'important');
     button.style.setProperty('box-shadow', 'none', 'important');
@@ -6580,7 +7262,7 @@ function installAuditHarness() {
     const reachableClip = document.createElement('section');
     reachableClip.id = 'cf-control-reachable-clip';
     reachableClip.style.cssText = 'position:fixed;left:8px;top:280px;width:240px;height:100px;z-index:1003';
-    reachableClip.innerHTML = '<div id="cf-control-reachable-scroller" style="width:210px;height:70px;overflow-y:auto"><div style="height:96px"></div><button data-cid="reachable-middle" data-ci="4" style="display:block;width:180px;height:44px">reachable middle row</button><div style="height:96px"></div></div>';
+    reachableClip.innerHTML = '<div id="cf-control-reachable-scroller" style="width:210px;height:70px;overflow-y:auto;scroll-behavior:smooth"><div style="height:96px"></div><button data-cid="reachable-middle" data-ci="4" style="display:block;width:180px;height:44px">reachable middle row</button><div style="height:96px"></div></div>';
     document.body.appendChild(reachableClip);
     const reachableScroller = reachableClip.querySelector('#cf-control-reachable-scroller');
     reachableScroller.scrollTop = 7;
@@ -6840,6 +7522,126 @@ function sameInlineStyleAttribute(before, after) {
   return before === after || (before === null && after === '') || (before === '' && after === null);
 }
 
+function exactOwnedStyleProperty(left, right) {
+  return !!left && !!right
+    && typeof left.value === 'string' && typeof left.priority === 'string'
+    && typeof right.value === 'string' && typeof right.priority === 'string'
+    && left.value === right.value && left.priority === right.priority;
+}
+
+function measuredOppositeDisplay(display) {
+  const current = typeof display === 'string' ? display.trim() : '';
+  if (!current || current === 'missing') {
+    return { ok: false, current: current || null, replacement: null };
+  }
+  const replacement = current === 'none' ? 'block' : 'none';
+  return { ok: replacement !== current, current, replacement };
+}
+
+function portraitControlBaselineEligible(outcome) {
+  return outcome?.ok === true
+    && outcome?.trailVisible === true
+    && outcome?.fallback === false;
+}
+
+function trailRestorationControlOutcome(control) {
+  const plan = measuredOppositeDisplay(control?.prior?.computed);
+  const checks = Object.freeze({
+    baselineGreen: control?.baseline?.ok === true,
+    measuredOpposite: plan.ok === true
+      && control?.mutation?.requested === plan.replacement,
+    mutationApplied: control?.mutation?.property?.value === plan.replacement
+      && control?.mutation?.property?.priority === 'important'
+      && control?.mutation?.computed === plan.replacement
+      && control?.mutation?.computed !== plan.current,
+    mutationRed: control?.mutation?.outcome?.ok === false,
+    propertyRestored: exactOwnedStyleProperty(control?.prior, control?.restored?.property),
+    computedRestored: control?.restored?.computed === plan.current,
+    outcomeRestored: control?.restored?.outcome?.ok === true,
+  });
+  return { ok: Object.values(checks).every(Boolean), checks, plan };
+}
+
+function portraitBandControlOutcome(control) {
+  const checks = Object.freeze({
+    eligibleBaseline: portraitControlBaselineEligible(control?.baseline),
+    mutationApplied: typeof control?.mutation?.requested === 'string'
+      && control.mutation.requested.length > 0
+      && typeof control?.mutation?.property?.value === 'string'
+      && control.mutation.property.value.length > 0
+      && control?.mutation?.property?.priority === 'important'
+      && typeof control?.prior?.computed === 'string'
+      && typeof control?.mutation?.computed === 'string'
+      && control.mutation.computed !== control.prior.computed,
+    collisionRed: control?.mutation?.outcome?.ok === false
+      && control?.mutation?.outcome?.trailVisible === true
+      && control?.mutation?.outcome?.fallback === false
+      && Number.isFinite(control?.mutation?.outcome?.gap)
+      && control.mutation.outcome.gap < 5.5,
+    propertyRestored: exactOwnedStyleProperty(control?.prior, control?.restored?.property),
+    computedRestored: control?.restored?.computed === control?.prior?.computed,
+    outcomeRestored: portraitControlBaselineEligible(control?.restored?.outcome),
+  });
+  return { ok: Object.values(checks).every(Boolean), checks };
+}
+
+function portraitFallbackControlOutcome(control) {
+  const baseSafe = Number(control?.mutation?.baseSafe);
+  const forcedSafe = Number(control?.mutation?.forcedSafe);
+  const computedSafe = Number.parseFloat(control?.mutation?.computed);
+  const outcome = control?.mutation?.outcome;
+  const side = outcome?.side;
+  const usefulGeometry = outcome?.meaningful === true
+    && Array.isArray(side) && side.length === 4
+    && side.every(Number.isFinite) && side[3] - side[1] >= 71
+    && Number.isFinite(outcome?.clientHeight) && outcome.clientHeight >= 68;
+  const scrollAccessible = outcome?.scrollOk === true
+    && Number.isFinite(outcome?.scrollHeight) && Number.isFinite(outcome?.clientHeight)
+    && (outcome.scrollHeight <= outcome.clientHeight + 1
+      || (/^(?:auto|scroll)$/.test(outcome?.overflowY || '')
+        && outcome.scrollHeight > outcome.clientHeight));
+  const fixedRows = outcome?.fixedRows;
+  const fixedClearance = outcome?.fixedClear === true
+    && Array.isArray(fixedRows) && fixedRows.length === 4
+    && ['playerchip', 'hpbar', 'searchbox', 'objchip']
+      .every((id) => fixedRows.some((row) => row?.id === id))
+    && fixedRows.every((row) => row?.visible === false
+      || (Number.isFinite(row?.gap) && row.gap >= 5.5));
+  const checks = Object.freeze({
+    eligibleBaseline: portraitControlBaselineEligible(control?.baseline),
+    mutationApplied: typeof control?.mutation?.requested === 'string'
+      && typeof control?.mutation?.property?.value === 'string'
+      && control.mutation.property.value.length > 0
+      && control?.mutation?.property?.priority === 'important'
+      && Number.isFinite(baseSafe) && Number.isFinite(forcedSafe)
+      && Number.isFinite(computedSafe) && forcedSafe > baseSafe
+      && Math.abs(computedSafe - forcedSafe) < 0.01,
+    tightPolicyObserved: outcome?.ok === true
+      && outcome?.fallback === true
+      && outcome?.trailDisplay === 'none',
+    usefulGeometry,
+    scrollAccessible,
+    fixedClearance,
+    propertyRestored: exactOwnedStyleProperty(control?.prior, control?.restored?.property),
+    computedRestored: control?.restored?.computed === control?.prior?.computed,
+    outcomeRestored: portraitControlBaselineEligible(control?.restored?.outcome),
+  });
+  return { ok: Object.values(checks).every(Boolean), checks };
+}
+
+function portraitControlCampaignOutcome({ planned, observed, eligible, bandRuns, fallbackRuns } = {}) {
+  const countsValid = [planned, observed, eligible, bandRuns, fallbackRuns]
+    .every((value) => Number.isSafeInteger(value) && value >= 0);
+  const required = countsValid && planned > 0;
+  const checks = Object.freeze({
+    countsValid,
+    allBaselinesObserved: countsValid && observed === planned,
+    eligibleBaselineObserved: countsValid && (!required || eligible > 0),
+    controlsExecutedOnce: countsValid && (!required || (bandRuns === 1 && fallbackRuns === 1)),
+  });
+  return { ok: Object.values(checks).every(Boolean), required, checks };
+}
+
 function toastAnchorControlOutcome(control) {
   const prior = control?.priorStyle, restored = control?.restoredStyle;
   const exactStyleBytes = (prior === null || typeof prior === 'string') && restored === prior;
@@ -6957,8 +7759,26 @@ async function main() {
   const browserVersions = [];
   const executedControls = new Set();
   const productBlockedControls = new Map();
+  const causalInstrumentState = { error: null };
+  const portraitViewportCount = MATRIX_VIEWPORTS
+    .filter((viewport) => viewport.width <= 900 && viewport.width <= viewport.height).length;
+  let portraitBaselineCount = 0, portraitEligibleBaselineCount = 0;
+  let portraitBandControlCount = 0, portraitFallbackControlCount = 0;
+  let causalControlsArmed = false;
   let targetedProductFailure = false;
+  let causalProductStop = null;
+  const stopInstrumentControl = (message) => {
+    stopAtFirstGlassInstrumentFailure(causalInstrumentState, instrumentFailures, message);
+  };
+  const recordInstrumentFailure = (message) => {
+    return recordGlassInstrumentFailure(
+      causalInstrumentState, instrumentFailures, message, causalControlsArmed,
+    );
+  };
   const recordControls = (...names) => {
+    if (causalControlsArmed && instrumentFailures.length) {
+      stopInstrumentControl(instrumentFailures[0]);
+    }
     for (const name of names) {
       if (!NEGATIVE_CONTROLS.includes(name)) throw new Error(`unknown negative control ${JSON.stringify(name)}`);
       executedControls.add(name);
@@ -6966,13 +7786,13 @@ async function main() {
     }
   };
   for (const failure of await reloadPhaseSelftest()) {
-    instrumentFailures.push(`RELOAD PHASE SELFTEST ${failure}`);
+    recordInstrumentFailure(`RELOAD PHASE SELFTEST ${failure}`);
   }
   for (const failure of settingsAudioEvidenceSelftest()) {
-    instrumentFailures.push(`SETTINGS AUDIO SELFTEST ${failure}`);
+    recordInstrumentFailure(`SETTINGS AUDIO SELFTEST ${failure}`);
   }
   for (const failure of hostileCompendiumRevealSelftest()) {
-    instrumentFailures.push(`COMPENDIUM REVEAL SELFTEST ${failure}`);
+    recordInstrumentFailure(`COMPENDIUM REVEAL SELFTEST ${failure}`);
   }
   recordControls(
     'replacement-document-loader-token-phase', 'import-phase-sequence',
@@ -6997,24 +7817,22 @@ async function main() {
   const settingsAudioBaselineViewports = new Set();
   const settingsAudioCompletedViewports = new Set();
   const settingsAudioProductBlockedViewports = new Set();
-  const add = (viewport, surface, rows) => {
-    for (const row of rows || []) findings.push({ context: { viewport, surface }, row });
-  };
-  const addOutcome = (viewport, surface, code, element, outcome, expected) => {
-    if (!outcome?.ok) findings.push({
-      context: { viewport, surface },
-      row: { code, surface, element, actual: outcome, expected },
-    });
-  };
+  const add = (viewport, surface, rows) => collectGlassProductRows(
+    findings, viewport, surface, rows, causalControlsArmed,
+  );
+  const addOutcome = (viewport, surface, code, element, outcome, expected) => collectGlassProductOutcome(
+    findings, viewport, surface, code, element, outcome, expected, causalControlsArmed,
+  );
   const addArc4Outcome = (viewport, surface, code, element, outcome, expected) => {
     runArc4CaptureOutcomes.push(arc4CaptureOutcomeReportRow({
       viewport, surface, code, outcome,
     }));
     addOutcome(viewport, surface, code, element, outcome, expected);
+    stopAfterRecordedProductOutcome(viewport, surface, code, element, outcome, expected);
   };
   const arc4Controls = arc4GlassSelftest();
   if (!arc4Controls.ok) {
-    instrumentFailures.push(`ARC 4 GLASS SELFTEST ${JSON.stringify(arc4Controls)}`);
+    recordInstrumentFailure(`ARC 4 GLASS SELFTEST ${JSON.stringify(arc4Controls)}`);
   } else {
     arc4CaptureControlRun = true;
     recordControls(
@@ -7029,8 +7847,13 @@ async function main() {
       'arc4-capture-native-activation', 'arc4-capture-control-overlap',
     );
   }
+  let causalInstrumentStop = null;
   try {
+    causalControlsArmed = true;
+    if (instrumentFailures.length) stopInstrumentControl(instrumentFailures[0]);
+    try {
     for (const vp of MATRIX_VIEWPORTS) {
+      if (instrumentFailures.length) stopInstrumentControl(instrumentFailures[0]);
       /* Per-row wall-clock ownership. CI runs this instrument ~20× slower
          than a workstation (software raster, two cores); without per-row
          timing that cost is unattributable and any future shard split would
@@ -7142,7 +7965,7 @@ async function main() {
           try {
             await send('Emulation.setSafeAreaInsetsOverride', { insets: vp.safe }, session);
           } catch (error) {
-            instrumentFailures.push(`${vp.label}: Chromium could not apply the required real safe-area override (${error.message})`);
+            recordInstrumentFailure(`${vp.label}: Chromium could not apply the required real safe-area override (${error.message})`);
           }
         }
         await send('Page.navigate', { url }, session);
@@ -7181,7 +8004,7 @@ async function main() {
           await sleep(50);
         }
         if (!ready?.ready || !ready.token) {
-          instrumentFailures.push(`${vp.label}: slice did not become ready (${ready?.why || 'no diagnostic'})`);
+          recordInstrumentFailure(`${vp.label}: slice did not become ready (${ready?.why || 'no diagnostic'})`);
           continue;
         }
         await evalIn(`(${installAuditHarness.toString()})()`);
@@ -7687,7 +8510,7 @@ async function main() {
         if (!controlsRun) {
           const trainingFocusControl = await evalIn(`(()=>{ const active=document.activeElement,prior=active.style.transform;
             active.style.transform='translateY(1000px)';const result=${trainingFocusCheck};active.style.transform=prior;return result;})()`);
-          if (trainingFocusControl.ok) instrumentFailures.push(`${vp.label}: offscreen Training-focus injection stayed green (${JSON.stringify(trainingFocusControl)})`);
+          if (trainingFocusControl.ok) recordInstrumentFailure(`${vp.label}: offscreen Training-focus injection stayed green (${JSON.stringify(trainingFocusControl)})`);
           recordControls('training-focused-action-visibility');
         }
         add(vp.label, 'training', await audit({
@@ -8084,7 +8907,7 @@ async function main() {
               stoppedTickerControl, staleTickerControl,
             ]);
             if (!injectedControls.ok || missingPointerControl.ok || offsetPointerControl.ok) {
-              instrumentFailures.push(`${vp.label}: same-backing resize injection stayed green (${JSON.stringify({ staleGeometryControl, staleEventControl, staleBackdropControl, transitionPeakControl, transitionUnderreportControl, transitionInflatedBudgetControl, stoppedTickerControl, staleTickerControl, missingPointerControl, offsetPointerControl })})`);
+              recordInstrumentFailure(`${vp.label}: same-backing resize injection stayed green (${JSON.stringify({ staleGeometryControl, staleEventControl, staleBackdropControl, transitionPeakControl, transitionUnderreportControl, transitionInflatedBudgetControl, stoppedTickerControl, staleTickerControl, missingPointerControl, offsetPointerControl })})`);
             } else {
               resizeControlsDiscriminated = true;
             }
@@ -8128,7 +8951,7 @@ async function main() {
               findingCode: resizeControlOutcome.findingCode,
             });
           } else {
-            instrumentFailures.push(`${vp.label}: same-backing resize controls did not discriminate from green positive baselines`);
+            recordInstrumentFailure(`${vp.label}: same-backing resize controls did not discriminate from green positive baselines`);
           }
         }
 
@@ -8139,7 +8962,7 @@ async function main() {
         if (!controlsRun) {
           controlsRun = true;
           const controlFailures = await evalIn('window.__CF_GLASS_AUDIT__.selftest()');
-          for (const failure of controlFailures) instrumentFailures.push('SELFTEST ' + failure);
+          for (const failure of controlFailures) recordInstrumentFailure('SELFTEST ' + failure);
           recordControls(
             'target-floor', 'visible-focus', 'accessible-name', 'keyboard-reachability',
             'centre-hit-test', 'text-contrast', 'glass-fallback', 'populated-copy',
@@ -8153,14 +8976,14 @@ async function main() {
           const canvasBaseline = await evalIn(`window.__CF_GLASS_AUDIT__.canvasIssues('selftest',${expectedDpr},${maxBackingPixels})`);
           if (canvasBaseline.some((row) => row.code === 'CANVAS_CSS_VIEWPORT'
             || row.code === 'CANVAS_DPR_DRIFT' || row.code === 'RENDERER_DPR_CONTRACT')) {
-            instrumentFailures.push(`SELFTEST canvas baseline was already red (${JSON.stringify(canvasBaseline)})`);
+            recordInstrumentFailure(`SELFTEST canvas baseline was already red (${JSON.stringify(canvasBaseline)})`);
           }
           const canvasControl = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'),prior=[canvas.style.width,canvas.style.height]; canvas.style.width=Math.max(100,innerWidth/2)+'px';const out=window.__CF_GLASS_AUDIT__.canvasIssues('selftest',${expectedDpr},${maxBackingPixels});canvas.style.width=prior[0];canvas.style.height=prior[1];return out;})()`);
-          if (!canvasControl.some((row) => row.code === 'CANVAS_CSS_VIEWPORT')) instrumentFailures.push('SELFTEST injected narrow CSS canvas was accepted');
-          if (!canvasControl.some((row) => row.code === 'CANVAS_DPR_DRIFT')) instrumentFailures.push('SELFTEST injected backing/CSS density drift was accepted');
+          if (!canvasControl.some((row) => row.code === 'CANVAS_CSS_VIEWPORT')) recordInstrumentFailure('SELFTEST injected narrow CSS canvas was accepted');
+          if (!canvasControl.some((row) => row.code === 'CANVAS_DPR_DRIFT')) recordInstrumentFailure('SELFTEST injected backing/CSS density drift was accepted');
           recordControls('canvas-css-fit', 'canvas-backing-density');
           const backingControl = await evalIn(`(()=>{ const c=document.querySelector('canvas'); return window.__CF_GLASS_AUDIT__.canvasIssues('selftest',window.__CF_SLICE__.api.state().rendererDpr,c.width*c.height-1); })()`);
-          if (!backingControl.some((row) => row.code === 'CANVAS_BACKING_PIXEL_CEILING')) instrumentFailures.push('SELFTEST injected backing-pixel ceiling was accepted');
+          if (!backingControl.some((row) => row.code === 'CANVAS_BACKING_PIXEL_CEILING')) recordInstrumentFailure('SELFTEST injected backing-pixel ceiling was accepted');
           recordControls('backing-pixel-ceiling');
         }
 
@@ -8198,7 +9021,7 @@ async function main() {
               if(prior===null)dock?.removeAttribute('style');else dock?.setAttribute('style',prior);
               return {ok:broken.ok===false&&broken.rows.length===3&&${phoneDockCheck}.ok,broken};})()`);
             if (!dockControl.ok) {
-              instrumentFailures.push(`${vp.label}: phone dock 4-column control stayed green or failed to restore (${JSON.stringify(dockControl)})`);
+              recordInstrumentFailure(`${vp.label}: phone dock 4-column control stayed green or failed to restore (${JSON.stringify(dockControl)})`);
             }
             recordControls('phone-dock-inventory');
             const membershipControl = await evalIn(`(()=>{const button=document.getElementById('dockinventory'),prior=button?.id||null;
@@ -8206,7 +9029,7 @@ async function main() {
               const restored=${phoneDockCheck};return {ok:broken.ok===false&&broken.ids.length===10
                 &&broken.ids.includes('dockinventory-substitution')&&!broken.ids.includes('dockinventory')&&restored.ok,broken,restored};})()`);
             if (!membershipControl.ok) {
-              instrumentFailures.push(`${vp.label}: substituted Inventory dock member stayed green or failed to restore (${JSON.stringify(membershipControl)})`);
+              recordInstrumentFailure(`${vp.label}: substituted Inventory dock member stayed green or failed to restore (${JSON.stringify(membershipControl)})`);
             }
             recordControls('phone-dock-exact-membership');
           }
@@ -8234,7 +9057,7 @@ async function main() {
           const hpControl = await evalIn(`(()=>{ const txt=document.querySelector('#hpbar .txt'),prior=[txt.style.color,txt.style.backgroundColor];
             txt.style.setProperty('color','rgb(63,174,82)','important');txt.style.setProperty('background-color','transparent','important');
             const result=${hpLabelCheck};txt.style.color=prior[0];txt.style.backgroundColor=prior[1];return result;})()`);
-          if (hpControl.ok) instrumentFailures.push(`${vp.label}: HP dual-background contrast injection stayed green (${JSON.stringify(hpControl)})`);
+          if (hpControl.ok) recordInstrumentFailure(`${vp.label}: HP dual-background contrast injection stayed green (${JSON.stringify(hpControl)})`);
           recordControls('hp-label-dual-background');
         }
         const hudState = await evalIn('window.__CF_SLICE__.api.state()');
@@ -8269,11 +9092,13 @@ async function main() {
         if (vp.label === 'primary-phone' || vp.label === 'desktop') {
           const keyboardStart = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'); canvas.focus(); const ev=(key)=>canvas.dispatchEvent(new KeyboardEvent('keydown',{key,bubbles:true,cancelable:true})); ev('ArrowRight'); const S=window.__CF_SLICE__,ring=document.getElementById('cosmosfocus'),live=document.getElementById('cosmoslive'); return {focused:document.activeElement===canvas,target:S.api.state().keyboardTarget,ringDisplay:getComputedStyle(ring).display,ringText:ring.textContent,live:live.textContent}; })()`);
           if (!keyboardStart.focused || !keyboardStart.target || keyboardStart.ringDisplay === 'none' || keyboardStart.live.length < 20) {
-            findings.push({ context: { viewport: vp.label, surface: 'keyboard-canvas' }, row: { code: 'KEYBOARD_TARGET_NOT_RENDERED', surface: 'keyboard-canvas', element: 'canvas', actual: keyboardStart, expected: 'focus + Arrow selects and visibly/verbally announces a world target' } });
+            recordGlassProductFinding(findings, vp.label, 'keyboard-canvas',
+              { code: 'KEYBOARD_TARGET_NOT_RENDERED', surface: 'keyboard-canvas', element: 'canvas', actual: keyboardStart, expected: 'focus + Arrow selects and visibly/verbally announces a world target' }, causalControlsArmed);
           }
           const keyboardSurvey = await evalIn(`(()=>{ const before=window.__CF_SLICE__.api.state(); const canvas=document.querySelector('canvas'); canvas.dispatchEvent(new KeyboardEvent('keydown',{key:'Enter',bubbles:true,cancelable:true})); const after=window.__CF_SLICE__.api.state(); return {beforeTarget:before.keyboardTarget,cardOpen:after.cardOpen,cardTitle:after.cardTitle,focus:document.activeElement?.getAttribute('data-act')||document.activeElement?.id||document.activeElement?.tagName}; })()`);
           if (!keyboardSurvey.beforeTarget || !keyboardSurvey.cardOpen || !keyboardSurvey.cardTitle || keyboardSurvey.focus !== 'travel') {
-            findings.push({ context: { viewport: vp.label, surface: 'keyboard-canvas' }, row: { code: 'KEYBOARD_ENTER_OUTCOME', surface: 'keyboard-canvas', element: 'canvas', actual: keyboardSurvey, expected: 'Enter opens selected survey and focuses its real travel action' } });
+            recordGlassProductFinding(findings, vp.label, 'keyboard-canvas',
+              { code: 'KEYBOARD_ENTER_OUTCOME', surface: 'keyboard-canvas', element: 'canvas', actual: keyboardSurvey, expected: 'Enter opens selected survey and focuses its real travel action' }, causalControlsArmed);
           }
           await evalIn(`document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true})); document.getElementById('searchbox')?.blur()`);
         }
@@ -8306,7 +9131,7 @@ async function main() {
               &&r.galaxyKey===s.navGalaxyKey&&r.starKey===null&&r.worldKey===null?s:null})()`);
         } catch (error) {
           homeRouteWaitError = error.message;
-          instrumentFailures.push(error.message);
+          recordInstrumentFailure(error.message);
         }
         const homeRoute = await evalIn('window.__CF_SLICE__.api.state()');
         const blocked = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state(),receipt=before.renderedScene,
@@ -8325,10 +9150,10 @@ async function main() {
           || blocked.state.mode !== 'galaxy' || blocked.state.gal !== 999 || !receiptBound
           || blocked.state.stage >= 2 || blocked.state.toastSerial <= blocked.beforeSerial
           || !blocked.state.toastText.includes('Beyond Your Charter')) {
-          instrumentFailures.push(`${vp.label}: exact home-galaxy receipt did not bind the blocked Charter attempt (${JSON.stringify({ homeDescent, homeRouteWaitError, homeRoute, blocked, receiptBound })})`);
+          recordInstrumentFailure(`${vp.label}: exact home-galaxy receipt did not bind the blocked Charter attempt (${JSON.stringify({ homeDescent, homeRouteWaitError, homeRoute, blocked, receiptBound })})`);
         }
         try { await waitFor('charter toast', `window.__CF_SLICE__.api.state().toastOn && window.__CF_SLICE__.api.state().toastText.includes('Beyond Your Charter') && Number(getComputedStyle(document.getElementById('toast')).opacity)>0.1 && document.getElementById('toast')?.textContent?.trim().length>20`); }
-        catch (error) { instrumentFailures.push(error.message); }
+        catch (error) { recordInstrumentFailure(error.message); }
         add(vp.label, 'toast', await audit({
           ...common, surface: 'toast', root: '#toast', textMin: 20, fitSelectors: ['#toast'],
           interactiveRoots: [], contrastSelectors: ['#toast'], overlapPairs: [['#toast', '#dock']],
@@ -8348,7 +9173,7 @@ async function main() {
               return {priorStyle:prior,before,mutated,restoredStyle,restored};})()`);
             const toastControlAssessment = toastAnchorControlOutcome(leftToastControl);
             if (!toastControlAssessment.ok) {
-              instrumentFailures.push(`${vp.label}: injected left-anchored toast did not fail and restore exact style/positive anchor bytes (${JSON.stringify({ leftToastControl, toastControlAssessment })})`);
+              recordInstrumentFailure(`${vp.label}: injected left-anchored toast did not fail and restore exact style/positive anchor bytes (${JSON.stringify({ leftToastControl, toastControlAssessment })})`);
             }
             /* The standing viewport-fit control now also owns the reported
                side-anchor regression; keep the existing control inventory. */
@@ -8359,7 +9184,7 @@ async function main() {
         /* Populate the real Earth survey and Planetside strip through the
            same public browser-audit API used by the standing smoke journey. */
         const surveyReady = await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.api.descendSystem({seed:424242,x:560,y:170}); return S.api.surveyOn({seed:133,ordinal:2}); })()`);
-        if (!surveyReady) instrumentFailures.push(`${vp.label}: could not populate the Earth survey`);
+        if (!surveyReady) recordInstrumentFailure(`${vp.label}: could not populate the Earth survey`);
         /* The rich veteran fixture intentionally preserves custom names, so
            Earth may be labelled Homeworld. The composite selector already
            selects the deterministic Sol body; bind readiness to its real Land action
@@ -8375,7 +9200,7 @@ async function main() {
           const yieldControl = await evalIn(`(()=>{ const el=document.getElementById('trail'),prior=el.getAttribute('style');
             el.style.setProperty('display','block','important');const result=${chromeYieldCheck};
             if(prior===null)el.removeAttribute('style');else el.setAttribute('style',prior);return result;})()`);
-          if (yieldControl.ok) instrumentFailures.push(`${vp.label}: visible trail-under-survey injection stayed green (${JSON.stringify(yieldControl)})`);
+          if (yieldControl.ok) recordInstrumentFailure(`${vp.label}: visible trail-under-survey injection stayed green (${JSON.stringify(yieldControl)})`);
         }
         addOutcome(vp.label, 'survey', 'SURVEY_DISCLOSURE_STATE', '#docksurvey',
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#docksurvey','#survey',true)`),
@@ -8397,7 +9222,7 @@ async function main() {
             extra.style.cssText='position:fixed;left:0;top:0;right:auto;bottom:auto';card.appendChild(extra);
             const result=window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#survey','[data-survey-close]','[data-pnx]');extra.remove();return result;})()`);
           if (duplicateCloseControl.ok || duplicateCloseControl.forbiddenCount !== 1) {
-            instrumentFailures.push(`${vp.label}: injected generic duplicate/upper-left survey close stayed green (${JSON.stringify(duplicateCloseControl)})`);
+            recordInstrumentFailure(`${vp.label}: injected generic duplicate/upper-left survey close stayed green (${JSON.stringify(duplicateCloseControl)})`);
           }
           const misplacedCloseControl = await evalIn(`(()=>{ const close=document.querySelector('#survey [data-survey-close]'),prior=close.getAttribute('style');
             close.style.setProperty('position','fixed','important');close.style.setProperty('left','0','important');
@@ -8405,7 +9230,7 @@ async function main() {
             const result=window.__CF_GLASS_AUDIT__.closeIntegrityOutcome('#survey','[data-survey-close]','[data-pnx]');
             if(prior===null)close.removeAttribute('style');else close.setAttribute('style',prior);return result;})()`);
           if (misplacedCloseControl.ok || misplacedCloseControl.topRight) {
-            instrumentFailures.push(`${vp.label}: injected upper-left survey close stayed green (${JSON.stringify(misplacedCloseControl)})`);
+            recordInstrumentFailure(`${vp.label}: injected upper-left survey close stayed green (${JSON.stringify(misplacedCloseControl)})`);
           }
           /* Extend the existing close control rather than growing the sealed
              existing inventory: it now rejects duplicates and bad corners. */
@@ -8446,7 +9271,7 @@ async function main() {
           } catch (cause) { orbitalRouteError = String(cause?.message || cause); }
         }
         if (!orbitalOpened || orbitalRoute === null) {
-          instrumentFailures.push(`${vp.label}: sealed veteran could not open the reachable Mars Deep Scanner Survey (${JSON.stringify({ orbitalOpened, orbitalRoute, orbitalRouteError })})`);
+          recordInstrumentFailure(`${vp.label}: sealed veteran could not open the reachable Mars Deep Scanner Survey (${JSON.stringify({ orbitalOpened, orbitalRoute, orbitalRouteError })})`);
         }
         const orbitalContainmentRequired = MATRIX_VIEWPORTS.some((viewport) => viewport.label === 'small-phone');
         let orbitalContainmentControl = null;
@@ -8477,7 +9302,7 @@ async function main() {
             evidence: containmentEvidence, offCard, centred, restored,
           };
           if (!orbitalContainmentControl.ok) {
-            instrumentFailures.push(`${vp.label}: live off-card orbital row did not turn only containment red, centre green, and restore exact scroll (${JSON.stringify(orbitalContainmentControl)})`);
+            recordInstrumentFailure(`${vp.label}: live off-card orbital row did not turn only containment red, centre green, and restore exact scroll (${JSON.stringify(orbitalContainmentControl)})`);
           }
           recordControls('orbital-row-containment-restore');
         }
@@ -8513,7 +9338,7 @@ async function main() {
               &&broken[0]?.actual?.textLength===0&&restored.length===0&&title.textContent===prior,
               prior,baseline,broken,restored,after:title.textContent,error};})()`);
           if (!orbitalCopyControl?.ok) {
-            instrumentFailures.push(`${vp.label}: four-letter Mars/empty-title audit control did not reject and restore (${JSON.stringify(orbitalCopyControl)})`);
+            recordInstrumentFailure(`${vp.label}: four-letter Mars/empty-title audit control did not reject and restore (${JSON.stringify(orbitalCopyControl)})`);
           }
           const orbitalControlEvidence = await evalIn(`(()=>{const row=document.querySelector('#survey [data-row="Mineral veins"]'),
             card=document.getElementById('survey'),prior={html:row?.innerHTML??null,left:card?.scrollLeft??null,top:card?.scrollTop??null};
@@ -8546,7 +9371,7 @@ async function main() {
             };
           })();
           if (!orbitalControl.ok) {
-            instrumentFailures.push(`${vp.label}: orbital Survey card/target/nav/receipt/persistence and Mineral veins mutations did not turn red in isolation and restore (${JSON.stringify(orbitalControl)})`);
+            recordInstrumentFailure(`${vp.label}: orbital Survey card/target/nav/receipt/persistence and Mineral veins mutations did not turn red in isolation and restore (${JSON.stringify(orbitalControl)})`);
           }
           recordControls('orbital-mineral-survey-disclosure', 'orbital-title-semantic-copy');
         }
@@ -8585,7 +9410,7 @@ async function main() {
           );
         } catch (cause) { earthRestoreError = String(cause?.message || cause); }
         if (!earthSurveyRestored || earthRestoreError !== null) {
-          instrumentFailures.push(`${vp.label}: Earth Survey did not restore exactly after the Mars disclosure (${JSON.stringify({ earthSurveyRestored, earthRestoreObservation, earthRestoreError })})`);
+          recordInstrumentFailure(`${vp.label}: Earth Survey did not restore exactly after the Mars disclosure (${JSON.stringify({ earthSurveyRestored, earthRestoreObservation, earthRestoreError })})`);
         }
         await evalIn('window.__CF_SLICE__.api.landHere()');
         await waitFor('Planetside', `window.__CF_SLICE__.api.state().mode==='surface' && document.getElementById('planetside')?.textContent?.trim().length>20`, 10000);
@@ -8594,28 +9419,70 @@ async function main() {
           required: [{ selector: '[data-sel=planetside-sp]', min: 1 }], interactiveRoots: [], contrastSelectors: ['#planetside'],
           overlapPairs: [['#planetside', '#ctxbar'], ['#planetside', '#hintpill'], ['#planetside', '#dock']],
         }));
-        const planetsideOwnershipCheck = `(()=>{ const side=document.getElementById('planetside'),survey=document.getElementById('survey'),
+        const planetsideOwnershipCheck = `(async()=>{ const side=document.getElementById('planetside'),survey=document.getElementById('survey'),
           specimen=side?.querySelector('[data-sel=planetside-sp]'); if(!side||!survey||!specimen)return {ok:false,why:'missing'};
-          const a=side.getBoundingClientRect(),b=survey.getBoundingClientRect(),p=specimen.getBoundingClientRect();
-          const overlap=a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1;
-          const left=Math.max(a.left,p.left),right=Math.min(a.right,p.right),top=Math.max(a.top,p.top),bottom=Math.min(a.bottom,p.bottom),
-            visibleIntersection=right-left>2&&bottom-top>2,x=(left+right)/2,y=(top+bottom)/2;
-          const hit=document.elementFromPoint(x,y),owned=!!hit&&side.contains(hit);
-          return {ok:!overlap&&visibleIntersection&&owned,overlap,visibleIntersection,owned,hit:hit?.id||hit?.getAttribute?.('data-sel')||hit?.tagName||null,
-            side:[a.left,a.top,a.right,a.bottom],survey:[b.left,b.top,b.right,b.bottom],specimen:[p.left,p.top,p.right,p.bottom],point:[x,y]}; })()`;
+          const wait=()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))),style=side.style,
+            prior={left:side.scrollLeft,top:side.scrollTop,behavior:{value:style.getPropertyValue('scroll-behavior'),priority:style.getPropertyPriority('scroll-behavior')}};
+          let observation=null,error=null;
+          try {
+            style.setProperty('scroll-behavior','auto','important');
+            const initialSide=side.getBoundingClientRect(),initialSpecimen=specimen.getBoundingClientRect();
+            if(initialSpecimen.top<initialSide.top+2)side.scrollTop-=initialSide.top+2-initialSpecimen.top;
+            else if(initialSpecimen.bottom>initialSide.bottom-2)side.scrollTop+=initialSpecimen.bottom-(initialSide.bottom-2);
+            await wait();
+            const a=side.getBoundingClientRect(),b=survey.getBoundingClientRect(),p=specimen.getBoundingClientRect();
+            const overlap=a.left<b.right-1&&a.right>b.left+1&&a.top<b.bottom-1&&a.bottom>b.top+1;
+            const left=Math.max(a.left,p.left)+1,right=Math.min(a.right,p.right)-1,top=Math.max(a.top,p.top)+1,bottom=Math.min(a.bottom,p.bottom)-1,
+              visibleIntersection=right-left>2&&bottom-top>2,x=visibleIntersection?(left+right)/2:null,y=visibleIntersection?(top+bottom)/2:null;
+            const hit=visibleIntersection?document.elementFromPoint(x,y):null,owned=!!hit&&side.contains(hit);
+            observation={ok:!overlap&&visibleIntersection&&owned,overlap,visibleIntersection,owned,
+              hit:hit?.id||hit?.getAttribute?.('data-sel')||hit?.tagName||null,
+              side:[a.left,a.top,a.right,a.bottom],survey:[b.left,b.top,b.right,b.bottom],specimen:[p.left,p.top,p.right,p.bottom],point:[x,y],
+              reached:{left:side.scrollLeft,top:side.scrollTop}};
+          } catch(cause) { error=String(cause?.message||cause); }
+          finally {
+            style.setProperty('scroll-behavior','auto','important');side.scrollLeft=prior.left;side.scrollTop=prior.top;await wait();
+            if(prior.behavior.value)style.setProperty('scroll-behavior',prior.behavior.value,prior.behavior.priority);else style.removeProperty('scroll-behavior');
+          }
+          const restored={left:side.scrollLeft,top:side.scrollTop,behavior:{value:style.getPropertyValue('scroll-behavior'),priority:style.getPropertyPriority('scroll-behavior')}};
+          const restoration=restored.left===prior.left&&restored.top===prior.top
+            &&restored.behavior.value===prior.behavior.value&&restored.behavior.priority===prior.behavior.priority;
+          return {...(observation||{ok:false}),ok:error===null&&observation?.ok===true&&restoration,prior,restored,restoration,error}; })()`;
         const planetsideOwnership = await evalIn(planetsideOwnershipCheck);
-        addOutcome(vp.label, 'planetside', 'PLANETSIDE_SURFACE_OCCLUDED', '#planetside', planetsideOwnership,
-          'the populated living-world strip does not overlap the open survey and owns a representative rendered point');
+        const planetsideOwnershipExpected = 'the populated living-world strip does not overlap the open survey and owns a representative rendered point';
+        if (planetsideOwnership?.error || planetsideOwnership?.restoration === false) {
+          stopInstrumentControl(`${vp.label}: Planetside ownership observation did not restore its exact scroll/style state (${JSON.stringify(planetsideOwnership)})`);
+        }
+        addOutcome(vp.label, 'planetside', 'PLANETSIDE_SURFACE_OCCLUDED', '#planetside',
+          planetsideOwnership, planetsideOwnershipExpected);
+        stopAfterRecordedProductOutcome(vp.label, 'planetside', 'PLANETSIDE_SURFACE_OCCLUDED',
+          '#planetside', planetsideOwnership, planetsideOwnershipExpected);
         if (!planetsideControlRun) {
           planetsideControlRun = true;
-          const shieldControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),p=side.querySelector('[data-sel=planetside-sp]').getBoundingClientRect(),
-            shield=document.createElement('div');shield.id='cf-planetside-shield';Object.assign(shield.style,{position:'fixed',left:p.left+'px',top:p.top+'px',width:p.width+'px',height:p.height+'px',zIndex:'9999',pointerEvents:'auto'});document.body.appendChild(shield);
-            const result=${planetsideOwnershipCheck};shield.remove();return result;})()`);
-          if (shieldControl.ok) instrumentFailures.push(`${vp.label}: Planetside hit-ownership shield injection stayed green (${JSON.stringify(shieldControl)})`);
-          const overlapControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),survey=document.getElementById('survey'),
-            a=side.getBoundingClientRect(),b=survey.getBoundingClientRect(),prior=side.style.transform;
-            side.style.transform='translate('+(b.left-a.left)+'px,'+(b.top-a.top)+'px)';const result=${planetsideOwnershipCheck};side.style.transform=prior;return result;})()`);
-          if (overlapControl.ok) instrumentFailures.push(`${vp.label}: Planetside/survey overlap injection stayed green (${JSON.stringify(overlapControl)})`);
+          const shieldControl = await evalIn(`(async()=>{ const baseline=await ${planetsideOwnershipCheck},point=baseline.point,
+            shield=document.createElement('div'); if(!baseline.ok||!Array.isArray(point))return {ok:false,why:'baseline missing',baseline};
+            shield.id='cf-planetside-shield';Object.assign(shield.style,{position:'fixed',left:(point[0]-4)+'px',top:(point[1]-4)+'px',width:'8px',height:'8px',zIndex:'9999',pointerEvents:'auto'});document.body.appendChild(shield);
+            let mutated=null,error=null;try{mutated=await ${planetsideOwnershipCheck};}catch(cause){error=String(cause?.message||cause);}finally{shield.remove();}
+            const shieldRemoved=!document.getElementById('cf-planetside-shield'),restored=await ${planetsideOwnershipCheck};
+            return {ok:error===null&&baseline.ok===true&&mutated?.ok===false&&mutated?.owned===false
+              &&mutated?.hit==='cf-planetside-shield'&&mutated?.restoration===true&&shieldRemoved&&restored?.ok===true,
+              baseline,mutated,shieldRemoved,restored,error};})()`);
+          if (!shieldControl.ok) recordInstrumentFailure(`${vp.label}: Planetside hit-ownership shield did not own the sampled point, turn only ownership red, remove itself, and restore green (${JSON.stringify(shieldControl)})`);
+          const overlapControl = await evalIn(`(async()=>{ const side=document.getElementById('planetside'),survey=document.getElementById('survey'),
+            a=side.getBoundingClientRect(),b=survey.getBoundingClientRect(),style=side.style,baseline=await ${planetsideOwnershipCheck},prior={
+              value:style.getPropertyValue('transform'),priority:style.getPropertyPriority('transform'),computed:getComputedStyle(side).transform},
+            requested='translate('+(b.left-a.left)+'px,'+(b.top-a.top)+'px)';let mutated=null,mutation=null,error=null;
+            try{style.setProperty('transform',requested,'important');mutation={value:style.getPropertyValue('transform'),
+              priority:style.getPropertyPriority('transform'),computed:getComputedStyle(side).transform};mutated=await ${planetsideOwnershipCheck};}
+            catch(cause){error=String(cause?.message||cause);}
+            finally{if(prior.value===''&&prior.priority==='')style.removeProperty('transform');else style.setProperty('transform',prior.value,prior.priority);}
+            const restoredProperty={value:style.getPropertyValue('transform'),priority:style.getPropertyPriority('transform')},restoredComputed=getComputedStyle(side).transform,
+              restored=await ${planetsideOwnershipCheck},propertyRestored=restoredProperty.value===prior.value&&restoredProperty.priority===prior.priority;
+            return {ok:error===null&&baseline?.ok===true&&typeof mutation?.value==='string'&&mutation.value.length>0&&mutation?.priority==='important'
+              &&mutation?.computed!==prior.computed&&mutated?.ok===false&&mutated?.overlap===true&&mutated?.restoration===true
+              &&propertyRestored&&restoredComputed===prior.computed&&restored?.ok===true,
+              baseline,prior,requested,mutation,mutated,restoredProperty,restoredComputed,propertyRestored,restored,error};})()`);
+          if (!overlapControl.ok) recordInstrumentFailure(`${vp.label}: Planetside/survey overlap control did not land the collision and restore the exact transform property/computed outcome (${JSON.stringify(overlapControl)})`);
           recordControls('planetside-surface-ownership');
         }
         const planetsidePreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#planetside','#planetside > div:first-child','var(--dim)')`);
@@ -8836,7 +9703,7 @@ async function main() {
                 return {id,display:style?.display||'missing',visibility:style?.visibility||'missing',pointerEvents:style?.pointerEvents||'missing'};})`)
             : null;
           const openerReady = await evalIn(`(()=>{ const b=document.querySelector(${JSON.stringify(opener)});if(!b)return false;const s=getComputedStyle(b),r=b.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;})()`);
-          if (!openerReady) instrumentFailures.push(`${vp.label}: ${item.name} has no visible opener in its intended ${overSurvey ? 'over-survey' : 'instead-of-survey'} composition`);
+          if (!openerReady) recordInstrumentFailure(`${vp.label}: ${item.name} has no visible opener in its intended ${overSurvey ? 'over-survey' : 'instead-of-survey'} composition`);
           const realShipyardOpen = item.shipyard
             ? await activateRealControl(opener, `${vp.label} Shipyard opener`)
             : null;
@@ -8844,10 +9711,10 @@ async function main() {
             ? await activateRealControl(opener, `${vp.label} Inventory opener`)
             : null;
           if (item.shipyard && !realShipyardOpen?.ok) {
-            instrumentFailures.push(`${vp.label}: Shipyard did not receive real visible-opener input (${JSON.stringify(realShipyardOpen)})`);
+            recordInstrumentFailure(`${vp.label}: Shipyard did not receive real visible-opener input (${JSON.stringify(realShipyardOpen)})`);
           }
           if (item.inventory && !realInventoryOpen?.ok) {
-            instrumentFailures.push(`${vp.label}: Inventory did not receive real visible-opener input (${JSON.stringify(realInventoryOpen)})`);
+            recordInstrumentFailure(`${vp.label}: Inventory did not receive real visible-opener input (${JSON.stringify(realInventoryOpen)})`);
           }
           if (!item.shipyard && !item.inventory) {
             await evalIn(`(()=>{ const b=document.querySelector(${JSON.stringify(opener)}); b?.focus(); b?.click(); })()`);
@@ -9020,7 +9887,7 @@ async function main() {
                   &&restored?.ok===true&&row.getAttribute('data-effect-support')===prior,
                   prior,after:row.getAttribute('data-effect-support'),baseline,broken,restored,error};})()`);
               if (!effectSupportControl?.ok) {
-                instrumentFailures.push(`${vp.label}: contact-effect Shipyard oracle mutation did not turn recipe truth red in isolation and restore (${JSON.stringify(effectSupportControl)})`);
+                recordInstrumentFailure(`${vp.label}: contact-effect Shipyard oracle mutation did not turn recipe truth red in isolation and restore (${JSON.stringify(effectSupportControl)})`);
               }
               recordControls('shipyard-contact-effect-oracle');
               const duplicateControl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
@@ -9028,7 +9895,7 @@ async function main() {
                 if(duplicate)panel.appendChild(duplicate);const result=${shipyardOpenCheck};duplicate?.remove();
                 return {rejected:result.ok===false,previewCount:result.previewCount,restored:${shipyardOpenCheck}};})()`);
               if (!duplicateControl.rejected || duplicateControl.previewCount !== 2 || !duplicateControl.restored?.ok) {
-                instrumentFailures.push(`${vp.label}: duplicate Shipyard preview control did not reject and restore (${JSON.stringify(duplicateControl)})`);
+                recordInstrumentFailure(`${vp.label}: duplicate Shipyard preview control did not reject and restore (${JSON.stringify(duplicateControl)})`);
               }
               recordControls('shipyard-preview-uniqueness');
 
@@ -9134,7 +10001,7 @@ async function main() {
                   substituted,substitutionRestored,key,hardpoint,system,researchOrder,coherentResearchApplied,coherentResearchStatus,coherentResearchRestored,
                   recipeDuplication,groupIdentity,coherentStatus,actionParity};})()`);
               if (!parityControl.ok) {
-                instrumentFailures.push(`${vp.label}: Engineering state/research/group/recipe parity controls stayed green or failed to restore (${JSON.stringify(parityControl)})`);
+                recordInstrumentFailure(`${vp.label}: Engineering state/research/group/recipe parity controls stayed green or failed to restore (${JSON.stringify(parityControl)})`);
               }
               recordControls('shipyard-dom-state-parity');
 
@@ -9145,7 +10012,7 @@ async function main() {
                 if(priorExpanded===null)opener?.removeAttribute('aria-expanded');else opener?.setAttribute('aria-expanded',priorExpanded);
                 return {ok:hidden.ok===false&&${shipyardOpenCheck}.ok,hidden};})()`);
               if (!openerControl.ok) {
-                instrumentFailures.push(`${vp.label}: hidden/bypassed Shipyard opener control stayed green or failed to restore (${JSON.stringify(openerControl)})`);
+                recordInstrumentFailure(`${vp.label}: hidden/bypassed Shipyard opener control stayed green or failed to restore (${JSON.stringify(openerControl)})`);
               }
               recordControls('shipyard-opener-path');
 
@@ -9170,7 +10037,7 @@ async function main() {
                     &&actionFloor.ok===false&&actionFloor.geometry===false&&overflow.ok===false&&overflow.geometry===false
                     &&${shipyardOpenCheck}.ok,broken,summaryFloor,actionFloor,overflow};})()`);
               if (!geometryFocusControl.ok) {
-                instrumentFailures.push(`${vp.label}: Engineering Close/summary/action/320px geometry-focus controls stayed green or failed to restore (${JSON.stringify(geometryFocusControl)})`);
+                recordInstrumentFailure(`${vp.label}: Engineering Close/summary/action/320px geometry-focus controls stayed green or failed to restore (${JSON.stringify(geometryFocusControl)})`);
               }
               recordControls('shipyard-geometry-focus');
               await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),preview=panel?.querySelector('[data-cf-shipyard-preview="v1"]'),
@@ -9192,7 +10059,7 @@ async function main() {
                 if(prior===null)row?.removeAttribute('style');else row?.setAttribute('style',prior);
                 return {ok:broken.ok===false&&broken.floor?.some(entry=>entry.height<44)&&${inventoryRowsCheck}.ok,broken};})()`);
               if (!floorControl.ok) {
-                instrumentFailures.push(`${vp.label}: undersized Inventory control stayed green or failed to restore (${JSON.stringify(floorControl)})`);
+                recordInstrumentFailure(`${vp.label}: undersized Inventory control stayed green or failed to restore (${JSON.stringify(floorControl)})`);
               }
               recordControls('inventory-control-floor');
 
@@ -9201,7 +10068,7 @@ async function main() {
                 if(row&&parent)parent.insertBefore(row,next);return {ok:broken.ok===false&&broken.durable===true
                   &&broken.runtimeMatch===true&&broken.rowsMatch===false&&${inventoryRowsCheck}.ok,broken};})()`);
               if (!missingControl.ok) {
-                instrumentFailures.push(`${vp.label}: missing exact Inventory row stayed green or failed to restore (${JSON.stringify(missingControl)})`);
+                recordInstrumentFailure(`${vp.label}: missing exact Inventory row stayed green or failed to restore (${JSON.stringify(missingControl)})`);
               }
               recordControls('inventory-missing-row');
 
@@ -9210,7 +10077,7 @@ async function main() {
                 return {ok:broken.ok===false&&broken.durable===true&&broken.runtimeMatch===true
                   &&broken.rowsMatch===false&&broken.domRows.length===broken.expectedRows.length+1&&${inventoryRowsCheck}.ok,broken};})()`);
               if (!duplicateControl.ok) {
-                instrumentFailures.push(`${vp.label}: duplicate exact Inventory row stayed green or failed to restore (${JSON.stringify(duplicateControl)})`);
+                recordInstrumentFailure(`${vp.label}: duplicate exact Inventory row stayed green or failed to restore (${JSON.stringify(duplicateControl)})`);
               }
               recordControls('inventory-duplicate-row');
 
@@ -9234,7 +10101,7 @@ async function main() {
                   &&broken?.durable===true&&broken?.runtimeMatch===false&&broken?.rowsMatch===true&&restored.ok,
                   controlApplied,restoredOwner:S.api.state===prior,broken,restored};})()`);
               if (!rawIntegrityControl.ok || !runtimeParityControl.ok) {
-                instrumentFailures.push(`${vp.label}: raw/runtime Inventory authority controls were not independent or failed to restore (${JSON.stringify({ rawIntegrityControl, runtimeParityControl })})`);
+                recordInstrumentFailure(`${vp.label}: raw/runtime Inventory authority controls were not independent or failed to restore (${JSON.stringify({ rawIntegrityControl, runtimeParityControl })})`);
               }
               recordControls('inventory-raw-authority-parity');
 
@@ -9252,7 +10119,7 @@ async function main() {
                 return {ok:!!button&&brokenLow&&!restoredLow&&styleRestored,
                   brokenLow,restoredLow,styleRestored,prior,after,broken,restored};})()`);
               if (!pagerContrastControl.ok) {
-                instrumentFailures.push(`${vp.label}: disabled Inventory pager contrast injection stayed green or failed to restore (${JSON.stringify(pagerContrastControl)})`);
+                recordInstrumentFailure(`${vp.label}: disabled Inventory pager contrast injection stayed green or failed to restore (${JSON.stringify(pagerContrastControl)})`);
               }
               recordControls('inventory-disabled-pager-contrast');
             }
@@ -9300,7 +10167,7 @@ async function main() {
                 &&restored.length===0&&(${sameInlineStyleAttribute.toString()})(prior,after),
                 prior,after,baseline,broken,restored,error};})()`);
             if (!rarityContrastControl?.ok) {
-              instrumentFailures.push(`${vp.label}: opaque Exotic rarity contrast control stayed green or failed exact restoration (${JSON.stringify(rarityContrastControl)})`);
+              recordInstrumentFailure(`${vp.label}: opaque Exotic rarity contrast control stayed green or failed exact restoration (${JSON.stringify(rarityContrastControl)})`);
             }
             recordControls('rarity-opaque-contrast');
           }
@@ -9423,7 +10290,7 @@ async function main() {
                 return {ok:JSON.stringify(injectedIds)===JSON.stringify(expected)&&JSON.stringify(cleanIds)===JSON.stringify(baselineIds)
                     &&!bare&&restoredExact,expected,baselineIds,injectedIds,cleanIds,bare,restoredExact,prior,restored};})()`);
               if (!dockContrastControl?.ok || nonModalAuditRows.some(row=>row.code==='TEXT_CONTRAST_LOW'&&row.element==='#dock')) {
-                instrumentFailures.push(`${vp.label}: non-modal dock contrast control did not isolate the painted buttons from the transparent layout wrapper (${JSON.stringify(dockContrastControl)})`);
+                recordInstrumentFailure(`${vp.label}: non-modal dock contrast control did not isolate the painted buttons from the transparent layout wrapper (${JSON.stringify(dockContrastControl)})`);
               }
               recordControls('nonmodal-dock-button-contrast');
               await evalIn(`document.querySelector('#codexpanel [data-pnx]')?.focus()`);
@@ -9509,13 +10376,13 @@ async function main() {
                   return {rows,restoration:{ok:(${sameInlineStyleAttribute.toString()})(prior,restored)&&beforeClientHeight>=243&&appliedClientHeight===48
                     &&restoredClientHeight===beforeClientHeight,prior,restored,beforeClientHeight,appliedClientHeight,restoredClientHeight}};})()`);
                 const rows = control?.rows || [];
-                if (!control?.restoration?.ok) instrumentFailures.push(`${vp.label}: real ${target.state} 48px Compendium injection did not restore the exact scroller style and >=243px geometry (${JSON.stringify(control?.restoration)})`);
+                if (!control?.restoration?.ok) recordInstrumentFailure(`${vp.label}: real ${target.state} 48px Compendium injection did not restore the exact scroller style and >=243px geometry (${JSON.stringify(control?.restoration)})`);
                 const outside = rows.find((row) => row.code === 'CONTROL_OUTSIDE_VIEWPORT'
                   && row.actual?.logicalId === target.id && row.actual?.sourceIndex === target.index
                   && row.actual?.rect?.height > 48
                   && row.actual?.clippingAncestors?.some((ancestor) => ancestor.clientHeight === 48
                     && /(auto|scroll)/.test(ancestor.overflowY)));
-                if (!outside) instrumentFailures.push(`${vp.label}: real ${target.state} 48px Compendium injection did not report its exact logical/source identity (${JSON.stringify(rows)})`);
+                if (!outside) recordInstrumentFailure(`${vp.label}: real ${target.state} 48px Compendium injection did not report its exact logical/source identity (${JSON.stringify(rows)})`);
                 else shortClipIdentities.add(`${outside.actual.logicalId}:${outside.actual.sourceIndex}`);
               };
 
@@ -9545,22 +10412,22 @@ async function main() {
                     &&restoredScrollerHeight===beforeScrollerHeight&&restoredOverflowY===beforeOverflowY,
                   prior,restored,beforeClientHeight,beforeScrollerHeight,beforeOverflowY,applied,restoredClientHeight,restoredScrollerHeight,restoredOverflowY}};})()`);
               const ancestorRows = ancestorControl?.rows || [];
-              if (!ancestorControl?.restoration?.ok) instrumentFailures.push(`${vp.label}: real overflow-ancestor Compendium injection did not restore the exact panel style and >=243px scroller geometry (${JSON.stringify(ancestorControl?.restoration)})`);
+              if (!ancestorControl?.restoration?.ok) recordInstrumentFailure(`${vp.label}: real overflow-ancestor Compendium injection did not restore the exact panel style and >=243px scroller geometry (${JSON.stringify(ancestorControl?.restoration)})`);
               const ancestorOutside = ancestorRows.find((row) => row.code === 'CONTROL_OUTSIDE_VIEWPORT'
                 && row.actual?.logicalId === ancestorTarget.id && row.actual?.sourceIndex === ancestorTarget.index
                 && row.actual?.clippingAncestors?.some((ancestor) => ancestor.element === '#codexpanel'
                   && ancestor.overflowY === 'hidden'));
-              if (!ancestorOutside) instrumentFailures.push(`${vp.label}: real overflow-ancestor Compendium injection did not diagnose #codexpanel and its exact row (${JSON.stringify(ancestorRows)})`);
+              if (!ancestorOutside) recordInstrumentFailure(`${vp.label}: real overflow-ancestor Compendium injection did not diagnose #codexpanel and its exact row (${JSON.stringify(ancestorRows)})`);
 
               await auditHostileRow(hostileTargets[2]);
               await runShortClipControl(hostileTargets[2]);
               if (shortClipIdentities.size !== 2
                 || !shortClipIdentities.has(`${hostileTargets[0].id}:0`)
                 || !shortClipIdentities.has(`${hostileTargets[2].id}:20`)) {
-                instrumentFailures.push(`${vp.label}: first/last 48px Compendium controls did not retain distinct logicalId/sourceIndex diagnostics (${JSON.stringify([...shortClipIdentities])})`);
+                recordInstrumentFailure(`${vp.label}: first/last 48px Compendium controls did not retain distinct logicalId/sourceIndex diagnostics (${JSON.stringify([...shortClipIdentities])})`);
               }
               if (hostileHeights.length !== 3 || new Set(hostileHeights.map((height) => Math.round(height))).size < 2) {
-                instrumentFailures.push(`${vp.label}: hostile Compendium fixture did not exercise variable row heights (${JSON.stringify(hostileHeights)})`);
+                recordInstrumentFailure(`${vp.label}: hostile Compendium fixture did not exercise variable row heights (${JSON.stringify(hostileHeights)})`);
               }
 
               await revealHostileRow(hostileTargets[1]);
@@ -9607,7 +10474,7 @@ async function main() {
               ? inventoryCarrier.arc2.inventory.entries.find((entry) => entry.instance.baseId === 'hazmat')?.instance.instanceId
               : null;
             if (typeof thermalId !== 'string' || typeof hazmatId !== 'string') {
-              instrumentFailures.push(`${vp.label}: Inventory conditional/protected fixture identities are unavailable (${JSON.stringify({ thermalId, hazmatId })})`);
+              recordInstrumentFailure(`${vp.label}: Inventory conditional/protected fixture identities are unavailable (${JSON.stringify({ thermalId, hazmatId })})`);
             } else {
               const thermalSelector = `#inventorypanel [data-inventory-row="exact"][data-instance-id=${JSON.stringify(thermalId)}]`;
               const hazmatSelector = `#inventorypanel [data-inventory-row="exact"][data-instance-id=${JSON.stringify(hazmatId)}]`;
@@ -9646,7 +10513,7 @@ async function main() {
                   if(copy)copy.textContent='Conditional wording omitted';const broken=${conditionCheck};if(copy&&prior!==null)copy.textContent=prior;
                   return {ok:broken.ok===false&&broken.conditionalComparisons>0&&${conditionCheck}.ok,broken};})()`);
                 if (!conditionControl.ok) {
-                  instrumentFailures.push(`${vp.label}: dropped Inventory condition wording stayed green or failed to restore (${JSON.stringify(conditionControl)})`);
+                  recordInstrumentFailure(`${vp.label}: dropped Inventory condition wording stayed green or failed to restore (${JSON.stringify(conditionControl)})`);
                 }
                 recordControls('inventory-condition-wording');
 
@@ -9654,14 +10521,14 @@ async function main() {
                   if(duplicate)document.body.appendChild(duplicate);const broken=${modalCheck};duplicate?.remove();
                   return {ok:broken.ok===false&&broken.sheetCount===2&&${modalCheck}.ok,broken};})()`);
                 if (!duplicateModalControl.ok) {
-                  instrumentFailures.push(`${vp.label}: duplicate Inventory modal stayed green or failed to restore (${JSON.stringify(duplicateModalControl)})`);
+                  recordInstrumentFailure(`${vp.label}: duplicate Inventory modal stayed green or failed to restore (${JSON.stringify(duplicateModalControl)})`);
                 }
                 recordControls('inventory-modal-duplication');
 
                 const modalFocusControl = await evalIn(`(()=>{const close=document.querySelector('#inventorysheet [data-inventory-sheet-close]');
                   close?.blur();const broken=${modalCheck};close?.focus();return {ok:broken.ok===false&&${modalCheck}.ok,broken};})()`);
                 if (!modalFocusControl.ok) {
-                  instrumentFailures.push(`${vp.label}: Inventory modal focus omission stayed green or failed to restore (${JSON.stringify(modalFocusControl)})`);
+                  recordInstrumentFailure(`${vp.label}: Inventory modal focus omission stayed green or failed to restore (${JSON.stringify(modalFocusControl)})`);
                 }
                 recordControls('inventory-modal-focus');
               }
@@ -9751,7 +10618,7 @@ async function main() {
                   restoreSetup: wrapRestoreSetup, restored: wrapRestored,
                   reverseRestored, cleanup: wrapCleanup };
                 if (!wrapControl.ok) {
-                  instrumentFailures.push(`${vp.label}: Inventory focus-wrap bypass did not escape, fail red, and restore (${JSON.stringify(wrapControl)})`);
+                  recordInstrumentFailure(`${vp.label}: Inventory focus-wrap bypass did not escape, fail red, and restore (${JSON.stringify(wrapControl)})`);
                 }
                 recordControls('inventory-focus-wrap');
               }
@@ -9769,7 +10636,7 @@ async function main() {
                   delete window.__cfInventoryRetainedControl;return {ok:broken.ok===false&&broken.bodyChildren===1
                     &&window.__CF_GLASS_AUDIT__.inventoryClosedOutcome(${JSON.stringify(thermalId)}).ok,broken};})()`);
                 if (!retentionControl.ok) {
-                  instrumentFailures.push(`${vp.label}: retained Inventory detail after Escape stayed green or failed to restore (${JSON.stringify(retentionControl)})`);
+                  recordInstrumentFailure(`${vp.label}: retained Inventory detail after Escape stayed green or failed to restore (${JSON.stringify(retentionControl)})`);
                 }
                 recordControls('inventory-modal-retention');
               } else await evalIn('delete window.__cfInventoryRetainedControl');
@@ -9790,7 +10657,7 @@ async function main() {
                     if(reason===null)button.removeAttribute('data-protected-reason');else button.setAttribute('data-protected-reason',reason);}
                   return {ok:broken.ok===false&&${protectedCheck}.ok,broken};})()`);
                 if (!protectedControl.ok) {
-                  instrumentFailures.push(`${vp.label}: enabled protected Inventory action stayed green or failed to restore (${JSON.stringify(protectedControl)})`);
+                  recordInstrumentFailure(`${vp.label}: enabled protected Inventory action stayed green or failed to restore (${JSON.stringify(protectedControl)})`);
                 }
                 recordControls('inventory-protected-action');
               }
@@ -9901,7 +10768,7 @@ async function main() {
                 'a real pending exact equip disables every action and leaves the full runtime equipped bindings and every DOM row data-equipped state unchanged');
               if (!inventoryControlRun) {
                 if (!actionControl.ok) {
-                  instrumentFailures.push(`${vp.label}: optimistic Inventory binding/DOM publication stayed green or failed to restore (${JSON.stringify(actionControl)})`);
+                  recordInstrumentFailure(`${vp.label}: optimistic Inventory binding/DOM publication stayed green or failed to restore (${JSON.stringify(actionControl)})`);
                 }
                 recordControls('inventory-action-publication');
               }
@@ -9930,7 +10797,7 @@ async function main() {
                     if(saved.reason===null)button.removeAttribute('data-protected-reason');else button.setAttribute('data-protected-reason',saved.reason);});S.api.inventoryDiagnostics=prior;
                   return {ok:baseline.ok&&broken.ok===false&&window.__CF_SLICE__.api.inventoryDiagnostics===prior,baseline,broken};})()`);
                 if (!convergenceControl.ok) {
-                  instrumentFailures.push(`${vp.label}: enabled post-convergence Inventory retry stayed green or failed to restore (${JSON.stringify(convergenceControl)})`);
+                  recordInstrumentFailure(`${vp.label}: enabled post-convergence Inventory retry stayed green or failed to restore (${JSON.stringify(convergenceControl)})`);
                 }
                 recordControls('inventory-convergence-retry');
                 inventoryControlRun = true;
@@ -9952,7 +10819,7 @@ async function main() {
             const labelControl = await evalIn(`(()=>{ const close=document.querySelector(${JSON.stringify(item.panel)}+' [data-pnx]'),prior=close.getAttribute('aria-label');
               close.setAttribute('aria-label','Close internal-id');const panel=document.querySelector(${JSON.stringify(item.panel)}),expected='Close '+panel.getAttribute('aria-label');
               const result={ok:close.getAttribute('aria-label')===expected,actual:close.getAttribute('aria-label'),expected};close.setAttribute('aria-label',prior);return result;})()`);
-            if (labelControl.ok) instrumentFailures.push(`${vp.label}: internal-id close-label injection stayed green (${JSON.stringify(labelControl)})`);
+            if (labelControl.ok) recordInstrumentFailure(`${vp.label}: internal-id close-label injection stayed green (${JSON.stringify(labelControl)})`);
             recordControls('panel-close-accessible-name');
           }
           const panelPlanetsideCheck = `(()=>{ const panel=document.querySelector(${JSON.stringify(item.panel)}),side=document.getElementById('planetside');
@@ -9970,7 +10837,7 @@ async function main() {
               a=panel.getBoundingClientRect(),b=side.getBoundingClientRect(),priorZ=panel.style.zIndex,priorT=panel.style.transform;
               panel.style.setProperty('transform','translate('+(b.left-a.left)+'px,'+(b.top-a.top)+'px)','important');
               panel.style.setProperty('z-index','20','important');const result=${panelPlanetsideCheck};panel.style.zIndex=priorZ;panel.style.transform=priorT;return result;})()`);
-            if (layerControl.ok) instrumentFailures.push(`${vp.label}: synthesized panel-under-Planetside injection stayed green (${JSON.stringify(layerControl)})`);
+            if (layerControl.ok) recordInstrumentFailure(`${vp.label}: synthesized panel-under-Planetside injection stayed green (${JSON.stringify(layerControl)})`);
             recordControls('panel-planetside-layering');
           }
           const preservedSurface = overSurvey ? '#survey' : '#planetside';
@@ -10018,7 +10885,7 @@ async function main() {
                 return {ok:previewBroken.ok===false&&previewBroken.previews===1&&domBroken.ok===false
                     &&domBroken.bodyChildren===1&&${shipyardClosedCheck}.ok,previewBroken,domBroken};})()`);
               if (!retainedControl.ok) {
-                instrumentFailures.push(`${vp.label}: retained Engineering preview/DOM after Close controls stayed green or failed to restore (${JSON.stringify(retainedControl)})`);
+                recordInstrumentFailure(`${vp.label}: retained Engineering preview/DOM after Close controls stayed green or failed to restore (${JSON.stringify(retainedControl)})`);
               }
               recordControls('shipyard-close-release');
               shipyardControlRun = true;
@@ -10080,7 +10947,7 @@ async function main() {
             panel:s.panelOpen,cardOpen:s.cardOpen,cardTitle:s.cardTitle,bodyClass:document.body.className,
             railDisplay:getComputedStyle(document.getElementById('railrecords')).display,railRootDisplay:getComputedStyle(document.getElementById('railrgt')).display};})()`);
           if (hiddenOpenerSetup.panel !== 'rec' || !hiddenOpenerSetup.cardOpen || hiddenOpenerSetup.railRootDisplay !== 'none') {
-            instrumentFailures.push(`${vp.label}: could not construct hidden panel-opener focus state (${JSON.stringify(hiddenOpenerSetup)})`);
+            recordInstrumentFailure(`${vp.label}: could not construct hidden panel-opener focus state (${JSON.stringify(hiddenOpenerSetup)})`);
           }
           await evalIn(`document.querySelector('#recpanel [data-pnx]')?.click()`);
           await waitFor('hidden-opener panel close', `window.__CF_SLICE__.api.state().panelOpen===null`);
@@ -10090,7 +10957,7 @@ async function main() {
           addOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST', '#docksurvey', await evalIn(fallbackCheck),
             'closing a panel whose rail opener became hidden restores focus to the visible Survey control');
           const fallbackControl = await evalIn(`(()=>{ document.querySelector('canvas')?.focus();return ${fallbackCheck};})()`);
-          if (fallbackControl.ok) instrumentFailures.push(`${vp.label}: wrong hidden-opener fallback focus stayed green (${JSON.stringify(fallbackControl)})`);
+          if (fallbackControl.ok) recordInstrumentFailure(`${vp.label}: wrong hidden-opener fallback focus stayed green (${JSON.stringify(fallbackControl)})`);
           await evalIn(`document.getElementById('docksurvey')?.focus()`);
           hiddenOpenerControlRun = true;
           recordControls('hidden-panel-opener-focus-fallback');
@@ -10111,18 +10978,33 @@ async function main() {
         const portraitSurface = vp.width <= 900 && vp.width <= vp.height;
         const chromeRestoreCheck = `(()=>{ const fallback=document.body.classList.contains('surface-trail-yield'),rows=['trail','objchip'].map(id=>{const el=document.getElementById(id);return {id,text:(el?.textContent||'').trim(),display:el?getComputedStyle(el).display:'missing'};});
           return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?${landscapeSurfaceYieldsTrail ? "r.display==='none'" : portraitSurface ? "r.display===(fallback?'none':'block')" : "r.display!=='none'"}:${mobileSurfaceYieldsObjective ? "r.display==='none'" : "r.display!=='none'"})),rows,fallback};})()`;
-        addOutcome(vp.label, 'survey-chrome-restore', 'MOBILE_CHROME_NOT_RESTORED', '#trail,#objchip', await evalIn(chromeRestoreCheck),
-          landscapeSurfaceYieldsTrail
-            ? 'short-landscape surface mode keeps populated trail/objective rows yielded to Planetside'
-            : mobileSurfaceYieldsObjective
-              ? 'landed portrait restores the trail when a useful band fits, otherwise marks the bounded trail-yield fallback; the objective yields throughout'
-              : 'closing the last card restores every populated desktop trail/objective surface');
+        const chromeRestoreBaseline = await evalIn(chromeRestoreCheck);
+        const chromeRestoreExpected = landscapeSurfaceYieldsTrail
+          ? 'short-landscape surface mode keeps populated trail/objective rows yielded to Planetside'
+          : mobileSurfaceYieldsObjective
+            ? 'landed portrait restores the trail when a useful band fits, otherwise marks the bounded trail-yield fallback; the objective yields throughout'
+            : 'closing the last card restores every populated desktop trail/objective surface';
+        addOutcome(vp.label, 'survey-chrome-restore', 'MOBILE_CHROME_NOT_RESTORED', '#trail,#objchip', chromeRestoreBaseline,
+          chromeRestoreExpected);
+        stopAfterRecordedProductOutcome(vp.label, 'survey-chrome-restore',
+          'MOBILE_CHROME_NOT_RESTORED', '#trail,#objchip', chromeRestoreBaseline,
+          chromeRestoreExpected);
         if (!chromeRestoreControlRun) {
+          const restoreControl = await evalIn(`(()=>{ const el=document.getElementById('trail'),baseline=${chromeRestoreCheck},prior={
+              value:el.style.getPropertyValue('display'),priority:el.style.getPropertyPriority('display'),computed:getComputedStyle(el).display},
+              requested=prior.computed==='none'?'block':'none';let mutation;
+            try{el.style.setProperty('display',requested,'important');mutation={requested,
+              property:{value:el.style.getPropertyValue('display'),priority:el.style.getPropertyPriority('display')},
+              computed:getComputedStyle(el).display,outcome:${chromeRestoreCheck}};}
+            finally{if(prior.value===''&&prior.priority==='')el.style.removeProperty('display');else el.style.setProperty('display',prior.value,prior.priority);}
+            const restored={property:{value:el.style.getPropertyValue('display'),priority:el.style.getPropertyPriority('display')},
+              computed:getComputedStyle(el).display,outcome:${chromeRestoreCheck}};
+            return {baseline,prior,mutation,restored};})()`);
+          const restoreControlAssessment = trailRestorationControlOutcome(restoreControl);
+          if (!restoreControlAssessment.ok) {
+            stopInstrumentControl(`${vp.label}: measured-opposite trail restoration control did not change, turn red, and restore exactly (${JSON.stringify({ restoreControl, restoreControlAssessment })})`);
+          }
           chromeRestoreControlRun = true;
-          const restoreControl = await evalIn(`(()=>{ const el=document.getElementById('trail'),prior=el.getAttribute('style');
-            el.style.setProperty('display',${JSON.stringify(landscapeSurfaceYieldsTrail ? 'block' : 'none')},'important');const result=${chromeRestoreCheck};
-            if(prior===null)el.removeAttribute('style');else el.setAttribute('style',prior);return result;})()`);
-          if (restoreControl.ok) instrumentFailures.push(`${vp.label}: wrong trail restoration policy injection stayed green (${JSON.stringify(restoreControl)})`);
           recordControls('mobile-chrome-yield-restore');
         }
         if (landscapeSurfaceYieldsTrail && !chromeLandscapeControlRun) {
@@ -10130,7 +11012,7 @@ async function main() {
           const landscapeControl = await evalIn(`(()=>{ const el=document.getElementById('trail'),prior=el.getAttribute('style');
             el.style.setProperty('display','block','important');const result=${chromeRestoreCheck};
             if(prior===null)el.removeAttribute('style');else el.setAttribute('style',prior);return result;})()`);
-          if (landscapeControl.ok) instrumentFailures.push(`${vp.label}: forced-visible surface trail injection stayed green (${JSON.stringify(landscapeControl)})`);
+          if (landscapeControl.ok) recordInstrumentFailure(`${vp.label}: forced-visible surface trail injection stayed green (${JSON.stringify(landscapeControl)})`);
           recordControls('mobile-landscape-surface-chrome-yield');
         }
         if (mobileSurfaceYieldsObjective && !objectiveYieldControlRun) {
@@ -10138,7 +11020,7 @@ async function main() {
           const objectiveControl = await evalIn(`(()=>{ const el=document.getElementById('objchip'),prior=el.getAttribute('style');
             el.style.setProperty('display','block','important');const result=${chromeRestoreCheck};
             if(prior===null)el.removeAttribute('style');else el.setAttribute('style',prior);return result;})()`);
-          if (objectiveControl.ok) instrumentFailures.push(`${vp.label}: forced-visible landed objective injection stayed green (${JSON.stringify(objectiveControl)})`);
+          if (objectiveControl.ok) recordInstrumentFailure(`${vp.label}: forced-visible landed objective injection stayed green (${JSON.stringify(objectiveControl)})`);
           recordControls('mobile-surface-objective-yield');
         }
         if (portraitSurface) {
@@ -10161,41 +11043,76 @@ async function main() {
               trailVisible,gap,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,
               overflowY:ss.overflowY,maxScroll,observedScroll,surfaceChromeBottom:getComputedStyle(document.documentElement).getPropertyValue('--surface-chrome-bottom').trim(),
               fallback:document.body.classList.contains('surface-trail-yield')}; })()`;
-          addOutcome(vp.label, 'planetside-portrait-band', 'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', await evalIn(portraitBandCheck),
-            'post-close Planetside keeps at least a useful 72px band, 6px trail clearance, a visible heading, and a visible or vertically reachable specimen');
-          if (!portraitBandControlRun) {
-            portraitBandControlRun = true;
+          const portraitBaseline = await evalIn(portraitBandCheck);
+          portraitBaselineCount += 1;
+          const portraitEligible = portraitControlBaselineEligible(portraitBaseline);
+          if (portraitEligible) portraitEligibleBaselineCount += 1;
+          const portraitBaselineExpected = 'post-close Planetside keeps at least a useful 72px band, 6px trail clearance, a visible heading, and a visible or vertically reachable specimen';
+          addOutcome(vp.label, 'planetside-portrait-band', 'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline,
+            portraitBaselineExpected);
+          stopAfterRecordedProductOutcome(vp.label, 'planetside-portrait-band',
+            'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline,
+            portraitBaselineExpected);
+          if (portraitEligible && !portraitBandControlRun) {
             /* Reproduce the reported geometry directly. Removing a cap and
                appending arbitrary content only collided on the shortest
                portrait and went green in a targeted primary-phone run. */
-            const bandControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),prior=side.style.getPropertyValue('transform'),priority=side.style.getPropertyPriority('transform'),
-              a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),dy=t.bottom-1-a.top;
-              side.style.setProperty('transform','translateY('+dy+'px)','important');const result=${portraitBandCheck};
-              if(prior)side.style.setProperty('transform',prior,priority);else side.style.removeProperty('transform');return result;})()`);
-            if (bandControl.ok || !bandControl.trailVisible || !(bandControl.gap < 5.5)) {
-              instrumentFailures.push(`${vp.label}: explicit portrait-band/trail collision stayed green (${JSON.stringify(bandControl)})`);
+            const bandControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
+                value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform'),computed:getComputedStyle(side).transform},
+                a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),dy=t.bottom-1-a.top,requested='translateY('+dy+'px)';let mutation;
+              try{side.style.setProperty('transform',requested,'important');mutation={requested,
+                property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
+                computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};}
+              finally{if(prior.value===''&&prior.priority==='')side.style.removeProperty('transform');else side.style.setProperty('transform',prior.value,prior.priority);}
+              const restored={property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
+                computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};
+              return {baseline,prior,mutation,restored};})()`);
+            const bandControlAssessment = portraitBandControlOutcome(bandControl);
+            if (!bandControlAssessment.ok) {
+              stopInstrumentControl(`${vp.label}: eligible portrait-band collision control did not change, turn red, and restore exactly (${JSON.stringify({ bandControl, bandControlAssessment })})`);
             }
+            portraitBandControlRun = true;
+            portraitBandControlCount += 1;
             recordControls('planetside-portrait-band-viability');
           }
-          if (!portraitFallbackControlRun) {
-            portraitFallbackControlRun = true;
+          if (portraitEligible && !portraitFallbackControlRun) {
             /* Tighten the lower safe rectangle through the same CSS variable
                the product reads. The fallback must be an observable policy,
                not a one-way class toggle that leaves the strip collapsed. */
-            const fallbackControl = await evalIn(`(()=>{ const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),prior=root.style.getPropertyValue('--safe-bottom'),
-              beforeSide=side.getBoundingClientRect(),beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(getComputedStyle(root).getPropertyValue('--safe-bottom'))||0,
-              forcedSafe=baseSafe+Math.max(8,beforeSide.bottom-beforeTrail.bottom-6-64);
-              root.style.setProperty('--safe-bottom',forcedSafe+'px');window.dispatchEvent(new Event('resize'));
-              const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ss=getComputedStyle(side),ts=getComputedStyle(trail),fallback=document.body.classList.contains('surface-trail-yield'),
-                meaningful=a.height>=71&&side.clientHeight>=68,scrollOk=side.scrollHeight<=side.clientHeight+1||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&side.scrollHeight>side.clientHeight),
-                fixedRows=['playerchip','hpbar','searchbox','objchip'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect(),visible=s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;return {id,visible,gap:a.top-r.bottom};}),
-                fixedClear=fixedRows.every(row=>!row.visible||row.gap>=5.5);
-              const tight={ok:fallback&&ts.display==='none'&&meaningful&&scrollOk&&fixedClear,fallback,trailDisplay:ts.display,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,overflowY:ss.overflowY,fixedClear,fixedRows,baseSafe,forcedSafe};
-              if(prior)root.style.setProperty('--safe-bottom',prior);else root.style.removeProperty('--safe-bottom');window.dispatchEvent(new Event('resize'));
-              const restoredStyle=getComputedStyle(trail),restored=!document.body.classList.contains('surface-trail-yield')&&restoredStyle.display!=='none';
-              return {ok:tight.ok&&restored,tight,restored,restoredClass:document.body.classList.contains('surface-trail-yield'),restoredDisplay:restoredStyle.display};})()`);
-            if (!fallbackControl.ok) instrumentFailures.push(`${vp.label}: forced-tight portrait did not yield trail with a useful strip and restore exactly (${JSON.stringify(fallbackControl)})`);
+            const fallbackControl = await evalIn(`(()=>{ const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
+                value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom'),computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim()},
+                beforeSide=side.getBoundingClientRect(),beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(prior.computed)||0,
+                forcedSafe=baseSafe+Math.max(8,beforeSide.bottom-beforeTrail.bottom-6-64),requested=forcedSafe+'px';let mutation;
+              try{root.style.setProperty('--safe-bottom',requested,'important');window.dispatchEvent(new Event('resize'));
+                const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ss=getComputedStyle(side),ts=getComputedStyle(trail),fallback=document.body.classList.contains('surface-trail-yield'),
+                  meaningful=a.height>=71&&side.clientHeight>=68,scrollOk=side.scrollHeight<=side.clientHeight+1||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&side.scrollHeight>side.clientHeight),
+                  fixedRows=['playerchip','hpbar','searchbox','objchip'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect(),visible=s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;return {id,visible,gap:a.top-r.bottom};}),
+                  fixedClear=fixedRows.every(row=>!row.visible||row.gap>=5.5),outcome={ok:fallback&&ts.display==='none'&&meaningful&&scrollOk&&fixedClear,fallback,trailDisplay:ts.display,meaningful,scrollOk,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,overflowY:ss.overflowY,fixedClear,fixedRows,baseSafe,forcedSafe};
+                mutation={requested,property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
+                  computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),baseSafe,forcedSafe,outcome};}
+              finally{if(prior.value===''&&prior.priority==='')root.style.removeProperty('--safe-bottom');else root.style.setProperty('--safe-bottom',prior.value,prior.priority);window.dispatchEvent(new Event('resize'));}
+              const restored={property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
+                computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),outcome:${portraitBandCheck}};
+              return {baseline,prior,mutation,restored};})()`);
+            const fallbackControlAssessment = portraitFallbackControlOutcome(fallbackControl);
+            if (!fallbackControlAssessment.ok) {
+              stopInstrumentControl(`${vp.label}: eligible forced-tight portrait did not change policy and restore exactly (${JSON.stringify({ fallbackControl, fallbackControlAssessment })})`);
+            }
+            portraitFallbackControlRun = true;
+            portraitFallbackControlCount += 1;
             recordControls('planetside-portrait-trail-fallback');
+          }
+          if (portraitBaselineCount === portraitViewportCount) {
+            const portraitCampaign = portraitControlCampaignOutcome({
+              planned: portraitViewportCount,
+              observed: portraitBaselineCount,
+              eligible: portraitEligibleBaselineCount,
+              bandRuns: portraitBandControlCount,
+              fallbackRuns: portraitFallbackControlCount,
+            });
+            if (!portraitCampaign.ok) {
+              stopInstrumentControl(`${vp.label}: portrait control campaign had no eligible visible-trail/non-fallback baseline or did not execute exactly once (${JSON.stringify(portraitCampaign)})`);
+            }
           }
         }
         const topChromeCheck = `(()=>{ const side=document.getElementById('planetside'),a=side?.getBoundingClientRect();if(!side||!a)return {ok:false,why:'missing'};
@@ -10211,7 +11128,7 @@ async function main() {
             target=visible(trail)?trail:['playerchip','hpbar','searchbox','objchip'].map(id=>document.getElementById(id)).find(visible),
             a=side.getBoundingClientRect(),b=target.getBoundingClientRect(),prior=side.style.transform;
             side.style.setProperty('transform','translate('+(b.left-a.left)+'px,'+(b.top-a.top)+'px)','important');const result=${topChromeCheck};side.style.transform=prior;return result;})()`);
-          if (topControl.ok) instrumentFailures.push(`${vp.label}: Planetside/top-chrome overlap injection stayed green (${JSON.stringify(topControl)})`);
+          if (topControl.ok) recordInstrumentFailure(`${vp.label}: Planetside/top-chrome overlap injection stayed green (${JSON.stringify(topControl)})`);
           recordControls('planetside-top-chrome-clearance');
         }
 
@@ -10269,7 +11186,7 @@ async function main() {
             style.remove(); return {outcome,rows};
           })()`);
           if (forcedControl.outcome.ok || !forcedControl.rows.some((row) => row.code === 'TEXT_CONTRAST_LOW')) {
-            instrumentFailures.push(`${vp.label}: forced-colors author-override injection stayed green (${JSON.stringify(forcedControl)})`);
+            recordInstrumentFailure(`${vp.label}: forced-colors author-override injection stayed green (${JSON.stringify(forcedControl)})`);
           }
           recordControls('forced-colors-system-mapping');
           await send('Emulation.setEmulatedMedia', {
@@ -10333,11 +11250,13 @@ async function main() {
              installs the prior stale paragraph and proves this predicate
              rejects it. This extends guide-render-focus without changing the
              sealed outcome or negative-control inventories. */
-          const renderedGuideIngress = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),input=document.getElementById('guidesearch'),rows=[];
+          const renderedGuideIngress = await evalIn(`(async()=>{ const panel=document.getElementById('guidepanel'),input=document.getElementById('guidesearch'),rows=[],baselineRows=[],
+            settle=async()=>{await Promise.resolve();await Promise.resolve();};
             const guideRequiredControlRejected=${guideRequiredControlRejected.toString()};
             const exactGuideRenderedTextMutation=${exactGuideRenderedTextMutation.toString()};
             const guideRenderedControlHtmlRestored=${guideRenderedControlHtmlRestored.toString()};
             const exactGuideRenderedRequiredControlRejected=${exactGuideRenderedRequiredControlRejected.toString()};
+            const classifyRenderedGuideIngress=${classifyRenderedGuideIngress.toString()};
             const probeNeedle='up to 1,500 logical entries',probeCarrier='Compendium presents '+probeNeedle,
               probeBefore='The '+probeCarrier+'.',probeAfter=probeBefore.replace(probeNeedle,'a bounded set of logical entries'),
               probeResult={ok:false,missing:[probeCarrier],text:probeAfter};
@@ -10368,16 +11287,18 @@ async function main() {
             ],breedCharterRequired=[
               'One successful Breed banks Breed a hybrid bloodline in the same offspring save',
               'failed pairing, refusal, stale tab, or failed write banks no breeding credit',
-              'Conquest goals stay hidden until their Charter writer exists',
+              'A first verified conquest banks Chapter 2’s conquest goal in the combat save',
+              'An accepted weekly conquest (wk-conq) refuses before combat',
             ],breedCharterForbidden=[
-              'Conquest and breeding goals stay hidden until their Charter writers exist',
               'A failed pairing also banks the Charter hybrid bloodline goal',
               'A stale Breed result grants breeding credit',
-              'Conquest goals are now visible',
+              'A failed conquest banks Chapter 2’s conquest goal',
+              'An accepted weekly conquest can proceed to combat',
             ],breedCharterContradictions=[
               'A failed pairing also banks the Charter hybrid bloodline goal.',
               'A stale Breed result grants breeding credit.',
-              'Conquest goals are now visible.',
+              'A failed conquest banks Chapter 2’s conquest goal.',
+              'An accepted weekly conquest can proceed to combat.',
             ],audioGuideRequired=[
               'Sound and Creature voices on',
               'verified Tame',
@@ -10386,39 +11307,41 @@ async function main() {
               'exact current identity and accessible status counterpart agree',
               'Compendium list mounting, focus, filtering, and navigation never play a call',
               'Listen to biosphere',
-              'one generic distant living-biosphere signal',
-              'exact current Planetside biosphere lead is visible',
-              'reveals no species, spends no Yield, awards nothing, and writes no save',
+              'same generic distant living-biosphere signal',
+              'exact current generic biosphere lead is visible',
+              'neither reveals a species, spends Yield, awards anything, or writes the save',
               'Sound Off stops every path',
-              'Creature voices Off stops creature expressions but not the generic biosphere ambience',
-              'Other creature actions, authored ambience/music, and combat sound remain unavailable',
+              'Creature voices Off stops creature expressions but not the generic biosphere ambience or registered post-settlement Combat Chronicle cues',
+              'Chronicle sound includes the already-modelled initiative, dodge, stun, impact/critical/ability, burn, regeneration, defeat, resolution, and Guardian or Titan motifs',
+              'Authored ambience, music, recorded assets, and other creature actions remain unavailable',
             ],audioSettingsRequired=[
               'Creature voices governs the verified Tame, committed Feed, and explicit owned-fauna Listen expressions',
-              'Sound governs all audio, including the generic Planetside biosphere signal',
-              'Each expression waits for its own current accessible status counterpart',
-              'Turning Creature voices or master Sound off stops its owned audio immediately',
-              'turning it back on never replays an earlier result',
+              'Sound governs all audio, including the generic Planetside biosphere signal and every registered post-settlement Combat Chronicle cue',
+              'combat deliberately ignores Creature voices',
+              'Each expression or combat cue waits for its own current accessible status or Chronicle counterpart',
+              'Turning master Sound off stops every owned audio path immediately',
+              'Creature voices Off stops creature expressions only',
+              'Turning either setting back on never replays an earlier result',
             ],audioGuideForbidden=[
               'Compendium filtering auto-plays the selected creature call',
               'Listen to biosphere reveals a hidden species and spends 1 Yield',
               'The biosphere signal grants a discovery reward and changes the save',
               'Creature voices Off silences the generic biosphere ambience',
               'Sound Off still permits the owned creature call',
+              'Creature voices Off silences Combat Chronicle cues',
+              'Combat sound remains unavailable',
+              'Master Sound does not govern combat',
             ],audioGuideContradictions=[
               'Compendium filtering auto-plays the selected creature call.',
               'Listen to biosphere reveals a hidden species and spends 1 Yield.',
               'The biosphere signal grants a discovery reward and changes the save.',
               'Creature voices Off silences the generic biosphere ambience.',
               'Sound Off still permits the owned creature call.',
+              'Creature voices Off silences Combat Chronicle cues.',
+              'Combat sound remains unavailable.',
+              'Master Sound does not govern combat.',
             ];
-            const predicateControls={
-              positive:guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier],result:probeResult}),
-              zeroCarrier:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:['unrelated required copy'],result:probeResult}),
-              multipleCarriers:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier,'second '+probeNeedle],result:probeResult}),
-              noOp:!guideRequiredControlRejected({before:probeBefore,after:probeBefore,needle:probeNeedle,required:[probeCarrier],result:probeResult}),
-              wrongCarrier:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier],result:{...probeResult,missing:['wrong carrier']}}),
-              needleStillPresent:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier],result:{...probeResult,text:probeAfter+' '+probeNeedle}}),
-            };
+            let predicateControls=null;
             const specs=[
               {id:'landing',required:['Any galaxy, star, or planet route arriving from Search, the Star Atlas, or a saved location is regenerated from the seeded universe before it is accepted','navigation uses only the source-verified destination','A stale or forged route cannot act'],forbidden:['A planet address from Search or the Star Atlas returns to its live system survey when it is inside the expedition’s saved reach'],stale:'A planet address from Search or the Star Atlas returns to its live system survey when it is inside the expedition’s saved reach; it never lands for you.'},
               {id:'search',required:['Every galaxy, star, or planet code is treated as an address to verify, not as authority','accepts only the source-verified destination','A stale or forged code leaves the current view unchanged and keeps the exact query in Search for correction'],forbidden:['A valid world address inside the expedition’s saved reach reopens the destination’s system survey'],stale:'The top-bar search accepts discovered species names and deterministic CF1 world addresses. A valid world address inside the expedition’s saved reach reopens the destination’s system survey.'},
@@ -10430,13 +11353,13 @@ async function main() {
              {id:'discover',name:'discover-bioscan',paragraph:3,required:bioscanRequired,requiredControls:bioscanRequired,forbidden:bioscanForbidden,stale:'Capture never banks the Charter’s separate bioscan milestone.',contradictions:bioscanContradictions},
               {id:'discover',name:'discover-audio',paragraph:4,required:audioGuideRequired,requiredControls:audioGuideRequired,forbidden:audioGuideForbidden,stale:'Creature calls and inhabited-world signals are not available in this development slice.',contradictions:audioGuideContradictions},
               {id:'rarity',paragraph:1,required:['Rarity lowers a species’ base Tame, Scavenge, or Sample chance','each action first chooses uniformly from its eligible full-biosphere pool','selected species and its exact chance appear with the result','Only the first successful Legendary-or-better observation earns a Rare Find Stardust bonus','later-world or later-cycle repeat can add another creature or specimen lot, but never another Compendium page or first-find reward'],requiredControls:['each action first chooses uniformly from its eligible full-biosphere pool','selected species and its exact chance appear with the result'],forbidden:['preview row is the chosen capture target','Every species has the same capture chance'],stale:'The preview row is the chosen capture target. Every species has the same capture chance.',contradictions:['The preview row is the chosen capture target.','Every species has the same capture chance.']},
-              {id:'stardust',paragraph:1,required:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','result shows the exact amount','A miss and every later-world or later-cycle repeat earn none','No other current v2 action earns Stardust'],requiredControls:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','A miss and every later-world or later-cycle repeat earn none'],forbidden:['Every Legendary capture earns Stardust','A repeat find earns another Rare Find Stardust bonus','A miss can earn Stardust'],stale:'Every Legendary capture earns Stardust, a repeat find earns another Rare Find Stardust bonus, and a miss can earn Stardust.',contradictions:['Every Legendary capture earns Stardust.','A repeat find earns another Rare Find Stardust bonus.','A miss can earn Stardust.']},
+              {id:'stardust',paragraph:1,required:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','result shows the exact amount','A miss and every later-world or later-cycle repeat earn none','Each supported Starter Charter pays its established 10–25 Stardust once','A completed unclaimed Binder Set pays its established 25–150 Stardust once from Records','A verified conquest win awards 8 + five times world tier Stardust, plus 40 against an Apex Guardian or Elemental Titan','Weekly Charters, passive gain, and the rest of the mature economy remain unavailable'],requiredControls:['first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus','same durable transaction as its page and ownership','A miss and every later-world or later-cycle repeat earn none','Each supported Starter Charter pays its established 10–25 Stardust once','A completed unclaimed Binder Set pays its established 25–150 Stardust once from Records','A verified conquest win awards 8 + five times world tier Stardust, plus 40 against an Apex Guardian or Elemental Titan'],forbidden:['Every Legendary capture earns Stardust','A repeat find earns another Rare Find Stardust bonus','A miss can earn Stardust'],stale:'Every Legendary capture earns Stardust, a repeat find earns another Rare Find Stardust bonus, and a miss can earn Stardust.',contradictions:['Every Legendary capture earns Stardust.','A repeat find earns another Rare Find Stardust bonus.','A miss can earn Stardust.']},
               {id:'charters',paragraph:1,required:[...bioscanRequired,...breedCharterRequired],requiredControls:[...bioscanRequired,...breedCharterRequired],forbidden:[...bioscanForbidden,...breedCharterForbidden],stale:'Planetside capture is separate and never banks the Charter’s bioscan milestone.',contradictions:[...bioscanContradictions,...breedCharterContradictions]},
               {id:'ascent',paragraph:2,required:[...bioscanRequired,...breedCharterRequired],requiredControls:[...bioscanRequired,...breedCharterRequired],forbidden:[...bioscanForbidden,...breedCharterForbidden],stale:'Planetside capture never banks the Charter’s separate bioscan milestone.',contradictions:[...bioscanContradictions,...breedCharterContradictions]},
-              {id:'kingdoms',required:['Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Browsing and non-fauna details remain read-only','successful first Planetside capture can add one page','Tame also adds an owned fauna creature','Scavenge and Sample add specimen lots','Later-world or later-cycle successes add another creature or lot without duplicating the page','real fauna detail alone exposes the narrow Feed, nonlethal Breed, and exact-instance Rename actions','scouting, dueling, missions, and every broader husbandry outcome remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','real fauna detail alone exposes the narrow Feed, nonlethal Breed, and exact-instance Rename actions'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Every Compendium detail offers Feed','Breeding remains unavailable','Renaming remains unavailable'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Every Compendium detail offers Feed.','Breeding remains unavailable.','Renaming remains unavailable.']},
-              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','Back and Close both remain available around feeding, breeding, and renaming','Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row','Tame hit adds one owned fauna creature','Scavenge or Sample adds one specimen lot and never a living companion','Only a real fauna detail offers Feed','one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot','Identical same-species twins remain separate exact instances','Rename chooses one exact owned companion of this species from bounded 24-row pages','assigned, recovering, and injured companions may be renamed because the action changes identity only','exhibition entries and protected or non-owned rows refuse','caps the result at 24 characters','Cleaned-empty or unchanged names consume no receipt or write','commit changes only that exact companion’s nickname','keeps the old name visible while pending','one immutable receipt and one compare-and-swap with no retry or optimistic publication','requires reload, and cannot rename twice','Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','Rename chooses one exact owned companion of this species from bounded 24-row pages','commit changes only that exact companion’s nickname'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Assigned companions can still be fed','Exhibition companions may still be renamed','Rename changes the selected companion genome','unchanged name consumes one receipt','Rename automatically retries','stale rename changes the nickname'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Assigned companions can still be fed.','Exhibition companions may still be renamed.','Rename changes the selected companion genome.','An unchanged name consumes one receipt.','Rename automatically retries.','A stale rename changes the nickname.']},
-              {id:'feeding',paragraph:1,required:['real fauna Compendium detail','Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot','Use 1','Same-species twins remain separate exact instances','Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why','Meals by 1, capped at 200','removes 1 flora from that exact lot','final unit empties that exact lot','one immutable receipt and one compare-and-swap save transaction','no retry and no optimistic inventory or Meals change','refusal, stale result, or failed write uses and publishes nothing','requires reload and cannot feed twice','trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status','one deterministic synthesized acknowledgement after that status appears','Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent','Back and Close remain available','tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable','Rename is also separate and changes only one selected exact companion’s nickname'],requiredControls:['Meals by 1, capped at 200','one immutable receipt and one compare-and-swap save transaction','Rename is also separate and changes only one selected exact companion’s nickname'],forbidden:['Assigned companions can still be fed','The meal automatically retries after a stale result','Stats are now increased by feeding','Meals can rise above 200','Every Compendium detail offers Feed','Breeding remains unavailable','Renaming remains unavailable'],stale:'One ordinary save updates the selected meal.',contradictions:['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.','Meals can rise above 200.','Every Compendium detail offers Feed.','Breeding remains unavailable.','Renaming remains unavailable.']},
-              {id:'breeding',required:['real fauna Compendium detail','one exact owned companion of that detail’s species as the primary parent','one different exact owned fauna companion as the mate','Identical same-species twins remain separate exact instances','at most 24 candidates per page','paging keeps every eligible owned companion reachable','Exhibition creatures, mission-assigned companions, companions already in Recovery, and companions at 30% hurt or more stay disabled and explain why','same exact companion cannot occupy both parent roles','shown success chance comes from both parents’ established rarity tiers plus a bounded bonus from lifetime-earned Stardust','raw genetic values stay hidden','Both parents remain yours','success creates one deterministic child with its exact lineage','8 active-play minutes of Recovery','failure creates no child','2 active-play minutes of Recovery','Recovery blocks Breed, combat, and dispatch','Closing the game or moving the wall clock does not advance it','proves both possible complete save successors before its one outcome draw','one receipt-bearing compare-and-swap with no retry and no optimistic child or Recovery','refusal, stale result, or failed write draws nothing and adds nothing','requires reload and cannot breed twice','Back and Close remain available around the action','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit','Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable'],requiredControls:['Both parents remain yours','success creates one deterministic child with its exact lineage','proves both possible complete save successors before its one outcome draw','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit'],forbidden:['Both parents are consumed','Recovery advances while the game is closed','same exact companion can occupy both parent roles','failed attempt creates one child','Breeding automatically retries','A failed pairing also banks the Charter hybrid bloodline goal'],stale:'Breeding remains unavailable in this development slice.',contradictions:['Both parents are consumed.','Recovery advances while the game is closed.','The same exact companion can occupy both parent roles.','A failed attempt creates one child.','Breeding automatically retries.','A failed pairing also banks the Charter hybrid bloodline goal.']},
+              {id:'kingdoms',required:['Compendium presents up to 1,500 logical entries','Search filters those saved records','count reports the logical matches','choosing a row opens its detail','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','plus at most the focused pinned row','neutral placeholder','exact 132px thumbnail','complete genome—not only the displayed name or seed—owns visual identity','Planetside shares the same bounded thumbnail lease path','thumbnails are released when their visible owner leaves','Browsing and non-fauna details remain read-only','successful first Planetside capture can add one page','Tame also adds an owned fauna creature','Scavenge and Sample add specimen lots','Later-world or later-cycle successes add another creature or lot without duplicating the page','real fauna detail alone exposes narrow exact-instance Feed, Breed, Rename, Listen, and Field Scout actions','Scout interception, dispatch, missions, care, bond, and broader husbandry remain unavailable'],requiredControls:['up to 1,500 logical entries','mounts the visible viewport plus half a viewport of overscan on each side (about two viewports total)','real fauna detail alone exposes narrow exact-instance Feed, Breed, Rename, Listen, and Field Scout actions'],forbidden:['Choose a row to inspect the deterministic portrait','mounts all 1,500 portraits at once','thumbnail identity uses the displayed name or seed only','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Every Compendium detail offers Feed','Breeding remains unavailable','Renaming remains unavailable'],stale:'The Compendium reads the expedition’s discovered life across Microbe, Flora, Fungi, and Fauna. Choose a row to inspect the deterministic portrait, description, realm, grade, and battle-stat profile already present in the save.',contradictions:['The Compendium mounts all 1,500 portraits at once.','Thumbnail identity uses the displayed name or seed only.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Every Compendium detail offers Feed.','Breeding remains unavailable.','Renaming remains unavailable.']},
+              {id:'specimen',required:['exact 440px portrait','same complete-genome identity as its exact 132px list thumbnail','440px image is reserved for this detail rather than the list or Planetside','Back returns to the saved list position and restores focus to the same logical row','Close returns focus to the exact Compendium opener','Back and Close both remain available around feeding, breeding, renaming, and Field Scout selection','Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row','Tame hit adds one owned fauna creature','Scavenge or Sample adds one specimen lot and never a living companion','Only a real fauna detail offers Feed','one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot','Identical same-species twins remain separate exact instances','Rename chooses one exact owned companion of this species from bounded 24-row pages','assigned, recovering, and injured companions may be renamed because the action changes identity only','exhibition entries and protected or non-owned rows refuse','caps the result at 24 characters','Cleaned-empty or unchanged names consume no receipt or write','commit changes only that exact companion’s nickname','keeps the old name visible while pending','one immutable receipt and one compare-and-swap with no retry or optimistic publication','requires reload, and cannot rename twice','Field Scout chooses one exact owned companion of this fauna species from bounded 24-row pages','Assigned, recovering, and injured companions remain eligible because this changes only a role','One exact-five compare-and-swap changes only the Scout identity','Refused, stale, failed, or unconfirmable writes change nothing visible and cannot apply twice','Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, hostile-injury interception, fresh-species Scout XP, dispatch, missions, and friendly duels remain unavailable'],requiredControls:['same complete-genome identity as its exact 132px list thumbnail','Rename chooses one exact owned companion of this species from bounded 24-row pages','commit changes only that exact companion’s nickname','Field Scout chooses one exact owned companion of this fauna species from bounded 24-row pages','One exact-five compare-and-swap changes only the Scout identity'],forbidden:['Select a Compendium row to open its current specimen detail','Planetside renders a 440px portrait for every row','Thumbnail leases remain pinned after Close','Choose a Compendium row to capture that species','Planetside preview row is the capture target','Assigned companions can still be fed','Exhibition companions may still be renamed','Rename changes the selected companion genome','unchanged name consumes one receipt','Rename automatically retries','stale rename changes the nickname'],stale:'Select a Compendium row to open its current specimen detail: deterministic portrait, name, kingdom, realm, description, grade, and the five battle-stat bars.',contradictions:['Planetside renders a 440px portrait for every row.','Thumbnail leases remain pinned after Close.','Choose a Compendium row to capture that species.','The Planetside preview row is the capture target.','Assigned companions can still be fed.','Exhibition companions may still be renamed.','Rename changes the selected companion genome.','An unchanged name consumes one receipt.','Rename automatically retries.','A stale rename changes the nickname.']},
+              {id:'feeding',paragraph:1,required:['real fauna Compendium detail','Choose one exact unassigned owned companion whose Meals are below 200 and one exact owned flora lot','Use 1','Same-species twins remain separate exact instances','Assigned or recovering companions and companions already at the 200-Meal cap stay disabled and explain why','Meals by 1, capped at 200','removes 1 flora from that exact lot','final unit empties that exact lot','one immutable receipt and one compare-and-swap save transaction','no retry and no optimistic inventory or Meals change','refusal, stale result, or failed write uses and publishes nothing','requires reload and cannot feed twice','trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status','one deterministic synthesized acknowledgement after that status appears','Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent','Back and Close remain available','tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, friendly duels, and missions remain unavailable','Rename changes only one selected exact companion’s nickname','Companion Breed is a separate action with its own eligibility, odds, lineage, and active-play Recovery','Field Scout separately changes only the exact role and does not redirect injury or earn Scout XP yet'],requiredControls:['Meals by 1, capped at 200','one immutable receipt and one compare-and-swap save transaction','Rename changes only one selected exact companion’s nickname','Companion Breed is a separate action with its own eligibility, odds, lineage, and active-play Recovery','Field Scout separately changes only the exact role and does not redirect injury or earn Scout XP yet'],forbidden:['Assigned companions can still be fed','The meal automatically retries after a stale result','Stats are now increased by feeding','Meals can rise above 200','Every Compendium detail offers Feed','Breeding remains unavailable','Renaming remains unavailable'],stale:'One ordinary save updates the selected meal.',contradictions:['Assigned companions can still be fed.','The meal automatically retries after a stale result.','Stats are now increased by feeding.','Meals can rise above 200.','Every Compendium detail offers Feed.','Breeding remains unavailable.','Renaming remains unavailable.']},
+              {id:'breeding',required:['real fauna Compendium detail','one exact owned companion of that detail’s species as the primary parent','one different exact owned fauna companion as the mate','Identical same-species twins remain separate exact instances','at most 24 candidates per page','paging keeps every eligible owned companion reachable','Exhibition creatures, mission-assigned companions, companions already in Recovery, and companions at 30% hurt or more stay disabled and explain why','same exact companion cannot occupy both parent roles','shown success chance comes from both parents’ established rarity tiers plus a bounded bonus from lifetime-earned Stardust','raw genetic values stay hidden','Both parents remain yours','success creates one deterministic child with its exact lineage','grants that child +2 XP','first successful union of each canonical unordered species pair grants the child another +5 XP','8 active-play minutes of Recovery','failure creates no child','2 active-play minutes of Recovery','Recovery blocks Breed, combat, and dispatch','Closing the game or moving the wall clock does not advance it','proves both possible complete save successors before its one outcome draw','one receipt-bearing compare-and-swap with no retry and no optimistic child, XP, pair claim, or Recovery','refusal, stale result, overflow, or failed write draws nothing and adds nothing','requires reload and cannot breed twice','Back and Close remain available around the action','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit','Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable'],requiredControls:['Both parents remain yours','success creates one deterministic child with its exact lineage','grants that child +2 XP','first successful union of each canonical unordered species pair grants the child another +5 XP','proves both possible complete save successors before its one outcome draw','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit'],forbidden:['Both parents are consumed','Recovery advances while the game is closed','same exact companion can occupy both parent roles','failed attempt creates one child','Breeding automatically retries','A failed pairing also banks the Charter hybrid bloodline goal'],stale:'Breeding remains unavailable in this development slice.',contradictions:['Both parents are consumed.','Recovery advances while the game is closed.','The same exact companion can occupy both parent roles.','A failed attempt creates one child.','Breeding automatically retries.','A failed pairing also banks the Charter hybrid bloodline goal.']},
               {id:'research',paragraph:2,required:['Engineering & Shipyard combines the capability-derived ship preview','Research Bench lists exactly six canonical rows','Deep Scanners is the only current purchase','adds a bounded Mineral veins row to eligible orbital Survey cards','Orbit shows only the ordered ordinary deposits plus a separately marked biome vein','cosmic and exceptional veins, grades, reserves and progress, and mining remain grounded','other five','visible but disabled','Fabricator groups all 62 fixed recipes','exposes an action only when its output has a connected gameplay effect','When every direct material unit for a slotted craft comes from exceptional stock','exact item receives one deterministic Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','bound to its recipe and receipt','mixed stock remains an ordinary craft','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable','Only one Engineering action can be pending','receipt-bearing transaction commits'],requiredControls:['exposes an action only when its output has a connected gameplay effect','When every direct material unit for a slotted craft comes from exceptional stock','exact item receives one deterministic Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','bound to its recipe and receipt','mixed stock remains an ordinary craft','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable'],forbidden:['current Survey card does not yet render those orbital rows','All six research rows can be purchased','Mixed stock also receives a Pureforged modifier','The Pureforged modifier rerolls after reload','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available','Orbit now shows cosmic and exceptional veins'],stale:'The Shipyard is read-only in this development slice, and fabrication, Research Bench purchases, and upgrades remain unavailable.',contradictions:['The current Survey card does not yet render those orbital rows.','All six research rows can be purchased.','Mixed stock also receives a Pureforged modifier.','The Pureforged modifier rerolls after reload.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.','Orbit now shows cosmic and exceptional veins.']},
               {id:'crafting',paragraph:2,required:['Inventory is a separate board','stable item instance','Equip, Unequip, Salvage, and pending-reward claim','Engineering & Shipyard → Fabricator','lists all 62 fixed recipes','can settle only rows whose output has a connected effect','A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','as part of that exact item through comparison and reload','a mixed-material craft does not','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable'],requiredControls:['can settle only rows whose output has a connected effect','A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','as part of that exact item through comparison and reload','a mixed-material craft does not','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable'],forbidden:['Mixed stock also receives a Pureforged modifier','The Pureforged modifier rerolls after reload','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'Inventory exposes only the imported Equip, Unequip, Salvage, and reward-claim actions; Fabricator recipes are not available in this slice.',contradictions:['Mixed stock also receives a Pureforged modifier.','The Pureforged modifier rerolls after reload.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
              {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
@@ -10444,30 +11367,58 @@ async function main() {
               {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, or if its destination is no longer authorized by your saved reach, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
             ];
             const check=(article,spec)=>{const text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),lower=text.toLowerCase(),missing=spec.required.filter((part)=>!text.includes(part)),stale=spec.forbidden.filter((part)=>lower.includes(part.toLowerCase()));return {ok:!!article&&missing.length===0&&stale.length===0,missing,stale,text};};
-            let error=null;
+            let error=null,baselineComplete=false;
             try {
               if(!panel||!(input instanceof HTMLInputElement))throw new Error('Guide panel/search missing');
               for(const spec of specs){
                 input.value=spec.id;input.dispatchEvent(new Event('input',{bubbles:true}));
+                await settle();
+                if(input.value!==spec.id)throw new Error('Guide search query drifted for '+spec.id);
                 const row=panel.querySelector('[data-guide-topic="'+spec.id+'"]');
                 if(!(row instanceof HTMLElement))throw new Error('Guide search omitted '+spec.id);
-                row.click();const article=panel.querySelector('.guide-topic'),paragraphs=article?[...article.querySelectorAll('p')]:[],target=paragraphs[spec.paragraph??0];
-                if(!(article instanceof HTMLElement)||!(target instanceof HTMLElement))throw new Error('Guide topic did not render '+spec.id);
-                const current=check(article,spec),prior=target.innerHTML,priorText=(article.textContent||'');
+                row.click();await settle();
+                const article=panel.querySelector('.guide-topic');
+                if(!(article instanceof HTMLElement))throw new Error('Guide topic did not render '+spec.id);
+                const current=check(article,spec);
+                baselineRows.push({id:spec.name||spec.id,current});
+                if(!current.ok)break;
+              }
+              baselineComplete=true;
+              if(baselineRows.length===specs.length&&baselineRows.every((row)=>row.current.ok)){
+              predicateControls={
+                positive:guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier],result:probeResult}),
+                zeroCarrier:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:['unrelated required copy'],result:probeResult}),
+                multipleCarriers:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier,'second '+probeNeedle],result:probeResult}),
+                noOp:!guideRequiredControlRejected({before:probeBefore,after:probeBefore,needle:probeNeedle,required:[probeCarrier],result:probeResult}),
+                wrongCarrier:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier],result:{...probeResult,missing:['wrong carrier']}}),
+                needleStillPresent:!guideRequiredControlRejected({before:probeBefore,after:probeAfter,needle:probeNeedle,required:[probeCarrier],result:{...probeResult,text:probeAfter+' '+probeNeedle}}),
+              };
+              for(const spec of specs){
+                input.value=spec.id;input.dispatchEvent(new Event('input',{bubbles:true}));
+                await settle();
+                if(input.value!==spec.id)throw new Error('Guide control search query drifted for '+spec.id);
+                const row=panel.querySelector('[data-guide-topic="'+spec.id+'"]');
+                if(!(row instanceof HTMLElement))throw new Error('Guide control search omitted '+spec.id);
+                row.click();await settle();
+                const article=panel.querySelector('.guide-topic'),paragraphs=article?[...article.querySelectorAll('p')]:[],
+                  staleParagraph=spec.name==='settings-audio'?1:spec.id==='settings'?4:(spec.paragraph??0),target=paragraphs[staleParagraph];
+                if(!(article instanceof HTMLElement)||!(target instanceof HTMLElement))throw new Error('Guide control topic did not render '+spec.id);
+                const prior=target.innerHTML,priorText=(article.textContent||'');
                 let injected;
                 try { target.textContent=spec.stale;injected=check(article,spec); }
                 finally { target.innerHTML=prior; }
                 const requiredControls=[];
                 for(const part of spec.requiredControls||[]){
-                  const mutation=exactGuideRenderedTextMutation(target.textContent||'',part,'required Training contract removed');let result,
+                  const carriers=paragraphs.filter((paragraph)=>(paragraph.textContent||'').includes(part)),controlTarget=carriers[0]||target,
+                    controlPrior=controlTarget.innerHTML,mutation=exactGuideRenderedTextMutation(controlTarget.textContent||'',part,'required Guide contract removed');let result,
                     observedAfter='',actualChangeCount=0,restoredHtml=false,restoredText=false,restoredPredicate=false;
-                  try { target.textContent=mutation.after;observedAfter=target.textContent||'';
+                  try { controlTarget.textContent=mutation.after;observedAfter=controlTarget.textContent||'';
                     actualChangeCount=observedAfter===mutation.before?0:1;result=check(article,spec); }
-                  finally { target.innerHTML=prior;restoredHtml=guideRenderedControlHtmlRestored(prior,target.innerHTML);
-                    restoredText=(target.textContent||'')===mutation.before;restoredPredicate=check(article,spec).ok; }
-                  requiredControls.push({part,targetCount:mutation.targetCount,expectedChangeCount:mutation.changeCount,
+                  finally { controlTarget.innerHTML=controlPrior;restoredHtml=guideRenderedControlHtmlRestored(controlPrior,controlTarget.innerHTML);
+                    restoredText=(controlTarget.textContent||'')===mutation.before;restoredPredicate=check(article,spec).ok; }
+                  requiredControls.push({part,carrierCount:carriers.length,targetCount:mutation.targetCount,expectedChangeCount:mutation.changeCount,
                     observedAfter,actualChangeCount,restoredHtml,restoredText,restoredPredicate,result,
-                    rejected:exactGuideRenderedRequiredControlRejected({mutation,observedAfter,needle:part,required:spec.required,
+                    rejected:carriers.length===1&&exactGuideRenderedRequiredControlRejected({mutation,observedAfter,needle:part,required:spec.required,
                       result,restoredHtml,restoredText,restoredPredicate})});
                 }
                 let contradictory=null;
@@ -10480,16 +11431,20 @@ async function main() {
                   finally { marker.remove(); }
                   contradictionControls.push({copy,result,rejected:result.ok===false&&result.stale.length>0});}
                 const restored=(article.textContent||'')===priorText&&target.innerHTML===prior&&check(article,spec).ok;
-                rows.push({id:spec.name||spec.id,current,injected,requiredControls,contradictory,contradictionControls,
+                rows.push({id:spec.name||spec.id,injected,requiredControls,contradictory,contradictionControls,
                   controlRejected:injected.ok===false,requiredControlsRejected:requiredControls.every((row)=>row.rejected),
                   contradictionRejected:(!spec.contradiction||contradictory?.ok===false)&&contradictionControls.every((row)=>row.rejected),restored});
               }
+              }
             } catch(cause) { error=String(cause?.message||cause); }
-            finally { if(input instanceof HTMLInputElement){input.value='';input.dispatchEvent(new Event('input',{bubbles:true}));} }
-            return {ok:!error&&Object.values(predicateControls).every(Boolean)&&rows.length===specs.length&&rows.every((row)=>row.current.ok&&row.controlRejected&&row.requiredControlsRejected&&row.contradictionRejected&&row.restored),predicateControls,rows,error};})()`);
-          if (!renderedGuideIngress.ok) {
-            instrumentFailures.push(`${vp.label}: rendered F2 Guide/stale-copy controls failed (${JSON.stringify(renderedGuideIngress)})`);
-          }
+            finally { if(input instanceof HTMLInputElement){input.value='';input.dispatchEvent(new Event('input',{bubbles:true}));await settle();} }
+            const classification=classifyRenderedGuideIngress({baselineComplete,baselineRows,expectedCount:specs.length,
+              predicateControls,controlRows:rows,error});
+            return {...classification,baselineRows,predicateControls,rows};})()`);
+          recordRenderedGuideIngressResult({
+            findings, instrumentState: causalInstrumentState, instrumentFailures,
+            viewport: vp.label, ingress: renderedGuideIngress, armed: causalControlsArmed,
+          });
         }
         const guideReleaseBaseline = await evalIn(`(()=>{ const state=window.__CF_SLICE__.api.state();
           return {rnSeen:state.rnSeen,releasePending:state.releasePending};})()`);
@@ -10590,27 +11545,33 @@ async function main() {
               &&captureText.includes('A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing')
               &&captureText.includes('v2’s current replacement for v1.8.9’s separate Discover Life action')
               &&captureText.includes('Survey Records and accepted or weekly bioscan Charters remain unavailable')
-              &&captureText.includes('Narrow feeding, nonlethal companion Breed, and exact-instance companion Rename are available from a real fauna Compendium detail')
-              &&captureText.includes('Field Scouts, duels, conquest, passive evolution, companion assignment, and missions remain unavailable')
+              &&captureText.includes('Narrow Feed, nonlethal Breed, exact-instance Rename, requested Listen, and role-only Field Scout are available from a real fauna Compendium detail')
+              &&captureText.includes('Field Scout interception and XP, friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable')
               &&!captureContradiction&&!discoverLifeAvailabilityContradiction,
             audioContradiction=unnegated(text,/(?:Compendium list|browsing|filtering|focus|navigation|returning)[^.!?]{0,96}auto[- ]?plays?[^.!?]{0,48}(?:call|voice|expression)/i)
               ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:reveals?|names?)[^.!?]{0,48}(?:hidden )?species/i)
               ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:spends?|costs?)[^.!?]{0,32}Yield/i)
               ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:grants?|awards?)[^.!?]{0,48}(?:discovery|reward)/i)
               ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:writes?|changes?)[^.!?]{0,32}(?:the )?save/i)
-              ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i),
+              ||unnegated(text,/(?:Listen to biosphere|biosphere signal|ecology pulse)[^.!?]{0,96}(?:plays?|starts?)[^.!?]{0,64}(?:before|without)[^.!?]{0,80}(?:visible|counterpart|biosphere lead|inhabited world)/i)
+              ||unnegated(text,/\\bcombat sound remains (?:future work|unavailable)/i),
             audioContract=frontierAudioHeading==='New Features & Systems'
               &&creatureListenHeading==='Gameplay'&&biosphereListenHeading==='Gameplay'
               &&frontierAudioText.includes('one deterministic runtime across a verified durable wild-fauna Tame, one exact durable nonconverging Feed commit, and an explorer-requested call from one exact owned-fauna detail')
               &&frontierAudioText.includes('Each waits for its own current visible accessible counterpart')
               &&frontierAudioText.includes('browsing, filtering, focus, navigation, misses, refusals, stale or converging results, repeats, reloads, hidden play, route or counterpart loss, and disabled Sound or Creature voices remain silent without retry or replay')
-              &&frontierAudioText.includes('A separate explicit Planetside biosphere Listen may play one generic distant-ecology signal only while that exact inhabited world’s visible biosphere lead agrees')
-              &&frontierAudioText.includes('it reveals no species, spends no Yield, grants nothing, and writes no save')
-              &&frontierAudioText.includes('Authored ambience, music, other creature actions, and combat sound remain future work')
+              &&frontierAudioText.includes('A separate explicit pre-landing Survey and Planetside biosphere Listen may play one generic distant-ecology signal only while that exact inhabited world surface’s visible biosphere lead agrees')
+              &&frontierAudioText.includes('the two controls retain distinct approach/roster evidence, reveal no species, spend no Yield, grant nothing, and write no save')
+              &&frontierAudioText.includes('After a verified settlement, the Combat Chronicle now gives every already-modelled registered cue its own exact visible-caption sound')
+              &&frontierAudioText.includes('initiative, dodge, stun, damage with critical or ability layers, burn, regeneration, defeat, resolution')
+              &&frontierAudioText.includes('Guardian or Titan entrance, phase, victory, and defeat motifs')
+              &&frontierAudioText.includes('at most two combat voices overlap')
+              &&frontierAudioText.includes('master Sound governs them, Creature voices does not')
+              &&frontierAudioText.includes('Authored ambience, music, recorded assets, and other creature actions remain future work')
               &&creatureListenText.includes('Open a real owned-fauna Compendium detail and choose Listen on an exact companion to hear its stable deterministic call')
               &&creatureListenText.includes('Browsing, filtering, focusing, and returning through the Compendium never auto-play it')
-              &&biosphereListenText.includes('An inhabited Planetside now offers Listen to biosphere')
-              &&biosphereListenText.includes('only after that exact world’s biosphere lead is visible')
+              &&biosphereListenText.includes('pre-landing Survey card and landed Planetside both offer Listen to biosphere')
+              &&biosphereListenText.includes('only while that exact surface’s biosphere lead is visible')
               &&biosphereListenText.includes('never names a hidden species, spends Yield, grants a discovery or reward, or changes the save')
               &&!audioContradiction,
             mealContradiction=/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(mealText)
@@ -10635,8 +11596,10 @@ async function main() {
               &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
               &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
               &&/refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(mealText)
-              &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, Field Scouts, duels, and missions remain unavailable')
-              &&mealText.includes('Rename is identity-only and changes one selected exact nickname')
+              &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, friendly duels, and missions remain unavailable')
+              &&mealText.includes('Companion Breed is a separate action with its own exact-parent eligibility, odds, lineage, and active-play Recovery')
+              &&mealText.includes('Rename is identity-only')
+              &&mealText.includes('Field Scout changes only the exact role without intercepting injury or earning Scout XP yet')
               &&!mealContradiction,
             breedContradiction=/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries/i.test(breedText)
               ||/(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(breedText),
@@ -10646,12 +11609,13 @@ async function main() {
               &&breedText.includes('same-species twins remain separate')
               &&breedText.includes('bounded 24-row pages')
               &&breedText.includes('Parents are never consumed')
-              &&breedText.includes('Success creates one deterministic child and gives both parents 8 active-play minutes of Recovery')
+              &&breedText.includes('Success creates one deterministic child with +2 XP and gives both parents 8 active-play minutes of Recovery')
+              &&breedText.includes('the first successful union of each canonical unordered species pair gives that child another +5 XP')
               &&breedText.includes('failure creates no child and gives both 2')
               &&breedText.includes('Recovery blocks Breed, combat, and dispatch')
               &&breedText.includes('never advances from closed-game time or a changed wall clock')
               &&breedText.includes('Both complete save outcomes—including exact Charter progress—are proved before the one draw')
-              &&breedText.includes('one immutable receipt and one compare-and-swap with no retry or optimistic child')
+              &&breedText.includes('one immutable receipt and one compare-and-swap with no retry or optimistic child, XP, pair claim, or Recovery')
               &&breedText.includes('A successful offspring banks Chapter 3’s Breed a hybrid bloodline goal in that same save')
               &&breedText.includes('a failed pairing, refusal, stale result, or failed write banks nothing and grants no Charter credit')
               &&breedText.includes('unconfirmable durable result locks read-only and reloads so it cannot breed twice')
@@ -10685,8 +11649,10 @@ async function main() {
               ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:close|dismiss|continue|keep playing|keep exploring)/i.test(trainingText)
               ||/(?:unrecognized|unknown) checkpoint[^.!?]{0,120}(?:discard|clear|overwrite|silently ignore)/i.test(trainingText),
             trainingContract=trainingHeading==='Gameplay'
-              &&trainingText.includes('Finish for now that points to live Engineering & Shipyard, Planetside capture, and narrow real-fauna Compendium Feed')
-              &&trainingText.includes('without pretending the navigation drill performs any of those actions')
+              &&trainingText.includes('The current 15-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing')
+              &&trainingText.includes('adds read-only Planetside, Engineering, Compendium, Records, Guardian/combat, and CF1 Share/Follow orientation')
+              &&trainingText.includes('Training locks every mutating board action and performs no capture, meal, breeding, rename, Field Scout change, engineering transaction, or combat')
+              &&trainingText.includes('Restart captures the exact pre-Training view')
               &&trainingText.includes('A normal Finish or Skip source-verifies and immediately restores the exact pre-Training view')
               &&trainingText.includes('if verification pauses, that exact view stays saved')
               &&trainingText.includes('when Sol can still be verified, Training returns there')
@@ -10779,7 +11745,9 @@ async function main() {
             ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-            ||/(?:biosphere discovery|Discover Life|Field Scouts?|duels?|conquest|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/(?:biosphere discovery|Discover Life|duels?|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
+            ||/\\b(?:Field Scouts are|Field Scout is) (?:now )?(?:playable|available|live)\\b/i.test(text)
+            ||/\\bField Scout (?:interception|XP|dispatch|missions?|care|bond)\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
             ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
             ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
             ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
@@ -10845,21 +11813,23 @@ async function main() {
               recoveryParent=recovery?.parentNode,recoveryNext=recovery?.nextSibling,
               artParent=art?.parentNode,artNext=art?.nextSibling,workspaceParent=workspace?.parentNode,workspaceNext=workspace?.nextSibling,
               coldArtParent=coldArt?.parentNode,coldArtNext=coldArt?.nextSibling,workerParent=worker?.parentNode,workerNext=worker?.nextSibling;
-            let order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],bioscanContradictions=[],discoverLifeAvailabilityContradictory=null,audioMissingControls=[],audioContradictions=[],mealMissing=null,mealContradictions=[],breedMissing=null,breedCharterMissing=null,breedContradictions=[],renameMissing=null,renameContradictions=[],lessonStale=null,lessonContradictory=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardExceptionalMissing=null,shipyardEffectSetMissing=null,shipyardBindingMissing=null,shipyardMixedMissing=null,shipyardAdvancedMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,publishingStale=null,publishingContradictory=null,publishingLiveProductionContradictory=null,publishingPassiveContradictory=null,publishingVariantContradictions=[],publishingCrossRowContradictory=null,publishingRestored=null,artContradictory=null,authority=null,error=null,discoverLifeAvailabilityChanged=false,mealMissingChanged=false,breedMissingChanged=false,breedCharterMissingChanged=false,renameMissingChanged=false,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,lessonStaleChanged=false,lessonContradictionChanged=false,hdSurfaceChanged=false,publishingChanged=false,publishingContradictionChanged=false,publishingLiveProductionChanged=false,publishingPassiveChanged=false,publishingVariantsChanged=true,publishingCrossRowChanged=false;
+            let baseline=null,order=null,inventory=null,identity=null,truthfulFeatureClaims=[],unavailableFeatureClaims=[],closeContract=null,panelBoundaryContract=null,emptySkyContract=null,firstContract=null,recoveryContract=null,placementContract=null,worldCodeStale=null,atlasRouteStale=null,captureLimitControls=[],captureContradictions=[],bioscanContradictions=[],discoverLifeAvailabilityContradictory=null,audioMissingControls=[],audioContradictions=[],mealMissing=null,mealContradictions=[],breedMissing=null,breedCharterMissing=null,breedContradictions=[],renameMissing=null,renameContradictions=[],lessonStale=null,lessonContradictory=null,trainingStale=null,trainingLegacyStale=null,trainingRecoveryStale=null,trainingContradictory=null,trainingLegacyContradictory=null,trainingRecoveryContradictory=null,artStale=null,artPublishStale=null,artDownsampleStale=null,artPlacementStale=null,workspaceStale=null,workspacePlacementStale=null,coldArtStale=null,coldArtPlacementStale=null,workerStale=null,workerReleaseStale=null,workerPlacementStale=null,shipyardStale=null,shipyardSurveyMissing=null,shipyardExceptionalMissing=null,shipyardEffectSetMissing=null,shipyardBindingMissing=null,shipyardMixedMissing=null,shipyardAdvancedMissing=null,shipyardPublicationContradiction=null,shipyardContradictions=[],hdSurfaceStale=null,publishingStale=null,publishingContradictory=null,publishingLiveProductionContradictory=null,publishingPassiveContradictory=null,publishingVariantContradictions=[],publishingCrossRowContradictory=null,publishingRestored=null,artContradictory=null,authority=null,error=null,discoverLifeAvailabilityChanged=false,mealMissingChanged=false,breedMissingChanged=false,breedCharterMissingChanged=false,renameMissingChanged=false,artPublishChanged=false,artDownsampleChanged=false,artPlacementMoved=false,workspaceChanged=false,workspacePlacementMoved=false,coldArtChanged=false,coldArtPlacementMoved=false,workerChanged=false,workerReleaseChanged=false,workerPlacementMoved=false,shipyardChanged=false,shipyardPublicationChanged=false,shipyardContradictionsChanged=true,lessonStaleChanged=false,lessonContradictionChanged=false,hdSurfaceChanged=false,publishingChanged=false,publishingContradictionChanged=false,publishingLiveProductionChanged=false,publishingPassiveChanged=false,publishingVariantsChanged=true,publishingCrossRowChanged=false;
             try {
               if(!headings[0]||!headings[1]||!middle||!parent||!title||!claim||!panelBoundary||!first||!recovery||first===recovery||!worldCode||!atlasRoute||worldCode===atlasRoute||!capture||!frontierAudio||!creatureListen||!biosphereListen||!meal||!breed||!rename||!lesson||!training||!art||!workspace||!coldArt||!worker||!shipyard||!hdSurface||!publishing||!recoveryParent)throw new Error('development-detail control fixture missing');
+              baseline=${developmentDetailCheck};
+              if(!baseline.ok)throw new Error('development-detail baseline red before mutation controls: '+JSON.stringify(baseline));
               headings[0].textContent=b;headings[1].textContent=a;order=${developmentDetailCheck};
               headings[0].textContent=a;headings[1].textContent=b;
               middle.remove();inventory=${developmentDetailCheck};parent.insertBefore(middle,next);
               title.textContent=titleText.replace('v2.0','v2x0');identity=${developmentDetailCheck};title.textContent=titleText;
-              for(const copy of ['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Fully exceptional direct-material gear crafting is now playable with a deterministic Pureforged modifier.','Exploration audio is now live.','Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.','Breeding is now playable.','Companion Rename is now playable.']){
+              for(const copy of ['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.','Fully exceptional direct-material gear crafting is now playable with a deterministic Pureforged modifier.','Exploration audio is now live.','Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.','Breeding is now playable.','Companion Rename is now playable.','Role-only Field Scout assignment is now playable.','Surface conquest is now playable.']){
                 claim.textContent=claimText+' '+copy;truthfulFeatureClaims.push({copy,result:${developmentDetailCheck}});
               }
               for(const copy of ['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
                 'Disconnected Fabricator outputs are now playable.','Mixed stock also receives a Pureforged modifier.','Pureforged modifiers reroll after reload.',
                 'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Item upgrades are now live.',
                 'Sockets are now available.','Vendors are now live.','Discover Life is now playable.',
-                'Creature combat is now playable.','Feeding is now playable.']){
+                'Creature combat is now playable.','Field Scout interception is now playable.','Feeding is now playable.']){
                 claim.textContent=claimText+' '+copy;unavailableFeatureClaims.push({copy,result:${developmentDetailCheck}});
               }claim.textContent=claimText;
               panelBoundary.textContent=panelBoundaryText.replace('exactly one 44-pixel top-right Close action','Close-action outcome removed');
@@ -10885,6 +11855,8 @@ async function main() {
                 'A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing',
                 'v2’s current replacement for v1.8.9’s separate Discover Life action',
                 'Survey Records and accepted or weekly bioscan Charters remain unavailable',
+                'Narrow Feed, nonlethal Breed, exact-instance Rename, requested Listen, and role-only Field Scout are available from a real fauna Compendium detail',
+                'Field Scout interception and XP, friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable',
               ]){
                 const changed=captureText.replace(part,'isolated capture limit omitted');
                 capture.textContent=changed;captureLimitControls.push({part,changed:changed!==captureText,result:${developmentDetailCheck}});
@@ -10915,8 +11887,11 @@ async function main() {
              discoverLifeAvailabilityChanged=capture.textContent!==captureText;
              discoverLifeAvailabilityContradictory=${developmentDetailCheck};capture.textContent=captureText;
               for(const [node,prior,part] of [[frontierAudio,frontierAudioText,'an explorer-requested call from one exact owned-fauna detail'],
+                [frontierAudio,frontierAudioText,'A separate explicit pre-landing Survey and Planetside biosphere Listen may play one generic distant-ecology signal'],
+                [frontierAudio,frontierAudioText,'After a verified settlement, the Combat Chronicle now gives every already-modelled registered cue its own exact visible-caption sound'],
+                [frontierAudio,frontierAudioText,'master Sound governs them, Creature voices does not'],
                 [creatureListen,creatureListenText,'Browsing, filtering, focusing, and returning through the Compendium never auto-play it'],
-                [biosphereListen,biosphereListenText,'only after that exact world’s biosphere lead is visible'],
+                [biosphereListen,biosphereListenText,'only while that exact surface’s biosphere lead is visible'],
                 [biosphereListen,biosphereListenText,'never names a hidden species, spends Yield, grants a discovery or reward, or changes the save']]){
                 const mutated=prior.replace(part,'audio ownership boundary omitted');node.textContent=mutated;
                 audioMissingControls.push({part,changed:mutated!==prior,result:${developmentDetailCheck}});node.textContent=prior;
@@ -10924,10 +11899,11 @@ async function main() {
               for(const copy of ['Compendium filtering auto-plays the selected creature call.',
                 'Listen to biosphere reveals a hidden species and spends 1 Yield.',
                 'The biosphere signal grants a discovery reward and changes the save.',
-                'The ecology pulse starts before any visible inhabited-world counterpart.']){
+                'The ecology pulse starts before any visible inhabited-world counterpart.',
+                'Combat sound remains future work.']){
                 frontierAudio.textContent=frontierAudioText+' '+copy;audioContradictions.push({copy,result:${developmentDetailCheck}});frontierAudio.textContent=frontierAudioText;
               }
-             meal.textContent=mealText.replace('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora','meal authority removed');
+             meal.textContent=mealText.replace('Field Scout changes only the exact role without intercepting injury or earning Scout XP yet','Field Scout boundary omitted');
               mealMissingChanged=meal.textContent!==mealText;mealMissing=${developmentDetailCheck};meal.textContent=mealText;
               for(const copy of [
                 'Assigned companions can still be fed.',
@@ -10940,7 +11916,7 @@ async function main() {
                 meal.textContent=mealText+' '+copy;mealContradictions.push({copy,result:${developmentDetailCheck}});
                 meal.textContent=mealText;
               }
-              breed.textContent=breedText.replace('Both complete save outcomes—including exact Charter progress—are proved before the one draw','breed successor proof omitted');
+              breed.textContent=breedText.replace('Success creates one deterministic child with +2 XP and gives both parents 8 active-play minutes of Recovery','Breed child XP and Recovery outcome omitted');
              breedMissingChanged=breed.textContent!==breedText;breedMissing=${developmentDetailCheck};breed.textContent=breedText;
               breed.textContent=breedText.replace('A successful offspring banks Chapter 3’s Breed a hybrid bloodline goal in that same save','Breed Charter co-delivery omitted');
               breedCharterMissingChanged=breed.textContent!==breedText;breedCharterMissing=${developmentDetailCheck};breed.textContent=breedText;
@@ -10971,8 +11947,8 @@ async function main() {
               lessonStale=${developmentDetailCheck};lesson.textContent=lessonText;
               lesson.textContent=lessonText+' Escape from a wrong-world detour abandons Sol and the lesson.';lessonContradictionChanged=lesson.textContent!==lessonText;
               lessonContradictory=${developmentDetailCheck};lesson.textContent=lessonText;
-              training.textContent=trainingText.replace('if verification pauses, that exact view stays saved, and when Sol can still be verified, Training returns there so a reload can restart safely and retry',
-                'if verification pauses, that exact view stays saved and a reload safely restarts Field Training from proven Sol');
+              training.textContent=trainingText.replace('The current 15-card drill keeps six real navigation lessons for finding Earth, reading Survey, charting, opening the Atlas, and landing',
+                'current Training inventory omitted');
               trainingStale=${developmentDetailCheck};training.textContent=trainingText;
               training.textContent=trainingText.replace('every other expedition field is retained from the surrounding save','surrounding-save ownership omitted');
               trainingLegacyStale=${developmentDetailCheck};training.textContent=trainingText;
@@ -11078,17 +12054,17 @@ async function main() {
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&publishing?.textContent===publishingText&&S.api.state===priorState;
-            return {ok:!error&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===76
+            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===76
               &&identity?.ok===false&&identity?.identity===false
-              &&truthfulFeatureClaims.length===8
+              &&truthfulFeatureClaims.length===10
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)
-              &&unavailableFeatureClaims.length===13
+              &&unavailableFeatureClaims.length===14
               &&unavailableFeatureClaims.every((row)=>row.result?.ok===false&&row.result?.honest===false&&row.result?.overclaim===true)
               &&closeContract?.ok===false&&panelBoundaryContract?.ok===false&&emptySkyContract?.ok===false
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
               &&worldCodeStale?.ok===false&&worldCodeStale?.worldCodeContract===false
               &&atlasRouteStale?.ok===false&&atlasRouteStale?.atlasRouteContract===false
-              &&captureLimitControls.length===9
+              &&captureLimitControls.length===11
               &&captureLimitControls.every((row)=>row.changed&&row.result?.ok===false
                 &&row.result?.captureContract===false&&row.result?.captureContradiction===false
                 &&row.result?.captureBioscanContradiction===false&&row.result?.discoverLifeAvailabilityContradiction===false
@@ -11107,10 +12083,10 @@ async function main() {
                 &&discoverLifeAvailabilityContradictory?.captureBioscanContradiction===false
                &&discoverLifeAvailabilityContradictory?.discoverLifeAvailabilityContradiction===true
                &&discoverLifeAvailabilityContradictory?.honest===false&&discoverLifeAvailabilityContradictory?.overclaim===true
-              &&audioMissingControls.length===4
+              &&audioMissingControls.length===7
               &&audioMissingControls.every((row)=>row.changed&&row.result?.ok===false
                 &&row.result?.audioContract===false&&row.result?.audioContradiction===false&&row.result?.honest===true)
-              &&audioContradictions.length===4
+              &&audioContradictions.length===5
               &&audioContradictions.every((row)=>row.result?.ok===false&&row.result?.audioContract===false
                 &&row.result?.audioContradiction===true&&row.result?.honest===false&&row.result?.overclaim===true)
              &&mealMissingChanged&&mealMissing?.ok===false&&mealMissing?.mealContract===false
@@ -11196,13 +12172,13 @@ async function main() {
                 &&publishingRestored?.publishingContradiction===false&&publishingRestored?.honest===true
               &&artContradictory?.ok===false&&artContradictory?.honest===false&&artContradictory?.artContract===false&&artContradictory?.artContradiction===true
               &&authority?.ok===false&&authority?.rnSeen==='v2-control'&&restored,
-              order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,captureLimitControls,captureContradictions,bioscanContradictions,discoverLifeAvailabilityChanged,discoverLifeAvailabilityContradictory,audioMissingControls,audioContradictions,mealMissingChanged,mealMissing,mealContradictions,breedMissingChanged,breedMissing,breedCharterMissingChanged,breedCharterMissing,breedContradictions,renameMissingChanged,renameMissing,renameContradictions,lessonStaleChanged,lessonStale,lessonContradictionChanged,lessonContradictory,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
+              baseline,order,inventory,identity,truthfulFeatureClaims,unavailableFeatureClaims,closeContract,panelBoundaryContract,emptySkyContract,firstContract,recoveryContract,placementContract,worldCodeStale,atlasRouteStale,captureLimitControls,captureContradictions,bioscanContradictions,discoverLifeAvailabilityChanged,discoverLifeAvailabilityContradictory,audioMissingControls,audioContradictions,mealMissingChanged,mealMissing,mealContradictions,breedMissingChanged,breedMissing,breedCharterMissingChanged,breedCharterMissing,breedContradictions,renameMissingChanged,renameMissing,renameContradictions,lessonStaleChanged,lessonStale,lessonContradictionChanged,lessonContradictory,trainingStale,trainingLegacyStale,trainingRecoveryStale,trainingContradictory,trainingLegacyContradictory,trainingRecoveryContradictory,
               artStale,artPublishChanged,artPublishStale,artDownsampleChanged,artDownsampleStale,artPlacementMoved,artPlacementStale,
               workspaceChanged,workspaceStale,workspacePlacementMoved,workspacePlacementStale,coldArtChanged,coldArtStale,coldArtPlacementMoved,coldArtPlacementStale,
               workerChanged,workerStale,workerReleaseChanged,workerReleaseStale,workerPlacementMoved,workerPlacementStale,
-              shipyardChanged,shipyardStale,shipyardSurveyMissing,shipyardPublicationChanged,shipyardPublicationContradiction,shipyardContradictionsChanged,shipyardContradictions,hdSurfaceChanged,hdSurfaceStale,publishingChanged,publishingStale,publishingContradictionChanged,publishingContradictory,publishingLiveProductionChanged,publishingLiveProductionContradictory,publishingPassiveChanged,publishingPassiveContradictory,publishingVariantsChanged,publishingVariantContradictions,publishingCrossRowChanged,publishingCrossRowContradictory,publishingRestored,artContradictory,authority,restored,error};})()`);
+              shipyardChanged,shipyardStale,shipyardSurveyMissing,shipyardExceptionalMissing,shipyardEffectSetMissing,shipyardBindingMissing,shipyardMixedMissing,shipyardAdvancedMissing,shipyardPublicationChanged,shipyardPublicationContradiction,shipyardContradictionsChanged,shipyardContradictions,hdSurfaceChanged,hdSurfaceStale,publishingChanged,publishingStale,publishingContradictionChanged,publishingContradictory,publishingLiveProductionChanged,publishingLiveProductionContradictory,publishingPassiveChanged,publishingPassiveContradictory,publishingVariantsChanged,publishingVariantContradictions,publishingCrossRowChanged,publishingCrossRowContradictory,publishingRestored,artContradictory,authority,restored,error};})()`);
           if (!detailControls.ok) {
-            instrumentFailures.push(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
+            recordInstrumentFailure(`${vp.label}: development-release reorder/inventory/authority controls did not fail closed (${JSON.stringify(detailControls)})`);
           }
           recordControls('guide-render-focus');
         }
@@ -11213,30 +12189,89 @@ async function main() {
               advanced=panel.scrollTop>0&&panel.scrollTop>=maxScroll-2,visible=r.top>=p.top-1&&r.bottom<=p.bottom+1;
             return {ok:scrollable&&advanced&&visible&&(tail.textContent||'').toLowerCase().includes('production remains the v1.8.9 main-branch site'),
               overflowY,advanced,visible,scrollTop:panel.scrollTop,maxScroll,text:tail.textContent||''};})()`;
-          const releasePoint = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),r=panel.getBoundingClientRect();panel.scrollTop=0;
-            return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
-          for (let i = 0; i < 3; i++) {
-            await send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: releasePoint.x, y: releasePoint.y,
-              deltaX: 0, deltaY: 10000 }, session);
+          const releasePrior = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel');
+            if(!panel)return {ok:false,why:'missing panel'};const style=panel.style,r=panel.getBoundingClientRect(),prior={left:panel.scrollLeft,top:panel.scrollTop,
+              behavior:{value:style.getPropertyValue('scroll-behavior'),priority:style.getPropertyPriority('scroll-behavior')}};
+            style.setProperty('scroll-behavior','auto','important');panel.scrollLeft=0;panel.scrollTop=0;void panel.offsetHeight;
+            return {ok:true,prior,point:{x:(r.left+r.right)/2,y:(r.top+r.bottom)/2}};})()`);
+          if (!releasePrior?.ok) {
+            stopInstrumentControl(`${vp.label}: Guide release-tail scroll setup failed (${JSON.stringify(releasePrior)})`);
           }
-          await sleep(100);
-          addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_TAIL_REACH', '#guidepanel .guide-topic li:last-child',
-            await evalIn(releaseTailCheck),
-            'real user scrolling reaches the final v2.0 development note inside the visible Guide viewport');
-          if (vp.label === 'primary-phone') {
-            const priorOverflow = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),style=panel.style,
-              prior={value:style.getPropertyValue('overflow-y'),priority:style.getPropertyPriority('overflow-y')};
-              style.setProperty('overflow-y','hidden','important');panel.scrollTop=0;return prior;})()`);
-            for (let i = 0; i < 3; i++) {
-              await send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: releasePoint.x, y: releasePoint.y,
-                deltaX: 0, deltaY: 10000 }, session);
+          const wheelGuideToLiveMax = async () => {
+            let state = null;
+            for (let i = 0; i < 12; i++) {
+              state = await evalIn(`(()=>{const panel=document.getElementById('guidepanel');if(!panel)return {ok:false,why:'missing'};
+                const max=Math.max(0,panel.scrollHeight-panel.clientHeight),current=panel.scrollTop;
+                return {ok:true,current,max,atEnd:max>0&&current>=max-2};})()`);
+              if (!state?.ok || state.atEnd) break;
+              await send('Input.dispatchMouseEvent', { type: 'mouseWheel',
+                x: releasePrior.point.x, y: releasePrior.point.y, deltaX: 0,
+                deltaY: Math.max(200, Math.min(10000, state.max - state.current + 64)) }, session);
+              await sleep(40);
             }
-            await sleep(100);
-            const hiddenTailControl = await evalIn(releaseTailCheck);
-            await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),prior=${JSON.stringify(priorOverflow)};
-              if(prior.value)panel.style.setProperty('overflow-y',prior.value,prior.priority);else panel.style.removeProperty('overflow-y');panel.scrollTop=0;})()`);
-            if (hiddenTailControl.ok || hiddenTailControl.overflowY !== 'hidden' || hiddenTailControl.scrollTop !== 0) {
-              instrumentFailures.push(`${vp.label}: hidden-overflow release-tail injection stayed user-reachable (${JSON.stringify(hiddenTailControl)})`);
+            return evalIn(`(()=>{const panel=document.getElementById('guidepanel');if(!panel)return {ok:false,why:'missing'};
+              const max=Math.max(0,panel.scrollHeight-panel.clientHeight),current=panel.scrollTop;
+              return {ok:true,current,max,atEnd:max>0&&current>=max-2};})()`);
+          };
+          let releaseTailScroll = null, releaseTailOutcome = null, releaseRestoration = null;
+          try {
+            releaseTailScroll = await wheelGuideToLiveMax();
+            releaseTailOutcome = await evalIn(releaseTailCheck);
+          } finally {
+            releaseRestoration = await evalIn(`(()=>{const panel=document.getElementById('guidepanel'),prior=${JSON.stringify(releasePrior.prior)};
+              if(!panel)return {ok:false,why:'missing'};const style=panel.style;style.setProperty('scroll-behavior','auto','important');
+              panel.scrollLeft=prior.left;panel.scrollTop=prior.top;void panel.offsetHeight;
+              if(prior.behavior.value)style.setProperty('scroll-behavior',prior.behavior.value,prior.behavior.priority);else style.removeProperty('scroll-behavior');
+              const actual={left:panel.scrollLeft,top:panel.scrollTop,behavior:{value:style.getPropertyValue('scroll-behavior'),priority:style.getPropertyPriority('scroll-behavior')}};
+              return {ok:actual.left===prior.left&&actual.top===prior.top&&actual.behavior.value===prior.behavior.value&&actual.behavior.priority===prior.behavior.priority,prior,actual};})()`);
+          }
+          if (!releaseRestoration?.ok) {
+            stopInstrumentControl(`${vp.label}: Guide release-tail observation did not restore exact scroll/style state (${JSON.stringify(releaseRestoration)})`);
+          }
+          const releaseTailRecordedOutcome = {
+            ...releaseTailOutcome, wheel: releaseTailScroll, restoration: releaseRestoration,
+          };
+          const releaseTailExpected = 'real user scrolling reaches the final v2.0 development note inside the visible Guide viewport';
+          addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_TAIL_REACH',
+            '#guidepanel .guide-topic li:last-child', releaseTailRecordedOutcome,
+            releaseTailExpected);
+          stopAfterRecordedProductOutcome(vp.label, 'release-detail',
+            'GUIDE_DEVELOPMENT_RELEASE_TAIL_REACH', '#guidepanel .guide-topic li:last-child',
+            releaseTailRecordedOutcome, releaseTailExpected);
+          if (vp.label === 'primary-phone') {
+            const hiddenPrior = await evalIn(`(()=>{const panel=document.getElementById('guidepanel'),style=panel?.style;
+              if(!panel)return {ok:false,why:'missing'};const prior={left:panel.scrollLeft,top:panel.scrollTop,
+                overflow:{value:style.getPropertyValue('overflow-y'),priority:style.getPropertyPriority('overflow-y')},
+                behavior:{value:style.getPropertyValue('scroll-behavior'),priority:style.getPropertyPriority('scroll-behavior')}};
+              style.setProperty('overflow-y','hidden','important');style.setProperty('scroll-behavior','auto','important');
+              panel.scrollLeft=0;panel.scrollTop=0;void panel.offsetHeight;return {ok:true,prior};})()`);
+            if (!hiddenPrior?.ok) {
+              stopInstrumentControl(`${vp.label}: hidden-overflow release-tail setup failed (${JSON.stringify(hiddenPrior)})`);
+            }
+            let hiddenTailScroll = null, hiddenTailControl = null;
+            let hiddenRestoration = null, hiddenControlError = null;
+            try {
+              hiddenTailScroll = await wheelGuideToLiveMax();
+              hiddenTailControl = await evalIn(releaseTailCheck);
+            } catch (cause) {
+              hiddenControlError = String(cause?.message || cause);
+            } finally {
+              hiddenRestoration = await evalIn(`(()=>{const panel=document.getElementById('guidepanel'),prior=${JSON.stringify(hiddenPrior.prior)};
+                if(!panel)return {ok:false,why:'missing'};const style=panel.style;style.setProperty('scroll-behavior','auto','important');
+                panel.scrollLeft=prior.left;panel.scrollTop=prior.top;void panel.offsetHeight;
+                if(prior.overflow.value)style.setProperty('overflow-y',prior.overflow.value,prior.overflow.priority);else style.removeProperty('overflow-y');
+                if(prior.behavior.value)style.setProperty('scroll-behavior',prior.behavior.value,prior.behavior.priority);else style.removeProperty('scroll-behavior');
+                const actual={left:panel.scrollLeft,top:panel.scrollTop,
+                  overflow:{value:style.getPropertyValue('overflow-y'),priority:style.getPropertyPriority('overflow-y')},
+                  behavior:{value:style.getPropertyValue('scroll-behavior'),priority:style.getPropertyPriority('scroll-behavior')}};
+                return {ok:actual.left===prior.left&&actual.top===prior.top
+                  &&actual.overflow.value===prior.overflow.value&&actual.overflow.priority===prior.overflow.priority
+                  &&actual.behavior.value===prior.behavior.value&&actual.behavior.priority===prior.behavior.priority,prior,actual};})()`);
+            }
+            if (hiddenControlError !== null || hiddenTailControl?.ok !== false
+              || hiddenTailControl?.overflowY !== 'hidden' || hiddenTailControl?.scrollTop !== 0
+              || hiddenTailScroll?.current !== 0 || !hiddenRestoration?.ok) {
+              recordInstrumentFailure(`${vp.label}: hidden-overflow release-tail injection stayed user-reachable, errored, or did not restore exactly (${JSON.stringify({ hiddenTailControl, hiddenTailScroll, hiddenRestoration, hiddenControlError })})`);
             } else {
               releaseTailControlRun = true;
             }
@@ -11270,7 +12305,7 @@ async function main() {
               if(prior===null)panel.removeAttribute('style');else panel.setAttribute('style',prior);return result;})()`);
             if (leftSettingsControl.ok || !Array.isArray(leftSettingsControl.rect)
               || Math.abs(leftSettingsControl.rect[0] - 12) > 2) {
-              instrumentFailures.push(`${vp.label}: injected left-anchored Settings did not turn the bottom-right anchor outcome red (${JSON.stringify(leftSettingsControl)})`);
+              recordInstrumentFailure(`${vp.label}: injected left-anchored Settings did not turn the bottom-right anchor outcome red (${JSON.stringify(leftSettingsControl)})`);
             }
             recordControls('viewport-fit');
           }
@@ -11312,7 +12347,7 @@ async function main() {
                 &&prior.left===after.left&&prior.top===after.top,
                 prior,after,injected,restored,error};})()`);
             if (!settingsCloseClearanceControl?.ok) {
-              instrumentFailures.push(`${vp.label}: removed Settings Close gutter did not recreate overlap and restore exactly (${JSON.stringify(settingsCloseClearanceControl)})`);
+              recordInstrumentFailure(`${vp.label}: removed Settings Close gutter did not recreate overlap and restore exactly (${JSON.stringify(settingsCloseClearanceControl)})`);
             }
             recordControls('settings-close-gutter-clearance');
           }
@@ -11325,7 +12360,7 @@ async function main() {
           settingsWidthControlRun = true;
           const settingsWidthControl = await evalIn(`(()=>{ const panel=document.getElementById('setpanel'),wide=document.createElement('div');
             wide.style.width='2000px';wide.textContent='overflow control';panel.appendChild(wide);const result=${settingsWidthCheck};wide.remove();return result;})()`);
-          if (settingsWidthControl.ok) instrumentFailures.push(`${vp.label}: Settings horizontal-overflow injection stayed green (${JSON.stringify(settingsWidthControl)})`);
+          if (settingsWidthControl.ok) recordInstrumentFailure(`${vp.label}: Settings horizontal-overflow injection stayed green (${JSON.stringify(settingsWidthControl)})`);
           recordControls('settings-horizontal-overflow');
         }
         const recordSettingsAudioPhase = async (surface, expected, activation = null) => {
@@ -11460,13 +12495,16 @@ async function main() {
             'one exact aria-pressed choice and logical focus retained on the newly rendered Mono button');
           const displayAfter = await evalIn(`(()=>{ const panel=document.getElementById('setpanel'),label=panel.querySelector('.row label');return {fontSize:parseFloat(getComputedStyle(panel).fontSize),color:getComputedStyle(label).color,font:getComputedStyle(panel).fontFamily,classes:document.body.className};})()`);
           if (!(displayAfter.fontSize >= 16 && displayAfter.fontSize > displayBefore.fontSize)) {
-            findings.push({ context: { viewport: vp.label, surface: 'settings-text-xl' }, row: { code: 'TEXT_SIZE_PREF_INERT', surface: 'settings-text-xl', element: '#setpanel', actual: { before: displayBefore.fontSize, after: displayAfter.fontSize }, expected: 'A++ increases panel copy to at least 16px' } });
+            recordGlassProductFinding(findings, vp.label, 'settings-text-xl',
+              { code: 'TEXT_SIZE_PREF_INERT', surface: 'settings-text-xl', element: '#setpanel', actual: { before: displayBefore.fontSize, after: displayAfter.fontSize }, expected: 'A++ increases panel copy to at least 16px' }, causalControlsArmed);
           }
           if (displayAfter.color === displayBefore.color) {
-            findings.push({ context: { viewport: vp.label, surface: 'settings-text-xl' }, row: { code: 'TEXT_TONE_PREF_INERT', surface: 'settings-text-xl', element: '#setpanel .row label', actual: { before: displayBefore.color, after: displayAfter.color }, expected: 'Max tone changes rendered secondary copy' } });
+            recordGlassProductFinding(findings, vp.label, 'settings-text-xl',
+              { code: 'TEXT_TONE_PREF_INERT', surface: 'settings-text-xl', element: '#setpanel .row label', actual: { before: displayBefore.color, after: displayAfter.color }, expected: 'Max tone changes rendered secondary copy' }, causalControlsArmed);
           }
           if (!/mono/i.test(displayAfter.font)) {
-            findings.push({ context: { viewport: vp.label, surface: 'settings-text-xl' }, row: { code: 'FONT_PREF_INERT', surface: 'settings-text-xl', element: '#setpanel', actual: displayAfter.font, expected: 'computed monospace family' } });
+            recordGlassProductFinding(findings, vp.label, 'settings-text-xl',
+              { code: 'FONT_PREF_INERT', surface: 'settings-text-xl', element: '#setpanel', actual: displayAfter.font, expected: 'computed monospace family' }, causalControlsArmed);
           }
           add(vp.label, 'settings-text-xl', await audit({
             ...common, surface: 'settings-text-xl', root: '#setpanel', textMin: 80,
@@ -11498,7 +12536,7 @@ async function main() {
           const modalControl = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'),stop=e=>e.stopImmediatePropagation();document.addEventListener('focusin',stop,true);
             canvas.inert=false;canvas.removeAttribute('aria-hidden');canvas.focus();const result=${modalCheck};canvas.inert=true;canvas.setAttribute('aria-hidden','true');
             document.removeEventListener('focusin',stop,true);document.getElementById('importtext').focus();return result;})()`);
-          if (modalControl.ok) instrumentFailures.push(`${vp.label}: unlocked background-focus modal injection stayed green (${JSON.stringify(modalControl)})`);
+          if (modalControl.ok) recordInstrumentFailure(`${vp.label}: unlocked background-focus modal injection stayed green (${JSON.stringify(modalControl)})`);
         }
         const modalErrorCheck = `(()=>{ const msg=document.getElementById('importmsg');return {ok:msg?.getAttribute('role')==='alert'&&msg?.getAttribute('aria-live')==='assertive'&&!!msg.textContent.trim(),
           role:msg?.getAttribute('role')||null,live:msg?.getAttribute('aria-live')||null,text:msg?.textContent||''};})()`;
@@ -11510,12 +12548,13 @@ async function main() {
           modalLiveControlRun = true;
           const liveControl = await evalIn(`(()=>{ const msg=document.getElementById('importmsg'),role=msg.getAttribute('role'),live=msg.getAttribute('aria-live');msg.removeAttribute('role');msg.removeAttribute('aria-live');
             const result=${modalErrorCheck};msg.setAttribute('role',role);msg.setAttribute('aria-live',live);return result;})()`);
-          if (liveControl.ok) instrumentFailures.push(`${vp.label}: plain-div import-error injection stayed green (${JSON.stringify(liveControl)})`);
+          if (liveControl.ok) recordInstrumentFailure(`${vp.label}: plain-div import-error injection stayed green (${JSON.stringify(liveControl)})`);
           recordControls('modal-live-error');
         }
         const importClose = await evalIn(`(()=>{ document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true})); return {display:getComputedStyle(document.getElementById('importsheet')).display,focus:document.activeElement?.id||null}; })()`);
         if (importClose.display !== 'none' || importClose.focus !== 'docksets') {
-            findings.push({ context: { viewport: vp.label, surface: 'import' }, row: { code: 'MODAL_ESCAPE_RESTORE', surface: 'import', element: '#importsheet', actual: importClose, expected: { display: 'none', focus: 'docksets' } } });
+          recordGlassProductFinding(findings, vp.label, 'import',
+            { code: 'MODAL_ESCAPE_RESTORE', surface: 'import', element: '#importsheet', actual: importClose, expected: { display: 'none', focus: 'docksets' } }, causalControlsArmed);
         }
         const modalRestoreCheck = `(()=>{ const keep=document.getElementById('cf-modal-state-keep'),plain=document.getElementById('cf-modal-state-plain'),canvas=document.querySelector('canvas'),dock=document.getElementById('dock');
           return {ok:!!keep&&keep.inert&&keep.getAttribute('aria-hidden')==='keep'&&!!plain&&!plain.inert&&plain.getAttribute('aria-hidden')===null&&!canvas.inert&&!dock.inert,
@@ -11526,7 +12565,7 @@ async function main() {
           'closing restores each background surface’s exact prior inert/aria-hidden state');
         const modalRestoreControl = await evalIn(`(()=>{ const keep=document.getElementById('cf-modal-state-keep');keep.inert=false;keep.removeAttribute('aria-hidden');
           const result=${modalRestoreCheck};keep.inert=true;keep.setAttribute('aria-hidden','keep');return result;})()`);
-        if (modalRestoreControl.ok) instrumentFailures.push(`${vp.label}: exact modal-state restoration corruption stayed green (${JSON.stringify(modalRestoreControl)})`);
+        if (modalRestoreControl.ok) recordInstrumentFailure(`${vp.label}: exact modal-state restoration corruption stayed green (${JSON.stringify(modalRestoreControl)})`);
         if (modalControlRun) recordControls('modal-background-containment-restore');
         await evalIn(`(()=>{ document.getElementById('cf-modal-state-keep')?.remove();document.getElementById('cf-modal-state-plain')?.remove();})()`);
         addOutcome(vp.label, 'settings', 'PANEL_DISCLOSURE_STATE', '#docksets',
@@ -11542,7 +12581,7 @@ async function main() {
           await send('Emulation.setDeviceMetricsOverride', { width: zoomWidth, height: zoomHeight, deviceScaleFactor: vp.dpr, mobile: vp.mobile }, session);
           await sleep(150);
           const zoomState = await evalIn(`({width:innerWidth,height:innerHeight,dpr:devicePixelRatio})`);
-          if (zoomState.width !== zoomWidth || zoomState.height !== zoomHeight) instrumentFailures.push(`${vp.label}: browser-zoom viewport did not reflow (${JSON.stringify(zoomState)})`);
+          if (zoomState.width !== zoomWidth || zoomState.height !== zoomHeight) recordInstrumentFailure(`${vp.label}: browser-zoom viewport did not reflow (${JSON.stringify(zoomState)})`);
           add(vp.label, 'guide-browser-zoom-150', await audit({
             ...common, surface: 'guide-browser-zoom-150', root: '#guidepanel', textMin: 200,
             viewportExpected: { width: zoomWidth, height: zoomHeight, dpr: vp.dpr },
@@ -11589,7 +12628,8 @@ async function main() {
           const after = await evalIn('window.__CF_GLASS_AUDIT__.sceneSnapshot()');
           const changes = await evalIn(`window.__CF_GLASS_AUDIT__.sceneDelta(${JSON.stringify(before)},${JSON.stringify(after)})`);
           if (changes.length) {
-              findings.push({ context: { viewport: vp.label, surface: 'reduced-motion' }, row: { code: 'REDUCED_MOTION_SCENE_DRIFT', surface: 'reduced-motion', element: 'Pixi world', actual: { changed: changes.length, examples: changes.slice(0, 8) }, expected: 'stable visible scene transforms across 350ms' } });
+            recordGlassProductFinding(findings, vp.label, 'reduced-motion',
+              { code: 'REDUCED_MOTION_SCENE_DRIFT', surface: 'reduced-motion', element: 'Pixi world', actual: { changed: changes.length, examples: changes.slice(0, 8) }, expected: 'stable visible scene transforms across 350ms' }, causalControlsArmed);
           }
 
           /* Discriminating direction: Full on the same reduced-OS scene must
@@ -11608,7 +12648,7 @@ async function main() {
           await sleep(350);
           const fullAfter = await evalIn('window.__CF_GLASS_AUDIT__.sceneSnapshot()');
           const fullChanges = await evalIn(`window.__CF_GLASS_AUDIT__.sceneDelta(${JSON.stringify(fullBefore)},${JSON.stringify(fullAfter)})`);
-          if (!fullChanges.length) instrumentFailures.push(`${vp.label}: full-motion scene did not move, so the reduced-motion pass is vacuous`);
+          if (!fullChanges.length) recordInstrumentFailure(`${vp.label}: full-motion scene did not move, so the reduced-motion pass is vacuous`);
 
           /* A live DPR transition catches the once-only DPR constant. A
              responsive canvas must update backing density as well as CSS,
@@ -11618,10 +12658,10 @@ async function main() {
             const hit=r?document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2):null;
             return {ok:s.mode==='system'&&s.cardOpen&&!!s.cardTitle&&!!action&&r.width>=44&&r.height>=44&&(hit===action||action?.contains(hit)),
               mode:s.mode,title:s.cardTitle,action:action?.textContent||null,width:r?.width||0,height:r?.height||0,hit:hit?.tagName||null}; })()`);
-          if (!densityCardBefore.ok) findings.push({ context: { viewport: vp.label, surface: 'dpr-card-preservation' }, row: {
+          if (!densityCardBefore.ok) recordGlassProductFinding(findings, vp.label, 'dpr-card-preservation', {
             code: 'DPR_CARD_SETUP_UNREACHABLE', surface: 'dpr-card-preservation', element: '#survey [data-act="landcta"]',
             actual: densityCardBefore, expected: 'an open, centre-hittable 44px planet action before the live DPR transition',
-          } });
+          }, causalControlsArmed);
           const densityCardCheck = `(()=>{ const s=window.__CF_SLICE__.api.state(),card=document.getElementById('survey'),action=card?.querySelector('[data-act="landcta"]'),r=action?.getBoundingClientRect();
             const hit=r?document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2):null;
             return {ok:s.mode==='system'&&s.cardOpen&&s.cardTitle===${JSON.stringify(densityCardBefore.title)}&&!!action&&r.width>=44&&r.height>=44&&(hit===action||action?.contains(hit)),
@@ -11633,7 +12673,7 @@ async function main() {
           await send('Emulation.setDeviceMetricsOverride', { width: dprWidth, height: vp.height, deviceScaleFactor: 1, mobile: vp.mobile }, session);
           await sleep(500);
           const liveDpr = await evalIn('devicePixelRatio');
-          if (Math.abs(liveDpr - 1) > 0.01) instrumentFailures.push(`${vp.label}: live DPR override did not reach the document (${liveDpr})`);
+          if (Math.abs(liveDpr - 1) > 0.01) recordInstrumentFailure(`${vp.label}: live DPR override did not reach the document (${liveDpr})`);
           add(vp.label, 'dpr-change', await audit({
             ...common, surface: 'dpr-change', root: '#dock', textMin: 1,
             viewportExpected: { width: dprWidth, height: vp.height, dpr: 1 },
@@ -11642,55 +12682,142 @@ async function main() {
             maxBackingPixels: dprPlan.backingPixelCapPerCanvas,
           }));
           const densityCardAfter = await evalIn(densityCardCheck);
-          if (!densityCardAfter.ok) findings.push({ context: { viewport: vp.label, surface: 'dpr-card-preservation' }, row: {
+          if (!densityCardAfter.ok) recordGlassProductFinding(findings, vp.label, 'dpr-card-preservation', {
             code: 'DPR_SURVEY_STATE_LOST', surface: 'dpr-card-preservation', element: '#survey [data-act="landcta"]',
             actual: densityCardAfter, expected: 'same selected body, title, open survey and reachable Land action after density-only rebuild',
-          } });
+          }, causalControlsArmed);
           const densityCardControl = await evalIn(`(()=>{ const card=document.getElementById('survey'),html=card.innerHTML;
             card.querySelector('[data-act="landcta"]')?.remove(); const result=${densityCardCheck}; card.innerHTML=html; return result; })()`);
-          if (densityCardControl.ok) instrumentFailures.push(`${vp.label}: removing the preserved DPR card action stayed green`);
+          if (densityCardControl.ok) recordInstrumentFailure(`${vp.label}: removing the preserved DPR card action stayed green`);
           recordControls('dpr-card-preservation');
         }
       } catch (error) {
-        if (error instanceof ProductAnswerabilityFinding) {
+        if (error instanceof GlassInstrumentControlStop) {
+          throw error;
+        } else if (error instanceof ProductAnswerabilityFinding) {
           const findingCode = error.finding?.code || 'REPLACEMENT_UNANSWERABLE_AFTER_READY';
           if (viewportLabel) targetedProductFailure = true;
+          causalProductStop ||= { viewport: vp.label, findingCode };
+          for (const plannedViewport of MATRIX_VIEWPORTS) {
+            if (!settingsAudioCompletedViewports.has(plannedViewport.label)) {
+              settingsAudioProductBlockedViewports.add(plannedViewport.label);
+            }
+          }
           const findingSurface = error.finding?.surface || 'replacement-ready-answerability';
-          findings.push({ context: { viewport: vp.label, surface: findingSurface }, row: {
-            code: findingCode,
-            surface: findingSurface, element: error.finding?.element || 'replacement target main thread',
-            actual: { message: error.message, evidence: error.evidence },
-            expected: error.finding?.expected || 'two exact-context confirmations each answer within 2000ms with a concurrent responsive browser-process heartbeat and a newer ticker turn on cycle 2',
-          } });
-          /* Record only controls uniquely reachable in the aborted
-             viewport's remaining suffix. Controls belonging to other
-             viewport classes stay omitted in targeted reports; full reports
-             can distinguish product-blocked coverage from instrument loss. */
-          for (const row of productBlockedSuffixForViewport(
-            vp.label, findingCode, executedControls,
-          )) {
+          if (!error.finding?.alreadyRecorded) {
+            recordGlassProductFinding(findings, vp.label, findingSurface, {
+              code: findingCode,
+              surface: findingSurface, element: error.finding?.element || 'replacement target main thread',
+              actual: { message: error.message, evidence: error.evidence },
+              expected: error.finding?.expected || 'two exact-context confirmations each answer within 2000ms with a concurrent responsive browser-process heartbeat and a newer ticker turn on cycle 2',
+            }, false);
+          }
+          /* A full run stops on its first product red, so every not-yet-run
+             control is explicitly product-blocked by that causal boundary.
+             A targeted diagnostic retains its narrower per-viewport suffix
+             accounting because global inventory is not required there. */
+          const blockedRows = productBlockedRowsForCausalStop(
+            viewportLabel, vp.label, findingCode, executedControls,
+          );
+          for (const row of blockedRows) {
             productBlockedControls.set(row.name, row);
           }
         } else {
-          instrumentFailures.push(`${vp.label}: ${error.message}`);
+          stopInstrumentControl(`${vp.label}: ${error.message}`);
         }
       } finally {
+        const cleanupFailures = [];
         if (targetId && browser) {
           try { await browser.send('Target.closeTarget', { targetId }); } catch { /* disposal below is authoritative */ }
         }
         if (browserContextId && browser) {
           try { await browser.send('Target.disposeBrowserContext', { browserContextId }); }
-          catch (error) { instrumentFailures.push(`${vp.label}: browser context cleanup failed (${error.message})`); }
+          catch (error) {
+            if (!causalInstrumentState.error) {
+              cleanupFailures.push(`${vp.label}: browser context cleanup failed (${error.message})`);
+            }
+          }
         }
         if (browser) {
           try { await browser.close(); }
-          catch (error) { instrumentFailures.push(`${vp.label}: owned browser cleanup failed (${error.message})`); }
+          catch (error) {
+            if (!causalInstrumentState.error) {
+              cleanupFailures.push(`${vp.label}: owned browser cleanup failed (${error.message})`);
+            }
+          }
         }
         runViewportTimings.push({ label: vp.label, durationMs: Date.now() - viewportStartedAt });
+        if (cleanupFailures.length) recordInstrumentFailure(cleanupFailures[0]);
+      }
+      if (shouldStopGlassViewportLoop(causalProductStop)) break;
+    }
+    if (portraitViewportCount > 0 && !causalProductStop && !targetedProductFailure) {
+      const portraitCampaign = portraitControlCampaignOutcome({
+        planned: portraitViewportCount,
+        observed: portraitBaselineCount,
+        eligible: portraitEligibleBaselineCount,
+        bandRuns: portraitBandControlCount,
+        fallbackRuns: portraitFallbackControlCount,
+      });
+      if (!portraitCampaign.ok) {
+        stopInstrumentControl(`portrait control campaign did not observe every baseline, find an eligible visible-trail/non-fallback viewport, and execute each control exactly once (${JSON.stringify(portraitCampaign)})`);
       }
     }
+    if (instrumentFailures.length) stopInstrumentControl(instrumentFailures[0]);
+    } catch (error) {
+      if (!(error instanceof GlassInstrumentControlStop)) throw error;
+      causalInstrumentStop = error;
+    }
+    causalControlsArmed = false;
   } finally {
     await new Promise((resolve) => server.close(resolve));
+  }
+
+  if (causalInstrumentStop) {
+    const endingSource = sourceIdentity();
+    runEndingSource = endingSource;
+    const terminalChainFailures = [];
+    if (endingSource.commit !== runSource.commit || endingSource.branch !== runSource.branch
+      || endingSource.statusSha256 !== runSource.statusSha256
+      || endingSource.workingTreeSha256 !== runSource.workingTreeSha256) {
+      terminalChainFailures.push(`source changed during matrix: start=${JSON.stringify(runSource)} end=${JSON.stringify(endingSource)}`);
+    }
+    if (!viewportLabel && selectedSliceRunId) {
+      const terminalSlice = verifySliceRunEvidence(selectedSliceRunId, {
+        expectedSource: endingSource, requirePass: true, requireCommitted: true,
+        expectedAssuranceProfile: selectedAssuranceProfile, allowLegacyV1: false,
+      });
+      if (!terminalSlice.ok) {
+        terminalChainFailures.push(`Slice predecessor changed or failed terminal verification: ${terminalSlice.errors.join('; ')}`);
+      } else if (JSON.stringify(slicePredecessorDescriptor(terminalSlice))
+        !== JSON.stringify(runPredecessors?.slice)) {
+        terminalChainFailures.push('Slice predecessor report/log/hash binding changed during Glass');
+      }
+    }
+    for (const failure of terminalChainFailures) {
+      if (!instrumentFailures.includes(failure)) Array.prototype.push.call(instrumentFailures, failure);
+    }
+    const browser = browserVersions.length ? {
+      ...browserVersions[0],
+      consistentAcrossViewports: browserVersions
+        .every((row) => JSON.stringify(row) === JSON.stringify(browserVersions[0])),
+    } : null;
+    const blockedControls = [...productBlockedControls.values()]
+      .filter((row) => !executedControls.has(row.name));
+    writeReport({
+      status: 'instrument-fail', exitCode: 2, browser, findings, instrumentFailures,
+      controlsRun, executedControls: [...executedControls], blockedControls,
+    });
+    console.error('GLASS MATRIX INSTRUMENT FAILURE');
+    console.error('- ' + causalInstrumentStop.message);
+    if (findings.length) {
+      console.error(`PRODUCT FINDINGS WITHHELD (${findings.length}) — instrument must be repaired first`);
+      for (const finding of findings.slice(0, 20)) {
+        console.error('- ' + formatIssue(finding.context, finding.row));
+      }
+    }
+    process.exitCode = 2;
+    return;
   }
 
   const endingSource = sourceIdentity();
@@ -11698,7 +12825,7 @@ async function main() {
   if (endingSource.commit !== runSource.commit || endingSource.branch !== runSource.branch
     || endingSource.statusSha256 !== runSource.statusSha256
     || endingSource.workingTreeSha256 !== runSource.workingTreeSha256) {
-    instrumentFailures.push(`source changed during matrix: start=${JSON.stringify(runSource)} end=${JSON.stringify(endingSource)}`);
+    recordInstrumentFailure(`source changed during matrix: start=${JSON.stringify(runSource)} end=${JSON.stringify(endingSource)}`);
   }
   if (!viewportLabel && selectedSliceRunId) {
     const terminalSlice = verifySliceRunEvidence(selectedSliceRunId, {
@@ -11706,17 +12833,18 @@ async function main() {
       expectedAssuranceProfile: selectedAssuranceProfile, allowLegacyV1: false,
     });
     if (!terminalSlice.ok) {
-      instrumentFailures.push(`Slice predecessor changed or failed terminal verification: ${terminalSlice.errors.join('; ')}`);
+      recordInstrumentFailure(`Slice predecessor changed or failed terminal verification: ${terminalSlice.errors.join('; ')}`);
     } else if (JSON.stringify(slicePredecessorDescriptor(terminalSlice))
       !== JSON.stringify(runPredecessors?.slice)) {
-      instrumentFailures.push('Slice predecessor report/log/hash binding changed during Glass');
+      recordInstrumentFailure('Slice predecessor report/log/hash binding changed during Glass');
     }
   }
   /* A targeted diagnostic that is itself product-blocked cannot execute the
      remainder of that one viewport. Full certification still requires all
      global sentinels; only the explicit reachable suffix in the control
      ledger may be product-blocked there. */
-  const targetedProductBlocked = targetedProductRemainderBlocked(viewportLabel, targetedProductFailure);
+  const targetedProductBlocked = !!causalProductStop
+    || targetedProductRemainderBlocked(viewportLabel, targetedProductFailure);
   const settingsAudioCoverage = settingsAudioViewportCoverageOutcome(
     MATRIX_VIEWPORTS.map((viewport) => viewport.label),
     [...settingsAudioBaselineViewports],
@@ -11724,86 +12852,86 @@ async function main() {
     [...settingsAudioProductBlockedViewports],
   );
   if (!targetedProductBlocked && !settingsAudioCoverage.instrumentOk) {
-    instrumentFailures.push(`Settings audio causal coverage was incomplete or incoherent (${JSON.stringify(settingsAudioCoverage)})`);
+    recordInstrumentFailure(`Settings audio causal coverage was incomplete or incoherent (${JSON.stringify(settingsAudioCoverage)})`);
   }
-  if (!controlsRun && !targetedProductBlocked) instrumentFailures.push('injected matrix controls never ran');
-  if (!hpControlRun && !targetedProductBlocked) instrumentFailures.push('HP dual-background contrast control never ran');
-  if (!settingsWidthControlRun && !targetedProductBlocked) instrumentFailures.push('Settings horizontal-overflow control never ran');
-  if (!rarityContrastControlRun && !targetedProductBlocked) instrumentFailures.push('opaque rarity contrast control never ran');
+  if (!controlsRun && !targetedProductBlocked) recordInstrumentFailure('injected matrix controls never ran');
+  if (!hpControlRun && !targetedProductBlocked) recordInstrumentFailure('HP dual-background contrast control never ran');
+  if (!settingsWidthControlRun && !targetedProductBlocked) recordInstrumentFailure('Settings horizontal-overflow control never ran');
+  if (!rarityContrastControlRun && !targetedProductBlocked) recordInstrumentFailure('opaque rarity contrast control never ran');
   if (!orbitalContainmentControlRun && !targetedProductBlocked
     && MATRIX_VIEWPORTS.some((vp) => vp.label === 'small-phone')) {
-    instrumentFailures.push('small-phone live orbital containment/scroll control never ran');
+    recordInstrumentFailure('small-phone live orbital containment/scroll control never ran');
   }
   if (!settingsCloseClearanceControlRun && !targetedProductBlocked
     && MATRIX_VIEWPORTS.some((vp) => vp.label === 'laptop-720p')) {
-    instrumentFailures.push('short-laptop Settings Close-gutter control never ran');
+    recordInstrumentFailure('short-laptop Settings Close-gutter control never ran');
   }
-  if (!planetsideControlRun && !targetedProductBlocked) instrumentFailures.push('Planetside surface-ownership controls never ran');
-  if (!panelPlanetsideControlRun && !targetedProductBlocked) instrumentFailures.push('panel/Planetside synthesized layering control never ran');
-  if (!chromeYieldControlRun && !targetedProductBlocked) instrumentFailures.push('mobile chrome yield control never ran');
-  if (!chromeRestoreControlRun && !targetedProductBlocked) instrumentFailures.push('mobile chrome restore-direction control never ran');
+  if (!planetsideControlRun && !targetedProductBlocked) recordInstrumentFailure('Planetside surface-ownership controls never ran');
+  if (!panelPlanetsideControlRun && !targetedProductBlocked) recordInstrumentFailure('panel/Planetside synthesized layering control never ran');
+  if (!chromeYieldControlRun && !targetedProductBlocked) recordInstrumentFailure('mobile chrome yield control never ran');
+  if (!chromeRestoreControlRun && !targetedProductBlocked) recordInstrumentFailure('mobile chrome restore-direction control never ran');
   if (!objectiveYieldControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900)) {
-    instrumentFailures.push('mobile landed-objective yield control never ran');
+    recordInstrumentFailure('mobile landed-objective yield control never ran');
   }
-  if (!topChromeControlRun && !targetedProductBlocked) instrumentFailures.push('Planetside/top-chrome clearance control never ran');
+  if (!topChromeControlRun && !targetedProductBlocked) recordInstrumentFailure('Planetside/top-chrome clearance control never ran');
   if (!portraitBandControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900 && vp.width <= vp.height)) {
-    instrumentFailures.push('Planetside portrait-band viability control never ran');
+    recordInstrumentFailure('Planetside portrait-band viability control never ran');
   }
   if (!portraitFallbackControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900 && vp.width <= vp.height)) {
-    instrumentFailures.push('Planetside portrait trail-fallback control never ran');
+    recordInstrumentFailure('Planetside portrait trail-fallback control never ran');
   }
-  if (!modalControlRun && !targetedProductBlocked) instrumentFailures.push('import modal containment control never ran');
-  if (!modalLiveControlRun && !targetedProductBlocked) instrumentFailures.push('import live-error control never ran');
-  if (!closeLabelControlRun && !targetedProductBlocked) instrumentFailures.push('panel close accessible-name control never ran');
-  if (!closeIntegrityControlRun && !targetedProductBlocked) instrumentFailures.push('duplicate/misplaced close integrity controls never ran');
+  if (!modalControlRun && !targetedProductBlocked) recordInstrumentFailure('import modal containment control never ran');
+  if (!modalLiveControlRun && !targetedProductBlocked) recordInstrumentFailure('import live-error control never ran');
+  if (!closeLabelControlRun && !targetedProductBlocked) recordInstrumentFailure('panel close accessible-name control never ran');
+  if (!closeIntegrityControlRun && !targetedProductBlocked) recordInstrumentFailure('duplicate/misplaced close integrity controls never ran');
   if (!toastAnchorControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
-    instrumentFailures.push('desktop left-anchored toast control never ran');
+    recordInstrumentFailure('desktop left-anchored toast control never ran');
   }
   if (!settingsAnchorControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
-    instrumentFailures.push('desktop left-anchored Settings control never ran');
+    recordInstrumentFailure('desktop left-anchored Settings control never ran');
   }
   if (!recordsAnchorObserved && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
-    instrumentFailures.push('desktop Records bottom-right anchor outcome never ran');
+    recordInstrumentFailure('desktop Records bottom-right anchor outcome never ran');
   }
   if (!hiddenOpenerControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {
-    instrumentFailures.push('hidden panel-opener focus fallback control never ran');
+    recordInstrumentFailure('hidden panel-opener focus fallback control never ran');
   }
   if (!releaseDetailControlRun && !targetedProductBlocked) {
-    instrumentFailures.push('development release detail controls never ran');
+    recordInstrumentFailure('development release detail controls never ran');
   }
   if (!releaseTailControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.label === 'primary-phone')) {
-    instrumentFailures.push('development release hidden-overflow tail control never ran');
+    recordInstrumentFailure('development release hidden-overflow tail control never ran');
   }
   if (!shipyardControlRun && !targetedProductBlocked) {
-    instrumentFailures.push('Engineering/Shipyard opener/state/catalogue/geometry/close controls never ran');
+    recordInstrumentFailure('Engineering/Shipyard opener/state/catalogue/geometry/close controls never ran');
   }
   if (!inventoryControlRun && !targetedProductBlocked) {
-    instrumentFailures.push('Inventory carrier/row/modal/focus/action/release controls never ran');
+    recordInstrumentFailure('Inventory carrier/row/modal/focus/action/release controls never ran');
   }
   if (!arc4CaptureControlRun && !targetedProductBlocked) {
-    instrumentFailures.push('Arc 4 capture presentation/geometry/native-return controls never ran');
+    recordInstrumentFailure('Arc 4 capture presentation/geometry/native-return controls never ran');
   }
   if (!phoneDockControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900)) {
-    instrumentFailures.push('exact ten-control 5x2 phone dock control never ran');
+    recordInstrumentFailure('exact ten-control 5x2 phone dock control never ran');
   }
-  if (!reloadBindingControlRun && !targetedProductBlocked) instrumentFailures.push('live slice-ready binding controls never ran');
+  if (!reloadBindingControlRun && !targetedProductBlocked) recordInstrumentFailure('live slice-ready binding controls never ran');
   const arc4OutcomeInventory = arc4CaptureOutcomeInventoryOutcome(runArc4CaptureOutcomes);
   if (!arc4OutcomeInventory.ok
     || (!instrumentFailures.length && !findings.length && !arc4OutcomeInventory.complete)) {
-    instrumentFailures.push(`Arc 4 capture outcome inventory failed closed: ${JSON.stringify(arc4OutcomeInventory)}`);
+    recordInstrumentFailure(`Arc 4 capture outcome inventory failed closed: ${JSON.stringify(arc4OutcomeInventory)}`);
   }
   const browser = browserVersions.length ? {
     ...browserVersions[0],
     consistentAcrossViewports: browserVersions.every((row) => JSON.stringify(row) === JSON.stringify(browserVersions[0])),
   } : null;
-  if (browser && !browser.consistentAcrossViewports) instrumentFailures.push('browser version changed within the matrix');
+  if (browser && !browser.consistentAcrossViewports) recordInstrumentFailure('browser version changed within the matrix');
   const blockedControls = [...productBlockedControls.values()]
     .filter((row) => !executedControls.has(row.name));
   const coverage = controlCoverageOutcome([...executedControls], blockedControls);
   if (!coverage.ok) {
-    instrumentFailures.push(`negative-control coverage failed closed: ${coverage.why}`);
+    recordInstrumentFailure(`negative-control coverage failed closed: ${coverage.why}`);
   } else if (!viewportLabel && coverage.omitted.length) {
-    instrumentFailures.push(`full matrix omitted planned negative controls: ${coverage.omitted.join(', ')}`);
+    recordInstrumentFailure(`full matrix omitted planned negative controls: ${coverage.omitted.join(', ')}`);
   }
   if (instrumentFailures.length) {
     writeReport({ status: 'instrument-fail', exitCode: 2, browser, findings, instrumentFailures, controlsRun,

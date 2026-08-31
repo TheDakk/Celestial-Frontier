@@ -180,7 +180,7 @@
     .capture-card-row-detail, .capture-card-odds, .capture-card-row-status {
       grid-column: 1; color: var(--dim); font-size: 11px; overflow-wrap: anywhere; }
     .capture-card-odds { color: #bcd3ee; }
-    .capture-card-action { grid-column: 2; grid-row: 1 / span 4; align-self: stretch;
+    .capture-card-action { grid-column: 2; grid-row: 1 / span 4; align-self: center;
       min-width: 88px; min-height: 44px; box-sizing: border-box; padding: 7px 12px;
       border: 1px solid #5575a4; border-radius: 10px; background: rgba(24,43,70,.9);
       color: #eef6ff; font: 700 12px var(--ui); cursor: pointer; touch-action: manipulation; }
@@ -300,7 +300,6 @@
          the actionable reading, so those secondary rows yield while landed
          and return on ascent. */
       body.surface-mode :is(#trail,#objchip) { display: none; }
-      .capture-card-action { align-self: center; }
       body.surface-mode #survey,
       body.surface-mode #planetside {
         width: calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2) !important;
@@ -612,6 +611,7 @@
       gap: 5px; min-width: 0; }
     .binder-slot { min-width: 0; padding: 5px 6px; border: 1px solid #57709a;
       border-radius: 7px; text-align: center; font-size: 10px; overflow-wrap: anywhere; }
+    .binder-slot:not(.missing) { background: #05070d; }
     .binder-slot.missing { border-color: rgba(87,112,154,.42); color: var(--dim); }
     .binder-set { min-height: 52px; padding: 6px 0;
       border-bottom: 1px solid rgba(64,84,119,.38); }
