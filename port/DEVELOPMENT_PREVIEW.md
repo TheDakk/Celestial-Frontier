@@ -1,28 +1,27 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **2026-08-31 current local eed successor overlay (supersedes older candidate-status labels; dated
-> evidence and the preview process rules remain immutable):** exact clean SSH-signed source
-> `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed Compendium **78/78** once/no-retry as
-> `20260831140359225-10071-3234490882`. Its exact-source develop Slice
-> `20260831140556783-10430-bcb61adfaef5` stopped terminal red once/no-retry after **345,163 ms**
-> with **7 findings / 7 scopes**; named verification rejected the non-PASS predecessor, Glass did
-> not run, and no preview was packaged or published.
+> **2026-08-31 current local a9d successor overlay (supersedes older candidate-status labels; dated
+> evidence and preview-process rules remain immutable):** exact clean SSH-signed source
+> `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed Compendium **78/78** once/no-retry as
+> `20260831151644196-18841-d75ab40c38`. Its exact-source develop Slice
+> `20260831151855955-19270-13860f3fb838` stopped terminal red once/no-retry after **328,043 ms**
+> with exactly **1 finding / 1 scope**; named verification rejected the non-PASS predecessor, Glass
+> did not run, and no preview was packaged or published.
 >
-> The bounded successor repairs stale Slice expectations, enforces phase causal stops and makes both
-> Atlas navigation controls explicit non-submit buttons. Focused coverage is **5 files / 56 tests**,
-> all TypeScript programs pass, diff hygiene is clean, and independent review is **CLEAR**. No
-> creature/genome/organism/biome/art structure or preview rule changed. The **77-bullet** bulletin
-> retains ordered SHA-256
-> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+> The product outcome was coherent; the sole red was a Slice predicate reading Engineering panel
+> text instead of the live lesson announcement. The bounded successor changes only that carrier and
+> adds directional/provenance tests. Focused coverage is **2 files / 23 tests**, all TypeScript
+> programs pass, diff hygiene is clean, and independent review is **CLEAR**. No product, creature,
+> genome, organism, biome, art structure or preview rule changed. The **77-bullet** bulletin retains
+> ordered SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> The complete develop profile is green at **253 files / 2,559 passed / 1 skipped**, all
-> TypeScript/art/route/specification owners green. Current Compendium producer/budget authority is
-> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> The complete develop profile is green at **253 files / 2,560 passed / 1 skipped**, **34** art
+> sources, **1,014/1,014** routes and **454** non-inert fields. Current Compendium producer/budget
+> authority remains `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
 > `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. Certification still
 > requires a clean signed candidate and one unchanged-source **Compendium → Slice → Glass** develop
-> chain. SceneMemory is production-only;
-> the manual preview remains separate and noncertifying. No hosted attempt, preview publication,
-> push, merge, release, version bump or deployment is authorized.
+> chain. SceneMemory is production-only; the manual preview remains separate and noncertifying. No
+> hosted attempt, preview publication, push, merge, release, version bump or deployment is authorized.
 
 > **2026-08-30 current preview boundary:** the manual preview workflow is a playtest packager, not
 > a second integration battery. It keeps owner-only manual authorization, the approved branch and

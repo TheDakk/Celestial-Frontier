@@ -1,21 +1,20 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-31 current final-successor/Training/Atlas overlay (supersedes older candidate-status
-> labels):** exact clean signed source `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed
-> tracked-input/Edge preflight and Compendium **78/78** before exact-source develop Slice
-> `20260831140556783-10430-bcb61adfaef5` stopped once/no-retry after **345,163 ms** with
-> **7 findings / 7 scopes**; Glass did not run. The retained final state proves revision-1
-> receipt-free F4/product bootstrap followed by required revision-2 Arc 9 catch-up, ordinal 1,
-> exact receipt and exact aggregate projection. The stale oracle froze revision 1/ordinal 0.
+> **2026-08-31 current a9d lesson-carrier overlay (supersedes older candidate-status labels):**
+> exact clean signed source `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed tracked-input/Edge
+> preflight and Compendium **78/78** before exact-source develop Slice
+> `20260831151855955-19270-13860f3fb838` stopped once/no-retry after **328,043 ms** with exactly
+> **1 finding / 1 scope**; Glass did not run. The retained product state was coherent at Training
+> step 9 with correct focus/announcement, active write hold and all 70 Engineering actions disabled.
 >
-> Protected Training is deliberately route/event-only for Atlas and Land: no Atlas row or new
-> surrounding landed world is invented. Engineering renders the current 70 controls disabled;
-> Compendium may remain an honest empty outer catalogue until Finish. The runner/copy now bind that
-> exact law and causal-stop before unrelated origins. The sole product edit explicitly types both
-> Atlas opener buttons as non-submit. Focused tests pass **5 files / 56 tests**; the complete
-> develop profile is green at **253 files / 2,559 passed / 1 skipped**, all TypeScript/art/route/
-> specification owners green, and independent review is **CLEAR**. Current Compendium producer/
-> budget authority is `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> The sole red was an instrument carrier error: lesson prose owned by `#tutlive` was searched for in
+> panel text. The bounded successor changes only that predicate and adds directional/provenance
+> controls. It inherits the prior final-successor, protected-Training and explicit Atlas-button
+> repairs and changes no product/save/gameplay/art byte. Focused tests pass **2 files / 23 tests**;
+> the complete develop profile is green at **253 files / 2,560 passed / 1 skipped**, all TypeScript
+> programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields, and independent
+> review is **CLEAR**. Current Compendium producer/budget authority remains
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
 > `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A new signed unchanged-
 > source Compendium → Slice → Glass chain remains pending; no hosted/release/deploy authority exists.
 

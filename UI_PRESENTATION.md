@@ -1,21 +1,18 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-31 current protected-Training/Atlas presentation overlay (supersedes older
-> candidate-status labels):** exact signed `eedac4a…` passed Compendium **78/78** before its
-> exact-source Slice stopped once/no-retry after **345,163 ms** with **7 findings / 7 scopes**;
-> Glass did not run. Five presentation findings were obsolete Training expectations: Atlas practice
-> is route-only, approved Planetside copy is negated, Engineering exposes all **70** current actions
-> disabled, and the outer Compendium is honestly empty until Finish. Lesson copy now states those
-> boundaries instead of claiming a fabricated Earth chart.
+> **2026-08-31 current a9d lesson-carrier presentation overlay (supersedes older candidate-status
+> labels):** exact signed `a9d2a57…` passed Compendium **78/78** before its exact-source Slice
+> stopped once/no-retry after **328,043 ms** with exactly **1 finding / 1 scope**; Glass did not run.
+> The retained presentation was correct: exact step-9 lesson announcement and focus, active hold,
+> available Engineering panel and all **70/70** current action controls disabled.
 >
-> The one product presentation defect was semantic HTML: `railatlas` and `dockatlas` were native
-> buttons without explicit type and therefore could report `submit`. Both now declare
-> `type="button"`, with browser-free removal mutants. Slice also uses sentence-local copy polarity
-> and phase causal stops. Existing minimum-44-pixel layout, Prime/Guide property carriers, art,
-> painters, creatures, biomes and responsive geometry are unchanged. Focused **5 files / 56 tests**
-> pass; the complete develop profile is green at **253 files / 2,559 passed / 1 skipped** with all
-> TypeScript/art/route/specification owners green, and independent review is **CLEAR**. Current
-> Compendium producer/budget authority is
+> Slice incorrectly searched the Shipyard panel body for lesson prose owned by `#tutlive`. The
+> bounded successor changes only that predicate to `engineeringTour.announcement` and binds both a
+> stale-panel mutant and forged panel-derived announcement provenance. It changes no product copy,
+> DOM, CSS, minimum-44-pixel layout, Prime/Guide property carrier, art, painter, creature, biome or
+> responsive geometry. Focused **2 files / 23 tests** pass; the complete develop profile is green at
+> **253 files / 2,560 passed / 1 skipped**, all TypeScript/art/route/specification owners are green,
+> and independent review is **CLEAR**. Current Compendium producer/budget authority remains
 > `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
 > `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`; only a clean signed
 > unchanged-source Compendium → Slice → Glass chain remains pending.

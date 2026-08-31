@@ -1,26 +1,27 @@
 # Celestial-Frontier
 
-> **2026-08-31 current eed chain/repair overlay (supersedes every older “current” label below;
+> **2026-08-31 current a9d chain/repair overlay (supersedes every older “current” label below;
 > dated evidence remains immutable):** exact clean signed source
-> `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed tracked-input/Edge preflight and Compendium
-> **78/78** once/no-retry as `20260831140359225-10071-3234490882`. Its unchanged-source develop
-> Slice `20260831140556783-10430-bcb61adfaef5` stopped terminal red once/no-retry after
-> **345,163 ms** with **7 findings / 7 scopes**; its named verifier rejected the red as designed and
-> Glass did not run. Exact carriers are retained under `audits/`; eedac4a will not be retried.
+> `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed tracked-input/Edge preflight and Compendium
+> **78/78** once/no-retry as `20260831151644196-18841-d75ab40c38`. Its unchanged-source develop
+> Slice `20260831151855955-19270-13860f3fb838` stopped terminal red once/no-retry after
+> **328,043 ms** with exactly **1 finding / 1 scope**; its named verifier rejected the red as
+> designed and Glass did not run. Exact carriers are retained under `audits/`; a9d2a57 will not be
+> retried or relabelled.
 >
-> The first red froze an obsolete revision-1 transient endpoint instead of the required revision-2
-> Arc 9 boot successor. Five D-TRAIN oracles/copy claims contradicted protected practice truth; the
-> only product defect was Atlas openers defaulting to submit buttons. The bounded local successor
-> requires exact revision/ordinal/receipt/projection truth, honest route-only Atlas and outer
-> landing preservation, the current disabled Engineering/empty Compendium boards, sentence-local
-> copy polarity, phase causal stops, and explicit `type="button"` Atlas openers. Focused tests are
-> **5 files / 56 passed**; the complete develop profile is green at **253 files / 2,559 passed /
-> 1 skipped**, all TypeScript/art/route/specification owners green, and independent review is
-> **CLEAR**. Current Compendium producer/budget authority is
+> The retained game state was coherent: exact Training step 9, correct focus/announcement, active
+> write hold, an available Engineering board and all **70/70** source-proven actions disabled. The
+> sole red was a Slice carrier mistake—lesson prose owned by `#tutlive` was searched for in the
+> Shipyard panel body. The bounded successor changes only that predicate to the announcement and
+> adds directional/provenance mutants. It inherits the prior final-successor/Training/Atlas repair,
+> changes no product byte, and leaves every gameplay, save, creature, genome, art and biome
+> structure intact. Focused verification is **2 files / 23 passed**; the complete develop profile
+> is green at **253 files / 2,560 passed / 1 skipped**, all TypeScript/art/route/specification owners
+> are green, and independent review is **CLEAR**. Current Compendium producer/budget authority is
 > `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
 > `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A fresh signed
-> **Compendium → Slice → Glass** chain remains pending. No Edge rebaseline,
-> timeout, retry, hosted attempt, merge, release, version bump, publication or deploy is authorized.
+> **Compendium → Slice → Glass** chain remains pending. No Edge rebaseline, timeout, retry, hosted
+> attempt, merge, release, version bump, publication or deploy is authorized.
 
 > **2026-08-31 historical 4002/4822 local successor overlay (superseded above;
 > dated evidence remains immutable):** exact clean signed source

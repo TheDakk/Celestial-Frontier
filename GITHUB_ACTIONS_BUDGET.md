@@ -23,19 +23,22 @@ removed, and it merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41
 Runs `32609389977`, `32611053651`, `32614177932`, and `32618995487` remain consumed terminal-red
 historical evidence; their labels were removed. Details are below.
 
-Exact local SSH-signed source `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed tracked-input
+Exact local SSH-signed source `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed tracked-input
 and Edge preflight plus Compendium **78/78** once/no-retry as
-`20260831140359225-10071-3234490882`. Its exact-source develop Slice
-`20260831140556783-10430-bcb61adfaef5` stopped terminal red once/no-retry after **345,163 ms**
-with **7 findings / 7 scopes**; named verification rejected it, Glass did not run, and eed will not
-be retried. The bounded local successor repairs six stale evidence expectations and one explicit
-button-type defect, with **5 files / 56 focused tests**, all TypeScript programs and independent
-review green. The complete develop profile is green at **253 files / 2,559 passed / 1 skipped**;
-current Compendium producer/budget authority is
+`20260831151644196-18841-d75ab40c38`. Its exact-source develop Slice
+`20260831151855955-19270-13860f3fb838` stopped terminal red once/no-retry after **328,043 ms**
+with exactly **1 finding / 1 scope**; named verification rejected it, Glass did not run, and a9d
+will not be retried. The product state was coherent at exact Training step 9 with all **70/70**
+Engineering actions disabled; the sole red was a stale Slice predicate reading panel text instead
+of the live lesson announcement. The bounded local successor changes only that carrier and its
+directional/provenance controls, with **2 files / 23 focused tests**, all TypeScript programs and
+independent review green. The complete develop profile is green at **253 files / 2,560 passed / 1
+skipped**, **34** art sources, **1,014/1,014** routes and **454** non-inert fields; current
+Compendium producer/budget authority remains
 `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
 `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A clean signed candidate
-and one fresh local Compendium → Slice → Glass chain remain. This authorizes no push, label, hosted run, Ready
-transition or merge; **hosted attempt state remains none authorized**.
+and one fresh local Compendium → Slice → Glass chain remain. This authorizes no push, label, hosted
+run, Ready transition or merge; **hosted attempt state remains none authorized**.
 
 Local signed source `cc15e1f967f6644405cad7c3460cd8181b6a043f` also consumed its one/no-retry
 fixed-eight SceneMemory candidate-1 attempt. Run `20260830-pr35-fixedeight-cc15e1f-candidate1`
