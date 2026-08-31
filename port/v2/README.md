@@ -1,39 +1,39 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **Current exact input-v5 boundary plus local Feed-certificate successor (2026-08-30; exact
-> resumption details in `ROADMAP.md`):** exact clean SSH-signed checkpoint
-> `51a8ac43f1a583e73dc4d111da04bbdb76abcc02` (tree `0f823714…`, parent `e2ff953…`)
-> passed the hermetic develop profile at **253 files / 2,524 tests / 1 skipped**, all three strict
-> TypeScript programs, 34-source art audit, 1,014/1,014 routes and 454-field specification audit.
-> Changed browser-instrument controls passed. On that same unchanged source and Microsoft Edge
-> `152.0.4191.53` / CDP `1.3`, SceneMemory passed **44/44** in 13,495 ms and Compendium passed
-> **78/78** in 63,118 ms; both named verifiers passed. Slice then stopped once/no-retry after
-> 162,524 ms with one `harness` finding: Arc 5 Feed preview returned `last null`. Glass did not run.
+> **Current input-v5 / native-Feed boundary (2026-08-30; exact resumption details in
+> `ROADMAP.md`):** exact clean SSH-signed checkpoint
+> `f219d46693b629ae035d05e5205be98840650ece` (tree `d92dde7f…`, parent `51a8ac4…`)
+> passed the hermetic develop profile at **253 files / 2,528 tests / 1 skipped**, all three strict
+> TypeScript programs, the 34-source art audit, 1,014/1,014 routes and 454-field specification
+> audit. All five classifier-required browser-instrument controls passed once. On that unchanged
+> source and Microsoft Edge `152.0.4191.53` / CDP `1.3`, SceneMemory passed **44/44** in 13,239 ms
+> and Compendium passed **78/78** in 64,447 ms; both named verifiers passed.
 >
-> The retained Slice red occurred before any durable read, confirmation, action claim, writer or
-> Feed mutation. The old certificate clicked a `LABEL`, treated its absent `disabled` property as
-> readiness, retained no native radio/change receipt and collapsed every partial preview state to
-> null. The dirty bounded successor changes only the certificate: one unique current label↔radio,
-> raw-CDP dispatch to that radio, trusted pointerdown→click→input→change order, exact document/
-> generation/surface/context/controller ownership, settled DOM+controller choices, and a structured
-> authority/coordinator-bound preview before downstream work. Both loser and winner documents use
-> it; native detach/reattach product coverage and independently isolated field mutations are green.
-> No product code, timeout, retry, numeric ruler, browser baseline, creature/genome, save, art/audio,
-> balance or release identity changed. The immutable `51a8ac4…` run remains FAIL and is never
-> retried or relabelled. Its exact predecessors and red report/log are preserved under `audits/`.
+> Slice `20260830-pr35-f219d46-feed-native-slice-certification` then stopped once/no-retry after
+> 155,668 ms with one `harness` finding: the generated post-click settlement expression contained
+> one surplus `}` and `Runtime.evaluate` returned `SyntaxError: Unexpected token '}'`. The exact
+> native radio preparation and raw-CDP dispatch had completed, but the certificate stopped before
+> settlement assessment, the flora choice, preview, durable read, confirmation, writer or
+> persistence comparison. Glass did not run. Exact predecessor reports plus the Slice report/log
+> are preserved with raw/gzip hashes under `audits/`; the immutable red is never retried or
+> relabelled and makes no Feed product verdict.
+>
+> The bounded successor removes that one closure and single-sources the generated expression in a
+> pure builder used by runner and browser-free test. The control compiles the exact output and
+> proves both missing- and extra-brace mutations fail. Focused Feed coverage is **2 files / 17
+> passed**; all three TypeScript programs and strict unused-symbol checking pass. No product code,
+> timeout, retry, numeric ruler, browser baseline, creature/genome, save, art/audio, balance or
+> release identity changed. The successor still needs its own signed commit, tracked develop
+> preflight and one fresh fail-fast SceneMemory → Compendium → Slice → Glass chain.
 >
 > The Compendium ruler's 591 synthetic controls remain conditional on production or changed
 > instrument inputs, and the specification audit's five controls remain folded into its one normal
 > command. **A New Foundation** contains 75 unique bullets with rendered ordered SHA-256
-> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`. Current Scene build/budget
-> SHA-256 is `82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b` /
-> `11707d53bd640b9f2cd0bb1daf963a1c72308239b10faea0332f030f8bd2743f`; current Compendium
-> producer/budget SHA-256 is `baef39c64288c3507398847a6409b4bf181c64a7141a01ec0926f2618e3749a6` /
-> `913e5d6d26ea13ef7feb1c604726e1c3a6252fd60f434daaf1abe5cbaf8a9238`. Compendium and
-> SceneMemory's non-heap rulers/historical samples are unchanged; current SceneMemory uses the
-> report-v4/profile-v3/input-v5/verdict-v4 source-normalized heap admission described below. The
-> dirty certificate successor still needs consolidation, signing and one fresh no-retry browser
-> chain.
+> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`. Scene build/budget
+> SHA-256 remains `82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b` /
+> `11707d53bd640b9f2cd0bb1daf963a1c72308239b10faea0332f030f8bd2743f`; Compendium
+> producer/budget remains `baef39c64288c3507398847a6409b4bf181c64a7141a01ec0926f2618e3749a6` /
+> `913e5d6d26ea13ef7feb1c604726e1c3a6252fd60f434daaf1abe5cbaf8a9238`.
 
 > **Historical exact-`8bdf474…` evidence boundary (superseded by the later `4ac4`/`d1` boundary):** exact clean SSH-signed source
 > `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
