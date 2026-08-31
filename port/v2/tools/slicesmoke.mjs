@@ -37,6 +37,7 @@ import {
   assessCompendiumFeedAudioAcknowledgement,
   assessCompendiumFeedChoiceActivation,
   assessCompendiumFeedPreview,
+  buildCompendiumFeedChoiceSettlementExpression,
   arc2InventoryCarrierLegacyCargoParity,
   assessCompendiumFeedCommittedOutcome,
   assessCompendiumFeedPendingWindow,
@@ -17530,32 +17531,12 @@ try {
         targetY: dispatchPreflight.y,
         ...nativeDispatch,
       });
-      const prefix = JSON.stringify({
+      const expression = buildCompendiumFeedChoiceSettlementExpression({
         kind, expectedId, expectedPriorId,
         document: preparation.document,
         prepared: preparation.prepared,
         dispatch,
-      });
-      const expression = `(()=>{const prefix=${prefix},h=window.__cfFeedChoiceHarness,
-        selector=${JSON.stringify(selector)},labels=[...document.querySelectorAll(selector)],
-        label=labels[0]??null,radio=label?.control??null,radioId=radio?.id??null,
-        ui=${ARC5_FEED_UI_EXPRESSION};return {
-          ...prefix,receipt:h?.receipt??{pointerdowns:[],clicks:[],inputs:[],changes:[]},
-          settled:{selectorCount:labels.length,
-            radioIdMatchCount:radioId?[...document.querySelectorAll('[id]')]
-              .filter((node)=>node.id===radioId).length:0,
-            labelOwnerCount:radioId?[...document.querySelectorAll('label[for]')]
-              .filter((node)=>node.htmlFor===radioId).length:0,
-            labelFor:label?.htmlFor??null,labelConnected:label?.isConnected===true,
-            labelContainsRadio:!!label&&!!radio&&label.contains(radio),
-            labelNodeToken:h?.tokenOf?.(label)??null,radioId,
-            radioNodeToken:h?.tokenOf?.(radio)??null,
-            radioConnected:radio?.isConnected===true,radioDisabled:radio?.disabled??null,
-            radioChecked:radio?.checked??null,radioChoice:radio?.dataset.arc5FeedChoice??null,
-            radioCreatureId:radio?.dataset.arc5FeedCreatureId??null,
-            radioFoodLotId:radio?.dataset.arc5FeedFoodLotId??null,
-            ui:{document:ui.document,controller:{...(ui.controller??{}),feedState:ui.feedState},
-              selectedCreatureId:ui.selectedCreatureId,selectedFoodLotId:ui.selectedFoodLotId}}}}})()`;
+      }, selector, ARC5_FEED_UI_EXPRESSION);
       const deadline = performance.now() + 6_000;
       let observation = null;
       let assessment = null;

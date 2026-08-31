@@ -9,6 +9,7 @@ import {
   assessCompendiumFeedPendingWindow,
   assessCompendiumFeedPreview,
   assessCompendiumFeedTwoDocumentStaleOutcome,
+  buildCompendiumFeedChoiceSettlementExpression,
   compendiumFeedWebAudioEndpointFailureIsInstrument,
   compendiumFeedWebAudioRouteNodeIds,
   projectCompendiumFeedWebAudioGraph,
@@ -766,6 +767,27 @@ function twoDocumentStaleBundle() {
 }
 
 describe('Slice Arc 5 Feed causal-chain evidence', () => {
+  it('compiles the exact Feed settlement expression and rejects closure drift', () => {
+    const expression = buildCompendiumFeedChoiceSettlementExpression(
+      {
+        kind: 'creature', expectedId: fixture.creatureId, expectedPriorId: null,
+        document: choiceDocument, prepared: {}, dispatch: {},
+      },
+      `#codexpanel label[data-arc5-feed-creature-label="${fixture.creatureId}"]`,
+      '({document:null,controller:null,feedState:null,selectedCreatureId:null,selectedFoodLotId:null})',
+    );
+    const compile = (candidate: string): void => {
+      Function(`"use strict"; return (${candidate});`);
+    };
+    const missingClosure = expression.replace(/\}\)\(\)$/u, ')()');
+    const surplusClosure = expression.replace(/\)\(\)$/u, '})()');
+
+    expect(expression.endsWith('}}}})()')).toBe(true);
+    expect(() => compile(expression)).not.toThrow();
+    expect(() => compile(missingClosure)).toThrow(SyntaxError);
+    expect(() => compile(surplusClosure)).toThrow(SyntaxError);
+  });
+
   it('binds each native Feed choice to one current nested radio and preserves the first choice', () => {
     const creature = feedChoiceWitness('creature', null);
     expect(assessCompendiumFeedChoiceActivation(
@@ -1816,6 +1838,7 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
 
       return occurrences(candidate, 'activateArc5FeedChoice(') === 4
         && occurrences(candidate, 'collectArc5FeedPreview(') === 2
+        && occurrences(candidate, 'buildCompendiumFeedChoiceSettlementExpression(') === 1
         && candidate.includes('const desktopArc5FeedDriver = Object.freeze({\n'
           + '    evaluate: evalIn,\n    wait: waitDesktopValue,\n'
           + '    clickPoint: clickDesktopPoint,\n  });')

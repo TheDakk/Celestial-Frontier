@@ -10,6 +10,52 @@ summary of it.
 
 ## Contents
 
+### Signed `f219d46…` native-Feed predecessors, then generated-expression instrument red
+
+Exact clean SSH-signed source `f219d46693b629ae035d05e5205be98840650ece` (tree
+`d92dde7f613cc5b2403cf6b137f86061695b7c7e`, parent
+`51a8ac43f1a583e73dc4d111da04bbdb76abcc02`) passed its hermetic tracked-input develop profile at
+**253 files / 2,528 passed / 1 skipped**, all three strict TypeScript programs, **34** art sources
+with zero findings, **1,014/1,014** routes and **454** specification fields with zero inert fields.
+All five PR-classifier-required browser instrument controls passed once.
+
+On the same unchanged clean source and Microsoft Edge `152.0.4191.53` / CDP `1.3`, SceneMemory run
+`20260830-pr35-f219d46-feed-native-scenemem` passed **44/44** in **13,239 ms**, and Compendium run
+`20260830-pr35-f219d46-feed-native-compendium` passed **78/78** in **64,447 ms**. Both exact named
+verifiers passed with zero findings and complete lifecycle cleanup.
+
+- `ARC1C_SCENEMEM_PR35_FEED_NATIVE_PASS_20260830_F219D46.json.gz`: **49,848 gzip / 787,866 raw
+  bytes**; gzip/raw SHA-256
+  `be26526d359179236a72586dcf7460348b9882d72b46908f6cc12d044873f3c9` /
+  `0b6d2619c90421f9bdc2fc20e8059a3f03c2bc3b0900044d14638945517a4d00`.
+- `ARC1C_COMPENDIUM_PR35_FEED_NATIVE_PASS_20260830_F219D46.json.gz`: **523,112 gzip / 10,886,765
+  raw bytes**; gzip/raw SHA-256
+  `19b5551ca34c8e37a27f0b7a101cb945da4a13536fd23b036efcea6fbd99865d` /
+  `5f531df3c4d96dc24fe81f17434c65d0f72b644315da41e72e4ab793589bd1e0`.
+
+Slice run `20260830-pr35-f219d46-feed-native-slice-certification` then ran exactly once and stopped
+after **155,668 ms** with one `harness` finding: the generated post-click settlement program ended
+with one surplus `}` and `Runtime.evaluate` returned `SyntaxError: Unexpected token '}'`. The raw
+CDP choice dispatch had completed, but the runner stopped before settlement assessment, the flora
+choice, preview, durable read, confirmation, writer or persistence comparison. Its named PASS
+verifier correctly rejected the terminal-red predecessor. Glass did not run.
+
+- `ARC4_SLICE_PR35_FEED_NATIVE_EXPRESSION_INSTRUMENT_RED_20260830_F219D46.json.gz`: **1,769 gzip /
+  5,617 raw bytes**; gzip/raw SHA-256
+  `8b52086c5c87abaf33021c5c2f6f4abea085a333547f6a77e5d77a89fe8ae47c` /
+  `e48bf810e673f5e70f81e3ef1349765c0cea6671915549e6161e445d944bcebc`.
+- `ARC4_SLICE_PR35_FEED_NATIVE_EXPRESSION_INSTRUMENT_RED_20260830_F219D46.log.gz`: **1,601 gzip /
+  3,856 raw bytes**; gzip/raw SHA-256
+  `4aa149e58204e5f9403e54301412ead21491e6039e7057a4aea4fe7b40f34d1d` /
+  `8f8b0d8d01cbe1a748d41a41212b3812598a12932cdc91cffcaf9c8e09686fe8`.
+
+The bounded successor removes exactly the surplus closure and moves the generated settlement
+program into one pure builder shared by runner and test. The browser-free control compiles those
+exact bytes and proves both a missing brace and an extra brace are rejected. Focused Feed coverage
+is **2 files / 17 passed**; all three TypeScript programs and strict unused-symbol checking pass.
+No product, creature/genome, save, timeout, retry, numeric ruler, browser baseline or release byte
+changed. The immutable `f219d46…` report remains FAIL and is never retried or relabelled.
+
 ### Signed `51a8ac4…` input-v5 predecessors, then terminal Feed-preview instrument red
 
 Exact clean SSH-signed source `51a8ac43f1a583e73dc4d111da04bbdb76abcc02` (tree

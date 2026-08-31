@@ -17,27 +17,31 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · INPUT-v5 GREEN · FEED CERTIFICATE OWNER REPAIRED LOCALLY ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · INPUT-v5 GREEN · FEED EXPRESSION REPAIR READY ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
   **origin/openai/mac**. Exact clean signed evidence source
-  **51a8ac43f1a583e73dc4d111da04bbdb76abcc02** (tree
-  **0f823714e2e1c6020108f0aa31ae7b038da5dc74**, parent
-  **e2ff953807df7b42fe4c979222866e4cfb89b8ce**) is **39 commits ahead** of the fetched remote
-  agent branch; both new commits' embedded SSH signatures were cryptographically verified.
-- **Current local successor:** a dirty, bounded **Slice evidence-only** descendant repairs the
-  terminal Feed-preview instrument gap and preserves its exact SceneMemory/Compendium/Slice
-  carriers. It changes no game product source. The repair binds the actual nested radio, trusted
-  browser event chain, synchronous render replacement, controller selection and structured
-  pre-action preview in both loser and winner documents. **A New Foundation** remains exactly
-  **75** unique bullets with rendered ordered SHA-256
-  **52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1**. No creature/genome structure, capture
-  pool, Yield cycle, save schema, art/audio system, balance, timeout, retry, release identity or
-  Edge-version baseline changed. Exact signed `51a8ac4…` owns the activated input-v5 ruler; the
-  dirty successor must earn its own fresh certificate and may not reuse that browser verdict.
+  **f219d46693b629ae035d05e5205be98840650ece** (tree
+  **d92dde7f613cc5b2403cf6b137f86061695b7c7e**, parent
+  **51a8ac43f1a583e73dc4d111da04bbdb76abcc02**) is **40 commits ahead** of the fetched remote
+  agent branch; its embedded SSH signature was cryptographically verified.
+- **Exact f219 evidence:** the hermetic tracked develop preflight passed **253 files / 2,528 passed
+  / 1 skipped**, all TypeScript/static gates and the five classifier-required browser controls.
+  SceneMemory passed **44/44** in **13,239 ms** and Compendium passed **78/78** in **64,447 ms**,
+  both named-verified. Slice then stopped once/no-retry after **155,668 ms** on one generated-
+  expression `SyntaxError`; Glass did not run. Exact carriers are preserved under `audits/`.
+- **Current local successor:** a dirty, bounded **Slice evidence-only** descendant removes exactly
+  one surplus `}` and moves the settlement expression into one pure builder used by runner and
+  browser-free test. Both missing- and extra-brace controls are red; focused Feed tests are **17/17**
+  and all TypeScript programs plus strict unused-symbol checking pass. It changes no game product
+  source. **A New Foundation** remains exactly **75** unique bullets with rendered ordered SHA-256
+  **52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1**. No creature/genome
+  structure, capture pool, Yield cycle, save schema, art/audio system, balance, timeout, retry,
+  release identity or Edge-version baseline changed. The successor must earn its own fresh chain;
+  neither historical red may be retried or relabelled.
 - **Current derived inputs:** Scene build / active input-v5 budget SHA-256 is
   **82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b** /
   **11707d53bd640b9f2cd0bb1daf963a1c72308239b10faea0332f030f8bd2743f**.
@@ -61,7 +65,7 @@ the archive verbatim and refresh this handoff in place.
 
 ### Decision — the battery is now proportional to the promotion risk
 
-- The apparently large number is **2,524 passing assertions plus 1 intentional skip inside one
+- The apparently large number is **2,528 passing assertions plus 1 intentional skip inside one
   roughly 23-second Vitest process**. It is not 2,524 Actions jobs, browser launches or sequential
   workflows. Those fast assertions cover independent product invariants and remain the cheapest
   protection against regressions.
@@ -121,6 +125,31 @@ the archive verbatim and refresh this handoff in place.
   Both the initial loser and separate winner document use the same helper; no synthetic click,
   timeout increase or retry was added. Final independent read-only re-audit found the runner,
   contract, declarations and controls field-for-field consistent with no remaining finding.
+
+### Exact f219 native-Feed attempt and generated-expression closure
+
+- Exact signed `f219d46…` single-sourced the native label↔radio activation and structured preview,
+  preserved the 51a evidence, and passed its hermetic tracked-input develop profile at **253 files /
+  2,528 passed / 1 skipped**. Browser resolver, fixed-second heap, Compendium preflight, **591**
+  Compendium mutations and the raw-CDP launcher all passed once on Edge `152.0.4191.53` / CDP
+  `1.3`.
+- SceneMemory `20260830-pr35-f219d46-feed-native-scenemem` passed **44/44** in **13,239 ms** and
+  Compendium `20260830-pr35-f219d46-feed-native-compendium` passed **78/78** in **64,447 ms**.
+  Both exact named verifiers passed with complete cleanup.
+- Slice `20260830-pr35-f219d46-feed-native-slice-certification` ran exactly once, then stopped after
+  **155,668 ms** with one `harness` scope: the post-click settlement program ended with five
+  closing braces where four were required, so `Runtime.evaluate` returned
+  `SyntaxError: Unexpected token '}'`. Its PASS verifier correctly rejected the red report; Glass
+  did not run.
+- Preparation and the raw-CDP creature-radio click had occurred, but settlement assessment, the
+  flora choice, preview, durable read, confirmation, writer and persistence comparison had not.
+  This is an instrument-only red and supplies no Feed product verdict. Exact predecessor/red
+  carriers, gzip/raw sizes and hashes are in `audits/README.md`.
+- Existing focused tests missed it because TypeScript parses only the containing template literal,
+  assessor tests used materialized witnesses, and the source-shape control checked marker order but
+  never compiled the generated program. The bounded successor removes the surplus closure, uses one
+  pure expression builder in runner and test, compiles its exact output and proves missing/surplus
+  closure mutations both fail. No timeout, retry, product or browser-ruler change is involved.
 
 ### Immutable d611 → 7f → 961 → 656 evidence and the isolated Arc 4 boundary
 
@@ -260,18 +289,18 @@ the archive verbatim and refresh this handoff in place.
   Capture action disabled. Scoping the final republish by operation reason would recreate that
   stale-readiness race; the wiring test now rejects such narrowing.
 
-### Exact next work — validate the bounded Feed evidence repair once
+### Exact next work — certify the parsed Feed evidence program once
 
-1. Focused browser-free Feed contracts, source-shape controls, native detach/reattach regression,
-   all three TypeScript programs and final independent audit are green. SSH-sign the instrument/
-   tests/evidence/docs descendant and verify signature plus a clean
-   worktree. On that exact commit, run `node tools/tracked-input-preflight.mjs --profile=develop`
-   once. It owns the complete seven-command develop profile; do not duplicate `check-profile`.
-   Run only classifier-required changed-browser-instrument controls once.
-2. Then run one fresh no-retry
+1. The exact closure repair, shared expression builder, parse/extra-brace/missing-brace controls,
+   focused **17/17** Feed coverage, all TypeScript programs and two independent diagnoses are
+   green. SSH-sign this instrument/tests/evidence/docs descendant and verify its signature plus a
+   clean worktree.
+2. On that exact commit, run `node tools/tracked-input-preflight.mjs --profile=develop` once. It
+   owns the complete seven-command develop profile; do not duplicate `check-profile`. Run only the
+   PR-classifier-required changed-browser-instrument controls once. Then run one fresh no-retry
    SceneMemory → Compendium → Slice → Glass chain on the unchanged committed source. Stop on the
    first nonzero, red or instrument result; Glass runs only after green Slice. Never rerun or
-   relabel the immutable `51a8ac4…` red.
+   relabel the immutable `51a8ac4…` or `f219d46…` reds.
 3. Preserve and named-verify each available exact report. Do **not** run Recovery for this
    agent → `develop` admission; Recovery belongs to a later separately authorized
    `develop` → `main` production candidate. Refresh this handoff with the final local head and
@@ -279,8 +308,9 @@ the archive verbatim and refresh this handoff in place.
 
 ### Product-roadmap and HUMAN boundary
 
-This pass does not recreate or redesign the implemented V2 systems. It fixes only the already-open
-Capture card's post-progression readiness publication. The existing universe-wide art treatment,
+This pass does not recreate or redesign the implemented V2 systems. The current successor changes
+only the generated Feed certificate expression; the already-landed Capture publication repair and
+the existing universe-wide art treatment,
 creature/genome identity, capture math/pools, Guardians/Prime Codex, loot/Pureforged, exploration,
 crafting, combat, care/progression, audio and deterministic persistence remain otherwise untouched.
 
@@ -293,9 +323,8 @@ judgment. Automation must not invent those decisions merely to call the roadmap 
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** finish the bounded Feed certificate review, sign its evidence/docs
-  descendant, run one tracked develop preflight, then run one final local browser chain with causal
-  stop and no retry.
+- **OpenAI/Codex now:** sign the parsed-expression repair/evidence/docs descendant, run one tracked
+  develop preflight, then run one final local browser chain with causal stop and no retry.
 - **GitHub step now:** none. Zero hosted attempts are authorized.
 - **PR #35 after local green:** existing draft, base **develop**, source **openai/mac**, title
   **feat(v2): complete roadmap campaign and harden CI parity**. Its exact push/hosted head is not

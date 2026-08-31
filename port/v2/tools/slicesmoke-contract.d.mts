@@ -71,6 +71,11 @@ export function selectArc5FeedFixtureBurnVerb(
   captureState: unknown,
   rows: readonly unknown[],
 ): 'tame' | 'scavenge' | 'sample' | null;
+export function buildCompendiumFeedChoiceSettlementExpression(
+  prefix: Readonly<Record<string, unknown>>,
+  selector: string,
+  feedUiExpression: string,
+): string;
 export type CompendiumFeedChoiceKind = 'creature' | 'flora';
 export interface CompendiumFeedChoiceExpectation {
   readonly kind: CompendiumFeedChoiceKind;
