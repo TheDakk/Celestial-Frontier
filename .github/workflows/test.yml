@@ -193,7 +193,7 @@ jobs:
           dpkg-deb --extract "$scene_edge_package" "$scene_edge_root"
           scene_edge_browser="$scene_edge_root/opt/microsoft/msedge/microsoft-edge"
           test -x "$scene_edge_browser"
-      - name: scene-memory fixed-fourth phase-validity selftest
+      - name: scene-memory fixed-eighth phase-validity selftest
         if: >-
           github.event.pull_request.base.ref == 'main' ||
           steps.scope.outputs.browser_instrument_changed == 'true'

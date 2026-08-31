@@ -80,13 +80,13 @@ const pixiManagedResourceOwnerPath = path.join(appDir, 'src', 'pixi-managed-reso
 const pixiBatchTextureArrayPath = path.join(appDir, 'src', 'pixi-batch-texture-array.ts');
 const sceneTextPath = path.join(appDir, 'src', 'scene-text.ts');
 
-const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v5';
+const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v6';
 const LIFECYCLE_SCHEMA = 'cf-v2-scene-memory-report-lifecycle/v1';
-const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v6';
-const PROFILE_SCHEMA = 'cf-v2-scene-memory-profile/v4';
-const HEAP_PHASE_VALIDITY_SCHEMA = 'cf-v2-scene-memory-heap-phase-validity/v1';
-const HEAP_PHASE_POLICY_SCHEMA = 'cf-v2-scene-memory-heap-phase-policy/v1';
-const HEAP_PHASE_DERIVATION_SCHEMA = 'cf-v2-scene-memory-heap-phase-derivation/v1';
+const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v7';
+const PROFILE_SCHEMA = 'cf-v2-scene-memory-profile/v5';
+const HEAP_PHASE_VALIDITY_SCHEMA = 'cf-v2-scene-memory-heap-phase-validity/v2';
+const HEAP_PHASE_POLICY_SCHEMA = 'cf-v2-scene-memory-heap-phase-policy/v2';
+const HEAP_PHASE_DERIVATION_SCHEMA = 'cf-v2-scene-memory-heap-phase-derivation/v2';
 const HEAP_PHASE_DERIVATION_RULE = 'smallest-power-of-two-strictly-greater';
 export const SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA =
   'cf-v2-scene-memory-browser-authority/v2';
@@ -123,10 +123,24 @@ const SURFACE_VISTA_CACHE_ENTRIES_MAX = 1;
 const SURFACE_VISTA_CACHE_PIXELS_MAX = 960 * 430;
 const HEAP_PHASE_CONTROL_ALLOCATION_BYTES = 512 * 1024;
 const HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES = 128 * 1024;
-const HEAP_PHASE_SNAPSHOT_PASSES = 4;
-const HEAP_PHASE_SETTLING_PASSES = 2;
-const HEAP_PHASE_VALIDITY_PASSES = Object.freeze([3, 4]);
-const HEAP_PHASE_SCORED_PASS = 4;
+const HEAP_PHASE_SNAPSHOT_PASSES = 8;
+const HEAP_PHASE_SETTLING_PASSES = 6;
+const HEAP_PHASE_VALIDITY_PASSES = Object.freeze([7, 8]);
+const HEAP_PHASE_SCORED_PASS = 8;
+const HISTORICAL_FOUR_PASS_POLICY = Object.freeze({
+  validitySchema: 'cf-v2-scene-memory-heap-phase-validity/v1',
+  snapshotPasses: 4,
+  settlingPasses: 2,
+  validityPasses: Object.freeze([3, 4]),
+  scoredSnapshotPass: 4,
+});
+const CURRENT_HEAP_PHASE_POLICY = Object.freeze({
+  validitySchema: HEAP_PHASE_VALIDITY_SCHEMA,
+  snapshotPasses: HEAP_PHASE_SNAPSHOT_PASSES,
+  settlingPasses: HEAP_PHASE_SETTLING_PASSES,
+  validityPasses: HEAP_PHASE_VALIDITY_PASSES,
+  scoredSnapshotPass: HEAP_PHASE_SCORED_PASS,
+});
 const HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES = 64 * 1024;
 const HEAP_PHASE_ALLOWED_THRESHOLDS_BYTES = Object.freeze(
   [4, 8, 16, 32, 64].map((kilobytes) => kilobytes * 1024),
@@ -505,7 +519,7 @@ function sceneMemoryHeapPhasePolicyErrors(policy, budgetStatus, authority) {
     || !same(policy.validityPasses, HEAP_PHASE_VALIDITY_PASSES)
     || policy.scoredSnapshotPass !== HEAP_PHASE_SCORED_PASS
     || policy.calibrationHardCapBytes !== HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES) {
-    errors.push('budget heapPhase fixed four-pass policy drifted');
+    errors.push('budget heapPhase fixed eight-pass policy drifted');
   }
   const derivation = policy.derivation;
   const derivationKeys = [
@@ -998,11 +1012,13 @@ export async function sceneMemoryCollectFixedSnapshot({
     && phaseThresholdBytes <= HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
   `${profile} ${label}: heap phase threshold must be an integer from 1 through ${HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES}`);
   const labels = [
-    `${label}-phase-settle-1`,
-    `${label}-phase-settle-2`,
+    ...Array.from({ length: HEAP_PHASE_SETTLING_PASSES }, (_, index) =>
+      `${label}-phase-settle-${index + 1}`),
     `${label}-phase-validity`,
     label,
   ];
+  assert(labels.length === HEAP_PHASE_SNAPSHOT_PASSES,
+    'heap phase pass-role inventory drifted');
   const passes = [];
   for (const passLabel of labels) {
     passes.push(await sceneMemoryCollectSnapshotPass({
@@ -1165,41 +1181,42 @@ export function sceneMemorySnapshotPairErrors(snapshot, stableResourcesRequired 
   return errors;
 }
 
-function sceneMemoryHeapPhasePasses(snapshot) {
+function sceneMemoryHeapPhasePasses(snapshot, scoredSnapshotPass = HEAP_PHASE_SCORED_PASS) {
   if (!Array.isArray(snapshot?.heapPhasePasses)
-    || snapshot.heapPhasePasses.length !== HEAP_PHASE_SCORED_PASS - 1) return [];
+    || snapshot.heapPhasePasses.length !== scoredSnapshotPass - 1) return [];
   return [...snapshot.heapPhasePasses, snapshot];
 }
 
-function heapPhaseDeltas(third, fourth) {
+function heapPhaseDeltas(validity, scored) {
   const fields = ['usedSize', 'embedderHeapUsedSize', 'backingStorageSize'];
   const deltas = {};
   for (const field of fields) {
-    const left = third?.heap?.[field];
-    const right = fourth?.heap?.[field];
+    const left = validity?.heap?.[field];
+    const right = scored?.heap?.[field];
     if (!Number.isFinite(left) || left < 0 || !Number.isFinite(right) || right < 0) return null;
     deltas[field] = Math.abs(right - left);
   }
-  if (!snapshotAggregateMatches(third) || !snapshotAggregateMatches(fourth)) return null;
-  deltas.aggregate = Math.abs(fourth.heapAggregateBytes - third.heapAggregateBytes);
+  if (!snapshotAggregateMatches(validity) || !snapshotAggregateMatches(scored)) return null;
+  deltas.aggregate = Math.abs(scored.heapAggregateBytes - validity.heapAggregateBytes);
   return Object.freeze(deltas);
 }
 
 function deriveSceneMemoryHeapPhaseValidity(
   snapshot, stableResourcesRequired, phaseThresholdBytes,
+  policy = CURRENT_HEAP_PHASE_POLICY,
 ) {
   const reasons = [];
-  const passes = sceneMemoryHeapPhasePasses(snapshot);
-  if (passes.length !== HEAP_PHASE_SNAPSHOT_PASSES) {
-    reasons.push('heap phase pass inventory must contain exactly four fixed passes');
+  const passes = sceneMemoryHeapPhasePasses(snapshot, policy.scoredSnapshotPass);
+  if (passes.length !== policy.snapshotPasses) {
+    reasons.push(`heap phase pass inventory must contain exactly ${policy.snapshotPasses} fixed passes`);
   } else {
     passes.forEach((pass, index) => {
       reasons.push(...snapshotPassCarrierErrors(pass)
         .map((error) => `heap phase pass ${index + 1} ${error}`));
     });
     const expectedLabels = [
-      `${snapshot.label}-phase-settle-1`,
-      `${snapshot.label}-phase-settle-2`,
+      ...Array.from({ length: policy.settlingPasses }, (_, index) =>
+        `${snapshot.label}-phase-settle-${index + 1}`),
       `${snapshot.label}-phase-validity`,
       snapshot.label,
     ];
@@ -1215,15 +1232,15 @@ function deriveSceneMemoryHeapPhaseValidity(
       }
     }
     try {
-      const compared = [passes[2], passes[3]];
+      const compared = policy.validityPasses.map((pass) => passes[pass - 1]);
       if (!same(snapshotResourcePoint(compared[0]), snapshotResourcePoint(compared[1]))) {
-        reasons.push('heap phase validity resource fingerprint drifted between passes 3 and 4');
+        reasons.push(`heap phase validity resource fingerprint drifted between passes ${policy.validityPasses[0]} and ${policy.validityPasses[1]}`);
       }
       if (stableResourcesRequired) {
-        const scoredResource = snapshotResourcePoint(passes[3]);
+        const scoredResource = snapshotResourcePoint(passes[policy.scoredSnapshotPass - 1]);
         for (let index = 0; index < passes.length - 1; index++) {
           if (!same(snapshotResourcePoint(passes[index]), scoredResource)) {
-            reasons.push(`heap phase resource fingerprint drifted between passes ${index + 1} and 4`);
+            reasons.push(`heap phase resource fingerprint drifted between passes ${index + 1} and ${policy.scoredSnapshotPass}`);
           }
         }
       }
@@ -1236,8 +1253,11 @@ function deriveSceneMemoryHeapPhaseValidity(
     || phaseThresholdBytes > HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES) {
     reasons.push(`heap phase threshold must be an integer from 1 through ${HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES}`);
   }
-  const deltas = passes.length === HEAP_PHASE_SNAPSHOT_PASSES
-    ? heapPhaseDeltas(passes[2], passes[3]) : null;
+  const deltas = passes.length === policy.snapshotPasses
+    ? heapPhaseDeltas(
+      passes[policy.validityPasses[0] - 1],
+      passes[policy.validityPasses[1] - 1],
+    ) : null;
   if (deltas === null) reasons.push('heap phase validity deltas are absent or invalid');
   else if (Number.isSafeInteger(phaseThresholdBytes) && phaseThresholdBytes > 0) {
     for (const [field, delta] of Object.entries(deltas)) {
@@ -1247,10 +1267,10 @@ function deriveSceneMemoryHeapPhaseValidity(
     }
   }
   return Object.freeze({
-    schema: HEAP_PHASE_VALIDITY_SCHEMA,
+    schema: policy.validitySchema,
     status: reasons.length === 0 ? 'valid' : 'invalid',
-    comparedPasses: HEAP_PHASE_VALIDITY_PASSES,
-    scoredSnapshotPass: HEAP_PHASE_SCORED_PASS,
+    comparedPasses: policy.validityPasses,
+    scoredSnapshotPass: policy.scoredSnapshotPass,
     maxAbsolutePhaseDeltaBytes: phaseThresholdBytes,
     deltas,
     reasons: Object.freeze(reasons),
@@ -1264,6 +1284,21 @@ export function sceneMemorySnapshotPhaseErrors(
     ? snapshot?.heapPhaseValidity?.maxAbsolutePhaseDeltaBytes : expectedThresholdBytes;
   const expected = deriveSceneMemoryHeapPhaseValidity(
     snapshot, stableResourcesRequired, threshold,
+  );
+  const errors = [...expected.reasons];
+  if (!same(snapshot?.heapPhaseValidity, expected)) {
+    errors.push('heap phase validity evidence is detached from the retained raw passes');
+  }
+  return errors;
+}
+
+export function sceneMemorySnapshotHistoricalFourPassErrors(
+  snapshot, stableResourcesRequired = false, expectedThresholdBytes = undefined,
+) {
+  const threshold = expectedThresholdBytes === undefined
+    ? snapshot?.heapPhaseValidity?.maxAbsolutePhaseDeltaBytes : expectedThresholdBytes;
+  const expected = deriveSceneMemoryHeapPhaseValidity(
+    snapshot, stableResourcesRequired, threshold, HISTORICAL_FOUR_PASS_POLICY,
   );
   const errors = [...expected.reasons];
   if (!same(snapshot?.heapPhaseValidity, expected)) {
@@ -1292,8 +1327,11 @@ export function sceneMemoryProfilePhaseMaximum(measurement) {
   const deltas = snapshots.map((snapshot) => {
     const passes = sceneMemoryHeapPhasePasses(snapshot);
     assert(passes.length === HEAP_PHASE_SNAPSHOT_PASSES,
-      'heap phase calibration snapshot must retain exactly four passes');
-    const value = heapPhaseDeltas(passes[2], passes[3]);
+      `heap phase calibration snapshot must retain exactly ${HEAP_PHASE_SNAPSHOT_PASSES} passes`);
+    const value = heapPhaseDeltas(
+      passes[HEAP_PHASE_VALIDITY_PASSES[0] - 1],
+      passes[HEAP_PHASE_VALIDITY_PASSES[1] - 1],
+    );
     assert(value !== null, 'heap phase calibration snapshot deltas are invalid');
     return value;
   });
@@ -1410,7 +1448,7 @@ function sceneMemoryHeapPhaseCandidateAuthorityErrors(
         || report.calibrationBoundary?.status !== 'calibration-required'
         || report.calibrationBoundary?.path !== CALIBRATION_BUDGET_RELATIVE_PATH
         || !/^[a-f0-9]{64}$/.test(report.calibrationBoundary?.sha256 || '')
-        || report.contractInput?.schema !== 'cf-v2-scene-memory-input/v5'
+        || report.contractInput?.schema !== 'cf-v2-scene-memory-input/v6'
         || !report.build || report.build.schema !== 'cf-v2-scene-memory-build/v1'
         || !Array.isArray(report.build.files)
         || report.build.sha256 !== sha256(stableJson(report.build.files))
@@ -1527,12 +1565,12 @@ function assertSceneMemoryHeapPhaseSnapshot(
     snapshot, stableResourcesRequired, phaseThresholdBytes,
   );
   assert(errors.length === 0,
-    `${profile} ${label}: fixed fourth snapshot phase is invalid (${errors.join('; ')})`);
+    `${profile} ${label}: fixed eighth snapshot phase is invalid (${errors.join('; ')})`);
 }
 
 export function sceneMemoryHeapPhaseControlSlopes(snapshots) {
   assert(Array.isArray(snapshots) && snapshots.length === WARM_CYCLES,
-    'heap phase control requires four fixed snapshots');
+    'heap phase control requires four fixed retained-growth cycles');
   const lane = (passIndex) => snapshots.map((snapshot) => {
     const passes = sceneMemoryHeapPhasePasses(snapshot);
     const value = passes[passIndex]?.heap?.backingStorageSize;
@@ -1557,7 +1595,7 @@ async function runHeapPhaseSelftest() {
   let evidence = null;
   try {
     browser = await openChromiumCdp({
-      label: 'SceneMemory fixed-fourth retained-allocation control',
+      label: 'SceneMemory fixed-eighth retained-allocation control',
       userDataPrefix: 'cf-scenemem-heap-phase-control',
       commandTimeoutMs: COMMAND_TIMEOUT_MS, startupTimeoutMs: 45_000,
       webSocketOpenTimeoutMs: 15_000, shutdownTimeoutMs: 2_000,
@@ -1618,13 +1656,13 @@ async function runHeapPhaseSelftest() {
         snapshot, false, HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
       );
       assert(validityErrors.length === 0,
-        `fixed-fourth sampler did not converge its validity pair (${validityErrors.join('; ')})`);
+        `fixed-eighth sampler did not converge its validity pair (${validityErrors.join('; ')})`);
       snapshots.push(snapshot);
       phaseDeltas.push(snapshot.heapPhaseValidity.deltas);
     }
     const slopes = sceneMemoryHeapPhaseControlSlopes(snapshots);
     assert(Object.values(slopes).every((slope) => slope > HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES),
-    `fixed-fourth sampler erased retained growth (${JSON.stringify(slopes)})`);
+    `fixed-eighth sampler erased retained growth (${JSON.stringify(slopes)})`);
     const cleared = await browser.send('Runtime.evaluate', {
       expression: 'globalThis.__cfHeapPhaseRetained=[];true', returnByValue: true,
     }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
@@ -1635,7 +1673,7 @@ async function runHeapPhaseSelftest() {
     });
     assert(released.heap.backingStorageSize
       < snapshots.at(-1).heap.backingStorageSize - HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
-    'fixed-fourth sampler did not distinguish released backing storage from retained growth');
+    'fixed-eighth sampler did not distinguish released backing storage from retained growth');
     evidence = Object.freeze({
       browser: controlBrowser,
       allocationBytesPerCycle: HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
@@ -2226,7 +2264,7 @@ export function sceneMemoryMetricSummary(measurement) {
   const points = [measurement.precondition, ...measurement.cycles, measurement.bfcache].filter(Boolean);
   const initialHeapUsed = measurement.initial?.heap?.usedSize;
   assert(Number.isFinite(initialHeapUsed) && initialHeapUsed >= 0,
-    'source-normalized heap metrics require the scored fixed-fourth initial V8 baseline');
+    'source-normalized heap metrics require the scored fixed-eighth initial V8 baseline');
   const warmAggregates = measurement.cycles.map((point) => point.heap.usedSize
     + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize);
   const warmHeapSlope = Math.max(0, ...[
@@ -2584,7 +2622,7 @@ async function runGate(options) {
          budget. Empty measurements intentionally yield a red verdict but
          must not throw when the budget shape is authoritative. */
       evaluateSceneMemory({
-        schema: 'cf-v2-scene-memory-input/v5',
+        schema: 'cf-v2-scene-memory-input/v6',
         profiles: { phone: { cycles: [], bfcache: null }, desktop: { cycles: [], bfcache: null } },
         budgets: budget.profiles,
       });
@@ -2663,7 +2701,7 @@ async function runGate(options) {
       ]),
     );
     contractInput = {
-      schema: 'cf-v2-scene-memory-input/v5',
+      schema: 'cf-v2-scene-memory-input/v6',
       profiles: Object.fromEntries(Object.entries(profiles).map(([profile, measurement]) => [
         profile, {
           initial: {
@@ -2781,7 +2819,13 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
   try {
     const fixedSecondRequired = measurement?.schema === 'cf-v2-scene-memory-profile/v2'
       || measurement?.schema === 'cf-v2-scene-memory-profile/v3';
-    const fixedFourthRequired = measurement?.schema === PROFILE_SCHEMA;
+    const historicalFourthRequired = measurement?.schema === 'cf-v2-scene-memory-profile/v4';
+    const fixedEighthRequired = measurement?.schema === PROFILE_SCHEMA;
+    const fixedPhaseRequired = historicalFourthRequired || fixedEighthRequired;
+    const phaseErrors = (snapshot, stableResourcesRequired = false) =>
+      (historicalFourthRequired
+        ? sceneMemorySnapshotHistoricalFourPassErrors(snapshot, stableResourcesRequired)
+        : sceneMemorySnapshotPhaseErrors(snapshot, stableResourcesRequired));
     if (!measurement?.initial || !same(
       measurement.initialVista,
       surfaceVistaState(measurement.initial.raw?.scene || {}),
@@ -2822,8 +2866,8 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
           errors.push('final warmup alias is detached from retained warmup evidence');
         }
       }
-    } else if (fixedFourthRequired) {
-      errors.push(...sceneMemorySnapshotPhaseErrors(measurement.initial)
+    } else if (fixedPhaseRequired) {
+      errors.push(...phaseErrors(measurement.initial)
         .map((error) => `initial ${error}`));
       if (measurement.initial?.label !== `${measurement.profile}-initial`) {
         errors.push('initial snapshot label/profile drifted');
@@ -2841,7 +2885,7 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
         errors.push('normalized metric summary is detached from retained profile evidence');
       }
     }
-    if (fixedFourthRequired) {
+    if (fixedPhaseRequired) {
       if (!Array.isArray(measurement.warmups)
         || measurement.warmups.length !== WARMUP_CYCLES) {
         errors.push('retained warmup snapshot inventory is incomplete');
@@ -2851,7 +2895,7 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
           if (snapshot?.label !== `${measurement.profile}-warmup-${index + 1}`) {
             errors.push(`warmup snapshot ${index + 1} label/order drifted`);
           }
-          errors.push(...sceneMemorySnapshotPhaseErrors(snapshot, true)
+          errors.push(...phaseErrors(snapshot, true)
             .map((error) => `warmup snapshot ${index + 1} ${error}`));
         }
         if (!same(measurement.warmup, measurement.warmups.at(-1))) {
@@ -2894,7 +2938,7 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
         const { cycle, inventory, ...point } = measurement.cycles[index];
         void inventory;
         if (cycle !== index + 1) errors.push(`cycle ${index + 1} ordinal drifted`);
-        if (fixedFourthRequired
+        if (fixedPhaseRequired
           && measurement.measured[index]?.label !== `${measurement.profile}-warm-${index + 1}`) {
           errors.push(`cycle ${index + 1} snapshot label/order drifted`);
         }
@@ -2904,8 +2948,8 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
         if (fixedSecondRequired) {
           errors.push(...sceneMemorySnapshotPairErrors(measurement.measured[index], true)
             .map((error) => `cycle ${index + 1} ${error}`));
-        } else if (fixedFourthRequired) {
-          errors.push(...sceneMemorySnapshotPhaseErrors(measurement.measured[index], true)
+        } else if (fixedPhaseRequired) {
+          errors.push(...phaseErrors(measurement.measured[index], true)
             .map((error) => `cycle ${index + 1} ${error}`));
         }
       }
@@ -2928,15 +2972,15 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
       if (!same(point, contractPoint(measurement.bfcacheSnapshot))) {
         errors.push('bfcache point is detached from its raw snapshot');
       }
-      if (fixedFourthRequired
+      if (fixedPhaseRequired
         && measurement.bfcacheSnapshot?.label !== `${measurement.profile}-bfcache`) {
         errors.push('bfcache snapshot label/profile drifted');
       }
       if (fixedSecondRequired) {
         errors.push(...sceneMemorySnapshotPairErrors(measurement.bfcacheSnapshot)
           .map((error) => `bfcache ${error}`));
-      } else if (fixedFourthRequired) {
-        errors.push(...sceneMemorySnapshotPhaseErrors(measurement.bfcacheSnapshot)
+      } else if (fixedPhaseRequired) {
+        errors.push(...phaseErrors(measurement.bfcacheSnapshot)
           .map((error) => `bfcache ${error}`));
       }
     }
@@ -2949,7 +2993,7 @@ export function sceneMemoryProfileRawBindingErrors(measurement) {
 
 export function sceneMemoryProfilePhaseBudgetErrors(measurement, phaseThresholdBytes) {
   if (measurement?.schema !== PROFILE_SCHEMA) {
-    return [`profile schema must be ${PROFILE_SCHEMA} for fixed-fourth phase authority`];
+    return [`profile schema must be ${PROFILE_SCHEMA} for fixed-eighth phase authority`];
   }
   const snapshots = [
     ['initial', measurement.initial, false],
@@ -2970,7 +3014,7 @@ export function sceneMemoryProfilePhaseBudgetErrors(measurement, phaseThresholdB
 
 export function terminalProfileEvidenceErrors(
   profiles, surfaceVistaRequired = false, fixedSecondRequired = false,
-  sourceNormalizedRequired = false, fixedFourthRequired = false,
+  sourceNormalizedRequired = false, fixedFinalRequired = false,
 ) {
   const errors = [];
   const profileKeys = Object.keys(profiles || {}).sort();
@@ -2981,13 +3025,13 @@ export function terminalProfileEvidenceErrors(
     const measurement = profiles?.[profile];
     if (!measurement || measurement.profile !== profile
       || !same(measurement.viewport, PROFILES[profile])
-      || (fixedFourthRequired
+      || (fixedFinalRequired
         ? measurement.schema !== PROFILE_SCHEMA
         : sourceNormalizedRequired
           ? measurement.schema !== 'cf-v2-scene-memory-profile/v3'
         : fixedSecondRequired && measurement.schema !== 'cf-v2-scene-memory-profile/v2')
       || !measurement.precondition
-      || ((fixedSecondRequired || fixedFourthRequired) && (!Array.isArray(measurement.warmups)
+      || ((fixedSecondRequired || fixedFinalRequired) && (!Array.isArray(measurement.warmups)
         || measurement.warmups.length !== WARMUP_CYCLES
         || !same(measurement.warmup, measurement.warmups.at(-1))))
       || !Array.isArray(measurement.measured) || measurement.measured.length !== WARM_CYCLES
@@ -3015,7 +3059,7 @@ export function terminalProfileEvidenceErrors(
 function verifyReport(report, expectedRunId, options) {
   const errors = [];
   const sourceNormalizedRequired = report?.contractInput?.schema
-    === 'cf-v2-scene-memory-input/v5';
+    === 'cf-v2-scene-memory-input/v6';
   const surfaceVistaRequired = sourceNormalizedRequired
     || report?.contractInput?.schema === 'cf-v2-scene-memory-input/v4';
   let authoritativeBudgetFile = null;
@@ -3034,7 +3078,7 @@ function verifyReport(report, expectedRunId, options) {
     || report?.policy?.phaseInvalidity !== 'instrument-fail-before-contract'
     || report?.policy?.phaseCalibrationHardCapBytes
       !== HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES) {
-    errors.push('one-attempt/warm-cycle/fixed-fourth phase policy drifted');
+    errors.push('one-attempt/warm-cycle/fixed-eighth phase policy drifted');
   }
   if (!same(report?.cleanup, { browser: true, server: true, workspaceLock: true })) {
     errors.push('terminal cleanup is incomplete');

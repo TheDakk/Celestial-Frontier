@@ -1,5 +1,5 @@
 {
-  "schema": "cf-v2-scene-memory-budget/v6",
+  "schema": "cf-v2-scene-memory-budget/v7",
   "status": "calibration-required",
   "authority": {
     "browser": {
@@ -13,12 +13,12 @@
       "profileContractSha256": "f565ba2a38577f80c16c41762a5fb4e2214f3b320c50e017f1262c0784a6a0ef"
     },
     "producer": {
-      "collector": "936d1bfd9cba6bc59c4cd889160981e612e15b012406c55f22cce11108a682a3",
+      "collector": "c4968d0a2cfb489c46df94f603d9730c995760b3ca2a289b1f3774662d663b71",
       "browserCdp": "6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce",
       "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
       "workspaceLock": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606",
       "fixtureGenerator": "a1b294f0b8b5958910fd873f49d226f80447ad77381cccfd0acb21c82dc7aece",
-      "verdictContract": "da6dce07590d14a0e7bb44f242669220717e8c0556f119d92266c64cfe744c7a",
+      "verdictContract": "e973f8c8f3eeae05c1c9c1328926f2ccf6f4aba7b3602f6bf5ab623a6163d599",
       "fixtureSpec": "c5792c2c8605765b95170e8d954a157e60c9abfa37500ec93c5e1f81722f69f3",
       "fixtureRows": "daefba685c3e70febd94781d5b140659f741a181edc32154be57e631af361706",
       "baselineSaveFixtures": "a52bfbdc1c65a418eed07a1e7ba5ffd07b36caf5ce10e587c7d34a717deab2a7",
@@ -39,15 +39,15 @@
     }
   },
   "heapPhase": {
-    "schema": "cf-v2-scene-memory-heap-phase-policy/v1",
+    "schema": "cf-v2-scene-memory-heap-phase-policy/v2",
     "status": "calibration-required",
-    "snapshotPasses": 4,
-    "settlingPasses": 2,
-    "validityPasses": [3, 4],
-    "scoredSnapshotPass": 4,
+    "snapshotPasses": 8,
+    "settlingPasses": 6,
+    "validityPasses": [7, 8],
+    "scoredSnapshotPass": 8,
     "calibrationHardCapBytes": 65536,
     "derivation": {
-      "schema": "cf-v2-scene-memory-heap-phase-derivation/v1",
+      "schema": "cf-v2-scene-memory-heap-phase-derivation/v2",
       "rule": "smallest-power-of-two-strictly-greater",
       "candidateCount": 3,
       "candidateSetSha256": null,

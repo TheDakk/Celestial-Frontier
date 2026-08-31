@@ -25,6 +25,7 @@ import {
   sceneMemoryMetricSummary,
   sceneMemoryProfileRawBindingErrors,
   sceneMemorySnapshotPairErrors,
+  sceneMemorySnapshotHistoricalFourPassErrors,
   sceneMemorySnapshotPhaseErrors,
   sceneMemoryShipyardOpenSettlementReasons,
   sceneMemorySurfaceVistaFaultReasons,
@@ -57,6 +58,8 @@ const RETAINED_REPORT_FILES = [
   '../../../audits/ARC1C_SCENEMEM_LOCAL_CERTIFICATION.json.gz',
   '../../../audits/ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION1_20260830_553B06B.json.gz',
 ] as const;
+const HISTORICAL_FOUR_PASS_RED_FILE =
+  '../../../audits/ARC1C_SCENEMEM_PR35_FOURPASS_CALIBRATION_INSTRUMENT_RED_20260830_5691E77_CANDIDATE1.json.gz';
 const budgetPath = fileURLToPath(new URL('../budgets/scene-memory-v2.json', import.meta.url));
 const currentBudget = JSON.parse(readFileSync(budgetPath, 'utf8'));
 
@@ -157,7 +160,7 @@ function retainedReports(): any[] {
 
 function bindCurrentContract(report: any): void {
   report.contractInput = {
-    schema: 'cf-v2-scene-memory-input/v5',
+    schema: 'cf-v2-scene-memory-input/v6',
     profiles: Object.fromEntries((['phone', 'desktop'] as const).map((profile) => {
       const measurement = report.profiles[profile];
       return [profile, {
@@ -179,16 +182,81 @@ function bindCurrentContract(report: any): void {
   report.outcomes = report.verdict.outcomes;
 }
 
+function currentFixedEightSnapshot(snapshot: any): any {
+  const scoredLabel = snapshot.label;
+  const labels = [
+    ...Array.from({ length: 6 }, (_, index) => `${scoredLabel}-phase-settle-${index + 1}`),
+    `${scoredLabel}-phase-validity`,
+    scoredLabel,
+  ];
+  const passes = labels.map((label, index) => {
+    const pass = structuredClone(snapshot);
+    delete pass.heapPhaseProbe;
+    delete pass.heapPhasePasses;
+    delete pass.heapPhaseValidity;
+    pass.label = label;
+    pass.answerability.token = label;
+    const before = 10_000 + index * 2;
+    pass.answerability.target.value.before = before;
+    pass.answerability.target.value.after = before + 1;
+    pass.raw.state.tickerTicks = before + 1;
+    return pass;
+  });
+  const scored = passes.at(-1)!;
+  scored.heapPhasePasses = passes.slice(0, -1);
+  scored.heapPhaseValidity = {
+    schema: 'cf-v2-scene-memory-heap-phase-validity/v2',
+    status: 'valid',
+    comparedPasses: [7, 8],
+    scoredSnapshotPass: 8,
+    maxAbsolutePhaseDeltaBytes: 65_536,
+    deltas: {
+      usedSize: 0,
+      embedderHeapUsedSize: 0,
+      backingStorageSize: 0,
+      aggregate: 0,
+    },
+    reasons: [],
+  };
+  return scored;
+}
+
 function currentReportFixture(): any {
   const report = structuredClone(retainedReports().at(-1)!);
-  report.schema = 'cf-v2-scene-memory-report/v4';
+  report.schema = 'cf-v2-scene-memory-report/v6';
   report.status = 'pass';
   report.certification = 'contract-budget';
   report.findings = [];
   report.fatalEvents = [];
+  report.calibrationBoundary = null;
+  report.policy = {
+    ...report.policy,
+    snapshotPasses: 8,
+    settlingPasses: 6,
+    validityPasses: [7, 8],
+    scoredSnapshotPass: 8,
+    phaseInvalidity: 'instrument-fail-before-contract',
+    phaseCalibrationHardCapBytes: 65_536,
+  };
   for (const profile of ['phone', 'desktop'] as const) {
-    report.profiles[profile].schema = 'cf-v2-scene-memory-profile/v3';
-    report.profiles[profile].metrics = sceneMemoryMetricSummary(report.profiles[profile]);
+    const measurement = report.profiles[profile];
+    measurement.schema = 'cf-v2-scene-memory-profile/v5';
+    measurement.initial = currentFixedEightSnapshot(measurement.initial);
+    measurement.warmups = measurement.warmups.map(currentFixedEightSnapshot);
+    measurement.warmup = measurement.warmups.at(-1);
+    measurement.measured = measurement.measured.map(currentFixedEightSnapshot);
+    measurement.bfcacheSnapshot = currentFixedEightSnapshot(measurement.bfcacheSnapshot);
+    measurement.precondition = rawContractProjection(measurement.warmup);
+    measurement.cycles = measurement.measured.map((snapshot: any, index: number) => ({
+      ...rawContractProjection(snapshot),
+      cycle: index + 1,
+      inventory: measurement.cycles[index].inventory,
+    }));
+    measurement.bfcache = {
+      ...measurement.bfcache,
+      ...rawContractProjection(measurement.bfcacheSnapshot),
+    };
+    measurement.metrics = sceneMemoryMetricSummary(measurement);
   }
   bindCurrentContract(report);
   return report;
@@ -275,7 +343,7 @@ function surfaceTierSettlementBindingErrors(source: string): string[] {
     '+ Number(scene.surfaceVistaWorkerActive) + Number(scene.surfaceVistaMounted)',
     'surfaceVistaCacheEntriesMax: max((point) => point.surfaceVistaCacheEntries)',
     'errors.push(...sceneMemoryProfileRawBindingErrors(measurement)',
-    "schema: 'cf-v2-scene-memory-input/v5'",
+    "schema: 'cf-v2-scene-memory-input/v6'",
   ];
   return exactBindings.filter((binding) => !source.includes(binding));
 }
@@ -284,10 +352,10 @@ function sourceNormalizedHeapBindingErrors(source: string): string[] {
   const projectionUse =
     'heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),';
   const exactBindings = [
-    "const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v5';",
-    "const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v6';",
-    "const PROFILE_SCHEMA = 'cf-v2-scene-memory-profile/v4';",
-    "schema: 'cf-v2-scene-memory-input/v5'",
+    "const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v6';",
+    "const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v7';",
+    "const PROFILE_SCHEMA = 'cf-v2-scene-memory-profile/v5';",
+    "schema: 'cf-v2-scene-memory-input/v6'",
     'documentToken: measurement.initial.raw.scene.documentToken,',
     'export function sceneMemoryInitialHeapProjection(heap) {',
     projectionUse,
@@ -539,7 +607,19 @@ describe('scene-memory terminal verifier', () => {
     return { trace, send, collector };
   }
 
-  it('retains all four fixed passes and scores pass four whether it is higher or lower', async () => {
+  function fixedEightHeaps(
+    validity: Record<string, number>,
+    scored: Record<string, number>,
+    settling: Array<Record<string, number>> = [],
+  ): Array<Record<string, number>> {
+    return [
+      ...Array.from({ length: 6 }, (_, index) => settling[index] ?? validity),
+      validity,
+      scored,
+    ];
+  }
+
+  it('retains all eight fixed passes and scores pass eight whether it is higher or lower', async () => {
     const phaseThresholdBytes = 4 * 1024;
     const settle1 = { usedSize: 91_000, embedderHeapUsedSize: 82_000, backingStorageSize: 73_000 };
     const settle2 = { usedSize: 12_000, embedderHeapUsedSize: 23_000, backingStorageSize: 34_000 };
@@ -560,33 +640,39 @@ describe('scene-memory terminal verifier', () => {
     ];
 
     for (const control of cases) {
-      const harness = snapshotHarness([settle1, settle2, validity, control.scored]);
+      const harness = snapshotHarness(fixedEightHeaps(
+        validity, control.scored, [settle1, settle2],
+      ));
       const snapshot = await sceneMemoryCollectFixedSnapshot({
         send: harness.send, sessionId: 'snapshot-session', collector: harness.collector,
         profile: 'phone', label: `phone-warm-${control.name}`,
         phaseThresholdBytes, stableResourcesRequired: true,
       });
       expect(harness.trace, control.name).toEqual(Array.from(
-        { length: 4 }, () => onePass,
+        { length: 8 }, () => onePass,
       ).flat());
       expect(snapshot.heapPhasePasses.map((pass: any) => pass.label), control.name).toEqual([
         `phone-warm-${control.name}-phase-settle-1`,
         `phone-warm-${control.name}-phase-settle-2`,
+        `phone-warm-${control.name}-phase-settle-3`,
+        `phone-warm-${control.name}-phase-settle-4`,
+        `phone-warm-${control.name}-phase-settle-5`,
+        `phone-warm-${control.name}-phase-settle-6`,
         `phone-warm-${control.name}-phase-validity`,
       ]);
       expect(snapshot.label, control.name).toBe(`phone-warm-${control.name}`);
       expect(snapshot.heapPhasePasses.map((pass: any) => pass.heap), control.name)
-        .toEqual([settle1, settle2, validity]);
+        .toEqual([settle1, settle2, validity, validity, validity, validity, validity]);
       expect(snapshot.heap, control.name).toEqual(control.scored);
       expect(snapshot.heapAggregateBytes, control.name).toBe(
         control.scored.usedSize + control.scored.embedderHeapUsedSize
           + control.scored.backingStorageSize,
       );
       expect(snapshot.heapPhaseValidity, control.name).toMatchObject({
-        schema: 'cf-v2-scene-memory-heap-phase-validity/v1',
+        schema: 'cf-v2-scene-memory-heap-phase-validity/v2',
         status: 'valid',
-        comparedPasses: [3, 4],
-        scoredSnapshotPass: 4,
+        comparedPasses: [7, 8],
+        scoredSnapshotPass: 8,
         maxAbsolutePhaseDeltaBytes: phaseThresholdBytes,
         deltas: {
           usedSize: 400,
@@ -611,7 +697,7 @@ describe('scene-memory terminal verifier', () => {
     };
     const collect = async (field: keyof typeof base, delta: number, label: string) => {
       const scored = { ...base, [field]: base[field] + delta };
-      const harness = snapshotHarness([base, base, base, scored]);
+      const harness = snapshotHarness(fixedEightHeaps(base, scored));
       return sceneMemoryCollectFixedSnapshot({
         send: harness.send, sessionId: 'snapshot-session', collector: harness.collector,
         profile: 'desktop', label, phaseThresholdBytes, stableResourcesRequired: true,
@@ -660,7 +746,7 @@ describe('scene-memory terminal verifier', () => {
         field, value + deltas[field as keyof typeof base],
       ])) as typeof base;
       return sceneMemoryCollectFixedSnapshot({
-        ...snapshotHarness([base, base, base, scored]),
+        ...snapshotHarness(fixedEightHeaps(base, scored)),
         sessionId: 'snapshot-session', profile: 'desktop', label,
         phaseThresholdBytes, stableResourcesRequired: true,
       });
@@ -757,7 +843,7 @@ describe('scene-memory terminal verifier', () => {
     const phaseThresholdBytes = 4 * 1024;
     const heap = { usedSize: 100_000, embedderHeapUsedSize: 200_000, backingStorageSize: 300_000 };
     const snapshot: any = structuredClone(await sceneMemoryCollectFixedSnapshot({
-      ...snapshotHarness([heap, heap, heap, heap]),
+      ...snapshotHarness(fixedEightHeaps(heap, heap)),
       sessionId: 'snapshot-session', profile: 'phone', label: 'phone-warm-1',
       phaseThresholdBytes, stableResourcesRequired: true,
     }));
@@ -768,7 +854,7 @@ describe('scene-memory terminal verifier', () => {
     expect(sceneMemorySnapshotPhaseErrors(
       missingPasses, true, phaseThresholdBytes,
     )).toEqual(expect.arrayContaining([
-      'heap phase pass inventory must contain exactly four fixed passes',
+      'heap phase pass inventory must contain exactly 8 fixed passes',
       'heap phase validity deltas are absent or invalid',
       'heap phase validity evidence is detached from the retained raw passes',
     ]));
@@ -785,6 +871,12 @@ describe('scene-memory terminal verifier', () => {
       reordered, true, phaseThresholdBytes,
     )).toContain('heap phase pass order/labels are invalid');
 
+    const missingInterior = structuredClone(snapshot);
+    missingInterior.heapPhasePasses.splice(3, 1);
+    expect(sceneMemorySnapshotPhaseErrors(
+      missingInterior, true, phaseThresholdBytes,
+    )).toContain('heap phase pass inventory must contain exactly 8 fixed passes');
+
     const wrongToken = structuredClone(snapshot);
     wrongToken.heapPhasePasses[0].answerability.token = snapshot.label;
     expect(sceneMemorySnapshotPhaseErrors(
@@ -800,30 +892,30 @@ describe('scene-memory terminal verifier', () => {
     const clonedValidity = structuredClone(snapshot);
     const retainedPasses = clonedValidity.heapPhasePasses;
     const retainedValidity = clonedValidity.heapPhaseValidity;
-    Object.assign(clonedValidity, structuredClone(retainedPasses[2]));
+    Object.assign(clonedValidity, structuredClone(retainedPasses[6]));
     clonedValidity.label = snapshot.label;
     clonedValidity.answerability.token = snapshot.label;
     clonedValidity.heapPhasePasses = retainedPasses;
     clonedValidity.heapPhaseValidity = retainedValidity;
     expect(sceneMemorySnapshotPhaseErrors(
       clonedValidity, true, phaseThresholdBytes,
-    )).toContain('heap phase ticker progression is invalid between passes 3 and 4');
+    )).toContain('heap phase ticker progression is invalid between passes 7 and 8');
 
     const detached = structuredClone(snapshot);
-    detached.heapPhasePasses[2].heapAggregateBytes++;
+    detached.heapPhasePasses[6].heapAggregateBytes++;
     expect(sceneMemorySnapshotPhaseErrors(
       detached, true, phaseThresholdBytes,
     )).toEqual(expect.arrayContaining([
-      'heap phase pass 3 heap aggregate is detached from raw counters',
+      'heap phase pass 7 heap aggregate is detached from raw counters',
       'heap phase validity deltas are absent or invalid',
       'heap phase validity evidence is detached from the retained raw passes',
     ]));
 
     const drifted = structuredClone(snapshot);
-    drifted.heapPhasePasses[2].raw.compendium.artLive = { changed: true };
+    drifted.heapPhasePasses[6].raw.compendium.artLive = { changed: true };
     expect(sceneMemorySnapshotPhaseErrors(
       drifted, true, phaseThresholdBytes,
-    )).toContain('heap phase validity resource fingerprint drifted between passes 3 and 4');
+    )).toContain('heap phase validity resource fingerprint drifted between passes 7 and 8');
 
     const forged = structuredClone(snapshot);
     forged.heap = {
@@ -886,6 +978,46 @@ describe('scene-memory terminal verifier', () => {
     }
   });
 
+  it('replays the immutable four-pass calibration red without relabelling it', () => {
+    const report = JSON.parse(gunzipSync(readFileSync(fileURLToPath(new URL(
+      HISTORICAL_FOUR_PASS_RED_FILE, import.meta.url,
+    )))).toString('utf8'));
+    expect(report).toMatchObject({
+      schema: 'cf-v2-scene-memory-report/v5',
+      status: 'instrument-fail',
+      profiles: {
+        phone: { schema: 'cf-v2-scene-memory-profile/v4' },
+        desktop: { schema: 'cf-v2-scene-memory-profile/v4' },
+      },
+    });
+
+    const phoneSnapshots = [
+      report.profiles.phone.initial,
+      ...report.profiles.phone.warmups,
+      ...report.profiles.phone.measured,
+      report.profiles.phone.bfcacheSnapshot,
+    ];
+    expect(phoneSnapshots).toHaveLength(10);
+    phoneSnapshots.forEach((snapshot, index) => {
+      expect(sceneMemorySnapshotHistoricalFourPassErrors(
+        snapshot, index > 0, 65_536,
+      ), `phone historical snapshot ${index + 1}`).toEqual([]);
+    });
+
+    expect(sceneMemorySnapshotHistoricalFourPassErrors(
+      report.profiles.desktop.initial, false, 65_536,
+    )).toEqual([
+      'usedSize absolute phase delta 68472 exceeded ceiling 65536',
+      'aggregate absolute phase delta 68472 exceeded ceiling 65536',
+    ]);
+    expect(report.profiles.desktop.initial.heapPhaseValidity).toMatchObject({
+      schema: 'cf-v2-scene-memory-heap-phase-validity/v1',
+      comparedPasses: [3, 4],
+      scoredSnapshotPass: 4,
+      deltas: { usedSize: 68_472, aggregate: 68_472 },
+    });
+  });
+
   it('derives the next fixed phase threshold without widening beyond the hard cap', () => {
     for (const [maximum, threshold] of [
       [0, 4_096], [4_095, 4_096], [4_096, 8_192], [8_191, 8_192],
@@ -912,7 +1044,7 @@ describe('scene-memory terminal verifier', () => {
         embedderHeapUsedSize: base.embedderHeapUsedSize + (index + 1) * 31,
       };
       snapshots.push(await sceneMemoryCollectFixedSnapshot({
-        ...snapshotHarness([base, base, base, scored]),
+        ...snapshotHarness(fixedEightHeaps(base, scored)),
         sessionId: 'snapshot-session', profile: 'desktop', label: `desktop-phase-${index}`,
         phaseThresholdBytes, stableResourcesRequired: true,
       }));
@@ -941,16 +1073,16 @@ describe('scene-memory terminal verifier', () => {
     })).toThrow('heap phase calibration profile must retain exactly 10 snapshots');
   });
 
-  it('keeps genuine 512 KiB/cycle retained growth visible in all four fixed lanes', () => {
+  it('keeps genuine 512 KiB/cycle retained growth visible in all eight fixed lanes', () => {
     const retainedPerCycle = 512 * 1024;
     const snapshot = (cycle: number) => {
-      const lanes = [10_000, 20_000, 30_000, 40_000]
+      const lanes = [10_000, 20_000, 30_000, 40_000, 50_000, 60_000, 70_000, 80_000]
         .map((offset) => offset + cycle * retainedPerCycle);
       return {
-        heapPhasePasses: lanes.slice(0, 3).map((backingStorageSize) => ({
+        heapPhasePasses: lanes.slice(0, 7).map((backingStorageSize) => ({
           heap: { backingStorageSize },
         })),
-        heap: { backingStorageSize: lanes[3] },
+        heap: { backingStorageSize: lanes[7] },
       };
     };
     const snapshots = [1, 2, 3, 4].map(snapshot);
@@ -959,14 +1091,18 @@ describe('scene-memory terminal verifier', () => {
       pass2: retainedPerCycle,
       pass3: retainedPerCycle,
       pass4: retainedPerCycle,
+      pass5: retainedPerCycle,
+      pass6: retainedPerCycle,
+      pass7: retainedPerCycle,
+      pass8: retainedPerCycle,
     });
     expect(() => sceneMemoryHeapPhaseControlSlopes([
       snapshot(1), snapshot(2), snapshot(3),
-    ])).toThrow('heap phase control requires four fixed snapshots');
+    ])).toThrow('heap phase control requires four fixed retained-growth cycles');
     const invalid = structuredClone(snapshots);
     invalid[3]!.heap.backingStorageSize = Number.NaN;
     expect(() => sceneMemoryHeapPhaseControlSlopes(invalid))
-      .toThrow('heap phase control pass 4 backing sample is invalid');
+      .toThrow('heap phase control pass 8 backing sample is invalid');
   });
 
   it('attempts each exact profile once and never reinvokes after a failure', async () => {
@@ -1020,8 +1156,8 @@ describe('scene-memory terminal verifier', () => {
       'initial phase evidence is not staged before its instrument assertion',
     );
     const productRed = collectorSource.replace(
-      'assert(errors.length === 0,\n    `${profile} ${label}: fixed fourth snapshot phase is invalid',
-      'productAssert(errors.length === 0,\n    `${profile} ${label}: fixed fourth snapshot phase is invalid',
+      'assert(errors.length === 0,\n    `${profile} ${label}: fixed eighth snapshot phase is invalid',
+      'productAssert(errors.length === 0,\n    `${profile} ${label}: fixed eighth snapshot phase is invalid',
     );
     expect(productRed).not.toBe(collectorSource);
     expect(phaseInvalidityStagingErrors(productRed)).toContain(
@@ -1352,7 +1488,37 @@ describe('scene-memory terminal verifier', () => {
     ]);
   });
 
-  it('negative control: the v5 initial baseline cannot detach from its scored raw snapshot', () => {
+  it('constructs genuine current fixed-eight evidence before verifier mutations', () => {
+    const report = currentReportFixture();
+    expect(terminalProfileEvidenceErrors(
+      report.profiles, true, false, true, true,
+    )).toEqual([]);
+    for (const profile of ['phone', 'desktop'] as const) {
+      const measurement = report.profiles[profile];
+      expect(sceneMemoryProfileRawBindingErrors(measurement), profile).toEqual([]);
+      const snapshots = [
+        measurement.initial,
+        ...measurement.warmups,
+        ...measurement.measured,
+        measurement.bfcacheSnapshot,
+      ];
+      expect(snapshots).toHaveLength(10);
+      snapshots.forEach((snapshot: any, index: number) => {
+        expect(sceneMemorySnapshotPhaseErrors(
+          snapshot, index > 0 && index < 9, 65_536,
+        ), `${profile} snapshot ${index + 1}`).toEqual([]);
+      });
+    }
+    expect(report.contractInput.schema).toBe('cf-v2-scene-memory-input/v6');
+    expect(report.verdict).toMatchObject({
+      schema: 'cf-v2-scene-memory-verdict/v5',
+      status: 'pass',
+      failures: [],
+    });
+    expect(report.outcomes).toHaveLength(44);
+  });
+
+  it('negative control: the v6 initial baseline cannot detach from its scored raw snapshot', () => {
     const report = currentReportFixture();
 
     const baseline = verifyReport(report, report.runId, { budgetFile: budgetPath });
@@ -1370,7 +1536,7 @@ describe('scene-memory terminal verifier', () => {
     );
   });
 
-  it('negative control: a cross-profile initial snapshot cannot launder v5 growth', () => {
+  it('negative control: a cross-profile initial snapshot cannot launder v6 growth', () => {
     const report = currentReportFixture();
     report.profiles.phone.initial = structuredClone(report.profiles.desktop.initial);
     report.profiles.phone.metrics = sceneMemoryMetricSummary(report.profiles.phone);
@@ -1422,23 +1588,23 @@ describe('scene-memory terminal verifier', () => {
     expect(result.errors).toContain('verification requires the same tracked --budget');
   });
 
-  it('rejects a PASS-shaped report that does not score the fixed fourth snapshot pass', () => {
+  it('rejects a PASS-shaped report that does not score the fixed eighth snapshot pass', () => {
     const result = verifyReport({
-      schema: 'cf-v2-scene-memory-report/v5',
-      runId: 'tampered-fixed-fourth-policy',
+      schema: 'cf-v2-scene-memory-report/v6',
+      runId: 'tampered-fixed-eighth-policy',
       status: 'pass',
       lifecycle: { schema: 'cf-v2-scene-memory-report-lifecycle/v1', status: 'complete' },
       policy: {
         attemptCount: 1, automaticRetries: 0, warmupCycles: 4, measuredWarmCycles: 4,
-        snapshotPasses: 4, settlingPasses: 2, validityPasses: [3, 4],
-        scoredSnapshotPass: 3,
+        snapshotPasses: 8, settlingPasses: 6, validityPasses: [7, 8],
+        scoredSnapshotPass: 7,
       },
       certification: 'contract-budget',
       cleanup: { browser: true, server: true, workspaceLock: true },
       inputs: { budget: null },
-    }, 'tampered-fixed-fourth-policy', { budgetFile: null });
+    }, 'tampered-fixed-eighth-policy', { budgetFile: null });
     expect(result.ok).toBe(false);
-    expect(result.errors).toContain('one-attempt/warm-cycle/fixed-fourth phase policy drifted');
+    expect(result.errors).toContain('one-attempt/warm-cycle/fixed-eighth phase policy drifted');
   });
 
   it('binds every Arc 1C product source into exact budget authority', () => {
@@ -1557,10 +1723,10 @@ describe('scene-memory terminal verifier', () => {
 
   it('negative control: no source-normalized schema, metric, or baseline binding is decorative', () => {
     const bindings = [
-      "const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v5';",
-      "const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v6';",
-      "const PROFILE_SCHEMA = 'cf-v2-scene-memory-profile/v4';",
-      "schema: 'cf-v2-scene-memory-input/v5'",
+      "const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v6';",
+      "const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v7';",
+      "const PROFILE_SCHEMA = 'cf-v2-scene-memory-profile/v5';",
+      "schema: 'cf-v2-scene-memory-input/v6'",
       'documentToken: measurement.initial.raw.scene.documentToken,',
       'export function sceneMemoryInitialHeapProjection(heap) {',
       'heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),',

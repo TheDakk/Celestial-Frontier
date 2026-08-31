@@ -270,7 +270,7 @@ function input(): SceneMemoryInput {
     };
   };
   return {
-    schema: 'cf-v2-scene-memory-input/v5',
+    schema: 'cf-v2-scene-memory-input/v6',
     profiles: { phone: profile('phone-document'), desktop: profile('desktop-document') },
     budgets: { phone: budget(), desktop: budget() },
   };
@@ -297,6 +297,7 @@ function addCoherentLeak(snapshot: SceneRegistrySnapshot): void {
 describe('Arc 1C scene-memory contract', () => {
   it('accepts complete phone and desktop four-cycle plateau evidence', () => {
     const result = evaluateSceneMemory(input());
+    expect(result.schema).toBe('cf-v2-scene-memory-verdict/v5');
     expect(result.status).toBe('pass');
     expect(result.failures).toEqual([]);
     expect(result.outcomes).toHaveLength(44);
@@ -305,7 +306,7 @@ describe('Arc 1C scene-memory contract', () => {
   it.each([
     ['totalSize', 20_000],
     ['futureHeapCounter', 30_000],
-  ] as const)('rejects unmodeled v5 initial heap field %s', (field, value) => {
+  ] as const)('rejects unmodeled v6 initial heap field %s', (field, value) => {
     const broken = input() as unknown as {
       profiles: { phone: { initial: { heap: Record<string, number> } } };
     };
@@ -321,6 +322,22 @@ describe('Arc 1C scene-memory contract', () => {
     stale.schema = 'cf-v2-scene-memory-input/v2';
     expect(() => evaluateSceneMemory(stale as unknown as SceneMemoryInput))
       .toThrow('scene-memory input requires exact phone and desktop profiles/budgets');
+  });
+
+  it('preserves browser-free replay of the historical fixed-fourth v5 contract', () => {
+    const historical = structuredClone(input()) as unknown as { schema: string };
+    historical.schema = 'cf-v2-scene-memory-input/v5';
+    const result = evaluateSceneMemory(historical as unknown as SceneMemoryInput);
+    expect(result).toMatchObject({
+      schema: 'cf-v2-scene-memory-verdict/v4',
+      status: 'pass',
+      failures: [],
+    });
+    expect(result.outcomes).toHaveLength(44);
+
+    const current = evaluateSceneMemory(input());
+    expect(current.schema).toBe('cf-v2-scene-memory-verdict/v5');
+    expect(current.outcomes).toEqual(result.outcomes);
   });
 
   it('preserves browser-free replay of the historical surface-vista v4 contract', () => {

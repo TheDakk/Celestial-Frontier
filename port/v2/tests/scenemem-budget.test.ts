@@ -43,7 +43,7 @@ const HISTORICAL_BUILD_FILES_SHA256 = 'ffd2616047932577db169f05d891ea96054bd2dcc
 const SOURCE_NORMALIZED_BUDGET_SHA256 =
   '11707d53bd640b9f2cd0bb1daf963a1c72308239b10faea0332f030f8bd2743f';
 const CALIBRATION_REQUIRED_BUDGET_SHA256 =
-  'f453cfe548ec86f65727de17d23a8ef76c2dc3c1bb024c22eb308ff299ccfd99';
+  '5edac549b6ee0fa79afe5b6f282d68f0439c4385f0afe5d8f2ac58035d8eb96a';
 const RAW_V4_BUDGET_SHA256 =
   '476b85e9e38d0382015663741d08766239688082db0db4536e4d734b98912ee6';
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
@@ -229,6 +229,11 @@ type BudgetRecord = {
   };
   profiles: Record<ProfileName, SceneMemoryBudget>;
 };
+type HistoricalSourceNormalizedInput = {
+  schema: 'cf-v2-scene-memory-input/v5';
+  profiles: SceneMemoryCurrentInput['profiles'];
+  budgets: SceneMemoryCurrentInput['budgets'];
+};
 type FixedSecondSnapshot = {
   label: string;
   raw: Record<string, unknown> & { scene: { documentToken: string } };
@@ -406,8 +411,8 @@ const FIXED_SECOND_PRODUCER_AUTHORITY = Object.freeze({
 });
 const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
   ...FIXED_SECOND_PRODUCER_AUTHORITY,
-  collector: '936d1bfd9cba6bc59c4cd889160981e612e15b012406c55f22cce11108a682a3',
-  verdictContract: 'da6dce07590d14a0e7bb44f242669220717e8c0556f119d92266c64cfe744c7a',
+  collector: 'c4968d0a2cfb489c46df94f603d9730c995760b3ca2a289b1f3774662d663b71',
+  verdictContract: 'e973f8c8f3eeae05c1c9c1328926f2ccf6f4aba7b3602f6bf5ab623a6163d599',
   package: 'cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7',
   packageLock: 'a2dcb380866a57618ae345c2559c1483dd781833f1a258d604a8254b7acf6a9f',
   buildDist: '82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b',
@@ -624,7 +629,9 @@ const collectedProfileProjection = (
 ): SceneMemoryInput['profiles'] => Object.fromEntries(
   PROFILE_NAMES.map((profile) => {
     const measurement = report.profiles[profile];
-    return [profile, report.contractInput.schema === 'cf-v2-scene-memory-input/v5' ? {
+    return [profile, [
+      'cf-v2-scene-memory-input/v5', 'cf-v2-scene-memory-input/v6',
+    ].includes(report.contractInput.schema) ? {
       initial: {
         documentToken: measurement.initial.raw.scene.documentToken,
         heap: contractInitialHeap(measurement.initial.heap),
@@ -650,7 +657,7 @@ const collectedProfileProjection = (
   }),
 ) as SceneMemoryInput['profiles'];
 
-const sourceNormalizedInput = (report: CalibrationReport): SceneMemoryCurrentInput => ({
+const sourceNormalizedInput = (report: CalibrationReport): HistoricalSourceNormalizedInput => ({
   schema: 'cf-v2-scene-memory-input/v5',
   profiles: Object.fromEntries(PROFILE_NAMES.map((profile) => {
     const measurement = report.profiles[profile];
@@ -666,7 +673,7 @@ const sourceNormalizedInput = (report: CalibrationReport): SceneMemoryCurrentInp
       bfcache: measurement.bfcache,
       reloadCleanup: measurement.reloadCleanup,
     }];
-  })) as SceneMemoryCurrentInput['profiles'],
+  })) as HistoricalSourceNormalizedInput['profiles'],
   budgets: structuredClone(CURRENT_PROFILES),
 });
 
@@ -783,24 +790,24 @@ const normalizedHeapMetrics = (measurement: CalibrationProfile) => {
 };
 
 describe('Arc 1C scene-memory budget authority', () => {
-  it('locks the v6 calibration-required bootstrap to one Edge-family authority and producer', () => {
+  it('locks the v7 fixed-eight calibration-required bootstrap to one Edge-family authority and producer', () => {
     expect(budget).toEqual({
-      schema: 'cf-v2-scene-memory-budget/v6',
+      schema: 'cf-v2-scene-memory-budget/v7',
       status: 'calibration-required',
       authority: {
         browser: EXPECTED_BROWSER_AUTHORITY,
         producer: EXPECTED_PRODUCER_AUTHORITY,
       },
       heapPhase: {
-        schema: 'cf-v2-scene-memory-heap-phase-policy/v1',
+        schema: 'cf-v2-scene-memory-heap-phase-policy/v2',
         status: 'calibration-required',
-        snapshotPasses: 4,
-        settlingPasses: 2,
-        validityPasses: [3, 4],
-        scoredSnapshotPass: 4,
+        snapshotPasses: 8,
+        settlingPasses: 6,
+        validityPasses: [7, 8],
+        scoredSnapshotPass: 8,
         calibrationHardCapBytes: 64 * 1024,
         derivation: {
-          schema: 'cf-v2-scene-memory-heap-phase-derivation/v1',
+          schema: 'cf-v2-scene-memory-heap-phase-derivation/v2',
           rule: 'smallest-power-of-two-strictly-greater',
           candidateCount: 3,
           candidateSetSha256: null,
@@ -826,14 +833,40 @@ describe('Arc 1C scene-memory budget authority', () => {
     const outerActive = structuredClone(budget);
     outerActive.status = 'active';
     expect(validateSceneMemoryBudget(outerActive).errors).toContain(
-      'budget heapPhase fixed four-pass policy drifted',
+      'budget heapPhase fixed eight-pass policy drifted',
     );
 
     const policyActive = structuredClone(budget);
     policyActive.heapPhase.status = 'active';
     expect(validateSceneMemoryBudget(policyActive).errors).toContain(
-      'budget heapPhase fixed four-pass policy drifted',
+      'budget heapPhase fixed eight-pass policy drifted',
     );
+  });
+
+  it('negative-controls every fixed-eight schema and pass-role boundary', () => {
+    const mutations = [
+      ['budget schema', (record: BudgetRecord) => { record.schema = 'cf-v2-scene-memory-budget/v6'; },
+        'budget schema must be cf-v2-scene-memory-budget/v7'],
+      ['policy schema', (record: BudgetRecord) => {
+        record.heapPhase.schema = 'cf-v2-scene-memory-heap-phase-policy/v1';
+      }, 'budget heapPhase fixed eight-pass policy drifted'],
+      ['snapshot count', (record: BudgetRecord) => { record.heapPhase.snapshotPasses = 4; },
+        'budget heapPhase fixed eight-pass policy drifted'],
+      ['settling count', (record: BudgetRecord) => { record.heapPhase.settlingPasses = 2; },
+        'budget heapPhase fixed eight-pass policy drifted'],
+      ['validity roles', (record: BudgetRecord) => { record.heapPhase.validityPasses = [3, 4]; },
+        'budget heapPhase fixed eight-pass policy drifted'],
+      ['scored role', (record: BudgetRecord) => { record.heapPhase.scoredSnapshotPass = 4; },
+        'budget heapPhase fixed eight-pass policy drifted'],
+      ['derivation schema', (record: BudgetRecord) => {
+        record.heapPhase.derivation.schema = 'cf-v2-scene-memory-heap-phase-derivation/v1';
+      }, 'budget heapPhase derivation rule/count drifted'],
+    ] as const;
+    for (const [label, mutate, expected] of mutations) {
+      const drifted = structuredClone(budget);
+      mutate(drifted);
+      expect(validateSceneMemoryBudget(drifted).errors, label).toContain(expected);
+    }
   });
 
   it('negative-controls calibration-required budgets claiming candidates or phase ceilings', () => {

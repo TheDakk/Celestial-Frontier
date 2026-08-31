@@ -511,12 +511,23 @@ prove that the scored endpoint had reached a repeatable allocator phase. All gam
 DOM/listeners and pending work remained flat. Preserve that original 43/44 result as a truthful
 two-pass red; later evidence may classify it instrument-inconclusive but can never relabel it PASS.
 
-Every current snapshot therefore always executes **four** complete
-answerable → GC → heap → carrier → DOM passes. P1/P2 are fixed settling passes. P3/P4 are the fixed
-validity pair. Retain all four raw carriers and always score only P4—never a minimum, maximum,
-average, best-looking lane or conditionally added fifth pass. For V8 used size, embedder used size,
+Exact signed four-pass source `5691e77ea470434dd5352901b0a6240a242a48ad` then ran
+`20260830-pr35-fourpass-5691e77-candidate1` once with zero retries. It stopped after 8,352 ms as
+`instrument-fail`, with complete lifecycle and browser/server/workspace-lock cleanup: desktop
+initial P4−P3 V8 and aggregate deltas were **68,472 bytes** against the **65,536-byte** hard cap.
+No product contract, verdict or outcomes existed. Candidates 2 and 3 did not run. The 38,936-byte
+gzip / 688,360-byte raw carrier is immutable under `audits/`, with gzip/raw SHA-256
+`53bf343e503c7a9898ca64116c03c0926aed3221ba224bcb22ae739ae945fcf8` /
+`5bb037c4e8d1f8e1b24bb902d31fac747410a35e62b2f37f552c91db276d7557`. The four-pass producer is
+therefore honest historical instrument evidence, not a calibration candidate and not authority to
+widen the phase ceiling.
+
+Every successor snapshot therefore always executes **eight** complete
+answerable → GC → heap → carrier → DOM passes. P1–P6 are fixed settling passes. P7/P8 are the fixed
+validity pair. Retain all eight raw carriers and always score only P8—never a minimum, maximum,
+average, best-looking lane or conditionally added extra pass. For V8 used size, embedder used size,
 backing storage and their independently re-derived aggregate, require
-`abs(P4 - P3) <= profile.maxAbsolutePhaseDeltaBytes`. Any missing/reordered/detached carrier,
+`abs(P8 - P7) <= profile.maxAbsolutePhaseDeltaBytes`. Any missing/reordered/detached carrier,
 resource-fingerprint drift or excessive delta is an **instrument-fail before contract creation**;
 it is never a product leak verdict and never authorizes a sample or run retry.
 
@@ -524,13 +535,23 @@ Derive the phase ceiling only from exactly three clean, one-attempt/no-retry cal
 one unchanged signed source/build/browser tuple. For each profile, let `M` be the maximum across all
 30 retained snapshot validity pairs and all four fields. Select the smallest member of
 **4/8/16/32/64 KiB** that is strictly greater than `M`. If `M >= 64 KiB`, activation is forbidden:
-redesign the sampler instead of widening. The 64 KiB hard cap is half the unchanged 128 KiB/cycle
+stop this campaign for an explicit production-only/quarantine decision instead of widening,
+retrying or automatically adding more passes. The 64 KiB hard cap is half the unchanged 128 KiB/cycle
 product slope ruler, so measurement uncertainty cannot consume the product budget. Negative-control
-P3 and P4 spikes in both directions, each field, cross-component cancellation, forged summaries,
+P7 and P8 spikes in both directions, each field, cross-component cancellation, forged summaries,
 missing/duplicate/reordered passes and persistent cross-cycle growth. The live isolated
-**512 KiB/cycle** retained-allocation control must remain visible in every lane and must fall after
-release. Calibration may launch only while the canonical tracked budget is explicitly
-`calibration-required`. Bind each candidate to that exact budget blob at its literal clean 40-hex
+**512 KiB/cycle** retained-allocation control must remain visible in all eight lanes and must fall
+after release. Calibration may launch only while the canonical tracked budget is explicitly
+`calibration-required`. The browser-free fixed-eight implementation checkpoint is
+**report-v6/profile-v5/input-v6/verdict-v5/budget-v7**: collector SHA-256
+`c4968d0a2cfb489c46df94f603d9730c995760b3ca2a289b1f3774662d663b71`, verdict-contract SHA-256
+`e973f8c8f3eeae05c1c9c1328926f2ccf6f4aba7b3602f6bf5ab623a6163d599` and calibration-required
+budget SHA-256 `5edac549b6ee0fa79afe5b6f282d68f0439c4385f0afe5d8f2ac58035d8eb96a`. Its genuine-current
+fixture control closes **158/158** focused checks across four files; the complete browser-free suite
+is **253 files / 2,543 passed / 1 skipped**, all three strict TypeScript programs pass and the
+producer-authority printer is green. This is implementation evidence only: exact clean source
+freeze/signature, browser controls and all three fresh candidates remain pending. After that freeze,
+bind each fresh candidate to that exact budget blob at its literal clean 40-hex
 source commit; activation must reopen and revalidate the blob from that commit, replay the raw
 profiles/budgets/verdict and require three Git-tracked regular non-symlink carriers from the same
 producer/build/browser tuple. Product range/slope ceilings, browser-family authority and product
