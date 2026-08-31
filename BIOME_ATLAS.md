@@ -1,21 +1,26 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
-> **2026-08-31 current a9d successor overlay (supersedes every older “current” label below;
-> dated biome/vista/evidence checkpoints remain immutable):** exact clean SSH-signed source
-> `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed Compendium **78/78** once/no-retry in
-> **64,930 ms** before its exact-source develop Slice stopped red once/no-retry after **328,043
-> ms** with exactly **1 finding / 1 scope**; Glass did not run and a9d2a57 will not be retried. The
-> Compendium art/catalog stage was fully green. The Slice red was a lesson-announcement carrier
-> mistake, not a biome, vista, painter or color-plan failure.
+> **2026-08-31 current a046 collision-control repair overlay (supersedes every older “current”
+> label below; dated biome/vista/evidence checkpoints remain immutable):** exact clean SSH-signed
+> source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry as
+> `20260831155807329-24237-1c6d2e89d5` in **64,166 ms** with named verification. Its exact-source
+> develop Slice `20260831155943782-24588-a98f13f2c7b7` stopped red once/no-retry after **359,647
+> ms** with one `world-identity-collision-controls-failed` scope; named verification exited 2 and
+> Glass did not run. The Compendium art/catalog stage and base product collision outcome were green.
 >
-> The bounded successor makes no product, biome selection, vista composition, palette, silhouette,
-> crop, creature, genome, organism or structural art change. Its complete develop profile is green
-> at **253 files / 2,560 passed / 1 skipped**, all TypeScript programs and the **34-source** art
-> gate; independent review is **CLEAR**. Current Compendium producer/budget authority remains
+> The red was an inert instrument mutant caused by mixing newest-first Atlas rows `[Beta, Alpha]`
+> with receipt order `[Alpha, Beta]`. Signed repair/evidence commit
+> `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives a distinct measured sibling, guards inert/equal
+> cases, causal-stops a red base and proves reversed order executably. It makes no product, biome
+> selection, vista composition, palette, silhouette, crop, creature, genome, organism or structural
+> art change; no save, gameplay, ruler, timeout, retry or Edge contract changed. The complete
+> develop profile is green at **253 files / 2,561 passed / 1 skipped**, all
+> TypeScript programs and the **34-source** art gate; independent review is **CLEAR**. Current
+> Compendium producer/budget authority remains
 > `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
 > `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. The **77-bullet**
-> bulletin remains byte-identical. A clean signed Compendium → Slice → Glass chain remains; no
-> Edge rebaseline, hosted attempt, release, publication or deployment is authorized.
+> bulletin remains byte-identical. A fresh signed Compendium → Slice → Glass chain remains; no
+> hosted attempt, release, publication or deployment is authorized.
 
 > **2026-08-31 historical 4002/4822 local successor overlay (superseded above;
 > dated biome, vista and evidence checkpoints remain immutable):** exact clean signed source

@@ -23,22 +23,26 @@ removed, and it merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41
 Runs `32609389977`, `32611053651`, `32614177932`, and `32618995487` remain consumed terminal-red
 historical evidence; their labels were removed. Details are below.
 
-Exact local SSH-signed source `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed tracked-input
-and Edge preflight plus Compendium **78/78** once/no-retry as
-`20260831151644196-18841-d75ab40c38`. Its exact-source develop Slice
-`20260831151855955-19270-13860f3fb838` stopped terminal red once/no-retry after **328,043 ms**
-with exactly **1 finding / 1 scope**; named verification rejected it, Glass did not run, and a9d
-will not be retried. The product state was coherent at exact Training step 9 with all **70/70**
-Engineering actions disabled; the sole red was a stale Slice predicate reading panel text instead
-of the live lesson announcement. The bounded local successor changes only that carrier and its
-directional/provenance controls, with **2 files / 23 focused tests**, all TypeScript programs and
-independent review green. The complete develop profile is green at **253 files / 2,560 passed / 1
-skipped**, **34** art sources, **1,014/1,014** routes and **454** non-inert fields; current
-Compendium producer/budget authority remains
+Exact local SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium
+**78/78** once/no-retry in **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; exact named
+verification passed. Its exact-source develop Slice `20260831155943782-24588-a98f13f2c7b7`
+stopped terminal red once/no-retry after **359,647 ms** with exactly **1 finding / 1 scope**
+(`world-identity-collision-controls-failed`); named verification correctly exited 2, Glass did not
+run, and a046 will not be retried or relabelled. The complete collision base product outcome was
+green. The sole red was an inert negative control caused by newest-first Atlas rows **[Beta,
+Alpha]** versus fixture-ordered measured Travel receipts **[Alpha, Beta]**. Exact SSH-signed local
+repair `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives the mutant from the distinct measured
+sibling, guards missing/equal/no-op carriers, causal-stops after a genuine collision failure and
+executable-tests reversed row order. Focused coverage is **1 file / 6 tests**; independent review
+is **CLEAR**. The complete develop profile is green at **253 files / 2,561 passed / 1 skipped**, all
+TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields. No
+product, save, gameplay, art, creature, genome, plant, biome, ruler, timeout, retry or Edge baseline
+changed. Current Compendium producer/budget authority remains
 `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
-`e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A clean signed candidate
-and one fresh local Compendium → Slice → Glass chain remain. This authorizes no push, label, hosted
-run, Ready transition or merge; **hosted attempt state remains none authorized**.
+`e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A clean signed
+documentation descendant and one fresh local Compendium → Slice → Glass chain remain. This
+authorizes no push, label, hosted run, Ready transition or merge; **hosted attempt state remains
+none authorized**.
 
 Local signed source `cc15e1f967f6644405cad7c3460cd8181b6a043f` also consumed its one/no-retry
 fixed-eight SceneMemory candidate-1 attempt. Run `20260830-pr35-fixedeight-cc15e1f-candidate1`
