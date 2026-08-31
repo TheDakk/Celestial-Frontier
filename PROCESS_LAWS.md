@@ -1,5 +1,28 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A RESTORATION ORACLE SAMPLES THE STATE THE PRODUCT ACTUALLY RECEIVES** (2026-08-31).
+> A virtual-row helper may legitimately reposition a row while consuming deferred layout and
+> resource settlement. A setup anchor captured before that helper is diagnostic context, not the
+> state a later click handler records for Back. After the helper accepts its final stable point and
+> before native press/release, arm one capture-phase witness on the exact current document. The
+> witness must observe exactly one trusted delegated click synchronously before the product handler
+> and bind the logical row/index, unique target and scroller, hit-tested point, document token,
+> button/detail/phase/current target, panel mode/query/counts, and action-time logical
+> anchor-plus-offset. Read and remove that carrier immediately after input; every failure path must
+> abort the listener and surface an independent cleanup failure. Derive the comparison `before`
+> value from that action witness, while retaining the earlier setup anchor only for chronology.
+>
+> GitHub run `33437596315` earned this law. Its immutable old report sampled desktop setup at
+> `cmem-0773 / -34`; the activation helper then needed three legitimate settlement attempts before
+> its sole click, and the product restored the later `cmem-0773 / -92` state both immediately and
+> after settlement. The phone control stayed `-9 → -9`. Preserve the report's stored **77 pass / 1
+> fail** result and diagnose the stale pre-helper comparator externally; never relabel historical
+> bytes. The bounded successor makes the action-time state explicit and keeps the fixed **±2px**
+> restoration tolerance. Product behavior, CSS, numeric ceilings, timeouts, retry/click policy and
+> the version-tolerant Edge-family + CDP `1.3` policy are unchanged. Do not repair this class by
+> changing the product, widening tolerance, extending a timeout, retrying the click or pinning an
+> Edge point version.
+
 > **A COPY ORACLE READS THE COPY'S AUTHORITATIVE CARRIER.** A visible panel and the lesson that
 > explains it are separate surfaces even when they describe the same system. Judge tutorial copy
 > from the live lesson/announcement owner and judge panel content from the panel; never require one

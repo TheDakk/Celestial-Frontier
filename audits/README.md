@@ -10,6 +10,72 @@ summary of it.
 
 ## Contents
 
+### PR #35 hosted Compendium Back action-witness terminal red and local repair
+
+GitHub Actions run `33437596315`, attempt 1, used the one exact authorized `test-battery` for PR
+#35 head `8eb0b1bd901c7b36d8900f43f4de7d3a54158a0c` against develop base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, guarded by `actions-budget-approved`, a
+92-minute maximum and no retry. GitHub tested clean synthetic merge
+`4ccae861ab2f43f4269edfeefa51fd2e4985a875`; its tree
+`b466c5a586dacfc785e7c9c1c8654a90ad5bdade` exactly equals the authorized head tree. The workflow
+stopped terminal red after **37m14s**. Every predecessor through Compendium browser preflight
+passed; Compendium completed all **78** outcomes in **1,744,486 ms** at **77 pass / 1 fail**, with
+sole red `desktop/back-restores-focus`. Its six review-packet bindings and complete lifecycle were
+retained. Slice and Glass did not run, the approval label was removed, and the attempt was not
+retried. The exact hosted browser was Edge `151.0.4129.101` on Linux with CDP `1.3`; the point
+version is provenance only.
+
+The immutable report's desktop `backNavigation.before` sampled setup at logical row `cmem-0773`,
+offset **-34**, window **770–782**. The native activation helper then legitimately required three
+settlement attempts: its first thumbnail window contained rows **775–786**, while attempts two and
+three stabilized on **771–782**. The sole click therefore reached the product after setup had moved.
+Back returned to logical row `cmem-0773`, offset **-92**, window **771–783**, both immediately and
+after settlement; selected `cmem-0777-filter-beacon` was mounted, intersecting, pinned and focused.
+The **58px** discrepancy existed before the click and equals the default row estimate. The phone
+control passed at logical `cmem-0776`, offset **-9 → -9**, despite legitimate absolute-scroll
+rebasing. The same row geometry reproduced locally, excluding an Edge/Linux CSS or font-specific
+product explanation. The stored report remains terminal `fail` under its old comparator and is not
+rewritten or relabelled; the retained chronology diagnoses a stale pre-helper instrument witness,
+not a product focus/scroll failure.
+
+The bounded local successor adds schema `cf-v2-compendium-back-action-witness/v1`. Only after the
+row helper accepts its final stable point, and before native press/release, the collector arms one
+capture-phase listener on the exact current document. It must observe exactly one trusted delegated
+click before the product handler and bind the logical row/index, unique target/scroller, hit point,
+document token, button/detail/phase/current target, panel mode/query/counts and action-time anchor.
+`backNavigation` retains diagnostic `setup`, `actionWitness`, `before` derived exactly from that
+witness, `after` and `afterSettled`; read and exceptional paths abort the listener, remove the
+carrier and surface an independent cleanup failure. Browser-free positive and negative controls
+cover the hosted three-attempt chronology, stale-setup substitution, missing/duplicate/untrusted or
+misbound event identity, shifted action/return anchors, install/read/cleanup source mutation and
+exact restoration. Focused verification passes **5 files / 56 tests**, the Compendium selftest
+passes **611 controls**, and all TypeScript programs are green.
+
+Current measurement / outcome-contract / collector / producer / budget-file authority is
+`20a1b773e7eec309de31772c2b1c0a174c0f175cfc798e573f20a53b966aba2e` /
+`1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+`a5afcffd2f75e7cc2db1284194bc3eb76bde22bf4a1b4741f5157ce25339df51` /
+`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+`c60b2f1fb50e978c0d6f522ee52a0274e9a45cd63a51f1643808229b1e25ce60`. The hosted carrier keeps
+its exact historical measurement / outcome-contract / collector / producer / budget authorities:
+`5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+`9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+`0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010` /
+`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+`80a2b8b39d400419a5527f9737a92ea2e0c54916ba8c3966411e607fd950fd79`. Product source and CSS,
+the fixed **±2px** restoration tolerance, 78-outcome inventory, numeric rulers/ceilings, historical
+samples, timeouts, one-click/no-retry rule and version-tolerant Edge-family + CDP `1.3` policy are
+unchanged. The local repair has no fresh browser certificate yet; a clean signed candidate still
+requires one fail-fast unchanged-source **Compendium → Slice (`develop`) → Glass (`develop`)**
+chain. No new hosted attempt or merge authority follows from this diagnosis.
+
+- GitHub artifact `battery-evidence`, ID `9776171387`: **4,747,031 bytes**, artifact digest
+  `sha256:6e22673b21e7c3ba1581c5c31caee168c3f838f96caf8438ea5a370c5500d0be`.
+- `ARC1A_COMPENDIUM_PR35_HOSTED_BACK_ACTION_WITNESS_INSTRUMENT_RED_20260831_4CCAE86.json.gz`:
+  **566,480 gzip / 12,775,383 raw bytes**; gzip/raw SHA-256
+  `075ba73e3a9209b89c7892192c671e20e47bfb663fd4a41569c66218270d6f0d` /
+  `0a8a840ce2f410e467640bf6813b95114d16da673cb9660ea1d65a1cc245f862`.
+
 ### Signed `7e089f3…` terminal-green local develop chain
 
 Exact clean SSH-signed source `7e089f3432a834636064615ac2da13b2b0ac39df` first passed the

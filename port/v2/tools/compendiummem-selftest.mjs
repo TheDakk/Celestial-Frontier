@@ -14,6 +14,7 @@ import {
   BROKEN_BASELINE_EXPECTED_FAULTS, BROKEN_BASELINE_PORTRAIT_CACHE_CAPS,
   BROKEN_BASELINE_THUMB_CACHE_CAP, BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
   BUDGET_SCHEMA, CANDIDATE_BROWSER_LABEL, CANDIDATE_TRANSPORT_TIMEOUT_MS,
+  BACK_ACTION_WITNESS_SCHEMA,
   BASELINE_CALIBRATION_EVIDENCE_SCHEMA, CANDIDATE_CALIBRATION_EVIDENCE_SCHEMA,
   COMMAND_TIMEOUT_MS,
   COMPENDIUM_BROWSER_HISTORICAL_CAPABILITY_CONTRACT_SHA256S,
@@ -59,6 +60,7 @@ import {
   validCompendiumThumbSettlementReceipt, validCompendiumActiveThumbSettlement,
   validCompendiumThumbSettlementObservation,
   validCompendiumRawSnapshotExpression, validTransportTimeoutPolicy,
+  validCompendiumBackActionWitness,
   validFilterInputObservation, validFilterTargetObservation, validFilterTelemetrySnapshot,
   validFilterTransitionObservation, validFilterTransitionWitness,
   producerErrorColdProof, producerErrorContained, producerErrorRecoverable,
@@ -82,7 +84,10 @@ import {
   candidateThumbSettlementExpression,
   candidateProducerErrorPreArmExpression, candidateProducerErrorWorkExpression,
   candidateFilterInputExpression, candidateFilterTelemetryExpression,
-  candidateRowPointExpression,
+  candidateRowPointExpression, candidateCompendiumScrollAnchorExpression,
+  candidateBackActionWitnessInstallExpression,
+  candidateBackActionWitnessReadExpression,
+  candidateBackActionWitnessCleanupExpression,
   collectCandidateSnapshot, collectCandidateSettledThumbnailSnapshot,
   createCandidateCollectorObservations,
   createCandidateCommandRecorder,
@@ -96,7 +101,10 @@ import {
   validCandidateThumbSettlementExpression,
   validCandidateForegroundServiceExpression,
   validCandidateFilterTelemetryExpression, validCandidateArmProducerErrorExpression,
-  validCandidateRowPointExpression,
+  validCandidateRowPointExpression, validCandidateCompendiumScrollAnchorExpression,
+  validCandidateBackActionWitnessInstallExpression,
+  validCandidateBackActionWitnessReadExpression,
+  validCandidateBackActionWitnessCleanupExpression,
   validCandidateProducerErrorExpression, verifyCompendiumTerminalReport,
 } from './compendiummem.mjs';
 
@@ -144,6 +152,37 @@ assert(!validCandidateRowPointExpression(
 assertThrows(() => candidateRowPointExpression(''),
   'an empty row activation identity was accepted');
 
+const scrollAnchorSource = candidateCompendiumScrollAnchorExpression('cmem-row-selftest');
+assert(validCandidateCompendiumScrollAnchorExpression(
+  scrollAnchorSource, 'cmem-row-selftest',
+) && !validCandidateCompendiumScrollAnchorExpression(
+  scrollAnchorSource.replace('anchor.top-sr.top', '0'), 'cmem-row-selftest',
+), 'the exact Compendium scroll-anchor source was not sealed');
+const actionWitnessPoint = Object.freeze({ x: 30, y: 40 });
+const actionWitnessInstallSource = candidateBackActionWitnessInstallExpression(
+  'cmem-row-selftest', 777, 'selftest-main-document', 2, actionWitnessPoint,
+);
+assert(validCandidateBackActionWitnessInstallExpression(
+  actionWitnessInstallSource,
+  'cmem-row-selftest', 777, 'selftest-main-document', 2, actionWitnessPoint,
+) && !validCandidateBackActionWitnessInstallExpression(
+  actionWitnessInstallSource.replace('capture:true', 'capture:false'),
+  'cmem-row-selftest', 777, 'selftest-main-document', 2, actionWitnessPoint,
+) && actionWitnessInstallSource.includes('event.isTrusted===true')
+  && actionWitnessInstallSource.includes('currentTargetIsDocument:event.currentTarget===document')
+  && actionWitnessInstallSource.includes('anchor:(()=>{'),
+'the post-settlement capture-phase action-witness install source was not sealed');
+const actionWitnessReadSource = candidateBackActionWitnessReadExpression();
+const actionWitnessCleanupSource = candidateBackActionWitnessCleanupExpression();
+assert(validCandidateBackActionWitnessReadExpression(actionWitnessReadSource)
+  && !validCandidateBackActionWitnessReadExpression(
+    actionWitnessReadSource.replace('controller?.abort?.()', 'void 0'),
+  )
+  && validCandidateBackActionWitnessCleanupExpression(actionWitnessCleanupSource)
+  && !validCandidateBackActionWitnessCleanupExpression(
+    actionWitnessCleanupSource.replace('delete window[key]', 'void 0'),
+  ), 'the action-witness read/cleanup source was not sealed');
+
 {
   let attempt = 0;
   let afterBoundary = false;
@@ -165,16 +204,24 @@ assertThrows(() => candidateRowPointExpression(''),
       if (attempt === 1 && afterBoundary) return null;
       return attempt === 1 ? { x: 10, y: 20 } : { x: 30, y: 40 };
     },
+    onSettled: async (point, settledAttempt) => {
+      sequence.push(`action-witness-arm:${settledAttempt}:${point.x}:${point.y}`);
+    },
   });
   assert(JSON.stringify(stablePoint) === JSON.stringify({ x: 30, y: 40 })
     && attempt === 2
     && sequence.includes('row cmem-row-selftest deferred-layout settlement 1')
-    && sequence.includes('row cmem-row-selftest post-render point 1'),
+    && sequence.includes('row cmem-row-selftest post-render point 1')
+    && sequence.filter((entry) => entry.startsWith('action-witness-arm:')).length === 1
+    && sequence.at(-1) === 'action-witness-arm:2:30:40'
+    && sequence.indexOf('action-witness-arm:2:30:40')
+      > sequence.indexOf('row cmem-row-selftest post-render point 2'),
   'a row that moved after the deferred render boundary was clicked or never repositioned');
 
   let unstableRejected = false;
   let unstableAttempt = 0;
   let unstableAfterBoundary = false;
+  let unstableArmCount = 0;
   try {
     await settleCandidateRowActivationPoint({
       sessionId: 'row-settlement-session', logicalId: 'cmem-row-selftest', maxAttempts: 2,
@@ -187,13 +234,14 @@ assertThrows(() => candidateRowPointExpression(''),
         }
         return { x: unstableAttempt, y: unstableAfterBoundary ? 2 : 1 };
       },
+      onSettled: async () => { unstableArmCount++; },
     });
   } catch (error) {
     unstableRejected = error?.classification === 'product-unanswerable'
       && String(error.message).includes('never owned a render-stable activation point');
   }
-  assert(unstableRejected,
-    'a row without a stable post-render activation point remained green');
+  assert(unstableRejected && unstableArmCount === 0,
+    'a row without a stable post-render activation point remained green or armed input');
 }
 
 function syntheticThumbSettlementVisualKey(surface, index) {
@@ -2370,6 +2418,48 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
   const thumbnailSettlements = syntheticProfileThumbnailSettlements(
     profile, foregroundEvidence.pageAuthorities.main, candidateCommandTemplate,
   );
+  const backSetupAnchor = {
+    logicalId: deepIds[5], offsetPx: -34, scrollTop: 54_517,
+    window: { start: 770, end: 782, beforePx: 54_186, afterPx: 45_093 },
+    selectedLogicalId: filter, selectedIndex: 777,
+    selectedMounted: true, selectedIntersects: true,
+    selectedInWindow: true, selectedPinned: false, activeLogicalId: null,
+  };
+  const backActionAnchor = {
+    logicalId: deepIds[5], offsetPx: -92, scrollTop: 45_111,
+    window: { start: 771, end: 783, beforePx: 44_821, afterPx: 41_853 },
+    selectedLogicalId: filter, selectedIndex: 777,
+    selectedMounted: true, selectedIntersects: true,
+    selectedInWindow: true, selectedPinned: false, activeLogicalId: filter,
+  };
+  const backActionWitness = {
+    schema: BACK_ACTION_WITNESS_SCHEMA,
+    expectedLogicalId: filter,
+    expectedLogicalIndex: 777,
+    expectedDocumentToken: foregroundEvidence.pageAuthorities.main.documentToken,
+    settlementAttempt: 3,
+    arm: {
+      documentToken: foregroundEvidence.pageAuthorities.main.documentToken,
+      scrollerCount: 1, targetRowCount: 1,
+      pointHitLogicalId: filter, pointX: 180, pointY: 420,
+    },
+    observationCount: 1,
+    events: [{
+      sequence: 1, type: 'click', trusted: true, button: 0, detail: 1,
+      eventPhase: 1, currentTargetIsDocument: true,
+      clientX: 180, clientY: 420,
+      targetLogicalId: filter, hitLogicalId: filter, targetIndex: 777,
+      targetRowCount: 1, scrollerCount: 1,
+      targetOwnerDocument: true, targetConnected: true,
+      documentToken: foregroundEvidence.pageAuthorities.main.documentToken,
+      panel: { mode: 'list', query: '', sourceCount: 1500, filteredCount: 1500 },
+      anchor: clone(backActionAnchor),
+    }],
+    cleanup: { controllerAborted: true, carrierPresent: false },
+  };
+  const backReturnedAnchor = {
+    ...clone(backActionAnchor), selectedPinned: true, activeLogicalId: filter,
+  };
   return {
     profile,
     reviewPacket: [],
@@ -2400,27 +2490,11 @@ function syntheticMeasurement(profile, fixture, candidateCommandTemplate) {
       dedupe: { before: 10, after: 12, dedupeHitsDelta: 2 },
       churn: { before: 1, after: 5, jobCancelsDelta: 4 },
       backNavigation: {
-        before: {
-          logicalId: deepIds[0], offsetPx: -12, scrollTop: 44_544,
-          window: { start: 768, end: 788, beforePx: 44_544, afterPx: 41_296 },
-          selectedLogicalId: filter, selectedIndex: 777,
-          selectedMounted: true, selectedIntersects: true,
-          selectedInWindow: true, selectedPinned: false, activeLogicalId: filter,
-        },
-        after: {
-          logicalId: deepIds[0], offsetPx: -12, scrollTop: 44_544,
-          window: { start: 768, end: 788, beforePx: 44_544, afterPx: 41_296 },
-          selectedLogicalId: filter, selectedIndex: 777,
-          selectedMounted: true, selectedIntersects: true,
-          selectedInWindow: true, selectedPinned: false, activeLogicalId: filter,
-        },
-        afterSettled: {
-          logicalId: deepIds[0], offsetPx: -12, scrollTop: 44_544,
-          window: { start: 768, end: 788, beforePx: 44_544, afterPx: 41_296 },
-          selectedLogicalId: filter, selectedIndex: 777,
-          selectedMounted: true, selectedIntersects: true,
-          selectedInWindow: true, selectedPinned: false, activeLogicalId: filter,
-        },
+        setup: backSetupAnchor,
+        actionWitness: backActionWitness,
+        before: clone(backActionAnchor),
+        after: clone(backReturnedAnchor),
+        afterSettled: clone(backReturnedAnchor),
       },
       close: {
         beforeLeases: 24,
@@ -4565,6 +4639,18 @@ export async function runCompendiumMemSelftest() {
       && producerErrorContained(witness, measurement.profile)
       && producerErrorRecoverable(witness, measurement.profile),
     `${measurement.profile} synthetic stable-open producer witness was not fully green`);
+    const backNavigation = measurement.phases.backNavigation;
+    assert(Math.abs(
+      backNavigation.setup.offsetPx - backNavigation.actionWitness.events[0].anchor.offsetPx,
+    ) === 58
+      && JSON.stringify(backNavigation.before)
+        === JSON.stringify(backNavigation.actionWitness.events[0].anchor)
+      && validCompendiumBackActionWitness(backNavigation.actionWitness, {
+        logicalId: measurement.targets.detail,
+        logicalIndex: 777,
+        documentToken: measurement.pageAuthorities.main.documentToken,
+      }),
+    `${measurement.profile} did not model the hosted 58px pre-action settlement with one trusted action-time witness`);
   }
   const producerObservations = (group) => [
     ...group.falsyObservations, group.accepted,
@@ -5042,7 +5128,45 @@ export async function runCompendiumMemSelftest() {
       m.phases.backNavigation.after.selectedInWindow = false;
       m.phases.backNavigation.after.selectedPinned = false;
     }, 'back-restores-focus'],
-    ['Back shifted logical anchor', (m) => { m.phases.backNavigation.after.offsetPx += 9; }, 'back-restores-focus'],
+    ['Back action witness missing', (m) => {
+      delete m.phases.backNavigation.actionWitness;
+    }, 'back-restores-focus'],
+    ['Back action witness duplicated click', (m) => {
+      const witness = m.phases.backNavigation.actionWitness;
+      witness.events.push({ ...clone(witness.events[0]), sequence: 2 });
+      witness.observationCount = 2;
+    }, 'back-restores-focus'],
+    ['Back action witness untrusted click', (m) => {
+      m.phases.backNavigation.actionWitness.events[0].trusted = false;
+    }, 'back-restores-focus'],
+    ['Back action witness wrong row', (m) => {
+      m.phases.backNavigation.actionWitness.events[0].targetLogicalId = m.targets.middle;
+    }, 'back-restores-focus'],
+    ['Back action witness foreign document', (m) => {
+      m.phases.backNavigation.actionWitness.events[0].documentToken = 'foreign-document';
+    }, 'back-restores-focus'],
+    ['Back action witness duplicate target row', (m) => {
+      m.phases.backNavigation.actionWitness.events[0].targetRowCount = 2;
+    }, 'back-restores-focus'],
+    ['Back action witness wrong hit owner', (m) => {
+      m.phases.backNavigation.actionWitness.events[0].hitLogicalId = m.targets.middle;
+    }, 'back-restores-focus'],
+    ['Back action witness cleanup retained carrier', (m) => {
+      m.phases.backNavigation.actionWitness.cleanup.carrierPresent = true;
+    }, 'back-restores-focus'],
+    ['Back copied anchor differs from action witness', (m) => {
+      m.phases.backNavigation.before.offsetPx += 9;
+    }, 'back-restores-focus'],
+    ['Back action-time anchor shifted', (m) => {
+      m.phases.backNavigation.actionWitness.events[0].anchor.offsetPx += 9;
+      m.phases.backNavigation.before.offsetPx += 9;
+    }, 'back-restores-focus'],
+    ['Back shifted logical anchor', (m) => {
+      m.phases.backNavigation.after.offsetPx += 9;
+    }, 'back-restores-focus'],
+    ['Back second settlement shifted logical anchor', (m) => {
+      m.phases.backNavigation.afterSettled.offsetPx += 9;
+    }, 'back-restores-focus'],
     ['count-only byte growth', (m) => { m.points.first.diagnostics.art.live.encodedBytes = 2_000_000; }, 'byte-ceiling'],
     ['zero queued-job peak', (m) => { m.phases.jobPeaks.queuedJobsPeak = 0; }, 'resource-live-limits'],
     ['zero active-job peak', (m) => { m.phases.jobPeaks.activeJobsPeak = 0; }, 'resource-live-limits'],
@@ -5786,6 +5910,68 @@ export async function runCompendiumMemSelftest() {
   const boundReportCheck = productionVerify(report);
   assert(boundReportCheck.ok,
     `production budget-bound terminal report was rejected: ${boundReportCheck.errors.join('; ')}`);
+  const backWitnessTerminalControls = [
+    ['missing', (profile) => { delete profile.phases.backNavigation.actionWitness; }],
+    ['duplicate', (profile) => {
+      const witness = profile.phases.backNavigation.actionWitness;
+      witness.events.push({ ...clone(witness.events[0]), sequence: 2 });
+      witness.observationCount = 2;
+    }],
+    ['untrusted', (profile) => {
+      profile.phases.backNavigation.actionWitness.events[0].trusted = false;
+    }],
+    ['wrong row', (profile) => {
+      profile.phases.backNavigation.actionWitness.events[0].targetIndex = 776;
+    }],
+    ['foreign document', (profile) => {
+      const witness = profile.phases.backNavigation.actionWitness;
+      witness.expectedDocumentToken = 'foreign-document';
+      witness.arm.documentToken = 'foreign-document';
+      witness.events[0].documentToken = 'foreign-document';
+    }],
+    ['retained listener', (profile) => {
+      profile.phases.backNavigation.actionWitness.cleanup.controllerAborted = false;
+    }],
+  ];
+  for (const [label, mutate] of backWitnessTerminalControls) {
+    const malformed = clone(report);
+    mutate(malformed.profiles.phone);
+    structuredInstrumentControlCount++;
+    assert(!productionVerify(malformed).ok,
+      `${label} Back action witness remained a valid current terminal profile`);
+  }
+  const backProductFailureControls = [
+    ['action anchor', (profile) => {
+      profile.phases.backNavigation.actionWitness.events[0].anchor.offsetPx += 9;
+      profile.phases.backNavigation.before.offsetPx += 9;
+    }],
+    ['first returned anchor', (profile) => {
+      profile.phases.backNavigation.after.offsetPx += 9;
+    }],
+    ['second returned anchor', (profile) => {
+      profile.phases.backNavigation.afterSettled.offsetPx += 9;
+    }],
+  ];
+  for (const [label, mutate] of backProductFailureControls) {
+    const failedProfiles = { phone: clone(phone), desktop: clone(desktop) };
+    mutate(failedProfiles.phone);
+    const failedOutcomes = [
+      ...evaluateProfile(failedProfiles.phone, budget, fixture),
+      ...evaluateProfile(failedProfiles.desktop, budget, fixture),
+    ];
+    const failures = failedOutcomes.filter((outcome) => outcome.status === 'fail');
+    assert(failures.length === 1 && failures[0].id === 'phone/back-restores-focus',
+      `${label} Back product failure did not remain scoped to its outcome`);
+    const failedReport = terminalReport(
+      'selftest-current', failedOutcomes, budget, failedProfiles,
+    );
+    failedReport.status = 'fail';
+    failedReport.findings = failures.map((failure) => failure.diagnosis);
+    structuredInstrumentControlCount++;
+    const failedReportCheck = productionVerify(failedReport);
+    assert(failedReportCheck.ok,
+      `${label} Back product failure was misclassified as invalid instrument evidence: ${failedReportCheck.errors.join('; ')}`);
+  }
   const foregroundTerminalControls = [
     ['missing receipt', (profile) => { profile.phases.foregroundServices.pop(); }],
     ['duplicate receipt', (profile) => {

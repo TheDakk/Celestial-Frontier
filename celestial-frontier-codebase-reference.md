@@ -1,5 +1,42 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-08-31 current Compendium action-time Back-witness boundary:** GitHub run
+> `33437596315` tested authorized PR #35 head
+> `8eb0b1bd901c7b36d8900f43f4de7d3a54158a0c` against develop base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` through synthetic merge
+> `4ccae861ab2f43f4269edfeefa51fd2e4985a875`; merge and head share exact tree
+> `b466c5a586dacfc785e7c9c1c8654a90ad5bdade`. Every pre-Compendium stage passed, then the
+> one-attempt/no-retry Compendium run completed **77/78** with sole red
+> `desktop/back-restores-focus`; Slice and Glass did not run. The immutable report remains red.
+>
+> The report's desktop setup anchor was `cmem-0773 / -34`, but the existing native activation
+> helper legitimately settled the row three times before the sole click. The product then restored
+> the later action-time `cmem-0773 / -92` anchor both immediately and after settlement, with exact
+> row selection, pinning and focus. The phone control preserved `cmem-0776 / -9`. Historical
+> evidence therefore diagnoses the old pre-helper comparison as an instrument false negative, not
+> a Compendium product, CSS or Linux-rendering defect.
+>
+> The local successor adds exact action-time evidence to the collector and outcome contract.
+> Schema `cf-v2-compendium-back-action-witness/v1` is armed after final row settlement and before
+> native press/release, observes one trusted delegated capture-phase click before the product
+> handler, and binds current document, logical row/index, unique target/scroller, hit point, input
+> fields, panel state, logical anchor and cleanup. Current `backNavigation` retains `setup`,
+> `actionWitness`, witness-derived `before`, `after` and `afterSettled`; legacy reports retain their
+> explicit historical replay path and are never rewritten. Focused verification passes **5 files /
+> 56 tests** and the selftest passes **611 controls**.
+>
+> Current measurement / outcome-contract / collector / producer / budget-file authority is
+> `20a1b773e7eec309de31772c2b1c0a174c0f175cfc798e573f20a53b966aba2e` /
+> `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+> `a5afcffd2f75e7cc2db1284194bc3eb76bde22bf4a1b4741f5157ce25339df51` /
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `c60b2f1fb50e978c0d6f522ee52a0274e9a45cd63a51f1643808229b1e25ce60`. Product source and
+> producer, CSS, the fixed **±2px** tolerance, numeric rulers/ceilings, 78 outcomes, historical
+> samples, timeouts, click/retry policy and version-tolerant Edge-family + CDP `1.3` authority are
+> unchanged. The earlier `7e089f3…` local chain below remains exact historical evidence only for its
+> own bytes. The changed collector still requires a fresh clean signed develop profile and one
+> unchanged-source **Compendium → Slice → Glass** chain; there is no new hosted or merge authority.
+
 > **2026-08-31 current terminal-green local develop boundary:** exact clean signed source
 > `7e089f3432a834636064615ac2da13b2b0ac39df` passed the isolated tracked-input develop profile,
 > then completed one unchanged-source/no-retry **Compendium → Slice → Glass** chain. Compendium
@@ -3383,6 +3420,16 @@ detail/Back, resize, and close. Native Arc 4 Tame/Scavenge/Sample controls can d
 catalogue compatibility data after the exact committed transaction verifies; eligible repeats add
 only the appropriate stable fauna individual or specimen lot. Failed or refused attempts do not
 publish optimistic ownership, reroll, or perform a second write.
+
+Compendium's current Back evidence distinguishes setup geometry from action-time product input.
+The native row helper may reposition through several deferred-layout/resource-settlement attempts;
+therefore its earlier `setup` anchor is diagnostic only. After the helper accepts its final point,
+the collector arms one exact current-document capture-phase click witness before native
+press/release. That witness binds the trusted delegated click, logical row/index, unique target and
+scroller, hit-tested coordinates, panel list/query/source counts and the anchor synchronously seen
+before the product handler. The report derives `before` from that witness and compares `after` plus
+`afterSettled` to it under the unchanged ±2px ruler. Listener/carrier cleanup is part of the
+evidence contract; the product's own focus/scroll restoration code is unchanged.
 
 The current PR #35 foreground-service authority treats a serviced turn as target-bound evidence,
 not a generic root heartbeat. For each accepted attachment the collector binds exact target,

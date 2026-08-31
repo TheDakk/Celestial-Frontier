@@ -92,6 +92,8 @@ export const PARTIAL_PROFILE_SCHEMA = 'cf-v2-compendium-partial-profile/v6';
 export const FILTER_TRANSITION_SCHEMA = 'cf-v2-compendium-filter-transition/v3';
 export const PRODUCER_ERROR_WITNESS_SCHEMA =
   'cf-v2-compendium-producer-error-witness/v1';
+export const BACK_ACTION_WITNESS_SCHEMA =
+  'cf-v2-compendium-back-action-witness/v1';
 export const PRODUCER_ERROR_ARM_MESSAGE = 'compendiummem injected producer error';
 export const PRODUCER_ERROR_ARM_SENTINEL = 'cf-v2-compendium-producer-error-armed/v1';
 export const THUMB_SETTLEMENT_OBSERVATION_SCHEMA =
@@ -264,6 +266,109 @@ function exactKeys(value, expected, where, errors) {
     return false;
   }
   return true;
+}
+
+function validBackAnchorSample(sample, expectedLogicalId) {
+  const keys = [
+    'logicalId', 'offsetPx', 'scrollTop', 'window',
+    'selectedLogicalId', 'selectedIndex', 'selectedMounted', 'selectedIntersects',
+    'selectedInWindow', 'selectedPinned', 'activeLogicalId',
+  ];
+  const windowKeys = ['start', 'end', 'beforePx', 'afterPx'];
+  return isObject(sample) && sameJson(Object.keys(sample).sort(), [...keys].sort())
+    && boundedString(sample.logicalId)
+    && finite(sample.offsetPx) && finite(sample.scrollTop)
+    && isObject(sample.window)
+    && sameJson(Object.keys(sample.window).sort(), [...windowKeys].sort())
+    && integer(sample.window.start) && sample.window.start >= 0
+    && integer(sample.window.end) && sample.window.end > sample.window.start
+    && nonnegative(sample.window.beforePx) && nonnegative(sample.window.afterPx)
+    && sample.selectedLogicalId === expectedLogicalId
+    && integer(sample.selectedIndex) && sample.selectedIndex >= 0
+    && typeof sample.selectedMounted === 'boolean'
+    && typeof sample.selectedIntersects === 'boolean'
+    && typeof sample.selectedInWindow === 'boolean'
+    && typeof sample.selectedPinned === 'boolean'
+    && sample.selectedMounted === true && sample.selectedIntersects === true
+    && (sample.selectedInWindow === true || sample.selectedPinned === true)
+    && (sample.activeLogicalId === null || boundedString(sample.activeLogicalId));
+}
+
+export function validCompendiumBackActionWitness(
+  witness, { logicalId, logicalIndex, documentToken } = {},
+) {
+  const witnessKeys = [
+    'schema', 'expectedLogicalId', 'expectedLogicalIndex', 'expectedDocumentToken',
+    'settlementAttempt', 'arm', 'observationCount', 'events', 'cleanup',
+  ];
+  const armKeys = [
+    'documentToken', 'scrollerCount', 'targetRowCount',
+    'pointHitLogicalId', 'pointX', 'pointY',
+  ];
+  const eventKeys = [
+    'sequence', 'type', 'trusted', 'button', 'detail',
+    'eventPhase', 'currentTargetIsDocument',
+    'clientX', 'clientY', 'targetLogicalId', 'hitLogicalId',
+    'targetIndex', 'targetRowCount', 'scrollerCount',
+    'targetOwnerDocument', 'targetConnected', 'documentToken', 'panel', 'anchor',
+  ];
+  const panelKeys = ['mode', 'query', 'sourceCount', 'filteredCount'];
+  const cleanupKeys = ['controllerAborted', 'carrierPresent'];
+  if (!boundedString(logicalId) || !integer(logicalIndex) || logicalIndex < 0
+    || !boundedString(documentToken)
+    || !isObject(witness)
+    || !sameJson(Object.keys(witness).sort(), [...witnessKeys].sort())
+    || witness.schema !== BACK_ACTION_WITNESS_SCHEMA
+    || witness.expectedLogicalId !== logicalId
+    || witness.expectedLogicalIndex !== logicalIndex
+    || witness.expectedDocumentToken !== documentToken
+    || !integer(witness.settlementAttempt)
+    || witness.settlementAttempt < 1 || witness.settlementAttempt > 8
+    || !isObject(witness.arm)
+    || !sameJson(Object.keys(witness.arm).sort(), [...armKeys].sort())
+    || witness.arm.documentToken !== documentToken
+    || witness.arm.scrollerCount !== 1 || witness.arm.targetRowCount !== 1
+    || witness.arm.pointHitLogicalId !== logicalId
+    || !finite(witness.arm.pointX) || !finite(witness.arm.pointY)
+    || witness.observationCount !== 1
+    || !Array.isArray(witness.events) || witness.events.length !== 1
+    || !isObject(witness.cleanup)
+    || !sameJson(Object.keys(witness.cleanup).sort(), [...cleanupKeys].sort())
+    || witness.cleanup.controllerAborted !== true
+    || witness.cleanup.carrierPresent !== false) return false;
+  const event = witness.events[0];
+  return isObject(event)
+    && sameJson(Object.keys(event).sort(), [...eventKeys].sort())
+    && event.sequence === 1
+    && event.type === 'click' && event.trusted === true && event.button === 0
+    && event.detail === 1
+    && event.eventPhase === 1 && event.currentTargetIsDocument === true
+    && finite(event.clientX) && finite(event.clientY)
+    && Math.abs(event.clientX - witness.arm.pointX) <= 0.5
+    && Math.abs(event.clientY - witness.arm.pointY) <= 0.5
+    && event.targetLogicalId === logicalId && event.hitLogicalId === logicalId
+    && event.targetIndex === logicalIndex
+    && event.targetRowCount === 1 && event.scrollerCount === 1
+    && event.targetOwnerDocument === true && event.targetConnected === true
+    && event.documentToken === documentToken
+    && isObject(event.panel)
+    && sameJson(Object.keys(event.panel).sort(), [...panelKeys].sort())
+    && event.panel.mode === 'list' && event.panel.query === ''
+    && event.panel.sourceCount === 1500 && event.panel.filteredCount === 1500
+    && validBackAnchorSample(event.anchor, logicalId)
+    && event.anchor.selectedIndex === logicalIndex;
+}
+
+function validCurrentBackActionMeasurement(measurement) {
+  const navigation = measurement?.phases?.backNavigation;
+  const logicalId = measurement?.targets?.detail;
+  const documentToken = measurement?.pageAuthorities?.main?.documentToken;
+  const actionWitness = navigation?.actionWitness;
+  return isObject(navigation) && isObject(navigation.setup) && isObject(navigation.before)
+    && validCompendiumBackActionWitness(actionWitness, {
+      logicalId, logicalIndex: 777, documentToken,
+    })
+    && sameJson(navigation.before, actionWitness.events[0].anchor);
 }
 
 export function compendiumBrowserCapabilityInventoryErrors({
@@ -4127,19 +4232,38 @@ export function evaluateProfile(measurement, budget, fixture) {
     panel: points.detail?.diagnostics?.panel, detail: points.detail?.diagnostics?.surfaces?.detail,
   });
   const backNavigation = measurement.phases?.backNavigation;
-  const backWasDeepAndVisible = backNavigation?.before?.window?.start > 0
-    && backNavigation?.before?.selectedLogicalId === measurement.targets?.detail
-    && backNavigation?.before?.selectedIndex === 777
-    && backNavigation?.before?.selectedMounted === true
-    && backNavigation?.before?.selectedIntersects === true;
-  const backAnchorStable = typeof backNavigation?.before?.logicalId === 'string'
-    && backNavigation.before.logicalId
-    && backNavigation.before.logicalId === backNavigation?.after?.logicalId
-    && backNavigation.before.logicalId === backNavigation?.afterSettled?.logicalId
-    && finite(backNavigation.before.offsetPx) && finite(backNavigation?.after?.offsetPx)
+  const currentBackSchema = isObject(backNavigation)
+    && (Object.hasOwn(backNavigation, 'setup') || Object.hasOwn(backNavigation, 'actionWitness'));
+  const backActionWitnessValid = currentBackSchema
+    && validCompendiumBackActionWitness(backNavigation?.actionWitness, {
+      logicalId: measurement.targets?.detail,
+      logicalIndex: 777,
+      documentToken: measurement.pageAuthorities?.main?.documentToken,
+    });
+  const backActionAnchor = backActionWitnessValid
+    ? backNavigation.actionWitness.events[0].anchor
+    : currentBackSchema ? null : backNavigation?.before;
+  const backActionWitnessBound = !currentBackSchema || (backActionWitnessValid
+    && sameJson(backNavigation?.before, backActionAnchor));
+  const backSetupWasDeepAndVisible = !currentBackSchema
+    || (backNavigation?.setup?.window?.start > 0
+      && backNavigation?.setup?.selectedLogicalId === measurement.targets?.detail
+      && backNavigation?.setup?.selectedIndex === 777
+      && backNavigation?.setup?.selectedMounted === true
+      && backNavigation?.setup?.selectedIntersects === true);
+  const backWasDeepAndVisible = backActionAnchor?.window?.start > 0
+    && backActionAnchor?.selectedLogicalId === measurement.targets?.detail
+    && backActionAnchor?.selectedIndex === 777
+    && backActionAnchor?.selectedMounted === true
+    && backActionAnchor?.selectedIntersects === true;
+  const backAnchorStable = typeof backActionAnchor?.logicalId === 'string'
+    && backActionAnchor.logicalId
+    && backActionAnchor.logicalId === backNavigation?.after?.logicalId
+    && backActionAnchor.logicalId === backNavigation?.afterSettled?.logicalId
+    && finite(backActionAnchor.offsetPx) && finite(backNavigation?.after?.offsetPx)
     && finite(backNavigation?.afterSettled?.offsetPx)
-    && Math.abs(backNavigation.before.offsetPx - backNavigation.after.offsetPx) <= 2
-    && Math.abs(backNavigation.before.offsetPx - backNavigation.afterSettled.offsetPx) <= 2;
+    && Math.abs(backActionAnchor.offsetPx - backNavigation.after.offsetPx) <= 2
+    && Math.abs(backActionAnchor.offsetPx - backNavigation.afterSettled.offsetPx) <= 2;
   const backSelectionStable = [backNavigation?.after, backNavigation?.afterSettled]
     .every((sample) => sample?.selectedLogicalId === measurement.targets?.detail
       && sample?.selectedIndex === 777 && sample?.selectedMounted === true
@@ -4150,8 +4274,9 @@ export function evaluateProfile(measurement, budget, fixture) {
     && points.back?.raw?.activeLogicalId === measurement.targets?.detail
     && points.back?.diagnostics?.panel?.filteredCount === 1500
     && points.back?.diagnostics?.panel?.query === ''
+    && backActionWitnessBound && backSetupWasDeepAndVisible
     && backWasDeepAndVisible && backAnchorStable && backSelectionStable,
-  'Back did not restore the selected deep row and logical top-anchor/offset after two settlements', {
+  'Back did not restore the trusted action-time selected row and logical top-anchor/offset after two settlements', {
     mode: points.back?.diagnostics?.panel?.mode, active: points.back?.raw?.activeLogicalId,
     navigation: backNavigation,
   });
@@ -4928,6 +5053,7 @@ function validCompleteProfileMeasurement(measurement, profile, browserProduct) {
     && validFilterTransitionSequence(measurement.phases.filterTransitions, {
       requireCompleteSet: true, requireProductSuccess: false,
     })
+    && validCurrentBackActionMeasurement(measurement)
     && validCompleteProfileForegroundServices(measurement, profile)
     && validCompleteProfileThumbnailSettlements(measurement, profile, browserProduct)
     && isObject(measurement.lazySpeciesResource)

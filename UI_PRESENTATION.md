@@ -1,5 +1,34 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-31 current Compendium Back presentation-evidence boundary:** PR #35 GitHub run
+> `33437596315` consumed its one authorized attempt and completed Compendium at **77/78** with sole
+> red `desktop/back-restores-focus`; every predecessor passed, while Slice and Glass did not run.
+> The immutable old desktop report sampled setup at logical `cmem-0773 / -34`, then the virtual-row
+> helper legitimately used three settlement attempts before its one click. Back restored the later
+> action-time `cmem-0773 / -92` anchor both immediately and after settlement, with the selected row
+> mounted, intersecting, pinned and focused. The phone control stayed `cmem-0776 / -9`. Historical
+> report status remains red; the evidence diagnoses a stale harness sample, not a visible product or
+> platform-layout defect.
+>
+> The completed local instrument repair captures `cf-v2-compendium-back-action-witness/v1` only
+> after final activation-point settlement and before native input. Its capture-phase listener sees
+> exactly one trusted delegated click before the product handler and binds the current document,
+> logical row/index, unique target/scroller, hit point, input phase, panel state and action-time
+> anchor; the comparison `before` is derived from that witness, and all paths prove carrier/listener
+> cleanup. Focused coverage passes **5 files / 56 tests** and the Compendium selftest passes **611
+> controls**. Product markup, focus/scroll behavior and CSS are untouched. The fixed **±2px**
+> tolerance, numeric rulers/ceilings, 78 outcomes, historical samples, timeouts, one-click/no-retry
+> rule and version-tolerant Edge-family + CDP `1.3` policy are unchanged.
+>
+> Current measurement / outcome-contract / collector / producer / budget-file authority is
+> `20a1b773e7eec309de31772c2b1c0a174c0f175cfc798e573f20a53b966aba2e` /
+> `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+> `a5afcffd2f75e7cc2db1284194bc3eb76bde22bf4a1b4741f5157ce25339df51` /
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `c60b2f1fb50e978c0d6f522ee52a0274e9a45cd63a51f1643808229b1e25ce60`. The prior
+> `7e089f3…` chain below remains exact historical presentation evidence for its own bytes; the changed
+> collector requires a fresh clean unchanged-source **Compendium → Slice → Glass** develop chain.
+
 > **2026-08-31 current terminal-green presentation boundary:** exact clean signed source
 > `7e089f3432a834636064615ac2da13b2b0ac39df` passed the isolated tracked-input develop profile,
 > then completed one unchanged-source/no-retry **Compendium → Slice → Glass** chain. Compendium
