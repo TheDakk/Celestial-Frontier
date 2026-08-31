@@ -17,17 +17,36 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · FIXED-EIGHT RED PRESERVED · SCENEMEMORY QUARANTINED ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · SCENEMEMORY QUARANTINED · FEED HARNESS REPAIR READY ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Exact clean SSH-signed fixed-eight source
-  **cc15e1f967f6644405cad7c3460cd8181b6a043f** (tree
-  **cb53bbd79e64e5aa8701683219edf2b18e8859d6**, parent
-  **5691e77ea470434dd5352901b0a6240a242a48ad**) is **44 commits ahead** of the fetched remote
-  agent branch.
+  **origin/openai/mac**. Exact clean SSH-signed quarantine source
+  **134f62e08b8a7180f798394e08a404ed935e2782** (tree
+  **f37a74970fe288f672fdf843f5a205ba1fb499e5**, parent
+  **cc15e1f967f6644405cad7c3460cd8181b6a043f**) is **45 commits ahead** of the fetched remote
+  agent branch. The bounded Feed harness successor is locally modified and not yet signed.
+- **Exact 134f static boundary:** the hermetic tracked develop preflight passed **253 files / 2,544
+  passed / 1 skipped**, all three strict TypeScript programs, **34** art sources with zero findings,
+  **1,014/1,014** routes and **454** specification fields with zero inert fields.
+- **Exact 134f develop-chain stop:** Compendium passed once/no-retry and named-verified on Edge
+  `152.0.4191.53` / CDP `1.3`. Exact Slice successor
+  `20260830-pr35-quarantine-134f62e-slice-certification` stopped terminal-red once/no-retry after
+  **173,764 ms** with one `harness` finding and one scope. Glass and Recovery did not run.
+- **134f diagnosis:** Feed correctly committed revision `128` / ownership revision `17`, advanced
+  Meals `0 → 1`, consumed and tombstoned the sole flora lot `1 → 0`, then reopened generation `4`
+  current and idle as `no-flora`, without summary/confirm and with disabled remaining radios plus
+  usable Back/Close. The generic detail opener incorrectly reused its pre-action `ready` predicate.
+  This is a harness false negative, not a product publication failure.
+- **Bounded successor:** the runner now derives exact post-Feed availability from the durable
+  predecessor, requires that exact state and visible control shape on same-document reopen and full
+  reload, and browser-free replays the immutable 134f report/log. Focused Feed coverage is **2 files
+  / 19 passed**; the consolidated develop profile passes **253 files / 2,546 passed / 1 skipped**,
+  all three TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** specification
+  fields. Independent product review is CLOSED. No game, creature, save, timeout, retry, browser
+  ruler or Edge baseline changed.
 - **Exact 8792 browser-free boundary:** the hermetic tracked develop preflight passed **253 files /
   2,529 passed / 1 skipped**, all three strict TypeScript programs, **34** art sources with zero
   findings, **1,014/1,014** routes and **454** specification fields with zero inert fields. All five
@@ -133,17 +152,18 @@ the archive verbatim and refresh this handoff in place.
 ### Exact next work
 
 1. Preserve the fixed-eight carrier and quarantine policy; do not retry or redesign SceneMemory.
-2. Run the tracked develop preflight, then one fresh fail-fast **Compendium → Slice → Glass**
-   chain on unchanged committed source. Stop after the first nonzero, red or instrument result.
-3. Preserve and named-verify each available report and refresh this handoff. Do **not** run Recovery
+2. Review/sign the bounded Feed harness repair and run its tracked exact-source preflight.
+3. Run one fresh fail-fast **Compendium → Slice → Glass** chain on that unchanged committed source.
+   Stop after the first nonzero, red or instrument result; do not retry.
+4. Preserve and named-verify each available report and refresh this handoff. Do **not** run Recovery
    for agent → `develop`; Recovery belongs to a separately authorized production candidate.
-4. Production remains **SceneMemory → Compendium → Slice → Glass → Recovery** and requires a
+5. Production remains **SceneMemory → Compendium → Slice → Glass → Recovery** and requires a
    later explicit SceneMemory activation decision.
 
 ### Product-roadmap and HUMAN boundary
 
 This pass does not recreate or redesign the implemented V2 systems. The current batch changes only
-SceneMemory measurement validity. The landed Feed semantic-summary repair, Capture publication
+develop admission and Feed evidence semantics. The landed Feed product behavior, Capture publication
 repair, universe-wide art treatment, creature/genome identity, capture math/pools, Guardians/Prime
 Codex, loot/Pureforged, exploration, crafting, combat, care/progression, audio and deterministic
 persistence remain otherwise untouched.

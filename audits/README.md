@@ -10,6 +10,34 @@ summary of it.
 
 ## Contents
 
+### Signed `134f62e…` Compendium PASS, then phase-blind Feed-reopen Slice red
+
+Exact clean SSH-signed quarantine source `134f62e08b8a7180f798394e08a404ed935e2782`
+passed Compendium once/no-retry on Edge `152.0.4191.53` / CDP `1.3`; its named verifier passed.
+The exact-source Slice successor
+`20260830-pr35-quarantine-134f62e-slice-certification` then stopped terminal-red once/no-retry
+after **173,764 ms** with exactly one `harness` finding and one scope. Glass and Recovery did not
+run.
+
+- `ARC5_SLICE_PR35_FEED_REOPEN_CONVERGENCE_RED_20260830_134F62E.json.gz`: **2,915 gzip / 12,550
+  raw bytes**; gzip/raw SHA-256
+  `2d1a30993c2dd660fbbe10bc0126a01c64dc063023df9a60d2b16c383ffb96c7` /
+  `9095773c6bfa6919af38e55f8c7eb6cbab18ada30ebd86baadfdd3a883c2e9c8`.
+- `ARC5_SLICE_PR35_FEED_REOPEN_CONVERGENCE_RED_20260830_134F62E.log.gz`: **2,699 gzip / 7,012 raw
+  bytes**; gzip/raw SHA-256
+  `3ef925a0ed6214fda496bdabbb69359f037d3cebafaa7831e9a25d38de8b1f00` /
+  `eeac0afd8070550ebec1384b7b752cb4c8f746054724bc4ad6330589fd25f50c`.
+
+The retained terminal observation proves the product had already committed revision `128` /
+ownership revision `17`, advanced Meals `0 → 1`, consumed and tombstoned the sole flora lot
+`1 → 0`, retained receipt ordinal `20`, and reopened generation `4` current and idle with
+`feedState: no-flora`, no summary/confirm, one disabled radio, and enabled Back/Close. The runner's
+generic detail opener incorrectly reused its pre-action-only `ready` predicate for both
+post-commit reopen phases. This is immutable harness-red evidence, not a product publication
+failure. The bounded successor derives exact post-Feed availability from durable predecessor facts,
+binds both the state and its visible control shape on same-document reopen/full reload, and replays
+this carrier browser-free. No game, creature, save, timeout or retry behavior changes.
+
 ### Signed `cc15e1f…` fixed-eight hard stop; SceneMemory production quarantine
 
 Exact clean SSH-signed source `cc15e1f967f6644405cad7c3460cd8181b6a043f` (tree

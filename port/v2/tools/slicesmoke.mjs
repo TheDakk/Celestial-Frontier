@@ -38,6 +38,8 @@ import {
   assessCompendiumFeedChoiceActivation,
   assessCompendiumFeedPreview,
   buildCompendiumFeedChoiceSettlementExpression,
+  compendiumFeedDetailPresentationPasses,
+  compendiumFeedSuccessorAvailability,
   arc2InventoryCarrierLegacyCargoParity,
   assessCompendiumFeedCommittedOutcome,
   assessCompendiumFeedPendingWindow,
@@ -17064,15 +17066,29 @@ try {
     const catalogue = source?.catalogSpecies?.find(
       (row) => row?.speciesId === creature?.speciesId,
     );
-    const food = source?.specimenLots?.find((row) => (
+    const floraLots = source?.specimenLots?.filter((row) => (
       row?.kind === 'flora' && Number.isSafeInteger(row?.quantity) && row.quantity > 0
-    ));
+    )) ?? [];
+    const food = floraLots[0];
     const sourceIndex = Array.isArray(arc4BurnRaw?.legacy?.codex)
       ? arc4BurnRaw.legacy.codex.findIndex(
         (row) => row?.g?.seed === catalogue?.genome?.seed,
       ) : -1;
     if (!creature || !catalogue || !food || sourceIndex < 0) return null;
     const fedBefore = creature.fed ?? 0;
+    const readyCompanionCountBefore = source.creatures.filter((row) => (
+      row?.speciesId === creature.speciesId
+        && row?.genomeIdentity === creature.genomeIdentity
+        && row?.assignment === null
+        && Number.isSafeInteger(row?.fed ?? 0)
+        && (row?.fed ?? 0) < 200
+    )).length;
+    const postFeedAvailability = compendiumFeedSuccessorAvailability({
+      readyCompanionCountBefore,
+      selectedCompanionReadyAfter: fedBefore + 1 < 200,
+      floraLotCountBefore: floraLots.length,
+      selectedFloraLotPresentAfter: food.quantity - 1 > 0,
+    });
     return Object.freeze({
       logicalId: `s${catalogue.genome.seed}`,
       sourceIndex,
@@ -17082,6 +17098,7 @@ try {
       fedAfter: fedBefore + 1,
       foodQuantityBefore: food.quantity,
       foodQuantityAfter: food.quantity - 1,
+      postFeedAvailability,
     });
   })();
   const arc5FeedCarrierProjection = (raw, fixture) => {
@@ -17263,7 +17280,7 @@ try {
     return Object.freeze({ point, dispatch });
   };
   const arc5FeedOpenDetail = async (
-    fixture, label, driver = desktopArc5FeedDriver,
+    fixture, label, driver = desktopArc5FeedDriver, expectedAvailability = 'ready',
   ) => {
     const state = await driver.evaluate('window.__CF_SLICE__.api.state()');
     if (state.panelOpen !== 'codex') {
@@ -17326,7 +17343,7 @@ try {
       && ui.controller?.delegatedListenerCount === 2
       && ui.controller?.pendingWork === 0
       && ui.controller?.convergenceLatched === false
-      && ui.feedState === 'ready'
+      && compendiumFeedDetailPresentationPasses(ui, expectedAvailability)
     ));
   };
   const arc5FeedChoiceSelector = (kind, id) => kind === 'creature'
@@ -17621,7 +17638,10 @@ try {
       logicalId:ui.logicalId,creatureId:${JSON.stringify(fixture.creatureId)},
       fed:number(creatureText,/Meals (\\d+)/),foodLotId:${JSON.stringify(fixture.foodLotId)},
       foodQuantity:food?number(foodText,/Quantity (\\d+)/):0,pendingWork:ui.controller?.pendingWork??null,
-      creatureText,foodText,feedState:ui.feedState};})()`);
+      creatureText,foodText,feedState:ui.feedState,summaryCount:ui.summaryCount,
+      confirmPresent:ui.confirmPresent,confirmDisabled:ui.confirmDisabled,
+      radioCount:ui.radioCount,allRadiosDisabled:ui.allRadiosDisabled,
+      backEnabled:ui.backEnabled,closeEnabled:ui.closeEnabled};})()`);
 
   if (arc5FeedFixture === null) {
     failSliceWithoutCascade(
@@ -18134,6 +18154,7 @@ try {
       };
       await arc5FeedOpenDetail(
         arc5FeedFixture, 'Arc 5 Feed winner same-document reopen', winnerDriver,
+        arc5FeedFixture.postFeedAvailability,
       );
       reopened = await arc5FeedRenderedValues(arc5FeedFixture, winnerDriver);
 
@@ -18221,7 +18242,10 @@ try {
       });
       reloadRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
       reloadProjection = arc5FeedCarrierProjection(reloadRaw, arc5FeedFixture);
-      await arc5FeedOpenDetail(arc5FeedFixture, 'Arc 5 Feed reloaded detail');
+      await arc5FeedOpenDetail(
+        arc5FeedFixture, 'Arc 5 Feed reloaded detail', desktopArc5FeedDriver,
+        arc5FeedFixture.postFeedAvailability,
+      );
       reloadRendered = await arc5FeedRenderedValues(arc5FeedFixture);
       reloadState = await evalIn('window.__CF_SLICE__.api.state()');
 

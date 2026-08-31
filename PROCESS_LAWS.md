@@ -79,7 +79,10 @@
 > **A POST-ACTION FIXTURE MUST USE A POST-ACTION ORACLE.** Do not certify a post-Survey state and
 > then recheck it with a pre-Survey UI predicate. The exact `8bdf474…` red required the held state
 > both to equal an open Pertar-card fixture and to have the card closed, so no correct product could
-> pass. Every captured-evidence decision that does not require browser APIs belongs in a shared
+> pass. Availability is part of that phase boundary: an action that honestly consumes the last
+> eligible lot can transition `ready` to `no-flora`, so its same-document reopen and full reload
+> must require the durable successor's exact availability instead of waiting again for `ready`.
+> Every captured-evidence decision that does not require browser APIs belongs in a shared
 > browser-free contract with one positive baseline and isolated negative controls. Replay the real
 > retained red inside `npm test` to prove both the diagnosis and any evidence it omitted; never
 > substitute pre-action fields for missing held capture just to make the historical report green.

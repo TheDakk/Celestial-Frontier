@@ -1,6 +1,7 @@
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 import {
   assessCompendiumFeedChoiceActivation,
@@ -10,6 +11,8 @@ import {
   assessCompendiumFeedPreview,
   assessCompendiumFeedTwoDocumentStaleOutcome,
   buildCompendiumFeedChoiceSettlementExpression,
+  compendiumFeedDetailPresentationPasses,
+  compendiumFeedSuccessorAvailability,
   compendiumFeedWebAudioEndpointFailureIsInstrument,
   compendiumFeedWebAudioRouteNodeIds,
   projectCompendiumFeedWebAudioGraph,
@@ -65,6 +68,17 @@ const fixture = Object.freeze({
   fedAfter: 20,
   foodQuantityBefore: 2,
   foodQuantityAfter: 1,
+  postFeedAvailability: 'ready',
+});
+const readyFeedPresentation = Object.freeze({
+  feedState: 'ready',
+  summaryCount: 1,
+  confirmPresent: true,
+  confirmDisabled: true,
+  radioCount: 2,
+  allRadiosDisabled: false,
+  backEnabled: true,
+  closeEnabled: true,
 });
 
 const choiceDocument = Object.freeze({
@@ -500,6 +514,7 @@ function committedBundle() {
     }],
     audioGraph: projectedFeedAudioGraph(),
     reopened: {
+      ...readyFeedPresentation,
       logicalId: fixture.logicalId,
       creatureId: fixture.creatureId,
       fed: fixture.fedAfter,
@@ -508,6 +523,7 @@ function committedBundle() {
       pendingWork: 0,
     },
     reloaded: {
+      ...readyFeedPresentation,
       ...after,
       durableFingerprint: after.durableFingerprint,
       globalRevision: after.globalRevision,
@@ -768,6 +784,176 @@ function twoDocumentStaleBundle() {
 }
 
 describe('Slice Arc 5 Feed causal-chain evidence', () => {
+  it('derives the exact post-Feed availability from the eligible predecessor', () => {
+    const availability = (
+      readyCompanionCountBefore: number,
+      selectedCompanionReadyAfter: boolean,
+      floraLotCountBefore: number,
+      selectedFloraLotPresentAfter: boolean,
+    ) => compendiumFeedSuccessorAvailability({
+      readyCompanionCountBefore,
+      selectedCompanionReadyAfter,
+      floraLotCountBefore,
+      selectedFloraLotPresentAfter,
+    });
+
+    expect(availability(1, true, 1, true)).toBe('ready');
+    expect(availability(2, false, 1, true)).toBe('ready');
+    expect(availability(1, false, 2, false)).toBe('no-eligible-companion');
+    expect(availability(1, true, 1, false)).toBe('no-flora');
+    expect(() => availability(0, true, 1, true)).toThrow(TypeError);
+    expect(() => compendiumFeedSuccessorAvailability({
+      readyCompanionCountBefore: 1,
+      selectedCompanionReadyAfter: true,
+      floraLotCountBefore: 1,
+      selectedFloraLotPresentAfter: null as unknown as boolean,
+    })).toThrow(TypeError);
+
+    const unavailablePresentation = {
+      feedState: 'no-flora',
+      summaryCount: 0,
+      confirmPresent: false,
+      confirmDisabled: null,
+      radioCount: 1,
+      allRadiosDisabled: true,
+      backEnabled: true,
+      closeEnabled: true,
+    };
+    expect(compendiumFeedDetailPresentationPasses(
+      readyFeedPresentation, 'ready',
+    )).toBe(true);
+    expect(compendiumFeedDetailPresentationPasses(
+      unavailablePresentation, 'no-flora',
+    )).toBe(true);
+    for (const [field, value] of [
+      ['summaryCount', 1], ['confirmPresent', true], ['confirmDisabled', false],
+      ['radioCount', 0], ['allRadiosDisabled', false],
+      ['backEnabled', false], ['closeEnabled', false],
+    ] as const) {
+      expect(compendiumFeedDetailPresentationPasses(
+        { ...unavailablePresentation, [field]: value }, 'no-flora',
+      )).toBe(false);
+    }
+    expect(() => compendiumFeedDetailPresentationPasses(
+      unavailablePresentation, 'protected' as 'ready',
+    )).toThrow(TypeError);
+  });
+
+  it('replays the immutable 134f Feed reopen red as a phase-blind harness finding', () => {
+    const reportGzip = readFileSync(fileURLToPath(new URL(
+      '../../../audits/ARC5_SLICE_PR35_FEED_REOPEN_CONVERGENCE_RED_20260830_134F62E.json.gz',
+      import.meta.url,
+    )));
+    const logGzip = readFileSync(fileURLToPath(new URL(
+      '../../../audits/ARC5_SLICE_PR35_FEED_REOPEN_CONVERGENCE_RED_20260830_134F62E.log.gz',
+      import.meta.url,
+    )));
+    const reportRaw = gunzipSync(reportGzip);
+    const logRaw = gunzipSync(logGzip);
+    const bytesHash = (value: Uint8Array): string => createHash('sha256')
+      .update(value).digest('hex');
+
+    expect([reportGzip.byteLength, bytesHash(reportGzip)]).toEqual([
+      2_915, '2d1a30993c2dd660fbbe10bc0126a01c64dc063023df9a60d2b16c383ffb96c7',
+    ]);
+    expect([reportRaw.byteLength, bytesHash(reportRaw)]).toEqual([
+      12_550, '9095773c6bfa6919af38e55f8c7eb6cbab18ada30ebd86baadfdd3a883c2e9c8',
+    ]);
+    expect([logGzip.byteLength, bytesHash(logGzip)]).toEqual([
+      2_699, '3ef925a0ed6214fda496bdabbb69359f037d3cebafaa7831e9a25d38de8b1f00',
+    ]);
+    expect([logRaw.byteLength, bytesHash(logRaw)]).toEqual([
+      7_012, 'eeac0afd8070550ebec1384b7b752cb4c8f746054724bc4ad6330589fd25f50c',
+    ]);
+
+    const report = JSON.parse(reportRaw.toString('utf8')) as any;
+    expect({
+      schema: report.schema,
+      status: report.status,
+      terminal: report.terminal,
+      runId: report.run?.id,
+      source: report.source?.commit,
+      sourceEnd: report.sourceEnd?.commit,
+      sourceChanged: report.sourceChange?.detected,
+      browser: report.browser?.version,
+      retries: report.retryPolicy?.automaticRetries,
+      findings: report.summary?.findingCount,
+      scopes: report.summary?.scopeCount,
+    }).toEqual({
+      schema: 'cf-v2-slice-smoke-ci/v1',
+      status: 'fail',
+      terminal: true,
+      runId: '20260830-pr35-quarantine-134f62e-slice-certification',
+      source: '134f62e08b8a7180f798394e08a404ed935e2782',
+      sourceEnd: '134f62e08b8a7180f798394e08a404ed935e2782',
+      sourceChanged: false,
+      browser: 'Microsoft Edge 152.0.4191.53',
+      retries: 0,
+      findings: 1,
+      scopes: 1,
+    });
+    expect(report.findings).toHaveLength(1);
+    expect(report.findings[0]?.scope).toBe('harness');
+    const message = String(report.findings[0]?.message ?? '');
+    const lastMarker = '(last ';
+    const lastStart = message.indexOf(lastMarker);
+    expect(lastStart).toBeGreaterThan(0);
+    expect(message.endsWith(')')).toBe(true);
+    const terminal = JSON.parse(message.slice(lastStart + lastMarker.length, -1));
+
+    expect({
+      feedState: terminal.feedState,
+      revision: terminal.authority?.revision,
+      generation: terminal.document?.generation,
+      pendingWork: terminal.controller?.pendingWork,
+      convergenceLatched: terminal.controller?.convergenceLatched,
+      actionBusy: terminal.actionCoordinator?.owner?.busy,
+      lastOutcome: terminal.lastOutcome,
+      result: terminal.result,
+      summaryCount: terminal.summaryCount,
+      confirmPresent: terminal.confirmPresent,
+      confirmDisabled: terminal.confirmDisabled,
+      radioCount: terminal.radioCount,
+      allRadiosDisabled: terminal.allRadiosDisabled,
+      backEnabled: terminal.backEnabled,
+      closeEnabled: terminal.closeEnabled,
+    }).toEqual({
+      feedState: 'no-flora',
+      revision: 17,
+      generation: 4,
+      pendingWork: 0,
+      convergenceLatched: false,
+      actionBusy: false,
+      lastOutcome: 'committed:128',
+      result: {
+        creatureId: 'creature-v1:0401b128fd981bb987e2f344bb44ece186cf905446062bbfdac65d433430400f',
+        foodLotId: 'specimen-v1:92a15baf8a0175ab2f6960d43f5abdd555968e881fcd6afb562b4726e08f99d0',
+        fedBefore: 0,
+        fedAfter: 1,
+        foodQuantityBefore: 1,
+        foodQuantityAfter: 0,
+        lotTombstoned: true,
+        receiptOrdinal: 20,
+        revision: 128,
+        ownershipRevision: 17,
+      },
+      summaryCount: 0,
+      confirmPresent: false,
+      confirmDisabled: null,
+      radioCount: 1,
+      allRadiosDisabled: true,
+      backEnabled: true,
+      closeEnabled: true,
+    });
+    expect(terminal.feedState === 'ready').toBe(false);
+    expect(compendiumFeedSuccessorAvailability({
+      readyCompanionCountBefore: 1,
+      selectedCompanionReadyAfter: true,
+      floraLotCountBefore: 1,
+      selectedFloraLotPresentAfter: false,
+    })).toBe(terminal.feedState);
+  });
+
   it('compiles the exact Feed settlement expression and rejects closure drift', () => {
     const expression = buildCompendiumFeedChoiceSettlementExpression(
       {
@@ -1650,6 +1836,101 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       ok: false,
       reasons: ['heartbeat-owned Feed snapshot lifecycle'],
     });
+
+    const wrongReopenedAvailability = structuredClone(good);
+    (wrongReopenedAvailability.reopened as { feedState: string }).feedState = 'no-flora';
+    expect(assessCompendiumFeedCommittedOutcome(wrongReopenedAvailability)).toEqual({
+      ok: false,
+      reasons: ['same-document Compendium refresh'],
+    });
+
+    const wrongReloadedAvailability = structuredClone(good);
+    (wrongReloadedAvailability.reloaded as { feedState: string }).feedState = 'no-flora';
+    expect(assessCompendiumFeedCommittedOutcome(wrongReloadedAvailability)).toEqual({
+      ok: false,
+      reasons: ['full-reload durable fixed point'],
+    });
+
+    for (const [field, value] of [
+      ['summaryCount', 0], ['confirmPresent', false], ['confirmDisabled', null],
+      ['radioCount', 0], ['allRadiosDisabled', true],
+      ['backEnabled', false], ['closeEnabled', false],
+    ] as const) {
+      const wrongReopenedPresentation = structuredClone(good);
+      Object.assign(wrongReopenedPresentation.reopened, { [field]: value });
+      expect(assessCompendiumFeedCommittedOutcome(wrongReopenedPresentation)).toEqual({
+        ok: false,
+        reasons: ['same-document Compendium refresh'],
+      });
+      const wrongReloadedPresentation = structuredClone(good);
+      Object.assign(wrongReloadedPresentation.reloaded, { [field]: value });
+      expect(assessCompendiumFeedCommittedOutcome(wrongReloadedPresentation)).toEqual({
+        ok: false,
+        reasons: ['full-reload durable fixed point'],
+      });
+    }
+
+    const exhausted = structuredClone(good);
+    Object.assign(exhausted.fixture, {
+      foodQuantityBefore: 1,
+      foodQuantityAfter: 0,
+      postFeedAvailability: 'no-flora',
+    });
+    const exhaustedWitness = canonicalJson({
+      schema: 'cf-v2-arc5-feed-witness/v1',
+      receiptOrdinal: exhausted.before.sessionOrdinal,
+      parentRevision: exhausted.before.ownershipRevision,
+      parentDigest: exhausted.before.targetDigest,
+      creatureId: exhausted.fixture.creatureId,
+      foodLotId: exhausted.fixture.foodLotId,
+      fedBefore: exhausted.fixture.fedBefore,
+      fedAfter: exhausted.fixture.fedAfter,
+      foodQuantityBefore: exhausted.fixture.foodQuantityBefore,
+      foodQuantityAfter: exhausted.fixture.foodQuantityAfter,
+    });
+    const exhaustedWitnessDigest = hashText(exhaustedWitness);
+    for (const candidate of [exhausted.after, exhausted.reloaded]) {
+      Object.assign(candidate, {
+        foodQuantityBefore: 1,
+        foodQuantityAfter: 0,
+        lotTombstoned: true,
+        lotDisposition: {
+          ordinal: candidate.receiptOrdinal,
+          actionKind: 'companion-feed',
+          witnessDigest: exhaustedWitnessDigest,
+        },
+        tombstoneSnapshotQuantity: 1,
+        receiptWitness: exhaustedWitness,
+        receiptWitnessDigest: exhaustedWitnessDigest,
+      });
+      const lastReceipt = candidate.receiptRows.length - 1;
+      candidate.receiptRows[lastReceipt]!.witness = exhaustedWitness;
+      candidate.receiptRawRows[lastReceipt] = JSON.stringify(candidate.receiptRows[lastReceipt]);
+    }
+    Object.assign(exhausted.settled.result, {
+      foodQuantityBefore: 1,
+      foodQuantityAfter: 0,
+    });
+    const exhaustedPresentation = {
+      feedState: 'no-flora',
+      summaryCount: 0,
+      confirmPresent: false,
+      confirmDisabled: null,
+      radioCount: 1,
+      allRadiosDisabled: true,
+      backEnabled: true,
+      closeEnabled: true,
+    };
+    Object.assign(exhausted.reopened, { foodQuantity: 0, ...exhaustedPresentation });
+    Object.assign(exhausted.reloaded, { foodQuantity: 0, ...exhaustedPresentation });
+    expect(assessCompendiumFeedCommittedOutcome(exhausted)).toEqual({ ok: true, reasons: [] });
+
+    const exhaustedPhaseBlind = structuredClone(exhausted);
+    exhaustedPhaseBlind.reopened.feedState = 'ready';
+    expect(assessCompendiumFeedCommittedOutcome(exhaustedPhaseBlind)).toEqual({
+      ok: false,
+      reasons: ['same-document Compendium refresh'],
+    });
   });
 
   it('requires one native two-document winner and one stale loser fixed point', () => {
@@ -1798,6 +2079,10 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
     const occurrences = (candidate: string, needle: string): number =>
       candidate.split(needle).length - 1;
     const isCausalFeedWiring = (candidate: string): boolean => {
+      const fixtureOwner = owner(
+        candidate, '  const arc5FeedFixture = (() => {',
+        '  const arc5FeedCarrierProjection = (raw, fixture) => {',
+      );
       const feedUi = owner(
         candidate, '  const ARC5_FEED_UI_EXPRESSION =',
         '  const desktopArc5FeedDriver = Object.freeze({',
@@ -1810,6 +2095,10 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
         candidate, '  const createArc5FeedTargetDriver = (targetSession) => {',
         '  const arc5FeedClick = async (',
       );
+      const detail = owner(
+        candidate, '  const arc5FeedOpenDetail = async (',
+        '  const arc5FeedChoiceSelector = (kind, id) =>',
+      );
       const choice = owner(
         candidate, '  const activateArc5FeedChoice = async (',
         '  const collectArc5FeedPreview = async (',
@@ -1817,6 +2106,10 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       const preview = owner(
         candidate, '  const collectArc5FeedPreview = async (',
         '  const arc5FeedRenderedValues = async (',
+      );
+      const rendered = owner(
+        candidate, '  const arc5FeedRenderedValues = async (',
+        '\n\n  if (arc5FeedFixture === null) {',
       );
       const initial = owner(
         candidate,
@@ -1827,7 +2120,17 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
         candidate, '      const winnerInitialFeedUi = await arc5FeedOpenDetail(',
         '      const audioEvidenceDeadline = Date.now() + 3_000;',
       );
-      if (!feedUi || !desktopPointer || !targetDriver || !choice || !preview || !initial || !winner) {
+      const postCommitReopen = owner(
+        candidate, '      settledUi = {',
+        '      const loserPagehideKey =',
+      );
+      const postCommitReload = owner(
+        candidate, "      await waitForF4Writable('Arc 5 Feed loser restored after winner close'",
+        '      const loserConfirmPresses =',
+      );
+      if (!fixtureOwner || !feedUi || !desktopPointer || !targetDriver || !detail
+        || !choice || !preview || !rendered || !initial || !winner || !postCommitReopen
+        || !postCommitReload) {
         return false;
       }
       const noSyntheticChoice = (section: string): boolean =>
@@ -1848,6 +2151,12 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       return occurrences(candidate, 'activateArc5FeedChoice(') === 4
         && occurrences(candidate, 'collectArc5FeedPreview(') === 2
         && occurrences(candidate, 'buildCompendiumFeedChoiceSettlementExpression(') === 1
+        && fixtureOwner.includes('const readyCompanionCountBefore = source.creatures.filter(')
+        && fixtureOwner.includes('const postFeedAvailability = compendiumFeedSuccessorAvailability({')
+        && fixtureOwner.includes('selectedCompanionReadyAfter: fedBefore + 1 < 200,')
+        && fixtureOwner.includes('floraLotCountBefore: floraLots.length,')
+        && fixtureOwner.includes('selectedFloraLotPresentAfter: food.quantity - 1 > 0,')
+        && fixtureOwner.includes('postFeedAvailability,')
         && feedUi.includes(
           "feedSummaries=[...mount?.querySelectorAll('[data-arc5-feed-summary]')??[]],",
         )
@@ -1861,6 +2170,16 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
         && rawCdpPointer(desktopPointer, 'sess')
         && rawCdpPointer(targetDriver, 'targetSession')
         && targetDriver.includes('return Object.freeze({ evaluate, wait, clickPoint });')
+        && detail.includes(
+          "fixture, label, driver = desktopArc5FeedDriver, expectedAvailability = 'ready',",
+        )
+        && detail.includes(
+          '&& compendiumFeedDetailPresentationPasses(ui, expectedAvailability)',
+        )
+        && rendered.includes('summaryCount:ui.summaryCount,')
+        && rendered.includes('confirmPresent:ui.confirmPresent,confirmDisabled:ui.confirmDisabled,')
+        && rendered.includes('radioCount:ui.radioCount,allRadiosDisabled:ui.allRadiosDisabled,')
+        && rendered.includes('backEnabled:ui.backEnabled,closeEnabled:ui.closeEnabled')
         && ordered(choice, [
           'h.receipt={pointerdowns:[],clicks:[],inputs:[],changes:[]};',
           "for(const type of ['pointerdown','click','input','change'])document.addEventListener(",
@@ -1912,6 +2231,13 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
           + "        'Arc 5 winner exact Feed preview', winnerDriver,")
         && winner.includes("'#codexpanel [data-arc5-feed-confirm]',\n"
           + "        'Arc 5 Feed winner confirm', winnerDriver,")
+        && postCommitReopen.includes(
+          "arc5FeedFixture.postFeedAvailability,\n      );\n      reopened = await arc5FeedRenderedValues",
+        )
+        && postCommitReload.includes(
+          "arc5FeedFixture, 'Arc 5 Feed reloaded detail', desktopArc5FeedDriver,\n"
+          + '        arc5FeedFixture.postFeedAvailability,',
+        )
         && noAsyncEscape(winner);
     };
     const replaceOnce = (candidate: string, before: string, after: string): string => {
@@ -1966,6 +2292,28 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       source,
       '+ JSON.stringify({ expected, assessment, observation }));\n  };\n  const arc5FeedRenderedValues',
       '+ JSON.stringify({ expected }));\n  };\n  const arc5FeedRenderedValues',
+    ))).toBe(false);
+    expect(isCausalFeedWiring(replaceOnce(
+      source,
+      '&& compendiumFeedDetailPresentationPasses(ui, expectedAvailability)',
+      '&& ui.feedState === expectedAvailability',
+    ))).toBe(false);
+    expect(isCausalFeedWiring(replaceOnce(
+      source,
+      'selectedFloraLotPresentAfter: food.quantity - 1 > 0,',
+      'selectedFloraLotPresentAfter: true,',
+    ))).toBe(false);
+    expect(isCausalFeedWiring(replaceOnce(
+      source,
+      "arc5FeedFixture.postFeedAvailability,\n      );\n      reopened = await arc5FeedRenderedValues",
+      "'ready',\n      );\n      reopened = await arc5FeedRenderedValues",
+    ))).toBe(false);
+    expect(isCausalFeedWiring(replaceOnce(
+      source,
+      "arc5FeedFixture, 'Arc 5 Feed reloaded detail', desktopArc5FeedDriver,\n"
+        + '        arc5FeedFixture.postFeedAvailability,',
+      "arc5FeedFixture, 'Arc 5 Feed reloaded detail', desktopArc5FeedDriver,\n"
+        + "        'ready',",
     ))).toBe(false);
   });
 

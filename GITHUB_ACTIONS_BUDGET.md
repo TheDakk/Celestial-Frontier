@@ -31,6 +31,15 @@ empty outcomes. Desktop and candidates 2–3 did not run. Per the documented har
 is now production-only/quarantined and is not a `develop` merge blocker. This local result does not
 authorize a hosted attempt or claim a browser PASS.
 
+Exact clean signed quarantine source `134f62e08b8a7180f798394e08a404ed935e2782` then passed its
+one/no-retry Compendium stage and named verifier. Slice run
+`20260830-pr35-quarantine-134f62e-slice-certification` stopped terminal-red once/no-retry after
+173,764 ms with one `harness` finding; Glass and Recovery did not run. The retained product state is
+coherent `no-flora` after the sole flora lot was consumed, and the failure is the runner's
+pre-action-only `ready` predicate reused after commit. Its bounded local harness repair changes no
+game, timeout or retry behavior and still requires a fresh signed unchanged-source Compendium →
+Slice → Glass chain. This local diagnosis/repair authorizes no push, label, hosted run or merge.
+
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
 initially set this mode after exhausting the private-repository monthly allowance of **3,000**.
