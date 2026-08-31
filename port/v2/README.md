@@ -1,27 +1,27 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **Current input-v5 / native-Feed boundary (2026-08-30; exact resumption details in
+> **Current input-v5 / semantic-Feed-summary boundary (2026-08-30; exact resumption details in
 > `ROADMAP.md`):** exact clean SSH-signed checkpoint
-> `f219d46693b629ae035d05e5205be98840650ece` (tree `d92dde7f…`, parent `51a8ac4…`)
-> passed the hermetic develop profile at **253 files / 2,528 tests / 1 skipped**, all three strict
+> `fc18f0416d7b58b2f5b4ed3a0829e259f3dd951b` (tree `ca6e2e5…`, parent `f219d46…`)
+> passed the hermetic develop profile at **253 files / 2,529 tests / 1 skipped**, all three strict
 > TypeScript programs, the 34-source art audit, 1,014/1,014 routes and 454-field specification
 > audit. All five classifier-required browser-instrument controls passed once. On that unchanged
-> source and Microsoft Edge `152.0.4191.53` / CDP `1.3`, SceneMemory passed **44/44** in 13,239 ms
-> and Compendium passed **78/78** in 64,447 ms; both named verifiers passed.
+> source and Microsoft Edge `152.0.4191.53` / CDP `1.3`, SceneMemory passed **44/44** in 13,132 ms
+> and Compendium passed **78/78** in 65,485 ms.
 >
-> Slice `20260830-pr35-f219d46-feed-native-slice-certification` then stopped once/no-retry after
-> 155,668 ms with one `harness` finding: the generated post-click settlement expression contained
-> one surplus `}` and `Runtime.evaluate` returned `SyntaxError: Unexpected token '}'`. The exact
-> native radio preparation and raw-CDP dispatch had completed, but the certificate stopped before
-> settlement assessment, the flora choice, preview, durable read, confirmation, writer or
-> persistence comparison. Glass did not run. Exact predecessor reports plus the Slice report/log
-> are preserved with raw/gzip hashes under `audits/`; the immutable red is never retried or
-> relabelled and makes no Feed product verdict.
+> Slice `20260830-pr35-fc18f04-feed-expression-slice-certification` then stopped once/no-retry after
+> 162,206 ms with one `harness` finding. Both native radio choices had settled to their exact IDs in
+> DOM and controller, with current authority, a ready controller, enabled confirmation and idle
+> coordinator. The preview instrument nevertheless read Rename's summary because Rename, Feed and
+> Breed share `.compendium-feed-summary`; Feed already owns the unique semantic
+> `[data-arc5-feed-summary]` under its mount. It stopped before durable read, confirmation, writer,
+> persistence comparison or contender document. Glass did not run. Exact reports/log are preserved
+> under `audits/`; the immutable red is instrument-only and never retried or relabelled.
 >
-> The bounded successor removes that one closure and single-sources the generated expression in a
-> pure builder used by runner and browser-free test. The control compiles the exact output and
-> proves both missing- and extra-brace mutations fail. Focused Feed coverage is **2 files / 17
-> passed**; all three TypeScript programs and strict unused-symbol checking pass. No product code,
+> The bounded successor scopes preview text to Feed's exact semantic mount, retains the dedicated
+> summary-owner count, requires exactly one owner and proves zero, duplicate and shared-class
+> mutations red. Focused Feed coverage is **2 files / 17 passed**; all three TypeScript programs
+> and strict unused-symbol checking pass. No product code,
 > timeout, retry, numeric ruler, browser baseline, creature/genome, save, art/audio, balance or
 > release identity changed. The successor still needs its own signed commit, tracked develop
 > preflight and one fresh fail-fast SceneMemory → Compendium → Slice → Glass chain.

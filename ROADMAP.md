@@ -17,27 +17,28 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-30 · INPUT-v5 GREEN · FEED EXPRESSION REPAIR READY ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-30 · INPUT-v5 GREEN · FEED SUMMARY OWNER REPAIR READY ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
   **origin/openai/mac**. Exact clean signed evidence source
-  **f219d46693b629ae035d05e5205be98840650ece** (tree
-  **d92dde7f613cc5b2403cf6b137f86061695b7c7e**, parent
-  **51a8ac43f1a583e73dc4d111da04bbdb76abcc02**) is **40 commits ahead** of the fetched remote
+  **fc18f0416d7b58b2f5b4ed3a0829e259f3dd951b** (tree
+  **ca6e2e5327e1a898e8b79580bb86e7203b2c61f4**, parent
+  **f219d46693b629ae035d05e5205be98840650ece**) is **41 commits ahead** of the fetched remote
   agent branch; its embedded SSH signature was cryptographically verified.
-- **Exact f219 evidence:** the hermetic tracked develop preflight passed **253 files / 2,528 passed
+- **Exact fc18 evidence:** the hermetic tracked develop preflight passed **253 files / 2,529 passed
   / 1 skipped**, all TypeScript/static gates and the five classifier-required browser controls.
-  SceneMemory passed **44/44** in **13,239 ms** and Compendium passed **78/78** in **64,447 ms**,
-  both named-verified. Slice then stopped once/no-retry after **155,668 ms** on one generated-
-  expression `SyntaxError`; Glass did not run. Exact carriers are preserved under `audits/`.
+  SceneMemory passed **44/44** in **13,132 ms** and Compendium passed **78/78** in **65,485 ms**.
+  Slice then stopped once/no-retry after **162,206 ms** on one `harness` finding; Glass did not
+  run. Exact carriers are preserved under `audits/` and bind the unchanged clean source.
 - **Current local successor:** a dirty, bounded **Slice evidence-only** descendant removes exactly
-  one surplus `}` and moves the settlement expression into one pure builder used by runner and
-  browser-free test. Both missing- and extra-brace controls are red; focused Feed tests are **17/17**
-  and all TypeScript programs plus strict unused-symbol checking pass. It changes no game product
-  source. **A New Foundation** remains exactly **75** unique bullets with rendered ordered SHA-256
+  the global shared-class summary lookup. It binds Feed preview text to the current
+  `[data-arc5-feed-body]` mount's dedicated `[data-arc5-feed-summary]`, retains exact owner count and
+  rejects zero, duplicate and shared-class mutations. Focused Feed tests are **17/17** and all
+  TypeScript programs plus strict unused-symbol checking pass. It changes no game product source.
+  **A New Foundation** remains exactly **75** unique bullets with rendered ordered SHA-256
   **52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1**. No creature/genome
   structure, capture pool, Yield cycle, save schema, art/audio system, balance, timeout, retry,
   release identity or Edge-version baseline changed. The successor must earn its own fresh chain;
@@ -150,6 +151,27 @@ the archive verbatim and refresh this handoff in place.
   never compiled the generated program. The bounded successor removes the surplus closure, uses one
   pure expression builder in runner and test, compiles its exact output and proves missing/surplus
   closure mutations both fail. No timeout, retry, product or browser-ruler change is involved.
+
+### Exact fc18 Feed-expression attempt and semantic-summary ownership boundary
+
+- Exact signed `fc18f04…` passed its tracked-input develop profile at **253 files / 2,529 passed /
+  1 skipped**, all three TypeScript programs, the art/route/spec gates and the five required changed-
+  instrument controls. SceneMemory
+  `20260830-pr35-fc18f04-feed-expression-scenemem-certification` passed **44/44** in **13,132 ms**;
+  Compendium `20260830-pr35-fc18f04-feed-expression-compendium-certification` passed **78/78** in
+  **65,485 ms**. Their reports retained zero findings, exact unchanged source and complete cleanup.
+- Slice `20260830-pr35-fc18f04-feed-expression-slice-certification` ran once/no-retry and stopped
+  after **162,206 ms** with exactly one `harness` finding. Both native Feed radios had settled to
+  the exact creature/flora identities in DOM and controller, with one mount, two listeners, zero
+  pending work, current authority, enabled confirmation and an idle coordinator. The preview text
+  was instead Rename's `New companion name…` block, so only the Meals and Quantity terms were red.
+- Rename, Feed and Breed deliberately share `.compendium-feed-summary`; the instrument selected the
+  first global match even though Feed already owns `[data-arc5-feed-summary]` under its exact mount.
+  This is instrument-only. The stop occurred before durable read, trace/hold arm, confirm dispatch,
+  coordinator claim, writer, persistence comparison or contender document; Glass did not run.
+- The bounded successor scopes the semantic selector to Feed's mount, requires exactly one owner and
+  negative-controls zero, duplicate and shared-class lookup mutations. Focused Feed coverage is
+  **17/17** and typecheck/strict unused-symbol checks pass. No product code, timeout or retry changed.
 
 ### Immutable d611 → 7f → 961 → 656 evidence and the isolated Arc 4 boundary
 
@@ -289,10 +311,10 @@ the archive verbatim and refresh this handoff in place.
   Capture action disabled. Scoping the final republish by operation reason would recreate that
   stale-readiness race; the wiring test now rejects such narrowing.
 
-### Exact next work — certify the parsed Feed evidence program once
+### Exact next work — certify the semantic Feed summary owner once
 
-1. The exact closure repair, shared expression builder, parse/extra-brace/missing-brace controls,
-   focused **17/17** Feed coverage, all TypeScript programs and two independent diagnoses are
+1. The exact mount-scoped semantic selector, unique-owner oracle, zero/duplicate/shared-class
+   controls, focused **17/17** Feed coverage, all TypeScript programs and two independent audits are
    green. SSH-sign this instrument/tests/evidence/docs descendant and verify its signature plus a
    clean worktree.
 2. On that exact commit, run `node tools/tracked-input-preflight.mjs --profile=develop` once. It
@@ -300,7 +322,7 @@ the archive verbatim and refresh this handoff in place.
    PR-classifier-required changed-browser-instrument controls once. Then run one fresh no-retry
    SceneMemory → Compendium → Slice → Glass chain on the unchanged committed source. Stop on the
    first nonzero, red or instrument result; Glass runs only after green Slice. Never rerun or
-   relabel the immutable `51a8ac4…` or `f219d46…` reds.
+   relabel the immutable `51a8ac4…`, `f219d46…` or `fc18f04…` reds.
 3. Preserve and named-verify each available exact report. Do **not** run Recovery for this
    agent → `develop` admission; Recovery belongs to a later separately authorized
    `develop` → `main` production candidate. Refresh this handoff with the final local head and
@@ -309,7 +331,7 @@ the archive verbatim and refresh this handoff in place.
 ### Product-roadmap and HUMAN boundary
 
 This pass does not recreate or redesign the implemented V2 systems. The current successor changes
-only the generated Feed certificate expression; the already-landed Capture publication repair and
+only Feed certificate summary ownership; the already-landed Capture publication repair and
 the existing universe-wide art treatment,
 creature/genome identity, capture math/pools, Guardians/Prime Codex, loot/Pureforged, exploration,
 crafting, combat, care/progression, audio and deterministic persistence remain otherwise untouched.
@@ -323,7 +345,7 @@ judgment. Automation must not invent those decisions merely to call the roadmap 
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** sign the parsed-expression repair/evidence/docs descendant, run one tracked
+- **OpenAI/Codex now:** sign the semantic-summary repair/evidence/docs descendant, run one tracked
   develop preflight, then run one final local browser chain with causal stop and no retry.
 - **GitHub step now:** none. Zero hosted attempts are authorized.
 - **PR #35 after local green:** existing draft, base **develop**, source **openai/mac**, title

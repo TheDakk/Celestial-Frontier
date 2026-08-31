@@ -17174,6 +17174,7 @@ try {
     diagnostics=S?.api?.compendiumDiagnostics?.(),panel=document.getElementById('codexpanel'),
     mount=panel?.querySelector('[data-arc5-feed-body]'),
     text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),
+    feedSummaries=[...mount?.querySelectorAll('[data-arc5-feed-summary]')??[]],
     radios=[...panel?.querySelectorAll('input[type="radio"][data-arc5-feed-choice]')??[]],
     confirm=panel?.querySelector('[data-arc5-feed-confirm]'),back=document.getElementById('codexback'),
     close=panel?.querySelector('[data-pnx]'),status=panel?.querySelector('[data-arc5-feed-status]');return {
@@ -17191,7 +17192,7 @@ try {
       lastOutcome:state?.ownershipV2?.feed?.lastOutcome??null,
       result:state?.ownershipV2?.feed?.lastResult??null,
       statusKind:status?.getAttribute('data-kind')??null,statusText:text(status),
-      summary:text(panel?.querySelector('.compendium-feed-summary')),
+      summaryCount:feedSummaries.length,summary:text(feedSummaries[0]),
       confirmDisabled:confirm?.disabled??null,confirmPresent:!!confirm,
       radioCount:radios.length,allRadiosDisabled:radios.length>0&&radios.every((radio)=>radio.disabled),
       selectedCreatureId:radios.find((radio)=>radio.checked&&radio.dataset.arc5FeedChoice==='creature')?.dataset.arc5FeedCreatureId??null,
@@ -17594,7 +17595,7 @@ try {
       document:ui.document,authority:ui.authority,
       controller:{...(ui.controller??{}),feedState:ui.feedState},
       dom:{selectedCreatureId:ui.selectedCreatureId,
-        selectedFoodLotId:ui.selectedFoodLotId,summary:ui.summary,
+        selectedFoodLotId:ui.selectedFoodLotId,summaryCount:ui.summaryCount,summary:ui.summary,
         confirmPresent:ui.confirmPresent,confirmDisabled:ui.confirmDisabled},
       actionCoordinator:ui.actionCoordinator,lastOutcome:ui.lastOutcome,result:ui.result}})()`;
     const deadline = performance.now() + 6_000;

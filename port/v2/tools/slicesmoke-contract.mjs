@@ -1504,6 +1504,7 @@ export function assessCompendiumFeedPreview(observation, expected) {
   const dom = observation?.dom;
   add('exact DOM Feed creature selection', dom?.selectedCreatureId === expected.creatureId);
   add('exact DOM Feed flora selection', dom?.selectedFoodLotId === expected.foodLotId);
+  add('unique Feed preview summary owner', dom?.summaryCount === 1);
   const meals = `Meals ${expected.fedBefore} → ${expected.fedAfter}`;
   const quantity = `Quantity ${expected.foodQuantityBefore} → ${expected.foodQuantityAfter}`;
   const occursOnce = (needle) => typeof dom?.summary === 'string'
