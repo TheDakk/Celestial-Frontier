@@ -9,7 +9,8 @@
 > **305,022 ms** with **7 findings across 5 scopes**; Glass (**cross-device presentation**) did not
 > run.
 >
-> The bounded dirty successor repairs the evidence that produced those findings: measured phone
+> Exact SSH-signed implementation/evidence source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50`
+> repairs the evidence that produced those findings: measured phone
 > Prime/Guide geometry, topology-based lazy-producer settlement, exact one-commit F4 causality for
 > Survey/Add/Share, and Charter ledger topology with causal-stop. It does not redesign any creature,
 > genome, painter, organism, biome or art structure. The fast develop profile is green at **253

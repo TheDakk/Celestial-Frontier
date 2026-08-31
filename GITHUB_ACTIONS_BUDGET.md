@@ -105,7 +105,8 @@ red is preserved and 7a528 will not be retried. Read-only diagnosis found one re
 collision plus stale/inaccurate harness contracts: frozen lazy-producer result counts, an obsolete
 hidden-phone-Prime expectation, an inert historical Guide control, dependent presses fired before
 Survey durability, and Charter comparisons that counted intentional Share/progression changes as
-drift before continuing into a cascade. The bounded local successor uses measured layout,
+drift before continuing into a cascade. Exact SSH-signed implementation source
+`0dc9168a1adbbc80a5e99503c02ab34d58b46a50` uses measured layout,
 lifecycle/receipt topology, same-document F4 fixed points, exact restoration and causal-stop, with
 fast browser-free controls covering the repaired oracles before one later clean committed browser
 candidate. No hosted attempt, push, label, Ready transition or merge is authorized for 7a528 or its
@@ -114,8 +115,8 @@ pending successor. That successor now passes the complete fast develop boundary 
 test reads and compacts every file once rather than repeating both operations; its final focused
 run recorded 1.61 seconds and it remained under the unchanged five-second ceiling in the complete
 parallel profile
-without a timeout, retry or assertion change. Final diff review, one local signed commit and its one
-Compendium → Slice → Glass chain remain; none authorizes a GitHub write.
+without a timeout, retry or assertion change. Only the docs-only signed candidate and its one
+Compendium → Slice → Glass chain remain; neither authorizes a GitHub write.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick

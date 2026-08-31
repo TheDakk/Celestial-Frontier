@@ -7,7 +7,7 @@
 > `20260831064707724-71924-76b0bac73a0f` stopped terminal red once/no-retry after **305,022 ms**
 > with **7 findings across 5 scopes**; Glass did not run.
 >
-> The bounded dirty successor now requires exact one-commit F4 causality for Survey/Add/Share and
+> Exact SSH-signed implementation source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` requires exact one-commit F4 causality for Survey/Add/Share and
 > exact Charter ledger topology before dependent work may continue. It also repairs the topology-
 > based lazy-producer and measured phone Prime/Guide evidence that produced the remaining scopes.
 > Existing Charter rules, rewards, achievements, ranks, creature/genome identity, biome and art

@@ -17,19 +17,19 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-31 · 7A528 RED PRESERVED · FAST GREEN · SIGNED SUCCESSOR NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-31 · 7A528 RED PRESERVED · 0DC SIGNED/FAST GREEN · DOCS CANDIDATE NEXT ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Exact clean predecessor
-  **7a528c7798434ae4ab8765d4898b59df9931f9de** (tree
-  **d6637a2b6709aef77256d513aeaeab03373f7bfc**, parent
-  **c43992f721895900e56928f843d5dcdc5f570f36**) is **53 commits ahead** of the remote agent
-  branch. The bounded local successor is still dirty and must not be assigned an invented hash;
-  its causal-assessor integration, synchronized docs and complete fast develop boundary are green,
-  and root will record its exact signed identity after final diff review.
+  **origin/openai/mac**. Exact SSH-signed implementation/evidence source
+  **0dc9168a1adbbc80a5e99503c02ab34d58b46a50** (tree
+  **d1e0a906dd41e606a3579af1501908b8444407e8**, parent
+  **7a528c7798434ae4ab8765d4898b59df9931f9de**) is **54 commits ahead** of the remote agent
+  branch. Its commit object contains the configured Ed25519 SSH signature. This handoff refresh is
+  docs-only; once signed, that clean descendant is the exact unchanged-product candidate for the
+  one local develop browser chain.
 - **Immutable Compendium evidence:** Edge preflight passed on `152.0.4191.53` / CDP `1.3`.
   Compendium (**catalog/art stress**) run `20260831064534612-71571-8e4856c2fe` passed
   **78/78** once/no-retry and passed named verification on exact 7a528.
@@ -44,7 +44,7 @@ the archive verbatim and refresh this handoff in place.
 ### What the retained red proved and the bounded successor repairs
 
 The five scopes were actionable instrument/presentation races, not a mandate to rebuild the game
-or weaken its rulers. The pending signed successor preserves the exact product systems and closes:
+or weaken its rulers. Signed implementation source 0dc preserves the exact product systems and closes:
 
 1. **Lazy producer settlement:** judge lifecycle topology, phase/result parity, positive work,
    final-event identity and zero errors instead of a stale fixed `3/1` count expectation; the
@@ -89,8 +89,7 @@ provenance only and never trigger a rebaseline.
 
 ### Exact remaining local sequence
 
-1. Review the complete diff, preserve all pre-existing user work and create one clean SSH-signed
-   local successor. Record that real commit/tree/parent here; do not invent a provisional hash.
+1. Commit this docs-only handoff descendant and verify its exact clean SSH-signed identity.
 2. From that one unchanged clean signed candidate, run exactly one fail-fast/no-retry
    **Compendium → Slice (`develop`) → Glass (`develop`)** chain. Named-verify every report and stop
    immediately on a nonzero, red or instrument result. Do not run SceneMemory or Recovery.
@@ -118,8 +117,8 @@ physical phone/tablet install, heat, battery and true-GPU review.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** finish the bounded local successor, sign it, run the one exact develop
-  Compendium → Slice → Glass chain and retain its evidence. Do not push or invoke hosted CI.
+- **OpenAI/Codex now:** sign this docs-only descendant, run the one exact develop Compendium →
+  Slice → Glass chain and retain its evidence. Do not push or invoke hosted CI.
 - **GitHub now:** none. PR #35 remains the existing draft with base **develop** and source
   **openai/mac**. Its copy-ready title is **feat(v2): complete roadmap campaign and harden CI
   parity**. No exact push/head or hosted attempt is authorized.
