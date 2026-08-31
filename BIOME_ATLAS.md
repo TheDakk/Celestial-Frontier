@@ -1,17 +1,17 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
-> **2026-08-31 current eed successor overlay (supersedes every older “current” label below;
+> **2026-08-31 current a9d successor overlay (supersedes every older “current” label below;
 > dated biome/vista/evidence checkpoints remain immutable):** exact clean SSH-signed source
-> `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed Compendium **78/78** once/no-retry before
-> its exact-source develop Slice stopped red once/no-retry after **345,163 ms** with **7 findings /
-> 7 scopes**; Glass did not run and eed will not be retried. The Compendium art/catalog stage was
-> fully green. Slice diagnosis found stale final-successor/Training evidence plus one explicit
-> Atlas-button type defect, not a biome, vista, painter or color-plan failure.
+> `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed Compendium **78/78** once/no-retry in
+> **64,930 ms** before its exact-source develop Slice stopped red once/no-retry after **328,043
+> ms** with exactly **1 finding / 1 scope**; Glass did not run and a9d2a57 will not be retried. The
+> Compendium art/catalog stage was fully green. The Slice red was a lesson-announcement carrier
+> mistake, not a biome, vista, painter or color-plan failure.
 >
-> The bounded successor makes no biome selection, vista composition, palette, silhouette, crop,
-> creature, genome, organism or structural art change. Its complete develop profile is green at
-> **253 files / 2,559 passed / 1 skipped**, all TypeScript programs and the **34-source** art gate;
-> independent review is **CLEAR**. Current Compendium producer/budget authority is
+> The bounded successor makes no product, biome selection, vista composition, palette, silhouette,
+> crop, creature, genome, organism or structural art change. Its complete develop profile is green
+> at **253 files / 2,560 passed / 1 skipped**, all TypeScript programs and the **34-source** art
+> gate; independent review is **CLEAR**. Current Compendium producer/budget authority remains
 > `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
 > `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. The **77-bullet**
 > bulletin remains byte-identical. A clean signed Compendium → Slice → Glass chain remains; no

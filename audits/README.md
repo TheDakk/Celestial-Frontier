@@ -10,6 +10,39 @@ summary of it.
 
 ## Contents
 
+### Signed `a9d2a57…` Compendium PASS, then Engineering lesson-carrier Slice red
+
+Exact clean SSH-signed source `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed its tracked-input
+preflight, Edge `152.0.4191.53` / CDP `1.3` preflight, and one/no-retry Compendium run
+`20260831151644196-18841-d75ab40c38` at **78/78** with zero findings in **64,930 ms**. Its exact
+named verifier passed. The unchanged-source develop Slice run
+`20260831151855955-19270-13860f3fb838` then stored terminal `fail` once/no-retry after
+**328,043 ms** with exactly **1 finding / 1 scope** (`drill-engineering-tour`). Its named verifier
+correctly exited 2, Glass did not run, and a9d2a57 will not be retried or relabelled.
+
+The retained product evidence is coherent: the Engineering tour was visible at exact Training
+step 9, keyboard focus and announcement authority were correct, the checkpoint write hold was
+active, the board was available, and all **70/70** source-proven action controls were disabled.
+The sole red was an instrument carrier error: the phrase “source-proven opportunities” belongs to
+the Training lesson announcement in `#tutlive`, while the stale predicate searched the Engineering
+panel body. The bounded successor changes only that predicate to the announcement carrier and adds
+directional/provenance mutants that reject a return to panel text. It changes no product copy,
+Training state, Engineering control, save fact, timeout, retry, ruler, browser baseline, gameplay,
+art, creature, genome, flora, fauna or biome structure.
+
+- `ARC1A_COMPENDIUM_PR35_ENGINEERING_COPY_CARRIER_PASS_20260831_A9D2A57.json.gz`: **454,236 gzip /
+  10,903,955 raw bytes**; gzip/raw SHA-256
+  `4aae3756c0304488df80b74d3749d5f94a9a214a678dc554fe02e0e033d8e069` /
+  `37e01d17f60ceb074fc2398ea2bab2a66bf223fb7af8b96c88cced4b30724285`.
+- `ARC4_SLICE_PR35_ENGINEERING_COPY_CARRIER_RED_20260831_A9D2A57.json.gz`: **10,344 gzip /
+  73,931 raw bytes**; gzip/raw SHA-256
+  `2b15f90b7ca337f392f00ee975017a0c115136cf57b6036d3c29c10ea9532995` /
+  `723cf46de224004ac71e1d1ac9bbf8bae37454b55d02f69d58162cc9b5c49fe9`.
+- `ARC4_SLICE_PR35_ENGINEERING_COPY_CARRIER_RED_20260831_A9D2A57.log.gz`: **6,177 gzip /
+  37,668 raw bytes**; gzip/raw SHA-256
+  `5a179c7cec861335fa561e049dd1afa028a6efe7f7a16b71cf97095e97ceaa70` /
+  `79e96d0d57eacb34075f14f57d261451678b54ed2afe01adf6202a3bb9376f81`.
+
 ### Signed `eedac4a…` Compendium PASS, then final-successor/Training Slice red
 
 Exact clean SSH-signed source `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed its tracked-input

@@ -1,5 +1,13 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A COPY ORACLE READS THE COPY'S AUTHORITATIVE CARRIER.** A visible panel and the lesson that
+> explains it are separate surfaces even when they describe the same system. Judge tutorial copy
+> from the live lesson/announcement owner and judge panel content from the panel; never require one
+> surface to duplicate prose owned by the other merely to satisfy a test. Bind the carrier's DOM
+> provenance and negative-control a swap back to the adjacent surface. Exact signed source
+> `a9d2a57…` earned this law: Training step 9, focus, hold and all 70 Engineering locks were correct,
+> but Slice searched the Shipyard panel body for words correctly owned by `#tutlive`.
+
 > **A STYLE CONTROL OWNS PROPERTIES, NOT THE SERIALIZED STYLE ATTRIBUTE** (2026-08-31). The
 > inline `style` attribute is a shared, order-sensitive bag. A negative control that mutates named
 > CSS properties must capture only those canonical property names as exact `{value, priority}`

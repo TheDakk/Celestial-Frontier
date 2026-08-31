@@ -1,30 +1,29 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-31 current local eed successor overlay (supersedes every older “current” label below;
+> **2026-08-31 current local a9d successor overlay (supersedes every older “current” label below;
 > dated progression and evidence checkpoints remain immutable):** exact clean SSH-signed source
-> `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed Compendium **78/78** once/no-retry as
-> `20260831140359225-10071-3234490882`. Its exact-source develop Slice
-> `20260831140556783-10430-bcb61adfaef5` stopped terminal red once/no-retry after **345,163 ms**
-> with **7 findings / 7 scopes**; Glass did not run. The product's final transient-read authority
-> was correct at revision 2 / ordinal 1 with the exact Arc 9 receipt and 21-achievement successor;
-> the runner still expected the pre-catch-up revision-1 state.
+> `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed Compendium **78/78** once/no-retry as
+> `20260831151644196-18841-d75ab40c38`. Its exact-source develop Slice
+> `20260831151855955-19270-13860f3fb838` stopped terminal red once/no-retry after **328,043 ms**
+> with exactly **1 finding / 1 scope**; Glass did not run. Exact step-9 progression/training state,
+> focus, hold and all 70 Engineering locks were correct. The sole red was a lesson-copy carrier
+> mistake and exposed no progression defect.
 >
-> The bounded successor now binds that real final fixed point and rejects pre-catch-up, extra-write,
-> missing-receipt and wrong-witness mutants. Training Atlas remains practice-only, its Compendium
-> remains unpublished until Finish, and its landed ledger remains `[901]`; those are intentional
-> checkpoint laws, not missing progression. Existing Charter rules, rewards, achievements, ranks,
-> creature/genome identity, biome and art structures are unchanged. Focused coverage is **5 files /
-> 56 tests**, all TypeScript programs pass, diff hygiene is clean, and independent review is
+> The bounded successor changes only that Slice predicate and its directional/provenance controls.
+> The prior exact revision-2 Arc 9 fixed point, practice-only Atlas, unpublished Training Compendium
+> and preserved `[901]` landed ledger remain bound. Existing Charter rules, rewards, achievements,
+> ranks, creature/genome identity, biome and art structures are unchanged. Focused coverage is **2
+> files / 23 tests**, all TypeScript programs pass, diff hygiene is clean, and independent review is
 > **CLEAR**. **A New Foundation** remains **77** bullets with ordered SHA-256
 > `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> The complete develop profile is green at **253 files / 2,559 passed / 1 skipped**, all
-> TypeScript/art/route/specification owners green. Current Compendium producer/budget authority is
-> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> The complete develop profile is green at **253 files / 2,560 passed / 1 skipped**, **34** art
+> sources, **1,014/1,014** routes and **454** non-inert fields. Current Compendium producer/budget
+> authority remains `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
 > `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A clean signed candidate
 > and one unchanged-source **Compendium → Slice → Glass** chain remain. SceneMemory is
-> production-only. No hosted attempt,
-> push, merge, release, version bump, publication or deployment is authorized.
+> production-only. No hosted attempt, push, merge, release, version bump, publication or deployment
+> is authorized.
 
 > **2026-08-30 historical local aggregate-follow-up UI release correction (matches local code and
 > supersedes narrower current overlays below):** aggregate progression still owns only its one
