@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
@@ -60,6 +61,8 @@ const RETAINED_REPORT_FILES = [
 ] as const;
 const HISTORICAL_FOUR_PASS_RED_FILE =
   '../../../audits/ARC1C_SCENEMEM_PR35_FOURPASS_CALIBRATION_INSTRUMENT_RED_20260830_5691E77_CANDIDATE1.json.gz';
+const FIXED_EIGHT_RED_FILE =
+  '../../../audits/ARC1C_SCENEMEM_PR35_FIXEDEIGHT_CALIBRATION_INSTRUMENT_RED_20260830_CC15E1F_CANDIDATE1.json.gz';
 const budgetPath = fileURLToPath(new URL('../budgets/scene-memory-v2.json', import.meta.url));
 const currentBudget = JSON.parse(readFileSync(budgetPath, 'utf8'));
 
@@ -1016,6 +1019,78 @@ describe('scene-memory terminal verifier', () => {
       scoredSnapshotPass: 4,
       deltas: { usedSize: 68_472, aggregate: 68_472 },
     });
+  });
+
+  it('replays the immutable fixed-eight red that removed SceneMemory from develop admission', () => {
+    const compressed = readFileSync(fileURLToPath(new URL(
+      FIXED_EIGHT_RED_FILE, import.meta.url,
+    )));
+    expect(compressed).toHaveLength(32_448);
+    expect(createHash('sha256').update(compressed).digest('hex')).toBe(
+      '702a6ca1ff8ae508f215aa961a946844f0095b7777ac67f6ec7ec6a9d3d0180f',
+    );
+    const raw = gunzipSync(compressed);
+    expect(raw).toHaveLength(745_707);
+    expect(createHash('sha256').update(raw).digest('hex')).toBe(
+      'f4c5940efcd2deeea9ce7cbc68bb9e13022b889bf57e015d5c1bec04db4692a4',
+    );
+    const report = JSON.parse(raw.toString('utf8'));
+    expect(report).toMatchObject({
+      schema: 'cf-v2-scene-memory-report/v6',
+      status: 'instrument-fail',
+      runId: '20260830-pr35-fixedeight-cc15e1f-candidate1',
+      lifecycle: { status: 'complete' },
+      cleanup: { browser: true, server: true, workspaceLock: true },
+      source: {
+        begin: { commit: 'cc15e1f967f6644405cad7c3460cd8181b6a043f', state: 'committed' },
+        end: { commit: 'cc15e1f967f6644405cad7c3460cd8181b6a043f', state: 'committed' },
+      },
+      policy: {
+        attemptCount: 1,
+        snapshotPasses: 8,
+        settlingPasses: 6,
+        validityPasses: [7, 8],
+        scoredSnapshotPass: 8,
+        automaticRetries: 0,
+      },
+      calibrationBoundary: {
+        status: 'calibration-required',
+        sha256: '5edac549b6ee0fa79afe5b6f282d68f0439c4385f0afe5d8f2ac58035d8eb96a',
+      },
+      contractInput: null,
+      verdict: null,
+      outcomes: [],
+      browser: {
+        executable: '/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge',
+        product: 'Edg/152.0.4191.53',
+        revision: '@4ee8983fdce2559a0ae8f8376934c5ed353035cd',
+        userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0',
+        jsVersion: '15.2.23.6',
+        protocolVersion: '1.3',
+      },
+      findings: [
+        'phone phone-warm-1: fixed eighth snapshot phase is invalid (embedderHeapUsedSize absolute phase delta 287192 exceeded ceiling 65536; aggregate absolute phase delta 299720 exceeded ceiling 65536)',
+      ],
+      fatalEvents: [],
+    });
+    expect(report.profiles).not.toHaveProperty('desktop');
+    const completed = [
+      report.profiles.phone.initial,
+      ...report.profiles.phone.warmups,
+    ];
+    expect(completed).toHaveLength(5);
+    completed.forEach((snapshot, index) => {
+      expect(sceneMemorySnapshotPhaseErrors(
+        snapshot, index > 0, 65_536,
+      ), `completed fixed-eight snapshot ${index + 1}`).toEqual([]);
+    });
+    expect(report.profiles.phone.measured).toHaveLength(1);
+    expect(sceneMemorySnapshotPhaseErrors(
+      report.profiles.phone.measured[0], true, 65_536,
+    )).toEqual([
+      'embedderHeapUsedSize absolute phase delta 287192 exceeded ceiling 65536',
+      'aggregate absolute phase delta 299720 exceeded ceiling 65536',
+    ]);
   });
 
   it('derives the next fixed phase threshold without widening beyond the hard cap', () => {

@@ -177,9 +177,13 @@ jobs:
           CF_BROWSER: /usr/bin/google-chrome
         run: node tools/uilayout.js --verify-run="$CF_UILAYOUT_RUN_ID"
 
-      # SceneMemory is the shorter Edge-family/capability ruler, so it fails
-      # first without point-version pinning or retrying either certificate.
+      # SceneMemory's native-heap certificate is production-only. A changed
+      # instrument still runs its bounded retained-allocation control on develop,
+      # but host allocator phase must never block ordinary integration.
       - name: install current Arc 1C Edge scene-memory browser
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.browser_instrument_changed == 'true'
         shell: bash
         env:
           EDGE_PACKAGE_URL: https://go.microsoft.com/fwlink/?linkid=2149051
@@ -203,6 +207,7 @@ jobs:
         run: node tools/scenemem.mjs --heap-phase-selftest
       - name: one-attempt scene-memory certification
         id: scenemem
+        if: github.event.pull_request.base.ref == 'main'
         timeout-minutes: 10
         env:
           CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
@@ -211,6 +216,7 @@ jobs:
       - name: verify current scene-memory evidence
         if: >-
           always() &&
+          github.event.pull_request.base.ref == 'main' &&
           (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')
         env:
           CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
@@ -232,8 +238,8 @@ jobs:
           node tools/compendiummem-browser-preflight.mjs --selftest
           npm run compendiummem:selftest
 
-      # Compendium retains its separately sealed extract -> preflight -> live
-      # certificate chain after the shorter SceneMemory ruler is terminal-green.
+      # Compendium is the first product memory ruler on develop. Production reaches
+      # it only after the production-only SceneMemory certificate is terminal-green.
       - name: install exact Arc 1A Edge calibration browser
         shell: bash
         env:

@@ -377,7 +377,7 @@ describe('tracked-input prehosted preflight', () => {
     }
     expect(occurrences(testWorkflow, 'steps.scope.outputs.legacy_changed')).toBe(4);
     expect(occurrences(testWorkflow, 'steps.scope.outputs.art_instrument_changed')).toBe(1);
-    expect(occurrences(testWorkflow, 'steps.scope.outputs.browser_instrument_changed')).toBe(3);
+    expect(occurrences(testWorkflow, 'steps.scope.outputs.browser_instrument_changed')).toBe(4);
     expect(testWorkflow).not.toContain('npm run check:');
 
     const previewWorkflow = readFileSync(PREVIEW_WORKFLOW, 'utf8');
