@@ -1306,11 +1306,38 @@ describe('sixth Slice red contract repairs', () => {
         'const existingRetryGreen = existingRetryOutcome(existingRetry);'],
       ['fresh retry positive decision',
         'const freshRetryGreen = freshRetryOutcome(freshRetry);'],
+      ['both retry branches wait for the final revision-two successor',
+        'const expectedWrites = 2;'],
+      ['existing retry exact two-write topology',
+        "count: 2, me: 'Dakk', tut: 1, epoch: 12, viewType: 'planet', codexCount: 3, landCount: 6,"],
+      ['existing retry final SessionRNG ordinal', 'ordinal: 1,'],
+      ['existing retry progression receipt kind', "kind: 'arc9-progression-refresh-v1',"],
+      ['existing retry fixture-owned progression witness',
+        'witness: F4_REPLACEMENT_EXPECTATION.progressionWitness,'],
+      ['existing retry exact successor achievements',
+        'JSON.stringify(payload?.ach) === JSON.stringify(F4_REPLACEMENT_EXPECTATION.successorUnlockedIds)'],
+      ['fresh retry remains receipt-free ordinal zero',
+        'ordinal: 0, receiptRows: [],'],
       ['green-only mutation controls',
         'if (existingRetryGreen && freshRetryGreen) {'],
+      ['pre-catch-up revision-one control',
+        'const existingPreCatchupControl = structuredClone(existingRetry);'],
+      ['pre-catch-up receipt absence control',
+        "revisionRaw: '1', revision: 1, ordinal: 0, receiptKeys: [], receiptRows: [],"],
+      ['extra third-write control',
+        'const existingExtraWriteControl = structuredClone(existingRetry);'],
+      ['missing progression receipt control',
+        'const existingMissingReceiptControl = structuredClone(existingRetry);'],
+      ['wrong progression witness control',
+        'const existingReceiptWitnessControl = structuredClone(existingRetry);'],
+      ['transient phase causal stop',
+        "failSliceWithoutCascade('TRANSIENT READ phase was red; phone and Training successors were not run'"],
     ]);
     expect(transient).not.toContain('transientRetryProbe(vrRaw)');
     expect(transient).not.toContain('transientPreClickOutcome(value.preClick, vrRaw)');
+    expect(transient).not.toContain('seedRaw === undefined ? 2 : 1');
+    expect(transient).not.toContain("count: 1, me: 'Dakk'");
+    expect(transient).not.toContain('value.authority?.ordinal === 0');
   });
 
   it('collects one exact convergence-release witness for both Arc 4 reload paths', () => {

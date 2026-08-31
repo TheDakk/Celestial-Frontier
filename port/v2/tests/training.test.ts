@@ -190,7 +190,12 @@ function graduationCopyIsTruthful(html: string): boolean {
 
 function curriculumCopyIsTruthful(steps: readonly { id: string; text: () => string }[]): boolean {
   const text = (id: string): string => steps.find((step) => step.id === id)?.text() ?? '';
-  return /will not roll a capture or spend Yield/i.test(text('planetside-briefing'))
+  return /without changing your expedition’s Atlas/i.test(text('atlas-add'))
+    && /Outside Training.*adds a new chart or confirms/i.test(text('atlas-add'))
+    && /practiced without changing your expedition’s charts/i.test(text('atlas-open'))
+    && /Outside Training.*charted planet entry returns to its live system survey/i.test(text('atlas-open'))
+    && !/Earth is charted|Atlas’s first entry/i.test(text('atlas-open'))
+    && /will not roll a capture or spend Yield/i.test(text('planetside-briefing'))
     && /Opening and inspecting this board changes nothing/i.test(text('engineering-open'))
     && /Training keeps every action button locked/i.test(text('engineering-tour'))
     && /deterministic <b>Pureforged<\/b> modifier/i.test(text('engineering-tour'))
@@ -231,6 +236,9 @@ describe('Field Training completion transaction UI', () => {
       'horizon', 'grad',
     ]);
     expect(curriculumCopyIsTruthful(steps)).toBe(true);
+    expect(curriculumCopyIsTruthful(steps.map((step) => step.id === 'atlas-open'
+      ? { ...step, text: () => 'Earth is charted — your Atlas’s first entry.' }
+      : step))).toBe(false);
     const graduation = steps.find((step) => step.id === 'grad')!.text();
     expect(graduationCopyIsTruthful(graduation)).toBe(true);
     expect(graduationCopyIsTruthful(

@@ -24534,7 +24534,12 @@ try {
     await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: 30, y: 300, button: 'left', clickCount: 1 }, retrySession);
     await waitForSlice(retrySession, 'transient-read authoritative reload', { previousToken: retryBootToken });
-    const expectedWrites = seedRaw === undefined ? 2 : 1;
+    /* Both exact branches settle at revision 2. A fresh expedition owns its
+       two receipt-free bootstrap writes; the retained veteran source owns
+       one receipt-free bootstrap followed by the required Arc 9 aggregate
+       boot catch-up. Waiting for revision 1 can race that final successor
+       and manufacture a pre-catch-up false green. */
+    const expectedWrites = 2;
     await send('Runtime.evaluate', { expression: `(async()=>{const deadline=performance.now()+6000;
       while(performance.now()<deadline){const writes=Number(sessionStorage.getItem('__cf_transient_primary_writes')||'0'),
         authority=await (${READ_F4_AUTHORITY_EXPRESSION});if(writes>=${expectedWrites}
@@ -24573,6 +24578,7 @@ try {
     }
     return envelope.legacyV4;
   })();
+  const transientFindingStart = fails.length;
   const existingRetry = await transientRetryProbe(transientExistingV4Raw);
   const transientWriteSequence = (value, expected) => Array.isArray(value.writeTrace)
     && value.writeTrace.length === expected.count
@@ -24586,20 +24592,31 @@ try {
     && value.authority?.revision === expected.count && value.authority?.playerSchema === 5
     && value.authority?.carrierVersion === 1
     && Number.isSafeInteger(value.authority?.seed) && value.authority.seed >= 0
-    && value.authority.seed <= 0xFFFF_FFFF && value.authority?.ordinal === 0
-    && JSON.stringify(value.authority?.draws) === '{}';
+    && value.authority.seed <= 0xFFFF_FFFF && value.authority?.ordinal === expected.ordinal
+    && JSON.stringify(value.authority?.draws) === '{}'
+    && JSON.stringify(value.authority?.receiptKeys)
+      === JSON.stringify(expected.receiptRows.map(({ ordinal }) => `receipt:${ordinal}`))
+    && JSON.stringify(value.authority?.receiptRows) === JSON.stringify(expected.receiptRows);
   const existingRetryOutcome = (value) => {
     let payload = null;
     try { payload = JSON.parse(value.raw); } catch { return false; }
     return value.name === 'Dakk' && value.controlRawStable === true
       && transientPreClickOutcome(value.preClick, transientExistingV4Raw)
       && transientWriteSequence(value, {
-        count: 1, me: 'Dakk', tut: 1, epoch: 12, viewType: 'planet', codexCount: 3, landCount: 6,
+        count: 2, me: 'Dakk', tut: 1, epoch: 12, viewType: 'planet', codexCount: 3, landCount: 6,
+        ordinal: 1,
+        receiptRows: [{
+          ordinal: 0,
+          kind: 'arc9-progression-refresh-v1',
+          witness: F4_REPLACEMENT_EXPECTATION.progressionWitness,
+        }],
       })
       && payload?.v === 4 && payload?.me === 'Dakk' && payload?.essence === 5000
       && payload?.epoch === 12 && payload?.view?.type === 'planet' && payload?.view?.pseed === 133
       && Array.isArray(payload?.codex) && payload.codex.length === 3
       && Array.isArray(payload?.log) && payload.log.length === 3
+      && JSON.stringify(payload?.ach) === JSON.stringify(F4_REPLACEMENT_EXPECTATION.successorUnlockedIds)
+      && payload?.br === F4_REPLACEMENT_EXPECTATION.nextBestRankIndex
       && JSON.stringify(payload?.land) === JSON.stringify([133, 134, 101, 102, 103, 201]);
   };
   const existingRetryGreen = existingRetryOutcome(existingRetry);
@@ -24614,10 +24631,12 @@ try {
       && transientPreClickOutcome(value.preClick, undefined)
       && transientWriteSequence(value, {
         count: 2, me: '', tut: 0, epoch: 0, viewType: 'star', codexCount: 0, landCount: 0,
+        ordinal: 0, receiptRows: [],
       })
       && payload?.v === 4 && payload?.me === '' && payload?.essence === 0 && payload?.epoch === 0
       && payload?.view?.type === 'star' && payload?.view?.star?.seed === 424242
       && Array.isArray(payload.codex) && payload.codex.length === 0
+      && Array.isArray(payload.ach) && payload.ach.length === 0 && payload?.br === 0
       && Array.isArray(payload.land) && payload.land.length === 0;
   };
   const freshRetryGreen = freshRetryOutcome(freshRetry);
@@ -24634,20 +24653,30 @@ try {
     existingZeroWriteControl.writeTrace = [];
     existingZeroWriteControl.raw = existingZeroWriteControl.preClick.raw;
     existingZeroWriteControl.authority = structuredClone(existingZeroWriteControl.preClick.authority);
-    const existingDuplicateWriteControl = structuredClone(existingRetry);
-    existingDuplicateWriteControl.writes = 2;
-    existingDuplicateWriteControl.writesAfterControl = 3;
-    existingDuplicateWriteControl.writeTrace = [
-      ...existingDuplicateWriteControl.writeTrace,
-      { ...structuredClone(existingDuplicateWriteControl.writeTrace[0]),
-        at: Number(existingDuplicateWriteControl.writeTrace[0]?.at) + 1 },
-    ];
-    const existingDuplicatePayload = JSON.parse(existingDuplicateWriteControl.raw);
-    existingDuplicatePayload.at = existingDuplicateWriteControl.writeTrace[1].at;
-    existingDuplicateWriteControl.raw = JSON.stringify(existingDuplicatePayload);
-    existingDuplicateWriteControl.authority = {
-      ...existingDuplicateWriteControl.authority, revisionRaw: '2', revision: 2,
+    const existingPreCatchupControl = structuredClone(existingRetry);
+    existingPreCatchupControl.writes = 1;
+    existingPreCatchupControl.writesAfterControl = 2;
+    existingPreCatchupControl.writeTrace = existingPreCatchupControl.writeTrace.slice(0, 1);
+    existingPreCatchupControl.authority = {
+      ...existingPreCatchupControl.authority,
+      revisionRaw: '1', revision: 1, ordinal: 0, receiptKeys: [], receiptRows: [],
     };
+    const existingExtraWriteControl = structuredClone(existingRetry);
+    existingExtraWriteControl.writes = 3;
+    existingExtraWriteControl.writesAfterControl = 4;
+    existingExtraWriteControl.writeTrace = [
+      ...existingExtraWriteControl.writeTrace,
+      { ...structuredClone(existingExtraWriteControl.writeTrace.at(-1)),
+        at: Number(existingExtraWriteControl.writeTrace.at(-1)?.at) + 1 },
+    ];
+    existingExtraWriteControl.authority = {
+      ...existingExtraWriteControl.authority, revisionRaw: '3', revision: 3,
+    };
+    const existingMissingReceiptControl = structuredClone(existingRetry);
+    existingMissingReceiptControl.authority.receiptKeys = [];
+    existingMissingReceiptControl.authority.receiptRows = [];
+    const existingReceiptWitnessControl = structuredClone(existingRetry);
+    existingReceiptWitnessControl.authority.receiptRows[0].witness = 'arc9p1:wrong';
     const existingRevisionControl = structuredClone(existingRetry);
     if (existingRevisionControl.authority) existingRevisionControl.authority.revision += 1;
     const freshPreClickControl = structuredClone(freshRetry);
@@ -24658,7 +24687,10 @@ try {
     const freshRevisionControl = structuredClone(freshRetry);
     if (freshRevisionControl.authority) freshRevisionControl.authority.revision += 1;
     if (existingRetryOutcome(existingZeroWriteControl)
-      || existingRetryOutcome(existingDuplicateWriteControl)
+      || existingRetryOutcome(existingPreCatchupControl)
+      || existingRetryOutcome(existingExtraWriteControl)
+      || existingRetryOutcome(existingMissingReceiptControl)
+      || existingRetryOutcome(existingReceiptWitnessControl)
       || existingRetryOutcome(existingTraceControl)
       || existingRetryOutcome(existingRevisionControl)
       || freshRetryOutcome({ ...freshRetry, writes: 1, writesAfterControl: 2 })
@@ -24667,6 +24699,11 @@ try {
       || freshRetryOutcome(freshRevisionControl)) {
       fails.push('TRANSIENT READ WRITE-SEQUENCE CONTROL FAILED — count, semantic trace, or revision drift stayed green');
     }
+  }
+  if (fails.length > transientFindingStart) {
+    failSliceWithoutCascade('TRANSIENT READ phase was red; phone and Training successors were not run', {
+      alreadyReported: true,
+    });
   }
 
   /* 4e-phone. A FRESH PHONE starts with training active. Prove its card
@@ -24752,6 +24789,7 @@ try {
      Records → horizon → graduation. Hands-on advances use the REAL gameEvent
      the lesson teaches; board-open cards use the exact populated panel-open
      events. Every receipt also proves the held primary remained byte-exact. */
+  const dtrainFindingStart = fails.length;
   const t3 = await send('Target.createTarget', { url: 'about:blank' });
   const at3 = await send('Target.attachToTarget', { targetId: t3.targetId, flatten: true });
   const tr = at3.sessionId;
@@ -25181,6 +25219,8 @@ try {
     const label=(document.querySelector('#survey [data-act=add]')||{}).textContent||'';
     return {text,label:label.trim()}; })()`);
   if (!/highlighted Star Atlas action/i.test(atlasAddCopy.text)
+    || !/without changing your expedition(?:'|’|&#8217;|&rsquo;)s Atlas/i.test(atlasAddCopy.text)
+    || !/Outside Training.*adds a new chart or confirms/i.test(atlasAddCopy.text)
     || /\+ Add to Star Atlas|Confirm in Star Atlas/i.test(atlasAddCopy.text)
     || atlasAddCopy.label !== '+ Add to Star Atlas') {
     fails.push('DRILL COPY: Atlas instruction is not label-neutral across fresh/replay actions: ' + JSON.stringify(atlasAddCopy));
@@ -25217,13 +25257,19 @@ try {
       + JSON.stringify(atlasOpenFocus));
   }
   const atlasOpenCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
-  if (!/returns to its live system survey/i.test(atlasOpenCopy)
+  if (!/practiced without changing your expedition(?:'|’|&#8217;|&rsquo;)s charts/i.test(atlasOpenCopy)
+    || !/charted planet entry.*returns to its live system survey/i.test(atlasOpenCopy)
     || !/Land remains your choice/i.test(atlasOpenCopy)
     || /travels there instantly/i.test(atlasOpenCopy)) {
     fails.push('DRILL COPY: Atlas travel still implies direct/automatic planetfall: ' + JSON.stringify(atlasOpenCopy));
   }
-  const atl = await evalT(`window.__CF_SLICE__.api.state().atlasCount`);
-  if (atl !== 1) fails.push('DRILL: Earth did not land in the Atlas: ' + atl);
+  const atl = await evalT(`(()=>{const s=window.__CF_SLICE__.api.state();return {
+    count:s.atlasCount,lastOutcome:s.atlas?.lastOutcome,rows:s.atlas?.rows,travelable:s.atlas?.travelable};})()`);
+  if (atl.count !== 0 || atl.lastOutcome !== 'training-route-only'
+    || atl.rows !== 0 || atl.travelable !== 0) {
+    fails.push('DRILL: held Atlas practice invented a durable chart instead of remaining route-only: '
+      + JSON.stringify(atl));
+  }
   await keyT('Enter', 'Enter');
   await sleep(200);
   if (await step() !== 'land') fails.push('DRILL: opening the Atlas did not advance: ' + await step());
@@ -25278,7 +25324,7 @@ try {
   const planetsideBriefingCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
   if (!/full eligible biosphere/i.test(planetsideBriefingCopy)
     || !/will not roll a capture or spend Yield/i.test(planetsideBriefingCopy)
-    || /preview row.*capture/i.test(planetsideBriefingCopy)) {
+    || hasUnnegatedSentenceClaim(planetsideBriefingCopy, /preview row[^.!?]*capture/i)) {
     fails.push('DRILL COPY: Planetside briefing does not preserve full-roster, finite-Yield, read-only truth: '
       + JSON.stringify(planetsideBriefingCopy));
   }
@@ -25330,12 +25376,15 @@ try {
   await recordTrainingReceipt('engineering-tour', 9, 'shipyard');
   const engineeringTour = await evalT(trainingBoardTourCheck('shipyardpanel', 'engineering-tour'));
   const engineeringTourFocus = await evalT(trainingFocus);
-  const engineeringHold = await evalT(`(()=>{const s=window.__CF_SLICE__.api.state(),panel=document.getElementById('shipyardpanel');return {
+  const engineeringHold = await evalT(`(()=>{const s=window.__CF_SLICE__.api.state(),panel=document.getElementById('shipyardpanel'),
+    actions=[...(panel?.querySelectorAll('[data-engineering-action]')??[])];return {
     held:s.trainingCheckpointWriteHeld,unavailable:!!panel?.querySelector('[data-engineering-state="unavailable"]'),
-    actions:panel?.querySelectorAll('[data-engineering-action]').length??-1};})()`);
+    actions:actions.length,allLocked:actions.length>0&&actions.every((action)=>
+      action instanceof HTMLButtonElement&&action.disabled)};})()`);
   if (!engineeringTour.ok || engineeringTourFocus.active !== 'tutbtn' || !engineeringTourFocus.allowed
     || !/Field Training, step 9 of 15/i.test(engineeringTour.announcement)
-    || !engineeringHold.held || !engineeringHold.unavailable || engineeringHold.actions !== 0
+    || !engineeringHold.held || engineeringHold.unavailable
+    || engineeringHold.actions !== ENGINEERING_ACTION_CONTROL_COUNT || !engineeringHold.allLocked
     || !/source-proven opportunities/i.test(engineeringTour.text)
     || !/Pureforged/i.test(engineeringTourFocus.announcement)) {
     fails.push('DRILL ENGINEERING TOUR: populated board, held authority, or read-only lock drifted: '
@@ -25378,10 +25427,13 @@ try {
   const compendiumTourFocus = await evalT(trainingFocus);
   const compendiumHeldRows = await evalT(`(()=>{const panel=document.getElementById('codexpanel'),rows=[...panel.querySelectorAll('[data-sel="codex-entry"]')];return {
     count:Number(panel.querySelector('[data-sel="codex-count"]')?.textContent||'-1'),rows:rows.length,
-    allLocked:rows.length>0&&rows.every((row)=>!!row.closest('[inert]')&&getComputedStyle(row).pointerEvents==='none')};})()`);
+    allLocked:rows.length>0&&rows.every((row)=>!!row.closest('[inert]')&&getComputedStyle(row).pointerEvents==='none'),
+    emptyText:(panel.querySelector('.empty')?.textContent||'').trim()};})()`);
   if (!compendiumTour.ok || compendiumTourFocus.active !== 'tutbtn' || !compendiumTourFocus.allowed
     || !/Field Training, step 11 of 15/i.test(compendiumTour.announcement)
-    || compendiumHeldRows.count < 1 || compendiumHeldRows.rows < 1 || !compendiumHeldRows.allLocked
+    || compendiumHeldRows.count !== 0 || compendiumHeldRows.rows !== 0
+    || !/No species yet.*imported discoveries appear here.*Live catalogue writing arrives with the discovery path/i
+      .test(compendiumHeldRows.emptyText)
     || !/role-only Field Scout/i.test(compendiumTourFocus.announcement)
     || !/interception, Scout XP, dispatch, missions, care, bond, and friendly duels are not live yet/i.test(compendiumTourFocus.announcement)) {
     fails.push('DRILL COMPENDIUM TOUR: real catalogue rows, read-only lock, or Field Scout truth drifted: '
@@ -25521,7 +25573,7 @@ try {
   }
   const dtrainFinishRawAssessment = dtrainRestoredRawAssessment(dtrainFinishRaw, {
     seedRaw: DTRAIN_FULL_FINISH_RAW,
-    expectedLand: [901, 133],
+    expectedLand: [901],
     expectOuterAtlas: false,
     route: 'earth',
     /* The queued synthetic shipped bulletin flushes only after the atomic
@@ -25537,7 +25589,7 @@ try {
     || dtrainMixedFinish.before?.stage !== 'waiting-active-persist'
     || dtrainMixedFinish.after?.operationId !== dtrainMixedFinish.before?.operationId
     || !dtrainFinishRawAssessment.ok || !dtrainFinishRouteAssessment.ok
-    || JSON.stringify(done3.save.landed) !== JSON.stringify([901, 133])
+    || JSON.stringify(done3.save.landed) !== JSON.stringify([901])
     || done3.trainingCheckpointKind !== 'none' || done3.trainingCheckpointWriteHeld
     || done3.tutSnapshotPending !== null || !renderedSceneMatchesNav(done3)) {
     fails.push('D-TRAIN FULL FINISH: mixed activation, exact restore/outer fields, one-write result, or proof receipt drifted: '
@@ -25640,6 +25692,11 @@ try {
     return {opened,panel:s.panelOpen,rnSeen:s.rnSeen}; })()`);
   if (done4Repeat.opened || done4Repeat.panel !== null || done4Repeat.rnSeen !== RELEASE_FIXTURE_VERSION) {
     fails.push('DRILL/RELEASE QUEUE: the seen fixture repeated after completion reload: ' + JSON.stringify(done4Repeat));
+  }
+  if (fails.length > dtrainFindingStart) {
+    failSliceWithoutCascade('D-TRAIN phase was red; unrelated F4 and collision successors were not run', {
+      alreadyReported: true,
+    });
   }
 
   }
