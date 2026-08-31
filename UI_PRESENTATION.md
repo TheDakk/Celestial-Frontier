@@ -1,5 +1,54 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-08-31 current signed Compendium Back failure-evidence boundary:** exact SSH-signed
+> implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
+> `f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) contains the collector-only raw
+> failure-cleanup repair and all four historical 3ca carriers. Current HEAD is its signed
+> documentation-only descendant; its SHA is intentionally not embedded here, and `openai/mac` is
+> three commits ahead of `origin/openai/mac`. No fresh browser certificate exists for it.
+>
+> If native Back input failed after witness arming, the former failure path released the listener
+> and carrier through the normal tracked observation wrapper. Successful cleanup could therefore
+> become the apparent terminal stage and hide the original failed input command in partial evidence.
+> The repair performs one bounded raw cleanup outside presentation/observation tracking, requires
+> controller-aborted/carrier-absent state, retains the primary failing stage/command, and reports any
+> cleanup defect independently. Its selftest passes **618 controls**.
+>
+> Current measurement / contract / collector / producer / budget-file authority is
+> `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` /
+> `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+> `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d` /
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`. Contract and product
+> producer remain unchanged. Product markup,
+> focus/scroll behavior, CSS, ±2px tolerance, rulers/ceilings, timeouts, retry and browser-version
+> policy are unchanged. Exact `3ca7d30…` presentation evidence below is historical for its own
+> bytes. The then-dirty implementation candidate passed the complete browser-free develop profile at
+> **254/254 files / 2,567 passed / 1 skipped**, with all TypeScript, art, route and specification
+> owners green; that result remains classified as dirty-source evidence. The current signed source
+> still needs a fresh exact-clean-source Compendium → Slice → Glass chain. No hosted run, retry,
+> merge, release or deployment is authorized.
+
+> **2026-08-31 historical exact-source terminal-green local Compendium Back presentation boundary:**
+> exact clean
+> committed source `3ca7d300f4c8192fef596d4f08e8c493a8875863` passed the develop profile at
+> **254 files / 2,567 passed / 1 skipped**, all TypeScript programs and every changed browser-tool
+> control. Live preflight accepted Edge `152.0.4191.53` / CDP `1.3`; the point version is provenance
+> only. On that unchanged source, Compendium passed **78/78** in **66,094 ms**, develop Slice passed
+> with zero findings/scopes and ten screenshots in **365,285 ms**, and full Glass passed all **12**
+> viewport classes with zero findings, zero instrument failures and **104/104** controls in
+> **111,353 ms**. Every exact named verifier passed.
+>
+> The new action witness observed exactly one trusted delegated click per profile and proved
+> desktop setup/action/return at `-46 / -46 / -46` and phone at `-2 / -2 / -2`; each controller was
+> aborted and each carrier absent after reading. This closes the stale pre-helper presentation
+> oracle while preserving the hosted 77/78 red below. Product markup, focus/scroll behavior, CSS,
+> the **±2px** tolerance, numeric rulers/ceilings, historical samples, timeouts, one-click/no-retry
+> rule and browser-version policy are unchanged. The four exact carriers are indexed in
+> `audits/README.md`. Those four carriers remain historical exact-source evidence and do not certify
+> the signed 4ea collector or its documentation descendant; they are committed by 4ea. No hosted
+> run, merge, release or deployment is authorized.
+
 > **2026-08-31 current Compendium Back presentation-evidence boundary:** PR #35 GitHub run
 > `33437596315` consumed its one authorized attempt and completed Compendium at **77/78** with sole
 > red `desktop/back-restores-focus`; every predecessor passed, while Slice and Glass did not run.

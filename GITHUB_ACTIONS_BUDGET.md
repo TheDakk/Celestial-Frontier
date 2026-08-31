@@ -12,9 +12,26 @@ passed, then the one-attempt phone SceneMemory product stage stopped at `Earth p
 rejected`. Run `33437596315` tested head `8eb0b1bd901c7b36d8900f43f4de7d3a54158a0c` and stopped
 terminal-red after **37m14s**: every pre-Compendium gate passed, then Compendium passed **77/78**
 with sole red `desktop/back-restores-focus`; Slice and Glass were skipped. All three labels are
-absent, PR #35 remains Draft/unmerged, and no retry or replacement attempt is authorized. The
-bounded third-run harness repair remains local/unpushed until its complete local evidence,
-references, source-authority records, and signed commit are finished. PR #34 runs
+absent, PR #35 remains Draft/unmerged, and no retry or replacement attempt is authorized. Exact
+SSH-signed implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
+`f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) contains the raw bounded
+Back-action failure-cleanup repair, its Compendium expected-authority/budget update and all four
+historical 3ca carriers. Current HEAD is its signed documentation-only descendant; after that docs
+commit `openai/mac` is three commits ahead of the remote branch. Its SHA is intentionally not
+embedded. The 3ca develop profile and no-retry Compendium → Slice → Glass chain remain historical
+exact-source evidence only. Focused budget coverage passes **28/28**, the changed Compendium
+selftest passes **618 controls**, and typecheck, syntax and diff checks are green. The first full
+develop-profile run correctly refused three stale expected-authority constants (**3 failed / 2,564
+passed / 1 skipped**); those constants are fixed, and the then-dirty implementation candidate's
+complete rerun is green at **254/254 files / 2,567 passed / 1 skipped**, with all TypeScript, art,
+route and specification owners green. The relevant implementation/test/budget bytes are committed
+by exact 4ea, while that run remains recorded as dirty-source browser-free evidence. There is no
+current-source browser chain. Current authority is producer
+`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7`, collector
+`ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d`, outcome contract
+`1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692`, measurement
+`5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` and budget
+`454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`. PR #34 runs
 `32665404776` and `32677088518` are
 consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
 labels were removed. Its repaired third authorized changed-head attempt, run `32681394532`, passed
@@ -492,7 +509,45 @@ supports a stale pre-helper harness comparison rather than a product restore fai
 action-time anchor and both returns were `-92`. The phone control remained `-9` before/after. The
 bounded local harness repair captures a strict trusted action-time witness only after final
 action-point settlement and compares the return against that witness. It changes no product, CSS,
-tolerance, timeout, retry, or browser-version policy. Its complete local evidence is pending.
+tolerance, timeout, retry, or browser-version policy.
+
+Exact signed local source `3ca7d300f4c8192fef596d4f08e8c493a8875863` passed the complete
+develop profile at **254 files / 2,567 passed / 1 skipped** and all then-current changed-instrument
+controls. On that same unchanged source, the one-attempt/no-retry Compendium run
+`20260831-pr35-back-action-3ca7d30-compendium-certification` passed **78/78**; Slice run
+`20260831-pr35-back-action-3ca7d30-slice-certification` passed with **zero findings**; and Glass
+run `20260831-pr35-back-action-3ca7d30-glass-certification` passed **12/12** viewports and
+**104/104** controls. Every named verifier passed. That chain and its four gzip-verified carriers
+are committed by exact implementation source 4ea and retained as historical exact-source 3ca
+evidence; they do not certify 4ea or its documentation descendant.
+
+Exact signed implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
+`f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) repairs a separate
+first-causal-boundary defect in exceptional cleanup.
+After a failed Back action, the old cleanup called the tracked observation wrapper, so successful
+cleanup could advance the report stage/ledger and hide the original failing
+`Input.dispatchMouseEvent` command. The repair uses the raw bounded evaluator, exact-validates
+controller abort plus carrier absence, freezes the original stage/command/history and records any
+cleanup residue or failure as independent diagnosis without retrying or replacing the primary
+failure. Current authority is producer
+`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7`, collector
+`ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d`, unchanged outcome
+contract `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692`, measurement
+`5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` and budget
+`454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`.
+
+Focused Compendium budget coverage passes **28/28**, the changed selftest passes **618 controls**,
+and typecheck, syntax and diff checks are green. The first full develop-profile run correctly
+refused three stale expected-authority constants in `compendium-budget.test.ts` (**3 failed / 2,564
+passed / 1 skipped**). Those constants are now fixed and focused coverage is green; the complete
+profile rerun passed **254/254 files / 2,567 passed / 1 skipped**, with all TypeScript, art, route
+and specification owners green. This remains accurately classified as then-dirty browser-free
+evidence; exact 4ea commits the relevant implementation/test/budget bytes. Current HEAD is 4ea's
+signed documentation-only descendant, and after that docs commit `openai/mac` is three commits ahead
+of its remote. The fresh exact-clean-source browser chain remains pending. Product, CSS,
+tolerance, numeric ceilings, timeout/retry behavior and the version-tolerant Edge-family/CDP 1.3
+policy remain unchanged. This does not authorize a push, label, new hosted attempt, Ready
+transition or merge; the eventual exact final head requires fresh authorization.
 
 All three PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.

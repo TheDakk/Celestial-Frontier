@@ -1,5 +1,67 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-08-31 current signed Compendium raw failure-cleanup boundary:** exact SSH-signed
+> implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
+> `f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) contains the collector failure
+> cleanup, selftest, derived budget authority and all four historical 3ca carriers. Current HEAD is
+> its signed documentation-only descendant; its SHA is intentionally not embedded here, and
+> `openai/mac` is three commits ahead of `origin/openai/mac`. No current browser certificate exists.
+>
+> Before this repair, a native Back-input rejection after action-witness arming entered `catch` and
+> ran cleanup through the normal tracked observation wrapper. Successful cleanup advanced the
+> tracked stage/completion/command carriers, so a partial report could replace the original failed
+> `Input.dispatchMouseEvent` boundary with cleanup. Current raw bounded cleanup bypasses observation
+> tracking, validates exact listener/carrier release, preserves the primary error's command and
+> failing stage, and surfaces any cleanup failure independently. The selftest passes **618 controls**
+> and makes the former tracked-cleanup overwrite red.
+>
+> Current measurement / contract / collector / producer / budget-file authority is
+> `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` /
+> `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+> `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d` /
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`. Contract and product
+> producer remain unchanged. Product/CSS, ±2px
+> restoration tolerance, numeric rulers/ceilings, historical samples, timeouts, retry/click policy,
+> outcome inventory and Edge-family + CDP `1.3` policy are unchanged. Exact `3ca7d30…` is
+> historical exact-source evidence only. The then-dirty implementation candidate passed the
+> complete browser-free develop profile at **254/254 files / 2,567 passed / 1 skipped**, with all
+> TypeScript, art, route and specification owners green; that result remains classified as
+> dirty-source evidence. A fresh exact-clean-source fail-fast/no-retry unchanged-source Compendium →
+> Slice → Glass develop chain remains required; no hosted run or merge is authorized.
+
+> **2026-08-31 historical exact-source terminal-green local Compendium action-time boundary:** exact
+> clean committed
+> source `3ca7d300f4c8192fef596d4f08e8c493a8875863` (tree
+> `7801ead641bf88eb4480767adb816eb5d1e39865`) passed the develop profile at **254 files / 2,567
+> passed / 1 skipped**, all TypeScript programs, 64 action controls and every changed browser-tool
+> control: browser-path resolution, Compendium preflight, **611-control** Compendium selftest,
+> SceneMemory heap phase and browser-CDP lifecycle. Live preflight accepted Edge `152.0.4191.53` /
+> CDP `1.3`.
+>
+> The unchanged source then passed one/no-retry **Compendium → Slice → Glass** develop chain with
+> all exact named verifiers green. Compendium
+> `20260831-pr35-back-action-3ca7d30-compendium-certification` passed **78/78** in **66,094 ms**;
+> one trusted capture-phase witness with complete cleanup bound desktop setup/action/return at
+> `-46 / -46 / -46` and phone at `-2 / -2 / -2`. Slice
+> `20260831-pr35-back-action-3ca7d30-slice-certification` passed in **365,285 ms** with zero
+> findings/scopes and ten screenshots. Full Glass
+> `20260831-pr35-back-action-3ca7d30-glass-certification` passed in **111,353 ms** across all **12**
+> viewports with zero findings, zero instrument failures and **104/104** controls run, none blocked
+> or omitted. Exact carrier names, sizes and hashes are in `audits/README.md`.
+>
+> That exact source's measurement / contract / collector / producer / budget-file authority was
+> `20a1b773e7eec309de31772c2b1c0a174c0f175cfc798e573f20a53b966aba2e` /
+> `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+> `a5afcffd2f75e7cc2db1284194bc3eb76bde22bf4a1b4741f5157ce25339df51` /
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `c60b2f1fb50e978c0d6f522ee52a0274e9a45cd63a51f1643808229b1e25ce60`. Product/CSS, ±2px
+> restoration tolerance, numeric rulers/ceilings, historical samples, timeouts, retry/click policy,
+> outcome inventory and version-tolerant Edge-family + CDP `1.3` authority are unchanged. The hosted
+> 77/78 red below remains immutable diagnosis. SceneMemory certification and Recovery did not run.
+> Its four carriers remain historical exact-source evidence, are committed by exact 4ea, and do not
+> certify 4ea or its documentation descendant.
+
 > **2026-08-31 current Compendium action-time Back-witness boundary:** GitHub run
 > `33437596315` tested authorized PR #35 head
 > `8eb0b1bd901c7b36d8900f43f4de7d3a54158a0c` against develop base
@@ -3430,6 +3492,19 @@ scroller, hit-tested coordinates, panel list/query/source counts and the anchor 
 before the product handler. The report derives `before` from that witness and compares `after` plus
 `afterSettled` to it under the unchanged ±2px ruler. Listener/carrier cleanup is part of the
 evidence contract; the product's own focus/scroll restoration code is unchanged.
+
+Historical exact source `3ca7d300f4c8192fef596d4f08e8c493a8875863` proves the action-time
+success contract for its own bytes: desktop retains setup/action/return offset `-46`, phone retains
+`-2`, each profile records exactly one trusted event, aborts its witness controller and leaves no
+carrier. Its unchanged-source Compendium, develop Slice and full Glass reports are terminal green,
+independently named-verified and indexed in `audits/README.md`; they do not certify the current
+signed 4ea collector or its documentation descendant.
+
+The current exceptional cleanup owner is deliberately outside the tracked observation wrapper.
+After a primary native-input failure it evaluates only the exact cleanup expression under the
+existing transport bound, requires an aborted controller and absent carrier, and leaves
+`currentStage`, `lastCompletedStage`, completed stages and the original command ledger untouched.
+An independent cleanup failure augments the primary diagnosis but never replaces its causal stage.
 
 The current PR #35 foreground-service authority treats a serviced turn as target-bound evidence,
 not a generic root heartbeat. For each accepted attachment the collector binds exact target,
