@@ -1385,6 +1385,34 @@ export function validCandidateBackActionWitnessCleanupExpression(source) {
   return typeof source === 'string' && source === candidateBackActionWitnessCleanupExpression();
 }
 
+/* Failure cleanup must not travel through the normal observation wrapper:
+   that wrapper advances currentStage/lastCompletedStage on success, which
+   would replace the original failed command's causal boundary before the
+   partial report is assembled. This raw, bounded path owns cleanup only. */
+export async function cleanupCandidateBackActionWitnessAfterFailure({
+  send, sessionId, profile, logicalId,
+}) {
+  assert(typeof send === 'function'
+    && typeof sessionId === 'string' && sessionId
+    && Object.hasOwn(PROFILES, profile)
+    && typeof logicalId === 'string' && logicalId,
+  'Compendium Back action-witness failure-cleanup dependencies are invalid');
+  const expression = candidateBackActionWitnessCleanupExpression();
+  assert(validCandidateBackActionWitnessCleanupExpression(expression),
+    `${profile}: Back action-witness cleanup expression was invalid`);
+  const cleanup = await evaluateCandidateExpression({
+    send, sessionId, expression, profile,
+    label: `row ${logicalId} Back action witness cleanup`,
+    timeoutMs: CANDIDATE_TRANSPORT_TIMEOUT_MS,
+    now: () => performance.now(),
+  });
+  assert(cleanup !== null && typeof cleanup === 'object' && !Array.isArray(cleanup)
+    && Object.keys(cleanup).sort().join('\0') === 'carrierPresent\0controllerAborted'
+    && cleanup.controllerAborted === true && cleanup.carrierPresent === false,
+  `${profile}: Back action witness failure cleanup retained listener or carrier`);
+  return cleanup;
+}
+
 /* Virtual rows can pass a geometry check and then move when ResizeObserver's
    deferred render applies newly measured offsets. A click receipt cannot repair
    a press that landed after that move. Reposition through the ordinary native
@@ -2113,11 +2141,9 @@ async function collectProfile({
     } catch (caught) {
       if (captureBackActionBoundary) {
         try {
-          const cleanupExpression = candidateBackActionWitnessCleanupExpression();
-          assert(validCandidateBackActionWitnessCleanupExpression(cleanupExpression),
-            `${profile}: Back action-witness cleanup expression was invalid`);
-          await evaluate(sessionId, cleanupExpression,
-            `row ${logicalId} Back action witness cleanup`);
+          await cleanupCandidateBackActionWitnessAfterFailure({
+            send, sessionId, profile, logicalId,
+          });
         } catch (cleanupCaught) {
           const error = caught instanceof Error ? caught : new Error(String(caught));
           error.message += `; Back action witness cleanup failed: ${lifecycleErrorMessage(cleanupCaught)}`;
