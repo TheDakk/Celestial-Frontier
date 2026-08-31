@@ -88,6 +88,7 @@ import {
   candidateBackActionWitnessInstallExpression,
   candidateBackActionWitnessReadExpression,
   candidateBackActionWitnessCleanupExpression,
+  cleanupCandidateBackActionWitnessAfterFailure,
   collectCandidateSnapshot, collectCandidateSettledThumbnailSnapshot,
   createCandidateCollectorObservations,
   createCandidateCommandRecorder,
@@ -2656,6 +2657,7 @@ function atomicWriteJson(file, value) {
 }
 
 export async function runCompendiumMemSelftest() {
+  let backActionCleanupPrimaryFailure = null;
   const rawSnapshotExpression = compendiumRawSnapshotExpression();
   const parsesRawSnapshotExpression = (source) => {
     try { new Function(`"use strict"; return (${source});`); return true; }
@@ -3559,6 +3561,112 @@ export async function runCompendiumMemSelftest() {
     && pageException.compendiumCommand?.status === 'page-exception'
     && pageExceptionLedger.length === 1,
   'page exception diagnosis was conflated with a target/transport timeout');
+
+  {
+    const failingLabel = 'row cmem-0777-filter-beacon mouse release';
+    const cleanupLabel = 'row cmem-0777-filter-beacon Back action witness cleanup';
+    const completedStages = [];
+    const ledger = [];
+    const calls = [];
+    let currentStage = 'profile initialization';
+    let lastCompletedStage = null;
+    let clock = 10;
+    const send = async (method, params, sessionId, options) => {
+      calls.push({ method, params, sessionId, options });
+      if (method === 'Runtime.evaluate') {
+        return { result: { value: {
+          controllerAborted: true, carrierPresent: false,
+        } } };
+      }
+      throw new Error('synthetic Back-action command rejection');
+    };
+    const observations = createCandidateCollectorObservations({
+      send, profile: 'phone', now: () => clock++, pause: async () => {},
+      onStageStarted: (label) => { currentStage = label; },
+      onStageCompleted: (label) => {
+        lastCompletedStage = label;
+        completedStages.push(label);
+        currentStage = `after ${label}`;
+      },
+      onCommand: (command) => ledger.push(command),
+    });
+    await observations.evaluate(
+      'back-action-session', 'true', 'row cmem-0777-filter-beacon action precondition',
+    );
+    try {
+      await observations.sendStage(failingLabel, 'Input.dispatchMouseEvent', {
+        type: 'mouseReleased', x: 20, y: 30, button: 'left', clickCount: 1,
+      }, 'back-action-session');
+    } catch (error) { backActionCleanupPrimaryFailure = error; }
+    const stageBeforeCleanup = currentStage;
+    const completedBeforeCleanup = [...completedStages];
+    const lastCompletedBeforeCleanup = lastCompletedStage;
+    const cleanup = await cleanupCandidateBackActionWitnessAfterFailure({
+      send, sessionId: 'back-action-session', profile: 'phone',
+      logicalId: 'cmem-0777-filter-beacon',
+    });
+    structuredInstrumentControlCount++;
+    assert(backActionCleanupPrimaryFailure?.compendiumCommand === ledger[0]
+      && ledger.length === 1 && ledger[0].label === failingLabel
+      && stageBeforeCleanup === failingLabel && currentStage === failingLabel
+      && lastCompletedStage === lastCompletedBeforeCleanup
+      && JSON.stringify(completedStages) === JSON.stringify(completedBeforeCleanup)
+      && cleanup.controllerAborted === true && cleanup.carrierPresent === false
+      && calls.at(-1).method === 'Runtime.evaluate'
+      && calls.at(-1).sessionId === 'back-action-session'
+      && calls.at(-1).params.expression === actionWitnessCleanupSource
+      && calls.at(-1).params.returnByValue === true
+      && calls.at(-1).params.awaitPromise === true
+      && calls.at(-1).options.timeoutMs === CANDIDATE_TRANSPORT_TIMEOUT_MS
+      && calls.filter((call) =>
+        call.params?.expression === actionWitnessCleanupSource).length === 1,
+    'raw Back-action failure cleanup replaced the original failing-stage/command boundary');
+
+    await observations.evaluate(
+      'back-action-session', actionWitnessCleanupSource, cleanupLabel,
+    );
+    structuredInstrumentControlCount++;
+    assert(currentStage === `after ${cleanupLabel}` && lastCompletedStage === cleanupLabel
+      && completedStages.at(-1) === cleanupLabel
+      && backActionCleanupPrimaryFailure.compendiumCommand.label !== currentStage,
+    'the historical tracked-cleanup mutant did not demonstrate its failing-stage drift');
+
+    let cleanupResidueFailure = null;
+    try {
+      await cleanupCandidateBackActionWitnessAfterFailure({
+        send: async () => ({ result: { value: {
+          controllerAborted: true, carrierPresent: true,
+        } } }),
+        sessionId: 'back-action-session', profile: 'phone',
+        logicalId: 'cmem-0777-filter-beacon',
+      });
+    } catch (error) { cleanupResidueFailure = error; }
+    structuredInstrumentControlCount++;
+    assert(cleanupResidueFailure instanceof Error
+      && cleanupResidueFailure.message.includes(
+        'failure cleanup retained listener or carrier',
+      ),
+    'Back-action residue did not surface an independent cleanup failure');
+
+    const collectorSource = fs.readFileSync(
+      fileURLToPath(new URL('./compendiummem.mjs', import.meta.url)), 'utf8',
+    );
+    const clickRowStart = collectorSource.indexOf('const clickRow = async');
+    const clickRowEnd = collectorSource.indexOf('  const key = async', clickRowStart);
+    const clickRowSource = clickRowStart >= 0 && clickRowEnd > clickRowStart
+      ? collectorSource.slice(clickRowStart, clickRowEnd) : '';
+    structuredInstrumentControlCount++;
+    assert((clickRowSource.match(
+      /await cleanupCandidateBackActionWitnessAfterFailure\(\{/g,
+    ) || []).length === 1
+      && clickRowSource.includes('send, sessionId, profile, logicalId,')
+      && !clickRowSource.includes('await evaluate(sessionId, cleanupExpression,')
+      && clickRowSource.includes(
+        'error.message += `; Back action witness cleanup failed: ${lifecycleErrorMessage(cleanupCaught)}`;',
+      )
+      && clickRowSource.includes('throw error;'),
+    'the live clickRow failure path bypassed the raw cleanup owner');
+  }
 
   const producerErrorMessage = 'compendiummem injected producer error';
   const producerErrorSentinel = 'cf-v2-compendium-producer-error-armed/v1';
@@ -8075,8 +8183,48 @@ export async function runCompendiumMemSelftest() {
   rawHeapPartial.profiles.phone.reviewPacket = [];
   rawHeapPartial.reviewPacket = [];
   setPartialDiagnosis(rawHeapPartial, rawHeapFailure.message);
-  assert(verifyTerminalReport(rawHeapPartial, 'selftest-current').ok,
+  structuredInstrumentControlCount++;
+  assert(verifyTerminalReport(rawHeapPartial, 'selftest-current').ok
+    && rawHeapPartial.partialFailure.failingStage
+      === rawHeapFailure.compendiumCommand.label
+    && rawHeapPartial.profiles.phone.failingStage
+      === rawHeapFailure.compendiumCommand.label
+    && JSON.stringify(rawHeapPartial.profiles.phone.commandLedger.at(-1))
+      === JSON.stringify(rawHeapPartial.partialFailure.command),
     'post-GC raw heap failure did not retain exact completed/failing/method evidence');
+  const backCleanupPartial = clone(rawHeapPartial);
+  const backCleanupCommand = clone(backActionCleanupPrimaryFailure.compendiumCommand);
+  backCleanupPartial.findings = [`instrument: ${backActionCleanupPrimaryFailure.message}`];
+  backCleanupPartial.partialFailure.lastCompletedStage = 'main initial DOM counters';
+  backCleanupPartial.partialFailure.failingStage = backCleanupCommand.label;
+  backCleanupPartial.partialFailure.command = clone(backCleanupCommand);
+  backCleanupPartial.profiles.phone.lastCompletedStage = 'main initial DOM counters';
+  backCleanupPartial.profiles.phone.failingStage = backCleanupCommand.label;
+  backCleanupPartial.profiles.phone.completedStages = [
+    ...snapshotStageGroup('fresh lazy-control'), ...snapshotStageGroup('main initial'),
+  ];
+  backCleanupPartial.profiles.phone.commandLedger = [clone(backCleanupCommand)];
+  setPartialDiagnosis(backCleanupPartial, backActionCleanupPrimaryFailure.message);
+  const backCleanupPartialCheck = verifyTerminalReport(
+    backCleanupPartial, 'selftest-current',
+  );
+  structuredInstrumentControlCount++;
+  assert(backCleanupPartialCheck.ok
+    && backCleanupPartial.partialFailure.failingStage
+      === backCleanupPartial.partialFailure.command.label
+    && JSON.stringify(backCleanupPartial.profiles.phone.commandLedger.at(-1))
+      === JSON.stringify(backCleanupPartial.partialFailure.command),
+  `raw Back-action cleanup did not retain a contract-verifiable partial command ledger: ${backCleanupPartialCheck.errors.join('; ')}`);
+  const trackedCleanupStageDrift = clone(backCleanupPartial);
+  const trackedCleanupLabel = 'row cmem-row-selftest Back action witness cleanup';
+  trackedCleanupStageDrift.partialFailure.lastCompletedStage = trackedCleanupLabel;
+  trackedCleanupStageDrift.partialFailure.failingStage = `after ${trackedCleanupLabel}`;
+  trackedCleanupStageDrift.profiles.phone.lastCompletedStage = trackedCleanupLabel;
+  trackedCleanupStageDrift.profiles.phone.failingStage = `after ${trackedCleanupLabel}`;
+  trackedCleanupStageDrift.profiles.phone.completedStages.push(trackedCleanupLabel);
+  structuredInstrumentControlCount++;
+  assert(!verifyTerminalReport(trackedCleanupStageDrift, 'selftest-current').ok,
+    'a tracked cleanup laundered the original terminal Back-action command boundary');
   const rawHeapWrongMethod = clone(rawHeapPartial);
   rawHeapWrongMethod.partialFailure.command.method = 'Memory.getDOMCounters';
   rawHeapWrongMethod.profiles.phone.commandLedger[0].method = 'Memory.getDOMCounters';
