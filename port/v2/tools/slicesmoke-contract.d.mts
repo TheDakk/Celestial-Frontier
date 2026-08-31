@@ -71,6 +71,203 @@ export function selectArc5FeedFixtureBurnVerb(
   captureState: unknown,
   rows: readonly unknown[],
 ): 'tame' | 'scavenge' | 'sample' | null;
+export type CompendiumFeedChoiceKind = 'creature' | 'flora';
+export interface CompendiumFeedChoiceExpectation {
+  readonly kind: CompendiumFeedChoiceKind;
+  readonly expectedId: string;
+  readonly expectedPriorId: string | null;
+  readonly documentToken: string;
+  readonly generation: number;
+  readonly logicalId: string;
+  readonly surfaceKey: string;
+  readonly contextKey: string;
+}
+export interface CompendiumFeedChoiceDocumentWitness {
+  readonly token: string;
+  readonly generation: number;
+  readonly logicalId: string;
+  readonly surfaceKey: string;
+  readonly contextKey: string;
+}
+export interface CompendiumFeedChoiceControllerWitness {
+  readonly attachedMountCount: number;
+  readonly delegatedListenerCount: number;
+  readonly pendingWork: number;
+  readonly convergenceLatched: boolean;
+  readonly feedState: string;
+  readonly surfaceKey: string;
+  readonly contextKey: string;
+}
+export interface CompendiumFeedChoiceRadioWitness {
+  readonly radioId: string;
+  readonly radioNodeToken: string;
+  readonly radioConnected: boolean;
+  readonly radioDisabled: boolean;
+  readonly radioChecked: boolean;
+  readonly radioChoice: CompendiumFeedChoiceKind;
+  readonly radioCreatureId: string | null;
+  readonly radioFoodLotId: string | null;
+}
+interface CompendiumFeedChoiceReceiptBaseWitness {
+  readonly trusted: boolean;
+  readonly radioId: string;
+  readonly radioNodeToken: string;
+  readonly choice: CompendiumFeedChoiceKind;
+  readonly choiceId: string;
+  readonly document: Readonly<CompendiumFeedChoiceDocumentWitness>;
+  readonly serial: number;
+}
+export type CompendiumFeedChoiceReceiptWitness =
+  | (CompendiumFeedChoiceReceiptBaseWitness & Readonly<{
+    readonly type: 'pointerdown' | 'click';
+    readonly x: number;
+    readonly y: number;
+    readonly pointerType?: string;
+    readonly button?: number;
+  }>)
+  | (CompendiumFeedChoiceReceiptBaseWitness & Readonly<{
+    readonly type: 'input' | 'change';
+    readonly x?: never;
+    readonly y?: never;
+    readonly pointerType?: never;
+    readonly button?: never;
+  }>);
+export interface CompendiumFeedChoiceActivationWitness {
+  readonly kind: CompendiumFeedChoiceKind;
+  readonly expectedId: string;
+  readonly expectedPriorId: string | null;
+  readonly document: Readonly<CompendiumFeedChoiceDocumentWitness>;
+  readonly prepared: Readonly<CompendiumFeedChoiceRadioWitness & {
+    readonly selectorCount: number;
+    readonly radioIdMatchCount: number;
+    readonly labelOwnerCount: number;
+    readonly labelFor: string;
+    readonly labelConnected: boolean;
+    readonly labelContainsRadio: boolean;
+    readonly labelWidth: number;
+    readonly labelHeight: number;
+    readonly labelVisible: boolean;
+    readonly labelNodeToken: string;
+    readonly x: number;
+    readonly y: number;
+    readonly labelHitOwner: boolean;
+    readonly radioHitOwner: boolean;
+    readonly controller: Readonly<CompendiumFeedChoiceControllerWitness>;
+  }>;
+  readonly dispatch: Readonly<CompendiumFeedChoiceRadioWitness & {
+    readonly kind: 'cdp-mouse';
+    readonly button: 'left';
+    readonly clickCount: number;
+    readonly x: number;
+    readonly y: number;
+    readonly targetX: number;
+    readonly targetY: number;
+    readonly document: Readonly<CompendiumFeedChoiceDocumentWitness>;
+    readonly selectorCount: number;
+    readonly radioIdMatchCount: number;
+    readonly labelOwnerCount: number;
+    readonly labelFor: string;
+    readonly labelConnected: boolean;
+    readonly labelContainsRadio: boolean;
+    readonly labelNodeToken: string;
+    readonly labelWidth: number;
+    readonly labelHeight: number;
+    readonly labelVisible: boolean;
+    readonly labelHitOwner: boolean;
+    readonly radioHitOwner: boolean;
+  }>;
+  readonly receipt: Readonly<{
+    readonly pointerdowns: readonly Readonly<CompendiumFeedChoiceReceiptWitness>[];
+    readonly clicks: readonly Readonly<CompendiumFeedChoiceReceiptWitness>[];
+    readonly inputs: readonly Readonly<CompendiumFeedChoiceReceiptWitness>[];
+    readonly changes: readonly Readonly<CompendiumFeedChoiceReceiptWitness>[];
+  }>;
+  readonly settled: Readonly<CompendiumFeedChoiceRadioWitness & {
+    readonly selectorCount: number;
+    readonly radioIdMatchCount: number;
+    readonly labelOwnerCount: number;
+    readonly labelFor: string;
+    readonly labelConnected: boolean;
+    readonly labelContainsRadio: boolean;
+    readonly labelNodeToken: string;
+    /** Must identify the current radio; replacement is not required. */
+    readonly radioNodeToken: string;
+    readonly ui: Readonly<{
+      readonly document: Readonly<CompendiumFeedChoiceDocumentWitness>;
+      readonly controller: Readonly<CompendiumFeedChoiceControllerWitness>;
+      readonly selectedCreatureId: string | null;
+      readonly selectedFoodLotId: string | null;
+    }>;
+  }>;
+}
+export function assessCompendiumFeedChoiceActivation(
+  observation: Readonly<CompendiumFeedChoiceActivationWitness>,
+  expected: Readonly<CompendiumFeedChoiceExpectation>,
+): SliceContractAssessment;
+export interface CompendiumFeedPreviewAuthorityWitness {
+  readonly revision: number;
+  readonly sourceDigest: string;
+  readonly targetDigest: string;
+}
+export interface CompendiumFeedPreviewExpectation {
+  readonly documentToken: string;
+  readonly generation: number;
+  readonly logicalId: string;
+  readonly surfaceKey: string;
+  readonly contextKey: string;
+  readonly authority: Readonly<CompendiumFeedPreviewAuthorityWitness>;
+  readonly creatureId: string;
+  readonly foodLotId: string;
+  readonly fedBefore: number;
+  readonly fedAfter: number;
+  readonly foodQuantityBefore: number;
+  readonly foodQuantityAfter: number;
+  readonly baseline: Readonly<{
+    readonly actionCoordinator: Readonly<CompendiumFeedPreviewActionCoordinatorWitness>;
+    readonly lastOutcome: unknown;
+    readonly result: unknown;
+  }>;
+}
+export interface CompendiumFeedPreviewControllerWitness
+  extends CompendiumFeedChoiceControllerWitness {
+  readonly selectedCreatureId: string | null;
+  readonly selectedFoodLotId: string | null;
+}
+export interface CompendiumFeedPreviewDomWitness {
+  readonly selectedCreatureId: string | null;
+  readonly selectedFoodLotId: string | null;
+  readonly summary: string;
+  readonly confirmPresent: boolean;
+  readonly confirmDisabled: boolean | null;
+}
+export interface CompendiumFeedPreviewActionCoordinatorWitness {
+  readonly inFlight: boolean;
+  readonly owner: Readonly<{
+    readonly busy: boolean;
+    readonly operation: string | null;
+  }>;
+  readonly hold: Readonly<{
+    readonly phase: 'idle' | 'armed' | 'holding' | 'release-requested' | 'released';
+    readonly operation: string | null;
+    readonly sequence: number;
+  }>;
+}
+export interface CompendiumFeedPreviewObservation {
+  readonly document: Readonly<CompendiumFeedChoiceDocumentWitness>;
+  readonly authority: Readonly<CompendiumFeedPreviewAuthorityWitness>;
+  readonly controller: Readonly<CompendiumFeedPreviewControllerWitness>;
+  readonly dom: Readonly<CompendiumFeedPreviewDomWitness>;
+  readonly actionCoordinator: Readonly<CompendiumFeedPreviewActionCoordinatorWitness>;
+  readonly lastOutcome: unknown;
+  readonly result: unknown;
+}
+export interface CompendiumFeedPreviewAssessment extends SliceContractAssessment {
+  readonly observation: Readonly<CompendiumFeedPreviewObservation>;
+}
+export function assessCompendiumFeedPreview(
+  observation: Readonly<CompendiumFeedPreviewObservation>,
+  expected: Readonly<CompendiumFeedPreviewExpectation>,
+): CompendiumFeedPreviewAssessment;
 export function assessCompendiumFeedPendingWindow(observation: unknown): SliceContractAssessment;
 export function assessCompendiumFeedCommittedOutcome(observation: unknown): SliceContractAssessment;
 export interface CompendiumFeedWebAudioGraph {

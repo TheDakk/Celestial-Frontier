@@ -10,6 +10,63 @@ summary of it.
 
 ## Contents
 
+### Signed `51a8ac4…` input-v5 predecessors, then terminal Feed-preview instrument red
+
+Exact clean SSH-signed source `51a8ac43f1a583e73dc4d111da04bbdb76abcc02` (tree
+`0f823714e2e1c6020108f0aa31ae7b038da5dc74`, parent
+`e2ff953807df7b42fe4c979222866e4cfb89b8ce`) passed its hermetic tracked-input develop profile at
+**253 files / 2,524 passed / 1 skipped**, strict root/game/worker TypeScript, **34** art sources with
+zero findings, **1,014/1,014** routes and **454** specification fields with zero inert fields. The
+changed browser-instrument controls also passed once: browser resolver, fixed-second heap phase,
+Compendium live preflight, **591** Compendium mutations and the raw-CDP launcher.
+
+The unchanged source then ran one no-retry browser chain on Microsoft Edge `152.0.4191.53` / CDP
+`1.3`. SceneMemory run `20260830-pr35-51a8ac4-input-v5-scenemem-certification` passed **44/44**
+in **13,495 ms** and its exact named verifier passed. Compendium run
+`20260830-pr35-51a8ac4-input-v5-compendium-certification` passed **78/78** in **63,118 ms** with
+zero findings/blocked outcomes and its exact named verifier passed. Both reports retained clean,
+unchanged begin/end source and complete lifecycle cleanup.
+
+- `ARC1C_SCENEMEM_PR35_INPUT_V5_PASS_20260830_51A8AC4.json.gz`: **49,747 gzip / 788,226 raw
+  bytes**; gzip/raw SHA-256
+  `4410fdfc1270b0a232720670dc0702bb9cf0ee1f6808aad069aff414f2c5f30d` /
+  `1f0d4eca11dd9746dad1627aebb66d8c785580b764904adb4ebe198395b53aa3`.
+- `ARC1C_COMPENDIUM_PR35_INPUT_V5_PASS_20260830_51A8AC4.json.gz`: **520,904 gzip / 10,796,770
+  raw bytes**; gzip/raw SHA-256
+  `2c9a4ac889d3f8050cd2d37f785dbc99b49c2828c5e1037cf79621e558dd1925` /
+  `dd7a8604f2043eae1bd78271168ef84101f818fa6f73c420c43d0f2ca92d7abb`.
+
+Slice run `20260830-pr35-51a8ac4-input-v5-slice-certification` then ran exactly once and stopped
+terminal red after **162,524 ms** with one `harness` scope:
+`Arc 5 exact Feed preview did not reach its browser outcome within 6000ms (last null)`. Its named
+verifier correctly rejected the red predecessor. Glass did not run.
+
+- `ARC4_SLICE_PR35_FEED_PREVIEW_INSTRUMENT_RED_20260830_51A8AC4.json.gz`: **1,684 gzip / 5,321
+  raw bytes**; gzip/raw SHA-256
+  `a6b4e8916cd74b744b875f2e1fc65f4cd4de10e708caa4e35c787e8d0a7e084b` /
+  `bccf99344f9535eb666ea9e5b1c96f411d6cb482d69beddce7cf6c7994cc5ebd`.
+- `ARC4_SLICE_PR35_FEED_PREVIEW_INSTRUMENT_RED_20260830_51A8AC4.log.gz`: **1,513 gzip / 3,750
+  raw bytes**; gzip/raw SHA-256
+  `929276fd29d4895e4601d5d44bd15c13965071cbc9a00b21fbf81ca008ff55b4` /
+  `bbca3b3d7c8d04b9257a33c4e1086ff6535ee2a141837808363f2015295ffab7`.
+
+The red is instrument-only and makes no Feed product verdict. It occurred after opening the exact
+detail but before the first durable read, confirmation trace/hold, action coordinator claim,
+writer or persistence comparison. The old helper targeted a 44px `LABEL`, treated its nonexistent
+`disabled` property as readiness, retained only coordinates and never proved the nested native
+radio received `change`. Its combined preview predicate returned literal `null` whenever any one
+of five facts was false, erasing the distinguishing browser state. Source inspection found no
+product path that can stall the synchronous pre-confirm preview; the controller lifecycle is now
+separately covered by native `input.click()` across detach/reattach.
+
+The bounded dirty successor changes only the Slice evidence path: exact current label↔radio
+ownership, dispatch-time node identity, trusted pointer/click/input/change receipts, synchronous
+post-event current-control identity, controller/listener selection settlement after each choice, and a
+full structured pre-action preview whose authority/coordinator baseline cannot drift. More than
+60 independent field mutations are red. It does not change Feed product code, creature/genome
+structure, persistence, numeric budgets, timeout, retry or browser baseline. The immutable
+`51a8ac4…` report remains FAIL and can never be retried or relabelled.
+
 ### Clean `553b06b…` three-candidate SceneMemory source-normalization evidence
 
 Exact clean signed source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied exactly three

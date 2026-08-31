@@ -1258,6 +1258,248 @@ export function selectArc5FeedFixtureBurnVerb(captureState, rows) {
   return ready[0].verb;
 }
 
+/* A Feed choice is not the label that happens to contain its radio. Bind the
+   exact current nested native control before dispatch, re-query that same
+   identity at dispatch time, and require the trusted browser event chain to
+   settle in both DOM and controller state before another choice may start. */
+export function assessCompendiumFeedChoiceActivation(observation, expected) {
+  if (!['creature', 'flora'].includes(expected?.kind)
+    || !nonEmptyString(expected?.expectedId)
+    || (expected?.expectedPriorId !== null
+      && !nonEmptyString(expected?.expectedPriorId))
+    || !nonEmptyString(expected?.documentToken)
+    || !safeInt(expected?.generation)
+    || !nonEmptyString(expected?.logicalId)
+    || !nonEmptyString(expected?.surfaceKey)
+    || !nonEmptyString(expected?.contextKey)) {
+    throw new TypeError('Compendium Feed choice evidence requires one exact current choice identity');
+  }
+  const reasons = [];
+  const add = (reason, condition) => { if (!condition) reasons.push(reason); };
+  const currentDocument = (candidate) => candidate?.token === expected.documentToken
+    && candidate?.generation === expected.generation
+    && candidate?.logicalId === expected.logicalId
+    && candidate?.surfaceKey === expected.surfaceKey
+    && candidate?.contextKey === expected.contextKey;
+  const exactChoice = (candidate) => candidate?.radioChoice === expected.kind
+    && candidate?.radioCreatureId === (expected.kind === 'creature' ? expected.expectedId : null)
+    && candidate?.radioFoodLotId === (expected.kind === 'flora' ? expected.expectedId : null);
+  const currentController = (candidate) => candidate?.attachedMountCount === 1
+    && candidate?.delegatedListenerCount === 2
+    && candidate?.pendingWork === 0
+    && candidate?.convergenceLatched === false
+    && candidate?.feedState === 'ready'
+    && candidate?.surfaceKey === expected.surfaceKey
+    && candidate?.contextKey === expected.contextKey;
+  const prepared = observation?.prepared;
+  const dispatch = observation?.dispatch;
+  const settled = observation?.settled;
+  const preparedRadioId = prepared?.radioId;
+  const preparedNodeToken = prepared?.radioNodeToken;
+
+  add('exact Feed choice expectation', observation?.kind === expected.kind
+    && observation?.expectedId === expected.expectedId
+    && observation?.expectedPriorId === expected.expectedPriorId);
+  add('exact current Feed document', currentDocument(observation?.document));
+  add('current Feed controller', currentController(prepared?.controller));
+  add('unique label-radio ownership', prepared?.selectorCount === 1
+    && prepared?.radioIdMatchCount === 1
+    && prepared?.labelOwnerCount === 1
+    && prepared?.labelConnected === true
+    && prepared?.labelContainsRadio === true
+    && nonEmptyString(prepared?.labelNodeToken)
+    && nonEmptyString(preparedRadioId)
+    && nonEmptyString(preparedNodeToken)
+    && prepared?.labelFor === preparedRadioId
+    && exactChoice(prepared));
+  add('ready unchecked Feed radio', prepared?.radioConnected === true
+    && prepared?.radioDisabled === false && prepared?.radioChecked === false);
+  add('44px current Feed hit target', Number.isFinite(prepared?.x)
+    && Number.isFinite(prepared?.y) && Number.isFinite(prepared?.labelWidth)
+    && prepared.labelWidth >= 44 && Number.isFinite(prepared?.labelHeight)
+    && prepared.labelHeight >= 44 && prepared?.labelVisible === true
+    && prepared?.labelHitOwner === true && prepared?.radioHitOwner === true);
+  add('dispatch-time Feed radio identity', currentDocument(dispatch?.document)
+    && dispatch?.selectorCount === 1
+    && dispatch?.radioIdMatchCount === 1
+    && dispatch?.labelOwnerCount === 1
+    && dispatch?.labelConnected === true
+    && dispatch?.labelContainsRadio === true
+    && nonEmptyString(dispatch?.labelNodeToken)
+    && dispatch?.labelFor === preparedRadioId
+    && dispatch?.radioId === preparedRadioId
+    && dispatch?.radioNodeToken === preparedNodeToken
+    && dispatch?.radioConnected === true
+    && dispatch?.radioDisabled === false
+    && dispatch?.radioChecked === false
+    && Number.isFinite(dispatch?.labelWidth) && dispatch.labelWidth >= 44
+    && Number.isFinite(dispatch?.labelHeight) && dispatch.labelHeight >= 44
+    && dispatch?.labelVisible === true
+    && dispatch?.labelHitOwner === true && dispatch?.radioHitOwner === true
+    && exactChoice(dispatch));
+  add('exact CDP Feed choice dispatch', dispatch?.kind === 'cdp-mouse'
+    && dispatch?.button === 'left' && dispatch?.clickCount === 1
+    && Number.isFinite(dispatch?.targetX) && Number.isFinite(dispatch?.targetY)
+    && dispatch?.x === dispatch.targetX && dispatch?.y === dispatch.targetY);
+
+  const receipt = observation?.receipt;
+  const exactReceipt = (candidate, type) => candidate?.type === type
+    && candidate?.trusted === true
+    && candidate?.radioId === preparedRadioId
+    && candidate?.radioNodeToken === preparedNodeToken
+    && candidate?.choice === expected.kind
+    && candidate?.choiceId === expected.expectedId
+    && (['pointerdown', 'click'].includes(type)
+      ? (Object.hasOwn(candidate ?? {}, 'x') && Object.hasOwn(candidate ?? {}, 'y')
+        && candidate?.x === dispatch?.x && candidate?.y === dispatch?.y)
+      : (!Object.hasOwn(candidate ?? {}, 'x') && !Object.hasOwn(candidate ?? {}, 'y')
+        && !Object.hasOwn(candidate ?? {}, 'pointerType')
+        && !Object.hasOwn(candidate ?? {}, 'button')))
+    && currentDocument(candidate?.document);
+  const pointerdowns = Array.isArray(receipt?.pointerdowns) ? receipt.pointerdowns : [];
+  const clicks = Array.isArray(receipt?.clicks) ? receipt.clicks : [];
+  const inputs = Array.isArray(receipt?.inputs) ? receipt.inputs : [];
+  const changes = Array.isArray(receipt?.changes) ? receipt.changes : [];
+  add('trusted current Feed pointer receipt', pointerdowns.length === 1
+    && clicks.length === 1
+    && exactReceipt(pointerdowns[0], 'pointerdown')
+    && pointerdowns[0]?.pointerType === 'mouse'
+    && pointerdowns[0]?.button === 0
+    && pointerdowns[0]?.serial === 1
+    && exactReceipt(clicks[0], 'click')
+    && clicks[0]?.serial === 2);
+  add('exact Feed input receipt', inputs.length === 1
+    && exactReceipt(inputs[0], 'input') && inputs[0]?.serial === 3);
+  add('exact Feed change receipt', changes.length === 1
+    && exactReceipt(changes[0], 'change') && changes[0]?.serial === 4);
+
+  const currentSelection = expected.kind === 'creature'
+    ? settled?.ui?.selectedCreatureId : settled?.ui?.selectedFoodLotId;
+  add('settled current Feed choice', currentDocument(settled?.ui?.document)
+    && currentController(settled?.ui?.controller)
+    && settled?.selectorCount === 1
+    && settled?.radioIdMatchCount === 1
+    && settled?.labelOwnerCount === 1
+    && settled?.labelConnected === true
+    && settled?.labelContainsRadio === true
+    && nonEmptyString(settled?.labelNodeToken)
+    && settled?.labelFor === preparedRadioId
+    && settled?.radioId === preparedRadioId
+    && nonEmptyString(settled?.radioNodeToken)
+    && settled?.radioConnected === true && settled?.radioDisabled === false
+    && settled?.radioChecked === true
+    && exactChoice(settled)
+    && currentSelection === expected.expectedId);
+  const priorSelection = expected.kind === 'creature'
+    ? settled?.ui?.selectedFoodLotId : settled?.ui?.selectedCreatureId;
+  add('preserved prior Feed choice', priorSelection === expected.expectedPriorId);
+  return { ok: reasons.length === 0, reasons };
+}
+
+/* Choice receipts establish that both native radios accepted the player.
+   This separate preview boundary retains the complete browser observation
+   while requiring the exact current authority, rendered transitions, and an
+   action coordinator that has not yet crossed into Feed confirmation. */
+export function assessCompendiumFeedPreview(observation, expected) {
+  const authority = expected?.authority;
+  const baseline = expected?.baseline;
+  const baselineCoordinator = baseline?.actionCoordinator;
+  const baselineOwner = baselineCoordinator?.owner;
+  const baselineHold = baselineCoordinator?.hold;
+  const validOperation = (value) => value === null || nonEmptyString(value);
+  const knownHoldPhase = (value) => [
+    'idle', 'armed', 'holding', 'release-requested', 'released',
+  ].includes(value);
+  if (!nonEmptyString(expected?.documentToken)
+    || !safeInt(expected?.generation)
+    || !nonEmptyString(expected?.logicalId)
+    || !nonEmptyString(expected?.surfaceKey)
+    || !nonEmptyString(expected?.contextKey)
+    || !safeInt(authority?.revision)
+    || !hexDigest(authority?.sourceDigest)
+    || !hexDigest(authority?.targetDigest)
+    || !nonEmptyString(expected?.creatureId)
+    || !nonEmptyString(expected?.foodLotId)
+    || !safeInt(expected?.fedBefore) || expected.fedBefore >= 200
+    || expected?.fedAfter !== expected.fedBefore + 1
+    || !safeInt(expected?.foodQuantityBefore) || expected.foodQuantityBefore < 1
+    || expected?.foodQuantityAfter !== expected.foodQuantityBefore - 1
+    || baseline === null || typeof baseline !== 'object' || Array.isArray(baseline)
+    || !Object.hasOwn(baseline, 'actionCoordinator')
+    || !Object.hasOwn(baseline, 'lastOutcome') || !Object.hasOwn(baseline, 'result')
+    || typeof baselineCoordinator?.inFlight !== 'boolean'
+    || typeof baselineOwner?.busy !== 'boolean'
+    || !validOperation(baselineOwner?.operation)
+    || !knownHoldPhase(baselineHold?.phase)
+    || !validOperation(baselineHold?.operation)
+    || !safeInt(baselineHold?.sequence)) {
+    throw new TypeError('Compendium Feed preview evidence requires one exact pre-choice expectation');
+  }
+
+  const reasons = [];
+  const add = (reason, condition) => { if (!condition) reasons.push(reason); };
+  const document = observation?.document;
+  add('exact Feed preview document token', document?.token === expected.documentToken);
+  add('exact Feed preview generation', document?.generation === expected.generation);
+  add('exact Feed preview logical ID', document?.logicalId === expected.logicalId);
+  add('exact Feed preview surface key', document?.surfaceKey === expected.surfaceKey);
+  add('exact Feed preview context key', document?.contextKey === expected.contextKey);
+
+  const observedAuthority = observation?.authority;
+  add('unchanged Feed preview authority revision',
+    observedAuthority?.revision === authority.revision);
+  add('unchanged Feed preview source digest',
+    observedAuthority?.sourceDigest === authority.sourceDigest);
+  add('unchanged Feed preview target digest',
+    observedAuthority?.targetDigest === authority.targetDigest);
+
+  const controller = observation?.controller;
+  add('attached Feed preview mount', controller?.attachedMountCount === 1);
+  add('installed Feed preview listeners', controller?.delegatedListenerCount === 2);
+  add('idle Feed preview controller', controller?.pendingWork === 0);
+  add('unlatched Feed preview convergence', controller?.convergenceLatched === false);
+  add('ready Feed preview state', controller?.feedState === 'ready');
+  add('exact controller Feed surface key', controller?.surfaceKey === expected.surfaceKey);
+  add('exact controller Feed context key', controller?.contextKey === expected.contextKey);
+  add('exact controller Feed creature selection',
+    controller?.selectedCreatureId === expected.creatureId);
+  add('exact controller Feed flora selection',
+    controller?.selectedFoodLotId === expected.foodLotId);
+
+  const dom = observation?.dom;
+  add('exact DOM Feed creature selection', dom?.selectedCreatureId === expected.creatureId);
+  add('exact DOM Feed flora selection', dom?.selectedFoodLotId === expected.foodLotId);
+  const meals = `Meals ${expected.fedBefore} → ${expected.fedAfter}`;
+  const quantity = `Quantity ${expected.foodQuantityBefore} → ${expected.foodQuantityAfter}`;
+  const occursOnce = (needle) => typeof dom?.summary === 'string'
+    && dom.summary.split(needle).length === 2;
+  add('exact Feed Meals transition', occursOnce(meals));
+  add('exact Feed Quantity transition', occursOnce(quantity));
+  add('present Feed preview confirmation', dom?.confirmPresent === true);
+  add('enabled Feed preview confirmation', dom?.confirmDisabled === false);
+
+  const coordinator = observation?.actionCoordinator;
+  add('unchanged quiescent Feed preview in-flight state',
+    coordinator?.inFlight === baselineCoordinator.inFlight
+      && coordinator?.inFlight === false);
+  add('unchanged quiescent Feed preview owner busy state',
+    coordinator?.owner?.busy === baselineOwner.busy
+      && coordinator?.owner?.busy === false);
+  add('unchanged Feed preview owner operation',
+    coordinator?.owner?.operation === baselineOwner.operation);
+  add('unchanged quiescent Feed preview hold phase',
+    coordinator?.hold?.phase === baselineHold.phase
+      && ['idle', 'released'].includes(coordinator?.hold?.phase));
+  add('unchanged Feed preview hold operation',
+    coordinator?.hold?.operation === baselineHold.operation);
+  add('unchanged Feed preview hold sequence',
+    coordinator?.hold?.sequence === baselineHold.sequence);
+  add('unchanged Feed preview last outcome',
+    exactJson(observation?.lastOutcome, baseline.lastOutcome));
+  add('unchanged Feed preview result', exactJson(observation?.result, baseline.result));
+  return { ok: reasons.length === 0, reasons, observation };
+}
+
 /* Arc 5's first player-live action deliberately keeps its browser evidence
    compact and causal. The pending assessor accepts only the exact native
    Compendium activation, unchanged durable/live ownership, one global
