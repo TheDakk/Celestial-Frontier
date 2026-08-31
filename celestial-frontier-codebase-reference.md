@@ -1,7 +1,18 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-31 current Glass/product-presentation overlay (supersedes older candidate-status
-> labels):** exact clean signed source `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed
+> **2026-08-31 current terminal-green local develop boundary:** exact clean signed source
+> `7e089f3432a834636064615ac2da13b2b0ac39df` passed the isolated tracked-input develop profile,
+> then completed one unchanged-source/no-retry **Compendium → Slice → Glass** chain. Compendium
+> passed **78/78**; Slice passed with zero findings/scopes and ten screenshots; full Glass passed
+> all **12** viewports with zero findings, zero instrument failures and **104/104** controls run,
+> none blocked or omitted. Every exact named verifier passed. Report/log carriers and hashes are in
+> `audits/README.md`. This is the local develop certificate for the bounded Glass causal-stop plus
+> Capture/Binder presentation repair; SceneMemory remains production-only and Recovery did not run.
+> Edge `152.0.4191.53` / CDP `1.3` is provenance only. HUMAN/device, hosted, merge, production,
+> release and deployment authority remain open.
+
+> **2026-08-31 historical pre-final Glass/product-presentation overlay (superseded above):** exact
+> clean signed source `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed
 > Compendium **78/78** and develop Slice with zero findings/ten screenshots, each once/no-retry with
 > named verification. Exact-source Glass `20260831163921002-30283-9bd10ae7a9bb` stopped immutable
 > `instrument-fail` after **102,462 ms**; its old noncausal continuation accumulated 88 provisional
@@ -23,8 +34,8 @@
 > Compendium producer/budget authority is
 > `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
 > `80a2b8b39d400419a5527f9737a92ea2e0c54916ba8c3966411e607fd950fd79`; fixed rulers, samples and
-> version-tolerant Edge-family + CDP `1.3` policy are unchanged. One fresh signed unchanged-source
-> Compendium → Slice → Glass chain remains pending; no hosted/release/deploy authority exists.
+> version-tolerant Edge-family + CDP `1.3` policy are unchanged. The fresh chain described above now
+> supplies the exact local develop certificate; no hosted/release/deploy authority exists.
 
 > **2026-08-31 historical 4002/4822 instrument overlay (superseded above):** exact clean
 > signed source `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry as

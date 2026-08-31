@@ -14,7 +14,7 @@ how one collapses into the other, the merit boosts, ring caps, guardians and par
 source and this doc disagree, **source wins and this doc gets fixed**. The ladder
 feeds the 50-probe determinism fingerprint — a mismatch means observable behavior changed.
 
-> **2026-08-27 strict v2 app presentation boundary — current local candidate:**
+> **2026-08-31 strict v2 app presentation boundary — current local candidate:**
 > `projectDisplayRarity(value)` accepts only a primitive integer raw grade in the closed range
 > 0–14. Raw 0–9 selects the corresponding canonical ten-name row; raw 10–14 selects display tier 9,
 > **Transcendent** / `#F7F1FF`. Missing, string-coercible, boxed, fractional, non-finite, negative
@@ -35,8 +35,10 @@ feeds the 50-probe determinism fingerprint — a mismatch means observable behav
 > the canonical descriptor name itself is absent. Compendium reads the stored raw tier, not the
 > portrait/art label. The raw 0–14 roll, thresholds, boosts/forces, persistence, sorting authority,
 > deterministic descriptor output, seeded art hue/designation and legacy fingerprint remain
-> unchanged. Focused automated gates cover the projector and its player wiring; final real-browser
-> evidence for the current combined candidate remains pending.
+> unchanged. Exact clean signed source `7e089f3432a834636064615ac2da13b2b0ac39df` passed the full
+> no-retry local Compendium → Slice → 12-viewport Glass develop chain with zero Slice findings and
+> zero Glass findings/instrument failures; all named verifiers passed. HUMAN visual judgment remains
+> open.
 
 > **2026-08-11 v2 executable-contract correction:** Runtime rarity values are
 > byte-unchanged. The port declaration now records that `colorGrade` and

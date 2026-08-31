@@ -1,7 +1,30 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-08-31 current local Glass causal-stop and product-presentation repair (supersedes every
-> older “current” status label below; dated evidence remains immutable):** exact clean SSH-signed
+> **2026-08-31 current terminal-green local develop certificate (supersedes every older “current”
+> status label below; dated evidence remains immutable):** exact clean SSH-signed source
+> `7e089f3432a834636064615ac2da13b2b0ac39df` passed the isolated tracked-input develop preflight
+> at **253 files / 2,562 passed / 1 skipped**, all three TypeScript programs, **34** art sources,
+> **1,014/1,014** routes and **454** non-inert fields. The unchanged source then passed the complete
+> one-attempt/no-retry **Compendium → Slice (`develop`) → Glass (`develop`)** chain on Edge
+> `152.0.4191.53` / CDP `1.3`; the point version is provenance only.
+>
+> Compendium `20260831191631844-46650-7805223383` passed **78/78** in **64,460 ms**. Slice
+> `20260831191820361-47014-3aa3e64e5899` passed in **358,748 ms** with zero findings/scopes and ten
+> screenshots. Full-certifying Glass `20260831192451470-47497-df046f947fd8` passed in **111,001
+> ms** across all **12** viewport classes with zero findings, zero instrument failures and all
+> **104/104** planned negative controls executed—none blocked or omitted. Every named verifier
+> passed, Glass binds exact Slice report SHA-256 `6137128e…46c1b`, and the four immutable carriers
+> are indexed in `audits/README.md`.
+>
+> This locally closes the bounded Glass causal-stop and Capture/Binder presentation campaign. It
+> changes no creature/genome/plant/biome/Guardian structure, Capture mechanics, deterministic
+> generation, save schema, gameplay balance, numeric ruler or Edge-version policy. SceneMemory
+> remains production-only/quarantined; Recovery is not part of develop and neither ran. No hosted
+> attempt, push, merge, HUMAN acceptance, release, version bump, preview/publication or deployment
+> is authorized.
+
+> **2026-08-31 historical pre-final Glass causal-stop and product-presentation repair (superseded by
+> the terminal-green boundary above):** exact clean SSH-signed
 > source `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed Compendium (**catalog/art stress**)
 > **78/78** once/no-retry in **65,580 ms** as `20260831163047925-29421-21d080b288`, then passed
 > its exact-source develop Slice (**playable journey**) once/no-retry in **359,973 ms** as

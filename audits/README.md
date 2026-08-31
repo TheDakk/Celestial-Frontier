@@ -10,6 +10,48 @@ summary of it.
 
 ## Contents
 
+### Signed `7e089f3…` terminal-green local develop chain
+
+Exact clean SSH-signed source `7e089f3432a834636064615ac2da13b2b0ac39df` first passed the
+tracked-input develop preflight from its isolated committed snapshot: **253 files / 2,562 passed /
+1 skipped**, all three TypeScript programs, **34** art sources, **1,014/1,014** routes and **454**
+non-inert fields. The unchanged source then completed the exact no-retry develop admission chain on
+Edge `152.0.4191.53` / CDP `1.3`; that point version is retained only as provenance.
+
+- Compendium run `20260831191631844-46650-7805223383` passed **78/78** with zero findings and six
+  review-packet bindings in **64,460 ms**. Its exact named verifier passed.
+- Develop Slice run `20260831191820361-47014-3aa3e64e5899` passed in **358,748 ms** with zero
+  findings/scopes, ten screenshots, zero retries and no source change. Its exact named verifier
+  passed; report SHA-256 is
+  `6137128e18caa1b4858d7dd475b215b71e541f8ec7c69649a534c57969046c1b`.
+- Full-certifying Glass run `20260831192451470-47497-df046f947fd8` passed in **111,001 ms** across
+  all **12** isolated viewport classes with zero findings, zero instrument failures and zero
+  retries. All **104/104** planned negative controls ran; none were blocked or omitted. Its exact
+  verifier passed against the named Slice predecessor; report SHA-256 is
+  `30bdbf2492bef68f13d1352fc7adc01903a8cf7b517e34510a0fdf962eb9b4ae`.
+
+This is the complete local `develop` browser certificate for the bounded Glass/Capture/Binder
+repair. SceneMemory remains production-only/quarantined and Recovery is not part of develop, so
+neither ran. Automation still does not supply HUMAN visual/listening/accessibility/device judgment,
+hosted CI, merge, production-release or deployment authority.
+
+- `ARC1A_COMPENDIUM_PR35_GLASS_CAUSAL_PRESENTATION_PASS_20260831_7E089F3.json.gz`:
+  **523,753 gzip / 10,849,428 raw bytes**; gzip/raw SHA-256
+  `2d8c3b243849ccfc736e9f363b28d9318fd9b047d6d91d2e4013a3e90cacc1dd` /
+  `2c61999892e73ca08b0d0c9f4f43d05ac9a1d5be4df20281edefcde1933a60fb`.
+- `ARC4_SLICE_PR35_GLASS_CAUSAL_PRESENTATION_PASS_20260831_7E089F3.json.gz`:
+  **1,962 gzip / 6,126 raw bytes**; gzip/raw SHA-256
+  `fe132a17fae5fe512b56fff9bd2dae5d46305c79d47993448fbc4bbd03110066` /
+  `6137128e18caa1b4858d7dd475b215b71e541f8ec7c69649a534c57969046c1b`.
+- `ARC4_SLICE_PR35_GLASS_CAUSAL_PRESENTATION_PASS_20260831_7E089F3.log.gz`:
+  **3,298 gzip / 6,950 raw bytes**; gzip/raw SHA-256
+  `d92757ef165cef480f07563237b8d982b89268c3e1cb84f5026cb9cd0d6b7aa5` /
+  `634db3f1c6bb7fbd5453b7f9d37ad5ee070082efd9b6df9dd47aaf1c690a6ff1`.
+- `ARC4_GLASS_PR35_CAUSAL_PRESENTATION_PASS_20260831_7E089F3.json.gz`:
+  **82,848 gzip / 898,915 raw bytes**; gzip/raw SHA-256
+  `014371d5a29989cdf840583c52fd6fcc522cd4a1dd45f874e1c337627b8dcd9d` /
+  `30bdbf2492bef68f13d1352fc7adc01903a8cf7b517e34510a0fdf962eb9b4ae`.
+
 ### Signed `0d4b72a…` Compendium + Slice PASS, then Glass trail/control instrument red
 
 Exact clean SSH-signed source `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed one/no-retry
