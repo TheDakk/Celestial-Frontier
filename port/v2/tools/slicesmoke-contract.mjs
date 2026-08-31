@@ -2872,13 +2872,10 @@ export function assessLazyOwnerOriginGate({
    own document/producer identity and counters, not from guessing which HTTP
    request won the first-install race. */
 export function assessLazyProductProducerSettlement(
-  diagnostics, expectedDocumentToken, expectedResults = null,
+  diagnostics, expectedDocumentToken,
 ) {
   const reasons = [];
   if (!nonEmptyString(expectedDocumentToken)) reasons.push('expected document token');
-  if (expectedResults !== null && (!Number.isInteger(expectedResults) || expectedResults < 0)) {
-    reasons.push('expected result count');
-  }
   if (!diagnostics || typeof diagnostics !== 'object') {
     return { ok: false, reasons: [...reasons, 'lazy-art producer diagnostics'] };
   }
@@ -2916,36 +2913,27 @@ export function assessLazyProductProducerSettlement(
     && ['maxImportDurationMs', 'maxRenderDurationMs', 'maxEncodeDurationMs']
       .every((field) => Number.isFinite(diagnostics.results[field]) && diagnostics.results[field] >= 0);
   if (!resultsComplete) reasons.push('complete producer result diagnostics');
-  if (resultsComplete && expectedResults !== null && diagnostics.results.count !== expectedResults) {
-    reasons.push('exact producer result count');
-  }
   if (phasesComplete && resultsComplete) {
     const thumbComplete = diagnostics.phases.thumbRenderCompletes
       === diagnostics.phases.thumbEncodeStarts
       && diagnostics.phases.thumbEncodeStarts === diagnostics.phases.thumbEncodeCompletes
-      && diagnostics.phases.thumbJobStarts >= diagnostics.phases.thumbRenderCompletes;
+      && diagnostics.phases.thumbJobStarts === diagnostics.phases.thumbRenderCompletes;
     const portraitComplete = diagnostics.phases.portraitRenderCompletes
       === diagnostics.phases.portraitEncodeStarts
       && diagnostics.phases.portraitEncodeStarts === diagnostics.phases.portraitEncodeCompletes
-      && diagnostics.phases.portraitJobStarts >= diagnostics.phases.portraitRenderCompletes;
+      && diagnostics.phases.portraitJobStarts === diagnostics.phases.portraitRenderCompletes;
     const resultParity = diagnostics.results.count
       === diagnostics.phases.thumbEncodeCompletes + diagnostics.phases.portraitEncodeCompletes;
     if (!thumbComplete || !portraitComplete || !resultParity) reasons.push('coherent producer phase/results');
-  }
-  if (expectedResults !== null) {
-    const exactThumbPhases = phasesComplete
-      && diagnostics.phases.thumbJobStarts === expectedResults
-      && diagnostics.phases.thumbRenderCompletes === expectedResults
-      && diagnostics.phases.thumbEncodeStarts === expectedResults
-      && diagnostics.phases.thumbEncodeCompletes === expectedResults
-      && diagnostics.phases.portraitJobStarts === 0
-      && diagnostics.phases.portraitRenderCompletes === 0
-      && diagnostics.phases.portraitEncodeStarts === 0
-      && diagnostics.phases.portraitEncodeCompletes === 0;
-    if (!exactThumbPhases) reasons.push('exact thumbnail producer phases');
-    if (expectedResults > 0 && (diagnostics.lastEvent?.event !== 'result'
-      || diagnostics.lastEvent?.kind !== 'thumb132'
-      || diagnostics.lastEvent?.jobId !== expectedResults)) {
+    const totalStarts = diagnostics.phases.thumbJobStarts + diagnostics.phases.portraitJobStarts;
+    const finalKindCount = diagnostics.lastEvent?.kind === 'thumb132'
+      ? diagnostics.phases.thumbJobStarts
+      : diagnostics.lastEvent?.kind === 'portrait440'
+        ? diagnostics.phases.portraitJobStarts : 0;
+    if (totalStarts <= 0 || diagnostics.results.count <= 0) reasons.push('positive producer work');
+    if (diagnostics.lastEvent?.event !== 'result'
+      || diagnostics.lastEvent?.jobId !== totalStarts
+      || finalKindCount <= 0) {
       reasons.push('final product result event');
     }
   }
@@ -2954,6 +2942,214 @@ export function assessLazyProductProducerSettlement(
     reasons.push('zero lazy-art producer errors');
   }
   return { ok: reasons.length === 0, reasons };
+}
+
+/* A returned action handler is not a durable boundary. This compact assessor
+   proves one same-document F4 action commit without depending on IndexedDB's
+   lexicographic receipt ordering: raw/live revisions and commit count advance
+   once, SessionRNG advances once without changing its seed/draw families,
+   every predecessor receipt survives by key, and exactly the caller-owned
+   receipt/outcome publishes after the global action coordinator clears. */
+export function assessSingleF4ActionCommit({
+  beforeAuthority,
+  afterAuthority,
+  state = null,
+  expectedKind,
+  expectedPersistenceLastOutcome,
+} = {}) {
+  if (!nonEmptyString(expectedKind) || !nonEmptyString(expectedPersistenceLastOutcome)) {
+    throw new TypeError('single F4 action commit requires exact receipt kind and persistence outcome');
+  }
+  const reasons = [];
+  const add = (reason, condition) => { if (!condition) reasons.push(reason); };
+  const before = beforeAuthority?.raw;
+  const after = afterAuthority?.raw;
+  const settledState = state ?? afterAuthority?.state;
+  const beforeRuntime = beforeAuthority?.state?.persistence?.runtime;
+  const afterRuntime = afterAuthority?.state?.persistence?.runtime;
+
+  add('same document identity', nonEmptyString(beforeAuthority?.token)
+    && afterAuthority?.token === beforeAuthority.token);
+  add('exact raw revision successor', safeInt(before?.revision)
+    && before?.revisionRaw === String(before.revision)
+    && after?.revision === before.revision + 1
+    && after?.revisionRaw === String(before.revision + 1));
+  add('exact live runtime successor', safeInt(beforeRuntime?.revision)
+    && beforeRuntime.revision === before?.revision
+    && safeInt(beforeRuntime?.commits)
+    && afterRuntime?.revision === beforeRuntime.revision + 1
+    && afterRuntime?.revision === after?.revision
+    && afterRuntime?.commits === beforeRuntime.commits + 1);
+  add('exact SessionRNG successor', safeInt(before?.seed)
+    && safeInt(before?.ordinal)
+    && before?.draws !== null && typeof before?.draws === 'object'
+    && !Array.isArray(before.draws)
+    && after?.seed === before.seed
+    && after?.ordinal === before.ordinal + 1
+    && exactJson(after?.draws, before.draws));
+
+  const receiptMap = (raw) => {
+    if (!Array.isArray(raw?.receiptKeys) || !Array.isArray(raw?.receiptRows)
+      || raw.receiptKeys.length !== raw.receiptRows.length) return null;
+    const entries = raw.receiptKeys.map((key, index) => [key, raw.receiptRows[index]]);
+    const map = new Map(entries);
+    if (map.size !== entries.length || entries.some(([key, row]) => (
+      !nonEmptyString(key) || !safeInt(row?.ordinal) || key !== `receipt:${row.ordinal}`
+    ))) return null;
+    return map;
+  };
+  const beforeReceipts = receiptMap(before);
+  const afterReceipts = receiptMap(after);
+  const prefixExact = beforeReceipts !== null && afterReceipts !== null
+    && [...beforeReceipts].every(([key, row]) => afterReceipts.has(key)
+      && exactJson(afterReceipts.get(key), row));
+  add('exact predecessor receipt rows', prefixExact);
+  const expectedReceiptKey = `receipt:${before?.ordinal}`;
+  const addedKeys = prefixExact
+    ? [...afterReceipts.keys()].filter((key) => !beforeReceipts.has(key)) : [];
+  const receipt = prefixExact ? afterReceipts.get(expectedReceiptKey) : null;
+  add('exact action receipt', prefixExact
+    && afterReceipts.size === beforeReceipts.size + 1
+    && exactJson(addedKeys, [expectedReceiptKey])
+    && receipt?.ordinal === before?.ordinal
+    && receipt?.kind === expectedKind);
+  add('exact persistence outcome', settledState?.persistence?.lastOutcome
+    === expectedPersistenceLastOutcome);
+  add('idle clear landing action coordinator', arc0LandingCoordinatorIsIdle(
+    settledState, { clearFault: true },
+  ));
+  return { ok: reasons.length === 0, reasons };
+}
+
+/* A Land press is not settled merely because the surface painted. Bind the
+   exact append-only receipt tail, F4 revision/SessionRNG span, live runtime,
+   and both product and aggregate outcome publications before any dependent
+   browser assertion or reload may continue. */
+export function assessCharterLandSettlementTopology({
+  beforeAuthority, afterAuthority, state, expectedChapter, expectedStage,
+} = {}) {
+  if ((expectedChapter !== 0 && expectedChapter !== 3)
+    || (expectedStage !== 0 && expectedStage !== 3)) {
+    throw new TypeError('Charter Land topology requires expected chapter/stage 0 or 3');
+  }
+  const reasons = [];
+  const add = (reason, condition) => { if (!condition) reasons.push(reason); };
+  const before = beforeAuthority?.raw;
+  const after = afterAuthority?.raw;
+  const commitCount = expectedChapter === 3 ? 2 : 1;
+  const expectedKinds = expectedChapter === 3
+    ? ['arc0-land', 'arc9-progression-refresh-v1'] : ['arc0-land'];
+  const arraysAligned = (raw) => Array.isArray(raw?.receiptKeys)
+    && Array.isArray(raw?.receiptRows)
+    && raw.receiptKeys.length === raw.receiptRows.length;
+  const receiptMap = (raw) => new Map(raw.receiptKeys.map(
+    (key, index) => [key, raw.receiptRows[index]],
+  ));
+  const arraysExact = arraysAligned(before) && arraysAligned(after);
+  const beforeReceipts = arraysExact ? receiptMap(before) : new Map();
+  const afterReceipts = arraysExact ? receiptMap(after) : new Map();
+  const prefixExact = arraysExact
+    && beforeReceipts.size === before.receiptKeys.length
+    && afterReceipts.size === after.receiptKeys.length
+    && [...beforeReceipts].every(([key, row]) => afterReceipts.has(key)
+      && exactJson(row, afterReceipts.get(key)));
+  add('exact predecessor receipt prefix', prefixExact);
+  const expectedTailKeys = Array.from(
+    { length: commitCount }, (_, index) => `receipt:${before?.ordinal + index}`,
+  );
+  const addedKeys = prefixExact
+    ? [...afterReceipts.keys()].filter((key) => !beforeReceipts.has(key)) : [];
+  const tailRows = expectedTailKeys.map((key) => afterReceipts.get(key));
+  add('exact Land/progression receipt tail', prefixExact
+    && afterReceipts.size === beforeReceipts.size + commitCount
+    && exactJson([...addedKeys].sort(), [...expectedTailKeys].sort())
+    && exactJson(tailRows.map((row) => row?.kind), expectedKinds)
+    && tailRows.every((row, index) => row?.ordinal === before?.ordinal + index));
+  const landFacts = parsedRecord(tailRows[0]?.witness);
+  const expectedGalaxyKey = 'CF1|g:999@90,-60';
+  const expectedStarKey = `${expectedGalaxyKey}|s:424242@560,170`;
+  const expectedWorldKey = `${expectedStarKey}|p:131#0`;
+  const expectedSavedView = {
+    type: 'planet',
+    gal: {
+      x: 90, y: -60, size: 78, sp: 0, tilt: 0.62, rot: 0.5,
+      seed: 999, home: true, quasar: false, dwarf: false,
+    },
+    star: { x: 560, y: 170, seed: 424242 },
+    pseed: 131,
+  };
+  add('exact unresolved legacy Land witness', landFacts !== null
+    && exactKeys(landFacts, [
+      'schema', 'worldKey', 'planetSeed', 'planetOrdinal', 'landing',
+      'permanentLanding', 'training', 'landingKnownBefore', 'identityLandedAfter',
+      'claimedLegacyIdentity', 'legacyMirrorContainsSeedAfter', 'savedView', 'sample',
+      'charter', 'starterCharters', 'achievement', 'stateSuccessorSeal',
+      'worldIdentitySuccessorSeal', 'receiptOrdinal',
+    ])
+    && landFacts.schema === 'cf-v2-arc0-landing-witness/v1'
+    && landFacts.worldKey === expectedWorldKey
+    && landFacts.planetSeed === 131 && landFacts.planetOrdinal === 0
+    && landFacts.landing === 'unresolved-already-landed'
+    && landFacts.permanentLanding === true && landFacts.training === false
+    && landFacts.landingKnownBefore === true && landFacts.identityLandedAfter === true
+    && landFacts.claimedLegacyIdentity === true
+    && landFacts.legacyMirrorContainsSeedAfter === true
+    && exactJson(landFacts.savedView, expectedSavedView)
+    && exactJson(landFacts.sample, {
+      kind: 'suppressed', reason: 'unresolved-already-landed',
+    })
+    && exactKeys(landFacts.charter, [
+      'banked', 'ascChBefore', 'ascChAfter', 'stage', 'progressSeal', 'delta',
+    ])
+    && landFacts.charter.banked === false && landFacts.charter.ascChBefore === 0
+    && landFacts.charter.ascChAfter === expectedChapter
+    && landFacts.charter.stage === expectedStage
+    && hexDigest(landFacts.charter.progressSeal) && exactJson(landFacts.charter.delta, {})
+    && exactJson(landFacts.starterCharters, {
+      changed: false, progressIds: [], completions: [], priorUnlockedIds: [],
+      nextUnlockedIds: [], addedAchievementIds: [], priorBestRankIndex: 0,
+      nextBestRankIndex: 0,
+    })
+    && landFacts.achievement === null
+    && hexDigest(landFacts.stateSuccessorSeal)
+    && hexDigest(landFacts.worldIdentitySuccessorSeal)
+    && landFacts.receiptOrdinal === before?.ordinal);
+  add('exact live Mercury route and saved view', state?.mode === 'surface'
+    && state?.gal === 999 && state?.galX === 90 && state?.galY === -60
+    && state?.galSize === 78
+    && state?.star === 424242 && state?.starX === 560 && state?.starY === 170
+    && state?.planet === 131 && state?.planetOrdinal === 0
+    && state?.navGalaxyKey === expectedGalaxyKey
+    && state?.navStarKey === expectedStarKey && state?.navWorldKey === expectedWorldKey
+    && exactJson(state?.save?.savedView, expectedSavedView)
+    && state?.renderedScene?.serial > 0 && state?.renderedScene?.mode === 'surface'
+    && state?.renderedScene?.ecologyEpoch === state?.epoch
+    && state?.renderedScene?.galaxyKey === expectedGalaxyKey
+    && state?.renderedScene?.starKey === expectedStarKey
+    && state?.renderedScene?.worldKey === expectedWorldKey);
+  const landingRevision = before?.revision + 1;
+  const finalRevision = before?.revision + commitCount;
+  add('exact F4 revision span', after?.revision === finalRevision
+    && after?.revisionRaw === String(finalRevision));
+  add('exact SessionRNG receipt span', after?.ordinal === before?.ordinal + commitCount
+    && after?.seed === before?.seed && exactJson(after?.draws, before?.draws));
+  add('exact live runtime settlement',
+    afterAuthority?.state?.persistence?.runtime?.revision === finalRevision
+      && afterAuthority?.state?.persistence?.runtime?.commits
+        === beforeAuthority?.state?.persistence?.runtime?.commits + commitCount);
+  add('exact landing outcome', state?.landing?.lastOutcome === `committed:${landingRevision}`);
+  add('exact persistence outcome', state?.persistence?.lastOutcome === (expectedChapter === 3
+    ? `arc9-progression-committed:${finalRevision}`
+    : `arc0-land-committed:${finalRevision}`));
+  return { ok: reasons.length === 0, reasons };
+}
+
+export function exactTrustedCharterLandReceipt(events) {
+  return exactJson(events, [
+    { type: 'pointerdown', trusted: true, act: 'landcta' },
+    { type: 'pointerup', trusted: true, act: 'landcta' },
+    { type: 'click', trusted: true, act: 'landcta' },
+  ]);
 }
 
 export function buildLazyRefillObservationExpression(foregroundExpression) {

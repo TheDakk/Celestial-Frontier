@@ -13811,6 +13811,18 @@ const READ_ONLY_MUTATION_SELECTOR = [
   '[data-arc5-scout-confirm]',
   '[data-sel="tutbtn"]', '[data-sel="tutskip"]',
 ].join(',');
+type MutationBlockCopy = Readonly<{ title: string; detail: string }>;
+function mutationBlockCopy(productActionPending: boolean): MutationBlockCopy {
+  return productActionPending
+    ? Object.freeze({
+      title: 'Expedition action settling',
+      detail: 'Stay on this location until its durable result settles. Survey Close remains available.',
+    })
+    : Object.freeze({
+      title: 'Read-only expedition',
+      detail: 'Inspection remains available, but this action cannot change the expedition until save authority is restored.',
+    });
+}
 function playerMutationsBlocked(): boolean {
   return smokeForceReadOnly || productActionInFlight || !f4RuntimeMayMutate();
 }
@@ -13825,6 +13837,7 @@ function blockRouteChangeWhileProductAction(): boolean {
 function blockPlayerMutation(action: string): boolean {
   if (!playerMutationsBlocked()) return false;
   const runtime = f4Runtime?.diagnostics() ?? null;
+  const copy = mutationBlockCopy(productActionInFlight);
   lastMutationBlockWitness = Object.freeze({
     schema: 'cf-v2-read-only-boundary/v1', action, count: ++mutationBlockCount,
     hold: persistHold, leaseOwned: runtime?.leaseOwned === true,
@@ -13833,7 +13846,7 @@ function blockPlayerMutation(action: string): boolean {
     bootRouteRepairPending,
     ownershipV2BootstrapPending: arc5OwnershipBootstrapPending,
   });
-  toast('Read-only expedition', 'Inspection remains available, but this action cannot change the expedition until save authority is restored.', true);
+  toast(copy.title, copy.detail, true);
   return true;
 }
 const guardReadOnlyMutationEvent = (event: Event): void => {

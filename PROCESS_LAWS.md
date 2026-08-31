@@ -1,5 +1,15 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A SOURCE-WIDE STATIC AUDIT READS AND COMPACTS EACH FILE ONCE** (2026-08-31). A fail-closed
+> ownership test
+> crossed its five-second ceiling only under the parallel full suite because it synchronously read
+> every source file six separate times and repeatedly normalized the same large text for six
+> predicates. Build one immutable `{path, source, compact}` inventory, deriving each representation
+> once, then run every independent predicate over that same in-memory authority. Prove the exact
+> formerly failing check in isolation and then in its owning profile. Do not “repair” deterministic
+> redundant I/O by increasing the timeout, serializing the complete suite, removing assertions or
+> converting the audit into a weaker sampled scan.
+
 > **UNRELATED MULTI-PAGE BROWSER OUTCOMES MUST NOT SHARE PRODUCT AUTHORITY** (2026-08-31).
 > Two pages on one origin share IndexedDB, revision and F4 lease/lifecycle truth. Foregrounding one
 > can therefore hide and checkpoint the other, legitimately stale its revision and schedule a
@@ -17,6 +27,27 @@
 > old-row evidence to a new document, widening a deadline or retrying. Exact `c874a0a…` exposed this
 > at foreground arm; preserved `6ae723a…` showed the same race after art completed. Both were
 > harness-topology reds, while the product's stale-authority reload was correct.
+
+> **A DEPENDENT MUTATION REQUIRES A SETTLED PREDECESSOR; A BROWSER ORACLE REQUIRES
+> TOPOLOGY, NOT A SNAPSHOT COUNT** (2026-08-31). A returned click handler, one task turn or one
+> animation frame does not prove that an asynchronous product action and its follow-up receipts have
+> released. Before the next mutation, bind the exact durable receipt/revision, persistence/coordinator
+> idleness, current document and route, then resample the real dependent control. If that predecessor
+> is red, replaced or still settling, preserve its evidence and causal-stop; later observations have
+> no valid authority.
+>
+> A document-global lazy producer may legitimately serve more than the first observed surface, so raw
+> per-owner result totals can grow with product topology. Prove each exact owner through its current
+> document/surface identity, loader/producer/worker lifecycle, job phases, outcome parity and error
+> state; never freeze an observed producer snapshot such as `3/1` or `11/8` into the invariant.
+> Likewise, a lazy shell is not a published surface: require the current body/request identity, no
+> loading placeholder and post-publication geometry settlement before judging layout.
+>
+> Mutation controls start only from a green unmodified outcome. Derive a collision or authority mutant
+> from the current measured state rather than an obsolete fixed value, capture the exact mutable
+> carrier, restore that carrier in `finally`, and resample the original outcome to prove exact
+> restoration before any later scope. A red base, red control or failed restoration causal-stops the
+> chain; weakening the assertion, extending time or continuing into dependent findings is not a repair.
 
 > **A WRITE-HELD TRAINING ROUTE CANNOT BORROW A WRITE-BEARING SURVEY.** A restored Training
 > checkpoint deliberately refuses ordinary product writes, including Arc 9 Survey. If a browser

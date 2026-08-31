@@ -1,6 +1,32 @@
 # Celestial-Frontier
 
-> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
+> **2026-08-31 current local successor overlay (supersedes every older “current” label below;
+> dated evidence remains immutable):** exact clean signed source
+> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium (**catalog/art stress**)
+> **78/78** once/no-retry as `20260831064534612-71571-8e4856c2fe`. Its exact-source develop Slice
+> (**playable journey**)
+> `20260831064707724-71924-76b0bac73a0f` then stopped terminal red once/no-retry after
+> **305,022 ms** with **7 findings across 5 scopes**; Glass (**cross-device presentation**) did not
+> run.
+>
+> The bounded dirty successor repairs the evidence that produced those findings: measured phone
+> Prime/Guide geometry, topology-based lazy-producer settlement, exact one-commit F4 causality for
+> Survey/Add/Share, and Charter ledger topology with causal-stop. It does not redesign any creature,
+> genome, painter, organism, biome or art structure. The fast develop profile is green at **253
+> files / 2,556 passed / 1 skipped**, all three TypeScript programs are green, and the art,
+> route and specification gates remain green (**34** art sources, **1,014** routes and **454**
+> declared specification fields). **A New Foundation** now contains **77** unique bullets with
+> rendered ordered SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+>
+> Current Compendium producer authority is
+> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d`; its budget-file SHA-256 is
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. From the final clean
+> signed candidate, develop runs exactly **Compendium → Slice → Glass** once, unchanged-source and
+> causal-stop; SceneMemory remains production-only. No Edge rebaseline, timeout increase, retry,
+> hosted attempt, merge, release, version bump, publication or deployment is authorized.
+
+> **2026-08-30 historical exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
 > working tree and supersedes the older “current” status paragraphs below; dated run records remain
 > immutable):** exact clean SSH-signed evidence source
 > `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in

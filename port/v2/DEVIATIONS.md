@@ -1,6 +1,29 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **2026-08-30 current SceneMemory source-normalization overlay (matches local code and supersedes
+> **2026-08-31 current local successor overlay (supersedes every older “current” status label below;
+> dated decisions and evidence remain immutable):** exact clean signed source
+> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium **78/78** once/no-retry as
+> `20260831064534612-71571-8e4856c2fe`. Its exact-source develop Slice
+> `20260831064707724-71924-76b0bac73a0f` stopped terminal red once/no-retry after **305,022 ms**
+> with **7 findings across 5 scopes**; Glass did not run.
+>
+> The bounded dirty successor changes evidence and presentation contracts only where the retained
+> run proved them stale: measured phone Prime/Guide geometry, topology-based lazy-producer
+> settlement, exact one-commit F4 causality for Survey/Add/Share, and Charter ledger topology with
+> causal-stop. It adds no creature/genome/art/biome structural deviation. The fast develop profile
+> is green at **253 files / 2,556 passed / 1 skipped**, all three TypeScript programs are
+> green, and the **34-source** art, **1,014-route** and **454-field** specification gates are clean.
+> **A New Foundation** now contains **77** unique bullets with rendered ordered SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+>
+> Current Compendium producer authority is
+> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d`; its budget-file SHA-256 is
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. A final clean signed
+> candidate requires one unchanged-source **Compendium → Slice → Glass** develop chain;
+> SceneMemory remains production-only. No Edge rebaseline, timeout increase, retry, hosted attempt,
+> merge, release, version bump, publication or deployment is authorized.
+
+> **2026-08-30 historical SceneMemory source-normalization overlay (matches local code and supersedes
 > only narrower current ruler-status sentences below):** exact signed clean source
 > `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied exactly three one-attempt/no-retry
 > calibration-only observations under one unchanged 52-file build and Edge `152.0.4191.53` / CDP
@@ -76,7 +99,7 @@
 > version is provenance only; compatible updates never trigger rebaseline or recalibration.
 > Earlier Final13/Final12/Final11/Final10 wording below is historical where superseded.
 
-## 2026-08-30 current implementation overlay — supersedes only older status sentences
+## 2026-08-30 historical implementation overlay — supersedes only older status sentences
 
 Consumed hosted run `33278630671` tested exact PR #35 head
 `017fa6decbc41809188768ccdb98ab86ef1b9ebc`: every predecessor and SceneMemory control passed,
@@ -400,8 +423,8 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   remain open. Settings now offers `Auto` (`-1`) or an exact
   earned `0..bestRank` nameplate; one F4 receipt/CAS verifies durability before AppChrome changes,
   with no optimistic render or retry and convergence reload on ambiguity. The current Guide is
-  34 partial / 7 unavailable and **A New Foundation** is a 75-bullet development draft with rendered
-  ordered SHA-256 `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`.
+  34 partial / 7 unavailable and **A New Foundation** is a 77-bullet development draft with rendered
+  ordered SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 - ★ **D-PWA-1 — v2 installed updates are exact-build and explorer-controlled.** Build output now
   carries a same-origin manifest and generated worker whose build identity joins the SHA-256-verified
   final runtime inventory with an automatic worker-template revision before its completion marker
@@ -2781,8 +2804,8 @@ duplicates).
 - ★ **D-RELEASE-1 — legacy history, v2 development identity and a shipped version are three different states
   (updated 2026-08-29).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
   398 bullets, v1.8.9 first and v1.0 last. **A New Foundation** is the separate cumulative v2.0
-  development bulletin: a 75-bullet categorized, implemented-outcome technical outline with rendered
-  ordered SHA-256 `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1` whose explicit
+  development bulletin: a 77-bullet categorized, implemented-outcome technical outline with rendered
+  ordered SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1` whose explicit
   `draft`, `version:"2.0"` and `Unreleased` state does not turn open roadmap work into a promise.
   `release-identity.ts` keeps only development identity and `V2_CURRENT_RELEASE_VERSION` eager;
   `release-content.ts` and its archives load on Guide demand through one retryable in-flight import.

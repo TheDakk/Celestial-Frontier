@@ -1,6 +1,32 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **Current SceneMemory production-quarantine boundary (2026-08-30; exact resumption details in
+> **2026-08-31 current local successor boundary (supersedes every older “current” status label
+> below; dated evidence remains immutable):** exact clean signed source
+> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium (**catalog/art stress**)
+> **78/78** once/no-retry as `20260831064534612-71571-8e4856c2fe`. Its exact-source develop
+> Slice (**playable journey**) `20260831064707724-71924-76b0bac73a0f` stopped terminal red
+> once/no-retry after **305,022 ms** with **7 findings across 5 scopes**; Glass
+> (**cross-device presentation**) did not run.
+>
+> The bounded local successor replaces stale count/snapshot oracles with measured layout and exact
+> lifecycle/receipt topology, proves one causal F4 commit for Survey/Add/Share, and causal-stops
+> Charter descendants after a red predecessor. The fast develop boundary is green at **253 files /
+> 2,556 passed / 1 skipped**, all three TypeScript programs, **34** clean art sources,
+> **1,014/1,014** routes and **454** non-inert specification fields. A source-wide ownership audit
+> now reads and compacts each file once instead of repeating both operations; its final focused run
+> recorded **1.61 seconds**, and it stayed under the unchanged five-second ceiling in the complete
+> parallel profile without a timeout or assertion change. Current Compendium producer/budget
+> authority is `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. **A New Foundation**
+> is **77 bullets**, SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+>
+> From the final clean signed candidate, develop runs exactly one unchanged-source
+> **Compendium → Slice → Glass** chain. SceneMemory remains production-only. No Edge rebaseline,
+> timeout increase, retry, hosted attempt, push, merge, release, version bump, publication or
+> deployment is authorized.
+
+> **Historical SceneMemory production-quarantine boundary (2026-08-30; exact resumption details in
 > `ROADMAP.md`):** exact clean SSH-signed checkpoint
 > `cc15e1f967f6644405cad7c3460cd8181b6a043f` (tree `cb53bbd…`, parent `5691e77…`)
 > contains the fixed-eight report-v6/profile-v5/input-v6/verdict-v5/budget-v7 implementation. Its
@@ -79,7 +105,7 @@
 > not run and that Slice is never retried. Its changed-source successor now places only this isolated
 > synthetic post-durable publication-failure scenario in production assurance.
 >
-> **Current assurance split (2026-08-31; browser-free green):** signed
+> **Historical assurance split (2026-08-31; browser-free green):** signed
 > `186b653456542588c2e4fe5db46234ccdebeb1d0` passed **253/253 files / 2,548 tests / 1 skipped**,
 > all three strict TypeScript programs, 34 art sources, 1,014/1,014 routes and 454 specification
 > fields. Full Slice and named verification require exactly one explicit `develop|production`
@@ -94,7 +120,7 @@
 > pointer replacement. This adds no retry, timeout, browser ruler, Edge pin, product capability,
 > creature/save/art/audio/balance change, or new battery stage.
 >
-> **Current c439 signed repair boundary (2026-08-31; static green, one browser chain next):** exact
+> **Historical c439 signed repair boundary (2026-08-31; static green, one browser chain next):** exact
 > clean SSH-signed predecessor `4baa4250d1ae5813eba0753555b712baddbd595f` passed the consolidated develop
 > profile at **253 files / 2,552 tests / 1 skipped**, all TypeScript programs, **34** art sources,
 > **1,014/1,014** routes and **454** specification fields. It then passed Edge preflight and
@@ -123,8 +149,8 @@
 >
 > The Compendium ruler's 591 synthetic controls remain conditional on production or changed
 > instrument inputs, and the specification audit's five controls remain folded into its one normal
-> command. **A New Foundation** contains 75 unique bullets with rendered ordered SHA-256
-> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`. The product build remains
+> command. **A New Foundation** contains 77 unique bullets with rendered ordered SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`. The product build remains
 > `82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b`; the v7 SceneMemory
 > budget remains `calibration-required` pending a later explicit production activation decision.
 > Compendium producer/budget
@@ -532,7 +558,7 @@
 > also bind a stopped/settled exact-document heartbeat before staging/arming and are green. No sleep,
 > retry, timeout increase, rebaseline or product behavior change is used.
 
-> **Current local Arc 5/6/7/8/9 successor (2026-08-29; browser-free evidence only):** the verified
+> **Historical local Arc 5/6/7/8/9 successor (2026-08-29; browser-free evidence only):** the verified
 > real-fauna Compendium detail now exposes four exact-instance companion writers: Feed, one-draw
 > nonlethal Breed with active-play Recovery, identity-only Rename and role-only Field Scout. A
 > successful child receives +2 XP, and the first successful canonical unordered species pair adds
@@ -573,7 +599,7 @@
 > party/retreat and weeklies remain open. Settings now offers `Auto` or an
 > exact earned rank as a durable nameplate choice; AppChrome changes only after the single receipt/CAS
 > verifies. The Guide now has **34 partial / 7 unavailable**
-> topics and the cumulative development bulletin has **75 bullets**. No later successor inherits the
+> topics and the cumulative development bulletin has **77 bullets**. No later successor inherits the
 > older browser certificate or grants hosted, release/version or deployment authority.
 
 > **Historical PR #35 lifecycle-repair predecessor (2026-08-29; later PWA details superseded by
@@ -621,7 +647,7 @@
 
 > Guide and release archives are no longer boot-owned. The small `release-identity.ts` module keeps
 > v2.0 development identity and the null production-release pointer eager, while Guide content and
-> the 56-release/398-bullet legacy archive plus 75-bullet development bulletin load only when the
+> the 56-release/398-bullet legacy archive plus 77-bullet development bulletin load only when the
 > Guide requests them. Each archive has one retryable in-flight import. Loading and failure remain
 > accessible, and publication is fenced to the current Guide request/body/open-panel identity;
 > cached publication waits one microtask because `onOpen` precedes panel exposure. With the shipped
@@ -1642,7 +1668,7 @@ The calibration path is complete:
 > PASS or a certification claim carried by tracked source. A fresh certifying run's six images
 > still require explicit [HUMAN] visual review.
 >
-> **Current lifecycle boundary:** exact local head `89bfa05…`, run
+> **Historical lifecycle boundary:** exact local head `89bfa05…`, run
 > `20260820-pr32-89bfa05-compendiummem`, completed 78/78 product outcomes with zero findings and six
 > PNGs, then exited 2 during owned browser shutdown. Terminal log `b0bb8abc…` is the truthful
 > carrier; pre-cleanup PASS report `66ba1366…` and verifier `98664dca…` are false-green. Preserve
@@ -1690,7 +1716,7 @@ The calibration path is complete:
 > `npm run actionsbudget:selftest` at repository root) before any authorized rollout. No timeout,
 > launch argument, product byte, producer, browser-CDP, or retry policy changed in the ruler itself.
 >
-> **Current shutdown/ruler boundary:** exact implementation `aecf386…` bounds the owned
+> **Historical shutdown/ruler boundary:** exact implementation `aecf386…` bounds the owned
 > HTTP server at one immutable monotonic 2,000 ms close deadline. Just-before succeeds;
 > exact/late/missing/error callbacks force `closeAllConnections()` once and reject, with
 > settle-before-force/reentrant/stale controls. Cleanup red suppresses PASS/sample.
@@ -1700,7 +1726,7 @@ The calibration path is complete:
 > retained four faults and 14 phone / 13 desktop breaches. Activation `b3957e1…` makes budget/test
 > `546d3a81…` / `ef06252a…` active and retains every previous numeric ceiling strictly.
 >
-> **Current Linux compatibility boundary:** authorized exact-head run `32441023665` tested
+> **Historical Linux compatibility boundary:** authorized exact-head run `32441023665` tested
 > `e9b04d5…` against `3844701…` once with no retry. Its complete report `a486fe8e…` bound the same
 > fixture, working-tree digest, measurement `23aacc2c…`, producer `d3223177…`, and exact Edge `.86`
 > tuple as the macOS candidates. It produced 75/78: phone warm aggregate range was 97,320 B against
@@ -2273,8 +2299,8 @@ settles, and request/body/open-panel fences prevent a closed or replaced Guide f
 publication. A cached archive publishes on the following microtask because panel `onOpen` runs
 before the manager exposes the open panel. Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
-categorized v2.0 development bulletin, now 75 bullets. Its rendered ordered SHA-256 is
-`52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`. The draft summarizes the
+categorized v2.0 development bulletin, now 77 bullets. Its rendered ordered SHA-256 is
+`11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`. The draft summarizes the
 implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
 nonempty bullets, the key player-facing outcomes, and a scroll-reachable final item.
@@ -3120,8 +3146,16 @@ node tools/check-profile.mjs --profile=develop
 The `dev` profile is the complete fast Vitest suite plus the root, game and worker TypeScript programs.
 The `develop` profile adds the nonduplicated art audit, exact route/coverage owner and inert-spec gate.
 The roughly 2,500 assertions in the current inventory are assertions within one approximately
-23-second browser-free run, not separate Actions jobs or browser launches. While editing, prefer
-the focused touched tests; use these aggregate commands once at their named boundaries.
+23-second browser-free run, not separate Actions jobs or browser launches. The fast coding loop is
+the focused touched tests, the touched TypeScript program and any directly affected static contract;
+it does not launch the full browser chain after each edit. Use the aggregate profiles once at their
+named batch boundaries.
+
+Run the complete Compendium → Slice → Glass chain only once for a clean, unchanged, committed
+integration candidate, never once per edit. A red candidate is preserved and diagnosed; only a
+changed repaired candidate can receive its own single attempt. This changes execution frequency,
+not assurance: no assertion, owner, viewport, negative control or admission coverage is removed,
+skipped or weakened.
 
 Run the tracked-only gate only after committing the exact candidate and before requesting
 authorization for a changed-head push or hosted battery. Development admission is the default;
@@ -3170,7 +3204,8 @@ certificate, HUMAN acceptance, merge authority or release authority.
 
 ### Strict current browser evidence chain
 
-Run this sequence from `port/v2` on one unchanged clean committed source. Each report ID is
+Run this sequence from `port/v2` once for the final unchanged clean committed integration candidate,
+after the focused/static coding loop is green. Each report ID is
 immutable evidence and must be extracted from the report just produced; do not substitute a
 different or merely latest predecessor. **Stop immediately after any nonzero, red, or instrument
 result. Do not start the next stage, change source, or automatically retry.**
