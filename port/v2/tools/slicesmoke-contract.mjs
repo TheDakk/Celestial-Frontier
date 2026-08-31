@@ -2811,21 +2811,147 @@ export function classifyForegroundServiceTurnReceipt(
 }
 
 /* The lazy-art live and closed owners share one held network release, but
-   they must not share the product's persistence/F4 origin. Exact request-role
-   inventory also proves the shared release is servicing one request from each
-   isolated owner rather than a retry or a single-page false positive. */
+   they must not share the product's persistence/F4 origin. Each fresh origin
+   also installs the exact PWA: Chromium therefore requests the sealed worker
+   entry with destination=worker for the product and may request it with
+   destination=empty while filling the offline cache. Either role may reach
+   the server first and a cache hit may keep the other off the network, so the
+   art outcome proves product completion while this ledger rejects duplicate
+   requests within either exact role. */
 export function assessLazyOwnerOriginGate({
-  liveOrigin, closedOrigin, requestOwners,
+  liveOrigin, closedOrigin, expectedPath, stage, requestAttempts,
 } = {}) {
-  const reasons = [];
-  if (!nonEmptyString(liveOrigin)) reasons.push('live owner origin');
-  if (!nonEmptyString(closedOrigin)) reasons.push('closed owner origin');
+  const errors = [];
+  const pending = [];
+  if (!nonEmptyString(liveOrigin)) errors.push('live owner origin');
+  if (!nonEmptyString(closedOrigin)) errors.push('closed owner origin');
   if (nonEmptyString(liveOrigin) && liveOrigin === closedOrigin) {
-    reasons.push('distinct owner origins');
+    errors.push('distinct owner origins');
   }
-  if (!Array.isArray(requestOwners)
-    || JSON.stringify(requestOwners) !== JSON.stringify(['closed', 'live'])) {
-    reasons.push('one request attempt per isolated owner');
+  if (!nonEmptyString(expectedPath) || !expectedPath.startsWith('/')) {
+    errors.push('exact sealed-worker request path');
+  }
+  if (stage !== 'pre-release' && stage !== 'settled') {
+    errors.push('known lazy-owner request stage');
+  }
+  if (!Array.isArray(requestAttempts)) {
+    errors.push('sealed-worker request-attempt ledger');
+  } else {
+    const recognized = requestAttempts.every((attempt, index) => attempt
+      && attempt.ordinal === index + 1
+      && (attempt.owner === 'closed' || attempt.owner === 'live')
+      && (attempt.destination === 'worker' || attempt.destination === 'empty')
+      && (attempt.phase === 'held' || attempt.phase === 'post-release')
+      && attempt.method === 'GET'
+      && attempt.pathname === expectedPath);
+    if (!recognized) errors.push('recognized sealed-worker request roles');
+    const roleKeys = requestAttempts.map((attempt) => `${attempt?.owner ?? ''}:${attempt?.destination ?? ''}`);
+    if (new Set(roleKeys).size !== roleKeys.length) {
+      errors.push('one request per sealed-worker role and owner');
+    }
+    if (stage === 'pre-release' && requestAttempts.some((attempt) => attempt?.phase !== 'held')) {
+      errors.push('pre-release requests remain held');
+    }
+    for (const owner of ['closed', 'live']) {
+      const attempts = requestAttempts.filter((attempt) => attempt?.owner === owner);
+      if (attempts.length === 0) {
+        if (stage === 'pre-release') pending.push(`${owner} sealed-worker request pending`);
+        else errors.push(`${owner} sealed-worker request missing`);
+      } else if (stage === 'settled' && !attempts.some((attempt) => attempt.phase === 'held')) {
+        errors.push(`${owner} held request history`);
+      }
+    }
+  }
+  const status = errors.length ? 'error' : pending.length ? 'pending' : 'ready';
+  return { status, ok: status === 'ready', reasons: [...errors, ...pending] };
+}
+
+/* A network-visible Worker request is not mandatory after a newly installed
+   service worker claims a fresh origin: the exact entry can be served from
+   its verified cache. Product authority therefore comes from the loader's
+   own document/producer identity and counters, not from guessing which HTTP
+   request won the first-install race. */
+export function assessLazyProductProducerSettlement(
+  diagnostics, expectedDocumentToken, expectedResults = null,
+) {
+  const reasons = [];
+  if (!nonEmptyString(expectedDocumentToken)) reasons.push('expected document token');
+  if (expectedResults !== null && (!Number.isInteger(expectedResults) || expectedResults < 0)) {
+    reasons.push('expected result count');
+  }
+  if (!diagnostics || typeof diagnostics !== 'object') {
+    return { ok: false, reasons: [...reasons, 'lazy-art producer diagnostics'] };
+  }
+  if (diagnostics.schema !== 'cf-v2-species-art-worker-diagnostics/v2') reasons.push('diagnostic schema');
+  if (diagnostics.state !== 'ready') reasons.push('ready producer state');
+  if (diagnostics.importStarts !== 1) reasons.push('one loader producer acquisition');
+  if (diagnostics.identity?.documentToken !== expectedDocumentToken) reasons.push('exact producer document token');
+  if (diagnostics.identity?.lastProducerEpoch !== 1) reasons.push('one producer epoch');
+  if (diagnostics.identity?.lastWorkerInstanceId !== 1) reasons.push('one worker instance');
+  if (diagnostics.worker?.starts !== 1) reasons.push('one worker start');
+  if (diagnostics.worker?.ready !== 1) reasons.push('one worker ready');
+  if (diagnostics.worker?.live !== false) reasons.push('settled worker is not live');
+  if (diagnostics.worker?.disposals !== 1) reasons.push('one worker disposal');
+  if (diagnostics.worker?.fatals !== 0) reasons.push('zero worker fatals');
+  if (diagnostics.worker?.protocolErrors !== 0) reasons.push('zero worker protocol errors');
+  const phaseFields = [
+    'importStarts', 'importCompletes',
+    'thumbJobStarts', 'thumbRenderCompletes', 'thumbEncodeStarts', 'thumbEncodeCompletes',
+    'portraitJobStarts', 'portraitRenderCompletes', 'portraitEncodeStarts', 'portraitEncodeCompletes',
+  ];
+  const phasesComplete = diagnostics.phases && phaseFields.every((field) => (
+    Number.isInteger(diagnostics.phases[field]) && diagnostics.phases[field] >= 0
+  ));
+  if (!phasesComplete || diagnostics.phases.importStarts !== 1
+    || diagnostics.phases.importCompletes !== 1) {
+    reasons.push('one complete worker acquisition phase');
+  }
+  if (!diagnostics.lastEvent || diagnostics.lastEvent.producerEpoch !== 1
+    || diagnostics.lastEvent.workerInstanceId !== 1) {
+    reasons.push('last event belongs to exact producer');
+  }
+  if (diagnostics.lastError !== null) reasons.push('no retained producer error');
+  const resultsComplete = diagnostics.results
+    && Number.isInteger(diagnostics.results.count) && diagnostics.results.count >= 0
+    && ['maxImportDurationMs', 'maxRenderDurationMs', 'maxEncodeDurationMs']
+      .every((field) => Number.isFinite(diagnostics.results[field]) && diagnostics.results[field] >= 0);
+  if (!resultsComplete) reasons.push('complete producer result diagnostics');
+  if (resultsComplete && expectedResults !== null && diagnostics.results.count !== expectedResults) {
+    reasons.push('exact producer result count');
+  }
+  if (phasesComplete && resultsComplete) {
+    const thumbComplete = diagnostics.phases.thumbRenderCompletes
+      === diagnostics.phases.thumbEncodeStarts
+      && diagnostics.phases.thumbEncodeStarts === diagnostics.phases.thumbEncodeCompletes
+      && diagnostics.phases.thumbJobStarts >= diagnostics.phases.thumbRenderCompletes;
+    const portraitComplete = diagnostics.phases.portraitRenderCompletes
+      === diagnostics.phases.portraitEncodeStarts
+      && diagnostics.phases.portraitEncodeStarts === diagnostics.phases.portraitEncodeCompletes
+      && diagnostics.phases.portraitJobStarts >= diagnostics.phases.portraitRenderCompletes;
+    const resultParity = diagnostics.results.count
+      === diagnostics.phases.thumbEncodeCompletes + diagnostics.phases.portraitEncodeCompletes;
+    if (!thumbComplete || !portraitComplete || !resultParity) reasons.push('coherent producer phase/results');
+  }
+  if (expectedResults !== null) {
+    const exactThumbPhases = phasesComplete
+      && diagnostics.phases.thumbJobStarts === expectedResults
+      && diagnostics.phases.thumbRenderCompletes === expectedResults
+      && diagnostics.phases.thumbEncodeStarts === expectedResults
+      && diagnostics.phases.thumbEncodeCompletes === expectedResults
+      && diagnostics.phases.portraitJobStarts === 0
+      && diagnostics.phases.portraitRenderCompletes === 0
+      && diagnostics.phases.portraitEncodeStarts === 0
+      && diagnostics.phases.portraitEncodeCompletes === 0;
+    if (!exactThumbPhases) reasons.push('exact thumbnail producer phases');
+    if (expectedResults > 0 && (diagnostics.lastEvent?.event !== 'result'
+      || diagnostics.lastEvent?.kind !== 'thumb132'
+      || diagnostics.lastEvent?.jobId !== expectedResults)) {
+      reasons.push('final product result event');
+    }
+  }
+  if (!diagnostics.errors || ['capability', 'protocol', 'import', 'paint', 'encode']
+    .some((field) => diagnostics.errors[field] !== 0)) {
+    reasons.push('zero lazy-art producer errors');
   }
   return { ok: reasons.length === 0, reasons };
 }
@@ -2852,7 +2978,8 @@ export function buildLazyRefillObservationExpression(foregroundExpression) {
     return {done:settled,panelMode:d.panel.mode,images,
       queuedJobs:live?.queuedJobs??null,activeJobs:live?.activeJobs??null,foreground,
       lazyArt:lazyArt?{schema:lazyArt.schema,state:lazyArt.state,importStarts:lazyArt.importStarts,
-        identity:lazyArt.identity,lastEvent:lazyArt.lastEvent,worker:lazyArt.worker,phases:lazyArt.phases,
+        identity:lazyArt.identity,lastEvent:lazyArt.lastEvent,lastError:lazyArt.lastError,
+        worker:lazyArt.worker,phases:lazyArt.phases,
         results:lazyArt.results,errors:lazyArt.errors}:null,
       art:art?{schema:art.schema,deviceClass:art.deviceClass,live:art.live,totals:art.totals,keys:art.keys}:null,
       sameClose:close===window.__cfLazyOriginalClose,

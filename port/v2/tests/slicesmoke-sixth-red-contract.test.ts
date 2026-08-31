@@ -7,7 +7,7 @@ import { getReleaseHistory, V2_DRAFT_RELEASE } from '../apps/game/src/release-co
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { assessArc4EpochSnapshot } from '../tools/arc4-browser-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
-import { assessLazyOwnerOriginGate, buildLazyRefillObservationExpression, classifyForegroundServiceTurn } from '../tools/slicesmoke-contract.mjs';
+import { assessLazyOwnerOriginGate, assessLazyProductProducerSettlement, buildLazyRefillObservationExpression, classifyForegroundServiceTurn } from '../tools/slicesmoke-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
 import { hasUnnegatedSentenceClaim } from '../tools/engineering-browser-contract.mjs';
 
@@ -1818,7 +1818,13 @@ describe('sixth Slice red contract repairs', () => {
     );
     proveEachMarkerRequired(`${serverOwner}\n${runner}`, [
       ['shared role-tagged handler', 'const slowSpeciesHandler = (owner) => (req, res) => {'],
-      ['append-only request-attempt ledger', 'slowSpeciesAttempts.push({ owner });'],
+      ['append-only request-attempt ledger', 'slowSpeciesAttempts.push(Object.freeze({'],
+      ['monotonic request ordinal', 'ordinal: slowSpeciesAttempts.length + 1,'],
+      ['release-phase evidence', "phase: slowSpeciesOpen ? 'post-release' : 'held',"],
+      ['exact request method', "method: String(req.method || ''),"],
+      ['exact request path', "pathname: (req.url || '').split('?')[0],"],
+      ['fetch-metadata request role',
+        "destination: String(req.headers['sec-fetch-dest'] || '').toLowerCase(),"],
       ['shared held-response queue', 'slowSpeciesRequests.push({ req, res, owner });'],
       ['live origin server', "const server5 = http.createServer(slowSpeciesHandler('live'));"],
       ['closed origin server', "const server5Closed = http.createServer(slowSpeciesHandler('closed'));"],
@@ -1844,20 +1850,36 @@ describe('sixth Slice red contract repairs', () => {
       ['closed owner isolated navigation',
         "lazyClosed, URL5_CLOSED, 'slow species-art closed-owner boot',"],
       ['pure current-origin/request gate',
-        'const assessCurrentLazyOwnerOriginGate = () => assessLazyOwnerOriginGate({'],
+        'const assessCurrentLazyOwnerOriginGate = (stage) => assessLazyOwnerOriginGate({'],
+      ['exact candidate path binding', 'expectedPath: candidateSpeciesPainterPath,'],
       ['exact append-only role inventory',
-        'slowRequestOwners = slowSpeciesAttempts.map((request) => request.owner).sort();'],
+        'slowRequestAttempts = [...slowSpeciesAttempts];'],
+      ['immediate irreversible request stop', "lazyOwnerOriginGate.status === 'error'"],
+      ['immediate irreversible request diagnostic',
+        "throw new Error('slow Compendium isolated-origin request role became terminal before release: '"],
       ['gate before release fail-stop',
         "throw new Error('slow Compendium isolated-origin request gate failed before release: '"],
       ['synchronous release revalidation',
-        'const lazyReleaseOriginGate = assessCurrentLazyOwnerOriginGate();'],
+        "const lazyReleaseOriginGate = assessCurrentLazyOwnerOriginGate('pre-release');"],
       ['release-revalidation fail-stop',
         "throw new Error('slow Compendium request inventory changed before release: '"],
       ['single operational release', '  releaseSlowSpecies();'],
+      ['live-loop duplicate-role fail-fast',
+        "throw new Error('slow Compendium request role became terminal during live settlement: '"],
+      ['closed-loop duplicate-role fail-fast',
+        "throw new Error('slow Compendium request role became terminal during closed-owner settlement: '"],
+      ['pre-control role recheck',
+        'const lazyPostSettlementOriginGate = assessCurrentLazyOwnerOriginGate(\'settled\');'],
       ['post-settlement final inventory',
-        'const lazyFinalOriginGate = assessCurrentLazyOwnerOriginGate();'],
+        "const lazyFinalOriginGate = assessCurrentLazyOwnerOriginGate('settled');"],
       ['post-settlement final fail-stop',
         "throw new Error('slow Compendium final request inventory drifted after settlement: '"],
+      ['live single-producer authority',
+        'lazyAfter.lazyArt, lazyDocumentToken, 3,'],
+      ['closed single-producer authority',
+        'lazyClosedAfter.lazyArt, lazyClosedDocumentToken, 1,'],
+      ['single-producer authority fail-stop',
+        'COMPENDIUM LAZY PRODUCER AUTHORITY: an isolated owner did not retain exactly one'],
     ]);
     const startupCleanup = section(
       sliceSource,
@@ -1871,26 +1893,204 @@ describe('sixth Slice red contract repairs', () => {
     );
     expect(startupCleanup).toContain('server5.close(); server5Closed.close(); server6.close();');
     expect(finalCleanup).toContain('server5.close(); server5Closed.close(); server6.close();');
-    const gateAt = runner.indexOf('if (!lazyReleaseOriginGate.ok)');
+    const gateAt = runner.indexOf("if (lazyReleaseOriginGate.status !== 'ready')");
     const releaseAt = runner.indexOf('  releaseSlowSpecies();');
-    const finalGateAt = runner.indexOf('const lazyFinalOriginGate = assessCurrentLazyOwnerOriginGate();');
+    const finalGateAt = runner.indexOf("const lazyFinalOriginGate = assessCurrentLazyOwnerOriginGate('settled');");
     expect(gateAt).toBeGreaterThanOrEqual(0);
     expect(releaseAt).toBeGreaterThan(gateAt);
     expect(finalGateAt).toBeGreaterThan(releaseAt);
 
+    const expectedPath = '/assets/species-art.worker-exact.js';
+    const attempt = (
+      ordinal: number,
+      owner: 'closed' | 'live',
+      destination: 'worker' | 'empty',
+      phase: 'held' | 'post-release' = 'held',
+    ) => ({ ordinal, owner, phase, method: 'GET', pathname: expectedPath, destination });
+    const ready = { status: 'ready', ok: true, reasons: [] };
     const topology = {
       liveOrigin: 'http://127.0.0.1:41001',
       closedOrigin: 'http://127.0.0.1:41002',
-      requestOwners: ['closed', 'live'],
+      expectedPath,
+      stage: 'pre-release',
+      requestAttempts: [
+        attempt(1, 'closed', 'worker'),
+        attempt(2, 'live', 'worker'),
+      ],
     };
-    expect(assessLazyOwnerOriginGate(topology)).toEqual({ ok: true, reasons: [] });
+    expect(assessLazyOwnerOriginGate(topology)).toEqual(ready);
+    expect(assessLazyOwnerOriginGate({
+      ...topology,
+      requestAttempts: [attempt(1, 'closed', 'empty'), attempt(2, 'live', 'empty')],
+    })).toEqual(ready);
+    expect(assessLazyOwnerOriginGate({
+      ...topology,
+      requestAttempts: [attempt(1, 'closed', 'worker'), attempt(2, 'live', 'empty')],
+    })).toEqual(ready);
+    expect(assessLazyOwnerOriginGate({
+      ...topology,
+      requestAttempts: [
+        attempt(1, 'closed', 'empty'), attempt(2, 'live', 'worker'),
+        attempt(3, 'closed', 'worker'), attempt(4, 'live', 'empty'),
+      ],
+    })).toEqual(ready);
+    expect(assessLazyOwnerOriginGate({
+      ...topology,
+      stage: 'settled',
+      requestAttempts: [
+        attempt(1, 'closed', 'empty'), attempt(2, 'live', 'worker'),
+        attempt(3, 'closed', 'worker', 'post-release'),
+        attempt(4, 'live', 'empty', 'post-release'),
+      ],
+    })).toEqual(ready);
+    expect(assessLazyOwnerOriginGate({
+      ...topology,
+      stage: 'settled',
+      requestAttempts: [attempt(1, 'closed', 'empty'), attempt(2, 'live', 'empty')],
+    })).toEqual(ready);
     expect(assessLazyOwnerOriginGate({ ...topology, closedOrigin: topology.liveOrigin }).reasons)
       .toEqual(['distinct owner origins']);
-    for (const requestOwners of [
-      ['live'], ['closed'], ['live', 'live'], ['closed', 'live', 'unknown'],
+    expect(assessLazyOwnerOriginGate({ ...topology, requestAttempts: null }).reasons)
+      .toEqual(['sealed-worker request-attempt ledger']);
+    expect(assessLazyOwnerOriginGate({
+      ...topology, requestAttempts: [attempt(1, 'live', 'worker')],
+    })).toEqual({
+      status: 'pending', ok: false, reasons: ['closed sealed-worker request pending'],
+    });
+    expect(assessLazyOwnerOriginGate({
+      ...topology, stage: 'settled', requestAttempts: [attempt(1, 'live', 'worker')],
+    }).reasons).toEqual(['closed sealed-worker request missing']);
+    expect(assessLazyOwnerOriginGate({
+      ...topology,
+      requestAttempts: [...topology.requestAttempts, attempt(3, 'live', 'worker')],
+    }).reasons).toEqual(['one request per sealed-worker role and owner']);
+    expect(assessLazyOwnerOriginGate({
+      ...topology,
+      requestAttempts: [
+        attempt(1, 'closed', 'worker'),
+        { ...attempt(2, 'live', 'worker'), destination: 'script' },
+      ],
+    }).reasons).toEqual(['recognized sealed-worker request roles']);
+    expect(assessLazyOwnerOriginGate({
+      ...topology,
+      requestAttempts: [
+        ...topology.requestAttempts, attempt(3, 'closed', 'empty'), attempt(4, 'closed', 'empty'),
+      ],
+    }).reasons).toEqual(['one request per sealed-worker role and owner']);
+    expect(assessLazyOwnerOriginGate({
+      ...topology,
+      requestAttempts: [
+        attempt(1, 'closed', 'worker'),
+        { ...attempt(2, 'live', 'worker'), owner: 'unknown' },
+      ],
+    }).reasons).toContain('recognized sealed-worker request roles');
+    for (const mutant of [
+      { ...attempt(1, 'closed', 'worker'), ordinal: 2 },
+      { ...attempt(1, 'closed', 'worker'), method: 'POST' },
+      { ...attempt(1, 'closed', 'worker'), pathname: '/assets/other.js' },
     ]) {
-      expect(assessLazyOwnerOriginGate({ ...topology, requestOwners }).reasons)
-        .toEqual(['one request attempt per isolated owner']);
+      expect(assessLazyOwnerOriginGate({
+        ...topology, requestAttempts: [mutant, attempt(2, 'live', 'worker')],
+      }).reasons).toContain('recognized sealed-worker request roles');
+    }
+    expect(assessLazyOwnerOriginGate({
+      ...topology,
+      requestAttempts: [attempt(1, 'closed', 'worker', 'post-release'), attempt(2, 'live', 'worker')],
+    }).reasons).toContain('pre-release requests remain held');
+
+    const producer = {
+      schema: 'cf-v2-species-art-worker-diagnostics/v2',
+      state: 'ready',
+      importStarts: 1,
+      identity: {
+        documentToken: 'lazy-document', lastProducerEpoch: 1, lastWorkerInstanceId: 1,
+      },
+      lastEvent: {
+        producerEpoch: 1, workerInstanceId: 1, jobId: 1, kind: 'thumb132', event: 'result',
+      },
+      lastError: null,
+      worker: {
+        live: false, starts: 1, ready: 1, disposals: 1, fatals: 0, protocolErrors: 0,
+      },
+      phases: {
+        importStarts: 1, importCompletes: 1,
+        thumbJobStarts: 1, thumbRenderCompletes: 1,
+        thumbEncodeStarts: 1, thumbEncodeCompletes: 1,
+        portraitJobStarts: 0, portraitRenderCompletes: 0,
+        portraitEncodeStarts: 0, portraitEncodeCompletes: 0,
+      },
+      results: {
+        count: 1, maxImportDurationMs: 1, maxRenderDurationMs: 1, maxEncodeDurationMs: 1,
+      },
+      errors: { capability: 0, protocol: 0, import: 0, paint: 0, encode: 0 },
+    };
+    expect(assessLazyProductProducerSettlement(producer, 'lazy-document', 1))
+      .toEqual({ ok: true, reasons: [] });
+    const producerMutants = [
+      { field: 'schema', value: { ...producer, schema: 'wrong' } },
+      { field: 'state', value: { ...producer, state: 'loading' } },
+      { field: 'importStarts', value: { ...producer, importStarts: 2 } },
+      { field: 'documentToken', value: {
+        ...producer, identity: { ...producer.identity, documentToken: 'replacement-document' },
+      } },
+      { field: 'producerEpoch', value: {
+        ...producer, identity: { ...producer.identity, lastProducerEpoch: 2 },
+      } },
+      { field: 'workerInstance', value: {
+        ...producer, identity: { ...producer.identity, lastWorkerInstanceId: 2 },
+      } },
+      { field: 'workerStarts', value: {
+        ...producer, worker: { ...producer.worker, starts: 2 },
+      } },
+      { field: 'workerReady', value: {
+        ...producer, worker: { ...producer.worker, ready: 2 },
+      } },
+      { field: 'workerLive', value: {
+        ...producer, worker: { ...producer.worker, live: true },
+      } },
+      { field: 'workerDisposals', value: {
+        ...producer, worker: { ...producer.worker, disposals: 0 },
+      } },
+      { field: 'workerFatal', value: {
+        ...producer, worker: { ...producer.worker, fatals: 1 },
+      } },
+      { field: 'workerProtocol', value: {
+        ...producer, worker: { ...producer.worker, protocolErrors: 1 },
+      } },
+      { field: 'importPhaseStart', value: {
+        ...producer, phases: { ...producer.phases, importStarts: 2 },
+      } },
+      { field: 'importPhaseComplete', value: {
+        ...producer, phases: { ...producer.phases, importCompletes: 0 },
+      } },
+      { field: 'lastEventProducer', value: {
+        ...producer, lastEvent: { ...producer.lastEvent, producerEpoch: 2 },
+      } },
+      { field: 'lastEventMissing', value: { ...producer, lastEvent: null } },
+      { field: 'lastEventJob', value: {
+        ...producer, lastEvent: { ...producer.lastEvent, jobId: 2 },
+      } },
+      { field: 'lastEventKind', value: {
+        ...producer, lastEvent: { ...producer.lastEvent, kind: 'portrait440' },
+      } },
+      { field: 'lastError', value: { ...producer, lastError: { stage: 'paint' } } },
+      { field: 'resultsMissing', value: { ...producer, results: null } },
+      { field: 'resultCount', value: {
+        ...producer, results: { ...producer.results, count: 0 },
+      } },
+      { field: 'phaseResultParity', value: {
+        ...producer, phases: { ...producer.phases, thumbEncodeCompletes: 0 },
+      } },
+      { field: 'vanishedStartedJob', value: {
+        ...producer, phases: { ...producer.phases, thumbJobStarts: 2 },
+      } },
+      { field: 'producerError', value: {
+        ...producer, errors: { ...producer.errors, paint: 1 },
+      } },
+    ];
+    for (const mutant of producerMutants) {
+      expect(assessLazyProductProducerSettlement(mutant.value, 'lazy-document', 1).ok, mutant.field)
+        .toBe(false);
     }
 
     const expected = {
@@ -1966,6 +2166,9 @@ describe('sixth Slice red contract repairs', () => {
         || !source.includes('sameRows:originalRows!==null')) {
         findings.push('replacement-document row guard');
       }
+      if (!source.includes('lastError:lazyArt.lastError')) {
+        findings.push('complete producer error diagnostics');
+      }
       if ((source.match(/image\.srcKind==='blob-url'/gu) ?? []).length !== 2
         || source.includes("image.srcKind==='data-image'&&image.complete")) {
         findings.push('Blob-only ready predicates');
@@ -1983,6 +2186,8 @@ describe('sixth Slice red contract repairs', () => {
       "if(!d)return {done:false,reason:'slice-document-unavailable',foreground};",
       'if(!d)return null;',
     ))).toContain('structured document loss');
+    expect(errors(owner.replace('lastError:lazyArt.lastError,', '')))
+      .toContain('complete producer error diagnostics');
     expect(errors(owner.replace(
       'originalRows=Array.isArray(window.__cfLazyOriginalRows)?window.__cfLazyOriginalRows:null',
       'originalRows=window.__cfLazyOriginalRows',

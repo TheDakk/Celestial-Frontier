@@ -80,6 +80,19 @@ while retaining one exact role-tagged held-chunk release, append-only request-at
 strict null/stale-document refusal. The c874 red is preserved and will not be retried. No hosted
 attempt, push, label, Ready transition or merge is authorized for c874 or its pending successor.
 
+Exact clean SSH-signed isolated-origin successor `4baa4250d1ae5813eba0753555b712baddbd595f`
+passed its fast develop boundary, Edge preflight and Compendium run
+`20260831055550346-65276-46a6bd9c52` at 78/78 once/no-retry plus named verification. Exact-source
+Slice `20260831055711019-65620-5c63ae6d6223` stopped once/no-retry after 217,066 ms with exactly
+one harness finding/scope; Glass did not run. Both isolated documents retained exact foreground and
+document authority through live refill and closed-owner settlement. The final raw-owner ledger
+alone then treated the product Worker fetch plus the generated PWA's one-time offline-cache fetch
+as duplicate retries. The immutable red is preserved and 4baa will not be retried. Its bounded
+dirty successor records standards-based request roles in either first-install order, rejects each
+duplicate owner/role immediately during settlement and separately binds one exact error-free
+product producer per document. No hosted attempt, push, label, Ready transition or merge is
+authorized for 4baa or its pending successor.
+
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
 initially set this mode after exhausting the private-repository monthly allowance of **3,000**.
