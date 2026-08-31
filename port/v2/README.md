@@ -94,6 +94,26 @@
 > pointer replacement. This adds no retry, timeout, browser ruler, Edge pin, product capability,
 > creature/save/art/audio/balance change, or new battery stage.
 >
+> **Current 6ae repair boundary (2026-08-31; develop static green):** exact signed source
+> `6ae723afadf04aeecdff9c41b598777634ebba3e` passed Compendium run
+> `20260831-pr35-assurance-split-6ae723a-compendium-certification` **78/78** in **68,137 ms** and
+> its named verifier. Its unchanged-source Slice
+> `20260831-pr35-assurance-split-6ae723a-slice-certification` stopped once/no-retry after
+> **224,032 ms** with **4 findings / 4 scopes**; Glass did not run and the red is immutable. The
+> dirty bounded successor repairs three independent instrument roots: Training now reaches its
+> existing route-only landing owner through a strict smoke-only path while checkpoint writes are
+> held; the D-TRAIN reload oracle binds the real Arc 9 `R3` successor with one progression receipt,
+> ordinal +1 and exact final achievements; and lazy Compendium settlement requires decoded
+> Window-owned revocable Blob URLs while safely handling a replacement document. Focused coverage
+> is **6 files / 65 tests** and all three strict TypeScript programs are green. The consolidated
+> develop profile passes **253 files / 2,551 tests / 1 skipped**, all three TypeScript programs,
+> **34** art sources, **1,014/1,014** routes and **454** specification fields. It also scopes the
+> quarantined SceneMemory current-product binding to production while retaining its mutation tests
+> in every profile; Compendium authority remains mandatory everywhere. A signed local commit and at
+> most one fresh no-retry Compendium → Slice → Glass chain remain. Evidence carriers and hashes are
+> in `audits/README.md`; no timeout, retry,
+> product behavior, browser ruler or Edge baseline changed.
+>
 > The Compendium ruler's 591 synthetic controls remain conditional on production or changed
 > instrument inputs, and the specification audit's five controls remain folded into its one normal
 > command. **A New Foundation** contains 75 unique bullets with rendered ordered SHA-256
@@ -101,8 +121,8 @@
 > `82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b`; the v7 SceneMemory
 > budget remains `calibration-required` pending a later explicit production activation decision.
 > Compendium producer/budget
-> remains `baef39c64288c3507398847a6409b4bf181c64a7141a01ec0926f2618e3749a6` /
-> `913e5d6d26ea13ef7feb1c604726e1c3a6252fd60f434daaf1abe5cbaf8a9238`.
+> is `1a47c883e8713e263b69ad7ab5edc3016403c871ad7288a86d0838bc685d0cb0` /
+> `81caabc08443fd1463e29fcb88e02e8ae92b81ae21a8cfd6ab3aa5b0022bc025`.
 
 > **Historical exact-`8bdf474…` evidence boundary (superseded by the later `4ac4`/`d1` boundary):** exact clean SSH-signed source
 > `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
@@ -3110,7 +3130,10 @@ untracked or ignored `*.test.*` / `*.spec.*` files while excluding dependency-ow
 tests, exports only the exact index into an owned temporary tree and
 runs `npm ci` there. It then invokes exactly one selected static profile. `npm test` already owns
 the current-producer authority test and its fresh build, so neither tracked admission nor the
-hosted workflow repeats it. The stricter root no-unused TypeScript pass owns the root compilation;
+hosted workflow repeats it. That owner always exact-binds Compendium measurement/producer bytes;
+the quarantined SceneMemory budget binds current product/build bytes only under `production`, while
+its source/build mutation controls still run in every profile. The standalone authority printer
+remains an all-authorities fail-closed diagnostic. The stricter root no-unused TypeScript pass owns the root compilation;
 the old `artunused` alias remains available but is not a second gate. `overridecheck` already fails
 closed on incomplete kingdom-qualified catalogue coverage, so `coveragegap` remains an on-demand
 planning report rather than a duplicate merge gate. The `production` profile adds `overridecontrol`, the
@@ -3206,7 +3229,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 | **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |
 | **Current Arc 4 Pertar ledger/storage boundary inside `npm run smoke:ci` (2026-08-30)** | Exact d611 evidence passed Layout 787/787, SceneMemory 44/44 and Compendium 78/78, then preserved a terminal five-scope Slice red. Signed 7f repaired the shared boot/Survey/Landing prefix, Sample + Arc 9 two-receipt tail and causal stop; 961 repaired its source-derived Landing-seal oracle and retained a one-scope generic Storage timeout. Signed 656 then passed the tracked profile plus SceneMemory 44/44 and Compendium 78/78 before Slice stopped once/no-retry at exactly one pre-arm scope. The runner proved Sample/Arc 9 durable at +1/+2 with 15/16 Yield and idle current authority, but native Tame remained model-disabled; it stopped before the storage hook or input, so this is no storage verdict. Source tracing found Arc 9 temporarily owned the coordinator during Capture's repaint and released without republishing the open card. The bounded successor releases product/coordinator/persistence authority first, then guardedly republishes only the same current visible writable non-Training Capture surface; failure clears the fence and converges read-only. The runner still proves target/focus/coordinator readiness before arming, visible latch before dispatch, ordered state plus terminal raw/UI/interaction, real errors and causal stop. Capture pools/Yield/RNG/save/creature/art/audio, retry, sleep, timeout, numeric ruler and Edge baseline are unchanged. |
 | `node tools/tracked-input-preflight.mjs --selftest` / `node tools/tracked-input-preflight.mjs --profile=develop|production` | Mutation-controls the tracked-only boundary, then—only from a clean committed candidate—exports the exact index, installs in isolation and invokes exactly one selected shared browser-free/static profile with start/end source stability. This is the mandatory preauthorization rehearsal, not hosted or browser evidence. |
-| `npx vitest run tests/current-producer-authorities.test.ts` / `node tools/print-producer-authorities.mjs` | Before browser installation or campaign work, performs one standard app build under the shared workspace lock and compares SceneMemory plus Compendium's live budget records directly to independently derived current source/dist authorities. The test is automatically included in `npm test`; source, build, forged duplicate-constant, recomputed index and recomputed owner mutants must fail with exact mismatch paths. The printer reports those paths and exits nonzero on any mismatch. It never rewrites budgets or historical samples and is not a browser certificate. |
+| `npx vitest run tests/current-producer-authorities.test.ts` / `node tools/print-producer-authorities.mjs` | Before browser installation or campaign work, performs one standard app build under the shared workspace lock and derives SceneMemory plus Compendium authority from current source/dist. The `npm test` owner always exact-binds Compendium; `check-profile --profile=production` additionally binds quarantined SceneMemory, while direct focused invocation defaults to `dev`. Scene source/build, forged duplicate-constant, recomputed index and recomputed owner mutants remain universal. The standalone printer stays all-authorities strict, reports exact mismatch paths and exits nonzero on any mismatch. Neither path rewrites budgets or historical samples or acts as a browser certificate. |
 | **Historical Final11 campaign evidence** | Signed clean `1ca67156e27d6bd58a324e33b0e6b752adf568bc` passed Layout 787/787, SceneMemory 42/42, Compendium 78/78 with six PNGs, Slice with zero findings/ten PNGs and all 12 Glass viewports with zero findings or instrument failures; every stage ran once and passed named verification. Recovery ran once for 1,291,034 ms and passed all 15 observation outcomes/309 samples, the uninterrupted 20-minute window, exact next-cycle boundary and recovered UI. Its final assessor failed only `activePlayProjection` and `closeCheckpoint`; cleanup passed and no retry occurred. Final11 is immutable, instrument-red rather than product-red, and not a Recovery certificate. Exact carriers are in `audits/README.md`. |
 | **Historical Final11 Compendium evidence** | Run `20260828-phase4-final11-1ca67156e27d-compendium` passed 78/78 with six PNG bindings. Raw/gzip SHA-256 are `bc47a2d768080cd9d04257d300dcb4d009035d6611792d10f020d0beb179d5c8` / `d78a6fee001583293645de26817be1e0a2241233f377ac558046a379396c9274`. No numeric ruler, sample, producer policy or 55-bullet draft count changed. HUMAN visual judgment remains open. |
 | **Historical Final11 Arc 4 Recovery boundary** | The complete burn-down, offline no-credit proof, reactivation, full observation, exact boundary crossing and recovered UI passed. Recovered raw/rendered/runtime was 1,285,118/1,285,098/1,285,404 ms; exhausted UI runtime to closed raw was 322 ms. The stored report remains assessor-red and immutable. The repaired assessor replays its unchanged bundle green by binding raw/rendered/live runtime and latest-live close plus exact committed/lost hide evidence; isolated reported-geometry, boundary/+1 and witness controls pass. A fresh signed clean full chain is still required. HUMAN journey/listening, Charter bioscan, targeted preview, hosted and release authority remain open. |

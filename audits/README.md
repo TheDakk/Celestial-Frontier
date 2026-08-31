@@ -10,6 +10,67 @@ summary of it.
 
 ## Contents
 
+### Signed `6ae723a…` assurance-split Compendium PASS, then three known Slice-oracle roots
+
+Exact clean SSH-signed handoff source `6ae723afadf04aeecdff9c41b598777634ebba3e` retained the
+browser-free develop boundary at **253 files / 2,548 passed / 1 skipped**, all three strict
+TypeScript programs, **34** art sources with zero findings, **1,014/1,014** routes and **454**
+specification fields. Live Edge preflight passed on `152.0.4191.53` / CDP `1.3`. Compendium run
+`20260831-pr35-assurance-split-6ae723a-compendium-certification` then passed **78/78** in **68,137
+ms**, once/no-retry, with zero findings or blocked outcomes and complete lifecycle cleanup; its
+named verifier passed.
+
+Exact Slice successor `20260831-pr35-assurance-split-6ae723a-slice-certification` ran once with
+zero automatic retries and stopped terminal-red after **224,032 ms** at **4 findings / 4 scopes**.
+Glass did not run. The immutable report and log preserve three independent instrument roots:
+
+- `training-source-error-setup` and its immediate rendered-scene consequence share one cause. The
+  restored Training fixture called ordinary `Survey → Landing` while its checkpoint correctly held
+  every ordinary write, so Survey refused before Landing's existing write-free Training route owner
+  could run.
+- `d-train-post-write-publication-rejection` is an R+1/R+2 oracle defect. Training committed exactly
+  once at revision `2` and scheduled one convergence reload; the fresh completed/non-held document
+  then correctly ran its aggregate progression catch-up at revision `3`, with one
+  `arc9-progression-refresh-v1` receipt, unchanged RNG seed/draws, ordinal `0 → 1`, the exact
+  achievement tail and unchanged best rank `3`. The stale assessor still required revision `2`, no
+  receipt and only the checkpoint achievement prefix.
+- The final `harness` finding is not slow or broken creature art. All three thumbnails were ready,
+  decoded at exactly `132×132`, the worker was released with zero queued/active work and focus/row
+  identity remained exact. The observer still required obsolete `data:image/…` thumbnails after the
+  product deliberately moved 132px warm assets to Window-owned revocable `blob:` URLs; it kept
+  polling until a later document transition produced the secondary missing-API exception.
+
+The bounded successor gives restored Training one guarded smoke-only write-free route into the
+existing `doLand` owner and causal-stops a red setup; binds D-TRAIN to the exact revision-3
+progression successor and independently mutates missing/drifted receipt, RNG, achievement and carrier
+truth; and moves the lazy refill expression into a browser-free compiled builder that requires
+`blob:` thumbnails and turns document loss into structured foreground-identity evidence. The
+30-second art deadline, retry policy, browser baseline, save/product behavior and creature/art
+implementation do not change.
+
+The repaired dirty successor passes **6 focused files / 65 tests**, all three strict TypeScript
+programs and one consolidated develop profile at **253 files / 2,551 passed / 1 skipped**, **34**
+art sources, **1,014/1,014** routes and **454** specification fields. That aggregate stopped its
+first attempt browser-free in 28 seconds on a stale async-route inventory and an obsolete
+all-profile SceneMemory producer binding; both are now mutation-controlled. Compendium authority
+still binds every profile under current producer
+`1a47c883e8713e263b69ad7ab5edc3016403c871ad7288a86d0838bc685d0cb0`; SceneMemory source/build
+controls remain universal but its quarantined current-product binding is production-only. No new
+command, workflow job, timeout or browser stage was added.
+
+- `ARC1A_COMPENDIUM_PR35_ASSURANCE_SPLIT_PASS_20260831_6AE723A.json.gz`: **527,535 gzip /
+  11,066,690 raw bytes**; gzip/raw SHA-256
+  `0e66ce519b6df62fa72c171d215b3424cc7bf80cb01bb15cff3d6dba18186890` /
+  `1f8eab5bb0487e4732995bc283f145133b20b68e8d322c914ef1e212d71bd210`.
+- `ARC4_SLICE_PR35_ASSURANCE_SPLIT_KNOWN_ORACLES_RED_20260831_6AE723A.json.gz`: **34,046 gzip /
+  283,019 raw bytes**; gzip/raw SHA-256
+  `6138ea757ebf2ca3a4731b9e184b89b133fe9eebfb4ab7656ee80c3913efa716` /
+  `144dda6ca4775abec161f9680ee9175369a02afe6c0efeb8f7af383bab3a7de3`.
+- `ARC4_SLICE_PR35_ASSURANCE_SPLIT_KNOWN_ORACLES_RED_20260831_6AE723A.log.gz`: **16,739 gzip /
+  119,160 raw bytes**; gzip/raw SHA-256
+  `18b012ebfa6a74ae054bc7d1ee0a14b485866be84de4d3fa56c9020b8bbb849e` /
+  `1aa3dce2d670268765fb297cd556251f1cbad5c0e781a48d6d5ea04a3b773fb6`.
+
 ### Signed `e66babe…` Compendium PASS, then Arc 4 publication-convergence Slice red
 
 Exact clean SSH-signed source `e66babed3773c2f6343fb60f8f7d1e05802f4ba3` passed its hermetic

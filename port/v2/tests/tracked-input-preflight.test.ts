@@ -8,7 +8,7 @@ import { runBoundedNodeMarker } from '../test-support/bounded-child.js';
 // @ts-expect-error The dependency-free workflow scope classifier has no declaration shim.
 import { classifyBatteryScope } from '../tools/battery-scope.mjs';
 // @ts-expect-error The executable profile policy intentionally has no declaration shim.
-import { CHECK_PROFILE_COMMANDS, checkCommandInvocation, checkProfileCommands, runCheckProfile } from '../tools/check-profile.mjs';
+import { CHECK_PROFILE_COMMANDS, checkCommandInvocation, checkProfileCommands, checkProfileEnvironment, resolveCheckProfile, runCheckProfile } from '../tools/check-profile.mjs';
 // @ts-expect-error The executable preflight intentionally has no declaration shim.
 import { HOSTED_STATIC_COMMANDS, commandInvocation, hostedStaticCommands, runHostedStaticCommands } from '../tools/tracked-input-preflight.mjs';
 
@@ -85,6 +85,7 @@ function checkProfileToolContractErrors(source: string): string[] {
     [/Object\.hasOwn\(CHECK_PROFILE_COMMANDS, profile\)/, 'own profile selection'],
     [/for \(const commandTokens of checkProfileCommands\(profile\)\)/, 'ordered fail-fast execution'],
     [/execFileSync\(invocation\.executable, invocation\.args/, 'shell-free execution'],
+    [/env: checkProfileEnvironment\(profile, process\.env\)/, 'profile child environment'],
     [/\^--profile=\(dev\|develop\|production\)\$/, 'exact CLI parser'],
     [/CHECK PROFILE: PASS \(\$\{profile\}\)/, 'terminal marker'],
   ];
@@ -345,6 +346,37 @@ describe('tracked-input prehosted preflight', () => {
     expect(commandInvocation('node', ['tools/check-profile.mjs'], 'linux', 'unused')).toEqual({
       executable: process.execPath, args: ['tools/check-profile.mjs'],
     });
+  });
+
+  it('propagates one validated static profile and cannot inherit a weaker tier', () => {
+    expect(resolveCheckProfile({})).toBe('dev');
+    expect(resolveCheckProfile({ CF_V2_CHECK_PROFILE: 'production' })).toBe('production');
+    expect(() => resolveCheckProfile({ CF_V2_CHECK_PROFILE: 'release' }))
+      .toThrow(/unsupported check profile/u);
+    expect(() => resolveCheckProfile({ CF_V2_CHECK_PROFILE: 'toString' }))
+      .toThrow(/unsupported check profile/u);
+
+    expect(checkProfileEnvironment('develop', {
+      CF_V2_CHECK_PROFILE: 'production',
+      SENTINEL: 'retained',
+    })).toEqual({
+      CF_V2_CHECK_PROFILE: 'develop',
+      SENTINEL: 'retained',
+    });
+    expect(checkProfileEnvironment('production', {
+      CF_V2_CHECK_PROFILE: 'dev',
+    })).toEqual({
+      CF_V2_CHECK_PROFILE: 'production',
+    });
+    expect(() => checkProfileEnvironment('release', {}))
+      .toThrow(/unsupported check profile/u);
+
+    const source = readFileSync(CHECK_PROFILE_TOOL, 'utf8');
+    const inheritedOnly = source.replace(
+      'env: checkProfileEnvironment(profile, process.env)',
+      'env: process.env',
+    );
+    expect(checkProfileToolContractErrors(inheritedOnly)).toContain('profile child environment');
   });
 
   it.each([TEST_WORKFLOW, PREVIEW_WORKFLOW])(

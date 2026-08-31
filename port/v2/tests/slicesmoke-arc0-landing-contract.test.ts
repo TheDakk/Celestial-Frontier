@@ -954,8 +954,8 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
     ]);
   });
 
-  it('awaits every asynchronous landOn and landHere call before observing state', () => {
-    const callPattern = /\b(?:[A-Za-z_$][\w$]*[.])+(?:landOn|landHere)\(/gu;
+  it('awaits every asynchronous landing route before observing state', () => {
+    const callPattern = /\b(?:[A-Za-z_$][\w$]*[.])+(?:landOn|landHere|__smokeRouteTrainingTo)\(/gu;
     const calls = [...sliceSource.matchAll(callPattern)];
     expect(calls.length).toBeGreaterThanOrEqual(10);
     const unawaited = (source: string) => [...source.matchAll(callPattern)]

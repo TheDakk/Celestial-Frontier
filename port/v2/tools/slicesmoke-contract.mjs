@@ -2810,6 +2810,38 @@ export function classifyForegroundServiceTurnReceipt(
   };
 }
 
+export function buildLazyRefillObservationExpression(foregroundExpression) {
+  if (typeof foregroundExpression !== 'string' || foregroundExpression.length === 0) {
+    throw new TypeError('lazy refill observation requires its foreground expression');
+  }
+  return `(()=>{ const S=window.__CF_SLICE__,
+    foreground=${foregroundExpression},d=S?.api?.compendiumDiagnostics?.()??null;
+    if(!d)return {done:false,reason:'slice-document-unavailable',foreground};
+    const
+    close=document.querySelector('#codexpanel [data-pnx]'),rows=[...document.querySelectorAll('#codexpanel [data-ci]')],
+    originalRows=Array.isArray(window.__cfLazyOriginalRows)?window.__cfLazyOriginalRows:null,
+    imageNodes=rows.map(row=>row.querySelector('img')),images=imageNodes.map(image=>{const src=image?.getAttribute('src')||null;return {exists:!!image,
+      state:image?.dataset.thumbState||null,hasSrc:!!src,
+      srcKind:src?.startsWith('blob:')?'blob-url':src?.startsWith('data:image/')?'data-image':src?'other':null,
+      complete:image?.complete===true,naturalWidth:image?.naturalWidth||0,naturalHeight:image?.naturalHeight||0,
+      width:image?.getAttribute('width')||null,height:image?.getAttribute('height')||null}}),
+    art=d.art||null,live=art?.live||null,lazyArt=d.lazyArt||null;
+    const settled=images.length===3&&images.every(image=>image.exists&&image.state==='ready'
+      &&image.srcKind==='blob-url'&&image.complete&&image.naturalWidth===132&&image.naturalHeight===132)
+      &&lazyArt?.state==='ready'&&live?.queuedJobs===0&&live?.activeJobs===0;
+    return {done:settled,panelMode:d.panel.mode,images,
+      queuedJobs:live?.queuedJobs??null,activeJobs:live?.activeJobs??null,foreground,
+      lazyArt:lazyArt?{schema:lazyArt.schema,state:lazyArt.state,importStarts:lazyArt.importStarts,
+        identity:lazyArt.identity,lastEvent:lazyArt.lastEvent,worker:lazyArt.worker,phases:lazyArt.phases,
+        results:lazyArt.results,errors:lazyArt.errors}:null,
+      art:art?{schema:art.schema,deviceClass:art.deviceClass,live:art.live,totals:art.totals,keys:art.keys}:null,
+      sameClose:close===window.__cfLazyOriginalClose,
+      sameRows:originalRows!==null&&rows.length===originalRows.length&&rows.every((row,index)=>row===originalRows[index]),
+      generation:d.generation,renderCommits:d.panel.renderCommits,focus:document.activeElement===close,
+      exact132:images.length===3&&images.every(image=>image.srcKind==='blob-url'
+        &&image.complete&&image.naturalWidth===132&&image.naturalHeight===132)}; })()`;
+}
+
 export function planetsidePhaseRemainingMs(deadlineMs, nowMs) {
   if (!Number.isFinite(deadlineMs) || !Number.isFinite(nowMs)) {
     throw new TypeError('Planetside phase deadline and monotonic observation must be finite');

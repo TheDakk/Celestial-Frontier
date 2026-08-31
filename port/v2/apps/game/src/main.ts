@@ -6624,6 +6624,22 @@ async function surveyAndLand(p: PlanetNode, star: ProvenStar): Promise<boolean> 
     land: doLand,
   });
 }
+async function routeTrainingForSmoke(selector: unknown): Promise<boolean> {
+  /* A restored Training checkpoint intentionally rejects Arc 9 Survey writes.
+     This diagnostic-only route proves the current-system target, presents its
+     write-free card, then immediately delegates to doLand's rechecked
+     training-route-only owner. Keep this sequence synchronous: no product
+     settlement or persistence may occur between presentation and Landing. */
+  if (!trainingCheckpointWriteHeld || !trainingActive() || nav.mode !== 'system'
+    || playerMutationsBlocked() || !selector || typeof selector !== 'object'
+    || Array.isArray(selector)) return false;
+  const value = selector as Record<string, unknown>;
+  if (!Number.isInteger(value.seed) || !Number.isInteger(value.ordinal)) return false;
+  const p = systemScene(nav.star.seed).planets.find((candidate) =>
+    candidate.seed === value.seed && candidate.ordinal === value.ordinal);
+  if (!p || !presentPlanetSurvey(p, nav.star)) return false;
+  return doLand();
+}
 function activeCardPlanetState(): Extract<NavState, { mode: 'surface' }> | null {
   if (!cardCtx || (nav.mode !== 'system' && nav.mode !== 'surface')
     || getProvenGalaxyKey(nav.gal) !== getProvenGalaxyKey(cardCtx.gal)
@@ -15913,6 +15929,7 @@ async function loadSave(): Promise<void> {
         if (!p) return false;
         return surveyPlanet(p, nav.star);
       },
+      __smokeRouteTrainingTo: routeTrainingForSmoke,
       landHere: doLand,
       landOn: async (selector: unknown) => {
         if (nav.mode !== 'system' || !selector || typeof selector !== 'object' || Array.isArray(selector)) return false;

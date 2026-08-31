@@ -7,6 +7,8 @@ import { getReleaseHistory, V2_DRAFT_RELEASE } from '../apps/game/src/release-co
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { assessArc4EpochSnapshot } from '../tools/arc4-browser-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
+import { buildLazyRefillObservationExpression } from '../tools/slicesmoke-contract.mjs';
+// @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
 import { hasUnnegatedSentenceClaim } from '../tools/engineering-browser-contract.mjs';
 
 interface TestWindow {
@@ -1746,6 +1748,125 @@ describe('sixth Slice red contract repairs', () => {
       ['duplicate identity control', "['duplicate legacy and canonical Earth rows'"],
       ['route mismatch control', "['Earth route identity'"],
     ]);
+  });
+
+  it('binds post-durable Training reload to its exact progression successor', () => {
+    const expectation = section(
+      sliceSource,
+      'const DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION = (() => {',
+      'const ENGINEERING_VETERAN_RAW = (() => {',
+    );
+    proveEachMarkerRequired(expectation, [
+      ['R+2 revision', 'revision: 3,'],
+      ['fresh-document commit count', 'freshDocumentCommits: 1,'],
+      ['progression outcome', "lastOutcome: 'arc9-progression-committed:3',"],
+      ['aggregate unlock authority', 'unlockedIds: F4_REPLACEMENT_EXPECTATION.successorUnlockedIds,'],
+      ['progression receipt kind', "kind: 'arc9-progression-refresh-v1',"],
+      ['progression receipt witness',
+        "witness: 'arc9p1:951639d0daa5c423e6bfcb886c21c4ede752ad10e3b9de02699acc4eb3770929',"],
+    ]);
+    const rawAssessment = section(
+      sliceSource,
+      '  const dtrainRestoredRawAssessment = (raw, {',
+      '  const dtrainRestoredRawOutcome = (raw, options)',
+    );
+    proveEachMarkerRequired(rawAssessment, [
+      ['default checkpoint achievements',
+        'expectedAchievements = GENUINE_TRAINING_CHECKPOINT.ac,'],
+      ['selected achievement authority',
+        'canonicalJson(raw?.ach) === canonicalJson(expectedAchievements)'],
+    ]);
+    const carrierAssessment = section(
+      sliceSource,
+      '  const assessDtrainArc2Restore = ({',
+      '  const assessDtrainArc2Deferred = ({',
+    );
+    proveEachMarkerRequired(carrierAssessment, [
+      ['optional progression tail', 'progressionTail = null,'],
+      ['one successor RNG ordinal', 'beforeSessionRng?.ordinal + 1'],
+      ['exact successor receipt key',
+        "after.receiptKeys.at(-1) === `receipt:${progressionTail.receipt.ordinal}`"],
+      ['exact successor receipt raw bytes',
+        'after.receiptRawRows.at(-1) === JSON.stringify(progressionTail.receipt)'],
+      ['live aggregate publication',
+        'canonicalJson(state?.save?.unlocked) === canonicalJson(progressionTail.unlockedIds)'],
+    ]);
+    const publication = section(
+      sliceSource,
+      '  /* A failure after the one durable write is committed-state convergence,',
+      '  /* The restored checkpoint Earth row must be bound to the final-import entry,',
+    );
+    proveEachMarkerRequired(publication, [
+      ['raw R+1 control', 'const captureOnlyRaw = structuredClone(publishRaw);'],
+      ['carrier R+1 control', 'const captureOnlyEvidence = structuredClone(publishLootEvidence);'],
+      ['wrong achievement control', 'wrongAchievementTail: assessPublishControl('],
+      ['exact tail selected',
+        'progressionTail: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION,\n  });\n  if (!publishNativeArmed'],
+    ]);
+  });
+
+  it('requires Window-owned Blob thumbnails and lifecycle-safe lazy-art observation', () => {
+    const runner = section(
+      sliceSource,
+      '  const lazyRefillObservationExpression = buildLazyRefillObservationExpression(',
+      '  let lazyAfter = {',
+    );
+    proveEachMarkerRequired(runner, [
+      ['shared generated-expression builder',
+        'buildLazyRefillObservationExpression(\n    lazyForegroundObservationExpression,\n  );'],
+    ]);
+    const owner = buildLazyRefillObservationExpression(
+      "(()=>({documentToken:'fixture-document',visibilityState:'visible',hidden:false,focused:true,service:null}))()",
+    );
+    expect(() => Function(`return ${owner};`)).not.toThrow();
+    const replacementDom = new JSDOM('<div id="codexpanel"></div>', {
+      runScripts: 'outside-only',
+    }) as TestDom;
+    replacementDom.window.eval(`window.__CF_SLICE__={api:{compendiumDiagnostics:()=>({
+      panel:{mode:'list',renderCommits:0},art:{live:{queuedJobs:0,activeJobs:0}},
+      lazyArt:{state:'ready'},generation:1
+    })}}`);
+    expect(replacementDom.window.eval(owner)).toMatchObject({
+      done: false,
+      sameRows: false,
+    });
+    replacementDom.window.close();
+    const errors = (source: string): string[] => {
+      const findings: string[] = [];
+      if (!source.includes('d=S?.api?.compendiumDiagnostics?.()??null')) {
+        findings.push('optional diagnostics');
+      }
+      if (!source.includes("if(!d)return {done:false,reason:'slice-document-unavailable',foreground};")) {
+        findings.push('structured document loss');
+      }
+      if (!source.includes("srcKind:src?.startsWith('blob:')?'blob-url':src?.startsWith('data:image/')?'data-image':src?'other':null")) {
+        findings.push('URL classification');
+      }
+      if (!source.includes('originalRows=Array.isArray(window.__cfLazyOriginalRows)')
+        || !source.includes('sameRows:originalRows!==null')) {
+        findings.push('replacement-document row guard');
+      }
+      if ((source.match(/image\.srcKind==='blob-url'/gu) ?? []).length !== 2
+        || source.includes("image.srcKind==='data-image'&&image.complete")) {
+        findings.push('Blob-only ready predicates');
+      }
+      return findings;
+    };
+    expect(errors(owner)).toEqual([]);
+    expect(errors(owner.replaceAll("image.srcKind==='blob-url'", "image.srcKind==='data-image'")))
+      .toContain('Blob-only ready predicates');
+    expect(errors(owner.replace(
+      'd=S?.api?.compendiumDiagnostics?.()??null',
+      'd=S.api.compendiumDiagnostics()',
+    ))).toContain('optional diagnostics');
+    expect(errors(owner.replace(
+      "if(!d)return {done:false,reason:'slice-document-unavailable',foreground};",
+      'if(!d)return null;',
+    ))).toContain('structured document loss');
+    expect(errors(owner.replace(
+      'originalRows=Array.isArray(window.__cfLazyOriginalRows)?window.__cfLazyOriginalRows:null',
+      'originalRows=window.__cfLazyOriginalRows',
+    ))).toContain('replacement-document row guard');
   });
 
   it('treats failed Arc 2 bootstrap Inventory as lazy, closed, and empty', () => {

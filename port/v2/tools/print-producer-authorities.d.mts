@@ -33,4 +33,9 @@ export function authorityMismatchPaths(
 
 export function producerAuthorityExitCode(report: unknown): 0 | 2;
 
+export function producerAuthorityCheckProfileExitCode(
+  report: unknown,
+  profile: string,
+): 0 | 2;
+
 export function collectCurrentProducerAuthorities(): CurrentProducerAuthorities;

@@ -50,8 +50,24 @@ red Slice is not retried. Read-only diagnosis found a stale Capture-only oracle 
 injected post-durable publication-failure scenario: the product correctly committed Capture at
 revision 135 and its required progression tail at revision 136, while the oracle still demanded a
 single revision-135 endpoint. This is no product-bug evidence. The proposed develop/production
-profile split remains local and unimplemented at this checkpoint; no push, label, hosted run or
-merge is authorized.
+profile split was subsequently implemented and signed locally; the e66 red and its hosted-attempt
+status remain unchanged.
+
+Signed `186b653456542588c2e4fe5db46234ccdebeb1d0` implements the develop/production assurance split,
+and signed docs descendant `6ae723afadf04aeecdff9c41b598777634ebba3e` supplied the next exact
+local browser boundary. Compendium run
+`20260831-pr35-assurance-split-6ae723a-compendium-certification` passed **78/78** in **68,137 ms**
+and named verification; unchanged-source Slice
+`20260831-pr35-assurance-split-6ae723a-slice-certification` stopped once/no-retry after
+**224,032 ms** with **4 findings / 4 scopes**, and Glass did not run. The immutable red exposed
+three bounded local instrument defects now repaired in the dirty successor: Training's write-held
+smoke route, D-TRAIN's final Arc 9 `R3`/receipt/ordinal/achievement oracle, and lazy Compendium's
+decoded revocable-Blob/replacement-document observation. Focused coverage and all strict TypeScript
+programs are green; the consolidated develop profile passes **253 files / 2,551 tests / 1 skipped**,
+all TypeScript, art, route and specification owners. Compendium remains current in every profile;
+quarantined SceneMemory current-product identity now binds only production while its mutation tests
+remain universal. One clean signed-source local browser chain remains pending. This local work
+authorizes no push, label, hosted run, Ready transition or merge.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
