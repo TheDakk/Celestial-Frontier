@@ -1,5 +1,18 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **UNRELATED MULTI-PAGE BROWSER OUTCOMES MUST NOT SHARE PRODUCT AUTHORITY** (2026-08-31).
+> Two pages on one origin share IndexedDB, revision and F4 lease/lifecycle truth. Foregrounding one
+> can therefore hide and checkpoint the other, legitimately stale its revision and schedule a
+> convergence reload. If an instrument is testing independent presentation owners rather than
+> multi-tab contention, give each owner a separate ephemeral origin and seed its fixture
+> independently. Shared network causality may still use one role-tagged request ledger and one
+> release latch, but the attempt ledger must be append-only: fail immediately before release and
+> again after both settlements unless exactly one request came from each isolated owner.
+> Never repair the resulting replacement race by accepting a null/stale document token, rebinding
+> old-row evidence to a new document, widening a deadline or retrying. Exact `c874a0a…` exposed this
+> at foreground arm; preserved `6ae723a…` showed the same race after art completed. Both were
+> harness-topology reds, while the product's stale-authority reload was correct.
+
 > **A WRITE-HELD TRAINING ROUTE CANNOT BORROW A WRITE-BEARING SURVEY.** A restored Training
 > checkpoint deliberately refuses ordinary product writes, including Arc 9 Survey. If a browser
 > fixture must place that active lesson on a proven surface, validate the exact current-system

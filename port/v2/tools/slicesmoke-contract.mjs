@@ -2810,6 +2810,26 @@ export function classifyForegroundServiceTurnReceipt(
   };
 }
 
+/* The lazy-art live and closed owners share one held network release, but
+   they must not share the product's persistence/F4 origin. Exact request-role
+   inventory also proves the shared release is servicing one request from each
+   isolated owner rather than a retry or a single-page false positive. */
+export function assessLazyOwnerOriginGate({
+  liveOrigin, closedOrigin, requestOwners,
+} = {}) {
+  const reasons = [];
+  if (!nonEmptyString(liveOrigin)) reasons.push('live owner origin');
+  if (!nonEmptyString(closedOrigin)) reasons.push('closed owner origin');
+  if (nonEmptyString(liveOrigin) && liveOrigin === closedOrigin) {
+    reasons.push('distinct owner origins');
+  }
+  if (!Array.isArray(requestOwners)
+    || JSON.stringify(requestOwners) !== JSON.stringify(['closed', 'live'])) {
+    reasons.push('one request attempt per isolated owner');
+  }
+  return { ok: reasons.length === 0, reasons };
+}
+
 export function buildLazyRefillObservationExpression(foregroundExpression) {
   if (typeof foregroundExpression !== 'string' || foregroundExpression.length === 0) {
     throw new TypeError('lazy refill observation requires its foreground expression');

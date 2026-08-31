@@ -10,6 +10,43 @@ summary of it.
 
 ## Contents
 
+### Signed `c874a0a…` develop-chain stop: lazy-art owners shared persistence authority
+
+Exact clean SSH-signed source `c874a0a885b21149c035655595cc4228d0f746fd` first passed Edge
+preflight on `152.0.4191.53` / CDP `1.3`. Compendium run
+`20260831052802338-59770-918159f6ee` then passed once/no-retry and its exact named verifier
+accepted it. Slice run `20260831052927052-60087-377aa7295a5e` started at
+`2026-08-31T05:29:27.052Z` under the `develop` profile and stopped terminal-red after **218,797
+ms** with exactly **1 harness finding / 1 scope**. Glass did not run and this immutable source will
+not be retried.
+
+The strict foreground receipt observed the exact target, visible/focused page, fresh service token,
+zero visibility/focus losses and a valid visible/focused arm, but the attach-derived document token
+had disappeared before rAF/later-task service. This is not a player, painter, Blob-builder or Edge
+version failure. The live and closed Compendium fixtures both used `URL5`, so they shared one
+IndexedDB/F4 authority. Foreground switching correctly ran production lifecycle checkpoints,
+advanced the shared revision and made the returning page schedule its normal stale-authority
+convergence reload. The preserved `6ae723a…` red below proves the same race at a later timing: art
+had already completed before the next observation crossed into the replacement document.
+
+The bounded successor gives the closed owner a second ephemeral loopback origin while retaining one
+shared slow-species request ledger and one release latch. Each origin receives the same veteran seed
+independently, and release is refused unless the owners are distinct and the held inventory is
+exactly one `closed` plus one `live` request. The append-only attempt inventory is rechecked
+immediately before release and after both settlements, so a late or post-release retry is also red.
+Missing, duplicate, unknown, same-origin, omitted-seed, premature-release and cleanup mutations are
+browser-free controls. The old-document/null token remains terminal; no timeout, retry,
+product/save/art logic or browser ruler changes.
+
+- `ARC4_SLICE_PR35_LAZY_ORIGIN_TOPOLOGY_RED_20260831_C874A0A.json.gz`: **2,052 gzip / 6,890 raw
+  bytes**; gzip/raw SHA-256
+  `a7f308006b7752b881eac82478df85a9419b92f2680116ce5f4f8026fac3440f` /
+  `81addcb12169f80497f79ef24f3db84dd0654870f3b4dc6171782926bfa35890`.
+- `ARC4_SLICE_PR35_LAZY_ORIGIN_TOPOLOGY_RED_20260831_C874A0A.log.gz`: **1,802 gzip / 4,451 raw
+  bytes**; gzip/raw SHA-256
+  `7cf8cff3e5a73f2c054f8d6c2330520e979fc073d0a25c0cac0aeff58f2cae18` /
+  `3e763aa416d24a1735aa54fb5e7eee176828310ba036d871cce0fdce12044d7d`.
+
 ### Signed `6ae723a…` assurance-split Compendium PASS, then three known Slice-oracle roots
 
 Exact clean SSH-signed handoff source `6ae723afadf04aeecdff9c41b598777634ebba3e` retained the

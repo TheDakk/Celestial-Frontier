@@ -1552,6 +1552,7 @@ function runSelftest() {
     ['ready', foregroundReady, 'ready', null, 999],
     ['wrong-target', { ...foregroundReady, targetId: 'lazy-foreign' }, 'error', 'target identity'],
     ['stale-document', { ...foregroundReady, documentToken: 'document-stale' }, 'error', 'document identity'],
+    ['missing-document', { ...foregroundReady, documentToken: null }, 'error', 'document identity'],
     ['hidden-page', { ...foregroundReady, visibilityState: 'hidden', hidden: true }, 'error', 'page visibility'],
     ['unfocused-page', { ...foregroundReady, focused: false }, 'error', 'page unfocused'],
     ['stale-service', { ...foregroundReady, service: { ...foregroundReady.service, token: 'service-stale' } }, 'error', 'service identity'],
