@@ -500,30 +500,41 @@ semantic branch independently. Never saturate a cache to make a memory gate pass
 cleanup to match an obsolete oracle, relabel the original red, or treat a compatible Edge point
 update as recalibration authority.
 
-⚠⚠ **A HEAP SAMPLE HAS A PHASE POSITION; SCORE THE FIXED SECOND FULL PASS, NEVER THE
-BEST-LOOKING PASS** (2026-08-29). Clean exact source `a9f75797…` completed SceneMemory with
-**43/44** outcomes: backing, DOM, listeners and every registered resource fingerprint were flat,
-but an endpoint-native embedder charge landed on the final desktop sample and made the aggregate
-slope red. A dirty paired diagnostic on the identical product build and Edge moved that charge to
-cycle 2, which made the old first-pass verdict green solely because least-squares slope depends on
-where the same phase charge lands. Its deterministic second complete
-answerable → GC → heap → carrier → DOM pass stayed settled.
+⚠⚠ **A HEAP VERDICT REQUIRES A FIXED VALIDITY PAIR; INVALID PHASE IS INSTRUMENT-RED**
+(2026-08-30). The predecessor two-pass protocol was itself evidence-based: exact source
+`a9f75797…` showed that an endpoint-native embedder charge could move between cycles, so it retained
+pass 1 and always scored pass 2; signed `20460008…` then certified that fixed-second producer 44/44.
+Exact signed successor `8792e8ac…` exposed the remaining blind spot. Its final desktop pass-1/pass-2
+embedder readings fell from 3,402,288 to 3,105,136 bytes, yet the later BFCache reading fell again to
+2,382,592. The pass-2 warm series was honestly red under its own ruler, but two passes could not
+prove that the scored endpoint had reached a repeatable allocator phase. All game-owned resources,
+DOM/listeners and pending work remained flat. Preserve that original 43/44 result as a truthful
+two-pass red; later evidence may classify it instrument-inconclusive but can never relabel it PASS.
 
-The permanent sampler therefore runs two fixed complete passes for every snapshot, retains pass 1
-as diagnosis and always scores pass 2. It never chooses the lower value, takes a minimum, retries a
-red sample or otherwise selects the favorable lane. Retain all four raw warmup snapshots as well as
-the four measured samples so warming and measurement cannot be conflated. A live isolated
-**512 KiB/cycle** retained-allocation control made both lanes report exactly **524,288 B/cycle** and
-released backing storage from **2,097,191** bytes to **39**, proving the fixed second lane still sees
-and releases real growth. Numeric ceilings, browser-family authority and product build/game bytes
-do not move. The new sampler changes producer authority and requires fresh clean calibration,
-authority activation and then one clean no-retry certificate. That required SceneMemory certificate
-is now the signed `2046000873f98318c767db53d2ffb2abac71cc94` **44/44** result; Compendium advanced,
-first exposed the obsolete quiescent-cache oracle and then stopped instrument-only on exact signed
-source `3fb958f…`. Signed `3eefbbcf…` supplied the browser-free-green 85-phase/history repair;
-`b2eecfbd…` then stopped on the separately preserved opaque-key projection defect, and signed
-`d9d79025…` owned the then-current observation-v2 repair. No Compendium certification followed at
-that checkpoint.
+Every current snapshot therefore always executes **four** complete
+answerable → GC → heap → carrier → DOM passes. P1/P2 are fixed settling passes. P3/P4 are the fixed
+validity pair. Retain all four raw carriers and always score only P4—never a minimum, maximum,
+average, best-looking lane or conditionally added fifth pass. For V8 used size, embedder used size,
+backing storage and their independently re-derived aggregate, require
+`abs(P4 - P3) <= profile.maxAbsolutePhaseDeltaBytes`. Any missing/reordered/detached carrier,
+resource-fingerprint drift or excessive delta is an **instrument-fail before contract creation**;
+it is never a product leak verdict and never authorizes a sample or run retry.
+
+Derive the phase ceiling only from exactly three clean, one-attempt/no-retry calibration reports on
+one unchanged signed source/build/browser tuple. For each profile, let `M` be the maximum across all
+30 retained snapshot validity pairs and all four fields. Select the smallest member of
+**4/8/16/32/64 KiB** that is strictly greater than `M`. If `M >= 64 KiB`, activation is forbidden:
+redesign the sampler instead of widening. The 64 KiB hard cap is half the unchanged 128 KiB/cycle
+product slope ruler, so measurement uncertainty cannot consume the product budget. Negative-control
+P3 and P4 spikes in both directions, each field, cross-component cancellation, forged summaries,
+missing/duplicate/reordered passes and persistent cross-cycle growth. The live isolated
+**512 KiB/cycle** retained-allocation control must remain visible in every lane and must fall after
+release. Calibration may launch only while the canonical tracked budget is explicitly
+`calibration-required`. Bind each candidate to that exact budget blob at its literal clean 40-hex
+source commit; activation must reopen and revalidate the blob from that commit, replay the raw
+profiles/budgets/verdict and require three Git-tracked regular non-symlink carriers from the same
+producer/build/browser tuple. Product range/slope ceilings, browser-family authority and product
+bytes do not move.
 
 ⚠⚠ **NEVER PROJECT OPAQUE CANONICAL IDENTITY THROUGH A GENERIC TEXT CAP; VALIDATE IT IN
 THE OWNER REALM AND SERIALIZE BOUNDED MEMBERSHIP EVIDENCE** (2026-08-30). Exact signed source
@@ -829,7 +840,7 @@ rulers. That is exhausted absolute-footprint headroom, not retained-owner eviden
 rebaseline trigger.
 
 For a shipped source that legitimately grows, retain a broad initial safety stop and judge the work
-added after the scored fixed-second initial snapshot. For every scored heap point `q`, define
+added after the scored fixed-fourth P4 initial snapshot. For every scored heap point `q`, define
 `growth(q) = max(0, q.usedSize - initial.usedSize)` and
 `normalized(q) = growth(q) + q.embedderHeapUsedSize + q.backingStorageSize`. Raw totals remain in
 the report for diagnosis; they are not the current route-admission ruler. Keep the existing raw warm
@@ -846,11 +857,14 @@ initial-aggregate safety ceilings, and selects 6 MiB growth plus 12 MiB normaliz
 ceilings—at least 614,128 / 1,230,030 bytes of observed headroom. The old raw 12 MiB post-route
 V8 ceiling would reject two of these three identical-source desktop BFCache samples.
 
-Serialize the changed meaning explicitly: current terminal evidence is report-v4/profile-v3/
-input-v5/verdict-v4/budget-v5. Preserve and replay historical input-v3/verdict-v2 and
+Serialize the changed meaning explicitly: the four-pass replacement producer is
+report-v5/profile-v4/input-v5/verdict-v4/budget-v6; it becomes certifying only after the required
+three-candidate phase derivation and budget activation. Preserve and replay historical
+report-v4/profile-v3/input-v5/verdict-v4/budget-v5, input-v3/verdict-v2 and
 input-v4/verdict-v3 evidence under their original raw semantics; never relabel it. Bind the baseline
-to the exact profile, document token and `${profile}-initial` scored snapshot role, and re-derive the
-profile-v3 metric summary from retained raw evidence during named verification. Project the v5
+to the exact profile, document token and `${profile}-initial` scored P4 snapshot role, re-derive the
+profile-v4 metric summary, and bind every P3/P4 delta to the activated profile ceiling during named
+verification. Project the v5
 initial heap authority to exactly `usedSize`, `embedderHeapUsedSize` and `backingStorageSize`;
 unscored CDP fields such as `totalSize`, and any future fields, remain raw diagnostics and must not
 silently enter the versioned contract. Negative-control

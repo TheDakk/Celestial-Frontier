@@ -11,7 +11,7 @@ const sceneMemoryTool = fs.readFileSync(sceneMemoryToolPath, 'utf8');
 const SCENE_BROWSER_ENV =
   'CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge';
 const STATIC_PROFILE_NAME = 'v2 base-profile static gates';
-const HEAP_PHASE_SELFTEST_NAME = 'scene-memory fixed-second heap-phase selftest';
+const HEAP_PHASE_SELFTEST_NAME = 'scene-memory fixed-fourth phase-validity selftest';
 const HEAP_PHASE_SELFTEST_COMMAND = 'node tools/scenemem.mjs --heap-phase-selftest';
 const COMPENDIUM_INSTRUMENT_SELFTEST_NAME =
   'changed-or-production Compendium browser instrument selftests';

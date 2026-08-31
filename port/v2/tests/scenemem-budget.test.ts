@@ -14,6 +14,7 @@ import {
   type SceneMemoryRawBudget,
   type SceneMemoryVerdict,
 } from '../tools/scenemem-contract.mjs';
+import { stableJson } from '../tools/compendiummem-fixture.mjs';
 import {
   SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA,
   SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE,
@@ -41,6 +42,8 @@ const HISTORICAL_BUILD_FILE_COUNT = 38;
 const HISTORICAL_BUILD_FILES_SHA256 = 'ffd2616047932577db169f05d891ea96054bd2dcc5cb65c1d02a2a3df7f1ca03';
 const SOURCE_NORMALIZED_BUDGET_SHA256 =
   '11707d53bd640b9f2cd0bb1daf963a1c72308239b10faea0332f030f8bd2743f';
+const CALIBRATION_REQUIRED_BUDGET_SHA256 =
+  'f453cfe548ec86f65727de17d23a8ef76c2dc3c1bb024c22eb308ff299ccfd99';
 const RAW_V4_BUDGET_SHA256 =
   '476b85e9e38d0382015663741d08766239688082db0db4536e4d734b98912ee6';
 const PROFILE_NAMES = ['phone', 'desktop'] as const;
@@ -192,11 +195,37 @@ const HOSTED_LINUX_FAILURE = Object.freeze({
 });
 
 type ProfileName = typeof PROFILE_NAMES[number];
+type HeapPhaseCandidate = {
+  runId: string;
+  file: string;
+  rawBytes: number;
+  rawSha256: string;
+  gzipBytes: number;
+  gzipSha256: string;
+};
 type BudgetRecord = {
   schema: string;
+  status: string;
   authority: {
     browser: Record<string, string>;
     producer: Record<string, string>;
+  };
+  heapPhase: {
+    schema: string;
+    status: string;
+    snapshotPasses: number;
+    settlingPasses: number;
+    validityPasses: number[];
+    scoredSnapshotPass: number;
+    calibrationHardCapBytes: number;
+    derivation: {
+      schema: string;
+      rule: string;
+      candidateCount: number;
+      candidateSetSha256: string | null;
+      candidates: HeapPhaseCandidate[];
+    };
+    profiles: Record<ProfileName, { maxAbsolutePhaseDeltaBytes: number | null }>;
   };
   profiles: Record<ProfileName, SceneMemoryBudget>;
 };
@@ -377,7 +406,7 @@ const FIXED_SECOND_PRODUCER_AUTHORITY = Object.freeze({
 });
 const EXPECTED_PRODUCER_AUTHORITY = Object.freeze({
   ...FIXED_SECOND_PRODUCER_AUTHORITY,
-  collector: '266b348c502ba80bb26d6790857c0497304b228f567340523189f764ad8460c5',
+  collector: '936d1bfd9cba6bc59c4cd889160981e612e15b012406c55f22cce11108a682a3',
   verdictContract: 'da6dce07590d14a0e7bb44f242669220717e8c0556f119d92266c64cfe744c7a',
   package: 'cf6298a7a72720952ab8bfe7a2fdcf0dde2c135e537e1ce5190303c6a06aa3a7',
   packageLock: 'a2dcb380866a57618ae345c2559c1483dd781833f1a258d604a8254b7acf6a9f',
@@ -753,13 +782,34 @@ const normalizedHeapMetrics = (measurement: CalibrationProfile) => {
   });
 };
 
-describe('Arc 1C scene-memory active budget', () => {
-  it('locks the source-normalized activation to one Edge-family capability/profile authority and producer', () => {
+describe('Arc 1C scene-memory budget authority', () => {
+  it('locks the v6 calibration-required bootstrap to one Edge-family authority and producer', () => {
     expect(budget).toEqual({
-      schema: 'cf-v2-scene-memory-budget/v5',
+      schema: 'cf-v2-scene-memory-budget/v6',
+      status: 'calibration-required',
       authority: {
         browser: EXPECTED_BROWSER_AUTHORITY,
         producer: EXPECTED_PRODUCER_AUTHORITY,
+      },
+      heapPhase: {
+        schema: 'cf-v2-scene-memory-heap-phase-policy/v1',
+        status: 'calibration-required',
+        snapshotPasses: 4,
+        settlingPasses: 2,
+        validityPasses: [3, 4],
+        scoredSnapshotPass: 4,
+        calibrationHardCapBytes: 64 * 1024,
+        derivation: {
+          schema: 'cf-v2-scene-memory-heap-phase-derivation/v1',
+          rule: 'smallest-power-of-two-strictly-greater',
+          candidateCount: 3,
+          candidateSetSha256: null,
+          candidates: [],
+        },
+        profiles: {
+          phone: { maxAbsolutePhaseDeltaBytes: null },
+          desktop: { maxAbsolutePhaseDeltaBytes: null },
+        },
       },
       profiles: CURRENT_PROFILES,
     });
@@ -767,8 +817,81 @@ describe('Arc 1C scene-memory active budget', () => {
     expect(Object.keys(budget.profiles.desktop).sort()).toEqual([...CURRENT_BUDGET_FIELDS].sort());
     expect(validateSceneMemoryBudget(budget)).toEqual({ ok: true, errors: [] });
     const currentBudgetSha256 = sha256(fs.readFileSync(budgetPath));
-    expect(currentBudgetSha256).toBe(SOURCE_NORMALIZED_BUDGET_SHA256);
+    expect(currentBudgetSha256).toBe(CALIBRATION_REQUIRED_BUDGET_SHA256);
+    expect(currentBudgetSha256).not.toBe(SOURCE_NORMALIZED_BUDGET_SHA256);
     expect(currentBudgetSha256).not.toBe(RAW_V4_BUDGET_SHA256);
+  });
+
+  it('negative-controls outer and heap-phase status mismatches', () => {
+    const outerActive = structuredClone(budget);
+    outerActive.status = 'active';
+    expect(validateSceneMemoryBudget(outerActive).errors).toContain(
+      'budget heapPhase fixed four-pass policy drifted',
+    );
+
+    const policyActive = structuredClone(budget);
+    policyActive.heapPhase.status = 'active';
+    expect(validateSceneMemoryBudget(policyActive).errors).toContain(
+      'budget heapPhase fixed four-pass policy drifted',
+    );
+  });
+
+  it('negative-controls calibration-required budgets claiming candidates or phase ceilings', () => {
+    const claimsCandidates = structuredClone(budget);
+    claimsCandidates.heapPhase.derivation.candidates = [{
+      runId: 'invented-calibration-required-candidate',
+      file: 'SCENEMEM_INVENTED_CALIBRATION_REQUIRED_CANDIDATE.json.gz',
+      rawBytes: 1,
+      rawSha256: '1'.repeat(64),
+      gzipBytes: 1,
+      gzipSha256: '2'.repeat(64),
+    }];
+    claimsCandidates.heapPhase.derivation.candidateSetSha256 = sha256(Buffer.from(
+      stableJson(claimsCandidates.heapPhase.derivation.candidates),
+    ));
+    expect(validateSceneMemoryBudget(claimsCandidates).errors).toContain(
+      'calibration-required heapPhase authority must not claim candidate carriers',
+    );
+
+    for (const profile of PROFILE_NAMES) {
+      const claimsThreshold = structuredClone(budget);
+      claimsThreshold.heapPhase.profiles[profile].maxAbsolutePhaseDeltaBytes = 4 * 1024;
+      expect(validateSceneMemoryBudget(claimsThreshold).errors).toContain(
+        `budget heapPhase profile ${profile} has an invalid phase ceiling for calibration-required`,
+      );
+    }
+  });
+
+  it('negative-controls an active budget whose candidate tuple names invented carriers', () => {
+    const active = structuredClone(budget);
+    const candidates = [1, 2, 3].map((ordinal): HeapPhaseCandidate => ({
+      runId: `invented-active-candidate-${ordinal}`,
+      file: `SCENEMEM_INVENTED_ACTIVE_CANDIDATE${ordinal}.json.gz`,
+      rawBytes: ordinal,
+      rawSha256: String(ordinal).repeat(64),
+      gzipBytes: ordinal,
+      gzipSha256: String(ordinal + 3).repeat(64),
+    }));
+    active.status = 'active';
+    active.heapPhase.status = 'active';
+    active.heapPhase.derivation.candidates = candidates;
+    active.heapPhase.derivation.candidateSetSha256 = sha256(Buffer.from(stableJson(candidates)));
+    for (const profile of PROFILE_NAMES) {
+      active.heapPhase.profiles[profile].maxAbsolutePhaseDeltaBytes = 4 * 1024;
+    }
+
+    const validation = validateSceneMemoryBudget(active);
+    expect(validation.ok).toBe(false);
+    expect(validation.errors).not.toContain(
+      'active heapPhase candidates must be three distinct exact carriers',
+    );
+    expect(validation.errors).not.toContain(
+      'active heapPhase candidate-set hash is detached from its carriers',
+    );
+    for (const candidate of candidates) {
+      expect(validation.errors.some((error) => error.startsWith(`${candidate.runId}:`)))
+        .toBe(true);
+    }
   });
 
   it('replaces only the two raw heap admission fields with normalized equivalents', () => {

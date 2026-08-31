@@ -1,5 +1,6 @@
 {
-  "schema": "cf-v2-scene-memory-budget/v5",
+  "schema": "cf-v2-scene-memory-budget/v6",
+  "status": "calibration-required",
   "authority": {
     "browser": {
       "schema": "cf-v2-scene-memory-browser-authority/v2",
@@ -12,7 +13,7 @@
       "profileContractSha256": "f565ba2a38577f80c16c41762a5fb4e2214f3b320c50e017f1262c0784a6a0ef"
     },
     "producer": {
-      "collector": "266b348c502ba80bb26d6790857c0497304b228f567340523189f764ad8460c5",
+      "collector": "936d1bfd9cba6bc59c4cd889160981e612e15b012406c55f22cce11108a682a3",
       "browserCdp": "6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce",
       "browserPath": "733ab771f60bead83e8d2af4d95339248f7c9b16879903ea89b817677e4a6bc0",
       "workspaceLock": "e22a4c268ad0ce71a1c9160f45a2386c413c7fbcfc13f0cc457cf084ff0fd606",
@@ -35,6 +36,26 @@
       "pixiManagedResourceOwner": "2d9eaeb667f5a4a763e25bd8e168b721494dda49c252e2411031a258d2653708",
       "pixiBatchTextureArray": "95ea401f9f05a933f17c9a327b94109bfcc46b0a21cc59789a66537a5b62deb3",
       "sceneText": "7ea78c599fed72ab1ba65991270b72d642f6ec2f9768f63ad64d280ce9147731"
+    }
+  },
+  "heapPhase": {
+    "schema": "cf-v2-scene-memory-heap-phase-policy/v1",
+    "status": "calibration-required",
+    "snapshotPasses": 4,
+    "settlingPasses": 2,
+    "validityPasses": [3, 4],
+    "scoredSnapshotPass": 4,
+    "calibrationHardCapBytes": 65536,
+    "derivation": {
+      "schema": "cf-v2-scene-memory-heap-phase-derivation/v1",
+      "rule": "smallest-power-of-two-strictly-greater",
+      "candidateCount": 3,
+      "candidateSetSha256": null,
+      "candidates": []
+    },
+    "profiles": {
+      "phone": { "maxAbsolutePhaseDeltaBytes": null },
+      "desktop": { "maxAbsolutePhaseDeltaBytes": null }
     }
   },
   "profiles": {

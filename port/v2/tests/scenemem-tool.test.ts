@@ -19,10 +19,13 @@ import {
   sceneMemoryCollectSnapshotPass,
   sceneMemoryInitialHeapProjection,
   sceneMemoryHeapPhaseControlSlopes,
+  sceneMemoryPhaseThresholdForMaximum,
+  sceneMemoryProfilePhaseMaximum,
   sceneMemoryCollectorCommandTimeoutMs,
   sceneMemoryMetricSummary,
   sceneMemoryProfileRawBindingErrors,
   sceneMemorySnapshotPairErrors,
+  sceneMemorySnapshotPhaseErrors,
   sceneMemoryShipyardOpenSettlementReasons,
   sceneMemorySurfaceVistaFaultReasons,
   sceneMemoryVeteranRaw,
@@ -281,9 +284,9 @@ function sourceNormalizedHeapBindingErrors(source: string): string[] {
   const projectionUse =
     'heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),';
   const exactBindings = [
-    "const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v4';",
-    "const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v5';",
-    "schema: 'cf-v2-scene-memory-profile/v3'",
+    "const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v5';",
+    "const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v6';",
+    "const PROFILE_SCHEMA = 'cf-v2-scene-memory-profile/v4';",
     "schema: 'cf-v2-scene-memory-input/v5'",
     'documentToken: measurement.initial.raw.scene.documentToken,',
     'export function sceneMemoryInitialHeapProjection(heap) {',
@@ -379,6 +382,65 @@ function profileAttemptBindingErrors(source: string): string[] {
   return exactBindings.filter((binding) => owner.split(binding).length - 1 !== 1);
 }
 
+function phaseInvalidityStagingErrors(source: string): string[] {
+  const errors: string[] = [];
+  const collectStart = source.indexOf('async function collectProfile({');
+  const collectEnd = source.indexOf('\nfunction browserSample(', collectStart);
+  const owner = collectStart >= 0 && collectEnd > collectStart
+    ? source.slice(collectStart, collectEnd) : '';
+  const stages = [
+    ['initial', 'measurement.initial = await sceneMemoryCollectFixedSnapshot({',
+      'for (let index = 0; index < WARMUP_CYCLES; index++) {'],
+    ['warmup', 'measurement.warmup = await sceneMemoryCollectFixedSnapshot({',
+      'measurement.precondition = contractPoint(measurement.warmup);'],
+    ['measured', 'const snapshot = await sceneMemoryCollectFixedSnapshot({',
+      'const bfcacheEvidence = await collectBfcache({'],
+    ['bfcache', 'measurement.bfcacheSnapshot = bfcacheEvidence.snapshot;',
+      'measurement.reloadCleanup = await collectReloadCleanup({'],
+  ] as const;
+  for (const [label, startToken, endToken] of stages) {
+    const start = owner.indexOf(startToken);
+    const end = owner.indexOf(endToken, start + startToken.length);
+    const stage = start >= 0 && end > start ? owner.slice(start, end) : '';
+    const progress = stage.indexOf('onProgress(measurement);');
+    const assertion = stage.indexOf('assertSceneMemoryHeapPhaseSnapshot(');
+    if (progress < 0 || assertion <= progress) {
+      errors.push(`${label} phase evidence is not staged before its instrument assertion`);
+    }
+  }
+  const assertionStart = source.indexOf('function assertSceneMemoryHeapPhaseSnapshot(');
+  const assertionEnd = source.indexOf('\nexport function sceneMemoryHeapPhaseControlSlopes(', assertionStart);
+  const assertionOwner = assertionStart >= 0 && assertionEnd > assertionStart
+    ? source.slice(assertionStart, assertionEnd) : '';
+  if (!assertionOwner.includes('assert(errors.length === 0,')
+    || assertionOwner.includes('productAssert(')) {
+    errors.push('phase invalidity is not a plain instrument assertion');
+  }
+  return errors;
+}
+
+function calibrationBoundaryBindingErrors(source: string): string[] {
+  const exactBindings = [
+    "const CALIBRATION_BUDGET_RELATIVE_PATH = 'port/v2/budgets/scene-memory-v2.json';",
+    'const boundaryFile = assertBudgetAuthority(calibrationBudgetPath);',
+    'const validation = validateSceneMemoryBudget(boundaryBudget);',
+    "assert(boundaryBudget.status === 'calibration-required',",
+    'sha256: hashFile(boundaryFile),',
+    'calibrationBoundary,',
+    "!/^[a-f0-9]{40}$/.test(report.source?.begin?.commit || '')",
+    "!/^[a-f0-9]{64}$/.test(report.source?.begin?.workingTreeSha256 || '')",
+    "'git', ['rev-parse', '--verify', `${report.source.begin.commit}^{commit}`]",
+    'resolvedCommit !== report.source.begin.commit',
+    "'show', `${report.source.begin.commit}:${CALIBRATION_BUDGET_RELATIVE_PATH}`",
+    'sha256(boundaryBlob) !== report.calibrationBoundary.sha256',
+    'const boundaryValidation = validateSceneMemoryBudget(boundaryBudget);',
+    "boundaryBudget.status !== 'calibration-required'",
+    '!same(boundaryBudget.authority?.producer, expectedProducerAuthority)',
+    '!same(boundaryBudget.authority?.browser, expectedBrowserAuthority)',
+  ];
+  return exactBindings.filter((binding) => !source.includes(binding));
+}
+
 const settledShipyardOpenObservation = Object.freeze({
   schema: SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA,
   panelOpen: 'shipyard',
@@ -468,29 +530,184 @@ describe('scene-memory terminal verifier', () => {
     const collector = {
       evaluate: async () => {
         trace.push('carrier');
-        return structuredClone(raw);
+        const current = structuredClone(raw);
+        current.state.tickerTicks = ticker;
+        current.scene.documentToken = 'snapshot-test-document';
+        return current;
       },
     };
     return { trace, send, collector };
   }
 
-  it('scores the fixed second complete snapshot pass without selecting the lower heap', async () => {
-    const first = { usedSize: 100, embedderHeapUsedSize: 200, backingStorageSize: 300 };
-    const second = { usedSize: 900, embedderHeapUsedSize: 800, backingStorageSize: 700 };
-    const harness = snapshotHarness([first, second]);
-    const snapshot = await sceneMemoryCollectFixedSnapshot({
-      send: harness.send, sessionId: 'snapshot-session', collector: harness.collector,
-      profile: 'phone', label: 'phone-warm-1',
-    });
+  it('retains all four fixed passes and scores pass four whether it is higher or lower', async () => {
+    const phaseThresholdBytes = 4 * 1024;
+    const settle1 = { usedSize: 91_000, embedderHeapUsedSize: 82_000, backingStorageSize: 73_000 };
+    const settle2 = { usedSize: 12_000, embedderHeapUsedSize: 23_000, backingStorageSize: 34_000 };
+    const validity = { usedSize: 10_000, embedderHeapUsedSize: 20_000, backingStorageSize: 30_000 };
+    const cases = [
+      {
+        name: 'higher',
+        scored: { usedSize: 10_400, embedderHeapUsedSize: 20_400, backingStorageSize: 30_400 },
+      },
+      {
+        name: 'lower',
+        scored: { usedSize: 9_600, embedderHeapUsedSize: 19_600, backingStorageSize: 29_600 },
+      },
+    ] as const;
     const onePass = [
       'Runtime.evaluate', 'Browser.getVersion', 'HeapProfiler.collectGarbage',
       'Runtime.getHeapUsage', 'carrier', 'Memory.getDOMCounters',
     ];
-    expect(harness.trace).toEqual([...onePass, ...onePass]);
-    expect(snapshot.heapPhaseProbe.heap).toEqual(first);
-    expect(snapshot.heap).toEqual(second);
-    expect(snapshot.heapAggregateBytes).toBe(2_400);
-    expect(sceneMemorySnapshotPairErrors(snapshot, true)).toEqual([]);
+
+    for (const control of cases) {
+      const harness = snapshotHarness([settle1, settle2, validity, control.scored]);
+      const snapshot = await sceneMemoryCollectFixedSnapshot({
+        send: harness.send, sessionId: 'snapshot-session', collector: harness.collector,
+        profile: 'phone', label: `phone-warm-${control.name}`,
+        phaseThresholdBytes, stableResourcesRequired: true,
+      });
+      expect(harness.trace, control.name).toEqual(Array.from(
+        { length: 4 }, () => onePass,
+      ).flat());
+      expect(snapshot.heapPhasePasses.map((pass: any) => pass.label), control.name).toEqual([
+        `phone-warm-${control.name}-phase-settle-1`,
+        `phone-warm-${control.name}-phase-settle-2`,
+        `phone-warm-${control.name}-phase-validity`,
+      ]);
+      expect(snapshot.label, control.name).toBe(`phone-warm-${control.name}`);
+      expect(snapshot.heapPhasePasses.map((pass: any) => pass.heap), control.name)
+        .toEqual([settle1, settle2, validity]);
+      expect(snapshot.heap, control.name).toEqual(control.scored);
+      expect(snapshot.heapAggregateBytes, control.name).toBe(
+        control.scored.usedSize + control.scored.embedderHeapUsedSize
+          + control.scored.backingStorageSize,
+      );
+      expect(snapshot.heapPhaseValidity, control.name).toMatchObject({
+        schema: 'cf-v2-scene-memory-heap-phase-validity/v1',
+        status: 'valid',
+        comparedPasses: [3, 4],
+        scoredSnapshotPass: 4,
+        maxAbsolutePhaseDeltaBytes: phaseThresholdBytes,
+        deltas: {
+          usedSize: 400,
+          embedderHeapUsedSize: 400,
+          backingStorageSize: 400,
+          aggregate: 1_200,
+        },
+        reasons: [],
+      });
+      expect(sceneMemorySnapshotPhaseErrors(
+        snapshot, true, phaseThresholdBytes,
+      ), control.name).toEqual([]);
+    }
+  });
+
+  it('accepts exact positive/negative component deltas and rejects threshold plus one', async () => {
+    const phaseThresholdBytes = 4 * 1024;
+    const base = {
+      usedSize: 100_000,
+      embedderHeapUsedSize: 200_000,
+      backingStorageSize: 300_000,
+    };
+    const collect = async (field: keyof typeof base, delta: number, label: string) => {
+      const scored = { ...base, [field]: base[field] + delta };
+      const harness = snapshotHarness([base, base, base, scored]);
+      return sceneMemoryCollectFixedSnapshot({
+        send: harness.send, sessionId: 'snapshot-session', collector: harness.collector,
+        profile: 'desktop', label, phaseThresholdBytes, stableResourcesRequired: true,
+      });
+    };
+
+    for (const field of [
+      'usedSize', 'embedderHeapUsedSize', 'backingStorageSize',
+    ] as const) {
+      for (const sign of [-1, 1] as const) {
+        const exact = await collect(
+          field, sign * phaseThresholdBytes, `${field}-${sign}-exact`,
+        );
+        expect(exact.heapPhaseValidity.deltas[field], `${field}/${sign}/exact`)
+          .toBe(phaseThresholdBytes);
+        expect(exact.heapPhaseValidity.deltas.aggregate, `${field}/${sign}/aggregate-exact`)
+          .toBe(phaseThresholdBytes);
+        expect(sceneMemorySnapshotPhaseErrors(
+          exact, true, phaseThresholdBytes,
+        ), `${field}/${sign}/exact`).toEqual([]);
+
+        const next = await collect(
+          field, sign * (phaseThresholdBytes + 1), `${field}-${sign}-next`,
+        );
+        const errors = sceneMemorySnapshotPhaseErrors(next, true, phaseThresholdBytes);
+        expect(next.heapPhaseValidity.status, `${field}/${sign}/next`).toBe('invalid');
+        expect(errors, `${field}/${sign}/next`).toContain(
+          `${field} absolute phase delta ${phaseThresholdBytes + 1} exceeded ceiling ${phaseThresholdBytes}`,
+        );
+        expect(errors, `${field}/${sign}/aggregate-next`).toContain(
+          `aggregate absolute phase delta ${phaseThresholdBytes + 1} exceeded ceiling ${phaseThresholdBytes}`,
+        );
+      }
+    }
+  });
+
+  it('controls aggregate exact/+1 in both directions and rejects component cancellation', async () => {
+    const phaseThresholdBytes = 4 * 1024;
+    const base = {
+      usedSize: 100_000,
+      embedderHeapUsedSize: 200_000,
+      backingStorageSize: 300_000,
+    };
+    const collect = async (deltas: Record<keyof typeof base, number>, label: string) => {
+      const scored = Object.fromEntries(Object.entries(base).map(([field, value]) => [
+        field, value + deltas[field as keyof typeof base],
+      ])) as typeof base;
+      return sceneMemoryCollectFixedSnapshot({
+        ...snapshotHarness([base, base, base, scored]),
+        sessionId: 'snapshot-session', profile: 'desktop', label,
+        phaseThresholdBytes, stableResourcesRequired: true,
+      });
+    };
+
+    for (const sign of [-1, 1] as const) {
+      const exact = await collect({
+        usedSize: sign * 1_366,
+        embedderHeapUsedSize: sign * 1_365,
+        backingStorageSize: sign * 1_365,
+      }, `aggregate-${sign}-exact`);
+      expect(exact.heapPhaseValidity.deltas.aggregate, `${sign}/exact`).toBe(phaseThresholdBytes);
+      expect(sceneMemorySnapshotPhaseErrors(
+        exact, true, phaseThresholdBytes,
+      ), `${sign}/exact`).toEqual([]);
+
+      const next = await collect({
+        usedSize: sign * 1_366,
+        embedderHeapUsedSize: sign * 1_366,
+        backingStorageSize: sign * 1_365,
+      }, `aggregate-${sign}-next`);
+      expect(next.heapPhaseValidity.deltas.aggregate, `${sign}/next`)
+        .toBe(phaseThresholdBytes + 1);
+      expect(sceneMemorySnapshotPhaseErrors(
+        next, true, phaseThresholdBytes,
+      ), `${sign}/next`).toEqual([
+        `aggregate absolute phase delta ${phaseThresholdBytes + 1} exceeded ceiling ${phaseThresholdBytes}`,
+      ]);
+    }
+
+    const cancelled = await collect({
+      usedSize: phaseThresholdBytes + 1,
+      embedderHeapUsedSize: -(phaseThresholdBytes + 1),
+      backingStorageSize: 0,
+    }, 'component-cancellation');
+    expect(cancelled.heapPhaseValidity.deltas).toEqual({
+      usedSize: phaseThresholdBytes + 1,
+      embedderHeapUsedSize: phaseThresholdBytes + 1,
+      backingStorageSize: 0,
+      aggregate: 0,
+    });
+    expect(sceneMemorySnapshotPhaseErrors(
+      cancelled, true, phaseThresholdBytes,
+    )).toEqual([
+      `usedSize absolute phase delta ${phaseThresholdBytes + 1} exceeded ceiling ${phaseThresholdBytes}`,
+      `embedderHeapUsedSize absolute phase delta ${phaseThresholdBytes + 1} exceeded ceiling ${phaseThresholdBytes}`,
+    ]);
   });
 
   it('projects only the three scored counters from extensible raw CDP heap evidence', () => {
@@ -536,13 +753,99 @@ describe('scene-memory terminal verifier', () => {
     ]);
   });
 
-  it('negative controls reject missing, reordered, detached, or resource-drifted pairs', async () => {
-    const heap = { usedSize: 10, embedderHeapUsedSize: 20, backingStorageSize: 30 };
-    const harness = snapshotHarness([heap, heap]);
+  it('rejects missing, reordered, detached, resource-drifted, or forged phase validity', async () => {
+    const phaseThresholdBytes = 4 * 1024;
+    const heap = { usedSize: 100_000, embedderHeapUsedSize: 200_000, backingStorageSize: 300_000 };
     const snapshot: any = structuredClone(await sceneMemoryCollectFixedSnapshot({
-      send: harness.send, sessionId: 'snapshot-session', collector: harness.collector,
-      profile: 'phone', label: 'phone-warm-1',
+      ...snapshotHarness([heap, heap, heap, heap]),
+      sessionId: 'snapshot-session', profile: 'phone', label: 'phone-warm-1',
+      phaseThresholdBytes, stableResourcesRequired: true,
     }));
+    expect(sceneMemorySnapshotPhaseErrors(snapshot, true, phaseThresholdBytes)).toEqual([]);
+
+    const missingPasses = structuredClone(snapshot);
+    delete missingPasses.heapPhasePasses;
+    expect(sceneMemorySnapshotPhaseErrors(
+      missingPasses, true, phaseThresholdBytes,
+    )).toEqual(expect.arrayContaining([
+      'heap phase pass inventory must contain exactly four fixed passes',
+      'heap phase validity deltas are absent or invalid',
+      'heap phase validity evidence is detached from the retained raw passes',
+    ]));
+
+    const missingValidity = structuredClone(snapshot);
+    delete missingValidity.heapPhaseValidity;
+    expect(sceneMemorySnapshotPhaseErrors(
+      missingValidity, true, phaseThresholdBytes,
+    )).toEqual(['heap phase validity evidence is detached from the retained raw passes']);
+
+    const reordered = structuredClone(snapshot);
+    reordered.heapPhasePasses.reverse();
+    expect(sceneMemorySnapshotPhaseErrors(
+      reordered, true, phaseThresholdBytes,
+    )).toContain('heap phase pass order/labels are invalid');
+
+    const wrongToken = structuredClone(snapshot);
+    wrongToken.heapPhasePasses[0].answerability.token = snapshot.label;
+    expect(sceneMemorySnapshotPhaseErrors(
+      wrongToken, true, phaseThresholdBytes,
+    )).toContain('heap phase pass 1 answerability target carrier is invalid');
+
+    const detachedDocument = structuredClone(snapshot);
+    detachedDocument.heapPhasePasses[1].raw.scene.documentToken = 'detached-document';
+    expect(sceneMemorySnapshotPhaseErrors(
+      detachedDocument, true, phaseThresholdBytes,
+    )).toContain('heap phase pass 2 resource carrier is detached from answerability');
+
+    const clonedValidity = structuredClone(snapshot);
+    const retainedPasses = clonedValidity.heapPhasePasses;
+    const retainedValidity = clonedValidity.heapPhaseValidity;
+    Object.assign(clonedValidity, structuredClone(retainedPasses[2]));
+    clonedValidity.label = snapshot.label;
+    clonedValidity.answerability.token = snapshot.label;
+    clonedValidity.heapPhasePasses = retainedPasses;
+    clonedValidity.heapPhaseValidity = retainedValidity;
+    expect(sceneMemorySnapshotPhaseErrors(
+      clonedValidity, true, phaseThresholdBytes,
+    )).toContain('heap phase ticker progression is invalid between passes 3 and 4');
+
+    const detached = structuredClone(snapshot);
+    detached.heapPhasePasses[2].heapAggregateBytes++;
+    expect(sceneMemorySnapshotPhaseErrors(
+      detached, true, phaseThresholdBytes,
+    )).toEqual(expect.arrayContaining([
+      'heap phase pass 3 heap aggregate is detached from raw counters',
+      'heap phase validity deltas are absent or invalid',
+      'heap phase validity evidence is detached from the retained raw passes',
+    ]));
+
+    const drifted = structuredClone(snapshot);
+    drifted.heapPhasePasses[2].raw.compendium.artLive = { changed: true };
+    expect(sceneMemorySnapshotPhaseErrors(
+      drifted, true, phaseThresholdBytes,
+    )).toContain('heap phase validity resource fingerprint drifted between passes 3 and 4');
+
+    const forged = structuredClone(snapshot);
+    forged.heap = {
+      ...forged.heap,
+      usedSize: forged.heap.usedSize + phaseThresholdBytes + 1,
+    };
+    forged.heapAggregateBytes += phaseThresholdBytes + 1;
+    expect(forged.heapPhaseValidity.status).toBe('valid');
+    expect(sceneMemorySnapshotPhaseErrors(
+      forged, true, phaseThresholdBytes,
+    )).toEqual(expect.arrayContaining([
+      `usedSize absolute phase delta ${phaseThresholdBytes + 1} exceeded ceiling ${phaseThresholdBytes}`,
+      `aggregate absolute phase delta ${phaseThresholdBytes + 1} exceeded ceiling ${phaseThresholdBytes}`,
+      'heap phase validity evidence is detached from the retained raw passes',
+    ]));
+  });
+
+  it('preserves the historical fixed-second pair oracle for retained evidence', () => {
+    const snapshot: any = structuredClone(
+      retainedReports().at(-1)!.profiles.phone.measured[0],
+    );
+    expect(sceneMemorySnapshotPairErrors(snapshot, true)).toEqual([]);
     expect(sceneMemorySnapshotPairErrors({})).toEqual(['heap phase probe is absent']);
 
     const reordered = structuredClone(snapshot);
@@ -583,21 +886,87 @@ describe('scene-memory terminal verifier', () => {
     }
   });
 
-  it('keeps genuine retained backing growth red in both fixed snapshot lanes', () => {
-    const pair = (probe: number, scored: number) => ({
-      probe: { heap: { backingStorageSize: probe } },
-      scored: { heap: { backingStorageSize: scored } },
+  it('derives the next fixed phase threshold without widening beyond the hard cap', () => {
+    for (const [maximum, threshold] of [
+      [0, 4_096], [4_095, 4_096], [4_096, 8_192], [8_191, 8_192],
+      [8_192, 16_384], [16_383, 16_384], [16_384, 32_768], [32_767, 32_768],
+      [32_768, 65_536], [65_535, 65_536], [65_536, null],
+    ] as const) {
+      expect(sceneMemoryPhaseThresholdForMaximum(maximum), String(maximum)).toBe(threshold);
+    }
+    expect(() => sceneMemoryPhaseThresholdForMaximum(-1)).toThrow(
+      'heap phase calibration maximum must be a nonnegative integer',
+    );
+    expect(() => sceneMemoryPhaseThresholdForMaximum(1.5)).toThrow(
+      'heap phase calibration maximum must be a nonnegative integer',
+    );
+  });
+
+  it('projects the maximum from exactly 10 retained profile snapshots', async () => {
+    const phaseThresholdBytes = 4 * 1024;
+    const base = { usedSize: 100_000, embedderHeapUsedSize: 200_000, backingStorageSize: 300_000 };
+    const snapshots = [];
+    for (let index = 0; index < 10; index++) {
+      const scored = {
+        ...base,
+        embedderHeapUsedSize: base.embedderHeapUsedSize + (index + 1) * 31,
+      };
+      snapshots.push(await sceneMemoryCollectFixedSnapshot({
+        ...snapshotHarness([base, base, base, scored]),
+        sessionId: 'snapshot-session', profile: 'desktop', label: `desktop-phase-${index}`,
+        phaseThresholdBytes, stableResourcesRequired: true,
+      }));
+    }
+    const measurement = {
+      initial: snapshots[0],
+      warmups: snapshots.slice(1, 5),
+      measured: snapshots.slice(5, 9),
+      bfcacheSnapshot: snapshots[9],
+    };
+    const maximum = sceneMemoryProfilePhaseMaximum(measurement);
+    expect(maximum).toMatchObject({
+      snapshotCount: 10,
+      fieldCount: 4,
+      maximumBytes: 310,
     });
-    expect(sceneMemoryHeapPhaseControlSlopes([
-      pair(512_000, 500_000), pair(1_024_000, 1_012_000),
-      pair(1_536_000, 1_524_000), pair(2_048_000, 2_036_000),
-    ])).toEqual({ probe: 512_000, scored: 512_000 });
+    expect(maximum.deltas).toHaveLength(10);
+    expect(maximum.deltas.at(-1)).toEqual({
+      usedSize: 0,
+      embedderHeapUsedSize: 310,
+      backingStorageSize: 0,
+      aggregate: 310,
+    });
+    expect(() => sceneMemoryProfilePhaseMaximum({
+      ...measurement, warmups: measurement.warmups.slice(1),
+    })).toThrow('heap phase calibration profile must retain exactly 10 snapshots');
+  });
+
+  it('keeps genuine 512 KiB/cycle retained growth visible in all four fixed lanes', () => {
+    const retainedPerCycle = 512 * 1024;
+    const snapshot = (cycle: number) => {
+      const lanes = [10_000, 20_000, 30_000, 40_000]
+        .map((offset) => offset + cycle * retainedPerCycle);
+      return {
+        heapPhasePasses: lanes.slice(0, 3).map((backingStorageSize) => ({
+          heap: { backingStorageSize },
+        })),
+        heap: { backingStorageSize: lanes[3] },
+      };
+    };
+    const snapshots = [1, 2, 3, 4].map(snapshot);
+    expect(sceneMemoryHeapPhaseControlSlopes(snapshots)).toEqual({
+      pass1: retainedPerCycle,
+      pass2: retainedPerCycle,
+      pass3: retainedPerCycle,
+      pass4: retainedPerCycle,
+    });
     expect(() => sceneMemoryHeapPhaseControlSlopes([
-      pair(1, 1), pair(2, 2), pair(3, 3),
-    ])).toThrow('heap phase control requires four fixed pairs');
-    expect(() => sceneMemoryHeapPhaseControlSlopes([
-      pair(1, 1), pair(2, 2), pair(3, 3), pair(4, Number.NaN),
-    ])).toThrow('heap phase control scored backing sample is invalid');
+      snapshot(1), snapshot(2), snapshot(3),
+    ])).toThrow('heap phase control requires four fixed snapshots');
+    const invalid = structuredClone(snapshots);
+    invalid[3]!.heap.backingStorageSize = Number.NaN;
+    expect(() => sceneMemoryHeapPhaseControlSlopes(invalid))
+      .toThrow('heap phase control pass 4 backing sample is invalid');
   });
 
   it('attempts each exact profile once and never reinvokes after a failure', async () => {
@@ -638,6 +1007,47 @@ describe('scene-memory terminal verifier', () => {
       expect(duplicated, token).not.toBe(collectorSource);
       expect(profileAttemptBindingErrors(duplicated), token).toContain(token);
     }
+  });
+
+  it('stages every invalid phase carrier before a plain pre-contract instrument stop', () => {
+    expect(phaseInvalidityStagingErrors(collectorSource)).toEqual([]);
+    const swapped = collectorSource.replace(
+      'onProgress(measurement);\n    assertSceneMemoryHeapPhaseSnapshot(',
+      'assertSceneMemoryHeapPhaseSnapshot(\n    onProgress(measurement);',
+    );
+    expect(swapped).not.toBe(collectorSource);
+    expect(phaseInvalidityStagingErrors(swapped)).toContain(
+      'initial phase evidence is not staged before its instrument assertion',
+    );
+    const productRed = collectorSource.replace(
+      'assert(errors.length === 0,\n    `${profile} ${label}: fixed fourth snapshot phase is invalid',
+      'productAssert(errors.length === 0,\n    `${profile} ${label}: fixed fourth snapshot phase is invalid',
+    );
+    expect(productRed).not.toBe(collectorSource);
+    expect(phaseInvalidityStagingErrors(productRed)).toContain(
+      'phase invalidity is not a plain instrument assertion',
+    );
+  });
+
+  it('requires calibration-required at the tracked source commit and binds its exact blob', () => {
+    expect(calibrationBoundaryBindingErrors(collectorSource)).toEqual([]);
+    const activeCalibration = collectorSource.replace(
+      "assert(boundaryBudget.status === 'calibration-required',",
+      "assert(boundaryBudget.status === 'active',",
+    );
+    expect(activeCalibration).not.toBe(collectorSource);
+    expect(calibrationBoundaryBindingErrors(activeCalibration)).toContain(
+      "assert(boundaryBudget.status === 'calibration-required',",
+    );
+
+    const detachedCommit = collectorSource.replace(
+      "'show', `${report.source.begin.commit}:${CALIBRATION_BUDGET_RELATIVE_PATH}`",
+      "'show', `HEAD:${CALIBRATION_BUDGET_RELATIVE_PATH}`",
+    );
+    expect(detachedCommit).not.toBe(collectorSource);
+    expect(calibrationBoundaryBindingErrors(detachedCommit)).toContain(
+      "'show', `${report.source.begin.commit}:${CALIBRATION_BUDGET_RELATIVE_PATH}`",
+    );
   });
 
   it('keeps the protected veteran baseline exact except for the existing null view seat', () => {
@@ -1012,22 +1422,23 @@ describe('scene-memory terminal verifier', () => {
     expect(result.errors).toContain('verification requires the same tracked --budget');
   });
 
-  it('rejects a PASS-shaped report that does not score the fixed second snapshot pass', () => {
+  it('rejects a PASS-shaped report that does not score the fixed fourth snapshot pass', () => {
     const result = verifyReport({
-      schema: 'cf-v2-scene-memory-report/v4',
-      runId: 'tampered-fixed-second-policy',
+      schema: 'cf-v2-scene-memory-report/v5',
+      runId: 'tampered-fixed-fourth-policy',
       status: 'pass',
       lifecycle: { schema: 'cf-v2-scene-memory-report-lifecycle/v1', status: 'complete' },
       policy: {
         attemptCount: 1, automaticRetries: 0, warmupCycles: 4, measuredWarmCycles: 4,
-        snapshotPasses: 2, scoredSnapshotPass: 1,
+        snapshotPasses: 4, settlingPasses: 2, validityPasses: [3, 4],
+        scoredSnapshotPass: 3,
       },
       certification: 'contract-budget',
       cleanup: { browser: true, server: true, workspaceLock: true },
       inputs: { budget: null },
-    }, 'tampered-fixed-second-policy', { budgetFile: null });
+    }, 'tampered-fixed-fourth-policy', { budgetFile: null });
     expect(result.ok).toBe(false);
-    expect(result.errors).toContain('one-attempt/warm-cycle/fixed-second policy drifted');
+    expect(result.errors).toContain('one-attempt/warm-cycle/fixed-fourth phase policy drifted');
   });
 
   it('binds every Arc 1C product source into exact budget authority', () => {
@@ -1146,9 +1557,9 @@ describe('scene-memory terminal verifier', () => {
 
   it('negative control: no source-normalized schema, metric, or baseline binding is decorative', () => {
     const bindings = [
-      "const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v4';",
-      "const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v5';",
-      "schema: 'cf-v2-scene-memory-profile/v3'",
+      "const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v5';",
+      "const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v6';",
+      "const PROFILE_SCHEMA = 'cf-v2-scene-memory-profile/v4';",
       "schema: 'cf-v2-scene-memory-input/v5'",
       'documentToken: measurement.initial.raw.scene.documentToken,',
       'export function sceneMemoryInitialHeapProjection(heap) {',
