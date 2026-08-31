@@ -79,8 +79,11 @@
 > not run and that Slice is never retried. Its changed-source successor now places only this isolated
 > synthetic post-durable publication-failure scenario in production assurance.
 >
-> **Current assurance split (2026-08-31; browser-free green):** full Slice and named verification
-> require exactly one explicit `develop|production` profile. Develop retains ordinary Capture and
+> **Current assurance split (2026-08-31; browser-free green):** signed
+> `186b653456542588c2e4fe5db46234ccdebeb1d0` passed **253/253 files / 2,548 tests / 1 skipped**,
+> all three strict TypeScript programs, 34 art sources, 1,014/1,014 routes and 454 specification
+> fields. Full Slice and named verification require exactly one explicit `develop|production`
+> profile. Develop retains ordinary Capture and
 > progression, pending/no-optimism, storage refusal, stale convergence, miss, burn-down and disabled
 > suppression; production adds the synthetic publication-failure browser scenario. Its corrected
 > shared assessor binds Capture action authority at `R+1` and the Arc 9 progression fixed point at
