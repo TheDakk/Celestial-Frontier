@@ -8,7 +8,8 @@
 > with **3 findings / 3 scopes**; Glass did not run and no preview was published. The Slice roots
 > were whole-`style` restoration instrument false reds after correct phone geometry mutants.
 >
-> The local successor changes only the Slice property carrier and causal-stop tests; no
+> Exact SSH-signed source `4822cab92ae3f300635ef16678f860f60a6872e8` changes only the Slice
+> property carrier and causal-stop tests; no
 > creature/genome/art/biome structure or preview rule changed. The full develop profile is green at
 > **253 files / 2,557 passed / 1 skipped**, all three TypeScript programs, **34** art sources,
 > **1,014** routes and **454** declared specification fields. The **77-bullet** bulletin retains

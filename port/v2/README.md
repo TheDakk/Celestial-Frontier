@@ -9,7 +9,8 @@
 > run. The phone geometry controls turned red as designed, then whole serialized `style` equality
 > falsely rejected restoration; the later protected-save finding is a dependent cascade.
 >
-> The local successor is instrument-only. It carries exact CSS value/priority pairs for Prime
+> Exact SSH-signed instrument/evidence source `4822cab92ae3f300635ef16678f860f60a6872e8` is
+> instrument-only. It carries exact CSS value/priority pairs for Prime
 > `display/top/left/transform`, Prime-over-overlay `display`, and Guide `min-height`; restores absent
 > properties by removal; preserves unrelated inline publication; and immediately causal-stops a red
 > base/control/restoration. The complete develop boundary is green at **253 files / 2,557 passed /

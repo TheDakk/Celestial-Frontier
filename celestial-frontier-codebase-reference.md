@@ -9,7 +9,8 @@
 > then falsely rejected restoration, and the non-stopped run later produced a dependent
 > protected-save harness cascade. Product presentation was green at the causal boundary.
 >
-> The local successor changes only Slice evidence code and tests. One shared browser-free-tested
+> Exact SSH-signed instrument/evidence source `4822cab92ae3f300635ef16678f860f60a6872e8`
+> changes only Slice evidence code and tests. One shared browser-free-tested
 > helper captures/restores/inspects exact value/priority pairs for each owned property; absent
 > properties are removed, unrelated inline declarations survive, intermediate/final restoration is
 > reproved, and affected base/control/restoration reds causal-stop immediately. Creature/genome,

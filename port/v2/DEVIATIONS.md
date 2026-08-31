@@ -9,7 +9,8 @@
 > a whole-`style` restoration comparison falsely rejected them, then execution continued into a
 > dependent protected-save cascade.
 >
-> The local successor is an evidence-instrument correction, not a product deviation. It snapshots
+> Exact SSH-signed source `4822cab92ae3f300635ef16678f860f60a6872e8` is an
+> evidence-instrument correction, not a product deviation. It snapshots
 > only owned CSS property values/priorities, restores absent properties by removal, preserves
 > unrelated inline declarations, rechecks restoration, and causal-stops each affected phone
 > base/control/restoration red. It adds no creature/genome/art/biome structural deviation. The full

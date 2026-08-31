@@ -11,7 +11,8 @@
 > protected-save finding is a dependent cascade. Exact evidence is retained under `audits/`, and
 > 4002 will not be retried.
 >
-> The local successor changes only the Slice instrument and its contracts: it captures/restores
+> Exact SSH-signed instrument/evidence source `4822cab92ae3f300635ef16678f860f60a6872e8`
+> changes only the Slice instrument and its contracts: it captures/restores
 > exact value/priority pairs for each owned CSS property, removes originally absent properties,
 > preserves unrelated inline publication, rechecks intermediate/final restoration, and immediately
 > causal-stops every affected phone base/control/restoration red. Product CSS and all creature,
