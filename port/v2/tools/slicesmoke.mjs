@@ -54,6 +54,7 @@ import {
   projectCompendiumFeedWebAudioGraph,
   selectArc5FeedFixtureBurnVerb,
   assessTrainingBusyRefusalPrecondition,
+  assessLazyOwnerOriginGate,
   beginF4GreenContinuation,
   buildLazyRefillObservationExpression,
   classifyCompendiumDetailReceipt,
@@ -1409,20 +1410,31 @@ const URL4 = 'http://127.0.0.1:' + server4.address().port + '/';   /* isolated d
 const serveDist = server.listeners('request')[0];
 let slowSpeciesOpen = false;
 const slowSpeciesRequests = [];
-const server5 = http.createServer((req, res) => {
+const slowSpeciesAttempts = [];
+const slowSpeciesHandler = (owner) => (req, res) => {
   if (req.url?.split('?')[0] === '/seed.html') {
     res.writeHead(200, { 'content-type': 'text/html' });
     res.end('<!doctype html><meta charset="utf-8"><title>seed</title>');
     return;
   }
-  if (!slowSpeciesOpen && (req.url || '').split('?')[0] === candidateSpeciesPainterPath) {
-    slowSpeciesRequests.push({ req, res });
-    return;
+  if ((req.url || '').split('?')[0] === candidateSpeciesPainterPath) {
+    slowSpeciesAttempts.push({ owner });
+    if (!slowSpeciesOpen) {
+      slowSpeciesRequests.push({ req, res, owner });
+      return;
+    }
   }
   serveDist(req, res);
-});
+};
+const server5 = http.createServer(slowSpeciesHandler('live'));
 await new Promise((r) => server5.listen(0, '127.0.0.1', r));
 const URL5 = 'http://127.0.0.1:' + server5.address().port + '/';   /* isolated, network-gated lazy-art focus outcome */
+const server5Closed = http.createServer(slowSpeciesHandler('closed'));
+await new Promise((r) => server5Closed.listen(0, '127.0.0.1', r));
+const URL5_CLOSED = 'http://127.0.0.1:' + server5Closed.address().port + '/';
+if (new URL(URL5).origin === new URL(URL5_CLOSED).origin) {
+  throw new Error('lazy-art live and closed owners require separate persistence origins');
+}
 const releaseSlowSpecies = () => {
   if (slowSpeciesOpen) return;
   slowSpeciesOpen = true;
@@ -1457,7 +1469,7 @@ try {
     onEvent: (event) => events.push(event),
   });
 } catch (error) {
-  server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server6.close(); server7.close(); server8.close();
+  server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server5Closed.close(); server6.close(); server7.close(); server8.close();
   server9.close(); server10.close(); server11.close();
   throw error;
 }
@@ -22353,32 +22365,41 @@ try {
      prefetch. One document proves neutral placeholders become exact 132px
      images in place without replacing Close/rows or focus. A second document
      closes the owning Compendium before the same chunk is released and proves
-     that the stale completion cannot refill or commit into the closed panel. */
+     that the stale completion cannot refill or commit into the closed panel.
+     The two owners deliberately use separate origins: sharing IndexedDB/F4
+     authority would make ordinary tab lifecycle checkpoints replace the other
+     document while this unrelated lazy-art outcome is being measured. Both
+     origins still feed one request ledger and one release latch below. */
+  const seedLazyVeteran = async (sessionId, originUrl, label) => {
+    const expectedOrigin = new URL(originUrl).origin;
+    let seedReady = false;
+    for (let i = 0; i < 100 && !seedReady; i++) {
+      try {
+        const r = await send('Runtime.evaluate', { expression: `location.origin===${JSON.stringify(expectedOrigin)}&&location.pathname==='/seed.html'&&document.readyState!=='loading'`, returnByValue: true }, sessionId);
+        seedReady = !r.exceptionDetails && r.result.value === true;
+      } catch { /* navigation context not installed yet */ }
+      if (!seedReady) await sleep(25);
+    }
+    if (!seedReady) throw new Error(`${label} seed document did not become ready on its exact origin`);
+    const seedResult = await send('Runtime.evaluate', { expression: `new Promise((resolve,reject)=>{ const stores=${JSON.stringify([
+      'meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'assetcache',
+    ])},q=indexedDB.open('cf-v2-slice',1);
+      q.onupgradeneeded=()=>{ const db=q.result; for(const store of stores) if(!db.objectStoreNames.contains(store)) db.createObjectStore(store); };
+      q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite');
+        tx.objectStore('meta').put(${JSON.stringify(VETERAN_RAW)},'save'); tx.oncomplete=()=>{db.close();resolve(true)};
+        tx.onerror=()=>reject(tx.error); }; })`, returnByValue: true, awaitPromise: true }, sessionId);
+    if (seedResult.exceptionDetails || seedResult.result.value !== true) {
+      throw new Error(`${label} veteran seed failed: `
+        + JSON.stringify(seedResult.exceptionDetails || seedResult.result));
+    }
+  };
   const tLazy = await send('Target.createTarget', { url: URL5 + 'seed.html' });
   const aLazy = await send('Target.attachToTarget', { targetId: tLazy.targetId, flatten: true });
   const lazy = aLazy.sessionId;
   await send('Runtime.enable', {}, lazy);
   await send('Page.enable', {}, lazy);
   await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, lazy);
-  let seedReady = false;
-  for (let i = 0; i < 100 && !seedReady; i++) {
-    try {
-      const r = await send('Runtime.evaluate', { expression: `location.pathname==='/seed.html'&&document.readyState!=='loading'`, returnByValue: true }, lazy);
-      seedReady = !r.exceptionDetails && r.result.value === true;
-    } catch { /* navigation context not installed yet */ }
-    if (!seedReady) await sleep(25);
-  }
-  if (!seedReady) throw new Error('lazy-art seed document did not become ready');
-  const seedResult = await send('Runtime.evaluate', { expression: `new Promise((resolve,reject)=>{ const stores=${JSON.stringify([
-    'meta', 'player', 'creatures', 'catalog', 'inventory', 'settings', 'journal', 'assetcache',
-  ])},q=indexedDB.open('cf-v2-slice',1);
-    q.onupgradeneeded=()=>{ const db=q.result; for(const store of stores) if(!db.objectStoreNames.contains(store)) db.createObjectStore(store); };
-    q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readwrite');
-      tx.objectStore('meta').put(${JSON.stringify(VETERAN_RAW)},'save'); tx.oncomplete=()=>{db.close();resolve(true)};
-      tx.onerror=()=>reject(tx.error); }; })`, returnByValue: true, awaitPromise: true }, lazy);
-  if (seedResult.exceptionDetails || seedResult.result.value !== true) {
-    throw new Error('lazy-art veteran seed failed: ' + JSON.stringify(seedResult.exceptionDetails || seedResult.result));
-  }
+  await seedLazyVeteran(lazy, URL5, 'lazy-art live owner');
   const lazyDocumentToken = await navigateToSlice(lazy, URL5, 'slow species-art veteran boot');
   const evalLazy = async (expr, { timeoutMs } = {}) => {
     const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, lazy,
@@ -22416,13 +22437,16 @@ try {
         &&descriptions[index].text==='Item '+(Number(row.dataset.ci)+1)+' of 3')
         &&new Set(descriptions.map(item=>item.id)).size===rows.length}; })()`);
 
-  const tLazyClosed = await send('Target.createTarget', { url: 'about:blank' });
+  const tLazyClosed = await send('Target.createTarget', { url: URL5_CLOSED + 'seed.html' });
   const aLazyClosed = await send('Target.attachToTarget', { targetId: tLazyClosed.targetId, flatten: true });
   const lazyClosed = aLazyClosed.sessionId;
   await send('Runtime.enable', {}, lazyClosed);
   await send('Page.enable', {}, lazyClosed);
   await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, lazyClosed);
-  const lazyClosedDocumentToken = await navigateToSlice(lazyClosed, URL5, 'slow species-art closed-owner boot');
+  await seedLazyVeteran(lazyClosed, URL5_CLOSED, 'lazy-art closed owner');
+  const lazyClosedDocumentToken = await navigateToSlice(
+    lazyClosed, URL5_CLOSED, 'slow species-art closed-owner boot',
+  );
   const evalLazyClosed = async (expr, { timeoutMs } = {}) => {
     const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, lazyClosed,
       timeoutMs === undefined ? undefined : { timeoutMs });
@@ -22533,10 +22557,24 @@ try {
   const lazyClosedArmed = await evalLazyClosed(`(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return {
     mode:d.panel.mode,listImages:d.surfaces.list.imageCount,focus:document.activeElement?.id||null,
     closedCompletionCommits:d.panel.closedCompletionCommits,renderCommits:d.panel.renderCommits}})()`);
+  const assessCurrentLazyOwnerOriginGate = () => assessLazyOwnerOriginGate({
+    liveOrigin: new URL(URL5).origin,
+    closedOrigin: new URL(URL5_CLOSED).origin,
+    requestOwners: slowSpeciesAttempts.map((request) => request.owner).sort(),
+  });
+  let slowRequestOwners = [];
+  let lazyOwnerOriginGate = assessCurrentLazyOwnerOriginGate();
   let slowRequestObserved = false;
   for (let i = 0; i < 100 && !slowRequestObserved; i++) {
-    slowRequestObserved = slowSpeciesRequests.length > 0;
+    slowRequestOwners = slowSpeciesAttempts.map((request) => request.owner).sort();
+    lazyOwnerOriginGate = assessCurrentLazyOwnerOriginGate();
+    slowRequestObserved = lazyOwnerOriginGate.ok;
     if (!slowRequestObserved) await sleep(25);
+  }
+  if (!lazyOwnerOriginGate.ok) {
+    throw new Error('slow Compendium isolated-origin request gate failed before release: '
+      + JSON.stringify({ gate: lazyOwnerOriginGate, slowRequestOwners,
+        held: slowSpeciesRequests.length }));
   }
   if (!slowRequestObserved || !lazyBefore.placeholders || !lazyBefore.focus || !lazyBefore.group
     || !lazyBefore.nativePositions || lazyBefore.closeLabel !== 'Close Compendium'
@@ -22546,7 +22584,7 @@ try {
     || lazyClosedArmed.renderCommits !== lazyClosedBefore.renderCommits) {
     fails.push('COMPENDIUM LAZY PLACEHOLDER/CLOSED OWNER: held chunk did not establish both exact owner states: '
       + JSON.stringify({ slowRequestObserved, lazyBefore, lazyClosedBefore, lazyClosedArmed,
-        held: slowSpeciesRequests.length }));
+        lazyOwnerOriginGate, slowRequestOwners, held: slowSpeciesRequests.length }));
   }
   /* The second target now exists, so this owner's foreground authority is no
      longer implicit. Reclaim the exact first target and service one production-shaped
@@ -22555,6 +22593,12 @@ try {
     'slow Compendium live owner');
   const lazyRefillTimeoutMs = 30000;
   const lazyRefillDeadline = performance.now() + lazyRefillTimeoutMs;
+  const lazyReleaseOriginGate = assessCurrentLazyOwnerOriginGate();
+  if (!lazyReleaseOriginGate.ok) {
+    throw new Error('slow Compendium request inventory changed before release: '
+      + JSON.stringify({ gate: lazyReleaseOriginGate,
+        requestOwners: slowSpeciesAttempts.map((request) => request.owner).sort() }));
+  }
   releaseSlowSpecies();
   const lazyRefillObservationExpression = buildLazyRefillObservationExpression(
     lazyForegroundObservationExpression,
@@ -22700,6 +22744,12 @@ try {
   }
   await send('Target.closeTarget', { targetId: tLazy.targetId });
   await send('Target.closeTarget', { targetId: tLazyClosed.targetId });
+  const lazyFinalOriginGate = assessCurrentLazyOwnerOriginGate();
+  if (!lazyFinalOriginGate.ok) {
+    throw new Error('slow Compendium final request inventory drifted after settlement: '
+      + JSON.stringify({ gate: lazyFinalOriginGate,
+        requestOwners: slowSpeciesAttempts.map((request) => request.owner).sort() }));
+  }
 
   /* 4d. THE PHONE LEG (emulated): 390×844 @ DPR 3, touch. The physical
      hand-feel stays Nick's; this catches layout, touch wiring and pinch. */
@@ -26088,7 +26138,7 @@ try {
 } finally {
   releaseSlowSpecies();
   try { await browser.close(); } catch (e) { fails.push('browser close: ' + e.message); }
-  server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server6.close(); server7.close(); server8.close();
+  server.close(); server2.close(); server3.close(); server4.close(); server5.close(); server5Closed.close(); server6.close(); server7.close(); server8.close();
   server9.close(); server10.close(); server11.close();
 }
 

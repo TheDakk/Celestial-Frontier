@@ -69,6 +69,17 @@ quarantined SceneMemory current-product identity now binds only production while
 remain universal. One clean signed-source local browser chain remains pending. This local work
 authorizes no push, label, hosted run, Ready transition or merge.
 
+Signed successor `c874a0a885b21149c035655595cc4228d0f746fd` passed the fast develop boundary,
+Edge preflight and one/no-retry Compendium run `20260831052802338-59770-918159f6ee` plus named
+verification. Exact-source Slice run `20260831052927052-60087-377aa7295a5e` then stopped
+terminal-red after **218,797 ms** with exactly one harness scope; Glass did not run. The live and
+closed lazy-art pages incorrectly shared one persistence/F4 origin, so ordinary foreground
+lifecycle checkpoints correctly made the returning document revision-stale and replaced it before
+the foreground receipt. The bounded dirty successor isolates those owners on two ephemeral origins
+while retaining one exact role-tagged held-chunk release, append-only request-attempt controls and
+strict null/stale-document refusal. The c874 red is preserved and will not be retried. No hosted
+attempt, push, label, Ready transition or merge is authorized for c874 or its pending successor.
+
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
 initially set this mode after exhausting the private-repository monthly allowance of **3,000**.

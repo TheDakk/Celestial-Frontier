@@ -7,7 +7,7 @@ import { getReleaseHistory, V2_DRAFT_RELEASE } from '../apps/game/src/release-co
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { assessArc4EpochSnapshot } from '../tools/arc4-browser-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
-import { buildLazyRefillObservationExpression } from '../tools/slicesmoke-contract.mjs';
+import { assessLazyOwnerOriginGate, buildLazyRefillObservationExpression, classifyForegroundServiceTurn } from '../tools/slicesmoke-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
 import { hasUnnegatedSentenceClaim } from '../tools/engineering-browser-contract.mjs';
 
@@ -1803,6 +1803,126 @@ describe('sixth Slice red contract repairs', () => {
       ['exact tail selected',
         'progressionTail: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION,\n  });\n  if (!publishNativeArmed'],
     ]);
+  });
+
+  it('isolates lazy-art persistence owners while retaining one exact held release', () => {
+    const serverOwner = section(
+      sliceSource,
+      'let slowSpeciesOpen = false;',
+      'const server6 = http.createServer(serveDist);',
+    );
+    const runner = section(
+      sliceSource,
+      '  /* 4c-lazy-focus. Hold the actual Vite species-art chunk',
+      '  /* 4d. THE PHONE LEG (emulated):',
+    );
+    proveEachMarkerRequired(`${serverOwner}\n${runner}`, [
+      ['shared role-tagged handler', 'const slowSpeciesHandler = (owner) => (req, res) => {'],
+      ['append-only request-attempt ledger', 'slowSpeciesAttempts.push({ owner });'],
+      ['shared held-response queue', 'slowSpeciesRequests.push({ req, res, owner });'],
+      ['live origin server', "const server5 = http.createServer(slowSpeciesHandler('live'));"],
+      ['closed origin server', "const server5Closed = http.createServer(slowSpeciesHandler('closed'));"],
+      ['closed origin server listen',
+        "await new Promise((r) => server5Closed.listen(0, '127.0.0.1', r));"],
+      ['closed origin URL', "const URL5_CLOSED = 'http://127.0.0.1:' + server5Closed.address().port + '/';"],
+      ['startup origin inequality', 'new URL(URL5).origin === new URL(URL5_CLOSED).origin'],
+      ['one shared release drain',
+        'for (const request of slowSpeciesRequests.splice(0)) serveDist(request.req, request.res);'],
+      ['one factored veteran seed owner',
+        'const seedLazyVeteran = async (sessionId, originUrl, label) => {'],
+      ['exact seed origin readiness',
+        "location.origin===${JSON.stringify(expectedOrigin)}&&location.pathname==='/seed.html'"],
+      ['exact seed database version', "q=indexedDB.open('cf-v2-slice',1);"],
+      ['exact veteran primary seed',
+        "tx.objectStore('meta').put(${JSON.stringify(VETERAN_RAW)},'save');"],
+      ['live owner independent seed',
+        "await seedLazyVeteran(lazy, URL5, 'lazy-art live owner');"],
+      ['closed owner seed document',
+        "const tLazyClosed = await send('Target.createTarget', { url: URL5_CLOSED + 'seed.html' });"],
+      ['closed owner independent seed',
+        "await seedLazyVeteran(lazyClosed, URL5_CLOSED, 'lazy-art closed owner');"],
+      ['closed owner isolated navigation',
+        "lazyClosed, URL5_CLOSED, 'slow species-art closed-owner boot',"],
+      ['pure current-origin/request gate',
+        'const assessCurrentLazyOwnerOriginGate = () => assessLazyOwnerOriginGate({'],
+      ['exact append-only role inventory',
+        'slowRequestOwners = slowSpeciesAttempts.map((request) => request.owner).sort();'],
+      ['gate before release fail-stop',
+        "throw new Error('slow Compendium isolated-origin request gate failed before release: '"],
+      ['synchronous release revalidation',
+        'const lazyReleaseOriginGate = assessCurrentLazyOwnerOriginGate();'],
+      ['release-revalidation fail-stop',
+        "throw new Error('slow Compendium request inventory changed before release: '"],
+      ['single operational release', '  releaseSlowSpecies();'],
+      ['post-settlement final inventory',
+        'const lazyFinalOriginGate = assessCurrentLazyOwnerOriginGate();'],
+      ['post-settlement final fail-stop',
+        "throw new Error('slow Compendium final request inventory drifted after settlement: '"],
+    ]);
+    const startupCleanup = section(
+      sliceSource,
+      '} catch (error) {\n  server.close(); server2.close();',
+      'const send = browser.send;',
+    );
+    const finalCleanup = section(
+      sliceSource,
+      '} finally {\n  releaseSlowSpecies();',
+      '\n}\n\nif (fails.length) {',
+    );
+    expect(startupCleanup).toContain('server5.close(); server5Closed.close(); server6.close();');
+    expect(finalCleanup).toContain('server5.close(); server5Closed.close(); server6.close();');
+    const gateAt = runner.indexOf('if (!lazyReleaseOriginGate.ok)');
+    const releaseAt = runner.indexOf('  releaseSlowSpecies();');
+    const finalGateAt = runner.indexOf('const lazyFinalOriginGate = assessCurrentLazyOwnerOriginGate();');
+    expect(gateAt).toBeGreaterThanOrEqual(0);
+    expect(releaseAt).toBeGreaterThan(gateAt);
+    expect(finalGateAt).toBeGreaterThan(releaseAt);
+
+    const topology = {
+      liveOrigin: 'http://127.0.0.1:41001',
+      closedOrigin: 'http://127.0.0.1:41002',
+      requestOwners: ['closed', 'live'],
+    };
+    expect(assessLazyOwnerOriginGate(topology)).toEqual({ ok: true, reasons: [] });
+    expect(assessLazyOwnerOriginGate({ ...topology, closedOrigin: topology.liveOrigin }).reasons)
+      .toEqual(['distinct owner origins']);
+    for (const requestOwners of [
+      ['live'], ['closed'], ['live', 'live'], ['closed', 'live', 'unknown'],
+    ]) {
+      expect(assessLazyOwnerOriginGate({ ...topology, requestOwners }).reasons)
+        .toEqual(['one request attempt per isolated owner']);
+    }
+
+    const expected = {
+      targetId: 'lazy-live-target', documentToken: 'lazy-live-document',
+      serviceToken: 'lazy-live-service',
+    };
+    const pending = {
+      targetId: expected.targetId, documentToken: expected.documentToken,
+      visibilityState: 'visible', hidden: false, focused: true,
+      service: {
+        token: expected.serviceToken, visibilityChanges: 0, focusLosses: 0,
+        armVisibilityState: 'visible', armHidden: false, armFocused: true,
+        raf: false, rafVisibilityState: null, rafHidden: null, rafFocused: null,
+        laterTask: false, laterVisibilityState: null, laterHidden: null, laterFocused: null,
+      },
+    };
+    expect(classifyForegroundServiceTurn(pending, expected)).toEqual({
+      status: 'pending',
+      reasons: ['rendering opportunity pending', 'later task pending'],
+    });
+    expect(classifyForegroundServiceTurn({ ...pending, documentToken: null }, expected)).toEqual({
+      status: 'error',
+      reasons: ['document identity null', 'rendering opportunity pending', 'later task pending'],
+    });
+    expect(classifyForegroundServiceTurn({
+      ...pending,
+      service: {
+        ...pending.service,
+        raf: true, rafVisibilityState: 'visible', rafHidden: false, rafFocused: true,
+        laterTask: true, laterVisibilityState: 'visible', laterHidden: false, laterFocused: true,
+      },
+    }, expected)).toEqual({ status: 'ready', reasons: [] });
   });
 
   it('requires Window-owned Blob thumbnails and lifecycle-safe lazy-art observation', () => {
