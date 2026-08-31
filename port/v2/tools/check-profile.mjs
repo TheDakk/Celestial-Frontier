@@ -38,6 +38,20 @@ export function checkProfileCommands(profile) {
   return CHECK_PROFILE_COMMANDS[profile];
 }
 
+export function resolveCheckProfile(environment = process.env) {
+  const profile = environment.CF_V2_CHECK_PROFILE ?? 'dev';
+  checkProfileCommands(profile);
+  return profile;
+}
+
+export function checkProfileEnvironment(profile, environment = process.env) {
+  checkProfileCommands(profile);
+  return Object.freeze({
+    ...environment,
+    CF_V2_CHECK_PROFILE: profile,
+  });
+}
+
 export function checkCommandInvocation(
   name,
   args,
@@ -67,7 +81,7 @@ function runCheckCommand(profile, commandTokens, cwd) {
   console.log(`\n[check:${profile}] ${commandTokens.join(' ')}`);
   execFileSync(invocation.executable, invocation.args, {
     cwd,
-    env: process.env,
+    env: checkProfileEnvironment(profile, process.env),
     stdio: 'inherit',
     timeout: CHILD_TIMEOUT_MS,
   });

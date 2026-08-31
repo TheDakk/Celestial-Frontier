@@ -8,9 +8,12 @@ import {
   type CompendiumProducerAuthority,
 } from '../tools/compendiummem-contract.mjs';
 import { stableJson } from '../tools/compendiummem-fixture.mjs';
+// @ts-expect-error The executable static-profile owner intentionally has no declaration shim.
+import { resolveCheckProfile } from '../tools/check-profile.mjs';
 import {
   authorityMismatchPaths,
   collectCurrentProducerAuthorities,
+  producerAuthorityCheckProfileExitCode,
   producerAuthorityExitCode,
   type CurrentProducerAuthorities,
 } from '../tools/print-producer-authorities.mjs';
@@ -41,49 +44,73 @@ const compendiumBudget = readJson(path.join(
   v2Root, 'budgets', 'compendium-memory-v1.json',
 )) as CompendiumBudget;
 let current: CurrentProducerAuthorities;
+const activeCheckProfile = resolveCheckProfile();
 
 beforeAll(() => {
   current = collectCurrentProducerAuthorities();
 }, 60_000);
 
 describe('current producer authorities', () => {
-  it('binds both live memory budgets to independently built current bytes', () => {
-    expect(authorityMismatchPaths(
-      sceneBudget.authority.producer, current.sceneMemory.producer,
-    )).toEqual([]);
+  it('binds every live memory budget required by the active check profile', () => {
     expect(authorityMismatchPaths(
       compendiumBudget.measurementAuthority, current.compendium.measurement,
     )).toEqual([]);
     expect(authorityMismatchPaths(
       compendiumBudget.producerAuthority, current.compendium.producer,
     )).toEqual([]);
-    expect(current.sceneMemory).toMatchObject({
-      budgetMatches: true,
-      budgetMismatches: [],
-    });
     expect(current.compendium).toMatchObject({
       measurementBudgetMatches: true,
       measurementBudgetMismatches: [],
       producerBudgetMatches: true,
       producerBudgetMismatches: [],
     });
-    expect(producerAuthorityExitCode(current)).toBe(0);
+    if (activeCheckProfile === 'production') {
+      expect(authorityMismatchPaths(
+        sceneBudget.authority.producer, current.sceneMemory.producer,
+      )).toEqual([]);
+      expect(current.sceneMemory).toMatchObject({
+        budgetMatches: true,
+        budgetMismatches: [],
+      });
+    }
+    expect(producerAuthorityCheckProfileExitCode(current, activeCheckProfile)).toBe(0);
 
-    for (const stale of [
-      {
-        ...current,
-        sceneMemory: { ...current.sceneMemory, budgetMatches: false },
+    const allAuthoritiesGreen = {
+      ...current,
+      sceneMemory: { ...current.sceneMemory, budgetMatches: true },
+    };
+    const staleScene = {
+      ...allAuthoritiesGreen,
+      sceneMemory: { ...allAuthoritiesGreen.sceneMemory, budgetMatches: false },
+    };
+    const staleMeasurement = {
+      ...allAuthoritiesGreen,
+      compendium: {
+        ...allAuthoritiesGreen.compendium,
+        measurementBudgetMatches: false,
       },
-      {
-        ...current,
-        compendium: { ...current.compendium, measurementBudgetMatches: false },
+    };
+    const staleProducer = {
+      ...allAuthoritiesGreen,
+      compendium: {
+        ...allAuthoritiesGreen.compendium,
+        producerBudgetMatches: false,
       },
-      {
-        ...current,
-        compendium: { ...current.compendium, producerBudgetMatches: false },
-      },
-    ]) expect(producerAuthorityExitCode(stale)).toBe(2);
+    };
+    expect(producerAuthorityExitCode(allAuthoritiesGreen)).toBe(0);
+    for (const stale of [staleScene, staleMeasurement, staleProducer]) {
+      expect(producerAuthorityExitCode(stale)).toBe(2);
+    }
     expect(producerAuthorityExitCode(undefined)).toBe(2);
+    expect(producerAuthorityCheckProfileExitCode(staleScene, 'dev')).toBe(0);
+    expect(producerAuthorityCheckProfileExitCode(staleScene, 'develop')).toBe(0);
+    expect(producerAuthorityCheckProfileExitCode(staleScene, 'production')).toBe(2);
+    for (const profile of ['dev', 'develop', 'production']) {
+      expect(producerAuthorityCheckProfileExitCode(staleMeasurement, profile)).toBe(2);
+      expect(producerAuthorityCheckProfileExitCode(staleProducer, profile)).toBe(2);
+      expect(producerAuthorityCheckProfileExitCode(undefined, profile)).toBe(2);
+    }
+    expect(producerAuthorityCheckProfileExitCode(allAuthoritiesGreen, 'release')).toBe(2);
 
     const toolSource = fs.readFileSync(path.join(
       v2Root, 'tools', 'print-producer-authorities.mjs',

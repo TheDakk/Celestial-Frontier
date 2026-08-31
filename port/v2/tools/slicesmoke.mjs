@@ -55,6 +55,7 @@ import {
   selectArc5FeedFixtureBurnVerb,
   assessTrainingBusyRefusalPrecondition,
   beginF4GreenContinuation,
+  buildLazyRefillObservationExpression,
   classifyCompendiumDetailReceipt,
   classifyForegroundServiceTurn,
   classifyForegroundServiceTurnReceipt,
@@ -926,6 +927,26 @@ const F4_REPLACEMENT_EXPECTATION = (() => {
     || JSON.stringify(source?.ach) !== JSON.stringify(sourceUnlockedIds)
     || source?.br !== expectation.priorBestRankIndex) {
     throw new Error('F4 replacement progression fixture authority drifted');
+  }
+  return expectation;
+})();
+const DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION = (() => {
+  const expectation = Object.freeze({
+    revision: 3,
+    freshDocumentCommits: 1,
+    lastOutcome: 'arc9-progression-committed:3',
+    unlockedIds: F4_REPLACEMENT_EXPECTATION.successorUnlockedIds,
+    bestRank: 3,
+    receipt: Object.freeze({
+      ordinal: 0,
+      kind: 'arc9-progression-refresh-v1',
+      witness: 'arc9p1:951639d0daa5c423e6bfcb886c21c4ede752ad10e3b9de02699acc4eb3770929',
+    }),
+  });
+  if (JSON.stringify(GENUINE_TRAINING_CHECKPOINT.ac)
+      !== JSON.stringify(F4_REPLACEMENT_EXPECTATION.sourceUnlockedIds)
+    || GENUINE_TRAINING_CHECKPOINT.st.bestRank !== expectation.bestRank) {
+    throw new Error('D-TRAIN post-reload progression authority drifted');
   }
   return expectation;
 })();
@@ -19429,13 +19450,13 @@ try {
   const trainingRouteNeutralLedger = (state) => trainingSaveLedger(
     state, ['viewType', 'savedView', 'mined'],
   );
-  const trainingSurfaceLandAccepted = await evalIn(`(async()=>await window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)}))()`);
+  const trainingSurfaceLandAccepted = await evalIn(`(async()=>await window.__CF_SLICE__.api.__smokeRouteTrainingTo(${JSON.stringify(EARTH)}))()`);
   await sleep(180);
   const trainingSourceErrorSurface = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (!trainingSurfaceLandAccepted || trainingSourceErrorSurface.mode !== 'surface'
     || trainingSourceErrorSurface.planet !== 133 || trainingSourceErrorSurface.planetOrdinal !== 2
     || trainingRouteNeutralLedger(trainingSourceErrorSurface) !== trainingRouteNeutralLedger(trainingRestoreBoot)) {
-    fails.push('TRAINING SOURCE-ERROR SETUP: exact already-landed Earth route changed unrelated ledger or missed surface: '
+    failSliceWithoutCascade('TRAINING SOURCE-ERROR SETUP: exact already-landed Earth route changed unrelated ledger or missed surface: '
       + JSON.stringify({ accepted: trainingSurfaceLandAccepted, before: trainingRestoreBoot,
         after: trainingSourceErrorSurface }));
   }
@@ -20125,6 +20146,7 @@ try {
     route = 'sol',
     expectedRn,
     atlasFalseDefaults = false,
+    expectedAchievements = GENUINE_TRAINING_CHECKPOINT.ac,
   } = {}) => {
     const reasons = [];
     const require = (condition, reason) => { if (!condition) reasons.push(reason); };
@@ -20170,7 +20192,8 @@ try {
     require(canonicalJson(raw?.pstats) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.ps), 'checkpoint ps');
     require(raw?.hp === 55, 'outer live HP under restored ceiling');
     require(raw?.essence === GENUINE_TRAINING_CHECKPOINT.es, 'checkpoint es');
-    require(canonicalJson(raw?.ach) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.ac), 'checkpoint ac');
+    require(canonicalJson(raw?.ach) === canonicalJson(expectedAchievements),
+      'checkpoint/progression achievements');
     require(canonicalJson(raw?.cargo) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.ca), 'checkpoint ca');
     require(canonicalJson(raw?.cgx) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.cx), 'checkpoint cx');
     require(canonicalJson(raw?.items) === canonicalJson(GENUINE_TRAINING_CHECKPOINT.it), 'checkpoint it');
@@ -20198,6 +20221,7 @@ try {
   const dtrainRestoredRawOutcome = (raw, options) => dtrainRestoredRawAssessment(raw, options).ok;
   const assessDtrainArc2Restore = ({
     before, after, state, expectedRevision, expectedCommits, expectedLastOutcome,
+    progressionTail = null,
   }) => {
     const reasons = [];
     const require = (condition, reason) => { if (!condition) reasons.push(reason); };
@@ -20241,19 +20265,53 @@ try {
       && canonicalJson(state?.inventory?.equippedBindings) === canonicalJson(inventory?.equipped)
       && state?.persistence?.productBootstrapPending === false,
     'live checkpoint carrier publication');
+    const beforeSessionRng = before?.authority?.sessionRng;
+    const afterSessionRng = after?.authority?.sessionRng;
+    const expectedSessionOrdinal = progressionTail === null
+      ? beforeSessionRng?.ordinal : beforeSessionRng?.ordinal + 1;
     require(before?.authorityVersion === 1 && after?.authorityVersion === 1
       && before?.authorityJson === JSON.stringify(before?.authority)
       && after?.authorityJson === JSON.stringify(after?.authority)
-      && canonicalJson(after?.authority?.sessionRng) === canonicalJson(before?.authority?.sessionRng)
-      && canonicalJson(runtime?.sessionDraws) === canonicalJson(after?.authority?.sessionRng?.draws)
-      && runtime?.sessionSeed === after?.authority?.sessionRng?.seed
-      && runtime?.sessionOrdinal === after?.authority?.sessionRng?.ordinal,
-    'receiptless SessionRNG preservation');
-    require(canonicalJson(after?.receiptKeys) === canonicalJson(before?.receiptKeys)
-      && canonicalJson(after?.receiptRawRows) === canonicalJson(before?.receiptRawRows)
-      && canonicalJson(after?.receiptRows) === canonicalJson(before?.receiptRows)
-      && before?.carrierJson !== after?.carrierJson,
-    'receipt preservation and actual carrier replacement');
+      && afterSessionRng?.seed === beforeSessionRng?.seed
+      && canonicalJson(afterSessionRng?.draws) === canonicalJson(beforeSessionRng?.draws)
+      && afterSessionRng?.ordinal === expectedSessionOrdinal
+      && canonicalJson(runtime?.sessionDraws) === canonicalJson(afterSessionRng?.draws)
+      && runtime?.sessionSeed === afterSessionRng?.seed
+      && runtime?.sessionOrdinal === afterSessionRng?.ordinal,
+    progressionTail === null
+      ? 'receiptless SessionRNG preservation'
+      : 'exact post-reload progression SessionRNG tail');
+    const receiptPrefixExact = Array.isArray(before?.receiptKeys)
+      && Array.isArray(before?.receiptRawRows) && Array.isArray(before?.receiptRows)
+      && Array.isArray(after?.receiptKeys) && Array.isArray(after?.receiptRawRows)
+      && Array.isArray(after?.receiptRows)
+      && before.receiptKeys.length === before.receiptRawRows.length
+      && before.receiptKeys.length === before.receiptRows.length
+      && before.receiptKeys.every((key, index) => after.receiptKeys[index] === key
+        && after.receiptRawRows[index] === before.receiptRawRows[index]
+        && canonicalJson(after.receiptRows[index]) === canonicalJson(before.receiptRows[index]));
+    const receiptTailExact = progressionTail === null
+      ? receiptPrefixExact
+        && after?.receiptKeys?.length === before?.receiptKeys?.length
+        && after?.receiptRawRows?.length === before?.receiptRawRows?.length
+        && after?.receiptRows?.length === before?.receiptRows?.length
+      : receiptPrefixExact
+        && progressionTail.receipt?.ordinal === beforeSessionRng?.ordinal
+        && after?.receiptKeys?.length === before?.receiptKeys?.length + 1
+        && after?.receiptRawRows?.length === before?.receiptRawRows?.length + 1
+        && after?.receiptRows?.length === before?.receiptRows?.length + 1
+        && after.receiptKeys.at(-1) === `receipt:${progressionTail.receipt.ordinal}`
+        && after.receiptRawRows.at(-1) === JSON.stringify(progressionTail.receipt)
+        && canonicalJson(after.receiptRows.at(-1)) === canonicalJson(progressionTail.receipt);
+    require(receiptTailExact && before?.carrierJson !== after?.carrierJson,
+      progressionTail === null
+        ? 'receipt preservation and actual carrier replacement'
+        : 'exact post-reload progression receipt and carrier replacement');
+    if (progressionTail !== null) {
+      require(canonicalJson(state?.save?.unlocked) === canonicalJson(progressionTail.unlockedIds)
+        && state?.save?.stats?.bestRank === progressionTail.bestRank,
+      'post-reload progression publication');
+    }
     return { ok: reasons.length === 0, reasons };
   };
   const assessDtrainArc2Deferred = ({ before, after, state }) => {
@@ -20934,11 +20992,16 @@ try {
   const publishReleaseWitness = assessTrainingReleaseWitnesses(
     reloadReleaseWitnessesSince(sess, publishMark), { documentToken: publishBooted.token },
   );
-  const publishRawAssessment = dtrainRestoredRawAssessment(publishRaw);
+  const publishRawAssessment = dtrainRestoredRawAssessment(publishRaw, {
+    expectedAchievements: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION.unlockedIds,
+  });
   const publishRouteAssessment = dtrainStateRouteAssessment(publishDone, 'sol');
   const publishArc2Assessment = assessDtrainArc2Restore({
     before: publishBooted.loot, after: publishLootEvidence, state: publishDone,
-    expectedRevision: 2, expectedCommits: 0, expectedLastOutcome: null,
+    expectedRevision: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION.revision,
+    expectedCommits: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION.freshDocumentCommits,
+    expectedLastOutcome: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION.lastOutcome,
+    progressionTail: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION,
   });
   if (!publishNativeArmed || !publishArmed.button || !publishArmed.armed
     || !publishWitness.ok || publishWitness.entries.some((entry) => entry.stage === 'live-swap-complete')
@@ -20956,6 +21019,24 @@ try {
         rawAssessment: publishRawAssessment, routeAssessment: publishRouteAssessment,
         arc2Assessment: publishArc2Assessment, arc2Evidence: publishLootEvidence }));
   }
+  if (publishRawAssessment.ok) {
+    const captureOnlyRaw = structuredClone(publishRaw);
+    captureOnlyRaw.ach = GENUINE_TRAINING_CHECKPOINT.ac.slice();
+    const wrongTailRaw = structuredClone(publishRaw);
+    wrongTailRaw.ach = wrongTailRaw.ach.slice(0, -1);
+    const publishRawControls = {
+      captureOnly: dtrainRestoredRawAssessment(captureOnlyRaw, {
+        expectedAchievements: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION.unlockedIds,
+      }),
+      wrongAchievementTail: dtrainRestoredRawAssessment(wrongTailRaw, {
+        expectedAchievements: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION.unlockedIds,
+      }),
+    };
+    if (Object.values(publishRawControls).some((control) => control.ok)) {
+      fails.push('D-TRAIN POST-WRITE PROGRESSION RAW CONTROLS FAILED — an R+1 or incomplete achievement tail stayed green: '
+        + JSON.stringify(publishRawControls));
+    }
+  }
   /* Build mutation controls only from a complete green witness. A genuine
      missing carrier/authority is already red and must not become a harness
      TypeError while cloning nested evidence. */
@@ -20970,12 +21051,6 @@ try {
     stalePublishCarrier.inventoryRaw = JSON.stringify(stalePublishCarrier.inventoryRow);
     const stalePublishState = structuredClone(publishDone);
     stalePublishState.inventory = structuredClone(publishBooted.state.inventory);
-    const extraBootstrapEvidence = structuredClone(publishLootEvidence);
-    extraBootstrapEvidence.revision = 3;
-    extraBootstrapEvidence.revisionRaw = '3';
-    const extraBootstrapState = structuredClone(publishDone);
-    extraBootstrapState.persistence.runtime.revision = 3;
-    extraBootstrapState.persistence.runtime.commits = 1;
     const hiddenBootstrapOutcomeState = structuredClone(publishDone);
     hiddenBootstrapOutcomeState.persistence.lastOutcome = 'seed-committed:2';
     const rngDriftEvidence = structuredClone(publishLootEvidence);
@@ -20993,23 +21068,52 @@ try {
     stackableDriftEvidence.carrierJson = JSON.stringify(stackableDriftEvidence.arc2);
     stackableDriftEvidence.inventoryRow.extensions['arc2.loot'].json = stackableDriftEvidence.carrierJson;
     stackableDriftEvidence.inventoryRaw = JSON.stringify(stackableDriftEvidence.inventoryRow);
+    const captureOnlyEvidence = structuredClone(publishLootEvidence);
+    captureOnlyEvidence.revision = 2;
+    captureOnlyEvidence.revisionRaw = '2';
+    captureOnlyEvidence.authority = structuredClone(publishBooted.loot.authority);
+    captureOnlyEvidence.authorityJson = JSON.stringify(captureOnlyEvidence.authority);
+    captureOnlyEvidence.playerRow.extensions['f4.authority'] = structuredClone(
+      publishBooted.loot.playerRow.extensions['f4.authority'],
+    );
+    captureOnlyEvidence.playerRaw = JSON.stringify(captureOnlyEvidence.playerRow);
+    captureOnlyEvidence.receiptKeys = structuredClone(publishBooted.loot.receiptKeys);
+    captureOnlyEvidence.receiptRawRows = structuredClone(publishBooted.loot.receiptRawRows);
+    captureOnlyEvidence.receiptRows = structuredClone(publishBooted.loot.receiptRows);
+    const captureOnlyState = structuredClone(publishDone);
+    captureOnlyState.persistence.runtime.revision = 2;
+    captureOnlyState.persistence.runtime.commits = 0;
+    captureOnlyState.persistence.runtime.sessionSeed = captureOnlyEvidence.authority.sessionRng.seed;
+    captureOnlyState.persistence.runtime.sessionOrdinal = captureOnlyEvidence.authority.sessionRng.ordinal;
+    captureOnlyState.persistence.runtime.sessionDraws = structuredClone(
+      captureOnlyEvidence.authority.sessionRng.draws,
+    );
+    captureOnlyState.persistence.lastOutcome = null;
+    captureOnlyState.save.unlocked = GENUINE_TRAINING_CHECKPOINT.ac.slice();
+    captureOnlyState.save.stats.bestRank = GENUINE_TRAINING_CHECKPOINT.st.bestRank;
+    const wrongAchievementTailState = structuredClone(publishDone);
+    wrongAchievementTailState.save.unlocked = wrongAchievementTailState.save.unlocked.slice(0, -1);
     const assessPublishControl = (after, state = publishDone) => assessDtrainArc2Restore({
       before: publishBooted.loot, after, state,
-      expectedRevision: 2, expectedCommits: 0, expectedLastOutcome: null,
+      expectedRevision: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION.revision,
+      expectedCommits: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION.freshDocumentCommits,
+      expectedLastOutcome: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION.lastOutcome,
+      progressionTail: DTRAIN_POST_RELOAD_PROGRESSION_EXPECTATION,
     });
     const stackableDriftAssessment = assessPublishControl(stackableDriftEvidence);
     const publishArc2Controls = {
       staleCarrier: assessPublishControl(stalePublishCarrier),
       staleLiveController: assessPublishControl(publishLootEvidence, stalePublishState),
-      extraBootstrap: assessPublishControl(extraBootstrapEvidence, extraBootstrapState),
       hiddenBootstrapOutcome: assessPublishControl(publishLootEvidence, hiddenBootstrapOutcomeState),
       rngDrift: assessPublishControl(rngDriftEvidence),
       receiptDrift: assessPublishControl(receiptDriftEvidence),
+      captureOnly: assessPublishControl(captureOnlyEvidence, captureOnlyState),
+      wrongAchievementTail: assessPublishControl(publishLootEvidence, wrongAchievementTailState),
       stackableDrift: stackableDriftAssessment,
     };
     if (Object.values(publishArc2Controls).some((control) => control.ok)
       || !stackableDriftAssessment.reasons.includes('exact checkpoint inventory')) {
-      fails.push('D-TRAIN ARC 2 CARRIER CONTROLS FAILED — stale carrier/controller, hidden bootstrap, RNG, or receipt drift stayed green: '
+      fails.push('D-TRAIN ARC 2 CARRIER CONTROLS FAILED — stale carrier/controller, missing progression, RNG, receipt, or achievement drift stayed green: '
         + JSON.stringify(publishArc2Controls));
     }
   }
@@ -22452,28 +22556,9 @@ try {
   const lazyRefillTimeoutMs = 30000;
   const lazyRefillDeadline = performance.now() + lazyRefillTimeoutMs;
   releaseSlowSpecies();
-  const lazyRefillObservationExpression = `(()=>{ const S=window.__CF_SLICE__,d=S.api.compendiumDiagnostics(),
-    close=document.querySelector('#codexpanel [data-pnx]'),rows=[...document.querySelectorAll('#codexpanel [data-ci]')],
-    imageNodes=rows.map(row=>row.querySelector('img')),images=imageNodes.map(image=>({exists:!!image,
-      state:image?.dataset.thumbState||null,hasSrc:!!image?.getAttribute('src'),
-      srcKind:image?.getAttribute('src')?.startsWith('data:image/')?'data-image':image?.getAttribute('src')?'other':null,
-      complete:image?.complete===true,naturalWidth:image?.naturalWidth||0,naturalHeight:image?.naturalHeight||0,
-      width:image?.getAttribute('width')||null,height:image?.getAttribute('height')||null})),
-    foreground=${lazyForegroundObservationExpression},art=d.art||null,live=art?.live||null,lazyArt=d.lazyArt||null;
-    const settled=images.length===3&&images.every(image=>image.exists&&image.state==='ready'
-      &&image.srcKind==='data-image'&&image.complete&&image.naturalWidth===132&&image.naturalHeight===132)
-      &&lazyArt?.state==='ready'&&live?.queuedJobs===0&&live?.activeJobs===0;
-    return {done:settled,panelMode:d.panel.mode,images,
-      queuedJobs:live?.queuedJobs??null,activeJobs:live?.activeJobs??null,foreground,
-      lazyArt:lazyArt?{schema:lazyArt.schema,state:lazyArt.state,importStarts:lazyArt.importStarts,
-        identity:lazyArt.identity,lastEvent:lazyArt.lastEvent,worker:lazyArt.worker,phases:lazyArt.phases,
-        results:lazyArt.results,errors:lazyArt.errors}:null,
-      art:art?{schema:art.schema,deviceClass:art.deviceClass,live:art.live,totals:art.totals,keys:art.keys}:null,
-      sameClose:close===window.__cfLazyOriginalClose,
-      sameRows:rows.length===window.__cfLazyOriginalRows.length&&rows.every((row,index)=>row===window.__cfLazyOriginalRows[index]),
-      generation:d.generation,renderCommits:d.panel.renderCommits,focus:document.activeElement===close,
-      exact132:images.length===3&&images.every(image=>image.srcKind==='data-image'
-        &&image.complete&&image.naturalWidth===132&&image.naturalHeight===132)}; })()`;
+  const lazyRefillObservationExpression = buildLazyRefillObservationExpression(
+    lazyForegroundObservationExpression,
+  );
   let lazyAfter = {
     done: false, reason: 'not yet observed', foreground: lazyReleaseAuthority.observation,
   };

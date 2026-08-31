@@ -102,6 +102,48 @@ function landingWiringErrors(source: string): string[] {
   return errors;
 }
 
+function trainingRouteWiringErrors(source: string): string[] {
+  const errors: string[] = [];
+  const body = sourceSection(
+    source,
+    'async function routeTrainingForSmoke(selector: unknown): Promise<boolean> {',
+    '\nfunction activeCardPlanetState()',
+  );
+  if (body.length === 0) return ['training-route-source-section'];
+  const held = body.indexOf('!trainingCheckpointWriteHeld');
+  const active = body.indexOf('!trainingActive()', held);
+  const system = body.indexOf("nav.mode !== 'system'", active);
+  const selector = body.indexOf('!Number.isInteger(value.seed) || !Number.isInteger(value.ordinal)', system);
+  const present = body.indexOf('presentPlanetSurvey(p, nav.star)', selector);
+  const land = body.indexOf('return doLand();', present);
+  if (!(held >= 0 && active > held && system > active && selector > system
+    && present > selector && land > present)) errors.push('training-route-proof-order');
+  if (body.includes('startPlanetSurvey(') || body.includes('surveyPlanet(')
+    || body.includes('surveyAndLand(') || body.includes('persistView(')
+    || body.includes('nav =')) errors.push('training-route-write-free');
+  if (!source.includes('__smokeRouteTrainingTo: routeTrainingForSmoke,')) {
+    errors.push('training-route-api');
+  }
+  return errors;
+}
+
+function trainingSourceErrorSetupWiringErrors(source: string): string[] {
+  const errors: string[] = [];
+  const body = sourceSection(
+    source,
+    '  /* Current Field Training snapshots have exactly one own key, `view`.',
+    '\n  const currentSourceLabel =',
+  );
+  if (body.length === 0) return ['training-source-error-setup-section'];
+  if (!body.includes('api.__smokeRouteTrainingTo(') || body.includes('api.landOn(')) {
+    errors.push('training-source-error-write-free-route');
+  }
+  if (!body.includes("failSliceWithoutCascade('TRAINING SOURCE-ERROR SETUP:")) {
+    errors.push('training-source-error-causal-stop');
+  }
+  return errors;
+}
+
 function atlasWiringErrors(source: string): string[] {
   const errors: string[] = [];
   const body = sourceSection(
@@ -176,6 +218,7 @@ describe('Arc 0 main landing wiring', () => {
 
   it('publishes only one verified durable landing action and never checkpoints it twice', () => {
     expect(landingWiringErrors(main)).toEqual([]);
+    expect(trainingRouteWiringErrors(main)).toEqual([]);
     expect(main).toContain('async function surveyAndLand(p: PlanetNode, star: ProvenStar): Promise<boolean>');
     expect(main).toContain("card.addEventListener('click', async (e) => {");
     expect(main).toContain('const landed = await doLand();');
@@ -222,6 +265,14 @@ describe('Arc 0 main landing wiring', () => {
       'JSON.stringify(checkpoint) !== JSON.stringify(attempt.transaction.state)',
       'false /* mutation control trusts an unrelated checkpoint */',
     ))).toContain('landing-runtime-checkpoint-proof');
+    expect(trainingRouteWiringErrors(main.replace(
+      "  if (!trainingCheckpointWriteHeld || !trainingActive() || nav.mode !== 'system'",
+      "  if (trainingCheckpointWriteHeld || !trainingActive() || nav.mode !== 'system' /* mutation control */",
+    ))).toContain('training-route-proof-order');
+    expect(trainingRouteWiringErrors(main.replace(
+      '!p || !presentPlanetSurvey(p, nav.star)',
+      '!p || !surveyPlanet(p, nav.star) /* mutation control */',
+    ))).toContain('training-route-write-free');
   });
 
   it('publishes Atlas only after its one verified durable transaction', () => {
@@ -267,9 +318,18 @@ describe('Arc 0 main landing wiring', () => {
 
   it('awaits asynchronous diagnostic landings before reading their outcome', () => {
     const smoke = readFileSync(SMOKE_URL, 'utf8');
+    expect(trainingSourceErrorSetupWiringErrors(smoke)).toEqual([]);
     expect(smoke).toContain('landed:await api.landOn(${selectorSource})');
     expect(smoke).toContain('accepted=await S.api.landOn({seed:${ARC4_PERTAR_FIXTURE.planet.seed}');
     expect(smoke).toContain('accepted=await S.api.landOn(${JSON.stringify(ARC4_PERTAR_FIXTURE.planet)})');
     expect(smoke).toContain('await S.api.landHere();');
+    expect(trainingSourceErrorSetupWiringErrors(smoke.replace(
+      'api.__smokeRouteTrainingTo(',
+      'api.landOn(',
+    ))).toContain('training-source-error-write-free-route');
+    expect(trainingSourceErrorSetupWiringErrors(smoke.replace(
+      "failSliceWithoutCascade('TRAINING SOURCE-ERROR SETUP:",
+      "fails.push('TRAINING SOURCE-ERROR SETUP:",
+    ))).toContain('training-source-error-causal-stop');
   });
 });

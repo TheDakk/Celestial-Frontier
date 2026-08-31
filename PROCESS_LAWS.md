@@ -1,5 +1,23 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A WRITE-HELD TRAINING ROUTE CANNOT BORROW A WRITE-BEARING SURVEY.** A restored Training
+> checkpoint deliberately refuses ordinary product writes, including Arc 9 Survey. If a browser
+> fixture must place that active lesson on a proven surface, validate the exact current-system
+> selector, present the Survey card without its action/event/settlement, and immediately delegate to
+> the existing rechecked Training-only Landing owner. Never weaken Survey's hold guard or persist a
+> practice route. Treat the setup as one owned boundary and causal-stop before every dependent
+> assertion when it is red.
+
+> **JUDGE THE FINAL BOOT SUCCESSOR AND THE CURRENT ASSET REPRESENTATION.** A post-durable
+> convergence reload may legitimately load action `R+1` and then commit an aggregate boot catch-up
+> at `R+2`. Bind the final revision, receipt, SessionRNG ordinal, achievement/rank projection and
+> fresh-document commit count; do not require the pre-catch-up endpoint or rely on racing it. The
+> same rule applies to presentation carriers: when production converts successful 132px worker data
+> into Window-owned revocable `blob:` URLs, an observer must require `blob:` rather than an obsolete
+> `data:` transport. Compile generated observation bytes browser-free, guard old-document globals,
+> and surface a replacement as an exact document-identity failure instead of polling until a raw
+> missing-API exception.
+
 > **CHECK COUNTS ARE NOT EXECUTION TIERS; RUN EACH OWNER ONCE** (2026-08-30). Roughly 2,500
 > Vitest assertions are browser-free regression facts inside one roughly 23-second command, not
 > thousands of hosted jobs or browser launches. Keep those fast product assertions. Remove exact
@@ -10,6 +28,12 @@
 > the production profile, never in the ordinary coding loop. `coveragegap` is a planning report;
 > complete route coverage is already fail-closed in `overridecheck`, so do not present both as
 > independent merge gates.
+> Inside that one producer-authority owner, Compendium measurement and producer bytes bind every
+> profile. The quarantined SceneMemory budget binds current product/build bytes only in
+> **production**; its source/build drift controls remain browser-free in every profile. A ruler that
+> cannot run or block `develop` must not make ordinary development red merely because product bytes
+> advanced. The standalone authority printer remains all-authorities fail-closed for explicit
+> production diagnosis.
 >
 > The execution tiers are explicit. During coding, run touched tests and the touched TypeScript
 > program. At a local batch boundary, `node tools/check-profile.mjs --profile=dev` owns the complete

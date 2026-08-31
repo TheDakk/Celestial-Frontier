@@ -51,6 +51,22 @@ export function producerAuthorityExitCode(report) {
     : 2;
 }
 
+const PRODUCER_AUTHORITY_CHECK_PROFILES = Object.freeze(['dev', 'develop', 'production']);
+
+/**
+ * Static admission keeps the live Compendium authority current in every tier.
+ * SceneMemory is quarantined from development and rejoins only production.
+ * The standalone printer above remains the all-authorities fail-closed diagnostic.
+ */
+export function producerAuthorityCheckProfileExitCode(report, profile) {
+  if (!PRODUCER_AUTHORITY_CHECK_PROFILES.includes(profile)) return 2;
+  return report?.compendium?.measurementBudgetMatches === true
+    && report?.compendium?.producerBudgetMatches === true
+    && (profile !== 'production' || report?.sceneMemory?.budgetMatches === true)
+    ? 0
+    : 2;
+}
+
 function distIdentity() {
   const files = [];
   const visit = (directory) => {
