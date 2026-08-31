@@ -25,6 +25,15 @@
 > origin play surface, not merge or release evidence. Every certifier retains its own fresh build
 > until a separately reviewed content-addressed build-carrier contract exists.
 
+> **A PRESENTATION CLASS IS NOT AN EVIDENCE OWNER.** CSS classes may intentionally be shared by
+> sibling features, so a browser instrument must never use the first global class match as proof of
+> one exact product surface. Bind the observation to the current semantic mount, query its dedicated
+> data/ARIA/native owner, retain the owner count and fail closed unless that count is exactly one.
+> Negative-control both absence and duplication, plus mutation back to the tempting shared-class
+> selector. Exact `fc18f04…` Feed evidence earned this law: Rename, Feed and Breed all used
+> `.compendium-feed-summary`; Slice read Rename's text even though Feed's exact radio/controller
+> state was correct and Feed already exposed `[data-arc5-feed-summary]` inside its semantic mount.
+
 > **A FOLLOW-UP RECEIPT MUST RELEASE BEFORE IT REPUBLISHES THE SURFACE IT TEMPORARILY
 > DISABLED.** An awaiting action continuation can repaint while a queued aggregate writer owns the
 > shared coordinator, making the honest model read-only. When that follow-up settles, any still-open

@@ -217,6 +217,7 @@ function feedPreviewWitness(holdPhase: 'idle' | 'released' = 'released'): {
       dom: {
         selectedCreatureId: fixture.creatureId,
         selectedFoodLotId: fixture.foodLotId,
+        summaryCount: 1,
         summary: `Pertar: Meals ${fixture.fedBefore} → ${fixture.fedAfter}. Use 1 Leaf: Quantity ${fixture.foodQuantityBefore} → ${fixture.foodQuantityAfter}.`,
         confirmPresent: true,
         confirmDisabled: false,
@@ -1061,6 +1062,10 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       'exact DOM Feed creature selection');
     expectOnly((candidate) => { candidate.dom.selectedFoodLotId = null; },
       'exact DOM Feed flora selection');
+    expectOnly((candidate) => { candidate.dom.summaryCount = 0; },
+      'unique Feed preview summary owner');
+    expectOnly((candidate) => { candidate.dom.summaryCount = 2; },
+      'unique Feed preview summary owner');
     expectOnly((candidate) => {
       candidate.dom.summary = candidate.dom.summary.replace('Meals 19 → 20', 'Meals 19 → 19');
     }, 'exact Feed Meals transition');
@@ -1793,6 +1798,10 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
     const occurrences = (candidate: string, needle: string): number =>
       candidate.split(needle).length - 1;
     const isCausalFeedWiring = (candidate: string): boolean => {
+      const feedUi = owner(
+        candidate, '  const ARC5_FEED_UI_EXPRESSION =',
+        '  const desktopArc5FeedDriver = Object.freeze({',
+      );
       const desktopPointer = owner(
         candidate, '  const clickDesktopPoint = async (point) => {',
         '  const armDesktopPointerReceipt = async',
@@ -1818,7 +1827,7 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
         candidate, '      const winnerInitialFeedUi = await arc5FeedOpenDetail(',
         '      const audioEvidenceDeadline = Date.now() + 3_000;',
       );
-      if (!desktopPointer || !targetDriver || !choice || !preview || !initial || !winner) {
+      if (!feedUi || !desktopPointer || !targetDriver || !choice || !preview || !initial || !winner) {
         return false;
       }
       const noSyntheticChoice = (section: string): boolean =>
@@ -1839,6 +1848,13 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       return occurrences(candidate, 'activateArc5FeedChoice(') === 4
         && occurrences(candidate, 'collectArc5FeedPreview(') === 2
         && occurrences(candidate, 'buildCompendiumFeedChoiceSettlementExpression(') === 1
+        && feedUi.includes(
+          "feedSummaries=[...mount?.querySelectorAll('[data-arc5-feed-summary]')??[]],",
+        )
+        && feedUi.includes(
+          'summaryCount:feedSummaries.length,summary:text(feedSummaries[0]),',
+        )
+        && !feedUi.includes("querySelector('.compendium-feed-summary')")
         && candidate.includes('const desktopArc5FeedDriver = Object.freeze({\n'
           + '    evaluate: evalIn,\n    wait: waitDesktopValue,\n'
           + '    clickPoint: clickDesktopPoint,\n  });')
@@ -1910,6 +1926,11 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
     };
 
     expect(isCausalFeedWiring(source)).toBe(true);
+    expect(isCausalFeedWiring(replaceOnce(
+      source,
+      "feedSummaries=[...mount?.querySelectorAll('[data-arc5-feed-summary]')??[]],",
+      "feedSummaries=[...panel?.querySelectorAll('.compendium-feed-summary')??[]],",
+    ))).toBe(false);
     expect(isCausalFeedWiring(replaceOnce(
       source,
       'const nativeDispatch = await driver.clickPoint(dispatchPreflight);',

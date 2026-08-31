@@ -10,6 +10,58 @@ summary of it.
 
 ## Contents
 
+### Signed `fc18f04…` expression predecessors, then shared-summary-selector instrument red
+
+Exact clean SSH-signed source `fc18f0416d7b58b2f5b4ed3a0829e259f3dd951b` (tree
+`ca6e2e5327e1a898e8b79580bb86e7203b2c61f4`, parent
+`f219d46693b629ae035d05e5205be98840650ece`) passed its hermetic tracked-input develop profile at
+**253 files / 2,529 passed / 1 skipped**, all three strict TypeScript programs, **34** art sources
+with zero findings, **1,014/1,014** routes and **454** specification fields with zero inert fields.
+All five classifier-required browser-instrument controls passed once.
+
+On the same unchanged clean source and Microsoft Edge `152.0.4191.53` / CDP `1.3`, SceneMemory run
+`20260830-pr35-fc18f04-feed-expression-scenemem-certification` passed **44/44** in **13,132 ms**
+with zero findings, and Compendium run
+`20260830-pr35-fc18f04-feed-expression-compendium-certification` passed **78/78** in **65,485 ms**
+with zero findings/blocked outcomes. Both reports retain complete lifecycle cleanup. Their run-time
+named verifiers passed; the compressed carriers below preserve report status, not verifier stdout.
+
+- `ARC1C_SCENEMEM_PR35_FEED_EXPRESSION_PASS_20260830_FC18F04.json.gz`: **49,848 gzip / 788,453 raw
+  bytes**; gzip/raw SHA-256
+  `d902a0c51ff3d527a0c608dd2398446e0fa44de3bf80c6e82c1351298f684721` /
+  `a1b91935156e15775e31a6c4820385d8b5c4c5e21c4b86a9e58faf6a0e7bad2e`.
+- `ARC1C_COMPENDIUM_PR35_FEED_EXPRESSION_PASS_20260830_FC18F04.json.gz`: **520,555 gzip /
+  10,785,813 raw bytes**; gzip/raw SHA-256
+  `23871cdffe0c0fb989a4be20217d522bf92e833ee138acc7856fee9e4c61104b` /
+  `8bbc7ea2702dda58215f2950e5aeb5aa12a6e65768dc6f9fc1665fca588fa848`.
+
+Slice run `20260830-pr35-fc18f04-feed-expression-slice-certification` then ran exactly once and
+stopped after **162,206 ms** with exactly one `harness` finding and zero PASS markers. Both native
+radio activations had settled: DOM/controller held the exact creature and flora IDs, the Feed
+controller was ready with one mount/two listeners/zero pending work, authority was unchanged,
+confirmation was present/enabled and the coordinator was idle. Only Meals and Quantity were red
+because the observed summary was Rename's `New companion name…` block. Rename, Feed and Breed share
+`.compendium-feed-summary`; the instrument queried the first global match instead of Feed's existing
+`[data-arc5-feed-summary]` under `[data-arc5-feed-body]`.
+
+- `ARC4_SLICE_PR35_FEED_SUMMARY_SELECTOR_INSTRUMENT_RED_20260830_FC18F04.json.gz`: **2,719 gzip /
+  17,424 raw bytes**; gzip/raw SHA-256
+  `393f582fcd3e725790fe7cc2df22aa8304b47157bfa026c37030de034629589c` /
+  `f2379543b8734b0690a0ea4bb3e206e2074538a93d2bb84a3cbb5af135b4afd2`.
+- `ARC4_SLICE_PR35_FEED_SUMMARY_SELECTOR_INSTRUMENT_RED_20260830_FC18F04.log.gz`: **2,493 gzip /
+  9,205 raw bytes**; gzip/raw SHA-256
+  `a6135d948806f7a85b9b1003a47993a080d8a4c839a13ab18bcc4f68c5fb7b6d` /
+  `e9a6e0b0354933b0ff7ae9ddfe139772a52a3e8b0ba41ecc2ee33200c68f77d7`.
+
+This red is instrument-only and makes no Feed durability verdict: the runner stopped before the
+first durable read, trace/hold arm, confirmation dispatch, coordinator claim, writer, persistence
+comparison or contender document. Glass did not run. The bounded successor scopes the dedicated
+semantic summary to the exact Feed mount, retains its owner count, requires exactly one and
+negative-controls zero, duplicate and shared-class substitutions. Focused Feed coverage is **2
+files / 17 passed**; all TypeScript programs and strict unused-symbol checking pass. No product,
+timeout, retry, browser baseline, numeric ruler, creature/genome, persistence or release byte
+changed. The immutable `fc18f04…` Slice report remains FAIL and is never retried or relabelled.
+
 ### Signed `f219d46…` native-Feed predecessors, then generated-expression instrument red
 
 Exact clean SSH-signed source `f219d46693b629ae035d05e5205be98840650ece` (tree

@@ -241,6 +241,7 @@ export interface CompendiumFeedPreviewControllerWitness
 export interface CompendiumFeedPreviewDomWitness {
   readonly selectedCreatureId: string | null;
   readonly selectedFoodLotId: string | null;
+  readonly summaryCount: number;
   readonly summary: string;
   readonly confirmPresent: boolean;
   readonly confirmDisabled: boolean | null;
