@@ -35,6 +35,8 @@ import {
   assessArc2InventoryPreDurableRefusal,
   assessArc2InventorySuccessorBoundary,
   assessCompendiumFeedAudioAcknowledgement,
+  assessCompendiumFeedChoiceActivation,
+  assessCompendiumFeedPreview,
   arc2InventoryCarrierLegacyCargoParity,
   assessCompendiumFeedCommittedOutcome,
   assessCompendiumFeedPendingWindow,
@@ -17169,12 +17171,20 @@ try {
   };
   const ARC5_FEED_UI_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
     diagnostics=S?.api?.compendiumDiagnostics?.(),panel=document.getElementById('codexpanel'),
+    mount=panel?.querySelector('[data-arc5-feed-body]'),
     text=(node)=>(node?.textContent||'').replace(/\\s+/g,' ').trim(),
     radios=[...panel?.querySelectorAll('input[type="radio"][data-arc5-feed-choice]')??[]],
     confirm=panel?.querySelector('[data-arc5-feed-confirm]'),back=document.getElementById('codexback'),
     close=panel?.querySelector('[data-pnx]'),status=panel?.querySelector('[data-arc5-feed-status]');return {
       panelOpen:state?.panelOpen??null,panelMode:diagnostics?.panel?.mode??null,
       logicalId:diagnostics?.surfaces?.detail?.logicalId??null,
+      document:{token:S?.documentToken??null,generation:diagnostics?.generation??null,
+        logicalId:diagnostics?.surfaces?.detail?.logicalId??null,
+        surfaceKey:mount?.dataset.arc5FeedSurfaceKey??null,
+        contextKey:mount?.dataset.arc5FeedContextKey??null},
+      authority:{revision:state?.ownershipV2?.revision??null,
+        sourceDigest:state?.ownershipV2?.sourceDigest??null,
+        targetDigest:state?.ownershipV2?.targetDigest??null},
       controller:state?.ownershipV2?.feed?.controller??null,
       actionCoordinator:state?.ownershipV2?.feed?.actionCoordinator??null,
       lastOutcome:state?.ownershipV2?.feed?.lastOutcome??null,
@@ -17302,13 +17312,322 @@ try {
       failSliceWithoutCascade(`${label} exact fauna row did not enter the live variable-height Compendium window: ${JSON.stringify(revealed)}`);
     }
     await arc5FeedClick(rowSelector, `${label} exact fauna row`, driver);
-    return driver.wait(`${label} Feed detail`, `(()=>{const ui=${ARC5_FEED_UI_EXPRESSION};
-      return ui.panelOpen==='codex'&&ui.panelMode==='detail'&&ui.logicalId===${JSON.stringify(fixture.logicalId)}
-        &&ui.controller?.attachedMountCount===1?ui:null})()`);
+    return driver.wait(`${label} Feed detail`, ARC5_FEED_UI_EXPRESSION, 6_000, (ui) => (
+      ui?.panelOpen === 'codex' && ui.panelMode === 'detail'
+      && ui.logicalId === fixture.logicalId
+      && ui.document?.token && Number.isSafeInteger(ui.document?.generation)
+      && ui.document?.generation > 0
+      && ui.document?.logicalId === fixture.logicalId
+      && typeof ui.document?.surfaceKey === 'string' && ui.document.surfaceKey.length > 0
+      && typeof ui.document?.contextKey === 'string' && ui.document.contextKey.length > 0
+      && ui.controller?.attachedMountCount === 1
+      && ui.controller?.delegatedListenerCount === 2
+      && ui.controller?.pendingWork === 0
+      && ui.controller?.convergenceLatched === false
+      && ui.feedState === 'ready'
+    ));
   };
   const arc5FeedChoiceSelector = (kind, id) => kind === 'creature'
     ? `#codexpanel label[data-arc5-feed-creature-label="${id}"]`
     : `#codexpanel label[data-arc5-feed-flora-label="${id}"]`;
+  const arc5FeedChoicePreparationPasses = (observation, expected) => {
+    const prepared = observation?.prepared;
+    const documentIdentity = observation?.document;
+    const controller = prepared?.controller;
+    const exactDocument = documentIdentity?.token === expected.documentToken
+      && documentIdentity?.generation === expected.generation
+      && documentIdentity?.logicalId === expected.logicalId
+      && documentIdentity?.surfaceKey === expected.surfaceKey
+      && documentIdentity?.contextKey === expected.contextKey;
+    const exactChoice = prepared?.radioChoice === expected.kind
+      && prepared?.radioCreatureId === (expected.kind === 'creature' ? expected.expectedId : null)
+      && prepared?.radioFoodLotId === (expected.kind === 'flora' ? expected.expectedId : null);
+    return exactDocument && prepared?.selectorCount === 1
+      && prepared?.radioIdMatchCount === 1 && prepared?.labelOwnerCount === 1
+      && prepared?.labelContainsRadio === true
+      && prepared?.labelConnected === true && prepared?.labelFor === prepared?.radioId
+      && typeof prepared?.labelNodeToken === 'string' && prepared.labelNodeToken.length > 0
+      && typeof prepared?.radioId === 'string' && prepared.radioId.length > 0
+      && typeof prepared?.radioNodeToken === 'string' && prepared.radioNodeToken.length > 0
+      && prepared?.radioConnected === true && prepared?.radioDisabled === false
+      && prepared?.radioChecked === false && exactChoice
+      && Number.isFinite(prepared?.x) && Number.isFinite(prepared?.y)
+      && Number.isFinite(prepared?.labelWidth) && prepared.labelWidth >= 44
+      && Number.isFinite(prepared?.labelHeight) && prepared.labelHeight >= 44
+      && prepared?.labelVisible === true && prepared?.labelHitOwner === true
+      && prepared?.radioHitOwner === true
+      && controller?.attachedMountCount === 1
+      && controller?.delegatedListenerCount === 2
+      && controller?.pendingWork === 0 && controller?.convergenceLatched === false
+      && controller?.feedState === 'ready'
+      && controller?.surfaceKey === expected.surfaceKey
+      && controller?.contextKey === expected.contextKey;
+  };
+  const arc5FeedChoiceDispatchPasses = (dispatch, prepared, expected) => {
+    const exactDocument = dispatch?.document?.token === expected.documentToken
+      && dispatch?.document?.generation === expected.generation
+      && dispatch?.document?.logicalId === expected.logicalId
+      && dispatch?.document?.surfaceKey === expected.surfaceKey
+      && dispatch?.document?.contextKey === expected.contextKey;
+    const exactChoice = dispatch?.radioChoice === expected.kind
+      && dispatch?.radioCreatureId === (expected.kind === 'creature' ? expected.expectedId : null)
+      && dispatch?.radioFoodLotId === (expected.kind === 'flora' ? expected.expectedId : null);
+    return exactDocument && dispatch?.selectorCount === 1
+      && dispatch?.radioIdMatchCount === 1 && dispatch?.labelOwnerCount === 1
+      && dispatch?.labelContainsRadio === true
+      && dispatch?.labelConnected === true
+      && dispatch?.labelFor === prepared?.radioId
+      && dispatch?.labelNodeToken === prepared?.labelNodeToken
+      && dispatch?.radioId === prepared?.radioId
+      && dispatch?.radioNodeToken === prepared?.radioNodeToken
+      && dispatch?.radioConnected === true && dispatch?.radioDisabled === false
+      && dispatch?.radioChecked === false
+      && Number.isFinite(dispatch?.x) && Number.isFinite(dispatch?.y)
+      && Number.isFinite(dispatch?.labelWidth) && dispatch.labelWidth >= 44
+      && Number.isFinite(dispatch?.labelHeight) && dispatch.labelHeight >= 44
+      && dispatch?.labelVisible === true && dispatch?.labelHitOwner === true
+      && dispatch?.radioHitOwner === true
+      && exactChoice;
+  };
+  const arc5FeedChoiceCleanup = async (driver) => {
+    try {
+      await driver.evaluate(`(()=>{const h=window.__cfFeedChoiceHarness;
+        h?.abort?.abort();if(h)h.abort=null;return true})()`);
+    } catch { /* A closing target owns no reusable listener. */ }
+  };
+  const activateArc5FeedChoice = async (
+    kind, expectedId, expectedPriorId, expectedDocument, label,
+    driver = desktopArc5FeedDriver,
+  ) => {
+    const expected = Object.freeze({
+      kind, expectedId, expectedPriorId,
+      documentToken: expectedDocument?.token,
+      generation: expectedDocument?.generation,
+      logicalId: expectedDocument?.logicalId,
+      surfaceKey: expectedDocument?.surfaceKey,
+      contextKey: expectedDocument?.contextKey,
+    });
+    const selector = arc5FeedChoiceSelector(kind, expectedId);
+    const preparation = await driver.evaluate(`(()=>{const kind=${JSON.stringify(kind)},
+      expectedId=${JSON.stringify(expectedId)},selector=${JSON.stringify(selector)},
+      S=window.__CF_SLICE__,panel=document.getElementById('codexpanel'),
+      mount=panel?.querySelector('[data-arc5-feed-body]'),
+      labels=[...document.querySelectorAll(selector)],label=labels[0]??null,
+      radio=label?.control??null,h=window.__cfFeedChoiceHarness??{
+        tokens:new WeakMap(),serial:0,abort:null,receipt:null};
+      h.abort?.abort();h.abort=null;h.eventSerial=0;
+      h.receipt={pointerdowns:[],clicks:[],inputs:[],changes:[]};
+      h.tokenOf=(node)=>{if(!(node instanceof Node))return null;let token=h.tokens.get(node);
+        if(typeof token!=='string'){h.serial+=1;token=(S?.documentToken??'no-document')+':feed-node:'+h.serial;
+          h.tokens.set(node,token)}return token};
+      h.currentDocument=()=>{const diagnostics=S?.api?.compendiumDiagnostics?.(),
+        livePanel=document.getElementById('codexpanel'),
+        liveMount=livePanel?.querySelector('[data-arc5-feed-body]');return {
+          token:S?.documentToken??null,generation:diagnostics?.generation??null,
+          logicalId:diagnostics?.surfaces?.detail?.logicalId??null,
+          surfaceKey:liveMount?.dataset.arc5FeedSurfaceKey??null,
+          contextKey:liveMount?.dataset.arc5FeedContextKey??null}};
+      const controller=new AbortController();h.abort=controller;
+      const receipt=(type,event)=>{const target=event.target instanceof HTMLInputElement?event.target:null;
+        if(!target||target.dataset.arc5FeedChoice===undefined)return;
+        const choice=target.dataset.arc5FeedChoice??null,
+          choiceId=choice==='creature'?target.dataset.arc5FeedCreatureId??null
+            :choice==='flora'?target.dataset.arc5FeedFoodLotId??null:null,
+          entry={type,serial:++h.eventSerial,trusted:event.isTrusted===true,radioId:target.id||null,
+            radioNodeToken:h.tokenOf(target),choice,choiceId,document:h.currentDocument(),
+            ...((type==='pointerdown'||type==='click')
+              ?{x:event.clientX,y:event.clientY}:{}),
+            ...(type==='pointerdown'
+              ?{pointerType:event.pointerType,button:event.button}:{})};
+        if(type==='pointerdown')h.receipt.pointerdowns.push(entry);
+        else if(type==='click')h.receipt.clicks.push(entry);
+        else if(type==='input')h.receipt.inputs.push(entry);
+        else h.receipt.changes.push(entry)};
+      for(const type of ['pointerdown','click','input','change'])document.addEventListener(
+        type,(event)=>receipt(type,event),{capture:true,signal:controller.signal});
+      window.__cfFeedChoiceHarness=h;
+      label?.scrollIntoView({block:'center',inline:'nearest'});
+      const labelRect=label?.getBoundingClientRect(),radioRect=radio?.getBoundingClientRect(),
+        labelStyle=label?getComputedStyle(label):null,
+        labelX=labelRect?Math.floor((labelRect.left+labelRect.right)/2):null,
+        labelY=labelRect?Math.floor((labelRect.top+labelRect.bottom)/2):null,
+        labelHit=Number.isFinite(labelX)&&Number.isFinite(labelY)
+          ?document.elementFromPoint(labelX,labelY):null,
+        x=radioRect?Math.floor((radioRect.left+radioRect.right)/2):null,
+        y=radioRect?Math.floor((radioRect.top+radioRect.bottom)/2):null,
+        radioHit=Number.isFinite(x)&&Number.isFinite(y)?document.elementFromPoint(x,y):null,
+        diagnostics=S?.api?.compendiumDiagnostics?.(),state=S?.api?.state?.(),
+        documentIdentity=h.currentDocument(),radioId=radio?.id??null;
+      return {kind,expectedId,expectedPriorId:${JSON.stringify(expectedPriorId)},
+        document:documentIdentity,prepared:{selectorCount:labels.length,
+          radioIdMatchCount:radioId?[...document.querySelectorAll('[id]')]
+            .filter((node)=>node.id===radioId).length:0,
+          labelOwnerCount:radioId?[...document.querySelectorAll('label[for]')]
+            .filter((node)=>node.htmlFor===radioId).length:0,
+          labelFor:label?.htmlFor??null,labelConnected:label?.isConnected===true,
+          labelContainsRadio:!!label&&!!radio&&label.contains(radio),
+          labelWidth:labelRect?.width??0,labelHeight:labelRect?.height??0,
+          labelVisible:!!labelRect&&labelRect.width>=44&&labelRect.height>=44
+            &&labelStyle?.display!=='none'&&labelStyle?.visibility!=='hidden',
+          labelHitOwner:!!labelHit&&!!label&&(labelHit===label||label.contains(labelHit)),
+          labelNodeToken:h.tokenOf(label),radioId,
+          radioNodeToken:h.tokenOf(radio),radioConnected:radio?.isConnected===true,
+          radioDisabled:radio?.disabled??null,radioChecked:radio?.checked??null,
+          radioChoice:radio?.dataset.arc5FeedChoice??null,
+          radioCreatureId:radio?.dataset.arc5FeedCreatureId??null,
+          radioFoodLotId:radio?.dataset.arc5FeedFoodLotId??null,x,y,
+          radioHitOwner:radioHit===radio,
+          controller:{...(state?.ownershipV2?.feed?.controller??{}),
+            feedState:mount?.querySelector('[data-arc5-feed-state]')?.getAttribute('data-arc5-feed-state')??null},
+          diagnosticGeneration:diagnostics?.generation??null}}})()`);
+    if (!arc5FeedChoicePreparationPasses(preparation, expected)) {
+      await arc5FeedChoiceCleanup(driver);
+      throw new Error(`${label} preparation did not bind one current enabled native radio: `
+        + JSON.stringify({ expected, observation: preparation }));
+    }
+    let dispatchPreflight;
+    try {
+      dispatchPreflight = await driver.evaluate(`(()=>{const kind=${JSON.stringify(kind)},
+        expectedId=${JSON.stringify(expectedId)},selector=${JSON.stringify(selector)},
+        h=window.__cfFeedChoiceHarness,labels=[...document.querySelectorAll(selector)],
+        label=labels[0]??null,radio=label?.control??null,radioId=radio?.id??null,
+        labelRect=label?.getBoundingClientRect(),labelStyle=label?getComputedStyle(label):null,
+        labelX=labelRect?Math.floor((labelRect.left+labelRect.right)/2):null,
+        labelY=labelRect?Math.floor((labelRect.top+labelRect.bottom)/2):null,
+        labelHit=Number.isFinite(labelX)&&Number.isFinite(labelY)
+          ?document.elementFromPoint(labelX,labelY):null,
+        radioRect=radio?.getBoundingClientRect(),x=radioRect?Math.floor((radioRect.left+radioRect.right)/2):null,
+        y=radioRect?Math.floor((radioRect.top+radioRect.bottom)/2):null,
+        radioHit=Number.isFinite(x)&&Number.isFinite(y)?document.elementFromPoint(x,y):null;
+        return {document:h?.currentDocument?.()??null,selectorCount:labels.length,
+          radioIdMatchCount:radioId?[...document.querySelectorAll('[id]')]
+            .filter((node)=>node.id===radioId).length:0,
+          labelOwnerCount:radioId?[...document.querySelectorAll('label[for]')]
+            .filter((node)=>node.htmlFor===radioId).length:0,
+          labelFor:label?.htmlFor??null,labelConnected:label?.isConnected===true,
+          labelContainsRadio:!!label&&!!radio&&label.contains(radio),
+          labelWidth:labelRect?.width??0,labelHeight:labelRect?.height??0,
+          labelVisible:!!labelRect&&labelRect.width>=44&&labelRect.height>=44
+            &&labelStyle?.display!=='none'&&labelStyle?.visibility!=='hidden',
+          labelHitOwner:!!labelHit&&!!label&&(labelHit===label||label.contains(labelHit)),
+          labelNodeToken:h?.tokenOf?.(label)??null,radioId,
+          radioNodeToken:h?.tokenOf?.(radio)??null,radioConnected:radio?.isConnected===true,
+          radioDisabled:radio?.disabled??null,radioChecked:radio?.checked??null,
+          radioChoice:radio?.dataset.arc5FeedChoice??null,
+          radioCreatureId:radio?.dataset.arc5FeedCreatureId??null,
+          radioFoodLotId:radio?.dataset.arc5FeedFoodLotId??null,x,y,
+          radioHitOwner:radioHit===radio}})()`);
+      if (!arc5FeedChoiceDispatchPasses(
+        dispatchPreflight, preparation.prepared, expected,
+      )) {
+        throw new Error(`${label} dispatch-time radio no longer matched its prepared owner: `
+          + JSON.stringify({ expected, preparation, dispatch: dispatchPreflight }));
+      }
+      const nativeDispatch = await driver.clickPoint(dispatchPreflight);
+      const dispatch = Object.freeze({
+        ...dispatchPreflight,
+        targetX: dispatchPreflight.x,
+        targetY: dispatchPreflight.y,
+        ...nativeDispatch,
+      });
+      const prefix = JSON.stringify({
+        kind, expectedId, expectedPriorId,
+        document: preparation.document,
+        prepared: preparation.prepared,
+        dispatch,
+      });
+      const expression = `(()=>{const prefix=${prefix},h=window.__cfFeedChoiceHarness,
+        selector=${JSON.stringify(selector)},labels=[...document.querySelectorAll(selector)],
+        label=labels[0]??null,radio=label?.control??null,radioId=radio?.id??null,
+        ui=${ARC5_FEED_UI_EXPRESSION};return {
+          ...prefix,receipt:h?.receipt??{pointerdowns:[],clicks:[],inputs:[],changes:[]},
+          settled:{selectorCount:labels.length,
+            radioIdMatchCount:radioId?[...document.querySelectorAll('[id]')]
+              .filter((node)=>node.id===radioId).length:0,
+            labelOwnerCount:radioId?[...document.querySelectorAll('label[for]')]
+              .filter((node)=>node.htmlFor===radioId).length:0,
+            labelFor:label?.htmlFor??null,labelConnected:label?.isConnected===true,
+            labelContainsRadio:!!label&&!!radio&&label.contains(radio),
+            labelNodeToken:h?.tokenOf?.(label)??null,radioId,
+            radioNodeToken:h?.tokenOf?.(radio)??null,
+            radioConnected:radio?.isConnected===true,radioDisabled:radio?.disabled??null,
+            radioChecked:radio?.checked??null,radioChoice:radio?.dataset.arc5FeedChoice??null,
+            radioCreatureId:radio?.dataset.arc5FeedCreatureId??null,
+            radioFoodLotId:radio?.dataset.arc5FeedFoodLotId??null,
+            ui:{document:ui.document,controller:{...(ui.controller??{}),feedState:ui.feedState},
+              selectedCreatureId:ui.selectedCreatureId,selectedFoodLotId:ui.selectedFoodLotId}}}}})()`;
+      const deadline = performance.now() + 6_000;
+      let observation = null;
+      let assessment = null;
+      while (performance.now() < deadline) {
+        observation = await driver.evaluate(expression);
+        assessment = assessCompendiumFeedChoiceActivation(observation, expected);
+        if (assessment.ok) return observation;
+        await sleep(50);
+      }
+      throw new Error(`${label} did not complete one trusted native-radio chain within 6000ms: `
+        + JSON.stringify({ expected, assessment, observation }));
+    } finally {
+      await arc5FeedChoiceCleanup(driver);
+    }
+  };
+  const collectArc5FeedPreview = async (
+    fixture, initialUi, label, driver = desktopArc5FeedDriver,
+  ) => {
+    const coordinator = initialUi?.actionCoordinator;
+    const expected = Object.freeze({
+      documentToken: initialUi?.document?.token,
+      generation: initialUi?.document?.generation,
+      logicalId: initialUi?.document?.logicalId,
+      surfaceKey: initialUi?.document?.surfaceKey,
+      contextKey: initialUi?.document?.contextKey,
+      authority: Object.freeze({
+        revision: initialUi?.authority?.revision,
+        sourceDigest: initialUi?.authority?.sourceDigest,
+        targetDigest: initialUi?.authority?.targetDigest,
+      }),
+      creatureId: fixture.creatureId,
+      foodLotId: fixture.foodLotId,
+      fedBefore: fixture.fedBefore,
+      fedAfter: fixture.fedAfter,
+      foodQuantityBefore: fixture.foodQuantityBefore,
+      foodQuantityAfter: fixture.foodQuantityAfter,
+      baseline: Object.freeze({
+        actionCoordinator: Object.freeze({
+          inFlight: coordinator?.inFlight,
+          owner: Object.freeze({
+            busy: coordinator?.owner?.busy,
+            operation: coordinator?.owner?.operation ?? null,
+          }),
+          hold: Object.freeze({
+            phase: coordinator?.hold?.phase,
+            operation: coordinator?.hold?.operation ?? null,
+            sequence: coordinator?.hold?.sequence,
+          }),
+        }),
+        lastOutcome: initialUi?.lastOutcome,
+        result: initialUi?.result,
+      }),
+    });
+    const expression = `(()=>{const ui=${ARC5_FEED_UI_EXPRESSION};return {
+      document:ui.document,authority:ui.authority,
+      controller:{...(ui.controller??{}),feedState:ui.feedState},
+      dom:{selectedCreatureId:ui.selectedCreatureId,
+        selectedFoodLotId:ui.selectedFoodLotId,summary:ui.summary,
+        confirmPresent:ui.confirmPresent,confirmDisabled:ui.confirmDisabled},
+      actionCoordinator:ui.actionCoordinator,lastOutcome:ui.lastOutcome,result:ui.result}})()`;
+    const deadline = performance.now() + 6_000;
+    let observation = null;
+    let assessment = null;
+    while (performance.now() < deadline) {
+      observation = await driver.evaluate(expression);
+      assessment = assessCompendiumFeedPreview(observation, expected);
+      if (assessment.ok) return Object.freeze({ expected, assessment, observation });
+      await sleep(50);
+    }
+    throw new Error(`${label} did not retain one exact pre-action preview within 6000ms: `
+      + JSON.stringify({ expected, assessment, observation }));
+  };
   const arc5FeedRenderedValues = async (
     fixture, driver = desktopArc5FeedDriver,
   ) => driver.evaluate(`(()=>{const panel=document.getElementById('codexpanel'),
@@ -17383,20 +17702,17 @@ try {
     }
 
     const initialFeedUi = await arc5FeedOpenDetail(arc5FeedFixture, 'Arc 5 Feed');
-    await arc5FeedClick(
-      arc5FeedChoiceSelector('creature', arc5FeedFixture.creatureId),
+    const companionChoiceActivation = await activateArc5FeedChoice(
+      'creature', arc5FeedFixture.creatureId, null, initialFeedUi.document,
       'Arc 5 exact companion choice',
     );
-    await arc5FeedClick(
-      arc5FeedChoiceSelector('flora', arc5FeedFixture.foodLotId),
-      'Arc 5 exact flora choice',
+    const floraChoiceActivation = await activateArc5FeedChoice(
+      'flora', arc5FeedFixture.foodLotId, arc5FeedFixture.creatureId,
+      initialFeedUi.document, 'Arc 5 exact flora choice',
     );
-    const selectedUi = await waitDesktopValue('Arc 5 exact Feed preview', `(()=>{const ui=${ARC5_FEED_UI_EXPRESSION};
-      return ui.selectedCreatureId===${JSON.stringify(arc5FeedFixture.creatureId)}
-        &&ui.selectedFoodLotId===${JSON.stringify(arc5FeedFixture.foodLotId)}
-        &&ui.summary.includes(${JSON.stringify(`Meals ${arc5FeedFixture.fedBefore} → ${arc5FeedFixture.fedAfter}`)})
-        &&ui.summary.includes(${JSON.stringify(`Quantity ${arc5FeedFixture.foodQuantityBefore} → ${arc5FeedFixture.foodQuantityAfter}`)})
-        &&ui.confirmDisabled===false?ui:null})()`);
+    const selectedUi = await collectArc5FeedPreview(
+      arc5FeedFixture, initialFeedUi, 'Arc 5 exact Feed preview',
+    );
     const beforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
     const beforeProjection = arc5FeedCarrierProjection(beforeRaw, arc5FeedFixture);
     const beforeState = await evalIn('window.__CF_SLICE__.api.state()');
@@ -17593,7 +17909,8 @@ try {
       || !selectedUi || !pendingAssessment.ok || !pendingControlsIsolated) {
       failSliceWithoutCascade('ARC 5 FEED PENDING: exact native Compendium action did not hold without optimism/retry while Back, Close, and the global mutation fence remained usable: '
         + JSON.stringify({ audioArm, traceArmed, holdArmed, fixture: arc5FeedFixture,
-          initialFeedUi, selectedUi, assessment: pendingAssessment,
+          initialFeedUi, companionChoiceActivation, floraChoiceActivation,
+          selectedUi, assessment: pendingAssessment,
           controls: pendingControls, controlsIsolated: pendingControlsIsolated,
           bundle: pendingBundle }));
     }
@@ -17732,19 +18049,19 @@ try {
       const winnerInitialFeedUi = await arc5FeedOpenDetail(
         arc5FeedFixture, 'Arc 5 Feed winner', winnerDriver,
       );
-      await arc5FeedClick(
-        arc5FeedChoiceSelector('creature', arc5FeedFixture.creatureId),
-        'Arc 5 winner exact companion choice', winnerDriver,
+      const winnerCompanionChoiceActivation = await activateArc5FeedChoice(
+        'creature', arc5FeedFixture.creatureId, null,
+        winnerInitialFeedUi.document, 'Arc 5 winner exact companion choice',
+        winnerDriver,
       );
-      await arc5FeedClick(
-        arc5FeedChoiceSelector('flora', arc5FeedFixture.foodLotId),
-        'Arc 5 winner exact flora choice', winnerDriver,
+      const winnerFloraChoiceActivation = await activateArc5FeedChoice(
+        'flora', arc5FeedFixture.foodLotId, arc5FeedFixture.creatureId,
+        winnerInitialFeedUi.document, 'Arc 5 winner exact flora choice',
+        winnerDriver,
       );
-      const winnerSelectedUi = await winnerDriver.wait(
-        'Arc 5 winner exact Feed preview',
-        `(()=>{const ui=${ARC5_FEED_UI_EXPRESSION};return ui.selectedCreatureId===${JSON.stringify(arc5FeedFixture.creatureId)}
-          &&ui.selectedFoodLotId===${JSON.stringify(arc5FeedFixture.foodLotId)}
-          &&ui.confirmDisabled===false?ui:null})()`,
+      const winnerSelectedUi = await collectArc5FeedPreview(
+        arc5FeedFixture, winnerInitialFeedUi,
+        'Arc 5 winner exact Feed preview', winnerDriver,
       );
       const winnerBeforeActionRaw = await winnerDriver.evaluate(
         ARC4_DURABLE_READ_EXPRESSION,
@@ -17976,7 +18293,12 @@ try {
         },
         winner: {
           setup: { visibility: winnerVisibility, writableState: winnerWritableState,
-            initialUi: winnerInitialFeedUi, selectedUi: winnerSelectedUi,
+            initialUi: winnerInitialFeedUi,
+            choiceActivations: {
+              creature: winnerCompanionChoiceActivation,
+              flora: winnerFloraChoiceActivation,
+            },
+            selectedUi: winnerSelectedUi,
             audioArm: winnerAudioArm, audioBaseline: winnerAudioBaseline,
             traceArmed: winnerTraceArmed },
           committedRawPersistenceFingerprint:

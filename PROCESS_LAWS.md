@@ -240,6 +240,28 @@ prerequisite is green. A red target/receipt stops its dependent action once with
 instead of manufacturing a timeout cascade. Mutate row identity, action ownership, input identity,
 geometry and coordinates independently, including after reload.
 
+⚠⚠ **A LABEL'S TARGET OWNS THE CHOICE, AND A RERENDER OWNS ITS SUCCESSOR** (2026-08-30). Exact
+signed source `51a8ac43f1a583e73dc4d111da04bbdb76abcc02` passed SceneMemory 44/44 and
+Compendium 78/78, then Slice stopped once at an Arc 5 Feed preview with `last null`. The harness had
+clicked a 44px `LABEL`, treated the label's nonexistent `disabled` property as action readiness and
+retained only pointer coordinates. Feed's semantic owner is the nested native radio and its
+delegated `change`; the label can be visible and apparently enabled while that input is disabled,
+detached, duplicated, replaced or never activated. The retained run stopped before confirmation,
+storage or any Feed mutation, so it is instrument evidence and makes no product verdict.
+
+Bind one current label to one exact nested radio through `htmlFor`, containment, document,
+generation, logical surface, context and controller/listener state. Arm capture-phase evidence
+before dispatch, re-query the same node identity at dispatch, send one raw-CDP left click to the
+radio itself, and require one trusted pointerdown/click/input/change chain. If the controller
+replaces its children, bind the successor; if it later optimizes in place, retain that current
+owner. The certificate requires a nonempty current node identity, the same logical control and the
+controller selection—not one render implementation. Settle the first choice before the second,
+then retain a full preview observation with exact authority and quiescent action-coordinator
+baseline before any durable read, hold, confirmation or writer. A choice/preview red causal-stops
+there. Independently mutate label/radio ownership, geometry, node replacement, every receipt,
+either selection, summary transitions, confirmation and downstream-coordinator drift; never widen
+the deadline or substitute synthetic `.click()`/`.checked`/`change` for the browser certificate.
+
 ⚠⚠ **MUTATING SOURCE TEXT DOES NOT MUTATE DOM THAT WAS ALREADY RENDERED** (2026-08-30). Four
 Guide controls changed their source-side bulletin strings after publication, then judged the old
 DOM and reported that contradictions stayed green. A rendered-text control must mutate the exact

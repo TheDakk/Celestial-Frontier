@@ -353,6 +353,75 @@ describe('Arc 5 Compendium Feed projection and controller', () => {
     expect(controller.diagnostics().delegatedListenerCount).toBe(0);
   });
 
+  it('restores native Feed choice ingress after detach and reattach', () => {
+    const f = fixture();
+    const view = shell();
+    const onAction = vi.fn();
+    controller = new CompendiumFeedController({
+      root: view.root,
+      isCurrent: () => true,
+      onAction,
+    });
+    controller.setState(model(f));
+    controller.attach(view.mount);
+
+    const detachedCreature = radio(view, 'creature', f.readyIds[1]);
+    controller.detach();
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 0,
+      delegatedListenerCount: 0,
+      selectedCreatureId: null,
+      selectedFoodLotId: null,
+    });
+
+    detachedCreature.click();
+    expect(detachedCreature.checked).toBe(true);
+    expect(controller.diagnostics()).toMatchObject({
+      delegatedListenerCount: 0,
+      selectedCreatureId: null,
+      selectedFoodLotId: null,
+    });
+
+    controller.attach(view.mount);
+    expect(controller.diagnostics()).toMatchObject({
+      attachedMountCount: 1,
+      delegatedListenerCount: 2,
+      selectedCreatureId: null,
+      selectedFoodLotId: null,
+    });
+    expect(radio(view, 'creature', f.readyIds[1]).checked).toBe(false);
+    expect(view.mount.querySelector('[data-arc5-feed-summary]')?.textContent)
+      .toBe('Choose one companion and one flora lot to preview Use 1.');
+    expect(view.mount.querySelector<HTMLButtonElement>('[data-arc5-feed-confirm]')!.disabled)
+      .toBe(true);
+
+    radio(view, 'creature', f.readyIds[1]).click();
+    expect(radio(view, 'creature', f.readyIds[1]).checked).toBe(true);
+    expect(controller.diagnostics()).toMatchObject({
+      delegatedListenerCount: 2,
+      selectedCreatureId: f.readyIds[1],
+      selectedFoodLotId: null,
+    });
+    expect(view.mount.querySelector('[data-arc5-feed-summary]')?.textContent)
+      .toBe('Choose one companion and one flora lot to preview Use 1.');
+    expect(view.mount.querySelector<HTMLButtonElement>('[data-arc5-feed-confirm]')!.disabled)
+      .toBe(true);
+
+    radio(view, 'flora', f.floraIds[1]).click();
+    expect(radio(view, 'creature', f.readyIds[1]).checked).toBe(true);
+    expect(radio(view, 'flora', f.floraIds[1]).checked).toBe(true);
+    expect(controller.diagnostics()).toMatchObject({
+      delegatedListenerCount: 2,
+      selectedCreatureId: f.readyIds[1],
+      selectedFoodLotId: f.floraIds[1],
+    });
+    expect(view.mount.querySelector('[data-arc5-feed-summary]')?.textContent)
+      .toMatch(/Meals 91 → 92.*Use 1.*Quantity 1 → 0/u);
+    expect(view.mount.querySelector<HTMLButtonElement>('[data-arc5-feed-confirm]')!.disabled)
+      .toBe(false);
+    expect(onAction).not.toHaveBeenCalled();
+  });
+
   it('projects exact same-species individuals and flora-only lots from registered V2 authority', () => {
     const f = fixture();
     const projected = model(f);

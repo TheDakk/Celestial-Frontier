@@ -3,14 +3,23 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import {
+  assessCompendiumFeedChoiceActivation,
   assessCompendiumFeedAudioAcknowledgement,
   assessCompendiumFeedCommittedOutcome,
   assessCompendiumFeedPendingWindow,
+  assessCompendiumFeedPreview,
   assessCompendiumFeedTwoDocumentStaleOutcome,
   compendiumFeedWebAudioEndpointFailureIsInstrument,
   compendiumFeedWebAudioRouteNodeIds,
   projectCompendiumFeedWebAudioGraph,
   selectArc5FeedFixtureBurnVerb,
+} from '../tools/slicesmoke-contract.mjs';
+import type {
+  CompendiumFeedChoiceActivationWitness,
+  CompendiumFeedChoiceExpectation,
+  CompendiumFeedChoiceReceiptWitness,
+  CompendiumFeedPreviewExpectation,
+  CompendiumFeedPreviewObservation,
 } from '../tools/slicesmoke-contract.mjs';
 
 const source = readFileSync(
@@ -56,6 +65,167 @@ const fixture = Object.freeze({
   foodQuantityBefore: 2,
   foodQuantityAfter: 1,
 });
+
+const choiceDocument = Object.freeze({
+  token: 'feed-document', generation: 7, logicalId: fixture.logicalId,
+  surfaceKey: 'feed-surface-key', contextKey: 'feed-context-key',
+});
+
+function feedChoiceWitness(
+  kind: 'creature' | 'flora',
+  expectedPriorId: string | null,
+): {
+  expected: CompendiumFeedChoiceExpectation;
+  observation: CompendiumFeedChoiceActivationWitness;
+} {
+  const expectedId = kind === 'creature' ? fixture.creatureId : fixture.foodLotId;
+  const radioId = kind === 'creature' ? 'arc5-feed-creature-0' : 'arc5-feed-flora-0';
+  const radioNodeToken = `${radioId}:node-1`;
+  const labelNodeToken = `${radioId}:label-1`;
+  const choiceFields = {
+    radioChoice: kind,
+    radioCreatureId: kind === 'creature' ? expectedId : null,
+    radioFoodLotId: kind === 'flora' ? expectedId : null,
+  };
+  const controller = {
+    attachedMountCount: 1, delegatedListenerCount: 2, pendingWork: 0,
+    convergenceLatched: false, feedState: 'ready',
+    surfaceKey: choiceDocument.surfaceKey, contextKey: choiceDocument.contextKey,
+  };
+  const serials = { pointerdown: 1, click: 2, input: 3, change: 4 } as const;
+  const event = (
+    type: 'pointerdown' | 'click' | 'input' | 'change',
+  ): CompendiumFeedChoiceReceiptWitness => {
+    const common = {
+      trusted: true, radioId, radioNodeToken, choice: kind, choiceId: expectedId,
+      document: { ...choiceDocument }, serial: serials[type],
+    };
+    if (type === 'pointerdown') {
+      return { ...common, type, x: 244, y: 424, pointerType: 'mouse', button: 0 };
+    }
+    if (type === 'click') return { ...common, type, x: 244, y: 424 };
+    return { ...common, type };
+  };
+  return {
+    expected: {
+      kind, expectedId, expectedPriorId,
+      documentToken: choiceDocument.token,
+      generation: choiceDocument.generation,
+      logicalId: choiceDocument.logicalId,
+      surfaceKey: choiceDocument.surfaceKey,
+      contextKey: choiceDocument.contextKey,
+    },
+    observation: {
+      kind, expectedId, expectedPriorId,
+      document: { ...choiceDocument },
+      prepared: {
+        selectorCount: 1, radioIdMatchCount: 1, labelOwnerCount: 1, labelFor: radioId,
+        labelConnected: true, labelContainsRadio: true,
+        labelWidth: 240, labelHeight: 44, labelVisible: true,
+        labelNodeToken, radioId, radioNodeToken,
+        radioConnected: true, radioDisabled: false, radioChecked: false,
+        ...choiceFields, x: 240, y: 420, labelHitOwner: true, radioHitOwner: true,
+        controller: { ...controller },
+      },
+      dispatch: {
+        kind: 'cdp-mouse', button: 'left', clickCount: 1,
+        x: 244, y: 424, targetX: 244, targetY: 424,
+        document: { ...choiceDocument }, selectorCount: 1, radioIdMatchCount: 1,
+        labelOwnerCount: 1,
+        labelFor: radioId, labelConnected: true, labelContainsRadio: true, labelNodeToken,
+        radioId, radioNodeToken, radioConnected: true,
+        radioDisabled: false, radioChecked: false,
+        labelWidth: 240, labelHeight: 44, labelVisible: true,
+        labelHitOwner: true, radioHitOwner: true,
+        ...choiceFields,
+      },
+      receipt: {
+        pointerdowns: [event('pointerdown')], clicks: [event('click')],
+        inputs: [event('input')], changes: [event('change')],
+      },
+      settled: {
+        selectorCount: 1, radioIdMatchCount: 1, labelOwnerCount: 1,
+        labelFor: radioId, labelConnected: true, labelContainsRadio: true,
+        labelNodeToken: `${radioId}:label-2`, radioId,
+        radioNodeToken: kind === 'creature' ? radioNodeToken : `${radioId}:node-2`,
+        radioConnected: true,
+        radioDisabled: false, radioChecked: true, ...choiceFields,
+        ui: {
+          document: { ...choiceDocument }, controller: { ...controller },
+          selectedCreatureId: kind === 'creature' ? expectedId : expectedPriorId,
+          selectedFoodLotId: kind === 'flora' ? expectedId : expectedPriorId,
+        },
+      },
+    },
+  };
+}
+
+function feedPreviewWitness(holdPhase: 'idle' | 'released' = 'released'): {
+  expected: CompendiumFeedPreviewExpectation;
+  observation: CompendiumFeedPreviewObservation;
+} {
+  const authority = {
+    revision: 9,
+    sourceDigest: digest('3'),
+    targetDigest: digest('4'),
+  };
+  const actionCoordinator = {
+    inFlight: false,
+    owner: { busy: false, operation: null },
+    hold: {
+      phase: holdPhase,
+      operation: holdPhase === 'released' ? 'arc4.capture.sample' : null,
+      sequence: holdPhase === 'released' ? 4 : 0,
+    },
+  };
+  const baseline = {
+    actionCoordinator: structuredClone(actionCoordinator),
+    lastOutcome: null,
+    result: null,
+  };
+  return {
+    expected: {
+      documentToken: choiceDocument.token,
+      generation: choiceDocument.generation,
+      logicalId: choiceDocument.logicalId,
+      surfaceKey: choiceDocument.surfaceKey,
+      contextKey: choiceDocument.contextKey,
+      authority: { ...authority },
+      creatureId: fixture.creatureId,
+      foodLotId: fixture.foodLotId,
+      fedBefore: fixture.fedBefore,
+      fedAfter: fixture.fedAfter,
+      foodQuantityBefore: fixture.foodQuantityBefore,
+      foodQuantityAfter: fixture.foodQuantityAfter,
+      baseline: structuredClone(baseline),
+    },
+    observation: {
+      document: { ...choiceDocument },
+      authority: { ...authority },
+      controller: {
+        attachedMountCount: 1,
+        delegatedListenerCount: 2,
+        pendingWork: 0,
+        convergenceLatched: false,
+        feedState: 'ready',
+        surfaceKey: choiceDocument.surfaceKey,
+        contextKey: choiceDocument.contextKey,
+        selectedCreatureId: fixture.creatureId,
+        selectedFoodLotId: fixture.foodLotId,
+      },
+      dom: {
+        selectedCreatureId: fixture.creatureId,
+        selectedFoodLotId: fixture.foodLotId,
+        summary: `Pertar: Meals ${fixture.fedBefore} → ${fixture.fedAfter}. Use 1 Leaf: Quantity ${fixture.foodQuantityBefore} → ${fixture.foodQuantityAfter}.`,
+        confirmPresent: true,
+        confirmDisabled: false,
+      },
+      actionCoordinator: structuredClone(actionCoordinator),
+      lastOutcome: baseline.lastOutcome,
+      result: baseline.result,
+    },
+  };
+}
 
 function pendingBundle() {
   const sessionDraws = { tame: 4 };
@@ -596,6 +766,340 @@ function twoDocumentStaleBundle() {
 }
 
 describe('Slice Arc 5 Feed causal-chain evidence', () => {
+  it('binds each native Feed choice to one current nested radio and preserves the first choice', () => {
+    const creature = feedChoiceWitness('creature', null);
+    expect(assessCompendiumFeedChoiceActivation(
+      creature.observation, creature.expected,
+    )).toEqual({ ok: true, reasons: [] });
+    const flora = feedChoiceWitness('flora', fixture.creatureId);
+    expect(assessCompendiumFeedChoiceActivation(
+      flora.observation, flora.expected,
+    )).toEqual({ ok: true, reasons: [] });
+
+    const expectOnly = (
+      mutate: (candidate: any) => void,
+      reason: string,
+    ) => {
+      const candidate = structuredClone(flora.observation);
+      mutate(candidate);
+      expect(assessCompendiumFeedChoiceActivation(candidate, flora.expected))
+        .toEqual({ ok: false, reasons: [reason] });
+    };
+
+    expectOnly((candidate) => { candidate.kind = 'creature'; },
+      'exact Feed choice expectation');
+    expectOnly((candidate) => { candidate.expectedId = 'foreign-lot'; },
+      'exact Feed choice expectation');
+    expectOnly((candidate) => { candidate.expectedPriorId = null; },
+      'exact Feed choice expectation');
+
+    for (const field of ['token', 'logicalId', 'surfaceKey', 'contextKey'] as const) {
+      expectOnly((candidate) => { candidate.document[field] = `${field}-stale`; },
+        'exact current Feed document');
+    }
+    expectOnly((candidate) => { candidate.document.generation += 1; },
+      'exact current Feed document');
+
+    for (const [field, value] of [
+      ['attachedMountCount', 0], ['delegatedListenerCount', 0], ['pendingWork', 1],
+      ['convergenceLatched', true], ['feedState', 'protected'],
+      ['surfaceKey', 'stale-surface'], ['contextKey', 'stale-context'],
+    ] as const) {
+      expectOnly((candidate) => { candidate.prepared.controller[field] = value; },
+        'current Feed controller');
+    }
+
+    expectOnly((candidate) => { candidate.prepared.selectorCount = 2; },
+      'unique label-radio ownership');
+    expectOnly((candidate) => { candidate.prepared.radioIdMatchCount = 2; },
+      'unique label-radio ownership');
+    expectOnly((candidate) => { candidate.prepared.labelOwnerCount = 2; },
+      'unique label-radio ownership');
+    expectOnly((candidate) => { candidate.prepared.labelConnected = false; },
+      'unique label-radio ownership');
+    expectOnly((candidate) => { candidate.prepared.labelContainsRadio = false; },
+      'unique label-radio ownership');
+    expectOnly((candidate) => { candidate.prepared.labelFor = 'foreign-radio'; },
+      'unique label-radio ownership');
+    expectOnly((candidate) => {
+      candidate.prepared.labelNodeToken = '';
+    },
+      'unique label-radio ownership');
+    expectOnly((candidate) => { candidate.prepared.radioFoodLotId = 'foreign-lot'; },
+      'unique label-radio ownership');
+    expectOnly((candidate) => { candidate.prepared.radioChoice = 'creature'; },
+      'unique label-radio ownership');
+
+    expectOnly((candidate) => { candidate.prepared.radioConnected = false; },
+      'ready unchecked Feed radio');
+    expectOnly((candidate) => { candidate.prepared.radioDisabled = true; },
+      'ready unchecked Feed radio');
+    expectOnly((candidate) => { candidate.prepared.radioChecked = true; },
+      'ready unchecked Feed radio');
+    expectOnly((candidate) => { candidate.prepared.labelHeight = 43.999; },
+      '44px current Feed hit target');
+    expectOnly((candidate) => { candidate.prepared.labelWidth = 43.999; },
+      '44px current Feed hit target');
+    expectOnly((candidate) => { candidate.prepared.labelVisible = false; },
+      '44px current Feed hit target');
+    expectOnly((candidate) => { candidate.prepared.labelHitOwner = false; },
+      '44px current Feed hit target');
+    expectOnly((candidate) => { candidate.prepared.radioHitOwner = false; },
+      '44px current Feed hit target');
+    expectOnly((candidate) => { candidate.dispatch.radioNodeToken = 'replacement-node'; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.radioIdMatchCount = 2; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.labelOwnerCount = 2; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.labelContainsRadio = false; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.radioConnected = false; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.radioDisabled = true; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.radioFoodLotId = 'foreign-lot'; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.document.contextKey = 'stale-context'; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.labelWidth = 43.999; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.labelHeight = 43.999; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.labelVisible = false; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.labelHitOwner = false; },
+      'dispatch-time Feed radio identity');
+    expectOnly((candidate) => { candidate.dispatch.radioHitOwner = false; },
+      'dispatch-time Feed radio identity');
+
+    expectOnly((candidate) => { candidate.dispatch.kind = 'synthetic-click'; },
+      'exact CDP Feed choice dispatch');
+    expectOnly((candidate) => { candidate.dispatch.button = 'right'; },
+      'exact CDP Feed choice dispatch');
+    expectOnly((candidate) => { candidate.dispatch.clickCount = 2; },
+      'exact CDP Feed choice dispatch');
+    expectOnly((candidate) => { candidate.dispatch.targetX = Number.NaN; },
+      'exact CDP Feed choice dispatch');
+
+    expect(flora.observation.dispatch.x).not.toBe(flora.observation.prepared.x);
+    expect(flora.observation.receipt.inputs[0]?.x).toBeUndefined();
+    expect(flora.observation.receipt.changes[0]?.y).toBeUndefined();
+
+    expectOnly((candidate) => { candidate.receipt.pointerdowns = []; },
+      'trusted current Feed pointer receipt');
+    expectOnly((candidate) => { candidate.receipt.pointerdowns[0].trusted = false; },
+      'trusted current Feed pointer receipt');
+    expectOnly((candidate) => { candidate.receipt.pointerdowns.push(
+      structuredClone(candidate.receipt.pointerdowns[0]),
+    ); }, 'trusted current Feed pointer receipt');
+    expectOnly((candidate) => { candidate.receipt.clicks[0].document.token = 'stale-document'; },
+      'trusted current Feed pointer receipt');
+    expectOnly((candidate) => { candidate.receipt.clicks[0].choiceId = 'foreign-lot'; },
+      'trusted current Feed pointer receipt');
+    expectOnly((candidate) => { candidate.receipt.pointerdowns[0].serial = 2; },
+      'trusted current Feed pointer receipt');
+    expectOnly((candidate) => { candidate.receipt.pointerdowns[0].x = null; },
+      'trusted current Feed pointer receipt');
+    expectOnly((candidate) => { candidate.receipt.clicks[0].serial = 1; },
+      'trusted current Feed pointer receipt');
+    expectOnly((candidate) => { candidate.receipt.clicks[0].x += 1; },
+      'trusted current Feed pointer receipt');
+
+    expectOnly((candidate) => { candidate.receipt.inputs = []; },
+      'exact Feed input receipt');
+    expectOnly((candidate) => { candidate.receipt.inputs[0].trusted = false; },
+      'exact Feed input receipt');
+    expectOnly((candidate) => { candidate.receipt.inputs.push(
+      structuredClone(candidate.receipt.inputs[0]),
+    ); }, 'exact Feed input receipt');
+    expectOnly((candidate) => { candidate.receipt.inputs[0].radioNodeToken = 'stale-node'; },
+      'exact Feed input receipt');
+    expectOnly((candidate) => { candidate.receipt.inputs[0].serial = 4; },
+      'exact Feed input receipt');
+    expectOnly((candidate) => { candidate.receipt.inputs[0].x = null; },
+      'exact Feed input receipt');
+    expectOnly((candidate) => { candidate.receipt.inputs[0].pointerType = 'mouse'; },
+      'exact Feed input receipt');
+
+    expectOnly((candidate) => { candidate.receipt.changes = []; },
+      'exact Feed change receipt');
+    expectOnly((candidate) => { candidate.receipt.changes[0].trusted = false; },
+      'exact Feed change receipt');
+    expectOnly((candidate) => { candidate.receipt.changes.push(
+      structuredClone(candidate.receipt.changes[0]),
+    ); }, 'exact Feed change receipt');
+    expectOnly((candidate) => { candidate.receipt.changes[0].document.generation += 1; },
+      'exact Feed change receipt');
+    expectOnly((candidate) => { candidate.receipt.changes[0].serial = 3; },
+      'exact Feed change receipt');
+    expectOnly((candidate) => { candidate.receipt.changes[0].y = 424; },
+      'exact Feed change receipt');
+    expectOnly((candidate) => { candidate.receipt.changes[0].button = null; },
+      'exact Feed change receipt');
+
+    expectOnly((candidate) => { candidate.settled.selectorCount = 2; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.radioIdMatchCount = 2; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.labelOwnerCount = 2; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.labelFor = 'foreign-radio'; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.labelConnected = false; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.labelContainsRadio = false; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.labelNodeToken = ''; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.radioChecked = false; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.radioNodeToken = ''; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.radioConnected = false; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.radioFoodLotId = 'foreign-lot'; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.ui.document.surfaceKey = 'stale-surface'; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.ui.controller.delegatedListenerCount = 0; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.ui.controller.surfaceKey = 'stale-surface'; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.ui.selectedFoodLotId = 'foreign-lot'; },
+      'settled current Feed choice');
+    expectOnly((candidate) => { candidate.settled.ui.selectedCreatureId = null; },
+      'preserved prior Feed choice');
+
+    expect(() => assessCompendiumFeedChoiceActivation(flora.observation, {
+      ...flora.expected, expectedId: '',
+    })).toThrow(/one exact current choice identity/u);
+  });
+
+  it('retains one exact pre-action Feed preview and diagnoses every drift in isolation', () => {
+    const good = feedPreviewWitness();
+    expect(good.observation.actionCoordinator.hold.phase).toBe('released');
+    const accepted = assessCompendiumFeedPreview(good.observation, good.expected);
+    expect(accepted).toEqual({ ok: true, reasons: [], observation: good.observation });
+    expect(accepted.observation).toBe(good.observation);
+    const idle = feedPreviewWitness('idle');
+    expect(assessCompendiumFeedPreview(idle.observation, idle.expected))
+      .toEqual({ ok: true, reasons: [], observation: idle.observation });
+
+    const expectOnly = (
+      mutate: (candidate: any) => void,
+      reason: string,
+    ) => {
+      const candidate = structuredClone(good.observation);
+      mutate(candidate);
+      const assessment = assessCompendiumFeedPreview(candidate, good.expected);
+      expect(assessment.ok).toBe(false);
+      expect(assessment.reasons).toEqual([reason]);
+      expect(assessment.observation).toBe(candidate);
+    };
+
+    expectOnly((candidate) => { candidate.document.token = 'stale-document'; },
+      'exact Feed preview document token');
+    expectOnly((candidate) => { candidate.document.generation += 1; },
+      'exact Feed preview generation');
+    expectOnly((candidate) => { candidate.document.logicalId = 'stale-logical'; },
+      'exact Feed preview logical ID');
+    expectOnly((candidate) => { candidate.document.surfaceKey = 'stale-surface'; },
+      'exact Feed preview surface key');
+    expectOnly((candidate) => { candidate.document.contextKey = 'stale-context'; },
+      'exact Feed preview context key');
+
+    expectOnly((candidate) => { candidate.authority.revision += 1; },
+      'unchanged Feed preview authority revision');
+    expectOnly((candidate) => { candidate.authority.sourceDigest = digest('5'); },
+      'unchanged Feed preview source digest');
+    expectOnly((candidate) => { candidate.authority.targetDigest = digest('6'); },
+      'unchanged Feed preview target digest');
+
+    expectOnly((candidate) => { candidate.controller.attachedMountCount = 0; },
+      'attached Feed preview mount');
+    expectOnly((candidate) => { candidate.controller.delegatedListenerCount = 0; },
+      'installed Feed preview listeners');
+    expectOnly((candidate) => { candidate.controller.pendingWork = 1; },
+      'idle Feed preview controller');
+    expectOnly((candidate) => { candidate.controller.convergenceLatched = true; },
+      'unlatched Feed preview convergence');
+    expectOnly((candidate) => { candidate.controller.feedState = 'protected'; },
+      'ready Feed preview state');
+    expectOnly((candidate) => { candidate.controller.surfaceKey = 'stale-surface'; },
+      'exact controller Feed surface key');
+    expectOnly((candidate) => { candidate.controller.contextKey = 'stale-context'; },
+      'exact controller Feed context key');
+    expectOnly((candidate) => { candidate.controller.selectedCreatureId = null; },
+      'exact controller Feed creature selection');
+    expectOnly((candidate) => { candidate.controller.selectedFoodLotId = null; },
+      'exact controller Feed flora selection');
+
+    expectOnly((candidate) => { candidate.dom.selectedCreatureId = null; },
+      'exact DOM Feed creature selection');
+    expectOnly((candidate) => { candidate.dom.selectedFoodLotId = null; },
+      'exact DOM Feed flora selection');
+    expectOnly((candidate) => {
+      candidate.dom.summary = candidate.dom.summary.replace('Meals 19 → 20', 'Meals 19 → 19');
+    }, 'exact Feed Meals transition');
+    expectOnly((candidate) => {
+      candidate.dom.summary = candidate.dom.summary.replace('Quantity 2 → 1', 'Quantity 2 → 2');
+    }, 'exact Feed Quantity transition');
+    expectOnly((candidate) => { candidate.dom.confirmPresent = false; },
+      'present Feed preview confirmation');
+    expectOnly((candidate) => { candidate.dom.confirmDisabled = true; },
+      'enabled Feed preview confirmation');
+
+    expectOnly((candidate) => { candidate.actionCoordinator.inFlight = true; },
+      'unchanged quiescent Feed preview in-flight state');
+    expectOnly((candidate) => { candidate.actionCoordinator.owner.busy = true; },
+      'unchanged quiescent Feed preview owner busy state');
+    expectOnly((candidate) => {
+      candidate.actionCoordinator.owner.operation = 'arc5.companion-feed';
+    }, 'unchanged Feed preview owner operation');
+    expectOnly((candidate) => { candidate.actionCoordinator.hold.phase = 'holding'; },
+      'unchanged quiescent Feed preview hold phase');
+    expectOnly((candidate) => {
+      candidate.actionCoordinator.hold.operation = 'arc5.companion-feed';
+    }, 'unchanged Feed preview hold operation');
+    expectOnly((candidate) => { candidate.actionCoordinator.hold.sequence += 1; },
+      'unchanged Feed preview hold sequence');
+    for (const phase of ['armed', 'holding', 'release-requested'] as const) {
+      const candidate = {
+        ...good.observation,
+        actionCoordinator: {
+          ...good.observation.actionCoordinator,
+          hold: { ...good.observation.actionCoordinator.hold, phase },
+        },
+      };
+      const expectation = {
+        ...good.expected,
+        baseline: {
+          ...good.expected.baseline,
+          actionCoordinator: {
+            ...good.expected.baseline.actionCoordinator,
+            hold: { ...good.expected.baseline.actionCoordinator.hold, phase },
+          },
+        },
+      };
+      const assessment = assessCompendiumFeedPreview(candidate, expectation);
+      expect(assessment.ok).toBe(false);
+      expect(assessment.reasons).toEqual([
+        'unchanged quiescent Feed preview hold phase',
+      ]);
+      expect(assessment.observation).toBe(candidate);
+    }
+    expectOnly((candidate) => { candidate.lastOutcome = 'pending'; },
+      'unchanged Feed preview last outcome');
+    expectOnly((candidate) => { candidate.result = { fedAfter: fixture.fedAfter }; },
+      'unchanged Feed preview result');
+
+    expect(() => assessCompendiumFeedPreview(good.observation, {
+      ...good.expected,
+      authority: { ...good.expected.authority, sourceDigest: 'not-a-digest' },
+    })).toThrow(/one exact pre-choice expectation/u);
+  });
+
   it('seeds the burn with the missing Feed prerequisite before restoring card order', () => {
     const rows = [
       { verb: 'tame', status: 'ready', button: { modelEnabled: 'true' } },
@@ -1246,6 +1750,179 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
     expectOnly((candidate) => {
       candidate.loser.reloaded.persistence.runtime.answerable = true;
     }, 'loser reload remains read-only under winner lease');
+  });
+
+  it('causal-orders both native Feed choice/preview sequences with retained diagnostics', () => {
+    const owner = (candidate: string, start: string, end: string): string | null => {
+      const startIndex = candidate.indexOf(start);
+      if (startIndex < 0 || candidate.indexOf(start, startIndex + 1) >= 0) return null;
+      const endIndex = candidate.indexOf(end, startIndex + start.length);
+      return endIndex > startIndex ? candidate.slice(startIndex, endIndex) : null;
+    };
+    const ordered = (candidate: string, needles: readonly string[]): boolean => {
+      let cursor = -1;
+      for (const needle of needles) {
+        const next = candidate.indexOf(needle, cursor + 1);
+        if (next < 0) return false;
+        cursor = next;
+      }
+      return true;
+    };
+    const occurrences = (candidate: string, needle: string): number =>
+      candidate.split(needle).length - 1;
+    const isCausalFeedWiring = (candidate: string): boolean => {
+      const desktopPointer = owner(
+        candidate, '  const clickDesktopPoint = async (point) => {',
+        '  const armDesktopPointerReceipt = async',
+      );
+      const targetDriver = owner(
+        candidate, '  const createArc5FeedTargetDriver = (targetSession) => {',
+        '  const arc5FeedClick = async (',
+      );
+      const choice = owner(
+        candidate, '  const activateArc5FeedChoice = async (',
+        '  const collectArc5FeedPreview = async (',
+      );
+      const preview = owner(
+        candidate, '  const collectArc5FeedPreview = async (',
+        '  const arc5FeedRenderedValues = async (',
+      );
+      const initial = owner(
+        candidate,
+        "    const initialFeedUi = await arc5FeedOpenDetail(arc5FeedFixture, 'Arc 5 Feed');",
+        '    /* A genuinely separate same-origin document now wins',
+      );
+      const winner = owner(
+        candidate, '      const winnerInitialFeedUi = await arc5FeedOpenDetail(',
+        '      const audioEvidenceDeadline = Date.now() + 3_000;',
+      );
+      if (!desktopPointer || !targetDriver || !choice || !preview || !initial || !winner) {
+        return false;
+      }
+      const noSyntheticChoice = (section: string): boolean =>
+        !/\.click\s*\(|\.checked\s*=|dispatchEvent\s*\(\s*new\s+(?:Event|MouseEvent|PointerEvent)/u
+          .test(section);
+      const noAsyncEscape = (section: string): boolean =>
+        !/\.catch\s*\(|Promise\.all\s*\(/u.test(section);
+      const rawCdpPointer = (section: string, session: 'sess' | 'targetSession'): boolean => {
+        const calls = section.match(new RegExp(
+          `send\\('Input\\.dispatchMouseEvent', \\{[\\s\\S]*?\\}, ${session}\\);`, 'gu',
+        )) ?? [];
+        return calls.length === 2
+          && calls[0]?.includes("type: 'mousePressed'") === true
+          && calls[1]?.includes("type: 'mouseReleased'") === true
+          && noSyntheticChoice(section);
+      };
+
+      return occurrences(candidate, 'activateArc5FeedChoice(') === 4
+        && occurrences(candidate, 'collectArc5FeedPreview(') === 2
+        && candidate.includes('const desktopArc5FeedDriver = Object.freeze({\n'
+          + '    evaluate: evalIn,\n    wait: waitDesktopValue,\n'
+          + '    clickPoint: clickDesktopPoint,\n  });')
+        && rawCdpPointer(desktopPointer, 'sess')
+        && rawCdpPointer(targetDriver, 'targetSession')
+        && targetDriver.includes('return Object.freeze({ evaluate, wait, clickPoint });')
+        && ordered(choice, [
+          'h.receipt={pointerdowns:[],clicks:[],inputs:[],changes:[]};',
+          "for(const type of ['pointerdown','click','input','change'])document.addEventListener(",
+          'if (!arc5FeedChoicePreparationPasses(preparation, expected)) {',
+          'dispatchPreflight = await driver.evaluate',
+          'if (!arc5FeedChoiceDispatchPasses(',
+          'const nativeDispatch = await driver.clickPoint(dispatchPreflight);',
+          'assessment = assessCompendiumFeedChoiceActivation(observation, expected);',
+          'if (assessment.ok) return observation;',
+          '+ JSON.stringify({ expected, assessment, observation }));',
+        ])
+        && choice.includes('JSON.stringify({ expected, observation: preparation })')
+        && choice.includes('JSON.stringify({ expected, preparation, dispatch: dispatchPreflight })')
+        && noSyntheticChoice(choice) && noAsyncEscape(choice)
+        && ordered(preview, [
+          'const expression = `(()=>{const ui=${ARC5_FEED_UI_EXPRESSION};return {',
+          'observation = await driver.evaluate(expression);',
+          'assessment = assessCompendiumFeedPreview(observation, expected);',
+          'if (assessment.ok) return Object.freeze({ expected, assessment, observation });',
+          '+ JSON.stringify({ expected, assessment, observation }));',
+        ])
+        && !preview.includes('?ui:null') && !preview.includes('? ui : null')
+        && noAsyncEscape(preview)
+        && ordered(initial, [
+          'const companionChoiceActivation = await activateArc5FeedChoice(',
+          'const floraChoiceActivation = await activateArc5FeedChoice(',
+          'const selectedUi = await collectArc5FeedPreview(',
+          'const beforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);',
+          'const loserFeedActivation = await arc5FeedClick(',
+        ])
+        && initial.includes("'creature', arc5FeedFixture.creatureId, null, initialFeedUi.document,")
+        && initial.includes("'flora', arc5FeedFixture.foodLotId, arc5FeedFixture.creatureId,\n"
+          + "      initialFeedUi.document, 'Arc 5 exact flora choice',")
+        && initial.includes("arc5FeedFixture, initialFeedUi, 'Arc 5 exact Feed preview',")
+        && initial.includes("'#codexpanel [data-arc5-feed-confirm]', 'Arc 5 Feed confirm',")
+        && noAsyncEscape(initial)
+        && ordered(winner, [
+          'const winnerCompanionChoiceActivation = await activateArc5FeedChoice(',
+          'const winnerFloraChoiceActivation = await activateArc5FeedChoice(',
+          'const winnerSelectedUi = await collectArc5FeedPreview(',
+          'const winnerBeforeActionRaw = await winnerDriver.evaluate(',
+          'const winnerFeedActivation = await arc5FeedClick(',
+        ])
+        && winner.includes("'creature', arc5FeedFixture.creatureId, null,\n"
+          + '        winnerInitialFeedUi.document')
+        && winner.includes("'flora', arc5FeedFixture.foodLotId, arc5FeedFixture.creatureId,\n"
+          + '        winnerInitialFeedUi.document')
+        && winner.includes('arc5FeedFixture, winnerInitialFeedUi,\n'
+          + "        'Arc 5 winner exact Feed preview', winnerDriver,")
+        && winner.includes("'#codexpanel [data-arc5-feed-confirm]',\n"
+          + "        'Arc 5 Feed winner confirm', winnerDriver,")
+        && noAsyncEscape(winner);
+    };
+    const replaceOnce = (candidate: string, before: string, after: string): string => {
+      expect(occurrences(candidate, before)).toBe(1);
+      return candidate.replace(before, after);
+    };
+    const reverseMarkers = (candidate: string, first: string, second: string): string => {
+      expect(occurrences(candidate, first)).toBe(1);
+      expect(occurrences(candidate, second)).toBe(1);
+      return candidate.replace(first, '__CF_FEED_FIRST__')
+        .replace(second, first).replace('__CF_FEED_FIRST__', second);
+    };
+
+    expect(isCausalFeedWiring(source)).toBe(true);
+    expect(isCausalFeedWiring(replaceOnce(
+      source,
+      'const nativeDispatch = await driver.clickPoint(dispatchPreflight);',
+      "const nativeDispatch = await driver.evaluate('document.querySelector(\\\"input\\\")?.click()');",
+    ))).toBe(false);
+    expect(isCausalFeedWiring(reverseMarkers(
+      source,
+      'const selectedUi = await collectArc5FeedPreview(',
+      'const beforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);',
+    ))).toBe(false);
+    expect(isCausalFeedWiring(reverseMarkers(
+      source,
+      'const winnerSelectedUi = await collectArc5FeedPreview(',
+      'const winnerBeforeActionRaw = await winnerDriver.evaluate(',
+    ))).toBe(false);
+    expect(isCausalFeedWiring(replaceOnce(
+      source,
+      "      'Arc 5 exact companion choice',\n    );",
+      "      'Arc 5 exact companion choice',\n    ).catch(() => null);",
+    ))).toBe(false);
+    expect(isCausalFeedWiring(replaceOnce(
+      source,
+      "    const initialFeedUi = await arc5FeedOpenDetail(arc5FeedFixture, 'Arc 5 Feed');",
+      "    const initialFeedUi = await arc5FeedOpenDetail(arc5FeedFixture, 'Arc 5 Feed');\n"
+        + '    await Promise.all([]);',
+    ))).toBe(false);
+    expect(isCausalFeedWiring(replaceOnce(
+      source,
+      '+ JSON.stringify({ expected, assessment, observation }));\n    } finally {',
+      '+ JSON.stringify({ expected }));\n    } finally {',
+    ))).toBe(false);
+    expect(isCausalFeedWiring(replaceOnce(
+      source,
+      '+ JSON.stringify({ expected, assessment, observation }));\n  };\n  const arc5FeedRenderedValues',
+      '+ JSON.stringify({ expected }));\n  };\n  const arc5FeedRenderedValues',
+    ))).toBe(false);
   });
 
   it('wires both decisions to native Compendium interaction and reload evidence', () => {
