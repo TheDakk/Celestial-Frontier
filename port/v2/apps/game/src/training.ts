@@ -62,12 +62,12 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
     },
     {
       id: 'atlas-add', spot: '#survey [data-act="add"]', allow: ['#survey [data-act="add"]'],
-      text: () => 'Chart it. Tap the highlighted <b>Star Atlas</b> action on Earth’s card — it adds a new chart or confirms the one you already carry. The Atlas is how you find your way back across the infinite.',
+      text: () => 'Practice the highlighted <b>Star Atlas</b> action on Earth’s card without changing your expedition’s Atlas. Outside Training, the same action adds a new chart or confirms the one you already carry. The Atlas is how you find your way back across the infinite.',
       when: (t, d) => t === 'atlas-add' && d.id === 'p133',
     },
     {
       id: 'atlas-open', spot: '#dockatlas,#railatlas', allow: ['#dockatlas', '#railatlas', '#atlaspanel'],
-      text: () => 'Earth is charted — your Atlas’s first entry. Open the <b>Star Atlas</b> (the dock — or the right rail on desktop). Tapping a planet entry returns to its live system survey; <b>Land</b> remains your choice.',
+      text: () => 'That was the real Atlas action, practiced without changing your expedition’s charts. Open the <b>Star Atlas</b> (the dock — or the right rail on desktop). Outside Training, tapping a charted planet entry returns to its live system survey; <b>Land</b> remains your choice.',
       when: (t, d) => t === 'atlas-open' && !!d.open,
     },
     {

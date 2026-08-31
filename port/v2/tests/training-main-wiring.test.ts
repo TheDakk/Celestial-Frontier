@@ -132,8 +132,10 @@ function sliceTrainingTourErrors(source: string): string[] {
     "button.textContent='Injected engineering mutation';panel.append(button);",
     "button.textContent='Injected companion mutation';panel.append(button);",
     "button.textContent='Injected records mutation';panel.append(button);",
-    "!engineeringHold.held || !engineeringHold.unavailable || engineeringHold.actions !== 0",
-    'compendiumHeldRows.rows < 1 || !compendiumHeldRows.allLocked',
+    'engineeringHold.actions !== ENGINEERING_ACTION_CONTROL_COUNT || !engineeringHold.allLocked',
+    'compendiumHeldRows.count !== 0 || compendiumHeldRows.rows !== 0',
+    "atl.count !== 0 || atl.lastOutcome !== 'training-route-only'",
+    'hasUnnegatedSentenceClaim(planetsideBriefingCopy, /preview row[^.!?]*capture/i)',
     "trainingSideCheck('planetside-briefing')",
     "trainingSideCheck('grad')",
     '/Field Training, step 15 of 15/i.test(gradFocus.announcement)',
@@ -277,6 +279,24 @@ describe('Field Training read-only board lifecycle wiring', () => {
 describe('Field Training authoritative Slice journey', () => {
   it('requires every exact card and each populated read-only board without rewriting the held primary', () => {
     expect(sliceTrainingTourErrors(sliceSource)).toEqual([]);
+  });
+
+  it('preserves the outer landed ledger and causal-stops before unrelated successors', () => {
+    const finish = section(
+      sliceSource,
+      '  /* Hold an older persist across the native Finish activation, then attempt',
+      '  /* Two native documents cross the production fresh initializer together.',
+    );
+    for (const marker of [
+      'expectedLand: [901],',
+      'JSON.stringify(done3.save.landed) !== JSON.stringify([901])',
+      "failSliceWithoutCascade('D-TRAIN phase was red; unrelated F4 and collision successors were not run'",
+    ]) {
+      expect(finish).toContain(marker);
+      expect(finish.split(marker).length - 1).toBe(1);
+    }
+    expect(finish).not.toContain('expectedLand: [901, 133]');
+    expect(finish).not.toContain('JSON.stringify([901, 133])');
   });
 
   it('rejects skipped cards, forged board receipts, missing storage proof, and vacuous board locks', () => {

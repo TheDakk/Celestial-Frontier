@@ -9,6 +9,10 @@ const mainSource = readFileSync(
   new URL('../apps/game/src/main.ts', import.meta.url),
   'utf8',
 );
+const indexSource = readFileSync(
+  new URL('../apps/game/index.html', import.meta.url),
+  'utf8',
+);
 
 function section(source: string, start: string, end: string): string {
   const at = source.indexOf(start);
@@ -145,6 +149,20 @@ function greenAtlasTravelObservation(): AtlasTravelObservation {
 }
 
 describe('Slice Atlas native Travel contract', () => {
+  it('declares both native Atlas openers as non-submit buttons', () => {
+    const markupErrors = (source: string): string[] => ['railatlas', 'dockatlas'].filter((id) => (
+      source.split(`<button id="${id}" type="button"`).length - 1 !== 1
+    ));
+    expect(markupErrors(indexSource)).toEqual([]);
+    for (const id of ['railatlas', 'dockatlas']) {
+      const mutant = indexSource.replace(
+        `<button id="${id}" type="button"`,
+        `<button id="${id}"`,
+      );
+      expect(markupErrors(mutant)).toContain(id);
+    }
+  });
+
   it('keeps row identity separate from the exact enabled or disabled Travel action', () => {
     const green = greenAtlasTravelObservation();
     expect(assessAtlasTravelTarget(green, { atlasId: 'p133', focus: true })).toMatchObject({
