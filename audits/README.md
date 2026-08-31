@@ -34,15 +34,17 @@ entry once for its offline cache. The retained red recorded only owners, so it c
 assign initiator order after the fact, but a second painter import/product retry is excluded by the
 build graph.
 
-The bounded successor records monotonic immutable method/path/phase and standards-based
+Exact SSH-signed repair `c43992f721895900e56928f843d5dcdc5f570f36` records monotonic immutable
+method/path/phase and standards-based
 `Sec-Fetch-Dest` roles. It accepts `worker` and the independent `empty` PWA cache-fill in either
 arrival order, waits only while an owner has no request, fails immediately on unknown evidence,
 and rejects a duplicate role per owner before release and after settlement. Because a newly claimed
 service worker may cache-serve the product request without another network hit, exact product
 authority is independently bound to each document token and exactly one loader acquisition,
 producer epoch, worker instance/start/ready, complete acquisition phase, and zero fatal/protocol/
-render errors. No product, save, art, timeout, retry, browser ruler, Edge-version baseline or
-release identity changes.
+render errors. Its focused controls, Slice report selftest, consolidated develop profile and final
+independent review are green/CLEAR. No product, save, art, timeout, retry, browser ruler,
+Edge-version baseline or release identity changes.
 
 - `ARC4_SLICE_PR35_LAZY_REQUEST_ROLE_ORACLE_RED_20260831_4BAA425.json.gz`: **1,830 gzip / 5,655 raw
   bytes**; gzip/raw SHA-256

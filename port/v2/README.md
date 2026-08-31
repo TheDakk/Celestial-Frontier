@@ -94,8 +94,8 @@
 > pointer replacement. This adds no retry, timeout, browser ruler, Edge pin, product capability,
 > creature/save/art/audio/balance change, or new battery stage.
 >
-> **Current 4baa repair boundary (2026-08-31; bounded role repair focused green):** exact clean
-> SSH-signed source `4baa4250d1ae5813eba0753555b712baddbd595f` passed the consolidated develop
+> **Current c439 signed repair boundary (2026-08-31; static green, one browser chain next):** exact
+> clean SSH-signed predecessor `4baa4250d1ae5813eba0753555b712baddbd595f` passed the consolidated develop
 > profile at **253 files / 2,552 tests / 1 skipped**, all TypeScript programs, **34** art sources,
 > **1,014/1,014** routes and **454** specification fields. It then passed Edge preflight and
 > Compendium run `20260831055550346-65276-46a6bd9c52` **78/78** once/no-retry plus named
@@ -106,7 +106,8 @@
 > network oracle counted the product Worker request and the generated PWA's one-time offline-cache
 > fetch as duplicate retries.
 >
-> The bounded dirty successor records immutable ordinal/owner/phase/GET/path and standards-based
+> Exact SSH-signed repair `c43992f721895900e56928f843d5dcdc5f570f36` records immutable
+> ordinal/owner/phase/GET/path and standards-based
 > `Sec-Fetch-Dest` roles. It accepts `worker` and `empty` in either first-install order, fails
 > immediately on unknown evidence, and rejects a duplicate role per owner. It independently binds
 > each actual product outcome to the exact document token plus one loader acquisition, producer
@@ -114,8 +115,9 @@
 > manufacture green or make the check depend on an Edge point version. Focused coverage remains
 > **1 file / 17 tests** and all three TypeScript programs are green. The consolidated develop
 > profile passes **253 files / 2,552 tests / 1 skipped**, all TypeScript programs, **34** clean art
-> sources, **1,014/1,014** routes and **454** non-inert specification fields. The signed successor
-> and at most one fresh no-retry Compendium → Slice → Glass chain remain.
+> sources, **1,014/1,014** routes and **454** non-inert specification fields; final independent
+> review is CLEAR. Only its clean signed docs descendant and at most one fresh no-retry
+> Compendium → Slice → Glass chain remain.
 > Exact red carriers and hashes are in `audits/README.md`. No timeout, retry, product/save/art
 > behavior, browser ruler or Edge baseline changed.
 >
