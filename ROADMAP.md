@@ -23,12 +23,14 @@ the archive verbatim and refresh this handoff in place.
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Exact SSH-signed docs candidate
-  **4002b2d59508fce70d8e9eed404fd3544635f54d** (tree
-  **052ff99ce52045a30c4911259b3bbcad05575bbc**, parent
-  **0dc9168a1adbbc80a5e99503c02ab34d58b46a50**) is **55 commits ahead** of the remote agent
-  branch. The current dirty successor changes only the Slice instrument, its browser-free contract
-  tests, immutable evidence and synchronized references; no game product byte changed.
+  **origin/openai/mac**. Exact SSH-signed instrument/evidence source
+  **4822cab92ae3f300635ef16678f860f60a6872e8** (tree
+  **ba32b097b933dc554b5713c600f81bcec26820a4**, parent
+  **4002b2d59508fce70d8e9eed404fd3544635f54d**) is **56 commits ahead** of the remote agent
+  branch and contains an embedded Ed25519 SSH signature. It changes only the Slice instrument, its
+  browser-free contract tests, immutable evidence and synchronized references; no game product
+  byte changed. This handoff refresh is docs-only and becomes the exact browser candidate once
+  signed.
 - **Immutable Compendium evidence:** Edge preflight passed on `152.0.4191.53` / CDP `1.3`.
   Compendium (**catalog/art stress**) run `20260831130356666-917-5be54ef202` passed
   **78/78** once/no-retry in **65,803 ms** and passed named verification on exact 4002.
@@ -78,6 +80,7 @@ provenance only and never trigger a rebaseline.
 - The exact property carrier has executable controls for present/absent properties, value drift,
   priority drift and unrelated inline mutation preservation. The focused Slice/evidence boundary
   passed **6 files / 63 tests** before the full profile.
+- Independent code/test-vacuity and current-document/evidence reviews are **CLEAR**.
 - Current Compendium producer authority is
   `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d`; its budget-file SHA-256 is
   `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`.
@@ -86,9 +89,9 @@ provenance only and never trigger a rebaseline.
 
 ### Exact remaining local sequence
 
-1. Retain the exact 4002 Compendium/Slice carriers, synchronize every affected current reference,
-   and create one reviewed SSH-signed instrument/evidence commit.
-2. Create and verify one clean SSH-signed docs-only descendant as the exact candidate; run the
+1. **Complete:** retain the exact 4002 Compendium/Slice carriers, synchronize every affected
+   current reference, and create reviewed SSH-signed instrument/evidence commit 4822.
+2. Create and verify this clean SSH-signed docs-only descendant as the exact candidate; run the
    tracked-input preflight against that committed source.
 3. From that one unchanged clean signed candidate, run exactly one fail-fast/no-retry
    **Compendium → Slice (`develop`) → Glass (`develop`)** chain. Named-verify every report and stop
@@ -117,9 +120,8 @@ physical phone/tablet install, heat, battery and true-GPU review.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** finish the reviewed property-carrier/evidence commit, sign one docs-only
-  candidate, then run its one exact develop Compendium → Slice → Glass chain. Do not push or invoke
-  hosted CI.
+- **OpenAI/Codex now:** sign this docs-only candidate, then run its one exact develop Compendium →
+  Slice → Glass chain. Do not push or invoke hosted CI.
 - **GitHub now:** none. PR #35 remains the existing draft with base **develop** and source
   **openai/mac**. Its copy-ready title is **feat(v2): complete roadmap campaign and harden CI
   parity**. No exact push/head or hosted attempt is authorized.

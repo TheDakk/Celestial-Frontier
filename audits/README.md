@@ -29,7 +29,8 @@ serialized `style` attribute after mutating only named CSS properties. The later
 `harness` finding ran without a valid predecessor after those early reds and is a cascade, not an
 independent product diagnosis.
 
-The bounded successor changes no product CSS or game byte. One shared executable helper captures,
+Exact SSH-signed successor `4822cab92ae3f300635ef16678f860f60a6872e8` changes no product CSS
+or game byte. One shared executable helper captures,
 restores and inspects only exact value/priority pairs: Prime tier owns `display`, `top`, `left` and
 `transform`; Prime-over-Guide and Prime-over-Survey own `display`; Guide height owns `min-height`.
 Originally absent properties are removed, original priorities are restored, unrelated inline

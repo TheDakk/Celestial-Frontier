@@ -9,7 +9,8 @@
 > attribute after owning only named properties. The later protected-save finding is a dependent
 > cascade, not evidence of product presentation drift.
 >
-> The local successor leaves the native minimum-44-pixel Prime/Guide/Survey product layout unchanged.
+> Exact SSH-signed instrument/evidence source `4822cab92ae3f300635ef16678f860f60a6872e8`
+> leaves the native minimum-44-pixel Prime/Guide/Survey product layout unchanged.
 > Its controls now capture exact CSS value/priority pairs for only `display`, `top`, `left`,
 > `transform` or Guide `min-height`, restore originally absent properties by removal, preserve
 > unrelated inline publication, and causal-stop immediately on a red base/control/restoration.

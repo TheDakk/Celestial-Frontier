@@ -8,7 +8,8 @@
 > with **3 findings / 3 scopes**; Glass did not run. The art/catalog stage was fully green, and the
 > Slice roots were whole-`style` restoration false reds after correct phone geometry mutants.
 >
-> The local successor changes only the Slice CSS-property carrier and causal-stop tests. It changes
+> Exact SSH-signed source `4822cab92ae3f300635ef16678f860f60a6872e8` changes only the Slice
+> CSS-property carrier and causal-stop tests. It changes
 > no creature, genome, painter, organism, biome, vista, palette, silhouette or art structure. The
 > full develop profile is green at **253 files / 2,557 passed / 1 skipped**, all three TypeScript
 > programs and the **34-source** art gate. The cumulative **77-bullet** development bulletin retains

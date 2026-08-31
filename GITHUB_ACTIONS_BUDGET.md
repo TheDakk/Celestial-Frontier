@@ -125,8 +125,9 @@ terminal red once/no-retry after **303,148 ms** with **3 findings / 3 scopes**; 
 correctly rejected the non-PASS predecessor, Glass did not run, and 4002 will not be retried. The
 phone geometry mutants were exact; whole serialized `style` equality falsely rejected restoration,
 then the non-stopped instrument continued into a dependent protected-save cascade. The local
-successor changes only the property carrier, causal-stop boundary, executable controls, evidence
-and references. Its complete browser-free develop profile is green at **253 files / 2,557 passed /
+SSH-signed successor `4822cab92ae3f300635ef16678f860f60a6872e8` changes only the property
+carrier, causal-stop boundary, executable controls, evidence and references. Its complete
+browser-free develop profile is green at **253 files / 2,557 passed /
 1 skipped**, all TypeScript/art/route/spec owners green. It authorizes no push, label, hosted run,
 Ready transition or merge. One new reviewed signed candidate and one fresh local Compendium → Slice
 → Glass chain remain; no hosted attempt is authorized.

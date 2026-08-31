@@ -9,7 +9,8 @@
 > exact; whole serialized `style` equality falsely rejected restoration and the runner continued
 > into a dependent protected-save cascade.
 >
-> The local successor changes only the Slice property carrier, causal-stop contract and evidence.
+> Exact SSH-signed source `4822cab92ae3f300635ef16678f860f60a6872e8` changes only the Slice
+> property carrier, causal-stop contract and evidence.
 > It changes no creature, genome, painter, organism, biome or art structure. The right-sized develop
 > profile is green at **253 files / 2,557 passed / 1 skipped**, all three TypeScript programs, and
 > the **34-source** art, **1,014-route** and **454-field** specification gates. **A New Foundation**

@@ -9,7 +9,8 @@
 > false reds after exact phone geometry controls. The later protected-save setup had no valid
 > predecessor and is a cascade, not evidence of a save-system defect.
 >
-> The local successor changes only the Slice property carrier and causal-stop tests. It adds no save
+> Exact SSH-signed source `4822cab92ae3f300635ef16678f860f60a6872e8` changes only the Slice
+> property carrier and causal-stop tests. It adds no save
 > field, schema, migration, gameplay retry, timeout, creature/genome rewrite or art/biome redesign.
 > The full develop profile is green at **253 files / 2,557 passed / 1 skipped**, all three TypeScript
 > programs, **1,014** routes and **454** declared specification fields. The **77-bullet** bulletin

@@ -8,7 +8,8 @@
 > with **3 findings / 3 scopes**; Glass did not run. The roots were property-restoration instrument
 > false reds after exact phone geometry mutants; no progression outcome was implicated.
 >
-> The local successor changes only the Slice CSS-property carrier and causal-stop tests. Existing
+> Exact SSH-signed source `4822cab92ae3f300635ef16678f860f60a6872e8` changes only the Slice
+> CSS-property carrier and causal-stop tests. Existing
 > Charter rules, rewards, achievements, ranks, creature/genome identity, biome and art structures
 > are unchanged. The full develop profile is green at **253 files / 2,557 passed / 1 skipped**, all
 > three TypeScript programs, **1,014** routes and **454** declared specification fields. **A New
