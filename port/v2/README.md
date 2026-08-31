@@ -1,30 +1,32 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-08-31 current local successor boundary (supersedes every older “current” status label
-> below; dated evidence remains immutable):** exact clean signed source
-> `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium (**catalog/art stress**)
-> **78/78** once/no-retry as `20260831130356666-917-5be54ef202`. Its exact-source develop Slice
-> (**playable journey**) `20260831130558500-1306-cb8d7cf92834` stopped terminal red once/no-retry
-> after **303,148 ms** with **3 findings / 3 scopes**; Glass (**cross-device presentation**) did not
-> run. The phone geometry controls turned red as designed, then whole serialized `style` equality
-> falsely rejected restoration; the later protected-save finding is a dependent cascade.
+> **2026-08-31 current local eed successor boundary (supersedes every older “current” status label
+> below; dated evidence remains immutable):** exact clean SSH-signed source
+> `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed tracked-input and Edge preflight, then
+> Compendium (**catalog/art stress**) **78/78** once/no-retry as
+> `20260831140359225-10071-3234490882`. Its exact-source develop Slice (**playable journey**)
+> `20260831140556783-10430-bcb61adfaef5` stopped terminal red once/no-retry after **345,163 ms**
+> with **7 findings / 7 scopes**. Named verification rejected the non-PASS predecessor, Glass
+> (**cross-device presentation**) did not run, and eed will never be retried or relabelled.
 >
-> Exact SSH-signed instrument/evidence source `4822cab92ae3f300635ef16678f860f60a6872e8` is
-> instrument-only. It carries exact CSS value/priority pairs for Prime
-> `display/top/left/transform`, Prime-over-overlay `display`, and Guide `min-height`; restores absent
-> properties by removal; preserves unrelated inline publication; and immediately causal-stops a red
-> base/control/restoration. The complete develop boundary is green at **253 files / 2,557 passed /
-> 1 skipped**, all three TypeScript programs, **34** clean art sources, **1,014/1,014** routes and
-> **454** non-inert specification fields. Current Compendium producer/budget authority remains
-> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
-> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. **A New Foundation**
-> remains **77 bullets**, SHA-256
+> The bounded successor corrects six evidence expectations and one product markup defect. The
+> transient-read runner now judges the real two-write final successor, including exact Arc 9
+> receipt/ordinal/achievement authority; Training binds truthful practice-only Atlas, locked
+> Engineering, unpublished Compendium and landed-ledger outcomes; phase causal stops prevent a red
+> phase from spending later unrelated work. Both Atlas openers explicitly use `type="button"`.
+> Focused coverage is **5 files / 56 tests**, all three TypeScript programs pass, diff hygiene is
+> clean, and independent review is **CLEAR**. No creature/genome/organism/biome/art structure,
+> gameplay reward, save schema, timeout, retry, browser ruler or Edge baseline changed. **A New
+> Foundation** remains **77 bullets**, SHA-256
 > `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> A new clean signed candidate restarts exactly one unchanged-source
-> **Compendium → Slice → Glass** chain. SceneMemory remains production-only. No Edge rebaseline,
-> timeout increase, retry, hosted attempt, push, merge, release, version bump, publication or
-> deployment is authorized.
+> The complete develop profile is green at **253 files / 2,559 passed / 1 skipped**, all
+> TypeScript/art/route/specification owners green. Current Compendium producer/budget authority is
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. After clean signed-source
+> preflight, the new candidate receives exactly one unchanged-source **Compendium → Slice → Glass** chain.
+> SceneMemory remains production-only. No hosted attempt, push, merge, release, version bump,
+> preview/publication or deployment is authorized.
 
 > **Historical SceneMemory production-quarantine boundary (2026-08-30; exact resumption details in
 > `ROADMAP.md`):** exact clean SSH-signed checkpoint

@@ -10,6 +10,55 @@ summary of it.
 
 ## Contents
 
+### Signed `eedac4a…` Compendium PASS, then final-successor/Training Slice red
+
+Exact clean SSH-signed source `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed its tracked-input
+preflight and Edge `152.0.4191.53` / CDP `1.3` preflight. Its one/no-retry Compendium run
+`20260831140359225-10071-3234490882` passed **78/78** with zero findings in **65,905 ms** and passed
+exact named verification. Its unchanged-source develop Slice run
+`20260831140556783-10430-bcb61adfaef5` then stored terminal `fail` once/no-retry after
+**345,163 ms** with **7 findings / 7 scopes**. The named Slice verifier correctly exited 2. Glass
+did not run; eedac4a will not be retried or relabelled.
+
+The first finding was a stale final-successor oracle: the exact retained legacy-v4 primary stayed
+protected, then correctly settled through receipt-free revision 1 and the required Arc 9 aggregate
+boot catch-up at revision 2. Final authority had SessionRNG ordinal 1, exact `receipt:0`, kind
+`arc9-progression-refresh-v1`, witness
+`arc9p1:a8f5961bf107300e280aa9cda8160e051e02ab691c80cda40eaf87642d4f62c9`, and the exact 21-id
+achievement successor. The instrument still expected one write/revision and ordinal 0.
+
+Five D-TRAIN findings were independent stale expectations: write-held Atlas practice correctly
+created no durable row; approved “never a preview row” copy was matched across a sentence boundary;
+Engineering correctly exposed all 70 current controls disabled rather than an obsolete unavailable
+board; Compendium correctly showed the honest empty outer catalogue until Finish; and Finish
+preserved surrounding `landed: [901]` rather than inventing Earth `133`. The final finding exposed
+one product markup defect: the two Atlas openers omitted `type="button"`, so the dock opener was
+observed as `submit`.
+
+The bounded successor binds both transient branches to exact revision 2, branch-specific
+ordinal/receipt/projection truth and discriminating pre-catch-up/extra/missing/wrong controls;
+updates Training copy/oracles to the protected checkpoint law; causal-stops after the transient and
+D-TRAIN phases; and explicitly types both Atlas openers. No timeout, retry, save schema, migration,
+browser threshold, Edge baseline, gameplay system, creature/genome/biome structure or balance was
+changed. Its complete develop profile passes **253 files / 2,559 tests / 1 skipped**, all three
+TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields. Current
+Compendium producer/budget authority is
+`8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+`e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`.
+
+- `ARC1A_COMPENDIUM_PR35_TRANSIENT_READ_PASS_20260831_EEDAC4A.json.gz`: **524,847 gzip /
+  10,885,113 raw bytes**; gzip/raw SHA-256
+  `d93fe524f87c652ef4ad5602eccbcb291fcc93c56688d33541b3ef75780df49d` /
+  `d560f226203e2373a79ca6618aae98dbdee0c477401025fd1e56ed1625e71314`.
+- `ARC4_SLICE_PR35_TRANSIENT_READ_CORE_FLOW_RED_20260831_EEDAC4A.json.gz`: **33,536 gzip /
+  203,525 raw bytes**; gzip/raw SHA-256
+  `9cbc575ef340ce4f8294240e0c52d9cd9a3f045abc778f59115500050ed7ee81` /
+  `8397cceb0059f2f02abf08985ef3be4bd418de71efcf05832133368d5063a2a3`.
+- `ARC4_SLICE_PR35_TRANSIENT_READ_CORE_FLOW_RED_20260831_EEDAC4A.log.gz`: **16,992 gzip /
+  91,296 raw bytes**; gzip/raw SHA-256
+  `5efd1fcf4924929a07e3820edda6cc986a0aacd922cac685fcbf71f42bb6167c` /
+  `c12af0870c5414cd757d9a19ca0cee58f0ccb70346bbd2bc12de8dfb27b5843e`.
+
 ### Signed `4002b2d…` Compendium PASS, then whole-style property-carrier Slice red
 
 Exact clean SSH-signed source `4002b2d59508fce70d8e9eed404fd3544635f54d` (tree
