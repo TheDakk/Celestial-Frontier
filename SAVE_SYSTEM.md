@@ -1,6 +1,26 @@
 # Celestial Frontier — Save System
 
-> **2026-08-31 current local successor overlay (supersedes every older “current” label below;
+> **2026-08-31 current protected-Training/final-successor overlay (supersedes every older “current”
+> label below; dated evidence remains immutable):** exact signed `eedac4a…` passed Compendium
+> **78/78** before exact-source Slice `20260831140556783-10430-bcb61adfaef5` stopped once/no-retry
+> after **345,163 ms** with **7 findings / 7 scopes**; Glass did not run. The primary bytes remained
+> protected. Veteran reload correctly committed receipt-free F4/product bootstrap revision 1 and
+> exact Arc 9 aggregate catch-up revision 2 with ordinal 1 and its exact receipt; the runner still
+> expected revision 1/ordinal 0.
+>
+> Protected Training correctly emits practice Atlas/Land events without inventing an Atlas row or
+> appending Earth to the surrounding `landed: [901]` ledger. Finish publishes checkpoint-owned
+> state while preserving those surrounding fields. The repaired oracle now binds that law, exact
+> revision-2 branch-specific receipts/projection and phase causal stops. It adds no save field,
+> schema, migration, retry or timeout. The only product edit is explicit non-submit type on the two
+> Atlas opener buttons. Focused tests pass **5 files / 56 tests**; the complete develop profile is
+> green at **253 files / 2,559 passed / 1 skipped** with every TypeScript/art/route/specification
+> owner green, and independent review is **CLEAR**. Current Compendium producer/budget authority is
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`; only the clean signed
+> candidate and its new browser chain remain pending.
+
+> **2026-08-31 historical 4002/4822 local successor overlay (superseded above;
 > dated transaction and evidence checkpoints remain immutable):** exact clean signed source
 > `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry as
 > `20260831130356666-917-5be54ef202`. Its exact-source develop Slice

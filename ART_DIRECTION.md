@@ -1,6 +1,23 @@
 # Celestial Frontier — Master Art Direction
 
-> **2026-08-31 current local successor overlay (supersedes every older “current” label below;
+> **2026-08-31 current eed successor overlay (supersedes every older “current” label below;
+> dated art/evidence checkpoints remain immutable):** exact clean SSH-signed source
+> `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed Compendium **78/78** once/no-retry before
+> its exact-source develop Slice stopped red once/no-retry after **345,163 ms** with **7 findings /
+> 7 scopes**; Glass did not run and eed will not be retried. The Compendium art/catalog stage was
+> fully green. Slice diagnosis found stale final-successor/Training evidence plus one explicit
+> Atlas-button type defect, not an art, painter, creature, organism, biome or vista failure.
+>
+> The bounded successor changes no genome, anatomy, palette, silhouette, crop, painter output,
+> organism, biome, vista or structural art contract. Its complete develop profile is green at
+> **253 files / 2,559 passed / 1 skipped**, all TypeScript programs and the **34-source** art gate;
+> independent review is **CLEAR**. Current Compendium producer/budget authority is
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. The **77-bullet**
+> bulletin remains byte-identical. A clean signed Compendium → Slice → Glass chain remains; no
+> Edge rebaseline, hosted attempt, release, publication or deployment is authorized.
+
+> **2026-08-31 historical 4002/4822 local successor overlay (superseded above;
 > dated art and evidence checkpoints remain immutable):** exact clean signed source
 > `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry as
 > `20260831130356666-917-5be54ef202`. Its exact-source develop Slice

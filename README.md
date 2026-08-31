@@ -1,6 +1,28 @@
 # Celestial-Frontier
 
-> **2026-08-31 current local successor overlay (supersedes every older “current” label below;
+> **2026-08-31 current eed chain/repair overlay (supersedes every older “current” label below;
+> dated evidence remains immutable):** exact clean signed source
+> `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed tracked-input/Edge preflight and Compendium
+> **78/78** once/no-retry as `20260831140359225-10071-3234490882`. Its unchanged-source develop
+> Slice `20260831140556783-10430-bcb61adfaef5` stopped terminal red once/no-retry after
+> **345,163 ms** with **7 findings / 7 scopes**; its named verifier rejected the red as designed and
+> Glass did not run. Exact carriers are retained under `audits/`; eedac4a will not be retried.
+>
+> The first red froze an obsolete revision-1 transient endpoint instead of the required revision-2
+> Arc 9 boot successor. Five D-TRAIN oracles/copy claims contradicted protected practice truth; the
+> only product defect was Atlas openers defaulting to submit buttons. The bounded local successor
+> requires exact revision/ordinal/receipt/projection truth, honest route-only Atlas and outer
+> landing preservation, the current disabled Engineering/empty Compendium boards, sentence-local
+> copy polarity, phase causal stops, and explicit `type="button"` Atlas openers. Focused tests are
+> **5 files / 56 passed**; the complete develop profile is green at **253 files / 2,559 passed /
+> 1 skipped**, all TypeScript/art/route/specification owners green, and independent review is
+> **CLEAR**. Current Compendium producer/budget authority is
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A fresh signed
+> **Compendium → Slice → Glass** chain remains pending. No Edge rebaseline,
+> timeout, retry, hosted attempt, merge, release, version bump, publication or deploy is authorized.
+
+> **2026-08-31 historical 4002/4822 local successor overlay (superseded above;
 > dated evidence remains immutable):** exact clean signed source
 > `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium (**catalog/art stress**)
 > **78/78** once/no-retry as `20260831130356666-917-5be54ef202`. Its exact-source develop Slice

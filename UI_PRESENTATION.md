@@ -1,6 +1,26 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-31 current presentation overlay (supersedes older candidate-status labels; system
+> **2026-08-31 current protected-Training/Atlas presentation overlay (supersedes older
+> candidate-status labels):** exact signed `eedac4a…` passed Compendium **78/78** before its
+> exact-source Slice stopped once/no-retry after **345,163 ms** with **7 findings / 7 scopes**;
+> Glass did not run. Five presentation findings were obsolete Training expectations: Atlas practice
+> is route-only, approved Planetside copy is negated, Engineering exposes all **70** current actions
+> disabled, and the outer Compendium is honestly empty until Finish. Lesson copy now states those
+> boundaries instead of claiming a fabricated Earth chart.
+>
+> The one product presentation defect was semantic HTML: `railatlas` and `dockatlas` were native
+> buttons without explicit type and therefore could report `submit`. Both now declare
+> `type="button"`, with browser-free removal mutants. Slice also uses sentence-local copy polarity
+> and phase causal stops. Existing minimum-44-pixel layout, Prime/Guide property carriers, art,
+> painters, creatures, biomes and responsive geometry are unchanged. Focused **5 files / 56 tests**
+> pass; the complete develop profile is green at **253 files / 2,559 passed / 1 skipped** with all
+> TypeScript/art/route/specification owners green, and independent review is **CLEAR**. Current
+> Compendium producer/budget authority is
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`; only a clean signed
+> unchanged-source Compendium → Slice → Glass chain remains pending.
+
+> **2026-08-31 historical 4002/4822 presentation overlay (superseded above; system
 > descriptions below remain current unless source says otherwise):** exact clean signed source
 > `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry, then its
 > exact-source develop Slice `20260831130558500-1306-cb8d7cf92834` stopped after **303,148 ms**

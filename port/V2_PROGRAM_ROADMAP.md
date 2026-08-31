@@ -1,28 +1,29 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **2026-08-31 current local successor overlay (supersedes every older “current” label below while
-> preserving its dated evidence):** exact clean signed source
-> `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry as
-> `20260831130356666-917-5be54ef202`. Its exact-source develop Slice
-> `20260831130558500-1306-cb8d7cf92834` stopped terminal red once/no-retry after **303,148 ms**
-> with **3 findings / 3 scopes**; Glass did not run. The intended phone geometry mutants were
-> exact; whole serialized `style` equality falsely rejected restoration and the runner continued
-> into a dependent protected-save cascade.
+> **2026-08-31 current local eed successor overlay (supersedes every older “current” label below
+> while preserving its dated evidence):** exact clean SSH-signed source
+> `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed Compendium **78/78** once/no-retry as
+> `20260831140359225-10071-3234490882`. Its exact-source develop Slice
+> `20260831140556783-10430-bcb61adfaef5` stopped terminal red once/no-retry after **345,163 ms**
+> with **7 findings / 7 scopes**. Named verification correctly rejected the red predecessor; Glass
+> did not run and eed will not be retried.
 >
-> Exact SSH-signed source `4822cab92ae3f300635ef16678f860f60a6872e8` changes only the Slice
-> property carrier, causal-stop contract and evidence.
-> It changes no creature, genome, painter, organism, biome or art structure. The right-sized develop
-> profile is green at **253 files / 2,557 passed / 1 skipped**, all three TypeScript programs, and
-> the **34-source** art, **1,014-route** and **454-field** specification gates. **A New Foundation**
-> remains **77** bullets with rendered ordered SHA-256
+> Read-only diagnosis found six obsolete evidence expectations and one real HTML button-default
+> defect. The bounded successor judges the two-write Arc 9 fixed point, truthful Training authority
+> and sentence-local copy; causal-stops red phases; and makes both Atlas openers explicit
+> `type="button"`. It changes no creature, genome, painter, organism, biome or art structure, reward,
+> save schema, timeout, retry, ruler or Edge baseline. Focused coverage is **5 files / 56 tests**,
+> all three TypeScript programs pass, diff hygiene is clean, and independent review is **CLEAR**.
+> **A New Foundation** remains **77** bullets with rendered ordered SHA-256
 > `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> Current Compendium producer/budget authority remains
-> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
-> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. A new clean signed
-> candidate requires one unchanged-source **Compendium → Slice → Glass** develop chain;
-> SceneMemory remains production-only. No Edge rebaseline, timeout increase, retry, hosted attempt,
-> merge, release, version bump, publication or deployment is authorized.
+> The complete develop profile is green at **253 files / 2,559 passed / 1 skipped**, all
+> TypeScript/art/route/specification owners green. Current Compendium producer/budget authority is
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A clean signed candidate
+> and one unchanged-source **Compendium → Slice → Glass** develop chain remain. SceneMemory is
+> production-only. No hosted
+> attempt, push, merge, release, version bump, publication or deployment is authorized.
 
 > **Historical local PR #35 battery/right-sizing and Arc 4 shared-ledger boundary (2026-08-30;
 > supersedes the historical current overlays below):** exact clean signed source

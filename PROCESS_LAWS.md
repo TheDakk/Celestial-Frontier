@@ -74,6 +74,13 @@
 > practice route. Treat the setup as one owned boundary and causal-stop before every dependent
 > assertion when it is red.
 
+> **A PRACTICE EVENT IS NOT A DURABLE EXPEDITION FACT.** Write-held Training may emit the exact
+> Atlas and Land lesson events and navigate to the practiced route, but it must not invent an Atlas
+> row or append that world to the surrounding `landed` ledger. Engineering may expose the current
+> source-proven board with every action disabled, while Compendium may honestly remain empty until
+> Finish publishes the checkpoint-owned catalogue. Copy and browser oracles must describe those
+> exact boundaries; never fabricate populated rows merely to make a tour look busy.
+
 > **JUDGE THE FINAL BOOT SUCCESSOR AND THE CURRENT ASSET REPRESENTATION.** A post-durable
 > convergence reload may legitimately load action `R+1` and then commit an aggregate boot catch-up
 > at `R+2`. Bind the final revision, receipt, SessionRNG ordinal, achievement/rank projection and
