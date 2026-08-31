@@ -87,11 +87,15 @@ Slice `20260831055711019-65620-5c63ae6d6223` stopped once/no-retry after 217,066
 one harness finding/scope; Glass did not run. Both isolated documents retained exact foreground and
 document authority through live refill and closed-owner settlement. The final raw-owner ledger
 alone then treated the product Worker fetch plus the generated PWA's one-time offline-cache fetch
-as duplicate retries. The immutable red is preserved and 4baa will not be retried. Its bounded
-dirty successor records standards-based request roles in either first-install order, rejects each
-duplicate owner/role immediately during settlement and separately binds one exact error-free
-product producer per document. No hosted attempt, push, label, Ready transition or merge is
-authorized for 4baa or its pending successor.
+as duplicate retries. The immutable red is preserved and 4baa will not be retried. Exact local
+SSH-signed repair `c43992f721895900e56928f843d5dcdc5f570f36` records standards-based request
+roles in either first-install order, rejects each duplicate owner/role immediately during
+settlement and separately binds one exact complete error-free product producer per document. Its
+focused controls, Slice report selftest, all TypeScript programs and consolidated develop profile
+are green at 253 files / 2,552 passed / 1 skipped, 34 clean art sources, 1,014/1,014 routes and 454
+non-inert specification fields; independent final review is CLEAR. One clean docs-descendant local
+Compendium → Slice → Glass chain remains. No hosted attempt, push, label, Ready transition or merge
+is authorized for 4baa, c439 or its pending docs descendant.
 
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
