@@ -1,7 +1,18 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-31 current Glass/product-presentation overlay (supersedes older candidate-status
-> labels):** exact signed `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed Compendium
+> **2026-08-31 current terminal-green presentation boundary:** exact clean signed source
+> `7e089f3432a834636064615ac2da13b2b0ac39df` passed the isolated tracked-input develop profile,
+> then completed one unchanged-source/no-retry **Compendium → Slice → Glass** chain. Compendium
+> passed **78/78**; Slice passed with zero findings/scopes and ten screenshots; full Glass passed
+> all **12** viewports with zero findings, zero instrument failures and **104/104** controls run,
+> none blocked or omitted. Every exact named verifier passed. This certifies the bounded base-centered
+> Capture action, owned Binder rarity surface, first-red causal-stop, current-rendered Guide ingress
+> and closed-disclosure visibility repairs for local develop admission. Edge `152.0.4191.53` / CDP
+> `1.3` is provenance only; fixed rulers and version-tolerant policy are unchanged. HUMAN visual,
+> listening, accessibility and physical-device judgment remain open.
+
+> **2026-08-31 historical pre-final Glass/product-presentation overlay (superseded above):** exact
+> signed `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed Compendium
 > **78/78** and its develop Slice with zero findings/ten screenshots, each once/no-retry with named
 > verification. Exact-source Glass `20260831163921002-30283-9bd10ae7a9bb` then stopped immutable
 > `instrument-fail` after **102,462 ms**. Its old noncausal continuation accumulated 88 provisional
@@ -22,8 +33,8 @@
 > **1,014/1,014** routes and **454** non-inert fields. Current Compendium producer/budget authority
 > is `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
 > `80a2b8b39d400419a5527f9737a92ea2e0c54916ba8c3966411e607fd950fd79`; fixed rulers, samples and
-> Edge-family + CDP `1.3` policy are unchanged. One fresh clean signed unchanged-source
-> Compendium → Slice → Glass chain remains pending.
+> Edge-family + CDP `1.3` policy are unchanged. The fresh chain described above now supplies the
+> exact local develop certificate.
 
 > **2026-08-31 historical 4002/4822 presentation overlay (superseded above; system
 > descriptions below remain current unless source says otherwise):** exact clean signed source

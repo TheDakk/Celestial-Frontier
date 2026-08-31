@@ -25,8 +25,10 @@ two places where the shipped implementation differs from the §3 plan, and one i
 > This is the explicit port mechanism the older re-verification note below required. It changes no
 > `rarityRoll` threshold or draw, raw tier, save field, sort/balance authority, deterministic
 > descriptor, seeded art hue/designation, legacy fingerprint or loot policy. Focused automated
-> source/unit gates cover the boundary; final real-browser evidence for the current combined
-> candidate remains pending.
+> source/unit gates cover the boundary. Exact clean signed source
+> `7e089f3432a834636064615ac2da13b2b0ac39df` passed the full no-retry local Compendium → Slice →
+> 12-viewport Glass develop chain with zero Slice findings and zero Glass findings/instrument
+> failures; all named verifiers passed. HUMAN visual judgment remains open.
 
 > **2026-08-13 v2 display overlay — historical foundation; current where the 2026-08-26 overlay
 > does not supersede it:** The universal ten-name

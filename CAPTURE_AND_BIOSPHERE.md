@@ -19,8 +19,11 @@
 > causal pre-arm stop after Sample + Arc 9 were durable at revisions 108/109 with 15/16 Yield,
 > current Arc 4/5 authority and an idle coordinator/card, yet Tame remained model-disabled. No
 > storage hook or judged storage action ran. SceneMemory 44/44 and Compendium 78/78 were green;
-> Slice stayed immutable one-scope red and Glass/Recovery did not run. The bounded successor has
-> focused browser-free evidence; a fresh exact-source no-retry browser chain is still required.
+> Slice stayed immutable one-scope red and Glass/Recovery did not run. That source remains
+> historical. Exact clean signed successor `7e089f3432a834636064615ac2da13b2b0ac39df` later passed the
+> full no-retry local Compendium → Slice → 12-viewport Glass develop chain with zero Slice findings
+> and zero Glass findings/instrument failures; all named verifiers passed. Recovery remains outside
+> the develop profile.
 
 > **2026-08-29 current local Arc 6 Guardian acquisition extension:** ordinary Arc 4 capture and
 > Arc 5 lineage ownership remain unchanged. Guardian/Titan conquest now has its own additive,
