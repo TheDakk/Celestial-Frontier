@@ -97,6 +97,26 @@ non-inert specification fields; independent final review is CLEAR. One clean doc
 Compendium → Slice → Glass chain remains. No hosted attempt, push, label, Ready transition or merge
 is authorized for 4baa, c439 or its pending docs descendant.
 
+Exact clean SSH-signed docs descendant `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Edge
+preflight and one/no-retry Compendium run `20260831064534612-71571-8e4856c2fe` at **78/78** plus
+named verification. Exact-source develop Slice `20260831064707724-71924-76b0bac73a0f` stopped
+once/no-retry after **305,022 ms** with **7 findings / 5 scopes**; Glass did not run. The immutable
+red is preserved and 7a528 will not be retried. Read-only diagnosis found one real phone-chrome
+collision plus stale/inaccurate harness contracts: frozen lazy-producer result counts, an obsolete
+hidden-phone-Prime expectation, an inert historical Guide control, dependent presses fired before
+Survey durability, and Charter comparisons that counted intentional Share/progression changes as
+drift before continuing into a cascade. The bounded local successor uses measured layout,
+lifecycle/receipt topology, same-document F4 fixed points, exact restoration and causal-stop, with
+fast browser-free controls covering the repaired oracles before one later clean committed browser
+candidate. No hosted attempt, push, label, Ready transition or merge is authorized for 7a528 or its
+pending successor. That successor now passes the complete fast develop boundary at **253 files /
+2,556 passed / 1 skipped**, all TypeScript/art/route/spec owners green. Its source-wide ownership
+test reads and compacts every file once rather than repeating both operations; its final focused
+run recorded 1.61 seconds and it remained under the unchanged five-second ceiling in the complete
+parallel profile
+without a timeout, retry or assertion change. Final diff review, one local signed commit and its one
+Compendium → Slice → Glass chain remain; none authorizes a GitHub write.
+
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
 initially set this mode after exhausting the private-repository monthly allowance of **3,000**.

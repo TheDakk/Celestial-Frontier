@@ -1,6 +1,26 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-30 current local post-Capture presentation correction (matches local code):** after a
+> **2026-08-31 current presentation overlay (supersedes older candidate-status labels; system
+> descriptions below remain current unless source says otherwise):** exact clean signed source
+> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium **78/78** once/no-retry, then its
+> exact-source develop Slice stopped after **305,022 ms** with **7 findings across 5 scopes**;
+> Glass did not run. The bounded local successor places the native phone Prime control in a measured
+> second chrome tier below the live topbar, keeps it minimum-44-pixel, centered, reachable and clear
+> of HP/player/search/trail geometry, and hides it while a phone Survey card or dock panel owns that
+> same vertical band. The Guide is judged only after real content publication plus two animation
+> frames. Collision controls derive from the measured green geometry and restore exact
+> styles in `finally`. Player mutation refusal copy now distinguishes an action that is still
+> settling from a genuinely read-only save boundary.
+>
+> The complete fast develop boundary is green at **253 files / 2,556 passed / 1 skipped**, all three
+> TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert specification
+> fields. **A New Foundation** has **77** bullets, SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`. The final clean signed
+> develop candidate runs one unchanged-source **Compendium → Slice → Glass** chain; SceneMemory is
+> production-only. No Edge rebaseline, timeout, retry, hosted, merge, release or deployment authority
+> follows from this local work.
+
+> **2026-08-30 historical local post-Capture presentation correction (matches local code):** after a
 > durable Capture queues the aggregate Arc 9 receipt, the awaiting Survey continuation may repaint
 > while the shared coordinator is legitimately busy and therefore render all three native Capture
 > actions unavailable. Arc 9 now republishes only the same still-current open Capture surface after
@@ -9,11 +29,11 @@
 > idle coordinator; a thrown repaint clears the presentation fence and uses the existing fail-closed
 > convergence reload. Eligible Tame/Scavenge/Sample controls therefore no longer stay disabled until
 > a heartbeat or close/reopen. Focus semantics, layout, card structure, Capture mechanics, art and
-> browser rulers are unchanged. The cumulative **A New Foundation** bulletin now has 75 unique
+> browser rulers are unchanged. The cumulative **A New Foundation** bulletin now has 77 unique
 > bullets with rendered ordered SHA-256
-> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`.
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 
-> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
+> **2026-08-30 historical exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
 > working tree and supersedes narrower “current” status below; dated evidence remains immutable):**
 > exact clean SSH-signed evidence source `8bdf474e92467652729a6980f706ca3a2813682c` passed
 > Compendium **78/78** once/no-retry in **64,108 ms**. Its unchanged Slice
@@ -42,7 +62,7 @@
 > provenance only. No fresh repaired-head browser, Glass, Recovery, Gate, HUMAN, hosted, merge,
 > release, version or deployment authority is claimed.
 
-> **2026-08-30 current sealed-worker/PWA + Guide/Release/named-CF1 overlay (matches local code;
+> **2026-08-30 historical sealed-worker/PWA + Guide/Release/named-CF1 overlay (matches local code;
 > supersedes the execution-late repair below):** exact signed source
 > `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` preserved the 3,115 ms painter-import
 > `product-fail`, zero outcomes and all 78 blocked. Exact descendant
@@ -264,7 +284,7 @@
 > Physical installation, offline reopening, browser install UI, assistive-technology judgment and
 > device/HUMAN acceptance remain open.
 
-> **2026-08-29 current local Binder and Prime Codex presentation:** Records appends one bounded
+> **2026-08-31 current local Binder and Prime Codex presentation:** Records appends one bounded
 > Binder projection after rank/achievements. Its six legacy pages—Spectrum, Sixteen Realms, Body
 > Plans, Ability Themes, Flora Flavors and Size Classes—render deterministic type slots; seven
 > non-Paragon set rows show exact progress, authored Stardust and a native Claim button only when
@@ -284,6 +304,18 @@
 > the galaxy open. Unknown imported ending/Prime inconsistencies render a protected explanation and
 > no write target; postcommit presentation failure restores prior live authority and schedules one
 > read-only convergence reload.
+>
+> On phones the same minimum-44-pixel Prime control occupies its own centered chrome tier at
+> `calc(var(--topbar-h) + 8px)`, with the trail at `calc(var(--topbar-h) + 58px)`. The tier follows
+> the live measured topbar instead of a guessed safe-area offset, clearing the explorer/HP and Search
+> row while leaving the sealed ten-control, five-by-two dock unchanged.
+>
+> Global mutation-blocking copy now distinguishes an action that is still settling from actual lost
+> save authority. While `productActionInFlight` owns the boundary, another mutating press reports
+> **Expedition action settling** and asks the explorer to stay on the location until durability
+> settles; Survey Close remains available. **Read-only expedition** is reserved for protected,
+> stale or otherwise non-mutable runtime authority rather than being shown for ordinary in-flight
+> settlement. Both states continue to block the dependent mutation instead of publishing optimism.
 
 > **2026-08-29 current local v2 presentation overlay:** real-fauna Compendium detail now owns four
 > bounded exact-instance surfaces: Feed, nonlethal Breed with active-play Recovery, Rename and
@@ -360,9 +392,9 @@
 > Atlas rows keep separate minimum-size Travel and Favorite controls, mutate Favorite state in place
 > without losing the row's route identity, and announce the verified result only after durability.
 > Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler` remain owner-blocked. The current Guide capability map contains **41**
-> visible topics (**34 partial / 7 unavailable**) and the cumulative v2 draft contains **75** unique
+> visible topics (**34 partial / 7 unavailable**) and the cumulative v2 draft contains **77** unique
 > bullets with rendered ordered SHA-256
-> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`. These current local surfaces
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`. These current local surfaces
 > do not inherit the older browser certificate below; fresh
 > exact-source browser, physical-device, screen-reader and HUMAN experience review remain open.
 
@@ -1227,8 +1259,8 @@
 > contract but hidden from the 41-topic player catalogue. First open persists
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
-> Foundation**, the cumulative categorized 75-bullet v2.0 development bulletin. Its rendered
-> ordered SHA-256 is `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`. It summarizes
+> Foundation**, the cumulative categorized 77-bullet v2.0 development bulletin. Its rendered
+> ordered SHA-256 is `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
 > promises. The long draft is browser-checked for canonical section order and a
 > reachable final bullet; opening and reloading it cannot change `rnSeen` or create

@@ -10,6 +10,64 @@ summary of it.
 
 ## Contents
 
+### Signed `7a528c7…` Compendium PASS, then stale Slice-oracle red
+
+Exact clean SSH-signed source `7a528c7798434ae4ab8765d4898b59df9931f9de` (tree
+`d6637a2b6709aef77256d513aeaeab03373f7bfc`, parent
+`c43992f721895900e56928f843d5dcdc5f570f36`) passed Edge preflight on
+`152.0.4191.53` / CDP `1.3`. Its one/no-retry Compendium run
+`20260831064534612-71571-8e4856c2fe` passed **78/78** in **65,570 ms** and the exact named verifier
+accepted it. Exact-source develop Slice `20260831064707724-71924-76b0bac73a0f` then stopped
+terminal-red once/no-retry after **305,022 ms** with **7 findings / 5 scopes**. Glass did not run;
+this source will not be retried.
+
+The retained evidence separates product truth from obsolete observations:
+
+- both isolated lazy-art documents completed one error-free loader/producer/worker lifecycle, with
+  **11** and **8** coherent thumbnail results; the oracle still froze the earlier incidental
+  **3/1** snapshot counts;
+- the native minimum-44-pixel phone Prime control was present but overlapped HP because its second
+  chrome tier used a safe-area guess instead of the measured topbar; an older oracle still expected
+  Prime to be hidden;
+- the Guide was healthy, but a fixed historical `max-height` mutation no longer reproduced the
+  guarded dock collision;
+- two Charter/Prime paths dispatched a dependent mutation while Survey was still settling, so the
+  product correctly refused it; the resulting copy said save authority was read-only even though
+  the actual cause was a transient product transaction;
+- the saturated Charter comparison counted the intentional Share achievement/counter and final
+  `ascended`/ending reconciliation as unrelated drift; the desktop Land descendant then ran after
+  the invalid predecessor and produced a cascade finding.
+
+The bounded local successor replaces count snapshots with per-kind lifecycle/result topology,
+waits for exact same-document F4 revision/receipt settlement before dependent presses, causal-stops
+every descendant after a red predecessor/control, uses measured phone/Guide geometry with exact
+`finally` restoration, distinguishes action settlement from lost authority, and binds Charter Land
+to the exact ordinal-keyed receipt/witness/route/save/reload topology. Routine edits use focused
+tests and the fast browser-free profiles; the full Compendium → Slice → Glass chain remains a
+single attempt on the final clean committed candidate, not an edit-loop tax. No timeout, retry,
+Edge-version baseline, product mechanics, hosted authority or release identity was weakened.
+
+The repaired local successor now passes the complete browser-free develop boundary at **253 files /
+2,556 passed / 1 skipped**, all three TypeScript programs, 34 art sources, 1,014/1,014 routes and
+454 non-inert specification fields. The only intermediate fast-gate red was a static ownership test
+that reread and repeatedly compacted the whole source tree; caching one immutable source/compact
+inventory recorded **1.61 seconds** in the final focused run and stayed under the unchanged
+five-second ceiling in the complete parallel profile, without changing assertions or coverage.
+This is changed-source local repair evidence, not a successor browser certificate or hosted authority.
+
+- `ARC1A_COMPENDIUM_PR35_ROLE_REPAIR_PASS_20260831_7A528C7.json.gz`: **521,129 gzip /
+  10,796,522 raw bytes**; gzip/raw SHA-256
+  `b641f54978af20f24ac19422319d192abd65ae2c089496b1d3ac6b89fc55975f` /
+  `77606a6728f54560464a6afc9b58b3ee7f8d111e26f34430220cd2d8f8e13874`.
+- `ARC4_SLICE_PR35_LAZY_PHONE_CHARTER_ORACLES_RED_20260831_7A528C7.json.gz`: **12,185 gzip /
+  96,266 raw bytes**; gzip/raw SHA-256
+  `c3770e345e20a01a0ec5360d19ea9bd12fd5ab99475f439bd02bac3236dab470` /
+  `963a38e30856c5e29a979376dfc2a5a52a6765a2c34d60e9f8c8b46cbfb85c3e`.
+- `ARC4_SLICE_PR35_LAZY_PHONE_CHARTER_ORACLES_RED_20260831_7A528C7.log.gz`: **8,946 gzip /
+  43,702 raw bytes**; gzip/raw SHA-256
+  `83433aa58c4e7602108f18a95ed198b4cdc50061530bb99da8c60d7f3b689b2f` /
+  `578c7fdbe4d5e85ee1c8c6e003882eedc1cd4bda69f1eb7381f5bead27bd0559`.
+
 ### Signed `4baa425…` isolated-origin PASS-through, then request-role oracle red
 
 Exact clean SSH-signed source `4baa4250d1ae5813eba0753555b712baddbd595f` passed its fast

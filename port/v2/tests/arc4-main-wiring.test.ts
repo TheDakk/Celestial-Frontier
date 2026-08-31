@@ -700,6 +700,46 @@ function surfaceSurveyExitErrors(source: string): string[] {
   return [...new Set(errors)];
 }
 
+function mutationBoundaryCopyErrors(source: string): string[] {
+  const errors: string[] = [];
+  const copy = section(
+    source,
+    'function mutationBlockCopy(',
+    '\nfunction playerMutationsBlocked',
+  );
+  const blocker = section(
+    source,
+    'function blockPlayerMutation(',
+    '\nconst guardReadOnlyMutationEvent',
+  );
+  if (copy.length === 0 || blocker.length === 0) {
+    return ['mutation-boundary-source-section'];
+  }
+  if (!copy.includes('return productActionPending')
+    || !copy.includes("title: 'Expedition action settling'")
+    || !copy.includes("detail: 'Stay on this location until its durable result settles. Survey Close remains available.'")
+    || !copy.includes("title: 'Read-only expedition'")
+    || !copy.includes("detail: 'Inspection remains available, but this action cannot change the expedition until save authority is restored.'")
+    || !blocker.includes('const copy = mutationBlockCopy(productActionInFlight);')
+    || !blocker.includes('toast(copy.title, copy.detail, true);')) {
+    errors.push('mutation-boundary-honest-copy');
+  }
+  return errors;
+}
+
+function runMutationBoundaryCopyFromSource(source: string, pending: boolean) {
+  const body = section(
+    source,
+    'function mutationBlockCopy(',
+    '\nfunction playerMutationsBlocked',
+  ).replace(
+    'function mutationBlockCopy(productActionPending: boolean): MutationBlockCopy {',
+    'function mutationBlockCopy(productActionPending) {',
+  );
+  if (body.length === 0) throw new Error('mutation boundary copy source is missing');
+  return Function('productActionPending', `${body}; return mutationBlockCopy(productActionPending);`)(pending);
+}
+
 type SurfaceSurveyExitAction = 'escape' | 'contextmenu' | 'close-control';
 
 function runSurfaceSurveyExitFromSource(
@@ -1101,6 +1141,42 @@ describe('Arc 4 main authority wiring', () => {
     );
     expect(surfaceSurveyExitErrors(closeControlAscends))
       .toContain('surface-exit-close-control');
+  });
+
+  it('distinguishes a settling product action from lost save authority', () => {
+    expect(mutationBoundaryCopyErrors(mainSource)).toEqual([]);
+    expect(runMutationBoundaryCopyFromSource(mainSource, true)).toEqual({
+      title: 'Expedition action settling',
+      detail: 'Stay on this location until its durable result settles. Survey Close remains available.',
+    });
+    expect(runMutationBoundaryCopyFromSource(mainSource, false)).toEqual({
+      title: 'Read-only expedition',
+      detail: 'Inspection remains available, but this action cannot change the expedition until save authority is restored.',
+    });
+
+    const staleCopy = replaceInSectionExact(
+      mainSource,
+      'function mutationBlockCopy(',
+      '\nfunction playerMutationsBlocked',
+      "      title: 'Expedition action settling',",
+      "      title: 'Read-only expedition',",
+    );
+    expect(mutationBoundaryCopyErrors(staleCopy))
+      .toContain('mutation-boundary-honest-copy');
+    expect(runMutationBoundaryCopyFromSource(staleCopy, true).title)
+      .toBe('Read-only expedition');
+
+    const collapsedBranch = replaceInSectionExact(
+      mainSource,
+      'function mutationBlockCopy(',
+      '\nfunction playerMutationsBlocked',
+      '  return productActionPending',
+      '  return false',
+    );
+    expect(mutationBoundaryCopyErrors(collapsedBranch))
+      .toContain('mutation-boundary-honest-copy');
+    expect(runMutationBoundaryCopyFromSource(collapsedBranch, true).title)
+      .toBe('Read-only expedition');
   });
 
   it('negative-controls boot entry, mutation/lifecycle pending and parser section anchors', () => {

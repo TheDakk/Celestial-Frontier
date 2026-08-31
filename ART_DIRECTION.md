@@ -1,6 +1,28 @@
 # Celestial Frontier — Master Art Direction
 
-> **2026-08-30 current exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (supersedes narrower
+> **2026-08-31 current local successor overlay (supersedes every older “current” label below;
+> dated art and evidence checkpoints remain immutable):** exact clean signed source
+> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium **78/78** once/no-retry as
+> `20260831064534612-71571-8e4856c2fe`. Its exact-source develop Slice
+> `20260831064707724-71924-76b0bac73a0f` stopped terminal red once/no-retry after **305,022 ms**
+> with **7 findings across 5 scopes**; Glass did not run.
+>
+> The bounded dirty successor repairs measured phone Prime/Guide geometry, topology-based lazy-
+> producer settlement, exact one-commit F4 causality for Survey/Add/Share, and Charter ledger
+> topology with causal-stop. It changes no creature, genome, painter, organism, biome, vista,
+> palette, silhouette or art structure. The fast develop profile is green at **253 files / at least
+> 2,556 passed / 1 skipped** with all three TypeScript programs and the **34-source** art gate green.
+> The cumulative **77-bullet** development bulletin has rendered ordered SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+>
+> Current Compendium producer authority is
+> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d`; its budget-file SHA-256 is
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. The final clean signed
+> develop candidate runs exactly **Compendium → Slice → Glass** once and unchanged-source;
+> SceneMemory remains production-only. No Edge rebaseline, timeout increase, retry, hosted attempt,
+> merge, release, version bump, publication or deployment is authorized.
+
+> **2026-08-30 historical exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (supersedes narrower
 > “current” authority language below; every dated art/evidence checkpoint remains immutable):** exact
 > clean SSH-signed evidence source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium
 > **78/78** once/no-retry in **64,108 ms**. Its unchanged Slice
@@ -29,7 +51,7 @@
 > provenance only. No fresh repaired-head browser, Glass, Recovery, Gate, HUMAN, hosted, merge,
 > release, version or deployment authority exists.
 
-> **2026-08-30 current sealed single-file worker overlay (supersedes the execution-late repair and narrower PWA
+> **2026-08-30 historical sealed single-file worker overlay (supersedes the execution-late repair and narrower PWA
 > authority language below; all named earlier art certificates remain immutable history):** exact
 > signed source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
 > `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` once/no-retry and stopped

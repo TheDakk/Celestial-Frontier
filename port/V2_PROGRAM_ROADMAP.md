@@ -1,6 +1,29 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **Current local PR #35 battery/right-sizing and Arc 4 shared-ledger boundary (2026-08-30;
+> **2026-08-31 current local successor overlay (supersedes every older “current” label below while
+> preserving its dated evidence):** exact clean signed source
+> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium **78/78** once/no-retry as
+> `20260831064534612-71571-8e4856c2fe`. Its exact-source develop Slice
+> `20260831064707724-71924-76b0bac73a0f` stopped terminal red once/no-retry after **305,022 ms**
+> with **7 findings across 5 scopes**; Glass did not run.
+>
+> The bounded dirty successor repairs measured phone Prime/Guide geometry, topology-based lazy-
+> producer settlement, exact one-commit F4 causality for Survey/Add/Share, and Charter ledger
+> topology with causal-stop. It changes no creature, genome, painter, organism, biome or art
+> structure. The right-sized develop profile is green at **253 files / 2,556 passed / 1
+> skipped**, all three TypeScript programs are green, and the **34-source** art, **1,014-route** and
+> **454-field** specification gates are clean. **A New Foundation** now contains **77** unique
+> bullets with rendered ordered SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+>
+> Current Compendium producer authority is
+> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d`; its budget-file SHA-256 is
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. A final clean signed
+> candidate requires one unchanged-source **Compendium → Slice → Glass** develop chain;
+> SceneMemory remains production-only. No Edge rebaseline, timeout increase, retry, hosted attempt,
+> merge, release, version bump, publication or deployment is authorized.
+
+> **Historical local PR #35 battery/right-sizing and Arc 4 shared-ledger boundary (2026-08-30;
 > supersedes the historical current overlays below):** exact clean signed source
 > `d611d18ad12bb8587863846ef3799300d2396e6a` first passed Layout 787/787, SceneMemory 44/44 and
 > Compendium 78/78 before a five-scope Slice oracle red. Signed successor

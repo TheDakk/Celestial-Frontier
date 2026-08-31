@@ -1,6 +1,30 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-30 current SceneMemory source-normalized admission overlay (matches local code):**
+> **2026-08-31 current local successor overlay (matches the working tree and supersedes older
+> candidate-status labels):** exact signed predecessor `7a528c7798434ae4ab8765d4898b59df9931f9de`
+> passed Compendium **78/78** once/no-retry; its exact-source develop Slice stopped after
+> **305,022 ms** with **7 findings across 5 scopes**, and Glass did not run. The local successor
+> changes the Arc 4 browser instrument plus bounded presentation/product copy only: lazy-art success
+> is lifecycle/phase/result topology rather than fixed result counts; phone Prime and Guide evidence
+> use measured published geometry with exact restoration; Survey/Atlas Add/Share each require one
+> same-document F4 revision/commit/receipt and idle coordinator before a descendant can run; Charter
+> Land retains its separate exact multi-receipt topology. Landing/Atlas write-held refusal and Atlas
+> sidecar convergence remain fail-closed. Creature/genome, biome, painter, loot, combat, Guardian,
+> save schema, RNG, balance and audio structures are unchanged.
+>
+> The consolidated develop profile passes **253/253 files, 2,556 tests, 1 skipped**, all three
+> TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields. The
+> source-wide acquisition ownership audit now loads and compacts each file once, then reuses both
+> representations across all predicates; its final focused run recorded **1.61 seconds**, and it
+> stayed under the unchanged five-second ceiling in the complete parallel profile without changing
+> assertions. Current Compendium producer/budget authority is
+> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`; the 77-bullet release
+> draft SHA-256 is `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+> Develop next runs one final unchanged-source **Compendium → Slice → Glass** chain from a clean
+> signed candidate. SceneMemory remains production-only; no hosted/release/deploy authority exists.
+
+> **2026-08-30 historical SceneMemory source-normalized admission overlay (matches local code):**
 > exact signed source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied exactly three
 > calibration-only observations, once each with zero retry, under one unchanged 52-file build and
 > Edge `152.0.4191.53` / CDP `1.3`. Every candidate completed 44/44 calibration outcomes with
@@ -21,7 +45,7 @@
 > A fresh clean input-v5 browser certificate remains pending; historical evidence is never
 > relabelled, and compatible Edge point versions remain provenance only.
 
-> **2026-08-30 current local Arc 4/9 open-card publication correction (matches local code):**
+> **2026-08-30 historical local Arc 4/9 open-card publication correction (matches local code):**
 > `runCaptureCardAction()` may resume after its committed Capture has already queued and yielded to
 > `runArc9ProgressionRefresh()`. The shared coordinator then correctly makes
 > `refreshCaptureCardState()` publish unavailable rows and clear its presentation fence. Arc 9's
@@ -3655,7 +3679,13 @@ In the current v2 app, `app-chrome.ts` is the focused owner for this chrome: saf
 topbar/dock/context/hint publication, the 72px visibility boundary, resize/mutation observers and
 dispose-before-replacement. `search-travel.ts` separately owns Search/CF1 travel, native keyboard
 listener lifecycle, Compendium continuation/focus and boundary notices. `main.ts` supplies their
-rendering and persistence adapters rather than owning either lifecycle directly.
+rendering and persistence adapters rather than owning either lifecycle directly. At phone width,
+the native minimum-44-pixel Prime control occupies a centered tier at
+`calc(var(--topbar-h) + 8px)` and the trail follows at `calc(var(--topbar-h) + 58px)`, so both derive
+from the measured live topbar without expanding the 5×2 ten-control dock. Main's global mutation
+fence also distinguishes **Expedition action settling** while `productActionInFlight` is true from
+**Read-only expedition** when save authority is actually unavailable; neither state permits a
+dependent mutation, and Survey Close remains available during settlement.
 
 ### Key panels / modals (and their elements)
 | Element id | What |
@@ -3744,8 +3774,8 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
-  by the 56 legacy releases. Its exact 75-bullet implemented-outcome inventory has rendered
-  ordered SHA-256 `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`
+  by the 56 legacy releases. Its exact 77-bullet implemented-outcome inventory has rendered
+  ordered SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`
   and is checked structurally and in the rendered Guide, including real-scroll
   tail reach and unchanged shipped-release state. That version is development identity
   only. `getCurrentV2Release()` returns nothing while

@@ -56,12 +56,15 @@ import {
   assessTrainingBusyRefusalPrecondition,
   assessLazyOwnerOriginGate,
   assessLazyProductProducerSettlement,
+  assessSingleF4ActionCommit,
+  assessCharterLandSettlementTopology,
   beginF4GreenContinuation,
   buildLazyRefillObservationExpression,
   classifyCompendiumDetailReceipt,
   classifyForegroundServiceTurn,
   classifyForegroundServiceTurnReceipt,
   classifyPlanetsideSettlement,
+  exactTrustedCharterLandReceipt,
   planetsidePhaseRemainingMs,
   planetsideRuntimeTimeoutDecision,
   SLICE_SCREENSHOT_LOGICAL_NAMES,
@@ -1127,6 +1130,8 @@ const charterFixtureRaw = (powered, progress = SATURATED_CHARTER_PROGRESS, label
   save.me = label || (powered ? 'Reach-Backed Charter' : 'Unpowered Charter Control');
   save.asc = 0;
   save.ascp = { ...progress };
+  save.ach = (Array.isArray(save.ach) ? save.ach : [])
+    .filter((id) => id !== 'share' && id !== 'ascended');
   save.items = (Array.isArray(save.items) ? save.items : [])
     .filter(([id]) => !['jumpdrive', 'array', 'igdrive'].includes(id));
   if (powered) save.items.push(['jumpdrive', 1], ['array', 1], ['igdrive', 1]);
@@ -1165,7 +1170,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 75;
+const V2_DRAFT_BULLET_COUNT = 77;
 const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save — nothing was stored.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -1208,7 +1213,7 @@ const READ_F4_AUTHORITY_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v
       receiptKeys:receiptKeys.map(String),receiptRows:receiptRows.map((raw)=>{try{return JSON.parse(String(raw))}catch{return null}})};
   }finally{db.close()}})()`;
 const F4_READY_STATE_PROJECTION_EXPRESSION = `((state)=>state?{
-  persistence:state.persistence,sceneResources:state.sceneResources}:null)`;
+  persistence:state.persistence,sceneResources:state.sceneResources,landing:state.landing}:null)`;
 const READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
   const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
   try{const tx=db.transaction(['meta','player','inventory','receipts'],'readonly'),done=new Promise((resolve,reject)=>{
@@ -5385,7 +5390,10 @@ try {
      can catch a moved element before trusting its pass). */
   const geoCheck = `(()=>{ const W=innerWidth, H=innerHeight;
     const r=(id)=>{ const el=document.getElementById(id); if(!el) return null;
-      const b=el.getBoundingClientRect(); return { l:b.left, t:b.top, r:b.right, b:b.bottom, cx:(b.left+b.right)/2, w:b.width, vis: b.width>0&&b.height>0 }; };
+      const b=el.getBoundingClientRect(),cs=getComputedStyle(el); return { l:b.left, t:b.top, r:b.right, b:b.bottom,
+        cx:(b.left+b.right)/2,cy:(b.top+b.bottom)/2,w:b.width,h:b.height,
+        vis:b.width>0&&b.height>0&&cs.display!=='none'&&cs.visibility!=='hidden'&&Number(cs.opacity)>0 }; };
+    const overlaps=(a,b)=>a&&b&&a.l<b.r-.5&&a.r>b.l+.5&&a.t<b.b-.5&&a.b>b.t+.5;
     const pc=r('playerchip'), hp=r('hpbar'), pr=r('primechip'), obj=r('objchip'),
       hint=r('hintpill'), ctx=r('ctxbar'), dock=r('dock'), rail=r('raillft'), dcx=r('dockcodex'),
       srch=r('searchbox');
@@ -5395,7 +5403,14 @@ try {
     if(!srch || !srch.vis || W-srch.r>40 || srch.t>60) bad.push('search bar not top-right');
     if(srch && pc && pc.r > srch.l+4) bad.push('player chip overlaps the search bar');
     if(W>900 && (!pr || Math.abs(pr.cx-W/2)>70 || pr.t>60)) bad.push('Prime Codex pill not top-center');
-    if(W<=900 && pr && pr.vis) bad.push('Prime pill should hide on phone (it rides the dock tier in the golden)');
+    if(W<=900){
+      const prime=document.getElementById('primechip'),hit=pr?document.elementFromPoint(pr.cx,pr.cy):null;
+      if(!pr||!pr.vis||prime?.tagName!=='BUTTON'||prime?.type!=='button'||pr.h<44
+        ||Math.abs(pr.cx-W/2)>60||!hit||!prime.contains(hit))
+        bad.push('Prime pill is not a visible reachable phone button in the centered second chrome tier: '+JSON.stringify({pr,hit:hit?.id||null}));
+      for(const [name,box] of [['playerchip',pc],['hpbar',hp],['searchbox',srch],['trail',r('trail')]])
+        if(overlaps(pr,box))bad.push('primechip overlaps '+name);
+    }
     if(!obj || obj.l>40 || obj.t<H*0.18 || obj.t>H*0.42) bad.push('objective chip not left @~26vh: '+JSON.stringify(obj));
     if(!hint || Math.abs(hint.cx-W/2)>90 || hint.b<H-160) bad.push('hint pill not bottom-center');
     if(ctx && hint && ctx.b>hint.t+6) bad.push('caption not ABOVE the hint pill');
@@ -6190,8 +6205,8 @@ try {
     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
-    count: 75,
-    sha256: '52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1',
+    count: 77,
+    sha256: '11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -22776,10 +22791,10 @@ try {
       + JSON.stringify(lazyClosedOwnerCtl));
   }
   const lazyLiveProducerGate = assessLazyProductProducerSettlement(
-    lazyAfter.lazyArt, lazyDocumentToken, 3,
+    lazyAfter.lazyArt, lazyDocumentToken,
   );
   const lazyClosedProducerGate = assessLazyProductProducerSettlement(
-    lazyClosedAfter.lazyArt, lazyClosedDocumentToken, 1,
+    lazyClosedAfter.lazyArt, lazyClosedDocumentToken,
   );
   if (!lazyLiveProducerGate.ok || !lazyClosedProducerGate.ok) {
     fails.push('COMPENDIUM LAZY PRODUCER AUTHORITY: an isolated owner did not retain exactly one '
@@ -22812,6 +22827,16 @@ try {
     if (r.exceptionDetails) throw new Error('phone eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
     return r.result.value;
   };
+  const waitPhValue = async (label, expr, timeoutMs = 6000) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      last = await evalPh(expr);
+      if (last) return last;
+      await sleep(50);
+    }
+    throw new Error(`${label} did not reach its phone outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
   const phoneCanvasCheck = `(()=>{ const bad=[],canvas=document.querySelector('canvas'),S=window.__CF_SLICE__;
     if(!canvas||!S) return ['canvas/app missing']; const b=canvas.getBoundingClientRect();
     if(Math.abs(b.width-innerWidth)>1||Math.abs(b.height-innerHeight)>1) bad.push('canvas CSS box is not the viewport: '+JSON.stringify([b.width,b.height,innerWidth,innerHeight]));
@@ -22833,6 +22858,23 @@ try {
      player-chip/search overlap hid in a phone-only branch the first time */
   const phGeo = await evalPh(geoCheck);
   if (phGeo.length) fails.push('PHONE GOLDEN LAYOUT drift: ' + phGeo.join(' · '));
+  if (phGeo.length === 0) {
+    const phonePrimeControls = await evalPh(`(()=>{const prime=document.getElementById('primechip'),hp=document.getElementById('hpbar'),
+      prior=prime.getAttribute('style');let hidden=null,overlap=null,error=null;const restore=()=>{
+        if(prior===null)prime.removeAttribute('style');else prime.setAttribute('style',prior);};
+      try{prime.style.display='none';hidden=${geoCheck};restore();const h=hp.getBoundingClientRect();
+        prime.style.top=h.top+'px';prime.style.left=h.left+'px';prime.style.transform='none';overlap=${geoCheck};}
+      catch(cause){error=String(cause?.message||cause);}finally{restore();}
+      const styleRestored=prime.getAttribute('style')===prior,restored=styleRestored?${geoCheck}:['primechip style was not restored'];
+      return {hidden,overlap,restored,styleRestored,error};})()`);
+    if (!phonePrimeControls.hidden?.some((finding) => finding.includes('visible reachable phone button'))
+      || !phonePrimeControls.overlap?.includes('primechip overlaps hpbar')
+      || !phonePrimeControls.styleRestored || phonePrimeControls.error !== null
+      || phonePrimeControls.restored.length !== 0) {
+      fails.push('PHONE PRIME TIER CONTROLS FAILED — hidden/HP-overlap mutations were not isolated or restored: '
+        + JSON.stringify(phonePrimeControls));
+    }
+  }
   /* The lower-phone stack has four independently-sized surfaces. Assert the
      rendered outcome, including the explicit 5×2 intent and the actual hit target at
      every button centre; merely finding the CSS declarations missed the
@@ -22942,20 +22984,62 @@ try {
     const gap=d.top-p.bottom;
     return {ok:visible&&gap>=8,visible,gap,maxHeight:cs.maxHeight,
       panel:{top:p.top,bottom:p.bottom,height:p.height},dock:{top:d.top,bottom:d.bottom,height:d.height}}; })()`;
+  const phonePrimeOverlayCheck = (overlayId, openClass) => `(()=>{const prime=document.getElementById('primechip'),panel=document.getElementById(${JSON.stringify(overlayId)}),
+    body=document.body;if(!prime||!panel)return {ok:false,why:'missing'};const p=prime.getBoundingClientRect(),g=panel.getBoundingClientRect(),
+    pcs=getComputedStyle(prime),gcs=getComputedStyle(panel),panelOpen=body.classList.contains(${JSON.stringify(openClass)}),
+    panelVisible=gcs.display!=='none'&&gcs.visibility!=='hidden'&&g.width>0&&g.height>0,
+    primeHidden=pcs.display==='none'&&p.width===0&&p.height===0,
+    overlap=p.width>0&&p.height>0&&panelVisible&&p.left<g.right-.5&&p.right>g.left+.5&&p.top<g.bottom-.5&&p.bottom>g.top+.5;
+    return {ok:panelOpen&&panelVisible&&primeHidden&&!overlap,panelOpen,panelVisible,primeHidden,overlap,
+      prime:{display:pcs.display,left:p.left,top:p.top,right:p.right,bottom:p.bottom},
+      panel:{display:gcs.display,left:g.left,top:g.top,right:g.right,bottom:g.bottom}};})()`;
   await evalPh(`(()=>{ document.getElementById('dockguide').click(); return true; })()`);
+  await waitPhValue('PHONE GUIDE current publication', `(()=>{const panel=document.getElementById('guidepanel'),
+    search=document.getElementById('guidesearch'),body=panel?.querySelector('[data-sel="guide-body"]');
+    return panel?.style.display!=='none'&&search&&!search.disabled&&!body?.querySelector('[data-guide-loading]')
+      &&!!body?.querySelector('[data-guide-category]')?true:null;})()`);
+  await evalPh(`new Promise((resolve)=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true))))`);
+  const phoneGuidePrimeOverlayCheck = phonePrimeOverlayCheck('guidepanel', 'panel-open');
+  const phonePrimeOverlay = await evalPh(phoneGuidePrimeOverlayCheck);
+  if (!phonePrimeOverlay.ok) {
+    fails.push('PHONE PRIME OVERLAY YIELD: open Guide did not hide Prime above its overlapping panel: '
+      + JSON.stringify(phonePrimeOverlay));
+  } else {
+    const phonePrimeOverlayCtl = await evalPh(`(()=>{const prime=document.getElementById('primechip'),prior=prime.getAttribute('style');
+      let result=null,error=null;const restore=()=>{if(prior===null)prime.removeAttribute('style');else prime.setAttribute('style',prior);};
+      try{prime.style.display='block';result=${phoneGuidePrimeOverlayCheck};}
+      catch(cause){error=String(cause?.message||cause);}finally{restore();}
+      const styleRestored=prime.getAttribute('style')===prior,restored=styleRestored?${phoneGuidePrimeOverlayCheck}:{ok:false,why:'style-not-restored'};
+      return {result,restored,styleRestored,error};})()`);
+    if (phonePrimeOverlayCtl.result?.ok || !phonePrimeOverlayCtl.result?.overlap
+      || !phonePrimeOverlayCtl.styleRestored || phonePrimeOverlayCtl.error !== null
+      || !phonePrimeOverlayCtl.restored.ok) {
+      fails.push('PHONE PRIME OVERLAY YIELD CONTROL FAILED — injected visible Prime/panel collision stayed green or failed restoration: '
+        + JSON.stringify(phonePrimeOverlayCtl));
+    }
+  }
   const phoneGuideClearance = await evalPh(phoneGuideClearanceCheck);
   if (!phoneGuideClearance.ok) {
     fails.push('PHONE GUIDE CLEARANCE: the open panel does not clear the measured dock by 8px: ' + JSON.stringify(phoneGuideClearance));
   }
-  /* Recreate the superseded shared-panel cap exactly. With the full seven
-     topics it extends over the dock; the same rectangle checker must turn
-     red before the current cap is restored. */
-  const phoneGuideClearanceCtl = await evalPh(`(()=>{ const panel=document.getElementById('guidepanel'),prior=panel.style.maxHeight;
-    panel.style.maxHeight='calc(100vh - var(--topbar-h) - 96px)'; const result=${phoneGuideClearanceCheck};
-    panel.style.maxHeight=prior; return result; })()`);
-  if (phoneGuideClearanceCtl.ok || !(phoneGuideClearanceCtl.gap < 0)) {
-    fails.push('PHONE GUIDE CLEARANCE CONTROL FAILED — the injected old max-height did not reproduce dock overlap: '
-      + JSON.stringify(phoneGuideClearanceCtl));
+  /* Reproduce the guarded rendered overlap directly. Guide content may grow
+     or shrink independently, so a historical max-height value is not a
+     stable negative control for the rectangle checker. */
+  if (phoneGuideClearance.ok) {
+    const phoneGuideClearanceCtl = await evalPh(`(()=>{ const panel=document.getElementById('guidepanel'),dock=document.getElementById('dock'),
+      prior=panel.getAttribute('style'),p=panel.getBoundingClientRect(),d=dock.getBoundingClientRect(),
+      targetHeight=Math.ceil(d.top-p.top+9);let result=null,error=null;const restore=()=>{
+        if(prior===null)panel.removeAttribute('style');else panel.setAttribute('style',prior);};
+      try{panel.style.minHeight=targetHeight+'px';result=${phoneGuideClearanceCheck};}
+      catch(cause){error=String(cause?.message||cause);}finally{restore();}
+      const styleRestored=panel.getAttribute('style')===prior,restored=styleRestored?${phoneGuideClearanceCheck}:{ok:false,why:'style-not-restored'};
+      return {result,restored,targetHeight,styleRestored,error}; })()`);
+    if (phoneGuideClearanceCtl.result?.ok || !(phoneGuideClearanceCtl.result?.gap < 0)
+      || !phoneGuideClearanceCtl.styleRestored || phoneGuideClearanceCtl.error !== null
+      || !phoneGuideClearanceCtl.restored.ok) {
+      fails.push('PHONE GUIDE CLEARANCE CONTROL FAILED — the injected rendered overlap stayed green: '
+        + JSON.stringify(phoneGuideClearanceCtl));
+    }
   }
   await evalPh(`(()=>{ document.querySelector('#guidepanel [data-pnx]').click(); return true; })()`);
   const phPainted = await evalPh(`(async()=>{ const S=window.__CF_SLICE__;
@@ -23145,6 +23229,25 @@ try {
   await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.descendSystem(${JSON.stringify(SOL_STAR)}); })()`);
   await waitNavPhValue('phone Sol setup', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242?s:null; })()`);
   await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);
+  const phoneSurveyPrimeOverlayCheck = phonePrimeOverlayCheck('survey', 'card-open');
+  const phoneSurveyPrimeOverlay = await evalNavPh(phoneSurveyPrimeOverlayCheck);
+  if (!phoneSurveyPrimeOverlay.ok) {
+    fails.push('PHONE PRIME SURVEY YIELD: a real Earth Survey card did not hide Prime above its overlapping card: '
+      + JSON.stringify(phoneSurveyPrimeOverlay));
+  } else {
+    const phoneSurveyPrimeOverlayCtl = await evalNavPh(`(()=>{const prime=document.getElementById('primechip'),prior=prime.getAttribute('style');
+      let result=null,error=null;const restore=()=>{if(prior===null)prime.removeAttribute('style');else prime.setAttribute('style',prior);};
+      try{prime.style.display='block';result=${phoneSurveyPrimeOverlayCheck};}
+      catch(cause){error=String(cause?.message||cause);}finally{restore();}
+      const styleRestored=prime.getAttribute('style')===prior,restored=styleRestored?${phoneSurveyPrimeOverlayCheck}:{ok:false,why:'style-not-restored'};
+      return {result,restored,styleRestored,error};})()`);
+    if (phoneSurveyPrimeOverlayCtl.result?.ok || !phoneSurveyPrimeOverlayCtl.result?.overlap
+      || !phoneSurveyPrimeOverlayCtl.styleRestored || phoneSurveyPrimeOverlayCtl.error !== null
+      || !phoneSurveyPrimeOverlayCtl.restored.ok) {
+      fails.push('PHONE PRIME SURVEY YIELD CONTROL FAILED — injected visible Prime/Survey collision stayed green or failed restoration: '
+        + JSON.stringify(phoneSurveyPrimeOverlayCtl));
+    }
+  }
   /* Help requested from an open body card must be readable above that card.
      Global panel z cannot change because Training relies on Atlas below the
      survey; prove the Guide-specific z24 layer and recreate z22 as control. */
@@ -23343,14 +23446,47 @@ try {
     await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, navPh);
     await sleep(350);
   }
-  const stage3Charted = await evalNavPh(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
-    const setup=before.mode==='system'&&S.api.surveyOn(${JSON.stringify(MERCURY)}),add=document.querySelector('#survey [data-act=add]');
-    add?.click(); const after=S.api.state();
-    return {setup:!!setup,add:!!add,mode:after.mode,toast:after.toastText,toastSerial:after.toastSerial}; })()`);
-  if (!stage3Charted.setup || !stage3Charted.add || !/Charted/i.test(stage3Charted.toast)) {
+  const stage3SurveyBeforeAuthority = await waitNavPhF4Writable(
+    'PRIME RADIUS Survey predecessor F4 authority',
+  );
+  const stage3DocumentToken = await sliceToken(navPh);
+  const stage3Surveyed = await evalNavPh(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
+    return before.mode==='system'&&S.api.surveyOn(${JSON.stringify(MERCURY)}); })()`);
+  const stage3SurveyAuthority = stage3Surveyed
+    ? await waitNavPhF4Writable('PRIME RADIUS Survey settlement') : null;
+  const stage3SurveyCommit = stage3Surveyed && stage3SurveyAuthority
+    ? assessSingleF4ActionCommit({
+      beforeAuthority: stage3SurveyBeforeAuthority,
+      afterAuthority: stage3SurveyAuthority,
+      expectedKind: 'arc9-survey-v1',
+      expectedPersistenceLastOutcome: `arc9-survey-committed:${stage3SurveyAuthority.raw.revision}`,
+    }) : { ok: false, reasons: ['Survey did not publish a settled authority'] };
+  const stage3AddAction = stage3SurveyCommit.ok
+    ? await evalNavPh(phoneCardActionCheck('add')) : { ok: false, why: 'survey-refused' };
+  if (stage3AddAction.ok) await touchNav(stage3AddAction.x, stage3AddAction.y);
+  const stage3AddAuthority = stage3AddAction.ok
+    ? await waitNavPhF4Writable('PRIME RADIUS Charted settlement') : null;
+  const stage3AddCommit = stage3AddAction.ok && stage3AddAuthority
+    ? assessSingleF4ActionCommit({
+      beforeAuthority: stage3SurveyAuthority,
+      afterAuthority: stage3AddAuthority,
+      expectedKind: 'arc0-atlas',
+      expectedPersistenceLastOutcome: `arc0-atlas-committed:${stage3AddAuthority.raw.revision}`,
+    }) : { ok: false, reasons: ['Charted did not publish a settled authority'] };
+  const stage3Charted = await evalNavPh(`(()=>{ const s=window.__CF_SLICE__.api.state();return {
+    setup:${Boolean(stage3Surveyed)},add:${Boolean(stage3AddAction.ok)},mode:s.mode,
+    toast:s.toastText,toastSerial:s.toastSerial}; })()`);
+  const stage3ChartedReady = stage3Charted.setup && stage3Charted.add
+    && stage3SurveyCommit.ok && stage3AddCommit.ok
+    && stage3SurveyAuthority?.token === stage3DocumentToken
+    && stage3AddAuthority?.token === stage3DocumentToken
+    && /Charted/i.test(stage3Charted.toast);
+  if (!stage3ChartedReady) {
     fails.push('PRIME RADIUS BOUNDARY TOAST SETUP did not produce the real ordinary Charted toast: '
-      + JSON.stringify(stage3Charted));
+      + JSON.stringify({ stage3Charted, stage3SurveyBeforeAuthority, stage3SurveyAuthority,
+        stage3SurveyCommit, stage3AddAuthority, stage3AddCommit }));
   }
+  if (stage3ChartedReady) {
   await evalNavPh(`(()=>{ const s=document.getElementById('searchbox');s.value=${JSON.stringify(String(blockedShareCode))};s.focus();return true;})()`);
   await dispatchKeyPress(navPh, 'Enter', 'Enter');
   await sleep(80);
@@ -23363,43 +23499,68 @@ try {
       &&q.value===${JSON.stringify(String(blockedShareCode))}&&document.activeElement===q,
     mode:s.mode,stage:s.stage,toast,toastSerial:s.toastSerial,query:q.value,focus:document.activeElement===q};})()`;
   const stage3Reach = await evalNavPh(stage3PrimeRadiusBoundaryCheck);
-  if (!stage3Reach.ok || stage3Reach.toastSerial !== stage3Charted.toastSerial + 1) {
+  const stage3ReachReady = stage3Reach.ok
+    && stage3Reach.toastSerial === stage3Charted.toastSerial + 1;
+  if (!stage3ReachReady) {
     fails.push('STAGE-3 PRIME RADIUS: immediate blocked CF1 did not replace ordinary copy with the honest saved-radius boundary: '
       + JSON.stringify({ charted: stage3Charted, blocked: stage3Reach }));
   }
+  if (stage3ReachReady) {
   const stage3BoundaryCtl = await evalNavPh(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML;
     toast.textContent='⬆ Beyond Your Saved Reach Your saved Prime Signature radius ends here. Prime Signature radius expansion is not available in this development slice. Collect Prime Signatures to expand it.'; const result=${stage3PrimeRadiusBoundaryCheck};toast.innerHTML=prior;return result;})()`);
+  const stage3CharterBoundaryCtl = await evalNavPh(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML;
+    toast.textContent='⬆ Beyond Your Charter Your saved reach is preserved. The next Charter system is not available in this development slice.'; const result=${stage3PrimeRadiusBoundaryCheck};toast.innerHTML=prior;return result;})()`);
+  const stage3BoundaryControlsReady = !stage3BoundaryCtl.ok && !stage3CharterBoundaryCtl.ok;
   if (stage3BoundaryCtl.ok) {
     fails.push('STAGE-3 PRIME RADIUS COPY CONTROL FAILED — stale unavailable/unverified collection copy stayed green: '
       + JSON.stringify(stage3BoundaryCtl));
   }
-  const stage3CharterBoundaryCtl = await evalNavPh(`(()=>{ const toast=document.getElementById('toast'),prior=toast.innerHTML;
-    toast.textContent='⬆ Beyond Your Charter Your saved reach is preserved. The next Charter system is not available in this development slice.'; const result=${stage3PrimeRadiusBoundaryCheck};toast.innerHTML=prior;return result;})()`);
   if (stage3CharterBoundaryCtl.ok) {
     fails.push('STAGE-3 PRIME RADIUS TYPE CONTROL FAILED — injected Charter boundary stayed green: '
       + JSON.stringify(stage3CharterBoundaryCtl));
   }
+  if (stage3BoundaryControlsReady) {
   /* A forced Share confirmation is allowed to supersede the boundary. The
      SAME blocked route must then restore its explanation, not be mistaken
      for a duplicate merely because its key is still inside the dedupe clock. */
-  const stage3ForcedShare = await evalNavPh(`(async()=>{ let copied='';
-    Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(v)=>{copied=String(v);return Promise.resolve();}}});
-    const share=document.querySelector('#survey [data-act=share]');share?.click();await new Promise(r=>setTimeout(r,30));
-    const s=window.__CF_SLICE__.api.state();delete navigator.clipboard;
-    return {share:!!share,copied,toast:s.toastText,toastSerial:s.toastSerial}; })()`);
-  if (!stage3ForcedShare.share || !stage3ForcedShare.copied || !/Share code copied/i.test(stage3ForcedShare.toast)
-    || stage3ForcedShare.toastSerial !== stage3Reach.toastSerial + 1) {
+  const stage3ShareAction = await evalNavPh(phoneCardActionCheck('share'));
+  await evalNavPh(`(()=>{window.__cfStage3Copied='';Object.defineProperty(navigator,'clipboard',{
+    configurable:true,value:{writeText:(value)=>{window.__cfStage3Copied=String(value);return Promise.resolve();}}});return true;})()`);
+  if (stage3ShareAction.ok) await touchNav(stage3ShareAction.x, stage3ShareAction.y);
+  const stage3ShareAuthority = stage3ShareAction.ok
+    ? await waitNavPhF4Writable('PRIME RADIUS forced Share settlement') : null;
+  const stage3ShareCommit = stage3ShareAction.ok && stage3ShareAuthority
+    ? assessSingleF4ActionCommit({
+      beforeAuthority: stage3AddAuthority,
+      afterAuthority: stage3ShareAuthority,
+      expectedKind: 'arc9-share-send-v1',
+      expectedPersistenceLastOutcome: `arc9-share-send-committed:${stage3ShareAuthority.raw.revision}`,
+    }) : { ok: false, reasons: ['Share did not publish a settled authority'] };
+  const stage3ForcedShare = await evalNavPh(`(()=>{const s=window.__CF_SLICE__.api.state(),copied=window.__cfStage3Copied||'';
+    delete window.__cfStage3Copied;delete navigator.clipboard;
+    return {share:${Boolean(stage3ShareAction.ok)},copied,toast:s.toastText,toastSerial:s.toastSerial};})()`);
+  const stage3ShareReady = stage3ForcedShare.share && stage3ForcedShare.copied
+    && /Share code copied/i.test(stage3ForcedShare.toast)
+    && stage3ForcedShare.toastSerial === stage3Reach.toastSerial + 1
+    && stage3ShareCommit.ok
+    && stage3ShareAuthority?.token === stage3DocumentToken;
+  if (!stage3ShareReady) {
     fails.push('PRIME RADIUS BOUNDARY TOAST INTERRUPTION: real forced Share did not supersede the first boundary: '
-      + JSON.stringify({ boundary: stage3Reach, forcedShare: stage3ForcedShare }));
+      + JSON.stringify({ boundary: stage3Reach, forcedShare: stage3ForcedShare,
+        stage3ShareAuthority, stage3ShareCommit }));
   }
+  if (stage3ShareReady) {
   await evalNavPh(`(()=>{ const s=document.getElementById('searchbox');s.value=${JSON.stringify(String(blockedShareCode))};s.focus();return true;})()`);
   await dispatchKeyPress(navPh, 'Enter', 'Enter');
   await sleep(80);
   const stage3Restored = await evalNavPh(stage3PrimeRadiusBoundaryCheck);
-  if (!stage3Restored.ok || stage3Restored.toastSerial !== stage3ForcedShare.toastSerial + 1) {
+  const stage3RestoredReady = stage3Restored.ok
+    && stage3Restored.toastSerial === stage3ForcedShare.toastSerial + 1;
+  if (!stage3RestoredReady) {
     fails.push('PRIME RADIUS BOUNDARY TOAST RESTORE: same blocked CF1 did not restore its explanation after forced Share: '
       + JSON.stringify({ forcedShare: stage3ForcedShare, restored: stage3Restored }));
   }
+  if (stage3RestoredReady) {
   await dispatchKeyPress(navPh, 'Enter', 'Enter');
   await sleep(80);
   const stage3Repeat = await evalNavPh(`(()=>{ const s=window.__CF_SLICE__.api.state(),q=document.getElementById('searchbox');return {
@@ -23413,6 +23574,11 @@ try {
   }
   if (dedupedBoundary(stage3Restored, { ...stage3Repeat, toastSerial: stage3Restored.toastSerial + 1 })) {
     fails.push('PRIME RADIUS BOUNDARY DEBOUNCE CONTROL FAILED — synthetic re-announcement stayed green');
+  }
+  }
+  }
+  }
+  }
   }
 
   /* Human-facing Chapter 2 is exactly zero-based ascCh 1. That malformed
@@ -23455,30 +23621,110 @@ try {
      of new banking, advance every consecutive completion, persist, and reload
      without adding a landfall or touching the progress/reward ledgers. Matched
      no-reach and powered-incomplete fixtures control entitlement and completeness. */
-  const charterRewardLedger = (state) => JSON.stringify({
-    reach: state.reach,
-    essence: state.save.essence,
-    items: state.save.items,
-    cargo: state.save.cargo,
-    cgx: state.save.cgx,
-    stats: state.save.stats,
-    journal: state.save.journal,
-    claimedSets: state.save.claimedSets,
-    techOwned: state.save.techOwned,
-    unlocked: state.save.unlocked,
-    primeFill: state.save.primeFill,
-    frontierUnlocked: state.save.frontierUnlocked,
-    chWeek: state.save.chWeek,
-    chProg: state.save.chProg,
-    chacc: state.save.chacc,
-    chDone: state.save.chDone,
+  const charterStableLedger = (state) => {
+    const { shares: _shares, ...stableStats } = state.save.stats;
+    return JSON.stringify({
+      name: state.save.name,
+      reach: state.reach,
+      essence: state.save.essence,
+      items: state.save.items,
+      cargo: state.save.cargo,
+      cgx: state.save.cgx,
+      customNames: state.save.customNames,
+      mineX: state.save.mineX,
+      mined: state.save.mined,
+      skimX: state.save.skimX,
+      stats: stableStats,
+      journal: state.save.journal,
+      claimedSets: state.save.claimedSets,
+      techOwned: state.save.techOwned,
+      primeFill: state.save.primeFill,
+      frontierUnlocked: state.save.frontierUnlocked,
+      chWeek: state.save.chWeek,
+      chProg: state.save.chProg,
+      chacc: state.save.chacc,
+      chDone: state.save.chDone,
+    });
+  };
+  const charterGalaxyKey = 'CF1|g:999@90,-60';
+  const charterStarKey = `${charterGalaxyKey}|s:424242@560,170`;
+  const charterWorldKey = `${charterStarKey}|p:131#0`;
+  const charterSavedView = {
+    type: 'planet',
+    gal: {
+      x: 90, y: -60, size: 78, sp: 0, tilt: 0.62, rot: 0.5,
+      seed: 999, home: true, quasar: false, dwarf: false,
+    },
+    star: { x: 560, y: 170, seed: 424242 },
+    pseed: 131,
+  };
+  const charterRouteExact = (state) => state.mode === 'surface'
+    && state.gal === 999 && state.galX === 90 && state.galY === -60 && state.galSize === 78
+    && state.star === 424242 && state.starX === 560 && state.starY === 170
+    && state.planet === 131 && state.planetOrdinal === 0
+    && state.navGalaxyKey === charterGalaxyKey
+    && state.navStarKey === charterStarKey
+    && state.navWorldKey === charterWorldKey
+    && JSON.stringify(state.save.savedView) === JSON.stringify(charterSavedView)
+    && Number.isSafeInteger(state.renderedScene?.serial) && state.renderedScene.serial > 0
+    && state.renderedScene.mode === 'surface'
+    && state.renderedScene.ecologyEpoch === state.epoch
+    && state.renderedScene.galaxyKey === charterGalaxyKey
+    && state.renderedScene.starKey === charterStarKey
+    && state.renderedScene.worldKey === charterWorldKey;
+  const charterLandBaseline = (state) => ({
+    landed: JSON.stringify(state.save.landed),
+    ascProg: JSON.stringify(state.save.ascProg),
+    stable: charterStableLedger(state),
+    shares: state.save.stats.shares,
+    frontierEnding: state.save.frontierEnding,
+    unlocked: [...state.save.unlocked],
   });
+  const charterExpectedUnlocks = (baseline, expectedChapter) => expectedChapter === 3
+    ? [...baseline.unlocked, 'ascended'] : baseline.unlocked;
   const charterRelandOutcome = (state, baseline, expectedChapter, expectedStage) =>
-    state.mode === 'surface' && state.planet === 131
+    charterRouteExact(state)
       && state.stage === expectedStage && state.save.ascCh === expectedChapter
       && JSON.stringify(state.save.landed) === baseline.landed
       && JSON.stringify(state.save.ascProg) === baseline.ascProg
-      && charterRewardLedger(state) === baseline.rewards;
+      && charterStableLedger(state) === baseline.stable
+      && state.save.stats.shares === baseline.shares
+      && state.save.frontierEnding === (expectedChapter === 3
+        ? 'dawn' : baseline.frontierEnding)
+      && JSON.stringify(state.save.unlocked)
+        === JSON.stringify(charterExpectedUnlocks(baseline, expectedChapter));
+  const charterDurableProjection = (state) => JSON.stringify({
+    mode: state.mode,
+    gal: state.gal,
+    galX: state.galX,
+    galY: state.galY,
+    galSize: state.galSize,
+    star: state.star,
+    starX: state.starX,
+    starY: state.starY,
+    planet: state.planet,
+    planetOrdinal: state.planetOrdinal,
+    navGalaxyKey: state.navGalaxyKey,
+    navStarKey: state.navStarKey,
+    navWorldKey: state.navWorldKey,
+    epoch: state.epoch,
+    renderedScene: {
+      mode: state.renderedScene?.mode,
+      ecologyEpoch: state.renderedScene?.ecologyEpoch,
+      galaxyKey: state.renderedScene?.galaxyKey,
+      starKey: state.renderedScene?.starKey,
+      worldKey: state.renderedScene?.worldKey,
+    },
+    stage: state.stage,
+    ascCh: state.save.ascCh,
+    landed: state.save.landed,
+    ascProg: state.save.ascProg,
+    stable: charterStableLedger(state),
+    shares: state.save.stats.shares,
+    frontierEnding: state.save.frontierEnding,
+    unlocked: state.save.unlocked,
+    savedView: state.save.savedView,
+  });
   const reachBackedCharterReland = async (
     raw, expectedProgress, expectedChapter, expectedStage, label,
   ) => {
@@ -23487,31 +23733,56 @@ try {
     try { await evalNavPh(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(raw)})`); }
     catch { /* successful import replaces the document */ }
     await waitForSlice(navPh, `${label} import`, { previousToken: importToken });
-    await waitNavPhF4Writable(`${label} replacement F4 authority`, { previousToken: importToken });
+    const replacementAuthority = await waitNavPhF4Writable(
+      `${label} replacement F4 authority`, { previousToken: importToken },
+    );
     await waitNavPhValue(`${label} system restore`, `(()=>{ const s=window.__CF_SLICE__.api.state();
       return s.mode==='system'&&s.star===424242?s:null; })()`);
-    /* Let the replacement document settle; the powered leg deliberately fires
-       a fresh Share notice immediately before Land to prove reconciliation can
-       replace an adjacent ambient outcome instead of being swallowed. */
-    await sleep(2000);
+    /* The powered leg deliberately fires a fresh Share notice immediately
+       before Land to prove reconciliation can replace an adjacent ambient
+       outcome instead of being swallowed. Every step waits for the exact
+       same-document F4 fixed point; elapsed time is never action authority. */
     const imported = await evalNavPh(`window.__CF_SLICE__.api.state()`);
-    const baseline = {
-      landed: JSON.stringify(imported.save.landed),
-      ascProg: JSON.stringify(imported.save.ascProg),
-      rewards: charterRewardLedger(imported),
-    };
+    const importedBaseline = charterLandBaseline(imported);
+    const charterDocumentToken = await sliceToken(navPh);
     if (imported.save.ascCh !== 0 || imported.stage !== expectedStage
-      || baseline.landed !== JSON.stringify([131])
-      || baseline.ascProg !== JSON.stringify(expectedProgress)) {
+      || importedBaseline.landed !== JSON.stringify([131])
+      || importedBaseline.ascProg !== JSON.stringify(expectedProgress)) {
       fails.push(`${label}: imported saturated Charter fixture did not retain its exact starting record: `
         + JSON.stringify(imported));
+      return;
     }
 
     const surveyed = await evalNavPh(`window.__CF_SLICE__.api.surveyOn(${JSON.stringify(MERCURY)})`);
+    const surveyAuthority = surveyed
+      ? await waitNavPhF4Writable(`${label} Survey settlement`) : null;
+    const surveyCommitAssessment = surveyed && surveyAuthority
+      ? assessSingleF4ActionCommit({
+        beforeAuthority: replacementAuthority,
+        afterAuthority: surveyAuthority,
+        expectedKind: 'arc9-survey-v1',
+        expectedPersistenceLastOutcome: `arc9-survey-committed:${surveyAuthority.raw.revision}`,
+      }) : { ok: false, reasons: ['Survey did not publish a settled authority'] };
+    if (!surveyCommitAssessment.ok || surveyAuthority?.token !== charterDocumentToken) {
+      fails.push(`${label}: Survey did not establish one exact same-document F4 predecessor: `
+        + JSON.stringify({ replacementAuthority, surveyed, surveyAuthority,
+          surveyCommitAssessment }));
+      return;
+    }
     const landAction = await evalNavPh(phoneCardActionCheck('landcta'));
-    if (!surveyed || !landAction.ok || !/Land/.test(landAction.label)) {
+    const beforeShare = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+    if (!landAction.ok || !/Land/.test(landAction.label)
+      || beforeShare.mode !== 'system' || beforeShare.save.ascCh !== 0
+      || JSON.stringify(beforeShare.save.landed) !== importedBaseline.landed
+      || JSON.stringify(beforeShare.save.ascProg) !== importedBaseline.ascProg
+      || charterStableLedger(beforeShare) !== importedBaseline.stable
+      || beforeShare.save.stats.shares !== importedBaseline.shares
+      || JSON.stringify(beforeShare.save.unlocked) !== JSON.stringify(importedBaseline.unlocked)
+      || beforeShare.save.unlocked.includes('ascended')
+      || (expectedChapter === 3 && beforeShare.save.unlocked.includes('share'))
+      || beforeShare.toastSerial !== imported.toastSerial) {
       fails.push(`${label}: real already-landed Mercury card did not expose a reachable Land action: `
-        + JSON.stringify({ surveyed, landAction }));
+        + JSON.stringify({ surveyed, surveyAuthority, landAction, imported, beforeShare }));
       return;
     }
     if (expectedChapter === 3) {
@@ -23529,49 +23800,145 @@ try {
         fails.push(`${label} ACTION CONTROL FAILED — injected buried Land action stayed green: `
           + JSON.stringify(buriedAction));
       }
+      if (missingAction.ok || missingAction.why !== 'missing' || buriedAction.ok) return;
     }
-    const beforeTouch = await evalNavPh(`window.__CF_SLICE__.api.state()`);
-    if (beforeTouch.mode !== 'system' || beforeTouch.save.ascCh !== 0
-      || JSON.stringify(beforeTouch.save.landed) !== baseline.landed
-      || JSON.stringify(beforeTouch.save.ascProg) !== baseline.ascProg
-      || charterRewardLedger(beforeTouch) !== baseline.rewards
-      || beforeTouch.toastSerial !== imported.toastSerial) {
-      fails.push(`${label}: Survey/card-open changed Charter or reward state before the Land touch: `
-        + JSON.stringify({ imported, beforeTouch }));
-    }
-    let beforeLand = beforeTouch;
+    let beforeLand = beforeShare;
+    let preLandAuthority = surveyAuthority;
     if (expectedChapter === 3) {
-      const adjacentShare = await evalNavPh(`(async()=>{ let copied='';
-        Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(value)=>{copied=String(value);return Promise.resolve();}}});
-        document.querySelector('#survey [data-act="share"]')?.click();await new Promise((resolve)=>setTimeout(resolve,30));
-        const state=window.__CF_SLICE__.api.state();delete navigator.clipboard;return {copied,state};})()`);
-      if (!adjacentShare.copied || !/Share code copied/i.test(adjacentShare.state.toastText)
-        || adjacentShare.state.toastSerial !== beforeTouch.toastSerial + 1
-        || adjacentShare.state.save.ascCh !== 0) {
+      const shareAction = await evalNavPh(phoneCardActionCheck('share'));
+      await evalNavPh(`(()=>{window.__cfCharterCopied='';Object.defineProperty(navigator,'clipboard',{
+        configurable:true,value:{writeText:(value)=>{window.__cfCharterCopied=String(value);return Promise.resolve();}}});return true;})()`);
+      if (shareAction.ok) await touchNav(shareAction.x, shareAction.y);
+      const shareAuthority = shareAction.ok
+        ? await waitNavPhF4Writable(`${label} Share settlement`) : null;
+      const adjacentShare = await evalNavPh(`(()=>{const state=window.__CF_SLICE__.api.state(),copied=window.__cfCharterCopied||'';
+        delete window.__cfCharterCopied;delete navigator.clipboard;return {copied,state};})()`);
+      const shareCommitAssessment = shareAction.ok && shareAuthority
+        ? assessSingleF4ActionCommit({
+          beforeAuthority: surveyAuthority,
+          afterAuthority: shareAuthority,
+          expectedKind: 'arc9-share-send-v1',
+          expectedPersistenceLastOutcome: `arc9-share-send-committed:${shareAuthority.raw.revision}`,
+        }) : { ok: false, reasons: ['Share did not publish a settled authority'] };
+      const expectedShareUnlocks = [...beforeShare.save.unlocked, 'share'];
+      if (!shareAction.ok || !adjacentShare.copied
+        || !shareCommitAssessment.ok
+        || shareAuthority?.token !== charterDocumentToken
+        || !/Share code copied/i.test(adjacentShare.state.toastText)
+        || adjacentShare.state.toastSerial !== beforeShare.toastSerial + 1
+        || adjacentShare.state.save.ascCh !== 0
+        || JSON.stringify(adjacentShare.state.save.landed) !== importedBaseline.landed
+        || JSON.stringify(adjacentShare.state.save.ascProg) !== importedBaseline.ascProg
+        || charterStableLedger(adjacentShare.state) !== importedBaseline.stable
+        || adjacentShare.state.save.stats.shares !== beforeShare.save.stats.shares + 1
+        || JSON.stringify(adjacentShare.state.save.unlocked) !== JSON.stringify(expectedShareUnlocks)) {
         fails.push(`${label}: real Share did not establish the adjacent-toast completion control: `
-          + JSON.stringify({ beforeTouch, adjacentShare }));
+          + JSON.stringify({ beforeShare, shareAction, shareAuthority, shareCommitAssessment,
+            adjacentShare }));
+        return;
       }
       beforeLand = adjacentShare.state;
+      preLandAuthority = shareAuthority;
     }
-    await touchNav(landAction.x, landAction.y);
-    const outcome = await waitNavPhValue(`${label} browser-touch re-land`, `(()=>{ const s=window.__CF_SLICE__.api.state();
-      return s.mode==='surface'&&s.planet===131?s:null; })()`);
-    if (!charterRelandOutcome(outcome, baseline, expectedChapter, expectedStage)) {
+    const baseline = charterLandBaseline(beforeLand);
+    const settledLandAction = await evalNavPh(phoneCardActionCheck('landcta'));
+    if (!settledLandAction.ok || !/Land/.test(settledLandAction.label)) {
+      fails.push(`${label}: Land action changed before its settled browser touch: `
+        + JSON.stringify({ beforeLand, settledLandAction }));
+      return;
+    }
+    await touchNav(settledLandAction.x, settledLandAction.y);
+    let outcome;
+    let landAuthority;
+    try {
+      await waitNavPhValue(`${label} browser-touch re-land`, `(()=>{ const s=window.__CF_SLICE__.api.state();
+        return s.mode==='surface'&&s.planet===131?s:null; })()`);
+      landAuthority = await waitNavPhF4Writable(`${label} Land and progression settlement`);
+      outcome = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+    } catch (error) {
+      const failedState = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+      fails.push(`${label}: browser-touch re-land did not reach its durable fixed point: `
+        + JSON.stringify({ error: String(error?.message || error), settledLandAction, failedState }));
+      return;
+    }
+    if (landAuthority?.token !== charterDocumentToken) {
+      fails.push(`${label}: re-land replaced its document instead of settling in place: `
+        + JSON.stringify(landAuthority));
+      return;
+    }
+    const outcomeExact = charterRelandOutcome(
+      outcome, baseline, expectedChapter, expectedStage,
+    );
+    const topologyAssessment = assessCharterLandSettlementTopology({
+      beforeAuthority: preLandAuthority,
+      afterAuthority: landAuthority,
+      state: outcome,
+      expectedChapter,
+      expectedStage,
+    });
+    const topologyExact = topologyAssessment.ok;
+    const toastExact = expectedChapter === 3
+      ? outcome.toastOn && outcome.toastSerial === beforeLand.toastSerial + 1
+        && /3 Charter chapters/i.test(outcome.toastText) && /complete/i.test(outcome.toastText)
+      : outcome.toastSerial === beforeLand.toastSerial
+        && !/Charter chapters?.*complete/i.test(outcome.toastText);
+    if (!outcomeExact) {
       fails.push(`${label}: browser-touch re-land changed credit/rewards or failed the expected Charter recovery: `
         + JSON.stringify({ baseline, outcome }));
     }
-    if (expectedChapter === 3
-      && (!outcome.toastOn || outcome.toastSerial !== beforeLand.toastSerial + 1
-        || !/3 Charter chapters/i.test(outcome.toastText) || !/complete/i.test(outcome.toastText))) {
+    if (!topologyExact) {
+      fails.push(`${label}: Land did not retain the exact revision/receipt/outcome settlement topology: `
+        + JSON.stringify({ expectedChapter, topologyAssessment, preLandAuthority, landAuthority,
+          landing: outcome.landing, persistence: outcome.persistence }));
+    }
+    if (expectedChapter === 3 && !toastExact) {
       fails.push(`${label}: multi-chapter recovery did not replace the adjacent notice with one aggregate: `
         + JSON.stringify({ beforeSerial: beforeLand.toastSerial, toastOn: outcome.toastOn,
           toastSerial: outcome.toastSerial, toastText: outcome.toastText }));
     }
-    if (expectedChapter === 0
-      && (outcome.toastSerial !== beforeLand.toastSerial || /Charter chapters?.*complete/i.test(outcome.toastText))) {
+    if (expectedChapter === 0 && !toastExact) {
       fails.push(`${label}: a no-advance control announced an unearned chapter completion: `
         + JSON.stringify({ beforeSerial: beforeLand.toastSerial, toastSerial: outcome.toastSerial,
           toastText: outcome.toastText }));
+    }
+    if (!outcomeExact || !topologyExact || !toastExact) return;
+
+    const revisionTopologyControl = structuredClone(landAuthority);
+    revisionTopologyControl.raw.revision += 1;
+    const receiptTopologyControl = structuredClone(landAuthority);
+    const receiptTopologyIndex = receiptTopologyControl.raw.receiptKeys.indexOf(
+      `receipt:${preLandAuthority.raw.ordinal}`,
+    );
+    if (receiptTopologyIndex < 0) {
+      fails.push(`${label} SETTLEMENT CONTROL FAILED — the exact Land receipt could not be isolated`);
+      return;
+    }
+    receiptTopologyControl.raw.receiptRows[receiptTopologyIndex].kind = 'charter-control-kind';
+    const landingTopologyControl = structuredClone(outcome);
+    landingTopologyControl.landing.lastOutcome = 'committed:0';
+    const persistenceTopologyControl = structuredClone(outcome);
+    persistenceTopologyControl.persistence.lastOutcome = 'charter-control-outcome';
+    const topologyControlsReject = [
+      assessCharterLandSettlementTopology({
+        beforeAuthority: preLandAuthority, afterAuthority: revisionTopologyControl,
+        state: outcome, expectedChapter, expectedStage,
+      }).ok,
+      assessCharterLandSettlementTopology({
+        beforeAuthority: preLandAuthority, afterAuthority: receiptTopologyControl,
+        state: outcome, expectedChapter, expectedStage,
+      }).ok,
+      assessCharterLandSettlementTopology({
+        beforeAuthority: preLandAuthority, afterAuthority: landAuthority,
+        state: landingTopologyControl, expectedChapter, expectedStage,
+      }).ok,
+      assessCharterLandSettlementTopology({
+        beforeAuthority: preLandAuthority, afterAuthority: landAuthority,
+        state: persistenceTopologyControl, expectedChapter, expectedStage,
+      }).ok,
+    ].every((accepted) => accepted === false);
+    if (!topologyControlsReject) {
+      fails.push(`${label} SETTLEMENT CONTROL FAILED — a wrong revision, receipt kind, landing outcome, or persistence outcome stayed green`);
+      return;
     }
     /* Predicate controls: the exact same observed outcome must reject both the
        pre-fix no-advance state and a one-chapter-only implementation. */
@@ -23586,28 +23953,73 @@ try {
       ...outcome,
       save: { ...outcome.save, unlocked: [...outcome.save.unlocked, 'charter-control-reward'] },
     };
+    const shareControl = {
+      ...outcome,
+      save: { ...outcome.save, stats: { ...outcome.save.stats, shares: outcome.save.stats.shares + 1 } },
+    };
+    const rankControl = {
+      ...outcome,
+      save: { ...outcome.save, stats: { ...outcome.save.stats, bestRank: outcome.save.stats.bestRank + 1 } },
+    };
+    const landedControl = {
+      ...outcome,
+      save: { ...outcome.save, landed: [...outcome.save.landed, 999_999] },
+    };
+    const progressControl = {
+      ...outcome,
+      save: { ...outcome.save, ascProg: { ...outcome.save.ascProg, 'c1-land': 999_999 } },
+    };
+    const familyControl = {
+      ...outcome,
+      save: { ...outcome.save, customNames: [...outcome.save.customNames, ['charter-control', 'Drift']] },
+    };
+    const routeControl = { ...outcome, navWorldKey: `${outcome.navWorldKey}:control` };
+    const orderControl = {
+      ...outcome,
+      save: { ...outcome.save, unlocked: ['ascended', ...baseline.unlocked] },
+    };
+    const preexistingBaseline = {
+      ...baseline, unlocked: [...baseline.unlocked, 'ascended'],
+    };
     if (charterRelandOutcome(reachControl, baseline, expectedChapter, expectedStage)
-      || charterRelandOutcome(rewardControl, baseline, expectedChapter, expectedStage)) {
-      fails.push(`${label} CONTROL FAILED — synthetic reach/reward mutation stayed green`);
+      || charterRelandOutcome(rewardControl, baseline, expectedChapter, expectedStage)
+      || charterRelandOutcome(shareControl, baseline, expectedChapter, expectedStage)
+      || charterRelandOutcome(rankControl, baseline, expectedChapter, expectedStage)
+      || charterRelandOutcome(landedControl, baseline, expectedChapter, expectedStage)
+      || charterRelandOutcome(progressControl, baseline, expectedChapter, expectedStage)
+      || charterRelandOutcome(familyControl, baseline, expectedChapter, expectedStage)
+      || charterRelandOutcome(routeControl, baseline, expectedChapter, expectedStage)
+      || charterRelandOutcome(orderControl, baseline, expectedChapter, expectedStage)
+      || charterRelandOutcome(outcome, preexistingBaseline, expectedChapter, expectedStage)) {
+      fails.push(`${label} CONTROL FAILED — synthetic route/reach/reward/share/rank/land/progress/save-family/order/predecessor mutation stayed green`);
+      return;
     }
 
     const persisted = await waitNavPhValue(`${label} IndexedDB commit`, `(async()=>{
       const raw=await (${READ_PRIMARY_EXPRESSION}),data=JSON.parse(raw);
-      return data.asc===${expectedChapter}&&data.view?.type==='planet'&&data.view?.pseed===131
+      return data.asc===${expectedChapter}
+        &&JSON.stringify(data.view)===${JSON.stringify(JSON.stringify(charterSavedView))}
         ?{asc:data.asc,ascp:data.ascp,land:data.land,view:data.view}:null; })()`, 8000);
     if (JSON.stringify(persisted.land) !== baseline.landed
       || JSON.stringify(persisted.ascp) !== baseline.ascProg) {
       fails.push(`${label}: persisted recovery changed landfall/progress bytes: `
         + JSON.stringify({ baseline, persisted }));
+      return;
     }
     const beforeReloadToken = await sliceToken(navPh);
+    const committedProjection = charterDurableProjection(outcome);
     await navigateToSlice(navPh, URL3, `${label} reload`);
     await waitNavPhF4Writable(`${label} reloaded F4 authority`, { previousToken: beforeReloadToken });
     const reloaded = await waitNavPhValue(`${label} reloaded surface`, `(()=>{ const s=window.__CF_SLICE__.api.state();
-      return s.mode==='surface'&&s.planet===131?s:null; })()`);
-    if (!charterRelandOutcome(reloaded, baseline, expectedChapter, expectedStage)) {
+      return s.mode==='surface'&&s.gal===999&&s.galX===90&&s.galY===-60
+        &&s.star===424242&&s.starX===560&&s.starY===170&&s.planet===131&&s.planetOrdinal===0
+        &&s.navGalaxyKey===${JSON.stringify(charterGalaxyKey)}
+        &&s.navStarKey===${JSON.stringify(charterStarKey)}
+        &&s.navWorldKey===${JSON.stringify(charterWorldKey)}?s:null; })()`);
+    if (!charterRelandOutcome(reloaded, baseline, expectedChapter, expectedStage)
+      || charterDurableProjection(reloaded) !== committedProjection) {
       fails.push(`${label}: committed Charter recovery did not survive reload exactly: `
-        + JSON.stringify({ baseline, reloaded }));
+        + JSON.stringify({ baseline, committedProjection, reloaded }));
     }
   };
   await reachBackedCharterReland(
@@ -23709,7 +24121,20 @@ try {
     type: 'mouseReleased', x: railAction.x, y: railAction.y, button: 'left', clickCount: 1,
   }, panelSession);
   await waitPanelValue('CHARTER PANEL REFRESH rail open', `window.__CF_SLICE__.api.state().panelOpen==='ch'`);
-  await evalPanel(`window.__CF_SLICE__.api.surveyOn(${JSON.stringify(MERCURY)})`);
+  const panelDocumentToken = await sliceToken(panelSession);
+  const panelSurveyBeforeAuthority = await waitPanelF4Writable(
+    'CHARTER PANEL REFRESH Survey predecessor F4 authority',
+  );
+  const panelSurveyed = await evalPanel(`window.__CF_SLICE__.api.surveyOn(${JSON.stringify(MERCURY)})`);
+  const panelSurveyAuthority = panelSurveyed
+    ? await waitPanelF4Writable('CHARTER PANEL REFRESH Survey settlement') : null;
+  const panelSurveyCommit = panelSurveyed && panelSurveyAuthority
+    ? assessSingleF4ActionCommit({
+      beforeAuthority: panelSurveyBeforeAuthority,
+      afterAuthority: panelSurveyAuthority,
+      expectedKind: 'arc9-survey-v1',
+      expectedPersistenceLastOutcome: `arc9-survey-committed:${panelSurveyAuthority.raw.revision}`,
+    }) : { ok: false, reasons: ['Survey did not publish a settled authority'] };
   const charterPanelCheck = `(()=>{ const state=window.__CF_SLICE__.api.state(),panel=document.getElementById('chpanel'),
     text=panel?.textContent||'',record=panel?.querySelector('[data-sel="charter-ch"]');
     return {ok:state.panelOpen==='ch'&&state.save.ascCh===3&&record?.getAttribute('data-chstate')==='complete'
@@ -23717,30 +24142,73 @@ try {
       state:record?.getAttribute('data-chstate')||null,text};})()`;
   const panelBefore = await evalPanel(`(()=>{ const s=window.__CF_SLICE__.api.state(),panel=document.getElementById('chpanel');
     return {panelOpen:s.panelOpen,ascCh:s.save.ascCh,text:panel?.textContent||'',land:${phoneCardActionCheck('landcta')}};})()`);
-  if (panelBefore.panelOpen !== 'ch' || panelBefore.ascCh !== 0 || !/Chapter 1/.test(panelBefore.text)
+  if (!panelSurveyCommit.ok || panelSurveyAuthority?.token !== panelDocumentToken
+    || panelBefore.panelOpen !== 'ch' || panelBefore.ascCh !== 0 || !/Chapter 1/.test(panelBefore.text)
     || !panelBefore.land.ok) {
     fails.push('CHARTER PANEL REFRESH: desktop panel/Survey did not coexist before Land: '
-      + JSON.stringify(panelBefore));
+      + JSON.stringify({ panelSurveyed, panelSurveyBeforeAuthority, panelSurveyAuthority,
+        panelSurveyCommit, panelBefore }));
   } else {
+    await evalPanel(`(()=>{const button=document.querySelector('#survey [data-act="landcta"]');
+      window.__cfCharterLandEvents=[];for(const type of ['pointerdown','pointerup','click'])button.addEventListener(type,(event)=>{
+        window.__cfCharterLandEvents.push({type,trusted:event.isTrusted,act:event.target.closest('[data-act]')?.dataset.act||null});
+      },{once:true,capture:true});return true;})()`);
     await send('Input.dispatchMouseEvent', {
       type: 'mousePressed', x: panelBefore.land.x, y: panelBefore.land.y, button: 'left', clickCount: 1,
     }, panelSession);
     await send('Input.dispatchMouseEvent', {
       type: 'mouseReleased', x: panelBefore.land.x, y: panelBefore.land.y, button: 'left', clickCount: 1,
     }, panelSession);
-    await waitPanelValue('CHARTER PANEL REFRESH browser mouse Land', `(()=>{ const s=window.__CF_SLICE__.api.state();
-      return s.mode==='surface'&&s.save.ascCh===3?s:null;})()`);
-    const panelAfter = await evalPanel(charterPanelCheck);
-    if (!panelAfter.ok) {
-      fails.push('CHARTER PANEL REFRESH: open board stayed on the pre-Land chapter: '
-        + JSON.stringify(panelAfter));
+    const panelImmediate = await evalPanel(`(()=>({state:window.__CF_SLICE__.api.state(),
+      events:window.__cfCharterLandEvents||[]}))()`);
+    let panelLanded = false;
+    try {
+      await waitPanelValue('CHARTER PANEL REFRESH browser mouse Land', `(()=>{ const s=window.__CF_SLICE__.api.state();
+        return s.mode==='surface'&&s.save.ascCh===3?s:null;})()`);
+      const panelLandAuthority = await waitPanelF4Writable('CHARTER PANEL REFRESH Land and progression settlement');
+      const panelAfter = await evalPanel(charterPanelCheck);
+      const panelState = await evalPanel(`window.__CF_SLICE__.api.state()`);
+      const panelEvents = await evalPanel(`window.__cfCharterLandEvents||[]`);
+      const pointerControlsReject = [
+        panelEvents.slice(0, 2),
+        panelEvents.map((event, index) => index === 0 ? { ...event, trusted: false } : event),
+        panelEvents.map((event, index) => index === 1 ? { ...event, act: 'share' } : event),
+        [panelEvents[1], panelEvents[0], panelEvents[2]],
+        [...panelEvents, { type: 'click', trusted: true, act: 'landcta' }],
+      ].every((events) => exactTrustedCharterLandReceipt(events) === false);
+      const panelTopology = assessCharterLandSettlementTopology({
+        beforeAuthority: panelSurveyAuthority,
+        afterAuthority: panelLandAuthority,
+        state: panelState,
+        expectedChapter: 3,
+        expectedStage: 3,
+      });
+      const panelTopologyExact = panelTopology.ok;
+      panelLanded = panelAfter.ok
+        && panelLandAuthority?.token === panelDocumentToken
+        && charterRouteExact(panelState)
+        && exactTrustedCharterLandReceipt(panelEvents)
+        && pointerControlsReject
+        && panelTopologyExact;
+      if (!panelLanded) {
+        fails.push('CHARTER PANEL REFRESH: open board stayed on the pre-Land chapter or the trusted pointer receipt drifted: '
+          + JSON.stringify({ panelAfter, panelLandAuthority, panelEvents, pointerControlsReject,
+            panelTopology, panelImmediate }));
+      }
+    } catch (error) {
+      const panelFinal = await evalPanel(`(()=>({state:window.__CF_SLICE__.api.state(),
+        events:window.__cfCharterLandEvents||[]}))()`);
+      fails.push('CHARTER PANEL REFRESH: browser mouse Land did not reach its durable fixed point: '
+        + JSON.stringify({ error: String(error?.message || error), panelBefore, panelImmediate, panelFinal }));
     }
-    const stalePanelCtl = await evalPanel(`(()=>{ const panel=document.getElementById('chpanel'),prior=panel.innerHTML;
-      panel.innerHTML='<div data-sel="charter-ch" data-chstate="complete">Chapter 1 — stale</div>';
-      const result=${charterPanelCheck};panel.innerHTML=prior;return result;})()`);
-    if (stalePanelCtl.ok) {
-      fails.push('CHARTER PANEL REFRESH CONTROL FAILED — injected stale Chapter 1 board stayed green: '
-        + JSON.stringify(stalePanelCtl));
+    if (panelLanded) {
+      const stalePanelCtl = await evalPanel(`(()=>{ const panel=document.getElementById('chpanel'),prior=panel.innerHTML;
+        panel.innerHTML='<div data-sel="charter-ch" data-chstate="complete">Chapter 1 — stale</div>';
+        const result=${charterPanelCheck};panel.innerHTML=prior;return result;})()`);
+      if (stalePanelCtl.ok) {
+        fails.push('CHARTER PANEL REFRESH CONTROL FAILED — injected stale Chapter 1 board stayed green: '
+          + JSON.stringify(stalePanelCtl));
+      }
     }
   }
   await send('Target.closeTarget', { targetId: tPanel.targetId });
@@ -26203,7 +26671,7 @@ if (OUTCOME_CONTROLS_ONLY) {
   console.log('SLICE OUTCOME CONTROLS: PASS — two source-generated leaf-seed-colliding worlds retain distinct Search/name/Atlas/Land/save-reload/share identity, and F4 heartbeat lease-storage plus revision-read failures stop answerability/accrual/audio/heartbeat without automatic reacquisition before a read-only convergence reload.');
   process.exit(0);
 }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact 75-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact 77-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
 console.log(ARC4_SLICE_PASS_MARKER);
 console.log(sliceScreenshotInventoryLine());

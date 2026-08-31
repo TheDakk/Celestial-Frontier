@@ -6,8 +6,8 @@ import { getGuideCatalogue } from '../apps/game/src/guide-content.js';
 import { getReleaseHistory, V2_DRAFT_RELEASE } from '../apps/game/src/release-content.js';
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { assessArc4EpochSnapshot } from '../tools/arc4-browser-contract.mjs';
-// @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
-import { assessLazyOwnerOriginGate, assessLazyProductProducerSettlement, buildLazyRefillObservationExpression, classifyForegroundServiceTurn } from '../tools/slicesmoke-contract.mjs';
+// @ts-expect-error The executable JavaScript evidence helper intentionally has no complete declaration shim.
+import { assessCharterLandSettlementTopology, assessLazyOwnerOriginGate, assessLazyProductProducerSettlement, assessSingleF4ActionCommit, buildLazyRefillObservationExpression, classifyForegroundServiceTurn, exactTrustedCharterLandReceipt } from '../tools/slicesmoke-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
 import { hasUnnegatedSentenceClaim } from '../tools/engineering-browser-contract.mjs';
 
@@ -39,6 +39,10 @@ const arc4ContractSource = readFileSync(
 );
 const mainSource = readFileSync(
   new URL('../apps/game/src/main.ts', import.meta.url),
+  'utf8',
+);
+const indexSource = readFileSync(
+  new URL('../apps/game/index.html', import.meta.url),
   'utf8',
 );
 const f4RuntimeSource = readFileSync(
@@ -94,7 +98,7 @@ function executableDeclaration<T>(name: string, nextDeclaration: string): T {
     'hasUnnegatedSentenceClaim',
     'V2_DRAFT_BULLET_COUNT',
     `return (${expression});`,
-  )(hasUnnegatedSentenceClaim, 75) as T;
+  )(hasUnnegatedSentenceClaim, 77) as T;
 }
 
 interface GuideSpec {
@@ -739,8 +743,8 @@ describe('sixth Slice red contract repairs', () => {
     expect(cf1).not.toContain("result.mode==='system'&&result.title==='Blue Earth'?result:null");
   });
 
-  it('keeps a fixed 75-row Guide oracle with five independent population controls', () => {
-    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 75;');
+  it('keeps a fixed 77-row Guide oracle with five independent population controls', () => {
+    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 77;');
     const owner = section(
       sliceSource,
       '  const releaseDraftCheck = `',
@@ -783,10 +787,10 @@ describe('sixth Slice red contract repairs', () => {
     const glassMissingBulletCount = Number(
       glassSource.match(/inventory\?\.bulletCount===(\d+)/)?.[1],
     );
-    expect(glassExpectedBulletCount).toBe(75);
-    expect(glassMissingBulletCount).toBe(74);
+    expect(glassExpectedBulletCount).toBe(77);
+    expect(glassMissingBulletCount).toBe(76);
     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
-    expect(glassSource).toContain('75-outcome development inventory');
+    expect(glassSource).toContain('77-outcome development inventory');
     expect(glassSource).not.toContain('55-outcome development inventory');
   });
 
@@ -1875,9 +1879,9 @@ describe('sixth Slice red contract repairs', () => {
       ['post-settlement final fail-stop',
         "throw new Error('slow Compendium final request inventory drifted after settlement: '"],
       ['live single-producer authority',
-        'lazyAfter.lazyArt, lazyDocumentToken, 3,'],
+        'lazyAfter.lazyArt, lazyDocumentToken,\n  );'],
       ['closed single-producer authority',
-        'lazyClosedAfter.lazyArt, lazyClosedDocumentToken, 1,'],
+        'lazyClosedAfter.lazyArt, lazyClosedDocumentToken,\n  );'],
       ['single-producer authority fail-stop',
         'COMPENDIUM LAZY PRODUCER AUTHORITY: an isolated owner did not retain exactly one'],
     ]);
@@ -2024,8 +2028,90 @@ describe('sixth Slice red contract repairs', () => {
       },
       errors: { capability: 0, protocol: 0, import: 0, paint: 0, encode: 0 },
     };
-    expect(assessLazyProductProducerSettlement(producer, 'lazy-document', 1))
+    expect(assessLazyProductProducerSettlement(producer, 'lazy-document'))
       .toEqual({ ok: true, reasons: [] });
+    const elevenThumbResults = {
+      ...producer,
+      lastEvent: { ...producer.lastEvent, jobId: 11 },
+      phases: {
+        ...producer.phases,
+        thumbJobStarts: 11, thumbRenderCompletes: 11,
+        thumbEncodeStarts: 11, thumbEncodeCompletes: 11,
+      },
+      results: { ...producer.results, count: 11 },
+    };
+    const mixedResults = {
+      ...elevenThumbResults,
+      lastEvent: { ...producer.lastEvent, jobId: 13, kind: 'portrait440' },
+      phases: {
+        ...elevenThumbResults.phases,
+        portraitJobStarts: 2, portraitRenderCompletes: 2,
+        portraitEncodeStarts: 2, portraitEncodeCompletes: 2,
+      },
+      results: { ...producer.results, count: 13 },
+    };
+    expect(assessLazyProductProducerSettlement(elevenThumbResults, 'lazy-document'))
+      .toEqual({ ok: true, reasons: [] });
+    expect(assessLazyProductProducerSettlement(mixedResults, 'lazy-document'))
+      .toEqual({ ok: true, reasons: [] });
+    const oneKindProducer = (kind: 'thumb' | 'portrait') => ({
+      ...producer,
+      lastEvent: {
+        ...producer.lastEvent,
+        kind: kind === 'thumb' ? 'thumb132' : 'portrait440',
+      },
+      phases: {
+        ...producer.phases,
+        thumbJobStarts: kind === 'thumb' ? 1 : 0,
+        thumbRenderCompletes: kind === 'thumb' ? 1 : 0,
+        thumbEncodeStarts: kind === 'thumb' ? 1 : 0,
+        thumbEncodeCompletes: kind === 'thumb' ? 1 : 0,
+        portraitJobStarts: kind === 'portrait' ? 1 : 0,
+        portraitRenderCompletes: kind === 'portrait' ? 1 : 0,
+        portraitEncodeStarts: kind === 'portrait' ? 1 : 0,
+        portraitEncodeCompletes: kind === 'portrait' ? 1 : 0,
+      },
+    });
+    for (const kind of ['thumb', 'portrait'] as const) {
+      const base = oneKindProducer(kind);
+      const prefix = kind === 'thumb' ? 'thumb' : 'portrait';
+      const tailMutants = [
+        {
+          ...base,
+          lastEvent: { ...base.lastEvent, jobId: 2 },
+          phases: { ...base.phases, [`${prefix}JobStarts`]: 2 },
+        },
+        {
+          ...base,
+          lastEvent: { ...base.lastEvent, jobId: 2 },
+          phases: {
+            ...base.phases,
+            [`${prefix}JobStarts`]: 2,
+            [`${prefix}RenderCompletes`]: 2,
+          },
+        },
+        {
+          ...base,
+          lastEvent: { ...base.lastEvent, jobId: 2 },
+          phases: {
+            ...base.phases,
+            [`${prefix}JobStarts`]: 2,
+            [`${prefix}RenderCompletes`]: 2,
+            [`${prefix}EncodeStarts`]: 2,
+          },
+        },
+      ];
+      tailMutants.forEach((mutant, index) => {
+        expect(assessLazyProductProducerSettlement(mutant, 'lazy-document'), `${kind} phase ${index}`)
+          .toEqual({ ok: false, reasons: ['coherent producer phase/results'] });
+      });
+    }
+    expect(assessLazyProductProducerSettlement({
+      ...producer, results: { ...producer.results, count: 2 },
+    }, 'lazy-document')).toEqual({ ok: false, reasons: ['coherent producer phase/results'] });
+    expect(assessLazyProductProducerSettlement({
+      ...producer, lastEvent: { ...producer.lastEvent, event: 'encode-complete' },
+    }, 'lazy-document')).toEqual({ ok: false, reasons: ['final product result event'] });
     const producerMutants = [
       { field: 'schema', value: { ...producer, schema: 'wrong' } },
       { field: 'state', value: { ...producer, state: 'loading' } },
@@ -2075,21 +2161,22 @@ describe('sixth Slice red contract repairs', () => {
       } },
       { field: 'lastError', value: { ...producer, lastError: { stage: 'paint' } } },
       { field: 'resultsMissing', value: { ...producer, results: null } },
-      { field: 'resultCount', value: {
-        ...producer, results: { ...producer.results, count: 0 },
-      } },
-      { field: 'phaseResultParity', value: {
-        ...producer, phases: { ...producer.phases, thumbEncodeCompletes: 0 },
-      } },
-      { field: 'vanishedStartedJob', value: {
-        ...producer, phases: { ...producer.phases, thumbJobStarts: 2 },
+      { field: 'zeroWork', value: {
+        ...producer,
+        lastEvent: null,
+        phases: {
+          ...producer.phases,
+          thumbJobStarts: 0, thumbRenderCompletes: 0,
+          thumbEncodeStarts: 0, thumbEncodeCompletes: 0,
+        },
+        results: { ...producer.results, count: 0 },
       } },
       { field: 'producerError', value: {
         ...producer, errors: { ...producer.errors, paint: 1 },
       } },
     ];
     for (const mutant of producerMutants) {
-      expect(assessLazyProductProducerSettlement(mutant.value, 'lazy-document', 1).ok, mutant.field)
+      expect(assessLazyProductProducerSettlement(mutant.value, 'lazy-document').ok, mutant.field)
         .toBe(false);
     }
 
@@ -2123,6 +2210,482 @@ describe('sixth Slice red contract repairs', () => {
         laterTask: true, laterVisibilityState: 'visible', laterHidden: false, laterFocused: true,
       },
     }, expected)).toEqual({ status: 'ready', reasons: [] });
+  });
+
+  it('binds one dependent action to an exact same-document F4 commit', () => {
+    const idleLanding = {
+      schema: 'cf-v2-arc0-landing-app-state/v1',
+      actionCoordinator: {
+        inFlight: false,
+        owner: {
+          schema: 'cf-v2-product-action-coordinator-diagnostics/v1',
+          busy: false,
+          operation: null,
+        },
+        hold: {
+          schema: 'cf-v2-product-action-hold-diagnostics/v1',
+          phase: 'idle',
+          operation: null,
+          sequence: 0,
+        },
+        faultArmed: {
+          storageFailure: false,
+          staleAuthority: false,
+          publicationFailure: false,
+        },
+        lastFault: null,
+      },
+    };
+    const priorRows = [
+      { ordinal: 0, kind: 'seed', witness: 'seed:0' },
+      { ordinal: 1, kind: 'arc9-survey-v1', witness: 'survey:1' },
+      { ordinal: 2, kind: 'arc9-add-v1', witness: 'add:2' },
+    ];
+    const beforeAuthority = {
+      token: 'single-f4-document',
+      raw: {
+        revision: 7,
+        revisionRaw: '7',
+        seed: 1314635406,
+        ordinal: 3,
+        draws: { terrain: 4 },
+        receiptKeys: priorRows.map((row) => `receipt:${row.ordinal}`),
+        receiptRows: priorRows,
+      },
+      state: {
+        persistence: {
+          lastOutcome: 'arc9-add-committed:7',
+          runtime: { revision: 7, commits: 5 },
+        },
+        landing: idleLanding,
+      },
+    };
+    const afterAuthority = {
+      token: 'single-f4-document',
+      raw: {
+        revision: 8,
+        revisionRaw: '8',
+        seed: 1314635406,
+        ordinal: 4,
+        draws: { terrain: 4 },
+        receiptKeys: [...beforeAuthority.raw.receiptKeys, 'receipt:3'],
+        receiptRows: [
+          ...priorRows,
+          { ordinal: 3, kind: 'arc9-share-send-v1', witness: 'share:3' },
+        ],
+      },
+      state: {
+        persistence: {
+          lastOutcome: 'arc9-share-committed:8',
+          runtime: { revision: 8, commits: 6 },
+        },
+        landing: idleLanding,
+      },
+    };
+    const assess = (after = afterAuthority, state = after.state) =>
+      assessSingleF4ActionCommit({
+        beforeAuthority,
+        afterAuthority: after,
+        state,
+        expectedKind: 'arc9-share-send-v1',
+        expectedPersistenceLastOutcome: 'arc9-share-committed:8',
+      });
+    expect(assess()).toEqual({ ok: true, reasons: [] });
+
+    const replaced = structuredClone(afterAuthority);
+    replaced.token = 'replacement-document';
+    expect(assess(replaced).reasons).toContain('same document identity');
+
+    const rawRevision = structuredClone(afterAuthority);
+    rawRevision.raw.revision = 9;
+    rawRevision.raw.revisionRaw = '9';
+    expect(assess(rawRevision).reasons).toContain('exact raw revision successor');
+
+    const runtimeRevision = structuredClone(afterAuthority);
+    runtimeRevision.state.persistence.runtime.revision = 7;
+    expect(assess(runtimeRevision).reasons).toContain('exact live runtime successor');
+    const runtimeCommits = structuredClone(afterAuthority);
+    runtimeCommits.state.persistence.runtime.commits = 5;
+    expect(assess(runtimeCommits).reasons).toContain('exact live runtime successor');
+
+    const rngOrdinal = structuredClone(afterAuthority);
+    rngOrdinal.raw.ordinal = 5;
+    expect(assess(rngOrdinal).reasons).toContain('exact SessionRNG successor');
+    const rngSeed = structuredClone(afterAuthority);
+    rngSeed.raw.seed += 1;
+    expect(assess(rngSeed).reasons).toContain('exact SessionRNG successor');
+    const rngDraws = structuredClone(afterAuthority);
+    rngDraws.raw.draws.terrain += 1;
+    expect(assess(rngDraws).reasons).toContain('exact SessionRNG successor');
+
+    const prefix = structuredClone(afterAuthority);
+    prefix.raw.receiptRows[1]!.witness = 'mutated-prior-row';
+    expect(assess(prefix).reasons).toContain('exact predecessor receipt rows');
+    const wrongKind = structuredClone(afterAuthority);
+    wrongKind.raw.receiptRows[3]!.kind = 'wrong-action-kind';
+    expect(assess(wrongKind).reasons).toContain('exact action receipt');
+    const extraReceipt = structuredClone(afterAuthority);
+    extraReceipt.raw.receiptKeys.push('receipt:4');
+    extraReceipt.raw.receiptRows.push({
+      ordinal: 4, kind: 'unexpected-tail', witness: 'unexpected:4',
+    });
+    expect(assess(extraReceipt).reasons).toContain('exact action receipt');
+
+    const wrongOutcome = structuredClone(afterAuthority);
+    wrongOutcome.state.persistence.lastOutcome = 'arc9-share-committed:9';
+    expect(assess(wrongOutcome).reasons).toContain('exact persistence outcome');
+    const busy = structuredClone(afterAuthority);
+    busy.state.landing.actionCoordinator.inFlight = true;
+    expect(assess(busy).reasons).toContain('idle clear landing action coordinator');
+    const unclearedFault = structuredClone(afterAuthority);
+    (unclearedFault.state.landing.actionCoordinator as { lastFault: unknown }).lastFault = {
+      kind: 'stale-authority',
+    };
+    expect(assess(unclearedFault).reasons).toContain('idle clear landing action coordinator');
+
+    expect(assessSingleF4ActionCommit({
+      beforeAuthority,
+      afterAuthority: beforeAuthority,
+      expectedKind: 'arc9-add-v1',
+      expectedPersistenceLastOutcome: 'arc9-add-committed:7',
+    })).toEqual({
+      ok: false,
+      reasons: [
+        'exact raw revision successor',
+        'exact live runtime successor',
+        'exact SessionRNG successor',
+        'exact action receipt',
+      ],
+    });
+
+    const lexicalRows = Array.from({ length: 10 }, (_, ordinal) => ({
+      ordinal,
+      kind: 'fixture-prefix',
+      witness: `prefix:${ordinal}`,
+    }));
+    const lexicographic = (rows: typeof lexicalRows) => rows
+      .map((row) => ({ key: `receipt:${row.ordinal}`, row }))
+      .sort((left, right) => left.key.localeCompare(right.key));
+    const lexicalBeforeEntries = lexicographic(lexicalRows);
+    const lexicalAfterEntries = lexicographic([
+      ...lexicalRows,
+      { ordinal: 10, kind: 'arc9-share-send-v1', witness: 'share:10' },
+    ]);
+    const lexicalBefore = structuredClone(beforeAuthority);
+    lexicalBefore.raw.revision = 40;
+    lexicalBefore.raw.revisionRaw = '40';
+    lexicalBefore.raw.ordinal = 10;
+    lexicalBefore.raw.receiptKeys = lexicalBeforeEntries.map(({ key }) => key);
+    lexicalBefore.raw.receiptRows = lexicalBeforeEntries.map(({ row }) => row);
+    lexicalBefore.state.persistence.runtime = { revision: 40, commits: 12 };
+    const lexicalAfter = structuredClone(afterAuthority);
+    lexicalAfter.raw.revision = 41;
+    lexicalAfter.raw.revisionRaw = '41';
+    lexicalAfter.raw.ordinal = 11;
+    lexicalAfter.raw.receiptKeys = lexicalAfterEntries.map(({ key }) => key);
+    lexicalAfter.raw.receiptRows = lexicalAfterEntries.map(({ row }) => row);
+    lexicalAfter.state.persistence.lastOutcome = 'arc9-share-committed:41';
+    lexicalAfter.state.persistence.runtime = { revision: 41, commits: 13 };
+    expect(assessSingleF4ActionCommit({
+      beforeAuthority: lexicalBefore,
+      afterAuthority: lexicalAfter,
+      expectedKind: 'arc9-share-send-v1',
+      expectedPersistenceLastOutcome: 'arc9-share-committed:41',
+    }), 'IDB lexicographic receipt:10 before ordinal 11').toEqual({ ok: true, reasons: [] });
+  });
+
+  it('binds Charter Land to one exact receipt topology and trusted pointer order', () => {
+    const galaxyKey = 'CF1|g:999@90,-60';
+    const starKey = `${galaxyKey}|s:424242@560,170`;
+    const worldKey = `${starKey}|p:131#0`;
+    const savedView = {
+      type: 'planet',
+      gal: {
+        x: 90, y: -60, size: 78, sp: 0, tilt: 0.62, rot: 0.5,
+        seed: 999, home: true, quasar: false, dwarf: false,
+      },
+      star: { x: 560, y: 170, seed: 424242 },
+      pseed: 131,
+    };
+    const landWitness = (chapter: 0 | 3, stage: 0 | 3, ordinal: number) => JSON.stringify({
+      schema: 'cf-v2-arc0-landing-witness/v1',
+      worldKey,
+      planetSeed: 131,
+      planetOrdinal: 0,
+      landing: 'unresolved-already-landed',
+      permanentLanding: true,
+      training: false,
+      landingKnownBefore: true,
+      identityLandedAfter: true,
+      claimedLegacyIdentity: true,
+      legacyMirrorContainsSeedAfter: true,
+      savedView,
+      sample: { kind: 'suppressed', reason: 'unresolved-already-landed' },
+      charter: {
+        banked: false, ascChBefore: 0, ascChAfter: chapter, stage,
+        progressSeal: 'a'.repeat(64), delta: {},
+      },
+      starterCharters: {
+        changed: false, progressIds: [], completions: [], priorUnlockedIds: [],
+        nextUnlockedIds: [], addedAchievementIds: [], priorBestRankIndex: 0,
+        nextBestRankIndex: 0,
+      },
+      achievement: null,
+      stateSuccessorSeal: 'b'.repeat(64),
+      worldIdentitySuccessorSeal: 'c'.repeat(64),
+      receiptOrdinal: ordinal,
+    });
+    const routeState = {
+      mode: 'surface', gal: 999, galX: 90, galY: -60, galSize: 78,
+      star: 424242, starX: 560, starY: 170, planet: 131, planetOrdinal: 0,
+      navGalaxyKey: galaxyKey, navStarKey: starKey, navWorldKey: worldKey,
+      epoch: 12,
+      renderedScene: {
+        serial: 2, mode: 'surface', ecologyEpoch: 12,
+        galaxyKey, starKey, worldKey,
+      },
+      save: { savedView },
+    };
+    const prefixRows = [
+      { ordinal: 0, kind: 'seed', witness: 'seed:0' },
+      { ordinal: 1, kind: 'arc9-survey-v1', witness: 'survey:1' },
+      { ordinal: 2, kind: 'arc9-share-send-v1', witness: 'share:2' },
+    ];
+    const beforeAuthority = {
+      raw: {
+        revision: 34, revisionRaw: '34', seed: 1314635406, ordinal: 3, draws: {},
+        receiptKeys: ['receipt:0', 'receipt:1', 'receipt:2'],
+        receiptRows: prefixRows,
+      },
+      state: { persistence: { runtime: { revision: 34, commits: 4 } } },
+    };
+    const afterAuthority = {
+      raw: {
+        revision: 36, revisionRaw: '36', seed: 1314635406, ordinal: 5, draws: {},
+        receiptKeys: ['receipt:0', 'receipt:1', 'receipt:2', 'receipt:3', 'receipt:4'],
+        receiptRows: [
+          ...prefixRows,
+          { ordinal: 3, kind: 'arc0-land', witness: landWitness(3, 3, 3) },
+          { ordinal: 4, kind: 'arc9-progression-refresh-v1', witness: 'progression:4' },
+        ],
+      },
+      state: { persistence: { runtime: { revision: 36, commits: 6 } } },
+    };
+    const state = {
+      ...routeState,
+      landing: { lastOutcome: 'committed:35' },
+      persistence: { lastOutcome: 'arc9-progression-committed:36' },
+    };
+    const assess = (after = afterAuthority, current = state) =>
+      assessCharterLandSettlementTopology({
+        beforeAuthority, afterAuthority: after, state: current,
+        expectedChapter: 3, expectedStage: 3,
+      });
+    expect(assess()).toEqual({ ok: true, reasons: [] });
+
+    const orderedReceipts = (rows: readonly { ordinal: number; kind: string; witness: string }[]) =>
+      rows.map((row) => ({ key: `receipt:${row.ordinal}`, row }))
+        .sort((left, right) => left.key.localeCompare(right.key));
+    const lexicalPrefix = orderedReceipts(Array.from({ length: 10 }, (_, ordinal) => ({
+      ordinal, kind: 'fixture-prefix', witness: `prefix:${ordinal}`,
+    })));
+    const lexicalBefore = structuredClone(beforeAuthority);
+    lexicalBefore.raw.ordinal = 10;
+    lexicalBefore.raw.receiptKeys = lexicalPrefix.map(({ key }) => key);
+    lexicalBefore.raw.receiptRows = lexicalPrefix.map(({ row }) => row);
+    const lexicalAfter = structuredClone(afterAuthority);
+    lexicalAfter.raw.ordinal = 12;
+    const lexicalAll = orderedReceipts([
+      ...lexicalPrefix.map(({ row }) => row),
+      { ordinal: 10, kind: 'arc0-land', witness: landWitness(3, 3, 10) },
+      { ordinal: 11, kind: 'arc9-progression-refresh-v1', witness: 'progression:11' },
+    ]);
+    lexicalAfter.raw.receiptKeys = lexicalAll.map(({ key }) => key);
+    lexicalAfter.raw.receiptRows = lexicalAll.map(({ row }) => row);
+    expect(assessCharterLandSettlementTopology({
+      beforeAuthority: lexicalBefore,
+      afterAuthority: lexicalAfter,
+      state,
+      expectedChapter: 3,
+      expectedStage: 3,
+    }), 'IDB lexical receipt:10 ordering').toEqual({ ok: true, reasons: [] });
+
+    const revision = structuredClone(afterAuthority);
+    revision.raw.revision = 37;
+    expect(assess(revision).reasons).toContain('exact F4 revision span');
+    const receipt = structuredClone(afterAuthority);
+    receipt.raw.receiptRows[3]!.kind = 'wrong-land-kind';
+    expect(assess(receipt).reasons).toContain('exact Land/progression receipt tail');
+    const prefix = structuredClone(afterAuthority);
+    prefix.raw.receiptRows[1]!.witness = 'wrong-predecessor';
+    expect(assess(prefix).reasons).toContain('exact predecessor receipt prefix');
+    const witness = structuredClone(afterAuthority);
+    const witnessIndex = witness.raw.receiptRows.findIndex((row) => row.kind === 'arc0-land');
+    expect(witnessIndex).toBeGreaterThanOrEqual(0);
+    witness.raw.receiptRows[witnessIndex]!.witness = landWitness(0, 3, 3);
+    expect(assess(witness).reasons).toContain('exact unresolved legacy Land witness');
+    const rng = structuredClone(afterAuthority);
+    rng.raw.ordinal = 6;
+    expect(assess(rng).reasons).toContain('exact SessionRNG receipt span');
+    const runtime = structuredClone(afterAuthority);
+    runtime.state.persistence.runtime.commits = 5;
+    expect(assess(runtime).reasons).toContain('exact live runtime settlement');
+    expect(assess(afterAuthority, {
+      ...state, landing: { lastOutcome: 'committed:36' },
+    }).reasons).toContain('exact landing outcome');
+    expect(assess(afterAuthority, {
+      ...state, persistence: { lastOutcome: 'arc0-land-committed:35' },
+    }).reasons).toContain('exact persistence outcome');
+    expect(assess(afterAuthority, {
+      ...state, navWorldKey: `${worldKey}:collision`,
+    }).reasons).toContain('exact live Mercury route and saved view');
+
+    const noAdvanceAfter = {
+      raw: {
+        revision: 35, revisionRaw: '35', seed: 1314635406, ordinal: 4, draws: {},
+        receiptKeys: [...beforeAuthority.raw.receiptKeys, 'receipt:3'],
+        receiptRows: [
+          ...prefixRows,
+          { ordinal: 3, kind: 'arc0-land', witness: landWitness(0, 0, 3) },
+        ],
+      },
+      state: { persistence: { runtime: { revision: 35, commits: 5 } } },
+    };
+    expect(assessCharterLandSettlementTopology({
+      beforeAuthority,
+      afterAuthority: noAdvanceAfter,
+      state: {
+        ...routeState,
+        landing: { lastOutcome: 'committed:35' },
+        persistence: { lastOutcome: 'arc0-land-committed:35' },
+      },
+      expectedChapter: 0,
+      expectedStage: 0,
+    })).toEqual({ ok: true, reasons: [] });
+    expect(() => assessCharterLandSettlementTopology({ expectedChapter: 1, expectedStage: 3 }))
+      .toThrow(/expected chapter\/stage 0 or 3/u);
+
+    const trusted = [
+      { type: 'pointerdown', trusted: true, act: 'landcta' },
+      { type: 'pointerup', trusted: true, act: 'landcta' },
+      { type: 'click', trusted: true, act: 'landcta' },
+    ];
+    expect(exactTrustedCharterLandReceipt(trusted)).toBe(true);
+    expect(exactTrustedCharterLandReceipt(trusted.slice(0, 2))).toBe(false);
+    expect(exactTrustedCharterLandReceipt([trusted[1], trusted[0], trusted[2]])).toBe(false);
+    expect(exactTrustedCharterLandReceipt([
+      { ...trusted[0], trusted: false }, trusted[1], trusted[2],
+    ])).toBe(false);
+    expect(exactTrustedCharterLandReceipt([
+      trusted[0], { ...trusted[1], act: 'share' }, trusted[2],
+    ])).toBe(false);
+    expect(exactTrustedCharterLandReceipt([...trusted, trusted[2]])).toBe(false);
+  });
+
+  it('seals the repaired phone, lazy publication, and Charter causal prefixes before browser spend', () => {
+    expect(indexSource).toContain(
+      'body:is(.card-open,.panel-open) #primechip { display: none; }',
+    );
+    const phonePrime = section(
+      sliceSource,
+      '  const phGeo = await evalPh(geoCheck);',
+      '  /* The lower-phone stack has four independently-sized surfaces.',
+    );
+    proveEachMarkerRequired(phonePrime, [
+      ['green Prime base', 'if (phGeo.length === 0) {'],
+      ['hidden Prime control', "prime.style.display='none'"],
+      ['measured HP collision', "prime.style.top=h.top+'px'"],
+      ['exact Prime restoration', 'finally{restore();}'],
+      ['restored Prime recheck', 'phonePrimeControls.restored.length !== 0'],
+    ]);
+
+    const phoneGuide = section(
+      sliceSource,
+      '  const phoneGuideClearanceCheck = `',
+      "  await evalPh(`(()=>{ document.querySelector('#guidepanel [data-pnx]').click(); return true; })()`);",
+    );
+    proveEachMarkerRequired(phoneGuide, [
+      ['Guide publication waiter', "waitPhValue('PHONE GUIDE current publication'"],
+      ['Guide loading exclusion', "!body?.querySelector('[data-guide-loading]')"],
+      ['Guide post-publication frames', 'requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true)))'],
+      ['general Prime overlay checker', 'const phonePrimeOverlayCheck = (overlayId, openClass) =>'],
+      ['phone Prime overlay outcome', 'const phonePrimeOverlay = await evalPh(phoneGuidePrimeOverlayCheck);'],
+      ['phone Prime overlay causal control', 'if (!phonePrimeOverlay.ok) {'],
+      ['visible Prime/panel collision control', "prime.style.display='block'"],
+      ['measured Prime/panel overlap', '!phonePrimeOverlayCtl.result?.overlap'],
+      ['Prime overlay exact restoration', "finally{restore();}\n      const styleRestored=prime.getAttribute('style')===prior"],
+      ['Prime overlay restored recheck', '!phonePrimeOverlayCtl.restored.ok'],
+      ['green Guide base', 'if (phoneGuideClearance.ok) {'],
+      ['measured Guide collision', 'targetHeight=Math.ceil(d.top-p.top+9)'],
+      ['exact Guide restoration', "finally{restore();}\n      const styleRestored=panel.getAttribute('style')===prior"],
+      ['restored Guide recheck', '!phoneGuideClearanceCtl.restored.ok'],
+    ]);
+
+    const phoneSurvey = section(
+      sliceSource,
+      "  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(",
+      '  /* Help requested from an open body card must be readable above that card.',
+    );
+    proveEachMarkerRequired(phoneSurvey, [
+      ['real Survey card checker', "phonePrimeOverlayCheck('survey', 'card-open')"],
+      ['real Survey green outcome', 'if (!phoneSurveyPrimeOverlay.ok) {'],
+      ['visible Prime/Survey collision control', "prime.style.display='block'"],
+      ['measured Prime/Survey overlap', '!phoneSurveyPrimeOverlayCtl.result?.overlap'],
+      ['Survey Prime exact restoration', "finally{restore();}\n      const styleRestored=prime.getAttribute('style')===prior"],
+      ['Survey Prime restored recheck', '!phoneSurveyPrimeOverlayCtl.restored.ok'],
+    ]);
+
+    const stage3 = section(
+      sliceSource,
+      '  const stage3Token = await sliceToken(navPh);',
+      '  /* Human-facing Chapter 2 is exactly zero-based ascCh 1.',
+    );
+    proveEachMarkerRequired(stage3, [
+      ['Survey causal predecessor', 'const stage3SurveyBeforeAuthority = await waitNavPhF4Writable('],
+      ['Survey fixed point', "waitNavPhF4Writable('PRIME RADIUS Survey settlement')"],
+      ['Survey exact one-commit assessor', "expectedKind: 'arc9-survey-v1'"],
+      ['Survey-to-Charted causal stop', 'const stage3AddAction = stage3SurveyCommit.ok'],
+      ['Charted fixed point', "waitNavPhF4Writable('PRIME RADIUS Charted settlement')"],
+      ['Charted exact one-commit assessor', "expectedKind: 'arc0-atlas'"],
+      ['exact commit causal gate', '&& stage3SurveyCommit.ok && stage3AddCommit.ok'],
+      ['same-document Charted predecessor', 'stage3AddAuthority?.token === stage3DocumentToken'],
+      ['Charted causal stop', 'if (stage3ChartedReady) {'],
+      ['boundary causal stop', 'if (stage3ReachReady) {'],
+      ['controls causal stop', 'if (stage3BoundaryControlsReady) {'],
+      ['Share fixed point', "waitNavPhF4Writable('PRIME RADIUS forced Share settlement')"],
+      ['Share exact one-commit assessor', "expectedKind: 'arc9-share-send-v1'"],
+      ['Share causal stop', 'if (stage3ShareReady) {'],
+      ['restore causal stop', 'if (stage3RestoredReady) {'],
+    ]);
+
+    const charter = section(
+      sliceSource,
+      '  const charterStableLedger = (state) => {',
+      "  await send('Target.closeTarget', { targetId: tPanel.targetId });",
+    );
+    proveEachMarkerRequired(charter, [
+      ['collision-safe Mercury route', 'const charterWorldKey = `${charterStarKey}|p:131#0`;'],
+      ['exact saved view', 'const charterSavedView = {'],
+      ['additional save families', 'customNames: state.save.customNames,'],
+      ['pre-existing achievement rejection', "beforeShare.save.unlocked.includes('ascended')"],
+      ['Survey replacement authority', 'const replacementAuthority = await waitNavPhF4Writable('],
+      ['Survey exact causal assessment', 'const surveyCommitAssessment = surveyed && surveyAuthority'],
+      ['Survey causal stop', 'if (!surveyCommitAssessment.ok || surveyAuthority?.token !== charterDocumentToken) {'],
+      ['exact Share append', "const expectedShareUnlocks = [...beforeShare.save.unlocked, 'share'];"],
+      ['Share exact causal assessment', 'const shareCommitAssessment = shareAction.ok && shareAuthority'],
+      ['Share assessment causal gate', '|| !shareCommitAssessment.ok'],
+      ['pre-Land authority', 'let preLandAuthority = surveyAuthority;'],
+      ['exact topology assessor', 'const topologyAssessment = assessCharterLandSettlementTopology({'],
+      ['topology causal stop', 'if (!outcomeExact || !topologyExact || !toastExact) return;'],
+      ['ordinal-safe control lookup', '`receipt:${preLandAuthority.raw.ordinal}`'],
+      ['exact durable view', 'JSON.stringify(data.view)===${JSON.stringify(JSON.stringify(charterSavedView))}'],
+      ['exact trusted desktop receipt', '&& exactTrustedCharterLandReceipt(panelEvents)'],
+      ['desktop Survey predecessor', 'const panelSurveyBeforeAuthority = await waitPanelF4Writable('],
+      ['desktop Survey assessment', 'const panelSurveyCommit = panelSurveyed && panelSurveyAuthority'],
+      ['desktop Survey causal gate', 'if (!panelSurveyCommit.ok || panelSurveyAuthority?.token !== panelDocumentToken'],
+      ['desktop topology assessor', 'const panelTopology = assessCharterLandSettlementTopology({'],
+      ['desktop causal stop', 'if (panelLanded) {'],
+    ]);
   });
 
   it('requires Window-owned Blob thumbnails and lifecycle-safe lazy-art observation', () => {

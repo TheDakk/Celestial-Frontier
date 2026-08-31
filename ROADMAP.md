@@ -17,116 +17,118 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-31 · C439 ROLE REPAIR SIGNED · STATIC GREEN · ONE CHAIN NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-31 · 7A528 RED PRESERVED · FAST GREEN · SIGNED SUCCESSOR NEXT ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Exact SSH-signed implementation/evidence source
-  **c43992f721895900e56928f843d5dcdc5f570f36** (tree
-  **f5ca445e971aa38fd711d6adf441525baf1ca561**, parent
-  **4baa4250d1ae5813eba0753555b712baddbd595f**) is **52 commits ahead** of the remote agent
-  branch. This handoff refresh is docs-only; once committed, the clean branch tip is the signed
-  docs descendant used for the exact browser chain, while all executable/instrument/test bytes
-  remain those reviewed in c439.
-- **Immutable predecessor chain:** Edge preflight passed on `152.0.4191.53` / CDP `1.3`.
-  Exact 4baa Compendium run `20260831055550346-65276-46a6bd9c52` passed **78/78**
-  once/no-retry plus named verification. Exact-source Slice
-  `20260831055711019-65620-5c63ae6d6223` stopped once/no-retry after **217,066 ms** with
-  exactly **1 harness finding / 1 scope**. Glass did not run. The exact report/log are preserved
-  under `audits/`; 4baa will not be retried or relabelled.
-- **Scope:** c439 changes only the Slice browser-evidence request-role ledger, exact producer
-  authority, mutation controls and synchronized docs/evidence. It adds no player capability,
-  product/save/creature/genome/art/audio/balance behavior, timeout, retry, browser ruler,
-  Edge-version baseline, SceneMemory threshold or release identity.
+  **origin/openai/mac**. Exact clean predecessor
+  **7a528c7798434ae4ab8765d4898b59df9931f9de** (tree
+  **d6637a2b6709aef77256d513aeaeab03373f7bfc**, parent
+  **c43992f721895900e56928f843d5dcdc5f570f36**) is **53 commits ahead** of the remote agent
+  branch. The bounded local successor is still dirty and must not be assigned an invented hash;
+  its causal-assessor integration, synchronized docs and complete fast develop boundary are green,
+  and root will record its exact signed identity after final diff review.
+- **Immutable Compendium evidence:** Edge preflight passed on `152.0.4191.53` / CDP `1.3`.
+  Compendium (**catalog/art stress**) run `20260831064534612-71571-8e4856c2fe` passed
+  **78/78** once/no-retry and passed named verification on exact 7a528.
+- **Immutable Slice stop:** Slice (**playable journey**) run
+  `20260831064707724-71924-76b0bac73a0f` used that exact unchanged source and stopped terminal
+  red once/no-retry after **305,022 ms** with **7 findings across 5 scopes**. Glass
+  (**cross-device presentation**) did not run. The exact carriers remain immutable under
+  `audits/`; 7a528 will not be retried or relabelled.
+- **Authority:** no push, hosted run, PR Ready transition, merge, release, version bump, preview
+  publication or deployment is authorized. `develop`, `main` and the live site are unchanged.
 
-### Root cause and permanent repair
+### What the retained red proved and the bounded successor repairs
 
-The c874 same-origin replacement race is fixed: exact 4baa execution crossed both isolated
-documents' target/document/foreground receipts, the live three-thumbnail Blob refill, focus
-controls and closed-owner settlement. Its only red was the final raw owner count
-`closed,closed,live,live`.
+The five scopes were actionable instrument/presentation races, not a mandate to rebuild the game
+or weaken its rulers. The pending signed successor preserves the exact product systems and closes:
 
-Current source proves there is exactly one named module Worker constructor and one sealed,
-import-free worker/painter entry. Each fresh origin also installs the exact PWA, whose generated
-ASSETS loop fetches that same entry once for the offline cache. The old oracle conflated the
-product `Sec-Fetch-Dest: worker` request and the PWA `empty` request.
+1. **Lazy producer settlement:** judge lifecycle topology, phase/result parity, positive work,
+   final-event identity and zero errors instead of a stale fixed `3/1` count expectation; the
+   retained healthy product showed the valid `11/8` topology.
+2. **Phone Prime and Guide presentation:** use measured visibility/geometry, real publication plus
+   two animation frames, exact style restoration and bidirectional negative controls. Prime remains
+   native and reachable without overlapping HP, then yields while a phone Survey/panel owns the
+   same band; the Guide height control now judges the real published panel.
+3. **Exact F4 action causality:** Survey, Atlas Add and Share must each prove exactly one new
+   action-specific durable receipt/revision/commit, stable SessionRNG authority and an idle cleared
+   coordinator before any dependent action proceeds. A merely settled predecessor cannot
+   impersonate a successful current action.
+4. **Charter topology and causal-stop:** compare receipts by exact keys/ordinals, allow only the
+   intended Share/achievement/progression deltas, require the exact Land witness, and stop every
+   descendant after setup, action or settlement red. Ordinal `10/11` controls prevent lexical
+   ordering from becoming an accidental oracle.
+5. **Read-only refusal and route convergence:** product-action settling has explicit player copy;
+   held Training writes continue to block Landing/Atlas outside active Training, and already-
+   durable Atlas state must rebind its route sidecar or schedule convergence reload.
 
-Signed c439 now:
+These changes do not redesign creatures, genomes, painters, biomes, plants, fauna, Guardians,
+loot, crafting, combat, care, exploration, audio, deterministic generation, save schema, rewards,
+balance, browser thresholds or the Edge-version policy. Compatible Edge point updates remain
+provenance only and never trigger a rebaseline.
 
-1. records immutable ordinal, owner, held/post-release phase, GET, exact path and standards-based
-   destination role, retaining mode/site only as diagnostics;
-2. accepts product/PWA roles in either first-install order, waits only for a missing owner and
-   immediately rejects unknown evidence or duplicate `(owner,destination)` roles;
-3. rechecks the append-only ledger inside every live and closed settlement turn, before controls
-   and after target closure, so a real retry is diagnosed immediately rather than after two
-   30-second phases;
-4. binds product truth independently to each exact document token and one complete loader/producer/
-   worker lifecycle. Live requires exactly three coherent thumbnail results; closed requires the
-   one already-active result while its two queued jobs cancel. Both require exact phase/result
-   parity, one disposal and zero retained/fatal/protocol/render errors;
-5. mutation-controls worker-first, PWA-first, mixed/cache-served positives and every origin,
-   metadata, phase, duplicate-role, replacement/restart, truncated-lifecycle, result-parity and
-   error-field negative.
+### Current browser-free verification
 
-This is standards/capability based, not an Edge point-version baseline. No automatic retry, timeout
-increase or product behavior changed.
+- The final consolidated fast develop profile is green at **253 files / 2,556 passed /
+  1 skipped**.
+- All three strict TypeScript programs are green. The art gate covers **34** clean sources, routes
+  are **1,014/1,014**, and all **454** declared specification fields are non-inert.
+- The one static ownership check that crossed its five-second ceiling under the parallel suite no
+  longer rereads or repeatedly normalizes the entire source tree: each file is read and compacted
+  once, then reused in memory. Its final focused run recorded **1.61 seconds**, and it remained
+  under the unchanged five-second ceiling in the complete parallel profile, with no timeout,
+  retry, assertion or coverage change.
+- Current Compendium producer authority is
+  `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d`; its budget-file SHA-256 is
+  `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`.
+- **A New Foundation** contains **77** unique development bullets with rendered ordered SHA-256
+  `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 
-### Verification
+### Exact remaining local sequence
 
-- Focused source/contract suite: **1 file / 17 tests passed**.
-- Final consolidated `node tools/check-profile.mjs --profile=develop`: **253 files / 2,552
-  passed / 1 skipped**, all three strict TypeScript programs, **34** clean art sources,
-  **1,014/1,014** routes and **454** non-inert specification fields.
-- Slice report selftest, Node syntax, gzip integrity/hash, `git diff --check` and both byte-verbatim
-  ROADMAP archive comparisons passed.
-- Two independent diagnoses agreed the extra request is the generated PWA cache fill, not a second
-  painter import. The independent implementation review found and drove closure of complete
-  producer-lifecycle and immediate post-release duplicate-role controls; final re-review is
-  **CLEAR**.
-- No browser was retried during diagnosis or repair. c439 is locally committed and SSH-signed; local
-  signature verification still lacks the known `gpg.ssh.allowedSignersFile`, but the commit object
-  contains its SSH signature.
+1. Review the complete diff, preserve all pre-existing user work and create one clean SSH-signed
+   local successor. Record that real commit/tree/parent here; do not invent a provisional hash.
+2. From that one unchanged clean signed candidate, run exactly one fail-fast/no-retry
+   **Compendium → Slice (`develop`) → Glass (`develop`)** chain. Named-verify every report and stop
+   immediately on a nonzero, red or instrument result. Do not run SceneMemory or Recovery.
+3. If all three stages are green, retain the exact reports/logs/screenshots, update
+   `audits/README.md` and the current references once, and leave a self-contained review handoff.
+   Do not rerun an unchanged green candidate.
+4. **SceneMemory remains production-only/quarantined.** A future production candidate requires an
+   explicit activation decision and the exact
+   **SceneMemory → Compendium → Slice (`production`) → Glass (`production`) → Recovery** chain.
 
-### Exact next work
+### Product vision and HUMAN boundary
 
-1. Commit this docs-only handoff descendant, then from that unchanged clean signed source run at
-   most one fail-fast/no-retry **Compendium → Slice (`develop`) → Glass (`develop`)** chain.
-   Named-verify each exact report and stop immediately on any nonzero, red or instrument result.
-   Do not run SceneMemory or Recovery.
-2. If the local chain is green, retain its exact evidence and refresh this handoff once. Any push,
-   hosted battery, Ready transition or merge still requires Nick to authorize that exact head and
-   hosted attempt under `GITHUB_ACTIONS_BUDGET.md`.
-3. **SceneMemory remains production-only/quarantined.** Production remains
-   **SceneMemory → Compendium → Slice (`production`) → Glass (`production`) → Recovery** and
-   needs a future explicit SceneMemory activation decision.
+The browser game remains the main bread-and-butter product: a deterministic, effectively infinite
+universe built for repeat exploration, mining, crafting, exceptional loot and Pureforged gear,
+creature discovery/care/breeding and Pokémon-like combat, Guardian progression and long-term
+return play. Existing implemented systems and their source-aligned Markdown references are the
+foundation; this batch must flesh out and certify them, never recreate them.
 
-### Product-roadmap and HUMAN boundary
-
-This batch repairs evidence around already-implemented behavior; it does not recreate or redesign
-the game. Feed, Capture, universe-wide art treatment, creature/genome identity, capture math/pools,
-Guardians/Prime Codex, loot/Pureforged, exploration, crafting, combat, care/progression, audio and
-deterministic persistence remain intact.
-
-Still-open work requiring authored product decisions or HUMAN/device proof remains explicit in the
-system references and `port/V2_PROGRAM_ROADMAP.md`: conquest-imbue coexistence, another Guardian
-reward table, canonical mission/care/healing rules, broader Chronicle/Museum history, achievement
-reward claims, Fifty Paragons, remaining production media/depth, veteran import, accessibility,
-and physical phone/tablet install, heat, battery, true-GPU and first-journey judgment. Automation
-must not invent those decisions merely to call the roadmap complete.
+Automation does not substitute for authored design decisions or HUMAN acceptance. Still-open
+decision/device work remains explicit in the system references and `port/V2_PROGRAM_ROADMAP.md`,
+including conquest-imbue coexistence, another Guardian reward table, canonical mission/care/
+healing rules, broader Chronicle/Museum history, achievement reward claims, Fifty Paragons,
+remaining production media/depth, veteran import, accessibility, first-journey judgment and
+physical phone/tablet install, heat, battery and true-GPU review.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** create the docs-only signed descendant, then run one exact no-retry develop
-  Compendium → Slice → Glass chain and retain/verify its evidence.
-- **GitHub step now:** none. Zero hosted attempts are authorized; do not push, label, dispatch,
-  mark Ready, merge, release, version-bump, publish or deploy.
-- **PR #35 after local green:** existing draft, base **develop**, source **openai/mac**, title
-  **feat(v2): complete roadmap campaign and harden CI parity**. Its next exact push/hosted head is
-  not authorized.
+- **OpenAI/Codex now:** finish the bounded local successor, sign it, run the one exact develop
+  Compendium → Slice → Glass chain and retain its evidence. Do not push or invoke hosted CI.
+- **GitHub now:** none. PR #35 remains the existing draft with base **develop** and source
+  **openai/mac**. Its copy-ready title is **feat(v2): complete roadmap campaign and harden CI
+  parity**. No exact push/head or hosted attempt is authorized.
+- **Copy-ready PR description after local green:** “Completes the existing v2 roadmap campaign
+  without recreating established systems; preserves creature/genome/universe art structures;
+  hardens F4 action causality, Charter topology and measured presentation evidence; synchronizes
+  all current references; and records one exact local Compendium → Slice → Glass chain. No
+  release, version bump or deployment is included.”
 - **Claude Code now:** Nick does **not** need to open Claude yet, and Claude must not edit this
-  OpenAI worktree. After PR #35 is terminal-green and merged into `develop`, Claude should create
-  an `anthropic/*` branch from that exact integration commit for the requested whole-plan polish.
-- **Release status:** `develop`, `main` and the live site remain unchanged. No release, version
-  bump, preview publication or deployment is in progress.
+  OpenAI worktree. After PR #35 is terminal-green and merged into `develop`, Claude should branch
+  from that exact integration commit under `anthropic/*` for the requested full-plan polish review.
+- **Release status:** no release, version bump, preview publication or deployment is in progress.

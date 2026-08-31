@@ -168,28 +168,49 @@ function relativeV2Path(absolute: string): string {
   return path.relative(V2_ROOT, absolute).split(path.sep).join('/');
 }
 
-function referencesInternalSnapshotModule(source: string): boolean {
-  const compact = source.replace(/[\s'"`+]/gu, '');
+function compactStaticAuthoritySource(source: string): string {
+  return source.replace(/[\s'"`+]/gu, '');
+}
+
+function referencesInternalSnapshotCompact(compact: string): boolean {
   return compact.includes(INTERNAL_SNAPSHOT_IMPORT)
     || compact.includes(INTERNAL_SNAPSHOT_BASENAME);
 }
 
-function referencesSnapshotRegistryModule(source: string): boolean {
-  return source.replace(/[\s'"`+]/gu, '').includes(SNAPSHOT_REGISTRY_BASENAME);
+function referencesInternalSnapshotModule(source: string): boolean {
+  return referencesInternalSnapshotCompact(compactStaticAuthoritySource(source));
 }
 
-function referencesSnapshotMint(source: string): boolean {
-  const compact = source.replace(/[\s'"`+]/gu, '');
+function referencesSnapshotRegistryCompact(compact: string): boolean {
+  return compact.includes(SNAPSHOT_REGISTRY_BASENAME);
+}
+
+function referencesSnapshotRegistryModule(source: string): boolean {
+  return referencesSnapshotRegistryCompact(compactStaticAuthoritySource(source));
+}
+
+function referencesSnapshotMintCompact(compact: string): boolean {
   return compact.includes(SNAPSHOT_MINT) || compact.includes(DRAW_MINT);
 }
 
-function referencesSnapshotRegistryMint(source: string): boolean {
-  const compact = source.replace(/[\s'"`+]/gu, '');
+function referencesSnapshotMint(source: string): boolean {
+  return referencesSnapshotMintCompact(compactStaticAuthoritySource(source));
+}
+
+function referencesSnapshotRegistryMintCompact(compact: string): boolean {
   return compact.includes(SNAPSHOT_REGISTRY_MINT) || compact.includes(DRAW_REGISTRY_MINT);
 }
 
+function referencesSnapshotRegistryMint(source: string): boolean {
+  return referencesSnapshotRegistryMintCompact(compactStaticAuthoritySource(source));
+}
+
+function referencesCapturePlanEntryCompact(compact: string): boolean {
+  return compact.includes(CAPTURE_PLAN_ENTRY);
+}
+
 function referencesCapturePlanEntry(source: string): boolean {
-  return source.replace(/[\s'"`+]/gu, '').includes(CAPTURE_PLAN_ENTRY);
+  return referencesCapturePlanEntryCompact(compactStaticAuthoritySource(source));
 }
 
 function forbiddenSnapshotAuthorityReference(relativePath: string, source: string): boolean {
@@ -673,17 +694,23 @@ function denseCapacityState(targetRows = 20_000): OwnershipStateV1 {
 
 describe('Arc 4 registered acquisition snapshot ownership', () => {
   it('keeps both mints statically owned by the one app compositor with non-vacuous controls', () => {
-    const sourceFiles = [
+    const sourceRows = [
       ...TypeScriptFilesUnder(path.join(V2_ROOT, 'packages')),
       ...TypeScriptFilesUnder(path.join(V2_ROOT, 'apps')),
       ...TypeScriptFilesUnder(path.join(V2_ROOT, 'tests')),
-    ];
-    const computedProductionImports = sourceFiles.filter((absolute) => {
-      const relative = relativeV2Path(absolute);
+    ].map((absolute) => ({
+      absolute,
+      relative: relativeV2Path(absolute),
+      source: fs.readFileSync(absolute, 'utf8'),
+    })).map((row) => ({
+      ...row,
+      compact: compactStaticAuthoritySource(row.source),
+    }));
+    const computedProductionImports = sourceRows.filter(({ relative, source }) => {
       return (relative.startsWith('packages/') || relative.startsWith('apps/'))
         && relative.includes('/src/')
-        && hasComputedDynamicImport(fs.readFileSync(absolute, 'utf8'));
-    }).map(relativeV2Path).sort();
+        && hasComputedDynamicImport(source);
+    }).map(({ relative }) => relative).sort();
     expect(computedProductionImports).toEqual([]);
     expect(hasComputedDynamicImport("const authority = import(modulePath)")).toBe(true);
     expect(hasComputedDynamicImport(
@@ -692,37 +719,37 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
     expect(hasComputedDynamicImport(
       "const art = import('@cf/art/species-painter')",
     )).toBe(false);
-    const moduleReferences = sourceFiles
-      .filter((absolute) => referencesInternalSnapshotModule(fs.readFileSync(absolute, 'utf8')))
-      .map(relativeV2Path)
+    const moduleReferences = sourceRows
+      .filter(({ compact }) => referencesInternalSnapshotCompact(compact))
+      .map(({ relative }) => relative)
       .sort();
     expect(moduleReferences).toEqual([APP_COMPOSITOR, THIS_TEST].sort());
-    const mintReferences = sourceFiles
-      .filter((absolute) => referencesSnapshotMint(fs.readFileSync(absolute, 'utf8')))
-      .map(relativeV2Path)
+    const mintReferences = sourceRows
+      .filter(({ compact }) => referencesSnapshotMintCompact(compact))
+      .map(({ relative }) => relative)
       .sort();
     expect(mintReferences).toEqual([APP_COMPOSITOR, INTERNAL_DEFINITION, THIS_TEST].sort());
     expect(mintReferences.filter((relative) => relative.includes('/src/'))).toEqual([
       APP_COMPOSITOR,
       INTERNAL_DEFINITION,
     ].sort());
-    const registryReferences = sourceFiles
-      .filter((absolute) => referencesSnapshotRegistryModule(fs.readFileSync(absolute, 'utf8')))
-      .map(relativeV2Path)
+    const registryReferences = sourceRows
+      .filter(({ compact }) => referencesSnapshotRegistryCompact(compact))
+      .map(({ relative }) => relative)
       .sort();
     expect(registryReferences).toEqual([
       INTERNAL_DEFINITION, SNAPSHOT_DEFINITION, THIS_TEST,
     ].sort());
-    const registryMintReferences = sourceFiles
-      .filter((absolute) => referencesSnapshotRegistryMint(fs.readFileSync(absolute, 'utf8')))
-      .map(relativeV2Path)
+    const registryMintReferences = sourceRows
+      .filter(({ compact }) => referencesSnapshotRegistryMintCompact(compact))
+      .map(({ relative }) => relative)
       .sort();
     expect(registryMintReferences).toEqual([
       INTERNAL_DEFINITION, REGISTRY_DEFINITION, THIS_TEST,
     ].sort());
-    const capturePlanConsumers = sourceFiles
-      .filter((absolute) => referencesCapturePlanEntry(fs.readFileSync(absolute, 'utf8')))
-      .map(relativeV2Path)
+    const capturePlanConsumers = sourceRows
+      .filter(({ compact }) => referencesCapturePlanEntryCompact(compact))
+      .map(({ relative }) => relative)
       .sort();
     expect(capturePlanConsumers).toEqual([
       CAPTURE_TRANSACTION_OWNER,
@@ -752,7 +779,8 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
     ]) {
       expect(forbiddenSnapshotRegistryReference('apps/game/src/forbidden.ts', synthetic)).toBe(true);
     }
-    const realSource = fs.readFileSync(path.join(V2_ROOT, APP_COMPOSITOR), 'utf8');
+    const realSource = sourceRows.find(({ relative }) => relative === APP_COMPOSITOR)?.source;
+    if (realSource === undefined) throw new Error('app acquisition compositor source is missing');
     expect(realSource).toContain(`from '${INTERNAL_SNAPSHOT_IMPORT}';`);
     expect(forbiddenSnapshotAuthorityReference(APP_COMPOSITOR, realSource)).toBe(false);
     expect(SNAPSHOT_MINT in acquisitionRoot).toBe(false);

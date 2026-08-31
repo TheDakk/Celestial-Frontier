@@ -123,12 +123,13 @@
     /* On phones Prime occupies its own second chrome tier so the ten-control
        dock keeps the sealed five-by-two footprint and never grows a third row. */
     @media (max-width: 900px) {
-      #primechip { top: calc(var(--safe-top) + 58px); max-width: calc(100vw - var(--safe-left) - var(--safe-right) - 24px);
+      #primechip { top: calc(var(--topbar-h) + 8px); max-width: calc(100vw - var(--safe-left) - var(--safe-right) - 24px);
         overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-      #trail { top: calc(var(--safe-top) + 108px); }
+      #trail { top: calc(var(--topbar-h) + 58px); }
       #playerchip { box-sizing: border-box; max-width: calc(58vw - var(--safe-left) - var(--safe-right) - 32px);
         overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; }
       #searchbox { width: 42vw; }
+      body:is(.card-open,.panel-open) #primechip { display: none; }
       /* On a landed phone the populated Planetside strip owns the limited
          mid-screen reading band. The chapter objective returns on lift-off;
          keeping both at A++ made the objective cover the living-world row. */
