@@ -26286,7 +26286,7 @@ try {
   };
   const collisionAssessment = assessCollisionWorldOutcome(collisionBundle);
   if (!collisionAssessment.ok) {
-    fails.push('WORLD IDENTITY COLLISION: Search/name/Atlas/Land/save-reload/share allowed cross-world bleed: '
+    failSliceWithoutCascade('WORLD IDENTITY COLLISION: Search/name/Atlas/Land/save-reload/share allowed cross-world bleed; controls and later origins were not run: '
       + JSON.stringify(OUTCOME_CONTROLS_ONLY
         ? { assessment: collisionAssessment, atlas: collisionAtlas, records: collisionRecords,
           actionAtlasCounts: collisionActions.map((entry) => entry.afterAdd?.atlasCount),
@@ -26320,7 +26320,17 @@ try {
       candidate.atlas.rows[0].travelId = candidate.atlas.rows[1].travelId;
     }),
     atlasPointerIdentityDrift: collisionControl((candidate) => {
-      candidate.atlasTravel[0].pointer.atlasTravelId = candidate.atlas.rows[1].travelId;
+      const current = candidate.atlasTravel[0]?.pointer?.atlasTravelId;
+      const replacement = candidate.atlasTravel[1]?.pointer?.atlasTravelId;
+      if (typeof current !== 'string' || current.length === 0
+        || typeof replacement !== 'string' || replacement.length === 0
+        || replacement === current) {
+        throw new Error('WORLD IDENTITY COLLISION CONTROL: pointer identity mutant lacked two distinct measured Travel receipts');
+      }
+      candidate.atlasTravel[0].pointer.atlasTravelId = replacement;
+      if (candidate.atlasTravel[0].pointer.atlasTravelId === current) {
+        throw new Error('WORLD IDENTITY COLLISION CONTROL: pointer identity mutant was inert');
+      }
     }),
     atlasPointerCoordinateDrift: collisionControl((candidate) => {
       candidate.atlasTravel[0].pointer.x += 2;

@@ -262,9 +262,13 @@ describe('Slice Atlas native Travel contract', () => {
     for (const mutate of [
       (value: typeof atlasPress) => { value.target.tag = 'DIV'; },
       (value: typeof atlasPress) => { value.target.type = 'submit'; },
+      (value: typeof atlasPress) => { value.target.atlasTravelId = 'outer-galaxy'; },
+      (value: typeof atlasPress) => { value.target.atlasRowId = 'outer-galaxy'; },
       (value: typeof atlasPress) => { value.target.height = 43; },
       (value: typeof atlasPress) => { value.target.hit = false; },
       (value: typeof atlasPress) => { value.pointer.trusted = false; },
+      (value: typeof atlasPress) => { value.pointer.id = 'outer-galaxy'; },
+      (value: typeof atlasPress) => { value.pointer.atlasTravelId = 'outer-galaxy'; },
       (value: typeof atlasPress) => { value.pointer.atlasRowId = 'outer-galaxy'; },
       (value: typeof atlasPress) => { value.pointer.x += 2; },
     ]) {
@@ -439,6 +443,10 @@ describe('Slice Atlas native Travel contract', () => {
     expect(collision).toContain('> .atlas-entry-actions > [data-atlas-travel=');
     expect(collision).toContain('atlasPointerIdentityDrift: collisionControl');
     expect(collision).toContain('atlasPointerCoordinateDrift: collisionControl');
+    expect(collision).toContain('candidate.atlasTravel[1]?.pointer?.atlasTravelId');
+    expect(collision).toContain('pointer identity mutant lacked two distinct measured Travel receipts');
+    expect(collision).not.toContain('candidate.atlasTravel[0].pointer.atlasTravelId = candidate.atlas.rows[1].travelId');
+    expect(collision).toContain("failSliceWithoutCascade('WORLD IDENTITY COLLISION:");
     expect(collision).toContain('assessAtlasOpenerPress(collisionAtlasOpening)');
     expect(collision).toContain('assessAtlasOpenerPress(reopen)');
     expect(collision).toContain('assessAtlasPointerPress(press, { atlasId })');
@@ -455,5 +463,50 @@ describe('Slice Atlas native Travel contract', () => {
     expect(collision).not.toContain('disabled:row.disabled===true');
 
     expect(sliceSource.match(/atlasTravelTargetExpression\(/gu)).toHaveLength(7);
+  });
+
+  it('derives the collision pointer-identity mutant from the distinct measured sibling receipt', () => {
+    const prefix = '    atlasPointerIdentityDrift: collisionControl(';
+    const mutationOwner = section(
+      sliceSource,
+      prefix,
+      '    atlasPointerCoordinateDrift: collisionControl(',
+    );
+    const mutationSource = mutationOwner.slice(prefix.length).trim().replace(/\),\s*$/u, '');
+    const mutate = Function(`return (${mutationSource});`)() as (
+      candidate: Record<string, any>,
+    ) => void;
+    const press = (atlasId: string): Record<string, any> => ({
+      target: {
+        settled: true, x: 200, y: 300, width: 96, height: 44,
+        id: null, tag: 'BUTTON', type: 'button', atlasTravelId: atlasId,
+        atlasRowId: atlasId, hit: true,
+      },
+      pointer: {
+        trusted: true, pointerType: 'mouse', tag: 'BUTTON', id: atlasId,
+        atlasTravelId: atlasId, atlasRowId: atlasId, x: 200, y: 300,
+      },
+    });
+    const alpha = 'w|alpha';
+    const beta = 'w|beta';
+    const reversedDisplayOrder = {
+      atlas: { rows: [{ travelId: beta }, { travelId: alpha }] },
+      atlasTravel: [press(alpha), press(beta)],
+    };
+    expect(assessAtlasPointerPress(reversedDisplayOrder.atlasTravel[0]!, { atlasId: alpha }).ok)
+      .toBe(true);
+    mutate(reversedDisplayOrder);
+    expect(reversedDisplayOrder.atlasTravel[0]!.pointer.atlasTravelId).toBe(beta);
+    expect(reversedDisplayOrder.atlas.rows).toEqual([
+      { travelId: beta }, { travelId: alpha },
+    ]);
+    expect(assessAtlasPointerPress(reversedDisplayOrder.atlasTravel[0]!, { atlasId: alpha }).ok)
+      .toBe(false);
+
+    const inert = {
+      atlas: { rows: [{ travelId: beta }, { travelId: alpha }] },
+      atlasTravel: [press(alpha), press(alpha)],
+    };
+    expect(() => mutate(inert)).toThrow(/two distinct measured Travel receipts/u);
   });
 });
