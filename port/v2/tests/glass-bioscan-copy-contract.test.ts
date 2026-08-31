@@ -41,7 +41,7 @@ function glassBioscanCopyContract(source: string): boolean {
   const ingress = exactSpan(
     source,
     'const renderedGuideIngress = await evalIn',
-    'if (!renderedGuideIngress.ok)',
+    'const guideReleaseBaseline = await evalIn',
   );
   const assessment = exactSpan(
     source,
@@ -76,7 +76,7 @@ function glassBioscanCopyContract(source: string): boolean {
     && assessment.includes('captureBioscanContradiction,discoverLifeAvailabilityContradiction')
     && !assessment.includes('Capture never banks the Charter’s separate bioscan milestone');
 
-  const releaseControlContract = controls.includes('captureLimitControls.length===9')
+  const releaseControlContract = controls.includes('captureLimitControls.length===11')
     && controls.includes('captureContradictions.length===5')
     && controls.includes('bioscanContradictions.length===6')
     && BIOSCAN_REQUIRED.every((copy) => controls.includes(copy))
@@ -105,6 +105,7 @@ describe('Glass Charter bioscan Guide/copy source contract', () => {
       DISCOVER_LIFE_AVAILABILITY_CONTRADICTION,
       'captureBioscanContradiction=',
       'discoverLifeAvailabilityContradiction=',
+      'captureLimitControls.length===11',
       'bioscanContradictions.length===6',
       'discoverLifeAvailabilityChanged&&discoverLifeAvailabilityContradictory?.ok===false',
       'discoverLifeAvailabilityContradictory?.discoverLifeAvailabilityContradiction===true',

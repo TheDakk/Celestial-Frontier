@@ -146,7 +146,7 @@ function glassExceptionalCopyContract(source: string): boolean {
   const ingress = exactSpan(
     source,
     'const renderedGuideIngress = await evalIn',
-    'if (!renderedGuideIngress.ok)',
+    'const guideReleaseBaseline = await evalIn',
   );
   const assessment = exactSpan(
     source,
@@ -168,8 +168,8 @@ function glassExceptionalCopyContract(source: string): boolean {
     && occurrences(assessment, '(?:mixed stock|mixed-material craft)') === 2
     && assessment.includes('Pureforged[^.!?]{0,80}(?:rerolls?|changes?)')
     && controls.includes(TRUTHFUL_FEATURE_CLAIM)
-    && controls.includes('truthfulFeatureClaims.length===8')
-    && controls.includes('unavailableFeatureClaims.length===13')
+    && controls.includes('truthfulFeatureClaims.length===10')
+    && controls.includes('unavailableFeatureClaims.length===14')
     && controls.includes('shipyardExceptionalMissing')
     && controls.includes('shipyardEffectSetMissing')
     && controls.includes('shipyardMixedMissing')
@@ -260,7 +260,7 @@ describe('Pureforged browser-evidence truth', () => {
 
   it('fails closed when each Glass owner loses one required outcome or negative control', () => {
     const mutations = [
-      ['const renderedGuideIngress = await evalIn', 'if (!renderedGuideIngress.ok)', CRAFTING_GUIDE_TRUTH[0]!, 2],
+      ['const renderedGuideIngress = await evalIn', 'const guideReleaseBaseline = await evalIn', CRAFTING_GUIDE_TRUTH[0]!, 2],
       ['const developmentDetailCheck = `', 'const developmentDetail = await evalIn(developmentDetailCheck);', RELEASE_TRUTH[0]!],
       ['const developmentDetailCheck = `', 'const developmentDetail = await evalIn(developmentDetailCheck);', '(?:mixed stock|mixed-material craft)', 2],
       ['const detailControls = await evalIn', 'if (!detailControls.ok)', 'shipyardExceptionalMissing?.shipyardContract===false'],

@@ -290,6 +290,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(output).toContain('exact clean Slice predecessor accepted');
     expect(output).toContain('stale/interrupted/dirty/wrong/targeted/missing/mismatched bindings rejected');
     expect(output).toContain('physical repository + actual full HEAD accepted; required Git failure and empty/malformed/wrong hosted SHA rejected');
+    expect(output).toContain('trail/portrait controls: measured-opposite mutation, eligible baseline, exact property restoration, no-op rejection, and first-red causal stop accepted');
     expect(collector).toContain('full certifying Glass requires --slice-run=<immutable-Slice-run-id>');
     expect(collector).toContain('full certifying Glass requires clean committed source');
     expect(collector).toContain('Equipped capture-chance gear is included in the shown odds at +1.5 percentage points per point before the 95% overall chance ceiling, with its contribution capped at +25 percentage points; first contact remains unavailable');

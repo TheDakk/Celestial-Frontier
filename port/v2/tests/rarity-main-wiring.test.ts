@@ -1,8 +1,16 @@
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 
+interface TestWindow extends Window { close(): void }
+interface TestDom { readonly window: TestWindow }
+
+const require = createRequire(import.meta.url);
+const { JSDOM } = require('jsdom') as {
+  JSDOM: new (html: string, options?: Record<string, unknown>) => TestDom;
+};
 const here = path.dirname(fileURLToPath(import.meta.url));
 const mainSource = fs.readFileSync(
   path.join(here, '..', 'apps', 'game', 'src', 'main.ts'),
@@ -15,6 +23,95 @@ const indexSource = fs.readFileSync(
 
 function occurrences(source: string, needle: string): number {
   return source.split(needle).length - 1;
+}
+
+interface CssRuleSource {
+  readonly body: string;
+  readonly index: number;
+}
+
+function cssRulesForExactSelector(source: string, selector: string): readonly CssRuleSource[] {
+  return [...source.matchAll(/([^{}]+)\{([^{}]*)\}/gu)]
+    .filter((match) => match[1]!.split(',').map((candidate) => candidate.trim()).includes(selector))
+    .map((match) => ({ body: match[2]!, index: match.index! }));
+}
+
+function cssProperty(body: string, property: string): string {
+  const escaped = property.replace(/[.*+?^${}()|[\]\\]/gu, '\\$&');
+  return new RegExp(`(?:^|;)\\s*${escaped}\\s*:\\s*([^;]+)`, 'iu').exec(body)?.[1]?.trim() ?? '';
+}
+
+interface BinderSlotCascade {
+  readonly missingBackground: string;
+  readonly ownedBackground: string;
+}
+
+function binderSlotCascade(index: string): BinderSlotCascade {
+  const dom = new JSDOM(index);
+  const host = dom.window.document.createElement('section');
+  host.className = 'records-binder';
+  host.innerHTML = '<span class="binder-slot">Exotic</span>'
+    + '<span class="binder-slot missing">?</span>';
+  dom.window.document.body.append(host);
+  const owned = host.querySelector<HTMLElement>('.binder-slot:not(.missing)')!;
+  const missing = host.querySelector<HTMLElement>('.binder-slot.missing')!;
+  const result = {
+    ownedBackground: dom.window.getComputedStyle(owned).backgroundColor.trim().toLowerCase(),
+    missingBackground: dom.window.getComputedStyle(missing).backgroundColor.trim().toLowerCase(),
+  };
+  dom.window.close();
+  return result;
+}
+
+function transparentBackground(value: string): boolean {
+  return value === 'transparent' || value === 'rgba(0, 0, 0, 0)';
+}
+
+function binderSlotSurfaceErrors(index: string): string[] {
+  const errors: string[] = [];
+  const base = cssRulesForExactSelector(index, '.binder-slot');
+  const owned = cssRulesForExactSelector(index, '.binder-slot:not(.missing)');
+  const missing = cssRulesForExactSelector(index, '.binder-slot.missing');
+  if (base.length !== 1 || owned.length !== 1 || missing.length !== 1) {
+    errors.push('binder-slot-surface-owner');
+  }
+  if (owned.length !== 1 || cssProperty(owned[0]!.body, 'background').toLowerCase() !== '#05070d') {
+    errors.push('binder-slot-owned-surface');
+  }
+  if (base.some((rule) => cssProperty(rule.body, 'background') !== '')
+    || missing.some((rule) => cssProperty(rule.body, 'background') !== '')) {
+    errors.push('binder-slot-missing-semantics');
+  }
+  if (base.length === 1 && owned.length === 1 && missing.length === 1
+    && !(base[0]!.index < owned[0]!.index && owned[0]!.index < missing[0]!.index)) {
+    errors.push('binder-slot-surface-order');
+  }
+  const cascade = binderSlotCascade(index);
+  if (cascade.ownedBackground !== 'rgb(5, 7, 13)') {
+    errors.push('binder-slot-owned-rendered-surface');
+  }
+  if (!transparentBackground(cascade.missingBackground)) {
+    errors.push('binder-slot-missing-rendered-semantics');
+  }
+  return errors;
+}
+
+function relativeLuminance(hex: string): number {
+  const components = /^#([\da-f]{2})([\da-f]{2})([\da-f]{2})$/iu.exec(hex);
+  if (components === null) throw new Error(`invalid color ${hex}`);
+  const linear = components.slice(1).map((component) => {
+    const value = Number.parseInt(component, 16) / 255;
+    return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4;
+  });
+  return 0.2126 * linear[0]! + 0.7152 * linear[1]! + 0.0722 * linear[2]!;
+}
+
+function contrastRatio(foreground: string, background: string): number {
+  const foregroundLuminance = relativeLuminance(foreground);
+  const backgroundLuminance = relativeLuminance(background);
+  const lighter = Math.max(foregroundLuminance, backgroundLuminance);
+  const darker = Math.min(foregroundLuminance, backgroundLuminance);
+  return (lighter + 0.05) / (darker + 0.05);
 }
 
 function section(source: string, startText: string, endText: string): string {
@@ -87,6 +184,7 @@ function rarityWiringErrors(source: string, index = indexSource): string[] {
   if (!/background:\s*#05070d\s*;/u.test(rarityBadgeRule)) {
     errors.push('rarity-badge-surface');
   }
+  errors.push(...binderSlotSurfaceErrors(index));
 
   return [...new Set(errors)];
 }
@@ -147,6 +245,76 @@ describe('v2 rarity presentation — player-surface wiring', () => {
       '<span data-sel="codex-row-rarity"',
     );
     expect(rarityWiringErrors(missingRowBadge)).toContain('row-canonical-view');
+  });
+
+  it('keeps owned Binder rarity text opaque while missing slots retain their distinct surface', () => {
+    expect(binderSlotSurfaceErrors(indexSource)).toEqual([]);
+    expect(contrastRatio('#9A5CFF', '#05070d')).toBeGreaterThanOrEqual(4.5);
+
+    const transparentOwned = indexSource.replace(
+      '.binder-slot:not(.missing) { background: #05070d; }',
+      '.binder-slot:not(.missing) { background: transparent; }',
+    );
+    expect(transparentOwned).not.toBe(indexSource);
+    expect(binderSlotSurfaceErrors(transparentOwned)).toContain('binder-slot-owned-surface');
+
+    const wrongScope = indexSource.replace(
+      '.binder-slot:not(.missing) { background: #05070d; }',
+      '.binder-slot { background: #05070d; }',
+    );
+    expect(wrongScope).not.toBe(indexSource);
+    expect(binderSlotSurfaceErrors(wrongScope)).toEqual(expect.arrayContaining([
+      'binder-slot-surface-owner',
+      'binder-slot-owned-surface',
+      'binder-slot-missing-semantics',
+    ]));
+
+    const missingMadeOpaque = indexSource.replace(
+      '.binder-slot.missing { border-color: rgba(87,112,154,.42); color: var(--dim); }',
+      '.binder-slot.missing { border-color: rgba(87,112,154,.42); color: var(--dim); background: #05070d; }',
+    );
+    expect(missingMadeOpaque).not.toBe(indexSource);
+    expect(binderSlotSurfaceErrors(missingMadeOpaque)).toContain('binder-slot-missing-semantics');
+
+    const reordered = indexSource.replace(
+      '    .binder-slot:not(.missing) { background: #05070d; }\n',
+      '',
+    ).replace(
+      '    .binder-slot { min-width: 0;',
+      '    .binder-slot:not(.missing) { background: #05070d; }\n    .binder-slot { min-width: 0;',
+    );
+    expect(reordered).not.toBe(indexSource);
+    expect(binderSlotSurfaceErrors(reordered)).toContain('binder-slot-surface-order');
+
+    const laterTransparentOverride = indexSource.replace(
+      '.binder-slot.missing { border-color: rgba(87,112,154,.42); color: var(--dim); }',
+      '.binder-slot.missing { border-color: rgba(87,112,154,.42); color: var(--dim); }\n'
+        + '    .binder-slot:not(.missing) { background: transparent; }',
+    );
+    expect(laterTransparentOverride).not.toBe(indexSource);
+    expect(binderSlotSurfaceErrors(laterTransparentOverride)).toEqual(expect.arrayContaining([
+      'binder-slot-surface-owner',
+      'binder-slot-owned-surface',
+      'binder-slot-owned-rendered-surface',
+    ]));
+
+    const strongerLaterTransparentOverride = indexSource.replace(
+      '.binder-slot.missing { border-color: rgba(87,112,154,.42); color: var(--dim); }',
+      '.binder-slot.missing { border-color: rgba(87,112,154,.42); color: var(--dim); }\n'
+        + '    .records-binder .binder-slot:not(.missing) { background: transparent; }',
+    );
+    expect(strongerLaterTransparentOverride).not.toBe(indexSource);
+    expect(binderSlotSurfaceErrors(strongerLaterTransparentOverride))
+      .toEqual(['binder-slot-owned-rendered-surface']);
+
+    const strongerLaterMissingOverride = indexSource.replace(
+      '.binder-slot.missing { border-color: rgba(87,112,154,.42); color: var(--dim); }',
+      '.binder-slot.missing { border-color: rgba(87,112,154,.42); color: var(--dim); }\n'
+        + '    .records-binder .binder-slot.missing { background: #05070d; }',
+    );
+    expect(strongerLaterMissingOverride).not.toBe(indexSource);
+    expect(binderSlotSurfaceErrors(strongerLaterMissingOverride))
+      .toEqual(['binder-slot-missing-rendered-semantics']);
   });
 
   it('negative-controls both Survey disclosure gates', () => {
