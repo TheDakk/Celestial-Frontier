@@ -338,6 +338,12 @@ export function glassTerminalEvidenceErrors(report, {
   if (requirePass && !record(report.predecessors?.slice)) {
     errors.push('exact Slice predecessor binding is missing');
   }
+  if (requirePass && (report.predecessors?.slice?.schema !== 'cf-v2-slice-smoke-ci/v2'
+    || !['develop', 'production'].includes(
+      report.predecessors?.slice?.assuranceProfile,
+    ))) {
+    errors.push('Glass Slice predecessor is not current profile-bound v2 evidence');
+  }
   if (expectedSlice && !exactJson(report.predecessors?.slice, expectedSlice)) {
     errors.push('Glass Slice predecessor descriptor/hash does not exactly match the selected immutable Slice report');
   }

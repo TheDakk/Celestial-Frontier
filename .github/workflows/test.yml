@@ -299,26 +299,42 @@ jobs:
       - name: one-attempt real-browser slice smoke
         id: slice
         working-directory: port/v2
+        shell: bash
         env:
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
           CF_BROWSER: /usr/bin/google-chrome
         run: |
-          npm run smoke:ci
+          set -euo pipefail
+          case "$BASE_BRANCH" in
+            develop) slice_profile=develop ;;
+            main) slice_profile=production ;;
+            *) echo "::error::Unsupported battery base: $BASE_BRANCH"; exit 1 ;;
+          esac
+          npm run smoke:ci -- --profile="$slice_profile"
           slice_run_id="$(jq -er '.run.id' apps/game/smoke/slice-smoke-report.json)"
           test "$slice_run_id" = "$CF_V2_SLICE_SMOKE_RUN_ID"
           printf 'run_id=%s\n' "$slice_run_id" >> "$GITHUB_OUTPUT"
-          node tools/smokereport.mjs --verify-run="$slice_run_id"
+          printf 'profile=%s\n' "$slice_profile" >> "$GITHUB_OUTPUT"
+          node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"
       - name: one-attempt 12-viewport Glass matrix
         id: glass
         working-directory: port/v2
+        shell: bash
         env:
           CF_BROWSER: /usr/bin/google-chrome
         run: |
+          set -euo pipefail
           slice_run_id="${{ steps.slice.outputs.run_id }}"
-          node tools/glassmatrix.mjs --slice-run="$slice_run_id"
+          slice_profile="${{ steps.slice.outputs.profile }}"
+          case "$slice_profile" in
+            develop|production) ;;
+            *) echo "::error::Unsupported Slice assurance profile: $slice_profile"; exit 1 ;;
+          esac
+          node tools/glassmatrix.mjs --slice-run="$slice_run_id" --profile="$slice_profile"
           glass_run_id="$(jq -er '.run.id' apps/game/smoke/glassmatrix-report.json)"
           test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"
           printf 'run_id=%s\n' "$glass_run_id" >> "$GITHUB_OUTPUT"
-          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"
+          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"
       - name: one-attempt Slice-and-Glass-bound Recovery certification
         id: recovery
         if: github.event.pull_request.base.ref == 'main'

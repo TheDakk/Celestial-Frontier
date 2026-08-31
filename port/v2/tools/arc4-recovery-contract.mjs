@@ -41,9 +41,9 @@ const ARC4_RECOVERY_PERTAR_DEDICATED_SOURCE_SHA256 =
 const ARC4_RECOVERY_PERTAR_PHASE_SOURCE_SHA256 =
   'b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e';
 const ARC4_RECOVERY_COLLECTOR_PRODUCTION_SOURCE_SHA256 =
-  'a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be';
+  '05d9bf3a18f402729d265baf8d0aa55da8082d3d9872965fb2ee1276253ddeb5';
 const ARC4_RECOVERY_COLLECTOR_SOURCE_SHA256 =
-  'c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84';
+  '550df2fd14bae7fb6da4311f4802544ef515fdb9eaa773de72c3aebb8f80759c';
 export const ARC4_RECOVERY_PRECONDITION_CHECK_KEYS = Object.freeze([
   'captured', 'routeSettled', 'durableEvidence', 'fixtureIdentity', 'route',
   'renderedReceipt', 'authorityReady', 'activePlayProjection',
@@ -587,15 +587,21 @@ export function assessArc4RecoveryRuntimeCaptureWitness({
 }
 
 export function assessOrdinarySliceRecoverySeal(source) {
-  const expectedLedger = 'const ARC4_SLICE_LEDGER_EXPECTED_JSON = \'{"schema":"cf-v2-slice-arc4-ledger/v1","stages":["precondition","pending-no-optimism","hit","storage-refusal","stale-convergence","miss","burn-down","disabled-suppression","publication-convergence"],"burnSteps":14,"recoveryClaimed":false,"ok":true}\';';
+  const expectedDevelopLedger = 'const ARC4_SLICE_DEVELOP_LEDGER_EXPECTED_JSON = \'{"schema":"cf-v2-slice-arc4-ledger/v2","assuranceProfile":"develop","stages":["precondition","pending-no-optimism","hit","storage-refusal","stale-convergence","miss","burn-down","disabled-suppression"],"burnSteps":14,"publicationConvergence":"not-selected-by-develop-profile","recoveryClaimed":false,"ok":true}\';';
+  const expectedProductionLedger = 'const ARC4_SLICE_PRODUCTION_LEDGER_EXPECTED_JSON = \'{"schema":"cf-v2-slice-arc4-ledger/v2","assuranceProfile":"production","stages":["precondition","pending-no-optimism","hit","storage-refusal","stale-convergence","miss","burn-down","disabled-suppression","publication-convergence"],"burnSteps":14,"publicationConvergence":"passed","recoveryClaimed":false,"ok":true}\';';
+  const expectedSelector = "const ARC4_SLICE_LEDGER_EXPECTED_JSON = SLICE_ASSURANCE_PROFILE === 'develop'\n  ? ARC4_SLICE_DEVELOP_LEDGER_EXPECTED_JSON\n  : ARC4_SLICE_PRODUCTION_LEDGER_EXPECTED_JSON;";
   const expectedMarker = '20-minute next-cycle recovery is not claimed by this browser run.';
   const text = String(source ?? '');
   const count = (needle) => text.split(needle).length - 1;
   const checks = Object.freeze({
-    exactLedger: count(expectedLedger) === 1,
+    exactDevelopLedger: count(expectedDevelopLedger) === 1,
+    exactProductionLedger: count(expectedProductionLedger) === 1,
+    exactProfileSelector: count(expectedSelector) === 1,
+    productionPublicationGuard: count("if (SLICE_ASSURANCE_PROFILE === 'production') {") === 1,
+    onePublicationFaultHook: count('__smokeRejectNextArc4Publication()') === 1,
     exactActualNonClaim: count('recoveryClaimed: false,') === 1,
     noPositiveClaim: !/\brecoveryClaimed\s*:\s*true\b/u.test(text),
-    exactNonClaimMarker: count(expectedMarker) === 1,
+    exactNonClaimMarker: count(expectedMarker) === 2,
   });
   return Object.freeze({ ok: Object.values(checks).every(Boolean), checks });
 }

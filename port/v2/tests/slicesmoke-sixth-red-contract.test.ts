@@ -1591,9 +1591,26 @@ describe('sixth Slice red contract repairs', () => {
     expect(arc4ContractSource).toContain(
       'expectedDetail: `Arc 4 ${interaction?.verb} authority stale`',
     );
-    expect(arc4ContractSource).toContain(
-      'expectedDetail: `Arc 4 ${interaction?.verb} committed at revision ${committed?.revision}; publication slice-smoke injected Arc 4 publication rejection`',
+    const publicationAssessment = section(
+      arc4ContractSource,
+      'export const assessArc4PublicationConvergence = ({',
+      '\nconst progressForFixture = (evidence) => {',
     );
+    proveEachMarkerRequired(publicationAssessment, [
+      ['Capture action authority projection',
+        'const actionBoundary = captureActionAuthorityProjection(before);'],
+      ['Capture action revision',
+        'const actionRevision = actionBoundary?.revision ?? null;'],
+      ['R+1 convergence authority',
+        'raw: actionBoundary, documentToken: priorToken,'],
+      ['R+1 publication detail',
+        'committed at revision ${actionRevision}; publication slice-smoke injected Arc 4 publication rejection'],
+      ['R+2 progression outcome',
+        'committedOutcome: exactRawCaptureOutcome(before, committed, expected, {\n      requireProgressionTail: true,\n    }),'],
+      ['R+1 publication fault', 'fault?.injectedRevision === actionRevision'],
+      ['R+2 progression reload',
+        'committed, reloaded, reloadedState, reloadedUi, priorToken, token,\n      requireProgressionTail: true,'],
+    ]);
     expect(arc4ContractSource).toContain("scenario: 'stale'");
     expect(arc4ContractSource).toContain("scenario: 'publication'");
     expect(mainSource).toContain('`Arc 4 ${verb} authority ${attempt.detail}`');

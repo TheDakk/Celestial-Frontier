@@ -436,9 +436,10 @@ bullets. The bulletin stayed `draft` / `Unreleased`, `V2_CURRENT_RELEASE_VERSION
 reading it could not trigger an update popup or mutate the seen-release marker. Field Training had
 six chart/travel/landing lessons plus an honest graduation and no Capture lesson; tooltip links,
 Advanced Briefings and the rest of the 21-step arc remained open. From `port/v2`, run
-`npm install`, `npm test`, and `npm run typecheck`; browser evidence then follows the README's
-copy-ready immutable Slice → Glass → recovery chain, beginning with `npm run smoke:ci` and named
-verification of the exact Slice run rather than a bare smoke command. Every successor receives the
+`npm install`, `npm test`, and `npm run typecheck`; browser evidence then follows the v2 README's
+copy-ready immutable Slice → Glass → recovery chain, beginning with its explicit
+`npm run smoke:ci -- --profile="$slice_assurance_profile"` command and named verification of the
+exact Slice run rather than a bare smoke command. Every successor receives the
 exact predecessor ID(s), all stages use the same unchanged clean commit, and any failure stops the
 chain without retry. See the v2 README for the full current battery and open gates.
 Both root and v2 install surfaces declare the pinned raw-CDP `ws` transport and

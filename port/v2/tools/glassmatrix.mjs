@@ -189,18 +189,28 @@ const sliceRunArg = cliArgs.find((arg) => arg.startsWith('--slice-run='));
 const selectedSliceRunId = sliceRunArg ? sliceRunArg.slice('--slice-run='.length) : null;
 const verifyRunArg = cliArgs.find((arg) => arg.startsWith('--verify-run='));
 const selectedVerifyRunId = verifyRunArg ? verifyRunArg.slice('--verify-run='.length) : null;
+const profileArg = cliArgs.find((arg) => arg.startsWith('--profile='));
+const selectedAssuranceProfile = profileArg
+  ? /^(?:--profile=)(develop|production)$/.exec(profileArg)?.[1] ?? null
+  : null;
 const currentReportPath = path.join(evidenceDir, viewportLabel
   ? `glassmatrix-${viewportLabel}-diagnostic.json` : 'glassmatrix-report.json');
 const selftestOnly = cliArgs.includes('--selftest');
 const unknownArgs = cliArgs.filter((arg) => arg !== '--selftest'
-  && !arg.startsWith('--viewport=') && !arg.startsWith('--slice-run=') && !arg.startsWith('--verify-run='));
-const duplicateSingleton = [viewportArg, sliceRunArg, verifyRunArg].some((value, index) => value
-  && cliArgs.filter((arg) => arg.startsWith(['--viewport=', '--slice-run=', '--verify-run='][index])).length !== 1);
+  && !arg.startsWith('--viewport=') && !arg.startsWith('--slice-run=')
+  && !arg.startsWith('--verify-run=') && !arg.startsWith('--profile='));
+const singletonPrefixes = ['--viewport=', '--slice-run=', '--verify-run=', '--profile='];
+const duplicateSingleton = [viewportArg, sliceRunArg, verifyRunArg, profileArg]
+  .some((value, index) => value
+    && cliArgs.filter((arg) => arg.startsWith(singletonPrefixes[index])).length !== 1);
 if (unknownArgs.length || duplicateSingleton
+  || (profileArg && !selectedAssuranceProfile)
+  || (sliceRunArg && !selectedSliceRunId)
+  || (verifyRunArg && !selectedVerifyRunId)
   || (selftestOnly && cliArgs.length !== 1)
-  || (viewportArg && (sliceRunArg || verifyRunArg))
-  || (verifyRunArg && (!sliceRunArg || cliArgs.length !== 2))) {
-  throw new Error('usage: node tools/glassmatrix.mjs [--slice-run=<Slice-run-id> | --viewport=<label> | --selftest | --verify-run=<Glass-run-id> --slice-run=<Slice-run-id>]');
+  || (viewportArg && (sliceRunArg || verifyRunArg || profileArg))
+  || (verifyRunArg && (!sliceRunArg || !profileArg || cliArgs.length !== 3))) {
+  throw new Error('usage: node tools/glassmatrix.mjs [--slice-run=<Slice-run-id> --profile=develop|production | --viewport=<label> | --selftest | --verify-run=<Glass-run-id> --slice-run=<Slice-run-id> --profile=develop|production]');
 }
 const MATRIX_VIEWPORTS = viewportLabel ? VIEWPORTS.filter((vp) => vp.label === viewportLabel) : VIEWPORTS;
 if (viewportLabel && MATRIX_VIEWPORTS.length !== 1) {
@@ -269,6 +279,7 @@ function sameEvidenceSource(left, right) {
 function slicePredecessorDescriptor(verification) {
   return {
     schema: verification.report.schema,
+    assuranceProfile: verification.assuranceProfile,
     runId: verification.report.run.id,
     reportPath: verification.artifacts.reportRelative,
     reportSha256: verification.reportSha256,
@@ -5421,7 +5432,8 @@ async function reportSelftest() {
     statusSha256: 'b'.repeat(64), workingTreeSha256: 'c'.repeat(64),
   };
   const chainSlice = {
-    schema: 'cf-v2-slice-smoke-ci/v1', runId: 'slice-chain-selftest',
+    schema: 'cf-v2-slice-smoke-ci/v2', assuranceProfile: 'develop',
+    runId: 'slice-chain-selftest',
     reportPath: 'apps/game/smoke/slice-smoke-slice-chain-selftest.json',
     reportSha256: 'd'.repeat(64),
     rawLogPath: 'apps/game/smoke/slice-smoke-slice-chain-selftest.log',
@@ -5461,6 +5473,15 @@ async function reportSelftest() {
       source: { ...chainSource, state: 'dirty-diagnostic' }, sourceEnd: { ...chainSource, state: 'dirty-diagnostic' } }, 'not clean committed'],
     ['targeted', { ...chainReport, scope: 'targeted-diagnostic', certifying: false }, 'targeted/non-full'],
     ['missing-predecessor', { ...chainReport, predecessors: null }, 'predecessor binding is missing'],
+    ['legacy-predecessor', { ...chainReport, predecessors: { slice: {
+      ...chainSlice, schema: 'cf-v2-slice-smoke-ci/v1', assuranceProfile: undefined,
+    } } }, 'not current profile-bound v2 evidence'],
+    ['missing-profile', { ...chainReport, predecessors: { slice: {
+      ...chainSlice, assuranceProfile: undefined,
+    } } }, 'not current profile-bound v2 evidence'],
+    ['wrong-profile', { ...chainReport, predecessors: { slice: {
+      ...chainSlice, assuranceProfile: 'production',
+    } } }, 'does not exactly match'],
     ['mismatched-predecessor', { ...chainReport, predecessors: { slice: { ...chainSlice, reportSha256: 'f'.repeat(64) } } }, 'does not exactly match'],
     ['fake-viewport-id', { ...chainReport,
       viewportInventory: chainReport.viewportInventory.map((row, index) => index === 0 ? { ...row, label: 'fake-phone' } : row) },
@@ -6846,6 +6867,7 @@ async function main() {
     }
     const sliceVerification = verifySliceRunEvidence(selectedSliceRunId, {
       expectedSource: currentSource, requirePass: true, requireCommitted: true,
+      expectedAssuranceProfile: selectedAssuranceProfile, allowLegacyV1: false,
     });
     if (!sliceVerification.ok) throw new Error(`selected Slice predecessor failed verification: ${sliceVerification.errors.join('; ')}`);
     const sliceDescriptor = slicePredecessorDescriptor(sliceVerification);
@@ -6856,6 +6878,7 @@ async function main() {
     console.log(`GLASS MATRIX VERIFY: PASS — ${selectedVerifyRunId}`);
     console.log(`report sha256: ${glassVerification.reportSha256}`);
     console.log(`Slice predecessor: ${selectedSliceRunId} ${sliceDescriptor.reportSha256}`);
+    console.log(`assurance profile: ${sliceDescriptor.assuranceProfile}`);
     return;
   }
   /* Reject an obsolete bare full-matrix invocation before taking the shared
@@ -6864,6 +6887,9 @@ async function main() {
   if (!viewportLabel) {
     if (!selectedSliceRunId) {
       throw new Error('full certifying Glass requires --slice-run=<immutable-Slice-run-id>');
+    }
+    if (!selectedAssuranceProfile) {
+      throw new Error('full certifying Glass requires --profile=develop|production');
     }
     assertEvidenceRunId(selectedSliceRunId, 'Slice');
   }
@@ -6904,6 +6930,7 @@ async function main() {
       }
       const sliceVerification = verifySliceRunEvidence(selectedSliceRunId, {
         expectedSource: runSource, requirePass: true, requireCommitted: true,
+        expectedAssuranceProfile: selectedAssuranceProfile, allowLegacyV1: false,
       });
       if (!sliceVerification.ok) {
         throw new Error(`selected Slice predecessor failed verification: ${sliceVerification.errors.join('; ')}`);
@@ -11676,6 +11703,7 @@ async function main() {
   if (!viewportLabel && selectedSliceRunId) {
     const terminalSlice = verifySliceRunEvidence(selectedSliceRunId, {
       expectedSource: endingSource, requirePass: true, requireCommitted: true,
+      expectedAssuranceProfile: selectedAssuranceProfile, allowLegacyV1: false,
     });
     if (!terminalSlice.ok) {
       instrumentFailures.push(`Slice predecessor changed or failed terminal verification: ${terminalSlice.errors.join('; ')}`);

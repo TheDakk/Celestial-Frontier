@@ -261,8 +261,14 @@ describe('Slice Arc 3 Survey/panel lifecycle evidence', () => {
     }
   });
 
-  it('preserves the exact Slice ledger and recovery non-claim', () => {
-    expect(source).toContain('"burnSteps":14,"recoveryClaimed":false,"ok":true');
-    expect(source).toContain("'publication-convergence',\n]);");
+  it('preserves exact develop/production Slice ledgers and the recovery non-claim', () => {
+    expect(source).toContain(
+      'const ARC4_SLICE_DEVELOP_LEDGER_EXPECTED_JSON = \'{"schema":"cf-v2-slice-arc4-ledger/v2","assuranceProfile":"develop","stages":["precondition","pending-no-optimism","hit","storage-refusal","stale-convergence","miss","burn-down","disabled-suppression"],"burnSteps":14,"publicationConvergence":"not-selected-by-develop-profile","recoveryClaimed":false,"ok":true}\';',
+    );
+    expect(source).toContain(
+      'const ARC4_SLICE_PRODUCTION_LEDGER_EXPECTED_JSON = \'{"schema":"cf-v2-slice-arc4-ledger/v2","assuranceProfile":"production","stages":["precondition","pending-no-optimism","hit","storage-refusal","stale-convergence","miss","burn-down","disabled-suppression","publication-convergence"],"burnSteps":14,"publicationConvergence":"passed","recoveryClaimed":false,"ok":true}\';',
+    );
+    expect(source).toContain("if (SLICE_ASSURANCE_PROFILE === 'production') {");
+    expect(source).toContain("? 'passed' : 'not-selected-by-develop-profile'");
   });
 });

@@ -8,12 +8,27 @@ const {
   ARC4_PERTAR_FIXTURE,
   ARC4_PERTAR_LEDGER_PREFIX_SELFTEST,
   ARC4_PERTAR_PROGRESSION_TAIL_SELFTEST,
+  ARC4_PUBLICATION_PROGRESSION_SELFTEST,
 } = arc4Contract;
 
 type Assessment = Readonly<{
   ok: boolean;
   checks: Readonly<Record<string, boolean>>;
   reasons: readonly string[];
+}>;
+
+type PublicationAssessment = Assessment & Readonly<{
+  convergenceReleaseDiagnostics: Assessment;
+  publicationBoundary: Readonly<{
+    beforeRevision: number;
+    actionRevision: number;
+    fixedPointRevision: number;
+    beforeOrdinal: number;
+    actionOrdinal: number;
+    fixedPointOrdinal: number;
+    actionDraws: Readonly<Record<string, number>>;
+    fixedPointDraws: Readonly<Record<string, number>>;
+  }>;
 }>;
 
 const sliceSource = readFileSync(
@@ -208,6 +223,62 @@ describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
     ]);
     expect(Object.values(progression.controls)
       .every((control) => control.ok === false)).toBe(true);
+  });
+
+  it('binds publication evidence to Capture R+1 and the progression fixed point to R+2', () => {
+    const publication = ARC4_PUBLICATION_PROGRESSION_SELFTEST as Readonly<{
+      positive: PublicationAssessment;
+      controls: Readonly<Record<string, Readonly<{
+        expected: readonly string[];
+        nestedExpected: readonly string[] | null;
+        result: PublicationAssessment;
+      }>>>;
+    }>;
+
+    expect(publication.positive.ok).toBe(true);
+    expect(publication.positive.publicationBoundary).toEqual({
+      beforeRevision: 12,
+      actionRevision: 13,
+      fixedPointRevision: 14,
+      beforeOrdinal: 3,
+      actionOrdinal: 4,
+      fixedPointOrdinal: 5,
+      actionDraws: { 'capture.candidate': 1, 'capture.success': 1 },
+      fixedPointDraws: { 'capture.candidate': 1, 'capture.success': 1 },
+    });
+    expect(Object.keys(publication.controls)).toEqual([
+      'captureOnlyEndpoint',
+      'missingProgressionTail',
+      'wrongProgressionWitness',
+      'wrongAchievementDelta',
+      'wrongFinalSpan',
+      'faultBoundToFixedPoint',
+      'detailBoundToFixedPoint',
+      'witnessBoundToFixedPoint',
+      'reloadStateCommitCount',
+      'reloadUiCommitCount',
+      'reloadStateOutcome',
+      'reloadUiOutcome',
+      'reloadUnlocked',
+      'reloadBestRank',
+      'reloadUiBootKind',
+      'reloadStateBootKind',
+      'reloadUiPending',
+      'reloadStatePending',
+    ]);
+    for (const [name, control] of Object.entries(publication.controls)) {
+      const failed = Object.entries(control.result.checks)
+        .filter(([, value]) => value !== true)
+        .map(([check]) => check);
+      const nestedFailed = Object.entries(
+        control.result.convergenceReleaseDiagnostics.checks,
+      ).filter(([, value]) => value !== true).map(([check]) => check);
+      expect(control.result.ok, name).toBe(false);
+      expect(failed, name).toEqual(control.expected);
+      if (control.nestedExpected !== null) {
+        expect(nestedFailed, name).toEqual(control.nestedExpected);
+      }
+    }
   });
 
   it('makes the browser runner consume those shared contracts and stop before storage on red', () => {

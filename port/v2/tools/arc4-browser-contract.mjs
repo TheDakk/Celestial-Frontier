@@ -3119,6 +3119,31 @@ const exactF4CaptureTransition = (before, after, revisionSpan = 1) => {
     && after?.revision === before?.revision + revisionSpan;
 };
 
+const captureActionAuthorityProjection = (before) => {
+  const authority = before?.authority;
+  const sessionRng = authority?.sessionRng;
+  if (!counter(before?.revision) || before.revision >= Number.MAX_SAFE_INTEGER
+    || !counter(authority?.activePlayMs) || !counter(sessionRng?.seed)
+    || !counter(sessionRng?.ordinal)
+    || sessionRng.ordinal >= Number.MAX_SAFE_INTEGER
+    || !record(sessionRng?.draws)
+    || Object.values(sessionRng.draws).some((value) => !counter(value))) return null;
+  const draws = { ...sessionRng.draws };
+  draws['capture.candidate'] = (draws['capture.candidate'] ?? 0) + 1;
+  draws['capture.success'] = (draws['capture.success'] ?? 0) + 1;
+  return Object.freeze({
+    revision: before.revision + 1,
+    authority: Object.freeze({
+      activePlayMs: authority.activePlayMs,
+      sessionRng: Object.freeze({
+        seed: sessionRng.seed,
+        ordinal: sessionRng.ordinal + 1,
+        draws: Object.freeze(draws),
+      }),
+    }),
+  });
+};
+
 const omitted = (value, fields) => Object.fromEntries(
   Object.entries(value ?? {}).filter(([field]) => !fields.includes(field)),
 );
@@ -3449,28 +3474,16 @@ const exactSurveyDockActivation = (activation) => {
 const exactArc4ProgressionTail = ({
   before, after, afterState, receipt, expected, requireProgressionTail,
 }) => {
-  if (requireProgressionTail !== true) {
-    return receipt?.progressionReceipt === null
-      && receipt?.exactProgressionReceipt === true;
-  }
+  const rawTail = exactArc4ProgressionRawTail({
+    before, after, receipt, expected, requireProgressionTail,
+  });
+  if (rawTail !== true || requireProgressionTail !== true) return rawTail;
   const progression = expected?.progressionTail;
   const beforeUnlocked = before?.legacy?.ach;
-  const afterUnlocked = after?.legacy?.ach;
-  const splitUnlocked = after?.playerRow?.data?.ach;
   const expectedUnlocked = Array.isArray(beforeUnlocked)
     && Array.isArray(progression?.addedAchievementIds)
     ? [...beforeUnlocked, ...progression.addedAchievementIds] : null;
-  const actionRevision = before?.revision + 1;
-  return progression !== null && progression !== undefined
-    && receipt?.exactProgressionReceipt === true
-    && after?.revision === actionRevision + 1
-    && after?.legacy?.br === progression.nextBestRankIndex
-    && after?.playerRow?.data?.br === progression.nextBestRankIndex
-    && before?.legacy?.br === progression.priorBestRankIndex
-    && before?.playerRow?.data?.br === progression.priorBestRankIndex
-    && same(afterUnlocked, expectedUnlocked)
-    && same(splitUnlocked, expectedUnlocked)
-    && same(afterState?.save?.unlocked, expectedUnlocked)
+  return same(afterState?.save?.unlocked, expectedUnlocked)
     && afterState?.save?.stats?.bestRank === progression.nextBestRankIndex
     && afterState?.persistence?.lastOutcome
       === `arc9-progression-committed:${after.revision}`;
@@ -4013,8 +4026,29 @@ const alignedReloadPresentation = (reloaded, reloadedState, reloadedUi) => {
 
 const alignedReload = ({
   committed, reloaded, reloadedState, reloadedUi, priorToken, token,
+  requireProgressionTail = false,
 }) => {
-  const runtime = persistenceStateOf(reloadedState)?.runtime;
+  const statePersistence = persistenceStateOf(reloadedState);
+  const uiPersistence = persistenceStateOf(reloadedUi);
+  const runtime = statePersistence?.runtime;
+  const uiRuntime = uiPersistence?.runtime;
+  const exactReloadPersistence = requireProgressionTail === true
+    ? runtime?.commits === 1
+      && uiRuntime?.commits === 1
+      && statePersistence?.bootKind === 'current-v5'
+      && uiPersistence?.bootKind === 'current-v5'
+      && statePersistence?.lastOutcome
+        === `arc9-progression-committed:${reloaded?.revision}`
+      && uiPersistence?.lastOutcome
+        === `arc9-progression-committed:${reloaded?.revision}`
+      && statePersistence?.bootRouteRepairPending === false
+      && uiPersistence?.bootRouteRepairPending === false
+      && same(reloadedState?.save?.unlocked, reloaded?.legacy?.ach)
+      && reloadedState?.save?.stats?.bestRank === reloaded?.legacy?.br
+    : runtime?.commits === 0
+      && statePersistence?.bootKind === 'current-v5'
+      && statePersistence?.lastOutcome === null
+      && statePersistence?.bootRouteRepairPending === false;
   const capture = captureStateOf(reloadedState);
   const reloadedAssessment = assessArc4DurableEvidence(reloaded);
   const reloadedCharter = durableCharterProjection(reloaded, reloadedAssessment);
@@ -4032,10 +4066,7 @@ const alignedReload = ({
     && exactRuntimeCaptureOrder(
       reloaded, reloadedState, reloadedUi, 'ui-state',
     )
-    && runtime?.commits === 0
-    && persistenceStateOf(reloadedState)?.bootKind === 'current-v5'
-    && persistenceStateOf(reloadedState)?.lastOutcome === null
-    && persistenceStateOf(reloadedState)?.bootRouteRepairPending === false
+    && exactReloadPersistence
     && reloadedState?.sceneResources?.pendingPersistenceWrites === 0
     && capture?.stateKind === 'loaded' && capture?.mode === 'current'
     && capture?.protection === null && capture?.revision === reloaded?.captureRevision
@@ -4154,12 +4185,43 @@ export const assessArc4StaleConvergence = ({
   });
 };
 
-const exactRawCaptureOutcome = (before, after, expected) => {
+const exactArc4ProgressionRawTail = ({
+  before, after, receipt, expected, requireProgressionTail,
+}) => {
+  if (requireProgressionTail !== true) {
+    return receipt?.progressionReceipt === null
+      && receipt?.exactProgressionReceipt === true;
+  }
+  const progression = expected?.progressionTail;
+  const beforeUnlocked = before?.legacy?.ach;
+  const afterUnlocked = after?.legacy?.ach;
+  const splitUnlocked = after?.playerRow?.data?.ach;
+  const expectedUnlocked = Array.isArray(beforeUnlocked)
+    && Array.isArray(progression?.addedAchievementIds)
+    ? [...beforeUnlocked, ...progression.addedAchievementIds] : null;
+  const actionRevision = before?.revision + 1;
+  return progression !== null && progression !== undefined
+    && receipt?.exactProgressionReceipt === true
+    && after?.revision === actionRevision + 1
+    && after?.legacy?.br === progression.nextBestRankIndex
+    && after?.playerRow?.data?.br === progression.nextBestRankIndex
+    && before?.legacy?.br === progression.priorBestRankIndex
+    && before?.playerRow?.data?.br === progression.priorBestRankIndex
+    && same(afterUnlocked, expectedUnlocked)
+    && same(splitUnlocked, expectedUnlocked);
+};
+
+const exactRawCaptureOutcome = (
+  before, after, expected, { requireProgressionTail = false } = {},
+) => {
   const beforeAssessment = assessArc4DurableEvidence(before);
   const afterAssessment = assessArc4DurableEvidence(after);
   const beforeMirror = beforeAssessment.ownership?.mirror;
   const afterMirror = afterAssessment.ownership?.mirror;
-  const receipt = captureReceiptTransition(before, after, expected);
+  const receipt = captureReceiptTransition(
+    before, after, expected, requireProgressionTail,
+  );
+  const revisionSpan = requireProgressionTail === true ? 2 : 1;
   const v4OwnedCompatibility = exactArc4V4ActionTransition(
     beforeAssessment, afterAssessment, expected,
   );
@@ -4187,18 +4249,23 @@ const exactRawCaptureOutcome = (before, after, expected) => {
       && same(beforeMirror?.specimenLots, afterMirror?.specimenLots);
   return beforeAssessment.ok && afterAssessment.ok
     && exactArc5CarrierSuccessor(beforeAssessment, afterAssessment)
-    && after?.revision === before?.revision + 1
+    && after?.revision === before?.revision + revisionSpan
     && after?.captureRevision === before?.captureRevision + 1
-    && exactF4CaptureTransition(before, after)
+    && exactF4CaptureTransition(before, after, revisionSpan)
     && receipt?.ok === true
+    && exactArc4ProgressionRawTail({
+      before, after, receipt, expected, requireProgressionTail,
+    })
     && v4OwnedCompatibility
     && charter.ok && charter.banked === true
     && same(
       unrelatedDurableProjection(before, beforeAssessment, {
         omitCompatibility: true, omitCharter: true,
+        omitProgression: requireProgressionTail,
       }),
       unrelatedDurableProjection(after, afterAssessment, {
         omitCompatibility: true, omitCharter: true,
+        omitProgression: requireProgressionTail,
       }),
     )
     && expectedProgressTransition(beforeMirror, afterMirror, expected, expected?.hit === true)
@@ -4670,9 +4737,13 @@ export const assessArc4PublicationConvergence = ({
   const pagehide = exactPagehideCapture(
     faultCapture, ARC4_PUBLICATION_FAULT_CAPTURE_SCHEMA, priorToken,
   );
+  const actionBoundary = captureActionAuthorityProjection(before);
+  const actionRevision = actionBoundary?.revision ?? null;
+  const convergenceDetail = actionRevision === null ? null
+    : `Arc 4 ${interaction?.verb} committed at revision ${actionRevision}; publication slice-smoke injected Arc 4 publication rejection`;
   const convergenceRelease = assessConvergenceRelease({
-    raw: committed, documentToken: priorToken,
-    expectedDetail: `Arc 4 ${interaction?.verb} committed at revision ${committed?.revision}; publication slice-smoke injected Arc 4 publication rejection`,
+    raw: actionBoundary, documentToken: priorToken,
+    expectedDetail: convergenceDetail,
     scenario: 'publication',
     convergenceWitness, convergenceWitnessCount,
   });
@@ -4699,7 +4770,9 @@ export const assessArc4PublicationConvergence = ({
     pagehideRuntime: exactReleasedPagehideRuntime(oldState, oldUi),
     convergenceRelease: convergenceRelease.ok,
     fixtureOutcome: same(expected, ARC4_PERTAR_FIXTURE.actions.firstHit),
-    committedOutcome: exactRawCaptureOutcome(before, committed, expected),
+    committedOutcome: exactRawCaptureOutcome(before, committed, expected, {
+      requireProgressionTail: true,
+    }),
     charterNoOldOptimism: runtimeCharterMatches(beforeState, beforeCharter)
       && runtimeCharterMatches(oldState, beforeCharter),
     ownershipV2Held: arc5OwnershipV2RuntimeExact(before, beforeState, {
@@ -4754,7 +4827,7 @@ export const assessArc4PublicationConvergence = ({
     faultSettlement: fault?.injection === 'publication-failure'
       && fault?.phase === 'settled'
       && fault?.beforeRevision === before?.revision
-      && fault?.injectedRevision === committed?.revision
+      && fault?.injectedRevision === actionRevision
       && fault?.outcome === 'committed-publication-reload',
     oldOwnerReleased: oldCoordinator?.inFlight === false
       && oldCoordinator?.owner?.busy === false && oldCoordinator?.owner?.operation === null
@@ -4768,10 +4841,21 @@ export const assessArc4PublicationConvergence = ({
     oneNativeAction: actionInteraction(interaction, expected),
     readOnlyReload: alignedReload({
       committed, reloaded, reloadedState, reloadedUi, priorToken, token,
+      requireProgressionTail: true,
     }),
   };
   return assessment('Arc 4 publication convergence', checks, {
     convergenceReleaseDiagnostics: convergenceRelease,
+    publicationBoundary: Object.freeze({
+      beforeRevision: before?.revision ?? null,
+      actionRevision,
+      fixedPointRevision: committed?.revision ?? null,
+      beforeOrdinal: before?.authority?.sessionRng?.ordinal ?? null,
+      actionOrdinal: actionBoundary?.authority?.sessionRng?.ordinal ?? null,
+      fixedPointOrdinal: committed?.authority?.sessionRng?.ordinal ?? null,
+      actionDraws: actionBoundary?.authority?.sessionRng?.draws ?? null,
+      fixedPointDraws: committed?.authority?.sessionRng?.draws ?? null,
+    }),
   });
 };
 
@@ -7334,6 +7418,18 @@ const progressionHitCaptureReceiptSelftest = captureReceipt(
   pertarActionReadyRawSelftest, firstExpected,
   progressionHitManifestDigestSelftest,
 );
+const progressionActionRawSelftest = makeDurable(progressionHitMirrorSelftest, {
+  revision: pertarActionReadyRawSelftest.revision + 1,
+  ordinal: ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal + 1,
+  draws: { 'capture.candidate': 1, 'capture.success': 1 },
+  receipts: [
+    ...pertarPrefixRowsSelftest,
+    progressionHitCaptureReceiptSelftest,
+  ],
+  essence: 2,
+  ownedCounters: ARC4_PERTAR_FIXTURE.v4OwnedCounters.afterFirstHit,
+  unlocked: pertarActionReadyRawSelftest.legacy.ach,
+});
 const progressionHitReceiptSelftest = Object.freeze({
   ordinal: ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal + 1,
   kind: firstExpected.progressionTail.receiptKind,
@@ -7518,21 +7614,29 @@ const staleReloadUiSelftest = uiSnapshot(staleReloadCaptureSelftest, {
   used: 1, raw: staleCommittedSelftest, boot: true,
 });
 
+const publicationPendingCaptureSelftest = appCaptureState(
+  pertarActionReadyRawSelftest,
+  { coordinator: pendingCoordinatorSelftest },
+);
+const publicationPendingUiSelftest = uiSnapshot(
+  publicationPendingCaptureSelftest,
+  { pendingVerb: 'sample', raw: pertarActionReadyRawSelftest },
+);
 const publicationFaultSelftest = {
   schema: 'cf-v2-arc4-action-fault-witness/v1',
   operation: 'arc4.capture.sample', injection: 'publication-failure',
-  phase: 'settled', beforeRevision: beforeRawSelftest.revision,
-  injectedRevision: hitRawSelftest.revision,
+  phase: 'settled', beforeRevision: pertarActionReadyRawSelftest.revision,
+  injectedRevision: progressionActionRawSelftest.revision,
   outcome: 'committed-publication-reload',
 };
-const publicationOldCaptureSelftest = appCaptureState(hitRawSelftest, {
+const publicationOldCaptureSelftest = appCaptureState(progressionActionRawSelftest, {
   lastOutcome: 'sample-committed-publication-reload', lastResult: null,
   unavailable: true,
   coordinator: actionCoordinator({ fault: publicationFaultSelftest }),
 });
 const publicationOldStateSelftest = releasedPagehideSurface(
-  appState(hitRawSelftest, publicationOldCaptureSelftest, {
-    charterRaw: beforeRawSelftest,
+  appState(progressionActionRawSelftest, publicationOldCaptureSelftest, {
+    charterRaw: pertarActionReadyRawSelftest,
   }),
 );
 const publicationOutcomeSelftest = {
@@ -7544,14 +7648,14 @@ const publicationOutcomeSelftest = {
 const publicationOldUiSelftest = releasedPagehideSurface(
   uiSnapshot(publicationOldCaptureSelftest, {
     used: 0, outcome: publicationOutcomeSelftest, convergence: true,
-    raw: hitRawSelftest,
+    raw: progressionActionRawSelftest,
   }),
 );
 const publicationPriorTokenSelftest = 'selftest-publication-old-document';
 const publicationTokenSelftest = 'selftest-publication-new-document';
 const publicationConvergenceWitnessSelftest = convergenceWitnessFor(
-  hitRawSelftest, publicationPriorTokenSelftest, {
-    detail: `Arc 4 sample committed at revision ${hitRawSelftest.revision}; publication slice-smoke injected Arc 4 publication rejection`,
+  progressionActionRawSelftest, publicationPriorTokenSelftest, {
+    detail: `Arc 4 sample committed at revision ${progressionActionRawSelftest.revision}; publication slice-smoke injected Arc 4 publication rejection`,
   },
 );
 const publicationPagehideSelftest = {
@@ -7566,23 +7670,33 @@ const publicationFaultEnvelopeSelftest = {
   parsed: publicationPagehideSelftest,
   cleared: true,
 };
-const publicationReloadCaptureDraftSelftest = appCaptureState(hitRawSelftest);
-const publicationReloadUiDraftSelftest = uiSnapshot(
-  publicationReloadCaptureDraftSelftest, { used: 1, raw: hitRawSelftest, boot: true },
+const publicationReloadCaptureDraftSelftest = appCaptureState(
+  progressionHitRawSelftest,
 );
-const publicationReloadCaptureSelftest = appCaptureState(hitRawSelftest, {
+const publicationReloadUiDraftSelftest = uiSnapshot(
+  publicationReloadCaptureDraftSelftest,
+  { used: 1, raw: progressionHitRawSelftest, boot: true },
+);
+const publicationReloadCaptureSelftest = appCaptureState(progressionHitRawSelftest, {
   card: publicationReloadUiDraftSelftest.diagnostics,
 });
 const publicationReloadStateSelftest = appState(
-  hitRawSelftest, publicationReloadCaptureSelftest, { boot: true },
+  progressionHitRawSelftest, publicationReloadCaptureSelftest, { boot: true },
 );
+publicationReloadStateSelftest.persistence.runtime.commits = 1;
+publicationReloadStateSelftest.persistence.lastOutcome
+  = `arc9-progression-committed:${progressionHitRawSelftest.revision}`;
 const publicationReloadBeforeActivationStateSelftest = {
   ...structuredClone(publicationReloadStateSelftest),
   cardOpen: false, cardTitle: null,
 };
 const publicationReloadUiSelftest = uiSnapshot(
-  publicationReloadCaptureSelftest, { used: 1, raw: hitRawSelftest, boot: true },
+  publicationReloadCaptureSelftest,
+  { used: 1, raw: progressionHitRawSelftest, boot: true },
 );
+publicationReloadUiSelftest.persistence.runtime.commits = 1;
+publicationReloadUiSelftest.persistence.lastOutcome
+  = `arc9-progression-committed:${progressionHitRawSelftest.revision}`;
 
 /* Mirror the Final11 capture chronology exactly. Durable evidence was read
    first; the live State/UI captures legitimately advanced 5,029/5,031 ms;
@@ -8415,11 +8529,13 @@ const staleBundleSelftest = {
   convergenceWitnessCount: 1,
 };
 const publicationBundleSelftest = {
-  before: beforeRawSelftest, committed: hitRawSelftest,
-  beforeState: beforeStateSelftest,
-  beforeUi: beforeUiSelftest, pendingUi: pendingUiSelftest,
+  before: pertarActionReadyRawSelftest, committed: progressionHitRawSelftest,
+  beforeState: pertarActionReadyStateSelftest,
+  beforeUi: pertarActionReadyUiSelftest,
+  pendingUi: publicationPendingUiSelftest,
   oldState: publicationOldStateSelftest,
-  oldUi: publicationOldUiSelftest, reloaded: structuredClone(hitRawSelftest),
+  oldUi: publicationOldUiSelftest,
+  reloaded: structuredClone(progressionHitRawSelftest),
   reloadedState: publicationReloadStateSelftest,
   reloadedUi: publicationReloadUiSelftest,
   reloadBeforeActivationState: publicationReloadBeforeActivationStateSelftest,
@@ -9020,10 +9136,16 @@ const nonzeroBurnBundleSelftest = {
   ),
 };
 const committedAheadOldRuntimeSelftest = nonzeroActivePlaySelftest + 137;
+const nonzeroPublicationActionRawSelftest = withAuthorityActivePlaySelftest(
+  progressionActionRawSelftest, nonzeroActivePlaySelftest,
+);
+const nonzeroPublicationFixedPointRawSelftest = withAuthorityActivePlaySelftest(
+  progressionHitRawSelftest, nonzeroActivePlaySelftest,
+);
 const nonzeroPublicationConvergenceWitnessSelftest = convergenceWitnessFor(
-  nonzeroHitRawSelftest, publicationPriorTokenSelftest, {
+  nonzeroPublicationActionRawSelftest, publicationPriorTokenSelftest, {
     activePlayMs: committedAheadOldRuntimeSelftest,
-    detail: `Arc 4 sample committed at revision ${nonzeroHitRawSelftest.revision}; publication slice-smoke injected Arc 4 publication rejection`,
+    detail: `Arc 4 sample committed at revision ${nonzeroPublicationActionRawSelftest.revision}; publication slice-smoke injected Arc 4 publication rejection`,
   },
 );
 const nonzeroPublicationOldStateSelftest = structuredClone(
@@ -9039,11 +9161,11 @@ const nonzeroPublicationPagehideSelftest = {
 };
 const nonzeroPublicationBundleSelftest = {
   ...publicationBundleSelftest,
-  committed: nonzeroHitRawSelftest,
+  committed: nonzeroPublicationFixedPointRawSelftest,
   oldState: nonzeroPublicationOldStateSelftest,
   oldUi: nonzeroPublicationOldUiSelftest,
   convergenceWitness: nonzeroPublicationConvergenceWitnessSelftest,
-  reloaded: structuredClone(nonzeroHitRawSelftest),
+  reloaded: structuredClone(nonzeroPublicationFixedPointRawSelftest),
   reloadedState: withRuntimeActivePlaySelftest(
     publicationReloadStateSelftest, nonzeroActivePlaySelftest,
   ),
@@ -9556,9 +9678,15 @@ const coherentMissV4BundleSelftest = {
 };
 const coherentPublicationV4BundleSelftest = {
   ...publicationBundleSelftest,
-  before: withCoherentV4EverMutation(beforeRawSelftest, incrementScanHits),
-  committed: withCoherentV4EverMutation(hitRawSelftest, incrementScanHits),
-  reloaded: withCoherentV4EverMutation(hitRawSelftest, incrementScanHits),
+  before: withCoherentV4EverMutation(
+    pertarActionReadyRawSelftest, incrementScanHits,
+  ),
+  committed: withCoherentV4EverMutation(
+    progressionHitRawSelftest, incrementScanHits,
+  ),
+  reloaded: withCoherentV4EverMutation(
+    progressionHitRawSelftest, incrementScanHits,
+  ),
 };
 const coherentBurnV4BundleSelftest = {
   ...burnBundleSelftest,
@@ -9636,6 +9764,300 @@ const withConvergenceWitnessMutation = (bundle, mutate) => {
   mutate(convergenceWitness);
   return { ...bundle, convergenceWitness };
 };
+const publicationReloadForRawSelftest = (raw, {
+  commits = 1,
+  lastOutcome = `arc9-progression-committed:${raw?.revision}`,
+} = {}) => {
+  const draftCapture = appCaptureState(raw);
+  const draftUi = uiSnapshot(draftCapture, { used: 1, raw, boot: true });
+  const capture = appCaptureState(raw, { card: draftUi.diagnostics });
+  const state = appState(raw, capture, { boot: true });
+  const ui = uiSnapshot(capture, { used: 1, raw, boot: true });
+  state.persistence.runtime.commits = commits;
+  state.persistence.lastOutcome = lastOutcome;
+  ui.persistence.runtime.commits = commits;
+  ui.persistence.lastOutcome = lastOutcome;
+  return Object.freeze({
+    state,
+    ui,
+    beforeActivationState: {
+      ...structuredClone(state), cardOpen: false, cardTitle: null,
+    },
+  });
+};
+const publicationWithFixedPointSelftest = (raw) => {
+  const reload = publicationReloadForRawSelftest(raw);
+  return {
+    ...publicationBundleSelftest,
+    committed: structuredClone(raw),
+    reloaded: structuredClone(raw),
+    reloadedState: reload.state,
+    reloadedUi: reload.ui,
+    reloadBeforeActivationState: reload.beforeActivationState,
+  };
+};
+const publicationFixedPointMutationSelftest = (mutate) => {
+  const raw = structuredClone(progressionHitRawSelftest);
+  mutate(raw);
+  return publicationWithFixedPointSelftest(raw);
+};
+const publicationFaultBoundToFixedPointSelftest = (() => {
+  const next = structuredClone(publicationBundleSelftest);
+  const revision = next.committed.revision;
+  next.oldState.capture.actionCoordinator.lastFault.injectedRevision = revision;
+  next.oldUi.captureState.actionCoordinator.lastFault.injectedRevision = revision;
+  const parsed = structuredClone(next.faultCapture.parsed);
+  parsed.fault.injectedRevision = revision;
+  parsed.state = structuredClone(next.oldState);
+  parsed.ui = structuredClone(next.oldUi);
+  next.faultCapture = { raw: JSON.stringify(parsed), parsed, cleared: true };
+  return next;
+})();
+const publicationDetailBoundToFixedPointSelftest = withConvergenceWitnessMutation(
+  publicationBundleSelftest,
+  (witness) => {
+    witness.detail = `Arc 4 sample committed at revision ${publicationBundleSelftest.committed.revision}; publication slice-smoke injected Arc 4 publication rejection`;
+  },
+);
+const publicationWitnessBoundToFixedPointSelftest = withConvergenceWitnessMutation(
+  publicationBundleSelftest,
+  (witness) => {
+    for (const phase of [witness.before, witness.after]) {
+      phase.runtime.revision = progressionHitRawSelftest.revision;
+      phase.runtime.sessionOrdinal
+        = progressionHitRawSelftest.authority.sessionRng.ordinal;
+      phase.runtime.sessionDraws = structuredClone(
+        progressionHitRawSelftest.authority.sessionRng.draws,
+      );
+    }
+  },
+);
+const publicationCaptureOnlyEndpointSelftest = publicationWithFixedPointSelftest(
+  progressionActionRawSelftest,
+);
+const publicationMissingProgressionTailSelftest
+  = publicationFixedPointMutationSelftest((raw) => {
+    raw.receiptKeys.pop();
+    raw.receiptRawRows.pop();
+    raw.receiptRows.pop();
+  });
+const publicationWrongProgressionWitnessSelftest
+  = publicationFixedPointMutationSelftest((raw) => {
+    const index = raw.receiptRows.length - 1;
+    raw.receiptRows[index].witness += ':mutated';
+    raw.receiptRawRows[index] = JSON.stringify(raw.receiptRows[index]);
+  });
+const publicationWrongAchievementDeltaSelftest
+  = publicationFixedPointMutationSelftest((raw) => {
+    raw.legacy.ach = ['rare'];
+    raw.playerRow.data.ach = ['rare'];
+    raw.legacyRaw = JSON.stringify(raw.legacy);
+    raw.playerRaw = JSON.stringify(raw.playerRow);
+  });
+const publicationWrongFinalSpanSelftest
+  = publicationFixedPointMutationSelftest((raw) => {
+    raw.revision += 1;
+    raw.revisionRaw = String(raw.revision);
+    raw.authority.sessionRng.ordinal += 1;
+    raw.authorityJson = JSON.stringify({
+      activePlayMs: raw.authority.activePlayMs,
+      sessionRng: raw.authority.sessionRng,
+    });
+    raw.playerRow.extensions['f4.authority'].json = raw.authorityJson;
+    raw.playerRaw = JSON.stringify(raw.playerRow);
+  });
+const publicationReloadMutationSelftest = (mutate) => {
+  const next = structuredClone(publicationBundleSelftest);
+  mutate(next);
+  return next;
+};
+const publicationReloadStateCommitCountSelftest
+  = publicationReloadMutationSelftest((next) => {
+    next.reloadedState.persistence.runtime.commits = 0;
+  });
+const publicationReloadUiCommitCountSelftest
+  = publicationReloadMutationSelftest((next) => {
+    next.reloadedUi.persistence.runtime.commits = 0;
+  });
+const publicationReloadStateOutcomeSelftest
+  = publicationReloadMutationSelftest((next) => {
+    next.reloadedState.persistence.lastOutcome = null;
+  });
+const publicationReloadUiOutcomeSelftest
+  = publicationReloadMutationSelftest((next) => {
+    next.reloadedUi.persistence.lastOutcome = null;
+  });
+const publicationReloadUnlockedSelftest
+  = publicationReloadMutationSelftest((next) => {
+    next.reloadedState.save.unlocked = ['rare'];
+  });
+const publicationReloadBestRankSelftest
+  = publicationReloadMutationSelftest((next) => {
+    next.reloadedState.save.stats.bestRank += 1;
+  });
+const publicationReloadUiBootKindSelftest
+  = publicationReloadMutationSelftest((next) => {
+    next.reloadedUi.persistence.bootKind = 'legacy-v4';
+  });
+const publicationReloadStateBootKindSelftest
+  = publicationReloadMutationSelftest((next) => {
+    next.reloadedState.persistence.bootKind = 'legacy-v4';
+  });
+const publicationReloadUiPendingSelftest
+  = publicationReloadMutationSelftest((next) => {
+    next.reloadedUi.persistence.bootRouteRepairPending = true;
+  });
+const publicationReloadStatePendingSelftest
+  = publicationReloadMutationSelftest((next) => {
+    next.reloadedState.persistence.bootRouteRepairPending = true;
+  });
+const publicationProgressionControlsSelftest = Object.freeze({
+  captureOnlyEndpoint: Object.freeze({
+    expected: Object.freeze(['committedOutcome']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationCaptureOnlyEndpointSelftest,
+    ),
+  }),
+  missingProgressionTail: Object.freeze({
+    expected: Object.freeze(['committedOutcome']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationMissingProgressionTailSelftest,
+    ),
+  }),
+  wrongProgressionWitness: Object.freeze({
+    expected: Object.freeze(['committedOutcome']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationWrongProgressionWitnessSelftest,
+    ),
+  }),
+  wrongAchievementDelta: Object.freeze({
+    expected: Object.freeze(['committedOutcome']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationWrongAchievementDeltaSelftest,
+    ),
+  }),
+  wrongFinalSpan: Object.freeze({
+    expected: Object.freeze(['committedOutcome']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationWrongFinalSpanSelftest,
+    ),
+  }),
+  faultBoundToFixedPoint: Object.freeze({
+    expected: Object.freeze(['faultSettlement']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationFaultBoundToFixedPointSelftest,
+    ),
+  }),
+  detailBoundToFixedPoint: Object.freeze({
+    expected: Object.freeze(['convergenceRelease']),
+    nestedExpected: Object.freeze(['detailAttribution']),
+    result: assessArc4PublicationConvergence(
+      publicationDetailBoundToFixedPointSelftest,
+    ),
+  }),
+  witnessBoundToFixedPoint: Object.freeze({
+    expected: Object.freeze(['convergenceRelease']),
+    nestedExpected: Object.freeze(['beforeAuthority']),
+    result: assessArc4PublicationConvergence(
+      publicationWitnessBoundToFixedPointSelftest,
+    ),
+  }),
+  reloadStateCommitCount: Object.freeze({
+    expected: Object.freeze(['readOnlyReload']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationReloadStateCommitCountSelftest,
+    ),
+  }),
+  reloadUiCommitCount: Object.freeze({
+    expected: Object.freeze(['readOnlyReload']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationReloadUiCommitCountSelftest,
+    ),
+  }),
+  reloadStateOutcome: Object.freeze({
+    expected: Object.freeze(['readOnlyReload']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationReloadStateOutcomeSelftest,
+    ),
+  }),
+  reloadUiOutcome: Object.freeze({
+    expected: Object.freeze(['readOnlyReload']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationReloadUiOutcomeSelftest,
+    ),
+  }),
+  reloadUnlocked: Object.freeze({
+    expected: Object.freeze(['readOnlyReload']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationReloadUnlockedSelftest,
+    ),
+  }),
+  reloadBestRank: Object.freeze({
+    expected: Object.freeze(['readOnlyReload']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationReloadBestRankSelftest,
+    ),
+  }),
+  reloadUiBootKind: Object.freeze({
+    expected: Object.freeze(['readOnlyReload']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationReloadUiBootKindSelftest,
+    ),
+  }),
+  reloadStateBootKind: Object.freeze({
+    expected: Object.freeze(['readOnlyReload']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationReloadStateBootKindSelftest,
+    ),
+  }),
+  reloadUiPending: Object.freeze({
+    expected: Object.freeze(['readOnlyReload']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationReloadUiPendingSelftest,
+    ),
+  }),
+  reloadStatePending: Object.freeze({
+    expected: Object.freeze(['readOnlyReload']),
+    nestedExpected: null,
+    result: assessArc4PublicationConvergence(
+      publicationReloadStatePendingSelftest,
+    ),
+  }),
+});
+export const ARC4_PUBLICATION_PROGRESSION_SELFTEST = Object.freeze({
+  positive: positiveSelftestAssessments.publication,
+  controls: publicationProgressionControlsSelftest,
+});
+for (const [name, control] of Object.entries(
+  publicationProgressionControlsSelftest,
+)) {
+  const failed = Object.entries(control.result.checks)
+    .filter(([, value]) => value !== true)
+    .map(([check]) => check);
+  const nestedFailed = Object.entries(
+    control.result.convergenceReleaseDiagnostics?.checks ?? {},
+  ).filter(([, value]) => value !== true).map(([check]) => check);
+  if (control.result.ok !== false || !same(failed, control.expected)
+    || (control.nestedExpected !== null
+      && !same(nestedFailed, control.nestedExpected))) {
+    throw new Error(`Arc 4 publication progression control was not isolated (${name}): ${failed.join(', ')} / ${nestedFailed.join(', ')}`);
+  }
+}
 const setRenderedActivePlaySelftest = (ui, activePlayMs) => {
   const cycle = Math.floor(activePlayMs / ARC4_ACTIVE_PLAY_CYCLE_MS);
   ui.budget.cycle = cycle;
@@ -9793,10 +10215,10 @@ const negativePublicationReloadRawSelftest = {
 const negativePublicationMissingCharterTickSelftest = {
   ...publicationBundleSelftest,
   committed: withCoherentCharterMutation(
-    hitRawSelftest, removeArc4BioscanTick,
+    progressionHitRawSelftest, removeArc4BioscanTick,
   ),
   reloaded: withCoherentCharterMutation(
-    hitRawSelftest, removeArc4BioscanTick,
+    progressionHitRawSelftest, removeArc4BioscanTick,
   ),
   reloadedState: withRuntimeCharterMutation(
     publicationReloadStateSelftest, removeArc4BioscanTick,
@@ -9805,7 +10227,7 @@ const negativePublicationMissingCharterTickSelftest = {
 const negativePublicationReloadCharterLossSelftest = {
   ...publicationBundleSelftest,
   reloaded: withCoherentCharterMutation(
-    hitRawSelftest, removeArc4BioscanTick,
+    progressionHitRawSelftest, removeArc4BioscanTick,
   ),
   reloadedState: withRuntimeCharterMutation(
     publicationReloadStateSelftest, removeArc4BioscanTick,
@@ -9861,7 +10283,8 @@ const negativePublicationOldRuntimeSelftest
     nonzeroPublicationBundleSelftest,
     (oldState) => {
       oldState.persistence.runtime = convergenceRuntimeFor(
-        nonzeroHitRawSelftest, committedAheadOldRuntimeSelftest, false,
+        nonzeroPublicationActionRawSelftest,
+        committedAheadOldRuntimeSelftest, false,
       );
     },
   );
@@ -10078,7 +10501,7 @@ const convergenceReleaseMutationSelftest = (mutate, {
   });
 };
 const publicationConvergenceReleaseSelftestOptions = Object.freeze({
-  raw: hitRawSelftest,
+  raw: progressionActionRawSelftest,
   documentToken: publicationPriorTokenSelftest,
   source: publicationConvergenceWitnessSelftest,
   scenario: 'publication',
