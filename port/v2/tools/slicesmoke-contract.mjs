@@ -21,6 +21,70 @@ const canonicalJson = (value) => {
   }
   return JSON.stringify(value);
 };
+
+/** Capture only the inline CSS properties owned by one negative control. A
+ * control must not restore the element's complete serialized style because
+ * unrelated product code may legitimately publish another inline property
+ * while the control is active. */
+export function captureInlineStyleProperties(style, names) {
+  if (!style || typeof style.getPropertyValue !== 'function'
+    || typeof style.getPropertyPriority !== 'function'
+    || !Array.isArray(names) || names.length === 0) {
+    throw new TypeError('inline style capture requires a CSS declaration and property names');
+  }
+  const seen = new Set();
+  return Object.freeze(Object.fromEntries(names.map((name) => {
+    if (typeof name !== 'string' || name.length === 0 || seen.has(name)) {
+      throw new TypeError('inline style property names must be unique non-empty strings');
+    }
+    seen.add(name);
+    return [name, Object.freeze({
+      value: style.getPropertyValue(name),
+      priority: style.getPropertyPriority(name),
+    })];
+  })));
+}
+
+/** Restore the exact captured value/priority pair. Removing an originally
+ * absent property matters: assigning an empty string is not an exact carrier
+ * operation on every CSS declaration implementation. */
+export function restoreInlineStyleProperties(style, carrier) {
+  if (!style || typeof style.setProperty !== 'function'
+    || typeof style.removeProperty !== 'function'
+    || !carrier || typeof carrier !== 'object' || Array.isArray(carrier)) {
+    throw new TypeError('inline style restoration requires a CSS declaration and carrier');
+  }
+  for (const [name, property] of Object.entries(carrier)) {
+    if (!property || typeof property.value !== 'string' || typeof property.priority !== 'string') {
+      throw new TypeError('inline style carrier properties require string value and priority');
+    }
+    if (property.value === '' && property.priority === '') style.removeProperty(name);
+    else style.setProperty(name, property.value, property.priority);
+  }
+}
+
+/** Return exact restoration evidence plus actionable before/after diagnostics. */
+export function inspectInlineStyleProperties(style, carrier) {
+  const current = captureInlineStyleProperties(style, Object.keys(carrier ?? {}));
+  const changed = Object.freeze(Object.keys(carrier).filter((name) => (
+    current[name].value !== carrier[name].value
+    || current[name].priority !== carrier[name].priority
+  )));
+  return Object.freeze({
+    ok: changed.length === 0,
+    prior: carrier,
+    current,
+    changed,
+  });
+}
+
+/* Slice evaluates its controls in the browser realm. Serialize the exact
+ * browser-free-tested helpers rather than maintaining a second copy. */
+export const INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE = [
+  `const captureInlineStyleProperties=${captureInlineStyleProperties.toString()};`,
+  `const restoreInlineStyleProperties=${restoreInlineStyleProperties.toString()};`,
+  `const inspectInlineStyleProperties=${inspectInlineStyleProperties.toString()};`,
+].join('');
 /* The compatibility writer advances one wall-clock anchor plus exactly two
    bounded cooldown-stamp families. Encode those stamps as ages from `at` and
    retain every other field exactly—including complete saved-route geometry

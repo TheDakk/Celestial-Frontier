@@ -2,24 +2,23 @@
 
 > **2026-08-31 current local successor overlay (supersedes older candidate-status labels; dated
 > evidence and the preview process rules remain immutable):** exact clean signed source
-> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium **78/78** once/no-retry as
-> `20260831064534612-71571-8e4856c2fe`. Its exact-source develop Slice
-> `20260831064707724-71924-76b0bac73a0f` stopped terminal red once/no-retry after **305,022 ms**
-> with **7 findings across 5 scopes**; Glass did not run and no preview was published.
+> `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry as
+> `20260831130356666-917-5be54ef202`. Its exact-source develop Slice
+> `20260831130558500-1306-cb8d7cf92834` stopped terminal red once/no-retry after **303,148 ms**
+> with **3 findings / 3 scopes**; Glass did not run and no preview was published. The Slice roots
+> were whole-`style` restoration instrument false reds after correct phone geometry mutants.
 >
-> Exact SSH-signed implementation source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` repairs measured phone Prime/Guide geometry, topology-based lazy-
-> producer settlement, exact one-commit F4 causality for Survey/Add/Share, and Charter ledger
-> topology with causal-stop. It changes no creature/genome/art/biome structure. The fast develop
-> profile is green at **253 files / 2,556 passed / 1 skipped** with all three TypeScript
-> programs, **34** art sources, **1,014** routes and **454** declared specification fields green.
-> The cumulative **77-bullet** bulletin has rendered ordered SHA-256
-> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+> The local successor changes only the Slice property carrier and causal-stop tests; no
+> creature/genome/art/biome structure or preview rule changed. The full develop profile is green at
+> **253 files / 2,557 passed / 1 skipped**, all three TypeScript programs, **34** art sources,
+> **1,014** routes and **454** declared specification fields. The **77-bullet** bulletin retains
+> ordered SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> Current Compendium producer authority is
-> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d`; its budget-file SHA-256 is
-> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. Certification remains one
-> final clean signed **Compendium → Slice → Glass** develop chain; SceneMemory is production-only,
-> and the preview remains noncertifying. No Edge rebaseline, timeout increase, retry, hosted attempt,
+> Current Compendium producer/budget authority remains
+> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. Certification requires one
+> new clean signed **Compendium → Slice → Glass** develop chain; SceneMemory is production-only and
+> the preview remains noncertifying. No Edge rebaseline, timeout increase, retry, hosted attempt,
 > preview publication, merge, release, version bump or deployment is authorized.
 
 > **2026-08-30 current preview boundary:** the manual preview workflow is a playtest packager, not

@@ -118,6 +118,19 @@ parallel profile
 without a timeout, retry or assertion change. Only the docs-only signed candidate and its one
 Compendium → Slice → Glass chain remain; neither authorizes a GitHub write.
 
+Exact clean SSH-signed docs descendant `4002b2d59508fce70d8e9eed404fd3544635f54d` passed tracked
+preflight and Compendium run `20260831130356666-917-5be54ef202` at **78/78** once/no-retry plus
+named verification. Exact-source develop Slice `20260831130558500-1306-cb8d7cf92834` stopped
+terminal red once/no-retry after **303,148 ms** with **3 findings / 3 scopes**; its named verifier
+correctly rejected the non-PASS predecessor, Glass did not run, and 4002 will not be retried. The
+phone geometry mutants were exact; whole serialized `style` equality falsely rejected restoration,
+then the non-stopped instrument continued into a dependent protected-save cascade. The local
+successor changes only the property carrier, causal-stop boundary, executable controls, evidence
+and references. Its complete browser-free develop profile is green at **253 files / 2,557 passed /
+1 skipped**, all TypeScript/art/route/spec owners green. It authorizes no push, label, hosted run,
+Ready transition or merge. One new reviewed signed candidate and one fresh local Compendium → Slice
+→ Glass chain remain; no hosted attempt is authorized.
+
 **Repository billing state: public as of 2026-08-20.** Standard GitHub-hosted runners are free while
 the repository remains public; larger runners and storage are separate billable surfaces. Nick
 initially set this mode after exhausting the private-repository monthly allowance of **3,000**.

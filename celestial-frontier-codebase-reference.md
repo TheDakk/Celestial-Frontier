@@ -1,27 +1,26 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-31 current signed implementation overlay (matches source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` and supersedes older
-> candidate-status labels):** exact signed predecessor `7a528c7798434ae4ab8765d4898b59df9931f9de`
-> passed Compendium **78/78** once/no-retry; its exact-source develop Slice stopped after
-> **305,022 ms** with **7 findings across 5 scopes**, and Glass did not run. The local successor
-> changes the Arc 4 browser instrument plus bounded presentation/product copy only: lazy-art success
-> is lifecycle/phase/result topology rather than fixed result counts; phone Prime and Guide evidence
-> use measured published geometry with exact restoration; Survey/Atlas Add/Share each require one
-> same-document F4 revision/commit/receipt and idle coordinator before a descendant can run; Charter
-> Land retains its separate exact multi-receipt topology. Landing/Atlas write-held refusal and Atlas
-> sidecar convergence remain fail-closed. Creature/genome, biome, painter, loot, combat, Guardian,
-> save schema, RNG, balance and audio structures are unchanged.
+> **2026-08-31 current instrument overlay (supersedes older candidate-status labels):** exact clean
+> signed source `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry as
+> `20260831130356666-917-5be54ef202`; its exact-source develop Slice
+> `20260831130558500-1306-cb8d7cf92834` stopped after **303,148 ms** with **3 findings / 3
+> scopes**, and Glass did not run. Hidden Prime, forced HP overlap and forced visible
+> Prime-over-Survey all made the geometry oracle red correctly. Whole serialized `style` equality
+> then falsely rejected restoration, and the non-stopped run later produced a dependent
+> protected-save harness cascade. Product presentation was green at the causal boundary.
 >
-> The consolidated develop profile passes **253/253 files, 2,556 tests, 1 skipped**, all three
-> TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields. The
-> source-wide acquisition ownership audit now loads and compacts each file once, then reuses both
-> representations across all predicates; its final focused run recorded **1.61 seconds**, and it
-> stayed under the unchanged five-second ceiling in the complete parallel profile without changing
-> assertions. Current Compendium producer/budget authority is
+> The local successor changes only Slice evidence code and tests. One shared browser-free-tested
+> helper captures/restores/inspects exact value/priority pairs for each owned property; absent
+> properties are removed, unrelated inline declarations survive, intermediate/final restoration is
+> reproved, and affected base/control/restoration reds causal-stop immediately. Creature/genome,
+> biome, painter, loot, combat, Guardian, save schema, RNG, balance, audio and product CSS are
+> unchanged. The consolidated develop profile passes **253/253 files, 2,557 tests, 1 skipped**, all
+> three TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields.
+> Current Compendium producer/budget authority remains
 > `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
 > `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`; the 77-bullet release
-> draft SHA-256 is `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
-> Develop next runs one final unchanged-source **Compendium → Slice → Glass** chain from a clean
+> draft SHA-256 remains `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+> Develop next restarts one unchanged-source **Compendium → Slice → Glass** chain from a new clean
 > signed candidate. SceneMemory remains production-only; no hosted/release/deploy authority exists.
 
 > **2026-08-30 historical SceneMemory source-normalized admission overlay (matches local code):**

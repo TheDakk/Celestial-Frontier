@@ -7,7 +7,7 @@ import { getReleaseHistory, V2_DRAFT_RELEASE } from '../apps/game/src/release-co
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { assessArc4EpochSnapshot } from '../tools/arc4-browser-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence helper intentionally has no complete declaration shim.
-import { assessCharterLandSettlementTopology, assessLazyOwnerOriginGate, assessLazyProductProducerSettlement, assessSingleF4ActionCommit, buildLazyRefillObservationExpression, classifyForegroundServiceTurn, exactTrustedCharterLandReceipt } from '../tools/slicesmoke-contract.mjs';
+import { assessCharterLandSettlementTopology, assessLazyOwnerOriginGate, assessLazyProductProducerSettlement, assessSingleF4ActionCommit, buildLazyRefillObservationExpression, captureInlineStyleProperties, classifyForegroundServiceTurn, exactTrustedCharterLandReceipt, INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE, inspectInlineStyleProperties, restoreInlineStyleProperties } from '../tools/slicesmoke-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence helper intentionally has no declaration shim.
 import { hasUnnegatedSentenceClaim } from '../tools/engineering-browser-contract.mjs';
 
@@ -2582,6 +2582,64 @@ describe('sixth Slice red contract repairs', () => {
     expect(exactTrustedCharterLandReceipt([...trusted, trusted[2]])).toBe(false);
   });
 
+  it('restores only the exact inline style property carrier used by a control', () => {
+    const dom = new JSDOM('<div id="target"></div>', { runScripts: 'outside-only' });
+    const target = dom.window.document.getElementById('target') as HTMLElement;
+    target.style.setProperty('display', 'inline', 'important');
+    target.style.setProperty('color', 'red');
+
+    const prior = captureInlineStyleProperties(target.style, ['display', 'top']);
+    target.style.setProperty('display', 'inline');
+    expect(inspectInlineStyleProperties(target.style, prior).changed).toEqual(['display']);
+    restoreInlineStyleProperties(target.style, prior);
+
+    target.style.setProperty('top', '12px');
+    expect(inspectInlineStyleProperties(target.style, prior).changed).toEqual(['top']);
+    restoreInlineStyleProperties(target.style, prior);
+
+    target.style.setProperty('display', 'inline');
+    target.style.setProperty('top', '12px', 'important');
+    target.style.setProperty('color', 'blue');
+
+    const drift = inspectInlineStyleProperties(target.style, prior);
+    expect(drift.ok).toBe(false);
+    expect(drift.changed).toEqual(['display', 'top']);
+    expect(drift.prior.display).toEqual({ value: 'inline', priority: 'important' });
+    expect(drift.current.display).toEqual({ value: 'inline', priority: '' });
+    expect(drift.prior.top).toEqual({ value: '', priority: '' });
+    expect(drift.current.top).toEqual({ value: '12px', priority: 'important' });
+
+    restoreInlineStyleProperties(target.style, prior);
+    expect(inspectInlineStyleProperties(target.style, prior)).toMatchObject({ ok: true, changed: [] });
+    expect(target.style.getPropertyValue('display')).toBe('inline');
+    expect(target.style.getPropertyPriority('display')).toBe('important');
+    expect(target.style.getPropertyValue('top')).toBe('');
+    expect(target.style.getPropertyPriority('top')).toBe('');
+    expect(Array.from({ length: target.style.length }, (_, index) => target.style.item(index))).not.toContain('top');
+    expect(target.style.getPropertyValue('color')).toBe('blue');
+
+    type Runtime = {
+      captureInlineStyleProperties(style: CSSStyleDeclaration, names: string[]): Record<string, { value: string; priority: string }>;
+      restoreInlineStyleProperties(style: CSSStyleDeclaration, carrier: Record<string, { value: string; priority: string }>): void;
+      inspectInlineStyleProperties(style: CSSStyleDeclaration, carrier: Record<string, { value: string; priority: string }>): { ok: boolean; changed: string[] };
+    };
+    const runtime = dom.window.eval(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
+      return {captureInlineStyleProperties,restoreInlineStyleProperties,inspectInlineStyleProperties};})()`) as Runtime;
+    const emittedPrior = runtime.captureInlineStyleProperties(target.style, ['left']);
+    target.style.setProperty('left', '24px', 'important');
+    target.style.setProperty('background', 'gold');
+    expect(runtime.inspectInlineStyleProperties(target.style, emittedPrior)).toMatchObject({
+      ok: false,
+      changed: ['left'],
+    });
+    runtime.restoreInlineStyleProperties(target.style, emittedPrior);
+    expect(runtime.inspectInlineStyleProperties(target.style, emittedPrior)).toMatchObject({ ok: true, changed: [] });
+    expect(target.style.getPropertyValue('left')).toBe('');
+    expect(Array.from({ length: target.style.length }, (_, index) => target.style.item(index))).not.toContain('left');
+    expect(target.style.getPropertyValue('background')).toBe('gold');
+    dom.window.close();
+  });
+
   it('seals the repaired phone, lazy publication, and Charter causal prefixes before browser spend', () => {
     expect(indexSource).toContain(
       'body:is(.card-open,.panel-open) #primechip { display: none; }',
@@ -2593,9 +2651,19 @@ describe('sixth Slice red contract repairs', () => {
     );
     proveEachMarkerRequired(phonePrime, [
       ['green Prime base', 'if (phGeo.length === 0) {'],
-      ['hidden Prime control', "prime.style.display='none'"],
-      ['measured HP collision', "prime.style.top=h.top+'px'"],
+      ['Prime base causal stop', "failSliceWithoutCascade('PHONE GOLDEN LAYOUT drift:"],
+      ['shared property carrier runtime', '${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}'],
+      ['four owned Prime properties', "captureInlineStyleProperties(prime.style,['display','top','left','transform'])"],
+      ['Prime property restore binding', 'const restore=()=>restoreInlineStyleProperties(prime.style,prior);'],
+      ['hidden Prime control', "prime.style.setProperty('display','none','important')"],
+      ['hidden Prime restoration proof', 'hiddenRestoration=inspectInlineStyleProperties(prime.style,prior)'],
+      ['hidden Prime restoration gate', 'if(!hiddenRestoration.ok)throw new Error'],
+      ['hidden Prime outer gate', '|| !phonePrimeControls.hiddenRestoration?.ok'],
+      ['measured HP collision', "prime.style.setProperty('top',h.top+'px','important')"],
+      ['measured HP left collision', "prime.style.setProperty('left',h.left+'px','important')"],
+      ['measured HP transform collision', "prime.style.setProperty('transform','none','important')"],
       ['exact Prime restoration', 'finally{restore();}'],
+      ['Prime control causal stop', "failSliceWithoutCascade('PHONE PRIME TIER CONTROLS FAILED"],
       ['restored Prime recheck', 'phonePrimeControls.restored.length !== 0'],
     ]);
 
@@ -2611,15 +2679,27 @@ describe('sixth Slice red contract repairs', () => {
       ['general Prime overlay checker', 'const phonePrimeOverlayCheck = (overlayId, openClass) =>'],
       ['phone Prime overlay outcome', 'const phonePrimeOverlay = await evalPh(phoneGuidePrimeOverlayCheck);'],
       ['phone Prime overlay causal control', 'if (!phonePrimeOverlay.ok) {'],
-      ['visible Prime/panel collision control', "prime.style.display='block'"],
+      ['Prime overlay base causal stop', "failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD:"],
+      ['visible Prime/panel collision control', "prime.style.setProperty('display','block','important')"],
       ['measured Prime/panel overlap', '!phonePrimeOverlayCtl.result?.overlap'],
-      ['Prime overlay exact restoration', "finally{restore();}\n      const styleRestored=prime.getAttribute('style')===prior"],
+      ['Prime overlay property carrier', "captureInlineStyleProperties(prime.style,['display'])"],
+      ['Prime overlay restore binding', 'const restore=()=>restoreInlineStyleProperties(prime.style,prior);'],
+      ['Prime overlay exact restoration', 'const restoration=inspectInlineStyleProperties(prime.style,prior)'],
+      ['Prime overlay causal stop', "failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD CONTROL FAILED"],
       ['Prime overlay restored recheck', '!phonePrimeOverlayCtl.restored.ok'],
+      ['Guide base causal stop', "failSliceWithoutCascade('PHONE GUIDE CLEARANCE:"],
       ['green Guide base', 'if (phoneGuideClearance.ok) {'],
       ['measured Guide collision', 'targetHeight=Math.ceil(d.top-p.top+9)'],
-      ['exact Guide restoration', "finally{restore();}\n      const styleRestored=panel.getAttribute('style')===prior"],
+      ['Guide min-height carrier', "captureInlineStyleProperties(panel.style,['min-height'])"],
+      ['Guide min-height restore binding', 'const restore=()=>restoreInlineStyleProperties(panel.style,prior);'],
+      ['Guide strong min-height mutation', "panel.style.setProperty('min-height',targetHeight+'px','important')"],
+      ['exact Guide restoration', 'const restoration=inspectInlineStyleProperties(panel.style,prior)'],
+      ['Guide control causal stop', "failSliceWithoutCascade('PHONE GUIDE CLEARANCE CONTROL FAILED"],
       ['restored Guide recheck', '!phoneGuideClearanceCtl.restored.ok'],
     ]);
+    expect(phoneGuide.split('${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}').length - 1)
+      .toBe(2);
+    expect(phoneGuide.split('finally{restore();}').length - 1).toBe(2);
 
     const phoneSurvey = section(
       sliceSource,
@@ -2629,11 +2709,20 @@ describe('sixth Slice red contract repairs', () => {
     proveEachMarkerRequired(phoneSurvey, [
       ['real Survey card checker', "phonePrimeOverlayCheck('survey', 'card-open')"],
       ['real Survey green outcome', 'if (!phoneSurveyPrimeOverlay.ok) {'],
-      ['visible Prime/Survey collision control', "prime.style.display='block'"],
+      ['Survey Prime base causal stop', "failSliceWithoutCascade('PHONE PRIME SURVEY YIELD:"],
+      ['Survey property carrier runtime', '${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}'],
+      ['visible Prime/Survey collision control', "prime.style.setProperty('display','block','important')"],
       ['measured Prime/Survey overlap', '!phoneSurveyPrimeOverlayCtl.result?.overlap'],
-      ['Survey Prime exact restoration', "finally{restore();}\n      const styleRestored=prime.getAttribute('style')===prior"],
+      ['Survey Prime property carrier', "captureInlineStyleProperties(prime.style,['display'])"],
+      ['Survey Prime restore binding', 'const restore=()=>restoreInlineStyleProperties(prime.style,prior);'],
+      ['Survey Prime final restoration', 'finally{restore();}'],
+      ['Survey Prime exact restoration', 'const restoration=inspectInlineStyleProperties(prime.style,prior)'],
+      ['Survey Prime causal stop', "failSliceWithoutCascade('PHONE PRIME SURVEY YIELD CONTROL FAILED"],
       ['Survey Prime restored recheck', '!phoneSurveyPrimeOverlayCtl.restored.ok'],
     ]);
+    for (const owner of [phonePrime, phoneGuide, phoneSurvey]) {
+      expect(owner).not.toMatch(/(?:get|set|remove)Attribute\('style'\)|cssText/u);
+    }
 
     const stage3 = section(
       sliceSource,

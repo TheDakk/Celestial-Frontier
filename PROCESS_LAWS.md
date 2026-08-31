@@ -1,5 +1,22 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A STYLE CONTROL OWNS PROPERTIES, NOT THE SERIALIZED STYLE ATTRIBUTE** (2026-08-31). The
+> inline `style` attribute is a shared, order-sensitive bag. A negative control that mutates named
+> CSS properties must capture only those canonical property names as exact `{value, priority}`
+> pairs; it must never restore or compare `style`/`cssText` wholesale. In `finally`, remove a
+> property only when its captured value and priority were both empty; otherwise restore it with
+> exact `setProperty(name, value, priority)`. Resnapshot the same owned properties, retain
+> prior/current diagnostics, preserve every unrelated inline declaration, and reprove the green
+> product outcome. A green base must turn red under the intended strong mutant, then return green
+> after restoration. Any base, control or restoration red invokes the shared causal-stop before a
+> dependent fixture can run.
+>
+> Exact signed source `4002b2d…` earned this law: hidden Prime, measured HP overlap and visible
+> Prime/Survey overlap all turned the geometry ruler red correctly, but whole-attribute string
+> equality falsely rejected restoration and the runner continued into a five-minute protected-save
+> cascade. Preserve that red; repair the property carrier and stop boundary, not product CSS,
+> timeout, retry policy, browser ruler or Edge-version baseline.
+
 > **A SOURCE-WIDE STATIC AUDIT READS AND COMPACTS EACH FILE ONCE** (2026-08-31). A fail-closed
 > ownership test
 > crossed its five-second ceiling only under the parallel full suite because it synchronously read

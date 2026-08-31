@@ -17,53 +17,52 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-31 · 7A528 RED PRESERVED · 0DC SIGNED/FAST GREEN · DOCS CANDIDATE NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-08-31 · 4002 CHAIN STOP PRESERVED · PROPERTY-CARRIER REPAIR FAST GREEN ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Exact SSH-signed implementation/evidence source
-  **0dc9168a1adbbc80a5e99503c02ab34d58b46a50** (tree
-  **d1e0a906dd41e606a3579af1501908b8444407e8**, parent
-  **7a528c7798434ae4ab8765d4898b59df9931f9de**) is **54 commits ahead** of the remote agent
-  branch. Its commit object contains the configured Ed25519 SSH signature. This handoff refresh is
-  docs-only; once signed, that clean descendant is the exact unchanged-product candidate for the
-  one local develop browser chain.
+  **origin/openai/mac**. Exact SSH-signed docs candidate
+  **4002b2d59508fce70d8e9eed404fd3544635f54d** (tree
+  **052ff99ce52045a30c4911259b3bbcad05575bbc**, parent
+  **0dc9168a1adbbc80a5e99503c02ab34d58b46a50**) is **55 commits ahead** of the remote agent
+  branch. The current dirty successor changes only the Slice instrument, its browser-free contract
+  tests, immutable evidence and synchronized references; no game product byte changed.
 - **Immutable Compendium evidence:** Edge preflight passed on `152.0.4191.53` / CDP `1.3`.
-  Compendium (**catalog/art stress**) run `20260831064534612-71571-8e4856c2fe` passed
-  **78/78** once/no-retry and passed named verification on exact 7a528.
+  Compendium (**catalog/art stress**) run `20260831130356666-917-5be54ef202` passed
+  **78/78** once/no-retry in **65,803 ms** and passed named verification on exact 4002.
 - **Immutable Slice stop:** Slice (**playable journey**) run
-  `20260831064707724-71924-76b0bac73a0f` used that exact unchanged source and stopped terminal
-  red once/no-retry after **305,022 ms** with **7 findings across 5 scopes**. Glass
-  (**cross-device presentation**) did not run. The exact carriers remain immutable under
-  `audits/`; 7a528 will not be retried or relabelled.
+  `20260831130558500-1306-cb8d7cf92834` used that exact unchanged source and stopped terminal
+  red once/no-retry after **303,148 ms** with **3 findings**. Glass
+  (**cross-device presentation**) did not run. Its report passed the named verifier's expected
+  fail-closed rejection; the exact carriers remain immutable under `audits/`, and 4002 will not be
+  retried or relabelled.
 - **Authority:** no push, hosted run, PR Ready transition, merge, release, version bump, preview
   publication or deployment is authorized. `develop`, `main` and the live site are unchanged.
 
 ### What the retained red proved and the bounded successor repairs
 
-The five scopes were actionable instrument/presentation races, not a mandate to rebuild the game
-or weaken its rulers. Signed implementation source 0dc preserves the exact product systems and closes:
+The real phone layout passed. Both geometry mutants turned red exactly as intended: hidden Prime
+was rejected, forced HP overlap was rejected, and forced visible Prime over a real Survey card was
+rejected. The instrument then compared the element's entire serialized `style` attribute even
+though each control owned only `display`, `top`, `left`, `transform` or Guide `min-height`.
+Unrelated/serialization drift therefore made exact restoration falsely red. Because those early
+findings accumulated instead of causal-stopping, the invalid run continued until its protected-save
+setup reached a replaced/missing `window.__CF_SLICE__`; that third finding is downstream and has no
+independent product authority.
 
-1. **Lazy producer settlement:** judge lifecycle topology, phase/result parity, positive work,
-   final-event identity and zero errors instead of a stale fixed `3/1` count expectation; the
-   retained healthy product showed the valid `11/8` topology.
-2. **Phone Prime and Guide presentation:** use measured visibility/geometry, real publication plus
-   two animation frames, exact style restoration and bidirectional negative controls. Prime remains
-   native and reachable without overlapping HP, then yields while a phone Survey/panel owns the
-   same band; the Guide height control now judges the real published panel.
-3. **Exact F4 action causality:** Survey, Atlas Add and Share must each prove exactly one new
-   action-specific durable receipt/revision/commit, stable SessionRNG authority and an idle cleared
-   coordinator before any dependent action proceeds. A merely settled predecessor cannot
-   impersonate a successful current action.
-4. **Charter topology and causal-stop:** compare receipts by exact keys/ordinals, allow only the
-   intended Share/achievement/progression deltas, require the exact Land witness, and stop every
-   descendant after setup, action or settlement red. Ordinal `10/11` controls prevent lexical
-   ordering from becoming an accidental oracle.
-5. **Read-only refusal and route convergence:** product-action settling has explicit player copy;
-   held Training writes continue to block Landing/Atlas outside active Training, and already-
-   durable Atlas state must rebind its route sidecar or schedule convergence reload.
+The bounded successor:
+
+1. captures only each control's canonical CSS properties as exact value/priority pairs;
+2. restores an originally absent property with `removeProperty`, otherwise with exact
+   `setProperty(name, value, priority)`, while preserving unrelated inline publication;
+3. forces each negative geometry mutant with `!important`, verifies the intermediate hidden-Prime
+   restoration and the final carrier/outcome, and retains actionable prior/current diagnostics;
+4. shares the exact browser-free-tested helper source with the browser realm instead of maintaining
+   two implementations; and
+5. immediately `failSliceWithoutCascade(...)` on each affected phone base, control or restoration
+   red so no dependent product fixture can manufacture another finding.
 
 These changes do not redesign creatures, genomes, painters, biomes, plants, fauna, Guardians,
 loot, crafting, combat, care, exploration, audio, deterministic generation, save schema, rewards,
@@ -72,15 +71,13 @@ provenance only and never trigger a rebaseline.
 
 ### Current browser-free verification
 
-- The final consolidated fast develop profile is green at **253 files / 2,556 passed /
+- The final consolidated fast develop profile is green at **253 files / 2,557 passed /
   1 skipped**.
 - All three strict TypeScript programs are green. The art gate covers **34** clean sources, routes
   are **1,014/1,014**, and all **454** declared specification fields are non-inert.
-- The one static ownership check that crossed its five-second ceiling under the parallel suite no
-  longer rereads or repeatedly normalizes the entire source tree: each file is read and compacted
-  once, then reused in memory. Its final focused run recorded **1.61 seconds**, and it remained
-  under the unchanged five-second ceiling in the complete parallel profile, with no timeout,
-  retry, assertion or coverage change.
+- The exact property carrier has executable controls for present/absent properties, value drift,
+  priority drift and unrelated inline mutation preservation. The focused Slice/evidence boundary
+  passed **6 files / 63 tests** before the full profile.
 - Current Compendium producer authority is
   `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d`; its budget-file SHA-256 is
   `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`.
@@ -89,14 +86,17 @@ provenance only and never trigger a rebaseline.
 
 ### Exact remaining local sequence
 
-1. Commit this docs-only handoff descendant and verify its exact clean SSH-signed identity.
-2. From that one unchanged clean signed candidate, run exactly one fail-fast/no-retry
+1. Retain the exact 4002 Compendium/Slice carriers, synchronize every affected current reference,
+   and create one reviewed SSH-signed instrument/evidence commit.
+2. Create and verify one clean SSH-signed docs-only descendant as the exact candidate; run the
+   tracked-input preflight against that committed source.
+3. From that one unchanged clean signed candidate, run exactly one fail-fast/no-retry
    **Compendium → Slice (`develop`) → Glass (`develop`)** chain. Named-verify every report and stop
    immediately on a nonzero, red or instrument result. Do not run SceneMemory or Recovery.
-3. If all three stages are green, retain the exact reports/logs/screenshots, update
+4. If all three stages are green, retain the exact reports/logs/screenshots, update
    `audits/README.md` and the current references once, and leave a self-contained review handoff.
    Do not rerun an unchanged green candidate.
-4. **SceneMemory remains production-only/quarantined.** A future production candidate requires an
+5. **SceneMemory remains production-only/quarantined.** A future production candidate requires an
    explicit activation decision and the exact
    **SceneMemory → Compendium → Slice (`production`) → Glass (`production`) → Recovery** chain.
 
@@ -117,15 +117,16 @@ physical phone/tablet install, heat, battery and true-GPU review.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex now:** sign this docs-only descendant, run the one exact develop Compendium →
-  Slice → Glass chain and retain its evidence. Do not push or invoke hosted CI.
+- **OpenAI/Codex now:** finish the reviewed property-carrier/evidence commit, sign one docs-only
+  candidate, then run its one exact develop Compendium → Slice → Glass chain. Do not push or invoke
+  hosted CI.
 - **GitHub now:** none. PR #35 remains the existing draft with base **develop** and source
   **openai/mac**. Its copy-ready title is **feat(v2): complete roadmap campaign and harden CI
   parity**. No exact push/head or hosted attempt is authorized.
 - **Copy-ready PR description after local green:** “Completes the existing v2 roadmap campaign
   without recreating established systems; preserves creature/genome/universe art structures;
-  hardens F4 action causality, Charter topology and measured presentation evidence; synchronizes
-  all current references; and records one exact local Compendium → Slice → Glass chain. No
+  hardens F4 action causality, Charter topology and property-scoped measured presentation evidence;
+  synchronizes all current references; and records one exact local Compendium → Slice → Glass chain. No
   release, version bump or deployment is included.”
 - **Claude Code now:** Nick does **not** need to open Claude yet, and Claude must not edit this
   OpenAI worktree. After PR #35 is terminal-green and merged into `develop`, Claude should branch

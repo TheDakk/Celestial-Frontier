@@ -65,6 +65,7 @@ import {
   classifyForegroundServiceTurnReceipt,
   classifyPlanetsideSettlement,
   exactTrustedCharterLandReceipt,
+  INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE,
   planetsidePhaseRemainingMs,
   planetsideRuntimeTimeoutDecision,
   SLICE_SCREENSHOT_LOGICAL_NAMES,
@@ -22857,21 +22858,31 @@ try {
   /* the phone golden: the FULL geometry contract runs here too — the
      player-chip/search overlap hid in a phone-only branch the first time */
   const phGeo = await evalPh(geoCheck);
-  if (phGeo.length) fails.push('PHONE GOLDEN LAYOUT drift: ' + phGeo.join(' · '));
+  if (phGeo.length) {
+    failSliceWithoutCascade('PHONE GOLDEN LAYOUT drift: ' + phGeo.join(' · '));
+  }
   if (phGeo.length === 0) {
-    const phonePrimeControls = await evalPh(`(()=>{const prime=document.getElementById('primechip'),hp=document.getElementById('hpbar'),
-      prior=prime.getAttribute('style');let hidden=null,overlap=null,error=null;const restore=()=>{
-        if(prior===null)prime.removeAttribute('style');else prime.setAttribute('style',prior);};
-      try{prime.style.display='none';hidden=${geoCheck};restore();const h=hp.getBoundingClientRect();
-        prime.style.top=h.top+'px';prime.style.left=h.left+'px';prime.style.transform='none';overlap=${geoCheck};}
+    const phonePrimeControls = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
+      const prime=document.getElementById('primechip'),hp=document.getElementById('hpbar'),
+      prior=captureInlineStyleProperties(prime.style,['display','top','left','transform']);
+      let hidden=null,hiddenRestoration=null,overlap=null,error=null;
+      const restore=()=>restoreInlineStyleProperties(prime.style,prior);
+      try{prime.style.setProperty('display','none','important');hidden=${geoCheck};restore();
+        hiddenRestoration=inspectInlineStyleProperties(prime.style,prior);
+        if(!hiddenRestoration.ok)throw new Error('hidden Prime carrier restoration failed');
+        const h=hp.getBoundingClientRect();
+        prime.style.setProperty('top',h.top+'px','important');prime.style.setProperty('left',h.left+'px','important');
+        prime.style.setProperty('transform','none','important');overlap=${geoCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
-      const styleRestored=prime.getAttribute('style')===prior,restored=styleRestored?${geoCheck}:['primechip style was not restored'];
-      return {hidden,overlap,restored,styleRestored,error};})()`);
+      const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
+        restored=styleRestored?${geoCheck}:['primechip owned style properties were not restored'];
+      return {hidden,hiddenRestoration,overlap,restored,styleRestored,restoration,error};})()`);
     if (!phonePrimeControls.hidden?.some((finding) => finding.includes('visible reachable phone button'))
       || !phonePrimeControls.overlap?.includes('primechip overlaps hpbar')
+      || !phonePrimeControls.hiddenRestoration?.ok
       || !phonePrimeControls.styleRestored || phonePrimeControls.error !== null
       || phonePrimeControls.restored.length !== 0) {
-      fails.push('PHONE PRIME TIER CONTROLS FAILED — hidden/HP-overlap mutations were not isolated or restored: '
+      failSliceWithoutCascade('PHONE PRIME TIER CONTROLS FAILED — hidden/HP-overlap mutations were not isolated or restored: '
         + JSON.stringify(phonePrimeControls));
     }
   }
@@ -23002,42 +23013,47 @@ try {
   const phoneGuidePrimeOverlayCheck = phonePrimeOverlayCheck('guidepanel', 'panel-open');
   const phonePrimeOverlay = await evalPh(phoneGuidePrimeOverlayCheck);
   if (!phonePrimeOverlay.ok) {
-    fails.push('PHONE PRIME OVERLAY YIELD: open Guide did not hide Prime above its overlapping panel: '
+    failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD: open Guide did not hide Prime above its overlapping panel: '
       + JSON.stringify(phonePrimeOverlay));
   } else {
-    const phonePrimeOverlayCtl = await evalPh(`(()=>{const prime=document.getElementById('primechip'),prior=prime.getAttribute('style');
-      let result=null,error=null;const restore=()=>{if(prior===null)prime.removeAttribute('style');else prime.setAttribute('style',prior);};
-      try{prime.style.display='block';result=${phoneGuidePrimeOverlayCheck};}
+    const phonePrimeOverlayCtl = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
+      const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display']);
+      let result=null,error=null;const restore=()=>restoreInlineStyleProperties(prime.style,prior);
+      try{prime.style.setProperty('display','block','important');result=${phoneGuidePrimeOverlayCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
-      const styleRestored=prime.getAttribute('style')===prior,restored=styleRestored?${phoneGuidePrimeOverlayCheck}:{ok:false,why:'style-not-restored'};
-      return {result,restored,styleRestored,error};})()`);
+      const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
+        restored=styleRestored?${phoneGuidePrimeOverlayCheck}:{ok:false,why:'owned-style-properties-not-restored'};
+      return {result,restored,styleRestored,restoration,error};})()`);
     if (phonePrimeOverlayCtl.result?.ok || !phonePrimeOverlayCtl.result?.overlap
       || !phonePrimeOverlayCtl.styleRestored || phonePrimeOverlayCtl.error !== null
       || !phonePrimeOverlayCtl.restored.ok) {
-      fails.push('PHONE PRIME OVERLAY YIELD CONTROL FAILED — injected visible Prime/panel collision stayed green or failed restoration: '
+      failSliceWithoutCascade('PHONE PRIME OVERLAY YIELD CONTROL FAILED — injected visible Prime/panel collision stayed green or failed restoration: '
         + JSON.stringify(phonePrimeOverlayCtl));
     }
   }
   const phoneGuideClearance = await evalPh(phoneGuideClearanceCheck);
   if (!phoneGuideClearance.ok) {
-    fails.push('PHONE GUIDE CLEARANCE: the open panel does not clear the measured dock by 8px: ' + JSON.stringify(phoneGuideClearance));
+    failSliceWithoutCascade('PHONE GUIDE CLEARANCE: the open panel does not clear the measured dock by 8px: '
+      + JSON.stringify(phoneGuideClearance));
   }
   /* Reproduce the guarded rendered overlap directly. Guide content may grow
      or shrink independently, so a historical max-height value is not a
      stable negative control for the rectangle checker. */
   if (phoneGuideClearance.ok) {
-    const phoneGuideClearanceCtl = await evalPh(`(()=>{ const panel=document.getElementById('guidepanel'),dock=document.getElementById('dock'),
-      prior=panel.getAttribute('style'),p=panel.getBoundingClientRect(),d=dock.getBoundingClientRect(),
-      targetHeight=Math.ceil(d.top-p.top+9);let result=null,error=null;const restore=()=>{
-        if(prior===null)panel.removeAttribute('style');else panel.setAttribute('style',prior);};
-      try{panel.style.minHeight=targetHeight+'px';result=${phoneGuideClearanceCheck};}
+    const phoneGuideClearanceCtl = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
+      const panel=document.getElementById('guidepanel'),dock=document.getElementById('dock'),
+      prior=captureInlineStyleProperties(panel.style,['min-height']),p=panel.getBoundingClientRect(),d=dock.getBoundingClientRect(),
+      targetHeight=Math.ceil(d.top-p.top+9);let result=null,error=null;
+      const restore=()=>restoreInlineStyleProperties(panel.style,prior);
+      try{panel.style.setProperty('min-height',targetHeight+'px','important');result=${phoneGuideClearanceCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
-      const styleRestored=panel.getAttribute('style')===prior,restored=styleRestored?${phoneGuideClearanceCheck}:{ok:false,why:'style-not-restored'};
-      return {result,restored,targetHeight,styleRestored,error}; })()`);
+      const restoration=inspectInlineStyleProperties(panel.style,prior),styleRestored=restoration.ok,
+        restored=styleRestored?${phoneGuideClearanceCheck}:{ok:false,why:'owned-style-properties-not-restored'};
+      return {result,restored,targetHeight,styleRestored,restoration,error}; })()`);
     if (phoneGuideClearanceCtl.result?.ok || !(phoneGuideClearanceCtl.result?.gap < 0)
       || !phoneGuideClearanceCtl.styleRestored || phoneGuideClearanceCtl.error !== null
       || !phoneGuideClearanceCtl.restored.ok) {
-      fails.push('PHONE GUIDE CLEARANCE CONTROL FAILED — the injected rendered overlap stayed green: '
+      failSliceWithoutCascade('PHONE GUIDE CLEARANCE CONTROL FAILED — the injected rendered overlap stayed green: '
         + JSON.stringify(phoneGuideClearanceCtl));
     }
   }
@@ -23232,19 +23248,21 @@ try {
   const phoneSurveyPrimeOverlayCheck = phonePrimeOverlayCheck('survey', 'card-open');
   const phoneSurveyPrimeOverlay = await evalNavPh(phoneSurveyPrimeOverlayCheck);
   if (!phoneSurveyPrimeOverlay.ok) {
-    fails.push('PHONE PRIME SURVEY YIELD: a real Earth Survey card did not hide Prime above its overlapping card: '
+    failSliceWithoutCascade('PHONE PRIME SURVEY YIELD: a real Earth Survey card did not hide Prime above its overlapping card: '
       + JSON.stringify(phoneSurveyPrimeOverlay));
   } else {
-    const phoneSurveyPrimeOverlayCtl = await evalNavPh(`(()=>{const prime=document.getElementById('primechip'),prior=prime.getAttribute('style');
-      let result=null,error=null;const restore=()=>{if(prior===null)prime.removeAttribute('style');else prime.setAttribute('style',prior);};
-      try{prime.style.display='block';result=${phoneSurveyPrimeOverlayCheck};}
+    const phoneSurveyPrimeOverlayCtl = await evalNavPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
+      const prime=document.getElementById('primechip'),prior=captureInlineStyleProperties(prime.style,['display']);
+      let result=null,error=null;const restore=()=>restoreInlineStyleProperties(prime.style,prior);
+      try{prime.style.setProperty('display','block','important');result=${phoneSurveyPrimeOverlayCheck};}
       catch(cause){error=String(cause?.message||cause);}finally{restore();}
-      const styleRestored=prime.getAttribute('style')===prior,restored=styleRestored?${phoneSurveyPrimeOverlayCheck}:{ok:false,why:'style-not-restored'};
-      return {result,restored,styleRestored,error};})()`);
+      const restoration=inspectInlineStyleProperties(prime.style,prior),styleRestored=restoration.ok,
+        restored=styleRestored?${phoneSurveyPrimeOverlayCheck}:{ok:false,why:'owned-style-properties-not-restored'};
+      return {result,restored,styleRestored,restoration,error};})()`);
     if (phoneSurveyPrimeOverlayCtl.result?.ok || !phoneSurveyPrimeOverlayCtl.result?.overlap
       || !phoneSurveyPrimeOverlayCtl.styleRestored || phoneSurveyPrimeOverlayCtl.error !== null
       || !phoneSurveyPrimeOverlayCtl.restored.ok) {
-      fails.push('PHONE PRIME SURVEY YIELD CONTROL FAILED — injected visible Prime/Survey collision stayed green or failed restoration: '
+      failSliceWithoutCascade('PHONE PRIME SURVEY YIELD CONTROL FAILED — injected visible Prime/Survey collision stayed green or failed restoration: '
         + JSON.stringify(phoneSurveyPrimeOverlayCtl));
     }
   }

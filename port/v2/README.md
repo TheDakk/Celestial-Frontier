@@ -2,26 +2,25 @@
 
 > **2026-08-31 current local successor boundary (supersedes every older “current” status label
 > below; dated evidence remains immutable):** exact clean signed source
-> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium (**catalog/art stress**)
-> **78/78** once/no-retry as `20260831064534612-71571-8e4856c2fe`. Its exact-source develop
-> Slice (**playable journey**) `20260831064707724-71924-76b0bac73a0f` stopped terminal red
-> once/no-retry after **305,022 ms** with **7 findings across 5 scopes**; Glass
-> (**cross-device presentation**) did not run.
+> `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium (**catalog/art stress**)
+> **78/78** once/no-retry as `20260831130356666-917-5be54ef202`. Its exact-source develop Slice
+> (**playable journey**) `20260831130558500-1306-cb8d7cf92834` stopped terminal red once/no-retry
+> after **303,148 ms** with **3 findings / 3 scopes**; Glass (**cross-device presentation**) did not
+> run. The phone geometry controls turned red as designed, then whole serialized `style` equality
+> falsely rejected restoration; the later protected-save finding is a dependent cascade.
 >
-> Exact SSH-signed implementation source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` replaces stale count/snapshot oracles with measured layout and exact
-> lifecycle/receipt topology, proves one causal F4 commit for Survey/Add/Share, and causal-stops
-> Charter descendants after a red predecessor. The fast develop boundary is green at **253 files /
-> 2,556 passed / 1 skipped**, all three TypeScript programs, **34** clean art sources,
-> **1,014/1,014** routes and **454** non-inert specification fields. A source-wide ownership audit
-> now reads and compacts each file once instead of repeating both operations; its final focused run
-> recorded **1.61 seconds**, and it stayed under the unchanged five-second ceiling in the complete
-> parallel profile without a timeout or assertion change. Current Compendium producer/budget
-> authority is `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
+> The local successor is instrument-only. It carries exact CSS value/priority pairs for Prime
+> `display/top/left/transform`, Prime-over-overlay `display`, and Guide `min-height`; restores absent
+> properties by removal; preserves unrelated inline publication; and immediately causal-stops a red
+> base/control/restoration. The complete develop boundary is green at **253 files / 2,557 passed /
+> 1 skipped**, all three TypeScript programs, **34** clean art sources, **1,014/1,014** routes and
+> **454** non-inert specification fields. Current Compendium producer/budget authority remains
+> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
 > `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. **A New Foundation**
-> is **77 bullets**, SHA-256
+> remains **77 bullets**, SHA-256
 > `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> From the final clean signed candidate, develop runs exactly one unchanged-source
+> A new clean signed candidate restarts exactly one unchanged-source
 > **Compendium → Slice → Glass** chain. SceneMemory remains production-only. No Edge rebaseline,
 > timeout increase, retry, hosted attempt, push, merge, release, version bump, publication or
 > deployment is authorized.

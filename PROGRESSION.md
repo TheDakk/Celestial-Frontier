@@ -2,26 +2,25 @@
 
 > **2026-08-31 current local successor overlay (supersedes every older “current” label below;
 > dated progression and evidence checkpoints remain immutable):** exact clean signed source
-> `7a528c7798434ae4ab8765d4898b59df9931f9de` passed Compendium **78/78** once/no-retry as
-> `20260831064534612-71571-8e4856c2fe`. Its exact-source develop Slice
-> `20260831064707724-71924-76b0bac73a0f` stopped terminal red once/no-retry after **305,022 ms**
-> with **7 findings across 5 scopes**; Glass did not run.
+> `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry as
+> `20260831130356666-917-5be54ef202`. Its exact-source develop Slice
+> `20260831130558500-1306-cb8d7cf92834` stopped terminal red once/no-retry after **303,148 ms**
+> with **3 findings / 3 scopes**; Glass did not run. The roots were property-restoration instrument
+> false reds after exact phone geometry mutants; no progression outcome was implicated.
 >
-> Exact SSH-signed implementation source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` requires exact one-commit F4 causality for Survey/Add/Share and
-> exact Charter ledger topology before dependent work may continue. It also repairs the topology-
-> based lazy-producer and measured phone Prime/Guide evidence that produced the remaining scopes.
-> Existing Charter rules, rewards, achievements, ranks, creature/genome identity, biome and art
-> structures are unchanged. The fast develop profile is green at **253 files / 2,556
-> passed / 1 skipped**, with all three TypeScript programs, **1,014** routes and **454** declared
-> specification fields green. **A New Foundation** now contains **77** unique bullets with rendered
-> ordered SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+> The local successor changes only the Slice CSS-property carrier and causal-stop tests. Existing
+> Charter rules, rewards, achievements, ranks, creature/genome identity, biome and art structures
+> are unchanged. The full develop profile is green at **253 files / 2,557 passed / 1 skipped**, all
+> three TypeScript programs, **1,014** routes and **454** declared specification fields. **A New
+> Foundation** remains **77** bullets with ordered SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
 >
-> Current Compendium producer authority is
-> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d`; its budget-file SHA-256 is
-> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. The final clean signed
-> develop candidate runs exactly **Compendium → Slice → Glass** once and unchanged-source;
-> SceneMemory remains production-only. No Edge rebaseline, timeout increase, retry, hosted attempt,
-> merge, release, version bump, publication or deployment is authorized.
+> Current Compendium producer/budget authority remains
+> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. A new clean signed
+> candidate restarts **Compendium → Slice → Glass** exactly once and unchanged-source; SceneMemory
+> remains production-only. No Edge rebaseline, timeout increase, retry, hosted attempt, merge,
+> release, version bump, publication or deployment is authorized.
 
 > **2026-08-30 historical local aggregate-follow-up UI release correction (matches local code and
 > supersedes narrower current overlays below):** aggregate progression still owns only its one
