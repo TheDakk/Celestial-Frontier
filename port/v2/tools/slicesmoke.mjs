@@ -55,6 +55,7 @@ import {
   selectArc5FeedFixtureBurnVerb,
   assessTrainingBusyRefusalPrecondition,
   assessLazyOwnerOriginGate,
+  assessLazyProductProducerSettlement,
   beginF4GreenContinuation,
   buildLazyRefillObservationExpression,
   classifyCompendiumDetailReceipt,
@@ -1418,7 +1419,16 @@ const slowSpeciesHandler = (owner) => (req, res) => {
     return;
   }
   if ((req.url || '').split('?')[0] === candidateSpeciesPainterPath) {
-    slowSpeciesAttempts.push({ owner });
+    slowSpeciesAttempts.push(Object.freeze({
+      ordinal: slowSpeciesAttempts.length + 1,
+      owner,
+      phase: slowSpeciesOpen ? 'post-release' : 'held',
+      method: String(req.method || ''),
+      pathname: (req.url || '').split('?')[0],
+      destination: String(req.headers['sec-fetch-dest'] || '').toLowerCase(),
+      mode: String(req.headers['sec-fetch-mode'] || '').toLowerCase(),
+      site: String(req.headers['sec-fetch-site'] || '').toLowerCase(),
+    }));
     if (!slowSpeciesOpen) {
       slowSpeciesRequests.push({ req, res, owner });
       return;
@@ -22557,23 +22567,30 @@ try {
   const lazyClosedArmed = await evalLazyClosed(`(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return {
     mode:d.panel.mode,listImages:d.surfaces.list.imageCount,focus:document.activeElement?.id||null,
     closedCompletionCommits:d.panel.closedCompletionCommits,renderCommits:d.panel.renderCommits}})()`);
-  const assessCurrentLazyOwnerOriginGate = () => assessLazyOwnerOriginGate({
+  const assessCurrentLazyOwnerOriginGate = (stage) => assessLazyOwnerOriginGate({
     liveOrigin: new URL(URL5).origin,
     closedOrigin: new URL(URL5_CLOSED).origin,
-    requestOwners: slowSpeciesAttempts.map((request) => request.owner).sort(),
+    expectedPath: candidateSpeciesPainterPath,
+    stage,
+    requestAttempts: slowSpeciesAttempts,
   });
-  let slowRequestOwners = [];
-  let lazyOwnerOriginGate = assessCurrentLazyOwnerOriginGate();
+  let slowRequestAttempts = [];
+  let lazyOwnerOriginGate = assessCurrentLazyOwnerOriginGate('pre-release');
   let slowRequestObserved = false;
   for (let i = 0; i < 100 && !slowRequestObserved; i++) {
-    slowRequestOwners = slowSpeciesAttempts.map((request) => request.owner).sort();
-    lazyOwnerOriginGate = assessCurrentLazyOwnerOriginGate();
-    slowRequestObserved = lazyOwnerOriginGate.ok;
+    slowRequestAttempts = [...slowSpeciesAttempts];
+    lazyOwnerOriginGate = assessCurrentLazyOwnerOriginGate('pre-release');
+    if (lazyOwnerOriginGate.status === 'error') {
+      throw new Error('slow Compendium isolated-origin request role became terminal before release: '
+        + JSON.stringify({ gate: lazyOwnerOriginGate, slowRequestAttempts,
+          held: slowSpeciesRequests.length }));
+    }
+    slowRequestObserved = lazyOwnerOriginGate.status === 'ready';
     if (!slowRequestObserved) await sleep(25);
   }
-  if (!lazyOwnerOriginGate.ok) {
+  if (lazyOwnerOriginGate.status !== 'ready') {
     throw new Error('slow Compendium isolated-origin request gate failed before release: '
-      + JSON.stringify({ gate: lazyOwnerOriginGate, slowRequestOwners,
+      + JSON.stringify({ gate: lazyOwnerOriginGate, slowRequestAttempts,
         held: slowSpeciesRequests.length }));
   }
   if (!slowRequestObserved || !lazyBefore.placeholders || !lazyBefore.focus || !lazyBefore.group
@@ -22584,7 +22601,7 @@ try {
     || lazyClosedArmed.renderCommits !== lazyClosedBefore.renderCommits) {
     fails.push('COMPENDIUM LAZY PLACEHOLDER/CLOSED OWNER: held chunk did not establish both exact owner states: '
       + JSON.stringify({ slowRequestObserved, lazyBefore, lazyClosedBefore, lazyClosedArmed,
-        lazyOwnerOriginGate, slowRequestOwners, held: slowSpeciesRequests.length }));
+        lazyOwnerOriginGate, slowRequestAttempts, held: slowSpeciesRequests.length }));
   }
   /* The second target now exists, so this owner's foreground authority is no
      longer implicit. Reclaim the exact first target and service one production-shaped
@@ -22593,11 +22610,11 @@ try {
     'slow Compendium live owner');
   const lazyRefillTimeoutMs = 30000;
   const lazyRefillDeadline = performance.now() + lazyRefillTimeoutMs;
-  const lazyReleaseOriginGate = assessCurrentLazyOwnerOriginGate();
-  if (!lazyReleaseOriginGate.ok) {
+  const lazyReleaseOriginGate = assessCurrentLazyOwnerOriginGate('pre-release');
+  if (lazyReleaseOriginGate.status !== 'ready') {
     throw new Error('slow Compendium request inventory changed before release: '
       + JSON.stringify({ gate: lazyReleaseOriginGate,
-        requestOwners: slowSpeciesAttempts.map((request) => request.owner).sort() }));
+        requestAttempts: slowSpeciesAttempts }));
   }
   releaseSlowSpecies();
   const lazyRefillObservationExpression = buildLazyRefillObservationExpression(
@@ -22617,6 +22634,11 @@ try {
     } catch (error) {
       throw new Error('slow Compendium art refill observation failed inside its immutable deadline: '
         + JSON.stringify({ error: String(error?.message || error), last: lazyAfter }));
+    }
+    const lazyRefillRequestGate = assessCurrentLazyOwnerOriginGate('settled');
+    if (lazyRefillRequestGate.status === 'error') {
+      throw new Error('slow Compendium request role became terminal during live settlement: '
+        + JSON.stringify({ gate: lazyRefillRequestGate, requestAttempts: slowSpeciesAttempts }));
     }
     const receivedAtMs = performance.now();
     const foreground = { ...lazyAfter.foreground, targetId: lazyReleaseAuthority.observation.targetId };
@@ -22708,6 +22730,11 @@ try {
       throw new Error('released chunk closed-owner settlement observation failed inside its immutable deadline: '
         + JSON.stringify({ error: String(error?.message || error), last: lazyClosedAfter }));
     }
+    const lazyClosedRequestGate = assessCurrentLazyOwnerOriginGate('settled');
+    if (lazyClosedRequestGate.status === 'error') {
+      throw new Error('slow Compendium request role became terminal during closed-owner settlement: '
+        + JSON.stringify({ gate: lazyClosedRequestGate, requestAttempts: slowSpeciesAttempts }));
+    }
     const receivedAtMs = performance.now();
     const foreground = {
       ...lazyClosedAfter.foreground, targetId: lazyClosedSettlementAuthority.observation.targetId,
@@ -22734,6 +22761,12 @@ try {
       + JSON.stringify({ before: lazyClosedBefore, armed: lazyClosedArmed, after: lazyClosedAfter,
         foreground: lazyClosedForegroundDecision }));
   }
+  const lazyPostSettlementOriginGate = assessCurrentLazyOwnerOriginGate('settled');
+  if (lazyPostSettlementOriginGate.status !== 'ready') {
+    throw new Error('slow Compendium request inventory changed before post-settlement controls: '
+      + JSON.stringify({ gate: lazyPostSettlementOriginGate,
+        requestAttempts: slowSpeciesAttempts }));
+  }
   const lazyClosedOwnerCtl = await evalLazyClosed(`(()=>{const api=window.__CF_SLICE__.api,prior=api.compendiumDiagnostics;let accepted=false;
     try{api.compendiumDiagnostics=()=>{const d=prior();return {...d,panel:{...d.panel,
       closedCompletionCommits:d.panel.closedCompletionCommits+1}}};accepted=(${lazyClosedOwnerPredicate})(api.compendiumDiagnostics());}
@@ -22742,13 +22775,25 @@ try {
     fails.push('COMPENDIUM CLOSED OWNER CONTROL FAILED — injected post-Close completion stayed green: '
       + JSON.stringify(lazyClosedOwnerCtl));
   }
+  const lazyLiveProducerGate = assessLazyProductProducerSettlement(
+    lazyAfter.lazyArt, lazyDocumentToken, 3,
+  );
+  const lazyClosedProducerGate = assessLazyProductProducerSettlement(
+    lazyClosedAfter.lazyArt, lazyClosedDocumentToken, 1,
+  );
+  if (!lazyLiveProducerGate.ok || !lazyClosedProducerGate.ok) {
+    fails.push('COMPENDIUM LAZY PRODUCER AUTHORITY: an isolated owner did not retain exactly one '
+      + 'error-free product worker producer: '
+      + JSON.stringify({ live: lazyLiveProducerGate, closed: lazyClosedProducerGate,
+        liveDiagnostics: lazyAfter.lazyArt, closedDiagnostics: lazyClosedAfter.lazyArt }));
+  }
   await send('Target.closeTarget', { targetId: tLazy.targetId });
   await send('Target.closeTarget', { targetId: tLazyClosed.targetId });
-  const lazyFinalOriginGate = assessCurrentLazyOwnerOriginGate();
-  if (!lazyFinalOriginGate.ok) {
+  const lazyFinalOriginGate = assessCurrentLazyOwnerOriginGate('settled');
+  if (lazyFinalOriginGate.status !== 'ready') {
     throw new Error('slow Compendium final request inventory drifted after settlement: '
       + JSON.stringify({ gate: lazyFinalOriginGate,
-        requestOwners: slowSpeciesAttempts.map((request) => request.owner).sort() }));
+        requestAttempts: slowSpeciesAttempts }));
   }
 
   /* 4d. THE PHONE LEG (emulated): 390×844 @ DPR 3, touch. The physical

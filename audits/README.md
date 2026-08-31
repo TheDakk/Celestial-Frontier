@@ -10,6 +10,49 @@ summary of it.
 
 ## Contents
 
+### Signed `4baa425…` isolated-origin PASS-through, then request-role oracle red
+
+Exact clean SSH-signed source `4baa4250d1ae5813eba0753555b712baddbd595f` passed its fast
+develop boundary, Edge preflight on `152.0.4191.53` / CDP `1.3`, and Compendium run
+`20260831055550346-65276-46a6bd9c52` at **78/78** once/no-retry plus exact named verification.
+Slice run `20260831055711019-65620-5c63ae6d6223` then ran once under the `develop` profile and
+stopped terminal-red after **217,066 ms** with exactly **1 harness finding / 1 scope**. Glass did
+not run and this exact source will not be retried.
+
+This run proves the preceding c874 same-origin replacement race was repaired: the fail-stop order
+crossed the exact live document's visible/focused rAF→later-task receipt, completed all three
+in-place `blob:` thumbnail publications and focus controls, then crossed the isolated closed
+document's own foreground receipt and post-Close settlement before reaching the final ledger
+check. Null/stale document identity remained terminal and did not recur.
+
+The sole red was an overstrict network oracle. Before release and its synchronous recheck, the
+append-only ledger necessarily contained one exact sealed-worker-path request from each owner; by
+final settlement it contained two per owner. Current build proof has exactly one named module
+Worker constructor, a sealed import-free worker/painter entry and no Window painter import. Each
+fresh origin also performs one generated PWA install whose exact ASSETS loop fetches that same
+entry once for its offline cache. The retained red recorded only owners, so it cannot truthfully
+assign initiator order after the fact, but a second painter import/product retry is excluded by the
+build graph.
+
+The bounded successor records monotonic immutable method/path/phase and standards-based
+`Sec-Fetch-Dest` roles. It accepts `worker` and the independent `empty` PWA cache-fill in either
+arrival order, waits only while an owner has no request, fails immediately on unknown evidence,
+and rejects a duplicate role per owner before release and after settlement. Because a newly claimed
+service worker may cache-serve the product request without another network hit, exact product
+authority is independently bound to each document token and exactly one loader acquisition,
+producer epoch, worker instance/start/ready, complete acquisition phase, and zero fatal/protocol/
+render errors. No product, save, art, timeout, retry, browser ruler, Edge-version baseline or
+release identity changes.
+
+- `ARC4_SLICE_PR35_LAZY_REQUEST_ROLE_ORACLE_RED_20260831_4BAA425.json.gz`: **1,830 gzip / 5,655 raw
+  bytes**; gzip/raw SHA-256
+  `478ca87aa874ddb182a278a0188f04732f52b236fdc124b4499c068b9c6dd5c9` /
+  `720d3b754286a0d6b4e18ddb193ab145dfce313ca154372126abe506c63a89fa`.
+- `ARC4_SLICE_PR35_LAZY_REQUEST_ROLE_ORACLE_RED_20260831_4BAA425.log.gz`: **1,602 gzip / 3,888 raw
+  bytes**; gzip/raw SHA-256
+  `e7a0abe6c0ea281894b4cc772851baf38fc02bce97853e6adf818ca252ba80b5` /
+  `21da416b93e63f28c7b73e99afeceabc7c79e9e4055037367ac0af33e26cc82f`.
+
 ### Signed `c874a0a…` develop-chain stop: lazy-art owners shared persistence authority
 
 Exact clean SSH-signed source `c874a0a885b21149c035655595cc4228d0f746fd` first passed Edge
@@ -29,14 +72,13 @@ advanced the shared revision and made the returning page schedule its normal sta
 convergence reload. The preserved `6ae723a…` red below proves the same race at a later timing: art
 had already completed before the next observation crossed into the replacement document.
 
-The bounded successor gives the closed owner a second ephemeral loopback origin while retaining one
-shared slow-species request ledger and one release latch. Each origin receives the same veteran seed
-independently, and release is refused unless the owners are distinct and the held inventory is
-exactly one `closed` plus one `live` request. The append-only attempt inventory is rechecked
-immediately before release and after both settlements, so a late or post-release retry is also red.
-Missing, duplicate, unknown, same-origin, omitted-seed, premature-release and cleanup mutations are
-browser-free controls. The old-document/null token remains terminal; no timeout, retry,
-product/save/art logic or browser ruler changes.
+The first bounded successor gave the closed owner a second ephemeral loopback origin while retaining
+one shared slow-species request ledger and one release latch. Each origin received the same veteran
+seed independently, and the old-document/null token remained terminal. Its initial exact owner-count
+oracle was deliberately fail-closed but, as the signed 4baa evidence above records, still conflated
+the product Worker request with the same-origin PWA cache fill. The current role-aware successor
+retains the isolation/seed/cleanup controls and rejects duplicate request roles without depending on
+arrival order. No timeout, retry, product/save/art logic or browser ruler changes.
 
 - `ARC4_SLICE_PR35_LAZY_ORIGIN_TOPOLOGY_RED_20260831_C874A0A.json.gz`: **2,052 gzip / 6,890 raw
   bytes**; gzip/raw SHA-256

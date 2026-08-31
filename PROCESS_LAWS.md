@@ -7,7 +7,12 @@
 > multi-tab contention, give each owner a separate ephemeral origin and seed its fixture
 > independently. Shared network causality may still use one role-tagged request ledger and one
 > release latch, but the attempt ledger must be append-only: fail immediately before release and
-> again after both settlements unless exactly one request came from each isolated owner.
+> again after both settlements on an unknown method/path/destination, non-monotonic attempt or
+> duplicate `(owner, destination)` role. A fresh PWA origin may request one sealed worker entry as
+> `Sec-Fetch-Dest: empty` for its install cache and as `worker` for the product; either can arrive
+> first, and the product request may be cache-served. Keep those roles distinct and bind actual
+> product completion to the exact document token plus one producer epoch/worker instance/start,
+> not to an Edge-version-specific network order or raw request count.
 > Never repair the resulting replacement race by accepting a null/stale document token, rebinding
 > old-row evidence to a new document, widening a deadline or retrying. Exact `c874a0a…` exposed this
 > at foreground arm; preserved `6ae723a…` showed the same race after art completed. Both were
