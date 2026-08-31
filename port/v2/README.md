@@ -1,5 +1,50 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+> **2026-08-31 current Compendium action-time Back-witness repair (supersedes every older
+> “current” status label below; dated evidence remains immutable):** PR #35's one authorized
+> `test-battery` attempt, GitHub run `33437596315`, tested exact head
+> `8eb0b1bd901c7b36d8900f43f4de7d3a54158a0c` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. GitHub executed synthetic merge
+> `4ccae861ab2f43f4269edfeefa51fd2e4985a875`, whose tree
+> `b466c5a586dacfc785e7c9c1c8654a90ad5bdade` is byte-identical to the authorized head tree.
+> Every predecessor through Compendium preflight passed; Compendium completed all **78** outcomes
+> at **77 pass / 1 fail** in **1,744,486 ms**, with sole red
+> `desktop/back-restores-focus`. Slice and Glass correctly did not run. The attempt is consumed,
+> its label is absent, and there was no retry.
+>
+> The immutable old report sampled desktop setup at logical anchor `cmem-0773 / -34`. Its native
+> activation helper then needed three legitimate settlement attempts before the one click; the
+> product's action-time state was the later `cmem-0773 / -92`, which Back restored both immediately
+> and after settlement with the selected row mounted, intersecting, pinned and focused. The phone
+> control remained `cmem-0776 / -9` before and after despite legitimate absolute-scroll rebasing.
+> The stored report remains terminal red; retained evidence diagnoses a stale pre-helper harness
+> comparator, not a product focus/scroll or Linux CSS failure.
+>
+> The completed local harness repair arms schema
+> `cf-v2-compendium-back-action-witness/v1` only after the final accepted activation point and before
+> native press/release. A capture-phase listener records exactly one trusted delegated click before
+> the product handler, binding the exact current document, logical row/index, unique target and
+> scroller, hit point, input fields, panel state and action-time anchor. `backNavigation` now retains
+> diagnostic `setup`, `actionWitness`, `before` derived exactly from the witness, `after` and
+> `afterSettled`; read and exceptional paths prove listener/carrier cleanup. Focused verification is
+> green at **5 files / 56 tests**, including the immutable carrier replay, and the Compendium
+> selftest passes **611 controls**.
+>
+> Current measurement / outcome-contract / collector / producer / budget-file authority is
+> `20a1b773e7eec309de31772c2b1c0a174c0f175cfc798e573f20a53b966aba2e` /
+> `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+> `a5afcffd2f75e7cc2db1284194bc3eb76bde22bf4a1b4741f5157ce25339df51` /
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+> `c60b2f1fb50e978c0d6f522ee52a0274e9a45cd63a51f1643808229b1e25ce60`. The product producer,
+> product behavior, CSS, **±2px** tolerance, 78-outcome inventory, fixed numeric ceilings,
+> historical samples, timeouts, one-click/no-retry policy and version-tolerant Edge-family + CDP
+> `1.3` policy are unchanged. The older `7e089f3…` chain below remains a valid certificate for its
+> exact historical bytes; it does not certify this changed collector. A new clean signed candidate
+> still requires the complete develop profile and one unchanged-source/no-retry
+> **Compendium → Slice (`develop`) → Glass (`develop`)** chain. SceneMemory remains
+> production-only/quarantined; Recovery is not part of develop. No new hosted attempt, push, Ready
+> transition, merge, release, version bump, preview/publication or deployment is authorized.
+
 > **2026-08-31 current terminal-green local develop certificate (supersedes every older “current”
 > status label below; dated evidence remains immutable):** exact clean SSH-signed source
 > `7e089f3432a834636064615ac2da13b2b0ac39df` passed the isolated tracked-input develop preflight
@@ -3309,6 +3354,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 
 | Tool | Role |
 |---|---|
+| **Current Compendium Back action-time boundary (2026-08-31)** | `compendiummem` retains a pre-helper `setup` anchor only as chronology, accepts the virtual row's final settled native activation point, then arms one exact capture-phase `cf-v2-compendium-back-action-witness/v1` carrier before press/release. The carrier must observe exactly one trusted delegated click on the current document and bind row/index, target/hit/point, input phase, panel identity and action-time anchor; `before` is that anchor, and Back must return it immediately and after settlement within the existing ±2px ruler. Read/failure paths abort the listener and remove the carrier. GitHub run `33437596315` remains immutable 77/78 red under its stale pre-helper comparator; the retained carrier and current authority hashes are indexed in `audits/README.md`. Product/CSS, numeric ceilings, timeout, retry, one-click and browser-version policies are unchanged. |
 | **Current Glass causal/presentation boundary (2026-08-31)** | The first instrument red retains one root, blocks dependent controls and stops later viewport work. The first product red stops dependent product work and records a complete disjoint blocked suffix; blocked controls are never reported as executed. Rendered Guide ingress reopens and re-queries the unique current topic carrier, judges all 22 required current-copy baselines before mutations, classifies copy mismatch as product-red and setup/control/restoration defects as instrument-red, and arms mutants only from green. Generic visibility walks ancestor `<details>` elements: while closed, only the direct first Summary subtree is rendered; retained rectangles/computed style/requested scroll do not admit hidden actions, while opening does. Product controls keep Capture actions base-centered with a 44px floor while preserving ≤390px full width and short landscape; rarity-removal controls independently cover Compendium badges and owned/non-missing Binder slots while `.missing` semantics remain distinct. |
 | **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |
 | **Current Arc 4 Pertar ledger/storage boundary inside `npm run smoke:ci` (2026-08-30)** | Exact d611 evidence passed Layout 787/787, SceneMemory 44/44 and Compendium 78/78, then preserved a terminal five-scope Slice red. Signed 7f repaired the shared boot/Survey/Landing prefix, Sample + Arc 9 two-receipt tail and causal stop; 961 repaired its source-derived Landing-seal oracle and retained a one-scope generic Storage timeout. Signed 656 then passed the tracked profile plus SceneMemory 44/44 and Compendium 78/78 before Slice stopped once/no-retry at exactly one pre-arm scope. The runner proved Sample/Arc 9 durable at +1/+2 with 15/16 Yield and idle current authority, but native Tame remained model-disabled; it stopped before the storage hook or input, so this is no storage verdict. Source tracing found Arc 9 temporarily owned the coordinator during Capture's repaint and released without republishing the open card. The bounded successor releases product/coordinator/persistence authority first, then guardedly republishes only the same current visible writable non-Training Capture surface; failure clears the fence and converges read-only. The runner still proves target/focus/coordinator readiness before arming, visible latch before dispatch, ordered state plus terminal raw/UI/interaction, real errors and causal stop. Capture pools/Yield/RNG/save/creature/art/audio, retry, sleep, timeout, numeric ruler and Edge baseline are unchanged. |

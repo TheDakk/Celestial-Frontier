@@ -2,15 +2,18 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** Draft PR #35 has two consumed terminal-red
+**Hosted attempt state: none authorized.** Draft PR #35 has three consumed terminal-red
 `test-battery` attempts against base `7a9f4c1370dd84292388d718c38ff34214f6203b`, each guarded by
 `actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. Run
 `33273328362` tested head `390e8708086d413fc7d636441ec0523cf9d4b9ea` and stopped in the
 browser-free suite on untracked-input and bounded-child defects. Run `33278630671` tested repaired
 head `017fa6decbc41809188768ccdb98ab86ef1b9ebc`; every predecessor through SceneMemory controls
 passed, then the one-attempt phone SceneMemory product stage stopped at `Earth planetfall was
-rejected`. Both labels are absent, PR #35 remains Draft/unmerged, and no retry or replacement
-attempt is authorized. Current repairs remain local/unpushed until their complete local evidence,
+rejected`. Run `33437596315` tested head `8eb0b1bd901c7b36d8900f43f4de7d3a54158a0c` and stopped
+terminal-red after **37m14s**: every pre-Compendium gate passed, then Compendium passed **77/78**
+with sole red `desktop/back-restores-focus`; Slice and Glass were skipped. All three labels are
+absent, PR #35 remains Draft/unmerged, and no retry or replacement attempt is authorized. The
+bounded third-run harness repair remains local/unpushed until its complete local evidence,
 references, source-authority records, and signed commit are finished. PR #34 runs
 `32665404776` and `32677088518` are
 consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
@@ -474,7 +477,24 @@ diagnostics. Numeric memory ceilings, browser-family authority, and version-tole
 policy remain unchanged. The detailed same-day account is in
 `audits/PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md`.
 
-Both PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
+A third exact-head authorization then tested
+`8eb0b1bd901c7b36d8900f43f4de7d3a54158a0c` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, using `actions-budget-approved`, with a
+92-minute maximum and no retry. Run `33437596315` completed terminal-red after **37m14s**. Every
+pre-Compendium gate passed; Compendium passed **77/78** with sole red
+`desktop/back-restores-focus`; Slice and Glass were correctly skipped. The approval label was
+removed immediately, the run is consumed, and PR #35 remains Draft/unmerged.
+
+The immutable report records desktop setup anchor `-34`, then both returned observations at `-92`;
+the activation helper legitimately needed three settlement attempts before its one click. Because
+the product captures its restore state synchronously in that later click handler, the evidence
+supports a stale pre-helper harness comparison rather than a product restore failure: the inferred
+action-time anchor and both returns were `-92`. The phone control remained `-9` before/after. The
+bounded local harness repair captures a strict trusted action-time witness only after final
+action-point settlement and compares the return against that witness. It changes no product, CSS,
+tolerance, timeout, retry, or browser-version policy. Its complete local evidence is pending.
+
+All three PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

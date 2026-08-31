@@ -234,11 +234,11 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0';
+  '20a1b773e7eec309de31772c2b1c0a174c0f175cfc798e573f20a53b966aba2e';
 const EXPECTED_OUTCOME_CONTRACT_AUTHORITY =
-  '9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828';
+  '1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692';
 const EXPECTED_COLLECTOR_AUTHORITY =
-  '0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010';
+  'a5afcffd2f75e7cc2db1284194bc3eb76bde22bf4a1b4741f5157ce25339df51';
 const HISTORICAL_VISUAL_KEY_INSTRUMENT_FAILURE = Object.freeze({
   file: 'ARC1C_COMPENDIUM_PR35_PLANETSIDE_VISUALKEY_INSTRUMENT_FAILURE_20260830_B2EECFB.json.gz',
   runId: '20260830-pr35-settlement-evidence-b2eecfbd9379-compendium-certification',

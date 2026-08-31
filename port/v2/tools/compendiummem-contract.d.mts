@@ -44,6 +44,8 @@ export const PARTIAL_PROFILE_SCHEMA: 'cf-v2-compendium-partial-profile/v6';
 export const FILTER_TRANSITION_SCHEMA: string;
 export const PRODUCER_ERROR_WITNESS_SCHEMA:
   'cf-v2-compendium-producer-error-witness/v1';
+export const BACK_ACTION_WITNESS_SCHEMA:
+  'cf-v2-compendium-back-action-witness/v1';
 export const PRODUCER_ERROR_ARM_MESSAGE: 'compendiummem injected producer error';
 export const PRODUCER_ERROR_ARM_SENTINEL: 'cf-v2-compendium-producer-error-armed/v1';
 export const THUMB_SETTLEMENT_OBSERVATION_SCHEMA:
@@ -155,6 +157,11 @@ export function validCompendiumBrowserAuthority(authority: unknown):
   authority is CompendiumBrowserAuthority;
 export function compendiumBrowserAuthorityMatches(browser: unknown,
   authority: unknown): boolean;
+export function validCompendiumBackActionWitness(witness: unknown, expected?: {
+  logicalId?: string;
+  logicalIndex?: number;
+  documentToken?: string;
+}): boolean;
 export function compendiumBudgetBrowserAuthority(record: unknown):
   CompendiumBrowserAuthority | null;
 export function compendiumRawSnapshotExpression(): string;

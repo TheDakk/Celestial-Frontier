@@ -25,6 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
 import {
   BASELINE_OBSERVATION_TIMEOUT_MS, BROKEN_BASELINE_PORTRAIT_CACHE_CAPS,
+  BACK_ACTION_WITNESS_SCHEMA,
   BROKEN_BASELINE_THUMB_CACHE_CAP, BROKEN_BASELINE_THUMB_OBSERVER_SCHEMA,
   CANDIDATE_BROWSER_LABEL, CANDIDATE_COMMAND_SCHEMA, CANDIDATE_TRANSPORT_TIMEOUT_MS,
   COMMAND_TIMEOUT_MS, EXPECTED_OUTCOMES,
@@ -47,6 +48,7 @@ import {
   compendiumMeasurementAuthority, compendiumProducerAuthority,
   compendiumBrowserAuthorityMatches, compendiumBudgetBrowserAuthority,
   validCompendiumBrowserAuthority,
+  validCompendiumBackActionWitness,
   compendiumThumbSettlementProductErrorDiagnosis,
   compendiumThumbSettlementReceiptToken,
   compendiumCdpOptions, compendiumProfileEmulationOptions,
@@ -1260,6 +1262,129 @@ export function validCandidateRowPointExpression(source, logicalId) {
     && source === candidateRowPointExpression(logicalId);
 }
 
+export function candidateCompendiumScrollAnchorExpression(selectedId) {
+  assert(typeof selectedId === 'string' && selectedId,
+    'Compendium scroll-anchor selected identity is invalid');
+  return `(()=>{
+    const scroller=document.querySelector('[data-sel="codex-scroll"]');if(!scroller)return null;
+    const sr=scroller.getBoundingClientRect();
+    const rows=[...scroller.querySelectorAll('[data-sel="codex-entry"][data-cid]')]
+      .map(row=>{const r=row.getBoundingClientRect();return {logicalId:row.dataset.cid||'',index:Number(row.dataset.ci),top:r.top,bottom:r.bottom}})
+      .sort((a,b)=>a.top-b.top);
+    const anchor=rows.find(row=>row.bottom>sr.top+0.5&&row.top<sr.bottom-0.5);if(!anchor)return null;
+    const selected=rows.find(row=>row.logicalId===${JSON.stringify(selectedId)});
+    const w=window.__CF_SLICE__.api.compendiumDiagnostics().window;
+    const selectedIndex=selected?.index;
+    return {logicalId:anchor.logicalId,offsetPx:anchor.top-sr.top,scrollTop:scroller.scrollTop,
+      window:{start:w.start,end:w.end,beforePx:w.beforePx,afterPx:w.afterPx},
+      selectedLogicalId:selected?.logicalId||null,selectedIndex:Number.isFinite(selectedIndex)?selectedIndex:null,
+      selectedMounted:!!selected,selectedIntersects:!!selected&&selected.bottom>sr.top+0.5&&selected.top<sr.bottom-0.5,
+      selectedInWindow:Number.isFinite(selectedIndex)&&selectedIndex>=w.start&&selectedIndex<w.end,
+      selectedPinned:Array.isArray(w.pinnedLogicalIds)&&w.pinnedLogicalIds.includes(${JSON.stringify(selectedId)}),
+      activeLogicalId:document.activeElement?.closest?.('[data-cid]')?.dataset.cid||null}})()`;
+}
+
+export function validCandidateCompendiumScrollAnchorExpression(source, selectedId) {
+  return typeof source === 'string' && typeof selectedId === 'string' && selectedId.length > 0
+    && source === candidateCompendiumScrollAnchorExpression(selectedId);
+}
+
+const BACK_ACTION_WITNESS_KEY = '__cfCompendiumBackActionWitness';
+
+export function candidateBackActionWitnessInstallExpression(
+  logicalId, logicalIndex, documentToken, settlementAttempt, point,
+) {
+  assert(typeof logicalId === 'string' && logicalId
+    && Number.isSafeInteger(logicalIndex) && logicalIndex >= 0
+    && typeof documentToken === 'string' && documentToken
+    && Number.isSafeInteger(settlementAttempt)
+    && settlementAttempt >= 1 && settlementAttempt <= 8
+    && point !== null && typeof point === 'object'
+    && Number.isFinite(point.x) && Number.isFinite(point.y),
+  'Compendium Back action-witness identity is invalid');
+  const anchorExpression = candidateCompendiumScrollAnchorExpression(logicalId);
+  return `(()=>{
+    const key=${JSON.stringify(BACK_ACTION_WITNESS_KEY)};
+    const expectedLogicalId=${JSON.stringify(logicalId)},expectedLogicalIndex=${logicalIndex};
+    const expectedDocumentToken=${JSON.stringify(documentToken)},settlementAttempt=${settlementAttempt};
+    if(Object.prototype.hasOwnProperty.call(window,key))return {installed:false,reason:'occupied'};
+    const pointX=${JSON.stringify(point.x)},pointY=${JSON.stringify(point.y)};
+    const scrollers=[...document.querySelectorAll('[data-sel="codex-scroll"]')];
+    const targetRows=[...document.querySelectorAll('[data-sel="codex-entry"][data-cid]')]
+      .filter(row=>row.dataset.cid===expectedLogicalId&&Number(row.dataset.ci)===expectedLogicalIndex);
+    const pointHit=document.elementFromPoint(pointX,pointY)
+      ?.closest?.('[data-sel="codex-entry"][data-cid]')||null;
+    const arm={documentToken:window.__CF_SLICE__?.documentToken||null,
+      scrollerCount:scrollers.length,targetRowCount:targetRows.length,
+      pointHitLogicalId:pointHit?.dataset.cid||null,pointX,pointY};
+    if(arm.documentToken!==expectedDocumentToken||arm.scrollerCount!==1
+      ||arm.targetRowCount!==1||arm.pointHitLogicalId!==expectedLogicalId){
+      return {installed:false,reason:'precondition',arm};
+    }
+    const controller=new AbortController();
+    const witness={schema:${JSON.stringify(BACK_ACTION_WITNESS_SCHEMA)},expectedLogicalId,
+      expectedLogicalIndex,expectedDocumentToken,settlementAttempt,arm,
+      observationCount:0,events:[],cleanup:null};
+    const capture=event=>{
+      const target=event.target instanceof Element
+        ?event.target.closest('[data-sel="codex-entry"][data-cid]'):null;
+      const hit=document.elementFromPoint(event.clientX,event.clientY)
+        ?.closest?.('[data-sel="codex-entry"][data-cid]')||null;
+      const targetRows=[...document.querySelectorAll('[data-sel="codex-entry"][data-cid]')]
+        .filter(row=>row.dataset.cid===expectedLogicalId);
+      const panel=window.__CF_SLICE__?.api?.compendiumDiagnostics?.()?.panel;
+      witness.observationCount++;
+      witness.events.push({sequence:witness.observationCount,type:event.type,
+        trusted:event.isTrusted===true,button:event.button,detail:event.detail,
+        eventPhase:event.eventPhase,currentTargetIsDocument:event.currentTarget===document,
+        clientX:event.clientX,clientY:event.clientY,targetLogicalId:target?.dataset.cid||null,
+        hitLogicalId:hit?.dataset.cid||null,targetIndex:Number(target?.dataset.ci),
+        targetRowCount:targetRows.length,
+        scrollerCount:document.querySelectorAll('[data-sel="codex-scroll"]').length,
+        targetOwnerDocument:target?.ownerDocument===document,targetConnected:target?.isConnected===true,
+        documentToken:window.__CF_SLICE__?.documentToken||null,
+        panel:{mode:panel?.mode||null,query:panel?.query??null,
+          sourceCount:panel?.sourceCount??null,filteredCount:panel?.filteredCount??null},
+        anchor:${anchorExpression}});
+    };
+    Object.defineProperty(window,key,{value:{controller,witness},configurable:true});
+    document.addEventListener('click',capture,{capture:true,signal:controller.signal});
+    return {installed:true,schema:witness.schema,expectedLogicalId,expectedLogicalIndex,
+      expectedDocumentToken,settlementAttempt}})()`;
+}
+
+export function candidateBackActionWitnessReadExpression() {
+  return `(()=>{const key=${JSON.stringify(BACK_ACTION_WITNESS_KEY)},carrier=window[key];
+    if(!carrier||typeof carrier!=='object')return null;
+    carrier.controller?.abort?.();const witness=carrier.witness||null;delete window[key];
+    if(witness)witness.cleanup={controllerAborted:carrier.controller?.signal?.aborted===true,
+      carrierPresent:Object.prototype.hasOwnProperty.call(window,key)};return witness})()`;
+}
+
+export function validCandidateBackActionWitnessInstallExpression(
+  source, logicalId, logicalIndex, documentToken, settlementAttempt, point,
+) {
+  return typeof source === 'string'
+    && source === candidateBackActionWitnessInstallExpression(
+      logicalId, logicalIndex, documentToken, settlementAttempt, point,
+    );
+}
+
+export function validCandidateBackActionWitnessReadExpression(source) {
+  return typeof source === 'string' && source === candidateBackActionWitnessReadExpression();
+}
+
+export function candidateBackActionWitnessCleanupExpression() {
+  return `(()=>{const key=${JSON.stringify(BACK_ACTION_WITNESS_KEY)},carrier=window[key];
+    carrier?.controller?.abort?.();if(Object.prototype.hasOwnProperty.call(window,key))delete window[key];
+    return {controllerAborted:carrier?.controller?.signal?.aborted===true||carrier===undefined,
+      carrierPresent:Object.prototype.hasOwnProperty.call(window,key)}})()`;
+}
+
+export function validCandidateBackActionWitnessCleanupExpression(source) {
+  return typeof source === 'string' && source === candidateBackActionWitnessCleanupExpression();
+}
+
 /* Virtual rows can pass a geometry check and then move when ResizeObserver's
    deferred render applies newly measured offsets. A click receipt cannot repair
    a press that landed after that move. Reposition through the ordinary native
@@ -1268,11 +1393,13 @@ export function validCandidateRowPointExpression(source, logicalId) {
    boundary. The bounded repeat is positioning work, never a retried click. */
 export async function settleCandidateRowActivationPoint({
   sessionId, logicalId, scrollToIndex, waitReady, evaluate, maxAttempts = 4,
+  onSettled = null,
 }) {
   assert(typeof sessionId === 'string' && sessionId
     && typeof logicalId === 'string' && logicalId
     && typeof scrollToIndex === 'function' && typeof waitReady === 'function'
     && typeof evaluate === 'function'
+    && (onSettled === null || typeof onSettled === 'function')
     && Number.isSafeInteger(maxAttempts) && maxAttempts >= 1 && maxAttempts <= 8,
   'candidate row settlement dependencies are invalid');
   const expression = candidateRowPointExpression(logicalId);
@@ -1294,7 +1421,9 @@ export async function settleCandidateRowActivationPoint({
       && Number.isFinite(after.x) && Number.isFinite(after.y)
       && Math.abs(before.x - after.x) <= 0.5
       && Math.abs(before.y - after.y) <= 0.5) {
-      return Object.freeze({ x: after.x, y: after.y });
+      const point = Object.freeze({ x: after.x, y: after.y });
+      if (onSettled !== null) await onSettled(point, attempt);
+      return point;
     }
   }
   throw new CandidateObservationError(
@@ -1903,41 +2032,100 @@ async function collectProfile({
       type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
     }, sessionId);
   };
-  const clickRow = async (sessionId, logicalId, scrollPhaseLabel, rowPhaseLabel) => {
+  const clickRow = async (
+    sessionId, logicalId, scrollPhaseLabel, rowPhaseLabel,
+    { captureBackActionBoundary = false } = {},
+  ) => {
     assert(typeof scrollPhaseLabel === 'string' && scrollPhaseLabel.length > 0
-      && typeof rowPhaseLabel === 'string' && rowPhaseLabel.length > 0,
+      && typeof rowPhaseLabel === 'string' && rowPhaseLabel.length > 0
+      && typeof captureBackActionBoundary === 'boolean',
     `${profile}: row activation settlement phase identity is invalid`);
     const expression = candidateRowPointExpression(logicalId);
     assert(validCandidateRowPointExpression(expression, logicalId),
       `${profile}: row activation expression was invalid`);
-    const point = await settleCandidateRowActivationPoint({
-      sessionId, logicalId,
-      scrollToIndex: async (ownedSessionId, attempt) => {
-        const wanted = fixture.rows.findIndex(([candidateId]) => candidateId === logicalId);
-        assert(wanted >= 0, `${profile}: row activation identity is absent from the fixture`);
-        await scrollToIndex(
-          ownedSessionId, wanted, attempt === 1 ? scrollPhaseLabel : rowPhaseLabel,
-          { expectedCount: attempt === 1 ? null : 1500 },
-        );
-      },
-      waitReady: (ownedSessionId, attempt) => {
-        assert(Number.isSafeInteger(attempt) && attempt >= 1,
-          `${profile}: row activation readiness attempt is invalid`);
-        return waitListReady(ownedSessionId, rowPhaseLabel, 1500);
-      },
-      evaluate,
-    });
-    await sendStage(`row ${logicalId} mouse press`, 'Input.dispatchMouseEvent', {
-      type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1,
-    }, sessionId);
-    await sendStage(`row ${logicalId} mouse release`, 'Input.dispatchMouseEvent', {
-      type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
-    }, sessionId);
-    const receipt = await evaluate(sessionId, `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
-      return {mode:d.panel.mode,logicalId:d.surfaces.detail.logicalId}})()`,
-    `row ${logicalId} activation receipt`);
-    assert(receipt?.mode === 'detail' && receipt.logicalId === logicalId,
-      `${profile}: native row activation did not open exact detail ${logicalId}`);
+    const logicalIndex = fixture.rows.findIndex(([candidateId]) => candidateId === logicalId);
+    assert(logicalIndex >= 0, `${profile}: row activation identity is absent from the fixture`);
+    const expectedDocumentToken = captureBackActionBoundary
+      ? mainPageAuthority?.documentToken ?? null : null;
+    assert(!captureBackActionBoundary
+      || (typeof expectedDocumentToken === 'string' && expectedDocumentToken.length > 0),
+    `${profile}: Back action witness lacks current main-document authority`);
+    let actionWitnessArmed = false;
+    try {
+      const point = await settleCandidateRowActivationPoint({
+        sessionId, logicalId,
+        scrollToIndex: async (ownedSessionId, attempt) => {
+          await scrollToIndex(
+            ownedSessionId, logicalIndex, attempt === 1 ? scrollPhaseLabel : rowPhaseLabel,
+            { expectedCount: attempt === 1 ? null : 1500 },
+          );
+        },
+        waitReady: (ownedSessionId, attempt) => {
+          assert(Number.isSafeInteger(attempt) && attempt >= 1,
+            `${profile}: row activation readiness attempt is invalid`);
+          return waitListReady(ownedSessionId, rowPhaseLabel, 1500);
+        },
+        evaluate,
+        onSettled: captureBackActionBoundary ? async (settledPoint, attempt) => {
+          assert(actionWitnessArmed === false,
+            `${profile}: Back action witness was armed more than once`);
+          const installExpression = candidateBackActionWitnessInstallExpression(
+            logicalId, logicalIndex, expectedDocumentToken, attempt, settledPoint,
+          );
+          assert(validCandidateBackActionWitnessInstallExpression(
+            installExpression, logicalId, logicalIndex,
+            expectedDocumentToken, attempt, settledPoint,
+          ), `${profile}: Back action-witness install expression was invalid`);
+          const installed = await evaluate(sessionId, installExpression,
+            `row ${logicalId} Back action witness install`);
+          actionWitnessArmed = installed?.installed === true;
+          assert(actionWitnessArmed
+            && installed.schema === BACK_ACTION_WITNESS_SCHEMA
+            && installed.expectedLogicalId === logicalId
+            && installed.expectedLogicalIndex === logicalIndex
+            && installed.expectedDocumentToken === expectedDocumentToken
+            && installed.settlementAttempt === attempt,
+          `${profile}: Back action witness was not armed after final row settlement`);
+        } : null,
+      });
+      await sendStage(`row ${logicalId} mouse press`, 'Input.dispatchMouseEvent', {
+        type: 'mousePressed', x: point.x, y: point.y, button: 'left', clickCount: 1,
+      }, sessionId);
+      await sendStage(`row ${logicalId} mouse release`, 'Input.dispatchMouseEvent', {
+        type: 'mouseReleased', x: point.x, y: point.y, button: 'left', clickCount: 1,
+      }, sessionId);
+      const readExpression = captureBackActionBoundary
+        ? candidateBackActionWitnessReadExpression() : null;
+      assert(readExpression === null || validCandidateBackActionWitnessReadExpression(
+        readExpression,
+      ), `${profile}: Back action-witness read expression was invalid`);
+      const actionBoundary = readExpression === null ? null
+        : await evaluate(sessionId, readExpression, `row ${logicalId} Back action witness read`);
+      assert(!captureBackActionBoundary || validCompendiumBackActionWitness(actionBoundary, {
+        logicalId, logicalIndex, documentToken: expectedDocumentToken,
+      }), `${profile}: Back action witness was missing, duplicated, untrusted, or misbound`);
+      const receipt = await evaluate(sessionId, `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
+        return {mode:d.panel.mode,logicalId:d.surfaces.detail.logicalId}})()`,
+      `row ${logicalId} activation receipt`);
+      assert(receipt?.mode === 'detail' && receipt.logicalId === logicalId,
+        `${profile}: native row activation did not open exact detail ${logicalId}`);
+      return actionBoundary;
+    } catch (caught) {
+      if (captureBackActionBoundary) {
+        try {
+          const cleanupExpression = candidateBackActionWitnessCleanupExpression();
+          assert(validCandidateBackActionWitnessCleanupExpression(cleanupExpression),
+            `${profile}: Back action-witness cleanup expression was invalid`);
+          await evaluate(sessionId, cleanupExpression,
+            `row ${logicalId} Back action witness cleanup`);
+        } catch (cleanupCaught) {
+          const error = caught instanceof Error ? caught : new Error(String(caught));
+          error.message += `; Back action witness cleanup failed: ${lifecycleErrorMessage(cleanupCaught)}`;
+          throw error;
+        }
+      }
+      throw caught;
+    }
   };
   const key = async (
     sessionId, keyName, code, modifiers = 0, labelPrefix = '', commands = [],
@@ -2002,23 +2190,9 @@ async function collectProfile({
     }
     throw new Error(`${profile}: native scroll did not reach logical index ${wanted}`);
   };
-  const scrollAnchor = async (sessionId, label, selectedId) => evaluate(sessionId, `(()=>{
-    const scroller=document.querySelector('[data-sel="codex-scroll"]');if(!scroller)return null;
-    const sr=scroller.getBoundingClientRect();
-    const rows=[...scroller.querySelectorAll('[data-sel="codex-entry"][data-cid]')]
-      .map(row=>{const r=row.getBoundingClientRect();return {logicalId:row.dataset.cid||'',index:Number(row.dataset.ci),top:r.top,bottom:r.bottom}})
-      .sort((a,b)=>a.top-b.top);
-    const anchor=rows.find(row=>row.bottom>sr.top+0.5&&row.top<sr.bottom-0.5);if(!anchor)return null;
-    const selected=rows.find(row=>row.logicalId===${JSON.stringify(selectedId)});
-    const w=window.__CF_SLICE__.api.compendiumDiagnostics().window;
-    const selectedIndex=selected?.index;
-    return {logicalId:anchor.logicalId,offsetPx:anchor.top-sr.top,scrollTop:scroller.scrollTop,
-      window:{start:w.start,end:w.end,beforePx:w.beforePx,afterPx:w.afterPx},
-      selectedLogicalId:selected?.logicalId||null,selectedIndex:Number.isFinite(selectedIndex)?selectedIndex:null,
-      selectedMounted:!!selected,selectedIntersects:!!selected&&selected.bottom>sr.top+0.5&&selected.top<sr.bottom-0.5,
-      selectedInWindow:Number.isFinite(selectedIndex)&&selectedIndex>=w.start&&selectedIndex<w.end,
-      selectedPinned:Array.isArray(w.pinnedLogicalIds)&&w.pinnedLogicalIds.includes(${JSON.stringify(selectedId)}),
-      activeLogicalId:document.activeElement?.closest?.('[data-cid]')?.dataset.cid||null}})()`, label);
+  const scrollAnchor = async (sessionId, label, selectedId) => evaluate(
+    sessionId, candidateCompendiumScrollAnchorExpression(selectedId), label,
+  );
   const openCompendium = async (sessionId) => {
     const mode = await evaluate(sessionId, `window.__CF_SLICE__.api.compendiumDiagnostics().panel.mode`, 'panel mode');
     if (mode !== 'closed') await click(sessionId, '#codexpanel [data-pnx="codex"]', 'close existing Compendium');
@@ -2273,11 +2447,18 @@ async function collectProfile({
     await openCompendium(sessionId);
     await waitListReady(sessionId, 'detail-back-reopen-list', 1500);
     await scrollToIndex(sessionId, 777, 'detail-back-scroll-list');
-    const backAnchorBefore = await scrollAnchor(sessionId, 'pre-detail Back anchor', targets.detail);
-    assert(backAnchorBefore?.logicalId, `${profile}: deep-list Back anchor was not observable`);
-    await clickRow(
+    const backAnchorSetup = await scrollAnchor(
+      sessionId, 'pre-activation Back setup anchor', targets.detail,
+    );
+    assert(backAnchorSetup?.logicalId, `${profile}: deep-list Back setup anchor was not observable`);
+    /* The row helper may legitimately rebase measured virtual heights before
+       the one native click. The capture-phase witness is armed only after its
+       final stable activation point and samples synchronously before the
+       product's delegated click handler captures the return state. */
+    const backActionWitness = await clickRow(
       sessionId, targets.detail,
       'detail-back-scroll-list', 'detail-back-row-activation-list',
+      { captureBackActionBoundary: true },
     );
     await waitValue(sessionId, 'second 440 detail', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
       return d.panel.mode==='detail'&&d.surfaces.detail.logicalId===${JSON.stringify(targets.detail)}
@@ -2513,7 +2694,9 @@ async function collectProfile({
         dedupe: { before: dedupeBefore, after: dedupeAfter, dedupeHitsDelta: dedupeAfter - dedupeBefore },
         churn: { before: churnBefore, after: churnAfter, jobCancelsDelta: churnAfter - churnBefore },
         backNavigation: {
-          before: backAnchorBefore, after: backAnchorAfter, afterSettled: backAnchorSettled,
+          setup: backAnchorSetup, actionWitness: backActionWitness,
+          before: backActionWitness.events[0].anchor,
+          after: backAnchorAfter, afterSettled: backAnchorSettled,
         },
         viewportResize: {
           base: resizeBase, expanded: resizeExpanded,
