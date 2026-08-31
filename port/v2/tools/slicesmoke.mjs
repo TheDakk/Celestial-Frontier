@@ -9,7 +9,8 @@
    the visual record (the thing a human judges; a smoke can only prove it
    isn't blank).
 
-   Usage: node tools/slicesmoke.mjs   (always rebuilds before measuring) */
+   Usage: node tools/slicesmoke.mjs --profile=develop|production
+   (always rebuilds before measuring; the assurance profile is required) */
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
@@ -420,6 +421,19 @@ if (ARC4_DISABLED_SUPPRESSION_SELFTEST_ONLY) {
 }
 
 const here = path.dirname(fileURLToPath(import.meta.url));
+const SLICE_ASSURANCE_PROFILES = Object.freeze(['develop', 'production']);
+const sliceProfileArgs = process.argv.slice(2)
+  .filter((arg) => arg.startsWith('--profile='));
+const sliceUnknownArgs = process.argv.slice(2).filter((arg) => (
+  arg !== '--outcome-controls-only' && !arg.startsWith('--profile=')
+));
+if (sliceProfileArgs.length !== 1 || sliceUnknownArgs.length !== 0) {
+  throw new Error('full Slice smoke requires exactly one --profile=develop|production');
+}
+const SLICE_ASSURANCE_PROFILE = sliceProfileArgs[0].slice('--profile='.length);
+if (!SLICE_ASSURANCE_PROFILES.includes(SLICE_ASSURANCE_PROFILE)) {
+  throw new Error(`unsupported Slice assurance profile: ${JSON.stringify(SLICE_ASSURANCE_PROFILE)}`);
+}
 const OUTCOME_CONTROLS_ONLY = process.argv.includes('--outcome-controls-only');
 /* Direct runs own the checkout lock. The structured-report wrapper owns one
    longer lease through child execution, screenshot hashing and report write;
@@ -1471,7 +1485,7 @@ const failSliceWithoutCascade = (message, { alreadyReported = false } = {}) => {
   error.sliceFindingHandled = true;
   throw error;
 };
-const ARC4_SLICE_LEDGER_STAGES = Object.freeze([
+const ARC4_SLICE_COMMON_LEDGER_STAGES = Object.freeze([
   'precondition',
   'pending-no-optimism',
   'hit',
@@ -1480,9 +1494,23 @@ const ARC4_SLICE_LEDGER_STAGES = Object.freeze([
   'miss',
   'burn-down',
   'disabled-suppression',
-  'publication-convergence',
 ]);
-const ARC4_SLICE_LEDGER_EXPECTED_JSON = '{"schema":"cf-v2-slice-arc4-ledger/v1","stages":["precondition","pending-no-optimism","hit","storage-refusal","stale-convergence","miss","burn-down","disabled-suppression","publication-convergence"],"burnSteps":14,"recoveryClaimed":false,"ok":true}';
+const ARC4_SLICE_LEDGER_STAGES = Object.freeze({
+  develop: ARC4_SLICE_COMMON_LEDGER_STAGES,
+  production: Object.freeze([
+    ...ARC4_SLICE_COMMON_LEDGER_STAGES,
+    'publication-convergence',
+  ]),
+});
+const ARC4_SLICE_DEVELOP_LEDGER_EXPECTED_JSON = '{"schema":"cf-v2-slice-arc4-ledger/v2","assuranceProfile":"develop","stages":["precondition","pending-no-optimism","hit","storage-refusal","stale-convergence","miss","burn-down","disabled-suppression"],"burnSteps":14,"publicationConvergence":"not-selected-by-develop-profile","recoveryClaimed":false,"ok":true}';
+const ARC4_SLICE_PRODUCTION_LEDGER_EXPECTED_JSON = '{"schema":"cf-v2-slice-arc4-ledger/v2","assuranceProfile":"production","stages":["precondition","pending-no-optimism","hit","storage-refusal","stale-convergence","miss","burn-down","disabled-suppression","publication-convergence"],"burnSteps":14,"publicationConvergence":"passed","recoveryClaimed":false,"ok":true}';
+const ARC4_SLICE_LEDGER_EXPECTED_JSON = SLICE_ASSURANCE_PROFILE === 'develop'
+  ? ARC4_SLICE_DEVELOP_LEDGER_EXPECTED_JSON
+  : ARC4_SLICE_PRODUCTION_LEDGER_EXPECTED_JSON;
+const ARC4_SLICE_DEVELOP_PASS_MARKER = 'SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale convergence · finite Worked Out disabled suppression; synthetic publication-failure convergence is not selected by the develop profile and 20-minute next-cycle recovery is not claimed by this browser run.';
+const ARC4_SLICE_PRODUCTION_PASS_MARKER = 'SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.';
+const ARC4_SLICE_PASS_MARKER = SLICE_ASSURANCE_PROFILE === 'develop'
+  ? ARC4_SLICE_DEVELOP_PASS_MARKER : ARC4_SLICE_PRODUCTION_PASS_MARKER;
 let arc4SliceLedger = null;
 const ARC4_TAME_GREETING_AUDIO_OBSERVATION_EXPRESSION = `(()=>{const S=window.__CF_SLICE__,
   state=S?.api?.state?.()??null,toast=document.getElementById('toast'),
@@ -18659,10 +18687,19 @@ try {
     }
   }
 
-  /* A second isolated full replacement returns to ordinal-zero seed 68 so a
-     known Sample hit can prove the post-durable publication-failure law. It
-     is a separate expedition by design: no observed result is fed back as a
-     plan, draw, snapshot or outcome. */
+  let arc4PublicationProfileOutcome = {
+    selected: false,
+    preconditionOk: null,
+    pendingOk: null,
+    outcomeOk: null,
+    released: null,
+  };
+  if (SLICE_ASSURANCE_PROFILE === 'production') {
+  /* Production alone selects this second isolated full replacement. It
+     returns to ordinal-zero seed 68 so a known Sample hit can prove the
+     post-durable publication-failure law. Develop never arms or executes
+     this synthetic fault; the common native Capture/progression path and
+     browser-free assessor controls remain mandatory in both profiles. */
   const arc4PublicationFixture = await installArc4PertarFixture(
     'Arc 4 Pertar publication seed-68 replacement',
   );
@@ -19179,7 +19216,7 @@ try {
     || !arc4PertarSurfaceRouteExact(arc4PublicationReloadedStateBeforeDock)
     || !arc4BrowserOutcomePasses({ released: arc4PublicationReleased,
       assessment: arc4Publication, surface: 'survey' })) {
-    fails.push('ARC 4 PUBLICATION CONVERGENCE: isolated seed-68 native Sample did not reload its one committed hit without optimism/retry: '
+    failSliceWithoutCascade('ARC 4 PUBLICATION CONVERGENCE: isolated seed-68 native Sample did not reload its one committed hit without optimism/retry: '
       + JSON.stringify({ fixture: arc4PublicationFixture,
         precondition: arc4PublicationPrecondition,
         captureArmed: arc4PublicationCaptureArmed, armed: arc4PublicationArmed,
@@ -19228,10 +19265,22 @@ try {
         interaction: arc4PublicationInteraction }));
   }
 
+  arc4PublicationProfileOutcome = {
+    selected: true,
+    preconditionOk: arc4PublicationPrecondition.ok === true,
+    pendingOk: arc4PublicationPending.ok === true,
+    outcomeOk: arc4Publication.ok === true,
+    released: arc4PublicationReleased === true,
+  };
+  }
+
   arc4SliceLedger = {
-    schema: 'cf-v2-slice-arc4-ledger/v1',
-    stages: [...ARC4_SLICE_LEDGER_STAGES],
+    schema: 'cf-v2-slice-arc4-ledger/v2',
+    assuranceProfile: SLICE_ASSURANCE_PROFILE,
+    stages: [...ARC4_SLICE_LEDGER_STAGES[SLICE_ASSURANCE_PROFILE]],
     burnSteps: arc4BurnLedger.length,
+    publicationConvergence: SLICE_ASSURANCE_PROFILE === 'production'
+      ? 'passed' : 'not-selected-by-develop-profile',
     recoveryClaimed: false,
     ok: arc4Precondition.ok === true
       && arc4HitPending.ok === true
@@ -19245,10 +19294,12 @@ try {
         entry?.assessment?.ok === true && entry?.controlIsolated === true
       ))
       && arc4Exhaustion.ok === true
-      && arc4PublicationPrecondition.ok === true
-      && arc4PublicationPending.ok === true
-      && arc4Publication.ok === true
-      && arc4PublicationReleased === true,
+      && (SLICE_ASSURANCE_PROFILE === 'develop'
+        || (arc4PublicationProfileOutcome.selected === true
+          && arc4PublicationProfileOutcome.preconditionOk === true
+          && arc4PublicationProfileOutcome.pendingOk === true
+          && arc4PublicationProfileOutcome.outcomeOk === true
+          && arc4PublicationProfileOutcome.released === true)),
   };
   if (JSON.stringify(arc4SliceLedger) !== ARC4_SLICE_LEDGER_EXPECTED_JSON) {
     fails.push('ARC 4 STRUCTURED LEDGER: exact stage order, 14 burn steps, or non-recovery PASS truth failed: '
@@ -25974,6 +26025,6 @@ if (OUTCOME_CONTROLS_ONLY) {
 }
 console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact 75-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
-console.log('SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.');
+console.log(ARC4_SLICE_PASS_MARKER);
 console.log(sliceScreenshotInventoryLine());
 process.exit(0);

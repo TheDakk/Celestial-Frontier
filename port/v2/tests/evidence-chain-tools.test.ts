@@ -56,20 +56,36 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
   ];
   const sliceCommands = [
     'id: slice',
-    'npm run smoke:ci',
+    'shell: bash',
+    'BASE_BRANCH: ${{ github.event.pull_request.base.ref }}',
+    'set -euo pipefail',
+    'case "$BASE_BRANCH" in',
+    'develop) slice_profile=develop ;;',
+    'main) slice_profile=production ;;',
+    '*) echo "::error::Unsupported battery base: $BASE_BRANCH"; exit 1 ;;',
+    'esac',
+    'npm run smoke:ci -- --profile="$slice_profile"',
     'slice_run_id="$(jq -er \'.run.id\' apps/game/smoke/slice-smoke-report.json)"',
     'test "$slice_run_id" = "$CF_V2_SLICE_SMOKE_RUN_ID"',
     'printf \'run_id=%s\\n\' "$slice_run_id" >> "$GITHUB_OUTPUT"',
-    'node tools/smokereport.mjs --verify-run="$slice_run_id"',
+    'printf \'profile=%s\\n\' "$slice_profile" >> "$GITHUB_OUTPUT"',
+    'node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"',
   ];
   const glassCommands = [
     'id: glass',
+    'shell: bash',
+    'set -euo pipefail',
     'slice_run_id="${{ steps.slice.outputs.run_id }}"',
-    'node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
+    'slice_profile="${{ steps.slice.outputs.profile }}"',
+    'case "$slice_profile" in',
+    'develop|production) ;;',
+    '*) echo "::error::Unsupported Slice assurance profile: $slice_profile"; exit 1 ;;',
+    'esac',
+    'node tools/glassmatrix.mjs --slice-run="$slice_run_id" --profile="$slice_profile"',
     'glass_run_id="$(jq -er \'.run.id\' apps/game/smoke/glassmatrix-report.json)"',
     'test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"',
     'printf \'run_id=%s\\n\' "$glass_run_id" >> "$GITHUB_OUTPUT"',
-    'node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"',
+    'node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"',
   ];
   const recoveryCommands = [
     'id: recovery',
@@ -187,6 +203,12 @@ const runSelftest = (name: string, marker: string): string => {
 const glassCurrentPointer = fileURLToPath(
   new URL('../apps/game/smoke/glassmatrix-report.json', import.meta.url),
 );
+const sliceCurrentPointer = fileURLToPath(
+  new URL('../apps/game/smoke/slice-smoke-report.json', import.meta.url),
+);
+const pointerBytes = (path: string): Buffer | null => (
+  existsSync(path) ? readFileSync(path) : null
+);
 
 describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
   it('keeps agent instructions and copy-ready develop commands on the tiered evidence chain', () => {
@@ -247,11 +269,12 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
   it('keeps immutable Slice evidence, interruption red, and its named verifier mutation-sensitive', () => {
     const output = runSelftest(
       'smokereport.mjs',
-      'immutable evidence: selected per-run report/log accepted',
+      'immutable evidence: selected profile-bound v2 report/log accepted',
     );
     const collector = source('smokereport.mjs');
-    expect(output).toContain('immutable evidence: selected per-run report/log accepted');
-    expect(output).toContain('stale current PASS, interruption, dirty source, wrong run/source, missing artifact, and log mismatch rejected');
+    expect(output).toContain('immutable evidence: selected profile-bound v2 report/log accepted');
+    expect(output).toContain('explicit legacy-v1 replay remains read-only and cannot satisfy current assurance');
+    expect(output).toContain('exact develop/production ledgers + profile markers accepted');
     expect(output).toContain('physical repository + actual full HEAD accepted; required Git failure and empty/malformed/wrong hosted SHA rejected');
     expect(collector.match(/spawnSync\(/g)).toHaveLength(1);
     expect(collector).toContain('--verify-run=<immutable-run-id>');
@@ -291,8 +314,10 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
       ? readFileSync(glassCurrentPointer)
       : null;
     const cases = [
-      { args: [], message: 'full certifying Glass requires --slice-run=<immutable-Slice-run-id>' },
-      { args: ['--slice-run=not/a/run/id'], message: 'invalid Slice run ID' },
+      {
+        args: ['--verify-run=', '--slice-run=not/a/run/id', '--profile=develop'],
+        message: 'usage: node tools/glassmatrix.mjs',
+      },
     ];
     for (const control of cases) {
       const outcome = spawnSync(process.execPath, [tool('glassmatrix.mjs'), ...control.args], {
@@ -301,11 +326,24 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
       const after = existsSync(glassCurrentPointer)
         ? readFileSync(glassCurrentPointer)
         : null;
-      expect(outcome.status, control.message ?? control.args[0]).toBe(2);
+      expect(outcome.status, control.message ?? control.args[0]).not.toBe(0);
       if (control.message) expect(outcome.stderr).toContain(control.message);
       expect(after, control.message ?? control.args[0]).toEqual(before);
     }
     const collector = source('glassmatrix.mjs');
+    expect(collector).toContain(
+      "const singletonPrefixes = ['--viewport=', '--slice-run=', '--verify-run=', '--profile='];",
+    );
+    expect(collector).toContain('|| (profileArg && !selectedAssuranceProfile)');
+    expect(collector).toContain('|| (sliceRunArg && !selectedSliceRunId)');
+    expect(collector).toContain('|| (verifyRunArg && !selectedVerifyRunId)');
+    expect(collector).toContain(
+      'full certifying Glass requires --slice-run=<immutable-Slice-run-id>',
+    );
+    expect(collector).toContain("assertEvidenceRunId(selectedSliceRunId, 'Slice')");
+    expect(collector).toContain(
+      "full certifying Glass requires --profile=develop|production",
+    );
     const runStart = collector.indexOf("const releaseLock = acquireWorkspaceLock('v2 responsive glass matrix')");
     const predecessorPreflight = collector.indexOf(
       'const sliceVerification = verifySliceRunEvidence(selectedSliceRunId, {',
@@ -322,6 +360,48 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(immutableReservation).toBeLessThan(reservationOwned);
     expect(reservationOwned).toBeLessThan(pointerPublication);
   }, 15_000);
+
+  it('fails closed on one representative malformed profile call per evidence producer', () => {
+    const before = {
+      slice: pointerBytes(sliceCurrentPointer),
+      glass: pointerBytes(glassCurrentPointer),
+    };
+    const controls = [
+      {
+        tool: 'slicesmoke.mjs',
+        args: ['--profile=develop', '--profile=production'],
+        message: 'full Slice smoke requires exactly one --profile=develop|production',
+      },
+      {
+        tool: 'smokereport.mjs',
+        args: ['--profile=preview'],
+        message: 'usage: node tools/smokereport.mjs',
+      },
+      {
+        tool: 'glassmatrix.mjs',
+        args: ['--slice-run=profile-control-slice'],
+        message: 'full certifying Glass requires --profile=develop|production',
+      },
+    ];
+    for (const control of controls) {
+      const outcome = spawnSync(process.execPath, [tool(control.tool), ...control.args], {
+        encoding: 'utf8',
+      });
+      expect(outcome.status, control.tool).not.toBe(0);
+      expect(outcome.stderr, control.tool).toContain(control.message);
+      expect(pointerBytes(sliceCurrentPointer), control.tool).toEqual(before.slice);
+      expect(pointerBytes(glassCurrentPointer), control.tool).toEqual(before.glass);
+    }
+    const slice = source('slicesmoke.mjs');
+    const smoke = source('smokereport.mjs');
+    const glass = source('glassmatrix.mjs');
+    expect(slice).toContain('sliceProfileArgs.length !== 1 || sliceUnknownArgs.length !== 0');
+    expect(slice).toContain('!SLICE_ASSURANCE_PROFILES.includes(SLICE_ASSURANCE_PROFILE)');
+    expect(smoke).toContain('profileArgs.length !== 1 || !profileMatch');
+    expect(smoke).toContain('verifyArgs.length > 1 || args.length !== 1 + verifyArgs.length');
+    expect(glass).toContain('unknownArgs.length || duplicateSingleton');
+    expect(glass).toContain('|| (verifyRunArg && (!sliceRunArg || !profileArg || cliArgs.length !== 3))');
+  }, 20_000);
 
   it('requires the exact immutable Slice+Glass pair for recovery and preserves one-attempt verification', () => {
     const collector = source('arc4recovery.mjs');
@@ -344,12 +424,82 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(workflowEvidenceChainErrors(workflow)).toEqual([]);
     expect(previewWorkflowErrors(previewWorkflow)).toEqual([]);
 
+    const sliceProfileControls = [
+      [
+        'develop profile mapping',
+        '            develop) slice_profile=develop ;;',
+        '            develop) slice_profile=production ;;',
+        'missing-or-duplicate:develop) slice_profile=develop ;;',
+      ],
+      [
+        'production profile mapping',
+        '            main) slice_profile=production ;;',
+        '            main) slice_profile=develop ;;',
+        'missing-or-duplicate:main) slice_profile=production ;;',
+      ],
+      [
+        'unknown base refusal',
+        '            *) echo "::error::Unsupported battery base: $BASE_BRANCH"; exit 1 ;;',
+        '            *) slice_profile=develop ;;',
+        'missing-or-duplicate:*) echo "::error::Unsupported battery base: $BASE_BRANCH"; exit 1 ;;',
+      ],
+      [
+        'missing base refusal',
+        '          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}',
+        '          BASE_BRANCH: ""',
+        'missing-or-duplicate:BASE_BRANCH: ${{ github.event.pull_request.base.ref }}',
+      ],
+      [
+        'profile-bound Slice producer',
+        '          npm run smoke:ci -- --profile="$slice_profile"',
+        '          npm run smoke:ci',
+        'missing-or-duplicate:npm run smoke:ci -- --profile="$slice_profile"',
+      ],
+      [
+        'profile-bound Slice verifier',
+        '          node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"',
+        '          node tools/smokereport.mjs --verify-run="$slice_run_id"',
+        'missing-or-duplicate:node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"',
+      ],
+    ] as const;
+    const sliceStepStart = workflow.indexOf(
+      '      - name: one-attempt real-browser slice smoke',
+    );
+    const sliceStepEnd = workflow.indexOf(
+      '      - name: one-attempt 12-viewport Glass matrix', sliceStepStart,
+    );
+    expect(sliceStepStart).toBeGreaterThanOrEqual(0);
+    expect(sliceStepEnd).toBeGreaterThan(sliceStepStart);
+    const sliceStep = workflow.slice(sliceStepStart, sliceStepEnd);
+    for (const [name, current, mutant, diagnosis] of sliceProfileControls) {
+      expect(sliceStep.split(current).length - 1, name).toBe(1);
+      const mutatedStep = sliceStep.replace(current, mutant);
+      const mutatedWorkflow = workflow.slice(0, sliceStepStart) + mutatedStep
+        + workflow.slice(sliceStepEnd);
+      expect(workflowEvidenceChainErrors(mutatedWorkflow), name)
+        .toContain(diagnosis);
+    }
+
     const bareGlass = workflow.replace(
-      'node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
+      'node tools/glassmatrix.mjs --slice-run="$slice_run_id" --profile="$slice_profile"',
       'npm run glassmatrix',
     );
     expect(workflowEvidenceChainErrors(bareGlass)).toContain(
-      'missing-or-duplicate:node tools/glassmatrix.mjs --slice-run="$slice_run_id"',
+      'missing-or-duplicate:node tools/glassmatrix.mjs --slice-run="$slice_run_id" --profile="$slice_profile"',
+    );
+    const profilelessGlassVerifier = workflow.replace(
+      'node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"',
+      'node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"',
+    );
+    expect(workflowEvidenceChainErrors(profilelessGlassVerifier)).toContain(
+      'missing-or-duplicate:node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"',
+    );
+    const missingSliceProfileOutput = workflow.replace(
+      'printf \'profile=%s\\n\' "$slice_profile" >> "$GITHUB_OUTPUT"',
+      'echo Slice profile output omitted',
+    );
+    expect(workflowEvidenceChainErrors(missingSliceProfileOutput)).toContain(
+      'missing-or-duplicate:printf \'profile=%s\\n\' "$slice_profile" >> "$GITHUB_OUTPUT"',
     );
     const previewProfileDecoy = previewWorkflow.replace(
       '        run: node tools/check-profile.mjs --profile=dev',
@@ -407,38 +557,38 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     );
 
     const commentedVerifier = workflow.replace(
-      '          node tools/smokereport.mjs --verify-run="$slice_run_id"',
-      '          # node tools/smokereport.mjs --verify-run="$slice_run_id"',
+      '          node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"',
+      '          # node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"',
     );
     expect(workflowEvidenceChainErrors(commentedVerifier)).toContain(
-      'missing-or-duplicate:node tools/smokereport.mjs --verify-run="$slice_run_id"',
+      'missing-or-duplicate:node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"',
     );
 
     const wrongStepVerifier = workflow
-      .replace('          node tools/smokereport.mjs --verify-run="$slice_run_id"\n', '')
+      .replace('          node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"\n', '')
       .replace(
         '          slice_run_id="${{ steps.slice.outputs.run_id }}"',
         '          slice_run_id="${{ steps.slice.outputs.run_id }}"\n'
-          + '          node tools/smokereport.mjs --verify-run="$slice_run_id"',
+          + '          node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"',
       );
     expect(workflowEvidenceChainErrors(wrongStepVerifier)).toContain(
-      'missing-or-duplicate:node tools/smokereport.mjs --verify-run="$slice_run_id"',
+      'missing-or-duplicate:node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"',
     );
 
     const reorderedGlassVerifier = workflow.replace(
-      '          node tools/glassmatrix.mjs --slice-run="$slice_run_id"\n'
+      '          node tools/glassmatrix.mjs --slice-run="$slice_run_id" --profile="$slice_profile"\n'
         + '          glass_run_id="$(jq -er \'.run.id\' apps/game/smoke/glassmatrix-report.json)"\n'
         + '          test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"\n'
         + '          printf \'run_id=%s\\n\' "$glass_run_id" >> "$GITHUB_OUTPUT"\n'
-        + '          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"',
-      '          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"\n'
-        + '          node tools/glassmatrix.mjs --slice-run="$slice_run_id"\n'
+        + '          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"',
+      '          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"\n'
+        + '          node tools/glassmatrix.mjs --slice-run="$slice_run_id" --profile="$slice_profile"\n'
         + '          glass_run_id="$(jq -er \'.run.id\' apps/game/smoke/glassmatrix-report.json)"\n'
         + '          test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"\n'
         + '          printf \'run_id=%s\\n\' "$glass_run_id" >> "$GITHUB_OUTPUT"',
     );
     expect(workflowEvidenceChainErrors(reorderedGlassVerifier)).toContain(
-      'misordered:node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id"',
+      'misordered:node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"',
     );
   });
 

@@ -6,8 +6,8 @@
    a related-count summary. It never retries a red run.
 
    Usage:
-     node tools/smokereport.mjs
-     node tools/smokereport.mjs --verify-run=<immutable-run-id> */
+     node tools/smokereport.mjs --profile=develop|production
+     node tools/smokereport.mjs --verify-run=<immutable-run-id> --profile=develop|production */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
@@ -51,8 +51,12 @@ const BROWSER_PROVENANCE_FIELDS = Object.freeze([
 const CHROMIUM_COMMAND_VERSION = /^(?:Microsoft Edge|Google Chrome(?: for Testing)?|Chromium) [1-9]\d*(?:\.\d+){1,3}(?=$| )/;
 const PNG_SIGNATURE = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
 
+const SLICE_REPORT_SCHEMA = 'cf-v2-slice-smoke-ci/v2';
+const LEGACY_SLICE_REPORT_SCHEMA = 'cf-v2-slice-smoke-ci/v1';
+const LEGACY_ASSURANCE_PROFILE = 'historical-full-v1';
+const SLICE_ASSURANCE_PROFILES = Object.freeze(['develop', 'production']);
 const ARC4_LEDGER_PREFIX = 'SLICE SMOKE ARC 4 LEDGER: ';
-const ARC4_LEDGER_STAGES = Object.freeze([
+const ARC4_COMMON_LEDGER_STAGES = Object.freeze([
   'precondition',
   'pending-no-optimism',
   'hit',
@@ -61,17 +65,63 @@ const ARC4_LEDGER_STAGES = Object.freeze([
   'miss',
   'burn-down',
   'disabled-suppression',
+]);
+const LEGACY_ARC4_LEDGER_STAGES = Object.freeze([
+  ...ARC4_COMMON_LEDGER_STAGES,
   'publication-convergence',
 ]);
-const ARC4_LEDGER = Object.freeze({
+const LEGACY_ARC4_LEDGER = Object.freeze({
   schema: 'cf-v2-slice-arc4-ledger/v1',
-  stages: ARC4_LEDGER_STAGES,
+  stages: LEGACY_ARC4_LEDGER_STAGES,
   burnSteps: 14,
   recoveryClaimed: false,
   ok: true,
 });
-const ARC4_LEDGER_LINE = ARC4_LEDGER_PREFIX + JSON.stringify(ARC4_LEDGER);
-const ARC4_PASS_MARKER = 'SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.';
+const LEGACY_ARC4_LEDGER_LINE = ARC4_LEDGER_PREFIX + JSON.stringify(LEGACY_ARC4_LEDGER);
+const ARC4_LEDGER_STAGES = Object.freeze({
+  develop: ARC4_COMMON_LEDGER_STAGES,
+  production: LEGACY_ARC4_LEDGER_STAGES,
+});
+const ARC4_LEDGERS = Object.freeze({
+  develop: Object.freeze({
+    schema: 'cf-v2-slice-arc4-ledger/v2',
+    assuranceProfile: 'develop',
+    stages: ARC4_LEDGER_STAGES.develop,
+    burnSteps: 14,
+    publicationConvergence: 'not-selected-by-develop-profile',
+    recoveryClaimed: false,
+    ok: true,
+  }),
+  production: Object.freeze({
+    schema: 'cf-v2-slice-arc4-ledger/v2',
+    assuranceProfile: 'production',
+    stages: ARC4_LEDGER_STAGES.production,
+    burnSteps: 14,
+    publicationConvergence: 'passed',
+    recoveryClaimed: false,
+    ok: true,
+  }),
+});
+const ARC4_LEDGER_LINES = Object.freeze(Object.fromEntries(
+  SLICE_ASSURANCE_PROFILES.map((profile) => [
+    profile, ARC4_LEDGER_PREFIX + JSON.stringify(ARC4_LEDGERS[profile]),
+  ]),
+));
+const LEGACY_ARC4_PASS_MARKER = 'SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale/publication convergence · finite Worked Out disabled suppression; 20-minute next-cycle recovery is not claimed by this browser run.';
+const ARC4_PASS_MARKERS = Object.freeze({
+  develop: 'SLICE SMOKE ARC 4: PASS — Pertar seed-68 native hidden Sample hit and counter-1 Tame miss · held no-optimism · exact raw v5/18 Arc 4 namespaces + independent source-bound compact Arc 5 V2 manifest/four fixed delta shards/source-delta-target fixed point/all-five successor/v1→v2 boot upgrade/aligned V2 zero-write/F4/receipt authority · storage/stale convergence · finite Worked Out disabled suppression; synthetic publication-failure convergence is not selected by the develop profile and 20-minute next-cycle recovery is not claimed by this browser run.',
+  production: LEGACY_ARC4_PASS_MARKER,
+});
+
+function isSliceAssuranceProfile(value) {
+  return SLICE_ASSURANCE_PROFILES.includes(value);
+}
+function assertSliceAssuranceProfile(value) {
+  if (!isSliceAssuranceProfile(value)) {
+    throw new Error(`unsupported Slice assurance profile: ${JSON.stringify(value)}`);
+  }
+  return value;
+}
 
 function sha256(value) { return crypto.createHash('sha256').update(value).digest('hex'); }
 function assertRunId(runId) {
@@ -287,7 +337,12 @@ function parseFailureEvidence(output, status) {
   };
 }
 
-function assessArc4SuccessEvidence(stdout, stderr = '') {
+function assessArc4SuccessEvidence(
+  stdout,
+  stderr = '',
+  assuranceProfile = null,
+  { legacyV1 = false } = {},
+) {
   const stdoutLines = String(stdout).split(/\r?\n/);
   const stderrLines = String(stderr).split(/\r?\n/);
   const lines = [...stdoutLines, ...stderrLines];
@@ -295,6 +350,18 @@ function assessArc4SuccessEvidence(stdout, stderr = '') {
   const passMarkers = lines.filter((line) => line.startsWith('SLICE SMOKE ARC 4: PASS'));
   const reasons = [];
   let ledger = null;
+  const expectedLedger = legacyV1
+    ? LEGACY_ARC4_LEDGER
+    : (isSliceAssuranceProfile(assuranceProfile) ? ARC4_LEDGERS[assuranceProfile] : null);
+  const expectedLedgerLine = legacyV1
+    ? LEGACY_ARC4_LEDGER_LINE
+    : (isSliceAssuranceProfile(assuranceProfile) ? ARC4_LEDGER_LINES[assuranceProfile] : null);
+  const expectedPassMarker = legacyV1
+    ? LEGACY_ARC4_PASS_MARKER
+    : (isSliceAssuranceProfile(assuranceProfile) ? ARC4_PASS_MARKERS[assuranceProfile] : null);
+  if (!expectedLedger) {
+    reasons.push(`unsupported or missing Slice assurance profile: ${JSON.stringify(assuranceProfile)}`);
+  }
 
   if (ledgerLines.length !== 1) {
     reasons.push(`expected exactly one Arc 4 ledger line, observed ${ledgerLines.length}`);
@@ -310,19 +377,26 @@ function assessArc4SuccessEvidence(stdout, stderr = '') {
       if (parsed) {
         const isRecord = ledger !== null && typeof ledger === 'object' && !Array.isArray(ledger);
         const keys = isRecord ? Object.keys(ledger) : [];
-        const expectedKeys = Object.keys(ARC4_LEDGER);
+        const expectedKeys = expectedLedger ? Object.keys(expectedLedger) : [];
         if (!isRecord) reasons.push('Arc 4 ledger payload is not an object');
         if (JSON.stringify(keys) !== JSON.stringify(expectedKeys)) {
           reasons.push(`Arc 4 ledger keys/order drifted: ${JSON.stringify(keys)}`);
         }
-        if (ledger?.schema !== ARC4_LEDGER.schema) {
+        if (ledger?.schema !== expectedLedger?.schema) {
           reasons.push(`Arc 4 ledger schema drifted: ${JSON.stringify(ledger?.schema)}`);
         }
-        if (JSON.stringify(ledger?.stages) !== JSON.stringify(ARC4_LEDGER_STAGES)) {
+        if (!legacyV1 && ledger?.assuranceProfile !== assuranceProfile) {
+          reasons.push(`Arc 4 ledger assurance profile drifted: ${JSON.stringify(ledger?.assuranceProfile)}`);
+        }
+        if (JSON.stringify(ledger?.stages) !== JSON.stringify(expectedLedger?.stages)) {
           reasons.push(`Arc 4 ledger stages/order drifted: ${JSON.stringify(ledger?.stages)}`);
         }
-        if (ledger?.burnSteps !== ARC4_LEDGER.burnSteps) {
+        if (ledger?.burnSteps !== expectedLedger?.burnSteps) {
           reasons.push(`Arc 4 ledger burnSteps drifted: ${JSON.stringify(ledger?.burnSteps)}`);
+        }
+        if (!legacyV1
+          && ledger?.publicationConvergence !== expectedLedger?.publicationConvergence) {
+          reasons.push(`Arc 4 publication-convergence profile status drifted: ${JSON.stringify(ledger?.publicationConvergence)}`);
         }
         if (ledger?.recoveryClaimed !== false) {
           reasons.push(`Arc 4 ledger claimed browser recovery: ${JSON.stringify(ledger?.recoveryClaimed)}`);
@@ -330,7 +404,7 @@ function assessArc4SuccessEvidence(stdout, stderr = '') {
         if (ledger?.ok !== true) {
           reasons.push(`Arc 4 ledger ok drifted: ${JSON.stringify(ledger?.ok)}`);
         }
-        if (JSON.stringify(ledger) !== payload || line !== ARC4_LEDGER_LINE) {
+        if (JSON.stringify(ledger) !== payload || line !== expectedLedgerLine) {
           reasons.push('Arc 4 ledger JSON bytes are not canonical');
         }
       }
@@ -339,7 +413,7 @@ function assessArc4SuccessEvidence(stdout, stderr = '') {
   }
   if (passMarkers.length !== 1) {
     reasons.push(`expected exactly one Arc 4 PASS marker, observed ${passMarkers.length}`);
-  } else if (passMarkers[0] !== ARC4_PASS_MARKER) {
+  } else if (passMarkers[0] !== expectedPassMarker) {
     reasons.push(`Arc 4 PASS marker drifted: ${JSON.stringify(passMarkers[0])}`);
   }
   if (passMarkers.length === 1 && !stdoutLines.includes(passMarkers[0])) {
@@ -494,20 +568,39 @@ function passScreenshotEvidenceErrors(listed, actual, runId, directory) {
   return errors;
 }
 
-function rawLogPrefix(runId, startedAtValue) {
+function rawLogPrefix(runId, startedAtValue, assuranceProfile = null) {
+  const profileLines = assuranceProfile === null ? [] : [
+    `# assurance-profile ${assertSliceAssuranceProfile(assuranceProfile)}`,
+  ];
+  const command = assuranceProfile === null
+    ? '# command node tools/slicesmoke.mjs'
+    : `# command node tools/slicesmoke.mjs --profile=${assuranceProfile}`;
   return [
     '# Celestial Frontier v2 slice smoke raw output',
     `# run ${runId}`,
     `# started ${startedAtValue}`,
-    '# command node tools/slicesmoke.mjs',
+    ...profileLines,
+    command,
     '',
     '[stdout]',
     '',
   ].join('\n');
 }
-function decodeBoundRawLog(logBytes, report, runId) {
+function decodeBoundRawLog(logBytes, report, runId, { legacyV1 = false } = {}) {
   const errors = [];
-  const prefix = Buffer.from(rawLogPrefix(runId, report?.startedAt));
+  if (!legacyV1 && !isSliceAssuranceProfile(report?.assuranceProfile)) {
+    return {
+      ok: false,
+      errors: [`raw log cannot bind unsupported Slice assurance profile: ${JSON.stringify(report?.assuranceProfile)}`],
+      stdout: '',
+      stderr: '',
+    };
+  }
+  const prefix = Buffer.from(rawLogPrefix(
+    runId,
+    report?.startedAt,
+    legacyV1 ? null : report?.assuranceProfile,
+  ));
   const separator = Buffer.from('\n[stderr]\n');
   const stdoutBytes = report?.childOutput?.stdoutBytes;
   const stderrBytes = report?.childOutput?.stderrBytes;
@@ -531,7 +624,7 @@ function decodeBoundRawLog(logBytes, report, runId) {
 
 function sliceRunEvidenceErrors(report, {
   runId, directory = outputRoot, expectedSource = null, requirePass = false,
-  requireCommitted = false,
+  requireCommitted = false, expectedAssuranceProfile = null, allowLegacyV1 = false,
 } = {}) {
   const errors = [];
   let artifacts;
@@ -539,7 +632,23 @@ function sliceRunEvidenceErrors(report, {
   catch (error) { return [error.message]; }
   const terminalStatuses = new Set(['pass', 'fail', 'instrument-fail']);
   if (!report || typeof report !== 'object' || Array.isArray(report)) return ['report is not an object'];
-  if (report.schema !== 'cf-v2-slice-smoke-ci/v1') errors.push(`schema drifted: ${JSON.stringify(report.schema)}`);
+  const currentSchema = report.schema === SLICE_REPORT_SCHEMA;
+  const legacyV1 = report.schema === LEGACY_SLICE_REPORT_SCHEMA;
+  if (!currentSchema && !(legacyV1 && allowLegacyV1)) {
+    errors.push(`schema drifted or is not enabled for this verification: ${JSON.stringify(report.schema)}`);
+  }
+  if (currentSchema && !isSliceAssuranceProfile(report.assuranceProfile)) {
+    errors.push(`Slice assurance profile is missing or unsupported: ${JSON.stringify(report.assuranceProfile)}`);
+  }
+  if (expectedAssuranceProfile !== null) {
+    if (!isSliceAssuranceProfile(expectedAssuranceProfile)) {
+      errors.push(`expected Slice assurance profile is unsupported: ${JSON.stringify(expectedAssuranceProfile)}`);
+    } else if (legacyV1) {
+      errors.push(`legacy Slice v1 evidence cannot satisfy current ${expectedAssuranceProfile} assurance`);
+    } else if (report.assuranceProfile !== expectedAssuranceProfile) {
+      errors.push(`Slice assurance profile mismatch: expected ${expectedAssuranceProfile}, observed ${JSON.stringify(report.assuranceProfile)}`);
+    }
+  }
   if (report.terminal !== true || !terminalStatuses.has(report.status)) {
     errors.push(`run is not terminal: ${JSON.stringify({ terminal: report.terminal, status: report.status })}`);
   }
@@ -583,14 +692,19 @@ function sliceRunEvidenceErrors(report, {
     const logBytes = fs.readFileSync(artifacts.log);
     if (report.rawLog?.bytes !== logBytes.length) errors.push('raw-log byte count mismatch');
     if (report.rawLog?.sha256 !== sha256(logBytes)) errors.push('raw-log SHA-256 mismatch');
-    const decoded = decodeBoundRawLog(logBytes, report, runId);
+    const decoded = decodeBoundRawLog(logBytes, report, runId, { legacyV1 });
     errors.push(...decoded.errors);
     if (decoded.ok && report.status === 'pass') {
       const passMarkers = decoded.stdout.split(/\r?\n/).filter((line) => /^SLICE SMOKE: PASS\b/.test(line));
       const replayedFailure = parseFailureEvidence(
         [decoded.stdout, decoded.stderr].join('\n'), report.exit?.childCode,
       );
-      const replayedArc4 = assessArc4SuccessEvidence(decoded.stdout, decoded.stderr);
+      const replayedArc4 = assessArc4SuccessEvidence(
+        decoded.stdout,
+        decoded.stderr,
+        currentSchema ? report.assuranceProfile : null,
+        { legacyV1 },
+      );
       if (passMarkers.length !== 1) errors.push(`expected exactly one overall Slice PASS marker, observed ${passMarkers.length}`);
       if (report.childOutput?.overallPassMarkerCount !== passMarkers.length) {
         errors.push('overall Slice PASS marker count is not bound to raw stdout');
@@ -632,6 +746,7 @@ function sliceRunEvidenceErrors(report, {
 
 export function verifySliceRunEvidence(runId, {
   directory = outputRoot, expectedSource = null, requirePass = false, requireCommitted = false,
+  expectedAssuranceProfile = null, allowLegacyV1 = false,
 } = {}) {
   let artifacts;
   try { artifacts = runArtifactPaths(runId, directory); }
@@ -647,15 +762,23 @@ export function verifySliceRunEvidence(runId, {
   }
   const errors = sliceRunEvidenceErrors(report, {
     runId, directory, expectedSource, requirePass, requireCommitted,
+    expectedAssuranceProfile, allowLegacyV1,
   });
+  const assuranceProfile = report?.schema === SLICE_REPORT_SCHEMA
+    && isSliceAssuranceProfile(report?.assuranceProfile)
+    ? report.assuranceProfile
+    : (report?.schema === LEGACY_SLICE_REPORT_SCHEMA && allowLegacyV1
+      ? LEGACY_ASSURANCE_PROFILE : null);
   return {
     ok: errors.length === 0, errors, report, reportSha256: sha256(reportBytes), artifacts,
+    assuranceProfile,
   };
 }
 
-function runningSliceReport({ runId, source, startedAt, artifacts }) {
+function runningSliceReport({ runId, source, startedAt, artifacts, assuranceProfile }) {
   return {
-    schema: 'cf-v2-slice-smoke-ci/v1',
+    schema: SLICE_REPORT_SCHEMA,
+    assuranceProfile: assertSliceAssuranceProfile(assuranceProfile),
     status: 'running',
     terminal: false,
     certifying: false,
@@ -1338,40 +1461,74 @@ function runSelftest() {
   if (inventoryStageDrift.length) {
     throw new Error(`SELFTEST Inventory causal-prefix controls drifted: ${JSON.stringify(inventoryStageDrift)}`);
   }
-  const canonicalArc4Output = [ARC4_LEDGER_LINE, ARC4_PASS_MARKER].join('\n');
-  const canonicalArc4 = assessArc4SuccessEvidence(canonicalArc4Output);
-  if (!canonicalArc4.ok || canonicalArc4.ledgerLineCount !== 1
-    || canonicalArc4.passMarkerCount !== 1
-    || JSON.stringify(canonicalArc4.ledger) !== JSON.stringify(ARC4_LEDGER)) {
-    throw new Error(`SELFTEST canonical Arc 4 evidence was refused: ${JSON.stringify(canonicalArc4)}`);
-  }
   const arc4LedgerLine = (ledger) => ARC4_LEDGER_PREFIX + JSON.stringify(ledger);
-  const reorderedStages = [...ARC4_LEDGER_STAGES];
-  [reorderedStages[0], reorderedStages[1]] = [reorderedStages[1], reorderedStages[0]];
-  const arc4Mutants = [
-    ['missing-ledger', ARC4_PASS_MARKER, 'ledger line'],
-    ['duplicate-ledger', [ARC4_LEDGER_LINE, ARC4_LEDGER_LINE, ARC4_PASS_MARKER].join('\n'), 'ledger line'],
-    ['primitive-ledger', [ARC4_LEDGER_PREFIX + 'null', ARC4_PASS_MARKER].join('\n'), 'not an object'],
-    ['extra-key', [arc4LedgerLine({ ...ARC4_LEDGER, extra: true }), ARC4_PASS_MARKER].join('\n'), 'keys/order'],
-    ['key-order', [arc4LedgerLine({ stages: ARC4_LEDGER_STAGES, schema: ARC4_LEDGER.schema,
-      burnSteps: 14, recoveryClaimed: false, ok: true }), ARC4_PASS_MARKER].join('\n'), 'keys/order'],
-    ['stage-order', [arc4LedgerLine({ ...ARC4_LEDGER, stages: reorderedStages }), ARC4_PASS_MARKER].join('\n'), 'stages/order'],
-    ['wrong-count', [arc4LedgerLine({ ...ARC4_LEDGER, burnSteps: 13 }), ARC4_PASS_MARKER].join('\n'), 'burnSteps'],
-    ['claimed-recovery', [arc4LedgerLine({ ...ARC4_LEDGER, recoveryClaimed: true }), ARC4_PASS_MARKER].join('\n'), 'claimed browser recovery'],
-    ['false-ok', [arc4LedgerLine({ ...ARC4_LEDGER, ok: false }), ARC4_PASS_MARKER].join('\n'), 'ledger ok'],
-    ['missing-pass', ARC4_LEDGER_LINE, 'PASS marker'],
-    ['duplicate-pass', [ARC4_LEDGER_LINE, ARC4_PASS_MARKER, ARC4_PASS_MARKER].join('\n'), 'PASS marker'],
-    ['drifted-pass', [ARC4_LEDGER_LINE, ARC4_PASS_MARKER.replace('Pertar', 'Earth')].join('\n'), 'PASS marker drifted'],
-  ];
-  const arc4MutantDrift = arc4Mutants.flatMap(([name, output, diagnosis]) => {
-    const actual = assessArc4SuccessEvidence(output);
-    return !actual.ok && actual.reasons.some((reason) => reason.includes(diagnosis))
-      ? [] : [{ name, diagnosis, actual }];
-  });
+  const arc4MutantDrift = [];
+  for (const profile of SLICE_ASSURANCE_PROFILES) {
+    const expectedLedger = ARC4_LEDGERS[profile];
+    const expectedLine = ARC4_LEDGER_LINES[profile];
+    const expectedMarker = ARC4_PASS_MARKERS[profile];
+    const canonicalArc4Output = [expectedLine, expectedMarker].join('\n');
+    const canonicalArc4 = assessArc4SuccessEvidence(canonicalArc4Output, '', profile);
+    if (!canonicalArc4.ok || canonicalArc4.ledgerLineCount !== 1
+      || canonicalArc4.passMarkerCount !== 1
+      || JSON.stringify(canonicalArc4.ledger) !== JSON.stringify(expectedLedger)) {
+      arc4MutantDrift.push({ name: `${profile}-canonical`, actual: canonicalArc4 });
+    }
+    const reorderedStages = [...expectedLedger.stages];
+    [reorderedStages[0], reorderedStages[1]] = [reorderedStages[1], reorderedStages[0]];
+    const arc4Mutants = [
+      ['missing-ledger', expectedMarker, 'ledger line'],
+      ['duplicate-ledger', [expectedLine, expectedLine, expectedMarker].join('\n'), 'ledger line'],
+      ['primitive-ledger', [ARC4_LEDGER_PREFIX + 'null', expectedMarker].join('\n'), 'not an object'],
+      ['extra-key', [arc4LedgerLine({ ...expectedLedger, extra: true }), expectedMarker].join('\n'), 'keys/order'],
+      ['key-order', [arc4LedgerLine({ stages: expectedLedger.stages,
+        schema: expectedLedger.schema, assuranceProfile: profile, burnSteps: 14,
+        publicationConvergence: expectedLedger.publicationConvergence,
+        recoveryClaimed: false, ok: true }), expectedMarker].join('\n'), 'keys/order'],
+      ['wrong-profile', [arc4LedgerLine({ ...expectedLedger,
+        assuranceProfile: profile === 'develop' ? 'production' : 'develop' }),
+      expectedMarker].join('\n'), 'assurance profile'],
+      ['stage-order', [arc4LedgerLine({ ...expectedLedger,
+        stages: reorderedStages }), expectedMarker].join('\n'), 'stages/order'],
+      ['publication-status', [arc4LedgerLine({ ...expectedLedger,
+        publicationConvergence: profile === 'develop' ? 'passed' : 'not-selected-by-develop-profile' }),
+      expectedMarker].join('\n'), 'profile status'],
+      ['wrong-count', [arc4LedgerLine({ ...expectedLedger,
+        burnSteps: 13 }), expectedMarker].join('\n'), 'burnSteps'],
+      ['claimed-recovery', [arc4LedgerLine({ ...expectedLedger,
+        recoveryClaimed: true }), expectedMarker].join('\n'), 'claimed browser recovery'],
+      ['false-ok', [arc4LedgerLine({ ...expectedLedger,
+        ok: false }), expectedMarker].join('\n'), 'ledger ok'],
+      ['missing-pass', expectedLine, 'PASS marker'],
+      ['duplicate-pass', [expectedLine, expectedMarker, expectedMarker].join('\n'), 'PASS marker'],
+      ['drifted-pass', [expectedLine,
+        expectedMarker.replace('Pertar', 'Earth')].join('\n'), 'PASS marker drifted'],
+      ['cross-profile', [ARC4_LEDGER_LINES[profile === 'develop' ? 'production' : 'develop'],
+        ARC4_PASS_MARKERS[profile === 'develop' ? 'production' : 'develop']].join('\n'),
+      'assurance profile'],
+    ];
+    arc4MutantDrift.push(...arc4Mutants.flatMap(([name, output, diagnosis]) => {
+      const actual = assessArc4SuccessEvidence(output, '', profile);
+      return !actual.ok && actual.reasons.some((reason) => reason.includes(diagnosis))
+        ? [] : [{ name: `${profile}-${name}`, diagnosis, actual }];
+    }));
+  }
+  const legacyArc4Output = [LEGACY_ARC4_LEDGER_LINE, LEGACY_ARC4_PASS_MARKER].join('\n');
+  const legacyArc4 = assessArc4SuccessEvidence(
+    legacyArc4Output, '', null, { legacyV1: true },
+  );
+  const legacyAsCurrent = assessArc4SuccessEvidence(legacyArc4Output, '', 'production');
+  if (!legacyArc4.ok || legacyAsCurrent.ok) {
+    arc4MutantDrift.push({ name: 'legacy-v1-boundary', legacyArc4, legacyAsCurrent });
+  }
   if (arc4MutantDrift.length) {
     throw new Error(`SELFTEST Arc 4 evidence mutants stayed green: ${JSON.stringify(arc4MutantDrift)}`);
   }
-  const stderrOnlyArc4 = assessArc4SuccessEvidence('', canonicalArc4Output);
+  const stderrOnlyArc4 = assessArc4SuccessEvidence(
+    '',
+    [ARC4_LEDGER_LINES.develop, ARC4_PASS_MARKERS.develop].join('\n'),
+    'develop',
+  );
   if (stderrOnlyArc4.ok
     || !stderrOnlyArc4.reasons.includes('Arc 4 ledger line was not emitted on stdout')
     || !stderrOnlyArc4.reasons.includes('Arc 4 PASS marker was not emitted on stdout')) {
@@ -1671,14 +1828,16 @@ function runSelftest() {
       commit: 'a'.repeat(40), branch: 'openai/test', state: 'committed',
       statusSha256: 'b'.repeat(64), workingTreeSha256: 'c'.repeat(64),
     };
+    const evidenceProfile = 'develop';
     const evidenceStartedAt = '2026-08-27T00:00:00.000Z';
-    const evidenceStdout = `${ARC4_LEDGER_LINE}\n${ARC4_PASS_MARKER}\nSLICE SMOKE: PASS — selftest\n`;
+    const evidenceStdout = `${ARC4_LEDGER_LINES[evidenceProfile]}\n${ARC4_PASS_MARKERS[evidenceProfile]}\nSLICE SMOKE: PASS — selftest\n`;
     const evidenceStderr = '';
-    const evidenceLog = rawLogPrefix(evidenceRunId, evidenceStartedAt)
+    const evidenceLog = rawLogPrefix(evidenceRunId, evidenceStartedAt, evidenceProfile)
       + evidenceStdout + '\n[stderr]\n' + evidenceStderr;
     fs.writeFileSync(artifacts.log, evidenceLog, { flag: 'wx' });
     const canonicalEvidence = {
-      schema: 'cf-v2-slice-smoke-ci/v1', status: 'pass', terminal: true, certifying: true,
+      schema: SLICE_REPORT_SCHEMA, assuranceProfile: evidenceProfile,
+      status: 'pass', terminal: true, certifying: true,
       exit: { code: 0, childCode: 0, signal: null, spawnError: null },
       startedAt: evidenceStartedAt, endedAt: '2026-08-27T00:00:01.000Z', durationMs: 1000,
       run: { id: evidenceRunId, artifactPath: artifacts.reportRelative,
@@ -1697,7 +1856,7 @@ function runSelftest() {
       },
       rawLog: { path: artifacts.logRelative, bytes: Buffer.byteLength(evidenceLog), sha256: sha256(evidenceLog) },
       screenshots: canonicalScreenshots, arc4SuccessEvidence: {
-        ok: true, ledger: ARC4_LEDGER, ledgerLineCount: 1, passMarkerCount: 1,
+        ok: true, ledger: ARC4_LEDGERS[evidenceProfile], ledgerLineCount: 1, passMarkerCount: 1,
       },
     };
     fs.writeFileSync(artifacts.report, JSON.stringify(canonicalEvidence) + '\n', { flag: 'wx' });
@@ -1710,6 +1869,7 @@ function runSelftest() {
     }
     const verified = verifySliceRunEvidence(evidenceRunId, {
       directory: tempRoot, expectedSource: evidenceSource, requirePass: true, requireCommitted: true,
+      expectedAssuranceProfile: evidenceProfile,
     });
     /* The mutable current pointer is deliberately not authority. A stale
        PASS there must neither shadow nor certify the selected immutable run. */
@@ -1718,6 +1878,7 @@ function runSelftest() {
     }));
     const staleAliasIgnored = verifySliceRunEvidence(evidenceRunId, {
       directory: tempRoot, expectedSource: evidenceSource, requirePass: true, requireCommitted: true,
+      expectedAssuranceProfile: evidenceProfile,
     });
     const interrupted = sliceRunEvidenceErrors({
       ...canonicalEvidence, status: 'running', terminal: false, certifying: false, exit: null,
@@ -1736,6 +1897,7 @@ function runSelftest() {
     const evidenceOptions = {
       runId: evidenceRunId, directory: tempRoot,
       expectedSource: evidenceSource, requirePass: true, requireCommitted: true,
+      expectedAssuranceProfile: evidenceProfile,
     };
     const missingBrowser = sliceRunEvidenceErrors({
       ...canonicalEvidence, browser: null,
@@ -1806,7 +1968,7 @@ function runSelftest() {
     const mismatchedLog = verifySliceRunEvidence(evidenceRunId, { directory: tempRoot });
     fs.writeFileSync(artifacts.log, originalLog);
     const forgedStdout = 'SLICE SMOKE: PASS — forged without Arc 4 evidence\n';
-    const forgedLog = rawLogPrefix(evidenceRunId, evidenceStartedAt)
+    const forgedLog = rawLogPrefix(evidenceRunId, evidenceStartedAt, evidenceProfile)
       + forgedStdout + '\n[stderr]\n';
     fs.writeFileSync(artifacts.log, forgedLog);
     const forgedReport = {
@@ -1821,9 +1983,47 @@ function runSelftest() {
     const forgedPass = verifySliceRunEvidence(evidenceRunId, { directory: tempRoot });
     fs.writeFileSync(artifacts.log, originalLog);
     fs.writeFileSync(artifacts.report, JSON.stringify(canonicalEvidence) + '\n');
+    const missingProfileEvidence = { ...canonicalEvidence };
+    delete missingProfileEvidence.assuranceProfile;
+    const missingProfile = sliceRunEvidenceErrors(missingProfileEvidence, evidenceOptions);
+    const wrongProfile = sliceRunEvidenceErrors({
+      ...canonicalEvidence, assuranceProfile: 'production',
+    }, evidenceOptions);
+    const legacyStdout = `${LEGACY_ARC4_LEDGER_LINE}\n${LEGACY_ARC4_PASS_MARKER}\nSLICE SMOKE: PASS — legacy selftest\n`;
+    const legacyLog = rawLogPrefix(evidenceRunId, evidenceStartedAt)
+      + legacyStdout + '\n[stderr]\n';
+    const legacyEvidence = { ...canonicalEvidence };
+    delete legacyEvidence.assuranceProfile;
+    Object.assign(legacyEvidence, {
+      schema: LEGACY_SLICE_REPORT_SCHEMA,
+      childOutput: {
+        stdoutBytes: Buffer.byteLength(legacyStdout), stdoutSha256: sha256(legacyStdout),
+        stderrBytes: 0, stderrSha256: sha256(''), overallPassMarkerCount: 1,
+      },
+      rawLog: {
+        path: artifacts.logRelative, bytes: Buffer.byteLength(legacyLog), sha256: sha256(legacyLog),
+      },
+      arc4SuccessEvidence: {
+        ok: true, ledger: LEGACY_ARC4_LEDGER, ledgerLineCount: 1, passMarkerCount: 1,
+      },
+    });
+    fs.writeFileSync(artifacts.log, legacyLog);
+    const legacyExplicit = sliceRunEvidenceErrors(legacyEvidence, {
+      runId: evidenceRunId, directory: tempRoot, expectedSource: evidenceSource,
+      requirePass: true, requireCommitted: true, allowLegacyV1: true,
+    });
+    const legacyDefault = sliceRunEvidenceErrors(legacyEvidence, {
+      runId: evidenceRunId, directory: tempRoot,
+    });
+    const legacyAsProduction = sliceRunEvidenceErrors(legacyEvidence, {
+      runId: evidenceRunId, directory: tempRoot, allowLegacyV1: true,
+      expectedAssuranceProfile: 'production',
+    });
+    fs.writeFileSync(artifacts.log, originalLog);
     const missing = verifySliceRunEvidence('missing-selftest', { directory: tempRoot });
     const includes = (rows, fragment) => rows.some((error) => error.includes(fragment));
-    if (!verified.ok || !staleAliasIgnored.ok
+    if (!verified.ok || verified.assuranceProfile !== evidenceProfile
+      || !staleAliasIgnored.ok
       || !includes(interrupted, 'not terminal')
       || !includes(interrupted, 'not PASS')
       || !includes(dirty, 'not clean committed')
@@ -1843,12 +2043,18 @@ function runSelftest() {
       || !includes(malformedPngScreenshot, 'structurally valid PNG')
       || mismatchedLog.ok || !includes(mismatchedLog.errors, 'raw-log')
       || forgedPass.ok || !includes(forgedPass.errors, 'Arc 4 PASS')
+      || !includes(missingProfile, 'profile is missing or unsupported')
+      || !includes(wrongProfile, 'profile mismatch')
+      || legacyExplicit.length !== 0
+      || !includes(legacyDefault, 'schema drifted or is not enabled')
+      || !includes(legacyAsProduction, 'cannot satisfy current production assurance')
       || missing.ok || !includes(missing.errors, 'missing')) {
       throw new Error(`SELFTEST immutable evidence controls drifted: ${JSON.stringify({
         verified, staleAliasIgnored, interrupted, dirty, wrongId, wrongSource,
         missingBrowser, malformedBrowser, emptyScreenshots, diagnosticRed, missingScreenshot,
         extraScreenshot, wrongRunScreenshot, unsafePathScreenshot, wrongHashScreenshot,
-        malformedPngScreenshot, mismatchedLog, forgedPass, missing,
+        malformedPngScreenshot, mismatchedLog, forgedPass, missingProfile, wrongProfile,
+        legacyExplicit, legacyDefault, legacyAsProduction, missing,
       })}`);
     }
   } finally {
@@ -1859,14 +2065,14 @@ function runSelftest() {
   console.log('SLICE SMOKE REPORT SELFTEST: PASS');
   console.log('  three injected findings retained; two PHONE findings grouped; harness separated');
   console.log('  failure declarations: exact bullet counts accepted; under/over-count and successful-exit contradictions rejected');
-  console.log('  Arc 4 success: one canonical ordered ledger + one exact PASS marker accepted; missing/duplicate/key/stage/count/recovery/ok/marker mutants rejected');
+  console.log('  Arc 4 success: exact develop/production ledgers + profile markers accepted; cross-profile/missing/duplicate/key/stage/count/publication/recovery/ok/marker mutants rejected');
   console.log('  source provenance: physical repository + actual full HEAD accepted; required Git failure and empty/malformed/wrong hosted SHA rejected');
   console.log('  source-identity change: mixed-source evidence rejected');
   console.log('  screenshot provenance: injected stale PNG excluded from the exact run manifest');
   console.log('  PASS browser provenance: exact resolved Chromium-family executable/version tuple accepted; missing/malformed/error tuples rejected');
   console.log('  PASS screenshots: exact ten current-run safe PNG carriers accepted; empty/missing/extra/wrong-run/path/hash/malformed mutations rejected');
   console.log('  red evidence: partial screenshots and absent browser provenance remain valid diagnostic carriers');
-  console.log('  immutable evidence: selected per-run report/log accepted; stale current PASS, interruption, dirty source, wrong run/source, missing artifact, and log mismatch rejected');
+  console.log('  immutable evidence: selected profile-bound v2 report/log accepted; explicit legacy-v1 replay remains read-only and cannot satisfy current assurance');
   console.log('  finding scopes: literal harness wins; explicit Arc 4 product prefix survives browser/CDP/timeout payload; unprefixed infrastructure falls back to harness');
   console.log('  infrastructure fatal: retained ahead of generic bundler advice');
   console.log('  Inventory reach/action/Close/reload: visible + Final6-shaped scrolled positives accepted; identity, geometry, owner, pointer, parent-panel survival, receipt bytes/semantics, stable F4 RNG and every causal-prefix bit rejected independently');
@@ -1886,7 +2092,8 @@ function generatedRunId(startTime) {
   ].join('-');
 }
 
-function runSliceSmoke() {
+function runSliceSmoke(assuranceProfileValue) {
+  const assuranceProfile = assertSliceAssuranceProfile(assuranceProfileValue);
   const startedAt = new Date();
   const runId = assertRunId(process.env.CF_V2_SLICE_SMOKE_RUN_ID || generatedRunId(startedAt));
   const artifacts = runArtifactPaths(runId);
@@ -1897,7 +2104,9 @@ function runSliceSmoke() {
   let artifactReserved = false;
   try {
     runSource = sourceIdentity();
-    const sentinel = runningSliceReport({ runId, source: runSource, startedAt, artifacts });
+    const sentinel = runningSliceReport({
+      runId, source: runSource, startedAt, artifacts, assuranceProfile,
+    });
     /* The per-run path is reserved without replacement. Reusing a run ID is
        refused, while the mutable current pointer is replaced atomically with
        a non-PASS sentinel before the only child invocation can start. */
@@ -1919,18 +2128,21 @@ function runSliceSmoke() {
 
     const childEnvironment = workspaceLockChildEnvironment(releaseWorkspaceLock);
     if (browserExecutable) childEnvironment.CF_BROWSER = browserExecutable;
-    const run = spawnSync(process.execPath, [path.join(here, 'slicesmoke.mjs')], {
+    const run = spawnSync(process.execPath, [
+      path.join(here, 'slicesmoke.mjs'), `--profile=${assuranceProfile}`,
+    ], {
       cwd: v2Root,
       encoding: 'utf8',
       env: {
         ...childEnvironment,
         CF_V2_SLICE_SMOKE_RUN_ID: runId,
+        CF_V2_SLICE_ASSURANCE_PROFILE: assuranceProfile,
       },
       maxBuffer: 32 * 1024 * 1024,
     });
     const stdout = run.stdout || '';
     const stderr = run.stderr || '';
-    const combinedLog = rawLogPrefix(runId, startedAt.toISOString())
+    const combinedLog = rawLogPrefix(runId, startedAt.toISOString(), assuranceProfile)
       + stdout + '\n[stderr]\n' + stderr;
     atomicCreateFile(artifacts.log, combinedLog);
     atomicWriteFile(currentLogPath, combinedLog);
@@ -1943,7 +2155,9 @@ function runSliceSmoke() {
       exitCode = 1;
       findings.unshift(...failureEvidence.diagnostics);
     }
-    const arc4SuccessEvidence = assessArc4SuccessEvidence(stdout, stderr);
+    const arc4SuccessEvidence = assessArc4SuccessEvidence(
+      stdout, stderr, assuranceProfile,
+    );
     const overallPassMarkers = stdout.split(/\r?\n/).filter((line) => /^SLICE SMOKE: PASS\b/.test(line));
     if (childStatus === 0 && overallPassMarkers.length !== 1) {
       exitCode = 1;
@@ -1965,7 +2179,8 @@ function runSliceSmoke() {
     const endedAt = new Date();
     const reportStatus = exitCode === 0 ? 'pass' : (run.error || run.signal ? 'instrument-fail' : 'fail');
     const report = {
-      schema: 'cf-v2-slice-smoke-ci/v1',
+      schema: SLICE_REPORT_SCHEMA,
+      assuranceProfile,
       status: reportStatus,
       terminal: true,
       certifying: reportStatus === 'pass' && runSource.state === 'committed',
@@ -2026,13 +2241,16 @@ function runSliceSmoke() {
     const prepublicationErrors = sliceRunEvidenceErrors(report, {
       runId, expectedSource: endingSource, requirePass: reportStatus === 'pass',
       requireCommitted: reportStatus === 'pass',
+      expectedAssuranceProfile: assuranceProfile,
     });
     if (prepublicationErrors.length) {
       throw new Error(`terminal Slice evidence failed before publication: ${prepublicationErrors.join('; ')}`);
     }
     atomicWriteJson(artifacts.report, report);
     atomicWriteJson(currentReportPath, report);
-    const verification = verifySliceRunEvidence(runId, { expectedSource: endingSource });
+    const verification = verifySliceRunEvidence(runId, {
+      expectedSource: endingSource, expectedAssuranceProfile: assuranceProfile,
+    });
     if (!verification.ok) throw new Error(`terminal Slice evidence failed its named verifier: ${verification.errors.join('; ')}`);
     terminalWritten = true;
 
@@ -2065,7 +2283,7 @@ function runSliceSmoke() {
       const endingSource = sourceIdentity();
       let rawLog = null;
       if (!fs.existsSync(artifacts.log)) {
-        const text = `# Celestial Frontier v2 slice smoke wrapper failure\n# run ${runId}\n${String(error?.stack || error)}\n`;
+        const text = `# Celestial Frontier v2 slice smoke wrapper failure\n# run ${runId}\n# assurance-profile ${assuranceProfile}\n${String(error?.stack || error)}\n`;
         atomicCreateFile(artifacts.log, text);
         atomicWriteFile(currentLogPath, text);
       }
@@ -2073,7 +2291,9 @@ function runSliceSmoke() {
       rawLog = { path: artifacts.logRelative, bytes: bytes.length, sha256: sha256(bytes) };
       const sourceChanged = !sameSource(runSource, endingSource);
       const failure = {
-        ...runningSliceReport({ runId, source: runSource, startedAt, artifacts }),
+        ...runningSliceReport({
+          runId, source: runSource, startedAt, artifacts, assuranceProfile,
+        }),
         status: 'instrument-fail', terminal: true, certifying: false,
         exit: { code: 2, childCode: null, signal: null, spawnError: String(error?.message || error) },
         endedAt: endedAt.toISOString(), durationMs: endedAt.getTime() - startedAt.getTime(),
@@ -2101,11 +2321,24 @@ function runCli() {
     runSelftest();
     return 0;
   }
-  const verifyArg = args.find((arg) => arg.startsWith('--verify-run='));
-  if (args.length === 1 && verifyArg) {
+  const profileArgs = args.filter((arg) => arg.startsWith('--profile='));
+  const verifyArgs = args.filter((arg) => arg.startsWith('--verify-run='));
+  const recognized = args.every((arg) => arg.startsWith('--profile=')
+    || arg.startsWith('--verify-run='));
+  const profileMatch = profileArgs.length === 1
+    ? /^--profile=(develop|production)$/.exec(profileArgs[0]) : null;
+  if (!recognized || profileArgs.length !== 1 || !profileMatch
+    || verifyArgs.length > 1 || args.length !== 1 + verifyArgs.length) {
+    console.error('usage: node tools/smokereport.mjs [--selftest | --profile=develop|production [--verify-run=<immutable-run-id>]]');
+    return 2;
+  }
+  const assuranceProfile = profileMatch[1];
+  if (verifyArgs.length === 1) {
+    const verifyArg = verifyArgs[0];
     const runId = assertRunId(verifyArg.slice('--verify-run='.length));
     const verification = verifySliceRunEvidence(runId, {
       expectedSource: sourceIdentity(), requirePass: true, requireCommitted: true,
+      expectedAssuranceProfile: assuranceProfile,
     });
     if (!verification.ok) {
       console.error(`SLICE SMOKE VERIFY: FAIL — ${runId}`);
@@ -2115,13 +2348,10 @@ function runCli() {
     console.log(`SLICE SMOKE VERIFY: PASS — ${runId}`);
     console.log(`report sha256: ${verification.reportSha256}`);
     console.log(`source: ${verification.report.source.commit} ${verification.report.source.branch}`);
+    console.log(`assurance profile: ${verification.assuranceProfile}`);
     return 0;
   }
-  if (args.length !== 0) {
-    console.error('usage: node tools/smokereport.mjs [--selftest | --verify-run=<immutable-run-id>]');
-    return 2;
-  }
-  return runSliceSmoke();
+  return runSliceSmoke(assuranceProfile);
 }
 
 const invokedPath = process.argv[1] ? path.resolve(process.argv[1]) : null;

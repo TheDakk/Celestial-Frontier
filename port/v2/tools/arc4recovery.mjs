@@ -263,6 +263,7 @@ function recoveryArtifactPaths(id, directory = outputRoot) {
 function slicePredecessorDescriptor(verification) {
   return Object.freeze({
     schema: verification.report.schema,
+    assuranceProfile: verification.assuranceProfile,
     runId: verification.report.run.id,
     reportPath: verification.artifacts.reportRelative,
     reportSha256: verification.reportSha256,
@@ -312,6 +313,7 @@ function resolvePredecessors({ sliceRunId, glassRunId }, currentSource) {
   evidenceRunId(sliceRunId, 'Slice');
   const sliceVerification = verifySliceRunEvidence(sliceRunId, {
     expectedSource: currentSource, requirePass: true, requireCommitted: true,
+    expectedAssuranceProfile: 'production', allowLegacyV1: false,
   });
   assert(sliceVerification.ok,
     `selected Slice predecessor failed verification: ${sliceVerification.errors.join('; ')}`);
@@ -2851,6 +2853,45 @@ export function runSelftest() {
   );
   assert(!assessOrdinarySliceRecoverySeal(falseClaim).ok,
     'ordinary Slice positive recovery mutation stayed green');
+  const developLedgerForgedAsProduction = ordinarySource.replace(
+    '"assuranceProfile":"develop"', '"assuranceProfile":"production"',
+  );
+  assert(developLedgerForgedAsProduction !== ordinarySource
+    && !assessOrdinarySliceRecoverySeal(developLedgerForgedAsProduction).ok,
+  'ordinary Slice develop-ledger profile mutation stayed green');
+  const productionLedgerForgedAsDevelop = ordinarySource.replace(
+    '"assuranceProfile":"production"', '"assuranceProfile":"develop"',
+  );
+  assert(productionLedgerForgedAsDevelop !== ordinarySource
+    && !assessOrdinarySliceRecoverySeal(productionLedgerForgedAsDevelop).ok,
+  'ordinary Slice production-ledger profile mutation stayed green');
+  const profileSelectorReversed = ordinarySource.replace(
+    '? ARC4_SLICE_DEVELOP_LEDGER_EXPECTED_JSON\n  : ARC4_SLICE_PRODUCTION_LEDGER_EXPECTED_JSON;',
+    '? ARC4_SLICE_PRODUCTION_LEDGER_EXPECTED_JSON\n  : ARC4_SLICE_DEVELOP_LEDGER_EXPECTED_JSON;',
+  );
+  assert(profileSelectorReversed !== ordinarySource
+    && !assessOrdinarySliceRecoverySeal(profileSelectorReversed).ok,
+  'ordinary Slice profile-selector mutation stayed green');
+  const publicationGuardRemoved = ordinarySource.replace(
+    "if (SLICE_ASSURANCE_PROFILE === 'production') {",
+    "if (SLICE_ASSURANCE_PROFILE === 'develop') {",
+  );
+  assert(publicationGuardRemoved !== ordinarySource
+    && !assessOrdinarySliceRecoverySeal(publicationGuardRemoved).ok,
+  'ordinary Slice production-only publication guard mutation stayed green');
+  const publicationHookRemoved = ordinarySource.replace(
+    '__smokeRejectNextArc4Publication()', '__smokeRejectNextArc4PublicationMissing()',
+  );
+  assert(publicationHookRemoved !== ordinarySource
+    && !assessOrdinarySliceRecoverySeal(publicationHookRemoved).ok,
+  'ordinary Slice publication-fault-hook mutation stayed green');
+  const nonClaimMarkerDrift = ordinarySource.replace(
+    '20-minute next-cycle recovery is not claimed by this browser run.',
+    '20-minute next-cycle recovery was not evaluated by this browser run.',
+  );
+  assert(nonClaimMarkerDrift !== ordinarySource
+    && !assessOrdinarySliceRecoverySeal(nonClaimMarkerDrift).ok,
+  'ordinary Slice recovery non-claim marker mutation stayed green');
   const collectorSource = fs.readFileSync(collectorPath, 'utf8');
   const instrumentSeal = assessArc4RecoveryInstrumentSeal(
     collectorSource, PAGE_EVIDENCE_SOURCES,
@@ -3798,7 +3839,8 @@ export function runSelftest() {
     collector: 'f'.repeat(64), buildDist: currentBuild.sha256,
   };
   const slicePredecessor = {
-    schema: 'cf-v2-slice-smoke-ci/v1', runId: 'slice-selftest',
+    schema: 'cf-v2-slice-smoke-ci/v2', assuranceProfile: 'production',
+    runId: 'slice-selftest',
     reportPath: 'apps/game/smoke/slice-smoke-slice-selftest.json',
     reportSha256: '1'.repeat(64),
     rawLogPath: 'apps/game/smoke/slice-smoke-slice-selftest.log',
@@ -4281,6 +4323,13 @@ export function runSelftest() {
     wrongPredecessor, terminalReplay,
   ).includes('exact Slice/Glass predecessor chain'),
   'wrong Slice predecessor hash stayed green');
+  const developPredecessor = structuredClone(terminal);
+  developPredecessor.predecessors.slice.assuranceProfile = 'develop';
+  developPredecessor.predecessors.glass.slicePredecessor.assuranceProfile = 'develop';
+  assert(terminalArc4RecoveryReportErrors(
+    developPredecessor, terminalReplay,
+  ).includes('exact Slice/Glass predecessor chain'),
+  'coherently forged develop Slice/Glass recovery chain stayed green');
   const mismatchedNestedPredecessor = structuredClone(terminal);
   mismatchedNestedPredecessor.predecessors.glass.slicePredecessor.reportSha256 = '5'.repeat(64);
   const nestedErrors = terminalArc4RecoveryReportErrors(
@@ -4362,6 +4411,16 @@ export function runSelftest() {
       ['dirty-source', { ...glassBaseline, source: { ...source, state: 'dirty-diagnostic' },
         sourceEnd: { ...source, state: 'dirty-diagnostic' } }, 'not clean committed'],
       ['missing-slice', { ...glassBaseline, predecessors: null }, 'Slice predecessor'],
+      ['legacy-slice', { ...glassBaseline,
+        predecessors: { slice: { ...slicePredecessor,
+          schema: 'cf-v2-slice-smoke-ci/v1', assuranceProfile: undefined } } },
+      'not current profile-bound v2 evidence'],
+      ['missing-slice-profile', { ...glassBaseline,
+        predecessors: { slice: { ...slicePredecessor, assuranceProfile: undefined } } },
+      'not current profile-bound v2 evidence'],
+      ['develop-slice', { ...glassBaseline,
+        predecessors: { slice: { ...slicePredecessor, assuranceProfile: 'develop' } } },
+      'Slice predecessor'],
       ['mismatched-slice', { ...glassBaseline,
         predecessors: { slice: { ...slicePredecessor, reportSha256: '9'.repeat(64) } } }, 'Slice predecessor'],
       ['fake-viewport', { ...glassBaseline,
