@@ -71,6 +71,20 @@ export function selectArc5FeedFixtureBurnVerb(
   captureState: unknown,
   rows: readonly unknown[],
 ): 'tame' | 'scavenge' | 'sample' | null;
+export type CompendiumFeedSuccessorAvailability =
+  | 'ready'
+  | 'no-eligible-companion'
+  | 'no-flora';
+export function compendiumFeedSuccessorAvailability(input: Readonly<{
+  readonly readyCompanionCountBefore: number;
+  readonly selectedCompanionReadyAfter: boolean;
+  readonly floraLotCountBefore: number;
+  readonly selectedFloraLotPresentAfter: boolean;
+}>): CompendiumFeedSuccessorAvailability;
+export function compendiumFeedDetailPresentationPasses(
+  observation: unknown,
+  expectedAvailability: CompendiumFeedSuccessorAvailability,
+): boolean;
 export function buildCompendiumFeedChoiceSettlementExpression(
   prefix: Readonly<Record<string, unknown>>,
   selector: string,

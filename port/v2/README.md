@@ -52,6 +52,21 @@
 > Production remains **SceneMemory → Compendium → Slice → Glass → Recovery** and requires a
 > later explicit SceneMemory activation decision. No SceneMemory browser PASS is claimed.
 >
+> Exact clean SSH-signed quarantine source `134f62e08b8a7180f798394e08a404ed935e2782`
+> then passed Compendium once/no-retry and named verification on Edge `152.0.4191.53` / CDP `1.3`.
+> Its exact-source Slice successor `20260830-pr35-quarantine-134f62e-slice-certification` stopped
+> terminal-red once/no-retry after 173,764 ms with one `harness` finding and one scope; Glass and
+> Recovery did not run. Feed had correctly committed revision 128 / ownership revision 17, advanced
+> Meals 0 → 1, consumed/tombstoned the sole flora lot 1 → 0, and reopened current generation 4 as
+> `no-flora` with the correct unavailable control shape. The generic detail opener alone still
+> demanded its pre-action `ready` state. The bounded successor derives exact post-Feed availability
+> from durable predecessor facts, binds state plus summary/confirm/radio/Back/Close shape on both
+> reopen phases, and browser-free replays the exact preserved report/log. Focused coverage is 2 files
+> / 19 passed; the consolidated develop profile passes 253 files / 2,546 passed / 1 skipped, all
+> three TypeScript programs, 34 art sources, 1,014/1,014 routes and 454 specification fields. No game,
+> creature, save, timeout, retry, browser ruler or Edge baseline changed. A fresh unchanged-source
+> Compendium → Slice → Glass run is still required before this repair is locally green.
+>
 > The Compendium ruler's 591 synthetic controls remain conditional on production or changed
 > instrument inputs, and the specification audit's five controls remain folded into its one normal
 > command. **A New Foundation** contains 75 unique bullets with rendered ordered SHA-256
