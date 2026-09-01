@@ -6432,22 +6432,30 @@ function descendGalaxy(
   if (accepted === null) return false;
   const galaxyKey = getProvenGalaxyKey(accepted.gal);
   if (galaxyKey === null) return false;
-  if (source === 'zoom') {
-    if (automaticGalaxyArrivalLatch === galaxyKey) return false;
-    automaticGalaxyArrivalLatch = galaxyKey;
-  }
+  if (source === 'zoom' && automaticGalaxyArrivalLatch === galaxyKey) return false;
   if (arc9TravelInspectionOnly()) {
     publishGalaxyDescent(accepted, true);
     return true;
   }
   if (arc9TravelWriteTemporarilyBlocked()) return false;
+  /* The async owner executes synchronously through its ownership claim. A
+     caller-side preflight is only advisory: claim the one-shot latch from
+     the owner's accepted callback, after coordinator + persistence ownership
+     and before its first await. A refused intent therefore remains retryable. */
+  let ownerAccepted = false;
   void settleArc9DirectTravel(
     'galaxy-arrival',
     accepted,
     sourceNav,
     () => publishGalaxyDescent(accepted, true),
+    undefined,
+    undefined,
+    () => {
+      ownerAccepted = true;
+      if (source === 'zoom') automaticGalaxyArrivalLatch = galaxyKey;
+    },
   );
-  return true;
+  return ownerAccepted;
 }
 function descendSystem(starCandidate: { seed: number; x: number; y: number }): boolean {
   if (blockRouteChangeWhileProductAction()) return false;
@@ -8089,23 +8097,33 @@ function publishWormholeTraversal(
   rerender(skipPersist ? { skipPersist: true } : undefined);
 }
 
+let automaticWormholeTraversalLatch: string | null = null;
 function beginWormholeTraversal(
   sourceGalaxy: Extract<NavState, { mode: 'galaxy' }>,
+  automaticGalaxyKey?: string,
 ): boolean {
   if (arc9TravelInspectionOnly()) {
     publishWormholeTraversal(sourceGalaxy, true);
     return true;
   }
   if (arc9TravelWriteTemporarilyBlocked()) return false;
+  let ownerAccepted = false;
   void settleArc9DirectTravel(
     'wormhole-traversal',
     sourceGalaxy,
     sourceGalaxy,
     () => publishWormholeTraversal(sourceGalaxy, true),
+    undefined,
+    undefined,
+    () => {
+      ownerAccepted = true;
+      if (automaticGalaxyKey !== undefined) {
+        automaticWormholeTraversalLatch = automaticGalaxyKey;
+      }
+    },
   );
-  return true;
+  return ownerAccepted;
 }
-let automaticWormholeTraversalLatch: string | null = null;
 
 /* the game's ZOOM-DRIVEN transitions (checkTransitions, main.js 3380):
    dive by zooming into a thing, rise by zooming out past the mode floor.
@@ -8134,8 +8152,9 @@ function checkTransitions(): void {
     if (wormPos && camT.z > mw / 60 && Math.hypot(wormPos.x - camT.x, wormPos.y - camT.y) * camT.z < 120) {
       const galaxyKey = getProvenGalaxyKey(nav.gal);
       if (galaxyKey !== null && automaticWormholeTraversalLatch !== galaxyKey) {
-        automaticWormholeTraversalLatch = galaxyKey;
-        beginWormholeTraversal(nav);
+        /* Only the mutable owner's synchronous claim callback consumes the
+           latch. Inspection and either preflight refusal leave intent live. */
+        beginWormholeTraversal(nav, galaxyKey);
       }
       return;
     }
@@ -8475,6 +8494,37 @@ async function waitForActivePersist(): Promise<void> {
   if (pending !== null) await pending.catch(() => false);
 }
 let productActionInFlight = false;
+let smokeTransientPersistRelease: (() => void) | null = null;
+let smokeTransientPersistRun: Promise<boolean> | null = null;
+function smokeArmTransientPersistHold(): boolean {
+  /* Diagnostics-only transient-writer seam. Unlike the import race it never
+     writes IndexedDB, advances revision/receipts, or mutates product state. */
+  if (activePersist !== null || _persistT !== 0 || productActionInFlight || importWriteInFlight
+    || replacementTransaction !== null || replacementReloadPending
+    || smokeTransientPersistRelease !== null || smokeTransientPersistRun !== null) return false;
+  let releaseGate: (() => void) | null = null;
+  const run = new Promise<boolean>((resolve) => {
+    releaseGate = () => resolve(false);
+  });
+  activePersist = run;
+  smokeTransientPersistRun = run;
+  smokeTransientPersistRelease = () => {
+    const release = releaseGate;
+    smokeTransientPersistRelease = null;
+    release?.();
+  };
+  return true;
+}
+async function smokeReleaseTransientPersistHold(): Promise<boolean> {
+  const release = smokeTransientPersistRelease;
+  const run = smokeTransientPersistRun;
+  if (release === null || run === null) return false;
+  release();
+  await run;
+  if (activePersist === run) activePersist = null;
+  if (smokeTransientPersistRun === run) smokeTransientPersistRun = null;
+  return true;
+}
 function requestEcologyEpochCheckpoint(): void {
   if (ecologyEdgeCheckpointInFlight !== null || activePersist || productActionInFlight
     || importWriteInFlight || replacementTransaction || replacementReloadPending
@@ -8965,6 +9015,7 @@ async function settleArc9DirectTravel(
   publishNavigation: () => void,
   acceptedSavedView?: Readonly<Record<string, unknown>>,
   authorityStillValid: () => boolean = () => true,
+  onAttemptClaimed: () => void = () => {},
 ): Promise<boolean> {
   const runtime = f4Runtime;
   if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
@@ -8994,6 +9045,7 @@ async function settleArc9DirectTravel(
   let durable = false;
   let outcome: Arc9TravelActionOutcomeV1 | null = null;
   try {
+    onAttemptClaimed();
     await smokeProductActionHold.holdIfArmed(actionClaim.operation);
     await settleF4Heartbeat();
     if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
@@ -15486,6 +15538,20 @@ async function loadSave(): Promise<void> {
           schema: 'cf-v2-arc9-sharing-app-state/v1',
           followOutcome: lastArc9ShareFollowOutcome,
         },
+        travel: {
+          schema: 'cf-v2-arc9-travel-app-state/v1',
+          lastOutcome: lastArc9TravelOutcome,
+          automaticGalaxyArrivalLatch,
+          automaticWormholeTraversalLatch,
+          transientPersistHoldArmed: smokeTransientPersistRelease !== null,
+          temporarilyBlocked: arc9TravelWriteTemporarilyBlocked(),
+          universeCell: uniCell === null ? null : { ...uniCell },
+          homeGalaxyStreamed: uniNodes.some((galaxy) => galaxy.home === true),
+          actionCoordinator: {
+            inFlight: productActionInFlight,
+            owner: productActionCoordinator.diagnostics(),
+          },
+        },
         inventory: {
           stateKind: arc2LootState?.kind ?? 'unavailable',
           protection: arc2LootProtection,
@@ -15712,6 +15778,8 @@ async function loadSave(): Promise<void> {
       __smokeArmImportRace: smokeArmImportRace,
       __smokeReleaseImportRace: smokeReleaseImportRace,
       __smokeDrainFixturePersist: smokeDrainFixturePersist,
+      __smokeArmTransientPersistHold: smokeArmTransientPersistHold,
+      __smokeReleaseTransientPersistHold: smokeReleaseTransientPersistHold,
       __smokeStageStoredV4: smokeStageStoredV4,
       __smokeRejectNextPersist: () => {
         if (smokeRejectNextPersist) return false;

@@ -4873,12 +4873,13 @@ try {
      paths use it. Extra, missing, or reordered commits never pass. */
   const waitForF4ActionSequenceFixedPoint = async ({
     label, beforeAuthority, expectation, readAuthority,
-    assessSettlement = null, timeoutMs = 15_000,
+    assessSettlement = null, allowMigrated = false, timeoutMs = 15_000,
   }) => {
     if (typeof label !== 'string' || label.length < 1
       || typeof readAuthority !== 'function'
       || !expectation || !Array.isArray(expectation.expectedKinds)
       || typeof expectation.persistencePrefix !== 'string'
+      || typeof allowMigrated !== 'boolean'
       || (assessSettlement !== null && typeof assessSettlement !== 'function')) {
       throw new TypeError('F4 action-sequence waiter requires an exact label, reader, and expectation');
     }
@@ -4889,7 +4890,7 @@ try {
       try {
         const snapshot = await readAuthority();
         const readiness = assessF4ReadyAuthority({
-          ...snapshot, expectedToken: beforeAuthority?.token ?? null,
+          ...snapshot, expectedToken: beforeAuthority?.token ?? null, allowMigrated,
         });
         const assessment = readiness.ok
           ? (assessSettlement === null
@@ -5223,7 +5224,8 @@ try {
   const waitForF4Writable = async (
     label,
     {
-      previousToken = null, expectedToken = null, allowFresh = false, timeoutMs = 15_000,
+      previousToken = null, expectedToken = null, allowFresh = false,
+      allowMigrated = false, timeoutMs = 15_000,
     } = {},
   ) => {
     const deadline = Date.now() + timeoutMs;
@@ -5232,7 +5234,7 @@ try {
       try {
         const snapshot = await readDesktopF4AuthoritySnapshot();
         const assessment = assessF4ReadyAuthority({
-          ...snapshot, previousToken, expectedToken, allowFresh,
+          ...snapshot, previousToken, expectedToken, allowFresh, allowMigrated,
         });
         if (assessment.ok) {
           if (!desktopF4BootReadinessControlsRun) {
@@ -9487,10 +9489,206 @@ try {
   })()`);
   const stEmpty = emptyChecked.state;
   if (stEmpty.mode !== 'universe') fails.push('CONTROL FAILED — deep zoom in empty space dove somewhere: ' + stEmpty.mode);
-  /* zoom INTO the Milky Way at HOME_POS → galaxy */
+  /* zoom INTO the Milky Way at HOME_POS → galaxy. Recreate the hosted race
+     deterministically: an ordinary activePersist is held across the first
+     eligible home-cell transition turn. A transient refusal owns no latch;
+     releasing the same unchanged intent must commit exactly once. */
+  const homeZoomHeartbeatDocumentToken = await evalIn(
+    'window.__CF_SLICE__.documentToken',
+  );
+  const homeZoomHeartbeatQuiescence = await evalIn(
+    'window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()',
+  );
+  if (homeZoomHeartbeatQuiescence?.schema !== 'cf-v2-f4-heartbeat-quiescence/v1'
+    || homeZoomHeartbeatQuiescence.documentToken !== homeZoomHeartbeatDocumentToken
+    || homeZoomHeartbeatQuiescence.wasRunning !== true
+    || homeZoomHeartbeatQuiescence.stopped !== true
+    || homeZoomHeartbeatQuiescence.cycleSettled !== true) {
+    failSliceWithoutCascade('UNIVERSE→GALAXY ZOOM: heartbeat did not quiesce before the held-persist control: '
+      + JSON.stringify(homeZoomHeartbeatQuiescence));
+  }
+  const homeZoomDrain = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api;
+    const committed=await api.__smokeDrainFixturePersist(),state=api.state();
+    return {committed,pending:state.sceneResources.pendingPersistenceWrites};})()`);
+  if (homeZoomDrain.committed !== true || homeZoomDrain.pending !== 0) {
+    const resume = await evalIn('window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()');
+    failSliceWithoutCascade('UNIVERSE→GALAXY ZOOM: could not establish a quiescent F4 predecessor: '
+      + JSON.stringify({ homeZoomDrain, resume }));
+  }
+  const homeZoomBeforeAuthority = await waitForF4Writable(
+    'universe-to-galaxy zoom predecessor F4 authority',
+    {
+      allowMigrated: true,
+      expectedToken: homeZoomHeartbeatQuiescence.documentToken,
+    },
+  );
+  const homeZoomPreRelease = await evalIn(
+    'window.__CF_SLICE__.api.__smokeReleaseTransientPersistHold()',
+  );
+  if (homeZoomPreRelease !== false) {
+    const resume = await evalIn('window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()');
+    failSliceWithoutCascade('UNIVERSE→GALAXY ZOOM: unarmed transient persist release did not refuse: '
+      + JSON.stringify({ homeZoomPreRelease, resume }));
+  }
+  const homeZoomStart = await evalIn(`(()=>{const S=window.__CF_SLICE__,s=S.api.state();return {
+    documentToken:S.documentToken,tickerTicks:s.tickerTicks,mode:s.mode,gal:s.gal,
+    pendingPersistenceWrites:s.sceneResources.pendingPersistenceWrites,
+    renderedScene:s.renderedScene,travel:s.travel,cam:{x:S.cam.x,y:S.cam.y,z:S.cam.z},
+    camT:{x:S.camT.x,y:S.camT.y,z:S.camT.z}};})()`);
+  const homeZoomHoldArm = await evalIn(`(()=>{const api=window.__CF_SLICE__.api;
+    const first=api.__smokeArmTransientPersistHold(),second=api.__smokeArmTransientPersistHold(),state=api.state();
+    return {first,second,pending:state.sceneResources.pendingPersistenceWrites,travel:state.travel};})()`);
+  if (homeZoomStart.documentToken !== homeZoomBeforeAuthority.token
+    || homeZoomStart.mode !== 'universe' || homeZoomStart.pendingPersistenceWrites !== 0
+    || homeZoomHoldArm.first !== true || homeZoomHoldArm.second !== false
+    || homeZoomHoldArm.pending !== 1
+    || homeZoomHoldArm.travel?.transientPersistHoldArmed !== true) {
+    const release = await evalIn('window.__CF_SLICE__.api.__smokeReleaseTransientPersistHold()');
+    const resume = await evalIn('window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()');
+    failSliceWithoutCascade('UNIVERSE→GALAXY ZOOM: deterministic transient persist did not arm exactly once: '
+      + JSON.stringify({ homeZoomHoldArm, release, resume }));
+  }
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=90; S.camT.y=-60; S.camT.z=28; return 1; })()`);
-  const stG2 = await waitDesktopValue('universe-to-galaxy zoom', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='galaxy'&&s.gal===999?s:null; })()`);
-  if (stG2.mode !== 'galaxy' || stG2.gal !== 999) fails.push('zoom-in did not dive universe→galaxy: ' + JSON.stringify([stG2.mode, stG2.gal]));
+  const homeZoomStreamed = await waitDesktopValue(
+    'universe-to-galaxy home-cell stream while persistence held',
+    `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),t=s.travel,r=s.sceneResources;
+      const value={ok:s.mode==='universe'&&s.tickerTicks>${homeZoomStart.tickerTicks}
+        &&t?.universeCell?.ux===0&&t?.universeCell?.uy===-1&&t?.homeGalaxyStreamed===true
+        &&r?.pendingPersistenceWrites===1&&t?.automaticGalaxyArrivalLatch===null
+        &&t?.transientPersistHoldArmed===true&&t?.temporarilyBlocked===true
+        &&t?.actionCoordinator?.inFlight===false&&t?.actionCoordinator?.owner?.busy===false,
+        documentToken:S.documentToken,mode:s.mode,gal:s.gal,galX:s.galX,galY:s.galY,
+        cam:{x:S.cam.x,y:S.cam.y,z:S.cam.z},camT:{x:S.camT.x,y:S.camT.y,z:S.camT.z},
+        tickerStarted:S.app.ticker.started===true,tickerTicks:s.tickerTicks,
+        hidden:document.hidden,focus:document.hasFocus(),pendingPersistenceWrites:r?.pendingPersistenceWrites??null,
+        travel:t,persistence:s.persistence,renderedScene:s.renderedScene,toast:s.toastText};return value;})()`,
+    6000,
+    (value) => value?.ok === true,
+  );
+  const homeZoomChecked = await waitDesktopValue(
+    'universe-to-galaxy held transition retryability',
+    `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),t=s.travel,r=s.sceneResources;
+      const value={ok:s.mode==='universe'&&s.tickerTicks>${homeZoomStreamed.tickerTicks}
+        &&t?.universeCell?.ux===0&&t?.universeCell?.uy===-1&&t?.homeGalaxyStreamed===true
+        &&r?.pendingPersistenceWrites===1&&t?.automaticGalaxyArrivalLatch===null
+        &&t?.transientPersistHoldArmed===true&&t?.temporarilyBlocked===true
+        &&t?.actionCoordinator?.inFlight===false&&t?.actionCoordinator?.owner?.busy===false,
+        documentToken:S.documentToken,mode:s.mode,gal:s.gal,galX:s.galX,galY:s.galY,
+        cam:{x:S.cam.x,y:S.cam.y,z:S.cam.z},camT:{x:S.camT.x,y:S.camT.y,z:S.camT.z},
+        tickerStarted:S.app.ticker.started===true,tickerTicks:s.tickerTicks,
+        hidden:document.hidden,focus:document.hasFocus(),pendingPersistenceWrites:r?.pendingPersistenceWrites??null,
+        travel:t,persistence:s.persistence,renderedScene:s.renderedScene,toast:s.toastText};return value;})()`,
+    6000,
+    (value) => value?.ok === true,
+  );
+  const homeZoomHeldRaw = await evalIn(READ_F4_AUTHORITY_EXPRESSION);
+  const homeZoomHeldRawUnchanged = homeZoomHeldRaw.revisionRaw === homeZoomBeforeAuthority.raw.revisionRaw
+    && homeZoomHeldRaw.revision === homeZoomBeforeAuthority.raw.revision
+    && homeZoomHeldRaw.ordinal === homeZoomBeforeAuthority.raw.ordinal
+    && homeZoomHeldRaw.legacyRaw === homeZoomBeforeAuthority.raw.legacyRaw
+    && JSON.stringify(homeZoomHeldRaw.draws) === JSON.stringify(homeZoomBeforeAuthority.raw.draws)
+    && JSON.stringify(homeZoomHeldRaw.receiptKeys) === JSON.stringify(homeZoomBeforeAuthority.raw.receiptKeys)
+    && JSON.stringify(homeZoomHeldRaw.receiptRows) === JSON.stringify(homeZoomBeforeAuthority.raw.receiptRows);
+  if (!homeZoomHeldRawUnchanged) {
+    const release = await evalIn('window.__CF_SLICE__.api.__smokeReleaseTransientPersistHold()');
+    const resume = await evalIn('window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()');
+    failSliceWithoutCascade('UNIVERSE→GALAXY ZOOM: diagnostics-only hold mutated F4 authority before release: '
+      + JSON.stringify({ homeZoomBeforeAuthority, homeZoomHeldRaw, homeZoomChecked, release, resume }));
+  }
+  const homeZoomRelease = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api;
+    const released=await api.__smokeReleaseTransientPersistHold(),state=api.state(),
+      second=await api.__smokeReleaseTransientPersistHold();return {released,second,
+        documentToken:window.__CF_SLICE__.documentToken,pending:state.sceneResources.pendingPersistenceWrites,
+        camT:{...window.__CF_SLICE__.camT},travel:state.travel};})()`);
+  if (homeZoomRelease.released !== true || homeZoomRelease.second !== false
+    || homeZoomRelease.pending !== 0
+    || homeZoomRelease.documentToken !== homeZoomBeforeAuthority.token
+    || homeZoomRelease.camT?.x !== 90 || homeZoomRelease.camT?.y !== -60
+    || homeZoomRelease.camT?.z !== 28
+    || homeZoomRelease.travel?.transientPersistHoldArmed !== false
+    || homeZoomRelease.travel?.automaticGalaxyArrivalLatch !== null) {
+    const resume = await evalIn('window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()');
+    failSliceWithoutCascade('UNIVERSE→GALAXY ZOOM: transient persist did not release once into the unchanged intent: '
+      + JSON.stringify({ homeZoomRelease, homeZoomChecked, resume }));
+  }
+  const readHomeZoomF4Authority = () => evalIn(
+    `(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
+      const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
+        state,raw,token:typeof S?.documentToken==='string'?S.documentToken:null,
+        foreground:{hidden:document.hidden,focus:document.hasFocus(),
+          tickerStarted:S?.app?.ticker?.started===true}};})()`,
+    { timeoutMs: 2_000 },
+  );
+  const assessHomeZoomSettlement = ({ beforeAuthority, afterAuthority, state }) => {
+    const sequence = assessF4ActionCommitSequence({
+      beforeAuthority,
+      afterAuthority,
+      state,
+      expectedKinds: ['arc9-galaxy-arrival-v1'],
+      expectedPersistenceLastOutcome: `arc9-travel-committed:${afterAuthority?.raw?.revision}`,
+    });
+    const reasons = [...sequence.reasons];
+    const add = (reason, condition) => { if (!condition) reasons.push(reason); };
+    add('exact home galaxy route', state?.mode === 'galaxy' && state?.gal === 999
+      && state?.galX === 90 && state?.galY === -60
+      && state?.star === null && state?.planet === null
+      && state?.navGalaxyKey === 'CF1|g:999@90,-60'
+      && state?.navStarKey === null && state?.navWorldKey === null);
+    add('exact rendered home galaxy receipt', Number.isSafeInteger(state?.renderedScene?.serial)
+      && state.renderedScene.serial > homeZoomStart.renderedScene?.serial
+      && state.renderedScene.mode === 'galaxy'
+      && state.renderedScene.galaxyKey === 'CF1|g:999@90,-60'
+      && state.renderedScene.starKey === null && state.renderedScene.worldKey === null);
+    add('settled automatic travel owner', state?.sceneResources?.pendingPersistenceWrites === 0
+      && state?.travel?.lastOutcome?.startsWith('committed:galaxy-arrival:') === true
+      && state?.travel?.actionCoordinator?.inFlight === false
+      && state?.travel?.actionCoordinator?.owner?.busy === false
+      && state?.travel?.actionCoordinator?.owner?.operation === null);
+    add('foreground ticker service', afterAuthority?.foreground?.hidden === false
+      && afterAuthority?.foreground?.focus === true
+      && afterAuthority?.foreground?.tickerStarted === true
+      && state?.tickerTicks > homeZoomChecked.tickerTicks);
+    return { ok: reasons.length === 0, reasons };
+  };
+  const homeZoomSettlement = await waitForF4ActionSequenceFixedPoint({
+    label: 'universe-to-galaxy zoom',
+    beforeAuthority: homeZoomBeforeAuthority,
+    expectation: {
+      expectedKinds: ['arc9-galaxy-arrival-v1'],
+      persistencePrefix: 'arc9-travel-committed:',
+    },
+    readAuthority: readHomeZoomF4Authority,
+    assessSettlement: assessHomeZoomSettlement,
+    allowMigrated: true,
+  });
+  const homeZoomHeartbeatResume = await evalIn(
+    'window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()',
+  );
+  const stG2 = homeZoomSettlement.afterAuthority?.state ?? null;
+  const homeZoomFinal = homeZoomSettlement.status === 'ready'
+    && homeZoomSettlement.assessment?.ok === true
+    && homeZoomHeartbeatQuiescence?.wasRunning === true
+    && homeZoomHeartbeatQuiescence?.documentToken === homeZoomBeforeAuthority.token
+    && homeZoomSettlement.afterAuthority?.token === homeZoomBeforeAuthority.token
+    && stG2?.mode === 'galaxy' && stG2?.gal === 999
+    && stG2?.galX === 90 && stG2?.galY === -60
+    && stG2?.star === null && stG2?.planet === null
+    && stG2?.renderedScene?.mode === 'galaxy'
+    && stG2?.renderedScene?.galaxyKey === 'CF1|g:999@90,-60'
+    && stG2?.renderedScene?.serial > homeZoomStart.renderedScene?.serial
+    && stG2?.sceneResources?.pendingPersistenceWrites === 0
+    && stG2?.travel?.lastOutcome?.startsWith('committed:galaxy-arrival:') === true
+    && stG2?.travel?.actionCoordinator?.inFlight === false
+    && stG2?.travel?.actionCoordinator?.owner?.busy === false
+    && stG2?.travel?.actionCoordinator?.owner?.operation === null
+    && homeZoomHeartbeatResume?.schema === 'cf-v2-f4-heartbeat-resume/v1'
+    && homeZoomHeartbeatResume?.documentToken === homeZoomBeforeAuthority.token
+    && homeZoomHeartbeatResume?.running === true;
+  if (!homeZoomFinal) {
+    failSliceWithoutCascade('UNIVERSE→GALAXY ZOOM: held refusal did not recover into one exact durable arrival: '
+      + JSON.stringify({ homeZoomStart, homeZoomHoldArm, homeZoomStreamed, homeZoomChecked,
+        homeZoomRelease, homeZoomSettlement, homeZoomHeartbeatResume }));
+  }
   /* hold deep over SOL_POS below the dive threshold: the Sun marker + the
      fine-star resolve layer must both be up (Renderer LOD gates) */
   await evalIn(`(()=>{ const S=window.__CF_SLICE__; S.camT.x=560; S.camT.y=170; S.camT.z=8; S.cam.x=560; S.cam.y=170; S.cam.z=8; return 1; })()`);

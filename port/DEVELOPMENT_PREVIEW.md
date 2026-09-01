@@ -1,5 +1,27 @@
 # Development Preview — Separate-Origin Human Playtesting
 
+> **2026-09-01 current PR #35 repair/preview boundary (supersedes older “current” labels while
+> preserving dated evidence and preview rules):** the sixth hosted PR #35 admission attempt,
+> GitHub run `33522000552`, tested exact head
+> `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against exact base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed; Slice stopped once/no-retry at
+> universe-to-galaxy zoom with `last null`, so Glass was skipped. The exact authorization is
+> consumed, the result remains red, no merge occurred, and no hosted authority remains.
+>
+> The bounded successor claims the galaxy latch from the direct-travel owner's synchronous accepted
+> callback after coordinator and `activePersist` ownership and before its first await. Wormhole
+> begin derives the equivalent accepted boolean and claims its automatic-key latch inside that callback; caller
+> preflight alone is insufficient. Its diagnostics-only non-mutating `activePersist` hold proves **busy →
+> clear → same intent → exactly one arrival**, with a narrowly scoped `migrated-v4` exact-initial-
+> document readiness opt-in. It does not change the manual preview workflow, timeout/retry policy,
+> Edge-version policy, rulers, art, creatures, plants, biomes, Guardians, gameplay or saves.
+>
+> A dirty-tree full local Slice pass is diagnostic only. A fresh signed candidate, tracked develop
+> profile and unchanged-source **Compendium → Slice → Glass** chain remain pending. No preview was
+> packaged or published; the separate-origin manual preview remains noncertifying, and its
+> authority/status does not change. No Gate/Arc/HUMAN, merge, release, version or deployment
+> authority follows.
+
 > **2026-09-01 current admission/preview boundary (canonical handoff in `../ROADMAP.md`):** exact
 > clean SSH-signed source `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier
 > 3f8f870 harness-only lexical red. Its tracked-input develop preflight passed **259 files / 2,660

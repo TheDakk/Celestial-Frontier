@@ -1,5 +1,25 @@
 # Celestial Frontier — Breeding & Sharing
 
+> **2026-09-01 current automatic-arrival transient-latch overlay (matches local code as of
+> 2026-09-01; supersedes older “current” labels without rewriting historical evidence):** PR #35
+> run `33522000552` tested exact head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`; Compendium passed, then the one/no-retry Slice
+> stopped because universe-to-galaxy zoom did not reach its browser outcome within 6 seconds.
+> Automatic galaxy and wormhole arrival had been able to consume their one-shot latch before a
+> transient persistence refusal, leaving the unchanged zoom intent unable to try again.
+>
+> The direct-travel owner now reports synchronous acceptance only after claiming the shared
+> coordinator and installing its `activePersist` ownership, before its first await. Galaxy arrival
+> claims its latch only from that callback; wormhole begin derives its accepted result and claims
+> its automatic-key latch inside the same callback. The held intent stays retryable and, after authority clears, commits exactly
+> once. The diagnostics-only persistence hold writes no save,
+> revision or receipt and mutates no product state; `migrated-v4` readiness is allowed only by an
+> explicit initial-exact-document Slice control. A dirty-source full local Slice passed
+> diagnostically but is not a certificate; a fresh signed candidate and unchanged-source
+> **Compendium → Slice → Glass** chain are pending. Breeding, companion care, lineage, CF1
+> encoding, explicit Follow/Share rules, creature/genome structure and all art/audio/plant/biome/
+> Guardian behavior are unchanged. No hosted authority, push, rerun or merge remains.
+
 > **2026-08-29 player-live Arc 5 Breed + Recovery boundary:** a versioned normal
 > companion-breeding planner and app transaction now adapt the existing V2 ownership, lifted
 > genetics, F4 SessionRNG/active-play authority and exact-five Arc 5 carrier. Two distinct live,

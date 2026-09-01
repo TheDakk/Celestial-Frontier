@@ -295,9 +295,10 @@ const exactF4OldReceiptFixture = (staged) => staged?.ordinal === 1
 
 /** Assess one coupled live/raw writable F4 authority snapshot. `bootKind` is
  * immutable boot provenance: initialized documents are `current-v5`, while a
- * genuinely new document remains `fresh-v5` for its whole lifetime. Fresh
- * provenance is therefore accepted only at an explicitly named initial-page
- * boundary, never for a reload/replacement wait. */
+ * genuinely new document remains `fresh-v5` for its whole lifetime. A v4
+ * migration likewise retains `migrated-v4` in that document. Either special
+ * provenance is accepted only at an explicitly named, exact-document
+ * boundary, never by default or for a reload/replacement wait. */
 export function assessF4ReadyAuthority({
   state,
   raw,
@@ -305,6 +306,7 @@ export function assessF4ReadyAuthority({
   previousToken = null,
   expectedToken = null,
   allowFresh = false,
+  allowMigrated = false,
 } = {}) {
   const reasons = [];
   const persistence = state?.persistence;
@@ -316,7 +318,10 @@ export function assessF4ReadyAuthority({
   const acceptedBootKind = persistence?.bootKind === 'current-v5'
     || (allowFresh === true && previousToken === null
       && validExpectedToken && expectedToken !== null && token === expectedToken
-      && persistence?.bootKind === 'fresh-v5');
+      && persistence?.bootKind === 'fresh-v5')
+    || (allowMigrated === true && previousToken === null
+      && validExpectedToken && expectedToken !== null && token === expectedToken
+      && persistence?.bootKind === 'migrated-v4');
   if (persistence?.schema !== 'cf-v2-app-persistence/v1' || persistence?.ready !== true
     || !acceptedBootKind || persistence?.hold !== null
     || persistence?.seedBootstrapPending !== false
@@ -327,7 +332,9 @@ export function assessF4ReadyAuthority({
     || !validPreviousToken || !validExpectedToken
     || (previousToken !== null && token === previousToken)
     || (expectedToken !== null && token !== expectedToken)
-    || (allowFresh === true && previousToken !== null)) reasons.push('document identity');
+    || ((allowFresh === true || allowMigrated === true) && previousToken !== null)) {
+    reasons.push('document identity');
+  }
   if (runtime?.schema !== 'cf-v2-f4-runtime/v1' || runtime?.visible !== true
     || runtime?.answerable !== true || runtime?.leaseOwned !== true || runtime?.accruing !== true
     || runtime?.staleBlocked !== false) reasons.push('live authority');

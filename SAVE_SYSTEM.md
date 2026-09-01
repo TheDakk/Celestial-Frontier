@@ -1,5 +1,30 @@
 # Celestial Frontier — Save System
 
+> **2026-09-01 current automatic-arrival/persistence-latch boundary (matches local code as of
+> 2026-09-01; supersedes older “current” labels while preserving their dated evidence):**
+> authorized PR #35 run `33522000552` tested exact head
+> `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against develop base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed, then Slice ran once/no-retry
+> and stopped at `universe-to-galaxy zoom did not reach its browser outcome within 6000ms`. The
+> galaxy zoom path assigned `automaticGalaxyArrivalLatch` before its transient persistence check;
+> wormhole transition likewise assigned its latch before knowing `beginWormholeTraversal()` had
+> accepted. A busy writer could therefore refuse the action after consuming its only automatic
+> attempt.
+>
+> `settleArc9DirectTravel` now invokes its synchronous accepted callback only after claiming the
+> shared product coordinator and installing its own `activePersist`, before the first await. Galaxy
+> zoom claims its latch from that callback; wormhole begin derives its accepted boolean and claims
+> its automatic-key latch inside the same callback. Refusal/defer is not an attempt: an unchanged held intent
+> stays retryable and, when `activePersist` clears, commits exactly once through the existing travel
+> owner. The Slice-only transient hold is a diagnostics seam: it requires idle persistence,
+> creates one identity-bound pending promise, then releases false without an IndexedDB write,
+> revision advance, receipt or product mutation. `migrated-v4` readiness is opt-in only for the
+> expected token of the initial exact document; defaults and reload/replacement documents remain
+> strict. A dirty-source full local Slice passed diagnostically, not as a certificate; a fresh
+> signed candidate and unchanged-source **Compendium → Slice → Glass** chain remain pending. No
+> save schema, migration, retry, timeout, browser pin, persistence ruler or gameplay payload
+> changed. The hosted authority is consumed, so no push, rerun or merge is authorized.
+
 > **2026-08-31 current a046 collision-control repair overlay (supersedes every older “current”
 > label below; dated evidence remains immutable):** exact signed
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry as

@@ -1,5 +1,26 @@
 # Celestial Frontier — Player Progression
 
+> **2026-09-01 current automatic-arrival transient-latch progression overlay (matches local code
+> as of 2026-09-01; supersedes older “current” labels while retaining dated evidence):** authorized
+> PR #35 run `33522000552` tested exact head
+> `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against develop base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed; the one/no-retry Slice then
+> stopped when universe-to-galaxy zoom failed to reach its browser outcome within 6 seconds. A
+> transient persistence refusal had consumed the automatic galaxy-arrival one-shot latch before
+> any accepted attempt; wormhole traversal carried the same latent ordering defect.
+>
+> The direct-travel owner now reports synchronous acceptance only after it has claimed the shared
+> coordinator and installed its `activePersist` ownership, before the first await. Galaxy arrival
+> claims its latch only from that callback; wormhole begin derives its accepted result and claims
+> its automatic-key latch inside the same callback. The same unchanged zoom intent remains retryable while persistence is held,
+> then settles exactly one travel commit after release. This
+> changes no Charter, arrival/event award, achievement, rank, reward, reach, balance or deterministic
+> generation rule. The non-mutating diagnostic hold creates no save write, revision or receipt, and
+> Slice may accept `migrated-v4` only for its explicitly bound initial exact document. A dirty-source
+> full local Slice passed diagnostically, not as a certificate; a fresh signed candidate and
+> unchanged-source **Compendium → Slice → Glass** chain remain pending. No timeout, retry, browser
+> pin or hosted authority was added, and no push or merge is authorized.
+
 > **2026-09-01 current Share progression/waiter-scope overlay (supersedes every older “current”
 > label below; dated evidence remains immutable):** exact clean SSH-signed source
 > `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red

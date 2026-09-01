@@ -150,6 +150,61 @@ describe('Slice F4 fresh-boot writable authority', () => {
     }
   });
 
+  it('admits migrated-v4 only at one explicit exact-document boundary', () => {
+    const migrated = authority('migrated-v4');
+    expect(assessF4ReadyAuthority(migrated)).toEqual({
+      ok: false,
+      reasons: ['boot readiness'],
+    });
+    expect(assessF4ReadyAuthority({ ...migrated, allowMigrated: true })).toEqual({
+      ok: false,
+      reasons: ['boot readiness'],
+    });
+    expect(assessF4ReadyAuthority({
+      ...migrated,
+      allowMigrated: true,
+      expectedToken: documentToken,
+    })).toEqual({ ok: true, reasons: [] });
+    expect(assessF4ReadyAuthority({
+      ...migrated,
+      allowMigrated: true,
+      expectedToken: 'different-document-token',
+    }).reasons).toEqual(['boot readiness', 'document identity']);
+    expect(assessF4ReadyAuthority({
+      ...migrated,
+      allowMigrated: true,
+      expectedToken: documentToken,
+      previousToken: 'prior-document-token',
+    }).reasons).toEqual(['boot readiness', 'document identity']);
+    expect(assessF4ReadyAuthority({
+      ...authority('protected-v5'),
+      allowMigrated: true,
+      expectedToken: documentToken,
+    }).ok).toBe(false);
+
+    const controls: Array<[string, (candidate: AuthorityFixture) => void, string]> = [
+      ['pending persistence', (candidate) => {
+        candidate.state.sceneResources = { pendingPersistenceWrites: 1 };
+      }, 'boot readiness'],
+      ['lease loss', (candidate) => {
+        candidate.state.persistence.runtime.leaseOwned = false;
+      }, 'live authority'],
+      ['revision drift', (candidate) => { candidate.raw.revision += 1; }, 'revision parity'],
+      ['RNG drift', (candidate) => { candidate.raw.seed += 1; }, 'durable RNG parity'],
+    ];
+    for (const [label, mutate, reason] of controls) {
+      const candidate = structuredClone(migrated);
+      mutate(candidate);
+      const result = assessF4ReadyAuthority({
+        ...candidate,
+        allowMigrated: true,
+        expectedToken: documentToken,
+      });
+      expect(result.ok, label).toBe(false);
+      expect(result.reasons, label).toContain(reason);
+    }
+  });
+
   it('binds fresh acceptance to an initial document and exact same-document settlement', () => {
     const fresh = authority('fresh-v5');
     expect(assessF4ReadyAuthority({
@@ -316,5 +371,22 @@ describe('Slice F4 fresh-boot writable authority', () => {
       'await waitForPhoneSurveyFixedPoint({',
       '\n  });',
     )).not.toContain('allowFresh: true');
+  });
+
+  it('scopes migrated authority to the held universe-to-galaxy control only', () => {
+    const predecessor = invocation(
+      "'universe-to-galaxy zoom predecessor F4 authority'",
+      'await waitForF4Writable(',
+      ');',
+    );
+    expect(predecessor).toContain('allowMigrated: true');
+    expect(predecessor).toContain('expectedToken: homeZoomHeartbeatQuiescence.documentToken');
+    const settlement = invocation(
+      "label: 'universe-to-galaxy zoom',",
+      'await waitForF4ActionSequenceFixedPoint({',
+      '\n  });',
+    );
+    expect(settlement).toContain('allowMigrated: true');
+    expect(source.match(/allowMigrated: true/gu)).toHaveLength(2);
   });
 });
