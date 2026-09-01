@@ -9,37 +9,35 @@
 synthetic merge `337ffd29f1584f1a5c786c4532a79c99876be325`, whose tree is byte-equivalent to exact head tree
 `e39bcdb8781eeaa6f9ee503cd6cfbb47497899ea`.
 
-Exact clean SSH-signed local source `c0f7215bd1ec932f6357b6cfc1e045b5644ba389` (tree
-`ecdc8623e5bad04d25dce0d3710e0d8db13d8704`, parent
-`138cdee0d3840efd899b5ebdbe974fd12d87e828`) supplied one fail-fast/no-retry local browser
-attempt. Browser-CDP selftest and live preflight accepted Edge `152.0.4191.53` / CDP `1.3`; the
-point version is provenance only. Compendium `20260901061544208-38321-e0d289a02a` passed
-**78/78** with zero findings/blocked outcomes in **64,697 ms**, six review PNGs and exact named
-verification before Slice. Producer/budget authority was
+Exact clean SSH-signed local source `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` (tree
+`979726f7035e7ca3c45de4fb80565b5d0d2d4481`, parent
+`c0f7215bd1ec932f6357b6cfc1e045b5644ba389`) passed its clean tracked-input develop preflight and
+supplied one fail-fast/no-retry local browser attempt. Browser-CDP selftest and live preflight
+accepted Edge `152.0.4191.53` / CDP `1.3`; the point version is provenance only. Compendium
+`20260901072803827-52451-8168677f8e` passed **78/78** with zero findings/blocked outcomes in
+**65,672 ms**, six review PNGs and exact named verification before Slice. Producer/budget
+authority was
 `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6` /
 `78269c722c0d64438c0d407e0d8df3a8a284715af35bff94ed6f7d8dbba569c2`.
 
-Its exact-source develop Slice `20260901061722706-38658-429913af5517` stopped after **337,110
-ms** with exactly **1 finding / 1 scope**, `collision-share-1`, and ten screenshots. The product
-correctly moved on one token from revision/ordinal/Shares **13/8/4** to **15/10/5** by appending
-`arc9-share-send-v1` then the conditional `arc9-progression-refresh-v1`; `share5` joined, best rank
-stayed 3 and SessionRNG did not move. The old harness required one receipt and falsely rejected
-this correct owner-plus-aggregate sequence. Glass correctly did not run; c0f7215 is not retried or
-relabelled.
+Its exact-source develop Slice `20260901072936648-52803-f33e3b0b5239` completed the ordinary
+journey and all ten screenshots, entered collision controls through boot/import/baseline and the
+first named Search gesture, then stopped before Search settlement after **336,730 ms** with exactly
+**1 finding / 1 scope**, `harness`: `waitForF4ActionSequenceFixedPoint is not defined`. Collision
+Share was never reached, so this exact run did not retest c0's `collision-share-1`. The helper
+was declared inside the first full-journey-only block while the collision adapter called it from
+the outer outcome-controls path. Glass correctly did not run; 3f8f870 is not retried or relabelled.
+This is no product, save, progression, presentation or browser finding.
 
-The bounded dirty successor changes no product source or Share/game behavior.
-`READ_F4_AUTHORITY_EXPRESSION` reads canonical `catalog`/`v5:catalog` in the same read-only
-transaction as revision/player/receipts. The predecessor cross-binds its exact schema/segment and
-codex/surveyed/gals arrays to legacy raw, plus existing live counts/best/hybrids; the successor
-preserves both catalog and legacy inputs. The contract derives exact one-or-two receipt topology,
-uses c0's captured 26 unlock IDs, proves all rank thresholds/factors plus permanent saved-rank
-no-demotion, binds all six helper outputs
-to their waiter arguments and requires two consecutive final samples. Missing, swapped, extra,
-intermediate, divergent or overshot shapes fail closed. Focused verification is **57/57**; all
-TypeScript programs pass; and the complete develop profile passes **259 files / 2,659 passed / 1
-skipped**, **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields.
-Independent final review is **APPROVED**. Clean signing, tracked-input rehearsal and a fresh browser
-chain remain pending; this unsigned working tree inherits no c0f7215 browser certificate.
+The bounded dirty successor lifts the unchanged helper to the enclosing `try`, where both execution
+modes can reach it. An Acorn lexical audit requires its single declaration and all five direct calls
+to share that scope and rejects a re-gated historical mutant. Focused four-file verification is
+**58/58**; all TypeScript programs, `node --check`, the collision-only real-Edge diagnostic through
+collision Share/reload and the complete develop profile pass at **259 files / 2,660 passed / 1
+skipped**, **34** clean art sources,
+**1,014/1,014** routes and **454** non-inert fields; independent code audit is **APPROVED**. Clean
+signing, tracked-input rehearsal and a fresh browser chain remain pending; this unsigned working
+tree inherits no 3f8f870 browser certificate.
 
 All five hosted approval labels are absent and PR #35 remains Draft/unmerged. No push, label,
 hosted attempt, retry, Ready transition, merge, release, version bump, preview publication or

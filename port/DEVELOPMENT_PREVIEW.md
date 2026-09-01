@@ -1,20 +1,25 @@
 # Development Preview — Separate-Origin Human Playtesting
 
 > **2026-09-01 current admission/preview boundary (canonical handoff in `../ROADMAP.md`):** exact
-> signed c0f7215 crossed the repaired Survey expression boundary. Compendium
-> `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry in **64,697 ms** with
-> zero findings/blocked outcomes, six review PNGs and named verification. Exact-source Slice
-> `20260901061722706-38658-429913af5517` then stopped after **337,110 ms** with exactly **1
-> finding / 1 scope**, `collision-share-1`, and ten screenshots. Correct product state used one
-> Share receipt plus one conditional aggregate-progression receipt; the one-receipt harness oracle
-> was false red. Glass did not run. No development preview was packaged, run or published.
+> clean signed 3f8f870 passed tracked-input, browser-CDP selftest and live preflight. Compendium
+> `20260901072803827-52451-8168677f8e` passed **78/78** once/no-retry in **65,672 ms** with zero
+> findings/blocked outcomes, six review PNGs and named verification. Exact-source Slice
+> `20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all ten screenshots,
+> entered collision boot/import/baseline and dispatched Search, then stopped before Search
+> settlement after **336,730 ms** with exactly **1 finding / 1 scope**,
+> `harness`: `waitForF4ActionSequenceFixedPoint is not defined`. Glass did not run. No development
+> preview was packaged, run or published; this is no product or preview finding. Collision Share
+> was never reached, so c0's boundary was not retested.
 >
-> The dirty harness-only successor changes no product source. It same-transaction binds canonical
-> catalog, revision/player/receipts, legacy raw and existing live state, then derives the exact
-> one-or-two receipt shape across all six Share sites. Focused **57/57**, all TypeScript programs
-> and complete develop **259 files / 2,659 passed / 1 skipped** are green, with **34** clean art
-> sources, **1,014/1,014** routes, **454** fields and independent review **APPROVED**. Clean signed
-> tracked-input and fresh browser verification remain pending. The separate manual preview remains
+> The dirty harness-only successor changes no product source or preview behavior. It lifts the
+> unchanged shared waiter from full-journey-only scope to the enclosing `try`; an Acorn lexical
+> audit binds its one declaration to all five direct calls and rejects a re-gated mutant. Focused
+> **58/58**, all TypeScript programs, `node --check`, collision-only real Edge through Share/reload
+> and complete develop
+> **259 files / 2,660 passed / 1 skipped** are green, with **34** clean art sources,
+> **1,014/1,014** routes and **454** fields; code audit is **APPROVED**. Clean signed tracked-input
+> and fresh browser verification remain pending; this dirty successor inherits no 3f8f870
+> certificate. The separate manual preview remains
 > noncertifying and its workflow is unchanged. No preview rule, product byte, timeout, retry or
 > browser-version policy changed; five hosted attempts remain consumed, every label is absent, and
 > no push, hosted attempt, publication, merge, release, version or deploy is authorized.

@@ -1147,7 +1147,7 @@ describe('sixth Slice red contract repairs', () => {
     const stageOwnerWait = section(
       sliceSource,
       'const waitForStoredV4StageOwner = async (',
-      'try {\n  if (!OUTCOME_CONTROLS_ONLY) {',
+      'try {\n  /* A generic writable snapshot may be the gap between a receipt-bearing',
     );
     proveEachMarkerRequired(stageOwnerWait, [
       ['explicit hold policy',

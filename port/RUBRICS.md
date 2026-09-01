@@ -1,23 +1,26 @@
 # Acceptance rubrics — what "done" means, per gate
 
-> **2026-09-01 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** exact signed
-> c0f7215 crossed the repaired Survey surface-expression boundary. Compendium
-> `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry in **64,697 ms** with
-> zero findings/blocked outcomes, six review PNGs and named verification. Exact-source Slice
-> `20260901061722706-38658-429913af5517` then stopped once/no-retry after **337,110 ms** with
-> exactly **1 finding / 1 scope**, `collision-share-1`, and ten screenshots. Correct product state
-> used one Share receipt plus one conditional aggregate-progression receipt; the one-receipt oracle
-> was false red. Glass correctly did not run.
+> **2026-09-01 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** exact clean
+> signed 3f8f870 passed tracked-input, browser-CDP selftest and live preflight. Compendium
+> `20260901072803827-52451-8168677f8e` passed **78/78** once/no-retry in **65,672 ms** with zero
+> findings/blocked outcomes, six review PNGs and named verification. Exact-source Slice
+> `20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all ten screenshots,
+> entered collision boot/import/baseline and dispatched the first named Search gesture, then stopped
+> before Search settlement once/no-retry after **336,730 ms** with exactly **1 finding /
+> 1 scope**, `harness`: `waitForF4ActionSequenceFixedPoint is not defined`. Glass correctly did not
+> run. Collision Share was never reached, so c0's boundary was not retested; this is no product or
+> rubric finding.
 >
-> The dirty harness-only successor reads canonical catalog state in the same read-only transaction
-> as revision/player/receipts, cross-binds catalog/legacy/live predecessor and preserved successor,
-> and derives the exact one-or-two receipt topology. C0's captured 26 unlock IDs, every rank
-> threshold/factor, permanent saved-rank no-demotion and every one of the six Share helper-to-waiter
-> bindings are controlled. Focused **57/57** and all TypeScript programs pass. Complete develop is
-> green at **259 files / 2,659 passed / 1 skipped**, with **34** clean art sources,
-> **1,014/1,014** routes, **454** non-inert fields and
-> independent review **APPROVED**. Clean signing/tracked-input and fresh browser verification
-> remain pending. No product source, rubric row, `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]`
+> The dirty harness-only successor lifts the unchanged shared waiter from the full-journey-only gate
+> to its enclosing `try`. An Acorn lexical audit requires its one declaration and all five direct
+> calls to share that reachable scope and rejects a re-gated mutant. Focused **58/58**, all
+> TypeScript programs, `node --check`, collision-only real Edge through Share/reload and complete
+> develop are green at
+> **259 files / 2,660 passed / 1 skipped**, with **34** clean art sources, **1,014/1,014** routes
+> and **454** non-inert fields; independent code audit is **APPROVED**. Clean signing/tracked-input
+> and fresh browser verification remain pending; this dirty successor inherits no 3f8f870
+> certificate. No product source, rubric row,
+> `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]`
 > status or whole Gate changes. Five hosted attempts remain consumed, every label is absent, and no
 > new hosted, merge, release or deploy authority exists.
 
@@ -108,9 +111,12 @@
 > `arc9-progression-refresh-v1` is required only when `share5` or a higher best rank is newly
 > projected. Same-token spans, preserved unrelated inputs and two consecutive final samples apply
 > at all six Share sites. Missing, extra, reordered, intermediate or overshot sequences are red.
-> This harness-only criterion is browser-free green at 57/57 and inside the green complete develop
-> profile (259 files / 2,659 passed / 1 skipped); clean signing/tracked-input and the fresh
-> unchanged-source browser chain remain pending. It changes no whole-Gate or `[HUMAN]` status.
+> The waiter now belongs to the enclosing execution scope shared by full-journey and collision-only
+> modes; Acorn binds one declaration to all five direct callers and makes the historical re-gated
+> shape red. This harness-only criterion is browser-free green at 58/58 and inside the green
+> complete develop profile (259 files / 2,660 passed / 1 skipped); clean signing/tracked-input and
+> the fresh unchanged-source browser chain remain pending. It changes no whole-Gate or `[HUMAN]`
+> status.
 >
 > Current-local resource acceptance additionally requires: route-invalid Survey destroys its DOM,
 > controller model and listeners; every Compendium/Capture/Combat/ecology controller has symmetric

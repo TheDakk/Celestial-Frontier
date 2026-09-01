@@ -1,23 +1,25 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **2026-09-01 current collision Share/progression admission overlay (canonical handoff in
-> `../ROADMAP.md`):** exact signed c0f7215 crossed the repaired Survey expression boundary.
-> Compendium `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry in **64,697
-> ms** with zero findings/blocked outcomes, six review PNGs and named verification. Exact-source
-> Slice `20260901061722706-38658-429913af5517` then stopped once/no-retry after **337,110 ms**
-> with exactly **1 finding / 1 scope**, `collision-share-1`, and ten screenshots. Correct product
-> state used one Share receipt followed by one conditional aggregate-progression receipt; the old
-> one-receipt oracle was false red. Glass did not run.
+> **2026-09-01 current Share-waiter lexical-scope admission overlay (canonical handoff in
+> `../ROADMAP.md`):** exact clean signed 3f8f870 passed tracked-input, browser-CDP selftest and
+> live preflight. Compendium `20260901072803827-52451-8168677f8e` passed **78/78** once/no-retry
+> in **65,672 ms** with zero findings/blocked outcomes, six review PNGs and named verification.
+> Exact-source Slice `20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all
+> ten screenshots, entered collision boot/import/baseline and dispatched Search, then stopped
+> before Search settlement once/no-retry after **336,730 ms** with
+> exactly **1 finding / 1 scope**, `harness`: `waitForF4ActionSequenceFixedPoint is not defined`.
+> Collision Share was never reached, so c0's boundary was not retested; Glass did not run and no
+> product or roadmap feature failed.
 >
-> The dirty harness-only successor changes no product source. It reads canonical catalog state in
-> the same read-only transaction as revision/player/receipts, cross-binds exact catalog, legacy raw
-> and existing live state, and derives the exact one-or-two receipt topology. C0's captured 26
-> unlock IDs, every rank threshold/factor, permanent saved-rank no-demotion and all six Share
-> helper-to-waiter bindings are controlled. Focused **57/57** and all TypeScript programs pass.
-> Complete develop is green at **259 files / 2,659 passed / 1 skipped**, with **34** clean art
-> sources, **1,014/1,014** routes and **454**
-> specification fields and independent review **APPROVED**. Clean signed tracked-input and fresh
-> browser verification remain pending. No roadmap feature, product/save/gameplay/art/creature
+> The dirty harness-only successor lifts the unchanged waiter from the full-journey-only gate to
+> the enclosing `try`. An Acorn lexical audit requires one declaration and all five direct calls in
+> its reachable scope and rejects a re-gated mutant. Focused **58/58**, all TypeScript programs,
+> `node --check`, collision-only real Edge through Share/reload and complete develop are green at
+> **259 files / 2,660
+> passed / 1 skipped**, with **34** clean art sources, **1,014/1,014** routes and **454**
+> specification fields; code audit is **APPROVED**. Clean signed tracked-input and fresh browser
+> verification remain pending; the dirty successor inherits no 3f8f870 certificate. No roadmap
+> feature, product/save/gameplay/art/creature
 > structure, EXEC history, Arc/Gate or HUMAN status changed. Five hosted attempts remain consumed,
 > every label is absent, and no new push, hosted attempt, merge, release, preview or deploy is
 > authorized.

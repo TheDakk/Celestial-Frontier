@@ -4865,6 +4865,67 @@ const waitForStoredV4StageOwner = async (
     + `${last.reasons.join(' · ')})`);
 };
 try {
+  /* A generic writable snapshot may be the gap between a receipt-bearing
+     owner and its queued aggregate-progression tail. Require the caller's
+     exact receipt/outcome topology twice in succession before allowing the
+     next dependent gesture. This waiter belongs to the outer execution
+     scope because both the full journey and outcome-controls-only collision
+     paths use it. Extra, missing, or reordered commits never pass. */
+  const waitForF4ActionSequenceFixedPoint = async ({
+    label, beforeAuthority, expectation, readAuthority,
+    assessSettlement = null, timeoutMs = 15_000,
+  }) => {
+    if (typeof label !== 'string' || label.length < 1
+      || typeof readAuthority !== 'function'
+      || !expectation || !Array.isArray(expectation.expectedKinds)
+      || typeof expectation.persistencePrefix !== 'string'
+      || (assessSettlement !== null && typeof assessSettlement !== 'function')) {
+      throw new TypeError('F4 action-sequence waiter requires an exact label, reader, and expectation');
+    }
+    const deadline = Date.now() + timeoutMs;
+    let consecutiveExactSamples = 0;
+    let last = null;
+    while (Date.now() < deadline) {
+      try {
+        const snapshot = await readAuthority();
+        const readiness = assessF4ReadyAuthority({
+          ...snapshot, expectedToken: beforeAuthority?.token ?? null,
+        });
+        const assessment = readiness.ok
+          ? (assessSettlement === null
+            ? assessF4ActionCommitSequence({
+              beforeAuthority,
+              afterAuthority: snapshot,
+              state: snapshot.state,
+              expectedKinds: expectation.expectedKinds,
+              expectedPersistenceLastOutcome:
+                `${expectation.persistencePrefix}${snapshot.raw?.revision}`,
+            })
+            : assessSettlement({
+              beforeAuthority,
+              afterAuthority: snapshot,
+              state: snapshot.state,
+            }))
+          : { ok: false, reasons: readiness.reasons.map((reason) => `F4 readiness: ${reason}`) };
+        last = { snapshot, readiness, assessment };
+        const stability = advanceF4ActionSequenceStability(
+          consecutiveExactSamples,
+          assessment,
+        );
+        consecutiveExactSamples = stability.consecutiveExactSamples;
+        if (readiness.ok && stability.status === 'ready') {
+          return { status: 'ready', afterAuthority: snapshot, assessment };
+        }
+      } catch (error) {
+        consecutiveExactSamples = 0;
+        last = { context: String(error?.message || error) };
+      }
+      await sleep(50);
+    }
+    return { status: 'timeout', afterAuthority: last?.snapshot ?? null,
+      assessment: last?.assessment ?? { ok: false, reasons: ['authority observation failed'] },
+      last };
+  };
   if (!OUTCOME_CONTROLS_ONLY) {
   const t = await send('Target.createTarget', { url: 'about:blank' });
   const at = await send('Target.attachToTarget', { targetId: t.targetId, flatten: true });
@@ -5195,65 +5256,6 @@ try {
       await sleep(200);
     }
     throw new Error(`${label} did not acquire coupled writable F4 authority within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
-  };
-  /* A generic writable snapshot may be the gap between a receipt-bearing
-     owner and its queued aggregate-progression tail. Require the caller's
-     exact receipt/outcome topology twice in succession before allowing the
-     next dependent gesture. Extra, missing, or reordered commits never pass. */
-  const waitForF4ActionSequenceFixedPoint = async ({
-    label, beforeAuthority, expectation, readAuthority,
-    assessSettlement = null, timeoutMs = 15_000,
-  }) => {
-    if (typeof label !== 'string' || label.length < 1
-      || typeof readAuthority !== 'function'
-      || !expectation || !Array.isArray(expectation.expectedKinds)
-      || typeof expectation.persistencePrefix !== 'string'
-      || (assessSettlement !== null && typeof assessSettlement !== 'function')) {
-      throw new TypeError('F4 action-sequence waiter requires an exact label, reader, and expectation');
-    }
-    const deadline = Date.now() + timeoutMs;
-    let consecutiveExactSamples = 0;
-    let last = null;
-    while (Date.now() < deadline) {
-      try {
-        const snapshot = await readAuthority();
-        const readiness = assessF4ReadyAuthority({
-          ...snapshot, expectedToken: beforeAuthority?.token ?? null,
-        });
-        const assessment = readiness.ok
-          ? (assessSettlement === null
-            ? assessF4ActionCommitSequence({
-              beforeAuthority,
-              afterAuthority: snapshot,
-              state: snapshot.state,
-              expectedKinds: expectation.expectedKinds,
-              expectedPersistenceLastOutcome:
-                `${expectation.persistencePrefix}${snapshot.raw?.revision}`,
-            })
-            : assessSettlement({
-              beforeAuthority,
-              afterAuthority: snapshot,
-              state: snapshot.state,
-            }))
-          : { ok: false, reasons: readiness.reasons.map((reason) => `F4 readiness: ${reason}`) };
-        last = { snapshot, readiness, assessment };
-        const stability = advanceF4ActionSequenceStability(
-          consecutiveExactSamples,
-          assessment,
-        );
-        consecutiveExactSamples = stability.consecutiveExactSamples;
-        if (readiness.ok && stability.status === 'ready') {
-          return { status: 'ready', afterAuthority: snapshot, assessment };
-        }
-      } catch (error) {
-        consecutiveExactSamples = 0;
-        last = { context: String(error?.message || error) };
-      }
-      await sleep(50);
-    }
-    return { status: 'timeout', afterAuthority: last?.snapshot ?? null,
-      assessment: last?.assessment ?? { ok: false, reasons: ['authority observation failed'] },
-      last };
   };
   const travelCheck = `(()=>{ const button=document.querySelector('#survey [data-act=travel]');
     if(!button) return {ok:false,why:'missing'}; const b=button.getBoundingClientRect();
