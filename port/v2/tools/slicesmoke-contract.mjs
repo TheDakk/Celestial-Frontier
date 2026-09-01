@@ -2877,6 +2877,139 @@ export function arc0LandingCoordinatorIsIdle(state, { clearFault = false } = {})
     && (!clearFault || coordinator.lastFault === null);
 }
 
+/** Certify an exact early core-flow action predecessor. Route/card paint alone
+ * is insufficient: the document must also own current writable F4 authority
+ * and the shared action coordinator must have returned to its idle fixed
+ * point. Galaxy cards are presentation-only; this contract starts at the
+ * first receipt-bearing star/world Survey before Enter-system or Land. */
+export function assessEarlyCoreFlowActionFixedPoint(observation, expected) {
+  const route = expected?.route;
+  const presentation = expected?.presentation ?? null;
+  const settlement = expected?.settlement ?? 'commit';
+  const surveyTarget = expected?.surveyTarget;
+  if (!nonEmptyString(expected?.documentToken)
+    || !Number.isSafeInteger(expected?.renderedSerial)
+    || expected.renderedSerial < 0
+    || !route || typeof route !== 'object' || Array.isArray(route)
+    || !['star', 'world'].includes(surveyTarget)
+    || (surveyTarget === 'star' ? route.mode !== 'galaxy' : route.mode !== 'system')
+    || !['commit', 'current', 'either'].includes(settlement)
+    || !(presentation === null
+      || (presentation && typeof presentation === 'object' && !Array.isArray(presentation)
+        && presentation.cardOpen === true && presentation.actionOk === true
+        && nonEmptyString(presentation.cardTitle)
+        && nonEmptyString(presentation.actionLabel)))) {
+    throw new TypeError('early core-flow fixed point requires document, route, render, and optional presentation expectations');
+  }
+  const reasons = [];
+  const state = observation?.state;
+  const rendered = state?.renderedScene;
+  if (observation?.documentToken !== expected.documentToken
+    || observation?.beforeAuthority?.token !== expected.documentToken
+    || observation?.afterAuthority?.token !== expected.documentToken) {
+    reasons.push('document identity');
+  }
+  if (state?.mode !== route.mode || state?.gal !== route.gal
+    || state?.galX !== route.galX || state?.galY !== route.galY
+    || state?.star !== route.star || state?.starX !== route.starX
+    || state?.starY !== route.starY || state?.planet !== route.planet
+    || state?.planetOrdinal !== route.planetOrdinal
+    || state?.navGalaxyKey !== route.navGalaxyKey
+    || state?.navStarKey !== route.navStarKey || state?.navWorldKey !== route.navWorldKey
+    || state?.epoch !== route.epoch) {
+    reasons.push('core-flow route authority');
+  }
+  if (!exactKeys(rendered, [
+    'serial', 'mode', 'ecologyEpoch', 'galaxyKey', 'starKey', 'worldKey',
+  ])
+    || rendered?.serial !== expected.renderedSerial
+    || rendered.mode !== route.mode || rendered.ecologyEpoch !== route.epoch
+    || rendered.galaxyKey !== state?.navGalaxyKey
+    || rendered.starKey !== state?.navStarKey || rendered.worldKey !== state?.navWorldKey) {
+    reasons.push('core-flow rendered receipt identity');
+  }
+  if (presentation !== null
+    && (state?.cardOpen !== presentation.cardOpen
+      || state?.cardTitle !== presentation.cardTitle
+      || observation?.action?.ok !== presentation.actionOk
+      || observation?.action?.label !== presentation.actionLabel)) {
+    reasons.push('core-flow card/action presentation');
+  }
+  const afterRevision = observation?.afterAuthority?.raw?.revision;
+  const surveyCommit = Number.isSafeInteger(afterRevision) && afterRevision >= 0
+    ? assessSingleF4ActionCommit({
+      beforeAuthority: observation.beforeAuthority,
+      afterAuthority: observation.afterAuthority,
+      state,
+      expectedKind: 'arc9-survey-v1',
+      expectedPersistenceLastOutcome: `arc9-survey-committed:${afterRevision}`,
+    })
+    : { ok: false, reasons: ['exact raw revision successor'] };
+  const commitOutcomePrefix = `committed:${surveyTarget}:`;
+  const surveyCommitPublished = nonEmptyString(state?.landing?.surveyOutcome)
+    && state.landing.surveyOutcome.startsWith(commitOutcomePrefix)
+    && state.landing.surveyOutcome.length > commitOutcomePrefix.length;
+  const surveyCommitted = surveyCommit.ok && surveyCommitPublished;
+  const beforePersistence = observation?.beforeAuthority?.state?.persistence;
+  const afterPersistence = observation?.afterAuthority?.state?.persistence;
+  const beforeRuntime = beforePersistence?.runtime;
+  const afterRuntime = afterPersistence?.runtime;
+  const beforeRaw = observation?.beforeAuthority?.raw;
+  const afterRaw = observation?.afterAuthority?.raw;
+  const currentRuntimeExact = beforeRuntime?.schema === 'cf-v2-f4-runtime/v1'
+    && afterRuntime?.schema === beforeRuntime.schema
+    && safeInt(beforeRaw?.revision) && beforeRaw.revisionRaw === String(beforeRaw.revision)
+    && safeInt(afterRaw?.revision) && afterRaw.revisionRaw === String(afterRaw.revision)
+    && beforeRuntime.revision === beforeRaw.revision
+    && afterRuntime.revision === afterRaw.revision
+    && afterRuntime?.revision === beforeRuntime.revision
+    && safeInt(beforeRuntime?.commits)
+    && afterRuntime?.commits === beforeRuntime.commits
+    && safeInt(beforeRaw?.seed) && safeInt(beforeRaw?.ordinal)
+    && beforeRaw?.draws !== null && typeof beforeRaw?.draws === 'object'
+    && !Array.isArray(beforeRaw.draws)
+    && safeInt(afterRaw?.seed) && safeInt(afterRaw?.ordinal)
+    && afterRaw?.draws !== null && typeof afterRaw?.draws === 'object'
+    && !Array.isArray(afterRaw.draws)
+    && beforeRuntime.sessionSeed === beforeRaw.seed
+    && beforeRuntime.sessionOrdinal === beforeRaw.ordinal
+    && exactJson(beforeRuntime.sessionDraws, beforeRaw.draws)
+    && afterRuntime.sessionSeed === afterRaw.seed
+    && afterRuntime.sessionOrdinal === afterRaw.ordinal
+    && exactJson(afterRuntime.sessionDraws, afterRaw.draws)
+    && afterRuntime?.sessionSeed === beforeRuntime.sessionSeed
+    && afterRuntime?.sessionOrdinal === beforeRuntime.sessionOrdinal
+    && exactJson(afterRuntime?.sessionDraws, beforeRuntime.sessionDraws)
+    && afterRuntime?.staleWrites === beforeRuntime.staleWrites
+    && afterRuntime?.leaseLosses === beforeRuntime.leaseLosses
+    && afterRuntime?.staleBlocked === beforeRuntime.staleBlocked
+    && Number.isFinite(beforeRuntime?.activePlayMs)
+    && Number.isFinite(afterRuntime?.activePlayMs)
+    && afterRuntime.activePlayMs >= beforeRuntime.activePlayMs;
+  const surveyCurrent = exactJson(observation?.afterAuthority?.raw, observation?.beforeAuthority?.raw)
+    && currentRuntimeExact
+    && afterPersistence?.lastOutcome === beforePersistence?.lastOutcome
+    && state?.landing?.surveyOutcome === `current:${surveyTarget}`
+    && arc0LandingCoordinatorIsIdle(state, { clearFault: true });
+  if ((settlement === 'commit' || settlement === 'either') && !surveyCommitted
+    && !(settlement === 'either' && surveyCurrent)) {
+    if (!surveyCommit.ok) {
+      reasons.push(...surveyCommit.reasons.map((reason) => `Survey action commit: ${reason}`));
+    }
+    if (!surveyCommitPublished) {
+      reasons.push(`Survey action commit: exact published ${surveyTarget} outcome`);
+    }
+  }
+  if ((settlement === 'current' || settlement === 'either') && !surveyCurrent
+    && !(settlement === 'either' && surveyCommitted)) {
+    reasons.push('Survey current fixed point: exact no-write authority, current outcome, and idle coordinator');
+  }
+  return Object.freeze({
+    status: reasons.length === 0 ? 'ready' : 'pending',
+    reasons: Object.freeze(reasons),
+  });
+}
+
 /* A D-TRAIN transaction can only judge the product's busy-refusal branch
    after the harness proves that its exact fixture owns the current document
    and that the real Training action is runnable. Optional-chaining a missing
@@ -3185,7 +3318,9 @@ export function assessSingleF4ActionCommit({
     && before?.revisionRaw === String(before.revision)
     && after?.revision === before.revision + 1
     && after?.revisionRaw === String(before.revision + 1));
-  add('exact live runtime successor', safeInt(beforeRuntime?.revision)
+  add('exact live runtime successor', beforeRuntime?.schema === 'cf-v2-f4-runtime/v1'
+    && afterRuntime?.schema === beforeRuntime.schema
+    && safeInt(beforeRuntime?.revision)
     && beforeRuntime.revision === before?.revision
     && safeInt(beforeRuntime?.commits)
     && afterRuntime?.revision === beforeRuntime.revision + 1
@@ -3198,6 +3333,12 @@ export function assessSingleF4ActionCommit({
     && after?.seed === before.seed
     && after?.ordinal === before.ordinal + 1
     && exactJson(after?.draws, before.draws));
+  add('exact live/raw SessionRNG parity', beforeRuntime?.sessionSeed === before?.seed
+    && beforeRuntime?.sessionOrdinal === before?.ordinal
+    && exactJson(beforeRuntime?.sessionDraws, before?.draws)
+    && afterRuntime?.sessionSeed === after?.seed
+    && afterRuntime?.sessionOrdinal === after?.ordinal
+    && exactJson(afterRuntime?.sessionDraws, after?.draws));
 
   const receiptMap = (raw) => {
     if (!Array.isArray(raw?.receiptKeys) || !Array.isArray(raw?.receiptRows)
@@ -3228,6 +3369,89 @@ export function assessSingleF4ActionCommit({
     === expectedPersistenceLastOutcome);
   add('idle clear landing action coordinator', arc0LandingCoordinatorIsIdle(
     settledState, { clearFault: true },
+  ));
+  return { ok: reasons.length === 0, reasons };
+}
+
+/* Some player gestures intentionally compose a bounded sequence of durable
+   actions (for example, a named CF1 route first records the name and then the
+   accepted Follow). Join that entire append-only sequence before a dependent
+   gesture; observing its route/card paint cannot substitute for F4 closure. */
+export function assessF4ActionCommitSequence({
+  beforeAuthority, afterAuthority, state, expectedKinds,
+  expectedPersistenceLastOutcome,
+} = {}) {
+  if (!Array.isArray(expectedKinds) || expectedKinds.length < 1
+    || expectedKinds.length > 4 || expectedKinds.some((kind) => !nonEmptyString(kind))
+    || !nonEmptyString(expectedPersistenceLastOutcome)) {
+    throw new TypeError('F4 action sequence requires one to four exact receipt kinds and a persistence outcome');
+  }
+  const reasons = [];
+  const add = (reason, condition) => { if (!condition) reasons.push(reason); };
+  const before = beforeAuthority?.raw;
+  const after = afterAuthority?.raw;
+  const beforeRuntime = beforeAuthority?.state?.persistence?.runtime;
+  const afterRuntime = afterAuthority?.state?.persistence?.runtime;
+  const count = expectedKinds.length;
+
+  add('same document identity', nonEmptyString(beforeAuthority?.token)
+    && afterAuthority?.token === beforeAuthority.token);
+  add('exact raw revision span', safeInt(before?.revision)
+    && before?.revisionRaw === String(before.revision)
+    && after?.revision === before.revision + count
+    && after?.revisionRaw === String(after.revision));
+  add('exact live runtime span', beforeRuntime?.schema === 'cf-v2-f4-runtime/v1'
+    && afterRuntime?.schema === beforeRuntime.schema
+    && safeInt(beforeRuntime?.revision)
+    && beforeRuntime.revision === before?.revision
+    && safeInt(beforeRuntime?.commits)
+    && afterRuntime?.revision === beforeRuntime.revision + count
+    && afterRuntime?.revision === after?.revision
+    && afterRuntime?.commits === beforeRuntime.commits + count);
+  add('exact SessionRNG span', safeInt(before?.seed) && safeInt(before?.ordinal)
+    && before?.draws !== null && typeof before?.draws === 'object'
+    && !Array.isArray(before.draws)
+    && after?.seed === before.seed && after?.ordinal === before.ordinal + count
+    && exactJson(after?.draws, before.draws));
+  add('exact live/raw SessionRNG parity', beforeRuntime?.sessionSeed === before?.seed
+    && beforeRuntime?.sessionOrdinal === before?.ordinal
+    && exactJson(beforeRuntime?.sessionDraws, before?.draws)
+    && afterRuntime?.sessionSeed === after?.seed
+    && afterRuntime?.sessionOrdinal === after?.ordinal
+    && exactJson(afterRuntime?.sessionDraws, after?.draws));
+
+  const receiptMap = (raw) => {
+    if (!Array.isArray(raw?.receiptKeys) || !Array.isArray(raw?.receiptRows)
+      || raw.receiptKeys.length !== raw.receiptRows.length) return null;
+    const entries = raw.receiptKeys.map((key, index) => [key, raw.receiptRows[index]]);
+    const map = new Map(entries);
+    if (map.size !== entries.length || entries.some(([key, row]) => (
+      !nonEmptyString(key) || !safeInt(row?.ordinal) || key !== `receipt:${row.ordinal}`
+    ))) return null;
+    return map;
+  };
+  const beforeReceipts = receiptMap(before);
+  const afterReceipts = receiptMap(after);
+  const prefixExact = beforeReceipts !== null && afterReceipts !== null
+    && [...beforeReceipts].every(([key, row]) => afterReceipts.has(key)
+      && exactJson(afterReceipts.get(key), row));
+  add('exact predecessor receipt rows', prefixExact);
+  const expectedKeys = Array.from(
+    { length: count }, (_, index) => `receipt:${before?.ordinal + index}`,
+  );
+  const addedKeys = prefixExact
+    ? [...afterReceipts.keys()].filter((key) => !beforeReceipts.has(key)) : [];
+  const tail = expectedKeys.map((key) => afterReceipts?.get(key));
+  add('exact action receipt sequence', prefixExact
+    && afterReceipts.size === beforeReceipts.size + count
+    && addedKeys.length === expectedKeys.length
+    && expectedKeys.every((key) => addedKeys.includes(key))
+    && tail.every((row, index) => row?.ordinal === before.ordinal + index
+      && row?.kind === expectedKinds[index]));
+  add('exact persistence outcome', state?.persistence?.lastOutcome
+    === expectedPersistenceLastOutcome);
+  add('idle clear landing action coordinator', arc0LandingCoordinatorIsIdle(
+    state, { clearFault: true },
   ));
   return { ok: reasons.length === 0, reasons };
 }

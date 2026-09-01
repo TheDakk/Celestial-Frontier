@@ -15457,6 +15457,7 @@ async function loadSave(): Promise<void> {
         landing: {
           schema: 'cf-v2-arc0-landing-app-state/v1',
           lastOutcome: lastArc0LandingOutcome,
+          surveyOutcome: lastArc9SurveyOutcome,
           actionCoordinator: {
             inFlight: productActionInFlight,
             owner: productActionCoordinator.diagnostics(),

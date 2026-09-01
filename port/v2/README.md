@@ -1,23 +1,25 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-08-31 current terminal-green stored-v4 fixture-lifecycle admission (supersedes older
-> “current” labels; dated evidence remains immutable):** exact clean SSH-signed source
-> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop at **255 files /
-> 2,576 passed / 1 skipped**, all TypeScript/art/override/route/specification owners and live Edge
-> preflight. Its unchanged-source chain ran exactly once/no-retry: Compendium
-> `20260901024638901-3060-0ba295673f` passed **78/78**; Slice
-> `20260901024804921-3412-bd2a2c7c9c80` passed with zero findings/ten screenshots; Glass
-> `20260901025422535-3892-101d25f2e009` consumed that exact Slice and passed **12/12**
-> viewports plus **104/104** controls with zero findings/instrument failures. Every named verifier
-> passed.
+> **2026-09-01 current Survey-predecessor Slice boundary (supersedes older “current” labels;
+> dated evidence remains immutable):** hosted run `33466661094` tested exact PR #35 head
+> `06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c` against base `7a9f4c1370dd84292388d718c38ff34214f6203b`.
+> Its tree-equivalent synthetic merge passed all prerequisites and Compendium **78/78**, then Slice
+> stopped at **13 findings / 8 scopes**. One causal harness race explains the other 12: non-Sol
+> Enter ran before its receipt-bearing Survey reached the same-document F4 fixed point. The product
+> correctly exposed **Expedition action settling**, remained in galaxy and blocked the dependent
+> mutation. Glass correctly skipped; no retry ran.
 >
-> All eight staging paths use `cf-v2-stored-v4-stage-owner/v1` and
-> `cf-v2-stored-v4-stage-invocation/v1`: two stable ready observations, exact document token,
-> complete app/persistence authority and safe hold/mutation polarity precede one atomic invocation.
-> Only exact zero-call `unclaimed` may rebind; invoked, rejected, invalid or ambiguous outcomes
-> stop. Exact carriers in the signed evidence/docs descendant certify 580c99a only. No product/save/
-> CSS/gameplay/creature/art behavior, threshold, timeout, retry or Edge-version policy changed; no
-> push, hosted attempt, merge, release, version or deploy is authorized.
+> The bounded local runner successor requires exact Survey receipt/revision/persistence,
+> route/render/card/action identity and coordinator idle before every dependent Enter/Land action
+> across pointer, keyboard, touch and already-current routes. A red predecessor causal-stops all
+> descendants; `landing.surveyOutcome` is diagnostic-only. After repairing exact Atlas Travel commit
+> ownership, runtime schema/SessionRNG parity, retained-fault rejection and paired stable-but-wrong
+> authority controls, focused **4 files / 73 tests passed**, all three TypeScript programs and final develop
+> **257 files / 2,622 passed / 1 skipped** are green; two independent reviews are **APPROVED**.
+> Current producer authority remains `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`.
+> The clean signed candidate, tracked-input preflight and fresh Compendium → Slice → Glass chain
+> remain pending. Product/save/CSS/gameplay/creature/art behavior, rulers, timeout/retry and Edge-
+> version policy are unchanged; no new hosted, merge, release or deploy authority exists.
 
 > **2026-08-31 historical terminal-green raw Back-action failure-cleanup admission (superseded by
 > the current admission overlay above; all hosted/local evidence remains immutable):** exact clean SSH-signed
@@ -3448,6 +3450,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 
 | Tool | Role |
 |---|---|
+| **Current Slice Survey-dependent action boundary (2026-09-01)** | A receipt-bearing Survey is an asynchronous F4 predecessor even after its handler returns and Enter/Land is visible. `slicesmoke` must establish one exact same-document fixed point—Survey receipt and revision, persistence, current route/render/card/action identity and coordinator idle—before every dependent pointer, keyboard, touch or already-current Enter/Land. A missing, red, replaced or still-settling predecessor causal-stops descendants; `state().landing.surveyOutcome` remains diagnostic and cannot mint action authority. Atlas Travel must settle exactly one `arc9-galaxy-arrival-v1` / `arc9-travel-committed:` commit; single/sequence runtime schema binds before/after live↔raw SessionRNG parity; current Survey rejects retained faults; paired stable-but-wrong live/raw revision/seed/ordinal/draw controls are red. Focused 73/73, all TypeScript programs and the 257-file/2,622-pass/1-skip develop profile are green, with two independent reviews APPROVED. Hosted run `33466661094` remains immutable red and the clean candidate/tracked-input/browser chain remain pending. Product copy/refusal, saves, gameplay, rulers, timeouts, retries and browser-version policy remain unchanged. |
 | **Current Compendium Back action-time boundary (2026-08-31)** | `compendiummem` retains a pre-helper `setup` anchor only as chronology, accepts the virtual row's final settled native activation point, then arms one exact capture-phase `cf-v2-compendium-back-action-witness/v1` carrier before press/release. The carrier must observe exactly one trusted delegated click on the current document and bind row/index, target/hit/point, input phase, panel identity and action-time anchor; `before` is that anchor, and Back must return it immediately and after settlement within the existing ±2px ruler. If native input fails after arming, raw bounded cleanup bypasses the tracked observation wrapper, proves controller-aborted/carrier-absent state and preserves the original failed command/stage; cleanup failure is independent. GitHub run `33437596315` remains immutable 77/78 red under its stale pre-helper comparator. Exact clean `3ca7d30…` remains historical green evidence. Exact clean `9b37ffc…` passed Compendium 78/78 with desktop `-46 / -46 / -46` and phone `-2 / -2 / -2`, then passed unchanged-source develop Slice and full Glass 12/12 with 104/104 controls and every named verifier. Its four exact carriers are committed by the signed evidence/docs descendant and indexed with current authority hashes in `audits/README.md`. Product/CSS, numeric ceilings, timeout, retry, one-click and browser-version policies are unchanged. |
 | **Current Glass causal/presentation boundary (2026-08-31)** | The first instrument red retains one root, blocks dependent controls and stops later viewport work. The first product red stops dependent product work and records a complete disjoint blocked suffix; blocked controls are never reported as executed. Rendered Guide ingress reopens and re-queries the unique current topic carrier, judges all 22 required current-copy baselines before mutations, classifies copy mismatch as product-red and setup/control/restoration defects as instrument-red, and arms mutants only from green. Generic visibility walks ancestor `<details>` elements: while closed, only the direct first Summary subtree is rendered; retained rectangles/computed style/requested scroll do not admit hidden actions, while opening does. Product controls keep Capture actions base-centered with a 44px floor while preserving ≤390px full width and short landscape; rarity-removal controls independently cover Compendium badges and owned/non-missing Binder slots while `.missing` semantics remain distinct. |
 | **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |

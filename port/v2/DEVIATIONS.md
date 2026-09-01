@@ -1,16 +1,20 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **2026-08-31 current terminal-green Slice instrument-only deviation (canonical handoff in
-> `../../ROADMAP.md`):** exact clean signed source
-> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop, Compendium **78/78**,
-> zero-finding Slice with ten screenshots and exact-predecessor Glass **12/12** viewports /
-> **104/104** controls. Every stage ran once/no-retry and every named verifier passed.
+> **2026-09-01 current Slice Survey-predecessor instrument-only deviation (canonical handoff in
+> `../../ROADMAP.md`):** hosted run `33466661094` passed every prerequisite and Compendium
+> **78/78**, then Slice stopped at **13 findings / 8 scopes**. The harness pressed non-Sol Enter
+> before its receipt-bearing Survey's F4 settlement; the product correctly refused with
+> **Expedition action settling**. One causal race produced 12 cascades, Glass correctly skipped and
+> no retry ran.
 >
-> The bounded deviation is testing-only: all eight fixture paths require stable exact document and
-> persistence authority before one atomic call; only a proven zero-call `unclaimed` receipt may
-> rebind. No product, gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS, ruler,
-> timeout, retry or browser-version deviation exists. Four exact PASS carriers in the signed
-> evidence/docs descendant certify 580c99a only; no hosted or release authority exists.
+> The bounded local deviation is testing-only: every dependent pointer, keyboard, touch and
+> already-current Enter/Land now requires exact same-document Survey receipt/revision/persistence,
+> route/render/card/action identity and coordinator idle, then causal-stops after any red.
+> `landing.surveyOutcome` is diagnostic-only. Focused **73/73**, all TypeScript programs and final
+> develop **257 files / 2,622 passed / 1 skipped** are green, with two reviews **APPROVED**. The clean
+> candidate, tracked-input preflight and fresh exact-source chain remain pending. No product,
+> gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS,
+> ruler, timeout, retry or browser-version deviation exists; no hosted or release authority exists.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above; every older “current” status label
 > below; dated decisions and evidence remain immutable):** exact clean SSH-signed source
@@ -125,6 +129,18 @@ then its one-attempt phone product stage stopped at **Earth planetfall was rejec
 stages did not run, the attempt is consumed, and no replacement is authorized. The diagnosis and
 local repairs below do not rewrite that historical red evidence or supply a clean certificate.
 
+- ◐ **D-PR35-SURVEY-DEPENDENT-FIXED-POINT — Slice owns an asynchronous Survey predecessor before
+  dependent navigation.** This is a harness-only successor to hosted run `33466661094`, not a
+  product deviation or certificate. Before every pointer, keyboard, touch or already-current
+  Enter/Land path, the runner requires the exact current document's Survey receipt/revision and
+  persistence, route/render/card/action identity and coordinator idle. A missing, red, replaced or
+  still-settling Survey causal-stops the dependent action and all descendants; bounded
+  `landing.surveyOutcome` remains diagnosis only. Directional regression controls cover the early
+  core-flow ordering that previously produced one causal finding plus 12 cascades. Atlas Travel's
+  exact one commit, runtime schema/SessionRNG parity, retained-fault rejection and paired stable-but-
+  wrong authority controls are sealed. Focused 73/73, all TypeScript programs and the complete
+  develop profile are green; two reviews are APPROVED. A clean candidate, tracked-input preflight
+  and fresh Compendium → Slice → Glass chain remain pending.
 - ★ **D-PR35-HANDOFF — one-call Survey → Landing owns both persistence barriers.** It drains the
   incoming route barrier, starts Survey exactly once, drains Survey's replacement barrier, requires
   that exact settlement to return true, then invokes Landing exactly once. A synchronous refusal or

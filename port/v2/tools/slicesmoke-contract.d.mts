@@ -45,6 +45,50 @@ export function arc0LandingCoordinatorIsIdle(
   options?: Readonly<{ readonly clearFault?: boolean }>,
 ): boolean;
 
+export interface EarlyCoreFlowActionFixedPointAssessment {
+  readonly status: 'ready' | 'pending';
+  readonly reasons: readonly string[];
+}
+
+export function assessEarlyCoreFlowActionFixedPoint(
+  observation: unknown,
+  expected: Readonly<{
+    readonly documentToken: string;
+    readonly renderedSerial: number;
+    readonly surveyTarget: 'star' | 'world';
+    readonly route: Readonly<{
+      readonly mode: 'galaxy' | 'system';
+      readonly gal: number;
+      readonly galX: number;
+      readonly galY: number;
+      readonly star: number | null;
+      readonly starX: number | null;
+      readonly starY: number | null;
+      readonly planet: number | null;
+      readonly planetOrdinal: number | null;
+      readonly navGalaxyKey: string;
+      readonly navStarKey: string | null;
+      readonly navWorldKey: string | null;
+      readonly epoch: number;
+    }>;
+    readonly presentation?: Readonly<{
+      readonly cardOpen: true;
+      readonly cardTitle: string;
+      readonly actionOk: true;
+      readonly actionLabel: string;
+    }> | null;
+    readonly settlement?: 'commit' | 'current' | 'either';
+  }>,
+): EarlyCoreFlowActionFixedPointAssessment;
+
+export function assessF4ActionCommitSequence(input?: Readonly<{
+  readonly beforeAuthority?: unknown;
+  readonly afterAuthority?: unknown;
+  readonly state?: unknown;
+  readonly expectedKinds?: readonly string[];
+  readonly expectedPersistenceLastOutcome?: string;
+}>): SliceContractAssessment;
+
 export type Arc2InventorySuccessorBoundary = Readonly<{
   readonly kind: 'ready' | 'blocked';
   readonly canEnterMutableArc3: boolean;

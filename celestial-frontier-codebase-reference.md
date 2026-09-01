@@ -1,24 +1,29 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-31 current v2 Slice fixture-owner boundary (matches certified source 580c99a and
-> supersedes older “current” labels):** exact clean SSH-signed source
-> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop at **255 files /
-> 2,576 passed / 1 skipped**, all TypeScript/art/route/specification owners and live Edge/CDP
-> preflight. Its unchanged-source Compendium → Slice → Glass chain ran once/no-retry: **78/78**,
-> zero-finding Slice with ten screenshots, then **12/12** Glass viewports and **104/104** controls
-> with zero findings/instrument failures. Every exact named verifier passed.
+> **2026-09-01 current v2 Slice Survey-predecessor boundary (matches local code as of 2026-09-01;
+> supersedes older “current” labels; browser chain pending):** GitHub run `33466661094` tested exact
+> PR #35 head `06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c` and a tree-equivalent synthetic merge. Every
+> prerequisite and Compendium **78/78** passed; Slice then stopped at **13 findings / 8 scopes**.
+> The first non-Sol Survey → Enter failure was causal: Enter ran before the receipt-bearing Survey's
+> F4 settlement, the product correctly refused with **Expedition action settling**, and the other 12
+> findings cascaded. Glass correctly skipped and no retry ran.
 >
-> Current tooling separates stable document ownership, one mutation claim and independent storage
-> readback across all eight stored-v4 staging paths. Two ready observations bind one exact document
-> token plus complete app/persistence authority and safe hold/mutation polarity; one atomic
-> expression rechecks them before exactly one hook call. Only a shaped zero-call `unclaimed`
-> pre-call replacement may rebind; post-call replacement, false/throw, invalid receipt or transport
-> ambiguity is terminal. Storage contents diagnose but cannot mint a stage receipt.
+> The local runner now treats every receipt-bearing Survey as an exact same-document predecessor for
+> dependent Enter/Land paths across pointer, keyboard, touch and already-current routes. It requires
+> receipt/revision/persistence, current route/render/card/action identity and coordinator idle before
+> the action, then causal-stops descendants after a red or unsettled predecessor.
+> `state().landing.surveyOutcome` is retained only as bounded diagnosis; it cannot authorize an
+> action. Atlas Travel acceptance requires exactly one `arc9-galaxy-arrival-v1` /
+> `arc9-travel-committed:` commit; single/sequence runtime schemas bind before/after live↔raw
+> SessionRNG parity; current Survey rejects retained faults; and paired stable-but-wrong live/raw
+> revision/seed/ordinal/draw controls fail. Focused **4 files / 73 tests passed**, all TypeScript programs and
+> final develop **257 files / 2,622 passed / 1 skipped** are green, and two independent reviews are
+> **APPROVED**. Producer authority remains `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`.
+> The clean candidate, tracked-input preflight and fresh Compendium → Slice → Glass chain are pending.
 >
-> Product source, save semantics/schema, gameplay, deterministic generation, presentation,
-> art/audio, creature/genome/plant/biome/Guardian structure, threshold, timeout and browser-version
-> policy are unchanged. Four exact PASS carriers in the signed evidence/docs descendant remain
-> bound to 580c99a; no hosted or release authority exists.
+> Product save semantics/schema, gameplay, deterministic generation, presentation, art/audio,
+> creature/genome/plant/biome/Guardian structure, numeric rulers, timeout/retry and browser-version
+> policy are unchanged. No current hosted, merge or release authority exists.
 
 > **2026-08-31 historical terminal-green Compendium raw failure-cleanup boundary (superseded by
 > the current certified boundary above; exact evidence remains immutable):** exact clean
@@ -4351,6 +4356,22 @@ dependencies, generated artifacts, command order/execution, soft-fail and workfl
 Synchronous Slice/Glass/Recovery selftests use explicit 15-second child and
 20-second outer limits with separate timeout/nonzero/missing-marker controls. This gate does not
 replace the strict browser evidence chain or authorize hosted work.
+
+**Current Slice Survey-predecessor contract (2026-09-01; browser-free verified):** a visible
+dependent Enter/Land control does not prove that the preceding Survey has settled. The shared
+early-core-flow staging path must observe the current document's exact Survey receipt/revision and
+persistence, current route/render/card/action identity, and coordinator idle before pointer,
+keyboard, touch or already-current action dispatch. Any missing, red, replaced or still-settling
+predecessor causal-stops every descendant. `state().landing.surveyOutcome` carries bounded diagnosis
+only and cannot replace receipt/action authority. Hosted run `33466661094` preserves the negative
+case: prerequisites and Compendium 78/78 passed, then one non-Sol Survey → Enter race produced 12
+cascades and correctly prevented Glass. Current acceptance additionally requires Atlas Travel's one
+exact `arc9-galaxy-arrival-v1` / `arc9-travel-committed:` commit, single/sequence runtime schema and
+before/after live↔raw SessionRNG parity, current-Survey retained-fault rejection and paired stable-
+but-wrong live/raw revision/seed/ordinal/draw controls. Focused 73/73, all TypeScript programs and
+the 257-file/2,622-pass/1-skip develop profile are green; two reviews are APPROVED. This does not
+become current browser evidence until a clean candidate passes tracked-input preflight and one
+unchanged-source Compendium → Slice → Glass chain.
 
 **Current Glass causal/presentation contract (2026-08-31):** the first instrument red retains one
 root failure, blocks dependent controls and stops later viewport work. The first product red likewise
