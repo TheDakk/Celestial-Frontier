@@ -2282,8 +2282,13 @@ export function assessCompendiumFeedPendingWindow(observation) {
 
 /* CDP's WebAudio domain reports protocol node types (`Oscillator`,
    `AudioDestination`), not the similarly named DOM interfaces
-   (`OscillatorNode`, `AudioDestinationNode`). Keep event projection here so
-   the collector and its browser-free controls consume the same raw vocabulary. */
+   (`OscillatorNode`, `AudioDestinationNode`). A short acknowledgement voice
+   can naturally disconnect and destroy its oscillator before the collector's
+   post-settlement read, so retain the last exact same-context route observed
+   for the unique post-mark source. Candidate counts still span the complete
+   event window; a later duplicate therefore cannot inherit an earlier route
+   snapshot. Keep event projection here so the collector and its browser-free
+   controls consume the same raw vocabulary. */
 export function projectCompendiumFeedWebAudioGraph({
   events, sessionId, enableMark, sourceMark,
 }) {
@@ -2294,6 +2299,39 @@ export function projectCompendiumFeedWebAudioGraph({
   const nodes = new Map();
   const edges = new Map();
   const sourceNodeIds = [];
+  const destinationNodes = [];
+  const duplicateLiveConnectionKeys = new Set();
+  let routeSnapshot = null;
+  const snapshotObservedRoute = () => {
+    if (sourceNodeIds.length !== 1) return;
+    const sourceNodeId = sourceNodeIds[0];
+    const source = nodes.get(sourceNodeId);
+    if (source?.nodeType !== 'Oscillator') return;
+    const destinations = [...nodes.values()].filter((node) => (
+      node.nodeType === 'AudioDestination' && node.contextId === source.contextId
+    ));
+    if (destinations.length !== 1) return;
+    const snapshotNodes = [...nodes.values()]
+      .sort((left, right) => left.nodeId.localeCompare(right.nodeId));
+    const snapshotEdges = [...edges.values()]
+      .filter((edge) => {
+        const edgeSource = nodes.get(edge.sourceId);
+        const edgeDestination = nodes.get(edge.destinationId);
+        return edgeSource?.contextId === edge.contextId
+          && edgeDestination?.contextId === edge.contextId;
+      })
+      .sort((left, right) => `${left.contextId}|${left.sourceId}|${left.destinationId}`
+        .localeCompare(`${right.contextId}|${right.sourceId}|${right.destinationId}`));
+    const candidate = {
+      sourceNodeId,
+      destinationNodeId: destinations[0].nodeId,
+      nodes: snapshotNodes,
+      edges: snapshotEdges,
+    };
+    if (compendiumFeedWebAudioRouteNodeIds(candidate).length >= 2) {
+      routeSnapshot = candidate;
+    }
+  };
   for (const [eventIndex, event] of events.entries()) {
     if (eventIndex < enableMark || event?.sessionId !== sessionId) continue;
     if (event.method === 'WebAudio.audioNodeCreated') {
@@ -2306,17 +2344,37 @@ export function projectCompendiumFeedWebAudioGraph({
       if (eventIndex >= sourceMark && node.nodeType === 'Oscillator') {
         sourceNodeIds.push(node.nodeId);
       }
+      if (node.nodeType === 'AudioDestination') {
+        destinationNodes.push({
+          nodeId: node.nodeId, contextId: node.contextId, nodeType: node.nodeType,
+        });
+      }
     } else if (event.method === 'WebAudio.audioNodeWillBeDestroyed') {
       const nodeId = event.params?.nodeId;
       nodes.delete(nodeId);
       for (const [key, edge] of edges) {
         if (edge.sourceId === nodeId || edge.destinationId === nodeId) edges.delete(key);
       }
+    } else if (event.method === 'WebAudio.contextWillBeDestroyed') {
+      const contextId = event.params?.contextId;
+      for (const [nodeId, node] of nodes) {
+        if (node.contextId === contextId) nodes.delete(nodeId);
+      }
+      for (const [key, edge] of edges) {
+        if (edge.contextId === contextId) edges.delete(key);
+      }
     } else if (event.method === 'WebAudio.nodesConnected') {
       const { contextId, sourceId, destinationId } = event.params ?? {};
+      const source = nodes.get(sourceId);
+      const destination = nodes.get(destinationId);
+      /* A connection belongs to this prefix only when both endpoint
+         lifetimes already exist in the same reported context. */
       if (nonEmptyString(contextId) && nonEmptyString(sourceId)
-        && nonEmptyString(destinationId)) {
-        edges.set(`${contextId}|${sourceId}|${destinationId}`, {
+        && nonEmptyString(destinationId)
+        && source?.contextId === contextId && destination?.contextId === contextId) {
+        const key = `${contextId}|${sourceId}|${destinationId}`;
+        if (edges.has(key)) duplicateLiveConnectionKeys.add(key);
+        edges.set(key, {
           contextId, sourceId, destinationId,
         });
       }
@@ -2329,31 +2387,50 @@ export function projectCompendiumFeedWebAudioGraph({
         }
       }
     }
+    snapshotObservedRoute();
   }
   const sourceNodeId = sourceNodeIds.length === 1 ? sourceNodeIds[0] : null;
-  const source = sourceNodeId === null ? null : nodes.get(sourceNodeId);
-  const destinations = [...nodes.values()].filter((node) => (
-    node.nodeType === 'AudioDestination' && node.contextId === source?.contextId
+  const sourceContextId = sourceNodeId === null
+    ? null
+    : (routeSnapshot?.nodes.find((node) => node.nodeId === sourceNodeId)?.contextId
+      ?? nodes.get(sourceNodeId)?.contextId
+      ?? null);
+  const destinations = destinationNodes.filter((node) => (
+    node.contextId === sourceContextId
   ));
-  const nodeTypeInventory = Object.entries([...nodes.values()].reduce((inventory, node) => {
+  const snapshotRouteNodeIds = routeSnapshot === null
+    ? []
+    : compendiumFeedWebAudioRouteNodeIds(routeSnapshot);
+  const snapshotRouteHasDuplicateLiveConnection = snapshotRouteNodeIds
+    .slice(0, -1)
+    .some((nodeId, index) => duplicateLiveConnectionKeys.has(
+      `${sourceContextId}|${nodeId}|${snapshotRouteNodeIds[index + 1]}`,
+    ));
+  const preserveObservedRoute = !snapshotRouteHasDuplicateLiveConnection
+    && sourceNodeIds.length === 1 && destinations.length === 1
+    && routeSnapshot?.sourceNodeId === sourceNodeId
+    && routeSnapshot?.destinationNodeId === destinations[0].nodeId;
+  const projectedNodes = preserveObservedRoute ? routeSnapshot.nodes : [...nodes.values()];
+  const projectedEdges = preserveObservedRoute ? routeSnapshot.edges : [...edges.values()]
+    .filter((edge) => {
+      const edgeSource = nodes.get(edge.sourceId);
+      const edgeDestination = nodes.get(edge.destinationId);
+      return edgeSource?.contextId === edge.contextId
+        && edgeDestination?.contextId === edge.contextId;
+    });
+  const nodeTypeInventory = Object.entries(projectedNodes.reduce((inventory, node) => {
     inventory[node.nodeType] = (inventory[node.nodeType] ?? 0) + 1;
     return inventory;
   }, {})).sort(([left], [right]) => left.localeCompare(right));
   return {
     schema: 'cf-v2-feed-audio-graph/v1',
     sourceNodeId,
-    destinationNodeId: destinations.length === 1 ? destinations[0].nodeId : null,
+    destinationNodeId: preserveObservedRoute ? routeSnapshot.destinationNodeId : null,
     sourceCandidateCount: sourceNodeIds.length,
     destinationCandidateCount: destinations.length,
     nodeTypeInventory,
-    nodes: [...nodes.values()].sort((left, right) => left.nodeId.localeCompare(right.nodeId)),
-    edges: [...edges.values()]
-      .filter((edge) => {
-        const sourceNode = nodes.get(edge.sourceId);
-        const destinationNode = nodes.get(edge.destinationId);
-        return sourceNode?.contextId === edge.contextId
-          && destinationNode?.contextId === edge.contextId;
-      })
+    nodes: projectedNodes.sort((left, right) => left.nodeId.localeCompare(right.nodeId)),
+    edges: projectedEdges
       .sort((left, right) => `${left.contextId}|${left.sourceId}|${left.destinationId}`
         .localeCompare(`${right.contextId}|${right.sourceId}|${right.destinationId}`)),
   };

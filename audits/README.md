@@ -10,7 +10,92 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 writable-Settings command-deadline stop and bounded local successor
+### Current PR #35 Feed-audio lifetime + post-Guide phone-Land predecessor stop
+
+PR #35 GitHub run `33560546382` was the eighth exact authorized `test-battery` attempt. It tested
+head `c0ad51a1a63f7f649493122ab8d7d5e8588f6a9d` (tree
+`7b1d851c2ed92ecaaaf26aec8c178a0c145c74aa`) against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, using synthetic merge
+`f03a68d75dd03512d2dc994febc9bb18e5b52d9c`; that merge has the exact head tree. Authorization
+job `100031692379` passed and battery job `100031723808` completed terminal red after **1h4m43s**.
+The one-time `actions-budget-approved` authorization, 92-minute maximum and no-retry rule were
+consumed; the approval label was removed and no retry or merge occurred.
+
+Root layout passed **787/787**. Compendium `gha-33560546382-1-compendiummem` passed **78/78**
+once/no-retry in **2,334,319 ms** with zero findings/blocked outcomes and six review PNGs.
+Unchanged-source Slice `gha-33560546382-1-slice` stopped once/no-retry after **1,017,899 ms** with
+exactly **2 findings / 2 scopes**:
+
+- `arc-5-feed-commit` rejected only `one post-settlement acknowledgement`. The retained bundle
+  proves the product transaction and persistence were exact: global revision **107→108**,
+  ownership revision **16→17**, receipt count and SessionRNG ordinal **20→21**, exactly one
+  `arc5-companion-feed` receipt at ordinal 20, companion fed **0→1**, flora **1→0** plus tombstone,
+  zero pending work, same-document reopen, reload fixed point, and one visible settled “Meal
+  complete…” toast. Page instrumentation recorded one post-mark oscillator, successful start and
+  source connection in a running context with `lastOutcome: committed:108`. The raw CDP graph was
+  sampled only after expensive durable reads; normal short-voice cleanup had disconnected its
+  same-context destination route by then. Final-only graph projection therefore forgot a valid
+  ephemeral acknowledgement. Dependent controls correctly remained blocked rather than creating
+  cascaded findings.
+- Independent `harness`: `phone Earth landing did not reach its phone outcome within 6000ms (last
+  null)`. The artifact retains no non-null Landing outcome, so it does not directly prove why the
+  action failed to publish. Source tracing supplies the high-confidence root-cause inference:
+  first-open Guide legitimately sets `seenGuide` and starts `persistView()`; the runner then closed
+  Guide and dispatched one Land action without reacquiring the current document's quiescent F4
+  authority, while `doLand()` refuses if `activePersist` is owned. This is evidence of a bounded
+  harness predecessor race, not evidence of a Landing/product defect.
+
+Nine Slice screenshots—Codex, Earth, Galaxy, Guide, phone, Settings, Sol, Sol marker and Universe—
+were retained; Training was not reached. Glass, Recovery and preview packaging correctly did not
+run. The hosted run also crossed and validated the prior Settings repair: all eleven settings were
+mutated/restored through **22** exact real writes with raw-v5 continuity, quiet-window authority,
+quiesce/resume and control coverage; its Settings PNG is retained.
+
+The exact GitHub artifact `battery-evidence` is ID `9823195109`, archive size **9,535,484 bytes**,
+digest `sha256:aeed20df4017f83aea1333547ae0d5ab07cce0d1be22d1974dadcb3f8d5dc5e9`, expiring
+`2026-09-15T22:25:29Z`. These retained carriers pass gzip integrity and deterministic
+`gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_FEED_AUDIO_ROUTE_PHONE_LANDING_PREDECESSOR_PASS_20260901_F03A68D.json.gz`:
+  **487,306 bytes**, SHA-256
+  `61ae809dd92be87770c90c953ac8b40fcc400d6e4cdea9a3f0dd05179dbf96bf`; raw
+  **12,846,608 bytes**, SHA-256
+  `e072796cbf082c4f4c44734924f5b8836cb1162b5854cc08540abd334c6fd040`.
+- `ARC4_SLICE_PR35_FEED_AUDIO_ROUTE_PHONE_LANDING_RED_20260901_F03A68D.json.gz`:
+  **84,367 bytes**, SHA-256
+  `81a1858f8ac32a9f8ff3d0873163cdb0c13f4a9fe85216386f6c35582ea1e17e`; raw
+  **800,679 bytes**, SHA-256
+  `d34b160ed34ab9452ced8deeb509947f409831bc037dbb00c80233743d74c492`.
+- `ARC4_SLICE_PR35_FEED_AUDIO_ROUTE_PHONE_LANDING_RED_20260901_F03A68D.log.gz`:
+  **39,079 bytes**, SHA-256
+  `cec392ef4c80c02639726a3cac24f9669df8889a6f57edc018cf3d8a9a67efcd`; raw
+  **343,139 bytes**, SHA-256
+  `3b352cc9cc28270cdbd81781eed832d8176f9b6960c05982b3ff5d4de730e58c`.
+
+The bounded dirty successor changes only evidence ownership. The WebAudio projector records an
+**ordered same-prefix temporal route witness** from the unique post-source-mark oscillator through
+its same-context destination only while both endpoints are simultaneously live. Natural
+disconnect/destroy teardown may close that route but cannot erase the witness. It is deliberately
+not an unordered historical edge union: duplicate, missing, dead-end, false-destination,
+cross-context, connect-before-create and disjoint-time routes remain red. The phone flow closes
+Guide, quiesces the same-document F4 heartbeat and keeps it quiescent through three independently
+early-resolving waits, each capped at 15 seconds: post-Guide writable predecessor, live Land-surface
+observation and post-Land durable writable/idle fixed point. Exactly one native Land action occurs
+between those waits; the heartbeat resumes exactly once in `finally`. A predecessor timeout retains
+the full F4 state, persistence/coordinator details and `landing.lastOutcome`; the action is never
+retried.
+
+The combined focused boundary passes **3 files / 21 tests**. The fresh-wait ownership file
+separately passes **8/8** after the two exact new wait labels were added. All three TypeScript
+programs pass. The complete browser-free develop profile passes **260 files / 2,675 passed / 1
+skipped** (**2,676 total**), **34** clean art sources, **1,014/1,014** routes and **454** declared/
+non-inert fields. Clean signing, tracked-input preflight and exact-source browser certification are
+still pending. The phone harness observation caps intentionally change from 6 seconds to 15
+seconds; product Feed/Landing behavior, saves, creatures, flora, gameplay/audio content, product
+timeouts, the global CDP deadline, rulers and retry policy are unchanged. This repair grants no
+push, hosted, merge, release, preview or deployment authority.
+
+### Historical PR #35 writable-Settings command-deadline stop and bounded local successor
 
 PR #35 GitHub run `33542791572` was the seventh exact authorized `test-battery` attempt. It tested
 head `2f0ded864742afd0a39bd8c3e2d53cc2550bbbda` against base

@@ -1,7 +1,59 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-09-01 current bounded writable-Settings persistence-probe boundary (supersedes older
-> “current” labels; dated evidence remains immutable):** PR #35's seventh exact hosted admission,
+> **2026-09-01 current bounded Feed-audio lifetime + post-Guide phone-Land predecessor boundary
+> (supersedes older “current” labels; dated evidence remains immutable):** PR #35's eighth exact
+> hosted admission, GitHub run `33560546382`, tested head
+> `c0ad51a1a63f7f649493122ab8d7d5e8588f6a9d` / tree
+> `7b1d851c2ed92ecaaaf26aec8c178a0c145c74aa` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`, through same-tree synthetic merge
+> `f03a68d75dd03512d2dc994febc9bb18e5b52d9c`. Authorization job `100031692379` passed;
+> battery job `100031723808` completed terminal red after **1h4m43s**. The exact one-time
+> authorization is consumed, its label is absent, no retry/merge occurred, PR #35 remains
+> Ready/open/unmerged and no hosted authority remains.
+>
+> Root layout passed **787/787**. Compendium `gha-33560546382-1-compendiummem` passed **78/78**
+> once/no-retry in **2,334,319 ms** with zero findings. Slice `gha-33560546382-1-slice` stopped
+> after **1,017,899 ms** with exactly two independent harness findings. `arc-5-feed-commit`
+> retained the exact Feed transaction and durability—global revision **107→108**, ownership
+> **16→17**, receipt/SessionRNG ordinal **20→21**, one `arc5-companion-feed`, fed **0→1**, flora
+> **1→0** with tombstone, one settled toast, zero pending, same-document reopen and reload fixed
+> point. Its sole rejection was final-state acknowledgement audio: one successful post-mark
+> oscillator had already naturally disconnected before the expensive durable reads and first raw
+> graph snapshot. The separate phone finding followed first-open Guide, whose legitimate
+> `seenGuide` write can still be active when the runner closes Guide and touches Land. The artifact
+> retained only `last null`; it does not directly prove a refusal reason. Source tracing supports
+> the high-confidence inference that `doLand()` encountered the still-owned `activePersist` fence.
+> Nine screenshots were retained; Glass and Recovery correctly skipped. The prior
+> 11-control/22-write Settings repair crossed hosted and passed.
+>
+> The bounded successor changes only Slice evidence ownership. The WebAudio projector retains an
+> **ordered same-prefix temporal route witness** from the unique post-source-mark oscillator to its
+> same-context destination only while both endpoints are simultaneously live, preserving that
+> witness through normal disconnect/destroy teardown. It never unions unrelated historical edges;
+> duplicate, missing, dead-end, false-destination, cross-context, connect-before-create and
+> disjoint-time routes remain red. After closing Guide, the phone flow quiesces the same-document
+> F4 heartbeat and keeps it quiescent through three independently early-resolving waits, each
+> capped at 15 seconds: post-Guide writable predecessor, live Land-surface observation and
+> post-Land durable writable/idle fixed point. Exactly one native Land action occurs between those
+> waits; the heartbeat resumes exactly once in `finally`. Predecessor timeout evidence retains the
+> full F4/persistence/coordinator state and `landing.lastOutcome`; no action retry is permitted.
+>
+> The combined focused boundary passes **3 files / 21 tests**; the fresh-wait ownership file also
+> passes **8/8** after adding the two exact new wait labels. All three TypeScript programs pass. The
+> full browser-free develop profile passes **260 files / 2,675 passed / 1 skipped** (**2,676
+> total**), **34** clean art sources, **1,014/1,014** routes and **454** declared/non-inert fields.
+> Clean signing, tracked-input preflight and exact-source browser verification remain pending. Exact
+> hosted evidence is indexed in `audits/README.md`; artifact `battery-evidence` is ID
+> `9823195109`, size **9,535,484 bytes**, digest
+> `sha256:aeed20df4017f83aea1333547ae0d5ab07cce0d1be22d1974dadcb3f8d5dc5e9`. No gameplay,
+> creature/genome/plant/biome/Guardian structure, Feed/Landing behavior, save schema, audio content,
+> product timeout, global CDP deadline, ruler, retry, browser-version, Gate, Arc, HUMAN, release,
+> preview, publication or deployment status changed. The phone harness observation caps
+> intentionally changed from 6 seconds to 15 seconds.
+
+> **2026-09-01 historical bounded writable-Settings persistence-probe boundary (superseded by the
+> current Feed/phone overlay; dated evidence remains immutable):** PR #35's seventh exact hosted
+> admission,
 > GitHub run `33542791572`, tested head `2f0ded864742afd0a39bd8c3e2d53cc2550bbbda` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed **78/78** once/no-retry;
 > unchanged-source Slice then stopped once/no-retry after **295,159 ms** with one harness
