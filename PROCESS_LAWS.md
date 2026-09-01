@@ -24,6 +24,15 @@
 > TypeScript/art/route/specification owner. Do not repair this class by changing product save
 > semantics, widening a timeout, adding a retry, treating browser point version as authority, or
 > relabelling the immutable red.
+>
+> Exact clean SSH-signed successor `580c99a952c4e06acb776c852b6c5c0edba4722e` then certified the
+> law. Its tracked-input develop profile passed **255 files / 2,576 tests / 1 skipped** plus every
+> TypeScript/art/route/specification owner. On unchanged source, Compendium passed **78/78**,
+> Slice passed the complete journey including Protected Save with zero findings and ten
+> screenshots, and exact-predecessor Glass passed **12/12** viewports and **104/104** controls
+> with zero findings or instrument failures. Every stage ran once/no-retry and every exact named
+> verifier passed. The signed evidence/docs descendant commits the four exact carriers without
+> rebinding certification away from 580c99a.
 
 > **A BROWSER PROFILE IS NOT CLEAN UNTIL ITS OWNED SHUTDOWN DOMAIN IS QUIESCENT AND ABSENCE STAYS
 > STABLE** (2026-08-31). Direct-child exit is not owned process-group/tree-request completion. Do
@@ -57,7 +66,10 @@
 > `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7`. SceneMemory's
 > calibration-required boundary deliberately remains stale until explicit production activation;
 > develop may ignore that mismatch, while production and the standalone authority printer fail
-> closed. No current browser certificate or hosted authority follows from dirty local verification.
+> closed. Exact clean signed descendant `6238b8d…` committed that launcher repair; exact clean
+> signed successor `580c99a…` later passed live preflight and one unchanged-source/no-retry
+> Compendium **78/78** → zero-finding Slice → Glass **12/12 / 104/104** chain with every named
+> verifier green. That is current local browser evidence only; it grants no hosted authority.
 
 > **A RESTORATION ORACLE SAMPLES THE STATE THE PRODUCT ACTUALLY RECEIVES** (2026-08-31).
 > A virtual-row helper may legitimately reposition a row while consuming deferred layout and

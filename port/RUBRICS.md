@@ -1,19 +1,17 @@
 # Acceptance rubrics — what "done" means, per gate
 
-> **2026-08-31 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** exact
-> clean signed source `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78**
-> and named verification, then unchanged-source Slice
-> `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry after **302,408 ms** with one
-> harness finding before its Protected Save fixture hook could run. Stored bytes remained unchanged
-> and Glass did not run.
+> **2026-08-31 current terminal-green rubric-status overlay (canonical handoff in
+> `../ROADMAP.md`):** exact clean signed source
+> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop at **255 files /
+> 2,576 passed / 1 skipped**, Compendium **78/78**, zero-finding Slice with ten screenshots and
+> predecessor-bound Glass **12/12** viewports / **104/104** controls. Every stage ran once/no-retry
+> and every named verifier passed.
 >
-> The local instrument successor token-binds and atomically guards all eight staging paths, permits
-> rebind only from a proven zero-call pre-invocation replacement and stops every invoked/ambiguous
-> outcome. Browser-free verification passes **255 files / 2,576 tests / 1 skipped** plus every
-> TypeScript/art/route/specification owner, with clear final review. This creates no new EXEC
-> certificate, changes no HUMAN or whole-Gate status and does not rebind historical evidence.
-> A clean signed successor and fresh exact **Compendium → Slice → Glass** chain remain. No push,
-> hosted attempt, merge, release, version or deploy is authorized.
+> The testing-only repair token-binds and atomically guards all eight stored-v4 staging paths. This
+> exact local evidence does not alter any HUMAN or whole-Gate status, and the evidence/docs
+> descendant does not rebind certification away from 580c99a. No push, hosted attempt, merge,
+> release, version or deploy is authorized.
+
 > **Historical local SceneMemory admission boundary (2026-08-30; superseded by the current overlay):**
 > exact signed clean source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied three
 > one-attempt/no-retry calibration-only observations under one unchanged build and Edge/CDP tuple.

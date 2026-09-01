@@ -10,31 +10,30 @@ stage through Compendium **78/78** and named verification passed, then the share
 selftest stopped terminal red on descendant/profile cleanup. Slice and Glass were skipped. That
 attempt is consumed and immutable.
 
-Exact clean signed local launcher successor
-`6238b8dd3eccf6dd106787b6789ad8bb716deac9` then passed Compendium
-`20260901015932922-91060-9d1ef2de36` at **78/78** plus named verification. Its unchanged-source
-Slice `20260901020100211-91399-de1ddbd28c96` stopped terminal red once/no-retry after
-**302,408 ms** with exactly one harness finding; named verification correctly exited 2 and Glass
-did not run. Protected Save encountered a replacement phone document before Slice/API publication,
-so the raw staging hook made zero calls and the existing 4,305-byte primary remained unchanged.
-This local run consumed no hosted attempt and creates no hosted authority. Exact 6238 will not be
-retried or relabelled.
+Exact clean signed local repair source
+`580c99a952c4e06acb776c852b6c5c0edba4722e` passed the hermetic tracked-input develop profile
+at **255 files / 2,576 passed / 1 skipped**, all TypeScript/art/route/specification owners and live
+Edge/CDP preflight. On that unchanged source, Compendium
+`20260901024638901-3060-0ba295673f` passed **78/78** in **63,243 ms**; Slice
+`20260901024804921-3412-bd2a2c7c9c80` passed with zero findings and ten screenshots in
+**360,564 ms**; exact-predecessor Glass `20260901025422535-3892-101d25f2e009` passed
+**12/12** viewports and **104/104** controls with zero findings/instrument failures in **111,461
+ms**. Every browser stage ran once/no-retry and every exact named verifier passed.
 
-The bounded dirty successor applies stable document-token ownership, exact persistence
-hold/mutation polarity and one atomic invocation to all eight stored-v4 staging paths. Only an exact
-zero-call pre-invocation replacement may rebind; every invoked, rejected, malformed or ambiguous
-outcome stops without retry. Its complete browser-free develop profile passes **255 files / 2,576
-tests / 1 skipped**, all TypeScript/art/route/specification owners, and independent final review is
-clear. Product/save/gameplay/art/CSS behavior, thresholds, timeouts, retry and browser-version
-policy are unchanged. It still requires a clean signed commit and one fresh exact
-**Compendium → Slice → Glass** local chain.
+The repair applies stable document-token ownership, exact persistence hold/mutation polarity and
+one atomic invocation to all eight stored-v4 staging paths. Only exact zero-call pre-invocation
+replacement may rebind; every invoked, rejected, malformed or ambiguous outcome stops. Product/
+save/gameplay/art/CSS behavior, thresholds, timeouts, retry and browser-version policy are
+unchanged. The signed evidence/docs-only descendant commits four exact PASS carriers that remain
+bound to 580c99a.
 
 All four hosted approval labels are absent, PR #35 remains Draft/unmerged, and
-`openai/mac` is locally one commit ahead of upstream before the dirty successor. No push, label,
-hosted attempt, retry, Ready transition, merge, release, version bump, preview publication or
-deployment is authorized. A future hosted attempt requires Nick's fresh exact authorization naming
-the final head/base, PR #35, `test-battery`, `actions-budget-approved`, 92-minute maximum and no
-retry.
+`openai/mac` is locally three commits ahead of upstream after that descendant. This local green
+chain consumed no hosted attempt and creates no hosted authority. No
+push, label, hosted attempt, retry, Ready transition, merge, release, version bump, preview
+publication or deployment is authorized. A future hosted attempt requires Nick's fresh exact
+authorization naming the final descendant head/base, PR #35, `test-battery`,
+`actions-budget-approved`, 92-minute maximum and no retry.
 Exact local SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium
 **78/78** once/no-retry in **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; exact named
 verification passed. Its exact-source develop Slice `20260831155943782-24588-a98f13f2c7b7`

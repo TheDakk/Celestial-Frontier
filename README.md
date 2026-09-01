@@ -1,24 +1,23 @@
 # Celestial-Frontier
 
-> **2026-08-31 current PR #35 Slice lifecycle repair overlay (canonical detail in
-> `ROADMAP.md`; dated evidence below remains immutable):** exact clean signed launcher successor
-> `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium
-> `20260901015932922-91060-9d1ef2de36` at **78/78** with named verification. Its unchanged-source
-> Slice `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry after **302,408 ms** with
-> exactly **1 harness finding**; Glass did not run. Protected Save reached a replacement phone
-> document before Slice publication, so the raw fixture hook made zero calls and the existing
-> 4,305-byte primary remained unchanged instead of the expected 46-byte fixture. This is harness
-> lifecycle evidence, not a game/save regression.
+> **2026-08-31 current PR #35 terminal-green local admission (canonical detail in
+> `ROADMAP.md`; dated evidence below remains immutable):** exact clean SSH-signed source
+> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed the hermetic tracked-input develop profile
+> at **255 files / 2,576 passed / 1 skipped**, every TypeScript/art/route/specification owner and
+> live Edge/CDP preflight. On that unchanged source, Compendium
+> `20260901024638901-3060-0ba295673f` passed **78/78**, Slice
+> `20260901024804921-3412-bd2a2c7c9c80` passed the complete journey with zero findings and ten
+> screenshots, and predecessor-bound Glass `20260901025422535-3892-101d25f2e009` passed all
+> **12/12** viewports and **104/104** controls with zero findings or instrument failures. Every
+> stage ran once/no-retry and every exact named verifier passed.
 >
-> The bounded local successor inventories all eight staging paths, requires two ready observations
-> from one exact document token and one safe hold/mutation pair, then rechecks authority atomically
-> before one hook call. Only an exact zero-call `unclaimed` receipt may rebind; invoked, rejected,
-> malformed or ambiguous outcomes stop without retry. The complete browser-free develop profile is
-> green at **255 files / 2,576 passed / 1 skipped**, all TypeScript/art/route/specification owners,
-> and two independent final reviews found no functional lifecycle defect. Product/save/gameplay/art/
-> creature/CSS semantics, thresholds, timeouts, retry and version-tolerant browser policy are
-> unchanged. A clean signed successor and one fresh exact **Compendium → Slice → Glass** chain
-> remain. No push, hosted attempt, merge, release, version bump or deploy is authorized.
+> The repair binds all eight stored-v4 fixture paths to stable document/persistence authority and
+> permits rebind only from a proven zero-call pre-invocation replacement. The four exact PASS
+> carriers are committed by a signed evidence/docs-only descendant and remain bound to
+> 580c99a. Product/save/gameplay/art/creature/CSS semantics, thresholds, timeouts, retry and
+> version-tolerant browser policy are unchanged. No push, hosted attempt, merge, release, version
+> bump or deploy is authorized.
+
 > **2026-08-31 historical a046 collision-control repair overlay (superseded above; every older “current”
 > label below; dated evidence remains immutable):** exact clean signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry as

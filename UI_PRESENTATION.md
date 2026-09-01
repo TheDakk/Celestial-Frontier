@@ -1,23 +1,20 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-31 current Slice presentation-evidence boundary (supersedes older “current” labels;
-> presentation semantics remain as documented):** exact clean signed source
-> `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78** and named verification.
-> Its unchanged-source Slice stopped once/no-retry at
-> `20260901020100211-91399-de1ddbd28c96` with one harness finding before Protected Save fixture
-> staging; Glass did not run. A replacement phone document had not yet published Slice/API, so the
-> raw staging call made zero hook calls and left the existing stored primary unchanged.
+> **2026-08-31 current terminal-green Slice presentation-evidence boundary (supersedes older
+> “current” labels; presentation semantics remain as documented):** exact clean signed source
+> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed the complete browser-free boundary, then
+> unchanged-source Compendium **78/78**, zero-finding Slice with ten screenshots and predecessor-
+> bound Glass **12/12** viewports / **104/104** controls. Every stage ran once/no-retry and every
+> exact named verifier passed.
 >
-> The bounded successor foregrounds and token-binds the intended document, requires two stable
-> ready observations and safe persistence authority, then performs one atomic guarded call across
-> all eight staging paths. Only a proven zero-call pre-invocation replacement may rebind; ambiguous
-> or invoked outcomes stop. The complete browser-free profile passes **255 files / 2,576 tests / 1
-> skipped** and final review is clear. No Protected Save product behavior or toast timing, markup,
-> CSS, focus/scroll, geometry, fixed ruler, timeout, retry or browser-version policy changed. A clean
-> signed successor and fresh **Compendium → Slice → Glass** chain remain; no hosted or release
-> authority exists.
+> The previously failing Protected Save rehearsal is green under stable target/document/persistence
+> binding and one atomic guarded fixture call. No Protected Save product behavior, toast timing,
+> markup, CSS, focus/scroll, geometry, fixed ruler, timeout, retry or browser-version policy changed.
+> Four exact PASS carriers in the signed evidence/docs descendant certify 580c99a only. No hosted
+> attempt, merge, release or deployment is authorized.
+
 > **2026-08-31 historical terminal-green Compendium Back presentation boundary (superseded by the
-> launcher-only overlay above; exact evidence remains immutable):** exact clean
+> current presentation-evidence overlay above; exact evidence remains immutable):** exact clean
 > SSH-signed source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
 > `e05e48c807597e86530e9b258a11e93d9533cd3c`, parent `4ea8198c…`) contains and certifies the raw
 > failure-cleanup repair. At that historical checkpoint, its signed evidence/docs-only descendant
