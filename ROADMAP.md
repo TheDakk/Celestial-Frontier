@@ -17,19 +17,20 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-01 · SEVENTH HOSTED STOP, BOUNDED SETTINGS PROBE REPAIR ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-01 · SETTINGS PROBE REPAIRED, LOCAL DEVELOP CHAIN GREEN ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Published/local HEAD is exact SSH-signed
-  **2f0ded864742afd0a39bd8c3e2d53cc2550bbbda** (tree
-  **9609c1eb5d356ab991413284cd047524ad258204**, parent
-  **a45220421195042a8702aa1265e96d40d839fc38**). The bounded successor is an uncommitted dirty
-  working tree; preserve every listed change and the three new hosted-evidence carriers.
+  **origin/openai/mac**. Exact SSH-signed implementation source is
+  **cf2d176862a68f090b935fb0362fe3aeb052b978** (tree
+  **cc52f4901d4368f8ab98302ff4302619a3af1f98**, parent
+  **2f0ded864742afd0a39bd8c3e2d53cc2550bbbda**). The signed evidence/docs-only descendant that
+  contains this handoff adds only the four exact local-certificate carriers and synchronized
+  references; its own SHA is intentionally not self-embedded. Resolve it with `git rev-parse HEAD`.
 - Exact a452204's prior local **Compendium → Slice → Glass** pass remains immutable historical
-  evidence only. It does not certify this changed source.
+  evidence only. The distinct cf2d176 chain below certifies the Settings repair.
 
 ### Seventh exact hosted attempt — consumed terminal red
 
@@ -82,11 +83,20 @@ the archive verbatim and refresh this handoff in place.
 - Both harness modules parse; `git diff --check` and all three TypeScript programs pass. The full
   Slice-focused boundary passes **21 files / 227 tests**, including executable generated
   expressions, exact-manifest, collateral-field, disjoint-chain, raw-quiet and answerability
-  negative controls. Independent final review's three false-green findings are all closed.
+  negative controls. Independent final review is **CLEAR** after closing exact-manifest, whole-row,
+  chain-continuity and answerability false-green findings.
 - The complete browser-free develop profile passes **259 files / 2,667 passed / 1 skipped**, all
   TypeScript programs, **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields.
-  Its first pass correctly stopped only on stale Compendium producer identity; the bounded rebind
-  changed no ruler or ceiling, and the final profile is green.
+  Exact clean cf2d176 also passes the hermetic tracked-input develop preflight at the same counts.
+- Exact unchanged cf2d176 then completed one serial, fail-fast/no-retry local develop chain on Edge
+  `152.0.4191.53` / CDP `1.3`; the point version is provenance only. Every named verifier passed:
+  Compendium **20260901200818363-3312-ad36b2aac8** passed **78/78** in **63,844 ms** with zero
+  findings/blocked outcomes and six review PNGs; Slice
+  **20260901200939671-3633-9b419c68c44c** passed in **360,495 ms** with zero findings/scopes and
+  ten screenshots (report/log SHA-256 **a610fdbf…f158 / 4cc787e3…c0ae**); Glass
+  **20260901201556259-3986-34e7be99634e** consumed that exact Slice and passed **12/12** viewports,
+  **12/12** reload rows, **104/104** controls and **36/36** Arc 4 outcomes in **109,289 ms** with
+  zero findings/instrument failures (report SHA-256 **89b77c33…126c**).
 - Hosted evidence is preserved as deterministic `gzip -n -9` carriers:
   `ARC1A_COMPENDIUM_PR35_WRITABLE_SETTINGS_PREDECESSOR_PASS_20260901_B19FDC9.json.gz`
   (gzip **487,515** bytes / **10bfbea7…**; raw **12,842,516** / **90e38128…**),
@@ -94,18 +104,17 @@ the archive verbatim and refresh this handoff in place.
   (gzip **1,765** / **9291264a…**; raw **5,070** / **385268d4…**) and its log
   (gzip **1,746** / **d4dd84e2…**; raw **4,214** / **c5416583…**). Exact hashes are in
   `audits/README.md`.
+- The four exact cf2d176 PASS carriers also pass gzip integrity and deterministic recompression:
+  Compendium **452,817 / bd6d36bf…** (raw **10,836,613 / 7cffdb47…**), Slice report
+  **1,961 / c3418496…** (raw **6,102 / a610fdbf…**), Slice log **3,292 / 39be1878…**
+  (raw **6,949 / 4cc787e3…**) and Glass **78,764 / d7715720…** (raw
+  **898,573 / 89b77c33…**). `audits/README.md` records every full hash.
 
 ### What remains
 
-1. Finish the synchronized process/budget/audit/reference documentation, SSH-sign the bounded
-   implementation/evidence commit, prove it clean, then run
-   `node tools/tracked-input-preflight.mjs --profile=develop` once.
-2. On that exact unchanged clean source, run one fail-fast/no-retry local
-   **Compendium → Slice → Glass** develop chain and every exact named verifier. SceneMemory remains
-   production-only/quarantined; Recovery remains outside `develop`.
-3. Preserve the local chain as deterministic carriers, create a signed evidence/docs-only closure,
-   and run its final tracked-input preflight. Do not rerun or rebind the exact implementation chain.
-4. Ask Nick for fresh authorization naming the final exact head, base
+1. No further local code or browser repair remains. The signed evidence/docs-only descendant passes
+   the final tracked-input develop preflight; do not rerun or rebind cf2d176's exact browser chain.
+2. Ask Nick for fresh authorization naming the final exact `git rev-parse HEAD`, base
    **7a9f4c1370dd84292388d718c38ff34214f6203b**, PR #35, `test-battery`,
    `actions-budget-approved`, 92-minute maximum and no retry. Merge into `develop` only if that
    exact hosted attempt is terminal green and branch protection is satisfied.
@@ -121,8 +130,9 @@ judgment, physical-device heat/battery/install and true-GPU review remain HUMAN.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex next:** complete the exact local verification/certificate sequence above. Do not
-  push, label, dispatch, mutate PR metadata or merge without a fresh exact changed-head authorization.
+- **OpenAI/Codex next:** report the final exact signed branch head and wait for one fresh matching
+  authorization. Then push **openai/mac**, refresh PR #35 metadata, apply the budget label, dispatch
+  once and merge only if terminal green. Do not reuse the consumed 2f0ded8 authorization.
 - **PR:** existing #35, base **develop**, source **openai/mac**. Copy-ready title:
   **feat(v2): complete roadmap campaign and harden action-time CI evidence**.
 - **Copy-ready PR description:** “Completes the established v2 roadmap campaign without recreating

@@ -26,9 +26,19 @@
 > sources, **1,014/1,014** routes and **454** fields. Current Compendium producer authority is
 > `bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4`; measurement contract,
 > fixed ruler, every numeric ceiling, historical samples, version-tolerant Edge-family/CDP 1.3
-> policy, timeout and no-retry policy are unchanged. Clean tracked-input and exactly one fresh local
-> Compendium → Slice → Glass chain remain required. No push, hosted run, merge, Gate, Arc, HUMAN,
-> preview, release, version, publication or deployment authority follows.
+> policy, timeout and no-retry policy are unchanged. Exact clean SSH-signed source
+> `cf2d176862a68f090b935fb0362fe3aeb052b978` passed the hermetic tracked-input profile, then one
+> unchanged-source/no-retry named-verified develop chain: Compendium
+> `20260901200818363-3312-ad36b2aac8` passed **78/78**; Slice
+> `20260901200939671-3633-9b419c68c44c` passed with zero findings/scopes and report SHA-256
+> `a610fdbff0335a5be145eeeeb88d028fd928099cc4c913a9922db2488a1cf158`; Glass
+> `20260901201556259-3986-34e7be99634e` consumed that exact Slice and passed **12/12** viewports,
+> **104/104** controls and **36/36** Arc 4 outcomes with zero findings/instrument failures and
+> report SHA-256 `89b77c333a4ae7713bb85e0155c81cdd226fba702075c3884d311712f76b126c`.
+> SceneMemory remains production-only/quarantined and Recovery remains outside `develop`. The signed
+> evidence/docs-only descendant adds only four exact carriers and synchronized references and passes
+> final tracked-input without rerunning this browser chain. No push, hosted run, merge, Gate, Arc,
+> HUMAN, preview, release, version, publication or deployment authority follows.
 
 > **2026-09-01 historical automatic-travel transient-latch repair boundary (superseded by the
 > current Settings overlay; dated evidence remains immutable):** PR #35's sixth hosted admission attempt,

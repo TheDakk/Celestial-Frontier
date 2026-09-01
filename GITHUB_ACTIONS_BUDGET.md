@@ -33,6 +33,16 @@ Compendium producer authority is rebound to
 contract, fixed ruler, every numeric ceiling, historical sample, compatible Edge-family/CDP 1.3
 policy, timeout and retry policy are unchanged.
 
+Exact SSH-signed local source `cf2d176862a68f090b935fb0362fe3aeb052b978` passed the hermetic
+tracked-input develop profile at **259 files / 2,667 passed / 1 skipped**. Its single unchanged-
+source/no-retry chain then passed Compendium `20260901200818363-3312-ad36b2aac8` at **78/78**,
+zero-finding Slice `20260901200939671-3633-9b419c68c44c`, and Glass
+`20260901201556259-3986-34e7be99634e` at **12/12** viewports / **104/104** controls / **36/36**
+Arc 4 outcomes; every exact named verifier passed. SceneMemory certification remains production-
+only/quarantined and Recovery remains outside `develop`. The signed evidence/docs-only descendant
+contains only four exact PASS carriers and synchronized references, passes final tracked-input, and
+does not rebind or rerun cf2d176's certificate. This local green creates no hosted authority.
+
 No push, label, hosted attempt, retry, PR metadata mutation, merge, release, version bump, preview
 publication or deployment is authorized. A future hosted attempt requires Nick's fresh
 authorization naming the final exact head/base, PR #35, `test-battery`,
@@ -700,10 +710,12 @@ merge occurred. Artifact ID/digest and deterministic report/log carriers are ind
 
 The bounded local successor gives every Settings action/read its own named CDP command and exact
 handler-owned +1 receipt, full raw-v5 row continuity and deterministic writer/answerability
-quiescence. Its complete browser-free develop profile passes **259 files / 2,667 passed / 1
-skipped**. Clean tracked-input and a fresh local Compendium → Slice → Glass chain remain pending;
-this repair is not yet a browser certificate. No timeout, retry, point-version pin, fixed ruler,
-numeric ceiling or Settings/product semantic changed.
+quiescence. Exact SSH-signed implementation source
+`cf2d176862a68f090b935fb0362fe3aeb052b978` passes the hermetic develop profile at **259 files /
+2,667 passed / 1 skipped**, then passed one unchanged-source/named-verified **78/78 Compendium →
+zero-finding Slice → 12/12 Glass** chain. Exact run IDs and four deterministic carriers are indexed
+in `audits/README.md`. No timeout, retry, point-version pin, fixed ruler, numeric ceiling or
+Settings/product semantic changed, and this local certificate creates no hosted authority.
 
 All seven PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.
