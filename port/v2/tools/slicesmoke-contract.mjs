@@ -2929,6 +2929,17 @@ export function arc0LandingCoordinatorIsIdle(state, { clearFault = false } = {})
     && (!clearFault || coordinator.lastFault === null);
 }
 
+/** Build the exact page-realm Survey surface shared by desktop, keyboard and
+ * phone. The outer value is an object expression; only the supplied action
+ * expression is invoked. */
+export function buildEarlyCoreFlowActionSurfaceExpression(actionExpression) {
+  if (!nonEmptyString(actionExpression)) {
+    throw new TypeError('early core-flow action surface requires a non-empty action expression');
+  }
+  return `({documentToken:window.__CF_SLICE__.documentToken,`
+    + `state:window.__CF_SLICE__.api.state(),action:(${actionExpression})})`;
+}
+
 /** Certify an exact early core-flow action predecessor. Route/card paint alone
  * is insufficient: the document must also own current writable F4 authority
  * and the shared action coordinator must have returned to its idle fixed

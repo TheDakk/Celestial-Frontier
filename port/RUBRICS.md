@@ -1,18 +1,22 @@
 # Acceptance rubrics — what "done" means, per gate
 
 > **2026-09-01 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** exact signed
-> 6030035 passed tracked-input rehearsal, browser preflight and Compendium **78/78**, then its
-> unchanged-source Slice stopped once/no-retry with **1 harness finding / 1 scope** before the first
-> Survey action. A valid writable initial document retained immutable `fresh-v5` provenance while
-> the generic readiness oracle required `current-v5`; Glass correctly did not run.
+> 138cdee passed tracked-input develop preflight at **258 files / 2,628 passed / 1 skipped**,
+> browser-CDP selftest and live preflight. Compendium `20260901055749358-33363-aa39fce457` passed
+> **78/78** once/no-retry in **64,730 ms** with named verification. Exact-source Slice
+> `20260901055920314-33714-d47f27b9497a` then stopped once/no-retry after **14,746 ms** with **1
+> harness finding / 1 scope** and two screenshots. Three early-core-flow surface helpers serving
+> eleven callsites evaluated their action IIFE and then called the returned object; no product throw
+> occurred. Glass correctly did not run, and 138cdee was not retried.
 >
-> The bounded successor accepts `fresh-v5` only at explicit initial-page callsites bound to the
-> original document token; current/reload/replacement paths remain strict. Focused **79/79**, all
-> TypeScript programs and final develop **258 files / 2,628 passed / 1 skipped** are green, with
-> independent final review **APPROVED**. The working-tree successor is not yet signed,
-> tracked-input rehearsed or browser-certified. This changes no rubric row,
-> `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]` status or whole Gate. No new hosted, merge, release or deploy
-> authority exists.
+> The dirty testing-only successor centralizes the object-valued surface expression in one shared
+> builder and executable/source-inventory control. Focused **2 files / 52 tests**, all TypeScript
+> programs and final develop **258 files / 2,629 passed / 1 skipped** are green, with **34** clean art
+> sources, **1,014/1,014** routes, **454** specification fields and independent review **APPROVED**.
+> It is unsigned; committed-source tracked-input and browser verification remain pending. This
+> changes no rubric row, `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]` status or whole Gate. Five hosted attempts
+> remain consumed, every label is absent, and no new hosted, merge, release or deploy authority
+> exists.
 
 > **Historical local SceneMemory admission boundary (2026-08-30; superseded by the current overlay):**
 > exact signed clean source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied three

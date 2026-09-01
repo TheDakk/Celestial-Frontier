@@ -9,32 +9,37 @@
 synthetic merge `337ffd29f1584f1a5c786c4532a79c99876be325`, whose tree is byte-equivalent to exact head tree
 `e39bcdb8781eeaa6f9ee503cd6cfbb47497899ea`.
 
-Exact clean SSH-signed local successor `6030035dff1779c3fc3be7e4f46f376ff01455e8`
-passed its hermetic tracked-input develop rehearsal at **257 files / 2,622 passed / 1 skipped**,
-all three TypeScript programs, **34** clean art sources, **1,014/1,014** routes and **454**
-non-inert fields. Browser-CDP selftest and live preflight accepted Edge `152.0.4191.53` / CDP
-`1.3`; the point version is provenance only. Compendium
-`20260901051716174-22348-bea719354e` passed **78/78** once/no-retry in **64,220 ms** with named
-verification. Its exact-source Slice `20260901051837279-22717-480519033de4` then stopped
-once/no-retry after **24,458 ms** with **1 harness finding / 1 scope** and no screenshots, before
-the first Survey action: a complete writable initial document was correctly `fresh-v5`, but the
-generic readiness oracle required `current-v5`. Glass did not run; 6030035 is not retried or
-relabelled.
+Exact clean SSH-signed local source `138cdee0d3840efd899b5ebdbe974fd12d87e828` (tree
+`56d16790c414402e585b791d751fb7e173607ddf`, parent
+`6030035dff1779c3fc3be7e4f46f376ff01455e8`) supplied one fail-fast/no-retry local browser
+attempt. Browser-CDP selftest and live preflight accepted Edge `152.0.4191.53` / CDP `1.3`; the
+point version is provenance only. Compendium `20260901055749358-33363-aa39fce457` passed
+**78/78** with zero findings or blocked outcomes in **64,730 ms**, and exact named verification
+passed. Its exact-source develop Slice `20260901055920314-33714-d47f27b9497a` then stopped after
+**14,746 ms** with exactly **1 harness finding / 1 scope** and two screenshots. The game had
+booted, rendered and reached the real non-Sol Survey card; no product code threw. The harness
+constructed a syntactically valid `({documentToken,state,action})()` expression, evaluated its
+read-only action probe, then tried to call the resulting object and raised `TypeError: {...} is not
+a function` before the dependent Charter action. Glass correctly did not run; 138cdee is not
+retried or relabelled.
 
-The bounded working-tree successor preserves immutable boot provenance and admits `fresh-v5` only
-at explicitly named initial-page callsites bound to the exact original document token; current,
-reload and replacement waits remain strict. Focused verification passed **5 files / 79 tests**,
-all three TypeScript programs passed, and the complete develop profile passed **258 files / 2,628
-passed / 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454** non-inert
-fields. Independent final review is **APPROVED**. Current Compendium producer authority remains
+The bounded dirty working-tree successor centralizes that page-realm expression in one pure
+object-valued builder used by all three desktop, keyboard and phone journey drivers. Executable
+controls prove the exact returned surface, exactly one inner action evaluation, rejection of an
+empty expression, the historical outer-object-call failure and the complete three-consumer source
+inventory. Focused verification passed **2 files / 52 tests**, all three TypeScript programs
+passed, and the complete develop profile passed **258 files / 2,629 passed / 1 skipped**, **34**
+clean art sources, **1,014/1,014** routes and **454** non-inert fields. Independent final review is
+**APPROVED**. Current Compendium producer authority remains
 `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. This successor is not yet
-signed, tracked-input rehearsed or browser-certified.
+signed, tracked-input rehearsed or browser-certified and inherits no 138cdee certificate.
 
 All five hosted approval labels are absent and PR #35 remains Draft/unmerged. No push, label,
 hosted attempt, retry, Ready transition, merge, release, version bump, preview publication or
 deployment is authorized. A future changed-head attempt requires Nick's fresh exact authorization
 naming the final head/base, PR #35, `test-battery`, `actions-budget-approved`, 92-minute maximum
 and no retry.
+
 Exact local SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium
 **78/78** once/no-retry in **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; exact named
 verification passed. Its exact-source develop Slice `20260831155943782-24588-a98f13f2c7b7`

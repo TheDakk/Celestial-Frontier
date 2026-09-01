@@ -1,19 +1,23 @@
 # Celestial Frontier — UI / Presentation System
 
 > **2026-09-01 current Slice presentation-evidence boundary (supersedes older “current” labels;
-> presentation semantics remain as documented):** exact signed 6030035 passed tracked-input
-> rehearsal, browser preflight and Compendium **78/78**, then Slice stopped before its first Survey
-> action with one harness scope. The fully writable initial document legitimately remained
-> `fresh-v5`; the generic oracle incorrectly required `current-v5`. No product presentation was
-> judged, Glass correctly did not run, and 6030035 was not retried.
+> presentation semantics remain as documented):** exact signed 138cdee passed tracked-input
+> develop preflight at **258 files / 2,628 passed / 1 skipped**, browser-CDP selftest, live preflight
+> and Compendium **78/78** as `20260901055749358-33363-aa39fce457` in **64,730 ms**, with named
+> verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped once/no-
+> retry after **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Its three
+> early-core-flow surface helpers, serving eleven callsites, evaluated the action IIFE and then
+> called the returned object. This was a harness-only exception with no product throw; Glass did
+> not run and no new presentation certificate exists.
 >
-> The testing-only successor accepts fresh provenance only at exact-token initial-page callsites;
-> current/reload/replacement paths remain strict. Focused **79/79**, all TypeScript programs and
-> final develop **258 files / 2,628 passed / 1 skipped** are green, with independent final review
-> **APPROVED**. The working-tree successor is not yet signed, tracked-input rehearsed or browser-
-> certified, so there is no fresh presentation certificate. No copy, markup, CSS,
-> focus/scroll, geometry, fixed ruler, timeout, retry or browser-version policy changed; no hosted
-> attempt, preview, merge, release, version bump or deploy is authorized.
+> The dirty testing-only successor centralizes the object-valued surface expression in one shared
+> builder and executable/source-inventory control. Focused **2 files / 52 tests**, all TypeScript
+> programs and final develop **258 files / 2,629 passed / 1 skipped** are green, with **34** clean
+> art sources, **1,014/1,014** routes, **454** specification fields and independent review
+> **APPROVED**. It is unsigned; committed-source tracked-input and browser verification remain
+> pending. No copy, markup, CSS, focus/scroll, geometry, fixed ruler, timeout, retry or browser-
+> version policy changed; five hosted attempts remain consumed and no hosted attempt, preview,
+> merge, release, version bump or deploy is authorized.
 
 > **2026-08-31 historical terminal-green Compendium Back presentation boundary (superseded by the
 > current presentation-evidence overlay above; exact evidence remains immutable):** exact clean

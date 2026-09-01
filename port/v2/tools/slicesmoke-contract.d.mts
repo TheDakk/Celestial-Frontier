@@ -59,6 +59,8 @@ export interface EarlyCoreFlowActionFixedPointAssessment {
   readonly reasons: readonly string[];
 }
 
+export function buildEarlyCoreFlowActionSurfaceExpression(actionExpression: string): string;
+
 export function assessEarlyCoreFlowActionFixedPoint(
   observation: unknown,
   expected: Readonly<{

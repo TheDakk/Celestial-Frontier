@@ -1,8 +1,16 @@
+import { readFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { describe, expect, it, vi } from 'vitest';
 import {
   assessEarlyCoreFlowActionFixedPoint,
   assessF4ActionCommitSequence,
+  buildEarlyCoreFlowActionSurfaceExpression,
 } from '../tools/slicesmoke-contract.mjs';
+
+const sliceSmokeSource = readFileSync(
+  fileURLToPath(new URL('../tools/slicesmoke.mjs', import.meta.url)),
+  'utf8',
+);
 
 const TOKEN = 'initial-milky-way-owner-token';
 const RENDERED_SERIAL = 8;
@@ -71,6 +79,35 @@ function currentFixture() {
 }
 
 describe('early core-flow Survey fixed point', () => {
+  it('executes one object-valued Survey surface across all three journey drivers', () => {
+    const state = { mode: 'galaxy', cardOpen: true };
+    const actionExpression = `(()=>{window.actionCalls+=1;return {ok:true,label:'Enter system'};})()`;
+    const expression = buildEarlyCoreFlowActionSurfaceExpression(actionExpression);
+    const makeWindow = () => ({
+      actionCalls: 0,
+      __CF_SLICE__: {
+        documentToken: TOKEN,
+        api: { state: () => state },
+      },
+    });
+    const window = makeWindow();
+    const execute = new Function('window', `return ${expression};`);
+    expect(execute(window)).toEqual({
+      documentToken: TOKEN,
+      state,
+      action: { ok: true, label: 'Enter system' },
+    });
+    expect(window.actionCalls).toBe(1);
+    expect(() => buildEarlyCoreFlowActionSurfaceExpression('')).toThrow(TypeError);
+
+    const malformedOuterCall = new Function('window', `return ${expression}();`);
+    expect(() => malformedOuterCall(makeWindow())).toThrow(TypeError);
+    expect(sliceSmokeSource.match(
+      /await eval(?:In|K|NavPh)\(\s*buildEarlyCoreFlowActionSurfaceExpression\(actionExpression\)\s*,?\s*\)/gu,
+    )).toHaveLength(3);
+    expect(sliceSmokeSource).not.toMatch(/action:\$\{actionExpression\}\s*\}\)\(\)/u);
+  });
+
   it('composes exact route/render/card presentation around one settled Survey commit', () => {
     expect(assess(fixture())).toEqual({ status: 'ready', reasons: [] });
   });
