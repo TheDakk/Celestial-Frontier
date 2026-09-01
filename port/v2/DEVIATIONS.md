@@ -1,29 +1,23 @@
 # DEVIATIONS.md — the port's improvement ledger
 
 > **2026-09-01 current Slice Share-waiter lexical-scope instrument-only deviation (canonical
-> handoff in `../../ROADMAP.md`):** exact clean signed 3f8f870 passed tracked-input,
-> browser-CDP selftest and live preflight. Compendium `20260901072803827-52451-8168677f8e`
-> passed **78/78** once/no-retry in **65,672 ms** with zero findings/blocked outcomes, six review
-> PNGs and named verification. Exact-source Slice `20260901072936648-52803-f33e3b0b5239`
-> completed the ordinary journey and all ten screenshots, entered collision boot/import/baseline
-> and dispatched Search, then stopped before Search settlement once/no-retry after **336,730 ms**
-> with exactly **1 finding / 1 scope**, `harness`:
-> `waitForF4ActionSequenceFixedPoint is not defined`. Glass did not run; there is no product
-> deviation. Collision Share was never reached, so c0's boundary was not retested.
+> handoff in `../../ROADMAP.md`):** exact clean SSH-signed source
+> `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red.
+> Its tracked-input develop preflight passed **259 files / 2,660 passed / 1 skipped**; browser-CDP
+> selftest and live Edge preflight passed. Compendium `20260901123144352-62163-00064c788a`
+> passed **78/78** and named verification. Exact-source Slice
+> `20260901123326914-62541-f7f7c336aa70` passed and named-verified with report SHA-256
+> `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`. Glass
+> `20260901123953804-63082-f5844810dfb5` consumed that exact Slice, passed all **12/12** viewport
+> classes and named verification, and has report SHA-256
+> `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. Each browser stage ran
+> once with no retry.
 >
-> The bounded dirty deviation remains testing-only and changes no product source or waiter
-> semantics. It lifts the unchanged helper from the first full-journey-only block to the enclosing
-> `try`. An Acorn lexical audit requires one declaration and all five direct calls in its reachable
-> scope and rejects a re-gated mutant. Focused **58/58**, all TypeScript programs, `node --check`,
-> collision-only real Edge through Share/reload and complete develop are green at **259 files /
-> 2,660 passed / 1
-> skipped**, with **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields.
-> Independent code audit is **APPROVED**. Clean signing/tracked-input and fresh browser verification
-> remain pending; the dirty successor
-> inherits no 3f8f870 certificate.
-> No product, gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS, ruler, timeout,
-> retry or browser-version deviation exists. Five hosted attempts remain consumed, every label is
-> absent, and no hosted or release authority exists.
+> The deviation remains testing-only and changes no product source or waiter semantics. No product,
+> gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS, ruler, timeout or retry
+> deviation exists. Edge `152.0.4191.53` / CDP `1.3` is provenance only; compatible point updates
+> do not require a rebaseline. No hosted attempt, push, merge, release, version bump, publication or
+> deployment followed from this local certificate.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above; every older “current” status label
 > below; dated decisions and evidence remain immutable):** exact clean SSH-signed source
@@ -147,15 +141,14 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   preserves those inputs after Share. It derives exactly one owner receipt plus at most one
   conditional aggregate tail, requires same-token spans and two consecutive final samples, uses
   c0's captured 26 unlock IDs, proves all rank thresholds/factors plus permanent saved-rank
-  no-demotion and binds all six Share helpers to their waiters. Exact 3f8f870 completed the
-  ordinary journey but stopped before collision Search settlement; collision Share was not reached.
-  The red exposed that the shared waiter was scoped only to full-journey mode. The
-  dirty repair lifts that unchanged waiter to the enclosing `try`; Acorn requires one declaration,
-  all five direct calls reachable and the re-gated mutant red. Focused 58/58, TypeScript,
-  `node --check`, collision-only real Edge through Share/reload and complete develop 259 files /
-  2,660 passed / 1 skipped
-  are green. Clean signing/tracked-input and fresh browser evidence remain pending. This is no
-  product/save/schema/retry/ruler/browser-version deviation.
+  no-demotion and binds all six Share helpers to their waiters. Exact 3f8f870 exposed that the
+  shared waiter was scoped only to full-journey mode. Signed 4a595e2 lifts that unchanged waiter to
+  the enclosing `try`; Acorn requires one declaration, all five direct calls reachable and the
+  re-gated mutant red. Its tracked-input profile passed 259 files / 2,660 passed / 1 skipped, then
+  one/no-retry Compendium 78/78 → named-verified Slice (`19833fe4…`) → 12/12 named-verified Glass
+  (`a4f6d9b1…`) chain passed with exact predecessor binding. This is no product/save/schema/retry/
+  ruler/browser-version deviation; Edge point version remains provenance only, and no hosted,
+  push, merge or release authority follows.
 - ◐ **D-PR35-SURVEY-DEPENDENT-FIXED-POINT — Slice owns an asynchronous Survey predecessor before
   dependent navigation.** This is a harness-only successor to hosted run `33466661094`, not a
   product deviation or certificate. Before every pointer, keyboard, touch or already-current
@@ -166,8 +159,9 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   core-flow ordering that previously produced one causal finding plus 12 cascades. Atlas Travel's
   exact one commit, runtime schema/SessionRNG parity, retained-fault rejection and paired stable-but-
   wrong authority controls are sealed. Focused 73/73, all TypeScript programs and the complete
-  develop profile are green; two reviews are APPROVED. A clean candidate, tracked-input preflight
-  and fresh Compendium → Slice → Glass chain remain pending.
+  develop profile are green; two reviews are APPROVED. Exact clean signed `4a595e2…` later passed
+  tracked-input and one named-verified **78/78 Compendium → zero-finding Slice → 12/12 Glass** chain
+  once/no-retry; hosted run `33466661094` remains immutable red and is not relabelled.
 - ★ **D-PR35-HANDOFF — one-call Survey → Landing owns both persistence barriers.** It drains the
   incoming route barrier, starts Survey exactly once, drains Survey's replacement barrier, requires
   that exact settlement to return true, then invokes Landing exactly once. A synchronous refusal or

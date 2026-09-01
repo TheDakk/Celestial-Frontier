@@ -92,23 +92,24 @@
 > twice. The fixed browser timeout remains diagnostic. CF1 encoding, strict source verification,
 > reach and route policy remain unchanged.
 >
-> **2026-09-01 current Share evidence boundary:** exact clean signed source
-> `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` passed its tracked-input develop preflight and
-> Compendium **78/78** once/no-retry, then exact-source Slice
-> `20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all ten screenshots,
-> entered collision boot/import/baseline and dispatched Search, then stopped before Search
-> settlement once/no-retry after **336,730 ms** on the sole harness scope
-> `waitForF4ActionSequenceFixedPoint is not defined`. The Share product and fixed-point contract did
-> did not fail because collision Share was never reached. Their shared waiter was lexically inside
-> full-journey mode while the collision adapter
-> called it outside. The dirty testing-only repair lifts the unchanged waiter to their enclosing
-> `try`; an Acorn audit binds its single declaration to all five direct calls and rejects a re-gated
-> mutant. Focused **58/58**, all TypeScript programs, `node --check`, collision-only real Edge
-> through Share/reload and
-> complete develop **259 files / 2,660 passed / 1 skipped** are green. This unsigned successor
-> passes independent code audit as **APPROVED** and inherits no 3f8f870 browser certificate; a new
-> signed tracked-input candidate and fresh no-retry
-> Compendium → Slice → Glass chain remain pending.
+> **2026-09-01 current Share evidence boundary:** exact clean SSH-signed source
+> `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red
+> without changing Share product or fixed-point semantics. Its tracked-input develop preflight
+> passed **259 files / 2,660 passed / 1 skipped**; browser-CDP selftest and live Edge preflight
+> passed. Compendium `20260901123144352-62163-00064c788a` passed **78/78** and named verification.
+> Exact-source Slice `20260901123326914-62541-f7f7c336aa70` passed and named-verified with report
+> SHA-256 `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`. Glass
+> `20260901123953804-63082-f5844810dfb5` consumed that exact Slice, passed all **12/12** viewport
+> classes and named verification, and has report SHA-256
+> `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. Each browser stage ran
+> once with no retry.
+>
+> The waiter belongs to the enclosing scope shared by full-journey and collision-only modes; Acorn
+> binds one declaration to all five direct calls and keeps the re-gated mutant red. No creature,
+> genome, breeding, lineage, CF1 codec, save-schema, timeout or retry behavior changed. Edge
+> `152.0.4191.53` / CDP `1.3` is provenance only; compatible point updates do not require a
+> rebaseline. No hosted attempt, push, merge, release, version bump, publication or deployment
+> followed from this local certificate.
 >
 > Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` first passed Compendium
 > **78/78** once/no-retry, then its one Slice run

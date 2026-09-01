@@ -1,28 +1,25 @@
 # Celestial Frontier — Player Progression
 
 > **2026-09-01 current Share progression/waiter-scope overlay (supersedes every older “current”
-> label below; dated evidence remains immutable):** exact clean signed source
-> `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` passed its tracked-input develop preflight,
-> browser-CDP selftest and live preflight. Compendium `20260901072803827-52451-8168677f8e`
-> passed **78/78** once/no-retry in **65,672 ms** with named verification. Exact-source Slice
-> `20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all ten screenshots,
-> entered collision boot/import/baseline and dispatched Search, then stopped before Search
-> settlement once/no-retry after **336,730 ms** with the sole harness scope
-> `waitForF4ActionSequenceFixedPoint is not defined`; Glass did not run. No progression or product
-> outcome failed. Collision Share was never reached, so c0's boundary was not retested.
+> label below; dated evidence remains immutable):** exact clean SSH-signed source
+> `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red
+> without changing Share owner-plus-conditional-aggregate semantics, achievements or rank rules.
+> Its tracked-input develop preflight passed **259 files / 2,660 passed / 1 skipped**; browser-CDP
+> selftest and live Edge preflight passed. Compendium `20260901123144352-62163-00064c788a`
+> passed **78/78** and named verification. Exact-source Slice
+> `20260901123326914-62541-f7f7c336aa70` passed and named-verified with report SHA-256
+> `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`. Glass
+> `20260901123953804-63082-f5844810dfb5` consumed that exact Slice, passed all **12/12** viewports
+> and named verification, and has report SHA-256
+> `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. Each browser stage ran
+> once with no retry.
 >
-> The helper was declared inside full-journey mode while the collision adapter called it from the
-> outer outcome-controls mode. The dirty harness-only successor lifts the unchanged waiter to their
-> enclosing `try`; an Acorn lexical audit requires its single declaration and all five direct calls
-> to be reachable and rejects a re-gated mutant. Focused **58/58**, all TypeScript programs,
-> `node --check`, collision-only real Edge through Share/reload and complete develop **259 files /
-> 2,660 passed / 1
-> skipped** are green, with **34** clean art sources, **1,014/1,014** routes and **454** non-inert
-> fields; independent code audit is **APPROVED**. Current Share owner-plus-conditional-aggregate
-> semantics, achievements and rank rules are
-> unchanged. The unsigned successor inherits no 3f8f870 browser certificate; signed tracked-input
-> and a fresh no-retry Compendium → Slice → Glass chain remain pending. No hosted attempt, push,
-> merge, release, version bump, publication or deployment is authorized.
+> The shared waiter now belongs to the enclosing execution scope used by both full-journey and
+> outcome-controls modes; the Acorn audit binds its single declaration to all five direct calls and
+> keeps the re-gated mutant red. This remains a harness-only repair with no product or progression
+> change. Edge `152.0.4191.53` / CDP `1.3` is provenance only; compatible point updates never
+> require a rebaseline. No hosted attempt, push, merge, release, version bump, publication or
+> deployment followed from this local certificate.
 
 > **2026-08-31 historical local a046 collision-control repair overlay (superseded by the current
 > overlay above and every older

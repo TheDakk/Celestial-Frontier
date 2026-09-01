@@ -9,7 +9,37 @@
 synthetic merge `337ffd29f1584f1a5c786c4532a79c99876be325`, whose tree is byte-equivalent to exact head tree
 `e39bcdb8781eeaa6f9ee503cd6cfbb47497899ea`.
 
-Exact clean SSH-signed local source `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` (tree
+Exact clean SSH-signed local source `4a595e2fa3305bf2531fc4051d09314490587e83` (tree
+`e5f57cf5c84b2bb23f504cd58747132615005106`, parent
+`3f8f8704c851fc4c7547b8644d008dd1bba5d34f`) passed the hermetic tracked-input develop profile at
+**259 files / 2,660 passed / 1 skipped**, all TypeScript programs, **34/34** clean art sources,
+**1,014/1,014** routes and **454** non-inert specification fields. Browser-CDP selftest and live
+preflight passed on Edge `152.0.4191.53` / CDP `1.3`; point version remains provenance only.
+
+On that unchanged clean source, one fail-fast/no-retry local develop chain ran serially and every
+exact named verifier passed. Compendium `20260901123144352-62163-00064c788a` passed **78/78** in
+**67,178 ms** with zero findings/blocked outcomes and six review PNGs. Slice
+`20260901123326914-62541-f7f7c336aa70` passed terminal green in **367,066 ms** with zero
+findings/scopes and ten screenshots; report SHA-256 is
+`19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`. Exact-predecessor-bound
+Glass `20260901123953804-63082-f5844810dfb5` passed terminal green in **116,988 ms** across
+**12/12** viewports and **12/12** reload-evidence rows with zero findings, zero instrument
+failures, no blocked/omitted controls and no retries; report SHA-256 is
+`a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. The chain closes the
+local develop browser-certificate step for exact 4a595e2 only.
+
+The evidence/docs-only descendant containing this ledger preserves those exact reports/logs as four
+deterministic gzip carriers and synchronizes their raw/compressed sizes and SHA-256 values. Its SHA
+is intentionally not self-embedded. Once that descendant is SSH-signed and clean, its remaining
+local prerequisite is the tracked-input proof; the 4a595e2 browser chain is not rerun or rebound.
+No push, label, hosted attempt, retry, Ready transition, merge, release, version bump, preview
+publication or deployment is authorized. A future hosted attempt requires Nick's fresh
+authorization naming that final exact head/base, PR #35, `test-battery`,
+`actions-budget-approved`, a 92-minute maximum and no retry; merge is allowed only if that exact
+attempt is terminal green and branch protection is satisfied.
+
+**Historical exact 3f8f870 predecessor boundary:** exact clean SSH-signed local source
+`3f8f8704c851fc4c7547b8644d008dd1bba5d34f` (tree
 `979726f7035e7ca3c45de4fb80565b5d0d2d4481`, parent
 `c0f7215bd1ec932f6357b6cfc1e045b5644ba389`) passed its clean tracked-input develop preflight and
 supplied one fail-fast/no-retry local browser attempt. Browser-CDP selftest and live preflight

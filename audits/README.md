@@ -10,7 +10,59 @@ summary of it.
 
 ## Contents
 
-### Current exact-source 3f8f870 Share-waiter lexical-scope stop
+### Current exact-source 4a595e2 Share-waiter lexical-scope terminal-green develop chain
+
+Exact clean SSH-signed source `4a595e2fa3305bf2531fc4051d09314490587e83` (tree
+`e5f57cf5c84b2bb23f504cd58747132615005106`, parent `3f8f8704c851…`) supplied one
+unchanged-source, fail-fast/no-retry local develop chain on Edge `152.0.4191.53` / CDP `1.3`.
+The compatible browser point version is provenance only. Every stage ran once and every exact
+named verifier passed:
+
+- Compendium `20260901123144352-62163-00064c788a` passed **78/78** with zero findings or blocked
+  outcomes in **67,178 ms**, complete lifecycle and six review PNGs. Producer/budget authority was
+  `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6` /
+  `78269c722c0d64438c0d407e0d8df3a8a284715af35bff94ed6f7d8dbba569c2`.
+- Develop Slice `20260901123326914-62541-f7f7c336aa70` passed with zero findings/scopes and all
+  ten screenshots in **367,066 ms**. Report SHA-256 is
+  `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`; raw-log SHA-256 is
+  `3b306b7ee72fb07ba39bb33ff61835cb5db80f83ce571b884b217c151724acef`.
+- Full-certifying Glass `20260901123953804-63082-f5844810dfb5` consumed that exact Slice report
+  and log, then passed **12/12** viewport classes, **104/104** negative controls and **36/36** Arc 4
+  capture outcomes with zero findings, instrument failures, blocked controls or omitted controls in
+  **116,988 ms**. Report SHA-256 is
+  `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`.
+
+The four exact carriers pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_SHARE_WAITER_LEXICAL_SCOPE_PREDECESSOR_PASS_20260901_4A595E2.json.gz`:
+  **452,316 bytes**, SHA-256
+  `8c0a4eca64d09de81905fbb105dfbd168fdd4dc004bce094780a71ff672bcc18`; raw
+  **10,862,755 bytes**, SHA-256
+  `ff3482c10ce4d6a3118a4126041cf2662aeebaef3591cece225a7375e392f00c`.
+- `ARC4_SLICE_PR35_SHARE_WAITER_LEXICAL_SCOPE_PASS_20260901_4A595E2.json.gz`:
+  **1,955 bytes**, SHA-256
+  `3b906eb4e7db0eeb25c51cb7a0af6321c8cd58363d8372853a31c6c46bac1587`; raw
+  **6,126 bytes**, SHA-256
+  `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`.
+- `ARC4_SLICE_PR35_SHARE_WAITER_LEXICAL_SCOPE_PASS_20260901_4A595E2.log.gz`:
+  **3,291 bytes**, SHA-256
+  `b51b30442ae286e1b5d280db9bd31ae624e45e28673f6b6458708ee43220c848`; raw
+  **6,950 bytes**, SHA-256
+  `3b306b7ee72fb07ba39bb33ff61835cb5db80f83ce571b884b217c151724acef`.
+- `ARC4_GLASS_PR35_SHARE_WAITER_LEXICAL_SCOPE_PASS_20260901_4A595E2.json.gz`:
+  **78,880 bytes**, SHA-256
+  `1515184685ee9333d5663419d9ca8d8f478a68c37906639098384fa93d100e8c`; raw
+  **898,759 bytes**, SHA-256
+  `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`.
+
+This clean successor lifts only the unchanged Slice Share-settlement waiter into the lexical scope
+shared by the ordinary journey and outcome controls, and adds the paired Acorn scope mutant that
+would reject the historical placement. Product/game/save/Share behavior, browser policy, numeric
+rulers, timeouts and retry policy are unchanged. SceneMemory remains production-only/quarantined;
+Recovery is not part of develop. These local carriers grant no hosted attempt, merge, release,
+preview or deployment authority.
+
+### Historical exact-source 3f8f870 Share-waiter lexical-scope stop (closed by 4a595e2 above)
 
 Exact clean SSH-signed source `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` (tree
 `979726f7035e7ca3c45de4fb80565b5d0d2d4481`, parent `c0f7215bd1ec…`) passed its clean
@@ -240,9 +292,11 @@ touch or already-current Enter/Land path; a red predecessor causal-stops descend
 is now green: focused **4 files / 73 tests passed**, all three TypeScript programs and final develop **257
 files / 2,622 passed / 1 skipped**, plus **34** clean art sources, **1,014/1,014** routes and **454**
 fields. Two independent reviews are **APPROVED**; producer authority remains
-`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. The clean candidate,
-tracked-input preflight and fresh unchanged-source Compendium → Slice → Glass chain remain pending.
-These carriers certify only the immutable hosted PASS/FAIL boundary above, not the local repair.
+`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. Exact clean signed
+`4a595e2fa3305bf2531fc4051d09314490587e83` later passed tracked-input and one named-verified,
+unchanged-source **78/78 Compendium → zero-finding Slice → 12/12 Glass** chain once/no-retry, with
+its separate exact carriers indexed at the top of this file. These historical carriers certify only
+the immutable hosted PASS/FAIL boundary above and are not relabelled as the 4a595e2 certificate.
 The fifth approval is consumed and no new hosted attempt, merge, release, preview or deployment is
 authorized.
 
