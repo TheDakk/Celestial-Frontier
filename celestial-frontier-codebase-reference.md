@@ -1,35 +1,24 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
 > **2026-09-01 current v2 Share-waiter lexical-scope boundary (matches local code as of
-> 2026-09-01; supersedes older “current” labels; fresh browser chain pending):** exact clean
-> SSH-signed source `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` (tree `979726f7…`, parent
-> `c0f7215…`) passed its clean tracked-input develop preflight, browser-CDP selftest and live
-> preflight on Edge `152.0.4191.53` / CDP `1.3`. Compendium
-> `20260901072803827-52451-8168677f8e` passed **78/78** once/no-retry in **65,672 ms** with zero
-> findings/blocked outcomes, six review PNGs and named verification. Exact-source Slice
-> `20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all ten screenshots,
-> entered collision boot/import/baseline and dispatched the first named Search gesture, then stopped
-> before Search settlement after **336,730 ms** with exactly **1 finding / 1 scope**,
-> `harness`: `waitForF4ActionSequenceFixedPoint is not defined`. Collision Share was never
-> reached, so c0's `collision-share-1` boundary was not retested; Glass did not run.
+> 2026-09-01; supersedes older “current” labels):** exact clean SSH-signed source
+> `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red.
+> Its tracked-input develop preflight passed **259 files / 2,660 passed / 1 skipped**; browser-CDP
+> selftest and live Edge preflight passed. Compendium `20260901123144352-62163-00064c788a`
+> passed **78/78** and named verification. Exact-source Slice
+> `20260901123326914-62541-f7f7c336aa70` passed and named-verified with report SHA-256
+> `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`. Glass
+> `20260901123953804-63082-f5844810dfb5` consumed that exact Slice, passed all **12/12** viewport
+> classes and named verification, and has report SHA-256
+> `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. Every browser stage ran
+> once with no retry.
 >
-> The shared waiter was lexically nested inside the first `!OUTCOME_CONTROLS_ONLY` block while the
-> later collision adapter called it outside. The dirty testing-only successor changes no product
-> source or waiter semantics: it lifts the unchanged declaration to the enclosing `try`. An Acorn
-> lexical audit requires exactly one declaration, inventories all five direct calls, proves each is
-> inside and after the declaration's scope and rejects a re-gated historical mutant. Focused
-> four-file verification passes **58/58**; all TypeScript programs, `node --check`, the collision-
-> only real-Edge diagnostic through collision Share/reload and complete develop pass at **259 files
-> / 2,660 passed / 1 skipped**,
-> **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields; independent code
-> audit is **APPROVED**. The clean signed
-> candidate, tracked-input rehearsal and fresh browser chain remain pending; the dirty successor
-> inherits no 3f8f870 browser certificate.
->
-> Product save semantics/schema, Share/gameplay behavior, deterministic generation, presentation,
-> art/audio, creature/genome/plant/biome/Guardian structure, numeric rulers, timeout/retry and
-> browser-version policy are unchanged. Five hosted attempts remain consumed; every label is absent
-> and no current hosted, merge or release authority exists.
+> The shared waiter now belongs to the enclosing execution scope used by full-journey and
+> outcome-controls modes. Its semantics and all product save/schema, Share/gameplay, deterministic
+> generation, presentation, art/audio and creature/genome/plant/biome/Guardian behavior are
+> unchanged. Edge `152.0.4191.53` / CDP `1.3` is provenance only; compatible point updates do not
+> require a rebaseline. No hosted attempt, push, merge, release, version bump, publication or
+> deployment followed from this local certificate.
 
 > **2026-08-31 historical terminal-green Compendium raw failure-cleanup boundary (superseded by
 > the current certified boundary above; exact evidence remains immutable):** exact clean
@@ -4396,10 +4385,11 @@ rank-oracle parity covers every threshold/factor including permanent saved-rank 
 all six Share helper outputs are bound to their waiter arguments. The shared waiter is declared in
 the enclosing execution `try`, not inside full-journey mode, so collision-only mode can reach it;
 an Acorn audit proves its one declaration precedes and scopes all five direct calls while a re-gated
-mutant fails. Focused **58/58**, all TypeScript programs, `node --check`, collision-only real Edge
-and complete develop **259 files / 2,660 passed / 1 skipped** are green, with **34** clean art
-sources, **1,014/1,014** routes and **454** non-inert fields. Clean signing/tracked-input and the
-fresh unchanged-source browser chain remain pending. This is a harness-only repair.
+mutant fails. Exact clean signed 4a595e2 passed tracked-input at **259 files / 2,660 passed / 1
+skipped**, browser-CDP selftest and live Edge preflight, then completed one/no-retry, named-verified
+Compendium **78/78** → Slice (`19833fe4…`) → Glass **12/12** (`a4f6d9b1…`) chain with exact Slice
+predecessor binding. This is a harness-only repair. Edge point version remains provenance only;
+there is no hosted, push, merge or release authority.
 
 **Current Glass causal/presentation contract (2026-08-31):** the first instrument red retains one
 root failure, blocks dependent controls and stops later viewport work. The first product red likewise

@@ -24,15 +24,19 @@
 > Preserve this exact red; it is no product finding and cannot be answered with a retry,
 > timeout, browser pin or product change.
 >
-> The dirty bounded successor lifts the unchanged waiter to the enclosing `try`, adds an Acorn
-> declaration/call lexical audit and retains a re-gated negative mutant. Focused four-file
-> verification passes **58/58**, all TypeScript programs and `node --check` pass, the collision-only
-> real-Edge diagnostic through collision Share/reload passes, and the complete develop profile
-> passes **259 files / 2,660 passed /
-> 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields. This
-> code audit is **APPROVED**. This unsigned working tree inherits no 3f8f870 browser certificate.
-> A new signed candidate, tracked-input preflight and fresh one-attempt/no-retry Compendium → Slice → Glass chain remain
-> pending; no hosted, product, Arc, Gate, HUMAN, release or deployment authority follows.
+> Exact clean SSH-signed successor `4a595e2fa3305bf2531fc4051d09314490587e83` lifts the unchanged
+> waiter to the enclosing `try`, adds the Acorn declaration/call lexical audit and retains the
+> re-gated negative mutant. Its tracked-input develop preflight passed **259 files / 2,660 passed /
+> 1 skipped**; browser-CDP selftest and live Edge preflight passed. Compendium
+> `20260901123144352-62163-00064c788a` passed **78/78** and named verification. Slice
+> `20260901123326914-62541-f7f7c336aa70` passed and named-verified with report SHA-256
+> `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`; Glass
+> `20260901123953804-63082-f5844810dfb5` consumed that exact Slice, passed **12/12** viewports and
+> named verification, and has report SHA-256
+> `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. Each browser stage ran
+> once with no retry. Edge `152.0.4191.53` / CDP `1.3` is provenance only; compatible point updates
+> never require a rebaseline. No hosted, push, merge, product, Arc, Gate, HUMAN, release or
+> deployment authority follows.
 
 > **A GENERIC WRITABLE F4 SNAPSHOT IS NOT A MULTI-RECEIPT ACTION FIXED POINT** (2026-09-01).
 > A writable, idle snapshot may be an intermediate state between an action owner's receipt and a
@@ -59,12 +63,11 @@
 > cross-binds exact catalog arrays to legacy raw plus existing live counts/best/hybrids, and proves
 > the successor preserves both representations. Its c0 fixture carries the exact 26 unlock IDs,
 > its rank oracle spans every threshold/factor including permanent saved-rank no-demotion, and every
-> one of the six Share helper results is bound to the waiter arguments. Focused verification is
-> **57/57**, all TypeScript programs pass,
-> and the complete develop profile passes **259 files / 2,659 passed / 1 skipped**, **34** clean art
-> sources, **1,014/1,014** routes and **454** non-inert fields. Independent final review is
-> **APPROVED**. The clean signed candidate, tracked-input rehearsal and fresh browser chain remain
-> pending; no hosted, product, Arc, Gate or release authority follows.
+> one of the six Share helper results is bound to the waiter arguments. The combined exact clean
+> signed 4a595e2 successor passed the **259 files / 2,660 passed / 1 skipped** tracked-input profile
+> and the one/no-retry, named-verified Compendium **78/78** → Slice (`19833fe4…`) → Glass **12/12**
+> (`a4f6d9b1…`) chain recorded above. Edge point version remains provenance only. No hosted, push,
+> merge, product, Arc, Gate or release authority follows.
 
 > **GENERATED PAGE-REALM EXPRESSIONS MUST BE EXECUTED, NOT ONLY SOURCE-CHECKED** (2026-09-01).
 > JavaScript embedded in a runner string is outside `node --check` and TypeScript's semantic view,
@@ -340,11 +343,12 @@
 > tree-equivalent synthetic merge `337ffd2…` passed every prerequisite and Compendium **78/78**;
 > Slice then pressed non-Sol Enter before Survey's F4 settlement. The product correctly refused with
 > **Expedition action settling** and stayed in galaxy. One causal harness race produced 12 downstream
-> findings, Glass correctly skipped and no retry ran. The local fixed-point/causal-stop repair is now
-> browser-free verified: focused **4 files / 73 tests passed**, all three TypeScript programs, final develop
-> **257 files / 2,622 passed / 1 skipped**, and two independent reviews **APPROVED**. The exact clean
-> candidate, tracked-input preflight and browser chain remain pending, so do not call it browser-
-> certified, widen time, add a retry, weaken the product fence or relabel the immutable red.
+> findings, Glass correctly skipped and no retry ran. The local fixed-point/causal-stop repair first
+> passed focused **4 files / 73 tests**, all three TypeScript programs, final develop **257 files /
+> 2,622 passed / 1 skipped**, and two independent reviews **APPROVED**. Exact clean signed
+> `4a595e2…` later passed tracked-input and one named-verified **78/78 Compendium → zero-finding
+> Slice → 12/12 Glass** chain once/no-retry. Do not relabel the immutable hosted red, widen time,
+> add a retry or weaken the product fence; the browser certificate belongs only to exact 4a595e2.
 >
 > The verified oracle must model the dependent action's real transaction, not merely wait for it:
 > Atlas Travel owns exactly one `arc9-galaxy-arrival-v1` / `arc9-travel-committed:` commit rather

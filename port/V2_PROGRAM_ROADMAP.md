@@ -1,28 +1,23 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
 > **2026-09-01 current Share-waiter lexical-scope admission overlay (canonical handoff in
-> `../ROADMAP.md`):** exact clean signed 3f8f870 passed tracked-input, browser-CDP selftest and
-> live preflight. Compendium `20260901072803827-52451-8168677f8e` passed **78/78** once/no-retry
-> in **65,672 ms** with zero findings/blocked outcomes, six review PNGs and named verification.
-> Exact-source Slice `20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all
-> ten screenshots, entered collision boot/import/baseline and dispatched Search, then stopped
-> before Search settlement once/no-retry after **336,730 ms** with
-> exactly **1 finding / 1 scope**, `harness`: `waitForF4ActionSequenceFixedPoint is not defined`.
-> Collision Share was never reached, so c0's boundary was not retested; Glass did not run and no
-> product or roadmap feature failed.
+> `../ROADMAP.md`):** exact clean SSH-signed source
+> `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red.
+> Its tracked-input develop preflight passed **259 files / 2,660 passed / 1 skipped**; browser-CDP
+> selftest and live Edge preflight passed. Compendium `20260901123144352-62163-00064c788a`
+> passed **78/78** and named verification. Exact-source Slice
+> `20260901123326914-62541-f7f7c336aa70` passed and named-verified with report SHA-256
+> `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`. Glass
+> `20260901123953804-63082-f5844810dfb5` consumed that exact Slice, passed all **12/12** viewport
+> classes and named verification, and has report SHA-256
+> `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. Every browser stage ran
+> once with no retry.
 >
-> The dirty harness-only successor lifts the unchanged waiter from the full-journey-only gate to
-> the enclosing `try`. An Acorn lexical audit requires one declaration and all five direct calls in
-> its reachable scope and rejects a re-gated mutant. Focused **58/58**, all TypeScript programs,
-> `node --check`, collision-only real Edge through Share/reload and complete develop are green at
-> **259 files / 2,660
-> passed / 1 skipped**, with **34** clean art sources, **1,014/1,014** routes and **454**
-> specification fields; code audit is **APPROVED**. Clean signed tracked-input and fresh browser
-> verification remain pending; the dirty successor inherits no 3f8f870 certificate. No roadmap
-> feature, product/save/gameplay/art/creature
-> structure, EXEC history, Arc/Gate or HUMAN status changed. Five hosted attempts remain consumed,
-> every label is absent, and no new push, hosted attempt, merge, release, preview or deploy is
-> authorized.
+> This remains a harness-only repair. No roadmap feature, product/save/gameplay/art/creature
+> structure, EXEC history, Arc/Gate or HUMAN status changed. Edge `152.0.4191.53` / CDP `1.3` is
+> provenance only; compatible point updates do not require a rebaseline. No hosted attempt, push,
+> merge, release, preview, version bump, publication or deployment followed from this local
+> certificate.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above while
 > preserving its dated evidence):** exact clean SSH-signed source
