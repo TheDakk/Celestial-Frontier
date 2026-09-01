@@ -1,21 +1,19 @@
 # Acceptance rubrics — what "done" means, per gate
 
-> **2026-08-31 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** PR #35 run
-> `33453239307` consumed its fourth exact no-retry battery for head
-> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium and its named verifier passed
-> **78/78**; the subsequent Chrome launcher selftest failed unique-profile cleanup, so Slice/Glass
-> did not run. The local POSIX `Browser.close` grace plus detached-group TERM/KILL, Windows bounded
-> successful `taskkill /T` then `/F` with pre-exited/no-success fail-closed behavior, **100 ms**
-> profile-absence proof, cleanup causality and workflow ordering are green under real Edge plus the
-> **254-file / 2,567-pass / 1-skip** develop profile. Final Compendium measurement/browser-CDP
-> authority is `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
-> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`. This changes no `[EXEC]`
-> or `[HUMAN]` gate status: the repair is uncommitted and no current browser certificate exists.
-> SceneMemory remains
-> intentionally stale/quarantined until explicit production activation. No push, hosted retry,
-> merge, release, version or deploy is authorized.
-
+> **2026-08-31 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** exact
+> clean signed source `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78**
+> and named verification, then unchanged-source Slice
+> `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry after **302,408 ms** with one
+> harness finding before its Protected Save fixture hook could run. Stored bytes remained unchanged
+> and Glass did not run.
+>
+> The local instrument successor token-binds and atomically guards all eight staging paths, permits
+> rebind only from a proven zero-call pre-invocation replacement and stops every invoked/ambiguous
+> outcome. Browser-free verification passes **255 files / 2,576 tests / 1 skipped** plus every
+> TypeScript/art/route/specification owner, with clear final review. This creates no new EXEC
+> certificate, changes no HUMAN or whole-Gate status and does not rebind historical evidence.
+> A clean signed successor and fresh exact **Compendium → Slice → Glass** chain remain. No push,
+> hosted attempt, merge, release, version or deploy is authorized.
 > **Historical local SceneMemory admission boundary (2026-08-30; superseded by the current overlay):**
 > exact signed clean source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied three
 > one-attempt/no-retry calibration-only observations under one unchanged build and Edge/CDP tuple.

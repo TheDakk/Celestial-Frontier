@@ -1,27 +1,21 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-31 current launcher-only boundary (supersedes older “current” labels; presentation
-> semantics remain as documented):** PR #35 run `33453239307` consumed its fourth exact no-retry
-> attempt for head `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium and its named verifier were green at
-> **78/78**; the later shared Chrome launcher selftest stopped on a leaked/reappearing unique
-> profile, so Slice and Glass did not run. POSIX healthy cleanup sends bounded CDP `Browser.close`,
-> then uses detached-group quiescence with permanent `ESRCH`/no-collateral control. Windows disables
-> `Browser.close` and requires successful bounded `taskkill /T`, escalating to `/F`; pre-exited or
-> no-success states fail closed without a Job Object claim.
-> Profile absence is stable for **100 ms** and primary/cleanup causality remains separate. The
-> launcher selftest now precedes the long exact-Edge certificate.
+> **2026-08-31 current Slice presentation-evidence boundary (supersedes older “current” labels;
+> presentation semantics remain as documented):** exact clean signed source
+> `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78** and named verification.
+> Its unchanged-source Slice stopped once/no-retry at
+> `20260901020100211-91399-de1ddbd28c96` with one harness finding before Protected Save fixture
+> staging; Glass did not run. A replacement phone document had not yet published Slice/API, so the
+> raw staging call made zero hook calls and left the existing stored primary unchanged.
 >
-> Real-Edge launcher selftest and the **254-file / 2,567-pass / 1-skip** develop profile are green.
-> Final measurement/browser-CDP authority is
-> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
-> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`;
-> SceneMemory stays
-> intentionally stale/quarantined until production activation. Product markup/bytes, focus/scroll,
-> CSS, the ±2px tolerance, numeric ceilings, timeout/retry and browser-version policy are unchanged.
-> This dirty working-tree repair supplies no current presentation certificate or hosted authority;
-> exact 9b37 presentation evidence below is historical for its own source.
-
+> The bounded successor foregrounds and token-binds the intended document, requires two stable
+> ready observations and safe persistence authority, then performs one atomic guarded call across
+> all eight staging paths. Only a proven zero-call pre-invocation replacement may rebind; ambiguous
+> or invoked outcomes stop. The complete browser-free profile passes **255 files / 2,576 tests / 1
+> skipped** and final review is clear. No Protected Save product behavior or toast timing, markup,
+> CSS, focus/scroll, geometry, fixed ruler, timeout, retry or browser-version policy changed. A clean
+> signed successor and fresh **Compendium → Slice → Glass** chain remain; no hosted or release
+> authority exists.
 > **2026-08-31 historical terminal-green Compendium Back presentation boundary (superseded by the
 > launcher-only overlay above; exact evidence remains immutable):** exact clean
 > SSH-signed source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree

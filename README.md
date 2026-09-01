@@ -1,24 +1,24 @@
 # Celestial-Frontier
 
-> **2026-08-31 current PR #35 launcher-repair overlay (canonical detail in `ROADMAP.md`; dated
-> evidence below remains immutable):** fourth no-retry run `33453239307` tested exact head
-> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Every invoked stage through Compendium **78/78**
-> and its named verifier passed; the later Chrome launcher selftest leaked/recreated its unique
-> profile, so Slice/Glass were skipped. The working-tree repair gives POSIX a bounded CDP
-> `Browser.close` grace followed by detached-group TERM/KILL when needed; Windows disables that
-> grace and requires bounded successful `taskkill /T` then `/F`, failing closed on pre-exited or
-> no-success cleanup. It also proves **100 ms** profile absence, preserves primary/cleanup causality,
-> survives a throwing `ws.close()` and runs the workflow selftest before the long exact-Edge
-> certificate. Real-Edge selftest and the **254-file / 2,567-pass / 1-skip** develop profile are green.
-> Final Compendium measurement/browser-CDP authority is
-> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
-> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`;
-> SceneMemory remains intentionally stale/quarantined until production activation. Product bytes,
-> gameplay/save/art/creature semantics, CSS, rulers, timeouts, retry and browser-version policy are
-> unchanged. The repair awaits final diagnostics/commit; no push, hosted retry, merge, release,
-> version or deploy is authorized.
-
+> **2026-08-31 current PR #35 Slice lifecycle repair overlay (canonical detail in
+> `ROADMAP.md`; dated evidence below remains immutable):** exact clean signed launcher successor
+> `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium
+> `20260901015932922-91060-9d1ef2de36` at **78/78** with named verification. Its unchanged-source
+> Slice `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry after **302,408 ms** with
+> exactly **1 harness finding**; Glass did not run. Protected Save reached a replacement phone
+> document before Slice publication, so the raw fixture hook made zero calls and the existing
+> 4,305-byte primary remained unchanged instead of the expected 46-byte fixture. This is harness
+> lifecycle evidence, not a game/save regression.
+>
+> The bounded local successor inventories all eight staging paths, requires two ready observations
+> from one exact document token and one safe hold/mutation pair, then rechecks authority atomically
+> before one hook call. Only an exact zero-call `unclaimed` receipt may rebind; invoked, rejected,
+> malformed or ambiguous outcomes stop without retry. The complete browser-free develop profile is
+> green at **255 files / 2,576 passed / 1 skipped**, all TypeScript/art/route/specification owners,
+> and two independent final reviews found no functional lifecycle defect. Product/save/gameplay/art/
+> creature/CSS semantics, thresholds, timeouts, retry and version-tolerant browser policy are
+> unchanged. A clean signed successor and one fresh exact **Compendium → Slice → Glass** chain
+> remain. No push, hosted attempt, merge, release, version bump or deploy is authorized.
 > **2026-08-31 historical a046 collision-control repair overlay (superseded above; every older “current”
 > label below; dated evidence remains immutable):** exact clean signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry as

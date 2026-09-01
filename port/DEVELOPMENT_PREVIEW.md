@@ -1,22 +1,19 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **2026-08-31 current launcher-repair/preview boundary (canonical handoff in `../ROADMAP.md`):**
-> fourth exact no-retry run `33453239307` tested PR #35 head
-> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed **78/78** and named
-> verification; the later Chrome launcher selftest failed unique-profile cleanup, so Slice/Glass
-> and preview packaging/publication did not run. The local POSIX `Browser.close` grace plus
-> detached-group TERM/KILL, Windows bounded successful `taskkill /T` then `/F` with
-> pre-exited/no-success fail-closed behavior, **100 ms** profile-absence proof, cleanup causality and
-> fail-fast workflow ordering pass real Edge and the **254-file / 2,567-pass / 1-skip** develop
-> profile. The manual preview remains separate and noncertifying. Final Compendium
-> measurement/browser-CDP authority is `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836`
-> / `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`; SceneMemory stays
-> stale/quarantined until production activation.
-> No preview rule, product byte, ruler, timeout, retry or browser-version policy changed. The repair
-> awaits final diagnostics/commit; no hosted retry, preview publication, push, merge, release,
-> version or deploy is authorized.
-
+> **2026-08-31 current Slice/preview boundary (canonical handoff in `../ROADMAP.md`):** exact
+> clean signed source `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78**
+> and named verification, then unchanged-source Slice
+> `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry with one harness finding before
+> Protected Save fixture staging. The hook made zero calls, stored bytes remained unchanged, Glass
+> did not run, and no preview was packaged or published.
+>
+> The local instrument successor guards all eight staging paths with stable document ownership,
+> exact persistence authority, one atomic call and zero-call-only rebind. Browser-free verification
+> passes **255 files / 2,576 tests / 1 skipped** plus every TypeScript/art/route/specification owner.
+> The manual preview remains a separate noncertifying playtest package and cannot substitute for the
+> failed Slice certificate or the pending fresh **Compendium → Slice → Glass** chain. No preview
+> rule, product byte, timeout, retry or browser-version policy changed; no push, hosted attempt,
+> publication, merge, release, version or deploy is authorized.
 > **2026-08-31 historical local a046 repair overlay (superseded above; older candidate-status labels and dated
 > evidence and preview-process rules remain immutable):** exact clean SSH-signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry in

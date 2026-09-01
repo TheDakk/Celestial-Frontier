@@ -10,7 +10,47 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 shared-launcher terminal red and local repair boundary
+### Current exact-source `6238b8d…` Slice fixture-lifecycle terminal red and guarded local successor
+
+Exact clean SSH-signed source `6238b8dd3eccf6dd106787b6789ad8bb716deac9` (tree
+`a10f7c10becec7e2bc9e58c1741c3ca9c3c200f5`) passed Compendium
+`20260901015932922-91060-9d1ef2de36` at **78/78** with zero findings and a green exact named
+verifier. Its unchanged-source develop Slice `20260901020100211-91399-de1ddbd28c96` ran once
+with no retry on Edge `152.0.4191.53` / CDP `1.3`, then stopped terminal **fail** after
+**302,408 ms** with exactly **1 finding / 1 harness scope**. Its named verifier correctly exited
+2; Glass did not run.
+
+Protected Save invoked a raw `window.__CF_SLICE__.api.__smokeStageStoredV4(...)` expression after
+the backgrounded phone target had entered a replacement document but before Slice/API publication.
+The hook made zero calls. The expected 46-byte fixture was never staged, and independent IndexedDB
+readback found the existing 4,305-byte primary unchanged. This is immutable Slice-harness lifecycle
+evidence, not a product save failure.
+
+The bounded local successor inventories all eight stored-v4 staging paths. It foregrounds the
+intended target, requires two consecutive ready observations from one exact document token and one
+safe persistence hold/mutation pair, then rechecks the complete authority atomically before exactly
+one hook call. A pre-invocation replacement yields an exact zero-call `unclaimed` receipt and is
+the only condition that may rebind. An invoked, rejected, malformed or transport-ambiguous outcome
+stops permanently; independent storage readback remains diagnosis and cannot mint a stage receipt.
+Browser-free verification is green at **255 files / 2,576 passed / 1 skipped** plus every
+TypeScript/art/route/specification owner, and independent final review is clear. The guarded
+successor remains uncommitted and has no browser certificate.
+
+The immutable red carriers pass gzip integrity:
+
+- `ARC4_SLICE_PR35_PROTECTED_STAGE_LIFECYCLE_RED_20260901_6238B8D.json.gz`: **2,107 bytes**,
+  SHA-256 `a9d5ac7a888685dcc67880baffcc712c04c5b29eb27ba922382e0e091c7417e5`; raw **6,821
+  bytes**, SHA-256 `6c7a84bb786b8c63d48cc9c8c883ba994d007871eb78a86647e16618a91cb05e`.
+- `ARC4_SLICE_PR35_PROTECTED_STAGE_LIFECYCLE_RED_20260901_6238B8D.log.gz`: **1,815 bytes**,
+  SHA-256 `d9d3c457b86c331fd3f2b6294f7169d96509dfe1b143d75f95afa4db3b02958e`; raw **4,286
+  bytes**, SHA-256 `1dc4bf6852dba55cdc5d2fc43a31bcab105321e51abfcc2ec934fba0efa85851`.
+
+Product/save/gameplay/art/creature/CSS behavior, thresholds, timeouts, retry and version-tolerant
+Edge-family/CDP 1.3 policy are unchanged. Exact 6238 will not be retried or relabelled. A clean
+signed successor and one fresh exact **Compendium → Slice → Glass** chain remain; no push, hosted
+attempt, merge, release or deployment is authorized.
+
+### Historical PR #35 shared-launcher terminal red and local repair boundary
 
 GitHub run `33453239307` consumed the fourth exact one-attempt/no-retry PR #35 battery for head
 `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base

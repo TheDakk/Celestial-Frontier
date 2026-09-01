@@ -1,5 +1,30 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A FIXTURE MUTATION MAY BE REBOUND ONLY BEFORE IT IS CLAIMED** (2026-08-31). A browser
+> harness must not infer mutation authority from a target handle, a prior ready observation or a
+> successful independent storage read. Foreground the intended target and require two consecutive
+> ready observations from one exact document token: complete document, published Slice/API/hook,
+> persistence ready, no scheduled convergence reload, and one exact safe authority pair
+> (`hold === null` with `mutationBlocked === false`, or `hold === 'protected-payload'` with
+> `mutationBlocked === true`). Recheck all of it atomically immediately before exactly one stateful
+> hook call. Replacement before the call must return a shaped zero-call `unclaimed` receipt; only
+> that receipt permits a new owner bind. Replacement during asynchronous settlement, a false or
+> throwing hook, malformed receipt, or transport ambiguity after dispatch is terminal and must
+> never be retried. Exact storage readback remains independent diagnosis and cannot turn a missing
+> app owner into a valid stage receipt.
+>
+> Exact clean signed source `6238b8dd3eccf6dd106787b6789ad8bb716deac9` earned this law. Its
+> Compendium predecessor passed **78/78** and named verification; unchanged-source Slice
+> `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry after **302,408 ms** with exactly
+> one harness finding. Protected Save entered a replacement phone document before
+> `window.__CF_SLICE__` publication, so the raw staging call threw before the hook ran; the
+> pre-existing 4,305-byte primary remained unchanged instead of the expected 46-byte fixture.
+> Glass correctly did not run. The bounded successor applies one common token-bound contract to all
+> eight stored-v4 staging paths and passes **255 files / 2,576 tests / 1 skipped** plus every
+> TypeScript/art/route/specification owner. Do not repair this class by changing product save
+> semantics, widening a timeout, adding a retry, treating browser point version as authority, or
+> relabelling the immutable red.
+
 > **A BROWSER PROFILE IS NOT CLEAN UNTIL ITS OWNED SHUTDOWN DOMAIN IS QUIESCENT AND ABSENCE STAYS
 > STABLE** (2026-08-31). Direct-child exit is not owned process-group/tree-request completion. Do
 > not destroy inherited stderr or delete an owned browser profile merely because the spawned PID

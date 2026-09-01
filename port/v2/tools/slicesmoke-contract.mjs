@@ -22,6 +22,153 @@ const canonicalJson = (value) => {
   return JSON.stringify(value);
 };
 
+const STORED_V4_STAGE_OWNER_SCHEMA = 'cf-v2-stored-v4-stage-owner/v1';
+const STORED_V4_STAGE_INVOCATION_SCHEMA = 'cf-v2-stored-v4-stage-invocation/v1';
+const STORED_V4_STAGE_OWNER_KEYS = Object.freeze([
+  'schema', 'documentToken', 'readyState', 'slicePresent', 'apiPresent',
+  'stageHookPresent', 'persistenceReady', 'persistenceHold', 'mutationBlocked',
+  'convergenceReloadScheduled',
+]);
+const STORED_V4_STAGE_INVOCATION_KEYS = Object.freeze([
+  'schema', 'expectedToken', 'before', 'invoked', 'hookCalls', 'result', 'error', 'after',
+]);
+
+const storedV4StageAllowedHolds = (allowedHolds) => {
+  if (!Array.isArray(allowedHolds) || allowedHolds.length === 0
+    || new Set(allowedHolds).size !== allowedHolds.length
+    || allowedHolds.some((hold) => hold !== null && hold !== 'protected-payload')) {
+    throw new TypeError('stored-v4 stage allowed holds must be unique null/protected-payload values');
+  }
+  return allowedHolds;
+};
+
+/** Classify the app-owned surface that may perform one stored-v4 fixture
+ * mutation. Pending is deliberately the only non-ready result: the browser
+ * driver may observe again, but it has not yet claimed a mutation attempt. */
+export function classifyStoredV4StageOwnerObservation(
+  observation, allowedHolds = [null, 'protected-payload'],
+) {
+  const safeHolds = storedV4StageAllowedHolds(allowedHolds);
+  const reasons = [];
+  if (!exactKeys(observation, STORED_V4_STAGE_OWNER_KEYS)) {
+    return { status: 'pending', reasons: ['owner observation shape'] };
+  }
+  if (observation.schema !== STORED_V4_STAGE_OWNER_SCHEMA) reasons.push('owner schema');
+  if (!nonEmptyString(observation.documentToken)) reasons.push('document token');
+  if (observation.readyState !== 'complete') reasons.push('document readiness');
+  if (observation.slicePresent !== true) reasons.push('Slice surface');
+  if (observation.apiPresent !== true) reasons.push('Slice API');
+  if (observation.stageHookPresent !== true) reasons.push('stored-v4 stage hook');
+  if (observation.persistenceReady !== true) reasons.push('persistence readiness');
+  if (!safeHolds.includes(observation.persistenceHold)) {
+    reasons.push(`persistence hold ${JSON.stringify(observation.persistenceHold)}`);
+  }
+  if (typeof observation.mutationBlocked !== 'boolean') reasons.push('mutation authority');
+  if (observation.persistenceHold === null
+    && observation.mutationBlocked !== false) reasons.push('writable hold authority');
+  if (observation.persistenceHold === 'protected-payload'
+    && observation.mutationBlocked !== true) reasons.push('protected hold authority');
+  if (observation.convergenceReloadScheduled !== false) reasons.push('convergence reload scheduled');
+  return { status: reasons.length === 0 ? 'ready' : 'pending', reasons };
+}
+
+/** Require two consecutive ready observations from one token. A missing,
+ * loading or convergence-scheduled observation resets the candidate. */
+export function advanceStoredV4StageOwnerStability(
+  candidateToken, observation, allowedHolds = [null, 'protected-payload'],
+) {
+  if (!(candidateToken === null || nonEmptyString(candidateToken))) {
+    throw new TypeError('stored-v4 stage candidate token must be null or a non-empty string');
+  }
+  const assessment = classifyStoredV4StageOwnerObservation(observation, allowedHolds);
+  if (assessment.status !== 'ready') {
+    return { status: 'pending', candidateToken: null, readyToken: null, assessment };
+  }
+  const documentToken = observation.documentToken;
+  return candidateToken === documentToken
+    ? { status: 'ready', candidateToken: documentToken, readyToken: documentToken, assessment }
+    : { status: 'pending', candidateToken: documentToken, readyToken: null, assessment };
+}
+
+/** Build one atomic, token-bound invocation. The expression never retries the
+ * hook: a non-ready or replaced owner returns an unclaimed zero-call receipt;
+ * replacement after the call remains an invoked terminal receipt. */
+export function buildStoredV4StageInvocationExpression(
+  raw, backup, expectedToken, allowedBeforeHolds = [null, 'protected-payload'],
+) {
+  if (!(raw === null || typeof raw === 'string')) {
+    throw new TypeError('stored-v4 stage raw must be a string or null');
+  }
+  if (!(backup === undefined || typeof backup === 'string')) {
+    throw new TypeError('stored-v4 stage backup must be a string or undefined');
+  }
+  if (raw === null && backup !== undefined) {
+    throw new TypeError('stored-v4 stage backup requires a present primary');
+  }
+  if (!nonEmptyString(expectedToken)) {
+    throw new TypeError('stored-v4 stage expected token must be a non-empty string');
+  }
+  const safeHolds = storedV4StageAllowedHolds(allowedBeforeHolds);
+  const rawLiteral = JSON.stringify(raw);
+  const backupLiteral = backup === undefined ? 'undefined' : JSON.stringify(backup);
+  const tokenLiteral = JSON.stringify(expectedToken);
+  const holdsLiteral = JSON.stringify(safeHolds);
+  return `(async()=>{const schema=${JSON.stringify(STORED_V4_STAGE_INVOCATION_SCHEMA)},expectedToken=${tokenLiteral},allowedBeforeHolds=${holdsLiteral},observe=()=>{const S=window.__CF_SLICE__,api=S?.api;let state=null;try{state=typeof api?.state==='function'?api.state():null}catch{}const persistence=state?.persistence,hasHold=!!persistence&&Object.prototype.hasOwnProperty.call(persistence,'hold');return {schema:${JSON.stringify(STORED_V4_STAGE_OWNER_SCHEMA)},documentToken:typeof S?.documentToken==='string'?S.documentToken:null,readyState:document.readyState,slicePresent:!!S,apiPresent:!!api,stageHookPresent:typeof api?.__smokeStageStoredV4==='function',persistenceReady:persistence?.ready===true,persistenceHold:hasHold?persistence.hold:'missing',mutationBlocked:typeof persistence?.mutationBlocked==='boolean'?persistence.mutationBlocked:null,convergenceReloadScheduled:typeof persistence?.convergenceReloadScheduled==='boolean'?persistence.convergenceReloadScheduled:null}},before=observe(),ready=before.documentToken===expectedToken&&before.readyState==='complete'&&before.slicePresent===true&&before.apiPresent===true&&before.stageHookPresent===true&&before.persistenceReady===true&&allowedBeforeHolds.includes(before.persistenceHold)&&((before.persistenceHold===null&&before.mutationBlocked===false)||(before.persistenceHold==='protected-payload'&&before.mutationBlocked===true))&&before.convergenceReloadScheduled===false;if(!ready)return {schema,expectedToken,before,invoked:false,hookCalls:0,result:null,error:null,after:observe()};const owner=window.__CF_SLICE__,hook=owner.api.__smokeStageStoredV4;let result=null,error=null;try{result=await hook(${rawLiteral},${backupLiteral})}catch(cause){error=String(cause?.message??cause)}return {schema,expectedToken,before,invoked:true,hookCalls:1,result:result===true,error,after:observe()}})()`;
+}
+
+/** Assess the exact one-attempt receipt. Only a zero-call unclaimed receipt
+ * permits the driver to bind a replacement owner and construct a new attempt. */
+export function assessStoredV4StageInvocation(
+  receipt, expectedToken, allowedBeforeHolds = [null, 'protected-payload'],
+) {
+  if (!nonEmptyString(expectedToken)) {
+    throw new TypeError('stored-v4 stage expected token must be a non-empty string');
+  }
+  if (!exactKeys(receipt, STORED_V4_STAGE_INVOCATION_KEYS)
+    || receipt.schema !== STORED_V4_STAGE_INVOCATION_SCHEMA
+    || receipt.expectedToken !== expectedToken) {
+    return { status: 'invalid', reasons: ['invocation receipt shape/token'] };
+  }
+  const before = classifyStoredV4StageOwnerObservation(receipt.before, allowedBeforeHolds);
+  const after = classifyStoredV4StageOwnerObservation(receipt.after, ['protected-payload']);
+  if (receipt.invoked === false && receipt.hookCalls === 0
+    && receipt.result === null && receipt.error === null) {
+    const unexpectedlyClaimable = before.status === 'ready'
+      && receipt.before.documentToken === expectedToken;
+    return unexpectedlyClaimable
+      ? { status: 'invalid', reasons: ['ready matching owner was not invoked'] }
+      : { status: 'unclaimed', reasons: before.reasons.length ? before.reasons : ['owner token replaced'] };
+  }
+  if (receipt.invoked !== true || receipt.hookCalls !== 1
+    || !(receipt.result === true || receipt.result === false)
+    || !(receipt.error === null || typeof receipt.error === 'string')) {
+    return { status: 'invalid', reasons: ['invocation cardinality/result'] };
+  }
+  const reasons = [];
+  if (before.status !== 'ready' || receipt.before.documentToken !== expectedToken) {
+    reasons.push('invocation owner');
+  }
+  if (after.status !== 'ready' || receipt.after.documentToken !== expectedToken) {
+    reasons.push('settlement owner');
+  }
+  if (receipt.result !== true) reasons.push('hook rejected');
+  if (receipt.error !== null) reasons.push('hook threw');
+  return { status: reasons.length === 0 ? 'accepted' : 'rejected', reasons };
+}
+
+/** Convert one exact assessment (or an ambiguous transport error) into the
+ * only permitted continuation. Rebinding is exclusive to a proven zero-call
+ * receipt; invoked, invalid, rejected and ambiguous outcomes stop. */
+export function storedV4StageContinuationDecision(assessment, dispatchError = null) {
+  if (!(dispatchError === null || typeof dispatchError === 'string')) {
+    throw new TypeError('stored-v4 stage dispatch error must be null or a string');
+  }
+  if (dispatchError !== null) return { kind: 'stop', reason: 'ambiguous-dispatch' };
+  if (assessment?.status === 'unclaimed') return { kind: 'rebind', reason: 'zero-call' };
+  if (assessment?.status === 'accepted') return { kind: 'accept', reason: 'exact-receipt' };
+  return { kind: 'stop', reason: assessment?.status ?? 'missing-assessment' };
+}
+
 /** Capture only the inline CSS properties owned by one negative control. A
  * control must not restore the element's complete serialized style because
  * unrelated product code may legitimately publish another inline property

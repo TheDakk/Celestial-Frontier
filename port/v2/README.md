@@ -1,34 +1,30 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-08-31 current shared Chrome-launcher cleanup repair (supersedes older “current” labels;
-> dated evidence remains immutable):** PR #35 run `33453239307` consumed its fourth exact
-> one-attempt/no-retry `test-battery` for head
-> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Every invoked stage through Compendium passed,
-> including **78/78** and the exact named verifier. The later Chrome launcher selftest stopped red on
-> a leaked/reappearing unique profile, so Slice and Glass did not run.
+> **2026-08-31 current stored-v4 fixture-lifecycle repair (supersedes older “current” labels;
+> dated evidence remains immutable):** exact clean signed launcher successor
+> `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78** plus named
+> verification, then its unchanged-source Slice `20260901020100211-91399-de1ddbd28c96` stopped
+> once/no-retry after **302,408 ms** with exactly one harness finding. A replacement phone document
+> existed before `window.__CF_SLICE__` publication, so Protected Save's raw staging call never
+> reached the hook; the pre-existing 4,305-byte primary remained unchanged and Glass did not run.
 >
-> The old launcher terminated only its direct PID, destroyed inherited stderr and removed the
-> profile once without descendant-tree quiescence. POSIX healthy close sends bounded CDP
-> `Browser.close`, owns a detached process group, permanently latches `ESRCH`, proves a
-> no-collateral sibling and escalates TERM→KILL only if still live. Windows disables `Browser.close`
-> and requires successful bounded `taskkill /T`, escalating to `/F`; pre-exited/no-success states
-> fail closed without a Job Object claim. Cleanup proves **100 ms** stable
-> profile absence, preserves primary/cleanup causality and survives a throwing `ws.close()`. The
-> workflow now runs this selftest before the long sealed exact-Edge certificate.
+> The local successor applies one common contract to all eight staging paths. Owner observations use
+> `cf-v2-stored-v4-stage-owner/v1`; invocation receipts use
+> `cf-v2-stored-v4-stage-invocation/v1`.
+> `classifyStoredV4StageOwnerObservation` and
+> `advanceStoredV4StageOwnerStability` require two consecutive ready observations from one exact
+> token, complete Slice/API/hook publication, persistence readiness, no convergence reload and an
+> exact safe hold/mutation pair. `buildStoredV4StageInvocationExpression` rechecks that state
+> atomically before one call; `assessStoredV4StageInvocation` yields
+> `accepted`/`unclaimed`/`rejected`/`invalid`, and
+> `storedV4StageContinuationDecision` permits rebind only for exact zero-call `unclaimed`.
+> Invoked or ambiguous outcomes never retry.
 >
-> Real-Edge launcher selftest and the develop profile pass at **254/254 files / 2,567 passed / 1
-> skipped**, with all TypeScript/art/override/route/specification owners green; focused current
-> authority passes **32/32** and the final combined focused suite passes **160/160**. Final
-> measurement/browser-CDP authority is
-> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
-> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`;
-> collector `ffe0494e…`, outcome `1b17df2e…` and producer `af74148c…` remain unchanged. SceneMemory's
-> calibration-required authority intentionally remains stale/quarantined until production
-> activation. Product bytes/CSS, fixed rulers and ceilings, timeouts, retry and browser-version
-> policy are unchanged. The working-tree repair awaits final diagnostics/commit and a fresh exact
-> browser chain. No push, hosted retry, merge, release, version or deploy is authorized.
-
+> The final browser-free develop profile passes **255/255 files / 2,576 passed / 1 skipped**, all
+> TypeScript/art/override/route/specification owners; final independent review is clear. This changes
+> no product/save/CSS/gameplay/creature/art behavior, threshold, timeout, retry or Edge-version
+> policy. A clean signed successor and one fresh no-retry **Compendium → Slice → Glass** chain
+> remain; no push, hosted attempt, merge, release, version or deploy is authorized.
 > **2026-08-31 historical terminal-green raw Back-action failure-cleanup admission (superseded by
 > the launcher overlay above; all hosted/local evidence remains immutable):** exact clean SSH-signed
 > source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
