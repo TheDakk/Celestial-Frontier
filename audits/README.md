@@ -51,16 +51,68 @@ Source tracing proved a harness ownership defect, not a product or browser-versi
 single command performed all eleven Settings controls twice and added **23** diagnostic persistence
 calls, roughly **42–45** commits. The bounded successor gives every real action/read its own named
 command, calls no diagnostic save, proves the real handler's immediate/debounce arm and exact +1
-receipt, binds the full raw `settings/v5:settings` row across every phase, excludes automatic
-writers, and deterministically restores answerability. Its independent manifest and negative
-controls reject swapped controls, collateral durable mutation, disjoint receipts and late writes.
-The focused boundary passes **21 files / 227 tests** and the complete browser-free develop profile
-passes **259 files / 2,667 passed / 1 skipped** plus every TypeScript/art/route/specification owner.
-Current Compendium producer authority is
+receipt, binds the exact full raw `settings/v5:settings` row—including extensions and top-level
+shape—across every phase, excludes automatic writers, and deterministically restores answerability.
+Its independent manifest and negative controls reject swapped controls, collateral durable mutation,
+stable extra keys, individually valid disjoint receipts/quiet predecessors and late writes. Exact
+SSH-signed implementation source `cf2d176862a68f090b935fb0362fe3aeb052b978` (tree
+`cc52f4901d4368f8ab98302ff4302619a3af1f98`, parent
+`2f0ded864742afd0a39bd8c3e2d53cc2550bbbda`) passes the focused **21-file / 227-test** boundary,
+all TypeScript programs, and the ordinary plus hermetic tracked-input develop profile at **259
+files / 2,667 passed / 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454**
+non-inert fields. Independent final audit is **CLEAR**. Current Compendium producer authority is
 `bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4`; the measurement
 contract, fixed ruler, every numeric ceiling, historical sample, browser-family policy, timeout and
-retry policy are unchanged. Clean tracked-input and a fresh local Compendium → Slice → Glass chain
-remain pending. These carriers and local checks grant no hosted, push, merge, release, preview or
+retry policy are unchanged.
+
+That exact clean committed source supplied one serial, unchanged-source, fail-fast/no-retry local
+develop chain on Edge `152.0.4191.53` / CDP `1.3`; the point version is provenance only. Every
+stage ran once and every named verifier passed before post-run packaging:
+
+- Compendium `20260901200818363-3312-ad36b2aac8` passed **78/78** with zero findings/blocked
+  outcomes, complete phone/desktop profiles and six byte/hash-bound PNGs in **63,844 ms**. Raw
+  report SHA-256 is `7cffdb47b306998bfd7586460892711eb530775efec0176e84ce66eb4e54c96d`;
+  producer/budget authority is
+  `bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4` /
+  `d833ac3328c6e31071589101702ad817f7d60e7abe1c0ee0e7dfe2d06c14a847`.
+- Develop Slice `20260901200939671-3633-9b419c68c44c` passed terminal certifying with zero
+  findings/scopes and ten byte/hash-bound screenshots in **360,495 ms**. Report/log SHA-256 is
+  `a610fdbff0335a5be145eeeeb88d028fd928099cc4c913a9922db2488a1cf158` /
+  `4cc787e32a42354bf87bf7d2f2c6a6c1b38fea98b6e0a92d88909367fcc1c0ae`.
+- Full-certifying Glass `20260901201556259-3986-34e7be99634e` consumed that exact Slice report
+  and log, then passed **12/12** viewport classes, **12/12** reload rows, **104/104** planned
+  controls and **36/36** Arc 4 outcomes with zero findings, instrument failures, blocked/omitted
+  controls or retries in **109,289 ms**. Report SHA-256 is
+  `89b77c333a4ae7713bb85e0155c81cdd226fba702075c3884d311712f76b126c`.
+
+The four exact cf2d176 carriers pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_WRITABLE_SETTINGS_PROBE_REPAIR_PASS_20260901_CF2D176.json.gz`:
+  **452,817 bytes**, SHA-256
+  `bd6d36bf5a4062e558df6bd98205ac278935d32443cc8387665054e0cd8580b8`; raw
+  **10,836,613 bytes**, SHA-256
+  `7cffdb47b306998bfd7586460892711eb530775efec0176e84ce66eb4e54c96d`.
+- `ARC4_SLICE_PR35_WRITABLE_SETTINGS_PROBE_REPAIR_PASS_20260901_CF2D176.json.gz`:
+  **1,961 bytes**, SHA-256
+  `c3418496cc0f0a62ba4c0aaf1f525a6dc4853ef06b78ffaf38f72b39308d84ab`; raw
+  **6,102 bytes**, SHA-256
+  `a610fdbff0335a5be145eeeeb88d028fd928099cc4c913a9922db2488a1cf158`.
+- `ARC4_SLICE_PR35_WRITABLE_SETTINGS_PROBE_REPAIR_PASS_20260901_CF2D176.log.gz`:
+  **3,292 bytes**, SHA-256
+  `39be187877b334c444e8d86386407e3d6881ae87bdbab057b60dc3658c3a3c16`; raw
+  **6,949 bytes**, SHA-256
+  `4cc787e32a42354bf87bf7d2f2c6a6c1b38fea98b6e0a92d88909367fcc1c0ae`.
+- `ARC4_GLASS_PR35_WRITABLE_SETTINGS_PROBE_REPAIR_PASS_20260901_CF2D176.json.gz`:
+  **78,764 bytes**, SHA-256
+  `d771572079da20c9688bb4c53272a47cf1b4c18c21763f978f2c65f0ddeab978`; raw
+  **898,573 bytes**, SHA-256
+  `89b77c333a4ae7713bb85e0155c81cdd226fba702075c3884d311712f76b126c`.
+
+SceneMemory remains production-only/quarantined and Recovery remains outside `develop`. The signed
+evidence/docs-only descendant contains only these four carriers and synchronized references; its
+own SHA is intentionally not self-embedded. Its final tracked-input develop preflight passes at the
+same **259 / 2,667 / 1** boundary and does not rebind or rerun cf2d176's exact browser certificate.
+Neither local certificate nor these carriers grant hosted, push, merge, release, preview or
 deployment authority.
 
 ### Historical PR #35 automatic-arrival latch repair — hosted stop and exact local certificate

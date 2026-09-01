@@ -7,14 +7,16 @@
 > handler must synchronously expose its own immediate-persist or debounce arm; the harness must not
 > call a diagnostic save to make that handler look durable. Quiesce every automatic writer first,
 > deterministically demote answerability, then require one exact revision/commit, zero tails, the
-> expected live field and the raw v5 segment on the same document. Bind the full durable row across
-> every receipt so collateral mutation cannot be absorbed as the next action's baseline, and repeat
+> expected live field and the raw v5 segment on the same document. Bind the full durable row,
+> including extensions and exact top-level shape, across every receipt so collateral mutation cannot
+> be absorbed as the next action's baseline, and repeat
 > raw/live authority through a quiet window before synchronously restoring ticker, heartbeat,
 > answerability and audio authority. Keep an independent exact manifest of selector, live field,
 > durable alias, persistence mode and restore semantics; a self-describing table can test the wrong
 > control while staying green. Negative-control missing handler arms, unrelated writers, extra or
-> missing commits, wrong raw aliases, collateral fields, disjoint receipts, late quiet-window writes,
-> swapped manifests and in-flight-heartbeat answerability. A longer timeout, retry or browser pin
+> missing commits, wrong raw aliases, collateral fields, stable extra keys, individually valid
+> disjoint receipts/quiet predecessors, late writes, swapped manifests and in-flight-heartbeat
+> answerability. A longer timeout, retry or browser pin
 > cannot repair command ownership.
 >
 > PR #35 hosted run `33542791572` earned this law on exact head
@@ -34,8 +36,18 @@
 > **1,014/1,014** routes and **454** non-inert fields. Compendium producer authority is rebound to
 > `bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4` without changing the
 > measurement contract, fixed ruler, numeric ceilings, historical samples, browser-family policy,
-> timeout or retry policy. Clean tracked-input and one fresh local Compendium → Slice → Glass chain
-> remain required; this local repair grants no hosted, push or merge authority.
+> timeout or retry policy. Exact SSH-signed source
+> `cf2d176862a68f090b935fb0362fe3aeb052b978` passed its clean tracked-input develop rehearsal.
+> Compendium `20260901200818363-3312-ad36b2aac8` then passed **78/78** and named verification;
+> unchanged-source Slice `20260901200939671-3633-9b419c68c44c` passed with zero findings/scopes
+> and named-verified report SHA-256
+> `a610fdbff0335a5be145eeeeb88d028fd928099cc4c913a9922db2488a1cf158`; Glass
+> `20260901201556259-3986-34e7be99634e` consumed that exact Slice, passed **12/12** viewports,
+> **104/104** controls and **36/36** Arc 4 outcomes with zero findings/instrument failures, and has
+> named-verified report SHA-256
+> `89b77c333a4ae7713bb85e0155c81cdd226fba702075c3884d311712f76b126c`. Every browser stage ran
+> once/no-retry on one unchanged source. SceneMemory remains production-only/quarantined and
+> Recovery remains outside `develop`; this certificate grants no hosted, push or merge authority.
 
 > **A ONE-SHOT AUTOMATIC LATCH IS CLAIMED ONLY BY THE MUTABLE OWNER'S SYNCHRONOUS CLAIM**
 > (2026-09-01). A caller-side readiness or transient-write check is advisory: the owning action may
