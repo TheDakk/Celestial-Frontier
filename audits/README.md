@@ -10,7 +10,57 @@ summary of it.
 
 ## Contents
 
-### Current exact-source 138cdee Survey-surface expression stop
+### Current exact-source c0f7215 collision Share-sequence oracle stop
+
+Exact clean SSH-signed source `c0f7215bd1ec932f6357b6cfc1e045b5644ba389` (tree
+`ecdc8623e5bad04d25dce0d3710e0d8db13d8704`, parent `138cdee0d…`) supplied one unchanged-source,
+fail-fast/no-retry local browser attempt. Browser-CDP selftest and live preflight accepted Edge
+`152.0.4191.53` / CDP `1.3`; compatible point-version changes remain provenance only.
+
+Compendium `20260901061544208-38321-e0d289a02a` passed **78/78** with zero findings or blocked
+outcomes in **64,697 ms**, six review PNGs and exact named verification before Slice. Develop Slice
+`20260901061722706-38658-429913af5517` then stopped after **337,110 ms** with exactly **1 finding /
+1 scope**, `collision-share-1`, and ten screenshots. The game correctly moved on one document token
+from revision 13 / receipt ordinal 8 / Shares 4 to revision 15 / ordinal 10 / Shares 5. Ordinal 8
+was `arc9-share-send-v1`; ordinal 9 was the conditional `arc9-progression-refresh-v1`; persistence
+finished at `arc9-progression-committed:15`, `share5` joined, best rank stayed 3 and SessionRNG
+seed/draws were unchanged. The old one-receipt oracle rejected this correct causal sequence. Glass
+correctly did not run, and c0f7215 was not retried or relabelled.
+
+The exact carriers below pass gzip integrity and deterministic `gzip -n` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_COLLISION_SHARE_SEQUENCE_PREDECESSOR_PASS_20260901_C0F7215.json.gz`:
+  **524,314 bytes**, SHA-256
+  `76b69a84cfaacbdc83c4bed13ae533c2168cb45ef0cd2664648b892a49b4dd66`; raw
+  **10,843,992 bytes**, SHA-256
+  `f958ab4af34a697a3a72ef96451cbe4fb47bf0c6ed9283a0fecc1cfa7e3905e9`.
+- `ARC4_SLICE_PR35_COLLISION_SHARE_SEQUENCE_ORACLE_RED_20260901_C0F7215.json.gz`:
+  **34,717 bytes**, SHA-256
+  `0ed2ae49138e825d0e8ddfe4fd1f83d969b2a2eddac3b5f0436550ded34a181a`; raw
+  **156,021 bytes**, SHA-256
+  `925c32e00bf8f77ac61a1052f918e321ac4e9cdc84145857d3d7c8a7a93b9fc9`.
+- `ARC4_SLICE_PR35_COLLISION_SHARE_SEQUENCE_ORACLE_RED_20260901_C0F7215.log.gz`:
+  **10,713 bytes**, SHA-256
+  `fe6841003e8cb5b0c23c8048bdb7c783420f6d8593579c871cade0cf8871cf2f`; raw
+  **67,516 bytes**, SHA-256
+  `4fd323a2a6be3427d2a8f7483edb070b93e821b691e9f12e74a0ea03d29801e4`.
+
+Current producer/budget authority is
+`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6` /
+`78269c722c0d64438c0d407e0d8df3a8a284715af35bff94ed6f7d8dbba569c2`. The bounded dirty
+successor changes no product source or Share/game behavior. Its F4 authority read takes canonical
+`catalog`/`v5:catalog` in the same read-only transaction as revision/player/receipts, then
+cross-binds catalog arrays, legacy raw and existing live counts/best/hybrids. It derives the exact
+one-or-two receipt fixed point across all six Share sites, uses c0's exact captured 26 unlock IDs,
+proves every rank threshold/factor including permanent saved-rank no-demotion and binds every helper
+result to its waiter. Focused verification is **57/57** and all TypeScript programs pass. The
+complete develop profile passes **259 files / 2,659 passed / 1 skipped**, **34** clean art sources,
+**1,014/1,014** routes and **454** non-inert
+fields. Independent final review is **APPROVED**. Signed tracked-input and fresh browser evidence
+remain pending, so these carriers bind only c0f7215's exact PASS/red boundary. No hosted attempt,
+merge, release, preview or deployment is authorized.
+
+### Historical exact-source 138cdee Survey-surface expression stop
 
 Exact clean SSH-signed source `138cdee0d3840efd899b5ebdbe974fd12d87e828` (tree
 `56d16790c414402e585b791d751fb7e173607ddf`, parent `6030035d…`) supplied one unchanged-source,

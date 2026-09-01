@@ -1,5 +1,37 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A GENERIC WRITABLE F4 SNAPSHOT IS NOT A MULTI-RECEIPT ACTION FIXED POINT** (2026-09-01).
+> A writable, idle snapshot may be an intermediate state between an action owner's receipt and a
+> queued aggregate-progression tail. Derive the exact ordered topology from the exact raw/live
+> predecessor instead of assuming one receipt or accepting the first generic writable state. Share
+> always owns one `arc9-share-send-v1`; if the fifth Share adds `share5` or the post-Share aggregate
+> score raises best rank, exactly one `arc9-progression-refresh-v1` follows. Bind the same document
+> token, raw/live predecessor, receipt/revision/ordinal/SessionRNG spans, final persistence outcome,
+> counters, achievements, rank and unrelated progression inputs. Require two consecutive exact
+> final observations; missing, extra, reordered, intermediate or overshot sequences are red. Do not
+> answer this class with a timeout, retry or product behavior change.
+>
+> Exact clean SSH-signed source `c0f7215bd1ec932f6357b6cfc1e045b5644ba389` earned this law.
+> Compendium `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry in **64,697 ms**
+> with zero findings/blocked outcomes and exact named verification. Unchanged-source Slice
+> `20260901061722706-38658-429913af5517` stopped once/no-retry after **337,110 ms** with exactly
+> one `collision-share-1` finding/scope and ten screenshots. The correct product advanced
+> revision/ordinal/Shares from **13/8/4** to **15/10/5**, appended Share then aggregate-progression
+> receipts, added `share5`, kept best rank 3 and did not advance SessionRNG. Glass correctly did not
+> run. Preserve this oracle red; it is not product-bug evidence.
+>
+> The bounded successor changes no product source. The harness reads canonical
+> `catalog`/`v5:catalog` in the same read-only transaction as revision/player/receipts,
+> cross-binds exact catalog arrays to legacy raw plus existing live counts/best/hybrids, and proves
+> the successor preserves both representations. Its c0 fixture carries the exact 26 unlock IDs,
+> its rank oracle spans every threshold/factor including permanent saved-rank no-demotion, and every
+> one of the six Share helper results is bound to the waiter arguments. Focused verification is
+> **57/57**, all TypeScript programs pass,
+> and the complete develop profile passes **259 files / 2,659 passed / 1 skipped**, **34** clean art
+> sources, **1,014/1,014** routes and **454** non-inert fields. Independent final review is
+> **APPROVED**. The clean signed candidate, tracked-input rehearsal and fresh browser chain remain
+> pending; no hosted, product, Arc, Gate or release authority follows.
+
 > **GENERATED PAGE-REALM EXPRESSIONS MUST BE EXECUTED, NOT ONLY SOURCE-CHECKED** (2026-09-01).
 > JavaScript embedded in a runner string is outside `node --check` and TypeScript's semantic view,
 > and syntactically valid text can still be a runtime category error. In particular,
@@ -27,9 +59,9 @@
 > inventory requires all three consumers while forbidding the old shape. Focused verification is
 > **2 files / 52 tests**; all three TypeScript programs pass; the full develop profile is **258
 > files / 2,629 passed / 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454**
-> non-inert fields. Independent final review is **APPROVED**. This is browser-free evidence for a
-> dirty unsigned working-tree successor, not a tracked-input rehearsal, browser certificate,
-> hosted attempt or product/Arc/Gate/release change.
+> non-inert fields. Independent final review is **APPROVED**. It became exact signed c0f7215 and its
+> Slice crossed the former expression stop before the separate Share-sequence oracle above halted
+> the chain. The earlier red remains immutable and grants no hosted/product/Arc/Gate/release change.
 
 > **BOOT KIND IS IMMUTABLE PROVENANCE, NOT A READINESS STATE TO NORMALIZE** (2026-09-01). A
 > genuinely new v5 document may remain `fresh-v5` for its entire lifetime after Training and

@@ -58,6 +58,9 @@ import {
   buildEarlyCoreFlowActionSurfaceExpression,
   assessEarlyCoreFlowActionFixedPoint,
   assessF4ActionCommitSequence,
+  arc9ShareSendSettlementExpectation,
+  assessArc9ShareSendSettlement,
+  advanceF4ActionSequenceStability,
   assessLazyOwnerOriginGate,
   assessLazyProductProducerSettlement,
   assessSingleF4ActionCommit,
@@ -1206,23 +1209,32 @@ const READ_V5_MIGRATION_EVIDENCE_EXPRESSION = `(async()=>{const open=indexedDB.o
   }finally{db.close()}})()`;
 const READ_F4_AUTHORITY_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
   const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
-  try{const tx=db.transaction(['meta','player','receipts'],'readonly'),done=new Promise((resolve,reject)=>{
+  try{const tx=db.transaction(['meta','player','catalog','receipts'],'readonly'),done=new Promise((resolve,reject)=>{
     tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('F4 read aborted'))});
     const get=(store,key)=>new Promise((resolve,reject)=>{const q=tx.objectStore(store).get(key);q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
     const getAll=(method)=>new Promise((resolve,reject)=>{const q=tx.objectStore('receipts')[method]();q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
-    const [revisionRaw,legacyRaw,playerRaw,receiptKeys,receiptRows]=await Promise.all([
-      get('meta','f3:revision'),get('meta','save'),get('player','v5:player'),getAll('getAllKeys'),getAll('getAll')]);await done;
-    let row=null,carrier=null,authority=null;try{row=JSON.parse(String(playerRaw));carrier=row?.extensions?.['f4.authority']??null;
+    const [revisionRaw,legacyRaw,playerRaw,catalogRaw,receiptKeys,receiptRows]=await Promise.all([
+      get('meta','f3:revision'),get('meta','save'),get('player','v5:player'),get('catalog','v5:catalog'),
+      getAll('getAllKeys'),getAll('getAll')]);await done;
+    let row=null,catalogRow=null,carrier=null,authority=null;try{row=JSON.parse(String(playerRaw));
+      catalogRow=JSON.parse(String(catalogRaw));carrier=row?.extensions?.['f4.authority']??null;
       authority=carrier?JSON.parse(carrier.json):null}catch{}
     return {revisionRaw:revisionRaw===undefined?null:String(revisionRaw),revision:Number(revisionRaw),
       legacyRaw:legacyRaw===undefined?null:String(legacyRaw),
       playerSchema:row?.schema??null,carrierVersion:carrier?.version??null,
+      catalogSchema:catalogRow?.schema??null,catalogSegment:catalogRow?.segment??null,
+      catalogData:catalogRow?.data??null,
       activePlayMs:authority?.activePlayMs??null,seed:authority?.sessionRng?.seed??null,
       ordinal:authority?.sessionRng?.ordinal??null,draws:authority?.sessionRng?.draws??null,
       receiptKeys:receiptKeys.map(String),receiptRows:receiptRows.map((raw)=>{try{return JSON.parse(String(raw))}catch{return null}})};
   }finally{db.close()}})()`;
 const F4_READY_STATE_PROJECTION_EXPRESSION = `((state)=>state?{
-  persistence:state.persistence,sceneResources:state.sceneResources,landing:state.landing}:null)`;
+  persistence:state.persistence,sceneResources:state.sceneResources,landing:state.landing,
+  codexCount:state.codexCount,
+  save:state.save?{stats:{shares:state.save.stats?.shares,surveys:state.save.stats?.surveys,
+    best:state.save.stats?.best,bestRank:state.save.stats?.bestRank,
+    hybrids:state.save.stats?.hybrids},
+    unlocked:state.save.unlocked}:null}:null)`;
 const READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
   const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
   try{const tx=db.transaction(['meta','player','inventory','receipts'],'readonly'),done=new Promise((resolve,reject)=>{
@@ -5139,6 +5151,13 @@ try {
   };
   /* One abandoned pagehide release may retain its fenced lease until the
      10-second TTL; allow that expiry plus one intentional convergence boot. */
+  const readDesktopF4AuthoritySnapshot = () => evalIn(
+    `(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
+      const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
+        state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
+        token:typeof S?.documentToken==='string'?S.documentToken:null};})()`,
+    { timeoutMs: 2_000 },
+  );
   let desktopF4BootReadinessControlsRun = false;
   const waitForF4Writable = async (
     label,
@@ -5150,10 +5169,7 @@ try {
     let last = null;
     while (Date.now() < deadline) {
       try {
-        const snapshot = await evalIn(`(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
-          const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
-            state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
-            token:typeof S?.documentToken==='string'?S.documentToken:null};})()`, { timeoutMs: 2_000 });
+        const snapshot = await readDesktopF4AuthoritySnapshot();
         const assessment = assessF4ReadyAuthority({
           ...snapshot, previousToken, expectedToken, allowFresh,
         });
@@ -5179,6 +5195,65 @@ try {
       await sleep(200);
     }
     throw new Error(`${label} did not acquire coupled writable F4 authority within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  /* A generic writable snapshot may be the gap between a receipt-bearing
+     owner and its queued aggregate-progression tail. Require the caller's
+     exact receipt/outcome topology twice in succession before allowing the
+     next dependent gesture. Extra, missing, or reordered commits never pass. */
+  const waitForF4ActionSequenceFixedPoint = async ({
+    label, beforeAuthority, expectation, readAuthority,
+    assessSettlement = null, timeoutMs = 15_000,
+  }) => {
+    if (typeof label !== 'string' || label.length < 1
+      || typeof readAuthority !== 'function'
+      || !expectation || !Array.isArray(expectation.expectedKinds)
+      || typeof expectation.persistencePrefix !== 'string'
+      || (assessSettlement !== null && typeof assessSettlement !== 'function')) {
+      throw new TypeError('F4 action-sequence waiter requires an exact label, reader, and expectation');
+    }
+    const deadline = Date.now() + timeoutMs;
+    let consecutiveExactSamples = 0;
+    let last = null;
+    while (Date.now() < deadline) {
+      try {
+        const snapshot = await readAuthority();
+        const readiness = assessF4ReadyAuthority({
+          ...snapshot, expectedToken: beforeAuthority?.token ?? null,
+        });
+        const assessment = readiness.ok
+          ? (assessSettlement === null
+            ? assessF4ActionCommitSequence({
+              beforeAuthority,
+              afterAuthority: snapshot,
+              state: snapshot.state,
+              expectedKinds: expectation.expectedKinds,
+              expectedPersistenceLastOutcome:
+                `${expectation.persistencePrefix}${snapshot.raw?.revision}`,
+            })
+            : assessSettlement({
+              beforeAuthority,
+              afterAuthority: snapshot,
+              state: snapshot.state,
+            }))
+          : { ok: false, reasons: readiness.reasons.map((reason) => `F4 readiness: ${reason}`) };
+        last = { snapshot, readiness, assessment };
+        const stability = advanceF4ActionSequenceStability(
+          consecutiveExactSamples,
+          assessment,
+        );
+        consecutiveExactSamples = stability.consecutiveExactSamples;
+        if (readiness.ok && stability.status === 'ready') {
+          return { status: 'ready', afterAuthority: snapshot, assessment };
+        }
+      } catch (error) {
+        consecutiveExactSamples = 0;
+        last = { context: String(error?.message || error) };
+      }
+      await sleep(50);
+    }
+    return { status: 'timeout', afterAuthority: last?.snapshot ?? null,
+      assessment: last?.assessment ?? { ok: false, reasons: ['authority observation failed'] },
+      last };
   };
   const travelCheck = `(()=>{ const button=document.querySelector('#survey [data-act=travel]');
     if(!button) return {ok:false,why:'missing'}; const b=button.getBoundingClientRect();
@@ -8664,24 +8739,29 @@ try {
   const deniedShareBeforeAuthority = await waitForF4Writable(
     'clipboard denial Share predecessor F4 authority',
   );
+  const deniedShareExpectation = arc9ShareSendSettlementExpectation(
+    deniedShareBeforeAuthority,
+  );
   const deniedShareStarted = await evalIn(`(()=>{ const nav=navigator;
     Object.defineProperty(nav,'clipboard',{configurable:true,value:{writeText:()=>Promise.reject(new Error('denied'))}});
     const button=document.querySelector('#survey [data-act="share"]');button?.click();return !!button;})()`);
   if (!deniedShareStarted) {
     failSliceWithoutCascade('CLIPBOARD DENIAL: Share action was missing before its durability boundary');
   }
-  const deniedShareAfterAuthority = await waitForF4Writable('clipboard denial Share settlement');
-  const deniedShareState = await evalIn(`window.__CF_SLICE__.api.state()`);
-  const deniedShareCommit = assessSingleF4ActionCommit({
+  const deniedShareSettlement = await waitForF4ActionSequenceFixedPoint({
+    label: 'clipboard denial Share',
     beforeAuthority: deniedShareBeforeAuthority,
-    afterAuthority: deniedShareAfterAuthority,
-    state: deniedShareState,
-    expectedKind: 'arc9-share-send-v1',
-    expectedPersistenceLastOutcome: `arc9-share-send-committed:${deniedShareAfterAuthority.raw.revision}`,
+    expectation: deniedShareExpectation,
+    readAuthority: readDesktopF4AuthoritySnapshot,
+    assessSettlement: assessArc9ShareSendSettlement,
   });
-  if (!deniedShareCommit.ok) {
-    failSliceWithoutCascade('CLIPBOARD DENIAL: Share did not settle exactly once before the success control: '
-      + JSON.stringify({ deniedShareCommit, deniedShareBeforeAuthority, deniedShareAfterAuthority }));
+  const deniedShareAfterAuthority = deniedShareSettlement.afterAuthority;
+  const deniedShareState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const deniedShareCommit = deniedShareSettlement.assessment;
+  if (deniedShareSettlement.status !== 'ready' || !deniedShareCommit.ok) {
+    failSliceWithoutCascade('CLIPBOARD DENIAL: Share did not reach its exact durable sequence before the success control: '
+      + JSON.stringify({ expectation: deniedShareExpectation, settlement: deniedShareSettlement,
+        deniedShareBeforeAuthority, deniedShareAfterAuthority, deniedShareState }));
   }
   const deniedCopy = await waitDesktopValue('clipboard denial presentation', `(()=>{const nav=navigator,
     search=document.getElementById('searchbox'),s=window.__CF_SLICE__.api.state();if(!/Copy unavailable/.test(s.toastText||''))return null;
@@ -8694,6 +8774,9 @@ try {
   const acceptedShareBeforeAuthority = await waitForF4Writable(
     'clipboard success Share predecessor F4 authority',
   );
+  const acceptedShareExpectation = arc9ShareSendSettlementExpectation(
+    acceptedShareBeforeAuthority,
+  );
   const acceptedShareStarted = await evalIn(`(()=>{window.__cfDesktopCopied='';
     Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(value)=>{
       window.__cfDesktopCopied=String(value);return Promise.resolve();}}});
@@ -8701,18 +8784,20 @@ try {
   if (!acceptedShareStarted) {
     failSliceWithoutCascade('CLIPBOARD SUCCESS: Share action was missing before its durability boundary');
   }
-  const acceptedShareAfterAuthority = await waitForF4Writable('clipboard success Share settlement');
-  const acceptedShareState = await evalIn(`window.__CF_SLICE__.api.state()`);
-  const acceptedShareCommit = assessSingleF4ActionCommit({
+  const acceptedShareSettlement = await waitForF4ActionSequenceFixedPoint({
+    label: 'clipboard success Share',
     beforeAuthority: acceptedShareBeforeAuthority,
-    afterAuthority: acceptedShareAfterAuthority,
-    state: acceptedShareState,
-    expectedKind: 'arc9-share-send-v1',
-    expectedPersistenceLastOutcome: `arc9-share-send-committed:${acceptedShareAfterAuthority.raw.revision}`,
+    expectation: acceptedShareExpectation,
+    readAuthority: readDesktopF4AuthoritySnapshot,
+    assessSettlement: assessArc9ShareSendSettlement,
   });
-  if (!acceptedShareCommit.ok) {
-    failSliceWithoutCascade('CLIPBOARD SUCCESS: Share did not settle exactly once: '
-      + JSON.stringify({ acceptedShareCommit, acceptedShareBeforeAuthority, acceptedShareAfterAuthority }));
+  const acceptedShareAfterAuthority = acceptedShareSettlement.afterAuthority;
+  const acceptedShareState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const acceptedShareCommit = acceptedShareSettlement.assessment;
+  if (acceptedShareSettlement.status !== 'ready' || !acceptedShareCommit.ok) {
+    failSliceWithoutCascade('CLIPBOARD SUCCESS: Share did not reach its exact durable sequence: '
+      + JSON.stringify({ expectation: acceptedShareExpectation, settlement: acceptedShareSettlement,
+        acceptedShareBeforeAuthority, acceptedShareAfterAuthority, acceptedShareState }));
   }
   const acceptedCopy = await waitDesktopValue('clipboard success presentation', `(()=>{const copied=window.__cfDesktopCopied||'',
     toast=window.__CF_SLICE__.api.state().toastText||'';if(!copied||!/Share code copied/.test(toast))return null;
@@ -23588,6 +23673,12 @@ try {
     }
     throw new Error(`${label} did not reach its phone outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
+  const readNavPhF4AuthoritySnapshot = () => evalNavPh(
+    `(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
+      const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
+        state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
+        token:typeof S?.documentToken==='string'?S.documentToken:null};})()`,
+  );
   let navF4WritableControlsRun = false;
   const waitNavPhF4Writable = async (
     label,
@@ -23599,10 +23690,7 @@ try {
     let last = null;
     while (Date.now() < deadline) {
       try {
-        const snapshot = await evalNavPh(`(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
-          const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
-            state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
-            token:typeof S?.documentToken==='string'?S.documentToken:null};})()`);
+        const snapshot = await readNavPhF4AuthoritySnapshot();
         const assessment = assessF4ReadyAuthority({
           ...snapshot, previousToken, expectedToken, allowFresh,
         });
@@ -24142,19 +24230,25 @@ try {
   /* A forced Share confirmation is allowed to supersede the boundary. The
      SAME blocked route must then restore its explanation, not be mistaken
      for a duplicate merely because its key is still inside the dedupe clock. */
+  const stage3ShareExpectation = arc9ShareSendSettlementExpectation(
+    stage3AddAuthority,
+  );
   const stage3ShareAction = await evalNavPh(phoneCardActionCheck('share'));
   await evalNavPh(`(()=>{window.__cfStage3Copied='';Object.defineProperty(navigator,'clipboard',{
     configurable:true,value:{writeText:(value)=>{window.__cfStage3Copied=String(value);return Promise.resolve();}}});return true;})()`);
   if (stage3ShareAction.ok) await touchNav(stage3ShareAction.x, stage3ShareAction.y);
-  const stage3ShareAuthority = stage3ShareAction.ok
-    ? await waitNavPhF4Writable('PRIME RADIUS forced Share settlement') : null;
-  const stage3ShareCommit = stage3ShareAction.ok && stage3ShareAuthority
-    ? assessSingleF4ActionCommit({
+  const stage3ShareSettlement = stage3ShareAction.ok
+    ? await waitForF4ActionSequenceFixedPoint({
+      label: 'PRIME RADIUS forced Share',
       beforeAuthority: stage3AddAuthority,
-      afterAuthority: stage3ShareAuthority,
-      expectedKind: 'arc9-share-send-v1',
-      expectedPersistenceLastOutcome: `arc9-share-send-committed:${stage3ShareAuthority.raw.revision}`,
-    }) : { ok: false, reasons: ['Share did not publish a settled authority'] };
+      expectation: stage3ShareExpectation,
+      readAuthority: readNavPhF4AuthoritySnapshot,
+      assessSettlement: assessArc9ShareSendSettlement,
+    }) : null;
+  const stage3ShareAuthority = stage3ShareSettlement?.afterAuthority ?? null;
+  const stage3ShareCommit = stage3ShareSettlement?.status === 'ready'
+    ? stage3ShareSettlement.assessment
+    : { ok: false, reasons: ['Share did not publish a settled authority'] };
   const stage3ForcedShare = await evalNavPh(`(()=>{const s=window.__CF_SLICE__.api.state(),copied=window.__cfStage3Copied||'';
     delete window.__cfStage3Copied;delete navigator.clipboard;
     return {share:${Boolean(stage3ShareAction.ok)},copied,toast:s.toastText,toastSerial:s.toastSerial};})()`);
@@ -24166,7 +24260,7 @@ try {
   if (!stage3ShareReady) {
     fails.push('PRIME RADIUS BOUNDARY TOAST INTERRUPTION: real forced Share did not supersede the first boundary: '
       + JSON.stringify({ boundary: stage3Reach, forcedShare: stage3ForcedShare,
-        stage3ShareAuthority, stage3ShareCommit }));
+        stage3ShareExpectation, stage3ShareSettlement, stage3ShareAuthority, stage3ShareCommit }));
   }
   if (stage3ShareReady) {
   await evalNavPh(`(()=>{ const s=document.getElementById('searchbox');s.value=${JSON.stringify(String(blockedShareCode))};s.focus();return true;})()`);
@@ -24424,23 +24518,28 @@ try {
     let beforeLand = beforeShare;
     let preLandAuthority = surveyAuthority;
     if (expectedChapter === 3) {
+      const shareExpectation = arc9ShareSendSettlementExpectation(surveyAuthority);
       const shareAction = await evalNavPh(phoneCardActionCheck('share'));
       await evalNavPh(`(()=>{window.__cfCharterCopied='';Object.defineProperty(navigator,'clipboard',{
         configurable:true,value:{writeText:(value)=>{window.__cfCharterCopied=String(value);return Promise.resolve();}}});return true;})()`);
       if (shareAction.ok) await touchNav(shareAction.x, shareAction.y);
-      const shareAuthority = shareAction.ok
-        ? await waitNavPhF4Writable(`${label} Share settlement`) : null;
+      const shareSettlement = shareAction.ok
+        ? await waitForF4ActionSequenceFixedPoint({
+          label: `${label} Share`,
+          beforeAuthority: surveyAuthority,
+          expectation: shareExpectation,
+          readAuthority: readNavPhF4AuthoritySnapshot,
+          assessSettlement: assessArc9ShareSendSettlement,
+        }) : null;
+      const shareAuthority = shareSettlement?.afterAuthority ?? null;
       const adjacentShare = await evalNavPh(`(()=>{const state=window.__CF_SLICE__.api.state(),copied=window.__cfCharterCopied||'';
         delete window.__cfCharterCopied;delete navigator.clipboard;return {copied,state};})()`);
-      const shareCommitAssessment = shareAction.ok && shareAuthority
-        ? assessSingleF4ActionCommit({
-          beforeAuthority: surveyAuthority,
-          afterAuthority: shareAuthority,
-          expectedKind: 'arc9-share-send-v1',
-          expectedPersistenceLastOutcome: `arc9-share-send-committed:${shareAuthority.raw.revision}`,
-        }) : { ok: false, reasons: ['Share did not publish a settled authority'] };
-      const expectedShareUnlocks = [...beforeShare.save.unlocked, 'share'];
+      const shareCommitAssessment = shareSettlement?.status === 'ready'
+        ? shareSettlement.assessment
+        : { ok: false, reasons: ['Share did not publish a settled authority'] };
+      const expectedShareUnlocks = shareExpectation.nextUnlockedIds;
       if (!shareAction.ok || !adjacentShare.copied
+        || shareSettlement?.status !== 'ready'
         || !shareCommitAssessment.ok
         || shareAuthority?.token !== charterDocumentToken
         || !/Share code copied/i.test(adjacentShare.state.toastText)
@@ -24452,8 +24551,8 @@ try {
         || adjacentShare.state.save.stats.shares !== beforeShare.save.stats.shares + 1
         || JSON.stringify(adjacentShare.state.save.unlocked) !== JSON.stringify(expectedShareUnlocks)) {
         fails.push(`${label}: real Share did not establish the adjacent-toast completion control: `
-          + JSON.stringify({ beforeShare, shareAction, shareAuthority, shareCommitAssessment,
-            adjacentShare }));
+          + JSON.stringify({ beforeShare, shareExpectation, shareAction, shareSettlement,
+            shareAuthority, shareCommitAssessment, adjacentShare }));
         return;
       }
       beforeLand = adjacentShare.state;
@@ -26689,6 +26788,12 @@ try {
     error.last = last;
     throw error;
   };
+  const readControlF4AuthoritySnapshot = (session) => evalF4Control(
+    session,
+    `(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
+      const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
+        state,raw,token:S?.documentToken??null};})()`,
+  );
   const waitControlF4Writable = async (
     session,
     label,
@@ -26702,22 +26807,20 @@ try {
   }).ok);
   const waitForControlCommitSequence = async ({
     session, label, beforeAuthority, expectedKinds, persistencePrefix,
+    assessSettlement = null,
   }) => {
-    const afterAuthority = await waitControlF4Writable(session, `${label} settlement`, {
-      expectedToken: beforeAuthority.token,
-    });
-    const assessment = assessF4ActionCommitSequence({
+    const settlement = await waitForF4ActionSequenceFixedPoint({
+      label,
       beforeAuthority,
-      afterAuthority,
-      state: afterAuthority.state,
-      expectedKinds,
-      expectedPersistenceLastOutcome: `${persistencePrefix}${afterAuthority.raw.revision}`,
+      expectation: { expectedKinds, persistencePrefix },
+      readAuthority: () => readControlF4AuthoritySnapshot(session),
+      assessSettlement,
     });
-    if (!assessment.ok) {
+    if (settlement.status !== 'ready' || !settlement.assessment.ok) {
       failSliceWithoutCascade(`${label.toUpperCase()}: action sequence did not reach its exact same-document F4 fixed point: `
-        + JSON.stringify({ assessment, beforeAuthority, afterAuthority }));
+        + JSON.stringify({ expectedKinds, persistencePrefix, settlement, beforeAuthority }));
     }
-    return afterAuthority;
+    return settlement.afterAuthority;
   };
   const nativeControlClick = async (session, selector) => {
     const target = await evalF4Control(session, `(async()=>{window.__cfOutcomePointerAbort?.abort();
@@ -26848,14 +26951,18 @@ try {
     await evalF4Control(collisionTarget.session,
       `sessionStorage.removeItem('cf_slice_collision_clipboard')`);
     const shareBeforeAuthority = searchAuthority;
+    const shareExpectation = arc9ShareSendSettlementExpectation(
+      shareBeforeAuthority,
+    );
     const sharePress = await nativeControlClick(collisionTarget.session, '#survey [data-act="share"]');
     const shareCode = await takeCollisionClipboard(collisionTarget.session, `collision Share ${index}`);
     const shareAuthority = await waitForControlCommitSequence({
       session: collisionTarget.session,
       label: `collision Share ${index}`,
       beforeAuthority: shareBeforeAuthority,
-      expectedKinds: ['arc9-share-send-v1'],
-      persistencePrefix: 'arc9-share-send-committed:',
+      expectedKinds: shareExpectation.expectedKinds,
+      persistencePrefix: shareExpectation.persistencePrefix,
+      assessSettlement: assessArc9ShareSendSettlement,
     });
     const addBeforeAuthority = shareAuthority;
     const addPress = await nativeControlClick(collisionTarget.session, '#survey [data-act="add"]');
@@ -27002,14 +27109,18 @@ try {
     await evalF4Control(collisionTarget.session,
       `sessionStorage.removeItem('cf_slice_collision_clipboard')`);
     const shareBeforeAuthority = searchAuthority;
+    const shareExpectation = arc9ShareSendSettlementExpectation(
+      shareBeforeAuthority,
+    );
     const sharePress = await nativeControlClick(collisionTarget.session, '#survey [data-act="share"]');
     const shareCode = await takeCollisionClipboard(collisionTarget.session, `collision reload Share ${index}`);
     await waitForControlCommitSequence({
       session: collisionTarget.session,
       label: `collision reload Share ${index}`,
       beforeAuthority: shareBeforeAuthority,
-      expectedKinds: ['arc9-share-send-v1'],
-      persistencePrefix: 'arc9-share-send-committed:',
+      expectedKinds: shareExpectation.expectedKinds,
+      persistencePrefix: shareExpectation.persistencePrefix,
+      assessSettlement: assessArc9ShareSendSettlement,
     });
     collisionReloadSearches.push({ searchReceipt, state, sharePointer: sharePress.pointer, shareCode });
   }

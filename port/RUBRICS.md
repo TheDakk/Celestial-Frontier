@@ -1,22 +1,25 @@
 # Acceptance rubrics — what "done" means, per gate
 
 > **2026-09-01 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** exact signed
-> 138cdee passed tracked-input develop preflight at **258 files / 2,628 passed / 1 skipped**,
-> browser-CDP selftest and live preflight. Compendium `20260901055749358-33363-aa39fce457` passed
-> **78/78** once/no-retry in **64,730 ms** with named verification. Exact-source Slice
-> `20260901055920314-33714-d47f27b9497a` then stopped once/no-retry after **14,746 ms** with **1
-> harness finding / 1 scope** and two screenshots. Three early-core-flow surface helpers serving
-> eleven callsites evaluated their action IIFE and then called the returned object; no product throw
-> occurred. Glass correctly did not run, and 138cdee was not retried.
+> c0f7215 crossed the repaired Survey surface-expression boundary. Compendium
+> `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry in **64,697 ms** with
+> zero findings/blocked outcomes, six review PNGs and named verification. Exact-source Slice
+> `20260901061722706-38658-429913af5517` then stopped once/no-retry after **337,110 ms** with
+> exactly **1 finding / 1 scope**, `collision-share-1`, and ten screenshots. Correct product state
+> used one Share receipt plus one conditional aggregate-progression receipt; the one-receipt oracle
+> was false red. Glass correctly did not run.
 >
-> The dirty testing-only successor centralizes the object-valued surface expression in one shared
-> builder and executable/source-inventory control. Focused **2 files / 52 tests**, all TypeScript
-> programs and final develop **258 files / 2,629 passed / 1 skipped** are green, with **34** clean art
-> sources, **1,014/1,014** routes, **454** specification fields and independent review **APPROVED**.
-> It is unsigned; committed-source tracked-input and browser verification remain pending. This
-> changes no rubric row, `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]` status or whole Gate. Five hosted attempts
-> remain consumed, every label is absent, and no new hosted, merge, release or deploy authority
-> exists.
+> The dirty harness-only successor reads canonical catalog state in the same read-only transaction
+> as revision/player/receipts, cross-binds catalog/legacy/live predecessor and preserved successor,
+> and derives the exact one-or-two receipt topology. C0's captured 26 unlock IDs, every rank
+> threshold/factor, permanent saved-rank no-demotion and every one of the six Share helper-to-waiter
+> bindings are controlled. Focused **57/57** and all TypeScript programs pass. Complete develop is
+> green at **259 files / 2,659 passed / 1 skipped**, with **34** clean art sources,
+> **1,014/1,014** routes, **454** non-inert fields and
+> independent review **APPROVED**. Clean signing/tracked-input and fresh browser verification
+> remain pending. No product source, rubric row, `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]`
+> status or whole Gate changes. Five hosted attempts remain consumed, every label is absent, and no
+> new hosted, merge, release or deploy authority exists.
 
 > **Historical local SceneMemory admission boundary (2026-08-30; superseded by the current overlay):**
 > exact signed clean source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied three
@@ -96,6 +99,18 @@
 > Its browser-free acceptance also binds Atlas Travel's exact one commit, single/sequence runtime
 > schema and before/after live↔raw SessionRNG parity, retained-fault rejection, and paired stable-but-
 > wrong current live/raw revision/seed/ordinal/draw controls.
+>
+> Current Share acceptance treats Share's owning action and any aggregate-progression follow-up as
+> one causal sequence, not one transaction. The F4 authority read must obtain canonical
+> `catalog`/`v5:catalog` in the same read-only transaction as revision/player/receipts and
+> cross-bind its exact codex/surveyed/gals arrays to legacy raw plus existing live counts/best/
+> hybrids. Exactly one `arc9-share-send-v1` is always required; exactly one following
+> `arc9-progression-refresh-v1` is required only when `share5` or a higher best rank is newly
+> projected. Same-token spans, preserved unrelated inputs and two consecutive final samples apply
+> at all six Share sites. Missing, extra, reordered, intermediate or overshot sequences are red.
+> This harness-only criterion is browser-free green at 57/57 and inside the green complete develop
+> profile (259 files / 2,659 passed / 1 skipped); clean signing/tracked-input and the fresh
+> unchanged-source browser chain remain pending. It changes no whole-Gate or `[HUMAN]` status.
 >
 > Current-local resource acceptance additionally requires: route-invalid Survey destroys its DOM,
 > controller model and listeners; every Compendium/Capture/Combat/ecology controller has symmetric

@@ -1,23 +1,23 @@
 # Celestial Frontier — UI / Presentation System
 
 > **2026-09-01 current Slice presentation-evidence boundary (supersedes older “current” labels;
-> presentation semantics remain as documented):** exact signed 138cdee passed tracked-input
-> develop preflight at **258 files / 2,628 passed / 1 skipped**, browser-CDP selftest, live preflight
-> and Compendium **78/78** as `20260901055749358-33363-aa39fce457` in **64,730 ms**, with named
-> verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped once/no-
-> retry after **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Its three
-> early-core-flow surface helpers, serving eleven callsites, evaluated the action IIFE and then
-> called the returned object. This was a harness-only exception with no product throw; Glass did
-> not run and no new presentation certificate exists.
+> presentation semantics remain as documented):** exact signed c0f7215 crossed the repaired Survey
+> expression boundary. Compendium `20260901061544208-38321-e0d289a02a` passed **78/78**
+> once/no-retry in **64,697 ms** with zero findings/blocked outcomes, six review PNGs and named
+> verification. Exact-source Slice `20260901061722706-38658-429913af5517` then stopped after
+> **337,110 ms** with exactly **1 finding / 1 scope**, `collision-share-1`, and ten screenshots.
+> The product's correct one-Share-plus-conditional-progression sequence exposed a one-receipt
+> harness oracle; Glass did not run and no new presentation certificate exists.
 >
-> The dirty testing-only successor centralizes the object-valued surface expression in one shared
-> builder and executable/source-inventory control. Focused **2 files / 52 tests**, all TypeScript
-> programs and final develop **258 files / 2,629 passed / 1 skipped** are green, with **34** clean
-> art sources, **1,014/1,014** routes, **454** specification fields and independent review
-> **APPROVED**. It is unsigned; committed-source tracked-input and browser verification remain
-> pending. No copy, markup, CSS, focus/scroll, geometry, fixed ruler, timeout, retry or browser-
-> version policy changed; five hosted attempts remain consumed and no hosted attempt, preview,
-> merge, release, version bump or deploy is authorized.
+> The dirty harness-only successor changes no product source or presentation. It same-transaction
+> binds canonical catalog, revision/player/receipts, legacy raw and existing live state, then
+> derives the exact one-or-two receipt shape across all six Share sites. Focused **57/57**, all
+> TypeScript programs and complete develop **259 files / 2,659 passed / 1 skipped** are green, with
+> **34** clean art sources, **1,014/1,014** routes, **454** fields and independent review
+> **APPROVED**. Clean signed tracked-input and fresh browser verification remain pending. No copy,
+> markup, CSS, focus/scroll, geometry, fixed ruler, timeout, retry or browser-version policy
+> changed; five hosted attempts remain consumed and no hosted attempt, preview, merge, release,
+> version bump or deploy is authorized.
 
 > **2026-08-31 historical terminal-green Compendium Back presentation boundary (superseded by the
 > current presentation-evidence overlay above; exact evidence remains immutable):** exact clean

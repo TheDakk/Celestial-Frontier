@@ -1,23 +1,26 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **2026-09-01 current Survey-surface expression admission overlay (canonical handoff in
-> `../ROADMAP.md`):** exact signed 138cdee passed tracked-input develop preflight at **258 files /
-> 2,628 passed / 1 skipped**, browser-CDP selftest and live preflight. Compendium
-> `20260901055749358-33363-aa39fce457` passed **78/78** once/no-retry in **64,730 ms** with named
-> verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped once/no-
-> retry after **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Three shared
-> early-core-flow helpers serving eleven callsites evaluated their action IIFE and then called the
-> returned object. This was a harness-only exception with no product throw; Glass did not run and
-> 138cdee was not retried.
+> **2026-09-01 current collision Share/progression admission overlay (canonical handoff in
+> `../ROADMAP.md`):** exact signed c0f7215 crossed the repaired Survey expression boundary.
+> Compendium `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry in **64,697
+> ms** with zero findings/blocked outcomes, six review PNGs and named verification. Exact-source
+> Slice `20260901061722706-38658-429913af5517` then stopped once/no-retry after **337,110 ms**
+> with exactly **1 finding / 1 scope**, `collision-share-1`, and ten screenshots. Correct product
+> state used one Share receipt followed by one conditional aggregate-progression receipt; the old
+> one-receipt oracle was false red. Glass did not run.
 >
-> The dirty testing-only successor centralizes the object-valued surface expression in one shared
-> builder and executable/source-inventory control. Focused **2 files / 52 tests**, all TypeScript
-> programs and final develop **258 files / 2,629 passed / 1 skipped** are green, with **34** clean art
-> sources, **1,014/1,014** routes, **454** specification fields and independent review **APPROVED**.
-> It is unsigned; committed-source tracked-input and browser verification remain pending. No
-> roadmap feature, product/save/gameplay/art/creature structure, EXEC history, Arc/Gate status or
-> HUMAN status changed. Five hosted attempts remain consumed, every label is absent, and no new
-> push, hosted attempt, merge, release, preview or deploy is authorized.
+> The dirty harness-only successor changes no product source. It reads canonical catalog state in
+> the same read-only transaction as revision/player/receipts, cross-binds exact catalog, legacy raw
+> and existing live state, and derives the exact one-or-two receipt topology. C0's captured 26
+> unlock IDs, every rank threshold/factor, permanent saved-rank no-demotion and all six Share
+> helper-to-waiter bindings are controlled. Focused **57/57** and all TypeScript programs pass.
+> Complete develop is green at **259 files / 2,659 passed / 1 skipped**, with **34** clean art
+> sources, **1,014/1,014** routes and **454**
+> specification fields and independent review **APPROVED**. Clean signed tracked-input and fresh
+> browser verification remain pending. No roadmap feature, product/save/gameplay/art/creature
+> structure, EXEC history, Arc/Gate or HUMAN status changed. Five hosted attempts remain consumed,
+> every label is absent, and no new push, hosted attempt, merge, release, preview or deploy is
+> authorized.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above while
 > preserving its dated evidence):** exact clean SSH-signed source
@@ -2617,8 +2620,8 @@ Settings also exposes identity-only Explorer self-rename through the shipped san
 without retry or optimistic publication, and durable ambiguity reload-converges. This path changes
 only `explorerName` and deliberately does not grant the discovery-name `namer` achievement.
 
-After each receipt-bearing product owner settles, one coalesced follow-up may append newly proved
-aggregate ids and raise the historical best-rank mirror through the generic F4 deterministic
+After each receipt-bearing product owner settles, one separate coalesced follow-up may append
+newly proved aggregate ids and raise the historical best-rank mirror through the generic F4 deterministic
 product transaction: existing event/unknown ids preserved, one receipt, one tab-lease/revision CAS,
 no retry or optimistic publication, and exact committed-save fixed-point verification. Main
 publishes only the detached canonical `unlocked` list and `stats.bestRank`. After exact committed
@@ -2631,9 +2634,13 @@ refusal are silent; ceremonies evaluate no rule, write no save and grant no rewa
 Twenty-three distinct event rows now share their exact true transaction owner: canonical Earth landing →
 `home`; world and companion Rename → `namer`; successful Legendary-plus-pair Breed →
 `bredlegend`; verified first settlement → `settle1`; player combat ending at 1–19 HP → `brink`;
-valid-world Share → `share`; and accepted CF1 Follow → `wayfarer`. A valid-world Share first commits
-its Shares counter and `share` in one receipt/CAS, independently of the later clipboard result. A
-submitted CF1 earns Follow only when the source-proven, reach-authorized route is accepted; the
+valid-world Share → `share`; and accepted CF1 Follow → `wayfarer`. A valid-world Share owns
+exactly one `arc9-share-send-v1` receipt/CAS that commits its Shares counter and `share`,
+independently of the later clipboard result. After that owner settles, the aggregate owner may
+append exactly one separate `arc9-progression-refresh-v1` receipt when fifth Share projects
+`share5` or the post-Share aggregate score raises best rank; otherwise there is no tail. This is
+one causal action sequence, not one transaction. A submitted CF1 earns Follow only when the
+source-proven, reach-authorized route is accepted; the
 route, Jumps counter, galaxy visit, `wayfarer`, and any proved `quasar`/`dwarfg` join commit together,
 while ordinary navigation earns none of Follow's records. Canonical Survey owns twelve observation
 events; ordinary Search/Atlas/direct arrival and wormhole traversal own `quasar`, `dwarfg`, and

@@ -782,9 +782,13 @@ First catalogue of tier ≥ 5 → **`tier − 3`** ☄ (Legendary=5→+2, up thr
   owns `namer` for a committed discovery-name action. `arc5-rename-action.ts` owns the same id for
   one exact companion name; `arc5-breed-action.ts` owns `bredlegend` only on the proved successful
   Legendary-pair successor; and the Arc 6 combat action/settlement own `settle1` and the exact
-  1–19-HP `brink` case. `arc9-sharing-action.ts` owns `share` only for a valid-world native Share and
-  `wayfarer` only for an already-accepted CF1 Follow route, joining each compatibility counter in the
-  same receipt/CAS. `arc9-survey-action.ts` derives twelve observation joins from the registered CF1
+  1–19-HP `brink` case. `arc9-sharing-action.ts` owns `share` plus `stats.shares` in one
+  `arc9-share-send-v1` receipt for a valid-world native Share, and owns `wayfarer` only for an
+  already-accepted CF1 Follow route. `share5` is an aggregate projection from
+  `sharedCodeCount >= 5`, not a second event owned by the Share action.
+  `arc9-progression-action.ts` owns the optional following `arc9-progression-refresh-v1` receipt
+  that adds `share5` and/or raises best rank after the Share owner settles. `arc9-survey-action.ts`
+  derives twelve observation joins from the registered CF1
   hierarchy. `arc9-travel-action.ts` derives galaxy visit plus `quasar`/`dwarfg` on arrival and
   `worm` on proved wormhole traversal; accepted Follow folds that arrival successor into its existing
   sharing receipt rather than opening a second write. `arc9-atlas-favorite-action.ts` owns only the

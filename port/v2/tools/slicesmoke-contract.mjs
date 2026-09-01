@@ -3519,6 +3519,182 @@ export function assessF4ActionCommitSequence({
   return { ok: reasons.length === 0, reasons };
 }
 
+const ARC9_SHARE_RANK_THRESHOLDS = Object.freeze([
+  0, 30, 90, 220, 460, 900, 1_700, 3_000, 5_200, 8_200,
+]);
+
+const arc9ShareRankIndex = (score) => {
+  let index = 0;
+  for (let candidate = 1; candidate < ARC9_SHARE_RANK_THRESHOLDS.length; candidate++) {
+    if (score < ARC9_SHARE_RANK_THRESHOLDS[candidate]) break;
+    index = candidate;
+  }
+  return index;
+};
+
+const arc9SharePredecessorFacts = (beforeAuthority) => {
+  const state = beforeAuthority?.state;
+  const liveStats = state?.save?.stats;
+  const liveUnlocked = state?.save?.unlocked;
+  const legacy = parsedRecord(beforeAuthority?.raw?.legacyRaw);
+  const catalog = beforeAuthority?.raw?.catalogData;
+  const ever = legacy?.ever;
+  const unlocked = legacy?.ach;
+  const denseStrings = (value, maximum) => Array.isArray(value)
+    && value.length <= maximum
+    && value.every((entry) => nonEmptyString(entry))
+    && new Set(value).size === value.length;
+  const boundedArray = (value, maximum) => Array.isArray(value) && value.length <= maximum;
+  /* Legacy surveyed/galaxy ledgers import through Set without filtering.
+     A dense, duplicate-free serialized ledger therefore has the same count
+     after sanitization; unlike Compendium rows, no hidden row predicate can
+     reduce it. The live Compendium and survey mirrors remain bound below. */
+  const denseUniqueArray = (value, maximum) => boundedArray(value, maximum)
+    && value.every((_entry, index) => Object.hasOwn(value, index))
+    && new Set(value).size === value.length;
+  if (legacy?.v !== 4 || !ever || typeof ever !== 'object' || Array.isArray(ever)
+    || !safeInt(legacy.shares) || legacy.shares >= 1_000_000_000
+    || !safeInt(legacy.br) || legacy.br >= ARC9_SHARE_RANK_THRESHOLDS.length
+    || !safeInt(ever.best) || ever.best > 14
+    || !safeInt(ever.hybrids) || ever.hybrids > 1_000_000_000
+    || !denseStrings(unlocked, 146)
+    || !boundedArray(legacy.codex, 1_500)
+    || !denseUniqueArray(legacy.surveyed, 60_000)
+    || !denseUniqueArray(legacy.gals, 20_000)
+    || beforeAuthority?.raw?.catalogSchema !== 5
+    || beforeAuthority?.raw?.catalogSegment !== 'catalog'
+    || !catalog || typeof catalog !== 'object' || Array.isArray(catalog)
+    || !exactJson(catalog.codex, legacy.codex)
+    || !exactJson(catalog.surveyed, legacy.surveyed)
+    || !exactJson(catalog.gals, legacy.gals)
+    || state?.codexCount !== legacy.codex.length
+    || liveStats?.surveys !== legacy.surveyed.length
+    || liveStats?.shares !== legacy.shares
+    || liveStats?.bestRank !== legacy.br
+    || liveStats?.best !== ever.best
+    || liveStats?.hybrids !== ever.hybrids
+    || !exactJson(liveUnlocked, unlocked)) {
+    throw new TypeError('Arc 9 Share settlement requires one exact raw/live predecessor projection');
+  }
+  return Object.freeze({
+    shares: legacy.shares,
+    bestRank: legacy.br,
+    bestRawRarityTier: ever.best,
+    hybridCount: ever.hybrids,
+    cataloguedSpeciesCount: legacy.codex.length,
+    surveyedLivingWorldCount: legacy.surveyed.length,
+    galaxyCount: legacy.gals.length,
+    unlockedIds: Object.freeze([...unlocked]),
+    legacy,
+  });
+};
+
+/* Share always owns its first durable receipt. Crossing Broadcaster or an
+   Explorer-rank boundary queues one aggregate-progression receipt after that
+   owner settles. Derive the exact bounded tail from the raw/live predecessor,
+   never from whichever intermediate/final authority a browser poll happens
+   to observe. */
+export function arc9ShareSendSettlementExpectation(beforeAuthority) {
+  const facts = arc9SharePredecessorFacts(beforeAuthority);
+  const counterAfter = facts.shares + 1;
+  const shareAchievementAdded = !facts.unlockedIds.includes('share');
+  const share5AchievementAdded = counterAfter >= 5
+    && !facts.unlockedIds.includes('share5');
+  const nextUnlockedIds = Object.freeze([
+    ...facts.unlockedIds,
+    ...(shareAchievementAdded ? ['share'] : []),
+    ...(share5AchievementAdded ? ['share5'] : []),
+  ]);
+  const scoreAfter = facts.surveyedLivingWorldCount * 4
+    + facts.cataloguedSpeciesCount * 2
+    + facts.bestRawRarityTier * 12
+    + nextUnlockedIds.length * 6
+    + facts.hybridCount
+    + facts.galaxyCount * 3;
+  const nextBestRankIndex = Math.max(facts.bestRank, arc9ShareRankIndex(scoreAfter));
+  const progressionTailRequired = share5AchievementAdded
+    || nextBestRankIndex > facts.bestRank;
+  return Object.freeze({
+    counterBefore: facts.shares,
+    counterAfter,
+    priorUnlockedIds: facts.unlockedIds,
+    nextUnlockedIds,
+    priorBestRankIndex: facts.bestRank,
+    nextBestRankIndex,
+    shareAchievementAdded,
+    share5AchievementAdded,
+    progressionTailRequired,
+    expectedKinds: Object.freeze(progressionTailRequired
+      ? ['arc9-share-send-v1', 'arc9-progression-refresh-v1']
+      : ['arc9-share-send-v1']),
+    persistencePrefix: progressionTailRequired
+      ? 'arc9-progression-committed:' : 'arc9-share-send-committed:',
+  });
+}
+
+export function assessArc9ShareSendSettlement({
+  beforeAuthority, afterAuthority, state,
+} = {}) {
+  const predecessor = arc9SharePredecessorFacts(beforeAuthority);
+  const expectation = arc9ShareSendSettlementExpectation(beforeAuthority);
+  const sequence = assessF4ActionCommitSequence({
+    beforeAuthority,
+    afterAuthority,
+    state,
+    expectedKinds: expectation.expectedKinds,
+    expectedPersistenceLastOutcome:
+      `${expectation.persistencePrefix}${afterAuthority?.raw?.revision}`,
+  });
+  const reasons = sequence.reasons.map((reason) => `exact Share sequence: ${reason}`);
+  const add = (reason, condition) => { if (!condition) reasons.push(reason); };
+  const afterLegacy = parsedRecord(afterAuthority?.raw?.legacyRaw);
+  add('exact Share counter successor',
+    state?.save?.stats?.shares === expectation.counterAfter
+      && afterLegacy?.shares === expectation.counterAfter);
+  add('exact Share achievement successor',
+    exactJson(state?.save?.unlocked, expectation.nextUnlockedIds)
+      && exactJson(afterLegacy?.ach, expectation.nextUnlockedIds));
+  add('exact Share rank successor',
+    state?.save?.stats?.bestRank === expectation.nextBestRankIndex
+      && afterLegacy?.br === expectation.nextBestRankIndex);
+  const beforeLegacy = parsedRecord(beforeAuthority?.raw?.legacyRaw);
+  const beforeCatalog = beforeAuthority?.raw?.catalogData;
+  const afterCatalog = afterAuthority?.raw?.catalogData;
+  add('Share-unrelated durable rank inputs unchanged',
+    exactJson(afterLegacy?.codex, beforeLegacy?.codex)
+      && exactJson(afterLegacy?.surveyed, beforeLegacy?.surveyed)
+      && exactJson(afterLegacy?.gals, beforeLegacy?.gals)
+      && afterLegacy?.ever?.best === beforeLegacy?.ever?.best
+      && afterLegacy?.ever?.hybrids === beforeLegacy?.ever?.hybrids
+      && afterAuthority?.raw?.catalogSchema === 5
+      && afterAuthority?.raw?.catalogSegment === 'catalog'
+      && exactJson(afterCatalog?.codex, beforeCatalog?.codex)
+      && exactJson(afterCatalog?.surveyed, beforeCatalog?.surveyed)
+      && exactJson(afterCatalog?.gals, beforeCatalog?.gals)
+      && exactJson(afterCatalog?.codex, afterLegacy?.codex)
+      && exactJson(afterCatalog?.surveyed, afterLegacy?.surveyed)
+      && exactJson(afterCatalog?.gals, afterLegacy?.gals));
+  add('Share-unrelated live rank inputs unchanged',
+    state?.codexCount === predecessor.cataloguedSpeciesCount
+      && state?.save?.stats?.surveys === predecessor.surveyedLivingWorldCount
+      && state?.save?.stats?.best === predecessor.bestRawRarityTier
+      && state?.save?.stats?.hybrids === predecessor.hybridCount);
+  return { ok: reasons.length === 0, reasons };
+}
+
+export function advanceF4ActionSequenceStability(consecutiveExactSamples, assessment) {
+  if (!safeInt(consecutiveExactSamples) || consecutiveExactSamples > 2
+    || !assessment || typeof assessment.ok !== 'boolean'
+    || !Array.isArray(assessment.reasons)) {
+    throw new TypeError('F4 action-sequence stability requires a bounded count and assessment');
+  }
+  const next = assessment.ok ? consecutiveExactSamples + 1 : 0;
+  return Object.freeze({
+    status: next >= 2 ? 'ready' : 'pending',
+    consecutiveExactSamples: Math.min(next, 2),
+  });
+}
+
 /* A Land press is not settled merely because the surface painted. Bind the
    exact append-only receipt tail, F4 revision/SessionRNG span, live runtime,
    and both product and aggregate outcome publications before any dependent

@@ -71,8 +71,12 @@
 > name and reload-converges instead of applying twice. This identity-only action deliberately does
 > not grant discovery achievement `namer`, whose current owners remain world and companion Rename.
 >
-> Native **Share** on an exact valid world now commits `stats.shares` and the one-time `share` event
-> before the independent clipboard copy/fallback result. A submitted CF1 **Follow** commits only after
+> Native **Share** on an exact valid world owns exactly one `arc9-share-send-v1` receipt/CAS that
+> increments `stats.shares` and adds the one-time `share` event before the independent clipboard
+> copy/fallback result. After that owner settles, aggregate progression may append exactly one
+> separate `arc9-progression-refresh-v1` receipt: fifth Share projects `share5`, and a post-Share
+> aggregate score crossing raises best rank. Otherwise no tail is written. Together these receipts
+> form one causal action sequence, not one transaction. A submitted CF1 **Follow** commits only after
 > Search has source-proven and reach-authorized the route. Direct Travel owns its accepted route,
 > arrival, galaxy visit and any source-proved galaxy-kind event; Follow owns that arrival aggregate
 > plus `stats.jumps` and one-time `wayfarer` in its single transaction. Direct navigation still
@@ -82,8 +86,8 @@
 > refused or otherwise does not join that progression, the world-name settlement queues exactly one
 > aggregate catch-up afterward. An ordinary save checkpoint cannot interpose: the composite reserves
 > the handoff, coalesces ordinary attempts, and re-arms one after the route/catch-up enqueue. Each
-> action keeps
-> one F4 receipt/CAS, no retry and no optimistic counter/route publication; refusal, stale authority
+> owning action keeps one F4 receipt/CAS; any aggregate-progression tail remains a separate receipt.
+> There is no retry and no optimistic counter/route publication; refusal, stale authority
 > and failed writes count nothing, while durable ambiguity reload-converges instead of applying
 > twice. The fixed browser timeout remains diagnostic. CF1 encoding, strict source verification,
 > reach and route policy remain unchanged.

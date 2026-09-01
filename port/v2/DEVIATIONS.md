@@ -1,25 +1,26 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **2026-09-01 current Slice Survey-surface instrument-only deviation (canonical handoff in
-> `../../ROADMAP.md`):** exact signed 138cdee passed tracked-input develop preflight at **258 files /
-> 2,628 passed / 1 skipped**, browser-CDP selftest and live preflight. Compendium
-> `20260901055749358-33363-aa39fce457` passed **78/78** once/no-retry in **64,730 ms** with named
-> verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped once/no-
-> retry after **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Three shared
-> early-core-flow surface helpers serving eleven callsites evaluated their action IIFE and then
-> called the returned object. This was a harness-only exception with no product throw; Glass did
-> not run, and 138cdee was not retried.
+> **2026-09-01 current Slice Share-sequence instrument-only deviation (canonical handoff in
+> `../../ROADMAP.md`):** exact signed c0f7215 crossed the repaired Survey expression boundary.
+> Compendium `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry in **64,697
+> ms** with zero findings/blocked outcomes, six review PNGs and named verification. Exact-source
+> Slice `20260901061722706-38658-429913af5517` then stopped once/no-retry after **337,110 ms**
+> with exactly **1 finding / 1 scope**, `collision-share-1`, and ten screenshots. Correct product
+> state used one Share receipt plus one conditional aggregate-progression receipt; the old
+> one-receipt oracle was false red. Glass did not run.
 >
-> The bounded deviation remains testing-only. The dirty successor centralizes the object-valued
-> surface expression in one shared builder and executable/source-inventory control; existing
-> fresh-provenance, Survey receipt/revision/persistence, route/render/card/action, coordinator-idle
-> and causal-stop requirements remain intact. Focused **2 files / 52 tests**, all TypeScript
-> programs and final develop **258 files / 2,629 passed / 1 skipped** are green, with **34** clean art
-> sources, **1,014/1,014** routes, **454** specification fields and independent final review
-> **APPROVED**. It is unsigned; committed-source tracked-input and browser verification remain
-> pending. No product, gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS, ruler,
-> timeout, retry or browser-version deviation exists. Five hosted attempts remain consumed, every
-> label is absent, and no hosted or release authority exists.
+> The bounded deviation remains testing-only and changes no product source.
+> `READ_F4_AUTHORITY_EXPRESSION` reads canonical catalog state in the same read-only transaction
+> as revision/player/receipts; predecessor/successor bind exact catalog, legacy raw and existing
+> live state. The one-or-two receipt topology, c0's captured 26 unlock IDs, every rank threshold/
+> factor, permanent saved-rank no-demotion and all six helper-to-waiter bindings are controlled.
+> Focused **57/57** and all TypeScript programs pass. Complete develop is green at **259 files /
+> 2,659 passed / 1 skipped**, with **34** clean art sources, **1,014/1,014** routes, **454**
+> non-inert fields and independent review
+> **APPROVED**. Clean signing/tracked-input and fresh browser verification remain pending.
+> No product, gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS, ruler, timeout,
+> retry or browser-version deviation exists. Five hosted attempts remain consumed, every label is
+> absent, and no hosted or release authority exists.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above; every older “current” status label
 > below; dated decisions and evidence remain immutable):** exact clean SSH-signed source
@@ -134,6 +135,19 @@ then its one-attempt phone product stage stopped at **Earth planetfall was rejec
 stages did not run, the attempt is consumed, and no replacement is authorized. The diagnosis and
 local repairs below do not rewrite that historical red evidence or supply a clean certificate.
 
+- ◐ **D-PR35-SHARE-SEQUENCE-FIXED-POINT — Slice models Share plus conditional aggregate
+  progression as one causal sequence.** Exact c0 product evidence advanced Shares 4→5 through
+  `arc9-share-send-v1` then `arc9-progression-refresh-v1`; `share5` joined while best rank and
+  SessionRNG stayed fixed. The old one-receipt waiter was false red. The harness-only successor
+  reads canonical `catalog`/`v5:catalog` beside revision/player/receipts in one read-only
+  transaction, cross-binds exact catalog arrays to legacy raw and live counts/best/hybrids, and
+  preserves those inputs after Share. It derives exactly one owner receipt plus at most one
+  conditional aggregate tail, requires same-token spans and two consecutive final samples, uses
+  c0's captured 26 unlock IDs, proves all rank thresholds/factors plus permanent saved-rank
+  no-demotion and binds all six Share helpers to their waiters. Focused 57/57, TypeScript and
+  complete develop 259 files / 2,659 passed / 1
+  skipped are green; independent review is APPROVED. Clean signing/tracked-input and fresh browser
+  evidence remain pending. This is no product/save/schema/retry/ruler/browser-version deviation.
 - ◐ **D-PR35-SURVEY-DEPENDENT-FIXED-POINT — Slice owns an asynchronous Survey predecessor before
   dependent navigation.** This is a harness-only successor to hosted run `33466661094`, not a
   product deviation or certificate. Before every pointer, keyboard, touch or already-current
