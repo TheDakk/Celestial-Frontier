@@ -10,7 +10,52 @@ summary of it.
 
 ## Contents
 
-### Current exact-source `6238b8d…` Slice fixture-lifecycle terminal red and guarded local successor
+### Current exact-source `580c99a…` terminal-green stored-v4 lifecycle develop chain
+
+Exact clean SSH-signed source `580c99a952c4e06acb776c852b6c5c0edba4722e` (tree
+`25a30286eb5a36b3f8d1f226e25d1b00042bf385`, parent `6238b8d…`) passed the hermetic tracked-input
+develop rehearsal at **255 files / 2,576 passed / 1 skipped**, all three TypeScript programs,
+**34** clean art sources, **1,014/1,014** routes and **454** non-inert specification fields. Live
+preflight accepted Edge `152.0.4191.53` / CDP `1.3`; the point version remains provenance only.
+
+Every browser stage then ran once/no-retry on unchanged 580c99a and every exact named verifier
+passed:
+
+- Compendium `20260901024638901-3060-0ba295673f` passed **78/78** with zero findings or blocked
+  outcomes in **63,243 ms**.
+- Develop Slice `20260901024804921-3412-bd2a2c7c9c80` passed with zero findings/scopes and all
+  ten screenshots in **360,564 ms**. It completed the Protected Save rehearsal that exposed the
+  predecessor's replacement-document staging defect. Report SHA-256 is
+  `fea97992fe0408d7550029b6e46de428f41dbeaa191f2972bbc8b5ce6a6febe3`; raw log SHA-256 is
+  `8f9168b4bd1a44b86e5adf85fbd7b6e128a146df6b4d10598d314437339a23c3`.
+- Full-certifying Glass `20260901025422535-3892-101d25f2e009` consumed that exact Slice and
+  passed **12/12** viewport classes plus **104/104** controls with zero findings, instrument
+  failures, blocked or omitted work in **111,461 ms**. Report SHA-256 is
+  `d280058d21db9f501c214503c8f476b6b157562e46393c53949faaea8d26202f`.
+
+The exact PASS carriers all pass gzip integrity:
+
+- `ARC1A_COMPENDIUM_PR35_PROTECTED_STAGE_LIFECYCLE_PASS_20260901_580C99A.json.gz`: **524,914
+  bytes**, SHA-256 `e55d8cf9269b1fdd37c12c7e1b49bc4437e175b5f6701d9eefc96b5437cf7c59`; raw
+  **10,875,379 bytes**, SHA-256
+  `140b47c06ffda1c5d861d6097beaa8b90802d72a524b618d4c56ba7dd98bf540`.
+- `ARC4_SLICE_PR35_PROTECTED_STAGE_LIFECYCLE_PASS_20260901_580C99A.json.gz`: **1,960 bytes**,
+  SHA-256 `909cda77a2aa05aee9fc5f5efeed9356d40916e36bae1922addc3eae13fb3bb6`; raw **6,102
+  bytes**, SHA-256 `fea97992fe0408d7550029b6e46de428f41dbeaa191f2972bbc8b5ce6a6febe3`.
+- `ARC4_SLICE_PR35_PROTECTED_STAGE_LIFECYCLE_PASS_20260901_580C99A.log.gz`: **3,296 bytes**,
+  SHA-256 `b050a911d499aa1f60ddb07f421554ebcc905f8b5a48f683f8de9c91424816b6`; raw **6,949
+  bytes**, SHA-256 `8f9168b4bd1a44b86e5adf85fbd7b6e128a146df6b4d10598d314437339a23c3`.
+- `ARC4_GLASS_PR35_PROTECTED_STAGE_LIFECYCLE_PASS_20260901_580C99A.json.gz`: **82,879 bytes**,
+  SHA-256 `5dfd720fd02caf69a8d32dca33e6d52d92e0d0a951592bdfd82a1914db2ed840`; raw **898,904
+  bytes**, SHA-256 `d280058d21db9f501c214503c8f476b6b157562e46393c53949faaea8d26202f`.
+
+The signed evidence/docs descendant commits those four carriers without rebinding certification
+away from 580c99a. SceneMemory certification is production-only/quarantined and Recovery is not
+part of develop, so neither ran. Product/save/gameplay/art/creature/CSS behavior, thresholds,
+timeouts, retry and version-tolerant Edge-family/CDP 1.3 policy are unchanged. No push, hosted
+attempt, merge, release or deployment is authorized.
+
+### Historical exact-source `6238b8d…` Slice fixture-lifecycle terminal red and guarded local successor
 
 Exact clean SSH-signed source `6238b8dd3eccf6dd106787b6789ad8bb716deac9` (tree
 `a10f7c10becec7e2bc9e58c1741c3ca9c3c200f5`) passed Compendium

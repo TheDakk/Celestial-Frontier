@@ -1,32 +1,26 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-08-31 current stored-v4 fixture-lifecycle repair (supersedes older “current” labels;
-> dated evidence remains immutable):** exact clean signed launcher successor
-> `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78** plus named
-> verification, then its unchanged-source Slice `20260901020100211-91399-de1ddbd28c96` stopped
-> once/no-retry after **302,408 ms** with exactly one harness finding. A replacement phone document
-> existed before `window.__CF_SLICE__` publication, so Protected Save's raw staging call never
-> reached the hook; the pre-existing 4,305-byte primary remained unchanged and Glass did not run.
+> **2026-08-31 current terminal-green stored-v4 fixture-lifecycle admission (supersedes older
+> “current” labels; dated evidence remains immutable):** exact clean SSH-signed source
+> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop at **255 files /
+> 2,576 passed / 1 skipped**, all TypeScript/art/override/route/specification owners and live Edge
+> preflight. Its unchanged-source chain ran exactly once/no-retry: Compendium
+> `20260901024638901-3060-0ba295673f` passed **78/78**; Slice
+> `20260901024804921-3412-bd2a2c7c9c80` passed with zero findings/ten screenshots; Glass
+> `20260901025422535-3892-101d25f2e009` consumed that exact Slice and passed **12/12**
+> viewports plus **104/104** controls with zero findings/instrument failures. Every named verifier
+> passed.
 >
-> The local successor applies one common contract to all eight staging paths. Owner observations use
-> `cf-v2-stored-v4-stage-owner/v1`; invocation receipts use
-> `cf-v2-stored-v4-stage-invocation/v1`.
-> `classifyStoredV4StageOwnerObservation` and
-> `advanceStoredV4StageOwnerStability` require two consecutive ready observations from one exact
-> token, complete Slice/API/hook publication, persistence readiness, no convergence reload and an
-> exact safe hold/mutation pair. `buildStoredV4StageInvocationExpression` rechecks that state
-> atomically before one call; `assessStoredV4StageInvocation` yields
-> `accepted`/`unclaimed`/`rejected`/`invalid`, and
-> `storedV4StageContinuationDecision` permits rebind only for exact zero-call `unclaimed`.
-> Invoked or ambiguous outcomes never retry.
->
-> The final browser-free develop profile passes **255/255 files / 2,576 passed / 1 skipped**, all
-> TypeScript/art/override/route/specification owners; final independent review is clear. This changes
-> no product/save/CSS/gameplay/creature/art behavior, threshold, timeout, retry or Edge-version
-> policy. A clean signed successor and one fresh no-retry **Compendium → Slice → Glass** chain
-> remain; no push, hosted attempt, merge, release, version or deploy is authorized.
+> All eight staging paths use `cf-v2-stored-v4-stage-owner/v1` and
+> `cf-v2-stored-v4-stage-invocation/v1`: two stable ready observations, exact document token,
+> complete app/persistence authority and safe hold/mutation polarity precede one atomic invocation.
+> Only exact zero-call `unclaimed` may rebind; invoked, rejected, invalid or ambiguous outcomes
+> stop. Exact carriers in the signed evidence/docs descendant certify 580c99a only. No product/save/
+> CSS/gameplay/creature/art behavior, threshold, timeout, retry or Edge-version policy changed; no
+> push, hosted attempt, merge, release, version or deploy is authorized.
+
 > **2026-08-31 historical terminal-green raw Back-action failure-cleanup admission (superseded by
-> the launcher overlay above; all hosted/local evidence remains immutable):** exact clean SSH-signed
+> the current admission overlay above; all hosted/local evidence remains immutable):** exact clean SSH-signed
 > source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
 > `e05e48c807597e86530e9b258a11e93d9533cd3c`, parent `4ea8198c…`) supplied the complete
 > browser-free and browser certificate. At that historical checkpoint, its signed evidence/docs-only

@@ -1,21 +1,19 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **2026-08-31 current Slice-admission overlay (canonical handoff in `../ROADMAP.md`):** exact
-> clean signed launcher successor `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium
-> **78/78** and named verification, then unchanged-source Slice
-> `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry after **302,408 ms** with one
-> harness finding. Protected Save encountered a replacement phone document before Slice
-> publication; the fixture hook made zero calls, stored bytes remained unchanged and Glass did not
-> run.
+> **2026-08-31 current terminal-green develop-admission overlay (canonical handoff in
+> `../ROADMAP.md`):** exact clean signed source
+> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop at **255 files /
+> 2,576 passed / 1 skipped** and every TypeScript/art/route/specification owner. On unchanged bytes,
+> Compendium passed **78/78**, Slice passed with zero findings and ten screenshots, and
+> predecessor-bound Glass passed **12/12** viewports plus **104/104** controls with zero findings or
+> instrument failures. Every stage ran once/no-retry and every exact named verifier passed.
 >
-> The bounded instrument successor covers all eight staging paths with stable token ownership,
-> exact persistence hold/mutation polarity, one atomic invocation and zero-call-only rebind. The
-> browser-free develop profile passes **255 files / 2,576 tests / 1 skipped** and every
-> TypeScript/art/route/specification owner; independent final review is clear. No roadmap feature,
-> product/save/gameplay/art/creature structure, EXEC history or HUMAN status changed.
-> Historical certificates remain exact-source history and are not rebound. A clean signed successor
-> and fresh no-retry **Compendium → Slice → Glass** chain remain; no push, hosted attempt, merge,
-> release or deploy is authorized.
+> The bounded testing repair covers all eight fixture-staging paths with stable document authority,
+> exact persistence polarity, one atomic invocation and zero-call-only rebind. No roadmap feature,
+> product/save/gameplay/art/creature structure, EXEC history or HUMAN status changed; historical
+> certificates are not rebound. Four exact PASS carriers in the signed evidence/docs descendant
+> certify 580c99a only. No push, hosted attempt, merge, release or deploy is authorized.
+
 > **2026-08-31 historical local a046 repair overlay (superseded above while
 > preserving its dated evidence):** exact clean SSH-signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry in

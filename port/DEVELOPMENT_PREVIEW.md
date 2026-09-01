@@ -1,19 +1,19 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **2026-08-31 current Slice/preview boundary (canonical handoff in `../ROADMAP.md`):** exact
-> clean signed source `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78**
-> and named verification, then unchanged-source Slice
-> `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry with one harness finding before
-> Protected Save fixture staging. The hook made zero calls, stored bytes remained unchanged, Glass
-> did not run, and no preview was packaged or published.
+> **2026-08-31 current terminal-green admission/preview boundary (canonical handoff in
+> `../ROADMAP.md`):** exact clean signed source
+> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop, Compendium **78/78**,
+> zero-finding Slice and predecessor-bound Glass **12/12** viewports / **104/104** controls. Every
+> stage ran once/no-retry and every exact named verifier passed. No preview was packaged or
+> published.
 >
-> The local instrument successor guards all eight staging paths with stable document ownership,
-> exact persistence authority, one atomic call and zero-call-only rebind. Browser-free verification
-> passes **255 files / 2,576 tests / 1 skipped** plus every TypeScript/art/route/specification owner.
-> The manual preview remains a separate noncertifying playtest package and cannot substitute for the
-> failed Slice certificate or the pending fresh **Compendium → Slice → Glass** chain. No preview
-> rule, product byte, timeout, retry or browser-version policy changed; no push, hosted attempt,
-> publication, merge, release, version or deploy is authorized.
+> The manual preview remains a separate noncertifying playtest package; it neither supplied nor
+> repeats this chain. The testing-only repair guards all eight fixture-staging paths with stable
+> document/persistence authority and zero-call-only rebind. No preview rule, product byte, timeout,
+> retry or browser-version policy changed. Four exact PASS carriers in the signed evidence/docs
+> descendant certify 580c99a only; no push, hosted attempt, publication, merge, release, version or
+> deploy is authorized.
+
 > **2026-08-31 historical local a046 repair overlay (superseded above; older candidate-status labels and dated
 > evidence and preview-process rules remain immutable):** exact clean SSH-signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry in

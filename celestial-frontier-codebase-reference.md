@@ -1,32 +1,27 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-31 current v2 Slice fixture-owner boundary (matches the local v2 worktree and
-> supersedes older “current” labels):** exact clean signed launcher source
-> `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78** and named verification.
-> Its unchanged-source Slice `20260901020100211-91399-de1ddbd28c96` then stopped once/no-retry
-> after **302,408 ms** with one harness finding: the backgrounded phone had entered a replacement
-> document before Slice/API publication, so Protected Save's raw staging expression threw before
-> its hook ran. Independent IndexedDB readback proved the old 4,305-byte primary remained
-> byte-identical; Glass did not run.
+> **2026-08-31 current v2 Slice fixture-owner boundary (matches certified source 580c99a and
+> supersedes older “current” labels):** exact clean SSH-signed source
+> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop at **255 files /
+> 2,576 passed / 1 skipped**, all TypeScript/art/route/specification owners and live Edge/CDP
+> preflight. Its unchanged-source Compendium → Slice → Glass chain ran once/no-retry: **78/78**,
+> zero-finding Slice with ten screenshots, then **12/12** Glass viewports and **104/104** controls
+> with zero findings/instrument failures. Every exact named verifier passed.
 >
-> Current tooling separates three authorities: stable document ownership, one mutation claim and
-> independent storage readback. Across all eight stored-v4 staging paths, two ready observations
-> bind one exact document token plus complete app surface, persistence readiness, no convergence
-> reload and an exact safe hold/mutation pair. One atomic expression rechecks them before exactly
-> one hook call. A pre-call replacement returns a shaped zero-call `unclaimed` receipt and alone
-> may rebind; post-call replacement, false/throw, invalid receipt or transport ambiguity is terminal
-> and cannot be retried. Storage contents diagnose the result but cannot mint an app-owned stage
-> receipt.
+> Current tooling separates stable document ownership, one mutation claim and independent storage
+> readback across all eight stored-v4 staging paths. Two ready observations bind one exact document
+> token plus complete app/persistence authority and safe hold/mutation polarity; one atomic
+> expression rechecks them before exactly one hook call. Only a shaped zero-call `unclaimed`
+> pre-call replacement may rebind; post-call replacement, false/throw, invalid receipt or transport
+> ambiguity is terminal. Storage contents diagnose but cannot mint a stage receipt.
 >
-> Browser-free verification is green at **255 files / 2,576 passed / 1 skipped**, all three
-> TypeScript programs and every art/route/specification owner; independent final review found no
-> remaining functional lifecycle defect. No product source, save semantics/schema, gameplay,
-> deterministic generation, presentation, art/audio, creature/genome/plant/biome/Guardian
-> structure, threshold, timeout or browser-version policy changed. The guarded successor still
-> requires a clean signed commit and fresh exact-source **Compendium → Slice → Glass** certificate;
-> no hosted or release authority exists.
+> Product source, save semantics/schema, gameplay, deterministic generation, presentation,
+> art/audio, creature/genome/plant/biome/Guardian structure, threshold, timeout and browser-version
+> policy are unchanged. Four exact PASS carriers in the signed evidence/docs descendant remain
+> bound to 580c99a; no hosted or release authority exists.
+
 > **2026-08-31 historical terminal-green Compendium raw failure-cleanup boundary (superseded by
-> the raw-CDP launcher boundary above; exact evidence remains immutable):** exact clean
+> the current certified boundary above; exact evidence remains immutable):** exact clean
 > SSH-signed certified source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
 > `e05e48c807597e86530e9b258a11e93d9533cd3c`, parent `4ea8198c…`) contains the collector failure
 > cleanup, selftest and derived budget authority. At that historical checkpoint, its signed
@@ -841,7 +836,8 @@
 > full context without re-reading the source. When in doubt, source wins. The long-form
 > sections below mirror the legacy v1 architecture; dated overlays record current port/v2
 > boundaries until the port replaces those sections completely.
-> **Current port/v2 reference overlay matches the current local v2 worktree as of 2026-08-30.**
+> **Current port/v2 reference overlay matches certified source `580c99a…` and its evidence/docs
+> descendant as of 2026-08-31.**
 > Historical browser claims remain bound only to their named signed sources, including `3f69e88…` and
 > exact `941ba45…`: the latter passed Compendium 78/78 before its exact-source Slice successor stopped
 > red, so Glass and Recovery did not run. At that historical boundary the changed head had no complete browser certificate.

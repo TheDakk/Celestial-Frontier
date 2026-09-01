@@ -1,20 +1,17 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **2026-08-31 current Slice instrument-only deviation overlay (canonical handoff in
-> `../../ROADMAP.md`):** exact clean signed launcher successor
-> `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78** and named verification.
-> Its unchanged-source Slice `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry after
-> **302,408 ms** with one harness finding: Protected Save's raw staging call met a replacement phone
-> document before Slice publication, made zero hook calls and left the old primary unchanged. Glass
-> did not run.
+> **2026-08-31 current terminal-green Slice instrument-only deviation (canonical handoff in
+> `../../ROADMAP.md`):** exact clean signed source
+> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop, Compendium **78/78**,
+> zero-finding Slice with ten screenshots and exact-predecessor Glass **12/12** viewports /
+> **104/104** controls. Every stage ran once/no-retry and every named verifier passed.
 >
-> The bounded deviation is testing-only. All eight staging paths now require a stable exact document
-> token, complete app/persistence authority, exact hold/mutation polarity and one atomic invocation;
-> only an exact zero-call `unclaimed` receipt may rebind. Browser-free verification passes **255
-> files / 2,576 tests / 1 skipped** plus all TypeScript/art/route/specification owners, and final
-> review is clear. No product, gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS,
-> ruler, timeout, retry or browser-version deviation exists. A clean signed successor and fresh
-> no-retry **Compendium → Slice → Glass** chain remain; no hosted or release authority exists.
+> The bounded deviation is testing-only: all eight fixture paths require stable exact document and
+> persistence authority before one atomic call; only a proven zero-call `unclaimed` receipt may
+> rebind. No product, gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS, ruler,
+> timeout, retry or browser-version deviation exists. Four exact PASS carriers in the signed
+> evidence/docs descendant certify 580c99a only; no hosted or release authority exists.
+
 > **2026-08-31 historical local a046 repair overlay (superseded above; every older “current” status label
 > below; dated decisions and evidence remain immutable):** exact clean SSH-signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry in
