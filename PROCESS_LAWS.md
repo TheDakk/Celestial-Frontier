@@ -1,5 +1,35 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **BOOT KIND IS IMMUTABLE PROVENANCE, NOT A READINESS STATE TO NORMALIZE** (2026-09-01). A
+> genuinely new v5 document may remain `fresh-v5` for its entire lifetime after Training and
+> several durable commits. `current-v5` remains the default writable-authority requirement, but an
+> evidence harness may admit `fresh-v5` only at an explicitly named initial-page boundary with no
+> previous token and the exact original document token. Carry that token through every predecessor
+> and settlement wait on the same initial document. Never rewrite the observed boot kind, infer
+> fresh authority from a route, or extend the exception to a reload/replacement/current-document
+> wait. Independently reject an absent/unknown boot kind, token drift, a previous-token fresh bind,
+> missing scene resources, a pending persistence write, lost live authority, or live↔raw
+> revision/SessionRNG drift.
+>
+> Exact clean SSH-signed source `6030035dff1779c3fc3be7e4f46f376ff01455e8` earned this law.
+> Its hermetic tracked-input profile passed **257 files / 2,622 passed / 1 skipped**, all three
+> TypeScript programs and every art/route/specification owner. Browser-CDP selftest and preflight
+> passed; Compendium `20260901051716174-22348-bea719354e` passed **78/78** once/no-retry in
+> **64,220 ms** with named verification. Unchanged-source Slice
+> `20260901051837279-22717-480519033de4` then stopped once/no-retry after **24,458 ms** with one
+> harness scope, before its first keyboard Milky Way Survey action. The retained revision-5
+> document was fully writable and live↔raw exact; only its legitimate `fresh-v5` provenance failed
+> the old generic `current-v5` predicate. Glass correctly did not run. Preserve that red and do not
+> answer it with a retry, timeout increase, boot-kind mutation, browser pin or product change.
+>
+> The bounded successor extracts one pure authority contract and explicitly binds the original
+> token across desktop, isolated-keyboard and fresh-phone initial journeys, while every
+> reload/replacement path remains strict. Focused verification is **5 files / 79 tests**; the full
+> develop profile is **258 files / 2,628 passed / 1 skipped**, all TypeScript programs, **34** art
+> sources, **1,014/1,014** routes and **454** non-inert fields. Independent final review is
+> **APPROVED**. This is browser-free evidence for an unsigned working-tree successor, not a
+> tracked-input rehearsal, browser certificate, hosted attempt or product/Arc/Gate/release change.
+
 > **A FIXTURE MUTATION MAY BE REBOUND ONLY BEFORE IT IS CLAIMED** (2026-08-31). A browser
 > harness must not infer mutation authority from a target handle, a prior ready observation or a
 > successful independent storage read. Foreground the intended target and require two consecutive

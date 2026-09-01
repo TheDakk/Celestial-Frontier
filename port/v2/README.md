@@ -1,25 +1,28 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-09-01 current Survey-predecessor Slice boundary (supersedes older “current” labels;
-> dated evidence remains immutable):** hosted run `33466661094` tested exact PR #35 head
-> `06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c` against base `7a9f4c1370dd84292388d718c38ff34214f6203b`.
-> Its tree-equivalent synthetic merge passed all prerequisites and Compendium **78/78**, then Slice
-> stopped at **13 findings / 8 scopes**. One causal harness race explains the other 12: non-Sol
-> Enter ran before its receipt-bearing Survey reached the same-document F4 fixed point. The product
-> correctly exposed **Expedition action settling**, remained in galaxy and blocked the dependent
-> mutation. Glass correctly skipped; no retry ran.
+> **2026-09-01 current fresh-boot readiness-oracle Slice boundary (supersedes older “current”
+> labels; dated evidence remains immutable):** exact clean SSH-signed source
+> `6030035dff1779c3fc3be7e4f46f376ff01455e8` passed its tracked-input develop rehearsal,
+> changed-Slice browser-CDP selftest and live preflight. Compendium
+> `20260901051716174-22348-bea719354e` passed **78/78** once/no-retry in **64,220 ms** with named
+> verification. Exact-source Slice `20260901051837279-22717-480519033de4` then stopped after
+> **24,458 ms** with **1 harness finding / 1 scope**, before the first Survey action. Its complete
+> writable initial document legitimately retained immutable `fresh-v5` boot provenance; the old
+> generic readiness assessor incorrectly required `current-v5`. Glass did not run and 6030035 was
+> not retried or relabelled.
 >
-> The bounded local runner successor requires exact Survey receipt/revision/persistence,
-> route/render/card/action identity and coordinator idle before every dependent Enter/Land action
-> across pointer, keyboard, touch and already-current routes. A red predecessor causal-stops all
-> descendants; `landing.surveyOutcome` is diagnostic-only. After repairing exact Atlas Travel commit
-> ownership, runtime schema/SessionRNG parity, retained-fault rejection and paired stable-but-wrong
-> authority controls, focused **4 files / 73 tests passed**, all three TypeScript programs and final develop
-> **257 files / 2,622 passed / 1 skipped** are green; two independent reviews are **APPROVED**.
+> The bounded runner successor moves F4 readiness into one pure contract. `current-v5` remains the
+> default; only explicit initial-page callsites with no previous token and the exact original token
+> may accept `fresh-v5`. Desktop, isolated-keyboard and fresh-phone same-document journeys retain
+> that token through predecessor/settlement waits; reload/replacement paths stay strict. Directional
+> controls reject wrong boot provenance, token drift, missing scene resources, pending writes and
+> live↔raw authority drift. Focused **5 files / 79 tests**, all TypeScript programs and final develop
+> **258 files / 2,628 passed / 1 skipped** are green; independent final review is **APPROVED**.
 > Current producer authority remains `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`.
-> The clean signed candidate, tracked-input preflight and fresh Compendium → Slice → Glass chain
-> remain pending. Product/save/CSS/gameplay/creature/art behavior, rulers, timeout/retry and Edge-
-> version policy are unchanged; no new hosted, merge, release or deploy authority exists.
+> The working-tree successor is not yet signed, tracked-input rehearsed or browser-certified.
+> Product/save/CSS/gameplay/creature/art behavior, rulers, timeout/retry and Edge-version policy are
+> unchanged; five hosted attempts remain consumed and no new hosted, merge, release or deploy
+> authority exists.
 
 > **2026-08-31 historical terminal-green raw Back-action failure-cleanup admission (superseded by
 > the current admission overlay above; all hosted/local evidence remains immutable):** exact clean SSH-signed

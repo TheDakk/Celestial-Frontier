@@ -9,22 +9,26 @@
 synthetic merge `337ffd29f1584f1a5c786c4532a79c99876be325`, whose tree is byte-equivalent to exact head tree
 `e39bcdb8781eeaa6f9ee503cd6cfbb47497899ea`.
 
-Every prerequisite and Compendium **78/78** passed. Develop Slice then stopped terminal red after
-**115,766 ms** with **13 findings / 8 scopes**, but one first-causal harness race explains the other
-12: the runner pressed non-Sol Enter before its receipt-bearing Survey reached the same-document F4
-fixed point. The product correctly refused with **Expedition action settling** and stayed in the
-galaxy. Glass correctly skipped, no retry ran, and the approval label was removed.
+Exact clean SSH-signed local successor `6030035dff1779c3fc3be7e4f46f376ff01455e8`
+passed its hermetic tracked-input develop rehearsal at **257 files / 2,622 passed / 1 skipped**,
+all three TypeScript programs, **34** clean art sources, **1,014/1,014** routes and **454**
+non-inert fields. Browser-CDP selftest and live preflight accepted Edge `152.0.4191.53` / CDP
+`1.3`; the point version is provenance only. Compendium
+`20260901051716174-22348-bea719354e` passed **78/78** once/no-retry in **64,220 ms** with named
+verification. Its exact-source Slice `20260901051837279-22717-480519033de4` then stopped
+once/no-retry after **24,458 ms** with **1 harness finding / 1 scope** and no screenshots, before
+the first Survey action: a complete writable initial document was correctly `fresh-v5`, but the
+generic readiness oracle required `current-v5`. Glass did not run; 6030035 is not retried or
+relabelled.
 
-The bounded local successor now requires exact receipt/revision/persistence, route/render/card/action
-identity and coordinator idleness before every Survey-dependent Enter/Land action across pointer,
-keyboard, touch and already-current routes. A red or unsettled predecessor causal-stops descendants;
-`landing.surveyOutcome` remains diagnostic-only. After four review findings were fixed, the focused
-current set passed **4 files / 73 tests**, all three TypeScript programs passed, two independent reviews
-were **APPROVED**, and the complete develop profile passed **257 files / 2,622 passed / 1 skipped**,
-**34** clean art sources, **1,014/1,014** routes and **454** non-inert fields. Current Compendium
-producer authority remains `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`.
-The clean signed candidate, tracked-input preflight and fresh unchanged-source Compendium → Slice →
-Glass chain remain pending; no browser certificate is claimed yet.
+The bounded working-tree successor preserves immutable boot provenance and admits `fresh-v5` only
+at explicitly named initial-page callsites bound to the exact original document token; current,
+reload and replacement waits remain strict. Focused verification passed **5 files / 79 tests**,
+all three TypeScript programs passed, and the complete develop profile passed **258 files / 2,628
+passed / 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454** non-inert
+fields. Independent final review is **APPROVED**. Current Compendium producer authority remains
+`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. This successor is not yet
+signed, tracked-input rehearsed or browser-certified.
 
 All five hosted approval labels are absent and PR #35 remains Draft/unmerged. No push, label,
 hosted attempt, retry, Ready transition, merge, release, version bump, preview publication or

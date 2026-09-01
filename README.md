@@ -1,25 +1,25 @@
 # Celestial-Frontier
 
-> **2026-09-01 current PR #35 Survey-settlement repair boundary (canonical detail in
-> `ROADMAP.md`; dated evidence below remains immutable):** fifth hosted run `33466661094` tested
-> exact head `06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c` against base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Its tree-equivalent synthetic merge passed every
-> prerequisite and Compendium **78/78**, then Slice stopped at **13 findings / 8 scopes**. One causal
-> harness race explains the other 12: the runner pressed non-Sol Enter before its receipt-bearing
-> Survey reached the same-document F4 fixed point. The product correctly refused with **Expedition
-> action settling**; Glass correctly skipped and no retry ran.
+> **2026-09-01 current PR #35 fresh-boot readiness-oracle boundary (canonical detail in
+> `ROADMAP.md`; dated evidence below remains immutable):** exact clean SSH-signed source
+> `6030035dff1779c3fc3be7e4f46f376ff01455e8` passed its hermetic tracked-input rehearsal,
+> browser-CDP selftest and live preflight. Compendium
+> `20260901051716174-22348-bea719354e` passed **78/78** once/no-retry with named verification.
+> Exact-source Slice `20260901051837279-22717-480519033de4` then stopped after **24,458 ms** with
+> **1 harness finding / 1 scope**, before its first Survey action: a complete writable initial
+> document legitimately remained `fresh-v5`, while the generic readiness oracle required
+> `current-v5`. Glass correctly did not run and 6030035 was not retried.
 >
-> The bounded local successor now waits for exact Survey receipt/revision/persistence,
-> route/render/card/action identity and coordinator idle before every dependent Enter/Land path
-> across pointer, keyboard, touch and already-current routes. A red predecessor causal-stops its
-> descendants; `landing.surveyOutcome` remains diagnostic-only. Focused **4 files / 73 tests passed**, all
-> three TypeScript programs and final develop **257 files / 2,622 passed / 1 skipped** are green;
-> art is **34** clean sources, routes are **1,014/1,014**, specification reach is **454** fields, and
-> two independent code reviews are **APPROVED**. Current producer authority remains `410d2639…`.
-> The clean signed candidate, tracked-input preflight and exact-source Compendium → Slice → Glass
-> chain remain pending. Gameplay, saves, art, creatures, CSS, numeric rulers, timeout/retry and
-> version-tolerant browser policy are unchanged. The fifth label is removed and no new push, hosted
-> attempt, merge, release, version bump, preview or deploy is authorized.
+> The bounded working-tree successor preserves immutable boot provenance and accepts `fresh-v5`
+> only at explicitly named initial-page callsites bound to the original document token; current,
+> reload and replacement paths remain strict. Focused **5 files / 79 tests**, all TypeScript
+> programs and final develop **258 files / 2,628 passed / 1 skipped** are green; art is **34** clean
+> sources, routes are **1,014/1,014**, specification reach is **454** fields, and independent final
+> review is **APPROVED**. Current producer authority remains `410d2639…`. The successor is not yet
+> signed, tracked-input rehearsed or browser-certified. Gameplay, saves, art, creatures, CSS,
+> numeric rulers, timeout/retry and version-tolerant browser policy are unchanged. Five hosted
+> attempts remain consumed, every label is absent, and no push, hosted attempt, merge, release,
+> version bump, preview or deploy is authorized.
 
 > **2026-08-31 historical a046 collision-control repair overlay (superseded above; every older “current”
 > label below; dated evidence remains immutable):** exact clean signed source

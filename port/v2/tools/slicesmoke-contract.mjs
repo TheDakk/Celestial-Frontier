@@ -293,6 +293,58 @@ const exactF4OldReceiptFixture = (staged) => staged?.ordinal === 1
   && staged.receiptRows[0]?.kind === 'slice-smoke-old-expedition'
   && staged.receiptRows[0]?.witness === 'old-expedition:0';
 
+/** Assess one coupled live/raw writable F4 authority snapshot. `bootKind` is
+ * immutable boot provenance: initialized documents are `current-v5`, while a
+ * genuinely new document remains `fresh-v5` for its whole lifetime. Fresh
+ * provenance is therefore accepted only at an explicitly named initial-page
+ * boundary, never for a reload/replacement wait. */
+export function assessF4ReadyAuthority({
+  state,
+  raw,
+  token,
+  previousToken = null,
+  expectedToken = null,
+  allowFresh = false,
+} = {}) {
+  const reasons = [];
+  const persistence = state?.persistence;
+  const runtime = persistence?.runtime;
+  const validPreviousToken = previousToken === null
+    || (typeof previousToken === 'string' && previousToken.length >= 16);
+  const validExpectedToken = expectedToken === null
+    || (typeof expectedToken === 'string' && expectedToken.length >= 16);
+  const acceptedBootKind = persistence?.bootKind === 'current-v5'
+    || (allowFresh === true && previousToken === null
+      && validExpectedToken && expectedToken !== null && token === expectedToken
+      && persistence?.bootKind === 'fresh-v5');
+  if (persistence?.schema !== 'cf-v2-app-persistence/v1' || persistence?.ready !== true
+    || !acceptedBootKind || persistence?.hold !== null
+    || persistence?.seedBootstrapPending !== false
+    || persistence?.bootRouteRepairPending !== false
+    || persistence?.mutationBlocked !== false
+    || state?.sceneResources?.pendingPersistenceWrites !== 0) reasons.push('boot readiness');
+  if (typeof token !== 'string' || token.length < 16 || persistence?.documentToken !== token
+    || !validPreviousToken || !validExpectedToken
+    || (previousToken !== null && token === previousToken)
+    || (expectedToken !== null && token !== expectedToken)
+    || (allowFresh === true && previousToken !== null)) reasons.push('document identity');
+  if (runtime?.schema !== 'cf-v2-f4-runtime/v1' || runtime?.visible !== true
+    || runtime?.answerable !== true || runtime?.leaseOwned !== true || runtime?.accruing !== true
+    || runtime?.staleBlocked !== false) reasons.push('live authority');
+  if (!Number.isSafeInteger(runtime?.revision) || runtime.revision < 1
+    || raw?.revisionRaw !== String(runtime?.revision) || raw?.revision !== runtime?.revision) {
+    reasons.push('revision parity');
+  }
+  if (raw?.playerSchema !== 5 || raw?.carrierVersion !== 1
+    || !Number.isSafeInteger(runtime?.sessionSeed) || runtime.sessionSeed < 0
+    || runtime.sessionSeed > 0xFFFF_FFFF
+    || raw?.seed !== runtime?.sessionSeed || raw?.ordinal !== runtime?.sessionOrdinal
+    || JSON.stringify(raw?.draws) !== JSON.stringify(runtime?.sessionDraws)) {
+    reasons.push('durable RNG parity');
+  }
+  return { ok: reasons.length === 0, reasons };
+}
+
 /** Everything in this assessment is available before import. A malformed
  * staged receipt is therefore just as terminal as a failed stage or tracer
  * arm and must not be deferred until after replacement mutates the source. */

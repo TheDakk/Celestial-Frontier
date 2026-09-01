@@ -1,29 +1,36 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-09-01 current v2 Slice Survey-predecessor boundary (matches local code as of 2026-09-01;
-> supersedes older “current” labels; browser chain pending):** GitHub run `33466661094` tested exact
-> PR #35 head `06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c` and a tree-equivalent synthetic merge. Every
-> prerequisite and Compendium **78/78** passed; Slice then stopped at **13 findings / 8 scopes**.
-> The first non-Sol Survey → Enter failure was causal: Enter ran before the receipt-bearing Survey's
-> F4 settlement, the product correctly refused with **Expedition action settling**, and the other 12
-> findings cascaded. Glass correctly skipped and no retry ran.
+> **2026-09-01 current v2 fresh-boot readiness-oracle boundary (matches local code as of
+> 2026-09-01; supersedes older “current” labels; browser chain pending):** exact clean SSH-signed
+> source `6030035dff1779c3fc3be7e4f46f376ff01455e8` passed its tracked-input develop rehearsal,
+> browser-CDP selftest and live preflight. Compendium
+> `20260901051716174-22348-bea719354e` passed **78/78** once/no-retry in **64,220 ms** with named
+> verification. Exact-source Slice `20260901051837279-22717-480519033de4` then stopped after
+> **24,458 ms** with **1 harness finding / 1 scope**, before the first Survey action. Its complete
+> writable revision-5 initial document legitimately remained `fresh-v5`; the generic readiness
+> oracle incorrectly required `current-v5`. Glass did not run and 6030035 was not retried.
 >
-> The local runner now treats every receipt-bearing Survey as an exact same-document predecessor for
-> dependent Enter/Land paths across pointer, keyboard, touch and already-current routes. It requires
-> receipt/revision/persistence, current route/render/card/action identity and coordinator idle before
-> the action, then causal-stops descendants after a red or unsettled predecessor.
-> `state().landing.surveyOutcome` is retained only as bounded diagnosis; it cannot authorize an
-> action. Atlas Travel acceptance requires exactly one `arc9-galaxy-arrival-v1` /
-> `arc9-travel-committed:` commit; single/sequence runtime schemas bind before/after live↔raw
-> SessionRNG parity; current Survey rejects retained faults; and paired stable-but-wrong live/raw
-> revision/seed/ordinal/draw controls fail. Focused **4 files / 73 tests passed**, all TypeScript programs and
-> final develop **257 files / 2,622 passed / 1 skipped** are green, and two independent reviews are
-> **APPROVED**. Producer authority remains `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`.
-> The clean candidate, tracked-input preflight and fresh Compendium → Slice → Glass chain are pending.
+> F4 boot kind is immutable provenance, not a readiness state. `assessF4ReadyAuthority` remains
+> `current-v5` by default and accepts `fresh-v5` only when an explicitly named initial-page caller
+> supplies the exact original document token with no previous token. Desktop, isolated-keyboard and
+> fresh-phone same-document journeys bind that token through their predecessor and settlement
+> waits; reload/replacement/current-document paths cannot opt in. The shared contract also requires
+> ready persistence, no hold or pending write, current visible/answerable/lease-owned/accruing
+> runtime, and exact live↔raw revision plus SessionRNG parity. It rejects missing/unknown boot kind,
+> absent/short/drifted tokens, previous-token fresh binds, missing scene resources and pending
+> writes. Existing exact Survey receipt/revision/persistence, route/render/card/action,
+> coordinator-idle and causal-stop rules remain unchanged.
+>
+> Focused verification passed **5 files / 79 tests**, all three TypeScript programs passed, and
+> final develop passed **258 files / 2,628 passed / 1 skipped**, **34** clean art sources,
+> **1,014/1,014** routes and **454** non-inert fields. Independent final review is **APPROVED**.
+> Producer authority remains `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`.
+> The working-tree successor is not yet signed, tracked-input rehearsed or browser-certified.
 >
 > Product save semantics/schema, gameplay, deterministic generation, presentation, art/audio,
 > creature/genome/plant/biome/Guardian structure, numeric rulers, timeout/retry and browser-version
-> policy are unchanged. No current hosted, merge or release authority exists.
+> policy are unchanged. Five hosted attempts remain consumed; no current hosted, merge or release
+> authority exists.
 
 > **2026-08-31 historical terminal-green Compendium raw failure-cleanup boundary (superseded by
 > the current certified boundary above; exact evidence remains immutable):** exact clean
