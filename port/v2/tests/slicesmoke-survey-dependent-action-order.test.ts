@@ -62,7 +62,33 @@ describe('Slice Survey dependent-action causal order', () => {
       ordered('phone Earth', [
         'phone Earth Survey predecessor F4 authority',
         "label: 'phone Earth Survey'",
+        "document.querySelector('#guidepanel [data-pnx]').click()",
+        'let phoneLandHeartbeatQuiescence = null',
+        "'window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()'",
+        "phoneLandHeartbeatQuiescence?.schema !== 'cf-v2-f4-heartbeat-quiescence/v1'",
+        'phoneLandHeartbeatQuiescence.documentToken !== freshPhoneDocumentToken',
+        'phoneLandHeartbeatQuiescence.wasRunning !== true',
+        'phoneLandHeartbeatQuiescence.stopped !== true',
+        'phoneLandHeartbeatQuiescence.cycleSettled !== true',
+        'phone Earth Land predecessor after Guide closure F4 authority',
+        '{ allowFresh: true, expectedToken: freshPhoneDocumentToken }',
         "const phoneLand = await evalNavPh(phoneCardActionCheck('landcta'))",
+        "phoneLand.state.landing?.actionCoordinator?.inFlight !== false",
+        "phoneLand.state.landing?.actionCoordinator?.owner?.busy !== false",
+        "phoneLand.state.landing?.actionCoordinator?.owner?.operation !== null",
+        "await touchNav(phoneLand.x, phoneLand.y)",
+        "'phone Earth landing'",
+        '15_000',
+        'phone Earth Land writable surface settlement',
+        '} finally {',
+        "'window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()'",
+        "phoneLandHeartbeatResume?.schema !== 'cf-v2-f4-heartbeat-resume/v1'",
+        'phoneLandHeartbeatResume.documentToken !== freshPhoneDocumentToken',
+        'phoneLandHeartbeatResume.running !== true',
+        'phoneEarthLandAfterAuthority?.state?.landing?.actionCoordinator?.inFlight !== false',
+        'phoneEarthLandAfterAuthority?.state?.landing?.actionCoordinator?.owner?.busy !== false',
+        'phoneEarthLandAfterAuthority?.state?.landing?.actionCoordinator?.owner?.operation !== null',
+        '`arc0-land-committed:${phoneEarthLandAfterAuthority?.raw?.revision}`',
       ]),
       ordered('phone repeat Earth', [
         'phone repeat Earth Survey predecessor F4 authority',
@@ -110,5 +136,22 @@ describe('Slice Survey dependent-action causal order', () => {
     expect(source).toContain('failSliceWithoutCascade(`${label.toUpperCase()}: Survey did not reach');
     expect(source).toContain('failSliceWithoutCascade(`${label.toUpperCase()}: keyboard Survey did not reach');
     expect(source).toContain('failSliceWithoutCascade(`${label.toUpperCase()}: phone Survey did not reach');
+    expect(source).toContain('label, expr, timeoutMs = 6000, accept = (value) => Boolean(value)');
+    expect(source).toContain('if (accept(last)) return last;');
+    expect(source).toContain('assessment, state: snapshot.state, raw: snapshot.raw, token: snapshot.token,');
+    expect(source).toContain("ready:state.mode==='surface',state,landing:state.landing,persistence:state.persistence,");
+    expect(source).toContain('runtimeRevision: phoneEarthLandBeforeAuthority.state?.persistence?.runtime?.revision');
+    expect(source).toContain('lastOutcome: phoneEarthLandBeforeAuthority.state?.persistence?.lastOutcome');
+    expect(source).toContain('(evidence) => evidence?.ready === true');
+
+    const phoneLandStart = source.indexOf('let phoneLandHeartbeatQuiescence = null');
+    const phoneLandEnd = source.indexOf("const phoneLeave = await evalNavPh(phoneCardActionCheck('leaveworld'))", phoneLandStart);
+    expect(phoneLandStart).toBeGreaterThan(-1);
+    expect(phoneLandEnd).toBeGreaterThan(phoneLandStart);
+    const phoneLandBlock = source.slice(phoneLandStart, phoneLandEnd);
+    expect(phoneLandBlock.match(/__smokeQuiesceF4Heartbeat/g)).toHaveLength(1);
+    expect(phoneLandBlock.match(/__smokeResumeF4Heartbeat/g)).toHaveLength(1);
+    expect(phoneLandBlock.match(/touchNav\(phoneLand\.x, phoneLand\.y\)/g)).toHaveLength(1);
+    expect(phoneLandBlock).toContain('phoneEarthLandAfterAuthority = await waitNavPhF4Writable(');
   });
 });

@@ -1,5 +1,71 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **EPHEMERAL RUNTIME EVIDENCE IS CAPTURED DURING ITS OWNED LIFETIME, NOT RECONSTRUCTED FROM THE
+> FINAL GRAPH** (2026-09-01). A short WebAudio voice may correctly connect, start, acknowledge an
+> action and then disconnect/destroy during normal natural teardown before later durable reads
+> finish. A final node graph cannot distinguish that healthy lifecycle from a voice that never had
+> a route. Capture one ordered same-prefix temporal witness only while the unique post-mark source
+> and every same-context path endpoint to the real destination are simultaneously live, then retain
+> that immutable witness through teardown. Never replace temporal causality with an unordered union
+> of every edge ever observed:
+> edges from disjoint times can manufacture a path that was never simultaneously live. Require one
+> unique source and one contemporaneous ordered route; negative-control duplicates, missing source,
+> dead ends, a false destination, cross-context hops, edge reordering, connect-before-create and
+> disjoint-time segments. Natural disconnect/destroy may close a proven route but may not erase it.
+> A sleep, retry, longer
+> timeout, audio-content change or final-only poll cannot repair lifetime ownership.
+>
+> PR #35 hosted run `33560546382` earned this law on exact head
+> `c0ad51a1a63f7f649493122ab8d7d5e8588f6a9d` / tree
+> `7b1d851c2ed92ecaaaf26aec8c178a0c145c74aa` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`, through same-tree synthetic merge
+> `f03a68d75dd03512d2dc994febc9bb18e5b52d9c`. Root layout passed **787/787** and Compendium
+> passed **78/78** once/no-retry. Slice stopped after **1,017,899 ms** with two independent harness
+> findings. Its Feed finding retained an exact durable winner—global revision **107→108**,
+> ownership **16→17**, receipt/SessionRNG ordinal **20→21**, one ordinal-20
+> `arc5-companion-feed`, fed **0→1**, flora **1→0** with tombstone, one settled toast, zero pending,
+> same-document reopen and reload fixed point. Page instrumentation also retained one successful
+> post-mark oscillator start/connection in a running context. Only the later raw-CDP final graph had
+> forgotten its outgoing edge after normal voice cleanup, so the reported missing acknowledgement
+> route is harness-lifetime evidence, not a Feed/product failure.
+>
+> The bounded successor adds only the ordered same-prefix route witness above and keeps every
+> invalid topology red. The combined focused boundary passes **3 files / 21 tests**; the fresh-wait
+> ownership file separately passes **8/8**; all three TypeScript programs pass; and the complete
+> browser-free develop profile passes **260 files / 2,675 passed / 1 skipped** (**2,676 total**),
+> **34** clean art sources, **1,014/1,014** routes and **454** declared/non-inert fields. Clean
+> signing, tracked-input preflight and exact-source browser verification remain pending. It changes
+> no product audio, gameplay, Feed semantics, save schema, creature/flora state, product timeout,
+> global CDP deadline, ruler, retry or browser policy.
+
+> **AN INTERVENING UI ACTION THAT MAY PERSIST INVALIDATES A DEPENDENT MUTATION'S OLD WRITABILITY
+> PROOF** (2026-09-01). Opening or closing a panel can be product-significant even when it looks
+> presentational: first-open Guide sets `seenGuide` and starts `persistView()`. Before a later Land,
+> Enter, Travel or other mutation, reacquire the current same-document/token F4 predecessor after
+> the intervening action. Require persistence ready, zero pending writes, no `activePersist` or
+> coordinator owner, writable runtime, live/raw revision and SessionRNG parity, correct route/card/
+> action identity and no scheduled convergence reload. Quiesce the same-document F4 heartbeat
+> before acquiring that post-intervention predecessor and keep it quiescent through three
+> independently early-resolving waits, each capped at 15 seconds: post-intervention writable
+> predecessor, live action-surface observation and post-action durable writable/idle fixed point.
+> Dispatch exactly one native action between those waits and resume the heartbeat exactly once in
+> `finally`. If authority never settles, retain the complete state, persistence/coordinator owners
+> and action's `lastOutcome`; a nullable `last null` summary is not actionable. Never retry the action:
+> transport ambiguity after dispatch or a real product refusal is terminal evidence.
+>
+> The second independent finding in exact run `33560546382` was
+> `phone Earth landing did not reach its phone outcome within 6000ms (last null)`. The fresh phone
+> flow opened Guide for the first time, legitimately armed the `seenGuide` write, closed Guide and
+> immediately touched Land using authority proved before that persistence-producing action. The
+> artifact retained only `last null`; it does not directly prove a specific refusal. Source tracing
+> supports the high-confidence root-cause inference because `doLand()` refuses while
+> `activePersist` is owned. The bounded successor adds the three post-Guide waits above, retains
+> heartbeat quiescence through one Land action and durable settlement, resumes once in `finally`,
+> and preserves full predecessor-timeout diagnosis. Its browser-free verification is included in
+> the green counts above. The harness observation caps intentionally change from 6 seconds to 15
+> seconds; no Landing/product behavior, save schema, route semantics, product timeout, global CDP
+> deadline, ruler or retry policy changed.
+
 > **A CDP COMMAND OWNS ONE BOUNDED ACTION, NOT AN ENTIRE PERSISTENCE CAMPAIGN**
 > (2026-09-01). Never place a table of UI mutations, debounce waits and durable checks inside one
 > `Runtime.evaluate` whose only owner is the transport-wide command deadline. Give each action,

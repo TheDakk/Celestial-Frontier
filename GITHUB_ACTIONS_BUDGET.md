@@ -2,7 +2,67 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** Ready/open PR #35 has **seven** consumed terminal-red
+**Hosted attempt state: none authorized.** Ready/open PR #35 has **eight** consumed terminal-red
+`test-battery` attempts against exact base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. The eighth one-time authorization is consumed and
+must not be retried: GitHub run `33560546382`, attempt 1, tested exact head
+`c0ad51a1a63f7f649493122ab8d7d5e8588f6a9d` (tree
+`7b1d851c2ed92ecaaaf26aec8c178a0c145c74aa`) through synthetic merge
+`f03a68d75dd03512d2dc994febc9bb18e5b52d9c`, whose tree is byte-identical to the exact head.
+Authorization job `100031692379` passed; battery job `100031723808` completed terminal red after
+**1h4m43s** under `actions-budget-approved`, the 92-minute maximum and the no-retry rule.
+
+Root layout passed **787/787**. Compendium `gha-33560546382-1-compendiummem` passed **78/78**
+once/no-retry in **2,334,319 ms** with zero findings/blocked outcomes and six review PNGs. Slice
+`gha-33560546382-1-slice` stopped once/no-retry after **1,017,899 ms** with exactly **2 findings /
+2 scopes**. The first, `arc-5-feed-commit`, retained an exact durable Feed winner: global revision
+**107→108**, ownership **16→17**, receipt/SessionRNG ordinal **20→21**, one
+`arc5-companion-feed` receipt at ordinal 20, fed **0→1**, flora **1→0** with tombstone, one visible
+“Meal complete…” toast, zero pending work, same-document reopen and reload fixed point. Its sole
+rejection was the acknowledgement's final-state WebAudio graph: the short successful oscillator
+had already disconnected during normal natural teardown before the expensive durable reads and
+first graph snapshot. The second, independent `harness` finding was
+`phone Earth landing did not reach its phone outcome within 6000ms (last null)`. The artifact's
+nullable terminal observation does not itself prove the refusal reason. Source tracing provides the
+high-confidence root-cause inference: first-open Guide starts the legitimate `seenGuide`
+persistence write, the harness closed Guide and touched Land without reacquiring same-document
+quiescent F4 authority, and product Landing refuses while `activePersist` is owned.
+
+The bounded dirty successor changes only Slice evidence ownership. Its WebAudio projector retains
+an **ordered same-prefix temporal route witness** for the unique post-mark oscillator through its
+same-context destination while both endpoints are simultaneously live, so normal disconnect/
+destroy teardown cannot erase valid acknowledgement evidence. It never unions unrelated historical
+edges: duplicate, missing, dead-end, false-destination, cross-context, connect-before-create and
+disjoint-time routes remain red. The phone flow closes Guide, quiesces the same-document F4
+heartbeat and keeps it quiescent through the whole phone boundary. Three independently
+early-resolving waits are each capped at 15 seconds: the post-Guide writable predecessor, the live
+Land-surface observation, and the post-Land durable writable/idle fixed point. Exactly one native
+Land action occurs between them, and the heartbeat resumes exactly once in `finally`. Predecessor
+timeout evidence retains the complete authority/persistence/coordinator state and
+`landing.lastOutcome`; the action is never retried.
+
+The combined focused boundary passes **3 files / 21 tests**; the fresh-wait ownership file also
+passes **8/8** after adding the two exact wait labels. All three TypeScript programs pass. The full
+browser-free develop profile passes **260 files / 2,675 passed / 1 skipped** (**2,676 total**),
+**34** clean art sources, **1,014/1,014** routes and **454** declared/non-inert fields. A clean
+signed candidate, hermetic tracked-input preflight and unchanged-source browser chain remain
+pending. The harness observation caps intentionally change from 6 seconds to 15 seconds; no
+gameplay, creature/genome/plant/biome/Guardian, Feed/Landing product behavior, save schema, audio
+content, product timeout, global CDP deadline, ruler, retry or browser-version policy changed.
+
+Artifact `battery-evidence` is ID `9823195109`, archive size **9,535,484 bytes**, digest
+`sha256:aeed20df4017f83aea1333547ae0d5ab07cce0d1be22d1974dadcb3f8d5dc5e9`, expiring
+`2026-09-15T22:25:29Z`. Nine Slice screenshots were retained (all except Training); Glass,
+Recovery and preview packaging correctly skipped. The approval label was removed, no retry or
+merge occurred, and this local repair creates no hosted authority.
+
+No push, label, hosted attempt, retry, PR metadata mutation, merge, release, version bump, preview
+publication or deployment is authorized. A future hosted attempt requires Nick's fresh
+authorization naming the final exact head/base, PR #35, `test-battery`,
+`actions-budget-approved`, a 92-minute maximum and no retry; merge is allowed only if that exact
+attempt is terminal green and branch protection is satisfied.
+
+**Historical seventh-attempt boundary:** Ready/open PR #35 then had **seven** consumed terminal-red
 `test-battery` attempts against exact base
 `7a9f4c1370dd84292388d718c38ff34214f6203b`. Seventh GitHub run `33542791572` tested exact
 head `2f0ded864742afd0a39bd8c3e2d53cc2550bbbda` through synthetic merge
@@ -717,7 +777,32 @@ zero-finding Slice → 12/12 Glass** chain. Exact run IDs and four deterministic
 in `audits/README.md`. No timeout, retry, point-version pin, fixed ruler, numeric ceiling or
 Settings/product semantic changed, and this local certificate creates no hosted authority.
 
-All seven PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
+The eighth exact-head authorization tested
+`c0ad51a1a63f7f649493122ab8d7d5e8588f6a9d` against the same base. GitHub run `33560546382`,
+attempt 1, used synthetic merge `f03a68d75dd03512d2dc994febc9bb18e5b52d9c`, whose tree
+`7b1d851c2ed92ecaaaf26aec8c178a0c145c74aa` is byte-identical to the exact head tree.
+Authorization job `100031692379` passed and battery job `100031723808` ran once. Root layout
+passed **787/787**. Compendium `gha-33560546382-1-compendiummem` passed **78/78** in
+**2,334,319 ms** with zero findings. Slice stopped after **1,017,899 ms** with exactly two
+independent harness findings: final-only WebAudio projection had forgotten the already-live Feed
+acknowledgement route after natural short-voice teardown, and the fresh phone flow did not
+reacquire quiescent F4 authority after first-open Guide persistence before its one Land action.
+Nine screenshots were retained; Glass, Recovery and preview packaging skipped. Artifact
+`battery-evidence` is ID `9823195109`, size **9,535,484 bytes**, digest
+`sha256:aeed20df4017f83aea1333547ae0d5ab07cce0d1be22d1974dadcb3f8d5dc5e9`, expiring
+`2026-09-15T22:25:29Z`. The run was not retried and no merge occurred.
+
+The bounded local successor preserves only an ordered same-prefix WebAudio route whose endpoints
+were simultaneously live and same-context and keeps connect-before-create/disjoint-time edges red.
+It quiesces the same-document heartbeat across three separately capped 15-second waits—post-Guide
+writable predecessor, surface observation and post-Land writable/idle fixed point—with exactly one
+native phone Land action between them, one `finally` resume, full predecessor-timeout diagnosis and
+no action retry. Focused **3 files / 21 tests**, fresh-wait **8/8**, all TypeScript programs and the
+full develop profile at **260 files / 2,675 passed / 1 skipped** are green. The 6→15-second harness
+observation-cap change affects no product timeout, global CDP deadline, ruler or retry policy. Clean
+signing, tracked-input preflight and the exact-source browser chain remain pending.
+
+All eight PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

@@ -1621,19 +1621,8 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       reasons: ['live AudioDestination route'],
     });
 
-    const destroyedSource = feedAudioProtocolEvents();
-    destroyedSource.push({
-      sessionId: FEED_AUDIO_SESSION,
-      method: 'WebAudio.audioNodeWillBeDestroyed',
-      params: { nodeId: 'oscillator-1' },
-    });
-    expect(assessGraph(projectedFeedAudioGraph(destroyedSource))).toEqual({
-      ok: false,
-      reasons: ['live AudioDestination route'],
-    });
-
-    const disconnectedRoute = feedAudioProtocolEvents();
-    disconnectedRoute.push({
+    const naturallyDisconnectedRoute = feedAudioProtocolEvents();
+    naturallyDisconnectedRoute.push({
       sessionId: FEED_AUDIO_SESSION,
       method: 'WebAudio.nodesDisconnected',
       params: {
@@ -1642,7 +1631,218 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
         destinationId: 'destination-1',
       },
     });
-    expect(assessGraph(projectedFeedAudioGraph(disconnectedRoute))).toEqual({
+    const naturallyDisconnectedGraph = projectedFeedAudioGraph(naturallyDisconnectedRoute);
+    expect(compendiumFeedWebAudioRouteNodeIds(naturallyDisconnectedGraph)).toEqual([
+      'oscillator-1', 'gain-1', 'bus-1', 'destination-1',
+    ]);
+    expect(assessGraph(naturallyDisconnectedGraph)).toEqual({ ok: true, reasons: [] });
+
+    const naturallyDestroyedSource = feedAudioProtocolEvents();
+    naturallyDestroyedSource.push({
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.audioNodeWillBeDestroyed',
+      params: { nodeId: 'oscillator-1' },
+    });
+    const naturallyDestroyedGraph = projectedFeedAudioGraph(naturallyDestroyedSource);
+    expect(compendiumFeedWebAudioRouteNodeIds(naturallyDestroyedGraph)).toEqual([
+      'oscillator-1', 'gain-1', 'bus-1', 'destination-1',
+    ]);
+    expect(assessGraph(naturallyDestroyedGraph)).toEqual({ ok: true, reasons: [] });
+
+    const naturallyDestroyedContext = feedAudioProtocolEvents();
+    naturallyDestroyedContext.push({
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.contextWillBeDestroyed',
+      params: { contextId: 'context-1' },
+    });
+    expect(assessGraph(projectedFeedAudioGraph(naturallyDestroyedContext))).toEqual({
+      ok: true,
+      reasons: [],
+    });
+
+    const fullyTornDownRoute = feedAudioProtocolEvents();
+    for (const [sourceId, destinationId] of [
+      ['oscillator-1', 'gain-1'],
+      ['gain-1', 'bus-1'],
+      ['bus-1', 'destination-1'],
+    ] as const) fullyTornDownRoute.push({
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.nodesDisconnected',
+      params: { contextId: 'context-1', sourceId, destinationId },
+    });
+    for (const nodeId of ['oscillator-1', 'gain-1', 'bus-1', 'destination-1']) {
+      fullyTornDownRoute.push({
+        sessionId: FEED_AUDIO_SESSION,
+        method: 'WebAudio.audioNodeWillBeDestroyed',
+        params: { nodeId },
+      });
+    }
+    const fullyTornDownGraph = projectedFeedAudioGraph(fullyTornDownRoute);
+    expect(assessGraph(fullyTornDownGraph)).toEqual({
+      ok: true,
+      reasons: [],
+    });
+
+    const tornDownFalseDestination = structuredClone(fullyTornDownGraph);
+    const tornDownDestination = tornDownFalseDestination.nodes.find((node) => (
+      node.nodeId === tornDownFalseDestination.destinationNodeId
+    ));
+    expect(tornDownDestination).toBeDefined();
+    tornDownDestination!.nodeType = 'Gain';
+    expect(assessGraph(tornDownFalseDestination)).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const tornDownCrossContext = structuredClone(fullyTornDownGraph);
+    const tornDownRouteNodeIds = compendiumFeedWebAudioRouteNodeIds(tornDownCrossContext);
+    expect(tornDownRouteNodeIds).toEqual([
+      'oscillator-1', 'gain-1', 'bus-1', 'destination-1',
+    ]);
+    const tornDownIntermediate = tornDownCrossContext.nodes.find((node) => (
+      node.nodeId === tornDownRouteNodeIds[1]
+    ));
+    expect(tornDownIntermediate).toBeDefined();
+    tornDownIntermediate!.contextId = 'cross-context-negative-control';
+    expect(assessGraph(tornDownCrossContext)).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const tornDownStaleInventory = structuredClone(fullyTornDownGraph);
+    const tornDownGainInventory = tornDownStaleInventory.nodeTypeInventory.find(([nodeType]) => (
+      nodeType === 'Gain'
+    ));
+    expect(tornDownGainInventory).toBeDefined();
+    tornDownGainInventory![1] += 1;
+    expect(assessGraph(tornDownStaleInventory)).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const neverConnected = feedAudioProtocolEvents().slice(0, -1);
+    expect(assessGraph(projectedFeedAudioGraph(neverConnected))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const disjointTimeRoute = [
+      feedAudioProtocolEvents()[0]!,
+      feedAudioProtocolEvents()[3]!,
+      {
+        sessionId: FEED_AUDIO_SESSION,
+        method: 'WebAudio.nodesConnected',
+        params: {
+          contextId: 'context-1', sourceId: 'oscillator-1', destinationId: 'gain-1',
+        },
+      },
+      {
+        sessionId: FEED_AUDIO_SESSION,
+        method: 'WebAudio.nodesConnected',
+        params: {
+          contextId: 'context-1', sourceId: 'gain-1', destinationId: 'destination-1',
+        },
+      },
+      feedAudioProtocolEvents()[1]!,
+    ];
+    expect(assessGraph(projectedFeedAudioGraph(disjointTimeRoute))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const duplicateLiveConnection = feedAudioProtocolEvents();
+    duplicateLiveConnection.splice(5, 0, structuredClone(duplicateLiveConnection[4]!));
+    expect(assessGraph(projectedFeedAudioGraph(duplicateLiveConnection))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const duplicateUnrelatedConnection = feedAudioProtocolEvents();
+    duplicateUnrelatedConnection.push(
+      {
+        sessionId: FEED_AUDIO_SESSION,
+        method: 'WebAudio.audioNodeCreated',
+        params: { node: {
+          nodeId: 'unrelated-1', contextId: 'context-1', nodeType: 'Gain',
+        } },
+      },
+      {
+        sessionId: FEED_AUDIO_SESSION,
+        method: 'WebAudio.audioNodeCreated',
+        params: { node: {
+          nodeId: 'unrelated-2', contextId: 'context-1', nodeType: 'Gain',
+        } },
+      },
+      {
+        sessionId: FEED_AUDIO_SESSION,
+        method: 'WebAudio.nodesConnected',
+        params: {
+          contextId: 'context-1', sourceId: 'unrelated-1', destinationId: 'unrelated-2',
+        },
+      },
+      {
+        sessionId: FEED_AUDIO_SESSION,
+        method: 'WebAudio.nodesConnected',
+        params: {
+          contextId: 'context-1', sourceId: 'unrelated-1', destinationId: 'unrelated-2',
+        },
+      },
+    );
+    expect(assessGraph(projectedFeedAudioGraph(duplicateUnrelatedConnection))).toEqual({
+      ok: true,
+      reasons: [],
+    });
+
+    const contextDestroyedBeforeRoute = feedAudioProtocolEvents().slice(0, -1);
+    contextDestroyedBeforeRoute.push({
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.contextWillBeDestroyed',
+      params: { contextId: 'context-1' },
+    }, feedAudioProtocolEvents().at(-1)!);
+    expect(assessGraph(projectedFeedAudioGraph(contextDestroyedBeforeRoute))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const destroyedBeforeRoute = feedAudioProtocolEvents().slice(0, -1);
+    destroyedBeforeRoute.push({
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.audioNodeWillBeDestroyed',
+      params: { nodeId: 'oscillator-1' },
+    }, {
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.nodesConnected',
+      params: {
+        contextId: 'context-1', sourceId: 'bus-1', destinationId: 'destination-1',
+      },
+    });
+    expect(assessGraph(projectedFeedAudioGraph(destroyedBeforeRoute))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const duplicateAfterTeardown = structuredClone(fullyTornDownRoute);
+    duplicateAfterTeardown.push({
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.audioNodeCreated',
+      params: { node: {
+        nodeId: 'oscillator-2', contextId: 'context-1', nodeType: 'Oscillator',
+      } },
+    });
+    expect(assessGraph(projectedFeedAudioGraph(duplicateAfterTeardown))).toEqual({
+      ok: false,
+      reasons: ['live AudioDestination route'],
+    });
+
+    const duplicateDestinationAfterTeardown = structuredClone(fullyTornDownRoute);
+    duplicateDestinationAfterTeardown.push({
+      sessionId: FEED_AUDIO_SESSION,
+      method: 'WebAudio.audioNodeCreated',
+      params: { node: {
+        nodeId: 'destination-2', contextId: 'context-1', nodeType: 'AudioDestination',
+      } },
+    });
+    expect(assessGraph(projectedFeedAudioGraph(duplicateDestinationAfterTeardown))).toEqual({
       ok: false,
       reasons: ['live AudioDestination route'],
     });

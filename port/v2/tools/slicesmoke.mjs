@@ -24195,12 +24195,14 @@ try {
     if (r.exceptionDetails) throw new Error('phone navigation eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
     return r.result.value;
   };
-  const waitNavPhValue = async (label, expr, timeoutMs = 6000) => {
+  const waitNavPhValue = async (
+    label, expr, timeoutMs = 6000, accept = (value) => Boolean(value),
+  ) => {
     const deadline = Date.now() + timeoutMs;
     let last = null;
     while (Date.now() < deadline) {
       last = await evalNavPh(expr);
-      if (last) return last;
+      if (accept(last)) return last;
       await sleep(50);
     }
     throw new Error(`${label} did not reach its phone outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
@@ -24250,7 +24252,9 @@ try {
           }
           return snapshot;
         }
-        last = { assessment, persistence: snapshot.state?.persistence, raw: snapshot.raw };
+        last = {
+          assessment, state: snapshot.state, raw: snapshot.raw, token: snapshot.token,
+        };
       } catch (error) {
         /* A stale-revision successor may deliberately reload once while it
            converges. Its destroyed context is a transition, never readiness. */
@@ -24460,12 +24464,76 @@ try {
     fails.push('PHONE GUIDE LAYER CONTROL FAILED — injected z22 Guide stayed above the survey: ' + JSON.stringify(phoneGuideOverCardCtl));
   }
   await evalNavPh(`(()=>{ document.querySelector('#guidepanel [data-pnx]').click(); return true; })()`);
-  const phoneLand = await evalNavPh(phoneCardActionCheck('landcta'));
-  if (phoneLand.state.mode !== 'system' || !phoneLand.state.cardOpen || !phoneLand.ok || !/Land/.test(phoneLand.label)) {
-    fails.push('PHONE PLANETFALL: Earth did not expose a reachable 44px Land action: ' + JSON.stringify(phoneLand));
+  let phoneLandHeartbeatQuiescence = null;
+  let phoneLandHeartbeatResume = null;
+  let phoneEarthLandBeforeAuthority = null;
+  let phoneEarthLandAfterAuthority = null;
+  let phoneSurface = null;
+  try {
+    phoneLandHeartbeatQuiescence = await evalNavPh(
+      'window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()',
+    );
+    if (phoneLandHeartbeatQuiescence?.schema !== 'cf-v2-f4-heartbeat-quiescence/v1'
+      || phoneLandHeartbeatQuiescence.documentToken !== freshPhoneDocumentToken
+      || phoneLandHeartbeatQuiescence.wasRunning !== true
+      || phoneLandHeartbeatQuiescence.stopped !== true
+      || phoneLandHeartbeatQuiescence.cycleSettled !== true) {
+      failSliceWithoutCascade('PHONE PLANETFALL: heartbeat did not quiesce after Guide closure and before Land: '
+        + JSON.stringify(phoneLandHeartbeatQuiescence));
+    }
+    phoneEarthLandBeforeAuthority = await waitNavPhF4Writable(
+      'phone Earth Land predecessor after Guide closure F4 authority',
+      { allowFresh: true, expectedToken: freshPhoneDocumentToken },
+    );
+    const phoneLand = await evalNavPh(phoneCardActionCheck('landcta'));
+    if (phoneLand.state.mode !== 'system' || !phoneLand.state.cardOpen || !phoneLand.ok
+      || !/Land/.test(phoneLand.label)
+      || phoneLand.state.landing?.actionCoordinator?.inFlight !== false
+      || phoneLand.state.landing?.actionCoordinator?.owner?.busy !== false
+      || phoneLand.state.landing?.actionCoordinator?.owner?.operation !== null) {
+      failSliceWithoutCascade('PHONE PLANETFALL: Earth did not expose one reachable 44px Land action on an idle predecessor: '
+        + JSON.stringify({ phoneLand, phoneEarthLandBeforeAuthority }));
+    }
+    await touchNav(phoneLand.x, phoneLand.y);
+    const phoneSurfaceEvidence = await waitNavPhValue(
+      'phone Earth landing',
+      `(()=>{const state=window.__CF_SLICE__.api.state(),action=${phoneCardActionCheck('landcta')};return {
+        ready:state.mode==='surface',state,landing:state.landing,persistence:state.persistence,
+        action,predecessor:${JSON.stringify({
+          token: phoneEarthLandBeforeAuthority.token,
+          revision: phoneEarthLandBeforeAuthority.raw?.revision,
+          runtimeRevision: phoneEarthLandBeforeAuthority.state?.persistence?.runtime?.revision,
+          lastOutcome: phoneEarthLandBeforeAuthority.state?.persistence?.lastOutcome,
+        })}
+      };})()`,
+      15_000,
+      (evidence) => evidence?.ready === true,
+    );
+    phoneSurface = phoneSurfaceEvidence.state;
+    phoneEarthLandAfterAuthority = await waitNavPhF4Writable(
+      'phone Earth Land writable surface settlement',
+      { allowFresh: true, expectedToken: freshPhoneDocumentToken },
+    );
+  } finally {
+    phoneLandHeartbeatResume = await evalNavPh(
+      'window.__CF_SLICE__.api.__smokeResumeF4Heartbeat()',
+    );
   }
-  if (phoneLand.ok) await touchNav(phoneLand.x, phoneLand.y);
-  const phoneSurface = await waitNavPhValue('phone Earth landing', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='surface'?s:null; })()`);
+  if (phoneLandHeartbeatResume?.schema !== 'cf-v2-f4-heartbeat-resume/v1'
+    || phoneLandHeartbeatResume.documentToken !== freshPhoneDocumentToken
+    || phoneLandHeartbeatResume.running !== true
+    || phoneEarthLandAfterAuthority?.token !== phoneEarthLandBeforeAuthority?.token
+    || phoneEarthLandAfterAuthority?.state?.landing?.actionCoordinator?.inFlight !== false
+    || phoneEarthLandAfterAuthority?.state?.landing?.actionCoordinator?.owner?.busy !== false
+    || phoneEarthLandAfterAuthority?.state?.landing?.actionCoordinator?.owner?.operation !== null
+    || phoneEarthLandAfterAuthority?.state?.landing?.lastOutcome
+      !== `committed:${phoneEarthLandAfterAuthority?.raw?.revision}`
+    || phoneEarthLandAfterAuthority?.state?.persistence?.lastOutcome
+      !== `arc0-land-committed:${phoneEarthLandAfterAuthority?.raw?.revision}`) {
+    failSliceWithoutCascade('PHONE PLANETFALL: heartbeat did not resume exactly once after writable Land settlement: '
+      + JSON.stringify({ phoneLandHeartbeatQuiescence, phoneEarthLandBeforeAuthority,
+        phoneEarthLandAfterAuthority, phoneLandHeartbeatResume }));
+  }
   if (!phoneSurface.save.landed.includes(133) || !phoneSurface.objective.includes('1 / 2')) {
     fails.push('PHONE PLANETFALL: touch landing did not bank exactly the first Earth outcome: ' + JSON.stringify(phoneSurface));
   }

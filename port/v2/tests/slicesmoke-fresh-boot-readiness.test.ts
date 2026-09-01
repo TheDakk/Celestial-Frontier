@@ -288,7 +288,7 @@ describe('Slice F4 fresh-boot writable authority', () => {
     });
   });
 
-  it('opts in at all 26 fresh underlying waits and nowhere else', () => {
+  it('opts in at all 28 fresh underlying waits and nowhere else', () => {
     expect(source).toContain("const desktopToken = await navigateToSlice(sess, URL0, 'desktop boot');");
     expect(source).toContain('const freshDesktopDocumentToken = desktopToken;');
     expect(source).toContain('const freshKeyboardDocumentToken = await navigateToSlice(');
@@ -314,6 +314,8 @@ describe('Slice F4 fresh-boot writable authority', () => {
       ['waitNavPhF4Writable', 'phone Milky Way card predecessor F4 authority', 'freshPhoneDocumentToken'],
       ['waitNavPhF4Writable', 'phone Milky Way arrival F4 fixed point', 'freshPhoneDocumentToken'],
       ['waitNavPhF4Writable', 'phone Earth Survey predecessor F4 authority', 'freshPhoneDocumentToken'],
+      ['waitNavPhF4Writable', 'phone Earth Land predecessor after Guide closure F4 authority', 'freshPhoneDocumentToken'],
+      ['waitNavPhF4Writable', 'phone Earth Land writable surface settlement', 'freshPhoneDocumentToken'],
       ['waitNavPhF4Writable', 'phone repeat Earth Survey predecessor F4 authority', 'freshPhoneDocumentToken'],
       ['waitNavPhF4Writable', 'phone stage-0 fine-star Survey predecessor F4 authority', 'freshPhoneDocumentToken'],
     ] as const;
@@ -348,7 +350,7 @@ describe('Slice F4 fresh-boot writable authority', () => {
       expect(call, label).toContain('allowFresh: true');
       expect(call, label).toContain(`expectedToken: ${token}`);
     }
-    expect(source.match(/allowFresh: true/gu)).toHaveLength(29);
+    expect(source.match(/allowFresh: true/gu)).toHaveLength(31);
   });
 
   it('keeps reload/replacement descendants current-only', () => {
