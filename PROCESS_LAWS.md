@@ -33,10 +33,19 @@
 > invalid topology red. The combined focused boundary passes **3 files / 21 tests**; the fresh-wait
 > ownership file separately passes **8/8**; all three TypeScript programs pass; and the complete
 > browser-free develop profile passes **260 files / 2,675 passed / 1 skipped** (**2,676 total**),
-> **34** clean art sources, **1,014/1,014** routes and **454** declared/non-inert fields. Clean
-> signing, tracked-input preflight and exact-source browser verification remain pending. It changes
-> no product audio, gameplay, Feed semantics, save schema, creature/flora state, product timeout,
-> global CDP deadline, ruler, retry or browser policy.
+> **34** clean art sources, **1,014/1,014** routes and **454** declared/non-inert fields. Exact clean
+> SSH-signed source `7a8d3a59b6b516700e45737ec6b67a242a5f785d` / tree
+> `517bf3e159a5694ea8e0f12a0e92b127329e6829` passed that boundary hermetically, then completed one
+> unchanged-source/no-retry, named-verified local develop chain on Edge `152.0.4191.53` / CDP
+> `1.3`: Compendium `20260901230136598-19910-e9b7eb9b5e` passed **78/78**; Slice
+> `20260901230304318-20264-c5997bf96c8f` passed with zero findings/scopes and report SHA-256
+> `12e9b7976dc42c39268f14f27d3945aba73e010387e1c39dff6746aafd832c8a`; Glass
+> `20260901230935469-20802-a0d3c9067c92` consumed that exact Slice and passed **12/12** viewports,
+> **104/104** controls and **36/36** Arc 4 outcomes with zero findings/instrument failures and
+> report SHA-256 `c9dcc93e1c457f2fab04ef821665f6910912a669d275b41509d9a89149e45b64`.
+> The compatible browser point version is provenance only. This changes no product audio,
+> gameplay, Feed semantics, save schema, creature/flora state, product timeout, global CDP
+> deadline, ruler, retry or browser policy.
 
 > **AN INTERVENING UI ACTION THAT MAY PERSIST INVALIDATES A DEPENDENT MUTATION'S OLD WRITABILITY
 > PROOF** (2026-09-01). Opening or closing a panel can be product-significant even when it looks
@@ -62,9 +71,11 @@
 > `activePersist` is owned. The bounded successor adds the three post-Guide waits above, retains
 > heartbeat quiescence through one Land action and durable settlement, resumes once in `finally`,
 > and preserves full predecessor-timeout diagnosis. Its browser-free verification is included in
-> the green counts above. The harness observation caps intentionally change from 6 seconds to 15
-> seconds; no Landing/product behavior, save schema, route semantics, product timeout, global CDP
-> deadline, ruler or retry policy changed.
+> the green counts above. Exact 7a8d3a5's named-verified Slice and Glass chain above certifies the
+> repaired phone journey on the same unchanged source. The harness observation caps intentionally
+> change from 6 seconds to 15 seconds; no Landing/product behavior, save schema, route semantics,
+> product timeout, global CDP deadline, ruler or retry policy changed. The evidence/docs descendant
+> still requires its own tracked-input proof and creates no hosted or merge authority.
 
 > **A CDP COMMAND OWNS ONE BOUNDED ACTION, NOT AN ENTIRE PERSISTENCE CAMPAIGN**
 > (2026-09-01). Never place a table of UI mutations, debounce waits and durable checks inside one

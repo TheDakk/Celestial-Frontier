@@ -10,7 +10,7 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 Feed-audio lifetime + post-Guide phone-Land predecessor stop
+### Current PR #35 Feed-audio/phone-Land hosted stop and exact local certificate
 
 PR #35 GitHub run `33560546382` was the eighth exact authorized `test-battery` attempt. It tested
 head `c0ad51a1a63f7f649493122ab8d7d5e8588f6a9d` (tree
@@ -72,7 +72,7 @@ digest `sha256:aeed20df4017f83aea1333547ae0d5ab07cce0d1be22d1974dadcb3f8d5dc5e9`
   **343,139 bytes**, SHA-256
   `3b352cc9cc28270cdbd81781eed832d8176f9b6960c05982b3ff5d4de730e58c`.
 
-The bounded dirty successor changes only evidence ownership. The WebAudio projector records an
+The bounded implementation repair changes only evidence ownership. The WebAudio projector records an
 **ordered same-prefix temporal route witness** from the unique post-source-mark oscillator through
 its same-context destination only while both endpoints are simultaneously live. Natural
 disconnect/destroy teardown may close that route but cannot erase the witness. It is deliberately
@@ -87,13 +87,60 @@ retried.
 
 The combined focused boundary passes **3 files / 21 tests**. The fresh-wait ownership file
 separately passes **8/8** after the two exact new wait labels were added. All three TypeScript
-programs pass. The complete browser-free develop profile passes **260 files / 2,675 passed / 1
-skipped** (**2,676 total**), **34** clean art sources, **1,014/1,014** routes and **454** declared/
-non-inert fields. Clean signing, tracked-input preflight and exact-source browser certification are
-still pending. The phone harness observation caps intentionally change from 6 seconds to 15
-seconds; product Feed/Landing behavior, saves, creatures, flora, gameplay/audio content, product
-timeouts, the global CDP deadline, rulers and retry policy are unchanged. This repair grants no
-push, hosted, merge, release, preview or deployment authority.
+programs pass. Exact clean SSH-signed implementation source
+`7a8d3a59b6b516700e45737ec6b67a242a5f785d` (tree
+`517bf3e159a5694ea8e0f12a0e92b127329e6829`) passed the hermetic tracked-input develop preflight
+at **260 files / 2,675 passed / 1 skipped** (**2,676 total**), **34** clean art sources,
+**1,014/1,014** routes and **454** declared/non-inert fields.
+
+That exact unchanged source supplied one serial, fail-fast/no-retry local develop chain on Edge
+`152.0.4191.53` / CDP `1.3`; the compatible point version is provenance only. Every stage ran once
+and every named verifier passed:
+
+- Compendium `20260901230136598-19910-e9b7eb9b5e` passed **78/78** with zero findings/blocked
+  outcomes in **65,672 ms**. Its raw report is **10,826,781 bytes**, SHA-256
+  `4755265dc7a6cad71355de446f79eae6e415ffc1b3c90c5b3f8c0c48566c6b3c`.
+- Develop Slice `20260901230304318-20264-c5997bf96c8f` passed terminal certifying with zero
+  findings/scopes and ten screenshots in **376,101 ms**. Its raw report is **6,126 bytes**, SHA-256
+  `12e9b7976dc42c39268f14f27d3945aba73e010387e1c39dff6746aafd832c8a`; its raw log is
+  **6,950 bytes**, SHA-256
+  `887e9d3d1fc30694de01c92a85309e56e8b46f1988950859deaec444e9ea63e5`.
+- Full-certifying Glass `20260901230935469-20802-a0d3c9067c92` consumed that exact Slice ID/report
+  and passed **12/12** viewports, **12/12** reload rows, **104/104** controls and **36/36** Arc 4
+  outcomes with zero findings/instrument failures in **116,633 ms**. Its raw report is **898,861
+  bytes**, SHA-256 `c9dcc93e1c457f2fab04ef821665f6910912a669d275b41509d9a89149e45b64`.
+
+The four exact 7a8d3a5 carriers pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.json.gz`:
+  **451,640 bytes**, SHA-256
+  `1d79a88cf8ff8cee9a08c960bb98547283771fac080a3dd144e1438ab597677a`; raw
+  **10,826,781 bytes**, SHA-256
+  `4755265dc7a6cad71355de446f79eae6e415ffc1b3c90c5b3f8c0c48566c6b3c`.
+- `ARC4_SLICE_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.json.gz`:
+  **1,958 bytes**, SHA-256
+  `dbc970ccb09c4a0464fa6a77f300d2a377fd1d6807d82aea9da01680cd761abf`; raw
+  **6,126 bytes**, SHA-256
+  `12e9b7976dc42c39268f14f27d3945aba73e010387e1c39dff6746aafd832c8a`.
+- `ARC4_SLICE_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.log.gz`:
+  **3,290 bytes**, SHA-256
+  `42e1b210af89ec4a39c7a17f9b3280ffec364374f41e33808dd7aa4f891b4518`; raw
+  **6,950 bytes**, SHA-256
+  `887e9d3d1fc30694de01c92a85309e56e8b46f1988950859deaec444e9ea63e5`.
+- `ARC4_GLASS_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.json.gz`:
+  **78,874 bytes**, SHA-256
+  `4ca9229fe850dde37f5dd6641c0d628ce352fc0c9c84b56e0af1a39e4b43a660`; raw
+  **898,861 bytes**, SHA-256
+  `c9dcc93e1c457f2fab04ef821665f6910912a669d275b41509d9a89149e45b64`.
+
+SceneMemory remains production-only/quarantined and Recovery remains outside `develop`. The phone
+harness observation caps intentionally change from 6 seconds to 15 seconds; product Feed/Landing
+behavior, saves, creatures, flora, gameplay/audio content, product timeouts, the global CDP
+deadline, rulers and retry policy are unchanged. The evidence/docs-only descendant adds only these
+four carriers and synchronized references; its SHA is intentionally not self-embedded. Resolve it
+with `git rev-parse HEAD` after commit and pass its final tracked-input develop preflight without
+rerunning or rebinding 7a8d3a5's browser certificate. This local certificate grants no push,
+hosted, merge, release, preview or deployment authority.
 
 ### Historical PR #35 writable-Settings command-deadline stop and bounded local successor
 

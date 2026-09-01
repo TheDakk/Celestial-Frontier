@@ -42,8 +42,23 @@
 > passes **8/8** after adding the two exact new wait labels. All three TypeScript programs pass. The
 > full browser-free develop profile passes **260 files / 2,675 passed / 1 skipped** (**2,676
 > total**), **34** clean art sources, **1,014/1,014** routes and **454** declared/non-inert fields.
-> Clean signing, tracked-input preflight and exact-source browser verification remain pending. Exact
-> hosted evidence is indexed in `audits/README.md`; artifact `battery-evidence` is ID
+> Exact clean SSH-signed source `7a8d3a59b6b516700e45737ec6b67a242a5f785d` / tree
+> `517bf3e159a5694ea8e0f12a0e92b127329e6829` passed that profile through the hermetic tracked-input
+> preflight, then completed one unchanged-source/no-retry named-verified local develop chain on Edge
+> `152.0.4191.53` / CDP `1.3`: Compendium `20260901230136598-19910-e9b7eb9b5e` passed **78/78**
+> in **65,672 ms**; Slice `20260901230304318-20264-c5997bf96c8f` passed terminal certifying with
+> zero findings/scopes and ten screenshots in **376,101 ms**; Glass
+> `20260901230935469-20802-a0d3c9067c92` consumed that exact Slice and passed **12/12** viewports,
+> **12/12** reload rows, **104/104** controls and **36/36** Arc 4 outcomes with zero findings/
+> instrument failures in **116,633 ms**. Report/log hashes and the four deterministic PASS carriers
+> are indexed in `audits/README.md`. SceneMemory remains production-only/quarantined and Recovery
+> remains outside `develop`.
+>
+> The evidence/docs-only descendant adds only those four PASS carriers and synchronized references;
+> its SHA is intentionally not self-embedded. Resolve it with `git rev-parse HEAD` after commit and
+> pass its final tracked-input develop preflight without rerunning or rebinding 7a8d3a5's browser
+> certificate. Exact hosted evidence is also indexed in `audits/README.md`; artifact
+> `battery-evidence` is ID
 > `9823195109`, size **9,535,484 bytes**, digest
 > `sha256:aeed20df4017f83aea1333547ae0d5ab07cce0d1be22d1974dadcb3f8d5dc5e9`. No gameplay,
 > creature/genome/plant/biome/Guardian structure, Feed/Landing behavior, save schema, audio content,

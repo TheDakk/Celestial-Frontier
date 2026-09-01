@@ -28,7 +28,10 @@ high-confidence root-cause inference: first-open Guide starts the legitimate `se
 persistence write, the harness closed Guide and touched Land without reacquiring same-document
 quiescent F4 authority, and product Landing refuses while `activePersist` is owned.
 
-The bounded dirty successor changes only Slice evidence ownership. Its WebAudio projector retains
+Exact clean SSH-signed implementation source
+`7a8d3a59b6b516700e45737ec6b67a242a5f785d` (tree
+`517bf3e159a5694ea8e0f12a0e92b127329e6829`) changes only Slice evidence ownership. Its WebAudio
+projector retains
 an **ordered same-prefix temporal route witness** for the unique post-mark oscillator through its
 same-context destination while both endpoints are simultaneously live, so normal disconnect/
 destroy teardown cannot erase valid acknowledgement evidence. It never unions unrelated historical
@@ -42,12 +45,29 @@ timeout evidence retains the complete authority/persistence/coordinator state an
 `landing.lastOutcome`; the action is never retried.
 
 The combined focused boundary passes **3 files / 21 tests**; the fresh-wait ownership file also
-passes **8/8** after adding the two exact wait labels. All three TypeScript programs pass. The full
-browser-free develop profile passes **260 files / 2,675 passed / 1 skipped** (**2,676 total**),
-**34** clean art sources, **1,014/1,014** routes and **454** declared/non-inert fields. A clean
-signed candidate, hermetic tracked-input preflight and unchanged-source browser chain remain
-pending. The harness observation caps intentionally change from 6 seconds to 15 seconds; no
-gameplay, creature/genome/plant/biome/Guardian, Feed/Landing product behavior, save schema, audio
+passes **8/8** after adding the two exact wait labels. All three TypeScript programs pass. Exact
+7a8d3a5 passed the hermetic tracked-input develop preflight at **260 files / 2,675 passed / 1
+skipped** (**2,676 total**), **34** clean art sources, **1,014/1,014** routes and **454**
+declared/non-inert fields.
+
+That unchanged source then completed one serial, fail-fast/no-retry local develop chain on Edge
+`152.0.4191.53` / CDP `1.3`; the point version is provenance only. Every named verifier passed:
+Compendium `20260901230136598-19910-e9b7eb9b5e` passed **78/78** in **65,672 ms** with zero
+findings/blocked outcomes; Slice `20260901230304318-20264-c5997bf96c8f` passed terminal certifying
+under `develop` in **376,101 ms** with zero findings/scopes and ten screenshots, report/log SHA-256
+`12e9b7976dc42c39268f14f27d3945aba73e010387e1c39dff6746aafd832c8a` /
+`887e9d3d1fc30694de01c92a85309e56e8b46f1988950859deaec444e9ea63e5`; Glass
+`20260901230935469-20802-a0d3c9067c92` consumed that exact Slice and passed **12/12** viewports,
+**12/12** reload rows, **104/104** controls and **36/36** Arc 4 outcomes in **116,633 ms** with
+zero findings/instrument failures and report SHA-256
+`c9dcc93e1c457f2fab04ef821665f6910912a669d275b41509d9a89149e45b64`. SceneMemory remains
+production-only/quarantined and Recovery remains outside `develop`.
+
+The evidence/docs-only descendant contains only the four exact PASS carriers and synchronized
+references; its SHA is intentionally not self-embedded. Resolve it with `git rev-parse HEAD` after
+commit, then run the final tracked-input develop preflight. It does not rebind or rerun 7a8d3a5's
+browser certificate. The harness observation caps intentionally change from 6 seconds to 15
+seconds; no gameplay, creature/genome/plant/biome/Guardian, Feed/Landing product behavior, save schema, audio
 content, product timeout, global CDP deadline, ruler, retry or browser-version policy changed.
 
 Artifact `battery-evidence` is ID `9823195109`, archive size **9,535,484 bytes**, digest
@@ -792,15 +812,18 @@ Nine screenshots were retained; Glass, Recovery and preview packaging skipped. A
 `sha256:aeed20df4017f83aea1333547ae0d5ab07cce0d1be22d1974dadcb3f8d5dc5e9`, expiring
 `2026-09-15T22:25:29Z`. The run was not retried and no merge occurred.
 
-The bounded local successor preserves only an ordered same-prefix WebAudio route whose endpoints
+Exact clean SSH-signed source `7a8d3a59b6b516700e45737ec6b67a242a5f785d` preserves only an
+ordered same-prefix WebAudio route whose endpoints
 were simultaneously live and same-context and keeps connect-before-create/disjoint-time edges red.
 It quiesces the same-document heartbeat across three separately capped 15-second waits—post-Guide
 writable predecessor, surface observation and post-Land writable/idle fixed point—with exactly one
 native phone Land action between them, one `finally` resume, full predecessor-timeout diagnosis and
 no action retry. Focused **3 files / 21 tests**, fresh-wait **8/8**, all TypeScript programs and the
-full develop profile at **260 files / 2,675 passed / 1 skipped** are green. The 6→15-second harness
-observation-cap change affects no product timeout, global CDP deadline, ruler or retry policy. Clean
-signing, tracked-input preflight and the exact-source browser chain remain pending.
+hermetic develop preflight at **260 files / 2,675 passed / 1 skipped** are green. One unchanged-
+source, no-retry, named-verified **78/78 Compendium → zero-finding Slice → 12/12 Glass** chain is
+also terminal green; exact IDs/hashes are indexed in `audits/README.md`. The 6→15-second harness
+observation-cap change affects no product timeout, global CDP deadline, ruler or retry policy. Only
+the evidence/docs descendant's final tracked-input proof and fresh exact-head authorization remain.
 
 All eight PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.
