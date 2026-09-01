@@ -21,12 +21,18 @@
 > controlled diagnostic; default readiness remains strict. No timeout, retry, Edge pin/rebaseline,
 > ruler, art, creature, plant, biome, Guardian, gameplay balance or save-schema change is involved.
 >
-> A full local Slice passed on the dirty repair tree, but that is diagnostic evidence only and has
-> no invented run ID or report hash. A fresh signed candidate, tracked develop profile and one
-> unchanged-source **Compendium → Slice → Glass** chain remain required before any new exact-head
-> hosted request. SceneMemory remains production-only/quarantined and Recovery remains outside the
-> develop chain. No Gate, Arc, HUMAN, preview, merge, release, version, publication or deployment
-> authority changes here.
+> Exact clean SSH-signed source `a45220421195042a8702aa1265e96d40d839fc38` passed the tracked
+> develop profile at **259 files / 2,665 passed / 1 skipped**. Its unchanged-source, once/no-retry
+> chain passed every named verifier: Compendium `20260901164254371-82172-eaeba62d1a` completed
+> **78/78** in **65,076 ms**; Slice `20260901164421191-82525-616ea739fbb1` completed with zero
+> findings/scopes in **361,371 ms** and report SHA-256
+> `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`; Glass
+> `20260901165038911-82999-7c3323ea05c7` consumed that exact Slice, passed all **12/12** viewports
+> with zero findings/instrument failures in **113,150 ms**, and has report SHA-256
+> `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`. This locally certifies
+> the bounded repair. SceneMemory remains production-only/quarantined and Recovery remains outside
+> the develop chain. No hosted authority, push, merge, Gate, Arc, HUMAN, preview, release, version,
+> publication or deployment authority follows.
 
 > **2026-09-01 current Share-waiter lexical-scope boundary (supersedes older “current” labels;
 > dated evidence remains immutable):** exact clean SSH-signed source

@@ -18,12 +18,18 @@
 > then stopped once/no-retry after **206,138 ms** with exactly one harness finding:
 > `universe-to-galaxy zoom did not reach its browser outcome within 6000ms (last null)`. Glass and
 > Recovery correctly did not run. The exact authorization is consumed and the red is immutable.
-> The bounded successor adds an identity-cleared, diagnostics-only `activePersist` hold that creates
-> no IndexedDB write, revision, receipt or product mutation, and makes the browser prove the exact
-> held/release/one-arrival sequence with structured state instead of nullable evidence. A dirty-tree
-> current-tree Slice pass, including the held-intent control and all ten screenshots, is diagnostic
-> only; signed tracked-input and unchanged-source Compendium → Slice → Glass evidence remain
-> required before any new hosted request.
+> Exact clean SSH-signed successor `a45220421195042a8702aa1265e96d40d839fc38` adds an identity-
+> cleared, diagnostics-only `activePersist` hold that creates no IndexedDB write, revision, receipt
+> or product mutation, and makes the browser prove the exact held/release/one-arrival sequence with
+> structured state instead of nullable evidence. Its tracked-input develop rehearsal passed **259
+> files / 2,665 passed / 1 skipped**. Compendium `20260901164254371-82172-eaeba62d1a` passed
+> **78/78** and named verification; Slice `20260901164421191-82525-616ea739fbb1` passed with zero
+> findings/scopes and named-verified report SHA-256 `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`;
+> Glass `20260901165038911-82999-7c3323ea05c7` consumed that exact Slice, passed **12/12**
+> viewports with zero findings/instrument failures and named-verified report SHA-256
+> `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`. Every browser stage ran
+> once/no-retry on one unchanged source. SceneMemory remains production-only/quarantined and
+> Recovery remains outside `develop`; the certificate grants no hosted, push or merge authority.
 
 > **A SHARED HARNESS HELPER MUST BE LEXICALLY OWNED BY EVERY EXECUTION MODE THAT CALLS IT**
 > (2026-09-01). A helper may be correct, source-present and fully covered in one journey while a

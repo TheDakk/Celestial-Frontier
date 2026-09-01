@@ -18,10 +18,16 @@
 > readiness. No timeout/retry, browser pin, ruler, art, creature, plant, biome, Guardian, gameplay,
 > balance or save-schema deviation was introduced.
 >
-> The dirty-tree full local Slice pass is diagnostic only; it has no claimed certification ID or
-> hash. A fresh signed candidate, tracked develop profile and unchanged-source **Compendium → Slice
-> → Glass** chain remain pending. Gate/Arc/HUMAN and preview status are unchanged, and there is no
-> merge, release, version, publication or deployment authority.
+> Exact clean SSH-signed source `a45220421195042a8702aa1265e96d40d839fc38` passed the tracked
+> develop profile at **259 files / 2,665 passed / 1 skipped**, then completed one unchanged-source,
+> once/no-retry, named-verified chain: Compendium `20260901164254371-82172-eaeba62d1a` passed
+> **78/78**; Slice `20260901164421191-82525-616ea739fbb1` passed with report SHA-256
+> `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`; Glass
+> `20260901165038911-82999-7c3323ea05c7` consumed that exact Slice, passed all **12/12** viewports,
+> and has report SHA-256
+> `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`. Gate/Arc/HUMAN and
+> preview status are unchanged, and there is no hosted authority, push, merge, release, version,
+> publication or deployment authority.
 
 > **2026-09-01 current Slice Share-waiter lexical-scope instrument-only deviation (canonical
 > handoff in `../../ROADMAP.md`):** exact clean SSH-signed source
@@ -169,11 +175,13 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   `activePersist` hold makes the real browser prove busy refusal, unchanged durable authority,
   release, replay of the same intent and exactly one arrival; it performs no IndexedDB write,
   revision, receipt or product mutation. The exact initial-document control alone permits
-  `migrated-v4` readiness, while all default readiness stays strict. A dirty-tree full local Slice
-  pass is diagnostic only. Fresh signed/tracked and immutable Compendium → Slice → Glass evidence
-  remains required. There is no timeout/retry, Edge pin/rebaseline, numeric-ruler, gameplay,
-  save-schema, art or creature-system deviation, and no hosted, merge, Gate/HUMAN, preview or
-  release authority follows.
+  `migrated-v4` readiness, while all default readiness stays strict. Exact clean SSH-signed source
+  `a45220421195042a8702aa1265e96d40d839fc38` passed **259 files / 2,665 passed / 1 skipped** and
+  the once/no-retry named-verified Compendium `20260901164254371-82172-eaeba62d1a` → Slice
+  `20260901164421191-82525-616ea739fbb1` (`d9c4abec…902b`) → Glass
+  `20260901165038911-82999-7c3323ea05c7` (`2554d684…c887`) chain. There is no timeout/retry,
+  Edge pin/rebaseline, numeric-ruler, gameplay, save-schema, art or creature-system deviation, and
+  no hosted authority, push, merge, Gate/HUMAN, preview or release authority follows.
 - ◐ **D-PR35-SHARE-SEQUENCE-FIXED-POINT — Slice models Share plus conditional aggregate
   progression as one causal sequence.** Exact c0 product evidence advanced Shares 4→5 through
   `arc9-share-send-v1` then `arc9-progression-refresh-v1`; `share5` joined while best rank and

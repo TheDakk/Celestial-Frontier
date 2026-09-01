@@ -16,16 +16,25 @@ after **206,138 ms** with exactly one harness finding:
 screenshots were retained; Glass, Recovery and preview packaging correctly skipped. The label was
 removed, PR #35 remains Ready/open/unmerged, and no retry or merge occurred.
 
-The bounded dirty successor fixes a real automatic-travel liveness defect: galaxy and wormhole
-one-shot latches now claim only from the mutable owner's synchronous callback after coordinator and
-`activePersist` ownership and before its first await. Its diagnostics-only held-persistence control
-writes no save/revision/receipt and retains structured failure state. Focused **79/79**, syntax,
-diff hygiene, all TypeScript programs and the complete **259-file / 2,665-pass / 1-skip** develop
-profile pass. A full current dirty-tree Slice also passes with all ten screenshots and zero console
-errors, but is diagnostic rather than a clean-source certificate. Exact clean signed source `4a595e2…` and its prior
-local Compendium → Slice → Glass chain remain immutable historical evidence only; neither certifies
-this changed source. Fresh clean signing, tracked-input proof and one unchanged-source develop
-Compendium → Slice → Glass chain remain required.
+Exact local SSH-signed implementation source
+`a45220421195042a8702aa1265e96d40d839fc38` fixes the automatic-travel liveness defect: galaxy
+and wormhole one-shot latches now claim only from the mutable owner's synchronous callback after
+coordinator and `activePersist` ownership and before its first await. Its diagnostics-only held-
+persistence control writes no save/revision/receipt and retains structured failure state. Focused
+**79/79**, syntax, diff hygiene, all TypeScript programs and both the ordinary and hermetic
+tracked-input **259-file / 2,665-pass / 1-skip** develop profiles pass.
+
+That exact clean committed source then passed one unchanged-source, fail-fast/no-retry, named-
+verified local develop chain: Compendium `20260901164254371-82172-eaeba62d1a` passed **78/78**;
+Slice `20260901164421191-82525-616ea739fbb1` passed with zero findings/scopes and report SHA-256
+`d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`; Glass
+`20260901165038911-82999-7c3323ea05c7` consumed that exact Slice and passed **12/12** viewports
+with zero findings/instrument failures and report SHA-256
+`2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`. Every stage ran once.
+SceneMemory remains production-only/quarantined and Recovery remains outside `develop`. The
+signed evidence/docs-only branch head is clean and passes the hermetic tracked-input `develop`
+profile at **259 files / 2,665 passed / 1 skipped**. It does not require rerunning or rebinding
+a452204's exact browser chain. Exact 4a595e2 evidence remains historical only.
 
 No push, label, hosted attempt, retry, PR metadata mutation, merge, release, version bump, preview
 publication or deployment is authorized. A future hosted attempt requires Nick's fresh
