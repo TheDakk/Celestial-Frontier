@@ -1,41 +1,38 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-09-01 current v2 Survey-surface expression boundary (matches local code as of
-> 2026-09-01; supersedes older “current” labels; browser chain pending):** exact clean SSH-signed
-> source `138cdee0d3840efd899b5ebdbe974fd12d87e828` passed its tracked-input develop preflight at
-> **258 files / 2,628 passed / 1 skipped**, browser-CDP selftest and live preflight. Compendium
-> `20260901055749358-33363-aa39fce457` passed **78/78** once/no-retry in **64,730 ms** with named
-> verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped after
-> **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Its three early-core-flow
-> surface helpers, shared by eleven callsites, evaluated the action IIFE and then called the
-> returned object. This was a harness-only object-as-function exception with no product throw.
-> Glass did not run, and 138cdee was not retried.
+> **2026-09-01 current v2 collision Share/progression sequence boundary (matches local code as of
+> 2026-09-01; supersedes older “current” labels; fresh browser chain pending):** exact clean
+> SSH-signed source `c0f7215bd1ec932f6357b6cfc1e045b5644ba389` (tree `ecdc8623…`, parent
+> `138cdee0…`) crossed the repaired Survey surface-expression boundary on Edge `152.0.4191.53`
+> / CDP `1.3`. Compendium `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry
+> in **64,697 ms** with zero findings/blocked outcomes, six review PNGs and named verification.
+> Exact-source Slice `20260901061722706-38658-429913af5517` then stopped after **337,110 ms**
+> with exactly **1 finding / 1 scope**, `collision-share-1`, and ten screenshots. Glass did not run.
 >
-> F4 boot kind is immutable provenance, not a readiness state. `assessF4ReadyAuthority` remains
-> `current-v5` by default and accepts `fresh-v5` only when an explicitly named initial-page caller
-> supplies the exact original document token with no previous token. Desktop, isolated-keyboard and
-> fresh-phone same-document journeys bind that token through their predecessor and settlement
-> waits; reload/replacement/current-document paths cannot opt in. The shared contract also requires
-> ready persistence, no hold or pending write, current visible/answerable/lease-owned/accruing
-> runtime, and exact live↔raw revision plus SessionRNG parity. It rejects missing/unknown boot kind,
-> absent/short/drifted tokens, previous-token fresh binds, missing scene resources and pending
-> writes. Existing exact Survey receipt/revision/persistence, route/render/card/action,
-> coordinator-idle and causal-stop rules remain unchanged.
+> The product correctly advanced revision/ordinal/Shares **13/8/4 → 15/10/5**, appending
+> `arc9-share-send-v1` then conditional `arc9-progression-refresh-v1`; `share5` joined, best
+> rank remained 3 and SessionRNG did not move. The old one-receipt harness oracle rejected this
+> correct action-owner-plus-aggregate fixed point.
 >
-> The dirty testing-only successor centralizes the object-valued Survey surface in exported
-> `buildEarlyCoreFlowActionSurfaceExpression`; desktop, isolated-keyboard and phone evaluators all
-> consume it. Its executable/source-inventory control proves the returned object and one action
-> evaluation, and rejects the historical outer call. Focused verification passed **2 files / 52
-> tests**, all three TypeScript programs passed, and final develop passed **258 files / 2,629 passed
-> / 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields.
-> Independent final review is **APPROVED**. Producer authority remains
-> `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. The successor is unsigned;
-> its exact committed-source tracked-input and browser chain remain pending.
+> The dirty testing-only successor changes no product source. `READ_F4_AUTHORITY_EXPRESSION`
+> reads canonical `catalog`/`v5:catalog` in the same read-only transaction as revision, player
+> and receipts. The predecessor cross-binds the exact catalog schema/segment and codex/surveyed/gals
+> arrays to legacy raw, while binding existing live `codexCount`, `stats.surveys`, best and
+> hybrids; the successor preserves both representations. One Share receipt is always required and
+> exactly one progression tail is conditionally required. Same-token spans and two consecutive
+> exact samples apply across all six Share sites. The c0 fixture carries its exact captured 26
+> unlock IDs, rank projection covers every threshold/factor plus permanent saved-rank no-demotion,
+> and every helper output is bound to its waiter's arguments. Focused verification is **57/57** and
+> all TypeScript programs pass. The complete develop profile passes **259 files / 2,659 passed / 1
+> skipped**, **34** clean art
+> sources, **1,014/1,014** routes and **454** non-inert fields. Independent final review is
+> **APPROVED**. The clean signed candidate, tracked-input rehearsal and fresh browser chain remain
+> pending.
 >
-> Product save semantics/schema, gameplay, deterministic generation, presentation, art/audio,
-> creature/genome/plant/biome/Guardian structure, numeric rulers, timeout/retry and browser-version
-> policy are unchanged. Five hosted attempts remain consumed; every label is absent and no current
-> hosted, merge or release authority exists.
+> Product save semantics/schema, Share/gameplay behavior, deterministic generation, presentation,
+> art/audio, creature/genome/plant/biome/Guardian structure, numeric rulers, timeout/retry and
+> browser-version policy are unchanged. Five hosted attempts remain consumed; every label is absent
+> and no current hosted, merge or release authority exists.
 
 > **2026-08-31 historical terminal-green Compendium raw failure-cleanup boundary (superseded by
 > the current certified boundary above; exact evidence remains immutable):** exact clean
@@ -3858,8 +3855,11 @@ the first verified conquest → `settle1`; verified player combat ending at 1–
 world Share → `share`; accepted source-proven/reach-authorized CF1 Follow → `wayfarer`; canonical
 Survey facts → `civ`, `spacefar`, `sol`, `binary` and the eight star-kind witnesses; source-proved
 travel → `worm`, `quasar`, and `dwarfg`; and explicit Atlas Favorite → `curator`. Share joins
-`stats.shares` before the independent clipboard result. Follow composes `stats.jumps`, its accepted
-saved route, galaxy visit, `wayfarer`, and any proved galaxy-kind event in one receipt; ordinary
+`stats.shares` and `share` in its one owning `arc9-share-send-v1` receipt before the independent
+clipboard result. After that owner settles, aggregate progression may append exactly one separate
+`arc9-progression-refresh-v1` receipt when fifth Share projects `share5` or the post-Share
+aggregate score raises best rank; otherwise no tail is written. Follow composes `stats.jumps`, its
+accepted saved route, galaxy visit, `wayfarer`, and any proved galaxy-kind event in one receipt; ordinary
 Search/Atlas/direct arrival uses the travel receipt without earning Follow. Atlas Favorite changes
 only the exact row's `fav` field in place, preserving its WeakMap route sidecar; false-to-true owns
 `curator`, unfavorite never removes it, and unchanged state is receipt-free. Main publishes each
@@ -4384,6 +4384,23 @@ but-wrong live/raw revision/seed/ordinal/draw controls. Focused 73/73, all TypeS
 the 257-file/2,622-pass/1-skip develop profile are green; two reviews are APPROVED. This does not
 become current browser evidence until a clean candidate passes tracked-input preflight and one
 unchanged-source Compendium → Slice → Glass chain.
+
+**Current Slice Share action-sequence contract (2026-09-01; browser-free verified):** a
+generic writable F4 observation may sit between Share's owning receipt and its queued aggregate
+progression receipt, so it is not the action fixed point. `READ_F4_AUTHORITY_EXPRESSION` reads
+canonical `catalog`/`v5:catalog` in the same read-only transaction as revision/player/receipts.
+The predecessor cross-binds catalog schema/segment plus exact codex/surveyed/gals arrays to legacy
+raw, and binds existing live `codexCount`, `stats.surveys`, best and hybrids. The successor must
+preserve both catalog and legacy inputs. Exactly one `arc9-share-send-v1` is required, followed by
+exactly one `arc9-progression-refresh-v1` only when fifth Share adds `share5` or aggregate score
+raises best rank. Same-token receipt/revision/ordinal/SessionRNG spans, final outcome and two
+consecutive exact samples are mandatory. The c0 fixture uses the exact captured 26 unlock IDs,
+rank-oracle parity covers every threshold/factor including permanent saved-rank no-demotion, and
+all six Share helper outputs are bound to their waiter arguments. Focused **57/57**, all TypeScript
+programs and complete develop **259 files
+/ 2,659 passed / 1 skipped** are green, with **34** clean art sources, **1,014/1,014** routes,
+**454** non-inert fields and independent review **APPROVED**. Clean signing/tracked-input and the
+fresh unchanged-source browser chain remain pending. This is a harness-only repair.
 
 **Current Glass causal/presentation contract (2026-08-31):** the first instrument red retains one
 root failure, blocks dependent controls and stops later viewport work. The first product red likewise

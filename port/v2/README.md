@@ -1,29 +1,30 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-09-01 current Survey-surface expression Slice boundary (supersedes older “current” labels;
-> dated evidence remains immutable):** exact clean SSH-signed source
-> `138cdee0d3840efd899b5ebdbe974fd12d87e828` passed its tracked-input develop preflight at **258
-> files / 2,628 passed / 1 skipped**, changed-Slice browser-CDP selftest and live preflight.
-> Compendium `20260901055749358-33363-aa39fce457` passed **78/78** once/no-retry in **64,730 ms**
-> with named verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped
-> after **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Three shared early-
-> core-flow surface helpers, serving eleven callsites, evaluated their action IIFE and then called
-> the returned object. This was a harness-only object-as-function exception with no product throw.
-> Glass did not run, and 138cdee was not retried or relabelled.
+> **2026-09-01 current collision Share/progression sequence boundary (supersedes older “current”
+> labels; dated evidence remains immutable):** exact clean SSH-signed source
+> `c0f7215bd1ec932f6357b6cfc1e045b5644ba389` (tree `ecdc8623…`, parent `138cdee0…`) crossed
+> the repaired Survey surface-expression boundary on Edge `152.0.4191.53` / CDP `1.3`.
+> Compendium `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry in **64,697
+> ms** with zero findings/blocked outcomes, six review PNGs and named verification. Exact-source
+> Slice `20260901061722706-38658-429913af5517` then stopped once/no-retry after **337,110 ms**
+> with exactly **1 finding / 1 scope**, `collision-share-1`, and ten screenshots. Glass did not run.
 >
-> Exact-token fresh-page authority remains bounded to initial documents; current, reload and
-> replacement paths remain strict. The dirty testing-only successor centralizes the object-valued
-> Survey surface in exported `buildEarlyCoreFlowActionSurfaceExpression`; desktop, isolated-
-> keyboard and phone evaluators all consume it. Its executable/source-inventory control proves the
-> exact returned object and one action evaluation, and rejects the historical outer call. Focused
-> **2 files / 52 tests**, all TypeScript programs and final develop **258 files / 2,629 passed / 1
-> skipped** are green, with **34** clean art sources, **1,014/1,014** routes, **454** specification
-> fields and independent final review **APPROVED**. Current producer authority remains
-> `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. The successor is unsigned;
-> its exact committed-source tracked-input and browser chain remain pending. Product/save/CSS/
-> gameplay/creature/art behavior, rulers, timeout/retry and Edge-version policy are unchanged; five
-> hosted attempts remain consumed, every label is absent, and no new hosted, merge, release or
-> deploy authority exists.
+> The product correctly advanced revision/ordinal/Shares **13/8/4 → 15/10/5**, appending
+> `arc9-share-send-v1` and then conditional `arc9-progression-refresh-v1`; `share5` joined,
+> best rank stayed 3 and SessionRNG did not move. The one-receipt harness oracle was false red.
+> The dirty testing-only successor changes no product source. `READ_F4_AUTHORITY_EXPRESSION`
+> reads canonical `catalog`/`v5:catalog` in the same read-only transaction as
+> revision/player/receipts; predecessor and successor cross-bind exact catalog arrays, legacy raw
+> and existing live counts/best/hybrids. The exact one-or-two receipt topology, c0's 26 unlock IDs,
+> every rank threshold/factor, permanent saved-rank no-demotion and all six Share helper-to-waiter
+> bindings are executable-controlled. Focused verification is **57/57** and all TypeScript programs
+> pass. Complete develop passes **259 files / 2,659 passed / 1 skipped**, **34** clean art sources,
+> **1,014/1,014** routes and
+> **454** non-inert fields; independent review is **APPROVED**. The clean signed tracked-input
+> candidate and fresh Compendium → Slice → Glass chain remain pending.
+> Product/save/CSS/gameplay/creature/art behavior, rulers, timeout/retry and Edge-version policy are
+> unchanged. Five hosted attempts remain consumed, every label is absent, and no new hosted,
+> merge, release or deploy authority exists.
 
 > **2026-08-31 historical terminal-green raw Back-action failure-cleanup admission (superseded by
 > the current admission overlay above; all hosted/local evidence remains immutable):** exact clean SSH-signed
@@ -3455,6 +3456,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 | Tool | Role |
 |---|---|
 | **Current Slice Survey-dependent action boundary (2026-09-01)** | A receipt-bearing Survey is an asynchronous F4 predecessor even after its handler returns and Enter/Land is visible. `slicesmoke` must establish one exact same-document fixed point—Survey receipt and revision, persistence, current route/render/card/action identity and coordinator idle—before every dependent pointer, keyboard, touch or already-current Enter/Land. A missing, red, replaced or still-settling predecessor causal-stops descendants; `state().landing.surveyOutcome` remains diagnostic and cannot mint action authority. Atlas Travel must settle exactly one `arc9-galaxy-arrival-v1` / `arc9-travel-committed:` commit; single/sequence runtime schema binds before/after live↔raw SessionRNG parity; current Survey rejects retained faults; paired stable-but-wrong live/raw revision/seed/ordinal/draw controls are red. Focused 73/73, all TypeScript programs and the 257-file/2,622-pass/1-skip develop profile are green, with two independent reviews APPROVED. Hosted run `33466661094` remains immutable red and the clean candidate/tracked-input/browser chain remain pending. Product copy/refusal, saves, gameplay, rulers, timeouts, retries and browser-version policy remain unchanged. |
+| **Current Slice Share action-sequence boundary (2026-09-01; browser-free green)** | A generic writable/idle F4 snapshot is not sufficient after Share because its owner receipt may be followed by one queued aggregate-progression receipt. `READ_F4_AUTHORITY_EXPRESSION` reads canonical `catalog`/`v5:catalog` in the same read-only transaction as revision/player/receipts. The predecessor cross-binds its schema/segment and exact codex/surveyed/gals arrays to legacy raw, plus existing live `codexCount`, `stats.surveys`, best and hybrids; the successor preserves those inputs. Exactly one `arc9-share-send-v1` is always required and exactly one following `arc9-progression-refresh-v1` is required only when `share5` or a higher best rank is newly projected. Same-token receipt/revision/ordinal/SessionRNG spans, final outcome and two consecutive exact samples are mandatory. The c0 fixture carries its captured 26 unlock IDs, rank projection is checked across every threshold/factor including permanent saved-rank no-demotion, and all six Share helper outputs are bound to their waiter arguments. Focused 57/57, all TypeScript programs and complete develop 259 files / 2,659 passed / 1 skipped are green, with 34 clean art sources, 1,014/1,014 routes, 454 non-inert fields and independent review APPROVED. Clean signing/tracked-input and the fresh browser chain remain pending. No product-source, timeout, retry, ruler, browser-version, Arc/Gate or release change follows. |
 | **Current Compendium Back action-time boundary (2026-08-31)** | `compendiummem` retains a pre-helper `setup` anchor only as chronology, accepts the virtual row's final settled native activation point, then arms one exact capture-phase `cf-v2-compendium-back-action-witness/v1` carrier before press/release. The carrier must observe exactly one trusted delegated click on the current document and bind row/index, target/hit/point, input phase, panel identity and action-time anchor; `before` is that anchor, and Back must return it immediately and after settlement within the existing ±2px ruler. If native input fails after arming, raw bounded cleanup bypasses the tracked observation wrapper, proves controller-aborted/carrier-absent state and preserves the original failed command/stage; cleanup failure is independent. GitHub run `33437596315` remains immutable 77/78 red under its stale pre-helper comparator. Exact clean `3ca7d30…` remains historical green evidence. Exact clean `9b37ffc…` passed Compendium 78/78 with desktop `-46 / -46 / -46` and phone `-2 / -2 / -2`, then passed unchanged-source develop Slice and full Glass 12/12 with 104/104 controls and every named verifier. Its four exact carriers are committed by the signed evidence/docs descendant and indexed with current authority hashes in `audits/README.md`. Product/CSS, numeric ceilings, timeout, retry, one-click and browser-version policies are unchanged. |
 | **Current Glass causal/presentation boundary (2026-08-31)** | The first instrument red retains one root, blocks dependent controls and stops later viewport work. The first product red stops dependent product work and records a complete disjoint blocked suffix; blocked controls are never reported as executed. Rendered Guide ingress reopens and re-queries the unique current topic carrier, judges all 22 required current-copy baselines before mutations, classifies copy mismatch as product-red and setup/control/restoration defects as instrument-red, and arms mutants only from green. Generic visibility walks ancestor `<details>` elements: while closed, only the direct first Summary subtree is rendered; retained rectangles/computed style/requested scroll do not admit hidden actions, while opening does. Product controls keep Capture actions base-centered with a 44px floor while preserving ≤390px full width and short landscape; rarity-removal controls independently cover Compendium badges and owned/non-missing Binder slots while `.missing` semantics remain distinct. |
 | **Current F4 boundary inside `npm run smoke:ci` (2026-08-30)** | The current changed-source Slice instrument requires one complete settled `cf-v2-f4-replacement-native/v3` transaction ledger and independently selected `cf-v2-f4-replacement-expectation/v2` prefix. Strict product projection SHA-256 `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c` allows only the measured codec anchor and exact conquest/mined-world ages to advance; route, Atlas and unrelated state remain exact. Red setup stops before import, red prefix before its diagnostic outcome, and red outcome/control before hide and Arc 3. Focused `tests/slicesmoke-f4-replacement-contract.test.ts` and `tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` are green; the latter preserves exact e4f5 Compendium PASS → four-scope terminal Slice red with no Glass/Recovery successor. This changes no command order, retry policy, browser ruler, Gate/HUMAN status or product capability. |

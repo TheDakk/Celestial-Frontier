@@ -1,23 +1,22 @@
 # Celestial-Frontier
 
-> **2026-09-01 current PR #35 Survey-surface expression boundary (canonical detail in
-> `ROADMAP.md`; dated evidence below remains immutable):** exact clean SSH-signed source
-> `138cdee0d3840efd899b5ebdbe974fd12d87e828` passed its hermetic tracked-input develop preflight
-> at **258 files / 2,628 passed / 1 skipped**, browser-CDP selftest and live preflight. Compendium
-> `20260901055749358-33363-aa39fce457` passed **78/78** once/no-retry in **64,730 ms** with named
-> verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped after
-> **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Three shared early-core-
-> flow surface helpers, serving eleven callsites, evaluated their action IIFE and then incorrectly
-> called the returned object. This was a harness-only object-as-function exception, not a product
-> throw. Glass correctly did not run, and 138cdee was not retried.
+> **2026-09-01 current PR #35 collision Share/progression boundary (canonical detail in
+> `ROADMAP.md`; dated evidence below remains immutable):** exact signed c0f7215 crossed the
+> repaired Survey expression boundary. Compendium `20260901061544208-38321-e0d289a02a` passed
+> **78/78** once/no-retry in **64,697 ms** with zero findings/blocked outcomes, six review PNGs and
+> named verification. Exact-source Slice `20260901061722706-38658-429913af5517` then stopped
+> after **337,110 ms** with exactly **1 finding / 1 scope**, `collision-share-1`, and ten
+> screenshots. Correct product state used one Share receipt followed by one conditional aggregate-
+> progression receipt; the old one-receipt oracle was false red. Glass correctly did not run.
 >
-> The dirty testing-only successor centralizes that object-valued expression in one shared builder;
-> desktop, keyboard and phone use it, and an executable/source-inventory negative control preserves
-> one action evaluation while rejecting the historical outer call. Focused **2 files / 52 tests**,
-> all TypeScript programs and final develop **258 files / 2,629 passed / 1 skipped** are green; art
-> is **34** clean sources, routes are **1,014/1,014**, specification reach is **454** fields, and
-> independent review is **APPROVED**. Current producer authority remains `410d2639…`. The successor
-> is unsigned and its exact committed-source tracked-input and browser chain remain pending.
+> The dirty harness-only successor changes no product source. It same-transaction binds canonical
+> catalog, revision/player/receipts, legacy raw and existing live state, then derives the exact
+> one-or-two receipt Share topology across all six sites. C0's 26 unlock IDs, every rank threshold/
+> factor including permanent saved-rank no-demotion, and every helper-to-waiter binding are
+> controlled. Focused **57/57** and all TypeScript programs pass. Complete develop is green at
+> **259 files / 2,659 passed / 1 skipped**; art is **34**
+> clean sources, routes are **1,014/1,014**, specification reach is **454** fields, and independent
+> review is **APPROVED**. Clean signed tracked-input and fresh browser verification remain pending.
 > Gameplay, saves, art, creatures, CSS, numeric rulers, timeout/retry and version-tolerant browser
 > policy are unchanged. Five hosted attempts remain consumed, every label is absent, and no push,
 > hosted attempt, merge, release, version bump, preview or deploy is authorized.

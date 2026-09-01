@@ -100,6 +100,38 @@ export function assessF4ActionCommitSequence(input?: Readonly<{
   readonly expectedPersistenceLastOutcome?: string;
 }>): SliceContractAssessment;
 
+export interface Arc9ShareSendSettlementExpectation {
+  readonly counterBefore: number;
+  readonly counterAfter: number;
+  readonly priorUnlockedIds: readonly string[];
+  readonly nextUnlockedIds: readonly string[];
+  readonly priorBestRankIndex: number;
+  readonly nextBestRankIndex: number;
+  readonly shareAchievementAdded: boolean;
+  readonly share5AchievementAdded: boolean;
+  readonly progressionTailRequired: boolean;
+  readonly expectedKinds: readonly string[];
+  readonly persistencePrefix: 'arc9-share-send-committed:' | 'arc9-progression-committed:';
+}
+
+export function arc9ShareSendSettlementExpectation(
+  beforeAuthority: unknown,
+): Arc9ShareSendSettlementExpectation;
+
+export function assessArc9ShareSendSettlement(input?: Readonly<{
+  readonly beforeAuthority?: unknown;
+  readonly afterAuthority?: unknown;
+  readonly state?: unknown;
+}>): SliceContractAssessment;
+
+export function advanceF4ActionSequenceStability(
+  consecutiveExactSamples: number,
+  assessment: SliceContractAssessment,
+): Readonly<{
+  readonly status: 'pending' | 'ready';
+  readonly consecutiveExactSamples: number;
+}>;
+
 export type Arc2InventorySuccessorBoundary = Readonly<{
   readonly kind: 'ready' | 'blocked';
   readonly canEnterMutableArc3: boolean;

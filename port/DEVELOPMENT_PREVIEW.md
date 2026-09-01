@@ -1,23 +1,23 @@
 # Development Preview — Separate-Origin Human Playtesting
 
 > **2026-09-01 current admission/preview boundary (canonical handoff in `../ROADMAP.md`):** exact
-> signed 138cdee passed tracked-input develop preflight at **258 files / 2,628 passed / 1 skipped**,
-> browser-CDP selftest and live preflight. Compendium `20260901055749358-33363-aa39fce457` passed
-> **78/78** once/no-retry in **64,730 ms** with named verification. Exact-source Slice
-> `20260901055920314-33714-d47f27b9497a` then stopped once/no-retry after **14,746 ms** with **1
-> harness finding / 1 scope** and two screenshots: three shared early-core-flow helpers serving
-> eleven callsites called their returned object after the action IIFE. No product throw occurred;
-> Glass did not run. No development preview was packaged, run or published.
+> signed c0f7215 crossed the repaired Survey expression boundary. Compendium
+> `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry in **64,697 ms** with
+> zero findings/blocked outcomes, six review PNGs and named verification. Exact-source Slice
+> `20260901061722706-38658-429913af5517` then stopped after **337,110 ms** with exactly **1
+> finding / 1 scope**, `collision-share-1`, and ten screenshots. Correct product state used one
+> Share receipt plus one conditional aggregate-progression receipt; the one-receipt harness oracle
+> was false red. Glass did not run. No development preview was packaged, run or published.
 >
-> The dirty local testing-only successor centralizes that object-valued expression in one shared
-> builder with executable/source-inventory control. Focused **2 files / 52 tests**, all TypeScript
-> programs and final develop **258 files / 2,629 passed / 1 skipped** are green, with **34** clean
-> art sources, **1,014/1,014** routes, **454** specification fields and independent review
-> **APPROVED**. It is unsigned; committed-source tracked-input and browser verification remain
-> pending. The separate manual preview remains noncertifying and its workflow is unchanged. No
-> preview rule, product byte, timeout, retry or browser-version policy changed; five hosted attempts
-> remain consumed, every label is absent, and no push, hosted attempt, publication, merge, release,
-> version or deploy is authorized.
+> The dirty harness-only successor changes no product source. It same-transaction binds canonical
+> catalog, revision/player/receipts, legacy raw and existing live state, then derives the exact
+> one-or-two receipt shape across all six Share sites. Focused **57/57**, all TypeScript programs
+> and complete develop **259 files / 2,659 passed / 1 skipped** are green, with **34** clean art
+> sources, **1,014/1,014** routes, **454** fields and independent review **APPROVED**. Clean signed
+> tracked-input and fresh browser verification remain pending. The separate manual preview remains
+> noncertifying and its workflow is unchanged. No preview rule, product byte, timeout, retry or
+> browser-version policy changed; five hosted attempts remain consumed, every label is absent, and
+> no push, hosted attempt, publication, merge, release, version or deploy is authorized.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above; older candidate-status labels and dated
 > evidence and preview-process rules remain immutable):** exact clean SSH-signed source
