@@ -1,5 +1,42 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A CDP COMMAND OWNS ONE BOUNDED ACTION, NOT AN ENTIRE PERSISTENCE CAMPAIGN**
+> (2026-09-01). Never place a table of UI mutations, debounce waits and durable checks inside one
+> `Runtime.evaluate` whose only owner is the transport-wide command deadline. Give each action,
+> settlement observation and raw durable read its own semantic label and bounded command. A real UI
+> handler must synchronously expose its own immediate-persist or debounce arm; the harness must not
+> call a diagnostic save to make that handler look durable. Quiesce every automatic writer first,
+> deterministically demote answerability, then require one exact revision/commit, zero tails, the
+> expected live field and the raw v5 segment on the same document. Bind the full durable row across
+> every receipt so collateral mutation cannot be absorbed as the next action's baseline, and repeat
+> raw/live authority through a quiet window before synchronously restoring ticker, heartbeat,
+> answerability and audio authority. Keep an independent exact manifest of selector, live field,
+> durable alias, persistence mode and restore semantics; a self-describing table can test the wrong
+> control while staying green. Negative-control missing handler arms, unrelated writers, extra or
+> missing commits, wrong raw aliases, collateral fields, disjoint receipts, late quiet-window writes,
+> swapped manifests and in-flight-heartbeat answerability. A longer timeout, retry or browser pin
+> cannot repair command ownership.
+>
+> PR #35 hosted run `33542791572` earned this law on exact head
+> `2f0ded864742afd0a39bd8c3e2d53cc2550bbbda` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed **78/78** once/no-retry in
+> **1,780,826 ms**. Unchanged-source Slice then stopped once/no-retry after **295,159 ms** with
+> one harness finding/scope: its monolithic writable-Settings `Runtime.evaluate` exceeded the
+> 30-second command deadline. That old command contained all eleven mutate/restore flows plus **23**
+> diagnostic persists, roughly **42–45** total commits. Seven screenshots survived; Glass and
+> Recovery correctly did not run. The authorization is consumed and the red is immutable.
+>
+> The bounded local successor splits all 22 actions into named command-owned receipts, removes every
+> diagnostic save, binds the independent eleven-control manifest and full raw `settings/v5:settings`
+> row, excludes ticker/heartbeat/ecology writers, and restores exact answerability. Its focused
+> boundary passes **21 files / 227 tests** and the complete browser-free develop profile passes
+> **259 files / 2,667 passed / 1 skipped**, all TypeScript programs, **34** art sources,
+> **1,014/1,014** routes and **454** non-inert fields. Compendium producer authority is rebound to
+> `bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4` without changing the
+> measurement contract, fixed ruler, numeric ceilings, historical samples, browser-family policy,
+> timeout or retry policy. Clean tracked-input and one fresh local Compendium → Slice → Glass chain
+> remain required; this local repair grants no hosted, push or merge authority.
+
 > **A ONE-SHOT AUTOMATIC LATCH IS CLAIMED ONLY BY THE MUTABLE OWNER'S SYNCHRONOUS CLAIM**
 > (2026-09-01). A caller-side readiness or transient-write check is advisory: the owning action may
 > still refuse while it derives its operation, claims the shared coordinator, or installs its

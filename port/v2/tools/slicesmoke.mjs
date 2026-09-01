@@ -66,9 +66,14 @@ import {
   assessSingleF4ActionCommit,
   assessCharterLandSettlementTopology,
   assessStoredV4StageInvocation,
+  assessWritableSettingPersistenceReceipt,
+  assessWritableSettingsPersistenceChain,
+  assessWritableSettingsQuietWindow,
   advanceStoredV4StageOwnerStability,
   beginF4GreenContinuation,
   buildStoredV4StageInvocationExpression,
+  buildWritableSettingActionExpression,
+  buildWritableSettingSnapshotExpression,
   buildLazyRefillObservationExpression,
   classifyCompendiumDetailReceipt,
   classifyForegroundServiceTurn,
@@ -82,6 +87,8 @@ import {
   sliceScreenshotInventoryLine,
   storedV4StageContinuationDecision,
   trainingBindingReceiptBeforeDeadline,
+  writableSettingsAuthorityMatches,
+  WRITABLE_SETTINGS_CASES,
 } from './slicesmoke-contract.mjs';
 import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
 import {
@@ -1187,6 +1194,16 @@ const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save �
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
     g.onsuccess=()=>{db.close();resolve(String(g.result||''))}; g.onerror=()=>reject(g.error); }; })`;
+const READ_WRITABLE_SETTINGS_DURABLE_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
+  const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
+  try{const tx=db.transaction(['meta','settings'],'readonly'),done=new Promise((resolve,reject)=>{
+    tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error||new Error('Settings durable read aborted'))});
+    const get=(store,key)=>new Promise((resolve,reject)=>{const q=tx.objectStore(store).get(key);
+      q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error)});
+    const [revisionRaw,settingsRaw]=await Promise.all([get('meta','f3:revision'),get('settings','v5:settings')]);await done;
+    let row=null;try{row=JSON.parse(String(settingsRaw))}catch{}
+    return {revision:Number(revisionRaw),row};
+  }finally{db.close()}})()`;
 const READ_STORED_V4_STAGE_EXPRESSION = `(async()=>{const open=indexedDB.open('cf-v2-slice');
   const db=await new Promise((resolve,reject)=>{open.onsuccess=()=>resolve(open.result);open.onerror=()=>reject(open.error)});
   try{const tx=db.transaction('meta','readonly'),done=new Promise((resolve,reject)=>{
@@ -4460,15 +4477,21 @@ const SETTINGS_MUTATION_CASES = Object.freeze([
   ['motion', 'click:BUTTON'],
   ['panel-tint', 'input:setglass'],
 ]);
-const assessReadOnlyBoundary = ({ writable, forced, before, attempts, after, rawPreserved }) => {
+const assessReadOnlyBoundary = ({ writable, writableQuiet, forced, before, attempts, after, rawPreserved }) => {
   const reasons = [];
   const expectedIds = SETTINGS_MUTATION_CASES.map(([id]) => id);
   if (JSON.stringify(writable?.map(({ id }) => id)) !== JSON.stringify(expectedIds)
-    || writable?.some(({ restoreExpected, mutated, restored, targetFound, restoreFound, persisted, restoredPersisted }) =>
+    || writable?.some(({ restoreExpected, mutated, restored, targetFound, restoreFound, persisted, restoredPersisted,
+      mutateReceipt, restoreReceipt }) =>
       targetFound !== true || restoreFound !== true
       || JSON.stringify(restoreExpected) === JSON.stringify(mutated)
       || JSON.stringify(restoreExpected) !== JSON.stringify(restored)
-      || persisted !== true || restoredPersisted !== true)) reasons.push('writable settings outcomes');
+      || persisted !== true || restoredPersisted !== true
+      || assessWritableSettingPersistenceReceipt(mutateReceipt).ok !== true
+      || assessWritableSettingPersistenceReceipt(restoreReceipt).ok !== true)) reasons.push('writable settings outcomes');
+  if (assessWritableSettingsPersistenceChain(writable, writableQuiet).ok !== true) {
+    reasons.push('writable settings receipt chain');
+  }
   if (writable?.some(({ id, before: initial, restoreExpected }) => id === 'panel-tint'
     ? initial !== 0.55 || restoreExpected !== 0.82
     : JSON.stringify(initial) !== JSON.stringify(restoreExpected))) {
@@ -4949,7 +4972,7 @@ try {
   if (!staleReadyControlRejected) fails.push('SLICE READINESS CONTROL FAILED — the prior document token was accepted as a new boot');
   await sleep(3000);
 
-  const evalIn = async (expr, { timeoutMs } = {}) => {
+  const evalIn = async (expr, { timeoutMs, label } = {}) => {
     let r;
     try {
       r = await send(
@@ -4961,11 +4984,13 @@ try {
     }
     catch (error) {
       const near = String(expr).replace(/\s+/g, ' ').slice(0, 120);
-      throw new Error(`desktop eval failed near ${JSON.stringify(near)}: ${error.message}`, { cause: error });
+      const owner = label ? ` for ${JSON.stringify(label)}` : '';
+      throw new Error(`desktop eval failed${owner} near ${JSON.stringify(near)}: ${error.message}`, { cause: error });
     }
     if (r.exceptionDetails) {
       const near = String(expr).replace(/\s+/g, ' ').slice(0, 120);
-      throw new Error(`page eval threw near ${JSON.stringify(near)}: ${JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text)}`);
+      const owner = label ? ` for ${JSON.stringify(label)}` : '';
+      throw new Error(`page eval threw${owner} near ${JSON.stringify(near)}: ${JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text)}`);
     }
     return r.result.value;
   };
@@ -5180,7 +5205,7 @@ try {
     const deadline = Date.now() + timeoutMs;
     let last = null;
     while (Date.now() < deadline) {
-      last = await evalIn(expr);
+      last = await evalIn(expr, { label });
       if (accept(last)) return last;
       await sleep(50);
     }
@@ -10335,37 +10360,210 @@ try {
   await evalIn(`document.getElementById('docksets').click()`);
   /* Every save-mutating Settings control must work while the exact authority
      is writable and be intercepted before its handler while read-only. This
-     table includes Creature voices, the omission that prompted the gate. */
-  const writableSettings = await evalIn(`(async()=>{const S=window.__CF_SLICE__,api=S.api;
-    const click=(selector)=>{const target=document.querySelector(selector);if(!target)return false;target.click();return true;};
-    const input=(selector,value)=>{const target=document.querySelector(selector);if(!target)return false;
-      target.value=String(value);target.dispatchEvent(new Event('input',{bubbles:true,cancelable:true}));return true;};
-    const pick=(kind,current,values)=>{const value=values.find((candidate)=>candidate!==current);
-      return click('[data-'+kind+'="'+CSS.escape(String(value))+'"]');};
-    const pref=(kind,current)=>{const values=kind==='size'?['','fs-lg','fs-xl']:kind==='tone'?['','tone-bright','tone-max']:['','font-sys','font-mono'];
-      const value=values.find((candidate)=>candidate!==current);return click('[data-pref="'+kind+'"][data-value="'+CSS.escape(String(value))+'"]');};
-    const restorePref=(kind,value)=>click('[data-pref="'+kind+'"][data-value="'+CSS.escape(String(value))+'"]');
-    const defs=[
-      {id:'sound',field:'sndOn',mutate:()=>click('#setsnd'),restore:()=>click('#setsnd')},
-      {id:'volume',field:'sfxVol',mutate:(before)=>input('#setvol',before<0.5?73:27),restore:(before)=>input('#setvol',Math.round(before*100))},
-      {id:'creature-voices',field:'voiceOn',mutate:()=>click('#setvoice'),restore:()=>click('#setvoice')},
-      {id:'text-size',field:'fsMode',mutate:(before)=>pref('size',before),restore:(before)=>restorePref('size',before)},
-      {id:'text-tone',field:'toneMode',mutate:(before)=>pref('tone',before),restore:(before)=>restorePref('tone',before)},
-      {id:'font',field:'fontMode',mutate:(before)=>pref('font',before),restore:(before)=>restorePref('font',before)},
-      {id:'star-charts',field:'chartsOn',mutate:()=>click('#setcharts'),restore:()=>click('#setcharts')},
-      {id:'visual-effects',field:'fxOn',mutate:()=>click('#setfx'),restore:()=>click('#setfx')},
-      {id:'screen-shake',field:'shakeOn',mutate:()=>click('#setshake'),restore:()=>click('#setshake')},
-      {id:'motion',field:'motionMode',mutate:(before)=>pick('motion',before,[-1,0,1]),restore:(before)=>click('[data-motion="'+before+'"]')},
-      {id:'panel-tint',field:'glassTint',mutate:(before)=>input('#setglass',before<0.9?94:86),restore:(before)=>input('#setglass',Math.round(before*100)),
-        restoreExpected:(before)=>Math.min(0.98,Math.max(0.82,before))},
-    ];
-    const records=[];
-    for(const def of defs){const before=api.state()[def.field],restoreExpected=def.restoreExpected?def.restoreExpected(before):before,
-      targetFound=def.mutate(before),mutated=api.state()[def.field];
-      const persisted=await api.__smokePersistNow();const restoreFound=def.restore(before),restored=api.state()[def.field];
-      const restoredPersisted=await api.__smokePersistNow();records.push({id:def.id,before,restoreExpected,mutated,restored,
-        targetFound,restoreFound,persisted,restoredPersisted});}
-    await new Promise((resolve)=>setTimeout(resolve,450));await api.__smokePersistNow();return records;})()`);
+     table includes Creature voices, the omission that prompted the gate.
+     Each native handler must publish its own one-revision receipt; the gate
+     never calls a diagnostic persistence hook on the handler's behalf. */
+  const writableSettingsToken = await sliceToken(sess);
+  const writableSettingsQuiescence = await evalIn(
+    `window.__CF_SLICE__.api.__smokeQuiesceSettingsPersistence()`,
+    { label: 'writable-settings/writers/quiesce' },
+  );
+  const writableSettingsQuiescent = (observation) => (
+    observation?.documentToken === writableSettingsToken
+    && observation?.settingsProbeQuiesced === true
+    && observation?.tickerRunning === false && observation?.heartbeatRunning === false
+    && observation?.ecologyCheckpointInFlight === false
+    && observation?.answerable === false
+    && observation?.pendingPersistenceWrites === 0 && observation?.pendingDebounceWrites === 0
+    && observation?.mutationBlocked === false && observation?.leaseOwned === true
+    && Number.isSafeInteger(observation?.revision) && Number.isSafeInteger(observation?.commits)
+  );
+  if (writableSettingsQuiescence?.schema !== 'cf-v2-settings-persistence-quiescence/v1'
+    || writableSettingsQuiescence?.acquired !== true
+    || writableSettingsQuiescence?.tickerWasRunning !== true
+    || writableSettingsQuiescence?.answerableWas !== true
+    || writableSettingsQuiescence?.heartbeat?.schema !== 'cf-v2-f4-heartbeat-quiescence/v1'
+    || writableSettingsQuiescence?.heartbeat?.documentToken !== writableSettingsToken
+    || writableSettingsQuiescence?.heartbeat?.stopped !== true
+    || writableSettingsQuiescence?.heartbeat?.cycleSettled !== true
+    || !writableSettingsQuiescent(writableSettingsQuiescence?.diagnostics)) {
+    throw new Error('writable-settings/writers/quiesce did not exclude every automatic writer: '
+      + JSON.stringify(writableSettingsQuiescence));
+  }
+  const writableSettings = [];
+  let writableSettingsQuiet = null;
+  let writableSettingsFailure = null;
+  const runWritableSettingPhase = async (
+    definition, phase, originalValue, predecessor, readyObservation = null,
+  ) => {
+    const label = `writable-settings/${definition.id}/${phase}`;
+    const snapshotExpression = buildWritableSettingSnapshotExpression(definition.field);
+    const liveBefore = readyObservation ?? await waitDesktopValue(
+      `${label}/ready`, snapshotExpression, 8_000,
+      (observation) => writableSettingsQuiescent(observation)
+        && (predecessor === null || writableSettingsAuthorityMatches(predecessor, observation)),
+    );
+    const durableBefore = await evalIn(
+      READ_WRITABLE_SETTINGS_DURABLE_EXPRESSION,
+      { label: `${label}/durable-predecessor` },
+    );
+    const before = {
+      ...liveBefore,
+      durableRevision: durableBefore?.revision ?? null,
+      durableSchema: durableBefore?.row?.schema ?? null,
+      durableSegment: durableBefore?.row?.segment ?? null,
+      durableValue: durableBefore?.row?.data?.[definition.durableField],
+      durableData: durableBefore?.row?.data ?? null,
+      durableRow: durableBefore?.row ?? null,
+    };
+    if (before.durableSchema !== 5 || before.durableSegment !== 'settings'
+      || before.durableRevision !== before.revision
+      || before.durableData === null || typeof before.durableData !== 'object'
+      || Array.isArray(before.durableData)
+      || (predecessor !== null && !writableSettingsAuthorityMatches(predecessor, before))) {
+      throw new Error(`${label}/durable-predecessor did not match the exact live authority: `
+        + JSON.stringify({ predecessor, before }));
+    }
+    const action = await evalIn(
+      buildWritableSettingActionExpression(definition, phase, originalValue),
+      { label: `${label}/action` },
+    );
+    if (action?.targetFound !== true) {
+      throw new Error(`${label}/action did not find its exact UI target: ${JSON.stringify(action)}`);
+    }
+    const immediateArmed = action?.actionWitness?.pendingPersistenceWrites === 1
+      && action?.actionWitness?.pendingDebounceWrites === 0;
+    const debounceArmed = action?.actionWitness?.pendingPersistenceWrites === 0
+      && action?.actionWitness?.pendingDebounceWrites === 1;
+    if (!writableSettingsQuiescent(action?.before)
+      || !writableSettingsAuthorityMatches(before, action.before)
+      || JSON.stringify(before.value) !== JSON.stringify(action?.before?.value)
+      || (predecessor !== null && !writableSettingsAuthorityMatches(predecessor, action.before))
+      || action?.actionWitness?.documentToken !== writableSettingsToken
+      || action?.actionWitness?.settingsProbeQuiesced !== true
+      || action?.actionWitness?.tickerRunning !== false
+      || action?.actionWitness?.heartbeatRunning !== false
+      || action?.actionWitness?.ecologyCheckpointInFlight !== false
+      || (definition.persistenceMode === 'immediate' ? !immediateArmed : !debounceArmed)) {
+      throw new Error(`${label}/arm did not prove its real handler-owned write: ${JSON.stringify(action)}`);
+    }
+    const baseReceipt = {
+      id: definition.id, field: definition.field, durableField: definition.durableField,
+      phase, persistenceMode: definition.persistenceMode,
+      targetFound: action.targetFound, expectedValue: action.expectedValue,
+      expectedBeforeDurableValue: definition.durableValue(action.before.value),
+      expectedDurableValue: definition.durableValue(action.expectedValue),
+      before, actionWitness: action.actionWitness,
+    };
+    const liveAfter = await waitDesktopValue(`${label}/settled`, snapshotExpression, 8_000,
+      (observation) => writableSettingsQuiescent(observation)
+        && observation?.revision === action.before.revision + 1
+        && observation?.commits === action.before.commits + 1
+        && observation?.lastOutcome === `committed:${observation.revision}`
+        && JSON.stringify(observation?.value) === JSON.stringify(action.expectedValue));
+    const durable = await evalIn(
+      READ_WRITABLE_SETTINGS_DURABLE_EXPRESSION,
+      { label: `${label}/durable-read` },
+    );
+    const after = {
+      ...liveAfter,
+      durableRevision: durable?.revision ?? null,
+      durableSchema: durable?.row?.schema ?? null,
+      durableSegment: durable?.row?.segment ?? null,
+      durableValue: durable?.row?.data?.[definition.durableField],
+      durableData: durable?.row?.data ?? null,
+      durableRow: durable?.row ?? null,
+    };
+    const receipt = { ...baseReceipt, after };
+    const assessment = assessWritableSettingPersistenceReceipt(receipt);
+    if (!assessment.ok) {
+      throw new Error(`${label}/durable returned without its exact receipt: `
+        + JSON.stringify({ assessment, receipt }));
+    }
+    return { receipt, assessment };
+  };
+  try {
+    let predecessor = null;
+    for (const definition of WRITABLE_SETTINGS_CASES) {
+      const initial = await waitDesktopValue(
+        `writable-settings/${definition.id}/initial`,
+        buildWritableSettingSnapshotExpression(definition.field),
+        8_000,
+        (observation) => writableSettingsQuiescent(observation)
+          && (predecessor === null || writableSettingsAuthorityMatches(predecessor, observation)),
+      );
+      const before = initial.value;
+      const restoreExpected = definition.restoreExpected
+        ? definition.restoreExpected(before) : before;
+      const mutate = await runWritableSettingPhase(
+        definition, 'mutate', before, predecessor, initial,
+      );
+      predecessor = mutate.receipt.after;
+      const restore = await runWritableSettingPhase(definition, 'restore', before, predecessor);
+      predecessor = restore.receipt.after;
+      writableSettings.push({
+        id: definition.id, before, restoreExpected,
+        mutated: mutate.receipt.expectedValue, restored: restore.receipt.expectedValue,
+        targetFound: mutate.receipt.targetFound, restoreFound: restore.receipt.targetFound,
+        persisted: mutate.assessment.ok, restoredPersisted: restore.assessment.ok,
+        mutateReceipt: mutate.receipt, restoreReceipt: restore.receipt,
+      });
+    }
+    const lastReceipt = writableSettings.at(-1)?.restoreReceipt;
+    await sleep(550);
+    const quietLiveAfter = await evalIn(
+      buildWritableSettingSnapshotExpression(WRITABLE_SETTINGS_CASES.at(-1).field),
+      { label: 'writable-settings/quiet' },
+    );
+    const quietDurable = await evalIn(
+      READ_WRITABLE_SETTINGS_DURABLE_EXPRESSION,
+      { label: 'writable-settings/quiet-durable' },
+    );
+    const quietAfter = {
+      ...quietLiveAfter,
+      durableRevision: quietDurable?.revision ?? null,
+      durableSchema: quietDurable?.row?.schema ?? null,
+      durableSegment: quietDurable?.row?.segment ?? null,
+      durableValue: quietDurable?.row?.data?.[WRITABLE_SETTINGS_CASES.at(-1).durableField],
+      durableData: quietDurable?.row?.data ?? null,
+      durableRow: quietDurable?.row ?? null,
+    };
+    writableSettingsQuiet = { before: lastReceipt?.after ?? null, after: quietAfter };
+    const chainAssessment = assessWritableSettingsPersistenceChain(
+      writableSettings, writableSettingsQuiet,
+    );
+    if (!chainAssessment.ok) {
+      throw new Error('writable-settings/chain detected a missing, disjoint or late checkpoint: '
+        + JSON.stringify({ assessment: chainAssessment, records: writableSettings,
+          quiet: writableSettingsQuiet }));
+    }
+  } catch (error) {
+    writableSettingsFailure = error;
+  }
+  let writableSettingsResume = null;
+  try {
+    writableSettingsResume = await evalIn(
+      `window.__CF_SLICE__.api.__smokeResumeSettingsPersistence()`,
+      { label: 'writable-settings/writers/resume' },
+    );
+  } catch (error) {
+    if (writableSettingsFailure === null) writableSettingsFailure = error;
+  }
+  if (writableSettingsFailure !== null) throw writableSettingsFailure;
+  if (writableSettingsResume?.schema !== 'cf-v2-settings-persistence-resume/v1'
+    || writableSettingsResume?.resumed !== true
+    || writableSettingsResume?.answerableWas !== true
+    || writableSettingsResume?.heartbeat?.schema !== 'cf-v2-f4-heartbeat-resume/v1'
+    || writableSettingsResume?.heartbeat?.documentToken !== writableSettingsToken
+    || writableSettingsResume?.heartbeat?.running !== true
+    || writableSettingsResume?.diagnostics?.documentToken !== writableSettingsToken
+    || writableSettingsResume?.diagnostics?.settingsProbeQuiesced !== false
+    || writableSettingsResume?.diagnostics?.tickerRunning !== true
+    || writableSettingsResume?.diagnostics?.heartbeatRunning !== true
+    || writableSettingsResume?.diagnostics?.answerable !== true) {
+    throw new Error('writable-settings/writers/resume did not restore the exact document: '
+      + JSON.stringify(writableSettingsResume));
+  }
   const readOnlyForced = await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(true)`);
   const readOnlyBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
   const readOnlyRawBefore = await evalIn(READ_PRIMARY_EXPRESSION);
@@ -10396,7 +10594,7 @@ try {
   const readOnlyRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
   await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(false)`);
   const readOnlyBundle = {
-    writable: writableSettings, forced: readOnlyForced,
+    writable: writableSettings, writableQuiet: writableSettingsQuiet, forced: readOnlyForced,
     before: readOnlyBefore,
     attempts: readOnlyAttempts,
     after: readOnlyAfter,
@@ -10433,6 +10631,139 @@ try {
   exactSettingsRecord(writableMissingTarget, 'text-size', 'writable target control').targetFound = false;
   const writableMissingRestore = structuredClone(writableSettings);
   exactSettingsRecord(writableMissingRestore, 'text-tone', 'writable restore-target control').restoreFound = false;
+  const writableReceipt = exactSettingsRecord(
+    writableSettings, 'sound', 'writable persistence receipt controls',
+  ).mutateReceipt;
+  const writableStableExtraRow = structuredClone(writableReceipt);
+  writableStableExtraRow.before.durableRow.unexpectedTopLevel = true;
+  writableStableExtraRow.after.durableRow.unexpectedTopLevel = true;
+  const writablePersistenceControls = [
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, phase: 'unknown' }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, targetFound: false }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, before: {
+      ...writableReceipt.before, pendingDebounceWrites: 1,
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, actionWitness: {
+      ...writableReceipt.actionWitness, pendingPersistenceWrites: 0,
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, actionWitness: {
+      ...writableReceipt.actionWitness, ecologyCheckpointInFlight: true,
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after, documentToken: `${writableReceipt.after.documentToken}:replacement`,
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after, revision: writableReceipt.before.revision,
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after, revision: writableReceipt.before.revision + 2,
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after, commits: writableReceipt.before.commits,
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after, pendingPersistenceWrites: 1,
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after, lastOutcome: 'committed:wrong-revision',
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after, durableRevision: writableReceipt.after.revision - 1,
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after, durableValue: !writableReceipt.expectedDurableValue,
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after,
+      durableData: { ...writableReceipt.after.durableData, vol: '__collateral-mutation__' },
+      durableRow: { ...writableReceipt.after.durableRow,
+        data: { ...writableReceipt.after.durableRow.data, vol: '__collateral-mutation__' } },
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after,
+      durableRow: { ...writableReceipt.after.durableRow,
+        extensions: { '__settings-extension-mutant__': { version: 1, json: '{}' } } },
+    } }),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt, after: {
+      ...writableReceipt.after,
+      durableRow: { ...writableReceipt.after.durableRow, unexpectedTopLevel: true },
+    } }),
+    assessWritableSettingPersistenceReceipt(writableStableExtraRow),
+    assessWritableSettingPersistenceReceipt({ ...writableReceipt,
+      expectedValue: !writableReceipt.expectedValue }),
+  ];
+  if (writablePersistenceControls.some((control) => control.ok)) {
+    fails.push('F4 WRITABLE SETTINGS PERSISTENCE CONTROL FAILED — missing/extra/wrong production receipt stayed green: '
+      + JSON.stringify(writablePersistenceControls));
+  }
+  const writableLateCheckpoint = structuredClone(writableSettingsQuiet);
+  writableLateCheckpoint.after.revision += 1;
+  const writablePendingQuiet = structuredClone(writableSettingsQuiet);
+  writablePendingQuiet.after.pendingPersistenceWrites = 1;
+  const writableReplacedQuiet = structuredClone(writableSettingsQuiet);
+  writableReplacedQuiet.after.documentToken += ':replacement';
+  const writableCommitQuiet = structuredClone(writableSettingsQuiet);
+  writableCommitQuiet.after.commits += 1;
+  const writableOutcomeQuiet = structuredClone(writableSettingsQuiet);
+  writableOutcomeQuiet.after.lastOutcome = 'committed:wrong';
+  const writableRawQuiet = structuredClone(writableSettingsQuiet);
+  writableRawQuiet.after.durableData.vol = '__late-raw-mutation__';
+  writableRawQuiet.after.durableRow.data.vol = '__late-raw-mutation__';
+  const writableExtensionQuiet = structuredClone(writableSettingsQuiet);
+  writableExtensionQuiet.after.durableRow.extensions = {
+    '__settings-extension-mutant__': { version: 1, json: '{}' },
+  };
+  const writableExtraKeyQuiet = structuredClone(writableSettingsQuiet);
+  writableExtraKeyQuiet.after.durableRow.unexpectedTopLevel = true;
+  const writableQuietControls = [
+    assessWritableSettingsQuietWindow(writableLateCheckpoint),
+    assessWritableSettingsQuietWindow(writablePendingQuiet),
+    assessWritableSettingsQuietWindow(writableReplacedQuiet),
+    assessWritableSettingsQuietWindow(writableCommitQuiet),
+    assessWritableSettingsQuietWindow(writableOutcomeQuiet),
+    assessWritableSettingsQuietWindow(writableRawQuiet),
+    assessWritableSettingsQuietWindow(writableExtensionQuiet),
+    assessWritableSettingsQuietWindow(writableExtraKeyQuiet),
+  ];
+  if (writableQuietControls.some((control) => control.ok)) {
+    fails.push('F4 WRITABLE SETTINGS QUIET CONTROL FAILED — late revision/pending tail stayed green: '
+      + JSON.stringify(writableQuietControls));
+  }
+  const writableDisjointChain = structuredClone(writableSettings);
+  exactSettingsRecord(
+    writableDisjointChain, 'sound', 'writable disjoint-chain control',
+  ).restoreReceipt.before.revision += 1;
+  const writableRawDisjointChain = structuredClone(writableSettings);
+  const writableRawDisjointRestore = exactSettingsRecord(
+    writableRawDisjointChain, 'sound', 'writable raw-disjoint-chain control',
+  ).restoreReceipt;
+  for (const snapshot of [writableRawDisjointRestore.before, writableRawDisjointRestore.after]) {
+    snapshot.durableData.vol = '__raw-chain-drift__';
+    snapshot.durableRow.data.vol = '__raw-chain-drift__';
+  }
+  const writableWrongQuietPredecessor = structuredClone(writableSettingsQuiet);
+  writableWrongQuietPredecessor.before.commits += 1;
+  const writableRawDisjointQuiet = structuredClone(writableSettingsQuiet);
+  for (const snapshot of [writableRawDisjointQuiet.before, writableRawDisjointQuiet.after]) {
+    snapshot.durableRow.extensions = {
+      ...(snapshot.durableRow.extensions ?? {}),
+      '__raw-quiet-chain-mutant__': { version: 1, json: '{}' },
+    };
+  }
+  const writableChainControls = [
+    assessWritableSettingsPersistenceChain(writableDisjointChain, writableSettingsQuiet),
+    assessWritableSettingsPersistenceChain(writableRawDisjointChain, writableSettingsQuiet),
+    assessWritableSettingsPersistenceChain(writableSettings, writableWrongQuietPredecessor),
+    assessWritableSettingsPersistenceChain(writableSettings, writableRawDisjointQuiet),
+  ];
+  if (assessWritableSettingPersistenceReceipt(writableRawDisjointRestore).ok !== true
+    || assessWritableSettingsQuietWindow(writableRawDisjointQuiet).ok !== true) {
+    fails.push('F4 WRITABLE SETTINGS CHAIN CONTROL INVALID — raw-row controls were not independently green');
+  }
+  if (writableChainControls.some((control) => control.ok)) {
+    fails.push('F4 WRITABLE SETTINGS CHAIN CONTROL FAILED — disjoint/late predecessor stayed green: '
+      + JSON.stringify(writableChainControls));
+  }
   const readOnlyChanged = structuredClone(readOnlyAttempts);
   exactSettingsRecord(readOnlyChanged, 'creature-voices', 'read-only mutation control').after = '__voice-mutated-read-only__';
   const readOnlyBadWitness = structuredClone(readOnlyAttempts);
@@ -10448,6 +10779,7 @@ try {
     writableWrongTintDomainControl,
     assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableMissingTarget }),
     assessReadOnlyBoundary({ ...readOnlyBundle, writable: writableMissingRestore }),
+    assessReadOnlyBoundary({ ...readOnlyBundle, writableQuiet: writableLateCheckpoint }),
     assessReadOnlyBoundary({ ...readOnlyBundle, attempts: readOnlyChanged }),
     assessReadOnlyBoundary({ ...readOnlyBundle, attempts: readOnlyBadWitness }),
     assessReadOnlyBoundary({ ...readOnlyBundle, attempts: readOnlyAttempts.slice(0, -1) }),
