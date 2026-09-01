@@ -1,5 +1,36 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **GENERATED PAGE-REALM EXPRESSIONS MUST BE EXECUTED, NOT ONLY SOURCE-CHECKED** (2026-09-01).
+> JavaScript embedded in a runner string is outside `node --check` and TypeScript's semantic view,
+> and syntactically valid text can still be a runtime category error. In particular,
+> `({documentToken,state,action})()` evaluates every property and then calls the resulting object;
+> it is not an object-valued observation. Build shared page expressions in one pure owner and
+> executable-test the returned value, exact inner-action call count and invalid-input refusal.
+> Retain the historical malformed outer-call as a red control, and source-inventory every browser
+> driver so a corrected desktop expression cannot leave keyboard or phone with the same latent
+> defect.
+>
+> Exact clean SSH-signed source `138cdee0d3840efd899b5ebdbe974fd12d87e828` earned this law.
+> Compendium `20260901055749358-33363-aa39fce457` passed **78/78** with zero findings or blocked
+> outcomes in **64,730 ms** and exact named verification. Unchanged-source develop Slice
+> `20260901055920314-33714-d47f27b9497a` then stopped once/no-retry after **14,746 ms** with exactly
+> one `harness` finding/scope and two screenshots. Real product boot, navigation and the non-Sol
+> Survey card had completed; the shared desktop fixed-point observer then evaluated its read-only
+> action probe and threw `TypeError: {...} is not a function` before the dependent Charter click.
+> The same malformed builder spelling existed in the keyboard and phone siblings. Glass correctly
+> did not run. Preserve that red and do not answer it with a retry, product change, timeout increase
+> or browser pin.
+>
+> The bounded successor exports one `buildEarlyCoreFlowActionSurfaceExpression` contract and routes
+> all three drivers through it. Its positive control returns the exact object and invokes the inner
+> action once; its historical outer-call mutant throws; empty input is rejected; and source
+> inventory requires all three consumers while forbidding the old shape. Focused verification is
+> **2 files / 52 tests**; all three TypeScript programs pass; the full develop profile is **258
+> files / 2,629 passed / 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454**
+> non-inert fields. Independent final review is **APPROVED**. This is browser-free evidence for a
+> dirty unsigned working-tree successor, not a tracked-input rehearsal, browser certificate,
+> hosted attempt or product/Arc/Gate/release change.
+
 > **BOOT KIND IS IMMUTABLE PROVENANCE, NOT A READINESS STATE TO NORMALIZE** (2026-09-01). A
 > genuinely new v5 document may remain `fresh-v5` for its entire lifetime after Training and
 > several durable commits. `current-v5` remains the default writable-authority requirement, but an
@@ -22,13 +53,14 @@
 > the old generic `current-v5` predicate. Glass correctly did not run. Preserve that red and do not
 > answer it with a retry, timeout increase, boot-kind mutation, browser pin or product change.
 >
-> The bounded successor extracts one pure authority contract and explicitly binds the original
-> token across desktop, isolated-keyboard and fresh-phone initial journeys, while every
-> reload/replacement path remains strict. Focused verification is **5 files / 79 tests**; the full
-> develop profile is **258 files / 2,628 passed / 1 skipped**, all TypeScript programs, **34** art
-> sources, **1,014/1,014** routes and **454** non-inert fields. Independent final review is
-> **APPROVED**. This is browser-free evidence for an unsigned working-tree successor, not a
-> tracked-input rehearsal, browser certificate, hosted attempt or product/Arc/Gate/release change.
+> That bounded successor became exact clean SSH-signed source
+> `138cdee0d3840efd899b5ebdbe974fd12d87e828`. It retained one pure authority contract, bound the
+> original token across desktop, isolated-keyboard and fresh-phone initial journeys and kept every
+> reload/replacement path strict. Its local Slice crossed the former `fresh-v5` rejection and
+> reached the non-Sol Survey fixed-point observer before the separate generated-expression defect
+> above stopped the run. Thus the boot-kind repair is no longer an unsigned pending worktree, but
+> 138cdee's later harness red still supplied no complete Slice or Glass certificate and grants no
+> hosted, product, Arc, Gate or release authority.
 
 > **A FIXTURE MUTATION MAY BE REBOUND ONLY BEFORE IT IS CLAIMED** (2026-08-31). A browser
 > harness must not infer mutation authority from a target handle, a prior ready observation or a

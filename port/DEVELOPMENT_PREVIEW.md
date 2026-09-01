@@ -1,19 +1,23 @@
 # Development Preview — Separate-Origin Human Playtesting
 
 > **2026-09-01 current admission/preview boundary (canonical handoff in `../ROADMAP.md`):** exact
-> signed 6030035 passed tracked-input rehearsal, browser preflight and Compendium **78/78**, then
-> Slice stopped once/no-retry with **1 harness finding / 1 scope** before its first Survey action.
-> A valid writable initial document remained `fresh-v5` while the generic oracle required
-> `current-v5`; Glass did not run. No development preview was packaged, run or published.
+> signed 138cdee passed tracked-input develop preflight at **258 files / 2,628 passed / 1 skipped**,
+> browser-CDP selftest and live preflight. Compendium `20260901055749358-33363-aa39fce457` passed
+> **78/78** once/no-retry in **64,730 ms** with named verification. Exact-source Slice
+> `20260901055920314-33714-d47f27b9497a` then stopped once/no-retry after **14,746 ms** with **1
+> harness finding / 1 scope** and two screenshots: three shared early-core-flow helpers serving
+> eleven callsites called their returned object after the action IIFE. No product throw occurred;
+> Glass did not run. No development preview was packaged, run or published.
 >
-> The local testing-only successor accepts fresh provenance only at explicit exact-token initial-
-> page callsites; current/reload/replacement paths remain strict. Focused **79/79**, all TypeScript
-> programs and final develop **258 files / 2,628 passed / 1 skipped** are green, with independent
-> final review **APPROVED**. The working-tree successor is not yet signed, tracked-input rehearsed or
-> browser-certified. The separate manual preview remains noncertifying
-> and its workflow is unchanged. No preview rule, product byte, timeout, retry or browser-version
-> policy changed; no push, hosted attempt, publication, merge, release, version or deploy is
-> authorized.
+> The dirty local testing-only successor centralizes that object-valued expression in one shared
+> builder with executable/source-inventory control. Focused **2 files / 52 tests**, all TypeScript
+> programs and final develop **258 files / 2,629 passed / 1 skipped** are green, with **34** clean
+> art sources, **1,014/1,014** routes, **454** specification fields and independent review
+> **APPROVED**. It is unsigned; committed-source tracked-input and browser verification remain
+> pending. The separate manual preview remains noncertifying and its workflow is unchanged. No
+> preview rule, product byte, timeout, retry or browser-version policy changed; five hosted attempts
+> remain consumed, every label is absent, and no push, hosted attempt, publication, merge, release,
+> version or deploy is authorized.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above; older candidate-status labels and dated
 > evidence and preview-process rules remain immutable):** exact clean SSH-signed source

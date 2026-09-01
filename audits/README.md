@@ -10,7 +10,52 @@ summary of it.
 
 ## Contents
 
-### Current exact-source 6030035 fresh-boot readiness-oracle stop
+### Current exact-source 138cdee Survey-surface expression stop
+
+Exact clean SSH-signed source `138cdee0d3840efd899b5ebdbe974fd12d87e828` (tree
+`56d16790c414402e585b791d751fb7e173607ddf`, parent `6030035d…`) supplied one unchanged-source,
+fail-fast/no-retry local browser attempt. Browser-CDP selftest and live preflight accepted Edge
+`152.0.4191.53` / CDP `1.3`; compatible point-version changes remain provenance only.
+
+Compendium `20260901055749358-33363-aa39fce457` passed **78/78** with zero findings or blocked
+outcomes in **64,730 ms**, and its exact named verifier passed. Develop Slice
+`20260901055920314-33714-d47f27b9497a` then stopped after **14,746 ms** with exactly **1 finding /
+1 scope**, `harness`, and two screenshots (`universe` and `galaxy`). The game had booted, rendered,
+navigated into the Milky Way and exposed the real non-Sol Survey card; no product code threw. The
+desktop fixed-point harness formed the syntactically valid expression
+`({documentToken,state,action})()`, evaluated its read-only action probe, then called the resulting
+object and raised `TypeError: {...} is not a function` before the dependent Charter action. The
+same malformed builder spelling existed in the keyboard and phone siblings. Glass correctly did
+not run, and 138cdee was not retried or relabelled.
+
+The exact carriers below all pass gzip integrity:
+
+- `ARC1A_COMPENDIUM_PR35_SURVEY_SURFACE_EXPRESSION_PREDECESSOR_PASS_20260901_138CDEE.json.gz`:
+  **526,415 bytes**, SHA-256
+  `4b48ba792a665a177289cd358e4372e60469839d790a2d30ced4d2606a66db86`; raw
+  **10,885,845 bytes**, SHA-256
+  `07b225f69914fe328149fec4980a507c6236c7cecfd7c067019f7f1008a80ed2`.
+- `ARC4_SLICE_PR35_SURVEY_SURFACE_EXPRESSION_ORACLE_RED_20260901_138CDEE.json.gz`:
+  **1,481 bytes**, SHA-256
+  `f5bf24b7d240ef7cf693ddc962379c865c7a5c4c068989da9243777520b5c081`; raw **3,933
+  bytes**, SHA-256 `db66d6f2edbdd548efb3249f0267bb24dc59d3779c8370879096cfb68449bba4`.
+- `ARC4_SLICE_PR35_SURVEY_SURFACE_EXPRESSION_ORACLE_RED_20260901_138CDEE.log.gz`:
+  **1,612 bytes**, SHA-256
+  `bd4b37a43bbb65a1c7e08701a8b5f3d2c67da90ee2ac1a0c20f4abbb8458eb04`; raw **3,935
+  bytes**, SHA-256 `7843fa089c2b19837910d7c2813a000bb873ea48f95a5c9be00433595fd92dab`.
+
+The bounded dirty working-tree successor centralizes one object-valued page-realm expression
+builder across desktop, keyboard and phone and executable-tests the exact returned surface, one
+inner action call, invalid input, the historical outer-call failure and complete consumer
+inventory. Focused verification passed **2 files / 52 tests**, all three TypeScript programs, and
+the full develop profile passed **258 files / 2,629 passed / 1 skipped**, **34** clean art sources,
+**1,014/1,014** routes and **454** non-inert fields. Independent final review is **APPROVED**.
+Current producer authority remains
+`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. The successor is not yet
+signed, tracked-input rehearsed or browser-certified, so these carriers bind only 138cdee's exact
+PASS/red boundary. No hosted attempt, merge, release, preview or deployment is authorized.
+
+### Historical exact-source 6030035 fresh-boot readiness-oracle stop
 
 Exact clean SSH-signed source `6030035dff1779c3fc3be7e4f46f376ff01455e8` (tree
 `f2fa2c7b2928c8a7fa82f753f847e62c72044bc3`, parent `06aba9d…`) passed the hermetic tracked-input

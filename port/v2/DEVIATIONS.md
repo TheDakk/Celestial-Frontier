@@ -1,20 +1,25 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **2026-09-01 current Slice fresh-boot readiness instrument-only deviation (canonical handoff in
-> `../../ROADMAP.md`):** exact signed 6030035 passed tracked-input rehearsal, browser preflight and
-> Compendium **78/78**, then Slice stopped once/no-retry with **1 harness finding / 1 scope** before
-> its first Survey action. A complete writable initial document legitimately retained immutable
-> `fresh-v5` provenance; the generic oracle incorrectly required `current-v5`. Glass did not run.
+> **2026-09-01 current Slice Survey-surface instrument-only deviation (canonical handoff in
+> `../../ROADMAP.md`):** exact signed 138cdee passed tracked-input develop preflight at **258 files /
+> 2,628 passed / 1 skipped**, browser-CDP selftest and live preflight. Compendium
+> `20260901055749358-33363-aa39fce457` passed **78/78** once/no-retry in **64,730 ms** with named
+> verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped once/no-
+> retry after **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Three shared
+> early-core-flow surface helpers serving eleven callsites evaluated their action IIFE and then
+> called the returned object. This was a harness-only exception with no product throw; Glass did
+> not run, and 138cdee was not retried.
 >
-> The bounded deviation is testing-only: `fresh-v5` is accepted only at explicitly named initial-
-> page callsites bound to the original document token; current/reload/replacement waits remain
-> strict. Existing Survey receipt/revision/persistence, route/render/card/action, coordinator-idle
-> and causal-stop requirements remain intact. Focused **79/79**, all TypeScript programs and final
-> develop **258 files / 2,628 passed / 1 skipped** are green, with independent final review
-> **APPROVED**. The working-tree successor is not yet signed, tracked-input rehearsed or browser-
-> certified. No product,
-> gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS,
-> ruler, timeout, retry or browser-version deviation exists; no hosted or release authority exists.
+> The bounded deviation remains testing-only. The dirty successor centralizes the object-valued
+> surface expression in one shared builder and executable/source-inventory control; existing
+> fresh-provenance, Survey receipt/revision/persistence, route/render/card/action, coordinator-idle
+> and causal-stop requirements remain intact. Focused **2 files / 52 tests**, all TypeScript
+> programs and final develop **258 files / 2,629 passed / 1 skipped** are green, with **34** clean art
+> sources, **1,014/1,014** routes, **454** specification fields and independent final review
+> **APPROVED**. It is unsigned; committed-source tracked-input and browser verification remain
+> pending. No product, gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS, ruler,
+> timeout, retry or browser-version deviation exists. Five hosted attempts remain consumed, every
+> label is absent, and no hosted or release authority exists.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above; every older “current” status label
 > below; dated decisions and evidence remain immutable):** exact clean SSH-signed source

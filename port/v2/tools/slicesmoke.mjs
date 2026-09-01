@@ -55,6 +55,7 @@ import {
   projectCompendiumFeedWebAudioGraph,
   selectArc5FeedFixtureBurnVerb,
   assessTrainingBusyRefusalPrecondition,
+  buildEarlyCoreFlowActionSurfaceExpression,
   assessEarlyCoreFlowActionFixedPoint,
   assessF4ActionCommitSequence,
   assessLazyOwnerOriginGate,
@@ -5199,11 +5200,9 @@ try {
       expectedToken: beforeAuthority.token,
       allowFresh,
     });
-    const surface = await evalIn(`({
-      documentToken:window.__CF_SLICE__.documentToken,
-      state:window.__CF_SLICE__.api.state(),
-      action:${actionExpression}
-    })()`);
+    const surface = await evalIn(
+      buildEarlyCoreFlowActionSurfaceExpression(actionExpression),
+    );
     const expected = earlyCoreFlowSurveyExpectation(beforeAuthority, routeState, {
       cardTitle, actionLabel, settlement,
     });
@@ -22552,8 +22551,9 @@ try {
       expectedToken: beforeAuthority.token,
       allowFresh,
     });
-    const surface = await evalK(`({documentToken:window.__CF_SLICE__.documentToken,
-      state:window.__CF_SLICE__.api.state(),action:${actionExpression}})()`);
+    const surface = await evalK(
+      buildEarlyCoreFlowActionSurfaceExpression(actionExpression),
+    );
     const expected = earlyCoreFlowSurveyExpectation(beforeAuthority, routeState, {
       cardTitle, actionLabel, settlement,
     });
@@ -23648,8 +23648,9 @@ try {
       expectedToken: beforeAuthority.token,
       allowFresh,
     });
-    const surface = await evalNavPh(`({documentToken:window.__CF_SLICE__.documentToken,
-      state:window.__CF_SLICE__.api.state(),action:${actionExpression}})()`);
+    const surface = await evalNavPh(
+      buildEarlyCoreFlowActionSurfaceExpression(actionExpression),
+    );
     const expected = earlyCoreFlowSurveyExpectation(beforeAuthority, routeState, {
       cardTitle, actionLabel, settlement,
     });

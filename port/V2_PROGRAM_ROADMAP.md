@@ -1,20 +1,23 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **2026-09-01 current fresh-boot readiness admission overlay (canonical handoff in
-> `../ROADMAP.md`):** exact signed 6030035 passed tracked-input rehearsal, browser preflight and
-> Compendium **78/78**, then its exact-source Slice stopped once/no-retry with **1 harness finding /
-> 1 scope** before its first Survey action. A complete writable initial document legitimately
-> retained immutable `fresh-v5` provenance while the generic oracle required `current-v5`; Glass
-> correctly did not run.
+> **2026-09-01 current Survey-surface expression admission overlay (canonical handoff in
+> `../ROADMAP.md`):** exact signed 138cdee passed tracked-input develop preflight at **258 files /
+> 2,628 passed / 1 skipped**, browser-CDP selftest and live preflight. Compendium
+> `20260901055749358-33363-aa39fce457` passed **78/78** once/no-retry in **64,730 ms** with named
+> verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped once/no-
+> retry after **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Three shared
+> early-core-flow helpers serving eleven callsites evaluated their action IIFE and then called the
+> returned object. This was a harness-only exception with no product throw; Glass did not run and
+> 138cdee was not retried.
 >
-> The bounded testing-only successor accepts `fresh-v5` only at exact-token initial-page callsites;
-> current/reload/replacement paths remain strict. Focused **79/79**, all TypeScript programs and
-> final develop **258 files / 2,628 passed / 1 skipped** are green, and independent final review is
-> **APPROVED**. The working-tree successor is not yet signed, tracked-input rehearsed or browser-
-> certified. No
+> The dirty testing-only successor centralizes the object-valued surface expression in one shared
+> builder and executable/source-inventory control. Focused **2 files / 52 tests**, all TypeScript
+> programs and final develop **258 files / 2,629 passed / 1 skipped** are green, with **34** clean art
+> sources, **1,014/1,014** routes, **454** specification fields and independent review **APPROVED**.
+> It is unsigned; committed-source tracked-input and browser verification remain pending. No
 > roadmap feature, product/save/gameplay/art/creature structure, EXEC history, Arc/Gate status or
-> HUMAN status changed. The fifth label is absent; no new push, hosted attempt, merge, release,
-> preview or deploy is authorized.
+> HUMAN status changed. Five hosted attempts remain consumed, every label is absent, and no new
+> push, hosted attempt, merge, release, preview or deploy is authorized.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above while
 > preserving its dated evidence):** exact clean SSH-signed source

@@ -1,28 +1,29 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-09-01 current fresh-boot readiness-oracle Slice boundary (supersedes older “current”
-> labels; dated evidence remains immutable):** exact clean SSH-signed source
-> `6030035dff1779c3fc3be7e4f46f376ff01455e8` passed its tracked-input develop rehearsal,
-> changed-Slice browser-CDP selftest and live preflight. Compendium
-> `20260901051716174-22348-bea719354e` passed **78/78** once/no-retry in **64,220 ms** with named
-> verification. Exact-source Slice `20260901051837279-22717-480519033de4` then stopped after
-> **24,458 ms** with **1 harness finding / 1 scope**, before the first Survey action. Its complete
-> writable initial document legitimately retained immutable `fresh-v5` boot provenance; the old
-> generic readiness assessor incorrectly required `current-v5`. Glass did not run and 6030035 was
-> not retried or relabelled.
+> **2026-09-01 current Survey-surface expression Slice boundary (supersedes older “current” labels;
+> dated evidence remains immutable):** exact clean SSH-signed source
+> `138cdee0d3840efd899b5ebdbe974fd12d87e828` passed its tracked-input develop preflight at **258
+> files / 2,628 passed / 1 skipped**, changed-Slice browser-CDP selftest and live preflight.
+> Compendium `20260901055749358-33363-aa39fce457` passed **78/78** once/no-retry in **64,730 ms**
+> with named verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped
+> after **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Three shared early-
+> core-flow surface helpers, serving eleven callsites, evaluated their action IIFE and then called
+> the returned object. This was a harness-only object-as-function exception with no product throw.
+> Glass did not run, and 138cdee was not retried or relabelled.
 >
-> The bounded runner successor moves F4 readiness into one pure contract. `current-v5` remains the
-> default; only explicit initial-page callsites with no previous token and the exact original token
-> may accept `fresh-v5`. Desktop, isolated-keyboard and fresh-phone same-document journeys retain
-> that token through predecessor/settlement waits; reload/replacement paths stay strict. Directional
-> controls reject wrong boot provenance, token drift, missing scene resources, pending writes and
-> live↔raw authority drift. Focused **5 files / 79 tests**, all TypeScript programs and final develop
-> **258 files / 2,628 passed / 1 skipped** are green; independent final review is **APPROVED**.
-> Current producer authority remains `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`.
-> The working-tree successor is not yet signed, tracked-input rehearsed or browser-certified.
-> Product/save/CSS/gameplay/creature/art behavior, rulers, timeout/retry and Edge-version policy are
-> unchanged; five hosted attempts remain consumed and no new hosted, merge, release or deploy
-> authority exists.
+> Exact-token fresh-page authority remains bounded to initial documents; current, reload and
+> replacement paths remain strict. The dirty testing-only successor centralizes the object-valued
+> Survey surface in exported `buildEarlyCoreFlowActionSurfaceExpression`; desktop, isolated-
+> keyboard and phone evaluators all consume it. Its executable/source-inventory control proves the
+> exact returned object and one action evaluation, and rejects the historical outer call. Focused
+> **2 files / 52 tests**, all TypeScript programs and final develop **258 files / 2,629 passed / 1
+> skipped** are green, with **34** clean art sources, **1,014/1,014** routes, **454** specification
+> fields and independent final review **APPROVED**. Current producer authority remains
+> `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. The successor is unsigned;
+> its exact committed-source tracked-input and browser chain remain pending. Product/save/CSS/
+> gameplay/creature/art behavior, rulers, timeout/retry and Edge-version policy are unchanged; five
+> hosted attempts remain consumed, every label is absent, and no new hosted, merge, release or
+> deploy authority exists.
 
 > **2026-08-31 historical terminal-green raw Back-action failure-cleanup admission (superseded by
 > the current admission overlay above; all hosted/local evidence remains immutable):** exact clean SSH-signed

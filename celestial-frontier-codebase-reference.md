@@ -1,14 +1,15 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-09-01 current v2 fresh-boot readiness-oracle boundary (matches local code as of
+> **2026-09-01 current v2 Survey-surface expression boundary (matches local code as of
 > 2026-09-01; supersedes older “current” labels; browser chain pending):** exact clean SSH-signed
-> source `6030035dff1779c3fc3be7e4f46f376ff01455e8` passed its tracked-input develop rehearsal,
-> browser-CDP selftest and live preflight. Compendium
-> `20260901051716174-22348-bea719354e` passed **78/78** once/no-retry in **64,220 ms** with named
-> verification. Exact-source Slice `20260901051837279-22717-480519033de4` then stopped after
-> **24,458 ms** with **1 harness finding / 1 scope**, before the first Survey action. Its complete
-> writable revision-5 initial document legitimately remained `fresh-v5`; the generic readiness
-> oracle incorrectly required `current-v5`. Glass did not run and 6030035 was not retried.
+> source `138cdee0d3840efd899b5ebdbe974fd12d87e828` passed its tracked-input develop preflight at
+> **258 files / 2,628 passed / 1 skipped**, browser-CDP selftest and live preflight. Compendium
+> `20260901055749358-33363-aa39fce457` passed **78/78** once/no-retry in **64,730 ms** with named
+> verification. Exact-source Slice `20260901055920314-33714-d47f27b9497a` then stopped after
+> **14,746 ms** with **1 harness finding / 1 scope** and two screenshots. Its three early-core-flow
+> surface helpers, shared by eleven callsites, evaluated the action IIFE and then called the
+> returned object. This was a harness-only object-as-function exception with no product throw.
+> Glass did not run, and 138cdee was not retried.
 >
 > F4 boot kind is immutable provenance, not a readiness state. `assessF4ReadyAuthority` remains
 > `current-v5` by default and accepts `fresh-v5` only when an explicitly named initial-page caller
@@ -21,16 +22,20 @@
 > writes. Existing exact Survey receipt/revision/persistence, route/render/card/action,
 > coordinator-idle and causal-stop rules remain unchanged.
 >
-> Focused verification passed **5 files / 79 tests**, all three TypeScript programs passed, and
-> final develop passed **258 files / 2,628 passed / 1 skipped**, **34** clean art sources,
-> **1,014/1,014** routes and **454** non-inert fields. Independent final review is **APPROVED**.
-> Producer authority remains `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`.
-> The working-tree successor is not yet signed, tracked-input rehearsed or browser-certified.
+> The dirty testing-only successor centralizes the object-valued Survey surface in exported
+> `buildEarlyCoreFlowActionSurfaceExpression`; desktop, isolated-keyboard and phone evaluators all
+> consume it. Its executable/source-inventory control proves the returned object and one action
+> evaluation, and rejects the historical outer call. Focused verification passed **2 files / 52
+> tests**, all three TypeScript programs passed, and final develop passed **258 files / 2,629 passed
+> / 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields.
+> Independent final review is **APPROVED**. Producer authority remains
+> `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. The successor is unsigned;
+> its exact committed-source tracked-input and browser chain remain pending.
 >
 > Product save semantics/schema, gameplay, deterministic generation, presentation, art/audio,
 > creature/genome/plant/biome/Guardian structure, numeric rulers, timeout/retry and browser-version
-> policy are unchanged. Five hosted attempts remain consumed; no current hosted, merge or release
-> authority exists.
+> policy are unchanged. Five hosted attempts remain consumed; every label is absent and no current
+> hosted, merge or release authority exists.
 
 > **2026-08-31 historical terminal-green Compendium raw failure-cleanup boundary (superseded by
 > the current certified boundary above; exact evidence remains immutable):** exact clean
