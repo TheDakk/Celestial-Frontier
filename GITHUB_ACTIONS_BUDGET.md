@@ -4,52 +4,37 @@
 
 **Hosted attempt state: none authorized.** Draft PR #35 has four consumed terminal-red
 `test-battery` attempts against base `7a9f4c1370dd84292388d718c38ff34214f6203b`, each guarded by
-`actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. The first three
-remain immutable as documented below. Fourth run **33453239307** tested exact head
-`73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against that base. Every invoked stage through
-Compendium passed, including Compendium **78/78** and its exact named verifier; the later shared
-Chrome launcher selftest stopped red because its unique temporary profile remained/reappeared
-after cleanup. Slice and Glass were skipped. The fourth attempt is consumed and was not retried.
-All four labels are absent, PR #35 remains Draft/unmerged, and no replacement attempt is
-authorized.
+`actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. Fourth hosted
+run `33453239307` tested exact head `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a`: every invoked
+stage through Compendium **78/78** and named verification passed, then the shared Chrome launcher
+selftest stopped terminal red on descendant/profile cleanup. Slice and Glass were skipped. That
+attempt is consumed and immutable.
 
-The diagnosed launcher owned only the directly spawned PID, judged exit from that process,
-destroyed inherited stderr and removed the profile once without proving descendant-tree
-quiescence. POSIX healthy close sends bounded CDP `Browser.close` before escalation, owns one
-detached process group, permanently latches `ESRCH` as gone and proves group quiescence plus a
-no-collateral sibling control. Windows disables `Browser.close` and requires successful bounded
-`taskkill /T`, escalating to `/F`; pre-exited/no-success states fail closed without a Job Object
-overclaim. Cleanup proves **100 ms** stable profile absence, preserves primary
-and cleanup causes independently, and completes browser cleanup even if `ws.close()` throws. The
-changed-or-production launcher selftest now precedes the long sealed exact-Edge certificate.
+Exact clean signed local launcher successor
+`6238b8dd3eccf6dd106787b6789ad8bb716deac9` then passed Compendium
+`20260901015932922-91060-9d1ef2de36` at **78/78** plus named verification. Its unchanged-source
+Slice `20260901020100211-91399-de1ddbd28c96` stopped terminal red once/no-retry after
+**302,408 ms** with exactly one harness finding; named verification correctly exited 2 and Glass
+did not run. Protected Save encountered a replacement phone document before Slice/API publication,
+so the raw staging hook made zero calls and the existing 4,305-byte primary remained unchanged.
+This local run consumed no hosted attempt and creates no hosted authority. Exact 6238 will not be
+retried or relabelled.
 
-Local repair verification is green: real-Edge launcher selftest; **254/254 files / 2,567 passed /
-1 skipped** in the develop profile; every TypeScript, art, override, route and specification owner;
-focused current-authority coverage **32/32**. The final combined focused suite is **160/160**; its
-prior **159/160** result only reflected expected Compendium `selectionRule` bookkeeping that still
-named the predecessor authority, and that literal is repaired. Final derived Compendium
-measurement/browser-CDP authority is
-`dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
-`929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`. Collector
-`ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d`, outcome contract
-`1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` and producer
-`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` are unchanged. Product
-bytes, CSS, fixed rulers/numeric ceilings, timeouts, retry policy and browser-version policy are
-unchanged. SceneMemory's `calibration-required` authority remains intentionally stale/quarantined
-until explicit production activation. The repair remains uncommitted pending final local
-diagnostics; it has no current browser certificate. No push, hosted retry, merge, release, version
-or deployment is authorized. PR #34 runs
-`32665404776` and `32677088518` are
-consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
-labels were removed. Its repaired third authorized changed-head attempt, run `32681394532`, passed
-terminal-green in one attempt/no retry (50m10s), had its label removed, and merged normally as
-`7a9f4c1370dd84292388d718c38ff34214f6203b`. No replacement attempt is authorized. PR #33's fifth and
-final authorized changed-head attempt,
-run `32646110946`, passed terminal-green (one attempt, no retry; battery 50m29s), its label was
-removed, and it merged normally into `develop` as `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e`.
-Runs `32609389977`, `32611053651`, `32614177932`, and `32618995487` remain consumed terminal-red
-historical evidence; their labels were removed. Details are below.
+The bounded dirty successor applies stable document-token ownership, exact persistence
+hold/mutation polarity and one atomic invocation to all eight stored-v4 staging paths. Only an exact
+zero-call pre-invocation replacement may rebind; every invoked, rejected, malformed or ambiguous
+outcome stops without retry. Its complete browser-free develop profile passes **255 files / 2,576
+tests / 1 skipped**, all TypeScript/art/route/specification owners, and independent final review is
+clear. Product/save/gameplay/art/CSS behavior, thresholds, timeouts, retry and browser-version
+policy are unchanged. It still requires a clean signed commit and one fresh exact
+**Compendium → Slice → Glass** local chain.
 
+All four hosted approval labels are absent, PR #35 remains Draft/unmerged, and
+`openai/mac` is locally one commit ahead of upstream before the dirty successor. No push, label,
+hosted attempt, retry, Ready transition, merge, release, version bump, preview publication or
+deployment is authorized. A future hosted attempt requires Nick's fresh exact authorization naming
+the final head/base, PR #35, `test-battery`, `actions-budget-approved`, 92-minute maximum and no
+retry.
 Exact local SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium
 **78/78** once/no-retry in **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; exact named
 verification passed. Its exact-source develop Slice `20260831155943782-24588-a98f13f2c7b7`

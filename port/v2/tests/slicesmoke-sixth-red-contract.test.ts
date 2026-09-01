@@ -29,6 +29,10 @@ const sliceSource = readFileSync(
   new URL('../tools/slicesmoke.mjs', import.meta.url),
   'utf8',
 );
+const sliceContractSource = readFileSync(
+  new URL('../tools/slicesmoke-contract.mjs', import.meta.url),
+  'utf8',
+);
 const glassSource = readFileSync(
   new URL('../tools/glassmatrix.mjs', import.meta.url),
   'utf8',
@@ -1140,6 +1144,29 @@ describe('sixth Slice red contract repairs', () => {
       expect(orderErrors(mutant), `${prior} before ${marker}`).not.toEqual([]);
     });
 
+    const stageOwnerWait = section(
+      sliceSource,
+      'const waitForStoredV4StageOwner = async (',
+      'try {\n  if (!OUTCOME_CONTROLS_ONLY) {',
+    );
+    proveEachMarkerRequired(stageOwnerWait, [
+      ['explicit hold policy',
+        "{ timeoutMs = 15000, allowedHolds = [null, 'protected-payload'] } = {}"],
+      ['foreground intended owner', "await send('Page.bringToFront', {}, session);"],
+      ['observe exact hold',
+        "Object.prototype.hasOwnProperty.call(state.persistence,'hold')"],
+      ['observe mutation authority',
+        "typeof state?.persistence?.mutationBlocked==='boolean'"],
+      ['observe convergence state',
+        'convergenceReloadScheduled:state?.persistence?.convergenceReloadScheduled??null'],
+      ['advance tested stability owner',
+        'const stability = advanceStoredV4StageOwnerStability('],
+      ['carry only classifier candidate',
+        'candidateToken = stability.candidateToken;'],
+      ['return only two-observation token',
+        "if (stability.status === 'ready') return stability.readyToken;"],
+    ]);
+
     const sliceHandshake = section(
       sliceSource,
       '  const exactStoredV4Stage = ({ accepted, observed, expected, backup }) =>',
@@ -1169,13 +1196,27 @@ describe('sixth Slice red contract repairs', () => {
       ['backup-with-null-primary control',
         '}, expected: null, backup: \'{"v":4}\' })'],
       ['absent-primary control', '}, expected: null }))'],
-      ['stage acceptance',
-        '`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(raw)},${backup === undefined ? \'undefined\' : JSON.stringify(backup)})`'],
+      ['session-qualified stage helper',
+        'const requireStoredV4Stage = async (\n    session, evaluate, raw, label, backup = undefined,'],
+      ['stable owner wait',
+        'documentToken = await waitForStoredV4StageOwner('],
+      ['token-bound stage expression',
+        'buildStoredV4StageInvocationExpression(raw, backup, documentToken, allowedHolds)'],
+      ['exact stage receipt assessment',
+        'const assessment = assessStoredV4StageInvocation(candidate, documentToken, allowedHolds);'],
+      ['only unclaimed receipts may rebind',
+        "if (continuation.kind === 'rebind') {"],
+      ['ambiguous dispatched attempt never retries',
+        'That outcome is ambiguous and must never be\n           retried; exact storage readback below remains independent evidence.'],
+      ['invoked outcomes never retry',
+        "accepted = continuation.kind === 'accept';"],
       ['unconditional primary/backup receipt read',
         'try { observed = await evaluate(READ_STORED_V4_STAGE_EXPRESSION); }'],
       ['fail-fast setup diagnosis',
         'setup did not stage the exact v4 fixture: ${JSON.stringify({'],
-      ['rejected-stage error receipt', 'accepted, stageError, readError,'],
+      ['rejected-stage lifecycle receipt',
+        'accepted, stageError, readError, stageReceipt, stageAssessment,'],
+      ['pre-invocation replacement receipts', 'unclaimedReceipts,'],
       ['expected primary byte/hash receipt',
         'expectedPrimary: describeStoredValue({ present: raw !== null, value: raw })'],
       ['observed winning primary byte/hash receipt',
@@ -1211,37 +1252,55 @@ describe('sixth Slice red contract repairs', () => {
       ['held unsafe-revision control',
         'beforeRevision: Number.MAX_SAFE_INTEGER,'],
     ]);
-    expect(sliceSource.split('__smokeStageStoredV4').length - 1).toBe(2);
+    expect(sliceSource).not.toContain('window.__CF_SLICE__.api.__smokeStageStoredV4');
+    expect(sliceContractSource.split('hook=owner.api.__smokeStageStoredV4').length - 1).toBe(1);
+    /* Seven shared-helper paths plus the independently held-persist invocation
+       are the complete eight-path staging inventory. */
+    expect(sliceSource.split('requireStoredV4Stage(').length - 1).toBe(7);
+    expect(sliceSource.split('buildStoredV4StageInvocationExpression(').length - 1).toBe(2);
     expect(sliceSource).toContain(
-      "evalIn, OUTER_AUTH_SAVED_ROUTE_RAW, 'SAVED ROUTE AUTHORIZATION'",
+      "sess, evalIn, ONE_BAD_FIELD_V4_RAW, 'ONE BAD FIELD', undefined,\n    { allowedHolds: ['protected-payload'] },",
     );
     expect(sliceSource).toContain(
-      "requireStoredV4Stage(evalIn, STALE_SAVED_ROUTE_RAW, 'SAVED ROUTE FIELD REPAIR')",
+      "sess, evalIn, OUTER_AUTH_SAVED_ROUTE_RAW, 'SAVED ROUTE AUTHORIZATION', undefined,\n    { allowedHolds: ['protected-payload'] },",
     );
     expect(sliceSource).toContain(
-      "requireStoredV4Stage(evalTp, DTRAIN_FULL_FINISH_RAW, 'D-TRAIN FULL FINISH')",
+      "sess, evalIn, STALE_SAVED_ROUTE_RAW, 'SAVED ROUTE FIELD REPAIR', undefined,\n    { allowedHolds: [null] },",
     );
     expect(sliceSource).toContain(
-      "requireStoredV4Stage(evalPh, raw, 'PROTECTED SAVE', backup)",
+      'sess, evalIn, raw, label, undefined, { allowedHolds: [null] },',
     );
     expect(sliceSource).toContain(
-      "seedRaw === undefined ? null : seedRaw,\n        'TRANSIENT READ',",
+      "trp, evalTp, DTRAIN_FULL_FINISH_RAW, 'D-TRAIN FULL FINISH', undefined,\n    { allowedHolds: [null] },",
+    );
+    expect(sliceSource).toContain(
+      "ph, evalPh, raw, 'PROTECTED SAVE', backup,\n      { allowedHolds: [null, 'protected-payload'] },",
+    );
+    expect(sliceSource).toContain(
+      "retrySession, evalRetry,\n        seedRaw === undefined ? null : seedRaw,\n"
+        + "        'TRANSIENT READ', undefined, { allowedHolds: [null] },",
     );
     expect(sliceSource).not.toContain("typeof stage==='function'");
     const heldControl = section(
       sliceSource,
       '  const heldStageDrain = await evalIn(`(async()=>{const api=window.__CF_SLICE__.api;',
-      '  await requireStoredV4Stage(\n    evalIn, OUTER_AUTH_SAVED_ROUTE_RAW',
+      '  await requireStoredV4Stage(\n    sess, evalIn, OUTER_AUTH_SAVED_ROUTE_RAW',
     );
     proveEachMarkerRequired(heldControl, [
       ['drain the uncontrolled navigation tail',
         'const committed=await api.__smokeDrainFixturePersist(),state=api.state();'],
       ['require zero pending persistence',
         'if (heldStageDrain.committed !== true || heldStageDrain.pending !== 0)'],
+      ['bind stable held-stage document',
+        'const heldStageDocumentToken = await waitForStoredV4StageOwner('],
       ['arm deterministic active persist',
         '`window.__CF_SLICE__.api.__smokeArmImportRace(${JSON.stringify(STALE_AUTOSAVE_RAW)})`'],
       ['start exact primary/backup stage while held',
-        '`window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(ONE_BAD_FIELD_V4_RAW)},${JSON.stringify(STALE_AUTOSAVE_RAW)})`'],
+        'buildStoredV4StageInvocationExpression(\n      ONE_BAD_FIELD_V4_RAW, STALE_AUTOSAVE_RAW, heldStageDocumentToken, [null],'],
+      ['assess held-stage lifecycle receipt',
+        'heldStageAssessment = assessStoredV4StageInvocation(\n        value, heldStageDocumentToken, [null],'],
+      ['held-stage accepts only exact terminal receipt',
+        "return heldStageAssessment.status === 'accepted';"],
       ['bounded stage-entry poll',
         'const heldStageWaitDeadline = performance.now() + 10_000;'],
       ['observe protected stage wait', "if (hold === 'protected-payload') {"],
@@ -1274,15 +1333,33 @@ describe('sixth Slice red contract repairs', () => {
       ['retain byte/hash diagnosis',
         'primary: describeStoredValue(heldStageObserved?.primary)'],
     ]);
-    const protectedStageAt = sliceSource.indexOf(
-      "return requireStoredV4Stage(evalPh, raw, 'PROTECTED SAVE', backup);",
+    const protectedOwner = section(
+      sliceSource,
+      '  /* Every remaining fixture in this section belongs to the phone document.',
+      '  const waitProtectedNotice = async (expectedTitle, timeoutMs = 3000) => {',
     );
-    const siblingCloseAt = sliceSource.lastIndexOf(
+    const protectedOrder = [
       "await send('Target.closeTarget', { targetId: t.targetId });",
-      protectedStageAt,
-    );
-    expect(siblingCloseAt).toBeGreaterThanOrEqual(0);
-    expect(siblingCloseAt).toBeLessThan(protectedStageAt);
+      "await send('Target.activateTarget', { targetId: t2.targetId });",
+      "await send('Emulation.setFocusEmulationEnabled', { enabled: true }, ph);",
+      "await send('Page.bringToFront', {}, ph);",
+      "await navigateToSlice(ph, URL0, 'protected-save fixture owner rebind');",
+      "return requireStoredV4Stage(\n      ph, evalPh, raw, 'PROTECTED SAVE', backup,",
+    ];
+    const protectedOrderErrors = (owner: string) => protectedOrder.flatMap((marker, index) => {
+      const at = owner.indexOf(marker);
+      const prior = index === 0 ? -1 : owner.indexOf(protectedOrder[index - 1]!);
+      return at >= 0 && at > prior ? [] : [marker];
+    });
+    expect(protectedOrderErrors(protectedOwner)).toEqual([]);
+    protectedOrder.slice(1).forEach((marker, index) => {
+      const prior = protectedOrder[index]!;
+      const mutant = protectedOwner
+        .replace(prior, '__PROTECTED_STAGE_ORDER_SWAP__')
+        .replace(marker, prior)
+        .replace('__PROTECTED_STAGE_ORDER_SWAP__', marker);
+      expect(protectedOrderErrors(mutant), `${prior} before ${marker}`).not.toEqual([]);
+    });
   });
 
   it('uses a real legacy-v4 primary and gates transient-read controls on green bases', () => {

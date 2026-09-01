@@ -1,22 +1,21 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **2026-08-31 current launcher-admission overlay (canonical handoff in `../ROADMAP.md`):** fourth
-> exact no-retry PR #35 run `33453239307` tested head
-> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b`. All invoked owners through Compendium **78/78**
-> and named verification passed; the later shared Chrome launcher selftest stopped on a
-> leaked/reappearing unique profile, so Slice/Glass were skipped. The working-tree repair gives
-> POSIX a bounded CDP `Browser.close` grace followed by detached-group TERM/KILL when needed;
-> Windows disables that grace and requires bounded successful `taskkill /T` then `/F`, failing
-> closed on pre-exited or no-success cleanup. It proves **100 ms** profile absence, preserves
-> primary/cleanup causality and moves the selftest before the long exact-Edge certificate. Real-Edge
-> selftest plus the **254-file / 2,567-pass / 1-skip** develop profile are green. Final Compendium
-> measurement/browser-CDP authority is `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836`
-> / `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`; SceneMemory stays
-> stale/quarantined until production activation. No roadmap capability status, product bytes,
-> rulers, retry/version policy or HUMAN criteria changed. The repair awaits final diagnostics and a
-> local commit; no hosted retry, push, merge, release or deployment is authorized.
-
+> **2026-08-31 current Slice-admission overlay (canonical handoff in `../ROADMAP.md`):** exact
+> clean signed launcher successor `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium
+> **78/78** and named verification, then unchanged-source Slice
+> `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry after **302,408 ms** with one
+> harness finding. Protected Save encountered a replacement phone document before Slice
+> publication; the fixture hook made zero calls, stored bytes remained unchanged and Glass did not
+> run.
+>
+> The bounded instrument successor covers all eight staging paths with stable token ownership,
+> exact persistence hold/mutation polarity, one atomic invocation and zero-call-only rebind. The
+> browser-free develop profile passes **255 files / 2,576 tests / 1 skipped** and every
+> TypeScript/art/route/specification owner; independent final review is clear. No roadmap feature,
+> product/save/gameplay/art/creature structure, EXEC history or HUMAN status changed.
+> Historical certificates remain exact-source history and are not rebound. A clean signed successor
+> and fresh no-retry **Compendium → Slice → Glass** chain remain; no push, hosted attempt, merge,
+> release or deploy is authorized.
 > **2026-08-31 historical local a046 repair overlay (superseded above while
 > preserving its dated evidence):** exact clean SSH-signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry in

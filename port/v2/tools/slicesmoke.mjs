@@ -58,7 +58,10 @@ import {
   assessLazyProductProducerSettlement,
   assessSingleF4ActionCommit,
   assessCharterLandSettlementTopology,
+  assessStoredV4StageInvocation,
+  advanceStoredV4StageOwnerStability,
   beginF4GreenContinuation,
+  buildStoredV4StageInvocationExpression,
   buildLazyRefillObservationExpression,
   classifyCompendiumDetailReceipt,
   classifyForegroundServiceTurn,
@@ -70,6 +73,7 @@ import {
   planetsideRuntimeTimeoutDecision,
   SLICE_SCREENSHOT_LOGICAL_NAMES,
   sliceScreenshotInventoryLine,
+  storedV4StageContinuationDecision,
   trainingBindingReceiptBeforeDeadline,
 } from './slicesmoke-contract.mjs';
 import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
@@ -4772,6 +4776,63 @@ const navigateToSlice = async (session, url, label) => {
   await send('Page.navigate', { url }, session);
   return waitForSlice(session, label, { previousToken });
 };
+const waitForStoredV4StageOwner = async (
+  session, label, { timeoutMs = 15000, allowedHolds = [null, 'protected-payload'] } = {},
+) => {
+  const deadline = Date.now() + timeoutMs;
+  let candidateToken = null;
+  let last = { status: 'pending', reasons: ['staging surface absent'] };
+  /* A background page may be between visibility-driven authority release and
+     its convergence reload. Foreground the intended owner, then require two
+     consecutive ready observations from one document before any mutation. */
+  await send('Page.bringToFront', {}, session);
+  while (Date.now() < deadline) {
+    let result;
+    try {
+      result = await send('Runtime.evaluate', { expression: `(()=>{try{
+        const S=window.__CF_SLICE__,api=S?.api;
+        const state=typeof api?.state==='function'?api.state():null;
+        return {schema:'cf-v2-stored-v4-stage-owner/v1',
+          documentToken:typeof S?.documentToken==='string'?S.documentToken:null,
+          readyState:document.readyState,slicePresent:!!S,apiPresent:!!api,
+          stageHookPresent:typeof api?.__smokeStageStoredV4==='function',
+          persistenceReady:state?.persistence?.ready===true,
+          persistenceHold:state?.persistence&&Object.prototype.hasOwnProperty.call(state.persistence,'hold')
+            ?state.persistence.hold:'missing',
+          mutationBlocked:typeof state?.persistence?.mutationBlocked==='boolean'
+            ?state.persistence.mutationBlocked:null,
+          convergenceReloadScheduled:state?.persistence?.convergenceReloadScheduled??null};
+      }catch{return {schema:'cf-v2-stored-v4-stage-owner/v1',
+        documentToken:null,readyState:document.readyState,slicePresent:false,apiPresent:false,
+        stageHookPresent:false,persistenceReady:false,persistenceHold:'missing',mutationBlocked:null,
+        convergenceReloadScheduled:null};}})()`,
+        returnByValue: true, awaitPromise: true }, session);
+    } catch (error) {
+      candidateToken = null;
+      last = { status: 'pending', reasons: [String(error?.message || error)] };
+      await sleep(50);
+      continue;
+    }
+    if (result.exceptionDetails) {
+      candidateToken = null;
+      last = { status: 'pending', reasons: [String(
+        result.exceptionDetails.exception?.description || result.exceptionDetails.text || 'page exception',
+      )] };
+      await sleep(50);
+      continue;
+    }
+    const observation = result.result.value;
+    const stability = advanceStoredV4StageOwnerStability(
+      candidateToken, observation, allowedHolds,
+    );
+    candidateToken = stability.candidateToken;
+    last = stability.assessment;
+    if (stability.status === 'ready') return stability.readyToken;
+    await sleep(50);
+  }
+  throw new Error(`${label} did not expose one stable fixture-staging owner within ${timeoutMs}ms (`
+    + `${last.reasons.join(' · ')})`);
+};
 try {
   if (!OUTCOME_CONTROLS_ONLY) {
   const t = await send('Target.createTarget', { url: 'about:blank' });
@@ -4898,15 +4959,60 @@ try {
       sha256: value === null ? null : createHash('sha256').update(value).digest('hex'),
     };
   };
-  const requireStoredV4Stage = async (evaluate, raw, label, backup = undefined) => {
+  const requireStoredV4Stage = async (
+    session, evaluate, raw, label, backup = undefined,
+    { allowedHolds = [null, 'protected-payload'] } = {},
+  ) => {
+    const deadline = Date.now() + 15000;
     let accepted = false;
     let stageError = null;
-    try {
-      accepted = await evaluate(
-        `window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(raw)},${backup === undefined ? 'undefined' : JSON.stringify(backup)})`,
-      );
-    } catch (error) {
-      stageError = String(error instanceof Error ? error.message : error);
+    let stageReceipt = null;
+    let stageAssessment = null;
+    const unclaimedReceipts = [];
+    while (Date.now() < deadline && stageReceipt === null && stageError === null) {
+      const remainingMs = deadline - Date.now();
+      if (remainingMs <= 0) break;
+      let documentToken;
+      try {
+        documentToken = await waitForStoredV4StageOwner(
+          session, `${label} fixture-staging authority`,
+          { timeoutMs: remainingMs, allowedHolds },
+        );
+      } catch (error) {
+        stageError = String(error instanceof Error ? error.message : error);
+        break;
+      }
+      let candidate;
+      try {
+        candidate = await evaluate(
+          buildStoredV4StageInvocationExpression(raw, backup, documentToken, allowedHolds),
+        );
+      } catch (error) {
+        /* Dispatch may have entered the stateful hook before the execution
+           context disappeared. That outcome is ambiguous and must never be
+           retried; exact storage readback below remains independent evidence. */
+        stageError = String(error instanceof Error ? error.message : error);
+        const continuation = storedV4StageContinuationDecision(null, stageError);
+        if (continuation.kind !== 'stop') {
+          throw new Error('ambiguous stored-v4 dispatch did not stop');
+        }
+        break;
+      }
+      const assessment = assessStoredV4StageInvocation(candidate, documentToken, allowedHolds);
+      const continuation = storedV4StageContinuationDecision(assessment);
+      if (continuation.kind === 'rebind') {
+        /* The guarded expression proved it did not invoke the hook. A document
+           changed between readiness and dispatch, so it is safe to rebind. */
+        unclaimedReceipts.push(Object.freeze({ documentToken, candidate, assessment }));
+        continue;
+      }
+      stageReceipt = candidate;
+      stageAssessment = assessment;
+      accepted = continuation.kind === 'accept';
+      if (!accepted) stageError = `stage invocation ${assessment.status}: ${assessment.reasons.join(' · ')}`;
+    }
+    if (stageReceipt === null && stageError === null) {
+      stageError = 'fixture-staging authority deadline expired before one guarded invocation';
     }
     let observed = null;
     let readError = null;
@@ -4914,7 +5020,8 @@ try {
     catch (error) { readError = String(error instanceof Error ? error.message : error); }
     if (!exactStoredV4Stage({ accepted, observed, expected: raw, backup })) {
       throw new Error(`${label} setup did not stage the exact v4 fixture: ${JSON.stringify({
-        accepted, stageError, readError,
+        accepted, stageError, readError, stageReceipt, stageAssessment,
+        unclaimedReceipts,
         expectedPrimary: describeStoredValue({ present: raw !== null, value: raw }),
         observedPrimary: describeStoredValue(observed?.primary),
         expectedBackup: describeStoredValue({ present: raw !== null && backup !== undefined, value: backup }),
@@ -8621,7 +8728,10 @@ try {
     fails.push('V5 CORRUPT MIRROR: current split rows were accepted/re-written instead of protected: '
       + JSON.stringify(corruptV5));
   }
-  await requireStoredV4Stage(evalIn, ONE_BAD_FIELD_V4_RAW, 'ONE BAD FIELD');
+  await requireStoredV4Stage(
+    sess, evalIn, ONE_BAD_FIELD_V4_RAW, 'ONE BAD FIELD', undefined,
+    { allowedHolds: ['protected-payload'] },
+  );
   await navigateToSlice(sess, URL0, 'desktop complete-v4 one-bad-field boot');
   await sleep(2500);
   const oneBadFieldBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -9096,6 +9206,9 @@ try {
     throw new Error('SAVED ROUTE STAGING CONTROL could not drain the navigation persist tail: '
       + JSON.stringify(heldStageDrain));
   }
+  const heldStageDocumentToken = await waitForStoredV4StageOwner(
+    sess, 'saved-route held fixture-staging authority', { allowedHolds: [null] },
+  );
   const heldFixtureBefore = await evalIn(READ_STORED_V4_STAGE_EXPRESSION);
   const heldStageArmed = await evalIn(
     `window.__CF_SLICE__.api.__smokeArmImportRace(${JSON.stringify(STALE_AUTOSAVE_RAW)})`,
@@ -9105,10 +9218,24 @@ try {
   }
   let heldStageSettled = false;
   let heldStageError = null;
+  let heldStageReceipt = null;
+  let heldStageAssessment = null;
   const heldStagePromise = evalIn(
-    `window.__CF_SLICE__.api.__smokeStageStoredV4(${JSON.stringify(ONE_BAD_FIELD_V4_RAW)},${JSON.stringify(STALE_AUTOSAVE_RAW)})`,
+    buildStoredV4StageInvocationExpression(
+      ONE_BAD_FIELD_V4_RAW, STALE_AUTOSAVE_RAW, heldStageDocumentToken, [null],
+    ),
   ).then(
-    (value) => { heldStageSettled = true; return value; },
+    (value) => {
+      heldStageReceipt = value;
+      heldStageAssessment = assessStoredV4StageInvocation(
+        value, heldStageDocumentToken, [null],
+      );
+      heldStageSettled = true;
+      if (heldStageAssessment.status !== 'accepted') {
+        heldStageError = `stage invocation ${heldStageAssessment.status}: ${heldStageAssessment.reasons.join(' · ')}`;
+      }
+      return heldStageAssessment.status === 'accepted';
+    },
     (error) => {
       heldStageSettled = true;
       heldStageError = String(error instanceof Error ? error.message : error);
@@ -9194,11 +9321,13 @@ try {
           primary: describeStoredValue(heldStageDuring?.primary),
           backup: describeStoredValue(heldStageDuring?.backup),
         },
+        heldStageDocumentToken, heldStageReceipt, heldStageAssessment,
         heldStageError, heldMutationError, heldStageReadError,
       }));
   }
   await requireStoredV4Stage(
-    evalIn, OUTER_AUTH_SAVED_ROUTE_RAW, 'SAVED ROUTE AUTHORIZATION',
+    sess, evalIn, OUTER_AUTH_SAVED_ROUTE_RAW, 'SAVED ROUTE AUTHORIZATION', undefined,
+    { allowedHolds: ['protected-payload'] },
   );
   await navigateToSlice(sess, URL0, 'source-valid saved route beyond saved reach');
   await sleep(2200);
@@ -9337,7 +9466,10 @@ try {
      `view`, and preserve identity, progress, Atlas history, Charter, rewards,
      and names. This drives the raw IndexedDB ingress rather than an in-memory
      resolver probe. */
-  await requireStoredV4Stage(evalIn, STALE_SAVED_ROUTE_RAW, 'SAVED ROUTE FIELD REPAIR');
+  await requireStoredV4Stage(
+    sess, evalIn, STALE_SAVED_ROUTE_RAW, 'SAVED ROUTE FIELD REPAIR', undefined,
+    { allowedHolds: [null] },
+  );
   await navigateToSlice(sess, URL0, 'stale saved-route field-local fallback');
   await sleep(2200);
   const staleSavedBoot = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -19930,7 +20062,9 @@ try {
   ];
   const dtrainSeedPrimary = async (raw, label) => {
     const beforeToken = await sliceToken(sess);
-    await requireStoredV4Stage(evalIn, raw, label);
+    await requireStoredV4Stage(
+      sess, evalIn, raw, label, undefined, { allowedHolds: [null] },
+    );
     await navigateToSlice(sess, URL0, label);
     await sleep(900);
     const token = await sliceToken(sess);
@@ -24258,11 +24392,25 @@ try {
      page can observe or overwrite fixture authority after the atomic stage. */
   await send('Target.closeTarget', { targetId: t.targetId });
 
+  /* The veteran phone target was intentionally backgrounded while several
+     same-origin owners advanced the durable revision. Closing the last
+     foreground sibling can expose that old target in the middle of its
+     visibility-driven convergence reload. Reacquire it explicitly and bind a
+     fresh document before the first protected-save mutation. The common stage
+     helper then re-proves a stable token and guards the invocation atomically. */
+  await send('Target.activateTarget', { targetId: t2.targetId });
+  await send('Emulation.setFocusEmulationEnabled', { enabled: true }, ph);
+  await send('Page.bringToFront', {}, ph);
+  await navigateToSlice(ph, URL0, 'protected-save fixture owner rebind');
+
   /* Protected-save notices are CRITICAL boot outcomes and must bypass the
      ordinary 1.8s toast de-bounce. Exercise them before that window closes,
      and prove neither future nor corrupt bytes are rewritten. */
   const setProtectedPrimary = async (raw, backup) => {
-    return requireStoredV4Stage(evalPh, raw, 'PROTECTED SAVE', backup);
+    return requireStoredV4Stage(
+      ph, evalPh, raw, 'PROTECTED SAVE', backup,
+      { allowedHolds: [null, 'protected-payload'] },
+    );
   };
   const waitProtectedNotice = async (expectedTitle, timeoutMs = 3000) => {
     const deadline = Date.now() + timeoutMs;
@@ -24475,9 +24623,9 @@ try {
     };
     try {
       await requireStoredV4Stage(
-        evalRetry,
+        retrySession, evalRetry,
         seedRaw === undefined ? null : seedRaw,
-        'TRANSIENT READ',
+        'TRANSIENT READ', undefined, { allowedHolds: [null] },
       );
     } catch (error) {
       await send('Target.closeTarget', { targetId: target.targetId });
@@ -24778,7 +24926,10 @@ try {
      staging page for the full D-TRAIN Finish journey below. Closing it after
      transaction completion prevents its live lesson/autosave from racing the
      next document. */
-  await requireStoredV4Stage(evalTp, DTRAIN_FULL_FINISH_RAW, 'D-TRAIN FULL FINISH');
+  await requireStoredV4Stage(
+    trp, evalTp, DTRAIN_FULL_FINISH_RAW, 'D-TRAIN FULL FINISH', undefined,
+    { allowedHolds: [null] },
+  );
   await send('Target.closeTarget', { targetId: t3p.targetId });
 
   /* 4e. THE TRAINING DRILL — the six hands-on navigation lessons plus the

@@ -1,32 +1,30 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-31 current raw-CDP process-group cleanup boundary (supersedes older “current” labels):**
-> hosted PR #35 run `33453239307` tested exact head
-> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b` once/no-retry. All invoked owners through
-> Compendium **78/78** and its named verifier passed; the subsequent Chrome launcher selftest
-> retained/recreated its unique profile, so Slice/Glass were skipped.
+> **2026-08-31 current v2 Slice fixture-owner boundary (matches the local v2 worktree and
+> supersedes older “current” labels):** exact clean signed launcher source
+> `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78** and named verification.
+> Its unchanged-source Slice `20260901020100211-91399-de1ddbd28c96` then stopped once/no-retry
+> after **302,408 ms** with one harness finding: the backgrounded phone had entered a replacement
+> document before Slice/API publication, so Protected Save's raw staging expression threw before
+> its hook ran. Independent IndexedDB readback proved the old 4,305-byte primary remained
+> byte-identical; Glass did not run.
 >
-> The shared launcher had modeled the browser as one PID: it judged direct exit, destroyed stderr
-> and removed the profile once without owning or observing descendant-tree quiescence. POSIX healthy
-> close sends bounded CDP `Browser.close`, owns a detached group, permanently latches `ESRCH`, proves
-> a no-collateral sibling and escalates only if still live. Windows disables `Browser.close` and
-> requires successful bounded `taskkill /T`, escalating to `/F`; pre-exited/no-success states fail
-> closed without a Job Object proof. Cleanup proves **100 ms**
-> stable absence, retains primary/cleanup causality and survives a throwing `ws.close()`. Workflow
-> fail-fast order places this selftest before the long sealed exact-Edge certificate.
+> Current tooling separates three authorities: stable document ownership, one mutation claim and
+> independent storage readback. Across all eight stored-v4 staging paths, two ready observations
+> bind one exact document token plus complete app surface, persistence readiness, no convergence
+> reload and an exact safe hold/mutation pair. One atomic expression rechecks them before exactly
+> one hook call. A pre-call replacement returns a shaped zero-call `unclaimed` receipt and alone
+> may rebind; post-call replacement, false/throw, invalid receipt or transport ambiguity is terminal
+> and cannot be retried. Storage contents diagnose the result but cannot mint an app-owned stage
+> receipt.
 >
-> Real-Edge selftest and the **254-file / 2,567-pass / 1-skip** develop profile are green, including
-> TypeScript, art, override, route and specification owners; focused authority is **32/32** and the
-> final combined focused suite is **160/160**. Final measurement/browser-CDP authority is
-> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
-> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`.
-> SceneMemory's
-> calibration-required authority stays intentionally stale/quarantined until production activation.
-> Product build bytes, CSS, rulers/ceilings, timeouts, retry and version-tolerant browser policy are
-> unchanged. This is an uncommitted working-tree repair, not a current browser certificate or hosted
-> authorization; canonical resumption state is in `ROADMAP.md`.
-
+> Browser-free verification is green at **255 files / 2,576 passed / 1 skipped**, all three
+> TypeScript programs and every art/route/specification owner; independent final review found no
+> remaining functional lifecycle defect. No product source, save semantics/schema, gameplay,
+> deterministic generation, presentation, art/audio, creature/genome/plant/biome/Guardian
+> structure, threshold, timeout or browser-version policy changed. The guarded successor still
+> requires a clean signed commit and fresh exact-source **Compendium → Slice → Glass** certificate;
+> no hosted or release authority exists.
 > **2026-08-31 historical terminal-green Compendium raw failure-cleanup boundary (superseded by
 > the raw-CDP launcher boundary above; exact evidence remains immutable):** exact clean
 > SSH-signed certified source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree

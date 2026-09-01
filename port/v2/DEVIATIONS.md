@@ -1,23 +1,20 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **2026-08-31 current launcher-only deviation overlay (canonical handoff in `../../ROADMAP.md`):**
-> PR #35 run `33453239307` consumed the fourth exact no-retry attempt for head
-> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b`. All invoked owners through Compendium
-> **78/78** and named verification passed; the later shared Chrome launcher selftest failed unique-
-> profile cleanup, so Slice/Glass were skipped. The bounded local deviation is instrument-only:
-> POSIX uses a bounded CDP `Browser.close` grace then detached-group TERM/KILL when needed; Windows
-> disables that grace and requires bounded successful `taskkill /T` then `/F`, failing closed on
-> pre-exited/no-success cleanup without a Job Object claim. The repair also proves **100 ms** profile
-> absence, preserves primary/cleanup causality, survives a throwing `ws.close()` and moves workflow
-> selftest order earlier. Real-Edge selftest and the **254-file / 2,567-pass / 1-skip** develop
-> profile are green. Final Compendium measurement/browser-CDP authority is
-> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
-> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`; SceneMemory remains
-> stale/quarantined until production activation. No product/gameplay/save/art/creature deviation,
-> ruler, timeout, retry or browser-version change exists. The repair awaits final diagnostics/commit;
-> no hosted retry, push, merge, release, version or deployment is authorized.
-
+> **2026-08-31 current Slice instrument-only deviation overlay (canonical handoff in
+> `../../ROADMAP.md`):** exact clean signed launcher successor
+> `6238b8dd3eccf6dd106787b6789ad8bb716deac9` passed Compendium **78/78** and named verification.
+> Its unchanged-source Slice `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry after
+> **302,408 ms** with one harness finding: Protected Save's raw staging call met a replacement phone
+> document before Slice publication, made zero hook calls and left the old primary unchanged. Glass
+> did not run.
+>
+> The bounded deviation is testing-only. All eight staging paths now require a stable exact document
+> token, complete app/persistence authority, exact hold/mutation polarity and one atomic invocation;
+> only an exact zero-call `unclaimed` receipt may rebind. Browser-free verification passes **255
+> files / 2,576 tests / 1 skipped** plus all TypeScript/art/route/specification owners, and final
+> review is clear. No product, gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS,
+> ruler, timeout, retry or browser-version deviation exists. A clean signed successor and fresh
+> no-retry **Compendium → Slice → Glass** chain remain; no hosted or release authority exists.
 > **2026-08-31 historical local a046 repair overlay (superseded above; every older “current” status label
 > below; dated decisions and evidence remain immutable):** exact clean SSH-signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry in
