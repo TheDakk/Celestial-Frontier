@@ -2,33 +2,43 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** Draft PR #35 has three consumed terminal-red
+**Hosted attempt state: none authorized.** Draft PR #35 has four consumed terminal-red
 `test-battery` attempts against base `7a9f4c1370dd84292388d718c38ff34214f6203b`, each guarded by
-`actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. Run
-`33273328362` tested head `390e8708086d413fc7d636441ec0523cf9d4b9ea` and stopped in the
-browser-free suite on untracked-input and bounded-child defects. Run `33278630671` tested repaired
-head `017fa6decbc41809188768ccdb98ab86ef1b9ebc`; every predecessor through SceneMemory controls
-passed, then the one-attempt phone SceneMemory product stage stopped at `Earth planetfall was
-rejected`. Run `33437596315` tested head `8eb0b1bd901c7b36d8900f43f4de7d3a54158a0c` and stopped
-terminal-red after **37m14s**: every pre-Compendium gate passed, then Compendium passed **77/78**
-with sole red `desktop/back-restores-focus`; Slice and Glass were skipped. All three labels are
-absent, PR #35 remains Draft/unmerged, and no retry or replacement attempt is authorized. Exact clean
-SSH-signed source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
-`e05e48c807597e86530e9b258a11e93d9533cd3c`, parent `4ea8198c…`) is terminal-green locally. Its
-develop profile passed **254/254 files / 2,567 passed / 1 skipped** with every TypeScript, art, route
-and specification owner green; all required browser instrument selftests passed, including the
-**618-control** Compendium selftest. One unchanged-source/no-retry Compendium → Slice → Glass chain
-passed **78/78**, zero-finding Slice with ten screenshots and **12/12 Glass viewports / 104/104
-controls**, with every exact named verifier green. Current HEAD is 9b37's signed evidence/docs-only
-descendant, which adds only the four exact PASS carriers and synchronized references; after that
-commit `openai/mac` is four commits ahead of the remote branch. Its SHA is intentionally not
-embedded. Current authority is producer
-`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7`, collector
+`actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. The first three
+remain immutable as documented below. Fourth run **33453239307** tested exact head
+`73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against that base. Every invoked stage through
+Compendium passed, including Compendium **78/78** and its exact named verifier; the later shared
+Chrome launcher selftest stopped red because its unique temporary profile remained/reappeared
+after cleanup. Slice and Glass were skipped. The fourth attempt is consumed and was not retried.
+All four labels are absent, PR #35 remains Draft/unmerged, and no replacement attempt is
+authorized.
+
+The diagnosed launcher owned only the directly spawned PID, judged exit from that process,
+destroyed inherited stderr and removed the profile once without proving descendant-tree
+quiescence. POSIX healthy close sends bounded CDP `Browser.close` before escalation, owns one
+detached process group, permanently latches `ESRCH` as gone and proves group quiescence plus a
+no-collateral sibling control. Windows disables `Browser.close` and requires successful bounded
+`taskkill /T`, escalating to `/F`; pre-exited/no-success states fail closed without a Job Object
+overclaim. Cleanup proves **100 ms** stable profile absence, preserves primary
+and cleanup causes independently, and completes browser cleanup even if `ws.close()` throws. The
+changed-or-production launcher selftest now precedes the long sealed exact-Edge certificate.
+
+Local repair verification is green: real-Edge launcher selftest; **254/254 files / 2,567 passed /
+1 skipped** in the develop profile; every TypeScript, art, override, route and specification owner;
+focused current-authority coverage **32/32**. The final combined focused suite is **160/160**; its
+prior **159/160** result only reflected expected Compendium `selectionRule` bookkeeping that still
+named the predecessor authority, and that literal is repaired. Final derived Compendium
+measurement/browser-CDP authority is
+`dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
+`929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`. Collector
 `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d`, outcome contract
-`1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692`, measurement
-`5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` and budget
-`454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`. The 3ca chain/carriers
-remain historical exact-source evidence only. No hosted attempt is authorized. PR #34 runs
+`1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` and producer
+`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` are unchanged. Product
+bytes, CSS, fixed rulers/numeric ceilings, timeouts, retry policy and browser-version policy are
+unchanged. SceneMemory's `calibration-required` authority remains intentionally stale/quarantined
+until explicit production activation. The repair remains uncommitted pending final local
+diagnostics; it has no current browser certificate. No push, hosted retry, merge, release, version
+or deployment is authorized. PR #34 runs
 `32665404776` and `32677088518` are
 consumed terminal-red; their Compendium interaction-ruler evidence is retained and both approval
 labels were removed. Its repaired third authorized changed-head attempt, run `32681394532`, passed

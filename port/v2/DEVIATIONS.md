@@ -1,6 +1,24 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **2026-08-31 current local a046 repair overlay (supersedes every older “current” status label
+> **2026-08-31 current launcher-only deviation overlay (canonical handoff in `../../ROADMAP.md`):**
+> PR #35 run `33453239307` consumed the fourth exact no-retry attempt for head
+> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. All invoked owners through Compendium
+> **78/78** and named verification passed; the later shared Chrome launcher selftest failed unique-
+> profile cleanup, so Slice/Glass were skipped. The bounded local deviation is instrument-only:
+> POSIX uses a bounded CDP `Browser.close` grace then detached-group TERM/KILL when needed; Windows
+> disables that grace and requires bounded successful `taskkill /T` then `/F`, failing closed on
+> pre-exited/no-success cleanup without a Job Object claim. The repair also proves **100 ms** profile
+> absence, preserves primary/cleanup causality, survives a throwing `ws.close()` and moves workflow
+> selftest order earlier. Real-Edge selftest and the **254-file / 2,567-pass / 1-skip** develop
+> profile are green. Final Compendium measurement/browser-CDP authority is
+> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
+> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`; SceneMemory remains
+> stale/quarantined until production activation. No product/gameplay/save/art/creature deviation,
+> ruler, timeout, retry or browser-version change exists. The repair awaits final diagnostics/commit;
+> no hosted retry, push, merge, release, version or deployment is authorized.
+
+> **2026-08-31 historical local a046 repair overlay (superseded above; every older “current” status label
 > below; dated decisions and evidence remain immutable):** exact clean SSH-signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry in
 > **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; exact named verification passed. Its

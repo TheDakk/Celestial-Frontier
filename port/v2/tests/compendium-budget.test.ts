@@ -234,7 +234,7 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  '5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35';
+  'dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836';
 const EXPECTED_OUTCOME_CONTRACT_AUTHORITY =
   '1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692';
 const EXPECTED_COLLECTOR_AUTHORITY =

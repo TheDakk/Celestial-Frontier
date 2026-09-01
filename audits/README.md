@@ -10,21 +10,47 @@ summary of it.
 
 ## Contents
 
-### Current exact-source `9b37ffc…` terminal-green Back cleanup develop chain
+### Current PR #35 shared-launcher terminal red and local repair boundary
+
+GitHub run `33453239307` consumed the fourth exact one-attempt/no-retry PR #35 battery for head
+`73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Every invoked stage through Compendium passed;
+Compendium retained **78/78** plus a green exact named verifier. The subsequent Chrome launcher
+selftest stopped red because its unique profile remained/reappeared after cleanup. Slice and Glass
+did not run. Preserve that status and ordering: it is launcher-instrument evidence, not a product,
+Slice or Glass verdict, and it was not retried.
+
+The old launcher terminated only the direct PID, destroyed inherited stderr and removed the profile
+once without proving descendant-tree quiescence. POSIX healthy close sends bounded CDP
+`Browser.close`, owns a detached group, permanently latches `ESRCH`, proves a no-collateral sibling
+and escalates only if still live. Windows disables `Browser.close` and requires successful bounded
+`taskkill /T`, escalating to `/F`; pre-exited/no-success states fail closed without a Job Object
+claim. Cleanup proves **100 ms** stable profile absence,
+preserves primary/cleanup causality and survives a throwing `ws.close()`. Workflow order moves the
+selftest ahead of the long sealed exact-Edge certificate. Real-Edge selftest and the complete
+**254-file / 2,567-pass / 1-skip** develop profile are green; focused authority is **32/32** and the
+final combined focused suite is **160/160**. Final measurement/browser-CDP authority is
+`dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
+`929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`.
+SceneMemory remains intentionally
+stale/quarantined until production activation. No new carrier or current browser certificate exists;
+the repair awaits final diagnostics/commit, and no hosted retry, push, merge, release or deployment
+is authorized.
+
+### Historical exact-source `9b37ffc…` terminal-green Back cleanup develop chain
 
 Exact clean SSH-signed certified source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
 `e05e48c807597e86530e9b258a11e93d9533cd3c`, parent
-`4ea8198c9022cc814e5948ed89c756ffb1fe6c11`) passed the complete local admission. Current HEAD is
-its signed evidence/docs-only descendant; its SHA is intentionally not embedded here, and
-`openai/mac` is four commits ahead of `origin/openai/mac`. The descendant adds only the four exact
-carriers below and synchronized references, without rebinding the certificate.
+`4ea8198c9022cc814e5948ed89c756ffb1fe6c11`) passed the complete local admission. At that
+historical checkpoint, its signed evidence/docs-only descendant added only the four exact carriers
+below and synchronized references without rebinding the certificate.
 
 The repair preserves the first causal boundary after an armed Back action's native input failure.
 One raw bounded cleanup evaluation outside observation tracking requires exact
 `{controllerAborted: true, carrierPresent: false}`, retains the primary error's original
 command/stage/history and records any cleanup residue or failure independently. It never replaces or
-retries the primary error. Current measurement / outcome-contract / collector / producer /
-budget-file authority is
+retries the primary error. At that checkpoint, measurement / outcome-contract / collector /
+producer / budget-file authority was
 `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` /
 `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
 `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d` /
