@@ -25,6 +25,7 @@ export function assessF4ReadyAuthority(input?: Readonly<{
   readonly previousToken?: string | null;
   readonly expectedToken?: string | null;
   readonly allowFresh?: boolean;
+  readonly allowMigrated?: boolean;
 }>): SliceContractAssessment;
 
 export function assessArc0LandingAwaitBoundary(input?: Readonly<{

@@ -1,5 +1,34 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-09-01 current v2 automatic-arrival transient-latch boundary (matches local code as of
+> 2026-09-01; supersedes older “current” labels while keeping all exact historical evidence):**
+> authorized PR #35 run `33522000552` tested exact head
+> `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against develop base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed; Slice then ran once/no-retry
+> and stopped at `universe-to-galaxy zoom did not reach its browser outcome within 6000ms`.
+> `descendGalaxy(..., 'zoom')` had claimed `automaticGalaxyArrivalLatch` before
+> `arc9TravelWriteTemporarilyBlocked()` could refuse, and the wormhole path had claimed its latch
+> before `beginWormholeTraversal()` reported acceptance. With the camera intent still centered, the
+> consumed latch made a transient refusal permanent.
+>
+> `settleArc9DirectTravel` now invokes a synchronous accepted callback only after claiming the
+> shared product coordinator and installing its action barrier as `activePersist`, before its first
+> await. Mutable galaxy descent claims its one-shot latch from that callback;
+> `beginWormholeTraversal()` derives its accepted boolean and claims its automatic-key latch inside
+> that same callback. Inspection-only navigation remains synchronous and does not claim it. The same unchanged intent therefore
+> remains retryable during a hold, then starts and commits exactly once after authority clears;
+> leaving the intent resets ordinary one-shot suppression. `smokeArmTransientPersistHold()` /
+> `smokeReleaseTransientPersistHold()` form a diagnostics-only, identity-cleared `activePersist`
+> hold which never writes IndexedDB, advances revision/receipts or mutates product state. The F4
+> readiness contract's `allowMigrated` path accepts `migrated-v4` only with the expected token and
+> no predecessor—Slice's initial exact document—not by default or after reload/replacement.
+>
+> A dirty-source full local Slice passed this browser reproduction diagnostically but is not a
+> source certificate; a fresh signed candidate and unchanged-source **Compendium → Slice → Glass**
+> chain remain pending. This repair changes no timeout, retry, browser pin, fixed ruler, art/audio,
+> creature/genome, plant/biome, Guardian, save-schema, generation or balance contract. The hosted
+> authorization is consumed, and no push, rerun, merge, release or deploy is authorized.
+
 > **2026-09-01 current v2 Share-waiter lexical-scope boundary (matches local code as of
 > 2026-09-01; supersedes older “current” labels):** exact clean SSH-signed source
 > `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red.

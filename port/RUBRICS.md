@@ -1,5 +1,26 @@
 # Acceptance rubrics — what "done" means, per gate
 
+> **2026-09-01 current automatic-travel repair/rubric boundary (supersedes older “current” labels;
+> dated evidence remains immutable):** PR #35's sixth hosted admission attempt, GitHub run
+> `33522000552`, tested exact head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against exact base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed; Slice stopped once/no-retry at
+> universe-to-galaxy zoom with `last null`, and Glass was skipped. The exact authorization is
+> consumed, the hosted result remains red, PR #35 was not merged, and no hosted authority remains.
+>
+> The bounded product fix claims the galaxy one-shot latch from the direct-travel owner's
+> synchronous accepted callback after coordinator and `activePersist` ownership and before its
+> first await. Wormhole begin derives the equivalent accepted boolean and claims its automatic-key
+> latch inside that callback; caller preflight alone is insufficient. A diagnostics-only, non-mutating `activePersist`
+> hold proves **busy → clear → same intent → exactly one arrival** without writes, revisions or
+> receipts; only this exact initial-document control opts into `migrated-v4` readiness. No timeout,
+> retry, Edge pin/rebaseline, ruler, gameplay, save, art, creature, plant, biome or Guardian
+> criterion changes.
+>
+> A dirty-tree full local Slice pass is diagnostic only, not certification. A fresh signed
+> candidate, tracked develop profile and unchanged-source **Compendium → Slice → Glass** chain are
+> pending. No rubric row, `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]` state, whole Gate, Arc, preview, merge,
+> release, version, publication or deployment authority changes.
+
 > **2026-09-01 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** exact clean
 > SSH-signed source `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870
 > harness-only lexical red. Its tracked-input develop preflight passed **259 files / 2,660 passed /

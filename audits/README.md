@@ -10,7 +10,60 @@ summary of it.
 
 ## Contents
 
-### Current exact-source 4a595e2 Share-waiter lexical-scope terminal-green develop chain
+### Current hosted PR #35 automatic-arrival latch stop and bounded local repair
+
+PR #35 GitHub run `33522000552` was the sixth exact authorized `test-battery` attempt. It tested
+head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, using synthetic merge
+`e0e9e96ef96e0904a5dd3927df1e6ed9c9cb4e2d` / tree
+`d3700156b50d9b72911b3071708c422906de9644`; that tree is byte-identical to the exact head tree.
+Authorization job `99903322649` and battery job `99903362700` completed once with no retry.
+
+Compendium `gha-33522000552-1-compendiummem` passed **78/78** in **1,764,010 ms** with zero
+findings/blocked outcomes, complete phone/desktop profiles and six review PNGs. Producer/budget
+authority was `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6` /
+`78269c722c0d64438c0d407e0d8df3a8a284715af35bff94ed6f7d8dbba569c2`. The unchanged-source
+Slice then stopped once/no-retry after **206,138 ms** with exactly one finding/scope, `harness`:
+`universe-to-galaxy zoom did not reach its browser outcome within 6000ms (last null)`. Six
+screenshots were retained. Glass, Recovery and preview packaging correctly did not run. The
+approval label was removed, the attempt is consumed, and no retry or merge occurred.
+
+The exact GitHub artifact `battery-evidence` is ID `9807822959`, archive size **7,352,361 bytes**,
+digest `sha256:21288256f6151af654435f29a2d9c54bd202b6527d084665602edef2e4b79765`, created
+`2026-09-01T15:32:21Z`, expiring `2026-09-15T15:32:20Z`. Its retained report/log carriers below
+pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_AUTOMATIC_ARRIVAL_LATCH_PREDECESSOR_PASS_20260901_E0E9E96.json.gz`:
+  **487,460 bytes**, SHA-256
+  `5548afae8924e0828d9fed562d28d0ee35575c946c58437189ab9a27b7785ac4`; raw
+  **12,837,924 bytes**, SHA-256
+  `3376d8562cd9b14a3ad29d95f212190253467fdb9fe40f9f6b3acfec01f70608`.
+- `ARC4_SLICE_PR35_UNIVERSE_GALAXY_TRANSIENT_LATCH_RED_20260901_E0E9E96.json.gz`:
+  **1,600 bytes**, SHA-256
+  `05b8fc3892d1e6d5d5546bf476786b85e5eae89f04519f676b808ca1a412312e`; raw
+  **4,547 bytes**, SHA-256
+  `efa5a506f757938fd2b90ea32b22b1337edef12e3377681435742e7b7a5a1718`.
+- `ARC4_SLICE_PR35_UNIVERSE_GALAXY_TRANSIENT_LATCH_RED_20260901_E0E9E96.log.gz`:
+  **1,677 bytes**, SHA-256
+  `602915a003c10a0eb9d363ec017eff9bdf9feef26368c1e416bbaec2c860b05b`; raw
+  **4,097 bytes**, SHA-256
+  `04626d14aff9801c93312c2889992265ff684897ca8896dfd1689c6a70011bad`.
+
+Source tracing proved a product liveness defect: a one-shot automatic galaxy/wormhole latch could
+be consumed before the mutable direct-travel owner actually claimed the coordinator and
+`activePersist`. The bounded dirty successor claims only from the owner's synchronous callback
+after both owners are installed and before the first await. Its diagnostics-only held persistence
+seam writes no save/revision/receipt and proves held → clear → unchanged intent → exactly one
+arrival with structured state; its heartbeat control also requires a live exact document before
+quiescence. The compatible browser point version, fixed ruler, ceilings, timeout and no-retry policy
+are unchanged. Focused verification, all TypeScript programs and the complete browser-free develop
+profile pass; a full current dirty-tree Slice also passes the exact held-intent control, all ten
+screenshots, Arc 4 and zero console errors. That diagnostic has no claimed immutable report ID/hash
+and is not a certificate. Fresh clean signed tracked-input and unchanged-source Compendium → Slice
+→ Glass evidence remain mandatory. This
+record grants no hosted attempt, push, merge, release, preview or deployment authority.
+
+### Historical exact-source 4a595e2 Share-waiter lexical-scope terminal-green develop chain
 
 Exact clean SSH-signed source `4a595e2fa3305bf2531fc4051d09314490587e83` (tree
 `e5f57cf5c84b2bb23f504cd58747132615005106`, parent `3f8f8704c851…`) supplied one

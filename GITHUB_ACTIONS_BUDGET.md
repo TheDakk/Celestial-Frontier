@@ -2,39 +2,34 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** Draft PR #35 has **five** consumed terminal-red
+**Hosted attempt state: none authorized.** Ready/open PR #35 has **six** consumed terminal-red
 `test-battery` attempts against base `7a9f4c1370dd84292388d718c38ff34214f6203b`, each guarded by
-`actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. Fifth hosted run
-`33466661094` tested exact head `06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c`; Actions used
-synthetic merge `337ffd29f1584f1a5c786c4532a79c99876be325`, whose tree is byte-equivalent to exact head tree
-`e39bcdb8781eeaa6f9ee503cd6cfbb47497899ea`.
+`actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. Sixth hosted run
+`33522000552` tested exact head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921`; Actions used
+synthetic merge `e0e9e96ef96e0904a5dd3927df1e6ed9c9cb4e2d`, whose tree
+`d3700156b50d9b72911b3071708c422906de9644` is byte-equivalent to the exact head tree.
 
-Exact clean SSH-signed local source `4a595e2fa3305bf2531fc4051d09314490587e83` (tree
-`e5f57cf5c84b2bb23f504cd58747132615005106`, parent
-`3f8f8704c851fc4c7547b8644d008dd1bba5d34f`) passed the hermetic tracked-input develop profile at
-**259 files / 2,660 passed / 1 skipped**, all TypeScript programs, **34/34** clean art sources,
-**1,014/1,014** routes and **454** non-inert specification fields. Browser-CDP selftest and live
-preflight passed on Edge `152.0.4191.53` / CDP `1.3`; point version remains provenance only.
+The authorization job and every battery stage through Compendium passed. Compendium
+`gha-33522000552-1-compendiummem` passed **78/78** once/no-retry. Slice then stopped once/no-retry
+after **206,138 ms** with exactly one harness finding:
+`universe-to-galaxy zoom did not reach its browser outcome within 6000ms (last null)`. Six
+screenshots were retained; Glass, Recovery and preview packaging correctly skipped. The label was
+removed, PR #35 remains Ready/open/unmerged, and no retry or merge occurred.
 
-On that unchanged clean source, one fail-fast/no-retry local develop chain ran serially and every
-exact named verifier passed. Compendium `20260901123144352-62163-00064c788a` passed **78/78** in
-**67,178 ms** with zero findings/blocked outcomes and six review PNGs. Slice
-`20260901123326914-62541-f7f7c336aa70` passed terminal green in **367,066 ms** with zero
-findings/scopes and ten screenshots; report SHA-256 is
-`19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`. Exact-predecessor-bound
-Glass `20260901123953804-63082-f5844810dfb5` passed terminal green in **116,988 ms** across
-**12/12** viewports and **12/12** reload-evidence rows with zero findings, zero instrument
-failures, no blocked/omitted controls and no retries; report SHA-256 is
-`a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. The chain closes the
-local develop browser-certificate step for exact 4a595e2 only.
+The bounded dirty successor fixes a real automatic-travel liveness defect: galaxy and wormhole
+one-shot latches now claim only from the mutable owner's synchronous callback after coordinator and
+`activePersist` ownership and before its first await. Its diagnostics-only held-persistence control
+writes no save/revision/receipt and retains structured failure state. Focused **79/79**, syntax,
+diff hygiene, all TypeScript programs and the complete **259-file / 2,665-pass / 1-skip** develop
+profile pass. A full current dirty-tree Slice also passes with all ten screenshots and zero console
+errors, but is diagnostic rather than a clean-source certificate. Exact clean signed source `4a595e2…` and its prior
+local Compendium → Slice → Glass chain remain immutable historical evidence only; neither certifies
+this changed source. Fresh clean signing, tracked-input proof and one unchanged-source develop
+Compendium → Slice → Glass chain remain required.
 
-The evidence/docs-only descendant containing this ledger preserves those exact reports/logs as four
-deterministic gzip carriers and synchronizes their raw/compressed sizes and SHA-256 values. Its SHA
-is intentionally not self-embedded. Once that descendant is SSH-signed and clean, its remaining
-local prerequisite is the tracked-input proof; the 4a595e2 browser chain is not rerun or rebound.
-No push, label, hosted attempt, retry, Ready transition, merge, release, version bump, preview
+No push, label, hosted attempt, retry, PR metadata mutation, merge, release, version bump, preview
 publication or deployment is authorized. A future hosted attempt requires Nick's fresh
-authorization naming that final exact head/base, PR #35, `test-battery`,
+authorization naming the final exact head/base, PR #35, `test-battery`,
 `actions-budget-approved`, a 92-minute maximum and no retry; merge is allowed only if that exact
 attempt is terminal green and branch protection is satisfied.
 
@@ -69,8 +64,8 @@ skipped**, **34** clean art sources,
 signing, tracked-input rehearsal and a fresh browser chain remain pending; this unsigned working
 tree inherits no 3f8f870 browser certificate.
 
-All five hosted approval labels are absent and PR #35 remains Draft/unmerged. No push, label,
-hosted attempt, retry, Ready transition, merge, release, version bump, preview publication or
+All six hosted approval labels are absent and PR #35 remains Ready/open/unmerged. No push, label,
+hosted attempt, retry, PR metadata mutation, merge, release, version bump, preview publication or
 deployment is authorized. A future changed-head attempt requires Nick's fresh exact authorization
 naming the final head/base, PR #35, `test-battery`, `actions-budget-approved`, 92-minute maximum
 and no retry.
@@ -625,7 +620,27 @@ live/raw revision/seed/ordinal/draw controls. Focused **73/73**, all TypeScript 
 The clean signed candidate, tracked-input preflight and fresh exact-source browser chain remain
 pending; this repair is not yet a browser certificate.
 
-All five PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
+The sixth exact-head authorization tested
+`6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against the same base. GitHub run `33522000552`,
+attempt 1, used synthetic merge `e0e9e96ef96e0904a5dd3927df1e6ed9c9cb4e2d`; its tree
+`d3700156b50d9b72911b3071708c422906de9644` is byte-equivalent to the exact head tree. Budget job
+`99903322649` passed and battery job `99903362700` ran once. Every stage through Compendium passed;
+Compendium `gha-33522000552-1-compendiummem` passed **78/78** in **1,764,010 ms**. Slice stopped
+after **206,138 ms** with one `harness` finding,
+`universe-to-galaxy zoom did not reach its browser outcome within 6000ms (last null)`, and six
+screenshots. Glass, Recovery and preview packaging skipped; the label was removed and no retry or
+merge occurred. Artifact `battery-evidence` is ID `9807822959`, archive size **7,352,361 bytes**,
+digest `sha256:21288256f6151af654435f29a2d9c54bd202b6527d084665602edef2e4b79765`, expiring
+`2026-09-15T15:32:20Z`; exact deterministic report/log carriers are indexed in `audits/README.md`.
+
+The bounded local repair treats a transient refusal as no attempt and moves both automatic latch
+claims behind the direct-travel owner's synchronous coordinator/`activePersist` claim, before its
+first await. The diagnostics-only hold writes no save, revision or receipt. Its focused controls,
+syntax, TypeScript and authority rebinding are green; current full clean-source certification is
+still pending. No timeout, retry, compatible-browser point pin, fixed ruler, ceiling or content
+contract changed.
+
+All six PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

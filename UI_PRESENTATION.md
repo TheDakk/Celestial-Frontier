@@ -1,5 +1,25 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-09-01 current automatic-arrival presentation boundary (matches local code as of
+> 2026-09-01; supersedes older “current” labels while preserving dated evidence):** authorized PR
+> #35 run `33522000552` tested exact head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed; Slice ran once/no-retry and
+> stopped when universe-to-galaxy zoom did not reach its browser outcome within 6 seconds. The
+> defect was transition liveness, not geometry: a transient persistence refusal could consume the
+> automatic galaxy or wormhole one-shot latch while the visible zoom intent stayed in place.
+>
+> The direct-travel owner now reports synchronous acceptance only after claiming the shared
+> coordinator and installing its `activePersist` ownership, before its first await. Galaxy claims
+> its latch from that callback; wormhole begin derives its result and claims its automatic-key latch inside that same callback,
+> so the unchanged intent can retry after authority clears and commit exactly once. Its
+> diagnostics-only persistence hold writes no save, advances no revision/receipt and mutates no
+> product state; the `migrated-v4` readiness opt-in is restricted to Slice's initial exact document.
+> A dirty-source full local Slice passed diagnostically but is not a certificate; a fresh signed
+> candidate and unchanged-source **Compendium → Slice → Glass** chain remain pending. No copy,
+> markup, CSS, focus, geometry, animation timing, ruler, timeout, retry, browser pin, visual art,
+> audio or creature/plant/biome/Guardian presentation changed. No hosted authority, push, rerun or
+> merge remains.
+
 > **2026-09-01 current Slice presentation-evidence boundary (supersedes older “current” labels;
 > presentation semantics remain as documented):** exact clean SSH-signed source
 > `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red.

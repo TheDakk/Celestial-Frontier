@@ -1,5 +1,33 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+> **2026-09-01 current automatic-travel transient-latch repair boundary (supersedes older
+> “current” labels; dated evidence remains immutable):** PR #35's sixth hosted admission attempt,
+> GitHub run `33522000552`, tested exact head
+> `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against exact base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed; the unchanged-source Slice ran
+> once and stopped, without retry, at
+> `harness: universe-to-galaxy zoom did not reach its browser outcome within 6000ms (last null)`.
+> Glass was skipped. That exact authorization is consumed, the hosted result remains red, and PR
+> #35 was not merged into `develop`; there is no remaining hosted authority.
+>
+> The bounded product repair routes the automatic galaxy-arrival latch claim through the direct-
+> travel owner's synchronous accepted callback, after that owner claims the coordinator and
+> `activePersist` and before its first await. Wormhole begin derives the equivalent accepted boolean
+> and claims its automatic-key latch inside that callback; caller-side preflight alone is not treated
+> as acceptance.
+> A diagnostics-only `activePersist` hold now proves the real-browser sequence **busy → clear →
+> same intent → exactly one arrival** without an IndexedDB write, revision, receipt or product
+> mutation. Slice's exact initial-document readiness may opt into `migrated-v4` only for that
+> controlled diagnostic; default readiness remains strict. No timeout, retry, Edge pin/rebaseline,
+> ruler, art, creature, plant, biome, Guardian, gameplay balance or save-schema change is involved.
+>
+> A full local Slice passed on the dirty repair tree, but that is diagnostic evidence only and has
+> no invented run ID or report hash. A fresh signed candidate, tracked develop profile and one
+> unchanged-source **Compendium → Slice → Glass** chain remain required before any new exact-head
+> hosted request. SceneMemory remains production-only/quarantined and Recovery remains outside the
+> develop chain. No Gate, Arc, HUMAN, preview, merge, release, version, publication or deployment
+> authority changes here.
+
 > **2026-09-01 current Share-waiter lexical-scope boundary (supersedes older “current” labels;
 > dated evidence remains immutable):** exact clean SSH-signed source
 > `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red.

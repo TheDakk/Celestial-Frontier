@@ -789,7 +789,7 @@ describe('Slice Share settlement fixed point', () => {
   it('keeps the shared sequence waiter lexically visible to every direct caller', () => {
     expect(shareWaiterLexicalAudit(sliceSmokeSource)).toEqual({
       declarationCount: 1,
-      callCount: 5,
+      callCount: 6,
       inaccessibleCallCount: 0,
     });
     const regatedMutant = `try {

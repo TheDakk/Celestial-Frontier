@@ -1,5 +1,28 @@
 # Celestial-Frontier
 
+> **2026-09-01 current automatic-arrival transient-latch repair / PR #35 boundary (matches local
+> code as of 2026-09-01; supersedes older “current” labels while preserving their evidence):**
+> authorized GitHub run `33522000552` tested exact PR #35 head
+> `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against develop base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed, then Slice ran once with no retry
+> and stopped at `universe-to-galaxy zoom did not reach its browser outcome within 6000ms`; Glass
+> and Recovery did not run. The failure was a product liveness defect: automatic galaxy and
+> wormhole transitions could consume their one-shot latch while transient persistence authority
+> still refused the action.
+>
+> The bounded repair now lets the direct-travel owner synchronously accept only after it has claimed
+> the shared coordinator and installed its `activePersist` ownership, before the first await. The
+> galaxy latch is claimed only from that callback; wormhole begin derives its return from the same
+> callback and claims its automatic-key latch inside it. An unchanged held zoom intent remains retryable
+> while authority is busy, then commits exactly once after it clears. The new
+> diagnostics-only `activePersist` hold performs no IndexedDB write, revision advance, receipt, or
+> product mutation. Slice's `migrated-v4` readiness exception is opt-in only for the initial exact
+> document; all default and later-document readiness remains strict. A full dirty-source local
+> Slice passed as diagnosis, not as a certificate; a fresh signed candidate and unchanged-source
+> **Compendium → Slice → Glass** chain remain pending. No timeout, retry, browser pin, ruler,
+> presentation, art/audio, creature/genome, plant/biome or Guardian contract changed. The hosted
+> authorization is consumed: there is no authority to push, rerun, merge or deploy.
+
 > **2026-09-01 current PR #35 Share-waiter lexical-scope boundary (canonical detail in
 > `ROADMAP.md`; dated evidence below remains immutable):** exact clean SSH-signed source
 > `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red.

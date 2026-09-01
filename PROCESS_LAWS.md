@@ -1,5 +1,30 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A ONE-SHOT AUTOMATIC LATCH IS CLAIMED ONLY BY THE MUTABLE OWNER'S SYNCHRONOUS CLAIM**
+> (2026-09-01). A caller-side readiness or transient-write check is advisory: the owning action may
+> still refuse while it derives its operation, claims the shared coordinator, or installs its
+> persistence barrier. Refusal or deferral is not an attempt. Keep the same visible intent
+> retryable, and claim its latch exactly once only from the owner's synchronous callback after the
+> coordinator and `activePersist` are owned and before the first await. Later eligible ticks must
+> not duplicate that accepted attempt; leaving the target clears ordinary suppression. Apply the
+> same rule to galaxy arrival and wormhole traversal. Retain controls for early claim, missing
+> claim, caller-green/owner-red, a hold that never clears, wrong intent, callback after the first
+> await, and **held → clear → unchanged intent → exactly one accepted action**. A longer timeout,
+> retry, sleep or browser-version pin cannot repair a consumed latch.
+>
+> PR #35 hosted run `33522000552` earned this law on exact head
+> `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed **78/78**; unchanged-source Slice
+> then stopped once/no-retry after **206,138 ms** with exactly one harness finding:
+> `universe-to-galaxy zoom did not reach its browser outcome within 6000ms (last null)`. Glass and
+> Recovery correctly did not run. The exact authorization is consumed and the red is immutable.
+> The bounded successor adds an identity-cleared, diagnostics-only `activePersist` hold that creates
+> no IndexedDB write, revision, receipt or product mutation, and makes the browser prove the exact
+> held/release/one-arrival sequence with structured state instead of nullable evidence. A dirty-tree
+> current-tree Slice pass, including the held-intent control and all ten screenshots, is diagnostic
+> only; signed tracked-input and unchanged-source Compendium → Slice → Glass evidence remain
+> required before any new hosted request.
+
 > **A SHARED HARNESS HELPER MUST BE LEXICALLY OWNED BY EVERY EXECUTION MODE THAT CALLS IT**
 > (2026-09-01). A helper may be correct, source-present and fully covered in one journey while a
 > sibling mode fails at runtime if the declaration lives inside a gate the sibling does not enter.
@@ -104,12 +129,14 @@
 > genuinely new v5 document may remain `fresh-v5` for its entire lifetime after Training and
 > several durable commits. `current-v5` remains the default writable-authority requirement, but an
 > evidence harness may admit `fresh-v5` only at an explicitly named initial-page boundary with no
-> previous token and the exact original document token. Carry that token through every predecessor
-> and settlement wait on the same initial document. Never rewrite the observed boot kind, infer
-> fresh authority from a route, or extend the exception to a reload/replacement/current-document
-> wait. Independently reject an absent/unknown boot kind, token drift, a previous-token fresh bind,
-> missing scene resources, a pending persistence write, lost live authority, or live↔raw
-> revision/SessionRNG drift.
+> previous token and the exact original document token. The legacy `migrated-v4` boot kind follows
+> the same narrower rule only when a caller explicitly opts in, supplies a non-null expected token
+> exactly equal to the current token, and supplies no previous token; defaults, reloads and
+> replacements remain strict. Carry that token through every predecessor and settlement wait on
+> the same initial document. Never rewrite the observed boot kind, infer authority from a route, or
+> extend either exception to a reload/replacement/current-document wait. Independently reject an
+> absent/unknown boot kind, token drift, a previous-token exceptional bind, missing scene resources,
+> a pending persistence write, lost live authority, or live↔raw revision/SessionRNG drift.
 >
 > Exact clean SSH-signed source `6030035dff1779c3fc3be7e4f46f376ff01455e8` earned this law.
 > Its hermetic tracked-input profile passed **257 files / 2,622 passed / 1 skipped**, all three

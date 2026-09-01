@@ -1,5 +1,28 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+> **2026-09-01 current automatic-travel transient-latch deviation boundary (supersedes older
+> “current” labels; dated evidence remains immutable):** PR #35's sixth hosted admission attempt,
+> GitHub run `33522000552`, tested exact head
+> `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against exact base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed; Slice stopped once/no-retry at
+> `harness: universe-to-galaxy zoom did not reach its browser outcome within 6000ms (last null)`,
+> and Glass was skipped. The exact authorization is consumed, the result remains red, PR #35 did
+> not merge into `develop`, and no hosted authority remains.
+>
+> `D-PR35-AUTOMATIC-TRAVEL-TRANSIENT-LATCH` records the bounded repair: the galaxy one-shot latch
+> is claimed from the direct-travel owner's synchronous accepted callback after coordinator and
+> `activePersist` ownership and before its first await. Wormhole begin derives that equivalent
+> accepted boolean and claims its automatic-key latch inside the same callback; caller preflight alone is insufficient.
+> A diagnostics-only non-mutating `activePersist` hold proves **busy → clear → same intent
+> → exactly one arrival**, and only that exact initial-document control opts into `migrated-v4`
+> readiness. No timeout/retry, browser pin, ruler, art, creature, plant, biome, Guardian, gameplay,
+> balance or save-schema deviation was introduced.
+>
+> The dirty-tree full local Slice pass is diagnostic only; it has no claimed certification ID or
+> hash. A fresh signed candidate, tracked develop profile and unchanged-source **Compendium → Slice
+> → Glass** chain remain pending. Gate/Arc/HUMAN and preview status are unchanged, and there is no
+> merge, release, version, publication or deployment authority.
+
 > **2026-09-01 current Slice Share-waiter lexical-scope instrument-only deviation (canonical
 > handoff in `../../ROADMAP.md`):** exact clean SSH-signed source
 > `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red.
@@ -132,6 +155,25 @@ then its one-attempt phone product stage stopped at **Earth planetfall was rejec
 stages did not run, the attempt is consumed, and no replacement is authorized. The diagnosis and
 local repairs below do not rewrite that historical red evidence or supply a clean certificate.
 
+- ◐ **D-PR35-AUTOMATIC-TRAVEL-TRANSIENT-LATCH — refusal is not an automatic-travel attempt.**
+  Hosted run `33522000552` passed Compendium, then its one/no-retry Slice stopped at universe-to-
+  galaxy zoom with `last null`; Glass was correctly skipped. Source tracing found that caller-side
+  transient checks were insufficient: direct travel may still refuse when its asynchronous settle
+  rechecks authority and tries to claim the coordinator and `activePersist`. Galaxy arrival claimed
+  its one-shot latch before that owning acceptance boundary, while wormhole travel claimed its
+  corresponding latch before begin had accepted. A temporary persistence refusal could therefore
+  consume the only attempt while the same centered intent remained live. The bounded product
+  repair claims the galaxy latch from the direct-travel owner's synchronous accepted callback,
+  after coordinator and `activePersist` ownership and before its first await. Wormhole begin
+  derives the equivalent accepted boolean and claims its automatic-key latch inside that callback. A diagnostics-only
+  `activePersist` hold makes the real browser prove busy refusal, unchanged durable authority,
+  release, replay of the same intent and exactly one arrival; it performs no IndexedDB write,
+  revision, receipt or product mutation. The exact initial-document control alone permits
+  `migrated-v4` readiness, while all default readiness stays strict. A dirty-tree full local Slice
+  pass is diagnostic only. Fresh signed/tracked and immutable Compendium → Slice → Glass evidence
+  remains required. There is no timeout/retry, Edge pin/rebaseline, numeric-ruler, gameplay,
+  save-schema, art or creature-system deviation, and no hosted, merge, Gate/HUMAN, preview or
+  release authority follows.
 - ◐ **D-PR35-SHARE-SEQUENCE-FIXED-POINT — Slice models Share plus conditional aggregate
   progression as one causal sequence.** Exact c0 product evidence advanced Shares 4→5 through
   `arc9-share-send-v1` then `arc9-progression-refresh-v1`; `share5` joined while best rank and
