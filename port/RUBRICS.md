@@ -1,17 +1,16 @@
 # Acceptance rubrics — what "done" means, per gate
 
-> **2026-09-01 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** hosted run
-> `33466661094` passed every prerequisite and Compendium **78/78**, then Slice stopped at **13
-> findings / 8 scopes**. One causal harness race explains the other 12: non-Sol Enter ran before its
-> receipt-bearing Survey reached the same-document F4 fixed point. The product correctly refused;
-> Glass correctly skipped and no retry ran.
+> **2026-09-01 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** exact signed
+> 6030035 passed tracked-input rehearsal, browser preflight and Compendium **78/78**, then its
+> unchanged-source Slice stopped once/no-retry with **1 harness finding / 1 scope** before the first
+> Survey action. A valid writable initial document retained immutable `fresh-v5` provenance while
+> the generic readiness oracle required `current-v5`; Glass correctly did not run.
 >
-> The local evidence repair requires exact Survey receipt/revision/persistence,
-> route/render/card/action identity and coordinator idle before every dependent Enter/Land across
-> pointer, keyboard, touch and already-current routes, then causal-stops after any red. Focused
-> **73/73**, all TypeScript programs and final develop **257 files / 2,622 passed / 1 skipped** are
-> green, with two independent reviews **APPROVED**. The clean candidate, tracked-input preflight and
-> fresh exact-source browser chain remain pending. This changes no rubric row,
+> The bounded successor accepts `fresh-v5` only at explicit initial-page callsites bound to the
+> original document token; current/reload/replacement paths remain strict. Focused **79/79**, all
+> TypeScript programs and final develop **258 files / 2,628 passed / 1 skipped** are green, with
+> independent final review **APPROVED**. The working-tree successor is not yet signed,
+> tracked-input rehearsed or browser-certified. This changes no rubric row,
 > `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]` status or whole Gate. No new hosted, merge, release or deploy
 > authority exists.
 

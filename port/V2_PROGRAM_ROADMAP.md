@@ -1,18 +1,17 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **2026-09-01 current Survey-predecessor admission overlay (canonical handoff in
-> `../ROADMAP.md`):** hosted run `33466661094` tested exact PR #35 head `06aba9d…` and its
-> tree-equivalent synthetic merge. Every prerequisite and Compendium **78/78** passed; Slice then
-> stopped at **13 findings / 8 scopes** because non-Sol Enter ran before its receipt-bearing Survey's
-> F4 settlement. The product correctly refused with **Expedition action settling**. One causal
-> harness race produced 12 cascades; Glass correctly skipped and no retry ran.
+> **2026-09-01 current fresh-boot readiness admission overlay (canonical handoff in
+> `../ROADMAP.md`):** exact signed 6030035 passed tracked-input rehearsal, browser preflight and
+> Compendium **78/78**, then its exact-source Slice stopped once/no-retry with **1 harness finding /
+> 1 scope** before its first Survey action. A complete writable initial document legitimately
+> retained immutable `fresh-v5` provenance while the generic oracle required `current-v5`; Glass
+> correctly did not run.
 >
-> The bounded local runner repair requires exact same-document Survey receipt/revision/persistence,
-> route/render/card/action identity and coordinator idle before every dependent pointer, keyboard,
-> touch or already-current Enter/Land action, with causal-stop after any red predecessor. Focused
-> **73/73**, all TypeScript programs and final develop **257 files / 2,622 passed / 1 skipped** are
-> green, and two independent reviews are **APPROVED**. The clean candidate, tracked-input preflight
-> and fresh exact-source browser chain remain pending. No
+> The bounded testing-only successor accepts `fresh-v5` only at exact-token initial-page callsites;
+> current/reload/replacement paths remain strict. Focused **79/79**, all TypeScript programs and
+> final develop **258 files / 2,628 passed / 1 skipped** are green, and independent final review is
+> **APPROVED**. The working-tree successor is not yet signed, tracked-input rehearsed or browser-
+> certified. No
 > roadmap feature, product/save/gameplay/art/creature structure, EXEC history, Arc/Gate status or
 > HUMAN status changed. The fifth label is absent; no new push, hosted attempt, merge, release,
 > preview or deploy is authorized.

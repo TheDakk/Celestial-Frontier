@@ -1,18 +1,17 @@
 # Celestial Frontier — UI / Presentation System
 
 > **2026-09-01 current Slice presentation-evidence boundary (supersedes older “current” labels;
-> presentation semantics remain as documented):** GitHub run `33466661094` passed every prerequisite
-> and Compendium **78/78**, then Slice stopped when its harness pressed non-Sol Enter before the
-> receipt-bearing Survey reached its F4 fixed point. The product correctly showed **Expedition action
-> settling**, instructed the explorer to stay until durability settled, kept Survey Close available,
-> blocked Enter and remained in galaxy. That is the intended presentation/authority boundary below,
-> not a copy or product defect. One causal harness race produced 12 cascades; Glass correctly skipped.
+> presentation semantics remain as documented):** exact signed 6030035 passed tracked-input
+> rehearsal, browser preflight and Compendium **78/78**, then Slice stopped before its first Survey
+> action with one harness scope. The fully writable initial document legitimately remained
+> `fresh-v5`; the generic oracle incorrectly required `current-v5`. No product presentation was
+> judged, Glass correctly did not run, and 6030035 was not retried.
 >
-> The local runner repair waits for exact same-document Survey settlement before every dependent
-> pointer/keyboard/touch/already-current Enter/Land and causal-stops descendants after a red. Focused
-> **73/73**, all TypeScript programs and final develop **257 files / 2,622 passed / 1 skipped** are
-> green, with two independent reviews **APPROVED**. The clean candidate, tracked-input preflight and
-> browser chain remain pending, so there is no fresh browser certificate. No copy, markup, CSS,
+> The testing-only successor accepts fresh provenance only at exact-token initial-page callsites;
+> current/reload/replacement paths remain strict. Focused **79/79**, all TypeScript programs and
+> final develop **258 files / 2,628 passed / 1 skipped** are green, with independent final review
+> **APPROVED**. The working-tree successor is not yet signed, tracked-input rehearsed or browser-
+> certified, so there is no fresh presentation certificate. No copy, markup, CSS,
 > focus/scroll, geometry, fixed ruler, timeout, retry or browser-version policy changed; no hosted
 > attempt, preview, merge, release, version bump or deploy is authorized.
 

@@ -1,18 +1,18 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **2026-09-01 current Slice Survey-predecessor instrument-only deviation (canonical handoff in
-> `../../ROADMAP.md`):** hosted run `33466661094` passed every prerequisite and Compendium
-> **78/78**, then Slice stopped at **13 findings / 8 scopes**. The harness pressed non-Sol Enter
-> before its receipt-bearing Survey's F4 settlement; the product correctly refused with
-> **Expedition action settling**. One causal race produced 12 cascades, Glass correctly skipped and
-> no retry ran.
+> **2026-09-01 current Slice fresh-boot readiness instrument-only deviation (canonical handoff in
+> `../../ROADMAP.md`):** exact signed 6030035 passed tracked-input rehearsal, browser preflight and
+> Compendium **78/78**, then Slice stopped once/no-retry with **1 harness finding / 1 scope** before
+> its first Survey action. A complete writable initial document legitimately retained immutable
+> `fresh-v5` provenance; the generic oracle incorrectly required `current-v5`. Glass did not run.
 >
-> The bounded local deviation is testing-only: every dependent pointer, keyboard, touch and
-> already-current Enter/Land now requires exact same-document Survey receipt/revision/persistence,
-> route/render/card/action identity and coordinator idle, then causal-stops after any red.
-> `landing.surveyOutcome` is diagnostic-only. Focused **73/73**, all TypeScript programs and final
-> develop **257 files / 2,622 passed / 1 skipped** are green, with two reviews **APPROVED**. The clean
-> candidate, tracked-input preflight and fresh exact-source chain remain pending. No product,
+> The bounded deviation is testing-only: `fresh-v5` is accepted only at explicitly named initial-
+> page callsites bound to the original document token; current/reload/replacement waits remain
+> strict. Existing Survey receipt/revision/persistence, route/render/card/action, coordinator-idle
+> and causal-stop requirements remain intact. Focused **79/79**, all TypeScript programs and final
+> develop **258 files / 2,628 passed / 1 skipped** are green, with independent final review
+> **APPROVED**. The working-tree successor is not yet signed, tracked-input rehearsed or browser-
+> certified. No product,
 > gameplay, save, creature/genome/plant/biome/Guardian, art/audio, CSS,
 > ruler, timeout, retry or browser-version deviation exists; no hosted or release authority exists.
 

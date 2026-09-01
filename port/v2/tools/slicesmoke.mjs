@@ -24,6 +24,7 @@ import {
   assessF4ReplacementPrefix,
   assessF4ReplacementSetup,
   assessF4ReplacementOutcome,
+  assessF4ReadyAuthority,
   assessInventoryActionActivation,
   assessInventoryDetailClose,
   assessInventoryPanelClose,
@@ -4103,35 +4104,18 @@ const trainingCanonicalControlsAreIsolated = (controls) => {
       name.startsWith('absent-') ? 'completeRawEvidence' : expected[name])
   ));
 };
-const assessF4ReadyAuthority = ({ state, raw, token, previousToken = null }) => {
-  const reasons = [];
-  const persistence = state?.persistence;
-  const runtime = persistence?.runtime;
-  if (persistence?.schema !== 'cf-v2-app-persistence/v1' || persistence?.ready !== true
-    || persistence?.bootKind !== 'current-v5' || persistence?.hold !== null
-    || persistence?.seedBootstrapPending !== false
-    || persistence?.bootRouteRepairPending !== false
-    || persistence?.mutationBlocked !== false
-    || state?.sceneResources?.pendingPersistenceWrites !== 0) reasons.push('boot readiness');
-  if (typeof token !== 'string' || token.length < 16 || persistence?.documentToken !== token
-    || (previousToken !== null && token === previousToken)) reasons.push('document identity');
-  if (runtime?.schema !== 'cf-v2-f4-runtime/v1' || runtime?.visible !== true
-    || runtime?.answerable !== true || runtime?.leaseOwned !== true || runtime?.accruing !== true
-    || runtime?.staleBlocked !== false) reasons.push('live authority');
-  if (!Number.isSafeInteger(runtime?.revision) || runtime.revision < 1
-    || raw?.revisionRaw !== String(runtime?.revision) || raw?.revision !== runtime?.revision) reasons.push('revision parity');
-  if (raw?.playerSchema !== 5 || raw?.carrierVersion !== 1
-    || !Number.isSafeInteger(runtime?.sessionSeed) || runtime.sessionSeed < 0 || runtime.sessionSeed > 0xFFFF_FFFF
-    || raw?.seed !== runtime?.sessionSeed || raw?.ordinal !== runtime?.sessionOrdinal
-    || JSON.stringify(raw?.draws) !== JSON.stringify(runtime?.sessionDraws)) reasons.push('durable RNG parity');
-  return { ok: reasons.length === 0, reasons };
-};
-const f4BootReadinessNegativeControls = (snapshot, previousToken = null) => {
+const f4BootReadinessNegativeControls = (
+  snapshot,
+  previousToken = null,
+  { expectedToken = null, allowFresh = false } = {},
+) => {
   const missingSceneResources = structuredClone(snapshot);
   delete missingSceneResources.state.sceneResources;
   const pendingPersistenceWrite = structuredClone(snapshot);
   pendingPersistenceWrite.state.sceneResources.pendingPersistenceWrites = 1;
-  const assess = (control) => assessF4ReadyAuthority({ ...control, previousToken });
+  const assess = (control) => assessF4ReadyAuthority({
+    ...control, previousToken, expectedToken, allowFresh,
+  });
   const missing = assess(missingSceneResources);
   const pending = assess(pendingPersistenceWrite);
   const isolated = [missing, pending].every((assessment) => assessment.ok === false
@@ -4883,8 +4867,7 @@ try {
   try { await waitForSlice(sess, 'about:blank readiness control', { timeoutMs: 150 }); }
   catch { readinessControlRejected = true; }
   if (!readinessControlRejected) fails.push('SLICE READINESS CONTROL FAILED — an about:blank target reported ready');
-  await navigateToSlice(sess, URL0, 'desktop boot');
-  const desktopToken = await sliceToken(sess);
+  const desktopToken = await navigateToSlice(sess, URL0, 'desktop boot');
   let staleReadyControlRejected = false;
   try { await waitForSlice(sess, 'stale-ready readiness control', { timeoutMs: 150, previousToken: desktopToken }); }
   catch { staleReadyControlRejected = true; }
@@ -5156,7 +5139,12 @@ try {
   /* One abandoned pagehide release may retain its fenced lease until the
      10-second TTL; allow that expiry plus one intentional convergence boot. */
   let desktopF4BootReadinessControlsRun = false;
-  const waitForF4Writable = async (label, { previousToken = null, timeoutMs = 15_000 } = {}) => {
+  const waitForF4Writable = async (
+    label,
+    {
+      previousToken = null, expectedToken = null, allowFresh = false, timeoutMs = 15_000,
+    } = {},
+  ) => {
     const deadline = Date.now() + timeoutMs;
     let last = null;
     while (Date.now() < deadline) {
@@ -5165,10 +5153,14 @@ try {
           const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
             state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
             token:typeof S?.documentToken==='string'?S.documentToken:null};})()`, { timeoutMs: 2_000 });
-        const assessment = assessF4ReadyAuthority({ ...snapshot, previousToken });
+        const assessment = assessF4ReadyAuthority({
+          ...snapshot, previousToken, expectedToken, allowFresh,
+        });
         if (assessment.ok) {
           if (!desktopF4BootReadinessControlsRun) {
-            const controls = f4BootReadinessNegativeControls(snapshot, previousToken);
+            const controls = f4BootReadinessNegativeControls(
+              snapshot, previousToken, { expectedToken, allowFresh },
+            );
             if (!controls.isolated) {
               fails.push('DESKTOP F4 BOOT READINESS CONTROLS FAILED — missing scene resources or one pending persistence write stayed green/non-isolated: '
                 + JSON.stringify(controls));
@@ -5201,8 +5193,12 @@ try {
     actionLabel,
     settlement = 'commit',
     actionExpression = travelCheck,
+    allowFresh = false,
   }) => {
-    const afterAuthority = await waitForF4Writable(`${label} settlement`);
+    const afterAuthority = await waitForF4Writable(`${label} settlement`, {
+      expectedToken: beforeAuthority.token,
+      allowFresh,
+    });
     const surface = await evalIn(`({
       documentToken:window.__CF_SLICE__.documentToken,
       state:window.__CF_SLICE__.api.state(),
@@ -5526,8 +5522,10 @@ try {
   if (keyboardCtl.role === 'region') {
     fails.push('KEYBOARD WORLD CONTROL FAILED — removing the canvas region role stayed green: ' + JSON.stringify(keyboardCtl));
   }
+  const freshDesktopDocumentToken = desktopToken;
   const keyboardMilkyWayBeforeAuthority = await waitForF4Writable(
     'keyboard Milky Way Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshDesktopDocumentToken },
   );
   await dispatchKeyPress(sess, 'Enter', 'Enter');
   const keyboardSurvey = await waitDesktopValue('keyboard world survey', `(()=>{ const S=window.__CF_SLICE__,button=document.querySelector('#survey [data-act=travel]');
@@ -5688,6 +5686,7 @@ try {
   };
   const pointerGalaxyBeforeAuthority = await waitForF4Writable(
     'pointer Milky Way Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshDesktopDocumentToken },
   );
   await click();
   await sleep(700);
@@ -5740,6 +5739,7 @@ try {
   if (closedAgain) fails.push('second Escape did not close the reopened galaxy card');
   const secondPointerGalaxyBeforeAuthority = await waitForF4Writable(
     'second pointer Milky Way Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshDesktopDocumentToken },
   );
   await click();
   const travel2 = await evalIn(travelCheck);
@@ -5752,7 +5752,10 @@ try {
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: travel2.x, y: travel2.y, button: 'left', clickCount: 1 }, sess);
   }
   await sleep(2500);   /* per-seed 512px painterly bake + star field */
-  await waitForF4Writable('Milky Way arrival F4 fixed point');
+  await waitForF4Writable('Milky Way arrival F4 fixed point', {
+    allowFresh: true,
+    expectedToken: freshDesktopDocumentToken,
+  });
   const st2 = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (st2.mode !== 'galaxy' || st2.gal !== 999 || st2.galX !== 90 || st2.galY !== -60) {
     fails.push('galaxy card action did not enter the exact Milky Way node: '
@@ -5793,6 +5796,7 @@ try {
   }
   const gateSurveyBeforeAuthority = await waitForF4Writable(
     'Charter non-Sol Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshDesktopDocumentToken },
   );
   const gateSurveyRoute = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (gateTargetIsNonSol) await keyIn('Enter', 'Enter');
@@ -5808,6 +5812,7 @@ try {
     routeState: gateSurveyRoute,
     cardTitle: gateSurveyState.cardTitle,
     actionLabel: 'Enter system',
+    allowFresh: true,
   });
   await clickDesktopPoint(gateTravel);
   const gatedState = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -5860,6 +5865,7 @@ try {
   const solFailureBaseline = fails.length;
   const solSurveyBeforeAuthority = await waitForF4Writable(
     'Sol Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshDesktopDocumentToken },
   );
   const solSurveyRoute = await evalIn(`window.__CF_SLICE__.api.state()`);
   const solPoint = await evalIn(`(()=>{ const p=window.__CF_SLICE__.world.toGlobal({x:560,y:170}); return {x:p.x,y:p.y}; })()`);
@@ -5882,6 +5888,7 @@ try {
     routeState: solSurveyRoute,
     cardTitle: 'Sun (Sol)',
     actionLabel: 'Enter system',
+    allowFresh: true,
   });
   if (fails.length !== solFailureBaseline) {
     failSliceWithoutCascade('SOL SURVEY: red card/setup evidence stopped Enter system and every dependent core-flow judgment', {
@@ -5893,7 +5900,10 @@ try {
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: solSurvey.travel.x, y: solSurvey.travel.y, button: 'left', clickCount: 1 }, sess);
   }
   await sleep(1800);   /* eight painterly surfaces bake */
-  await waitForF4Writable('Sol arrival F4 fixed point');
+  await waitForF4Writable('Sol arrival F4 fixed point', {
+    allowFresh: true,
+    expectedToken: freshDesktopDocumentToken,
+  });
   const stSys = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (stSys.mode !== 'system' || stSys.star !== 424242 || stSys.starX !== 560 || stSys.starY !== 170) {
     fails.push('Sol card action did not enter the exact base-star node: '
@@ -22471,7 +22481,9 @@ try {
   await send('Runtime.enable', {}, ks);
   await send('Page.enable', {}, ks);
   await send('Emulation.setDeviceMetricsOverride', { width: 1280, height: 800, deviceScaleFactor: 1, mobile: false }, ks);
-  await navigateToSlice(ks, URL4, 'desktop keyboard journey boot');
+  const freshKeyboardDocumentToken = await navigateToSlice(
+    ks, URL4, 'desktop keyboard journey boot',
+  );
   await sleep(2500);
   const evalK = async (expr) => {
     const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, ks);
@@ -22494,7 +22506,12 @@ try {
     throw new Error(`${label} did not reach its keyboard outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
   let keyboardF4WritableControlsRun = false;
-  const waitKF4Writable = async (label, { previousToken = null, timeoutMs = 15_000 } = {}) => {
+  const waitKF4Writable = async (
+    label,
+    {
+      previousToken = null, expectedToken = null, allowFresh = false, timeoutMs = 15_000,
+    } = {},
+  ) => {
     const deadline = Date.now() + timeoutMs;
     let last = null;
     while (Date.now() < deadline) {
@@ -22503,10 +22520,14 @@ try {
           const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
             state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
             token:typeof S?.documentToken==='string'?S.documentToken:null};})()`);
-        const assessment = assessF4ReadyAuthority({ ...snapshot, previousToken });
+        const assessment = assessF4ReadyAuthority({
+          ...snapshot, previousToken, expectedToken, allowFresh,
+        });
         if (assessment.ok) {
           if (!keyboardF4WritableControlsRun) {
-            const controls = f4BootReadinessNegativeControls(snapshot, previousToken);
+            const controls = f4BootReadinessNegativeControls(
+              snapshot, previousToken, { expectedToken, allowFresh },
+            );
             if (!controls.isolated) {
               failSliceWithoutCascade('KEYBOARD F4 WRITABILITY CONTROLS FAILED — missing scene resources or pending persistence stayed ready: '
                 + JSON.stringify(controls));
@@ -22525,9 +22546,12 @@ try {
   };
   const waitForKeyboardSurveyFixedPoint = async ({
     label, beforeAuthority, routeState, cardTitle, actionLabel,
-    settlement = 'commit', actionExpression = travelCheck,
+    settlement = 'commit', actionExpression = travelCheck, allowFresh = false,
   }) => {
-    const afterAuthority = await waitKF4Writable(`${label} settlement`);
+    const afterAuthority = await waitKF4Writable(`${label} settlement`, {
+      expectedToken: beforeAuthority.token,
+      allowFresh,
+    });
     const surface = await evalK(`({documentToken:window.__CF_SLICE__.documentToken,
       state:window.__CF_SLICE__.api.state(),action:${actionExpression}})()`);
     const expected = earlyCoreFlowSurveyExpectation(beforeAuthority, routeState, {
@@ -22617,6 +22641,7 @@ try {
   if (!galaxyTarget) fails.push('KEYBOARD JOURNEY: could not select the Milky Way from the canvas');
   const kGalaxyBeforeAuthority = await waitKF4Writable(
     'keyboard journey Milky Way Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshKeyboardDocumentToken },
   );
   await keyK('Enter', 'Enter');
   const kGalaxyCard = await waitK('keyboard Milky Way card', `(()=>{ const s=window.__CF_SLICE__.api.state(),a=document.querySelector('#survey [data-act=travel]');
@@ -22631,12 +22656,16 @@ try {
   const kGalaxy = await waitK('keyboard enter galaxy', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return s.mode==='galaxy'&&s.gal===999?{focus:document.activeElement===document.querySelector('canvas'),target:s.keyboardTarget}:null; })()`);
   if (!kGalaxy.focus) fails.push('KEYBOARD JOURNEY: Enter galaxy did not return canvas focus: ' + JSON.stringify(kGalaxy));
-  await waitKF4Writable('keyboard journey Milky Way arrival F4 fixed point');
+  await waitKF4Writable(
+    'keyboard journey Milky Way arrival F4 fixed point',
+    { allowFresh: true, expectedToken: freshKeyboardDocumentToken },
+  );
   const solTarget = await seekPriorityK('star:424242:560:170');
   if (!solTarget) fails.push('KEYBOARD JOURNEY: could not reach/select Sol through keyboard pan+zoom: '
     + JSON.stringify(keyboardPanTrail));
   const kSolBeforeAuthority = await waitKF4Writable(
     'keyboard journey Sol Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshKeyboardDocumentToken },
   );
   const kSolRoute = await evalK(`window.__CF_SLICE__.api.state()`);
   await keyK('Enter', 'Enter');
@@ -22651,12 +22680,16 @@ try {
     routeState: kSolRoute,
     cardTitle: 'Sun (Sol)',
     actionLabel: 'Enter system',
+    allowFresh: true,
   });
   await keyK('Enter', 'Enter');
   const kSystem = await waitK('keyboard enter Sol', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return s.mode==='system'&&s.star===424242?{focus:document.activeElement===document.querySelector('canvas'),target:s.keyboardTarget}:null; })()`);
   if (!kSystem.focus) fails.push('KEYBOARD JOURNEY: Enter system did not return canvas focus: ' + JSON.stringify(kSystem));
-  await waitKF4Writable('keyboard journey Sol arrival F4 fixed point');
+  await waitKF4Writable(
+    'keyboard journey Sol arrival F4 fixed point',
+    { allowFresh: true, expectedToken: freshKeyboardDocumentToken },
+  );
   const earthTarget = await cycleK('planet:424242:133');
   if (!earthTarget) fails.push('KEYBOARD JOURNEY: could not select Earth from the system canvas');
   const keyboardJourneyLandActionCheck = `(()=>{const button=document.querySelector('#survey [data-act="landcta"]');
@@ -22665,6 +22698,7 @@ try {
         ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:(button.textContent||'').trim()};})()`;
   const kEarthBeforeAuthority = await waitKF4Writable(
     'keyboard journey Earth Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshKeyboardDocumentToken },
   );
   const kEarthRoute = await evalK(`window.__CF_SLICE__.api.state()`);
   await keyK('Enter', 'Enter');
@@ -22680,6 +22714,7 @@ try {
     cardTitle: 'Earth',
     actionLabel: '⛳ Land',
     actionExpression: keyboardJourneyLandActionCheck,
+    allowFresh: true,
   });
   await keyK('Enter', 'Enter');
   const kSurface = await waitK('keyboard Earth Land', `(()=>{ const s=window.__CF_SLICE__.api.state(),a=document.querySelector('#survey [data-act=leaveworld]');
@@ -22697,6 +22732,7 @@ try {
   if (!earthAgain) fails.push('KEYBOARD JOURNEY: Earth could not be selected for the Escape continuity pass');
   const kEarthAgainBeforeAuthority = await waitKF4Writable(
     'keyboard journey repeat Earth Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshKeyboardDocumentToken },
   );
   const kEarthAgainRoute = await evalK(`window.__CF_SLICE__.api.state()`);
   await keyK('Enter', 'Enter');
@@ -22709,6 +22745,7 @@ try {
     actionLabel: '⛳ Land',
     actionExpression: keyboardJourneyLandActionCheck,
     settlement: 'current',
+    allowFresh: true,
   });
   await keyK('Enter', 'Enter');
   await waitK('keyboard repeat Earth surface', `document.activeElement===document.querySelector('#survey [data-act=leaveworld]')`);
@@ -23532,7 +23569,9 @@ try {
   await send('Page.enable', {}, navPh);
   await send('Emulation.setDeviceMetricsOverride', { width: 390, height: 844, deviceScaleFactor: 3, mobile: true }, navPh);
   await send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 5 }, navPh);
-  await navigateToSlice(navPh, URL3, 'fresh-phone navigation boot');
+  const freshPhoneDocumentToken = await navigateToSlice(
+    navPh, URL3, 'fresh-phone navigation boot',
+  );
   await sleep(3000);
   const evalNavPh = async (expr) => {
     const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, navPh);
@@ -23551,7 +23590,10 @@ try {
   };
   let navF4WritableControlsRun = false;
   const waitNavPhF4Writable = async (
-    label, { previousToken = null, timeoutMs = 15_000 } = {},
+    label,
+    {
+      previousToken = null, expectedToken = null, allowFresh = false, timeoutMs = 15_000,
+    } = {},
   ) => {
     const deadline = Date.now() + timeoutMs;
     let last = null;
@@ -23561,7 +23603,9 @@ try {
           const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
             state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
             token:typeof S?.documentToken==='string'?S.documentToken:null};})()`);
-        const assessment = assessF4ReadyAuthority({ ...snapshot, previousToken });
+        const assessment = assessF4ReadyAuthority({
+          ...snapshot, previousToken, expectedToken, allowFresh,
+        });
         if (assessment.ok) {
           if (!navF4WritableControlsRun) {
             const leaseControl = structuredClone(snapshot);
@@ -23569,9 +23613,15 @@ try {
             const revisionControl = structuredClone(snapshot);
             revisionControl.raw.revision += 1;
             revisionControl.raw.revisionRaw = String(revisionControl.raw.revision);
-            const bootControls = f4BootReadinessNegativeControls(snapshot, previousToken);
-            if (assessF4ReadyAuthority({ ...leaseControl, previousToken: null }).ok
-              || assessF4ReadyAuthority({ ...revisionControl, previousToken: null }).ok
+            const bootControls = f4BootReadinessNegativeControls(
+              snapshot, previousToken, { expectedToken, allowFresh },
+            );
+            if (assessF4ReadyAuthority({
+              ...leaseControl, previousToken, expectedToken, allowFresh,
+            }).ok
+              || assessF4ReadyAuthority({
+                ...revisionControl, previousToken, expectedToken, allowFresh,
+              }).ok
               || !bootControls.isolated) {
               fails.push('PHONE F4 WRITABILITY CONTROL FAILED — a missing lease, mismatched raw revision, missing scene resources, or pending persistence write stayed green/non-isolated: '
                 + JSON.stringify(bootControls));
@@ -23592,9 +23642,12 @@ try {
   };
   const waitForPhoneSurveyFixedPoint = async ({
     label, beforeAuthority, routeState, cardTitle, actionLabel,
-    settlement = 'commit', actionExpression,
+    settlement = 'commit', actionExpression, allowFresh = false,
   }) => {
-    const afterAuthority = await waitNavPhF4Writable(`${label} settlement`);
+    const afterAuthority = await waitNavPhF4Writable(`${label} settlement`, {
+      expectedToken: beforeAuthority.token,
+      allowFresh,
+    });
     const surface = await evalNavPh(`({documentToken:window.__CF_SLICE__.documentToken,
       state:window.__CF_SLICE__.api.state(),action:${actionExpression}})()`);
     const expected = earlyCoreFlowSurveyExpectation(beforeAuthority, routeState, {
@@ -23674,6 +23727,7 @@ try {
   };
   const phoneGalaxyBeforeAuthority = await waitNavPhF4Writable(
     'phone Milky Way card predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshPhoneDocumentToken },
   );
   await touchNav(phoneGalaxyX, phoneGalaxyY);
   await sleep(400);
@@ -23703,7 +23757,10 @@ try {
     await touchNav(phoneTravel.x, phoneTravel.y);
   }
   await sleep(2500);
-  await waitNavPhF4Writable('phone Milky Way arrival F4 fixed point');
+  await waitNavPhF4Writable(
+    'phone Milky Way arrival F4 fixed point',
+    { allowFresh: true, expectedToken: freshPhoneDocumentToken },
+  );
   const phoneDive = await evalNavPh(`window.__CF_SLICE__.api.state()`);
   if (phoneDive.mode !== 'galaxy' || phoneDive.gal !== 999 || phoneDive.galX !== 90 || phoneDive.galY !== -60) {
     fails.push('PHONE TRAVEL: touching the visible card action did not enter the exact Milky Way node: '
@@ -23725,6 +23782,7 @@ try {
   const phoneSolSetup = await waitNavPhValue('phone Sol setup', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242?s:null; })()`);
   const phoneEarthBeforeAuthority = await waitNavPhF4Writable(
     'phone Earth Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshPhoneDocumentToken },
   );
   const phoneEarthSurveyed = await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);
   if (!phoneEarthSurveyed) {
@@ -23737,6 +23795,7 @@ try {
     cardTitle: 'Earth',
     actionLabel: '⛳ Land',
     actionExpression: phoneCardActionCheck('landcta'),
+    allowFresh: true,
   });
   const phoneSurveyPrimeOverlayCheck = phonePrimeOverlayCheck('survey', 'card-open');
   const phoneSurveyPrimeOverlay = await evalNavPh(phoneSurveyPrimeOverlayCheck);
@@ -23820,6 +23879,7 @@ try {
      ascends in the same action rather than merely hiding the card. */
   const phoneRepeatEarthBeforeAuthority = await waitNavPhF4Writable(
     'phone repeat Earth Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshPhoneDocumentToken },
   );
   const phoneRepeatEarthRoute = await evalNavPh(`window.__CF_SLICE__.api.state()`);
   const phoneRepeatEarthSurveyed = await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);
@@ -23834,6 +23894,7 @@ try {
     actionLabel: '⛳ Land',
     actionExpression: phoneCardActionCheck('landcta'),
     settlement: 'current',
+    allowFresh: true,
   });
   const phoneReland = await evalNavPh(phoneCardActionCheck('landcta'));
   if (!phoneReland.ok) fails.push('PHONE ESCAPE LIFT: repeat Earth card lost its Land action: ' + JSON.stringify(phoneReland));
@@ -23870,6 +23931,7 @@ try {
   }
   const blockedFineBeforeAuthority = await waitNavPhF4Writable(
     'phone stage-0 fine-star Survey predecessor F4 authority',
+    { allowFresh: true, expectedToken: freshPhoneDocumentToken },
   );
   const blockedFineRoute = await evalNavPh(`window.__CF_SLICE__.api.state()`);
   if (blockedFineTarget) await touchNav(blockedFineTarget.screenX, blockedFineTarget.screenY);
@@ -23888,6 +23950,7 @@ try {
     cardTitle: blockedFineSurvey.state.cardTitle,
     actionLabel: 'Enter system',
     actionExpression: travelCheck,
+    allowFresh: true,
   });
   if (blockedFineSurvey.travel.ok) await touchNav(blockedFineSurvey.travel.x, blockedFineSurvey.travel.y);
   await sleep(350);
@@ -26626,25 +26689,22 @@ try {
     throw error;
   };
   const waitControlF4Writable = async (
-    session, label, { previousToken = null, timeoutMs = 15000, allowFresh = false } = {},
+    session,
+    label,
+    {
+      previousToken = null, expectedToken = null, timeoutMs = 15000, allowFresh = false,
+    } = {},
   ) => waitControlValue(session, label, `(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
     const S=window.__CF_SLICE__,state=S?.api?.state?.();return {state,raw,token:S?.documentToken??null};})()`,
-  timeoutMs, (snapshot) => {
-    const bootKind = snapshot?.state?.persistence?.bootKind;
-    if (bootKind === 'current-v5') {
-      return assessF4ReadyAuthority({ ...snapshot, previousToken }).ok;
-    }
-    if (!allowFresh || bootKind !== 'fresh-v5') return false;
-    const state = {
-      ...snapshot.state,
-      persistence: { ...snapshot.state.persistence, bootKind: 'current-v5' },
-    };
-    return assessF4ReadyAuthority({ ...snapshot, state, previousToken }).ok;
-  });
+  timeoutMs, (snapshot) => assessF4ReadyAuthority({
+    ...snapshot, previousToken, expectedToken, allowFresh,
+  }).ok);
   const waitForControlCommitSequence = async ({
     session, label, beforeAuthority, expectedKinds, persistencePrefix,
   }) => {
-    const afterAuthority = await waitControlF4Writable(session, `${label} settlement`);
+    const afterAuthority = await waitControlF4Writable(session, `${label} settlement`, {
+      expectedToken: beforeAuthority.token,
+    });
     const assessment = assessF4ActionCommitSequence({
       beforeAuthority,
       afterAuthority,
@@ -26731,8 +26791,13 @@ try {
     value:{writeText(value){sessionStorage.setItem('cf_slice_collision_clipboard',String(value));return Promise.resolve();}}});}
     catch(error){window.__cfCollisionClipboardInstallError=String(error&&error.message||error)}})()`;
   const collisionTarget = await attachF4ControlTarget(URL9, [], collisionClipboardPreload);
-  await waitForSlice(collisionTarget.session, 'collision identity fresh boot');
-  await waitControlF4Writable(collisionTarget.session, 'collision identity fresh authority', { allowFresh: true });
+  const collisionFreshToken = await waitForSlice(
+    collisionTarget.session, 'collision identity fresh boot',
+  );
+  await waitControlF4Writable(collisionTarget.session, 'collision identity fresh authority', {
+    allowFresh: true,
+    expectedToken: collisionFreshToken,
+  });
   const collisionImportToken = await sliceToken(collisionTarget.session);
   try {
     await evalF4Control(collisionTarget.session,
@@ -27037,9 +27102,14 @@ try {
      mutation capture guard, audio owner, heartbeat timer, pageshow callback,
      release, and reload all remain the paths under test. */
   const heartbeatTarget = await attachF4ControlTarget(URL10, [F4_CONVERGENCE_BINDING]);
-  await waitForSlice(heartbeatTarget.session, 'F4 heartbeat storage fresh boot');
+  const heartbeatFreshToken = await waitForSlice(
+    heartbeatTarget.session, 'F4 heartbeat storage fresh boot',
+  );
   await waitControlF4Writable(
-    heartbeatTarget.session, 'F4 heartbeat storage writable authority', { allowFresh: true },
+    heartbeatTarget.session, 'F4 heartbeat storage writable authority', {
+      allowFresh: true,
+      expectedToken: heartbeatFreshToken,
+    },
   );
   const heartbeatImportToken = await sliceToken(heartbeatTarget.session);
   try {
@@ -27216,9 +27286,14 @@ try {
      document still owns the lease locally, but must become unanswerable and
      converge instead of waiting forever with a stranded owned grant. */
   const revisionTarget = await attachF4ControlTarget(URL11, [F4_CONVERGENCE_BINDING]);
-  await waitForSlice(revisionTarget.session, 'F4 revision verification fresh boot');
+  const revisionFreshToken = await waitForSlice(
+    revisionTarget.session, 'F4 revision verification fresh boot',
+  );
   await waitControlF4Writable(
-    revisionTarget.session, 'F4 revision verification writable authority', { allowFresh: true },
+    revisionTarget.session, 'F4 revision verification writable authority', {
+      allowFresh: true,
+      expectedToken: revisionFreshToken,
+    },
   );
   const revisionImportToken = await sliceToken(revisionTarget.session);
   try {

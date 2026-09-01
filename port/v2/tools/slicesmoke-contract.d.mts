@@ -18,6 +18,15 @@ export interface SliceContractAssessment {
   readonly reasons: readonly string[];
 }
 
+export function assessF4ReadyAuthority(input?: Readonly<{
+  readonly state?: unknown;
+  readonly raw?: unknown;
+  readonly token?: unknown;
+  readonly previousToken?: string | null;
+  readonly expectedToken?: string | null;
+  readonly allowFresh?: boolean;
+}>): SliceContractAssessment;
+
 export function assessArc0LandingAwaitBoundary(input?: Readonly<{
   readonly actualAccepted?: unknown;
   readonly expectedAccepted?: unknown;

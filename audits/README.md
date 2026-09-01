@@ -10,7 +10,52 @@ summary of it.
 
 ## Contents
 
-### Current exact-source PR #35 fifth hosted Survey-settlement stop
+### Current exact-source 6030035 fresh-boot readiness-oracle stop
+
+Exact clean SSH-signed source `6030035dff1779c3fc3be7e4f46f376ff01455e8` (tree
+`f2fa2c7b2928c8a7fa82f753f847e62c72044bc3`, parent `06aba9d…`) passed the hermetic tracked-input
+develop rehearsal at **257 files / 2,622 passed / 1 skipped**, all three TypeScript programs,
+**34** clean art sources, **1,014/1,014** routes and **454** non-inert fields. Browser-CDP selftest
+and live Compendium preflight passed on Edge `152.0.4191.53` / CDP `1.3`; compatible point-version
+changes remain provenance only.
+
+Compendium `20260901051716174-22348-bea719354e` passed **78/78** with zero findings or blocked
+outcomes in **64,220 ms**, once/no-retry, and its exact named verifier passed. Develop Slice
+`20260901051837279-22717-480519033de4` then stopped after **24,458 ms** with exactly **1 finding /
+1 scope**, `harness`, no screenshots and no product action. Its first keyboard Milky Way Survey
+predecessor observed a complete writable revision-5 authority with exact live↔raw parity and
+immutable `fresh-v5` provenance. The old generic oracle required `current-v5`; this is an
+instrument false red, not product-bug evidence. Glass correctly did not run, and 6030035 was not
+retried or relabelled.
+
+The exact carriers below all pass gzip integrity:
+
+- `ARC1A_COMPENDIUM_PR35_FRESH_BOOT_READINESS_PREDECESSOR_PASS_20260901_6030035.json.gz`:
+  **452,461 bytes**, SHA-256
+  `c962c4443a375cbccab541b3e7439e48fdaca2d8b77a9de28fdf337035f5bd27`; raw
+  **10,843,413 bytes**, SHA-256
+  `7f8b399771f287667d05cd7e9b86b747ffe42422d4251f32abaa8e6a5b28a6fc`.
+- `ARC4_SLICE_PR35_FRESH_BOOT_READINESS_ORACLE_RED_20260901_6030035.json.gz`:
+  **2,699 bytes**, SHA-256
+  `b97e9a34319efab061eb7f8f4ab8569f1162a0c7abc6486501aa3d574ed68fdb`; raw
+  **11,308 bytes**, SHA-256
+  `fc1b1cdfdd5fa8c4f4390aca98a407a6fd473f74f1cd5f5784877535b1220cd8`.
+- `ARC4_SLICE_PR35_FRESH_BOOT_READINESS_ORACLE_RED_20260901_6030035.log.gz`:
+  **2,924 bytes**, SHA-256
+  `e1a70f1ac1279d23fd5241c6f1455db0e811f4ab39e546ebfe1632239881e259`; raw
+  **7,273 bytes**, SHA-256
+  `348f2d950f9136e33227d9276879fd843655a9f155947f1344e4bef13df77470`.
+
+The bounded working-tree successor accepts `fresh-v5` only at explicit initial-page callsites
+bound to the exact original document token; current, reload and replacement paths stay strict.
+Focused verification passed **5 files / 79 tests**, all three TypeScript programs, and the full
+develop profile passed **258 files / 2,628 passed / 1 skipped**, **34** clean art sources,
+**1,014/1,014** routes and **454** non-inert fields. Independent final review is **APPROVED**.
+It is not yet signed, tracked-input rehearsed or browser-certified, so these carriers certify only
+6030035's immutable PASS/red boundary. No hosted attempt, merge, release, preview or deployment is
+authorized.
+
+### Historical exact-source PR #35 fifth hosted Survey-settlement stop
 
 GitHub run `33466661094` tested exact head
 `06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c` against base

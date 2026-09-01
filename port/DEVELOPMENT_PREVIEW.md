@@ -1,17 +1,16 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **2026-09-01 current admission/preview boundary (canonical handoff in `../ROADMAP.md`):** hosted
-> run `33466661094` passed every prerequisite and Compendium **78/78**, then Slice stopped at **13
-> findings / 8 scopes** because its harness pressed non-Sol Enter before Survey's F4 fixed point.
-> The product correctly refused; Glass correctly skipped and no retry ran. No development preview
-> was packaged, run or published.
+> **2026-09-01 current admission/preview boundary (canonical handoff in `../ROADMAP.md`):** exact
+> signed 6030035 passed tracked-input rehearsal, browser preflight and Compendium **78/78**, then
+> Slice stopped once/no-retry with **1 harness finding / 1 scope** before its first Survey action.
+> A valid writable initial document remained `fresh-v5` while the generic oracle required
+> `current-v5`; Glass did not run. No development preview was packaged, run or published.
 >
-> The local testing-only successor waits for exact same-document Survey receipt/revision/persistence,
-> route/render/card/action identity and coordinator idle before every dependent pointer, keyboard,
-> touch or already-current Enter/Land, then causal-stops after any red. Focused **73/73**, all
-> TypeScript programs and final develop **257 files / 2,622 passed / 1 skipped** are green, with two
-> independent reviews **APPROVED**. The clean candidate, tracked-input preflight and fresh exact-
-> source browser chain remain pending. The separate manual preview remains noncertifying
+> The local testing-only successor accepts fresh provenance only at explicit exact-token initial-
+> page callsites; current/reload/replacement paths remain strict. Focused **79/79**, all TypeScript
+> programs and final develop **258 files / 2,628 passed / 1 skipped** are green, with independent
+> final review **APPROVED**. The working-tree successor is not yet signed, tracked-input rehearsed or
+> browser-certified. The separate manual preview remains noncertifying
 > and its workflow is unchanged. No preview rule, product byte, timeout, retry or browser-version
 > policy changed; no push, hosted attempt, publication, merge, release, version or deploy is
 > authorized.
