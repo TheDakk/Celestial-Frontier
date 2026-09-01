@@ -16,6 +16,8 @@ const HEAP_PHASE_SELFTEST_COMMAND = 'node tools/scenemem.mjs --heap-phase-selfte
 const COMPENDIUM_INSTRUMENT_SELFTEST_NAME =
   'changed-or-production Compendium browser instrument selftests';
 const COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND = 'npm run compendiummem:selftest';
+const CHROME_LAUNCHER_SELFTEST_NAME = 'changed-or-production Chrome launcher selftest';
+const CHROME_LAUNCHER_SELFTEST_COMMAND = 'node tools/browsercdp.mjs --selftest';
 const CHANGED_OR_PRODUCTION_CONDITION =
   "        if: >-\n          github.event.pull_request.base.ref == 'main' ||\n          steps.scope.outputs.browser_instrument_changed == 'true'";
 const PRODUCTION_ONLY_CONDITION =
@@ -77,6 +79,8 @@ const ORDERED_CONTRACT = [
   'node tools/browserpath.mjs --selftest',
   'node tools/compendiummem-browser-preflight.mjs --selftest',
   COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND,
+  `- name: ${CHROME_LAUNCHER_SELFTEST_NAME}`,
+  `run: ${CHROME_LAUNCHER_SELFTEST_COMMAND}`,
   '- name: install exact Arc 1A Edge calibration browser',
 ] as const;
 const ORDERED_STEP_NAMES = [
@@ -89,6 +93,7 @@ const ORDERED_STEP_NAMES = [
   'one-attempt scene-memory certification',
   'verify current scene-memory evidence',
   COMPENDIUM_INSTRUMENT_SELFTEST_NAME,
+  CHROME_LAUNCHER_SELFTEST_NAME,
   'install exact Arc 1A Edge calibration browser',
 ] as const;
 
@@ -159,8 +164,9 @@ const satisfiesSceneWorkflow = (
   const compendiumInstrumentSelftest = workflowStep(
     source, COMPENDIUM_INSTRUMENT_SELFTEST_NAME,
   );
+  const chromeLauncherSelftest = workflowStep(source, CHROME_LAUNCHER_SELFTEST_NAME);
   if (!staticProfile || !installation || !heapPhaseSelftest || !certification || !verifier
-    || !compendiumInstrumentSelftest) return false;
+    || !compendiumInstrumentSelftest || !chromeLauncherSelftest) return false;
   if (!staticProfile.includes('develop) node tools/check-profile.mjs --profile=develop ;;')
     || !staticProfile.includes('main) node tools/check-profile.mjs --profile=production ;;')
     || staticProfile.includes('npm run check:')) return false;
@@ -184,6 +190,8 @@ const satisfiesSceneWorkflow = (
     || !compendiumInstrumentSelftest.includes(
       COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND,
     )) return false;
+  if (source.split(CHROME_LAUNCHER_SELFTEST_COMMAND).length !== 2
+    || !hasExactStepCondition(chromeLauncherSelftest, CHANGED_OR_PRODUCTION_CONDITION)) return false;
   if (!source.includes(`${HEAP_PHASE_SELFTEST_BLOCK}\n${SCENEMEM_CERTIFICATION_HEADER}`)) return false;
   const env = 'CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem';
   if (source.split(env).length !== 2) return false;

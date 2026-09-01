@@ -1,6 +1,23 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **2026-08-31 current local a046 repair overlay (supersedes older candidate-status labels; dated
+> **2026-08-31 current launcher-repair/preview boundary (canonical handoff in `../ROADMAP.md`):**
+> fourth exact no-retry run `33453239307` tested PR #35 head
+> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed **78/78** and named
+> verification; the later Chrome launcher selftest failed unique-profile cleanup, so Slice/Glass
+> and preview packaging/publication did not run. The local POSIX `Browser.close` grace plus
+> detached-group TERM/KILL, Windows bounded successful `taskkill /T` then `/F` with
+> pre-exited/no-success fail-closed behavior, **100 ms** profile-absence proof, cleanup causality and
+> fail-fast workflow ordering pass real Edge and the **254-file / 2,567-pass / 1-skip** develop
+> profile. The manual preview remains separate and noncertifying. Final Compendium
+> measurement/browser-CDP authority is `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836`
+> / `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`; SceneMemory stays
+> stale/quarantined until production activation.
+> No preview rule, product byte, ruler, timeout, retry or browser-version policy changed. The repair
+> awaits final diagnostics/commit; no hosted retry, preview publication, push, merge, release,
+> version or deploy is authorized.
+
+> **2026-08-31 historical local a046 repair overlay (superseded above; older candidate-status labels and dated
 > evidence and preview-process rules remain immutable):** exact clean SSH-signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry in
 > **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; its exact named verifier passed. Its

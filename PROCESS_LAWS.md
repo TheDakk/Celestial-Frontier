@@ -1,5 +1,39 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A BROWSER PROFILE IS NOT CLEAN UNTIL ITS OWNED SHUTDOWN DOMAIN IS QUIESCENT AND ABSENCE STAYS
+> STABLE** (2026-08-31). Direct-child exit is not owned process-group/tree-request completion. Do
+> not destroy inherited stderr or delete an owned browser profile merely because the spawned PID
+> terminated: a surviving
+> Chromium descendant can recreate that profile after the single removal and make cleanup look
+> nondeterministic. On POSIX, a healthy session first sends bounded CDP `Browser.close`; spawn the
+> browser into one detached process group, apply bounded TERM→KILL only if still live, permanently
+> latch `ESRCH` as gone, prove a sibling outside the group is untouched and require observable group
+> quiescence. On Windows, disable `Browser.close` and require successful bounded `taskkill /T`,
+> escalating to `/F`; pre-exited and no-success states fail closed. Without a Job Object, never
+> overclaim independently observable whole-tree ownership or quiescence. Only then release stderr,
+> remove the profile and prove it stays absent for **100
+> ms**. Preserve primary and cleanup failure separately. A synchronous `ws.close()` throw must not
+> skip browser or profile cleanup.
+>
+> GitHub run `33453239307` earned this law. Its exact no-retry PR #35 head/base was
+> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` /
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Every invoked stage through Compendium and the
+> Compendium **78/78** named verifier passed; the following Chrome launcher selftest retained or
+> recreated its unique profile, so Slice/Glass did not run. Move that selftest before the long
+> sealed exact-Edge certificate so the cheaper causal owner fails first. Do not add a retry, widen a
+> timeout, change product bytes, pin an Edge point version or reinterpret the hosted red as a product
+> verdict. The local repair passes the real-Edge launcher selftest and the **254-file / 2,567-pass /
+> 1-skip** develop profile. Final Compendium measurement/browser-CDP authority is
+> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
+> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`. Collector, outcome contract
+> and producer remain
+> `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d`
+> / `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7`. SceneMemory's
+> calibration-required boundary deliberately remains stale until explicit production activation;
+> develop may ignore that mismatch, while production and the standalone authority printer fail
+> closed. No current browser certificate or hosted authority follows from dirty local verification.
+
 > **A RESTORATION ORACLE SAMPLES THE STATE THE PRODUCT ACTUALLY RECEIVES** (2026-08-31).
 > A virtual-row helper may legitimately reposition a row while consuming deferred layout and
 > resource settlement. A setup anchor captured before that helper is diagnostic context, not the

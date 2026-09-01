@@ -1,6 +1,23 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **2026-08-31 current local a046 repair overlay (supersedes every older “current” label below while
+> **2026-08-31 current launcher-admission overlay (canonical handoff in `../ROADMAP.md`):** fourth
+> exact no-retry PR #35 run `33453239307` tested head
+> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. All invoked owners through Compendium **78/78**
+> and named verification passed; the later shared Chrome launcher selftest stopped on a
+> leaked/reappearing unique profile, so Slice/Glass were skipped. The working-tree repair gives
+> POSIX a bounded CDP `Browser.close` grace followed by detached-group TERM/KILL when needed;
+> Windows disables that grace and requires bounded successful `taskkill /T` then `/F`, failing
+> closed on pre-exited or no-success cleanup. It proves **100 ms** profile absence, preserves
+> primary/cleanup causality and moves the selftest before the long exact-Edge certificate. Real-Edge
+> selftest plus the **254-file / 2,567-pass / 1-skip** develop profile are green. Final Compendium
+> measurement/browser-CDP authority is `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836`
+> / `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`; SceneMemory stays
+> stale/quarantined until production activation. No roadmap capability status, product bytes,
+> rulers, retry/version policy or HUMAN criteria changed. The repair awaits final diagnostics and a
+> local commit; no hosted retry, push, merge, release or deployment is authorized.
+
+> **2026-08-31 historical local a046 repair overlay (superseded above while
 > preserving its dated evidence):** exact clean SSH-signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry in
 > **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; exact named verification passed. Its

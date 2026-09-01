@@ -21,6 +21,20 @@ class ActiveEndpointContentError extends Error {
   constructor(message) { super(message); this.name = 'ActiveEndpointContentError'; }
 }
 function sleep(ms) { return new Promise((resolve) => setTimeout(resolve, ms)); }
+function errorMessage(error) { return error instanceof Error ? error.message : String(error); }
+function withCleanupFailure(primary, cleanup) {
+  const failure = new Error(`${errorMessage(primary)}; cleanup failed (${errorMessage(cleanup)})`, {
+    cause: primary,
+  });
+  failure.name = primary instanceof Error ? primary.name : 'Error';
+  Object.defineProperty(failure, 'cleanupCause', { value: cleanup, enumerable: false });
+  return failure;
+}
+async function throwAfterCleanup(primary, cleanup) {
+  try { await cleanup(); }
+  catch (cleanupError) { throw withCleanupFailure(primary, cleanupError); }
+  throw primary;
+}
 function remainingDeadlineDelayMs(deadlineMs, observedAtMs) {
   assert(Number.isFinite(deadlineMs) && Number.isFinite(observedAtMs),
     'absolute deadline observation is invalid');
@@ -72,18 +86,131 @@ async function waitForResolution(promise, timeoutMs) {
     promise.then(() => finish(true));
   });
 }
-async function terminateChildProcess(child, childExited, childClosed, label, timeoutMs) {
-  /* ChildProcess `close` also waits for inherited stdio. Judge signal
-     escalation by process exit, then release the one owned pipe. */
-  let exited = child.exitCode !== null || child.signalCode !== null;
-  if (!exited && child.pid !== undefined) {
-    if (!child.killed) child.kill();
-    exited = await waitForResolution(childExited, timeoutMs);
-    if (!exited) {
-      child.kill('SIGKILL');
-      exited = await waitForResolution(childExited, timeoutMs);
-      assert(exited, `${label}: browser ignored bounded shutdown`);
+function directChildProcessTree(child) {
+  return Object.freeze({
+    kind: 'direct-child',
+    isAlive() {
+      return Number.isInteger(child.pid) && child.pid > 0
+        && child.exitCode === null && child.signalCode === null;
+    },
+    async signal(signal) {
+      if (!this.isAlive()) return;
+      child.kill(signal);
+    },
+  });
+}
+function posixProcessGroup(pid, detached, killProcess = process.kill) {
+  assert(detached === true, 'refusing negative-PID browser shutdown without a detached process group');
+  /* This owns only the detached group identified at launch. Permanently
+     retaining ESRCH prevents later signalling after observed quiescence; it
+     cannot eliminate the kernel's inherent PID/PGID-reuse window before that
+     observation, and no ps-based inference is substituted for ownership. */
+  let provenGone = false;
+  const signal = (value) => {
+    if (provenGone) return false;
+    try { killProcess(-pid, value); return true; }
+    catch (error) {
+      if (error?.code === 'EPERM' && value === 0) return true;
+      if (error?.code !== 'ESRCH') throw error;
+      provenGone = true;
+      return false;
     }
+  };
+  return Object.freeze({
+    kind: 'posix-process-group',
+    isAlive() { return signal(0); },
+    async signal(value) { signal(value); },
+  });
+}
+async function runWindowsTreeKill(pid, force, label, timeoutMs) {
+  const args = ['/PID', String(pid), '/T', ...(force ? ['/F'] : [])];
+  const killer = spawn('taskkill.exe', args, {
+    stdio: ['ignore', 'ignore', 'ignore'], windowsHide: true,
+  });
+  let spawnError = null;
+  const exited = new Promise((resolve) => {
+    killer.once('error', (error) => { spawnError = error; resolve(null); });
+    killer.once('exit', (code) => resolve(code));
+  });
+  const completed = await waitForResolution(exited, timeoutMs);
+  if (!completed) {
+    killer.kill('SIGKILL');
+    throw new Error(`${label}: taskkill exceeded the bounded shutdown phase`);
+  }
+  if (spawnError) throw new Error(`${label}: taskkill failed (${spawnError.message})`);
+  /* taskkill /T is the portable bounded Windows tree request available to this
+     raw Node launcher. Unlike the POSIX session below, node:child_process does
+     not expose Job-Object ownership, so this status must not be overclaimed as
+     an independently observable tree-quiescence proof. */
+  return await exited === 0;
+}
+function windowsProcessTree(child, pid, runTreeKill = runWindowsTreeKill) {
+  let successfulTreeRequest = false;
+  const rootAlive = () => child.exitCode === null && child.signalCode === null;
+  return Object.freeze({
+    kind: 'windows-taskkill-tree',
+    isAlive() {
+      /* taskkill /T is the bounded portable tree request, not Job-Object
+         ownership. Until one request succeeds, cleanup remains unresolved
+         even if the root exits because its descendants cannot be inferred. */
+      return !successfulTreeRequest || rootAlive();
+    },
+    async signal(value, label, timeoutMs) {
+      if (!rootAlive()) {
+        if (successfulTreeRequest) return true;
+        throw new Error(`${label}: browser root exited before a successful bounded taskkill /T request`);
+      }
+      const force = value === 'SIGKILL';
+      const succeeded = await runTreeKill(pid, force, label, timeoutMs);
+      if (!succeeded) {
+        if (!force && rootAlive()) return false;
+        throw new Error(`${label}: taskkill /PID ${pid} /T${force ? ' /F' : ''} returned nonzero`);
+      }
+      successfulTreeRequest = true;
+      return true;
+    },
+  });
+}
+function gracefulBrowserCloseAllowed(processTree) {
+  return processTree?.kind !== 'windows-taskkill-tree';
+}
+function ownedBrowserProcessTree(child, detached) {
+  assert(Number.isInteger(child.pid) && child.pid > 0, 'browser process has no positive PID');
+  return process.platform === 'win32'
+    ? windowsProcessTree(child, child.pid)
+    : posixProcessGroup(child.pid, detached);
+}
+async function waitForTreeQuiescenceUntil(processTree, child, childExited, deadline) {
+  let exited = child.pid === undefined || child.exitCode !== null || child.signalCode !== null;
+  childExited.then(() => { exited = true; });
+  while (performance.now() < deadline) {
+    if (exited && !processTree.isAlive()) return true;
+    await sleep(Math.min(10, Math.max(1, deadline - performance.now())));
+  }
+  return exited && !processTree.isAlive();
+}
+async function waitForTreeQuiescence(processTree, child, childExited, timeoutMs) {
+  return await waitForTreeQuiescenceUntil(
+    processTree, child, childExited, performance.now() + timeoutMs,
+  );
+}
+async function terminateChildProcess(child, childExited, childClosed, processTree, label, timeoutMs) {
+  /* POSIX cleanup owns the launcher's detached process group; Windows makes
+     one bounded taskkill /T request per attempted shutdown phase. Neither
+     claim extends to processes that deliberately escaped that boundary. */
+  const signalAndWait = async (signal) => {
+    const deadline = performance.now() + timeoutMs;
+    const signalAccepted = await processTree.signal(signal, label,
+      Math.max(1, Math.ceil(deadline - performance.now())));
+    if (signalAccepted === false) return false;
+    return await waitForTreeQuiescenceUntil(processTree, child, childExited, deadline);
+  };
+  let quiescent = child.pid === undefined
+    || ((child.exitCode !== null || child.signalCode !== null) && !processTree.isAlive());
+  if (!quiescent) quiescent = await signalAndWait('SIGTERM');
+  if (!quiescent) {
+    quiescent = await signalAndWait('SIGKILL');
+    assert(quiescent, `${label}: browser process ownership ignored bounded shutdown`);
   }
   child.stderr?.destroy?.();
   assert(await waitForResolution(childClosed, timeoutMs),
@@ -120,9 +247,24 @@ function removeOwnedUserData(userData, temporary, prefix) {
   `refusing unsafe browser-profile cleanup: ${resolved}`);
   fs.rmSync(resolved, { recursive: true });
 }
+async function proveOwnedUserDataAbsent(userData, label, stabilityMs = 100) {
+  const deadline = performance.now() + stabilityMs;
+  do {
+    assert(!fs.existsSync(userData), `${label}: browser profile reappeared after cleanup`);
+    if (performance.now() >= deadline) break;
+    await sleep(Math.min(5, Math.max(1, deadline - performance.now())));
+  } while (true);
+}
 
 function launchChromiumProcess({ browserFile, chromiumArgs }) {
-  return spawn(browserFile, chromiumArgs, { stdio: ['ignore', 'ignore', 'pipe'] });
+  const detached = true;
+  const child = spawn(browserFile, chromiumArgs, {
+    stdio: ['ignore', 'ignore', 'pipe'], detached, windowsHide: true,
+  });
+  const processTree = Number.isInteger(child.pid) && child.pid > 0
+    ? ownedBrowserProcessTree(child, detached)
+    : directChildProcessTree(child);
+  return Object.freeze({ child, processTree });
 }
 
 /* Startup is one absolute spawn -> endpoint -> open-socket deadline. The
@@ -164,7 +306,14 @@ async function openChromiumCdpWithLauncher({
     '--remote-debugging-port=0', `--user-data-dir=${userData}`, 'about:blank',
   ];
   const startupStartedAt = nowMs();
-  const child = launchBrowser({ browserFile, chromiumArgs, userData });
+  const launched = launchBrowser({ browserFile, chromiumArgs, userData });
+  const child = launched?.child ?? launched;
+  const processTree = launched?.processTree ?? directChildProcessTree(child);
+  assert(child && typeof child.on === 'function' && child.stderr,
+    `${label}: browser launcher returned an invalid child`);
+  assert(processTree && typeof processTree.isAlive === 'function'
+    && typeof processTree.signal === 'function',
+  `${label}: browser launcher returned an invalid process owner`);
   let stderrHead = '';
   let stderrTail = '';
   let stderrBytes = 0;
@@ -181,8 +330,11 @@ async function openChromiumCdpWithLauncher({
   const childExited = new Promise((resolve) => child.once('exit', resolve));
   const childClosed = new Promise((resolve) => child.once('close', resolve));
   const terminateOwnedBrowser = async () => {
-    try { await terminateChildProcess(child, childExited, childClosed, label, shutdownTimeoutMs); }
-    finally { removeOwnedUserData(userData, temporary, userDataPrefix); }
+    await terminateChildProcess(
+      child, childExited, childClosed, processTree, label, shutdownTimeoutMs,
+    );
+    removeOwnedUserData(userData, temporary, userDataPrefix);
+    await proveOwnedUserDataAbsent(userData, label);
   };
 
   let endpoint = null;
@@ -208,8 +360,7 @@ async function openChromiumCdpWithLauncher({
         endpointContentError = error;
         endpointContentErrorCount++;
       } else {
-        await terminateOwnedBrowser();
-        throw new Error(`${label}: ${error.message}`);
+        await throwAfterCleanup(new Error(`${label}: ${error.message}`), terminateOwnedBrowser);
       }
     }
     if (endpoint === null) await sleep(Math.min(100, Math.max(1, startupDeadline - nowMs())));
@@ -231,8 +382,9 @@ async function openChromiumCdpWithLauncher({
       endpointCandidate ? 'endpoint-valid-observations=1 (stability confirmation pending)' : '',
       stderr,
     ].filter(Boolean).join('; ');
-    await terminateOwnedBrowser();
-    fail(`${label}: browser CDP did not start at ${browserFile} (${detail})`);
+    await throwAfterCleanup(new Error(
+      `${label}: browser CDP did not start at ${browserFile} (${detail})`,
+    ), terminateOwnedBrowser);
   }
   const endpointReadyMs = nowMs() - startupStartedAt;
 
@@ -241,6 +393,7 @@ async function openChromiumCdpWithLauncher({
   let closePromise = null;
   let eventHandlerError = null;
   let messageId = 0;
+  let gracefulBrowserCloseEligible = false;
   const pending = new Map();
   const terminalError = (message) => new Error(`${label}: ${message}`);
   const rejectPending = (error) => {
@@ -252,8 +405,38 @@ async function openChromiumCdpWithLauncher({
     closePromise = (async () => {
       closed = true;
       rejectPending(terminalError('CDP connection closed'));
-      if (ws) ws.close();
-      await terminateOwnedBrowser();
+      let cleanupError = null;
+      const retainCleanupError = (error) => {
+        cleanupError = cleanupError === null ? error : withCleanupFailure(cleanupError, error);
+      };
+      let browserCloseRequested = false;
+      let ownedProcessAlive = false;
+      try { ownedProcessAlive = processTree.isAlive(); }
+      catch (error) { retainCleanupError(error); }
+      if (gracefulBrowserCloseEligible && gracefulBrowserCloseAllowed(processTree)
+        && ownedProcessAlive
+        && ws?.readyState === WebSocketImpl.OPEN) {
+        try {
+          ws.send(JSON.stringify({ id: ++messageId, method: 'Browser.close', params: {} }));
+          browserCloseRequested = true;
+        } catch (error) {
+          retainCleanupError(terminalError(`Browser.close send failed (${errorMessage(error)})`));
+        }
+      }
+      if (browserCloseRequested) {
+        try {
+          await waitForTreeQuiescence(
+            processTree, child, childExited, Math.min(250, shutdownTimeoutMs),
+          );
+        } catch (error) { retainCleanupError(error); }
+      }
+      try { if (ws) ws.close(); }
+      catch (error) { retainCleanupError(error); }
+      try { await terminateOwnedBrowser(); }
+      catch (browserCleanupError) {
+        retainCleanupError(browserCleanupError);
+      }
+      if (cleanupError) throw cleanupError;
     })();
     return closePromise;
   };
@@ -387,10 +570,13 @@ async function openChromiumCdpWithLauncher({
       js_version: requiredString(version.jsVersion, `${label} JS version`),
       protocol_version: requiredString(version.protocolVersion, `${label} protocol version`),
     });
+    gracefulBrowserCloseEligible = true;
     return { send, browser, pid: child.pid, close };
   } catch (error) {
-    await close();
-    fail(error.message.startsWith(`${label}:`) ? error.message : `${label}: CDP setup failed (${error.message})`);
+    const primary = new Error(errorMessage(error).startsWith(`${label}:`)
+      ? errorMessage(error)
+      : `${label}: CDP setup failed (${errorMessage(error)})`);
+    await throwAfterCleanup(primary, close);
   }
 }
 
@@ -527,12 +713,96 @@ async function runSelftest() {
     };
     await terminateChildProcess(
       exitedWithInheritedStderr, Promise.resolve(), inheritedStderrClose,
+      directChildProcessTree(exitedWithInheritedStderr),
       'CDP selftest exited-with-inherited-stderr', 20,
     );
     assert(inheritedStderrDestroyed,
       'SELFTEST exited-with-inherited-stderr did not release its owned stderr pipe');
     assert(inheritedStderrSignals.length === 0,
       `SELFTEST exited-with-inherited-stderr sent a signal (${inheritedStderrSignals.join(', ')})`);
+    let terminalWindowsKillCalls = 0;
+    const terminalWindowsTree = windowsProcessTree(
+      exitedWithInheritedStderr, exitedWithInheritedStderr.pid,
+      async () => { terminalWindowsKillCalls++; return true; },
+    );
+    assert(terminalWindowsTree.isAlive(),
+      'SELFTEST Windows tree inferred quiescence from an already-terminal root');
+    await expectRejectedAsync('terminal Windows root without tree request',
+      () => terminalWindowsTree.signal(
+        'SIGTERM', 'CDP selftest terminal Windows root', 20,
+      ), /^CDP selftest terminal Windows root: browser root exited before a successful bounded taskkill \/T request$/);
+    assert(terminalWindowsKillCalls === 0,
+      'SELFTEST Windows tree invoked taskkill for an already-terminal root');
+    assert(!gracefulBrowserCloseAllowed(terminalWindowsTree),
+      'SELFTEST Windows process owner allowed graceful Browser.close');
+    const successfulWindowsChild = { exitCode: null, signalCode: null };
+    const successfulWindowsCalls = [];
+    const successfulWindowsTree = windowsProcessTree(
+      successfulWindowsChild, 21,
+      async (...args) => { successfulWindowsCalls.push(args); return true; },
+    );
+    await successfulWindowsTree.signal('SIGTERM', 'CDP selftest successful Windows tree', 20);
+    assert(JSON.stringify(successfulWindowsCalls) === JSON.stringify([
+      [21, false, 'CDP selftest successful Windows tree', 20],
+    ]), 'SELFTEST Windows tree did not retain one successful bounded /T request');
+    assert(successfulWindowsTree.isAlive(),
+      'SELFTEST Windows tree accepted taskkill success before root exit');
+    successfulWindowsChild.exitCode = 0;
+    assert(!successfulWindowsTree.isAlive(),
+      'SELFTEST Windows tree rejected taskkill success plus root exit');
+    let escalatingWindowsExited;
+    const escalatingWindowsExit = new Promise((resolve) => { escalatingWindowsExited = resolve; });
+    let escalatingWindowsClosed;
+    const escalatingWindowsClose = new Promise((resolve) => { escalatingWindowsClosed = resolve; });
+    const escalatingWindowsCalls = [];
+    const escalatingWindowsChild = {
+      exitCode: null, signalCode: null, pid: 22,
+      stderr: { destroy() { escalatingWindowsClosed(); } },
+    };
+    const escalatingWindowsTree = windowsProcessTree(
+      escalatingWindowsChild, 22,
+      async (...args) => {
+        escalatingWindowsCalls.push(args);
+        if (args[1] !== true) return false;
+        escalatingWindowsChild.signalCode = 'SIGKILL';
+        escalatingWindowsExited();
+        return true;
+      },
+    );
+    await terminateChildProcess(
+      escalatingWindowsChild, escalatingWindowsExit, escalatingWindowsClose,
+      escalatingWindowsTree, 'CDP selftest escalating Windows tree', 20,
+    );
+    assert(!escalatingWindowsTree.isAlive()
+      && JSON.stringify(escalatingWindowsCalls.map((args) => args[1])) === JSON.stringify([false, true]),
+    'SELFTEST Windows tree did not require /T then forced /T /F before completion');
+    const failedWindowsChild = { exitCode: null, signalCode: null };
+    const failedWindowsTree = windowsProcessTree(
+      failedWindowsChild, 23, async () => false,
+    );
+    await expectRejectedAsync('nonzero Windows taskkill', () => failedWindowsTree.signal(
+      'SIGKILL', 'CDP selftest failed Windows tree', 20,
+    ), /^CDP selftest failed Windows tree: taskkill \/PID 23 \/T \/F returned nonzero$/);
+    assert(failedWindowsTree.isAlive(),
+      'SELFTEST Windows tree accepted a nonzero forced taskkill result');
+
+    const posixGoneCalls = [];
+    const posixGone = posixProcessGroup(31, true, (target, signal) => {
+      posixGoneCalls.push([target, signal]);
+      throw Object.assign(new Error('gone'), { code: 'ESRCH' });
+    });
+    assert(!posixGone.isAlive(), 'SELFTEST POSIX group did not retain ESRCH absence');
+    await posixGone.signal('SIGTERM');
+    assert(JSON.stringify(posixGoneCalls) === JSON.stringify([[-31, 0]]),
+      'SELFTEST POSIX group signalled again after proving ESRCH');
+    const posixAddressCalls = [];
+    const posixAddress = posixProcessGroup(32, true, (target, signal) => {
+      posixAddressCalls.push([target, signal]);
+    });
+    assert(posixAddress.isAlive(), 'SELFTEST POSIX owned group positive control was not alive');
+    await posixAddress.signal('SIGTERM');
+    assert(posixAddressCalls.every(([target]) => target === -32),
+      'SELFTEST POSIX group addressed a process outside its owned negative group ID');
 
     let resistantExited;
     const resistantExit = new Promise((resolve) => { resistantExited = resolve; });
@@ -551,7 +821,8 @@ async function runSelftest() {
       stderr: { destroy() { resistantPipeDestroyed = true; resistantClosed(); } },
     };
     await terminateChildProcess(
-      resistantChild, resistantExit, resistantClose, 'CDP selftest resistant child', 20,
+      resistantChild, resistantExit, resistantClose, directChildProcessTree(resistantChild),
+      'CDP selftest resistant child', 20,
     );
     assert(JSON.stringify(resistantSignals) === JSON.stringify(['SIGTERM', 'SIGKILL']),
       `SELFTEST resistant child: expected TERM/KILL escalation, got ${resistantSignals.join(', ')}`);
@@ -571,8 +842,9 @@ async function runSelftest() {
     };
     await expectRejectedAsync('no exit after SIGKILL', () => terminateChildProcess(
       noExitChild, new Promise(() => {}), new Promise(() => {}),
+      directChildProcessTree(noExitChild),
       'CDP selftest no-exit child', 20,
-    ), /^CDP selftest no-exit child: browser ignored bounded shutdown$/);
+    ), /^CDP selftest no-exit child: browser process ownership ignored bounded shutdown$/);
     assert(JSON.stringify(noExitSignals) === JSON.stringify(['SIGTERM', 'SIGKILL']),
       `SELFTEST no-exit child: expected TERM/KILL escalation, got ${noExitSignals.join(', ')}`);
     assert(!noExitPipeDestroyed,
@@ -585,10 +857,263 @@ async function runSelftest() {
     };
     await expectRejectedAsync('exit with nonclosing stdio', () => terminateChildProcess(
       exitedWithNonclosingPipe, Promise.resolve(), new Promise(() => {}),
+      directChildProcessTree(exitedWithNonclosingPipe),
       'CDP selftest nonclosing-stdio child', 20,
     ), /^CDP selftest nonclosing-stdio child: browser exited but its stdio did not close within the shutdown bound$/);
     assert(nonclosingPipeDestroyed,
       'SELFTEST nonclosing-stdio child did not release its owned stderr pipe');
+
+    if (process.platform !== 'win32') {
+      const descendantSource = `
+        const fs = require('node:fs');
+        const path = require('node:path');
+        const profile = process.argv[1];
+        const ready = path.join(profile, 'descendant-ready');
+        fs.writeFileSync(ready, 'ready');
+        setInterval(() => {
+          if (fs.existsSync(profile)) return;
+          fs.mkdirSync(profile, { recursive: true });
+          fs.writeFileSync(path.join(profile, 'descendant-recreated-profile'), 'recreated');
+        }, 1);
+      `;
+      const rootSource = `
+        const { spawn } = require('node:child_process');
+        const profile = process.argv[1];
+        const descendantSource = ${JSON.stringify(descendantSource)};
+        spawn(process.execPath, ['--input-type=commonjs', '-e', descendantSource, profile], {
+          stdio: ['ignore', 'ignore', 'ignore'],
+        });
+        setInterval(() => {}, 1000);
+      `;
+      const processTreeFixture = ({ prefix, endpoint = 'valid', directOnly = false,
+        validVersion = true, throwOnSocketClose = false,
+        exitGroupOnBrowserClose = false }) => {
+        const state = {
+          child: null, childExited: null, childClosed: null,
+          processTree: null, userData: null, gracefulCloseRequests: 0,
+          cleanupSignals: [],
+        };
+        const launchFixture = ({ userData }) => {
+          state.userData = userData;
+          fs.mkdirSync(userData, { recursive: true });
+          const activePort = path.join(userData, 'DevToolsActivePort');
+          if (endpoint === 'valid') {
+            fs.writeFileSync(activePort, '9\n/devtools/browser/selftest-process-tree\n');
+          } else {
+            fs.mkdirSync(activePort);
+          }
+          const child = spawn(process.execPath, [
+            '--input-type=commonjs', '-e', rootSource, userData,
+          ], {
+            stdio: ['ignore', 'ignore', 'pipe'], detached: true,
+          });
+          state.child = child;
+          state.childExited = new Promise((resolve) => child.once('exit', resolve));
+          state.childClosed = new Promise((resolve) => child.once('close', resolve));
+          state.processTree = ownedBrowserProcessTree(child, true);
+          const readyFile = path.join(userData, 'descendant-ready');
+          const readyDeadline = Date.now() + 500;
+          const waitCell = new Int32Array(new SharedArrayBuffer(4));
+          while (!fs.existsSync(readyFile) && Date.now() < readyDeadline) {
+            Atomics.wait(waitCell, 0, 0, 5);
+          }
+          assert(fs.existsSync(readyFile),
+            `SELFTEST process-group fixture ${prefix} did not start its descendant`);
+          const selectedProcessTree = directOnly
+            ? directChildProcessTree(child) : state.processTree;
+          return Object.freeze({
+            child,
+            processTree: Object.freeze({
+              kind: selectedProcessTree.kind,
+              isAlive: () => selectedProcessTree.isAlive(),
+              async signal(...args) {
+                state.cleanupSignals.push(args[0]);
+                return await selectedProcessTree.signal(...args);
+              },
+            }),
+          });
+        };
+        class ProcessTreeWebSocket {
+          static OPEN = 1;
+          constructor() {
+            this.readyState = 0;
+            this.openTimer = setTimeout(() => {
+              this.readyState = ProcessTreeWebSocket.OPEN;
+              this.onopen?.();
+            }, 0);
+          }
+          send(payload) {
+            const message = JSON.parse(payload);
+            if (message.method === 'Browser.close') {
+              state.gracefulCloseRequests++;
+              if (exitGroupOnBrowserClose) process.kill(-state.child.pid, 'SIGTERM');
+              return;
+            }
+            assert(message.method === 'Browser.getVersion',
+              `SELFTEST process-group fixture received unexpected ${message.method}`);
+            const readyFile = path.join(state.userData, 'descendant-ready');
+            const respond = () => {
+              if (!fs.existsSync(readyFile)) { setTimeout(respond, 1); return; }
+              this.onmessage?.({ data: JSON.stringify({
+                id: message.id,
+                result: {
+                  product: validVersion ? 'Chrome/CDP-process-tree-selftest' : '',
+                  revision: 'process-tree-revision',
+                  userAgent: 'cf-browsercdp-process-tree-selftest',
+                  jsVersion: 'process-tree-js', protocolVersion: '1.3',
+                },
+              }) });
+            };
+            respond();
+          }
+          close() {
+            clearTimeout(this.openTimer);
+            this.readyState = 3;
+            if (throwOnSocketClose) throw new Error('injected WebSocket close failure');
+          }
+        }
+        const open = () => openChromiumCdpWithLauncher({
+          label: `CDP selftest process group ${prefix}`,
+          userDataPrefix: prefix,
+          commandTimeoutMs: 500,
+          startupTimeoutMs: 1000,
+          shutdownTimeoutMs: 1000,
+          WebSocketImpl: ProcessTreeWebSocket,
+        }, launchFixture);
+        const cleanup = async () => {
+          if (state.child !== null) {
+            try {
+              await terminateChildProcess(
+                state.child, state.childExited, state.childClosed, state.processTree,
+                `CDP selftest process group ${prefix} fallback cleanup`, 1000,
+              );
+            } catch { /* preserve the scenario's assertion; bounded fallback below */ }
+          }
+          if (state.processTree?.isAlive()) {
+            await state.processTree.signal(
+              'SIGKILL', `CDP selftest process group ${prefix} final cleanup`, 1000,
+            );
+            const fallbackQuiescent = await waitForTreeQuiescence(
+              state.processTree, state.child, state.childExited, 1000,
+            );
+            assert(fallbackQuiescent,
+              `SELFTEST process-group fixture ${prefix} survived fallback cleanup`);
+          }
+          if (state.userData !== null && fs.existsSync(state.userData)) {
+            removeOwnedUserData(state.userData, fs.realpathSync(os.tmpdir()), prefix);
+          }
+          assertNoOwnedProfiles(prefix, `process-group ${prefix} fallback cleanup`);
+        };
+        return {
+          open, cleanup,
+          gracefulCloseRequests: () => state.gracefulCloseRequests,
+          cleanupSignals: () => [...state.cleanupSignals],
+        };
+      };
+
+      const gracefulTreePrefix = `${base}-tree-graceful`;
+      const gracefulTree = processTreeFixture({
+        prefix: gracefulTreePrefix, exitGroupOnBrowserClose: true,
+      });
+      try {
+        const gracefulConnection = await gracefulTree.open();
+        await gracefulConnection.close();
+        assert(gracefulTree.gracefulCloseRequests() === 1,
+          'SELFTEST graceful process group did not receive exactly one CDP Browser.close');
+        assert(JSON.stringify(gracefulTree.cleanupSignals()) === JSON.stringify([]),
+          `SELFTEST graceful process group required TERM/KILL escalation (${gracefulTree.cleanupSignals().join(', ')})`);
+        assertNoOwnedProfiles(gracefulTreePrefix, 'graceful process-group cleanup');
+      } finally { await gracefulTree.cleanup(); }
+
+      const siblingChild = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+        stdio: ['ignore', 'ignore', 'pipe'], detached: true,
+      });
+      const siblingExited = new Promise((resolve) => siblingChild.once('exit', resolve));
+      const siblingClosed = new Promise((resolve) => siblingChild.once('close', resolve));
+      const siblingGroup = ownedBrowserProcessTree(siblingChild, true);
+      try {
+        const normalTreePrefix = `${base}-tree-normal`;
+        const normalTree = processTreeFixture({ prefix: normalTreePrefix });
+        try {
+          const treeConnection = await normalTree.open();
+          await treeConnection.close();
+          assert(normalTree.gracefulCloseRequests() === 1,
+            'SELFTEST normal connection did not request exactly one CDP Browser.close');
+          assert(JSON.stringify(normalTree.cleanupSignals()) === JSON.stringify(['SIGTERM']),
+            `SELFTEST live process group did not retain TERM escalation (${normalTree.cleanupSignals().join(', ')})`);
+          assertNoOwnedProfiles(normalTreePrefix, 'owned process-group normal cleanup');
+        } finally { await normalTree.cleanup(); }
+        assert(siblingGroup.isAlive(),
+          'SELFTEST owned POSIX process-group cleanup terminated a detached sibling group');
+      } finally {
+        await terminateChildProcess(
+          siblingChild, siblingExited, siblingClosed, siblingGroup,
+          'CDP selftest detached sibling group cleanup', 1000,
+        );
+      }
+
+      const directNormalPrefix = `${base}-tree-direct-normal`;
+      const directNormal = processTreeFixture({ prefix: directNormalPrefix, directOnly: true });
+      try {
+        const directConnection = await directNormal.open();
+        await expectRejectedAsync('direct-PID normal cleanup profile recreation',
+          () => directConnection.close(), /browser profile reappeared after cleanup/);
+      } finally { await directNormal.cleanup(); }
+
+      const throwingSocketPrefix = `${base}-tree-throwing-socket`;
+      const throwingSocket = processTreeFixture({
+        prefix: throwingSocketPrefix, throwOnSocketClose: true,
+      });
+      try {
+        const throwingSocketConnection = await throwingSocket.open();
+        await expectRejectedAsync('throwing WebSocket close still cleans process ownership',
+          () => throwingSocketConnection.close(), /^injected WebSocket close failure$/);
+        assertNoOwnedProfiles(throwingSocketPrefix,
+          'throwing WebSocket close process-group cleanup');
+      } finally { await throwingSocket.cleanup(); }
+
+      const setupTreePrefix = `${base}-tree-setup-error`;
+      const setupTree = processTreeFixture({ prefix: setupTreePrefix, validVersion: false });
+      try {
+        await expectRejectedAsync('owned process-group setup-error cleanup', setupTree.open,
+          /CDP setup failed \(.* product: missing browser version field\)$/);
+        assert(setupTree.gracefulCloseRequests() === 0,
+          'SELFTEST incomplete CDP setup requested graceful Browser.close');
+        assertNoOwnedProfiles(setupTreePrefix, 'owned process-group setup-error cleanup');
+      } finally { await setupTree.cleanup(); }
+
+      const directSetupPrefix = `${base}-tree-direct-setup-error`;
+      const directSetup = processTreeFixture({
+        prefix: directSetupPrefix, directOnly: true, validVersion: false,
+      });
+      try {
+        const directSetupFailure = await expectRejectedAsync(
+          'direct-PID setup-error cleanup causality', directSetup.open,
+          /CDP setup failed \(.* product: missing browser version field\); cleanup failed \(.*browser profile reappeared after cleanup\)$/);
+        assert(errorMessage(directSetupFailure.cause).includes('missing browser version field')
+          && errorMessage(directSetupFailure.cleanupCause).includes('browser profile reappeared'),
+        'SELFTEST setup-error cleanup did not retain distinct primary and cleanup causes');
+      } finally { await directSetup.cleanup(); }
+
+      const startupTreePrefix = `${base}-tree-startup-error`;
+      const startupTree = processTreeFixture({ prefix: startupTreePrefix, endpoint: 'unsafe' });
+      try {
+        await expectRejectedAsync('owned process-group startup-error cleanup', startupTree.open,
+          /DevToolsActivePort is not a real file$/);
+        assert(startupTree.gracefulCloseRequests() === 0,
+          'SELFTEST pre-socket startup failure requested graceful Browser.close');
+        assertNoOwnedProfiles(startupTreePrefix, 'owned process-group startup-error cleanup');
+      } finally { await startupTree.cleanup(); }
+
+      const directStartupPrefix = `${base}-tree-direct-startup-error`;
+      const directStartup = processTreeFixture({
+        prefix: directStartupPrefix, endpoint: 'unsafe', directOnly: true,
+      });
+      try {
+        await expectRejectedAsync('direct-PID startup-error cleanup causality', directStartup.open,
+          /DevToolsActivePort is not a real file; cleanup failed \(.*browser profile reappeared after cleanup\)$/);
+      } finally { await directStartup.cleanup(); }
+    }
 
     if (process.platform === 'darwin') {
       const seatbeltBrowser = path.join(endpointFixture, 'seatbelt-marker-browser.mjs');
@@ -834,6 +1359,7 @@ async function runSelftest() {
           expiredInitialArmSendObserved = true;
           return;
         }
+        if (message.method === 'Browser.close') return;
         const scenario = receiptScenarios.get(message.method);
         assert(scenario, `SELFTEST unexpected command-receipt method ${message.method}`);
         observedReceiptMethods.push(message.method);
@@ -1464,6 +1990,8 @@ async function runSelftest() {
   console.log('  SIGTERM-resistant child: exited after bounded SIGKILL; owned pipe released');
   console.log('  no exit after SIGKILL: exact bounded-shutdown rejection');
   console.log('  exit + nonclosing stdio after pipe release: exact stdio-close rejection');
+  console.log(`  owned process-boundary normal/setup/startup/socket-close cleanup: ${process.platform === 'win32' ? 'bounded taskkill /T contract; POSIX process-group fixture skipped' : 'detached POSIX process-group PASS'}`);
+  console.log(`  direct-PID profile-recreation + primary-causality mutants: ${process.platform === 'win32' ? 'POSIX-only fixture skipped' : 'rejected'}`);
   console.log(`  macOS Codex Seatbelt pre-spawn refusal: ${process.platform === 'darwin' ? 'PASS; executable untouched' : 'covered by portable resolver selftest'}`);
   console.log('  browser child exit and profile cleanup: PASS');
   console.log(`  early-exit code + bounded stderr diagnostics: ${process.platform === 'win32' ? 'covered by child-exit control' : 'PASS'}`);

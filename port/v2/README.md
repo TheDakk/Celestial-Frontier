@@ -1,13 +1,41 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-08-31 current terminal-green raw Back-action failure-cleanup admission (supersedes older
-> “current” labels below; all hosted/local evidence remains immutable):** exact clean SSH-signed
+> **2026-08-31 current shared Chrome-launcher cleanup repair (supersedes older “current” labels;
+> dated evidence remains immutable):** PR #35 run `33453239307` consumed its fourth exact
+> one-attempt/no-retry `test-battery` for head
+> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Every invoked stage through Compendium passed,
+> including **78/78** and the exact named verifier. The later Chrome launcher selftest stopped red on
+> a leaked/reappearing unique profile, so Slice and Glass did not run.
+>
+> The old launcher terminated only its direct PID, destroyed inherited stderr and removed the
+> profile once without descendant-tree quiescence. POSIX healthy close sends bounded CDP
+> `Browser.close`, owns a detached process group, permanently latches `ESRCH`, proves a
+> no-collateral sibling and escalates TERM→KILL only if still live. Windows disables `Browser.close`
+> and requires successful bounded `taskkill /T`, escalating to `/F`; pre-exited/no-success states
+> fail closed without a Job Object claim. Cleanup proves **100 ms** stable
+> profile absence, preserves primary/cleanup causality and survives a throwing `ws.close()`. The
+> workflow now runs this selftest before the long sealed exact-Edge certificate.
+>
+> Real-Edge launcher selftest and the develop profile pass at **254/254 files / 2,567 passed / 1
+> skipped**, with all TypeScript/art/override/route/specification owners green; focused current
+> authority passes **32/32** and the final combined focused suite passes **160/160**. Final
+> measurement/browser-CDP authority is
+> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
+> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`;
+> collector `ffe0494e…`, outcome `1b17df2e…` and producer `af74148c…` remain unchanged. SceneMemory's
+> calibration-required authority intentionally remains stale/quarantined until production
+> activation. Product bytes/CSS, fixed rulers and ceilings, timeouts, retry and browser-version
+> policy are unchanged. The working-tree repair awaits final diagnostics/commit and a fresh exact
+> browser chain. No push, hosted retry, merge, release, version or deploy is authorized.
+
+> **2026-08-31 historical terminal-green raw Back-action failure-cleanup admission (superseded by
+> the launcher overlay above; all hosted/local evidence remains immutable):** exact clean SSH-signed
 > source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
 > `e05e48c807597e86530e9b258a11e93d9533cd3c`, parent `4ea8198c…`) supplied the complete
-> browser-free and browser certificate. Current HEAD is its signed evidence/docs-only descendant;
-> its SHA is intentionally not embedded here, and `openai/mac` is four commits ahead of
-> `origin/openai/mac`. The descendant adds only the four exact 9b37 carriers and synchronized
-> references, without rebinding the certificate.
+> browser-free and browser certificate. At that historical checkpoint, its signed evidence/docs-only
+> descendant added only the four exact 9b37 carriers and synchronized references without rebinding
+> the certificate.
 >
 > The first-causal-boundary defect existed only on an exceptional path. If native Back input failed
 > after the witness was armed, cleanup used the normal tracked `evaluate` wrapper. A successful
@@ -19,7 +47,7 @@
 > replacing it. The Compendium selftest now passes **618 controls**, including a red historical
 > tracked-cleanup mutant and a contract-verifiable original-command partial report.
 >
-> Current measurement / outcome-contract / collector / producer / budget-file authority is
+> At that checkpoint, measurement / outcome-contract / collector / producer / budget-file authority was
 > `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` /
 > `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
 > `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d` /

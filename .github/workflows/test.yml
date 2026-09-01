@@ -224,8 +224,10 @@ jobs:
         run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json
 
       # Changed-instrument and production mutation controls run before
-      # Compendium reserves its sealed chain, leaving extract -> live preflight
-      # -> certificate -> verifier physically uninterrupted in both profiles.
+      # Compendium reserves its sealed chain. The shared Chrome launcher
+      # selftest also runs here so a launcher red stops before the long exact-
+      # Edge certificate, while install -> live preflight -> certificate ->
+      # verifier remains physically uninterrupted in both profiles.
       - name: changed-or-production Compendium browser instrument selftests
         if: >-
           github.event.pull_request.base.ref == 'main' ||
@@ -237,6 +239,15 @@ jobs:
           node tools/browserpath.mjs --selftest
           node tools/compendiummem-browser-preflight.mjs --selftest
           npm run compendiummem:selftest
+
+      - name: changed-or-production Chrome launcher selftest
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.browser_instrument_changed == 'true'
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: node tools/browsercdp.mjs --selftest
 
       # Compendium is the first product memory ruler on develop. Production reaches
       # it only after the production-only SceneMemory certificate is terminal-green.
@@ -280,16 +291,8 @@ jobs:
           CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
 
-      # Chrome gates remain one attempt each and run only after every cheaper
-      # gate and the exact-Edge ruler are green.
-      - name: changed-or-production Chrome launcher selftest
-        if: >-
-          github.event.pull_request.base.ref == 'main' ||
-          steps.scope.outputs.browser_instrument_changed == 'true'
-        working-directory: port/v2
-        env:
-          CF_BROWSER: /usr/bin/google-chrome
-        run: node tools/browsercdp.mjs --selftest
+      # Remaining Chrome product gates run once after every cheaper control
+      # and the exact-Edge ruler are green.
       - name: production preview producer selftests
         if: github.event.pull_request.base.ref == 'main'
         working-directory: port/v2

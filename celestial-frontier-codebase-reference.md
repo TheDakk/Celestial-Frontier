@@ -1,12 +1,38 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-08-31 current terminal-green Compendium raw failure-cleanup boundary (supersedes older
-> “current” labels below):** exact clean
+> **2026-08-31 current raw-CDP process-group cleanup boundary (supersedes older “current” labels):**
+> hosted PR #35 run `33453239307` tested exact head
+> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once/no-retry. All invoked owners through
+> Compendium **78/78** and its named verifier passed; the subsequent Chrome launcher selftest
+> retained/recreated its unique profile, so Slice/Glass were skipped.
+>
+> The shared launcher had modeled the browser as one PID: it judged direct exit, destroyed stderr
+> and removed the profile once without owning or observing descendant-tree quiescence. POSIX healthy
+> close sends bounded CDP `Browser.close`, owns a detached group, permanently latches `ESRCH`, proves
+> a no-collateral sibling and escalates only if still live. Windows disables `Browser.close` and
+> requires successful bounded `taskkill /T`, escalating to `/F`; pre-exited/no-success states fail
+> closed without a Job Object proof. Cleanup proves **100 ms**
+> stable absence, retains primary/cleanup causality and survives a throwing `ws.close()`. Workflow
+> fail-fast order places this selftest before the long sealed exact-Edge certificate.
+>
+> Real-Edge selftest and the **254-file / 2,567-pass / 1-skip** develop profile are green, including
+> TypeScript, art, override, route and specification owners; focused authority is **32/32** and the
+> final combined focused suite is **160/160**. Final measurement/browser-CDP authority is
+> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
+> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`.
+> SceneMemory's
+> calibration-required authority stays intentionally stale/quarantined until production activation.
+> Product build bytes, CSS, rulers/ceilings, timeouts, retry and version-tolerant browser policy are
+> unchanged. This is an uncommitted working-tree repair, not a current browser certificate or hosted
+> authorization; canonical resumption state is in `ROADMAP.md`.
+
+> **2026-08-31 historical terminal-green Compendium raw failure-cleanup boundary (superseded by
+> the raw-CDP launcher boundary above; exact evidence remains immutable):** exact clean
 > SSH-signed certified source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
 > `e05e48c807597e86530e9b258a11e93d9533cd3c`, parent `4ea8198c…`) contains the collector failure
-> cleanup, selftest and derived budget authority. Current HEAD is its signed evidence/docs-only
-> descendant; its SHA is intentionally not embedded here, and `openai/mac` is four commits ahead of
-> `origin/openai/mac`. The descendant adds only four exact PASS carriers and current references.
+> cleanup, selftest and derived budget authority. At that historical checkpoint, its signed
+> evidence/docs-only descendant added only four exact PASS carriers and synchronized references.
 >
 > Before this repair, a native Back-input rejection after action-witness arming entered `catch` and
 > ran cleanup through the normal tracked observation wrapper. Successful cleanup advanced the
@@ -16,7 +42,7 @@
 > failing stage, and surfaces any cleanup failure independently. The selftest passes **618 controls**
 > and makes the former tracked-cleanup overwrite red.
 >
-> Current measurement / contract / collector / producer / budget-file authority is
+> At that checkpoint, measurement / contract / collector / producer / budget-file authority was
 > `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` /
 > `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
 > `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d` /

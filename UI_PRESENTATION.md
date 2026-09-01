@@ -1,12 +1,33 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-31 current terminal-green Compendium Back presentation boundary (supersedes older
-> “current” labels below):** exact clean
+> **2026-08-31 current launcher-only boundary (supersedes older “current” labels; presentation
+> semantics remain as documented):** PR #35 run `33453239307` consumed its fourth exact no-retry
+> attempt for head `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium and its named verifier were green at
+> **78/78**; the later shared Chrome launcher selftest stopped on a leaked/reappearing unique
+> profile, so Slice and Glass did not run. POSIX healthy cleanup sends bounded CDP `Browser.close`,
+> then uses detached-group quiescence with permanent `ESRCH`/no-collateral control. Windows disables
+> `Browser.close` and requires successful bounded `taskkill /T`, escalating to `/F`; pre-exited or
+> no-success states fail closed without a Job Object claim.
+> Profile absence is stable for **100 ms** and primary/cleanup causality remains separate. The
+> launcher selftest now precedes the long exact-Edge certificate.
+>
+> Real-Edge launcher selftest and the **254-file / 2,567-pass / 1-skip** develop profile are green.
+> Final measurement/browser-CDP authority is
+> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
+> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`;
+> SceneMemory stays
+> intentionally stale/quarantined until production activation. Product markup/bytes, focus/scroll,
+> CSS, the ±2px tolerance, numeric ceilings, timeout/retry and browser-version policy are unchanged.
+> This dirty working-tree repair supplies no current presentation certificate or hosted authority;
+> exact 9b37 presentation evidence below is historical for its own source.
+
+> **2026-08-31 historical terminal-green Compendium Back presentation boundary (superseded by the
+> launcher-only overlay above; exact evidence remains immutable):** exact clean
 > SSH-signed source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
 > `e05e48c807597e86530e9b258a11e93d9533cd3c`, parent `4ea8198c…`) contains and certifies the raw
-> failure-cleanup repair. Current HEAD is its signed evidence/docs-only descendant; its SHA is
-> intentionally not embedded here, and `openai/mac` is four commits ahead of `origin/openai/mac`.
-> The descendant adds only the four exact 9b37 carriers and synchronized references.
+> failure-cleanup repair. At that historical checkpoint, its signed evidence/docs-only descendant
+> added only the four exact 9b37 carriers and synchronized references.
 >
 > If native Back input failed after witness arming, the former failure path released the listener
 > and carrier through the normal tracked observation wrapper. Successful cleanup could therefore
@@ -15,7 +36,7 @@
 > controller-aborted/carrier-absent state, retains the primary failing stage/command, and reports any
 > cleanup defect independently. Its selftest passes **618 controls**.
 >
-> Current measurement / contract / collector / producer / budget-file authority is
+> At that checkpoint, measurement / contract / collector / producer / budget-file authority was
 > `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` /
 > `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
 > `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d` /
