@@ -1,7 +1,37 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-09-01 current automatic-travel transient-latch repair boundary (supersedes older
-> “current” labels; dated evidence remains immutable):** PR #35's sixth hosted admission attempt,
+> **2026-09-01 current bounded writable-Settings persistence-probe boundary (supersedes older
+> “current” labels; dated evidence remains immutable):** PR #35's seventh exact hosted admission,
+> GitHub run `33542791572`, tested head `2f0ded864742afd0a39bd8c3e2d53cc2550bbbda` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed **78/78** once/no-retry;
+> unchanged-source Slice then stopped once/no-retry after **295,159 ms** with one harness
+> finding/scope when the old monolithic writable-Settings `Runtime.evaluate` exceeded the global
+> 30-second CDP command deadline. It contained every one of the eleven mutate/restore flows plus
+> **23** diagnostic persists on top of their real writes. Seven screenshots survived; Glass and
+> Recovery correctly skipped. The approval label was removed, the exact authorization is consumed,
+> PR #35 is unmerged and no hosted authority remains.
+>
+> The bounded successor issues one semantically labelled CDP command for each action, settlement
+> observation and raw-v5 read, and never manufactures a diagnostic save. It independently binds all
+> eleven selectors/live fields/durable aliases/modes, stops ticker/heartbeat/ecology writers,
+> deterministically demotes then restores answerability, requires the real handler's immediate-
+> persist/debounce arm and exact +1 revision/commit, proves only the owned raw Settings alias
+> changed, chains the full v5 row through all 22 receipts, and repeats raw/live authority after a
+> quiet window. Missing arms, unrelated writers, extra/missing commits, wrong aliases, collateral
+> fields, disjoint chains, late writes, swapped manifest entries and heartbeat races are negative-
+> controlled. The hooks are smoke-only and dormant in ordinary play.
+>
+> The focused boundary passes **21 files / 227 tests** and the complete browser-free develop
+> profile passes **259 files / 2,667 passed / 1 skipped**, all TypeScript programs, **34** art
+> sources, **1,014/1,014** routes and **454** fields. Current Compendium producer authority is
+> `bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4`; measurement contract,
+> fixed ruler, every numeric ceiling, historical samples, version-tolerant Edge-family/CDP 1.3
+> policy, timeout and no-retry policy are unchanged. Clean tracked-input and exactly one fresh local
+> Compendium → Slice → Glass chain remain required. No push, hosted run, merge, Gate, Arc, HUMAN,
+> preview, release, version, publication or deployment authority follows.
+
+> **2026-09-01 historical automatic-travel transient-latch repair boundary (superseded by the
+> current Settings overlay; dated evidence remains immutable):** PR #35's sixth hosted admission attempt,
 > GitHub run `33522000552`, tested exact head
 > `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against exact base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed; the unchanged-source Slice ran

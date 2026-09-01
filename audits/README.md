@@ -10,7 +10,60 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 automatic-arrival latch repair — hosted stop and exact local certificate
+### Current PR #35 writable-Settings command-deadline stop and bounded local successor
+
+PR #35 GitHub run `33542791572` was the seventh exact authorized `test-battery` attempt. It tested
+head `2f0ded864742afd0a39bd8c3e2d53cc2550bbbda` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, using synthetic merge
+`b19fdc97c470161f78e1f707328c2b582e64010b` / tree
+`9609c1eb5d356ab991413284cd047524ad258204`; that tree is byte-identical to exact head.
+Authorization job `99972904837` and battery job `99972949035` completed once with no retry.
+
+Compendium `gha-33542791572-1-compendiummem` passed **78/78** in **1,780,826 ms** with zero
+findings/blocked outcomes and six review PNGs. Unchanged-source Slice stopped after **295,159 ms**
+with exactly one finding/scope, `harness`: the monolithic writable-Settings `Runtime.evaluate`
+timed out at the 30-second CDP command boundary. Seven screenshots were retained; Codex, phone and
+Training were not reached. Glass, Recovery and preview packaging correctly did not run. The
+approval label was removed, the attempt is consumed, and no retry or merge occurred.
+
+The exact GitHub artifact `battery-evidence` is ID `9815881641`, archive size **7,798,834 bytes**,
+digest `sha256:c19694ef682975db3f096f6bd72d48dbb4fbc626bac093081b3b5fc325152423`, expiring
+`2026-09-15`. These retained report/log carriers pass gzip integrity and deterministic
+`gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_WRITABLE_SETTINGS_PREDECESSOR_PASS_20260901_B19FDC9.json.gz`:
+  **487,515 bytes**, SHA-256
+  `10bfbea7880ea767255884aca754e940014f46b0d0d1330b9d8d44f8f01d87f7`; raw
+  **12,842,516 bytes**, SHA-256
+  `90e38128f95f436d1d7d529a5ca77e9c839aac4da239d8827cb0dbaa7903f34d`.
+- `ARC4_SLICE_PR35_WRITABLE_SETTINGS_COMMAND_DEADLINE_RED_20260901_B19FDC9.json.gz`:
+  **1,765 bytes**, SHA-256
+  `9291264a37ab5da2fd25aa329a0a6a1385ddce2b7dd30071bd0a32f0d07e1607`; raw
+  **5,070 bytes**, SHA-256
+  `385268d4211f7272652f4750e53173f8b74480bec745c98000f353a592341031`.
+- `ARC4_SLICE_PR35_WRITABLE_SETTINGS_COMMAND_DEADLINE_RED_20260901_B19FDC9.log.gz`:
+  **1,746 bytes**, SHA-256
+  `d4dd84e2d54dd1907b59263136f26e5d4728035ff8485c2f717f3e8f2f8a6dcd`; raw
+  **4,214 bytes**, SHA-256
+  `c5416583b292971b518508cfa2ee94ba5c89dece43990ebcb0538ff73d983584`.
+
+Source tracing proved a harness ownership defect, not a product or browser-version failure. The old
+single command performed all eleven Settings controls twice and added **23** diagnostic persistence
+calls, roughly **42–45** commits. The bounded successor gives every real action/read its own named
+command, calls no diagnostic save, proves the real handler's immediate/debounce arm and exact +1
+receipt, binds the full raw `settings/v5:settings` row across every phase, excludes automatic
+writers, and deterministically restores answerability. Its independent manifest and negative
+controls reject swapped controls, collateral durable mutation, disjoint receipts and late writes.
+The focused boundary passes **21 files / 227 tests** and the complete browser-free develop profile
+passes **259 files / 2,667 passed / 1 skipped** plus every TypeScript/art/route/specification owner.
+Current Compendium producer authority is
+`bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4`; the measurement
+contract, fixed ruler, every numeric ceiling, historical sample, browser-family policy, timeout and
+retry policy are unchanged. Clean tracked-input and a fresh local Compendium → Slice → Glass chain
+remain pending. These carriers and local checks grant no hosted, push, merge, release, preview or
+deployment authority.
+
+### Historical PR #35 automatic-arrival latch repair — hosted stop and exact local certificate
 
 PR #35 GitHub run `33522000552` was the sixth exact authorized `test-battery` attempt. It tested
 head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base

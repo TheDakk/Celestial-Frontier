@@ -18,6 +18,91 @@ export interface SliceContractAssessment {
   readonly reasons: readonly string[];
 }
 
+export interface WritableSettingPersistenceSnapshot {
+  readonly documentToken: string | null;
+  readonly revision: number | null;
+  readonly commits: number | null;
+  readonly pendingPersistenceWrites: number | null;
+  readonly pendingDebounceWrites: number | null;
+  readonly lastOutcome: string | null;
+  readonly settingsProbeQuiesced?: boolean;
+  readonly tickerRunning?: boolean;
+  readonly heartbeatRunning?: boolean;
+  readonly ecologyCheckpointInFlight?: boolean;
+  readonly answerable?: boolean;
+  readonly mutationBlocked?: boolean;
+  readonly leaseOwned?: boolean;
+  readonly durableRevision?: number | null;
+  readonly durableSchema?: number | null;
+  readonly durableSegment?: string | null;
+  readonly durableValue?: unknown;
+  readonly durableData?: Readonly<Record<string, unknown>> | null;
+  readonly durableRow?: Readonly<Record<string, unknown>> | null;
+  readonly value?: unknown;
+}
+
+export interface WritableSettingDefinition {
+  readonly id: string;
+  readonly field: string;
+  readonly durableField: string;
+  readonly persistenceMode: 'immediate' | 'debounce';
+  readonly durableValue: (value: unknown) => unknown;
+  readonly mutate: (before: any) => Readonly<{
+    readonly kind: 'click' | 'input'; readonly selector: string; readonly value?: unknown;
+  }>;
+  readonly restore: (before: any) => Readonly<{
+    readonly kind: 'click' | 'input'; readonly selector: string; readonly value?: unknown;
+  }>;
+  readonly restoreExpected?: (before: any) => unknown;
+}
+
+export const WRITABLE_SETTINGS_CASES: readonly WritableSettingDefinition[];
+export function buildWritableSettingSnapshotExpression(field: string): string;
+export function buildWritableSettingActionExpression(
+  definition: WritableSettingDefinition,
+  phase: 'mutate' | 'restore',
+  originalValue: unknown,
+): string;
+export function writableSettingsAuthorityMatches(
+  left?: WritableSettingPersistenceSnapshot | null,
+  right?: WritableSettingPersistenceSnapshot | null,
+): boolean;
+
+export interface WritableSettingPersistenceReceipt {
+  readonly id: string;
+  readonly field: string;
+  readonly durableField: string;
+  readonly phase: 'mutate' | 'restore';
+  readonly persistenceMode: 'immediate' | 'debounce';
+  readonly targetFound: boolean;
+  readonly expectedValue: unknown;
+  readonly expectedBeforeDurableValue: unknown;
+  readonly expectedDurableValue: unknown;
+  readonly before: WritableSettingPersistenceSnapshot;
+  readonly actionWitness: WritableSettingPersistenceSnapshot;
+  readonly after: WritableSettingPersistenceSnapshot;
+}
+
+export function assessWritableSettingPersistenceReceipt(
+  receipt?: WritableSettingPersistenceReceipt | null,
+): SliceContractAssessment;
+
+export function assessWritableSettingsQuietWindow(window?: Readonly<{
+  readonly before?: WritableSettingPersistenceSnapshot | null;
+  readonly after?: WritableSettingPersistenceSnapshot | null;
+}> | null): SliceContractAssessment;
+
+export function assessWritableSettingsPersistenceChain(
+  records?: readonly Readonly<{
+    readonly mutateReceipt?: WritableSettingPersistenceReceipt | null;
+    readonly restoreReceipt?: WritableSettingPersistenceReceipt | null;
+  }>[] | null,
+  quiet?: Readonly<{
+    readonly before?: WritableSettingPersistenceSnapshot | null;
+    readonly after?: WritableSettingPersistenceSnapshot | null;
+  }> | null,
+): SliceContractAssessment;
+
 export function assessF4ReadyAuthority(input?: Readonly<{
   readonly state?: unknown;
   readonly raw?: unknown;

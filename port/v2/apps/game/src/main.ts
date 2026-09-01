@@ -8537,6 +8537,126 @@ function requestEcologyEpochCheckpoint(): void {
   };
   void run.then(clear, clear);
 }
+let settingsPersistenceSmokeQuiesced = false;
+let settingsPersistenceSmokeTickerWasRunning = false;
+let settingsPersistenceSmokeAnswerableWas = false;
+function settingsPersistenceSmokeDiagnostics(): Readonly<{
+  schema: 'cf-v2-settings-persistence-diagnostics/v1';
+  documentToken: string;
+  settingsProbeQuiesced: boolean;
+  tickerRunning: boolean;
+  heartbeatRunning: boolean;
+  ecologyCheckpointInFlight: boolean;
+  answerable: boolean;
+  pendingPersistenceWrites: 0 | 1;
+  pendingDebounceWrites: 0 | 1;
+  mutationBlocked: boolean;
+  leaseOwned: boolean;
+  revision: number | null;
+  commits: number | null;
+  lastOutcome: string | null;
+}> {
+  const runtime = f4Runtime?.diagnostics() ?? null;
+  return Object.freeze({
+    schema: 'cf-v2-settings-persistence-diagnostics/v1',
+    documentToken: DOCUMENT_TOKEN,
+    settingsProbeQuiesced: settingsPersistenceSmokeQuiesced,
+    tickerRunning: app.ticker?.started === true,
+    heartbeatRunning: f4HeartbeatTimer !== 0,
+    ecologyCheckpointInFlight: ecologyEdgeCheckpointInFlight !== null,
+    answerable: runtime?.answerable === true,
+    pendingPersistenceWrites: activePersist === null ? 0 : 1,
+    pendingDebounceWrites: _persistT === 0 ? 0 : 1,
+    mutationBlocked: playerMutationsBlocked(),
+    leaseOwned: runtime?.leaseOwned === true,
+    revision: runtime?.revision ?? null,
+    commits: runtime?.commits ?? null,
+    lastOutcome: lastPersistenceOutcome,
+  });
+}
+async function smokeQuiesceSettingsPersistence(): Promise<Readonly<{
+  schema: 'cf-v2-settings-persistence-quiescence/v1';
+  acquired: boolean;
+  tickerWasRunning: boolean;
+  answerableWas: boolean;
+  heartbeat: Awaited<ReturnType<typeof quiesceF4HeartbeatForSmoke>> | null;
+  diagnostics: ReturnType<typeof settingsPersistenceSmokeDiagnostics>;
+}>> {
+  if (settingsPersistenceSmokeQuiesced) return Object.freeze({
+    schema: 'cf-v2-settings-persistence-quiescence/v1',
+    acquired: false,
+    tickerWasRunning: settingsPersistenceSmokeTickerWasRunning,
+    answerableWas: settingsPersistenceSmokeAnswerableWas,
+    heartbeat: null,
+    diagnostics: settingsPersistenceSmokeDiagnostics(),
+  });
+  settingsPersistenceSmokeQuiesced = true;
+  settingsPersistenceSmokeTickerWasRunning = app.ticker?.started === true;
+  settingsPersistenceSmokeAnswerableWas = f4Runtime?.diagnostics().answerable === true;
+  if (settingsPersistenceSmokeTickerWasRunning) app.stop();
+  f4Runtime?.setAnswerable(false);
+  tameGreetingAudioOwner?.setAnswerable(false);
+  try {
+    const heartbeat = await quiesceF4HeartbeatForSmoke();
+    /* An already-started heartbeat may cross its last await after the ticker
+       stops. Reassert the deterministic probe boundary after joining it. */
+    f4Runtime?.setAnswerable(false);
+    tameGreetingAudioOwner?.setAnswerable(false);
+    const ecologyCheckpoint = ecologyEdgeCheckpointInFlight;
+    if (ecologyCheckpoint) await ecologyCheckpoint.catch(() => false);
+    /* A prior slider event is not this probe's action. Let its real debounce
+       settle before minting the baseline instead of canceling or replacing it. */
+    if (_persistT !== 0) {
+      await new Promise<void>((resolve) => { window.setTimeout(resolve, 450); });
+    }
+    await waitForActivePersist();
+    return Object.freeze({
+      schema: 'cf-v2-settings-persistence-quiescence/v1',
+      acquired: true,
+      tickerWasRunning: settingsPersistenceSmokeTickerWasRunning,
+      answerableWas: settingsPersistenceSmokeAnswerableWas,
+      heartbeat,
+      diagnostics: settingsPersistenceSmokeDiagnostics(),
+    });
+  } catch (error) {
+    smokeResumeSettingsPersistence();
+    throw error;
+  }
+}
+function smokeResumeSettingsPersistence(): Readonly<{
+  schema: 'cf-v2-settings-persistence-resume/v1';
+  resumed: boolean;
+  answerableWas: boolean;
+  heartbeat: ReturnType<typeof resumeF4HeartbeatForSmoke> | null;
+  diagnostics: ReturnType<typeof settingsPersistenceSmokeDiagnostics>;
+}> {
+  if (!settingsPersistenceSmokeQuiesced) return Object.freeze({
+    schema: 'cf-v2-settings-persistence-resume/v1',
+    resumed: false,
+    answerableWas: settingsPersistenceSmokeAnswerableWas,
+    heartbeat: null,
+    diagnostics: settingsPersistenceSmokeDiagnostics(),
+  });
+  const restartTicker = settingsPersistenceSmokeTickerWasRunning;
+  const restoreAnswerable = settingsPersistenceSmokeAnswerableWas;
+  settingsPersistenceSmokeTickerWasRunning = false;
+  settingsPersistenceSmokeAnswerableWas = false;
+  settingsPersistenceSmokeQuiesced = false;
+  if (restartTicker && app.ticker && !app.ticker.started) app.start();
+  const heartbeat = resumeF4HeartbeatForSmoke();
+  const runtime = f4Runtime;
+  const answerable = restoreAnswerable && f4RuntimeMayAnswer(runtime)
+    && app.ticker?.started === true;
+  runtime?.setAnswerable(answerable);
+  tameGreetingAudioOwner?.setAnswerable(answerable);
+  return Object.freeze({
+    schema: 'cf-v2-settings-persistence-resume/v1',
+    resumed: true,
+    answerableWas: restoreAnswerable,
+    heartbeat,
+    diagnostics: settingsPersistenceSmokeDiagnostics(),
+  });
+}
 const productActionCoordinator = createProductActionCoordinator();
 const smokeProductActionHold = createProductActionDiagnosticHold();
 let arc9ProgressionRefreshQueued = false;
@@ -15788,6 +15908,9 @@ async function loadSave(): Promise<void> {
       },
       __smokePersistAfterDebounce: () => { persistSoon(); return true; },
       __smokePersistNow: persistView,
+      __smokeSettingsPersistenceDiagnostics: settingsPersistenceSmokeDiagnostics,
+      __smokeQuiesceSettingsPersistence: smokeQuiesceSettingsPersistence,
+      __smokeResumeSettingsPersistence: smokeResumeSettingsPersistence,
       __smokeCommitF4Outcome: smokeCommitF4Outcome,
       __smokeRejectNextArc0LandingStorage: () => {
         if (productActionCoordinator.busy || productActionFaultInjectionArmed()) return false;

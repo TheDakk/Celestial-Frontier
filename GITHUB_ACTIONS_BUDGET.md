@@ -2,7 +2,44 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** Ready/open PR #35 has **six** consumed terminal-red
+**Hosted attempt state: none authorized.** Ready/open PR #35 has **seven** consumed terminal-red
+`test-battery` attempts against exact base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Seventh GitHub run `33542791572` tested exact
+head `2f0ded864742afd0a39bd8c3e2d53cc2550bbbda` through synthetic merge
+`b19fdc97c470161f78e1f707328c2b582e64010b`; its tree
+`9609c1eb5d356ab991413284cd047524ad258204` is byte-identical to the exact head tree.
+Authorization job `99972904837` passed; battery job `99972949035` ran once under
+`actions-budget-approved`, the 92-minute maximum and no-retry rule.
+
+Compendium `gha-33542791572-1-compendiummem` passed **78/78** once/no-retry in
+**1,780,826 ms**. Slice stopped once/no-retry after **295,159 ms** with exactly one harness
+finding/scope: the old monolithic writable-Settings `Runtime.evaluate` exceeded the 30-second CDP
+command deadline. It bundled all eleven mutate/restore flows and **23** diagnostic persists on top
+of their real writes. Seven screenshots were retained; Glass, Recovery and preview packaging
+correctly skipped. Artifact `battery-evidence` is ID `9815881641`, size **7,798,834 bytes**,
+digest `sha256:c19694ef682975db3f096f6bd72d48dbb4fbc626bac093081b3b5fc325152423`, expiring
+2026-09-15. The approval label was removed, the run is consumed, and no retry or merge occurred.
+
+The bounded local successor replaces that campaign with one named CDP command per Settings action,
+settlement observation and raw-v5 read. It proves each real handler's synchronous persist/debounce
+arm, exactly +1 revision/commit, zero tails, full raw Settings-row continuity, no collateral field
+mutation, a final raw/live quiet window and deterministic same-document answerability restoration.
+An independent exact manifest prevents the writable table from testing a different control while
+remaining green. It calls no diagnostic save. The full Slice-focused boundary passes **21 files /
+227 tests** and the complete browser-free develop profile passes **259 files / 2,667 passed / 1
+skipped**, all TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** fields.
+Compendium producer authority is rebound to
+`bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4`; the measurement
+contract, fixed ruler, every numeric ceiling, historical sample, compatible Edge-family/CDP 1.3
+policy, timeout and retry policy are unchanged.
+
+No push, label, hosted attempt, retry, PR metadata mutation, merge, release, version bump, preview
+publication or deployment is authorized. A future hosted attempt requires Nick's fresh
+authorization naming the final exact head/base, PR #35, `test-battery`,
+`actions-budget-approved`, a 92-minute maximum and no retry; merge is allowed only if that exact
+attempt is terminal green and branch protection is satisfied.
+
+**Historical sixth-attempt boundary:** Ready/open PR #35 then had **six** consumed terminal-red
 `test-battery` attempts against base `7a9f4c1370dd84292388d718c38ff34214f6203b`, each guarded by
 `actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. Sixth hosted run
 `33522000552` tested exact head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921`; Actions used
@@ -73,7 +110,8 @@ skipped**, **34** clean art sources,
 signing, tracked-input rehearsal and a fresh browser chain remain pending; this unsigned working
 tree inherits no 3f8f870 browser certificate.
 
-All six hosted approval labels are absent and PR #35 remains Ready/open/unmerged. No push, label,
+At that historical boundary all six hosted approval labels were absent and PR #35 remained
+Ready/open/unmerged. No push, label,
 hosted attempt, retry, PR metadata mutation, merge, release, version bump, preview publication or
 deployment is authorized. A future changed-head attempt requires Nick's fresh exact authorization
 naming the final head/base, PR #35, `test-battery`, `actions-budget-approved`, 92-minute maximum
@@ -649,7 +687,25 @@ syntax, TypeScript and authority rebinding are green; current full clean-source 
 still pending. No timeout, retry, compatible-browser point pin, fixed ruler, ceiling or content
 contract changed.
 
-All six PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
+The seventh exact-head authorization tested
+`2f0ded864742afd0a39bd8c3e2d53cc2550bbbda` against the same base. GitHub run `33542791572`
+used synthetic merge `b19fdc97c470161f78e1f707328c2b582e64010b`; its tree
+`9609c1eb5d356ab991413284cd047524ad258204` is byte-identical to exact head. Authorization job
+`99972904837` passed and battery job `99972949035` ran once. Compendium passed **78/78** in
+**1,780,826 ms**. Slice stopped after **295,159 ms** with one harness finding/scope when the old
+all-Settings `Runtime.evaluate` exceeded its 30-second command deadline. Seven screenshots were
+retained; Glass, Recovery and preview packaging skipped. The label was removed and no retry or
+merge occurred. Artifact ID/digest and deterministic report/log carriers are indexed in
+`audits/README.md`.
+
+The bounded local successor gives every Settings action/read its own named CDP command and exact
+handler-owned +1 receipt, full raw-v5 row continuity and deterministic writer/answerability
+quiescence. Its complete browser-free develop profile passes **259 files / 2,667 passed / 1
+skipped**. Clean tracked-input and a fresh local Compendium → Slice → Glass chain remain pending;
+this repair is not yet a browser certificate. No timeout, retry, point-version pin, fixed ruler,
+numeric ceiling or Settings/product semantic changed.
+
+All seven PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

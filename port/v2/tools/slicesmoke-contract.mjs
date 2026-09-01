@@ -22,6 +22,254 @@ const canonicalJson = (value) => {
   return JSON.stringify(value);
 };
 
+const writableSettingsClick = (selector) => ({ kind: 'click', selector });
+const writableSettingsInput = (selector, value) => ({ kind: 'input', selector, value });
+const writableSettingsPreference = (kind, value) => writableSettingsClick(
+  `[data-pref="${kind}"][data-value="${value}"]`,
+);
+const encodedBoolean = (value) => value === true ? 1 : 0;
+const encodedPercent = (value) => Math.round(Number(value) * 100);
+
+/** One table owns action selectors, live fields and durable v5 aliases. */
+export const WRITABLE_SETTINGS_CASES = Object.freeze([
+  { id: 'sound', field: 'sndOn', durableField: 'snd', persistenceMode: 'immediate',
+    durableValue: encodedBoolean,
+    mutate: () => writableSettingsClick('#setsnd'), restore: () => writableSettingsClick('#setsnd') },
+  { id: 'volume', field: 'sfxVol', durableField: 'vol', persistenceMode: 'debounce',
+    durableValue: encodedPercent,
+    mutate: (before) => writableSettingsInput('#setvol', before < 0.5 ? 73 : 27),
+    restore: (before) => writableSettingsInput('#setvol', Math.round(before * 100)) },
+  { id: 'creature-voices', field: 'voiceOn', durableField: 'vce', persistenceMode: 'immediate',
+    durableValue: encodedBoolean,
+    mutate: () => writableSettingsClick('#setvoice'), restore: () => writableSettingsClick('#setvoice') },
+  { id: 'text-size', field: 'fsMode', durableField: 'fs', persistenceMode: 'immediate',
+    durableValue: (value) => value,
+    mutate: (before) => writableSettingsPreference('size', ['', 'fs-lg', 'fs-xl'].find((value) => value !== before)),
+    restore: (before) => writableSettingsPreference('size', before) },
+  { id: 'text-tone', field: 'toneMode', durableField: 'tone', persistenceMode: 'immediate',
+    durableValue: (value) => value,
+    mutate: (before) => writableSettingsPreference('tone', ['', 'tone-bright', 'tone-max'].find((value) => value !== before)),
+    restore: (before) => writableSettingsPreference('tone', before) },
+  { id: 'font', field: 'fontMode', durableField: 'font', persistenceMode: 'immediate',
+    durableValue: (value) => value,
+    mutate: (before) => writableSettingsPreference('font', ['', 'font-sys', 'font-mono'].find((value) => value !== before)),
+    restore: (before) => writableSettingsPreference('font', before) },
+  { id: 'star-charts', field: 'chartsOn', durableField: 'chart', persistenceMode: 'immediate',
+    durableValue: encodedBoolean,
+    mutate: () => writableSettingsClick('#setcharts'), restore: () => writableSettingsClick('#setcharts') },
+  { id: 'visual-effects', field: 'fxOn', durableField: 'fx', persistenceMode: 'immediate',
+    durableValue: encodedBoolean,
+    mutate: () => writableSettingsClick('#setfx'), restore: () => writableSettingsClick('#setfx') },
+  { id: 'screen-shake', field: 'shakeOn', durableField: 'shake', persistenceMode: 'immediate',
+    durableValue: encodedBoolean,
+    mutate: () => writableSettingsClick('#setshake'), restore: () => writableSettingsClick('#setshake') },
+  { id: 'motion', field: 'motionMode', durableField: 'rm', persistenceMode: 'immediate',
+    durableValue: (value) => value,
+    mutate: (before) => writableSettingsClick(`[data-motion="${[-1, 0, 1].find((value) => value !== before)}"]`),
+    restore: (before) => writableSettingsClick(`[data-motion="${before}"]`) },
+  { id: 'panel-tint', field: 'glassTint', durableField: 'gt', persistenceMode: 'debounce',
+    durableValue: encodedPercent,
+    mutate: (before) => writableSettingsInput('#setglass', before < 0.9 ? 94 : 86),
+    restore: (before) => writableSettingsInput('#setglass', Math.round(before * 100)),
+    restoreExpected: (before) => Math.min(0.98, Math.max(0.82, before)) },
+]);
+
+export function buildWritableSettingSnapshotExpression(field) {
+  if (!nonEmptyString(field)) throw new TypeError('writable Settings snapshot requires a field');
+  return `(()=>{const S=window.__CF_SLICE__,api=S?.api,s=api?.state?.(),d=api?.__smokeSettingsPersistenceDiagnostics?.();return {...d,value:s?.[${JSON.stringify(field)}]};})()`;
+}
+
+export function buildWritableSettingActionExpression(definition, phase, originalValue) {
+  if (!definition || !['mutate', 'restore'].includes(phase)
+    || typeof definition[phase] !== 'function' || !nonEmptyString(definition.field)) {
+    throw new TypeError('writable Settings action requires a definition and mutate/restore phase');
+  }
+  const operation = definition[phase](originalValue);
+  if (!operation || !['click', 'input'].includes(operation.kind)
+    || !nonEmptyString(operation.selector)) {
+    throw new TypeError('writable Settings action produced an invalid operation');
+  }
+  const selector = JSON.stringify(operation.selector);
+  const act = operation.kind === 'input'
+    ? `target.value=String(${JSON.stringify(operation.value)});target.dispatchEvent(new Event('input',{bubbles:true,cancelable:true}));`
+    : 'target.click();';
+  return `(()=>{const S=window.__CF_SLICE__,api=S.api,field=${JSON.stringify(definition.field)},state=api.state(),
+    before={...api.__smokeSettingsPersistenceDiagnostics(),value:state[field]},target=document.querySelector(${selector}),
+    targetFound=!!target;if(target){${act}}const actionWitness=api.__smokeSettingsPersistenceDiagnostics();
+    return {targetFound,expectedValue:api.state()[field],before,actionWitness};})()`;
+}
+
+const writableSettingsAuthorityProjection = (snapshot) => ({
+  documentToken: snapshot?.documentToken ?? null,
+  revision: snapshot?.revision ?? null,
+  commits: snapshot?.commits ?? null,
+  pendingPersistenceWrites: snapshot?.pendingPersistenceWrites ?? null,
+  pendingDebounceWrites: snapshot?.pendingDebounceWrites ?? null,
+  lastOutcome: snapshot?.lastOutcome ?? null,
+});
+const writableSettingsDurableProjection = (snapshot) => ({
+  durableRevision: snapshot?.durableRevision ?? null,
+  durableRow: snapshot?.durableRow ?? null,
+});
+const writableSettingsHasDurableProjection = (snapshot) => (
+  snapshot?.durableRow !== null && typeof snapshot?.durableRow === 'object'
+  && !Array.isArray(snapshot?.durableRow)
+  && (exactKeys(snapshot.durableRow, ['schema', 'segment', 'data'])
+    || exactKeys(snapshot.durableRow, ['schema', 'segment', 'data', 'extensions']))
+  && snapshot.durableRow.schema === 5 && snapshot.durableRow.segment === 'settings'
+  && snapshot?.durableRow?.data !== null && typeof snapshot?.durableRow?.data === 'object'
+  && !Array.isArray(snapshot?.durableRow?.data)
+);
+const writableSettingsRowWithoutOwnedField = (snapshot, durableField) => {
+  if (!writableSettingsHasDurableProjection(snapshot) || !nonEmptyString(durableField)) return null;
+  const data = { ...snapshot.durableRow.data };
+  delete data[durableField];
+  return { ...snapshot.durableRow, data };
+};
+
+export function writableSettingsAuthorityMatches(left, right) {
+  if (canonicalJson(writableSettingsAuthorityProjection(left))
+    !== canonicalJson(writableSettingsAuthorityProjection(right))) return false;
+  return !writableSettingsHasDurableProjection(left) || !writableSettingsHasDurableProjection(right)
+    || canonicalJson(writableSettingsDurableProjection(left))
+      === canonicalJson(writableSettingsDurableProjection(right));
+}
+const writableSettingsRevisionAuthorityMatches = (left, right) => (
+  left?.documentToken === right?.documentToken
+  && left?.revision === right?.revision
+  && left?.commits === right?.commits
+  && left?.lastOutcome === right?.lastOutcome
+);
+
+/** Judge one Settings action only from the production persistence receipt it
+ * published. The browser driver must never manufacture a second diagnostic
+ * save to make this assessment pass. */
+export function assessWritableSettingPersistenceReceipt(receipt) {
+  const reasons = [];
+  const before = receipt?.before;
+  const armed = receipt?.actionWitness;
+  const after = receipt?.after;
+  if (!nonEmptyString(receipt?.id) || !nonEmptyString(receipt?.field)
+    || !nonEmptyString(receipt?.durableField)
+    || !['mutate', 'restore'].includes(receipt?.phase)
+    || !['immediate', 'debounce'].includes(receipt?.persistenceMode)) reasons.push('action identity');
+  if (receipt?.targetFound !== true) reasons.push('action target');
+  if (!before || !armed || !after || !nonEmptyString(before?.documentToken)
+    || before?.documentToken !== armed?.documentToken
+    || before?.documentToken !== after?.documentToken) reasons.push('document authority');
+  if (!safeInt(before?.revision) || !safeInt(before?.commits)) reasons.push('starting authority');
+  if (before?.pendingPersistenceWrites !== 0 || before?.pendingDebounceWrites !== 0) {
+    reasons.push('starting persistence tail');
+  }
+  const automaticWritersExcluded = (value) => value?.settingsProbeQuiesced === true
+    && value?.tickerRunning === false && value?.heartbeatRunning === false
+    && value?.ecologyCheckpointInFlight === false
+    && value?.answerable === false
+    && value?.mutationBlocked === false && value?.leaseOwned === true;
+  if (![before, armed, after].every(automaticWritersExcluded)) reasons.push('exclusive writer boundary');
+  if (!writableSettingsRevisionAuthorityMatches(before, armed)) reasons.push('action arm authority');
+  const immediateArmed = armed?.pendingPersistenceWrites === 1 && armed?.pendingDebounceWrites === 0;
+  const debounceArmed = armed?.pendingPersistenceWrites === 0 && armed?.pendingDebounceWrites === 1;
+  if (receipt?.persistenceMode === 'immediate' ? !immediateArmed : !debounceArmed) {
+    reasons.push('handler-owned write arm');
+  }
+  if (!safeInt(after?.revision) || after?.revision !== before?.revision + 1) {
+    reasons.push('exact revision');
+  }
+  if (!safeInt(after?.commits) || after?.commits !== before?.commits + 1) {
+    reasons.push('exact commit count');
+  }
+  if (after?.pendingPersistenceWrites !== 0 || after?.pendingDebounceWrites !== 0) {
+    reasons.push('settled persistence tail');
+  }
+  if (after?.lastOutcome !== `committed:${after?.revision}`) reasons.push('commit outcome');
+  if (canonicalJson(after?.value) !== canonicalJson(receipt?.expectedValue)) {
+    reasons.push('live field publication');
+  }
+  const beforeData = before?.durableData;
+  const afterData = after?.durableData;
+  if (before?.durableSchema !== 5 || before?.durableSegment !== 'settings'
+    || before?.durableRevision !== before?.revision
+    || !writableSettingsHasDurableProjection(before)
+    || before?.durableRow?.schema !== before?.durableSchema
+    || before?.durableRow?.segment !== before?.durableSegment
+    || canonicalJson(before?.durableRow?.data) !== canonicalJson(beforeData)
+    || canonicalJson(beforeData?.[receipt?.durableField])
+      !== canonicalJson(receipt?.expectedBeforeDurableValue)) {
+    reasons.push('durable predecessor');
+  }
+  if (after?.durableSchema !== 5 || after?.durableSegment !== 'settings'
+    || after?.durableRevision !== after?.revision
+    || !writableSettingsHasDurableProjection(after)
+    || after?.durableRow?.schema !== after?.durableSchema
+    || after?.durableRow?.segment !== after?.durableSegment
+    || canonicalJson(after?.durableRow?.data) !== canonicalJson(afterData)
+    || canonicalJson(afterData?.[receipt?.durableField])
+      !== canonicalJson(receipt?.expectedDurableValue)
+    || canonicalJson(after?.durableValue) !== canonicalJson(receipt?.expectedDurableValue)) {
+    reasons.push('durable field publication');
+  }
+  if (writableSettingsHasDurableProjection(before) && writableSettingsHasDurableProjection(after)) {
+    const beforeRest = writableSettingsRowWithoutOwnedField(before, receipt.durableField);
+    const afterRest = writableSettingsRowWithoutOwnedField(after, receipt.durableField);
+    if (canonicalJson(beforeRest) !== canonicalJson(afterRest)) reasons.push('collateral durable mutation');
+    if (canonicalJson(beforeData[receipt.durableField])
+      === canonicalJson(afterData[receipt.durableField])) reasons.push('durable target unchanged');
+  }
+  return { ok: reasons.length === 0, reasons };
+}
+
+/** A settled slider debounce must not leave a later, unowned checkpoint. */
+export function assessWritableSettingsQuietWindow(evidence) {
+  const reasons = [];
+  const before = evidence?.before;
+  const after = evidence?.after;
+  if (!before || !after || !nonEmptyString(before?.documentToken)
+    || before?.documentToken !== after?.documentToken) reasons.push('document authority');
+  if (!safeInt(before?.revision) || after?.revision !== before?.revision) reasons.push('quiet revision');
+  if (!safeInt(before?.commits) || after?.commits !== before?.commits) reasons.push('quiet commit count');
+  if (before?.pendingPersistenceWrites !== 0 || after?.pendingPersistenceWrites !== 0
+    || before?.pendingDebounceWrites !== 0 || after?.pendingDebounceWrites !== 0) {
+    reasons.push('quiet persistence tail');
+  }
+  if (after?.lastOutcome !== before?.lastOutcome) reasons.push('quiet outcome');
+  if (!writableSettingsHasDurableProjection(before)
+    || !writableSettingsHasDurableProjection(after)
+    || before?.durableRow?.schema !== before?.durableSchema
+    || before?.durableRow?.segment !== before?.durableSegment
+    || canonicalJson(before?.durableRow?.data) !== canonicalJson(before?.durableData)
+    || after?.durableRow?.schema !== after?.durableSchema
+    || after?.durableRow?.segment !== after?.durableSegment
+    || canonicalJson(after?.durableRow?.data) !== canonicalJson(after?.durableData)
+    || canonicalJson(writableSettingsDurableProjection(before))
+      !== canonicalJson(writableSettingsDurableProjection(after))) reasons.push('quiet durable authority');
+  if (after?.settingsProbeQuiesced !== true || after?.tickerRunning !== false
+    || after?.heartbeatRunning !== false || after?.ecologyCheckpointInFlight !== false
+    || after?.answerable !== false) {
+    reasons.push('quiet exclusive writer boundary');
+  }
+  return { ok: reasons.length === 0, reasons };
+}
+
+export function assessWritableSettingsPersistenceChain(records, quiet) {
+  const reasons = [];
+  if (!Array.isArray(records) || records.length === 0) return { ok: false, reasons: ['receipt chain absent'] };
+  const receipts = records.flatMap((record) => [record?.mutateReceipt, record?.restoreReceipt]);
+  if (receipts.some((receipt) => assessWritableSettingPersistenceReceipt(receipt).ok !== true)) {
+    reasons.push('receipt member');
+  }
+  for (let index = 1; index < receipts.length; index++) {
+    if (!writableSettingsAuthorityMatches(receipts[index - 1]?.after, receipts[index]?.before)) {
+      reasons.push(`receipt continuity ${index - 1}/${index}`);
+    }
+  }
+  if (!writableSettingsAuthorityMatches(receipts.at(-1)?.after, quiet?.before)) {
+    reasons.push('quiet predecessor');
+  }
+  if (assessWritableSettingsQuietWindow(quiet).ok !== true) reasons.push('quiet window');
+  return { ok: reasons.length === 0, reasons };
+}
+
 const STORED_V4_STAGE_OWNER_SCHEMA = 'cf-v2-stored-v4-stage-owner/v1';
 const STORED_V4_STAGE_INVOCATION_SCHEMA = 'cf-v2-stored-v4-stage-invocation/v1';
 const STORED_V4_STAGE_OWNER_KEYS = Object.freeze([
