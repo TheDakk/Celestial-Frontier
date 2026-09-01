@@ -14,8 +14,14 @@
 > so the unchanged intent can retry after authority clears and commit exactly once. Its
 > diagnostics-only persistence hold writes no save, advances no revision/receipt and mutates no
 > product state; the `migrated-v4` readiness opt-in is restricted to Slice's initial exact document.
-> A dirty-source full local Slice passed diagnostically but is not a certificate; a fresh signed
-> candidate and unchanged-source **Compendium → Slice → Glass** chain remain pending. No copy,
+> Exact clean SSH-signed source `a45220421195042a8702aa1265e96d40d839fc38` passed the
+> tracked-input develop profile at **259 files / 2,665 passed / 1 skipped**. On that unchanged
+> source, named-verified Compendium `20260901164254371-82172-eaeba62d1a` passed **78/78**;
+> named-verified Slice `20260901164421191-82525-616ea739fbb1` passed with report SHA-256
+> `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`; and exact-Slice-bound
+> named-verified Glass `20260901165038911-82999-7c3323ea05c7` passed **12/12** viewport classes
+> with report SHA-256 `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`.
+> Each browser stage ran once with no retry. No copy,
 > markup, CSS, focus, geometry, animation timing, ruler, timeout, retry, browser pin, visual art,
 > audio or creature/plant/biome/Guardian presentation changed. No hosted authority, push, rerun or
 > merge remains.

@@ -10,7 +10,7 @@ summary of it.
 
 ## Contents
 
-### Current hosted PR #35 automatic-arrival latch stop and bounded local repair
+### Current PR #35 automatic-arrival latch repair — hosted stop and exact local certificate
 
 PR #35 GitHub run `33522000552` was the sixth exact authorized `test-battery` attempt. It tested
 head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
@@ -51,17 +51,62 @@ pass gzip integrity and deterministic `gzip -n -9` recompression:
 
 Source tracing proved a product liveness defect: a one-shot automatic galaxy/wormhole latch could
 be consumed before the mutable direct-travel owner actually claimed the coordinator and
-`activePersist`. The bounded dirty successor claims only from the owner's synchronous callback
-after both owners are installed and before the first await. Its diagnostics-only held persistence
+`activePersist`. Exact SSH-signed implementation source
+`a45220421195042a8702aa1265e96d40d839fc38` (tree
+`9a30b2d74d4949a16a56809dc4197c12cc7c3c74`, parent
+`6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921`) claims only from the owner's synchronous callback
+after both owners are installed and before the first await. Its diagnostics-only held-persistence
 seam writes no save/revision/receipt and proves held → clear → unchanged intent → exactly one
-arrival with structured state; its heartbeat control also requires a live exact document before
-quiescence. The compatible browser point version, fixed ruler, ceilings, timeout and no-retry policy
-are unchanged. Focused verification, all TypeScript programs and the complete browser-free develop
-profile pass; a full current dirty-tree Slice also passes the exact held-intent control, all ten
-screenshots, Arc 4 and zero console errors. That diagnostic has no claimed immutable report ID/hash
-and is not a certificate. Fresh clean signed tracked-input and unchanged-source Compendium → Slice
-→ Glass evidence remain mandatory. This
-record grants no hosted attempt, push, merge, release, preview or deployment authority.
+arrival with structured state; its heartbeat control requires a live exact document before
+quiescence. Focused **79/79**, all TypeScript programs and both the ordinary and hermetic tracked-
+input **259-file / 2,665-pass / 1-skip** develop profiles pass.
+
+That exact clean committed source supplied one serial, unchanged-source, fail-fast/no-retry local
+develop chain on Edge `152.0.4191.53` / CDP `1.3`; the point version is provenance only. Every
+stage ran once and every named verifier passed before post-run evidence packaging:
+
+- Compendium `20260901164254371-82172-eaeba62d1a` passed **78/78** with zero findings/blocked
+  outcomes, complete phone/desktop profiles and six byte/hash-bound PNGs in **65,076 ms**. Raw
+  report SHA-256 is `23625d7ffa9b3900cfea0ed87b7264f470208dac244ad4a7004ea0f4c4e69ea0`;
+  producer/budget authority is
+  `dce2cb58666a3d57f510bd2f3417111ab8ccb553513f103a7ff65f79b7b27753` /
+  `c215ede9ed0075aedd33a4d09233c63794b675d608a92b26546171e68187d9e3`.
+- Develop Slice `20260901164421191-82525-616ea739fbb1` passed terminal certifying with zero
+  findings/scopes and ten byte/hash-bound screenshots in **361,371 ms**. Report/log SHA-256 is
+  `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b` /
+  `03f495ae431332efe147da0ee081953f896b96bc248f9af82bb27abf113d7f5c`.
+- Full-certifying Glass `20260901165038911-82999-7c3323ea05c7` consumed that exact Slice report
+  and log, then passed **12/12** viewport classes, **12/12** reload rows, **104/104** planned
+  controls and **36/36** Arc 4 outcomes with zero findings, instrument failures, blocked/omitted
+  controls or retries in **113,150 ms**. Report SHA-256 is
+  `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`.
+
+The four exact a452204 carriers pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_AUTOMATIC_ARRIVAL_LATCH_REPAIR_PASS_20260901_A452204.json.gz`:
+  **453,964 bytes**, SHA-256
+  `ef0179a7b644dcde4b4ee35dc349c2731b4eac8e5a7123a41047f7f262b8e27f`; raw
+  **10,878,178 bytes**, SHA-256
+  `23625d7ffa9b3900cfea0ed87b7264f470208dac244ad4a7004ea0f4c4e69ea0`.
+- `ARC4_SLICE_PR35_AUTOMATIC_ARRIVAL_LATCH_REPAIR_PASS_20260901_A452204.json.gz`:
+  **1,957 bytes**, SHA-256
+  `d2641592e18418dc99735c9eaac020d9bd8f87fa5a467bf2c5d17e60e5588c2e`; raw
+  **6,126 bytes**, SHA-256
+  `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`.
+- `ARC4_SLICE_PR35_AUTOMATIC_ARRIVAL_LATCH_REPAIR_PASS_20260901_A452204.log.gz`:
+  **3,289 bytes**, SHA-256
+  `18a37aabe98b5cce6e70e4f91de7b3b2c1d1bb5b1c527376f32ced5a87ebe707`; raw
+  **6,950 bytes**, SHA-256
+  `03f495ae431332efe147da0ee081953f896b96bc248f9af82bb27abf113d7f5c`.
+- `ARC4_GLASS_PR35_AUTOMATIC_ARRIVAL_LATCH_REPAIR_PASS_20260901_A452204.json.gz`:
+  **78,745 bytes**, SHA-256
+  `53541e4fbdc25c18d076b069e2b2c14b678bcd9f47daf807cad6ba8582a11a42`; raw
+  **898,685 bytes**, SHA-256
+  `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`.
+
+The compatible browser policy, fixed ruler, ceilings, timeout and no-retry policy are unchanged.
+SceneMemory remains production-only/quarantined and Recovery remains outside `develop`. This local
+certificate grants no hosted attempt, push, merge, release, preview or deployment authority.
 
 ### Historical exact-source 4a595e2 Share-waiter lexical-scope terminal-green develop chain
 

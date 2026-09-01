@@ -18,10 +18,15 @@
 > No timeout/retry, Edge pin/rebaseline, ruler, art, creature, plant, biome, Guardian, gameplay,
 > balance or save-schema work was added or redefined.
 >
-> A dirty-tree full local Slice pass is diagnostic only. A fresh signed candidate, tracked develop
-> profile and unchanged-source **Compendium → Slice → Glass** chain remain pending. This changes no
-> roadmap deliverable, Arc/Gate/HUMAN status or preview authority and grants no merge, release,
-> version, publication or deployment authority.
+> Exact clean SSH-signed source `a45220421195042a8702aa1265e96d40d839fc38` passed the tracked
+> develop profile at **259 files / 2,665 passed / 1 skipped**, then completed one unchanged-source,
+> once/no-retry, named-verified Compendium `20260901164254371-82172-eaeba62d1a` → Slice
+> `20260901164421191-82525-616ea739fbb1` (report SHA-256
+> `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`) → Glass
+> `20260901165038911-82999-7c3323ea05c7` (report SHA-256
+> `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`) chain. This changes no
+> roadmap deliverable, Arc/Gate/HUMAN status or preview authority and grants no hosted authority,
+> push, merge, release, version, publication or deployment authority.
 
 > **2026-09-01 current Share-waiter lexical-scope admission overlay (canonical handoff in
 > `../ROADMAP.md`):** exact clean SSH-signed source

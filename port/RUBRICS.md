@@ -16,10 +16,15 @@
 > retry, Edge pin/rebaseline, ruler, gameplay, save, art, creature, plant, biome or Guardian
 > criterion changes.
 >
-> A dirty-tree full local Slice pass is diagnostic only, not certification. A fresh signed
-> candidate, tracked develop profile and unchanged-source **Compendium → Slice → Glass** chain are
-> pending. No rubric row, `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]` state, whole Gate, Arc, preview, merge,
-> release, version, publication or deployment authority changes.
+> Exact clean SSH-signed source `a45220421195042a8702aa1265e96d40d839fc38` passed the tracked
+> develop profile at **259 files / 2,665 passed / 1 skipped**, then completed one unchanged-source,
+> once/no-retry, named-verified Compendium `20260901164254371-82172-eaeba62d1a` → Slice
+> `20260901164421191-82525-616ea739fbb1` (report SHA-256
+> `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`) → Glass
+> `20260901165038911-82999-7c3323ea05c7` (report SHA-256
+> `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`) chain. No rubric row,
+> `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]` state, whole Gate, Arc or preview status changes, and no hosted
+> authority, push, merge, release, version, publication or deployment authority follows.
 
 > **2026-09-01 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** exact clean
 > SSH-signed source `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870
