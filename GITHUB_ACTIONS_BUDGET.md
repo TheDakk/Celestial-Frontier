@@ -2,38 +2,35 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** Draft PR #35 has four consumed terminal-red
+**Hosted attempt state: none authorized.** Draft PR #35 has **five** consumed terminal-red
 `test-battery` attempts against base `7a9f4c1370dd84292388d718c38ff34214f6203b`, each guarded by
-`actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. Fourth hosted
-run `33453239307` tested exact head `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a`: every invoked
-stage through Compendium **78/78** and named verification passed, then the shared Chrome launcher
-selftest stopped terminal red on descendant/profile cleanup. Slice and Glass were skipped. That
-attempt is consumed and immutable.
+`actions-budget-approved`, a 92-minute maximum and the one-attempt/no-retry rule. Fifth hosted run
+`33466661094` tested exact head `06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c`; Actions used
+synthetic merge `337ffd29f1584f1a5c786c4532a79c99876be325`, whose tree is byte-equivalent to exact head tree
+`e39bcdb8781eeaa6f9ee503cd6cfbb47497899ea`.
 
-Exact clean signed local repair source
-`580c99a952c4e06acb776c852b6c5c0edba4722e` passed the hermetic tracked-input develop profile
-at **255 files / 2,576 passed / 1 skipped**, all TypeScript/art/route/specification owners and live
-Edge/CDP preflight. On that unchanged source, Compendium
-`20260901024638901-3060-0ba295673f` passed **78/78** in **63,243 ms**; Slice
-`20260901024804921-3412-bd2a2c7c9c80` passed with zero findings and ten screenshots in
-**360,564 ms**; exact-predecessor Glass `20260901025422535-3892-101d25f2e009` passed
-**12/12** viewports and **104/104** controls with zero findings/instrument failures in **111,461
-ms**. Every browser stage ran once/no-retry and every exact named verifier passed.
+Every prerequisite and Compendium **78/78** passed. Develop Slice then stopped terminal red after
+**115,766 ms** with **13 findings / 8 scopes**, but one first-causal harness race explains the other
+12: the runner pressed non-Sol Enter before its receipt-bearing Survey reached the same-document F4
+fixed point. The product correctly refused with **Expedition action settling** and stayed in the
+galaxy. Glass correctly skipped, no retry ran, and the approval label was removed.
 
-The repair applies stable document-token ownership, exact persistence hold/mutation polarity and
-one atomic invocation to all eight stored-v4 staging paths. Only exact zero-call pre-invocation
-replacement may rebind; every invoked, rejected, malformed or ambiguous outcome stops. Product/
-save/gameplay/art/CSS behavior, thresholds, timeouts, retry and browser-version policy are
-unchanged. The signed evidence/docs-only descendant commits four exact PASS carriers that remain
-bound to 580c99a.
+The bounded local successor now requires exact receipt/revision/persistence, route/render/card/action
+identity and coordinator idleness before every Survey-dependent Enter/Land action across pointer,
+keyboard, touch and already-current routes. A red or unsettled predecessor causal-stops descendants;
+`landing.surveyOutcome` remains diagnostic-only. After four review findings were fixed, the focused
+current set passed **4 files / 73 tests**, all three TypeScript programs passed, two independent reviews
+were **APPROVED**, and the complete develop profile passed **257 files / 2,622 passed / 1 skipped**,
+**34** clean art sources, **1,014/1,014** routes and **454** non-inert fields. Current Compendium
+producer authority remains `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`.
+The clean signed candidate, tracked-input preflight and fresh unchanged-source Compendium → Slice →
+Glass chain remain pending; no browser certificate is claimed yet.
 
-All four hosted approval labels are absent, PR #35 remains Draft/unmerged, and
-`openai/mac` is locally three commits ahead of upstream after that descendant. This local green
-chain consumed no hosted attempt and creates no hosted authority. No
-push, label, hosted attempt, retry, Ready transition, merge, release, version bump, preview
-publication or deployment is authorized. A future hosted attempt requires Nick's fresh exact
-authorization naming the final descendant head/base, PR #35, `test-battery`,
-`actions-budget-approved`, 92-minute maximum and no retry.
+All five hosted approval labels are absent and PR #35 remains Draft/unmerged. No push, label,
+hosted attempt, retry, Ready transition, merge, release, version bump, preview publication or
+deployment is authorized. A future changed-head attempt requires Nick's fresh exact authorization
+naming the final head/base, PR #35, `test-battery`, `actions-budget-approved`, 92-minute maximum
+and no retry.
 Exact local SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium
 **78/78** once/no-retry in **64,166 ms** as `20260831155807329-24237-1c6d2e89d5`; exact named
 verification passed. Its exact-source develop Slice `20260831155943782-24588-a98f13f2c7b7`
@@ -552,7 +549,39 @@ and the version-tolerant Edge-family/CDP 1.3 policy remain unchanged. This does 
 label, new hosted attempt, Ready transition or merge; the final full head requires fresh exact
 authorization.
 
-All three PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
+A fourth exact-head authorization tested
+`73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against the same base. Run `33453239307` passed every
+invoked prerequisite through Compendium **78/78** and exact named verification, then the changed
+shared Chrome launcher selftest stopped terminal red on descendant/profile cleanup. Slice and Glass
+were correctly skipped; the label was removed and that exact head was not retried. Exact clean local
+successor `580c99a952c4e06acb776c852b6c5c0edba4722e` repaired the browser-owned shutdown lifecycle and
+then passed the complete tracked-input profile plus one unchanged-source **78/78 Compendium →
+zero-finding Slice → 12/12 Glass** chain. That local certificate remains immutable evidence for
+580c99a only and created no hosted authority.
+
+A fifth exact-head authorization tested
+`06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c` against the same base. GitHub run `33466661094`
+evaluated synthetic merge `337ffd29f1584f1a5c786c4532a79c99876be325`; its tree is byte-equivalent
+to exact head tree `e39bcdb8781eeaa6f9ee503cd6cfbb47497899ea`. Every prerequisite and Compendium
+`gha-33466661094-1-compendiummem` **78/78** passed. Slice
+`gha-33466661094-1-slice` then stopped after **115,766 ms** at **13 findings / 8 scopes**. Its first
+causal failure was non-Sol Survey → Enter: the receipt-bearing Survey had not reached its F4 fixed
+point, so the product correctly refused the dependent mutation with **Expedition action settling**.
+The other 12 findings were cascades; Glass correctly skipped. The run was not retried and its label
+was removed.
+
+The bounded local harness successor waits for exact same-document Survey receipt/revision and
+persistence, route/render/card/action identity and coordinator idle before every dependent Enter or
+Land path across pointer, keyboard, touch and already-current routes. It causal-stops after any red
+predecessor and retains `landing.surveyOutcome` as diagnosis only. Final acceptance also models one
+exact Atlas Travel `arc9-galaxy-arrival-v1` / `arc9-travel-committed:` commit, runtime schema and
+before/after live↔raw SessionRNG parity, retained-fault rejection and paired stable-but-wrong current
+live/raw revision/seed/ordinal/draw controls. Focused **73/73**, all TypeScript programs, the complete
+**257-file / 2,622-pass / 1-skip** develop profile and two independent reviews are green/approved.
+The clean signed candidate, tracked-input preflight and fresh exact-source browser chain remain
+pending; this repair is not yet a browser certificate.
+
+All five PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

@@ -201,6 +201,29 @@
 > is red, replaced or still settling, preserve its evidence and causal-stop; later observations have
 > no valid authority.
 >
+> A receipt-bearing Survey is such a predecessor, even when its click handler has returned and the
+> dependent Enter/Land control is already visible. Require the same current document, exact Survey
+> receipt and revision, persistence fixed point, route/render/card/action identity and coordinator
+> idle before pointer, keyboard, touch or already-current Enter/Land. Keep diagnostic observations
+> such as `landing.surveyOutcome` non-authoritative. A missing, red or still-settling Survey must stop
+> every descendant instead of creating a cascade of apparently independent findings.
+>
+> GitHub run `33466661094` earned this concrete application. Exact head `06aba9d…` and its
+> tree-equivalent synthetic merge `337ffd2…` passed every prerequisite and Compendium **78/78**;
+> Slice then pressed non-Sol Enter before Survey's F4 settlement. The product correctly refused with
+> **Expedition action settling** and stayed in galaxy. One causal harness race produced 12 downstream
+> findings, Glass correctly skipped and no retry ran. The local fixed-point/causal-stop repair is now
+> browser-free verified: focused **4 files / 73 tests passed**, all three TypeScript programs, final develop
+> **257 files / 2,622 passed / 1 skipped**, and two independent reviews **APPROVED**. The exact clean
+> candidate, tracked-input preflight and browser chain remain pending, so do not call it browser-
+> certified, widen time, add a retry, weaken the product fence or relabel the immutable red.
+>
+> The verified oracle must model the dependent action's real transaction, not merely wait for it:
+> Atlas Travel owns exactly one `arc9-galaxy-arrival-v1` / `arc9-travel-committed:` commit rather
+> than a no-write outcome; single and sequence runtime schemas bind before/after live↔raw SessionRNG
+> parity; the current Survey rejects retained faults; and paired stable-but-wrong current live/raw
+> revision, seed, ordinal and draw controls must turn red.
+>
 > A document-global lazy producer may legitimately serve more than the first observed surface, so raw
 > per-owner result totals can grow with product topology. Prove each exact owner through its current
 > document/surface identity, loader/producer/worker lifecycle, job phases, outcome parity and error

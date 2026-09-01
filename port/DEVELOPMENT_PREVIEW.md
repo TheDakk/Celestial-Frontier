@@ -1,18 +1,20 @@
 # Development Preview — Separate-Origin Human Playtesting
 
-> **2026-08-31 current terminal-green admission/preview boundary (canonical handoff in
-> `../ROADMAP.md`):** exact clean signed source
-> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop, Compendium **78/78**,
-> zero-finding Slice and predecessor-bound Glass **12/12** viewports / **104/104** controls. Every
-> stage ran once/no-retry and every exact named verifier passed. No preview was packaged or
-> published.
+> **2026-09-01 current admission/preview boundary (canonical handoff in `../ROADMAP.md`):** hosted
+> run `33466661094` passed every prerequisite and Compendium **78/78**, then Slice stopped at **13
+> findings / 8 scopes** because its harness pressed non-Sol Enter before Survey's F4 fixed point.
+> The product correctly refused; Glass correctly skipped and no retry ran. No development preview
+> was packaged, run or published.
 >
-> The manual preview remains a separate noncertifying playtest package; it neither supplied nor
-> repeats this chain. The testing-only repair guards all eight fixture-staging paths with stable
-> document/persistence authority and zero-call-only rebind. No preview rule, product byte, timeout,
-> retry or browser-version policy changed. Four exact PASS carriers in the signed evidence/docs
-> descendant certify 580c99a only; no push, hosted attempt, publication, merge, release, version or
-> deploy is authorized.
+> The local testing-only successor waits for exact same-document Survey receipt/revision/persistence,
+> route/render/card/action identity and coordinator idle before every dependent pointer, keyboard,
+> touch or already-current Enter/Land, then causal-stops after any red. Focused **73/73**, all
+> TypeScript programs and final develop **257 files / 2,622 passed / 1 skipped** are green, with two
+> independent reviews **APPROVED**. The clean candidate, tracked-input preflight and fresh exact-
+> source browser chain remain pending. The separate manual preview remains noncertifying
+> and its workflow is unchanged. No preview rule, product byte, timeout, retry or browser-version
+> policy changed; no push, hosted attempt, publication, merge, release, version or deploy is
+> authorized.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above; older candidate-status labels and dated
 > evidence and preview-process rules remain immutable):** exact clean SSH-signed source

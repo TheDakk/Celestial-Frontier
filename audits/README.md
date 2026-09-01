@@ -10,6 +10,52 @@ summary of it.
 
 ## Contents
 
+### Current exact-source PR #35 fifth hosted Survey-settlement stop
+
+GitHub run `33466661094` tested exact head
+`06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, under one
+`actions-budget-approved` 92-minute-maximum/no-retry authorization. Actions evaluated synthetic
+merge `337ffd29f1584f1a5c786c4532a79c99876be325`; its tree is byte-equivalent to exact head tree
+`e39bcdb8781eeaa6f9ee503cd6cfbb47497899ea`. The run completed terminal red after **32m41s**.
+
+All prerequisites and Compendium `gha-33466661094-1-compendiummem` passed **78/78** with zero
+findings/blocked outcomes in **1,420,350 ms** on Edge `151.0.4129.101` / CDP `1.3`. Develop Slice
+`gha-33466661094-1-slice` then stopped after **115,766 ms** with **13 findings / 8 scopes** and five
+screenshots. Its first causal finding was non-Sol Survey → Enter: the runner pressed Enter before
+the receipt-bearing Survey reached its same-document F4 fixed point. The product correctly refused
+with **Expedition action settling** and remained in galaxy; the remaining 12 findings were cascades.
+Glass correctly skipped. The run was not retried or relabelled.
+
+GitHub retained the complete `battery-evidence` artifact as ID **9785718444**, **7,687,662 bytes**,
+digest `sha256:3618053ebac857230e696b2560c961bcca0d338812865002d47c9192acd56652`, expiring
+**2026-09-15**. The immutable extracted carriers below all pass gzip integrity:
+
+- `ARC1A_COMPENDIUM_PR35_CORE_FLOW_SURVEY_PREDECESSOR_PASS_20260901_337FFD2.json.gz`:
+  **487,297 bytes**, SHA-256
+  `45db57e4541516a1d623c7b73b554e80f2331be654e7e9df20d93083cc1eaa07`; raw
+  **12,842,866 bytes**, SHA-256
+  `43e13051779f63cb5c664713f353a2696df30cb020c76f8000476c07cb9094c6`.
+- `ARC4_SLICE_PR35_CORE_FLOW_SURVEY_SETTLEMENT_RED_20260901_337FFD2.json.gz`: **2,857 bytes**,
+  SHA-256 `58676472d7615543879e65b293a6a467099a317484c05fac6b3f342ebce8537f`; raw **10,199
+  bytes**, SHA-256 `9d9ea6e88cc344478ae828dc08d7c0d380d94257d535976aac57a60a696d67d1`.
+- `ARC4_SLICE_PR35_CORE_FLOW_SURVEY_SETTLEMENT_RED_20260901_337FFD2.log.gz`: **2,628 bytes**,
+  SHA-256 `f2b36e8c80bca680d8389ad9c76eb55a781c25dc79bcde33ca29ccef7998428e`; raw **6,334
+  bytes**, SHA-256 `dab0a53cd0767a34fbde159f6988b27029d4663cac61e0e3b94824207495ae23`.
+
+The bounded local successor now requires exact Survey receipt/revision/persistence,
+route/render/card/action identity and coordinator idle before every dependent pointer, keyboard,
+touch or already-current Enter/Land path; a red predecessor causal-stops descendants.
+`landing.surveyOutcome` is diagnostic-only. Focused/full browser-free and TypeScript verification
+is now green: focused **4 files / 73 tests passed**, all three TypeScript programs and final develop **257
+files / 2,622 passed / 1 skipped**, plus **34** clean art sources, **1,014/1,014** routes and **454**
+fields. Two independent reviews are **APPROVED**; producer authority remains
+`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. The clean candidate,
+tracked-input preflight and fresh unchanged-source Compendium → Slice → Glass chain remain pending.
+These carriers certify only the immutable hosted PASS/FAIL boundary above, not the local repair.
+The fifth approval is consumed and no new hosted attempt, merge, release, preview or deployment is
+authorized.
+
 ### Current exact-source `580c99a…` terminal-green stored-v4 lifecycle develop chain
 
 Exact clean SSH-signed source `580c99a952c4e06acb776c852b6c5c0edba4722e` (tree

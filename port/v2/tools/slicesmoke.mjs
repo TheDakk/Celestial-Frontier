@@ -54,6 +54,8 @@ import {
   projectCompendiumFeedWebAudioGraph,
   selectArc5FeedFixtureBurnVerb,
   assessTrainingBusyRefusalPrecondition,
+  assessEarlyCoreFlowActionFixedPoint,
+  assessF4ActionCommitSequence,
   assessLazyOwnerOriginGate,
   assessLazyProductProducerSettlement,
   assessSingleF4ActionCommit,
@@ -4723,6 +4725,38 @@ const requireRenderedSceneMatch = (label, state) => {
 const renderedSceneAdvanced = (before, after) => renderedSceneMatchesNav(after)
   && Number.isInteger(before?.renderedScene?.serial)
   && after.renderedScene.serial > before.renderedScene.serial;
+const earlyCoreFlowSurveyExpectation = (
+  beforeAuthority, routeState, {
+    cardTitle, actionLabel, settlement = 'commit',
+  },
+) => ({
+  documentToken: beforeAuthority?.token,
+  renderedSerial: routeState?.renderedScene?.serial,
+  surveyTarget: routeState?.mode === 'galaxy'
+    ? 'star' : routeState?.mode === 'system' ? 'world' : null,
+  route: {
+    mode: routeState?.mode,
+    gal: routeState?.gal,
+    galX: routeState?.galX,
+    galY: routeState?.galY,
+    star: routeState?.star,
+    starX: routeState?.starX,
+    starY: routeState?.starY,
+    planet: routeState?.planet,
+    planetOrdinal: routeState?.planetOrdinal,
+    navGalaxyKey: routeState?.navGalaxyKey,
+    navStarKey: routeState?.navStarKey,
+    navWorldKey: routeState?.navWorldKey,
+    epoch: routeState?.epoch,
+  },
+  presentation: {
+    cardOpen: true,
+    cardTitle,
+    actionOk: true,
+    actionLabel,
+  },
+  settlement,
+});
 const requireRenderedSceneAdvance = (label, before, after) => {
   if (!renderedSceneAdvanced(before, after)) {
     fails.push(`${label}: accepted navigation did not publish a newer draw-tail receipt: `
@@ -5153,6 +5187,54 @@ try {
     }
     throw new Error(`${label} did not acquire coupled writable F4 authority within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
+  const travelCheck = `(()=>{ const button=document.querySelector('#survey [data-act=travel]');
+    if(!button) return {ok:false,why:'missing'}; const b=button.getBoundingClientRect();
+    const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
+    return {ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:button.textContent,
+      x:(b.left+b.right)/2,y:(b.top+b.bottom)/2,h:b.height}; })()`;
+  let desktopEarlySurveyControlsRun = false;
+  const waitForDesktopSurveyFixedPoint = async ({
+    label,
+    beforeAuthority,
+    routeState,
+    cardTitle,
+    actionLabel,
+    settlement = 'commit',
+    actionExpression = travelCheck,
+  }) => {
+    const afterAuthority = await waitForF4Writable(`${label} settlement`);
+    const surface = await evalIn(`({
+      documentToken:window.__CF_SLICE__.documentToken,
+      state:window.__CF_SLICE__.api.state(),
+      action:${actionExpression}
+    })()`);
+    const expected = earlyCoreFlowSurveyExpectation(beforeAuthority, routeState, {
+      cardTitle, actionLabel, settlement,
+    });
+    const observation = { ...surface, beforeAuthority, afterAuthority };
+    const assessment = assessEarlyCoreFlowActionFixedPoint(observation, expected);
+    if (!desktopEarlySurveyControlsRun && assessment.status === 'ready') {
+      const renderControl = structuredClone(observation);
+      renderControl.state.renderedScene.serial += 1;
+      const pendingControl = structuredClone(observation);
+      pendingControl.state.landing.actionCoordinator.inFlight = true;
+      const renderResult = assessEarlyCoreFlowActionFixedPoint(renderControl, expected);
+      const pendingResult = assessEarlyCoreFlowActionFixedPoint(pendingControl, expected);
+      if (renderResult.status !== 'pending'
+        || !renderResult.reasons.includes('core-flow rendered receipt identity')
+        || pendingResult.status !== 'pending'
+        || !pendingResult.reasons.some((reason) => reason.includes('idle'))) {
+        failSliceWithoutCascade('EARLY CORE-FLOW SURVEY CONTROLS FAILED — rendered or pending mutations stayed ready: '
+          + JSON.stringify({ renderResult, pendingResult }));
+      }
+      desktopEarlySurveyControlsRun = true;
+    }
+    if (assessment.status !== 'ready') {
+      failSliceWithoutCascade(`${label.toUpperCase()}: Survey did not reach its exact same-document fixed point before the dependent action: `
+        + JSON.stringify({ assessment, expected, observation }));
+    }
+    return { afterAuthority, surface, assessment };
+  };
   let transitionWaitControlRejected = false;
   try { await waitDesktopValue('transition waiter negative control', 'false', 150); }
   catch { transitionWaitControlRejected = true; }
@@ -5444,10 +5526,13 @@ try {
   if (keyboardCtl.role === 'region') {
     fails.push('KEYBOARD WORLD CONTROL FAILED — removing the canvas region role stayed green: ' + JSON.stringify(keyboardCtl));
   }
+  const keyboardMilkyWayBeforeAuthority = await waitForF4Writable(
+    'keyboard Milky Way Survey predecessor F4 authority',
+  );
   await dispatchKeyPress(sess, 'Enter', 'Enter');
   const keyboardSurvey = await waitDesktopValue('keyboard world survey', `(()=>{ const S=window.__CF_SLICE__,button=document.querySelector('#survey [data-act=travel]');
     const b=button?.getBoundingClientRect(); const hit=b&&document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
-    const state=S.api.state(); return state.cardOpen?{mode:state.mode,label:button?.textContent||'',focus:document.activeElement===button,
+    const state=S.api.state(); return state.cardOpen?{mode:state.mode,title:state.cardTitle,label:button?.textContent||'',focus:document.activeElement===button,
       actionReachable:!!button&&!!b&&b.height>=44&&!!hit&&button.contains(hit),
       surveyExpanded:document.getElementById('docksurvey')?.getAttribute('aria-expanded'),
       cardHidden:document.getElementById('survey')?.getAttribute('aria-hidden')}:null; })()`);
@@ -5455,6 +5540,9 @@ try {
     || !keyboardSurvey.focus || !keyboardSurvey.actionReachable
     || keyboardSurvey.surveyExpanded !== 'true' || keyboardSurvey.cardHidden !== 'false') {
     fails.push('KEYBOARD WORLD Enter teleported or failed to expose/focus the normal galaxy action: ' + JSON.stringify(keyboardSurvey));
+  }
+  if (keyboardMilkyWayBeforeAuthority.token !== await sliceToken(sess)) {
+    failSliceWithoutCascade('KEYBOARD MILKY WAY SURVEY: presentation crossed its predecessor document');
   }
   await keyIn('Escape', 'Escape');
   await waitDesktopValue('keyboard survey close', `!window.__CF_SLICE__.api.state().cardOpen`);
@@ -5598,6 +5686,9 @@ try {
       await send('Input.dispatchMouseEvent', { type, x: cx, y: cy, button: 'left', clickCount: 1 }, sess);
     }
   };
+  const pointerGalaxyBeforeAuthority = await waitForF4Writable(
+    'pointer Milky Way Survey predecessor F4 authority',
+  );
   await click();
   await sleep(700);
   const st1 = await evalIn(`window.__CF_SLICE__.api.state()`);
@@ -5614,11 +5705,9 @@ try {
     fails.push('GALAXY SURVEY: player-facing card did not replace Spectral class with one plain Rarity row: '
       + JSON.stringify(galaxyRarity));
   }
-  const travelCheck = `(()=>{ const button=document.querySelector('#survey [data-act=travel]');
-    if(!button) return {ok:false,why:'missing'}; const b=button.getBoundingClientRect();
-    const hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);
-    return {ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:button.textContent,
-      x:(b.left+b.right)/2,y:(b.top+b.bottom)/2,h:b.height}; })()`;
+  if (pointerGalaxyBeforeAuthority.token !== await sliceToken(sess)) {
+    failSliceWithoutCascade('POINTER MILKY WAY SURVEY: presentation crossed its predecessor document');
+  }
   const travel1 = await evalIn(travelCheck);
   if (!travel1.ok || travel1.label !== 'Enter galaxy') {
     fails.push('galaxy card travel action is missing, undersized, or buried: ' + JSON.stringify(travel1));
@@ -5649,14 +5738,21 @@ try {
   await sleep(120);
   const closedAgain = await evalIn(`window.__CF_SLICE__.api.state().cardOpen`);
   if (closedAgain) fails.push('second Escape did not close the reopened galaxy card');
+  const secondPointerGalaxyBeforeAuthority = await waitForF4Writable(
+    'second pointer Milky Way Survey predecessor F4 authority',
+  );
   await click();
   const travel2 = await evalIn(travelCheck);
   if (!travel2.ok) fails.push('second body survey did not restore a usable galaxy action: ' + JSON.stringify(travel2));
+  if (secondPointerGalaxyBeforeAuthority.token !== await sliceToken(sess)) {
+    failSliceWithoutCascade('SECOND POINTER MILKY WAY SURVEY: presentation crossed its predecessor document');
+  }
   if (travel2.ok) {
     await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: travel2.x, y: travel2.y, button: 'left', clickCount: 1 }, sess);
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: travel2.x, y: travel2.y, button: 'left', clickCount: 1 }, sess);
   }
   await sleep(2500);   /* per-seed 512px painterly bake + star field */
+  await waitForF4Writable('Milky Way arrival F4 fixed point');
   const st2 = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (st2.mode !== 'galaxy' || st2.gal !== 999 || st2.galX !== 90 || st2.galY !== -60) {
     fails.push('galaxy card action did not enter the exact Milky Way node: '
@@ -5681,7 +5777,7 @@ try {
      then press its live Enter-system action. A fabricated 31337 tuple could
      be rejected by source proof without ever exercising the Charter law. */
   const gateBefore = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
-    S.app.canvas.focus(); return {mode:before.mode,gal:before.gal,star:before.star}; })()`);
+    S.app.canvas.focus(); return before; })()`);
   let gateTarget = null;
   const gateSelections = [];
   for (let attempt = 0; attempt < 32; attempt++) {
@@ -5691,9 +5787,29 @@ try {
     if (/^star:/.test(gateTarget || '') && !/:424242:/.test(gateTarget || '')) break;
   }
   const gateTargetIsNonSol = /^star:/.test(gateTarget || '') && !/:424242:/.test(gateTarget || '');
+  if (!gateTargetIsNonSol) {
+    failSliceWithoutCascade('CHARTER GATE SETUP did not select a genuine generated non-Sol star: '
+      + JSON.stringify({ gateBefore, gateTarget, gateSelections }));
+  }
+  const gateSurveyBeforeAuthority = await waitForF4Writable(
+    'Charter non-Sol Survey predecessor F4 authority',
+  );
+  const gateSurveyRoute = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (gateTargetIsNonSol) await keyIn('Enter', 'Enter');
   const gateTravel = await evalIn(travelCheck);
-  if (gateTravel.ok) await clickDesktopPoint(gateTravel);
+  const gateSurveyState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (!gateTravel.ok || gateTravel.label !== 'Enter system') {
+    failSliceWithoutCascade('CHARTER GATE SETUP did not expose the genuine non-Sol Enter-system action: '
+      + JSON.stringify({ gateTarget, gateTravel, gateSurveyState }));
+  }
+  await waitForDesktopSurveyFixedPoint({
+    label: 'Charter non-Sol Survey',
+    beforeAuthority: gateSurveyBeforeAuthority,
+    routeState: gateSurveyRoute,
+    cardTitle: gateSurveyState.cardTitle,
+    actionLabel: 'Enter system',
+  });
+  await clickDesktopPoint(gateTravel);
   const gatedState = await evalIn(`window.__CF_SLICE__.api.state()`);
   const gated = {
     before: gateBefore,
@@ -5707,12 +5823,8 @@ try {
     toastOn: gatedState.toastOn,
     toastText: gatedState.toastText,
   };
+  const charterFailureBaseline = fails.length;
   if (gated.stage !== 0) fails.push('fresh save is not charter stage 0: ' + JSON.stringify(gated.stage));
-  if (!gateTargetIsNonSol
-    || !gated.action.ok || gated.action.label !== 'Enter system') {
-    fails.push('CHARTER GATE SETUP did not select a genuine generated non-Sol star/action: '
-      + JSON.stringify(gated));
-  }
   const preservedBlockedNav = (state) => state.mode === 'galaxy'
     && state.gal === state.before.gal && state.star === state.before.star;
   if (!preservedBlockedNav(gated)) {
@@ -5734,12 +5846,22 @@ try {
     || !gateToastCtl.restored) {
     fails.push('CHARTER GATE COPY CONTROL FAILED — stale/wrong-drive copy stayed truthful or failed to restore: ' + JSON.stringify(gateToastCtl));
   }
+  if (fails.length !== charterFailureBaseline) {
+    failSliceWithoutCascade('CHARTER GATE: red stage-0 refusal stopped Sol and every dependent core-flow judgment', {
+      alreadyReported: true,
+    });
+  }
   if (gatedState.cardOpen) await keyIn('Escape', 'Escape');
   const perf = await evalIn(`window.__CF_SLICE__.api.state().galaxyBuildMs`);
   console.log('  (galaxy rebuild: ' + (typeof perf === 'number' ? perf.toFixed(0) : '?') + 'ms)');
 
   /* 3b. BASE-STAR SURVEY-FIRST: drive the actual Sol sprite, prove one
      pointertap cannot teleport, then enter through the actual card action. */
+  const solFailureBaseline = fails.length;
+  const solSurveyBeforeAuthority = await waitForF4Writable(
+    'Sol Survey predecessor F4 authority',
+  );
+  const solSurveyRoute = await evalIn(`window.__CF_SLICE__.api.state()`);
   const solPoint = await evalIn(`(()=>{ const p=window.__CF_SLICE__.world.toGlobal({x:560,y:170}); return {x:p.x,y:p.y}; })()`);
   await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: solPoint.x, y: solPoint.y, button: 'left', clickCount: 1 }, sess);
   await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: solPoint.x, y: solPoint.y, button: 'left', clickCount: 1 }, sess);
@@ -5754,11 +5876,24 @@ try {
     fails.push('STAR SURVEY: player-facing card did not replace Spectral class with one plain Rarity row: '
       + JSON.stringify(starRarity));
   }
+  await waitForDesktopSurveyFixedPoint({
+    label: 'Sol Survey',
+    beforeAuthority: solSurveyBeforeAuthority,
+    routeState: solSurveyRoute,
+    cardTitle: 'Sun (Sol)',
+    actionLabel: 'Enter system',
+  });
+  if (fails.length !== solFailureBaseline) {
+    failSliceWithoutCascade('SOL SURVEY: red card/setup evidence stopped Enter system and every dependent core-flow judgment', {
+      alreadyReported: true,
+    });
+  }
   if (solSurvey.travel.ok) {
     await send('Input.dispatchMouseEvent', { type: 'mousePressed', x: solSurvey.travel.x, y: solSurvey.travel.y, button: 'left', clickCount: 1 }, sess);
     await send('Input.dispatchMouseEvent', { type: 'mouseReleased', x: solSurvey.travel.x, y: solSurvey.travel.y, button: 'left', clickCount: 1 }, sess);
   }
   await sleep(1800);   /* eight painterly surfaces bake */
+  await waitForF4Writable('Sol arrival F4 fixed point');
   const stSys = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (stSys.mode !== 'system' || stSys.star !== 424242 || stSys.starX !== 560 || stSys.starY !== 170) {
     fails.push('Sol card action did not enter the exact base-star node: '
@@ -5767,6 +5902,11 @@ try {
   if (!stSys.trail.includes('Sun (Sol)')) fails.push('system trail missing Sun (Sol): ' + JSON.stringify(stSys.trail));
   if (!/8 worlds orbit Sol/.test(stSys.ctx)) fails.push('Sol caption wrong: ' + JSON.stringify(stSys.ctx));
   requireRenderedSceneAdvance('GENERATED SOL ROUTE', solSurvey.state, stSys);
+  if (fails.length !== solFailureBaseline) {
+    failSliceWithoutCascade('SOL ARRIVAL: red route/render evidence stopped charts, Earth, and every dependent core-flow judgment', {
+      alreadyReported: true,
+    });
+  }
   /* the DOCK press must LAND (simrun-dom law): charts OFF by default
      (v1.3.6, Nick's call) → press → the chart layer becomes VISIBLE and the
      save field flips */
@@ -8380,6 +8520,15 @@ try {
     fails.push('PLANET TARGET LOOKUP: exact rendered Earth was missing or a legacy/wrong ordinal identified a target: '
       + JSON.stringify(earthGeometry));
   }
+  const earthLandActionCheck = `(()=>{const button=document.querySelector('#survey [data-act="landcta"]');
+    if(!button)return {ok:false,why:'missing',label:null};const b=button.getBoundingClientRect(),
+      hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);return {
+        ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:(button.textContent||'').trim(),
+        x:(b.left+b.right)/2,y:(b.top+b.bottom)/2,h:b.height};})()`;
+  const pointerEarthBeforeAuthority = await waitForF4Writable(
+    'pointer Earth Survey predecessor F4 authority',
+  );
+  const pointerEarthRoute = await evalIn(`window.__CF_SLICE__.api.state()`);
   if (earthGeometry.exact) await clickDesktopPoint({
     x: earthGeometry.exact.screenX,
     y: earthGeometry.exact.screenY,
@@ -8394,6 +8543,14 @@ try {
     fails.push('PLANET POINTER SURVEY: real rendered Earth pointer did not open the exact pre-Land survey: '
       + JSON.stringify(pointerEarthSurvey));
   }
+  await waitForDesktopSurveyFixedPoint({
+    label: 'pointer Earth Survey',
+    beforeAuthority: pointerEarthBeforeAuthority,
+    routeState: pointerEarthRoute,
+    cardTitle: 'Earth',
+    actionLabel: '⛳ Land',
+    actionExpression: earthLandActionCheck,
+  });
   if (pointerEarthSurvey.cardOpen) await keyIn('Escape', 'Escape');
   if (await evalIn(`window.__CF_SLICE__.api.state().keyboardTarget!==null`)) await keyIn('Escape', 'Escape');
   await evalIn(`window.__CF_SLICE__.app.canvas.focus()`);
@@ -8403,6 +8560,10 @@ try {
     fails.push('PLANET KEYBOARD TARGET: first exact system target was not Earth ordinal 2: '
       + JSON.stringify(keyboardEarthTarget));
   }
+  const keyboardEarthBeforeAuthority = await waitForF4Writable(
+    'keyboard Earth Survey predecessor F4 authority',
+  );
+  const keyboardEarthRoute = await evalIn(`window.__CF_SLICE__.api.state()`);
   await keyIn('Enter', 'Enter');
   const surveyed = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
     const card=document.getElementById('survey');
@@ -8430,6 +8591,15 @@ try {
       fails.push('pre-landing planet Share did not bind a distinct planet address: ' + JSON.stringify([surveyed.starCode, surveyed.planetCode]));
     }
   }
+  await waitForDesktopSurveyFixedPoint({
+    label: 'keyboard Earth Survey',
+    beforeAuthority: keyboardEarthBeforeAuthority,
+    routeState: keyboardEarthRoute,
+    cardTitle: 'Earth',
+    actionLabel: '⛳ Land',
+    actionExpression: earthLandActionCheck,
+    settlement: 'current',
+  });
   const surveyCloseCheck = `(()=>{ const card=document.getElementById('survey'),closes=card?[...card.querySelectorAll('[data-survey-close]')]:[],
     close=closes[0]||null,foreign=card?[...card.querySelectorAll('[data-pnx]')]:[],c=card?.getBoundingClientRect(),r=close?.getBoundingClientRect(),
     style=close?getComputedStyle(close):null,hit=r?document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2):null;
@@ -8482,17 +8652,62 @@ try {
   const planetShareCode = surveyed.planetCode;
   /* Share feedback is an outcome, not a swallowed Clipboard promise. Denial
      must select the exact code in Search and say so; success may claim Copy. */
-  const deniedCopy = await evalIn(`(async()=>{ const nav=navigator,search=document.getElementById('searchbox');
+  const deniedShareBeforeAuthority = await waitForF4Writable(
+    'clipboard denial Share predecessor F4 authority',
+  );
+  const deniedShareStarted = await evalIn(`(()=>{ const nav=navigator;
     Object.defineProperty(nav,'clipboard',{configurable:true,value:{writeText:()=>Promise.reject(new Error('denied'))}});
-    document.querySelector('#survey [data-act="share"]')?.click(); await new Promise(r=>setTimeout(r,30));
-    const s=window.__CF_SLICE__.api.state(); const out={toast:s.toastText,value:search.value,active:document.activeElement===search,selected:search.selectionStart===0&&search.selectionEnd===search.value.length};
-    delete nav.clipboard; search.blur(); search.value=''; return out; })()`);
+    const button=document.querySelector('#survey [data-act="share"]');button?.click();return !!button;})()`);
+  if (!deniedShareStarted) {
+    failSliceWithoutCascade('CLIPBOARD DENIAL: Share action was missing before its durability boundary');
+  }
+  const deniedShareAfterAuthority = await waitForF4Writable('clipboard denial Share settlement');
+  const deniedShareState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const deniedShareCommit = assessSingleF4ActionCommit({
+    beforeAuthority: deniedShareBeforeAuthority,
+    afterAuthority: deniedShareAfterAuthority,
+    state: deniedShareState,
+    expectedKind: 'arc9-share-send-v1',
+    expectedPersistenceLastOutcome: `arc9-share-send-committed:${deniedShareAfterAuthority.raw.revision}`,
+  });
+  if (!deniedShareCommit.ok) {
+    failSliceWithoutCascade('CLIPBOARD DENIAL: Share did not settle exactly once before the success control: '
+      + JSON.stringify({ deniedShareCommit, deniedShareBeforeAuthority, deniedShareAfterAuthority }));
+  }
+  const deniedCopy = await waitDesktopValue('clipboard denial presentation', `(()=>{const nav=navigator,
+    search=document.getElementById('searchbox'),s=window.__CF_SLICE__.api.state();if(!/Copy unavailable/.test(s.toastText||''))return null;
+    const out={toast:s.toastText,value:search.value,active:document.activeElement===search,
+      selected:search.selectionStart===0&&search.selectionEnd===search.value.length};
+    delete nav.clipboard;search.blur();search.value='';return out;})()`);
   if (!/Copy unavailable/.test(deniedCopy.toast) || deniedCopy.value !== planetShareCode || !deniedCopy.active || !deniedCopy.selected) {
     fails.push('CLIPBOARD DENIAL falsely claimed success or failed to expose the exact code: ' + JSON.stringify(deniedCopy));
   }
-  const acceptedCopy = await evalIn(`(async()=>{ let copied=''; Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(v)=>{copied=String(v);return Promise.resolve();}}});
-    document.querySelector('#survey [data-act="share"]')?.click(); await new Promise(r=>setTimeout(r,30));
-    const toast=window.__CF_SLICE__.api.state().toastText; delete navigator.clipboard; return {copied,toast}; })()`);
+  const acceptedShareBeforeAuthority = await waitForF4Writable(
+    'clipboard success Share predecessor F4 authority',
+  );
+  const acceptedShareStarted = await evalIn(`(()=>{window.__cfDesktopCopied='';
+    Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:(value)=>{
+      window.__cfDesktopCopied=String(value);return Promise.resolve();}}});
+    const button=document.querySelector('#survey [data-act="share"]');button?.click();return !!button;})()`);
+  if (!acceptedShareStarted) {
+    failSliceWithoutCascade('CLIPBOARD SUCCESS: Share action was missing before its durability boundary');
+  }
+  const acceptedShareAfterAuthority = await waitForF4Writable('clipboard success Share settlement');
+  const acceptedShareState = await evalIn(`window.__CF_SLICE__.api.state()`);
+  const acceptedShareCommit = assessSingleF4ActionCommit({
+    beforeAuthority: acceptedShareBeforeAuthority,
+    afterAuthority: acceptedShareAfterAuthority,
+    state: acceptedShareState,
+    expectedKind: 'arc9-share-send-v1',
+    expectedPersistenceLastOutcome: `arc9-share-send-committed:${acceptedShareAfterAuthority.raw.revision}`,
+  });
+  if (!acceptedShareCommit.ok) {
+    failSliceWithoutCascade('CLIPBOARD SUCCESS: Share did not settle exactly once: '
+      + JSON.stringify({ acceptedShareCommit, acceptedShareBeforeAuthority, acceptedShareAfterAuthority }));
+  }
+  const acceptedCopy = await waitDesktopValue('clipboard success presentation', `(()=>{const copied=window.__cfDesktopCopied||'',
+    toast=window.__CF_SLICE__.api.state().toastText||'';if(!copied||!/Share code copied/.test(toast))return null;
+    delete navigator.clipboard;delete window.__cfDesktopCopied;return {copied,toast};})()`);
   if (acceptedCopy.copied !== planetShareCode || !/Share code copied/.test(acceptedCopy.toast)) {
     fails.push('CLIPBOARD success did not copy the exact card address: ' + JSON.stringify(acceptedCopy));
   }
@@ -22278,6 +22493,55 @@ try {
     }
     throw new Error(`${label} did not reach its keyboard outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
+  let keyboardF4WritableControlsRun = false;
+  const waitKF4Writable = async (label, { previousToken = null, timeoutMs = 15_000 } = {}) => {
+    const deadline = Date.now() + timeoutMs;
+    let last = null;
+    while (Date.now() < deadline) {
+      try {
+        const snapshot = await evalK(`(async()=>{const raw=await (${READ_F4_AUTHORITY_EXPRESSION});
+          const S=window.__CF_SLICE__,state=S?.api?.state?.();return {
+            state:${F4_READY_STATE_PROJECTION_EXPRESSION}(state),raw,
+            token:typeof S?.documentToken==='string'?S.documentToken:null};})()`);
+        const assessment = assessF4ReadyAuthority({ ...snapshot, previousToken });
+        if (assessment.ok) {
+          if (!keyboardF4WritableControlsRun) {
+            const controls = f4BootReadinessNegativeControls(snapshot, previousToken);
+            if (!controls.isolated) {
+              failSliceWithoutCascade('KEYBOARD F4 WRITABILITY CONTROLS FAILED — missing scene resources or pending persistence stayed ready: '
+                + JSON.stringify(controls));
+            }
+            keyboardF4WritableControlsRun = true;
+          }
+          return snapshot;
+        }
+        last = { assessment, persistence: snapshot.state?.persistence, raw: snapshot.raw };
+      } catch (error) {
+        last = { context: String(error?.message || error) };
+      }
+      await sleep(200);
+    }
+    throw new Error(`${label} did not acquire coupled writable F4 authority within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
+  };
+  const waitForKeyboardSurveyFixedPoint = async ({
+    label, beforeAuthority, routeState, cardTitle, actionLabel,
+    settlement = 'commit', actionExpression = travelCheck,
+  }) => {
+    const afterAuthority = await waitKF4Writable(`${label} settlement`);
+    const surface = await evalK(`({documentToken:window.__CF_SLICE__.documentToken,
+      state:window.__CF_SLICE__.api.state(),action:${actionExpression}})()`);
+    const expected = earlyCoreFlowSurveyExpectation(beforeAuthority, routeState, {
+      cardTitle, actionLabel, settlement,
+    });
+    const assessment = assessEarlyCoreFlowActionFixedPoint(
+      { ...surface, beforeAuthority, afterAuthority }, expected,
+    );
+    if (assessment.status !== 'ready') {
+      failSliceWithoutCascade(`${label.toUpperCase()}: keyboard Survey did not reach its exact same-document fixed point before the dependent action: `
+        + JSON.stringify({ assessment, expected, beforeAuthority, afterAuthority, surface }));
+    }
+    return { afterAuthority, surface, assessment };
+  };
   let lastCycleSeen = [];
   const cycleK = async (prefix, limit = 160) => {
     const seen = [];
@@ -22351,37 +22615,72 @@ try {
   await evalK(`(()=>{ const canvas=document.querySelector('canvas'); canvas?.blur(); canvas?.focus(); return true; })()`);
   const galaxyTarget = await cycleK('galaxy:999:90:-60');
   if (!galaxyTarget) fails.push('KEYBOARD JOURNEY: could not select the Milky Way from the canvas');
+  const kGalaxyBeforeAuthority = await waitKF4Writable(
+    'keyboard journey Milky Way Survey predecessor F4 authority',
+  );
   await keyK('Enter', 'Enter');
   const kGalaxyCard = await waitK('keyboard Milky Way card', `(()=>{ const s=window.__CF_SLICE__.api.state(),a=document.querySelector('#survey [data-act=travel]');
-    return s.mode==='universe'&&s.cardOpen?{label:a?.textContent||'',focus:document.activeElement===a}:null; })()`);
+    return s.mode==='universe'&&s.cardOpen?{title:s.cardTitle,label:a?.textContent||'',focus:document.activeElement===a}:null; })()`);
   if (kGalaxyCard.label !== 'Enter galaxy' || !kGalaxyCard.focus) {
     fails.push('KEYBOARD JOURNEY: galaxy survey did not focus its explicit Enter action: ' + JSON.stringify(kGalaxyCard));
+  }
+  if (kGalaxyBeforeAuthority.token !== await sliceToken(ks)) {
+    failSliceWithoutCascade('KEYBOARD JOURNEY MILKY WAY SURVEY: presentation crossed its predecessor document');
   }
   await keyK('Enter', 'Enter');
   const kGalaxy = await waitK('keyboard enter galaxy', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return s.mode==='galaxy'&&s.gal===999?{focus:document.activeElement===document.querySelector('canvas'),target:s.keyboardTarget}:null; })()`);
   if (!kGalaxy.focus) fails.push('KEYBOARD JOURNEY: Enter galaxy did not return canvas focus: ' + JSON.stringify(kGalaxy));
+  await waitKF4Writable('keyboard journey Milky Way arrival F4 fixed point');
   const solTarget = await seekPriorityK('star:424242:560:170');
   if (!solTarget) fails.push('KEYBOARD JOURNEY: could not reach/select Sol through keyboard pan+zoom: '
     + JSON.stringify(keyboardPanTrail));
+  const kSolBeforeAuthority = await waitKF4Writable(
+    'keyboard journey Sol Survey predecessor F4 authority',
+  );
+  const kSolRoute = await evalK(`window.__CF_SLICE__.api.state()`);
   await keyK('Enter', 'Enter');
   const kSolCard = await waitK('keyboard Sol card', `(()=>{ const s=window.__CF_SLICE__.api.state(),a=document.querySelector('#survey [data-act=travel]');
-    return s.mode==='galaxy'&&s.cardOpen?{label:a?.textContent||'',focus:document.activeElement===a}:null; })()`);
-  if (kSolCard.label !== 'Enter system' || !kSolCard.focus) {
+    return s.mode==='galaxy'&&s.cardOpen?{title:s.cardTitle,label:a?.textContent||'',focus:document.activeElement===a}:null; })()`);
+  if (kSolCard.title !== 'Sun (Sol)' || kSolCard.label !== 'Enter system' || !kSolCard.focus) {
     fails.push('KEYBOARD JOURNEY: star survey did not focus its explicit Enter action: ' + JSON.stringify(kSolCard));
   }
+  await waitForKeyboardSurveyFixedPoint({
+    label: 'keyboard journey Sol Survey',
+    beforeAuthority: kSolBeforeAuthority,
+    routeState: kSolRoute,
+    cardTitle: 'Sun (Sol)',
+    actionLabel: 'Enter system',
+  });
   await keyK('Enter', 'Enter');
   const kSystem = await waitK('keyboard enter Sol', `(()=>{ const s=window.__CF_SLICE__.api.state();
     return s.mode==='system'&&s.star===424242?{focus:document.activeElement===document.querySelector('canvas'),target:s.keyboardTarget}:null; })()`);
   if (!kSystem.focus) fails.push('KEYBOARD JOURNEY: Enter system did not return canvas focus: ' + JSON.stringify(kSystem));
+  await waitKF4Writable('keyboard journey Sol arrival F4 fixed point');
   const earthTarget = await cycleK('planet:424242:133');
   if (!earthTarget) fails.push('KEYBOARD JOURNEY: could not select Earth from the system canvas');
+  const keyboardJourneyLandActionCheck = `(()=>{const button=document.querySelector('#survey [data-act="landcta"]');
+    if(!button)return {ok:false,label:null};const b=button.getBoundingClientRect(),
+      hit=document.elementFromPoint((b.left+b.right)/2,(b.top+b.bottom)/2);return {
+        ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:(button.textContent||'').trim()};})()`;
+  const kEarthBeforeAuthority = await waitKF4Writable(
+    'keyboard journey Earth Survey predecessor F4 authority',
+  );
+  const kEarthRoute = await evalK(`window.__CF_SLICE__.api.state()`);
   await keyK('Enter', 'Enter');
   const kEarthCard = await waitK('keyboard Earth card', `(()=>{ const s=window.__CF_SLICE__.api.state(),a=document.querySelector('#survey [data-act=landcta]');
     return s.mode==='system'&&s.cardOpen?{title:s.cardTitle,label:a?.textContent?.trim()||'',focus:document.activeElement===a}:null; })()`);
   if (kEarthCard.title !== 'Earth' || !/Land/.test(kEarthCard.label) || !kEarthCard.focus) {
     fails.push('KEYBOARD JOURNEY: Earth survey did not focus Land: ' + JSON.stringify(kEarthCard));
   }
+  await waitForKeyboardSurveyFixedPoint({
+    label: 'keyboard journey Earth Survey',
+    beforeAuthority: kEarthBeforeAuthority,
+    routeState: kEarthRoute,
+    cardTitle: 'Earth',
+    actionLabel: '⛳ Land',
+    actionExpression: keyboardJourneyLandActionCheck,
+  });
   await keyK('Enter', 'Enter');
   const kSurface = await waitK('keyboard Earth Land', `(()=>{ const s=window.__CF_SLICE__.api.state(),a=document.querySelector('#survey [data-act=leaveworld]');
     return s.mode==='surface'?{label:a?.textContent?.trim()||'',focus:document.activeElement===a,landed:s.save.landed}:null; })()`);
@@ -22396,8 +22695,21 @@ try {
   }
   const earthAgain = await cycleK('planet:424242:133');
   if (!earthAgain) fails.push('KEYBOARD JOURNEY: Earth could not be selected for the Escape continuity pass');
+  const kEarthAgainBeforeAuthority = await waitKF4Writable(
+    'keyboard journey repeat Earth Survey predecessor F4 authority',
+  );
+  const kEarthAgainRoute = await evalK(`window.__CF_SLICE__.api.state()`);
   await keyK('Enter', 'Enter');
   await waitK('keyboard repeat Earth card', `document.activeElement===document.querySelector('#survey [data-act=landcta]')`);
+  await waitForKeyboardSurveyFixedPoint({
+    label: 'keyboard journey repeat Earth Survey',
+    beforeAuthority: kEarthAgainBeforeAuthority,
+    routeState: kEarthAgainRoute,
+    cardTitle: 'Earth',
+    actionLabel: '⛳ Land',
+    actionExpression: keyboardJourneyLandActionCheck,
+    settlement: 'current',
+  });
   await keyK('Enter', 'Enter');
   await waitK('keyboard repeat Earth surface', `document.activeElement===document.querySelector('#survey [data-act=leaveworld]')`);
   await keyK('Escape', 'Escape');
@@ -23278,6 +23590,25 @@ try {
     }
     throw new Error(`${label} did not acquire coupled writable F4 authority within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
+  const waitForPhoneSurveyFixedPoint = async ({
+    label, beforeAuthority, routeState, cardTitle, actionLabel,
+    settlement = 'commit', actionExpression,
+  }) => {
+    const afterAuthority = await waitNavPhF4Writable(`${label} settlement`);
+    const surface = await evalNavPh(`({documentToken:window.__CF_SLICE__.documentToken,
+      state:window.__CF_SLICE__.api.state(),action:${actionExpression}})()`);
+    const expected = earlyCoreFlowSurveyExpectation(beforeAuthority, routeState, {
+      cardTitle, actionLabel, settlement,
+    });
+    const assessment = assessEarlyCoreFlowActionFixedPoint(
+      { ...surface, beforeAuthority, afterAuthority }, expected,
+    );
+    if (assessment.status !== 'ready') {
+      failSliceWithoutCascade(`${label.toUpperCase()}: phone Survey did not reach its exact same-document fixed point before the dependent action: `
+        + JSON.stringify({ assessment, expected, beforeAuthority, afterAuthority, surface }));
+    }
+    return { afterAuthority, surface, assessment };
+  };
   const pinchOutNavMode = async () => {
     /* One bounded pinch-in reaches the current mode's clamped zoom-out
        floor. End the gesture before starting the next so the same pointer
@@ -23341,6 +23672,9 @@ try {
     await sleep(80);
     await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }, navPh);
   };
+  const phoneGalaxyBeforeAuthority = await waitNavPhF4Writable(
+    'phone Milky Way card predecessor F4 authority',
+  );
   await touchNav(phoneGalaxyX, phoneGalaxyY);
   await sleep(400);
   const phoneTravelCheck = `(()=>{ const state=window.__CF_SLICE__.api.state();
@@ -23356,6 +23690,9 @@ try {
     fails.push('PHONE TRAVEL: one touch did not expose a reachable galaxy action without teleporting: '
       + JSON.stringify({ phoneBodyProbe, phoneTravel }));
   }
+  if (phoneGalaxyBeforeAuthority.token !== await sliceToken(navPh)) {
+    failSliceWithoutCascade('PHONE MILKY WAY CARD: presentation crossed its predecessor document');
+  }
   if (phoneTravel.ok) {
     const phoneTravelCtl = await evalNavPh(`(()=>{ const button=document.querySelector('#survey [data-act=travel]');
       const prior=button.style.pointerEvents; button.style.pointerEvents='none'; const result=${phoneTravelCheck};
@@ -23366,6 +23703,7 @@ try {
     await touchNav(phoneTravel.x, phoneTravel.y);
   }
   await sleep(2500);
+  await waitNavPhF4Writable('phone Milky Way arrival F4 fixed point');
   const phoneDive = await evalNavPh(`window.__CF_SLICE__.api.state()`);
   if (phoneDive.mode !== 'galaxy' || phoneDive.gal !== 999 || phoneDive.galX !== 90 || phoneDive.galY !== -60) {
     fails.push('PHONE TRAVEL: touching the visible card action did not enter the exact Milky Way node: '
@@ -23376,9 +23714,30 @@ try {
      way down: survey Earth, touch the real 44px Land action, then touch the
      surface card's real 44px Leave-world action back to system. A desktop
      Escape assertion cannot prove either control exists or can be reached. */
+  const phoneCardActionCheck = (act) => `(()=>{ const S=window.__CF_SLICE__,state=S.api.state();
+    const button=document.querySelector('#survey [data-act="${act}"]');
+    if(!button) return {state,ok:false,why:'missing'};
+    const b=button.getBoundingClientRect(),x=(b.left+b.right)/2,y=(b.top+b.bottom)/2;
+    const hit=document.elementFromPoint(x,y);
+    return {state,ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:(button.textContent||'').trim(),
+      x,y,w:b.width,h:b.height,hit:hit&&(hit.id||hit.getAttribute&&hit.getAttribute('data-act')||hit.tagName)}; })()`;
   await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.descendSystem(${JSON.stringify(SOL_STAR)}); })()`);
-  await waitNavPhValue('phone Sol setup', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242?s:null; })()`);
-  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);
+  const phoneSolSetup = await waitNavPhValue('phone Sol setup', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242?s:null; })()`);
+  const phoneEarthBeforeAuthority = await waitNavPhF4Writable(
+    'phone Earth Survey predecessor F4 authority',
+  );
+  const phoneEarthSurveyed = await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);
+  if (!phoneEarthSurveyed) {
+    failSliceWithoutCascade('PHONE EARTH SURVEY: native Survey invocation was rejected before settlement');
+  }
+  await waitForPhoneSurveyFixedPoint({
+    label: 'phone Earth Survey',
+    beforeAuthority: phoneEarthBeforeAuthority,
+    routeState: phoneSolSetup,
+    cardTitle: 'Earth',
+    actionLabel: '⛳ Land',
+    actionExpression: phoneCardActionCheck('landcta'),
+  });
   const phoneSurveyPrimeOverlayCheck = phonePrimeOverlayCheck('survey', 'card-open');
   const phoneSurveyPrimeOverlay = await evalNavPh(phoneSurveyPrimeOverlayCheck);
   if (!phoneSurveyPrimeOverlay.ok) {
@@ -23421,13 +23780,6 @@ try {
     fails.push('PHONE GUIDE LAYER CONTROL FAILED — injected z22 Guide stayed above the survey: ' + JSON.stringify(phoneGuideOverCardCtl));
   }
   await evalNavPh(`(()=>{ document.querySelector('#guidepanel [data-pnx]').click(); return true; })()`);
-  const phoneCardActionCheck = (act) => `(()=>{ const S=window.__CF_SLICE__,state=S.api.state();
-    const button=document.querySelector('#survey [data-act="${act}"]');
-    if(!button) return {state,ok:false,why:'missing'};
-    const b=button.getBoundingClientRect(),x=(b.left+b.right)/2,y=(b.top+b.bottom)/2;
-    const hit=document.elementFromPoint(x,y);
-    return {state,ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:(button.textContent||'').trim(),
-      x,y,w:b.width,h:b.height,hit:hit&&(hit.id||hit.getAttribute&&hit.getAttribute('data-act')||hit.tagName)}; })()`;
   const phoneLand = await evalNavPh(phoneCardActionCheck('landcta'));
   if (phoneLand.state.mode !== 'system' || !phoneLand.state.cardOpen || !phoneLand.ok || !/Land/.test(phoneLand.label)) {
     fails.push('PHONE PLANETFALL: Earth did not expose a reachable 44px Land action: ' + JSON.stringify(phoneLand));
@@ -23466,7 +23818,23 @@ try {
   /* The HUD/Guide also promise Escape as a lift-off path. Re-land without a
      second reward, then prove ONE Escape consumes the open surface card and
      ascends in the same action rather than merely hiding the card. */
-  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);
+  const phoneRepeatEarthBeforeAuthority = await waitNavPhF4Writable(
+    'phone repeat Earth Survey predecessor F4 authority',
+  );
+  const phoneRepeatEarthRoute = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+  const phoneRepeatEarthSurveyed = await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(${JSON.stringify(EARTH)}); })()`);
+  if (!phoneRepeatEarthSurveyed) {
+    failSliceWithoutCascade('PHONE REPEAT EARTH SURVEY: native Survey invocation was rejected before settlement');
+  }
+  await waitForPhoneSurveyFixedPoint({
+    label: 'phone repeat Earth Survey',
+    beforeAuthority: phoneRepeatEarthBeforeAuthority,
+    routeState: phoneRepeatEarthRoute,
+    cardTitle: 'Earth',
+    actionLabel: '⛳ Land',
+    actionExpression: phoneCardActionCheck('landcta'),
+    settlement: 'current',
+  });
   const phoneReland = await evalNavPh(phoneCardActionCheck('landcta'));
   if (!phoneReland.ok) fails.push('PHONE ESCAPE LIFT: repeat Earth card lost its Land action: ' + JSON.stringify(phoneReland));
   else await touchNav(phoneReland.x, phoneReland.y);
@@ -23500,6 +23868,10 @@ try {
     fails.push('CHARTER ACTION SETUP found no real fine-star target: '
       + JSON.stringify({ blockedFineTarget, blockedFineProbe }));
   }
+  const blockedFineBeforeAuthority = await waitNavPhF4Writable(
+    'phone stage-0 fine-star Survey predecessor F4 authority',
+  );
+  const blockedFineRoute = await evalNavPh(`window.__CF_SLICE__.api.state()`);
   if (blockedFineTarget) await touchNav(blockedFineTarget.screenX, blockedFineTarget.screenY);
   await sleep(400);
   const blockedFineSurvey = await evalNavPh(`({state:window.__CF_SLICE__.api.state(),travel:${travelCheck}})`);
@@ -23509,9 +23881,18 @@ try {
     fails.push('CHARTER ACTION SETUP did not expose the real fine-star action without teleporting: '
       + JSON.stringify({ blockedFineTarget, blockedFineSurvey }));
   }
+  await waitForPhoneSurveyFixedPoint({
+    label: 'phone stage-0 fine-star Survey',
+    beforeAuthority: blockedFineBeforeAuthority,
+    routeState: blockedFineRoute,
+    cardTitle: blockedFineSurvey.state.cardTitle,
+    actionLabel: 'Enter system',
+    actionExpression: travelCheck,
+  });
   if (blockedFineSurvey.travel.ok) await touchNav(blockedFineSurvey.travel.x, blockedFineSurvey.travel.y);
   await sleep(350);
   const blockedFineDive = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+  const blockedFineFailureBaseline = fails.length;
   if (blockedFineDive.mode !== 'galaxy' || blockedFineDive.gal !== 999 || blockedFineDive.star !== null || blockedFineDive.stage !== 0
     || !blockedFineDive.toastOn || !stageZeroCharterHintIsTruthful(blockedFineDive.toastText)) {
     fails.push('CHARTER ACTION BYPASS — a real stage-0 fine-star card action was not blocked: '
@@ -23526,6 +23907,11 @@ try {
     fails.push('PHONE CHARTER COPY CONTROL FAILED — stale/wrong-drive copy stayed truthful or failed to restore: '
       + JSON.stringify(blockedFineToastCtl));
   }
+  if (fails.length !== blockedFineFailureBaseline) {
+    failSliceWithoutCascade('PHONE CHARTER GATE: red stage-0 refusal stopped veteran import and every dependent phone judgment', {
+      alreadyReported: true,
+    });
+  }
 
   /* 4d1-fine. Import the stage-2 veteran on this isolated origin, rise back
      to the home galaxy, and drive one deterministic visible fine star with
@@ -23534,6 +23920,9 @@ try {
   try { await evalNavPh(`window.__CF_SLICE__.api.importBlob(${JSON.stringify(VETERAN_ARRAY_RAW)})`); }
   catch { /* successful import reloads and destroys the evaluation context */ }
   await waitForSlice(navPh, 'fresh-phone veteran import', { previousToken: phoneImportToken });
+  await waitNavPhF4Writable('fresh-phone veteran replacement F4 authority', {
+    previousToken: phoneImportToken,
+  });
   await sleep(2800);
   for (let i = 0; i < 2; i++) {
     await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, navPh);
@@ -23554,6 +23943,10 @@ try {
     fails.push('FINE STAR SETUP found no visible hit-testable deterministic target: '
       + JSON.stringify({ fineTarget, fineProbe }));
   }
+  const fineBeforeAuthority = await waitNavPhF4Writable(
+    'phone stage-2 fine-star Survey predecessor F4 authority',
+  );
+  const fineRoute = await evalNavPh(`window.__CF_SLICE__.api.state()`);
   if (fineTarget) await touchNav(fineTarget.screenX, fineTarget.screenY);
   await sleep(400);
   const fineSurvey = await evalNavPh(`({state:window.__CF_SLICE__.api.state(),travel:${travelCheck}})`);
@@ -23562,6 +23955,15 @@ try {
     fails.push('FINE STAR SURVEY-FIRST broken — one touch teleported or lacked its action: '
       + JSON.stringify({ fineTarget, fineSurvey }));
   }
+  await waitForPhoneSurveyFixedPoint({
+    label: 'phone stage-2 fine-star Survey',
+    beforeAuthority: fineBeforeAuthority,
+    routeState: fineRoute,
+    cardTitle: fineSurvey.state.cardTitle,
+    actionLabel: 'Enter system',
+    actionExpression: travelCheck,
+    settlement: 'either',
+  });
   if (fineSurvey.travel.ok) {
     const fineTravelCtl = await evalNavPh(`(()=>{ const button=document.querySelector('#survey [data-act=travel]');
       const prior=button.style.pointerEvents; button.style.pointerEvents='none'; const result=${travelCheck};
@@ -23570,6 +23972,7 @@ try {
     await touchNav(fineSurvey.travel.x, fineSurvey.travel.y);
   }
   await sleep(1800);
+  await waitNavPhF4Writable('phone stage-2 fine-star arrival F4 fixed point');
   const fineDive = await evalNavPh(`window.__CF_SLICE__.api.state()`);
   const canonicalFineTarget = fineTarget ? {
     ...fineTarget,
@@ -26238,6 +26641,23 @@ try {
     };
     return assessF4ReadyAuthority({ ...snapshot, state, previousToken }).ok;
   });
+  const waitForControlCommitSequence = async ({
+    session, label, beforeAuthority, expectedKinds, persistencePrefix,
+  }) => {
+    const afterAuthority = await waitControlF4Writable(session, `${label} settlement`);
+    const assessment = assessF4ActionCommitSequence({
+      beforeAuthority,
+      afterAuthority,
+      state: afterAuthority.state,
+      expectedKinds,
+      expectedPersistenceLastOutcome: `${persistencePrefix}${afterAuthority.raw.revision}`,
+    });
+    if (!assessment.ok) {
+      failSliceWithoutCascade(`${label.toUpperCase()}: action sequence did not reach its exact same-document F4 fixed point: `
+        + JSON.stringify({ assessment, beforeAuthority, afterAuthority }));
+    }
+    return afterAuthority;
+  };
   const nativeControlClick = async (session, selector) => {
     const target = await evalF4Control(session, `(async()=>{window.__cfOutcomePointerAbort?.abort();
       const control=[...document.querySelectorAll(${JSON.stringify(selector)})].find((candidate)=>candidate instanceof HTMLElement
@@ -26335,21 +26755,76 @@ try {
   const collisionActions = [];
   for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
     const world = COLLISION_REACH_WORLDS[index];
+    const searchBeforeAuthority = await waitControlF4Writable(
+      collisionTarget.session, `collision named Search ${index} predecessor F4 authority`,
+    );
+    const jumpsBefore = searchBeforeAuthority.state?.save?.stats?.jumps;
     const searchReceipt = await driveControlSearch(collisionTarget.session, COLLISION_REACH_CODES[index].named);
-    const search = await waitControlValue(collisionTarget.session, `collision Search/name ${index}`,
+    await waitControlValue(collisionTarget.session, `collision Search/name ${index}`,
       `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='system'&&state.cardOpen
         &&state.cardTitle===${JSON.stringify(world.name)}&&state.starX===${world.star.x}&&state.starY===${world.star.y}?state:null;})()`);
+    const searchAuthority = await waitForControlCommitSequence({
+      session: collisionTarget.session,
+      label: `collision named Search ${index}`,
+      beforeAuthority: searchBeforeAuthority,
+      expectedKinds: ['arc0-world-name', 'arc9-share-follow-v1'],
+      persistencePrefix: 'arc9-share-follow-committed:',
+    });
+    const search = searchAuthority.state;
+    if (!Number.isSafeInteger(jumpsBefore)
+      || search.save?.stats?.jumps !== jumpsBefore + 1
+      || search.sharing?.followOutcome !== `committed:${jumpsBefore}->${jumpsBefore + 1}`
+      || search.mode !== 'system' || !search.cardOpen || search.cardTitle !== world.name
+      || search.starX !== world.star.x || search.starY !== world.star.y) {
+      failSliceWithoutCascade(`COLLISION NAMED SEARCH ${index}: exact name/Follow publication or route drifted after durability: `
+        + JSON.stringify({ jumpsBefore, search }));
+    }
     await evalF4Control(collisionTarget.session,
       `sessionStorage.removeItem('cf_slice_collision_clipboard')`);
+    const shareBeforeAuthority = searchAuthority;
     const sharePress = await nativeControlClick(collisionTarget.session, '#survey [data-act="share"]');
     const shareCode = await takeCollisionClipboard(collisionTarget.session, `collision Share ${index}`);
+    const shareAuthority = await waitForControlCommitSequence({
+      session: collisionTarget.session,
+      label: `collision Share ${index}`,
+      beforeAuthority: shareBeforeAuthority,
+      expectedKinds: ['arc9-share-send-v1'],
+      persistencePrefix: 'arc9-share-send-committed:',
+    });
+    const addBeforeAuthority = shareAuthority;
     const addPress = await nativeControlClick(collisionTarget.session, '#survey [data-act="add"]');
-    const afterAdd = await waitControlValue(collisionTarget.session, `collision Atlas Add ${index}`,
+    await waitControlValue(collisionTarget.session, `collision Atlas Add ${index}`,
       `(()=>{const state=window.__CF_SLICE__.api.state();return state.atlasCount===${index + 1}?state:null;})()`);
+    const addAuthority = await waitForControlCommitSequence({
+      session: collisionTarget.session,
+      label: `collision Atlas Add ${index}`,
+      beforeAuthority: addBeforeAuthority,
+      expectedKinds: ['arc0-atlas'],
+      persistencePrefix: 'arc0-atlas-committed:',
+    });
+    const afterAdd = addAuthority.state;
+    if (afterAdd.atlasCount !== index + 1) {
+      failSliceWithoutCascade(`COLLISION ATLAS ADD ${index}: exact settled Atlas count drifted: `
+        + JSON.stringify(afterAdd));
+    }
+    const landBeforeAuthority = addAuthority;
     const landPress = await nativeControlClick(collisionTarget.session, '#survey [data-act="landcta"]');
-    const landed = await waitControlValue(collisionTarget.session, `collision Land ${index}`,
+    await waitControlValue(collisionTarget.session, `collision Land ${index}`,
       `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='surface'
         &&state.navWorldKey===${JSON.stringify(world.key)}?state:null;})()`);
+    const landAuthority = await waitForControlCommitSequence({
+      session: collisionTarget.session,
+      label: `collision Land ${index}`,
+      beforeAuthority: landBeforeAuthority,
+      expectedKinds: ['arc0-land'],
+      persistencePrefix: 'arc0-land-committed:',
+    });
+    const landed = landAuthority.state;
+    if (landed.mode !== 'surface' || landed.navWorldKey !== world.key
+      || landed.landing?.lastOutcome !== `committed:${landAuthority.raw.revision}`) {
+      failSliceWithoutCascade(`COLLISION LAND ${index}: exact settled landing publication drifted: `
+        + JSON.stringify({ landed, landRevision: landAuthority.raw.revision }));
+    }
     const persisted = await evalF4Control(collisionTarget.session,
       `window.__CF_SLICE__.api.__smokePersistNow()`);
     collisionActions.push({
@@ -26403,6 +26878,9 @@ try {
       collisionAtlasOpeners.push(reopen);
     }
     const atlasId = `w|${world.key}`;
+    const travelBeforeAuthority = await waitControlF4Writable(
+      collisionTarget.session, `collision Atlas travel ${index} predecessor F4 authority`,
+    );
     const press = await nativeControlClick(collisionTarget.session,
       `#atlaspanel [data-sel="atlas-entry"][data-aid=${JSON.stringify(atlasId)}] > .atlas-entry-actions > [data-atlas-travel=${JSON.stringify(atlasId)}]`);
     const pressAssessment = assessAtlasPointerPress(press, { atlasId });
@@ -26410,22 +26888,63 @@ try {
       failSliceWithoutCascade(`WORLD IDENTITY COLLISION ATLAS TRAVEL ${index}: exact native Travel receipt was red before navigation wait: `
         + JSON.stringify({ press, assessment: pressAssessment }));
     }
-    const state = await waitControlValue(collisionTarget.session, `collision Atlas travel ${index}`,
+    await waitControlValue(collisionTarget.session, `collision Atlas travel ${index}`,
       `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='system'&&state.cardTitle===${JSON.stringify(world.name)}
         &&state.starX===${world.star.x}&&state.starY===${world.star.y}?state:null;})()`);
+    const travelAuthority = await waitForControlCommitSequence({
+      session: collisionTarget.session,
+      label: `collision Atlas travel ${index}`,
+      beforeAuthority: travelBeforeAuthority,
+      expectedKinds: ['arc9-galaxy-arrival-v1'],
+      persistencePrefix: 'arc9-travel-committed:',
+    });
+    const state = travelAuthority.state;
+    if (state.mode !== 'system' || state.cardTitle !== world.name
+      || state.starX !== world.star.x || state.starY !== world.star.y) {
+      failSliceWithoutCascade(`COLLISION ATLAS TRAVEL ${index}: exact settled route drifted after durability: `
+        + JSON.stringify({ travelAuthority }));
+    }
     collisionAtlasTravel.push({ target: press.target, pointer: press.pointer, state });
   }
   const collisionReloadSearches = [];
   for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
     const world = COLLISION_REACH_WORLDS[index];
+    const searchBeforeAuthority = await waitControlF4Writable(
+      collisionTarget.session, `collision reload Search ${index} predecessor F4 authority`,
+    );
+    const jumpsBefore = searchBeforeAuthority.state?.save?.stats?.jumps;
     const searchReceipt = await driveControlSearch(collisionTarget.session, COLLISION_REACH_CODES[index].bare);
-    const state = await waitControlValue(collisionTarget.session, `collision reload Search ${index}`,
+    await waitControlValue(collisionTarget.session, `collision reload Search ${index}`,
       `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='system'&&state.cardTitle===${JSON.stringify(world.name)}
         &&state.starX===${world.star.x}&&state.starY===${world.star.y}?state:null;})()`);
+    const searchAuthority = await waitForControlCommitSequence({
+      session: collisionTarget.session,
+      label: `collision reload Search ${index}`,
+      beforeAuthority: searchBeforeAuthority,
+      expectedKinds: ['arc9-share-follow-v1'],
+      persistencePrefix: 'arc9-share-follow-committed:',
+    });
+    const state = searchAuthority.state;
+    if (!Number.isSafeInteger(jumpsBefore)
+      || state.save?.stats?.jumps !== jumpsBefore + 1
+      || state.sharing?.followOutcome !== `committed:${jumpsBefore}->${jumpsBefore + 1}`
+      || state.mode !== 'system' || state.cardTitle !== world.name
+      || state.starX !== world.star.x || state.starY !== world.star.y) {
+      failSliceWithoutCascade(`COLLISION RELOAD SEARCH ${index}: exact Follow publication or route drifted after durability: `
+        + JSON.stringify({ jumpsBefore, state }));
+    }
     await evalF4Control(collisionTarget.session,
       `sessionStorage.removeItem('cf_slice_collision_clipboard')`);
+    const shareBeforeAuthority = searchAuthority;
     const sharePress = await nativeControlClick(collisionTarget.session, '#survey [data-act="share"]');
     const shareCode = await takeCollisionClipboard(collisionTarget.session, `collision reload Share ${index}`);
+    await waitForControlCommitSequence({
+      session: collisionTarget.session,
+      label: `collision reload Share ${index}`,
+      beforeAuthority: shareBeforeAuthority,
+      expectedKinds: ['arc9-share-send-v1'],
+      persistencePrefix: 'arc9-share-send-committed:',
+    });
     collisionReloadSearches.push({ searchReceipt, state, sharePointer: sharePress.pointer, shareCode });
   }
   await send('Target.closeTarget', { targetId: collisionTarget.targetId });

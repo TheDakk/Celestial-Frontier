@@ -262,7 +262,7 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY =
 const RULER_PRODUCER_AUTHORITY =
   'd97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271';
 const PREVIOUS_CHANGED_HEAD_PRODUCER_AUTHORITY =
-  'dd4e635b18e7585a2ec8d84b64b454e6884f2323999818f43856c313ee9a53aa';
+  'af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7';
 const RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v1',
   sha256: RULER_PRODUCER_AUTHORITY,
@@ -310,18 +310,18 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  'af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7';
+  '410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: 'fb55549a2d16716eb431d13f711489f65ec3f712f5ee4e4baaae551f177a4713',
+      sha256: '0700ae6d05aeef9baa3fb42db2e746e6728e282b61b8ee3cb2d8b19af9bcb68c',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/main-B4SvWr2V.js',
-      sha256: 'a5a392115cf5505ca90198fb8f91a5f9b90cf70d479672cbcc7ec1d4045bf4ff',
+      relativePath: 'assets/main-zrkwdyWh.js',
+      sha256: '5f367d2127575e58095a1f9b04ff58b981843fde8d4578c169b9f639469363f8',
     }),
     worker: Object.freeze({
       relativePath: 'assets/species-art.worker-DnnSDKMy.js',
@@ -333,7 +333,7 @@ const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
     }),
     serviceWorker: Object.freeze({
       relativePath: 'service-worker.js',
-      sha256: '306445aa7b96b4567d4bacb572abd07307e0e373cabdc62f4c85b0d1bac863ed',
+      sha256: '74203b199c26169987c7790e02b5ae7f2983b273d50d6c56dcc2b181664e821e',
     }),
   }),
 });

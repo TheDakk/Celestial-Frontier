@@ -458,8 +458,32 @@ describe('Slice Atlas native Travel contract', () => {
     expect(collision).toContain('atlasOpenerPointerDrift: collisionControl');
     expect(collision.indexOf('assessAtlasOpenerPress(collisionAtlasOpening)'))
       .toBeLessThan(collision.indexOf("collision Atlas rows',"));
-    expect(collision.indexOf('assessAtlasPointerPress(press, { atlasId })'))
-      .toBeLessThan(collision.indexOf('collision Atlas travel ${index}'));
+    const collisionTravelPredecessorAt = collision.indexOf(
+      'collision Atlas travel ${index} predecessor F4 authority',
+    );
+    const collisionTravelPressAt = collision.indexOf('assessAtlasPointerPress(press, { atlasId })');
+    const collisionTravelRouteAt = collision.indexOf(
+      'await waitControlValue(collisionTarget.session, `collision Atlas travel ${index}`',
+    );
+    const collisionTravelFixedPointAt = collision.indexOf(
+      'label: `collision Atlas travel ${index}`',
+    );
+    const collisionTravelReceiptAt = collision.indexOf(
+      "expectedKinds: ['arc9-galaxy-arrival-v1']",
+      collisionTravelFixedPointAt,
+    );
+    const collisionTravelPublicationAt = collision.indexOf(
+      'collisionAtlasTravel.push({ target: press.target, pointer: press.pointer, state });',
+    );
+    expect([
+      collisionTravelPredecessorAt, collisionTravelPressAt, collisionTravelRouteAt,
+      collisionTravelFixedPointAt, collisionTravelReceiptAt, collisionTravelPublicationAt,
+    ]).not.toContain(-1);
+    expect(collisionTravelPredecessorAt).toBeLessThan(collisionTravelPressAt);
+    expect(collisionTravelPressAt).toBeLessThan(collisionTravelRouteAt);
+    expect(collisionTravelRouteAt).toBeLessThan(collisionTravelFixedPointAt);
+    expect(collisionTravelFixedPointAt).toBeLessThan(collisionTravelReceiptAt);
+    expect(collisionTravelReceiptAt).toBeLessThan(collisionTravelPublicationAt);
     expect(collision).not.toContain('disabled:row.disabled===true');
 
     expect(sliceSource.match(/atlasTravelTargetExpression\(/gu)).toHaveLength(7);

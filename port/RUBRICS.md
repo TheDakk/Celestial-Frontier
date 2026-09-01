@@ -1,16 +1,19 @@
 # Acceptance rubrics — what "done" means, per gate
 
-> **2026-08-31 current terminal-green rubric-status overlay (canonical handoff in
-> `../ROADMAP.md`):** exact clean signed source
-> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop at **255 files /
-> 2,576 passed / 1 skipped**, Compendium **78/78**, zero-finding Slice with ten screenshots and
-> predecessor-bound Glass **12/12** viewports / **104/104** controls. Every stage ran once/no-retry
-> and every named verifier passed.
+> **2026-09-01 current rubric-status overlay (canonical handoff in `../ROADMAP.md`):** hosted run
+> `33466661094` passed every prerequisite and Compendium **78/78**, then Slice stopped at **13
+> findings / 8 scopes**. One causal harness race explains the other 12: non-Sol Enter ran before its
+> receipt-bearing Survey reached the same-document F4 fixed point. The product correctly refused;
+> Glass correctly skipped and no retry ran.
 >
-> The testing-only repair token-binds and atomically guards all eight stored-v4 staging paths. This
-> exact local evidence does not alter any HUMAN or whole-Gate status, and the evidence/docs
-> descendant does not rebind certification away from 580c99a. No push, hosted attempt, merge,
-> release, version or deploy is authorized.
+> The local evidence repair requires exact Survey receipt/revision/persistence,
+> route/render/card/action identity and coordinator idle before every dependent Enter/Land across
+> pointer, keyboard, touch and already-current routes, then causal-stops after any red. Focused
+> **73/73**, all TypeScript programs and final develop **257 files / 2,622 passed / 1 skipped** are
+> green, with two independent reviews **APPROVED**. The clean candidate, tracked-input preflight and
+> fresh exact-source browser chain remain pending. This changes no rubric row,
+> `[EXEC]`/`[EXEC-TODO]`/`[HUMAN]` status or whole Gate. No new hosted, merge, release or deploy
+> authority exists.
 
 > **Historical local SceneMemory admission boundary (2026-08-30; superseded by the current overlay):**
 > exact signed clean source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied three
@@ -79,13 +82,17 @@
 > criterion remains open. The consumed red run grants no retry, merge, preview, release or Gate
 > authority; current local bytes still require clean exact-source evidence.
 >
-> Current Landing fault evidence is separate from that product one-call path. It first performs and
-> verifies one explicit Survey transaction, including its sole receipt, current Pertar route/card,
-> live publication, coordinator-idle and writable fixed point; only then may it resample raw/live
-> authority, arm one fault and call direct `landHere()` once. Pre-Survey baselines, missing Survey
-> receipts, wrong route/card and wrong live publication are independent red controls, and any red
-> setup stops the judged Landing action and later mutable scenarios. This is a stricter evidence
-> fixture contract, not a new Survey/Landing product outcome.
+> Current Survey-dependent action evidence is separate from the product's one-call Survey → Landing
+> path. Every receipt-bearing Survey used by the fixture must first reach an exact same-document
+> fixed point: sole receipt/revision and persistence, current route/render/card/action identity,
+> coordinator idle and writable authority. Only then may pointer, keyboard, touch or already-current
+> Enter/Land dispatch. Pre-Survey baselines, missing/red receipts, wrong route/card/action, replaced
+> documents and live-publication mismatches are independent controls; any red setup stops the judged
+> action and every later mutable scenario. `landing.surveyOutcome` remains diagnostic-only. This is
+> a stricter evidence-fixture contract, not a new Survey/Landing product outcome or rubric closure.
+> Its browser-free acceptance also binds Atlas Travel's exact one commit, single/sequence runtime
+> schema and before/after live↔raw SessionRNG parity, retained-fault rejection, and paired stable-but-
+> wrong current live/raw revision/seed/ordinal/draw controls.
 >
 > Current-local resource acceptance additionally requires: route-invalid Survey destroys its DOM,
 > controller model and listeners; every Compendium/Capture/Combat/ecology controller has symmetric

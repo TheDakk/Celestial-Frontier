@@ -2359,7 +2359,10 @@ describe('sixth Slice red contract repairs', () => {
       state: {
         persistence: {
           lastOutcome: 'arc9-add-committed:7',
-          runtime: { revision: 7, commits: 5 },
+          runtime: {
+            schema: 'cf-v2-f4-runtime/v1', revision: 7, commits: 5,
+            sessionSeed: 1314635406, sessionOrdinal: 3, sessionDraws: { terrain: 4 },
+          },
         },
         landing: idleLanding,
       },
@@ -2381,7 +2384,10 @@ describe('sixth Slice red contract repairs', () => {
       state: {
         persistence: {
           lastOutcome: 'arc9-share-committed:8',
-          runtime: { revision: 8, commits: 6 },
+          runtime: {
+            schema: 'cf-v2-f4-runtime/v1', revision: 8, commits: 6,
+            sessionSeed: 1314635406, sessionOrdinal: 4, sessionDraws: { terrain: 4 },
+          },
         },
         landing: idleLanding,
       },
@@ -2411,6 +2417,19 @@ describe('sixth Slice red contract repairs', () => {
     const runtimeCommits = structuredClone(afterAuthority);
     runtimeCommits.state.persistence.runtime.commits = 5;
     expect(assess(runtimeCommits).reasons).toContain('exact live runtime successor');
+    const runtimeSchema = structuredClone(afterAuthority);
+    runtimeSchema.state.persistence.runtime.schema = 'wrong-runtime';
+    expect(assess(runtimeSchema).reasons).toContain('exact live runtime successor');
+
+    const runtimeSeed = structuredClone(afterAuthority);
+    runtimeSeed.state.persistence.runtime.sessionSeed += 1;
+    expect(assess(runtimeSeed).reasons).toContain('exact live/raw SessionRNG parity');
+    const runtimeOrdinal = structuredClone(afterAuthority);
+    runtimeOrdinal.state.persistence.runtime.sessionOrdinal += 1;
+    expect(assess(runtimeOrdinal).reasons).toContain('exact live/raw SessionRNG parity');
+    const runtimeDraws = structuredClone(afterAuthority);
+    runtimeDraws.state.persistence.runtime.sessionDraws.terrain += 1;
+    expect(assess(runtimeDraws).reasons).toContain('exact live/raw SessionRNG parity');
 
     const rngOrdinal = structuredClone(afterAuthority);
     rngOrdinal.raw.ordinal = 5;
@@ -2481,7 +2500,11 @@ describe('sixth Slice red contract repairs', () => {
     lexicalBefore.raw.ordinal = 10;
     lexicalBefore.raw.receiptKeys = lexicalBeforeEntries.map(({ key }) => key);
     lexicalBefore.raw.receiptRows = lexicalBeforeEntries.map(({ row }) => row);
-    lexicalBefore.state.persistence.runtime = { revision: 40, commits: 12 };
+    lexicalBefore.state.persistence.runtime = {
+      schema: 'cf-v2-f4-runtime/v1', revision: 40, commits: 12,
+      sessionSeed: lexicalBefore.raw.seed, sessionOrdinal: 10,
+      sessionDraws: structuredClone(lexicalBefore.raw.draws),
+    };
     const lexicalAfter = structuredClone(afterAuthority);
     lexicalAfter.raw.revision = 41;
     lexicalAfter.raw.revisionRaw = '41';
@@ -2489,7 +2512,11 @@ describe('sixth Slice red contract repairs', () => {
     lexicalAfter.raw.receiptKeys = lexicalAfterEntries.map(({ key }) => key);
     lexicalAfter.raw.receiptRows = lexicalAfterEntries.map(({ row }) => row);
     lexicalAfter.state.persistence.lastOutcome = 'arc9-share-committed:41';
-    lexicalAfter.state.persistence.runtime = { revision: 41, commits: 13 };
+    lexicalAfter.state.persistence.runtime = {
+      schema: 'cf-v2-f4-runtime/v1', revision: 41, commits: 13,
+      sessionSeed: lexicalAfter.raw.seed, sessionOrdinal: 11,
+      sessionDraws: structuredClone(lexicalAfter.raw.draws),
+    };
     expect(assessSingleF4ActionCommit({
       beforeAuthority: lexicalBefore,
       afterAuthority: lexicalAfter,
@@ -2807,10 +2834,13 @@ describe('sixth Slice red contract repairs', () => {
 
     const phoneSurvey = section(
       sliceSource,
-      "  await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.surveyOn(",
+      '  const phoneEarthBeforeAuthority = await waitNavPhF4Writable(',
       '  /* Help requested from an open body card must be readable above that card.',
     );
     proveEachMarkerRequired(phoneSurvey, [
+      ['Earth Survey predecessor authority', 'phone Earth Survey predecessor F4 authority'],
+      ['Earth Survey native invocation', 'const phoneEarthSurveyed = await evalNavPh('],
+      ['Earth Survey exact fixed point', "label: 'phone Earth Survey'"],
       ['real Survey card checker', "phonePrimeOverlayCheck('survey', 'card-open')"],
       ['real Survey green outcome', 'if (!phoneSurveyPrimeOverlay.ok) {'],
       ['Survey Prime base causal stop', "failSliceWithoutCascade('PHONE PRIME SURVEY YIELD:"],

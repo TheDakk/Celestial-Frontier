@@ -1,18 +1,21 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-> **2026-08-31 current terminal-green develop-admission overlay (canonical handoff in
-> `../ROADMAP.md`):** exact clean signed source
-> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed tracked-input develop at **255 files /
-> 2,576 passed / 1 skipped** and every TypeScript/art/route/specification owner. On unchanged bytes,
-> Compendium passed **78/78**, Slice passed with zero findings and ten screenshots, and
-> predecessor-bound Glass passed **12/12** viewports plus **104/104** controls with zero findings or
-> instrument failures. Every stage ran once/no-retry and every exact named verifier passed.
+> **2026-09-01 current Survey-predecessor admission overlay (canonical handoff in
+> `../ROADMAP.md`):** hosted run `33466661094` tested exact PR #35 head `06aba9d…` and its
+> tree-equivalent synthetic merge. Every prerequisite and Compendium **78/78** passed; Slice then
+> stopped at **13 findings / 8 scopes** because non-Sol Enter ran before its receipt-bearing Survey's
+> F4 settlement. The product correctly refused with **Expedition action settling**. One causal
+> harness race produced 12 cascades; Glass correctly skipped and no retry ran.
 >
-> The bounded testing repair covers all eight fixture-staging paths with stable document authority,
-> exact persistence polarity, one atomic invocation and zero-call-only rebind. No roadmap feature,
-> product/save/gameplay/art/creature structure, EXEC history or HUMAN status changed; historical
-> certificates are not rebound. Four exact PASS carriers in the signed evidence/docs descendant
-> certify 580c99a only. No push, hosted attempt, merge, release or deploy is authorized.
+> The bounded local runner repair requires exact same-document Survey receipt/revision/persistence,
+> route/render/card/action identity and coordinator idle before every dependent pointer, keyboard,
+> touch or already-current Enter/Land action, with causal-stop after any red predecessor. Focused
+> **73/73**, all TypeScript programs and final develop **257 files / 2,622 passed / 1 skipped** are
+> green, and two independent reviews are **APPROVED**. The clean candidate, tracked-input preflight
+> and fresh exact-source browser chain remain pending. No
+> roadmap feature, product/save/gameplay/art/creature structure, EXEC history, Arc/Gate status or
+> HUMAN status changed. The fifth label is absent; no new push, hosted attempt, merge, release,
+> preview or deploy is authorized.
 
 > **2026-08-31 historical local a046 repair overlay (superseded above while
 > preserving its dated evidence):** exact clean SSH-signed source

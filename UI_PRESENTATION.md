@@ -1,17 +1,20 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-08-31 current terminal-green Slice presentation-evidence boundary (supersedes older
-> “current” labels; presentation semantics remain as documented):** exact clean signed source
-> `580c99a952c4e06acb776c852b6c5c0edba4722e` passed the complete browser-free boundary, then
-> unchanged-source Compendium **78/78**, zero-finding Slice with ten screenshots and predecessor-
-> bound Glass **12/12** viewports / **104/104** controls. Every stage ran once/no-retry and every
-> exact named verifier passed.
+> **2026-09-01 current Slice presentation-evidence boundary (supersedes older “current” labels;
+> presentation semantics remain as documented):** GitHub run `33466661094` passed every prerequisite
+> and Compendium **78/78**, then Slice stopped when its harness pressed non-Sol Enter before the
+> receipt-bearing Survey reached its F4 fixed point. The product correctly showed **Expedition action
+> settling**, instructed the explorer to stay until durability settled, kept Survey Close available,
+> blocked Enter and remained in galaxy. That is the intended presentation/authority boundary below,
+> not a copy or product defect. One causal harness race produced 12 cascades; Glass correctly skipped.
 >
-> The previously failing Protected Save rehearsal is green under stable target/document/persistence
-> binding and one atomic guarded fixture call. No Protected Save product behavior, toast timing,
-> markup, CSS, focus/scroll, geometry, fixed ruler, timeout, retry or browser-version policy changed.
-> Four exact PASS carriers in the signed evidence/docs descendant certify 580c99a only. No hosted
-> attempt, merge, release or deployment is authorized.
+> The local runner repair waits for exact same-document Survey settlement before every dependent
+> pointer/keyboard/touch/already-current Enter/Land and causal-stops descendants after a red. Focused
+> **73/73**, all TypeScript programs and final develop **257 files / 2,622 passed / 1 skipped** are
+> green, with two independent reviews **APPROVED**. The clean candidate, tracked-input preflight and
+> browser chain remain pending, so there is no fresh browser certificate. No copy, markup, CSS,
+> focus/scroll, geometry, fixed ruler, timeout, retry or browser-version policy changed; no hosted
+> attempt, preview, merge, release, version bump or deploy is authorized.
 
 > **2026-08-31 historical terminal-green Compendium Back presentation boundary (superseded by the
 > current presentation-evidence overlay above; exact evidence remains immutable):** exact clean
