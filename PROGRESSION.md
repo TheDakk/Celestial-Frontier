@@ -1,6 +1,31 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-31 current local a046 collision-control repair overlay (supersedes every older
+> **2026-09-01 current Share progression/waiter-scope overlay (supersedes every older “current”
+> label below; dated evidence remains immutable):** exact clean signed source
+> `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` passed its tracked-input develop preflight,
+> browser-CDP selftest and live preflight. Compendium `20260901072803827-52451-8168677f8e`
+> passed **78/78** once/no-retry in **65,672 ms** with named verification. Exact-source Slice
+> `20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all ten screenshots,
+> entered collision boot/import/baseline and dispatched Search, then stopped before Search
+> settlement once/no-retry after **336,730 ms** with the sole harness scope
+> `waitForF4ActionSequenceFixedPoint is not defined`; Glass did not run. No progression or product
+> outcome failed. Collision Share was never reached, so c0's boundary was not retested.
+>
+> The helper was declared inside full-journey mode while the collision adapter called it from the
+> outer outcome-controls mode. The dirty harness-only successor lifts the unchanged waiter to their
+> enclosing `try`; an Acorn lexical audit requires its single declaration and all five direct calls
+> to be reachable and rejects a re-gated mutant. Focused **58/58**, all TypeScript programs,
+> `node --check`, collision-only real Edge through Share/reload and complete develop **259 files /
+> 2,660 passed / 1
+> skipped** are green, with **34** clean art sources, **1,014/1,014** routes and **454** non-inert
+> fields; independent code audit is **APPROVED**. Current Share owner-plus-conditional-aggregate
+> semantics, achievements and rank rules are
+> unchanged. The unsigned successor inherits no 3f8f870 browser certificate; signed tracked-input
+> and a fresh no-retry Compendium → Slice → Glass chain remain pending. No hosted attempt, push,
+> merge, release, version bump, publication or deployment is authorized.
+
+> **2026-08-31 historical local a046 collision-control repair overlay (superseded by the current
+> overlay above and every older
 > “current” label below; dated progression and evidence checkpoints remain immutable):** exact
 > clean SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium
 > **78/78** once/no-retry as `20260831155807329-24237-1c6d2e89d5` in **64,166 ms** with named

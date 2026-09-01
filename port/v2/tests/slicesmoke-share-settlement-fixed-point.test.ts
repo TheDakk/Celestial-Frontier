@@ -1,5 +1,6 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
+import { parse } from 'acorn';
 import { describe, expect, it } from 'vitest';
 import { projectExplorerRank } from '@cf/domain-progression';
 import {
@@ -216,6 +217,64 @@ function section(source: string, start: string, end: string): string {
   expect(startIndex, `missing source section start ${JSON.stringify(start)}`).toBeGreaterThanOrEqual(0);
   expect(endIndex, `missing source section end ${JSON.stringify(end)}`).toBeGreaterThan(startIndex);
   return source.slice(startIndex, endIndex);
+}
+
+type AstNode = Readonly<{
+  type: string;
+  start?: number;
+  end?: number;
+  [key: string]: unknown;
+}>;
+
+const isAstNode = (value: unknown): value is AstNode => value !== null
+  && typeof value === 'object'
+  && typeof (value as { type?: unknown }).type === 'string';
+
+function shareWaiterLexicalAudit(source: string) {
+  const root = parse(source, {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+  }) as unknown as AstNode;
+  const declarations: Array<Readonly<{ node: AstNode; ancestors: readonly AstNode[] }>> = [];
+  const calls: Array<Readonly<{ node: AstNode; ancestors: readonly AstNode[] }>> = [];
+  const visit = (node: AstNode, ancestors: readonly AstNode[]) => {
+    if (node.type === 'VariableDeclarator'
+      && isAstNode(node.id)
+      && node.id.type === 'Identifier'
+      && node.id.name === 'waitForF4ActionSequenceFixedPoint') {
+      declarations.push({ node, ancestors });
+    }
+    if (node.type === 'CallExpression'
+      && isAstNode(node.callee)
+      && node.callee.type === 'Identifier'
+      && node.callee.name === 'waitForF4ActionSequenceFixedPoint') {
+      calls.push({ node, ancestors });
+    }
+    for (const [key, value] of Object.entries(node)) {
+      if (key === 'type' || key === 'start' || key === 'end') continue;
+      if (isAstNode(value)) visit(value, [...ancestors, node]);
+      else if (Array.isArray(value)) {
+        for (const entry of value) {
+          if (isAstNode(entry)) visit(entry, [...ancestors, node]);
+        }
+      }
+    }
+  };
+  visit(root, []);
+  const declaration = declarations.length === 1 ? declarations[0] : null;
+  const declarationScope = declaration
+    ? [...declaration.ancestors].reverse()
+      .find((node) => node.type === 'BlockStatement' || node.type === 'Program') ?? null
+    : null;
+  const inaccessibleCalls = calls.filter((call) => !declaration
+    || !declarationScope
+    || !call.ancestors.includes(declarationScope)
+    || (call.node.start ?? -1) <= (declaration.node.start ?? Number.MAX_SAFE_INTEGER));
+  return Object.freeze({
+    declarationCount: declarations.length,
+    callCount: calls.length,
+    inaccessibleCallCount: inaccessibleCalls.length,
+  });
 }
 
 describe('Slice Share settlement fixed point', () => {
@@ -725,5 +784,25 @@ describe('Slice Share settlement fixed point', () => {
     expect(strictWaiter).toContain('assessSettlement({');
     expect(strictWaiter).toContain('expectedKinds: expectation.expectedKinds');
     expect(strictWaiter).toContain('`${expectation.persistencePrefix}${snapshot.raw?.revision}`');
+  });
+
+  it('keeps the shared sequence waiter lexically visible to every direct caller', () => {
+    expect(shareWaiterLexicalAudit(sliceSmokeSource)).toEqual({
+      declarationCount: 1,
+      callCount: 5,
+      inaccessibleCallCount: 0,
+    });
+    const regatedMutant = `try {
+      if (!OUTCOME_CONTROLS_ONLY) {
+        const waitForF4ActionSequenceFixedPoint = async () => true;
+        await waitForF4ActionSequenceFixedPoint();
+      }
+      await waitForF4ActionSequenceFixedPoint();
+    } catch {}`;
+    expect(shareWaiterLexicalAudit(regatedMutant)).toEqual({
+      declarationCount: 1,
+      callCount: 2,
+      inaccessibleCallCount: 1,
+    });
   });
 });

@@ -1,33 +1,30 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-09-01 current v2 collision Share/progression sequence boundary (matches local code as of
+> **2026-09-01 current v2 Share-waiter lexical-scope boundary (matches local code as of
 > 2026-09-01; supersedes older “current” labels; fresh browser chain pending):** exact clean
-> SSH-signed source `c0f7215bd1ec932f6357b6cfc1e045b5644ba389` (tree `ecdc8623…`, parent
-> `138cdee0…`) crossed the repaired Survey surface-expression boundary on Edge `152.0.4191.53`
-> / CDP `1.3`. Compendium `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry
-> in **64,697 ms** with zero findings/blocked outcomes, six review PNGs and named verification.
-> Exact-source Slice `20260901061722706-38658-429913af5517` then stopped after **337,110 ms**
-> with exactly **1 finding / 1 scope**, `collision-share-1`, and ten screenshots. Glass did not run.
+> SSH-signed source `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` (tree `979726f7…`, parent
+> `c0f7215…`) passed its clean tracked-input develop preflight, browser-CDP selftest and live
+> preflight on Edge `152.0.4191.53` / CDP `1.3`. Compendium
+> `20260901072803827-52451-8168677f8e` passed **78/78** once/no-retry in **65,672 ms** with zero
+> findings/blocked outcomes, six review PNGs and named verification. Exact-source Slice
+> `20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all ten screenshots,
+> entered collision boot/import/baseline and dispatched the first named Search gesture, then stopped
+> before Search settlement after **336,730 ms** with exactly **1 finding / 1 scope**,
+> `harness`: `waitForF4ActionSequenceFixedPoint is not defined`. Collision Share was never
+> reached, so c0's `collision-share-1` boundary was not retested; Glass did not run.
 >
-> The product correctly advanced revision/ordinal/Shares **13/8/4 → 15/10/5**, appending
-> `arc9-share-send-v1` then conditional `arc9-progression-refresh-v1`; `share5` joined, best
-> rank remained 3 and SessionRNG did not move. The old one-receipt harness oracle rejected this
-> correct action-owner-plus-aggregate fixed point.
->
-> The dirty testing-only successor changes no product source. `READ_F4_AUTHORITY_EXPRESSION`
-> reads canonical `catalog`/`v5:catalog` in the same read-only transaction as revision, player
-> and receipts. The predecessor cross-binds the exact catalog schema/segment and codex/surveyed/gals
-> arrays to legacy raw, while binding existing live `codexCount`, `stats.surveys`, best and
-> hybrids; the successor preserves both representations. One Share receipt is always required and
-> exactly one progression tail is conditionally required. Same-token spans and two consecutive
-> exact samples apply across all six Share sites. The c0 fixture carries its exact captured 26
-> unlock IDs, rank projection covers every threshold/factor plus permanent saved-rank no-demotion,
-> and every helper output is bound to its waiter's arguments. Focused verification is **57/57** and
-> all TypeScript programs pass. The complete develop profile passes **259 files / 2,659 passed / 1
-> skipped**, **34** clean art
-> sources, **1,014/1,014** routes and **454** non-inert fields. Independent final review is
-> **APPROVED**. The clean signed candidate, tracked-input rehearsal and fresh browser chain remain
-> pending.
+> The shared waiter was lexically nested inside the first `!OUTCOME_CONTROLS_ONLY` block while the
+> later collision adapter called it outside. The dirty testing-only successor changes no product
+> source or waiter semantics: it lifts the unchanged declaration to the enclosing `try`. An Acorn
+> lexical audit requires exactly one declaration, inventories all five direct calls, proves each is
+> inside and after the declaration's scope and rejects a re-gated historical mutant. Focused
+> four-file verification passes **58/58**; all TypeScript programs, `node --check`, the collision-
+> only real-Edge diagnostic through collision Share/reload and complete develop pass at **259 files
+> / 2,660 passed / 1 skipped**,
+> **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields; independent code
+> audit is **APPROVED**. The clean signed
+> candidate, tracked-input rehearsal and fresh browser chain remain pending; the dirty successor
+> inherits no 3f8f870 browser certificate.
 >
 > Product save semantics/schema, Share/gameplay behavior, deterministic generation, presentation,
 > art/audio, creature/genome/plant/biome/Guardian structure, numeric rulers, timeout/retry and
@@ -4396,10 +4393,12 @@ exactly one `arc9-progression-refresh-v1` only when fifth Share adds `share5` or
 raises best rank. Same-token receipt/revision/ordinal/SessionRNG spans, final outcome and two
 consecutive exact samples are mandatory. The c0 fixture uses the exact captured 26 unlock IDs,
 rank-oracle parity covers every threshold/factor including permanent saved-rank no-demotion, and
-all six Share helper outputs are bound to their waiter arguments. Focused **57/57**, all TypeScript
-programs and complete develop **259 files
-/ 2,659 passed / 1 skipped** are green, with **34** clean art sources, **1,014/1,014** routes,
-**454** non-inert fields and independent review **APPROVED**. Clean signing/tracked-input and the
+all six Share helper outputs are bound to their waiter arguments. The shared waiter is declared in
+the enclosing execution `try`, not inside full-journey mode, so collision-only mode can reach it;
+an Acorn audit proves its one declaration precedes and scopes all five direct calls while a re-gated
+mutant fails. Focused **58/58**, all TypeScript programs, `node --check`, collision-only real Edge
+and complete develop **259 files / 2,660 passed / 1 skipped** are green, with **34** clean art
+sources, **1,014/1,014** routes and **454** non-inert fields. Clean signing/tracked-input and the
 fresh unchanged-source browser chain remain pending. This is a harness-only repair.
 
 **Current Glass causal/presentation contract (2026-08-31):** the first instrument red retains one

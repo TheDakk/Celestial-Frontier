@@ -10,7 +10,57 @@ summary of it.
 
 ## Contents
 
-### Current exact-source c0f7215 collision Share-sequence oracle stop
+### Current exact-source 3f8f870 Share-waiter lexical-scope stop
+
+Exact clean SSH-signed source `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` (tree
+`979726f7035e7ca3c45de4fb80565b5d0d2d4481`, parent `c0f7215bd1ec…`) passed its clean
+tracked-input develop preflight and supplied one unchanged-source, fail-fast/no-retry local browser
+attempt. Browser-CDP selftest and live preflight accepted Edge `152.0.4191.53` / CDP `1.3`;
+compatible point-version changes remain provenance only.
+
+Compendium `20260901072803827-52451-8168677f8e` passed **78/78** with zero findings or blocked
+outcomes in **65,672 ms**, six review PNGs and exact named verification before Slice. Develop Slice
+`20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all ten screenshots,
+entered collision controls through boot/import/baseline and the first named Search gesture, then
+stopped before Search settlement after **336,730 ms** with exactly **1 finding / 1 scope**, `harness`:
+`waitForF4ActionSequenceFixedPoint is not defined`. The helper was declared inside the first
+`!OUTCOME_CONTROLS_ONLY` block while the collision adapter called it outside that lexical scope.
+Collision Share was never reached, so this exact run did not retest c0's `collision-share-1`.
+Glass correctly did not run, and 3f8f870 was not retried or relabelled. This exact red is no
+product finding.
+
+The exact carriers below pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_SHARE_FIXED_POINT_PREDECESSOR_PASS_20260901_3F8F870.json.gz`:
+  **453,021 bytes**, SHA-256
+  `38773d1a6824755974904db9a65e02e3f0a46f1f93fd65b283a84f2b6bdda686`; raw
+  **10,829,352 bytes**, SHA-256
+  `334135eb4832f8df14d543643319b3c345527f6fb01d81ff361171bb1bbfdf40`.
+- `ARC4_SLICE_PR35_SHARE_WAITER_LEXICAL_SCOPE_RED_20260901_3F8F870.json.gz`:
+  **1,867 bytes**, SHA-256
+  `32739f49df0b72d583092f1fe4faf508dbeaf81404d66ed0c02857d5a1b214cb`; raw
+  **5,954 bytes**, SHA-256
+  `08b57e977ffce25e7c328c0c84b6742d26eb78a6a9c0a5400c7d6526c07101d0`.
+- `ARC4_SLICE_PR35_SHARE_WAITER_LEXICAL_SCOPE_RED_20260901_3F8F870.log.gz`:
+  **1,509 bytes**, SHA-256
+  `c9547a98a94c1899ae09b88abee5ff8d38bdd87b0d23a44f9085ae686edd5de8`; raw
+  **3,746 bytes**, SHA-256
+  `18f1bf064ff918548ef0855af554244b513e71f7fbfd2f065c51bf95ab046a08`.
+
+Current producer/budget authority remains
+`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6` /
+`78269c722c0d64438c0d407e0d8df3a8a284715af35bff94ed6f7d8dbba569c2`. The bounded dirty
+successor lifts the unchanged waiter to the enclosing `try`, adds an Acorn lexical audit over its
+single declaration and five direct calls, and rejects the historical re-gated mutant. Focused
+four-file verification is **58/58**; all TypeScript programs, `node --check`, the collision-only
+real-Edge diagnostic through collision Share/reload and the complete develop profile pass at **259
+files / 2,660 passed / 1
+skipped**, **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields.
+Independent code audit is **APPROVED**. Signed tracked-input and fresh browser evidence remain
+pending, so these carriers bind only 3f8f870's exact PASS/red boundary. No hosted attempt, merge,
+release, preview or deployment is authorized.
+
+### Historical exact-source c0f7215 collision Share-sequence oracle stop
 
 Exact clean SSH-signed source `c0f7215bd1ec932f6357b6cfc1e045b5644ba389` (tree
 `ecdc8623e5bad04d25dce0d3710e0d8db13d8704`, parent `138cdee0d…`) supplied one unchanged-source,

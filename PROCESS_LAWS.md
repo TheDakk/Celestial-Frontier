@@ -1,5 +1,39 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A SHARED HARNESS HELPER MUST BE LEXICALLY OWNED BY EVERY EXECUTION MODE THAT CALLS IT**
+> (2026-09-01). A helper may be correct, source-present and fully covered in one journey while a
+> sibling mode fails at runtime if the declaration lives inside a gate the sibling does not enter.
+> Put a shared helper in the nearest common lexical owner, then parse the complete executable and
+> prove exactly one declaration plus every direct call is inside and after that owner. Retain a
+> re-gated mutant whose outside call is inaccessible. `node --check`, TypeScript and string
+> inventory cannot prove lexical reachability across conditionally entered blocks; execute the
+> affected real-browser mode as a bounded diagnostic before recertification.
+>
+> Exact clean SSH-signed source `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` (tree
+> `979726f7035e7ca3c45de4fb80565b5d0d2d4481`, parent `c0f7215bd1ec…`) passed its clean
+> tracked-input develop preflight, browser-CDP selftest and live Compendium preflight on Edge
+> `152.0.4191.53` / CDP `1.3`. Compendium `20260901072803827-52451-8168677f8e` passed **78/78**
+> once/no-retry in **65,672 ms** with zero findings/blocked outcomes, six review PNGs and exact
+> named verification. Unchanged-source Slice `20260901072936648-52803-f33e3b0b5239` completed the
+> ordinary journey and all ten screenshots, entered collision boot/import/baseline and dispatched
+> the first named Search gesture, then stopped before Search settlement once/no-retry after
+> **336,730 ms** with exactly one harness finding/scope:
+> `waitForF4ActionSequenceFixedPoint is not defined`. The helper was inside the first
+> `!OUTCOME_CONTROLS_ONLY` block while the collision adapter called it outside. Glass correctly did
+> not run. Collision Share was never reached, so this exact run did not cross c0's Share boundary.
+> Preserve this exact red; it is no product finding and cannot be answered with a retry,
+> timeout, browser pin or product change.
+>
+> The dirty bounded successor lifts the unchanged waiter to the enclosing `try`, adds an Acorn
+> declaration/call lexical audit and retains a re-gated negative mutant. Focused four-file
+> verification passes **58/58**, all TypeScript programs and `node --check` pass, the collision-only
+> real-Edge diagnostic through collision Share/reload passes, and the complete develop profile
+> passes **259 files / 2,660 passed /
+> 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields. This
+> code audit is **APPROVED**. This unsigned working tree inherits no 3f8f870 browser certificate.
+> A new signed candidate, tracked-input preflight and fresh one-attempt/no-retry Compendium → Slice → Glass chain remain
+> pending; no hosted, product, Arc, Gate, HUMAN, release or deployment authority follows.
+
 > **A GENERIC WRITABLE F4 SNAPSHOT IS NOT A MULTI-RECEIPT ACTION FIXED POINT** (2026-09-01).
 > A writable, idle snapshot may be an intermediate state between an action owner's receipt and a
 > queued aggregate-progression tail. Derive the exact ordered topology from the exact raw/live
