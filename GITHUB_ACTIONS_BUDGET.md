@@ -2,7 +2,54 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-02): eleventh hosted launcher-instrument red preserved; bounded
+**Current local state (2026-09-02): twelfth hosted Inventory modal-lifetime product red preserved;
+bounded local successor verification is in progress; no hosted attempt is authorized.** PR #35
+run `33657402955`, attempt 1, consumed the exact one-time authority for head
+`bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. It completed terminal red after **72m38s**. Every
+stage through root Layout **787/787**, Compendium **78/78** with named verification and real-browser
+Slice with exact binding passed; SceneMemory correctly skipped as production-only. Glass then
+causal-stopped after **50,864 ms** on its first executed row, small-phone 320×568@2, with exactly
+one product finding, zero instrument failures and zero retries. Only
+`INVENTORY_MODAL_OWNERSHIP.backgroundLocked:false` failed; sheet/detail ownership, item identity,
+active/retained/pending state, geometry, 44px controls and Close focus were green. The remaining 11
+viewport rows, Recovery and preview packaging correctly did not run. The label was removed and PR
+#35 remains Ready/open/unmerged; `develop` remains at the exact base.
+
+The exact report did not identify the unlocked body sibling. Source proved the product class:
+Inventory isolated only the body roots present at open, allowing a later body-root mount or
+`inert`/`aria-hidden` writer to escape. The bounded successor continuously owns both isolation
+halves, snapshots newly encountered roots once and restores exact prior state after disconnect.
+Existing Glass controls now retain an unlocked-root ledger and independently prove attribute/late-
+root red, observer recovery, outside-focus containment, native Tab wrap and exact restoration;
+there is no new job or control name and the sealed total remains 104. Focused tests, all three
+TypeScript programs, Glass selftest and the small-phone Inventory route/controls are green. Clean
+committed tracked-input proof and one unchanged-source Compendium → Slice → Glass local chain remain
+required before any successor is hosted-ready.
+
+Current Compendium measurement/producer authority is
+`b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
+`f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc`. Only the exact built
+index/main/service-worker graph moved with product/release copy. Worker/painter bytes, the fixed
+ruler, every numeric ceiling, the 78-outcome inventory and historical samples are unchanged; this
+is not an Edge rebaseline or resource recalibration.
+
+The first local consolidated `develop` profile stopped in **32.61s** after **2,727 passed / 1
+skipped** because that exact built producer graph had not yet been rebound. The independent printer
+named only index, owner, service-worker and derived authority fields. After the exact six-leaf
+budget/history update, focused authority coverage passes **32/32** and the single corrected profile
+passes **264/264 files, 2,728 passed / 1 skipped**, all three TypeScript programs, **34** art
+sources, **1,014/1,014** routes and **454** declared fields. This is local evidence only; signed
+tracked-input and unchanged-source browser certification remain pending.
+
+The twelve hosted stops classify as **8 instrument/infrastructure, 3 product/runtime and 1 mixed**.
+The exact bdd8a4c authorization is consumed, there is no retry, and no push, label, dispatch, PR
+mutation, merge, release, version, publication or deployment is authorized. Artifact
+`battery-evidence` is ID `9860127013`, archive digest
+`sha256:ad9d5212cb4c8f187b3c2f9035a1da2483adf0b56184418b73946c9ba21d21fa`; immutable report and
+repair details are indexed in `audits/README.md`.
+
+**Preserved predecessor local state (2026-09-02): eleventh hosted launcher-instrument red preserved; bounded
 deterministic repair and clean browser certificate are green; no hosted attempt
 is authorized.** PR #35 run `33628648136`, attempt 1, consumed the exact one-time authority for
 head `85431115256137b05d7cdfa590e087fd3b4d52e1` against base
@@ -1059,8 +1106,25 @@ correctly skipped as production-only. The shared launcher selftest then stopped 
 or judged the game. Exact Edge, live Compendium, Slice and Glass did not run. The immutable audit
 is `audits/PR35_TEST_BATTERY_RIGHTSIZING_AND_LAUNCHER_RED_20260902_8543111.md`.
 
-All eleven PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
-transition, merge, release, version bump, preview, publication or deployment is authorized.
+The twelfth exact-head authorization tested
+`bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against the same base. GitHub run `33657402955`,
+attempt 1, used synthetic merge `26db13963033feacc89ceef1a59a4af0c05c14c3`, whose tree
+`ae8faec92122f412240c5b4979073f69b170c9f4` is byte-identical to the exact head tree.
+Authorization, browser-free/static/art gates, the shared launcher selftest, root Layout
+**787/787**, Compendium **78/78** plus named verification and real-browser Slice plus exact binding
+passed; SceneMemory correctly skipped as production-only. Glass then stopped once/no-retry after
+**50,864 ms** on its first executed small-phone 320×568@2 row with exactly one product finding,
+zero instrument failures and zero retries: `INVENTORY_MODAL_OWNERSHIP`, whose sole failed clause
+was `backgroundLocked:false`. It executed 81 controls, blocked the 23 dependent controls, passed
+one reload row and did not run the remaining 11 viewport rows. Recovery and preview packaging
+correctly skipped. The workflow completed red after **72m38s**; artifact `9860127013` is
+9,752,514 bytes with digest
+`sha256:ad9d5212cb4c8f187b3c2f9035a1da2483adf0b56184418b73946c9ba21d21fa`. The label was removed,
+PR #35 remains Ready/open/unmerged and `develop` remains unchanged. The immutable report/repair
+audit is indexed in `audits/README.md`.
+
+All twelve PR #35 attempts are consumed and their labels are absent. No new hosted attempt, PR
+mutation, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard
 

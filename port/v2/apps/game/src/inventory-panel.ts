@@ -249,6 +249,7 @@ export class InventoryPanelController {
   readonly #requiresSalvageConfirmation: NonNullable<InventoryPanelControllerOptions['requiresSalvageConfirmation']>;
   readonly #deferWhileClosed: boolean;
   readonly #background = new Map<HTMLElement, Readonly<{ inert: boolean; ariaHidden: string | null }>>();
+  #backgroundObserver: MutationObserver | null = null;
   #state: Arc2LootStateV1 | null = null;
   #query = '';
   #slot: 'all' | GearSlot = 'all';
@@ -1043,19 +1044,40 @@ export class InventoryPanelController {
   }
 
   #lockBackground(): void {
+    const BackgroundObserver = this.#document.defaultView?.MutationObserver;
+    if (!BackgroundObserver) {
+      throw new Error('Inventory detail requires MutationObserver background ownership');
+    }
+    this.#backgroundObserver?.disconnect();
+    this.#backgroundObserver = null;
     this.#background.clear();
+    this.#backgroundObserver = new BackgroundObserver(() => this.#enforceBackgroundLock());
+    this.#backgroundObserver.observe(this.#document.body, {
+      attributes: true,
+      attributeFilter: ['inert', 'aria-hidden'],
+      childList: true,
+      subtree: true,
+    });
+    this.#enforceBackgroundLock();
+  }
+
+  #enforceBackgroundLock(): void {
     for (const candidate of [...this.#document.body.children]) {
       if (!(candidate instanceof this.#document.defaultView!.HTMLElement) || candidate === this.#sheet) continue;
-      this.#background.set(candidate, Object.freeze({
-        inert: candidate.inert,
-        ariaHidden: candidate.getAttribute('aria-hidden'),
-      }));
-      candidate.inert = true;
-      candidate.setAttribute('aria-hidden', 'true');
+      if (!this.#background.has(candidate)) {
+        this.#background.set(candidate, Object.freeze({
+          inert: candidate.inert,
+          ariaHidden: candidate.getAttribute('aria-hidden'),
+        }));
+      }
+      if (!candidate.inert) candidate.inert = true;
+      if (candidate.getAttribute('aria-hidden') !== 'true') candidate.setAttribute('aria-hidden', 'true');
     }
   }
 
   #unlockBackground(): void {
+    this.#backgroundObserver?.disconnect();
+    this.#backgroundObserver = null;
     for (const [candidate, prior] of this.#background) {
       candidate.inert = prior.inert;
       if (prior.ariaHidden === null) candidate.removeAttribute('aria-hidden');

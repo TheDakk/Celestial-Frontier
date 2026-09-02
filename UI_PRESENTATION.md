@@ -1,5 +1,30 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-09-02 current Inventory modal-lifetime overlay (matches current local code; supersedes
+> older “current” labels while preserving dated evidence):** PR #35 run `33657402955` tested exact
+> head `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once/no-retry. Every hosted stage through Layout,
+> Compendium and Slice passed. Glass then causal-stopped on its first 320×568 row with one product
+> finding and no instrument failure: Inventory's sheet/detail/identity/geometry/controls/Close focus
+> were correct, but one current body background sibling was not both inert and `aria-hidden`.
+> Recovery and preview correctly skipped; the authorization is consumed and PR #35 remains
+> Ready/open/unmerged.
+>
+> Inventory had isolated only the body children present at open. Its modal owner now observes the
+> whole open lifetime, snapshots newly encountered direct body roots once, reasserts both isolation
+> halves after a late mount or attribute rewrite, disconnects before release, and restores every
+> encountered root's exact prior state on Close/dispose. Focus wrap/return and item/action semantics
+> are unchanged. Glass retains exact unlocked-root and presentation diagnostics, injects the real
+> late-root/attribute failure class, proves observer recovery and exact restoration, and keeps its
+> native Tab bypass inside the modal. The sealed control count remains 104. Focused tests, all three
+> TypeScript programs, the corrected **264/264-file / 2,728-pass / 1-skip** `develop` profile and
+> the small-phone product/control path are green; committed tracked-input and the clean exact-source
+> browser certificate are still pending. This closes no HUMAN criterion and changes no loot, save, creature,
+> art, graphics, audio, layout ruler, retry or browser-version policy.
+> Current Compendium producer authority is
+> `f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc` under unchanged
+> measurement/ruler authority; only the exact built index/main/service-worker graph moved.
+
 > **2026-09-02 current browser-ownership/Glass repair overlay (supersedes older “current” labels;
 > dated evidence remains immutable):** exact clean source
 > `05690215771db91601cf9dbcbcaa8d771fe540b5` passed the complete browser-free develop profile,
@@ -669,7 +694,7 @@
 > Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler` remain owner-blocked. The current Guide capability map contains **41**
 > visible topics (**34 partial / 7 unavailable**) and the cumulative v2 draft contains **77** unique
 > bullets with rendered ordered SHA-256
-> `9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b`. These current local surfaces
+> `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`. These current local surfaces
 > do not inherit the older browser certificate below; fresh
 > exact-source browser, physical-device, screen-reader and HUMAN experience review remain open.
 
@@ -1071,7 +1096,9 @@
 >
 > Selecting an exact item opens one focus-owned detail sheet with base/construction axes, provenance,
 > equipped state, exact candidate-versus-equipped effect deltas and explicit conditional wording.
-> Its modal owner makes the background inert/`aria-hidden`, wraps Tab in both directions, restores
+> Its modal owner makes every current direct body background root inert/`aria-hidden`, continuously
+> reasserts both states for roots mounted or rewritten while the sheet remains open, then disconnects
+> and restores each encountered root's exact prior state. It wraps Tab in both directions, restores
 > focus on Close, and cannot duplicate or retain a stale selected instance. Equip, Unequip, pending
 > claim and confirmed Salvage are explicit buttons. The sheet remains pending while one durable
 > F3/F4 action runs; it publishes only the committed carrier, reports stale/refused/storage outcomes
@@ -1552,7 +1579,7 @@
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
 > Foundation**, the cumulative categorized 77-bullet v2.0 development bulletin. Its rendered
-> ordered SHA-256 is `9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b`. It summarizes
+> ordered SHA-256 is `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
 > promises. The long draft is browser-checked for canonical section order and an exact final
 > bullet that is visibly reachable through bounded adaptive native-wheel input. Each wheel is
