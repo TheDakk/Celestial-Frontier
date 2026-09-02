@@ -25,7 +25,10 @@ Their exact raw/gzip sizes and hashes, unchanged-source binding, Edge/CDP proven
 boundary are indexed in
 `ARC4_GLASS_PR35_ACTION_SETTLEMENT_REPAIR_PASS_20260902_64E405B.md`. This is local evidence only:
 no hosted attempt, push, label, PR mutation, merge, release, publication, or deployment is
-authorized.
+authorized. SSH-signed carrier/reference commit `112bf7fb4961d8f85833df964fe8b17109ab2a0b`
+(tree `5daa4e7e589ec37fc59f5e1b2e863caccd5101be`) passes the final hermetic tracked-input `develop`
+profile at **264/264 files, 2,738 passed / 1 skipped**; the current signed handoff-only descendant
+passes it too.
 
 ### Historical PR #35 action-settlement instrument red — thirteenth attempt
 

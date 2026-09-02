@@ -44,6 +44,12 @@ Each carrier was produced with `gzip -n -9`, passed `gzip -t`, decoded byte-for-
 raw source, reproduced the raw SHA-256 after decompression, and matched an independent deterministic
 recompression byte-for-byte.
 
+The four carriers and this index are retained by SSH-signed commit
+`112bf7fb4961d8f85833df964fe8b17109ab2a0b`, tree
+`5daa4e7e589ec37fc59f5e1b2e863caccd5101be`. That descendant passes the final hermetic
+tracked-input `develop` profile at **264/264 files, 2,738 passed / 1 skipped**; the current signed
+handoff-only descendant passes it too without rebinding the browser certificate.
+
 | Carrier | Raw bytes | Raw SHA-256 | Gzip bytes | Gzip SHA-256 |
 | --- | ---: | --- | ---: | --- |
 | `ARC1A_COMPENDIUM_PR35_ACTION_SETTLEMENT_REPAIR_PASS_20260902_64E405B.json.gz` | 10,868,971 | `128763fcdd45cef23cb41f509f8d30bc6c041784c3547252cd6438f0b089f105` | 453,995 | `06bcbff2009d4fdae50bbbdd529612410b8bf22427b234be4e888a6ead276ef8` |

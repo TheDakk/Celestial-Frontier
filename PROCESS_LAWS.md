@@ -28,8 +28,10 @@
 > `20260902215703000-54563-41950fd00ea0` consumed that Slice and passed in **114,022 ms** with
 > **12/12** viewports/reloads and **104/104** controls, zero findings/instrument failures/blocked/
 > omitted work or retries (report `de298933…adc2`). Every named verifier and independent code/docs
-> review is green/**CLEAR**. A signed evidence/docs descendant and final tracked-input proof remain;
-> this local certificate grants no hosted authority.
+> review is green/**CLEAR**. SSH-signed evidence/reference descendant `112bf7f…` preserves the four
+> deterministic carriers and passes the final tracked-input `develop` profile at **264/264 files,
+> 2,738 passed / 1 skipped**; the current signed handoff-only descendant passes it too. Local
+> closure is complete, but this certificate grants no hosted authority.
 
 > **COMPOSE AN ACTION VERDICT LAST, AND POLL AN ALWAYS-STRUCTURED OUTCOME** (2026-09-02).
 > A green setup object may carry its own `ok`; spread it before computing the composite action
