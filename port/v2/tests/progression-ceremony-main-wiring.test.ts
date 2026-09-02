@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const mainSource = fs.readFileSync(path.join(here, '../apps/game/src/main.ts'), 'utf8');
+const sliceSmokeSource = fs.readFileSync(path.join(here, '../tools/slicesmoke.mjs'), 'utf8');
 
 function section(source: string, startText: string, endText: string): string {
   const start = source.indexOf(startText);
@@ -46,6 +47,60 @@ function exactCallCount(body: string): number {
   return [...body.matchAll(/presentProgressionCeremony\(\{/gu)].length;
 }
 
+function saturatedCharterCeremonySmokeErrors(source: string): string[] {
+  const errors: string[] = [];
+  const heldBoundary = section(
+    source,
+    '    const ceremonyRaceArmed = expectedChapter === 3',
+    '\n    let outcome;',
+  );
+  if (!inOrder(heldBoundary, [
+    'window.__CF_SLICE__.api.__smokeArmProductActionHold()',
+    'await touchNav(settledLandAction.x, settledLandAction.y);',
+    'held Land ceremony boundary',
+    "toast.style.opacity='0'",
+    'guarded Share ceremony callback',
+    'p?.drainCallbacks>b.drainCallbacks',
+    'p?.inFlightDeferrals>b.inFlightDeferrals',
+    'p?.deliveries===b.deliveries',
+    'JSON.stringify(p?.queueKeys)===JSON.stringify(b.queueKeys)',
+    'window.__CF_SLICE__.api.__smokeReleaseProductActionHold()',
+  ])) {
+    errors.push('held Land boundary does not witness a real deferred callback with its queue intact');
+  }
+  const resumedBoundary = section(
+    source,
+    "    if (expectedChapter === 3) {\n      const progressionBeforeResume = outcome.progressionCeremony;",
+    '\n    const revisionTopologyControl = structuredClone(landAuthority);',
+  );
+  if (!inOrder(resumedBoundary, [
+    "progressionBeforeResume?.queueKeys?.[0] !== 'achievement:share'",
+    "?.filter((key) => key === 'achievement:share').length !== 1",
+    'progressionBeforeResume?.deliveries !== beforeLand.progressionCeremony.deliveries',
+    "toast.style.opacity='0'",
+    'resumed Share ceremony delivery',
+    'p?.deliveries===b.deliveries+1',
+    "p?.lastDeliveredKey==='achievement:share'",
+    'JSON.stringify(p.queueKeys)===JSON.stringify(b.queueKeys.slice(1))',
+    's.toastOn===true',
+    's.toastSerial===${outcome.toastSerial + 1}',
+    '/Achievement · Signal Sent/i.test(s.toastText)',
+    '/Share a discovery code/i.test(s.toastText)',
+    'const postCeremonyAuthority = await readNavPhF4AuthoritySnapshot();',
+    'durableProjection: charterDurableProjection(delivered)',
+    'resumedShareCeremony?.postCeremonyAuthority?.token !== landAuthority.token',
+    'resumedShareCeremony?.postCeremonyAuthority?.raw?.revision !== landAuthority.raw.revision',
+    'resumedShareCeremony?.postCeremonyAuthority?.raw?.receiptKeys',
+    'resumedShareCeremony?.postCeremonyAuthority?.raw?.receiptRows',
+    'resumedShareCeremony?.durableProjection !== charterDurableProjection(outcome)',
+    'the preserved Share ceremony did not resume exactly once after Land settled',
+    'return;',
+  ])) {
+    errors.push('settled Land boundary does not prove exactly one preserved Share delivery resumes');
+  }
+  return errors;
+}
+
 function ceremonyWiringErrors(source: string): string[] {
   const errors: string[] = [];
   if (!source.includes("from './progression-ceremony.js';")) {
@@ -68,6 +123,41 @@ function ceremonyWiringErrors(source: string): string[] {
     || !presenter.includes('else toastRankPromotion(ceremony.rankName);')
     || !presenter.includes('playRaritySting(ceremony.stingTier);')) {
     errors.push('achievement/rank toast and semantic sting delivery is incomplete');
+  }
+  const inFlightDeferral = section(
+    presenter,
+    '    if (productActionInFlight) {',
+    "\n    if (toastEl.style.opacity === '1') {",
+  );
+  const drainScheduler = section(
+    presenter,
+    'function scheduleProgressionCeremonyDrain(delay = 0): void {',
+    '\n/** The sole Main delivery seam.',
+  );
+  if (!drainScheduler.includes(`progressionCeremonyTimer = window.setTimeout(() => {
+    progressionCeremonyTimer = 0;
+    progressionCeremonyDrainCallbacks = advanceProgressionCeremonyDiagnosticCounter(`)
+    || !inOrder(drainScheduler, [
+    'progressionCeremonyTimer = 0;',
+    'progressionCeremonyDrainCallbacks = advanceProgressionCeremonyDiagnosticCounter(',
+    'if (replacementReloadPending) {',
+    'if (productActionInFlight) {',
+    'progressionCeremonyInFlightDeferrals = advanceProgressionCeremonyDiagnosticCounter(',
+    'scheduleProgressionCeremonyDrain(200);',
+    "if (toastEl.style.opacity === '1') {",
+    'const ceremony = progressionCeremonyQueue.shift();',
+    'progressionCeremonyDeliveries = advanceProgressionCeremonyDiagnosticCounter(',
+    'progressionCeremonyLastDeliveredKey = progressionCeremonyKey(ceremony);',
+  ]) || !inFlightDeferral.includes('scheduleProgressionCeremonyDrain(200);')
+    || !inFlightDeferral.includes('return;')
+    || inFlightDeferral.includes('progressionCeremonyQueue.length = 0;')
+    || inFlightDeferral.includes('progressionCeremonyQueue.shift()')) {
+    errors.push('in-flight product action does not defer the intact ceremony queue before delivery');
+  }
+  if (!presenter.includes("schema: 'cf-v2-progression-ceremony-diagnostics/v1'")
+    || !presenter.includes('queueKeys: Object.freeze(progressionCeremonyQueue.map(progressionCeremonyKey))')
+    || !source.includes('progressionCeremony: progressionCeremonyDiagnostics(),')) {
+    errors.push('ceremony deferral/delivery diagnostics are not exposed through the one live state seam');
   }
   if (!presenter.includes("if (ceremony.kind === 'rank-promotion')")
     || !presenter.includes('playRankPromotionGoldFx(ceremony);')
@@ -315,6 +405,48 @@ describe('postcommit achievement and rank ceremony Main wiring', () => {
   });
 
   it('negative-controls replay, boot/Training silence, audio/FX, publication, and atomic owners', () => {
+    const inFlightGuard = `    if (productActionInFlight) {
+      progressionCeremonyInFlightDeferrals = advanceProgressionCeremonyDiagnosticCounter(
+        progressionCeremonyInFlightDeferrals,
+      );
+      scheduleProgressionCeremonyDrain(200);
+      return;
+    }
+`;
+    expect(ceremonyWiringErrors(replaceExact(
+      mainSource,
+      inFlightGuard,
+      '',
+    ))).toContain('in-flight product action does not defer the intact ceremony queue before delivery');
+
+    const guardMovedAfterShift = replaceExact(
+      replaceExact(mainSource, inFlightGuard, ''),
+      '    const ceremony = progressionCeremonyQueue.shift();',
+      `    const ceremony = progressionCeremonyQueue.shift();
+${inFlightGuard}`,
+    );
+    expect(ceremonyWiringErrors(guardMovedAfterShift)).toContain(
+      'in-flight product action does not defer the intact ceremony queue before delivery',
+    );
+
+    expect(ceremonyWiringErrors(replaceExact(
+      mainSource,
+      '      scheduleProgressionCeremonyDrain(200);\n      return;\n    }\n    if (toastEl.style.opacity',
+      '      progressionCeremonyQueue.length = 0;\n      return;\n    }\n    if (toastEl.style.opacity',
+    ))).toContain('in-flight product action does not defer the intact ceremony queue before delivery');
+
+    expect(ceremonyWiringErrors(replaceExact(
+      mainSource,
+      '    progressionCeremonyTimer = 0;\n',
+      '',
+    ))).toContain('in-flight product action does not defer the intact ceremony queue before delivery');
+
+    expect(ceremonyWiringErrors(replaceExact(
+      mainSource,
+      '        progressionCeremony: progressionCeremonyDiagnostics(),\n',
+      '',
+    ))).toContain('ceremony deferral/delivery diagnostics are not exposed through the one live state seam');
+
     expect(ceremonyWiringErrors(replaceExact(
       mainSource,
       '    || input.revision <= highestProgressionCeremonyRevision) return;',
@@ -402,5 +534,57 @@ describe('postcommit achievement and rank ceremony Main wiring', () => {
       '        publishArc5ScoutCharterFieldsV1(sourceState, attempt.transaction.state);',
       '        // mutation control omits Scout Starter Charter publication',
     ))).toContain('Scout Starter Charter ceremony is not its verified same-CAS publication');
+  });
+
+  it('proves the saturated-Charter race defers and then resumes one exact Share ceremony', () => {
+    expect(saturatedCharterCeremonySmokeErrors(sliceSmokeSource)).toEqual([]);
+
+    expect(saturatedCharterCeremonySmokeErrors(replaceExact(
+      sliceSmokeSource,
+      'p?.inFlightDeferrals>b.inFlightDeferrals',
+      'true',
+    ))).toContain(
+      'held Land boundary does not witness a real deferred callback with its queue intact',
+    );
+
+    expect(saturatedCharterCeremonySmokeErrors(replaceExact(
+      sliceSmokeSource,
+      'p?.deliveries===b.deliveries+1',
+      'p?.deliveries>=b.deliveries',
+    ))).toContain(
+      'settled Land boundary does not prove exactly one preserved Share delivery resumes',
+    );
+
+    expect(saturatedCharterCeremonySmokeErrors(replaceExact(
+      sliceSmokeSource,
+      "p?.lastDeliveredKey==='achievement:share'",
+      'Boolean(p?.lastDeliveredKey)',
+    ))).toContain(
+      'settled Land boundary does not prove exactly one preserved Share delivery resumes',
+    );
+
+    expect(saturatedCharterCeremonySmokeErrors(replaceExact(
+      sliceSmokeSource,
+      'JSON.stringify(p.queueKeys)===JSON.stringify(b.queueKeys.slice(1))',
+      "!p.queueKeys.includes('achievement:share')",
+    ))).toContain(
+      'settled Land boundary does not prove exactly one preserved Share delivery resumes',
+    );
+
+    expect(saturatedCharterCeremonySmokeErrors(replaceExact(
+      sliceSmokeSource,
+      '&&s.toastOn===true&&s.toastSerial',
+      '&&s.toastSerial',
+    ))).toContain(
+      'settled Land boundary does not prove exactly one preserved Share delivery resumes',
+    );
+
+    expect(saturatedCharterCeremonySmokeErrors(replaceExact(
+      sliceSmokeSource,
+      'const postCeremonyAuthority = await readNavPhF4AuthoritySnapshot();',
+      'const postCeremonyAuthority = landAuthority;',
+    ))).toContain(
+      'settled Land boundary does not prove exactly one preserved Share delivery resumes',
+    );
   });
 });

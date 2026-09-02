@@ -1,5 +1,19 @@
 # Celestial Frontier — Quests & Chapters
 
+> **2026-09-01 current Charter-notice ownership correction (matches local code as of 2026-09-01;
+> supersedes older “current” labels while preserving dated evidence):** PR #35 hosted run
+> `33572309149` tested exact head `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` through synthetic
+> merge `778d3cf58937476a65c550e875b946290c0967b4`. Saturated multi-chapter recovery durably recorded
+> the exact Chapter 1–3 aggregate, but a previously queued Share-achievement ceremony was allowed
+> to consume the adjacent toast while the newer Landing owner was still in flight.
+>
+> The ceremony drain now yields before queue consumption to any active receipt-bearing product
+> owner, preserving and rescheduling the older notice until that owner settles. A Landing/Charter
+> action therefore owns its aggregate completion notice without discarding the deferred ceremony.
+> Charter eligibility, chapter selection, progress, rewards, receipt/CAS, exact-once and no-retry
+> rules are unchanged. The hosted red remains historical evidence; the changed source awaits a new
+> exact-source browser chain.
+
 > **2026-08-29 current local Charter fixed-point correction (supersedes narrower same-date
 > descriptions below where they differ):** Starter Charter acceptance and staged deed successors now
 > use the deterministic transaction owner's `canonicalizeState`, bound to the same detached registry
@@ -59,7 +73,9 @@
 > burst is capped at 40 and further reduced by the current motion/device effects budget, and obtains
 > only player-chip geometry through AppChrome rather than taking over its DOM. Boot catch-up,
 > Training, replay, already-durable observation, refusal and read-only convergence are silent; these
-> ceremonies grant no additional reward.
+> ceremonies grant no additional reward. If a newer receipt-bearing action is still settling, its
+> outcome notice keeps presentation ownership: an older queued ceremony remains intact and resumes
+> only after the product owner and current toast release it.
 
 > **Historical earlier 2026-08-29 Charter-writer overlay (superseded by the current board above):** the live projection then had exact outcome
 > writers for canonical first landfalls, successful Mine actions, eligible fixed Fabricator

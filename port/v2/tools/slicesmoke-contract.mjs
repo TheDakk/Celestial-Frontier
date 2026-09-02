@@ -22,6 +22,182 @@ const canonicalJson = (value) => {
   return JSON.stringify(value);
 };
 
+export const GUIDE_RELEASE_TAIL_NATIVE_WHEEL_DEFAULTS = Object.freeze({
+  maxDurationMs: 4_000,
+  maxAttempts: 64,
+  maxConsecutiveStalls: 3,
+  bottomTolerancePx: 2,
+});
+
+const guideReleaseTailWheelLimits = (limits = {}) => {
+  const result = { ...GUIDE_RELEASE_TAIL_NATIVE_WHEEL_DEFAULTS, ...limits };
+  if (!Number.isFinite(result.maxDurationMs) || result.maxDurationMs <= 0
+    || !Number.isSafeInteger(result.maxAttempts) || result.maxAttempts <= 0
+    || !Number.isSafeInteger(result.maxConsecutiveStalls)
+    || result.maxConsecutiveStalls <= 0
+    || !Number.isFinite(result.bottomTolerancePx) || result.bottomTolerancePx < 0
+    || !nonEmptyString(result.expectedTailText)) {
+    throw new TypeError('Guide release-tail native-wheel limits must be finite and positive');
+  }
+  return Object.freeze(result);
+};
+
+const guideReleaseTailWheelObservationIsValid = (observation) => (
+  observation !== null && typeof observation === 'object'
+  && nonEmptyString(observation.documentToken)
+  && nonEmptyString(observation.tailText)
+  && typeof observation.overflowY === 'string'
+  && Number.isFinite(observation.scrollTop) && observation.scrollTop >= 0
+  && Number.isFinite(observation.maxScroll) && observation.maxScroll >= 0
+  && typeof observation.visible === 'boolean'
+  && typeof observation.tailMatches === 'boolean'
+  && typeof observation.hitOwned === 'boolean'
+);
+
+/**
+ * Pure state machine for the Guide release-tail browser driver. A `wheel`
+ * decision authorizes exactly one native wheel dispatch. The caller then
+ * settles and passes a fresh observation back; content length and release
+ * version never determine the attempt count or success predicate.
+ */
+export function advanceGuideReleaseTailNativeWheel(
+  priorState, observation, nowMs, limits = {},
+) {
+  const bounded = guideReleaseTailWheelLimits(limits);
+  if (!Number.isFinite(nowMs)) {
+    throw new TypeError('Guide release-tail native-wheel time must be finite');
+  }
+  if (!guideReleaseTailWheelObservationIsValid(observation)) {
+    return Object.freeze({
+      status: 'failed', reason: 'invalid-observation', deltaY: null,
+      state: priorState ?? null, observation,
+    });
+  }
+  const initial = priorState === null || priorState === undefined;
+  if (!initial && (priorState.schema !== 'cf-v2-guide-release-tail-wheel/v1'
+    || !Number.isFinite(priorState.startedAtMs)
+    || !Number.isSafeInteger(priorState.attempts) || priorState.attempts < 0
+    || !Number.isSafeInteger(priorState.consecutiveStalls)
+    || priorState.consecutiveStalls < 0
+    || !Number.isFinite(priorState.lastScrollTop)
+    || !Number.isFinite(priorState.lastMaxScroll) || priorState.lastMaxScroll < 0
+    || priorState.lastScrollTop > priorState.lastMaxScroll + bounded.bottomTolerancePx
+    || priorState.documentToken !== observation.documentToken
+    || priorState.tailText !== observation.tailText)) {
+    return Object.freeze({
+      status: 'failed', reason: 'owner-drift', deltaY: null,
+      state: priorState ?? null, observation,
+    });
+  }
+  const startedAtMs = initial ? nowMs : priorState.startedAtMs;
+  const attempts = initial ? 0 : priorState.attempts;
+  const progressed = initial || observation.scrollTop > priorState.lastScrollTop;
+  const consecutiveStalls = initial || progressed
+    ? 0 : priorState.consecutiveStalls + 1;
+  const state = Object.freeze({
+    schema: 'cf-v2-guide-release-tail-wheel/v1',
+    documentToken: observation.documentToken,
+    tailText: observation.tailText,
+    startedAtMs,
+    attempts,
+    consecutiveStalls,
+    lastScrollTop: observation.scrollTop,
+    lastMaxScroll: observation.maxScroll,
+  });
+  if (observation.tailMatches !== true
+    || observation.tailText !== bounded.expectedTailText) {
+    return Object.freeze({ status: 'failed', reason: 'tail-mismatch', deltaY: null, state, observation });
+  }
+  if (observation.hitOwned !== true) {
+    return Object.freeze({ status: 'failed', reason: 'hit-owner', deltaY: null, state, observation });
+  }
+  const scrollable = /^(auto|scroll)$/u.test(observation.overflowY)
+    && observation.maxScroll > bounded.bottomTolerancePx;
+  if (!scrollable) {
+    return Object.freeze({ status: 'failed', reason: 'not-scrollable', deltaY: null, state, observation });
+  }
+  if (observation.scrollTop > observation.maxScroll + bounded.bottomTolerancePx) {
+    return Object.freeze({ status: 'failed', reason: 'invalid-geometry', deltaY: null, state, observation });
+  }
+  if (initial && observation.scrollTop > bounded.bottomTolerancePx) {
+    return Object.freeze({ status: 'failed', reason: 'initial-position', deltaY: null, state, observation });
+  }
+  if (nowMs - startedAtMs >= bounded.maxDurationMs) {
+    return Object.freeze({ status: 'failed', reason: 'deadline', deltaY: null, state, observation });
+  }
+  const atBottom = observation.scrollTop >= observation.maxScroll - bounded.bottomTolerancePx;
+  if (atBottom && observation.visible === true && attempts > 0) {
+    return Object.freeze({ status: 'reached', reason: 'tail-reached', deltaY: null, state, observation });
+  }
+  if (consecutiveStalls >= bounded.maxConsecutiveStalls) {
+    return Object.freeze({ status: 'failed', reason: 'stalled', deltaY: null, state, observation });
+  }
+  if (attempts >= bounded.maxAttempts) {
+    return Object.freeze({ status: 'failed', reason: 'attempt-limit', deltaY: null, state, observation });
+  }
+  const remaining = Math.max(1, Math.ceil(observation.maxScroll - observation.scrollTop));
+  return Object.freeze({
+    status: 'wheel', reason: 'advance', deltaY: remaining,
+    state: Object.freeze({ ...state, attempts: attempts + 1 }), observation,
+  });
+}
+
+/** Exact post-control restoration; every moved scroll/style/owner field must
+ * agree with the pre-control snapshot. */
+export function assessGuideReleaseTailRestoration(expected, actual) {
+  const fields = Object.freeze([
+    'documentToken', 'tailText', 'scrollTop', 'scrollLeft',
+    'overflowYValue', 'overflowYPriority', 'computedOverflowY',
+  ]);
+  const reasons = [];
+  const valid = (value) => value !== null && typeof value === 'object'
+    && nonEmptyString(value.documentToken) && nonEmptyString(value.tailText)
+    && Number.isFinite(value.scrollTop) && value.scrollTop >= 0
+    && Number.isFinite(value.scrollLeft) && value.scrollLeft >= 0
+    && typeof value.overflowYValue === 'string'
+    && typeof value.overflowYPriority === 'string'
+    && typeof value.computedOverflowY === 'string';
+  if (!valid(expected) || !valid(actual)) {
+    return { ok: false, reasons: ['restoration shape'] };
+  }
+  for (const field of fields) {
+    if (actual[field] !== expected[field]) reasons.push(field);
+  }
+  return { ok: reasons.length === 0, reasons };
+}
+
+/** One post-Training bulletin fixed point. Two equal durable reads bracket
+ * the live/focus sample so a queued timer cannot mix an old product state
+ * with a newer IndexedDB row (or the reverse). */
+export function assessDtrainReleaseConvergence(evidence, expectedRn) {
+  if (!nonEmptyString(expectedRn)) {
+    throw new TypeError('D-TRAIN release convergence requires an expected release identity');
+  }
+  const state = evidence?.state;
+  const focus = evidence?.focus;
+  const checks = Object.freeze({
+    durableStable: typeof evidence?.rawBeforeText === 'string'
+      && evidence.rawBeforeText.length > 0
+      && evidence.rawBeforeText === evidence?.rawAfterText
+      && evidence.rawAfterText === JSON.stringify(evidence?.raw),
+    trainingReleased: state?.tutActive === false && state?.tutDone === true
+      && state?.trainingRestoreWitness?.stage === 'released',
+    liveSeen: state?.rnSeen === expectedRn,
+    pendingCleared: state?.releasePending === null,
+    guideExclusive: state?.panelOpen === 'guide',
+    durableSeen: evidence?.raw?.rn === expectedRn,
+    fixtureHeading: focus?.heading === `v${expectedRn} · Browser fixture bulletin`,
+    fixtureBackFocused: focus?.backFocus === true,
+    trainingFocusReleased: focus?.insideTraining === false,
+    trainingRemoved: focus?.trainingPresent === false,
+    chromeReleased: focus?.inertChrome === 0,
+    atlasClosed: focus?.atlasClosed === true,
+  });
+  const reasons = Object.entries(checks).filter(([, value]) => value !== true)
+    .map(([name]) => name);
+  return { ok: reasons.length === 0, reasons, checks };
+}
+
 const writableSettingsClick = (selector) => ({ kind: 'click', selector });
 const writableSettingsInput = (selector, value) => ({ kind: 'input', selector, value });
 const writableSettingsPreference = (kind, value) => writableSettingsClick(

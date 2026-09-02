@@ -242,7 +242,9 @@
 > 25–150 Stardust rewards; the Fifty Paragons remain visible and protected. Newly appended supported
 > achievements and newly raised best ranks receive post-publication notification/sting ceremonies,
 > with rank promotion using a bounded gold burst; boot, replay, Training, convergence and refusal
-> remain silent, and ceremonies write no save or reward. The Prime Codex now presents all nine
+> remain silent, and ceremonies write no save or reward. The serial ceremony queue remains intact
+> while a newer receipt-bearing product action owns settlement, so an older notification cannot
+> replace that action's outcome notice and resumes only after ownership clears. The Prime Codex now presents all nine
 > established Signature rows and, after the ninth claim, the five established Frontier ending
 > choices. The Balance choice retains its extra three-conquests, Electric-Signature and 40-species
 > predicate; one ending receipt/CAS cannot be overwritten, and unknown imported endings remain

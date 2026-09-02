@@ -1,5 +1,22 @@
 # Celestial Frontier — Player Progression
 
+> **2026-09-01 current progression-ceremony ownership correction (matches local code as of
+> 2026-09-01; supersedes older “current” labels while preserving dated evidence):** PR #35's
+> ninth one/no-retry hosted attempt tested exact head
+> `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` through synthetic merge
+> `778d3cf58937476a65c550e875b946290c0967b4`. Its Charter recovery outcome was exact, but an
+> older queued Share-achievement ceremony surfaced while the newer Landing transaction was still
+> held, so the expected one aggregate notice advanced the toast serial twice.
+>
+> Main now checks `productActionInFlight` before it shifts or delivers the serial ceremony queue.
+> An active receipt-bearing owner leaves every queued ceremony intact and re-arms the drain after
+> 200 ms; replacement reload may still clear the queue, and an already-visible toast still delays
+> delivery. The Landing/Charter aggregate therefore retains the immediate outcome surface, while
+> the older ceremony resumes exactly once after product ownership and toast ownership allow it.
+> Smoke-only callback/deferral/delivery counters prove that boundary without adding save state.
+> Achievement, rank, Charter, reward, RNG, copy and sting rules are unchanged. The hosted run
+> remains immutable red, and this changed source has no new browser certificate yet.
+
 > **2026-09-01 current automatic-arrival transient-latch progression overlay (matches local code
 > as of 2026-09-01; supersedes older “current” labels while retaining dated evidence):** authorized
 > PR #35 run `33522000552` tested exact head
@@ -256,8 +273,11 @@
 > AppChrome only for the player-chip center geometry, never its element. Missing geometry or
 > Web Audio leaves the durable fact and text ceremony intact. Boot catch-up, Training sandbox,
 > replay/out-of-order revision, already-durable observation, refused/stale/failed storage and
-> committed convergence are silent. The ceremony is presentation only and invents no currency,
-> item or achievement reward.
+> committed convergence are silent. Before consuming a queue entry, Main defers while
+> `productActionInFlight` belongs to a newer receipt-bearing action, preserves the complete queue,
+> and schedules another drain; only an idle product owner and idle toast permit delivery.
+> Replacement reload remains the sole path that clears pending ceremonies. The ceremony is
+> presentation only and invents no currency, item or achievement reward.
 >
 > Settings now offers Auto/current-rank or every color through the durable best-rank record. One native choice
 > uses one receipt/F4 CAS with no retry or optimistic color publication; locked or malformed choices

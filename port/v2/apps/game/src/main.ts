@@ -4537,6 +4537,29 @@ type QueuedProgressionCeremony =
 const progressionCeremonyQueue: QueuedProgressionCeremony[] = [];
 let progressionCeremonyTimer = 0;
 let highestProgressionCeremonyRevision = -1;
+let progressionCeremonyDrainCallbacks = 0;
+let progressionCeremonyInFlightDeferrals = 0;
+let progressionCeremonyDeliveries = 0;
+let progressionCeremonyLastDeliveredKey: string | null = null;
+function progressionCeremonyKey(ceremony: QueuedProgressionCeremony): string {
+  return ceremony.kind === 'achievement'
+    ? `achievement:${ceremony.achievementId}`
+    : `rank-promotion:${ceremony.rankIndex}`;
+}
+function advanceProgressionCeremonyDiagnosticCounter(value: number): number {
+  return value < Number.MAX_SAFE_INTEGER ? value + 1 : value;
+}
+function progressionCeremonyDiagnostics(): Readonly<Record<string, unknown>> {
+  return Object.freeze({
+    schema: 'cf-v2-progression-ceremony-diagnostics/v1',
+    queueKeys: Object.freeze(progressionCeremonyQueue.map(progressionCeremonyKey)),
+    timerPending: progressionCeremonyTimer !== 0,
+    drainCallbacks: progressionCeremonyDrainCallbacks,
+    inFlightDeferrals: progressionCeremonyInFlightDeferrals,
+    deliveries: progressionCeremonyDeliveries,
+    lastDeliveredKey: progressionCeremonyLastDeliveredKey,
+  });
+}
 
 /** V2 has no legacy Fx singleton. Reproduce its rank-up gold palette/count
  * semantic through the current effects/motion/device policy, as a bounded
@@ -4612,8 +4635,21 @@ function scheduleProgressionCeremonyDrain(delay = 0): void {
   if (progressionCeremonyTimer !== 0) return;
   progressionCeremonyTimer = window.setTimeout(() => {
     progressionCeremonyTimer = 0;
+    progressionCeremonyDrainCallbacks = advanceProgressionCeremonyDiagnosticCounter(
+      progressionCeremonyDrainCallbacks,
+    );
     if (replacementReloadPending) {
       progressionCeremonyQueue.length = 0;
+      return;
+    }
+    /* A prior action's queued achievement/rank must not interrupt the newer
+       receipt-bearing action that currently owns product state. Keep the
+       ceremony intact and resume draining after that owner settles. */
+    if (productActionInFlight) {
+      progressionCeremonyInFlightDeferrals = advanceProgressionCeremonyDiagnosticCounter(
+        progressionCeremonyInFlightDeferrals,
+      );
+      scheduleProgressionCeremonyDrain(200);
       return;
     }
     if (toastEl.style.opacity === '1') {
@@ -4622,6 +4658,10 @@ function scheduleProgressionCeremonyDrain(delay = 0): void {
     }
     const ceremony = progressionCeremonyQueue.shift();
     if (ceremony === undefined) return;
+    progressionCeremonyDeliveries = advanceProgressionCeremonyDiagnosticCounter(
+      progressionCeremonyDeliveries,
+    );
+    progressionCeremonyLastDeliveredKey = progressionCeremonyKey(ceremony);
     if (ceremony.kind === 'achievement') toastAchievementNotification(ceremony);
     else toastRankPromotion(ceremony.rankName);
     try { playRaritySting(ceremony.stingTier); }
@@ -15814,6 +15854,7 @@ async function loadSave(): Promise<void> {
         stage: ascStage(), reach: reachRadiusOf(primeCount()),
         shipVisual: currentShipVisualState(),
         toastOn: toastEl.style.opacity === '1', toastText: toastEl.textContent || '', toastSerial: _toastSerial,
+        progressionCeremony: progressionCeremonyDiagnostics(),
         galaxyBuildMs: lastGalaxyBuildMs,
         trail: appChrome.diagnostics().trail, ctx: appChrome.diagnostics().context,
         objective: appChrome.diagnostics().objective,

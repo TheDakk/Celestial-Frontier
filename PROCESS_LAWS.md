@@ -1,5 +1,74 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **NATIVE INPUT ADVANCES FROM OBSERVED OUTCOME, NOT A FIXED GESTURE COUNT** (2026-09-01).
+> A browser driver may issue a wheel, touch, key or pointer gesture, but the gesture is only intent;
+> it does not prove that the owned surface moved or that its target became reachable. After every
+> native input, observe the same document and surface, the hit-test owner, computed overflow,
+> `scrollTop`, the current `maxScroll`, exact target identity and target visibility. Derive the next
+> bounded input from the remaining observed distance, accept a growing maximum as new geometry, and
+> tolerate a dropped gesture only inside an explicit stall budget. Visible-but-not-bottom remains
+> incomplete; hidden, non-scrollable, owner-drifted, target-mismatched and bounded no-progress states
+> are named reds. Success requires the exact tail to be visible at the reached bottom after a real
+> native gesture. One Node-owned absolute deadline must begin before setup and clip every CDP setup,
+> observation and native-input command to its remaining budget; a pure state-machine clock cannot
+> bound a command while that command still owns control. `finally` gets its own short cleanup bound
+> and must restore the exact prior scroll position and inline/computed overflow ownership.
+> Negative-control the hosted progression, a dropped wheel followed by progress,
+> growing content, visible-but-not-bottom, hidden/no-progress, owner drift and every restoration
+> field, plus removal of the remaining-budget option from initial observation, wheel dispatch,
+> re-observation, hidden control or restoration. A browser pin, release-length assumption, larger
+> fixed delta, extra fixed gesture or retry cannot substitute for observed outcome.
+>
+> PR #35 hosted run `33572309149` earned this law on clean same-tree synthetic source
+> `778d3cf58937476a65c550e875b946290c0967b4`. Its one/no-retry develop Slice found the Guide's exact
+> release tail present but invisible after fixed native-wheel progress `0→10000→20000`, while the
+> live maximum was `25829` (`scrollHeight 26476`, `clientHeight 647`). That is a harness action-owner
+> failure, not evidence that Guide content or product scrolling was broken. The bounded successor is
+> content-length- and version-agnostic and changes no product scroll behavior, browser policy, ruler,
+> global deadline or retry policy.
+
+> **A PRESENTATION QUEUE DEFERS BEFORE CONSUMPTION WHILE A RECEIPT-BEARING PRODUCT ACTION OWNS THE
+> RESULT** (2026-09-01). An older durable achievement or rank ceremony may already be queued when a
+> newer product action begins, but it must not take the presentation lane from the action that owns
+> the current receipt and result. The drain callback checks that owner before `shift()`: while the
+> product action is in flight, it leaves the FIFO queue byte-for-byte intact and schedules another
+> bounded drain turn. Once the action settles and publishes its own outcome, the old head resumes
+> exactly once and only that delivered head is removed; every suffix ceremony stays ordered. A
+> replacement reload may deliberately clear presentation work, but ordinary deferral may not lose,
+> duplicate or reorder it. Diagnostics must prove that a drain callback actually ran, saw the live
+> owner, deferred before consumption and later delivered the same key. Negative-control a missing
+> guard, a guard placed after `shift()`, queue clearing, lost rescheduling, duplicate or missing
+> delivery, wrong head/suffix, hidden presentation and owner drift. A delay, longer toast duration or
+> retry cannot create queue ownership.
+>
+> The saturated-Charter finding in the same hosted run retained the correct multi-Chapter aggregate,
+> but toast serial advanced `1→3` because an older queued Share ceremony presented during the held
+> Land transaction. The durable Charter result was correct; presentation order was not. The bounded
+> successor holds the old ceremony intact behind the current receipt-bearing product action, keeps
+> that action's aggregate visible, and proves the Share ceremony resumes once afterward. This changes
+> no achievement rule, reward, save schema, Charter settlement or action retry policy.
+
+> **SEMANTIC CONVERGENCE, NOT A SLEEP, OWNS ASYNCHRONOUS FOLLOW-UP SUCCESS** (2026-09-01). A fixed
+> sleep proves only that time passed; it can sample a lawful intermediate state before a queued
+> follow-up completes. Under one absolute bounded deadline, define the complete semantic fixed point
+> and sample it read-only until every named condition agrees. When live state and durable storage can
+> change between reads, bracket the live/focus sample with two identical exact durable reads so one
+> apparent green cannot splice an old row to a newer DOM or the reverse. Training-to-bulletin
+> convergence, for example, requires Training released and removed, the expected live and durable
+> release identity, no queued release, Guide exclusive ownership, exact bulletin heading and restored
+> Back focus, released chrome, and Atlas closed. The polling interval is not authority and may never
+> dispatch or retry the product action. Deadline expiry retains every failed named condition and
+> causally stops dependent raw, focus, write and reload judgments. Negative-control each semantic
+> dimension, unequal durable brackets, a pending follow-up, and a fixed-sleep snapshot that has not
+> converged. More sleep, a looser assertion or a retry cannot manufacture the fixed point.
+>
+> The D-TRAIN finding in hosted run `33572309149` retained a correct Training transaction through its
+> `released` witness, but sampled before the queued development bulletin finished: live `rnSeen` and
+> durable `rn` still held `1.8.9`, while `releasePending` still held `2.0.0-test`. The bounded successor
+> judges the complete post-Training product outcome under one deadline rather than treating that
+> intermediate snapshot as a transaction defect. It changes no Training transaction, bulletin
+> content, save schema, product timeout or retry policy.
+
 > **EPHEMERAL RUNTIME EVIDENCE IS CAPTURED DURING ITS OWNED LIFETIME, NOT RECONSTRUCTED FROM THE
 > FINAL GRAPH** (2026-09-01). A short WebAudio voice may correctly connect, start, acknowledge an
 > action and then disconnect/destroy during normal natural teardown before later durable reads
