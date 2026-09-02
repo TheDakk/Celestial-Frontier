@@ -18,8 +18,16 @@
 > root and nearby presentation diagnostics, and exercises attribute mutation, late-root recovery,
 > outside-focus redirection, native Tab wrap and exact restoration in its existing controls. Focused
 > tests, the corrected **264/264-file / 2,728-pass / 1-skip** `develop` profile, all three TypeScript
-> programs and the small-phone Inventory route/controls are green; one clean committed tracked-input
-> proof and Compendium → Slice → Glass certificate remain pending. No
+> programs and the small-phone Inventory route/controls are green. Exact signed source
+> `5004fd36f9fdb2632f323d99f1535e9fb2ac5b95`, tree
+> `cc1a568ebd49e038b831464b2c1ce7d8ac01ad3a`, passed the hermetic tracked-input rehearsal,
+> browser/Compendium controls and one unchanged-source/no-retry chain: Compendium
+> `20260902185934666-38136-1560adf2b6` **78/78**, zero-finding Slice
+> `20260902190106514-38463-d9be88c2f213`, and exact-Slice-bound Glass
+> `20260902190730548-38863-824672142575` **12/12** viewports/reloads and **104/104** controls with
+> zero blocked/omitted work, findings, instrument failures or retries. Every named verifier passed;
+> four exact carriers are indexed in `audits/README.md`, and the signed evidence/docs descendant
+> containing this reference also passes final tracked-input proof. No
 > gameplay, loot, save, creature/genome, plant, biome, Guardian, art, graphics, audio, ruler, retry,
 > browser-version, Gate/HUMAN, release or production identity changed.
 > Current Compendium measurement/producer authority is
@@ -684,9 +692,9 @@
 > that debounce; only success releases audio, F4/runtime, chrome, the PWA controller, Pixi and both
 > canvases before navigation. Runtime caches never contain or roll back IndexedDB expedition data.
 > VM, JSDOM, static wiring and independent built-output digest/inventory mutation coverage exercise
-> this contract; final exact-source authority remains part of the current local closure. Physical
-> install/offline/update/rollback, assistive-technology, browser/device and HUMAN acceptance remain
-> open.
+> this contract; exact signed `5004fd36…` supplies the current local Compendium → Slice → Glass
+> authority. Physical install/offline/update/rollback, assistive-technology, device and HUMAN
+> acceptance remain open.
 
 > **2026-08-31 current local Binder and Prime-Frontier overlay:**
 > `port/v2/apps/game/src/binder-sets.ts` is a strict read projection over canonical `codex` and
@@ -4651,13 +4659,15 @@ restoration, and keep native forward/reverse Tab bypass sentinels inside the mod
 diagnosis and both-direction negative control without adding a job, changing the 104-control sealed
 inventory or weakening the product predicate.
 
-**Historical predecessor certificate:** exact signed implementation
-`1f80b0ad050763bf478b2364ad0194e389a7096e` passed the hermetic
-tracked-input develop profile and one unchanged-source/no-retry, named-verified Compendium
-**78/78** → zero-finding Slice → Glass **12/12 / 104/104** chain. The four deterministic
-report/log carriers are indexed in `audits/README.md`; the later docs/evidence descendant does not
-rebind authority away from that implementation source. It predates the Inventory lifetime
-successor and does not certify its bytes; the current certificate remains pending as stated above.
+**Current Inventory-lifetime certificate:** exact signed implementation
+`5004fd36f9fdb2632f323d99f1535e9fb2ac5b95` passed the hermetic tracked-input develop profile
+and one unchanged-source/no-retry, named-verified Compendium **78/78** → zero-finding Slice →
+Glass **12/12 / 104/104** chain with zero blocked/omitted work, findings, instrument failures or
+retries. The four deterministic report/log carriers are indexed in `audits/README.md`; the later
+docs/evidence descendant does not rebind authority away from that implementation source.
+
+Historical predecessor `1f80b0ad050763bf478b2364ad0194e389a7096e` remains green evidence for
+its own exact pre-lifetime-repair bytes and is not relabelled as the current certificate.
 
 **Historical exact `8bdf474…` evidence / Arc 0 publication-oracle repair boundary (2026-08-30;
 superseded by the current handoff):** the immutable
