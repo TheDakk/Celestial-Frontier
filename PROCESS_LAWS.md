@@ -21,8 +21,11 @@
 > the canary. Focused workflow/scope/evidence contracts pass **28/28** and Actions authorization
 > policy controls pass **64/64**. The complete working-source `develop` profile passes **264/264
 > files, 2,739 passed / 1 skipped**, all TypeScript programs and every art/route/specification
-> owner. This changes no product, timeout, retry, browser-version, ruler or release policy and
-> grants no hosted authority.
+> owner. Exact signed `4a0228d…` passed that hermetic profile and one unchanged-source local
+> Edge/CDP small-phone row in **13,625 ms** with zero findings, instrument failures, blocked
+> controls or retries and all five required Inventory controls. It is noncertifying and does not
+> prove Ubuntu/Chrome. This changes no product, timeout, retry, browser-version, ruler or release
+> policy and grants no hosted authority.
 
 > **A TARGETED NEGATIVE-CONTROL CAMPAIGN MAY OMIT ONLY CONTROLS ITS OBSERVED BASELINE CANNOT
 > LAWFULLY EXERCISE** (2026-09-02). Every selected portrait baseline remains mandatory. Full

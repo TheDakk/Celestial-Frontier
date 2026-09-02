@@ -17,18 +17,21 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-02 · THIRTEEN-STOP AUDIT COMPLETE · EARLY GLASS PREFLIGHT UNDER EXACT LOCAL PROOF ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-02 · THIRTEEN-STOP AUDIT COMPLETE · EARLY GLASS PREFLIGHT EXACT LOCAL PROOF GREEN ◀◀◀
 
 ### Exact current boundary
 
 - **Verified owner:** OpenAI/Codex on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, tracking
   **origin/openai/mac**.
-- Current signed starting head is **526fd5f1a448bba3ebe422f70b8d4f6ae8b00e3b**, tree
-  **de437e453f168ef325488aa7818064dcd05f8dae**, three commits ahead of the remote. Its exact
-  tracked-input `develop` profile is green. The active uncommitted batch adds only the systemic
-  failure audit and conditional early hosted Glass preflight; sign and exact-prove it before any
-  request for hosted authority.
+- Exact SSH-signed early-preflight implementation/documentation source is
+  **4a0228d9998ec2f5fb238b3143146162e359cdff**, tree
+  **56650fbf1fcedf01c787cedd30f958e75abefca0**, four commits ahead of the remote. It contains only
+  the systemic failure audit and conditional early hosted Glass preflight and passes the hermetic
+  tracked-input `develop` profile plus its exact local small-phone browser proof. The SSH-signed
+  evidence/reference descendant containing this handoff is one additional commit ahead, preserves
+  the exact compressed carrier, and passes the final tracked-input `develop` profile; its own hash
+  is intentionally not self-embedded. Preserve all current bytes.
 - Pushed and hosted-tested head is **5ae12c7e161e90b3799d6b49a63e2b0438048da6**, tree
   **fbb059cea703cceb3feebcc716e64e02f5f5ba90**, against exact `origin/develop`
   **7a9f4c1370dd84292388d718c38ff34214f6203b**.
@@ -37,10 +40,10 @@ the archive verbatim and refresh this handoff in place.
   It contains the bounded Glass action/portrait harness successor and exact local certificate.
 - SSH-signed evidence/reference descendant **112bf7fb4961d8f85833df964fe8b17109ab2a0b**,
   tree **5daa4e7e589ec37fc59f5e1b2e863caccd5101be**, preserves the four deterministic browser
-  carriers and passes the final hermetic tracked-input `develop` profile. The current signed
-  handoff-only descendant also passes that profile; its own hash is intentionally not
-  self-embedded. Preserve all current bytes and do not rebase, overwrite or copy them into another
-  worktree.
+  carriers and passes the final hermetic tracked-input `develop` profile. Historical signed
+  handoff-only descendant **526fd5f1a448bba3ebe422f70b8d4f6ae8b00e3b**, tree
+  **de437e453f168ef325488aa7818064dcd05f8dae**, also passes that profile. Preserve all current
+  bytes and do not rebase, overwrite or copy them into another worktree.
 - PR #35 is Ready/open/unmerged. `actions-budget-approved` is absent, `develop` remains unchanged
   at the base above, and no push, label, dispatch, retry, PR mutation, merge, release, version bump,
   publication or deployment is currently authorized.
@@ -66,13 +69,19 @@ the archive verbatim and refresh this handoff in place.
 - Test sources, declarations, docs, `.gitignore` and the worker-only typecheck config do not trigger
   it. The final Compendium → exact Slice → full 12-viewport Glass certificate remains unconditional
   and unchanged; the canary cannot satisfy or replace it.
-- Three independent reviews found and closed omitted-input, nullable-array, missing-control,
-  configured-symlink/canonical-path and malformed-Chrome-provenance defects before any hosted run.
+- Three independent reviews found and closed omitted-input, over-broad-scope, nullable-report,
+  missing-control, canonical-browser-path and malformed-product-provenance defects before any hosted run.
   Final ordering review is **CLEAR**. Focused workflow/scope/evidence contracts pass **28/28** and
   Actions policy selftest passes **64/64**. The consolidated working-source `develop` profile passes
   **264/264 files, 2,739 passed / 1 skipped**, all three TypeScript programs, **34** art sources,
-  **1,014/1,014** routes and **454** declared fields. Exact signed-source and local browser proof
-  remain the active batch.
+  **1,014/1,014** routes and **454** declared fields.
+- Exact signed `4a0228d…` passed the hermetic tracked-input rehearsal with the same results. Its
+  unchanged-source Edge `152.0.4191.53` / CDP `1.3` targeted run
+  `20260902-pr35-early-glass-preflight-4a0228d9998e` passed in **13,625 ms** with one exact
+  320×568@2 row, zero findings/instrument failures/blocked controls/retries, **95** executed
+  controls and all five required Inventory controls. Raw report SHA-256 is `9ef29a3b…8f24`; its
+  deterministic retained gzip carrier is `audits/ARC4_GLASS_PR35_EARLY_PREFLIGHT_PASS_20260902_4A0228D.json.gz`
+  with SHA-256 `e0146ec7…e5c`. It is noncertifying local evidence, not hosted Ubuntu/Chrome proof.
 - Full rationale and the complete attempt table are in
   `audits/PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md`.
 
@@ -162,9 +171,8 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex next:** finish the active workflow successor's signed exact-input `develop`
-  profile and one local small-phone browser proof, repair any red, then report that exact signed
-  head against base **7a9f4c1…**. Only after Nick gives a fresh exact-head one-attempt PR #35
+- **OpenAI/Codex next:** resolve the exact current signed head with `git rev-parse HEAD` and report
+  it against base **7a9f4c1…**. Only after Nick gives a fresh exact-head one-attempt PR #35
   authorization, push
   `openai/mac`, refresh PR #35 metadata, apply `actions-budget-approved`, and run `test-battery`
   once with a 92-minute maximum and no retry; merge into `develop` only if terminal green.

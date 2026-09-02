@@ -1,7 +1,7 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
 > **2026-09-02 current early hosted Glass-preflight architecture overlay (workflow/evidence only;
-> exact committed browser proof pending):** `port/v2/tools/battery-scope.mjs` now projects one
+> exact signed local browser proof green):** `port/v2/tools/battery-scope.mjs` now projects one
 > `glass_preflight_changed` output from the exact Glass tools, direct fixture/build inputs,
 > application runtime sources, and package runtime sources. It excludes colocated/package tests,
 > declarations, docs, app `.gitignore`, and the separately owned worker-only typecheck config.
@@ -24,7 +24,11 @@
 > develop operation after Glass. Focused contracts pass **28/28**, the Actions policy selftest
 > passes **64/64**, and the working-source `develop` profile passes **264/264 files, 2,739 passed /
 > 1 skipped** plus all TypeScript/art/route/specification owners. Three independent audits are clear
-> after their findings were repaired. The
+> after their findings were repaired. Exact SSH-signed source `4a0228d…`, tree `56650fbf…`, passed
+> that hermetic profile and one unchanged-source local Edge/CDP targeted row in **13,625 ms** with
+> zero findings, instrument failures, blocked controls or retries and all five required Inventory
+> controls. Its raw/gzip report hashes are `9ef29a3b…8f24` / `e0146ec7…e5c`; this remains
+> noncertifying and does not prove Ubuntu/Chrome. The
 > full thirteen-stop classification and residual hosted-only risk are preserved in
 > `audits/PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md`. No product/runtime, browser
 > point-version policy, timeout, retry, release, or deployment behavior changed; no hosted attempt

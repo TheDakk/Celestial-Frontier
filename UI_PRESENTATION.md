@@ -1,7 +1,7 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-09-02 early hosted Glass presentation preflight overlay (evidence-only; exact committed
-> browser proof pending):** all thirteen consumed PR #35 stops were audited end to end: **9
+> **2026-09-02 early hosted Glass presentation preflight overlay (evidence-only; exact signed local
+> browser proof green):** all thirteen consumed PR #35 stops were audited end to end: **9
 > instrument/infrastructure, 3 product/runtime, and 1 mixed**. The current repaired Glass path has
 > a complete clean local Edge/CDP certificate, but has not run on hosted Ubuntu/Chrome; the prior
 > workflow first reached that path approximately **70m46s** into the job.
@@ -21,7 +21,11 @@
 > Focused workflow/scope/evidence contracts pass **28/28** and the authorization policy selftest
 > passes **64/64**. The consolidated working-source `develop` profile passes **264/264 files,
 > 2,739 passed / 1 skipped**, all TypeScript programs and every art/route/specification owner. No
-> hosted attempt is authorized.
+> hosted attempt is authorized. Exact signed source `4a0228d…` then passed that hermetic profile
+> and one unchanged-source Edge/CDP small-phone row in **13,625 ms**, with zero findings,
+> instrument failures, blocked controls or retries and all five required Inventory controls. Its
+> raw/gzip evidence SHA-256 is `9ef29a3b…8f24` / `e0146ec7…e5c`; it remains noncertifying local
+> evidence and does not prove hosted Ubuntu/Chrome.
 
 > **2026-09-02 current Glass Inventory action-evidence overlay (harness-only; exact local browser
 > certificate green and older dated evidence remains immutable):** PR #35 run `33674116068`, attempt 1,
