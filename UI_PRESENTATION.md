@@ -1,5 +1,31 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-09-01 current Guide/ceremony/Training green presentation overlay (matches exact signed
+> code; supersedes older “current” labels while preserving every dated block):** exact SSH-signed
+> source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+> `25cb76916c8f3fcd00a916864abb9402932cdbec`) passed the complete browser-free profile at
+> **263 files / 2,719 passed / 1 skipped**. Its unchanged-source, named-verified, once/no-retry
+> chain passed Compendium `20260902020238003-42290-3e0d5a9601` **78/78** with zero findings;
+> develop Slice `20260902020406920-42750-f6dc8783b4cd` with zero findings/scopes (report/log
+> SHA-256 `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` /
+> `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`); and Glass
+> `20260902021048274-43570-053d2c926673` at **12/12** viewport/reload outcomes and **104/104**
+> controls with zero findings/instrument failures (report SHA-256
+> `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`). Four exact retained
+> carriers under `audits/` bind the Compendium report, Slice report/log and Glass report.
+>
+> Guide evidence now observes the live tail/document/hit owner/geometry after every adaptive native
+> wheel under one clipped absolute CDP deadline, then restores scroll and overflow ownership under
+> an independent bound. The ceremony drain preserves its queue before shift while
+> `productActionInFlight` owns a newer result and resumes exactly once; D-TRAIN waits for the stable
+> raw/live/focus/pending-cleared bulletin fixed point. Ceremony presentation ordering is the only
+> product behavior change. The legacy game, Guide mechanics, product scrolling, Training/release
+> timers, save schema, deterministic generation, creature/plant/biome/Guardian/loot presentation,
+> audio, CSS,
+> geometry, numeric rulers, browser pin/version policy and no-retry policy are unchanged. Hosted run
+> `33572309149` remains immutable red and its ninth authorization consumed; no new hosted attempt,
+> push, merge, release, version bump, publication or deployment is authorized.
+
 > **2026-09-01 current Guide/ceremony/Training presentation correction (matches local code as of
 > 2026-09-01; supersedes older “current” labels while preserving dated evidence):** PR #35 hosted
 > run `33572309149` tested exact head `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` through synthetic

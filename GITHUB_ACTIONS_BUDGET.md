@@ -2,6 +2,40 @@
 
 **Current mode: `UNFROZEN`**
 
+**Current local certificate: terminal green; no hosted attempt is authorized.** Exact clean
+SSH-signed implementation source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+`25cb76916c8f3fcd00a916864abb9402932cdbec`) on `openai/mac` passed the complete browser-free
+`develop` profile at **263/263 files**, **2,719 passed / 1 skipped** (**2,720 total**), then passed
+the browser selftest and live preflight on Edge `152.0.4191.53` / CDP `1.3`.
+
+That exact unchanged source completed one serial, fail-fast/no-retry, named-verified local develop
+chain. Compendium `20260902020238003-42290-3e0d5a9601` passed **78/78** with zero findings/blocked
+outcomes and six review PNGs in **66,800 ms**. Develop Slice
+`20260902020406920-42750-f6dc8783b4cd` passed terminal certifying with zero findings/scopes, ten
+screenshots and a green Arc 4 ledger in **379,782 ms**; report/log SHA-256 is
+`56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` /
+`05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`. Glass
+`20260902021048274-43570-053d2c926673` consumed that exact Slice report/log and passed **12/12**
+viewports, **12/12** reload rows and **104/104** controls with zero blocked/omitted controls,
+findings, instrument failures or retries in **115,629 ms**; report SHA-256 is
+`df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`. Every stage ran once and
+every exact named verifier passed. Current Compendium producer authority is
+`308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`; budget SHA-256 is
+`f66fed5e8bb1f18b95266c267435fc0493bf450a89aee74fc1c9ffaa18f8501e`.
+
+The four deterministic report/log carriers and their exact raw/compressed hashes are indexed in
+`audits/README.md`. The closure descendant will contain only those carriers and synchronized
+references, preserving—without rebinding—the exact 4a4f0b8 browser certificate. It must be
+SSH-signed and pass its final clean tracked-input `develop` preflight; the browser chain must not be
+rerun. No push, label, hosted attempt, retry, PR metadata mutation, merge, release, version bump,
+preview publication or deployment is authorized. A future hosted attempt requires Nick's fresh
+authorization naming the final exact descendant head and base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, PR #35, `test-battery`,
+`actions-budget-approved`, a 92-minute maximum and no retry. Merge is allowed only if that exact
+hosted attempt is terminal green and branch protection is satisfied.
+
+**Historical ninth-attempt boundary follows unchanged.**
+
 **Hosted attempt state: none authorized.** Ready/open PR #35 has **nine** consumed terminal-red
 `test-battery` attempts against exact base
 `7a9f4c1370dd84292388d718c38ff34214f6203b`. The ninth one-time authorization is consumed and

@@ -17,128 +17,118 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-01 · NINTH HOSTED STOP, THREE BOUNDED REPAIRS IN LOCAL VERIFICATION ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-01 · EXACT 4A4F0B8 LOCAL DEVELOP CHAIN TERMINAL GREEN ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Published/current branch head is exact SSH-signed
-  **efad4b44c86ad89cbed39c18a39e2bbc9370caaf** (tree
-  **89116f64dafd0cf26fe210597da1c079edefcd76**) against `origin/develop`
-  **7a9f4c1370dd84292388d718c38ff34214f6203b**. The ninth hosted checkout used synthetic merge
-  **778d3cf58937476a65c550e875b946290c0967b4**, whose tree is byte-identical to the exact head.
-- The shared worktree is intentionally dirty with three bounded repairs, their focused/negative
-  controls, three immutable hosted-evidence carriers and synchronized references. Preserve every
-  existing change. Guide and D-TRAIN changes are Slice evidence ownership; the Charter change is
-  confined to the existing progression-ceremony delivery seam. No legacy game, save schema,
-  deterministic world/genome generation, creature/plant/biome/Guardian structure, loot balance,
-  audio content, CSS geometry, memory ruler, compatible-browser policy or retry policy is changed.
-- Affected operational logs, current references, Guide/release copy and evidence are synchronized
-  in this same batch, and the complete browser-free `develop` profile is green. Independent full
-  diff review and a final signed source do **not** yet exist; do not treat this working tree as
-  complete or browser-certified.
+  **origin/openai/mac**. Published branch head remains exact SSH-signed
+  **efad4b44c86ad89cbed39c18a39e2bbc9370caaf**; exact clean SSH-signed implementation source
+  **4a4f0b81c85eee32c538a29d8b46f55af73ae7bb** (tree
+  **25cb76916c8f3fcd00a916864abb9402932cdbec**) is one local commit ahead and remains based
+  against `origin/develop` **7a9f4c1370dd84292388d718c38ff34214f6203b**.
+- The working tree is now an evidence/docs-only descendant: four deterministic PASS carriers and
+  synchronized current references are complete, and the independent closure audit is
+  **APPROVED**. Its eventual signed closure SHA is intentionally not self-embedded; resolve it
+  from Git after commit. The browser certificates below remain
+  bound to exact implementation source **4a4f0b8…**, not to the later documentation descendant.
+- The only product behavior change is progression-ceremony presentation ordering at its existing
+  queue seam. No legacy game, save schema, deterministic world/genome generation,
+  creature/plant/biome/Guardian structure, loot balance, audio content, CSS geometry, numeric
+  memory ruler, compatible-browser policy or retry policy changed.
 
-### Ninth exact hosted attempt — consumed terminal red
+### Ninth exact hosted attempt — immutable consumed red
 
-- Nick authorized PR #35's one-time `test-battery` for exact head **efad4b44…** against exact base
-  **7a9f4c1370dd84292388d718c38ff34214f6203b**, label `actions-budget-approved`, maximum
-  92 minutes and no retry. GitHub run **33572309149**, attempt 1, used synthetic merge
-  **778d3cf58937476a65c550e875b946290c0967b4**. Authorization job **100068700331** passed;
-  battery job **100068719363** completed terminal red after **1h9m41s**.
-- Root layout passed **787/787**. Compendium **gha-33572309149-1-compendiummem** passed **78/78**
-  once/no-retry in **2,324,739 ms** with zero findings/blocked outcomes. Slice
-  **gha-33572309149-1-slice** stopped once/no-retry after **1,345,522 ms** with exactly
-  **3 findings / 3 scopes** and all ten screenshots.
-- Artifact `battery-evidence` is ID **9827040606**, archive size **9,780,335 bytes**, digest
-  `sha256:869d8ee0780f3f4fcbe3d1a3b17b353426e4f900ec5c1f146576c169224f1c9a`, expiring
-  **2026-09-16T00:53:39Z**. Glass, Recovery and preview packaging correctly did not run. The
-  authorization is consumed; no retry, relabel, push, PR mutation or merge is authorized.
+- Nick's one-time `test-battery` authority for exact head **efad4b44…** against exact base
+  **7a9f4c1370dd84292388d718c38ff34214f6203b** was consumed by GitHub run
+  **33572309149**, attempt 1, synthetic merge **778d3cf58937476a65c550e875b946290c0967b4**.
+  Root layout passed **787/787** and Compendium passed **78/78**; Slice stopped once/no-retry
+  with exactly the Guide tail, saturated Charter ordering and D-TRAIN bulletin-convergence
+  findings. Glass and Recovery correctly did not run.
+- That hosted run and its three exact carriers remain immutable red. The local successor does not
+  relabel it or reuse its authorization. There is currently no authority to push, mutate PR
+  metadata, dispatch/rerun Actions or merge.
 
-### Exact roots and bounded repairs
+### Bounded repairs
 
-- **Guide release tail:** the historical driver issued three fixed 10,000px native wheels without
-  observing between them; the hosted page applied two and stopped at **20,000px** while the live
-  bulletin's bottom was **25,829px**, then the harness judged that intermediate position. The successor
-  uses a pure one-wheel-at-a-time state machine, raw CDP input, a freshly read dynamic bottom,
-  one Node-owned absolute action deadline that clips every CDP command to its remaining budget,
-  stall/attempt caps, visible-tail-and-bottom proof, a hidden-overflow adversary and separately
-  bounded exception-safe restoration of exact scroll/style/priority/computed ownership. It
-  removes the fixed content-length ruler and does not pin a browser point version.
-- **Saturated Charter recovery:** a queued older Share achievement ceremony could drain while a
-  newer receipt-bearing Land action owned product state, interrupting the adjacent notice and
-  yielding the retained `★ 3 Charter chapters — completeChapter 1…` aggregate. The existing queue
-  now defers intact while `productActionInFlight`, exposes bounded diagnostics, and resumes exactly
-  one preserved Share delivery only after Land settles. Controls reject early shift/drop, duplicate
-  delivery, false queue removal, missing visible toast and reused durable authority.
-- **D-TRAIN full finish:** Training correctly reached the ten-stage `released` witness, but the
-  development bulletin is intentionally queued afterward. A background page outlived the old fixed
-  `sleep(80)`, so the historical capture saw live/durable `rn` **1.8.9** with pending
-  **2.0.0-test**. The successor waits for one bounded read-only fixed point across live `rnSeen`,
-  cleared pending state, Guide release panel/focus, cleared Training UI/hold and durable raw `rn`.
-  Independent stale-live, stale-raw, pending, wrong-panel, wrong-focus and retained-Training
-  controls remain red; dependent judgments causal-stop if convergence never arrives.
+- **Guide release tail:** Slice now dispatches one native wheel at a time, re-observes the exact
+  document/tail/hit owner/dynamic maximum/visible bottom after each action, and clips setup,
+  dispatch and observation to one Node-owned absolute deadline. Stall/attempt controls, a
+  hidden-overflow adversary and separately bounded exception-safe scroll/style restoration keep
+  the proof dynamic and fail-closed without pinning Edge's point version.
+- **Saturated Charter recovery:** the existing progression-ceremony queue now remains intact while
+  `productActionInFlight` owns a newer receipt-bearing action, reschedules its drain, then delivers
+  the preserved older Share ceremony exactly once after Landing/toast ownership releases.
+  Replacement reload may still clear the queue. Save, reward, Charter and achievement semantics
+  are unchanged.
+- **D-TRAIN full finish:** certification brackets stable raw-primary reads around live/focus state
+  until Training is released, the exact fixture bulletin is current and durable, pending release
+  state is clear, Guide owns focus, Training chrome is absent and Atlas is closed. Independent
+  controls keep every predicate red when removed; product timer/write behavior is unchanged.
 
-### Verification and immutable evidence
+### Local acceptance and immutable evidence
 
-- Current focused verification is green: **4 files / 46 tests**, covering Guide native-wheel
-  integration/restoration controls, D-TRAIN queued-release convergence, progression-ceremony
-  deferral/resume and the exact hosted evidence replay. All three TypeScript programs pass.
-- The complete browser-free `develop` profile passes **263/263 files**, **2,719 passed / 1 skipped**
-  (**2,720 total**), all three TypeScript programs, **34** clean art sources, **1,014/1,014** routes
-  and **454** declared/non-inert fields. The repaired build's current Compendium producer authority
-  is **308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77**; its independently
-  derived measurement authority, sealed ruler, numeric ceilings, worker/painter asset, 78-outcome
-  inventory, historical samples and version-tolerant Edge-family/CDP 1.3 policy are unchanged.
-- The ninth red is preserved by deterministic Compendium predecessor, Slice report and Slice log
-  carriers under `audits/`, with exact compressed/raw hashes and browser-free replay. Later repairs
-  cannot relabel that run or create Slice, Glass, Recovery, merge, release or deployment authority.
-- `GITHUB_ACTIONS_BUDGET.md`, `audits/README.md`, `PROCESS_LAWS.md`, `PROGRESSION.md`,
-  `QUESTS_AND_CHAPTERS.md`, `SAVE_SYSTEM.md`, `UI_PRESENTATION.md`, both READMEs, the codebase
-  reference and current Guide/release copy are synchronized with the code in this batch.
-- **Still pending:** independent final review of every changed source/reference/evidence byte; an
-  exact clean SSH-signed candidate and raw `gpgsig`; hermetic tracked-input preflight on that exact
-  commit; and one unchanged-source, fail-fast/no-retry **Compendium → Slice → Glass** chain with
-  every named verifier. There is no new browser certificate and no locally terminal-green final
-  candidate yet.
+- Focused verification passes **4 files / 46 tests**. All three TypeScript programs pass.
+  The complete browser-free `develop` profile passes **263/263 files**, **2,719 passed /
+  1 skipped** (**2,720 total**), **34** clean art sources, **1,014/1,014** routes and **454**
+  declared/non-inert fields. Three independent reviews are **APPROVED**, and the hermetic
+  tracked-input preflight passed on exact clean source **4a4f0b8…**.
+- The changed browser-driver selftest and live Edge capability/provenance preflight passed on
+  Edge **152.0.4191.53** / CDP **1.3**. This version is provenance only; compatible point updates
+  do not require a rebaseline.
+- Compendium **20260902020238003-42290-3e0d5a9601** passed **78/78** with zero
+  findings/blocked outcomes in **66,800 ms**, then named-verified. Raw report SHA-256 is
+  **82ed68762a5bbf90659c42b8c97ca44dae904c8c1516b3996d1305b65343fee1**; producer authority is
+  **308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77**.
+- Exact-source `develop` Slice **20260902020406920-42750-f6dc8783b4cd** passed terminal and
+  certifying with zero findings/scopes in **379,782 ms**, then named-verified. Report/log SHA-256
+  are **56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d** /
+  **05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276**; all ten screenshots
+  and the Arc 4 success ledger are bound.
+- Glass **20260902021048274-43570-053d2c926673** consumed that exact Slice and passed terminal
+  full-certifying across **12/12** viewport classes, **12/12** reload rows and **104/104**
+  negative controls with zero blocked/omitted controls, findings, instrument failures or retries
+  in **115,629 ms**, then named-verified. Report SHA-256 is
+  **df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2**.
+- All three browser stages ran exactly once on unchanged source and each named verifier passed.
+  Four deterministic `gzip -n -9` carriers under `audits/` preserve the Compendium report,
+  immutable Slice report/log and immutable Glass report; gzip integrity, raw parity and
+  deterministic recompression all pass.
 
-### What remains
+### Closure verification and next step
 
-1. Complete the independent code/test/doc/evidence reviews; fix only concrete findings and keep all
-   three historical scopes causal. The aggregate browser-free profile is already green.
-2. Commit the closed batch with SSH signing, resolve the exact candidate SHA/tree, prove its raw
-   `gpgsig` and clean worktree, then run the hermetic tracked-input `develop` preflight on that
-   exact commit.
-3. On that unchanged clean source, run Compendium once; only if green run Slice once; only if green
-   run Glass once. Named-verify each exact report and stop after any red or instrument result.
-   Preserve the new exact carriers and refresh this handoff without rebinding prior evidence.
-4. Only after all local acceptance is green may Nick authorize one new exact PR #35 hosted attempt
-   by naming full head/base, `test-battery`, `actions-budget-approved`, 92-minute maximum and no
-   retry. Push/update metadata only inside that authority; merge into `develop` only if the exact
-   hosted head is terminal green and branch protection is satisfied.
+1. Before any GitHub action, resolve the evidence/docs-only closure with `git rev-parse HEAD`,
+   confirm its raw SSH `gpgsig`, clean worktree and final hermetic tracked-input `develop` PASS.
+   Do not rerun or rebind the already green browser chain, and do not add source, tests,
+   instruments, rulers or workflows after it.
+2. Once that local closure is green, the sole next step is Nick authorizing one fresh exact PR #35 hosted attempt
+   by naming its full new head/base, `test-battery`, `actions-budget-approved`, 92-minute maximum
+   and no retry. Inside that exact authority, push `openai/mac` and refresh PR #35 metadata; merge
+   into `develop` only if the exact hosted head is terminal green and branch protection is
+   satisfied.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex next:** complete steps 1–3 locally in this worktree. No GitHub action is currently
-  allowed, and the efad authorization cannot be reused.
+- **OpenAI/Codex next:** resolve and verify the signed evidence/docs-only closure. If its clean
+  tracked-input preflight is green, stop and request fresh exact hosted authority; the earlier efad
+  authorization is consumed and cannot be reused.
 - **PR:** existing #35, base **develop**, source **openai/mac**. Copy-ready title:
   **feat(v2): complete roadmap campaign and harden action-time CI evidence**.
 - **Copy-ready PR description:** “Completes the established v2 roadmap campaign without recreating
-  its systems; preserves creature/genome/universe structures; keeps the ninth hosted efad/778d red
-  immutable; replaces Guide's fixed wheel ruler with bounded dynamic native-wheel proof and exact
-  restoration; defers queued progression ceremonies while a newer product action owns state and
-  resumes exactly once; and waits for D-TRAIN's queued development bulletin to converge across
-  live panel/focus/Training and durable `rn` state. Exact hosted carriers and negative controls are
-  retained. Focused 4-file/46-test verification, the complete 263-file browser-free develop profile,
-  all TypeScript programs, 34 art sources, 1,014 routes and 454 fields are green; independent final
-  review, the clean signed candidate, tracked-input preflight and unchanged-source Compendium →
-  Slice → Glass chain remain pending. No retry, merge, release, version bump, preview publication or
-  deployment is included.”
+  its systems; preserves creature/genome/universe structures and the immutable ninth hosted red;
+  closes Guide dynamic tail reachability, product-owned ceremony ordering and D-TRAIN bulletin
+  convergence with independent controls. Exact signed implementation source `4a4f0b8…` passed
+  focused 46/46, the complete 263-file browser-free develop profile, all TypeScript programs,
+  browser-driver selftest, live Edge preflight and one named-verified unchanged-source 78/78
+  Compendium → zero-finding Slice → 12/12 Glass chain with 104/104 controls. Four deterministic
+  carriers and synchronized references preserve the evidence. No retry, release, version bump,
+  preview publication or deployment is included.”
 - **Claude Code next:** Nick does **not** need to open Claude yet. After PR #35 is terminal green
   and merged into `develop`, open Claude/Fable for the requested full polish review from a fresh
   `anthropic/*` branch; it must fetch/merge `origin/develop` into its own clean worktree and never
   edit or copy files from this OpenAI worktree.
-- **Release status:** `develop`, `main` and the live site are unchanged by this active batch. No
-  release, version bump, preview publication or deployment is in progress.
+- **Release status:** `develop`, `main` and the live site remain unchanged. No release, version
+  bump, preview publication or deployment is in progress.
 - **Actions budget:** mode **UNFROZEN**, repository assumed public while that remains verified,
   private fallback cap **3,000**, and **zero** hosted attempts currently authorized.

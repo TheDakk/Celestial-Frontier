@@ -1,5 +1,31 @@
 # Celestial Frontier — Master Art Direction
 
+> **2026-09-01 current Guide/Charter/D-TRAIN green evidence overlay (supersedes every older
+> “current” label below; all dated art/evidence checkpoints remain immutable):** exact SSH-signed
+> source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+> `25cb76916c8f3fcd00a916864abb9402932cdbec`) passed the complete browser-free profile at
+> **263 files / 2,719 passed / 1 skipped**. Its unchanged-source, named-verified, once/no-retry
+> chain passed Compendium `20260902020238003-42290-3e0d5a9601` at **78/78** with zero findings;
+> develop Slice `20260902020406920-42750-f6dc8783b4cd` with zero findings/scopes (report/log
+> SHA-256 `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` /
+> `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`); and Glass
+> `20260902021048274-43570-053d2c926673` at **12/12** viewport/reload outcomes and **104/104**
+> controls with zero findings or instrument failures (report SHA-256
+> `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`). Four exact carriers
+> under `audits/` retain the Compendium report, Slice report/log and Glass report.
+>
+> This successor dynamically observes and native-scrolls to the real Guide tail under one clipped
+> absolute deadline with bounded exact restoration, preserves the progression-ceremony queue while
+> `productActionInFlight` owns a newer action and resumes it exactly once, and waits for D-TRAIN's
+> stable raw/live/focus/pending-cleared bulletin fixed point. The only product behavior change is
+> ceremony presentation ordering. The legacy game, creature, plant, biome, Guardian and loot
+> structures, deterministic generation, painters, palettes, silhouettes, anatomy, crops, audio,
+> CSS, save schema, numeric rulers, browser pin/version policy and no-retry policy are unchanged.
+> The green automated chain crosses
+> the current art surfaces; it does **not** close any outstanding human visual/art-direction gate.
+> Hosted run `33572309149` remains immutable red and its ninth authorization consumed. No new hosted
+> attempt, push, merge, release, version bump, publication or deployment is authorized.
+
 > **2026-08-31 current a046 collision-control repair overlay (supersedes every older “current”
 > label below; dated art/evidence checkpoints remain immutable):** exact clean SSH-signed source
 > `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry as

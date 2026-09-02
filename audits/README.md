@@ -10,6 +10,68 @@ summary of it.
 
 ## Contents
 
+### Current PR #35 Guide/Charter/D-TRAIN repair — exact local develop certificate
+
+Exact clean SSH-signed implementation source
+`4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+`25cb76916c8f3fcd00a916864abb9402932cdbec`) on `openai/mac` passed the complete browser-free
+`develop` profile at **263/263 files**, **2,719 passed / 1 skipped** (**2,720 total**). The browser
+selftest and live preflight passed on Edge `152.0.4191.53` / CDP `1.3`. Current Compendium producer
+authority is `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`; budget
+SHA-256 is `f66fed5e8bb1f18b95266c267435fc0493bf450a89aee74fc1c9ffaa18f8501e`.
+
+That exact unchanged source completed one serial, fail-fast/no-retry local develop chain. Every
+stage ran once and every named verifier passed:
+
+- Compendium `20260902020238003-42290-3e0d5a9601` passed **78/78** with zero findings/blocked
+  outcomes and six review PNGs in **66,800 ms**. Its raw report is **10,894,730 bytes**, SHA-256
+  `82ed68762a5bbf90659c42b8c97ca44dae904c8c1516b3996d1305b65343fee1`.
+- Develop Slice `20260902020406920-42750-f6dc8783b4cd` passed terminal certifying with zero
+  findings/scopes, ten screenshots and an exact green Arc 4 ledger in **379,782 ms**. Its raw
+  report is **6,126 bytes**, SHA-256
+  `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d`; its raw log is
+  **6,950 bytes**, SHA-256
+  `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`.
+- Full-certifying Glass `20260902021048274-43570-053d2c926673` consumed that exact Slice report and
+  log, then passed **12/12** viewports, **12/12** reload rows and **104/104** controls with zero
+  blocked/omitted controls, findings, instrument failures or retries in **115,629 ms**. Its raw
+  report is **898,927 bytes**, SHA-256
+  `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`.
+
+The four exact 4a4f0b8 carriers pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`:
+  **455,290 bytes**, SHA-256
+  `4e6b92c1ea1f5a97a6fa7efa4461e26c135ed45862dfed6981e1aab63a02b134`; raw
+  **10,894,730 bytes**, SHA-256
+  `82ed68762a5bbf90659c42b8c97ca44dae904c8c1516b3996d1305b65343fee1`.
+- `ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`:
+  **1,966 bytes**, SHA-256
+  `97c1fc79242674767483f48527a66234617bc830f61cbe358de61b8232673b70`; raw
+  **6,126 bytes**, SHA-256
+  `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d`.
+- `ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.log.gz`:
+  **3,291 bytes**, SHA-256
+  `83767491463fe7651000519e0e7b1db8d6e9cdb8d252e580f6f9c4981794f1d0`; raw
+  **6,950 bytes**, SHA-256
+  `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`.
+- `ARC4_GLASS_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`:
+  **78,861 bytes**, SHA-256
+  `971f5bed9e80ce8a10057b60608435b2b1048874b7d37306798cec24b93dee15`; raw
+  **898,927 bytes**, SHA-256
+  `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`.
+
+SceneMemory remains production-only/quarantined and Recovery remains outside `develop`. The closure
+descendant adds only these four immutable carriers and synchronized references; its SHA is
+intentionally not self-embedded. After that descendant is SSH-signed, resolve its exact
+`git rev-parse HEAD`, prove the raw `gpgsig` and clean tree, and pass its final tracked-input
+`develop` preflight without rerunning or rebinding 4a4f0b8's exact browser certificate. This local
+certificate grants no push, hosted attempt, PR mutation, merge, release, preview, publication or
+deployment authority. The ninth hosted authorization remains consumed; a future attempt requires
+Nick's fresh authorization naming the final exact descendant head and base.
+
+### Historical ninth hosted-red boundary — preserved verbatim below
+
 ### Current PR #35 Guide/Charter/D-TRAIN hosted stop — exact ninth attempt
 
 PR #35 GitHub run `33572309149` was the ninth exact authorized `test-battery` attempt. It tested

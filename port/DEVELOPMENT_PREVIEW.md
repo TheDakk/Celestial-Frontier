@@ -1,5 +1,35 @@
 # Development Preview — Separate-Origin Human Playtesting
 
+> **2026-09-01 current exact-source Guide/Charter/D-TRAIN repair and preview boundary (supersedes
+> every older “current” status label; all dated evidence and preview rules below remain immutable):**
+> exact SSH-signed source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` / tree
+> `25cb76916c8f3fcd00a916864abb9402932cdbec` passed the complete browser-free `develop` profile
+> at **263 files / 2,719 passed / 1 skipped**. Browser-CDP selftest and live browser preflight were
+> green on compatible Edge `152.0.4191.53` / CDP `1.3`; the point version remains provenance only.
+>
+> One serial, once/no-retry, named-verified, unchanged-source local develop chain passed:
+> Compendium `20260902020238003-42290-3e0d5a9601` at **78/78** with zero findings; Slice
+> `20260902020406920-42750-f6dc8783b4cd` with zero findings/scopes and report/log SHA-256
+> `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` /
+> `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`; and exact-Slice-bound
+> Glass `20260902021048274-43570-053d2c926673` at **12/12** viewports, **12/12** reload rows and
+> **104/104** controls with no findings/instrument failures and report SHA-256
+> `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`. Its four deterministic
+> carriers are `audits/ARC1A_COMPENDIUM_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`,
+> `audits/ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`,
+> `audits/ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.log.gz`, and
+> `audits/ARC4_GLASS_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`.
+>
+> Guide now uses dynamic bounded native-wheel progress with a full remaining-time deadline and
+> exact restoration; queued ceremony presentation defers intact during `productActionInFlight` and
+> resumes once; D-TRAIN requires stable raw/live/focus/bulletin convergence. No legacy game, save
+> schema, generation, creature/plant/biome/Guardian structure, loot balance, CSS, numeric ruler or
+> ceiling, retry or browser-version policy changed. Hosted run `33572309149` remains the immutable
+> consumed ninth red. No manual preview was packaged or published, and this local automated
+> certificate does not turn the separate-origin preview into a battery or close Gate/Arc/HUMAN
+> review. No hosted attempt, push, PR mutation, merge, release, version bump or deployment is
+> authorized.
+
 > **2026-09-01 current PR #35 repair/preview boundary (supersedes older “current” labels while
 > preserving dated evidence and preview rules):** the sixth hosted PR #35 admission attempt,
 > GitHub run `33522000552`, tested exact head
