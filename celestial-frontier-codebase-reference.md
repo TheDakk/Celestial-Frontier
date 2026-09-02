@@ -1,5 +1,35 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-09-01 current v2 Guide/ceremony/D-TRAIN green authority overlay (matches exact signed
+> code; supersedes older “current” labels while preserving every dated block):** exact SSH-signed
+> source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+> `25cb76916c8f3fcd00a916864abb9402932cdbec`) passed the complete browser-free profile at
+> **263 files / 2,719 passed / 1 skipped**. Its unchanged-source, named-verified, once/no-retry
+> chain passed Compendium `20260902020238003-42290-3e0d5a9601` **78/78** with zero findings;
+> develop Slice `20260902020406920-42750-f6dc8783b4cd` with zero findings/scopes and report/log
+> SHA-256 `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` /
+> `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`; and Glass
+> `20260902021048274-43570-053d2c926673` at **12/12** viewport/reload outcomes and **104/104**
+> controls with zero findings/instrument failures, report SHA-256
+> `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`. Four exact retained
+> carriers under `audits/` bind that chain:
+> `ARC1A_COMPENDIUM_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`,
+> `ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`,
+> `ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.log.gz` and
+> `ARC4_GLASS_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`.
+>
+> `slicesmoke` now drives the exact Guide tail through a pure adaptive-wheel state machine while one
+> Node-owned absolute deadline clips every setup/observation/input call and an independent cleanup
+> bound restores scroll/style ownership. Main defers the progression drain before queue shift while
+> `productActionInFlight`, preserves the full queue and resumes the ceremony exactly once. D-TRAIN
+> brackets live/focus evidence with stable primary reads, requires pending release cleared and waits
+> for the exact third native write before topology judgment. Ceremony presentation ordering is the
+> sole product behavior change. Legacy game, save schema/migrations, deterministic generation,
+> creatures, plants, biomes, Guardians, loot, audio, CSS, numeric rulers, browser pin/version policy
+> and no-retry policy are unchanged. Hosted run `33572309149` remains immutable red and its ninth
+> authorization consumed; no new hosted attempt, push, merge, release, version bump, publication or
+> deployment is authorized.
+
 > **2026-09-01 current v2 Guide/ceremony/D-TRAIN correction (matches local code as of 2026-09-01;
 > supersedes older “current” labels while preserving dated evidence):** PR #35 run `33572309149`
 > tested exact head `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` through synthetic merge
