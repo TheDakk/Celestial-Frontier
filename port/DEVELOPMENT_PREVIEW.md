@@ -1,5 +1,22 @@
 # Development Preview — Separate-Origin Human Playtesting
 
+> **2026-09-02 current PR #35 battery/preview overlay (supersedes every older “current” label;
+> all dated evidence and preview rules below remain immutable):** hosted run `33584052508` tested
+> exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once with no retry. Layout passed **787/787**;
+> the first and only red was the production-quarantined SceneMemory fixed-eighth phase-validity
+> synthetic allocator selftest,
+> before the develop admission chain began. The authorization is consumed and no hosted or preview
+> publication authority remains.
+>
+> The local uncommitted successor makes all live SceneMemory native-heap work
+> **production-only/quarantined** while deterministic controls remain universal. Develop admission
+> is **Compendium → Slice → Glass**; production/release, only after explicit SceneMemory activation,
+> is **SceneMemory → Compendium → Slice → Glass → Recovery** on unchanged source. The
+> separate-origin human preview remains optional review evidence, never a second certificate or a
+> substitute for either chain. See `../ROADMAP.md` for the live handoff and `v2/README.md` for the
+> canonical battery commands.
+
 > **2026-09-01 current exact-source Guide/Charter/D-TRAIN repair and preview boundary (supersedes
 > every older “current” status label; all dated evidence and preview rules below remain immutable):**
 > exact SSH-signed source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` / tree

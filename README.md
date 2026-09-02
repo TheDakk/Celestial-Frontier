@@ -1,5 +1,23 @@
 # Celestial-Frontier
 
+> **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
+> all dated blocks below remain immutable):** the tenth one-time/no-retry hosted attempt tested
+> exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` in run `33584052508`. Layout passed **787/787**;
+> the first and only red was the production-quarantined SceneMemory fixed-eighth phase-validity
+> synthetic allocator selftest,
+> before the develop admission chain began. That authorization is consumed and there is no current
+> authority to push, mutate PR metadata, dispatch/rerun Actions or merge.
+>
+> The local uncommitted successor makes all live SceneMemory native-heap work
+> **production-only/quarantined** while its deterministic schema, contract, mutation and
+> historical-red controls remain universal. Develop admission is **Compendium → Slice → Glass**.
+> After an explicit future SceneMemory activation decision, production/release is
+> **SceneMemory → Compendium → Slice → Glass → Recovery** on one unchanged source. This changes
+> battery ownership only, not game/product behavior or any historical certificate. `ROADMAP.md` is
+> the live handoff; `port/v2/README.md` owns the copy-ready battery commands and
+> `GITHUB_ACTIONS_BUDGET.md` owns hosted authority.
+
 > **2026-09-01 current exact-source Guide/Charter/D-TRAIN repair certificate (supersedes every
 > older “current” status label; all dated evidence below remains immutable):** exact SSH-signed
 > source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` / tree

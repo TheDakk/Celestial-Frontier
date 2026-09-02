@@ -28,14 +28,15 @@ const ART_INSTRUMENT_PREFIXES = prefixes(
   'port/v2/packages/domain/descriptors/src/',
 );
 
-const BROWSER_INSTRUMENT_EXACT = exact(
+const SHARED_BROWSER_TRANSPORT_EXACT = exact(
   ...V2_DEPENDENCY_INPUTS,
   '.github/workflows/test.yml',
   'port/v2/tools/battery-scope.mjs',
   'port/v2/tools/browserpath.mjs',
   'port/v2/tools/browsercdp.mjs',
-  'port/v2/tools/scenemem.mjs',
-  'port/v2/tools/scenemem-contract.mjs',
+);
+const COMPENDIUM_INSTRUMENT_EXACT = exact(
+  ...SHARED_BROWSER_TRANSPORT_EXACT,
   'port/v2/tools/compendiummem.mjs',
   'port/v2/tools/compendiummem-contract.mjs',
   'port/v2/tools/compendiummem-browser-preflight.mjs',
@@ -75,7 +76,12 @@ export function classifyBatteryScope(changedPaths) {
     artInstrumentChanged: paths.some((path) => matches(
       path, ART_INSTRUMENT_EXACT, ART_INSTRUMENT_PREFIXES,
     )),
-    browserInstrumentChanged: paths.some((path) => BROWSER_INSTRUMENT_EXACT.has(path)),
+    compendiumInstrumentChanged: paths.some(
+      (path) => COMPENDIUM_INSTRUMENT_EXACT.has(path),
+    ),
+    browserTransportChanged: paths.some(
+      (path) => SHARED_BROWSER_TRANSPORT_EXACT.has(path),
+    ),
   });
 }
 
@@ -111,13 +117,15 @@ function main() {
     `changed_count=${scope.changedCount}`,
     `legacy_changed=${scope.legacyChanged}`,
     `art_instrument_changed=${scope.artInstrumentChanged}`,
-    `browser_instrument_changed=${scope.browserInstrumentChanged}`,
+    `compendium_instrument_changed=${scope.compendiumInstrumentChanged}`,
+    `browser_transport_changed=${scope.browserTransportChanged}`,
   ].join('\n');
   writeFileSync(githubOutput, `${output}\n`, { flag: 'a' });
   console.log(
     `Classified ${scope.changedCount} changed paths: legacy=${scope.legacyChanged} `
       + `art-instrument=${scope.artInstrumentChanged} `
-      + `browser-instrument=${scope.browserInstrumentChanged}`,
+      + `compendium-instrument=${scope.compendiumInstrumentChanged} `
+      + `browser-transport=${scope.browserTransportChanged}`,
   );
 }
 
