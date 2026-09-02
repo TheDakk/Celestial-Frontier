@@ -10,7 +10,24 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 action-settlement instrument red — thirteenth attempt
+### Current PR #35 action-settlement repair — exact clean local certificate
+
+Exact clean source `64e405bc6678302c5936945c1b34ac5de5407025` (tree
+`732bcf9930ac36e7661b14cdfd6cde64137d34f4`) passed the tracked `develop` profile at **264/264
+files, 2,738 passed / 1 skipped**, then completed one unchanged-source, fail-fast/no-retry browser
+chain: Compendium `20260902214924248-53897-bef91ee56a` **78/78**; zero-finding Slice
+`20260902215043536-54220-81ac577271ec` with ten screenshots; and exact-Slice-bound Glass
+`20260902215703000-54563-41950fd00ea0` at **12/12** viewports/reloads and **104/104** controls,
+with zero findings, instrument failures, blocked/omitted controls, or retries.
+
+Four `gzip -n -9` carriers preserve the Compendium report, Slice report/log, and Glass report.
+Their exact raw/gzip sizes and hashes, unchanged-source binding, Edge/CDP provenance, and authority
+boundary are indexed in
+`ARC4_GLASS_PR35_ACTION_SETTLEMENT_REPAIR_PASS_20260902_64E405B.md`. This is local evidence only:
+no hosted attempt, push, label, PR mutation, merge, release, publication, or deployment is
+authorized.
+
+### Historical PR #35 action-settlement instrument red — thirteenth attempt
 
 PR #35 run `33674116068`, attempt 1, consumed the exact one-time `test-battery` authority for head
 `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base

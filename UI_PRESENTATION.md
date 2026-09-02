@@ -1,7 +1,7 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-09-02 current Glass Inventory action-evidence overlay (harness-only; full browser
-> certification pending and older dated evidence remains immutable):** PR #35 run `33674116068`, attempt 1,
+> **2026-09-02 current Glass Inventory action-evidence overlay (harness-only; exact local browser
+> certificate green and older dated evidence remains immutable):** PR #35 run `33674116068`, attempt 1,
 > tested exact head `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b`. Layout **787/787**, Compendium **78/78** plus named
 > verification, and exact-bound Slice passed. Glass stopped instrument-red on its first small-phone
@@ -36,8 +36,18 @@
 > findings or instrument failures and remains noncertifying. Current focused Inventory instrument
 > tests pass **19/19**, the related four-file set passes **37/37**, and typecheck plus Glass selftest
 > are green. The browser-free `develop` profile passes **264/264 files, 2,738 passed / 1 skipped**.
-> No full 12-row Glass pass is claimed, no unchanged-source successor certificate exists yet, and
-> no HUMAN presentation criterion closes from these checks.
+>
+> Exact signed implementation `64e405bc6678302c5936945c1b34ac5de5407025`, tree
+> `732bcf9930ac36e7661b14cdfd6cde64137d34f4`, passed that tracked-input profile and one unchanged
+> clean Edge `152.0.4191.53` / CDP `1.3` chain, each stage once/no-retry. Compendium
+> `20260902214924248-53897-bef91ee56a` passed **78/78** in **61,826 ms** (report
+> `128763fc…f105`); zero-finding/scoped Slice `20260902215043536-54220-81ac577271ec` passed with ten
+> screenshots in **362,381 ms** (report/log `7f73b8bb…b7c3` / `1b89495e…0eba`); exact-Slice-bound
+> Glass `20260902215703000-54563-41950fd00ea0` passed in **114,022 ms** with **12/12**
+> viewports/reloads and **104/104** controls, zero findings, instrument failures, blocked/omitted
+> work or retries (report `de298933…adc2`). All named verifiers and independent code/docs reviews
+> are green/**CLEAR**. A signed evidence/docs descendant and final tracked-input proof remain before
+> any new hosted request; this closes no HUMAN presentation criterion and grants no hosted authority.
 
 > **2026-09-02 current Inventory modal-lifetime overlay (matches current local code; supersedes
 > older “current” labels while preserving dated evidence):** PR #35 run `33657402955` tested exact

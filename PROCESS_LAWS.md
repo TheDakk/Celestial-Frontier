@@ -17,8 +17,19 @@
 > explicitly noncertifying. Focused Inventory instrument tests pass **19/19**, the related
 > four-file set passes **37/37**, and typecheck plus Glass selftest are green. This changes no
 > product behavior, control count, browser policy or retry rule. The consolidated browser-free
-> `develop` profile passes **264/264 files, 2,738 passed / 1 skipped**; a full 12-row Glass pass and
-> unchanged-source replacement certificate remain pending.
+> `develop` profile passes **264/264 files, 2,738 passed / 1 skipped**.
+>
+> Exact SSH-signed implementation `64e405bc6678302c5936945c1b34ac5de5407025`, tree
+> `732bcf9930ac36e7661b14cdfd6cde64137d34f4`, passed that tracked-input profile and one unchanged
+> clean, once/no-retry Edge `152.0.4191.53` / CDP `1.3` chain. Compendium
+> `20260902214924248-53897-bef91ee56a` passed **78/78** in **61,826 ms** (report
+> `128763fc…f105`); Slice `20260902215043536-54220-81ac577271ec` passed in **362,381 ms** with
+> zero findings/scopes and ten screenshots (report/log `7f73b8bb…b7c3` / `1b89495e…0eba`); Glass
+> `20260902215703000-54563-41950fd00ea0` consumed that Slice and passed in **114,022 ms** with
+> **12/12** viewports/reloads and **104/104** controls, zero findings/instrument failures/blocked/
+> omitted work or retries (report `de298933…adc2`). Every named verifier and independent code/docs
+> review is green/**CLEAR**. A signed evidence/docs descendant and final tracked-input proof remain;
+> this local certificate grants no hosted authority.
 
 > **COMPOSE AN ACTION VERDICT LAST, AND POLL AN ALWAYS-STRUCTURED OUTCOME** (2026-09-02).
 > A green setup object may carry its own `ok`; spread it before computing the composite action

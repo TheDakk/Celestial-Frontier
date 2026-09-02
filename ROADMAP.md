@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-02 · THIRTEENTH HOSTED INSTRUMENT STOP · LOCAL ACTION HARNESS REPAIR IN PROGRESS ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-02 · THIRTEENTH HOSTED INSTRUMENT STOP · EXACT LOCAL CERTIFICATE GREEN ◀◀◀
 
 ### Exact current boundary
 
@@ -27,9 +27,12 @@ the archive verbatim and refresh this handoff in place.
 - Pushed and hosted-tested head is **5ae12c7e161e90b3799d6b49a63e2b0438048da6**, tree
   **fbb059cea703cceb3feebcc716e64e02f5f5ba90**, against exact `origin/develop`
   **7a9f4c1370dd84292388d718c38ff34214f6203b**.
-- The current working tree contains the retained thirteenth-stop evidence/docs and bounded Glass
-  action/portrait harness successor. It is not yet committed or certified; preserve all current
-  bytes and do not rebase, overwrite or copy them into another worktree.
+- Exact SSH-signed implementation source is **64e405bc6678302c5936945c1b34ac5de5407025**,
+  tree **732bcf9930ac36e7661b14cdfd6cde64137d34f4**, parent/pushed head **5ae12c7…**.
+  It contains the bounded Glass action/portrait harness successor and exact local certificate.
+- The current working tree is preparing the evidence/docs descendant over that signed
+  implementation. That descendant and its final tracked-input proof are not complete; preserve
+  all current bytes and do not rebase, overwrite or copy them into another worktree.
 - PR #35 is Ready/open/unmerged. `actions-budget-approved` is absent, `develop` remains unchanged
   at the base above, and no push, label, dispatch, retry, PR mutation, merge, release, version bump,
   publication or deployment is currently authorized.
@@ -88,9 +91,25 @@ the archive verbatim and refresh this handoff in place.
   **37/37**; Glass selftest and all three TypeScript programs are green. The full browser-free
   `develop` profile passes **264/264 files, 2,738 passed / 1 skipped**, with **34** clean art
   sources, **1,014/1,014** routes and **454** declared fields with zero inert fields.
-- Independent final reviews are still pending. A clean commit and one unchanged-source,
-  named-verified local **Compendium → Slice → Glass** chain are also still pending. No exact-source
-  full Glass pass or replacement certificate is claimed.
+- Signed `64e405b…` passed the hermetic tracked-input `develop` rehearsal with that same result.
+  Edge **152.0.4191.53** / CDP **1.3** supplied all browser stages; the point version is provenance
+  only.
+- On unchanged clean `64e405b…`, Compendium `20260902214924248-53897-bef91ee56a` passed **78/78**
+  in **61,826 ms**, raw report SHA-256
+  `128763fcdd45cef23cb41f509f8d30bc6c041784c3547252cd6438f0b089f105`, then named-verified.
+- Slice `20260902215043536-54220-81ac577271ec` passed in **362,381 ms** with zero findings/scopes
+  and ten screenshots; report/log SHA-256
+  `7f73b8bb68c4197e44931ec615063d66e7f2ba7b1b5d1e86fcf9eb5850a4b7c3` /
+  `1b89495e6e5d5a10183f16b30be65c84df7cbf1605cf81907dfa951e82b90eba`, then named-verified.
+- Glass `20260902215703000-54563-41950fd00ea0` consumed that exact Slice and passed in **114,022
+  ms** with **12/12** viewports, **12/12** reload rows and **104/104** controls; it retained zero
+  findings, instrument failures, blocked/omitted controls or retries. Report SHA-256
+  `de298933a9be237efcb926d28054a2fcb308ca09eacc2532bbb7b75c67ddadc2`; the Slice-bound named
+  verifier passed.
+- Each browser stage ran once/no-retry on the same unchanged clean source. Independent final code
+  and documentation reviews are **CLEAR**. A signed evidence/docs descendant and its final
+  tracked-input proof remain before requesting any new exact head/base authorization; this local
+  certificate grants no hosted authority.
 
 ### Scope and preserved vision
 
@@ -103,10 +122,10 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex next:** complete the independent final reviews, commit the stable local successor,
-  then run one clean unchanged-source Compendium → Slice → Glass chain and named-verify each stage.
-  If terminal green, report the exact new head/base and request Nick's fresh one-attempt PR #35
-  authorization. Do not push or mutate GitHub before that exact authority.
+- **OpenAI/Codex next:** complete and SSH-sign the evidence/docs descendant, run its final hermetic
+  tracked-input `develop` proof, then report that exact new head against base **7a9f4c1…** and
+  request Nick's fresh one-attempt PR #35 authorization. Do not push or mutate GitHub before that
+  exact authority.
 - **PR:** existing #35, base **develop**, source **openai/mac**.
 - **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
 - **Description:** “Completes the established v2 roadmap campaign without recreating its gameplay
