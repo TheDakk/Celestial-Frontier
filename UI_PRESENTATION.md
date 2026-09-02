@@ -1,5 +1,43 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-09-02 current browser-ownership/Glass repair overlay (supersedes older “current” labels;
+> dated evidence remains immutable):** exact clean source
+> `05690215771db91601cf9dbcbcaa8d771fe540b5` passed the complete browser-free develop profile,
+> Compendium and Slice. Exact-Slice-bound Glass
+> `20260902034025002-67201-c5ef56b312e9` completed six green viewport/reload rows with zero
+> product findings, then stopped once/no-retry at tablet-portrait on
+> `owned browser cleanup failed (kill EPERM)`. The shared POSIX launcher now keeps a detached
+> Node sentinel as the live group leader through exact browser lifecycle, acknowledgement and
+> terminal owned-group SIGKILL barriers, with no numeric PGID operation after release.
+>
+> Two intermediate targeted runs stopped instrument-only, with zero product input and zero product
+> findings: tablet-portrait
+> `20260902052600888-85161-dd14bc6726f4` exposed malformed restoration page-source interpolation,
+> and desktop-8K `20260902052945783-86025-0f4247ee8571` exposed Chromium retaining an empty
+> `style` attribute after the first removal when the captured state was absent. The repair now
+> builds and executable-tests the exact browser restoration expression, uses a refusal-only
+> `{ dispatch:false }` assessment that arms no listener and yields no receipt, retains and restores
+> the exact original button/card owner, and completes owned absent-style normalization with a
+> second removal without collapsing absent and empty states.
+>
+> The final dirty source digest
+> `23884a5d5050bc79642d25ac4700e58b269e0deee2d61464c37143550815c027`
+> then passed all seven stopped/downstream diagnostics with zero findings and zero instrument
+> failures: tablet-portrait `20260902053159926-86747-9a6ec544ca9f`,
+> tablet-landscape `20260902053214646-86864-a72ce4d83aef`, laptop-720p
+> `20260902053229583-86982-528e2a6690f0`, desktop
+> `20260902053243665-86740-fd3ed6b519f9`, desktop-1080p
+> `20260902053339974-87246-c7e46a84c35d`, ultrawide
+> `20260902053354610-87392-74be39e3fc8d`, and desktop-8K
+> `20260902053409007-87239-adca4be4b296`. These are scoped dirty-source diagnostics, not the
+> final certificate. This remains harness-only: no UI, presentation, Inventory behavior, layout,
+> accessibility, creature/art, graphics, audio, save, ruler, timeout, retry or browser-version
+> policy changed, and no HUMAN criterion is closed. The same finished dirty source passes the
+> complete browser-free `develop` profile at **264/264 files, 2,728 passed / 1 skipped**, all three
+> TypeScript programs and the root validator with the 50-probe v1.0 determinism fingerprint
+> unchanged. A clean signed candidate and unchanged-source
+> Compendium → Slice → Glass chain remain pending; no hosted attempt is authorized.
+
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated UI/evidence blocks below remain immutable):** hosted run `33584052508` tested exact
 > head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
@@ -1055,6 +1093,19 @@
 > Arc 2 evidence boundary no Cargo/Fabricator/Research/vendor/bulk surface was implied; the newer
 > Engineering overlay above supersedes only Mine/Skim, the eligible Deep-Scanner purchase and the
 > eligible fixed-Fabrication subset.
+>
+> A Glass offscreen negative control must actually place the exact action outside the viewport and
+> prove `inputDispatched:false` with no armed input listener and no receipt. Natural scrolling is
+> accepted only after full-outside/null-hit proof; otherwise Glass temporarily translates only the
+> judged action. A separately executable page-source builder owns the browser restoration
+> expression. The exact original button/card pair is retained across the probe and restored in
+> `finally`; scroll, transform value/priority and the complete inline-style attribute must match.
+> Chromium's first removal can normalize an originally absent attribute to empty, so an owned
+> absent-style mutation performs a second exact removal after preserving pre-normalization
+> transform evidence; an originally empty attribute remains empty rather than being collapsed to
+> absent. Setup, negative-control or restoration failure is instrument-red before product judgment;
+> publication mutants run only from a green real-action predecessor. Product Inventory semantics
+> remain unchanged.
 
 > **2026-08-22 v2 Arc 1C Shipyard/surface overlay — historical pre-Arc-2 source:** clean
 > product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds one real, read-only
@@ -1662,6 +1713,16 @@
 > an immediate serviced target turn, and a later post-render ticker turn; ready by
 > itself is not steady-state answerability, and later driven outcomes remain
 > authoritative.
+>
+> On POSIX, that shared lifecycle now keeps a detached Node sentinel alive as the process-group
+> leader while Chromium runs non-detached in its group. Exact browser PID/lifecycle messages,
+> final group-identity announcement, parent acknowledgement, exact owned TERM/KILL, terminal group
+> SIGKILL and sentinel SIGKILL exit/close form the cleanup barrier; a watchdog owns the same final
+> kill if acknowledgement is lost. The parent performs no negative-PGID probe or signal at any
+> point. Browser exit before open, during pending work or before owned Close fails closed; a
+> browser-close-requested exit is accepted only with code `0` and null signal. Profile removal and
+> stable absence occur only after the barrier. On Windows, an external browser exit is accepted
+> only after the exact bounded `taskkill /T` request itself succeeded.
 >
 > The product produces that witness from one code-owned path used by its three
 > intentional reloads: Training restart, supported expedition import, and the

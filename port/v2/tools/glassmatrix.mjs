@@ -220,6 +220,187 @@ function recordGlassProductFinding(findings, viewport, surface, row, armed = fal
   return findings.length;
 }
 
+export function prepareInventoryActionOffscreen(button, card, prior, viewport, hitTest) {
+  const valid = button && card && prior?.ok === true && Number.isFinite(prior.saved)
+    && !(prior.styleAttribute !== null && typeof prior.styleAttribute !== 'string')
+    && typeof prior.transform === 'string' && typeof prior.transformPriority === 'string'
+    && viewport && Number.isFinite(viewport.width) && viewport.width > 0
+    && Number.isFinite(viewport.height) && viewport.height > 0
+    && typeof button.getBoundingClientRect === 'function'
+    && typeof button.getAttribute === 'function'
+    && button.style && typeof button.style.setProperty === 'function'
+    && typeof button.style.getPropertyValue === 'function'
+    && typeof button.style.getPropertyPriority === 'function'
+    && typeof card.contains === 'function' && card.contains(button)
+    && button.isConnected === true && card.isConnected === true
+    && card.scrollTop === prior.saved
+    && button.getAttribute('style') === prior.styleAttribute
+    && button.style.getPropertyValue('transform') === prior.transform
+    && button.style.getPropertyPriority('transform') === prior.transformPriority
+    && typeof hitTest === 'function';
+  if (!valid) {
+    return {
+      ok: false, mutationApplied: false, mode: null,
+      why: 'invalid offscreen setup owner', target: null,
+    };
+  }
+  const measure = () => {
+    const rect = button.getBoundingClientRect();
+    const values = [rect?.left, rect?.top, rect?.right, rect?.bottom];
+    if (!values.every(Number.isFinite)) {
+      return { ok: false, rect: null, x: null, y: null, hit: null, fullyOutside: false };
+    }
+    const width = rect.right - rect.left, height = rect.bottom - rect.top;
+    const x = (rect.left + rect.right) / 2, y = (rect.top + rect.bottom) / 2;
+    const hit = hitTest(x, y) ?? null;
+    return {
+      ok: width >= 44 && height >= 44,
+      rect: values,
+      x,
+      y,
+      hit: hit === null ? null
+        : (hit.getAttribute?.('data-inventory-action') || hit.tagName || 'owned-element'),
+      fullyOutside: rect.right <= 0 || rect.left >= viewport.width
+        || rect.bottom <= 0 || rect.top >= viewport.height,
+    };
+  };
+
+  card.scrollTop = 0;
+  const scrollTarget = measure();
+  const scrollDisplaced = prior.saved > 0 && card.scrollTop === 0;
+  let mode = 'scroll', translated = false;
+  if (!(scrollDisplaced && scrollTarget.ok && scrollTarget.fullyOutside
+    && scrollTarget.hit === null)) {
+    mode = 'translated';
+    button.style.setProperty('transform', 'translateY(calc(100vh + 128px))', 'important');
+    const appliedTransform = button.style.getPropertyValue('transform');
+    const appliedTransformPriority = button.style.getPropertyPriority('transform');
+    translated = !!appliedTransform && appliedTransform !== prior.transform
+      && appliedTransformPriority === 'important';
+  }
+  const target = measure();
+  const appliedTransform = button.style.getPropertyValue('transform');
+  const appliedTransformPriority = button.style.getPropertyPriority('transform');
+  return {
+    ok: card.scrollTop === 0 && target.ok && target.fullyOutside && target.hit === null
+      && (mode === 'scroll' ? scrollDisplaced : translated),
+    mutationApplied: true,
+    saved: prior.saved,
+    top: card.scrollTop,
+    mode,
+    translated,
+    appliedTransform,
+    appliedTransformPriority,
+    scrollTarget,
+    target,
+  };
+}
+
+export function restoreInventoryActionOffscreen(button, card, prior, mutationApplied = true) {
+  if (!button || !card || prior?.ok !== true || !Number.isFinite(prior.saved)
+    || !(prior.styleAttribute === null || typeof prior.styleAttribute === 'string')
+    || typeof prior.transform !== 'string' || typeof prior.transformPriority !== 'string'
+    || typeof mutationApplied !== 'boolean'
+    || typeof button.getAttribute !== 'function'
+    || typeof button.setAttribute !== 'function'
+    || typeof button.removeAttribute !== 'function'
+    || !button.style || typeof button.style.getPropertyValue !== 'function'
+    || typeof button.style.getPropertyPriority !== 'function') {
+    return { ok: false, why: 'invalid offscreen restoration owner' };
+  }
+  const ownerStable = typeof card.contains === 'function' && card.contains(button)
+    && button.isConnected === true && card.isConnected === true;
+  if (mutationApplied) {
+    if (prior.styleAttribute === null) button.removeAttribute('style');
+    else button.setAttribute('style', prior.styleAttribute);
+    card.scrollTop = prior.saved;
+  }
+  const observedStyleAttribute = button.getAttribute('style');
+  const transform = observedStyleAttribute === null
+    ? '' : button.style.getPropertyValue('transform');
+  const transformPriority = observedStyleAttribute === null
+    ? '' : button.style.getPropertyPriority('transform');
+  /* Chromium may retain an empty style attribute through the first
+     removeAttribute() while a live CSSStyleDeclaration is held. Finish the
+     owned mutation with the exact captured attribute state, after retaining
+     the pre-normalization transform evidence above. */
+  if (mutationApplied && prior.styleAttribute === null) button.removeAttribute('style');
+  const styleAttribute = button.getAttribute('style');
+  const styleAttributeRestored = styleAttribute === prior.styleAttribute;
+  return {
+    ok: ownerStable && card.scrollTop === prior.saved && styleAttributeRestored
+      && transform === prior.transform && transformPriority === prior.transformPriority,
+    mutationApplied,
+    ownerStable,
+    scrollTop: card.scrollTop,
+    styleAttribute,
+    styleAttributeRestored,
+    transform,
+    transformPriority,
+    styleRestored: styleAttributeRestored
+      && transform === prior.transform && transformPriority === prior.transformPriority,
+  };
+}
+
+export async function runInventoryOffscreenProbe({ setup, activate, restore }) {
+  if (typeof setup !== 'function' || typeof activate !== 'function'
+    || typeof restore !== 'function') {
+    throw new TypeError('Inventory offscreen probe requires setup, activate, and restore owners');
+  }
+  let offscreenSetup = null, offscreenProbe = null, restored = null;
+  let setupError = null, probeError = null, restorationError = null;
+  let probeAttempted = false;
+  try {
+    try {
+      offscreenSetup = await setup();
+    } catch (error) {
+      setupError = error instanceof Error ? error.message : String(error);
+    }
+    if (offscreenSetup?.ok === true && setupError === null) {
+      probeAttempted = true;
+      try {
+        offscreenProbe = await activate();
+      } catch (error) {
+        probeError = error instanceof Error ? error.message : String(error);
+      }
+    }
+  } finally {
+    try {
+      restored = await restore(offscreenSetup, setupError);
+    } catch (error) {
+      restorationError = error instanceof Error ? error.message : String(error);
+    }
+  }
+  return {
+    offscreenSetup,
+    offscreenProbe,
+    restored,
+    setupError,
+    probeError,
+    restorationError,
+    probeAttempted,
+  };
+}
+
+const PREPARE_INVENTORY_ACTION_OFFSCREEN_SOURCE
+  = `(${prepareInventoryActionOffscreen.toString()})`;
+const RESTORE_INVENTORY_ACTION_OFFSCREEN_SOURCE
+  = `(${restoreInventoryActionOffscreen.toString()})`;
+
+export function buildInventoryActionOffscreenRestoreSource(prior, mutationApplied) {
+  if (!prior || typeof prior !== 'object' || typeof mutationApplied !== 'boolean') {
+    throw new TypeError('Inventory offscreen restoration source requires prior state and a mutation flag');
+  }
+  const priorSource = JSON.stringify(prior);
+  if (typeof priorSource !== 'string') {
+    throw new TypeError('Inventory offscreen restoration prior state is not serializable');
+  }
+  return `(()=>{const owner=window.__cfInventoryOffscreenOwner||null,
+    prior=${priorSource},restore=${RESTORE_INVENTORY_ACTION_OFFSCREEN_SOURCE};
+    delete window.__cfInventoryOffscreenOwner;return restore(owner?.button,owner?.card,prior,
+      ${mutationApplied ? 'true' : 'false'});})()`;
+}
+
 function collectGlassProductRows(findings, viewport, surface, rows, armed = false) {
   for (const row of rows || []) {
     recordGlassProductFinding(findings, viewport, surface, row, armed);
@@ -8080,27 +8261,34 @@ async function main() {
            receipt for its opener and Close rather than using the panel helper's
            programmatic click: visible DOM plus a direct API toggle can agree
            while the player-facing button is covered or unwired. */
-        const activateRealControl = async (selector, label) => {
+        const activateRealControl = async (selector, label, options = {}) => {
+          const dispatchAllowed = options?.dispatch !== false;
           const target = await evalIn(`(()=>{ const button=document.querySelector(${JSON.stringify(selector)}),
             rect=button?.getBoundingClientRect(),style=button?getComputedStyle(button):null,
             x=rect?(rect.left+rect.right)/2:NaN,y=rect?(rect.top+rect.bottom)/2:NaN,
             hit=rect?document.elementFromPoint(x,y):null;
             window.__cfGlassShipyardReceipt=null;window.__cfGlassShipyardReceiptAbort?.abort();
-            const controller=new AbortController();window.__cfGlassShipyardReceiptAbort=controller;
-            document.addEventListener('pointerdown',(event)=>{const node=event.target instanceof Element?event.target:null;
-              window.__cfGlassShipyardReceipt={buttonId:node?.closest('button')?.id||null,
-                pointerType:event.pointerType||null,trusted:event.isTrusted===true,x:event.clientX,y:event.clientY};
-              window.__cfGlassShipyardReceiptAbort=null;},{capture:true,once:true,signal:controller.signal});
             const opacity=Number(style?.opacity),visible=!!button&&style?.display!=='none'
-              &&style?.visibility!=='hidden'&&Number.isFinite(opacity)&&opacity>0;
-            return {ok:visible
-              &&rect.width>=44&&rect.height>=44&&!!hit&&(hit===button||button.contains(hit)),
+              &&style?.visibility!=='hidden'&&Number.isFinite(opacity)&&opacity>0,
+              ok=visible&&rect.width>=44&&rect.height>=44&&!!hit&&(hit===button||button.contains(hit));
+            delete window.__cfGlassShipyardReceiptAbort;
+            if(ok&&${JSON.stringify(dispatchAllowed)}){const controller=new AbortController();window.__cfGlassShipyardReceiptAbort=controller;
+              document.addEventListener('pointerdown',(event)=>{const node=event.target instanceof Element?event.target:null;
+                window.__cfGlassShipyardReceipt={buttonId:node?.closest('button')?.id||null,
+                  pointerType:event.pointerType||null,trusted:event.isTrusted===true,x:event.clientX,y:event.clientY};
+                window.__cfGlassShipyardReceiptAbort=null;},{capture:true,once:true,signal:controller.signal});}
+            return {ok,
               id:button?.id||null,x,y,rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null,
               visible,opacity,hit:hit?.id||hit?.tagName||null,
-              hitButtonId:hit?.closest?.('button')?.id??null};})()`);
+              hitButtonId:hit?.closest?.('button')?.id??null,
+              receiptListenerArmed:'__cfGlassShipyardReceiptAbort' in window};})()`);
           if (!target.ok || !Number.isFinite(target.x) || !Number.isFinite(target.y)) {
             return { ok: false, inputDispatched: false,
               why: `${label} is not a visible 44px centre-owned control`, target, receipt: null };
+          }
+          if (!dispatchAllowed) {
+            return { ok: false, inputDispatched: false, dispatchRefused: true,
+              why: `${label} is reachable but input dispatch is disabled`, target, receipt: null };
           }
           if (vp.mobile) {
             await send('Input.dispatchTouchEvent', {
@@ -10716,33 +10904,69 @@ async function main() {
                 button.scrollIntoView({block:'center',inline:'nearest'});return {ok:true,scrollTop:card.scrollTop};})()`);
               let actionReachabilityControl = { ok: true, skipped: true };
               if (!inventoryControlRun) {
-                const offscreenSetup = await evalIn(`(()=>{const button=document.querySelector(${JSON.stringify(actionSelector)}),
-                  card=button?.closest('.inventory-sheet-card')||null,saved=card?.scrollTop??null;if(card)card.scrollTop=0;
-                  return {ok:!!button&&!!card&&Number.isFinite(saved)&&saved>0,saved,top:card?.scrollTop??null};})()`);
-                const offscreenProbe = await activateRealControl(actionSelector, `${vp.label} Inventory offscreen action control`);
-                const restoredScroll = await evalIn(`(()=>{const button=document.querySelector(${JSON.stringify(actionSelector)}),
-                  card=button?.closest('.inventory-sheet-card')||null;if(card&&Number.isFinite(${JSON.stringify(offscreenSetup?.saved)}))
-                    card.scrollTop=${JSON.stringify(offscreenSetup?.saved)};return {ok:!!button&&!!card,
-                    scrollTop:card?.scrollTop??null};})()`);
-                const offscreenRect = offscreenProbe?.target?.rect;
-                const offscreenGeometry = Array.isArray(offscreenRect) && offscreenRect.length === 4
-                  && offscreenRect[2] - offscreenRect[0] >= 44 && offscreenRect[3] - offscreenRect[1] >= 44
-                  && Number.isFinite(offscreenProbe?.target?.y)
-                  && (offscreenProbe.target.y < 0 || offscreenProbe.target.y > vp.height)
-                  && offscreenProbe.target.hit === null;
-                actionReachabilityControl = { ok: offscreenSetup.ok && offscreenSetup.top === 0
-                    && offscreenProbe.ok === false && offscreenGeometry
-                    && restoredScroll.ok && restoredScroll.scrollTop === offscreenSetup.saved,
-                  skipped: false, offscreenSetup, offscreenProbe, restoredScroll };
+                const offscreenPrior = await evalIn(`(()=>{const button=document.querySelector(${JSON.stringify(actionSelector)}),
+                  card=button?.closest('.inventory-sheet-card')||null;return {ok:!!button&&!!card,
+                    saved:card?.scrollTop??null,styleAttribute:button?.getAttribute('style')??null,
+                    transform:button?.style.getPropertyValue('transform')??null,
+                    transformPriority:button?.style.getPropertyPriority('transform')??null};})()`);
+                const offscreenRun = await runInventoryOffscreenProbe({
+                  setup: () => evalIn(`(()=>{const button=document.querySelector(${JSON.stringify(actionSelector)}),
+                    card=button?.closest('.inventory-sheet-card')||null,prior=${JSON.stringify(offscreenPrior)},
+                    prepare=${PREPARE_INVENTORY_ACTION_OFFSCREEN_SOURCE};
+                    window.__cfInventoryOffscreenOwner={button,card};
+                    return prepare(button,card,prior,{width:window.innerWidth,height:window.innerHeight},
+                      (x,y)=>document.elementFromPoint(x,y));})()`),
+                  activate: () => activateRealControl(
+                    actionSelector, `${vp.label} Inventory offscreen action control`, { dispatch: false },
+                  ),
+                  restore: (setup, setupError) => evalIn(buildInventoryActionOffscreenRestoreSource(
+                    offscreenPrior, setupError !== null || setup?.mutationApplied === true,
+                  )),
+                });
+                const offscreenSetupRect = offscreenRun.offscreenSetup?.target?.rect;
+                const offscreenSetupGeometry = Array.isArray(offscreenSetupRect)
+                  && offscreenSetupRect.length === 4
+                  && offscreenSetupRect[2] - offscreenSetupRect[0] >= 44
+                  && offscreenSetupRect[3] - offscreenSetupRect[1] >= 44
+                  && (offscreenSetupRect[2] <= 0 || offscreenSetupRect[0] >= vp.width
+                    || offscreenSetupRect[3] <= 0 || offscreenSetupRect[1] >= vp.height)
+                  && offscreenRun.offscreenSetup?.target?.fullyOutside === true
+                  && offscreenRun.offscreenSetup?.target?.hit === null;
+                const offscreenProbeRect = offscreenRun.offscreenProbe?.target?.rect;
+                const offscreenProbeGeometry = Array.isArray(offscreenProbeRect)
+                  && offscreenProbeRect.length === 4
+                  && offscreenProbeRect[2] - offscreenProbeRect[0] >= 44
+                  && offscreenProbeRect[3] - offscreenProbeRect[1] >= 44
+                  && (offscreenProbeRect[2] <= 0 || offscreenProbeRect[0] >= vp.width
+                    || offscreenProbeRect[3] <= 0 || offscreenProbeRect[1] >= vp.height)
+                  && offscreenRun.offscreenProbe?.target?.hit === null;
+                actionReachabilityControl = { ok: offscreenPrior.ok === true
+                    && offscreenRun.setupError === null && offscreenRun.offscreenSetup?.ok === true
+                    && offscreenRun.offscreenSetup?.top === 0 && offscreenSetupGeometry
+                    && offscreenRun.probeAttempted === true && offscreenRun.probeError === null
+                    && offscreenRun.offscreenProbe?.ok === false
+                    && offscreenRun.offscreenProbe?.inputDispatched === false
+                    && offscreenRun.offscreenProbe?.target?.receiptListenerArmed === false
+                    && offscreenRun.offscreenProbe?.receipt === null && offscreenProbeGeometry
+                    && offscreenRun.restorationError === null && offscreenRun.restored?.ok === true
+                    && offscreenRun.restored.scrollTop === offscreenPrior.saved
+                    && offscreenRun.restored.styleRestored === true,
+                  skipped: false, offscreenPrior, offscreenSetupGeometry, offscreenProbeGeometry,
+                  ...offscreenRun };
+              }
+              const preActionInstrumentControl = { ok: actionArm.ok && actionScroll.ok
+                  && actionReachabilityControl.ok,
+                arm: actionArm, actionScroll, actionReachabilityControl };
+              if (!inventoryControlRun && !preActionInstrumentControl.ok) {
+                recordInstrumentFailure(`${vp.label}: Inventory action setup/offscreen control failed or did not restore before product input (${JSON.stringify(preActionInstrumentControl)})`);
               }
               const realAction = await activateRealControl(actionSelector, `${vp.label} Inventory exact equip`);
               const actionReceipt = await evalIn(`(()=>{const receipt=window.__cfInventoryActionReceipt||null;
                 window.__cfInventoryActionReceiptAbort?.abort();delete window.__cfInventoryActionReceiptAbort;delete window.__cfInventoryActionReceipt;return receipt;})()`);
-              const actionControl = { ok: actionArm.ok && actionScroll.ok && actionReachabilityControl.ok
-                  && realAction.ok && actionReceipt?.trusted === true
-                  && actionReceipt?.operation === 'equip' && actionReceipt?.instanceId === thermalId
-                  && actionReceipt?.baseline?.ok === true
-                  && actionReceipt?.bindingControlApplied === true && actionReceipt?.bindingOwnerRestored === true
+              const actionProductPrerequisite = realAction.ok && actionReceipt?.trusted === true
+                && actionReceipt?.operation === 'equip' && actionReceipt?.instanceId === thermalId;
+              const publicationControl = { ok: actionReceipt?.bindingControlApplied === true
+                  && actionReceipt?.bindingOwnerRestored === true
                   && actionReceipt?.bindingBroken?.ok === false
                   && actionReceipt?.bindingBroken?.entryIdsMatch === true
                   && actionReceipt?.bindingBroken?.runtimeBindingsMatch === false
@@ -10762,16 +10986,21 @@ async function main() {
                   && actionReceipt?.identityBroken?.rowIdsMatch === false
                   && actionReceipt?.identityBroken?.domEquippedMatch === true
                   && actionReceipt?.restored?.ok === true,
-                arm: actionArm, actionScroll, actionReachabilityControl, realAction, receipt: actionReceipt };
-              addOutcome(vp.label, 'inventory-action-pending', 'INVENTORY_ACTION_NO_OPTIMISM', '#inventorysheet [data-inventory-action="equip"]',
-                { ...actionControl, ok: realActionDetailOpen?.ok === true && actionControl.ok, realOpen: realActionDetailOpen },
-                'a real pending exact equip disables every action and leaves the full runtime equipped bindings and every DOM row data-equipped state unchanged');
-              if (!inventoryControlRun) {
-                if (!actionControl.ok) {
-                  recordInstrumentFailure(`${vp.label}: optimistic Inventory binding/DOM publication stayed green or failed to restore (${JSON.stringify(actionControl)})`);
+                receipt: actionReceipt };
+              if (!inventoryControlRun && actionProductPrerequisite
+                && actionReceipt?.baseline?.ok === true) {
+                if (!publicationControl.ok) {
+                  recordInstrumentFailure(`${vp.label}: optimistic Inventory binding/DOM publication stayed green or failed to restore (${JSON.stringify(publicationControl)})`);
                 }
                 recordControls('inventory-action-publication');
               }
+              const actionControl = { ok: preActionInstrumentControl.ok && actionProductPrerequisite
+                  && actionReceipt?.baseline?.ok === true,
+                ...preActionInstrumentControl, realAction, receipt: actionReceipt,
+                publicationControl };
+              addOutcome(vp.label, 'inventory-action-pending', 'INVENTORY_ACTION_NO_OPTIMISM', '#inventorysheet [data-inventory-action="equip"]',
+                { ...actionControl, ok: realActionDetailOpen?.ok === true && actionControl.ok, realOpen: realActionDetailOpen },
+                'a real pending exact equip disables every action and leaves the full runtime equipped bindings and every DOM row data-equipped state unchanged');
               const settledAction = await waitFor('Inventory action settlement', `(()=>{const S=window.__CF_SLICE__,d=S.api.inventoryDiagnostics(),s=S.api.state();
                 return d.pendingWork===0&&d.lastAction?.operation==='equip'&&d.lastAction?.instanceId===${JSON.stringify(thermalId)}
                   &&d.lastAction?.kind==='committed'&&s.inventory.revision===${Number(inventoryCarrier?.arc2?.inventory?.revision) + 1}
