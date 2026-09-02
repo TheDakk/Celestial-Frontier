@@ -261,9 +261,8 @@ its raw report.
 | `20260902053409007-87239-adca4be4b296` | 83,912 / `2057aa6e0cd40d6fde8dc5c5466ff0646d7f096ffda4c995f07ef99ec1fd2698` | 10,088 / `5523bdd6e486c015ce83c571bfaab3be795b120a36a53a14ad8d6362c1fadb7d` |
 
 The final seven reports remain non-certifying targeted diagnostics. They prove the original stop
-and every downstream viewport before the longer work begins; they do not replace the pending clean
-signed candidate, tracked-input preflight or single unchanged-source Compendium → Slice → Glass
-certificate. They create no GitHub, merge, release or deployment authority.
+and every downstream viewport before the longer work begins; they do not themselves replace a clean
+signed certificate. They create no GitHub, merge, release or deployment authority.
 
 ## Finished dirty-source browser-free closure
 
@@ -274,5 +273,39 @@ all three TypeScript programs, **34** art sources with zero findings, **1,014/1,
 CSS balance, duplicate-id, render and determinism checks; all **1,010** species rendered cleanly
 and the **50-probe** fingerprint remained byte-identical to the v1.0 baseline. The authority
 printer reports current Compendium measurement/producer budgets and remains red only for the
-intentionally stale, production-only SceneMemory source/build inputs. None of these local results
-authorizes a GitHub write or substitutes for the pending clean signed certificate chain.
+intentionally stale, production-only SceneMemory source/build inputs. None of these dirty-source
+results alone authorizes a GitHub write.
+
+## Clean signed certificate closure
+
+Exact SSH-signed implementation source `1f80b0ad050763bf478b2364ad0194e389a7096e`, tree
+`e25579bc4fe063bcdf314ac74c9df2435003617a`, passed its hermetic tracked-input `develop`
+rehearsal at **264/264 files, 2,728 passed / 1 skipped**, all three TypeScript programs, **34**
+clean art sources, **1,014/1,014** routes and **454** non-inert fields. Browser-path,
+Compendium-preflight, Compendium's **618** controls and browser-CDP selftests then passed on Edge
+`152.0.4191.53` / CDP `1.3`.
+
+The same unchanged clean source completed exactly one serial fail-fast/no-retry chain. Compendium
+`20260902055002322-92073-faba0f2692` passed **78/78**, zero findings/blocked outcomes and named
+verification in **67,936 ms**. Slice `20260902055112371-92394-deee4ff0bf81` passed terminal and
+certifying with zero findings/scopes, ten screenshots and named verification in **369,175 ms**.
+Glass `20260902055724658-92954-a2feb2f6006e` consumed that exact Slice report/log and passed
+**12/12** viewports, **12/12** reload rows, **104/104** controls, zero blocked/omitted controls,
+findings, instrument failures or retries, and named verification in **122,915 ms**. Source begin
+and end remained exact clean commit `1f80b0a…`, empty status SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` and working-tree SHA-256
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a` throughout.
+
+### Clean-certificate carriers
+
+| Stage | Raw bytes / SHA-256 | Gzip bytes / SHA-256 |
+|---|---|---|
+| Compendium `20260902055002322-92073-faba0f2692` | 10,897,159 / `000488b966967cdddb12eee549372a0e8d0297cf5f540eb7413f02b0f31c8f5e` | 453,844 / `2b2579c89b7485767f1467e91414c77014a968ff2968fc7a4bd2a6ba773f7f3b` |
+| Slice report `20260902055112371-92394-deee4ff0bf81` | 6,126 / `ad1053cf9b21a2be2c3787ef15d188a2e625d9147ea172aed5fc053f73135a78` | 1,965 / `79079b4193bdb13a8f312473e2d0eebe016a1d9741829c0f7211169498292d77` |
+| Slice log `20260902055112371-92394-deee4ff0bf81` | 6,950 / `a63c7dde4c361f74d522c6d050e255eee3f9a802f51d3ee9341748312f47eb59` | 3,291 / `b9769226747d9b9cbdd99dac526e798d70f85e228ca27722b76304f592e703e0` |
+| Glass `20260902055724658-92954-a2feb2f6006e` | 898,934 / `5c893c9f9e867f23f5bbb0406dc24e5430bb0a7f5a478c05b93e23bc7cd5babe` | 78,802 / `4826c7164324aeccd9a563ec9c52935f0c3daf908979af261b0802c3d06808d7` |
+
+The four carriers pass gzip integrity, exact raw comparison and deterministic `gzip -n -9`
+recompression. The later documentation/evidence descendant does not rebind browser authority away
+from exact implementation `1f80b0a…`. Local implementation/evidence closure is complete; no push,
+PR mutation, hosted attempt, merge, release, version bump, publication or deployment is authorized.

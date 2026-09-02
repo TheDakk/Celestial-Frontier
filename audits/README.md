@@ -10,7 +10,7 @@ summary of it.
 
 ## Contents
 
-### Current local Glass cleanup stop and downstream diagnostic proof — exact 0569021 predecessor
+### Current local Glass cleanup repair and clean certificate — 0569021 stop → 1f80b0a green
 
 Exact clean SSH-signed source `05690215771db91601cf9dbcbcaa8d771fe540b5` passed the full
 browser-free develop profile, Compendium 78/78 and zero-finding Slice. Exact-bound Glass
@@ -45,11 +45,40 @@ automatic retries and one green reload.
 The immutable boundary, intermediate history, leaked-profile handling, two final-review reds and
 seven identical-source passes are recorded in
 `ARC4_GLASS_PR35_LOCAL_CLEANUP_AND_INVENTORY_INSTRUMENT_AUDIT_20260902_0569021.md` with all
-**23** deterministic carriers and exact raw/gzip hashes. Targeted runs remain non-certifying; the
-finished dirty source passes the complete browser-free `develop` profile at **264/264 files,
-2,728 passed / 1 skipped**, all three TypeScript programs and the root validator with the 50-probe
-v1.0 determinism fingerprint unchanged. The clean candidate and one unchanged-source Compendium →
-Slice → full Glass chain remain required.
+**23** deterministic diagnostic carriers and exact raw/gzip hashes. Targeted runs remain
+non-certifying. Exact SSH-signed implementation source
+`1f80b0ad050763bf478b2364ad0194e389a7096e`, tree
+`e25579bc4fe063bcdf314ac74c9df2435003617a`, then passed the complete browser-free `develop`
+profile and hermetic tracked-input rehearsal at **264/264 files, 2,728 passed / 1 skipped**, all
+three TypeScript programs and the root validator with the 50-probe v1.0 determinism fingerprint
+unchanged.
+
+That exact unchanged source completed one fail-fast/no-retry chain and every named verifier passed:
+Compendium `20260902055002322-92073-faba0f2692` **78/78**, zero-finding Slice
+`20260902055112371-92394-deee4ff0bf81`, and exact-Slice-bound Glass
+`20260902055724658-92954-a2feb2f6006e` **12/12** viewports/reloads and **104/104** controls with
+zero blocked/omitted controls, findings, instrument failures or retries. Four deterministic
+carriers preserve the exact report/log bytes:
+
+- `ARC1A_COMPENDIUM_PR35_BROWSER_CLEANUP_GLASS_REPAIR_PASS_20260902_1F80B0A.json.gz` — raw
+  **10,897,159 bytes**, SHA-256
+  `000488b966967cdddb12eee549372a0e8d0297cf5f540eb7413f02b0f31c8f5e`; gzip **453,844
+  bytes**, SHA-256 `2b2579c89b7485767f1467e91414c77014a968ff2968fc7a4bd2a6ba773f7f3b`.
+- `ARC4_SLICE_PR35_BROWSER_CLEANUP_GLASS_REPAIR_PASS_20260902_1F80B0A.json.gz` — raw **6,126
+  bytes**, SHA-256 `ad1053cf9b21a2be2c3787ef15d188a2e625d9147ea172aed5fc053f73135a78`;
+  gzip **1,965 bytes**, SHA-256
+  `79079b4193bdb13a8f312473e2d0eebe016a1d9741829c0f7211169498292d77`.
+- `ARC4_SLICE_PR35_BROWSER_CLEANUP_GLASS_REPAIR_PASS_20260902_1F80B0A.log.gz` — raw **6,950
+  bytes**, SHA-256 `a63c7dde4c361f74d522c6d050e255eee3f9a802f51d3ee9341748312f47eb59`;
+  gzip **3,291 bytes**, SHA-256
+  `b9769226747d9b9cbdd99dac526e798d70f85e228ca27722b76304f592e703e0`.
+- `ARC4_GLASS_PR35_BROWSER_CLEANUP_GLASS_REPAIR_PASS_20260902_1F80B0A.json.gz` — raw **898,934
+  bytes**, SHA-256 `5c893c9f9e867f23f5bbb0406dc24e5430bb0a7f5a478c05b93e23bc7cd5babe`;
+  gzip **78,802 bytes**, SHA-256
+  `4826c7164324aeccd9a563ec9c52935f0c3daf908979af261b0802c3d06808d7`.
+
+All four pass gzip integrity, byte-for-byte raw comparison and deterministic `gzip -n -9`
+recompression. Local closure is complete.
 No GitHub write is authorized.
 
 ### Current PR #35 SceneMemory hosted allocator-phase stop — exact tenth attempt
@@ -75,9 +104,9 @@ contains only the three green Layout files, is 33,817 bytes, and has digest
 Compendium, Slice, Glass, Recovery and preview correctly skipped. The authorization is consumed;
 no retry, merge, release or deployment occurred.
 
-### Current local successor — uncommitted production-only SceneMemory ownership
+### Current signed local successor — production-only SceneMemory ownership
 
-The SceneMemory portion of the dirty local successor changes workflow/scope ownership only; the
+The SceneMemory portion of the signed local successor changes workflow/scope ownership only; the
 separate Glass/browser cleanup repair is documented in the section above. Live SceneMemory native-heap
 selftest/certification/verification are production-only and remain strict there; deterministic
 SceneMemory contracts and mutation controls remain universal; Compendium-specific and shared
@@ -89,9 +118,8 @@ tests**), final launcher/Glass coverage (**3 files / 74 tests**), complete brows
 profile (**264/264 files, 2,728 passed / 1 skipped**), all three TypeScript programs, complete art
 mutation control, browser-path selftest, Compendium browser preflight/selftest (**618 controls**),
 shared browser-CDP selftest and the root validator's unchanged 50-probe v1.0 determinism
-fingerprint. A clean SSH-signed exact source, hermetic tracked-input preflight and one fresh
-unchanged-source Compendium → Slice → Glass chain remain required before requesting a new exact-head
-authorization. No GitHub write is authorized.
+fingerprint. Exact signed `1f80b0a…` passed its hermetic tracked-input rehearsal and one fresh
+unchanged-source Compendium → Slice → Glass chain as indexed above. No GitHub write is authorized.
 
 ### Preserved predecessor Guide/Charter/D-TRAIN certificate — exact 4a4f0b8 source
 

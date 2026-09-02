@@ -35,8 +35,13 @@
 > policy changed, and no HUMAN criterion is closed. The same finished dirty source passes the
 > complete browser-free `develop` profile at **264/264 files, 2,728 passed / 1 skipped**, all three
 > TypeScript programs and the root validator with the 50-probe v1.0 determinism fingerprint
-> unchanged. A clean signed candidate and unchanged-source
-> Compendium → Slice → Glass chain remain pending; no hosted attempt is authorized.
+> unchanged. Exact SSH-signed implementation `1f80b0ad050763bf478b2364ad0194e389a7096e`
+> then passed its hermetic tracked-input rehearsal and one unchanged-source/no-retry chain:
+> Compendium `20260902055002322-92073-faba0f2692` **78/78**, zero-finding Slice
+> `20260902055112371-92394-deee4ff0bf81`, and exact-Slice-bound Glass
+> `20260902055724658-92954-a2feb2f6006e` **12/12** viewports/reloads and **104/104** controls
+> with zero findings/instrument failures. This automated evidence changes no HUMAN status; no hosted
+> attempt is authorized.
 
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated UI/evidence blocks below remain immutable):** hosted run `33584052508` tested exact
@@ -47,7 +52,7 @@
 > before the develop admission chain began. The authorization is consumed and no hosted authority
 > remains.
 >
-> The local uncommitted successor makes all live SceneMemory native-heap work
+> The signed implementation successor makes all live SceneMemory native-heap work
 > **production-only/quarantined** while deterministic controls remain universal. Develop admission
 > is **Compendium → Slice → Glass**; production/release, only after explicit SceneMemory activation,
 > is **SceneMemory → Compendium → Slice → Glass → Recovery** on unchanged source. This changes no

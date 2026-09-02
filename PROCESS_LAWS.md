@@ -447,8 +447,10 @@
 > remains `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`.
 > Every numeric ceiling, historical sample, outcome and compatible-browser policy is unchanged.
 > SceneMemory remains deliberately stale/red and production-only. The final seven same-source
-> targeted Glass viewports passed; that is bounded diagnostic evidence, while the clean
-> unchanged-source certificate remains pending.
+> targeted Glass viewports passed as bounded diagnostic evidence. Exact SSH-signed implementation
+> `1f80b0ad050763bf478b2364ad0194e389a7096e` then passed its hermetic tracked-input rehearsal and
+> one unchanged-source/no-retry Compendium **78/78** → zero-finding Slice → Glass **12/12 / 104/104**
+> chain with every named verifier green.
 
 > **A RESTORATION ORACLE SAMPLES THE STATE THE PRODUCT ACTUALLY RECEIVES** (2026-08-31).
 > A virtual-row helper may legitimately reposition a row while consuming deferred layout and

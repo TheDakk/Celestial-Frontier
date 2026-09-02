@@ -32,8 +32,12 @@
 > 2,728 passed / 1 skipped**, all three TypeScript programs and the root validator with the
 > 50-probe v1.0 determinism fingerprint unchanged. The producer-authority printer is current for
 > Compendium and remains red only for intentionally stale, production-only SceneMemory inputs.
-> A fresh clean signed source and one unchanged-source Compendium → Slice → Glass chain remain
-> required; no hosted attempt is authorized.
+> Exact SSH-signed implementation `1f80b0ad050763bf478b2364ad0194e389a7096e`, tree
+> `e25579bc4fe063bcdf314ac74c9df2435003617a`, then passed the hermetic tracked-input rehearsal and
+> one unchanged-source/no-retry chain: Compendium `20260902055002322-92073-faba0f2692` **78/78**,
+> zero-finding Slice `20260902055112371-92394-deee4ff0bf81`, and exact-Slice-bound Glass
+> `20260902055724658-92954-a2feb2f6006e` **12/12** viewports/reloads and **104/104** controls with
+> zero findings/instrument failures. Local closure is complete; no hosted attempt is authorized.
 
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated architecture/evidence blocks below remain immutable):** hosted run `33584052508` tested
@@ -44,7 +48,7 @@
 > before the develop admission chain began. The authorization is consumed and no hosted authority
 > remains.
 >
-> The local uncommitted successor makes all live SceneMemory native-heap work
+> The signed implementation successor makes all live SceneMemory native-heap work
 > **production-only/quarantined** while its deterministic schema, contract, mutation and
 > historical-red controls remain universal. Develop admission is **Compendium → Slice → Glass**;
 > production/release, only after explicit SceneMemory activation, is
@@ -4570,6 +4574,12 @@ controls keep Capture
 actions base-centered with a 44px floor while preserving ≤390px full width and short landscape;
 rarity-removal controls independently cover Compendium badges and owned Binder slots while missing
 Binder semantics remain distinct.
+
+Exact signed implementation `1f80b0ad050763bf478b2364ad0194e389a7096e` passed the hermetic
+tracked-input develop profile and one unchanged-source/no-retry, named-verified Compendium
+**78/78** → zero-finding Slice → Glass **12/12 / 104/104** chain. The four deterministic
+report/log carriers are indexed in `audits/README.md`; the later docs/evidence descendant does not
+rebind authority away from that implementation source.
 
 **Historical exact `8bdf474…` evidence / Arc 0 publication-oracle repair boundary (2026-08-30;
 superseded by the current handoff):** the immutable
