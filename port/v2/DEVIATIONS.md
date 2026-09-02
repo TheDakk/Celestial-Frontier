@@ -529,7 +529,7 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   earned `0..bestRank` nameplate; one F4 receipt/CAS verifies durability before AppChrome changes,
   with no optimistic render or retry and convergence reload on ambiguity. The current Guide is
   34 partial / 7 unavailable and **A New Foundation** is a 77-bullet development draft with rendered
-  ordered SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+  ordered SHA-256 `9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b`.
 - ★ **D-PWA-1 — v2 installed updates are exact-build and explorer-controlled.** Build output now
   carries a same-origin manifest and generated worker whose build identity joins the SHA-256-verified
   final runtime inventory with an automatic worker-template revision before its completion marker
@@ -2907,10 +2907,10 @@ duplicates).
   restoration. Guide uses z24 above the z23 survey card. Tooltip deep-links and Advanced Briefings
   remain OPEN; the Guide model existing does not claim those interaction layers are ported.
 - ★ **D-RELEASE-1 — legacy history, v2 development identity and a shipped version are three different states
-  (updated 2026-08-29).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
+  (updated 2026-09-01).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
   398 bullets, v1.8.9 first and v1.0 last. **A New Foundation** is the separate cumulative v2.0
   development bulletin: a 77-bullet categorized, implemented-outcome technical outline with rendered
-  ordered SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1` whose explicit
+  ordered SHA-256 `9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b` whose explicit
   `draft`, `version:"2.0"` and `Unreleased` state does not turn open roadmap work into a promise.
   `release-identity.ts` keeps only development identity and `V2_CURRENT_RELEASE_VERSION` eager;
   `release-content.ts` and its archives load on Guide demand through one retryable in-flight import.

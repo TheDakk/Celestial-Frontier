@@ -10,7 +10,77 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 Feed-audio/phone-Land hosted stop and exact local certificate
+### Current PR #35 Guide/Charter/D-TRAIN hosted stop — exact ninth attempt
+
+PR #35 GitHub run `33572309149` was the ninth exact authorized `test-battery` attempt. It tested
+head `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` (tree
+`89116f64dafd0cf26fe210597da1c079edefcd76`) against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, using synthetic merge
+`778d3cf58937476a65c550e875b946290c0967b4`; that merge has the exact head tree. Authorization
+job `100068700331` passed and battery job `100068719363` completed terminal red after **1h9m41s**.
+The one-time `actions-budget-approved` authorization, 92-minute maximum and no-retry rule were
+consumed; no retry or merge occurred.
+
+Root layout passed **787/787**. Compendium `gha-33572309149-1-compendiummem` passed **78/78**
+once/no-retry in **2,324,739 ms** with zero findings/blocked outcomes and six review PNGs on Edge
+`151.0.4129.101` / CDP `1.3`. Unchanged-source Slice `gha-33572309149-1-slice` stopped
+once/no-retry after **1,345,522 ms** on Chrome `151.0.7922.173` with exactly **3 findings / 3
+scopes**:
+
+- `harness`: the Guide's final v2.0 development bulletin was not scroll-reachable. The retained
+  payload was `overflowY: auto`, `scrollTop: 20000`, dynamic `maxScroll: 25829`,
+  `scrollHeight: 26476`, `clientHeight: 647`, `advanced: false` and `visible: false`; it retained
+  the exact final bulletin text rather than a null observation.
+- `saturated-charter-recovery`: the recovery flow retained `beforeSerial: 1`, `toastOn: true`,
+  `toastSerial: 3` and exact text
+  `★ 3 Charter chapters — completeChapter 1 — Off the Rock through Chapter 3 — Beyond the Rim are now recorded. This expedition’s established reach remains preserved.`
+  The required one-replacement aggregate therefore remained red.
+- `d-train-full-finish`: both native/runner arms were true; the mixed activation was skipped and
+  disabled while its exact pre-state remained at `waiting-active-persist`; and the complete
+  ten-stage restore witness then reached `released`. Route assessment passed, Earth was restored,
+  Training UI/checkpoint/hold were cleared and all durable outer fields except one matched exactly.
+  The sole raw-assessment reason was `outer.rn`: actual `1.8.9` versus expected `2.0.0-test`.
+  The same capture retained live `rnSeen: 1.8.9`, `releasePending: 2.0.0-test`, no open panel and
+  Earth focus, binding the historical stop without reinterpreting it through later convergence
+  repairs.
+
+The three exact finding-message SHA-256 values, in report order, are
+`feb07eaa26a0c1a5fff8429403bbd3b270506e14357cfc718e98e10e4ed7b052`,
+`b71270517133e3249db231c30f8e820312d2a510ac5d6e575afa0c2fd45fae34` and
+`9f813e8275974d0bb303605f69c158c56899852e5da07797488c885d6c3b9e8d`. All ten Slice
+screenshots—Codex, Earth, Galaxy, Guide, phone, Settings, Sol, Sol marker, Training and Universe—
+were retained in the report manifest. Glass, Recovery and preview packaging correctly did not run.
+
+The exact GitHub artifact `battery-evidence` is ID `9827040606`, archive size **9,780,335 bytes**,
+digest `sha256:869d8ee0780f3f4fcbe3d1a3b17b353426e4f900ec5c1f146576c169224f1c9a`, expiring
+`2026-09-16T00:53:39Z`. These retained carriers pass gzip integrity and deterministic
+`gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_GUIDE_CHARTER_DTRAIN_PREDECESSOR_PASS_20260901_778D3CF.json.gz`:
+  **487,306 bytes**, SHA-256
+  `50665da8a9cce2c6bb71316c0e32f36acdc8c8a8b02aeba9a2795b60ae7a39c6`; raw
+  **12,813,345 bytes**, SHA-256
+  `1104d93a0f3f1bc094fa844715193a37f34ea6b429d0236bdbb1d9737069d186`.
+- `ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_RED_20260901_778D3CF.json.gz`:
+  **14,617 bytes**, SHA-256
+  `759664be81dc7b7368141314b108c431dbd4981f95537dd1a9e8013030255a38`; raw
+  **70,840 bytes**, SHA-256
+  `5e3e544c5089966ff416192575821b3b6259eb32a516d521b187a9e9cf7518ba`.
+- `ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_RED_20260901_778D3CF.log.gz`:
+  **8,745 bytes**, SHA-256
+  `7402b44e95275213f7f1040298958d5b9ceaae80f41f259908d59c118989802f`; raw
+  **32,907 bytes**, SHA-256
+  `4d036dcc44c51db6c755fc65e31f1721cdfd32c5fea65519a1d5c4bc11375cc3`.
+
+`port/v2/tests/pr35-efad-guide-charter-dtrain-evidence-replay.test.ts` independently binds all
+three compressed/raw carriers, exact hosted head/base/tree/synthetic identity, unchanged detached
+source, the 78/78 predecessor, exact ordered finding scopes/messages and D-TRAIN's sole durable
+`outer.rn` mismatch, raw-log parity and the absence of Slice-success, Glass or Recovery authority.
+It imports no current browser contract that could relabel this historical stop. Subsequent bounded
+repairs require a new exact source and certificate; this ninth run remains immutable red and grants
+no retry, successor stage, merge, release, version, preview, publication or deployment authority.
+
+### Eighth PR #35 Feed-audio/phone-Land hosted stop and exact local certificate
 
 PR #35 GitHub run `33560546382` was the eighth exact authorized `test-battery` attempt. It tested
 head `c0ad51a1a63f7f649493122ab8d7d5e8588f6a9d` (tree

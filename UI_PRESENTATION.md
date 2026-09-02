@@ -1,5 +1,26 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-09-01 current Guide/ceremony/Training presentation correction (matches local code as of
+> 2026-09-01; supersedes older “current” labels while preserving dated evidence):** PR #35 hosted
+> run `33572309149` tested exact head `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` through synthetic
+> merge `778d3cf58937476a65c550e875b946290c0967b4`. Layout passed **787/787**, Compendium passed
+> **78/78**, and Slice retained all ten screenshots before stopping once with three independent
+> findings: three fixed 10,000px wheel intents were issued without re-observation, only two advanced
+> the Guide to 20,000/25,829, and that intermediate position was judged; a queued Share ceremony
+> interrupted a held Landing/Charter owner; and a fixed post-Training sample preceded the queued
+> bulletin's live/focus/durable convergence. Glass and Recovery correctly did not run.
+>
+> The Guide proof now dispatches one adaptive native wheel at a time and re-observes the exact
+> document, tail text, hit owner, geometry and visibility under one bounded state machine. One
+> Node-owned action deadline clips every CDP command to its remaining budget, then a separate bounded
+> cleanup restores scroll and overflow value/priority exactly. The product ceremony drain now preserves and
+> reschedules its queue before consumption while `productActionInFlight` owns a newer action.
+> D-TRAIN now waits for one stable raw/live/focus fixed point instead of relying on a short delay.
+> Guide catalogue/mechanics/CSS/product scrolling, Training behavior, save schema, notification
+> copy and Charter rules are unchanged; Records guidance is synchronized to the ceremony ownership
+> correction, which is the only changed product presentation behavior.
+> The hosted run remains red, and the changed source has no new browser certificate yet.
+
 > **2026-09-01 current automatic-arrival presentation boundary (matches local code as of
 > 2026-09-01; supersedes older “current” labels while preserving dated evidence):** authorized PR
 > #35 run `33522000552` tested exact head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
@@ -481,6 +502,9 @@
 > settles; Survey Close remains available. **Read-only expedition** is reserved for protected,
 > stale or otherwise non-mutable runtime authority rather than being shown for ordinary in-flight
 > settlement. Both states continue to block the dependent mutation instead of publishing optimism.
+> The same ownership fence applies to postcommit presentation: before shifting its serial queue,
+> the achievement/rank ceremony drain preserves and reschedules every older notice while
+> `productActionInFlight` remains true, so it cannot replace the newer action's outcome toast.
 
 > **2026-08-29 current local v2 presentation overlay:** real-fauna Compendium detail now owns four
 > bounded exact-instance surfaces: Feed, nonlethal Breed with active-play Recovery, Rename and
@@ -559,7 +583,7 @@
 > Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler` remain owner-blocked. The current Guide capability map contains **41**
 > visible topics (**34 partial / 7 unavailable**) and the cumulative v2 draft contains **77** unique
 > bullets with rendered ordered SHA-256
-> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`. These current local surfaces
+> `9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b`. These current local surfaces
 > do not inherit the older browser certificate below; fresh
 > exact-source browser, physical-device, screen-reader and HUMAN experience review remain open.
 
@@ -1429,10 +1453,13 @@
 > `seenGuide`; import moved without loss to **Settings → Bring expedition**.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
 > Foundation**, the cumulative categorized 77-bullet v2.0 development bulletin. Its rendered
-> ordered SHA-256 is `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`. It summarizes
+> ordered SHA-256 is `9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b`. It summarizes
 > every implemented playtest layer while keeping unavailable port work out of its
-> promises. The long draft is browser-checked for canonical section order and a
-> reachable final bullet; opening and reloading it cannot change `rnSeen` or create
+> promises. The long draft is browser-checked for canonical section order and an exact final
+> bullet that is visibly reachable through bounded adaptive native-wheel input. Each wheel is
+> followed by a fresh exact-document/tail/hit-owner/geometry observation; the control clips
+> overflow, and cleanup restores the prior scroll plus inline overflow value/priority exactly.
+> Opening and reloading the bulletin cannot change `rnSeen` or create
 > a shipped-update state. No v2 production version exists until Nick authorizes one. Tooltip deep links and
 > Advanced Briefings remain open port scope. The slice's Field Training likewise
 > owns six real chart/travel/landing lessons plus an honest graduation, not the

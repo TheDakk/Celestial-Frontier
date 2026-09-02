@@ -2,7 +2,58 @@
 
 **Current mode: `UNFROZEN`**
 
-**Hosted attempt state: none authorized.** Ready/open PR #35 has **eight** consumed terminal-red
+**Hosted attempt state: none authorized.** Ready/open PR #35 has **nine** consumed terminal-red
+`test-battery` attempts against exact base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. The ninth one-time authorization is consumed and
+must not be retried: GitHub run `33572309149`, attempt 1, tested exact head
+`efad4b44c86ad89cbed39c18a39e2bbc9370caaf` (tree
+`89116f64dafd0cf26fe210597da1c079edefcd76`) through synthetic merge
+`778d3cf58937476a65c550e875b946290c0967b4`, whose tree is byte-identical to the exact head.
+Authorization job `100068700331` passed; battery job `100068719363` completed terminal red after
+**1h9m41s** under `actions-budget-approved`, the 92-minute maximum and the no-retry rule.
+
+Root layout passed **787/787**. Compendium `gha-33572309149-1-compendiummem` passed **78/78**
+once/no-retry in **2,324,739 ms** with zero findings/blocked outcomes and six review PNGs. Slice
+`gha-33572309149-1-slice` stopped once/no-retry after **1,345,522 ms** with exactly **3 findings /
+3 scopes** and ten screenshots:
+
+- `harness`: the Guide's final v2.0 development bulletin was not scroll-reachable. The exact
+  payload retained `overflowY: auto`, `scrollTop: 20000`, dynamic `maxScroll: 25829`,
+  `scrollHeight: 26476`, `clientHeight: 647`, `advanced: false` and `visible: false`.
+- `saturated-charter-recovery`: the recovery ceremony retained `beforeSerial: 1`,
+  `toastSerial: 3` and the exact adjacent-notice aggregate text beginning
+  `★ 3 Charter chapters — completeChapter 1`, so the required single replacement aggregate was
+  red.
+- `d-train-full-finish`: the complete ten-stage restore witness reached `released`, its route
+  assessment passed, and Training state/hold were cleared. Its sole raw-assessment reason was
+  `outer.rn`: durable actual remained `1.8.9` while expected was `2.0.0-test`; the same capture
+  retained live `rnSeen: 1.8.9` with `releasePending: 2.0.0-test`.
+
+Artifact `battery-evidence` is ID `9827040606`, archive size **9,780,335 bytes**, digest
+`sha256:869d8ee0780f3f4fcbe3d1a3b17b353426e4f900ec5c1f146576c169224f1c9a`, expiring
+`2026-09-16T00:53:39Z`. Glass, Recovery and preview packaging correctly skipped. The three
+deterministic Compendium/Slice report/log carriers and their exact compressed/raw hashes are
+indexed in `audits/README.md`. This red remains immutable evidence: later repairs cannot relabel it
+or grant successor-stage, merge, release or deployment authority. The approval is consumed, no
+retry or merge occurred, and no current GitHub write is authorized.
+
+The bounded local Guide/Charter/D-TRAIN successor passes its focused contracts and the complete
+browser-free `develop` profile at **263/263 files**, **2,719 passed / 1 skipped**, all three
+TypeScript programs, **34** clean art sources, **1,014/1,014** routes and **454** fields. Current
+Compendium producer authority is
+`308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`; the measurement
+authority, sealed ruler, every numeric ceiling, historical sample, browser-family policy and
+no-retry rule are unchanged. Independent review, a clean signed candidate, tracked-input preflight
+and one unchanged-source Compendium → Slice → Glass chain remain pending. This local green is not a
+hosted status and creates no push, label, dispatch or merge authority.
+
+No push, label, hosted attempt, retry, PR metadata mutation, merge, release, version bump, preview
+publication or deployment is authorized. A future hosted attempt requires Nick's fresh
+authorization naming the final exact head/base, PR #35, `test-battery`,
+`actions-budget-approved`, a 92-minute maximum and no retry; merge is allowed only if that exact
+attempt is terminal green and branch protection is satisfied.
+
+**Historical eighth-attempt boundary:** Ready/open PR #35 then had **eight** consumed terminal-red
 `test-battery` attempts against exact base
 `7a9f4c1370dd84292388d718c38ff34214f6203b`. The eighth one-time authorization is consumed and
 must not be retried: GitHub run `33560546382`, attempt 1, tested exact head
@@ -825,7 +876,22 @@ also terminal green; exact IDs/hashes are indexed in `audits/README.md`. The 6�
 observation-cap change affects no product timeout, global CDP deadline, ruler or retry policy. Only
 the evidence/docs descendant's final tracked-input proof and fresh exact-head authorization remain.
 
-All eight PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
+The ninth exact-head authorization tested
+`efad4b44c86ad89cbed39c18a39e2bbc9370caaf` against the same base. GitHub run `33572309149`,
+attempt 1, used synthetic merge `778d3cf58937476a65c550e875b946290c0967b4`; its tree
+`89116f64dafd0cf26fe210597da1c079edefcd76` is byte-identical to the exact head tree.
+Authorization job `100068700331` passed and battery job `100068719363` ran once. Root layout
+passed **787/787**. Compendium `gha-33572309149-1-compendiummem` passed **78/78** in
+**2,324,739 ms** with zero findings/blocked outcomes. Slice `gha-33572309149-1-slice` stopped
+after **1,345,522 ms** with exactly three independent scopes: Guide bulletin scroll reachability,
+saturated Charter recovery aggregation and D-TRAIN release convergence. Ten screenshots were
+retained. Glass, Recovery and preview packaging skipped. Artifact `battery-evidence` is ID
+`9827040606`, size **9,780,335 bytes**, digest
+`sha256:869d8ee0780f3f4fcbe3d1a3b17b353426e4f900ec5c1f146576c169224f1c9a`, expiring
+`2026-09-16T00:53:39Z`. The exact deterministic Compendium/Slice report/log carriers are indexed
+in `audits/README.md`; the red was not retried or relabelled and no merge occurred.
+
+All nine PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

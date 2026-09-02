@@ -32,6 +32,8 @@ import {
   assessInventoryRowActivation,
   assessInventoryRowReachability,
   assessInventoryStagePrefix,
+  advanceGuideReleaseTailNativeWheel,
+  GUIDE_RELEASE_TAIL_NATIVE_WHEEL_DEFAULTS,
   assessArc2InventoryOperationOutcome,
   assessArc2InventoryPendingWindow,
   assessArc2InventoryPreDurableRefusal,
@@ -69,6 +71,8 @@ import {
   assessWritableSettingPersistenceReceipt,
   assessWritableSettingsPersistenceChain,
   assessWritableSettingsQuietWindow,
+  assessGuideReleaseTailRestoration,
+  assessDtrainReleaseConvergence,
   advanceStoredV4StageOwnerStability,
   beginF4GreenContinuation,
   buildStoredV4StageInvocationExpression,
@@ -1190,6 +1194,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
 const V2_DRAFT_BULLET_COUNT = 77;
+const GUIDE_RELEASE_TAIL_TEXT = '🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site.';
 const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save — nothing was stored.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -6567,7 +6572,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 77,
-    sha256: '11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1',
+    sha256: '9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -8459,36 +8464,131 @@ try {
   if (releaseAuthorityCtl.authority || releaseAuthorityCtl.rnSeen === releaseBaseline.rnSeen) {
     fails.push('GUIDE RELEASE CONTROL FAILED — mutating draft seen-state stayed authoritative: ' + JSON.stringify(releaseAuthorityCtl));
   }
-  const releaseTailCheck = `(()=>{ const panel=document.getElementById('guidepanel'),items=panel?[...panel.querySelectorAll('.guide-topic li')]:[],tail=items.at(-1);
-    if(!panel||!tail)return {ok:false};const p=panel.getBoundingClientRect(),r=tail.getBoundingClientRect(),overflowY=getComputedStyle(panel).overflowY,
-      maxScroll=Math.max(0,panel.scrollHeight-panel.clientHeight),scrollable=/^(auto|scroll)$/.test(overflowY)&&maxScroll>0,
-      advanced=panel.scrollTop>0&&panel.scrollTop>=maxScroll-2,visible=r.top>=p.top-1&&r.bottom<=p.bottom+1;
-    return {ok:scrollable&&advanced&&visible,overflowY,advanced,visible,scrollTop:panel.scrollTop,maxScroll,
-      scrollHeight:panel.scrollHeight,clientHeight:panel.clientHeight,text:tail.textContent||''}; })()`;
-  const releaseScrollPoint = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),r=panel.getBoundingClientRect();panel.scrollTop=0;
-    return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
-  for (let i = 0; i < 3; i++) {
-    await send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: releaseScrollPoint.x, y: releaseScrollPoint.y,
-      deltaX: 0, deltaY: 10000 }, sess);
+  /* One Node-owned absolute deadline clips every CDP command in the positive
+     and hidden-overflow Guide campaign. The pure wheel state machine retains
+     its own semantic attempt/stall/deadline proof; this outer owner prevents a
+     single hung Runtime/Input command from outliving that proof. */
+  const guideReleaseActionStartedAt = performance.now();
+  const guideReleaseActionDeadline = guideReleaseActionStartedAt
+    + GUIDE_RELEASE_TAIL_NATIVE_WHEEL_DEFAULTS.maxDurationMs;
+  const guideReleaseRemainingMs = (label) => {
+    const remainingMs = guideReleaseActionDeadline - performance.now();
+    if (!(remainingMs > 0)) throw new Error(`${label} exceeded the Guide release action deadline`);
+    return Math.max(1, Math.ceil(remainingMs));
+  };
+  const guideReleaseEval = (expression, label) => evalIn(expression, {
+    timeoutMs: guideReleaseRemainingMs(label), label,
+  });
+  const guideReleaseSend = (method, params, label) => send(
+    method, params, sess, { timeoutMs: guideReleaseRemainingMs(label) },
+  );
+  const releaseTailCheck = `(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),
+    items=panel?[...panel.querySelectorAll('.guide-topic li')]:[],tail=items.at(-1);
+    if(!panel||!tail)return {documentToken:S?.documentToken||'',tailText:'',overflowY:'',scrollTop:0,
+      maxScroll:0,visible:false,tailMatches:false,hitOwned:false};
+    const p=panel.getBoundingClientRect(),r=tail.getBoundingClientRect(),overflowY=getComputedStyle(panel).overflowY,
+      maxScroll=Math.max(0,panel.scrollHeight-panel.clientHeight),tailText=tail.textContent||'',
+      hit=document.elementFromPoint((p.left+p.right)/2,(p.top+p.bottom)/2);
+    return {documentToken:S?.documentToken||'',tailText,overflowY,scrollTop:panel.scrollTop,maxScroll,
+      visible:r.top>=p.top-1&&r.bottom<=p.bottom+1,
+      tailMatches:tailText.toLowerCase().includes('production remains the v1.8.9 main-branch site'),
+      hitOwned:!!hit&&(hit===panel||panel.contains(hit))};})()`;
+  const releaseScrollSetup = await guideReleaseEval(`(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),
+    items=panel?[...panel.querySelectorAll('.guide-topic li')]:[],tail=items.at(-1),style=panel.style,
+    r=panel.getBoundingClientRect(),prior={documentToken:S?.documentToken||'',tailText:tail?.textContent||'',
+      scrollTop:panel.scrollTop,scrollLeft:panel.scrollLeft,overflowYValue:style.getPropertyValue('overflow-y'),
+      overflowYPriority:style.getPropertyPriority('overflow-y'),computedOverflowY:getComputedStyle(panel).overflowY};
+    return {point:{x:(r.left+r.right)/2,y:(r.top+r.bottom)/2},prior};})()`,
+  'Guide release scroll setup');
+  const releaseScrollPoint = releaseScrollSetup.point;
+  const driveGuideReleaseTail = async () => {
+    let observation = await guideReleaseEval(
+      releaseTailCheck, 'Guide release initial tail observation',
+    );
+    let decision = advanceGuideReleaseTailNativeWheel(null, observation, performance.now(), {
+      expectedTailText: GUIDE_RELEASE_TAIL_TEXT,
+    });
+    while (decision.status === 'wheel') {
+      await guideReleaseSend('Input.dispatchMouseEvent', {
+        type: 'mouseWheel', x: releaseScrollPoint.x, y: releaseScrollPoint.y,
+        deltaX: 0, deltaY: decision.deltaY,
+      }, 'Guide release adaptive native wheel');
+      /* Node owns this bounded settlement turn. A background page's rAF may
+         be throttled indefinitely and must not trap the driver's deadline or
+         its exception-safe restoration. */
+      await sleep(25);
+      observation = await guideReleaseEval(
+        releaseTailCheck, 'Guide release post-wheel observation',
+      );
+      decision = advanceGuideReleaseTailNativeWheel(
+        decision.state, observation, performance.now(), {
+          expectedTailText: GUIDE_RELEASE_TAIL_TEXT,
+        },
+      );
+    }
+    return decision;
+  };
+  let releaseTail = null;
+  let releaseTailCtl = null;
+  let releaseHiddenWheel = null;
+  let releaseTailRestoration = null;
+  try {
+    await guideReleaseEval(`(()=>{const panel=document.getElementById('guidepanel');
+      panel.scrollTop=0;return panel.scrollTop;})()`, 'Guide release initial scroll reset');
+    releaseTail = await driveGuideReleaseTail();
+    if (releaseTail.status !== 'reached' || releaseTail.reason !== 'tail-reached'
+      || releaseTail.observation.tailMatches !== true) {
+      fails.push('GUIDE v2.0 development bulletin tail is not scroll-reachable: '
+        + JSON.stringify(releaseTail));
+    }
+    await guideReleaseEval(`(()=>{const panel=document.getElementById('guidepanel');
+      panel.style.setProperty('overflow-y','hidden','important');panel.scrollTop=0;return true;})()`,
+    'Guide release hidden-overflow setup');
+    const hiddenBefore = await guideReleaseEval(
+      releaseTailCheck, 'Guide release hidden-overflow pre-wheel observation',
+    );
+    await guideReleaseSend('Input.dispatchMouseEvent', {
+      type: 'mouseWheel', x: releaseScrollPoint.x, y: releaseScrollPoint.y,
+      deltaX: 0, deltaY: Math.max(10_000, Math.ceil(hiddenBefore.maxScroll)),
+    }, 'Guide release hidden-overflow native wheel');
+    await sleep(25);
+    const hiddenAfter = await guideReleaseEval(
+      releaseTailCheck, 'Guide release hidden-overflow post-wheel observation',
+    );
+    releaseHiddenWheel = { before: hiddenBefore, after: hiddenAfter };
+    releaseTailCtl = await driveGuideReleaseTail();
+    if (releaseTailCtl.status !== 'failed' || releaseTailCtl.reason !== 'not-scrollable'
+      || releaseTailCtl.observation.overflowY !== 'hidden'
+      || releaseTailCtl.observation.scrollTop !== 0
+      || releaseHiddenWheel.before.scrollTop !== 0
+      || releaseHiddenWheel.after.scrollTop !== 0) {
+      fails.push('GUIDE RELEASE CONTROL FAILED — clipping the expanded bulletin tail stayed reachable: '
+        + JSON.stringify({ decision: releaseTailCtl, nativeWheel: releaseHiddenWheel }));
+    }
+  } finally {
+    /* Cleanup has its own short bound so an exhausted action budget cannot
+       skip restoration, while a hung restoration still fails closed. */
+    const guideReleaseCleanupDeadline = performance.now() + 2_000;
+    const guideReleaseCleanupRemainingMs = () => Math.max(
+      1, Math.ceil(guideReleaseCleanupDeadline - performance.now()),
+    );
+    releaseTailRestoration = await evalIn(`(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('guidepanel'),
+      items=panel?[...panel.querySelectorAll('.guide-topic li')]:[],tail=items.at(-1),style=panel.style,
+      prior=${JSON.stringify(releaseScrollSetup.prior)};
+      if(prior.overflowYValue)style.setProperty('overflow-y',prior.overflowYValue,prior.overflowYPriority);
+      else style.removeProperty('overflow-y');panel.scrollLeft=prior.scrollLeft;panel.scrollTop=prior.scrollTop;
+      return {documentToken:S?.documentToken||'',tailText:tail?.textContent||'',scrollTop:panel.scrollTop,
+        scrollLeft:panel.scrollLeft,overflowYValue:style.getPropertyValue('overflow-y'),
+        overflowYPriority:style.getPropertyPriority('overflow-y'),computedOverflowY:getComputedStyle(panel).overflowY};})()`,
+    { timeoutMs: guideReleaseCleanupRemainingMs(), label: 'Guide release exact restoration' });
   }
-  await sleep(100);
-  const releaseTail = await evalIn(releaseTailCheck);
-  if (!releaseTail.ok || !releaseTail.text.toLowerCase().includes('production remains the v1.8.9 main-branch site')) {
-    fails.push('GUIDE v2.0 development bulletin tail is not scroll-reachable: ' + JSON.stringify(releaseTail));
-  }
-  const releaseOverflowPrior = await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),style=panel.style;
-    const prior={value:style.getPropertyValue('overflow-y'),priority:style.getPropertyPriority('overflow-y')};
-    style.setProperty('overflow-y','hidden','important');panel.scrollTop=0;return prior;})()`);
-  for (let i = 0; i < 3; i++) {
-    await send('Input.dispatchMouseEvent', { type: 'mouseWheel', x: releaseScrollPoint.x, y: releaseScrollPoint.y,
-      deltaX: 0, deltaY: 10000 }, sess);
-  }
-  await sleep(100);
-  const releaseTailCtl = await evalIn(releaseTailCheck);
-  await evalIn(`(()=>{ const panel=document.getElementById('guidepanel'),prior=${JSON.stringify(releaseOverflowPrior)};
-    if(prior.value)panel.style.setProperty('overflow-y',prior.value,prior.priority);else panel.style.removeProperty('overflow-y');panel.scrollTop=0;})()`);
-  if (releaseTailCtl.ok || releaseTailCtl.overflowY !== 'hidden' || releaseTailCtl.scrollTop !== 0) {
-    fails.push('GUIDE RELEASE CONTROL FAILED — clipping the expanded bulletin tail stayed reachable: ' + JSON.stringify(releaseTailCtl));
+  const releaseTailRestorationAssessment = assessGuideReleaseTailRestoration(
+    releaseScrollSetup.prior, releaseTailRestoration,
+  );
+  if (!releaseTailRestorationAssessment.ok) {
+    fails.push('GUIDE RELEASE CONTROL FAILED — native scroll/style ownership did not restore exactly: '
+      + JSON.stringify({ assessment: releaseTailRestorationAssessment,
+        expected: releaseScrollSetup.prior, actual: releaseTailRestoration }));
   }
   const guideFocusBack = await evalIn(`(()=>{ document.querySelector('#guidepanel [data-pnx]').click();
     return document.activeElement&&document.activeElement.id; })()`);
@@ -25149,7 +25249,13 @@ try {
         || JSON.stringify(adjacentShare.state.save.ascProg) !== importedBaseline.ascProg
         || charterStableLedger(adjacentShare.state) !== importedBaseline.stable
         || adjacentShare.state.save.stats.shares !== beforeShare.save.stats.shares + 1
-        || JSON.stringify(adjacentShare.state.save.unlocked) !== JSON.stringify(expectedShareUnlocks)) {
+        || JSON.stringify(adjacentShare.state.save.unlocked) !== JSON.stringify(expectedShareUnlocks)
+        || adjacentShare.state.progressionCeremony?.schema
+          !== 'cf-v2-progression-ceremony-diagnostics/v1'
+        || adjacentShare.state.progressionCeremony?.queueKeys?.[0] !== 'achievement:share'
+        || !Number.isSafeInteger(adjacentShare.state.progressionCeremony?.drainCallbacks)
+        || !Number.isSafeInteger(adjacentShare.state.progressionCeremony?.inFlightDeferrals)
+        || !Number.isSafeInteger(adjacentShare.state.progressionCeremony?.deliveries)) {
         fails.push(`${label}: real Share did not establish the adjacent-toast completion control: `
           + JSON.stringify({ beforeShare, shareExpectation, shareAction, shareSettlement,
             shareAuthority, shareCommitAssessment, adjacentShare }));
@@ -25165,7 +25271,61 @@ try {
         + JSON.stringify({ beforeLand, settledLandAction }));
       return;
     }
+    const ceremonyRaceArmed = expectedChapter === 3
+      ? await evalNavPh(`window.__CF_SLICE__.api.__smokeArmProductActionHold()`)
+      : null;
+    if (expectedChapter === 3 && ceremonyRaceArmed !== true) {
+      fails.push(`${label}: queued Share ceremony race hold did not arm before Land`);
+      return;
+    }
+    if (expectedChapter === 3) await send('Page.bringToFront', {}, navPh);
     await touchNav(settledLandAction.x, settledLandAction.y);
+    let ceremonyRace = null;
+    if (expectedChapter === 3) {
+      let ceremonyRaceRelease = false;
+      try {
+        const held = await waitNavPhValue(`${label} held Land ceremony boundary`, `(()=>{const s=window.__CF_SLICE__.api.state(),
+          c=s?.landing?.actionCoordinator;return c?.inFlight===true&&c?.owner?.busy===true
+            &&c?.hold?.phase==='holding'?s:null;})()`);
+        const hidden = await evalNavPh(`(()=>{const toast=document.getElementById('toast'),s=window.__CF_SLICE__.api.state();
+          toast.style.opacity='0';return {serial:s.toastSerial,text:s.toastText,
+            inFlight:s.landing?.actionCoordinator?.inFlight,phase:s.landing?.actionCoordinator?.hold?.phase,
+            progression:s.progressionCeremony};})()`);
+        /* Hiding the adjacent Share toast recreates the exact hosted timing
+           window. The smoke-visible production callback witness—not a fixed
+           delay—must prove that at least one real drain attempt reached and
+           deferred to the newer receipt-bearing Land owner. */
+        const protectedState = await waitNavPhValue(`${label} guarded Share ceremony callback`, `(()=>{const s=window.__CF_SLICE__.api.state(),
+          p=s.progressionCeremony,b=${JSON.stringify(beforeLand.progressionCeremony)};
+          return p?.drainCallbacks>b.drainCallbacks&&p?.inFlightDeferrals>b.inFlightDeferrals
+            &&p?.deliveries===b.deliveries&&JSON.stringify(p?.queueKeys)===JSON.stringify(b.queueKeys)
+            &&s.toastSerial===${beforeLand.toastSerial}&&s.landing?.actionCoordinator?.inFlight===true
+            &&s.landing?.actionCoordinator?.hold?.phase==='holding'?s:null;})()`, 6_000);
+        ceremonyRace = { held, hidden, protectedState };
+      } catch (error) {
+        ceremonyRace = { error: String(error?.message || error) };
+      } finally {
+        ceremonyRaceRelease = await evalNavPh(
+          `window.__CF_SLICE__.api.__smokeReleaseProductActionHold()`,
+        ).catch(() => false);
+        ceremonyRace = { ...(ceremonyRace ?? {}), released: ceremonyRaceRelease };
+      }
+      if (ceremonyRace?.held?.landing?.actionCoordinator?.inFlight !== true
+        || ceremonyRace?.hidden?.serial !== beforeLand.toastSerial
+        || ceremonyRace?.protectedState?.toastSerial !== beforeLand.toastSerial
+        || ceremonyRace?.protectedState?.progressionCeremony?.inFlightDeferrals
+          <= beforeLand.progressionCeremony.inFlightDeferrals
+        || ceremonyRace?.protectedState?.progressionCeremony?.deliveries
+          !== beforeLand.progressionCeremony.deliveries
+        || JSON.stringify(ceremonyRace?.protectedState?.progressionCeremony?.queueKeys)
+          !== JSON.stringify(beforeLand.progressionCeremony.queueKeys)
+        || ceremonyRace?.protectedState?.landing?.actionCoordinator?.inFlight !== true
+        || ceremonyRace?.protectedState?.landing?.actionCoordinator?.hold?.phase !== 'holding'
+        || ceremonyRace?.released !== true) {
+        fails.push(`${label}: an older queued Share ceremony interrupted or escaped the held Land owner: `
+          + JSON.stringify(ceremonyRace));
+      }
+    }
     let outcome;
     let landAuthority;
     try {
@@ -25212,7 +25372,7 @@ try {
     if (expectedChapter === 3 && !toastExact) {
       fails.push(`${label}: multi-chapter recovery did not replace the adjacent notice with one aggregate: `
         + JSON.stringify({ beforeSerial: beforeLand.toastSerial, toastOn: outcome.toastOn,
-          toastSerial: outcome.toastSerial, toastText: outcome.toastText }));
+          toastSerial: outcome.toastSerial, toastText: outcome.toastText, ceremonyRace }));
     }
     if (expectedChapter === 0 && !toastExact) {
       fails.push(`${label}: a no-advance control announced an unearned chapter completion: `
@@ -25220,6 +25380,69 @@ try {
           toastText: outcome.toastText }));
     }
     if (!outcomeExact || !topologyExact || !toastExact) return;
+
+    if (expectedChapter === 3) {
+      const progressionBeforeResume = outcome.progressionCeremony;
+      if (progressionBeforeResume?.schema !== 'cf-v2-progression-ceremony-diagnostics/v1'
+        || progressionBeforeResume?.queueKeys?.[0] !== 'achievement:share'
+        || progressionBeforeResume?.queueKeys
+          ?.filter((key) => key === 'achievement:share').length !== 1
+        || progressionBeforeResume?.deliveries !== beforeLand.progressionCeremony.deliveries
+        || progressionBeforeResume?.lastDeliveredKey
+          !== beforeLand.progressionCeremony.lastDeliveredKey) {
+        fails.push(`${label}: the deferred Share ceremony was not preserved through the exact Land settlement: `
+          + JSON.stringify({ before: beforeLand.progressionCeremony, after: progressionBeforeResume,
+            ceremonyRace }));
+        return;
+      }
+      let resumedShareCeremony;
+      try {
+        const aggregateHidden = await evalNavPh(`(()=>{const toast=document.getElementById('toast'),s=window.__CF_SLICE__.api.state();
+          toast.style.opacity='0';return {serial:s.toastSerial,text:s.toastText,
+            progression:s.progressionCeremony,opacity:toast.style.opacity};})()`);
+        const delivered = await waitNavPhValue(`${label} resumed Share ceremony delivery`, `(()=>{const s=window.__CF_SLICE__.api.state(),
+          p=s.progressionCeremony,b=${JSON.stringify(progressionBeforeResume)};
+          return p?.deliveries===b.deliveries+1&&p?.lastDeliveredKey==='achievement:share'
+            &&Array.isArray(p?.queueKeys)&&JSON.stringify(p.queueKeys)===JSON.stringify(b.queueKeys.slice(1))
+            &&s.toastOn===true&&s.toastSerial===${outcome.toastSerial + 1}
+            &&/Achievement · Signal Sent/i.test(s.toastText)
+            &&/Share a discovery code/i.test(s.toastText)?s:null;})()`, 6_000);
+        const postCeremonyAuthority = await readNavPhF4AuthoritySnapshot();
+        resumedShareCeremony = {
+          aggregateHidden,
+          delivered,
+          postCeremonyAuthority,
+          durableProjection: charterDurableProjection(delivered),
+        };
+      } catch (error) {
+        resumedShareCeremony = { error: String(error?.message || error) };
+      }
+      ceremonyRace = { ...(ceremonyRace ?? {}), resumedShareCeremony };
+      if (resumedShareCeremony?.aggregateHidden?.serial !== outcome.toastSerial
+        || resumedShareCeremony?.aggregateHidden?.text !== outcome.toastText
+        || resumedShareCeremony?.aggregateHidden?.opacity !== '0'
+        || resumedShareCeremony?.delivered?.progressionCeremony?.deliveries
+          !== progressionBeforeResume.deliveries + 1
+        || resumedShareCeremony?.delivered?.progressionCeremony?.lastDeliveredKey
+          !== 'achievement:share'
+        || JSON.stringify(resumedShareCeremony?.delivered?.progressionCeremony?.queueKeys)
+          !== JSON.stringify(progressionBeforeResume.queueKeys.slice(1))
+        || resumedShareCeremony?.delivered?.toastOn !== true
+        || resumedShareCeremony?.delivered?.toastSerial !== outcome.toastSerial + 1
+        || !/Achievement · Signal Sent/i.test(resumedShareCeremony?.delivered?.toastText ?? '')
+        || !/Share a discovery code/i.test(resumedShareCeremony?.delivered?.toastText ?? '')
+        || resumedShareCeremony?.postCeremonyAuthority?.token !== landAuthority.token
+        || resumedShareCeremony?.postCeremonyAuthority?.raw?.revision !== landAuthority.raw.revision
+        || JSON.stringify(resumedShareCeremony?.postCeremonyAuthority?.raw?.receiptKeys)
+          !== JSON.stringify(landAuthority.raw.receiptKeys)
+        || JSON.stringify(resumedShareCeremony?.postCeremonyAuthority?.raw?.receiptRows)
+          !== JSON.stringify(landAuthority.raw.receiptRows)
+        || resumedShareCeremony?.durableProjection !== charterDurableProjection(outcome)) {
+        fails.push(`${label}: the preserved Share ceremony did not resume exactly once after Land settled: `
+          + JSON.stringify(ceremonyRace));
+        return;
+      }
+    }
 
     const revisionTopologyControl = structuredClone(landAuthority);
     revisionTopologyControl.raw.revision += 1;
@@ -26124,6 +26347,17 @@ try {
     if (r.exceptionDetails) throw new Error('training eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || r.exceptionDetails.text));
     return r.result.value;
   };
+  const evalTWithin = async (expr, timeoutMs, label) => {
+    if (!Number.isFinite(timeoutMs) || timeoutMs <= 0) {
+      throw new TypeError(`${label} requires a positive remaining budget`);
+    }
+    let timeoutId = null;
+    const timeout = new Promise((_, reject) => {
+      timeoutId = setTimeout(() => reject(new Error(`${label} exceeded ${Math.ceil(timeoutMs)}ms`)), timeoutMs);
+    });
+    try { return await Promise.race([evalT(expr), timeout]); }
+    finally { if (timeoutId !== null) clearTimeout(timeoutId); }
+  };
   const keyT = async (key, code = key, modifiers = 0) => {
     await dispatchKeyPress(tr, key, code, modifiers);
     await sleep(40);
@@ -26876,8 +27110,54 @@ try {
     else await sleep(50);
   }
   if (!done3) done3 = await evalT(`window.__CF_SLICE__.api.state()`);
-  await sleep(80);
-  const dtrainFinishRaw = JSON.parse(await evalT(READ_PRIMARY_EXPRESSION));
+  const dtrainFinishSeedRn = JSON.parse(DTRAIN_FULL_FINISH_RAW).rn ?? null;
+  /* Training release precedes the queued bulletin by design. A background
+     phone target may throttle that later timer, so judge the complete
+     product outcome instead of sampling after a fixed delay. Every poll is
+     read-only and requires live state, focus/DOM release, and durable rnSeen
+     to agree before any exact raw-byte or write-topology assertion runs. */
+  const dtrainReleaseConvergenceExpression = `(async()=>{const rawBeforeText=await (${READ_PRIMARY_EXPRESSION}),
+    S=window.__CF_SLICE__,state=S.api.state(),active=document.activeElement,
+    heading=document.querySelector('#guidepanel [data-guide-heading]'),
+    back=document.querySelector('#guidepanel [data-sel="guide-body"] [data-guide-releases]'),
+    rawAfterText=await (${READ_PRIMARY_EXPRESSION});
+    let raw=null;try{raw=JSON.parse(rawAfterText)}catch{}
+    return {rawBeforeText,rawAfterText,state,raw,focus:{heading:heading?.textContent||'',backFocus:active===back,
+      insideTraining:!!active?.closest('#tutcard'),trainingPresent:!!document.getElementById('tutcard'),
+      inertChrome:document.querySelectorAll('[inert]').length,
+      atlasClosed:document.getElementById('atlaspanel').style.display==='none'}};})()`;
+  const dtrainReleaseDeadline = performance.now() + 8_000;
+  let dtrainReleaseConvergence = null;
+  let dtrainReleaseEvaluationError = null;
+  let dtrainReleaseAssessment = assessDtrainReleaseConvergence(null, RELEASE_FIXTURE_VERSION);
+  while (performance.now() < dtrainReleaseDeadline && !dtrainReleaseAssessment.ok) {
+    const remainingMs = dtrainReleaseDeadline - performance.now();
+    try {
+      dtrainReleaseConvergence = await evalTWithin(
+        dtrainReleaseConvergenceExpression, remainingMs,
+        'D-TRAIN queued bulletin convergence sample',
+      );
+    } catch (error) {
+      dtrainReleaseEvaluationError = String(error?.message || error);
+      break;
+    }
+    dtrainReleaseAssessment = assessDtrainReleaseConvergence(
+      dtrainReleaseConvergence, RELEASE_FIXTURE_VERSION,
+    );
+    if (!dtrainReleaseAssessment.ok) await sleep(50);
+  }
+  if (!dtrainReleaseAssessment.ok) {
+    fails.push('D-TRAIN FULL FINISH RELEASE CONVERGENCE: queued bulletin did not reach one live, focused, durable fixed point: '
+      + JSON.stringify({ assessment: dtrainReleaseAssessment,
+        evaluationError: dtrainReleaseEvaluationError, evidence: dtrainReleaseConvergence }));
+    failSliceWithoutCascade(
+      'D-TRAIN release convergence was red; dependent raw/focus/write/reload judgments were not run',
+      { alreadyReported: true },
+    );
+  }
+  done3 = dtrainReleaseConvergence?.state ?? done3;
+  const dtrainFinishRaw = dtrainReleaseConvergence?.raw
+    ?? JSON.parse(await evalT(READ_PRIMARY_EXPRESSION));
   const dtrainFinishWitness = assessTrainingWitnesses(
     trainingWitnessesSince(tr, dtrainFinishMark),
     {
@@ -26928,11 +27208,12 @@ try {
   }
   if (done3.tutActive || !done3.tutDone) fails.push('DRILL: graduation did not close training: ' + JSON.stringify([done3.tutActive, done3.tutDone]));
   if (done3.mode !== 'surface') fails.push('DRILL: the drill should end planetside: ' + done3.mode);
-  const finishFocus = await evalT(`(()=>{ const active=document.activeElement,heading=document.querySelector('#guidepanel [data-guide-heading]'),back=document.querySelector('#guidepanel [data-sel="guide-body"] [data-guide-releases]'); return {
-    heading:heading?.textContent||'',backFocus:active===back,insideTraining:!!active?.closest('#tutcard'),
-    trainingPresent:!!document.getElementById('tutcard'),inertChrome:document.querySelectorAll('[inert]').length,
-    atlasClosed:document.getElementById('atlaspanel').style.display==='none',panel:window.__CF_SLICE__.api.state().panelOpen,
-    rnSeen:window.__CF_SLICE__.api.state().rnSeen,pending:window.__CF_SLICE__.api.state().releasePending}; })()`);
+  const finishFocus = {
+    ...(dtrainReleaseConvergence?.focus ?? {}),
+    panel: done3.panelOpen,
+    rnSeen: done3.rnSeen,
+    pending: done3.releasePending,
+  };
   if (!finishFocus.backFocus || !/Browser fixture bulletin/.test(finishFocus.heading)
     || finishFocus.insideTraining || finishFocus.trainingPresent || finishFocus.inertChrome !== 0
     || !finishFocus.atlasClosed || finishFocus.panel !== 'guide'
@@ -26940,16 +27221,83 @@ try {
     fails.push('DRILL/RELEASE QUEUE: finish did not unlock Training then open only the queued bulletin: '
       + JSON.stringify(finishFocus));
   }
-  let trainingReleaseStored = false;
-  for (let i = 0; i < 80 && !trainingReleaseStored; i++) {
-    trainingReleaseStored = !!(await evalT(`new Promise((resolve)=>{ const q=indexedDB.open('cf-v2-slice');
-      q.onerror=()=>resolve(false); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
-        g.onsuccess=()=>{ let rn=null; try{rn=JSON.parse(String(g.result||''))?.rn||null}catch{} db.close();
-          resolve(rn===${JSON.stringify(RELEASE_FIXTURE_VERSION)}); }; g.onerror=()=>{db.close();resolve(false)}; }; })`));
-    if (!trainingReleaseStored) await sleep(50);
+  const dtrainReleaseMutant = (mutate) => {
+    const value = structuredClone(dtrainReleaseConvergence);
+    mutate(value);
+    return value;
+  };
+  const dtrainReleaseRawMutant = (mutate) => dtrainReleaseMutant((value) => {
+    mutate(value.raw);
+    value.rawBeforeText = JSON.stringify(value.raw);
+    value.rawAfterText = value.rawBeforeText;
+  });
+  const releaseControls = {
+    queuedPreState: dtrainReleaseMutant((value) => {
+      value.state.rnSeen = dtrainFinishSeedRn;
+      value.state.releasePending = RELEASE_FIXTURE_VERSION;
+      value.state.panelOpen = null;
+      value.focus.backFocus = false;
+      value.raw.rn = dtrainFinishSeedRn;
+      value.rawBeforeText = JSON.stringify(value.raw);
+      value.rawAfterText = value.rawBeforeText;
+    }),
+    staleLiveSeen: dtrainReleaseMutant((value) => {
+      value.state.rnSeen = dtrainFinishSeedRn;
+    }),
+    staleDurableSeen: dtrainReleaseRawMutant((raw) => {
+      raw.rn = dtrainFinishSeedRn;
+    }),
+    unstableDurableRead: dtrainReleaseMutant((value) => {
+      value.rawBeforeText = `${value.rawBeforeText} `;
+    }),
+    pendingNotCleared: dtrainReleaseMutant((value) => {
+      value.state.releasePending = RELEASE_FIXTURE_VERSION;
+    }),
+    wrongPanel: dtrainReleaseMutant((value) => {
+      value.state.panelOpen = null;
+    }),
+    wrongHeading: dtrainReleaseMutant((value) => {
+      value.focus.heading = `v${dtrainFinishSeedRn} · Browser fixture bulletin`;
+    }),
+    wrongFocus: dtrainReleaseMutant((value) => {
+      value.focus.backFocus = false;
+    }),
+    trainingFocusRetained: dtrainReleaseMutant((value) => {
+      value.focus.insideTraining = true;
+    }),
+    trainingRetained: dtrainReleaseMutant((value) => {
+      value.focus.trainingPresent = true;
+    }),
+    inertChromeRetained: dtrainReleaseMutant((value) => {
+      value.focus.inertChrome = 1;
+    }),
+    atlasOpen: dtrainReleaseMutant((value) => {
+      value.focus.atlasClosed = false;
+    }),
+    trainingStillActive: dtrainReleaseMutant((value) => {
+      value.state.tutActive = true;
+    }),
+    trainingNotDone: dtrainReleaseMutant((value) => {
+      value.state.tutDone = false;
+    }),
+    trainingStageWrong: dtrainReleaseMutant((value) => {
+      value.state.trainingRestoreWitness.stage = 'live-swap-complete';
+    }),
+  };
+  const releaseControlResults = Object.fromEntries(Object.entries(releaseControls)
+    .map(([name, evidence]) => [name,
+      assessDtrainReleaseConvergence(evidence, RELEASE_FIXTURE_VERSION)]));
+  if (dtrainReleaseAssessment.ok
+    && Object.values(releaseControlResults).some((control) => control.ok)) {
+    fails.push('D-TRAIN FULL FINISH RELEASE CONVERGENCE CONTROL FAILED — a queued/stale/pending/unfocused/retained Training state stayed green: '
+      + JSON.stringify(releaseControlResults));
   }
-  if (!trainingReleaseStored) fails.push('DRILL/RELEASE QUEUE: rnSeen did not persist after the post-Training bulletin');
-  await sleep(30); /* let the CDP binding deliver the completed bulletin put */
+  /* The native primary-put binding is asynchronous to IndexedDB completion.
+     Wait for its exact third row rather than hoping a fixed sleep delivered
+     it before the write-topology assessment. */
+  const dtrainFinishNativeDeadline = performance.now() + 4_000;
+  while (performance.now() < dtrainFinishNativeDeadline
+    && dtrainNativeWritesSince(tr, dtrainFinishMark).length < 3) await sleep(25);
   /* The native primary-put stream distinguishes the older held write, the
      one Training commit, and the deliberately separate bulletin seen-state
      autosave. A third write cannot disguise itself as Training's commit. */
@@ -26974,7 +27322,6 @@ try {
   const dtrainFinishBulletinWrites = Number.isInteger(dtrainFinishReleasedIndex)
     ? dtrainFinishNativeWitness.entries.filter((entry) => entry.eventIndex > dtrainFinishReleasedIndex)
     : [];
-  const dtrainFinishSeedRn = JSON.parse(DTRAIN_FULL_FINISH_RAW).rn ?? null;
   if (!dtrainFinishNativeWitness.ok || dtrainFinishStaleWrites.length !== 1
     || dtrainFinishTransactionWrites.length !== 1 || dtrainFinishBulletinWrites.length !== 1
     || dtrainFinishTransactionWrites[0]?.rn !== dtrainFinishSeedRn

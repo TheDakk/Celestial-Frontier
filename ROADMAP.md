@@ -17,147 +17,128 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-01 · EXACT 7A8D3A5 LOCAL DEVELOP CHAIN TERMINAL GREEN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-01 · NINTH HOSTED STOP, THREE BOUNDED REPAIRS IN LOCAL VERIFICATION ◀◀◀
 
 ### Exact current boundary
 
 - **Owner/scope:** OpenAI/Codex desktop on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, upstream
-  **origin/openai/mac**. Exact clean SSH-signed implementation source
-  **7a8d3a59b6b516700e45737ec6b67a242a5f785d** (tree
-  **517bf3e159a5694ea8e0f12a0e92b127329e6829**) is one commit ahead of the published branch and
-  is based against current `origin/develop`
-  **7a9f4c1370dd84292388d718c38ff34214f6203b**.
-- The current working tree is an evidence/docs-only descendant: four deterministic PASS carriers
-  plus synchronized references. Its eventual signed commit SHA is intentionally not self-embedded;
-  resolve it after commit with `git rev-parse HEAD`. Preserve every existing change.
-- No legacy game, gameplay, creature/genome/plant/biome/Guardian or product source changed. Exact
-  cf2d176 and all earlier browser chains remain immutable historical evidence only; the distinct
-  7a8d3a5 chain below certifies the current implementation.
+  **origin/openai/mac**. Published/current branch head is exact SSH-signed
+  **efad4b44c86ad89cbed39c18a39e2bbc9370caaf** (tree
+  **89116f64dafd0cf26fe210597da1c079edefcd76**) against `origin/develop`
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**. The ninth hosted checkout used synthetic merge
+  **778d3cf58937476a65c550e875b946290c0967b4**, whose tree is byte-identical to the exact head.
+- The shared worktree is intentionally dirty with three bounded repairs, their focused/negative
+  controls, three immutable hosted-evidence carriers and synchronized references. Preserve every
+  existing change. Guide and D-TRAIN changes are Slice evidence ownership; the Charter change is
+  confined to the existing progression-ceremony delivery seam. No legacy game, save schema,
+  deterministic world/genome generation, creature/plant/biome/Guardian structure, loot balance,
+  audio content, CSS geometry, memory ruler, compatible-browser policy or retry policy is changed.
+- Affected operational logs, current references, Guide/release copy and evidence are synchronized
+  in this same batch, and the complete browser-free `develop` profile is green. Independent full
+  diff review and a final signed source do **not** yet exist; do not treat this working tree as
+  complete or browser-certified.
 
-### Eighth exact hosted attempt — consumed terminal red
+### Ninth exact hosted attempt — consumed terminal red
 
-- Nick authorized PR #35's one-time `test-battery` for exact head **c0ad51a…** against exact base
+- Nick authorized PR #35's one-time `test-battery` for exact head **efad4b44…** against exact base
   **7a9f4c1370dd84292388d718c38ff34214f6203b**, label `actions-budget-approved`, maximum
-  92 minutes and no retry. GitHub run **33560546382**, attempt 1, used synthetic merge
-  **f03a68d75dd03512d2dc994febc9bb18e5b52d9c** with the exact head tree. Authorization job
-  **100031692379** passed; battery job **100031723808** completed terminal red after **1h4m43s**.
-- Root layout passed **787/787**. Compendium **gha-33560546382-1-compendiummem** passed **78/78**
-  once/no-retry in **2,334,319 ms** with zero findings/blocked outcomes and six review PNGs.
-- Slice **gha-33560546382-1-slice** stopped once/no-retry after **1,017,899 ms** with exactly
-  **2 findings / 2 scopes**. Nine screenshots were retained: Codex, Earth, Galaxy, Guide, phone,
-  Settings, Sol, Sol marker and Universe. Training was not reached. Glass, Recovery and preview
-  packaging correctly did not run.
-- Artifact `battery-evidence` is ID **9823195109**, archive size **9,535,484 bytes**, digest
-  `sha256:aeed20df4017f83aea1333547ae0d5ab07cce0d1be22d1974dadcb3f8d5dc5e9`, expiring
-  **2026-09-15T22:25:29Z**. The approval label was removed. The authorization is consumed, no retry
-  or merge occurred, PR #35 remains Ready/open/unmerged, and **no hosted attempt, push, PR mutation
-  or merge is currently authorized**.
+  92 minutes and no retry. GitHub run **33572309149**, attempt 1, used synthetic merge
+  **778d3cf58937476a65c550e875b946290c0967b4**. Authorization job **100068700331** passed;
+  battery job **100068719363** completed terminal red after **1h9m41s**.
+- Root layout passed **787/787**. Compendium **gha-33572309149-1-compendiummem** passed **78/78**
+  once/no-retry in **2,324,739 ms** with zero findings/blocked outcomes. Slice
+  **gha-33572309149-1-slice** stopped once/no-retry after **1,345,522 ms** with exactly
+  **3 findings / 3 scopes** and all ten screenshots.
+- Artifact `battery-evidence` is ID **9827040606**, archive size **9,780,335 bytes**, digest
+  `sha256:869d8ee0780f3f4fcbe3d1a3b17b353426e4f900ec5c1f146576c169224f1c9a`, expiring
+  **2026-09-16T00:53:39Z**. Glass, Recovery and preview packaging correctly did not run. The
+  authorization is consumed; no retry, relabel, push, PR mutation or merge is authorized.
 
-### Exact diagnosis and bounded successors
+### Exact roots and bounded repairs
 
-- **Feed acknowledgement lifetime:** the product transaction was exact and durable: global
-  revision **107→108**, ownership **16→17**, receipt count/SessionRNG ordinal **20→21**, exactly
-  one `arc5-companion-feed` receipt at ordinal 20, fed **0→1**, flora **1→0** plus tombstone, one
-  settled “Meal complete…” toast, zero pending work, same-document reopen and reload fixed point.
-  Page instrumentation also retained one post-mark oscillator with successful start/connection in a
-  running context. Normal short-voice cleanup disconnected its route before the expensive durable
-  reads and first raw graph snapshot; final-only graph projection then falsely reported no live
-  destination route.
-- The audio successor retains an **ordered same-prefix temporal route witness** only while the
-  unique post-source-mark oscillator and every same-context destination-path endpoint are
-  simultaneously live, then preserves that witness through natural disconnect/destroy teardown. It
-  never forms an unordered historical edge union: duplicate, missing, dead-end, false-destination,
-  cross-context, connect-before-create and disjoint-time paths stay red.
-- **Phone Landing predecessor:** the isolated fresh-phone flow opened Guide for the first time;
-  Guide legitimately set `seenGuide` and started `persistView()`. The runner closed Guide and
-  touched Land without reacquiring authority. The artifact retained only
-  `phone Earth landing did not reach its phone outcome within 6000ms (last null)`; it does not
-  directly prove a refusal reason. Source tracing supports the high-confidence root-cause inference
-  because `doLand()` refuses while `activePersist` is owned.
-- The phone successor closes Guide, quiesces the same-document F4 heartbeat and keeps it quiescent
-  through three independently early-resolving waits, each capped at 15 seconds: post-Guide writable
-  predecessor, live Land-surface observation and post-Land durable writable/idle fixed point.
-  Exactly one native Land action occurs between those waits, then the heartbeat resumes exactly
-  once in `finally`. Predecessor timeout evidence retains the complete F4/persistence/coordinator
-  state and `landing.lastOutcome`; it never retries the action.
-- The hosted run crossed and validated the prior Settings repair: all eleven controls completed
-  mutate/restore through **22** exact real writes with raw-v5 continuity, quiet-window authority,
-  quiesce/resume and controls. These two later findings do not reopen Settings.
+- **Guide release tail:** the historical driver issued three fixed 10,000px native wheels without
+  observing between them; the hosted page applied two and stopped at **20,000px** while the live
+  bulletin's bottom was **25,829px**, then the harness judged that intermediate position. The successor
+  uses a pure one-wheel-at-a-time state machine, raw CDP input, a freshly read dynamic bottom,
+  one Node-owned absolute action deadline that clips every CDP command to its remaining budget,
+  stall/attempt caps, visible-tail-and-bottom proof, a hidden-overflow adversary and separately
+  bounded exception-safe restoration of exact scroll/style/priority/computed ownership. It
+  removes the fixed content-length ruler and does not pin a browser point version.
+- **Saturated Charter recovery:** a queued older Share achievement ceremony could drain while a
+  newer receipt-bearing Land action owned product state, interrupting the adjacent notice and
+  yielding the retained `★ 3 Charter chapters — completeChapter 1…` aggregate. The existing queue
+  now defers intact while `productActionInFlight`, exposes bounded diagnostics, and resumes exactly
+  one preserved Share delivery only after Land settles. Controls reject early shift/drop, duplicate
+  delivery, false queue removal, missing visible toast and reused durable authority.
+- **D-TRAIN full finish:** Training correctly reached the ten-stage `released` witness, but the
+  development bulletin is intentionally queued afterward. A background page outlived the old fixed
+  `sleep(80)`, so the historical capture saw live/durable `rn` **1.8.9** with pending
+  **2.0.0-test**. The successor waits for one bounded read-only fixed point across live `rnSeen`,
+  cleared pending state, Guide release panel/focus, cleared Training UI/hold and durable raw `rn`.
+  Independent stale-live, stale-raw, pending, wrong-panel, wrong-focus and retained-Training
+  controls remain red; dependent judgments causal-stop if convergence never arrives.
 
 ### Verification and immutable evidence
 
-- The combined focused boundary passes **3 files / 21 tests**. The fresh-wait ownership file
-  separately passes **8/8** after adding the two exact new wait labels. All three TypeScript
-  programs pass.
-- Exact clean 7a8d3a5 passes the hermetic tracked-input `develop` preflight at **260 files / 2,675
-  passed / 1 skipped** (**2,676 total**), **34** clean art sources, **1,014/1,014** routes and
-  **454** declared/non-inert fields.
-- That unchanged source completed one serial, fail-fast/no-retry local develop chain on Edge
-  **152.0.4191.53** / CDP **1.3**; the point version is provenance only. Every named verifier
-  passed. Compendium **20260901230136598-19910-e9b7eb9b5e** passed **78/78** in **65,672 ms**
-  with zero findings/blocked outcomes. Slice **20260901230304318-20264-c5997bf96c8f** passed
-  terminal certifying under `develop` in **376,101 ms** with zero findings/scopes and ten
-  screenshots; report/log SHA-256 is **12e9b797…32c8a / 887e9d3d…a63e5**. Glass
-  **20260901230935469-20802-a0d3c9067c92** consumed that exact Slice and passed **12/12**
-  viewports, **12/12** reload rows, **104/104** controls and **36/36** Arc 4 outcomes in
-  **116,633 ms** with zero findings/instrument failures; report SHA-256 is
-  **c9dcc93e…5b64**.
-- Hosted evidence is preserved as deterministic `gzip -n -9` carriers:
-  `ARC1A_COMPENDIUM_PR35_FEED_AUDIO_ROUTE_PHONE_LANDING_PREDECESSOR_PASS_20260901_F03A68D.json.gz`
-  (gzip **487,306** bytes / SHA-256 **61ae809d…96bf**; raw **12,846,608** /
-  **e072796c…d040**), `ARC4_SLICE_PR35_FEED_AUDIO_ROUTE_PHONE_LANDING_RED_20260901_F03A68D.json.gz`
-  (gzip **84,367** / **81a1858f…e17e**; raw **800,679** / **d34b160e…492**) and its log
-  (gzip **39,079** / **cec392ef…efcd**; raw **343,139** / **3b352cc9…e58c**). Every full hash is
-  indexed in `audits/README.md`; gzip integrity and deterministic recompression pass.
-- Exact 7a8d3a5 PASS evidence is preserved as four deterministic carriers: Compendium
-  `ARC1A_COMPENDIUM_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.json.gz`
-  (gzip **451,640 / 1d79a88c…677a**; raw **10,826,781 / 4755265d…6b3c**), Slice report
-  `ARC4_SLICE_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.json.gz`
-  (gzip **1,958 / dbc970cc…1abf**; raw **6,126 / 12e9b797…32c8a**), Slice log
-  `ARC4_SLICE_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.log.gz`
-  (gzip **3,290 / 42e1b210…4518**; raw **6,950 / 887e9d3d…a63e5**) and Glass
-  `ARC4_GLASS_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.json.gz`
-  (gzip **78,874 / 4ca9229f…a660**; raw **898,861 / c9dcc93e…5b64**). Full hashes are in
-  `audits/README.md`.
+- Current focused verification is green: **4 files / 46 tests**, covering Guide native-wheel
+  integration/restoration controls, D-TRAIN queued-release convergence, progression-ceremony
+  deferral/resume and the exact hosted evidence replay. All three TypeScript programs pass.
+- The complete browser-free `develop` profile passes **263/263 files**, **2,719 passed / 1 skipped**
+  (**2,720 total**), all three TypeScript programs, **34** clean art sources, **1,014/1,014** routes
+  and **454** declared/non-inert fields. The repaired build's current Compendium producer authority
+  is **308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77**; its independently
+  derived measurement authority, sealed ruler, numeric ceilings, worker/painter asset, 78-outcome
+  inventory, historical samples and version-tolerant Edge-family/CDP 1.3 policy are unchanged.
+- The ninth red is preserved by deterministic Compendium predecessor, Slice report and Slice log
+  carriers under `audits/`, with exact compressed/raw hashes and browser-free replay. Later repairs
+  cannot relabel that run or create Slice, Glass, Recovery, merge, release or deployment authority.
+- `GITHUB_ACTIONS_BUDGET.md`, `audits/README.md`, `PROCESS_LAWS.md`, `PROGRESSION.md`,
+  `QUESTS_AND_CHAPTERS.md`, `SAVE_SYSTEM.md`, `UI_PRESENTATION.md`, both READMEs, the codebase
+  reference and current Guide/release copy are synchronized with the code in this batch.
+- **Still pending:** independent final review of every changed source/reference/evidence byte; an
+  exact clean SSH-signed candidate and raw `gpgsig`; hermetic tracked-input preflight on that exact
+  commit; and one unchanged-source, fail-fast/no-retry **Compendium → Slice → Glass** chain with
+  every named verifier. There is no new browser certificate and no locally terminal-green final
+  candidate yet.
 
 ### What remains
 
-1. SSH-sign the evidence/docs-only descendant, resolve its exact `git rev-parse HEAD`, prove its
-   raw `gpgsig` and clean tree, then pass `node tools/tracked-input-preflight.mjs --profile=develop`
-   on that exact commit. Do not rerun or rebind 7a8d3a5's exact browser chain.
-2. Only then ask Nick for fresh authorization naming that final exact head, base
-   **7a9f4c1370dd84292388d718c38ff34214f6203b**, PR #35, `test-battery`,
-   `actions-budget-approved`, 92-minute maximum and no retry. Merge only if that exact hosted
-   attempt is terminal green and branch protection is satisfied.
-
-### Unchanged product and HUMAN boundary
-
-These repairs change no product behavior, save schema, CF1/deterministic generation, creature/
-genome/plant/biome/Guardian structure, art/audio content, Feed or Landing semantics, gameplay
-balance, progression, copy, CSS, geometry, memory ceiling, product timeout, global CDP deadline,
-ruler, retry or compatible-browser policy. The phone harness observation caps intentionally change
-from 6 seconds to 15 seconds. The browser game remains the main product: effectively infinite
-exploration, mining/crafting/loot and Pureforged gear, creature care/breeding/combat, Guardian progression and long-term
-return play. Authored visual/listening/accessibility/first-journey judgment, physical-device heat/
-battery/install and true-GPU review remain HUMAN.
+1. Complete the independent code/test/doc/evidence reviews; fix only concrete findings and keep all
+   three historical scopes causal. The aggregate browser-free profile is already green.
+2. Commit the closed batch with SSH signing, resolve the exact candidate SHA/tree, prove its raw
+   `gpgsig` and clean worktree, then run the hermetic tracked-input `develop` preflight on that
+   exact commit.
+3. On that unchanged clean source, run Compendium once; only if green run Slice once; only if green
+   run Glass once. Named-verify each exact report and stop after any red or instrument result.
+   Preserve the new exact carriers and refresh this handoff without rebinding prior evidence.
+4. Only after all local acceptance is green may Nick authorize one new exact PR #35 hosted attempt
+   by naming full head/base, `test-battery`, `actions-budget-approved`, 92-minute maximum and no
+   retry. Push/update metadata only inside that authority; merge into `develop` only if the exact
+   hosted head is terminal green and branch protection is satisfied.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex next:** complete the two local steps above. Do not push, label, dispatch or merge
-  until the exact final signed head is locally terminal green and Nick supplies a fresh exact hosted
-  authorization; the c0ad authorization is consumed and cannot be reused.
+- **OpenAI/Codex next:** complete steps 1–3 locally in this worktree. No GitHub action is currently
+  allowed, and the efad authorization cannot be reused.
 - **PR:** existing #35, base **develop**, source **openai/mac**. Copy-ready title:
   **feat(v2): complete roadmap campaign and harden action-time CI evidence**.
 - **Copy-ready PR description:** “Completes the established v2 roadmap campaign without recreating
-  its systems; preserves creature/genome/universe art structures; retains exact Feed transaction
-  durability while capturing an ordered simultaneously-live WebAudio acknowledgement route through
-  natural teardown; quiesces the same-document heartbeat across three capped post-Guide/Land waits
-  and one phone Land action; preserves immutable eighth-attempt evidence; and records exact clean
-  7a8d3a5's named-verified terminal-green local Compendium → Slice → Glass chain. The phone harness
-  observation caps change from 6s to 15s; no product timeout, global CDP deadline, retry, Edge
-  rebaseline, fixed ruler, save-schema, release, version, preview or deployment change is included.”
-- **Claude Code next:** Nick does **not** need to open Claude yet. Open it only after PR #35's final
-  exact head is terminal green and merged into `develop`; Claude must use a fresh `anthropic/*`
-  branch and must not edit this OpenAI worktree.
-- **Release status:** no release, version bump, preview publication or deployment is in progress.
+  its systems; preserves creature/genome/universe structures; keeps the ninth hosted efad/778d red
+  immutable; replaces Guide's fixed wheel ruler with bounded dynamic native-wheel proof and exact
+  restoration; defers queued progression ceremonies while a newer product action owns state and
+  resumes exactly once; and waits for D-TRAIN's queued development bulletin to converge across
+  live panel/focus/Training and durable `rn` state. Exact hosted carriers and negative controls are
+  retained. Focused 4-file/46-test verification, the complete 263-file browser-free develop profile,
+  all TypeScript programs, 34 art sources, 1,014 routes and 454 fields are green; independent final
+  review, the clean signed candidate, tracked-input preflight and unchanged-source Compendium →
+  Slice → Glass chain remain pending. No retry, merge, release, version bump, preview publication or
+  deployment is included.”
+- **Claude Code next:** Nick does **not** need to open Claude yet. After PR #35 is terminal green
+  and merged into `develop`, open Claude/Fable for the requested full polish review from a fresh
+  `anthropic/*` branch; it must fetch/merge `origin/develop` into its own clean worktree and never
+  edit or copy files from this OpenAI worktree.
+- **Release status:** `develop`, `main` and the live site are unchanged by this active batch. No
+  release, version bump, preview publication or deployment is in progress.
+- **Actions budget:** mode **UNFROZEN**, repository assumed public while that remains verified,
+  private fallback cap **3,000**, and **zero** hosted attempts currently authorized.

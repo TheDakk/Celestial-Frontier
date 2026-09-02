@@ -1,5 +1,25 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-09-01 current v2 Guide/ceremony/D-TRAIN correction (matches local code as of 2026-09-01;
+> supersedes older “current” labels while preserving dated evidence):** PR #35 run `33572309149`
+> tested exact head `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` through synthetic merge
+> `778d3cf58937476a65c550e875b946290c0967b4`. Layout passed **787/787**, Compendium passed
+> **78/78**, and Slice ran once/no-retry for **1,345,522 ms**, retained all ten screenshots, then
+> stopped with exactly three independent findings: the Guide driver issued three fixed 10,000px
+> wheel intents without re-observation, only two advanced to 20,000/25,829, and that intermediate
+> position was judged; an older Share ceremony advanced the toast serial before
+> a held Landing/Charter aggregate; and D-TRAIN's fixed delay read the restored pre-bulletin `rn`.
+>
+> `slicesmoke-contract.mjs` now owns a pure bounded Guide native-wheel state machine with exact
+> tail/document/owner/geometry binding and exact restoration. The runner adds one Node-owned action
+> deadline that clips every CDP setup/observation/input call to its remaining budget and a separate
+> bounded cleanup owner, plus the stable D-TRAIN raw/live/focus assessor. Main's ceremony timer now checks `productActionInFlight` before queue shift, preserves
+> the queue and reschedules; smoke-only `cf-v2-progression-ceremony-diagnostics/v1` counters expose
+> callbacks, in-flight deferrals, deliveries and queue keys without entering persistence. Guide,
+> Training and release product timing are unchanged; the ceremony ordering is the sole product
+> behavior correction. The hosted run remains immutable red and does not certify this changed
+> source.
+
 > **2026-09-01 current v2 automatic-arrival transient-latch boundary (matches local code as of
 > 2026-09-01; supersedes older “current” labels while keeping all exact historical evidence):**
 > authorized PR #35 run `33522000552` tested exact head
@@ -2159,7 +2179,12 @@
 > reloads from the committed primary. Source-error may write an incomplete
 > candidate with the exact checkpoint only when Sol is freshly proven and
 > authorized, then reload safely. If Sol also cannot be proven, it forges no
-> fallback/write/clear/completion and leaves the checkpoint plus lesson retryable.
+> fallback/write/clear/completion and leaves the checkpoint plus lesson retryable. The release
+> witness may precede the independently queued bulletin seen-state autosave; the current Slice
+> assessor accepts completion only after two equal raw reads bracket live/focus evidence in which
+> Training is released, Guide alone owns the fixture bulletin and Back focus, `releasePending` is
+> clear, and live `rnSeen` equals durable raw `rn`. This replaces a fixed observation delay without
+> changing product timers or write topology.
 >
 > Loaded pending checkpoints are write-held. Loaded `tut:0` without a checkpoint
 > is also held and seated at proven Sol in runtime only until the one atomic
@@ -3894,7 +3919,10 @@ demotion all-or-nothing. Known additions retain manifest order, use the existing
 description and sting tier 3; one higher rank uses the authored Rank Up copy, sting tier 5 and the
 bounded gold FX semantic. Boot, Training, replay, already-durable, refusal and convergence
 dispositions return silent before presentation. Main's highest-revision fence and serial queue
-prevent duplicate delivery; replacement reload clears pending ceremonies.
+prevent duplicate delivery. Before shifting an entry, the drain preserves the complete queue and
+reschedules while `productActionInFlight` belongs to a newer receipt-bearing owner; replacement
+reload remains the explicit path that clears pending ceremonies. The smoke-visible diagnostic
+schema is transient observation only and adds no save carrier.
 
 ---
 
@@ -4012,9 +4040,11 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
   by the 56 legacy releases. Its exact 77-bullet implemented-outcome inventory has rendered
-  ordered SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`
-  and is checked structurally and in the rendered Guide, including real-scroll
-  tail reach and unchanged shipped-release state. That version is development identity
+  ordered SHA-256 `9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b`
+  and is checked structurally and in the rendered Guide. Tail proof dispatches one adaptive
+  native wheel per fresh exact-document/tail/hit-owner/geometry observation until the final item
+  is visible at bottom, then restores scroll and inline overflow ownership exactly; unchanged
+  shipped-release state remains separately required. That version is development identity
   only. `getCurrentV2Release()` returns nothing while
   `V2_CURRENT_RELEASE_VERSION === null`; `showUnseenV2Release()` therefore
   cannot mutate `rnSeen` or open an update until an authorized shipped v2 entry

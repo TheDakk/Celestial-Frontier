@@ -13,6 +13,91 @@ export const SLICE_SCREENSHOT_LOGICAL_NAMES: readonly [
 
 export function sliceScreenshotInventoryLine(): string;
 
+export interface GuideReleaseTailWheelLimits {
+  readonly maxDurationMs: number;
+  readonly maxAttempts: number;
+  readonly maxConsecutiveStalls: number;
+  readonly bottomTolerancePx: number;
+}
+
+export interface GuideReleaseTailWheelOptions
+  extends Partial<GuideReleaseTailWheelLimits> {
+  readonly expectedTailText: string;
+}
+
+export interface GuideReleaseTailWheelObservation {
+  readonly documentToken: string;
+  readonly tailText: string;
+  readonly overflowY: string;
+  readonly scrollTop: number;
+  readonly maxScroll: number;
+  readonly visible: boolean;
+  readonly tailMatches: boolean;
+  readonly hitOwned: boolean;
+}
+
+export interface GuideReleaseTailWheelState {
+  readonly schema: 'cf-v2-guide-release-tail-wheel/v1';
+  readonly documentToken: string;
+  readonly tailText: string;
+  readonly startedAtMs: number;
+  readonly attempts: number;
+  readonly consecutiveStalls: number;
+  readonly lastScrollTop: number;
+  readonly lastMaxScroll: number;
+}
+
+export interface GuideReleaseTailWheelDecision {
+  readonly status: 'wheel' | 'reached' | 'failed';
+  readonly reason: string;
+  readonly deltaY: number | null;
+  readonly state: GuideReleaseTailWheelState | null;
+  readonly observation: GuideReleaseTailWheelObservation;
+}
+
+export interface GuideReleaseTailRestorationSnapshot {
+  readonly documentToken: string;
+  readonly tailText: string;
+  readonly scrollTop: number;
+  readonly scrollLeft: number;
+  readonly overflowYValue: string;
+  readonly overflowYPriority: string;
+  readonly computedOverflowY: string;
+}
+
+export const GUIDE_RELEASE_TAIL_NATIVE_WHEEL_DEFAULTS:
+  Readonly<GuideReleaseTailWheelLimits>;
+export function advanceGuideReleaseTailNativeWheel(
+  priorState: GuideReleaseTailWheelState | null | undefined,
+  observation: GuideReleaseTailWheelObservation,
+  nowMs: number,
+  limits: GuideReleaseTailWheelOptions,
+): GuideReleaseTailWheelDecision;
+export function assessGuideReleaseTailRestoration(
+  expected: GuideReleaseTailRestorationSnapshot,
+  actual: GuideReleaseTailRestorationSnapshot,
+): SliceContractAssessment;
+
+export interface DtrainReleaseConvergenceEvidence {
+  readonly rawBeforeText: string;
+  readonly rawAfterText: string;
+  readonly raw: Readonly<Record<string, unknown>> | null;
+  readonly state: Readonly<Record<string, any>> | null;
+  readonly focus: Readonly<{
+    readonly heading: string;
+    readonly backFocus: boolean;
+    readonly insideTraining: boolean;
+    readonly trainingPresent: boolean;
+    readonly inertChrome: number;
+    readonly atlasClosed: boolean;
+  }> | null;
+}
+
+export function assessDtrainReleaseConvergence(
+  evidence: DtrainReleaseConvergenceEvidence | null | undefined,
+  expectedRn: string,
+): SliceContractAssessment & Readonly<{ readonly checks: Readonly<Record<string, boolean>> }>;
+
 export interface SliceContractAssessment {
   readonly ok: boolean;
   readonly reasons: readonly string[];

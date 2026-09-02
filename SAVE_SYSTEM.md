@@ -1,5 +1,22 @@
 # Celestial Frontier — Save System
 
+> **2026-09-01 current D-TRAIN release-convergence evidence boundary (matches local code as of
+> 2026-09-01; supersedes older “current” labels while preserving dated evidence):** PR #35 hosted
+> run `33572309149` tested exact head `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` through synthetic
+> merge `778d3cf58937476a65c550e875b946290c0967b4`. Training's atomic restoration, outer fields and
+> one direct primary write were exact. The fixed post-Finish delay sampled before the separately
+> queued development bulletin had updated live `rnSeen`, cleared `releasePending`, focused Guide
+> and persisted the same `rn`, so only `outer.rn` appeared to drift.
+>
+> Certification now brackets one live/focus sample with two identical raw-primary reads and waits
+> under one bounded deadline until Training is released; live `rnSeen` and raw `rn` equal the
+> fixture release identity; `releasePending` is null; only Guide is open with the fixture heading
+> and Back focus; Training DOM/focus and inert chrome are absent; and Atlas is closed. Every
+> predicate has a one-at-a-time red control, and the native write witness waits for its exact third
+> row before topology judgment. Product timer ordering, the one Training replacement write, the
+> distinct bulletin autosave, save schema and release identity are unchanged. The hosted run stays
+> immutable red; the changed source awaits a fresh exact-source browser chain.
+
 > **2026-09-01 current automatic-arrival/persistence-latch boundary (matches local code as of
 > 2026-09-01; supersedes older “current” labels while preserving their dated evidence):**
 > authorized PR #35 run `33522000552` tested exact head
@@ -939,7 +956,11 @@
 > remains incomplete, retains the exact checkpoint, and may use Sol only when
 > that route is freshly proven and authorized before the one durable write and
 > safe-retry reload. If Sol also cannot be proven, no fallback, write, clear, or
-> completion is forged; the checkpoint and lesson remain retryable.
+> completion is forged; the checkpoint and lesson remain retryable. Release of that atomic
+> Training owner may legitimately precede the separate queued bulletin seen-state autosave. Browser
+> certification therefore requires equal raw reads around one live/focus sample and accepts the
+> outcome only when Training release, Guide-only bulletin focus, cleared `releasePending`, live
+> `rnSeen` and durable raw `rn` all agree; a fixed sleep is not persistence evidence.
 >
 > Loaded unfinished state is write-held before ordinary persistence can touch
 > it. This includes any recognized pending checkpoint and a loaded `tut:0`
