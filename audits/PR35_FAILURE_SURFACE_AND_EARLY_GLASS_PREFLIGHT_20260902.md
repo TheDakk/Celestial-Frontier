@@ -1,7 +1,7 @@
 # PR #35 failure-surface audit and early Glass preflight
 
 Date: **2026-09-02**
-Status: **local workflow successor under exact-input verification; no GitHub write or hosted attempt authorized**
+Status: **exact signed local successor and targeted browser proof green; no GitHub write or hosted attempt authorized**
 
 ## Executive finding
 
@@ -95,14 +95,50 @@ accepts the exact canonical Chrome/320x568@2 PASS and rejects null/object eviden
 geometry, Edge masquerading as Chrome, wrong CDP, missing modal-focus control, source drift, and
 nonzero exit.
 
-Three independent read-only reviews found and closed four pre-run defects: omitted fixture/version
-inputs, an unnecessary worker-typecheck trigger, nullable-array false greens, and the configured-
-path versus canonical-browser mismatch. The final workflow/order review is **CLEAR**. Focused
+Three independent read-only reviews found and closed every reported pre-run gap: omitted runtime
+inputs, over-broad test/typecheck scope, nullable-report false greens, the missing modal-focus
+control, configured versus canonical browser paths, and malformed Chrome product provenance. The
+final workflow/order review is **CLEAR**. Focused
 workflow/scope/evidence tests pass **28/28** and the Actions budget policy selftest passes all **64**
 fail-closed controls. The consolidated working-source `develop` profile passes **264/264 files,
 2,739 passed / 1 skipped**, all three TypeScript programs, 34 art sources, 1,014/1,014 routes and
-454 declared fields. Exact committed browser evidence is recorded only after the source is signed
-and unchanged.
+454 declared fields.
+
+## Exact local successor evidence
+
+SSH-signed implementation/documentation source
+`4a0228d9998ec2f5fb238b3143146162e359cdff`, tree
+`56650fbf1fcedf01c787cedd30f958e75abefca0`, parent
+`526fd5f1a448bba3ebe422f70b8d4f6ae8b00e3b`, passed the hermetic tracked-input `develop`
+rehearsal from an exported clean committed tree:
+
+- **264/264** Vitest files, **2,739 passed / 1 skipped**;
+- all three TypeScript programs;
+- **34** clean art sources;
+- **1,014/1,014** catalogue routes; and
+- **454** declared specification fields with zero inert fields.
+
+On that same unchanged committed source, local Edge `152.0.4191.53` / CDP `1.3` targeted run
+`20260902-pr35-early-glass-preflight-4a0228d9998e` passed in **13,625 ms**; its one small-phone row
+took **11,187 ms**. It retained one exact 320×568@2 mobile/zero-safe-area viewport, zero findings,
+zero instrument failures, zero blocked controls, zero retries, **95** executed controls and nine
+lawful targeted-scope omissions. All five required Inventory controls executed. Source and
+source-end both bind exact `4a0228d…`, committed state, empty status SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`, working-tree SHA-256
+`f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`, and no ending change.
+
+The exact report is preserved as
+`ARC4_GLASS_PR35_EARLY_PREFLIGHT_PASS_20260902_4A0228D.json.gz`: raw **83,780 bytes**, SHA-256
+`9ef29a3b0e733ccee5a605fb85faf6ff7a702062991c7c604be242ab5dd28f24`; deterministic
+`gzip -n -9` **10,091 bytes**, SHA-256
+`e0146ec79525a61ed4c8c9fc3699f88704d535583b9f6570239cf8da765d2e5c`. Gzip integrity and
+decompressed raw identity pass. This is bounded local Chromium-family evidence, not proof of the
+remaining hosted Ubuntu/Chrome fact and not a full Glass certificate.
+
+The SSH-signed evidence/reference descendant containing this audit preserves that deterministic
+carrier and passes the final hermetic tracked-input `develop` profile with the same **264/264,
+2,739 passed / 1 skipped** result. Its own commit hash is intentionally not self-embedded; resolve
+it with `git rev-parse HEAD`.
 
 ## Residual risk and authority
 

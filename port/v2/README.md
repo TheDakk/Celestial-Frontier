@@ -3848,6 +3848,13 @@ unconditional, exact-Slice-bound 12-viewport Glass certificate. The complete sco
 thirteen-stop rationale are preserved in
 `../../audits/PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md`.
 
+Exact signed local source `4a0228d9998ec2f5fb238b3143146162e359cdff` passed the hermetic
+tracked-input `develop` profile and one unchanged-source Edge `152.0.4191.53` / CDP `1.3`
+small-phone run, `20260902-pr35-early-glass-preflight-4a0228d9998e`, in **13,625 ms** with zero
+findings, instrument failures, blocked controls or retries and all five required Inventory
+controls. That is noncertifying local Chromium-family evidence; only the next explicitly
+authorized hosted run can establish Ubuntu/Chrome parity.
+
 ```sh
 set -euo pipefail
 

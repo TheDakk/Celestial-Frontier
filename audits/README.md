@@ -23,11 +23,21 @@ hosted Chrome immediately after the shared launcher selftest. It is noncertifyin
 minutes, no-retry, source- and canonical-browser-bound, strict about report shape, and requires the
 five Inventory controls that cover the last two hosted Glass classes. Its distinct immutable report
 is retained. The final exact-Slice-bound 12-viewport Glass certificate remains unconditional and
-unchanged. Three independent reviews are clear after closing scope, nullable-report,
-modal-focus-control, and browser-symlink false-red gaps; focused contracts pass **28/28** and the
+unchanged. Three independent reviews are clear after closing omitted-input, over-broad-scope,
+nullable-report, missing-control, canonical-browser-path and malformed-product-provenance gaps;
+focused contracts pass **28/28** and the
 Actions policy selftest passes **64/64**. The complete working-source `develop` profile passes
 **264/264 files, 2,739 passed / 1 skipped** and every TypeScript/art/route/specification owner.
-Exact committed browser proof is still pending. No GitHub write or hosted attempt is authorized.
+Exact SSH-signed source `4a0228d9998ec2f5fb238b3143146162e359cdff` (tree
+`56650fbf1fcedf01c787cedd30f958e75abefca0`) then passed the hermetic tracked-input profile with
+those same results. Its one unchanged-source local Edge/CDP targeted row
+`20260902-pr35-early-glass-preflight-4a0228d9998e` passed in **13,625 ms** with zero findings,
+instrument failures, blocked controls or retries and all five required Inventory controls. Exact
+report carrier `ARC4_GLASS_PR35_EARLY_PREFLIGHT_PASS_20260902_4A0228D.json.gz` has raw/gzip
+SHA-256 `9ef29a3b…8f24` / `e0146ec7…e5c`. It remains noncertifying and does not prove hosted
+Ubuntu/Chrome. The signed evidence/reference descendant containing this index preserves the
+carrier and passes the final tracked-input `develop` profile; its own hash is intentionally not
+self-embedded. No GitHub write or hosted attempt is authorized.
 
 ### Current PR #35 action-settlement repair — exact clean local certificate
 

@@ -3,7 +3,7 @@
 **Current mode: `UNFROZEN`**
 
 **Current local state (2026-09-02): systemic thirteen-stop audit complete; conditional early hosted
-Glass preflight is under exact committed local verification; no hosted attempt is authorized.**
+Glass preflight has exact signed local proof; no hosted attempt is authorized.**
 The immutable record is **9 instrument/infrastructure, 3 product/runtime, and 1 mixed**. Every
 known cause through attempt 12 has a permanent guard and later local or hosted successor evidence.
 Attempt 13's repaired Glass path passed a complete local Edge/CDP chain but has never run on hosted
@@ -20,11 +20,20 @@ Glass chain remains unconditional and unchanged; only evidence upload follows Gl
 
 Focused scope/workflow/evidence contracts pass **28/28** and the Actions authorization-policy
 selftest passes **64/64** after three independent reviews found and closed omitted-input,
-nullable-report, modal-focus, browser-symlink and malformed-product-provenance gaps. The full audit
+over-broad-scope, nullable-report, missing-control, canonical-browser-path and malformed-product-
+provenance gaps. The full audit
 is `audits/PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md`. The consolidated
 working-source `develop` profile passes **264/264 files, 2,739 passed / 1 skipped**, all three
-TypeScript programs and every art/route/specification owner. No push, label, dispatch, hosted run,
-PR mutation, merge, release, version bump, publication, or deployment is authorized.
+TypeScript programs and every art/route/specification owner. Exact SSH-signed source
+`4a0228d9998ec2f5fb238b3143146162e359cdff`, tree
+`56650fbf1fcedf01c787cedd30f958e75abefca0`, passed the same hermetic tracked-input profile and one
+unchanged-source local Edge/CDP targeted row in **13,625 ms** with zero findings, instrument
+failures, blocked controls or retries and all five required Inventory controls. Its raw/gzip
+evidence SHA-256 is `9ef29a3b…8f24` / `e0146ec7…e5c`. This is noncertifying local evidence, not
+hosted Ubuntu/Chrome proof. The signed evidence/reference descendant containing this state
+preserves the carrier and passes the final tracked-input `develop` profile; its own hash is
+intentionally not self-embedded. No push, label, dispatch, hosted run, PR mutation, merge, release,
+version bump, publication, or deployment is authorized.
 
 **Preserved immediately preceding state (2026-09-02): thirteenth hosted Glass action-settlement
 instrument red is preserved; no hosted attempt is authorized.** PR #35 run `33674116068`, attempt 1, consumed the
