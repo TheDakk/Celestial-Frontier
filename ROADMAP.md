@@ -30,9 +30,12 @@ the archive verbatim and refresh this handoff in place.
 - Exact SSH-signed implementation source is **64e405bc6678302c5936945c1b34ac5de5407025**,
   tree **732bcf9930ac36e7661b14cdfd6cde64137d34f4**, parent/pushed head **5ae12c7…**.
   It contains the bounded Glass action/portrait harness successor and exact local certificate.
-- The current working tree is preparing the evidence/docs descendant over that signed
-  implementation. That descendant and its final tracked-input proof are not complete; preserve
-  all current bytes and do not rebase, overwrite or copy them into another worktree.
+- SSH-signed evidence/reference descendant **112bf7fb4961d8f85833df964fe8b17109ab2a0b**,
+  tree **5daa4e7e589ec37fc59f5e1b2e863caccd5101be**, preserves the four deterministic browser
+  carriers and passes the final hermetic tracked-input `develop` profile. The current signed
+  handoff-only descendant also passes that profile; its own hash is intentionally not
+  self-embedded. Preserve all current bytes and do not rebase, overwrite or copy them into another
+  worktree.
 - PR #35 is Ready/open/unmerged. `actions-budget-approved` is absent, `develop` remains unchanged
   at the base above, and no push, label, dispatch, retry, PR mutation, merge, release, version bump,
   publication or deployment is currently authorized.
@@ -107,9 +110,10 @@ the archive verbatim and refresh this handoff in place.
   `de298933a9be237efcb926d28054a2fcb308ca09eacc2532bbb7b75c67ddadc2`; the Slice-bound named
   verifier passed.
 - Each browser stage ran once/no-retry on the same unchanged clean source. Independent final code
-  and documentation reviews are **CLEAR**. A signed evidence/docs descendant and its final
-  tracked-input proof remain before requesting any new exact head/base authorization; this local
-  certificate grants no hosted authority.
+  and documentation reviews are **CLEAR**. Signed evidence/reference descendant `112bf7f…`
+  preserves the four deterministic carriers and passes the final tracked-input `develop` profile
+  at **264/264 files, 2,738 passed / 1 skipped**; the current handoff-only descendant passes it too.
+  Local closure is complete, but this certificate grants no hosted authority.
 
 ### Scope and preserved vision
 
@@ -122,10 +126,10 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex next:** complete and SSH-sign the evidence/docs descendant, run its final hermetic
-  tracked-input `develop` proof, then report that exact new head against base **7a9f4c1…** and
-  request Nick's fresh one-attempt PR #35 authorization. Do not push or mutate GitHub before that
-  exact authority.
+- **OpenAI/Codex next:** report the exact current signed head against base **7a9f4c1…** and request
+  Nick's fresh one-attempt PR #35 authorization. Only after that exact authority, push
+  `openai/mac`, refresh PR #35 metadata, apply `actions-budget-approved`, and run `test-battery`
+  once with a 92-minute maximum and no retry; merge into `develop` only if terminal green.
 - **PR:** existing #35, base **develop**, source **openai/mac**.
 - **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
 - **Description:** “Completes the established v2 roadmap campaign without recreating its gameplay
