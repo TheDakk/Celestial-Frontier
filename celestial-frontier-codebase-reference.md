@@ -1,5 +1,22 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
+> all dated architecture/evidence blocks below remain immutable):** hosted run `33584052508` tested
+> exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once with no retry. Layout passed **787/787**;
+> the first and only red was the production-quarantined SceneMemory fixed-eighth phase-validity
+> synthetic allocator selftest,
+> before the develop admission chain began. The authorization is consumed and no hosted authority
+> remains.
+>
+> The local uncommitted successor makes all live SceneMemory native-heap work
+> **production-only/quarantined** while its deterministic schema, contract, mutation and
+> historical-red controls remain universal. Develop admission is **Compendium → Slice → Glass**;
+> production/release, only after explicit SceneMemory activation, is
+> **SceneMemory → Compendium → Slice → Glass → Recovery** on unchanged source. This is a workflow
+> ownership change only; no runtime architecture, game, save or deterministic content behavior
+> changes. `ROADMAP.md` is the live handoff and `port/v2/README.md` owns canonical commands.
+
 > **2026-09-01 current v2 Guide/ceremony/D-TRAIN green authority overlay (matches exact signed
 > code; supersedes older “current” labels while preserving every dated block):** exact SSH-signed
 > source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
@@ -1075,7 +1092,7 @@
 > and CDP `1.3`, then emits that exact tuple. Compatible point versions are accepted and never
 > baseline selectors.
 >
-> The current SceneMemory input-v5 contract retains **44 outcomes**: the historical 42 scene/resource
+> The current SceneMemory input-v6 contract retains **44 outcomes**: the historical 42 scene/resource
 > outcomes plus one phone and one desktop `surface-vista-lifecycle` outcome. Each binds the raw
 > `surfaceVistaWorkerActive`, `surfaceVistaMounted`, `surfaceVistaCacheEntries` and
 > `surfaceVistaCachePixels` diagnostics through cold zero, first mount, repeated surface/ascent,
@@ -1092,7 +1109,7 @@
 > requested. Browser-free contract/budget/tool controls retain missing-field,
 > vacuous-zero, worker/mount leak, cache overflow and retained-on-reload mutations. Exact signed
 > Historical input-v3/verdict-v2 and input-v4/verdict-v3 reports replay under their original raw
-> semantics; current terminal verification requires input-v5/verdict-v4. Exact signed historical
+> semantics; current terminal verification requires input-v6/verdict-v5. Exact signed historical
 > source `3f69e88…` run `20260829-universe-polish-3f69e88ea8e3-scenemem` passed input-v4 44/44 in 10,561 ms with
 > complete cleanup inside that historical serial certificate. Every 42/42 statement below remains bound
 > to its historical source and schema.

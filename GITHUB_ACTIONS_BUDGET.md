@@ -2,11 +2,36 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local certificate: terminal green; no hosted attempt is authorized.** Exact clean
-SSH-signed implementation source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
-`25cb76916c8f3fcd00a916864abb9402932cdbec`) on `openai/mac` passed the complete browser-free
-`develop` profile at **263/263 files**, **2,719 passed / 1 skipped** (**2,720 total**), then passed
-the browser selftest and live preflight on Edge `152.0.4191.53` / CDP `1.3`.
+**Current local state (2026-09-02): tenth hosted red diagnosed; bounded successor uncommitted; no
+hosted attempt is authorized.** `openai/mac` and `origin/openai/mac` remain at exact consumed-red
+head `18c088de4388edf58eda2c192b71cb94156e26e7`, based against `origin/develop`
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Run `33584052508` stopped before game load in the
+host-sensitive live SceneMemory allocator control; the immutable facts are recorded below and in
+`audits/ARC1C_SCENEMEM_PR35_HOSTED_PHASE_INSTRUMENT_RED_20260902_18C088D.md`.
+
+The dirty local successor changes workflow/scope ownership only: all live SceneMemory native-heap
+work is production-only and remains strict there; deterministic SceneMemory contracts and mutation
+controls remain universal; Compendium-specific and shared browser-transport change scopes are now
+separate. It changes no game source, SceneMemory collector, threshold, fixed-eight protocol,
+browser-family contract, product ruler or retry rule. Current local verification is green for the
+focused workflow/evidence owners (**3 files / 27 tests**), the complete browser-free `develop`
+profile (**263/263 files, 2,719 passed / 1 skipped**), all three TypeScript programs, the complete
+art mutation control, browser-path selftest, Compendium browser preflight/selftest (**618
+controls**) and shared browser-CDP selftest. Documentation review, a clean SSH-signed exact source,
+hermetic tracked-input preflight and one fresh unchanged-source Compendium → Slice → Glass chain
+remain required before another exact hosted authorization can be requested.
+
+No push, label, hosted attempt, retry, PR metadata mutation, merge, release, version bump, preview
+publication or deployment is authorized. A future hosted attempt requires Nick's fresh authority
+naming the final full head and base `7a9f4c1370dd84292388d718c38ff34214f6203b`, PR #35,
+`test-battery`, `actions-budget-approved`, a 92-minute maximum and no retry. Merge is allowed only if
+that exact hosted attempt is terminal green and branch protection is satisfied.
+
+**Preserved predecessor local certificate (not the current closure):** Exact clean SSH-signed
+implementation source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+`25cb76916c8f3fcd00a916864abb9402932cdbec`) passed the complete browser-free `develop` profile at
+**263/263 files**, **2,719 passed / 1 skipped** (**2,720 total**), then passed the browser selftest
+and live preflight on Edge `152.0.4191.53` / CDP `1.3`.
 
 That exact unchanged source completed one serial, fail-fast/no-retry, named-verified local develop
 chain. Compendium `20260902020238003-42290-3e0d5a9601` passed **78/78** with zero findings/blocked
@@ -19,24 +44,31 @@ screenshots and a green Arc 4 ledger in **379,782 ms**; report/log SHA-256 is
 viewports, **12/12** reload rows and **104/104** controls with zero blocked/omitted controls,
 findings, instrument failures or retries in **115,629 ms**; report SHA-256 is
 `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`. Every stage ran once and
-every exact named verifier passed. Current Compendium producer authority is
+every exact named verifier passed. At that boundary, Compendium producer authority was
 `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`; budget SHA-256 is
 `f66fed5e8bb1f18b95266c267435fc0493bf450a89aee74fc1c9ffaa18f8501e`.
 
 The four deterministic report/log carriers and their exact raw/compressed hashes are indexed in
-`audits/README.md`. The closure descendant will contain only those carriers and synchronized
-references, preserving—without rebinding—the exact 4a4f0b8 browser certificate. It must be
-SSH-signed and pass its final clean tracked-input `develop` preflight; the browser chain must not be
-rerun. No push, label, hosted attempt, retry, PR metadata mutation, merge, release, version bump,
-preview publication or deployment is authorized. A future hosted attempt requires Nick's fresh
-authorization naming the final exact descendant head and base
-`7a9f4c1370dd84292388d718c38ff34214f6203b`, PR #35, `test-battery`,
-`actions-budget-approved`, a 92-minute maximum and no retry. Merge is allowed only if that exact
-hosted attempt is terminal green and branch protection is satisfied.
+`audits/README.md`. Later descendants preserved—without rebinding—that exact 4a4f0b8 browser
+certificate. It remains valid evidence for its own bytes, but it does not certify or govern the
+current uncommitted workflow/scope successor.
 
-**Historical ninth-attempt boundary follows unchanged.**
+**Historical tenth-attempt boundary:** exact head
+`18c088de4388edf58eda2c192b71cb94156e26e7` against the same base consumed run `33584052508`,
+attempt 1. Root Layout passed **787/787**; the next synthetic SceneMemory allocator control stopped
+instrument-red at a **532,800-byte** P8−P7 embedder/derived-aggregate phase movement versus
+**65,536**, before game load or any product verdict. The identical tool blob passed the prior three
+hosted runs with explicit Edge `152.0.4191.53` / CDP `1.3`, Node `26.8.1` and Ubuntu image
+`20260823.283.1` provenance. The failed path proved canonical Edge/CDP `1.3`, Node `26.8.1`, that
+Ubuntu image and a `centralus` runner, but did not preserve the exact Edge point version; treating
+`.53` as failed-run evidence would be inference. Artifact `9829548871` contains only Layout
+evidence; later stages skipped. Full immutable detail is in
+`audits/ARC1C_SCENEMEM_PR35_HOSTED_PHASE_INSTRUMENT_RED_20260902_18C088D.md`. The authorization is
+consumed and no retry or merge occurred.
 
-**Hosted attempt state: none authorized.** Ready/open PR #35 has **nine** consumed terminal-red
+**Historical ninth-attempt boundary follows.**
+
+**Hosted attempt state at the ninth boundary: none authorized.** Ready/open PR #35 had **nine** consumed terminal-red
 `test-battery` attempts against exact base
 `7a9f4c1370dd84292388d718c38ff34214f6203b`. The ninth one-time authorization is consumed and
 must not be retried: GitHub run `33572309149`, attempt 1, tested exact head
@@ -484,8 +516,9 @@ merges, and successful batteries now start **zero hosted runners by default**:
   work.
 - The `develop` browser admission remains one attempt each: sealed-package Compendium with live
   preflight, exact Slice and its exact-ID Glass successor. SceneMemory certification is quarantined
-  to production and never blocks `develop`; its live heap selftest runs on changed instrument inputs
-  or production. The `develop` → `main` profile adds SceneMemory certification, the exact
+  to production and never blocks `develop`; its deterministic controls remain universal while its
+  live heap selftest is production-only. The `develop` → `main` profile adds the strict live
+  selftest and SceneMemory certification, the exact
   Slice+Glass-bound uninterrupted Recovery certificate and package smoke, and requires a later
   explicit SceneMemory activation decision. Recovery is therefore a production
   assurance boundary rather than a 20-minute tax on every coding batch. Compendium separately
@@ -652,8 +685,9 @@ snapshot green, and that run-generated artifacts remain allowed. This rehearsal 
 preauthorization evidence, not a hosted green or browser certificate.
 
 `test-battery` currently has a two-minute authorization runner plus one battery capped at 90 minutes.
-Develop skips quarantined SceneMemory certification and retains Compendium's independent 40-minute
-cap; production retains SceneMemory's independent 10-minute cap after explicit activation.
+Develop skips quarantined SceneMemory live native-heap work and retains Compendium's independent
+40-minute cap; production retains the strict live selftest plus SceneMemory's independent
+10-minute certificate cap after explicit activation.
 The old parallel form
 could start seven runners with 175 combined
 configured job-minutes on every PR update, then repeat on `develop` and fan out into sync/publication.
@@ -925,7 +959,31 @@ retained. Glass, Recovery and preview packaging skipped. Artifact `battery-evide
 `2026-09-16T00:53:39Z`. The exact deterministic Compendium/Slice report/log carriers are indexed
 in `audits/README.md`; the red was not retried or relabelled and no merge occurred.
 
-All nine PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
+The tenth exact-head authorization tested
+`18c088de4388edf58eda2c192b71cb94156e26e7` against the same base. GitHub run `33584052508`,
+attempt 1, used synthetic merge `48c72f436ae7156b3c110ca061acd81ac146e6ed`. Authorization job
+`100104337298` passed and battery job `100104355093` stopped once/no-retry after 6m19s. Everything
+through root Layout passed **787/787**. The next step's synthetic `about:blank` SceneMemory
+retained-allocation control stopped after 1.56 seconds because P8−P7 embedder and its derived
+aggregate moved **532,800 bytes** against the **65,536-byte** phase ceiling. It never loaded the
+game or created a product contract, verdict or outcomes. The identical tool blob passed the prior
+three hosted runs with explicit Edge `152.0.4191.53` / CDP `1.3`, Node `26.8.1` and Ubuntu image
+`20260823.283.1` provenance. The failed path proved canonical Edge/CDP `1.3`, Node `26.8.1`, that
+Ubuntu image and a `centralus` runner, but did not preserve its exact Edge point version; `.53` for
+the failing run would be inference. It reproduced the already-quarantined `cc15e1f…`
+allocator-phase class.
+Compendium, Slice, Glass, Recovery and preview skipped. Artifact `9829548871` is 33,817 bytes with
+digest `sha256:ed2161535f9d5ddfe3c4f606403d07f540a4cd7f359120f0515b2a4e35085213` and contains only
+the three green Layout files. The immutable audit is
+`audits/ARC1C_SCENEMEM_PR35_HOSTED_PHASE_INSTRUMENT_RED_20260902_18C088D.md`.
+
+The bounded local successor makes all live SceneMemory native-heap work production-only while
+retaining universal deterministic mutation coverage, and splits Compendium-instrument scope from
+shared browser-transport scope. It does not modify the game, SceneMemory collector, 64 KiB ceiling,
+eight-pass protocol, product rulers or no-retry rule. Exact local verification and a signed
+candidate remain required before asking for another hosted attempt.
+
+All ten PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

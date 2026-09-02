@@ -177,13 +177,11 @@ jobs:
           CF_BROWSER: /usr/bin/google-chrome
         run: node tools/uilayout.js --verify-run="$CF_UILAYOUT_RUN_ID"
 
-      # SceneMemory's native-heap certificate is production-only. A changed
-      # instrument still runs its bounded retained-allocation control on develop,
-      # but host allocator phase must never block ordinary integration.
+      # SceneMemory's live native-heap control and certificate are production-
+      # only. Develop retains their deterministic contract/mutation coverage in
+      # the static profile, while host allocator phase cannot block integration.
       - name: install current Arc 1C Edge scene-memory browser
-        if: >-
-          github.event.pull_request.base.ref == 'main' ||
-          steps.scope.outputs.browser_instrument_changed == 'true'
+        if: github.event.pull_request.base.ref == 'main'
         shell: bash
         env:
           EDGE_PACKAGE_URL: https://go.microsoft.com/fwlink/?linkid=2149051
@@ -198,9 +196,7 @@ jobs:
           scene_edge_browser="$scene_edge_root/opt/microsoft/msedge/microsoft-edge"
           test -x "$scene_edge_browser"
       - name: scene-memory fixed-eighth phase-validity selftest
-        if: >-
-          github.event.pull_request.base.ref == 'main' ||
-          steps.scope.outputs.browser_instrument_changed == 'true'
+        if: github.event.pull_request.base.ref == 'main'
         env:
           CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
         working-directory: port/v2
@@ -231,7 +227,7 @@ jobs:
       - name: changed-or-production Compendium browser instrument selftests
         if: >-
           github.event.pull_request.base.ref == 'main' ||
-          steps.scope.outputs.browser_instrument_changed == 'true'
+          steps.scope.outputs.compendium_instrument_changed == 'true'
         working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/google-chrome
@@ -243,7 +239,7 @@ jobs:
       - name: changed-or-production Chrome launcher selftest
         if: >-
           github.event.pull_request.base.ref == 'main' ||
-          steps.scope.outputs.browser_instrument_changed == 'true'
+          steps.scope.outputs.browser_transport_changed == 'true'
         working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/google-chrome

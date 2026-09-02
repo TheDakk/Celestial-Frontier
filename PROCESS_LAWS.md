@@ -642,13 +642,26 @@
 > advanced. The standalone authority printer remains all-authorities fail-closed for explicit
 > production diagnosis.
 >
+> **A PRODUCTION-QUARANTINED LIVE INSTRUMENT CANNOT ALSO BE A DEVELOP BLOCKER** (2026-09-02).
+> Keep its deterministic schema, authority, threshold, mutation and historical-red controls in the
+> universal static suite, but own its host-sensitive live control beside its production certificate.
+> Exact PR #35 run `33584052508` stopped before game load when an unchanged synthetic SceneMemory
+> selftest blob moved P8−P7 embedder/derived aggregate **532,800 bytes** on one physical runner. The
+> prior three passes explicitly recorded Edge `152.0.4191.53` / CDP `1.3`, Node `26.8.1` and Ubuntu
+> image `20260823.283.1`; the failed path proved canonical Edge/CDP `1.3`, the same Node/image and a
+> `centralus` runner but did not preserve the exact Edge point version, so `.53` there is inference,
+> not evidence. Do not retry, widen, add passes, rebaseline Edge or use `continue-on-error`; correct
+> workflow ownership and preserve the strict production failure. Split shared browser scope by its
+> actual live owner so a change to one instrument does not launch unrelated controls.
+>
 > The execution tiers are explicit. During coding, run touched tests and the touched TypeScript
 > program. At a local batch boundary, `node tools/check-profile.mjs --profile=dev` owns the complete
 > fast suite plus all TypeScript programs. `--profile=develop` adds the nonduplicated static
 > art/routing/spec gates, and the final clean
 > `develop` candidate runs one Compendium → Slice → Glass browser admission with exact
-> named predecessors and causal stop. Changed browser instruments run their negative controls once
-> on `develop`; ordinary product work skips them, while production always owns them. A production
+> named predecessors and causal stop. Changed Compendium inputs run its live mutation controls once;
+> changed shared browser transport runs its launcher control once; SceneMemory live native-heap
+> work remains production-only while its deterministic controls stay universal. A production
 > candidate uses `--profile=production`, the full legacy gate when applicable, quarantined
 > SceneMemory certification, launcher/instrument controls, and extends the exact Slice/Glass pair
 > through the uninterrupted Recovery certificate and package smoke. Do not run Recovery on every
@@ -1220,9 +1233,10 @@ gzip / 745,707-byte raw carrier at gzip/raw SHA-256
 `f4c5940efcd2deeea9ce7cbc68bb9e13022b889bf57e015d5c1bec04db4692a4`.
 
 That result triggers the precommitted hard stop. Do not run candidates 2–3, widen the ceiling, add
-passes, retry or start another SceneMemory redesign in this campaign. SceneMemory certification is
-production-only/quarantined and never blocks a `develop` merge. Its live heap selftest runs only
-when the SceneMemory instrument changes or in production. Production remains SceneMemory →
+passes, retry or start another SceneMemory redesign in this campaign. SceneMemory live native-heap
+work is production-only/quarantined and never blocks a `develop` merge. Deterministic fixed-eight
+mutation controls remain universal; the strict live heap selftest runs in production immediately
+before certification. Production remains SceneMemory →
 Compendium → Slice → Glass → Recovery and requires an explicit future activation decision.
 No SceneMemory browser PASS or product verdict is claimed; product rulers and bytes do not move.
 

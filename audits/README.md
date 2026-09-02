@@ -10,14 +10,53 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 Guide/Charter/D-TRAIN repair — exact local develop certificate
+### Current PR #35 SceneMemory hosted allocator-phase stop — exact tenth attempt
+
+PR #35 run `33584052508` consumed the tenth exact one-time `test-battery` authorization for head
+`18c088de4388edf58eda2c192b71cb94156e26e7` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Root Layout passed **787/787**. The next step stopped
+instrument-red after 1.56 seconds because the synthetic SceneMemory retained-allocation control's
+P8−P7 embedder/derived-aggregate delta was **532,800 bytes** against its **65,536-byte** ceiling.
+It loaded `about:blank`, not the game, and created no product contract, verdict or outcomes.
+
+The identical tool blob passed the prior three hosted runs with explicit Edge `152.0.4191.53` /
+CDP `1.3`, Node `26.8.1` and Ubuntu image `20260823.283.1` provenance. The failed path proved
+canonical Edge/CDP `1.3`, Node `26.8.1`, that Ubuntu image and a `centralus` runner but did not
+preserve its exact Edge point version; `.53` for the failing run would be inference. The result
+repeats the `cc15e1f…` allocator-phase class whose certification/product evidence was already
+production-quarantined. The complete immutable facts, all
+unexercised downstream control surfaces, artifact identity and bounded workflow correction are
+recorded in
+`ARC1C_SCENEMEM_PR35_HOSTED_PHASE_INSTRUMENT_RED_20260902_18C088D.md`. Artifact `9829548871`
+contains only the three green Layout files, is 33,817 bytes, and has digest
+`sha256:ed2161535f9d5ddfe3c4f606403d07f540a4cd7f359120f0515b2a4e35085213`.
+Compendium, Slice, Glass, Recovery and preview correctly skipped. The authorization is consumed;
+no retry, merge, release or deployment occurred.
+
+### Current local successor — uncommitted production-only SceneMemory ownership
+
+The dirty local successor changes workflow/scope ownership only. Live SceneMemory native-heap
+selftest/certification/verification are production-only and remain strict there; deterministic
+SceneMemory contracts and mutation controls remain universal; Compendium-specific and shared
+browser-transport change scopes are separate. No game source, SceneMemory collector, threshold,
+fixed-eight protocol, browser-family contract, product ruler or retry rule changes.
+
+Current local verification is green for the focused workflow/evidence owners (**3 files / 27
+tests**), complete browser-free `develop` profile (**263/263 files, 2,719 passed / 1 skipped**), all
+three TypeScript programs, complete art mutation control, browser-path selftest, Compendium browser
+preflight/selftest (**618 controls**) and shared browser-CDP selftest. Documentation review, a clean
+SSH-signed exact source, hermetic tracked-input preflight and one fresh unchanged-source Compendium
+→ Slice → Glass chain remain required before requesting a new exact-head authorization. No GitHub
+write is authorized.
+
+### Preserved predecessor Guide/Charter/D-TRAIN certificate — exact 4a4f0b8 source
 
 Exact clean SSH-signed implementation source
 `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
 `25cb76916c8f3fcd00a916864abb9402932cdbec`) on `openai/mac` passed the complete browser-free
 `develop` profile at **263/263 files**, **2,719 passed / 1 skipped** (**2,720 total**). The browser
-selftest and live preflight passed on Edge `152.0.4191.53` / CDP `1.3`. Current Compendium producer
-authority is `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`; budget
+selftest and live preflight passed on Edge `152.0.4191.53` / CDP `1.3`. At that boundary,
+Compendium producer authority was `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`; budget
 SHA-256 is `f66fed5e8bb1f18b95266c267435fc0493bf450a89aee74fc1c9ffaa18f8501e`.
 
 That exact unchanged source completed one serial, fail-fast/no-retry local develop chain. Every
@@ -61,14 +100,13 @@ The four exact 4a4f0b8 carriers pass gzip integrity and deterministic `gzip -n -
   **898,927 bytes**, SHA-256
   `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`.
 
-SceneMemory remains production-only/quarantined and Recovery remains outside `develop`. The closure
-descendant adds only these four immutable carriers and synchronized references; its SHA is
-intentionally not self-embedded. After that descendant is SSH-signed, resolve its exact
-`git rev-parse HEAD`, prove the raw `gpgsig` and clean tree, and pass its final tracked-input
-`develop` preflight without rerunning or rebinding 4a4f0b8's exact browser certificate. This local
-certificate grants no push, hosted attempt, PR mutation, merge, release, preview, publication or
-deployment authority. The ninth hosted authorization remains consumed; a future attempt requires
-Nick's fresh authorization naming the final exact descendant head and base.
+SceneMemory was production-only/quarantined and Recovery remained outside `develop` at that
+boundary. Later descendants preserved these four immutable carriers and synchronized references
+without rebinding 4a4f0b8's exact browser certificate. This is preserved evidence for that exact
+source, not current certification of the uncommitted workflow/scope successor. It grants no push,
+hosted attempt, PR mutation, merge, release, preview, publication or deployment authority. The
+tenth hosted authorization remains consumed; a future attempt requires Nick's fresh authorization
+naming the final exact successor head and base.
 
 ### Historical ninth hosted-red boundary — preserved verbatim below
 
@@ -1623,6 +1661,11 @@ SceneMemory certification is production-only/quarantined and never blocks `devel
 selftest remains changed-instrument-or-production. Develop admission continues as Compendium →
 Slice → Glass. Production remains SceneMemory → Compendium → Slice → Glass → Recovery and
 requires a later explicit SceneMemory activation decision.
+
+The paragraph above preserves the exact 2026-08-30 checkpoint. Exact hosted run `33584052508`
+later proved that host-sensitive live control could still block `develop`; current 2026-09-02
+ownership therefore makes all live SceneMemory native-heap work production-only while deterministic
+controls remain universal. No historical result is relabelled.
 
 ### Signed `5691e77…` four-pass instrument red; fixed-eight browser-free implementation complete
 

@@ -13,13 +13,19 @@ const SCENE_BROWSER_ENV =
 const STATIC_PROFILE_NAME = 'v2 base-profile static gates';
 const HEAP_PHASE_SELFTEST_NAME = 'scene-memory fixed-eighth phase-validity selftest';
 const HEAP_PHASE_SELFTEST_COMMAND = 'node tools/scenemem.mjs --heap-phase-selftest';
+const SCENEMEM_CERTIFICATION_COMMAND =
+  'node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json';
+const SCENEMEM_VERIFY_COMMAND =
+  'node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json';
 const COMPENDIUM_INSTRUMENT_SELFTEST_NAME =
   'changed-or-production Compendium browser instrument selftests';
 const COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND = 'npm run compendiummem:selftest';
 const CHROME_LAUNCHER_SELFTEST_NAME = 'changed-or-production Chrome launcher selftest';
 const CHROME_LAUNCHER_SELFTEST_COMMAND = 'node tools/browsercdp.mjs --selftest';
-const CHANGED_OR_PRODUCTION_CONDITION =
-  "        if: >-\n          github.event.pull_request.base.ref == 'main' ||\n          steps.scope.outputs.browser_instrument_changed == 'true'";
+const COMPENDIUM_CHANGED_OR_PRODUCTION_CONDITION =
+  "        if: >-\n          github.event.pull_request.base.ref == 'main' ||\n          steps.scope.outputs.compendium_instrument_changed == 'true'";
+const TRANSPORT_CHANGED_OR_PRODUCTION_CONDITION =
+  "        if: >-\n          github.event.pull_request.base.ref == 'main' ||\n          steps.scope.outputs.browser_transport_changed == 'true'";
 const PRODUCTION_ONLY_CONDITION =
   "        if: github.event.pull_request.base.ref == 'main'";
 const PRODUCTION_VERIFY_CONDITION = [
@@ -33,9 +39,7 @@ const SCENEMEM_CERTIFICATION_HEADER = '      - name: one-attempt scene-memory ce
 const SCENEMEM_VERIFY_HEADER = '      - name: verify current scene-memory evidence';
 const HEAP_PHASE_SELFTEST_BLOCK = [
   HEAP_PHASE_SELFTEST_HEADER,
-  '        if: >-',
-  "          github.event.pull_request.base.ref == 'main' ||",
-  "          steps.scope.outputs.browser_instrument_changed == 'true'",
+  PRODUCTION_ONLY_CONDITION,
   '        env:',
   `          ${SCENE_BROWSER_ENV}`,
   '        working-directory: port/v2',
@@ -72,9 +76,9 @@ const ORDERED_CONTRACT = [
   '- name: one-attempt scene-memory certification',
   'id: scenemem',
   'timeout-minutes: 10',
-  'run: node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json',
+  `run: ${SCENEMEM_CERTIFICATION_COMMAND}`,
   '- name: verify current scene-memory evidence',
-  'run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json',
+  `run: ${SCENEMEM_VERIFY_COMMAND}`,
   `- name: ${COMPENDIUM_INSTRUMENT_SELFTEST_NAME}`,
   'node tools/browserpath.mjs --selftest',
   'node tools/compendiummem-browser-preflight.mjs --selftest',
@@ -174,15 +178,24 @@ const satisfiesSceneWorkflow = (
     || source.includes('npx vitest run tests/scenemem-contract.test.ts')
     || source.includes('node --check tools/scenemem.mjs')
     || source.includes('node --check tools/scenemem-contract.mjs')) return false;
-  if (!hasExactStepCondition(installation, CHANGED_OR_PRODUCTION_CONDITION)
-    || !hasExactStepCondition(heapPhaseSelftest, CHANGED_OR_PRODUCTION_CONDITION)
+  if (!hasExactStepCondition(installation, PRODUCTION_ONLY_CONDITION)
+    || !hasExactStepCondition(heapPhaseSelftest, PRODUCTION_ONLY_CONDITION)
     || !hasExactStepCondition(certification, PRODUCTION_ONLY_CONDITION)
     || certification.includes('continue-on-error')) return false;
   if (!hasExactStepCondition(verifier, PRODUCTION_VERIFY_CONDITION)) return false;
 
-  if (source.split(HEAP_PHASE_SELFTEST_COMMAND).length !== 2) return false;
+  for (const command of [
+    HEAP_PHASE_SELFTEST_COMMAND,
+    SCENEMEM_CERTIFICATION_COMMAND,
+    SCENEMEM_VERIFY_COMMAND,
+  ]) {
+    if (source.split(command).length !== 2) return false;
+  }
+  if (source.split('node tools/scenemem.mjs').length !== 4) return false;
   if (source.split(COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND).length !== 2
-    || !hasExactStepCondition(compendiumInstrumentSelftest, CHANGED_OR_PRODUCTION_CONDITION)
+    || !hasExactStepCondition(
+      compendiumInstrumentSelftest, COMPENDIUM_CHANGED_OR_PRODUCTION_CONDITION,
+    )
     || !compendiumInstrumentSelftest.includes('node tools/browserpath.mjs --selftest')
     || !compendiumInstrumentSelftest.includes(
       'node tools/compendiummem-browser-preflight.mjs --selftest',
@@ -191,7 +204,9 @@ const satisfiesSceneWorkflow = (
       COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND,
     )) return false;
   if (source.split(CHROME_LAUNCHER_SELFTEST_COMMAND).length !== 2
-    || !hasExactStepCondition(chromeLauncherSelftest, CHANGED_OR_PRODUCTION_CONDITION)) return false;
+    || !hasExactStepCondition(
+      chromeLauncherSelftest, TRANSPORT_CHANGED_OR_PRODUCTION_CONDITION,
+    )) return false;
   if (!source.includes(`${HEAP_PHASE_SELFTEST_BLOCK}\n${SCENEMEM_CERTIFICATION_HEADER}`)) return false;
   const env = 'CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem';
   if (source.split(env).length !== 2) return false;
@@ -251,7 +266,7 @@ describe('scene-memory test-battery workflow contract', () => {
     expect(satisfiesSceneWorkflow(workflow)).toBe(true);
   });
 
-  it('binds the changed-instrument/production heap-phase selftest to its exact collector source contract', () => {
+  it('binds the production heap-phase selftest to its exact collector source contract', () => {
     expect(bindsHeapPhaseSelftestSource(sceneMemoryTool)).toBe(true);
     for (const token of HEAP_PHASE_SOURCE_CONTRACT) {
       expect(
@@ -297,7 +312,7 @@ describe('scene-memory test-battery workflow contract', () => {
     ))).toBe(false);
   });
 
-  it('keeps heap-phase controls changed-or-production and native-heap certification production-only', () => {
+  it('keeps live SceneMemory production-only and scopes the remaining browser controls', () => {
     const selftestWithTrailingNewline = `${HEAP_PHASE_SELFTEST_BLOCK}\n`;
     const withoutSelftest = workflow.replace(selftestWithTrailingNewline, '');
     expect(satisfiesSceneWorkflow(withoutSelftest)).toBe(false);
@@ -308,10 +323,6 @@ describe('scene-memory test-battery workflow contract', () => {
     expect(satisfiesSceneWorkflow(withoutSelftest.replace(
       SCENEMEM_VERIFY_HEADER,
       `${selftestWithTrailingNewline}${SCENEMEM_VERIFY_HEADER}`,
-    ))).toBe(false);
-    expect(satisfiesSceneWorkflow(workflow.replace(
-      "        if: >-\n          github.event.pull_request.base.ref == 'main' ||\n          steps.scope.outputs.browser_instrument_changed == 'true'",
-      "        if: github.event.pull_request.base.ref == 'develop'",
     ))).toBe(false);
     expect(satisfiesSceneWorkflow(workflow.replace(
       HEAP_PHASE_SELFTEST_BLOCK,
@@ -327,15 +338,66 @@ describe('scene-memory test-battery workflow contract', () => {
     expect(satisfiesSceneWorkflow(workflow.replace(
       compendiumSelftest!,
       compendiumSelftest!.replace(
-        CHANGED_OR_PRODUCTION_CONDITION,
+        COMPENDIUM_CHANGED_OR_PRODUCTION_CONDITION,
         "        if: github.event.pull_request.base.ref == 'develop'",
       ),
     ))).toBe(false);
-    const certification = workflowStep(workflow, 'one-attempt scene-memory certification');
-    expect(certification).not.toBeNull();
     expect(satisfiesSceneWorkflow(workflow.replace(
-      certification!, certification!.replace(PRODUCTION_ONLY_CONDITION, ''),
+      compendiumSelftest!,
+      compendiumSelftest!.replace(
+        'steps.scope.outputs.compendium_instrument_changed',
+        'steps.scope.outputs.browser_transport_changed',
+      ),
     ))).toBe(false);
+    const chromeLauncherSelftest = workflowStep(workflow, CHROME_LAUNCHER_SELFTEST_NAME);
+    expect(chromeLauncherSelftest).not.toBeNull();
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      chromeLauncherSelftest!,
+      chromeLauncherSelftest!.replace(
+        TRANSPORT_CHANGED_OR_PRODUCTION_CONDITION,
+        COMPENDIUM_CHANGED_OR_PRODUCTION_CONDITION,
+      ),
+    ))).toBe(false);
+    for (const name of [
+      'install current Arc 1C Edge scene-memory browser',
+      HEAP_PHASE_SELFTEST_NAME,
+      'one-attempt scene-memory certification',
+    ]) {
+      const step = workflowStep(workflow, name);
+      expect(step).not.toBeNull();
+      for (const leaked of [
+        "        if: github.event.pull_request.base.ref == 'develop'",
+        COMPENDIUM_CHANGED_OR_PRODUCTION_CONDITION,
+        TRANSPORT_CHANGED_OR_PRODUCTION_CONDITION,
+        '',
+      ]) {
+        expect(satisfiesSceneWorkflow(workflow.replace(
+          step!, step!.replace(PRODUCTION_ONLY_CONDITION, leaked),
+        )), `${name}/${leaked || 'unconditional'}`).toBe(false);
+      }
+    }
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      '        run: node tools/scenemem.mjs --heap-phase-selftest',
+      '        continue-on-error: true\n        run: node tools/scenemem.mjs --heap-phase-selftest',
+    ))).toBe(false);
+    const archiveAnchor = '      - name: archive battery reports';
+    for (const command of [
+      HEAP_PHASE_SELFTEST_COMMAND,
+      SCENEMEM_CERTIFICATION_COMMAND,
+      SCENEMEM_VERIFY_COMMAND,
+      'node tools/scenemem.mjs --verify-run=leaked --budget=budgets/scene-memory-v2.json',
+    ]) {
+      const leaked = [
+        '      - name: leaked SceneMemory develop owner',
+        "        if: github.event.pull_request.base.ref == 'develop'",
+        '        working-directory: port/v2',
+        `        run: ${command}`,
+        '',
+      ].join('\n');
+      expect(satisfiesSceneWorkflow(
+        workflow.replace(archiveAnchor, `${leaked}${archiveAnchor}`),
+      ), command).toBe(false);
+    }
     const verifier = workflowStep(workflow, 'verify current scene-memory evidence');
     expect(verifier).not.toBeNull();
     expect(satisfiesSceneWorkflow(workflow.replace(
@@ -345,28 +407,6 @@ describe('scene-memory test-battery workflow contract', () => {
       ),
     ))).toBe(false);
     const developFallback = "          || github.event.pull_request.base.ref == 'develop'";
-    for (const name of [
-      'install current Arc 1C Edge scene-memory browser',
-      HEAP_PHASE_SELFTEST_NAME,
-      COMPENDIUM_INSTRUMENT_SELFTEST_NAME,
-    ]) {
-      const step = workflowStep(workflow, name);
-      expect(step).not.toBeNull();
-      expect(satisfiesSceneWorkflow(workflow.replace(
-        step!,
-        step!.replace(
-          CHANGED_OR_PRODUCTION_CONDITION,
-          `${CHANGED_OR_PRODUCTION_CONDITION}\n${developFallback}`,
-        ),
-      )), name).toBe(false);
-    }
-    expect(satisfiesSceneWorkflow(workflow.replace(
-      certification!,
-      certification!.replace(
-        PRODUCTION_ONLY_CONDITION,
-        `${PRODUCTION_ONLY_CONDITION} || github.event.pull_request.base.ref == 'develop'`,
-      ),
-    ))).toBe(false);
     expect(satisfiesSceneWorkflow(workflow.replace(
       verifier!,
       verifier!.replace(
@@ -374,6 +414,7 @@ describe('scene-memory test-battery workflow contract', () => {
         `${PRODUCTION_VERIFY_CONDITION}\n${developFallback}`,
       ),
     ))).toBe(false);
+    expect(workflow).not.toContain('steps.scope.outputs.browser_instrument_changed');
   });
 
   it('rejects SceneMemory browser scope drift or leakage into the exact Compendium boundary', () => {

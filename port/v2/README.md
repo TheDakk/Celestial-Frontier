@@ -1,5 +1,34 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+> **2026-09-02 current PR #35 boundary (supersedes every older “current” label below; dated
+> evidence remains immutable):** `openai/mac` and `origin/openai/mac` remain at exact consumed-red
+> head `18c088de4388edf58eda2c192b71cb94156e26e7`, based against `origin/develop`
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Hosted run `33584052508` passed root Layout
+> **787/787**, then stopped once/no-retry before game load when the synthetic `about:blank`
+> SceneMemory fixed-eighth control reported a **532,800-byte** P8−P7 embedder/derived-aggregate
+> movement against **65,536**. It created no product contract, verdict or outcomes; every later
+> stage skipped. The exact authorization is consumed and no hosted write is authorized.
+>
+> The identical tool blob passed the prior three hosted runs with explicit Edge
+> `152.0.4191.53` / CDP `1.3`, Node `26.8.1` and Ubuntu image `20260823.283.1` provenance. The
+> failed path proved canonical Edge/CDP `1.3`, Node `26.8.1`, that Ubuntu image and a `centralus`
+> runner but did not preserve the exact Edge point version; `.53` for the failed run is inference,
+> not evidence. This is the already-quarantined host/runtime allocator-phase class, not a game
+> regression or a browser-rebaseline event.
+>
+> The dirty local successor makes all live SceneMemory native-heap work production-only while
+> keeping its deterministic contract/mutation controls universal, and separates Compendium-owned
+> inputs from shared browser-transport inputs. It changes no game source, SceneMemory collector,
+> threshold, fixed-eight protocol, browser-family contract, product ruler or retry rule. Focused
+> workflow/evidence tests (**3 files / 27 tests**), the complete browser-free `develop` profile
+> (**263/263 files, 2,719 passed / 1 skipped**), all three TypeScript programs, complete art
+> mutation control, browser-path selftest, Compendium browser preflight/selftest (**618 controls**)
+> and shared browser-CDP selftest are green. Documentation review, a clean SSH-signed exact source,
+> hermetic tracked-input preflight and one fresh unchanged-source Compendium → Slice → Glass
+> chain remain before a new exact-head authorization may be requested. Production remains strict
+> SceneMemory → Compendium → Slice → Glass → Recovery after Nick's explicit future SceneMemory
+> activation decision.
+
 > **2026-09-01 current exact-source Guide/Charter/D-TRAIN repair certificate (supersedes every
 > older “current” status label; all dated evidence below remains immutable):** exact SSH-signed
 > source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` / tree
@@ -462,6 +491,12 @@
 > changed-instrument-or-production. Develop admission is **Compendium → Slice → Glass**.
 > Production remains **SceneMemory → Compendium → Slice → Glass → Recovery** and requires a
 > later explicit SceneMemory activation decision. No SceneMemory browser PASS is claimed.
+>
+> **2026-09-02 ownership correction:** exact hosted run `33584052508` later proved that the
+> changed-instrument live selftest could still block `develop` on mutable host allocator phase.
+> Current policy therefore makes all live SceneMemory native-heap work production-only while its
+> deterministic contract and mutation controls remain universal. The historical boundary above
+> remains verbatim; no old run is relabelled.
 >
 > Exact clean SSH-signed quarantine source `134f62e08b8a7180f798394e08a404ed935e2782`
 > then passed Compendium once/no-retry and named verification on Edge `152.0.4191.53` / CDP `1.3`.
@@ -1094,8 +1129,8 @@
 > certification is still required before Slice, Glass or Recovery.
 
 Local develop admission runs Compendium → Slice → Glass from `port/v2`; SceneMemory certification
-is production-only/quarantined and never blocks `develop`. Its live heap selftest runs only when
-the SceneMemory instrument/workflow changes or in production. On macOS, each browser-owning command
+and live native-heap selftest are production-only/quarantined and never block `develop`.
+Deterministic SceneMemory controls remain in every static profile. On macOS, each browser-owning command
 requires the approved out-of-sandbox execution path; a conditional control is never a retry,
 best-of lane or duplicate development preflight. Production requires a later explicit SceneMemory
 activation decision, then runs SceneMemory → Compendium → Slice → Glass → Recovery with exact
@@ -1244,7 +1279,8 @@ repair caps each collector command independently while retaining the separate 30
 phase and changes only SceneMemory producer identity, not a ruler. Exact signed successor
 `55126af…` subsequently passed the then-current input-v4 **44/44** with complete phone/desktop
 lifecycle and cleanup in 10,672 ms. That historical report remains bound to its original raw
-semantics; a fresh clean input-v5 certificate is pending.
+semantics; a fresh clean input-v6 certificate is pending only for production after explicit
+SceneMemory activation and does not block `develop`.
 
 The immutable exact signed `3f69e88…` certificate remains historical evidence: it passed the
 complete serial browser chain once with zero retries: Layout **787/787**, SceneMemory **44/44**,
@@ -3621,26 +3657,24 @@ evidence_edge_browser="${CF_EDGE_BROWSER_PATH:-$evidence_chromium_browser}"
 # explicitly authorized develop → main candidate.
 slice_assurance_profile=develop
 
-# Changed SceneMemory instrument/workflow or production runs this control once:
-# CF_BROWSER="$evidence_chromium_browser" node tools/browserpath.mjs --selftest
-# CF_BROWSER="$evidence_edge_browser" node tools/scenemem.mjs --heap-phase-selftest
-
 # Production only, after an explicit SceneMemory activation decision:
+# CF_BROWSER="$evidence_edge_browser" node tools/scenemem.mjs --heap-phase-selftest
 # CF_BROWSER="$evidence_edge_browser" node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json
 # scene_run_id="$(jq -er '.runId' apps/game/smoke/scenemem-report.json)"
 # CF_BROWSER="$evidence_edge_browser" node tools/scenemem.mjs --verify-run="$scene_run_id" --budget=budgets/scene-memory-v2.json
 
-# Production, or a changed browser instrument/workflow, runs this control once:
+# Production, or changed Compendium/shared inputs, runs these controls once:
+# CF_BROWSER="$evidence_chromium_browser" node tools/browserpath.mjs --selftest
 # CF_BROWSER="$evidence_edge_browser" node tools/compendiummem-browser-preflight.mjs --selftest
 # CF_BROWSER="$evidence_edge_browser" npm run compendiummem:selftest
+
+# Production, or changed shared browser transport, runs this control once:
+# CF_BROWSER="$evidence_chromium_browser" node tools/browsercdp.mjs --selftest
 
 CF_BROWSER="$evidence_edge_browser" node tools/compendiummem-browser-preflight.mjs
 CF_BROWSER="$evidence_edge_browser" npm run compendiummem
 compendium_run_id="$(jq -er '.runId' apps/game/smoke/compendiummem-report.json)"
 CF_BROWSER="$evidence_edge_browser" node tools/compendiummem.mjs --verify-run="$compendium_run_id"
-
-# Production, or a changed browser instrument/workflow, runs this control once:
-# CF_BROWSER="$evidence_chromium_browser" node tools/browsercdp.mjs --selftest
 
 CF_BROWSER="$evidence_chromium_browser" npm run smoke:ci -- --profile="$slice_assurance_profile"
 slice_run_id="$(jq -er '.run.id' apps/game/smoke/slice-smoke-report.json)"
@@ -3688,7 +3722,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 | **Compendium worker-import/settlement repair sequence (2026-08-30; historical exact-run boundary)** | Historical signed `20460008…` stopped truthfully at **76/78** on the obsolete full-capacity warm predicate; `3fb958f8…` stopped instrument-only on its nullable witness; `b2eecfbd…` stopped instrument-only on observation-v1 long-key projection. Signed `830e601b8f16092d6f9193ecde329cfefd279bcd` then ran `20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` once/no-retry on Edge `152.0.4191.53` / CDP `1.3`. All long keys worked, proving observation v2, before the first lazy painter import failed and the run stopped instrument-only after **33,217 ms** at phone `veteran-earth-planetside`: zero outcomes, all 78 blocked, no successor. Old v1 diagnostics discarded the exact product error code/message, so none is claimed. The immutable carrier is 7,357 gzip bytes / SHA-256 `90d61baeee297041a2afc7bf776fb504c5ac803140cf0613785859714c5f2aa9` and 54,172 raw bytes / SHA-256 `ef3cec79cf181323705d8a9eff82d9bb8023275590a23a0589515248e626d6b5`, with independent replay. Deterministic controls reproduce the code-supported first-activation claim gap and exact 503 `This document has no retained Celestial Frontier build.` None of these historical reports is relabelled by current authority. |
 | **Historical Compendium recovered-worker oracle repair (2026-08-30; superseded)** | Exact signed `d33abdfd…` run `20260830-pr35-first-install-d33abdfd5132-compendium-certification` ran once/no-retry on Edge `152.0.4191.53` / CDP `1.3` and stored 74/78: phone/desktop `cap-shrink` and `settled-jobs` were false-red despite exact 256 → 96 shrink, 6,690,816 decoded bytes, 160 disposals, four sealed warm cycles, restored class and balanced released workers. The immutable 451,743-byte gzip / 10,813,681-byte raw carrier is independently replayed 8/8. That repair required released/recovered snapshots to have `lastError === null` while cumulative paint/phase/result arithmetic still proved the induced paint fault; terminal current errors still required an exact non-null trusted receipt, and historical v1 remained replayable. Measurement / outcome contract / collector / producer-v2 was `fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` / `f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` / `2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` / `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; service-worker SHA-256 was `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. Its closure was 591 selftest controls, 239 files / 2,431 passed / 1 skipped, all three TypeScript programs and a green authority printer. Fixed rulers, ceilings and 78 outcomes were unchanged; no successor gate or fresh certificate existed. |
 | **Historical PR #35 sealed-worker and derived-authority boundary (2026-08-30)** | Historical signed `38d8848c…` and `dc6004cf…` Compendium attempts each stopped once/no-retry at the phone-only `product-fail`; their immutable carriers and replay receipts remain historical evidence. Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` later passed Compendium 78/78 (39 desktop + 39 phone), then its exact-source Slice successor stopped red once/no-retry with 63 findings across 42 scopes (62 Guide-family geometry findings plus one exact CF1 timeout); Glass and Recovery did not run. All exact-`941ba45…` producer, service-worker, and Scene-derived values are therefore historical only. That head had no complete browser chain; the live handoff and `audits/README.md` record 656's later green SceneMemory/Compendium predecessors and terminal one-scope Slice red. Its then-current measurement / contract / collector authority was `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` / `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` / `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; its Compendium producer / index / owner / generated service worker was `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3` / `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c` / `assets/main-BYnoCcc9.js` (`13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`) / `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`; worker/painter was `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. Its Scene build / `gameMain` was `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` / `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; Compendium / Scene budget-file SHA-256 was `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` / `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. The printer was green at 964 modules / 52 files. Live authorities are derived by `node tools/print-producer-authorities.mjs` and recorded in the current handoff; no historical value is rebound. No browser/HUMAN/hosted/merge/release/deploy claim is made. |
-| `npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts tests/scenemem-workflow.test.ts` / `node tools/scenemem.mjs --heap-phase-selftest` / production-only `node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json` | Negative-controls the Arc 1 SceneMemory instrument. Browser-free authority is report v6 / profile v5 / input v6 / verdict v5 / budget v7; 158 focused controls and the 2,543-pass full suite are green. Exact signed `cc15e1f…` run `20260830-pr35-fixedeight-cc15e1f-candidate1` ran once/no-retry on Edge 152 / CDP 1.3, completed lifecycle/cleanup, then stopped instrument-red at phone `warm-1` P8−P7 embedder/aggregate **287,192 / 299,720** versus **65,536** bytes. Contract/verdict were null, outcomes empty, and desktop/candidates 2–3 not run. Its 32,448-byte gzip / 745,707-byte raw carrier is preserved under exact hashes in `audits/README.md`. The hard stop forbids retry, widening, extra passes and another redesign. SceneMemory certification is production-only/quarantined and never blocks `develop`; its live selftest runs only for changed instrument inputs or production. Production requires a later explicit activation decision. No browser PASS, product verdict, ruler change or merge authority is claimed. |
+| `npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts tests/scenemem-workflow.test.ts` / production-only `node tools/scenemem.mjs --heap-phase-selftest` / production-only `node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json` | Negative-controls the Arc 1 SceneMemory instrument. Browser-free authority is report v6 / profile v5 / input v6 / verdict v5 / budget v7; 158 focused controls and the 2,543-pass full suite are green. Exact signed `cc15e1f…` run `20260830-pr35-fixedeight-cc15e1f-candidate1` ran once/no-retry on Edge 152 / CDP 1.3, completed lifecycle/cleanup, then stopped instrument-red at phone `warm-1` P8−P7 embedder/aggregate **287,192 / 299,720** versus **65,536** bytes. Contract/verdict were null, outcomes empty, and desktop/candidates 2–3 not run. Its 32,448-byte gzip / 745,707-byte raw carrier is preserved under exact hashes in `audits/README.md`. Exact hosted run `33584052508` later reproduced the same allocator-phase class at **532,800** bytes on one physical runner. The identical tool blob's prior three passes explicitly recorded Edge `152.0.4191.53` / CDP `1.3`, Node `26.8.1` and Ubuntu image `20260823.283.1`; the failed path proved canonical Edge/CDP `1.3`, the same Node/image and a `centralus` runner but did not preserve the exact Edge point version, so `.53` there is inference. The hard stop forbids retry, widening, extra passes and another redesign. SceneMemory live native-heap work is production-only/quarantined and never blocks `develop`; deterministic controls remain universal. Production requires a later explicit activation decision. No browser PASS, product verdict, ruler change or merge authority is claimed. |
 | **Historical Final10 SceneMemory evidence and calibration boundary (superseded by Final11)** | Signed `4405fb2…` was the historical Final10 42/42 report, Final10 run `20260828-phase4-final10-4405fb2b4ba7-scenemem`; its raw/gzip SHA-256 are `00161fd6c4d8b5457776dc1768ea2022a142a73c892c8a4cdff207073e88116a` / `99abfc6d0a084ce0ed874cf5516c833d1d73735e4ebb8c44c0d3ce870075a0e3`. Signed `862a75b…` remains the paired 40/42 heap/DOM red; signed `6c9ad855…` supplied three clean calibration candidates; signed activation `4a54c0d…` set 12 MiB V8 /18 MiB aggregate with every other ceiling and paired discrimination intact. Final10 changes no ceiling or sample and passed the full responsive chain through Glass. Signed implementation/evidence repair `3fbfcd5…` and the synchronized signed clean docs-only descendant supplied immutable Final11; the historical assessor/tests/docs-only repair replayed immutable Final11 green and supplied Final12, whose distinct immutable Slice control stop is recorded above; compatible Edge updates remain provenance only and never trigger rebaseline, recalibration or threshold movement. |
 | `node tools/compendiummem-browser-preflight.mjs --selftest` / `node tools/compendiummem-browser-preflight.mjs` | Owns the Compendium workflow's one cold compatibility proof without changing numeric ceilings. One 45-second startup / 15-second socket / sealed 5-second candidate-command / 2-second shutdown launch must use the selected executable, report canonical Microsoft Edge with nonempty exact version/revision/JavaScript/path/UA provenance and CDP `1.3`, then create/attach/close a fresh target and enable Runtime/Page/HeapProfiler. The full collector exercises the separately hashed required-CDP inventory; adding/removing an inventoried method changes measurement authority instead of masquerading as version drift. `.101`, `.107` and synthetically later canonical Edge controls are accepted; Chrome, malformed/incomplete Edge, protocol mismatch, executable mismatch, command/sentinel failure and cleanup leak are terminal. Phone/desktop evidence from one run must retain the same exact provenance tuple. There is no warmup, retry, fallback, alternate browser, version-triggered rebaseline or automatic ceiling change. Its evaluate return and exact-marker, same-session console event share one immutable 5-second monotonic phase; just-before receipts pass while exact/late/missing/wrong-session/backward-clock controls fail. The owner-authorized test-battery workflow SHA-verifies the sealed `.101` deb, validates its embedded package/version metadata and extracts it into a fresh Compendium-owned `RUNNER_TEMP` root without apt. Preflight, certification and named verification each pin that extracted executable directly while the job remains Chrome-owned; the non-certifying preview workflow does not repeat Compendium. The structural selftest rejects apt installation, missing extraction, wrong URL/hash/package/version/root, missing or system-Edge owner pins, softened owners, broken extract → preflight → certificate → verifier order, renamed certification IDs and false/otherwise-disabled verifier conditions. The exact package/path is workflow provenance; compatible Edge point versions do not alter the browser capability authority or numeric ruler. Historical run `32394244417` stopped before product when the runner's resident `.86` made the old plain apt install a no-op; run `32462323775` later confirmed the historical reinstall path before isolation superseded system-package mutation. |
 | `npm run persona:selftest` / `npm run persona:report` | Joins only current-v2, passing Slice and Glass evidence with matching commit/branch, dirty-tree digest and explicit `develop|production` assurance profile into `automated-persona-report.{json,md}`. It rejects legacy Slice evidence and any Glass report whose nested Slice profile disagrees, then persists the bound profile in both output formats. The nine lenses are explicitly **AUTOMATED — NOT A HUMAN PLAYTEST**; comprehension, fun, physical devices, assistive technology, visual judgment, battery and heat remain human work. |

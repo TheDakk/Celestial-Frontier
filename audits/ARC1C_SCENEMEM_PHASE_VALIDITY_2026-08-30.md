@@ -189,3 +189,20 @@ selftest remains changed-instrument-or-production.
 1. Develop continues with one no-retry **Compendium → Slice → Glass** chain.
 2. Production remains **SceneMemory → Compendium → Slice → Glass → Recovery** and requires a
    later explicit SceneMemory activation decision before it can begin.
+
+## 2026-09-02 hosted allocator-phase confirmation and ownership correction
+
+The line above stating that the live selftest remained changed-instrument-or-production is now a
+historical boundary, not current workflow ownership. Exact PR #35 run `33584052508` proved why:
+the identical selftest blob that passed the prior three Edge 152 / Node 26.8 / Ubuntu-image runs
+stopped on a different hosted worker at P8−P7 embedder/derived aggregate **532,800 bytes** versus
+the **65,536-byte** cap. The synthetic control loaded `about:blank`, never loaded the game and
+created no product verdict. Complete evidence is in
+`ARC1C_SCENEMEM_PR35_HOSTED_PHASE_INSTRUMENT_RED_20260902_18C088D.md`.
+
+The hard stop continues to forbid retry, widening, extra passes, point-version rebaseline or
+another sampler redesign. The durable correction is ownership: live current-Edge installation,
+the fixed-eight retained-allocation selftest, certification and verification are all production-
+only. Develop still runs the complete deterministic SceneMemory mutation suite and its required
+Compendium → Slice → Glass chain. The live selftest remains strict and fail-fast in production,
+which still requires Nick's explicit future activation decision.

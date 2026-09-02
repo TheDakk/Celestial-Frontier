@@ -192,7 +192,8 @@ describe('tracked-input prehosted preflight', () => {
       changedCount: 1,
       legacyChanged: false,
       artInstrumentChanged: false,
-      browserInstrumentChanged: false,
+      compendiumInstrumentChanged: false,
+      browserTransportChanged: false,
     });
     expect(classifyBatteryScope(['main.js', 'tools/validate.js'])).toMatchObject({
       changedCount: 2,
@@ -204,27 +205,39 @@ describe('tracked-input prehosted preflight', () => {
     ])).toMatchObject({
       changedCount: 2,
       artInstrumentChanged: true,
-      browserInstrumentChanged: false,
+      compendiumInstrumentChanged: false,
+      browserTransportChanged: false,
     });
     for (const path of ['port/v2/package.json', 'port/v2/package-lock.json']) {
       expect(classifyBatteryScope([path]), path).toEqual({
         changedCount: 1,
         legacyChanged: false,
         artInstrumentChanged: true,
-        browserInstrumentChanged: true,
+        compendiumInstrumentChanged: true,
+        browserTransportChanged: true,
       });
     }
     for (const path of ['.github/workflows/test.yml', 'port/v2/tools/battery-scope.mjs']) {
       expect(classifyBatteryScope([path]), path).toMatchObject({
         changedCount: 1,
         artInstrumentChanged: true,
-        browserInstrumentChanged: true,
+        compendiumInstrumentChanged: true,
+        browserTransportChanged: true,
       });
     }
     for (const path of [
       'port/v2/tools/browserpath.mjs',
       'port/v2/tools/browsercdp.mjs',
-      'port/v2/tools/scenemem.mjs',
+    ]) {
+      expect(classifyBatteryScope([path]), path).toMatchObject({
+        changedCount: 1,
+        compendiumInstrumentChanged: true,
+        browserTransportChanged: true,
+      });
+    }
+    for (const path of [
+      'port/v2/tools/compendiummem.mjs',
+      'port/v2/tools/compendiummem-contract.mjs',
       'port/v2/tools/compendiummem-browser-preflight.mjs',
       'port/v2/tools/compendiummem-selftest.mjs',
       'port/v2/tools/compendiummem-fixture.mjs',
@@ -236,7 +249,19 @@ describe('tracked-input prehosted preflight', () => {
     ]) {
       expect(classifyBatteryScope([path]), path).toMatchObject({
         changedCount: 1,
-        browserInstrumentChanged: true,
+        compendiumInstrumentChanged: true,
+        browserTransportChanged: false,
+      });
+    }
+    for (const path of [
+      'port/v2/tools/scenemem.mjs',
+      'port/v2/tools/scenemem-contract.mjs',
+      'port/v2/budgets/scene-memory-v2.json',
+    ]) {
+      expect(classifyBatteryScope([path]), path).toMatchObject({
+        changedCount: 1,
+        compendiumInstrumentChanged: false,
+        browserTransportChanged: false,
       });
     }
     expect(() => classifyBatteryScope([])).toThrow(/exact PR base\/head diff is empty/u);
@@ -258,11 +283,13 @@ describe('tracked-input prehosted preflight', () => {
       ], { encoding: 'utf8' });
       expect(result.status, result.stderr).toBe(0);
       expect(result.stdout).toContain(
-        'Classified 2 changed paths: legacy=false art-instrument=true browser-instrument=true',
+        'Classified 2 changed paths: legacy=false art-instrument=true '
+          + 'compendium-instrument=true browser-transport=true',
       );
       expect(readFileSync(outputFile, 'utf8')).toBe(
         'existing=value\nchanged_count=2\nlegacy_changed=false\n'
-          + 'art_instrument_changed=true\nbrowser_instrument_changed=true\n',
+          + 'art_instrument_changed=true\ncompendium_instrument_changed=true\n'
+          + 'browser_transport_changed=true\n',
       );
     } finally {
       rmSync(tempRoot, { recursive: true, force: true });
@@ -409,7 +436,9 @@ describe('tracked-input prehosted preflight', () => {
     }
     expect(occurrences(testWorkflow, 'steps.scope.outputs.legacy_changed')).toBe(4);
     expect(occurrences(testWorkflow, 'steps.scope.outputs.art_instrument_changed')).toBe(1);
-    expect(occurrences(testWorkflow, 'steps.scope.outputs.browser_instrument_changed')).toBe(4);
+    expect(occurrences(testWorkflow, 'steps.scope.outputs.compendium_instrument_changed')).toBe(1);
+    expect(occurrences(testWorkflow, 'steps.scope.outputs.browser_transport_changed')).toBe(1);
+    expect(testWorkflow).not.toContain('steps.scope.outputs.browser_instrument_changed');
     expect(testWorkflow).not.toContain('npm run check:');
 
     const previewWorkflow = readFileSync(PREVIEW_WORKFLOW, 'utf8');

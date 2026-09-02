@@ -210,9 +210,10 @@ As of 2026-08-23, the active `develop` ruleset names `battery` as its only requi
 status context; `branch-flow-guard` is a manual diagnostic, not a merge prerequisite.
 That context is profile-aware but never weaker than its destination: agent → `develop`
 runs the final-head V2 static admission plus Compendium and the immutable Slice → Glass
-chain, adding the legacy root gate when those tracked inputs changed. SceneMemory certification
-is production-only/quarantined and requires a later explicit activation decision. `develop` →
-`main` is a separate production authorization and adds SceneMemory, exhaustive instrument
+chain, adding the legacy root gate when those tracked inputs changed. SceneMemory live native-heap
+work is production-only/quarantined and requires a later explicit activation decision; its
+deterministic mutation controls remain universal. `develop` → `main` is a separate production
+authorization and adds the strict live selftest, SceneMemory certification, exhaustive instrument
 controls, Recovery and package smoke. A manual development preview is not another battery
 and cannot supply this context. Do not manually repeat an aggregate command or instrument
 selftest that the selected profile already owns.
