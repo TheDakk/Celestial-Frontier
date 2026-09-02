@@ -25,9 +25,15 @@
 > `4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca` /
 > `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`; producer
 > `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`, all rulers, ceilings,
-> samples, outcomes and the version-tolerant Edge/CDP policy remain unchanged. A clean committed
-> unchanged-source Compendium → Slice → Glass chain remains the final local stop before any fresh
-> exact hosted request.
+> samples, outcomes and the version-tolerant Edge/CDP policy remain unchanged. Exact SSH-signed
+> source `a484c39b30c8cdecac464c31283f64efb0263628` passed the hermetic develop rehearsal, root
+> Layout **787/787**, Compendium `20260902133054645-17703-2cf459762b` **78/78**, zero-finding
+> Slice `20260902133238723-18057-fb0557070177`, and exact-Slice-bound Glass
+> `20260902133910919-18520-cab54654b9fd` **12/12** viewports/reloads and **104/104** controls.
+> Every named verifier passed; the source stayed clean/byte-identical; no stage retried. Five exact
+> carriers and their hashes are indexed in `audits/README.md`. The signed documentation/evidence
+> descendant containing this reference also passes the final hermetic tracked-input `develop`
+> proof with the same **264/264 files, 2,728 passed / 1 skipped** result.
 
 > **2026-09-02 historical predecessor browser-ownership/Glass repair overlay (superseded by the
 > current overlay above;

@@ -3,7 +3,7 @@
 **Current mode: `UNFROZEN`**
 
 **Current local state (2026-09-02): eleventh hosted launcher-instrument red preserved; bounded
-deterministic repair is locally green; the clean browser certificate is pending; no hosted attempt
+deterministic repair and clean browser certificate are green; no hosted attempt
 is authorized.** PR #35 run `33628648136`, attempt 1, consumed the exact one-time authority for
 head `85431115256137b05d7cdfa590e087fd3b4d52e1` against base
 `7a9f4c1370dd84292388d718c38ff34214f6203b`. It stopped after **6m30s** at
@@ -28,9 +28,16 @@ authority is `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`,
 `browserCdp` input. Producer authority
 `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`, every ruler, ceiling,
 historical sample, outcome and version-tolerant Edge-family/CDP `1.3` policy remain unchanged.
-Before any fresh hosted request, commit the bounded successor and complete one unchanged-source,
-fail-fast/no-retry local Compendium → Slice → Glass chain with every named verifier. The immutable
-review is `audits/PR35_TEST_BATTERY_RIGHTSIZING_AND_LAUNCHER_RED_20260902_8543111.md`.
+Exact SSH-signed source `a484c39b30c8cdecac464c31283f64efb0263628`, tree
+`eb9ed823ff165ff89d9c8137f006e30497931c73`, passed the hermetic develop rehearsal, root Layout
+**787/787**, Compendium **78/78**, zero-finding Slice and exact-Slice-bound Glass **12/12**
+viewports/reloads with **104/104** controls. Every named verifier passed, the source remained clean
+and byte-identical, and no stage retried. Exact run IDs, hashes and five deterministic carriers are
+in `audits/PR35_TEST_BATTERY_RIGHTSIZING_AND_LAUNCHER_RED_20260902_8543111.md`. Only the signed
+documentation/evidence descendant containing this text also passes the final hermetic tracked-input
+`develop` proof at **264/264 files, 2,728 passed / 1 skipped** with all three TypeScript programs
+and art/specification audits green. Local closure is complete; this paragraph does not authorize a
+hosted attempt.
 
 **Preserved predecessor local state (2026-09-02): tenth hosted red preserved; stop-first Glass repair and one
 clean local develop certificate are green; no hosted attempt is authorized.** Exact SSH-signed
