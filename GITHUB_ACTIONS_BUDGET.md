@@ -49,10 +49,25 @@ state, exact native receipt and hold ownership, and correct causal stops. A sepa
 portrait campaign defect was also corrected without relaxing full-matrix requirements. Targeted
 small-phone run `20260902213750107-50317-aa753f436e55` passed with zero findings or instrument
 failures and is noncertifying. Focused Inventory coverage passes **19/19**, the related four-file
-set passes **37/37**, typecheck and Glass selftest pass, and the consolidated browser-free
-`develop` profile passes **264/264 files, 2,738 passed / 1 skipped**. A clean unchanged-source
-Compendium → Slice → Glass certificate remains pending and none of this local evidence grants a
-hosted attempt.
+set passes **37/37**, typecheck and Glass selftest pass.
+
+Exact SSH-signed implementation `64e405bc6678302c5936945c1b34ac5de5407025`, tree
+`732bcf9930ac36e7661b14cdfd6cde64137d34f4`, parent/pushed head `5ae12c7…`, passed the hermetic
+tracked-input `develop` profile at **264/264 files, 2,738 passed / 1 skipped**. On unchanged clean
+source and Edge `152.0.4191.53` / CDP `1.3`, each browser stage ran once/no-retry: Compendium
+`20260902214924248-53897-bef91ee56a` passed **78/78** in **61,826 ms**, raw report SHA-256
+`128763fcdd45cef23cb41f509f8d30bc6c041784c3547252cd6438f0b089f105`; Slice
+`20260902215043536-54220-81ac577271ec` passed in **362,381 ms** with zero findings/scopes and ten
+screenshots, report/log SHA-256
+`7f73b8bb68c4197e44931ec615063d66e7f2ba7b1b5d1e86fcf9eb5850a4b7c3` /
+`1b89495e6e5d5a10183f16b30be65c84df7cbf1605cf81907dfa951e82b90eba`; and exact-Slice-bound
+Glass `20260902215703000-54563-41950fd00ea0` passed in **114,022 ms** with **12/12**
+viewports/reloads and **104/104** controls, zero findings/instrument failures/blocked/omitted work
+or retries, report SHA-256
+`de298933a9be237efcb926d28054a2fcb308ca09eacc2532bbb7b75c67ddadc2`. Every named verifier
+passed and independent code/docs reviews are **CLEAR**. A signed evidence/docs descendant plus
+its final tracked-input proof remains before requesting a fresh exact head/base authorization;
+zero hosted attempts are currently authorized.
 
 **Preserved predecessor local state (2026-09-02): eleventh hosted launcher-instrument red preserved; bounded
 deterministic repair and clean browser certificate are green; no hosted attempt

@@ -1,7 +1,7 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-09-02 current Glass Inventory action-evidence overlay (matches the current local
-> harness-only successor; full browser certification is pending and older dated evidence remains
+> **2026-09-02 current Glass Inventory action-evidence overlay (matches the exact signed local
+> harness successor; its evidence/docs descendant is pending and older dated evidence remains
 > immutable):** PR #35 run `33674116068`, attempt 1, tested exact head
 > `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b`. Layout **787/787**, Compendium **78/78** with named
@@ -39,7 +39,24 @@
 > findings or instrument failures and is explicitly noncertifying. Focused Inventory instrument
 > tests pass **19/19**, the related four-file set passes **37/37**, and typecheck plus Glass selftest
 > are green. The browser-free `develop` profile passes **264/264 files, 2,738 passed / 1 skipped**.
-> No full 12-row Glass pass or unchanged-source replacement certificate is claimed yet.
+>
+> Exact SSH-signed implementation `64e405bc6678302c5936945c1b34ac5de5407025`, tree
+> `732bcf9930ac36e7661b14cdfd6cde64137d34f4`, parent/pushed head `5ae12c7…`, passed that
+> tracked-input profile. On unchanged clean source and Edge `152.0.4191.53` / CDP `1.3`, each
+> browser stage ran once/no-retry: Compendium `20260902214924248-53897-bef91ee56a` passed **78/78**
+> in **61,826 ms**, raw report SHA-256
+> `128763fcdd45cef23cb41f509f8d30bc6c041784c3547252cd6438f0b089f105`; Slice
+> `20260902215043536-54220-81ac577271ec` passed in **362,381 ms** with zero findings/scopes and ten
+> screenshots, report/log SHA-256
+> `7f73b8bb68c4197e44931ec615063d66e7f2ba7b1b5d1e86fcf9eb5850a4b7c3` /
+> `1b89495e6e5d5a10183f16b30be65c84df7cbf1605cf81907dfa951e82b90eba`; and exact-Slice-bound
+> Glass `20260902215703000-54563-41950fd00ea0` passed in **114,022 ms** with **12/12**
+> viewports/reloads and **104/104** controls, zero findings/instrument failures/blocked/omitted work
+> or retries, report SHA-256
+> `de298933a9be237efcb926d28054a2fcb308ca09eacc2532bbb7b75c67ddadc2`. Every named verifier
+> passed and independent code/docs reviews are **CLEAR**. A signed evidence/docs descendant and
+> final tracked-input proof remain before any fresh hosted request; zero hosted attempts are
+> authorized.
 
 > **2026-09-02 current Inventory modal-lifetime overlay (matches current local code; supersedes
 > older “current” labels while dated evidence remains immutable):** PR #35 run `33657402955`,
