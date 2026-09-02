@@ -17,13 +17,18 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-02 · THIRTEENTH HOSTED INSTRUMENT STOP · EXACT LOCAL CERTIFICATE GREEN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-02 · THIRTEEN-STOP AUDIT COMPLETE · EARLY GLASS PREFLIGHT UNDER EXACT LOCAL PROOF ◀◀◀
 
 ### Exact current boundary
 
 - **Verified owner:** OpenAI/Codex on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, tracking
   **origin/openai/mac**.
+- Current signed starting head is **526fd5f1a448bba3ebe422f70b8d4f6ae8b00e3b**, tree
+  **de437e453f168ef325488aa7818064dcd05f8dae**, three commits ahead of the remote. Its exact
+  tracked-input `develop` profile is green. The active uncommitted batch adds only the systemic
+  failure audit and conditional early hosted Glass preflight; sign and exact-prove it before any
+  request for hosted authority.
 - Pushed and hosted-tested head is **5ae12c7e161e90b3799d6b49a63e2b0438048da6**, tree
   **fbb059cea703cceb3feebcc716e64e02f5f5ba90**, against exact `origin/develop`
   **7a9f4c1370dd84292388d718c38ff34214f6203b**.
@@ -39,6 +44,37 @@ the archive verbatim and refresh this handoff in place.
 - PR #35 is Ready/open/unmerged. `actions-budget-approved` is absent, `develop` remains unchanged
   at the base above, and no push, label, dispatch, retry, PR mutation, merge, release, version bump,
   publication or deployment is currently authorized.
+
+### Systemic failure-surface closure and early hosted Glass preflight
+
+- All thirteen consumed PR #35 hosted stops have been audited: **9 instrument/infrastructure, 3
+  product/runtime and 1 mixed**. Each cause through attempt 12 has a permanent guard plus later
+  local or hosted successor evidence. Attempt 13's repaired live Glass path has a complete local
+  Edge certificate but has not yet run on hosted Ubuntu/Chrome.
+- Run `33674116068` reached Glass only after approximately **70m46s**; Glass then stopped after
+  **68,102 ms** on its first 320×568@2 row. Compendium used approximately **37m55s** of its
+  unchanged 40-minute cap and Slice approximately **24m06s**. On `develop`, only evidence upload
+  follows Glass; Recovery and preview remain `main`-only.
+- The workflow successor conditionally runs that same small-phone row immediately after the shared
+  Chrome launcher selftest whenever exact Glass/runtime/build/fixture inputs changed. It is
+  noncertifying, no-retry, capped at five minutes, committed-source stable, canonical-Chrome/CDP
+  `1.3` bound, and archived under its own immutable `...-glass-preflight` ID.
+- Its verdict requires exact 320×568@2 mobile geometry, strict evidence types, zero findings,
+  instrument failures, blocked controls and retries, plus `inventory-modal-focus`,
+  `inventory-modal-retention`, `inventory-protected-action`, `inventory-action-publication` and
+  `inventory-convergence-retry`. These span the two latest hosted Glass classes.
+- Test sources, declarations, docs, `.gitignore` and the worker-only typecheck config do not trigger
+  it. The final Compendium → exact Slice → full 12-viewport Glass certificate remains unconditional
+  and unchanged; the canary cannot satisfy or replace it.
+- Three independent reviews found and closed omitted-input, nullable-array, missing-control,
+  configured-symlink/canonical-path and malformed-Chrome-provenance defects before any hosted run.
+  Final ordering review is **CLEAR**. Focused workflow/scope/evidence contracts pass **28/28** and
+  Actions policy selftest passes **64/64**. The consolidated working-source `develop` profile passes
+  **264/264 files, 2,739 passed / 1 skipped**, all three TypeScript programs, **34** art sources,
+  **1,014/1,014** routes and **454** declared fields. Exact signed-source and local browser proof
+  remain the active batch.
+- Full rationale and the complete attempt table are in
+  `audits/PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md`.
 
 ### Thirteenth exact hosted attempt — immutable consumed instrument red
 
@@ -126,17 +162,20 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex next:** report the exact current signed head against base **7a9f4c1…** and request
-  Nick's fresh one-attempt PR #35 authorization. Only after that exact authority, push
+- **OpenAI/Codex next:** finish the active workflow successor's signed exact-input `develop`
+  profile and one local small-phone browser proof, repair any red, then report that exact signed
+  head against base **7a9f4c1…**. Only after Nick gives a fresh exact-head one-attempt PR #35
+  authorization, push
   `openai/mac`, refresh PR #35 metadata, apply `actions-budget-approved`, and run `test-battery`
   once with a 92-minute maximum and no retry; merge into `develop` only if terminal green.
 - **PR:** existing #35, base **develop**, source **openai/mac**.
 - **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
 - **Description:** “Completes the established v2 roadmap campaign without recreating its gameplay
   systems; preserves the immutable thirteenth hosted action-settlement instrument stop; repairs
-  exact Inventory action evidence and targeted portrait campaign scope without changing product
-  behavior, browser policy, timeout, retry, workflow jobs or the sealed control inventory; and
-  preserves the no-retry Compendium → Slice → Glass develop chain.”
+  exact Inventory action evidence and targeted portrait campaign scope; audits all thirteen
+  consumed stops; adds a five-minute changed-input hosted Glass canary without changing product,
+  browser policy, timeout, retry, workflow jobs or the sealed control inventory; and preserves the
+  mandatory no-retry Compendium → Slice → full Glass develop chain.”
 - **Claude Code next:** Nick does not need to open Claude yet. Claude/Fable should begin the
   requested full polish review only after PR #35 is terminal green and merged into `develop`, from
   a fresh `anthropic/*` branch synchronized from `origin/develop`.

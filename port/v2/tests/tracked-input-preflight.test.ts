@@ -194,6 +194,7 @@ describe('tracked-input prehosted preflight', () => {
       artInstrumentChanged: false,
       compendiumInstrumentChanged: false,
       browserTransportChanged: false,
+      glassPreflightChanged: true,
     });
     expect(classifyBatteryScope(['main.js', 'tools/validate.js'])).toMatchObject({
       changedCount: 2,
@@ -207,6 +208,7 @@ describe('tracked-input prehosted preflight', () => {
       artInstrumentChanged: true,
       compendiumInstrumentChanged: false,
       browserTransportChanged: false,
+      glassPreflightChanged: true,
     });
     for (const path of ['port/v2/package.json', 'port/v2/package-lock.json']) {
       expect(classifyBatteryScope([path]), path).toEqual({
@@ -215,6 +217,7 @@ describe('tracked-input prehosted preflight', () => {
         artInstrumentChanged: true,
         compendiumInstrumentChanged: true,
         browserTransportChanged: true,
+        glassPreflightChanged: true,
       });
     }
     for (const path of ['.github/workflows/test.yml', 'port/v2/tools/battery-scope.mjs']) {
@@ -223,6 +226,7 @@ describe('tracked-input prehosted preflight', () => {
         artInstrumentChanged: true,
         compendiumInstrumentChanged: true,
         browserTransportChanged: true,
+        glassPreflightChanged: true,
       });
     }
     for (const path of [
@@ -233,6 +237,7 @@ describe('tracked-input prehosted preflight', () => {
         changedCount: 1,
         compendiumInstrumentChanged: true,
         browserTransportChanged: true,
+        glassPreflightChanged: true,
       });
     }
     for (const path of [
@@ -251,6 +256,12 @@ describe('tracked-input prehosted preflight', () => {
         changedCount: 1,
         compendiumInstrumentChanged: true,
         browserTransportChanged: false,
+        glassPreflightChanged: [
+          'port/v2/tools/compendiummem-fixture.mjs',
+          'port/v2/tools/sealed-worker-graph.mjs',
+          'port/v2/tools/workspacelock.mjs',
+          'port/v2/tools/fixtures/compendium-1500-v1.json',
+        ].includes(path),
       });
     }
     for (const path of [
@@ -262,7 +273,50 @@ describe('tracked-input prehosted preflight', () => {
         changedCount: 1,
         compendiumInstrumentChanged: false,
         browserTransportChanged: false,
+        glassPreflightChanged: false,
       });
+    }
+    for (const path of [
+      'port/baseline-v1.8.9/content-registry.json',
+      'port/baseline-v1.8.9/save-fixtures.json',
+      'port/v2/tsconfig.json',
+      'port/v2/version.json',
+      'port/v2/apps/game/audit.html',
+      'port/v2/apps/game/hybrid-matrix.html',
+      'port/v2/apps/game/index.html',
+      'port/v2/apps/game/package.json',
+      'port/v2/apps/game/pwa-build.ts',
+      'port/v2/apps/game/tsconfig.json',
+      'port/v2/apps/game/vite.config.ts',
+      'port/v2/apps/game/src/main.ts',
+      'port/v2/packages/domain/loot/package.json',
+      'port/v2/packages/domain/loot/src/inventory.ts',
+      'port/v2/tools/arc4-browser-contract.mjs',
+      'port/v2/tools/engineering-browser-contract.mjs',
+      'port/v2/tools/glass-engineering-fixture-contract.mjs',
+      'port/v2/tools/glassmatrix.mjs',
+      'port/v2/tools/glassmatrix-evidence-contract.mjs',
+      'port/v2/tools/fixtures/compendium-1500-v1.json',
+      'port/v2/tools/sealed-worker-graph.mjs',
+      'port/v2/tools/slicesmoke-contract.mjs',
+      'port/v2/tools/smokereport.mjs',
+    ]) {
+      expect(classifyBatteryScope([path]), path).toMatchObject({
+        changedCount: 1,
+        glassPreflightChanged: true,
+      });
+    }
+    for (const path of [
+      'port/v2/apps/game/.gitignore',
+      'port/v2/apps/game/src/scene-text.test.ts',
+      'port/v2/apps/game/tsconfig.worker.json',
+      'port/v2/packages/art/src/biomevista.worker.verbatim.d.ts',
+      'port/v2/packages/domain/loot/test/inventory.test.ts',
+      'port/v2/tests/glass-inventory-instrument.test.ts',
+      'port/v2/tools/glassmatrix.d.mts',
+    ]) {
+      expect(classifyBatteryScope([path]), path)
+        .toMatchObject({ changedCount: 1, glassPreflightChanged: false });
     }
     expect(() => classifyBatteryScope([])).toThrow(/exact PR base\/head diff is empty/u);
     expect(() => classifyBatteryScope(['/absolute/path'])).toThrow(/invalid changed path/u);
@@ -284,12 +338,12 @@ describe('tracked-input prehosted preflight', () => {
       expect(result.status, result.stderr).toBe(0);
       expect(result.stdout).toContain(
         'Classified 2 changed paths: legacy=false art-instrument=true '
-          + 'compendium-instrument=true browser-transport=true',
+          + 'compendium-instrument=true browser-transport=true glass-preflight=true',
       );
       expect(readFileSync(outputFile, 'utf8')).toBe(
         'existing=value\nchanged_count=2\nlegacy_changed=false\n'
           + 'art_instrument_changed=true\ncompendium_instrument_changed=true\n'
-          + 'browser_transport_changed=true\n',
+          + 'browser_transport_changed=true\nglass_preflight_changed=true\n',
       );
     } finally {
       rmSync(tempRoot, { recursive: true, force: true });
@@ -438,6 +492,7 @@ describe('tracked-input prehosted preflight', () => {
     expect(occurrences(testWorkflow, 'steps.scope.outputs.art_instrument_changed')).toBe(1);
     expect(occurrences(testWorkflow, 'steps.scope.outputs.compendium_instrument_changed')).toBe(1);
     expect(occurrences(testWorkflow, 'steps.scope.outputs.browser_transport_changed')).toBe(1);
+    expect(occurrences(testWorkflow, 'steps.scope.outputs.glass_preflight_changed')).toBe(1);
     expect(testWorkflow).not.toContain('steps.scope.outputs.browser_instrument_changed');
     expect(testWorkflow).not.toContain('npm run check:');
 

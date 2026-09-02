@@ -1,5 +1,29 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **WHEN A HOSTED-ONLY FAILURE CLASS REPEATS LATE, EXERCISE THE SAME MINIMAL OUTCOME EARLY—NEVER
+> SUBSTITUTE IT FOR CERTIFICATION** (2026-09-02). A canary is justified only when it uses the same
+> hosted OS/browser path and the smallest real product row that contains the unresolved class. It
+> must be conditional on the exact runtime/instrument input graph, bounded independently, no-retry,
+> noncertifying, source-stable, and retained under its own immutable ID. Its external verdict must
+> type-check evidence arrays, bind the canonical executable rather than a configured symlink,
+> verify exact viewport/protocol provenance, and require the negative controls that own the prior
+> failure. The original full certificate remains unconditional and exact-predecessor-bound.
+>
+> PR #35's thirteenth run reached Glass only after approximately **70m46s**; its first 320×568@2
+> row then repeated a Glass-only uncertainty. The successor workflow places one five-minute
+> `small-phone` Glass preflight immediately after the shared Chrome launcher selftest and before
+> Layout, Compendium and Slice when Glass/product runtime inputs changed. It requires canonical
+> hosted Chrome/CDP `1.3`, unchanged committed source, terminal noncertifying PASS, zero typed
+> findings/failures/blocked controls/retries, and the exact modal-focus/retention/protected-action/
+> publication/convergence controls that span attempts 12 and 13. The unique preflight report is
+> archived, while the final Compendium → Slice → full 12-row Glass chain is unchanged and
+> mandatory. Test-only sources, declarations, docs and the worker-only typecheck config do not tax
+> the canary. Focused workflow/scope/evidence contracts pass **28/28** and Actions authorization
+> policy controls pass **64/64**. The complete working-source `develop` profile passes **264/264
+> files, 2,739 passed / 1 skipped**, all TypeScript programs and every art/route/specification
+> owner. This changes no product, timeout, retry, browser-version, ruler or release policy and
+> grants no hosted authority.
+
 > **A TARGETED NEGATIVE-CONTROL CAMPAIGN MAY OMIT ONLY CONTROLS ITS OBSERVED BASELINE CANNOT
 > LAWFULLY EXERCISE** (2026-09-02). Every selected portrait baseline remains mandatory. Full
 > 12-row Glass still requires at least one visible-trail/non-fallback baseline and exactly one

@@ -1,5 +1,35 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-09-02 current early hosted Glass-preflight architecture overlay (workflow/evidence only;
+> exact committed browser proof pending):** `port/v2/tools/battery-scope.mjs` now projects one
+> `glass_preflight_changed` output from the exact Glass tools, direct fixture/build inputs,
+> application runtime sources, and package runtime sources. It excludes colocated/package tests,
+> declarations, docs, app `.gitignore`, and the separately owned worker-only typecheck config.
+> Workflow/scope self-inputs fail closed and activate the preflight.
+>
+> On a `develop` PR with that output true, `.github/workflows/test.yml` runs one
+> `glassmatrix.mjs --viewport=small-phone` immediately after the shared Chrome launcher selftest.
+> The step has its own `...-glass-preflight` run ID and five-minute/no-retry boundary. It resolves
+> configured `CF_BROWSER` through `browserpath.mjs --print` and compares evidence to that canonical
+> path, so `/usr/bin/google-chrome` symlink changes cannot create a false red or weaken identity.
+> The jq verdict requires committed unchanged source, terminal noncertifying PASS, exact
+> 320×568@2 mobile/zero-safe-area geometry, Chrome/CDP `1.3` and complete provenance, strictly typed
+> empty finding/instrument/blocked ledgers, selftest/exit/retry invariants, and the five Inventory
+> modal/action controls spanning the twelfth and thirteenth hosted failures. Its unique report is
+> included in the always-run evidence artifact.
+>
+> This is a fail-fast diagnostic ordering change, not a new certificate or game subsystem. The
+> unconditional certifying develop chain remains Compendium → exact Slice → full 12-viewport Glass
+> plus named verification. Recovery/preview remain `main`-only, and evidence upload is the only
+> develop operation after Glass. Focused contracts pass **28/28**, the Actions policy selftest
+> passes **64/64**, and the working-source `develop` profile passes **264/264 files, 2,739 passed /
+> 1 skipped** plus all TypeScript/art/route/specification owners. Three independent audits are clear
+> after their findings were repaired. The
+> full thirteen-stop classification and residual hosted-only risk are preserved in
+> `audits/PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md`. No product/runtime, browser
+> point-version policy, timeout, retry, release, or deployment behavior changed; no hosted attempt
+> is authorized.
+
 > **2026-09-02 current Glass Inventory action-evidence architecture overlay (matches the exact
 > signed local successor; its evidence/docs descendant is pending and older dated evidence remains
 > immutable):** PR #35 run `33674116068`, attempt 1, tested exact head

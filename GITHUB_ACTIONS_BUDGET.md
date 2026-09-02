@@ -2,8 +2,32 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-02): thirteenth hosted Glass action-settlement instrument red is
-preserved; no hosted attempt is authorized.** PR #35 run `33674116068`, attempt 1, consumed the
+**Current local state (2026-09-02): systemic thirteen-stop audit complete; conditional early hosted
+Glass preflight is under exact committed local verification; no hosted attempt is authorized.**
+The immutable record is **9 instrument/infrastructure, 3 product/runtime, and 1 mixed**. Every
+known cause through attempt 12 has a permanent guard and later local or hosted successor evidence.
+Attempt 13's repaired Glass path passed a complete local Edge/CDP chain but has never run on hosted
+Ubuntu/Chrome; the old workflow first exercised it about **70m46s** into the latest job.
+
+The workflow successor conditionally runs one noncertifying 320×568@2 Glass small-phone row after
+the shared Chrome launcher selftest and before Layout, Compendium, and Slice when an exact Glass,
+runtime, build, or fixture input changed. It is capped at five minutes, has a distinct immutable
+run ID, no retry or soft failure, binds canonical Chrome/CDP `1.3` plus exact committed unchanged
+source, rejects malformed evidence types, and requires the five Inventory modal/action controls
+covering attempts 12 and 13. The report is retained. Test-only files, declarations, docs and the
+worker-only typecheck config do not activate it. The final Compendium → Slice → full 12-viewport
+Glass chain remains unconditional and unchanged; only evidence upload follows Glass on `develop`.
+
+Focused scope/workflow/evidence contracts pass **28/28** and the Actions authorization-policy
+selftest passes **64/64** after three independent reviews found and closed omitted-input,
+nullable-report, modal-focus, browser-symlink and malformed-product-provenance gaps. The full audit
+is `audits/PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md`. The consolidated
+working-source `develop` profile passes **264/264 files, 2,739 passed / 1 skipped**, all three
+TypeScript programs and every art/route/specification owner. No push, label, dispatch, hosted run,
+PR mutation, merge, release, version bump, publication, or deployment is authorized.
+
+**Preserved immediately preceding state (2026-09-02): thirteenth hosted Glass action-settlement
+instrument red is preserved; no hosted attempt is authorized.** PR #35 run `33674116068`, attempt 1, consumed the
 exact one-time authority for head `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
 `7a9f4c1370dd84292388d718c38ff34214f6203b`. Synthetic merge
 `dac0b24ddcc34a9035b8b294727dd104a411ec00` has tree

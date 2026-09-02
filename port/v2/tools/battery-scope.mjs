@@ -48,6 +48,44 @@ const COMPENDIUM_INSTRUMENT_EXACT = exact(
   'port/v2/tools/fixtures/compendium-1500-v1.json',
   'port/v2/budgets/compendium-memory-v1.json',
 );
+const GLASS_PREFLIGHT_EXACT = exact(
+  ...SHARED_BROWSER_TRANSPORT_EXACT,
+  'port/baseline-v1.8.9/content-registry.json',
+  'port/baseline-v1.8.9/save-fixtures.json',
+  'port/v2/tsconfig.json',
+  'port/v2/version.json',
+  'port/v2/apps/game/audit.html',
+  'port/v2/apps/game/hybrid-matrix.html',
+  'port/v2/apps/game/index.html',
+  'port/v2/apps/game/package.json',
+  'port/v2/apps/game/pwa-build.ts',
+  'port/v2/apps/game/tsconfig.json',
+  'port/v2/apps/game/vite.config.ts',
+  'port/v2/tools/arc4-browser-contract.mjs',
+  'port/v2/tools/compendiummem-fixture.mjs',
+  'port/v2/tools/engineering-browser-contract.mjs',
+  'port/v2/tools/glass-engineering-fixture-contract.mjs',
+  'port/v2/tools/glassmatrix.mjs',
+  'port/v2/tools/glassmatrix-evidence-contract.mjs',
+  'port/v2/tools/fixtures/compendium-1500-v1.json',
+  'port/v2/tools/sealed-worker-graph.mjs',
+  'port/v2/tools/slicesmoke-contract.mjs',
+  'port/v2/tools/smokereport.mjs',
+  'port/v2/tools/workspacelock.mjs',
+);
+
+function isRuntimeSource(path, prefix) {
+  return path.startsWith(prefix)
+    && !/\.(?:test|spec)\.[cm]?[jt]sx?$/u.test(path)
+    && !/\.d\.[cm]?ts$/u.test(path);
+}
+
+function isGlassPreflightInput(path) {
+  if (GLASS_PREFLIGHT_EXACT.has(path)) return true;
+  if (isRuntimeSource(path, 'port/v2/apps/game/src/')) return true;
+  if (isRuntimeSource(path, 'port/v2/packages/') && path.includes('/src/')) return true;
+  return path.startsWith('port/v2/packages/') && path.endsWith('/package.json');
+}
 
 function matches(path, ownedExact, ownedPrefixes) {
   return ownedExact.has(path) || ownedPrefixes.some((prefix) => path.startsWith(prefix));
@@ -82,6 +120,7 @@ export function classifyBatteryScope(changedPaths) {
     browserTransportChanged: paths.some(
       (path) => SHARED_BROWSER_TRANSPORT_EXACT.has(path),
     ),
+    glassPreflightChanged: paths.some(isGlassPreflightInput),
   });
 }
 
@@ -119,13 +158,15 @@ function main() {
     `art_instrument_changed=${scope.artInstrumentChanged}`,
     `compendium_instrument_changed=${scope.compendiumInstrumentChanged}`,
     `browser_transport_changed=${scope.browserTransportChanged}`,
+    `glass_preflight_changed=${scope.glassPreflightChanged}`,
   ].join('\n');
   writeFileSync(githubOutput, `${output}\n`, { flag: 'a' });
   console.log(
     `Classified ${scope.changedCount} changed paths: legacy=${scope.legacyChanged} `
       + `art-instrument=${scope.artInstrumentChanged} `
       + `compendium-instrument=${scope.compendiumInstrumentChanged} `
-      + `browser-transport=${scope.browserTransportChanged}`,
+      + `browser-transport=${scope.browserTransportChanged} `
+      + `glass-preflight=${scope.glassPreflightChanged}`,
   );
 }
 
