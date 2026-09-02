@@ -34,9 +34,24 @@ Current launcher / Compendium measurement authority is
 `4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca` /
 `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`. Producer
 `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`, every ruler, ceiling,
-sample, outcome and browser-version policy remain unchanged. The clean unchanged-source
-Compendium → Slice → Glass certificate is still required before another exact hosted request.
-Full evidence and the consolidation plan are in
+sample, outcome and browser-version policy remain unchanged.
+
+Exact SSH-signed source `a484c39b30c8cdecac464c31283f64efb0263628`, tree
+`eb9ed823ff165ff89d9c8137f006e30497931c73`, passed the hermetic develop rehearsal, root Layout
+`local-1788355721508-17420-624f697795` at **787/787**, Compendium
+`20260902133054645-17703-2cf459762b` at **78/78**, zero-finding Slice
+`20260902133238723-18057-fb0557070177`, and exact-Slice-bound Glass
+`20260902133910919-18520-cab54654b9fd` at **12/12** viewports/reloads and **104/104** controls.
+Every named verifier passed; the exact source remained clean and byte-identical; no stage retried.
+The signed documentation/evidence descendant containing this index also passes the final hermetic
+tracked-input `develop` proof with the same **264/264 files, 2,728 passed / 1 skipped** result.
+Five deterministic carriers preserve Layout, Compendium, Slice report/log and Glass:
+`ROOT_LAYOUT_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz`,
+`ARC1A_COMPENDIUM_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz`,
+`ARC4_SLICE_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz`,
+`ARC4_SLICE_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.log.gz` and
+`ARC4_GLASS_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz`. Full hashes, evidence
+and the consolidation plan are in
 `PR35_TEST_BATTERY_RIGHTSIZING_AND_LAUNCHER_RED_20260902_8543111.md`.
 
 ### Historical predecessor Glass cleanup repair and clean certificate — 0569021 stop → 1f80b0a green

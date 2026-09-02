@@ -1,7 +1,7 @@
 # PR #35 battery review — eleventh hosted launcher-instrument red and right-sizing plan
 
 Date: **2026-09-02**
-Status: **immutable consumed red; deterministic local repair in progress; no retry or hosted authority**
+Status: **immutable consumed red; deterministic local repair and unchanged-source develop chain green; no retry or hosted authority**
 
 ## Exact eleventh hosted boundary
 
@@ -135,11 +135,55 @@ browser point-version rule or retry policy changed.
 
 ## Verification and stopping rule
 
-Before a new hosted request, the successor must be clean and committed, pass the tracked-input
-`develop` profile, then complete one unchanged-source local Compendium → Slice → Glass chain with
-every named verifier. The launcher selftest and root Layout have already passed on the dirty
-candidate; the complete browser-free profile is green at **264/264 files, 2,728 passed / 1
-skipped**. Dirty runs are diagnostics, not certificates.
+Exact SSH-signed implementation/docs source
+`a484c39b30c8cdecac464c31283f64efb0263628`, tree
+`eb9ed823ff165ff89d9c8137f006e30497931c73`, parent
+`85431115256137b05d7cdfa590e087fd3b4d52e1`, passed its hermetic tracked-input `develop`
+rehearsal at **264/264 files, 2,728 passed / 1 skipped**, all three TypeScript programs, **34**
+clean art sources, **1,014/1,014** routes and **454** non-inert fields. The exact source remained
+clean and byte-identical through every later stage.
+
+- Root Layout `local-1788355721508-17420-624f697795` passed **787/787** across 10 viewports in
+  **76,917 ms** and passed named verification.
+- Compendium `20260902133054645-17703-2cf459762b` passed **78/78** with zero findings or blocked
+  outcomes in **65,415 ms** and passed named verification.
+- Develop Slice `20260902133238723-18057-fb0557070177` passed terminal/certifying with zero
+  findings/scopes and ten screenshots in **363,456 ms**. Named verification bound report SHA-256
+  `6724025357702846ef9283d4ecd55ba0e86f57a3d4a87607b33953a9717851b5` and raw-log SHA-256
+  `4e3750b8eea9e2ad2df8b9edb73a49b9a321dd7e1bea5e6a4f1a9f43ad6f44da`.
+- Glass `20260902133910919-18520-cab54654b9fd` consumed that exact Slice predecessor and passed
+  **12/12** viewports, **12/12** reload rows and **104/104** controls with zero blocked/omitted
+  controls, findings, instrument failures or retries in **116,033 ms**. Its Slice-bound named
+  verifier passed; report SHA-256 is
+  `eec545ab3215a5cbeb0c52cf316bc4e0bfcbc16c27c31e023d7b55223a5838cc`.
+
+Five deterministic `gzip -n -9` carriers preserve the exact reports/log:
+
+- `ROOT_LAYOUT_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz` — raw **106,958
+  bytes**, SHA-256 `ea59339872b99738bd6b6d4e20832d4d911392f674bf92e38082eb5258ce0272`;
+  gzip **5,034 bytes**, SHA-256
+  `1df2c2f0b705e2f06ae7b3c90c203704270c4d3ca726b6796f4db6cb791b9a72`.
+- `ARC1A_COMPENDIUM_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz` — raw
+  **10,836,499 bytes**, SHA-256
+  `982ae51835d7b7c0f3bba71c3f4f7bea4cc9715b2d39f51282f7a994ca30f8bc`; gzip **452,500
+  bytes**, SHA-256 `2e0230bd68c7fa7d6055ad637829d98b39f425c0715b3aa9a347498aee8955fd`.
+- `ARC4_SLICE_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz` — raw **6,126
+  bytes**, SHA-256 `6724025357702846ef9283d4ecd55ba0e86f57a3d4a87607b33953a9717851b5`;
+  gzip **1,961 bytes**, SHA-256
+  `cfcc2d0e7e3c39f0a6b7f34018fc1e4a8dd1e4e0162b63f43ea7f76af8e7d315`.
+- `ARC4_SLICE_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.log.gz` — raw **6,950
+  bytes**, SHA-256 `4e3750b8eea9e2ad2df8b9edb73a49b9a321dd7e1bea5e6a4f1a9f43ad6f44da`;
+  gzip **3,291 bytes**, SHA-256
+  `64a626af9e27046a5f3a28dbaa866b45270302e507b15d1bec12a0758d502710`.
+- `ARC4_GLASS_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz` — raw **898,814
+  bytes**, SHA-256 `eec545ab3215a5cbeb0c52cf316bc4e0bfcbc16c27c31e023d7b55223a5838cc`;
+  gzip **78,837 bytes**, SHA-256
+  `264afa94dc1191b08559efde51ed4349017a884fa2a5131c6aec180e6870707c`.
+
+All five pass gzip integrity, byte-for-byte raw comparison and deterministic recompression. Every
+certifying stage ran once; no stage retried. The signed documentation/evidence descendant containing
+this audit also passes the final hermetic tracked-input `develop` proof at **264/264 files, 2,728
+passed / 1 skipped** with all three TypeScript programs and art/specification audits green.
 
 Do not rerun hosted head `8543111…`. No push, label, hosted run, PR mutation, Ready transition,
 merge, release, version bump, publication or deployment is authorized by this audit.
