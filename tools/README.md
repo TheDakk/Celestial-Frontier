@@ -72,6 +72,24 @@ is `FROZEN`, do not push, label, dispatch, rerun, merge, sync, or publish; build
 > executable resolver, so it cannot validate or select
 > a different browser; bootperf still owns its older CDP lifecycle and is not covered by
 > the launcher's lifecycle claims.
+>
+> On POSIX the launcher does not treat a released numeric PGID as ownership. A detached Node
+> sentinel remains the group leader, launches Chromium non-detached in that group, reports exact
+> browser lifecycle, and performs the final TERM/acknowledged-SIGKILL barrier while its own
+> identity is still live. An acknowledgement-loss watchdog owns the same terminal group kill.
+> Parent success requires exact final group identity plus sentinel SIGKILL exit/close. The parent
+> performs no negative-PGID probe or signal at any point; only the still-live sentinel addresses
+> its own group. Lifecycle acceptance is phase-specific: before owned Close, every exit/error is
+> red; after a `Browser.close` request, only `{ code: 0, signal: null }` is clean; during POSIX
+> owned shutdown, clean exit or exact SIGTERM/SIGKILL is accepted, while a crash signal, browser
+> error or nonzero exit stays red. Only afterward does the parent remove and stability-check the
+> profile. Stderr-forwarding failure and sentinel-protocol drift also fail closed. Windows retains
+> bounded `taskkill /T` then `/T /F`: an external integer/null-signal exit is accepted only after
+> the exact tree request succeeds, and an exit observed while that request is pending is deferred
+> and checked against its latched result after cleanup. Executable controls include an abnormal
+> post-`Browser.close` SIGABRT process-group fixture and an integrated fake-Windows
+> `openChromiumCdpWithLauncher` run where code 17 arrives before taskkill resolves; the latter
+> proves no `Browser.close`, one successful tree request, and socket/profile cleanup.
 > On macOS, Chromium cannot register with LaunchServices from inside the Codex
 > Seatbelt profile. The resolver/launcher therefore rejects
 > `CODEX_SANDBOX=seatbelt` before browser spawn and directs the command through
@@ -621,7 +639,8 @@ malformed content fails at the deadline before socket construction. The tool rec
 canonical executable plus product,
 revision, user agent, JavaScript version and protocol version. Startup and commands
 are bounded, an early browser exit retains its exit state and bounded stderr head and
-tail, and cleanup owns TERM→KILL escalation plus removal of only its validated profile.
+tail, and cleanup owns the sentinel-anchored POSIX terminal group barrier (or Windows taskkill)
+plus removal of only its validated profile.
 
 Every ordinary invocation atomically replaces `tools/uilayout-report.json` with
 schema `celestial-frontier/uilayout-report@2`: first `running`, then terminal `pass`,
@@ -655,7 +674,8 @@ schema-v2 layout run plus exact-run verification inside the same local battery. 
 does not embed Git source, the caller must also retain a commit-tagged run ID, unchanged target blob,
 and matching clean HEAD/status before and after the run and verifier. Terminal-green PR test-merge
 CI corresponding to that pushed head remains separate; this reference does not cache the current
-outcome.
+outcome. For the current sentinel repair, the final seven same-source targeted Glass viewports
+passed as bounded diagnostics; the clean unchanged-source certificate remains pending.
 
 ## uilayout.js — the training-card reachability pass
 

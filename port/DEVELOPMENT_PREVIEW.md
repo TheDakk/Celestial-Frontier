@@ -1,5 +1,24 @@
 # Development Preview — Separate-Origin Human Playtesting
 
+> **2026-09-02 current browser-ownership/Glass repair overlay (supersedes older “current” labels;
+> dated evidence remains immutable):** exact clean source
+> `05690215771db91601cf9dbcbcaa8d771fe540b5` passed the complete browser-free develop profile,
+> Compendium and Slice. Exact-bound Glass `20260902034025002-67201-c5ef56b312e9` completed six
+> viewport/reload rows with zero product findings, then stopped once/no-retry at tablet-portrait
+> cleanup (`kill EPERM`). The current POSIX sentinel retains exact group identity through shutdown;
+> the parent performs no negative-PGID operation, and browser-close/owned-shutdown/Windows taskkill
+> exit classes are explicit and fail closed.
+>
+> Final Glass review made Inventory's offscreen control refusal-only with no native dispatch,
+> receipt listener or receipt. Two short local instrument reds exposed malformed generated
+> restoration source and Chromium's absent-to-empty style normalization before any product input;
+> executable and browser-faithful controls close both. Tablet portrait and all six downstream
+> viewports then passed once with zero findings/instrument failures/retries on identical dirty
+> source. No game, preview package, UI, save, graphics, audio, ruler, timeout, retry or
+> browser-version policy changed. The diagnostics are noncertifying; a clean unchanged-source
+> Compendium → Slice → Glass chain remains required. Manual preview origin/publication authority is
+> unchanged, and no hosted attempt is authorized.
+
 > **2026-09-02 current PR #35 battery/preview overlay (supersedes every older “current” label;
 > all dated evidence and preview rules below remain immutable):** hosted run `33584052508` tested
 > exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
@@ -617,6 +636,17 @@ the wrong phase and fails the control instead of consuming a cold-browser allowa
 This split follows the immutable diagnosis from run `31815658572`: the named WebSocket case had
 failed on its earlier 10-second Chrome-start phase. It adds no retry, fallback, workflow timeout,
 or command/shutdown expansion.
+
+On POSIX, the shared launcher never treats a numeric PGID as parent-side ownership. One detached
+Node sentinel remains the group leader while Chromium runs non-detached in that group. It reports
+exact browser PID/lifecycle, holds TERM, announces final group identity, waits for the parent
+acknowledgement, then group-SIGKILLs itself and survivors; a watchdog covers acknowledgement loss.
+Parent success requires exact identity plus sentinel SIGKILL exit/close and performs no
+negative-PGID probe or signal at any phase. Browser exit before open or during work fails closed;
+after `Browser.close`, only code `0`/null signal is accepted, while exact TERM/KILL is accepted only
+during POSIX owned shutdown. Windows external exit is accepted only after its exact bounded taskkill
+request succeeds. Only after the terminal barrier may profile removal and stable absence pass. The
+caller-specific 30/45/15-second envelopes above are unchanged.
 
 Run `31870103561` exposed the complementary live-browser boundary: the first provenance leg found
 its valid `DevToolsActivePort` within 30 seconds, but WebSocket opening reused the 1,500-millisecond

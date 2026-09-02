@@ -1,5 +1,40 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-09-02 current browser-ownership/Glass repair overlay (supersedes older “current” labels;
+> dated evidence remains immutable):** exact clean source
+> `05690215771db91601cf9dbcbcaa8d771fe540b5` passed the complete browser-free develop profile,
+> Compendium and Slice. Exact-Slice-bound Glass
+> `20260902034025002-67201-c5ef56b312e9` completed six viewport/reload rows with zero product
+> findings, then stopped once/no-retry at tablet-portrait cleanup (`kill EPERM`). No later
+> full-certifying viewport ran and that report remains immutable red.
+>
+> The fault was shared POSIX launcher ownership, not game behavior. POSIX now keeps a detached
+> Node sentinel as the live process-group leader while Chromium runs non-detached inside it. Exact
+> browser PID/lifecycle IPC, final group identity, acknowledgement, terminal group SIGKILL and
+> sentinel SIGKILL exit form the barrier; the parent performs no negative-PGID operation. A clean
+> exit is accepted after `Browser.close`; POSIX TERM/KILL are accepted only during owned shutdown;
+> crash/nonzero exits remain red. Windows external exit is accepted only after the exact bounded
+> taskkill request succeeds. Current browser/Compendium measurement authority is
+> `8c6094e4e4bc05c40ace80478b038890e2e8c33856e5932a60805ac71249e0df` /
+> `a963f40135651323bb2c0f2a0a6fa7a381ab3905e43b6e5721f45e9f38e50e62`; producer
+> `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77` and all rulers,
+> ceilings, samples and compatible-browser policy are unchanged.
+>
+> Final Glass review made Inventory's offscreen control refusal-only: `dispatch:false`, no receipt
+> listener, zero input/receipt and exact retained-owner restoration before real product input. A
+> generated-source syntax red and Chromium's absent-style-to-empty first removal were both caught
+> locally with zero product input/findings; executable page-source and browser-faithful
+> null-versus-empty controls close them. Tablet portrait and every downstream viewport through 8K
+> then passed once with zero findings/instrument failures/retries on identical dirty-source digest
+> `23884a5d5050bc79642d25ac4700e58b269e0deee2d61464c37143550815c027`.
+> Product Inventory architecture and every game/UI/save/graphics/audio behavior remain unchanged.
+> The finished dirty source passes the complete browser-free `develop` profile at **264/264 files,
+> 2,728 passed / 1 skipped**, all three TypeScript programs and the root validator with the
+> 50-probe v1.0 determinism fingerprint unchanged. The producer-authority printer is current for
+> Compendium and remains red only for intentionally stale, production-only SceneMemory inputs.
+> A fresh clean signed source and one unchanged-source Compendium → Slice → Glass chain remain
+> required; no hosted attempt is authorized.
+
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated architecture/evidence blocks below remain immutable):** hosted run `33584052508` tested
 > exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
@@ -2591,6 +2626,17 @@
 > socket/child closure and profile cleanup. No retry, relaunch, per-viewport sleep, browser
 > reuse, fallback change or timeout expansion follows.
 >
+> **2026-09-02 POSIX ownership refinement:** one detached Node sentinel remains the group leader
+> while Chromium runs non-detached inside its group. The sentinel reports the exact browser
+> PID/lifecycle, holds TERM, announces its exact final group identity, waits for parent
+> acknowledgement, then group-SIGKILLs itself and all survivors; a watchdog covers lost
+> acknowledgement. Parent success requires that identity plus sentinel SIGKILL exit and stdio
+> close, and the parent performs no negative-PGID probe or signal at any phase. Browser exit before
+> endpoint/socket or during work fails closed. After `Browser.close`, only code `0` with null signal
+> is accepted; POSIX owned shutdown additionally accepts exact TERM/KILL, never a crash or nonzero
+> exit. Windows may accept an external integer/null-signal exit only after its exact bounded
+> taskkill request succeeded. Profile removal and stable absence happen after the terminal barrier.
+>
 > The live v2 interaction surface uses Pixi `autoDensity` so its CSS canvas and
 > hit coordinates stay viewport-sized at DPR > 1. `effectiveDensityPlan()`
 > follows the touch-2 / desktop-3 heat caps and retains native backing through
@@ -4503,7 +4549,7 @@ Compendium **78/78** → Slice (`19833fe4…`) → Glass **12/12** (`a4f6d9b1…
 predecessor binding. This is a harness-only repair. Edge point version remains provenance only;
 there is no hosted, push, merge or release authority.
 
-**Current Glass causal/presentation contract (2026-08-31):** the first instrument red retains one
+**Current Glass causal/presentation contract (2026-09-02):** the first instrument red retains one
 root failure, blocks dependent controls and stops later viewport work. The first product red likewise
 stops dependent product work and records a complete, disjoint blocked suffix rather than pretending
 those controls executed. Rendered Guide ingress reopens and re-queries the unique current topic
@@ -4511,7 +4557,16 @@ carrier, judges all required-copy baselines first, classifies copy mismatch as p
 setup/control/restoration defects as instrument-red, and arms mutants only from green. Generic
 visibility walks ancestor `<details>` elements: a closed disclosure admits only its direct first
 Summary subtree; retained rectangles, computed style or requested scroll do not make hidden actions
-visible. Opening the disclosure admits the same action. Product-direction controls keep Capture
+visible. Opening the disclosure admits the same action. Inventory's offscreen-action negative
+control uses refusal-only activation (`dispatch:false`), arms no receipt listener and must prove no
+native input or receipt. When the settled scroller is already zero, Glass temporarily transforms
+only the judged action outside the viewport, retains the exact button/card owner, and restores the
+entire inline-style attribute and scroll owner in `finally`. Its generated restoration expression
+is parsed and executed by a unit control; absent and empty style attributes remain distinct, and
+the owned absent case performs final normalization only after retaining transform evidence. Setup,
+negative-control or restoration failure is instrument-red before product action or outcome;
+publication mutants run only from a green real-action predecessor. Product-direction
+controls keep Capture
 actions base-centered with a 44px floor while preserving ≤390px full width and short landscape;
 rarity-removal controls independently cover Compendium badges and owned Binder slots while missing
 Binder semantics remain distinct.

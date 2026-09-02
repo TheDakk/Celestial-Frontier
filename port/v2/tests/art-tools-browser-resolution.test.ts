@@ -102,6 +102,59 @@ function assessOwnedLauncherSource(source: string): string[] {
   if (!source.includes('endpointCandidate?.snapshot === observed.snapshot')) {
     errors.push('stable-owned-endpoint');
   }
+  if (!source.includes("kind: 'posix-sentinel-process-group'")) {
+    errors.push('posix-sentinel-owner');
+  }
+  if (!source.includes("process.on('SIGTERM', () => {});")) {
+    errors.push('sentinel-term-hold');
+  }
+  if (!source.includes("process.kill(-process.pid, 'SIGTERM');")) {
+    errors.push('sentinel-group-term');
+  }
+  if (!source.includes("process.kill(-process.pid, 'SIGKILL');")) {
+    errors.push('sentinel-final-group-barrier');
+  }
+  if (!source.includes("send('shutdown-finalizing', { pgid: process.pid }")) {
+    errors.push('sentinel-final-identity');
+  }
+  if (!source.includes("message.type === 'shutdown-finalizing-ack'\n      && finalBarrierStarted")) {
+    errors.push('sentinel-final-ack');
+  }
+  if (!source.includes("type: 'shutdown-finalizing-ack',\n            pgid: child.pid")) {
+    errors.push('owner-final-ack');
+  }
+  if (!source.includes('ackTimer = setTimeout(killOwnedGroup, config.ackTimeoutMs);')) {
+    errors.push('sentinel-final-ack-watchdog');
+  }
+  if (!source.includes("if (!process.stderr.write(chunk)) {\n        browser.stderr.pause();")
+    || !source.includes("process.stderr.once('drain', () => {\n          if (stderrForwarding) browser.stderr.resume();")) {
+    errors.push('sentinel-stderr-backpressure');
+  }
+  if (!source.includes("stdio: ['ignore', 'ignore', 'pipe'], detached: false")) {
+    errors.push('inner-browser-in-sentinel-group');
+  }
+  if (!source.includes("stdio: ['ignore', 'ignore', 'pipe', 'ipc'], detached, windowsHide: true")) {
+    errors.push('detached-sentinel-group-leader');
+  }
+  if (!source.includes('const detached = true;')) {
+    errors.push('detached-sentinel-owner');
+  }
+  const sentinelStart = source.indexOf('function posixBrowserGroupSentinelEntry() {');
+  const sentinelEnd = source.indexOf('const POSIX_BROWSER_GROUP_SENTINEL_SOURCE', sentinelStart);
+  const negativePidOperations = [...source.matchAll(/process\.kill\(\s*-/gu)];
+  const sentinelNegativePidOperations = negativePidOperations.filter((match) => (
+    sentinelStart >= 0 && sentinelEnd > sentinelStart
+      && (match.index ?? -1) >= sentinelStart && (match.index ?? -1) < sentinelEnd
+  ));
+  if (negativePidOperations.length !== 2 || sentinelNegativePidOperations.length !== 2) {
+    errors.push('parent-pgid-operation');
+  }
+  if (/process\.kill\(\s*-process\.pid,\s*0\)/u.test(
+    sentinelStart >= 0 && sentinelEnd > sentinelStart
+      ? source.slice(sentinelStart, sentinelEnd) : '',
+  )) {
+    errors.push('post-release-pgid-probe');
+  }
   if (/\/json\/version/u.test(source)) errors.push('foreign-http-discovery');
   return errors;
 }
@@ -158,6 +211,55 @@ describe('art-tool portable browser authority', () => {
         'const observed = activeEndpoint(userData);', 'const observed = null;'), 'owned-active-port-file'],
       ['unstable snapshot', source.replace(
         'endpointCandidate?.snapshot === observed.snapshot', 'endpointCandidate !== null'), 'stable-owned-endpoint'],
+      ['missing sentinel owner', source.replace(
+        "kind: 'posix-sentinel-process-group'", "kind: 'direct-child'"), 'posix-sentinel-owner'],
+      ['sentinel does not hold TERM', source.replace(
+        "process.on('SIGTERM', () => {});", ''), 'sentinel-term-hold'],
+      ['sentinel TERM reaches only itself', source.replace(
+        "process.kill(-process.pid, 'SIGTERM');", "process.kill(process.pid, 'SIGTERM');"),
+      'sentinel-group-term'],
+      ['final barrier kills only sentinel', source.replace(
+        "process.kill(-process.pid, 'SIGKILL');", "process.kill(process.pid, 'SIGKILL');"),
+      'sentinel-final-group-barrier'],
+      ['missing final identity announcement', source.replace(
+        "send('shutdown-finalizing', { pgid: process.pid }", "send('shutdown-finalizing', {}"),
+      'sentinel-final-identity'],
+      ['missing final identity acknowledgement', source.replace(
+        "message.type === 'shutdown-finalizing-ack'\n      && finalBarrierStarted",
+        "message.type === 'shutdown-finalizing-unacked'\n      && finalBarrierStarted"),
+      'sentinel-final-ack'],
+      ['owner never acknowledges final identity', source.replace(
+        "type: 'shutdown-finalizing-ack',\n            pgid: child.pid",
+        "type: 'shutdown-finalizing-unacked',\n            pgid: child.pid"),
+      'owner-final-ack'],
+      ['lost final acknowledgement has no watchdog', source.replace(
+        'ackTimer = setTimeout(killOwnedGroup, config.ackTimeoutMs);',
+        'ackTimer = null;'), 'sentinel-final-ack-watchdog'],
+      ['sentinel ignores stderr backpressure', source.replace(
+        "if (!process.stderr.write(chunk)) {\n        browser.stderr.pause();",
+        "if (process.stderr.write(chunk)) {\n        browser.stderr.pause();"),
+      'sentinel-stderr-backpressure'],
+      ['inner browser escapes sentinel group', source.replace(
+        "stdio: ['ignore', 'ignore', 'pipe'], detached: false",
+        "stdio: ['ignore', 'ignore', 'pipe'], detached: true"),
+      'inner-browser-in-sentinel-group'],
+      ['sentinel is not group leader', source.replace(
+        "stdio: ['ignore', 'ignore', 'pipe', 'ipc'], detached, windowsHide: true",
+        "stdio: ['ignore', 'ignore', 'pipe', 'ipc'], detached: false, windowsHide: true"),
+      'detached-sentinel-group-leader'],
+      ['sentinel ownership flag disabled', source.replace(
+        'const detached = true;', 'const detached = false;'), 'detached-sentinel-owner'],
+      ['reintroduced numeric group probe', source.replace(
+        "process.kill(-process.pid, 'SIGKILL');", 'process.kill(-process.pid, 0);'),
+      'post-release-pgid-probe'],
+      ['parent reintroduces numeric group probe', source.replace(
+        'function directChildProcessTree(child) {',
+        'function directChildProcessTree(child) {\n  process.kill(-child.pid, 0);'),
+      'parent-pgid-operation'],
+      ['parent reintroduces numeric group signal', source.replace(
+        'function directChildProcessTree(child) {',
+        "function directChildProcessTree(child) {\n  process.kill(-pid, 'SIGTERM');"),
+      'parent-pgid-operation'],
     ];
     for (const [label, mutant, expected] of mutations) {
       expect(assessOwnedLauncherSource(mutant), label).toContain(expected);

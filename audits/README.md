@@ -10,6 +10,48 @@ summary of it.
 
 ## Contents
 
+### Current local Glass cleanup stop and downstream diagnostic proof — exact 0569021 predecessor
+
+Exact clean SSH-signed source `05690215771db91601cf9dbcbcaa8d771fe540b5` passed the full
+browser-free develop profile, Compendium 78/78 and zero-finding Slice. Exact-bound Glass
+`20260902034025002-67201-c5ef56b312e9` then stopped once/no-retry after six green viewports with
+zero product findings at tablet-portrait browser cleanup (`kill EPERM`).
+
+The current POSIX owner keeps a detached Node sentinel as the live group leader through exact
+browser lifecycle, acknowledgement and terminal group-kill barriers; the parent performs no
+negative-PGID operation. Browser-close, owned-shutdown and successful-request-bound Windows
+taskkill exit classes are distinct and fail closed. Current browser/measurement authority is
+`8c6094e4e4bc05c40ace80478b038890e2e8c33856e5932a60805ac71249e0df` /
+`a963f40135651323bb2c0f2a0a6fa7a381ab3905e43b6e5721f45e9f38e50e62`; producer
+`308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77` and every ruler,
+ceiling, sample and browser-version policy are unchanged.
+
+Final Glass review also made the Inventory offscreen control refusal-only: it dispatches no input,
+arms no receipt listener, retains the exact owner and restores `null` versus empty style attributes
+exactly. Two short targeted instrument reds preserved malformed generated restoration source and
+Chromium's first-removal empty-style normalization, both before product input. Executable and
+browser-faithful controls close both gaps. All seven requested stop-to-end viewports then passed on
+identical dirty-source digest
+`23884a5d5050bc79642d25ac4700e58b269e0deee2d61464c37143550815c027`:
+tablet-portrait `20260902053159926-86747-9a6ec544ca9f`, tablet-landscape
+`20260902053214646-86864-a72ce4d83aef`, laptop-720p
+`20260902053229583-86982-528e2a6690f0`, desktop
+`20260902053243665-86740-fd3ed6b519f9`, desktop-1080p
+`20260902053339974-87246-c7e46a84c35d`, ultrawide
+`20260902053354610-87392-74be39e3fc8d` and desktop-8k
+`20260902053409007-87239-adca4be4b296`. Each has zero findings, zero instrument failures, zero
+automatic retries and one green reload.
+
+The immutable boundary, intermediate history, leaked-profile handling, two final-review reds and
+seven identical-source passes are recorded in
+`ARC4_GLASS_PR35_LOCAL_CLEANUP_AND_INVENTORY_INSTRUMENT_AUDIT_20260902_0569021.md` with all
+**23** deterministic carriers and exact raw/gzip hashes. Targeted runs remain non-certifying; the
+finished dirty source passes the complete browser-free `develop` profile at **264/264 files,
+2,728 passed / 1 skipped**, all three TypeScript programs and the root validator with the 50-probe
+v1.0 determinism fingerprint unchanged. The clean candidate and one unchanged-source Compendium →
+Slice → full Glass chain remain required.
+No GitHub write is authorized.
+
 ### Current PR #35 SceneMemory hosted allocator-phase stop — exact tenth attempt
 
 PR #35 run `33584052508` consumed the tenth exact one-time `test-battery` authorization for head
@@ -35,19 +77,21 @@ no retry, merge, release or deployment occurred.
 
 ### Current local successor — uncommitted production-only SceneMemory ownership
 
-The dirty local successor changes workflow/scope ownership only. Live SceneMemory native-heap
+The SceneMemory portion of the dirty local successor changes workflow/scope ownership only; the
+separate Glass/browser cleanup repair is documented in the section above. Live SceneMemory native-heap
 selftest/certification/verification are production-only and remain strict there; deterministic
 SceneMemory contracts and mutation controls remain universal; Compendium-specific and shared
 browser-transport change scopes are separate. No game source, SceneMemory collector, threshold,
 fixed-eight protocol, browser-family contract, product ruler or retry rule changes.
 
 Current local verification is green for the focused workflow/evidence owners (**3 files / 27
-tests**), complete browser-free `develop` profile (**263/263 files, 2,719 passed / 1 skipped**), all
-three TypeScript programs, complete art mutation control, browser-path selftest, Compendium browser
-preflight/selftest (**618 controls**) and shared browser-CDP selftest. Documentation review, a clean
-SSH-signed exact source, hermetic tracked-input preflight and one fresh unchanged-source Compendium
-→ Slice → Glass chain remain required before requesting a new exact-head authorization. No GitHub
-write is authorized.
+tests**), final launcher/Glass coverage (**3 files / 74 tests**), complete browser-free `develop`
+profile (**264/264 files, 2,728 passed / 1 skipped**), all three TypeScript programs, complete art
+mutation control, browser-path selftest, Compendium browser preflight/selftest (**618 controls**),
+shared browser-CDP selftest and the root validator's unchanged 50-probe v1.0 determinism
+fingerprint. A clean SSH-signed exact source, hermetic tracked-input preflight and one fresh
+unchanged-source Compendium → Slice → Glass chain remain required before requesting a new exact-head
+authorization. No GitHub write is authorized.
 
 ### Preserved predecessor Guide/Charter/D-TRAIN certificate — exact 4a4f0b8 source
 

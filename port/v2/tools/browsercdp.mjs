@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
+import { EventEmitter } from 'node:events';
 import { performance } from 'node:perf_hooks';
 import WebSocket from 'ws';
 import { fileURLToPath } from 'node:url';
@@ -99,27 +100,318 @@ function directChildProcessTree(child) {
     },
   });
 }
-function posixProcessGroup(pid, detached, killProcess = process.kill) {
-  assert(detached === true, 'refusing negative-PID browser shutdown without a detached process group');
-  /* This owns only the detached group identified at launch. Permanently
-     retaining ESRCH prevents later signalling after observed quiescence; it
-     cannot eliminate the kernel's inherent PID/PGID-reuse window before that
-     observation, and no ps-based inference is substituted for ownership. */
-  let provenGone = false;
-  const signal = (value) => {
-    if (provenGone) return false;
-    try { killProcess(-pid, value); return true; }
-    catch (error) {
-      if (error?.code === 'EPERM' && value === 0) return true;
-      if (error?.code !== 'ESRCH') throw error;
-      provenGone = true;
-      return false;
+const POSIX_SENTINEL_SCHEMA = 'cf-browser-group-sentinel/v1';
+
+/* This function is serialized into a detached Node child. Keep it closed over
+   no module state: the sentinel must be able to start from its own source text
+   and one JSON argument. It remains the process-group leader after Chromium's
+   root exits, so the numeric PGID cannot be reused before the final barrier. */
+function posixBrowserGroupSentinelEntry() {
+  const { spawn: spawnChild } = require('node:child_process');
+  const pathModule = require('node:path');
+  const schema = 'cf-browser-group-sentinel/v1';
+  let config = null;
+  try { config = JSON.parse(process.argv[1] || ''); }
+  catch (error) {
+    process.stderr.write(`browser sentinel configuration parse failed (${error.message})\n`);
+    process.exitCode = 64;
+    return;
+  }
+  const valid = config && config.schema === schema
+    && typeof config.browserFile === 'string' && pathModule.isAbsolute(config.browserFile)
+    && Array.isArray(config.browserArgs) && config.browserArgs.every((value) => typeof value === 'string')
+    && Number.isInteger(config.termGraceMs) && config.termGraceMs > 0
+    && Number.isInteger(config.ackTimeoutMs) && config.ackTimeoutMs > 0;
+  if (!valid) {
+    process.stderr.write('browser sentinel configuration is invalid\n');
+    process.exitCode = 64;
+    return;
+  }
+
+  let shutdownStarted = false;
+  let finalBarrierStarted = false;
+  let finalBarrierFinished = false;
+  let ackTimer = null;
+  let stderrForwarding = true;
+  const send = (type, fields = {}, callback = () => {}) => {
+    if (!process.connected || typeof process.send !== 'function') { callback(); return; }
+    try { process.send({ schema, type, ...fields }, callback); }
+    catch (error) { callback(error); }
+  };
+  const reportShutdownError = (phase, error) => send('shutdown-error', {
+    phase, message: error instanceof Error ? error.message : String(error),
+  });
+  const killOwnedGroup = () => {
+    if (finalBarrierFinished) return;
+    finalBarrierFinished = true;
+    if (ackTimer !== null) clearTimeout(ackTimer);
+    try {
+      /* The sender is still the live group leader here. A successful call
+         therefore cannot address a recycled group, and SIGKILL releases
+         the sentinel and every remaining member as one terminal barrier. */
+      process.kill(-process.pid, 'SIGKILL');
+    } catch (error) {
+      reportShutdownError('SIGKILL', error);
     }
   };
+  const finalBarrier = () => {
+    if (finalBarrierStarted) return;
+    finalBarrierStarted = true;
+    if (!process.connected || typeof process.send !== 'function') {
+      killOwnedGroup();
+      return;
+    }
+    send('shutdown-finalizing', { pgid: process.pid }, (error) => {
+      if (error) { killOwnedGroup(); return; }
+      /* Parent acknowledgement is the ordering fence: the sentinel performs
+         its terminal group kill only after the owner has observed and
+         accepted this exact identity. The watchdog still cleans the group if
+         the parent disappears or its acknowledgement is lost. */
+      ackTimer = setTimeout(killOwnedGroup, config.ackTimeoutMs);
+    });
+  };
+  const beginShutdown = () => {
+    if (shutdownStarted) return;
+    shutdownStarted = true;
+    try {
+      /* The sentinel deliberately holds SIGTERM while the rest of its owned
+         group receives the graceful escalation. */
+      process.kill(-process.pid, 'SIGTERM');
+    } catch (error) {
+      reportShutdownError('SIGTERM', error);
+      return;
+    }
+    setTimeout(finalBarrier, config.termGraceMs);
+  };
+  const stopStderrForwarding = (error) => {
+    if (!stderrForwarding) return;
+    stderrForwarding = false;
+    send('sentinel-error', {
+      message: `browser sentinel stderr forwarding failed (${error instanceof Error ? error.message : String(error)})`,
+    });
+    beginShutdown();
+  };
+
+  process.on('SIGTERM', () => {});
+  process.stderr.on('error', stopStderrForwarding);
+  process.on('disconnect', () => {
+    if (finalBarrierStarted) killOwnedGroup();
+    else beginShutdown();
+  });
+  process.on('message', (message) => {
+    if (message?.schema === schema && message.type === 'shutdown'
+      && !shutdownStarted) {
+      beginShutdown();
+      return;
+    }
+    if (message?.schema === schema && message.type === 'shutdown-finalizing-ack'
+      && finalBarrierStarted && !finalBarrierFinished && message.pgid === process.pid) {
+      killOwnedGroup();
+      return;
+    }
+    if (!message || message.schema !== schema) {
+      send('sentinel-error', { message: 'browser sentinel received an invalid control message' });
+      beginShutdown();
+      return;
+    }
+    send('sentinel-error', { message: 'browser sentinel received an invalid lifecycle transition' });
+    if (!shutdownStarted) beginShutdown();
+  });
+
+  let browser = null;
+  try {
+    browser = spawnChild(config.browserFile, config.browserArgs, {
+      stdio: ['ignore', 'ignore', 'pipe'], detached: false, windowsHide: true,
+    });
+  } catch (error) {
+    send('browser-error', { message: error instanceof Error ? error.message : String(error) });
+    return;
+  }
+  browser.stderr.on('error', stopStderrForwarding);
+  browser.stderr.on('data', (chunk) => {
+    if (!stderrForwarding) return;
+    try {
+      if (!process.stderr.write(chunk)) {
+        browser.stderr.pause();
+        process.stderr.once('drain', () => {
+          if (stderrForwarding) browser.stderr.resume();
+        });
+      }
+    }
+    catch (error) { stopStderrForwarding(error); }
+  });
+  browser.once('spawn', () => send('browser-started', { pid: browser.pid }));
+  browser.once('error', (error) => send('browser-error', { message: error.message }));
+  browser.once('exit', (code, signal) => send('browser-exit', { code, signal }));
+}
+
+const POSIX_BROWSER_GROUP_SENTINEL_SOURCE
+  = `(${posixBrowserGroupSentinelEntry.toString()})();`;
+
+function posixSentinelProcessTree(child) {
+  assert(Number.isInteger(child.pid) && child.pid > 0,
+    'browser sentinel process has no positive PID');
+  let browserPid = null;
+  let browserError = null;
+  let browserExit = null;
+  let protocolError = null;
+  let cleanupError = null;
+  let shutdownRequested = false;
+  let finalBarrierAnnounced = false;
+  let finalBarrierAckError = null;
+  let barrierComplete = false;
+  let pendingFinalExit = null;
+  let settleBrowserExited;
+  let browserLifecycleSettled = false;
+  const browserExited = new Promise((resolve) => { settleBrowserExited = resolve; });
+  let settleBarrier;
+  const barrierSettled = new Promise((resolve) => { settleBarrier = resolve; });
+  const retainProtocolError = (message) => {
+    if (protocolError === null) protocolError = new Error(message);
+  };
+  const retainCleanupError = (message) => {
+    if (cleanupError === null) cleanupError = new Error(message);
+    settleBarrier();
+  };
+  const completeBarrier = () => {
+    barrierComplete = true;
+    settleBarrier();
+  };
+  const maybeCompleteBarrier = () => {
+    if (finalBarrierAnnounced && pendingFinalExit?.signal === 'SIGKILL') completeBarrier();
+  };
+  child.on('message', (message) => {
+    if (!message || message.schema !== POSIX_SENTINEL_SCHEMA || typeof message.type !== 'string') {
+      retainProtocolError('browser sentinel emitted an invalid lifecycle message');
+      return;
+    }
+    if (message.type === 'browser-started') {
+      if (browserPid !== null || !Number.isInteger(message.pid) || message.pid <= 0) {
+        retainProtocolError('browser sentinel emitted an invalid or duplicate browser PID');
+      } else browserPid = message.pid;
+      return;
+    }
+    if (message.type === 'browser-error') {
+      if (browserError !== null || typeof message.message !== 'string' || !message.message) {
+        retainProtocolError('browser sentinel emitted invalid duplicate browser-error evidence');
+      } else {
+        browserError = message.message;
+        if (!browserLifecycleSettled) {
+          browserLifecycleSettled = true;
+          settleBrowserExited(Object.freeze({ kind: 'error', message: browserError }));
+        }
+      }
+      return;
+    }
+    if (message.type === 'browser-exit') {
+      if (browserExit !== null || (message.code !== null && !Number.isInteger(message.code))
+        || (message.signal !== null && typeof message.signal !== 'string')) {
+        retainProtocolError('browser sentinel emitted invalid duplicate browser-exit evidence');
+      } else {
+        browserExit = Object.freeze({ code: message.code, signal: message.signal });
+        if (!browserLifecycleSettled) {
+          browserLifecycleSettled = true;
+          settleBrowserExited(Object.freeze({ kind: 'exit', ...browserExit }));
+        }
+      }
+      return;
+    }
+    if (message.type === 'shutdown-finalizing') {
+      if (!shutdownRequested || finalBarrierAnnounced || message.pgid !== child.pid) {
+        retainCleanupError('browser sentinel final barrier identity was invalid');
+      } else {
+        finalBarrierAnnounced = true;
+        try {
+          child.send({
+            schema: POSIX_SENTINEL_SCHEMA,
+            type: 'shutdown-finalizing-ack',
+            pgid: child.pid,
+          }, (error) => {
+            if (error) {
+              finalBarrierAckError = new Error(
+                `browser sentinel final-barrier acknowledgement failed (${error.message})`,
+              );
+            }
+          });
+        } catch (error) {
+          finalBarrierAckError = new Error(
+            `browser sentinel final-barrier acknowledgement failed (${errorMessage(error)})`,
+          );
+        }
+        maybeCompleteBarrier();
+      }
+      return;
+    }
+    if (message.type === 'shutdown-error') {
+      retainCleanupError(`browser sentinel ${String(message.phase || 'shutdown')} failed (${String(message.message || 'unknown error')})`);
+      return;
+    }
+    if (message.type === 'sentinel-error') {
+      retainProtocolError(String(message.message || 'browser sentinel failed'));
+      shutdownRequested = true;
+      return;
+    }
+    retainProtocolError(`browser sentinel emitted unknown lifecycle message ${JSON.stringify(message.type)}`);
+  });
+  child.once('exit', (code, signal) => {
+    if (shutdownRequested && finalBarrierAnnounced && signal === 'SIGKILL') {
+      pendingFinalExit = Object.freeze({ code, signal });
+      completeBarrier();
+      return;
+    }
+    if (shutdownRequested && signal === 'SIGKILL') {
+      /* IPC delivery can be observed immediately after SIGCHLD under load.
+         Keep the exact exit pending only until the original child's `close`;
+         success still requires both the identity announcement and SIGKILL. */
+      pendingFinalExit = Object.freeze({ code, signal });
+      maybeCompleteBarrier();
+      return;
+    }
+    retainCleanupError(
+      `browser sentinel exited before its final owned-group barrier (code=${String(code)} signal=${String(signal)})`,
+    );
+  });
+  child.once('close', (code, signal) => {
+    if (pendingFinalExit !== null && !barrierComplete) {
+      retainCleanupError(
+        `browser sentinel closed without its final owned-group identity announcement (code=${String(code)} signal=${String(signal)})`,
+      );
+    }
+  });
   return Object.freeze({
-    kind: 'posix-process-group',
-    isAlive() { return signal(0); },
-    async signal(value) { signal(value); },
+    processTree: Object.freeze({
+      kind: 'posix-sentinel-process-group',
+      isAlive() {
+        if (cleanupError !== null) throw cleanupError;
+        return !barrierComplete;
+      },
+      async signal(_value, _label, timeoutMs) {
+        if (barrierComplete) return false;
+        if (cleanupError !== null) throw cleanupError;
+        if (!shutdownRequested) {
+          shutdownRequested = true;
+          try {
+            child.send({ schema: POSIX_SENTINEL_SCHEMA, type: 'shutdown' }, (error) => {
+              if (error) retainCleanupError(`browser sentinel shutdown IPC failed (${error.message})`);
+            });
+          } catch (error) {
+            retainCleanupError(`browser sentinel shutdown IPC failed (${errorMessage(error)})`);
+          }
+        }
+        const settled = await waitForResolution(barrierSettled, timeoutMs);
+        if (!settled) {
+          if (finalBarrierAckError !== null) throw finalBarrierAckError;
+          return false;
+        }
+        if (cleanupError !== null) throw cleanupError;
+        return barrierComplete;
+      },
+      diagnosticError() { return protocolError; },
+    }),
+    launchStatus() {
+      return Object.freeze({ browserPid, browserError, browserExit, protocolError });
+    },
+    browserExited,
   });
 }
 async function runWindowsTreeKill(pid, force, label, timeoutMs) {
@@ -174,11 +466,29 @@ function windowsProcessTree(child, pid, runTreeKill = runWindowsTreeKill) {
 function gracefulBrowserCloseAllowed(processTree) {
   return processTree?.kind !== 'windows-taskkill-tree';
 }
+function expectedBrowserLifecycle(phase, event, {
+  processTreeKind = null,
+  ownedShutdownAccepted = false,
+} = {}) {
+  if (event?.kind !== 'exit') return false;
+  const cleanExit = event.code === 0 && event.signal === null;
+  if (phase === 'browser-close-requested') return cleanExit;
+  if (phase === 'owned-shutdown') {
+    if (processTreeKind === 'windows-taskkill-tree') {
+      return ownedShutdownAccepted === true && Number.isInteger(event.code)
+        && event.signal === null;
+    }
+    return cleanExit || (event.code === null
+      && (event.signal === 'SIGTERM' || event.signal === 'SIGKILL'));
+  }
+  return false;
+}
 function ownedBrowserProcessTree(child, detached) {
   assert(Number.isInteger(child.pid) && child.pid > 0, 'browser process has no positive PID');
-  return process.platform === 'win32'
-    ? windowsProcessTree(child, child.pid)
-    : posixProcessGroup(child.pid, detached);
+  assert(process.platform === 'win32',
+    'direct POSIX browser ownership is forbidden; use the anchored sentinel');
+  assert(detached === true, 'Windows browser tree must retain its detached launch contract');
+  return windowsProcessTree(child, child.pid);
 }
 async function waitForTreeQuiescenceUntil(processTree, child, childExited, deadline) {
   let exited = child.pid === undefined || child.exitCode !== null || child.signalCode !== null;
@@ -195,9 +505,9 @@ async function waitForTreeQuiescence(processTree, child, childExited, timeoutMs)
   );
 }
 async function terminateChildProcess(child, childExited, childClosed, processTree, label, timeoutMs) {
-  /* POSIX cleanup owns the launcher's detached process group; Windows makes
-     one bounded taskkill /T request per attempted shutdown phase. Neither
-     claim extends to processes that deliberately escaped that boundary. */
+  /* POSIX cleanup owns one sentinel-anchored process group; Windows makes one
+     bounded taskkill /T request per attempted shutdown phase. Neither claim
+     extends to processes that deliberately escaped that boundary. */
   const signalAndWait = async (signal) => {
     const deadline = performance.now() + timeoutMs;
     const signalAccepted = await processTree.signal(signal, label,
@@ -256,15 +566,46 @@ async function proveOwnedUserDataAbsent(userData, label, stabilityMs = 100) {
   } while (true);
 }
 
-function launchChromiumProcess({ browserFile, chromiumArgs }) {
+function launchChromiumProcess({ browserFile, chromiumArgs, shutdownTimeoutMs }) {
   const detached = true;
+  if (process.platform !== 'win32') {
+    const termGraceMs = Math.min(250, Math.max(1, shutdownTimeoutMs - 1));
+    const ackTimeoutMs = Math.min(250, Math.max(1, shutdownTimeoutMs - termGraceMs));
+    const child = spawn(process.execPath, [
+      '--input-type=commonjs', '-e', POSIX_BROWSER_GROUP_SENTINEL_SOURCE,
+      JSON.stringify({
+        schema: POSIX_SENTINEL_SCHEMA, browserFile, browserArgs: chromiumArgs,
+        termGraceMs, ackTimeoutMs,
+      }),
+    ], {
+      stdio: ['ignore', 'ignore', 'pipe', 'ipc'], detached, windowsHide: true,
+    });
+    if (!Number.isInteger(child.pid) || child.pid <= 0) {
+      return Object.freeze({
+        child, processTree: directChildProcessTree(child),
+        launchStatus: () => Object.freeze({
+          browserPid: null, browserError: null, browserExit: null, protocolError: null,
+        }),
+      });
+    }
+    const owner = posixSentinelProcessTree(child);
+    return Object.freeze({
+      child, processTree: owner.processTree, launchStatus: owner.launchStatus,
+      browserExited: owner.browserExited,
+    });
+  }
   const child = spawn(browserFile, chromiumArgs, {
     stdio: ['ignore', 'ignore', 'pipe'], detached, windowsHide: true,
   });
   const processTree = Number.isInteger(child.pid) && child.pid > 0
     ? ownedBrowserProcessTree(child, detached)
     : directChildProcessTree(child);
-  return Object.freeze({ child, processTree });
+  return Object.freeze({
+    child, processTree,
+    launchStatus: () => Object.freeze({
+      browserPid: child.pid ?? null, browserError: null, browserExit: null, protocolError: null,
+    }),
+  });
 }
 
 /* Startup is one absolute spawn -> endpoint -> open-socket deadline. The
@@ -306,9 +647,14 @@ async function openChromiumCdpWithLauncher({
     '--remote-debugging-port=0', `--user-data-dir=${userData}`, 'about:blank',
   ];
   const startupStartedAt = nowMs();
-  const launched = launchBrowser({ browserFile, chromiumArgs, userData });
+  const launched = launchBrowser({ browserFile, chromiumArgs, userData, shutdownTimeoutMs });
   const child = launched?.child ?? launched;
   const processTree = launched?.processTree ?? directChildProcessTree(child);
+  const launchStatus = typeof launched?.launchStatus === 'function'
+    ? launched.launchStatus
+    : () => Object.freeze({
+      browserPid: child?.pid ?? null, browserError: null, browserExit: null, protocolError: null,
+    });
   assert(child && typeof child.on === 'function' && child.stderr,
     `${label}: browser launcher returned an invalid child`);
   assert(processTree && typeof processTree.isAlive === 'function'
@@ -329,12 +675,41 @@ async function openChromiumCdpWithLauncher({
   child.on('exit', (code, signal) => { exitDescription = `exit=${String(code)} signal=${String(signal)}`; });
   const childExited = new Promise((resolve) => child.once('exit', resolve));
   const childClosed = new Promise((resolve) => child.once('close', resolve));
-  const terminateOwnedBrowser = async () => {
+  const browserExited = launched?.browserExited ?? (
+    child.exitCode !== null || child.signalCode !== null
+      ? Promise.resolve(Object.freeze({
+        kind: 'exit', code: child.exitCode, signal: child.signalCode,
+      }))
+      : new Promise((resolve) => child.once('exit', (code, signal) => resolve(Object.freeze({
+        kind: 'exit', code, signal,
+      }))))
+  );
+  const terminateOwnedBrowser = async ({
+    onOwnedShutdown = () => {},
+    onOwnedShutdownSettled = () => {},
+  } = {}) => {
+    const phaseAwareProcessTree = Object.freeze({
+      kind: processTree.kind,
+      isAlive: () => processTree.isAlive(),
+      async signal(...args) {
+        onOwnedShutdown(args[0]);
+        try {
+          const accepted = await processTree.signal(...args);
+          onOwnedShutdownSettled(accepted === true);
+          return accepted;
+        } catch (error) {
+          onOwnedShutdownSettled(false);
+          throw error;
+        }
+      },
+    });
     await terminateChildProcess(
-      child, childExited, childClosed, processTree, label, shutdownTimeoutMs,
+      child, childExited, childClosed, phaseAwareProcessTree, label, shutdownTimeoutMs,
     );
     removeOwnedUserData(userData, temporary, userDataPrefix);
     await proveOwnedUserDataAbsent(userData, label);
+    const processDiagnostic = processTree.diagnosticError?.();
+    if (processDiagnostic) throw processDiagnostic;
   };
 
   let endpoint = null;
@@ -343,12 +718,15 @@ async function openChromiumCdpWithLauncher({
   let endpointContentErrorCount = 0;
   const startupDeadline = startupStartedAt + startupTimeoutMs;
   while (endpoint === null && nowMs() < startupDeadline) {
-    if (spawnError || exitDescription) break;
+    const status = launchStatus();
+    if (spawnError || exitDescription || status.browserError
+      || status.browserExit || status.protocolError) break;
     try {
       const observed = activeEndpoint(userData);
       if (observed === null) {
         endpointCandidate = null;
-      } else if (endpointCandidate?.snapshot === observed.snapshot) {
+      } else if (endpointCandidate?.snapshot === observed.snapshot
+        && Number.isInteger(status.browserPid) && status.browserPid > 0) {
         endpoint = observed.endpoint;
       } else {
         endpointCandidate = observed;
@@ -366,16 +744,23 @@ async function openChromiumCdpWithLauncher({
     if (endpoint === null) await sleep(Math.min(100, Math.max(1, startupDeadline - nowMs())));
   }
   if (endpoint === null) {
-    const timedOut = !spawnError && !exitDescription;
+    const status = launchStatus();
+    const timedOut = !spawnError && !exitDescription && !status.browserError
+      && !status.browserExit && !status.protocolError;
     const stderr = stderrBytes
       ? stderrHead.trim() === stderrTail.trim()
         ? `stderr=${JSON.stringify(stderrHead.trim())}`
         : `stderr-head=${JSON.stringify(stderrHead.trim())}; stderr-tail=${JSON.stringify(stderrTail.trim())}`
       : '';
     const detail = [
-      `pid=${String(child.pid ?? 'unknown')}`,
+      `owner-pid=${String(child.pid ?? 'unknown')}`,
+      `browser-pid=${String(status.browserPid ?? 'unknown')}`,
       spawnError ? `spawn=${spawnError.message}` : '',
       exitDescription || '',
+      status.browserError ? `browser-spawn=${status.browserError}` : '',
+      status.browserExit
+        ? `browser-exit=${String(status.browserExit.code)} signal=${String(status.browserExit.signal)}` : '',
+      status.protocolError ? `sentinel-protocol=${status.protocolError.message}` : '',
       timedOut ? `startup-timeout=${startupTimeoutMs}ms` : '',
       endpointContentErrorCount ? `endpoint-invalid-observations=${endpointContentErrorCount}` : '',
       endpointContentError ? `endpoint-last-error=${JSON.stringify(endpointContentError.message)}` : '',
@@ -394,31 +779,83 @@ async function openChromiumCdpWithLauncher({
   let eventHandlerError = null;
   let messageId = 0;
   let gracefulBrowserCloseEligible = false;
+  let browserLifecyclePhase = 'work';
+  const ownedShutdownRequest = {
+    processTreeKind: processTree.kind, started: false, settled: false, accepted: false,
+  };
+  let observedBrowserLifecycle = null;
+  let unexpectedBrowserLifecycle = null;
   const pending = new Map();
   const terminalError = (message) => new Error(`${label}: ${message}`);
+  const browserLifecycleError = (where, event) => terminalError(event?.kind === 'error'
+    ? `browser failed ${where} (${String(event.message)})`
+    : `browser exited ${where} (exit=${String(event?.code)} signal=${String(event?.signal)})`);
+  const browserLifecycleFailure = (phase, event) => {
+    if (expectedBrowserLifecycle(phase, event, {
+      processTreeKind: ownedShutdownRequest.processTreeKind,
+      ownedShutdownAccepted: ownedShutdownRequest.accepted,
+    })) return null;
+    const where = phase === 'browser-close-requested'
+      ? 'after Browser.close request'
+      : phase === 'owned-shutdown' ? 'during owned shutdown' : 'before owned close';
+    return browserLifecycleError(where, event);
+  };
   const rejectPending = (error) => {
     for (const waiter of pending.values()) waiter.reject(error);
     pending.clear();
   };
+  browserExited.then((event) => {
+    const hadPending = pending.size > 0;
+    const observation = Object.freeze({ phase: browserLifecyclePhase, event, hadPending });
+    if (observedBrowserLifecycle === null) observedBrowserLifecycle = observation;
+    const failure = browserLifecycleFailure(observation.phase, event);
+    const deferredWindowsExit = observation.phase === 'owned-shutdown'
+      && ownedShutdownRequest.processTreeKind === 'windows-taskkill-tree'
+      && ownedShutdownRequest.settled === false && event?.kind === 'exit';
+    if (!hadPending && !deferredWindowsExit
+      && failure !== null && unexpectedBrowserLifecycle === null) {
+      unexpectedBrowserLifecycle = failure;
+    }
+    rejectPending(browserLifecycleError('during CDP work', event));
+  });
   const close = () => {
     if (closePromise) return closePromise;
     closePromise = (async () => {
       closed = true;
       rejectPending(terminalError('CDP connection closed'));
       let cleanupError = null;
+      let lifecycleFailureRetained = false;
       const retainCleanupError = (error) => {
         cleanupError = cleanupError === null ? error : withCleanupFailure(cleanupError, error);
       };
+      const preCloseStatus = launchStatus();
+      if (unexpectedBrowserLifecycle !== null) {
+        retainCleanupError(unexpectedBrowserLifecycle);
+        lifecycleFailureRetained = true;
+      } else if (preCloseStatus.browserError) {
+        retainCleanupError(terminalError(
+          `browser failed before owned close (${preCloseStatus.browserError})`,
+        ));
+        lifecycleFailureRetained = true;
+      } else if (preCloseStatus.browserExit) {
+        retainCleanupError(terminalError(
+          `browser exited before owned close (exit=${String(preCloseStatus.browserExit.code)} `
+          + `signal=${String(preCloseStatus.browserExit.signal)})`,
+        ));
+        lifecycleFailureRetained = true;
+      }
       let browserCloseRequested = false;
       let ownedProcessAlive = false;
       try { ownedProcessAlive = processTree.isAlive(); }
       catch (error) { retainCleanupError(error); }
       if (gracefulBrowserCloseEligible && gracefulBrowserCloseAllowed(processTree)
         && ownedProcessAlive
+        && cleanupError === null
         && ws?.readyState === WebSocketImpl.OPEN) {
         try {
           ws.send(JSON.stringify({ id: ++messageId, method: 'Browser.close', params: {} }));
           browserCloseRequested = true;
+          browserLifecyclePhase = 'browser-close-requested';
         } catch (error) {
           retainCleanupError(terminalError(`Browser.close send failed (${errorMessage(error)})`));
         }
@@ -432,9 +869,48 @@ async function openChromiumCdpWithLauncher({
       }
       try { if (ws) ws.close(); }
       catch (error) { retainCleanupError(error); }
-      try { await terminateOwnedBrowser(); }
+      try {
+        await terminateOwnedBrowser({
+          onOwnedShutdown: () => {
+            browserLifecyclePhase = 'owned-shutdown';
+            ownedShutdownRequest.started = true;
+            ownedShutdownRequest.settled = false;
+          },
+          onOwnedShutdownSettled: (accepted) => {
+            ownedShutdownRequest.settled = true;
+            if (accepted) ownedShutdownRequest.accepted = true;
+          },
+        });
+      }
       catch (browserCleanupError) {
         retainCleanupError(browserCleanupError);
+      }
+      await Promise.resolve();
+      if (!lifecycleFailureRetained && unexpectedBrowserLifecycle !== null) {
+        retainCleanupError(unexpectedBrowserLifecycle);
+        lifecycleFailureRetained = true;
+      }
+      if (!lifecycleFailureRetained && observedBrowserLifecycle !== null
+        && observedBrowserLifecycle.hadPending !== true) {
+        const failure = browserLifecycleFailure(
+          observedBrowserLifecycle.phase, observedBrowserLifecycle.event,
+        );
+        if (failure !== null) {
+          retainCleanupError(failure);
+          lifecycleFailureRetained = true;
+        }
+      }
+      if (!lifecycleFailureRetained) {
+        const postCloseStatus = launchStatus();
+        const postCloseEvent = postCloseStatus.browserError
+          ? { kind: 'error', message: postCloseStatus.browserError }
+          : postCloseStatus.browserExit ? { kind: 'exit', ...postCloseStatus.browserExit } : null;
+        const postClosePhase = observedBrowserLifecycle !== null
+          && JSON.stringify(observedBrowserLifecycle.event) === JSON.stringify(postCloseEvent)
+          ? observedBrowserLifecycle.phase : browserLifecyclePhase;
+        const failure = postCloseEvent === null
+          ? null : browserLifecycleFailure(postClosePhase, postCloseEvent);
+        if (failure !== null) retainCleanupError(failure);
       }
       if (cleanupError) throw cleanupError;
     })();
@@ -473,13 +949,14 @@ async function openChromiumCdpWithLauncher({
         if (error) reject(error); else resolve();
       };
       const onExit = (code, signal) => finish(terminalError(
-        `browser exited before CDP opened (exit=${String(code)} signal=${String(signal)})`));
+        `browser owner exited before CDP opened (exit=${String(code)} signal=${String(signal)})`));
       const timer = setTimeout(() => finish(terminalError(
         `timed out opening the CDP WebSocket `
         + `(socket-timeout=${effectiveOpenTimeoutMs}ms; configured=${webSocketOpenTimeoutMs}ms; `
         + `endpoint-ready=${endpointReadyMs}ms; startup-timeout=${startupTimeoutMs}ms)`)),
       remainingOpenMs);
       child.once('exit', onExit);
+      browserExited.then((event) => finish(browserLifecycleError('before CDP opened', event)));
       ws.onopen = () => {
         if (nowMs() >= socketDeadline) {
           finish(terminalError(
@@ -493,6 +970,18 @@ async function openChromiumCdpWithLauncher({
       ws.onerror = () => finish(terminalError('CDP WebSocket failed to open'));
       ws.onclose = () => finish(terminalError('CDP WebSocket closed before opening'));
     });
+
+    const postOpenStatus = launchStatus();
+    if (postOpenStatus.browserError) {
+      throw terminalError(`browser failed after CDP opened (${postOpenStatus.browserError})`);
+    }
+    if (postOpenStatus.browserExit) {
+      throw terminalError(
+        `browser exited after CDP opened (exit=${String(postOpenStatus.browserExit.code)} `
+        + `signal=${String(postOpenStatus.browserExit.signal)})`,
+      );
+    }
+    if (postOpenStatus.protocolError) throw postOpenStatus.protocolError;
 
     ws.onmessage = (event) => {
       const receivedAtMs = nowMs();
@@ -516,10 +1005,22 @@ async function openChromiumCdpWithLauncher({
     ws.onerror = () => rejectPending(terminalError('CDP WebSocket error'));
     ws.onclose = () => rejectPending(terminalError('CDP WebSocket closed'));
     child.on('exit', (code, signal) => rejectPending(terminalError(
-      `browser exited (exit=${String(code)} signal=${String(signal)})`)));
-
+      `browser owner exited (exit=${String(code)} signal=${String(signal)})`)));
     const send = (method, params = {}, sessionId, options = {}) => {
       if (eventHandlerError) return Promise.reject(eventHandlerError);
+      const currentLaunchStatus = launchStatus();
+      if (currentLaunchStatus.protocolError) return Promise.reject(currentLaunchStatus.protocolError);
+      if (currentLaunchStatus.browserError) {
+        return Promise.reject(terminalError(
+          `browser failed before ${method} (${currentLaunchStatus.browserError})`,
+        ));
+      }
+      if (currentLaunchStatus.browserExit) {
+        return Promise.reject(terminalError(
+          `browser exited before ${method} (exit=${String(currentLaunchStatus.browserExit.code)} `
+          + `signal=${String(currentLaunchStatus.browserExit.signal)})`,
+        ));
+      }
       if (closed || ws.readyState !== WebSocketImpl.OPEN) {
         return Promise.reject(terminalError(`cannot send ${method}; CDP is not open`));
       }
@@ -562,6 +1063,13 @@ async function openChromiumCdpWithLauncher({
       });
     };
     const version = await send('Browser.getVersion');
+    const postVersionStatus = launchStatus();
+    if (postVersionStatus.protocolError) throw postVersionStatus.protocolError;
+    if (postVersionStatus.browserError || postVersionStatus.browserExit) {
+      throw browserLifecycleError('during Browser.getVersion', postVersionStatus.browserError
+        ? { kind: 'error', message: postVersionStatus.browserError }
+        : { kind: 'exit', ...postVersionStatus.browserExit });
+    }
     const browser = Object.freeze({
       executable: portable(browserFile),
       product: requiredString(version.product, `${label} product`),
@@ -571,7 +1079,7 @@ async function openChromiumCdpWithLauncher({
       protocol_version: requiredString(version.protocolVersion, `${label} protocol version`),
     });
     gracefulBrowserCloseEligible = true;
-    return { send, browser, pid: child.pid, close };
+    return { send, browser, pid: launchStatus().browserPid ?? child.pid, close };
   } catch (error) {
     const primary = new Error(errorMessage(error).startsWith(`${label}:`)
       ? errorMessage(error)
@@ -635,6 +1143,36 @@ async function runSelftest() {
   const base = `cf-browsercdp-selftest-${nonce}`;
   const endpointFixture = fs.mkdtempSync(path.join(fs.realpathSync(os.tmpdir()), `${base}-endpoint-`));
   try {
+    const lifecycleCases = [
+      ['work clean exit', 'work', { kind: 'exit', code: 0, signal: null }, false],
+      ['close-request clean exit', 'browser-close-requested',
+        { kind: 'exit', code: 0, signal: null }, true],
+      ['close-request TERM', 'browser-close-requested',
+        { kind: 'exit', code: null, signal: 'SIGTERM' }, false],
+      ['close-request abort', 'browser-close-requested',
+        { kind: 'exit', code: null, signal: 'SIGABRT' }, false],
+      ['close-request nonzero', 'browser-close-requested',
+        { kind: 'exit', code: 17, signal: null }, false],
+      ['close-request error', 'browser-close-requested',
+        { kind: 'error', message: 'injected close error' }, false],
+      ['owned clean exit', 'owned-shutdown', { kind: 'exit', code: 0, signal: null }, true],
+      ['owned TERM', 'owned-shutdown', { kind: 'exit', code: null, signal: 'SIGTERM' }, true],
+      ['owned KILL', 'owned-shutdown', { kind: 'exit', code: null, signal: 'SIGKILL' }, true],
+      ['owned abort', 'owned-shutdown', { kind: 'exit', code: null, signal: 'SIGABRT' }, false],
+      ['owned nonzero', 'owned-shutdown', { kind: 'exit', code: 17, signal: null }, false],
+      ['owned error', 'owned-shutdown', { kind: 'error', message: 'injected shutdown error' }, false],
+      ['accepted Windows owned nonzero', 'owned-shutdown',
+        { kind: 'exit', code: 17, signal: null }, true,
+        { processTreeKind: 'windows-taskkill-tree', ownedShutdownAccepted: true }],
+      ['unaccepted Windows owned nonzero', 'owned-shutdown',
+        { kind: 'exit', code: 17, signal: null }, false,
+        { processTreeKind: 'windows-taskkill-tree', ownedShutdownAccepted: false }],
+    ];
+    for (const [name, phase, event, expected, options] of lifecycleCases) {
+      assert(expectedBrowserLifecycle(phase, event, options) === expected,
+        `SELFTEST browser lifecycle classifier accepted the wrong outcome for ${name}`);
+    }
+
     const fakeDeadlineTimer = () => {
       let observedAtMs = 0;
       const timers = [];
@@ -750,6 +1288,104 @@ async function runSelftest() {
     successfulWindowsChild.exitCode = 0;
     assert(!successfulWindowsTree.isAlive(),
       'SELFTEST Windows tree rejected taskkill success plus root exit');
+    let externalWindowsExited;
+    const externalWindowsExit = new Promise((resolve) => { externalWindowsExited = resolve; });
+    let externalWindowsClosed;
+    const externalWindowsClose = new Promise((resolve) => { externalWindowsClosed = resolve; });
+    const externalWindowsChild = {
+      exitCode: null, signalCode: null, pid: 24,
+      stderr: { destroy() { externalWindowsClosed(); } },
+    };
+    const externalWindowsCalls = [];
+    const externalWindowsTree = windowsProcessTree(
+      externalWindowsChild, externalWindowsChild.pid,
+      async (...args) => {
+        externalWindowsCalls.push(args);
+        externalWindowsChild.exitCode = 17;
+        externalWindowsExited();
+        return true;
+      },
+    );
+    await terminateChildProcess(
+      externalWindowsChild, externalWindowsExit, externalWindowsClose,
+      externalWindowsTree, 'CDP selftest external Windows exit-code tree', 20,
+    );
+    assert(!externalWindowsTree.isAlive() && externalWindowsCalls.length === 1,
+      'SELFTEST successful Windows taskkill did not own its external nonzero exit code');
+
+    const windowsLifecyclePrefix = `${base}-windows-external-lifecycle`;
+    let windowsLifecycleSignalCalls = 0;
+    let windowsLifecycleBrowserCloseRequests = 0;
+    let windowsLifecycleSocketClosed = false;
+    const launchWindowsLifecycleFixture = ({ userData }) => {
+      fs.mkdirSync(userData, { recursive: true });
+      fs.writeFileSync(path.join(userData, 'DevToolsActivePort'),
+        '9\n/devtools/browser/selftest-windows-external-lifecycle\n');
+      const child = new EventEmitter();
+      const stderr = new EventEmitter();
+      Object.assign(stderr, { destroy() {} });
+      Object.assign(child, {
+        pid: 25, exitCode: null, signalCode: null, stderr,
+      });
+      const processTree = windowsProcessTree(child, child.pid, async () => {
+        windowsLifecycleSignalCalls++;
+        child.exitCode = 17;
+        child.emit('exit', 17, null);
+        child.emit('close', 17, null);
+        await Promise.resolve();
+        return true;
+      });
+      return Object.freeze({
+        child, processTree,
+        launchStatus: () => Object.freeze({
+          browserPid: child.pid, browserError: null, browserExit: null, protocolError: null,
+        }),
+      });
+    };
+    class WindowsExternalLifecycleWebSocket {
+      static OPEN = 1;
+      constructor() {
+        this.readyState = 0;
+        setTimeout(() => {
+          this.readyState = WindowsExternalLifecycleWebSocket.OPEN;
+          this.onopen?.();
+        }, 0);
+      }
+      send(payload) {
+        const message = JSON.parse(payload);
+        if (message.method === 'Browser.close') {
+          windowsLifecycleBrowserCloseRequests++;
+          return;
+        }
+        assert(message.method === 'Browser.getVersion',
+          `SELFTEST Windows external lifecycle received unexpected ${message.method}`);
+        queueMicrotask(() => this.onmessage?.({ data: JSON.stringify({
+          id: message.id,
+          result: {
+            product: 'Chrome/Windows-external-lifecycle-selftest',
+            revision: 'windows-external-lifecycle-revision',
+            userAgent: 'cf-browsercdp-windows-external-lifecycle-selftest',
+            jsVersion: 'windows-external-lifecycle-js', protocolVersion: '1.3',
+          },
+        }) }));
+      }
+      close() { windowsLifecycleSocketClosed = true; this.readyState = 3; }
+    }
+    const windowsLifecycleConnection = await openChromiumCdpWithLauncher({
+      label: 'CDP selftest Windows external lifecycle',
+      userDataPrefix: windowsLifecyclePrefix,
+      commandTimeoutMs: 500, startupTimeoutMs: 1000, shutdownTimeoutMs: 1000,
+      WebSocketImpl: WindowsExternalLifecycleWebSocket,
+    }, launchWindowsLifecycleFixture);
+    await windowsLifecycleConnection.close();
+    assert(windowsLifecycleSignalCalls === 1,
+      'SELFTEST Windows external lifecycle did not own exactly one successful taskkill request');
+    assert(windowsLifecycleBrowserCloseRequests === 0,
+      'SELFTEST Windows external lifecycle incorrectly requested graceful Browser.close');
+    assert(windowsLifecycleSocketClosed,
+      'SELFTEST Windows external lifecycle did not close its injected socket');
+    assertNoOwnedProfiles(windowsLifecyclePrefix, 'Windows external lifecycle cleanup');
+
     let escalatingWindowsExited;
     const escalatingWindowsExit = new Promise((resolve) => { escalatingWindowsExited = resolve; });
     let escalatingWindowsClosed;
@@ -786,23 +1422,256 @@ async function runSelftest() {
     assert(failedWindowsTree.isAlive(),
       'SELFTEST Windows tree accepted a nonzero forced taskkill result');
 
-    const posixGoneCalls = [];
-    const posixGone = posixProcessGroup(31, true, (target, signal) => {
-      posixGoneCalls.push([target, signal]);
-      throw Object.assign(new Error('gone'), { code: 'ESRCH' });
-    });
-    assert(!posixGone.isAlive(), 'SELFTEST POSIX group did not retain ESRCH absence');
-    await posixGone.signal('SIGTERM');
-    assert(JSON.stringify(posixGoneCalls) === JSON.stringify([[-31, 0]]),
-      'SELFTEST POSIX group signalled again after proving ESRCH');
-    const posixAddressCalls = [];
-    const posixAddress = posixProcessGroup(32, true, (target, signal) => {
-      posixAddressCalls.push([target, signal]);
-    });
-    assert(posixAddress.isAlive(), 'SELFTEST POSIX owned group positive control was not alive');
-    await posixAddress.signal('SIGTERM');
-    assert(posixAddressCalls.every(([target]) => target === -32),
-      'SELFTEST POSIX group addressed a process outside its owned negative group ID');
+    if (process.platform !== 'win32') {
+      const sentinelChild = new EventEmitter();
+      Object.assign(sentinelChild, {
+        pid: 31, exitCode: null, signalCode: null,
+        sendCalls: [],
+        send(message, callback) {
+          this.sendCalls.push(message);
+          if (message.type === 'shutdown') {
+            callback?.(null);
+            queueMicrotask(() => this.emit('message', {
+              schema: POSIX_SENTINEL_SCHEMA, type: 'shutdown-finalizing', pgid: this.pid,
+            }));
+            return;
+          }
+          if (message.type === 'shutdown-finalizing-ack') {
+            callback?.(null);
+            queueMicrotask(() => {
+              this.signalCode = 'SIGKILL';
+              this.emit('exit', null, 'SIGKILL');
+            });
+            return;
+          }
+          callback?.(new Error(`unexpected fake sentinel message ${String(message.type)}`));
+        },
+      });
+      const sentinelOwner = posixSentinelProcessTree(sentinelChild);
+      sentinelChild.emit('message', {
+        schema: POSIX_SENTINEL_SCHEMA, type: 'browser-started', pid: 32,
+      });
+      assert(sentinelOwner.launchStatus().browserPid === 32,
+        'SELFTEST POSIX sentinel lost the exact inner-browser PID handshake');
+      assert(sentinelOwner.processTree.isAlive(),
+        'SELFTEST POSIX sentinel was not live before its final barrier');
+      assert(await sentinelOwner.processTree.signal('SIGTERM', 'sentinel fixture', 20),
+        'SELFTEST POSIX sentinel did not complete its final barrier');
+      assert(!sentinelOwner.processTree.isAlive(),
+        'SELFTEST POSIX sentinel remained live after its final barrier');
+      const completedSentinelSendCount = sentinelChild.sendCalls.length;
+      assert(await sentinelOwner.processTree.signal('SIGKILL', 'sentinel fixture', 20) === false
+        && sentinelChild.sendCalls.length === completedSentinelSendCount,
+      'SELFTEST POSIX sentinel performed a post-release operation on a reusable PGID');
+
+      const reorderedChild = new EventEmitter();
+      Object.assign(reorderedChild, {
+        pid: 36, exitCode: null, signalCode: null,
+        send(message, callback) {
+          if (message.type === 'shutdown') {
+            callback?.(null);
+            queueMicrotask(() => this.emit('message', {
+              schema: POSIX_SENTINEL_SCHEMA, type: 'shutdown-finalizing', pgid: this.pid,
+            }));
+            return;
+          }
+          if (message.type === 'shutdown-finalizing-ack') {
+            this.emit('message', {
+              schema: POSIX_SENTINEL_SCHEMA, type: 'browser-exit', code: 0, signal: 'SIGTERM',
+            });
+            this.signalCode = 'SIGKILL';
+            this.emit('exit', null, 'SIGKILL');
+            this.emit('close', null, 'SIGKILL');
+            callback?.(null);
+            return;
+          }
+          callback?.(new Error(`unexpected reordered sentinel message ${String(message.type)}`));
+        },
+      });
+      const reorderedOwner = posixSentinelProcessTree(reorderedChild);
+      assert(await reorderedOwner.processTree.signal(
+        'SIGTERM', 'reordered sentinel fixture', 20,
+      ), 'SELFTEST POSIX sentinel rejected an exact exit-before-IPC delivery ordering');
+
+      const lostAckButKilledChild = new EventEmitter();
+      Object.assign(lostAckButKilledChild, {
+        pid: 44, exitCode: null, signalCode: null,
+        send(message, callback) {
+          if (message.type === 'shutdown') {
+            callback?.(null);
+            queueMicrotask(() => this.emit('message', {
+              schema: POSIX_SENTINEL_SCHEMA, type: 'shutdown-finalizing', pgid: this.pid,
+            }));
+            return;
+          }
+          if (message.type === 'shutdown-finalizing-ack') {
+            callback?.(new Error('injected final acknowledgement loss'));
+            queueMicrotask(() => {
+              this.signalCode = 'SIGKILL';
+              this.emit('exit', null, 'SIGKILL');
+            });
+            return;
+          }
+          callback?.(new Error(`unexpected lost-ACK sentinel message ${String(message.type)}`));
+        },
+      });
+      const lostAckButKilledOwner = posixSentinelProcessTree(lostAckButKilledChild);
+      assert(await lostAckButKilledOwner.processTree.signal(
+        'SIGTERM', 'lost-ACK killed sentinel fixture', 20,
+      ), 'SELFTEST POSIX sentinel rejected a watchdog-style final KILL after ACK loss');
+
+      const lostAckNoKillChild = new EventEmitter();
+      Object.assign(lostAckNoKillChild, {
+        pid: 45, exitCode: null, signalCode: null,
+        send(message, callback) {
+          if (message.type === 'shutdown') {
+            callback?.(null);
+            queueMicrotask(() => this.emit('message', {
+              schema: POSIX_SENTINEL_SCHEMA, type: 'shutdown-finalizing', pgid: this.pid,
+            }));
+            return;
+          }
+          if (message.type === 'shutdown-finalizing-ack') {
+            callback?.(new Error('injected final acknowledgement loss'));
+            return;
+          }
+          callback?.(new Error(`unexpected lost-ACK sentinel message ${String(message.type)}`));
+        },
+      });
+      const lostAckNoKillOwner = posixSentinelProcessTree(lostAckNoKillChild);
+      await expectRejectedAsync('sentinel final acknowledgement loss without KILL',
+        () => lostAckNoKillOwner.processTree.signal(
+          'SIGTERM', 'lost-ACK no-KILL sentinel fixture', 5,
+        ), /^browser sentinel final-barrier acknowledgement failed \(injected final acknowledgement loss\)$/);
+
+      const ipcFailureChild = new EventEmitter();
+      Object.assign(ipcFailureChild, {
+        pid: 37, exitCode: null, signalCode: null,
+        send(_message, callback) {
+          callback?.(new Error('injected sentinel IPC failure'));
+        },
+      });
+      const ipcFailureOwner = posixSentinelProcessTree(ipcFailureChild);
+      await expectRejectedAsync('sentinel shutdown IPC failure',
+        () => ipcFailureOwner.processTree.signal('SIGTERM', 'IPC sentinel fixture', 20),
+        /^browser sentinel shutdown IPC failed \(injected sentinel IPC failure\)$/);
+
+      const duplicatePidChild = new EventEmitter();
+      Object.assign(duplicatePidChild, {
+        pid: 38, exitCode: null, signalCode: null,
+        send(message, callback) {
+          if (message.type === 'shutdown') {
+            callback?.(null);
+            queueMicrotask(() => this.emit('message', {
+              schema: POSIX_SENTINEL_SCHEMA, type: 'shutdown-finalizing', pgid: this.pid,
+            }));
+            return;
+          }
+          if (message.type === 'shutdown-finalizing-ack') {
+            callback?.(null);
+            queueMicrotask(() => {
+              this.signalCode = 'SIGKILL';
+              this.emit('exit', null, 'SIGKILL');
+            });
+            return;
+          }
+          callback?.(new Error(`unexpected duplicate-PID sentinel message ${String(message.type)}`));
+        },
+      });
+      const duplicatePidOwner = posixSentinelProcessTree(duplicatePidChild);
+      duplicatePidChild.emit('message', {
+        schema: POSIX_SENTINEL_SCHEMA, type: 'browser-started', pid: 39,
+      });
+      duplicatePidChild.emit('message', {
+        schema: POSIX_SENTINEL_SCHEMA, type: 'browser-started', pid: 40,
+      });
+      assert(await duplicatePidOwner.processTree.signal(
+        'SIGTERM', 'duplicate PID fixture', 20,
+      ), 'SELFTEST duplicate-PID sentinel did not finish safe cleanup');
+      assert(duplicatePidOwner.processTree.diagnosticError()?.message
+        === 'browser sentinel emitted an invalid or duplicate browser PID',
+      'SELFTEST duplicate sentinel browser PID did not remain a terminal protocol diagnosis');
+
+      const wrongIdentityChild = new EventEmitter();
+      Object.assign(wrongIdentityChild, {
+        pid: 33, exitCode: null, signalCode: null,
+        send(_message, callback) {
+          callback?.(null);
+          queueMicrotask(() => this.emit('message', {
+            schema: POSIX_SENTINEL_SCHEMA, type: 'shutdown-finalizing', pgid: 34,
+          }));
+        },
+      });
+      const wrongIdentityOwner = posixSentinelProcessTree(wrongIdentityChild);
+      await expectRejectedAsync('wrong sentinel final-barrier identity',
+        () => wrongIdentityOwner.processTree.signal('SIGTERM', 'wrong sentinel fixture', 20),
+        /^browser sentinel final barrier identity was invalid$/);
+
+      const missingBarrierChild = new EventEmitter();
+      Object.assign(missingBarrierChild, {
+        pid: 35, exitCode: null, signalCode: null,
+        send(_message, callback) { callback?.(null); },
+      });
+      const missingBarrierOwner = posixSentinelProcessTree(missingBarrierChild);
+      assert(await missingBarrierOwner.processTree.signal(
+        'SIGTERM', 'missing sentinel fixture', 5,
+      ) === false, 'SELFTEST POSIX sentinel accepted a missing final barrier');
+
+      const shutdownErrorChild = new EventEmitter();
+      Object.assign(shutdownErrorChild, {
+        pid: 41, exitCode: null, signalCode: null,
+        send(_message, callback) {
+          callback?.(null);
+          queueMicrotask(() => this.emit('message', {
+            schema: POSIX_SENTINEL_SCHEMA, type: 'shutdown-error',
+            phase: 'SIGTERM', message: 'kill EPERM',
+          }));
+        },
+      });
+      const shutdownErrorOwner = posixSentinelProcessTree(shutdownErrorChild);
+      await expectRejectedAsync('sentinel group-signal EPERM',
+        () => shutdownErrorOwner.processTree.signal('SIGTERM', 'EPERM sentinel fixture', 20),
+        /^browser sentinel SIGTERM failed \(kill EPERM\)$/);
+
+      const normalExitChild = new EventEmitter();
+      Object.assign(normalExitChild, {
+        pid: 42, exitCode: null, signalCode: null,
+        send(message, callback) {
+          callback?.(null);
+          if (message.type === 'shutdown') {
+            queueMicrotask(() => this.emit('message', {
+              schema: POSIX_SENTINEL_SCHEMA, type: 'shutdown-finalizing', pgid: this.pid,
+            }));
+          } else if (message.type === 'shutdown-finalizing-ack') {
+            queueMicrotask(() => {
+              this.exitCode = 0;
+              this.emit('exit', 0, null);
+            });
+          }
+        },
+      });
+      const normalExitOwner = posixSentinelProcessTree(normalExitChild);
+      await expectRejectedAsync('sentinel normal exit after final identity',
+        () => normalExitOwner.processTree.signal('SIGTERM', 'normal-exit sentinel fixture', 20),
+        /^browser sentinel exited before its final owned-group barrier \(code=0 signal=null\)$/);
+
+      const unannouncedKillChild = new EventEmitter();
+      Object.assign(unannouncedKillChild, {
+        pid: 43, exitCode: null, signalCode: null,
+        send(_message, callback) {
+          callback?.(null);
+          queueMicrotask(() => {
+            this.signalCode = 'SIGKILL';
+            this.emit('exit', null, 'SIGKILL');
+            this.emit('close', null, 'SIGKILL');
+          });
+        },
+      });
+      const unannouncedKillOwner = posixSentinelProcessTree(unannouncedKillChild);
+      await expectRejectedAsync('sentinel SIGKILL exit without identity',
+        () => unannouncedKillOwner.processTree.signal('SIGTERM', 'unannounced sentinel fixture', 20),
+        /^browser sentinel closed without its final owned-group identity announcement/);
+    }
 
     let resistantExited;
     const resistantExit = new Promise((resolve) => { resistantExited = resolve; });
@@ -868,8 +1737,12 @@ async function runSelftest() {
         const fs = require('node:fs');
         const path = require('node:path');
         const profile = process.argv[1];
+        const termReceipt = process.argv[2];
+        const lifetimeMs = Number(process.argv[3]);
         const ready = path.join(profile, 'descendant-ready');
         fs.writeFileSync(ready, 'ready');
+        process.on('SIGTERM', () => fs.writeFileSync(termReceipt, 'TERM'));
+        setTimeout(() => process.exit(0), lifetimeMs);
         setInterval(() => {
           if (fs.existsSync(profile)) return;
           fs.mkdirSync(profile, { recursive: true });
@@ -879,19 +1752,28 @@ async function runSelftest() {
       const rootSource = `
         const { spawn } = require('node:child_process');
         const profile = process.argv[1];
+        const termReceipt = process.argv[2];
+        const lifetimeMs = process.argv[3];
+        const emitStderr = process.argv[4] === 'stderr';
         const descendantSource = ${JSON.stringify(descendantSource)};
-        spawn(process.execPath, ['--input-type=commonjs', '-e', descendantSource, profile], {
+        process.on('SIGUSR1', () => process.exit(0));
+        process.on('SIGUSR2', () => process.exit(17));
+        spawn(process.execPath, [
+          '--input-type=commonjs', '-e', descendantSource, profile, termReceipt, lifetimeMs,
+        ], {
           stdio: ['ignore', 'ignore', 'ignore'],
         });
+        if (emitStderr) setInterval(() => process.stderr.write('sentinel-stderr-control\\n'), 1);
         setInterval(() => {}, 1000);
       `;
       const processTreeFixture = ({ prefix, endpoint = 'valid', directOnly = false,
         validVersion = true, throwOnSocketClose = false,
-        exitGroupOnBrowserClose = false }) => {
+        browserCloseSignal = null, injectDuplicateBrowserPidOnVersion = false,
+        breakSentinelStderr = false }) => {
         const state = {
           child: null, childExited: null, childClosed: null,
-          processTree: null, userData: null, gracefulCloseRequests: 0,
-          cleanupSignals: [],
+          processTree: null, launchStatus: null, userData: null, gracefulCloseRequests: 0,
+          cleanupSignals: [], ownerMessages: [], termReceipt: null,
         };
         const launchFixture = ({ userData }) => {
           state.userData = userData;
@@ -902,15 +1784,42 @@ async function runSelftest() {
           } else {
             fs.mkdirSync(activePort);
           }
-          const child = spawn(process.execPath, [
-            '--input-type=commonjs', '-e', rootSource, userData,
-          ], {
-            stdio: ['ignore', 'ignore', 'pipe'], detached: true,
-          });
+          state.termReceipt = path.join(endpointFixture, `${prefix}-term-receipt`);
+          const descendantLifetimeMs = directOnly ? 750 : 5000;
+          const browserArgs = [
+            '--input-type=commonjs', '-e', rootSource, userData, state.termReceipt,
+            String(descendantLifetimeMs), breakSentinelStderr ? 'stderr' : 'quiet',
+          ];
+          const launched = directOnly
+            ? (() => {
+              const directChild = spawn(process.execPath, browserArgs, {
+                stdio: ['ignore', 'ignore', 'pipe'], detached: true,
+              });
+              return Object.freeze({
+                child: directChild,
+                processTree: directChildProcessTree(directChild),
+                launchStatus: () => Object.freeze({
+                  browserPid: directChild.pid ?? null, browserError: null,
+                  browserExit: null, protocolError: null,
+                }),
+              });
+            })()
+            : launchChromiumProcess({
+              browserFile: process.execPath, chromiumArgs: browserArgs, shutdownTimeoutMs: 1000,
+            });
+          const child = launched.child;
           state.child = child;
           state.childExited = new Promise((resolve) => child.once('exit', resolve));
           state.childClosed = new Promise((resolve) => child.once('close', resolve));
-          state.processTree = ownedBrowserProcessTree(child, true);
+          state.processTree = launched.processTree;
+          state.launchStatus = launched.launchStatus;
+          if (!directOnly) {
+            const sendToSentinel = child.send.bind(child);
+            child.send = (message, ...args) => {
+              state.ownerMessages.push(message?.type ?? null);
+              return sendToSentinel(message, ...args);
+            };
+          }
           const readyFile = path.join(userData, 'descendant-ready');
           const readyDeadline = Date.now() + 500;
           const waitCell = new Int32Array(new SharedArrayBuffer(4));
@@ -919,16 +1828,17 @@ async function runSelftest() {
           }
           assert(fs.existsSync(readyFile),
             `SELFTEST process-group fixture ${prefix} did not start its descendant`);
-          const selectedProcessTree = directOnly
-            ? directChildProcessTree(child) : state.processTree;
+          if (breakSentinelStderr) child.stderr.destroy();
           return Object.freeze({
             child,
+            launchStatus: state.launchStatus,
+            ...(launched.browserExited ? { browserExited: launched.browserExited } : {}),
             processTree: Object.freeze({
-              kind: selectedProcessTree.kind,
-              isAlive: () => selectedProcessTree.isAlive(),
+              kind: state.processTree.kind,
+              isAlive: () => state.processTree.isAlive(),
               async signal(...args) {
                 state.cleanupSignals.push(args[0]);
-                return await selectedProcessTree.signal(...args);
+                return await state.processTree.signal(...args);
               },
             }),
           });
@@ -946,11 +1856,22 @@ async function runSelftest() {
             const message = JSON.parse(payload);
             if (message.method === 'Browser.close') {
               state.gracefulCloseRequests++;
-              if (exitGroupOnBrowserClose) process.kill(-state.child.pid, 'SIGTERM');
+              const browserPid = state.launchStatus().browserPid;
+              if (typeof browserCloseSignal === 'string'
+                && Number.isInteger(browserPid) && browserPid > 0) {
+                process.kill(browserPid, browserCloseSignal);
+              }
               return;
             }
             assert(message.method === 'Browser.getVersion',
               `SELFTEST process-group fixture received unexpected ${message.method}`);
+            if (injectDuplicateBrowserPidOnVersion) {
+              state.child.emit('message', {
+                schema: POSIX_SENTINEL_SCHEMA,
+                type: 'browser-started',
+                pid: state.launchStatus().browserPid + 1,
+              });
+            }
             const readyFile = path.join(state.userData, 'descendant-ready');
             const respond = () => {
               if (!fs.existsSync(readyFile)) { setTimeout(respond, 1); return; }
@@ -989,7 +1910,9 @@ async function runSelftest() {
               );
             } catch { /* preserve the scenario's assertion; bounded fallback below */ }
           }
-          if (state.processTree?.isAlive()) {
+          if (directOnly) {
+            await sleep(850);
+          } else if (state.processTree?.isAlive()) {
             await state.processTree.signal(
               'SIGKILL', `CDP selftest process group ${prefix} final cleanup`, 1000,
             );
@@ -1002,35 +1925,69 @@ async function runSelftest() {
           if (state.userData !== null && fs.existsSync(state.userData)) {
             removeOwnedUserData(state.userData, fs.realpathSync(os.tmpdir()), prefix);
           }
+          if (state.termReceipt !== null) fs.rmSync(state.termReceipt, { force: true });
           assertNoOwnedProfiles(prefix, `process-group ${prefix} fallback cleanup`);
         };
         return {
           open, cleanup,
           gracefulCloseRequests: () => state.gracefulCloseRequests,
           cleanupSignals: () => [...state.cleanupSignals],
+          ownerMessages: () => [...state.ownerMessages],
+          termReceipt: () => state.termReceipt,
+          browserExit: () => state.launchStatus?.().browserExit ?? null,
         };
       };
 
       const gracefulTreePrefix = `${base}-tree-graceful`;
       const gracefulTree = processTreeFixture({
-        prefix: gracefulTreePrefix, exitGroupOnBrowserClose: true,
+        prefix: gracefulTreePrefix, browserCloseSignal: 'SIGUSR1',
       });
       try {
         const gracefulConnection = await gracefulTree.open();
         await gracefulConnection.close();
         assert(gracefulTree.gracefulCloseRequests() === 1,
           'SELFTEST graceful process group did not receive exactly one CDP Browser.close');
-        assert(JSON.stringify(gracefulTree.cleanupSignals()) === JSON.stringify([]),
-          `SELFTEST graceful process group required TERM/KILL escalation (${gracefulTree.cleanupSignals().join(', ')})`);
+        assert(JSON.stringify(gracefulTree.cleanupSignals()) === JSON.stringify(['SIGTERM']),
+          `SELFTEST graceful process group missed its sentinel barrier (${gracefulTree.cleanupSignals().join(', ')})`);
+        assert(gracefulTree.browserExit()?.code === 0 && gracefulTree.browserExit()?.signal === null,
+          'SELFTEST graceful Browser.close did not retain its clean browser exit');
+        assert(JSON.stringify(gracefulTree.ownerMessages())
+          === JSON.stringify(['shutdown', 'shutdown-finalizing-ack']),
+        `SELFTEST graceful sentinel handshake drifted (${gracefulTree.ownerMessages().join(', ')})`);
+        assert(fs.readFileSync(gracefulTree.termReceipt(), 'utf8') === 'TERM',
+          'SELFTEST graceful sentinel TERM did not reach its resistant descendant');
         assertNoOwnedProfiles(gracefulTreePrefix, 'graceful process-group cleanup');
       } finally { await gracefulTree.cleanup(); }
+
+      const abortAfterClosePrefix = `${base}-tree-abort-after-close`;
+      const abortAfterCloseTree = processTreeFixture({
+        prefix: abortAfterClosePrefix, browserCloseSignal: 'SIGABRT',
+      });
+      try {
+        const abortAfterCloseConnection = await abortAfterCloseTree.open();
+        await expectRejectedAsync('abnormal browser exit after Browser.close',
+          () => abortAfterCloseConnection.close(),
+          /browser exited (?:after Browser\.close request|during owned shutdown) \(exit=null signal=SIGABRT\)$/);
+        assert(abortAfterCloseTree.gracefulCloseRequests() === 1,
+          'SELFTEST abnormal post-close browser did not receive exactly one Browser.close');
+        assert(abortAfterCloseTree.browserExit()?.signal === 'SIGABRT',
+          'SELFTEST abnormal post-close browser exit evidence was lost');
+        assert(JSON.stringify(abortAfterCloseTree.cleanupSignals()) === JSON.stringify(['SIGTERM']),
+          `SELFTEST abnormal post-close cleanup missed its sentinel barrier (${abortAfterCloseTree.cleanupSignals().join(', ')})`);
+        assert(JSON.stringify(abortAfterCloseTree.ownerMessages())
+          === JSON.stringify(['shutdown', 'shutdown-finalizing-ack']),
+        `SELFTEST abnormal post-close sentinel handshake drifted (${abortAfterCloseTree.ownerMessages().join(', ')})`);
+        assert(fs.readFileSync(abortAfterCloseTree.termReceipt(), 'utf8') === 'TERM',
+          'SELFTEST abnormal post-close cleanup did not terminate its resistant descendant');
+        assertNoOwnedProfiles(abortAfterClosePrefix, 'abnormal post-close process-group cleanup');
+      } finally { await abortAfterCloseTree.cleanup(); }
 
       const siblingChild = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
         stdio: ['ignore', 'ignore', 'pipe'], detached: true,
       });
       const siblingExited = new Promise((resolve) => siblingChild.once('exit', resolve));
       const siblingClosed = new Promise((resolve) => siblingChild.once('close', resolve));
-      const siblingGroup = ownedBrowserProcessTree(siblingChild, true);
+      const siblingGroup = directChildProcessTree(siblingChild);
       try {
         const normalTreePrefix = `${base}-tree-normal`;
         const normalTree = processTreeFixture({ prefix: normalTreePrefix });
@@ -1041,6 +1998,11 @@ async function runSelftest() {
             'SELFTEST normal connection did not request exactly one CDP Browser.close');
           assert(JSON.stringify(normalTree.cleanupSignals()) === JSON.stringify(['SIGTERM']),
             `SELFTEST live process group did not retain TERM escalation (${normalTree.cleanupSignals().join(', ')})`);
+          assert(JSON.stringify(normalTree.ownerMessages())
+            === JSON.stringify(['shutdown', 'shutdown-finalizing-ack']),
+          `SELFTEST live sentinel handshake drifted (${normalTree.ownerMessages().join(', ')})`);
+          assert(fs.readFileSync(normalTree.termReceipt(), 'utf8') === 'TERM',
+            'SELFTEST live sentinel TERM did not reach its resistant descendant');
           assertNoOwnedProfiles(normalTreePrefix, 'owned process-group normal cleanup');
         } finally { await normalTree.cleanup(); }
         assert(siblingGroup.isAlive(),
@@ -1071,6 +2033,28 @@ async function runSelftest() {
         assertNoOwnedProfiles(throwingSocketPrefix,
           'throwing WebSocket close process-group cleanup');
       } finally { await throwingSocket.cleanup(); }
+
+      const duplicatePidPrefix = `${base}-tree-duplicate-pid`;
+      const duplicatePidTree = processTreeFixture({
+        prefix: duplicatePidPrefix, injectDuplicateBrowserPidOnVersion: true,
+      });
+      try {
+        await expectRejectedAsync('late duplicate sentinel PID still cleans profile',
+          () => duplicatePidTree.open(), /invalid or duplicate browser PID/);
+        assertNoOwnedProfiles(duplicatePidPrefix,
+          'late duplicate sentinel PID protocol rejection cleanup');
+      } finally { await duplicatePidTree.cleanup(); }
+
+      const stderrFailurePrefix = `${base}-tree-stderr-failure`;
+      const stderrFailureTree = processTreeFixture({
+        prefix: stderrFailurePrefix, breakSentinelStderr: true,
+      });
+      try {
+        await expectRejectedAsync('sentinel stderr failure still cleans profile',
+          () => stderrFailureTree.open(), /browser sentinel stderr forwarding failed/);
+        assertNoOwnedProfiles(stderrFailurePrefix,
+          'sentinel stderr failure protocol rejection cleanup');
+      } finally { await stderrFailureTree.cleanup(); }
 
       const setupTreePrefix = `${base}-tree-setup-error`;
       const setupTree = processTreeFixture({ prefix: setupTreePrefix, validVersion: false });
@@ -1500,6 +2484,170 @@ async function runSelftest() {
     assert(endpointFixtureSocketClosed,
       'SELFTEST WebSocket open timeout did not close its injected socket');
     assertNoOwnedProfiles(openPrefix, 'WebSocket open-timeout cleanup');
+
+    let settlePreOpenBrowserExit;
+    const preOpenBrowserExit = new Promise((resolve) => { settlePreOpenBrowserExit = resolve; });
+    let preOpenSocketClosed = false;
+    const launchPreOpenExitFixture = ({ userData }) => {
+      fs.mkdirSync(userData, { recursive: true });
+      fs.writeFileSync(path.join(userData, 'DevToolsActivePort'),
+        '9\n/devtools/browser/selftest-inner-exit-before-open\n');
+      const child = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+        stdio: ['ignore', 'ignore', 'pipe'],
+      });
+      return Object.freeze({
+        child,
+        processTree: directChildProcessTree(child),
+        launchStatus: () => Object.freeze({
+          browserPid: child.pid, browserError: null, browserExit: null, protocolError: null,
+        }),
+        browserExited: preOpenBrowserExit,
+      });
+    };
+    class InnerExitBeforeOpenWebSocket {
+      static OPEN = 1;
+      constructor() {
+        this.readyState = 0;
+        queueMicrotask(() => settlePreOpenBrowserExit(Object.freeze({
+          kind: 'exit', code: 19, signal: null,
+        })));
+      }
+      close() { preOpenSocketClosed = true; this.readyState = 3; }
+    }
+    const preOpenExitPrefix = `${base}-inner-exit-before-open`;
+    await expectRejectedAsync('inner browser exit before socket open',
+      () => openChromiumCdpWithLauncher({
+        label: 'CDP selftest inner browser pre-open exit',
+        userDataPrefix: preOpenExitPrefix,
+        commandTimeoutMs: 500, startupTimeoutMs: 1000, shutdownTimeoutMs: 1000,
+        WebSocketImpl: InnerExitBeforeOpenWebSocket,
+      }, launchPreOpenExitFixture),
+      /browser exited before CDP opened \(exit=19 signal=null\)/);
+    assert(preOpenSocketClosed,
+      'SELFTEST inner-browser pre-open exit did not close its injected socket');
+    assertNoOwnedProfiles(preOpenExitPrefix, 'inner-browser pre-open exit cleanup');
+
+    let settleWorkBrowserExit;
+    const workBrowserExit = new Promise((resolve) => { settleWorkBrowserExit = resolve; });
+    let workExitSocketClosed = false;
+    const launchWorkExitFixture = ({ userData }) => {
+      fs.mkdirSync(userData, { recursive: true });
+      fs.writeFileSync(path.join(userData, 'DevToolsActivePort'),
+        '9\n/devtools/browser/selftest-inner-exit-during-work\n');
+      const child = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+        stdio: ['ignore', 'ignore', 'pipe'],
+      });
+      return Object.freeze({
+        child,
+        processTree: directChildProcessTree(child),
+        launchStatus: () => Object.freeze({
+          browserPid: child.pid, browserError: null, browserExit: null, protocolError: null,
+        }),
+        browserExited: workBrowserExit,
+      });
+    };
+    class InnerExitDuringWorkWebSocket {
+      static OPEN = 1;
+      constructor() {
+        this.readyState = 0;
+        setTimeout(() => {
+          this.readyState = InnerExitDuringWorkWebSocket.OPEN;
+          this.onopen?.();
+        }, 0);
+      }
+      send(payload) {
+        const message = JSON.parse(payload);
+        if (message.method === 'Browser.getVersion') {
+          queueMicrotask(() => this.onmessage?.({ data: JSON.stringify({
+            id: message.id,
+            result: {
+              product: 'Chrome/inner-exit-selftest', revision: 'inner-exit-revision',
+              userAgent: 'cf-browsercdp-inner-exit-selftest', jsVersion: 'inner-exit-js',
+              protocolVersion: '1.3',
+            },
+          }) }));
+        } else if (message.method === 'Runtime.evaluate') {
+          queueMicrotask(() => settleWorkBrowserExit(Object.freeze({
+            kind: 'exit', code: null, signal: 'SIGABRT',
+          })));
+        }
+      }
+      close() { workExitSocketClosed = true; this.readyState = 3; }
+    }
+    const workExitPrefix = `${base}-inner-exit-during-work`;
+    const workExitConnection = await openChromiumCdpWithLauncher({
+      label: 'CDP selftest inner browser work exit',
+      userDataPrefix: workExitPrefix,
+      commandTimeoutMs: 500, startupTimeoutMs: 1000, shutdownTimeoutMs: 1000,
+      WebSocketImpl: InnerExitDuringWorkWebSocket,
+    }, launchWorkExitFixture);
+    try {
+      await expectRejectedAsync('inner browser exit during pending command',
+        () => workExitConnection.send('Runtime.evaluate'),
+        /browser exited during CDP work \(exit=null signal=SIGABRT\)/);
+    } finally { await workExitConnection.close(); }
+    assert(workExitSocketClosed,
+      'SELFTEST inner-browser work exit did not close its injected socket');
+    assertNoOwnedProfiles(workExitPrefix, 'inner-browser work exit cleanup');
+
+    let settleIdleBrowserExit;
+    const idleBrowserExit = new Promise((resolve) => { settleIdleBrowserExit = resolve; });
+    let idleExitSocketClosed = false;
+    const launchIdleExitFixture = ({ userData }) => {
+      fs.mkdirSync(userData, { recursive: true });
+      fs.writeFileSync(path.join(userData, 'DevToolsActivePort'),
+        '9\n/devtools/browser/selftest-inner-exit-before-close\n');
+      const child = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
+        stdio: ['ignore', 'ignore', 'pipe'],
+      });
+      return Object.freeze({
+        child,
+        processTree: directChildProcessTree(child),
+        launchStatus: () => Object.freeze({
+          browserPid: child.pid, browserError: null, browserExit: null, protocolError: null,
+        }),
+        browserExited: idleBrowserExit,
+      });
+    };
+    class InnerExitBeforeCloseWebSocket {
+      static OPEN = 1;
+      constructor() {
+        this.readyState = 0;
+        setTimeout(() => {
+          this.readyState = InnerExitBeforeCloseWebSocket.OPEN;
+          this.onopen?.();
+        }, 0);
+      }
+      send(payload) {
+        const message = JSON.parse(payload);
+        if (message.method === 'Browser.getVersion') {
+          queueMicrotask(() => this.onmessage?.({ data: JSON.stringify({
+            id: message.id,
+            result: {
+              product: 'Chrome/idle-exit-selftest', revision: 'idle-exit-revision',
+              userAgent: 'cf-browsercdp-idle-exit-selftest', jsVersion: 'idle-exit-js',
+              protocolVersion: '1.3',
+            },
+          }) }));
+        }
+      }
+      close() { idleExitSocketClosed = true; this.readyState = 3; }
+    }
+    const idleExitPrefix = `${base}-inner-exit-before-close`;
+    const idleExitConnection = await openChromiumCdpWithLauncher({
+      label: 'CDP selftest inner browser idle exit',
+      userDataPrefix: idleExitPrefix,
+      commandTimeoutMs: 500, startupTimeoutMs: 1000, shutdownTimeoutMs: 1000,
+      WebSocketImpl: InnerExitBeforeCloseWebSocket,
+    }, launchIdleExitFixture);
+    settleIdleBrowserExit(Object.freeze({ kind: 'exit', code: 23, signal: null }));
+    await Promise.resolve();
+    await expectRejectedAsync('inner browser exit after last command before close',
+      () => idleExitConnection.close(),
+      /browser exited before owned close \(exit=23 signal=null\)/);
+    assert(idleExitSocketClosed,
+      'SELFTEST inner-browser idle exit did not close its injected socket');
+    assertNoOwnedProfiles(idleExitPrefix, 'inner-browser idle exit cleanup');
 
     let clippedEndpointLaunches = 0;
     let clippedEndpointSocketClosed = false;

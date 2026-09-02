@@ -393,20 +393,28 @@
 > verifier passed. The signed evidence/docs descendant commits the four exact carriers without
 > rebinding certification away from 580c99a.
 
-> **A BROWSER PROFILE IS NOT CLEAN UNTIL ITS OWNED SHUTDOWN DOMAIN IS QUIESCENT AND ABSENCE STAYS
-> STABLE** (2026-08-31). Direct-child exit is not owned process-group/tree-request completion. Do
-> not destroy inherited stderr or delete an owned browser profile merely because the spawned PID
-> terminated: a surviving
-> Chromium descendant can recreate that profile after the single removal and make cleanup look
-> nondeterministic. On POSIX, a healthy session first sends bounded CDP `Browser.close`; spawn the
-> browser into one detached process group, apply bounded TERM→KILL only if still live, permanently
-> latch `ESRCH` as gone, prove a sibling outside the group is untouched and require observable group
-> quiescence. On Windows, disable `Browser.close` and require successful bounded `taskkill /T`,
-> escalating to `/F`; pre-exited and no-success states fail closed. Without a Job Object, never
-> overclaim independently observable whole-tree ownership or quiescence. Only then release stderr,
-> remove the profile and prove it stays absent for **100
-> ms**. Preserve primary and cleanup failure separately. A synchronous `ws.close()` throw must not
-> skip browser or profile cleanup.
+> **A NUMERIC PGID IS NOT OWNERSHIP AFTER ITS IDENTITY ANCHOR EXITS** (2026-09-02). A
+> browser-created detached group can outlive its original leader, after which `kill(-pgid, 0)` may
+> observe a recycled group and a later TERM may address unrelated work. On POSIX, keep one detached
+> Node sentinel alive as the group leader and launch the browser non-detached inside it. The
+> sentinel, not the parent, sends group TERM while holding its own TERM, announces its exact final
+> identity, waits for the parent's acknowledgement, then sends group SIGKILL to its own still-live
+> group; a watchdog performs the same final kill if acknowledgement is lost. Parent success
+> requires exact browser PID/lifecycle IPC, the exact final identity, sentinel SIGKILL exit and
+> stdio close. The parent performs no negative-PGID probe or signal at any point; only the live
+> sentinel may address its own group. Browser lifecycle acceptance is phase-owned. Before owned
+> Close, every browser exit or error is terminal. The `Browser.close`-requested phase accepts only
+> exact clean `{ code: 0, signal: null }`. POSIX owned shutdown accepts that clean exit or exact
+> TERM/KILL `{ code: null, signal: "SIGTERM" | "SIGKILL" }`; a crash signal, browser error or
+> nonzero exit remains red. On Windows, an external integer/null-signal exit is accepted only after
+> the exact bounded `taskkill /T` (or `/T /F`) request succeeds. If that exit arrives while the
+> request is pending, defer its verdict and recheck the latched observation after cleanup settles.
+> Only after the terminal barrier may stderr release, validated profile removal and stable absence
+> complete. Executable controls include a real POSIX process-group browser that exits by SIGABRT
+> after `Browser.close`, which must stay red while cleanup completes, and an integrated Windows
+> launcher fixture whose external code-17 exit arrives before its successful taskkill request
+> resolves, with no `Browser.close` dispatch and exact socket/profile cleanup. Preserve primary and
+> cleanup failures independently.
 >
 > GitHub run `33453239307` earned this law. Its exact no-retry PR #35 head/base was
 > `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` /
@@ -416,7 +424,8 @@
 > sealed exact-Edge certificate so the cheaper causal owner fails first. Do not add a retry, widen a
 > timeout, change product bytes, pin an Edge point version or reinterpret the hosted red as a product
 > verdict. The local repair passes the real-Edge launcher selftest and the **254-file / 2,567-pass /
-> 1-skip** develop profile. Final Compendium measurement/browser-CDP authority is
+> 1-skip** develop profile. At that historical repair checkpoint, Compendium
+> measurement/browser-CDP authority was
 > `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
 > `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`. Collector, outcome contract
 > and producer remain
@@ -428,7 +437,18 @@
 > closed. Exact clean signed descendant `6238b8d…` committed that launcher repair; exact clean
 > signed successor `580c99a…` later passed live preflight and one unchanged-source/no-retry
 > Compendium **78/78** → zero-finding Slice → Glass **12/12 / 104/104** chain with every named
-> verifier green. That is current local browser evidence only; it grants no hosted authority.
+> verifier green. That is immutable local browser evidence for that exact source only; it grants no
+> hosted authority.
+>
+> The 2026-09-02 sentinel refinement is bound at audit time to `browsercdp.mjs` SHA-256
+> `8c6094e4e4bc05c40ace80478b038890e2e8c33856e5932a60805ac71249e0df`.
+> Compendium measurement authority is
+> `a963f40135651323bb2c0f2a0a6fa7a381ab3905e43b6e5721f45e9f38e50e62`; producer authority
+> remains `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`.
+> Every numeric ceiling, historical sample, outcome and compatible-browser policy is unchanged.
+> SceneMemory remains deliberately stale/red and production-only. The final seven same-source
+> targeted Glass viewports passed; that is bounded diagnostic evidence, while the clean
+> unchanged-source certificate remains pending.
 
 > **A RESTORATION ORACLE SAMPLES THE STATE THE PRODUCT ACTUALLY RECEIVES** (2026-08-31).
 > A virtual-row helper may legitimately reposition a row while consuming deferred layout and
@@ -1301,6 +1321,22 @@ scroll owner it may move, use the native scroll path, require full containment, 
 point. Restore exact `scrollTop`/`scrollLeft` values in `finally`, await settlement again, and prove
 the restored outcome green. A positive, its deliberate negative and the restored positive must be
 isolated per control; audit order and inherited scroll state are never evidence.
+
+⚠⚠ **A NEGATIVE REACHABILITY CONTROL MUST CREATE THE NEGATIVE GEOMETRY BEFORE PRODUCT INPUT**
+(2026-09-02). Setting a scroller to its existing zero position does not move a target offscreen.
+Use native scroll displacement when it exists; otherwise use a narrowly scoped instrument-only
+transform that places the exact target beyond the viewport. Require no dispatched input, no
+receipt listener or receipt, and null hit ownership: the refusal-only probe must use the action
+owner's explicit no-dispatch path and never issue product input. Build the page-evaluated setup and
+restoration from their executable function sources, with the captured prior state serialized as
+data; a hand-copied or interpolated lookalike is not the oracle. Snapshot and restore the complete
+inline-style attribute, transform value/priority and scroll position in `finally`, distinguishing
+an absent style attribute from one that is present but empty. For an originally absent attribute,
+remove it, sample the restored transform evidence, then remove it a second time to defeat
+Chromium's retained-empty normalization; for an originally empty attribute, restore and retain the
+empty carrier. Prove exact restoration before the real action. Any setup, control or restoration
+defect is instrument-red before product action/outcome; product mutation controls may run only
+from a green real-action predecessor.
 
 Disabled semantics do not waive that geometry law. Final9 Recovery sampled a correctly disabled
 292×44 Tame button before revealing it inside the Survey scrollport, collapsed geometry and hit
@@ -3002,7 +3038,8 @@ resolver and pinned `ws` transport; any gate claiming the shared owned lifecycle
 it instead of carrying a guessed port, WebSocket loop or cleanup path. The owned launcher uses a
 unique profile, asks Chromium for port 0, reads its
 `DevToolsActivePort`, records exact `Browser.getVersion` provenance, detects early child exit,
-retains bounded stderr head and tail, and performs bounded TERM→KILL shutdown plus profile removal.
+retains bounded stderr head and tail, and uses the sentinel-anchored POSIX terminal barrier
+described above (or Windows taskkill ownership) before profile removal.
 Legacy `bootperf` shares the executable resolver and `ws` transport but still owns its older CDP
 lifecycle, so none of the owned launcher's lifecycle guarantees may be attributed to it yet.
 A prior green browser step does not certify the next process's provenance. Do not turn this class

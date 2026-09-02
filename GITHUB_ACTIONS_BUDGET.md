@@ -2,30 +2,47 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-02): tenth hosted red diagnosed; bounded successor uncommitted; no
-hosted attempt is authorized.** `openai/mac` and `origin/openai/mac` remain at exact consumed-red
-head `18c088de4388edf58eda2c192b71cb94156e26e7`, based against `origin/develop`
-`7a9f4c1370dd84292388d718c38ff34214f6203b`. Run `33584052508` stopped before game load in the
-host-sensitive live SceneMemory allocator control; the immutable facts are recorded below and in
-`audits/ARC1C_SCENEMEM_PR35_HOSTED_PHASE_INSTRUMENT_RED_20260902_18C088D.md`.
+**Current local state (2026-09-02): tenth hosted red preserved; local Glass cleanup/instrument
+successor independently clear and segmented green; no hosted attempt is authorized.** Local
+`openai/mac` remains at SSH-signed predecessor
+`05690215771db91601cf9dbcbcaa8d771fe540b5`, tree
+`00ee47169a3929dfbe952842419641a3f69699aa`, one commit ahead of
+`origin/openai/mac` at `18c088de4388edf58eda2c192b71cb94156e26e7`, against
+`origin/develop` `7a9f4c1370dd84292388d718c38ff34214f6203b`. The successor remains
+uncommitted; it is not a clean certificate or hosted head.
 
-The dirty local successor changes workflow/scope ownership only: all live SceneMemory native-heap
-work is production-only and remains strict there; deterministic SceneMemory contracts and mutation
-controls remain universal; Compendium-specific and shared browser-transport change scopes are now
-separate. It changes no game source, SceneMemory collector, threshold, fixed-eight protocol,
-browser-family contract, product ruler or retry rule. Current local verification is green for the
-focused workflow/evidence owners (**3 files / 27 tests**), the complete browser-free `develop`
-profile (**263/263 files, 2,719 passed / 1 skipped**), all three TypeScript programs, the complete
-art mutation control, browser-path selftest, Compendium browser preflight/selftest (**618
-controls**) and shared browser-CDP selftest. Documentation review, a clean SSH-signed exact source,
-hermetic tracked-input preflight and one fresh unchanged-source Compendium → Slice → Glass chain
-remain required before another exact hosted authorization can be requested.
+The exact clean-source Compendium and Slice predecessors passed before Glass
+`20260902034025002-67201-c5ef56b312e9` stopped once/no-retry after six green viewports with zero
+product findings at `tablet-portrait: owned browser cleanup failed (kill EPERM)`. The bounded local
+successor replaces reusable-PGID probing with sentinel-anchored exact ownership and hardens Glass's
+Inventory offscreen control so an instrument cannot dispatch product input. Independent
+launcher/Glass review is **CLEAR**; focused coverage passes **74/74**, all three v2 TypeScript
+programs pass, and the finished dirty source passes the complete browser-free `develop` profile at
+**264/264 files, 2,728 passed / 1 skipped**. The root validator passes with the **50-probe** v1.0
+determinism fingerprint unchanged.
 
-No push, label, hosted attempt, retry, PR metadata mutation, merge, release, version bump, preview
-publication or deployment is authorized. A future hosted attempt requires Nick's fresh authority
-naming the final full head and base `7a9f4c1370dd84292388d718c38ff34214f6203b`, PR #35,
-`test-battery`, `actions-budget-approved`, a 92-minute maximum and no retry. Merge is allowed only if
-that exact hosted attempt is terminal green and branch protection is satisfied.
+Two later targeted probes stopped instrument-red before product input: runs
+`20260902052600888-85161-dd14bc6726f4` and
+`20260902052945783-86025-0f4247ee8571` caught malformed nested restoration interpolation and
+Chromium's absent-style-to-empty normalization respectively. Both retained zero product findings
+and zero dispatched input; executable restoration and sticky-empty-style controls now cover them.
+The final current-code tablet-portrait plus six downstream diagnostic runs all share exact
+working-tree SHA-256 `23884a5d5050bc79642d25ac4700e58b269e0deee2d61464c37143550815c027`
+and pass with zero findings, instrument failures or retries and green reload rows. They are
+dirty-source diagnostics, not a final certificate.
+
+Compendium measurement authority is
+`a963f40135651323bb2c0f2a0a6fa7a381ab3905e43b6e5721f45e9f38e50e62`; only its `browserCdp`
+input changed, to `8c6094e4e4bc05c40ace80478b038890e2e8c33856e5932a60805ac71249e0df`.
+Producer authority `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`,
+all rulers, ceilings, samples and the version-tolerant browser policy remain unchanged. SceneMemory
+remains intentionally stale/red, production-only and quarantined.
+
+One SSH-signed clean candidate, its tracked-input preflight and one fresh unchanged-source
+Compendium → Slice → Glass chain remain pending. No push, label, hosted attempt, retry, PR mutation, Ready transition, merge,
+release, version bump, publication or deployment is authorized. A future attempt requires Nick's
+fresh exact authorization for the final full head/base, PR #35, `test-battery`,
+`actions-budget-approved`, 92 minutes maximum and no retry.
 
 **Preserved predecessor local certificate (not the current closure):** Exact clean SSH-signed
 implementation source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
