@@ -64,6 +64,8 @@ const ORDERED_CONTRACT = [
   'main) node tools/check-profile.mjs --profile=production ;;',
   '- name: develop changed-art mutation control',
   'run: npm run overridecontrol',
+  `- name: ${CHROME_LAUNCHER_SELFTEST_NAME}`,
+  `run: ${CHROME_LAUNCHER_SELFTEST_COMMAND}`,
   '- name: layout (10 viewports)',
   '- name: verify root layout evidence freshness',
   '- name: install current Arc 1C Edge scene-memory browser',
@@ -83,13 +85,12 @@ const ORDERED_CONTRACT = [
   'node tools/browserpath.mjs --selftest',
   'node tools/compendiummem-browser-preflight.mjs --selftest',
   COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND,
-  `- name: ${CHROME_LAUNCHER_SELFTEST_NAME}`,
-  `run: ${CHROME_LAUNCHER_SELFTEST_COMMAND}`,
   '- name: install exact Arc 1A Edge calibration browser',
 ] as const;
 const ORDERED_STEP_NAMES = [
   STATIC_PROFILE_NAME,
   'develop changed-art mutation control',
+  CHROME_LAUNCHER_SELFTEST_NAME,
   'layout (10 viewports)',
   'verify root layout evidence freshness',
   'install current Arc 1C Edge scene-memory browser',
@@ -97,7 +98,6 @@ const ORDERED_STEP_NAMES = [
   'one-attempt scene-memory certification',
   'verify current scene-memory evidence',
   COMPENDIUM_INSTRUMENT_SELFTEST_NAME,
-  CHROME_LAUNCHER_SELFTEST_NAME,
   'install exact Arc 1A Edge calibration browser',
 ] as const;
 

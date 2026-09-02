@@ -1,6 +1,36 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-09-02 current browser-ownership/Glass repair overlay (supersedes older “current” labels;
+> **2026-09-02 current launcher-lifecycle/battery-right-sizing overlay (supersedes older “current”
+> labels; dated evidence remains immutable):** PR #35 run `33628648136`, attempt 1, tested exact
+> head `85431115256137b05d7cdfa590e087fd3b4d52e1` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` and stopped after **6m30s** at the shared launcher
+> selftest. A synthetic abnormal post-`Browser.close` exit was accepted; no game page, exact Edge,
+> live Compendium, Slice or Glass ran. The authorization is consumed, there was no retry, and no
+> hosted authority remains.
+>
+> The bounded successor freezes close phase before send, claims the close request only after send
+> succeeds, waits for exact browser lifecycle rather than premature tree quiescence, and uses a
+> receipt-bearing deterministic code-17 process exit instead of relying on core-dump scheduling.
+> The sentinel terminates and observes the exact browser, flushes lifecycle IPC, then publishes its
+> final identity/acknowledgement barrier and group-kills survivors. Shutdown diagnostics cannot
+> release ownership early; profile removal requires proven termination; a direct kill failure is
+> provisional until lifecycle evidence expires. The shared launcher selftest now precedes every
+> expensive browser consumer. Independent review is **CLEAR**.
+>
+> Focused launcher/workflow/authority contracts pass **152/152**, the launcher selftest passes,
+> Compendium's synthetic instrument passes **618/618**, and the complete browser-free `develop`
+> profile passes **264/264 files, 2,728 passed / 1 skipped**, all three TypeScript programs,
+> **34** art sources, **1,014/1,014** routes and **454** declared fields. Current launcher /
+> Compendium measurement authority is
+> `4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca` /
+> `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`; producer
+> `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`, all rulers, ceilings,
+> samples, outcomes and the version-tolerant Edge/CDP policy remain unchanged. A clean committed
+> unchanged-source Compendium → Slice → Glass chain remains the final local stop before any fresh
+> exact hosted request.
+
+> **2026-09-02 historical predecessor browser-ownership/Glass repair overlay (superseded by the
+> current overlay above;
 > dated evidence remains immutable):** exact clean source
 > `05690215771db91601cf9dbcbcaa8d771fe540b5` passed the complete browser-free develop profile,
 > Compendium and Slice. Exact-Slice-bound Glass
@@ -39,7 +69,8 @@
 > `20260902055724658-92954-a2feb2f6006e` **12/12** viewports/reloads and **104/104** controls with
 > zero findings/instrument failures. Local closure is complete; no hosted attempt is authorized.
 
-> **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
+> **2026-09-02 historical predecessor PR #35 battery-ownership overlay (superseded by the current
+> overlay above;
 > all dated architecture/evidence blocks below remain immutable):** hosted run `33584052508` tested
 > exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b` once with no retry. Layout passed **787/787**;

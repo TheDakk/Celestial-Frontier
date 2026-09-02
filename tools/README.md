@@ -75,21 +75,26 @@ is `FROZEN`, do not push, label, dispatch, rerun, merge, sync, or publish; build
 >
 > On POSIX the launcher does not treat a released numeric PGID as ownership. A detached Node
 > sentinel remains the group leader, launches Chromium non-detached in that group, reports exact
-> browser lifecycle, and performs the final TERM/acknowledged-SIGKILL barrier while its own
-> identity is still live. An acknowledgement-loss watchdog owns the same terminal group kill.
+> browser lifecycle. After group TERM, it forces and observes the exact browser child when needed,
+> flushes that lifecycle receipt, and only then performs the acknowledged final group-SIGKILL
+> barrier while its own identity is still live. An acknowledgement-loss watchdog owns the same
+> terminal group kill; all three shutdown phases fit inside the caller-owned bound.
 > Parent success requires exact final group identity plus sentinel SIGKILL exit/close. The parent
 > performs no negative-PGID probe or signal at any point; only the still-live sentinel addresses
 > its own group. Lifecycle acceptance is phase-specific: before owned Close, every exit/error is
 > red; after a `Browser.close` request, only `{ code: 0, signal: null }` is clean; during POSIX
 > owned shutdown, clean exit or exact SIGTERM/SIGKILL is accepted, while a crash signal, browser
-> error or nonzero exit stays red. Only afterward does the parent remove and stability-check the
-> profile. Stderr-forwarding failure and sentinel-protocol drift also fail closed. Windows retains
+> error or nonzero exit stays red. Missing POSIX browser lifecycle is terminal. Shutdown diagnostics
+> remain latched until ownership is terminal, and only afterward does the parent remove and
+> stability-check the profile before returning the error. Stderr-forwarding failure and
+> sentinel-protocol drift also fail closed. Windows retains
 > bounded `taskkill /T` then `/T /F`: an external integer/null-signal exit is accepted only after
 > the exact tree request succeeds, and an exit observed while that request is pending is deferred
-> and checked against its latched result after cleanup. Executable controls include an abnormal
-> post-`Browser.close` SIGABRT process-group fixture and an integrated fake-Windows
-> `openChromiumCdpWithLauncher` run where code 17 arrives before taskkill resolves; the latter
-> proves no `Browser.close`, one successful tree request, and socket/profile cleanup.
+> and checked against its latched result after cleanup. Executable controls retain pure SIGABRT
+> classifier cases and use a receipt-synchronized real-process code-17 exit after `Browser.close`,
+> plus missing-lifecycle, TERM-resistant forced-SIGKILL and pre-barrier-diagnostic controls. The
+> integrated fake-Windows `openChromiumCdpWithLauncher` run has code 17 arrive before taskkill
+> resolves and proves no `Browser.close`, one successful tree request, and socket/profile cleanup.
 > On macOS, Chromium cannot register with LaunchServices from inside the Codex
 > Seatbelt profile. The resolver/launcher therefore rejects
 > `CODEX_SANDBOX=seatbelt` before browser spawn and directs the command through

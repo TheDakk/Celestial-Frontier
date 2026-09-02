@@ -397,9 +397,12 @@
 > browser-created detached group can outlive its original leader, after which `kill(-pgid, 0)` may
 > observe a recycled group and a later TERM may address unrelated work. On POSIX, keep one detached
 > Node sentinel alive as the group leader and launch the browser non-detached inside it. The
-> sentinel, not the parent, sends group TERM while holding its own TERM, announces its exact final
-> identity, waits for the parent's acknowledgement, then sends group SIGKILL to its own still-live
-> group; a watchdog performs the same final kill if acknowledgement is lost. Parent success
+> sentinel, not the parent, sends group TERM while holding its own TERM. If the exact browser child
+> survives, the sentinel SIGKILLs that exact ChildProcess, observes and flushes its lifecycle IPC,
+> then announces its exact final identity, waits for the parent's acknowledgement and sends group
+> SIGKILL to its own still-live group; a watchdog performs the same final kill if acknowledgement
+> is lost. TERM grace plus lifecycle-flush and acknowledgement-watchdog bounds must fit inside the
+> caller-owned shutdown deadline. Parent success
 > requires exact browser PID/lifecycle IPC, the exact final identity, sentinel SIGKILL exit and
 > stdio close. The parent performs no negative-PGID probe or signal at any point; only the live
 > sentinel may address its own group. Browser lifecycle acceptance is phase-owned. Before owned
@@ -409,9 +412,12 @@
 > nonzero exit remains red. On Windows, an external integer/null-signal exit is accepted only after
 > the exact bounded `taskkill /T` (or `/T /F`) request succeeds. If that exit arrives while the
 > request is pending, defer its verdict and recheck the latched observation after cleanup settles.
-> Only after the terminal barrier may stderr release, validated profile removal and stable absence
-> complete. Executable controls include a real POSIX process-group browser that exits by SIGABRT
-> after `Browser.close`, which must stay red while cleanup completes, and an integrated Windows
+> Missing POSIX lifecycle evidence is terminal. A shutdown diagnostic is latched but must never
+> release ownership before the final barrier; profile removal and stable absence still run before
+> that diagnostic returns. Only after the terminal barrier may stderr release, validated profile
+> removal and stable absence complete. Executable controls retain pure SIGABRT classification and
+> use an explicitly acknowledged real POSIX code-17 exit after `Browser.close`, plus missing-
+> lifecycle, forced-exact-SIGKILL and pre-barrier-diagnostic cases, and an integrated Windows
 > launcher fixture whose external code-17 exit arrives before its successful taskkill request
 > resolves, with no `Browser.close` dispatch and exact socket/profile cleanup. Preserve primary and
 > cleanup failures independently.
@@ -440,10 +446,10 @@
 > verifier green. That is immutable local browser evidence for that exact source only; it grants no
 > hosted authority.
 >
-> The 2026-09-02 sentinel refinement is bound at audit time to `browsercdp.mjs` SHA-256
-> `8c6094e4e4bc05c40ace80478b038890e2e8c33856e5932a60805ac71249e0df`.
+> The 2026-09-02 launcher-lifecycle successor is bound at audit time to `browsercdp.mjs` SHA-256
+> `4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca`.
 > Compendium measurement authority is
-> `a963f40135651323bb2c0f2a0a6fa7a381ab3905e43b6e5721f45e9f38e50e62`; producer authority
+> `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`; producer authority
 > remains `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`.
 > Every numeric ceiling, historical sample, outcome and compatible-browser policy is unchanged.
 > SceneMemory remains deliberately stale/red and production-only. The final seven same-source
@@ -451,6 +457,18 @@
 > `1f80b0ad050763bf478b2364ad0194e389a7096e` then passed its hermetic tracked-input rehearsal and
 > one unchanged-source/no-retry Compendium **78/78** → zero-finding Slice → Glass **12/12 / 104/104**
 > chain with every named verifier green.
+
+> **A SHARED INSTRUMENT PROVES ITSELF BEFORE ANY EXPENSIVE CONSUMER** (2026-09-02). If Layout,
+> SceneMemory, Compendium, Slice or Glass imports one browser launcher, a changed-launcher selftest
+> must run after static setup but before the first of those browser consumers. Do not spend a long
+> product certificate and then discover that its transport owner is red. Keep resolver, launcher,
+> consumer-specific preflight, live product certificate and named verifier in causal order; stop on
+> the first red and never retry an unchanged source automatically. GitHub run `33628648136` earned
+> this law: all work through Compendium's synthetic controls had passed before the later launcher
+> selftest exposed its own Linux lifecycle race, while live Compendium, Slice and Glass never ran.
+> The corrected workflow now runs the shared launcher selftest before root Layout, production-only
+> SceneMemory and Compendium. This ordering changes no game verdict, ruler, browser-version policy
+> or production quarantine.
 
 > **A RESTORATION ORACLE SAMPLES THE STATE THE PRODUCT ACTUALLY RECEIVES** (2026-08-31).
 > A virtual-row helper may legitimately reposition a row while consuming deferred layout and

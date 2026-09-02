@@ -156,7 +156,18 @@ jobs:
         working-directory: port/v2
         run: npm run overridecontrol
 
-      # All browser-free work precedes the first real browser. This root ruler
+      # When changed (and on production), the shared launcher proves its own
+      # lifecycle before any root, SceneMemory, or Compendium browser consumer.
+      - name: changed-or-production Chrome launcher selftest
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.browser_transport_changed == 'true'
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: node tools/browsercdp.mjs --selftest
+
+      # The launcher control precedes this first product browser ruler, which
       # remains complete whenever its retained product is in scope.
       - name: layout (10 viewports)
         id: root_layout
@@ -220,10 +231,8 @@ jobs:
         run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json
 
       # Changed-instrument and production mutation controls run before
-      # Compendium reserves its sealed chain. The shared Chrome launcher
-      # selftest also runs here so a launcher red stops before the long exact-
-      # Edge certificate, while install -> live preflight -> certificate ->
-      # verifier remains physically uninterrupted in both profiles.
+      # Compendium reserves its sealed chain. Install -> live preflight ->
+      # certificate -> verifier remains physically uninterrupted in both profiles.
       - name: changed-or-production Compendium browser instrument selftests
         if: >-
           github.event.pull_request.base.ref == 'main' ||
@@ -235,15 +244,6 @@ jobs:
           node tools/browserpath.mjs --selftest
           node tools/compendiummem-browser-preflight.mjs --selftest
           npm run compendiummem:selftest
-
-      - name: changed-or-production Chrome launcher selftest
-        if: >-
-          github.event.pull_request.base.ref == 'main' ||
-          steps.scope.outputs.browser_transport_changed == 'true'
-        working-directory: port/v2
-        env:
-          CF_BROWSER: /usr/bin/google-chrome
-        run: node tools/browsercdp.mjs --selftest
 
       # Compendium is the first product memory ruler on develop. Production reaches
       # it only after the production-only SceneMemory certificate is terminal-green.
