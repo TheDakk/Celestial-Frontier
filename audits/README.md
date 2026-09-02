@@ -10,7 +10,57 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 battery review and launcher-lifecycle successor — exact eleventh attempt
+### Current PR #35 Inventory-modal lifetime stop and bounded successor — exact twelfth attempt
+
+PR #35 run `33657402955`, attempt 1, consumed the exact one-time `test-battery` authority for head
+`bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Authorization, browser-free/static/art gates, the
+shared launcher selftest, Layout **787/787**, Compendium **78/78** plus named verification, and the
+real-browser Slice plus its exact binding all passed. SceneMemory correctly skipped as
+production-only. Glass then causal-stopped on its first small-phone row after **50,864 ms** with
+exactly one product finding, zero instrument failures and zero retries:
+`INVENTORY_MODAL_OWNERSHIP`, whose only failed clause was `backgroundLocked:false`. The other 11
+viewport rows, Recovery and preview packaging correctly did not run. The full workflow ended red
+after **72m38s**; the label was removed and PR #35 remains Ready/open/unmerged.
+
+The hosted report did not retain the unlocked sibling identity, so it does not prove a toast was
+the exact offender. Source proves the one-shot Inventory lock admitted any body root added or any
+`inert`/`aria-hidden` writer firing after modal open. The bounded successor continuously owns both
+isolation halves, snapshots newly encountered roots once, disconnects before exact Close/dispose
+restoration, and makes Glass retain offending root and presentation diagnostics. Its existing
+modal/focus controls now inject the real mutation class and a late root, prove red → observer-green
+→ exact restore, preserve outside-focus redirection, and keep native Tab-wrap bypass inside the
+modal. No new Glass control or job is added; the sealed count remains **104**.
+
+The exact hosted report is preserved as
+`ARC4_GLASS_PR35_INVENTORY_MODAL_LIFETIME_PRODUCT_RED_20260902_BDD8A4C.json.gz`: raw **93,541
+bytes**, SHA-256 `33e3f66127493092923106458bb54825584e00df4ea33f9494f97c4c62e97b59`;
+deterministic gzip **11,242 bytes**, SHA-256
+`50acaf9454040c09f6f016d31fb24ca2e6cabf72a4afe3b302185f9a2d41bd18`. Artifact ID
+`9860127013` has archive digest
+`sha256:ad9d5212cb4c8f187b3c2f9035a1da2483adf0b56184418b73946c9ba21d21fa` and expires
+2026-09-16. Complete evidence and the repair boundary are in
+`ARC4_GLASS_PR35_INVENTORY_MODAL_LIFETIME_PRODUCT_RED_AND_REPAIR_20260902_BDD8A4C.md`.
+
+Current Compendium measurement/producer authority is
+`b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
+`f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc`. Only the exact built
+index/main/service-worker graph moved; the worker/painter, fixed ruler, numeric ceilings, outcome
+inventory and historical samples remain unchanged.
+
+The first local consolidated `develop` profile stopped after **2,727 passed / 1 skipped** solely on
+that expected exact-source producer mismatch. Focused authority coverage then passed **32/32** and
+the corrected consolidated profile passed **264/264 files, 2,728 passed / 1 skipped**, all three
+TypeScript programs, 34 clean art sources, 1,014/1,014 routes and 454 declared fields. Clean
+committed tracked-input and the unchanged-source browser chain remain pending.
+
+All twelve hosted stops now classify as **8 instrument/infrastructure, 3 product/runtime and 1
+mixed**. The twelfth authorization is consumed; there is no retry, merge, release, version,
+publication or deployment authority. A changed local successor must complete one fresh clean
+unchanged-source profile/Compendium → Slice → Glass proof before requesting a new exact hosted
+attempt.
+
+### Historical PR #35 battery review and launcher-lifecycle successor — exact eleventh attempt
 
 PR #35 run `33628648136`, attempt 1, consumed the exact one-time `test-battery` authority for head
 `85431115256137b05d7cdfa590e087fd3b4d52e1` against base

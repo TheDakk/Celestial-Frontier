@@ -2461,6 +2461,8 @@ describe('legacy and v2 release channels', () => {
       /Oversized legacy holds remain lossless inspection-only evidence/,
       /COMPARISON TELLS THE WHOLE STORY/,
       /bounded 48-row page/,
+      /current and newly mounted background surfaces stay inert and hidden from assistive technology/,
+      /Close restores each surface’s exact prior state/,
       /GEAR ACTIONS SETTLE ONCE/,
       /tab lease, save revision, exact item identity, and one immutable receipt/,
       /ONE DURABLE AUTHORITY AT A TIME/,

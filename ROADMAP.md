@@ -17,137 +17,130 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-02 · ELEVENTH HOSTED INSTRUMENT STOP · LOCAL DEVELOP CHAIN GREEN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-02 · TWELFTH HOSTED PRODUCT STOP · INVENTORY LIFETIME REPAIR READY FOR EXACT-SOURCE CERTIFICATION ◀◀◀
 
 ### Exact current boundary
 
 - **Verified owner:** OpenAI/Codex on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, tracking
   **origin/openai/mac**.
-- Exact SSH-signed implementation/docs certificate is
-  **a484c39b30c8cdecac464c31283f64efb0263628**, tree
-  **eb9ed823ff165ff89d9c8137f006e30497931c73**, parent
-  **85431115256137b05d7cdfa590e087fd3b4d52e1**, based against `origin/develop`
-  **7a9f4c1370dd84292388d718c38ff34214f6203b**. The signed documentation/evidence descendant
-  containing this handoff is current local `HEAD`; use `git rev-parse HEAD` for its exact id.
-- `origin/openai/mac` remains **85431115256137b05d7cdfa590e087fd3b4d52e1**. The implementation
-  certificate is one local commit ahead; the documentation/evidence descendant is two commits
-  ahead after completion. No remote write has occurred.
-- This batch changes no game source, creatures, plants, biomes, Guardians, universe content,
-  graphics, audio, save, progression, combat, loot, ruler, numeric ceiling, outcome inventory or
-  browser point-version policy.
-- No push, label, hosted attempt, rerun, PR mutation, Ready transition, merge, release, version
-  bump, publication or deployment is authorized.
+- Hosted-tested/pushed head is **bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17**, tree
+  **ae8faec92122f412240c5b4979073f69b170c9f4**, against exact `origin/develop`
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**.
+- The local candidate carries a bounded Inventory modal-lifetime repair, expanded existing Glass
+  controls, synchronized player bulletin/reference work and retained hosted evidence. Its exact
+  signed implementation commit is the next proof boundary; do not discard, overwrite, rebase or
+  copy these changes to another worktree.
+- PR #35 is Ready/open/unmerged. `develop` is unchanged at the base above. The exact hosted
+  authorization is consumed; no push, label, dispatch, retry, PR mutation, merge, release, version
+  bump, publication or deployment is currently authorized.
 
-### Eleventh exact hosted attempt — immutable consumed red
+### Twelfth exact hosted attempt — immutable consumed product red
 
-- Nick's exact one-time PR #35 `test-battery` authority for head **8543111…** against base
-  **7a9f4c1…** was consumed by GitHub run **33628648136**, attempt 1, synthetic merge
-  **44659456e15f5250fdcf566516da8f85a1ef5328**, tree
-  **517f2e08b53b631b5f493ce39872334bceff83a4**. The required job stopped terminal red after
-  **6m30s**; there was no retry.
-- Authorization, checkout/setup, environment/scope/policy, legacy browser-free work, v2 static
-  gates, art mutation, root Layout **787/787** and Compendium's instrument controls passed.
-  SceneMemory correctly skipped as production-only.
-- The first and only red was `changed-or-production Chrome launcher selftest`:
-  `SELFTEST abnormal browser exit after Browser.close: injected failure was accepted`.
-  The synthetic fixture never loaded Celestial Frontier. Exact Edge installation, live
-  Compendium, Slice and Glass correctly did not run.
-- The approval label was removed; PR #35 remains open/unmerged. The exact 8543111 authorization is
-  consumed and must not be retried.
+- Nick's exact one-time PR #35 `test-battery` authority for head **bdd8a4c…** against base
+  **7a9f4c1…** produced GitHub run **33657402955**, attempt 1, synthetic merge
+  **26db13963033feacc89ceef1a59a4af0c05c14c3**, whose tree is byte-identical to the exact head.
+- Authorization, environment/scope/budget, legacy browser-free, v2 static, changed-art, shared
+  launcher selftest, root Layout **787/787**, Compendium controls/preflight/certificate/verifier and
+  real-browser Slice plus exact binding all passed. SceneMemory correctly skipped because it is
+  production-only/quarantined.
+- Glass causal-stopped after **50,864 ms** on the first executed viewport, small-phone
+  **320×568@2**. It ran 81 controls, blocked the 23 dependent controls, executed one reload row and
+  did not run the remaining 11 viewport rows. Recovery and preview packaging correctly skipped.
+- There was exactly one product finding, zero instrument failures and zero retries:
+  `small-phone/inventory-modal` → `INVENTORY_MODAL_OWNERSHIP` on `#inventorysheet`. Its only
+  failed clause was `backgroundLocked:false`. One exact sheet/detail, selected identity,
+  active/retained/pending `1/0/0`, safe geometry, all 44px controls and initial Close focus were
+  green.
+- The workflow ended terminal red after **72m38s**. The label was removed; no retry or merge
+  occurred. The exact bdd8a4c authority is consumed.
+- Artifact `battery-evidence` is ID **9860127013**, 9,752,514 bytes, digest
+  `sha256:ad9d5212cb4c8f187b3c2f9035a1da2483adf0b56184418b73946c9ba21d21fa`, expiring
+  2026-09-16. The exact Glass report is retained deterministically under `audits/` and indexed in
+  `audits/README.md`.
 
-### Eleven-attempt diagnosis and right-sized ownership
+### Diagnosis and bounded successor
 
-- The hosted history classifies as **8 instrument/infrastructure stops, 2 product/runtime stops
-  and 1 mixed stop**. The dominant loop was evidence-instrument reliability and sequencing, not a
-  game with thousands of independent defects.
-- The **2,728** browser-free assertions are one consolidated local suite that completes in about
-  40 seconds; they are not 2,728 jobs and are not the long-delay source.
-- Keep as `develop` admission: exact authorization/scope/policy, one consolidated develop profile,
-  relevant legacy/Layout work, one Compendium certificate and verifier, one critical Slice and
-  verifier, then full 12-viewport Glass and verifier.
-- Run resolver/launcher/Compendium synthetic controls only when their inputs change and always
-  before the expensive consumer they validate. Keep live SceneMemory and Recovery
-  production-only/quarantined; production still requires Nick's separate SceneMemory activation
-  decision.
-- Post-merge candidates—not silently part of this repair—are runtime/selftest file separation,
-  content-addressed certificate reuse, critical-versus-exhaustive Slice ownership, a thin
-  nonduplicating prehost orchestrator and smaller future PRs. See
-  `audits/PR35_TEST_BATTERY_RIGHTSIZING_AND_LAUNCHER_RED_20260902_8543111.md`.
+- This is a product lifetime-ownership defect, not a loot, save, geometry, focus, responsive
+  baseline or browser-version failure. Inventory took a one-time snapshot of direct body siblings
+  at open and did not reassert isolation after later mounts or attribute writers.
+- The hosted report retained only the aggregate boolean, so it does not prove which sibling escaped.
+  The ordinary toast and rank FX are source-supported candidates, not claimed observations.
+- `inventory-panel.ts` now snapshots each encountered direct body background root once,
+  continuously reasserts both `inert` and `aria-hidden="true"` for the whole sheet lifetime,
+  disconnects before release and restores every root's exact prior state on Close/dispose.
+- Focused coverage independently clears `inert`, removes `aria-hidden`, appends a late FX-like
+  root, proves broken → observer-green, verifies unusual exact restoration and proves disposal
+  cannot reacquire a later root.
+- Glass keeps the same product predicate, job and **104-control** sealed inventory. Its existing
+  modal controls now retain an exact unlocked-root ledger and nearby toast/progression state, prove
+  real attribute/late-root red → observer-green → exact Close restoration, separately prove
+  outside-focus redirection and keep native Tab bypass sentinels inside the modal.
+- The v2 development bulletin remains 77 bullets; its refreshed rendered ordered SHA-256 is
+  `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`.
+- The app/release copy changed the exact built graph, so current Compendium producer authority is
+  `f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc` under unchanged
+  measurement authority `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`.
+  Worker/painter bytes, the fixed ruler, every numeric ceiling, the 78-outcome inventory and all
+  historical samples remain unchanged; this is exact-source identity, not recalibration.
+- The twelve hosted stops classify as **8 instrument/infrastructure, 3 product/runtime and 1
+  mixed**. This does not make a red green and grants no hosted or merge authority.
 
-### Bounded shared-launcher successor
+### Verification completed and pending
 
-- Close phase is recorded before synchronous `Browser.close` send, but close-request authority is
-  claimed only after send succeeds. Cleanup waits for exact browser lifecycle rather than a
-  sentinel tree that cannot quiesce before cleanup.
-- The integrated abnormal-exit control uses a receipt-bearing `SIGUSR2` handler and deterministic
-  exit code `17`; pure SIGABRT classifier controls remain without relying on hosted core-dump
-  timing.
-- The sentinel terminates and observes the exact browser, flushes lifecycle IPC, then announces
-  final identity and waits for acknowledgement before terminal group SIGKILL. Diagnostics remain
-  latched until terminal ownership; profile removal requires proven termination; direct-kill
-  failure stays provisional until lifecycle expiry.
-- Clean, deterministic nonzero, missing-lifecycle, TERM-resistant/SIGKILL and pre-barrier-error
-  integrated controls plus source mutations cover both failure directions. The workflow runs this
-  shared launcher control before every expensive browser consumer.
-- Independent final review is **CLEAR**. Current launcher SHA-256 is
-  **4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca**. Compendium measurement
-  authority is **b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da**,
-  refreshing only `browserCdp`; producer authority remains
-  **308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77**.
+Completed on the local successor:
 
-### Local proof completed
+- focused Inventory: **1 file / 21 passed**;
+- producer/budget authority: **2 files / 32 passed** after exact build-graph rebind;
+- all three v2 TypeScript programs: PASS;
+- Glass report selftest and JavaScript syntax: PASS;
+- two small-phone diagnostics reached the exact Inventory route with zero product findings and all
+  relevant lifetime/focus controls green. Their overall exit remained the known unrelated
+  targeted-only portrait-campaign limitation because one 320px row cannot supply a multi-viewport
+  visible-trail baseline; they are diagnostics, not certificates.
+- The first consolidated `develop` profile stopped in **32.61s** at one exact-source producer
+  mismatch after all other tests reached **2,727 passed / 1 skipped**. It named only index, owner,
+  service-worker and derived producer hashes. The bounded rebind changed exactly those five leaves
+  plus the calibration history sentence; it did not change measurement, ruler, ceilings, samples,
+  outcomes or browser policy.
+- The corrected consolidated `develop` profile passes **264/264 files, 2,728 passed / 1 skipped**,
+  all three TypeScript programs, **34** clean art sources, **1,014/1,014** routes and **454**
+  declared fields with zero inert fields.
+- Final whole-diff product review, current-producer authority audit and synchronized-document review
+  are independently clear. No stale current authority, numeric recalibration or additional product
+  change was found.
 
-- Focused launcher/workflow/preflight/authority coverage passes **152/152**.
-- Shared browser-CDP selftest passes all startup, deadline, lifecycle, cleanup, missing-evidence,
-  abnormal-exit, TERM/SIGKILL, profile and provenance controls.
-- Compendium's browser-free instrument selftest passes **618/618** controls.
-- The complete browser-free `develop` profile passes **264/264 files, 2,728 passed / 1 skipped**,
-  all three TypeScript programs, **34** art sources with zero findings, **1,014/1,014** routes and
-  **454** declared fields with zero inert fields.
-- The hermetic tracked-input rehearsal passes exact clean source **a484c39…**, proving the same
-  result from committed Git inputs in a fresh temporary clone.
-- Root Layout `local-1788355721508-17420-624f697795` passes **787/787** across 10 viewports in
-  **76,917 ms** and passes named verification.
-- Compendium `20260902133054645-17703-2cf459762b` passes **78/78** with zero findings/blocked
-  outcomes in **65,415 ms** and passes named verification.
-- Develop Slice `20260902133238723-18057-fb0557070177` passes terminal/certifying with zero
-  findings/scopes and ten screenshots in **363,456 ms**. Its named verifier binds report/log
-  SHA-256 `6724025357702846ef9283d4ecd55ba0e86f57a3d4a87607b33953a9717851b5` /
-  `4e3750b8eea9e2ad2df8b9edb73a49b9a321dd7e1bea5e6a4f1a9f43ad6f44da`.
-- Glass `20260902133910919-18520-cab54654b9fd` consumes that exact Slice and passes **12/12**
-  viewports, **12/12** reload rows and **104/104** controls with zero blocked/omitted controls,
-  findings, instrument failures or retries in **116,033 ms**. Slice-bound named verification
-  passes; report SHA-256 is
-  `eec545ab3215a5cbeb0c52cf316bc4e0bfcbc16c27c31e023d7b55223a5838cc`.
-- Five deterministic `gzip -n -9` carriers preserve Layout, Compendium, Slice report/log and
-  Glass. Integrity, exact raw comparison and deterministic recompression all pass; full names,
-  sizes and hashes are indexed in `audits/README.md` and the current audit. No stage retried and
-  the exact implementation source remained clean and byte-identical throughout.
-- The signed documentation/evidence descendant containing this handoff also passes the final
-  hermetic tracked-input `develop` proof with the same **264/264 files, 2,728 passed / 1 skipped**
-  and green TypeScript/art/specification owners. Local closure is complete.
+Still required, once each:
 
-### Exact remaining closure
+1. create one local signed implementation commit on `openai/mac` and prove clean tracked inputs;
+2. on that exact unchanged source, run serial fail-fast/no-retry Compendium → Slice → Glass and
+   named-verify each report, passing the exact Slice predecessor into Glass;
+3. retain/index the green report carriers, commit the documentation/evidence descendant and run its
+   final tracked-input proof;
+4. only if all local evidence is green, report the exact final head/base and request one fresh
+   exact hosted attempt. Never rerun the consumed bdd8a4c attempt.
 
-1. Stop locally: implementation, evidence, synchronized current references and final tracked-input
-   proof are complete. Do not rerun the unchanged local battery.
-2. Report the exact final head/base and ask for one fresh exact hosted authorization. Merge only if
-   that distinct authorized head is terminal green.
+### Scope and preserved vision
+
+- This repair changes Inventory modal lifetime isolation and evidence diagnosis only.
+- It changes no gameplay rule, loot tier, gear identity, creature/genome, plant, biome, Guardian,
+  world generation, graphics, audio, save schema, persistence transaction, numeric ruler/ceiling,
+  retry, Edge point-version policy, Gate/HUMAN status, production version or release boundary.
+- Compatible Edge-family updates at CDP 1.3 remain provenance-only and never require a rebaseline.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex next:** report the exact hosted-ready head and request one fresh exact attempt.
-  Do not push or mutate GitHub without that authority.
+- **OpenAI/Codex next:** finish the bounded local proof above. Do not push or mutate GitHub without
+  a fresh exact-head authorization.
 - **PR:** existing #35, base **develop**, source **openai/mac**.
 - **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
 - **Description:** “Completes the established v2 roadmap campaign without recreating its gameplay
-  systems; keeps live SceneMemory production-only; makes shared Chromium lifecycle evidence
-  deterministic and causally ordered before expensive consumers; preserves the no-retry
-  Compendium → Slice → Glass develop chain; and documents the eleven-attempt battery review. No
-  ruler, ceiling, browser-version policy, release, version bump or deployment changes.”
-- **Claude Code next:** Nick does not need to open Claude yet. After PR #35 is terminal green and
-  merged into `develop`, Claude/Fable should begin the requested full polish review from a fresh
-  `anthropic/*` branch synchronized from `origin/develop`.
+  systems; repairs Inventory's whole-lifetime modal isolation after the immutable twelfth hosted
+  stop; strengthens existing Glass diagnosis and controls without adding a job or weakening a
+  ruler; preserves the no-retry Compendium → Slice → Glass develop chain; and documents all twelve
+  attempts. No browser-version pin, release, version bump or deployment.”
+- **Claude Code next:** Nick does not need to open Claude yet. Claude/Fable should begin the
+  requested full polish review only after PR #35 is terminal green and merged into `develop`,
+  from a fresh `anthropic/*` branch synchronized from `origin/develop`.
 - **Actions budget:** mode **UNFROZEN**, public-repository assumption while verified, private
   fallback cap **3,000**, and **zero** hosted attempts authorized.

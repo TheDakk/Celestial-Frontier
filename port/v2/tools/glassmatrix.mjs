@@ -6818,11 +6818,17 @@ function installAuditHarness() {
     const detail = sheet?.querySelector('[data-inventory-detail]') || null;
     const focus = sheet?.querySelector(expectedFocusSelector) || null;
     const diagnostics = window.__CF_SLICE__?.api?.inventoryDiagnostics?.();
+    const presentation = window.__CF_SLICE__?.api?.state?.();
     const labelledBy = sheet?.getAttribute('aria-labelledby');
     const title = labelledBy ? document.getElementById(labelledBy) : null;
     const siblings = [...document.body.children].filter((node) => node !== sheet);
-    const backgroundLocked = siblings.length > 0
-      && siblings.every((node) => node.inert === true && node.getAttribute('aria-hidden') === 'true');
+    const background = siblings.map((node) => ({
+      selector: selectorName(node), tag: node.tagName, id: node.id || null,
+      inert: node.inert === true, inertAttribute: node.hasAttribute('inert'),
+      ariaHidden: node.getAttribute('aria-hidden'),
+    }));
+    const unlockedBackground = background.filter((node) => !node.inert || node.ariaHidden !== 'true');
+    const backgroundLocked = siblings.length > 0 && unlockedBackground.length === 0;
     const bounds = visualBounds(safe), cardBox = card ? box(card) : null;
     const cardStyle = card ? getComputedStyle(card) : null;
     const controls = sheet ? [...sheet.querySelectorAll('button,input,select,textarea,a[href],[tabindex]:not([tabindex="-1"])')]
@@ -6846,7 +6852,13 @@ function installAuditHarness() {
         && controlFloor.every((row) => row.width >= 44 && row.height >= 44)
         && document.activeElement === focus,
       sheetCount: sheets.length, detailCount, detailId: detail?.getAttribute('data-inventory-detail') || null,
-      diagnostics, backgroundLocked, geometry, cardBox, bounds, controlFloor,
+      diagnostics, backgroundLocked, unlockedBackground,
+      presentation: {
+        toastSerial: presentation?.toastSerial ?? null,
+        toastOn: presentation?.toastOn ?? null,
+        progressionLastDeliveredKey: presentation?.progressionCeremony?.lastDeliveredKey ?? null,
+      },
+      geometry, cardBox, bounds, controlFloor,
       expectedFocus: focus ? selectorName(focus) : null,
       active: document.activeElement instanceof Element ? selectorName(document.activeElement) : null,
     };
@@ -10713,10 +10725,34 @@ async function main() {
                 }
                 recordControls('inventory-modal-duplication');
 
-                const modalFocusControl = await evalIn(`(()=>{const close=document.querySelector('#inventorysheet [data-inventory-sheet-close]');
-                  close?.blur();const broken=${modalCheck};close?.focus();return {ok:broken.ok===false&&${modalCheck}.ok,broken};})()`);
+                const modalFocusControl = await evalIn(`(()=>{const sheet=document.getElementById('inventorysheet'),
+                  close=sheet?.querySelector('[data-inventory-sheet-close]'),outside=[...document.body.children].find(node=>node!==sheet)||null;
+                  close?.blur();const broken=${modalCheck};
+                  outside?.dispatchEvent(new FocusEvent('focusin',{bubbles:true,composed:true}));
+                  const redirected=document.activeElement===close,restored=${modalCheck};close?.focus();
+                  return {ok:broken.ok===false&&!!outside&&redirected&&restored.ok&&${modalCheck}.ok,
+                    broken,redirected,restored,outside:outside?(outside.id||outside.tagName):null};})()`);
                 if (!modalFocusControl.ok) {
                   recordInstrumentFailure(`${vp.label}: Inventory modal focus omission stayed green or failed to restore (${JSON.stringify(modalFocusControl)})`);
+                }
+
+                const backgroundLifetimeBroken = await evalIn(`(()=>{const toast=document.getElementById('toast'),
+                  late=document.createElement('div');late.id='cf-inventory-background-lifetime';late.inert=false;
+                  late.setAttribute('aria-hidden','late-prior');document.body.appendChild(late);
+                  if(toast){toast.inert=false;toast.removeAttribute('inert');toast.removeAttribute('aria-hidden');}
+                  const broken=${modalCheck};window.__cfInventoryBackgroundLifetimeControl={late};
+                  return {ok:!!toast&&broken.ok===false&&broken.backgroundLocked===false
+                    &&broken.unlockedBackground.some(row=>row.id==='toast')
+                    &&broken.unlockedBackground.some(row=>row.id===late.id),broken};})()`);
+                await waitFor('Inventory background lifetime re-lock', `(()=>{const probe=window.__cfInventoryBackgroundLifetimeControl,
+                  outcome=${modalCheck};return !!probe?.late?.isConnected&&probe.late.inert===true
+                    &&probe.late.getAttribute('aria-hidden')==='true'&&outcome.ok;})()`);
+                const backgroundLifetimeRelocked = await evalIn(`(()=>{const probe=window.__cfInventoryBackgroundLifetimeControl,
+                  outcome=${modalCheck};return {ok:!!probe?.late?.isConnected&&probe.late.inert===true
+                    &&probe.late.getAttribute('aria-hidden')==='true'&&outcome.ok,
+                    late:probe?.late?{inert:probe.late.inert===true,ariaHidden:probe.late.getAttribute('aria-hidden')}:null,outcome};})()`);
+                if (!backgroundLifetimeBroken.ok || !backgroundLifetimeRelocked.ok) {
+                  recordInstrumentFailure(`${vp.label}: Inventory lifetime background mutation did not turn red and re-lock (${JSON.stringify({ backgroundLifetimeBroken, backgroundLifetimeRelocked })})`);
                 }
                 recordControls('inventory-modal-focus');
               }
@@ -10734,59 +10770,53 @@ async function main() {
                   trapSetup, forwardTrap, reverseTrap },
                 'real forward and reverse Tab wrap inside the one Inventory modal');
               if (!inventoryControlRun) {
-                /* Window is earlier than document on the capture path. These
-                   two temporary interceptors therefore bypass the owned
-                   document Tab/focus-containment handlers without changing
-                   product code or replacing their exact listener identity. */
+                /* Window is earlier than document on the capture path. The
+                   temporary interceptor bypasses only the owned document Tab
+                   handler. Modal-descendant contenteditable sentinels remain
+                   outside the product/auditor control enumeration, so native
+                   Tab can miss each expected edge without unlocking the
+                   continuously isolated body background. */
                 const wrapControlSetup = await evalIn(`(()=>{const sheet=document.getElementById('inventorysheet'),
                   controls=sheet?[...sheet.querySelectorAll('button,input,select,textarea,a[href],[tabindex]:not([tabindex="-1"])')]
                     .filter(node=>!node.hidden&&!node.disabled&&!node.closest('[hidden]')):[],first=controls[0]||null,last=controls.at(-1)||null,
-                  outsideBefore=document.createElement('button'),outsideAfter=document.createElement('button'),receipt={keydown:0,focusin:0};
-                  outsideBefore.id='cf-inventory-focus-wrap-before';outsideAfter.id='cf-inventory-focus-wrap-after';
-                  for(const [outside,label] of [[outsideBefore,'before'],[outsideAfter,'after']]){outside.type='button';
-                    outside.textContent='outside focus target '+label;
-                    outside.style.cssText='position:fixed;left:0;top:0;width:44px;height:44px;z-index:2147483647';}
-                  const keydown=event=>{if(event.key!=='Tab')return;receipt.keydown+=1;event.stopImmediatePropagation();},
-                    focusin=event=>{if(sheet?.contains(event.target))return;receipt.focusin+=1;event.stopImmediatePropagation();};
-                  sheet?.before(outsideBefore);sheet?.after(outsideAfter);window.addEventListener('keydown',keydown,true);
-                  window.addEventListener('focusin',focusin,true);
-                  window.__cfInventoryFocusWrapControl={outsideBefore,outsideAfter,first,last,keydown,focusin,receipt};last?.focus();
-                  return {ok:!!sheet&&controls.length>=2&&!!first&&!!last&&outsideBefore.isConnected&&outsideAfter.isConnected
-                    &&!outsideBefore.inert&&!outsideAfter.inert&&outsideBefore.tabIndex===0&&outsideAfter.tabIndex===0&&document.activeElement===last,
+                  sentinelBefore=document.createElement('div'),sentinelAfter=document.createElement('div'),receipt={keydown:0};
+                  sentinelBefore.id='cf-inventory-focus-wrap-before';sentinelAfter.id='cf-inventory-focus-wrap-after';
+                  for(const [sentinel,label] of [[sentinelBefore,'before'],[sentinelAfter,'after']]){sentinel.contentEditable='true';
+                    sentinel.textContent='modal focus sentinel '+label;
+                    sentinel.style.cssText='position:fixed;left:0;top:0;width:44px;height:44px;z-index:2147483647';}
+                  const keydown=event=>{if(event.key!=='Tab')return;receipt.keydown+=1;event.stopImmediatePropagation();},card=sheet?.firstElementChild||null;
+                  card?.before(sentinelBefore);card?.after(sentinelAfter);window.addEventListener('keydown',keydown,true);
+                  window.__cfInventoryFocusWrapControl={sentinelBefore,sentinelAfter,first,last,keydown,receipt};last?.focus();
+                  return {ok:!!sheet&&!!card&&controls.length>=2&&!!first&&!!last&&sentinelBefore.isConnected&&sentinelAfter.isConnected
+                    &&sheet.contains(sentinelBefore)&&sheet.contains(sentinelAfter)&&sentinelBefore.isContentEditable&&sentinelAfter.isContentEditable
+                    &&document.activeElement===last,
                     first:first?.getAttribute('data-inventory-sheet-close')!==null,
                     last:last?.getAttribute('data-inventory-action')||last?.tagName||null,
-                    outside:[outsideBefore.id,outsideAfter.id]};})()`);
+                    sentinels:[sentinelBefore.id,sentinelAfter.id]};})()`);
                 await pressTab();
                 const wrapBrokenForward = await evalIn(`(()=>{const probe=window.__cfInventoryFocusWrapControl,
                   outcome=window.__CF_GLASS_AUDIT__.inventoryFocusTrapOutcome('first');return {
-                    ok:!!probe&&document.activeElement===probe.outsideAfter&&outcome.ok===false,
-                    escaped:document.activeElement===probe?.outsideAfter,outcome,
+                    ok:!!probe&&document.activeElement===probe.sentinelAfter&&outcome.ok===false,
+                    bypassedEdge:document.activeElement===probe?.sentinelAfter,outcome,
                     receipt:probe?{...probe.receipt}:null};})()`);
                 const reverseBreakSetup = await evalIn(`(()=>{const probe=window.__cfInventoryFocusWrapControl;
                   probe?.first?.focus();return !!probe?.first&&document.activeElement===probe.first;})()`);
                 await pressTab(true);
                 const wrapBrokenReverse = await evalIn(`(()=>{const probe=window.__cfInventoryFocusWrapControl,
                   outcome=window.__CF_GLASS_AUDIT__.inventoryFocusTrapOutcome('last');return {
-                    ok:!!probe&&document.activeElement===probe.outsideBefore&&outcome.ok===false,
-                    escaped:document.activeElement===probe?.outsideBefore,outcome,
+                    ok:!!probe&&document.activeElement===probe.sentinelBefore&&outcome.ok===false,
+                    bypassedEdge:document.activeElement===probe?.sentinelBefore,outcome,
                     receipt:probe?{...probe.receipt}:null};})()`);
                 const wrapRestoreSetup = await evalIn(`(()=>{const probe=window.__cfInventoryFocusWrapControl;
                   if(!probe)return {ok:false,why:'focus-wrap bypass receipt absent'};
                   const receipt={...probe.receipt};window.removeEventListener('keydown',probe.keydown,true);
-                  window.removeEventListener('focusin',probe.focusin,true);probe.outsideBefore.remove();probe.outsideAfter.remove();
-                  delete window.__cfInventoryFocusWrapControl;
-                  const sentinel=document.createElement('button');sentinel.id='cf-inventory-focus-wrap-restored';
-                  sentinel.type='button';sentinel.textContent='restored-handler outside target';
-                  sentinel.style.cssText='position:fixed;left:0;top:0;width:44px;height:44px;z-index:2147483647';
-                  document.body.appendChild(sentinel);sentinel.focus();
-                  const close=document.querySelector('#inventorysheet [data-inventory-sheet-close]'),
-                    focusContainmentRestored=document.activeElement===close,last=[...document.querySelectorAll('#inventorysheet button,#inventorysheet input,#inventorysheet select,#inventorysheet textarea,#inventorysheet a[href],#inventorysheet [tabindex]:not([tabindex="-1"])')]
+                  probe.sentinelBefore.remove();probe.sentinelAfter.remove();delete window.__cfInventoryFocusWrapControl;
+                  const last=[...document.querySelectorAll('#inventorysheet button,#inventorysheet input,#inventorysheet select,#inventorysheet textarea,#inventorysheet a[href],#inventorysheet [tabindex]:not([tabindex="-1"])')]
                       .filter(node=>!node.hidden&&!node.disabled&&!node.closest('[hidden]')).at(-1)||null;
-                  last?.focus();return {ok:receipt.keydown===2&&receipt.focusin===2
-                    &&focusContainmentRestored&&!document.getElementById('cf-inventory-focus-wrap-before')
+                  last?.focus();return {ok:receipt.keydown===2&&!document.getElementById('cf-inventory-focus-wrap-before')
                     &&!document.getElementById('cf-inventory-focus-wrap-after')
                     &&!('__cfInventoryFocusWrapControl' in window)&&!!last&&document.activeElement===last,
-                    receipt,focusContainmentRestored,last:last?.getAttribute('data-inventory-action')||last?.tagName||null};})()`);
+                    receipt,last:last?.getAttribute('data-inventory-action')||last?.tagName||null};})()`);
                 await pressTab();
                 const wrapRestored = await evalIn(`window.__CF_GLASS_AUDIT__.inventoryFocusTrapOutcome('first')`);
                 await pressTab(true);
@@ -10806,7 +10836,7 @@ async function main() {
                   restoreSetup: wrapRestoreSetup, restored: wrapRestored,
                   reverseRestored, cleanup: wrapCleanup };
                 if (!wrapControl.ok) {
-                  recordInstrumentFailure(`${vp.label}: Inventory focus-wrap bypass did not escape, fail red, and restore (${JSON.stringify(wrapControl)})`);
+                  recordInstrumentFailure(`${vp.label}: Inventory focus-wrap bypass did not miss each edge, fail red, and restore (${JSON.stringify(wrapControl)})`);
                 }
                 recordControls('inventory-focus-wrap');
               }
@@ -10825,6 +10855,14 @@ async function main() {
                     &&window.__CF_GLASS_AUDIT__.inventoryClosedOutcome(${JSON.stringify(thermalId)}).ok,broken};})()`);
                 if (!retentionControl.ok) {
                   recordInstrumentFailure(`${vp.label}: retained Inventory detail after Escape stayed green or failed to restore (${JSON.stringify(retentionControl)})`);
+                }
+                const backgroundLifetimeRestored = await evalIn(`(()=>{const probe=window.__cfInventoryBackgroundLifetimeControl,
+                  late=probe?.late||null,result={ok:!!late&&late.isConnected&&late.inert!==true
+                    &&late.getAttribute('aria-hidden')==='late-prior',
+                    late:late?{inert:late.inert===true,ariaHidden:late.getAttribute('aria-hidden')}:null};
+                  late?.remove();delete window.__cfInventoryBackgroundLifetimeControl;return result;})()`);
+                if (!backgroundLifetimeRestored.ok) {
+                  recordInstrumentFailure(`${vp.label}: Inventory lifetime background state did not restore exactly (${JSON.stringify(backgroundLifetimeRestored)})`);
                 }
                 recordControls('inventory-modal-retention');
               } else await evalIn('delete window.__cfInventoryRetainedControl');

@@ -1,5 +1,33 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+> **D-PR35-INVENTORY-MODAL-LIFETIME — 2026-09-02 current deviation overlay (matches current local
+> code; supersedes older “current” labels while dated evidence remains immutable):** hosted PR #35
+> run `33657402955` tested exact head `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once/no-retry. Layout, Compendium and Slice passed;
+> Glass causal-stopped on its first small-phone row with exactly one product finding and no
+> instrument failure. Inventory's sheet/detail, selected identity, geometry, 44px controls and Close
+> focus were healthy; only `backgroundLocked:false` failed. The report did not name the unlocked
+> sibling, so source candidates are not promoted to observed facts. The authority is consumed, the
+> PR remains Ready/open/unmerged, and no hosted retry is authorized.
+>
+> The bounded product deviation replaces open-time-only isolation with lifetime ownership:
+> snapshot each encountered direct body root once, continuously reassert `inert` plus
+> `aria-hidden="true"`, disconnect before release, then restore each exact prior state. The bounded
+> instrument deviation adds offending-root/presentation diagnostics and red → observer-green →
+> exact-restore coverage to existing Glass controls, including outside-focus containment and modal-
+> internal native Tab sentinels. It adds no job or control name; the sealed total remains 104. The
+> v2 draft remains 77 bullets with ordered digest
+> `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`. Focused tests, all three
+> TypeScript programs, the corrected **264/264-file / 2,728-pass / 1-skip** `develop` profile and
+> the small-phone Inventory path are green; clean committed tracked-input and exact-source
+> Compendium → Slice → Glass certification remain pending. No gameplay, loot, save,
+> creature/genome, plant, biome, Guardian, art, graphics, audio, ruler, retry, browser-family,
+> Gate/HUMAN, release, version or production-identity deviation follows.
+> Current Compendium measurement/producer authority is
+> `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
+> `f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc`; this exact-source graph
+> refresh changes no worker/painter bytes, fixed ruler, numeric ceiling, outcome or sample.
+
 > **2026-09-02 current PR #35 battery-ownership deviation overlay (supersedes every older
 > “current” label; all dated decisions/evidence blocks below remain immutable):** hosted run
 > `33584052508` tested exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
@@ -577,7 +605,7 @@ local repairs below do not rewrite that historical red evidence or supply a clea
   earned `0..bestRank` nameplate; one F4 receipt/CAS verifies durability before AppChrome changes,
   with no optimistic render or retry and convergence reload on ambiguity. The current Guide is
   34 partial / 7 unavailable and **A New Foundation** is a 77-bullet development draft with rendered
-  ordered SHA-256 `9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b`.
+  ordered SHA-256 `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`.
 - ★ **D-PWA-1 — v2 installed updates are exact-build and explorer-controlled.** Build output now
   carries a same-origin manifest and generated worker whose build identity joins the SHA-256-verified
   final runtime inventory with an automatic worker-template revision before its completion marker
@@ -2958,7 +2986,7 @@ duplicates).
   (updated 2026-09-01).** `release-content.ts` carries an exact source-addressed legacy archive: 56 releases,
   398 bullets, v1.8.9 first and v1.0 last. **A New Foundation** is the separate cumulative v2.0
   development bulletin: a 77-bullet categorized, implemented-outcome technical outline with rendered
-  ordered SHA-256 `9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b` whose explicit
+  ordered SHA-256 `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964` whose explicit
   `draft`, `version:"2.0"` and `Unreleased` state does not turn open roadmap work into a promise.
   `release-identity.ts` keeps only development identity and `V2_CURRENT_RELEASE_VERSION` eager;
   `release-content.ts` and its archives load on Guide demand through one retryable in-flight import.

@@ -1,5 +1,30 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A MODAL OWNS BACKGROUND ISOLATION FOR ITS WHOLE OPEN LIFETIME, NOT ONLY AT OPEN**
+> (2026-09-02). Snapshot every existing background root before changing it, observe relevant body
+> child and `inert`/`aria-hidden` mutations for as long as the modal owns the top layer, snapshot
+> each newly encountered root exactly once, and idempotently reassert both isolation halves.
+> Disconnect observation before Close/dispose restores every encountered root's exact prior state,
+> including a root that detached while owned. Independently negative-control cleared `inert`,
+> removed `aria-hidden`, late roots, outside-focus redirection, exact restoration and no
+> reacquisition after release. A focus-wrap control may bypass the focus handler, but it must not
+> create a second real accessibility defect by unlocking or adding reachable body background; keep
+> instrument-only sentinels inside the modal and outside the judged control enumeration. A timeout,
+> browser point-version pin, later sample or retry cannot turn a one-time snapshot into lifetime
+> ownership.
+>
+> PR #35 run `33657402955` earned this law on exact head
+> `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Every predecessor through Compendium and Slice
+> passed; Glass then causal-stopped on the first 320×568 row with one product finding and no
+> instrument failure or retry. Inventory retained one correct sheet/detail, safe geometry, 44px
+> controls, exact selected identity and Close focus; only `backgroundLocked:false` failed. The
+> report did not name the unlocked sibling. Source proved the general hole: Inventory locked only
+> the body children present at open while later toast/FX roots and attribute writers remained live.
+> The bounded successor mirrors the existing Import-modal lifetime owner, makes the Glass result
+> name each unlocked root, and changes no loot, save, creature, art, gameplay, ruler, retry or
+> browser-version policy.
+
 > **NATIVE INPUT ADVANCES FROM OBSERVED OUTCOME, NOT A FIXED GESTURE COUNT** (2026-09-01).
 > A browser driver may issue a wheel, touch, key or pointer gesture, but the gesture is only intent;
 > it does not prove that the owned surface moved or that its target became reachable. After every

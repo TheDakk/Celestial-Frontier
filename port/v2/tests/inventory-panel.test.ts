@@ -693,9 +693,16 @@ describe('Arc 2 Inventory presentation', () => {
       .toBe('committed: pending reward claimed');
   });
 
-  it('owns one modal lifecycle, traps focus, clears on Close/Escape, and restores the exact opener', () => {
+  it('owns the full modal lifetime, re-locks changed and late background, and restores exact state', async () => {
     const item = gear(90, 'voidhelm');
     const view = shell();
+    const toast = view.document.createElement('div');
+    toast.id = 'toast';
+    toast.inert = false;
+    toast.setAttribute('aria-hidden', 'toast-prior');
+    view.document.body.insertBefore(toast, view.sheet);
+    view.opener.inert = true;
+    view.opener.setAttribute('aria-hidden', 'opener-prior');
     controller = new InventoryPanelController({ panel: view.panel, sheet: view.sheet, openers: [view.opener] });
     controller.setState(loaded(inventoryOf([item])));
     const row = view.panel.querySelector<HTMLButtonElement>('[data-inventory-row="exact"]')!;
@@ -713,6 +720,39 @@ describe('Arc 2 Inventory presentation', () => {
       lastAction: null,
     });
 
+    const backgroundLocked = (): boolean => [...view.document.body.children]
+      .filter((candidate) => candidate !== view.sheet)
+      .every((candidate) => (candidate as HTMLElement).inert === true
+        && candidate.getAttribute('aria-hidden') === 'true');
+    expect(backgroundLocked()).toBe(true);
+
+    /* Each half can be rewritten independently. In browsers the inert
+       property reflects its attribute; set/remove the attribute explicitly
+       so jsdom exercises the same observer edge. */
+    toast.setAttribute('inert', '');
+    await settleAction();
+    toast.inert = false;
+    toast.removeAttribute('inert');
+    expect(backgroundLocked()).toBe(false);
+    await settleAction();
+    expect(backgroundLocked()).toBe(true);
+
+    /* `showToast()` removes aria-hidden while queued ceremonies drain. */
+    toast.removeAttribute('aria-hidden');
+    expect(backgroundLocked()).toBe(false);
+    await settleAction();
+    expect(backgroundLocked()).toBe(true);
+
+    /* Rank FX can also append a direct body child after the sheet opens. */
+    const lateFx = view.document.createElement('div');
+    lateFx.id = 'late-rank-fx';
+    lateFx.inert = false;
+    lateFx.setAttribute('aria-hidden', 'late-prior');
+    view.document.body.append(lateFx);
+    expect(backgroundLocked()).toBe(false);
+    await settleAction();
+    expect(backgroundLocked()).toBe(true);
+
     view.outside.focus();
     expect(view.document.activeElement).toBe(view.sheet.querySelector('[data-inventory-sheet-close]'));
     view.document.dispatchEvent(new dom!.window.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
@@ -720,6 +760,12 @@ describe('Arc 2 Inventory presentation', () => {
     expect(view.sheet.querySelector('[data-inventory-sheet-body]')?.childElementCount).toBe(0);
     expect(view.document.activeElement).toBe(row);
     expect(view.panel.inert).not.toBe(true);
+    expect(view.opener.inert).toBe(true);
+    expect(view.opener.getAttribute('aria-hidden')).toBe('opener-prior');
+    expect(toast.inert).toBe(false);
+    expect(toast.getAttribute('aria-hidden')).toBe('toast-prior');
+    expect(lateFx.inert).toBe(false);
+    expect(lateFx.getAttribute('aria-hidden')).toBe('late-prior');
     expect(controller.diagnostics()).toEqual({
       schema: 'cf-v2-inventory-sheet-diagnostics/v1',
       activeCount: 0,
@@ -736,6 +782,14 @@ describe('Arc 2 Inventory presentation', () => {
     expect(view.document.activeElement).toBe(row);
     expect(controller.registration()).toMatchObject({ id: 'inventory', el: view.panel });
     expect(controller.registration().btns).toEqual([view.opener]);
+
+    row.click();
+    controller.dispose();
+    const afterDispose = view.document.createElement('div');
+    view.document.body.append(afterDispose);
+    await settleAction();
+    expect(afterDispose.inert).not.toBe(true);
+    expect(afterDispose.hasAttribute('aria-hidden')).toBe(false);
   });
 
   it('fails closed when a second dialog owner exists', () => {

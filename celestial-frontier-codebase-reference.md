@@ -1,5 +1,33 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-09-02 current Inventory modal-lifetime overlay (matches current local code; supersedes
+> older “current” labels while dated evidence remains immutable):** PR #35 run `33657402955`,
+> attempt 1, tested exact head `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Layout, Compendium and Slice passed; Glass then
+> causal-stopped on its first small-phone row with exactly one product finding and no instrument
+> failure or retry. Inventory retained one correct sheet/detail, identity, geometry, 44px controls
+> and Close focus; only `backgroundLocked:false` failed. The report did not identify the unlocked
+> sibling, so toast and later FX writers remain source-supported candidates rather than claimed
+> observations. The authorization is consumed, PR #35 remains Ready/open/unmerged, and no hosted
+> authority remains.
+>
+> Inventory now owns background isolation for the sheet's whole open lifetime: it snapshots each
+> encountered direct body root once, continuously reasserts both `inert` and `aria-hidden="true"`
+> after late mounts or attribute rewrites, disconnects before release, and restores exact prior
+> state on Close/dispose. Glass keeps its existing 104-control inventory, retains exact unlocked-
+> root and nearby presentation diagnostics, and exercises attribute mutation, late-root recovery,
+> outside-focus redirection, native Tab wrap and exact restoration in its existing controls. Focused
+> tests, the corrected **264/264-file / 2,728-pass / 1-skip** `develop` profile, all three TypeScript
+> programs and the small-phone Inventory route/controls are green; one clean committed tracked-input
+> proof and Compendium → Slice → Glass certificate remain pending. No
+> gameplay, loot, save, creature/genome, plant, biome, Guardian, art, graphics, audio, ruler, retry,
+> browser-version, Gate/HUMAN, release or production identity changed.
+> Current Compendium measurement/producer authority is
+> `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
+> `f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc`; the product/release
+> copy moved only the exact built index/main/service-worker graph. Worker/painter bytes, the fixed
+> ruler, every numeric ceiling, 78-outcome inventory and historical samples remain unchanged.
+
 > **2026-09-02 current launcher-lifecycle/battery-right-sizing overlay (supersedes older “current”
 > labels; dated evidence remains immutable):** PR #35 run `33628648136`, attempt 1, tested exact
 > head `85431115256137b05d7cdfa590e087fd3b4d52e1` against base
@@ -1780,7 +1808,10 @@
 > `inventory-actions.ts` owns only the exact legacy compatibility edits implied by a successful
 > domain action. `main.ts` registers Inventory in the desktop rail and exact 260px 5×2 ten-control
 > phone dock, supplies one durable action adapter, and publishes no optimistic state. The detail
-> sheet owns inert background, bidirectional focus wrap/return, exact conditional comparison,
+> sheet owns the background for its entire open lifetime: existing and newly mounted direct body
+> roots are snapshot once, kept both inert and `aria-hidden`, then restored to their exact prior
+> states after observation disconnects on Close/dispose. It also owns bidirectional focus
+> wrap/return, exact conditional comparison,
 > salvage confirmation, pending action and convergence diagnostics. At `<=360px`, each Inventory
 > row reflows to one content column with copy above a wrapping, left-aligned badge group. This changes
 > presentation only: the full exact instance id, item copy, equipped/protected/pending state and
@@ -4174,7 +4205,7 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
   by the 56 legacy releases. Its exact 77-bullet implemented-outcome inventory has rendered
-  ordered SHA-256 `9ba3197e462dd6579bff2b7483a53b47e9c3f3f230daa2cb4c3cc5c1a4a9f02b`
+  ordered SHA-256 `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`
   and is checked structurally and in the rendered Guide. Tail proof dispatches one adaptive
   native wheel per fresh exact-document/tail/hit-owner/geometry observation until the final item
   is visible at bottom, then restores scroll and inline overflow ownership exactly; unchanged
@@ -4612,11 +4643,21 @@ actions base-centered with a 44px floor while preserving ≤390px full width and
 rarity-removal controls independently cover Compendium badges and owned Binder slots while missing
 Binder semantics remain distinct.
 
-Exact signed implementation `1f80b0ad050763bf478b2364ad0194e389a7096e` passed the hermetic
+Inventory modal assessment also retains a per-root unlocked-background ledger with selector/tag/id,
+`inert` property/attribute and `aria-hidden`, plus nearby toast/progression presentation state. Its
+existing modal controls independently make a current attribute writer and a late direct-body root
+turn red, wait for observer-driven green, verify outside-focus redirection and exact post-Close
+restoration, and keep native forward/reverse Tab bypass sentinels inside the modal. This strengthens
+diagnosis and both-direction negative control without adding a job, changing the 104-control sealed
+inventory or weakening the product predicate.
+
+**Historical predecessor certificate:** exact signed implementation
+`1f80b0ad050763bf478b2364ad0194e389a7096e` passed the hermetic
 tracked-input develop profile and one unchanged-source/no-retry, named-verified Compendium
 **78/78** → zero-finding Slice → Glass **12/12 / 104/104** chain. The four deterministic
 report/log carriers are indexed in `audits/README.md`; the later docs/evidence descendant does not
-rebind authority away from that implementation source.
+rebind authority away from that implementation source. It predates the Inventory lifetime
+successor and does not certify its bytes; the current certificate remains pending as stated above.
 
 **Historical exact `8bdf474…` evidence / Arc 0 publication-oracle repair boundary (2026-08-30;
 superseded by the current handoff):** the immutable
