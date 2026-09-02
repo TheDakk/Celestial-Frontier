@@ -2,66 +2,57 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-02): twelfth hosted Inventory modal-lifetime product red preserved;
-bounded local successor and exact-source browser certificate are green; no hosted attempt is
-authorized.** PR #35
-run `33657402955`, attempt 1, consumed the exact one-time authority for head
-`bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
-`7a9f4c1370dd84292388d718c38ff34214f6203b`. It completed terminal red after **72m38s**. Every
-stage through root Layout **787/787**, Compendium **78/78** with named verification and real-browser
-Slice with exact binding passed; SceneMemory correctly skipped as production-only. Glass then
-causal-stopped after **50,864 ms** on its first executed row, small-phone 320×568@2, with exactly
-one product finding, zero instrument failures and zero retries. Only
-`INVENTORY_MODAL_OWNERSHIP.backgroundLocked:false` failed; sheet/detail ownership, item identity,
-active/retained/pending state, geometry, 44px controls and Close focus were green. The remaining 11
-viewport rows, Recovery and preview packaging correctly did not run. The label was removed and PR
-#35 remains Ready/open/unmerged; `develop` remains at the exact base.
+**Current local state (2026-09-02): thirteenth hosted Glass action-settlement instrument red is
+preserved; no hosted attempt is authorized.** PR #35 run `33674116068`, attempt 1, consumed the
+exact one-time authority for head `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Synthetic merge
+`dac0b24ddcc34a9035b8b294727dd104a411ec00` has tree
+`fbb059cea703cceb3feebcc716e64e02f5f5ba90`, byte-identical to the exact head tree. The workflow
+completed terminal red after **72m11s**.
 
-The exact report did not identify the unlocked body sibling. Source proved the product class:
-Inventory isolated only the body roots present at open, allowing a later body-root mount or
-`inert`/`aria-hidden` writer to escape. The bounded successor continuously owns both isolation
-halves, snapshots newly encountered roots once and restores exact prior state after disconnect.
-Existing Glass controls now retain an unlocked-root ledger and independently prove attribute/late-
-root red, observer recovery, outside-focus containment, native Tab wrap and exact restoration;
-there is no new job or control name and the sealed total remains 104. Focused tests, all three
-TypeScript programs, Glass selftest and the small-phone Inventory route/controls are green.
+Authorization, environment/scope/budget, every browser-free/static/art prerequisite, the shared
+launcher selftest, root Layout **787/787**, Compendium instrument controls, exact browser and live
+preflight, Compendium **78/78** plus named verification, and real-browser Slice plus exact binding
+all passed. SceneMemory correctly skipped as production-only. Glass consumed exact Slice run
+`gha-33674116068-1-slice`, report/log SHA-256
+`f0476afe0d812aa109c7f8eabd068f5c393fbc9411cf398912ecd98a3f47d49e` /
+`64c0bd4e3569d209bce65733fcb5cb0e696714fbee899837ea8519981420e14d`.
+
+Glass stopped `instrument-fail` after **68,102 ms** on its first small-phone row, with zero product
+findings, one instrument failure and zero retries: `Inventory action settlement: outcome did not
+arrive within 10000ms (last null)`. Exact-head Glass first overwrote its composite action `ok` with
+a later spread, then returned only success-or-null from settlement and discarded every
+non-converged state field. The retained report therefore cannot identify which action clause was
+unsettled and establishes no product, browser-version or lease failure. It executed 87/104
+controls; `inventory-action-publication` and `inventory-convergence-retry` were among 17 controls
+omitted after causal stop. The remaining 11 viewports, Recovery and preview packaging correctly
+did not run.
 
 Exact SSH-signed implementation source
 `5004fd36f9fdb2632f323d99f1535e9fb2ac5b95`, tree
-`cc1a568ebd49e038b831464b2c1ce7d8ac01ad3a`, passed the hermetic tracked-input `develop`
-rehearsal at **264/264 files, 2,728 passed / 1 skipped**, the browser-CDP/browser-path/Compendium
-preflight controls, all **618** Compendium mutation controls and live Edge `152.0.4191.53` / CDP
-`1.3` preflight. Its one unchanged-source, fail-fast/no-retry chain then named-verified Compendium
-`20260902185934666-38136-1560adf2b6` at **78/78**, zero-finding Slice
-`20260902190106514-38463-d9be88c2f213`, and exact-Slice-bound Glass
-`20260902190730548-38863-824672142575` at **12/12** viewports/reloads and **104/104** controls with
-zero blocked/omitted controls, findings, instrument failures or retries. Four deterministic
-carriers and exact hashes are indexed in `audits/README.md`; the signed evidence/docs descendant
-containing this text also passes the final tracked-input `develop` proof.
+`cc1a568ebd49e038b831464b2c1ce7d8ac01ad3a`, remains the last unchanged-source local browser
+certificate: **264/264 files, 2,728 passed / 1 skipped**, Compendium **78/78**, zero-finding Slice
+and Glass **12/12** viewports/reloads with **104/104** controls. Head `5ae12c7…` only adds retained
+evidence/documentation over that implementation and does not turn the hosted instrument stop into
+a product finding.
 
-Current Compendium measurement/producer authority is
-`b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
-`f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc`. Only the exact built
-index/main/service-worker graph moved with product/release copy. Worker/painter bytes, the fixed
-ruler, every numeric ceiling, the 78-outcome inventory and historical samples are unchanged; this
-is not an Edge rebaseline or resource recalibration.
+All thirteen hosted stops classify as **9 instrument/infrastructure, 3 product/runtime and 1
+mixed**. The exact `5ae12c7…` authorization is consumed; `actions-budget-approved` is absent and
+PR #35 remains Ready/open/unmerged against unchanged `develop`. There is no retry and no push,
+label, dispatch, PR mutation, merge, release, version, publication or deployment authority.
+Artifact `battery-evidence` is ID `9866333992`, **9,763,738 bytes**, archive digest
+`sha256:d27795929ab3407507367aa0356b26d3a49bd46026c6b1e205845da3240ea648`; the immutable report,
+carrier hashes and diagnosis are indexed in `audits/README.md`.
 
-The first local consolidated `develop` profile stopped in **32.61s** after **2,727 passed / 1
-skipped** because that exact built producer graph had not yet been rebound. The independent printer
-named only index, owner, service-worker and derived authority fields. After the exact six-leaf
-budget/history update, focused authority coverage passes **32/32** and the single corrected profile
-passes **264/264 files, 2,728 passed / 1 skipped**, all three TypeScript programs, **34** art
-sources, **1,014/1,014** routes and **454** declared fields. This is local evidence only; signed
-tracked-input and unchanged-source browser certification are now complete for exact implementation
-source `5004fd36…`.
-
-The twelve hosted stops classify as **8 instrument/infrastructure, 3 product/runtime and 1 mixed**.
-The exact bdd8a4c authorization is consumed, there is no retry, and no push, label, dispatch, PR
-mutation, merge, release, version, publication or deployment is authorized. The green local
-successor does not create hosted authority. Artifact
-`battery-evidence` is ID `9860127013`, archive digest
-`sha256:ad9d5212cb4c8f187b3c2f9035a1da2483adf0b56184418b73946c9ba21d21fa`; immutable report and
-repair details are indexed in `audits/README.md`.
+The bounded local harness successor retains structured action/refusal/revision/binding/authority
+state, exact native receipt and hold ownership, and correct causal stops. A separate targeted-only
+portrait campaign defect was also corrected without relaxing full-matrix requirements. Targeted
+small-phone run `20260902213750107-50317-aa753f436e55` passed with zero findings or instrument
+failures and is noncertifying. Focused Inventory coverage passes **19/19**, the related four-file
+set passes **37/37**, typecheck and Glass selftest pass, and the consolidated browser-free
+`develop` profile passes **264/264 files, 2,738 passed / 1 skipped**. A clean unchanged-source
+Compendium → Slice → Glass certificate remains pending and none of this local evidence grants a
+hosted attempt.
 
 **Preserved predecessor local state (2026-09-02): eleventh hosted launcher-instrument red preserved; bounded
 deterministic repair and clean browser certificate are green; no hosted attempt
@@ -1137,7 +1128,27 @@ correctly skipped. The workflow completed red after **72m38s**; artifact `986012
 PR #35 remains Ready/open/unmerged and `develop` remains unchanged. The immutable report/repair
 audit is indexed in `audits/README.md`.
 
-All twelve PR #35 attempts are consumed and their labels are absent. No new hosted attempt, PR
+The thirteenth exact-head authorization tested
+`5ae12c7e161e90b3799d6b49a63e2b0438048da6` against the same base. GitHub run `33674116068`,
+attempt 1, used synthetic merge `dac0b24ddcc34a9035b8b294727dd104a411ec00`, whose tree
+`fbb059cea703cceb3feebcc716e64e02f5f5ba90` is byte-identical to the exact head tree.
+Authorization, browser-free/static/art gates, the shared launcher selftest, root Layout
+**787/787**, Compendium **78/78** plus named verification and real-browser Slice plus exact binding
+passed; SceneMemory correctly skipped as production-only. Glass then stopped once/no-retry after
+**68,102 ms** on its first small-phone row with zero product findings and one instrument failure:
+`Inventory action settlement: outcome did not arrive within 10000ms (last null)`. It executed
+87/104 controls, with zero blocked controls and 17 causal omissions; the remaining 11 viewports,
+Recovery and preview packaging correctly skipped.
+
+The stop is instrument-only. Exact-head Glass overwrote a composite action `ok` with a later
+spread and its all-or-null settlement observation discarded every non-converged state field, so
+the report cannot identify the unsettled action clause and proves no product or browser-version
+defect. Artifact `9866333992` is 9,763,738 bytes with digest
+`sha256:d27795929ab3407507367aa0356b26d3a49bd46026c6b1e205845da3240ea648`. Its exact report and
+diagnosis are indexed in `audits/README.md`. The label was removed, PR #35 remains
+Ready/open/unmerged and `develop` remains unchanged.
+
+All thirteen PR #35 attempts are consumed and their labels are absent. No new hosted attempt, PR
 mutation, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

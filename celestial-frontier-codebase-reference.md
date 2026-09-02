@@ -1,5 +1,49 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+> **2026-09-02 current Glass Inventory action-evidence architecture overlay (matches the current
+> local harness-only successor; full browser certification is pending and older dated evidence remains
+> immutable):** PR #35 run `33674116068`, attempt 1, tested exact head
+> `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Layout **787/787**, Compendium **78/78** plus named
+> verification, and exact-bound Slice passed; Glass then stopped instrument-red at the first
+> small-phone action settlement with zero product findings and exact error `small-phone:
+> small-phone/Inventory action settlement: outcome did not arrive within 10000ms (last null)`.
+> Exact-head architecture had two harness defects: a later spread overwrote
+> the composed pending-action `ok`, and the settlement expression returned only complete success or
+> `null`, discarding the state required to classify the timeout. This does not establish a product,
+> lease or browser-version defect; no retry ran.
+>
+> `inventoryActionPendingOutcome` now spreads retained setup diagnostics first and computes its
+> composite verdict last. The browser path completes/restores its offscreen control before arm,
+> binds the exact document/top-frame/default context/origin plus a live browser heartbeat, quiesces
+> F4, and owns one exact-sequence diagnostic action hold. A trusted native operation/instance
+> receipt, held pending owner and no-optimism state form the action prerequisite; wrong hold identity,
+> sequence, contamination or control plumbing is instrument failure. The exact hold is then
+> released. `inventoryActionSettlementSnapshot` and its page-source builder always retain action
+> kind/detail, pending/modal state, revision, entry/binding state, persistence/lease and
+> coordinator/hold authority. Refusal is terminal red; committed remains incomplete while a lawful
+> Arc 9 progression tail owns the coordinator. Explicit causal stops prevent pending or settlement
+> reds from running dependent checks.
+>
+> A later stable targeted small-phone diagnostic,
+> `20260902213203634-49535-0e789796749b`, had zero product findings but stopped instrument-red on
+> portrait campaign scope. Its only baseline was a lawful fallback, while both portrait controls
+> intentionally require `portraitControlBaselineEligible`—green, visible trail and no fallback—as
+> their starting state. The old campaign nevertheless required an eligible baseline and both
+> controls whenever `planned > 0`, making that targeted case intrinsically impossible to pass.
+> Full 12-row architecture keeps the eligible-baseline and exact-once requirements. Targeted
+> architecture requires exact-once controls when its baseline is eligible, but requires exact-zero
+> scoped omissions when it is fallback-only; terminal guards derive the same requirement.
+>
+> This is a Glass harness-only change. The existing 10-second semantic bound, no-retry contract,
+> version-tolerant Chromium-family/CDP policy, workflow jobs, sealed 104-control inventory,
+> product source and every game/UI behavior remain unchanged. Successor targeted small-phone run
+> `20260902213750107-50317-aa753f436e55` passed with zero findings or instrument failures and is
+> explicitly noncertifying. Current evidence is **19/19** focused Inventory instrument tests,
+> **37/37** across the related four files, green typecheck and green Glass selftest. The
+> browser-free `develop` profile passes **264/264 files, 2,738 passed / 1 skipped**. No full 12-row
+> Glass pass or unchanged-source replacement certificate is claimed yet.
+
 > **2026-09-02 current Inventory modal-lifetime overlay (matches current local code; supersedes
 > older “current” labels while dated evidence remains immutable):** PR #35 run `33657402955`,
 > attempt 1, tested exact head `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base

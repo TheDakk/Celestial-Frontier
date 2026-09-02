@@ -1,5 +1,61 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A TARGETED NEGATIVE-CONTROL CAMPAIGN MAY OMIT ONLY CONTROLS ITS OBSERVED BASELINE CANNOT
+> LAWFULLY EXERCISE** (2026-09-02). Every selected portrait baseline remains mandatory. Full
+> 12-row Glass still requires at least one visible-trail/non-fallback baseline and exactly one
+> portrait-band plus one trail-fallback control. A targeted eligible baseline carries that same
+> exact-once requirement; a targeted lawful fallback-only baseline instead requires exactly zero
+> executions and names both controls as scoped omissions. The terminal missing-control guards must
+> derive from the same predicate. Never weaken baseline eligibility, synthesize different product
+> geometry or count an omitted control as executed merely to make a diagnostic green.
+>
+> Stable targeted small-phone diagnostic `20260902213203634-49535-0e789796749b` had zero product
+> findings and proved the old `planned > 0` campaign rule intrinsically instrument-red for a
+> fallback-only portrait. The bounded harness repair applies the scope semantics above and aligns
+> both terminal guards. Successor targeted small-phone run
+> `20260902213750107-50317-aa753f436e55` passed with zero findings or instrument failures and is
+> explicitly noncertifying. Focused Inventory instrument tests pass **19/19**, the related
+> four-file set passes **37/37**, and typecheck plus Glass selftest are green. This changes no
+> product behavior, control count, browser policy or retry rule. The consolidated browser-free
+> `develop` profile passes **264/264 files, 2,738 passed / 1 skipped**; a full 12-row Glass pass and
+> unchanged-source replacement certificate remain pending.
+
+> **COMPOSE AN ACTION VERDICT LAST, AND POLL AN ALWAYS-STRUCTURED OUTCOME** (2026-09-02).
+> A green setup object may carry its own `ok`; spread it before computing the composite action
+> verdict so it cannot overwrite a false native receipt, pending baseline or exact action owner.
+> After native input, every poll returns the current action kind/detail, pending count, revision,
+> binding, persistence/lease, coordinator and diagnostic-hold state. A refusal is a structured
+> terminal red, and a committed Inventory action remains incomplete while its lawful Arc 9
+> progression tail still owns the coordinator. A null-only success conjunction discards the very
+> state needed to distinguish product refusal from missing evidence and is never an acceptable
+> timeout diagnosis.
+>
+> PR #35 run `33674116068`, attempt 1, tested exact head
+> `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Layout **787/787**, Compendium **78/78** plus
+> named verification, and exact-bound Slice passed; SceneMemory correctly skipped as
+> production-only. Glass then stopped instrument-red on its first small-phone row with zero
+> product findings and exact error `small-phone: small-phone/Inventory action settlement: outcome
+> did not arrive within 10000ms (last null)`. Exact-head Glass had computed a composite `ok` before
+> a later spread overwrote it and returned only success-or-null from settlement. The report could
+> not identify the unsettled clause; it proves no product or browser-version defect and was not
+> retried.
+>
+> The bounded harness-only successor completes and exactly restores the offscreen refusal control
+> before arming anything. It then binds the exact document token, top-frame/default runtime
+> context and origin, uses the live browser-process heartbeat as transport authority, quiesces the
+> F4 heartbeat, and arms one diagnostic product-action hold with an exact sequence increment. One
+> native input must yield the trusted operation/instance receipt and exact held pending
+> no-optimism evidence. Wrong hold sequence/operation, contamination or control plumbing is
+> instrument failure. Release must target that same hold identity. Settlement retains structured
+> terminal/refusal/revision/binding/authority evidence on every observation and continues through
+> a lawful Arc 9 tail until the exact owner is idle. Explicit causal stops follow both pending and
+> settlement outcomes. The 10-second semantic bound, no-retry rule, browser policy, job topology,
+> sealed 104-control inventory and all product/UI behavior remain unchanged. At this pre-browser
+> checkpoint, focused Inventory instrument tests passed **17/17**, the related four-file set passed
+> **35/35**, and typecheck plus Glass selftest were green; the newer targeted portrait evidence and
+> current focused counts are recorded by the law above.
+
 > **A MODAL OWNS BACKGROUND ISOLATION FOR ITS WHOLE OPEN LIFETIME, NOT ONLY AT OPEN**
 > (2026-09-02). Snapshot every existing background root before changing it, observe relevant body
 > child and `inert`/`aria-hidden` mutations for as long as the modal owns the top layer, snapshot

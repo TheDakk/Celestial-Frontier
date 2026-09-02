@@ -10,7 +10,50 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 Inventory-modal lifetime stop and exact-source green successor — twelfth attempt
+### Current PR #35 action-settlement instrument red — thirteenth attempt
+
+PR #35 run `33674116068`, attempt 1, consumed the exact one-time `test-battery` authority for head
+`5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Synthetic merge
+`dac0b24ddcc34a9035b8b294727dd104a411ec00` and the exact head share tree
+`fbb059cea703cceb3feebcc716e64e02f5f5ba90`. Every upstream stage through Layout **787/787**,
+Compendium **78/78** plus named verification, and exact-bound real-browser Slice passed;
+SceneMemory correctly skipped as production-only.
+
+Glass stopped terminal `instrument-fail` after **68,102 ms**, on the first small-phone row after
+**63,780 ms**, with zero product findings, one instrument failure and zero retries:
+`Inventory action settlement: outcome did not arrive within 10000ms (last null)`. Exact-head Glass
+overwrote a composite action `ok` with a later spread, then its all-or-null settlement observation
+discarded every non-converged action-state field. The retained evidence therefore cannot identify
+which action clause remained unsettled and does not establish a product, browser-version or lease
+failure. Two downstream action controls were omitted after causal stop; the remaining 11
+viewports, Recovery and preview packaging correctly did not run.
+
+The exact report is preserved as
+`ARC4_GLASS_PR35_ACTION_SETTLEMENT_INSTRUMENT_RED_20260902_5AE12C7.json.gz`: raw **89,088 bytes**,
+SHA-256 `1b454562442d9c4265bf244dd9a3d9b43e3d26e638e58982b6fb6daed32848d6`; deterministic gzip
+**10,752 bytes**, SHA-256 `9f59ba4d6d61cc0c1de5fb9891f3a57f1590edab45fb0bd9d6ea5c442c2aa064`.
+Artifact ID `9866333992` has archive digest
+`sha256:d27795929ab3407507367aa0356b26d3a49bd46026c6b1e205845da3240ea648` and expires
+2026-09-16. Full exact-source, predecessor, terminal and diagnosis evidence is in
+`ARC4_GLASS_PR35_ACTION_SETTLEMENT_INSTRUMENT_RED_20260902_5AE12C7.md`.
+
+All thirteen hosted stops now classify as **9 instrument/infrastructure, 3 product/runtime and 1
+mixed**. The thirteenth authorization is consumed; its label is absent, PR #35 remains
+Ready/open/unmerged, and no hosted attempt, retry or merge is authorized.
+
+The local harness successor fixes verdict composition and always retains structured settlement
+state. During its segmented verification, targeted small-phone run
+`20260902213203634-49535-0e789796749b` exposed a separate fallback-only portrait campaign scope
+defect with zero product findings. The corrected scope keeps full and targeted-eligible controls
+exact-once while allowing exactly-zero scoped omissions for a targeted fallback-only baseline.
+Targeted successor `20260902213750107-50317-aa753f436e55` passed with zero findings or instrument
+failures and is noncertifying. Focused Inventory tests pass **19/19**, the related four-file set
+passes **37/37**, typecheck and Glass selftest pass, and the browser-free `develop` profile passes
+**264/264 files, 2,738 passed / 1 skipped**. A clean unchanged-source browser certificate remains
+pending; no local result creates hosted authority.
+
+### Historical PR #35 Inventory-modal lifetime stop and exact-source green successor — twelfth attempt
 
 PR #35 run `33657402955`, attempt 1, consumed the exact one-time `test-battery` authority for head
 `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base

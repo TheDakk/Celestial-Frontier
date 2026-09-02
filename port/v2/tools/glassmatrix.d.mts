@@ -62,6 +62,83 @@ export function buildInventoryActionOffscreenRestoreSource(
   mutationApplied: boolean,
 ): string;
 
+export interface InventoryActionPendingChecks {
+  readonly instrumentReady: boolean;
+  readonly nativeActivation: boolean;
+  readonly trustedReceipt: boolean;
+  readonly receiptOperation: boolean;
+  readonly receiptInstance: boolean;
+  readonly pendingBaseline: boolean;
+  readonly pendingObserved: boolean;
+  readonly actionOwnerInFlight: boolean;
+  readonly actionOwnerBusy: boolean;
+  readonly actionOwnerOperation: boolean;
+  readonly actionHoldPhase: boolean;
+  readonly actionHoldOperation: boolean;
+  readonly actionHoldSequence: boolean;
+}
+
+export interface InventoryActionPendingOutcome {
+  readonly ok: boolean;
+  readonly productPrerequisite: boolean;
+  readonly pendingOwnerExact: boolean;
+  readonly checks: InventoryActionPendingChecks;
+  readonly realAction: unknown;
+  readonly receipt: unknown;
+  readonly actionState: unknown;
+  readonly [key: string]: unknown;
+}
+
+export function inventoryActionPendingOutcome(input: {
+  readonly preActionInstrumentControl: Readonly<{ ok?: boolean; [key: string]: unknown }> | null;
+  readonly realAction: unknown;
+  readonly receipt: unknown;
+  readonly actionState: unknown;
+  readonly expectedOperation: string;
+  readonly expectedInstanceId: string;
+  readonly expectedHoldOperation: string;
+  readonly expectedHoldSequence: number;
+}): InventoryActionPendingOutcome;
+
+export interface InventoryActionSettlementExpected {
+  readonly operation: string;
+  readonly instanceId: string;
+  readonly revision: number;
+  readonly holdOperation: string;
+  readonly holdSequence: number;
+}
+
+export interface InventoryActionSettlementOutcome {
+  readonly schema: 'cf-v2-glass-inventory-action-settlement/v1';
+  readonly terminal: boolean;
+  readonly observationComplete: boolean;
+  readonly ok: boolean;
+  readonly action: unknown;
+  readonly diagnostics: unknown;
+  readonly inventory: unknown;
+  readonly authority: unknown;
+  readonly checks: Readonly<Record<string, boolean>>;
+}
+
+export function inventoryActionSettlementSnapshot(
+  diagnostics: unknown,
+  state: unknown,
+  expected: InventoryActionSettlementExpected,
+): InventoryActionSettlementOutcome;
+
+export function buildInventoryActionSettlementSource(
+  expected: InventoryActionSettlementExpected,
+): string;
+
+export function stopAfterRecordedProductOutcome(
+  viewport: string,
+  surface: string,
+  code: string,
+  element: string,
+  outcome: Readonly<{ ok?: boolean }> | null,
+  expected: string,
+): void;
+
 export function runInventoryOffscreenProbe<TProbe = unknown>(owners: {
   setup: () => InventoryActionOffscreenSetup | Promise<InventoryActionOffscreenSetup>;
   activate: () => TProbe | Promise<TProbe>;
