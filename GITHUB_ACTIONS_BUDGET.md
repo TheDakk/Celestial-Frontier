@@ -2,14 +2,15 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-02): tenth hosted red preserved; local Glass cleanup/instrument
-successor independently clear and segmented green; no hosted attempt is authorized.** Local
-`openai/mac` remains at SSH-signed predecessor
-`05690215771db91601cf9dbcbcaa8d771fe540b5`, tree
-`00ee47169a3929dfbe952842419641a3f69699aa`, one commit ahead of
+**Current local state (2026-09-02): tenth hosted red preserved; stop-first Glass repair and one
+clean local develop certificate are green; no hosted attempt is authorized.** Exact SSH-signed
+implementation source `1f80b0ad050763bf478b2364ad0194e389a7096e`, tree
+`e25579bc4fe063bcdf314ac74c9df2435003617a`, parent
+`05690215771db91601cf9dbcbcaa8d771fe540b5`, is two commits ahead of
 `origin/openai/mac` at `18c088de4388edf58eda2c192b71cb94156e26e7`, against
-`origin/develop` `7a9f4c1370dd84292388d718c38ff34214f6203b`. The successor remains
-uncommitted; it is not a clean certificate or hosted head.
+`origin/develop` `7a9f4c1370dd84292388d718c38ff34214f6203b`. The SSH-signed
+documentation/evidence descendant containing this text is current local `HEAD`, three commits
+ahead; its final hermetic tracked-input proof is green and the worktree is clean.
 
 The exact clean-source Compendium and Slice predecessors passed before Glass
 `20260902034025002-67201-c5ef56b312e9` stopped once/no-retry after six green viewports with zero
@@ -38,10 +39,20 @@ Producer authority `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0
 all rulers, ceilings, samples and the version-tolerant browser policy remain unchanged. SceneMemory
 remains intentionally stale/red, production-only and quarantined.
 
-One SSH-signed clean candidate, its tracked-input preflight and one fresh unchanged-source
-Compendium → Slice → Glass chain remain pending. No push, label, hosted attempt, retry, PR mutation, Ready transition, merge,
-release, version bump, publication or deployment is authorized. A future attempt requires Nick's
-fresh exact authorization for the final full head/base, PR #35, `test-battery`,
+Exact signed `1f80b0a…` passed its hermetic tracked-input `develop` rehearsal at **264/264 files,
+2,728 passed / 1 skipped**, all three TypeScript programs, **34** clean art sources,
+**1,014/1,014** routes and **454** non-inert fields. Browser-path, Compendium-preflight,
+Compendium's **618** controls and browser-CDP selftests passed. One unchanged-source,
+fail-fast/no-retry chain then passed every named verifier: Compendium
+`20260902055002322-92073-faba0f2692` at **78/78**, Slice
+`20260902055112371-92394-deee4ff0bf81` with zero findings/scopes, and exact-Slice-bound Glass
+`20260902055724658-92954-a2feb2f6006e` at **12/12** viewports, **12/12** reload rows and
+**104/104** controls with zero blocked/omitted controls, findings, instrument failures or retries.
+No stage retried and the exact source remained clean and byte-identical.
+
+Local implementation/evidence closure is complete. No push, label, hosted attempt, retry, PR
+mutation, Ready transition, merge, release, version bump, publication or deployment is authorized.
+A future attempt requires Nick's fresh exact authorization for the final full head/base, PR #35, `test-battery`,
 `actions-budget-approved`, 92 minutes maximum and no retry.
 
 **Preserved predecessor local certificate (not the current closure):** Exact clean SSH-signed

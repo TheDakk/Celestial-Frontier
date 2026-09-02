@@ -17,26 +17,30 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-02 · GLASS STOP REPAIRED · CURRENT-CODE DOWNSTREAM GREEN ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-02 · STOP-FIRST REPAIR COMPLETE · LOCAL DEVELOP CHAIN GREEN ◀◀◀
 
 ### Exact current boundary
 
 - **Verified owner:** OpenAI/Codex on macOS at
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, tracking
   **origin/openai/mac**.
-- Current local SSH-signed predecessor is
-  **05690215771db91601cf9dbcbcaa8d771fe540b5**, tree
-  **00ee47169a3929dfbe952842419641a3f69699aa**, one commit ahead of remote
-  **18c088de4388edf58eda2c192b71cb94156e26e7**, against `origin/develop`
-  **7a9f4c1370dd84292388d718c38ff34214f6203b**.
-- The worktree is intentionally dirty with the bounded browser-cleanup and Glass-instrument
-  successor. Preserve every change. No gameplay, creature, universe, art, audio, save, loot,
-  combat, ruler, numeric ceiling or browser-version policy is being changed.
+- Exact SSH-signed implementation certificate is
+  **1f80b0ad050763bf478b2364ad0194e389a7096e**, tree
+  **e25579bc4fe063bcdf314ac74c9df2435003617a**, parent
+  **05690215771db91601cf9dbcbcaa8d771fe540b5**, against `origin/develop`
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**. The signed documentation/evidence descendant
+  containing this handoff is the current local `HEAD`; use `git rev-parse HEAD` for its exact id.
+- The implementation certificate is two commits ahead of `origin/openai/mac` at
+  **18c088de4388edf58eda2c192b71cb94156e26e7**; the documentation/evidence descendant is three
+  commits ahead. Its final tracked-input proof is green and the worktree is clean.
 - Independent launcher/Glass review is **CLEAR**. Focused coverage passes **74/74**, all three v2
-  TypeScript programs pass, and the finished dirty source passes the complete browser-free
+  TypeScript programs pass, and the implementation source passes the complete browser-free
   `develop` profile at **264/264 files, 2,728 passed / 1 skipped**. The root validator also passes
-  with the **50-probe** v1.0 determinism fingerprint unchanged. The signed candidate and clean
-  immutable browser chain remain pending.
+  with the **50-probe** v1.0 determinism fingerprint unchanged. Its hermetic tracked-input
+  rehearsal and one unchanged-source, fail-fast/no-retry Compendium → Slice → Glass chain are
+  green.
+- No gameplay, creature, universe, art, audio, save, loot, combat, ruler, numeric ceiling or
+  browser-version policy changed in this stop-first repair.
 - There is no authority to push, mutate PR #35, apply a label, dispatch/rerun Actions, mark Ready,
   merge, release, version, publish or deploy.
 
@@ -93,6 +97,30 @@ zero findings, zero instrument failures, zero retries and a green reload row:
 These runs prove the repaired stop and downstream surfaces independently. They are diagnostics,
 not a substitute for the final clean unchanged-source certificate.
 
+### Clean signed develop certificate
+
+- Exact signed source **1f80b0ad050763bf478b2364ad0194e389a7096e** passed the hermetic
+  tracked-input `develop` rehearsal at **264/264 files, 2,728 passed / 1 skipped**, all three
+  TypeScript programs, **34** art sources with zero findings, **1,014/1,014** routes and **454**
+  declared fields with zero inert fields. Browser-path, Compendium-preflight, the **618-control**
+  Compendium selftest and browser-CDP selftest then passed on Edge `152.0.4191.53` / CDP `1.3`.
+- Compendium `20260902055002322-92073-faba0f2692` ran once, passed **78/78** with zero findings or
+  blocked outcomes in **67,936 ms**, and passed named verification. Raw report SHA-256 is
+  `000488b966967cdddb12eee549372a0e8d0297cf5f540eb7413f02b0f31c8f5e`.
+- Develop Slice `20260902055112371-92394-deee4ff0bf81` then ran once, passed terminal/certifying
+  with zero findings/scopes and ten screenshots in **369,175 ms**, and passed named verification.
+  Report/log SHA-256 is
+  `ad1053cf9b21a2be2c3787ef15d188a2e625d9147ea172aed5fc053f73135a78` /
+  `a63c7dde4c361f74d522c6d050e255eee3f9a802f51d3ee9341748312f47eb59`.
+- Glass `20260902055724658-92954-a2feb2f6006e` consumed that exact Slice id/report/log, ran once,
+  and passed **12/12** viewports, **12/12** reload rows and **104/104** controls with zero blocked or
+  omitted controls, findings, instrument failures or retries in **122,915 ms**. Named verification
+  passed; report SHA-256 is
+  `5c893c9f9e867f23f5bbb0406dc24e5430bb0a7f5a478c05b93e23bc7cd5babe`.
+- All four exact report/log carriers are deterministic `gzip -n -9`, integrity/recompression green
+  and indexed in `audits/README.md`. No stage retried and the source remained clean, committed and
+  byte-identical throughout.
+
 ### Authority boundary
 
 - Compendium measurement authority is now
@@ -112,23 +140,17 @@ not a substitute for the final clean unchanged-source certificate.
 
 ### Exact remaining closure
 
-1. Finish final diff review, create one SSH-signed clean-source candidate and record its
-   exact commit/tree.
-2. Run the hermetic tracked-input `develop` preflight once. On that unchanged source, run exactly
-   one fail-fast/no-retry, named-verified
-   **Compendium → Slice (`develop`) → Glass (`develop`)** chain. Stop after any nonzero, red or
-   instrument result. Do not run SceneMemory or Recovery.
-3. Preserve the exact report/log carriers, complete the signed documentation descendant and final
-   clean tracked-input proof, then stop locally.
-4. Request Nick's fresh exact authorization naming the final full head, base
+1. Stop locally: implementation, evidence, synchronized docs and the final tracked-input proof are
+   complete. Do not run another local or hosted battery on these unchanged bytes.
+2. Request Nick's fresh exact authorization naming the final full head, base
    `7a9f4c1370dd84292388d718c38ff34214f6203b`, PR #35, `test-battery`,
    `actions-budget-approved`, the 92-minute maximum and no retry. Merge only if that exact hosted
    attempt is terminal green and branch protection is satisfied.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex next:** complete the four local closure steps above. No GitHub action is currently
-  authorized.
+- **OpenAI/Codex next:** report the final exact signed documentation/evidence head and request one
+  exact hosted authorization. Do not rerun the local chain. No GitHub action is currently authorized.
 - **PR:** existing #35, base **develop**, source **openai/mac**.
 - **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
 - **Description:** “Completes the established v2 roadmap campaign without recreating its gameplay

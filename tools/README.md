@@ -675,7 +675,10 @@ does not embed Git source, the caller must also retain a commit-tagged run ID, u
 and matching clean HEAD/status before and after the run and verifier. Terminal-green PR test-merge
 CI corresponding to that pushed head remains separate; this reference does not cache the current
 outcome. For the current sentinel repair, the final seven same-source targeted Glass viewports
-passed as bounded diagnostics; the clean unchanged-source certificate remains pending.
+passed as bounded diagnostics. Exact SSH-signed implementation
+`1f80b0ad050763bf478b2364ad0194e389a7096e` then passed the hermetic tracked-input develop profile
+and one unchanged-source/no-retry, named-verified Compendium **78/78** → zero-finding Slice → Glass
+**12/12 / 104/104** chain.
 
 ## uilayout.js — the training-card reachability pass
 
