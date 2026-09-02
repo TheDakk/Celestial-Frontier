@@ -3836,6 +3836,18 @@ browser-smokes that package without repeating Compendium, Slice, Glass, Recovery
 certification. Missing/invalid full-run input and a stale Slice predecessor are
 rejected before Glass can reserve a run ID or replace the last terminal current pointer.
 
+For a `develop` PR whose exact diff changes Glass, its direct runtime/build/fixture graph, game
+runtime source, or package runtime source, the hosted workflow first runs one **noncertifying
+320×568@2 small-phone Glass preflight** immediately after the shared Chrome launcher selftest. It
+is capped at five minutes, runs once with no retry, binds committed unchanged source to the
+resolver's canonical Chrome path and CDP `1.3`, requires the modal/action controls that cover PR
+#35's two latest Glass stops, and retains its own immutable `...-glass-preflight` report. Test-only
+sources, declarations, docs and the worker-only typecheck config do not activate it. This is an
+early Linux/Chrome parity verdict only: it does not consume Slice evidence or replace the final
+unconditional, exact-Slice-bound 12-viewport Glass certificate. The complete scope, verdict and
+thirteen-stop rationale are preserved in
+`../../audits/PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md`.
+
 ```sh
 set -euo pipefail
 
@@ -3856,6 +3868,11 @@ slice_assurance_profile=develop
 # CF_BROWSER="$evidence_chromium_browser" node tools/browserpath.mjs --selftest
 # CF_BROWSER="$evidence_edge_browser" node tools/compendiummem-browser-preflight.mjs --selftest
 # CF_BROWSER="$evidence_edge_browser" npm run compendiummem:selftest
+
+# Changed Glass/runtime inputs on a develop PR only. This mirrors the hosted
+# fail-fast row and remains noncertifying; use a fresh immutable diagnostic ID.
+# glass_preflight_run_id="local-<exact-source>-glass-preflight"
+# CF_BROWSER="$evidence_chromium_browser" CF_V2_GLASSMATRIX_RUN_ID="$glass_preflight_run_id" node tools/glassmatrix.mjs --viewport=small-phone
 
 CF_BROWSER="$evidence_edge_browser" node tools/compendiummem-browser-preflight.mjs
 CF_BROWSER="$evidence_edge_browser" npm run compendiummem

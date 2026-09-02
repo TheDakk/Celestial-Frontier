@@ -62,6 +62,7 @@ jobs:
       CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-compendiummem
       CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem
       CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice
+      CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass-preflight
       CF_V2_GLASSMATRIX_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass
       CF_V2_ARC4_RECOVERY_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-recovery
     steps:
@@ -167,8 +168,76 @@ jobs:
           CF_BROWSER: /usr/bin/google-chrome
         run: node tools/browsercdp.mjs --selftest
 
-      # The launcher control precedes this first product browser ruler, which
-      # remains complete whenever its retained product is in scope.
+      # When a Glass or v2 product input changes, exercise the exact small-phone
+      # Inventory action boundary on the hosted Chrome/Linux environment before
+      # paying for Compendium and Slice. This is a bounded noncertifying canary;
+      # the immutable Slice-bound full matrix remains mandatory later.
+      - name: changed Glass small-phone action preflight
+        if: >-
+          github.event.pull_request.base.ref == 'develop' &&
+          steps.scope.outputs.glass_preflight_changed == 'true'
+        timeout-minutes: 5
+        working-directory: port/v2
+        shell: bash
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: |
+          set -euo pipefail
+          preflight_report="apps/game/smoke/glassmatrix-${CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID}.json"
+          preflight_browser="$(node tools/browserpath.mjs --print)"
+          CF_V2_GLASSMATRIX_RUN_ID="$CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID" node tools/glassmatrix.mjs --viewport=small-phone
+          test "$(jq -er '.run.id' "$preflight_report")" = "$CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID"
+          jq --arg preflight_browser "$preflight_browser" -e '
+            .status == "pass" and
+            .terminal == true and
+            .scope == "targeted-diagnostic" and
+            .certifying == false and
+            .source.state == "committed" and
+            .sourceEnd == .source and
+            .sourceChange.detected == false and
+            .sourceChange.ending == null and
+            .summary.viewportCount == 1 and
+            .summary.findingCount == 0 and
+            .summary.instrumentFailureCount == 0 and
+            (.viewportInventory | length) == 1 and
+            .viewportInventory[0] == {
+              label: "small-phone",
+              width: 320,
+              height: 568,
+              dpr: 2,
+              mobile: true,
+              safeArea: { top: 0, right: 0, bottom: 0, left: 0 }
+            } and
+            .browser.executable == $preflight_browser and
+            (.browser.product | type) == "string" and
+            (.browser.product | test("^Chrome/(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$")) and
+            (.browser.revision | type) == "string" and
+            (.browser.revision | length) > 0 and
+            (.browser.user_agent | type) == "string" and
+            (.browser.user_agent | length) > 0 and
+            (.browser.js_version | type) == "string" and
+            (.browser.js_version | length) > 0 and
+            .browser.protocol_version == "1.3" and
+            .browser.consistentAcrossViewports == true and
+            (.findings | type) == "array" and
+            (.findings | length) == 0 and
+            (.instrumentFailures | type) == "array" and
+            (.instrumentFailures | length) == 0 and
+            .controlSummary.selftestRan == true and
+            (.controlSummary.blockedNegativeControls | type) == "array" and
+            (.controlSummary.blockedNegativeControls | length) == 0 and
+            (.controlSummary.negativeControls | type) == "array" and
+            .controlSummary.automaticRetries == 0 and
+            .exit.code == 0 and
+            (.controlSummary.negativeControls | index("inventory-modal-focus")) != null and
+            (.controlSummary.negativeControls | index("inventory-modal-retention")) != null and
+            (.controlSummary.negativeControls | index("inventory-protected-action")) != null and
+            (.controlSummary.negativeControls | index("inventory-action-publication")) != null and
+            (.controlSummary.negativeControls | index("inventory-convergence-retry")) != null
+          ' "$preflight_report" >/dev/null
+
+      # The legacy Layout ruler remains complete whenever its retained product
+      # is in scope; the targeted v2 canary above never substitutes for it.
       - name: layout (10 viewports)
         id: root_layout
         if: >-
@@ -375,6 +444,7 @@ jobs:
             port/v2/apps/game/smoke/slice-smoke.log
             port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json
             port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log
+            port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID }}.json
             port/v2/apps/game/smoke/glassmatrix-report.json
             port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json
             port/v2/apps/game/smoke/arc4-recovery-report.json

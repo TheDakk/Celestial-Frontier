@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 
@@ -17,11 +18,85 @@ const SCENEMEM_CERTIFICATION_COMMAND =
   'node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json';
 const SCENEMEM_VERIFY_COMMAND =
   'node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json';
+
+function glassPreflightJqFilter(source: string): string {
+  const step = workflowStep(source, GLASS_PREFLIGHT_NAME);
+  if (!step) throw new Error('Glass preflight step is absent');
+  const lines = step.split(/\r?\n/u);
+  const start = lines.findIndex(
+    (line) => line.trim() === `jq --arg preflight_browser "$preflight_browser" -e '`,
+  );
+  const end = lines.findIndex(
+    (line, index) => index > start && line.trim() === `' "$preflight_report" >/dev/null`,
+  );
+  if (start < 0 || end <= start + 1) throw new Error('Glass preflight jq verdict is malformed');
+  return lines.slice(start + 1, end).map((line) => (
+    line.startsWith('          ') ? line.slice(10) : line
+  )).join('\n');
+}
 const COMPENDIUM_INSTRUMENT_SELFTEST_NAME =
   'changed-or-production Compendium browser instrument selftests';
 const COMPENDIUM_INSTRUMENT_SELFTEST_COMMAND = 'npm run compendiummem:selftest';
 const CHROME_LAUNCHER_SELFTEST_NAME = 'changed-or-production Chrome launcher selftest';
 const CHROME_LAUNCHER_SELFTEST_COMMAND = 'node tools/browsercdp.mjs --selftest';
+const GLASS_PREFLIGHT_NAME = 'changed Glass small-phone action preflight';
+const GLASS_PREFLIGHT_COMMAND =
+  'CF_V2_GLASSMATRIX_RUN_ID="$CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID" node tools/glassmatrix.mjs --viewport=small-phone';
+const GLASS_PREFLIGHT_REPORT_BINDING =
+  'preflight_report="apps/game/smoke/glassmatrix-${CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID}.json"';
+const GLASS_PREFLIGHT_BROWSER_BINDING =
+  'preflight_browser="$(node tools/browserpath.mjs --print)"';
+const GLASS_PREFLIGHT_RUN_ID_CHECK =
+  'test "$(jq -er \'.run.id\' "$preflight_report")" = "$CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID"';
+const GLASS_PREFLIGHT_CONDITION =
+  "        if: >-\n          github.event.pull_request.base.ref == 'develop' &&\n          steps.scope.outputs.glass_preflight_changed == 'true'";
+const GLASS_PREFLIGHT_VERDICT_TOKENS = [
+  '.status == "pass"',
+  '.terminal == true',
+  '.scope == "targeted-diagnostic"',
+  '.certifying == false',
+  '.source.state == "committed"',
+  '.sourceEnd == .source',
+  '.sourceChange.detected == false',
+  '.sourceChange.ending == null',
+  '.summary.viewportCount == 1',
+  '.summary.findingCount == 0',
+  '.summary.instrumentFailureCount == 0',
+  '(.viewportInventory | length) == 1',
+  '.viewportInventory[0] == {',
+  'label: "small-phone"',
+  'width: 320',
+  'height: 568',
+  'dpr: 2',
+  'mobile: true',
+  'safeArea: { top: 0, right: 0, bottom: 0, left: 0 }',
+  '.browser.executable == $preflight_browser',
+  '(.browser.product | type) == "string"',
+  '(.browser.product | test("^Chrome/(0|[1-9][0-9]*)\\\\.(0|[1-9][0-9]*)\\\\.(0|[1-9][0-9]*)\\\\.(0|[1-9][0-9]*)$"))',
+  '(.browser.revision | type) == "string"',
+  '(.browser.revision | length) > 0',
+  '(.browser.user_agent | type) == "string"',
+  '(.browser.user_agent | length) > 0',
+  '(.browser.js_version | type) == "string"',
+  '(.browser.js_version | length) > 0',
+  '.browser.protocol_version == "1.3"',
+  '.browser.consistentAcrossViewports == true',
+  '(.findings | type) == "array"',
+  '(.findings | length) == 0',
+  '(.instrumentFailures | type) == "array"',
+  '(.instrumentFailures | length) == 0',
+  '.controlSummary.selftestRan == true',
+  '(.controlSummary.blockedNegativeControls | type) == "array"',
+  '(.controlSummary.blockedNegativeControls | length) == 0',
+  '(.controlSummary.negativeControls | type) == "array"',
+  '.controlSummary.automaticRetries == 0',
+  '.exit.code == 0',
+  'index("inventory-modal-focus")',
+  'index("inventory-modal-retention")',
+  'index("inventory-protected-action")',
+  'index("inventory-action-publication")',
+  'index("inventory-convergence-retry")',
+] as const;
 const COMPENDIUM_CHANGED_OR_PRODUCTION_CONDITION =
   "        if: >-\n          github.event.pull_request.base.ref == 'main' ||\n          steps.scope.outputs.compendium_instrument_changed == 'true'";
 const TRANSPORT_CHANGED_OR_PRODUCTION_CONDITION =
@@ -66,6 +141,12 @@ const ORDERED_CONTRACT = [
   'run: npm run overridecontrol',
   `- name: ${CHROME_LAUNCHER_SELFTEST_NAME}`,
   `run: ${CHROME_LAUNCHER_SELFTEST_COMMAND}`,
+  `- name: ${GLASS_PREFLIGHT_NAME}`,
+  'timeout-minutes: 5',
+  GLASS_PREFLIGHT_REPORT_BINDING,
+  GLASS_PREFLIGHT_BROWSER_BINDING,
+  GLASS_PREFLIGHT_COMMAND,
+  GLASS_PREFLIGHT_RUN_ID_CHECK,
   '- name: layout (10 viewports)',
   '- name: verify root layout evidence freshness',
   '- name: install current Arc 1C Edge scene-memory browser',
@@ -91,6 +172,7 @@ const ORDERED_STEP_NAMES = [
   STATIC_PROFILE_NAME,
   'develop changed-art mutation control',
   CHROME_LAUNCHER_SELFTEST_NAME,
+  GLASS_PREFLIGHT_NAME,
   'layout (10 viewports)',
   'verify root layout evidence freshness',
   'install current Arc 1C Edge scene-memory browser',
@@ -169,8 +251,9 @@ const satisfiesSceneWorkflow = (
     source, COMPENDIUM_INSTRUMENT_SELFTEST_NAME,
   );
   const chromeLauncherSelftest = workflowStep(source, CHROME_LAUNCHER_SELFTEST_NAME);
+  const glassPreflight = workflowStep(source, GLASS_PREFLIGHT_NAME);
   if (!staticProfile || !installation || !heapPhaseSelftest || !certification || !verifier
-    || !compendiumInstrumentSelftest || !chromeLauncherSelftest) return false;
+    || !compendiumInstrumentSelftest || !chromeLauncherSelftest || !glassPreflight) return false;
   if (!staticProfile.includes('develop) node tools/check-profile.mjs --profile=develop ;;')
     || !staticProfile.includes('main) node tools/check-profile.mjs --profile=production ;;')
     || staticProfile.includes('npm run check:')) return false;
@@ -207,6 +290,20 @@ const satisfiesSceneWorkflow = (
     || !hasExactStepCondition(
       chromeLauncherSelftest, TRANSPORT_CHANGED_OR_PRODUCTION_CONDITION,
     )) return false;
+  const glassPreflightLines = glassPreflight.split(/\r?\n/u).map((line) => line.trim());
+  if (source.split(GLASS_PREFLIGHT_COMMAND).length !== 2
+    || !hasExactStepCondition(glassPreflight, GLASS_PREFLIGHT_CONDITION)
+    || glassPreflightLines.filter((line) => line === 'timeout-minutes: 5').length !== 1
+    || !glassPreflight.includes('CF_BROWSER: /usr/bin/google-chrome')
+    || source.split(GLASS_PREFLIGHT_BROWSER_BINDING).length !== 2
+    || !glassPreflight.includes('jq --arg preflight_browser "$preflight_browser" -e')
+    || glassPreflight.includes('.browser.executable == "/usr/bin/google-chrome"')
+    || GLASS_PREFLIGHT_VERDICT_TOKENS.some(
+      (token) => glassPreflight.split(token).length !== 2,
+    )
+    || glassPreflight.includes('continue-on-error')
+    || glassPreflight.includes('--slice-run=')
+    || glassPreflight.includes('--profile=')) return false;
   if (!source.includes(`${HEAP_PHASE_SELFTEST_BLOCK}\n${SCENEMEM_CERTIFICATION_HEADER}`)) return false;
   const env = 'CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem';
   if (source.split(env).length !== 2) return false;
@@ -264,6 +361,89 @@ describe('scene-memory test-battery workflow contract', () => {
 
   it('keeps the two static profiles ahead of current Edge, one attempt, verification, and evidence', () => {
     expect(satisfiesSceneWorkflow(workflow)).toBe(true);
+  });
+
+  it('makes the hosted Glass canary verdict reject malformed evidence and authority drift', () => {
+    const filter = glassPreflightJqFilter(workflow);
+    const requiredControls = [
+      'inventory-modal-focus',
+      'inventory-modal-retention',
+      'inventory-protected-action',
+      'inventory-action-publication',
+      'inventory-convergence-retry',
+    ];
+    const source = { commit: 'a'.repeat(40), branch: 'openai/mac', state: 'committed' };
+    const canonicalChrome = '/opt/google/chrome/google-chrome';
+    const valid = {
+      status: 'pass',
+      terminal: true,
+      scope: 'targeted-diagnostic',
+      certifying: false,
+      source,
+      sourceEnd: source,
+      sourceChange: { detected: false, ending: null },
+      summary: { viewportCount: 1, findingCount: 0, instrumentFailureCount: 0 },
+      viewportInventory: [{
+        label: 'small-phone', width: 320, height: 568, dpr: 2, mobile: true,
+        safeArea: { top: 0, right: 0, bottom: 0, left: 0 },
+      }],
+      browser: {
+        executable: canonicalChrome,
+        product: 'Chrome/152.0.0.0',
+        revision: '@revision',
+        user_agent: 'Mozilla/5.0 HeadlessChrome/152.0.0.0',
+        js_version: '15.2.0',
+        protocol_version: '1.3',
+        consistentAcrossViewports: true,
+      },
+      findings: [],
+      instrumentFailures: [],
+      controlSummary: {
+        selftestRan: true,
+        blockedNegativeControls: [],
+        negativeControls: requiredControls,
+        automaticRetries: 0,
+      },
+      exit: { code: 0 },
+    };
+    const evaluate = (report: unknown) => spawnSync(
+      'jq', ['--arg', 'preflight_browser', canonicalChrome, '-e', filter], {
+      input: JSON.stringify(report), encoding: 'utf8',
+      },
+    );
+    const accepted = evaluate(valid);
+    expect(accepted.error, accepted.stderr).toBeUndefined();
+    expect(accepted.status, accepted.stderr).toBe(0);
+    const mutants = [
+      { ...valid, findings: null },
+      { ...valid, findings: {} },
+      { ...valid, instrumentFailures: null },
+      {
+        ...valid,
+        viewportInventory: [{ ...valid.viewportInventory[0], width: 321 }],
+      },
+      { ...valid, browser: { ...valid.browser, product: 'Edg/152.0.0.0' } },
+      { ...valid, browser: { ...valid.browser, product: 'Chrome/152.0.0.0 forged' } },
+      { ...valid, browser: { ...valid.browser, protocol_version: '1.4' } },
+      {
+        ...valid,
+        controlSummary: { ...valid.controlSummary, negativeControls: null },
+      },
+      {
+        ...valid,
+        controlSummary: {
+          ...valid.controlSummary,
+          negativeControls: requiredControls.filter((value) => value !== 'inventory-modal-focus'),
+        },
+      },
+      { ...valid, sourceEnd: { ...source, commit: 'b'.repeat(40) } },
+      { ...valid, exit: { code: 1 } },
+    ];
+    for (const [index, mutant] of mutants.entries()) {
+      const rejected = evaluate(mutant);
+      expect(rejected.error, `mutant ${index}: ${rejected.stderr}`).toBeUndefined();
+      expect(rejected.status, `mutant ${index}: ${rejected.stderr}`).not.toBe(0);
+    }
   });
 
   it('binds the production heap-phase selftest to its exact collector source contract', () => {
@@ -358,6 +538,27 @@ describe('scene-memory test-battery workflow contract', () => {
         COMPENDIUM_CHANGED_OR_PRODUCTION_CONDITION,
       ),
     ))).toBe(false);
+    const glassPreflight = workflowStep(workflow, GLASS_PREFLIGHT_NAME);
+    expect(glassPreflight).not.toBeNull();
+    expect(satisfiesSceneWorkflow(workflow.replace(
+      glassPreflight!,
+      glassPreflight!.replace(
+        GLASS_PREFLIGHT_CONDITION,
+        "        if: github.event.pull_request.base.ref == 'develop'",
+      ),
+    ))).toBe(false);
+    for (const weakened of [
+      ['timeout-minutes: 5', 'timeout-minutes: 50'],
+    ] as const) {
+      expect(workflow.split(weakened[0]).length - 1, weakened[0]).toBe(1);
+      const mutant = workflow.replace(weakened[0], weakened[1]);
+      expect(mutant, weakened[0]).not.toBe(workflow);
+      expect(satisfiesSceneWorkflow(mutant), weakened[0]).toBe(false);
+    }
+    for (const token of GLASS_PREFLIGHT_VERDICT_TOKENS) {
+      expect(workflow.split(token).length - 1, token).toBe(1);
+      expect(satisfiesSceneWorkflow(workflow.replace(token, 'true')), token).toBe(false);
+    }
     for (const name of [
       'install current Arc 1C Edge scene-memory browser',
       HEAP_PHASE_SELFTEST_NAME,

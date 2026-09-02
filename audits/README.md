@@ -10,6 +10,25 @@ summary of it.
 
 ## Contents
 
+### Current PR #35 systemic failure-surface audit and early Glass preflight
+
+`PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md` classifies all thirteen consumed
+hosted stops as **9 instrument/infrastructure, 3 product/runtime, and 1 mixed**, maps every stop to
+its permanent guard, and identifies the remaining asymmetry: repaired live Glass bytes have passed
+a complete local Edge certificate but not hosted Ubuntu/Chrome, while the old workflow did not
+reach Glass until approximately **70m46s** into the latest run.
+
+The local workflow successor conditionally runs the exact 320×568@2 small-phone Glass path on
+hosted Chrome immediately after the shared launcher selftest. It is noncertifying, capped at five
+minutes, no-retry, source- and canonical-browser-bound, strict about report shape, and requires the
+five Inventory controls that cover the last two hosted Glass classes. Its distinct immutable report
+is retained. The final exact-Slice-bound 12-viewport Glass certificate remains unconditional and
+unchanged. Three independent reviews are clear after closing scope, nullable-report,
+modal-focus-control, and browser-symlink false-red gaps; focused contracts pass **28/28** and the
+Actions policy selftest passes **64/64**. The complete working-source `develop` profile passes
+**264/264 files, 2,739 passed / 1 skipped** and every TypeScript/art/route/specification owner.
+Exact committed browser proof is still pending. No GitHub write or hosted attempt is authorized.
+
 ### Current PR #35 action-settlement repair — exact clean local certificate
 
 Exact clean source `64e405bc6678302c5936945c1b34ac5de5407025` (tree

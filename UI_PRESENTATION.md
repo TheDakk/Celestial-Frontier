@@ -1,5 +1,28 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-09-02 early hosted Glass presentation preflight overlay (evidence-only; exact committed
+> browser proof pending):** all thirteen consumed PR #35 stops were audited end to end: **9
+> instrument/infrastructure, 3 product/runtime, and 1 mixed**. The current repaired Glass path has
+> a complete clean local Edge/CDP certificate, but has not run on hosted Ubuntu/Chrome; the prior
+> workflow first reached that path approximately **70m46s** into the job.
+>
+> When the exact PR diff changes a Glass/runtime/build/fixture input, `test-battery` now exercises
+> the same first `small-phone` Inventory row at 320×568@2 immediately after the shared hosted Chrome
+> launcher selftest. The step is noncertifying, no-retry, capped at five minutes, committed-source
+> stable, bound to canonical Chrome/CDP `1.3`, and strict about exact viewport and report shape. It
+> requires `inventory-modal-focus`, `inventory-modal-retention`, `inventory-protected-action`,
+> `inventory-action-publication`, and `inventory-convergence-retry`, which cover the two latest
+> hosted Glass classes. Its unique immutable report is archived. Tests, declarations, docs and the
+> worker-only typecheck config do not trigger it.
+>
+> This preflight cannot consume Slice evidence or replace the unchanged final 12-viewport,
+> exact-Slice-bound Glass certificate. It changes no UI, geometry, accessibility behavior, control
+> inventory, game input, product timeout, retry, browser-version policy, or HUMAN criterion.
+> Focused workflow/scope/evidence contracts pass **28/28** and the authorization policy selftest
+> passes **64/64**. The consolidated working-source `develop` profile passes **264/264 files,
+> 2,739 passed / 1 skipped**, all TypeScript programs and every art/route/specification owner. No
+> hosted attempt is authorized.
+
 > **2026-09-02 current Glass Inventory action-evidence overlay (harness-only; exact local browser
 > certificate green and older dated evidence remains immutable):** PR #35 run `33674116068`, attempt 1,
 > tested exact head `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
