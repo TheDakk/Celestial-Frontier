@@ -2,7 +2,37 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-02): tenth hosted red preserved; stop-first Glass repair and one
+**Current local state (2026-09-02): eleventh hosted launcher-instrument red preserved; bounded
+deterministic repair is locally green; the clean browser certificate is pending; no hosted attempt
+is authorized.** PR #35 run `33628648136`, attempt 1, consumed the exact one-time authority for
+head `85431115256137b05d7cdfa590e087fd3b4d52e1` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. It stopped after **6m30s** at
+`changed-or-production Chrome launcher selftest`: an injected abnormal post-`Browser.close` exit
+was accepted. It never loaded or judged the game. Exact Edge installation, live Compendium, Slice
+and Glass correctly did not run; there was no retry and the PR remains open/unmerged.
+
+The eleven hosted stops classify as **8 instrument/infrastructure, 2 product/runtime and 1
+mixed**. The consolidated browser-free profile is not the delay: it runs 2,728 passing assertions
+plus one skip as one local suite in about 40 seconds. The bounded successor fixes lifecycle receipt
+ownership, deterministic abnormal-exit injection, exact sentinel/browser shutdown ordering,
+diagnostic-versus-terminal barriers, profile cleanup gating and provisional kill-failure handling.
+It moves the launcher selftest ahead of every expensive browser consumer. Independent review is
+**CLEAR**; focused contracts pass **152/152**, the launcher selftest passes, Compendium's
+instrument selftest passes **618/618**, and the complete browser-free `develop` profile passes
+**264/264 files, 2,728 passed / 1 skipped**, all three TypeScript programs, **34** art sources,
+**1,014/1,014** routes and **454** declared fields.
+
+Current launcher SHA-256 is
+`4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca`; Compendium measurement
+authority is `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`, refreshing only its
+`browserCdp` input. Producer authority
+`308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`, every ruler, ceiling,
+historical sample, outcome and version-tolerant Edge-family/CDP `1.3` policy remain unchanged.
+Before any fresh hosted request, commit the bounded successor and complete one unchanged-source,
+fail-fast/no-retry local Compendium → Slice → Glass chain with every named verifier. The immutable
+review is `audits/PR35_TEST_BATTERY_RIGHTSIZING_AND_LAUNCHER_RED_20260902_8543111.md`.
+
+**Preserved predecessor local state (2026-09-02): tenth hosted red preserved; stop-first Glass repair and one
 clean local develop certificate are green; no hosted attempt is authorized.** Exact SSH-signed
 implementation source `1f80b0ad050763bf478b2364ad0194e389a7096e`, tree
 `e25579bc4fe063bcdf314ac74c9df2435003617a`, parent
@@ -1011,7 +1041,18 @@ shared browser-transport scope. It does not modify the game, SceneMemory collect
 eight-pass protocol, product rulers or no-retry rule. Exact local verification and a signed
 candidate remain required before asking for another hosted attempt.
 
-All ten PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
+The eleventh exact-head authorization tested
+`85431115256137b05d7cdfa590e087fd3b4d52e1` against the same base. GitHub run `33628648136`,
+attempt 1, used synthetic merge `44659456e15f5250fdcf566516da8f85a1ef5328`, whose tree
+`517f2e08b53b631b5f493ce39872334bceff83a4` is byte-identical to the exact head tree.
+Authorization, setup, environment/scope/policy, legacy browser-free gates, the v2 static profile,
+art mutation, root Layout **787/787** and Compendium's instrument controls passed; SceneMemory
+correctly skipped as production-only. The shared launcher selftest then stopped terminal red after
+**6m30s** because its injected abnormal exit after `Browser.close` was accepted. It never loaded
+or judged the game. Exact Edge, live Compendium, Slice and Glass did not run. The immutable audit
+is `audits/PR35_TEST_BATTERY_RIGHTSIZING_AND_LAUNCHER_RED_20260902_8543111.md`.
+
+All eleven PR #35 attempts are consumed and their labels are absent. No new hosted attempt, Ready
 transition, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

@@ -132,7 +132,13 @@ function posixBrowserGroupSentinelEntry() {
   let finalBarrierStarted = false;
   let finalBarrierFinished = false;
   let ackTimer = null;
+  let browserLifecycleTimer = null;
   let stderrForwarding = true;
+  let browser = null;
+  let browserLifecycleSettled = false;
+  let browserLifecycleFlushed = false;
+  let browserKillFailure = null;
+  let finalBarrierRequested = false;
   const send = (type, fields = {}, callback = () => {}) => {
     if (!process.connected || typeof process.send !== 'function') { callback(); return; }
     try { process.send({ schema, type, ...fields }, callback); }
@@ -145,6 +151,7 @@ function posixBrowserGroupSentinelEntry() {
     if (finalBarrierFinished) return;
     finalBarrierFinished = true;
     if (ackTimer !== null) clearTimeout(ackTimer);
+    if (browserLifecycleTimer !== null) clearTimeout(browserLifecycleTimer);
     try {
       /* The sender is still the live group leader here. A successful call
          therefore cannot address a recycled group, and SIGKILL releases
@@ -161,14 +168,53 @@ function posixBrowserGroupSentinelEntry() {
       killOwnedGroup();
       return;
     }
+    ackTimer = setTimeout(killOwnedGroup, config.ackTimeoutMs);
     send('shutdown-finalizing', { pgid: process.pid }, (error) => {
       if (error) { killOwnedGroup(); return; }
       /* Parent acknowledgement is the ordering fence: the sentinel performs
          its terminal group kill only after the owner has observed and
          accepted this exact identity. The watchdog still cleans the group if
          the parent disappears or its acknowledgement is lost. */
-      ackTimer = setTimeout(killOwnedGroup, config.ackTimeoutMs);
     });
+  };
+  const continueFinalBarrier = () => {
+    if (!finalBarrierRequested || !browserLifecycleFlushed || finalBarrierStarted) return;
+    if (browserLifecycleTimer !== null) clearTimeout(browserLifecycleTimer);
+    browserLifecycleTimer = null;
+    finalBarrier();
+  };
+  const reportBrowserLifecycle = (type, fields) => {
+    if (browserLifecycleSettled) return;
+    browserLifecycleSettled = true;
+    send(type, fields, (error) => {
+      browserLifecycleFlushed = true;
+      if (error) reportShutdownError('browser-lifecycle', error);
+      continueFinalBarrier();
+    });
+  };
+  const prepareFinalBarrier = () => {
+    if (finalBarrierRequested || finalBarrierStarted) return;
+    finalBarrierRequested = true;
+    if (browserLifecycleFlushed) { continueFinalBarrier(); return; }
+    browserLifecycleTimer = setTimeout(() => {
+      if (browserKillFailure !== null) {
+        reportShutdownError('browser-SIGKILL', browserKillFailure);
+      }
+      reportShutdownError(
+        'browser-lifecycle', 'exact browser child did not publish terminal lifecycle evidence',
+      );
+      finalBarrier();
+    }, config.ackTimeoutMs);
+    if (!browserLifecycleSettled && browser !== null
+      && browser.exitCode === null && browser.signalCode === null) {
+      try {
+        if (!browser.kill('SIGKILL')) {
+          browserKillFailure = 'exact browser child rejected SIGKILL';
+        }
+      } catch (error) {
+        browserKillFailure = error;
+      }
+    }
   };
   const beginShutdown = () => {
     if (shutdownStarted) return;
@@ -179,9 +225,10 @@ function posixBrowserGroupSentinelEntry() {
       process.kill(-process.pid, 'SIGTERM');
     } catch (error) {
       reportShutdownError('SIGTERM', error);
+      setTimeout(prepareFinalBarrier, 0);
       return;
     }
-    setTimeout(finalBarrier, config.termGraceMs);
+    setTimeout(prepareFinalBarrier, config.termGraceMs);
   };
   const stopStderrForwarding = (error) => {
     if (!stderrForwarding) return;
@@ -218,13 +265,14 @@ function posixBrowserGroupSentinelEntry() {
     if (!shutdownStarted) beginShutdown();
   });
 
-  let browser = null;
   try {
     browser = spawnChild(config.browserFile, config.browserArgs, {
       stdio: ['ignore', 'ignore', 'pipe'], detached: false, windowsHide: true,
     });
   } catch (error) {
-    send('browser-error', { message: error instanceof Error ? error.message : String(error) });
+    reportBrowserLifecycle('browser-error', {
+      message: error instanceof Error ? error.message : String(error),
+    });
     return;
   }
   browser.stderr.on('error', stopStderrForwarding);
@@ -241,8 +289,12 @@ function posixBrowserGroupSentinelEntry() {
     catch (error) { stopStderrForwarding(error); }
   });
   browser.once('spawn', () => send('browser-started', { pid: browser.pid }));
-  browser.once('error', (error) => send('browser-error', { message: error.message }));
-  browser.once('exit', (code, signal) => send('browser-exit', { code, signal }));
+  browser.once('error', (error) => reportBrowserLifecycle(
+    'browser-error', { message: error.message },
+  ));
+  browser.once('exit', (code, signal) => reportBrowserLifecycle(
+    'browser-exit', { code, signal },
+  ));
 }
 
 const POSIX_BROWSER_GROUP_SENTINEL_SOURCE
@@ -271,7 +323,6 @@ function posixSentinelProcessTree(child) {
   };
   const retainCleanupError = (message) => {
     if (cleanupError === null) cleanupError = new Error(message);
-    settleBarrier();
   };
   const completeBarrier = () => {
     barrierComplete = true;
@@ -370,24 +421,24 @@ function posixSentinelProcessTree(child) {
     retainCleanupError(
       `browser sentinel exited before its final owned-group barrier (code=${String(code)} signal=${String(signal)})`,
     );
+    settleBarrier();
   });
   child.once('close', (code, signal) => {
     if (pendingFinalExit !== null && !barrierComplete) {
       retainCleanupError(
         `browser sentinel closed without its final owned-group identity announcement (code=${String(code)} signal=${String(signal)})`,
       );
+      settleBarrier();
     }
   });
   return Object.freeze({
     processTree: Object.freeze({
       kind: 'posix-sentinel-process-group',
       isAlive() {
-        if (cleanupError !== null) throw cleanupError;
         return !barrierComplete;
       },
       async signal(_value, _label, timeoutMs) {
         if (barrierComplete) return false;
-        if (cleanupError !== null) throw cleanupError;
         if (!shutdownRequested) {
           shutdownRequested = true;
           try {
@@ -401,12 +452,13 @@ function posixSentinelProcessTree(child) {
         const settled = await waitForResolution(barrierSettled, timeoutMs);
         if (!settled) {
           if (finalBarrierAckError !== null) throw finalBarrierAckError;
+          if (cleanupError !== null) throw cleanupError;
           return false;
         }
-        if (cleanupError !== null) throw cleanupError;
+        if (!barrierComplete && cleanupError !== null) throw cleanupError;
         return barrierComplete;
       },
-      diagnosticError() { return protocolError; },
+      diagnosticError() { return cleanupError ?? protocolError ?? finalBarrierAckError; },
     }),
     launchStatus() {
       return Object.freeze({ browserPid, browserError, browserExit, protocolError });
@@ -569,8 +621,11 @@ async function proveOwnedUserDataAbsent(userData, label, stabilityMs = 100) {
 function launchChromiumProcess({ browserFile, chromiumArgs, shutdownTimeoutMs }) {
   const detached = true;
   if (process.platform !== 'win32') {
-    const termGraceMs = Math.min(250, Math.max(1, shutdownTimeoutMs - 1));
-    const ackTimeoutMs = Math.min(250, Math.max(1, shutdownTimeoutMs - termGraceMs));
+    const termGraceMs = Math.min(250, Math.max(1, Math.floor(shutdownTimeoutMs / 2)));
+    const remainingShutdownMs = shutdownTimeoutMs - termGraceMs;
+    const ackTimeoutMs = Math.min(250, Math.max(1, Math.floor(remainingShutdownMs / 2)));
+    assert(termGraceMs + (2 * ackTimeoutMs) <= shutdownTimeoutMs,
+      'POSIX browser shutdown phases exceed the caller-owned timeout');
     const child = spawn(process.execPath, [
       '--input-type=commonjs', '-e', POSIX_BROWSER_GROUP_SENTINEL_SOURCE,
       JSON.stringify({
@@ -629,8 +684,8 @@ async function openChromiumCdpWithLauncher({
     `${label}: WebSocket open timeout must be a positive integer`);
   assert(Number.isInteger(startupTimeoutMs) && startupTimeoutMs > 0,
     `${label}: startup timeout must be a positive integer`);
-  assert(Number.isInteger(shutdownTimeoutMs) && shutdownTimeoutMs > 0,
-    `${label}: shutdown timeout must be a positive integer`);
+  assert(Number.isInteger(shutdownTimeoutMs) && shutdownTimeoutMs >= 3,
+    `${label}: shutdown timeout must be an integer of at least 3ms`);
   assert(typeof WebSocketImpl === 'function' && Number.isInteger(WebSocketImpl.OPEN),
     `${label}: WebSocket implementation is invalid`);
   assert(typeof onEvent === 'function', `${label}: CDP event handler is invalid`);
@@ -703,13 +758,34 @@ async function openChromiumCdpWithLauncher({
         }
       },
     });
-    await terminateChildProcess(
-      child, childExited, childClosed, phaseAwareProcessTree, label, shutdownTimeoutMs,
-    );
-    removeOwnedUserData(userData, temporary, userDataPrefix);
-    await proveOwnedUserDataAbsent(userData, label);
+    let cleanupFailure = null;
+    const retainCleanupFailure = (error) => {
+      cleanupFailure = cleanupFailure === null
+        ? error : withCleanupFailure(cleanupFailure, error);
+    };
+    let terminationProven = false;
+    try {
+      await terminateChildProcess(
+        child, childExited, childClosed, phaseAwareProcessTree, label, shutdownTimeoutMs,
+      );
+      terminationProven = true;
+    } catch (error) {
+      retainCleanupFailure(error);
+      try {
+        terminationProven = (child.pid === undefined
+          || child.exitCode !== null || child.signalCode !== null)
+          && !processTree.isAlive();
+      } catch (statusError) { retainCleanupFailure(statusError); }
+    }
+    if (terminationProven) {
+      try {
+        removeOwnedUserData(userData, temporary, userDataPrefix);
+        await proveOwnedUserDataAbsent(userData, label);
+      } catch (error) { retainCleanupFailure(error); }
+    }
     const processDiagnostic = processTree.diagnosticError?.();
-    if (processDiagnostic) throw processDiagnostic;
+    if (processDiagnostic) retainCleanupFailure(processDiagnostic);
+    if (cleanupFailure !== null) throw cleanupFailure;
   };
 
   let endpoint = null;
@@ -853,18 +929,16 @@ async function openChromiumCdpWithLauncher({
         && cleanupError === null
         && ws?.readyState === WebSocketImpl.OPEN) {
         try {
+          browserLifecyclePhase = 'browser-close-requested';
           ws.send(JSON.stringify({ id: ++messageId, method: 'Browser.close', params: {} }));
           browserCloseRequested = true;
-          browserLifecyclePhase = 'browser-close-requested';
         } catch (error) {
           retainCleanupError(terminalError(`Browser.close send failed (${errorMessage(error)})`));
         }
       }
       if (browserCloseRequested) {
         try {
-          await waitForTreeQuiescence(
-            processTree, child, childExited, Math.min(250, shutdownTimeoutMs),
-          );
+          await waitForResolution(browserExited, Math.min(250, shutdownTimeoutMs));
         } catch (error) { retainCleanupError(error); }
       }
       try { if (ws) ws.close(); }
@@ -908,8 +982,11 @@ async function openChromiumCdpWithLauncher({
         const postClosePhase = observedBrowserLifecycle !== null
           && JSON.stringify(observedBrowserLifecycle.event) === JSON.stringify(postCloseEvent)
           ? observedBrowserLifecycle.phase : browserLifecyclePhase;
-        const failure = postCloseEvent === null
-          ? null : browserLifecycleFailure(postClosePhase, postCloseEvent);
+        const missingPosixLifecycle = processTree.kind === 'posix-sentinel-process-group'
+          && observedBrowserLifecycle === null && postCloseEvent === null;
+        const failure = missingPosixLifecycle
+          ? terminalError('browser lifecycle evidence missing after owned close')
+          : postCloseEvent === null ? null : browserLifecycleFailure(postClosePhase, postCloseEvent);
         if (failure !== null) retainCleanupError(failure);
       }
       if (cleanupError) throw cleanupError;
@@ -1751,13 +1828,20 @@ async function runSelftest() {
       `;
       const rootSource = `
         const { spawn } = require('node:child_process');
+        const fs = require('node:fs');
         const profile = process.argv[1];
         const termReceipt = process.argv[2];
         const lifetimeMs = process.argv[3];
         const emitStderr = process.argv[4] === 'stderr';
+        const browserCloseReceipt = process.argv[5];
+        const resistTerm = process.argv[6] === 'resist-term';
         const descendantSource = ${JSON.stringify(descendantSource)};
         process.on('SIGUSR1', () => process.exit(0));
-        process.on('SIGUSR2', () => process.exit(17));
+        process.on('SIGUSR2', () => {
+          fs.writeFileSync(browserCloseReceipt, '17');
+          process.exit(17);
+        });
+        if (resistTerm) process.on('SIGTERM', () => {});
         spawn(process.execPath, [
           '--input-type=commonjs', '-e', descendantSource, profile, termReceipt, lifetimeMs,
         ], {
@@ -1769,11 +1853,12 @@ async function runSelftest() {
       const processTreeFixture = ({ prefix, endpoint = 'valid', directOnly = false,
         validVersion = true, throwOnSocketClose = false,
         browserCloseSignal = null, injectDuplicateBrowserPidOnVersion = false,
-        breakSentinelStderr = false }) => {
+        breakSentinelStderr = false, suppressBrowserLifecycle = false,
+        browserResistsTerm = false, injectShutdownErrorBeforeBarrier = false }) => {
         const state = {
           child: null, childExited: null, childClosed: null,
           processTree: null, launchStatus: null, userData: null, gracefulCloseRequests: 0,
-          cleanupSignals: [], ownerMessages: [], termReceipt: null,
+          cleanupSignals: [], ownerMessages: [], termReceipt: null, browserCloseReceipt: null,
         };
         const launchFixture = ({ userData }) => {
           state.userData = userData;
@@ -1785,10 +1870,14 @@ async function runSelftest() {
             fs.mkdirSync(activePort);
           }
           state.termReceipt = path.join(endpointFixture, `${prefix}-term-receipt`);
+          state.browserCloseReceipt = path.join(
+            endpointFixture, `${prefix}-browser-close-receipt`,
+          );
           const descendantLifetimeMs = directOnly ? 750 : 5000;
           const browserArgs = [
             '--input-type=commonjs', '-e', rootSource, userData, state.termReceipt,
             String(descendantLifetimeMs), breakSentinelStderr ? 'stderr' : 'quiet',
+            state.browserCloseReceipt, browserResistsTerm ? 'resist-term' : 'normal-term',
           ];
           const launched = directOnly
             ? (() => {
@@ -1817,6 +1906,14 @@ async function runSelftest() {
             const sendToSentinel = child.send.bind(child);
             child.send = (message, ...args) => {
               state.ownerMessages.push(message?.type ?? null);
+              if (injectShutdownErrorBeforeBarrier && message?.type === 'shutdown') {
+                child.emit('message', {
+                  schema: POSIX_SENTINEL_SCHEMA,
+                  type: 'shutdown-error',
+                  phase: 'injected-pre-barrier',
+                  message: 'injected shutdown diagnostic',
+                });
+              }
               return sendToSentinel(message, ...args);
             };
           }
@@ -1829,10 +1926,21 @@ async function runSelftest() {
           assert(fs.existsSync(readyFile),
             `SELFTEST process-group fixture ${prefix} did not start its descendant`);
           if (breakSentinelStderr) child.stderr.destroy();
+          const reportedLaunchStatus = suppressBrowserLifecycle
+            ? () => {
+              const status = state.launchStatus();
+              return Object.freeze({
+                ...status, browserError: null, browserExit: null,
+              });
+            }
+            : state.launchStatus;
           return Object.freeze({
             child,
-            launchStatus: state.launchStatus,
-            ...(launched.browserExited ? { browserExited: launched.browserExited } : {}),
+            launchStatus: reportedLaunchStatus,
+            ...(launched.browserExited ? {
+              browserExited: suppressBrowserLifecycle
+                ? new Promise(() => {}) : launched.browserExited,
+            } : {}),
             processTree: Object.freeze({
               kind: state.processTree.kind,
               isAlive: () => state.processTree.isAlive(),
@@ -1840,6 +1948,7 @@ async function runSelftest() {
                 state.cleanupSignals.push(args[0]);
                 return await state.processTree.signal(...args);
               },
+              diagnosticError: () => state.processTree.diagnosticError?.() ?? null,
             }),
           });
         };
@@ -1860,6 +1969,16 @@ async function runSelftest() {
               if (typeof browserCloseSignal === 'string'
                 && Number.isInteger(browserPid) && browserPid > 0) {
                 process.kill(browserPid, browserCloseSignal);
+                if (browserCloseSignal === 'SIGUSR2') {
+                  const receiptDeadline = Date.now() + 1000;
+                  const receiptWaitCell = new Int32Array(new SharedArrayBuffer(4));
+                  while (!fs.existsSync(state.browserCloseReceipt)
+                    && Date.now() < receiptDeadline) {
+                    Atomics.wait(receiptWaitCell, 0, 0, 5);
+                  }
+                  assert(fs.existsSync(state.browserCloseReceipt),
+                    'SELFTEST nonzero Browser.close handler did not acknowledge its signal');
+                }
               }
               return;
             }
@@ -1926,6 +2045,9 @@ async function runSelftest() {
             removeOwnedUserData(state.userData, fs.realpathSync(os.tmpdir()), prefix);
           }
           if (state.termReceipt !== null) fs.rmSync(state.termReceipt, { force: true });
+          if (state.browserCloseReceipt !== null) {
+            fs.rmSync(state.browserCloseReceipt, { force: true });
+          }
           assertNoOwnedProfiles(prefix, `process-group ${prefix} fallback cleanup`);
         };
         return {
@@ -1935,6 +2057,9 @@ async function runSelftest() {
           ownerMessages: () => [...state.ownerMessages],
           termReceipt: () => state.termReceipt,
           browserExit: () => state.launchStatus?.().browserExit ?? null,
+          sentinelExit: () => state.child === null ? null : Object.freeze({
+            code: state.child.exitCode, signal: state.child.signalCode,
+          }),
         };
       };
 
@@ -1959,28 +2084,99 @@ async function runSelftest() {
         assertNoOwnedProfiles(gracefulTreePrefix, 'graceful process-group cleanup');
       } finally { await gracefulTree.cleanup(); }
 
-      const abortAfterClosePrefix = `${base}-tree-abort-after-close`;
-      const abortAfterCloseTree = processTreeFixture({
-        prefix: abortAfterClosePrefix, browserCloseSignal: 'SIGABRT',
+      const forcedBrowserKillPrefix = `${base}-tree-forced-browser-kill`;
+      const forcedBrowserKillTree = processTreeFixture({
+        prefix: forcedBrowserKillPrefix, browserResistsTerm: true,
       });
       try {
-        const abortAfterCloseConnection = await abortAfterCloseTree.open();
-        await expectRejectedAsync('abnormal browser exit after Browser.close',
-          () => abortAfterCloseConnection.close(),
-          /browser exited (?:after Browser\.close request|during owned shutdown) \(exit=null signal=SIGABRT\)$/);
-        assert(abortAfterCloseTree.gracefulCloseRequests() === 1,
-          'SELFTEST abnormal post-close browser did not receive exactly one Browser.close');
-        assert(abortAfterCloseTree.browserExit()?.signal === 'SIGABRT',
-          'SELFTEST abnormal post-close browser exit evidence was lost');
-        assert(JSON.stringify(abortAfterCloseTree.cleanupSignals()) === JSON.stringify(['SIGTERM']),
-          `SELFTEST abnormal post-close cleanup missed its sentinel barrier (${abortAfterCloseTree.cleanupSignals().join(', ')})`);
-        assert(JSON.stringify(abortAfterCloseTree.ownerMessages())
+        const forcedBrowserKillConnection = await forcedBrowserKillTree.open();
+        await forcedBrowserKillConnection.close();
+        assert(forcedBrowserKillTree.gracefulCloseRequests() === 1,
+          'SELFTEST forced browser kill did not receive exactly one Browser.close');
+        assert(forcedBrowserKillTree.browserExit()?.code === null
+          && forcedBrowserKillTree.browserExit()?.signal === 'SIGKILL',
+        'SELFTEST forced browser kill lost its exact terminal lifecycle evidence');
+        assert(JSON.stringify(forcedBrowserKillTree.cleanupSignals()) === JSON.stringify(['SIGTERM']),
+          `SELFTEST forced browser kill missed its sentinel barrier (${forcedBrowserKillTree.cleanupSignals().join(', ')})`);
+        assert(JSON.stringify(forcedBrowserKillTree.ownerMessages())
           === JSON.stringify(['shutdown', 'shutdown-finalizing-ack']),
-        `SELFTEST abnormal post-close sentinel handshake drifted (${abortAfterCloseTree.ownerMessages().join(', ')})`);
-        assert(fs.readFileSync(abortAfterCloseTree.termReceipt(), 'utf8') === 'TERM',
-          'SELFTEST abnormal post-close cleanup did not terminate its resistant descendant');
-        assertNoOwnedProfiles(abortAfterClosePrefix, 'abnormal post-close process-group cleanup');
-      } finally { await abortAfterCloseTree.cleanup(); }
+        `SELFTEST forced browser kill sentinel handshake drifted (${forcedBrowserKillTree.ownerMessages().join(', ')})`);
+        assert(fs.readFileSync(forcedBrowserKillTree.termReceipt(), 'utf8') === 'TERM',
+          'SELFTEST forced browser kill did not terminate its resistant descendant');
+        assertNoOwnedProfiles(forcedBrowserKillPrefix, 'forced browser-kill process-group cleanup');
+      } finally { await forcedBrowserKillTree.cleanup(); }
+
+      const nonzeroAfterClosePrefix = `${base}-tree-nonzero-after-close`;
+      const nonzeroAfterCloseTree = processTreeFixture({
+        prefix: nonzeroAfterClosePrefix, browserCloseSignal: 'SIGUSR2',
+      });
+      try {
+        const nonzeroAfterCloseConnection = await nonzeroAfterCloseTree.open();
+        await expectRejectedAsync('nonzero browser exit after Browser.close',
+          () => nonzeroAfterCloseConnection.close(),
+          /browser exited (?:after Browser\.close request|during owned shutdown) \(exit=17 signal=null\)$/);
+        assert(nonzeroAfterCloseTree.gracefulCloseRequests() === 1,
+          'SELFTEST nonzero post-close browser did not receive exactly one Browser.close');
+        assert(nonzeroAfterCloseTree.browserExit()?.code === 17
+          && nonzeroAfterCloseTree.browserExit()?.signal === null,
+        'SELFTEST nonzero post-close browser exit evidence was lost');
+        assert(JSON.stringify(nonzeroAfterCloseTree.cleanupSignals()) === JSON.stringify(['SIGTERM']),
+          `SELFTEST nonzero post-close cleanup missed its sentinel barrier (${nonzeroAfterCloseTree.cleanupSignals().join(', ')})`);
+        assert(JSON.stringify(nonzeroAfterCloseTree.ownerMessages())
+          === JSON.stringify(['shutdown', 'shutdown-finalizing-ack']),
+        `SELFTEST nonzero post-close sentinel handshake drifted (${nonzeroAfterCloseTree.ownerMessages().join(', ')})`);
+        assert(fs.readFileSync(nonzeroAfterCloseTree.termReceipt(), 'utf8') === 'TERM',
+          'SELFTEST nonzero post-close cleanup did not terminate its resistant descendant');
+        assertNoOwnedProfiles(nonzeroAfterClosePrefix, 'nonzero post-close process-group cleanup');
+      } finally { await nonzeroAfterCloseTree.cleanup(); }
+
+      const missingLifecyclePrefix = `${base}-tree-missing-lifecycle`;
+      const missingLifecycleTree = processTreeFixture({
+        prefix: missingLifecyclePrefix, browserCloseSignal: 'SIGUSR1',
+        suppressBrowserLifecycle: true,
+      });
+      try {
+        const missingLifecycleConnection = await missingLifecycleTree.open();
+        await expectRejectedAsync('missing browser lifecycle after owned close',
+          () => missingLifecycleConnection.close(),
+          /browser lifecycle evidence missing after owned close$/);
+        assert(missingLifecycleTree.gracefulCloseRequests() === 1,
+          'SELFTEST missing-lifecycle browser did not receive exactly one Browser.close');
+        assert(missingLifecycleTree.browserExit()?.code === 0
+          && missingLifecycleTree.browserExit()?.signal === null,
+        'SELFTEST missing-lifecycle control did not create a hidden clean browser exit');
+        assert(JSON.stringify(missingLifecycleTree.cleanupSignals()) === JSON.stringify(['SIGTERM']),
+          `SELFTEST missing-lifecycle cleanup missed its sentinel barrier (${missingLifecycleTree.cleanupSignals().join(', ')})`);
+        assert(JSON.stringify(missingLifecycleTree.ownerMessages())
+          === JSON.stringify(['shutdown', 'shutdown-finalizing-ack']),
+        `SELFTEST missing-lifecycle sentinel handshake drifted (${missingLifecycleTree.ownerMessages().join(', ')})`);
+        assert(fs.readFileSync(missingLifecycleTree.termReceipt(), 'utf8') === 'TERM',
+          'SELFTEST missing-lifecycle cleanup did not terminate its resistant descendant');
+        assertNoOwnedProfiles(missingLifecyclePrefix, 'missing-lifecycle process-group cleanup');
+      } finally { await missingLifecycleTree.cleanup(); }
+
+      const preBarrierErrorPrefix = `${base}-tree-pre-barrier-error`;
+      const preBarrierErrorTree = processTreeFixture({
+        prefix: preBarrierErrorPrefix, injectShutdownErrorBeforeBarrier: true,
+      });
+      try {
+        const preBarrierErrorConnection = await preBarrierErrorTree.open();
+        await expectRejectedAsync('pre-barrier shutdown diagnostic',
+          () => preBarrierErrorConnection.close(),
+          /browser sentinel injected-pre-barrier failed \(injected shutdown diagnostic\)$/);
+        assert(preBarrierErrorTree.gracefulCloseRequests() === 1,
+          'SELFTEST pre-barrier diagnostic browser did not receive exactly one Browser.close');
+        assert(preBarrierErrorTree.sentinelExit()?.code === null
+          && preBarrierErrorTree.sentinelExit()?.signal === 'SIGKILL',
+        'SELFTEST pre-barrier diagnostic returned before the sentinel terminal barrier');
+        assert(JSON.stringify(preBarrierErrorTree.ownerMessages())
+          === JSON.stringify(['shutdown', 'shutdown-finalizing-ack']),
+        `SELFTEST pre-barrier diagnostic handshake drifted (${preBarrierErrorTree.ownerMessages().join(', ')})`);
+        assert(fs.readFileSync(preBarrierErrorTree.termReceipt(), 'utf8') === 'TERM',
+          'SELFTEST pre-barrier diagnostic did not terminate its resistant descendant');
+        assertNoOwnedProfiles(preBarrierErrorPrefix,
+          'pre-barrier diagnostic process-group cleanup before fallback');
+      } finally { await preBarrierErrorTree.cleanup(); }
 
       const siblingChild = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
         stdio: ['ignore', 'ignore', 'pipe'], detached: true,

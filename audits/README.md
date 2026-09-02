@@ -10,7 +10,36 @@ summary of it.
 
 ## Contents
 
-### Current local Glass cleanup repair and clean certificate — 0569021 stop → 1f80b0a green
+### Current PR #35 battery review and launcher-lifecycle successor — exact eleventh attempt
+
+PR #35 run `33628648136`, attempt 1, consumed the exact one-time `test-battery` authority for head
+`85431115256137b05d7cdfa590e087fd3b4d52e1` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. It stopped after **6m30s** at the shared launcher
+selftest because an injected abnormal exit after `Browser.close` was accepted. The synthetic
+fixture never loaded or judged Celestial Frontier. Exact Edge installation, Compendium, Slice and
+Glass correctly did not run; no retry occurred and the PR remains open/unmerged.
+
+The complete eleven-attempt audit classifies **8 instrument/infrastructure stops, 2
+product/runtime stops and 1 mixed stop**, then records what remains appropriate for `develop`, what
+must be change-scoped, and what stays production-only/quarantined. The bounded successor makes
+browser lifecycle evidence deterministic, preserves the sentinel ownership barrier through exact
+browser exit, keeps kill failures provisional until lifecycle expiry, gates profile removal on
+proven termination, and moves the shared launcher selftest ahead of every expensive browser
+consumer. Independent review is **CLEAR**. Focused contracts pass **152/152**, the launcher
+selftest passes, Compendium's synthetic instrument passes **618/618**, and the complete
+browser-free `develop` profile passes **264/264 files, 2,728 passed / 1 skipped** plus all three
+TypeScript programs and the art/specification audits.
+
+Current launcher / Compendium measurement authority is
+`4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca` /
+`b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`. Producer
+`308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`, every ruler, ceiling,
+sample, outcome and browser-version policy remain unchanged. The clean unchanged-source
+Compendium → Slice → Glass certificate is still required before another exact hosted request.
+Full evidence and the consolidation plan are in
+`PR35_TEST_BATTERY_RIGHTSIZING_AND_LAUNCHER_RED_20260902_8543111.md`.
+
+### Historical predecessor Glass cleanup repair and clean certificate — 0569021 stop → 1f80b0a green
 
 Exact clean SSH-signed source `05690215771db91601cf9dbcbcaa8d771fe540b5` passed the full
 browser-free develop profile, Compendium 78/78 and zero-finding Slice. Exact-bound Glass
@@ -81,7 +110,7 @@ All four pass gzip integrity, byte-for-byte raw comparison and deterministic `gz
 recompression. Local closure is complete.
 No GitHub write is authorized.
 
-### Current PR #35 SceneMemory hosted allocator-phase stop — exact tenth attempt
+### Historical PR #35 SceneMemory hosted allocator-phase stop — exact tenth attempt
 
 PR #35 run `33584052508` consumed the tenth exact one-time `test-battery` authorization for head
 `18c088de4388edf58eda2c192b71cb94156e26e7` against base
@@ -104,7 +133,7 @@ contains only the three green Layout files, is 33,817 bytes, and has digest
 Compendium, Slice, Glass, Recovery and preview correctly skipped. The authorization is consumed;
 no retry, merge, release or deployment occurred.
 
-### Current signed local successor — production-only SceneMemory ownership
+### Historical signed local successor — production-only SceneMemory ownership
 
 The SceneMemory portion of the signed local successor changes workflow/scope ownership only; the
 separate Glass/browser cleanup repair is documented in the section above. Live SceneMemory native-heap

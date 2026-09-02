@@ -95,6 +95,10 @@ function assessSharedOwner(source: string): string[] {
 
 function assessOwnedLauncherSource(source: string): string[] {
   const errors: string[] = [];
+  const sentinelStart = source.indexOf('function posixBrowserGroupSentinelEntry() {');
+  const sentinelEnd = source.indexOf('const POSIX_BROWSER_GROUP_SENTINEL_SOURCE', sentinelStart);
+  const sentinelSource = sentinelStart >= 0 && sentinelEnd > sentinelStart
+    ? source.slice(sentinelStart, sentinelEnd) : '';
   if (!source.includes("'--remote-debugging-port=0'")) errors.push('browser-owned-port-zero');
   if (!source.includes('const observed = activeEndpoint(userData);')) {
     errors.push('owned-active-port-file');
@@ -105,32 +109,70 @@ function assessOwnedLauncherSource(source: string): string[] {
   if (!source.includes("kind: 'posix-sentinel-process-group'")) {
     errors.push('posix-sentinel-owner');
   }
-  if (!source.includes("process.on('SIGTERM', () => {});")) {
+  if (!sentinelSource.includes("process.on('SIGTERM', () => {});")) {
     errors.push('sentinel-term-hold');
   }
-  if (!source.includes("process.kill(-process.pid, 'SIGTERM');")) {
+  if (!sentinelSource.includes("process.kill(-process.pid, 'SIGTERM');")) {
     errors.push('sentinel-group-term');
   }
-  if (!source.includes("process.kill(-process.pid, 'SIGKILL');")) {
+  if (!sentinelSource.includes("process.kill(-process.pid, 'SIGKILL');")) {
     errors.push('sentinel-final-group-barrier');
   }
-  if (!source.includes("send('shutdown-finalizing', { pgid: process.pid }")) {
+  if (!sentinelSource.includes("send('shutdown-finalizing', { pgid: process.pid }")) {
     errors.push('sentinel-final-identity');
   }
-  if (!source.includes("message.type === 'shutdown-finalizing-ack'\n      && finalBarrierStarted")) {
+  if (!sentinelSource.includes(
+    "message.type === 'shutdown-finalizing-ack'\n      && finalBarrierStarted",
+  )) {
     errors.push('sentinel-final-ack');
   }
   if (!source.includes("type: 'shutdown-finalizing-ack',\n            pgid: child.pid")) {
     errors.push('owner-final-ack');
   }
-  if (!source.includes('ackTimer = setTimeout(killOwnedGroup, config.ackTimeoutMs);')) {
+  if (!sentinelSource.includes('ackTimer = setTimeout(killOwnedGroup, config.ackTimeoutMs);')) {
     errors.push('sentinel-final-ack-watchdog');
   }
-  if (!source.includes("if (!process.stderr.write(chunk)) {\n        browser.stderr.pause();")
-    || !source.includes("process.stderr.once('drain', () => {\n          if (stderrForwarding) browser.stderr.resume();")) {
+  const finalAckWatchdog = sentinelSource.indexOf(
+    'ackTimer = setTimeout(killOwnedGroup, config.ackTimeoutMs);',
+  );
+  const finalIdentitySend = sentinelSource.indexOf(
+    "send('shutdown-finalizing', { pgid: process.pid }",
+  );
+  if (finalAckWatchdog < 0 || finalIdentitySend < 0 || finalAckWatchdog > finalIdentitySend) {
+    errors.push('sentinel-final-ack-watchdog-order');
+  }
+  const sentinelOwnerStart = source.indexOf('function posixSentinelProcessTree(child) {');
+  const cleanupLatchStart = source.indexOf(
+    'const retainCleanupError = (message) => {', sentinelOwnerStart,
+  );
+  const cleanupLatchEnd = source.indexOf('const completeBarrier = () => {', cleanupLatchStart);
+  if (cleanupLatchStart < 0 || cleanupLatchEnd <= cleanupLatchStart
+    || source.slice(cleanupLatchStart, cleanupLatchEnd).includes('settleBarrier()')) {
+    errors.push('sentinel-diagnostic-barrier-separation');
+  }
+  if (!sentinelSource.includes(
+    "reportShutdownError('SIGTERM', error);\n      setTimeout(prepareFinalBarrier, 0);",
+  )) {
+    errors.push('sentinel-term-error-cleanup-continuation');
+  }
+  if (!source.includes('termGraceMs + (2 * ackTimeoutMs) <= shutdownTimeoutMs')) {
+    errors.push('sentinel-shutdown-phase-budget');
+  }
+  if (!sentinelSource.includes("browser.kill('SIGKILL')")
+    || !sentinelSource.includes("reportBrowserLifecycle(\n    'browser-exit', { code, signal },")) {
+    errors.push('sentinel-browser-lifecycle-before-barrier');
+  }
+  if (!sentinelSource.includes("browserKillFailure = 'exact browser child rejected SIGKILL';")
+    || !sentinelSource.includes(
+      "if (browserKillFailure !== null) {\n        reportShutdownError('browser-SIGKILL', browserKillFailure);",
+    )) {
+    errors.push('sentinel-provisional-browser-kill-failure');
+  }
+  if (!sentinelSource.includes("if (!process.stderr.write(chunk)) {\n        browser.stderr.pause();")
+    || !sentinelSource.includes("process.stderr.once('drain', () => {\n          if (stderrForwarding) browser.stderr.resume();")) {
     errors.push('sentinel-stderr-backpressure');
   }
-  if (!source.includes("stdio: ['ignore', 'ignore', 'pipe'], detached: false")) {
+  if (!sentinelSource.includes("stdio: ['ignore', 'ignore', 'pipe'], detached: false")) {
     errors.push('inner-browser-in-sentinel-group');
   }
   if (!source.includes("stdio: ['ignore', 'ignore', 'pipe', 'ipc'], detached, windowsHide: true")) {
@@ -139,8 +181,38 @@ function assessOwnedLauncherSource(source: string): string[] {
   if (!source.includes('const detached = true;')) {
     errors.push('detached-sentinel-owner');
   }
-  const sentinelStart = source.indexOf('function posixBrowserGroupSentinelEntry() {');
-  const sentinelEnd = source.indexOf('const POSIX_BROWSER_GROUP_SENTINEL_SOURCE', sentinelStart);
+  if (!source.includes(
+    'await waitForResolution(browserExited, Math.min(250, shutdownTimeoutMs));',
+  )) {
+    errors.push('browser-close-lifecycle-wait');
+  }
+  const closePhase = source.indexOf("browserLifecyclePhase = 'browser-close-requested';");
+  const closeSend = source.indexOf(
+    "ws.send(JSON.stringify({ id: ++messageId, method: 'Browser.close', params: {} }));",
+  );
+  const closeRequested = source.indexOf('browserCloseRequested = true;', closeSend);
+  if (closePhase < 0 || closeSend < 0 || closeRequested < 0
+    || !(closePhase < closeSend && closeSend < closeRequested)) {
+    errors.push('browser-close-causal-order');
+  }
+  if (!source.includes(
+    "const missingPosixLifecycle = processTree.kind === 'posix-sentinel-process-group'\n"
+      + '          && observedBrowserLifecycle === null && postCloseEvent === null;',
+  )) {
+    errors.push('missing-browser-lifecycle-predicate');
+  }
+  if (!source.includes(
+    "? terminalError('browser lifecycle evidence missing after owned close')",
+  )) {
+    errors.push('missing-browser-lifecycle-evidence');
+  }
+  if (!source.includes(
+    'removeOwnedUserData(userData, temporary, userDataPrefix);\n'
+      + '        await proveOwnedUserDataAbsent(userData, label);',
+  ) || !source.includes('if (terminationProven) {')
+    || !source.includes('if (cleanupFailure !== null) throw cleanupFailure;')) {
+    errors.push('profile-cleanup-after-process-diagnostic');
+  }
   const negativePidOperations = [...source.matchAll(/process\.kill\(\s*-/gu)];
   const sentinelNegativePidOperations = negativePidOperations.filter((match) => (
     sentinelStart >= 0 && sentinelEnd > sentinelStart
@@ -150,8 +222,7 @@ function assessOwnedLauncherSource(source: string): string[] {
     errors.push('parent-pgid-operation');
   }
   if (/process\.kill\(\s*-process\.pid,\s*0\)/u.test(
-    sentinelStart >= 0 && sentinelEnd > sentinelStart
-      ? source.slice(sentinelStart, sentinelEnd) : '',
+    sentinelSource,
   )) {
     errors.push('post-release-pgid-probe');
   }
@@ -235,6 +306,30 @@ describe('art-tool portable browser authority', () => {
       ['lost final acknowledgement has no watchdog', source.replace(
         'ackTimer = setTimeout(killOwnedGroup, config.ackTimeoutMs);',
         'ackTimer = null;'), 'sentinel-final-ack-watchdog'],
+      ['final acknowledgement watchdog starts after its IPC callback', source.replace(
+        'ackTimer = setTimeout(killOwnedGroup, config.ackTimeoutMs);\n'
+          + "    send('shutdown-finalizing', { pgid: process.pid }",
+        "send('shutdown-finalizing', { pgid: process.pid }"),
+      'sentinel-final-ack-watchdog-order'],
+      ['shutdown diagnostic releases ownership before the terminal barrier', source.replace(
+        'if (cleanupError === null) cleanupError = new Error(message);',
+        'if (cleanupError === null) cleanupError = new Error(message);\n    settleBarrier();'),
+      'sentinel-diagnostic-barrier-separation'],
+      ['SIGTERM failure abandons exact browser and final-group cleanup', source.replace(
+        "reportShutdownError('SIGTERM', error);\n      setTimeout(prepareFinalBarrier, 0);",
+        "reportShutdownError('SIGTERM', error);"),
+      'sentinel-term-error-cleanup-continuation'],
+      ['sentinel phases exceed the caller-owned shutdown bound', source.replace(
+        'termGraceMs + (2 * ackTimeoutMs) <= shutdownTimeoutMs',
+        'termGraceMs + ackTimeoutMs <= shutdownTimeoutMs'),
+      'sentinel-shutdown-phase-budget'],
+      ['final group barrier does not first settle exact browser lifecycle', source.replace(
+        "browser.kill('SIGKILL')", "process.kill(-process.pid, 'SIGKILL')"),
+      'sentinel-browser-lifecycle-before-barrier'],
+      ['already-exited browser is reported before lifecycle grace expires', source.replace(
+        "browserKillFailure = 'exact browser child rejected SIGKILL';",
+        "reportShutdownError('browser-SIGKILL', 'exact browser child rejected SIGKILL');"),
+      'sentinel-provisional-browser-kill-failure'],
       ['sentinel ignores stderr backpressure', source.replace(
         "if (!process.stderr.write(chunk)) {\n        browser.stderr.pause();",
         "if (process.stderr.write(chunk)) {\n        browser.stderr.pause();"),
@@ -249,6 +344,35 @@ describe('art-tool portable browser authority', () => {
       'detached-sentinel-group-leader'],
       ['sentinel ownership flag disabled', source.replace(
         'const detached = true;', 'const detached = false;'), 'detached-sentinel-owner'],
+      ['Browser.close waits on the sentinel instead of browser lifecycle', source.replace(
+        'await waitForResolution(browserExited, Math.min(250, shutdownTimeoutMs));',
+        'await waitForTreeQuiescence(processTree, child, childExited, 250);'),
+      'browser-close-lifecycle-wait'],
+      ['Browser.close phase is recorded after the synchronous send', source.replace(
+        "browserLifecyclePhase = 'browser-close-requested';\n"
+          + "          ws.send(JSON.stringify({ id: ++messageId, method: 'Browser.close', params: {} }));",
+        "ws.send(JSON.stringify({ id: ++messageId, method: 'Browser.close', params: {} }));\n"
+          + "          browserLifecyclePhase = 'browser-close-requested';"),
+      'browser-close-causal-order'],
+      ['Browser.close request is claimed before send succeeds', source.replace(
+        "ws.send(JSON.stringify({ id: ++messageId, method: 'Browser.close', params: {} }));\n"
+          + '          browserCloseRequested = true;',
+        "browserCloseRequested = true;\n"
+          + "          ws.send(JSON.stringify({ id: ++messageId, method: 'Browser.close', params: {} }));"),
+      'browser-close-causal-order'],
+      ['missing lifecycle no longer requires POSIX sentinel ownership', source.replace(
+        "processTree.kind === 'posix-sentinel-process-group'\n"
+          + '          && observedBrowserLifecycle === null && postCloseEvent === null',
+        'true'), 'missing-browser-lifecycle-predicate'],
+      ['owned close accepts missing browser lifecycle evidence', source.replace(
+        "terminalError('browser lifecycle evidence missing after owned close')",
+        'null'), 'missing-browser-lifecycle-evidence'],
+      ['process diagnostic skips owned-profile cleanup', source.replace(
+        'if (cleanupFailure !== null) throw cleanupFailure;',
+        'if (cleanupFailure !== null) return;'), 'profile-cleanup-after-process-diagnostic'],
+      ['unproven process termination still deletes its profile', source.replace(
+        'if (terminationProven) {', 'if (true) {'),
+      'profile-cleanup-after-process-diagnostic'],
       ['reintroduced numeric group probe', source.replace(
         "process.kill(-process.pid, 'SIGKILL');", 'process.kill(-process.pid, 0);'),
       'post-release-pgid-probe'],
