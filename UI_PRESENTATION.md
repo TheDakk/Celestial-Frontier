@@ -18,8 +18,14 @@
 > late-root/attribute failure class, proves observer recovery and exact restoration, and keeps its
 > native Tab bypass inside the modal. The sealed control count remains 104. Focused tests, all three
 > TypeScript programs, the corrected **264/264-file / 2,728-pass / 1-skip** `develop` profile and
-> the small-phone product/control path are green; committed tracked-input and the clean exact-source
-> browser certificate are still pending. This closes no HUMAN criterion and changes no loot, save, creature,
+> the small-phone product/control path are green. Exact signed source
+> `5004fd36f9fdb2632f323d99f1535e9fb2ac5b95` passed the hermetic tracked-input rehearsal and one
+> unchanged-source/no-retry chain: Compendium `20260902185934666-38136-1560adf2b6` **78/78**,
+> zero-finding Slice `20260902190106514-38463-d9be88c2f213`, and exact-Slice-bound Glass
+> `20260902190730548-38863-824672142575` **12/12** viewports/reloads and **104/104** controls with
+> zero blocked/omitted work, findings, instrument failures or retries. Every named verifier passed;
+> exact carriers are indexed in `audits/README.md`, and the signed evidence/docs descendant
+> containing this reference also passes final tracked-input proof. This closes no HUMAN criterion and changes no loot, save, creature,
 > art, graphics, audio, layout ruler, retry or browser-version policy.
 > Current Compendium producer authority is
 > `f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc` under unchanged
@@ -694,9 +700,9 @@
 > Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler` remain owner-blocked. The current Guide capability map contains **41**
 > visible topics (**34 partial / 7 unavailable**) and the cumulative v2 draft contains **77** unique
 > bullets with rendered ordered SHA-256
-> `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`. These current local surfaces
-> do not inherit the older browser certificate below; fresh
-> exact-source browser, physical-device, screen-reader and HUMAN experience review remain open.
+> `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`. Exact signed
+> `5004fd36…`'s current Compendium → Slice → Glass certificate covers these local surfaces.
+> Physical-device, screen-reader and HUMAN experience review remain open.
 
 > **Historical signed universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
 > signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree

@@ -3,7 +3,8 @@
 **Current mode: `UNFROZEN`**
 
 **Current local state (2026-09-02): twelfth hosted Inventory modal-lifetime product red preserved;
-bounded local successor verification is in progress; no hosted attempt is authorized.** PR #35
+bounded local successor and exact-source browser certificate are green; no hosted attempt is
+authorized.** PR #35
 run `33657402955`, attempt 1, consumed the exact one-time authority for head
 `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
 `7a9f4c1370dd84292388d718c38ff34214f6203b`. It completed terminal red after **72m38s**. Every
@@ -23,9 +24,20 @@ halves, snapshots newly encountered roots once and restores exact prior state af
 Existing Glass controls now retain an unlocked-root ledger and independently prove attribute/late-
 root red, observer recovery, outside-focus containment, native Tab wrap and exact restoration;
 there is no new job or control name and the sealed total remains 104. Focused tests, all three
-TypeScript programs, Glass selftest and the small-phone Inventory route/controls are green. Clean
-committed tracked-input proof and one unchanged-source Compendium → Slice → Glass local chain remain
-required before any successor is hosted-ready.
+TypeScript programs, Glass selftest and the small-phone Inventory route/controls are green.
+
+Exact SSH-signed implementation source
+`5004fd36f9fdb2632f323d99f1535e9fb2ac5b95`, tree
+`cc1a568ebd49e038b831464b2c1ce7d8ac01ad3a`, passed the hermetic tracked-input `develop`
+rehearsal at **264/264 files, 2,728 passed / 1 skipped**, the browser-CDP/browser-path/Compendium
+preflight controls, all **618** Compendium mutation controls and live Edge `152.0.4191.53` / CDP
+`1.3` preflight. Its one unchanged-source, fail-fast/no-retry chain then named-verified Compendium
+`20260902185934666-38136-1560adf2b6` at **78/78**, zero-finding Slice
+`20260902190106514-38463-d9be88c2f213`, and exact-Slice-bound Glass
+`20260902190730548-38863-824672142575` at **12/12** viewports/reloads and **104/104** controls with
+zero blocked/omitted controls, findings, instrument failures or retries. Four deterministic
+carriers and exact hashes are indexed in `audits/README.md`; the signed evidence/docs descendant
+containing this text also passes the final tracked-input `develop` proof.
 
 Current Compendium measurement/producer authority is
 `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
@@ -40,11 +52,13 @@ named only index, owner, service-worker and derived authority fields. After the 
 budget/history update, focused authority coverage passes **32/32** and the single corrected profile
 passes **264/264 files, 2,728 passed / 1 skipped**, all three TypeScript programs, **34** art
 sources, **1,014/1,014** routes and **454** declared fields. This is local evidence only; signed
-tracked-input and unchanged-source browser certification remain pending.
+tracked-input and unchanged-source browser certification are now complete for exact implementation
+source `5004fd36…`.
 
 The twelve hosted stops classify as **8 instrument/infrastructure, 3 product/runtime and 1 mixed**.
 The exact bdd8a4c authorization is consumed, there is no retry, and no push, label, dispatch, PR
-mutation, merge, release, version, publication or deployment is authorized. Artifact
+mutation, merge, release, version, publication or deployment is authorized. The green local
+successor does not create hosted authority. Artifact
 `battery-evidence` is ID `9860127013`, archive digest
 `sha256:ad9d5212cb4c8f187b3c2f9035a1da2483adf0b56184418b73946c9ba21d21fa`; immutable report and
 repair details are indexed in `audits/README.md`.

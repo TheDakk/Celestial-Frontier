@@ -1,5 +1,27 @@
 # Celestial-Frontier
 
+> **2026-09-02 current PR #35 Inventory modal-lifetime closure (supersedes older “current” labels;
+> dated evidence remains immutable):** hosted run `33657402955` tested exact head
+> `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once/no-retry. Layout, Compendium and Slice passed;
+> Glass stopped on its first 320×568 row because Inventory did not reassert both `inert` and
+> `aria-hidden` after a background root appeared or changed during the modal lifetime. The report
+> remains immutable red and the authorization is consumed.
+>
+> Inventory now observes the whole open lifetime, snapshots each direct body background root once,
+> idempotently reasserts both isolation halves, disconnects before release and restores every exact
+> prior state. Existing Glass controls prove real attribute/late-root red → observer-green → exact
+> Close restoration without adding a job or control. Exact signed source
+> `5004fd36f9fdb2632f323d99f1535e9fb2ac5b95`, tree
+> `cc1a568ebd49e038b831464b2c1ce7d8ac01ad3a`, passed the hermetic `develop` rehearsal and one
+> unchanged-source/no-retry chain: Compendium `20260902185934666-38136-1560adf2b6` **78/78**,
+> zero-finding Slice `20260902190106514-38463-d9be88c2f213`, and exact-Slice-bound Glass
+> `20260902190730548-38863-824672142575` **12/12** viewports/reloads and **104/104** controls with
+> zero blocked/omitted work, findings, instrument failures or retries. Every named verifier passed;
+> four deterministic carriers are indexed in `audits/README.md`, and the signed evidence/docs
+> descendant containing this reference also passes final tracked-input proof. PR #35 remains
+> Ready/open/unmerged; no push, hosted attempt, merge, release, version bump or deploy is authorized.
+
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated blocks below remain immutable):** the tenth one-time/no-retry hosted attempt tested
 > exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base

@@ -10,7 +10,7 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 Inventory-modal lifetime stop and bounded successor — exact twelfth attempt
+### Current PR #35 Inventory-modal lifetime stop and exact-source green successor — twelfth attempt
 
 PR #35 run `33657402955`, attempt 1, consumed the exact one-time `test-battery` authority for head
 `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
@@ -51,14 +51,33 @@ inventory and historical samples remain unchanged.
 The first local consolidated `develop` profile stopped after **2,727 passed / 1 skipped** solely on
 that expected exact-source producer mismatch. Focused authority coverage then passed **32/32** and
 the corrected consolidated profile passed **264/264 files, 2,728 passed / 1 skipped**, all three
-TypeScript programs, 34 clean art sources, 1,014/1,014 routes and 454 declared fields. Clean
-committed tracked-input and the unchanged-source browser chain remain pending.
+TypeScript programs, 34 clean art sources, 1,014/1,014 routes and 454 declared fields.
+
+Exact SSH-signed source `5004fd36f9fdb2632f323d99f1535e9fb2ac5b95`, tree
+`cc1a568ebd49e038b831464b2c1ce7d8ac01ad3a`, passed the hermetic tracked-input `develop`
+rehearsal, browser-CDP/browser-path/Compendium-preflight controls, all **618** Compendium controls
+and live Edge `152.0.4191.53` / CDP `1.3` preflight. On that same unchanged clean source,
+Compendium `20260902185934666-38136-1560adf2b6` passed **78/78**; Slice
+`20260902190106514-38463-d9be88c2f213` passed with zero findings/scopes and exact report/log
+SHA-256 `661865d0fab54ebb4943cbdc2aebc5b511e94a199a8e54256cb8427e86c0f3e3` /
+`099daaa8e2650f6fe1faa956954ad0409e0262db979f834e3ac9cfcb4b078340`; and Glass
+`20260902190730548-38863-824672142575` consumed that exact Slice and passed **12/12** viewports,
+**12/12** reload rows and **104/104** controls with zero blocked/omitted controls, findings,
+instrument failures or retries. Every named verifier passed and no stage retried.
+
+Four gzip-verified deterministic carriers preserve the Compendium report, Slice report/log and
+Glass report:
+`ARC1A_COMPENDIUM_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.json.gz`,
+`ARC4_SLICE_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.json.gz`,
+`ARC4_SLICE_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.log.gz` and
+`ARC4_GLASS_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.json.gz`. Exact raw/gzip
+sizes and hashes are in the repair audit linked above. The signed evidence/docs descendant
+containing this index also passes the final hermetic tracked-input `develop` proof.
 
 All twelve hosted stops now classify as **8 instrument/infrastructure, 3 product/runtime and 1
 mixed**. The twelfth authorization is consumed; there is no retry, merge, release, version,
-publication or deployment authority. A changed local successor must complete one fresh clean
-unchanged-source profile/Compendium → Slice → Glass proof before requesting a new exact hosted
-attempt.
+publication or deployment authority. The changed local successor is now browser-ready, but a new
+hosted attempt still requires Nick's fresh exact-head/base authorization.
 
 ### Historical PR #35 battery review and launcher-lifecycle successor — exact eleventh attempt
 

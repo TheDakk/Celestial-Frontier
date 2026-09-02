@@ -24,6 +24,16 @@
 > The bounded successor mirrors the existing Import-modal lifetime owner, makes the Glass result
 > name each unlocked root, and changes no loot, save, creature, art, gameplay, ruler, retry or
 > browser-version policy.
+>
+> Exact SSH-signed successor `5004fd36f9fdb2632f323d99f1535e9fb2ac5b95` passed the hermetic
+> `develop` rehearsal and required browser/Compendium controls. On that same clean unchanged source,
+> Compendium `20260902185934666-38136-1560adf2b6` passed **78/78**, Slice
+> `20260902190106514-38463-d9be88c2f213` passed with zero findings/scopes, and Glass
+> `20260902190730548-38863-824672142575` consumed that exact Slice and passed **12/12** viewports,
+> **12/12** reload rows and **104/104** controls with zero blocked/omitted work, findings,
+> instrument failures or retries. Every stage ran once and every named verifier passed. The four
+> deterministic carriers are indexed in `audits/README.md`; no HUMAN, hosted, merge or release
+> authority follows from local automation.
 
 > **NATIVE INPUT ADVANCES FROM OBSERVED OUTCOME, NOT A FIXED GESTURE COUNT** (2026-09-01).
 > A browser driver may issue a wheel, touch, key or pointer gesture, but the gesture is only intent;

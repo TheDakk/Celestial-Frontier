@@ -19,8 +19,14 @@
 > v2 draft remains 77 bullets with ordered digest
 > `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`. Focused tests, all three
 > TypeScript programs, the corrected **264/264-file / 2,728-pass / 1-skip** `develop` profile and
-> the small-phone Inventory path are green; clean committed tracked-input and exact-source
-> Compendium → Slice → Glass certification remain pending. No gameplay, loot, save,
+> the small-phone Inventory path are green. Exact signed source `5004fd36f9fdb2632f323d99f1535e9fb2ac5b95`
+> passed the hermetic tracked-input rehearsal, the required browser/Compendium controls and one
+> unchanged-source/no-retry chain: Compendium `20260902185934666-38136-1560adf2b6` **78/78**,
+> zero-finding Slice `20260902190106514-38463-d9be88c2f213`, and exact-Slice-bound Glass
+> `20260902190730548-38863-824672142575` **12/12** viewports/reloads and **104/104** controls with
+> zero blocked/omitted work, findings, instrument failures or retries. Every named verifier passed;
+> four exact carriers are indexed in `../../audits/README.md`, and the signed evidence/docs
+> descendant containing this reference also passes final tracked-input proof. No gameplay, loot, save,
 > creature/genome, plant, biome, Guardian, art, graphics, audio, ruler, retry, browser-family,
 > Gate/HUMAN, release, version or production-identity deviation follows.
 > Current Compendium measurement/producer authority is

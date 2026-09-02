@@ -151,10 +151,57 @@ proved that the budget repair changed exactly those five producer leaves plus
 Focused producer/budget coverage then passed **2 files / 32 tests**, and the single corrected
 browser-free `develop` profile passed **264/264 files, 2,728 passed / 1 skipped**, all three
 TypeScript programs, **34** art sources with zero findings, **1,014/1,014** routes and **454**
-declared fields with zero inert fields. This does not erase the first local red. Clean committed
-tracked-input and one exact-source Compendium → Slice → Glass local chain remain required before a
-successor can be called hosted-ready. The browser chain must run once on one committed unchanged
-source; no unchanged hosted retry is authorized.
+declared fields with zero inert fields. This does not erase the first local red.
+
+## Exact-source local successor certificate
+
+Exact SSH-signed implementation source
+`5004fd36f9fdb2632f323d99f1535e9fb2ac5b95`, tree
+`cc1a568ebd49e038b831464b2c1ce7d8ac01ad3a`, parent
+`bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17`, passed the hermetic tracked-input `develop`
+rehearsal at **264/264 files, 2,728 passed / 1 skipped**, all three TypeScript programs, **34**
+clean art sources, **1,014/1,014** routes and **454** declared/non-inert fields. Browser-CDP,
+browser-path, Compendium browser-preflight and all **618** Compendium mutation controls passed.
+Live preflight accepted canonical Edge `152.0.4191.53` / CDP `1.3`; the point version is
+provenance only.
+
+On that exact clean, unchanged source, one serial fail-fast/no-retry develop chain completed:
+
+- Compendium `20260902185934666-38136-1560adf2b6` passed **78/78** with zero findings or blocked
+  outcomes in **61,876 ms**, then passed named verification.
+- Slice `20260902190106514-38463-d9be88c2f213` passed terminal/certifying with zero findings or
+  scopes, ten screenshots and a green Arc 4 ledger in **362,697 ms**. Named verification bound
+  report SHA-256 `661865d0fab54ebb4943cbdc2aebc5b511e94a199a8e54256cb8427e86c0f3e3`
+  and raw-log SHA-256 `099daaa8e2650f6fe1faa956954ad0409e0262db979f834e3ac9cfcb4b078340`.
+- Glass `20260902190730548-38863-824672142575` consumed that exact Slice predecessor and passed
+  **12/12** viewports, **12/12** reload rows and **104/104** controls with zero blocked/omitted
+  controls, findings, instrument failures or retries in **113,689 ms**. Its Slice-bound named
+  verifier passed; report SHA-256 is
+  `3603a19e3eff5f9e3b41f400ed899bd0fbf76d79c38ed91a45ce88407928871f`.
+
+Four deterministic `gzip -n -9` carriers preserve the exact reports/log:
+
+- `ARC1A_COMPENDIUM_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.json.gz` — raw
+  **10,832,945 bytes**, SHA-256
+  `527fc3dc559d9e36cb162e84c1abc938eb5b889d8cbad0abbd7dce2ee443691b`; gzip **452,176 bytes**,
+  SHA-256 `6f19fa85da668ce8d03102263ef1a6d935357df8338ab4a1b265b2f3faf43df4`.
+- `ARC4_SLICE_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.json.gz` — raw **6,126
+  bytes**, SHA-256 `661865d0fab54ebb4943cbdc2aebc5b511e94a199a8e54256cb8427e86c0f3e3`;
+  gzip **1,960 bytes**, SHA-256
+  `9a3dbb231eab2f60500fb16f2ea2867137023c3003e8fc558a966dc560ae5e3c`.
+- `ARC4_SLICE_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.log.gz` — raw **6,950
+  bytes**, SHA-256 `099daaa8e2650f6fe1faa956954ad0409e0262db979f834e3ac9cfcb4b078340`;
+  gzip **3,288 bytes**, SHA-256
+  `d4981a531e15fc1179285d0b5f2a11004b6bf2305fd5a61afecddf6589f1e140`.
+- `ARC4_GLASS_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.json.gz` — raw **898,747
+  bytes**, SHA-256 `3603a19e3eff5f9e3b41f400ed899bd0fbf76d79c38ed91a45ce88407928871f`;
+  gzip **78,817 bytes**, SHA-256
+  `91400a88b84dd8ddb259d90269abb0afc44f3ed032c4e23f3cc121117e2eec62`.
+
+All four pass gzip integrity, byte-for-byte raw comparison and deterministic recompression. Every
+certifying stage ran once; no stage retried. The signed documentation/evidence descendant
+containing this record also passes the final hermetic tracked-input `develop` proof with the same
+**264/264 files, 2,728 passed / 1 skipped** result.
 
 Because the product and player bulletin changed the build graph, the exact current Compendium
 producer authority is `f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc`

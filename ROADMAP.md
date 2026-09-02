@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-02 · TWELFTH HOSTED PRODUCT STOP · INVENTORY LIFETIME REPAIR READY FOR EXACT-SOURCE CERTIFICATION ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-02 · INVENTORY LIFETIME REPAIR · LOCAL DEVELOP CERTIFICATE GREEN ◀◀◀
 
 ### Exact current boundary
 
@@ -27,10 +27,12 @@ the archive verbatim and refresh this handoff in place.
 - Hosted-tested/pushed head is **bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17**, tree
   **ae8faec92122f412240c5b4979073f69b170c9f4**, against exact `origin/develop`
   **7a9f4c1370dd84292388d718c38ff34214f6203b**.
-- The local candidate carries a bounded Inventory modal-lifetime repair, expanded existing Glass
-  controls, synchronized player bulletin/reference work and retained hosted evidence. Its exact
-  signed implementation commit is the next proof boundary; do not discard, overwrite, rebase or
-  copy these changes to another worktree.
+- Exact SSH-signed implementation source is **5004fd36f9fdb2632f323d99f1535e9fb2ac5b95**,
+  tree **cc1a568ebd49e038b831464b2c1ce7d8ac01ad3a**, parent **bdd8a4c…**. It contains the bounded
+  Inventory modal-lifetime repair, expanded existing Glass controls, synchronized player bulletin/
+  references and retained hosted red. The signed evidence/docs descendant containing this handoff
+  adds only the four exact green carriers and synchronized closure text; do not discard, overwrite,
+  rebase or copy it to another worktree.
 - PR #35 is Ready/open/unmerged. `develop` is unchanged at the base above. The exact hosted
   authorization is consumed; no push, label, dispatch, retry, PR mutation, merge, release, version
   bump, publication or deployment is currently authorized.
@@ -86,7 +88,7 @@ the archive verbatim and refresh this handoff in place.
 - The twelve hosted stops classify as **8 instrument/infrastructure, 3 product/runtime and 1
   mixed**. This does not make a red green and grants no hosted or merge authority.
 
-### Verification completed and pending
+### Verification complete
 
 Completed on the local successor:
 
@@ -109,16 +111,28 @@ Completed on the local successor:
 - Final whole-diff product review, current-producer authority audit and synchronized-document review
   are independently clear. No stale current authority, numeric recalibration or additional product
   change was found.
+- Exact signed `5004fd36…` passed the hermetic tracked-input `develop` rehearsal with the same
+  **264/264 files, 2,728 passed / 1 skipped** result. Browser-CDP, browser-path and Compendium
+  preflight controls, all **618** Compendium controls and live Edge `152.0.4191.53` / CDP `1.3`
+  preflight passed; the point version is provenance only.
+- On unchanged `5004fd36…`, Compendium `20260902185934666-38136-1560adf2b6` passed **78/78** in
+  **61,876 ms** and named-verified. Slice `20260902190106514-38463-d9be88c2f213` passed with zero
+  findings/scopes and ten screenshots in **362,697 ms**, then named-verified report/log hashes
+  `661865d0…f3e3` / `099daaa8…8340`. Glass `20260902190730548-38863-824672142575` consumed that
+  exact Slice and passed **12/12** viewports, **12/12** reload rows and **104/104** controls with
+  zero blocked/omitted work, findings, instrument failures or retries in **113,689 ms**, then
+  named-verified report hash `3603a19e…871f`.
+- Four deterministic report/log carriers are retained and indexed under `audits/`; gzip integrity,
+  raw-byte comparison and `gzip -n -9` recompression all pass. Independent evidence review is
+  **CLEAR**. Root Layout was not repeated locally because its inputs are unchanged; its bdd8a4c
+  hosted **787/787** result remains the relevant exact-input proof.
+- The signed documentation/evidence descendant containing this handoff also passes the final
+  hermetic tracked-input `develop` proof with **264/264 files, 2,728 passed / 1 skipped**, all
+  TypeScript programs and art/specification owners green.
 
-Still required, once each:
-
-1. create one local signed implementation commit on `openai/mac` and prove clean tracked inputs;
-2. on that exact unchanged source, run serial fail-fast/no-retry Compendium → Slice → Glass and
-   named-verify each report, passing the exact Slice predecessor into Glass;
-3. retain/index the green report carriers, commit the documentation/evidence descendant and run its
-   final tracked-input proof;
-4. only if all local evidence is green, report the exact final head/base and request one fresh
-   exact hosted attempt. Never rerun the consumed bdd8a4c attempt.
+Only one integration step remains: Nick must provide fresh exact-head/base authorization for one
+new PR #35 `test-battery` attempt. Never rerun the consumed bdd8a4c attempt, and merge into
+`develop` only if that changed-head attempt is terminal green.
 
 ### Scope and preserved vision
 
@@ -130,8 +144,8 @@ Still required, once each:
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex next:** finish the bounded local proof above. Do not push or mutate GitHub without
-  a fresh exact-head authorization.
+- **OpenAI/Codex next:** report the final local descendant SHA/base and wait for Nick's fresh exact
+  one-attempt authorization. Do not push or mutate GitHub before it arrives.
 - **PR:** existing #35, base **develop**, source **openai/mac**.
 - **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
 - **Description:** “Completes the established v2 roadmap campaign without recreating its gameplay
