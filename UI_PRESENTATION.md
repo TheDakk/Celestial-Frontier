@@ -1,5 +1,44 @@
 # Celestial Frontier — UI / Presentation System
 
+> **2026-09-02 current Glass Inventory action-evidence overlay (harness-only; full browser
+> certification pending and older dated evidence remains immutable):** PR #35 run `33674116068`, attempt 1,
+> tested exact head `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Layout **787/787**, Compendium **78/78** plus named
+> verification, and exact-bound Slice passed. Glass stopped instrument-red on its first small-phone
+> row with zero product findings: `small-phone: small-phone/Inventory action settlement: outcome
+> did not arrive within 10000ms (last null)`. The harness had allowed a later spread to overwrite
+> its composite action verdict and reduced every non-success settlement state to `null`, so the
+> retained report could not distinguish pending, refusal, revision, binding or authority state.
+> This is not evidence of an Inventory/product or browser-version defect, and it was not retried.
+>
+> The current bounded repair changes evidence ownership only. The offscreen refusal control must
+> complete and exactly restore before the action arm. Glass then binds the exact document and
+> active top-frame/default context, retains a live browser-process heartbeat, quiesces F4, arms an
+> exact-sequence product-action hold, drives one native activation, and requires the trusted exact
+> action receipt plus held pending no-optimism evidence. Wrong hold/control plumbing is
+> instrument-red. The same exact hold is released; every settlement observation remains structured
+> with terminal/refusal detail, revision, equipped binding, persistence/lease and coordinator/hold
+> authority, including continued observation through a lawful Arc 9 progression tail. Red pending
+> and settlement outcomes causal-stop their dependents. The 10-second bound, no retry,
+> version-tolerant Chromium-family/CDP policy, job/control count and all UI, modal, accessibility
+> and Inventory behavior remain unchanged.
+>
+> Stable targeted small-phone diagnostic `20260902213203634-49535-0e789796749b` then exposed a
+> separate presentation-instrument scope defect with zero product findings. Its lawful fallback-only
+> portrait could not provide the visible-trail/non-fallback starting state required by either
+> portrait control, yet the old campaign made both mandatory whenever any portrait was planned.
+> Full 12-row Glass still requires an eligible portrait and exact-once band/fallback controls. A
+> targeted eligible portrait does too; a targeted fallback-only portrait requires exactly zero of
+> both and reports them as scoped omissions. Matching terminal guards now use the same predicate;
+> neither eligibility nor UI geometry was relaxed.
+>
+> Successor targeted small-phone run `20260902213750107-50317-aa753f436e55` passed with zero
+> findings or instrument failures and remains noncertifying. Current focused Inventory instrument
+> tests pass **19/19**, the related four-file set passes **37/37**, and typecheck plus Glass selftest
+> are green. The browser-free `develop` profile passes **264/264 files, 2,738 passed / 1 skipped**.
+> No full 12-row Glass pass is claimed, no unchanged-source successor certificate exists yet, and
+> no HUMAN presentation criterion closes from these checks.
+
 > **2026-09-02 current Inventory modal-lifetime overlay (matches current local code; supersedes
 > older “current” labels while preserving dated evidence):** PR #35 run `33657402955` tested exact
 > head `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base

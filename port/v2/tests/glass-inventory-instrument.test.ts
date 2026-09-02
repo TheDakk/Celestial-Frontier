@@ -4,9 +4,13 @@ import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import {
   buildInventoryActionOffscreenRestoreSource,
+  buildInventoryActionSettlementSource,
+  inventoryActionPendingOutcome,
+  inventoryActionSettlementSnapshot,
   prepareInventoryActionOffscreen,
   restoreInventoryActionOffscreen,
   runInventoryOffscreenProbe,
+  stopAfterRecordedProductOutcome,
 } from '../tools/glassmatrix.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -16,8 +20,119 @@ type Rect = readonly [number, number, number, number];
 
 function inventoryActionInstrumentBlock(source: string): string | null {
   const start = source.indexOf('const offscreenPrior = await evalIn(');
-  const end = source.indexOf('const settledAction = await waitFor(', start);
+  const end = source.indexOf('const committedCarrier = await evalIn(', start);
   return start >= 0 && end > start ? source.slice(start, end) : null;
+}
+
+const exactAction = Object.freeze({
+  operation: 'equip',
+  instanceId: 'thermal:fixture',
+  holdOperation: 'arc2.equip',
+  holdSequence: 7,
+  revision: 12,
+});
+
+const exactReceipt = Object.freeze({
+  trusted: true,
+  operation: exactAction.operation,
+  instanceId: exactAction.instanceId,
+  baseline: Object.freeze({ ok: true }),
+});
+
+const exactPendingState = Object.freeze({
+  diagnostics: Object.freeze({ pendingWork: 1 }),
+  coordinator: Object.freeze({
+    inFlight: true,
+    owner: Object.freeze({ busy: true, operation: exactAction.holdOperation }),
+    hold: Object.freeze({
+      phase: 'holding', operation: exactAction.holdOperation, sequence: exactAction.holdSequence,
+    }),
+  }),
+});
+
+function pendingActionOutcome({
+  receipt = exactReceipt,
+  actionState = exactPendingState,
+}: {
+  receipt?: typeof exactReceipt | null | { readonly baseline: { readonly ok: boolean } } & Omit<typeof exactReceipt, 'baseline'>;
+  actionState?: {
+    readonly diagnostics: { readonly pendingWork: number };
+    readonly coordinator: {
+      readonly inFlight: boolean;
+      readonly owner: { readonly busy: boolean; readonly operation: string };
+      readonly hold: {
+        readonly phase: string;
+        readonly operation: string | null;
+        readonly sequence: number;
+      };
+    };
+  };
+} = {}) {
+  return inventoryActionPendingOutcome({
+    preActionInstrumentControl: { ok: true, diagnostic: 'retained-pre-action-green' },
+    realAction: { ok: true, inputDispatched: true },
+    receipt,
+    actionState,
+    expectedOperation: exactAction.operation,
+    expectedInstanceId: exactAction.instanceId,
+    expectedHoldOperation: exactAction.holdOperation,
+    expectedHoldSequence: exactAction.holdSequence,
+  });
+}
+
+function terminalDiagnostics(kind = 'committed', detail = 'revision:12') {
+  return {
+    schema: 'cf-v2-inventory-sheet-diagnostics/v1',
+    activeCount: 1,
+    retainedCount: 0,
+    pendingWork: 0,
+    selectedInstanceId: exactAction.instanceId,
+    lastAction: {
+      operation: exactAction.operation,
+      instanceId: exactAction.instanceId,
+      kind,
+      detail,
+    },
+  };
+}
+
+function terminalState({
+  revision = exactAction.revision,
+  equippedBindings = [{ slot: 'suit', instanceId: exactAction.instanceId }],
+  mutationBlocked = false,
+  leaseOwned = true,
+}: {
+  revision?: number;
+  equippedBindings?: Array<{ slot: string; instanceId: string }>;
+  mutationBlocked?: boolean;
+  leaseOwned?: boolean;
+} = {}) {
+  return {
+    inventory: {
+      revision,
+      entryIds: [exactAction.instanceId],
+      equippedBindings,
+      pendingIds: [],
+    },
+    engineering: {
+      actionCoordinator: {
+        inFlight: false,
+        owner: { busy: false, operation: null },
+        hold: {
+          phase: 'released',
+          operation: exactAction.holdOperation,
+          sequence: exactAction.holdSequence,
+        },
+      },
+    },
+    persistence: {
+      mutationBlocked,
+      hold: mutationBlocked ? 'transient-read' : null,
+      protectedDetail: mutationBlocked ? 'write authority changed' : null,
+      runtime: { leaseOwned, revision },
+    },
+    sceneResources: { pendingPersistenceWrites: 0 },
+  };
 }
 
 function makeHarness({
@@ -278,6 +393,307 @@ describe('Glass Inventory offscreen action instrument', () => {
     expect('__cfInventoryOffscreenOwner' in pageWindow).toBe(false);
   });
 
+  it('keeps missing receipts and red pending baselines red after retaining green setup diagnostics', () => {
+    const missingReceipt = pendingActionOutcome({ receipt: null });
+    const redBaseline = pendingActionOutcome({
+      receipt: { ...exactReceipt, baseline: { ok: false } },
+    });
+
+    expect(missingReceipt).toMatchObject({
+      diagnostic: 'retained-pre-action-green',
+      productPrerequisite: false,
+      ok: false,
+      checks: { instrumentReady: true, trustedReceipt: false, pendingBaseline: false },
+    });
+    expect(redBaseline).toMatchObject({
+      diagnostic: 'retained-pre-action-green',
+      productPrerequisite: true,
+      pendingOwnerExact: true,
+      ok: false,
+      checks: { instrumentReady: true, trustedReceipt: true, pendingBaseline: false },
+    });
+  });
+
+  it('accepts only the fully exact trusted receipt and held pending owner', () => {
+    const exact = pendingActionOutcome();
+    const staleSequence = pendingActionOutcome({
+      actionState: {
+        ...exactPendingState,
+        coordinator: {
+          ...exactPendingState.coordinator,
+          hold: { ...exactPendingState.coordinator.hold, sequence: exactAction.holdSequence + 1 },
+        },
+      },
+    });
+
+    expect(exact).toMatchObject({
+      diagnostic: 'retained-pre-action-green',
+      productPrerequisite: true,
+      pendingOwnerExact: true,
+      ok: true,
+      checks: {
+        instrumentReady: true,
+        nativeActivation: true,
+        trustedReceipt: true,
+        receiptOperation: true,
+        receiptInstance: true,
+        pendingBaseline: true,
+        pendingObserved: true,
+        actionOwnerInFlight: true,
+        actionOwnerBusy: true,
+        actionOwnerOperation: true,
+        actionHoldPhase: true,
+        actionHoldOperation: true,
+        actionHoldSequence: true,
+      },
+    });
+    expect(Object.values(exact.checks).every((value) => value === true)).toBe(true);
+    expect(staleSequence).toMatchObject({
+      ok: false,
+      pendingOwnerExact: false,
+      checks: { actionHoldSequence: false },
+    });
+  });
+
+  it('keeps the pending verdict red for an exact sequence with the wrong hold phase or operation', () => {
+    const wrongPhase = pendingActionOutcome({
+      actionState: {
+        ...exactPendingState,
+        coordinator: {
+          ...exactPendingState.coordinator,
+          hold: { ...exactPendingState.coordinator.hold, phase: 'release-requested' },
+        },
+      },
+    });
+    const wrongOperation = pendingActionOutcome({
+      actionState: {
+        ...exactPendingState,
+        coordinator: {
+          ...exactPendingState.coordinator,
+          hold: { ...exactPendingState.coordinator.hold, operation: 'arc4.capture' },
+        },
+      },
+    });
+
+    expect(wrongPhase).toMatchObject({
+      ok: false,
+      pendingOwnerExact: false,
+      checks: { actionHoldPhase: false, actionHoldOperation: true },
+    });
+    expect(wrongOperation).toMatchObject({
+      ok: false,
+      pendingOwnerExact: false,
+      checks: { actionHoldPhase: true, actionHoldOperation: false },
+    });
+  });
+
+  it('retains a structured refused terminal with exact action, revision, binding, and authority evidence', () => {
+    const diagnostics = terminalDiagnostics('refused', 'write-authority-changed');
+    const state = terminalState({
+      revision: exactAction.revision - 1,
+      equippedBindings: [{ slot: 'suit', instanceId: 'prior:fixture' }],
+      mutationBlocked: true,
+      leaseOwned: false,
+    });
+    const refused = inventoryActionSettlementSnapshot(diagnostics, state, exactAction);
+
+    expect(refused).toMatchObject({
+      schema: 'cf-v2-glass-inventory-action-settlement/v1',
+      terminal: true,
+      observationComplete: true,
+      ok: false,
+      action: {
+        operation: exactAction.operation,
+        instanceId: exactAction.instanceId,
+        kind: 'refused',
+        detail: 'write-authority-changed',
+      },
+      inventory: {
+        revision: exactAction.revision - 1,
+        equippedBindings: [{ slot: 'suit', instanceId: 'prior:fixture' }],
+      },
+      authority: {
+        persistence: {
+          mutationBlocked: true,
+          hold: 'transient-read',
+          protectedDetail: 'write authority changed',
+          runtime: { leaseOwned: false, revision: exactAction.revision - 1 },
+        },
+      },
+      checks: {
+        actionIdentity: true,
+        terminalKind: true,
+        pendingCleared: true,
+        committed: false,
+        revisionAdvanced: false,
+        bindingPublished: false,
+        persistenceWritable: false,
+      },
+    });
+  });
+
+  it('keeps a pending observation structured and red through JSON evidence retention', () => {
+    const diagnostics = {
+      ...terminalDiagnostics(),
+      pendingWork: 1,
+      lastAction: null,
+    };
+    const pending = inventoryActionSettlementSnapshot(
+      diagnostics,
+      terminalState({ revision: exactAction.revision - 1, equippedBindings: [] }),
+      exactAction,
+    );
+    const retained = JSON.parse(JSON.stringify(pending));
+
+    expect(pending).toMatchObject({ terminal: false, observationComplete: false, ok: false });
+    expect(retained).toMatchObject({
+      schema: 'cf-v2-glass-inventory-action-settlement/v1',
+      terminal: false,
+      observationComplete: false,
+      ok: false,
+      action: null,
+      diagnostics: { pendingWork: 1, lastAction: null },
+      inventory: { revision: exactAction.revision - 1, equippedBindings: [] },
+      authority: {
+        persistence: {
+          mutationBlocked: false,
+          runtime: { leaseOwned: true, revision: exactAction.revision - 1 },
+        },
+      },
+      checks: { actionIdentity: false, terminalKind: false, pendingCleared: false },
+    });
+  });
+
+  it('accepts one exact committed terminal and its released action hold', () => {
+    const committed = inventoryActionSettlementSnapshot(
+      terminalDiagnostics(), terminalState(), exactAction,
+    );
+
+    expect(committed).toMatchObject({
+      terminal: true,
+      observationComplete: true,
+      ok: true,
+      inventory: {
+        revision: exactAction.revision,
+        equippedBindings: [{ slot: 'suit', instanceId: exactAction.instanceId }],
+      },
+    });
+    expect(Object.values(committed.checks).every((value) => value === true)).toBe(true);
+  });
+
+  it('keeps an otherwise committed and idle settlement red until the exact hold is released', () => {
+    const releasedState = terminalState();
+    const holding = inventoryActionSettlementSnapshot(terminalDiagnostics(), {
+      ...releasedState,
+      engineering: { actionCoordinator: {
+        ...releasedState.engineering.actionCoordinator,
+        hold: {
+          ...releasedState.engineering.actionCoordinator.hold,
+          phase: 'holding',
+        },
+      } },
+    }, exactAction);
+    const wrongOperation = inventoryActionSettlementSnapshot(terminalDiagnostics(), {
+      ...releasedState,
+      engineering: { actionCoordinator: {
+        ...releasedState.engineering.actionCoordinator,
+        hold: {
+          ...releasedState.engineering.actionCoordinator.hold,
+          operation: 'arc4.capture',
+        },
+      } },
+    }, exactAction);
+
+    expect(holding).toMatchObject({
+      terminal: true,
+      observationComplete: true,
+      ok: false,
+      checks: { committed: true, actionOwnerIdle: true, actionHoldReleased: false },
+    });
+    expect(wrongOperation).toMatchObject({
+      terminal: true,
+      observationComplete: true,
+      ok: false,
+      checks: { committed: true, actionOwnerIdle: true, actionHoldReleased: false },
+    });
+  });
+
+  it('retains a committed UI terminal but keeps observing while the progression tail owns work', () => {
+    const idleState = terminalState();
+    const state = {
+      ...idleState,
+      engineering: { actionCoordinator: {
+        ...idleState.engineering.actionCoordinator,
+        inFlight: true,
+        owner: { busy: true, operation: 'arc9.progression-refresh' },
+      } },
+    };
+    const intermediate = inventoryActionSettlementSnapshot(
+      terminalDiagnostics(), state, exactAction,
+    );
+
+    expect(intermediate).toMatchObject({
+      terminal: true,
+      observationComplete: false,
+      ok: false,
+      checks: { committed: true, actionOwnerIdle: false },
+      authority: {
+        actionCoordinator: {
+          inFlight: true,
+          owner: { busy: true, operation: 'arc9.progression-refresh' },
+        },
+      },
+    });
+  });
+
+  it('builds executable browser settlement source from the same structured projector', () => {
+    const diagnostics = terminalDiagnostics();
+    const state = terminalState();
+    const pageWindow = {
+      __CF_SLICE__: {
+        api: {
+          inventoryDiagnostics: () => diagnostics,
+          state: () => state,
+        },
+      },
+    };
+    const source = buildInventoryActionSettlementSource(exactAction);
+    const execute = new Function('window', `return ${source};`);
+
+    expect(execute(pageWindow)).toEqual(
+      inventoryActionSettlementSnapshot(diagnostics, state, exactAction),
+    );
+  });
+
+  it('causal-stops red pending evidence before settlement and permits the green control', () => {
+    const redTrace: string[] = [];
+    const redOutcomes = [
+      pendingActionOutcome({ receipt: null }),
+      pendingActionOutcome({ receipt: { ...exactReceipt, baseline: { ok: false } } }),
+    ];
+    for (const outcome of redOutcomes) {
+      expect(() => {
+        stopAfterRecordedProductOutcome(
+          'small-phone', 'inventory-action-pending', 'INVENTORY_ACTION_NO_OPTIMISM',
+          '#inventorysheet [data-inventory-action="equip"]', outcome, 'exact pending owner',
+        );
+        redTrace.push('dependent-settlement-ran');
+      }).toThrow(/INVENTORY_ACTION_NO_OPTIMISM was red/u);
+    }
+    expect(redTrace).toEqual([]);
+
+    const greenTrace: string[] = [];
+    expect(() => {
+      stopAfterRecordedProductOutcome(
+        'small-phone', 'inventory-action-pending', 'INVENTORY_ACTION_NO_OPTIMISM',
+        '#inventorysheet [data-inventory-action="equip"]',
+        pendingActionOutcome(), 'exact pending owner',
+      );
+      greenTrace.push('dependent-settlement-ran');
+    }).not.toThrow();
+    expect(greenTrace).toEqual(['dependent-settlement-ran']);
+  });
+
   it('keeps setup, refusal-only input assessment, restoration, and classification before product input', () => {
     const source = fs.readFileSync(glassPath, 'utf8');
     const block = inventoryActionInstrumentBlock(source);
@@ -294,5 +710,37 @@ describe('Glass Inventory offscreen action instrument', () => {
     expect(block?.indexOf('Inventory action setup/offscreen control failed')).toBeLessThan(
       block?.indexOf('const realAction = await activateRealControl(') ?? -1,
     );
+    expect(block).toContain('const actionControlCore = inventoryActionPendingOutcome({');
+    expect(block).toContain('const pendingObservation = await observeOutcome(');
+    expect(block).toContain('holdContaminated=!holdSequenceExact');
+    expect(block).toContain("pendingObservation.value?.holdContaminated === true");
+    expect(block).toContain('expectedHoldSequence: actionArm.hold.sequence');
+    expect(block).toContain('const actionReleaseControl = {');
+    expect(block).toContain('const publicationInstrumentError = actionControlCore.productPrerequisite');
+    expect(block).toContain('Inventory publication control plumbing failed');
+    expect(block).toContain('if (actionControlCore.productPrerequisite');
+    expect(block).not.toContain('if (!inventoryControlRun && actionControlCore.productPrerequisite');
+    expect(block).toContain('const settlementObservation = await observeOutcome(');
+    expect(block).toContain('buildInventoryActionSettlementSource(settlementExpected)');
+    expect(block).toContain('(value) => value?.observationComplete === true');
+    expect(block).toContain('const settledAction = settlementObservation.value ?? {');
+    expect(block).not.toContain("waitFor('Inventory action settlement'");
+
+    const pendingOutcome = block?.indexOf('const pendingOutcome = {') ?? -1;
+    const pendingAdd = block?.indexOf("addOutcome(vp.label, 'inventory-action-pending'") ?? -1;
+    const pendingStop = block?.indexOf(
+      "stopAfterRecordedProductOutcome(vp.label, 'inventory-action-pending'",
+    ) ?? -1;
+    const settlementObservation = block?.indexOf(
+      'const settlementObservation = await observeOutcome(',
+    ) ?? -1;
+    const settlementAdd = block?.indexOf(
+      "addOutcome(vp.label, 'inventory-action-settled'",
+    ) ?? -1;
+    expect(pendingOutcome).toBeGreaterThanOrEqual(0);
+    expect(pendingAdd).toBeGreaterThan(pendingOutcome);
+    expect(pendingStop).toBeGreaterThan(pendingAdd);
+    expect(settlementObservation).toBeGreaterThan(pendingStop);
+    expect(settlementAdd).toBeGreaterThan(settlementObservation);
   });
 });

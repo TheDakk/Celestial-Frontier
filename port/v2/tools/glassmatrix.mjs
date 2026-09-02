@@ -401,6 +401,133 @@ export function buildInventoryActionOffscreenRestoreSource(prior, mutationApplie
       ${mutationApplied ? 'true' : 'false'});})()`;
 }
 
+/** Finalize the pending-action verdict after retaining every prerequisite's
+ * diagnostics. The composite verdict is deliberately written last: a prior
+ * control's `ok` field must never overwrite the action-level result. */
+export function inventoryActionPendingOutcome({
+  preActionInstrumentControl,
+  realAction,
+  receipt,
+  actionState,
+  expectedOperation,
+  expectedInstanceId,
+  expectedHoldOperation,
+  expectedHoldSequence,
+}) {
+  const preAction = preActionInstrumentControl && typeof preActionInstrumentControl === 'object'
+    ? preActionInstrumentControl : { ok: false, why: 'pending-action prerequisites missing' };
+  const diagnostics = actionState?.diagnostics ?? null;
+  const coordinator = actionState?.coordinator ?? null;
+  const checks = {
+    instrumentReady: preAction.ok === true,
+    nativeActivation: realAction?.ok === true,
+    trustedReceipt: receipt?.trusted === true,
+    receiptOperation: receipt?.operation === expectedOperation,
+    receiptInstance: receipt?.instanceId === expectedInstanceId,
+    pendingBaseline: receipt?.baseline?.ok === true,
+    pendingObserved: diagnostics?.pendingWork === 1,
+    actionOwnerInFlight: coordinator?.inFlight === true,
+    actionOwnerBusy: coordinator?.owner?.busy === true,
+    actionOwnerOperation: coordinator?.owner?.operation === expectedHoldOperation,
+    actionHoldPhase: coordinator?.hold?.phase === 'holding',
+    actionHoldOperation: coordinator?.hold?.operation === expectedHoldOperation,
+    actionHoldSequence: coordinator?.hold?.sequence === expectedHoldSequence,
+  };
+  const productPrerequisite = checks.nativeActivation && checks.trustedReceipt
+    && checks.receiptOperation && checks.receiptInstance;
+  const pendingOwnerExact = checks.pendingObserved && checks.actionOwnerInFlight
+    && checks.actionOwnerBusy && checks.actionOwnerOperation
+    && checks.actionHoldPhase && checks.actionHoldOperation && checks.actionHoldSequence;
+  return {
+    ...preAction,
+    realAction,
+    receipt,
+    actionState,
+    checks,
+    productPrerequisite,
+    pendingOwnerExact,
+    ok: checks.instrumentReady && productPrerequisite
+      && checks.pendingBaseline && pendingOwnerExact,
+  };
+}
+
+/** Project one always-structured terminal observation. A refused or stale
+ * exact action is terminal too, but remains red with its detail, authority,
+ * revision, and binding evidence intact. */
+export function inventoryActionSettlementSnapshot(diagnostics, state, expected) {
+  const action = diagnostics?.lastAction ?? null;
+  const inventory = state?.inventory ?? null;
+  const coordinator = state?.engineering?.actionCoordinator ?? null;
+  const persistence = state?.persistence ?? null;
+  const terminalKinds = ['committed', 'unchanged', 'unavailable', 'refused'];
+  const checks = {
+    diagnosticsSchema: diagnostics?.schema === 'cf-v2-inventory-sheet-diagnostics/v1',
+    actionIdentity: action?.operation === expected?.operation
+      && action?.instanceId === expected?.instanceId,
+    terminalKind: terminalKinds.includes(action?.kind),
+    pendingCleared: diagnostics?.pendingWork === 0,
+    modalOwned: diagnostics?.activeCount === 1,
+    modalUnretained: diagnostics?.retainedCount === 0,
+    selectionRetained: diagnostics?.selectedInstanceId === expected?.instanceId,
+    committed: action?.kind === 'committed',
+    revisionAdvanced: inventory?.revision === expected?.revision,
+    bindingPublished: Array.isArray(inventory?.equippedBindings)
+      && inventory.equippedBindings.some((binding) => binding?.instanceId === expected?.instanceId),
+    actionOwnerIdle: coordinator?.inFlight === false && coordinator?.owner?.busy === false
+      && coordinator?.owner?.operation === null,
+    actionHoldReleased: coordinator?.hold?.phase === 'released'
+      && coordinator?.hold?.operation === expected?.holdOperation
+      && coordinator?.hold?.sequence === expected?.holdSequence,
+    persistenceWritable: persistence?.mutationBlocked === false
+      && persistence?.runtime?.leaseOwned === true,
+  };
+  const terminal = checks.actionIdentity && checks.terminalKind && checks.pendingCleared;
+  const observationComplete = terminal && checks.actionOwnerIdle;
+  return {
+    schema: 'cf-v2-glass-inventory-action-settlement/v1',
+    terminal,
+    observationComplete,
+    action,
+    diagnostics,
+    inventory: inventory === null ? null : {
+      revision: inventory.revision ?? null,
+      entryIds: Array.isArray(inventory.entryIds) ? inventory.entryIds : [],
+      equippedBindings: Array.isArray(inventory.equippedBindings)
+        ? inventory.equippedBindings : [],
+      pendingIds: Array.isArray(inventory.pendingIds) ? inventory.pendingIds : [],
+    },
+    authority: { persistence, actionCoordinator: coordinator },
+    checks,
+    ok: terminal && checks.diagnosticsSchema && checks.modalOwned
+      && checks.modalUnretained && checks.selectionRetained && checks.committed
+      && checks.revisionAdvanced && checks.bindingPublished && checks.actionOwnerIdle
+      && checks.actionHoldReleased && checks.persistenceWritable,
+  };
+}
+
+const INVENTORY_ACTION_SETTLEMENT_SOURCE
+  = `(${inventoryActionSettlementSnapshot.toString()})`;
+
+export function buildInventoryActionSettlementSource(expected) {
+  if (!expected || typeof expected !== 'object'
+    || typeof expected.operation !== 'string' || !expected.operation
+    || typeof expected.instanceId !== 'string' || !expected.instanceId
+    || !Number.isSafeInteger(expected.revision) || expected.revision < 0
+    || typeof expected.holdOperation !== 'string' || !expected.holdOperation
+    || !Number.isSafeInteger(expected.holdSequence) || expected.holdSequence < 1) {
+    throw new TypeError('Inventory action settlement source requires an expected terminal owner');
+  }
+  const expectedSource = JSON.stringify(expected);
+  if (typeof expectedSource !== 'string') {
+    throw new TypeError('Inventory action settlement owner is not serializable');
+  }
+  return `(()=>{try{const S=window.__CF_SLICE__,snapshot=${INVENTORY_ACTION_SETTLEMENT_SOURCE};
+    return snapshot(S?.api?.inventoryDiagnostics?.(),S?.api?.state?.(),${expectedSource});
+    }catch(error){return {schema:'cf-v2-glass-inventory-action-settlement/v1',terminal:false,
+      observationComplete:false,ok:false,error:String(error?.message||error),action:null,diagnostics:null,inventory:null,
+      authority:null,checks:null};}})()`;
+}
+
 function collectGlassProductRows(findings, viewport, surface, rows, armed = false) {
   for (const row of rows || []) {
     recordGlassProductFinding(findings, viewport, surface, row, armed);
@@ -449,7 +576,7 @@ function recordRenderedGuideIngressResult({
   return { productFindings: findings.length, instrumentFailures: instrumentFailures.length };
 }
 
-function stopAfterRecordedProductOutcome(viewport, surface, code, element, outcome, expected) {
+export function stopAfterRecordedProductOutcome(viewport, surface, code, element, outcome, expected) {
   if (outcome?.ok === true) return;
   throw new ProductAnswerabilityFinding(
     `${viewport}: ${code} was red, so dependent outcomes in this viewport were not run`,
@@ -5510,6 +5637,22 @@ async function reportSelftest() {
     duplicateRun: portraitControlCampaignOutcome({
       planned: 5, observed: 5, eligible: 2, bandRuns: 2, fallbackRuns: 1,
     }),
+    targetedFallback: portraitControlCampaignOutcome({
+      planned: 1, observed: 1, eligible: 0, bandRuns: 0, fallbackRuns: 0,
+      requireEligibleCampaign: false,
+    }),
+    targetedMissingBaseline: portraitControlCampaignOutcome({
+      planned: 1, observed: 0, eligible: 0, bandRuns: 0, fallbackRuns: 0,
+      requireEligibleCampaign: false,
+    }),
+    targetedEligibleMissingControl: portraitControlCampaignOutcome({
+      planned: 1, observed: 1, eligible: 1, bandRuns: 1, fallbackRuns: 0,
+      requireEligibleCampaign: false,
+    }),
+    targetedFallbackSpuriousControl: portraitControlCampaignOutcome({
+      planned: 1, observed: 1, eligible: 0, bandRuns: 1, fallbackRuns: 0,
+      requireEligibleCampaign: false,
+    }),
   };
   const causalState = { error: null };
   const causalFailures = [];
@@ -5617,6 +5760,12 @@ async function reportSelftest() {
     || fallbackControls.inaccessibleScroll.ok || fallbackControls.fixedRowOverlap.ok
     || !portraitCampaignControls.positive.ok || portraitCampaignControls.noEligible.ok
     || portraitCampaignControls.missingBaseline.ok || portraitCampaignControls.duplicateRun.ok
+    || !portraitCampaignControls.targetedFallback.ok
+    || portraitCampaignControls.targetedFallback.controlsRequired
+    || portraitCampaignControls.targetedMissingBaseline.ok
+    || portraitCampaignControls.targetedEligibleMissingControl.ok
+    || !portraitCampaignControls.targetedEligibleMissingControl.controlsRequired
+    || portraitCampaignControls.targetedFallbackSpuriousControl.ok
     || causalTrace.length !== 1
     || !(firstCausalError instanceof GlassInstrumentControlStop)
     || repeatedCausalError !== firstCausalError
@@ -7822,17 +7971,31 @@ function portraitFallbackControlOutcome(control) {
   return { ok: Object.values(checks).every(Boolean), checks };
 }
 
-function portraitControlCampaignOutcome({ planned, observed, eligible, bandRuns, fallbackRuns } = {}) {
+function portraitControlCampaignOutcome({
+  planned, observed, eligible, bandRuns, fallbackRuns, requireEligibleCampaign = true,
+} = {}) {
   const countsValid = [planned, observed, eligible, bandRuns, fallbackRuns]
     .every((value) => Number.isSafeInteger(value) && value >= 0);
-  const required = countsValid && planned > 0;
+  const requirementValid = typeof requireEligibleCampaign === 'boolean';
+  const required = countsValid && requirementValid && planned > 0;
+  const controlsRequired = required && (requireEligibleCampaign || eligible > 0);
   const checks = Object.freeze({
-    countsValid,
+    countsValid: countsValid && requirementValid,
     allBaselinesObserved: countsValid && observed === planned,
-    eligibleBaselineObserved: countsValid && (!required || eligible > 0),
-    controlsExecutedOnce: countsValid && (!required || (bandRuns === 1 && fallbackRuns === 1)),
+    eligibleWithinObserved: countsValid && eligible <= observed,
+    eligibleBaselineObserved: countsValid
+      && (!required || !requireEligibleCampaign || eligible > 0),
+    controlsExecutedExactly: countsValid && (controlsRequired
+      ? bandRuns === 1 && fallbackRuns === 1
+      : bandRuns === 0 && fallbackRuns === 0),
   });
-  return { ok: Object.values(checks).every(Boolean), required, checks };
+  return {
+    ok: Object.values(checks).every(Boolean),
+    required,
+    requireEligibleCampaign,
+    controlsRequired,
+    checks,
+  };
 }
 
 function toastAnchorControlOutcome(control) {
@@ -8275,14 +8438,20 @@ async function main() {
            while the player-facing button is covered or unwired. */
         const activateRealControl = async (selector, label, options = {}) => {
           const dispatchAllowed = options?.dispatch !== false;
+          const expectedDocumentToken = typeof options?.expectedDocumentToken === 'string'
+            ? options.expectedDocumentToken : null;
           const target = await evalIn(`(()=>{ const button=document.querySelector(${JSON.stringify(selector)}),
             rect=button?.getBoundingClientRect(),style=button?getComputedStyle(button):null,
             x=rect?(rect.left+rect.right)/2:NaN,y=rect?(rect.top+rect.bottom)/2:NaN,
-            hit=rect?document.elementFromPoint(x,y):null;
+            hit=rect?document.elementFromPoint(x,y):null,
+            documentToken=window.__CF_SLICE__?.documentToken??null,
+            documentOwned=${JSON.stringify(expectedDocumentToken)}===null
+              ||documentToken===${JSON.stringify(expectedDocumentToken)};
             window.__cfGlassShipyardReceipt=null;window.__cfGlassShipyardReceiptAbort?.abort();
             const opacity=Number(style?.opacity),visible=!!button&&style?.display!=='none'
               &&style?.visibility!=='hidden'&&Number.isFinite(opacity)&&opacity>0,
-              ok=visible&&rect.width>=44&&rect.height>=44&&!!hit&&(hit===button||button.contains(hit));
+              ok=documentOwned&&visible&&rect.width>=44&&rect.height>=44&&!!hit
+                &&(hit===button||button.contains(hit));
             delete window.__cfGlassShipyardReceiptAbort;
             if(ok&&${JSON.stringify(dispatchAllowed)}){const controller=new AbortController();window.__cfGlassShipyardReceiptAbort=controller;
               document.addEventListener('pointerdown',(event)=>{const node=event.target instanceof Element?event.target:null;
@@ -8293,6 +8462,7 @@ async function main() {
               id:button?.id||null,x,y,rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null,
               visible,opacity,hit:hit?.id||hit?.tagName||null,
               hitButtonId:hit?.closest?.('button')?.id??null,
+              documentToken,documentOwned,
               receiptListenerArmed:'__cfGlassShipyardReceiptAbort' in window};})()`);
           if (!target.ok || !Number.isFinite(target.x) || !Number.isFinite(target.y)) {
             return { ok: false, inputDispatched: false,
@@ -8417,6 +8587,7 @@ async function main() {
            finding; heartbeat loss remains instrument/transport failure. */
         const observeOutcome = async (expression, accept, executionContextId, timeoutMs, {
           cycle = 0, postRenderPriority = null, singleAttempt = false,
+          productFinding = null,
         } = {}) => {
           const until = Date.now() + timeoutMs;
           let last = null;
@@ -8433,14 +8604,15 @@ async function main() {
               const evidence = { viewport: vp.label, expression, commands, last,
                 classification: probe.classification, why: probe.why };
               if (probe.classification === 'product-unanswerable-after-ready') {
+                const finding = productFinding ?? {
+                  code: 'ULTRA_VIEWPORT_RESIZE_UNANSWERABLE',
+                  surface: 'ultra-same-backing-resize', element: 'canvas',
+                  expected: 'the same-backing viewport transition remains externally answerable within the bounded target command while the browser process is responsive',
+                };
                 throw new ProductAnswerabilityFinding(
                   `${vp.label}: product outcome target was unanswerable while the browser process remained responsive (${probe.why})`,
                   evidence,
-                  {
-                    code: 'ULTRA_VIEWPORT_RESIZE_UNANSWERABLE',
-                    surface: 'ultra-same-backing-resize', element: 'canvas',
-                    expected: 'the same-backing viewport transition remains externally answerable within the bounded target command while the browser process is responsive',
-                  },
+                  finding,
                 );
               }
               throw new Error(`${vp.label}: bounded product outcome probe failed (${JSON.stringify(evidence)})`);
@@ -10900,43 +11072,6 @@ async function main() {
               await waitFor('Inventory action authority', `(()=>{const s=window.__CF_SLICE__.api.state();return s.sceneResources?.pendingPersistenceWrites===0
                 &&s.persistence?.mutationBlocked===false&&s.persistence?.runtime?.leaseOwned===true;})()`);
               const actionSelector = `#inventorysheet [data-inventory-action="equip"][data-instance-id=${JSON.stringify(thermalId)}]`;
-              const actionArm = await evalIn(`(()=>{const S=window.__CF_SLICE__,state=S.api.state(),
-                rowElements=[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')],
-                before={revision:state.inventory.revision,entryIds:[...state.inventory.entryIds],
-                  equippedBindings:(state.inventory.equippedBindings||[]).map(binding=>({...binding})),
-                  rowIds:rowElements.map(row=>row.getAttribute('data-instance-id')),
-                  domEquipped:rowElements.map(row=>row.getAttribute('data-equipped'))},
-                button=document.querySelector(${JSON.stringify(actionSelector)});if(!button)return {ok:false,why:'enabled equip action missing',before};
-                delete window.__cfInventoryActionReceipt;window.__cfInventoryActionReceiptAbort?.abort();const controller=new AbortController();
-                window.__cfInventoryActionReceiptAbort=controller;document.addEventListener('click',(event)=>{const target=event.target instanceof Element?event.target.closest('[data-inventory-action]'):null,
-                  baseline=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before),priorState=S.api.state,
-                  runtimeSnapshot=priorState(),poisonedBindings=(runtimeSnapshot.inventory?.equippedBindings||[]).map(binding=>({...binding}));
-                  if(poisonedBindings.length)poisonedBindings[0]={...poisonedBindings[0],instanceId:String(poisonedBindings[0].instanceId)+':optimistic-binding'};
-                  else poisonedBindings.push({slot:'control',instanceId:'optimistic-binding'});
-                  let bindingBroken=null,bindingControlApplied=false;try{S.api.state=()=>{const current=priorState();return {...current,
-                    inventory:{...current.inventory,equippedBindings:poisonedBindings.map(binding=>({...binding}))}}};
-                    bindingControlApplied=JSON.stringify(S.api.state().inventory.equippedBindings)===JSON.stringify(poisonedBindings);
-                    bindingBroken=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);}finally{S.api.state=priorState;}
-                  const bindingRestored=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before),
-                    row=[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')]
-                      .find(candidate=>candidate.getAttribute('data-instance-id')===${JSON.stringify(thermalId)})||null,
-                    priorEquipped=row?.getAttribute('data-equipped')??null,toggledEquipped=priorEquipped==='true'?'false':'true';
-                  row?.setAttribute('data-equipped',toggledEquipped);const domControlApplied=!!row
-                    &&row.getAttribute('data-equipped')===toggledEquipped,
-                    domBroken=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);
-                  if(row){if(priorEquipped===null)row.removeAttribute('data-equipped');else row.setAttribute('data-equipped',priorEquipped);}
-                  const domControlRestored=!!row&&row.getAttribute('data-equipped')===priorEquipped,
-                    domRestored=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before),
-                    identityRow=document.querySelector('#inventorypanel [data-inventory-row="exact"]'),priorId=identityRow?.getAttribute('data-instance-id')??null;
-                  identityRow?.setAttribute('data-instance-id','stale-optimistic-row');
-                  const identityBroken=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);
-                  if(identityRow){if(priorId===null)identityRow.removeAttribute('data-instance-id');else identityRow.setAttribute('data-instance-id',priorId);}
-                  const restored=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);window.__cfInventoryActionReceipt={trusted:event.isTrusted,
-                    operation:target?.getAttribute('data-inventory-action')||null,instanceId:target?.getAttribute('data-instance-id')||null,
-                    before,baseline,bindingControlApplied,bindingOwnerRestored:S.api.state===priorState,bindingBroken,bindingRestored,
-                    domControlApplied,domControlRestored,domBroken,domRestored,
-                    identityBroken,restored};window.__cfInventoryActionReceiptAbort=null;},{once:true,signal:controller.signal});
-                return {ok:true,before};})()`);
               const actionScroll = await evalIn(`(()=>{const button=document.querySelector(${JSON.stringify(actionSelector)}),
                 card=button?.closest('.inventory-sheet-card')||null;if(!button||!card)return {ok:false,scrollTop:null};
                 button.scrollIntoView({block:'center',inline:'nearest'});return {ok:true,scrollTop:card.scrollTop};})()`);
@@ -10992,66 +11127,332 @@ async function main() {
                   skipped: false, offscreenPrior, offscreenSetupGeometry, offscreenProbeGeometry,
                   ...offscreenRun };
               }
-              const preActionInstrumentControl = { ok: actionArm.ok && actionScroll.ok
-                  && actionReachabilityControl.ok,
-                arm: actionArm, actionScroll, actionReachabilityControl };
-              if (!inventoryControlRun && !preActionInstrumentControl.ok) {
-                recordInstrumentFailure(`${vp.label}: Inventory action setup/offscreen control failed or did not restore before product input (${JSON.stringify(preActionInstrumentControl)})`);
+              const actionFrame = await topFrameState();
+              const actionContexts = [...runtimeContexts.values()].filter((row) => row.active
+                && row.isDefault && row.frameId === actionFrame.frameId);
+              const actionContext = actionContexts.length === 1 ? actionContexts[0] : null;
+              const actionContextEvidence = { frame: actionFrame, contexts: actionContexts };
+              if (!actionContext?.uniqueId || actionContext.origin !== new URL(url).origin) {
+                recordInstrumentFailure(`${vp.label}: Inventory exact action context unavailable (${JSON.stringify(actionContextEvidence)})`);
               }
-              const realAction = await activateRealControl(actionSelector, `${vp.label} Inventory exact equip`);
-              const actionReceipt = await evalIn(`(()=>{const receipt=window.__cfInventoryActionReceipt||null;
-                window.__cfInventoryActionReceiptAbort?.abort();delete window.__cfInventoryActionReceiptAbort;delete window.__cfInventoryActionReceipt;return receipt;})()`);
-              const actionProductPrerequisite = realAction.ok && actionReceipt?.trusted === true
-                && actionReceipt?.operation === 'equip' && actionReceipt?.instanceId === thermalId;
-              const publicationControl = { ok: actionReceipt?.bindingControlApplied === true
-                  && actionReceipt?.bindingOwnerRestored === true
-                  && actionReceipt?.bindingBroken?.ok === false
-                  && actionReceipt?.bindingBroken?.entryIdsMatch === true
-                  && actionReceipt?.bindingBroken?.runtimeBindingsMatch === false
-                  && actionReceipt?.bindingBroken?.rowIdsMatch === true
-                  && actionReceipt?.bindingBroken?.domEquippedMatch === true
-                  && actionReceipt?.bindingRestored?.ok === true
-                  && actionReceipt?.domControlApplied === true && actionReceipt?.domControlRestored === true
-                  && actionReceipt?.domBroken?.ok === false
-                  && actionReceipt?.domBroken?.entryIdsMatch === true
-                  && actionReceipt?.domBroken?.runtimeBindingsMatch === true
-                  && actionReceipt?.domBroken?.rowIdsMatch === true
-                  && actionReceipt?.domBroken?.domEquippedMatch === false
-                  && actionReceipt?.domRestored?.ok === true
-                  && actionReceipt?.identityBroken?.ok === false
-                  && actionReceipt?.identityBroken?.entryIdsMatch === true
-                  && actionReceipt?.identityBroken?.runtimeBindingsMatch === true
-                  && actionReceipt?.identityBroken?.rowIdsMatch === false
-                  && actionReceipt?.identityBroken?.domEquippedMatch === true
-                  && actionReceipt?.restored?.ok === true,
-                receipt: actionReceipt };
-              if (!inventoryControlRun && actionProductPrerequisite
-                && actionReceipt?.baseline?.ok === true) {
-                if (!publicationControl.ok) {
-                  recordInstrumentFailure(`${vp.label}: optimistic Inventory binding/DOM publication stayed green or failed to restore (${JSON.stringify(publicationControl)})`);
+              let actionHeartbeatQuiescence = null;
+              let actionPrimaryError = null;
+              try {
+                actionHeartbeatQuiescence = await evalIn('window.__CF_SLICE__.api.__smokeQuiesceF4Heartbeat()');
+                if (actionHeartbeatQuiescence?.schema !== 'cf-v2-f4-heartbeat-quiescence/v1'
+                  || actionHeartbeatQuiescence?.documentToken !== ready.token
+                  || actionHeartbeatQuiescence?.wasRunning !== true
+                  || actionHeartbeatQuiescence?.stopped !== true
+                  || actionHeartbeatQuiescence?.cycleSettled !== true) {
+                  recordInstrumentFailure(`${vp.label}: Inventory action heartbeat did not quiesce (${JSON.stringify(actionHeartbeatQuiescence)})`);
                 }
-                recordControls('inventory-action-publication');
+                const actionArm = await evalIn(`(()=>{const S=window.__CF_SLICE__,state=S.api.state(),
+                  coordinator=state.engineering?.actionCoordinator??null,
+                  documentOwner={token:S.documentToken??null,href:location.href},
+                  authority={pendingPersistenceWrites:state.sceneResources?.pendingPersistenceWrites??null,
+                    mutationBlocked:state.persistence?.mutationBlocked??null,
+                    leaseOwned:state.persistence?.runtime?.leaseOwned??null,
+                    inFlight:coordinator?.inFlight??null,owner:coordinator?.owner??null,hold:coordinator?.hold??null},
+                  rowElements=[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')],
+                  before={revision:state.inventory.revision,entryIds:[...state.inventory.entryIds],
+                    equippedBindings:(state.inventory.equippedBindings||[]).map(binding=>({...binding})),
+                    rowIds:rowElements.map(row=>row.getAttribute('data-instance-id')),
+                    domEquipped:rowElements.map(row=>row.getAttribute('data-equipped'))},
+                  button=document.querySelector(${JSON.stringify(actionSelector)}),
+                  documentOwned=documentOwner.token===${JSON.stringify(ready.token)}
+                    &&documentOwner.href===${JSON.stringify(url)},
+                  authorityOk=documentOwned&&authority.pendingPersistenceWrites===0&&authority.mutationBlocked===false
+                    &&authority.leaseOwned===true&&authority.inFlight===false
+                    &&authority.owner?.busy===false&&authority.owner?.operation===null
+                    &&['idle','released'].includes(authority.hold?.phase),
+                  holdArmed=!!button&&authorityOk&&S.api.__smokeArmProductActionHold()===true,
+                  hold=S.api.state().engineering?.actionCoordinator?.hold??null,
+                  holdSequenceAdvanced=Number.isSafeInteger(authority.hold?.sequence)
+                    &&hold?.sequence===authority.hold.sequence+1;
+                  if(!button||!authorityOk||!holdArmed||hold?.phase!=='armed'
+                    ||hold?.operation!==null||!holdSequenceAdvanced)return {ok:false,
+                    why:!button?'enabled equip action missing':!documentOwned?'action document owner changed':
+                      !authorityOk?'action authority unavailable':'diagnostic hold did not arm',
+                    before,documentOwner,documentOwned,authority,holdArmed,hold,holdSequenceAdvanced};
+                  delete window.__cfInventoryActionReceipt;window.__cfInventoryActionReceiptAbort?.abort();const controller=new AbortController();
+                  window.__cfInventoryActionReceiptAbort=controller;document.addEventListener('click',(event)=>{
+                    const target=event.target instanceof Element?event.target.closest('[data-inventory-action]'):null,
+                      controlErrors=[],receipt={trusted:event.isTrusted,
+                        operation:target?.getAttribute('data-inventory-action')||null,
+                        instanceId:target?.getAttribute('data-instance-id')||null,before,baseline:null,
+                        bindingControlApplied:false,bindingOwnerRestored:false,bindingBroken:null,bindingRestored:null,
+                        domControlApplied:false,domControlRestored:false,domBroken:null,domRestored:null,
+                        identityControlApplied:false,identityControlRestored:false,identityBroken:null,restored:null,
+                        controlErrors,controlError:null};
+                    try{
+                      receipt.baseline=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);
+                      const priorState=S.api.state,runtimeSnapshot=priorState(),
+                        poisonedBindings=(runtimeSnapshot.inventory?.equippedBindings||[]).map(binding=>({...binding}));
+                      if(poisonedBindings.length)poisonedBindings[0]={...poisonedBindings[0],instanceId:String(poisonedBindings[0].instanceId)+':optimistic-binding'};
+                      else poisonedBindings.push({slot:'control',instanceId:'optimistic-binding'});
+                      try{S.api.state=()=>{const current=priorState();return {...current,
+                        inventory:{...current.inventory,equippedBindings:poisonedBindings.map(binding=>({...binding}))}}};
+                        receipt.bindingControlApplied=JSON.stringify(S.api.state().inventory.equippedBindings)===JSON.stringify(poisonedBindings);
+                        receipt.bindingBroken=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);
+                      }catch(error){controlErrors.push('binding:'+String(error?.message||error));}
+                      finally{S.api.state=priorState;}
+                      receipt.bindingOwnerRestored=S.api.state===priorState;
+                      receipt.bindingRestored=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);
+                      const row=[...document.querySelectorAll('#inventorypanel [data-inventory-row="exact"]')]
+                          .find(candidate=>candidate.getAttribute('data-instance-id')===${JSON.stringify(thermalId)})||null,
+                        priorEquipped=row?.getAttribute('data-equipped')??null,
+                        toggledEquipped=priorEquipped==='true'?'false':'true';
+                      try{
+                        if(!row)throw new Error('exact Inventory row missing during DOM control');
+                        row.setAttribute('data-equipped',toggledEquipped);
+                        receipt.domControlApplied=row.getAttribute('data-equipped')===toggledEquipped;
+                        receipt.domBroken=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);
+                      }catch(error){controlErrors.push('dom:'+String(error?.message||error));}
+                      finally{
+                        if(row){if(priorEquipped===null)row.removeAttribute('data-equipped');else row.setAttribute('data-equipped',priorEquipped);}
+                        receipt.domControlRestored=!!row&&row.getAttribute('data-equipped')===priorEquipped;
+                        try{receipt.domRestored=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);}
+                        catch(error){controlErrors.push('dom-restore:'+String(error?.message||error));}
+                      }
+                      const identityRow=document.querySelector('#inventorypanel [data-inventory-row="exact"]'),
+                        priorId=identityRow?.getAttribute('data-instance-id')??null;
+                      try{
+                        if(!identityRow)throw new Error('Inventory identity row missing during DOM control');
+                        identityRow.setAttribute('data-instance-id','stale-optimistic-row');
+                        receipt.identityControlApplied=identityRow.getAttribute('data-instance-id')==='stale-optimistic-row';
+                        receipt.identityBroken=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);
+                      }catch(error){controlErrors.push('identity:'+String(error?.message||error));}
+                      finally{
+                        if(identityRow){if(priorId===null)identityRow.removeAttribute('data-instance-id');else identityRow.setAttribute('data-instance-id',priorId);}
+                        receipt.identityControlRestored=!!identityRow&&identityRow.getAttribute('data-instance-id')===priorId;
+                        try{receipt.restored=window.__CF_GLASS_AUDIT__.inventoryBusyOutcome(before);}
+                        catch(error){controlErrors.push('identity-restore:'+String(error?.message||error));}
+                      }
+                    }catch(error){controlErrors.push('receipt:'+String(error?.message||error));}
+                    finally{receipt.controlError=controlErrors.length?controlErrors.join('; '):null;
+                      window.__cfInventoryActionReceipt=receipt;window.__cfInventoryActionReceiptAbort=null;}
+                  },{once:true,signal:controller.signal});
+                  return {ok:'__cfInventoryActionReceiptAbort' in window,before,documentOwner,
+                    documentOwned,authority,holdArmed,hold,holdSequenceAdvanced};})()`);
+                const preActionInstrumentControl = {
+                  arm: actionArm,
+                  actionScroll,
+                  actionReachabilityControl,
+                  actionContext: actionContextEvidence,
+                  heartbeatQuiescence: actionHeartbeatQuiescence,
+                  ok: actionArm.ok === true && actionScroll.ok === true
+                    && actionReachabilityControl.ok === true,
+                };
+                if (!preActionInstrumentControl.ok) {
+                  recordInstrumentFailure(`${vp.label}: Inventory action setup/offscreen control failed or did not restore before product input (${JSON.stringify(preActionInstrumentControl)})`);
+                }
+                const realAction = await activateRealControl(
+                  actionSelector,
+                  `${vp.label} Inventory exact equip`,
+                  { expectedDocumentToken: ready.token },
+                );
+                if (realAction?.target?.documentOwned !== true
+                  || realAction?.target?.documentToken !== ready.token) {
+                  recordInstrumentFailure(`${vp.label}: Inventory document owner changed before native input (${JSON.stringify(realAction)})`);
+                }
+                const pendingObservation = await observeOutcome(`(()=>{const S=window.__CF_SLICE__,
+                  diagnostics=S.api.inventoryDiagnostics(),state=S.api.state(),
+                  coordinator=state.engineering?.actionCoordinator??null,action=diagnostics?.lastAction??null,
+                  receipt=window.__cfInventoryActionReceipt||null,
+                  exactAction=action?.operation==='equip'&&action?.instanceId===${JSON.stringify(thermalId)},
+                  terminal=diagnostics?.pendingWork===0&&exactAction
+                    &&['committed','unchanged','unavailable','refused'].includes(action?.kind),
+                  hold=coordinator?.hold??null,
+                  holdSequenceExact=hold?.sequence===${Number(actionArm?.hold?.sequence)},
+                  holdContaminated=!holdSequenceExact
+                    ||(hold?.phase==='armed'?hold?.operation!==null:
+                      hold?.phase==='holding'?hold?.operation!=='arc2.equip':true),
+                  holding=holdSequenceExact&&diagnostics?.pendingWork===1&&coordinator?.inFlight===true
+                    &&coordinator?.owner?.busy===true&&coordinator?.owner?.operation==='arc2.equip'
+                    &&hold?.phase==='holding'&&hold?.operation==='arc2.equip';
+                  return {schema:'cf-v2-glass-inventory-action-progress/v1',receipt,diagnostics,
+                    coordinator,holdSequenceExact,holdContaminated,holding,terminal};})()`,
+                (value) => value?.holding === true || value?.terminal === true
+                  || value?.holdContaminated === true,
+                actionContext.id, 10000, { productFinding: {
+                  code: 'INVENTORY_ACTION_NO_OPTIMISM', surface: 'inventory-action-pending',
+                  element: '#inventorysheet [data-inventory-action="equip"]',
+                  expected: 'the native exact equip remains externally answerable while its deterministic pending hold owns the product action',
+                } });
+                const consumedActionReceipt = await evalIn(`(()=>{const receipt=window.__cfInventoryActionReceipt||null;
+                  window.__cfInventoryActionReceiptAbort?.abort();delete window.__cfInventoryActionReceiptAbort;
+                  delete window.__cfInventoryActionReceipt;return receipt;})()`);
+                const actionReceipt = consumedActionReceipt ?? pendingObservation.value?.receipt ?? null;
+                if (pendingObservation.value?.holdContaminated === true) {
+                  const contaminatedHoldRelease = await evalIn(`(()=>{const S=window.__CF_SLICE__,
+                    before=S.api.state().engineering?.actionCoordinator?.hold??null,
+                    requested=before?.phase==='holding'&&S.api.__smokeReleaseProductActionHold()===true,
+                    after=S.api.state().engineering?.actionCoordinator?.hold??null;
+                    return {before,requested,after};})()`);
+                  recordInstrumentFailure(`${vp.label}: Inventory diagnostic hold was consumed by another action before native input (${JSON.stringify({
+                    actionState: pendingObservation.value, contaminatedHoldRelease,
+                  })})`);
+                }
+                const actionControlCore = inventoryActionPendingOutcome({
+                  preActionInstrumentControl,
+                  realAction,
+                  receipt: actionReceipt,
+                  actionState: pendingObservation.value,
+                  expectedOperation: 'equip',
+                  expectedInstanceId: thermalId,
+                  expectedHoldOperation: 'arc2.equip',
+                  expectedHoldSequence: actionArm.hold.sequence,
+                });
+                const publicationControl = { ok: actionReceipt?.controlError === null
+                    && Array.isArray(actionReceipt?.controlErrors)
+                    && actionReceipt.controlErrors.length === 0
+                    && actionReceipt?.bindingControlApplied === true
+                    && actionReceipt?.bindingOwnerRestored === true
+                    && actionReceipt?.bindingBroken?.ok === false
+                    && actionReceipt?.bindingBroken?.entryIdsMatch === true
+                    && actionReceipt?.bindingBroken?.runtimeBindingsMatch === false
+                    && actionReceipt?.bindingBroken?.rowIdsMatch === true
+                    && actionReceipt?.bindingBroken?.domEquippedMatch === true
+                    && actionReceipt?.bindingRestored?.ok === true
+                    && actionReceipt?.domControlApplied === true && actionReceipt?.domControlRestored === true
+                    && actionReceipt?.domBroken?.ok === false
+                    && actionReceipt?.domBroken?.entryIdsMatch === true
+                    && actionReceipt?.domBroken?.runtimeBindingsMatch === true
+                    && actionReceipt?.domBroken?.rowIdsMatch === true
+                    && actionReceipt?.domBroken?.domEquippedMatch === false
+                    && actionReceipt?.domRestored?.ok === true
+                    && actionReceipt?.identityControlApplied === true
+                    && actionReceipt?.identityControlRestored === true
+                    && actionReceipt?.identityBroken?.ok === false
+                    && actionReceipt?.identityBroken?.entryIdsMatch === true
+                    && actionReceipt?.identityBroken?.runtimeBindingsMatch === true
+                    && actionReceipt?.identityBroken?.rowIdsMatch === false
+                    && actionReceipt?.identityBroken?.domEquippedMatch === true
+                    && actionReceipt?.restored?.ok === true,
+                  receipt: actionReceipt };
+                const publicationInstrumentError = actionControlCore.productPrerequisite
+                  && (actionReceipt?.controlError !== null
+                    || !Array.isArray(actionReceipt?.controlErrors)
+                    || actionReceipt.controlErrors.length > 0);
+                if (publicationInstrumentError) {
+                  recordInstrumentFailure(`${vp.label}: Inventory publication control plumbing failed (${JSON.stringify(publicationControl)})`);
+                }
+                if (actionControlCore.productPrerequisite
+                  && actionControlCore.checks.pendingBaseline
+                  && actionControlCore.pendingOwnerExact) {
+                  if (!publicationControl.ok) {
+                    recordInstrumentFailure(`${vp.label}: optimistic Inventory binding/DOM publication stayed green or failed to restore (${JSON.stringify(publicationControl)})`);
+                  }
+                  if (!inventoryControlRun) recordControls('inventory-action-publication');
+                }
+                const actionRelease = await evalIn(`(()=>{const S=window.__CF_SLICE__,
+                  before=S.api.state().engineering?.actionCoordinator?.hold??null,
+                  requested=before?.phase==='holding'&&S.api.__smokeReleaseProductActionHold()===true,
+                  after=S.api.state().engineering?.actionCoordinator?.hold??null;
+                  return {before,requested,after};})()`);
+                const actionReleaseControl = {
+                  beforeExact: actionRelease?.before?.phase === 'holding'
+                    && actionRelease?.before?.operation === 'arc2.equip'
+                    && actionRelease?.before?.sequence === actionArm.hold.sequence,
+                  requested: actionRelease?.requested === true,
+                  afterExact: ['release-requested', 'released'].includes(actionRelease?.after?.phase)
+                    && actionRelease?.after?.operation === 'arc2.equip'
+                    && actionRelease?.after?.sequence === actionArm.hold.sequence,
+                  actionRelease,
+                };
+                actionReleaseControl.ok = actionReleaseControl.beforeExact
+                  && actionReleaseControl.requested && actionReleaseControl.afterExact;
+                if (actionControlCore.pendingOwnerExact && !actionReleaseControl.ok) {
+                  recordInstrumentFailure(`${vp.label}: Inventory deterministic action hold did not release (${JSON.stringify(actionReleaseControl)})`);
+                }
+                const actionControl = {
+                  ...actionControlCore,
+                  publicationControl,
+                  actionReleaseControl,
+                  pendingSettledWithinBound: pendingObservation.settled,
+                  pendingProbeCommandCount: pendingObservation.commands.length,
+                  ok: actionControlCore.ok === true,
+                };
+                const pendingOutcome = {
+                  ...actionControl,
+                  realOpen: realActionDetailOpen,
+                  ok: realActionDetailOpen?.ok === true && actionControl.ok === true,
+                };
+                const pendingExpected = 'a real pending exact equip disables every action and leaves the full runtime equipped bindings and every DOM row data-equipped state unchanged';
+                addOutcome(vp.label, 'inventory-action-pending', 'INVENTORY_ACTION_NO_OPTIMISM', '#inventorysheet [data-inventory-action="equip"]',
+                  pendingOutcome, pendingExpected);
+                stopAfterRecordedProductOutcome(vp.label, 'inventory-action-pending',
+                  'INVENTORY_ACTION_NO_OPTIMISM', '#inventorysheet [data-inventory-action="equip"]',
+                  pendingOutcome, pendingExpected);
+                const settlementExpected = {
+                  operation: 'equip',
+                  instanceId: thermalId,
+                  revision: Number(inventoryCarrier?.arc2?.inventory?.revision) + 1,
+                  holdOperation: 'arc2.equip',
+                  holdSequence: actionArm?.hold?.sequence ?? null,
+                };
+                const settlementObservation = await observeOutcome(
+                  buildInventoryActionSettlementSource(settlementExpected),
+                  (value) => value?.observationComplete === true,
+                  actionContext.id,
+                  10000,
+                  { productFinding: {
+                    code: 'INVENTORY_ACTION_COMMITTED', surface: 'inventory-action-settled',
+                    element: '#inventorysheet',
+                    expected: 'the exact Inventory action reaches a structured terminal state while the browser process remains responsive',
+                  } },
+                );
+                const settledAction = settlementObservation.value ?? {
+                  schema: 'cf-v2-glass-inventory-action-settlement/v1',
+                  terminal: false,
+                  observationComplete: false,
+                  ok: false,
+                  error: 'Inventory action settlement returned no structured product state',
+                  action: null,
+                  diagnostics: null,
+                  inventory: null,
+                  authority: null,
+                  checks: null,
+                };
+                const settledOutcome = {
+                  ...settledAction,
+                  settledWithinBound: settlementObservation.settled,
+                  probeCommandCount: settlementObservation.commands.length,
+                  ok: settlementObservation.settled && settledAction?.ok === true,
+                };
+                const settledExpected = 'the one durable action publishes one newer exact carrier and refreshes the still-owned modal';
+                addOutcome(vp.label, 'inventory-action-settled', 'INVENTORY_ACTION_COMMITTED', '#inventorysheet',
+                  settledOutcome, settledExpected);
+                stopAfterRecordedProductOutcome(vp.label, 'inventory-action-settled',
+                  'INVENTORY_ACTION_COMMITTED', '#inventorysheet', settledOutcome, settledExpected);
+                const committedCarrier = await evalIn(READ_ARC2_GLASS_CARRIER_EXPRESSION);
+                addOutcome(vp.label, 'inventory-action-settled', 'INVENTORY_COMMITTED_CARRIER_DOM_PARITY', item.panel,
+                  await evalIn(`window.__CF_GLASS_AUDIT__.inventoryRowsOutcome(${JSON.stringify(committedCarrier)},${JSON.stringify(opener)})`),
+                  'the committed durable carrier, runtime projection, and exact rows converge before another action is offered');
+              } catch (error) {
+                actionPrimaryError = error;
+                throw error;
+              } finally {
+                try {
+                  const actionCleanup = await evalIn(`(()=>{const S=window.__CF_SLICE__,
+                    holdBefore=S?.api?.state?.().engineering?.actionCoordinator?.hold??null,
+                    releaseRequested=holdBefore?.phase==='holding'
+                      ?S.api.__smokeReleaseProductActionHold()===true:false;
+                    window.__cfInventoryActionReceiptAbort?.abort();delete window.__cfInventoryActionReceiptAbort;
+                    delete window.__cfInventoryActionReceipt;
+                    const resume=S?.api?.__smokeResumeF4Heartbeat?.()??null,
+                      holdAfter=S?.api?.state?.().engineering?.actionCoordinator?.hold??null;
+                    return {holdBefore,releaseRequested,holdAfter,resume};})()`);
+                  const resumeOk = actionCleanup?.resume?.schema === 'cf-v2-f4-heartbeat-resume/v1'
+                    && actionCleanup?.resume?.documentToken === ready.token
+                    && actionCleanup?.resume?.running === true;
+                  if (!actionPrimaryError && !resumeOk) {
+                    recordInstrumentFailure(`${vp.label}: Inventory action heartbeat did not resume (${JSON.stringify(actionCleanup)})`);
+                  }
+                } catch (cleanupError) {
+                  if (!actionPrimaryError) throw cleanupError;
+                }
               }
-              const actionControl = { ok: preActionInstrumentControl.ok && actionProductPrerequisite
-                  && actionReceipt?.baseline?.ok === true,
-                ...preActionInstrumentControl, realAction, receipt: actionReceipt,
-                publicationControl };
-              addOutcome(vp.label, 'inventory-action-pending', 'INVENTORY_ACTION_NO_OPTIMISM', '#inventorysheet [data-inventory-action="equip"]',
-                { ...actionControl, ok: realActionDetailOpen?.ok === true && actionControl.ok, realOpen: realActionDetailOpen },
-                'a real pending exact equip disables every action and leaves the full runtime equipped bindings and every DOM row data-equipped state unchanged');
-              const settledAction = await waitFor('Inventory action settlement', `(()=>{const S=window.__CF_SLICE__,d=S.api.inventoryDiagnostics(),s=S.api.state();
-                return d.pendingWork===0&&d.lastAction?.operation==='equip'&&d.lastAction?.instanceId===${JSON.stringify(thermalId)}
-                  &&d.lastAction?.kind==='committed'&&s.inventory.revision===${Number(inventoryCarrier?.arc2?.inventory?.revision) + 1}
-                  &&s.inventory.equippedBindings.some(binding=>binding.instanceId===${JSON.stringify(thermalId)})?{d,s:s.inventory}:null;})()`, 10000);
-              addOutcome(vp.label, 'inventory-action-settled', 'INVENTORY_ACTION_COMMITTED', '#inventorysheet',
-                { ok: settledAction?.d?.activeCount === 1 && settledAction?.d?.retainedCount === 0
-                    && settledAction?.d?.pendingWork === 0 && settledAction?.d?.selectedInstanceId === thermalId,
-                  diagnostics: settledAction?.d || null, inventory: settledAction?.s || null },
-                'the one durable action publishes one newer exact carrier and refreshes the still-owned modal');
-              const committedCarrier = await evalIn(READ_ARC2_GLASS_CARRIER_EXPRESSION);
-              addOutcome(vp.label, 'inventory-action-settled', 'INVENTORY_COMMITTED_CARRIER_DOM_PARITY', item.panel,
-                await evalIn(`window.__CF_GLASS_AUDIT__.inventoryRowsOutcome(${JSON.stringify(committedCarrier)},${JSON.stringify(opener)})`),
-                'the committed durable carrier, runtime projection, and exact rows converge before another action is offered');
 
               if (!inventoryControlRun) {
                 const convergenceControl = await evalIn(`(()=>{const S=window.__CF_SLICE__,prior=S.api.inventoryDiagnostics,actions=[...document.querySelectorAll('#inventorysheet [data-inventory-action]')],
@@ -11376,6 +11777,7 @@ async function main() {
               eligible: portraitEligibleBaselineCount,
               bandRuns: portraitBandControlCount,
               fallbackRuns: portraitFallbackControlCount,
+              requireEligibleCampaign: !viewportLabel,
             });
             if (!portraitCampaign.ok) {
               stopInstrumentControl(`${vp.label}: portrait control campaign had no eligible visible-trail/non-fallback baseline or did not execute exactly once (${JSON.stringify(portraitCampaign)})`);
@@ -13025,6 +13427,7 @@ async function main() {
         eligible: portraitEligibleBaselineCount,
         bandRuns: portraitBandControlCount,
         fallbackRuns: portraitFallbackControlCount,
+        requireEligibleCampaign: !viewportLabel,
       });
       if (!portraitCampaign.ok) {
         stopInstrumentControl(`portrait control campaign did not observe every baseline, find an eligible visible-trail/non-fallback viewport, and execute each control exactly once (${JSON.stringify(portraitCampaign)})`);
@@ -13141,10 +13544,12 @@ async function main() {
     recordInstrumentFailure('mobile landed-objective yield control never ran');
   }
   if (!topChromeControlRun && !targetedProductBlocked) recordInstrumentFailure('Planetside/top-chrome clearance control never ran');
-  if (!portraitBandControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900 && vp.width <= vp.height)) {
+  const portraitControlsRequired = portraitViewportCount > 0
+    && (!viewportLabel || portraitEligibleBaselineCount > 0);
+  if (!portraitBandControlRun && !targetedProductBlocked && portraitControlsRequired) {
     recordInstrumentFailure('Planetside portrait-band viability control never ran');
   }
-  if (!portraitFallbackControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900 && vp.width <= vp.height)) {
+  if (!portraitFallbackControlRun && !targetedProductBlocked && portraitControlsRequired) {
     recordInstrumentFailure('Planetside portrait trail-fallback control never ran');
   }
   if (!modalControlRun && !targetedProductBlocked) recordInstrumentFailure('import modal containment control never ran');
