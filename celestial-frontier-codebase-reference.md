@@ -1,7 +1,7 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-09-03 UTC current Capture-focus / Glass-chronology architecture overlay (matches the
-> bounded working repair; final local certificate pending):** hosted PR #35 run `33694235427`
+> **2026-09-03 UTC current Capture-focus / Glass-chronology architecture overlay (matches exact
+> signed local successor; local certificate green):** hosted PR #35 run `33694235427`
 > tested exact head `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b`. Its changed-input small-phone Glass preflight passed
 > on hosted Chrome; Layout **787/787**, Compendium **78/78** plus named verification and
@@ -40,11 +40,14 @@
 > `c216cdc9e8d62800699bc592949726a197f3d8cb6613d1a35086ecd69a1d8cae`; built index
 > `d0b1397b…84a64`, owner `assets/main-CwKRu39a.js` / `5750c8a4…c8360`, and service worker
 > `a58f2877…8dc8` are the changed leaves. Worker/painter bytes, ruler, ceilings, outcomes and
-> historical samples are unchanged. The full record and both hosted Glass carriers are under
-> `audits/`. Focused repair coverage passes **53/53**, and the full browser-free `develop` profile
+> historical samples are unchanged. The full record, both hosted Glass carriers and exact local
+> PASS audit are under `audits/`. Focused repair coverage passes **53/53**, and the full browser-free `develop` profile
 > passes **265/265 files, 2,749 passed / 1 skipped** with all three TypeScript programs and static
-> owners green. A clean unchanged-source Compendium → Slice → Glass chain remains **pending**;
-> this overlay claims no browser-chain successor or hosted authority.
+> owners green. Exact clean SSH-signed source `7cfb42d993778211e9c27b671e6b4fc9b891ff95`, tree
+> `090d2e4827b0eeeec334410ec9563dc778559dd0`, then passed the one-viewport repaired-path diagnostic
+> and one unchanged-source, fail-fast/no-retry, named-verified **78/78 Compendium → zero-finding
+> Slice → 12/12 Glass / 104/104 controls** chain. This overlay claims exact local evidence only;
+> it creates no hosted authority.
 
 > **2026-09-02 historical predecessor early hosted Glass-preflight architecture overlay (workflow/evidence only;
 > exact signed local browser proof green):** `port/v2/tools/battery-scope.mjs` now projects one

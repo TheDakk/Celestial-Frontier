@@ -2,9 +2,9 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-03 UTC): fourteenth PR #35 attempt consumed at Glass; bounded
-Capture-focus/atomic-chronology repair is local and its final certificate is pending; no hosted
-attempt is authorized.** Run `33694235427`, attempt 1, tested exact head
+**Current local state (2026-09-03 UTC): fourteenth PR #35 attempt consumed at Glass; the exact
+signed Capture-focus/atomic-chronology local successor is green; no hosted attempt is
+authorized.** Run `33694235427`, attempt 1, tested exact head
 `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
 `7a9f4c1370dd84292388d718c38ff34214f6203b` through synthetic merge
 `94ec8e41606f9c0e1b16865cdfeff4fb76579b3f`; merge and head share tree
@@ -39,9 +39,15 @@ The immutable audit and both hosted reports are retained under `audits/` and ind
 `audits/README.md`. Focused repair/negative-control coverage passes **53/53**, and the complete
 browser-free `develop` profile passes **265/265 files, 2,749 passed / 1 skipped**, all three
 TypeScript programs, the 34-source art audit, 1,014/1,014 live route keys with zero dead,
-1,010/1,010 species, and 454 declared fields with zero unread or inert. A clean signed source and
-unchanged-source Compendium → Slice → full Glass local certificate remain **pending**. The exact
-run-14 authorization is consumed; `actions-budget-approved` is absent, PR #35 remains
+1,010/1,010 species, and 454 declared fields with zero unread or inert. Exact SSH-signed source
+`7cfb42d993778211e9c27b671e6b4fc9b891ff95`, tree
+`090d2e4827b0eeeec334410ec9563dc778559dd0`, then passed the hermetic tracked-input rehearsal,
+applicable browser instrument controls, a 95/104-control small-phone preflight, and one unchanged-
+source named-verified **78/78 Compendium → zero-finding Slice → 12/12 Glass / 104/104 controls**
+chain once/no-retry. Five deterministic carriers are indexed in `audits/README.md`; the signed
+evidence/docs descendant containing this text passes the final hermetic tracked-input `develop`
+profile, and its own hash is intentionally not self-embedded. The exact run-14 authorization is
+consumed; `actions-budget-approved` is absent, PR #35 remains
 Ready/open/unmerged, and `develop` remains unchanged. No push, label, dispatch, rerun, PR mutation,
 merge, release, version bump, publication or deployment is currently authorized.
 
@@ -1264,8 +1270,10 @@ The bounded successor preserves semantic focus without passive scroll movement, 
 heartbeat replacement in deterministic control, reacquires the live node and collects one atomic
 geometry carrier before classifying product presentation. Both hosted reports and the full audit
 are indexed in `audits/README.md`; temporary artifact `9873073563` is 9,778,683 bytes with digest
-`sha256:56e88b3609f013ce4fd9773efebd0d5ecfb01cc23dd76219f305ad89b93d9a44`. The local repair's
-final clean-source certificate remains pending.
+`sha256:56e88b3609f013ce4fd9773efebd0d5ecfb01cc23dd76219f305ad89b93d9a44`. Exact clean signed local
+successor `7cfb42d…` later passed its tracked-input rehearsal plus one fail-fast/no-retry,
+named-verified **78/78 Compendium → zero-finding Slice → 12/12 Glass / 104/104 controls** chain.
+That successor and its five deterministic carriers are local evidence only.
 
 All fourteen PR #35 attempts are consumed and their labels are absent. No new hosted attempt, PR
 mutation, merge, release, version bump, preview, publication or deployment is authorized.

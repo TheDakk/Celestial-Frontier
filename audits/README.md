@@ -10,7 +10,7 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 Capture-focus / Glass-chronology stop and bounded repair
+### Current PR #35 Capture-focus / Glass-chronology stop, bounded repair and exact local successor
 
 PR #35 run `33694235427`, attempt 1, consumed the exact one-time `test-battery` authority for head
 `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
@@ -39,13 +39,26 @@ scroll, hit-test and focus atomically, and rejects a cross-epoch carrier as inst
 before product assessment. It adds no job, retry, timeout, browser pin or control. The complete
 browser-free `develop` profile passes **265/265 files, 2,749 passed / 1 skipped**, all three
 TypeScript programs, the **34-source** art audit with zero findings, **1,014/1,014** live route keys
-with zero dead, **1,010/1,010** species, and **454** declared fields with zero unread or inert. A
-clean signed source and unchanged-source Compendium → Slice → full Glass local certificate remain
-**pending**; no browser-chain green successor is claimed.
+with zero dead, **1,010/1,010** species, and **454** declared fields with zero unread or inert.
+Exact clean SSH-signed source `7cfb42d993778211e9c27b671e6b4fc9b891ff95`, tree
+`090d2e4827b0eeeec334410ec9563dc778559dd0`, then passed the one-viewport repaired-path diagnostic
+and one unchanged-source, fail-fast/no-retry, named-verified **78/78 Compendium → zero-finding
+Slice → 12/12 Glass / 104/104 controls** chain. All five local reports/logs below are retained;
+this creates no hosted authority.
 
+The exact local run IDs/timings are preflight
+`20260903-pr35-chronology-7cfb42d99377-glass-preflight` / **12,695 ms**, Compendium
+`20260903012535851-93600-5d61fc93fc` / **63,955 ms**, Slice
+`20260903012714531-93918-edfead967720` / **372,125 ms**, and Glass
+`20260903013357550-94309-6b031e425f5d` / **115,254 ms**. Every named verifier passed and no stage
+retried. The signed evidence/docs descendant containing this index passes the final hermetic
+tracked-input `develop` profile; its own hash is intentionally not self-embedded.
+
+`ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.md` owns the exact local
+PASS chain, live repaired-path replay and five-carrier ledger.
 `ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_AND_REPAIR_20260903_6B59B45.md` owns the
-complete source, timing, classification, repair and authority record. Its two permanent hosted
-carriers preserve both halves of the contradiction:
+complete hosted source, timing, classification, repair and authority record. Its two permanent
+hosted carriers preserve both halves of the contradiction:
 
 - `ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_EARLY_PREFLIGHT_PASS_20260903_6B59B45.json.gz` — raw
   **83,698 bytes**, SHA-256
@@ -58,8 +71,36 @@ carriers preserve both halves of the contradiction:
   **11,188 bytes**, SHA-256
   `395172d82a8cdb7f05372c60b64ceeb93370a4013561ec7cb3ba9995ec25035f`.
 
-Both carriers pass gzip integrity, raw-hash reproduction and independent deterministic
-recompression. Temporary GitHub artifact `9873073563` has archive digest
+The exact signed local successor's noncertifying preflight and four admission-chain carriers are:
+
+- `ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PREFLIGHT_PASS_20260903_7CFB42D.json.gz` —
+  raw **92,314 bytes**, SHA-256
+  `89c2c3692da5462e09bce83e3af538543157f469b8d1569a21ef308540c92e0f`; deterministic gzip
+  **10,743 bytes**, SHA-256
+  `c1d85f008eabd4be9903285d9b91713068555bb59be6fd27124d320c97f6de99`.
+- `ARC1A_COMPENDIUM_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.json.gz` — raw
+  **10,840,458 bytes**, SHA-256
+  `d1e94fd3288cf0a9f8ea194c374d1ae721f1e6f5d53118a1168c5a5192424c38`; deterministic gzip
+  **452,570 bytes**, SHA-256
+  `c24be9275ee817534a1aecee1b7f88cbbc20573650c1d8712fc710db91313b4b`.
+- `ARC4_SLICE_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.json.gz` — raw
+  **6,126 bytes**, SHA-256
+  `26b7674234824abfa7fb7bb060f083d8044c59561d94b0740c820173681db2d4`; deterministic gzip
+  **1,960 bytes**, SHA-256
+  `9b8c8a794c742bae49c0afe21bcf43bb1d104b335f9940d88e2f1f717d042c22`.
+- `ARC4_SLICE_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.log.gz` — raw
+  **6,950 bytes**, SHA-256
+  `2890a533c21a13e575719eaf23ff00af5b18f7b9f59009b5e717421995096833`; deterministic gzip
+  **3,289 bytes**, SHA-256
+  `10332beca8b37011e23aa7269c5c81427a0843759f462be272018226552d1ddb`.
+- `ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.json.gz` — raw
+  **949,799 bytes**, SHA-256
+  `bad65b057392096c4c66ef0fb18506be97eafc4a1876893ad3ec7206ce9e66ae`; deterministic gzip
+  **83,092 bytes**, SHA-256
+  `dce0612e617c12afe6addd6b29a60b89f5fab72209d0e3d3b3d83a2c08e2f262`.
+
+All seven current-section carriers pass gzip integrity, raw-hash reproduction and independent
+deterministic recompression. Temporary GitHub artifact `9873073563` has archive digest
 `sha256:56e88b3609f013ce4fd9773efebd0d5ecfb01cc23dd76219f305ad89b93d9a44` and expires
 `2026-09-17T00:30:04Z`. The exact authorization is consumed, the label is absent, PR #35 remains
 Ready/open/unmerged, `develop` is unchanged, and no retry or new hosted authority exists.

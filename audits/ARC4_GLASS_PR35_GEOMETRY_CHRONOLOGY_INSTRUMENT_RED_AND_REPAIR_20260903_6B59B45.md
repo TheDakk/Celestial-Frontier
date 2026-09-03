@@ -124,6 +124,75 @@ unread or inert. Its exact clean signed source and unchanged-source Compendium �
 local certificate are still **pending**. No browser-chain or hosted green certificate is claimed
 here.
 
+## Exact clean local successor — 7cfb42d
+
+That checkpoint is superseded only for current local verification by exact clean SSH-signed source
+`7cfb42d993778211e9c27b671e6b4fc9b891ff95`, tree
+`090d2e4827b0eeeec334410ec9563dc778559dd0`. The immutable hosted PASS/red pair and corrected
+classification above do not change.
+
+The signed source passed:
+
+- focused repair/negative-control coverage **53/53** and Glass Matrix selftest;
+- the complete and hermetic tracked-input `develop` profile at **265/265 files, 2,749 passed / 1
+  skipped**, all three TypeScript programs, 34 clean art sources, 1,014/1,014 live route keys with
+  zero dead, 1,010/1,010 species, and 454 declared fields with zero unread or inert;
+- browser-CDP, browser-path, Compendium browser-preflight and all **618** Compendium instrument
+  controls, followed by live Edge `152.0.4191.53` / CDP `1.3` preflight; and
+- noncertifying small-phone diagnostic
+  `20260903-pr35-chronology-7cfb42d99377-glass-preflight` in **12,695 ms**, with one viewport,
+  **95/104** controls, nine lawful targeted omissions and zero findings, instrument failures,
+  blocked controls or retries.
+
+One unchanged-source, fail-fast/no-retry admission chain then passed once:
+
+- Compendium `20260903012535851-93600-5d61fc93fc`: **78/78**, zero findings/blocked outcomes,
+  **63,955 ms**, named verification PASS;
+- Slice `20260903012714531-93918-edfead967720`: zero findings/scopes, ten screenshots,
+  **372,125 ms**, named verification PASS; and
+- exact-Slice-bound Glass `20260903013357550-94309-6b031e425f5d`: **12/12** viewports,
+  **12/12** reload rows and **104/104** controls, zero findings, instrument failures,
+  blocked/omitted controls or retries, **115,254 ms**, named verification PASS.
+
+Independent final artifact review confirmed the repaired path genuinely executed. Small-phone
+Sample alone required the forced rerender: one document token remained exact across initial,
+quiescence, pre, resume and post evidence; the heartbeat began running, stopped and settled,
+resumed, completed exactly one cycle and remained running; prior Scavenge focus and ancestor scroll
+`2536` survived; the old node disconnected; the replacement was acquired and target-ready before
+and after; final Sample was focused with its centre point at y `173.171875`; and action/Close
+focus, Close scroll settlement and all coherence checks were green. Recomputed current product,
+coherence and heartbeat assessors matched all 12 stored viewport results.
+
+Five deterministic `gzip -n -9` carriers preserve the diagnostic and certificate chain. Every
+carrier passes `gzip -t`, reproduces its raw SHA-256 after decompression and reproduces its stored
+gzip SHA-256 after independent deterministic recompression:
+
+- `ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PREFLIGHT_PASS_20260903_7CFB42D.json.gz` —
+  raw **92,314 bytes**, SHA-256
+  `89c2c3692da5462e09bce83e3af538543157f469b8d1569a21ef308540c92e0f`; gzip **10,743 bytes**,
+  SHA-256 `c1d85f008eabd4be9903285d9b91713068555bb59be6fd27124d320c97f6de99`;
+- `ARC1A_COMPENDIUM_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.json.gz` — raw
+  **10,840,458 bytes**, SHA-256
+  `d1e94fd3288cf0a9f8ea194c374d1ae721f1e6f5d53118a1168c5a5192424c38`; gzip **452,570 bytes**,
+  SHA-256 `c24be9275ee817534a1aecee1b7f88cbbc20573650c1d8712fc710db91313b4b`;
+- `ARC4_SLICE_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.json.gz` — raw
+  **6,126 bytes**, SHA-256
+  `26b7674234824abfa7fb7bb060f083d8044c59561d94b0740c820173681db2d4`; gzip **1,960 bytes**,
+  SHA-256 `9b8c8a794c742bae49c0afe21bcf43bb1d104b335f9940d88e2f1f717d042c22`;
+- `ARC4_SLICE_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.log.gz` — raw **6,950
+  bytes**, SHA-256 `2890a533c21a13e575719eaf23ff00af5b18f7b9f59009b5e717421995096833`;
+  gzip **3,289 bytes**, SHA-256
+  `10332beca8b37011e23aa7269c5c81427a0843759f462be272018226552d1ddb`; and
+- `ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.json.gz` — raw
+  **949,799 bytes**, SHA-256
+  `bad65b057392096c4c66ef0fb18506be97eafc4a1876893ad3ec7206ce9e66ae`; gzip **83,092 bytes**,
+  SHA-256 `dce0612e617c12afe6addd6b29a60b89f5fab72209d0e3d3b3d83a2c08e2f262`.
+
+The signed evidence/docs descendant containing these carriers passes the final hermetic
+tracked-input `develop` profile; its own commit hash is intentionally not self-embedded. This
+local proof authorizes no hosted run, push, label, PR mutation, merge, release, publication or
+deployment.
+
 ## Permanent retained carriers
 
 The temporary GitHub `battery-evidence` artifact is ID `9873073563`, **9,778,683 bytes**, archive
