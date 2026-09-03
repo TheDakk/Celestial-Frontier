@@ -30,8 +30,11 @@ there is no retry, job, shard, browser pin or gameplay change.
 Focused closure passes **73/73 tests**, all TypeScript programs and every relevant instrument
 selftest, including the Actions policy's **66** fail-closed controls. The consolidated
 browser-free `develop` profile passes **268/268 files, 2,785 passed / 1 skipped**; clean-source
-browser evidence remains pending and is recorded in the current roadmap when complete. Nothing in
-this local batch is pushed or hosted. A future attempt still requires exact new head/base/workflow
+implementation checkpoint `f348b249…` then passed Compendium **78/78** with named verification and
+nine separately immutable targeted Glass rows with zero findings/instrument failures. Exact run
+IDs, timings and report digests are in the audit. Those rows are noncertifying and do not replace
+the Slice-bound 12-row matrix. Nothing in this local batch is pushed or hosted. A future attempt
+still requires exact new head/base/workflow
 authority, with a maximum of **122 total runner-minutes** (2 authorization + 120 battery) and no
 retry.
 

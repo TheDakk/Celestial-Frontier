@@ -15,7 +15,10 @@
 > Capture pools, odds, SessionRNG, hit/miss spending, Biosphere Yield, ecology, ownership,
 > creature/genome identity, rewards, persistence/save schema and card structure are unchanged.
 > Focused closure passes **73/73** and the consolidated browser-free `develop` profile passes
-> **268/268 files, 2,785 passed / 1 skipped**; clean-source browser evidence remains pending.
+> **268/268 files, 2,785 passed / 1 skipped**. Clean implementation checkpoint `f348b249…` passed
+> Compendium **78/78** with named verification and nine requested immutable targeted Glass rows
+> with zero findings/instrument failures. Those local diagnostics are noncertifying and do not
+> replace the full Slice-bound Glass chain.
 >
 > **2026-09-03 UTC historical predecessor Capture semantic-focus evidence overlay (matches current local code):**
 > Capture mechanics remain unchanged. An ordinary authority heartbeat can replace the open Tame /

@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-03 UTC · A922 FORENSIC RISKS CLOSED LOCALLY · BROWSER-FREE GREEN · CLEAN-SOURCE EVIDENCE PENDING · HOSTED AUTHORITY ABSENT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-03 UTC · A922 FORENSIC RISKS CLOSED LOCALLY · CLEAN-SOURCE LOCAL EVIDENCE GREEN · HOSTED AUTHORITY ABSENT ◀◀◀
 
 ### Exact current boundary
 
@@ -25,10 +25,14 @@ the archive verbatim and refresh this handoff in place.
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, tracking
   **origin/openai/mac**. `develop` remains
   **7a9f4c1370dd84292388d718c38ff34214f6203b**.
-- Exact pushed parent is **a922c4b74502fc4093ca103d46a189396cad1e8f**. The current local
-  successor is intentionally uncommitted while its final verification/documentation batch is in
-  progress. Preserve every byte; do not rebase, amend, reset, overwrite or copy it to another
-  worktree.
+- Exact pushed head remains **a922c4b74502fc4093ca103d46a189396cad1e8f**. Exact local
+  browser-tested implementation checkpoint is
+  **f348b249c69fcbecc25cf7a8dd54bd9feb09cab5**, parent `a922c4b…`, tree
+  `5f9bae1466f84366e3801832738d76148be9d159`. The current local head is its signed
+  documentation/evidence-only descendant; branch state is clean and **ahead 2**. Preserve every
+  byte; do not rebase, amend, reset, overwrite or copy it to another worktree. Both local commit
+  objects contain SSH signatures; local identity verification is unavailable because this clone
+  has no `gpg.ssh.allowedSignersFile`, so do not overstate that fact as signer-identity proof.
 - Nick authorized implementing the attached a922 forensic recommendations locally. This does
   **not** authorize a push, label, workflow dispatch, retry, PR mutation, merge, release, version
   bump, publication or deployment. PR #35 remains Ready/open/unmerged; `actions-budget-approved`
@@ -101,24 +105,34 @@ the archive verbatim and refresh this handoff in place.
 - Consolidated browser-free `develop` profile passes **268/268 files, 2,785 passed / 1 skipped**,
   all three TypeScript programs, art audit, override audit and specification audit. Independent
   carrier review and producer-reference audit are **CLEAR**.
-- Clean-source browser rows remain pending. No hosted result is claimed.
+- Clean committed `f348b249…` passed browser preflight under Edge `152.0.4191.53`, CDP `1.3`,
+  capability contract
+  `35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341`.
+- Compendium run `20260903163424801-81698-61f9306500` passed **78/78** in **70,593 ms**, with
+  zero blocked outcomes/findings, exact start/end source identity, report SHA-256
+  `8dcaf50316fa93f50f34bb7c2047890606931937de47f4f0b8c9e00386a48491`, and a green named
+  verifier.
+- Nine separately immutable, noncertifying Glass diagnostics passed once/no-retry on the same
+  source: `large-phone`, `phone-landscape`, both tablets, `laptop-720p`, `desktop`,
+  `desktop-1080p`, `ultrawide`, and `desktop-8k`. Every row has zero product findings and zero
+  instrument failures. Their exact IDs, durations and SHA-256 digests are preserved in
+  `audits/PR35_A922_FORENSIC_PREVENTION_REPAIR_20260903.md`.
+- This is local diagnostic closure, **not** a full Slice-bound 12-row Glass certificate and not a
+  hosted result.
 
-### Exact remaining local sequence
+### Exact remaining sequence
 
-1. Create one signed local implementation/docs checkpoint. On that unchanged clean commit, run
-   Compendium once with named verification, then targeted Glass `large-phone` plus the eight
-   suffix rows (`phone-landscape`, both tablets, `laptop-720p`, three desktop widths and
-   `desktop-8k`) sequentially/no-retry, stopping on first red.
-2. Record exact local evidence in this handoff/audit, create one signed evidence-doc descendant,
-   and run the final browser-free profile. Stop `caffeinate` when local closure is complete.
-3. Do **not** push or run Actions. A future hosted attempt needs a new exact workflow/head/base,
+1. No implementation, focused check, local Compendium run or requested targeted Glass row remains
+   in this forensic batch. The final browser-free profile is green on the signed documentation
+   descendant; `caffeinate` is stopped at handoff.
+2. Do **not** push or run Actions. A future hosted attempt needs a new exact workflow/head/base,
    `actions-budget-approved`, maximum **122 total runner-minutes** (2 authorization + 120 battery),
    no-retry authorization. Merge PR #35 only if that exact attempt is terminal green.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex:** remain in this worktree until the local signed/evidence sequence above is
-  complete. No GitHub write is authorized.
+- **OpenAI/Codex:** local work is complete and clean on the signed evidence descendant, two commits
+  ahead of `origin/openai/mac`. No GitHub write is authorized.
 - **PR #35:** base **develop**, source **openai/mac**.
   - **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
   - **Description:** “Completes the established v2 roadmap campaign without recreating gameplay

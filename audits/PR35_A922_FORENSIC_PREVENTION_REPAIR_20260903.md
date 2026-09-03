@@ -142,8 +142,49 @@ bundle. Recomputing the source graph produced Compendium producer authority
 remains `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`; no numeric ceiling,
 fixed-ruler input, outcome inventory or historical sample changed. Focused authority coverage then
 passed **32/32**, and the consolidated profile passed **268/268 files, 2,785 passed / 1 skipped**,
-all three TypeScript programs, art audit, override audit and specification audit. Clean-source
-browser diagnostics are recorded in the live roadmap once complete.
+all three TypeScript programs, art audit, override audit and specification audit.
+
+## Clean-source local browser evidence
+
+The implementation and its first documentation checkpoint are committed as
+`f348b249c69fcbecc25cf7a8dd54bd9feb09cab5`, parent `a922c4b…`, tree
+`5f9bae1466f84366e3801832738d76148be9d159`. The commit object contains an SSH signature. This
+clone has no configured `gpg.ssh.allowedSignersFile`, so local Git cannot map that signature to an
+allowed identity; the audit records the signed object without claiming identity verification.
+
+All browser work below ran once/no-retry from that unchanged clean commit with Microsoft Edge
+`152.0.4191.53`, CDP `1.3`. Browser preflight passed capability contract SHA-256
+`35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341`.
+
+Compendium run `20260903163424801-81698-61f9306500` passed all **78/78** expected outcomes in
+**70,593 ms**, with zero blocked outcomes and zero findings. Begin/end source both bind exact
+commit `f348b249…`, branch `openai/mac`, committed state and empty-status SHA-256
+`e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855`. The current report
+SHA-256 is `8dcaf50316fa93f50f34bb7c2047890606931937de47f4f0b8c9e00386a48491`; the named
+`--verify-run` invocation passed. Observed measurement and producer authorities exactly match the
+tracked values above.
+
+The requested Glass follow-up was deliberately diagnostic rather than certifying. Each row below
+has `scope=targeted-diagnostic`, `schema=cf-v2-glassmatrix/v2`, exact matching start/end commit,
+terminal PASS, zero findings and zero instrument failures. Each command exited zero only after the
+report's post-write verifier accepted it.
+
+| Viewport | Immutable run ID | Viewport / report ms | Report SHA-256 |
+|---|---|---:|---|
+| `large-phone` | `20260903-pr35-forensic-f348b249c69f-large-phone` | 12,891 / 15,510 | `a042c7fb7a86c49e023e955780fe6f3a39be42c714b31aa2558a7e3d2662ed20` |
+| `phone-landscape` | `20260903-pr35-forensic-f348b249c69f-phone-landscape` | 13,004 / 15,959 | `b083c18d90b5df594ba1403eedc96ad9e401190f99e03521412a4fe18b6bced2` |
+| `tablet-portrait` | `20260903-pr35-forensic-f348b249c69f-tablet-portrait` | 12,358 / 14,965 | `c0f9bdafe9768cf165e5c2f0fe28980df6b6a7e84dcb40e64c00a2e0ba4f8391` |
+| `tablet-landscape` | `20260903-pr35-forensic-f348b249c69f-tablet-landscape` | 12,231 / 14,871 | `7dafd1020b887e5349f7eb1fc9a23691a93cab6f8981cdbe7cd916cc1e2607d1` |
+| `laptop-720p` | `20260903-pr35-forensic-f348b249c69f-laptop-720p` | 11,347 / 14,142 | `e6e0d85c27bd9f24cd5d7248085723a6c835395a2f91ad1465f8e5a2409edf0a` |
+| `desktop` | `20260903-pr35-forensic-f348b249c69f-desktop` | 11,854 / 14,678 | `a3daa5c7d6284b908eeaa06d85c44d11e576e978273d5a3a103a3cb8a192bbbe` |
+| `desktop-1080p` | `20260903-pr35-forensic-f348b249c69f-desktop-1080p` | 11,314 / 13,909 | `712a98bef069f36a7846b2553301be2356b876b6f33c22813ec183fd2d3a69d8` |
+| `ultrawide` | `20260903-pr35-forensic-f348b249c69f-ultrawide` | 11,069 / 14,065 | `3f904bad8559a2b41cbcb86fb2ae935cce1089056ea2629a1dacf6795197c584` |
+| `desktop-8k` | `20260903-pr35-forensic-f348b249c69f-desktop-8k` | 11,749 / 14,177 | `08232e9d53ecf97b3b5213638c789f1724fb9f6635631da06b4bf09a5db1fa14` |
+
+These nine rows do not claim the omitted `small-phone`, `compact-phone`, or `primary-phone` rows,
+or the full 12-viewport matrix; they do not have a Slice predecessor and cannot authorize Glass
+certification, Recovery, hosted success or merge. They close only the bounded local forensic
+follow-up Nick requested.
 
 ## Future hosted boundary
 
