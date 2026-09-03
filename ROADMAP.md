@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-03 UTC · A922 FORENSIC RISKS CLOSED LOCALLY · CLEAN-SOURCE LOCAL EVIDENCE GREEN · HOSTED AUTHORITY ABSENT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-03 UTC · A922 FORENSIC RISKS CLOSED · OPENAI/MAC PUSHED FOR CLAUDE REVIEW · HOSTED BATTERY AUTHORITY ABSENT ◀◀◀
 
 ### Exact current boundary
 
@@ -25,18 +25,21 @@ the archive verbatim and refresh this handoff in place.
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, tracking
   **origin/openai/mac**. `develop` remains
   **7a9f4c1370dd84292388d718c38ff34214f6203b**.
-- Exact pushed head remains **a922c4b74502fc4093ca103d46a189396cad1e8f**. Exact local
-  browser-tested implementation checkpoint is
+- The pushed review payload now includes exact browser-tested implementation checkpoint
   **f348b249c69fcbecc25cf7a8dd54bd9feb09cab5**, parent `a922c4b…`, tree
-  `5f9bae1466f84366e3801832738d76148be9d159`. The current local head is its signed
-  documentation/evidence-only descendant; branch state is clean and **ahead 2**. Preserve every
-  byte; do not rebase, amend, reset, overwrite or copy it to another worktree. Both local commit
-  objects contain SSH signatures; local identity verification is unavailable because this clone
-  has no `gpg.ssh.allowedSignersFile`, so do not overstate that fact as signer-identity proof.
-- Nick authorized implementing the attached a922 forensic recommendations locally. This does
-  **not** authorize a push, label, workflow dispatch, retry, PR mutation, merge, release, version
-  bump, publication or deployment. PR #35 remains Ready/open/unmerged; `actions-budget-approved`
-  is absent.
+  `5f9bae1466f84366e3801832738d76148be9d159`, and signed evidence/docs checkpoint
+  **1b8467f5d1ff9d3a8430b432c926c6fa0fe395b8**, parent `f348b249…`, tree
+  `143e8730503bee30633c55e4d06772f803e8d9b6`. This handoff-only descendant is also pushed;
+  `git ls-remote origin refs/heads/openai/mac` is authority for its non-self-embedded SHA. Local
+  `openai/mac` is clean and synchronized with `origin/openai/mac`. Preserve every byte; do not
+  rebase, amend, reset, overwrite or copy it to another worktree. The two named checkpoint objects
+  contain SSH signatures; local identity verification is unavailable because this clone has no
+  `gpg.ssh.allowedSignersFile`, so do not overstate that fact as signer-identity proof.
+- Nick separately authorized the branch-only push so Claude can review. SSH authenticated as
+  `TheDakk`; exact origin is `git@github.com:TheDakk/Celestial-Frontier.git`; the push was a normal
+  fast-forward. This did **not** authorize a label, workflow dispatch, retry, PR mutation, merge,
+  release, version bump, publication or deployment. PR #35 remains Ready/open/mergeable/unmerged;
+  `actions-budget-approved` is absent.
 - External input: `/Users/nick/Downloads/PR35_a922c4b_forensic_review.md`, 20,310 bytes, SHA-256
   `30dda62c165748eae0fa9dd2c76e06739efde3f6de32a5c0fa406d06c1303264`. Current audit:
   `audits/PR35_A922_FORENSIC_PREVENTION_REPAIR_20260903.md`.
@@ -124,15 +127,16 @@ the archive verbatim and refresh this handoff in place.
 
 1. No implementation, focused check, local Compendium run or requested targeted Glass row remains
    in this forensic batch. The final browser-free profile is green on the signed documentation
-   descendant; `caffeinate` is stopped at handoff.
-2. Do **not** push or run Actions. A future hosted attempt needs a new exact workflow/head/base,
+   descendant; `caffeinate` is stopped at handoff. Claude may now inspect PR #35 / remote
+   `openai/mac` read-only without copying files or treating it as merged `develop`.
+2. Do **not** label or run Actions. A future hosted attempt needs a new exact workflow/head/base,
    `actions-budget-approved`, maximum **122 total runner-minutes** (2 authorization + 120 battery),
    no-retry authorization. Merge PR #35 only if that exact attempt is terminal green.
 
 ### Paired Git/Claude handoff
 
-- **OpenAI/Codex:** local work is complete and clean on the signed evidence descendant, two commits
-  ahead of `origin/openai/mac`. No GitHub write is authorized.
+- **OpenAI/Codex:** completed, signed review payload and current handoff are pushed; local
+  `openai/mac` is clean and synchronized with `origin/openai/mac`.
 - **PR #35:** base **develop**, source **openai/mac**.
   - **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
   - **Description:** “Completes the established v2 roadmap campaign without recreating gameplay
@@ -142,9 +146,11 @@ the archive verbatim and refresh this handoff in place.
     Glass v2 PASS consumers independently replay deep evidence; retains mandatory hard-fail
     artifact upload; adds no retry, browser pin, job, shard or gameplay redesign; and records the
     complete local successor evidence.”
-- **Anthropic/Claude Code:** do not open/synchronize yet. These local bytes are not in `develop`.
-  After a future terminal-green exact PR #35 run and merge, Claude/Fable may start the requested
-  whole-plan polish review from a clean `anthropic/*` branch based on `origin/develop`.
+- **Anthropic/Claude Code:** Nick may open Claude now for the requested independent read-only review
+  of PR #35 / `origin/openai/mac`. The bytes are not in `develop`; Claude must not edit the
+  OpenAI-owned branch or manually copy them. After a future terminal-green exact PR #35 run and
+  merge, Claude/Fable may start implementation/polish work from a clean `anthropic/*` branch based
+  on refreshed `origin/develop`.
 - **Release:** `develop`, `main` and the live site are unchanged. No release/deploy occurred.
 - **Actions:** mode **UNFROZEN**, repository public while verified, private fallback cap **3,000**,
   and zero currently authorized hosted attempts.

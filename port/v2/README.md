@@ -35,11 +35,13 @@
 > `main.ts` evidence change refreshed only Compendium producer authority to
 > `ad74e459e00a12c516fc7fbfc17122cb53faa14ef89bdbe5d4e6776d658cb907`; measurement authority
 > remains `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`, and no ruler,
-> ceiling, outcome or historical sample changed. No gameplay, UI, graphics, audio, save, release,
-> push, hosted run or merge follows. Clean committed implementation checkpoint `f348b249…`
+> ceiling, outcome or historical sample changed. No gameplay, UI, graphics, audio, save or release
+> change follows. Clean committed implementation checkpoint `f348b249…`
 > passed Compendium **78/78** with named verification and nine immutable targeted Glass rows with
 > zero findings/instrument failures under Edge `152.0.4191.53` / CDP `1.3`. Those diagnostics are
-> not a Slice-bound full Glass certificate. Exact IDs, timings, digests and rationale are in
+> not a Slice-bound full Glass certificate. Nick later authorized a branch-only handoff push for
+> Claude review; no approval label, hosted run, merge, release or deployment followed. Exact IDs,
+> timings, digests and rationale are in
 > `../../audits/PR35_A922_FORENSIC_PREVENTION_REPAIR_20260903.md`.
 
 > **2026-09-03 UTC historical predecessor native-Tab identity / terminal-diagnostic overlay (matches current local

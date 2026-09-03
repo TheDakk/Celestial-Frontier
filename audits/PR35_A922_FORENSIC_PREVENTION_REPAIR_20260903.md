@@ -8,8 +8,9 @@
 **External review input:** `/Users/nick/Downloads/PR35_a922c4b_forensic_review.md`, 20,310 bytes,
 SHA-256 `30dda62c165748eae0fa9dd2c76e06739efde3f6de32a5c0fa406d06c1303264`
 
-**Result:** supported risks repaired locally; no push, label, hosted run, PR mutation, merge,
-release, version bump, publication or deployment
+**Result:** supported risks repaired and locally verified; a later separately authorized
+branch-only handoff published the signed payload on `openai/mac` for Claude review, with no label,
+hosted run, PR mutation, merge, release, version bump, publication or deployment
 
 ## Authority and scope
 
@@ -18,6 +19,11 @@ authorization covers local code, controls, documentation, local verification and
 checkpoints only. It does not authorize a GitHub write or consume a hosted attempt. The historical
 fifteenth PR #35 run and its 92-minute authorization remain immutable; the proposed successor
 envelope is a future maximum, not retroactive authority.
+
+After local closure, Nick separately authorized the normal branch-only push needed for Claude's
+independent review. That later authority published the exact signed repair/evidence history and
+current handoff to `origin/openai/mac`; it did not authorize `actions-budget-approved`, a workflow
+dispatch, PR metadata change, merge, release or deployment.
 
 The repair is confined to workflow orchestration and evidence. It does not redesign or change
 Capture, Engineering, Inventory, Compendium, creatures, plants, biomes, Guardians, loot, combat,

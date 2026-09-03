@@ -2,8 +2,8 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-03 UTC): a922 forensic prevention repair is local; no hosted
-attempt is authorized.** The external review of pushed head
+**Current branch-handoff state (2026-09-03 UTC): a922 forensic prevention repair is pushed on
+`openai/mac` for Claude review; no hosted attempt is authorized.** The external review of pushed head
 `a922c4b74502fc4093ca103d46a189396cad1e8f` correctly found inadequate margin in the hosted
 envelope, a late first execution of the `large-phone` failure class and one remaining stale
 Shipyard disclosure identity in Glass/Slice evidence. It overstated full Glass's start as minute
@@ -33,8 +33,10 @@ profile passes **268/268 files, 2,785 passed / 1 skipped**. Clean-source browser
 locally on implementation checkpoint `f348b249…`: Compendium passed **78/78** with named
 verification and nine immutable targeted Glass rows passed with zero findings/instrument failures.
 Those rows are explicitly noncertifying and do not replace the exact-Slice-bound 12-row matrix.
-Nothing is pushed, labelled, dispatched or merged. Any future exact attempt needs a new
-head/base/workflow authorization for at
+Nick subsequently authorized one branch-only handoff push. The signed implementation/evidence
+payload and current handoff are synchronized on `origin/openai/mac`; PR #35 is Ready/open,
+mergeable and unmerged. No approval label was applied, no hosted job was dispatched, and nothing
+was merged. Any future exact attempt needs a new head/base/workflow authorization for at
 most **122 total runner-minutes** (2 authorization + 120 battery), no retry.
 
 **Preserved predecessor local state (2026-09-03 UTC): fifteenth PR #35 attempt consumed at Glass; native-Tab

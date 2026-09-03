@@ -33,8 +33,10 @@ browser-free `develop` profile passes **268/268 files, 2,785 passed / 1 skipped*
 implementation checkpoint `f348b249…` then passed Compendium **78/78** with named verification and
 nine separately immutable targeted Glass rows with zero findings/instrument failures. Exact run
 IDs, timings and report digests are in the audit. Those rows are noncertifying and do not replace
-the Slice-bound 12-row matrix. Nothing in this local batch is pushed or hosted. A future attempt
-still requires exact new head/base/workflow
+the Slice-bound 12-row matrix. Nick subsequently authorized a branch-only handoff push, so the
+signed repair/evidence payload is now on `origin/openai/mac` for Claude review. No hosted battery,
+PR merge, release or deployment occurred. A future attempt still requires exact new
+head/base/workflow
 authority, with a maximum of **122 total runner-minutes** (2 authorization + 120 battery) and no
 retry.
 
