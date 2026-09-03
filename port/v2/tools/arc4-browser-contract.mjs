@@ -14,6 +14,10 @@ export const ARC4_CAPTURE_UI_EVIDENCE_SCHEMA =
   'cf-v2-slice-arc4-capture-ui-evidence/v1';
 export const ARC4_CAPTURE_GEOMETRY_EVIDENCE_SCHEMA =
   'cf-v2-glass-arc4-capture-geometry/v1';
+export const ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA =
+  'cf-v2-glass-arc4-control-geometry/v1';
+export const ARC4_HEARTBEAT_RERENDER_EVIDENCE_SCHEMA =
+  'cf-v2-glass-arc4-heartbeat-rerender/v1';
 export const ARC4_CAPTURE_LAYOUT_COORDINATE_SPACE =
   'viewport-plus-ancestor-scroll-offset/v1';
 export const ARC4_STALE_FAULT_CAPTURE_SCHEMA =
@@ -5785,12 +5789,101 @@ const exactOwnedPoint = (point, verb = null, close = false) => record(point)
   && point.tag === 'BUTTON' && point.close === close
   && (close ? point.verb === null : point.verb === verb);
 
-const stableOwnedPoint = (before, after, verb = null, close = false) => (
+const pointAtRectCenter = (point, rect, tolerance = 0.75) => record(point)
+  && validRect(rect) && Number.isFinite(point.x) && Number.isFinite(point.y)
+  && point.x >= rect.left - tolerance && point.x <= rect.right + tolerance
+  && point.y >= rect.top - tolerance && point.y <= rect.bottom + tolerance
+  && Math.abs(point.x - ((rect.left + rect.right) / 2)) <= tolerance
+  && Math.abs(point.y - ((rect.top + rect.bottom) / 2)) <= tolerance;
+
+const stableOwnedPoint = (before, after, verb = null, close = false, rect = null) => (
   exactOwnedPoint(before, verb, close) && exactOwnedPoint(after, verb, close)
   && Math.abs(before.x - after.x) <= 0.75 && Math.abs(before.y - after.y) <= 0.75
+  && pointAtRectCenter(before, rect) && pointAtRectCenter(after, rect)
 );
 
+const atomicGeometryWitness = (value, rect) => {
+  const rectPresent = validRect(rect);
+  const beforePresent = record(value?.beforePoint)
+    && Number.isFinite(value.beforePoint.x) && Number.isFinite(value.beforePoint.y);
+  const afterPresent = record(value?.afterRenderPoint)
+    && Number.isFinite(value.afterRenderPoint.x) && Number.isFinite(value.afterRenderPoint.y);
+  /* A wholly absent target remains product evidence for the geometry assessor.
+     A partially populated or cross-epoch target is an instrument contradiction:
+     its points cannot truthfully describe the retained rectangle. */
+  if (!rectPresent && !beforePresent && !afterPresent) return true;
+  return rectPresent && beforePresent && afterPresent
+    && pointAtRectCenter(value.beforePoint, rect)
+    && pointAtRectCenter(value.afterRenderPoint, rect);
+};
+
+export const assessArc4CaptureGeometryEvidenceCoherence = ({ controls, close } = {}) => {
+  const rows = Array.isArray(controls) ? controls : [];
+  const checks = {
+    carriers: Array.isArray(controls) && record(close)
+      && rows.every((control) => control?.captureSchema
+        === ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA)
+      && close?.captureSchema === ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA,
+    controlsAtomic: rows.every((control) => atomicGeometryWitness(
+      control, control?.buttonRect,
+    )),
+    closeAtomic: atomicGeometryWitness(close, close?.rect),
+  };
+  return assessment('Arc 4 capture geometry evidence coherence', checks);
+};
+
+export const assessArc4HeartbeatRerenderEvidence = (value = {}) => {
+  if (value?.required !== true) {
+    return assessment('Arc 4 heartbeat rerender evidence', {
+      captured: value?.schema === ARC4_HEARTBEAT_RERENDER_EVIDENCE_SCHEMA,
+      scoped: value?.required === false,
+    });
+  }
+  const initial = value?.initial;
+  const pre = value?.pre;
+  const post = value?.post;
+  const quiescence = value?.quiescence;
+  const resume = value?.resume;
+  const cleanup = value?.cleanup;
+  const documentToken = value?.documentToken;
+  const checks = {
+    captured: value?.schema === ARC4_HEARTBEAT_RERENDER_EVIDENCE_SCHEMA,
+    armedWhileRunning: value?.seamsAvailable === true
+      && initial?.heartbeatRunning === true
+      && value?.quiesceAttempted === true,
+    quiesced: quiescence?.schema === 'cf-v2-f4-heartbeat-quiescence/v1'
+      && quiescence?.wasRunning === true
+      && quiescence?.stopped === true
+      && quiescence?.cycleSettled === true
+      && pre?.heartbeatRunning === false
+      && value?.priorFocusArmed === true
+      && pre?.focusVerb === 'scavenge',
+    resumed: resume?.schema === 'cf-v2-f4-heartbeat-resume/v1'
+      && resume?.running === true,
+    cycleCompleted: value?.runCompleted === true,
+    remainedRunning: post?.heartbeatRunning === true,
+    documentIdentity: typeof documentToken === 'string' && documentToken.length > 0
+      && initial?.documentToken === documentToken
+      && quiescence?.documentToken === documentToken
+      && pre?.documentToken === documentToken
+      && resume?.documentToken === documentToken
+      && post?.documentToken === documentToken,
+    replacementObserved: value?.oldDisconnected === true
+      && value?.replacementAcquired === true,
+    noCollectorError: value?.error === null,
+    cleanupSafe: cleanup?.error === null && (value?.error === null
+      ? cleanup?.attempted === false && cleanup?.receipt === null
+      : cleanup?.attempted === false && cleanup?.receipt === null
+        || cleanup?.attempted === true
+          && cleanup?.receipt?.schema === 'cf-v2-f4-heartbeat-resume/v1'
+          && cleanup?.receipt?.documentToken === documentToken
+          && cleanup?.receipt?.running === true),
+  };
+  return assessment('Arc 4 heartbeat rerender evidence', checks);
+};
+
 const focusProof = (value, verb = null, close = false) => value?.modality === 'keyboard'
+  && value?.focused === true
   && value?.focusVisible === true && value?.decorationPainted === true
   && value?.styleChanged === true
   && (close ? value?.close === true : value?.verb === verb
@@ -5816,7 +5909,10 @@ export const assessArc4CaptureCardGeometryFocus = ({
     && validScrollOffset(control?.scrollOffset)
     && sameRect(control?.layoutRect,
       translatedRect(control.buttonRect, control.scrollOffset))
-    && stableOwnedPoint(control?.beforePoint, control?.afterRenderPoint, control.verb)
+    && stableOwnedPoint(control?.beforePoint, control?.afterRenderPoint,
+      control.verb, false, control.buttonRect)
+    && (control?.rerender?.required !== true
+      || control?.rerender?.productOk === true)
     && control?.accessibleName === ({
       tame: 'Tame', scavenge: 'Scavenge', sample: 'Sample',
     })[control.verb]
@@ -5842,10 +5938,12 @@ export const assessArc4CaptureCardGeometryFocus = ({
       && !overlaps(ui?.cardRect, planetsideRect),
     controlsExact,
     noControlOverlap,
-    closeGeometry: validRect(close?.rect) && close.rect.width >= 44
+    closeGeometry: close?.scrollSettled === true
+      && validRect(close?.rect) && close.rect.width >= 44
       && close.rect.height >= 44 && contained(close.rect, ui?.cardRect)
       && contained(close.rect, viewportRect)
-      && stableOwnedPoint(close?.beforePoint, close?.afterRenderPoint, null, true)
+      && stableOwnedPoint(close?.beforePoint, close?.afterRenderPoint,
+        null, true, close.rect)
       && /close survey card/i.test(close?.accessibleName ?? ''),
     closeFocus: focusProof(close?.focus, null, true),
     pendingFocus: settlement === null || settlement === undefined
@@ -8419,6 +8517,7 @@ const geometryControlsSelftest = ARC4_CAPTURE_VERBS.map((verb, index) => {
     x: 80, y: top + 22, tag: 'BUTTON', verb, close: false,
   };
   return {
+    captureSchema: ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA,
     verb, scrollSettled: true, buttonRect,
     cardRect: structuredClone(beforeUiSelftest.cardRect),
     scrollOffset, layoutRect,
@@ -8426,18 +8525,22 @@ const geometryControlsSelftest = ARC4_CAPTURE_VERBS.map((verb, index) => {
     accessibleName: ({ tame: 'Tame', scavenge: 'Scavenge', sample: 'Sample' })[verb],
     focus: {
       modality: 'keyboard', verb, semanticKey: `capture:${verb}`,
+      focused: true,
       focusVisible: true, decorationPainted: true, styleChanged: true,
       close: false,
     },
   };
 });
 const geometryCloseSelftest = {
+  captureSchema: ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA,
+  scrollSettled: true,
   rect: { left: 350, top: 20, right: 394, bottom: 64, width: 44, height: 44 },
   beforePoint: { x: 372, y: 42, tag: 'BUTTON', verb: null, close: true },
   afterRenderPoint: { x: 372, y: 42, tag: 'BUTTON', verb: null, close: true },
   accessibleName: 'Close Survey card',
   focus: {
     modality: 'keyboard', verb: null, semanticKey: null, close: true,
+    focused: true,
     focusVisible: true, decorationPainted: true, styleChanged: true,
   },
 };
@@ -8463,6 +8566,21 @@ const geometryBundleSelftest = {
   settlement: geometrySettlementSelftest,
   scrollWidth: 430, clientWidth: 430,
 };
+const staleGeometryEpochSelftest = structuredClone(geometryBundleSelftest);
+staleGeometryEpochSelftest.controls[2].beforePoint.y = 504.171875;
+staleGeometryEpochSelftest.controls[2].afterRenderPoint.y = 504.171875;
+const staleGeometryEpochCoherenceSelftest =
+  assessArc4CaptureGeometryEvidenceCoherence(staleGeometryEpochSelftest);
+const missingGeometryTargetSelftest = structuredClone(geometryBundleSelftest);
+missingGeometryTargetSelftest.controls[2].buttonRect = null;
+missingGeometryTargetSelftest.controls[2].beforePoint = null;
+missingGeometryTargetSelftest.controls[2].afterRenderPoint = null;
+const unfocusedGeometryControlSelftest = structuredClone(geometryBundleSelftest);
+unfocusedGeometryControlSelftest.controls[0].focus.focused = false;
+const unfocusedGeometryCloseSelftest = structuredClone(geometryBundleSelftest);
+unfocusedGeometryCloseSelftest.close.focus.focused = false;
+const unsettledGeometryCloseSelftest = structuredClone(geometryBundleSelftest);
+unsettledGeometryCloseSelftest.close.scrollSettled = false;
 
 const preconditionBundleSelftest = {
   raw: pertarActionReadyRawSelftest,
@@ -11795,6 +11913,24 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
   || assessArc4CaptureCardGeometryFocus({
     ...geometryBundleSelftest, settlement: undefined,
   }).ok !== true
+  || assessArc4CaptureGeometryEvidenceCoherence(geometryBundleSelftest).ok !== true
+  || staleGeometryEpochCoherenceSelftest.ok !== false
+  || !same(Object.entries(staleGeometryEpochCoherenceSelftest.checks)
+    .filter(([, value]) => value !== true).map(([check]) => check), ['controlsAtomic'])
+  || assessArc4CaptureCardGeometryFocus(staleGeometryEpochSelftest).ok !== false
+  || assessArc4CaptureGeometryEvidenceCoherence(missingGeometryTargetSelftest).ok !== true
+  || assessArc4CaptureCardGeometryFocus(missingGeometryTargetSelftest).ok !== false
+  || !same(Object.entries(assessArc4CaptureCardGeometryFocus(
+    unfocusedGeometryControlSelftest,
+  ).checks).filter(([, value]) => value !== true).map(([check]) => check), [
+    'controlsExact', 'controlsGeometry',
+  ])
+  || !same(Object.entries(assessArc4CaptureCardGeometryFocus(
+    unfocusedGeometryCloseSelftest,
+  ).checks).filter(([, value]) => value !== true).map(([check]) => check), ['closeFocus'])
+  || !same(Object.entries(assessArc4CaptureCardGeometryFocus(
+    unsettledGeometryCloseSelftest,
+  ).checks).filter(([, value]) => value !== true).map(([check]) => check), ['closeGeometry'])
   || !overlaps(geometryControlsSelftest[0].buttonRect,
     geometryControlsSelftest[1].buttonRect)
   || overlaps(geometryControlsSelftest[0].layoutRect,

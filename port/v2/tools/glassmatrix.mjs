@@ -50,6 +50,8 @@ import {
 import {
   ARC4_CAPTURE_GEOMETRY_EVIDENCE_SCHEMA,
   ARC4_CAPTURE_LAYOUT_COORDINATE_SPACE,
+  ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA,
+  ARC4_HEARTBEAT_RERENDER_EVIDENCE_SCHEMA,
   ARC4_CAPTURE_UI_EVIDENCE_SCHEMA,
   ARC4_CAPTURE_UI_EXPRESSION,
   ARC4_CAPTURE_VERBS,
@@ -60,6 +62,8 @@ import {
   arc4CaptureUiSnapshotComplete,
   assessArc4DurableEvidence,
   assessArc4CaptureCardGeometryFocus,
+  assessArc4CaptureGeometryEvidenceCoherence,
+  assessArc4HeartbeatRerenderEvidence,
   buildArc4DurableReadExpression,
   projectArc4V4OwnedCounters,
   projectArc5OwnershipMigrationEvidence,
@@ -1150,9 +1154,14 @@ function arc4GeometryClauseProjection({ viewport, controls } = {}) {
   const sameRect = (left, right) => rect(left) && rect(right)
     && ['left', 'top', 'right', 'bottom', 'width', 'height']
       .every((key) => Math.abs(left[key] - right[key]) <= 0.75);
-  const ownedPoint = (point, verb) => !!point && typeof point === 'object'
+  const ownedPoint = (point, verb, buttonRect) => !!point && typeof point === 'object'
     && Number.isFinite(point.x) && Number.isFinite(point.y)
-    && point.tag === 'BUTTON' && point.close === false && point.verb === verb;
+    && point.tag === 'BUTTON' && point.close === false && point.verb === verb
+    && rect(buttonRect)
+    && point.x >= buttonRect.left - 0.75 && point.x <= buttonRect.right + 0.75
+    && point.y >= buttonRect.top - 0.75 && point.y <= buttonRect.bottom + 0.75
+    && Math.abs(point.x - ((buttonRect.left + buttonRect.right) / 2)) <= 0.75
+    && Math.abs(point.y - ((buttonRect.top + buttonRect.bottom) / 2)) <= 0.75;
   const viewportRect = {
     left: 0, top: 0, right: viewport?.width, bottom: viewport?.height,
     width: viewport?.width, height: viewport?.height,
@@ -1175,14 +1184,17 @@ function arc4GeometryClauseProjection({ viewport, controls } = {}) {
       cardContained: contained(control?.buttonRect, control?.cardRect),
       viewportContained: contained(control?.buttonRect, viewportRect),
       layoutTranslation: sameRect(control?.layoutRect, translated),
-      ownedPoint: ownedPoint(control?.beforePoint, control?.verb)
-        && ownedPoint(control?.afterRenderPoint, control?.verb)
+      ownedPoint: ownedPoint(control?.beforePoint, control?.verb, control?.buttonRect)
+        && ownedPoint(control?.afterRenderPoint, control?.verb, control?.buttonRect)
         && Math.abs(control.beforePoint.x - control.afterRenderPoint.x) <= 0.75
         && Math.abs(control.beforePoint.y - control.afterRenderPoint.y) <= 0.75,
+      heartbeatRerender: control?.rerender?.required !== true
+        || control?.rerender?.productOk === true,
       name: control?.accessibleName === ({
         tame: 'Tame', scavenge: 'Scavenge', sample: 'Sample',
       })[control?.verb],
       focus: control?.focus?.modality === 'keyboard'
+        && control.focus.focused === true
         && control.focus.focusVisible === true
         && control.focus.decorationPainted === true
         && control.focus.styleChanged === true
@@ -1242,29 +1254,133 @@ function assessArc4DependentBaseline({ planetsideOwnership, nativeReturn, presen
   });
 }
 
-function arc4FocusEvidenceExpression({ verb = null, close = false } = {}) {
+export function buildArc4AtomicGeometryEvidenceExpression({
+  verb = null, close = false, forceHeartbeatRerender = false,
+} = {}) {
   if (!close && !ARC4_CAPTURE_VERBS.includes(verb)) {
     throw new TypeError(`unknown Arc 4 focus verb ${JSON.stringify(verb)}`);
   }
   const selector = close ? '#survey [data-survey-close]'
     : `#survey button[data-capture-action=${JSON.stringify(verb)}]`;
-  return `(()=>{const el=document.querySelector(${JSON.stringify(selector)});if(!(el instanceof HTMLElement))return {
-    modality:'keyboard',focused:false,focusVisible:false,styleChanged:false,decorationPainted:false,
-    verb:${JSON.stringify(verb)},semanticKey:null,close:${JSON.stringify(close)},accessibleName:null};
-    el.blur();const beforeStyle=getComputedStyle(el),before={outline:beforeStyle.outline,shadow:beforeStyle.boxShadow,
-      border:beforeStyle.borderColor,background:beforeStyle.backgroundColor};
-    try{el.focus({preventScroll:true,focusVisible:true})}catch{el.focus({preventScroll:true})}
-    const afterStyle=getComputedStyle(el),after={outline:afterStyle.outline,shadow:afterStyle.boxShadow,
-      border:afterStyle.borderColor,background:afterStyle.backgroundColor},
-      styleChanged=before.outline!==after.outline||before.shadow!==after.shadow
-        ||before.border!==after.border||before.background!==after.background,
-      outlinePainted=afterStyle.outlineStyle!=='none'&&(parseFloat(afterStyle.outlineWidth)||0)>=1,
-      decorationPainted=outlinePainted||(after.shadow!=='none'&&before.shadow!==after.shadow)
-        ||before.border!==after.border||before.background!==after.background;
-    return {modality:'keyboard',focused:document.activeElement===el,focusVisible:el.matches(':focus-visible'),
-      styleChanged,decorationPainted,verb:${JSON.stringify(verb)},
-      semanticKey:el.closest('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,
-      close:${JSON.stringify(close)},accessibleName:(el.getAttribute('aria-label')||el.textContent||'').trim(),before,after};})()`;
+  return `(async()=>{const selector=${JSON.stringify(selector)},captureSchema=${JSON.stringify(ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA)},
+    rerenderSchema=${JSON.stringify(ARC4_HEARTBEAT_RERENDER_EVIDENCE_SCHEMA)},verb=${JSON.stringify(verb)},
+    close=${JSON.stringify(close)},forceHeartbeatRerender=${JSON.stringify(forceHeartbeatRerender)},
+    wait=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0))),
+    box=(node)=>{const r=node?.getBoundingClientRect?.();return r?{left:r.left,top:r.top,right:r.right,
+      bottom:r.bottom,width:r.width,height:r.height}:null},
+    style=(node)=>{const value=node?getComputedStyle(node):null;return value?{outline:value.outline,
+      shadow:value.boxShadow,border:value.borderColor,background:value.backgroundColor,
+      outlineStyle:value.outlineStyle,outlineWidth:value.outlineWidth}:null},
+    point=(node,rect)=>{if(!rect)return null;const x=(rect.left+rect.right)/2,y=(rect.top+rect.bottom)/2,
+      hit=document.elementFromPoint(x,y);return {x,y,tag:hit?.tagName??null,
+        verb:hit?.closest?.('[data-capture-action]')?.getAttribute('data-capture-action')??null,
+        close:!!hit&&hit.closest?.('[data-survey-close]')!==null}},
+    focusVerb=()=>document.activeElement?.closest?.('[data-capture-action]')?.getAttribute('data-capture-action')??null,
+    snapshot=()=>{const node=document.querySelector(selector),buttonRect=box(node),cardRect=box(document.getElementById('survey')),
+      scroll=[],scrollOffset={left:0,top:0};for(let owner=node?.parentElement;owner;owner=owner.parentElement){
+        scroll.push([owner.scrollLeft,owner.scrollTop]);scrollOffset.left+=owner.scrollLeft;scrollOffset.top+=owner.scrollTop;}
+      const layoutRect=buttonRect?{left:buttonRect.left+scrollOffset.left,top:buttonRect.top+scrollOffset.top,
+        right:buttonRect.right+scrollOffset.left,bottom:buttonRect.bottom+scrollOffset.top,
+        width:buttonRect.width,height:buttonRect.height}:null;
+      return {node,buttonRect,cardRect,scrollOffset,layoutRect,scroll,point:point(node,buttonRect)}},
+    witness=(snap,persistence)=>({documentToken:persistence?.documentToken??null,
+      heartbeatRunning:persistence?.heartbeatRunning===true,focusVerb:focusVerb(),
+      buttonRect:snap?.buttonRect??null,cardRect:snap?.cardRect??null,
+      scrollOffset:snap?.scrollOffset??null,scroll:snap?.scroll??null}),
+    validRect=(value)=>!!value&&[value.left,value.top,value.right,value.bottom,value.width,value.height]
+      .every(entry=>Number.isFinite(entry))&&value.width>=0&&value.height>=0,
+    contained=(inner,outer)=>validRect(inner)&&validRect(outer)&&inner.left>=outer.left-.25
+      &&inner.right<=outer.right+.25&&inner.top>=outer.top-.25&&inner.bottom<=outer.bottom+.25,
+    targetReady=(snap)=>validRect(snap?.buttonRect)&&contained(snap.buttonRect,snap.cardRect)
+      &&contained(snap.buttonRect,{left:0,top:0,right:innerWidth,bottom:innerHeight,
+        width:innerWidth,height:innerHeight})&&snap?.point?.tag==='BUTTON'
+      &&snap.point.verb===verb&&snap.point.close===false,
+    sameRect=(left,right)=>validRect(left)&&validRect(right)
+      &&['left','top','right','bottom','width','height'].every(key=>Math.abs(left[key]-right[key])<=.25),
+    stable=(left,right)=>!!left&&!!right&&sameRect(left.buttonRect,right.buttonRect)
+      &&sameRect(left.cardRect,right.cardRect)
+      &&Math.abs(left.scrollOffset.left-right.scrollOffset.left)<=.25
+      &&Math.abs(left.scrollOffset.top-right.scrollOffset.top)<=.25
+      &&left.scroll.length===right.scroll.length
+      &&left.scroll.every((row,index)=>row.every((value,axis)=>Math.abs(value-right.scroll[index][axis])<=.25));
+    let el=document.querySelector(selector);if(!(el instanceof HTMLElement))return {captureSchema,
+      why:'missing-product-target',verb,close,scrollSettled:false,buttonRect:null,
+      cardRect:box(document.getElementById('survey')),scrollOffset:null,layoutRect:null,beforePoint:null,
+      afterRenderPoint:null,accessibleName:null,focus:{modality:'keyboard',focused:false,focusVisible:false,
+        styleChanged:false,decorationPainted:false,verb,semanticKey:null,close,accessibleName:null},
+      rerender:{schema:rerenderSchema,required:false,productBlocked:'missing-product-target',productOk:false}};
+    el.blur();let before=style(el),rerender={schema:rerenderSchema,required:false,productOk:true};
+    if(forceHeartbeatRerender){const prior=el,slice=window.__CF_SLICE__,api=slice?.api,
+      documentToken=slice?.documentToken??null,seamsAvailable=typeof api?.state==='function'
+        &&typeof api?.__smokeQuiesceF4Heartbeat==='function'
+        &&typeof api?.__smokeResumeF4Heartbeat==='function'
+        &&typeof api?.__smokeRunF4Heartbeat==='function';
+      const initialPersistence=typeof api?.state==='function'?api.state()?.persistence:null,
+        initial={documentToken:initialPersistence?.documentToken??null,
+          heartbeatRunning:initialPersistence?.heartbeatRunning===true};
+      let priorFocusArmed=false,quiescence=null,resume=null,error=null,runCompleted=false,
+        quiesceAttempted=false,preSnapshot=null,pre=null,
+        cleanup={attempted:false,receipt:null,error:null};
+      if(!seamsAvailable)error='missing F4 heartbeat smoke seam';
+      else if(initialPersistence?.documentToken!==documentToken)error='F4 heartbeat initial document identity changed';
+      else if(initialPersistence?.heartbeatRunning!==true)error='F4 heartbeat was not running before forced rerender';
+      else{quiesceAttempted=true;try{
+        quiescence=await api.__smokeQuiesceF4Heartbeat();
+        if(quiescence?.schema!=='cf-v2-f4-heartbeat-quiescence/v1'||quiescence?.documentToken!==documentToken
+          ||quiescence?.wasRunning!==true||quiescence?.stopped!==true||quiescence?.cycleSettled!==true)
+          throw new Error('invalid F4 heartbeat quiescence receipt');
+        el=document.querySelector(selector);const priorFocus=document.querySelector(
+          '#survey button[data-capture-action="scavenge"]');
+        if(!(el instanceof HTMLElement)||!(priorFocus instanceof HTMLElement))
+          throw new Error('Capture rerender control target disappeared while heartbeat was quiesced');
+        try{priorFocus.focus({preventScroll:true,focusVisible:true})}catch{priorFocus.focus({preventScroll:true})}
+        priorFocusArmed=document.activeElement===priorFocus;
+        if(!priorFocusArmed)throw new Error('could not arm prior Scavenge semantic focus');
+        el.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});await wait();await wait();
+        preSnapshot=snapshot();const prePersistence=api.state()?.persistence??null;
+        pre=witness(preSnapshot,prePersistence);
+        if(pre.documentToken!==documentToken||pre.heartbeatRunning!==false||pre.focusVerb!=='scavenge')
+          throw new Error('invalid quiesced Capture rerender baseline');
+        resume=api.__smokeResumeF4Heartbeat();
+        if(resume?.schema!=='cf-v2-f4-heartbeat-resume/v1'||resume?.documentToken!==documentToken
+          ||resume?.running!==true)throw new Error('invalid F4 heartbeat resume receipt');
+        await api.__smokeRunF4Heartbeat();runCompleted=true;
+      }catch(reason){error=String(reason?.stack||reason)}finally{
+        const current=typeof api?.state==='function'?api.state()?.persistence:null;
+        if(current?.heartbeatRunning!==true){cleanup.attempted=true;
+          try{cleanup.receipt=api?.__smokeResumeF4Heartbeat?.()??null}
+          catch(reason){cleanup.error=String(reason?.stack||reason)}}}}
+      await wait();await wait();const postSnapshot=snapshot(),
+        postPersistence=typeof api?.state==='function'?api.state()?.persistence:null,
+        post=witness(postSnapshot,postPersistence),scrollPreserved=stable(preSnapshot,postSnapshot),
+        priorFocusRestored=post.focusVerb==='scavenge',preTargetReady=targetReady(preSnapshot),
+        postTargetReady=targetReady(postSnapshot);
+      el=postSnapshot.node;rerender={schema:rerenderSchema,required:true,documentToken,
+        seamsAvailable,initial,priorFocusArmed,quiesceAttempted,quiescence,resume,
+        runCompleted,cleanup,error,pre,post,
+        oldDisconnected:prior.isConnected===false,
+        replacementAcquired:el instanceof HTMLElement&&el!==prior,
+        preTargetReady,postTargetReady,scrollPreserved,priorFocusRestored,
+        productOk:preTargetReady&&postTargetReady&&scrollPreserved&&priorFocusRestored};
+      before=style(el);}
+    if(el instanceof HTMLElement){
+      try{el.focus({preventScroll:true,focusVisible:true})}catch{el.focus({preventScroll:true})}
+      el.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});await wait();await wait();}
+    const first=snapshot();await wait();const second=snapshot();el=second.node;const after=style(el),
+      styleChanged=!!before&&!!after&&(before.outline!==after.outline||before.shadow!==after.shadow
+        ||before.border!==after.border||before.background!==after.background),
+      outlinePainted=!!after&&after.outlineStyle!=='none'&&(parseFloat(after.outlineWidth)||0)>=1,
+      decorationPainted=outlinePainted||!!before&&!!after&&((after.shadow!=='none'&&before.shadow!==after.shadow)
+        ||before.border!==after.border||before.background!==after.background),
+      accessibleName=el instanceof HTMLElement?(el.getAttribute('aria-label')||el.textContent||'').trim():null,
+      focus={modality:'keyboard',focused:document.activeElement===el,
+        focusVisible:el?.matches?.(':focus-visible')===true,styleChanged,decorationPainted,verb,
+        semanticKey:el?.closest?.('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,
+        close,accessibleName,before,after};
+    return {captureSchema,why:null,verb,close,scrollSettled:stable(first,second),
+      buttonRect:second.buttonRect,cardRect:second.cardRect,scrollOffset:second.scrollOffset,
+      layoutRect:second.layoutRect,beforePoint:first.point,afterRenderPoint:second.point,
+      accessibleName,focus,rerender};})()`;
 }
 
 function arc4NativeTabFocusSetupExpression(verb, priorVerb) {
@@ -5003,6 +5119,7 @@ function arc4GlassSelftest() {
     const buttonRect = { left: 40, top: 170, right: 140, bottom: 214, width: 100, height: 44 };
     const scrollOffset = { left: 0, top: index * 80 };
     return {
+      captureSchema: ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA,
       verb: item.verb, scrollSettled: true, buttonRect,
       cardRect: { left: 10, top: 10, right: 410, bottom: 510, width: 400, height: 500 },
       scrollOffset,
@@ -5028,6 +5145,8 @@ function arc4GlassSelftest() {
     planetsideRect: { left: 10, top: 530, right: 410, bottom: 700, width: 400, height: 170 },
     controls,
     close: {
+      captureSchema: ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA,
+      scrollSettled: true,
       rect: { ...ui.close.rect }, beforePoint: { ...ui.close.point },
       afterRenderPoint: { ...ui.close.point }, accessibleName: ui.close.label,
       focus: {
@@ -5037,6 +5156,14 @@ function arc4GlassSelftest() {
     },
     scrollWidth: 420, clientWidth: 420,
   };
+  const geometryCoherence = assessArc4CaptureGeometryEvidenceCoherence(geometryBundle);
+  const staleGeometryEpoch = structuredClone(geometryBundle);
+  Object.assign(staleGeometryEpoch.controls[2].beforePoint,
+    { y: 504.171875, tag: 'NAV', verb: null });
+  Object.assign(staleGeometryEpoch.controls[2].afterRenderPoint,
+    { y: 504.171875, tag: 'NAV', verb: null });
+  const staleGeometryEpochCoherence =
+    assessArc4CaptureGeometryEvidenceCoherence(staleGeometryEpoch);
   const geometry = assessArc4CaptureCardGeometryFocus(geometryBundle);
   const geometryClauses = arc4GeometryClauseProjection(geometryBundle);
   const wrongOverlap = structuredClone(geometryBundle);
@@ -5046,8 +5173,35 @@ function arc4GlassSelftest() {
   const stretchedButton = structuredClone(geometryBundle);
   Object.assign(stretchedButton.controls[2].buttonRect, { bottom: 570, height: 400 });
   Object.assign(stretchedButton.controls[2].layoutRect, { bottom: 730, height: 400 });
+  Object.assign(stretchedButton.controls[2].beforePoint, { y: 370 });
+  Object.assign(stretchedButton.controls[2].afterRenderPoint, { y: 370 });
   const stretchedButtonAssessment = assessArc4CaptureCardGeometryFocus(stretchedButton);
   const stretchedButtonClauses = arc4GeometryClauseProjection(stretchedButton);
+  const heartbeatScrollRollback = structuredClone(geometryBundle);
+  heartbeatScrollRollback.controls[2].rerender = {
+    required: true,
+    scrollPreserved: false,
+    priorFocusRestored: true,
+    productOk: false,
+  };
+  const heartbeatScrollRollbackAssessment =
+    assessArc4CaptureCardGeometryFocus(heartbeatScrollRollback);
+  const heartbeatScrollRollbackClauses =
+    arc4GeometryClauseProjection(heartbeatScrollRollback);
+  const unfocusedGeometryControl = structuredClone(geometryBundle);
+  unfocusedGeometryControl.controls[0].focus.focused = false;
+  const unfocusedGeometryControlAssessment =
+    assessArc4CaptureCardGeometryFocus(unfocusedGeometryControl);
+  const unfocusedGeometryControlClauses =
+    arc4GeometryClauseProjection(unfocusedGeometryControl);
+  const unfocusedGeometryClose = structuredClone(geometryBundle);
+  unfocusedGeometryClose.close.focus.focused = false;
+  const unfocusedGeometryCloseAssessment =
+    assessArc4CaptureCardGeometryFocus(unfocusedGeometryClose);
+  const unsettledGeometryClose = structuredClone(geometryBundle);
+  unsettledGeometryClose.close.scrollSettled = false;
+  const unsettledGeometryCloseAssessment =
+    assessArc4CaptureCardGeometryFocus(unsettledGeometryClose);
   const durableCheckpoint = arc4DurableProjectionSelftestFixture({
     outerRevision: 10, activePlayMs: 5_000, checkpointAt: 2_000,
   });
@@ -5317,6 +5471,8 @@ function arc4GlassSelftest() {
     && arc4IsolatedFailure(wrongOddsAssessments.sample, 'sampleOdds')
     && arc4IsolatedFailure(wrongCopyAssessment, 'fullPoolCopy')
     && arc4IsolatedFailure(wrongDisabledAssessment, 'modelDisabledParity')
+    && geometryCoherence.ok
+    && arc4IsolatedFailure(staleGeometryEpochCoherence, 'controlsAtomic')
     && arc4IsolatedFailure(wrongOverlapAssessment, 'noControlOverlap')
     && geometryClauses.length === 3 && geometryClauses.every((row) => row.ok)
     && exactJson(arc4FailedChecks(stretchedButtonAssessment), ['controlsExact', 'controlsGeometry'])
@@ -5325,6 +5481,21 @@ function arc4GlassSelftest() {
     && exactJson(Object.entries(stretchedButtonClauses[2]?.clauses || {})
       .filter(([, value]) => value !== true).map(([name]) => name), ['cardContained'])
     && stretchedButtonClauses.slice(0, 2).every((row) => row.ok)
+    && exactJson(arc4FailedChecks(heartbeatScrollRollbackAssessment),
+      ['controlsExact', 'controlsGeometry'])
+    && heartbeatScrollRollbackClauses.length === 3
+    && heartbeatScrollRollbackClauses[2]?.ok === false
+    && exactJson(Object.entries(heartbeatScrollRollbackClauses[2]?.clauses || {})
+      .filter(([, value]) => value !== true).map(([name]) => name), ['heartbeatRerender'])
+    && heartbeatScrollRollbackClauses.slice(0, 2).every((row) => row.ok)
+    && exactJson(arc4FailedChecks(unfocusedGeometryControlAssessment),
+      ['controlsExact', 'controlsGeometry'])
+    && unfocusedGeometryControlClauses[0]?.ok === false
+    && exactJson(Object.entries(unfocusedGeometryControlClauses[0]?.clauses || {})
+      .filter(([, value]) => value !== true).map(([name]) => name), ['focus'])
+    && unfocusedGeometryControlClauses.slice(1).every((row) => row.ok)
+    && arc4IsolatedFailure(unfocusedGeometryCloseAssessment, 'closeFocus')
+    && arc4IsolatedFailure(unsettledGeometryCloseAssessment, 'closeGeometry')
     && arc4IsolatedFailure(wrongReturnAssessment, 'openerReturn')
     && arc4IsolatedFailure(wrongCloseAssessment, 'closeTrusted')
     && arc4IsolatedFailure(wrongSurfaceAssessment, 'surfaceUnchanged')
@@ -5361,8 +5532,15 @@ function arc4GlassSelftest() {
     wrongFingerprint: wrongFingerprintAssessment, wrongYield: wrongYieldAssessment,
     wrongOdds: wrongOddsAssessments,
     wrongCopy: wrongCopyAssessment, wrongDisabled: wrongDisabledAssessment,
-    geometry, geometryClauses, wrongOverlap: wrongOverlapAssessment,
+    geometry, geometryCoherence, staleGeometryEpochCoherence,
+    geometryClauses, wrongOverlap: wrongOverlapAssessment,
     stretchedButton: stretchedButtonAssessment, stretchedButtonClauses,
+    heartbeatScrollRollback: heartbeatScrollRollbackAssessment,
+    heartbeatScrollRollbackClauses,
+    unfocusedGeometryControl: unfocusedGeometryControlAssessment,
+    unfocusedGeometryControlClauses,
+    unfocusedGeometryClose: unfocusedGeometryCloseAssessment,
+    unsettledGeometryClose: unsettledGeometryCloseAssessment,
     nativeReturn, wrongReturn: wrongReturnAssessment,
     wrongClose: wrongCloseAssessment, wrongSurface: wrongSurfaceAssessment,
     wrongPlanetside: wrongPlanetsideAssessment, wrongCapture: wrongCaptureAssessment,
@@ -9917,30 +10095,30 @@ async function main() {
 
         const arc4ControlsGeometry = [];
         for (const verb of ARC4_CAPTURE_VERBS) {
-          const selector = `#survey button[data-capture-action=${JSON.stringify(verb)}]`;
-          const scroll = await evalIn(arc4ScrollSettleExpression(selector));
-          const before = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
-          const focus = await evalIn(arc4FocusEvidenceExpression({ verb }));
-          await evalIn('new Promise(resolve=>requestAnimationFrame(()=>setTimeout(()=>resolve(true),0)))');
-          const after = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
-          const beforeRow = before?.rows?.find((row) => row?.verb === verb);
-          const afterRow = after?.rows?.find((row) => row?.verb === verb);
-          arc4ControlsGeometry.push({
-            verb, scrollSettled: scroll?.ok === true,
-            buttonRect: scroll?.second?.buttonRect ?? beforeRow?.button?.rect ?? null,
-            cardRect: scroll?.second?.cardRect ?? before?.cardRect ?? null,
-            scrollOffset: scroll?.second?.scrollOffset ?? null,
-            layoutRect: scroll?.second?.layoutRect ?? null,
-            beforePoint: beforeRow?.button?.point ?? null,
-            afterRenderPoint: afterRow?.button?.point ?? null,
-            accessibleName: focus?.accessibleName ?? null,
-            focus,
-          });
+          const evidence = await evalIn(buildArc4AtomicGeometryEvidenceExpression({
+            verb,
+            forceHeartbeatRerender: vp.label === 'small-phone' && verb === 'sample',
+          }));
+          const heartbeatRerender = assessArc4HeartbeatRerenderEvidence(evidence?.rerender);
+          if (!heartbeatRerender.ok) {
+            recordInstrumentFailure(`${vp.label}: Arc 4 ${verb} atomic geometry collector did not exercise a healthy heartbeat rerender (${JSON.stringify({
+              heartbeatRerender, evidence,
+            })})`);
+          }
+          arc4ControlsGeometry.push({ ...evidence, heartbeatRerender });
         }
-        const arc4CloseScroll = await evalIn(arc4ScrollSettleExpression('#survey [data-survey-close]'));
-        const arc4CloseBefore = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
-        const arc4CloseFocus = await evalIn(arc4FocusEvidenceExpression({ close: true }));
-        await evalIn('new Promise(resolve=>requestAnimationFrame(()=>setTimeout(()=>resolve(true),0)))');
+        const arc4CloseGeometry = await evalIn(
+          buildArc4AtomicGeometryEvidenceExpression({ close: true }),
+        );
+        const arc4CloseHeartbeatRerender = assessArc4HeartbeatRerenderEvidence(
+          arc4CloseGeometry?.rerender,
+        );
+        if (!arc4CloseHeartbeatRerender.ok) {
+          recordInstrumentFailure(`${vp.label}: Arc 4 Close atomic geometry collector failed (${JSON.stringify({
+            heartbeatRerender: arc4CloseHeartbeatRerender,
+            evidence: arc4CloseGeometry,
+          })})`);
+        }
         const arc4CloseAfter = await evalIn(ARC4_CAPTURE_UI_EXPRESSION);
         const arc4Layout = await evalIn(ARC4_LAYOUT_EXPRESSION);
         const arc4GeometryBundle = {
@@ -9951,16 +10129,22 @@ async function main() {
           planetsideRect: arc4Layout.planetsideRect,
           controls: arc4ControlsGeometry,
           close: {
-            scrollSettled: arc4CloseScroll?.ok === true,
-            rect: arc4CloseBefore?.close?.rect ?? null,
-            beforePoint: arc4CloseBefore?.close?.point ?? null,
-            afterRenderPoint: arc4CloseAfter?.close?.point ?? null,
-            accessibleName: arc4CloseFocus?.accessibleName ?? null,
-            focus: arc4CloseFocus,
+            ...arc4CloseGeometry,
+            heartbeatRerender: arc4CloseHeartbeatRerender,
+            rect: arc4CloseGeometry?.buttonRect ?? null,
           },
           scrollWidth: arc4Layout.scrollWidth,
           clientWidth: arc4Layout.clientWidth,
         };
+        const arc4GeometryCoherence =
+          assessArc4CaptureGeometryEvidenceCoherence(arc4GeometryBundle);
+        if (!arc4GeometryCoherence.ok) {
+          recordInstrumentFailure(`${vp.label}: Arc 4 geometry evidence crossed layout epochs (${JSON.stringify({
+            coherence: arc4GeometryCoherence,
+            controls: arc4GeometryBundle.controls,
+            close: arc4GeometryBundle.close,
+          })})`);
+        }
         const arc4GeometryClauses = arc4GeometryClauseProjection(arc4GeometryBundle);
         const arc4GeometryAssessment = assessArc4CaptureCardGeometryFocus(arc4GeometryBundle);
         const arc4Geometry = {
@@ -9971,6 +10155,7 @@ async function main() {
             planetsideRect: arc4GeometryBundle.planetsideRect,
             controls: arc4GeometryBundle.controls,
             close: arc4GeometryBundle.close,
+            coherence: arc4GeometryCoherence,
             scrollWidth: arc4GeometryBundle.scrollWidth,
             clientWidth: arc4GeometryBundle.clientWidth,
             clauseProjection: arc4GeometryClauses,

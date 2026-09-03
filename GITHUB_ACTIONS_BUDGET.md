@@ -2,7 +2,50 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-02): systemic thirteen-stop audit complete; conditional early hosted
+**Current local state (2026-09-03 UTC): fourteenth PR #35 attempt consumed at Glass; bounded
+Capture-focus/atomic-chronology repair is local and its final certificate is pending; no hosted
+attempt is authorized.** Run `33694235427`, attempt 1, tested exact head
+`6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b` through synthetic merge
+`94ec8e41606f9c0e1b16865cdfeff4fb76579b3f`; merge and head share tree
+`54ab518c2f63c924e2cedfea027b949989f2a79e`.
+
+The new early Glass preflight ran on the exact same clean source and hosted Chrome
+`152.0.7977.64` / CDP `1.3`, passing its 320×568@2 row in **92,595 ms** with zero findings,
+instrument failures, blocked controls or retries, **95/104** controls and nine lawful targeted
+omissions. Root Layout **787/787**, Compendium **78/78** plus named verification and exact-bound
+Slice then passed. Full Glass consumed Slice `gha-33694235427-1-slice` and stopped after **35,412
+ms** on its first small-phone row, retaining one `ARC4_CAPTURE_GEOMETRY_FOCUS` product-labelled
+finding, zero reported instrument failures, **67/104** controls, 37 causal blocks, zero omissions
+and zero retries.
+
+The red carrier is internally cross-epoch: Sample retained a rectangle centred at y `173.171875`
+and ancestor scroll top `2538`, but later sampled y `504.171875` on `NAV` after the five-second
+Capture heartbeat replaced the DOM and bare semantic-focus restoration moved scroll to `2207`.
+The stop is **instrument**, not product or mixed. The early PASS proves timing variability, not
+closure. All fourteen PR #35 stops now classify as **10 instrument/infrastructure, 3
+product/runtime and 1 mixed**.
+
+The bounded successor makes passive Capture authority rerenders restore semantic focus with
+`preventScroll`, while explicit action settlement keeps its existing reveal behavior. Glass now
+forces that heartbeat replacement deterministically, reacquires the replacement node, collects
+geometry/scroll/hit/focus within one browser-side chronology, and rejects cross-epoch carriers as
+instrument evidence before product assessment. It adds no timeout, retry, browser pin, workflow
+job or control. The **104 names are controls inside one Glass campaign, not 104 jobs**: the costly
+serial work in this run was Compendium at about **38m35s** and Slice at about **24m15s**. Only
+evidence upload follows Glass on `develop`.
+
+The immutable audit and both hosted reports are retained under `audits/` and indexed in
+`audits/README.md`. Focused repair/negative-control coverage passes **53/53**, and the complete
+browser-free `develop` profile passes **265/265 files, 2,749 passed / 1 skipped**, all three
+TypeScript programs, the 34-source art audit, 1,014/1,014 live route keys with zero dead,
+1,010/1,010 species, and 454 declared fields with zero unread or inert. A clean signed source and
+unchanged-source Compendium → Slice → full Glass local certificate remain **pending**. The exact
+run-14 authorization is consumed; `actions-budget-approved` is absent, PR #35 remains
+Ready/open/unmerged, and `develop` remains unchanged. No push, label, dispatch, rerun, PR mutation,
+merge, release, version bump, publication or deployment is currently authorized.
+
+**Preserved predecessor local state (2026-09-02): systemic thirteen-stop audit complete; conditional early hosted
 Glass preflight has exact signed local proof; no hosted attempt is authorized.**
 The immutable record is **9 instrument/infrastructure, 3 product/runtime, and 1 mixed**. Every
 known cause through attempt 12 has a permanent guard and later local or hosted successor evidence.
@@ -1199,7 +1242,32 @@ defect. Artifact `9866333992` is 9,763,738 bytes with digest
 diagnosis are indexed in `audits/README.md`. The label was removed, PR #35 remains
 Ready/open/unmerged and `develop` remains unchanged.
 
-All thirteen PR #35 attempts are consumed and their labels are absent. No new hosted attempt, PR
+The fourteenth exact-head authorization tested
+`6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against the same base. GitHub run `33694235427`,
+attempt 1, used synthetic merge `94ec8e41606f9c0e1b16865cdfeff4fb76579b3f`, whose tree
+`54ab518c2f63c924e2cedfea027b949989f2a79e` is byte-identical to the exact head tree. The new
+changed-input Glass preflight ran first on hosted Chrome `152.0.7977.64` / CDP `1.3` and passed
+its one small-phone row with zero findings/instrument failures, **95/104** executed controls and
+nine lawful targeted omissions. Layout **787/787**, Compendium **78/78** plus named verification
+and exact-bound Slice then passed; SceneMemory correctly skipped as production-only.
+
+Full Glass consumed exact Slice `gha-33694235427-1-slice` and stopped after **35,412 ms** on its
+first small-phone row with one old-classifier product finding, zero reported instrument failures,
+**67/104** controls, 37 causal blocks, zero omissions and no retry. The Sample carrier retained a
+button rectangle centred at y `173.171875` plus ancestor scroll top `2538`, then sampled y
+`504.171875` on `NAV`. The ordinary five-second Capture heartbeat had replaced the DOM and bare
+semantic-focus restoration moved scroll to `2207` between those observations. This is an
+instrument chronology contradiction, not a product geometry failure. The earlier PASS on
+identical source/browser shows why a timing-dependent live canary alone could not close it.
+
+The bounded successor preserves semantic focus without passive scroll movement, forces the
+heartbeat replacement in deterministic control, reacquires the live node and collects one atomic
+geometry carrier before classifying product presentation. Both hosted reports and the full audit
+are indexed in `audits/README.md`; temporary artifact `9873073563` is 9,778,683 bytes with digest
+`sha256:56e88b3609f013ce4fd9773efebd0d5ecfb01cc23dd76219f305ad89b93d9a44`. The local repair's
+final clean-source certificate remains pending.
+
+All fourteen PR #35 attempts are consumed and their labels are absent. No new hosted attempt, PR
 mutation, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard

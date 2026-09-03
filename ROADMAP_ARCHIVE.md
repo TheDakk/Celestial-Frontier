@@ -1,3 +1,181 @@
+## ARCHIVED 2026-09-03 UTC — thirteen-stop / early-Glass-preflight handoff superseded by fourteenth hosted geometry-chronology stop
+
+> Moved byte-verbatim from the live ROADMAP after GitHub run `33694235427` proved the early
+> canary could pass while the later exact-source Glass collector crossed layout epochs.
+
+## ▶▶▶ SESSION HANDOFF — 2026-09-02 · THIRTEEN-STOP AUDIT COMPLETE · EARLY GLASS PREFLIGHT EXACT LOCAL PROOF GREEN ◀◀◀
+
+### Exact current boundary
+
+- **Verified owner:** OpenAI/Codex on macOS at
+  `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, tracking
+  **origin/openai/mac**.
+- Exact SSH-signed early-preflight implementation/documentation source is
+  **4a0228d9998ec2f5fb238b3143146162e359cdff**, tree
+  **56650fbf1fcedf01c787cedd30f958e75abefca0**, four commits ahead of the remote. It contains only
+  the systemic failure audit and conditional early hosted Glass preflight and passes the hermetic
+  tracked-input `develop` profile plus its exact local small-phone browser proof. The SSH-signed
+  evidence/reference descendant containing this handoff is one additional commit ahead, preserves
+  the exact compressed carrier, and passes the final tracked-input `develop` profile; its own hash
+  is intentionally not self-embedded. Preserve all current bytes.
+- Pushed and hosted-tested head is **5ae12c7e161e90b3799d6b49a63e2b0438048da6**, tree
+  **fbb059cea703cceb3feebcc716e64e02f5f5ba90**, against exact `origin/develop`
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**.
+- Exact SSH-signed implementation source is **64e405bc6678302c5936945c1b34ac5de5407025**,
+  tree **732bcf9930ac36e7661b14cdfd6cde64137d34f4**, parent/pushed head **5ae12c7…**.
+  It contains the bounded Glass action/portrait harness successor and exact local certificate.
+- SSH-signed evidence/reference descendant **112bf7fb4961d8f85833df964fe8b17109ab2a0b**,
+  tree **5daa4e7e589ec37fc59f5e1b2e863caccd5101be**, preserves the four deterministic browser
+  carriers and passes the final hermetic tracked-input `develop` profile. Historical signed
+  handoff-only descendant **526fd5f1a448bba3ebe422f70b8d4f6ae8b00e3b**, tree
+  **de437e453f168ef325488aa7818064dcd05f8dae**, also passes that profile. Preserve all current
+  bytes and do not rebase, overwrite or copy them into another worktree.
+- PR #35 is Ready/open/unmerged. `actions-budget-approved` is absent, `develop` remains unchanged
+  at the base above, and no push, label, dispatch, retry, PR mutation, merge, release, version bump,
+  publication or deployment is currently authorized.
+
+### Systemic failure-surface closure and early hosted Glass preflight
+
+- All thirteen consumed PR #35 hosted stops have been audited: **9 instrument/infrastructure, 3
+  product/runtime and 1 mixed**. Each cause through attempt 12 has a permanent guard plus later
+  local or hosted successor evidence. Attempt 13's repaired live Glass path has a complete local
+  Edge certificate but has not yet run on hosted Ubuntu/Chrome.
+- Run `33674116068` reached Glass only after approximately **70m46s**; Glass then stopped after
+  **68,102 ms** on its first 320×568@2 row. Compendium used approximately **37m55s** of its
+  unchanged 40-minute cap and Slice approximately **24m06s**. On `develop`, only evidence upload
+  follows Glass; Recovery and preview remain `main`-only.
+- The workflow successor conditionally runs that same small-phone row immediately after the shared
+  Chrome launcher selftest whenever exact Glass/runtime/build/fixture inputs changed. It is
+  noncertifying, no-retry, capped at five minutes, committed-source stable, canonical-Chrome/CDP
+  `1.3` bound, and archived under its own immutable `...-glass-preflight` ID.
+- Its verdict requires exact 320×568@2 mobile geometry, strict evidence types, zero findings,
+  instrument failures, blocked controls and retries, plus `inventory-modal-focus`,
+  `inventory-modal-retention`, `inventory-protected-action`, `inventory-action-publication` and
+  `inventory-convergence-retry`. These span the two latest hosted Glass classes.
+- Test sources, declarations, docs, `.gitignore` and the worker-only typecheck config do not trigger
+  it. The final Compendium → exact Slice → full 12-viewport Glass certificate remains unconditional
+  and unchanged; the canary cannot satisfy or replace it.
+- Three independent reviews found and closed omitted-input, over-broad-scope, nullable-report,
+  missing-control, canonical-browser-path and malformed-product-provenance defects before any hosted run.
+  Final ordering review is **CLEAR**. Focused workflow/scope/evidence contracts pass **28/28** and
+  Actions policy selftest passes **64/64**. The consolidated working-source `develop` profile passes
+  **264/264 files, 2,739 passed / 1 skipped**, all three TypeScript programs, **34** art sources,
+  **1,014/1,014** routes and **454** declared fields.
+- Exact signed `4a0228d…` passed the hermetic tracked-input rehearsal with the same results. Its
+  unchanged-source Edge `152.0.4191.53` / CDP `1.3` targeted run
+  `20260902-pr35-early-glass-preflight-4a0228d9998e` passed in **13,625 ms** with one exact
+  320×568@2 row, zero findings/instrument failures/blocked controls/retries, **95** executed
+  controls and all five required Inventory controls. Raw report SHA-256 is `9ef29a3b…8f24`; its
+  deterministic retained gzip carrier is `audits/ARC4_GLASS_PR35_EARLY_PREFLIGHT_PASS_20260902_4A0228D.json.gz`
+  with SHA-256 `e0146ec7…e5c`. It is noncertifying local evidence, not hosted Ubuntu/Chrome proof.
+- Full rationale and the complete attempt table are in
+  `audits/PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md`.
+
+### Thirteenth exact hosted attempt — immutable consumed instrument red
+
+- Nick's exact one-time PR #35 `test-battery` authority for head **5ae12c7…** against base
+  **7a9f4c1…** produced GitHub run **33674116068**, attempt 1, synthetic merge
+  **dac0b24ddcc34a9035b8b294727dd104a411ec00**, whose tree is byte-identical to the exact head.
+- Authorization/environment/scope/budget, every browser-free/static/art prerequisite, shared
+  launcher selftest, root Layout **787/787**, Compendium instrument controls, exact browser/live
+  preflight, Compendium **78/78** plus named verification, and real-browser Slice plus its exact
+  binding all passed. SceneMemory correctly skipped as production-only/quarantined.
+- Glass consumed exact Slice `gha-33674116068-1-slice` and stopped instrument-red after **68,102
+  ms** on its first small-phone row. It recorded zero product findings, one instrument failure,
+  **87/104** controls and zero retries; the remaining 11 viewports, Recovery and preview packaging
+  correctly did not run.
+- Exact terminal error: `small-phone: small-phone/Inventory action settlement: outcome did not
+  arrive within 10000ms (last null)`. The workflow ended terminal red after **72m11s**. The
+  authorization is consumed, the label is absent and no merge occurred.
+- The exact audit is
+  `audits/ARC4_GLASS_PR35_ACTION_SETTLEMENT_INSTRUMENT_RED_20260902_5AE12C7.md`. Its deterministic
+  carrier is `audits/ARC4_GLASS_PR35_ACTION_SETTLEMENT_INSTRUMENT_RED_20260902_5AE12C7.json.gz`:
+  raw report SHA-256 `1b454562442d9c4265bf244dd9a3d9b43e3d26e638e58982b6fb6daed32848d6`;
+  gzip `-n -9` SHA-256
+  `9f59ba4d6d61cc0c1de5fb9891f3a57f1590edab45fb0bd9d6ea5c442c2aa064`.
+- This stop exposed two Glass defects, not a product, lease or browser-version defect: a later
+  setup-object spread overwrote the composed action `ok`, and settlement returned only
+  success-or-`null`, discarding the pending/refusal/revision/binding/authority state needed to
+  classify the timeout.
+
+### Bounded successor and current local proof
+
+- The action repair completes and exactly restores the offscreen refusal control before arm; binds
+  the exact document/top-frame/default context/origin and live browser heartbeat; quiesces F4; and
+  owns one exact-sequence diagnostic product-action hold. One native activation must retain its
+  trusted operation/instance receipt and exact pending no-optimism evidence.
+- Wrong hold identity/sequence, contamination or control plumbing is instrument-red. Release owns
+  that exact hold. Every settlement poll is structured with terminal/refusal detail, pending/modal
+  state, revision/binding, persistence/lease and coordinator/hold authority, and observes through
+  a lawful Arc 9 progression tail until the exact owner is idle. Pending and settlement reds
+  causal-stop their dependents.
+- Stable targeted small-phone diagnostic `20260902213203634-49535-0e789796749b` then proved the old
+  targeted portrait campaign intrinsically instrument-red when its one lawful baseline already
+  used trail fallback: neither negative control can honestly start without a visible
+  trail/non-fallback baseline.
+- The narrow scope repair preserves the full 12-row requirement for at least one eligible baseline
+  and exactly one band/fallback control. A targeted eligible baseline also requires both exactly
+  once; a targeted fallback-only baseline requires both counts exactly zero and retains them as
+  scoped omissions. Terminal guards use the same predicate. Eligibility and product geometry are
+  not weakened.
+- Real targeted small-phone successor `20260902213750107-50317-aa753f436e55` passed with zero
+  findings or instrument failures. It is explicitly noncertifying and does not replace a full
+  Glass certificate.
+- Current focused Inventory instrument coverage passes **19/19**; the related four-file set passes
+  **37/37**; Glass selftest and all three TypeScript programs are green. The full browser-free
+  `develop` profile passes **264/264 files, 2,738 passed / 1 skipped**, with **34** clean art
+  sources, **1,014/1,014** routes and **454** declared fields with zero inert fields.
+- Signed `64e405b…` passed the hermetic tracked-input `develop` rehearsal with that same result.
+  Edge **152.0.4191.53** / CDP **1.3** supplied all browser stages; the point version is provenance
+  only.
+- On unchanged clean `64e405b…`, Compendium `20260902214924248-53897-bef91ee56a` passed **78/78**
+  in **61,826 ms**, raw report SHA-256
+  `128763fcdd45cef23cb41f509f8d30bc6c041784c3547252cd6438f0b089f105`, then named-verified.
+- Slice `20260902215043536-54220-81ac577271ec` passed in **362,381 ms** with zero findings/scopes
+  and ten screenshots; report/log SHA-256
+  `7f73b8bb68c4197e44931ec615063d66e7f2ba7b1b5d1e86fcf9eb5850a4b7c3` /
+  `1b89495e6e5d5a10183f16b30be65c84df7cbf1605cf81907dfa951e82b90eba`, then named-verified.
+- Glass `20260902215703000-54563-41950fd00ea0` consumed that exact Slice and passed in **114,022
+  ms** with **12/12** viewports, **12/12** reload rows and **104/104** controls; it retained zero
+  findings, instrument failures, blocked/omitted controls or retries. Report SHA-256
+  `de298933a9be237efcb926d28054a2fcb308ca09eacc2532bbb7b75c67ddadc2`; the Slice-bound named
+  verifier passed.
+- Each browser stage ran once/no-retry on the same unchanged clean source. Independent final code
+  and documentation reviews are **CLEAR**. Signed evidence/reference descendant `112bf7f…`
+  preserves the four deterministic carriers and passes the final tracked-input `develop` profile
+  at **264/264 files, 2,738 passed / 1 skipped**; the current handoff-only descendant passes it too.
+  Local closure is complete, but this certificate grants no hosted authority.
+
+### Scope and preserved vision
+
+- This batch changes Glass evidence ownership and targeted diagnostic scope only.
+- It changes no gameplay or product behavior, creature/genome, plant, biome, Guardian, world
+  generation, loot, graphics, audio, save/persistence rule, numeric ruler/ceiling, timeout, retry,
+  browser-family/point-version policy, workflow job, sealed **104-control** inventory, Gate/HUMAN
+  status, production version or release boundary.
+- Compatible Edge-family updates at CDP 1.3 remain provenance-only and never require a rebaseline.
+
+### Paired Git/Claude handoff
+
+- **OpenAI/Codex next:** resolve the exact current signed head with `git rev-parse HEAD` and report
+  it against base **7a9f4c1…**. Only after Nick gives a fresh exact-head one-attempt PR #35
+  authorization, push
+  `openai/mac`, refresh PR #35 metadata, apply `actions-budget-approved`, and run `test-battery`
+  once with a 92-minute maximum and no retry; merge into `develop` only if terminal green.
+- **PR:** existing #35, base **develop**, source **openai/mac**.
+- **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
+- **Description:** “Completes the established v2 roadmap campaign without recreating its gameplay
+  systems; preserves the immutable thirteenth hosted action-settlement instrument stop; repairs
+  exact Inventory action evidence and targeted portrait campaign scope; audits all thirteen
+  consumed stops; adds a five-minute changed-input hosted Glass canary without changing product,
+  browser policy, timeout, retry, workflow jobs or the sealed control inventory; and preserves the
+  mandatory no-retry Compendium → Slice → full Glass develop chain.”
+- **Claude Code next:** Nick does not need to open Claude yet. Claude/Fable should begin the
+  requested full polish review only after PR #35 is terminal green and merged into `develop`, from
+  a fresh `anthropic/*` branch synchronized from `origin/develop`.
+- **Actions budget:** mode **UNFROZEN**, public-repository assumption while verified, private
+  fallback cap **3,000**, and **zero** hosted attempts authorized.
+
 ## ARCHIVED 2026-09-02 — twelfth Inventory handoff superseded by thirteenth hosted action-settlement instrument stop
 
 > Moved byte-verbatim from the live ROADMAP after GitHub run `33674116068` exposed the next

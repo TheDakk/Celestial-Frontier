@@ -1,6 +1,42 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **D-PR35-INVENTORY-MODAL-LIFETIME — 2026-09-02 current deviation overlay (matches current local
+> **D-PR35-CAPTURE-FOCUS-ATOMIC-GEOMETRY — 2026-09-03 UTC current deviation overlay (matches the
+> bounded working repair; final local certificate pending):** PR #35 run `33694235427`, attempt 1,
+> tested exact head `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. The early small-phone Glass preflight passed on the
+> same clean source/browser; Layout, Compendium and exact-bound Slice then passed. Full Glass
+> stopped on its first small-phone row when the old multi-command Sample carrier combined a button
+> rectangle centred at y `173.171875` / scroll `2538` with later y `504.171875` hit points on
+> `NAV` after the five-second authority heartbeat replaced the DOM and bare focus restoration
+> moved scroll to `2207`. That is an instrument chronology contradiction despite the old product
+> label; the earlier PASS establishes timing variability, not closure.
+>
+> The bounded product deviation is only passive focus ownership: authority rerenders restore the
+> same Capture semantic action with `focus({preventScroll:true})`, while explicit action settlement
+> retains its prior reveal behavior. The bounded instrument deviation forces that heartbeat in
+> deterministic small-phone control, binds quiesce/resume and document identity, reacquires the
+> replacement node, captures geometry/scroll/centre-hit/focus atomically and rejects a cross-epoch
+> carrier before product assessment. It also requires actual focused ownership for every action
+> and Close witness plus a settled Close scroll; isolated mutations prove all three omissions red.
+> It adds no job, timeout, retry, browser pin, viewport or control; the Glass inventory remains 104.
+>
+> Current Compendium measurement/producer authority is
+> `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
+> `c216cdc9e8d62800699bc592949726a197f3d8cb6613d1a35086ecd69a1d8cae`. The exact current inputs
+> are index `d0b1397bfe6e7f0eeb2db59d5dc424136336d5646a08bca2415a4797f2584a64`, owner
+> `assets/main-CwKRu39a.js` /
+> `5750c8a40693a6ef2c73e7692170500164f76e0e80eec506bf534c42da8c8360`, unchanged worker and
+> painter `assets/species-art.worker-DnnSDKMy.js` /
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`, and service worker
+> `a58f287726ca38851665b366580e8910ed4f9d98b0a050fd17804b2d9afa8dc8`. The fixed ruler,
+> ceilings, 78 outcomes and historical samples are unchanged; this is source identity, not
+> recalibration. Both hosted reports are retained and indexed under `../../audits/`. Focused repair
+> coverage passes **53/53**, and the complete browser-free `develop` profile passes **265/265
+> files, 2,749 passed / 1 skipped** with all three TypeScript programs and static owners green. A
+> fresh exact clean Compendium → Slice → Glass certificate remains pending. No browser-chain
+> successor, hosted, merge, release or deployment authority is claimed.
+
+> **D-PR35-INVENTORY-MODAL-LIFETIME — 2026-09-02 historical predecessor deviation overlay (matches exact
 > code; supersedes older “current” labels while dated evidence remains immutable):** hosted PR #35
 > run `33657402955` tested exact head `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b` once/no-retry. Layout, Compendium and Slice passed;
@@ -29,7 +65,7 @@
 > descendant containing this reference also passes final tracked-input proof. No gameplay, loot, save,
 > creature/genome, plant, biome, Guardian, art, graphics, audio, ruler, retry, browser-family,
 > Gate/HUMAN, release, version or production-identity deviation follows.
-> Current Compendium measurement/producer authority is
+> That exact-source Compendium measurement/producer authority was
 > `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
 > `f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc`; this exact-source graph
 > refresh changes no worker/painter bytes, fixed ruler, numeric ceiling, outcome or sample.

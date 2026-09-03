@@ -1,6 +1,52 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-09-02 current early hosted Glass-preflight architecture overlay (workflow/evidence only;
+> **2026-09-03 UTC current Capture-focus / Glass-chronology architecture overlay (matches the
+> bounded working repair; final local certificate pending):** hosted PR #35 run `33694235427`
+> tested exact head `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Its changed-input small-phone Glass preflight passed
+> on hosted Chrome; Layout **787/787**, Compendium **78/78** plus named verification and
+> exact-bound Slice also passed. Full Glass stopped on the first small-phone row with one old-
+> classifier `ARC4_CAPTURE_GEOMETRY_FOCUS` finding, zero reported instrument failures, **67/104**
+> controls, 37 causal blocks and no retry.
+>
+> The old collector assembled Arc 4 geometry from multiple CDP evaluations. During Sample, it
+> retained a button rectangle centred at y `173.171875` and ancestor scroll top `2538`; the
+> ordinary five-second Capture authority heartbeat then replaced the card, and bare restoration of
+> prior Scavenge focus moved the Survey scroll to `2207`. Later hit testing used y `504.171875` on
+> `NAV`. Those facts cross layout epochs, so the hosted stop is instrument despite its old product
+> label. The earlier same-source/browser preflight PASS establishes timing variability, not a sound
+> collector or a green certificate.
+>
+> `CaptureCardController.#restoreView()` now marks passive rerender restoration explicitly and
+> routes it through `#restoreElement(..., true)`, which calls `focus({preventScroll:true})`.
+> Default `#restoreElement()` behavior remains available to explicit action settlement, preserving
+> its existing reveal semantics. No Capture mechanics, action structure, odds, SessionRNG, Yield,
+> rewards, ownership or persistence schema change.
+>
+> `buildArc4AtomicGeometryEvidenceExpression()` is now the single browser-side action/Close
+> collector. It focuses before scroll, forces the small-phone Sample heartbeat through exact
+> quiesce/resume smoke receipts, reacquires the replacement node, then captures rectangle,
+> ancestor scroll, translated layout, centre hit and focus across stable frames in one chronology.
+> Each carrier owns `cf-v2-glass-arc4-control-geometry/v1`; the forced replacement owns
+> `cf-v2-glass-arc4-heartbeat-rerender/v1`. `assessArc4CaptureGeometryEvidenceCoherence()` runs
+> before `assessArc4CaptureCardGeometryFocus()`: a partial/cross-epoch carrier is instrument-red
+> and causal-stops product assessment, while a wholly missing target remains coherent evidence for
+> the product assessor. The product assessor requires `focused:true` for every action and Close
+> witness and requires Close's captured scroll to be settled; isolated negative controls cover an
+> unfocused action, unfocused Close and unsettled Close.
+>
+> Current Compendium measurement/producer authority is
+> `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
+> `c216cdc9e8d62800699bc592949726a197f3d8cb6613d1a35086ecd69a1d8cae`; built index
+> `d0b1397b…84a64`, owner `assets/main-CwKRu39a.js` / `5750c8a4…c8360`, and service worker
+> `a58f2877…8dc8` are the changed leaves. Worker/painter bytes, ruler, ceilings, outcomes and
+> historical samples are unchanged. The full record and both hosted Glass carriers are under
+> `audits/`. Focused repair coverage passes **53/53**, and the full browser-free `develop` profile
+> passes **265/265 files, 2,749 passed / 1 skipped** with all three TypeScript programs and static
+> owners green. A clean unchanged-source Compendium → Slice → Glass chain remains **pending**;
+> this overlay claims no browser-chain successor or hosted authority.
+
+> **2026-09-02 historical predecessor early hosted Glass-preflight architecture overlay (workflow/evidence only;
 > exact signed local browser proof green):** `port/v2/tools/battery-scope.mjs` now projects one
 > `glass_preflight_changed` output from the exact Glass tools, direct fixture/build inputs,
 > application runtime sources, and package runtime sources. It excludes colocated/package tests,
@@ -34,7 +80,7 @@
 > point-version policy, timeout, retry, release, or deployment behavior changed; no hosted attempt
 > is authorized.
 
-> **2026-09-02 current Glass Inventory action-evidence architecture overlay (matches the exact
+> **2026-09-02 historical predecessor Glass Inventory action-evidence architecture overlay (matches the exact
 > signed local successor; its evidence/docs descendant is pending and older dated evidence remains
 > immutable):** PR #35 run `33674116068`, attempt 1, tested exact head
 > `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
@@ -92,7 +138,7 @@
 > handoff-only descendant passes it too. Local closure is complete, but this exact local
 > certificate grants no hosted authority.
 
-> **2026-09-02 current Inventory modal-lifetime overlay (matches current local code; supersedes
+> **2026-09-02 historical predecessor Inventory modal-lifetime overlay (matches exact source; supersedes
 > older “current” labels while dated evidence remains immutable):** PR #35 run `33657402955`,
 > attempt 1, tested exact head `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b`. Layout, Compendium and Slice passed; Glass then
@@ -122,7 +168,7 @@
 > containing this reference also passes final tracked-input proof. No
 > gameplay, loot, save, creature/genome, plant, biome, Guardian, art, graphics, audio, ruler, retry,
 > browser-version, Gate/HUMAN, release or production identity changed.
-> Current Compendium measurement/producer authority is
+> That exact-source Compendium measurement/producer authority was
 > `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
 > `f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc`; the product/release
 > copy moved only the exact built index/main/service-worker graph. Worker/painter bytes, the fixed
@@ -1807,7 +1853,9 @@
 > reload without reroll or second write. `capture-card.ts` presents a source-bound uniform random
 > eligible pool—not targeted species selection—with preview/full counts, aggregate and individual
 > odds, one shared hit-or-miss Biosphere Yield, active-play recovery, pending non-optimism and
-> native Close/reopen/focus behavior. Its CSS action owner centers Tame/Scavenge/Sample at the base
+> native Close/reopen/focus behavior. Passive authority rerenders replace their DOM while restoring
+> the same semantic action with `focus({preventScroll:true})`; explicit action settlement retains
+> default-focus reveal behavior. Its CSS action owner centers Tame/Scavenge/Sample at the base
 > four-row grid scope instead of stretching them, retains the 44px floor, and preserves ≤390px
 > full-width plus short-landscape behavior without changing Capture mechanics. At that historical
 > checkpoint, Guide Capture/Discover copy was
