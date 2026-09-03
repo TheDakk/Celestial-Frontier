@@ -1106,18 +1106,72 @@ const stopF4Heartbeat = (): void => {
   if (f4HeartbeatTimer !== 0) clearInterval(f4HeartbeatTimer);
   f4HeartbeatTimer = 0;
 };
-let f4HeartbeatCycleInFlight: Promise<void> | null = null;
+type F4HeartbeatCycleReason =
+  | 'smoke-quiesced'
+  | 'runtime-unavailable'
+  | 'persistence-held'
+  | 'page-hidden'
+  | 'persist-in-flight'
+  | 'import-in-flight'
+  | 'replacement-in-flight'
+  | 'runtime-heartbeat-in-flight'
+  | 'lease-held-by-other'
+  | 'lease-lost'
+  | 'revision-refused'
+  | 'bootstrap-refused'
+  | 'storage-error';
+type F4HeartbeatCycleReceipt = Readonly<{
+  schema: 'cf-v2-f4-heartbeat-cycle-receipt/v1';
+  documentToken: string;
+  cycle: 'completed' | 'skipped' | 'failed';
+  reason: F4HeartbeatCycleReason | null;
+  refresh: Readonly<{
+    shipyard: 'completed' | 'panel-closed' | 'product-action-in-flight' | 'not-reached';
+    compendium: 'completed' | 'panel-closed' | 'not-detail'
+      | 'product-action-in-flight' | 'not-reached';
+    capture: 'completed' | 'card-hidden' | 'surface-not-owned'
+      | 'product-action-in-flight' | 'not-reached';
+  }>;
+}>;
+const F4_HEARTBEAT_REFRESH_NOT_REACHED = Object.freeze({
+  shipyard: 'not-reached' as const,
+  compendium: 'not-reached' as const,
+  capture: 'not-reached' as const,
+});
+function f4HeartbeatCycleReceipt(
+  cycle: F4HeartbeatCycleReceipt['cycle'],
+  reason: F4HeartbeatCycleReason | null,
+  refresh: F4HeartbeatCycleReceipt['refresh'] = F4_HEARTBEAT_REFRESH_NOT_REACHED,
+): F4HeartbeatCycleReceipt {
+  return Object.freeze({
+    schema: 'cf-v2-f4-heartbeat-cycle-receipt/v1' as const,
+    documentToken: DOCUMENT_TOKEN,
+    cycle,
+    reason,
+    refresh: Object.freeze({ ...refresh }),
+  });
+}
+let f4HeartbeatCycleInFlight: Promise<F4HeartbeatCycleReceipt> | null = null;
 let f4HeartbeatSmokeQuiesced = false;
 const F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER = Symbol('f4-heartbeat-cycle-checkpoint-owner');
 const F4_LIFECYCLE_CHECKPOINT_OWNER = Symbol('f4-lifecycle-checkpoint-owner');
-const runF4HeartbeatCycle = async (): Promise<void> => {
-  if (!f4Runtime || persistHold || !f4PageVisible()
-    || activePersist || importWriteInFlight || replacementTransaction) return;
-  if (f4HeartbeatInFlight) return f4HeartbeatInFlight;
+const runF4HeartbeatCycle = async (): Promise<F4HeartbeatCycleReceipt> => {
+  if (!f4Runtime) return f4HeartbeatCycleReceipt('skipped', 'runtime-unavailable');
+  if (persistHold) return f4HeartbeatCycleReceipt('skipped', 'persistence-held');
+  if (!f4PageVisible()) return f4HeartbeatCycleReceipt('skipped', 'page-hidden');
+  if (activePersist) return f4HeartbeatCycleReceipt('skipped', 'persist-in-flight');
+  if (importWriteInFlight) return f4HeartbeatCycleReceipt('skipped', 'import-in-flight');
+  if (replacementTransaction) return f4HeartbeatCycleReceipt('skipped', 'replacement-in-flight');
+  if (f4HeartbeatInFlight) {
+    await f4HeartbeatInFlight;
+    return f4HeartbeatCycleReceipt('skipped', 'runtime-heartbeat-in-flight');
+  }
   let heartbeatOwned = false;
+  let heartbeatKind: 'owned' | 'held-by-other' | 'storage-error' | 'lost' | null = null;
   let checkpointDue = false;
   const runtime = f4Runtime;
   const run = runtime.heartbeat().then((outcome) => {
+    heartbeatKind = outcome.kind;
     if (outcome.kind === 'storage-error') {
       handleF4HeartbeatStorageError(runtime, outcome, 'periodic F4 heartbeat');
       return;
@@ -1129,14 +1183,26 @@ const runF4HeartbeatCycle = async (): Promise<void> => {
   f4HeartbeatInFlight = run;
   try { await run; }
   finally { if (f4HeartbeatInFlight === run) f4HeartbeatInFlight = null; }
-  if (!heartbeatOwned) return;
+  if (!heartbeatOwned) {
+    if (heartbeatKind === 'storage-error') {
+      return f4HeartbeatCycleReceipt('failed', 'storage-error');
+    }
+    return f4HeartbeatCycleReceipt(
+      'skipped',
+      heartbeatKind === 'held-by-other' ? 'lease-held-by-other' : 'lease-lost',
+    );
+  }
   if (heartbeatOwned) {
-    if (!await ensureF4RevisionCurrent(runtime)) return;
+    if (!await ensureF4RevisionCurrent(runtime)) {
+      return f4HeartbeatCycleReceipt('skipped', 'revision-refused');
+    }
     if ((f4SeedBootstrapPending || bootRouteRepairPending
       || arc2LootBootstrapPending || arc3EngineeringBootstrapPending
       || arc4OwnershipBootstrapPending || arc5OwnershipBootstrapPending
       || worldIdentityBootstrapPending)
-      && !await ensureBootAuthorityCommit(runtime)) return;
+      && !await ensureBootAuthorityCommit(runtime)) {
+      return f4HeartbeatCycleReceipt('skipped', 'bootstrap-refused');
+    }
     if (f4RuntimeMayAnswer(runtime)) {
       runtime.setAnswerable(app.ticker?.started === true);
       tameGreetingAudioOwner?.setAnswerable(runtime.diagnostics().answerable);
@@ -1149,21 +1215,41 @@ const runF4HeartbeatCycle = async (): Promise<void> => {
   if (checkpointDue && !productActionInFlight && !activePersist) {
     await persistView(null, 'ordinary', F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER);
   }
+  let shipyardRefresh: F4HeartbeatCycleReceipt['refresh']['shipyard'] =
+    openPanelId() !== 'shipyard' ? 'panel-closed' : 'product-action-in-flight';
   if (heartbeatOwned && openPanelId() === 'shipyard' && !productActionInFlight) {
     refreshEngineeringPanelState();
+    shipyardRefresh = 'completed';
   }
+  let compendiumRefresh: F4HeartbeatCycleReceipt['refresh']['compendium'] =
+    openPanelId() !== 'codex' ? 'panel-closed'
+      : codexMode !== 'detail' ? 'not-detail' : 'product-action-in-flight';
   if (heartbeatOwned && openPanelId() === 'codex' && codexMode === 'detail'
     && !productActionInFlight) {
     refreshCompendiumFeedState();
+    compendiumRefresh = 'completed';
   }
+  let captureRefresh: F4HeartbeatCycleReceipt['refresh']['capture'] =
+    card.style.display === 'none' ? 'card-hidden'
+      : 'product-action-in-flight';
   if (heartbeatOwned && card.style.display !== 'none'
     && surveyOwnsCurrentCaptureSurface() && !productActionInFlight) {
     refreshCaptureCardState();
     refreshCombatCardState();
+    captureRefresh = 'completed';
+  } else if (card.style.display !== 'none' && !productActionInFlight) {
+    captureRefresh = 'surface-not-owned';
   }
+  return f4HeartbeatCycleReceipt('completed', null, {
+    shipyard: shipyardRefresh,
+    compendium: compendiumRefresh,
+    capture: captureRefresh,
+  });
 };
-const heartbeatF4 = (): Promise<void> => {
-  if (f4HeartbeatSmokeQuiesced) return Promise.resolve();
+const heartbeatF4 = (): Promise<F4HeartbeatCycleReceipt> => {
+  if (f4HeartbeatSmokeQuiesced) {
+    return Promise.resolve(f4HeartbeatCycleReceipt('skipped', 'smoke-quiesced'));
+  }
   if (f4HeartbeatCycleInFlight) return f4HeartbeatCycleInFlight;
   const run = runF4HeartbeatCycle();
   const tracked = run.finally(() => {

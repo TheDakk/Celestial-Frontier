@@ -22,6 +22,115 @@ const canonicalJson = (value) => {
   return JSON.stringify(value);
 };
 
+const engineeringDisclosureRowsSource = (sectionIdSource) => (
+  `[...document.querySelectorAll('#shipyardpanel details[data-engineering-section]')]`
+  + `.filter((row)=>row.getAttribute('data-engineering-section')===${sectionIdSource})`
+);
+
+/**
+ * Arms one document-owned native-key receipt before a Shipyard disclosure is
+ * activated. The listener deliberately does not close over the initial
+ * summary: an ordinary Engineering heartbeat may replace the panel body
+ * between this expression and the CDP Enter dispatch.
+ */
+export function buildEngineeringDisclosureSetupExpression(sectionId) {
+  if (!nonEmptyString(sectionId)) {
+    throw new TypeError('Engineering disclosure setup requires one section identity');
+  }
+  const encodedId = JSON.stringify(sectionId);
+  const rows = engineeringDisclosureRowsSource('sectionId');
+  return `(()=>{const sectionId=${encodedId},rows=${rows},details=rows.length===1?rows[0]:null,
+    summary=details?[...details.children].find((node)=>node.tagName==='SUMMARY')??null:null,
+    rect=summary?.getBoundingClientRect()??null;
+    window.__cfEngineeringDisclosureKeys=[];window.__cfEngineeringDisclosureAbort?.abort();
+    const controller=new AbortController();window.__cfEngineeringDisclosureAbort=controller;
+    window.__cfEngineeringDisclosureOriginal=summary??null;
+    document.addEventListener('keydown',(event)=>{const currentRows=${rows},
+      currentDetails=currentRows.length===1?currentRows[0]:null,
+      current=currentDetails?[...currentDetails.children].find((node)=>node.tagName==='SUMMARY')??null:null,
+      target=event.target instanceof Element?event.target.closest('summary'):null;
+      window.__cfEngineeringDisclosureKeys.push({schema:'cf-v2-slice-engineering-disclosure-key/v1',
+        sectionId,key:event.key,code:event.code,trusted:event.isTrusted===true,
+        currentSectionCount:currentRows.length,currentSectionId:currentDetails?.getAttribute('data-engineering-section')??null,
+        targetSectionId:target?.parentElement?.getAttribute('data-engineering-section')??null,
+        currentFocusKey:current?.getAttribute('data-focus-key')??null,
+        targetFocusKey:target?.getAttribute('data-focus-key')??null,
+        targetWasCurrent:target!==null&&target===current,activeWasCurrent:current!==null&&document.activeElement===current,
+        targetConnected:target?.isConnected===true,currentConnected:current?.isConnected===true,
+        sameDocument:target?.ownerDocument===document&&current?.ownerDocument===document});},
+      {capture:true,signal:controller.signal});
+    summary?.focus();return {schema:'cf-v2-slice-engineering-disclosure-setup/v1',sectionId,
+      present:!!summary,sectionCount:rows.length,open:details?.open??null,
+      focused:document.activeElement===summary,height:rect?.height??0,
+      focusKey:summary?.getAttribute('data-focus-key')??null,originalConnected:summary?.isConnected===true};})()`;
+}
+
+/** Reacquires the current summary and closes the document-owned receipt. */
+export function buildEngineeringDisclosureOutcomeExpression(sectionId) {
+  if (!nonEmptyString(sectionId)) {
+    throw new TypeError('Engineering disclosure outcome requires one section identity');
+  }
+  const encodedId = JSON.stringify(sectionId);
+  const rows = engineeringDisclosureRowsSource('sectionId');
+  return `(()=>{const sectionId=${encodedId},rows=${rows},details=rows.length===1?rows[0]:null,
+    summary=details?[...details.children].find((node)=>node.tagName==='SUMMARY')??null:null,
+    original=window.__cfEngineeringDisclosureOriginal??null,
+    keys=Array.isArray(window.__cfEngineeringDisclosureKeys)?[...window.__cfEngineeringDisclosureKeys]:[],
+    rect=summary?.getBoundingClientRect()??null;
+    window.__cfEngineeringDisclosureAbort?.abort();delete window.__cfEngineeringDisclosureAbort;
+    delete window.__cfEngineeringDisclosureKeys;delete window.__cfEngineeringDisclosureOriginal;
+    return {schema:'cf-v2-slice-engineering-disclosure-outcome/v1',sectionId,
+      present:!!summary,sectionCount:rows.length,open:details?.open??null,
+      focused:document.activeElement===summary,height:rect?.height??0,
+      focusKey:summary?.getAttribute('data-focus-key')??null,currentConnected:summary?.isConnected===true,
+      originalConnected:original?.isConnected??null,replacementObserved:!!original&&!!summary&&original!==summary,keys};})()`;
+}
+
+/**
+ * Keeps native transport and product focus/toggle evidence exact while
+ * accepting either the original summary or its live semantic successor.
+ */
+export function assessEngineeringDisclosureActivation(evidence) {
+  const sectionId = evidence?.sectionId;
+  const before = evidence?.before;
+  const after = evidence?.after;
+  const receipt = Array.isArray(after?.keys) && after.keys.length === 1 ? after.keys[0] : null;
+  const expectedFocusKey = nonEmptyString(sectionId) ? `section:${sectionId}` : null;
+  const checks = Object.freeze({
+    sectionIdentity: nonEmptyString(sectionId)
+      && before?.sectionId === sectionId && after?.sectionId === sectionId,
+    setupShape: before?.schema === 'cf-v2-slice-engineering-disclosure-setup/v1'
+      && before?.present === true && before?.sectionCount === 1
+      && typeof before?.open === 'boolean' && before?.focused === true
+      && Number.isFinite(before?.height) && before.height >= 44
+      && before?.originalConnected === true,
+    setupFocusIdentity: expectedFocusKey !== null && before?.focusKey === expectedFocusKey,
+    outcomeShape: after?.schema === 'cf-v2-slice-engineering-disclosure-outcome/v1'
+      && after?.present === true && after?.sectionCount === 1
+      && typeof after?.open === 'boolean' && after?.focused === true
+      && Number.isFinite(after?.height) && after.height >= 44
+      && after?.currentConnected === true,
+    outcomeFocusIdentity: expectedFocusKey !== null && after?.focusKey === expectedFocusKey,
+    nativeToggle: typeof before?.open === 'boolean' && after?.open === !before.open,
+    oneReceipt: receipt !== null,
+    trustedEnter: receipt?.schema === 'cf-v2-slice-engineering-disclosure-key/v1'
+      && receipt?.trusted === true && receipt?.key === 'Enter' && receipt?.code === 'Enter',
+    liveTargetIdentity: receipt?.sectionId === sectionId && receipt?.currentSectionCount === 1
+      && receipt?.currentSectionId === sectionId && receipt?.targetSectionId === sectionId
+      && receipt?.currentFocusKey === expectedFocusKey && receipt?.targetFocusKey === expectedFocusKey
+      && receipt?.targetWasCurrent === true,
+    liveFocus: receipt?.activeWasCurrent === true,
+    connectedDocument: receipt?.targetConnected === true && receipt?.currentConnected === true
+      && receipt?.sameDocument === true,
+    replacementLineage: after?.replacementObserved === true
+      ? after?.originalConnected === false : after?.originalConnected === true,
+  });
+  const reasons = Object.freeze(Object.entries(checks)
+    .filter(([, value]) => value !== true)
+    .map(([name]) => name));
+  return Object.freeze({ ok: reasons.length === 0, checks, reasons });
+}
+
 export const GUIDE_RELEASE_TAIL_NATIVE_WHEEL_DEFAULTS = Object.freeze({
   maxDurationMs: 4_000,
   maxAttempts: 64,

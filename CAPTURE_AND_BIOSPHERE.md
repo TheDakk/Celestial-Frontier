@@ -1,6 +1,23 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-> **2026-09-03 UTC current Capture semantic-focus evidence overlay (matches current local code):**
+> **2026-09-03 UTC current structured Capture-heartbeat evidence overlay (matches current local
+> code):** Capture mechanics remain unchanged. Every lawful F4 heartbeat path now returns one
+> exact `cf-v2-f4-heartbeat-cycle-receipt/v1` with the current document token, a
+> completed/skipped/failed cycle, typed reason and exact Capture/Shipyard/Compendium refresh
+> disposition. The forced `large-phone` native-Tab diagnostic accepts only a completed cycle with
+> null reason and `refresh.capture=completed`, then proves old Scavenge/Sample disconnection,
+> current semantic replacements, restored Scavenge focus and trusted Tab to the current Sample.
+>
+> The changed-input hosted diagnostic runs `small-phone` then this `large-phone` row sequentially
+> inside one five-minute/no-retry step under separate immutable IDs. It is noncertifying and cannot
+> replace exact-Slice-bound 12-row Glass. Current PASS authority is
+> `cf-v2-glassmatrix/v2`; historical v1 red evidence remains readable but v1 PASS is refused.
+> Capture pools, odds, SessionRNG, hit/miss spending, Biosphere Yield, ecology, ownership,
+> creature/genome identity, rewards, persistence/save schema and card structure are unchanged.
+> Focused closure passes **73/73** and the consolidated browser-free `develop` profile passes
+> **268/268 files, 2,785 passed / 1 skipped**; clean-source browser evidence remains pending.
+>
+> **2026-09-03 UTC historical predecessor Capture semantic-focus evidence overlay (matches current local code):**
 > Capture mechanics remain unchanged. An ordinary authority heartbeat can replace the open Tame /
 > Scavenge / Sample DOM while preserving the player's semantic focus. The existing passive path
 > restores the matching action with `focus({preventScroll:true})`; explicit action settlement keeps
@@ -119,10 +136,11 @@
 > focused and full browser-free evidence was green at 230 files / 2,315 passed + one skipped; a fresh clean
 > Slice/Glass/Recovery chain and HUMAN acceptance remain outstanding.
 
-**STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2 native
-semantic-focus evidence, forced `large-phone` heartbeat replacement and fail-closed post-Glass
-diagnostic-retention boundary match local code as of 2026-09-03 UTC. Its targeted Edge/CDP row is
-green and noncertifying; the consumed hosted attempt remains red and creates no retry or merge
+**STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The current v2
+structured heartbeat receipt, semantic-focus evidence, forced `large-phone` replacement and
+fail-closed Glass v2 boundary match local code as of 2026-09-03 UTC. The older targeted Edge/CDP
+row remains green/noncertifying historical evidence; fresh current-source rows are recorded in the
+live roadmap when complete. The consumed hosted attempt remains red and creates no retry or merge
 authority. The v2
 ecology/audio/Charter overlay matches the player-facing durable Arc 4 capture slice, and the separate
 Guardian acquisition carrier plus player-live verified combat join match the local Arc 6 candidate as

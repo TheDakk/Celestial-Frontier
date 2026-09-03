@@ -52,6 +52,7 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
   const globallyRequired = [
     'CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice',
     'CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass-preflight',
+    'CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass-large-phone-preflight',
     'CF_V2_GLASSMATRIX_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass',
     'CF_V2_ARC4_RECOVERY_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-recovery',
   ];
@@ -113,6 +114,7 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
     'port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json',
     'port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log',
     'port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID }}.json',
+    'port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID }}.json',
     'port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json',
     'port/v2/apps/game/smoke/arc4-recovery-${{ env.CF_V2_ARC4_RECOVERY_RUN_ID }}.json',
   ];
@@ -437,6 +439,8 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(collector).toContain('glassTerminalEvidenceErrors(report');
     expect(glassContract).toContain('Glass planned-vs-executed negative-control ledger');
     expect(glassContract).toContain('Glass Arc 4 capture outcome inventory is empty');
+    expect(glassContract).toContain('current Glass PASS schema is required');
+    expect(glassContract).toContain('Glass Shipyard keyboard heartbeat outcome is malformed');
     expect(glassContract).toContain('Glass viewport inventory is not the exact ordered 12-row matrix');
     expect(collector).toContain('attemptCount: 1');
     expect(collector).toContain('automaticRetries: 0');
@@ -597,6 +601,15 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     );
     expect(workflowEvidenceChainErrors(pointerOnly)).toContain(
       'missing-or-duplicate:port/v2/apps/game/smoke/arc4-recovery-${{ env.CF_V2_ARC4_RECOVERY_RUN_ID }}.json',
+    );
+    const missingLargePhoneCanary = workflow
+      .replace('      CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass-large-phone-preflight\n', '')
+      .replace('            port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID }}.json\n', '');
+    expect(workflowEvidenceChainErrors(missingLargePhoneCanary)).toContain(
+      'missing-or-duplicate:CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass-large-phone-preflight',
+    );
+    expect(workflowEvidenceChainErrors(missingLargePhoneCanary)).toContain(
+      'missing-or-duplicate:port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID }}.json',
     );
 
     const commentedVerifier = workflow.replace(

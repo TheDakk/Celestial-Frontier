@@ -1,6 +1,31 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **D-PR35-CAPTURE-FOCUS-ATOMIC-GEOMETRY — 2026-09-03 UTC current deviation overlay (matches exact
+> **D-PR35-A922-FORENSIC-PREVENTION — 2026-09-03 UTC current deviation overlay (matches current
+> local code; final clean-source certificate pending):** workflow orchestration now retains its one
+> authorization job plus one battery job under a 120-minute battery / 55-minute Compendium envelope,
+> and the five-minute changed-input Glass diagnostic exercises `small-phone` then `large-phone`
+> sequentially with distinct immutable evidence. Structured F4 receipts and current semantic
+> Shipyard Summary re-query make the large-phone heartbeat/Enter path causally replayable; current
+> PASS authority is `cf-v2-glassmatrix/v2`, while v1 remains historical-red-only. Mandatory artifact
+> upload remains hard-fail. This is evidence/orchestration scope only: no gameplay, save, ruler,
+> browser-version, retry, release or product-presentation change follows.
+>
+> Compendium measurement/producer authority is
+> `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
+> `ad74e459e00a12c516fc7fbfc17122cb53faa14ef89bdbe5d4e6776d658cb907`. Its exact current inputs
+> are index `cd0e95da7c7fd873dc690b5a7033bc3694f7c7a11b42cffe013731695bead12a`, owner
+> `assets/main-DwocSeDU.js` /
+> `91ef7057d47019b37c558c4f719ba91dcf7f012232443e03da36228bda91aeaa`, unchanged worker/painter
+> `assets/species-art.worker-DnnSDKMy.js` /
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`, and service worker
+> `e9cfc8c7324bef9e1b94741fe5e83ffcc3ca9ea9ec9c96056d18e9b2dde5ca0c`. The fixed ruler,
+> numeric ceilings, 78 outcomes and historical samples remain byte-identical; this derived source
+> identity refresh is not a rebaseline. The former `c216cdc9…d8cae` producer remains historical for
+> its exact bytes. Focused closure is **73/73**, authority coverage is **32/32**, and the complete
+> browser-free `develop` profile passes **268/268 files, 2,785 passed / 1 skipped** with all three
+> TypeScript programs and static owners green.
+
+> **D-PR35-CAPTURE-FOCUS-ATOMIC-GEOMETRY — 2026-09-03 UTC historical predecessor deviation overlay (matches exact
 > signed local successor; local certificate green):** PR #35 run `33694235427`, attempt 1,
 > tested exact head `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b`. The early small-phone Glass preflight passed on the

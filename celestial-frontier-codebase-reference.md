@@ -1,6 +1,51 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-09-03 UTC current Glass native-Tab identity / diagnostic-retention architecture overlay
+> **2026-09-03 UTC current PR #35 forensic-prevention architecture overlay (matches current local
+> code):** `.github/workflows/test.yml` retains one two-minute authorization job and one battery
+> job. The battery orchestration cap is 120 minutes and Compendium's independent step cap is 55;
+> `tools/actions-budget-policy.js` seals both and rejects topology/retry/soft-fail drift. These are
+> not product deadlines, memory rulers, browser pins or hosted authority. One exact future attempt
+> would have a 122-runner-minute maximum including authorization, once/no-retry.
+>
+> The changed-input Glass step remains one five-minute process and executes distinct immutable
+> `small-phone` then `large-phone` targeted rows sequentially. The first retains Inventory
+> action/modal evidence; the second binds Capture native Tab and one Shipyard `mining` Summary
+> native Enter across forced ordinary F4 heartbeat replacements. Either red stops immediately.
+> The diagnostic is noncertifying; Compendium → exact Slice → full 12-row Glass remains the
+> unconditional `develop` certificate.
+>
+> `runF4HeartbeatCycle()` now resolves one
+> `cf-v2-f4-heartbeat-cycle-receipt/v1` for every lawful completed/skipped/failed path, binding the
+> current document, typed reason and Shipyard/Compendium/Capture refresh disposition. Capture's
+> forced carrier/assessment are now `cf-v2-glass-arc4-native-tab-heartbeat/v2` and
+> `cf-v2-glass-arc4-native-tab-assessment/v2`; their completed receipt must name
+> `refresh.capture=completed`. The generic Shipyard setup/heartbeat/receipt/assessment carrier
+> re-queries the current Summary by selector and full descriptor, proves original disconnection,
+> current replacement/focus, completed `refresh.shipyard`, trusted current-target Enter and the
+> expected disclosure toggle.
+> The ambient timer is quiesced and settled before that baseline is rebound. This closes the
+> setup-to-quiescence race; coherent missing/duplicate targets remain product-red with exact null
+> evidence instead of being misclassified as malformed instrumentation.
+>
+> `glassmatrix-evidence-contract.mjs` owns current PASS schema `cf-v2-glassmatrix/v2`. Glass's
+> writer/verifier, Recovery, terminal diagnostic and persona consumer refuse v1 PASS, including
+> targeted PASS; v1 remains accepted only for historical red diagnostics. PASS deep-replays exact
+> descriptor maps, 44px rectangles, string display/visibility, target-plus-ancestor effective
+> opacity and exact assessment-key maps. Hosted jq repeats those raw checks instead of trusting
+> summary booleans. Product Shipyard focus restoration already existed in
+> `EngineeringPanelController.#captureView/#restoreView`; no duplicate product fix was added.
+> Mandatory artifact upload remains hard-fail.
+>
+> Focused closure passes **73/73**, all three TypeScript programs, Glass/Recovery/persona
+> selftests and **66** Actions-policy mutations. The consolidated browser-free `develop` profile
+> passes **268/268 files, 2,785 passed / 1 skipped**. The source-derived Compendium producer is
+> `ad74e459e00a12c516fc7fbfc17122cb53faa14ef89bdbe5d4e6776d658cb907` under unchanged
+> measurement `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`; fixed ruler,
+> ceilings, 78 outcomes and historical samples did not change. This architecture-only batch
+> changes no gameplay, saves, creatures, plants, biomes, Guardians, loot, graphics, audio, release
+> identity or HUMAN criterion and grants no GitHub action.
+
+> **2026-09-03 UTC historical predecessor Glass native-Tab identity / diagnostic-retention architecture overlay
 > (matches the signed local descendant containing this reference):** hosted PR #35 run
 > `33708487067`, job `100502739510`, attempt 1, tested exact head
 > `d529a9727c29fca3cd9f337a5bb4fc2577ceaec3` against base
@@ -1822,6 +1867,11 @@
 > Settlement may restore the exact replacement action only while that lineage remains; a later user
 > move to BODY, a summary or another control wins. Mine/Skim expose no semantic row and retain their
 > separately proved disable-to-BODY behavior.
+> The panel controller also captures open disclosure state and the current `data-focus-key` before
+> every passive `setView` render, then restores the matching replacement after `replaceChildren`.
+> That heartbeat product behavior predates the 2026-09-03 forensic batch. The successor changes
+> only Slice/Glass observation: a forced F4 receipt and semantic descriptor lineage prove the
+> existing restoration without carrying the disconnected Summary object across CDP.
 >
 > Arc 5A stages only after the exact Arc 4 source fixed point. `prepareArc5OwnershipMigration()`
 > creates the version-2 manifest plus exactly four fixed generic delta shards, upgrades an aligned
@@ -4787,11 +4837,20 @@ there is no hosted, push, merge or release authority.
 semantic identity rather than setup-time DOM object lifetime. The setup listener retains the first
 trusted same-document Tab receipt; the collector reacquires the current controls before and after a
 real `large-phone` heartbeat replacement, proves old-node disconnection and requires prior semantic
-focus restoration before native Tab. Current-control presence, origin, lineage, settled scroll,
-post-Tab focus and nontransparent focus paint are product outcomes; schema, carrier, document and
-trusted receipt integrity are instrument outcomes. The terminal report is exact-validated and
-deterministically projected to the step summary after Glass so diagnosis survives an independent
-artifact-service failure without softening the failed Glass step or advancing Recovery.
+focus restoration before native Tab. The same row re-queries the Shipyard `mining` Summary after a
+forced heartbeat and requires trusted Enter to originate from, remain active on and toggle the one
+current descriptor-matching replacement. Structured F4 cycle receipts distinguish completed,
+skipped and failed cycles and bind the exact Capture/Shipyard refresh. Current-control presence,
+origin, lineage, settled scroll, post-Tab focus, exact visibility, target/ancestor effective
+opacity and nontransparent focus paint are product outcomes; schema, carrier, document, query
+witness, exact descriptor and trusted receipt integrity are instrument outcomes.
+
+The terminal writer emits `cf-v2-glassmatrix/v2`. Every current PASS consumer requires its deep
+Shipyard inventory; v1 may be replayed only when historically red. The changed-input canary runs
+small then large sequentially inside one five-minute/no-retry step, while the full 12-row
+certificate remains unconditional. The terminal report is exact-validated and deterministically
+projected to the step summary after Glass so diagnosis survives an independent artifact-service
+failure without softening the failed Glass step, mandatory upload or Recovery ordering.
 
 The first instrument red retains one root failure, blocks dependent controls and stops later
 viewport work. The first product red likewise stops dependent product work and records a complete,

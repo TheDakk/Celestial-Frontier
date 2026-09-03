@@ -16,8 +16,11 @@ import * as glassEvidenceContract from '../tools/glassmatrix-evidence-contract.m
 const {
   GLASS_ARC4_CAPTURE_CHECK_KEYS,
   GLASS_ARC4_CAPTURE_OUTCOME_CODES,
+  GLASS_MATRIX_REPORT_SCHEMA,
   GLASS_MATRIX_VIEWPORTS,
   GLASS_NEGATIVE_CONTROLS,
+  glassTerminalEvidenceErrors,
+  glassShipyardKeyboardHeartbeatSelftestInventory,
   glassViewportInventory,
 } = glassEvidenceContract;
 
@@ -56,7 +59,7 @@ const arc4Outcomes = () => GLASS_MATRIX_VIEWPORTS.flatMap(({ label }: { label: s
 function passReport(): Record<string, any> {
   const outcomes = arc4Outcomes();
   return {
-    schema: 'cf-v2-glassmatrix/v1',
+    schema: GLASS_MATRIX_REPORT_SCHEMA,
     status: 'pass',
     terminal: true,
     scope: 'full-certifying',
@@ -97,6 +100,8 @@ function passReport(): Record<string, any> {
       omitted: [],
       outcomes,
     },
+    shipyardKeyboardHeartbeatInventory:
+      glassShipyardKeyboardHeartbeatSelftestInventory(),
     controlSummary: {
       selftestRan: true,
       negativeControls: [...GLASS_NEGATIVE_CONTROLS].sort(),
@@ -175,6 +180,18 @@ describe('Glass terminal diagnostic projection', () => {
     for (const report of [passReport(), productRedReport(), instrumentRedReport()]) {
       expect(validateGlassDiagnosticReport(report, validation)).toBe(report);
     }
+  });
+
+  it('refuses a legacy-schema targeted PASS even when full certification is not required', () => {
+    const report = passReport();
+    report.schema = 'cf-v2-glassmatrix/v1';
+    report.scope = 'targeted';
+    report.certifying = false;
+    expect(glassTerminalEvidenceErrors(report, {
+      runId: GLASS_RUN,
+      reportPath: report.run.artifactPath,
+      requirePass: false,
+    })).toContain('current Glass PASS schema is required: "cf-v2-glassmatrix/v1"');
   });
 
   it('builds one deterministic, hash-bound and recoverable gzip/base64 carrier', () => {

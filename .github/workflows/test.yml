@@ -55,7 +55,7 @@ jobs:
     name: ${{ needs.authorize.result == 'success' && 'battery' || 'budget-not-authorized' }}
     needs: authorize
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     env:
       CF_BROWSER: /usr/bin/google-chrome
       CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
@@ -63,6 +63,7 @@ jobs:
       CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem
       CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice
       CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass-preflight
+      CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass-large-phone-preflight
       CF_V2_GLASSMATRIX_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass
       CF_V2_ARC4_RECOVERY_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-recovery
     steps:
@@ -168,11 +169,12 @@ jobs:
           CF_BROWSER: /usr/bin/google-chrome
         run: node tools/browsercdp.mjs --selftest
 
-      # When a Glass or v2 product input changes, exercise the exact small-phone
-      # Inventory action boundary on the hosted Chrome/Linux environment before
-      # paying for Compendium and Slice. This is a bounded noncertifying canary;
-      # the immutable Slice-bound full matrix remains mandatory later.
-      - name: changed Glass small-phone action preflight
+      # When a Glass or v2 product input changes, exercise both the exact
+      # small-phone Inventory boundary and large-phone forced-heartbeat native-
+      # Tab boundary on hosted Chrome/Linux before paying for Compendium and
+      # Slice. These are bounded noncertifying canaries; the immutable Slice-
+      # bound full matrix remains mandatory later.
+      - name: changed Glass small-phone and large-phone action preflights
         if: >-
           github.event.pull_request.base.ref == 'develop' &&
           steps.scope.outputs.glass_preflight_changed == 'true'
@@ -183,58 +185,355 @@ jobs:
           CF_BROWSER: /usr/bin/google-chrome
         run: |
           set -euo pipefail
-          preflight_report="apps/game/smoke/glassmatrix-${CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID}.json"
+          verify_preflight_report() {
+            local report="$1"
+            local expected_run_id="$2"
+            local expected_viewport="$3"
+            local required_controls="$4"
+            local require_native_heartbeat="$5"
+            test -f "$report"
+            test "$(jq -er '.run.id' "$report")" = "$expected_run_id"
+            jq --arg preflight_browser "$preflight_browser" \
+              --arg expected_run_id "$expected_run_id" \
+              --arg expected_artifact_path "$report" \
+              --argjson expected_viewport "$expected_viewport" \
+              --argjson required_controls "$required_controls" \
+              --argjson require_native_heartbeat "$require_native_heartbeat" -e '
+              . as $report |
+              ($report.arc4CaptureOutcomeInventory.outcomes // null) as $arc4_outcomes |
+              ($report.shipyardKeyboardHeartbeatInventory.outcomes // null) as $shipyard_outcomes |
+              ($arc4_outcomes
+                | if type == "array" then map(select(.code == "ARC4_CAPTURE_NATIVE_SURVEY_RETURN"))
+                  else [] end) as $native_outcomes |
+              ($shipyard_outcomes[0].setup // {} | {
+                tag, id, focusKey, surveyClose, captureAction,
+                engineeringSection, accessibleName
+              }) as $shipyard_descriptor |
+              $report.status == "pass" and
+              $report.schema == "cf-v2-glassmatrix/v2" and
+              $report.terminal == true and
+              $report.scope == "targeted-diagnostic" and
+              $report.certifying == false and
+              $report.run.id == $expected_run_id and
+              $report.run.artifactPath == $expected_artifact_path and
+              $report.source.state == "committed" and
+              $report.sourceEnd == $report.source and
+              $report.sourceChange.detected == false and
+              $report.sourceChange.ending == null and
+              $report.summary.viewportCount == 1 and
+              $report.summary.findingCount == 0 and
+              $report.summary.instrumentFailureCount == 0 and
+              ($report.viewportInventory | length) == 1 and
+              $report.viewportInventory[0] == $expected_viewport and
+              $report.browser.executable == $preflight_browser and
+              ($report.browser.product | type) == "string" and
+              ($report.browser.product | test("^Chrome/(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$")) and
+              ($report.browser.revision | type) == "string" and
+              ($report.browser.revision | length) > 0 and
+              ($report.browser.user_agent | type) == "string" and
+              ($report.browser.user_agent | length) > 0 and
+              ($report.browser.js_version | type) == "string" and
+              ($report.browser.js_version | length) > 0 and
+              $report.browser.protocol_version == "1.3" and
+              $report.browser.consistentAcrossViewports == true and
+              ($report.findings | type) == "array" and
+              ($report.findings | length) == 0 and
+              ($report.instrumentFailures | type) == "array" and
+              ($report.instrumentFailures | length) == 0 and
+              $report.controlSummary.selftestRan == true and
+              ($report.controlSummary.blockedNegativeControls | type) == "array" and
+              ($report.controlSummary.blockedNegativeControls | length) == 0 and
+              ($report.controlSummary.negativeControls | type) == "array" and
+              ($required_controls | type) == "array" and
+              ($required_controls | length) > 0 and
+              ($required_controls
+                | map(. as $control
+                  | ($report.controlSummary.negativeControls | index($control)) != null)
+                | all) and
+              $report.controlSummary.automaticRetries == 0 and
+              $report.exit.code == 0 and
+              ($require_native_heartbeat == false or (
+                $report.arc4CaptureOutcomeInventory.plannedOutcomeCodes == [
+                  "ARC4_CAPTURE_NATIVE_SURVEY_RETURN",
+                  "ARC4_CAPTURE_PRESENTATION_TRUTH",
+                  "ARC4_CAPTURE_GEOMETRY_FOCUS"
+                ] and
+                $report.arc4CaptureOutcomeInventory.complete == true and
+                $report.arc4CaptureOutcomeInventory.expectedCount == 3 and
+                $report.arc4CaptureOutcomeInventory.observedCount == 3 and
+                $report.arc4CaptureOutcomeInventory.omitted == [] and
+                ($arc4_outcomes | type) == "array" and
+                ($arc4_outcomes | length) == 3 and
+                ($arc4_outcomes
+                  | all(.viewport == $expected_viewport.label and .ok == true)) and
+                ($native_outcomes | length) == 1 and
+                $native_outcomes[0].checks.idleKeyboardFocus == true and
+                $native_outcomes[0].diagnostics.sampleFocusSetup.schema ==
+                  "cf-v2-glass-arc4-native-tab-setup/v1" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.schema ==
+                  "cf-v2-glass-arc4-native-tab-heartbeat/v2" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.required == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.stateFound == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.seamsAvailable == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.error == null and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.initial.documentToken ==
+                  $native_outcomes[0].diagnostics.sampleFocusSetup.documentToken and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.initial.heartbeatRunning == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.quiescence.schema ==
+                  "cf-v2-f4-heartbeat-quiescence/v1" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.quiescence.documentToken ==
+                  $native_outcomes[0].diagnostics.sampleFocusSetup.documentToken and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.quiescence.wasRunning == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.quiescence.stopped == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.quiescence.cycleSettled == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.resume.schema ==
+                  "cf-v2-f4-heartbeat-resume/v1" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.resume.documentToken ==
+                  $native_outcomes[0].diagnostics.sampleFocusSetup.documentToken and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.resume.running == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cycleReceipt.schema ==
+                  "cf-v2-f4-heartbeat-cycle-receipt/v1" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cycleReceipt.documentToken ==
+                  $native_outcomes[0].diagnostics.sampleFocusSetup.documentToken and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cycleReceipt.cycle == "completed" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cycleReceipt.reason == null and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cycleReceipt.refresh.capture == "completed" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.documentToken ==
+                  $native_outcomes[0].diagnostics.sampleFocusSetup.documentToken and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.heartbeatRunning == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.originalTargetDisconnected == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.originalPriorDisconnected == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.replacementAcquired == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.priorReplacementAcquired == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.priorFocused == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cleanup.attempted == false and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cleanup.receipt == null and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cleanup.error == null and
+                $native_outcomes[0].diagnostics.sampleFocusOutcome.schema ==
+                  "cf-v2-glass-arc4-native-tab-assessment/v2" and
+                $native_outcomes[0].diagnostics.sampleFocusOutcome.ok == true and
+                $native_outcomes[0].diagnostics.sampleFocusOutcome.instrumentOk == true and
+                $native_outcomes[0].diagnostics.sampleFocusOutcome.productOk == true and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.instrumentChecks | type) == "object" and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.instrumentChecks | keys | sort) ==
+                  (["heartbeatRequirement", "setupCarrier", "setupDocument", "focusCarrier",
+                    "documentIdentity", "trustedTabReceipt", "scrollCarrier", "heartbeatLifecycle",
+                    "cycleReceiptCarrier", "captureRerenderCompleted", "replacementObserved",
+                    "receiptReplacementCoherence"] | sort) and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.instrumentChecks
+                  | to_entries | all(.value == true)) and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.productChecks | type) == "object" and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.productChecks | keys | sort) ==
+                  (["setupReady", "setupIdentity", "tabOrigin", "currentControls",
+                    "semanticLineage", "heartbeatFocusRestored", "scrollSettled",
+                    "keyboardFocus", "activeSemanticFocus"] | sort) and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.productChecks
+                  | to_entries | all(.value == true)) and
+                $report.shipyardKeyboardHeartbeatInventory.plannedViewports == ["large-phone"] and
+                $report.shipyardKeyboardHeartbeatInventory.complete == true and
+                $report.shipyardKeyboardHeartbeatInventory.expectedCount == 1 and
+                $report.shipyardKeyboardHeartbeatInventory.observedCount == 1 and
+                $report.shipyardKeyboardHeartbeatInventory.omitted == [] and
+                ($shipyard_outcomes | type) == "array" and
+                ($shipyard_outcomes | length) == 1 and
+                $shipyard_outcomes[0].schema ==
+                  "cf-v2-glass-shipyard-keyboard-heartbeat-outcome/v1" and
+                $shipyard_outcomes[0].viewport == "large-phone" and
+                $shipyard_outcomes[0].sectionId == "mining" and
+                $shipyard_outcomes[0].beforeOpen == true and
+                $shipyard_outcomes[0].afterOpen == false and
+                $shipyard_outcomes[0].setup.schema ==
+                  "cf-v2-glass-keyboard-activation-setup/v1" and
+                ($shipyard_outcomes[0].setup | keys | sort) ==
+                  (["schema", "ok", "selector", "documentToken", "documentHref",
+                    "targetCount", "instrumentReady", "productReady", "targetConnected",
+                    "focused", "visible", "tag", "id", "focusKey", "surveyClose",
+                    "captureAction", "engineeringSection", "accessibleName", "display",
+                    "visibility", "opacity", "effectiveOpacity", "rect"] | sort) and
+                $shipyard_outcomes[0].setup.ok == true and
+                $shipyard_outcomes[0].setup.selector ==
+                  "#shipyardpanel details[data-engineering-section=\"mining\"] > summary" and
+                ($shipyard_outcomes[0].setup.documentToken | type) == "string" and
+                ($shipyard_outcomes[0].setup.documentToken | length) > 0 and
+                ($shipyard_outcomes[0].setup.documentHref | type) == "string" and
+                ($shipyard_outcomes[0].setup.documentHref | length) > 0 and
+                $shipyard_outcomes[0].setup.instrumentReady == true and
+                $shipyard_outcomes[0].setup.productReady == true and
+                $shipyard_outcomes[0].setup.targetCount == 1 and
+                $shipyard_outcomes[0].setup.targetConnected == true and
+                $shipyard_outcomes[0].setup.focused == true and
+                $shipyard_outcomes[0].setup.visible == true and
+                $shipyard_outcomes[0].setup.tag == "SUMMARY" and
+                $shipyard_outcomes[0].setup.id == null and
+                $shipyard_outcomes[0].setup.focusKey == "section:mining" and
+                $shipyard_outcomes[0].setup.surveyClose == false and
+                $shipyard_outcomes[0].setup.captureAction == null and
+                $shipyard_outcomes[0].setup.engineeringSection == "mining" and
+                ($shipyard_outcomes[0].setup.accessibleName | type) == "string" and
+                ($shipyard_outcomes[0].setup.accessibleName | length) > 0 and
+                $shipyard_outcomes[0].setup.accessibleName ==
+                  ($shipyard_outcomes[0].setup.accessibleName | gsub("^\\s+|\\s+$"; "")) and
+                ($shipyard_outcomes[0].setup.display | type) == "string" and
+                ($shipyard_outcomes[0].setup.display | length) > 0 and
+                $shipyard_outcomes[0].setup.display != "none" and
+                $shipyard_outcomes[0].setup.visibility == "visible" and
+                ($shipyard_outcomes[0].setup.opacity | type) == "number" and
+                $shipyard_outcomes[0].setup.opacity > 0 and
+                ($shipyard_outcomes[0].setup.effectiveOpacity | type) == "number" and
+                $shipyard_outcomes[0].setup.effectiveOpacity > 0 and
+                ($shipyard_outcomes[0].setup.rect | type) == "array" and
+                ($shipyard_outcomes[0].setup.rect | length) == 4 and
+                ($shipyard_outcomes[0].setup.rect[2] - $shipyard_outcomes[0].setup.rect[0]) >= 44 and
+                ($shipyard_outcomes[0].setup.rect[3] - $shipyard_outcomes[0].setup.rect[1]) >= 44 and
+                $shipyard_outcomes[0].heartbeat.schema ==
+                  "cf-v2-glass-keyboard-activation-heartbeat/v1" and
+                $shipyard_outcomes[0].heartbeat.required == true and
+                $shipyard_outcomes[0].heartbeat.stateFound == true and
+                $shipyard_outcomes[0].heartbeat.seamsAvailable == true and
+                $shipyard_outcomes[0].heartbeat.setupDocumentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.setupDocumentHref ==
+                  $shipyard_outcomes[0].setup.documentHref and
+                $shipyard_outcomes[0].heartbeat.initial.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.initial.documentHref ==
+                  $shipyard_outcomes[0].setup.documentHref and
+                ($shipyard_outcomes[0].heartbeat.initial | keys | sort) ==
+                  (["documentToken", "documentHref", "heartbeatRunning", "currentCount",
+                    "currentConnected", "currentFocused", "current",
+                    "originalTargetDisconnected", "replacementAcquired"] | sort) and
+                $shipyard_outcomes[0].heartbeat.initial.heartbeatRunning == true and
+                $shipyard_outcomes[0].heartbeat.initial.currentCount == 1 and
+                $shipyard_outcomes[0].heartbeat.initial.currentConnected == true and
+                $shipyard_outcomes[0].heartbeat.initial.currentFocused == true and
+                $shipyard_outcomes[0].heartbeat.initial.originalTargetDisconnected == false and
+                $shipyard_outcomes[0].heartbeat.initial.replacementAcquired == false and
+                $shipyard_outcomes[0].heartbeat.initial.current == $shipyard_descriptor and
+                $shipyard_outcomes[0].heartbeat.quiescence.schema ==
+                  "cf-v2-f4-heartbeat-quiescence/v1" and
+                $shipyard_outcomes[0].heartbeat.quiescence.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.quiescence.wasRunning == true and
+                $shipyard_outcomes[0].heartbeat.quiescence.stopped == true and
+                $shipyard_outcomes[0].heartbeat.quiescence.cycleSettled == true and
+                $shipyard_outcomes[0].heartbeat.resume.schema ==
+                  "cf-v2-f4-heartbeat-resume/v1" and
+                $shipyard_outcomes[0].heartbeat.resume.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.resume.running == true and
+                $shipyard_outcomes[0].heartbeat.cycleReceipt.schema ==
+                  "cf-v2-f4-heartbeat-cycle-receipt/v1" and
+                $shipyard_outcomes[0].heartbeat.cycleReceipt.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.cycleReceipt.cycle == "completed" and
+                $shipyard_outcomes[0].heartbeat.cycleReceipt.reason == null and
+                $shipyard_outcomes[0].heartbeat.cycleReceipt.refresh.shipyard == "completed" and
+                $shipyard_outcomes[0].heartbeat.after.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.after.documentHref ==
+                  $shipyard_outcomes[0].setup.documentHref and
+                ($shipyard_outcomes[0].heartbeat.after | keys | sort) ==
+                  (["documentToken", "documentHref", "heartbeatRunning", "currentCount",
+                    "currentConnected", "currentFocused", "current",
+                    "originalTargetDisconnected", "replacementAcquired"] | sort) and
+                $shipyard_outcomes[0].heartbeat.after.heartbeatRunning == true and
+                $shipyard_outcomes[0].heartbeat.after.currentCount == 1 and
+                $shipyard_outcomes[0].heartbeat.after.currentConnected == true and
+                $shipyard_outcomes[0].heartbeat.after.currentFocused == true and
+                $shipyard_outcomes[0].heartbeat.after.originalTargetDisconnected == true and
+                $shipyard_outcomes[0].heartbeat.after.replacementAcquired == true and
+                $shipyard_outcomes[0].heartbeat.after.current == $shipyard_descriptor and
+                $shipyard_outcomes[0].heartbeat.cleanup.attempted == false and
+                $shipyard_outcomes[0].heartbeat.cleanup.receipt == null and
+                $shipyard_outcomes[0].heartbeat.cleanup.error == null and
+                $shipyard_outcomes[0].heartbeat.error == null and
+                $shipyard_outcomes[0].receipt.schema ==
+                  "cf-v2-glass-keyboard-activation-receipt/v1" and
+                ($shipyard_outcomes[0].receipt | keys | sort) ==
+                  (["schema", "key", "code", "trusted", "setupDocumentToken",
+                    "setupDocumentHref", "documentToken", "documentHref", "tag", "focusKey",
+                    "surveyClose", "ignoredUntrustedEnterCount", "currentCount",
+                    "currentConnected", "currentVisible", "currentDisplay", "currentVisibility",
+                    "currentOpacity", "currentEffectiveOpacity", "currentRect",
+                    "originalTargetDisconnected", "replacementAcquired", "eventTargetIsCurrent",
+                    "activeIsCurrent", "current", "eventTarget", "active"] | sort) and
+                $shipyard_outcomes[0].receipt.trusted == true and
+                $shipyard_outcomes[0].receipt.key == "Enter" and
+                $shipyard_outcomes[0].receipt.code == "Enter" and
+                $shipyard_outcomes[0].receipt.tag == "SUMMARY" and
+                $shipyard_outcomes[0].receipt.focusKey == "section:mining" and
+                $shipyard_outcomes[0].receipt.surveyClose == false and
+                ($shipyard_outcomes[0].receipt.ignoredUntrustedEnterCount | type) == "number" and
+                $shipyard_outcomes[0].receipt.ignoredUntrustedEnterCount >= 0 and
+                $shipyard_outcomes[0].receipt.setupDocumentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].receipt.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].receipt.setupDocumentHref ==
+                  $shipyard_outcomes[0].setup.documentHref and
+                $shipyard_outcomes[0].receipt.documentHref ==
+                  $shipyard_outcomes[0].setup.documentHref and
+                $shipyard_outcomes[0].receipt.currentCount == 1 and
+                $shipyard_outcomes[0].receipt.currentConnected == true and
+                $shipyard_outcomes[0].receipt.currentVisible == true and
+                ($shipyard_outcomes[0].receipt.currentDisplay | type) == "string" and
+                ($shipyard_outcomes[0].receipt.currentDisplay | length) > 0 and
+                $shipyard_outcomes[0].receipt.currentDisplay != "none" and
+                $shipyard_outcomes[0].receipt.currentVisibility == "visible" and
+                ($shipyard_outcomes[0].receipt.currentOpacity | type) == "number" and
+                $shipyard_outcomes[0].receipt.currentOpacity > 0 and
+                ($shipyard_outcomes[0].receipt.currentEffectiveOpacity | type) == "number" and
+                $shipyard_outcomes[0].receipt.currentEffectiveOpacity > 0 and
+                ($shipyard_outcomes[0].receipt.currentRect | type) == "array" and
+                ($shipyard_outcomes[0].receipt.currentRect | length) == 4 and
+                ($shipyard_outcomes[0].receipt.currentRect[2] - $shipyard_outcomes[0].receipt.currentRect[0]) >= 44 and
+                ($shipyard_outcomes[0].receipt.currentRect[3] - $shipyard_outcomes[0].receipt.currentRect[1]) >= 44 and
+                $shipyard_outcomes[0].receipt.originalTargetDisconnected == true and
+                $shipyard_outcomes[0].receipt.replacementAcquired == true and
+                $shipyard_outcomes[0].receipt.eventTargetIsCurrent == true and
+                $shipyard_outcomes[0].receipt.activeIsCurrent == true and
+                $shipyard_outcomes[0].receipt.current == $shipyard_descriptor and
+                $shipyard_outcomes[0].receipt.eventTarget == $shipyard_descriptor and
+                $shipyard_outcomes[0].receipt.active == $shipyard_descriptor and
+                $shipyard_outcomes[0].outcome.schema ==
+                  "cf-v2-glass-keyboard-activation-assessment/v1" and
+                $shipyard_outcomes[0].outcome.ok == true and
+                $shipyard_outcomes[0].outcome.instrumentOk == true and
+                $shipyard_outcomes[0].outcome.productOk == true and
+                $shipyard_outcomes[0].outcome.instrumentChecks.heartbeatRequirement == true and
+                ($shipyard_outcomes[0].outcome.instrumentChecks | type) == "object" and
+                ($shipyard_outcomes[0].outcome.instrumentChecks | keys | sort) ==
+                  (["heartbeatRequirement", "setupCarrier", "setupDocument", "setupQueryWitness",
+                    "setupDescriptor", "receiptCarrier", "trustedEnter", "documentIdentity",
+                    "currentQueryWitness", "receiptDescriptors", "heartbeatLifecycle",
+                    "heartbeatCycleCarrier", "shipyardRefreshCompleted",
+                    "heartbeatReplacementScenario", "heartbeatReceiptReplacementCoherence",
+                    "heartbeatCurrentDescriptor"] | sort) and
+                ($shipyard_outcomes[0].outcome.instrumentChecks
+                  | to_entries | all(.value == true)) and
+                ($shipyard_outcomes[0].outcome.productChecks | type) == "object" and
+                ($shipyard_outcomes[0].outcome.productChecks | keys | sort) ==
+                  (["setupReady", "currentTarget", "semanticIdentity", "eventOrigin",
+                    "activeTarget", "replacementLineage", "heartbeatFocusRestored",
+                    "heartbeatSemanticIdentity"] | sort) and
+                ($shipyard_outcomes[0].outcome.productChecks
+                  | to_entries | all(.value == true))
+              ))
+            ' "$report" >/dev/null
+          }
+          small_phone_report="apps/game/smoke/glassmatrix-${CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID}.json"
+          large_phone_report="apps/game/smoke/glassmatrix-${CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID}.json"
           preflight_browser="$(node tools/browserpath.mjs --print)"
+          small_phone_viewport='{"label":"small-phone","width":320,"height":568,"dpr":2,"mobile":true,"safeArea":{"top":0,"right":0,"bottom":0,"left":0}}'
+          large_phone_viewport='{"label":"large-phone","width":412,"height":915,"dpr":3,"mobile":true,"safeArea":{"top":0,"right":0,"bottom":0,"left":0}}'
+          inventory_controls='["inventory-modal-focus","inventory-modal-retention","inventory-protected-action","inventory-action-publication","inventory-convergence-retry"]'
+          native_tab_controls='["arc4-capture-native-survey-return"]'
           CF_V2_GLASSMATRIX_RUN_ID="$CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID" node tools/glassmatrix.mjs --viewport=small-phone
-          test "$(jq -er '.run.id' "$preflight_report")" = "$CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID"
-          jq --arg preflight_browser "$preflight_browser" -e '
-            .status == "pass" and
-            .terminal == true and
-            .scope == "targeted-diagnostic" and
-            .certifying == false and
-            .source.state == "committed" and
-            .sourceEnd == .source and
-            .sourceChange.detected == false and
-            .sourceChange.ending == null and
-            .summary.viewportCount == 1 and
-            .summary.findingCount == 0 and
-            .summary.instrumentFailureCount == 0 and
-            (.viewportInventory | length) == 1 and
-            .viewportInventory[0] == {
-              label: "small-phone",
-              width: 320,
-              height: 568,
-              dpr: 2,
-              mobile: true,
-              safeArea: { top: 0, right: 0, bottom: 0, left: 0 }
-            } and
-            .browser.executable == $preflight_browser and
-            (.browser.product | type) == "string" and
-            (.browser.product | test("^Chrome/(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$")) and
-            (.browser.revision | type) == "string" and
-            (.browser.revision | length) > 0 and
-            (.browser.user_agent | type) == "string" and
-            (.browser.user_agent | length) > 0 and
-            (.browser.js_version | type) == "string" and
-            (.browser.js_version | length) > 0 and
-            .browser.protocol_version == "1.3" and
-            .browser.consistentAcrossViewports == true and
-            (.findings | type) == "array" and
-            (.findings | length) == 0 and
-            (.instrumentFailures | type) == "array" and
-            (.instrumentFailures | length) == 0 and
-            .controlSummary.selftestRan == true and
-            (.controlSummary.blockedNegativeControls | type) == "array" and
-            (.controlSummary.blockedNegativeControls | length) == 0 and
-            (.controlSummary.negativeControls | type) == "array" and
-            .controlSummary.automaticRetries == 0 and
-            .exit.code == 0 and
-            (.controlSummary.negativeControls | index("inventory-modal-focus")) != null and
-            (.controlSummary.negativeControls | index("inventory-modal-retention")) != null and
-            (.controlSummary.negativeControls | index("inventory-protected-action")) != null and
-            (.controlSummary.negativeControls | index("inventory-action-publication")) != null and
-            (.controlSummary.negativeControls | index("inventory-convergence-retry")) != null
-          ' "$preflight_report" >/dev/null
+          verify_preflight_report "$small_phone_report" "$CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID" \
+            "$small_phone_viewport" "$inventory_controls" false
+          CF_V2_GLASSMATRIX_RUN_ID="$CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID" node tools/glassmatrix.mjs --viewport=large-phone
+          verify_preflight_report "$large_phone_report" "$CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID" \
+            "$large_phone_viewport" "$native_tab_controls" true
 
       # The legacy Layout ruler remains complete whenever its retained product
       # is in scope; the targeted v2 canary above never substitutes for it.
@@ -342,7 +641,7 @@ jobs:
           node tools/compendiummem-browser-preflight.mjs
       - name: one-attempt Compendium memory certification
         id: compendium
-        timeout-minutes: 40
+        timeout-minutes: 55
         working-directory: port/v2
         env:
           CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
@@ -457,6 +756,7 @@ jobs:
             port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json
             port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log
             port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID }}.json
+            port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID }}.json
             port/v2/apps/game/smoke/glassmatrix-report.json
             port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json
             port/v2/apps/game/smoke/arc4-recovery-report.json

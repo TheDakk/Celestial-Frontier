@@ -17,7 +17,9 @@ export const ARC4_CAPTURE_GEOMETRY_EVIDENCE_SCHEMA =
 export const ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA =
   'cf-v2-glass-arc4-control-geometry/v1';
 export const ARC4_HEARTBEAT_RERENDER_EVIDENCE_SCHEMA =
-  'cf-v2-glass-arc4-heartbeat-rerender/v1';
+  'cf-v2-glass-arc4-heartbeat-rerender/v2';
+export const F4_HEARTBEAT_CYCLE_RECEIPT_SCHEMA =
+  'cf-v2-f4-heartbeat-cycle-receipt/v1';
 export const ARC4_CAPTURE_LAYOUT_COORDINATE_SPACE =
   'viewport-plus-ancestor-scroll-offset/v1';
 export const ARC4_STALE_FAULT_CAPTURE_SCHEMA =
@@ -5832,6 +5834,58 @@ export const assessArc4CaptureGeometryEvidenceCoherence = ({ controls, close } =
   return assessment('Arc 4 capture geometry evidence coherence', checks);
 };
 
+const F4_HEARTBEAT_SKIPPED_REASONS = new Set([
+  'smoke-quiesced',
+  'runtime-unavailable',
+  'persistence-held',
+  'page-hidden',
+  'persist-in-flight',
+  'import-in-flight',
+  'replacement-in-flight',
+  'runtime-heartbeat-in-flight',
+  'lease-held-by-other',
+  'lease-lost',
+  'revision-refused',
+  'bootstrap-refused',
+]);
+const F4_HEARTBEAT_COMPLETED_REFRESH = Object.freeze({
+  shipyard: new Set(['completed', 'panel-closed', 'product-action-in-flight']),
+  compendium: new Set([
+    'completed', 'panel-closed', 'not-detail', 'product-action-in-flight',
+  ]),
+  capture: new Set([
+    'completed', 'card-hidden', 'surface-not-owned', 'product-action-in-flight',
+  ]),
+});
+
+export const assessF4HeartbeatCycleReceipt = (value = {}, expectedDocumentToken = null) => {
+  const refresh = value?.refresh;
+  const shape = exactKeys(value, ['schema', 'documentToken', 'cycle', 'reason', 'refresh']);
+  const refreshShape = exactKeys(refresh, ['shipyard', 'compendium', 'capture']);
+  const allNotReached = refreshShape
+    && refresh.shipyard === 'not-reached'
+    && refresh.compendium === 'not-reached'
+    && refresh.capture === 'not-reached';
+  const completedRefreshes = refreshShape
+    && F4_HEARTBEAT_COMPLETED_REFRESH.shipyard.has(refresh.shipyard)
+    && F4_HEARTBEAT_COMPLETED_REFRESH.compendium.has(refresh.compendium)
+    && F4_HEARTBEAT_COMPLETED_REFRESH.capture.has(refresh.capture);
+  const disposition = value?.cycle === 'completed'
+    ? value?.reason === null && completedRefreshes
+    : value?.cycle === 'skipped'
+      ? F4_HEARTBEAT_SKIPPED_REASONS.has(value?.reason) && allNotReached
+      : value?.cycle === 'failed'
+        && value?.reason === 'storage-error' && allNotReached;
+  return assessment('F4 heartbeat cycle receipt', {
+    carrier: shape && value?.schema === F4_HEARTBEAT_CYCLE_RECEIPT_SCHEMA,
+    documentIdentity: typeof value?.documentToken === 'string'
+      && value.documentToken.length > 0
+      && (expectedDocumentToken === null || value.documentToken === expectedDocumentToken),
+    refreshCarrier: refreshShape,
+    disposition,
+  });
+};
+
 export const assessArc4HeartbeatRerenderEvidence = (value = {}) => {
   if (value?.required !== true) {
     return assessment('Arc 4 heartbeat rerender evidence', {
@@ -5846,6 +5900,18 @@ export const assessArc4HeartbeatRerenderEvidence = (value = {}) => {
   const resume = value?.resume;
   const cleanup = value?.cleanup;
   const documentToken = value?.documentToken;
+  const cycleReceipt = value?.cycleReceipt;
+  const cycleReceiptAssessment = assessF4HeartbeatCycleReceipt(
+    cycleReceipt,
+    documentToken,
+  );
+  const captureRerenderCompleted = cycleReceipt?.cycle === 'completed'
+    && cycleReceipt?.reason === null
+    && cycleReceipt?.refresh?.capture === 'completed';
+  const replacementObserved = value?.oldDisconnected === true
+    && value?.replacementAcquired === true;
+  const replacementAbsent = value?.oldDisconnected === false
+    && value?.replacementAcquired === false;
   const checks = {
     captured: value?.schema === ARC4_HEARTBEAT_RERENDER_EVIDENCE_SCHEMA,
     armedWhileRunning: value?.seamsAvailable === true
@@ -5860,16 +5926,20 @@ export const assessArc4HeartbeatRerenderEvidence = (value = {}) => {
       && pre?.focusVerb === 'scavenge',
     resumed: resume?.schema === 'cf-v2-f4-heartbeat-resume/v1'
       && resume?.running === true,
-    cycleCompleted: value?.runCompleted === true,
+    cycleReceiptCarrier: cycleReceiptAssessment.ok === true,
+    captureRerenderCompleted,
     remainedRunning: post?.heartbeatRunning === true,
     documentIdentity: typeof documentToken === 'string' && documentToken.length > 0
       && initial?.documentToken === documentToken
       && quiescence?.documentToken === documentToken
       && pre?.documentToken === documentToken
       && resume?.documentToken === documentToken
-      && post?.documentToken === documentToken,
-    replacementObserved: value?.oldDisconnected === true
-      && value?.replacementAcquired === true,
+      && post?.documentToken === documentToken
+      && cycleReceipt?.documentToken === documentToken,
+    replacementObserved: !captureRerenderCompleted || replacementObserved,
+    receiptReplacementCoherence: captureRerenderCompleted
+      ? replacementObserved
+      : replacementAbsent,
     noCollectorError: value?.error === null,
     cleanupSafe: cleanup?.error === null && (value?.error === null
       ? cleanup?.attempted === false && cleanup?.receipt === null

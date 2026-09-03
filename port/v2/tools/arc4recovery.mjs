@@ -25,8 +25,10 @@ import { verifySliceRunEvidence } from './smokereport.mjs';
 import {
   GLASS_ARC4_CAPTURE_CHECK_KEYS,
   GLASS_ARC4_CAPTURE_OUTCOME_CODES,
+  GLASS_MATRIX_REPORT_SCHEMA,
   GLASS_MATRIX_VIEWPORTS,
   GLASS_NEGATIVE_CONTROLS,
+  glassShipyardKeyboardHeartbeatSelftestInventory,
   glassTerminalEvidenceErrors,
   glassViewportInventory,
 } from './glassmatrix-evidence-contract.mjs';
@@ -3849,7 +3851,7 @@ export function runSelftest() {
   const predecessors = {
     slice: slicePredecessor,
     glass: {
-      schema: 'cf-v2-glassmatrix/v1', runId: 'glass-selftest',
+      schema: GLASS_MATRIX_REPORT_SCHEMA, runId: 'glass-selftest',
       reportPath: 'apps/game/smoke/glassmatrix-glass-selftest.json',
       reportSha256: '3'.repeat(64), source: { ...source },
       slicePredecessor: structuredClone(slicePredecessor),
@@ -4367,7 +4369,7 @@ export function runSelftest() {
       }))
     ));
     const glassBaseline = {
-      schema: 'cf-v2-glassmatrix/v1', status: 'pass', terminal: true,
+      schema: GLASS_MATRIX_REPORT_SCHEMA, status: 'pass', terminal: true,
       scope: 'full-certifying', certifying: true,
       startedAt: '2026-08-27T00:00:00.000Z', endedAt: '2026-08-27T00:00:01.000Z', durationMs: 1000,
       run: { id: glassRunId, artifactPath: `apps/game/smoke/glassmatrix-${glassRunId}.json` },
@@ -4391,6 +4393,8 @@ export function runSelftest() {
         expectedCount: glassOutcomes.length, observedCount: glassOutcomes.length,
         omitted: [], outcomes: glassOutcomes,
       },
+      shipyardKeyboardHeartbeatInventory:
+        glassShipyardKeyboardHeartbeatSelftestInventory(),
       controlSummary: {
         selftestRan: true,
         negativeControls: [...GLASS_NEGATIVE_CONTROLS].sort(codeUnitCompare),
@@ -4429,6 +4433,22 @@ export function runSelftest() {
       ['malformed-timing', { ...glassBaseline,
         viewportTimings: glassBaseline.viewportTimings.map((row, index) => index === 0
           ? { ...row, durationMs: 0 } : row) }, 'timing inventory is malformed'],
+      ['legacy-schema-downgrade', { ...glassBaseline, schema: 'cf-v2-glassmatrix/v1' },
+      'current Glass PASS schema is required'],
+      ['missing-shipyard-heartbeat', { ...glassBaseline,
+        shipyardKeyboardHeartbeatInventory: undefined },
+      'Shipyard keyboard heartbeat inventory'],
+      ['forged-shipyard-toggle', (() => {
+        const value = structuredClone(glassBaseline);
+        value.shipyardKeyboardHeartbeatInventory.outcomes[0].afterOpen = true;
+        return value;
+      })(), 'Shipyard keyboard heartbeat outcome'],
+      ['forged-shipyard-semantic-lineage', (() => {
+        const value = structuredClone(glassBaseline);
+        value.shipyardKeyboardHeartbeatInventory.outcomes[0]
+          .heartbeat.after.current.accessibleName = 'Forged mining';
+        return value;
+      })(), 'Shipyard keyboard heartbeat outcome'],
       ['empty-outcomes', { ...glassBaseline,
         arc4CaptureOutcomeInventory: { ...glassBaseline.arc4CaptureOutcomeInventory, outcomes: [] } },
       'outcome inventory is empty'],

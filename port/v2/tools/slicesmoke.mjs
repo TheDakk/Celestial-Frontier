@@ -25,6 +25,7 @@ import {
   assessF4ReplacementSetup,
   assessF4ReplacementOutcome,
   assessF4ReadyAuthority,
+  assessEngineeringDisclosureActivation,
   assessInventoryActionActivation,
   assessInventoryDetailClose,
   assessInventoryPanelClose,
@@ -75,6 +76,8 @@ import {
   assessDtrainReleaseConvergence,
   advanceStoredV4StageOwnerStability,
   beginF4GreenContinuation,
+  buildEngineeringDisclosureOutcomeExpression,
+  buildEngineeringDisclosureSetupExpression,
   buildStoredV4StageInvocationExpression,
   buildWritableSettingActionExpression,
   buildWritableSettingSnapshotExpression,
@@ -6276,25 +6279,13 @@ try {
   }
   if (shipyardOpened) {
     const toggleEngineeringDisclosure = async (id) => {
-      const before = await evalIn(`(()=>{const summary=document.querySelector('#shipyardpanel details[data-engineering-section=${JSON.stringify(id)}] > summary'),
-        details=summary?.parentElement,rect=summary?.getBoundingClientRect();window.__cfEngineeringDisclosureKeys=[];
-        window.__cfEngineeringDisclosureAbort?.abort();const controller=new AbortController();window.__cfEngineeringDisclosureAbort=controller;
-        summary?.addEventListener('keydown',(event)=>window.__cfEngineeringDisclosureKeys.push({key:event.key,code:event.code,
-          trusted:event.isTrusted===true,focusKey:summary.getAttribute('data-focus-key')}),{capture:true,signal:controller.signal});
-        summary?.focus();return {present:!!summary,open:details?.open??null,focused:document.activeElement===summary,
-          height:rect?.height||0,focusKey:summary?.getAttribute('data-focus-key')||null};})()`);
+      const before = await evalIn(buildEngineeringDisclosureSetupExpression(id));
       const key = { key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 };
       await send('Input.dispatchKeyEvent', { type: 'keyDown', ...key, text: '\r', unmodifiedText: '\r' }, sess);
       await send('Input.dispatchKeyEvent', { type: 'keyUp', ...key }, sess);
       await sleep(40);
-      const after = await evalIn(`(()=>{const summary=document.querySelector('#shipyardpanel details[data-engineering-section=${JSON.stringify(id)}] > summary'),
-        details=summary?.parentElement,keys=window.__cfEngineeringDisclosureKeys||[];window.__cfEngineeringDisclosureAbort?.abort();
-        delete window.__cfEngineeringDisclosureAbort;delete window.__cfEngineeringDisclosureKeys;
-        return {open:details?.open??null,focused:document.activeElement===summary,keys};})()`);
-      return { ok: before.present && before.focused && before.height >= 44 && after.focused
-        && after.open === !before.open && after.keys.length === 1 && after.keys[0]?.trusted === true
-        && after.keys[0]?.key === 'Enter' && after.keys[0]?.code === 'Enter'
-        && after.keys[0]?.focusKey === before.focusKey, before, after };
+      const after = await evalIn(buildEngineeringDisclosureOutcomeExpression(id));
+      return { ...assessEngineeringDisclosureActivation({ sectionId: id, before, after }), before, after };
     };
     const shipyardDisclosureReceipts = [];
     for (const id of ['mining', 'mining', 'skimming', 'research', 'fabricator']) {
