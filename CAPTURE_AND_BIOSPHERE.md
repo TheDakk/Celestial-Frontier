@@ -1,30 +1,27 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-> **2026-09-03 UTC current passive-focus overlay (matches exact signed local successor; local
-> certificate green):** an ordinary Capture authority heartbeat may replace the open Tame /
-> Scavenge / Sample DOM while preserving the player's semantic focus. That passive rerender now
-> restores the matching action with `focus({preventScroll:true})`, so it does not take ownership of
-> or move the independently scrolled Survey surface. Explicit action settlement keeps its existing
-> default-focus reveal behavior; only passive authority refresh is scroll-neutral.
+> **2026-09-03 UTC current Capture semantic-focus evidence overlay (matches current local code):**
+> Capture mechanics remain unchanged. An ordinary authority heartbeat can replace the open Tame /
+> Scavenge / Sample DOM while preserving the player's semantic focus. The existing passive path
+> restores the matching action with `focus({preventScroll:true})`; explicit action settlement keeps
+> its outcome-reveal behavior.
 >
-> Hosted PR #35 run `33694235427` exposed this when its old multi-command Glass carrier joined a
-> Sample rectangle centred at y `173.171875` / scroll top `2538` to later y `504.171875` points
-> after heartbeat focus restoration moved scroll to `2207`. The stop is instrument chronology,
-> not a Capture-geometry failure. Glass now forces that replacement deterministically, reacquires
-> the live node and collects same-epoch geometry/hit/focus evidence before any product verdict.
-> Both hosted reports and the complete record are retained in
-> `audits/ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_AND_REPAIR_20260903_6B59B45.md`.
-> The exact local successor is retained in
-> `audits/ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.md`.
+> PR #35 run `33708487067` reached `large-phone` Glass after every predecessor passed and stopped
+> with only `idleKeyboardFocus:false`. The old Glass helper retained exact Scavenge/Sample objects
+> across a possible heartbeat. Current evidence instead reacquires the live semantic controls and
+> forces the real F4 heartbeat at that exact viewport before native Tab. It proves the old nodes
+> disconnected, the replacements were acquired, Scavenge focus was restored, and trusted Tab moved
+> visible focus to current Sample. Lost restoration is product-red while trusted transport remains
+> instrument-green; transparent outline paint is also product-red.
 >
+> Targeted Edge/CDP run `20260903043639066-7926-2f4122517015` passed in **11,037 ms** with **3/3**
+> Arc 4 outcomes and zero findings/instrument failures. Focused coverage is **24/24** and the
+> browser-free `develop` profile passes **266/266 files, 2,758 passed / 1 skipped**. Full details
+> are in
+> `audits/ARC4_GLASS_PR35_NATIVE_TAB_IDENTITY_AND_DIAGNOSTIC_RETENTION_REPAIR_20260903_D529A97.md`.
 > Capture pools, odds, SessionRNG, hit/miss spending, Biosphere Yield, ecology, ownership,
-> creature/genome identity, rewards, persistence/save schema and card structure are unchanged.
-> Focused repair coverage passes **53/53**, and the full browser-free `develop` profile passes
-> **265/265 files, 2,749 passed / 1 skipped** with all three TypeScript programs and static owners
-> green. Exact clean SSH-signed source `7cfb42d993778211e9c27b671e6b4fc9b891ff95` then passed one
-> unchanged-source, fail-fast/no-retry, named-verified **78/78 Compendium → zero-finding Slice →
-> 12/12 Glass / 104/104 controls** chain. This is exact local evidence only; no hosted authority is
-> claimed.
+> creature/genome identity, rewards, persistence/save schema and card structure are unchanged; no
+> player-visible release note or hosted authority follows.
 
 > **2026-08-31 current local Capture presentation/readiness overlay (matches local code):** a durable
 > Tame, Scavenge or Sample may queue the existing aggregate Arc 9 achievement/rank receipt before
@@ -122,9 +119,11 @@
 > focused and full browser-free evidence was green at 230 files / 2,315 passed + one skipped; a fresh clean
 > Slice/Glass/Recovery chain and HUMAN acceptance remain outstanding.
 
-**STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
-passive-focus behavior and atomic Glass evidence boundary match exact signed local source
-`7cfb42d…` as of 2026-09-03 UTC, with its no-retry local certificate green. The v2
+**STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2 native
+semantic-focus evidence, forced `large-phone` heartbeat replacement and fail-closed post-Glass
+diagnostic-retention boundary match local code as of 2026-09-03 UTC. Its targeted Edge/CDP row is
+green and noncertifying; the consumed hosted attempt remains red and creates no retry or merge
+authority. The v2
 ecology/audio/Charter overlay matches the player-facing durable Arc 4 capture slice, and the separate
 Guardian acquisition carrier plus player-live verified combat join match the local Arc 6 candidate as
 of **2026-08-29**; the post-capture open-card readiness correction matches local code as of

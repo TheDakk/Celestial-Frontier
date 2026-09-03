@@ -1,5 +1,33 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **NATIVE KEYBOARD EVIDENCE FOLLOWS SEMANTIC IDENTITY, AND TERMINAL DIAGNOSIS MUST OUTLIVE THE
+> ARTIFACT SERVICE** (2026-09-03 UTC). A DOM-replacing heartbeat invalidates exact element-object
+> identity without invalidating the current control. Before native Tab, retain a document-capture
+> receipt for every trusted same-document Tab even when its origin is wrong. Reacquire the current
+> controls by their authored action and semantic keys. Trusted delivery, document identity and
+> typed carrier shape are instrument facts; correct origin, current-control presence, semantic
+> lineage, restored focus, stable scroll and visibly painted focus are product facts. Never hide a
+> real focus-restoration regression by filtering its Tab receipt out of the instrument.
+>
+> Force the real replacement lifecycle at the reported viewport: quiesce, validate, resume, run
+> one heartbeat, prove old controls disconnected and current semantic replacements were acquired,
+> then issue native Tab. Negative-control lost restoration before Tab as instrument-green/product-
+> red. Computed focus decoration must be visible: a non-none, nonzero outline with zero-alpha color
+> is not painted evidence.
+>
+> GitHub artifact upload is a separate external service and may fail after a producer already
+> emitted its terminal report. Immediately after Glass, validate the exact immutable terminal
+> report, clean source, profile, predecessor, browser/timing prefix and actionable red shape, then
+> retain a deterministic compressed carrier plus first diagnosis in the step summary. Bound the
+> entire rendered/cumulative summary below the service ceiling, not merely the compressed payload.
+> This projection never changes the earlier Glass result, substitutes for named verification,
+> softens mandatory artifact upload, retries, or advances Recovery. PR #35 run `33708487067`
+> earned both halves: Glass stopped on `large-phone` with only `idleKeyboardFocus:false`, then
+> artifact creation independently timed out after finding 27 files, leaving no complete hosted
+> JSON. The bounded local successor passed the forced-heartbeat `large-phone` path in **11,037 ms**
+> with both old nodes disconnected, current replacements acquired, restored Scavenge focus and
+> trusted Tab to visibly focused Sample. Both independent reviews are CLEAR.
+
 > **FOCUS RESTORATION DOES NOT OWN SCROLL, AND GEOMETRY EVIDENCE MUST BE ATOMIC**
 > (2026-09-03 UTC). A DOM-replacing authority heartbeat may preserve the same semantic control,
 > but a passive rerender does not own navigation or reveal: restore that replacement with
@@ -839,9 +867,11 @@
 > PR #35 run `33694235427` made the cost visible: the early small-phone canary executed 95 controls;
 > final Glass executed 67 and causally blocked 37 after its first red. Most wall time came from the
 > serial live Compendium certificate (**about 38m35s**) and Slice (**about 24m15s**), and evidence
-> upload alone follows Glass on `develop`. The correct response to a timing-dependent cross-epoch
-> verdict is a deterministic chronology control inside the existing owner—not another hosted
-> stage, duplicated battery, retry, timeout increase or point-version baseline.
+> retention alone follows Glass on `develop`: one browser-free exact-report projection and then
+> mandatory artifact upload. The projection adds no browser campaign and cannot change a red Glass
+> result. The correct response to a timing-dependent cross-epoch verdict is a deterministic
+> chronology control inside the existing owner—not another hosted stage, duplicated battery,
+> retry, timeout increase or point-version baseline.
 >
 > Inside that one producer-authority owner, Compendium measurement and producer bytes bind every
 > profile. The quarantined SceneMemory budget binds current product/build bytes only in

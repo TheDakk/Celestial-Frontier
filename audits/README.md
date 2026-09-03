@@ -10,7 +10,43 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 Capture-focus / Glass-chronology stop, bounded repair and exact local successor
+### Current PR #35 native-Tab identity stop and fail-closed diagnostic-retention repair
+
+PR #35 run `33708487067`, battery job `100502739510`, attempt 1, consumed the exact one-time
+`test-battery` authority for head `d529a9727c29fca3cd9f337a5bb4fc2577ceaec3` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Synthetic merge
+`ca4abf67ec6eb030642ea925b02f641a2873d88c` and the exact head share tree
+`65927bf068b2bfa01f91c51dbce614d41ba6f254`. Layout **787/787**, Compendium **78/78** plus
+named verification and exact-bound Slice all passed; full Glass consumed Slice report SHA-256
+`fc488de105b3951ad8b3d6ca1a0dfe7a803e91f8a71241ff873e8123d0457cb3` and stopped at its fourth
+viewport, `large-phone`, with exactly one `ARC4_CAPTURE_NATIVE_SURVEY_RETURN`: only
+`idleKeyboardFocus` was false. The job used about **82m45s**, including about **39m14s** for
+Compendium, **24m32s** for Slice and **5m45s** for terminal Glass; it did not retry.
+
+The later artifact upload found 27 files but failed `CreateArtifact` with `ETIMEDOUT`, creating
+zero artifacts. Only the terminal Glass line/finding remains in the aggregate log; the complete
+JSON is unrecoverable and no report/artifact identity is invented. The source repair follows
+current Scavenge/Sample semantic controls across a forced real F4 heartbeat replacement, separates
+trusted Tab transport from current product focus, requires nontransparent focus paint, and adds a
+fail-closed post-Glass summary projection so a future artifact outage cannot erase the exact
+terminal report.
+
+Independent reviews are **CLEAR**. The exact `large-phone` diagnostic
+`20260903043639066-7926-2f4122517015` passed in **11,037 ms**, with **3/3** outcomes and raw proof
+that both old nodes disconnected, both replacements were acquired, Scavenge focus was restored,
+trusted native Tab began on current Scavenge, and current Sample received painted semantic focus.
+Focused coverage passes **24/24**, diagnostic/evidence coverage **12/12**, Actions policy
+**64/64**, and the consolidated browser-free `develop` profile **266/266 files, 2,758 passed / 1
+skipped**, with all TypeScript, selftest, diff, art, route, species and field owners green.
+Compendium authorities are unchanged.
+
+`ARC4_GLASS_PR35_NATIVE_TAB_IDENTITY_AND_DIAGNOSTIC_RETENTION_REPAIR_20260903_D529A97.md` owns
+the exact run, missing-artifact boundary, supported instrument classification, repair, controls,
+local evidence and authority record. The exact run authority is consumed; PR #35 remains
+Ready/open/unmerged, `develop` is unchanged, and no new hosted, release or deployment authority
+exists.
+
+### Historical predecessor PR #35 Capture-focus / Glass-chronology stop, bounded repair and exact local successor
 
 PR #35 run `33694235427`, attempt 1, consumed the exact one-time `test-battery` authority for head
 `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base

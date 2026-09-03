@@ -97,6 +97,18 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
     'test "$recovery_run_id" = "$CF_V2_ARC4_RECOVERY_RUN_ID"',
     'node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_run_id" --glass-run="$glass_run_id"',
   ];
+  const glassDiagnosticCommands = [
+    'if: >-',
+    'always() &&',
+    "steps.glass.outcome != 'skipped'",
+    'working-directory: port/v2',
+    'shell: bash',
+    'set -euo pipefail',
+    'node tools/glassmatrix-diagnostic.mjs \\',
+    '--glass-run="$CF_V2_GLASSMATRIX_RUN_ID" \\',
+    '--slice-run="${{ steps.slice.outputs.run_id }}" \\',
+    '--profile="${{ steps.slice.outputs.profile }}"',
+  ];
   const carriers = [
     'port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json',
     'port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log',
@@ -112,6 +124,7 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
   }
   const slice = workflowStepLines(value, 'one-attempt real-browser slice smoke');
   const glass = workflowStepLines(value, 'one-attempt 12-viewport Glass matrix');
+  const glassDiagnostic = workflowStepLines(value, 'retain exact Glass terminal diagnostic');
   const recovery = workflowStepLines(
     value, 'one-attempt Slice-and-Glass-bound Recovery certification',
   );
@@ -135,7 +148,11 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
   };
   requireOrdered(slice, sliceCommands);
   requireOrdered(glass, glassCommands);
+  requireOrdered(glassDiagnostic, glassDiagnosticCommands);
   requireOrdered(recovery, recoveryCommands);
+  if ((glassDiagnostic ?? []).some((line) => line.startsWith('continue-on-error:'))) {
+    errors.push('soft-fail-glass-diagnostic');
+  }
   for (const item of carriers) {
     if ((archive ?? []).filter((line) => line === item).length !== 1) {
       errors.push(`missing-or-duplicate:${item}`);
@@ -143,11 +160,13 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
   }
   const sliceOffset = value.indexOf('      - name: one-attempt real-browser slice smoke');
   const glassOffset = value.indexOf('      - name: one-attempt 12-viewport Glass matrix');
+  const glassDiagnosticOffset = value.indexOf('      - name: retain exact Glass terminal diagnostic');
   const recoveryOffset = value.indexOf(
     '      - name: one-attempt Slice-and-Glass-bound Recovery certification',
   );
   const archiveOffset = value.indexOf('      - name: archive battery reports');
-  if (sliceOffset < 0 || glassOffset <= sliceOffset || recoveryOffset <= glassOffset
+  if (sliceOffset < 0 || glassOffset <= sliceOffset || glassDiagnosticOffset <= glassOffset
+    || recoveryOffset <= glassDiagnosticOffset
     || archiveOffset <= recoveryOffset) errors.push('ordered-chain');
   return errors;
 };
@@ -496,6 +515,27 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     );
     expect(workflowEvidenceChainErrors(profilelessGlassVerifier)).toContain(
       'missing-or-duplicate:node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"',
+    );
+    const skippedGlassDiagnostic = workflow.replace(
+      "          steps.glass.outcome != 'skipped'",
+      "          steps.glass.outcome == 'success'",
+    );
+    expect(workflowEvidenceChainErrors(skippedGlassDiagnostic)).toContain(
+      "missing-or-duplicate:steps.glass.outcome != 'skipped'",
+    );
+    const softenedGlassDiagnostic = workflow.replace(
+      '      - name: retain exact Glass terminal diagnostic\n',
+      '      - name: retain exact Glass terminal diagnostic\n        continue-on-error: true\n',
+    );
+    expect(workflowEvidenceChainErrors(softenedGlassDiagnostic)).toContain(
+      'soft-fail-glass-diagnostic',
+    );
+    const currentPointerGlassDiagnostic = workflow.replace(
+      '          node tools/glassmatrix-diagnostic.mjs \\\n',
+      '          jq . apps/game/smoke/glassmatrix-report.json\n',
+    );
+    expect(workflowEvidenceChainErrors(currentPointerGlassDiagnostic)).toContain(
+      'missing-or-duplicate:node tools/glassmatrix-diagnostic.mjs \\',
     );
     const missingSliceProfileOutput = workflow.replace(
       'printf \'profile=%s\\n\' "$slice_profile" >> "$GITHUB_OUTPUT"',

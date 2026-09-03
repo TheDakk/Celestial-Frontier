@@ -2,7 +2,47 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-03 UTC): fourteenth PR #35 attempt consumed at Glass; the exact
+**Current local state (2026-09-03 UTC): fifteenth PR #35 attempt consumed at Glass; native-Tab
+identity and diagnostic retention are closed locally; no hosted attempt is authorized.** Run
+`33708487067`, job `100502739510`, attempt 1, tested exact head
+`d529a9727c29fca3cd9f337a5bb4fc2577ceaec3` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b` through synthetic merge
+`ca4abf67ec6eb030642ea925b02f641a2873d88c`; merge and head share tree
+`65927bf068b2bfa01f91c51dbce614d41ba6f254`.
+
+Every predecessor through Layout **787/787**, Compendium **78/78** plus named verification and
+exact-bound Slice plus verification passed; SceneMemory correctly skipped as production-only.
+Full Glass reached row four, `large-phone`, then stopped once/no-retry with exactly one
+`ARC4_CAPTURE_NATIVE_SURVEY_RETURN`; only `idleKeyboardFocus` was false. The aggregate job log
+retained that finding, but the later mandatory artifact upload independently found 27 files and
+failed `CreateArtifact` with `ETIMEDOUT`, creating no artifact, so the full Glass JSON is
+unrecoverable. Compendium used about **39m14s**, Slice about **24m32s**, Glass about **5m45s**, and
+the job about **82m45s**.
+
+The old helper retained exact DOM objects across setup, the five-second Capture heartbeat, native
+Tab and final focus judgment. The bounded repair retains any trusted same-document Tab receipt,
+reacquires current semantic controls, forces a real heartbeat replacement at the exact failing
+`large-phone` row and classifies focus restoration/current controls/lineage/visible paint as
+product outcomes. A transparent outline is no longer painted evidence. Targeted Edge/CDP replay
+`20260903043639066-7926-2f4122517015` passed in **11,037 ms** with both old controls disconnected,
+both replacements acquired, Scavenge focus restored and native Tab visibly focused on current
+Sample. Both independent reviews are CLEAR.
+
+The workflow now runs one browser-free, fail-closed diagnostic projection after Glass. It binds
+the exact immutable Glass run, clean source, profile and Slice predecessor; validates browser,
+completed timing prefix and actionable red shape; and emits a deterministic gzip/base64 carrier
+under a 900,000-byte complete-summary cap. It cannot soften Glass, its named verifier, Recovery or
+mandatory artifact upload and adds no browser, timeout, retry, viewport or job. The consolidated
+browser-free `develop` profile passes **266/266 files, 2,758 passed / 1 skipped**, all TypeScript,
+art, route and specification owners. The fifteen-stop governance ledger is **11
+instrument/infrastructure, 3 product/runtime and 1 mixed**; the missing run-15 JSON is explicitly
+recorded as a forensic limitation.
+
+The exact run-15 authorization is consumed; `actions-budget-approved` is absent, PR #35 remains
+Ready/open/unmerged, and `develop` remains unchanged. No push, label, dispatch, retry, PR mutation,
+merge, release, version bump, publication or deployment is currently authorized.
+
+**Preserved run-14 local state (2026-09-03 UTC): fourteenth PR #35 attempt consumed at Glass; the exact
 signed Capture-focus/atomic-chronology local successor is green; no hosted attempt is
 authorized.** Run `33694235427`, attempt 1, tested exact head
 `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
@@ -1275,7 +1315,30 @@ successor `7cfb42d…` later passed its tracked-input rehearsal plus one fail-fa
 named-verified **78/78 Compendium → zero-finding Slice → 12/12 Glass / 104/104 controls** chain.
 That successor and its five deterministic carriers are local evidence only.
 
-All fourteen PR #35 attempts are consumed and their labels are absent. No new hosted attempt, PR
+The fifteenth exact-head authorization tested
+`d529a9727c29fca3cd9f337a5bb4fc2577ceaec3` against the same base. GitHub run `33708487067`, job
+`100502739510`, attempt 1, used synthetic merge
+`ca4abf67ec6eb030642ea925b02f641a2873d88c`, whose tree
+`65927bf068b2bfa01f91c51dbce614d41ba6f254` is byte-identical to the exact head tree.
+Authorization, all browser-free/static/art prerequisites, the launcher, early Glass, Layout
+**787/787**, Compendium **78/78** plus named verification and exact-bound Slice passed;
+SceneMemory correctly skipped.
+
+Full Glass reached `large-phone` and stopped after about **5m45s** with one
+`ARC4_CAPTURE_NATIVE_SURVEY_RETURN`; only `idleKeyboardFocus` was false. The exact Slice report
+SHA-256 was `fc488de105b3951ad8b3d6ca1a0dfe7a803e91f8a71241ff873e8123d0457cb3`. Artifact upload then
+failed separately with `CreateArtifact ETIMEDOUT`: 27 files found, zero artifact created. The raw
+aggregate log retains the terminal finding, but no complete hosted JSON carrier or artifact hash
+exists.
+
+The local successor follows semantic identity through replacement, forces the real heartbeat at
+the reported viewport, separates trusted transport from product focus/paint, and leaves concise
+per-viewport timing in raw logs. A new exact-report diagnostic projection makes a future terminal
+diagnosis recoverable through `GITHUB_STEP_SUMMARY` even if artifact service fails, without
+softening any gate. Independent reviews are CLEAR; the targeted live `large-phone` path and the
+full browser-free `develop` profile are green. The exact audit is indexed in `audits/README.md`.
+
+All fifteen PR #35 attempts are consumed and their labels are absent. No new hosted attempt, PR
 mutation, merge, release, version bump, preview, publication or deployment is authorized.
 
 ## Safe rollout of this guard
