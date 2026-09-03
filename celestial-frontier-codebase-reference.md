@@ -1,53 +1,64 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-09-03 UTC current Capture-focus / Glass-chronology architecture overlay (matches exact
-> signed local successor; local certificate green):** hosted PR #35 run `33694235427`
-> tested exact head `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
-> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Its changed-input small-phone Glass preflight passed
-> on hosted Chrome; Layout **787/787**, Compendium **78/78** plus named verification and
-> exact-bound Slice also passed. Full Glass stopped on the first small-phone row with one old-
-> classifier `ARC4_CAPTURE_GEOMETRY_FOCUS` finding, zero reported instrument failures, **67/104**
-> controls, 37 causal blocks and no retry.
+> **2026-09-03 UTC current Glass native-Tab identity / diagnostic-retention architecture overlay
+> (matches the signed local descendant containing this reference):** hosted PR #35 run
+> `33708487067`, job `100502739510`, attempt 1, tested exact head
+> `d529a9727c29fca3cd9f337a5bb4fc2577ceaec3` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Authorization, static owners, changed-input Glass
+> preflight, Layout **787/787**, Compendium **78/78** with named verification and exact-bound Slice
+> all passed. Full Glass reached its fourth row, `large-phone`, then stopped once with
+> `ARC4_CAPTURE_NATIVE_SURVEY_RETURN`; only `idleKeyboardFocus:false` was retained.
 >
-> The old collector assembled Arc 4 geometry from multiple CDP evaluations. During Sample, it
-> retained a button rectangle centred at y `173.171875` and ancestor scroll top `2538`; the
-> ordinary five-second Capture authority heartbeat then replaced the card, and bare restoration of
-> prior Scavenge focus moved the Survey scroll to `2207`. Later hit testing used y `504.171875` on
-> `NAV`. Those facts cross layout epochs, so the hosted stop is instrument despite its old product
-> label. The earlier same-source/browser preflight PASS establishes timing variability, not a sound
-> collector or a green certificate.
+> The old native-Tab helper retained setup-time Scavenge and Sample DOM objects across the ordinary
+> Capture authority heartbeat. A healthy heartbeat replaces those objects while preserving the
+> controls' semantic identities. Current Sample could therefore own focus while comparison against
+> the disconnected old Sample returned false. The later mandatory artifact upload independently
+> found 27 files but timed out in `CreateArtifact`, leaving no hosted Glass JSON; the aggregate log
+> retains the terminal finding. That forensic limit is preserved rather than filled with an invented
+> report hash or event history.
 >
-> `CaptureCardController.#restoreView()` now marks passive rerender restoration explicitly and
-> routes it through `#restoreElement(..., true)`, which calls `focus({preventScroll:true})`.
-> Default `#restoreElement()` behavior remains available to explicit action settlement, preserving
-> its existing reveal semantics. No Capture mechanics, action structure, odds, SessionRNG, Yield,
-> rewards, ownership or persistence schema change.
+> Native setup, heartbeat and focus carriers now own
+> `cf-v2-glass-arc4-native-tab-setup/v1`,
+> `cf-v2-glass-arc4-native-tab-heartbeat/v1` and
+> `cf-v2-glass-arc4-native-tab-focus/v1`. Setup retains the first trusted same-document Tab receipt
+> even when its origin is wrong; origin, current-control presence, semantic lineage, restored prior
+> focus, settled scroll and final focus remain product judgments. The exact `large-phone` row forces
+> one real quiesce → resume → F4 heartbeat between setup and native Tab, requires the original
+> controls to disconnect, reacquires the current Scavenge/Sample controls and requires semantic
+> Scavenge focus restoration before CDP delivers Tab. Focus evidence is sampled from the reacquired
+> current target across stable frames, and visible focus paint must have nonzero color alpha.
 >
-> `buildArc4AtomicGeometryEvidenceExpression()` is now the single browser-side action/Close
-> collector. It focuses before scroll, forces the small-phone Sample heartbeat through exact
-> quiesce/resume smoke receipts, reacquires the replacement node, then captures rectangle,
-> ancestor scroll, translated layout, centre hit and focus across stable frames in one chronology.
-> Each carrier owns `cf-v2-glass-arc4-control-geometry/v1`; the forced replacement owns
-> `cf-v2-glass-arc4-heartbeat-rerender/v1`. `assessArc4CaptureGeometryEvidenceCoherence()` runs
-> before `assessArc4CaptureCardGeometryFocus()`: a partial/cross-epoch carrier is instrument-red
-> and causal-stops product assessment, while a wholly missing target remains coherent evidence for
-> the product assessor. The product assessor requires `focused:true` for every action and Close
-> witness and requires Close's captured scroll to be settled; isolated negative controls cover an
-> unfocused action, unfocused Close and unsettled Close.
+> `assessArc4NativeTabFocusEvidence()` separates carrier/schema/document/receipt integrity from
+> those current-product facts. Missing or wrong-document receipts are instrument-red; lost
+> restoration, wrong origin, missing/replaced semantic lineage, transparent paint or post-Tab focus
+> loss are product-red. Both directions have deterministic negative controls. Each viewport emits a
+> concise start and terminal line with duration and bounded diagnosis counts, so the last completed
+> row remains visible in raw logs.
 >
-> Current Compendium measurement/producer authority is
+> The workflow also runs one browser-free, fail-closed post-Glass diagnostic projection whenever
+> Glass was not skipped. It exact-validates the immutable terminal report, committed source,
+> profile, Slice predecessor ID/hash, sealed 12-row inventory, completed timing prefix and terminal
+> state. A valid pass, product red or instrument red projects bounded first-red details, timings,
+> hashes and a deterministic gzip/base64 report carrier to `GITHUB_STEP_SUMMARY` under strict
+> per-carrier and cumulative UTF-8 caps. It cannot convert Glass red to green, advance Recovery,
+> weaken named verification or replace mandatory artifact upload.
+>
+> Targeted local Edge/CDP evidence `20260903043639066-7926-2f4122517015` passed `large-phone` in
+> **11,037 ms**, with **3/3** Arc 4 outcomes, both old nodes disconnected, both semantic
+> replacements acquired, restored Scavenge focus, trusted Tab from current Scavenge and painted
+> focus on current Sample. Independent reviews are CLEAR. Focused coverage is **24/24** plus
+> **12/12**, Actions policy **64/64**, and the full browser-free `develop` profile is green at
+> **266/266 files, 2,758 passed / 1 skipped**, with all three TypeScript programs and static owners
+> green. This is local diagnostic evidence, not a hosted certificate.
+>
+> Current Compendium measurement/producer authority remains
 > `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
-> `c216cdc9e8d62800699bc592949726a197f3d8cb6613d1a35086ecd69a1d8cae`; built index
-> `d0b1397b…84a64`, owner `assets/main-CwKRu39a.js` / `5750c8a4…c8360`, and service worker
-> `a58f2877…8dc8` are the changed leaves. Worker/painter bytes, ruler, ceilings, outcomes and
-> historical samples are unchanged. The full record, both hosted Glass carriers and exact local
-> PASS audit are under `audits/`. Focused repair coverage passes **53/53**, and the full browser-free `develop` profile
-> passes **265/265 files, 2,749 passed / 1 skipped** with all three TypeScript programs and static
-> owners green. Exact clean SSH-signed source `7cfb42d993778211e9c27b671e6b4fc9b891ff95`, tree
-> `090d2e4827b0eeeec334410ec9563dc778559dd0`, then passed the one-viewport repaired-path diagnostic
-> and one unchanged-source, fail-fast/no-retry, named-verified **78/78 Compendium → zero-finding
-> Slice → 12/12 Glass / 104/104 controls** chain. This overlay claims exact local evidence only;
-> it creates no hosted authority.
+> `c216cdc9e8d62800699bc592949726a197f3d8cb6613d1a35086ecd69a1d8cae`; the ruler, ceilings,
+> 78-outcome inventory, worker/painter behavior and historical samples are unchanged. The repair
+> changes evidence identity and retention only—no Capture mechanics, action structure, odds,
+> SessionRNG, Yield, rewards, ownership, persistence, creatures, plants, biomes, Guardians, loot,
+> graphics or audio. The exact hosted authority was consumed; PR #35 remains open/unmerged and this
+> overlay creates no push, retry, merge, release or deployment authority.
 
 > **2026-09-02 historical predecessor early hosted Glass-preflight architecture overlay (workflow/evidence only;
 > exact signed local browser proof green):** `port/v2/tools/battery-scope.mjs` now projects one
@@ -4772,11 +4783,21 @@ Compendium **78/78** → Slice (`19833fe4…`) → Glass **12/12** (`a4f6d9b1…
 predecessor binding. This is a harness-only repair. Edge point version remains provenance only;
 there is no hosted, push, merge or release authority.
 
-**Current Glass causal/presentation contract (2026-09-02):** the first instrument red retains one
-root failure, blocks dependent controls and stops later viewport work. The first product red likewise
-stops dependent product work and records a complete, disjoint blocked suffix rather than pretending
-those controls executed. Rendered Guide ingress reopens and re-queries the unique current topic
-carrier, judges all required-copy baselines first, classifies copy mismatch as product-red and
+**Current Glass causal/presentation contract (2026-09-03):** native keyboard evidence follows
+semantic identity rather than setup-time DOM object lifetime. The setup listener retains the first
+trusted same-document Tab receipt; the collector reacquires the current controls before and after a
+real `large-phone` heartbeat replacement, proves old-node disconnection and requires prior semantic
+focus restoration before native Tab. Current-control presence, origin, lineage, settled scroll,
+post-Tab focus and nontransparent focus paint are product outcomes; schema, carrier, document and
+trusted receipt integrity are instrument outcomes. The terminal report is exact-validated and
+deterministically projected to the step summary after Glass so diagnosis survives an independent
+artifact-service failure without softening the failed Glass step or advancing Recovery.
+
+The first instrument red retains one root failure, blocks dependent controls and stops later
+viewport work. The first product red likewise stops dependent product work and records a complete,
+disjoint blocked suffix rather than pretending those controls executed. Rendered Guide ingress
+reopens and re-queries the unique current topic carrier, judges all required-copy baselines first,
+classifies copy mismatch as product-red and
 setup/control/restoration defects as instrument-red, and arms mutants only from green. Generic
 visibility walks ancestor `<details>` elements: a closed disclosure admits only its direct first
 Summary subtree; retained rectangles, computed style or requested scroll do not make hidden actions
@@ -4802,7 +4823,7 @@ restoration, and keep native forward/reverse Tab bypass sentinels inside the mod
 diagnosis and both-direction negative control without adding a job, changing the 104-control sealed
 inventory or weakening the product predicate.
 
-**Current Inventory-lifetime certificate:** exact signed implementation
+**Historical Inventory-lifetime certificate (still valid for its exact source):** exact signed implementation
 `5004fd36f9fdb2632f323d99f1535e9fb2ac5b95` passed the hermetic tracked-input develop profile
 and one unchanged-source/no-retry, named-verified Compendium **78/78** → zero-finding Slice →
 Glass **12/12 / 104/104** chain with zero blocked/omitted work, findings, instrument failures or

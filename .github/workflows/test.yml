@@ -403,6 +403,18 @@ jobs:
           test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"
           printf 'run_id=%s\n' "$glass_run_id" >> "$GITHUB_OUTPUT"
           node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"
+      - name: retain exact Glass terminal diagnostic
+        if: >-
+          always() &&
+          steps.glass.outcome != 'skipped'
+        working-directory: port/v2
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/glassmatrix-diagnostic.mjs \
+            --glass-run="$CF_V2_GLASSMATRIX_RUN_ID" \
+            --slice-run="${{ steps.slice.outputs.run_id }}" \
+            --profile="${{ steps.slice.outputs.profile }}"
       - name: one-attempt Slice-and-Glass-bound Recovery certification
         id: recovery
         if: github.event.pull_request.base.ref == 'main'

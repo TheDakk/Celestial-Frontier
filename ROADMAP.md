@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-03 UTC · RUN 14 GLASS CHRONOLOGY RED · SIGNED EXACT LOCAL CHAIN GREEN · HOSTED AUTHORITY ABSENT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-03 UTC · RUN 15 NATIVE-TAB RED CLOSED LOCALLY · DIAGNOSTIC RETENTION HARDENED · HOSTED AUTHORITY ABSENT ◀◀◀
 
 ### Exact current boundary
 
@@ -25,151 +25,116 @@ the archive verbatim and refresh this handoff in place.
   `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, tracking
   **origin/openai/mac**.
 - Exact pushed and hosted-tested head is
-  **6b59b452b41c0065fb3946b9cf3b7fc6ac02963c**, tree
-  **54ab518c2f63c924e2cedfea027b949989f2a79e**, against unchanged `develop`
-  **7a9f4c1370dd84292388d718c38ff34214f6203b**. It contains the thirteen-stop audit and early
-  changed-input Glass preflight.
-- Exact clean SSH-signed implementation source
-  **7cfb42d993778211e9c27b671e6b4fc9b891ff95**, tree
-  **090d2e4827b0eeeec334410ec9563dc778559dd0**, contains the bounded passive-focus/atomic-Glass
-  repair, deterministic mutations, refreshed Compendium producer authority, hosted red carriers
-  and synchronized references. The signed evidence/documentation descendant containing this
-  handoff adds five deterministic local PASS carriers and their exact audit, passes the final
-  hermetic tracked-input `develop` profile, and is the second local commit ahead of the remote; its
-  own hash is intentionally not self-embedded. Preserve every current byte; do not rebase,
+  **d529a9727c29fca3cd9f337a5bb4fc2577ceaec3**, tree
+  **65927bf068b2bfa01f91c51dbce614d41ba6f254**, against unchanged `develop`
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**.
+- The signed local descendant containing this handoff adds only the bounded Glass
+  native-focus/evidence-retention repair, deterministic controls and synchronized references; its
+  own hash is intentionally not self-embedded. Preserve every current byte and do not rebase,
   overwrite or copy it to another worktree.
 - PR #35 remains Ready/open/unmerged. `actions-budget-approved` is absent and `develop` is
-  unchanged. No push, label, dispatch, rerun, PR mutation, merge, release, version bump,
-  publication or deployment is currently authorized.
+  unchanged. The run-15 authority is consumed. No push, label, dispatch, retry, PR mutation, merge,
+  release, version bump, publication or deployment is currently authorized.
 
-### Fourteenth exact hosted attempt — immutable consumed instrument red
+### Fifteenth exact hosted attempt — consumed Glass red plus independent artifact outage
 
-- Nick's one-time `test-battery` authority for exact head **6b59b45…** against base
-  **7a9f4c1…**, 92-minute maximum and no retry, produced run **33694235427**, attempt 1.
-  Synthetic merge **94ec8e41606f9c0e1b16865cdfeff4fb76579b3f**, with base then head as
-  parents, has the same tree as the exact head.
-- The changed-input early Glass preflight passed on the exact clean synthetic merge and hosted
-  Chrome `152.0.7977.64` / CDP `1.3`: one 320×568@2 row, **92,595 ms**, **95/104**
-  controls, nine lawful targeted omissions, zero findings, instrument failures, blocked controls
-  or retries. It remained noncertifying.
-- Root Layout **787/787**, Compendium **78/78** plus named verification and exact-bound Slice then
-  passed. SceneMemory correctly skipped as production-only/quarantined. Compendium consumed about
-  **38m35s** and Slice about **24m15s**.
-- Full Glass consumed exact Slice `gha-33694235427-1-slice` and stopped after **35,412 ms** on its
-  first small-phone row. It retained one old-classifier `ARC4_CAPTURE_GEOMETRY_FOCUS` finding,
-  zero reported instrument failures, **67/104** controls, 37 causal blocks, zero omissions and
-  zero retries. The remaining 11 viewports did not run. On `develop` only evidence upload follows
-  Glass; Recovery and preview are `main`-only.
-- The exact one-run authority is consumed. The run was not retried and PR #35 did not merge.
+- Nick's one-time `test-battery` authority for exact head **d529a97…** against base
+  **7a9f4c1…**, 92-minute maximum and no retry, produced run **33708487067**, job
+  **100502739510**, attempt 1. Synthetic merge
+  **ca4abf67ec6eb030642ea925b02f641a2873d88c** has base then head as parents and the same tree as
+  the exact head.
+- Authorization, legacy browser-free checks, v2 static/art/launcher checks, early changed-input
+  small-phone Glass, root Layout **787/787** plus verification, Compendium **78/78** plus
+  verification, and exact-bound Slice plus verification all passed. SceneMemory correctly skipped
+  as production-only/quarantined. Compendium used about **39m14s**, Slice about **24m32s**, and the
+  job used about **82m45s** total.
+- Full Glass consumed exact Slice report SHA-256
+  `fc488de105b3951ad8b3d6ca1a0dfe7a803e91f8a71241ff873e8123d0457cb3` and reached viewport
+  four, `large-phone`. After about **5m45s**, it stopped once/no-retry with exactly one
+  `ARC4_CAPTURE_NATIVE_SURVEY_RETURN`; only `idleKeyboardFocus` was false. Every earlier
+  viewport and every other recorded clause was green.
+- The later mandatory artifact upload independently found 27 files but failed `CreateArtifact`
+  with `ETIMEDOUT`; zero artifact was created. The aggregate job log preserved the terminal
+  finding, but the complete Glass JSON is unrecoverable. This outage did not cause or alter the
+  earlier Glass exit.
+- The label was removed, PR #35 did not merge, and the exact authorization is consumed.
 
-### Causal diagnosis and classification
+### Causal diagnosis and bounded successor
 
-- Sample retained a button rectangle from y `151.171875`–`195.171875`, centred at
-  y `173.171875`, with ancestor scroll top `2538`. Its later hit-test points were instead at
-  y `504.171875` on `NAV`, outside that retained rectangle.
-- Between those observations, the ordinary five-second Capture authority heartbeat replaced the
-  card DOM. Bare semantic-focus restoration returned focus to Scavenge and moved the independently
-  scrolled Survey surface from `2538` to `2207`. The old multi-command Glass collector then joined
-  the new scroll epoch to the old rectangle. Native Tab-to-Sample and focus-visible evidence were
-  healthy.
-- No one browser epoch can contain both facts. The hosted stop is **instrument**, not product or
-  mixed, despite the old report label. The same-source/browser early PASS proves this race was
-  timing-dependent; it does not certify the old collector or justify a retry.
-- Across fourteen consumed PR #35 attempts, the current classification is **10
-  instrument/infrastructure, 3 product/runtime and 1 mixed**.
+- The old native-Tab helper retained exact Scavenge/Sample DOM object references across setup,
+  a possible five-second Capture authority rerender, CDP Tab and final focus assessment. A healthy
+  rerender replaces those objects while preserving their semantic controls, so comparing the
+  current active replacement to the disconnected old Sample could report `idleKeyboardFocus:false`.
+  The missing full report prevents absolute reconstruction, but the source defect and exact
+  failure signature make this an instrument/harness stop for repair governance. The cumulative
+  fifteen-stop ledger is **11 instrument/infrastructure, 3 product/runtime and 1 mixed**.
+- Glass now records the first trusted same-document Tab regardless of its origin, then reacquires
+  current controls by `data-capture-action` and `data-semantic-key`. Trusted delivery remains
+  instrument evidence; wrong origin, missing current controls, stale semantic lineage, lost focus,
+  unsettled scroll or invisible paint are product evidence.
+- The exact failing `large-phone` row forces one real F4 quiesce → resume → manual heartbeat
+  between setup and native Tab. It proves both old controls disconnected, both semantic
+  replacements were acquired, Scavenge focus was restored, and native Tab moved focus to Sample.
+  A deterministic lost-restoration mutation stays instrument-green and product-red.
+- Visible focus now requires nontransparent painted decoration; a zero-alpha outline with otherwise
+  unchanged paint is product-red. Geometry and scroll remain collected from the current live node
+  across stable frames.
+- Glass emits one concise START and PASS/product-red/instrument-red timing line per viewport.
+  Immediately after Glass, one browser-free projection validates the exact immutable report,
+  source, profile, Slice predecessor, browser/timing/red shape and terminal status, then places a
+  deterministic gzip/base64 carrier plus bounded first diagnosis in `GITHUB_STEP_SUMMARY`.
+  Product findings must belong to the completed timing prefix; instrument diagnoses must be
+  nonempty strings; exact source/summary keys and both isolated/cumulative summary bytes are capped
+  at 900,000. This does not soften Glass, its named verifier, Recovery ordering or mandatory
+  artifact upload, and it adds no browser, viewport, retry, timeout or job.
 
-### Bounded successor in the working tree
+### Verification and preserved scope
 
-- **Product presentation:** a passive Capture authority rerender restores the same semantic action
-  with `focus({preventScroll:true})`, preserving focus without taking ownership of the user's or
-  harness's independent scroll. Explicit action settlement keeps its existing reveal behavior.
-- **Glass evidence:** each action focuses before scrolling; the small-phone Sample control forces
-  one deterministic heartbeat replacement, verifies quiesce/resume and exact document identity,
-  reacquires the replacement node, and captures rectangle, ancestor scroll, translated layout,
-  centre hit-test and focus in one browser-side chronology across stable frames.
-- **Classification:** explicitly schematized action/Close carriers are checked for same-epoch
-  coherence before product geometry. A cross-epoch or partially populated carrier is
-  instrument-red and causal-stops product assessment; a wholly missing target remains product
-  evidence for the existing assessor.
-- Final false-green review also made actual `focused:true` mandatory for every action and Close
-  focus proof and made Close's recorded scroll settlement mandatory. Dedicated mutations prove an
-  unfocused action, unfocused Close and unsettled Close each turn the existing owner red.
-- Deterministic controls reproduce the hosted y `173` → y `504`/`NAV` contradiction and the
-  `2538` → `2207` passive-focus scroll rollback. The repair adds no timeout, retry, browser pin,
-  workflow job, viewport or control.
-- Current Compendium measurement/producer authority is
+- Exact audit:
+  `audits/ARC4_GLASS_PR35_NATIVE_TAB_IDENTITY_AND_DIAGNOSTIC_RETENTION_REPAIR_20260903_D529A97.md`.
+- The final native-focus reviewer and diagnostic-projection reviewer are both **CLEAR**. Focused
+  combined coverage passes **24/24**; the diagnostic/evidence-chain subset passes **12/12**;
+  Glass selftest, TypeScript, syntax, diff and Actions policy **64/64** all pass.
+- Targeted local Edge/CDP diagnostic
+  `20260903043639066-7926-2f4122517015` passed `large-phone` in **11,037 ms** with **3/3**
+  Arc 4 outcomes, zero findings and zero instrument failures. Its raw evidence proves old
+  Scavenge/Sample nodes disconnected, replacements acquired, restored Scavenge focus, a trusted
+  Tab from current Scavenge and visible focus on current Sample. It is noncertifying.
+- The consolidated browser-free `develop` profile passes **266/266 files, 2,758 passed / 1
+  skipped**, all three TypeScript programs, **34** art sources with zero findings,
+  **1,014/1,014** live route keys with zero dead, **1,010/1,010** species, and **454** declared
+  fields with zero unread or inert.
+- Compendium measurement/producer authority remains
   `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
-  `c216cdc9e8d62800699bc592949726a197f3d8cb6613d1a35086ecd69a1d8cae`. Only built
-  index/owner/service-worker identity moved; worker/painter bytes, the fixed ruler, numeric
-  ceilings, 78-outcome inventory and historical samples are unchanged.
-
-### Evidence and verification state
-
-- Exact audits: hosted stop/repair
-  `audits/ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_AND_REPAIR_20260903_6B59B45.md`;
-  clean local PASS
-  `audits/ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.md`.
-- Both hosted reports are permanent deterministic `gzip -n -9` carriers:
-  - early PASS `ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_EARLY_PREFLIGHT_PASS_20260903_6B59B45.json.gz`,
-    raw/gzip SHA-256 `81d7e65c…1087a` / `db541bf3…404a`;
-  - full red `ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_20260903_6B59B45.json.gz`,
-    raw/gzip SHA-256 `cb179843…48d2` / `395172d8…035f`.
-  Both pass integrity, decompressed raw-hash comparison and deterministic recompression.
-- Focused repair/negative-control coverage passes **53/53**. The complete browser-free `develop`
-  profile passes **265/265 files, 2,749 passed / 1 skipped**, all three TypeScript programs,
-  **34** art sources with zero findings, **1,014/1,014** live route keys with zero dead,
-  **1,010/1,010** species, and **454** declared fields with zero unread or inert.
-- Exact clean SSH-signed source **7cfb42d…** passed its hermetic tracked-input `develop` rehearsal,
-  all applicable browser/CDP/Compendium instrument controls, and live Edge `152.0.4191.53` / CDP
-  `1.3` preflight. On that unchanged source, the noncertifying small-phone diagnostic
-  `20260903-pr35-chronology-7cfb42d99377-glass-preflight` passed in **12,695 ms** with **95/104**
-  controls and nine lawful omissions.
-- Its one fail-fast/no-retry named-verified admission chain is green: Compendium
-  `20260903012535851-93600-5d61fc93fc` passed **78/78** in **63,955 ms**; Slice
-  `20260903012714531-93918-edfead967720` passed in **372,125 ms** with zero findings/scopes and ten
-  screenshots; exact-Slice-bound Glass `20260903013357550-94309-6b031e425f5d` passed in
-  **115,254 ms** across **12/12** viewports/reloads and **104/104** controls with zero findings,
-  instrument failures, blocked/omitted controls or retries. Every named verifier passed.
-- Five deterministic `gzip -n -9` carriers preserve the preflight, Compendium, Slice report/log
-  and Glass report under `audits/`; exact raw/compressed sizes and hashes are indexed in
-  `audits/README.md`. The signed evidence/docs descendant containing this handoff passes the final
-  tracked-input `develop` profile; its own hash is intentionally not self-embedded. This is local
-  evidence only and creates no hosted authority.
-
-### Battery complexity and preserved scope
-
-- The **104 names are negative controls inside one Glass browser campaign, not 104 jobs or browser
-  launches**. Run 14's early canary executed 95; final Glass executed 67 and explicitly blocked 37
-  after the first red. Most hosted time was the two serial live certifiers above, not thousands of
-  independent checks.
-- The repair adds deterministic chronology to existing ownership rather than another stage,
-  duplicate battery, retry, timeout increase or browser-version baseline. Compatible Chromium
-  point updates remain provenance-only.
-- Capture pools, odds, SessionRNG, Yield, ecology, ownership, rewards, creature/genome, plant,
-  biome, Guardian, world generation, loot, graphics, audio, saves and card structure are unchanged.
-  No Gate/HUMAN criterion, production identity or release boundary closes here.
+  `c216cdc9e8d62800699bc592949726a197f3d8cb6613d1a35086ecd69a1d8cae`;
+  the fixed ruler, numeric ceilings and 78-outcome inventory are unchanged.
+- Capture mechanics, pools, odds, SessionRNG, Yield, ecology, ownership, rewards, creatures/genomes,
+  plants, biomes, Guardians, world generation, loot, graphics, audio, saves and card structure are
+  unchanged. No player-visible release note, Gate/HUMAN closure or production identity change is
+  warranted.
 
 ### Exact next sequence
 
-1. No further local coding, instrument repair or browser rerun remains for this exact successor.
-2. A later hosted attempt requires Nick's new exact workflow/head/base/minutes/
-   no-retry authorization; only that future exact head may be pushed, labelled and dispatched.
+1. Preserve the signed local checkpoint; do not run another local or hosted browser battery.
+2. A future hosted attempt requires Nick's new exact workflow/head/base/minutes/no-retry
+   authorization. Only that exact future head may be pushed, labelled and dispatched.
+3. Merge PR #35 into `develop` only if that one exact attempt is terminal green.
 
 ### Paired Git/Claude handoff
 
-- **Current side — OpenAI/Codex:** exact signed local implementation **7cfb42d…** and its complete
-  no-retry local admission chain are green on `openai/mac`; the five-carrier evidence/docs
-  descendant is the final local handoff. Nothing in this batch is pushed or merged.
-- **GitHub step:** none. Do not apply `actions-budget-approved` or mutate PR #35 without a new exact
-  authorization after local closure.
+- **Current side — OpenAI/Codex:** the signed local descendant on `openai/mac` contains the
+  run-15 repair, retention fallback, controls, audit and synchronized docs. Nothing in this batch
+  is pushed or merged.
+- **GitHub step:** none. Do not apply `actions-budget-approved` or mutate PR #35 without a new
+  exact authorization.
 - **PR #35:** base **develop**, source **openai/mac**.
   - **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
   - **Description:** “Completes the established v2 roadmap campaign without recreating gameplay
-    systems; preserves all fourteen immutable PR #35 stops; fixes passive Capture focus restoration
-    so authority rerenders do not take scroll; makes Glass geometry evidence atomic and
-    chronology-coherent with deterministic heartbeat replacement; retains the early-PASS/full-red
-    hosted evidence pair; adds no retry, timeout, job, browser pin or control; and passes one clean
-    no-retry, named-verified Compendium → exact Slice → full Glass local successor.”
+    systems; preserves all fifteen immutable PR #35 stops; makes native Tab evidence follow current
+    semantic controls through a real Capture heartbeat replacement; distinguishes transport from
+    product focus/paint outcomes; preserves exact terminal diagnosis through artifact-service
+    outages; adds no retry, timeout, browser pin, viewport or gameplay system; and passes the
+    consolidated local successor checks.”
   Refresh PR metadata only inside a newly authorized GitHub-write sequence.
 - **Other side — Anthropic/Claude Code:** the new bytes are not in `develop`, so do not copy or
   synchronize them. Nick does not need to open Claude yet. After PR #35 is terminal green and

@@ -243,7 +243,7 @@ function fullNegativeControlErrors(report) {
   return [];
 }
 
-function fullBrowserAuthorityErrors(report) {
+export function glassBrowserAuthorityErrors(report) {
   const browser = report?.browser;
   const exactFields = [
     'consistentAcrossViewports', 'executable', 'js_version', 'product',
@@ -330,7 +330,7 @@ export function glassTerminalEvidenceErrors(report, {
       || report.findings?.length !== 0 || report.instrumentFailures?.length !== 0) {
       errors.push('Glass full matrix PASS carries incomplete viewport count or actual findings');
     }
-    errors.push(...fullBrowserAuthorityErrors(report));
+    errors.push(...glassBrowserAuthorityErrors(report));
     errors.push(...fullViewportEvidenceErrors(report));
     errors.push(...fullArc4OutcomeErrors(report));
     errors.push(...fullNegativeControlErrors(report));

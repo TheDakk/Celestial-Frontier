@@ -145,6 +145,32 @@ export function buildArc4AtomicGeometryEvidenceExpression(options?: {
   forceHeartbeatRerender?: boolean;
 }): string;
 
+export interface Arc4NativeTabFocusAssessment {
+  readonly schema: 'cf-v2-glass-arc4-native-tab-assessment/v1';
+  readonly ok: boolean;
+  readonly instrumentOk: boolean;
+  readonly productOk: boolean;
+  readonly instrumentChecks: Readonly<Record<string, boolean>>;
+  readonly productChecks: Readonly<Record<string, boolean>>;
+}
+
+export function buildArc4NativeTabFocusSetupExpression(
+  verb: 'tame' | 'scavenge' | 'sample',
+  priorVerb: 'tame' | 'scavenge' | 'sample',
+): string;
+
+export function buildArc4NativeTabHeartbeatRerenderExpression(): string;
+
+export function buildArc4NativeTabFocusEvidenceExpression(
+  verb: 'tame' | 'scavenge' | 'sample',
+): string;
+
+export function assessArc4NativeTabFocusEvidence(input?: {
+  readonly setup?: unknown;
+  readonly focus?: unknown;
+  readonly heartbeat?: unknown;
+}): Arc4NativeTabFocusAssessment;
+
 export function runInventoryOffscreenProbe<TProbe = unknown>(owners: {
   setup: () => InventoryActionOffscreenSetup | Promise<InventoryActionOffscreenSetup>;
   activate: () => TProbe | Promise<TProbe>;

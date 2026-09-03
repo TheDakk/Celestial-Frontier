@@ -1141,6 +1141,95 @@ function arc4KeyboardFocusProof(value, { verb = null, close = false } = {}) {
       && value?.semanticKey === `capture:${verb}`);
 }
 
+const ARC4_NATIVE_TAB_SETUP_SCHEMA = 'cf-v2-glass-arc4-native-tab-setup/v1';
+const ARC4_NATIVE_TAB_FOCUS_SCHEMA = 'cf-v2-glass-arc4-native-tab-focus/v1';
+const ARC4_NATIVE_TAB_ASSESSMENT_SCHEMA = 'cf-v2-glass-arc4-native-tab-assessment/v1';
+const ARC4_NATIVE_TAB_HEARTBEAT_SCHEMA = 'cf-v2-glass-arc4-native-tab-heartbeat/v1';
+
+export function assessArc4NativeTabFocusEvidence({
+  setup = null, focus = null, heartbeat = null,
+} = {}) {
+  const instrumentChecks = {
+    setupCarrier: setup?.schema === ARC4_NATIVE_TAB_SETUP_SCHEMA,
+    setupDocument: typeof setup?.documentToken === 'string' && setup.documentToken.length > 0,
+    focusCarrier: focus?.schema === ARC4_NATIVE_TAB_FOCUS_SCHEMA,
+    documentIdentity: focus?.stateFound === true && focus?.sameDocument === true
+      && focus?.setupDocumentToken === setup?.documentToken
+      && focus?.finalDocumentToken === setup?.documentToken,
+    trustedTabReceipt: focus?.nativeTabTrusted === true
+      && focus?.receipt?.trusted === true && focus?.receipt?.key === 'Tab'
+      && focus?.receipt?.code === 'Tab'
+      && focus?.receipt?.documentToken === setup?.documentToken,
+    scrollCarrier: focus?.scroll?.captured === true
+      && focus?.scroll?.firstDocumentToken === setup?.documentToken
+      && focus?.scroll?.secondDocumentToken === setup?.documentToken
+      && Number.isInteger(focus?.scroll?.firstTargetCount)
+      && focus.scroll.firstTargetCount >= 0
+      && Number.isInteger(focus?.scroll?.secondTargetCount)
+      && focus.scroll.secondTargetCount >= 0
+      && typeof focus?.scroll?.firstTargetConnected === 'boolean'
+      && typeof focus?.scroll?.secondTargetConnected === 'boolean',
+    heartbeatControl: heartbeat === null || (heartbeat?.schema === ARC4_NATIVE_TAB_HEARTBEAT_SCHEMA
+      && heartbeat?.required === true && heartbeat?.stateFound === true
+      && heartbeat?.seamsAvailable === true && heartbeat?.error === null
+      && heartbeat?.initial?.documentToken === setup?.documentToken
+      && heartbeat?.initial?.heartbeatRunning === true
+      && heartbeat?.quiescence?.schema === 'cf-v2-f4-heartbeat-quiescence/v1'
+      && heartbeat?.quiescence?.documentToken === setup?.documentToken
+      && heartbeat?.quiescence?.wasRunning === true
+      && heartbeat?.quiescence?.stopped === true
+      && heartbeat?.quiescence?.cycleSettled === true
+      && heartbeat?.resume?.schema === 'cf-v2-f4-heartbeat-resume/v1'
+      && heartbeat?.resume?.documentToken === setup?.documentToken
+      && heartbeat?.resume?.running === true && heartbeat?.runCompleted === true
+      && heartbeat?.after?.documentToken === setup?.documentToken
+      && heartbeat?.after?.heartbeatRunning === true
+      && heartbeat?.after?.originalTargetDisconnected === true
+      && heartbeat?.after?.originalPriorDisconnected === true
+      && heartbeat?.cleanup?.attempted === false
+      && heartbeat?.cleanup?.receipt === null && heartbeat?.cleanup?.error === null),
+  };
+  const instrumentOk = Object.values(instrumentChecks).every((value) => value === true);
+  const productChecks = {
+    setupReady: setup?.ok === true && setup?.targetCount === 1 && setup?.priorCount === 1
+      && setup?.targetConnected === true && setup?.priorConnected === true
+      && setup?.priorFocused === true,
+    setupIdentity: setup?.targetVerb === 'sample' && setup?.priorVerb === 'scavenge'
+      && setup?.targetSemanticKey === 'capture:sample'
+      && setup?.priorSemanticKey === 'capture:scavenge',
+    tabOrigin: focus?.receipt?.targetWasCurrent === true
+      && focus?.receipt?.priorFocused === true
+      && focus?.receipt?.priorVerb === 'scavenge'
+      && focus?.receipt?.priorSemanticKey === 'capture:scavenge',
+    currentControls: focus?.targetCount === 1 && focus?.priorCount === 1
+      && focus?.targetConnected === true && focus?.priorConnected === true
+      && focus?.scroll?.firstTargetCount === 1 && focus?.scroll?.secondTargetCount === 1
+      && focus?.scroll?.firstTargetConnected === true
+      && focus?.scroll?.secondTargetConnected === true,
+    semanticLineage: focus?.verb === 'sample' && focus?.semanticKey === 'capture:sample'
+      && focus?.priorVerb === 'scavenge' && focus?.priorSemanticKey === 'capture:scavenge'
+      && (focus?.replacementAcquired === true
+        ? focus?.originalTargetDisconnected === true
+        : focus?.originalTargetDisconnected === false)
+      && (focus?.priorReplacementAcquired === true
+        ? focus?.originalPriorDisconnected === true
+        : focus?.originalPriorDisconnected === false),
+    heartbeatFocusRestored: heartbeat === null || heartbeat?.after?.priorFocused === true,
+    scrollSettled: focus?.scrollSettled === true,
+    keyboardFocus: arc4KeyboardFocusProof(focus, { verb: 'sample' }),
+    activeSemanticFocus: focus?.activeSemanticKey === 'capture:sample',
+  };
+  const productOk = Object.values(productChecks).every((value) => value === true);
+  return {
+    schema: ARC4_NATIVE_TAB_ASSESSMENT_SCHEMA,
+    ok: instrumentOk && productOk,
+    instrumentOk,
+    productOk,
+    instrumentChecks,
+    productChecks,
+  };
+}
+
 function arc4GeometryClauseProjection({ viewport, controls } = {}) {
   const rect = (value) => !!value && typeof value === 'object'
     && [value.left, value.top, value.right, value.bottom, value.width, value.height]
@@ -1219,9 +1308,8 @@ function assessArc4NativeSurveyCloseReturn(evidence = {}) {
     setupCloseTrusted: evidence.setupClose?.ok === true && evidence.setupClosed?.cardOpen === false,
     openerTrusted: evidence.open?.ok === true && evidence.opened?.cardOpen === true
       && evidence.opened?.expanded === 'true',
-    idleKeyboardFocus: evidence.sampleScrollSettled === true
-      && evidence.sampleFocus?.nativeTabTrusted === true
-      && arc4KeyboardFocusProof(evidence.sampleFocus, { verb: 'sample' }),
+    idleKeyboardFocus: evidence.sampleFocusOutcome?.instrumentOk === true
+      && evidence.sampleFocusOutcome?.productOk === true,
     closeTrusted: evidence.close?.ok === true
       && evidence.close?.target?.surveyClose === true
       && evidence.close?.target?.accessibleName === 'Close Survey card'
@@ -1383,55 +1471,192 @@ export function buildArc4AtomicGeometryEvidenceExpression({
       accessibleName,focus,rerender};})()`;
 }
 
-function arc4NativeTabFocusSetupExpression(verb, priorVerb) {
+export function buildArc4NativeTabFocusSetupExpression(verb, priorVerb) {
   if (!ARC4_CAPTURE_VERBS.includes(verb) || !ARC4_CAPTURE_VERBS.includes(priorVerb)) {
     throw new TypeError('Arc 4 native Tab focus requires two capture verbs');
   }
-  return `(()=>{window.__cfGlassArc4TabFocusAbort?.abort();const target=document.querySelector(
-    '#survey button[data-capture-action=${verb}]'),prior=document.querySelector(
-    '#survey button[data-capture-action=${priorVerb}]'),style=target?getComputedStyle(target):null,
-    before=style?{outline:style.outline,shadow:style.boxShadow,border:style.borderColor,
-      background:style.backgroundColor}:null,controller=new AbortController(),state={target,prior,before,receipt:null,controller};
+  const targetSelector = `#survey button[data-capture-action=${JSON.stringify(verb)}]`;
+  const priorSelector = `#survey button[data-capture-action=${JSON.stringify(priorVerb)}]`;
+  return `(()=>{window.__cfGlassArc4TabFocusAbort?.abort();const schema=${JSON.stringify(ARC4_NATIVE_TAB_SETUP_SCHEMA)},
+    targetSelector=${JSON.stringify(targetSelector)},priorSelector=${JSON.stringify(priorSelector)},
+    semantic=(node)=>node?.closest?.('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,
+    documentToken=window.__CF_SLICE__?.documentToken??null,documentHref=location.href,
+    targets=[...document.querySelectorAll(targetSelector)],priors=[...document.querySelectorAll(priorSelector)],
+    target=targets.length===1?targets[0]:null,prior=priors.length===1?priors[0]:null,
+    style=target?getComputedStyle(target):null,before=style?{outline:style.outline,
+      outlineStyle:style.outlineStyle,outlineWidth:style.outlineWidth,outlineColor:style.outlineColor,
+      shadow:style.boxShadow,
+      border:style.borderColor,background:style.backgroundColor}:null,
+    controller=new AbortController(),state={schema,targetSelector,priorSelector,
+      targetVerb:${JSON.stringify(verb)},priorVerb:${JSON.stringify(priorVerb)},documentToken,
+      documentHref,originalTarget:target,originalPrior:prior,before,receipt:null,controller};
     window.__cfGlassArc4TabFocus=state;window.__cfGlassArc4TabFocusAbort=controller;
-    document.addEventListener('keydown',(event)=>{if(event.target===prior&&event.key==='Tab')state.receipt={
-      key:event.key,code:event.code,trusted:event.isTrusted===true};},{capture:true,once:true,signal:controller.signal});
-    try{prior?.focus({preventScroll:true})}catch{prior?.focus()}return {ok:target instanceof HTMLElement
-      &&prior instanceof HTMLElement&&document.activeElement===prior,targetVerb:target?.getAttribute('data-capture-action')??null,
-      priorVerb:prior?.getAttribute('data-capture-action')??null};})()`;
+    document.addEventListener('keydown',(event)=>{if(state.receipt||event.key!=='Tab'||event.code!=='Tab')return;
+      const live=[...document.querySelectorAll(state.priorSelector)],current=live.length===1?live[0]:null,
+        eventElement=event.target instanceof Element?event.target:null,
+        eventControl=eventElement?.closest?.('[data-capture-action]')??null,
+        activeControl=document.activeElement?.closest?.('[data-capture-action]')??null,
+        token=window.__CF_SLICE__?.documentToken??null;
+      state.receipt={key:event.key,code:event.code,trusted:event.isTrusted===true,
+        targetWasCurrent:eventControl===current,priorFocused:document.activeElement===current,
+        eventTargetTag:eventElement?.tagName??null,eventTargetId:eventElement?.id??null,
+        priorCount:live.length,priorVerb:eventControl?.getAttribute('data-capture-action')??null,
+        priorSemanticKey:semantic(eventControl),activeVerb:activeControl?.getAttribute('data-capture-action')??null,
+        activeSemanticKey:semantic(activeControl),documentToken:token};},{capture:true,signal:controller.signal});
+    try{prior?.focus({preventScroll:true})}catch{prior?.focus()}
+    const targetConnected=target instanceof HTMLElement&&target.isConnected,
+      priorConnected=prior instanceof HTMLElement&&prior.isConnected,
+      priorFocused=document.activeElement===prior,targetSemanticKey=semantic(target),
+      priorSemanticKey=semantic(prior),targetVerb=target?.getAttribute('data-capture-action')??null,
+      observedPriorVerb=prior?.getAttribute('data-capture-action')??null,
+      ok=typeof documentToken==='string'&&documentToken.length>0&&targets.length===1&&priors.length===1
+        &&targetConnected&&priorConnected&&priorFocused&&targetVerb===${JSON.stringify(verb)}
+        &&observedPriorVerb===${JSON.stringify(priorVerb)}&&targetSemanticKey===${JSON.stringify(`capture:${verb}`)}
+        &&priorSemanticKey===${JSON.stringify(`capture:${priorVerb}`)};
+    return {schema,ok,documentToken,documentHref,targetCount:targets.length,priorCount:priors.length,
+      targetConnected,priorConnected,priorFocused,targetVerb,priorVerb:observedPriorVerb,
+      targetSemanticKey,priorSemanticKey};})()`;
 }
 
-function arc4NativeTabFocusEvidenceExpression(verb) {
+export function buildArc4NativeTabHeartbeatRerenderExpression() {
+  return `(async()=>{const schema=${JSON.stringify(ARC4_NATIVE_TAB_HEARTBEAT_SCHEMA)},
+    state=window.__cfGlassArc4TabFocus,slice=window.__CF_SLICE__,api=slice?.api,
+    setupDocumentToken=state?.documentToken??null,
+    wait=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0))),
+    semantic=(node)=>node?.closest?.('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,
+    persistence=()=>typeof api?.state==='function'?api.state()?.persistence??null:null,
+    snapshot=()=>{const targets=state?[...document.querySelectorAll(state.targetSelector)]:[],
+      priors=state?[...document.querySelectorAll(state.priorSelector)]:[],
+      target=targets.length===1?targets[0]:null,prior=priors.length===1?priors[0]:null,
+      current=persistence();return {documentToken:current?.documentToken??slice?.documentToken??null,
+        heartbeatRunning:current?.heartbeatRunning===true,targetCount:targets.length,priorCount:priors.length,
+        targetConnected:target instanceof HTMLElement&&target.isConnected,
+        priorConnected:prior instanceof HTMLElement&&prior.isConnected,
+        targetVerb:target?.getAttribute('data-capture-action')??null,
+        priorVerb:prior?.getAttribute('data-capture-action')??null,
+        targetSemanticKey:semantic(target),priorSemanticKey:semantic(prior),
+        priorFocused:document.activeElement===prior,
+        originalTargetDisconnected:state?.originalTarget instanceof HTMLElement
+          ?state.originalTarget.isConnected===false:null,
+        originalPriorDisconnected:state?.originalPrior instanceof HTMLElement
+          ?state.originalPrior.isConnected===false:null,
+        replacementAcquired:target instanceof HTMLElement&&state?.originalTarget instanceof HTMLElement
+          ?target!==state.originalTarget:false,
+        priorReplacementAcquired:prior instanceof HTMLElement&&state?.originalPrior instanceof HTMLElement
+          ?prior!==state.originalPrior:false};},
+    seamsAvailable=typeof api?.state==='function'
+      &&typeof api?.__smokeQuiesceF4Heartbeat==='function'
+      &&typeof api?.__smokeResumeF4Heartbeat==='function'
+      &&typeof api?.__smokeRunF4Heartbeat==='function',initial=snapshot();
+    let quiescence=null,resume=null,runCompleted=false,error=null,
+      cleanup={attempted:false,receipt:null,error:null};
+    if(!state)error='missing native Tab setup state';
+    else if(!seamsAvailable)error='missing F4 heartbeat smoke seam';
+    else if(initial.documentToken!==setupDocumentToken)error='F4 heartbeat initial document identity changed';
+    else if(initial.heartbeatRunning!==true)error='F4 heartbeat was not running before forced native Tab rerender';
+    else{try{
+      quiescence=await api.__smokeQuiesceF4Heartbeat();
+      if(quiescence?.schema!=='cf-v2-f4-heartbeat-quiescence/v1'
+        ||quiescence?.documentToken!==setupDocumentToken||quiescence?.wasRunning!==true
+        ||quiescence?.stopped!==true||quiescence?.cycleSettled!==true)
+        throw new Error('invalid F4 heartbeat quiescence receipt');
+      resume=api.__smokeResumeF4Heartbeat();
+      if(resume?.schema!=='cf-v2-f4-heartbeat-resume/v1'
+        ||resume?.documentToken!==setupDocumentToken||resume?.running!==true)
+        throw new Error('invalid F4 heartbeat resume receipt');
+      await api.__smokeRunF4Heartbeat();runCompleted=true;
+    }catch(reason){error=String(reason?.stack||reason)}finally{
+      const current=persistence();if(current?.heartbeatRunning!==true){cleanup.attempted=true;
+        try{cleanup.receipt=api?.__smokeResumeF4Heartbeat?.()??null}
+        catch(reason){cleanup.error=String(reason?.stack||reason)}}}}
+    await wait();await wait();const after=snapshot();return {schema,required:true,
+      stateFound:!!state,seamsAvailable,initial,quiescence,resume,runCompleted,after,cleanup,error};})()`;
+}
+
+export function buildArc4NativeTabFocusEvidenceExpression(verb) {
   if (!ARC4_CAPTURE_VERBS.includes(verb)) throw new TypeError('unknown Arc 4 native Tab focus verb');
-  return `(()=>{const state=window.__cfGlassArc4TabFocus,target=state?.target,
-    afterStyle=target?getComputedStyle(target):null,after=afterStyle?{outline:afterStyle.outline,
-      shadow:afterStyle.boxShadow,border:afterStyle.borderColor,background:afterStyle.backgroundColor}:null,
-    before=state?.before,styleChanged=!!before&&!!after&&(before.outline!==after.outline
-      ||before.shadow!==after.shadow||before.border!==after.border||before.background!==after.background),
-    outlinePainted=!!afterStyle&&afterStyle.outlineStyle!=='none'&&(parseFloat(afterStyle.outlineWidth)||0)>=1,
-    decorationPainted=outlinePainted||!!before&&!!after&&((after.shadow!=='none'&&before.shadow!==after.shadow)
-      ||before.border!==after.border||before.background!==after.background),receipt=state?.receipt??null,
-    result={modality:'keyboard',nativeTabTrusted:receipt?.trusted===true&&receipt?.key==='Tab'&&receipt?.code==='Tab',
-      focused:document.activeElement===target,focusVisible:target?.matches?.(':focus-visible')===true,
-      styleChanged,decorationPainted,verb:${JSON.stringify(verb)},
-      semanticKey:target?.closest?.('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,
-      close:false,before,after,receipt};state?.controller?.abort();delete window.__cfGlassArc4TabFocus;
-    delete window.__cfGlassArc4TabFocusAbort;return result;})()`;
-}
-
-function arc4ScrollSettleExpression(selector) {
-  return `(async()=>{const el=document.querySelector(${JSON.stringify(selector)});if(!(el instanceof HTMLElement))return {ok:false,why:'missing'};
-    const wait=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0))),box=(node)=>{const r=node?.getBoundingClientRect?.();return r?{
-      left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}:null},snapshot=()=>{const buttonRect=box(el),cardRect=box(document.getElementById('survey')),
-      scroll=[],scrollOffset={left:0,top:0};for(let node=el.parentElement;node;node=node.parentElement){scroll.push([node.scrollLeft,node.scrollTop]);
-        scrollOffset.left+=node.scrollLeft;scrollOffset.top+=node.scrollTop;}
+  return `(async()=>{const schema=${JSON.stringify(ARC4_NATIVE_TAB_FOCUS_SCHEMA)},state=window.__cfGlassArc4TabFocus,
+    expectedVerb=${JSON.stringify(verb)},wait=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0))),
+    token=()=>window.__CF_SLICE__?.documentToken??null,
+    semantic=(node)=>node?.closest?.('[data-semantic-key]')?.getAttribute('data-semantic-key')??null,
+    box=(node)=>{const r=node?.getBoundingClientRect?.();return r?{left:r.left,top:r.top,right:r.right,
+      bottom:r.bottom,width:r.width,height:r.height}:null},
+    snapshot=()=>{const targets=state?[...document.querySelectorAll(state.targetSelector)]:[],
+      priors=state?[...document.querySelectorAll(state.priorSelector)]:[],target=targets.length===1?targets[0]:null,
+      prior=priors.length===1?priors[0]:null,buttonRect=box(target),cardRect=box(document.getElementById('survey')),
+      scroll=[],scrollOffset={left:0,top:0};for(let node=target?.parentElement;node;node=node.parentElement){
+        scroll.push([node.scrollLeft,node.scrollTop]);scrollOffset.left+=node.scrollLeft;scrollOffset.top+=node.scrollTop;}
       const layoutRect=buttonRect?{left:buttonRect.left+scrollOffset.left,top:buttonRect.top+scrollOffset.top,
-        right:buttonRect.right+scrollOffset.left,bottom:buttonRect.bottom+scrollOffset.top,width:buttonRect.width,height:buttonRect.height}:null;
-      return {buttonRect,cardRect,scrollOffset,layoutRect,scroll};},stable=(left,right)=>['left','top','right','bottom','width','height']
+        right:buttonRect.right+scrollOffset.left,bottom:buttonRect.bottom+scrollOffset.top,
+        width:buttonRect.width,height:buttonRect.height}:null;
+      return {target,prior,targetCount:targets.length,priorCount:priors.length,
+        targetConnected:target instanceof HTMLElement&&target.isConnected,
+        priorConnected:prior instanceof HTMLElement&&prior.isConnected,documentToken:token(),
+        buttonRect,cardRect,scrollOffset,layoutRect,scroll};},
+    validRect=(value)=>!!value&&['left','top','right','bottom','width','height']
+      .every(key=>Number.isFinite(value[key])),stable=(left,right)=>validRect(left?.buttonRect)
+      &&validRect(right?.buttonRect)&&['left','top','right','bottom','width','height']
         .every(key=>Math.abs(left.buttonRect[key]-right.buttonRect[key])<=.25)
-        &&Math.abs(left.scrollOffset.left-right.scrollOffset.left)<=.25&&Math.abs(left.scrollOffset.top-right.scrollOffset.top)<=.25
-        &&left.scroll.length===right.scroll.length&&left.scroll.every((row,index)=>row.every((value,axis)=>Math.abs(value-right.scroll[index][axis])<=.25));
-    el.scrollIntoView({block:'nearest',inline:'nearest'});await wait();await wait();const first=snapshot();await wait();const second=snapshot();
-    return {ok:stable(first,second),first,second};})()`;
+      &&Math.abs(left.scrollOffset.left-right.scrollOffset.left)<=.25
+      &&Math.abs(left.scrollOffset.top-right.scrollOffset.top)<=.25
+      &&left.scroll.length===right.scroll.length
+      &&left.scroll.every((row,index)=>row.length===right.scroll[index]?.length
+        &&row.every((value,axis)=>Math.abs(value-right.scroll[index][axis])<=.25));
+    let initial=snapshot();if(initial.target instanceof HTMLElement){
+      initial.target.scrollIntoView({block:'nearest',inline:'nearest'});await wait();await wait();}
+    const first=snapshot();await wait();const second=snapshot(),target=second.target,prior=second.prior,
+      afterStyle=target?getComputedStyle(target):null,after=afterStyle?{outline:afterStyle.outline,
+        outlineStyle:afterStyle.outlineStyle,outlineWidth:afterStyle.outlineWidth,
+        outlineColor:afterStyle.outlineColor,
+        shadow:afterStyle.boxShadow,border:afterStyle.borderColor,background:afterStyle.backgroundColor}:null,
+      colorAlpha=(value)=>{const text=String(value??'').trim().toLowerCase();if(!text||text==='transparent')return 0;
+        const match=text.match(/^rgba?\((.*)\)$/);if(!match)return 1;const body=match[1],slash=body.split('/');
+        let alpha=null;if(slash.length===2)alpha=slash[1].trim();else if(body.includes(',')){
+          const parts=body.split(',');if(parts.length===4)alpha=parts[3].trim();}
+        if(alpha===null)return 1;const number=parseFloat(alpha);if(!Number.isFinite(number))return 0;
+        return alpha.endsWith('%')?number/100:number;},
+      before=state?.before??null,styleChanged=!!before&&!!after&&(before.outline!==after.outline
+        ||before.shadow!==after.shadow||before.border!==after.border||before.background!==after.background),
+      outlinePainted=!!afterStyle&&afterStyle.outlineStyle!=='none'
+        &&(parseFloat(afterStyle.outlineWidth)||0)>=1&&colorAlpha(afterStyle.outlineColor)>0,
+      decorationPainted=outlinePainted||!!before&&!!after
+        &&((after.shadow!=='none'&&before.shadow!==after.shadow)||before.border!==after.border
+          ||before.background!==after.background),receipt=state?.receipt??null,
+      activeSemanticKey=semantic(document.activeElement),setupDocumentToken=state?.documentToken??null,
+      finalDocumentToken=second.documentToken,sameDocument=typeof setupDocumentToken==='string'
+        &&setupDocumentToken.length>0&&first.documentToken===setupDocumentToken
+        &&finalDocumentToken===setupDocumentToken,
+      result={schema,stateFound:!!state,setupDocumentToken,finalDocumentToken,sameDocument,
+        documentHref:location.href,targetCount:second.targetCount,priorCount:second.priorCount,
+        targetConnected:second.targetConnected,priorConnected:second.priorConnected,
+        originalTargetDisconnected:state?.originalTarget instanceof HTMLElement
+          ?state.originalTarget.isConnected===false:null,
+        originalPriorDisconnected:state?.originalPrior instanceof HTMLElement
+          ?state.originalPrior.isConnected===false:null,
+        replacementAcquired:target instanceof HTMLElement&&state?.originalTarget instanceof HTMLElement
+          ?target!==state.originalTarget:false,
+        priorReplacementAcquired:prior instanceof HTMLElement&&state?.originalPrior instanceof HTMLElement
+          ?prior!==state.originalPrior:false,
+        replacementAcrossSamples:first.target instanceof HTMLElement&&target instanceof HTMLElement
+          ?first.target!==target:false,
+        modality:'keyboard',nativeTabTrusted:receipt?.trusted===true&&receipt?.key==='Tab'
+          &&receipt?.code==='Tab'&&receipt?.documentToken===setupDocumentToken,
+        focused:document.activeElement===target,activeSemanticKey,
+        focusVisible:target?.matches?.(':focus-visible')===true,styleChanged,decorationPainted,
+        verb:target?.getAttribute('data-capture-action')??expectedVerb,semanticKey:semantic(target),
+        priorVerb:prior?.getAttribute('data-capture-action')??null,priorSemanticKey:semantic(prior),
+        close:false,before,after,receipt,scrollSettled:stable(first,second),scroll:{captured:true,
+          firstDocumentToken:first.documentToken,secondDocumentToken:second.documentToken,
+          firstTargetCount:first.targetCount,secondTargetCount:second.targetCount,
+          firstTargetConnected:first.targetConnected,secondTargetConnected:second.targetConnected,
+          replacementAcrossSamples:first.target instanceof HTMLElement&&target instanceof HTMLElement
+            ?first.target!==target:false,
+          first:{buttonRect:first.buttonRect,cardRect:first.cardRect,scrollOffset:first.scrollOffset,
+            layoutRect:first.layoutRect,scroll:first.scroll},
+          second:{buttonRect:second.buttonRect,cardRect:second.cardRect,scrollOffset:second.scrollOffset,
+            layoutRect:second.layoutRect,scroll:second.scroll}}};
+    state?.controller?.abort();delete window.__cfGlassArc4TabFocus;
+    delete window.__cfGlassArc4TabFocusAbort;return result;})()`;
 }
 
 const ARC4_DURABLE_SEGMENT_ROWS = Object.freeze({
@@ -5270,6 +5495,72 @@ function arc4GlassSelftest() {
     mode: 'surface', galaxySeed: 999, starSeed: 424242, planetSeed: 133,
     planetOrdinal: 2, worldKey, cardOpen: true, expanded: 'true', cardTitle: oracle.title,
   };
+  const nativeTabSetup = {
+    schema: ARC4_NATIVE_TAB_SETUP_SCHEMA, ok: true,
+    documentToken: 'arc4-native-tab-selftest', targetCount: 1, priorCount: 1,
+    targetConnected: true, priorConnected: true, priorFocused: true,
+    targetVerb: 'sample', priorVerb: 'scavenge',
+    targetSemanticKey: 'capture:sample', priorSemanticKey: 'capture:scavenge',
+  };
+  const nativeTabFocus = {
+    schema: ARC4_NATIVE_TAB_FOCUS_SCHEMA, stateFound: true,
+    setupDocumentToken: nativeTabSetup.documentToken,
+    finalDocumentToken: nativeTabSetup.documentToken, sameDocument: true,
+    targetCount: 1, priorCount: 1, targetConnected: true, priorConnected: true,
+    originalTargetDisconnected: false, originalPriorDisconnected: false,
+    replacementAcquired: false, priorReplacementAcquired: false,
+    modality: 'keyboard', nativeTabTrusted: true, focused: true, focusVisible: true,
+    styleChanged: true, decorationPainted: true, verb: 'sample',
+    semanticKey: 'capture:sample', priorVerb: 'scavenge',
+    priorSemanticKey: 'capture:scavenge', activeSemanticKey: 'capture:sample', close: false,
+    receipt: {
+      trusted: true, key: 'Tab', code: 'Tab', targetWasCurrent: true, priorFocused: true,
+      priorVerb: 'scavenge', priorSemanticKey: 'capture:scavenge',
+      documentToken: nativeTabSetup.documentToken,
+    },
+    scrollSettled: true,
+    scroll: {
+      captured: true,
+      firstDocumentToken: nativeTabSetup.documentToken,
+      secondDocumentToken: nativeTabSetup.documentToken,
+      firstTargetCount: 1, secondTargetCount: 1,
+      firstTargetConnected: true, secondTargetConnected: true,
+    },
+  };
+  const nativeTabOutcome = assessArc4NativeTabFocusEvidence({
+    setup: nativeTabSetup, focus: nativeTabFocus,
+  });
+  const nativeTabReplacement = structuredClone(nativeTabFocus);
+  nativeTabReplacement.originalTargetDisconnected = true;
+  nativeTabReplacement.originalPriorDisconnected = true;
+  nativeTabReplacement.replacementAcquired = true;
+  nativeTabReplacement.priorReplacementAcquired = true;
+  const nativeTabReplacementOutcome = assessArc4NativeTabFocusEvidence({
+    setup: nativeTabSetup, focus: nativeTabReplacement,
+  });
+  const nativeTabStaleLineage = structuredClone(nativeTabReplacement);
+  nativeTabStaleLineage.originalTargetDisconnected = false;
+  const nativeTabStaleLineageOutcome = assessArc4NativeTabFocusEvidence({
+    setup: nativeTabSetup, focus: nativeTabStaleLineage,
+  });
+  const nativeTabLostFocus = structuredClone(nativeTabFocus);
+  nativeTabLostFocus.focused = false;
+  nativeTabLostFocus.activeSemanticKey = 'capture:scavenge';
+  const nativeTabLostFocusOutcome = assessArc4NativeTabFocusEvidence({
+    setup: nativeTabSetup, focus: nativeTabLostFocus,
+  });
+  const nativeTabMissingReceipt = structuredClone(nativeTabFocus);
+  nativeTabMissingReceipt.nativeTabTrusted = false;
+  nativeTabMissingReceipt.receipt = null;
+  const nativeTabMissingReceiptOutcome = assessArc4NativeTabFocusEvidence({
+    setup: nativeTabSetup, focus: nativeTabMissingReceipt,
+  });
+  const nativeTabWrongDocument = structuredClone(nativeTabFocus);
+  nativeTabWrongDocument.sameDocument = false;
+  nativeTabWrongDocument.finalDocumentToken = 'replacement-document';
+  const nativeTabWrongDocumentOutcome = assessArc4NativeTabFocusEvidence({
+    setup: nativeTabSetup, focus: nativeTabWrongDocument,
+  });
   const nativeEvidence = {
     beforeSurface: surface, afterSurface: structuredClone(surface),
     beforePlanetside: planetside, afterPlanetside: structuredClone(planetside),
@@ -5279,12 +5570,7 @@ function arc4GlassSelftest() {
     afterDurableFingerprint: durableCheckpointFingerprint,
     setupClose: { ok: true }, setupClosed: { cardOpen: false },
     open: { ok: true }, opened: { cardOpen: true, expanded: 'true' },
-    sampleScrollSettled: true,
-    sampleFocus: {
-      modality: 'keyboard', focused: true, focusVisible: true, styleChanged: true,
-      decorationPainted: true, verb: 'sample', semanticKey: 'capture:sample', close: false,
-      nativeTabTrusted: true,
-    },
+    sampleFocusOutcome: nativeTabOutcome,
     close: {
       ok: true,
       target: { surveyClose: true, accessibleName: 'Close Survey card' },
@@ -5298,6 +5584,9 @@ function arc4GlassSelftest() {
   const wrongReturn = structuredClone(nativeEvidence);
   wrongReturn.returned.focusId = 'canvas';
   const wrongReturnAssessment = assessArc4NativeSurveyCloseReturn(wrongReturn);
+  const wrongFocus = structuredClone(nativeEvidence);
+  wrongFocus.sampleFocusOutcome.productOk = false;
+  const wrongFocusAssessment = assessArc4NativeSurveyCloseReturn(wrongFocus);
   const wrongClose = structuredClone(nativeEvidence);
   wrongClose.close.receipt.trusted = false;
   const wrongCloseAssessment = assessArc4NativeSurveyCloseReturn(wrongClose);
@@ -5496,7 +5785,14 @@ function arc4GlassSelftest() {
     && unfocusedGeometryControlClauses.slice(1).every((row) => row.ok)
     && arc4IsolatedFailure(unfocusedGeometryCloseAssessment, 'closeFocus')
     && arc4IsolatedFailure(unsettledGeometryCloseAssessment, 'closeGeometry')
+    && nativeTabOutcome.ok && nativeTabOutcome.instrumentOk && nativeTabOutcome.productOk
+    && nativeTabReplacementOutcome.ok
+    && nativeTabStaleLineageOutcome.instrumentOk && !nativeTabStaleLineageOutcome.productOk
+    && nativeTabLostFocusOutcome.instrumentOk && !nativeTabLostFocusOutcome.productOk
+    && !nativeTabMissingReceiptOutcome.instrumentOk
+    && !nativeTabWrongDocumentOutcome.instrumentOk
     && arc4IsolatedFailure(wrongReturnAssessment, 'openerReturn')
+    && arc4IsolatedFailure(wrongFocusAssessment, 'idleKeyboardFocus')
     && arc4IsolatedFailure(wrongCloseAssessment, 'closeTrusted')
     && arc4IsolatedFailure(wrongSurfaceAssessment, 'surfaceUnchanged')
     && arc4IsolatedFailure(wrongPlanetsideAssessment, 'planetsideUnchanged')
@@ -5541,7 +5837,9 @@ function arc4GlassSelftest() {
     unfocusedGeometryControlClauses,
     unfocusedGeometryClose: unfocusedGeometryCloseAssessment,
     unsettledGeometryClose: unsettledGeometryCloseAssessment,
-    nativeReturn, wrongReturn: wrongReturnAssessment,
+    nativeTabOutcome, nativeTabReplacementOutcome, nativeTabStaleLineageOutcome,
+    nativeTabLostFocusOutcome, nativeTabMissingReceiptOutcome, nativeTabWrongDocumentOutcome,
+    nativeReturn, wrongReturn: wrongReturnAssessment, wrongFocus: wrongFocusAssessment,
     wrongClose: wrongCloseAssessment, wrongSurface: wrongSurfaceAssessment,
     wrongPlanetside: wrongPlanetsideAssessment, wrongCapture: wrongCaptureAssessment,
     dependentBaseline, wrongDependentBaseline, wrongPlanetsideOwnershipBaseline,
@@ -8394,6 +8692,9 @@ async function main() {
          be guessed, not measured. Recorded in the finally so red rows are
          timed too; writeReport validates the evidence per scope/status. */
       const viewportStartedAt = Date.now();
+      const viewportFindingStart = findings.length;
+      const viewportInstrumentStart = instrumentFailures.length;
+      console.log(`GLASS VIEWPORT START — ${vp.label} (${vp.width}x${vp.height}@${vp.dpr})`);
       /* A fresh owned browser per viewport is deliberate. Pixi/WebGL
          resources can outlive a disposed incognito target long enough for a
          late matrix row to inherit GPU pressure from the first ten rows. */
@@ -10077,10 +10378,27 @@ async function main() {
         const open = await activateRealKeyboardControl('#docksurvey', `${vp.label} Arc 4 Survey opener`);
         const opened = await waitFor('Arc 4 Survey native open', captureDisclosureState, 5000,
           (value) => value?.cardOpen === true && value?.expanded === 'true');
-        const sampleFocusSetup = await evalIn(arc4NativeTabFocusSetupExpression('sample', 'scavenge'));
+        const sampleFocusSetup = await evalIn(
+          buildArc4NativeTabFocusSetupExpression('sample', 'scavenge'),
+        );
+        const sampleFocusHeartbeat = vp.label === 'large-phone'
+          ? await evalIn(buildArc4NativeTabHeartbeatRerenderExpression())
+          : null;
         await pressTab();
-        const sampleFocus = await evalIn(arc4NativeTabFocusEvidenceExpression('sample'));
-        const sampleScroll = await evalIn(arc4ScrollSettleExpression('#survey button[data-capture-action="sample"]'));
+        const sampleFocus = await evalIn(buildArc4NativeTabFocusEvidenceExpression('sample'));
+        const sampleFocusOutcome = assessArc4NativeTabFocusEvidence({
+          setup: sampleFocusSetup,
+          focus: sampleFocus,
+          heartbeat: sampleFocusHeartbeat,
+        });
+        if (!sampleFocusOutcome.instrumentOk) {
+          recordInstrumentFailure(`${vp.label}: Arc 4 native Tab evidence crossed control/document epochs (${JSON.stringify({
+            outcome: sampleFocusOutcome,
+            setup: sampleFocusSetup,
+            heartbeat: sampleFocusHeartbeat,
+            focus: sampleFocus,
+          })})`);
+        }
         const close = await activateRealKeyboardControl('#survey [data-survey-close]',
           `${vp.label} Arc 4 Survey Close return`);
         const returned = await waitFor('Arc 4 Survey Close return', captureDisclosureState, 5000,
@@ -10179,8 +10497,7 @@ async function main() {
           beforeDurableFingerprint: arc4BeforeDurable.fingerprint,
           afterDurableFingerprint: arc4AfterDurable.fingerprint,
           setupClose, setupClosed, open, opened,
-          sampleScrollSettled: sampleFocusSetup?.ok === true && sampleScroll?.ok === true,
-          sampleFocus,
+          sampleFocusOutcome,
           close, returned, reopen, reopened,
           captureActivationTrace: arc4CaptureActivationTrace,
         });
@@ -10193,6 +10510,7 @@ async function main() {
             beforeCapture: arc4BeforeUi.captureState, afterCapture: arc4AfterCapture,
             beforeDurableFingerprint: arc4BeforeDurable.fingerprint,
             afterDurableFingerprint: arc4AfterDurable.fingerprint,
+            sampleFocusSetup, sampleFocusHeartbeat, sampleFocus, sampleFocusOutcome,
           },
         };
         const arc4PresentationEvidence = {
@@ -13600,7 +13918,14 @@ async function main() {
             }
           }
         }
-        runViewportTimings.push({ label: vp.label, durationMs: Date.now() - viewportStartedAt });
+        const viewportDurationMs = Date.now() - viewportStartedAt;
+        runViewportTimings.push({ label: vp.label, durationMs: viewportDurationMs });
+        const viewportFindingCount = findings.length - viewportFindingStart;
+        const viewportInstrumentCount = instrumentFailures.length - viewportInstrumentStart
+          + (cleanupFailures.length ? 1 : 0);
+        const viewportStatus = viewportInstrumentCount > 0 ? 'INSTRUMENT-RED'
+          : viewportFindingCount > 0 ? 'PRODUCT-RED' : 'PASS';
+        console.log(`GLASS VIEWPORT ${viewportStatus} — ${vp.label}; ${viewportDurationMs} ms; findings ${viewportFindingCount}; instrument failures ${viewportInstrumentCount}`);
         if (cleanupFailures.length) recordInstrumentFailure(cleanupFailures[0]);
       }
       if (shouldStopGlassViewportLoop(causalProductStop)) break;
