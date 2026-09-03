@@ -34,9 +34,12 @@ import { verifySliceRunEvidence } from './smokereport.mjs';
 import {
   GLASS_ARC4_CAPTURE_CHECK_KEYS,
   GLASS_ARC4_CAPTURE_OUTCOME_CODES,
+  GLASS_MATRIX_REPORT_SCHEMA,
   GLASS_MATRIX_VIEWPORTS,
   GLASS_NEGATIVE_CONTROLS,
+  glassShipyardKeyboardHeartbeatSelftestInventory,
   glassTerminalEvidenceErrors,
+  shipyardKeyboardHeartbeatInventoryErrors,
 } from './glassmatrix-evidence-contract.mjs';
 import {
   ENGINEERING_ACTION_CONTROL_COUNT,
@@ -55,6 +58,7 @@ import {
   ARC4_CAPTURE_UI_EVIDENCE_SCHEMA,
   ARC4_CAPTURE_UI_EXPRESSION,
   ARC4_CAPTURE_VERBS,
+  F4_HEARTBEAT_CYCLE_RECEIPT_SCHEMA,
   ARC4_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET,
@@ -64,6 +68,7 @@ import {
   assessArc4CaptureCardGeometryFocus,
   assessArc4CaptureGeometryEvidenceCoherence,
   assessArc4HeartbeatRerenderEvidence,
+  assessF4HeartbeatCycleReceipt,
   buildArc4DurableReadExpression,
   projectArc4V4OwnedCounters,
   projectArc5OwnershipMigrationEvidence,
@@ -162,6 +167,7 @@ let runArtifactReserved = false;
 let runReloadEvidence = [];
 let runViewportTimings = [];
 let runArc4CaptureOutcomes = [];
+let runShipyardKeyboardHeartbeatOutcomes = [];
 class ProductAnswerabilityFinding extends Error {
   constructor(message, evidence, finding = null) {
     super(message);
@@ -1141,15 +1147,390 @@ function arc4KeyboardFocusProof(value, { verb = null, close = false } = {}) {
       && value?.semanticKey === `capture:${verb}`);
 }
 
+const GLASS_KEYBOARD_ACTIVATION_SETUP_SCHEMA =
+  'cf-v2-glass-keyboard-activation-setup/v1';
+const GLASS_KEYBOARD_ACTIVATION_RECEIPT_SCHEMA =
+  'cf-v2-glass-keyboard-activation-receipt/v1';
+const GLASS_KEYBOARD_ACTIVATION_HEARTBEAT_SCHEMA =
+  'cf-v2-glass-keyboard-activation-heartbeat/v1';
+const GLASS_KEYBOARD_ACTIVATION_ASSESSMENT_SCHEMA =
+  'cf-v2-glass-keyboard-activation-assessment/v1';
+const SHIPYARD_KEYBOARD_HEARTBEAT_OUTCOME_SCHEMA =
+  'cf-v2-glass-shipyard-keyboard-heartbeat-outcome/v1';
+
+export function buildGlassKeyboardActivationSetupExpression(selector) {
+  if (typeof selector !== 'string' || selector.length === 0) {
+    throw new TypeError('Glass keyboard activation requires a non-empty selector');
+  }
+  return `(()=>{window.__cfGlassKeyboardActivationAbort?.abort();
+    const schema=${JSON.stringify(GLASS_KEYBOARD_ACTIVATION_SETUP_SCHEMA)},
+      receiptSchema=${JSON.stringify(GLASS_KEYBOARD_ACTIVATION_RECEIPT_SCHEMA)},
+      selector=${JSON.stringify(selector)},documentToken=window.__CF_SLICE__?.documentToken??null,
+      documentHref=location.href,
+      describe=(node)=>({tag:node?.tagName??null,id:node?.id||null,
+        focusKey:node?.getAttribute?.('data-focus-key')||null,
+        surveyClose:node?.hasAttribute?.('data-survey-close')===true,
+        captureAction:node?.getAttribute?.('data-capture-action')||null,
+        engineeringSection:node?.closest?.('[data-engineering-section]')
+          ?.getAttribute('data-engineering-section')??null,
+        accessibleName:(node?.getAttribute?.('aria-label')||node?.textContent||'').trim()}),
+      filterOpacity=(raw)=>{let value=1;
+        const pattern=/opacity\\(\\s*([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?)\\s*(%)?\\s*\\)/giu;
+        for(const match of String(raw??'none').matchAll(pattern)){
+          const amount=Number(match[1])/(match[2]?100:1);
+          if(!Number.isFinite(amount))return null;
+          value*=Math.max(0,Math.min(1,amount));}return value;},
+      cumulativeOpacity=(node)=>{if(!(node instanceof Element))return null;let value=1;
+        for(let current=node;current instanceof Element;current=current.parentElement){
+          const currentStyle=getComputedStyle(current),layer=Number(currentStyle.opacity),
+            filtered=filterOpacity(currentStyle.filter);
+          if(!Number.isFinite(layer)||!Number.isFinite(filtered))return null;
+          value*=layer*filtered;}return value;},
+      targets=[...document.querySelectorAll(selector)],target=targets.length===1?targets[0]:null,
+      rect=target?.getBoundingClientRect?.()??null,style=target?getComputedStyle(target):null,
+      opacity=Number(style?.opacity),effectiveOpacity=cumulativeOpacity(target),
+      descriptor=describe(target),controller=new AbortController(),
+      state={schema,receiptSchema,selector,documentToken,documentHref,originalTarget:target,
+        descriptor,receipt:null,lastUntrustedReceipt:null,untrustedEnterCount:0,controller};
+    window.__cfGlassKeyboardActivation=state;window.__cfGlassKeyboardActivationAbort=controller;
+    document.addEventListener('keydown',(event)=>{
+      if(state.receipt||event.key!=='Enter'||event.code!=='Enter')return;
+      const live=[...document.querySelectorAll(state.selector)],current=live.length===1?live[0]:null,
+        eventElement=event.target instanceof Element?event.target:null,
+        eventControl=eventElement?.closest?.(state.selector)??null,
+        activeElement=document.activeElement instanceof Element?document.activeElement:null,
+        activeControl=activeElement?.closest?.(state.selector)??null,
+        currentDocumentToken=window.__CF_SLICE__?.documentToken??null,
+        currentDescriptor=describe(current),eventTargetDescriptor=describe(eventControl),
+        activeDescriptor=describe(activeControl),currentRect=current?.getBoundingClientRect?.()??null,
+        currentStyle=current?getComputedStyle(current):null,currentOpacity=Number(currentStyle?.opacity),
+        currentEffectiveOpacity=cumulativeOpacity(current),
+        currentVisible=current instanceof HTMLElement&&current.isConnected
+          &&currentStyle?.display!=='none'&&currentStyle?.visibility==='visible'
+          &&Number.isFinite(currentOpacity)&&currentOpacity>0
+          &&Number.isFinite(currentEffectiveOpacity)&&currentEffectiveOpacity>0&&!!currentRect
+          &&currentRect.width>=44&&currentRect.height>=44,
+        candidate={schema:state.receiptSchema,key:event.key,code:event.code,
+        trusted:event.isTrusted===true,setupDocumentToken:state.documentToken,
+        setupDocumentHref:state.documentHref,documentToken:currentDocumentToken,
+        documentHref:location.href,tag:currentDescriptor.tag,
+        focusKey:currentDescriptor.focusKey,surveyClose:currentDescriptor.surveyClose,
+        ignoredUntrustedEnterCount:state.untrustedEnterCount,currentCount:live.length,
+        currentConnected:current instanceof HTMLElement&&current.isConnected,
+        currentVisible,currentDisplay:currentStyle?.display??null,
+        currentVisibility:currentStyle?.visibility??null,
+        currentOpacity:Number.isFinite(currentOpacity)?currentOpacity:null,
+        currentEffectiveOpacity:Number.isFinite(currentEffectiveOpacity)?currentEffectiveOpacity:null,
+        currentRect:currentRect
+          ?[currentRect.left,currentRect.top,currentRect.right,currentRect.bottom]:null,
+        originalTargetDisconnected:state.originalTarget instanceof HTMLElement
+          ?state.originalTarget.isConnected===false:null,
+        replacementAcquired:current instanceof HTMLElement&&state.originalTarget instanceof HTMLElement
+          ?current!==state.originalTarget:false,
+        eventTargetIsCurrent:eventControl===current,activeIsCurrent:activeControl===current,
+        current:currentDescriptor,eventTarget:eventTargetDescriptor,active:activeDescriptor};
+      if(!candidate.trusted){state.untrustedEnterCount+=1;state.lastUntrustedReceipt=candidate;return;}
+      state.receipt=candidate;
+    },{capture:true,signal:controller.signal});
+    try{target?.focus({preventScroll:true})}catch{target?.focus()}
+    const targetConnected=target instanceof HTMLElement&&target.isConnected,
+      focused=document.activeElement===target,
+      visible=!!target&&style?.display!=='none'&&style?.visibility==='visible'
+        &&Number.isFinite(opacity)&&opacity>0
+        &&Number.isFinite(effectiveOpacity)&&effectiveOpacity>0,
+      instrumentReady=typeof documentToken==='string'&&documentToken.length>0
+        &&typeof documentHref==='string'&&documentHref.length>0,
+      productReady=targets.length===1&&targetConnected&&visible&&!!rect
+        &&rect.width>=44&&rect.height>=44&&focused,ok=instrumentReady&&productReady;
+    return {schema,ok,selector,documentToken,documentHref,targetCount:targets.length,
+      instrumentReady,productReady,targetConnected,focused,visible,tag:descriptor.tag,id:descriptor.id,
+      focusKey:descriptor.focusKey,surveyClose:descriptor.surveyClose,
+      captureAction:descriptor.captureAction,engineeringSection:descriptor.engineeringSection,
+      accessibleName:descriptor.accessibleName,display:style?.display??null,
+      visibility:style?.visibility??null,opacity:Number.isFinite(opacity)?opacity:null,
+      effectiveOpacity:Number.isFinite(effectiveOpacity)?effectiveOpacity:null,
+      rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null};})()`;
+}
+
+export function buildGlassKeyboardActivationHeartbeatExpression() {
+  return `(async()=>{const schema=${JSON.stringify(GLASS_KEYBOARD_ACTIVATION_HEARTBEAT_SCHEMA)},
+    state=window.__cfGlassKeyboardActivation??null,slice=window.__CF_SLICE__,api=slice?.api,
+    setupDocumentToken=state?.documentToken??null,setupDocumentHref=state?.documentHref??null,
+    wait=()=>new Promise(resolve=>requestAnimationFrame(()=>setTimeout(resolve,0))),
+    describe=(node)=>({tag:node?.tagName??null,id:node?.id||null,
+      focusKey:node?.getAttribute?.('data-focus-key')||null,
+      surveyClose:node?.hasAttribute?.('data-survey-close')===true,
+      captureAction:node?.getAttribute?.('data-capture-action')||null,
+      engineeringSection:node?.closest?.('[data-engineering-section]')
+        ?.getAttribute('data-engineering-section')??null,
+      accessibleName:(node?.getAttribute?.('aria-label')||node?.textContent||'').trim()}),
+    persistence=()=>typeof api?.state==='function'?api.state()?.persistence??null:null,
+    snapshot=()=>{const targets=state?[...document.querySelectorAll(state.selector)]:[],
+      current=targets.length===1?targets[0]:null,owner=persistence();return {
+        documentToken:owner?.documentToken??slice?.documentToken??null,documentHref:location.href,
+        heartbeatRunning:owner?.heartbeatRunning===true,currentCount:targets.length,
+        currentConnected:current instanceof HTMLElement&&current.isConnected,
+        currentFocused:document.activeElement===current,current:describe(current),
+        originalTargetDisconnected:state?.originalTarget instanceof HTMLElement
+          ?state.originalTarget.isConnected===false:null,
+        replacementAcquired:current instanceof HTMLElement&&state?.originalTarget instanceof HTMLElement
+          ?current!==state.originalTarget:false};},
+    seamsAvailable=typeof api?.state==='function'
+      &&typeof api?.__smokeQuiesceF4Heartbeat==='function'
+      &&typeof api?.__smokeResumeF4Heartbeat==='function'
+      &&typeof api?.__smokeRunF4Heartbeat==='function';
+    let initial=null,quiescence=null,resume=null,cycleReceipt=null,error=null,
+      cleanup={attempted:false,receipt:null,error:null};
+    if(!state)error='missing keyboard activation setup state';
+    else if(!seamsAvailable)error='missing F4 heartbeat smoke seam';
+    else{try{
+      quiescence=await api.__smokeQuiesceF4Heartbeat();
+      if(quiescence?.schema!=='cf-v2-f4-heartbeat-quiescence/v1'
+        ||quiescence?.documentToken!==setupDocumentToken||quiescence?.wasRunning!==true
+        ||quiescence?.stopped!==true||quiescence?.cycleSettled!==true)
+        throw new Error('invalid F4 heartbeat keyboard quiescence receipt');
+      const baselineTargets=[...document.querySelectorAll(state.selector)],
+        baselineCurrent=baselineTargets.length===1?baselineTargets[0]:null,
+        baselineOwner=persistence(),
+        baselineDocumentToken=baselineOwner?.documentToken??slice?.documentToken??null;
+      if(baselineDocumentToken!==setupDocumentToken||location.href!==setupDocumentHref)
+        throw new Error('F4 heartbeat keyboard setup document identity changed');
+      state.originalTarget=baselineCurrent;
+      resume=api.__smokeResumeF4Heartbeat();
+      if(resume?.schema!=='cf-v2-f4-heartbeat-resume/v1'
+        ||resume?.documentToken!==setupDocumentToken||resume?.running!==true)
+        throw new Error('invalid F4 heartbeat keyboard resume receipt');
+      initial=snapshot();
+      if(initial.documentToken!==setupDocumentToken||initial.documentHref!==setupDocumentHref)
+        throw new Error('F4 heartbeat keyboard setup document identity changed');
+      if(initial.heartbeatRunning!==true)
+        throw new Error('F4 heartbeat was not running before forced keyboard rerender');
+      cycleReceipt=await api.__smokeRunF4Heartbeat();
+    }catch(reason){error=String(reason?.stack||reason)}finally{
+      const owner=persistence();if(owner?.heartbeatRunning!==true){cleanup.attempted=true;
+        try{cleanup.receipt=api?.__smokeResumeF4Heartbeat?.()??null}
+        catch(reason){cleanup.error=String(reason?.stack||reason)}}}}
+    await wait();await wait();const after=snapshot();return {schema,required:true,
+      stateFound:!!state,seamsAvailable,setupDocumentToken,setupDocumentHref,initial,
+      quiescence,resume,cycleReceipt,after,cleanup,error};})()`;
+}
+
+export function buildGlassKeyboardActivationReceiptExpression() {
+  return `(()=>{const state=window.__cfGlassKeyboardActivation??null,
+    value=state?.receipt??null;window.__cfGlassKeyboardActivationAbort?.abort();
+    delete window.__cfGlassKeyboardActivationAbort;delete window.__cfGlassKeyboardActivation;
+    return value;})()`;
+}
+
+export function assessGlassKeyboardActivationEvidence({
+  setup = null, receipt = null, heartbeat = null, activationAttempted = true,
+  heartbeatRequired = false,
+} = {}) {
+  const descriptorKeys = [
+    'tag', 'id', 'focusKey', 'surveyClose', 'captureAction',
+    'engineeringSection', 'accessibleName',
+  ];
+  const nonEmpty = (value) => typeof value === 'string' && value.length > 0;
+  const nullableIdentity = (value) => value === null || nonEmpty(value);
+  const descriptorCarrier = (value) => !!value && typeof value === 'object'
+    && descriptorKeys.every((key) => Object.hasOwn(value, key))
+    && nullableIdentity(value.tag) && nullableIdentity(value.id)
+    && nullableIdentity(value.focusKey) && typeof value.surveyClose === 'boolean'
+    && nullableIdentity(value.captureAction) && nullableIdentity(value.engineeringSection)
+    && typeof value.accessibleName === 'string';
+  const descriptorShape = (value) => descriptorCarrier(value) && nonEmpty(value.tag)
+    && nonEmpty(value.accessibleName)
+    && (nonEmpty(value.id) || nonEmpty(value.focusKey) || value.surveyClose === true
+      || nonEmpty(value.captureAction) || nonEmpty(value.engineeringSection));
+  const emptyDescriptorShape = (value) => descriptorCarrier(value)
+    && value.tag === null && value.id === null && value.focusKey === null
+    && value.surveyClose === false && value.captureAction === null
+    && value.engineeringSection === null && value.accessibleName === '';
+  const setupDescriptor = Object.fromEntries(descriptorKeys.map((key) => [key, setup?.[key]]));
+  const heartbeatCycleAssessment = heartbeat === null ? null
+    : assessF4HeartbeatCycleReceipt(heartbeat?.cycleReceipt, setup?.documentToken ?? null);
+  const shipyardRefreshCompleted = heartbeat?.cycleReceipt?.schema
+      === F4_HEARTBEAT_CYCLE_RECEIPT_SCHEMA
+    && heartbeat?.cycleReceipt?.cycle === 'completed'
+    && heartbeat?.cycleReceipt?.reason === null
+    && heartbeat?.cycleReceipt?.refresh?.shipyard === 'completed';
+  const heartbeatReplacementObserved = heartbeat?.after?.originalTargetDisconnected === true
+    && heartbeat?.after?.replacementAcquired === true;
+  const heartbeatReplacementAbsent = heartbeat?.after?.originalTargetDisconnected === false
+    && heartbeat?.after?.replacementAcquired === false;
+  const heartbeatSnapshotCarrier = (snapshot) => Number.isInteger(snapshot?.currentCount)
+    && snapshot.currentCount >= 0
+    && typeof snapshot?.currentConnected === 'boolean'
+    && typeof snapshot?.currentFocused === 'boolean'
+    && typeof snapshot?.originalTargetDisconnected === 'boolean'
+    && typeof snapshot?.replacementAcquired === 'boolean'
+    && (snapshot.currentCount === 1
+      ? snapshot.currentConnected === true && descriptorShape(snapshot.current)
+      : snapshot.currentConnected === false && snapshot.currentFocused === false
+        && emptyDescriptorShape(snapshot.current))
+    && (snapshot.currentFocused !== true
+      || (snapshot.currentConnected === true && snapshot.currentCount === 1));
+  const instrumentChecks = {
+    heartbeatRequirement: typeof heartbeatRequired === 'boolean'
+      && (!heartbeatRequired || heartbeat !== null),
+    setupCarrier: setup?.schema === GLASS_KEYBOARD_ACTIVATION_SETUP_SCHEMA,
+    setupDocument: nonEmpty(setup?.documentToken) && nonEmpty(setup?.documentHref)
+      && setup?.instrumentReady === true,
+    setupQueryWitness: Number.isInteger(setup?.targetCount) && setup.targetCount >= 0
+      && typeof setup?.targetConnected === 'boolean' && typeof setup?.focused === 'boolean'
+      && typeof setup?.visible === 'boolean' && typeof setup?.productReady === 'boolean'
+      && (setup.targetCount === 1
+        ? nonEmpty(setup?.display) && typeof setup?.visibility === 'string'
+          && typeof setup?.opacity === 'number' && Number.isFinite(setup.opacity)
+          && typeof setup?.effectiveOpacity === 'number'
+          && Number.isFinite(setup.effectiveOpacity)
+          && (setup?.rect === null || (Array.isArray(setup?.rect) && setup.rect.length === 4
+            && setup.rect.every((value) => Number.isFinite(value))))
+        : setup.targetConnected === false && setup.focused === false && setup.visible === false
+          && setup?.display === null && setup?.visibility === null && setup?.opacity === null
+          && setup?.effectiveOpacity === null && setup?.rect === null),
+    setupDescriptor: setup?.targetCount === 1
+      ? descriptorShape(setupDescriptor) : emptyDescriptorShape(setupDescriptor),
+    receiptCarrier: activationAttempted !== true
+      || receipt?.schema === GLASS_KEYBOARD_ACTIVATION_RECEIPT_SCHEMA,
+    trustedEnter: activationAttempted !== true || (receipt?.trusted === true
+      && receipt?.key === 'Enter' && receipt?.code === 'Enter'
+      && Number.isInteger(receipt?.ignoredUntrustedEnterCount)
+      && receipt.ignoredUntrustedEnterCount >= 0),
+    documentIdentity: activationAttempted !== true
+      || (receipt?.setupDocumentToken === setup?.documentToken
+        && receipt?.documentToken === setup?.documentToken
+        && receipt?.setupDocumentHref === setup?.documentHref
+        && receipt?.documentHref === setup?.documentHref),
+    currentQueryWitness: activationAttempted !== true
+      || (Number.isInteger(receipt?.currentCount) && receipt.currentCount >= 0
+        && typeof receipt?.currentConnected === 'boolean'
+        && typeof receipt?.currentVisible === 'boolean'
+        && (receipt.currentCount === 1
+          ? nonEmpty(receipt?.currentDisplay)
+            && typeof receipt?.currentVisibility === 'string'
+            && typeof receipt?.currentOpacity === 'number'
+            && Number.isFinite(receipt.currentOpacity)
+            && typeof receipt?.currentEffectiveOpacity === 'number'
+            && Number.isFinite(receipt.currentEffectiveOpacity)
+            && Array.isArray(receipt?.currentRect) && receipt.currentRect.length === 4
+            && receipt.currentRect.every((value) => Number.isFinite(value))
+          : receipt?.currentConnected === false && receipt?.currentVisible === false
+            && receipt?.currentDisplay === null && receipt?.currentVisibility === null
+            && receipt?.currentOpacity === null && receipt?.currentEffectiveOpacity === null
+            && receipt?.currentRect === null)
+        && typeof receipt?.replacementAcquired === 'boolean'
+        && (typeof receipt?.originalTargetDisconnected === 'boolean'
+          || receipt?.originalTargetDisconnected === null)),
+    receiptDescriptors: activationAttempted !== true || (descriptorCarrier(receipt?.current)
+      && (receipt?.currentCount !== 1 || descriptorShape(receipt.current))
+      && descriptorCarrier(receipt?.eventTarget) && descriptorCarrier(receipt?.active)),
+    heartbeatLifecycle: heartbeat === null || (heartbeat?.schema
+      === GLASS_KEYBOARD_ACTIVATION_HEARTBEAT_SCHEMA && heartbeat?.required === true
+      && heartbeat?.stateFound === true && heartbeat?.seamsAvailable === true
+      && heartbeat?.setupDocumentToken === setup?.documentToken
+      && heartbeat?.setupDocumentHref === setup?.documentHref
+      && heartbeat?.initial?.documentToken === setup?.documentToken
+      && heartbeat?.initial?.documentHref === setup?.documentHref
+      && heartbeat?.initial?.heartbeatRunning === true
+      && heartbeat?.quiescence?.schema === 'cf-v2-f4-heartbeat-quiescence/v1'
+      && heartbeat?.quiescence?.documentToken === setup?.documentToken
+      && heartbeat?.quiescence?.wasRunning === true
+      && heartbeat?.quiescence?.stopped === true
+      && heartbeat?.quiescence?.cycleSettled === true
+      && heartbeat?.resume?.schema === 'cf-v2-f4-heartbeat-resume/v1'
+      && heartbeat?.resume?.documentToken === setup?.documentToken
+      && heartbeat?.resume?.running === true
+      && heartbeat?.after?.documentToken === setup?.documentToken
+      && heartbeat?.after?.documentHref === setup?.documentHref
+      && heartbeat?.after?.heartbeatRunning === true
+      && heartbeat?.error === null && heartbeat?.cleanup?.attempted === false
+      && heartbeat?.cleanup?.receipt === null && heartbeat?.cleanup?.error === null),
+    heartbeatCycleCarrier: heartbeat === null || heartbeatCycleAssessment?.ok === true,
+    shipyardRefreshCompleted: heartbeat === null || shipyardRefreshCompleted,
+    heartbeatReplacementScenario: heartbeat === null
+      || (heartbeat?.initial?.originalTargetDisconnected === false
+        && heartbeat?.initial?.replacementAcquired === false
+        && (!shipyardRefreshCompleted || heartbeatReplacementObserved)),
+    heartbeatReceiptReplacementCoherence: heartbeat === null
+      || (shipyardRefreshCompleted ? heartbeatReplacementObserved : heartbeatReplacementAbsent),
+    heartbeatCurrentDescriptor: heartbeat === null
+      || (heartbeatSnapshotCarrier(heartbeat?.initial)
+        && heartbeatSnapshotCarrier(heartbeat?.after)),
+  };
+  const instrumentOk = Object.values(instrumentChecks).every((value) => value === true);
+  const descriptorParity = descriptorKeys.every((key) => receipt?.current?.[key] === setup?.[key]);
+  const productChecks = {
+    setupReady: setup?.targetCount === 1 && setup?.productReady === true
+      && setup?.targetConnected === true
+      && setup?.focused === true && setup?.visible === true
+      && nonEmpty(setup?.display) && setup.display !== 'none'
+      && setup?.visibility === 'visible'
+      && setup?.opacity > 0 && setup?.effectiveOpacity > 0
+      && Array.isArray(setup?.rect) && setup.rect.length === 4
+      && setup.rect[2] - setup.rect[0] >= 44 && setup.rect[3] - setup.rect[1] >= 44,
+    currentTarget: activationAttempted !== true || (receipt?.currentCount === 1
+      && receipt?.currentConnected === true && receipt?.currentVisible === true
+      && nonEmpty(receipt?.currentDisplay) && receipt.currentDisplay !== 'none'
+      && receipt?.currentVisibility === 'visible'
+      && receipt?.currentOpacity > 0 && receipt?.currentEffectiveOpacity > 0
+      && Array.isArray(receipt?.currentRect) && receipt.currentRect.length === 4
+      && receipt.currentRect[2] - receipt.currentRect[0] >= 44
+      && receipt.currentRect[3] - receipt.currentRect[1] >= 44),
+    semanticIdentity: activationAttempted !== true || descriptorParity,
+    eventOrigin: activationAttempted !== true || (receipt?.eventTargetIsCurrent === true
+      && descriptorKeys.every((key) => receipt?.eventTarget?.[key] === receipt?.current?.[key])),
+    activeTarget: activationAttempted !== true || (receipt?.activeIsCurrent === true
+      && descriptorKeys.every((key) => receipt?.active?.[key] === receipt?.current?.[key])),
+    replacementLineage: activationAttempted !== true || (receipt?.replacementAcquired === true
+      ? receipt?.originalTargetDisconnected === true
+      : receipt?.originalTargetDisconnected === false),
+    heartbeatFocusRestored: heartbeat === null || (heartbeat?.initial?.currentFocused === true
+      && heartbeat?.after?.currentFocused === true),
+    heartbeatSemanticIdentity: heartbeat === null || (heartbeat?.initial?.currentCount === 1
+      && heartbeat?.initial?.currentConnected === true
+      && descriptorKeys.every((key) => heartbeat?.initial?.current?.[key] === setup?.[key])
+      && heartbeat?.after?.currentCount === 1 && heartbeat?.after?.currentConnected === true
+      && descriptorKeys.every((key) => heartbeat?.after?.current?.[key] === setup?.[key])),
+  };
+  const productOk = Object.values(productChecks).every((value) => value === true);
+  return {
+    schema: GLASS_KEYBOARD_ACTIVATION_ASSESSMENT_SCHEMA,
+    ok: instrumentOk && productOk,
+    instrumentOk,
+    productOk,
+    instrumentChecks,
+    productChecks,
+  };
+}
+
 const ARC4_NATIVE_TAB_SETUP_SCHEMA = 'cf-v2-glass-arc4-native-tab-setup/v1';
 const ARC4_NATIVE_TAB_FOCUS_SCHEMA = 'cf-v2-glass-arc4-native-tab-focus/v1';
-const ARC4_NATIVE_TAB_ASSESSMENT_SCHEMA = 'cf-v2-glass-arc4-native-tab-assessment/v1';
-const ARC4_NATIVE_TAB_HEARTBEAT_SCHEMA = 'cf-v2-glass-arc4-native-tab-heartbeat/v1';
+const ARC4_NATIVE_TAB_ASSESSMENT_SCHEMA = 'cf-v2-glass-arc4-native-tab-assessment/v2';
+const ARC4_NATIVE_TAB_HEARTBEAT_SCHEMA = 'cf-v2-glass-arc4-native-tab-heartbeat/v2';
 
 export function assessArc4NativeTabFocusEvidence({
-  setup = null, focus = null, heartbeat = null,
+  setup = null, focus = null, heartbeat = null, heartbeatRequired = false,
 } = {}) {
+  const cycleReceiptAssessment = heartbeat === null
+    ? null
+    : assessF4HeartbeatCycleReceipt(heartbeat?.cycleReceipt, setup?.documentToken ?? null);
+  const captureRerenderCompleted = heartbeat?.cycleReceipt?.schema
+      === F4_HEARTBEAT_CYCLE_RECEIPT_SCHEMA
+    && heartbeat?.cycleReceipt?.cycle === 'completed'
+    && heartbeat?.cycleReceipt?.reason === null
+    && heartbeat?.cycleReceipt?.refresh?.capture === 'completed';
+  const replacementObserved = heartbeat?.after?.originalTargetDisconnected === true
+    && heartbeat?.after?.originalPriorDisconnected === true
+    && heartbeat?.after?.replacementAcquired === true
+    && heartbeat?.after?.priorReplacementAcquired === true;
+  const replacementAbsent = heartbeat?.after?.originalTargetDisconnected === false
+    && heartbeat?.after?.originalPriorDisconnected === false
+    && heartbeat?.after?.replacementAcquired === false
+    && heartbeat?.after?.priorReplacementAcquired === false;
   const instrumentChecks = {
+    heartbeatRequirement: typeof heartbeatRequired === 'boolean'
+      && (!heartbeatRequired || heartbeat !== null),
     setupCarrier: setup?.schema === ARC4_NATIVE_TAB_SETUP_SCHEMA,
     setupDocument: typeof setup?.documentToken === 'string' && setup.documentToken.length > 0,
     focusCarrier: focus?.schema === ARC4_NATIVE_TAB_FOCUS_SCHEMA,
@@ -1169,7 +1550,7 @@ export function assessArc4NativeTabFocusEvidence({
       && focus.scroll.secondTargetCount >= 0
       && typeof focus?.scroll?.firstTargetConnected === 'boolean'
       && typeof focus?.scroll?.secondTargetConnected === 'boolean',
-    heartbeatControl: heartbeat === null || (heartbeat?.schema === ARC4_NATIVE_TAB_HEARTBEAT_SCHEMA
+    heartbeatLifecycle: heartbeat === null || (heartbeat?.schema === ARC4_NATIVE_TAB_HEARTBEAT_SCHEMA
       && heartbeat?.required === true && heartbeat?.stateFound === true
       && heartbeat?.seamsAvailable === true && heartbeat?.error === null
       && heartbeat?.initial?.documentToken === setup?.documentToken
@@ -1181,13 +1562,17 @@ export function assessArc4NativeTabFocusEvidence({
       && heartbeat?.quiescence?.cycleSettled === true
       && heartbeat?.resume?.schema === 'cf-v2-f4-heartbeat-resume/v1'
       && heartbeat?.resume?.documentToken === setup?.documentToken
-      && heartbeat?.resume?.running === true && heartbeat?.runCompleted === true
+      && heartbeat?.resume?.running === true
       && heartbeat?.after?.documentToken === setup?.documentToken
       && heartbeat?.after?.heartbeatRunning === true
-      && heartbeat?.after?.originalTargetDisconnected === true
-      && heartbeat?.after?.originalPriorDisconnected === true
       && heartbeat?.cleanup?.attempted === false
       && heartbeat?.cleanup?.receipt === null && heartbeat?.cleanup?.error === null),
+    cycleReceiptCarrier: heartbeat === null || cycleReceiptAssessment?.ok === true,
+    captureRerenderCompleted: heartbeat === null || captureRerenderCompleted,
+    replacementObserved: heartbeat === null || !captureRerenderCompleted || replacementObserved,
+    receiptReplacementCoherence: heartbeat === null || (captureRerenderCompleted
+      ? replacementObserved
+      : replacementAbsent),
   };
   const instrumentOk = Object.values(instrumentChecks).every((value) => value === true);
   const productChecks = {
@@ -1406,7 +1791,7 @@ export function buildArc4AtomicGeometryEvidenceExpression({
       const initialPersistence=typeof api?.state==='function'?api.state()?.persistence:null,
         initial={documentToken:initialPersistence?.documentToken??null,
           heartbeatRunning:initialPersistence?.heartbeatRunning===true};
-      let priorFocusArmed=false,quiescence=null,resume=null,error=null,runCompleted=false,
+      let priorFocusArmed=false,quiescence=null,resume=null,error=null,cycleReceipt=null,
         quiesceAttempted=false,preSnapshot=null,pre=null,
         cleanup={attempted:false,receipt:null,error:null};
       if(!seamsAvailable)error='missing F4 heartbeat smoke seam';
@@ -1432,7 +1817,7 @@ export function buildArc4AtomicGeometryEvidenceExpression({
         resume=api.__smokeResumeF4Heartbeat();
         if(resume?.schema!=='cf-v2-f4-heartbeat-resume/v1'||resume?.documentToken!==documentToken
           ||resume?.running!==true)throw new Error('invalid F4 heartbeat resume receipt');
-        await api.__smokeRunF4Heartbeat();runCompleted=true;
+        cycleReceipt=await api.__smokeRunF4Heartbeat();
       }catch(reason){error=String(reason?.stack||reason)}finally{
         const current=typeof api?.state==='function'?api.state()?.persistence:null;
         if(current?.heartbeatRunning!==true){cleanup.attempted=true;
@@ -1445,7 +1830,7 @@ export function buildArc4AtomicGeometryEvidenceExpression({
         postTargetReady=targetReady(postSnapshot);
       el=postSnapshot.node;rerender={schema:rerenderSchema,required:true,documentToken,
         seamsAvailable,initial,priorFocusArmed,quiesceAttempted,quiescence,resume,
-        runCompleted,cleanup,error,pre,post,
+        cycleReceipt,cleanup,error,pre,post,
         oldDisconnected:prior.isConnected===false,
         replacementAcquired:el instanceof HTMLElement&&el!==prior,
         preTargetReady,postTargetReady,scrollPreserved,priorFocusRestored,
@@ -1548,7 +1933,7 @@ export function buildArc4NativeTabHeartbeatRerenderExpression() {
       &&typeof api?.__smokeQuiesceF4Heartbeat==='function'
       &&typeof api?.__smokeResumeF4Heartbeat==='function'
       &&typeof api?.__smokeRunF4Heartbeat==='function',initial=snapshot();
-    let quiescence=null,resume=null,runCompleted=false,error=null,
+    let quiescence=null,resume=null,cycleReceipt=null,error=null,
       cleanup={attempted:false,receipt:null,error:null};
     if(!state)error='missing native Tab setup state';
     else if(!seamsAvailable)error='missing F4 heartbeat smoke seam';
@@ -1564,13 +1949,13 @@ export function buildArc4NativeTabHeartbeatRerenderExpression() {
       if(resume?.schema!=='cf-v2-f4-heartbeat-resume/v1'
         ||resume?.documentToken!==setupDocumentToken||resume?.running!==true)
         throw new Error('invalid F4 heartbeat resume receipt');
-      await api.__smokeRunF4Heartbeat();runCompleted=true;
+      cycleReceipt=await api.__smokeRunF4Heartbeat();
     }catch(reason){error=String(reason?.stack||reason)}finally{
       const current=persistence();if(current?.heartbeatRunning!==true){cleanup.attempted=true;
         try{cleanup.receipt=api?.__smokeResumeF4Heartbeat?.()??null}
         catch(reason){cleanup.error=String(reason?.stack||reason)}}}}
     await wait();await wait();const after=snapshot();return {schema,required:true,
-      stateFound:!!state,seamsAvailable,initial,quiescence,resume,runCompleted,after,cleanup,error};})()`;
+      stateFound:!!state,seamsAvailable,initial,quiescence,resume,cycleReceipt,after,cleanup,error};})()`;
 }
 
 export function buildArc4NativeTabFocusEvidenceExpression(verb) {
@@ -2185,6 +2570,33 @@ function arc4CaptureOutcomeInventoryOutcome(rows = [], viewports = MATRIX_VIEWPO
     observedCount: actual.length,
     omitted: expected.filter((id) => !actual.includes(id)),
     invalid: invalid.map((row) => ({ viewport: row?.viewport ?? null, code: row?.code ?? null })),
+    duplicates: [...new Set(duplicates)],
+  };
+}
+
+function shipyardKeyboardHeartbeatInventoryOutcome(rows = [], viewports = MATRIX_VIEWPORTS) {
+  const expected = viewports
+    .filter(({ label }) => label === 'large-phone')
+    .map(({ label }) => label);
+  const actual = rows.map((row) => row?.viewport);
+  const invalid = rows.filter((row) => row?.schema
+      !== SHIPYARD_KEYBOARD_HEARTBEAT_OUTCOME_SCHEMA
+    || !expected.includes(row?.viewport)
+    || row?.sectionId !== 'mining'
+    || typeof row?.beforeOpen !== 'boolean'
+    || typeof row?.afterOpen !== 'boolean'
+    || !row?.setup || typeof row.setup !== 'object'
+    || !row?.heartbeat || typeof row.heartbeat !== 'object'
+    || (row?.receipt !== null && typeof row?.receipt !== 'object')
+    || !row?.outcome || typeof row.outcome !== 'object');
+  const duplicates = actual.filter((id, index) => actual.indexOf(id) !== index);
+  return {
+    ok: invalid.length === 0 && duplicates.length === 0,
+    complete: exactJson(actual, expected),
+    expectedCount: expected.length,
+    observedCount: actual.length,
+    omitted: expected.filter((id) => !actual.includes(id)),
+    invalid: invalid.map((row) => row?.viewport ?? null),
     duplicates: [...new Set(duplicates)],
   };
 }
@@ -5101,7 +5513,7 @@ function verifyGlassRunEvidence(runId, {
 function runningGlassReport({ runId, source, predecessor = null }) {
   const artifacts = glassArtifactPaths(runId);
   return {
-    schema: 'cf-v2-glassmatrix/v1', status: 'running', terminal: false, certifying: false,
+    schema: GLASS_MATRIX_REPORT_SCHEMA, status: 'running', terminal: false, certifying: false,
     scope: viewportLabel ? 'targeted-diagnostic' : 'full-certifying',
     exit: null,
     startedAt: new Date(startedAt).toISOString(), endedAt: null, durationMs: null,
@@ -5130,8 +5542,28 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
   if (!arc4OutcomeInventory.ok || (status === 'pass' && !arc4OutcomeInventory.complete)) {
     throw new Error(`invalid Arc 4 capture outcome inventory: ${JSON.stringify(arc4OutcomeInventory)}`);
   }
+  const shipyardHeartbeatInventory = shipyardKeyboardHeartbeatInventoryOutcome(
+    runShipyardKeyboardHeartbeatOutcomes,
+  );
+  const shipyardHeartbeatReportInventory = {
+    plannedViewports: MATRIX_VIEWPORTS
+      .filter(({ label }) => label === 'large-phone')
+      .map(({ label }) => label),
+    complete: shipyardHeartbeatInventory.complete,
+    expectedCount: shipyardHeartbeatInventory.expectedCount,
+    observedCount: shipyardHeartbeatInventory.observedCount,
+    omitted: shipyardHeartbeatInventory.omitted,
+    outcomes: structuredClone(runShipyardKeyboardHeartbeatOutcomes),
+  };
+  const shipyardHeartbeatEvidenceErrors = shipyardHeartbeatInventory.expectedCount === 1
+    ? shipyardKeyboardHeartbeatInventoryErrors(shipyardHeartbeatReportInventory)
+    : [];
+  if (status === 'pass' && (!shipyardHeartbeatInventory.ok
+    || !shipyardHeartbeatInventory.complete || shipyardHeartbeatEvidenceErrors.length)) {
+    throw new Error(`invalid Shipyard keyboard heartbeat outcome inventory: ${JSON.stringify(shipyardHeartbeatInventory)}`);
+  }
   const report = {
-    schema: 'cf-v2-glassmatrix/v1',
+    schema: GLASS_MATRIX_REPORT_SCHEMA,
     status,
     terminal: true,
     scope: viewportLabel ? 'targeted-diagnostic' : 'full-certifying',
@@ -5163,6 +5595,7 @@ function writeReport({ status, exitCode, browser, findings, instrumentFailures, 
       omitted: arc4OutcomeInventory.omitted,
       outcomes: runArc4CaptureOutcomes.map((row) => ({ ...row, checks: { ...row.checks } })),
     },
+    shipyardKeyboardHeartbeatInventory: shipyardHeartbeatReportInventory,
     controlSummary: {
       selftestRan: controlsRun,
       /* This is an execution ledger, not a planned-coverage claim. A
@@ -5646,6 +6079,46 @@ function arc4GlassSelftest() {
   const inventoryUnknown = arc4CaptureOutcomeInventoryOutcome([
     ...outcomeRows.slice(0, -1), { ...outcomeRows.at(-1), code: 'ARC4_UNKNOWN' },
   ], fixtureViewports);
+  const shipyardHeartbeatEvidence = glassShipyardKeyboardHeartbeatSelftestInventory();
+  const shipyardHeartbeatRow = shipyardHeartbeatEvidence.outcomes[0];
+  const shipyardInventory = shipyardKeyboardHeartbeatInventoryOutcome(
+    [shipyardHeartbeatRow],
+    [{ label: 'large-phone' }],
+  );
+  const shipyardInventoryMissing = shipyardKeyboardHeartbeatInventoryOutcome(
+    [],
+    [{ label: 'large-phone' }],
+  );
+  const shipyardInventoryDuplicate = shipyardKeyboardHeartbeatInventoryOutcome(
+    [shipyardHeartbeatRow, structuredClone(shipyardHeartbeatRow)],
+    [{ label: 'large-phone' }],
+  );
+  const shipyardInventoryWrongSchema = shipyardKeyboardHeartbeatInventoryOutcome(
+    [{ ...shipyardHeartbeatRow, schema: 'cf-v2-glass-shipyard-keyboard-heartbeat-outcome/old' }],
+    [{ label: 'large-phone' }],
+  );
+  const shipyardHeartbeatDeepErrors = shipyardKeyboardHeartbeatInventoryErrors(
+    shipyardHeartbeatEvidence,
+  );
+  const shipyardHeartbeatWrongToggle = structuredClone(shipyardHeartbeatEvidence);
+  shipyardHeartbeatWrongToggle.outcomes[0].afterOpen = true;
+  const shipyardHeartbeatWrongToggleErrors = shipyardKeyboardHeartbeatInventoryErrors(
+    shipyardHeartbeatWrongToggle,
+  );
+  const shipyardHeartbeatProductRed = structuredClone(shipyardHeartbeatRow);
+  shipyardHeartbeatProductRed.receipt = null;
+  shipyardHeartbeatProductRed.outcome.ok = false;
+  shipyardHeartbeatProductRed.outcome.productOk = false;
+  shipyardHeartbeatProductRed.outcome.productChecks.heartbeatFocusRestored = false;
+  const shipyardProductRedInventory = shipyardKeyboardHeartbeatInventoryOutcome(
+    [shipyardHeartbeatProductRed],
+    [{ label: 'large-phone' }],
+  );
+  const shipyardProductRedPassErrors = shipyardKeyboardHeartbeatInventoryErrors({
+    plannedViewports: ['large-phone'], complete: true,
+    expectedCount: 1, observedCount: 1, omitted: [],
+    outcomes: [shipyardHeartbeatProductRed],
+  });
   const diagnosticSource = {
     ui: { cardTitle: oracle.title },
     planetside: { ecologyEpoch: oracle.ecologyEpoch },
@@ -5814,6 +6287,13 @@ function arc4GlassSelftest() {
     && inventory.ok && inventory.complete
     && inventoryMissing.ok && !inventoryMissing.complete
     && !inventoryDuplicate.ok && !inventoryUnknown.ok
+    && shipyardInventory.ok && shipyardInventory.complete
+    && shipyardInventoryMissing.ok && !shipyardInventoryMissing.complete
+    && !shipyardInventoryDuplicate.ok && !shipyardInventoryWrongSchema.ok
+    && shipyardHeartbeatDeepErrors.length === 0
+    && shipyardHeartbeatWrongToggleErrors.length > 0
+    && shipyardProductRedInventory.ok && shipyardProductRedInventory.complete
+    && shipyardProductRedPassErrors.length > 0
     && diagnosticReportRow.ok === true
     && diagnosticReportRow.diagnostics?.ui?.cardTitle === oracle.title
     && diagnosticReportRow.diagnostics?.planetside?.ecologyEpoch === oracle.ecologyEpoch
@@ -5853,6 +6333,10 @@ function arc4GlassSelftest() {
     wrongCounter: wrongCounterAssessment,
     wrongActivation: wrongActivationAssessment,
     inventory, inventoryMissing, inventoryDuplicate, inventoryUnknown,
+    shipyardInventory, shipyardInventoryMissing, shipyardInventoryDuplicate,
+    shipyardInventoryWrongSchema, shipyardHeartbeatDeepErrors,
+    shipyardHeartbeatWrongToggleErrors, shipyardProductRedInventory,
+    shipyardProductRedPassErrors,
     diagnosticReportRow,
   };
 }
@@ -6762,13 +7246,15 @@ async function reportSelftest() {
   })));
   const shapedArc4Inventory = arc4CaptureOutcomeInventoryOutcome(shapedArc4Outcomes);
   const shaped = {
-    schema: 'cf-v2-glassmatrix/v1', status: fixture.status, scope: 'full-certifying', certifying: true,
+    schema: GLASS_MATRIX_REPORT_SCHEMA, status: fixture.status, scope: 'full-certifying', certifying: true,
     viewportInventory: viewportInventory(),
     arc4CaptureOutcomeInventory: {
       plannedOutcomeCodes: [...ARC4_CAPTURE_OUTCOME_CODES], complete: shapedArc4Inventory.complete,
       expectedCount: shapedArc4Inventory.expectedCount, observedCount: shapedArc4Inventory.observedCount,
       omitted: shapedArc4Inventory.omitted, outcomes: shapedArc4Outcomes,
     },
+    shipyardKeyboardHeartbeatInventory:
+      glassShipyardKeyboardHeartbeatSelftestInventory(),
     controlSummary: {
       selftestRan: fixture.controlsRun,
       negativeControls: [...NEGATIVE_CONTROLS],
@@ -6790,7 +7276,7 @@ async function reportSelftest() {
     }],
     instrumentFailures: fixture.instrumentFailures,
   };
-  if (shaped.schema !== 'cf-v2-glassmatrix/v1' || shaped.status !== 'fail'
+  if (shaped.schema !== GLASS_MATRIX_REPORT_SCHEMA || shaped.status !== 'fail'
     || shaped.scope !== 'full-certifying' || shaped.certifying !== true
     || shaped.viewportInventory.length !== 12 || shaped.summary.counts.TARGET_TOO_SMALL !== 1
     || shaped.arc4CaptureOutcomeInventory?.complete !== true
@@ -6873,7 +7359,7 @@ async function reportSelftest() {
     rawLogSha256: 'e'.repeat(64), source: { ...chainSource },
   };
   const chainReport = {
-    schema: 'cf-v2-glassmatrix/v1', status: 'pass', terminal: true,
+    schema: GLASS_MATRIX_REPORT_SCHEMA, status: 'pass', terminal: true,
     scope: 'full-certifying', certifying: true, exit: { code: 0 },
     startedAt: '2026-08-27T00:00:00.000Z', endedAt: '2026-08-27T00:00:01.000Z', durationMs: 1000,
     run: { id: chainRunId, artifactPath: glassArtifactPaths(chainRunId).reportRelative },
@@ -6889,6 +7375,8 @@ async function reportSelftest() {
       expectedCount: shapedArc4Outcomes.length, observedCount: shapedArc4Outcomes.length,
       omitted: [], outcomes: shapedArc4Outcomes,
     },
+    shipyardKeyboardHeartbeatInventory:
+      glassShipyardKeyboardHeartbeatSelftestInventory(),
     controlSummary: {
       selftestRan: true,
       negativeControls: [...NEGATIVE_CONTROLS].sort(codeUnitCompare),
@@ -6898,6 +7386,16 @@ async function reportSelftest() {
   };
   const canonicalChain = glassRunEvidenceErrors(chainReport, {
     runId: chainRunId, expectedSource: chainSource, expectedSlice: chainSlice,
+  });
+  const legacyTargetedPass = {
+    ...chainReport,
+    schema: 'cf-v2-glassmatrix/v1',
+    scope: 'targeted-diagnostic',
+    certifying: false,
+    predecessors: null,
+  };
+  const legacyTargetedPassErrors = glassRunEvidenceErrors(legacyTargetedPass, {
+    runId: chainRunId, expectedSource: chainSource, requirePass: false,
   });
   const chainMutants = [
     ['stale-pass', { ...chainReport, run: { ...chainReport.run, id: 'stale-glass-run' } }, 'run ID mismatch'],
@@ -6922,6 +7420,56 @@ async function reportSelftest() {
     ['malformed-timing', { ...chainReport,
       viewportTimings: chainReport.viewportTimings.map((row, index) => index === 0 ? { ...row, durationMs: 0 } : row) },
     'timing inventory is malformed'],
+    ['legacy-schema-downgrade', { ...chainReport, schema: 'cf-v2-glassmatrix/v1' },
+    'current Glass PASS schema is required'],
+    ['missing-shipyard-heartbeat', { ...chainReport,
+      shipyardKeyboardHeartbeatInventory: undefined },
+    'Shipyard keyboard heartbeat inventory'],
+    ['forged-shipyard-toggle', { ...chainReport,
+      shipyardKeyboardHeartbeatInventory: {
+        ...chainReport.shipyardKeyboardHeartbeatInventory,
+        outcomes: chainReport.shipyardKeyboardHeartbeatInventory.outcomes.map((row) => ({
+          ...row, afterOpen: true,
+        })),
+      } },
+    'Shipyard keyboard heartbeat outcome'],
+    ['collapsed-shipyard-current', (() => {
+      const value = structuredClone(chainReport);
+      value.shipyardKeyboardHeartbeatInventory.outcomes[0]
+        .receipt.currentVisibility = 'collapse';
+      return value;
+    })(), 'Shipyard keyboard heartbeat outcome'],
+    ['transparent-shipyard-ancestor', (() => {
+      const value = structuredClone(chainReport);
+      value.shipyardKeyboardHeartbeatInventory.outcomes[0]
+        .receipt.currentEffectiveOpacity = 0;
+      return value;
+    })(), 'Shipyard keyboard heartbeat outcome'],
+    ['empty-shipyard-setup-display', (() => {
+      const value = structuredClone(chainReport);
+      value.shipyardKeyboardHeartbeatInventory.outcomes[0].setup.display = '';
+      return value;
+    })(), 'Shipyard keyboard heartbeat outcome'],
+    ['empty-shipyard-current-display', (() => {
+      const value = structuredClone(chainReport);
+      value.shipyardKeyboardHeartbeatInventory.outcomes[0].receipt.currentDisplay = '';
+      return value;
+    })(), 'Shipyard keyboard heartbeat outcome'],
+    ['forged-shipyard-semantic-lineage', (() => {
+      const value = structuredClone(chainReport);
+      value.shipyardKeyboardHeartbeatInventory.outcomes[0]
+        .heartbeat.after.current.accessibleName = 'Forged mining';
+      return value;
+    })(), 'Shipyard keyboard heartbeat outcome'],
+    ['blank-shipyard-semantic-lineage', (() => {
+      const value = structuredClone(chainReport);
+      const row = value.shipyardKeyboardHeartbeatInventory.outcomes[0];
+      for (const descriptor of [
+        row.setup, row.heartbeat.initial.current, row.heartbeat.after.current,
+        row.receipt.current, row.receipt.eventTarget, row.receipt.active,
+      ]) descriptor.accessibleName = ' ';
+      return value;
+    })(), 'Shipyard keyboard heartbeat outcome'],
     ['empty-outcomes', { ...chainReport,
       arc4CaptureOutcomeInventory: { ...chainReport.arc4CaptureOutcomeInventory, outcomes: [] } },
     'outcome inventory is empty'],
@@ -6981,8 +7529,10 @@ async function reportSelftest() {
     });
     return errors.some((error) => error.includes(diagnosis)) ? [] : [{ name, diagnosis, errors }];
   });
-  if (canonicalChain.length || chainDrift.length) {
-    throw new Error(`GLASS MATRIX REPORT SELFTEST: evidence-chain controls drifted ${JSON.stringify({ canonicalChain, chainDrift })}`);
+  if (canonicalChain.length
+    || !legacyTargetedPassErrors.some((error) => error.includes('current Glass PASS schema is required'))
+    || chainDrift.length) {
+    throw new Error(`GLASS MATRIX REPORT SELFTEST: evidence-chain controls drifted ${JSON.stringify({ canonicalChain, legacyTargetedPassErrors, chainDrift })}`);
   }
   const immutableRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-glass-immutable-selftest-'));
   try {
@@ -8549,6 +9099,7 @@ async function main() {
   runReloadEvidence = [];
   runViewportTimings = [];
   runArc4CaptureOutcomes = [];
+  runShipyardKeyboardHeartbeatOutcomes = [];
   runPredecessors = null;
   runEndingSource = null;
   runArtifactReserved = false;
@@ -8880,36 +9431,71 @@ async function main() {
           await send('Input.dispatchKeyEvent', { type: 'rawKeyDown', ...key }, session);
           await send('Input.dispatchKeyEvent', { type: 'keyUp', ...key }, session);
         };
-        const activateRealKeyboardControl = async (selector, label) => {
-          const target = await evalIn(`(()=>{const target=document.querySelector(${JSON.stringify(selector)}),
-            rect=target?.getBoundingClientRect(),style=target?getComputedStyle(target):null;
-            window.__cfGlassEngineeringKeyReceipt=null;window.__cfGlassEngineeringKeyAbort?.abort();
-            const controller=new AbortController();window.__cfGlassEngineeringKeyAbort=controller;
-            document.addEventListener('keydown',(event)=>{if(event.target!==target)return;
-              window.__cfGlassEngineeringKeyReceipt={key:event.key,code:event.code,trusted:event.isTrusted===true,
-                tag:target?.tagName||null,focusKey:target?.getAttribute?.('data-focus-key')||null,
-                surveyClose:target?.hasAttribute?.('data-survey-close')===true};},
-              {capture:true,once:true,signal:controller.signal});target?.focus();return {
-                ok:!!target&&style?.display!=='none'&&style?.visibility!=='hidden'&&!!rect
-                  &&rect.width>0&&rect.height>=44&&document.activeElement===target,
-                tag:target?.tagName||null,focusKey:target?.getAttribute?.('data-focus-key')||null,
-                surveyClose:target?.hasAttribute?.('data-survey-close')===true,
-                accessibleName:(target?.getAttribute?.('aria-label')||target?.textContent||'').trim(),
-                rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null};})()`);
-          if (!target.ok) return { ok: false, why: `${label} is not one focused visible 44px control`, target, receipt: null };
+        const activateRealKeyboardControl = async (selector, label, options = {}) => {
+          const forceHeartbeatRerender = options?.forceHeartbeatRerender === true;
+          const target = await evalIn(buildGlassKeyboardActivationSetupExpression(selector));
+          let heartbeat = null;
+          let preDispatchOutcome = assessGlassKeyboardActivationEvidence({
+            setup: target,
+            receipt: null,
+            activationAttempted: false,
+          });
+          if (!preDispatchOutcome.instrumentOk) {
+            recordInstrumentFailure(`${vp.label}: ${label} native Enter setup evidence was malformed (${JSON.stringify({ target, preDispatchOutcome })})`);
+          }
+          if (preDispatchOutcome.ok && forceHeartbeatRerender) {
+            heartbeat = await evalIn(buildGlassKeyboardActivationHeartbeatExpression());
+            preDispatchOutcome = assessGlassKeyboardActivationEvidence({
+              setup: target,
+              receipt: null,
+              heartbeat,
+              activationAttempted: false,
+              heartbeatRequired: forceHeartbeatRerender,
+            });
+            if (!preDispatchOutcome.instrumentOk) {
+              recordInstrumentFailure(`${vp.label}: ${label} forced Shipyard heartbeat did not complete (${heartbeat?.cycleReceipt?.cycle ?? 'missing-cycle'}/${heartbeat?.cycleReceipt?.reason ?? 'no-reason'}/shipyard:${heartbeat?.cycleReceipt?.refresh?.shipyard ?? 'missing'}; ${JSON.stringify({ target, heartbeat, preDispatchOutcome })})`);
+            }
+          }
+          if (!preDispatchOutcome.ok) {
+            await evalIn(buildGlassKeyboardActivationReceiptExpression());
+            return {
+              ok: false,
+              why: preDispatchOutcome.instrumentOk
+                ? `${label} is not one focused visible 44px control`
+                : forceHeartbeatRerender && heartbeat !== null
+                  ? `${label} forced heartbeat evidence is malformed`
+                  : `${label} setup evidence is malformed`,
+              target,
+              receipt: null,
+              heartbeat,
+              outcome: preDispatchOutcome,
+            };
+          }
           const key = { key: 'Enter', code: 'Enter', windowsVirtualKeyCode: 13 };
           await send('Input.dispatchKeyEvent', {
             type: 'keyDown', ...key, text: '\r', unmodifiedText: '\r',
           }, session);
           await send('Input.dispatchKeyEvent', { type: 'keyUp', ...key }, session);
           await sleep(40);
-          const receipt = await evalIn(`(()=>{const value=window.__cfGlassEngineeringKeyReceipt||null;
-            window.__cfGlassEngineeringKeyAbort?.abort();delete window.__cfGlassEngineeringKeyAbort;
-            delete window.__cfGlassEngineeringKeyReceipt;return value;})()`);
-          return { ok: receipt?.trusted === true && receipt?.key === 'Enter'
-            && receipt?.code === 'Enter' && receipt?.tag === target.tag
-            && receipt?.focusKey === target.focusKey
-            && receipt?.surveyClose === target.surveyClose, target, receipt };
+          const receipt = await evalIn(buildGlassKeyboardActivationReceiptExpression());
+          const outcome = assessGlassKeyboardActivationEvidence({
+            setup: target,
+            receipt,
+            heartbeat,
+            activationAttempted: true,
+            heartbeatRequired: forceHeartbeatRerender,
+          });
+          if (!outcome.instrumentOk) {
+            recordInstrumentFailure(`${vp.label}: ${label} native Enter evidence was malformed (${JSON.stringify({ target, receipt, outcome })})`);
+          }
+          return {
+            ok: outcome.ok,
+            why: outcome.ok ? null : `${label} did not activate from its one current semantic control`,
+            target,
+            receipt,
+            heartbeat,
+            outcome,
+          };
         };
         /* Engineering/Shipyard is a real Arc 3 route. Preserve an input
            receipt for its opener and Close rather than using the panel helper's
@@ -10390,9 +10976,10 @@ async function main() {
           setup: sampleFocusSetup,
           focus: sampleFocus,
           heartbeat: sampleFocusHeartbeat,
+          heartbeatRequired: vp.label === 'large-phone',
         });
         if (!sampleFocusOutcome.instrumentOk) {
-          recordInstrumentFailure(`${vp.label}: Arc 4 native Tab evidence crossed control/document epochs (${JSON.stringify({
+          recordInstrumentFailure(`${vp.label}: Arc 4 native Tab forced heartbeat did not complete Capture rerender (${sampleFocusHeartbeat?.cycleReceipt?.cycle ?? 'missing-cycle'}/${sampleFocusHeartbeat?.cycleReceipt?.reason ?? 'no-reason'}/capture:${sampleFocusHeartbeat?.cycleReceipt?.refresh?.capture ?? 'missing'}; ${JSON.stringify({
             outcome: sampleFocusOutcome,
             setup: sampleFocusSetup,
             heartbeat: sampleFocusHeartbeat,
@@ -10419,7 +11006,7 @@ async function main() {
           }));
           const heartbeatRerender = assessArc4HeartbeatRerenderEvidence(evidence?.rerender);
           if (!heartbeatRerender.ok) {
-            recordInstrumentFailure(`${vp.label}: Arc 4 ${verb} atomic geometry collector did not exercise a healthy heartbeat rerender (${JSON.stringify({
+            recordInstrumentFailure(`${vp.label}: Arc 4 ${verb} atomic geometry collector did not complete Capture heartbeat rerender (${evidence?.rerender?.cycleReceipt?.cycle ?? 'missing-cycle'}/${evidence?.rerender?.cycleReceipt?.reason ?? 'no-reason'}/capture:${evidence?.rerender?.cycleReceipt?.refresh?.capture ?? 'missing'}; ${JSON.stringify({
               heartbeatRerender, evidence,
             })})`);
           }
@@ -10719,15 +11306,40 @@ async function main() {
               closeRect:cr?[cr.left,cr.top,cr.right,cr.bottom]:null};})()` : null;
           if (item.shipyard) {
             const engineeringDisclosureReceipts = [];
-            for (const id of ['mining', 'mining', 'skimming', 'research', 'fabricator']) {
+            for (const [disclosureIndex, id] of [
+              'mining', 'mining', 'skimming', 'research', 'fabricator',
+            ].entries()) {
+              const forceHeartbeatRerender = vp.label === 'large-phone'
+                && disclosureIndex === 0;
               const beforeOpen = await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="${id}"]')?.open??null`);
               const receipt = await activateRealKeyboardControl(
                 `#shipyardpanel details[data-engineering-section="${id}"] > summary`,
                 `${vp.label} Engineering ${id} disclosure`,
+                { forceHeartbeatRerender },
               );
               const afterOpen = await evalIn(`document.querySelector('#shipyardpanel details[data-engineering-section="${id}"]')?.open??null`);
-              engineeringDisclosureReceipts.push({ id, beforeOpen, afterOpen,
-                ...receipt, ok: receipt.ok && typeof beforeOpen === 'boolean' && afterOpen === !beforeOpen });
+              if (forceHeartbeatRerender && receipt.heartbeat !== null) {
+                runShipyardKeyboardHeartbeatOutcomes.push({
+                  schema: SHIPYARD_KEYBOARD_HEARTBEAT_OUTCOME_SCHEMA,
+                  viewport: vp.label,
+                  sectionId: id,
+                  beforeOpen,
+                  afterOpen,
+                  setup: structuredClone(receipt.target),
+                  heartbeat: structuredClone(receipt.heartbeat),
+                  receipt: structuredClone(receipt.receipt),
+                  outcome: structuredClone(receipt.outcome),
+                });
+              }
+              const disclosureReceipt = { id, beforeOpen, afterOpen,
+                ...receipt, ok: receipt.ok && typeof beforeOpen === 'boolean'
+                  && afterOpen === !beforeOpen };
+              engineeringDisclosureReceipts.push(disclosureReceipt);
+              addOutcome(vp.label, composition,
+                'SHIPYARD_KEYBOARD_DISCLOSURE_ACTIVATION',
+                `#shipyardpanel details[data-engineering-section="${id}"] > summary`,
+                disclosureReceipt,
+                'trusted Enter toggles the one current semantic Engineering disclosure after any forced heartbeat replacement');
             }
             const disclosuresSettled = await waitFor(`${item.name} Engineering disclosures`,
               `(()=>{const rows=[...document.querySelectorAll('#shipyardpanel details[data-engineering-section]')];
@@ -14101,6 +14713,13 @@ async function main() {
   if (!arc4OutcomeInventory.ok
     || (!instrumentFailures.length && !findings.length && !arc4OutcomeInventory.complete)) {
     recordInstrumentFailure(`Arc 4 capture outcome inventory failed closed: ${JSON.stringify(arc4OutcomeInventory)}`);
+  }
+  const shipyardHeartbeatInventory = shipyardKeyboardHeartbeatInventoryOutcome(
+    runShipyardKeyboardHeartbeatOutcomes,
+  );
+  if (!shipyardHeartbeatInventory.ok
+    || (!instrumentFailures.length && !findings.length && !shipyardHeartbeatInventory.complete)) {
+    recordInstrumentFailure(`Shipyard keyboard heartbeat outcome inventory failed closed: ${JSON.stringify(shipyardHeartbeatInventory)}`);
   }
   const browser = browserVersions.length ? {
     ...browserVersions[0],

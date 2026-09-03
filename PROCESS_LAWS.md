@@ -1,5 +1,40 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **RIGHT-SIZE THE OUTER ENVELOPE, EXERCISE REPEATED LATE FAILURE CLASSES EARLY, AND REPLAY
+> EVIDENCE INDEPENDENTLY** (2026-09-03 UTC). Workflow/job/step caps are orchestration ceilings,
+> not product timeouts or evidence rulers. When measured hosted duration leaves no operational
+> margin, change the sealed workflow and policy together without adding a job, matrix, retry,
+> browser pin or weaker verdict. PR #35's current successor keeps one two-minute authorization job
+> and one battery job, raises the battery cap from 90 to **120 minutes**, and raises Compendium's
+> independent step cap from 40 to **55 minutes**. Compendium's fixed measurement ruler, numeric
+> ceilings and outcome inventory do not change. A future exact attempt is therefore capped at
+> **122 total runner-minutes**, once and without retry; the number grants no hosted authority.
+>
+> One conditional changed-input diagnostic may exercise multiple minimal rows sequentially inside
+> one existing independently capped step. Give each row its own immutable ID/report, stop after the
+> first nonzero or red result, and never substitute the diagnostic for the unconditional
+> certificate. The current five-minute Glass canary runs `small-phone` Inventory first, then
+> `large-phone` Capture/Shipyard heartbeat behavior. Full exact-Slice-bound 12-row Glass remains
+> unchanged and mandatory.
+>
+> A stored all-true assessment is not independent verification. Current Glass PASS authority is
+> `cf-v2-glassmatrix/v2`; v1 PASS is refused even for a targeted run. Re-read exact setup,
+> document, selector, descriptor, connection, focus, replacement, geometry, visibility and
+> cumulative ancestor-opacity facts—including CSS filter opacity—from the retained carrier. A DOM
+> replacement requires a
+> structured `cf-v2-f4-heartbeat-cycle-receipt/v1` proving a completed cycle, null reason and the
+> expected Capture or Shipyard refresh. Negative-control exact `visibility:collapse`, direct,
+> ancestor and filter-based transparency, blank names, stale identity and forged assessment maps.
+> Mandatory
+> artifact upload remains hard-fail; the separate step-summary carrier retains diagnosis but does
+> not soften or replace it.
+>
+> When a forced replacement test follows a periodic heartbeat, quiesce and settle the periodic
+> owner before acquiring the deliberate-cycle baseline. Otherwise the ambient timer can replace
+> the node between setup and quiescence and manufacture the same stale-lineage red the test was
+> meant to prevent. A zero/duplicate target with exact false/null facts is coherent product-red
+> evidence; only contradictory counts, descriptors, geometry or style are instrument-red.
+
 > **NATIVE KEYBOARD EVIDENCE FOLLOWS SEMANTIC IDENTITY, AND TERMINAL DIAGNOSIS MUST OUTLIVE THE
 > ARTIFACT SERVICE** (2026-09-03 UTC). A DOM-replacing heartbeat invalidates exact element-object
 > identity without invalidating the current control. Before native Tab, retain a document-capture

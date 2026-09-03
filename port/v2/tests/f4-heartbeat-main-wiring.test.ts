@@ -72,13 +72,56 @@ function integrationErrors(source: string): string[] {
   );
   const heartbeatOwned = heartbeatCycle.indexOf("heartbeatOwned = outcome.kind === 'owned';");
   if (heartbeatFailure < 0 || heartbeatOwned < 0 || heartbeatFailure >= heartbeatOwned
-    || !heartbeatCycle.includes('if (!heartbeatOwned) return;')) {
+    || !heartbeatCycle.includes('if (!heartbeatOwned) {')
+    || !heartbeatCycle.includes("return f4HeartbeatCycleReceipt('failed', 'storage-error');")
+    || !heartbeatCycle.includes("heartbeatKind === 'held-by-other' ? 'lease-held-by-other' : 'lease-lost'")) {
     errors.push('periodic-heartbeat');
+  }
+
+  const receipt = section(
+    source,
+    'type F4HeartbeatCycleReason =',
+    '\nlet f4HeartbeatCycleInFlight',
+  );
+  const receiptReasons = [
+    'smoke-quiesced', 'runtime-unavailable', 'persistence-held', 'page-hidden',
+    'persist-in-flight', 'import-in-flight', 'replacement-in-flight',
+    'runtime-heartbeat-in-flight', 'lease-held-by-other', 'lease-lost',
+    'revision-refused', 'bootstrap-refused', 'storage-error',
+  ];
+  if (!receipt.includes("schema: 'cf-v2-f4-heartbeat-cycle-receipt/v1';")
+    || !receipt.includes("cycle: 'completed' | 'skipped' | 'failed';")
+    || !receipt.includes('reason: F4HeartbeatCycleReason | null;')
+    || !receipt.includes("shipyard: 'completed' | 'panel-closed' | 'product-action-in-flight' | 'not-reached';")
+    || !receipt.includes("capture: 'completed' | 'card-hidden' | 'surface-not-owned'")
+    || receiptReasons.some((reason) => !receipt.includes(`| '${reason}'`)
+      && !receipt.includes(`schema: '${reason}'`))
+    || !receipt.includes("schema: 'cf-v2-f4-heartbeat-cycle-receipt/v1' as const,")
+    || !receipt.includes('refresh: Object.freeze({ ...refresh }),')) {
+    errors.push('heartbeat-cycle-receipt');
+  }
+  for (const marker of [
+    "if (!f4Runtime) return f4HeartbeatCycleReceipt('skipped', 'runtime-unavailable');",
+    "if (persistHold) return f4HeartbeatCycleReceipt('skipped', 'persistence-held');",
+    "if (!f4PageVisible()) return f4HeartbeatCycleReceipt('skipped', 'page-hidden');",
+    "if (activePersist) return f4HeartbeatCycleReceipt('skipped', 'persist-in-flight');",
+    "if (importWriteInFlight) return f4HeartbeatCycleReceipt('skipped', 'import-in-flight');",
+    "if (replacementTransaction) return f4HeartbeatCycleReceipt('skipped', 'replacement-in-flight');",
+    "return f4HeartbeatCycleReceipt('skipped', 'runtime-heartbeat-in-flight');",
+    "return f4HeartbeatCycleReceipt('failed', 'storage-error');",
+    "return f4HeartbeatCycleReceipt('skipped', 'revision-refused');",
+    "return f4HeartbeatCycleReceipt('skipped', 'bootstrap-refused');",
+    "return f4HeartbeatCycleReceipt('completed', null, {",
+    "shipyardRefresh = 'completed';",
+    "compendiumRefresh = 'completed';",
+    "captureRefresh = 'completed';",
+  ]) {
+    if (!heartbeatCycle.includes(marker)) errors.push('heartbeat-cycle-receipt');
   }
 
   const heartbeat = section(source, 'const heartbeatF4 =', '\nconst settleF4Heartbeat =');
   const smokeHold = heartbeat.indexOf(
-    'if (f4HeartbeatSmokeQuiesced) return Promise.resolve();',
+    'if (f4HeartbeatSmokeQuiesced) {',
   );
   const reuseCycle = heartbeat.indexOf(
     'if (f4HeartbeatCycleInFlight) return f4HeartbeatCycleInFlight;',
@@ -90,8 +133,9 @@ function integrationErrors(source: string): string[] {
   );
   const publishCycle = heartbeat.indexOf('f4HeartbeatCycleInFlight = tracked;');
   const returnCycle = heartbeat.indexOf('return tracked;');
-  if (!source.includes('let f4HeartbeatCycleInFlight: Promise<void> | null = null;')
+  if (!source.includes('let f4HeartbeatCycleInFlight: Promise<F4HeartbeatCycleReceipt> | null = null;')
     || !source.includes('let f4HeartbeatSmokeQuiesced = false;')
+    || !heartbeat.includes("Promise.resolve(f4HeartbeatCycleReceipt('skipped', 'smoke-quiesced'))")
     || !(smokeHold >= 0 && reuseCycle > smokeHold && startCycle > reuseCycle
       && trackCycle > startCycle && clearCycle > trackCycle
       && publishCycle > clearCycle && returnCycle > publishCycle)) {
@@ -222,6 +266,31 @@ describe('F4 lease-storage failure app integration', () => {
     expect(integrationErrors(mainSource)).toEqual([]);
   });
 
+  it('binds every heartbeat short-circuit and Capture refresh to the structured receipt', () => {
+    const markers = [
+      "if (!f4Runtime) return f4HeartbeatCycleReceipt('skipped', 'runtime-unavailable');",
+      "if (persistHold) return f4HeartbeatCycleReceipt('skipped', 'persistence-held');",
+      "if (!f4PageVisible()) return f4HeartbeatCycleReceipt('skipped', 'page-hidden');",
+      "if (activePersist) return f4HeartbeatCycleReceipt('skipped', 'persist-in-flight');",
+      "if (importWriteInFlight) return f4HeartbeatCycleReceipt('skipped', 'import-in-flight');",
+      "if (replacementTransaction) return f4HeartbeatCycleReceipt('skipped', 'replacement-in-flight');",
+      "return f4HeartbeatCycleReceipt('skipped', 'runtime-heartbeat-in-flight');",
+      "return f4HeartbeatCycleReceipt('failed', 'storage-error');",
+      "return f4HeartbeatCycleReceipt('skipped', 'revision-refused');",
+      "return f4HeartbeatCycleReceipt('skipped', 'bootstrap-refused');",
+      "shipyardRefresh = 'completed';",
+      "compendiumRefresh = 'completed';",
+      "captureRefresh = 'completed';",
+      "return f4HeartbeatCycleReceipt('completed', null, {",
+    ] as const;
+    for (const [index, marker] of markers.entries()) {
+      expect(mainSource.split(marker).length - 1, marker).toBe(1);
+      expect(integrationErrors(
+        mainSource.replace(marker, `__F4_CYCLE_RECEIPT_MUTANT_${index}__`),
+      ), marker).toContain('heartbeat-cycle-receipt');
+    }
+  });
+
   it('rejects every missing fail-closed integration independently', () => {
     const missingShipyardProtection = replaceInSectionExact(
       mainSource,
@@ -238,7 +307,7 @@ describe('F4 lease-storage failure app integration', () => {
       'f4AuthorityProtectionRenderError ??=',
       "persistenceBootKind = 'transient-protected';\n  scheduleF4AuthorityConvergenceReload(",
       "handleF4HeartbeatStorageError(runtime, outcome, 'periodic F4 heartbeat');",
-      'if (!heartbeatOwned) return;',
+      "return f4HeartbeatCycleReceipt('failed', 'storage-error');",
       "handleF4HeartbeatStorageError(runtime, outcome, 'visible F4 heartbeat');",
       "handleF4HeartbeatStorageError(runtime, renewal, 'failed-import F4 heartbeat');",
       "if (leaseOutcome.kind === 'storage-error')",
@@ -253,8 +322,8 @@ describe('F4 lease-storage failure app integration', () => {
   it('rejects heartbeat overlap and smoke-quiescence regressions independently', () => {
     const wrapperMutations = [
       [
-        'if (f4HeartbeatSmokeQuiesced) return Promise.resolve();',
-        'if (false) return Promise.resolve();',
+        'if (f4HeartbeatSmokeQuiesced) {',
+        'if (false) {',
       ],
       [
         'if (f4HeartbeatCycleInFlight) return f4HeartbeatCycleInFlight;',

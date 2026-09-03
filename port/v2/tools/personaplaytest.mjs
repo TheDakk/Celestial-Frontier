@@ -11,6 +11,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {
+  glassShipyardKeyboardHeartbeatSelftestInventory,
+  shipyardKeyboardHeartbeatInventoryErrors,
+} from './glassmatrix-evidence-contract.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -76,7 +80,13 @@ function readJson(file, label) {
 function validateEvidence(smoke, glass) {
   const failures = [];
   if (smoke.schema !== 'cf-v2-slice-smoke-ci/v2') failures.push(`slice smoke schema ${JSON.stringify(smoke.schema)} is unsupported`);
-  if (glass.schema !== 'cf-v2-glassmatrix/v1') failures.push(`glass matrix schema ${JSON.stringify(glass.schema)} is unsupported`);
+  if (glass.schema !== 'cf-v2-glassmatrix/v2') {
+    failures.push(`glass matrix schema ${JSON.stringify(glass.schema)} is unsupported`);
+  } else {
+    failures.push(...shipyardKeyboardHeartbeatInventoryErrors(
+      glass.shipyardKeyboardHeartbeatInventory,
+    ));
+  }
   if (!['develop', 'production'].includes(smoke.assuranceProfile)) {
     failures.push(`slice assurance profile ${JSON.stringify(smoke.assuranceProfile)} is unsupported`);
   }
@@ -172,10 +182,12 @@ function selftest() {
   const base = {
     smoke: { schema: 'cf-v2-slice-smoke-ci/v2', assuranceProfile: 'develop',
       status: 'pass', source: { commit: 'a'.repeat(40), branch: 'openai/test', state: 'committed' } },
-    glass: { schema: 'cf-v2-glassmatrix/v1', status: 'pass', scope: 'full-certifying', certifying: true,
+    glass: { schema: 'cf-v2-glassmatrix/v2', status: 'pass', scope: 'full-certifying', certifying: true,
       source: { commit: 'a'.repeat(40), branch: 'openai/test', state: 'committed' },
       predecessors: { slice: { schema: 'cf-v2-slice-smoke-ci/v2', assuranceProfile: 'develop' } },
       summary: { viewportCount: 12, findingCount: 0, instrumentFailureCount: 0 },
+      shipyardKeyboardHeartbeatInventory:
+        glassShipyardKeyboardHeartbeatSelftestInventory(),
       viewportInventory: Array.from({ length: 12 }, (_, index) => ({ label: String(index) })) },
   };
   if (validateEvidence(base.smoke, base.glass).length) throw new Error('PERSONA SELFTEST valid fixture was rejected');
@@ -201,6 +213,18 @@ function selftest() {
   if (!validateEvidence(legacySlice.smoke, legacySlice.glass)
     .some((row) => row.includes('slice smoke schema'))) {
     throw new Error('PERSONA SELFTEST legacy current-pointer Slice was accepted');
+  }
+  const legacyGlass = structuredClone(base);
+  legacyGlass.glass.schema = 'cf-v2-glassmatrix/v1';
+  if (!validateEvidence(legacyGlass.smoke, legacyGlass.glass)
+    .some((row) => row.includes('glass matrix schema'))) {
+    throw new Error('PERSONA SELFTEST legacy current-pointer Glass was accepted');
+  }
+  const missingShipyardHeartbeat = structuredClone(base);
+  delete missingShipyardHeartbeat.glass.shipyardKeyboardHeartbeatInventory;
+  if (!validateEvidence(missingShipyardHeartbeat.smoke, missingShipyardHeartbeat.glass)
+    .some((row) => row.includes('Shipyard keyboard heartbeat inventory'))) {
+    throw new Error('PERSONA SELFTEST incomplete Glass v2 heartbeat inventory was accepted');
   }
   const dirty = structuredClone(base); dirty.smoke.source.state = 'dirty-diagnostic'; dirty.glass.source.state = 'dirty-diagnostic';
   if (!validateEvidence(dirty.smoke, dirty.glass).some((row) => row.includes('snapshot digest'))) throw new Error('PERSONA SELFTEST unbound dirty evidence was accepted');

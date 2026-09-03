@@ -10,7 +10,32 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 native-Tab identity stop and fail-closed diagnostic-retention repair
+### Current PR #35 a922 forensic prevention repair
+
+The external read-only review of pushed head
+`a922c4b74502fc4093ca103d46a189396cad1e8f` is preserved by exact input digest and assessed in
+`PR35_A922_FORENSIC_PREVENTION_REPAIR_20260903.md`. The bounded local successor raises only the
+hosted orchestration envelope (**120-minute battery; 55-minute Compendium step**), extends the
+existing changed-input diagnostic to sequential `small-phone` plus `large-phone` rows inside the
+same five-minute step, makes F4 return an exact structured cycle receipt, and follows the current
+Shipyard disclosure's semantic identity through replacement and trusted Enter.
+
+Current PASS authority is `cf-v2-glassmatrix/v2`; historical v1 red diagnostics remain readable,
+but v1 PASS is refused. Deep shared and hosted verifiers independently replay exact descriptors,
+replacement/focus facts, 44px geometry, exact visibility and cumulative ancestor opacity rather
+than trusting summary booleans. Product Shipyard focus restoration already existed and was not
+reimplemented. The final 12-row certificate and mandatory hard-fail artifact upload are unchanged;
+there is no retry, job, shard, browser pin or gameplay change.
+
+Focused closure passes **73/73 tests**, all TypeScript programs and every relevant instrument
+selftest, including the Actions policy's **66** fail-closed controls. The consolidated
+browser-free `develop` profile passes **268/268 files, 2,785 passed / 1 skipped**; clean-source
+browser evidence remains pending and is recorded in the current roadmap when complete. Nothing in
+this local batch is pushed or hosted. A future attempt still requires exact new head/base/workflow
+authority, with a maximum of **122 total runner-minutes** (2 authorization + 120 battery) and no
+retry.
+
+### Historical predecessor PR #35 native-Tab identity stop and fail-closed diagnostic-retention repair
 
 PR #35 run `33708487067`, battery job `100502739510`, attempt 1, consumed the exact one-time
 `test-battery` authority for head `d529a9727c29fca3cd9f337a5bb4fc2577ceaec3` against base

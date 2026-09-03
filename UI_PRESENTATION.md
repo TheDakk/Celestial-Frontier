@@ -1,6 +1,30 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-09-03 UTC current native-Tab identity / focus-paint overlay (matches current local code):**
+> **2026-09-03 UTC current Shipyard keyboard-evidence overlay (matches current local code):** this
+> batch changes evidence only. `EngineeringPanelController` already captured disclosure open state
+> and `data-focus-key`, rebuilt the panel, then restored the corresponding current control; the
+> attached review's proposed product focus repair was therefore already present. No panel markup,
+> interaction, layout, paint, copy, graphics or accessibility behavior was reimplemented.
+>
+> Slice/Glass now follow the `mining` Summary's semantic identity rather than retaining its old DOM
+> object across a five-second F4 heartbeat. The forced `large-phone` diagnostic requires the
+> original Summary to disconnect, its replacement to be current/focused, a structured heartbeat
+> receipt with `refresh.shipyard=completed`, and trusted native Enter to toggle only that live
+> disclosure. Setup, initial/after heartbeat and receipt descriptors must match exactly. A control
+> is visibly actionable only with computed `visibility:visible`, a 44px rectangle and positive
+> cumulative opacity through every ancestor, including CSS filter opacity; collapse, direct,
+> ancestor and filter-based transparency mutations stay instrument-coherent and product-red.
+> The ambient heartbeat is quiesced and settled before the deliberate-cycle baseline is rebound;
+> a coherent missing or duplicate Summary remains a product finding rather than corrupt evidence.
+>
+> The same five-minute changed-input step runs `small-phone` then `large-phone` sequentially under
+> separate immutable IDs; it adds no job, retry or certificate and cannot replace full 12-row
+> Glass. Current PASS reports use `cf-v2-glassmatrix/v2`. Focused closure passes **73/73**, all
+> TypeScript programs and relevant selftests; the consolidated browser-free `develop` profile
+> passes **268/268 files, 2,785 passed / 1 skipped**. No player-visible change or hosted authority
+> follows.
+>
+> **2026-09-03 UTC historical predecessor native-Tab identity / focus-paint overlay (matches current local code):**
 > PR #35 run `33708487067` passed Layout **787/787**, Compendium **78/78** and exact-bound
 > Slice, then full Glass reached `large-phone` and stopped once/no-retry with one
 > `ARC4_CAPTURE_NATIVE_SURVEY_RETURN`; only `idleKeyboardFocus` was false. The later artifact
@@ -1170,6 +1194,11 @@
 > Mine/Skim have no semantic row and retain their explicit disable-to-BODY behavior. Historical
 > exact `20d8598…` evidence preserved the delayed-blur failure as terminal red; the repair does not force
 > focus back after user movement or claim fresh browser authority. The
+> controller also already captures the active disclosure/focus key before every passive `setView`
+> rerender and restores the matching live Summary after replacement. The 2026-09-03 forensic
+> successor does not add that product behavior; its Slice/Glass carrier now proves it through a
+> real F4 heartbeat and trusted Enter without retaining the disconnected Summary object.
+> The
 > existing Arc 1C paragraphs below are retained as historical pre-Engineering evidence. The
 > historical Engineering implementation and browser evidence were committed through `c4a02be`.
 > The protected-preview product/diagnostic correction described above is included in signed

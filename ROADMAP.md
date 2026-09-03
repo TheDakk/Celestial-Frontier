@@ -17,7 +17,127 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-03 UTC · RUN 15 NATIVE-TAB RED CLOSED LOCALLY · DIAGNOSTIC RETENTION HARDENED · HOSTED AUTHORITY ABSENT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-03 UTC · A922 FORENSIC RISKS CLOSED LOCALLY · BROWSER-FREE GREEN · CLEAN-SOURCE EVIDENCE PENDING · HOSTED AUTHORITY ABSENT ◀◀◀
+
+### Exact current boundary
+
+- **Owner/worktree:** OpenAI/Codex on macOS at
+  `/Users/nick/Projects/celestial-frontier-openai-mac`, branch **openai/mac**, tracking
+  **origin/openai/mac**. `develop` remains
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**.
+- Exact pushed parent is **a922c4b74502fc4093ca103d46a189396cad1e8f**. The current local
+  successor is intentionally uncommitted while its final verification/documentation batch is in
+  progress. Preserve every byte; do not rebase, amend, reset, overwrite or copy it to another
+  worktree.
+- Nick authorized implementing the attached a922 forensic recommendations locally. This does
+  **not** authorize a push, label, workflow dispatch, retry, PR mutation, merge, release, version
+  bump, publication or deployment. PR #35 remains Ready/open/unmerged; `actions-budget-approved`
+  is absent.
+- External input: `/Users/nick/Downloads/PR35_a922c4b_forensic_review.md`, 20,310 bytes, SHA-256
+  `30dda62c165748eae0fa9dd2c76e06739efde3f6de32a5c0fa406d06c1303264`. Current audit:
+  `audits/PR35_A922_FORENSIC_PREVENTION_REPAIR_20260903.md`.
+
+### Forensic disposition
+
+- Accepted: the 90-minute outer job and 40-minute Compendium step had unsafe observed margin; the
+  changed-input diagnostic reached only `small-phone`; and a generic Shipyard keyboard helper
+  retained one Summary object across an ordinary DOM-replacing F4 heartbeat.
+- Corrected: retained timing places full Glass start at approximately **74m09s**, not minute 77,
+  so 90 minutes was unsafe rather than mathematically impossible. Compendium's **39m14s** run left
+  46 seconds of margin, but the review did not prove one named commit caused the historical
+  increase. The new caps are orchestration margin, not rebaselines or product evidence.
+- Corrected: `EngineeringPanelController` already captured disclosure/focus identity and restored
+  the live replacement after rerender. No duplicate product focus repair was added. The stale
+  Slice/Glass observer is repaired instead.
+- Deliberately retained: mandatory artifact upload remains hard-fail. The existing deterministic
+  step-summary projection retains terminal diagnosis through service failure but cannot soften
+  Glass, replace named verification, advance Recovery or make the job green.
+
+### Bounded implementation
+
+- Workflow topology remains exactly one **2-minute authorization** job plus one battery job. The
+  battery cap is now **120 minutes** and Compendium's independent step cap **55 minutes**;
+  `tools/actions-budget-policy.js` seals both. No matrix, shard, fanout, soft-fail or retry exists.
+- The existing changed-input Glass step remains capped at **five minutes** and runs two targeted
+  rows sequentially on one unchanged committed source: `small-phone` Inventory first, then
+  `large-phone` Capture/Shipyard. Each owns a distinct immutable ID/report; any red stops the step.
+  It remains noncertifying and cannot replace the unconditional exact-Slice-bound 12-row Glass.
+- `main.ts` returns one exact `cf-v2-f4-heartbeat-cycle-receipt/v1` from every lawful heartbeat
+  exit, with current document token, completed/skipped/failed cycle, typed reason and exact
+  Shipyard/Compendium/Capture refresh disposition. Unexpected exceptions still reject.
+- Slice and Glass re-query the one current Shipyard `mining` Summary at event time. The forced
+  `large-phone` path requires old-node disconnection, current semantic replacement/focus, a
+  completed/null-reason receipt with `refresh.shipyard=completed`, trusted current-target Enter and
+  the expected disclosure toggle.
+- The forced Shipyard collector quiesces and settles the ambient timer before it establishes the
+  deliberate-cycle baseline, so an ordinary five-second heartbeat cannot contaminate lineage.
+  Coherent zero/duplicate setup targets retain exact null facts and remain product-red; malformed
+  or contradictory empty carriers remain instrument-red.
+- Current Glass PASS schema is `cf-v2-glassmatrix/v2`. Historical v1 non-PASS evidence remains
+  readable; v1 full or targeted PASS is refused by Glass, Recovery, diagnostics and persona.
+  Shared and hosted verifiers independently replay exact setup/initial/after/receipt descriptors,
+  document/connection/focus/replacement facts, 44px geometry, exact display/visibility,
+  target-plus-ancestor opacity/filter transparency and assessment-key maps. They do not trust
+  stored all-true booleans.
+- Negative controls cover stale/disconnected identity, skipped/forged heartbeat receipts, blank
+  names, malformed display, `visibility:collapse`, direct/ancestor opacity including
+  `filter:opacity(0)`, descriptor drift, product-red toggle and v1 PASS downgrade. A product-red
+  activation is recorded before waiting for its toggle so it cannot become an instrument timeout.
+
+### Verification at this checkpoint
+
+- Focused suite: **8/8 files, 73/73 tests**.
+- The first consolidated profile stopped only at its fail-closed current-producer assertion after
+  the intentional `main.ts` evidence change. Recomputed authority updated source identity alone:
+  Compendium measurement remains
+  `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`, current producer is
+  `ad74e459e00a12c516fc7fbfc17122cb53faa14ef89bdbe5d4e6776d658cb907`, and the fixed ruler,
+  numeric ceilings, 78 outcomes and historical samples are unchanged. Focused authority coverage
+  then passed **32/32**.
+- All three TypeScript programs pass.
+- Glass report, Arc 4 Recovery and persona selftests pass.
+- Actions policy passes **66/66** fail-closed controls; independent workflow/policy review is
+  **CLEAR**.
+- Consolidated browser-free `develop` profile passes **268/268 files, 2,785 passed / 1 skipped**,
+  all three TypeScript programs, art audit, override audit and specification audit. Independent
+  carrier review and producer-reference audit are **CLEAR**.
+- Clean-source browser rows remain pending. No hosted result is claimed.
+
+### Exact remaining local sequence
+
+1. Create one signed local implementation/docs checkpoint. On that unchanged clean commit, run
+   Compendium once with named verification, then targeted Glass `large-phone` plus the eight
+   suffix rows (`phone-landscape`, both tablets, `laptop-720p`, three desktop widths and
+   `desktop-8k`) sequentially/no-retry, stopping on first red.
+2. Record exact local evidence in this handoff/audit, create one signed evidence-doc descendant,
+   and run the final browser-free profile. Stop `caffeinate` when local closure is complete.
+3. Do **not** push or run Actions. A future hosted attempt needs a new exact workflow/head/base,
+   `actions-budget-approved`, maximum **122 total runner-minutes** (2 authorization + 120 battery),
+   no-retry authorization. Merge PR #35 only if that exact attempt is terminal green.
+
+### Paired Git/Claude handoff
+
+- **OpenAI/Codex:** remain in this worktree until the local signed/evidence sequence above is
+  complete. No GitHub write is authorized.
+- **PR #35:** base **develop**, source **openai/mac**.
+  - **Title:** `feat(v2): complete roadmap campaign and harden action-time CI evidence`
+  - **Description:** “Completes the established v2 roadmap campaign without recreating gameplay
+    systems; preserves all fifteen immutable stops; right-sizes the single battery/Compendium
+    orchestration envelope; exercises small/large changed-input diagnostics early; binds Capture
+    and Shipyard keyboard evidence to structured F4 receipts and current semantic controls; makes
+    Glass v2 PASS consumers independently replay deep evidence; retains mandatory hard-fail
+    artifact upload; adds no retry, browser pin, job, shard or gameplay redesign; and records the
+    complete local successor evidence.”
+- **Anthropic/Claude Code:** do not open/synchronize yet. These local bytes are not in `develop`.
+  After a future terminal-green exact PR #35 run and merge, Claude/Fable may start the requested
+  whole-plan polish review from a clean `anthropic/*` branch based on `origin/develop`.
+- **Release:** `develop`, `main` and the live site are unchanged. No release/deploy occurred.
+- **Actions:** mode **UNFROZEN**, repository public while verified, private fallback cap **3,000**,
+  and zero currently authorized hosted attempts.
+
+## PRESERVED PREDECESSOR HANDOFF — 2026-09-03 UTC · RUN 15 NATIVE-TAB RED CLOSED LOCALLY · DIAGNOSTIC RETENTION HARDENED · HOSTED AUTHORITY ABSENT
+
+The predecessor sequence below is historical and is superseded by the current handoff above.
 
 ### Exact current boundary
 

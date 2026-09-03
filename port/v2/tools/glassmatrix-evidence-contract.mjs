@@ -4,6 +4,11 @@
    process state. A downstream certificate can then re-prove the complete
    Glass outcome/control inventory instead of trusting summary booleans. */
 
+import { assessF4HeartbeatCycleReceipt } from './arc4-browser-contract.mjs';
+
+export const GLASS_MATRIX_REPORT_SCHEMA = 'cf-v2-glassmatrix/v2';
+export const GLASS_MATRIX_LEGACY_REPORT_SCHEMA = 'cf-v2-glassmatrix/v1';
+
 export const GLASS_MATRIX_VIEWPORTS = Object.freeze([
   { width: 320, height: 568, dpr: 2, mobile: true, label: 'small-phone' },
   { width: 360, height: 640, dpr: 2, mobile: true, label: 'compact-phone' },
@@ -131,6 +136,288 @@ const record = (value) => !!value && typeof value === 'object' && !Array.isArray
 const fullSha = (value) => typeof value === 'string' && /^[0-9a-f]{64}$/.test(value);
 const codeUnitCompare = (left, right) => left < right ? -1 : left > right ? 1 : 0;
 const CHROMIUM_PRODUCT = /^(?:Chrome|Edg)\/(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/;
+const exactKeys = (value, keys) => record(value)
+  && exactJson(Object.keys(value).sort(codeUnitCompare), [...keys].sort(codeUnitCompare));
+const nonEmpty = (value) => typeof value === 'string' && value.length > 0;
+const exactNonBlank = (value) => nonEmpty(value) && value === value.trim();
+
+const SHIPYARD_KEYBOARD_DESCRIPTOR_KEYS = Object.freeze([
+  'tag', 'id', 'focusKey', 'surveyClose', 'captureAction',
+  'engineeringSection', 'accessibleName',
+]);
+const SHIPYARD_KEYBOARD_INSTRUMENT_CHECK_KEYS = Object.freeze([
+  'heartbeatRequirement', 'setupCarrier', 'setupDocument', 'setupQueryWitness',
+  'setupDescriptor', 'receiptCarrier', 'trustedEnter', 'documentIdentity',
+  'currentQueryWitness', 'receiptDescriptors', 'heartbeatLifecycle',
+  'heartbeatCycleCarrier', 'shipyardRefreshCompleted',
+  'heartbeatReplacementScenario', 'heartbeatReceiptReplacementCoherence',
+  'heartbeatCurrentDescriptor',
+]);
+const SHIPYARD_KEYBOARD_PRODUCT_CHECK_KEYS = Object.freeze([
+  'setupReady', 'currentTarget', 'semanticIdentity', 'eventOrigin',
+  'activeTarget', 'replacementLineage', 'heartbeatFocusRestored',
+  'heartbeatSemanticIdentity',
+]);
+
+function shipyardKeyboardDescriptor(value) {
+  return exactKeys(value, SHIPYARD_KEYBOARD_DESCRIPTOR_KEYS)
+    && value.tag === 'SUMMARY'
+    && value.id === null
+    && value.focusKey === 'section:mining'
+    && value.surveyClose === false
+    && value.captureAction === null
+    && value.engineeringSection === 'mining'
+    && exactNonBlank(value.accessibleName);
+}
+
+function shipyardKeyboardDescriptorMatches(value, expected) {
+  return shipyardKeyboardDescriptor(value)
+    && SHIPYARD_KEYBOARD_DESCRIPTOR_KEYS
+      .every((key) => value[key] === expected[key]);
+}
+
+function rectAtLeast44(value) {
+  return Array.isArray(value) && value.length === 4
+    && value.every(Number.isFinite)
+    && value[2] - value[0] >= 44
+    && value[3] - value[1] >= 44;
+}
+
+export function shipyardKeyboardHeartbeatInventoryErrors(inventory) {
+  const errors = [];
+  const outcomes = inventory?.outcomes;
+  if (!exactKeys(inventory, [
+    'plannedViewports', 'complete', 'expectedCount', 'observedCount', 'omitted', 'outcomes',
+  ])
+    || !exactJson(inventory.plannedViewports, ['large-phone'])
+    || inventory.complete !== true || inventory.expectedCount !== 1
+    || inventory.observedCount !== 1 || !exactJson(inventory.omitted, [])
+    || !Array.isArray(outcomes) || outcomes.length !== 1) {
+    return ['Glass Shipyard keyboard heartbeat inventory is malformed or incomplete'];
+  }
+  const row = outcomes[0];
+  const setup = row?.setup;
+  const heartbeat = row?.heartbeat;
+  const receipt = row?.receipt;
+  const outcome = row?.outcome;
+  const documentToken = setup?.documentToken;
+  const documentHref = setup?.documentHref;
+  const setupDescriptor = SHIPYARD_KEYBOARD_DESCRIPTOR_KEYS
+    .reduce((value, key) => ({ ...value, [key]: setup?.[key] }), {});
+  const setupOk = exactKeys(setup, [
+    'schema', 'ok', 'selector', 'documentToken', 'documentHref', 'targetCount',
+    'instrumentReady', 'productReady', 'targetConnected', 'focused', 'visible',
+    ...SHIPYARD_KEYBOARD_DESCRIPTOR_KEYS, 'display', 'visibility', 'opacity',
+    'effectiveOpacity', 'rect',
+  ])
+    && setup.schema === 'cf-v2-glass-keyboard-activation-setup/v1'
+    && setup.ok === true
+    && setup.selector === '#shipyardpanel details[data-engineering-section="mining"] > summary'
+    && nonEmpty(documentToken) && nonEmpty(documentHref)
+    && setup.targetCount === 1 && setup.instrumentReady === true
+    && setup.productReady === true && setup.targetConnected === true
+    && setup.focused === true && setup.visible === true
+    && nonEmpty(setup.display) && setup.display !== 'none'
+    && setup.visibility === 'visible'
+    && Number.isFinite(setup.opacity) && setup.opacity > 0
+    && Number.isFinite(setup.effectiveOpacity) && setup.effectiveOpacity > 0
+    && rectAtLeast44(setup.rect) && shipyardKeyboardDescriptor(setupDescriptor);
+  const snapshotKeys = [
+    'documentToken', 'documentHref', 'heartbeatRunning', 'currentCount',
+    'currentConnected', 'currentFocused', 'current',
+    'originalTargetDisconnected', 'replacementAcquired',
+  ];
+  const initialOk = exactKeys(heartbeat?.initial, snapshotKeys)
+    && heartbeat.initial.documentToken === documentToken
+    && heartbeat.initial.documentHref === documentHref
+    && heartbeat.initial.heartbeatRunning === true
+    && heartbeat.initial.currentCount === 1
+    && heartbeat.initial.currentConnected === true
+    && heartbeat.initial.currentFocused === true
+    && heartbeat.initial.originalTargetDisconnected === false
+    && heartbeat.initial.replacementAcquired === false
+    && shipyardKeyboardDescriptorMatches(heartbeat.initial.current, setupDescriptor);
+  const afterOk = exactKeys(heartbeat?.after, snapshotKeys)
+    && heartbeat.after.documentToken === documentToken
+    && heartbeat.after.documentHref === documentHref
+    && heartbeat.after.heartbeatRunning === true
+    && heartbeat.after.currentCount === 1
+    && heartbeat.after.currentConnected === true
+    && heartbeat.after.currentFocused === true
+    && heartbeat.after.originalTargetDisconnected === true
+    && heartbeat.after.replacementAcquired === true
+    && shipyardKeyboardDescriptorMatches(heartbeat.after.current, setupDescriptor);
+  const cycle = assessF4HeartbeatCycleReceipt(heartbeat?.cycleReceipt, documentToken);
+  const heartbeatOk = exactKeys(heartbeat, [
+    'schema', 'required', 'stateFound', 'seamsAvailable', 'setupDocumentToken',
+    'setupDocumentHref', 'initial', 'quiescence', 'resume', 'cycleReceipt',
+    'after', 'cleanup', 'error',
+  ])
+    && heartbeat.schema === 'cf-v2-glass-keyboard-activation-heartbeat/v1'
+    && heartbeat.required === true && heartbeat.stateFound === true
+    && heartbeat.seamsAvailable === true
+    && heartbeat.setupDocumentToken === documentToken
+    && heartbeat.setupDocumentHref === documentHref
+    && initialOk
+    && exactKeys(heartbeat.quiescence, [
+      'schema', 'documentToken', 'wasRunning', 'stopped', 'cycleSettled',
+    ])
+    && heartbeat.quiescence.schema === 'cf-v2-f4-heartbeat-quiescence/v1'
+    && heartbeat.quiescence.documentToken === documentToken
+    && heartbeat.quiescence.wasRunning === true
+    && heartbeat.quiescence.stopped === true
+    && heartbeat.quiescence.cycleSettled === true
+    && exactKeys(heartbeat.resume, ['schema', 'documentToken', 'running'])
+    && heartbeat.resume.schema === 'cf-v2-f4-heartbeat-resume/v1'
+    && heartbeat.resume.documentToken === documentToken
+    && heartbeat.resume.running === true
+    && cycle.ok === true
+    && heartbeat.cycleReceipt.cycle === 'completed'
+    && heartbeat.cycleReceipt.reason === null
+    && heartbeat.cycleReceipt.refresh.shipyard === 'completed'
+    && afterOk
+    && exactKeys(heartbeat.cleanup, ['attempted', 'receipt', 'error'])
+    && heartbeat.cleanup.attempted === false
+    && heartbeat.cleanup.receipt === null && heartbeat.cleanup.error === null
+    && heartbeat.error === null;
+  const receiptOk = exactKeys(receipt, [
+    'schema', 'key', 'code', 'trusted', 'setupDocumentToken', 'setupDocumentHref',
+    'documentToken', 'documentHref', 'tag', 'focusKey', 'surveyClose',
+    'ignoredUntrustedEnterCount', 'currentCount', 'currentConnected', 'currentVisible',
+    'currentDisplay', 'currentVisibility', 'currentOpacity', 'currentEffectiveOpacity',
+    'currentRect',
+    'originalTargetDisconnected', 'replacementAcquired', 'eventTargetIsCurrent',
+    'activeIsCurrent', 'current', 'eventTarget', 'active',
+  ])
+    && receipt.schema === 'cf-v2-glass-keyboard-activation-receipt/v1'
+    && receipt.key === 'Enter' && receipt.code === 'Enter' && receipt.trusted === true
+    && receipt.setupDocumentToken === documentToken && receipt.documentToken === documentToken
+    && receipt.setupDocumentHref === documentHref && receipt.documentHref === documentHref
+    && receipt.tag === 'SUMMARY' && receipt.focusKey === 'section:mining'
+    && receipt.surveyClose === false
+    && Number.isInteger(receipt.ignoredUntrustedEnterCount)
+    && receipt.ignoredUntrustedEnterCount >= 0
+    && receipt.currentCount === 1 && receipt.currentConnected === true
+    && receipt.currentVisible === true && nonEmpty(receipt.currentDisplay)
+    && receipt.currentDisplay !== 'none'
+    && receipt.currentVisibility === 'visible'
+    && Number.isFinite(receipt.currentOpacity) && receipt.currentOpacity > 0
+    && Number.isFinite(receipt.currentEffectiveOpacity)
+    && receipt.currentEffectiveOpacity > 0
+    && rectAtLeast44(receipt.currentRect)
+    && receipt.originalTargetDisconnected === true
+    && receipt.replacementAcquired === true
+    && receipt.eventTargetIsCurrent === true && receipt.activeIsCurrent === true
+    && shipyardKeyboardDescriptorMatches(receipt.current, setupDescriptor)
+    && shipyardKeyboardDescriptorMatches(receipt.eventTarget, setupDescriptor)
+    && shipyardKeyboardDescriptorMatches(receipt.active, setupDescriptor);
+  const outcomeOk = exactKeys(outcome, [
+    'schema', 'ok', 'instrumentOk', 'productOk', 'instrumentChecks', 'productChecks',
+  ])
+    && outcome.schema === 'cf-v2-glass-keyboard-activation-assessment/v1'
+    && outcome.ok === true && outcome.instrumentOk === true && outcome.productOk === true
+    && exactKeys(outcome.instrumentChecks, SHIPYARD_KEYBOARD_INSTRUMENT_CHECK_KEYS)
+    && Object.values(outcome.instrumentChecks).every((value) => value === true)
+    && exactKeys(outcome.productChecks, SHIPYARD_KEYBOARD_PRODUCT_CHECK_KEYS)
+    && Object.values(outcome.productChecks).every((value) => value === true);
+  if (!exactKeys(row, [
+    'schema', 'viewport', 'sectionId', 'beforeOpen', 'afterOpen',
+    'setup', 'heartbeat', 'receipt', 'outcome',
+  ])
+    || row.schema !== 'cf-v2-glass-shipyard-keyboard-heartbeat-outcome/v1'
+    || row.viewport !== 'large-phone' || row.sectionId !== 'mining'
+    || row.beforeOpen !== true || row.afterOpen !== false
+    || !setupOk || !heartbeatOk || !receiptOk || !outcomeOk) {
+    errors.push('Glass Shipyard keyboard heartbeat outcome is malformed, contradictory, or not green');
+  }
+  return errors;
+}
+
+/* Shared data-only fixture for the Glass and Recovery selftests. Keeping one
+   canonical green carrier avoids two large fixtures silently disagreeing,
+   while each consumer still applies independent destructive mutations before
+   trusting its verifier. This helper is never used by a live collector. */
+export function glassShipyardKeyboardHeartbeatSelftestInventory() {
+  const documentToken = 'glass-shipyard-selftest-document';
+  const documentHref = 'http://127.0.0.1:4321/';
+  const descriptor = {
+    tag: 'SUMMARY', id: null, focusKey: 'section:mining', surveyClose: false,
+    captureAction: null, engineeringSection: 'mining', accessibleName: 'Mining',
+  };
+  const snapshot = ({ replaced }) => ({
+    documentToken, documentHref, heartbeatRunning: true,
+    currentCount: 1, currentConnected: true, currentFocused: true,
+    current: { ...descriptor },
+    originalTargetDisconnected: replaced,
+    replacementAcquired: replaced,
+  });
+  return {
+    plannedViewports: ['large-phone'], complete: true,
+    expectedCount: 1, observedCount: 1, omitted: [],
+    outcomes: [{
+      schema: 'cf-v2-glass-shipyard-keyboard-heartbeat-outcome/v1',
+      viewport: 'large-phone', sectionId: 'mining',
+      beforeOpen: true, afterOpen: false,
+      setup: {
+        schema: 'cf-v2-glass-keyboard-activation-setup/v1', ok: true,
+        selector: '#shipyardpanel details[data-engineering-section="mining"] > summary',
+        documentToken, documentHref, targetCount: 1,
+        instrumentReady: true, productReady: true,
+        targetConnected: true, focused: true, visible: true,
+        ...descriptor,
+        display: 'list-item', visibility: 'visible', opacity: 1, effectiveOpacity: 1,
+        rect: [20, 40, 220, 84],
+      },
+      heartbeat: {
+        schema: 'cf-v2-glass-keyboard-activation-heartbeat/v1', required: true,
+        stateFound: true, seamsAvailable: true,
+        setupDocumentToken: documentToken, setupDocumentHref: documentHref,
+        initial: snapshot({ replaced: false }),
+        quiescence: {
+          schema: 'cf-v2-f4-heartbeat-quiescence/v1', documentToken,
+          wasRunning: true, stopped: true, cycleSettled: true,
+        },
+        resume: {
+          schema: 'cf-v2-f4-heartbeat-resume/v1', documentToken, running: true,
+        },
+        cycleReceipt: {
+          schema: 'cf-v2-f4-heartbeat-cycle-receipt/v1', documentToken,
+          cycle: 'completed', reason: null,
+          refresh: {
+            shipyard: 'completed', compendium: 'panel-closed', capture: 'card-hidden',
+          },
+        },
+        after: snapshot({ replaced: true }),
+        cleanup: { attempted: false, receipt: null, error: null },
+        error: null,
+      },
+      receipt: {
+        schema: 'cf-v2-glass-keyboard-activation-receipt/v1',
+        key: 'Enter', code: 'Enter', trusted: true,
+        setupDocumentToken: documentToken, setupDocumentHref: documentHref,
+        documentToken, documentHref,
+        tag: descriptor.tag, focusKey: descriptor.focusKey,
+        surveyClose: descriptor.surveyClose, ignoredUntrustedEnterCount: 0,
+        currentCount: 1, currentConnected: true, currentVisible: true,
+        currentDisplay: 'list-item', currentVisibility: 'visible',
+        currentOpacity: 1, currentEffectiveOpacity: 1, currentRect: [20, 40, 220, 84],
+        originalTargetDisconnected: true, replacementAcquired: true,
+        eventTargetIsCurrent: true, activeIsCurrent: true,
+        current: { ...descriptor }, eventTarget: { ...descriptor }, active: { ...descriptor },
+      },
+      outcome: {
+        schema: 'cf-v2-glass-keyboard-activation-assessment/v1',
+        ok: true, instrumentOk: true, productOk: true,
+        instrumentChecks: Object.fromEntries(
+          SHIPYARD_KEYBOARD_INSTRUMENT_CHECK_KEYS.map((key) => [key, true]),
+        ),
+        productChecks: Object.fromEntries(
+          SHIPYARD_KEYBOARD_PRODUCT_CHECK_KEYS.map((key) => [key, true]),
+        ),
+      },
+    }],
+  };
+}
 
 export function glassViewportInventory() {
   return GLASS_MATRIX_VIEWPORTS.map((viewport) => ({
@@ -272,8 +559,12 @@ export function glassTerminalEvidenceErrors(report, {
 } = {}) {
   const errors = [];
   if (!record(report)) return ['report is not an object'];
-  if (report.schema !== 'cf-v2-glassmatrix/v1') {
+  if (![GLASS_MATRIX_LEGACY_REPORT_SCHEMA, GLASS_MATRIX_REPORT_SCHEMA]
+    .includes(report.schema)) {
     errors.push(`schema drifted: ${JSON.stringify(report.schema)}`);
+  }
+  if (report.status === 'pass' && report.schema !== GLASS_MATRIX_REPORT_SCHEMA) {
+    errors.push(`current Glass PASS schema is required: ${JSON.stringify(report.schema)}`);
   }
   if (report.terminal !== true || !['pass', 'fail', 'instrument-fail'].includes(report.status)) {
     errors.push(`run is not terminal: ${JSON.stringify({ terminal: report.terminal, status: report.status })}`);
@@ -333,6 +624,9 @@ export function glassTerminalEvidenceErrors(report, {
     errors.push(...glassBrowserAuthorityErrors(report));
     errors.push(...fullViewportEvidenceErrors(report));
     errors.push(...fullArc4OutcomeErrors(report));
+    errors.push(...shipyardKeyboardHeartbeatInventoryErrors(
+      report.shipyardKeyboardHeartbeatInventory,
+    ));
     errors.push(...fullNegativeControlErrors(report));
   }
   if (requirePass && !record(report.predecessors?.slice)) {

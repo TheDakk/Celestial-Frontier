@@ -4,7 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error The executable browser evidence contract intentionally has no declaration shim.
-import { ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA, ARC4_HEARTBEAT_RERENDER_EVIDENCE_SCHEMA, assessArc4CaptureGeometryEvidenceCoherence, assessArc4HeartbeatRerenderEvidence } from '../tools/arc4-browser-contract.mjs';
+import { ARC4_CONTROL_GEOMETRY_EVIDENCE_SCHEMA, ARC4_HEARTBEAT_RERENDER_EVIDENCE_SCHEMA, F4_HEARTBEAT_CYCLE_RECEIPT_SCHEMA, assessArc4CaptureGeometryEvidenceCoherence, assessArc4HeartbeatRerenderEvidence, assessF4HeartbeatCycleReceipt } from '../tools/arc4-browser-contract.mjs';
 import {
   assessArc4NativeTabFocusEvidence,
   buildArc4AtomicGeometryEvidenceExpression,
@@ -70,7 +70,40 @@ function exactHostedGeometry(): Record<string, unknown> {
   };
 }
 
-type HeartbeatMode = 'success' | 'quiesce-reject' | 'run-reject' | 'resolved-stop';
+type HeartbeatMode = 'success' | 'quiesce-reject' | 'run-reject' | 'resolved-stop'
+  | 'lawful-skip' | 'claimed-without-rerender' | 'skip-with-rerender'
+  | 'unknown-skip-reason' | 'wrong-receipt-token';
+
+function completedCycleReceipt(documentToken: string): Record<string, unknown> {
+  return {
+    schema: F4_HEARTBEAT_CYCLE_RECEIPT_SCHEMA,
+    documentToken,
+    cycle: 'completed',
+    reason: null,
+    refresh: {
+      shipyard: 'panel-closed',
+      compendium: 'panel-closed',
+      capture: 'completed',
+    },
+  };
+}
+
+function skippedCycleReceipt(
+  documentToken: string,
+  reason = 'persist-in-flight',
+): Record<string, unknown> {
+  return {
+    schema: F4_HEARTBEAT_CYCLE_RECEIPT_SCHEMA,
+    documentToken,
+    cycle: 'skipped',
+    reason,
+    refresh: {
+      shipyard: 'not-reached',
+      compendium: 'not-reached',
+      capture: 'not-reached',
+    },
+  };
+}
 
 async function executeHeartbeatExpression({
   initialRunning = true,
@@ -185,8 +218,16 @@ async function executeHeartbeatExpression({
     __smokeRunF4Heartbeat: async () => {
       calls.push('run');
       if (mode === 'run-reject') throw new Error('manual run rejected');
+      if (mode === 'lawful-skip') return skippedCycleReceipt(token);
+      if (mode === 'claimed-without-rerender') return completedCycleReceipt(token);
+      if (mode === 'unknown-skip-reason') {
+        return skippedCycleReceipt(token, 'unowned-future-reason');
+      }
+      if (mode === 'wrong-receipt-token') return completedCycleReceipt('replacement-document');
       installButtons(true);
+      if (mode === 'skip-with-rerender') return skippedCycleReceipt(token);
       if (mode === 'resolved-stop') running = false;
+      return completedCycleReceipt(token);
     },
   };
   Object.defineProperty(view, '__CF_SLICE__', {
@@ -213,6 +254,7 @@ async function executeNativeTabEvidence({
   wrongDocument = false,
   removeTarget = false,
   transparentOutline = false,
+  heartbeatMode = 'success',
 }: {
   replaceBeforeEvidence?: boolean;
   losePriorBeforeTab?: boolean;
@@ -221,6 +263,7 @@ async function executeNativeTabEvidence({
   wrongDocument?: boolean;
   removeTarget?: boolean;
   transparentOutline?: boolean;
+  heartbeatMode?: HeartbeatMode;
 } = {}): Promise<{
   setup: Record<string, any>;
   heartbeat: Record<string, any> | null;
@@ -314,6 +357,17 @@ async function executeNativeTabEvidence({
       };
     },
     __smokeRunF4Heartbeat: async () => {
+      if (heartbeatMode === 'run-reject') throw new Error('manual run rejected');
+      if (heartbeatMode === 'lawful-skip') return skippedCycleReceipt(documentToken);
+      if (heartbeatMode === 'claimed-without-rerender') {
+        return completedCycleReceipt(documentToken);
+      }
+      if (heartbeatMode === 'unknown-skip-reason') {
+        return skippedCycleReceipt(documentToken, 'unowned-future-reason');
+      }
+      if (heartbeatMode === 'wrong-receipt-token') {
+        return completedCycleReceipt('replacement-document');
+      }
       installButtons();
       if (!losePriorBeforeTab) {
         const replacementPrior = document.querySelector(
@@ -321,6 +375,8 @@ async function executeNativeTabEvidence({
         ) as HTMLElement;
         replacementPrior.focus({ preventScroll: true });
       }
+      if (heartbeatMode === 'skip-with-rerender') return skippedCycleReceipt(documentToken);
+      return completedCycleReceipt(documentToken);
     },
   };
   Object.defineProperty(view, '__CF_SLICE__', {
@@ -377,7 +433,12 @@ async function executeNativeTabEvidence({
       setup,
       heartbeat,
       focus,
-      outcome: assessArc4NativeTabFocusEvidence({ setup, focus, heartbeat }),
+      outcome: assessArc4NativeTabFocusEvidence({
+        setup,
+        focus,
+        heartbeat,
+        heartbeatRequired: replaceBeforeEvidence,
+      }),
       oldExactObjectWouldPass,
     };
   } finally {
@@ -444,11 +505,17 @@ describe('Arc 4 Glass geometry evidence chronology', () => {
     });
     expect(replaced.oldExactObjectWouldPass).toBe(false);
     expect(replaced.heartbeat).toMatchObject({
-      schema: 'cf-v2-glass-arc4-native-tab-heartbeat/v1',
+      schema: 'cf-v2-glass-arc4-native-tab-heartbeat/v2',
       required: true,
       stateFound: true,
       seamsAvailable: true,
-      runCompleted: true,
+      cycleReceipt: {
+        schema: 'cf-v2-f4-heartbeat-cycle-receipt/v1',
+        documentToken: 'native-tab-document',
+        cycle: 'completed',
+        reason: null,
+        refresh: { capture: 'completed' },
+      },
       error: null,
       after: {
         heartbeatRunning: true,
@@ -478,13 +545,131 @@ describe('Arc 4 Glass geometry evidence chronology', () => {
     });
   });
 
+  it('distinguishes a lawful skipped heartbeat from a completed Capture rerender', async () => {
+    const skipped = await executeNativeTabEvidence({
+      replaceBeforeEvidence: true,
+      heartbeatMode: 'lawful-skip',
+    });
+    expect(skipped.heartbeat).toMatchObject({
+      cycleReceipt: {
+        schema: 'cf-v2-f4-heartbeat-cycle-receipt/v1',
+        documentToken: 'native-tab-document',
+        cycle: 'skipped',
+        reason: 'persist-in-flight',
+        refresh: {
+          shipyard: 'not-reached',
+          compendium: 'not-reached',
+          capture: 'not-reached',
+        },
+      },
+      after: {
+        originalTargetDisconnected: false,
+        originalPriorDisconnected: false,
+        replacementAcquired: false,
+        priorReplacementAcquired: false,
+      },
+    });
+    expect(skipped.outcome.instrumentOk).toBe(false);
+    expect(skipped.outcome.productOk).toBe(true);
+    expect(Object.entries(skipped.outcome.instrumentChecks)
+      .filter(([, passed]) => passed !== true)
+      .map(([name]) => name)).toEqual(['captureRerenderCompleted']);
+
+    expect(skipped.heartbeat).not.toBeNull();
+    const partialHeartbeat = structuredClone(skipped.heartbeat!);
+    partialHeartbeat.after.originalTargetDisconnected = true;
+    const partialOutcome = assessArc4NativeTabFocusEvidence({
+      setup: skipped.setup,
+      focus: skipped.focus,
+      heartbeat: partialHeartbeat,
+      heartbeatRequired: true,
+    });
+    expect(partialOutcome.instrumentOk).toBe(false);
+    expect(Object.entries(partialOutcome.instrumentChecks)
+      .filter(([, passed]) => passed !== true)
+      .map(([name]) => name)).toEqual([
+      'captureRerenderCompleted',
+      'receiptReplacementCoherence',
+    ]);
+  });
+
+  it('rejects claimed completion without replacement and skipped/replaced contradictions', async () => {
+    const claimed = await executeNativeTabEvidence({
+      replaceBeforeEvidence: true,
+      heartbeatMode: 'claimed-without-rerender',
+    });
+    expect(claimed.outcome.instrumentOk).toBe(false);
+    expect(Object.entries(claimed.outcome.instrumentChecks)
+      .filter(([, passed]) => passed !== true)
+      .map(([name]) => name)).toEqual([
+      'replacementObserved',
+      'receiptReplacementCoherence',
+    ]);
+
+    const contradictory = await executeNativeTabEvidence({
+      replaceBeforeEvidence: true,
+      heartbeatMode: 'skip-with-rerender',
+    });
+    expect(contradictory.outcome.instrumentOk).toBe(false);
+    expect(Object.entries(contradictory.outcome.instrumentChecks)
+      .filter(([, passed]) => passed !== true)
+      .map(([name]) => name)).toEqual([
+      'captureRerenderCompleted',
+      'receiptReplacementCoherence',
+    ]);
+  });
+
+  it('rejects malformed and cross-document heartbeat receipts before native Tab evidence', async () => {
+    const optional = await executeNativeTabEvidence();
+    const missingRequired = assessArc4NativeTabFocusEvidence({
+      setup: optional.setup,
+      focus: optional.focus,
+      heartbeat: null,
+      heartbeatRequired: true,
+    });
+    expect(missingRequired.instrumentOk).toBe(false);
+    expect(missingRequired.instrumentChecks.heartbeatRequirement).toBe(false);
+
+    const unknown = await executeNativeTabEvidence({
+      replaceBeforeEvidence: true,
+      heartbeatMode: 'unknown-skip-reason',
+    });
+    expect(unknown.outcome.instrumentOk).toBe(false);
+    expect(unknown.outcome.instrumentChecks.cycleReceiptCarrier).toBe(false);
+    expect(unknown.outcome.instrumentChecks.captureRerenderCompleted).toBe(false);
+
+    const wrongToken = await executeNativeTabEvidence({
+      replaceBeforeEvidence: true,
+      heartbeatMode: 'wrong-receipt-token',
+    });
+    expect(wrongToken.outcome.instrumentOk).toBe(false);
+    expect(wrongToken.outcome.instrumentChecks.cycleReceiptCarrier).toBe(false);
+    expect(wrongToken.heartbeat?.cycleReceipt.documentToken).toBe('replacement-document');
+
+    const healthy = await executeNativeTabEvidence({ replaceBeforeEvidence: true });
+    const collectorError = structuredClone(healthy.heartbeat!);
+    collectorError.error = 'collector failed after otherwise green evidence';
+    const errored = assessArc4NativeTabFocusEvidence({
+      setup: healthy.setup,
+      focus: healthy.focus,
+      heartbeat: collectorError,
+      heartbeatRequired: true,
+    });
+    expect(errored.instrumentOk).toBe(false);
+    expect(errored.instrumentChecks.heartbeatLifecycle).toBe(false);
+  });
+
   it('keeps a trusted Tab after heartbeat focus restoration is lost and reports product red', async () => {
     const lostBeforeTab = await executeNativeTabEvidence({
       replaceBeforeEvidence: true,
       losePriorBeforeTab: true,
     });
     expect(lostBeforeTab.heartbeat).toMatchObject({
-      runCompleted: true,
+      cycleReceipt: {
+        cycle: 'completed',
+        reason: null,
+        refresh: { capture: 'completed' },
+      },
       error: null,
       after: {
         originalTargetDisconnected: true,
@@ -579,6 +764,59 @@ describe('Arc 4 Glass geometry evidence chronology', () => {
     );
   });
 
+  it('validates the exact heartbeat cycle receipt schema and every owned disposition', () => {
+    const token = 'glass-heartbeat-document';
+    expect(assessF4HeartbeatCycleReceipt(completedCycleReceipt(token), token).ok).toBe(true);
+    expect(assessF4HeartbeatCycleReceipt({
+      ...completedCycleReceipt(token),
+      refresh: {
+        shipyard: 'completed',
+        compendium: 'panel-closed',
+        capture: 'card-hidden',
+      },
+    }, token).ok).toBe(true);
+    for (const reason of [
+      'smoke-quiesced',
+      'runtime-unavailable',
+      'persistence-held',
+      'page-hidden',
+      'persist-in-flight',
+      'import-in-flight',
+      'replacement-in-flight',
+      'runtime-heartbeat-in-flight',
+      'lease-held-by-other',
+      'lease-lost',
+      'revision-refused',
+      'bootstrap-refused',
+    ]) {
+      expect(assessF4HeartbeatCycleReceipt(skippedCycleReceipt(token, reason), token).ok)
+        .toBe(true);
+    }
+    expect(assessF4HeartbeatCycleReceipt({
+      ...skippedCycleReceipt(token, 'storage-error'),
+      cycle: 'failed',
+    }, token).ok).toBe(true);
+
+    const unknownReason = skippedCycleReceipt(token, 'unowned-future-reason');
+    expect(assessF4HeartbeatCycleReceipt(unknownReason, token).ok).toBe(false);
+    expect(assessF4HeartbeatCycleReceipt({
+      ...completedCycleReceipt(token),
+      extra: true,
+    }, token).ok).toBe(false);
+    expect(assessF4HeartbeatCycleReceipt({
+      ...skippedCycleReceipt(token),
+      refresh: {
+        shipyard: 'not-reached',
+        compendium: 'not-reached',
+        capture: 'completed',
+      },
+    }, token).ok).toBe(false);
+    expect(assessF4HeartbeatCycleReceipt(
+      completedCycleReceipt('replacement-document'),
+      token,
+    ).ok).toBe(false);
+  });
+
   it('refuses unhealthy heartbeat lifecycles and proves cleanup cannot hide them', () => {
     const token = 'glass-heartbeat-document';
     const baseline = {
@@ -602,7 +840,7 @@ describe('Arc 4 Glass geometry evidence chronology', () => {
         documentToken: token,
         running: true,
       },
-      runCompleted: true,
+      cycleReceipt: completedCycleReceipt(token),
       post: { documentToken: token, heartbeatRunning: true },
       oldDisconnected: true,
       replacementAcquired: true,
@@ -616,7 +854,7 @@ describe('Arc 4 Glass geometry evidence chronology', () => {
       quiesceAttempted: false,
       quiescence: null,
       resume: null,
-      runCompleted: false,
+      cycleReceipt: null,
       post: { ...baseline.post, heartbeatRunning: false },
       error: 'F4 heartbeat was not running before forced rerender',
     }).ok).toBe(false);
@@ -627,19 +865,18 @@ describe('Arc 4 Glass geometry evidence chronology', () => {
       (value: typeof baseline) => { value.pre.documentToken = 'replacement-document'; },
       (value: typeof baseline) => { value.resume.documentToken = 'replacement-document'; },
       (value: typeof baseline) => { value.post.documentToken = 'replacement-document'; },
+      (value: typeof baseline) => { value.cycleReceipt.documentToken = 'replacement-document'; },
     ];
     for (const mutate of tokenMutations) {
       const mutant = structuredClone(baseline);
       mutate(mutant);
       const outcome = assessArc4HeartbeatRerenderEvidence(mutant);
       expect(outcome.ok).toBe(false);
-      expect(Object.entries(outcome.checks)
-        .filter(([, passed]) => passed !== true)
-        .map(([name]) => name)).toEqual(['documentIdentity']);
+      expect(outcome.checks.documentIdentity).toBe(false);
     }
     expect(assessArc4HeartbeatRerenderEvidence({
       ...baseline,
-      runCompleted: false,
+      cycleReceipt: null,
       error: 'manual heartbeat rejected',
       cleanup: { attempted: false, receipt: null, error: null },
     }).ok).toBe(false);
@@ -669,6 +906,8 @@ describe('Arc 4 Glass geometry evidence chronology', () => {
       .toBeGreaterThan(expression.indexOf('initialPersistence?.heartbeatRunning!==true'));
     expect(expression).toContain("}catch(reason){error=String(reason?.stack||reason)}finally{");
     expect(expression).toContain("if(current?.heartbeatRunning!==true){cleanup.attempted=true;");
+    expect(expression).toContain('cycleReceipt=await api.__smokeRunF4Heartbeat()');
+    expect(expression).not.toContain('runCompleted');
     expect(expression).toContain("required:false,productBlocked:'missing-product-target',productOk:false");
   });
 
@@ -690,6 +929,12 @@ describe('Arc 4 Glass geometry evidence chronology', () => {
     expect(success.calls.indexOf('resume')).toBeLessThan(success.calls.indexOf('run'));
     expect(success.evidence.rerender).toMatchObject({
       required: true,
+      cycleReceipt: {
+        schema: 'cf-v2-f4-heartbeat-cycle-receipt/v1',
+        cycle: 'completed',
+        reason: null,
+        refresh: { capture: 'completed' },
+      },
       preTargetReady: true,
       postTargetReady: true,
       scrollPreserved: true,
@@ -698,6 +943,53 @@ describe('Arc 4 Glass geometry evidence chronology', () => {
       cleanup: { attempted: false, receipt: null, error: null },
     });
     expect(assessArc4HeartbeatRerenderEvidence(success.evidence.rerender).ok).toBe(true);
+
+    const lawfulSkip = await executeHeartbeatExpression({ mode: 'lawful-skip' });
+    const lawfulSkipAssessment = assessArc4HeartbeatRerenderEvidence(
+      lawfulSkip.evidence.rerender,
+    );
+    expect(lawfulSkip.evidence.rerender.cycleReceipt).toEqual(
+      skippedCycleReceipt('glass-live-document-token'),
+    );
+    expect(lawfulSkipAssessment.ok).toBe(false);
+    expect(Object.entries(lawfulSkipAssessment.checks)
+      .filter(([, passed]) => passed !== true)
+      .map(([name]) => name)).toEqual(['captureRerenderCompleted']);
+
+    const claimedWithoutRerender = await executeHeartbeatExpression({
+      mode: 'claimed-without-rerender',
+    });
+    expect(Object.entries(assessArc4HeartbeatRerenderEvidence(
+      claimedWithoutRerender.evidence.rerender,
+    ).checks).filter(([, passed]) => passed !== true).map(([name]) => name)).toEqual([
+      'replacementObserved',
+      'receiptReplacementCoherence',
+    ]);
+
+    const skippedWithRerender = await executeHeartbeatExpression({ mode: 'skip-with-rerender' });
+    expect(Object.entries(assessArc4HeartbeatRerenderEvidence(
+      skippedWithRerender.evidence.rerender,
+    ).checks).filter(([, passed]) => passed !== true).map(([name]) => name)).toEqual([
+      'captureRerenderCompleted',
+      'receiptReplacementCoherence',
+    ]);
+
+    const partialReplacement = structuredClone(lawfulSkip.evidence.rerender);
+    partialReplacement.oldDisconnected = true;
+    expect(Object.entries(assessArc4HeartbeatRerenderEvidence(
+      partialReplacement,
+    ).checks).filter(([, passed]) => passed !== true).map(([name]) => name)).toEqual([
+      'captureRerenderCompleted',
+      'receiptReplacementCoherence',
+    ]);
+
+    const unknownSkip = await executeHeartbeatExpression({ mode: 'unknown-skip-reason' });
+    expect(Object.entries(assessArc4HeartbeatRerenderEvidence(
+      unknownSkip.evidence.rerender,
+    ).checks).filter(([, passed]) => passed !== true).map(([name]) => name)).toEqual([
+      'cycleReceiptCarrier',
+      'captureRerenderCompleted',
+    ]);
 
     const initiallyStopped = await executeHeartbeatExpression({ initialRunning: false });
     expect(initiallyStopped.running).toBe(false);

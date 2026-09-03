@@ -103,6 +103,14 @@ export interface SliceContractAssessment {
   readonly reasons: readonly string[];
 }
 
+export function buildEngineeringDisclosureSetupExpression(sectionId: string): string;
+export function buildEngineeringDisclosureOutcomeExpression(sectionId: string): string;
+export function assessEngineeringDisclosureActivation(
+  evidence: unknown,
+): SliceContractAssessment & Readonly<{
+  readonly checks: Readonly<Record<string, boolean>>;
+}>;
+
 export interface WritableSettingPersistenceSnapshot {
   readonly documentToken: string | null;
   readonly revision: number | null;

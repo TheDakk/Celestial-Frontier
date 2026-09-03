@@ -139,6 +139,29 @@ export function stopAfterRecordedProductOutcome(
   expected: string,
 ): void;
 
+export interface GlassKeyboardActivationAssessment {
+  readonly schema: 'cf-v2-glass-keyboard-activation-assessment/v1';
+  readonly ok: boolean;
+  readonly instrumentOk: boolean;
+  readonly productOk: boolean;
+  readonly instrumentChecks: Readonly<Record<string, boolean>>;
+  readonly productChecks: Readonly<Record<string, boolean>>;
+}
+
+export function buildGlassKeyboardActivationSetupExpression(selector: string): string;
+
+export function buildGlassKeyboardActivationHeartbeatExpression(): string;
+
+export function buildGlassKeyboardActivationReceiptExpression(): string;
+
+export function assessGlassKeyboardActivationEvidence(input?: {
+  readonly setup?: unknown;
+  readonly receipt?: unknown;
+  readonly heartbeat?: unknown;
+  readonly activationAttempted?: boolean;
+  readonly heartbeatRequired?: boolean;
+}): GlassKeyboardActivationAssessment;
+
 export function buildArc4AtomicGeometryEvidenceExpression(options?: {
   verb?: 'tame' | 'scavenge' | 'sample' | null;
   close?: boolean;
@@ -146,7 +169,7 @@ export function buildArc4AtomicGeometryEvidenceExpression(options?: {
 }): string;
 
 export interface Arc4NativeTabFocusAssessment {
-  readonly schema: 'cf-v2-glass-arc4-native-tab-assessment/v1';
+  readonly schema: 'cf-v2-glass-arc4-native-tab-assessment/v2';
   readonly ok: boolean;
   readonly instrumentOk: boolean;
   readonly productOk: boolean;
@@ -169,6 +192,7 @@ export function assessArc4NativeTabFocusEvidence(input?: {
   readonly setup?: unknown;
   readonly focus?: unknown;
   readonly heartbeat?: unknown;
+  readonly heartbeatRequired?: boolean;
 }): Arc4NativeTabFocusAssessment;
 
 export function runInventoryOffscreenProbe<TProbe = unknown>(owners: {

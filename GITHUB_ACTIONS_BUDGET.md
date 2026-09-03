@@ -2,7 +2,39 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current local state (2026-09-03 UTC): fifteenth PR #35 attempt consumed at Glass; native-Tab
+**Current local state (2026-09-03 UTC): a922 forensic prevention repair is local; no hosted
+attempt is authorized.** The external review of pushed head
+`a922c4b74502fc4093ca103d46a189396cad1e8f` correctly found inadequate margin in the hosted
+envelope, a late first execution of the `large-phone` failure class and one remaining stale
+Shipyard disclosure identity in Glass/Slice evidence. It overstated full Glass's start as minute
+77 (retained timing is approximately **74m09s**) and did not establish that one named commit
+caused Compendium's duration increase. Product Shipyard disclosure/focus restoration already
+existed; it was not reimplemented.
+
+The local successor keeps exactly one two-minute authorization job and one battery job, raising
+only the battery cap to **120 minutes** and Compendium's step cap to **55 minutes**. These are
+workflow orchestration ceilings, not product timeouts, browser pins, Compendium ruler changes or
+automatic permission to run. The existing five-minute changed-input step now executes two
+noncertifying rows sequentially: `small-phone` Inventory, then `large-phone` Capture/Shipyard
+forced-heartbeat keyboard evidence. Each has its own immutable ID/report and the second never runs
+after a red first row. There is no added job, shard, fanout or retry.
+
+Every lawful F4 heartbeat exit now returns an exact
+`cf-v2-f4-heartbeat-cycle-receipt/v1`. The `large-phone` Shipyard row requires a completed cycle,
+null reason, `refresh.shipyard=completed`, original disconnection/current replacement, restored
+semantic focus and trusted Enter on the live `mining` Summary. Current Glass PASS authority is
+`cf-v2-glassmatrix/v2`; v1 remains readable only for historical red diagnostics. The shared and
+hosted verifiers independently replay full descriptors, exact visibility, cumulative ancestor
+opacity, 44px geometry and assessment maps. Mandatory artifact upload remains hard-fail.
+
+Focused closure passes **73/73 tests**, all TypeScript programs, the Glass/Recovery/persona
+selftests and **66** fail-closed Actions policy controls. The consolidated browser-free `develop`
+profile passes **268/268 files, 2,785 passed / 1 skipped**; clean-source browser evidence remains
+pending and is recorded in the live roadmap when complete. Nothing is pushed, labelled,
+dispatched or merged. Any future exact attempt needs a new head/base/workflow authorization for at
+most **122 total runner-minutes** (2 authorization + 120 battery), no retry.
+
+**Preserved predecessor local state (2026-09-03 UTC): fifteenth PR #35 attempt consumed at Glass; native-Tab
 identity and diagnostic retention are closed locally; no hosted attempt is authorized.** Run
 `33708487067`, job `100502739510`, attempt 1, tested exact head
 `d529a9727c29fca3cd9f337a5bb4fc2577ceaec3` against base
@@ -941,9 +973,10 @@ ordinary workspace pass while the tracked snapshot fails, that tracking the depe
 snapshot green, and that run-generated artifacts remain allowed. This rehearsal is mandatory
 preauthorization evidence, not a hosted green or browser certificate.
 
-`test-battery` currently has a two-minute authorization runner plus one battery capped at 90 minutes.
+`test-battery` currently has a two-minute authorization runner plus one battery capped at 120 minutes
+(**122 total configured runner-minutes** for an exactly authorized attempt, once/no-retry).
 Develop skips quarantined SceneMemory live native-heap work and retains Compendium's independent
-40-minute cap; production retains the strict live selftest plus SceneMemory's independent
+55-minute cap; production retains the strict live selftest plus SceneMemory's independent
 10-minute certificate cap after explicit activation.
 The old parallel form
 could start seven runners with 175 combined
