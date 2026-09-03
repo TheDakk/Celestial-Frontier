@@ -43,7 +43,10 @@
 > measurement `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`; fixed ruler,
 > ceilings, 78 outcomes and historical samples did not change. This architecture-only batch
 > changes no gameplay, saves, creatures, plants, biomes, Guardians, loot, graphics, audio, release
-> identity or HUMAN criterion and grants no GitHub action.
+> identity or HUMAN criterion and grants no GitHub action. Exact clean implementation checkpoint
+> `f348b249…` passed Compendium **78/78** with named verification and nine immutable targeted Glass
+> rows with zero findings/instrument failures under Edge `152.0.4191.53` / CDP `1.3`; the rows are
+> local noncertifying diagnostics, not a full Slice-bound Glass certificate.
 
 > **2026-09-03 UTC historical predecessor Glass native-Tab identity / diagnostic-retention architecture overlay
 > (matches the signed local descendant containing this reference):** hosted PR #35 run

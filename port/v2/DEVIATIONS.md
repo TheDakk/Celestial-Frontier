@@ -1,7 +1,7 @@
 # DEVIATIONS.md — the port's improvement ledger
 
 > **D-PR35-A922-FORENSIC-PREVENTION — 2026-09-03 UTC current deviation overlay (matches current
-> local code; final clean-source certificate pending):** workflow orchestration now retains its one
+> local code; local diagnostics green, hosted certificate absent):** workflow orchestration now retains its one
 > authorization job plus one battery job under a 120-minute battery / 55-minute Compendium envelope,
 > and the five-minute changed-input Glass diagnostic exercises `small-phone` then `large-phone`
 > sequentially with distinct immutable evidence. Structured F4 receipts and current semantic
@@ -23,7 +23,10 @@
 > identity refresh is not a rebaseline. The former `c216cdc9…d8cae` producer remains historical for
 > its exact bytes. Focused closure is **73/73**, authority coverage is **32/32**, and the complete
 > browser-free `develop` profile passes **268/268 files, 2,785 passed / 1 skipped** with all three
-> TypeScript programs and static owners green.
+> TypeScript programs and static owners green. Clean implementation checkpoint `f348b249…` passed
+> Compendium **78/78** with named verification and nine requested immutable targeted Glass rows
+> with zero findings/instrument failures. These local rows are noncertifying and leave the full
+> Slice-bound 12-row Glass/hosted boundary unchanged; exact evidence is in the current audit.
 
 > **D-PR35-CAPTURE-FOCUS-ATOMIC-GEOMETRY — 2026-09-03 UTC historical predecessor deviation overlay (matches exact
 > signed local successor; local certificate green):** PR #35 run `33694235427`, attempt 1,

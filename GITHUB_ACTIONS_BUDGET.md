@@ -29,9 +29,12 @@ opacity, 44px geometry and assessment maps. Mandatory artifact upload remains ha
 
 Focused closure passes **73/73 tests**, all TypeScript programs, the Glass/Recovery/persona
 selftests and **66** fail-closed Actions policy controls. The consolidated browser-free `develop`
-profile passes **268/268 files, 2,785 passed / 1 skipped**; clean-source browser evidence remains
-pending and is recorded in the live roadmap when complete. Nothing is pushed, labelled,
-dispatched or merged. Any future exact attempt needs a new head/base/workflow authorization for at
+profile passes **268/268 files, 2,785 passed / 1 skipped**. Clean-source browser evidence is green
+locally on implementation checkpoint `f348b249…`: Compendium passed **78/78** with named
+verification and nine immutable targeted Glass rows passed with zero findings/instrument failures.
+Those rows are explicitly noncertifying and do not replace the exact-Slice-bound 12-row matrix.
+Nothing is pushed, labelled, dispatched or merged. Any future exact attempt needs a new
+head/base/workflow authorization for at
 most **122 total runner-minutes** (2 authorization + 120 battery), no retry.
 
 **Preserved predecessor local state (2026-09-03 UTC): fifteenth PR #35 attempt consumed at Glass; native-Tab

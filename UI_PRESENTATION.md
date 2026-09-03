@@ -21,8 +21,10 @@
 > separate immutable IDs; it adds no job, retry or certificate and cannot replace full 12-row
 > Glass. Current PASS reports use `cf-v2-glassmatrix/v2`. Focused closure passes **73/73**, all
 > TypeScript programs and relevant selftests; the consolidated browser-free `develop` profile
-> passes **268/268 files, 2,785 passed / 1 skipped**. No player-visible change or hosted authority
-> follows.
+> passes **268/268 files, 2,785 passed / 1 skipped**. Clean implementation checkpoint `f348b249…`
+> also passed Compendium **78/78** with named verification and nine immutable targeted Glass rows
+> with zero findings/instrument failures. These are local noncertifying diagnostics; no
+> player-visible change or hosted authority follows.
 >
 > **2026-09-03 UTC historical predecessor native-Tab identity / focus-paint overlay (matches current local code):**
 > PR #35 run `33708487067` passed Layout **787/787**, Compendium **78/78** and exact-bound
