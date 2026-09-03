@@ -139,6 +139,12 @@ export function stopAfterRecordedProductOutcome(
   expected: string,
 ): void;
 
+export function buildArc4AtomicGeometryEvidenceExpression(options?: {
+  verb?: 'tame' | 'scavenge' | 'sample' | null;
+  close?: boolean;
+  forceHeartbeatRerender?: boolean;
+}): string;
+
 export function runInventoryOffscreenProbe<TProbe = unknown>(owners: {
   setup: () => InventoryActionOffscreenSetup | Promise<InventoryActionOffscreenSetup>;
   activate: () => TProbe | Promise<TProbe>;

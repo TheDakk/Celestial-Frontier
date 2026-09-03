@@ -10,7 +10,61 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 systemic failure-surface audit and early Glass preflight
+### Current PR #35 Capture-focus / Glass-chronology stop and bounded repair
+
+PR #35 run `33694235427`, attempt 1, consumed the exact one-time `test-battery` authority for head
+`6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Synthetic merge
+`94ec8e41606f9c0e1b16865cdfeff4fb76579b3f` and the exact head share tree
+`54ab518c2f63c924e2cedfea027b949989f2a79e`. The new early hosted Glass preflight passed its
+small-phone row on that source/browser with zero findings or instrument failures, **95/104**
+controls and nine lawful targeted omissions. Layout **787/787**, Compendium **78/78** plus named
+verification and exact-bound Slice then passed.
+
+Full Glass consumed Slice `gha-33694235427-1-slice` and stopped on the first small-phone row after
+**35,412 ms**, retaining one `ARC4_CAPTURE_GEOMETRY_FOCUS` finding, zero reported instrument
+failures, **67/104** controls, 37 causal blocks and no retry. Its Sample evidence combined a
+button rectangle centred at y `173.171875` and scroll top `2538` with later hit-test points at y
+`504.171875` on `NAV`. The ordinary five-second Capture heartbeat had replaced the DOM and bare
+semantic-focus restoration moved the scroll to `2207` between those observations. That carrier
+crosses layout epochs; the stop is therefore **instrument**, despite the old product label. The
+earlier PASS proves the race was timing-dependent, not that the old multi-command collector was
+sound. The cumulative fourteen-stop classification is **10 instrument/infrastructure, 3
+product/runtime and 1 mixed**.
+
+The bounded product repair makes only passive Capture authority rerenders restore semantic focus
+with `preventScroll`; explicit action settlement retains its reveal behavior. The Glass repair
+forces the heartbeat replacement deterministically, reacquires the live node, captures geometry,
+scroll, hit-test and focus atomically, and rejects a cross-epoch carrier as instrument evidence
+before product assessment. It adds no job, retry, timeout, browser pin or control. The complete
+browser-free `develop` profile passes **265/265 files, 2,749 passed / 1 skipped**, all three
+TypeScript programs, the **34-source** art audit with zero findings, **1,014/1,014** live route keys
+with zero dead, **1,010/1,010** species, and **454** declared fields with zero unread or inert. A
+clean signed source and unchanged-source Compendium → Slice → full Glass local certificate remain
+**pending**; no browser-chain green successor is claimed.
+
+`ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_AND_REPAIR_20260903_6B59B45.md` owns the
+complete source, timing, classification, repair and authority record. Its two permanent hosted
+carriers preserve both halves of the contradiction:
+
+- `ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_EARLY_PREFLIGHT_PASS_20260903_6B59B45.json.gz` — raw
+  **83,698 bytes**, SHA-256
+  `81d7e65cd5b5e7eae69d0c64da38476f01666cb3932b67f3da28d75dd2d1087a`; deterministic gzip
+  **10,090 bytes**, SHA-256
+  `db541bf32cc76d8d29460b44d172a57c58c8e44f2f154fbf742f781cffe2404a`.
+- `ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_20260903_6B59B45.json.gz` — raw
+  **104,791 bytes**, SHA-256
+  `cb1798431ec801b3a6bc499a8fb5a929da756222ca833c7ab7f41012808e48d2`; deterministic gzip
+  **11,188 bytes**, SHA-256
+  `395172d82a8cdb7f05372c60b64ceeb93370a4013561ec7cb3ba9995ec25035f`.
+
+Both carriers pass gzip integrity, raw-hash reproduction and independent deterministic
+recompression. Temporary GitHub artifact `9873073563` has archive digest
+`sha256:56e88b3609f013ce4fd9773efebd0d5ecfb01cc23dd76219f305ad89b93d9a44` and expires
+`2026-09-17T00:30:04Z`. The exact authorization is consumed, the label is absent, PR #35 remains
+Ready/open/unmerged, `develop` is unchanged, and no retry or new hosted authority exists.
+
+### Historical predecessor PR #35 systemic failure-surface audit and early Glass preflight
 
 `PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md` classifies all thirteen consumed
 hosted stops as **9 instrument/infrastructure, 3 product/runtime, and 1 mixed**, maps every stop to
@@ -39,7 +93,7 @@ Ubuntu/Chrome. The signed evidence/reference descendant containing this index pr
 carrier and passes the final tracked-input `develop` profile; its own hash is intentionally not
 self-embedded. No GitHub write or hosted attempt is authorized.
 
-### Current PR #35 action-settlement repair — exact clean local certificate
+### Historical predecessor PR #35 action-settlement repair — exact clean local certificate
 
 Exact clean source `64e405bc6678302c5936945c1b34ac5de5407025` (tree
 `732bcf9930ac36e7661b14cdfd6cde64137d34f4`) passed the tracked `develop` profile at **264/264

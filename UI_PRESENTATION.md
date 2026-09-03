@@ -1,6 +1,46 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-09-02 early hosted Glass presentation preflight overlay (evidence-only; exact signed local
+> **2026-09-03 UTC current Capture-focus / Glass-chronology overlay (matches the bounded working
+> repair; final local certificate pending):** PR #35 run `33694235427`, attempt 1, tested exact
+> head `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. The changed-input early Glass preflight passed its
+> exact small-phone row on hosted Chrome, then Layout **787/787**, Compendium **78/78** plus named
+> verification and exact-bound Slice passed. Full Glass stopped on its first small-phone row with
+> one old-classifier `ARC4_CAPTURE_GEOMETRY_FOCUS` finding, zero reported instrument failures,
+> **67/104** controls, 37 causal blocks and no retry.
+>
+> The retained Sample carrier combined a button rectangle centred at y `173.171875` and ancestor
+> scroll top `2538` with later y `504.171875` hit-test points on `NAV`. The ordinary five-second
+> Capture authority heartbeat replaced the card between those observations; bare semantic-focus
+> restoration returned focus to Scavenge and moved the independently scrolled Survey surface to
+> `2207`. Native Tab-to-Sample and focus-visible paint were healthy. No one layout epoch can contain
+> both facts, so this is an instrument chronology stop despite the old product label. The earlier
+> same-source/browser PASS proves timing variability, not collector closure.
+>
+> Passive Capture authority rerenders now restore the matching semantic action with
+> `focus({preventScroll:true})`. Focus continuity remains player-visible, but the passive refresh no
+> longer takes scroll ownership or moves the card beneath the player. Explicit action settlement
+> retains its existing focus/reveal behavior. No control name, label, dimensions, responsive rule,
+> target floor, card structure or keyboard sequence changes.
+>
+> Glass now forces one deterministic heartbeat replacement on small-phone Sample, binds exact
+> document/quiesce/resume authority, reacquires the replacement node and captures rectangle,
+> ancestor scroll, translated layout, centre hit-test and focus inside one browser-side chronology.
+> A point outside its retained rectangle or another partially cross-epoch carrier is instrument-red
+> before product assessment; a wholly missing product target remains owned by the product assessor.
+> The verdict now explicitly requires the action and Close to be the actual focused element and
+> requires Close's recorded scroll to be settled; negative controls prove all three omissions red.
+> This adds no job, retry, timeout, browser pin or control to the sealed 104-control campaign.
+>
+> Both hosted reports are retained under `audits/` and the full classification/repair record is
+> `audits/ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_AND_REPAIR_20260903_6B59B45.md`.
+> Focused repair coverage passes **53/53**, and the complete browser-free `develop` profile passes
+> **265/265 files, 2,749 passed / 1 skipped** with all three TypeScript programs and static owners
+> green. The clean unchanged-source Compendium → Slice → full Glass local certificate remains
+> **pending**; no browser-chain successor or hosted authority is claimed. Capture mechanics,
+> content, graphics and audio are unchanged.
+
+> **2026-09-02 historical predecessor early hosted Glass presentation preflight overlay (evidence-only; exact signed local
 > browser proof green):** all thirteen consumed PR #35 stops were audited end to end: **9
 > instrument/infrastructure, 3 product/runtime, and 1 mixed**. The current repaired Glass path has
 > a complete clean local Edge/CDP certificate, but has not run on hosted Ubuntu/Chrome; the prior
@@ -27,7 +67,7 @@
 > raw/gzip evidence SHA-256 is `9ef29a3b…8f24` / `e0146ec7…e5c`; it remains noncertifying local
 > evidence and does not prove hosted Ubuntu/Chrome.
 
-> **2026-09-02 current Glass Inventory action-evidence overlay (harness-only; exact local browser
+> **2026-09-02 historical predecessor Glass Inventory action-evidence overlay (harness-only; exact local browser
 > certificate green and older dated evidence remains immutable):** PR #35 run `33674116068`, attempt 1,
 > tested exact head `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b`. Layout **787/787**, Compendium **78/78** plus named

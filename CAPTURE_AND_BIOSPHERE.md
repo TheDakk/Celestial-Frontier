@@ -1,5 +1,27 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
+> **2026-09-03 UTC current passive-focus overlay (matches the bounded working repair; final local
+> certificate pending):** an ordinary Capture authority heartbeat may replace the open Tame /
+> Scavenge / Sample DOM while preserving the player's semantic focus. That passive rerender now
+> restores the matching action with `focus({preventScroll:true})`, so it does not take ownership of
+> or move the independently scrolled Survey surface. Explicit action settlement keeps its existing
+> default-focus reveal behavior; only passive authority refresh is scroll-neutral.
+>
+> Hosted PR #35 run `33694235427` exposed this when its old multi-command Glass carrier joined a
+> Sample rectangle centred at y `173.171875` / scroll top `2538` to later y `504.171875` points
+> after heartbeat focus restoration moved scroll to `2207`. The stop is instrument chronology,
+> not a Capture-geometry failure. Glass now forces that replacement deterministically, reacquires
+> the live node and collects same-epoch geometry/hit/focus evidence before any product verdict.
+> Both hosted reports and the complete record are retained in
+> `audits/ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_AND_REPAIR_20260903_6B59B45.md`.
+>
+> Capture pools, odds, SessionRNG, hit/miss spending, Biosphere Yield, ecology, ownership,
+> creature/genome identity, rewards, persistence/save schema and card structure are unchanged.
+> Focused repair coverage passes **53/53**, and the full browser-free `develop` profile passes
+> **265/265 files, 2,749 passed / 1 skipped** with all three TypeScript programs and static owners
+> green. The clean unchanged-source Compendium → Slice → Glass certificate remains pending; no
+> browser-chain green or hosted authority is claimed.
+
 > **2026-08-31 current local Capture presentation/readiness overlay (matches local code):** a durable
 > Tame, Scavenge or Sample may queue the existing aggregate Arc 9 achievement/rank receipt before
 > its awaiting Survey UI continuation repaints. While that follow-up owns the shared coordinator,
@@ -97,6 +119,8 @@
 > Slice/Glass/Recovery chain and HUMAN acceptance remain outstanding.
 
 **STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The v2
+passive-focus behavior and atomic Glass evidence boundary match the bounded working repair as of
+2026-09-03 UTC, with its final local certificate pending. The v2
 ecology/audio/Charter overlay matches the player-facing durable Arc 4 capture slice, and the separate
 Guardian acquisition carrier plus player-live verified combat join match the local Arc 6 candidate as
 of **2026-08-29**; the post-capture open-card readiness correction matches local code as of

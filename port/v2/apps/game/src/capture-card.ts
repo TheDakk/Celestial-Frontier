@@ -413,6 +413,9 @@ export class CaptureCardController {
     this.#lastOutcome = outcome;
     if (outcome.convergence === 'read-only-reload') {
       this.#convergenceLatched = true;
+      /* This is a passive terminal repaint before document convergence, not
+         an answerable action settlement. Preserve the player's scroll while
+         #restoreView moves semantic focus to the disabled row/status owner. */
       this.#render();
       return;
     }
@@ -707,20 +710,20 @@ export class CaptureCardController {
   #restoreView(receipt: FocusReceipt | null): void {
     if (receipt === null) return;
     const keyed = this.#focusKeyTarget(receipt.focusKey, receipt.semanticKey);
-    if (keyed !== null && !this.#disabled(keyed) && this.#restoreElement(keyed)) {
+    if (keyed !== null && !this.#disabled(keyed) && this.#restoreElement(keyed, true)) {
       this.#settlementFallbackFocused = false;
       this.#pendingDisabledBodyFocus = false;
       return;
     }
     const semantic = this.#semanticTarget(receipt.semanticKey);
-    if (semantic !== null && this.#restoreElement(semantic)) {
+    if (semantic !== null && this.#restoreElement(semantic, true)) {
       this.#settlementFallbackFocused = false;
       this.#pendingDisabledBodyFocus = false;
       return;
     }
     if (this.#isBusy() && this.#settlementFocus !== null) {
       const status = this.#mount?.querySelector<HTMLElement>('[data-capture-status]') ?? null;
-      if (this.#restoreElement(status)) {
+      if (this.#restoreElement(status, true)) {
         this.#settlementFallbackFocused = true;
         this.#pendingDisabledBodyFocus = false;
       }
@@ -765,9 +768,15 @@ export class CaptureCardController {
       .find((element) => element.dataset.semanticKey === semanticKey) ?? null;
   }
 
-  #restoreElement(element: HTMLElement | null): boolean {
+  #restoreElement(element: HTMLElement | null, preventScroll = false): boolean {
     if (!element?.isConnected || this.#disabled(element)) return false;
-    try { element.focus(); } catch { return false; }
+    /* Passive authority rerenders preserve semantic focus without taking
+       scroll ownership. Explicit action settlement may still reveal its
+       restored outcome target through the default focus behavior. */
+    try {
+      if (preventScroll) element.focus({ preventScroll: true });
+      else element.focus();
+    } catch { return false; }
     return this.#document.activeElement === element;
   }
 

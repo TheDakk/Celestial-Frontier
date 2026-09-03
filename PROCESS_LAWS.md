@@ -1,5 +1,32 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **FOCUS RESTORATION DOES NOT OWN SCROLL, AND GEOMETRY EVIDENCE MUST BE ATOMIC**
+> (2026-09-03 UTC). A DOM-replacing authority heartbeat may preserve the same semantic control,
+> but a passive rerender does not own navigation or reveal: restore that replacement with
+> `focus({preventScroll:true})`. An explicit action-settlement path may retain default focus when
+> revealing its outcome is part of that operation's contract. Do not apply one focus policy to
+> both owners merely because they share a helper.
+>
+> A geometry verdict must derive target rectangle, ancestor scroll, translated layout rectangle,
+> centre hit-test and focus from one reacquired live node in one browser-side chronology across
+> stable frames. Force the ordinary replacement heartbeat in deterministic control, bind its exact
+> document and quiesce/resume receipts, reacquire the replacement node and prove both restored
+> semantic focus and unchanged scroll. Recording a focus witness or Close scroll sample is not
+> enough: require `focused:true` for every judged action/Close and require the Close sample to be
+> settled. A point outside its retained rectangle is an instrument
+> contradiction and causal-stops before product assessment; a wholly absent target may remain
+> coherent evidence for the product assessor.
+>
+> PR #35 run `33694235427` demonstrated both halves on one unchanged hosted source/browser. Its
+> early small-phone preflight passed, but final Glass combined a Sample rectangle centred at y
+> `173.171875` / scroll top `2538` with later y `504.171875` points on `NAV` after a five-second
+> heartbeat replacement and bare focus restoration moved scroll to `2207`. The old report labelled
+> that product red because its multi-command carrier had no same-epoch rule; the corrected class is
+> instrument. Preserve both reports—the early PASS establishes timing variability, not closure.
+> The bounded repair adds deterministic chronology, not a timeout, retry, browser pin, job or
+> control. Its final clean local Compendium → Slice → Glass certificate remains pending and it
+> grants no hosted authority.
+
 > **WHEN A HOSTED-ONLY FAILURE CLASS REPEATS LATE, EXERCISE THE SAME MINIMAL OUTCOME EARLY—NEVER
 > SUBSTITUTE IT FOR CERTIFICATION** (2026-09-02). A canary is justified only when it uses the same
 > hosted OS/browser path and the smallest real product row that contains the unresolved class. It
@@ -806,6 +833,15 @@
 > the production profile, never in the ordinary coding loop. `coveragegap` is a planning report;
 > complete route coverage is already fail-closed in `overridecheck`, so do not present both as
 > independent merge gates.
+>
+> Glass's **104 names are controls inside one browser campaign, not 104 jobs or browser launches**.
+> PR #35 run `33694235427` made the cost visible: the early small-phone canary executed 95 controls;
+> final Glass executed 67 and causally blocked 37 after its first red. Most wall time came from the
+> serial live Compendium certificate (**about 38m35s**) and Slice (**about 24m15s**), and evidence
+> upload alone follows Glass on `develop`. The correct response to a timing-dependent cross-epoch
+> verdict is a deterministic chronology control inside the existing owner—not another hosted
+> stage, duplicated battery, retry, timeout increase or point-version baseline.
+>
 > Inside that one producer-authority owner, Compendium measurement and producer bytes bind every
 > profile. The quarantined SceneMemory budget binds current product/build bytes only in
 > **production**; its source/build drift controls remain browser-free in every profile. A ruler that
@@ -1957,6 +1993,12 @@ change. Negative-control focused-but-suppressed `focusVisible:false`, forced rem
 shadow, and restoration to green. Never broaden product CSS from `:focus-visible` to `:focus`,
 reorder the route to hide inherited modality, or accept a permanent inline outline as the positive
 control.
+
+Input modality and scroll ownership are separate claims. When a passive DOM replacement restores
+the same semantic control, use `focus({preventScroll:true})` unless that exact operation owns
+navigation or reveal. Prove replacement identity, active element and unchanged ancestor scroll in
+one deterministic rerender control; a healthy focus-visible witness does not excuse an unowned
+scroll jump.
 
 ⚠⚠ **A READY VIRTUAL WINDOW MUST SURVIVE THE SNAPSHOT'S OWN RENDER TURN** (2026-08-23).
 PR #33 run `32614177932` first proved every mounted Compendium thumbnail decoded and the queue

@@ -545,6 +545,114 @@ describe('Arc 4 Capture card controller', () => {
     expect(view.close.disabled).toBe(false);
   });
 
+  it('restores idle semantic focus across an authority rerender without changing scroll', () => {
+    const view = shell();
+    controller = new CaptureCardController({ root: view.root, onAction: vi.fn() });
+    controller.setState(readModel());
+    controller.attach(view.mount);
+    const prototype = view.document.defaultView!.HTMLElement.prototype;
+    const nativeFocus = prototype.focus;
+    const calls: Array<{ verb: string | undefined; preventScroll: boolean }> = [];
+    let modeledSurveyScrollTop = 0;
+    const focus = vi.spyOn(prototype, 'focus').mockImplementation(function (
+      this: HTMLElement,
+      options?: FocusOptions,
+    ): void {
+      calls.push({
+        verb: this.dataset.captureAction,
+        preventScroll: options?.preventScroll === true,
+      });
+      nativeFocus.call(this, options);
+      if (this.dataset.captureAction === 'scavenge'
+        && options?.preventScroll !== true) modeledSurveyScrollTop = 2_207;
+    });
+    try {
+      const firstScavenge = button(view, 'scavenge');
+      firstScavenge.focus();
+      modeledSurveyScrollTop = 2_538;
+
+      controller.setState(readModel({ summary: 'Heartbeat authority refresh.' }));
+
+      const replacementScavenge = button(view, 'scavenge');
+      expect(replacementScavenge).not.toBe(firstScavenge);
+      expect(firstScavenge.isConnected).toBe(false);
+      expect(view.document.activeElement).toBe(replacementScavenge);
+      expect(modeledSurveyScrollTop).toBe(2_538);
+      expect(calls.at(-1)).toEqual({ verb: 'scavenge', preventScroll: true });
+    } finally {
+      focus.mockRestore();
+    }
+  });
+
+  it('lets an ordinary explicit settlement reveal its restored action with default focus', () => {
+    const view = shell();
+    emulateBrowserFocusLossWhenDisabled(view.document);
+    controller = new CaptureCardController({ root: view.root, onAction: vi.fn() });
+    controller.setState(readModel());
+    controller.attach(view.mount);
+    const prototype = view.document.defaultView!.HTMLElement.prototype;
+    const nativeFocus = prototype.focus;
+    const calls: Array<{ verb: string | undefined; preventScroll: boolean }> = [];
+    const focus = vi.spyOn(prototype, 'focus').mockImplementation(function (
+      this: HTMLElement,
+      options?: FocusOptions,
+    ): void {
+      calls.push({
+        verb: this.dataset.captureAction,
+        preventScroll: options?.preventScroll === true,
+      });
+      nativeFocus.call(this, options);
+    });
+    try {
+      const tame = button(view, 'tame');
+      tame.focus();
+      tame.click();
+      controller.setState(readModel({ summary: 'Authority refreshed while pending.' }));
+      controller.settle(outcome());
+
+      expect(view.document.activeElement).toBe(button(view, 'tame'));
+      expect(calls.at(-1)).toEqual({ verb: 'tame', preventScroll: false });
+      expect(calls.some((call) => call.preventScroll)).toBe(true);
+    } finally {
+      focus.mockRestore();
+    }
+  });
+
+  it('keeps terminal read-only convergence scroll-passive before reload', () => {
+    const view = shell();
+    emulateBrowserFocusLossWhenDisabled(view.document);
+    controller = new CaptureCardController({ root: view.root, onAction: vi.fn() });
+    controller.setState(readModel());
+    controller.attach(view.mount);
+    const prototype = view.document.defaultView!.HTMLElement.prototype;
+    const nativeFocus = prototype.focus;
+    const calls: boolean[] = [];
+    const focus = vi.spyOn(prototype, 'focus').mockImplementation(function (
+      this: HTMLElement,
+      options?: FocusOptions,
+    ): void {
+      calls.push(options?.preventScroll === true);
+      nativeFocus.call(this, options);
+    });
+    try {
+      const tame = button(view, 'tame');
+      tame.focus();
+      tame.click();
+      controller.settle(outcome({
+        kind: 'committed-unknown',
+        convergence: 'read-only-reload',
+        title: 'Capture result uncertain.',
+        detail: 'Reload to converge with durable truth before another attempt.',
+      }));
+
+      expect(controller.diagnostics().convergenceLatched).toBe(true);
+      expect(calls.at(-1)).toBe(true);
+      expect(view.document.activeElement).not.toBe(view.document.body);
+    } finally {
+      focus.mockRestore();
+    }
+  });
+
   it('falls back to the live outcome when the originating control and row disappear', () => {
     const view = shell();
     emulateBrowserFocusLossWhenDisabled(view.document);
