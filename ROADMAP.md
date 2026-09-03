@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-03 UTC · RUN 14 GLASS CHRONOLOGY RED · BOUNDED REPAIR / FINAL LOCAL CHAIN PENDING ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-03 UTC · RUN 14 GLASS CHRONOLOGY RED · SIGNED EXACT LOCAL CHAIN GREEN · HOSTED AUTHORITY ABSENT ◀◀◀
 
 ### Exact current boundary
 
@@ -29,10 +29,15 @@ the archive verbatim and refresh this handoff in place.
   **54ab518c2f63c924e2cedfea027b949989f2a79e**, against unchanged `develop`
   **7a9f4c1370dd84292388d718c38ff34214f6203b**. It contains the thirteen-stop audit and early
   changed-input Glass preflight.
-- The shared working tree now also contains the bounded passive-focus/atomic-Glass repair, its
-  deterministic mutations, refreshed Compendium producer authority and this documentation/evidence
-  batch. These bytes are not yet a clean signed candidate. Preserve every current source, test,
-  budget, audit and documentation change; do not rebase, overwrite or copy them to another worktree.
+- Exact clean SSH-signed implementation source
+  **7cfb42d993778211e9c27b671e6b4fc9b891ff95**, tree
+  **090d2e4827b0eeeec334410ec9563dc778559dd0**, contains the bounded passive-focus/atomic-Glass
+  repair, deterministic mutations, refreshed Compendium producer authority, hosted red carriers
+  and synchronized references. The signed evidence/documentation descendant containing this
+  handoff adds five deterministic local PASS carriers and their exact audit, passes the final
+  hermetic tracked-input `develop` profile, and is the second local commit ahead of the remote; its
+  own hash is intentionally not self-embedded. Preserve every current byte; do not rebase,
+  overwrite or copy it to another worktree.
 - PR #35 remains Ready/open/unmerged. `actions-budget-approved` is absent and `develop` is
   unchanged. No push, label, dispatch, rerun, PR mutation, merge, release, version bump,
   publication or deployment is currently authorized.
@@ -100,8 +105,10 @@ the archive verbatim and refresh this handoff in place.
 
 ### Evidence and verification state
 
-- Exact audit:
-  `audits/ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_AND_REPAIR_20260903_6B59B45.md`.
+- Exact audits: hosted stop/repair
+  `audits/ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_AND_REPAIR_20260903_6B59B45.md`;
+  clean local PASS
+  `audits/ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.md`.
 - Both hosted reports are permanent deterministic `gzip -n -9` carriers:
   - early PASS `ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_EARLY_PREFLIGHT_PASS_20260903_6B59B45.json.gz`,
     raw/gzip SHA-256 `81d7e65c…1087a` / `db541bf3…404a`;
@@ -112,9 +119,22 @@ the archive verbatim and refresh this handoff in place.
   profile passes **265/265 files, 2,749 passed / 1 skipped**, all three TypeScript programs,
   **34** art sources with zero findings, **1,014/1,014** live route keys with zero dead,
   **1,010/1,010** species, and **454** declared fields with zero unread or inert.
-- An exact clean signed source and unchanged-source Compendium → Slice → full 12-viewport Glass
-  local certificate must still be recorded. **The final browser chain is pending, not green; no
-  successor certificate is claimed by this handoff.**
+- Exact clean SSH-signed source **7cfb42d…** passed its hermetic tracked-input `develop` rehearsal,
+  all applicable browser/CDP/Compendium instrument controls, and live Edge `152.0.4191.53` / CDP
+  `1.3` preflight. On that unchanged source, the noncertifying small-phone diagnostic
+  `20260903-pr35-chronology-7cfb42d99377-glass-preflight` passed in **12,695 ms** with **95/104**
+  controls and nine lawful omissions.
+- Its one fail-fast/no-retry named-verified admission chain is green: Compendium
+  `20260903012535851-93600-5d61fc93fc` passed **78/78** in **63,955 ms**; Slice
+  `20260903012714531-93918-edfead967720` passed in **372,125 ms** with zero findings/scopes and ten
+  screenshots; exact-Slice-bound Glass `20260903013357550-94309-6b031e425f5d` passed in
+  **115,254 ms** across **12/12** viewports/reloads and **104/104** controls with zero findings,
+  instrument failures, blocked/omitted controls or retries. Every named verifier passed.
+- Five deterministic `gzip -n -9` carriers preserve the preflight, Compendium, Slice report/log
+  and Glass report under `audits/`; exact raw/compressed sizes and hashes are indexed in
+  `audits/README.md`. The signed evidence/docs descendant containing this handoff passes the final
+  tracked-input `develop` profile; its own hash is intentionally not self-embedded. This is local
+  evidence only and creates no hosted authority.
 
 ### Battery complexity and preserved scope
 
@@ -131,18 +151,15 @@ the archive verbatim and refresh this handoff in place.
 
 ### Exact next sequence
 
-1. Sign the reviewed, browser-free-green implementation candidate and run its hermetic
-   tracked-input `develop` preflight.
-2. Only from that unchanged clean signed source, run Compendium once, exact Slice once, and full
-   Slice-bound Glass once, fail-fast/no-retry, retaining and named-verifying every report. Do not
-   call the local chain green until all three pass.
-3. Refresh this handoff with exact commit/tree, results and deterministic carriers. A later hosted
-   attempt still requires Nick's new exact workflow/head/base/minutes/no-retry authorization.
+1. No further local coding, instrument repair or browser rerun remains for this exact successor.
+2. A later hosted attempt requires Nick's new exact workflow/head/base/minutes/
+   no-retry authorization; only that future exact head may be pushed, labelled and dispatched.
 
 ### Paired Git/Claude handoff
 
-- **Current side — OpenAI/Codex:** local working repair and evidence/docs are in progress on
-  `openai/mac`; nothing in this batch is pushed or merged.
+- **Current side — OpenAI/Codex:** exact signed local implementation **7cfb42d…** and its complete
+  no-retry local admission chain are green on `openai/mac`; the five-carrier evidence/docs
+  descendant is the final local handoff. Nothing in this batch is pushed or merged.
 - **GitHub step:** none. Do not apply `actions-budget-approved` or mutate PR #35 without a new exact
   authorization after local closure.
 - **PR #35:** base **develop**, source **openai/mac**.
@@ -151,8 +168,8 @@ the archive verbatim and refresh this handoff in place.
     systems; preserves all fourteen immutable PR #35 stops; fixes passive Capture focus restoration
     so authority rerenders do not take scroll; makes Glass geometry evidence atomic and
     chronology-coherent with deterministic heartbeat replacement; retains the early-PASS/full-red
-    hosted evidence pair; adds no retry, timeout, job, browser pin or control; and requires a clean
-    no-retry Compendium → exact Slice → full Glass successor before another hosted request.”
+    hosted evidence pair; adds no retry, timeout, job, browser pin or control; and passes one clean
+    no-retry, named-verified Compendium → exact Slice → full Glass local successor.”
   Refresh PR metadata only inside a newly authorized GitHub-write sequence.
 - **Other side — Anthropic/Claude Code:** the new bytes are not in `develop`, so do not copy or
   synchronize them. Nick does not need to open Claude yet. After PR #35 is terminal green and

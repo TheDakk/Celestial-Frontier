@@ -24,8 +24,9 @@
 > that product red because its multi-command carrier had no same-epoch rule; the corrected class is
 > instrument. Preserve both reports—the early PASS establishes timing variability, not closure.
 > The bounded repair adds deterministic chronology, not a timeout, retry, browser pin, job or
-> control. Its final clean local Compendium → Slice → Glass certificate remains pending and it
-> grants no hosted authority.
+> control. Exact signed source `7cfb42d…` later passed its tracked-input rehearsal and one
+> unchanged-source, named-verified Compendium → Slice → Glass chain once/no-retry. That local
+> certificate grants no hosted authority.
 
 > **WHEN A HOSTED-ONLY FAILURE CLASS REPEATS LATE, EXERCISE THE SAME MINIMAL OUTCOME EARLY—NEVER
 > SUBSTITUTE IT FOR CERTIFICATION** (2026-09-02). A canary is justified only when it uses the same

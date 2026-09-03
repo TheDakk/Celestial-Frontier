@@ -1,7 +1,7 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-> **D-PR35-CAPTURE-FOCUS-ATOMIC-GEOMETRY — 2026-09-03 UTC current deviation overlay (matches the
-> bounded working repair; final local certificate pending):** PR #35 run `33694235427`, attempt 1,
+> **D-PR35-CAPTURE-FOCUS-ATOMIC-GEOMETRY — 2026-09-03 UTC current deviation overlay (matches exact
+> signed local successor; local certificate green):** PR #35 run `33694235427`, attempt 1,
 > tested exact head `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b`. The early small-phone Glass preflight passed on the
 > same clean source/browser; Layout, Compendium and exact-bound Slice then passed. Full Glass
@@ -32,9 +32,11 @@
 > ceilings, 78 outcomes and historical samples are unchanged; this is source identity, not
 > recalibration. Both hosted reports are retained and indexed under `../../audits/`. Focused repair
 > coverage passes **53/53**, and the complete browser-free `develop` profile passes **265/265
-> files, 2,749 passed / 1 skipped** with all three TypeScript programs and static owners green. A
-> fresh exact clean Compendium → Slice → Glass certificate remains pending. No browser-chain
-> successor, hosted, merge, release or deployment authority is claimed.
+> files, 2,749 passed / 1 skipped** with all three TypeScript programs and static owners green.
+> Exact clean SSH-signed source `7cfb42d993778211e9c27b671e6b4fc9b891ff95` then passed the
+> one-viewport repaired-path diagnostic and one unchanged-source, fail-fast/no-retry,
+> named-verified **78/78 Compendium → zero-finding Slice → 12/12 Glass / 104/104 controls** chain.
+> This is local evidence only; no hosted, merge, release or deployment authority is claimed.
 
 > **D-PR35-INVENTORY-MODAL-LIFETIME — 2026-09-02 historical predecessor deviation overlay (matches exact
 > code; supersedes older “current” labels while dated evidence remains immutable):** hosted PR #35

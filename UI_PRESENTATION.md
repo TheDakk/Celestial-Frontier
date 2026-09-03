@@ -1,7 +1,7 @@
 # Celestial Frontier — UI / Presentation System
 
-> **2026-09-03 UTC current Capture-focus / Glass-chronology overlay (matches the bounded working
-> repair; final local certificate pending):** PR #35 run `33694235427`, attempt 1, tested exact
+> **2026-09-03 UTC current Capture-focus / Glass-chronology overlay (matches exact signed local
+> successor; local certificate green):** PR #35 run `33694235427`, attempt 1, tested exact
 > head `6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
 > `7a9f4c1370dd84292388d718c38ff34214f6203b`. The changed-input early Glass preflight passed its
 > exact small-phone row on hosted Chrome, then Layout **787/787**, Compendium **78/78** plus named
@@ -34,11 +34,15 @@
 >
 > Both hosted reports are retained under `audits/` and the full classification/repair record is
 > `audits/ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_AND_REPAIR_20260903_6B59B45.md`.
+> The exact local PASS record is
+> `audits/ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.md`.
 > Focused repair coverage passes **53/53**, and the complete browser-free `develop` profile passes
 > **265/265 files, 2,749 passed / 1 skipped** with all three TypeScript programs and static owners
-> green. The clean unchanged-source Compendium → Slice → full Glass local certificate remains
-> **pending**; no browser-chain successor or hosted authority is claimed. Capture mechanics,
-> content, graphics and audio are unchanged.
+> green. Exact clean SSH-signed source `7cfb42d993778211e9c27b671e6b4fc9b891ff95` then passed the
+> one-viewport repaired-path diagnostic and one unchanged-source, fail-fast/no-retry,
+> named-verified **78/78 Compendium → zero-finding Slice → 12/12 Glass / 104/104 controls** chain.
+> This is exact local evidence only; no hosted authority is claimed. Capture mechanics, content,
+> graphics and audio are unchanged.
 
 > **2026-09-02 historical predecessor early hosted Glass presentation preflight overlay (evidence-only; exact signed local
 > browser proof green):** all thirteen consumed PR #35 stops were audited end to end: **9
