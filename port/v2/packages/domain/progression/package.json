@@ -1,4 +1,4 @@
 { "name": "@cf/domain-progression", "private": true, "version": "0.0.0", "type": "module",
-  "description": "Progression domain (plan §18): the capped COSMIC_EPOCH ecology/world-presentation clock plus retained conquest-harvest readiness, driven by an injected monotonic session segment.",
+  "description": "Progression domain: bounded active-play/epoch readiness plus the exact explorer-rank and 96-achievement content/projection authorities.",
   "exports": { ".": "./src/index.ts" },
   "dependencies": { "@cf/domain-rand": "*" } }

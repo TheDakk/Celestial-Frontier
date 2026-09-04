@@ -21,23 +21,34 @@ const os = require('os');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const root = path.join(__dirname, '..');
+const repoRoot = fs.realpathSync(root);
 const _urlArg = process.argv.find((a) => a.startsWith('--url='));
 const GAME = _urlArg ? _urlArg.slice(6) : 'file:///' + path.join(root, 'celestial-frontier.html').replace(/\\/g, '/');
 const _vpArg = process.argv.find((a) => a.startsWith('--vp='));
 const SHOTS = process.argv.includes('--shots');
 const SHEET_DIR = path.join(__dirname, 'uisheets');
-const REPORT_SCHEMA = 'celestial-frontier/uilayout-report@2';
+const REPORT_SCHEMA = 'celestial-frontier/uilayout-report@3';
 const BASELINE_REPORT_PATH = path.join(root, 'port', 'baseline-v1.8.9', 'uilayout-report.json');
 const REPORT_PATH = process.env.CF_UILAYOUT_REPORT
   ? path.resolve(process.env.CF_UILAYOUT_REPORT) : path.join(__dirname, 'uilayout-report.json');
+const RUN_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$/;
+const CHROMIUM_PRODUCT_PATTERN = /^(?:Chrome|Chromium|Edg|HeadlessChrome)\/[1-9]\d*(?:\.\d+){3}$/u;
 const RUN_ID = process.env.CF_UILAYOUT_RUN_ID
   || `local-${Date.now()}-${process.pid}-${crypto.randomBytes(5).toString('hex')}`;
+const REPORT_ARTIFACT_PATH = artifactPathFor(RUN_ID, REPORT_PATH);
 const STARTED_AT_MS = Date.now();
+const CERTIFYING_REQUEST = !_vpArg && !_urlArg;
+const RUN_POLICY = Object.freeze({ attemptCount: 1, automaticRetries: 0 });
 const ROOT_LAYOUT_CDP_COMMAND_TIMEOUT_MS = 30_000;
 const ROOT_LAYOUT_CDP_SOCKET_TIMEOUT_MS = 15_000;
 const ROOT_LAYOUT_CDP_STARTUP_TIMEOUT_MS = 45_000;
 const ROOT_LAYOUT_CDP_SHUTDOWN_TIMEOUT_MS = 5_000;
 let REPORT_BROWSER = null;
+let REPORT_SOURCE_BEGIN = null;
+let REPORT_SOURCE_END = null;
+let REPORT_ARTIFACT_RESERVED = false;
+let REPORT_POINTER_OWNED = false;
+let REPORT_LIFECYCLE = { browserClosed: false, workspaceLockHeldThroughReportWrite: false };
 
 const VIEWPORTS = [
   { id: 'iphone-se',   w: 375,  h: 667,  mobile: true,  dpr: 2 },
@@ -89,7 +100,147 @@ function atomicWriteJson(file, value) {
   }
 }
 
-function reportFor(status, { browser = null, results = [], failure = null } = {}) {
+function atomicCreateFile(targetPath, bytes) {
+  const dir = path.dirname(targetPath);
+  fs.mkdirSync(dir, { recursive: true });
+  const temporary = path.join(dir, `.${path.basename(targetPath)}.${process.pid}.${crypto.randomBytes(5).toString('hex')}.tmp`);
+  try {
+    fs.writeFileSync(temporary, bytes, { flag: 'wx' });
+    fs.linkSync(temporary, targetPath);
+  } finally {
+    try { fs.unlinkSync(temporary); } catch { /* link/create failure cleanup */ }
+  }
+}
+
+function atomicCreateJson(file, value) {
+  atomicCreateFile(file, JSON.stringify(value, null, 1));
+}
+
+function artifactPathFor(runId, reportPath = REPORT_PATH) {
+  if (typeof runId !== 'string' || !RUN_ID_PATTERN.test(runId)) {
+    throw new Error(`layout report run id is invalid: ${JSON.stringify(runId)}`);
+  }
+  return path.join(path.dirname(reportPath), `uilayout-${runId}.json`);
+}
+
+function portablePath(file) {
+  const absolute = path.resolve(file);
+  const prefix = repoRoot.endsWith(path.sep) ? repoRoot : repoRoot + path.sep;
+  return absolute.startsWith(prefix)
+    ? path.relative(repoRoot, absolute).split(path.sep).join('/')
+    : absolute.split(path.sep).join('/');
+}
+
+function portableAbsolutePath(file) {
+  return path.resolve(file).split(path.sep).join('/');
+}
+
+function isNormalizedPortableAbsolutePath(file) {
+  if (typeof file !== 'string' || file.length === 0 || file.includes('\\')) return false;
+  const windowsDrivePath = /^[A-Za-z]:\//u.test(file);
+  const pathApi = windowsDrivePath ? path.win32 : path.posix;
+  const native = windowsDrivePath ? file.replace(/\//g, '\\') : file;
+  return pathApi.isAbsolute(native)
+    && pathApi.normalize(native).split(pathApi.sep).join('/') === file;
+}
+
+function sha256(bytes) { return crypto.createHash('sha256').update(bytes).digest('hex'); }
+
+function git(args, { raw = false } = {}) {
+  try {
+    return execFileSync('git', args, {
+      cwd: repoRoot, encoding: raw ? null : 'utf8', stdio: ['ignore', 'pipe', 'pipe'],
+      maxBuffer: 64 * 1024 * 1024,
+    });
+  } catch (error) {
+    const detail = Buffer.isBuffer(error?.stderr)
+      ? error.stderr.toString('utf8').trim() : String(error?.stderr || '').trim();
+    throw new Error(`required git ${args.join(' ')} failed${detail ? `: ${detail}` : ''}`);
+  }
+}
+
+function sourceBytes(value, label) {
+  if (Buffer.isBuffer(value)) return value;
+  if (typeof value === 'string') return Buffer.from(value);
+  throw new Error(`required git ${label} returned non-byte output`);
+}
+
+function sourceSnapshot({ gitCommand = git, sourceRoot = repoRoot } = {}) {
+  const status = sourceBytes(
+    gitCommand(['status', '--porcelain=v1', '-z', '--untracked-files=all'], { raw: true }),
+    'status',
+  );
+  const diff = sourceBytes(
+    gitCommand(['diff', '--binary', '--no-ext-diff', 'HEAD', '--'], { raw: true }),
+    'diff',
+  );
+  const untracked = sourceBytes(
+    gitCommand(['ls-files', '--others', '--exclude-standard', '-z'], { raw: true }),
+    'ls-files',
+  ).toString('utf8').split('\0').filter(Boolean).sort();
+  const digest = crypto.createHash('sha256');
+  digest.update('tracked-diff\0').update(diff).update('\0untracked\0');
+  const rootPrefix = sourceRoot.endsWith(path.sep) ? sourceRoot : sourceRoot + path.sep;
+  for (const relative of untracked) {
+    const absolute = path.resolve(sourceRoot, relative);
+    if (!absolute.startsWith(rootPrefix)) throw new Error(`unsafe untracked source path: ${relative}`);
+    const stat = fs.lstatSync(absolute);
+    digest.update(relative).update('\0');
+    if (stat.isSymbolicLink()) digest.update('symlink\0').update(fs.readlinkSync(absolute));
+    else if (stat.isFile()) digest.update('file\0').update(fs.readFileSync(absolute));
+    else throw new Error(`untracked source is not a file or symlink: ${relative}`);
+    digest.update('\0');
+  }
+  return {
+    dirty: status.length > 0,
+    statusSha256: sha256(status),
+    workingTreeSha256: digest.digest('hex'),
+  };
+}
+
+function sourceIdentity({
+  gitCommand = git, environment = process.env, expectedRepoRoot = repoRoot,
+} = {}) {
+  const expectedRoot = fs.realpathSync(expectedRepoRoot);
+  const observedRoot = fs.realpathSync(String(gitCommand(['rev-parse', '--show-toplevel'])).trim());
+  if (observedRoot !== expectedRoot) {
+    throw new Error(`git root mismatch: expected ${expectedRoot}, observed ${observedRoot}`);
+  }
+  const snapshot = sourceSnapshot({ gitCommand, sourceRoot: expectedRoot });
+  const commit = String(gitCommand(['rev-parse', 'HEAD'])).trim();
+  if (!/^[0-9a-f]{40}$/.test(commit)) {
+    throw new Error(`git HEAD is not one full commit: ${JSON.stringify(commit)}`);
+  }
+  if (environment.GITHUB_SHA !== undefined && environment.GITHUB_SHA !== commit) {
+    throw new Error(`GITHUB_SHA does not match git HEAD: expected ${commit}, observed ${environment.GITHUB_SHA}`);
+  }
+  const branchName = String(gitCommand(['rev-parse', '--abbrev-ref', 'HEAD'])).trim();
+  if (!branchName) throw new Error('git branch identity is empty');
+  return {
+    commit,
+    branch: branchName === 'HEAD' ? 'detached' : branchName,
+    state: snapshot.dirty ? 'dirty-diagnostic' : 'committed',
+    statusSha256: snapshot.statusSha256,
+    workingTreeSha256: snapshot.workingTreeSha256,
+  };
+}
+
+function sameSource(left, right) {
+  return !!left && !!right && left.commit === right.commit && left.branch === right.branch
+    && left.state === right.state && left.statusSha256 === right.statusSha256
+    && left.workingTreeSha256 === right.workingTreeSha256;
+}
+
+function reportFor(status, {
+  browser = null,
+  results = [],
+  failure = null,
+  sourceBegin = REPORT_SOURCE_BEGIN,
+  sourceEnd = REPORT_SOURCE_END,
+  lifecycle = REPORT_LIFECYCLE,
+  artifactPath = REPORT_ARTIFACT_PATH,
+  certifyingRequest = CERTIFYING_REQUEST,
+} = {}) {
   const completedAtMs = status === 'running' ? null : Date.now();
   const failed = results.filter((result) => result.ok === false).length;
   const requested = VIEWPORTS.filter((viewport) => !_vpArg
@@ -100,6 +251,11 @@ function reportFor(status, { browser = null, results = [], failure = null } = {}
     ? [{ vp: 'instrument', surf: 'launcher', name: failure?.message || 'layout run is incomplete', ok: false,
       detail: failure?.detail || `run ${RUN_ID} has no terminal product verdict` }]
     : results;
+  const terminalCleanupComplete = status !== 'running'
+    && lifecycle?.browserClosed === true && lifecycle?.workspaceLockHeldThroughReportWrite === true;
+  const certifying = !!certifyingRequest && terminalCleanupComplete
+    && sourceBegin?.state === 'committed' && sourceEnd?.state === 'committed'
+    && sameSource(sourceBegin, sourceEnd);
   return {
     schema: REPORT_SCHEMA,
     status,
@@ -108,8 +264,14 @@ function reportFor(status, { browser = null, results = [], failure = null } = {}
       startedAt: new Date(STARTED_AT_MS).toISOString(),
       completedAt: completedAtMs === null ? null : new Date(completedAtMs).toISOString(),
       durationMs: completedAtMs === null ? null : completedAtMs - STARTED_AT_MS,
+      artifactPath: portablePath(artifactPath),
     },
+    scope: certifyingRequest ? 'full-certifying' : 'targeted-diagnostic',
+    certifying,
     target: { url: GAME, viewportIds: requested.map((viewport) => viewport.id), shots: SHOTS },
+    policy: { ...RUN_POLICY },
+    source: { begin: sourceBegin, end: sourceEnd },
+    lifecycle: { ...lifecycle },
     browser,
     summary: {
       checks: currentResults.length,
@@ -123,7 +285,27 @@ function reportFor(status, { browser = null, results = [], failure = null } = {}
   };
 }
 
-function writeReport(status, options) { atomicWriteJson(REPORT_PATH, reportFor(status, options)); }
+function reserveReport(options) {
+  const running = reportFor('running', options);
+  atomicCreateJson(REPORT_ARTIFACT_PATH, running);
+  REPORT_ARTIFACT_RESERVED = true;
+  REPORT_POINTER_OWNED = true;
+  atomicWriteJson(REPORT_PATH, running);
+  return running;
+}
+
+function writeTerminalReport(status, options) {
+  if (!REPORT_ARTIFACT_RESERVED) throw new Error('layout immutable run artifact was not reserved');
+  const terminal = reportFor(status, options);
+  atomicWriteJson(REPORT_ARTIFACT_PATH, terminal);
+  atomicWriteJson(REPORT_PATH, terminal);
+  return terminal;
+}
+
+function acquireRootLayoutWorkspaceLock(acquireLock) {
+  if (typeof acquireLock !== 'function') throw new Error('root UI layout workspace-lock owner is invalid');
+  return acquireLock('root UI layout build and browser gate');
+}
 
 function openRootLayoutCdp(openCdp) {
   if (typeof openCdp !== 'function') throw new Error('root UI layout CDP opener is invalid');
@@ -152,7 +334,10 @@ function expectedFullResultKeys() {
 }
 
 function assertPassCoverage(report) {
-  if (report.target.viewportIds.length !== VIEWPORTS.length) return;
+  const expectedViewportIds = VIEWPORTS.map((viewport) => viewport.id);
+  if (JSON.stringify(report.target.viewportIds) !== JSON.stringify(expectedViewportIds)) {
+    throw new Error(`certifying layout PASS viewport inventory drifted: ${JSON.stringify(report.target.viewportIds)}`);
+  }
   const actual = report.results.map(resultKey).sort();
   const expected = expectedFullResultKeys();
   if (actual.length !== expected.length || actual.some((key, index) => key !== expected[index])) {
@@ -166,26 +351,63 @@ function assertPassCoverage(report) {
   }
 }
 
-function finalizeInstrumentFailure(error, { file = REPORT_PATH, setExitCode = true, print = true } = {}) {
+function finalizeInstrumentFailure(error, {
+  file = null, setExitCode = true, print = true, reportOptions = {},
+} = {}) {
   const detail = error.stack || error.message;
   const failed = reportFor('instrument-fail', {
     browser: REPORT_BROWSER,
     failure: { message: error.message, detail, exitCode: 2 },
+    ...reportOptions,
   });
-  try { atomicWriteJson(file, failed); }
+  try {
+    if (file) atomicWriteJson(file, failed);
+    else if (REPORT_ARTIFACT_RESERVED) {
+      atomicWriteJson(REPORT_ARTIFACT_PATH, failed);
+      if (REPORT_POINTER_OWNED) atomicWriteJson(REPORT_PATH, failed);
+    }
+  }
   catch (reportError) { if (print) console.error(`layout report write failed: ${reportError.message}`); }
   if (print) console.error(detail);
   if (setExitCode) process.exitCode = 2;
   return failed;
 }
 
-function verifyReport(file, expectedRunId) {
-  if (typeof expectedRunId !== 'string' || !/^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$/.test(expectedRunId)) {
+function exactObjectFields(value, fields) {
+  return !!value && typeof value === 'object' && !Array.isArray(value)
+    && JSON.stringify(Object.keys(value).sort()) === JSON.stringify([...fields].sort());
+}
+
+function sourceEvidenceComplete(source) {
+  const fields = ['branch', 'commit', 'state', 'statusSha256', 'workingTreeSha256'];
+  return exactObjectFields(source, fields)
+    && /^[0-9a-f]{40}$/.test(source.commit)
+    && typeof source.branch === 'string' && source.branch.length > 0
+    && ['committed', 'dirty-diagnostic'].includes(source.state)
+    && /^[0-9a-f]{64}$/.test(source.statusSha256)
+    && /^[0-9a-f]{64}$/.test(source.workingTreeSha256);
+}
+
+function readRegularFile(file, label) {
+  const stat = fs.lstatSync(file);
+  if (!stat.isFile() || stat.isSymbolicLink()) throw new Error(`${label} is not a regular non-symlink file`);
+  return fs.readFileSync(file);
+}
+
+function verifyReport(file, expectedRunId, {
+  expectedSource = null,
+  expectedArtifactPath = file,
+  requireCertifying = false,
+} = {}) {
+  if (typeof expectedRunId !== 'string' || !RUN_ID_PATTERN.test(expectedRunId)) {
     throw new Error(`layout report expected run id is invalid: ${JSON.stringify(expectedRunId)}`);
   }
-  const report = JSON.parse(fs.readFileSync(file, 'utf8'));
+  const report = JSON.parse(readRegularFile(file, 'layout report').toString('utf8'));
   if (report.schema !== REPORT_SCHEMA) throw new Error(`layout report schema drifted: ${String(report.schema)}`);
   if (report.run?.id !== expectedRunId) throw new Error(`layout report run id mismatch: ${String(report.run?.id)}`);
+  if (report.run?.artifactPath !== portablePath(expectedArtifactPath)) {
+    throw new Error(`layout report immutable artifact binding drifted: ${String(report.run?.artifactPath)}`);
+  }
   if (!['pass', 'fail', 'instrument-fail'].includes(report.status)) {
     throw new Error(`layout report is not terminal: ${String(report.status)}`);
   }
@@ -193,6 +415,30 @@ function verifyReport(file, expectedRunId) {
   if (!validDate(report.run?.startedAt) || !validDate(report.run?.completedAt)
     || !Number.isInteger(report.run?.durationMs) || report.run.durationMs < 0) {
     throw new Error('layout report has incomplete run timing');
+  }
+  if (!exactObjectFields(report.policy, ['attemptCount', 'automaticRetries'])
+    || report.policy.attemptCount !== 1 || report.policy.automaticRetries !== 0) {
+    throw new Error('layout report one-attempt/no-retry policy drifted');
+  }
+  if (!exactObjectFields(report.lifecycle, ['browserClosed', 'workspaceLockHeldThroughReportWrite'])
+    || report.lifecycle.browserClosed !== true
+    || report.lifecycle.workspaceLockHeldThroughReportWrite !== true) {
+    throw new Error('layout report terminal cleanup/workspace-lock lifecycle is incomplete');
+  }
+  if (!exactObjectFields(report.source, ['begin', 'end'])
+    || !sourceEvidenceComplete(report.source.begin) || !sourceEvidenceComplete(report.source.end)) {
+    throw new Error('layout report source provenance is incomplete');
+  }
+  if (!sameSource(report.source.begin, report.source.end)) {
+    throw new Error('layout report mixed source identities during the run');
+  }
+  if (expectedSource && (!sameSource(report.source.begin, expectedSource)
+    || !sameSource(report.source.end, expectedSource))) {
+    throw new Error('layout report source does not match the current checkout');
+  }
+  if (!['full-certifying', 'targeted-diagnostic'].includes(report.scope)
+    || typeof report.certifying !== 'boolean') {
+    throw new Error('layout report certification scope is malformed');
   }
   const knownViewportIds = new Set(VIEWPORTS.map((viewport) => viewport.id));
   const targetIds = report.target?.viewportIds;
@@ -222,13 +468,27 @@ function verifyReport(file, expectedRunId) {
   }
   const completeBrowser = report.browser && Number.isInteger(report.browser.pid) && report.browser.pid > 0
     && ['executable', 'product', 'revision', 'user_agent', 'js_version', 'protocol_version']
-      .every((key) => typeof report.browser[key] === 'string' && report.browser[key].length > 0);
+      .every((key) => typeof report.browser[key] === 'string' && report.browser[key].length > 0)
+    && isNormalizedPortableAbsolutePath(report.browser.executable)
+    && CHROMIUM_PRODUCT_PATTERN.test(report.browser.product)
+    && report.browser.protocol_version === '1.3';
+  const expectedViewportIds = VIEWPORTS.map((viewport) => viewport.id);
+  const certifyingEvidence = report.scope === 'full-certifying'
+    && report.source.begin.state === 'committed' && report.source.end.state === 'committed'
+    && report.target.url === 'file:///' + path.join(root, 'celestial-frontier.html').replace(/\\/g, '/')
+    && JSON.stringify(targetIds) === JSON.stringify(expectedViewportIds);
+  if (report.certifying !== certifyingEvidence) {
+    throw new Error('layout report certification declaration is inconsistent with target/source provenance');
+  }
+  if (requireCertifying && !report.certifying) {
+    throw new Error('named layout verification requires the exact clean committed 10-viewport certifying run');
+  }
   if (report.status === 'pass') {
     if (report.failure !== null || !completeBrowser || failed !== 0
       || completedIds.size !== targetIds.length || targetIds.some((id) => !completedIds.has(id))) {
       throw new Error('layout PASS report is incomplete or contains a failing outcome');
     }
-    assertPassCoverage(report);
+    if (report.scope === 'full-certifying' || requireCertifying) assertPassCoverage(report);
   } else if (failed === 0) {
     throw new Error('layout red report lacks a failing outcome');
   } else if (report.status === 'fail' && !completeBrowser) {
@@ -237,12 +497,44 @@ function verifyReport(file, expectedRunId) {
   return report;
 }
 
+function verifyNamedRun(expectedRunId, {
+  reportPath = REPORT_PATH,
+  expectedSource = sourceIdentity(),
+} = {}) {
+  const immutablePath = artifactPathFor(expectedRunId, reportPath);
+  const report = verifyReport(immutablePath, expectedRunId, {
+    expectedSource,
+    expectedArtifactPath: immutablePath,
+    requireCertifying: true,
+  });
+  const immutableBytes = readRegularFile(immutablePath, 'immutable layout run artifact');
+  const pointerBytes = readRegularFile(reportPath, 'current layout report pointer');
+  if (!immutableBytes.equals(pointerBytes)) {
+    throw new Error('current layout report pointer is stale or differs from the selected immutable run artifact');
+  }
+  verifyReport(reportPath, expectedRunId, {
+    expectedSource,
+    expectedArtifactPath: immutablePath,
+    requireCertifying: true,
+  });
+  return report;
+}
+
 async function main() {
-  writeReport('running', { failure: { message: 'layout run has not completed', detail: `run ${RUN_ID}` } });
-  if (SHOTS && !fs.existsSync(SHEET_DIR)) fs.mkdirSync(SHEET_DIR);
-  const { openChromiumCdp } = await import('../port/v2/tools/browsercdp.mjs');
+  let releaseWorkspaceLock = null;
   let browser = null;
+  let primaryError = null;
+  const cleanupErrors = [];
+  const results = [];
   try {
+    const { acquireWorkspaceLock } = await import('../port/v2/tools/workspacelock.mjs');
+    releaseWorkspaceLock = acquireRootLayoutWorkspaceLock(acquireWorkspaceLock);
+    REPORT_SOURCE_BEGIN = sourceIdentity();
+    reserveReport({
+      failure: { message: 'layout run has not completed', detail: `run ${RUN_ID}` },
+    });
+    if (SHOTS && !fs.existsSync(SHEET_DIR)) fs.mkdirSync(SHEET_DIR);
+    const { openChromiumCdp } = await import('../port/v2/tools/browsercdp.mjs');
     /* This gate is the battery's FIRST real browser launch, so it pays the
        whole Linux runner cold start. Run 31758515194 first proved that the
        prior 24-second bound could expire before DevToolsActivePort. Run
@@ -255,7 +547,6 @@ async function main() {
     REPORT_BROWSER = { ...browser.browser, pid: browser.pid };
     send = browser.send;
 
-    const results = [];
   const check = (vp, surf, name, ok, detail) => {
     results.push({ vp: vp.id, surf, name, ok, detail: detail || '' });
     if (!ok) console.log('FAIL  [' + vp.id + '] ' + surf + ' — ' + name + (detail ? '  (' + detail + ')' : ''));
@@ -702,22 +993,118 @@ async function main() {
     await send('Target.closeTarget', { targetId: t.targetId });
   }
 
-  const fails = results.filter((r) => !r.ok);
+  } catch (error) {
+    primaryError = error;
+  } finally {
+    if (browser) {
+      try {
+        await browser.close();
+        browser = null;
+        REPORT_LIFECYCLE.browserClosed = true;
+      } catch (error) {
+        cleanupErrors.push(`browser cleanup failed: ${error.stack || error.message}`);
+      }
+    } else {
+      REPORT_LIFECYCLE.browserClosed = true;
+    }
+    if (REPORT_SOURCE_BEGIN) {
+      try { REPORT_SOURCE_END = sourceIdentity(); }
+      catch (error) { cleanupErrors.push(`ending source identity failed: ${error.stack || error.message}`); }
+    }
+  }
+  if (REPORT_SOURCE_BEGIN && REPORT_SOURCE_END && !sameSource(REPORT_SOURCE_BEGIN, REPORT_SOURCE_END)) {
+    cleanupErrors.push('source identity changed during the layout run');
+  }
+  if (primaryError || cleanupErrors.length) {
+    const pieces = [];
+    if (primaryError) pieces.push(primaryError.stack || primaryError.message);
+    pieces.push(...cleanupErrors);
+    let reportFinalized = false;
+    if (REPORT_ARTIFACT_RESERVED && releaseWorkspaceLock) {
+      REPORT_LIFECYCLE.workspaceLockHeldThroughReportWrite = true;
+      try {
+        writeTerminalReport('instrument-fail', {
+          browser: REPORT_BROWSER,
+          failure: { message: primaryError?.message || cleanupErrors[0], detail: pieces.join('\n'), exitCode: 2 },
+        });
+        reportFinalized = true;
+      } catch (error) {
+        pieces.push(`instrument-fail report write failed: ${error.stack || error.message}`);
+      }
+    }
+    if (releaseWorkspaceLock) {
+      try {
+        releaseWorkspaceLock();
+        releaseWorkspaceLock = null;
+      } catch (error) {
+        pieces.push(`workspace-lock release failed: ${error.stack || error.message}`);
+      }
+    }
+    const runError = new Error(pieces.join('\n'));
+    runError.layoutReportFinalized = reportFinalized;
+    throw runError;
+  }
+
+  const fails = results.filter((result) => !result.ok);
   const byVp = {};
-  for (const r of results) { byVp[r.vp] = byVp[r.vp] || { pass: 0, fail: 0 }; byVp[r.vp][r.ok ? 'pass' : 'fail']++; }
-  console.log('\n=== UI LAYOUT GATE ===');
-  for (const k in byVp) console.log('  ' + k.padEnd(11) + ' ' + byVp[k].pass + ' pass' + (byVp[k].fail ? '  ' + byVp[k].fail + ' FAIL' : ''));
+  for (const result of results) {
+    byVp[result.vp] = byVp[result.vp] || { pass: 0, fail: 0 };
+    byVp[result.vp][result.ok ? 'pass' : 'fail']++;
+  }
   const requestedViewportCount = VIEWPORTS.filter((viewport) => !_vpArg
     || _vpArg.slice(5).split(',').includes(viewport.id)).length;
-  console.log(fails.length ? 'GATE: FAIL (' + fails.length + ')' : 'GATE: PASS (' + results.length + ' checks, ' + requestedViewportCount + ' viewports)');
-    writeReport(fails.length ? 'fail' : 'pass', { browser: REPORT_BROWSER, results });
-    await browser.close();
-    browser = null;
-    verifyReport(REPORT_PATH, RUN_ID);
-    process.exitCode = fails.length ? 1 : 0;
-  } finally {
-    if (browser) await browser.close();
+  REPORT_LIFECYCLE.workspaceLockHeldThroughReportWrite = !!releaseWorkspaceLock;
+  let terminal;
+  try {
+    terminal = writeTerminalReport(fails.length ? 'fail' : 'pass', {
+      browser: REPORT_BROWSER,
+      results,
+    });
+    verifyReport(REPORT_ARTIFACT_PATH, RUN_ID, {
+      expectedSource: REPORT_SOURCE_END,
+      expectedArtifactPath: REPORT_ARTIFACT_PATH,
+      requireCertifying: false,
+    });
+  } catch (error) {
+    let reportFinalized = false;
+    try {
+      writeTerminalReport('instrument-fail', {
+        browser: REPORT_BROWSER,
+        failure: { message: error.message, detail: error.stack || error.message, exitCode: 2 },
+      });
+      reportFinalized = true;
+    } catch { /* the original evidence-write failure remains authoritative */ }
+    if (releaseWorkspaceLock) {
+      try { releaseWorkspaceLock(); } catch { /* surfaced by the original terminalization failure */ }
+      releaseWorkspaceLock = null;
+    }
+    error.layoutReportFinalized = reportFinalized;
+    throw error;
   }
+  try {
+    releaseWorkspaceLock();
+    releaseWorkspaceLock = null;
+  } catch (error) {
+    try {
+      writeTerminalReport('instrument-fail', {
+        browser: REPORT_BROWSER,
+        failure: { message: error.message, detail: error.stack || error.message, exitCode: 2 },
+      });
+      error.layoutReportFinalized = true;
+    } catch { /* release failure remains red even if the report rewrite also fails */ }
+    throw error;
+  }
+  console.log('\n=== UI LAYOUT GATE ===');
+  for (const viewportId in byVp) {
+    console.log('  ' + viewportId.padEnd(11) + ' ' + byVp[viewportId].pass + ' pass'
+      + (byVp[viewportId].fail ? '  ' + byVp[viewportId].fail + ' FAIL' : ''));
+  }
+  console.log(fails.length ? 'GATE: FAIL (' + fails.length + ')'
+    : 'GATE: PASS (' + results.length + ' checks, ' + requestedViewportCount + ' viewports)');
+  if (!terminal.certifying) {
+    console.log('LAYOUT EVIDENCE: DIAGNOSTIC ONLY — targeted/custom-URL or dirty source cannot certify the sealed 10-viewport gate');
+  }
+  process.exitCode = fails.length ? 1 : 0;
 }
 
 async function selftest() {
@@ -750,6 +1137,19 @@ async function selftest() {
     if (JSON.stringify(callerOptionKeys) !== JSON.stringify(expectedCallerOptionKeys)) {
       throw new Error(`SELFTEST root layout caller exposed unowned options: ${callerOptionKeys.join(', ')}`);
     }
+    let lockAcquireCount = 0;
+    let lockLabel = null;
+    let lockReleaseCount = 0;
+    const releaseSentinel = acquireRootLayoutWorkspaceLock((label) => {
+      lockAcquireCount++;
+      lockLabel = label;
+      return () => { lockReleaseCount++; };
+    });
+    releaseSentinel();
+    if (lockAcquireCount !== 1 || lockReleaseCount !== 1
+      || lockLabel !== 'root UI layout build and browser gate') {
+      throw new Error(`SELFTEST workspace-lock ownership drifted: ${JSON.stringify({ lockAcquireCount, lockReleaseCount, lockLabel })}`);
+    }
     const report = path.join(tempRoot, 'report.json');
     atomicWriteJson(report, { schema: REPORT_SCHEMA, status: 'pass', run: { id: 'stale-pass' },
       summary: { failed: 0, completedViewports: 10, requestedViewports: 10 }, failure: null,
@@ -775,20 +1175,33 @@ async function selftest() {
     if (!rejected) throw new Error('SELFTEST early-exit browser was accepted');
     if (rejected.status !== 2) throw new Error(`SELFTEST wrong instrument exit: ${String(rejected.status)}`);
     const diagnostic = `${rejected.stdout || ''}\n${rejected.stderr || ''}`;
-    const expectedDiagnostic = process.platform === 'win32'
+    const seatbeltRefused = process.platform === 'darwin' && process.env.CODEX_SANDBOX === 'seatbelt';
+    const expectedDiagnostic = seatbeltRefused
+      ? /refusing macOS Chromium inside the Codex Seatbelt sandbox/
+      : process.platform === 'win32'
       ? /browser CDP did not start[\s\S]*exit=[1-9]/
       : /exit=73[\s\S]*UILAYOUT_SELFTEST_EARLY_EXIT/;
     if (!expectedDiagnostic.test(diagnostic)) {
       throw new Error(`SELFTEST lost exit/stderr diagnosis: ${diagnostic.slice(-1200)}`);
     }
     if (Date.now() - started >= 6000) throw new Error('SELFTEST early exit waited through the outer timeout');
-    const current = verifyReport(report, 'selftest-current-run');
+    const currentArtifact = artifactPathFor('selftest-current-run', report);
+    const current = verifyReport(currentArtifact, 'selftest-current-run', {
+      expectedArtifactPath: currentArtifact,
+    });
     if (current.status !== 'instrument-fail' || current.failure?.exitCode !== 2
       || !current.results.some((result) => result.ok === false)) {
       throw new Error('SELFTEST current red report did not replace the stale PASS');
     }
+    if (!readRegularFile(currentArtifact, 'selftest immutable report')
+      .equals(readRegularFile(report, 'selftest current report pointer'))) {
+      throw new Error('SELFTEST current pointer differs from the immutable instrument-fail report');
+    }
     let staleAccepted = false;
-    try { verifyReport(report, 'stale-pass'); staleAccepted = true; } catch (_) { /* expected */ }
+    try {
+      verifyReport(currentArtifact, 'stale-pass', { expectedArtifactPath: currentArtifact });
+      staleAccepted = true;
+    } catch (_) { /* expected */ }
     if (staleAccepted) throw new Error('SELFTEST freshness accepted the prior run id');
     const malformedCurrent = JSON.parse(JSON.stringify(current));
     malformedCurrent.status = 'pass';
@@ -796,29 +1209,140 @@ async function selftest() {
     malformedCurrent.results = [{ vp: 'iphone', surf: 'fake', name: 'truncated pass', ok: true, detail: '' }];
     malformedCurrent.summary = { failed: 0 };
     malformedCurrent.browser = null;
-    atomicWriteJson(report, malformedCurrent);
+    atomicWriteJson(currentArtifact, malformedCurrent);
     let malformedAccepted = false;
-    try { verifyReport(report, 'selftest-current-run'); malformedAccepted = true; } catch (_) { /* expected */ }
+    try {
+      verifyReport(currentArtifact, 'selftest-current-run', { expectedArtifactPath: currentArtifact });
+      malformedAccepted = true;
+    } catch (_) { /* expected */ }
     if (malformedAccepted) throw new Error('SELFTEST accepted a truncated current-id PASS report');
+    atomicWriteJson(currentArtifact, current);
     atomicWriteJson(report, current);
+
     const sealedResults = JSON.parse(fs.readFileSync(BASELINE_REPORT_PATH, 'utf8')).results;
-    const completePass = reportFor('pass', {
-      browser: { executable: '/selftest/browser', product: 'Selftest/1', revision: 'selftest',
-        user_agent: 'selftest', js_version: 'selftest', protocol_version: 'selftest', pid: 123 },
-      results: sealedResults,
+    const sourceFixture = Object.freeze({
+      commit: 'a'.repeat(40), branch: 'openai/selftest', state: 'committed',
+      statusSha256: 'b'.repeat(64), workingTreeSha256: 'c'.repeat(64),
     });
-    atomicWriteJson(report, completePass);
-    verifyReport(report, RUN_ID);
-    completePass.results.pop();
-    completePass.summary.checks = completePass.results.length;
-    completePass.summary.passed = completePass.results.length;
-    completePass.summary.failed = 0;
-    completePass.summary.completedViewports = new Set(completePass.results.map((result) => result.vp)).size;
-    atomicWriteJson(report, completePass);
-    let missingOutcomeAccepted = false;
-    try { verifyReport(report, RUN_ID); missingOutcomeAccepted = true; } catch (_) { /* expected */ }
-    if (missingOutcomeAccepted) throw new Error('SELFTEST accepted a count-consistent PASS missing one sealed outcome');
-    atomicWriteJson(report, current);
+    const namedPointer = path.join(tempRoot, 'named-pointer.json');
+    const namedArtifact = artifactPathFor(RUN_ID, namedPointer);
+    const completePass = reportFor('pass', {
+      browser: { executable: portableAbsolutePath(path.join(tempRoot, 'browser')), product: 'Chromium/150.0.0.0', revision: 'selftest',
+        user_agent: 'selftest', js_version: 'selftest', protocol_version: '1.3', pid: 123 },
+      results: sealedResults,
+      sourceBegin: sourceFixture,
+      sourceEnd: sourceFixture,
+      lifecycle: { browserClosed: true, workspaceLockHeldThroughReportWrite: true },
+      artifactPath: namedArtifact,
+      certifyingRequest: true,
+    });
+    const writeNamedFixture = (value) => {
+      atomicWriteJson(namedArtifact, value);
+      atomicWriteJson(namedPointer, value);
+    };
+    const namedRejected = (value, expectedSource = sourceFixture) => {
+      writeNamedFixture(value);
+      try {
+        verifyNamedRun(RUN_ID, { reportPath: namedPointer, expectedSource });
+        return false;
+      } catch { return true; }
+    };
+    writeNamedFixture(completePass);
+    verifyNamedRun(RUN_ID, { reportPath: namedPointer, expectedSource: sourceFixture });
+
+    const portableWindowsBrowser = JSON.parse(JSON.stringify(completePass));
+    portableWindowsBrowser.browser.executable = 'C:/Program Files/Microsoft/Edge/Application/msedge.exe';
+    writeNamedFixture(portableWindowsBrowser);
+    verifyNamedRun(RUN_ID, { reportPath: namedPointer, expectedSource: sourceFixture });
+    const nativeWindowsBrowser = JSON.parse(JSON.stringify(completePass));
+    nativeWindowsBrowser.browser.executable = 'C:\\Program Files\\Microsoft\\Edge\\Application\\msedge.exe';
+    if (!namedRejected(nativeWindowsBrowser)) {
+      throw new Error('SELFTEST named verifier accepted a non-portable Windows executable path');
+    }
+    const unresolvedWindowsBrowser = JSON.parse(JSON.stringify(completePass));
+    unresolvedWindowsBrowser.browser.executable = 'C:/Program Files/Microsoft/../Edge/Application/msedge.exe';
+    if (!namedRejected(unresolvedWindowsBrowser)) {
+      throw new Error('SELFTEST named verifier accepted an unresolved Windows executable path');
+    }
+
+    const wrongBrowserFamily = JSON.parse(JSON.stringify(completePass));
+    wrongBrowserFamily.browser.product = 'Firefox/150.0.0.0';
+    if (!namedRejected(wrongBrowserFamily)) {
+      throw new Error('SELFTEST named verifier accepted non-Chromium browser provenance');
+    }
+    const wrongBrowserProtocol = JSON.parse(JSON.stringify(completePass));
+    wrongBrowserProtocol.browser.protocol_version = '1.4';
+    if (!namedRejected(wrongBrowserProtocol)) {
+      throw new Error('SELFTEST named verifier accepted non-CDP-1.3 browser provenance');
+    }
+
+    let reusedAccepted = false;
+    try { atomicCreateFile(namedArtifact, 'replacement must not land'); reusedAccepted = true; }
+    catch (_) { /* expected */ }
+    if (reusedAccepted) throw new Error('SELFTEST reused immutable layout run id was accepted');
+
+    const missingOutcome = JSON.parse(JSON.stringify(completePass));
+    missingOutcome.results.pop();
+    missingOutcome.summary.checks = missingOutcome.results.length;
+    missingOutcome.summary.passed = missingOutcome.results.length;
+    missingOutcome.summary.failed = 0;
+    missingOutcome.summary.completedViewports = new Set(
+      missingOutcome.results.map((result) => result.vp),
+    ).size;
+    if (!namedRejected(missingOutcome)) {
+      throw new Error('SELFTEST accepted a count-consistent PASS missing one sealed outcome');
+    }
+
+    const targeted = JSON.parse(JSON.stringify(completePass));
+    targeted.scope = 'targeted-diagnostic';
+    targeted.certifying = false;
+    targeted.target.viewportIds = [VIEWPORTS[0].id];
+    targeted.results = targeted.results.filter((result) => result.vp === VIEWPORTS[0].id);
+    targeted.summary = {
+      checks: targeted.results.length,
+      passed: targeted.results.length,
+      failed: 0,
+      completedViewports: 1,
+      requestedViewports: 1,
+    };
+    if (!namedRejected(targeted)) {
+      throw new Error('SELFTEST named verifier certified a targeted one-viewport PASS');
+    }
+
+    const dirtySource = { ...sourceFixture, state: 'dirty-diagnostic' };
+    const dirty = JSON.parse(JSON.stringify(completePass));
+    dirty.source = { begin: dirtySource, end: dirtySource };
+    dirty.certifying = false;
+    if (!namedRejected(dirty, dirtySource)) {
+      throw new Error('SELFTEST named verifier certified dirty source');
+    }
+
+    const mixed = JSON.parse(JSON.stringify(completePass));
+    mixed.source.end.workingTreeSha256 = 'd'.repeat(64);
+    mixed.certifying = false;
+    if (!namedRejected(mixed)) throw new Error('SELFTEST named verifier accepted mixed source');
+
+    const wrongCurrentSource = { ...sourceFixture, workingTreeSha256: 'e'.repeat(64) };
+    if (!namedRejected(completePass, wrongCurrentSource)) {
+      throw new Error('SELFTEST named verifier accepted an artifact from another current source');
+    }
+
+    const retryPolicy = JSON.parse(JSON.stringify(completePass));
+    retryPolicy.policy.automaticRetries = 1;
+    if (!namedRejected(retryPolicy)) throw new Error('SELFTEST named verifier accepted retry policy drift');
+
+    writeNamedFixture(completePass);
+    const stalePointer = JSON.parse(JSON.stringify(completePass));
+    stalePointer.run.id = 'stale-pointer';
+    atomicWriteJson(namedPointer, stalePointer);
+    let stalePointerAccepted = false;
+    try {
+      verifyNamedRun(RUN_ID, { reportPath: namedPointer, expectedSource: sourceFixture });
+      stalePointerAccepted = true;
+    } catch (_) { /* expected */ }
+    if (stalePointerAccepted) throw new Error('SELFTEST named verifier accepted a stale current pointer');
+
+    writeNamedFixture(completePass);
     const profilesAfter = profileNames();
     const leaked = profilesAfter.filter((name) => !profilesBefore.includes(name));
     if (leaked.length) throw new Error(`SELFTEST owned profile leaked: ${leaked.join(', ')}`);
@@ -829,9 +1353,19 @@ async function selftest() {
     REPORT_BROWSER = provenanceFixture;
     finalizeInstrumentFailure(new Error('injected post-launch failure'), {
       file: report, setExitCode: false, print: false,
+      reportOptions: {
+        sourceBegin: sourceFixture,
+        sourceEnd: sourceFixture,
+        lifecycle: { browserClosed: true, workspaceLockHeldThroughReportWrite: true },
+        artifactPath: report,
+        certifyingRequest: true,
+      },
     });
     REPORT_BROWSER = priorReportBrowser;
-    const redWithProvenance = verifyReport(report, RUN_ID);
+    const redWithProvenance = verifyReport(report, RUN_ID, {
+      expectedSource: sourceFixture,
+      expectedArtifactPath: report,
+    });
     if (redWithProvenance.status !== 'instrument-fail'
       || redWithProvenance.browser?.product !== provenanceFixture.product
       || redWithProvenance.browser?.pid !== provenanceFixture.pid) {
@@ -841,12 +1375,16 @@ async function selftest() {
     fs.rmSync(tempRoot, { recursive: true, force: true });
   }
   console.log('UI LAYOUT LAUNCHER SELFTEST: PASS');
-  console.log('  one root-layout CDP call owns exact 45s startup / 15s socket / 30s command / 5s shutdown bounds');
-  console.log('  stale PASS replaced by current instrument-fail report');
-  console.log(`  early executable exit retained before startup bound${process.platform === 'win32' ? '' : ' (73 + stderr marker)'}`);
+  console.log('  one workspace lock and one root-layout CDP call own the complete one-attempt lifecycle');
+  console.log('  exact 45s startup / 15s socket / 30s command / 5s shutdown bounds retained');
+  console.log('  stale PASS replaced by current immutable instrument-fail report and matching pointer');
+  console.log(process.platform === 'darwin' && process.env.CODEX_SANDBOX === 'seatbelt'
+    ? '  macOS Seatbelt refusal retained before spawn'
+    : `  early executable exit retained before startup bound${process.platform === 'win32' ? '' : ' (73 + stderr marker)'}`);
   console.log('  mismatched run id rejected; owned browser profile cleaned');
   console.log('  current-id truncated PASS report rejected');
-  console.log('  count-consistent PASS missing one sealed outcome rejected');
+  console.log('  exact 10/787 certifying inventory required; targeted and count-consistent partial PASS rejected');
+  console.log('  immutable run-ID reuse, stale pointer, dirty/mixed/wrong source, and retry-policy drift rejected');
   console.log('  post-launch instrument failure retains browser provenance');
 }
 
@@ -859,10 +1397,15 @@ if (process.argv.includes('--selftest')) {
       throw new Error('usage: node tools/uilayout.js --verify-run=<exact-run-id>');
     }
     const expected = verifyArgs[0].slice('--verify-run='.length);
-    const report = verifyReport(REPORT_PATH, expected);
+    const report = verifyNamedRun(expected);
     console.log(`UI LAYOUT REPORT VERIFIED — ${report.status} · run ${expected}`);
     process.exitCode = report.status === 'pass' ? 0 : report.status === 'fail' ? 1 : 2;
   } catch (error) { console.error(error.stack || error.message); process.exitCode = 2; }
 } else {
-  main().catch((error) => finalizeInstrumentFailure(error));
+  main().catch((error) => {
+    if (error.layoutReportFinalized) {
+      console.error(error.stack || error.message);
+      process.exitCode = 2;
+    } else finalizeInstrumentFailure(error);
+  });
 }

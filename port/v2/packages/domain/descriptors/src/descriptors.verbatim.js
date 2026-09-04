@@ -508,4 +508,4 @@ function describePick(p){
   return d;
 }
 
-export { galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor, SOL_MOONS };
+export { galaxyStats, fmtBig, roman, describePick, slimGal, starDescriptor, planetDescriptor, moonDescriptor, galaxyDescriptor, wormholeDescriptor, cmbDescriptor, oortDescriptor, kuiperDescriptor, visitorDescriptor, beltDescriptor, SOL_MOONS, quasarDescriptor, cometDescriptor, decoDescriptor, dwarfDescriptor, radioDescriptor, supernovaDescriptor, protostarDescriptor };

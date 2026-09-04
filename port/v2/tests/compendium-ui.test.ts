@@ -404,6 +404,35 @@ describe('species thumbnail lease binding', () => {
 });
 
 describe('panel visible-to-hidden lifecycle', () => {
+  it('uses delegated capture/toggle owners and restores the exact clicked opener', async () => {
+    document.body.innerHTML = `
+      <button id="a-open"><span id="a-icon">A</span></button>
+      <aside id="a" aria-label="A"></aside>
+      <div id="importsheet"></div><button id="docksurvey">Survey</button><canvas></canvas>`;
+    const opener = document.getElementById('a-open') as HTMLButtonElement;
+    const openerAdd = vi.spyOn(opener, 'addEventListener');
+    const documentAdd = vi.spyOn(document, 'addEventListener');
+    const panels = await import('../apps/game/src/panels.js');
+    panels.registerPanel({ id: 'a', el: document.getElementById('a')!, btns: [opener] });
+    expect(openerAdd).not.toHaveBeenCalled();
+    const captureClickOwners = () => documentAdd.mock.calls.filter(
+      ([type, , options]) => type === 'click'
+        && (options === true || (typeof options === 'object' && options?.capture === true)),
+    );
+    expect(captureClickOwners()).toHaveLength(1);
+
+    document.getElementById('a-icon')!.dispatchEvent(new dom.window.Event('click', { bubbles: true }));
+    expect(panels.openPanelId()).toBe('a');
+    expect(document.activeElement).toBe(document.querySelector('[data-pnx="a"]'));
+
+    (document.querySelector('[data-pnx="a"]') as HTMLButtonElement).click();
+    expect(panels.openPanelId()).toBeNull();
+    expect(document.activeElement).toBe(opener);
+
+    document.addEventListener('click', vi.fn(), { capture: true });
+    expect(captureClickOwners()).toHaveLength(2);
+  });
+
   it('calls open/close hooks only once per real transition, including one-panel switching', async () => {
     document.body.innerHTML = `
       <button id="a-open">A</button><button id="b-open">B</button>

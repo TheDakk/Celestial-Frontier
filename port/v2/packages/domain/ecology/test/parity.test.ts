@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { canon } from '../../../../tests/parity.js';
 import { probeRaw } from '../../../../tests/baseline.js';
 import { biosphere, civilization, planetSpecies } from '@cf/domain-ecology';
@@ -48,6 +48,35 @@ describe('outcome invariants (until planetDescriptor ×1k pins these transitivel
     const civ = civilization({ seed: 555 }, null, 'temperate', { level: 'Plant-like flora only', key: 'flora' }, mulberry32(2));
     expect(civ.civ).toBe(false);
     expect(civ.wild).toBeUndefined();
+  });
+  it('D-LOC replaces ambient locale grouping without changing RNG chronology or fields', () => {
+    const values = [0, 0, 0, 0, 0, 0];
+    let calls = 0;
+    const locale = vi.spyOn(Number.prototype, 'toLocaleString')
+      .mockReturnValue('AMBIENT-LOCALE');
+    try {
+      const civ = civilization(
+        { seed: 555 },
+        null,
+        'temperate',
+        { level: 'Abundant complex biosphere', key: 'complex' },
+        () => values[calls++] ?? 0,
+      );
+      expect(calls).toBe(6);
+      expect(civ).toMatchObject({
+        civ: true,
+        era: { key: 'stone' },
+        year: 1000,
+        yearLabel: 'Local year ~1,000',
+        pop: 'a few thousand',
+      });
+      expect(civ.yearLabel).not.toContain('AMBIENT-LOCALE');
+      /* The lifted body is still exercised exactly once. This makes the
+         control discriminate a facade that silently reimplemented its RNG. */
+      expect(locale).toHaveBeenCalledTimes(1);
+    } finally {
+      locale.mockRestore();
+    }
   });
   it('a complex roster is deterministic, non-empty, and spans the food web', () => {
     const P = { seed: 424242 };

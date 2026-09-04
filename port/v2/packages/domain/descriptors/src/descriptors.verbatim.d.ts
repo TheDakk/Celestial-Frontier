@@ -16,6 +16,20 @@ export function galaxyStats(g: P): Record<string, unknown>;
 export function fmtBig(n: number): string;
 export function roman(n: number): string;
 export function describePick(p: P): Record<string, unknown> | null;
+/** @internal Existing verbatim composers exposed for the owned D-ST router. */
+export function quasarDescriptor(g: P): Descriptor;
+/** @internal Existing verbatim composers exposed for the owned D-ST router. */
+export function cometDescriptor(starSeed: number, ci: number, cm: P): Descriptor;
+/** @internal Existing verbatim composers exposed for the owned D-ST router. */
+export function decoDescriptor(dc: P): Descriptor | null;
+/** @internal Existing verbatim composers exposed for the owned D-ST router. */
+export function dwarfDescriptor(dw: P): Descriptor;
+/** @internal Existing verbatim composers exposed for the owned D-ST router. */
+export function radioDescriptor(g: P): Descriptor;
+/** @internal Existing verbatim composers exposed for the owned D-ST router. */
+export function supernovaDescriptor(site: P): Descriptor;
+/** @internal Existing verbatim composers exposed for the owned D-ST router. */
+export function protostarDescriptor(b: P): Descriptor;
 export function slimGal(g: P | null | undefined): Record<string, unknown> | null;
 export function starDescriptor(seed: number): Descriptor;
 export function planetDescriptor(P: P, sys: P | null | undefined, pl: P | null | undefined): Descriptor;

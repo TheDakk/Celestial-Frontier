@@ -1,6 +1,195 @@
 # Celestial Frontier — Breeding & Sharing
 
-> **2026-08-15 F2 sharing overlay (current code; supersedes the open CF1
+> **2026-09-01 current automatic-arrival transient-latch overlay (matches local code as of
+> 2026-09-01; supersedes older “current” labels without rewriting historical evidence):** PR #35
+> run `33522000552` tested exact head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`; Compendium passed, then the one/no-retry Slice
+> stopped because universe-to-galaxy zoom did not reach its browser outcome within 6 seconds.
+> Automatic galaxy and wormhole arrival had been able to consume their one-shot latch before a
+> transient persistence refusal, leaving the unchanged zoom intent unable to try again.
+>
+> The direct-travel owner now reports synchronous acceptance only after claiming the shared
+> coordinator and installing its `activePersist` ownership, before its first await. Galaxy arrival
+> claims its latch only from that callback; wormhole begin derives its accepted result and claims
+> its automatic-key latch inside the same callback. The held intent stays retryable and, after authority clears, commits exactly
+> once. The diagnostics-only persistence hold writes no save,
+> revision or receipt and mutates no product state; `migrated-v4` readiness is allowed only by an
+> explicit initial-exact-document Slice control. Exact clean SSH-signed source
+> `a45220421195042a8702aa1265e96d40d839fc38` passed the tracked-input develop profile at
+> **259 files / 2,665 passed / 1 skipped**. On that unchanged source, named-verified Compendium
+> `20260901164254371-82172-eaeba62d1a` passed **78/78**; named-verified Slice
+> `20260901164421191-82525-616ea739fbb1` passed with report SHA-256
+> `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`; and exact-Slice-bound
+> named-verified Glass `20260901165038911-82999-7c3323ea05c7` passed **12/12** viewport classes
+> with report SHA-256 `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`.
+> Each browser stage ran once with no retry. Breeding, companion care, lineage, CF1
+> encoding, explicit Follow/Share rules, creature/genome structure and all art/audio/plant/biome/
+> Guardian behavior are unchanged. No hosted authority, push, rerun or merge remains.
+
+> **2026-08-29 player-live Arc 5 Breed + Recovery boundary:** a versioned normal
+> companion-breeding planner and app transaction now adapt the existing V2 ownership, lifted
+> genetics, F4 SessionRNG/active-play authority and exact-five Arc 5 carrier. Two distinct live,
+> owned fauna may pair; exhibits, non-owned creatures, mission-assigned or still-recovering parents,
+> and parents with `hurt >= 0.3` fail before any outcome draw. Missing legacy `hurt` is healthy, and
+> Recovery completes at exact active-play equality. Any eligible fauna pairing keeps the legacy
+> deterministic hybrid fantasy through the existing `crossGenome` successor.
+>
+> The published V1 policy chance is
+> `clamp(0.95 - (tierA + tierB) * 0.06 + earnedStardustBonus, 0.08, 0.97)`; the bonus is an explicit
+> audited projection of lifetime earned Stardust, `0.01` per complete 50, capped at `0.15`.
+> Eligibility, both result successors and complete-save capacity are certified before the one
+> `breedOutcome` draw. Every settled attempt is nonlethal: both parents remain owned and enter
+> F4-active-play Recovery for eight minutes on success or two minutes on failure. Recovery blocks
+> breed, combat and dispatch. Success admits the existing child successor with exactly half the
+> lower parent's bounded `fed` and gives that newborn **+2 XP**. It adds the one-time **+5 XP** only
+> when the exact unordered parent-species pair has never paid; failure creates no child and changes
+> no XP-first authority. New V2 firsts use one collision-resistant SHA-256 digest over the sorted
+> canonical parent `SpeciesId`s. For legacy compatibility, the reader also honors the exact v1.8.9
+> `pair|<FNV32-base36>` alias derived from each immutable `_earthName || speciesName(seed)` identity
+> in either the live `xpf` window or archived `xpa` authority. That alias is never newly written, so
+> nickname and parent order cannot re-arm +5 and new claims do not inherit its collision risk.
+> The selected result commits through one product CAS that joins the exact-five ownership successor,
+> child XP, `xpf`, any required `xpa` overflow replacement, F4 advance and receipt, with no wall
+> clock, hidden entropy, reroll, optimistic publication or write retry.
+> The success successor also calls the canonical `bankBredSuccess` Charter owner before the draw is
+> exposed, so Chapter 3's `c3-breed` / **Breed a hybrid bloodline** deed is part of that same
+> capacity-certified complete save. Failure preserves the input Charter bytes exactly; refusal,
+> stale authority, duplicate receipt and storage failure likewise bank no credit. A verified live
+> commit publishes only the verified detached `ascCh`/`ascProg`, `unlocked`, `xpf`/optional `xpa`
+> compatibility projection beside the exact-five ownership result and refreshes the objective; an
+> unconfirmable durable result converges by read-only reload rather than rebanking or paying twice.
+>
+> A real-fauna Compendium detail now exposes the player action. The primary selector contains exact
+> owned instances of the current species; the mate selector contains distinct owned fauna across
+> the universe. Both use bounded 24-row pages so every candidate remains reachable, show the
+> established rarity-backed chance without raw genetics, and explain every eligibility refusal.
+> Back and Close remain available while pending. The panel publishes neither child nor Recovery
+> optimistically; an unconfirmable durable result locks read-only and converges by reload so it
+> cannot breed twice. Guide, draft release, Slice and Glass contracts now name the live boundary and
+> carry missing-anchor plus contradiction controls. The existing art, genome, portrait, lineage and
+> hybrid implementations were deliberately left structurally unchanged.
+
+> **2026-08-29 player-live exact-instance Rename boundary:** the same real-fauna detail can select
+> one exact owned companion through bounded 24-row pages; identical same-species twins remain
+> separate by stable instance ID. Rename is identity-only, so assigned, recovering and injured
+> companions remain eligible; exhibition, non-owned, protected and revision-exhausted rows refuse.
+> The shipped sanitizer removes `<`, `>`, `&`, both quotation forms and apostrophe, trims whitespace
+> and caps at 24 characters. Cleaned-empty or unchanged input consumes no receipt or write. One
+> immutable receipt and exact-five CAS change only that companion's `nickname`—never species,
+> genome, traits, lineage, assignment, hurt, bond, catalogue alias or another twin—with no RNG,
+> retry or optimistic name. Stale/storage/postcommit faults retain the old visible name and converge
+> read-only through reload so the rename cannot apply twice.
+
+> **2026-08-29 captured Guardian/Titan companion boundary:** live captured Guardians and Titans can
+> now return as Arc 6 combat champions, but they are deliberately not inserted into the exact-five
+> Arc 5 ownership carrier described here. Their immutable acquisition rows remain unchanged while a
+> separate `arc6.guardian-companions` overlay owns combat XP, injury and permanent-loss tombstones.
+> They therefore do not become Breed, Feed, Rename, Field Scout, care, mission or Recovery candidates.
+> A fatal defeat omits the tombstoned capture from the composite Compendium and combat roster across
+> reload, Training restore and capture reconciliation; it cannot be resurrected from acquisition
+> history. Prime claims remain independent of companion use.
+
+> **2026-08-30 current player-live explorer-name + named-CF1 composite boundary:** Settings exposes
+> one separate
+> **Explorer name → Change name** action. It reuses the shipped sanitizer/24-character cap, changes
+> only `explorerName`, and makes cleaned-empty or unchanged input a receipt-free no-op. One immutable
+> receipt and F4 CAS settle with no retry or optimistic name; durable ambiguity restores the old live
+> name and reload-converges instead of applying twice. This identity-only action deliberately does
+> not grant discovery achievement `namer`, whose current owners remain world and companion Rename.
+>
+> Native **Share** on an exact valid world owns exactly one `arc9-share-send-v1` receipt/CAS that
+> increments `stats.shares` and adds the one-time `share` event before the independent clipboard
+> copy/fallback result. After that owner settles, aggregate progression may append exactly one
+> separate `arc9-progression-refresh-v1` receipt: fifth Share projects `share5`, and a post-Share
+> aggregate score crossing raises best rank. Otherwise no tail is written. Together these receipts
+> form one causal action sequence, not one transaction. A submitted CF1 **Follow** commits only after
+> Search has source-proven and reach-authorized the route. Direct Travel owns its accepted route,
+> arrival, galaxy visit and any source-proved galaxy-kind event; Follow owns that arrival aggregate
+> plus `stats.jumps` and one-time `wayfarer` in its single transaction. Direct navigation still
+> cannot earn Follow. Neither depends on the accepted custom-world name's earlier catch-up. The
+> custom-world name transaction no longer runs an early aggregate catch-up that can occupy the
+> shared product coordinator and starve the immediately submitted route. If the post-name route is
+> refused or otherwise does not join that progression, the world-name settlement queues exactly one
+> aggregate catch-up afterward. An ordinary save checkpoint cannot interpose: the composite reserves
+> the handoff, coalesces ordinary attempts, and re-arms one after the route/catch-up enqueue. Each
+> owning action keeps one F4 receipt/CAS; any aggregate-progression tail remains a separate receipt.
+> There is no retry and no optimistic counter/route publication; refusal, stale authority
+> and failed writes count nothing, while durable ambiguity reload-converges instead of applying
+> twice. The fixed browser timeout remains diagnostic. CF1 encoding, strict source verification,
+> reach and route policy remain unchanged.
+>
+> **2026-09-01 current Share evidence boundary:** exact clean SSH-signed source
+> `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red
+> without changing Share product or fixed-point semantics. Its tracked-input develop preflight
+> passed **259 files / 2,660 passed / 1 skipped**; browser-CDP selftest and live Edge preflight
+> passed. Compendium `20260901123144352-62163-00064c788a` passed **78/78** and named verification.
+> Exact-source Slice `20260901123326914-62541-f7f7c336aa70` passed and named-verified with report
+> SHA-256 `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`. Glass
+> `20260901123953804-63082-f5844810dfb5` consumed that exact Slice, passed all **12/12** viewport
+> classes and named verification, and has report SHA-256
+> `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. Each browser stage ran
+> once with no retry.
+>
+> The waiter belongs to the enclosing scope shared by full-journey and collision-only modes; Acorn
+> binds one declaration to all five direct calls and keeps the re-gated mutant red. No creature,
+> genome, breeding, lineage, CF1 codec, save-schema, timeout or retry behavior changed. Edge
+> `152.0.4191.53` / CDP `1.3` is provenance only; compatible point updates do not require a
+> rebaseline. No hosted attempt, push, merge, release, version bump, publication or deployment
+> followed from this local certificate.
+>
+> Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` first passed Compendium
+> **78/78** once/no-retry, then its one Slice run
+> `20260830115041916-36220-7ed2dd2ef398` stopped after 63,106 ms: 62 Guide/Release instrument-
+> drift findings (deferred-publication reads plus stale inventory/player-copy authority) and the
+> independent named-CF1 Follow starvation above. The changed-
+> head composite repair has no browser certificate yet; Slice was not retried and Glass/Recovery did
+> not run. No creature, genome, breeding, lineage, CF1 codec or save-schema structure changed.
+
+> **2026-08-26 historical pre-action Arc 5B boundary (superseded where the 2026-08-29 overlay
+> above differs):** the non-public exact-five V2 successor now
+> implements one narrow bred-child rule. At newly admitted child creation only, it clamps each
+> parent `fed` to `0..200` and assigns
+> `child.fed = 0.5 * min(parentA.fed, parentB.fed)`. The result is parent-order invariant, absent
+> input becomes zero, the value round-trips, and later child feeding is not recomputed or overwritten.
+> This is internal ownership authority, not a player breeding action.
+>
+> At that boundary Arc 5B still had no product decision/writer for odds, eligibility, parent
+> Recovery duration and locks, care, timing, capacity, confirmation, preview or UI/copy. No app
+> control grants a child or
+> invokes the successor. The dedicated 20-minute certificate still pending for Arc 4 Biosphere
+> recovery cannot be repurposed as proof of future parent Recovery; the ordinary Arc 4 Slice remains
+> `recoveryClaimed:false`. Any future breeding rarity preview must use the strict ten-name player
+> projector—valid raw `0..14`, with `9..14` shown as Transcendent—and must never expose internal
+> art-grade labels/raw tier numbers or coerce invalid input to Common. Current creature audio is
+> limited to the exact durable Tame-fauna greeting and the exact accepted Feed acknowledgement;
+> breeding and all broader care audio remain absent.
+
+> **2026-08-25 Arc 0/5A recorded local boundary:** legacy `CFB-` remains the exact v1
+> challenger/exhibit contract. Versioned `CFB2-` round-trips one bounded ordered uint32 parent
+> tuple for an owned-creature identity while excluding XP, feeding, brood, injury, bond and
+> assignment; forward/reverse parents remain distinct and malformed/future/mismatched payloads fail
+> closed. Ownership-v2 separately defines receipt-bound deterministic fauna-only child successors,
+> local child ids, ordered genome parent evidence, dispositions and tombstones. Arc 5's implemented
+> compact authority is one version-2 manifest plus exactly four fixed generic delta shards. It binds
+> the exact Arc 4 source, canonical delta and reconstructed V2 target fixed points without copying
+> unchanged Arc 4 ownership. App boot, genuine legacy Training and every Arc 4 capture successor use
+> the exact five-write tuple; aligned legacy-v1 upgrades once and aligned current-v2 writes nothing.
+> The internal V2-only successor also replaces exactly five carriers and applies the one-time
+> child-`fed` rule above, but it is absent from the public package root and cannot be invoked as a
+> player Arc 5-only product change.
+>
+> No breeding, parent Recovery, assignment, mission or share UI writer was live at that boundary.
+> One narrowly
+> bounded real-fauna Compendium Feed writer now advances one exact eligible companion and flora lot
+> through a receipt/CAS; it grants no child and implements none of the broader breeding/care design.
+> The non-consuming parent/Recovery design below was therefore the future breeding contract; no
+> app path then invoked the internal V2-only successor or granted a child. The compact
+> carrier keeps namespace count O(1): source-only growth leaves all four canonical empty-shard bytes
+> unchanged, and every reader verifies source/delta/target plus each shard. Guide, release and
+> Training lesson capability remain unchanged.
+
+> **2026-08-15 F2 sharing overlay (historical foundation; current where not superseded above;
+> supersedes the open CF1
 > hierarchy note in the 2026-08-11 overlay):** Strict CF1 galaxy, star and
 > planet routes are now regenerated through the production hierarchy before
 > navigation. The payload remains a pointer, never authority: forged, stale,
@@ -20,7 +209,7 @@
 > ownership, local ledgers, the save schema or any future receipt design; CFB
 > hybrid-parent preservation remains open.
 
-> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** Breeding,
+> **2026-08-13 v2 next-arc overlay — historical pre-ownership-model boundary:** Breeding,
 > feeding, creature ownership mutations and companion dispatch are not live in
 > the current v2 slice; their Guide topics correctly remain **Unavailable**.
 > Legacy v1.8.9 stores species discovery and a living owned specimen in the same
@@ -62,7 +251,7 @@
 > deviation and new compatibility tests.
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the dated v2
-overlays match `port/v2` as of 2026-08-15. Carries v1.8.6
+overlays match the current local `port/v2` candidate as of 2026-08-30. Carries v1.8.6
 and v1.8.7 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **See also:** `LINEAGE_AND_BREEDING.md` — the v1.6 Earth-lineage layer on top of `breedPair`:
 a child of an Earth parent keeps that parent's Earth RIG + wears the child's alien palette
@@ -183,7 +372,10 @@ Per-creature genome fields that persist (in `codex` entries, save `codex[]`):
 - **Duels are deterministic:** `runDuel` (~L11312) seeds its RNG with `mulberry32(hashInt(seedA, seedB, 0xD0E1))` — the same matchup plays out identically on every device (the tutorial even advertises this).
 - Codes **deliberately don't carry runtime randomness** — no `Math.random` state, no battlefield modifiers (`_mult`/`_wf`), no injuries (`hurt`). The **only** leveled state that travels is champion `xp`, and it's clamped to the L9 ceiling and marked exhibit-only so a shared champion can't be farmed as an owned/breedable creature.
 - `CF1-` world codes store galaxy/star coords + seed; the world is regenerated from seed on arrival — the code is a pointer, not a snapshot.
-- Note: breeding/feeding/healing **outcomes** use live `Math.random()` for the roll (they're player actions, not shared content), so they are intentionally *not* reproducible — only the shareable artifacts (codes) are deterministic.
+- Legacy-v1 note: breeding/feeding/healing **outcomes** use live `Math.random()` for the roll, so
+  those v1 actions are intentionally not replayable. V2 companion breeding instead consumes exactly
+  one persisted SessionRNG `breedOutcome` draw after preflight/capacity and binds the result to its
+  receipt; shareable codes remain deterministic artifacts rather than mutable ownership authority.
 
 ## 6. Code anchors (functions + ~line numbers)
 - `encodeCreature` L11266 · `normGenome` L11275 · `decodeCreature` L11296 (champion xp clamp + exhibit L11308) · `runDuel` L11312 · `levelOf` L10847
@@ -195,7 +387,9 @@ Per-creature genome fields that persist (in `codex` entries, save `codex[]`):
 
 ## 7. Open questions / pending
 - **Champion xp ceiling vs `levelOf`:** decode clamps xp to `6*81 = 486` (= exactly L9 threshold). Correct, but the magic number `6*81` is duplicated across `levelOf` and `decodeCreature` — a change to the level curve must touch both.
-- **`exhibit` creatures are duel-only** — confirm every ownership path (feed/breed/scout/conquer champion) rejects `entry.exhibit`; the flag is set on decode but this doc doesn't audit every consumer.
+- **`exhibit` creatures are duel-only** — V2 Breed now rejects an owned row whose registered genome
+  carries `exhibit:true`, and a decoded/non-owned exhibit cannot pass its exact ownership lookup.
+  Continue auditing feed/scout/conquer and every future ownership writer independently.
 - **Discovery record gating:** `recordCreature` is described as "Legendary+"; the function itself doesn't enforce a grade floor — the gate lives at the call site (verify).
 - **Iron Gut interaction:** a `gutsy` beast has `pois = 0` in `feedPair`, so it can never be wounded/killed by food; intended, but means such beasts also never trigger the `disliked` wound path.
 
@@ -213,15 +407,18 @@ the roll"; the range itself was wrong.
 **Now:** the band is computed from stats with `fed` stripped from both parents, and when either
 parent carries `fed` the card says so outright — *"fed bloodline does not carry over"*.
 
-**PLANNED V2 DECISION (Nick, authoritative; not implemented):** the child inherits
-**50% of the LOWER parent's `fed`**. Legacy v1.8.9 still starts the child at zero,
-so its current preview remains correct for that build; v2 changes the outcome and
-preview together when living-instance breeding lands. The resolver clamps both
-inputs to `0..200`, computes `0.5 × min(parentA.fed,parentB.fed)` once inside the
-child-creation transaction, and is parent-order invariant. Required reversed
-vectors include `80/30 → 15` and `30/80 → 15`, `200/50 → 25` and `50/200 → 25`,
-plus `0/200 → 0` in both orders. No preview-only calculation may become a second
-authority.
+**V2 DECISION — PLAYER ACTION IMPLEMENTED:** the Arc 5 action
+now invokes the existing exact-five V2 successor and gives each successfully admitted child
+**50% of the LOWER parent's clamped `fed`** exactly once. Legacy v1.8.9 still starts the child at
+zero, so its current preview remains correct for that build. The resolver clamps both inputs to
+`0..200`, computes `0.5 × min(parentA.fed,parentB.fed)`, and is parent-order invariant. Reversed
+vectors cover `80/30 → 15` and `30/80 → 15`, `200/50 → 25` and `50/200 → 25`, plus `0/200 → 0`
+in both orders; absent input is zero and later child care state survives. The V1 odds, eligibility,
+Recovery, lock, timing and pre-draw capacity rules are recorded in the 2026-08-29 overlay and
+`port/DECISIONS.md`. Compendium/main wiring, bounded exact-instance selection, confirmation and
+shown odds are live. A richer offspring-trait preview remains open and may never become a second
+authority. The same admitted V2 child receives +2 XP, plus +5 once for its exact unordered
+parent-species pair under the canonical/legacy-compatible XP-first authority described above.
 
 ---
 

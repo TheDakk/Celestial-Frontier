@@ -10,6 +10,5070 @@ summary of it.
 
 ## Contents
 
+### Current PR #35 cc4d7c9 local proof and four-item robustness batch
+
+`PR35_CC4D7C9_FORENSIC_REVIEW_20260904.md` preserves the exact external review.
+`PR35_CC4D7C9_LOCAL_PROOF_AND_ROBUSTNESS_20260904.md` records its disposition, every local
+browser run ID/duration/hash, named verification, projection bytes, raw workflow-jq verdicts,
+bounded code changes, existing selftests and final-head handoff boundary.
+
+The `PR35_CC4D7C9_20260904_*` compressed carriers retain the real Slice/full Glass reports,
+Slice raw log and ten screenshots, all four targeted Chrome reports, diagnostic summary,
+jq replay and verification logs. Evidence belongs to clean `cc4d7c9`; it is not relabelled as
+the robustness descendant. No gameplay or new test inventory was added. Only the canary's
+seven-minute orchestration margin, pinned-curl transport retry, jq prerequisite and honest
+debounce-aware Shipyard settlement changed. A normal branch push is authorized; hosted Actions,
+PR metadata changes, merge and release/deploy are not.
+
+### Historical predecessor PR #35 a922 forensic prevention repair
+
+The external read-only review of pushed head
+`a922c4b74502fc4093ca103d46a189396cad1e8f` is preserved by exact input digest and assessed in
+`PR35_A922_FORENSIC_PREVENTION_REPAIR_20260903.md`. The bounded local successor raises only the
+hosted orchestration envelope (**120-minute battery; 55-minute Compendium step**), extends the
+existing changed-input diagnostic to sequential `small-phone` plus `large-phone` rows inside the
+same five-minute step, makes F4 return an exact structured cycle receipt, and follows the current
+Shipyard disclosure's semantic identity through replacement and trusted Enter.
+
+Current PASS authority is `cf-v2-glassmatrix/v2`; historical v1 red diagnostics remain readable,
+but v1 PASS is refused. Deep shared and hosted verifiers independently replay exact descriptors,
+replacement/focus facts, 44px geometry, exact visibility and cumulative ancestor opacity rather
+than trusting summary booleans. Product Shipyard focus restoration already existed and was not
+reimplemented. The final 12-row certificate and mandatory hard-fail artifact upload are unchanged;
+there is no retry, job, shard, browser pin or gameplay change.
+
+Focused closure passes **73/73 tests**, all TypeScript programs and every relevant instrument
+selftest, including the Actions policy's **66** fail-closed controls. The consolidated
+browser-free `develop` profile passes **268/268 files, 2,785 passed / 1 skipped**; clean-source
+implementation checkpoint `f348b249…` then passed Compendium **78/78** with named verification and
+nine separately immutable targeted Glass rows with zero findings/instrument failures. Exact run
+IDs, timings and report digests are in the audit. Those rows are noncertifying and do not replace
+the Slice-bound 12-row matrix. Nick subsequently authorized a branch-only handoff push, so the
+signed repair/evidence payload is now on `origin/openai/mac` for Claude review. No hosted battery,
+PR merge, release or deployment occurred. A future attempt still requires exact new
+head/base/workflow
+authority, with a maximum of **122 total runner-minutes** (2 authorization + 120 battery) and no
+retry.
+
+### Historical predecessor PR #35 native-Tab identity stop and fail-closed diagnostic-retention repair
+
+PR #35 run `33708487067`, battery job `100502739510`, attempt 1, consumed the exact one-time
+`test-battery` authority for head `d529a9727c29fca3cd9f337a5bb4fc2577ceaec3` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Synthetic merge
+`ca4abf67ec6eb030642ea925b02f641a2873d88c` and the exact head share tree
+`65927bf068b2bfa01f91c51dbce614d41ba6f254`. Layout **787/787**, Compendium **78/78** plus
+named verification and exact-bound Slice all passed; full Glass consumed Slice report SHA-256
+`fc488de105b3951ad8b3d6ca1a0dfe7a803e91f8a71241ff873e8123d0457cb3` and stopped at its fourth
+viewport, `large-phone`, with exactly one `ARC4_CAPTURE_NATIVE_SURVEY_RETURN`: only
+`idleKeyboardFocus` was false. The job used about **82m45s**, including about **39m14s** for
+Compendium, **24m32s** for Slice and **5m45s** for terminal Glass; it did not retry.
+
+The later artifact upload found 27 files but failed `CreateArtifact` with `ETIMEDOUT`, creating
+zero artifacts. Only the terminal Glass line/finding remains in the aggregate log; the complete
+JSON is unrecoverable and no report/artifact identity is invented. The source repair follows
+current Scavenge/Sample semantic controls across a forced real F4 heartbeat replacement, separates
+trusted Tab transport from current product focus, requires nontransparent focus paint, and adds a
+fail-closed post-Glass summary projection so a future artifact outage cannot erase the exact
+terminal report.
+
+Independent reviews are **CLEAR**. The exact `large-phone` diagnostic
+`20260903043639066-7926-2f4122517015` passed in **11,037 ms**, with **3/3** outcomes and raw proof
+that both old nodes disconnected, both replacements were acquired, Scavenge focus was restored,
+trusted native Tab began on current Scavenge, and current Sample received painted semantic focus.
+Focused coverage passes **24/24**, diagnostic/evidence coverage **12/12**, Actions policy
+**64/64**, and the consolidated browser-free `develop` profile **266/266 files, 2,758 passed / 1
+skipped**, with all TypeScript, selftest, diff, art, route, species and field owners green.
+Compendium authorities are unchanged.
+
+`ARC4_GLASS_PR35_NATIVE_TAB_IDENTITY_AND_DIAGNOSTIC_RETENTION_REPAIR_20260903_D529A97.md` owns
+the exact run, missing-artifact boundary, supported instrument classification, repair, controls,
+local evidence and authority record. The exact run authority is consumed; PR #35 remains
+Ready/open/unmerged, `develop` is unchanged, and no new hosted, release or deployment authority
+exists.
+
+### Historical predecessor PR #35 Capture-focus / Glass-chronology stop, bounded repair and exact local successor
+
+PR #35 run `33694235427`, attempt 1, consumed the exact one-time `test-battery` authority for head
+`6b59b452b41c0065fb3946b9cf3b7fc6ac02963c` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Synthetic merge
+`94ec8e41606f9c0e1b16865cdfeff4fb76579b3f` and the exact head share tree
+`54ab518c2f63c924e2cedfea027b949989f2a79e`. The new early hosted Glass preflight passed its
+small-phone row on that source/browser with zero findings or instrument failures, **95/104**
+controls and nine lawful targeted omissions. Layout **787/787**, Compendium **78/78** plus named
+verification and exact-bound Slice then passed.
+
+Full Glass consumed Slice `gha-33694235427-1-slice` and stopped on the first small-phone row after
+**35,412 ms**, retaining one `ARC4_CAPTURE_GEOMETRY_FOCUS` finding, zero reported instrument
+failures, **67/104** controls, 37 causal blocks and no retry. Its Sample evidence combined a
+button rectangle centred at y `173.171875` and scroll top `2538` with later hit-test points at y
+`504.171875` on `NAV`. The ordinary five-second Capture heartbeat had replaced the DOM and bare
+semantic-focus restoration moved the scroll to `2207` between those observations. That carrier
+crosses layout epochs; the stop is therefore **instrument**, despite the old product label. The
+earlier PASS proves the race was timing-dependent, not that the old multi-command collector was
+sound. The cumulative fourteen-stop classification is **10 instrument/infrastructure, 3
+product/runtime and 1 mixed**.
+
+The bounded product repair makes only passive Capture authority rerenders restore semantic focus
+with `preventScroll`; explicit action settlement retains its reveal behavior. The Glass repair
+forces the heartbeat replacement deterministically, reacquires the live node, captures geometry,
+scroll, hit-test and focus atomically, and rejects a cross-epoch carrier as instrument evidence
+before product assessment. It adds no job, retry, timeout, browser pin or control. The complete
+browser-free `develop` profile passes **265/265 files, 2,749 passed / 1 skipped**, all three
+TypeScript programs, the **34-source** art audit with zero findings, **1,014/1,014** live route keys
+with zero dead, **1,010/1,010** species, and **454** declared fields with zero unread or inert.
+Exact clean SSH-signed source `7cfb42d993778211e9c27b671e6b4fc9b891ff95`, tree
+`090d2e4827b0eeeec334410ec9563dc778559dd0`, then passed the one-viewport repaired-path diagnostic
+and one unchanged-source, fail-fast/no-retry, named-verified **78/78 Compendium → zero-finding
+Slice → 12/12 Glass / 104/104 controls** chain. All five local reports/logs below are retained;
+this creates no hosted authority.
+
+The exact local run IDs/timings are preflight
+`20260903-pr35-chronology-7cfb42d99377-glass-preflight` / **12,695 ms**, Compendium
+`20260903012535851-93600-5d61fc93fc` / **63,955 ms**, Slice
+`20260903012714531-93918-edfead967720` / **372,125 ms**, and Glass
+`20260903013357550-94309-6b031e425f5d` / **115,254 ms**. Every named verifier passed and no stage
+retried. The signed evidence/docs descendant containing this index passes the final hermetic
+tracked-input `develop` profile; its own hash is intentionally not self-embedded.
+
+`ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.md` owns the exact local
+PASS chain, live repaired-path replay and five-carrier ledger.
+`ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_AND_REPAIR_20260903_6B59B45.md` owns the
+complete hosted source, timing, classification, repair and authority record. Its two permanent
+hosted carriers preserve both halves of the contradiction:
+
+- `ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_EARLY_PREFLIGHT_PASS_20260903_6B59B45.json.gz` — raw
+  **83,698 bytes**, SHA-256
+  `81d7e65cd5b5e7eae69d0c64da38476f01666cb3932b67f3da28d75dd2d1087a`; deterministic gzip
+  **10,090 bytes**, SHA-256
+  `db541bf32cc76d8d29460b44d172a57c58c8e44f2f154fbf742f781cffe2404a`.
+- `ARC4_GLASS_PR35_GEOMETRY_CHRONOLOGY_INSTRUMENT_RED_20260903_6B59B45.json.gz` — raw
+  **104,791 bytes**, SHA-256
+  `cb1798431ec801b3a6bc499a8fb5a929da756222ca833c7ab7f41012808e48d2`; deterministic gzip
+  **11,188 bytes**, SHA-256
+  `395172d82a8cdb7f05372c60b64ceeb93370a4013561ec7cb3ba9995ec25035f`.
+
+The exact signed local successor's noncertifying preflight and four admission-chain carriers are:
+
+- `ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PREFLIGHT_PASS_20260903_7CFB42D.json.gz` —
+  raw **92,314 bytes**, SHA-256
+  `89c2c3692da5462e09bce83e3af538543157f469b8d1569a21ef308540c92e0f`; deterministic gzip
+  **10,743 bytes**, SHA-256
+  `c1d85f008eabd4be9903285d9b91713068555bb59be6fd27124d320c97f6de99`.
+- `ARC1A_COMPENDIUM_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.json.gz` — raw
+  **10,840,458 bytes**, SHA-256
+  `d1e94fd3288cf0a9f8ea194c374d1ae721f1e6f5d53118a1168c5a5192424c38`; deterministic gzip
+  **452,570 bytes**, SHA-256
+  `c24be9275ee817534a1aecee1b7f88cbbc20573650c1d8712fc710db91313b4b`.
+- `ARC4_SLICE_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.json.gz` — raw
+  **6,126 bytes**, SHA-256
+  `26b7674234824abfa7fb7bb060f083d8044c59561d94b0740c820173681db2d4`; deterministic gzip
+  **1,960 bytes**, SHA-256
+  `9b8c8a794c742bae49c0afe21bcf43bb1d104b335f9940d88e2f1f717d042c22`.
+- `ARC4_SLICE_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.log.gz` — raw
+  **6,950 bytes**, SHA-256
+  `2890a533c21a13e575719eaf23ff00af5b18f7b9f59009b5e717421995096833`; deterministic gzip
+  **3,289 bytes**, SHA-256
+  `10332beca8b37011e23aa7269c5c81427a0843759f462be272018226552d1ddb`.
+- `ARC4_GLASS_PR35_CAPTURE_GEOMETRY_CHRONOLOGY_REPAIR_PASS_20260903_7CFB42D.json.gz` — raw
+  **949,799 bytes**, SHA-256
+  `bad65b057392096c4c66ef0fb18506be97eafc4a1876893ad3ec7206ce9e66ae`; deterministic gzip
+  **83,092 bytes**, SHA-256
+  `dce0612e617c12afe6addd6b29a60b89f5fab72209d0e3d3b3d83a2c08e2f262`.
+
+All seven current-section carriers pass gzip integrity, raw-hash reproduction and independent
+deterministic recompression. Temporary GitHub artifact `9873073563` has archive digest
+`sha256:56e88b3609f013ce4fd9773efebd0d5ecfb01cc23dd76219f305ad89b93d9a44` and expires
+`2026-09-17T00:30:04Z`. The exact authorization is consumed, the label is absent, PR #35 remains
+Ready/open/unmerged, `develop` is unchanged, and no retry or new hosted authority exists.
+
+### Historical predecessor PR #35 systemic failure-surface audit and early Glass preflight
+
+`PR35_FAILURE_SURFACE_AND_EARLY_GLASS_PREFLIGHT_20260902.md` classifies all thirteen consumed
+hosted stops as **9 instrument/infrastructure, 3 product/runtime, and 1 mixed**, maps every stop to
+its permanent guard, and identifies the remaining asymmetry: repaired live Glass bytes have passed
+a complete local Edge certificate but not hosted Ubuntu/Chrome, while the old workflow did not
+reach Glass until approximately **70m46s** into the latest run.
+
+The local workflow successor conditionally runs the exact 320×568@2 small-phone Glass path on
+hosted Chrome immediately after the shared launcher selftest. It is noncertifying, capped at five
+minutes, no-retry, source- and canonical-browser-bound, strict about report shape, and requires the
+five Inventory controls that cover the last two hosted Glass classes. Its distinct immutable report
+is retained. The final exact-Slice-bound 12-viewport Glass certificate remains unconditional and
+unchanged. Three independent reviews are clear after closing omitted-input, over-broad-scope,
+nullable-report, missing-control, canonical-browser-path and malformed-product-provenance gaps;
+focused contracts pass **28/28** and the
+Actions policy selftest passes **64/64**. The complete working-source `develop` profile passes
+**264/264 files, 2,739 passed / 1 skipped** and every TypeScript/art/route/specification owner.
+Exact SSH-signed source `4a0228d9998ec2f5fb238b3143146162e359cdff` (tree
+`56650fbf1fcedf01c787cedd30f958e75abefca0`) then passed the hermetic tracked-input profile with
+those same results. Its one unchanged-source local Edge/CDP targeted row
+`20260902-pr35-early-glass-preflight-4a0228d9998e` passed in **13,625 ms** with zero findings,
+instrument failures, blocked controls or retries and all five required Inventory controls. Exact
+report carrier `ARC4_GLASS_PR35_EARLY_PREFLIGHT_PASS_20260902_4A0228D.json.gz` has raw/gzip
+SHA-256 `9ef29a3b…8f24` / `e0146ec7…e5c`. It remains noncertifying and does not prove hosted
+Ubuntu/Chrome. The signed evidence/reference descendant containing this index preserves the
+carrier and passes the final tracked-input `develop` profile; its own hash is intentionally not
+self-embedded. No GitHub write or hosted attempt is authorized.
+
+### Historical predecessor PR #35 action-settlement repair — exact clean local certificate
+
+Exact clean source `64e405bc6678302c5936945c1b34ac5de5407025` (tree
+`732bcf9930ac36e7661b14cdfd6cde64137d34f4`) passed the tracked `develop` profile at **264/264
+files, 2,738 passed / 1 skipped**, then completed one unchanged-source, fail-fast/no-retry browser
+chain: Compendium `20260902214924248-53897-bef91ee56a` **78/78**; zero-finding Slice
+`20260902215043536-54220-81ac577271ec` with ten screenshots; and exact-Slice-bound Glass
+`20260902215703000-54563-41950fd00ea0` at **12/12** viewports/reloads and **104/104** controls,
+with zero findings, instrument failures, blocked/omitted controls, or retries.
+
+Four `gzip -n -9` carriers preserve the Compendium report, Slice report/log, and Glass report.
+Their exact raw/gzip sizes and hashes, unchanged-source binding, Edge/CDP provenance, and authority
+boundary are indexed in
+`ARC4_GLASS_PR35_ACTION_SETTLEMENT_REPAIR_PASS_20260902_64E405B.md`. This is local evidence only:
+no hosted attempt, push, label, PR mutation, merge, release, publication, or deployment is
+authorized. SSH-signed carrier/reference commit `112bf7fb4961d8f85833df964fe8b17109ab2a0b`
+(tree `5daa4e7e589ec37fc59f5e1b2e863caccd5101be`) passes the final hermetic tracked-input `develop`
+profile at **264/264 files, 2,738 passed / 1 skipped**; the current signed handoff-only descendant
+passes it too.
+
+### Historical PR #35 action-settlement instrument red — thirteenth attempt
+
+PR #35 run `33674116068`, attempt 1, consumed the exact one-time `test-battery` authority for head
+`5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Synthetic merge
+`dac0b24ddcc34a9035b8b294727dd104a411ec00` and the exact head share tree
+`fbb059cea703cceb3feebcc716e64e02f5f5ba90`. Every upstream stage through Layout **787/787**,
+Compendium **78/78** plus named verification, and exact-bound real-browser Slice passed;
+SceneMemory correctly skipped as production-only.
+
+Glass stopped terminal `instrument-fail` after **68,102 ms**, on the first small-phone row after
+**63,780 ms**, with zero product findings, one instrument failure and zero retries:
+`Inventory action settlement: outcome did not arrive within 10000ms (last null)`. Exact-head Glass
+overwrote a composite action `ok` with a later spread, then its all-or-null settlement observation
+discarded every non-converged action-state field. The retained evidence therefore cannot identify
+which action clause remained unsettled and does not establish a product, browser-version or lease
+failure. Two downstream action controls were omitted after causal stop; the remaining 11
+viewports, Recovery and preview packaging correctly did not run.
+
+The exact report is preserved as
+`ARC4_GLASS_PR35_ACTION_SETTLEMENT_INSTRUMENT_RED_20260902_5AE12C7.json.gz`: raw **89,088 bytes**,
+SHA-256 `1b454562442d9c4265bf244dd9a3d9b43e3d26e638e58982b6fb6daed32848d6`; deterministic gzip
+**10,752 bytes**, SHA-256 `9f59ba4d6d61cc0c1de5fb9891f3a57f1590edab45fb0bd9d6ea5c442c2aa064`.
+Artifact ID `9866333992` has archive digest
+`sha256:d27795929ab3407507367aa0356b26d3a49bd46026c6b1e205845da3240ea648` and expires
+2026-09-16. Full exact-source, predecessor, terminal and diagnosis evidence is in
+`ARC4_GLASS_PR35_ACTION_SETTLEMENT_INSTRUMENT_RED_20260902_5AE12C7.md`.
+
+All thirteen hosted stops now classify as **9 instrument/infrastructure, 3 product/runtime and 1
+mixed**. The thirteenth authorization is consumed; its label is absent, PR #35 remains
+Ready/open/unmerged, and no hosted attempt, retry or merge is authorized.
+
+The local harness successor fixes verdict composition and always retains structured settlement
+state. During its segmented verification, targeted small-phone run
+`20260902213203634-49535-0e789796749b` exposed a separate fallback-only portrait campaign scope
+defect with zero product findings. The corrected scope keeps full and targeted-eligible controls
+exact-once while allowing exactly-zero scoped omissions for a targeted fallback-only baseline.
+Targeted successor `20260902213750107-50317-aa753f436e55` passed with zero findings or instrument
+failures and is noncertifying. Focused Inventory tests pass **19/19**, the related four-file set
+passes **37/37**, typecheck and Glass selftest pass, and the browser-free `develop` profile passes
+**264/264 files, 2,738 passed / 1 skipped**. A clean unchanged-source browser certificate remains
+pending; no local result creates hosted authority.
+
+### Historical PR #35 Inventory-modal lifetime stop and exact-source green successor — twelfth attempt
+
+PR #35 run `33657402955`, attempt 1, consumed the exact one-time `test-battery` authority for head
+`bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Authorization, browser-free/static/art gates, the
+shared launcher selftest, Layout **787/787**, Compendium **78/78** plus named verification, and the
+real-browser Slice plus its exact binding all passed. SceneMemory correctly skipped as
+production-only. Glass then causal-stopped on its first small-phone row after **50,864 ms** with
+exactly one product finding, zero instrument failures and zero retries:
+`INVENTORY_MODAL_OWNERSHIP`, whose only failed clause was `backgroundLocked:false`. The other 11
+viewport rows, Recovery and preview packaging correctly did not run. The full workflow ended red
+after **72m38s**; the label was removed and PR #35 remains Ready/open/unmerged.
+
+The hosted report did not retain the unlocked sibling identity, so it does not prove a toast was
+the exact offender. Source proves the one-shot Inventory lock admitted any body root added or any
+`inert`/`aria-hidden` writer firing after modal open. The bounded successor continuously owns both
+isolation halves, snapshots newly encountered roots once, disconnects before exact Close/dispose
+restoration, and makes Glass retain offending root and presentation diagnostics. Its existing
+modal/focus controls now inject the real mutation class and a late root, prove red → observer-green
+→ exact restore, preserve outside-focus redirection, and keep native Tab-wrap bypass inside the
+modal. No new Glass control or job is added; the sealed count remains **104**.
+
+The exact hosted report is preserved as
+`ARC4_GLASS_PR35_INVENTORY_MODAL_LIFETIME_PRODUCT_RED_20260902_BDD8A4C.json.gz`: raw **93,541
+bytes**, SHA-256 `33e3f66127493092923106458bb54825584e00df4ea33f9494f97c4c62e97b59`;
+deterministic gzip **11,242 bytes**, SHA-256
+`50acaf9454040c09f6f016d31fb24ca2e6cabf72a4afe3b302185f9a2d41bd18`. Artifact ID
+`9860127013` has archive digest
+`sha256:ad9d5212cb4c8f187b3c2f9035a1da2483adf0b56184418b73946c9ba21d21fa` and expires
+2026-09-16. Complete evidence and the repair boundary are in
+`ARC4_GLASS_PR35_INVENTORY_MODAL_LIFETIME_PRODUCT_RED_AND_REPAIR_20260902_BDD8A4C.md`.
+
+Current Compendium measurement/producer authority is
+`b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da` /
+`f0bb6c638f2ad89236168c28a7161f941dd5702a51104ff93b898481bea4e9dc`. Only the exact built
+index/main/service-worker graph moved; the worker/painter, fixed ruler, numeric ceilings, outcome
+inventory and historical samples remain unchanged.
+
+The first local consolidated `develop` profile stopped after **2,727 passed / 1 skipped** solely on
+that expected exact-source producer mismatch. Focused authority coverage then passed **32/32** and
+the corrected consolidated profile passed **264/264 files, 2,728 passed / 1 skipped**, all three
+TypeScript programs, 34 clean art sources, 1,014/1,014 routes and 454 declared fields.
+
+Exact SSH-signed source `5004fd36f9fdb2632f323d99f1535e9fb2ac5b95`, tree
+`cc1a568ebd49e038b831464b2c1ce7d8ac01ad3a`, passed the hermetic tracked-input `develop`
+rehearsal, browser-CDP/browser-path/Compendium-preflight controls, all **618** Compendium controls
+and live Edge `152.0.4191.53` / CDP `1.3` preflight. On that same unchanged clean source,
+Compendium `20260902185934666-38136-1560adf2b6` passed **78/78**; Slice
+`20260902190106514-38463-d9be88c2f213` passed with zero findings/scopes and exact report/log
+SHA-256 `661865d0fab54ebb4943cbdc2aebc5b511e94a199a8e54256cb8427e86c0f3e3` /
+`099daaa8e2650f6fe1faa956954ad0409e0262db979f834e3ac9cfcb4b078340`; and Glass
+`20260902190730548-38863-824672142575` consumed that exact Slice and passed **12/12** viewports,
+**12/12** reload rows and **104/104** controls with zero blocked/omitted controls, findings,
+instrument failures or retries. Every named verifier passed and no stage retried.
+
+Four gzip-verified deterministic carriers preserve the Compendium report, Slice report/log and
+Glass report:
+`ARC1A_COMPENDIUM_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.json.gz`,
+`ARC4_SLICE_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.json.gz`,
+`ARC4_SLICE_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.log.gz` and
+`ARC4_GLASS_PR35_INVENTORY_MODAL_LIFETIME_REPAIR_PASS_20260902_5004FD3.json.gz`. Exact raw/gzip
+sizes and hashes are in the repair audit linked above. The signed evidence/docs descendant
+containing this index also passes the final hermetic tracked-input `develop` proof.
+
+All twelve hosted stops now classify as **8 instrument/infrastructure, 3 product/runtime and 1
+mixed**. The twelfth authorization is consumed; there is no retry, merge, release, version,
+publication or deployment authority. The changed local successor is now browser-ready, but a new
+hosted attempt still requires Nick's fresh exact-head/base authorization.
+
+### Historical PR #35 battery review and launcher-lifecycle successor — exact eleventh attempt
+
+PR #35 run `33628648136`, attempt 1, consumed the exact one-time `test-battery` authority for head
+`85431115256137b05d7cdfa590e087fd3b4d52e1` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. It stopped after **6m30s** at the shared launcher
+selftest because an injected abnormal exit after `Browser.close` was accepted. The synthetic
+fixture never loaded or judged Celestial Frontier. Exact Edge installation, Compendium, Slice and
+Glass correctly did not run; no retry occurred and the PR remains open/unmerged.
+
+The complete eleven-attempt audit classifies **8 instrument/infrastructure stops, 2
+product/runtime stops and 1 mixed stop**, then records what remains appropriate for `develop`, what
+must be change-scoped, and what stays production-only/quarantined. The bounded successor makes
+browser lifecycle evidence deterministic, preserves the sentinel ownership barrier through exact
+browser exit, keeps kill failures provisional until lifecycle expiry, gates profile removal on
+proven termination, and moves the shared launcher selftest ahead of every expensive browser
+consumer. Independent review is **CLEAR**. Focused contracts pass **152/152**, the launcher
+selftest passes, Compendium's synthetic instrument passes **618/618**, and the complete
+browser-free `develop` profile passes **264/264 files, 2,728 passed / 1 skipped** plus all three
+TypeScript programs and the art/specification audits.
+
+Current launcher / Compendium measurement authority is
+`4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca` /
+`b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`. Producer
+`308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`, every ruler, ceiling,
+sample, outcome and browser-version policy remain unchanged.
+
+Exact SSH-signed source `a484c39b30c8cdecac464c31283f64efb0263628`, tree
+`eb9ed823ff165ff89d9c8137f006e30497931c73`, passed the hermetic develop rehearsal, root Layout
+`local-1788355721508-17420-624f697795` at **787/787**, Compendium
+`20260902133054645-17703-2cf459762b` at **78/78**, zero-finding Slice
+`20260902133238723-18057-fb0557070177`, and exact-Slice-bound Glass
+`20260902133910919-18520-cab54654b9fd` at **12/12** viewports/reloads and **104/104** controls.
+Every named verifier passed; the exact source remained clean and byte-identical; no stage retried.
+The signed documentation/evidence descendant containing this index also passes the final hermetic
+tracked-input `develop` proof with the same **264/264 files, 2,728 passed / 1 skipped** result.
+Five deterministic carriers preserve Layout, Compendium, Slice report/log and Glass:
+`ROOT_LAYOUT_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz`,
+`ARC1A_COMPENDIUM_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz`,
+`ARC4_SLICE_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz`,
+`ARC4_SLICE_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.log.gz` and
+`ARC4_GLASS_PR35_LAUNCHER_LIFECYCLE_REPAIR_PASS_20260902_A484C39.json.gz`. Full hashes, evidence
+and the consolidation plan are in
+`PR35_TEST_BATTERY_RIGHTSIZING_AND_LAUNCHER_RED_20260902_8543111.md`.
+
+### Historical predecessor Glass cleanup repair and clean certificate — 0569021 stop → 1f80b0a green
+
+Exact clean SSH-signed source `05690215771db91601cf9dbcbcaa8d771fe540b5` passed the full
+browser-free develop profile, Compendium 78/78 and zero-finding Slice. Exact-bound Glass
+`20260902034025002-67201-c5ef56b312e9` then stopped once/no-retry after six green viewports with
+zero product findings at tablet-portrait browser cleanup (`kill EPERM`).
+
+The current POSIX owner keeps a detached Node sentinel as the live group leader through exact
+browser lifecycle, acknowledgement and terminal group-kill barriers; the parent performs no
+negative-PGID operation. Browser-close, owned-shutdown and successful-request-bound Windows
+taskkill exit classes are distinct and fail closed. Current browser/measurement authority is
+`8c6094e4e4bc05c40ace80478b038890e2e8c33856e5932a60805ac71249e0df` /
+`a963f40135651323bb2c0f2a0a6fa7a381ab3905e43b6e5721f45e9f38e50e62`; producer
+`308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77` and every ruler,
+ceiling, sample and browser-version policy are unchanged.
+
+Final Glass review also made the Inventory offscreen control refusal-only: it dispatches no input,
+arms no receipt listener, retains the exact owner and restores `null` versus empty style attributes
+exactly. Two short targeted instrument reds preserved malformed generated restoration source and
+Chromium's first-removal empty-style normalization, both before product input. Executable and
+browser-faithful controls close both gaps. All seven requested stop-to-end viewports then passed on
+identical dirty-source digest
+`23884a5d5050bc79642d25ac4700e58b269e0deee2d61464c37143550815c027`:
+tablet-portrait `20260902053159926-86747-9a6ec544ca9f`, tablet-landscape
+`20260902053214646-86864-a72ce4d83aef`, laptop-720p
+`20260902053229583-86982-528e2a6690f0`, desktop
+`20260902053243665-86740-fd3ed6b519f9`, desktop-1080p
+`20260902053339974-87246-c7e46a84c35d`, ultrawide
+`20260902053354610-87392-74be39e3fc8d` and desktop-8k
+`20260902053409007-87239-adca4be4b296`. Each has zero findings, zero instrument failures, zero
+automatic retries and one green reload.
+
+The immutable boundary, intermediate history, leaked-profile handling, two final-review reds and
+seven identical-source passes are recorded in
+`ARC4_GLASS_PR35_LOCAL_CLEANUP_AND_INVENTORY_INSTRUMENT_AUDIT_20260902_0569021.md` with all
+**23** deterministic diagnostic carriers and exact raw/gzip hashes. Targeted runs remain
+non-certifying. Exact SSH-signed implementation source
+`1f80b0ad050763bf478b2364ad0194e389a7096e`, tree
+`e25579bc4fe063bcdf314ac74c9df2435003617a`, then passed the complete browser-free `develop`
+profile and hermetic tracked-input rehearsal at **264/264 files, 2,728 passed / 1 skipped**, all
+three TypeScript programs and the root validator with the 50-probe v1.0 determinism fingerprint
+unchanged.
+
+That exact unchanged source completed one fail-fast/no-retry chain and every named verifier passed:
+Compendium `20260902055002322-92073-faba0f2692` **78/78**, zero-finding Slice
+`20260902055112371-92394-deee4ff0bf81`, and exact-Slice-bound Glass
+`20260902055724658-92954-a2feb2f6006e` **12/12** viewports/reloads and **104/104** controls with
+zero blocked/omitted controls, findings, instrument failures or retries. Four deterministic
+carriers preserve the exact report/log bytes:
+
+- `ARC1A_COMPENDIUM_PR35_BROWSER_CLEANUP_GLASS_REPAIR_PASS_20260902_1F80B0A.json.gz` — raw
+  **10,897,159 bytes**, SHA-256
+  `000488b966967cdddb12eee549372a0e8d0297cf5f540eb7413f02b0f31c8f5e`; gzip **453,844
+  bytes**, SHA-256 `2b2579c89b7485767f1467e91414c77014a968ff2968fc7a4bd2a6ba773f7f3b`.
+- `ARC4_SLICE_PR35_BROWSER_CLEANUP_GLASS_REPAIR_PASS_20260902_1F80B0A.json.gz` — raw **6,126
+  bytes**, SHA-256 `ad1053cf9b21a2be2c3787ef15d188a2e625d9147ea172aed5fc053f73135a78`;
+  gzip **1,965 bytes**, SHA-256
+  `79079b4193bdb13a8f312473e2d0eebe016a1d9741829c0f7211169498292d77`.
+- `ARC4_SLICE_PR35_BROWSER_CLEANUP_GLASS_REPAIR_PASS_20260902_1F80B0A.log.gz` — raw **6,950
+  bytes**, SHA-256 `a63c7dde4c361f74d522c6d050e255eee3f9a802f51d3ee9341748312f47eb59`;
+  gzip **3,291 bytes**, SHA-256
+  `b9769226747d9b9cbdd99dac526e798d70f85e228ca27722b76304f592e703e0`.
+- `ARC4_GLASS_PR35_BROWSER_CLEANUP_GLASS_REPAIR_PASS_20260902_1F80B0A.json.gz` — raw **898,934
+  bytes**, SHA-256 `5c893c9f9e867f23f5bbb0406dc24e5430bb0a7f5a478c05b93e23bc7cd5babe`;
+  gzip **78,802 bytes**, SHA-256
+  `4826c7164324aeccd9a563ec9c52935f0c3daf908979af261b0802c3d06808d7`.
+
+All four pass gzip integrity, byte-for-byte raw comparison and deterministic `gzip -n -9`
+recompression. Local closure is complete.
+No GitHub write is authorized.
+
+### Historical PR #35 SceneMemory hosted allocator-phase stop — exact tenth attempt
+
+PR #35 run `33584052508` consumed the tenth exact one-time `test-battery` authorization for head
+`18c088de4388edf58eda2c192b71cb94156e26e7` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Root Layout passed **787/787**. The next step stopped
+instrument-red after 1.56 seconds because the synthetic SceneMemory retained-allocation control's
+P8−P7 embedder/derived-aggregate delta was **532,800 bytes** against its **65,536-byte** ceiling.
+It loaded `about:blank`, not the game, and created no product contract, verdict or outcomes.
+
+The identical tool blob passed the prior three hosted runs with explicit Edge `152.0.4191.53` /
+CDP `1.3`, Node `26.8.1` and Ubuntu image `20260823.283.1` provenance. The failed path proved
+canonical Edge/CDP `1.3`, Node `26.8.1`, that Ubuntu image and a `centralus` runner but did not
+preserve its exact Edge point version; `.53` for the failing run would be inference. The result
+repeats the `cc15e1f…` allocator-phase class whose certification/product evidence was already
+production-quarantined. The complete immutable facts, all
+unexercised downstream control surfaces, artifact identity and bounded workflow correction are
+recorded in
+`ARC1C_SCENEMEM_PR35_HOSTED_PHASE_INSTRUMENT_RED_20260902_18C088D.md`. Artifact `9829548871`
+contains only the three green Layout files, is 33,817 bytes, and has digest
+`sha256:ed2161535f9d5ddfe3c4f606403d07f540a4cd7f359120f0515b2a4e35085213`.
+Compendium, Slice, Glass, Recovery and preview correctly skipped. The authorization is consumed;
+no retry, merge, release or deployment occurred.
+
+### Historical signed local successor — production-only SceneMemory ownership
+
+The SceneMemory portion of the signed local successor changes workflow/scope ownership only; the
+separate Glass/browser cleanup repair is documented in the section above. Live SceneMemory native-heap
+selftest/certification/verification are production-only and remain strict there; deterministic
+SceneMemory contracts and mutation controls remain universal; Compendium-specific and shared
+browser-transport change scopes are separate. No game source, SceneMemory collector, threshold,
+fixed-eight protocol, browser-family contract, product ruler or retry rule changes.
+
+Current local verification is green for the focused workflow/evidence owners (**3 files / 27
+tests**), final launcher/Glass coverage (**3 files / 74 tests**), complete browser-free `develop`
+profile (**264/264 files, 2,728 passed / 1 skipped**), all three TypeScript programs, complete art
+mutation control, browser-path selftest, Compendium browser preflight/selftest (**618 controls**),
+shared browser-CDP selftest and the root validator's unchanged 50-probe v1.0 determinism
+fingerprint. Exact signed `1f80b0a…` passed its hermetic tracked-input rehearsal and one fresh
+unchanged-source Compendium → Slice → Glass chain as indexed above. No GitHub write is authorized.
+
+### Preserved predecessor Guide/Charter/D-TRAIN certificate — exact 4a4f0b8 source
+
+Exact clean SSH-signed implementation source
+`4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+`25cb76916c8f3fcd00a916864abb9402932cdbec`) on `openai/mac` passed the complete browser-free
+`develop` profile at **263/263 files**, **2,719 passed / 1 skipped** (**2,720 total**). The browser
+selftest and live preflight passed on Edge `152.0.4191.53` / CDP `1.3`. At that boundary,
+Compendium producer authority was `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`; budget
+SHA-256 is `f66fed5e8bb1f18b95266c267435fc0493bf450a89aee74fc1c9ffaa18f8501e`.
+
+That exact unchanged source completed one serial, fail-fast/no-retry local develop chain. Every
+stage ran once and every named verifier passed:
+
+- Compendium `20260902020238003-42290-3e0d5a9601` passed **78/78** with zero findings/blocked
+  outcomes and six review PNGs in **66,800 ms**. Its raw report is **10,894,730 bytes**, SHA-256
+  `82ed68762a5bbf90659c42b8c97ca44dae904c8c1516b3996d1305b65343fee1`.
+- Develop Slice `20260902020406920-42750-f6dc8783b4cd` passed terminal certifying with zero
+  findings/scopes, ten screenshots and an exact green Arc 4 ledger in **379,782 ms**. Its raw
+  report is **6,126 bytes**, SHA-256
+  `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d`; its raw log is
+  **6,950 bytes**, SHA-256
+  `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`.
+- Full-certifying Glass `20260902021048274-43570-053d2c926673` consumed that exact Slice report and
+  log, then passed **12/12** viewports, **12/12** reload rows and **104/104** controls with zero
+  blocked/omitted controls, findings, instrument failures or retries in **115,629 ms**. Its raw
+  report is **898,927 bytes**, SHA-256
+  `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`.
+
+The four exact 4a4f0b8 carriers pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`:
+  **455,290 bytes**, SHA-256
+  `4e6b92c1ea1f5a97a6fa7efa4461e26c135ed45862dfed6981e1aab63a02b134`; raw
+  **10,894,730 bytes**, SHA-256
+  `82ed68762a5bbf90659c42b8c97ca44dae904c8c1516b3996d1305b65343fee1`.
+- `ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`:
+  **1,966 bytes**, SHA-256
+  `97c1fc79242674767483f48527a66234617bc830f61cbe358de61b8232673b70`; raw
+  **6,126 bytes**, SHA-256
+  `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d`.
+- `ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.log.gz`:
+  **3,291 bytes**, SHA-256
+  `83767491463fe7651000519e0e7b1db8d6e9cdb8d252e580f6f9c4981794f1d0`; raw
+  **6,950 bytes**, SHA-256
+  `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`.
+- `ARC4_GLASS_PR35_GUIDE_CHARTER_DTRAIN_REPAIR_PASS_20260901_4A4F0B8.json.gz`:
+  **78,861 bytes**, SHA-256
+  `971f5bed9e80ce8a10057b60608435b2b1048874b7d37306798cec24b93dee15`; raw
+  **898,927 bytes**, SHA-256
+  `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`.
+
+SceneMemory was production-only/quarantined and Recovery remained outside `develop` at that
+boundary. Later descendants preserved these four immutable carriers and synchronized references
+without rebinding 4a4f0b8's exact browser certificate. This is preserved evidence for that exact
+source, not current certification of the uncommitted workflow/scope successor. It grants no push,
+hosted attempt, PR mutation, merge, release, preview, publication or deployment authority. The
+tenth hosted authorization remains consumed; a future attempt requires Nick's fresh authorization
+naming the final exact successor head and base.
+
+### Historical ninth hosted-red boundary — preserved verbatim below
+
+### Current PR #35 Guide/Charter/D-TRAIN hosted stop — exact ninth attempt
+
+PR #35 GitHub run `33572309149` was the ninth exact authorized `test-battery` attempt. It tested
+head `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` (tree
+`89116f64dafd0cf26fe210597da1c079edefcd76`) against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, using synthetic merge
+`778d3cf58937476a65c550e875b946290c0967b4`; that merge has the exact head tree. Authorization
+job `100068700331` passed and battery job `100068719363` completed terminal red after **1h9m41s**.
+The one-time `actions-budget-approved` authorization, 92-minute maximum and no-retry rule were
+consumed; no retry or merge occurred.
+
+Root layout passed **787/787**. Compendium `gha-33572309149-1-compendiummem` passed **78/78**
+once/no-retry in **2,324,739 ms** with zero findings/blocked outcomes and six review PNGs on Edge
+`151.0.4129.101` / CDP `1.3`. Unchanged-source Slice `gha-33572309149-1-slice` stopped
+once/no-retry after **1,345,522 ms** on Chrome `151.0.7922.173` with exactly **3 findings / 3
+scopes**:
+
+- `harness`: the Guide's final v2.0 development bulletin was not scroll-reachable. The retained
+  payload was `overflowY: auto`, `scrollTop: 20000`, dynamic `maxScroll: 25829`,
+  `scrollHeight: 26476`, `clientHeight: 647`, `advanced: false` and `visible: false`; it retained
+  the exact final bulletin text rather than a null observation.
+- `saturated-charter-recovery`: the recovery flow retained `beforeSerial: 1`, `toastOn: true`,
+  `toastSerial: 3` and exact text
+  `★ 3 Charter chapters — completeChapter 1 — Off the Rock through Chapter 3 — Beyond the Rim are now recorded. This expedition’s established reach remains preserved.`
+  The required one-replacement aggregate therefore remained red.
+- `d-train-full-finish`: both native/runner arms were true; the mixed activation was skipped and
+  disabled while its exact pre-state remained at `waiting-active-persist`; and the complete
+  ten-stage restore witness then reached `released`. Route assessment passed, Earth was restored,
+  Training UI/checkpoint/hold were cleared and all durable outer fields except one matched exactly.
+  The sole raw-assessment reason was `outer.rn`: actual `1.8.9` versus expected `2.0.0-test`.
+  The same capture retained live `rnSeen: 1.8.9`, `releasePending: 2.0.0-test`, no open panel and
+  Earth focus, binding the historical stop without reinterpreting it through later convergence
+  repairs.
+
+The three exact finding-message SHA-256 values, in report order, are
+`feb07eaa26a0c1a5fff8429403bbd3b270506e14357cfc718e98e10e4ed7b052`,
+`b71270517133e3249db231c30f8e820312d2a510ac5d6e575afa0c2fd45fae34` and
+`9f813e8275974d0bb303605f69c158c56899852e5da07797488c885d6c3b9e8d`. All ten Slice
+screenshots—Codex, Earth, Galaxy, Guide, phone, Settings, Sol, Sol marker, Training and Universe—
+were retained in the report manifest. Glass, Recovery and preview packaging correctly did not run.
+
+The exact GitHub artifact `battery-evidence` is ID `9827040606`, archive size **9,780,335 bytes**,
+digest `sha256:869d8ee0780f3f4fcbe3d1a3b17b353426e4f900ec5c1f146576c169224f1c9a`, expiring
+`2026-09-16T00:53:39Z`. These retained carriers pass gzip integrity and deterministic
+`gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_GUIDE_CHARTER_DTRAIN_PREDECESSOR_PASS_20260901_778D3CF.json.gz`:
+  **487,306 bytes**, SHA-256
+  `50665da8a9cce2c6bb71316c0e32f36acdc8c8a8b02aeba9a2795b60ae7a39c6`; raw
+  **12,813,345 bytes**, SHA-256
+  `1104d93a0f3f1bc094fa844715193a37f34ea6b429d0236bdbb1d9737069d186`.
+- `ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_RED_20260901_778D3CF.json.gz`:
+  **14,617 bytes**, SHA-256
+  `759664be81dc7b7368141314b108c431dbd4981f95537dd1a9e8013030255a38`; raw
+  **70,840 bytes**, SHA-256
+  `5e3e544c5089966ff416192575821b3b6259eb32a516d521b187a9e9cf7518ba`.
+- `ARC4_SLICE_PR35_GUIDE_CHARTER_DTRAIN_RED_20260901_778D3CF.log.gz`:
+  **8,745 bytes**, SHA-256
+  `7402b44e95275213f7f1040298958d5b9ceaae80f41f259908d59c118989802f`; raw
+  **32,907 bytes**, SHA-256
+  `4d036dcc44c51db6c755fc65e31f1721cdfd32c5fea65519a1d5c4bc11375cc3`.
+
+`port/v2/tests/pr35-efad-guide-charter-dtrain-evidence-replay.test.ts` independently binds all
+three compressed/raw carriers, exact hosted head/base/tree/synthetic identity, unchanged detached
+source, the 78/78 predecessor, exact ordered finding scopes/messages and D-TRAIN's sole durable
+`outer.rn` mismatch, raw-log parity and the absence of Slice-success, Glass or Recovery authority.
+It imports no current browser contract that could relabel this historical stop. Subsequent bounded
+repairs require a new exact source and certificate; this ninth run remains immutable red and grants
+no retry, successor stage, merge, release, version, preview, publication or deployment authority.
+
+### Eighth PR #35 Feed-audio/phone-Land hosted stop and exact local certificate
+
+PR #35 GitHub run `33560546382` was the eighth exact authorized `test-battery` attempt. It tested
+head `c0ad51a1a63f7f649493122ab8d7d5e8588f6a9d` (tree
+`7b1d851c2ed92ecaaaf26aec8c178a0c145c74aa`) against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, using synthetic merge
+`f03a68d75dd03512d2dc994febc9bb18e5b52d9c`; that merge has the exact head tree. Authorization
+job `100031692379` passed and battery job `100031723808` completed terminal red after **1h4m43s**.
+The one-time `actions-budget-approved` authorization, 92-minute maximum and no-retry rule were
+consumed; the approval label was removed and no retry or merge occurred.
+
+Root layout passed **787/787**. Compendium `gha-33560546382-1-compendiummem` passed **78/78**
+once/no-retry in **2,334,319 ms** with zero findings/blocked outcomes and six review PNGs.
+Unchanged-source Slice `gha-33560546382-1-slice` stopped once/no-retry after **1,017,899 ms** with
+exactly **2 findings / 2 scopes**:
+
+- `arc-5-feed-commit` rejected only `one post-settlement acknowledgement`. The retained bundle
+  proves the product transaction and persistence were exact: global revision **107→108**,
+  ownership revision **16→17**, receipt count and SessionRNG ordinal **20→21**, exactly one
+  `arc5-companion-feed` receipt at ordinal 20, companion fed **0→1**, flora **1→0** plus tombstone,
+  zero pending work, same-document reopen, reload fixed point, and one visible settled “Meal
+  complete…” toast. Page instrumentation recorded one post-mark oscillator, successful start and
+  source connection in a running context with `lastOutcome: committed:108`. The raw CDP graph was
+  sampled only after expensive durable reads; normal short-voice cleanup had disconnected its
+  same-context destination route by then. Final-only graph projection therefore forgot a valid
+  ephemeral acknowledgement. Dependent controls correctly remained blocked rather than creating
+  cascaded findings.
+- Independent `harness`: `phone Earth landing did not reach its phone outcome within 6000ms (last
+  null)`. The artifact retains no non-null Landing outcome, so it does not directly prove why the
+  action failed to publish. Source tracing supplies the high-confidence root-cause inference:
+  first-open Guide legitimately sets `seenGuide` and starts `persistView()`; the runner then closed
+  Guide and dispatched one Land action without reacquiring the current document's quiescent F4
+  authority, while `doLand()` refuses if `activePersist` is owned. This is evidence of a bounded
+  harness predecessor race, not evidence of a Landing/product defect.
+
+Nine Slice screenshots—Codex, Earth, Galaxy, Guide, phone, Settings, Sol, Sol marker and Universe—
+were retained; Training was not reached. Glass, Recovery and preview packaging correctly did not
+run. The hosted run also crossed and validated the prior Settings repair: all eleven settings were
+mutated/restored through **22** exact real writes with raw-v5 continuity, quiet-window authority,
+quiesce/resume and control coverage; its Settings PNG is retained.
+
+The exact GitHub artifact `battery-evidence` is ID `9823195109`, archive size **9,535,484 bytes**,
+digest `sha256:aeed20df4017f83aea1333547ae0d5ab07cce0d1be22d1974dadcb3f8d5dc5e9`, expiring
+`2026-09-15T22:25:29Z`. These retained carriers pass gzip integrity and deterministic
+`gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_FEED_AUDIO_ROUTE_PHONE_LANDING_PREDECESSOR_PASS_20260901_F03A68D.json.gz`:
+  **487,306 bytes**, SHA-256
+  `61ae809dd92be87770c90c953ac8b40fcc400d6e4cdea9a3f0dd05179dbf96bf`; raw
+  **12,846,608 bytes**, SHA-256
+  `e072796cbf082c4f4c44734924f5b8836cb1162b5854cc08540abd334c6fd040`.
+- `ARC4_SLICE_PR35_FEED_AUDIO_ROUTE_PHONE_LANDING_RED_20260901_F03A68D.json.gz`:
+  **84,367 bytes**, SHA-256
+  `81a1858f8ac32a9f8ff3d0873163cdb0c13f4a9fe85216386f6c35582ea1e17e`; raw
+  **800,679 bytes**, SHA-256
+  `d34b160ed34ab9452ced8deeb509947f409831bc037dbb00c80233743d74c492`.
+- `ARC4_SLICE_PR35_FEED_AUDIO_ROUTE_PHONE_LANDING_RED_20260901_F03A68D.log.gz`:
+  **39,079 bytes**, SHA-256
+  `cec392ef4c80c02639726a3cac24f9669df8889a6f57edc018cf3d8a9a67efcd`; raw
+  **343,139 bytes**, SHA-256
+  `3b352cc9cc28270cdbd81781eed832d8176f9b6960c05982b3ff5d4de730e58c`.
+
+The bounded implementation repair changes only evidence ownership. The WebAudio projector records an
+**ordered same-prefix temporal route witness** from the unique post-source-mark oscillator through
+its same-context destination only while both endpoints are simultaneously live. Natural
+disconnect/destroy teardown may close that route but cannot erase the witness. It is deliberately
+not an unordered historical edge union: duplicate, missing, dead-end, false-destination,
+cross-context, connect-before-create and disjoint-time routes remain red. The phone flow closes
+Guide, quiesces the same-document F4 heartbeat and keeps it quiescent through three independently
+early-resolving waits, each capped at 15 seconds: post-Guide writable predecessor, live Land-surface
+observation and post-Land durable writable/idle fixed point. Exactly one native Land action occurs
+between those waits; the heartbeat resumes exactly once in `finally`. A predecessor timeout retains
+the full F4 state, persistence/coordinator details and `landing.lastOutcome`; the action is never
+retried.
+
+The combined focused boundary passes **3 files / 21 tests**. The fresh-wait ownership file
+separately passes **8/8** after the two exact new wait labels were added. All three TypeScript
+programs pass. Exact clean SSH-signed implementation source
+`7a8d3a59b6b516700e45737ec6b67a242a5f785d` (tree
+`517bf3e159a5694ea8e0f12a0e92b127329e6829`) passed the hermetic tracked-input develop preflight
+at **260 files / 2,675 passed / 1 skipped** (**2,676 total**), **34** clean art sources,
+**1,014/1,014** routes and **454** declared/non-inert fields.
+
+That exact unchanged source supplied one serial, fail-fast/no-retry local develop chain on Edge
+`152.0.4191.53` / CDP `1.3`; the compatible point version is provenance only. Every stage ran once
+and every named verifier passed:
+
+- Compendium `20260901230136598-19910-e9b7eb9b5e` passed **78/78** with zero findings/blocked
+  outcomes in **65,672 ms**. Its raw report is **10,826,781 bytes**, SHA-256
+  `4755265dc7a6cad71355de446f79eae6e415ffc1b3c90c5b3f8c0c48566c6b3c`.
+- Develop Slice `20260901230304318-20264-c5997bf96c8f` passed terminal certifying with zero
+  findings/scopes and ten screenshots in **376,101 ms**. Its raw report is **6,126 bytes**, SHA-256
+  `12e9b7976dc42c39268f14f27d3945aba73e010387e1c39dff6746aafd832c8a`; its raw log is
+  **6,950 bytes**, SHA-256
+  `887e9d3d1fc30694de01c92a85309e56e8b46f1988950859deaec444e9ea63e5`.
+- Full-certifying Glass `20260901230935469-20802-a0d3c9067c92` consumed that exact Slice ID/report
+  and passed **12/12** viewports, **12/12** reload rows, **104/104** controls and **36/36** Arc 4
+  outcomes with zero findings/instrument failures in **116,633 ms**. Its raw report is **898,861
+  bytes**, SHA-256 `c9dcc93e1c457f2fab04ef821665f6910912a669d275b41509d9a89149e45b64`.
+
+The four exact 7a8d3a5 carriers pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.json.gz`:
+  **451,640 bytes**, SHA-256
+  `1d79a88cf8ff8cee9a08c960bb98547283771fac080a3dd144e1438ab597677a`; raw
+  **10,826,781 bytes**, SHA-256
+  `4755265dc7a6cad71355de446f79eae6e415ffc1b3c90c5b3f8c0c48566c6b3c`.
+- `ARC4_SLICE_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.json.gz`:
+  **1,958 bytes**, SHA-256
+  `dbc970ccb09c4a0464fa6a77f300d2a377fd1d6807d82aea9da01680cd761abf`; raw
+  **6,126 bytes**, SHA-256
+  `12e9b7976dc42c39268f14f27d3945aba73e010387e1c39dff6746aafd832c8a`.
+- `ARC4_SLICE_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.log.gz`:
+  **3,290 bytes**, SHA-256
+  `42e1b210af89ec4a39c7a17f9b3280ffec364374f41e33808dd7aa4f891b4518`; raw
+  **6,950 bytes**, SHA-256
+  `887e9d3d1fc30694de01c92a85309e56e8b46f1988950859deaec444e9ea63e5`.
+- `ARC4_GLASS_PR35_FEED_AUDIO_PHONE_LANDING_REPAIR_PASS_20260901_7A8D3A5.json.gz`:
+  **78,874 bytes**, SHA-256
+  `4ca9229fe850dde37f5dd6641c0d628ce352fc0c9c84b56e0af1a39e4b43a660`; raw
+  **898,861 bytes**, SHA-256
+  `c9dcc93e1c457f2fab04ef821665f6910912a669d275b41509d9a89149e45b64`.
+
+SceneMemory remains production-only/quarantined and Recovery remains outside `develop`. The phone
+harness observation caps intentionally change from 6 seconds to 15 seconds; product Feed/Landing
+behavior, saves, creatures, flora, gameplay/audio content, product timeouts, the global CDP
+deadline, rulers and retry policy are unchanged. The evidence/docs-only descendant adds only these
+four carriers and synchronized references; its SHA is intentionally not self-embedded. Resolve it
+with `git rev-parse HEAD` after commit and pass its final tracked-input develop preflight without
+rerunning or rebinding 7a8d3a5's browser certificate. This local certificate grants no push,
+hosted, merge, release, preview or deployment authority.
+
+### Historical PR #35 writable-Settings command-deadline stop and bounded local successor
+
+PR #35 GitHub run `33542791572` was the seventh exact authorized `test-battery` attempt. It tested
+head `2f0ded864742afd0a39bd8c3e2d53cc2550bbbda` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, using synthetic merge
+`b19fdc97c470161f78e1f707328c2b582e64010b` / tree
+`9609c1eb5d356ab991413284cd047524ad258204`; that tree is byte-identical to exact head.
+Authorization job `99972904837` and battery job `99972949035` completed once with no retry.
+
+Compendium `gha-33542791572-1-compendiummem` passed **78/78** in **1,780,826 ms** with zero
+findings/blocked outcomes and six review PNGs. Unchanged-source Slice stopped after **295,159 ms**
+with exactly one finding/scope, `harness`: the monolithic writable-Settings `Runtime.evaluate`
+timed out at the 30-second CDP command boundary. Seven screenshots were retained; Codex, phone and
+Training were not reached. Glass, Recovery and preview packaging correctly did not run. The
+approval label was removed, the attempt is consumed, and no retry or merge occurred.
+
+The exact GitHub artifact `battery-evidence` is ID `9815881641`, archive size **7,798,834 bytes**,
+digest `sha256:c19694ef682975db3f096f6bd72d48dbb4fbc626bac093081b3b5fc325152423`, expiring
+`2026-09-15`. These retained report/log carriers pass gzip integrity and deterministic
+`gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_WRITABLE_SETTINGS_PREDECESSOR_PASS_20260901_B19FDC9.json.gz`:
+  **487,515 bytes**, SHA-256
+  `10bfbea7880ea767255884aca754e940014f46b0d0d1330b9d8d44f8f01d87f7`; raw
+  **12,842,516 bytes**, SHA-256
+  `90e38128f95f436d1d7d529a5ca77e9c839aac4da239d8827cb0dbaa7903f34d`.
+- `ARC4_SLICE_PR35_WRITABLE_SETTINGS_COMMAND_DEADLINE_RED_20260901_B19FDC9.json.gz`:
+  **1,765 bytes**, SHA-256
+  `9291264a37ab5da2fd25aa329a0a6a1385ddce2b7dd30071bd0a32f0d07e1607`; raw
+  **5,070 bytes**, SHA-256
+  `385268d4211f7272652f4750e53173f8b74480bec745c98000f353a592341031`.
+- `ARC4_SLICE_PR35_WRITABLE_SETTINGS_COMMAND_DEADLINE_RED_20260901_B19FDC9.log.gz`:
+  **1,746 bytes**, SHA-256
+  `d4dd84e2d54dd1907b59263136f26e5d4728035ff8485c2f717f3e8f2f8a6dcd`; raw
+  **4,214 bytes**, SHA-256
+  `c5416583b292971b518508cfa2ee94ba5c89dece43990ebcb0538ff73d983584`.
+
+Source tracing proved a harness ownership defect, not a product or browser-version failure. The old
+single command performed all eleven Settings controls twice and added **23** diagnostic persistence
+calls, roughly **42–45** commits. The bounded successor gives every real action/read its own named
+command, calls no diagnostic save, proves the real handler's immediate/debounce arm and exact +1
+receipt, binds the exact full raw `settings/v5:settings` row—including extensions and top-level
+shape—across every phase, excludes automatic writers, and deterministically restores answerability.
+Its independent manifest and negative controls reject swapped controls, collateral durable mutation,
+stable extra keys, individually valid disjoint receipts/quiet predecessors and late writes. Exact
+SSH-signed implementation source `cf2d176862a68f090b935fb0362fe3aeb052b978` (tree
+`cc52f4901d4368f8ab98302ff4302619a3af1f98`, parent
+`2f0ded864742afd0a39bd8c3e2d53cc2550bbbda`) passes the focused **21-file / 227-test** boundary,
+all TypeScript programs, and the ordinary plus hermetic tracked-input develop profile at **259
+files / 2,667 passed / 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454**
+non-inert fields. Independent final audit is **CLEAR**. Current Compendium producer authority is
+`bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4`; the measurement
+contract, fixed ruler, every numeric ceiling, historical sample, browser-family policy, timeout and
+retry policy are unchanged.
+
+That exact clean committed source supplied one serial, unchanged-source, fail-fast/no-retry local
+develop chain on Edge `152.0.4191.53` / CDP `1.3`; the point version is provenance only. Every
+stage ran once and every named verifier passed before post-run packaging:
+
+- Compendium `20260901200818363-3312-ad36b2aac8` passed **78/78** with zero findings/blocked
+  outcomes, complete phone/desktop profiles and six byte/hash-bound PNGs in **63,844 ms**. Raw
+  report SHA-256 is `7cffdb47b306998bfd7586460892711eb530775efec0176e84ce66eb4e54c96d`;
+  producer/budget authority is
+  `bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4` /
+  `d833ac3328c6e31071589101702ad817f7d60e7abe1c0ee0e7dfe2d06c14a847`.
+- Develop Slice `20260901200939671-3633-9b419c68c44c` passed terminal certifying with zero
+  findings/scopes and ten byte/hash-bound screenshots in **360,495 ms**. Report/log SHA-256 is
+  `a610fdbff0335a5be145eeeeb88d028fd928099cc4c913a9922db2488a1cf158` /
+  `4cc787e32a42354bf87bf7d2f2c6a6c1b38fea98b6e0a92d88909367fcc1c0ae`.
+- Full-certifying Glass `20260901201556259-3986-34e7be99634e` consumed that exact Slice report
+  and log, then passed **12/12** viewport classes, **12/12** reload rows, **104/104** planned
+  controls and **36/36** Arc 4 outcomes with zero findings, instrument failures, blocked/omitted
+  controls or retries in **109,289 ms**. Report SHA-256 is
+  `89b77c333a4ae7713bb85e0155c81cdd226fba702075c3884d311712f76b126c`.
+
+The four exact cf2d176 carriers pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_WRITABLE_SETTINGS_PROBE_REPAIR_PASS_20260901_CF2D176.json.gz`:
+  **452,817 bytes**, SHA-256
+  `bd6d36bf5a4062e558df6bd98205ac278935d32443cc8387665054e0cd8580b8`; raw
+  **10,836,613 bytes**, SHA-256
+  `7cffdb47b306998bfd7586460892711eb530775efec0176e84ce66eb4e54c96d`.
+- `ARC4_SLICE_PR35_WRITABLE_SETTINGS_PROBE_REPAIR_PASS_20260901_CF2D176.json.gz`:
+  **1,961 bytes**, SHA-256
+  `c3418496cc0f0a62ba4c0aaf1f525a6dc4853ef06b78ffaf38f72b39308d84ab`; raw
+  **6,102 bytes**, SHA-256
+  `a610fdbff0335a5be145eeeeb88d028fd928099cc4c913a9922db2488a1cf158`.
+- `ARC4_SLICE_PR35_WRITABLE_SETTINGS_PROBE_REPAIR_PASS_20260901_CF2D176.log.gz`:
+  **3,292 bytes**, SHA-256
+  `39be187877b334c444e8d86386407e3d6881ae87bdbab057b60dc3658c3a3c16`; raw
+  **6,949 bytes**, SHA-256
+  `4cc787e32a42354bf87bf7d2f2c6a6c1b38fea98b6e0a92d88909367fcc1c0ae`.
+- `ARC4_GLASS_PR35_WRITABLE_SETTINGS_PROBE_REPAIR_PASS_20260901_CF2D176.json.gz`:
+  **78,764 bytes**, SHA-256
+  `d771572079da20c9688bb4c53272a47cf1b4c18c21763f978f2c65f0ddeab978`; raw
+  **898,573 bytes**, SHA-256
+  `89b77c333a4ae7713bb85e0155c81cdd226fba702075c3884d311712f76b126c`.
+
+SceneMemory remains production-only/quarantined and Recovery remains outside `develop`. The signed
+evidence/docs-only descendant contains only these four carriers and synchronized references; its
+own SHA is intentionally not self-embedded. Its final tracked-input develop preflight passes at the
+same **259 / 2,667 / 1** boundary and does not rebind or rerun cf2d176's exact browser certificate.
+Neither local certificate nor these carriers grant hosted, push, merge, release, preview or
+deployment authority.
+
+### Historical PR #35 automatic-arrival latch repair — hosted stop and exact local certificate
+
+PR #35 GitHub run `33522000552` was the sixth exact authorized `test-battery` attempt. It tested
+head `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, using synthetic merge
+`e0e9e96ef96e0904a5dd3927df1e6ed9c9cb4e2d` / tree
+`d3700156b50d9b72911b3071708c422906de9644`; that tree is byte-identical to the exact head tree.
+Authorization job `99903322649` and battery job `99903362700` completed once with no retry.
+
+Compendium `gha-33522000552-1-compendiummem` passed **78/78** in **1,764,010 ms** with zero
+findings/blocked outcomes, complete phone/desktop profiles and six review PNGs. Producer/budget
+authority was `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6` /
+`78269c722c0d64438c0d407e0d8df3a8a284715af35bff94ed6f7d8dbba569c2`. The unchanged-source
+Slice then stopped once/no-retry after **206,138 ms** with exactly one finding/scope, `harness`:
+`universe-to-galaxy zoom did not reach its browser outcome within 6000ms (last null)`. Six
+screenshots were retained. Glass, Recovery and preview packaging correctly did not run. The
+approval label was removed, the attempt is consumed, and no retry or merge occurred.
+
+The exact GitHub artifact `battery-evidence` is ID `9807822959`, archive size **7,352,361 bytes**,
+digest `sha256:21288256f6151af654435f29a2d9c54bd202b6527d084665602edef2e4b79765`, created
+`2026-09-01T15:32:21Z`, expiring `2026-09-15T15:32:20Z`. Its retained report/log carriers below
+pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_AUTOMATIC_ARRIVAL_LATCH_PREDECESSOR_PASS_20260901_E0E9E96.json.gz`:
+  **487,460 bytes**, SHA-256
+  `5548afae8924e0828d9fed562d28d0ee35575c946c58437189ab9a27b7785ac4`; raw
+  **12,837,924 bytes**, SHA-256
+  `3376d8562cd9b14a3ad29d95f212190253467fdb9fe40f9f6b3acfec01f70608`.
+- `ARC4_SLICE_PR35_UNIVERSE_GALAXY_TRANSIENT_LATCH_RED_20260901_E0E9E96.json.gz`:
+  **1,600 bytes**, SHA-256
+  `05b8fc3892d1e6d5d5546bf476786b85e5eae89f04519f676b808ca1a412312e`; raw
+  **4,547 bytes**, SHA-256
+  `efa5a506f757938fd2b90ea32b22b1337edef12e3377681435742e7b7a5a1718`.
+- `ARC4_SLICE_PR35_UNIVERSE_GALAXY_TRANSIENT_LATCH_RED_20260901_E0E9E96.log.gz`:
+  **1,677 bytes**, SHA-256
+  `602915a003c10a0eb9d363ec017eff9bdf9feef26368c1e416bbaec2c860b05b`; raw
+  **4,097 bytes**, SHA-256
+  `04626d14aff9801c93312c2889992265ff684897ca8896dfd1689c6a70011bad`.
+
+Source tracing proved a product liveness defect: a one-shot automatic galaxy/wormhole latch could
+be consumed before the mutable direct-travel owner actually claimed the coordinator and
+`activePersist`. Exact SSH-signed implementation source
+`a45220421195042a8702aa1265e96d40d839fc38` (tree
+`9a30b2d74d4949a16a56809dc4197c12cc7c3c74`, parent
+`6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921`) claims only from the owner's synchronous callback
+after both owners are installed and before the first await. Its diagnostics-only held-persistence
+seam writes no save/revision/receipt and proves held → clear → unchanged intent → exactly one
+arrival with structured state; its heartbeat control requires a live exact document before
+quiescence. Focused **79/79**, all TypeScript programs and both the ordinary and hermetic tracked-
+input **259-file / 2,665-pass / 1-skip** develop profiles pass.
+
+That exact clean committed source supplied one serial, unchanged-source, fail-fast/no-retry local
+develop chain on Edge `152.0.4191.53` / CDP `1.3`; the point version is provenance only. Every
+stage ran once and every named verifier passed before post-run evidence packaging:
+
+- Compendium `20260901164254371-82172-eaeba62d1a` passed **78/78** with zero findings/blocked
+  outcomes, complete phone/desktop profiles and six byte/hash-bound PNGs in **65,076 ms**. Raw
+  report SHA-256 is `23625d7ffa9b3900cfea0ed87b7264f470208dac244ad4a7004ea0f4c4e69ea0`;
+  producer/budget authority is
+  `dce2cb58666a3d57f510bd2f3417111ab8ccb553513f103a7ff65f79b7b27753` /
+  `c215ede9ed0075aedd33a4d09233c63794b675d608a92b26546171e68187d9e3`.
+- Develop Slice `20260901164421191-82525-616ea739fbb1` passed terminal certifying with zero
+  findings/scopes and ten byte/hash-bound screenshots in **361,371 ms**. Report/log SHA-256 is
+  `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b` /
+  `03f495ae431332efe147da0ee081953f896b96bc248f9af82bb27abf113d7f5c`.
+- Full-certifying Glass `20260901165038911-82999-7c3323ea05c7` consumed that exact Slice report
+  and log, then passed **12/12** viewport classes, **12/12** reload rows, **104/104** planned
+  controls and **36/36** Arc 4 outcomes with zero findings, instrument failures, blocked/omitted
+  controls or retries in **113,150 ms**. Report SHA-256 is
+  `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`.
+
+The four exact a452204 carriers pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_AUTOMATIC_ARRIVAL_LATCH_REPAIR_PASS_20260901_A452204.json.gz`:
+  **453,964 bytes**, SHA-256
+  `ef0179a7b644dcde4b4ee35dc349c2731b4eac8e5a7123a41047f7f262b8e27f`; raw
+  **10,878,178 bytes**, SHA-256
+  `23625d7ffa9b3900cfea0ed87b7264f470208dac244ad4a7004ea0f4c4e69ea0`.
+- `ARC4_SLICE_PR35_AUTOMATIC_ARRIVAL_LATCH_REPAIR_PASS_20260901_A452204.json.gz`:
+  **1,957 bytes**, SHA-256
+  `d2641592e18418dc99735c9eaac020d9bd8f87fa5a467bf2c5d17e60e5588c2e`; raw
+  **6,126 bytes**, SHA-256
+  `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`.
+- `ARC4_SLICE_PR35_AUTOMATIC_ARRIVAL_LATCH_REPAIR_PASS_20260901_A452204.log.gz`:
+  **3,289 bytes**, SHA-256
+  `18a37aabe98b5cce6e70e4f91de7b3b2c1d1bb5b1c527376f32ced5a87ebe707`; raw
+  **6,950 bytes**, SHA-256
+  `03f495ae431332efe147da0ee081953f896b96bc248f9af82bb27abf113d7f5c`.
+- `ARC4_GLASS_PR35_AUTOMATIC_ARRIVAL_LATCH_REPAIR_PASS_20260901_A452204.json.gz`:
+  **78,745 bytes**, SHA-256
+  `53541e4fbdc25c18d076b069e2b2c14b678bcd9f47daf807cad6ba8582a11a42`; raw
+  **898,685 bytes**, SHA-256
+  `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`.
+
+The compatible browser policy, fixed ruler, ceilings, timeout and no-retry policy are unchanged.
+SceneMemory remains production-only/quarantined and Recovery remains outside `develop`. This local
+certificate grants no hosted attempt, push, merge, release, preview or deployment authority.
+
+### Historical exact-source 4a595e2 Share-waiter lexical-scope terminal-green develop chain
+
+Exact clean SSH-signed source `4a595e2fa3305bf2531fc4051d09314490587e83` (tree
+`e5f57cf5c84b2bb23f504cd58747132615005106`, parent `3f8f8704c851…`) supplied one
+unchanged-source, fail-fast/no-retry local develop chain on Edge `152.0.4191.53` / CDP `1.3`.
+The compatible browser point version is provenance only. Every stage ran once and every exact
+named verifier passed:
+
+- Compendium `20260901123144352-62163-00064c788a` passed **78/78** with zero findings or blocked
+  outcomes in **67,178 ms**, complete lifecycle and six review PNGs. Producer/budget authority was
+  `410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6` /
+  `78269c722c0d64438c0d407e0d8df3a8a284715af35bff94ed6f7d8dbba569c2`.
+- Develop Slice `20260901123326914-62541-f7f7c336aa70` passed with zero findings/scopes and all
+  ten screenshots in **367,066 ms**. Report SHA-256 is
+  `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`; raw-log SHA-256 is
+  `3b306b7ee72fb07ba39bb33ff61835cb5db80f83ce571b884b217c151724acef`.
+- Full-certifying Glass `20260901123953804-63082-f5844810dfb5` consumed that exact Slice report
+  and log, then passed **12/12** viewport classes, **104/104** negative controls and **36/36** Arc 4
+  capture outcomes with zero findings, instrument failures, blocked controls or omitted controls in
+  **116,988 ms**. Report SHA-256 is
+  `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`.
+
+The four exact carriers pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_SHARE_WAITER_LEXICAL_SCOPE_PREDECESSOR_PASS_20260901_4A595E2.json.gz`:
+  **452,316 bytes**, SHA-256
+  `8c0a4eca64d09de81905fbb105dfbd168fdd4dc004bce094780a71ff672bcc18`; raw
+  **10,862,755 bytes**, SHA-256
+  `ff3482c10ce4d6a3118a4126041cf2662aeebaef3591cece225a7375e392f00c`.
+- `ARC4_SLICE_PR35_SHARE_WAITER_LEXICAL_SCOPE_PASS_20260901_4A595E2.json.gz`:
+  **1,955 bytes**, SHA-256
+  `3b906eb4e7db0eeb25c51cb7a0af6321c8cd58363d8372853a31c6c46bac1587`; raw
+  **6,126 bytes**, SHA-256
+  `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`.
+- `ARC4_SLICE_PR35_SHARE_WAITER_LEXICAL_SCOPE_PASS_20260901_4A595E2.log.gz`:
+  **3,291 bytes**, SHA-256
+  `b51b30442ae286e1b5d280db9bd31ae624e45e28673f6b6458708ee43220c848`; raw
+  **6,950 bytes**, SHA-256
+  `3b306b7ee72fb07ba39bb33ff61835cb5db80f83ce571b884b217c151724acef`.
+- `ARC4_GLASS_PR35_SHARE_WAITER_LEXICAL_SCOPE_PASS_20260901_4A595E2.json.gz`:
+  **78,880 bytes**, SHA-256
+  `1515184685ee9333d5663419d9ca8d8f478a68c37906639098384fa93d100e8c`; raw
+  **898,759 bytes**, SHA-256
+  `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`.
+
+This clean successor lifts only the unchanged Slice Share-settlement waiter into the lexical scope
+shared by the ordinary journey and outcome controls, and adds the paired Acorn scope mutant that
+would reject the historical placement. Product/game/save/Share behavior, browser policy, numeric
+rulers, timeouts and retry policy are unchanged. SceneMemory remains production-only/quarantined;
+Recovery is not part of develop. These local carriers grant no hosted attempt, merge, release,
+preview or deployment authority.
+
+### Historical exact-source 3f8f870 Share-waiter lexical-scope stop (closed by 4a595e2 above)
+
+Exact clean SSH-signed source `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` (tree
+`979726f7035e7ca3c45de4fb80565b5d0d2d4481`, parent `c0f7215bd1ec…`) passed its clean
+tracked-input develop preflight and supplied one unchanged-source, fail-fast/no-retry local browser
+attempt. Browser-CDP selftest and live preflight accepted Edge `152.0.4191.53` / CDP `1.3`;
+compatible point-version changes remain provenance only.
+
+Compendium `20260901072803827-52451-8168677f8e` passed **78/78** with zero findings or blocked
+outcomes in **65,672 ms**, six review PNGs and exact named verification before Slice. Develop Slice
+`20260901072936648-52803-f33e3b0b5239` completed the ordinary journey and all ten screenshots,
+entered collision controls through boot/import/baseline and the first named Search gesture, then
+stopped before Search settlement after **336,730 ms** with exactly **1 finding / 1 scope**, `harness`:
+`waitForF4ActionSequenceFixedPoint is not defined`. The helper was declared inside the first
+`!OUTCOME_CONTROLS_ONLY` block while the collision adapter called it outside that lexical scope.
+Collision Share was never reached, so this exact run did not retest c0's `collision-share-1`.
+Glass correctly did not run, and 3f8f870 was not retried or relabelled. This exact red is no
+product finding.
+
+The exact carriers below pass gzip integrity and deterministic `gzip -n -9` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_SHARE_FIXED_POINT_PREDECESSOR_PASS_20260901_3F8F870.json.gz`:
+  **453,021 bytes**, SHA-256
+  `38773d1a6824755974904db9a65e02e3f0a46f1f93fd65b283a84f2b6bdda686`; raw
+  **10,829,352 bytes**, SHA-256
+  `334135eb4832f8df14d543643319b3c345527f6fb01d81ff361171bb1bbfdf40`.
+- `ARC4_SLICE_PR35_SHARE_WAITER_LEXICAL_SCOPE_RED_20260901_3F8F870.json.gz`:
+  **1,867 bytes**, SHA-256
+  `32739f49df0b72d583092f1fe4faf508dbeaf81404d66ed0c02857d5a1b214cb`; raw
+  **5,954 bytes**, SHA-256
+  `08b57e977ffce25e7c328c0c84b6742d26eb78a6a9c0a5400c7d6526c07101d0`.
+- `ARC4_SLICE_PR35_SHARE_WAITER_LEXICAL_SCOPE_RED_20260901_3F8F870.log.gz`:
+  **1,509 bytes**, SHA-256
+  `c9547a98a94c1899ae09b88abee5ff8d38bdd87b0d23a44f9085ae686edd5de8`; raw
+  **3,746 bytes**, SHA-256
+  `18f1bf064ff918548ef0855af554244b513e71f7fbfd2f065c51bf95ab046a08`.
+
+Current producer/budget authority remains
+`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6` /
+`78269c722c0d64438c0d407e0d8df3a8a284715af35bff94ed6f7d8dbba569c2`. The bounded dirty
+successor lifts the unchanged waiter to the enclosing `try`, adds an Acorn lexical audit over its
+single declaration and five direct calls, and rejects the historical re-gated mutant. Focused
+four-file verification is **58/58**; all TypeScript programs, `node --check`, the collision-only
+real-Edge diagnostic through collision Share/reload and the complete develop profile pass at **259
+files / 2,660 passed / 1
+skipped**, **34** clean art sources, **1,014/1,014** routes and **454** non-inert fields.
+Independent code audit is **APPROVED**. Signed tracked-input and fresh browser evidence remain
+pending, so these carriers bind only 3f8f870's exact PASS/red boundary. No hosted attempt, merge,
+release, preview or deployment is authorized.
+
+### Historical exact-source c0f7215 collision Share-sequence oracle stop
+
+Exact clean SSH-signed source `c0f7215bd1ec932f6357b6cfc1e045b5644ba389` (tree
+`ecdc8623e5bad04d25dce0d3710e0d8db13d8704`, parent `138cdee0d…`) supplied one unchanged-source,
+fail-fast/no-retry local browser attempt. Browser-CDP selftest and live preflight accepted Edge
+`152.0.4191.53` / CDP `1.3`; compatible point-version changes remain provenance only.
+
+Compendium `20260901061544208-38321-e0d289a02a` passed **78/78** with zero findings or blocked
+outcomes in **64,697 ms**, six review PNGs and exact named verification before Slice. Develop Slice
+`20260901061722706-38658-429913af5517` then stopped after **337,110 ms** with exactly **1 finding /
+1 scope**, `collision-share-1`, and ten screenshots. The game correctly moved on one document token
+from revision 13 / receipt ordinal 8 / Shares 4 to revision 15 / ordinal 10 / Shares 5. Ordinal 8
+was `arc9-share-send-v1`; ordinal 9 was the conditional `arc9-progression-refresh-v1`; persistence
+finished at `arc9-progression-committed:15`, `share5` joined, best rank stayed 3 and SessionRNG
+seed/draws were unchanged. The old one-receipt oracle rejected this correct causal sequence. Glass
+correctly did not run, and c0f7215 was not retried or relabelled.
+
+The exact carriers below pass gzip integrity and deterministic `gzip -n` recompression:
+
+- `ARC1A_COMPENDIUM_PR35_COLLISION_SHARE_SEQUENCE_PREDECESSOR_PASS_20260901_C0F7215.json.gz`:
+  **524,314 bytes**, SHA-256
+  `76b69a84cfaacbdc83c4bed13ae533c2168cb45ef0cd2664648b892a49b4dd66`; raw
+  **10,843,992 bytes**, SHA-256
+  `f958ab4af34a697a3a72ef96451cbe4fb47bf0c6ed9283a0fecc1cfa7e3905e9`.
+- `ARC4_SLICE_PR35_COLLISION_SHARE_SEQUENCE_ORACLE_RED_20260901_C0F7215.json.gz`:
+  **34,717 bytes**, SHA-256
+  `0ed2ae49138e825d0e8ddfe4fd1f83d969b2a2eddac3b5f0436550ded34a181a`; raw
+  **156,021 bytes**, SHA-256
+  `925c32e00bf8f77ac61a1052f918e321ac4e9cdc84145857d3d7c8a7a93b9fc9`.
+- `ARC4_SLICE_PR35_COLLISION_SHARE_SEQUENCE_ORACLE_RED_20260901_C0F7215.log.gz`:
+  **10,713 bytes**, SHA-256
+  `fe6841003e8cb5b0c23c8048bdb7c783420f6d8593579c871cade0cf8871cf2f`; raw
+  **67,516 bytes**, SHA-256
+  `4fd323a2a6be3427d2a8f7483edb070b93e821b691e9f12e74a0ea03d29801e4`.
+
+Current producer/budget authority is
+`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6` /
+`78269c722c0d64438c0d407e0d8df3a8a284715af35bff94ed6f7d8dbba569c2`. The bounded dirty
+successor changes no product source or Share/game behavior. Its F4 authority read takes canonical
+`catalog`/`v5:catalog` in the same read-only transaction as revision/player/receipts, then
+cross-binds catalog arrays, legacy raw and existing live counts/best/hybrids. It derives the exact
+one-or-two receipt fixed point across all six Share sites, uses c0's exact captured 26 unlock IDs,
+proves every rank threshold/factor including permanent saved-rank no-demotion and binds every helper
+result to its waiter. Focused verification is **57/57** and all TypeScript programs pass. The
+complete develop profile passes **259 files / 2,659 passed / 1 skipped**, **34** clean art sources,
+**1,014/1,014** routes and **454** non-inert
+fields. Independent final review is **APPROVED**. Signed tracked-input and fresh browser evidence
+remain pending, so these carriers bind only c0f7215's exact PASS/red boundary. No hosted attempt,
+merge, release, preview or deployment is authorized.
+
+### Historical exact-source 138cdee Survey-surface expression stop
+
+Exact clean SSH-signed source `138cdee0d3840efd899b5ebdbe974fd12d87e828` (tree
+`56d16790c414402e585b791d751fb7e173607ddf`, parent `6030035d…`) supplied one unchanged-source,
+fail-fast/no-retry local browser attempt. Browser-CDP selftest and live preflight accepted Edge
+`152.0.4191.53` / CDP `1.3`; compatible point-version changes remain provenance only.
+
+Compendium `20260901055749358-33363-aa39fce457` passed **78/78** with zero findings or blocked
+outcomes in **64,730 ms**, and its exact named verifier passed. Develop Slice
+`20260901055920314-33714-d47f27b9497a` then stopped after **14,746 ms** with exactly **1 finding /
+1 scope**, `harness`, and two screenshots (`universe` and `galaxy`). The game had booted, rendered,
+navigated into the Milky Way and exposed the real non-Sol Survey card; no product code threw. The
+desktop fixed-point harness formed the syntactically valid expression
+`({documentToken,state,action})()`, evaluated its read-only action probe, then called the resulting
+object and raised `TypeError: {...} is not a function` before the dependent Charter action. The
+same malformed builder spelling existed in the keyboard and phone siblings. Glass correctly did
+not run, and 138cdee was not retried or relabelled.
+
+The exact carriers below all pass gzip integrity:
+
+- `ARC1A_COMPENDIUM_PR35_SURVEY_SURFACE_EXPRESSION_PREDECESSOR_PASS_20260901_138CDEE.json.gz`:
+  **526,415 bytes**, SHA-256
+  `4b48ba792a665a177289cd358e4372e60469839d790a2d30ced4d2606a66db86`; raw
+  **10,885,845 bytes**, SHA-256
+  `07b225f69914fe328149fec4980a507c6236c7cecfd7c067019f7f1008a80ed2`.
+- `ARC4_SLICE_PR35_SURVEY_SURFACE_EXPRESSION_ORACLE_RED_20260901_138CDEE.json.gz`:
+  **1,481 bytes**, SHA-256
+  `f5bf24b7d240ef7cf693ddc962379c865c7a5c4c068989da9243777520b5c081`; raw **3,933
+  bytes**, SHA-256 `db66d6f2edbdd548efb3249f0267bb24dc59d3779c8370879096cfb68449bba4`.
+- `ARC4_SLICE_PR35_SURVEY_SURFACE_EXPRESSION_ORACLE_RED_20260901_138CDEE.log.gz`:
+  **1,612 bytes**, SHA-256
+  `bd4b37a43bbb65a1c7e08701a8b5f3d2c67da90ee2ac1a0c20f4abbb8458eb04`; raw **3,935
+  bytes**, SHA-256 `7843fa089c2b19837910d7c2813a000bb873ea48f95a5c9be00433595fd92dab`.
+
+The bounded dirty working-tree successor centralizes one object-valued page-realm expression
+builder across desktop, keyboard and phone and executable-tests the exact returned surface, one
+inner action call, invalid input, the historical outer-call failure and complete consumer
+inventory. Focused verification passed **2 files / 52 tests**, all three TypeScript programs, and
+the full develop profile passed **258 files / 2,629 passed / 1 skipped**, **34** clean art sources,
+**1,014/1,014** routes and **454** non-inert fields. Independent final review is **APPROVED**.
+Current producer authority remains
+`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. The successor is not yet
+signed, tracked-input rehearsed or browser-certified, so these carriers bind only 138cdee's exact
+PASS/red boundary. No hosted attempt, merge, release, preview or deployment is authorized.
+
+### Historical exact-source 6030035 fresh-boot readiness-oracle stop
+
+Exact clean SSH-signed source `6030035dff1779c3fc3be7e4f46f376ff01455e8` (tree
+`f2fa2c7b2928c8a7fa82f753f847e62c72044bc3`, parent `06aba9d…`) passed the hermetic tracked-input
+develop rehearsal at **257 files / 2,622 passed / 1 skipped**, all three TypeScript programs,
+**34** clean art sources, **1,014/1,014** routes and **454** non-inert fields. Browser-CDP selftest
+and live Compendium preflight passed on Edge `152.0.4191.53` / CDP `1.3`; compatible point-version
+changes remain provenance only.
+
+Compendium `20260901051716174-22348-bea719354e` passed **78/78** with zero findings or blocked
+outcomes in **64,220 ms**, once/no-retry, and its exact named verifier passed. Develop Slice
+`20260901051837279-22717-480519033de4` then stopped after **24,458 ms** with exactly **1 finding /
+1 scope**, `harness`, no screenshots and no product action. Its first keyboard Milky Way Survey
+predecessor observed a complete writable revision-5 authority with exact live↔raw parity and
+immutable `fresh-v5` provenance. The old generic oracle required `current-v5`; this is an
+instrument false red, not product-bug evidence. Glass correctly did not run, and 6030035 was not
+retried or relabelled.
+
+The exact carriers below all pass gzip integrity:
+
+- `ARC1A_COMPENDIUM_PR35_FRESH_BOOT_READINESS_PREDECESSOR_PASS_20260901_6030035.json.gz`:
+  **452,461 bytes**, SHA-256
+  `c962c4443a375cbccab541b3e7439e48fdaca2d8b77a9de28fdf337035f5bd27`; raw
+  **10,843,413 bytes**, SHA-256
+  `7f8b399771f287667d05cd7e9b86b747ffe42422d4251f32abaa8e6a5b28a6fc`.
+- `ARC4_SLICE_PR35_FRESH_BOOT_READINESS_ORACLE_RED_20260901_6030035.json.gz`:
+  **2,699 bytes**, SHA-256
+  `b97e9a34319efab061eb7f8f4ab8569f1162a0c7abc6486501aa3d574ed68fdb`; raw
+  **11,308 bytes**, SHA-256
+  `fc1b1cdfdd5fa8c4f4390aca98a407a6fd473f74f1cd5f5784877535b1220cd8`.
+- `ARC4_SLICE_PR35_FRESH_BOOT_READINESS_ORACLE_RED_20260901_6030035.log.gz`:
+  **2,924 bytes**, SHA-256
+  `e1a70f1ac1279d23fd5241c6f1455db0e811f4ab39e546ebfe1632239881e259`; raw
+  **7,273 bytes**, SHA-256
+  `348f2d950f9136e33227d9276879fd843655a9f155947f1344e4bef13df77470`.
+
+The bounded working-tree successor accepts `fresh-v5` only at explicit initial-page callsites
+bound to the exact original document token; current, reload and replacement paths stay strict.
+Focused verification passed **5 files / 79 tests**, all three TypeScript programs, and the full
+develop profile passed **258 files / 2,628 passed / 1 skipped**, **34** clean art sources,
+**1,014/1,014** routes and **454** non-inert fields. Independent final review is **APPROVED**.
+It is not yet signed, tracked-input rehearsed or browser-certified, so these carriers certify only
+6030035's immutable PASS/red boundary. No hosted attempt, merge, release, preview or deployment is
+authorized.
+
+### Historical exact-source PR #35 fifth hosted Survey-settlement stop
+
+GitHub run `33466661094` tested exact head
+`06aba9d2724f9d3395c09e9cb3b9c7af17d8fa0c` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, under one
+`actions-budget-approved` 92-minute-maximum/no-retry authorization. Actions evaluated synthetic
+merge `337ffd29f1584f1a5c786c4532a79c99876be325`; its tree is byte-equivalent to exact head tree
+`e39bcdb8781eeaa6f9ee503cd6cfbb47497899ea`. The run completed terminal red after **32m41s**.
+
+All prerequisites and Compendium `gha-33466661094-1-compendiummem` passed **78/78** with zero
+findings/blocked outcomes in **1,420,350 ms** on Edge `151.0.4129.101` / CDP `1.3`. Develop Slice
+`gha-33466661094-1-slice` then stopped after **115,766 ms** with **13 findings / 8 scopes** and five
+screenshots. Its first causal finding was non-Sol Survey → Enter: the runner pressed Enter before
+the receipt-bearing Survey reached its same-document F4 fixed point. The product correctly refused
+with **Expedition action settling** and remained in galaxy; the remaining 12 findings were cascades.
+Glass correctly skipped. The run was not retried or relabelled.
+
+GitHub retained the complete `battery-evidence` artifact as ID **9785718444**, **7,687,662 bytes**,
+digest `sha256:3618053ebac857230e696b2560c961bcca0d338812865002d47c9192acd56652`, expiring
+**2026-09-15**. The immutable extracted carriers below all pass gzip integrity:
+
+- `ARC1A_COMPENDIUM_PR35_CORE_FLOW_SURVEY_PREDECESSOR_PASS_20260901_337FFD2.json.gz`:
+  **487,297 bytes**, SHA-256
+  `45db57e4541516a1d623c7b73b554e80f2331be654e7e9df20d93083cc1eaa07`; raw
+  **12,842,866 bytes**, SHA-256
+  `43e13051779f63cb5c664713f353a2696df30cb020c76f8000476c07cb9094c6`.
+- `ARC4_SLICE_PR35_CORE_FLOW_SURVEY_SETTLEMENT_RED_20260901_337FFD2.json.gz`: **2,857 bytes**,
+  SHA-256 `58676472d7615543879e65b293a6a467099a317484c05fac6b3f342ebce8537f`; raw **10,199
+  bytes**, SHA-256 `9d9ea6e88cc344478ae828dc08d7c0d380d94257d535976aac57a60a696d67d1`.
+- `ARC4_SLICE_PR35_CORE_FLOW_SURVEY_SETTLEMENT_RED_20260901_337FFD2.log.gz`: **2,628 bytes**,
+  SHA-256 `f2b36e8c80bca680d8389ad9c76eb55a781c25dc79bcde33ca29ccef7998428e`; raw **6,334
+  bytes**, SHA-256 `dab0a53cd0767a34fbde159f6988b27029d4663cac61e0e3b94824207495ae23`.
+
+The bounded local successor now requires exact Survey receipt/revision/persistence,
+route/render/card/action identity and coordinator idle before every dependent pointer, keyboard,
+touch or already-current Enter/Land path; a red predecessor causal-stops descendants.
+`landing.surveyOutcome` is diagnostic-only. Focused/full browser-free and TypeScript verification
+is now green: focused **4 files / 73 tests passed**, all three TypeScript programs and final develop **257
+files / 2,622 passed / 1 skipped**, plus **34** clean art sources, **1,014/1,014** routes and **454**
+fields. Two independent reviews are **APPROVED**; producer authority remains
+`410d2639ec981647adc20b3ae00576c0d60839296c7b763333fa2a00c79b42a6`. Exact clean signed
+`4a595e2fa3305bf2531fc4051d09314490587e83` later passed tracked-input and one named-verified,
+unchanged-source **78/78 Compendium → zero-finding Slice → 12/12 Glass** chain once/no-retry, with
+its separate exact carriers indexed at the top of this file. These historical carriers certify only
+the immutable hosted PASS/FAIL boundary above and are not relabelled as the 4a595e2 certificate.
+The fifth approval is consumed and no new hosted attempt, merge, release, preview or deployment is
+authorized.
+
+### Current exact-source `580c99a…` terminal-green stored-v4 lifecycle develop chain
+
+Exact clean SSH-signed source `580c99a952c4e06acb776c852b6c5c0edba4722e` (tree
+`25a30286eb5a36b3f8d1f226e25d1b00042bf385`, parent `6238b8d…`) passed the hermetic tracked-input
+develop rehearsal at **255 files / 2,576 passed / 1 skipped**, all three TypeScript programs,
+**34** clean art sources, **1,014/1,014** routes and **454** non-inert specification fields. Live
+preflight accepted Edge `152.0.4191.53` / CDP `1.3`; the point version remains provenance only.
+
+Every browser stage then ran once/no-retry on unchanged 580c99a and every exact named verifier
+passed:
+
+- Compendium `20260901024638901-3060-0ba295673f` passed **78/78** with zero findings or blocked
+  outcomes in **63,243 ms**.
+- Develop Slice `20260901024804921-3412-bd2a2c7c9c80` passed with zero findings/scopes and all
+  ten screenshots in **360,564 ms**. It completed the Protected Save rehearsal that exposed the
+  predecessor's replacement-document staging defect. Report SHA-256 is
+  `fea97992fe0408d7550029b6e46de428f41dbeaa191f2972bbc8b5ce6a6febe3`; raw log SHA-256 is
+  `8f9168b4bd1a44b86e5adf85fbd7b6e128a146df6b4d10598d314437339a23c3`.
+- Full-certifying Glass `20260901025422535-3892-101d25f2e009` consumed that exact Slice and
+  passed **12/12** viewport classes plus **104/104** controls with zero findings, instrument
+  failures, blocked or omitted work in **111,461 ms**. Report SHA-256 is
+  `d280058d21db9f501c214503c8f476b6b157562e46393c53949faaea8d26202f`.
+
+The exact PASS carriers all pass gzip integrity:
+
+- `ARC1A_COMPENDIUM_PR35_PROTECTED_STAGE_LIFECYCLE_PASS_20260901_580C99A.json.gz`: **524,914
+  bytes**, SHA-256 `e55d8cf9269b1fdd37c12c7e1b49bc4437e175b5f6701d9eefc96b5437cf7c59`; raw
+  **10,875,379 bytes**, SHA-256
+  `140b47c06ffda1c5d861d6097beaa8b90802d72a524b618d4c56ba7dd98bf540`.
+- `ARC4_SLICE_PR35_PROTECTED_STAGE_LIFECYCLE_PASS_20260901_580C99A.json.gz`: **1,960 bytes**,
+  SHA-256 `909cda77a2aa05aee9fc5f5efeed9356d40916e36bae1922addc3eae13fb3bb6`; raw **6,102
+  bytes**, SHA-256 `fea97992fe0408d7550029b6e46de428f41dbeaa191f2972bbc8b5ce6a6febe3`.
+- `ARC4_SLICE_PR35_PROTECTED_STAGE_LIFECYCLE_PASS_20260901_580C99A.log.gz`: **3,296 bytes**,
+  SHA-256 `b050a911d499aa1f60ddb07f421554ebcc905f8b5a48f683f8de9c91424816b6`; raw **6,949
+  bytes**, SHA-256 `8f9168b4bd1a44b86e5adf85fbd7b6e128a146df6b4d10598d314437339a23c3`.
+- `ARC4_GLASS_PR35_PROTECTED_STAGE_LIFECYCLE_PASS_20260901_580C99A.json.gz`: **82,879 bytes**,
+  SHA-256 `5dfd720fd02caf69a8d32dca33e6d52d92e0d0a951592bdfd82a1914db2ed840`; raw **898,904
+  bytes**, SHA-256 `d280058d21db9f501c214503c8f476b6b157562e46393c53949faaea8d26202f`.
+
+The signed evidence/docs descendant commits those four carriers without rebinding certification
+away from 580c99a. SceneMemory certification is production-only/quarantined and Recovery is not
+part of develop, so neither ran. Product/save/gameplay/art/creature/CSS behavior, thresholds,
+timeouts, retry and version-tolerant Edge-family/CDP 1.3 policy are unchanged. No push, hosted
+attempt, merge, release or deployment is authorized.
+
+### Historical exact-source `6238b8d…` Slice fixture-lifecycle terminal red and guarded local successor
+
+Exact clean SSH-signed source `6238b8dd3eccf6dd106787b6789ad8bb716deac9` (tree
+`a10f7c10becec7e2bc9e58c1741c3ca9c3c200f5`) passed Compendium
+`20260901015932922-91060-9d1ef2de36` at **78/78** with zero findings and a green exact named
+verifier. Its unchanged-source develop Slice `20260901020100211-91399-de1ddbd28c96` ran once
+with no retry on Edge `152.0.4191.53` / CDP `1.3`, then stopped terminal **fail** after
+**302,408 ms** with exactly **1 finding / 1 harness scope**. Its named verifier correctly exited
+2; Glass did not run.
+
+Protected Save invoked a raw `window.__CF_SLICE__.api.__smokeStageStoredV4(...)` expression after
+the backgrounded phone target had entered a replacement document but before Slice/API publication.
+The hook made zero calls. The expected 46-byte fixture was never staged, and independent IndexedDB
+readback found the existing 4,305-byte primary unchanged. This is immutable Slice-harness lifecycle
+evidence, not a product save failure.
+
+The bounded local successor inventories all eight stored-v4 staging paths. It foregrounds the
+intended target, requires two consecutive ready observations from one exact document token and one
+safe persistence hold/mutation pair, then rechecks the complete authority atomically before exactly
+one hook call. A pre-invocation replacement yields an exact zero-call `unclaimed` receipt and is
+the only condition that may rebind. An invoked, rejected, malformed or transport-ambiguous outcome
+stops permanently; independent storage readback remains diagnosis and cannot mint a stage receipt.
+Browser-free verification is green at **255 files / 2,576 passed / 1 skipped** plus every
+TypeScript/art/route/specification owner, and independent final review is clear. The guarded
+successor remains uncommitted and has no browser certificate.
+
+The immutable red carriers pass gzip integrity:
+
+- `ARC4_SLICE_PR35_PROTECTED_STAGE_LIFECYCLE_RED_20260901_6238B8D.json.gz`: **2,107 bytes**,
+  SHA-256 `a9d5ac7a888685dcc67880baffcc712c04c5b29eb27ba922382e0e091c7417e5`; raw **6,821
+  bytes**, SHA-256 `6c7a84bb786b8c63d48cc9c8c883ba994d007871eb78a86647e16618a91cb05e`.
+- `ARC4_SLICE_PR35_PROTECTED_STAGE_LIFECYCLE_RED_20260901_6238B8D.log.gz`: **1,815 bytes**,
+  SHA-256 `d9d3c457b86c331fd3f2b6294f7169d96509dfe1b143d75f95afa4db3b02958e`; raw **4,286
+  bytes**, SHA-256 `1dc4bf6852dba55cdc5d2fc43a31bcab105321e51abfcc2ec934fba0efa85851`.
+
+Product/save/gameplay/art/creature/CSS behavior, thresholds, timeouts, retry and version-tolerant
+Edge-family/CDP 1.3 policy are unchanged. Exact 6238 will not be retried or relabelled. A clean
+signed successor and one fresh exact **Compendium → Slice → Glass** chain remain; no push, hosted
+attempt, merge, release or deployment is authorized.
+
+### Historical PR #35 shared-launcher terminal red and local repair boundary
+
+GitHub run `33453239307` consumed the fourth exact one-attempt/no-retry PR #35 battery for head
+`73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`. Every invoked stage through Compendium passed;
+Compendium retained **78/78** plus a green exact named verifier. The subsequent Chrome launcher
+selftest stopped red because its unique profile remained/reappeared after cleanup. Slice and Glass
+did not run. Preserve that status and ordering: it is launcher-instrument evidence, not a product,
+Slice or Glass verdict, and it was not retried.
+
+The old launcher terminated only the direct PID, destroyed inherited stderr and removed the profile
+once without proving descendant-tree quiescence. POSIX healthy close sends bounded CDP
+`Browser.close`, owns a detached group, permanently latches `ESRCH`, proves a no-collateral sibling
+and escalates only if still live. Windows disables `Browser.close` and requires successful bounded
+`taskkill /T`, escalating to `/F`; pre-exited/no-success states fail closed without a Job Object
+claim. Cleanup proves **100 ms** stable profile absence,
+preserves primary/cleanup causality and survives a throwing `ws.close()`. Workflow order moves the
+selftest ahead of the long sealed exact-Edge certificate. Real-Edge selftest and the complete
+**254-file / 2,567-pass / 1-skip** develop profile are green; focused authority is **32/32** and the
+final combined focused suite is **160/160**. Final measurement/browser-CDP authority is
+`dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
+`929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`.
+SceneMemory remains intentionally
+stale/quarantined until production activation. No new carrier or current browser certificate exists;
+the repair awaits final diagnostics/commit, and no hosted retry, push, merge, release or deployment
+is authorized.
+
+### Historical exact-source `9b37ffc…` terminal-green Back cleanup develop chain
+
+Exact clean SSH-signed certified source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
+`e05e48c807597e86530e9b258a11e93d9533cd3c`, parent
+`4ea8198c9022cc814e5948ed89c756ffb1fe6c11`) passed the complete local admission. At that
+historical checkpoint, its signed evidence/docs-only descendant added only the four exact carriers
+below and synchronized references without rebinding the certificate.
+
+The repair preserves the first causal boundary after an armed Back action's native input failure.
+One raw bounded cleanup evaluation outside observation tracking requires exact
+`{controllerAborted: true, carrierPresent: false}`, retains the primary error's original
+command/stage/history and records any cleanup residue or failure independently. It never replaces or
+retries the primary error. At that checkpoint, measurement / outcome-contract / collector /
+producer / budget-file authority was
+`5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` /
+`1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+`ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d` /
+`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+`454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`.
+
+Exact 9b37 passed **254/254 files / 2,567 passed / 1 skipped**, with every TypeScript, art, route and
+specification owner green. Browser-path, Compendium preflight, the **618-control** Compendium
+selftest, SceneMemory heap-phase and browser-CDP selftests all passed. Live preflight accepted Edge
+`152.0.4191.53` / CDP `1.3`; the point version is provenance only. The unchanged source then ran
+each browser stage exactly once with no retry, and every exact named verifier passed:
+
+- Compendium `20260831-pr35-back-cleanup-9b37ffcdb587-compendium-certification` passed **78/78**
+  with zero findings/blocked outcomes in **63,594 ms**. Phone setup/action/return stayed
+  `-2 / -2 / -2`; desktop stayed `-46 / -46 / -46`. Each profile bound exactly one trusted witness
+  and proved cleanup. Raw report: **10,866,044 bytes**, SHA-256
+  `7547faf3a3374014c89f61eb6c80ff9d728beba451f14999c8909580e41896f2`.
+- Develop Slice `20260831-pr35-back-cleanup-9b37ffcdb587-slice-certification` passed with zero
+  findings/scopes and ten screenshots in **358,221 ms**. Raw JSON: **6,678 bytes**, SHA-256
+  `60a459fcd101bd234c71ea82482b71d776f02dddee656dcfc70a66a517b7c9fc`. Raw log: **6,973
+  bytes**, SHA-256 `e7d345e32864216052c59e90e6aad5604a6124d3abffc0034fffeb16fb79ac82`.
+- Full-certifying Glass `20260831-pr35-back-cleanup-9b37ffcdb587-glass-certification` passed
+  **12/12** isolated viewport classes and **104/104** controls with zero findings, instrument
+  failures, blocked or omitted work in **111,201 ms**. It binds the exact Slice report SHA-256.
+  Raw report: **898,849 bytes**, SHA-256
+  `e42ee81470650aa84c495878e5fa1dba4a648c5767ed18e850af5c1106f1a045`.
+
+All four exact carriers pass gzip integrity and are committed by the signed evidence/docs descendant:
+
+- `ARC1A_COMPENDIUM_PR35_BACK_CLEANUP_PASS_20260831_9B37FFC.json.gz`: **525,472 bytes**,
+  SHA-256 `b21c3a31c5e82d5fe33d94dc3e5bbe656047e7697ea2ee300708e69b449f551e`.
+- `ARC4_SLICE_PR35_BACK_CLEANUP_PASS_20260831_9B37FFC.json.gz`: **1,967 bytes**, SHA-256
+  `88ad409c2e61afcbab79c3054f958e13a70d1121549b756e5a0999c9ff41bc2b`.
+- `ARC4_SLICE_PR35_BACK_CLEANUP_PASS_20260831_9B37FFC.log.gz`: **3,305 bytes**, SHA-256
+  `df926681aa48d8868daed3d35293b30b8dd20fc136b9e67b5c5549a1894bd499`.
+- `ARC4_GLASS_PR35_BACK_CLEANUP_PASS_20260831_9B37FFC.json.gz`: **82,880 bytes**, SHA-256
+  `d44e4f5cbb50cc3554abb1f25abca745ab7c7068c11fa14d8e3ef498c374bc9d`.
+
+Contract and producer, product/CSS, the fixed ±2px tolerance, numeric rulers/ceilings, historical
+samples, timeouts, one-click/no-retry rule, 78-outcome inventory and version-tolerant Edge-family +
+CDP `1.3` policy are unchanged. SceneMemory certification and Recovery did not run by develop
+policy. Exact `3ca7d30…` and its four carriers remain immutable historical evidence for those bytes
+only. No push, hosted attempt/retry, Ready transition, merge, release or deployment is authorized.
+
+### Historical exact-source `3ca7d30…` terminal-green Compendium Back action-time develop chain
+
+Exact clean committed source `3ca7d300f4c8192fef596d4f08e8c493a8875863` (tree
+`7801ead641bf88eb4480767adb816eb5d1e39865`) passed the isolated develop profile at **254 files /
+2,567 passed / 1 skipped** and all TypeScript programs. The 64 action controls, browser-path
+selftest, Compendium browser-preflight selftest, **611-control** Compendium selftest, SceneMemory
+heap-phase selftest and browser-CDP selftest were all green. Live preflight accepted Edge
+`152.0.4191.53` / CDP `1.3`; the point version is retained as provenance only.
+
+The unchanged exact source then completed one fail-fast/no-retry develop admission chain, with each
+exact named verifier passing:
+
+- Compendium `20260831-pr35-back-action-3ca7d30-compendium-certification` passed **78/78** with
+  zero findings/blocked outcomes in **66,094 ms**. Desktop setup, action witness, immediate return
+  and settled return all retained logical offset **-46**; phone retained **-2** across the same
+  chronology. Each profile captured exactly one trusted delegated capture-phase click, aborted its
+  witness controller and proved the carrier absent. Absolute virtual scroll pixels legitimately
+  rebased while the logical anchor and selected-row focus remained exact.
+- Develop Slice `20260831-pr35-back-action-3ca7d30-slice-certification` passed in **365,285 ms**
+  with zero findings/scopes, ten screenshots and no source change.
+- Full-certifying Glass `20260831-pr35-back-action-3ca7d30-glass-certification` passed in **111,353
+  ms** across all **12** isolated viewport classes with zero findings, zero instrument failures and
+  zero retries. All **104/104** planned negative controls ran; none were blocked or omitted. Glass
+  binds the exact Slice report SHA-256
+  `83631714246257865ad7f5de94b77e7c3dc61a55061e2a18c689f17b03dcefd8` and raw-log SHA-256
+  `e436d044d0db026a398104a8b6cc9a5884d1e022613f7f88bd4fbb3e636860ff`.
+
+This is the complete historical local `develop` browser certificate for exact `3ca7d30…`; it does
+not certify current exact source 9b37 or its evidence/docs descendant. The
+hosted 77/78 report and its stale pre-helper comparator remain immutable in the next section; this
+historical successor does not rewrite or relabel them. At that exact source, measurement /
+outcome-contract / collector / producer / budget-file authority was
+`20a1b773e7eec309de31772c2b1c0a174c0f175cfc798e573f20a53b966aba2e` /
+`1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+`a5afcffd2f75e7cc2db1284194bc3eb76bde22bf4a1b4741f5157ce25339df51` /
+`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+`c60b2f1fb50e978c0d6f522ee52a0274e9a45cd63a51f1643808229b1e25ce60`. Product/CSS, the fixed
+**±2px** restoration tolerance, numeric rulers/ceilings, historical samples, timeouts,
+one-click/no-retry rule, 78-outcome inventory and version-tolerant Edge-family + CDP `1.3` policy
+are unchanged. SceneMemory certification remains production-only/quarantined and Recovery is not
+part of develop, so neither ran. HUMAN judgment, hosted CI, merge, production-release and deployment
+authority remain open. The four carriers below remain historical exact-source evidence and are not
+rebound to the current collector; exact 4ea commits them without changing their authority.
+
+- `ARC1A_COMPENDIUM_PR35_BACK_ACTION_WITNESS_PASS_20260831_3CA7D30.json.gz`:
+  **453,026 gzip / 10,854,191 raw bytes**; gzip/raw SHA-256
+  `127fb9da04778bd4348e5f34ab557580ef7ab0ee9e763003d06fb86584db348d` /
+  `488e1cce420babfe9a398b728dfe211cff4e27554adc8ac9b462bf53d1208834`.
+- `ARC4_SLICE_PR35_BACK_ACTION_WITNESS_PASS_20260831_3CA7D30.json.gz`:
+  **1,965 gzip / 6,534 raw bytes**; gzip/raw SHA-256
+  `76f8d92222039fa49d20d61f6486d0362f933584f5eb715fba473798aee05727` /
+  `83631714246257865ad7f5de94b77e7c3dc61a55061e2a18c689f17b03dcefd8`.
+- `ARC4_SLICE_PR35_BACK_ACTION_WITNESS_PASS_20260831_3CA7D30.log.gz`:
+  **3,294 gzip / 6,967 raw bytes**; gzip/raw SHA-256
+  `b289b68928b974ccddba4087f434d917ba748789a1ca0306d43c0dd2a7fa2d0f` /
+  `e436d044d0db026a398104a8b6cc9a5884d1e022613f7f88bd4fbb3e636860ff`.
+- `ARC4_GLASS_PR35_BACK_ACTION_WITNESS_PASS_20260831_3CA7D30.json.gz`:
+  **78,815 gzip / 898,962 raw bytes**; gzip/raw SHA-256
+  `c21909632dfd8ff4d11288d8ba258a0e9123cde59079b04ed569a484876498cf` /
+  `ceb6ae9f68ac7b1e17180c3786db9777946990880739051f9537066ed527a294`.
+
+### PR #35 hosted Compendium Back action-witness terminal red and local repair
+
+GitHub Actions run `33437596315`, attempt 1, used the one exact authorized `test-battery` for PR
+#35 head `8eb0b1bd901c7b36d8900f43f4de7d3a54158a0c` against develop base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`, guarded by `actions-budget-approved`, a
+92-minute maximum and no retry. GitHub tested clean synthetic merge
+`4ccae861ab2f43f4269edfeefa51fd2e4985a875`; its tree
+`b466c5a586dacfc785e7c9c1c8654a90ad5bdade` exactly equals the authorized head tree. The workflow
+stopped terminal red after **37m14s**. Every predecessor through Compendium browser preflight
+passed; Compendium completed all **78** outcomes in **1,744,486 ms** at **77 pass / 1 fail**, with
+sole red `desktop/back-restores-focus`. Its six review-packet bindings and complete lifecycle were
+retained. Slice and Glass did not run, the approval label was removed, and the attempt was not
+retried. The exact hosted browser was Edge `151.0.4129.101` on Linux with CDP `1.3`; the point
+version is provenance only.
+
+The immutable report's desktop `backNavigation.before` sampled setup at logical row `cmem-0773`,
+offset **-34**, window **770–782**. The native activation helper then legitimately required three
+settlement attempts: its first thumbnail window contained rows **775–786**, while attempts two and
+three stabilized on **771–782**. The sole click therefore reached the product after setup had moved.
+Back returned to logical row `cmem-0773`, offset **-92**, window **771–783**, both immediately and
+after settlement; selected `cmem-0777-filter-beacon` was mounted, intersecting, pinned and focused.
+The **58px** discrepancy existed before the click and equals the default row estimate. The phone
+control passed at logical `cmem-0776`, offset **-9 → -9**, despite legitimate absolute-scroll
+rebasing. The same row geometry reproduced locally, excluding an Edge/Linux CSS or font-specific
+product explanation. The stored report remains terminal `fail` under its old comparator and is not
+rewritten or relabelled; the retained chronology diagnoses a stale pre-helper instrument witness,
+not a product focus/scroll failure.
+
+The bounded local successor adds schema `cf-v2-compendium-back-action-witness/v1`. Only after the
+row helper accepts its final stable point, and before native press/release, the collector arms one
+capture-phase listener on the exact current document. It must observe exactly one trusted delegated
+click before the product handler and bind the logical row/index, unique target/scroller, hit point,
+document token, button/detail/phase/current target, panel mode/query/counts and action-time anchor.
+`backNavigation` retains diagnostic `setup`, `actionWitness`, `before` derived exactly from that
+witness, `after` and `afterSettled`; read and exceptional paths abort the listener, remove the
+carrier and surface an independent cleanup failure. Browser-free positive and negative controls
+cover the hosted three-attempt chronology, stale-setup substitution, missing/duplicate/untrusted or
+misbound event identity, shifted action/return anchors, install/read/cleanup source mutation and
+exact restoration. Focused verification passes **5 files / 56 tests**, the Compendium selftest
+passes **611 controls**, and all TypeScript programs are green.
+
+Current measurement / outcome-contract / collector / producer / budget-file authority is
+`20a1b773e7eec309de31772c2b1c0a174c0f175cfc798e573f20a53b966aba2e` /
+`1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+`a5afcffd2f75e7cc2db1284194bc3eb76bde22bf4a1b4741f5157ce25339df51` /
+`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+`c60b2f1fb50e978c0d6f522ee52a0274e9a45cd63a51f1643808229b1e25ce60`. The hosted carrier keeps
+its exact historical measurement / outcome-contract / collector / producer / budget authorities:
+`5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+`9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+`0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010` /
+`af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7` /
+`80a2b8b39d400419a5527f9737a92ea2e0c54916ba8c3966411e607fd950fd79`. Product source and CSS,
+the fixed **±2px** restoration tolerance, 78-outcome inventory, numeric rulers/ceilings, historical
+samples, timeouts, one-click/no-retry rule and version-tolerant Edge-family + CDP `1.3` policy are
+unchanged. The local repair has no fresh browser certificate yet; a clean signed candidate still
+requires one fail-fast unchanged-source **Compendium → Slice (`develop`) → Glass (`develop`)**
+chain. No new hosted attempt or merge authority follows from this diagnosis.
+
+- GitHub artifact `battery-evidence`, ID `9776171387`: **4,747,031 bytes**, artifact digest
+  `sha256:6e22673b21e7c3ba1581c5c31caee168c3f838f96caf8438ea5a370c5500d0be`.
+- `ARC1A_COMPENDIUM_PR35_HOSTED_BACK_ACTION_WITNESS_INSTRUMENT_RED_20260831_4CCAE86.json.gz`:
+  **566,480 gzip / 12,775,383 raw bytes**; gzip/raw SHA-256
+  `075ba73e3a9209b89c7892192c671e20e47bfb663fd4a41569c66218270d6f0d` /
+  `0a8a840ce2f410e467640bf6813b95114d16da673cb9660ea1d65a1cc245f862`.
+
+### Signed `7e089f3…` terminal-green local develop chain
+
+Exact clean SSH-signed source `7e089f3432a834636064615ac2da13b2b0ac39df` first passed the
+tracked-input develop preflight from its isolated committed snapshot: **253 files / 2,562 passed /
+1 skipped**, all three TypeScript programs, **34** art sources, **1,014/1,014** routes and **454**
+non-inert fields. The unchanged source then completed the exact no-retry develop admission chain on
+Edge `152.0.4191.53` / CDP `1.3`; that point version is retained only as provenance.
+
+- Compendium run `20260831191631844-46650-7805223383` passed **78/78** with zero findings and six
+  review-packet bindings in **64,460 ms**. Its exact named verifier passed.
+- Develop Slice run `20260831191820361-47014-3aa3e64e5899` passed in **358,748 ms** with zero
+  findings/scopes, ten screenshots, zero retries and no source change. Its exact named verifier
+  passed; report SHA-256 is
+  `6137128e18caa1b4858d7dd475b215b71e541f8ec7c69649a534c57969046c1b`.
+- Full-certifying Glass run `20260831192451470-47497-df046f947fd8` passed in **111,001 ms** across
+  all **12** isolated viewport classes with zero findings, zero instrument failures and zero
+  retries. All **104/104** planned negative controls ran; none were blocked or omitted. Its exact
+  verifier passed against the named Slice predecessor; report SHA-256 is
+  `30bdbf2492bef68f13d1352fc7adc01903a8cf7b517e34510a0fdf962eb9b4ae`.
+
+This is the complete local `develop` browser certificate for the bounded Glass/Capture/Binder
+repair. SceneMemory remains production-only/quarantined and Recovery is not part of develop, so
+neither ran. Automation still does not supply HUMAN visual/listening/accessibility/device judgment,
+hosted CI, merge, production-release or deployment authority.
+
+- `ARC1A_COMPENDIUM_PR35_GLASS_CAUSAL_PRESENTATION_PASS_20260831_7E089F3.json.gz`:
+  **523,753 gzip / 10,849,428 raw bytes**; gzip/raw SHA-256
+  `2d8c3b243849ccfc736e9f363b28d9318fd9b047d6d91d2e4013a3e90cacc1dd` /
+  `2c61999892e73ca08b0d0c9f4f43d05ac9a1d5be4df20281edefcde1933a60fb`.
+- `ARC4_SLICE_PR35_GLASS_CAUSAL_PRESENTATION_PASS_20260831_7E089F3.json.gz`:
+  **1,962 gzip / 6,126 raw bytes**; gzip/raw SHA-256
+  `fe132a17fae5fe512b56fff9bd2dae5d46305c79d47993448fbc4bbd03110066` /
+  `6137128e18caa1b4858d7dd475b215b71e541f8ec7c69649a534c57969046c1b`.
+- `ARC4_SLICE_PR35_GLASS_CAUSAL_PRESENTATION_PASS_20260831_7E089F3.log.gz`:
+  **3,298 gzip / 6,950 raw bytes**; gzip/raw SHA-256
+  `d92757ef165cef480f07563237b8d982b89268c3e1cb84f5026cb9cd0d6b7aa5` /
+  `634db3f1c6bb7fbd5453b7f9d37ad5ee070082efd9b6df9dd47aaf1c690a6ff1`.
+- `ARC4_GLASS_PR35_CAUSAL_PRESENTATION_PASS_20260831_7E089F3.json.gz`:
+  **82,848 gzip / 898,915 raw bytes**; gzip/raw SHA-256
+  `014371d5a29989cdf840583c52fd6fcc522cd4a1dd45f874e1c337627b8dcd9d` /
+  `30bdbf2492bef68f13d1352fc7adc01903a8cf7b517e34510a0fdf962eb9b4ae`.
+
+### Signed `0d4b72a…` Compendium + Slice PASS, then Glass trail/control instrument red
+
+Exact clean SSH-signed source `0d4b72aaccc673054b049b4bb533e199ab1f7680` passed one/no-retry
+Compendium run `20260831163047925-29421-21d080b288` at **78/78** with zero findings in **65,580
+ms**, then passed its unchanged-source develop Slice run
+`20260831163239186-29786-f5192730fcd5` once/no-retry in **359,973 ms** with zero findings, zero
+scopes and ten screenshots. Both exact named verifiers passed. Full-certifying Glass run
+`20260831163921002-30283-9bd10ae7a9bb` then stopped once/no-retry after **102,462 ms** with
+terminal `instrument-fail`, **9 instrument failures** and **88 provisional finding rows**. It is
+immutable red evidence and is not relabelled as a Glass certificate. The first instrument red was
+the trail-restoration policy injection staying green; the missing causal stop made later controls
+and viewport rows derivative diagnostics rather than independent findings.
+
+Diagnosis separated actual presentation defects from instrument false positives and dependent
+rows. Large-phone Capture controls inherited stretch sizing, while completed Binder slots left
+Exotic text over translucent glass. The successor centers Capture actions at the base cascade,
+keeps narrow-phone full width and the 44px floor, and gives only owned Binder slots the established
+opaque `#05070d` reading surface. Glass now causal-stops the viewport loop at the first product red,
+records the complete disjoint blocked suffix, classifies all rendered Guide copy baselines before
+instrument controls, excludes unpainted descendants of closed `<details>` while retaining Summary,
+and repairs stale copy mappings, portrait restoration evidence and omitted Shipyard carriers.
+
+Exact SSH-signed implementation commit `2b9e9effe35af2e8a585f4fdfe5f769bca372c5f` is green at the
+focused **7 files / 51 tests**, focused producer **2 files / 32 tests**, Glass selftest, all three
+TypeScript programs and complete develop profile (**253 files / 2,562 passed / 1 skipped**).
+Independent causal-stop, Guide-ingress and product-presentation reviews are **CLEAR**. No creature,
+genome, plant, biome, painter, save, RNG, balance, timeout, retry, numeric ruler or Edge-version
+baseline changed.
+
+- `ARC1A_COMPENDIUM_PR35_GLASS_TRAIL_CONTROL_PREDECESSOR_PASS_20260831_0D4B72A.json.gz`:
+  **453,667 gzip / 10,886,505 raw bytes**; gzip/raw SHA-256
+  `51f1b2637235d298fc8134d81edb3b5972f6f9df493feb89469e902e327c88f7` /
+  `c2ad9e64a27d42be762c160b2c1522c886568bbc5bfc73c804c12806113353fe`.
+- `ARC4_SLICE_PR35_GLASS_TRAIL_CONTROL_PREDECESSOR_PASS_20260831_0D4B72A.json.gz`:
+  **1,960 gzip / 6,126 raw bytes**; gzip/raw SHA-256
+  `c17d94a615ef23957395c0496618a082eac8eaca880671bf6cb17d0f88d6edbd` /
+  `25adb7c571223a743b120c001eb05be46da70077dd4715a3fe2e42bda91dda99`.
+- `ARC4_SLICE_PR35_GLASS_TRAIL_CONTROL_PREDECESSOR_PASS_20260831_0D4B72A.log.gz`:
+  **3,293 gzip / 6,950 raw bytes**; gzip/raw SHA-256
+  `2a74ab8be030ece12ffeef02881988eb2bdd44fcf7c0501c424499292c3b830d` /
+  `8c3e2d9131b0c58d3b531e179b49a625cdf1c30b0f58113763d82e61d4c65c39`.
+- `ARC4_GLASS_PR35_TRAIL_RESTORATION_CONTROL_INSTRUMENT_RED_20260831_0D4B72A.json.gz`:
+  **155,093 gzip / 2,123,374 raw bytes**; gzip/raw SHA-256
+  `c66e345ef7d7d9b21af7e8536731f6ba9ab2dddf12288bdb58aed4bf95db822f` /
+  `edcf57a01447d4d81f6663d7dd74c2708b3c283679e45cfa2cb20ad761065a5c`.
+
+### Signed `a0460c6…` Compendium PASS, then inert Atlas-pointer control Slice red
+
+Exact clean SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed one/no-retry
+Compendium run `20260831155807329-24237-1c6d2e89d5` at **78/78** with zero findings in **64,166
+ms**; its exact named verifier passed. Its unchanged-source develop Slice run
+`20260831155943782-24588-a98f13f2c7b7` then stored terminal `fail` once/no-retry after **359,647
+ms** with exactly **1 finding / 1 scope** (`world-identity-collision-controls-failed`). The named
+Slice verifier correctly exited 2. Glass did not run; a0460c6 will not be retried or relabelled.
+
+The complete collision base product outcome was green: both source-proven same-leaf worlds retained
+distinct Search/name, Atlas rows, native Travel routes and pointers, landing records, durable
+reload identity and Share parents. The sole red came from an inert control. Atlas rows render
+newest-first **[Beta, Alpha]**, while the measured Travel receipts remain fixture-ordered **[Alpha,
+Beta]**. The stale control assigned `atlas.rows[1].travelId` to Alpha's pointer, therefore assigning
+Alpha back to Alpha and manufacturing green.
+
+Exact SSH-signed repair `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives the mutation from
+the distinct measured sibling Travel receipt, refuses missing/equal/no-op carriers, causal-stops
+before controls and later origins when the real collision product assessment is red, and executes
+the former reversed-row order as a browser-free regression. Focused coverage is **1 file / 6
+tests**; the complete develop profile is green at **253 files / 2,561 passed / 1 skipped**, all
+three TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields;
+independent review is **CLEAR**. This changes no product, save, gameplay, art, creature, genome,
+flora, fauna, biome, ruler, timeout, retry or Edge-version behavior. Current Compendium
+producer/budget authority remains
+`8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+`e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`.
+
+- `ARC1A_COMPENDIUM_PR35_ATLAS_POINTER_IDENTITY_CONTROL_PASS_20260831_A0460C6.json.gz`:
+  **451,780 gzip / 10,844,302 raw bytes**; gzip/raw SHA-256
+  `5a37fdb930f4a4085ca62faefa18e4f96a385fb5019d956e6c23d249880c7ca5` /
+  `381d4e04f77a57bca33c59253723922edea56758689427c996d20a6f5bad8752`.
+- `ARC4_SLICE_PR35_ATLAS_POINTER_IDENTITY_CONTROL_RED_20260831_A0460C6.json.gz`: **2,235 gzip /
+  8,721 raw bytes**; gzip/raw SHA-256
+  `e5313e19076298421576fb628726f1d64e7a6b0abaa3cf76448e7597bb601e20` /
+  `f67c7d390142f93751aef87a7cb17a32529d31ec259672681eb9ed336f8a33c5`.
+- `ARC4_SLICE_PR35_ATLAS_POINTER_IDENTITY_CONTROL_RED_20260831_A0460C6.log.gz`: **1,802 gzip /
+  5,003 raw bytes**; gzip/raw SHA-256
+  `27679b59442ab5460ad3d48047b27df2cc364a401e75dc39a51e0f232751cfad` /
+  `ce3698737649c7897aeebbf8f79bdada20ef486ca5bde0a181e29f58dbf3eeb9`.
+
+### Signed `a9d2a57…` Compendium PASS, then Engineering lesson-carrier Slice red
+
+Exact clean SSH-signed source `a9d2a5782ac07c9494b6a56ec8fd55169cc5548d` passed its tracked-input
+preflight, Edge `152.0.4191.53` / CDP `1.3` preflight, and one/no-retry Compendium run
+`20260831151644196-18841-d75ab40c38` at **78/78** with zero findings in **64,930 ms**. Its exact
+named verifier passed. The unchanged-source develop Slice run
+`20260831151855955-19270-13860f3fb838` then stored terminal `fail` once/no-retry after
+**328,043 ms** with exactly **1 finding / 1 scope** (`drill-engineering-tour`). Its named verifier
+correctly exited 2, Glass did not run, and a9d2a57 will not be retried or relabelled.
+
+The retained product evidence is coherent: the Engineering tour was visible at exact Training
+step 9, keyboard focus and announcement authority were correct, the checkpoint write hold was
+active, the board was available, and all **70/70** source-proven action controls were disabled.
+The sole red was an instrument carrier error: the phrase “source-proven opportunities” belongs to
+the Training lesson announcement in `#tutlive`, while the stale predicate searched the Engineering
+panel body. The bounded successor changes only that predicate to the announcement carrier and adds
+directional/provenance mutants that reject a return to panel text. It changes no product copy,
+Training state, Engineering control, save fact, timeout, retry, ruler, browser baseline, gameplay,
+art, creature, genome, flora, fauna or biome structure.
+
+- `ARC1A_COMPENDIUM_PR35_ENGINEERING_COPY_CARRIER_PASS_20260831_A9D2A57.json.gz`: **454,236 gzip /
+  10,903,955 raw bytes**; gzip/raw SHA-256
+  `4aae3756c0304488df80b74d3749d5f94a9a214a678dc554fe02e0e033d8e069` /
+  `37e01d17f60ceb074fc2398ea2bab2a66bf223fb7af8b96c88cced4b30724285`.
+- `ARC4_SLICE_PR35_ENGINEERING_COPY_CARRIER_RED_20260831_A9D2A57.json.gz`: **10,344 gzip /
+  73,931 raw bytes**; gzip/raw SHA-256
+  `2b15f90b7ca337f392f00ee975017a0c115136cf57b6036d3c29c10ea9532995` /
+  `723cf46de224004ac71e1d1ac9bbf8bae37454b55d02f69d58162cc9b5c49fe9`.
+- `ARC4_SLICE_PR35_ENGINEERING_COPY_CARRIER_RED_20260831_A9D2A57.log.gz`: **6,177 gzip /
+  37,668 raw bytes**; gzip/raw SHA-256
+  `5a179c7cec861335fa561e049dd1afa028a6efe7f7a16b71cf97095e97ceaa70` /
+  `79e96d0d57eacb34075f14f57d261451678b54ed2afe01adf6202a3bb9376f81`.
+
+### Signed `eedac4a…` Compendium PASS, then final-successor/Training Slice red
+
+Exact clean SSH-signed source `eedac4ae5cf4bccbd9bfe3dc88aeceb4785612e5` passed its tracked-input
+preflight and Edge `152.0.4191.53` / CDP `1.3` preflight. Its one/no-retry Compendium run
+`20260831140359225-10071-3234490882` passed **78/78** with zero findings in **65,905 ms** and passed
+exact named verification. Its unchanged-source develop Slice run
+`20260831140556783-10430-bcb61adfaef5` then stored terminal `fail` once/no-retry after
+**345,163 ms** with **7 findings / 7 scopes**. The named Slice verifier correctly exited 2. Glass
+did not run; eedac4a will not be retried or relabelled.
+
+The first finding was a stale final-successor oracle: the exact retained legacy-v4 primary stayed
+protected, then correctly settled through receipt-free revision 1 and the required Arc 9 aggregate
+boot catch-up at revision 2. Final authority had SessionRNG ordinal 1, exact `receipt:0`, kind
+`arc9-progression-refresh-v1`, witness
+`arc9p1:a8f5961bf107300e280aa9cda8160e051e02ab691c80cda40eaf87642d4f62c9`, and the exact 21-id
+achievement successor. The instrument still expected one write/revision and ordinal 0.
+
+Five D-TRAIN findings were independent stale expectations: write-held Atlas practice correctly
+created no durable row; approved “never a preview row” copy was matched across a sentence boundary;
+Engineering correctly exposed all 70 current controls disabled rather than an obsolete unavailable
+board; Compendium correctly showed the honest empty outer catalogue until Finish; and Finish
+preserved surrounding `landed: [901]` rather than inventing Earth `133`. The final finding exposed
+one product markup defect: the two Atlas openers omitted `type="button"`, so the dock opener was
+observed as `submit`.
+
+The bounded successor binds both transient branches to exact revision 2, branch-specific
+ordinal/receipt/projection truth and discriminating pre-catch-up/extra/missing/wrong controls;
+updates Training copy/oracles to the protected checkpoint law; causal-stops after the transient and
+D-TRAIN phases; and explicitly types both Atlas openers. No timeout, retry, save schema, migration,
+browser threshold, Edge baseline, gameplay system, creature/genome/biome structure or balance was
+changed. Its complete develop profile passes **253 files / 2,559 tests / 1 skipped**, all three
+TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields. Current
+Compendium producer/budget authority is
+`8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+`e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`.
+
+- `ARC1A_COMPENDIUM_PR35_TRANSIENT_READ_PASS_20260831_EEDAC4A.json.gz`: **524,847 gzip /
+  10,885,113 raw bytes**; gzip/raw SHA-256
+  `d93fe524f87c652ef4ad5602eccbcb291fcc93c56688d33541b3ef75780df49d` /
+  `d560f226203e2373a79ca6618aae98dbdee0c477401025fd1e56ed1625e71314`.
+- `ARC4_SLICE_PR35_TRANSIENT_READ_CORE_FLOW_RED_20260831_EEDAC4A.json.gz`: **33,536 gzip /
+  203,525 raw bytes**; gzip/raw SHA-256
+  `9cbc575ef340ce4f8294240e0c52d9cd9a3f045abc778f59115500050ed7ee81` /
+  `8397cceb0059f2f02abf08985ef3be4bd418de71efcf05832133368d5063a2a3`.
+- `ARC4_SLICE_PR35_TRANSIENT_READ_CORE_FLOW_RED_20260831_EEDAC4A.log.gz`: **16,992 gzip /
+  91,296 raw bytes**; gzip/raw SHA-256
+  `5efd1fcf4924929a07e3820edda6cc986a0aacd922cac685fcbf71f42bb6167c` /
+  `c12af0870c5414cd757d9a19ca0cee58f0ccb70346bbd2bc12de8dfb27b5843e`.
+
+### Signed `4002b2d…` Compendium PASS, then whole-style property-carrier Slice red
+
+Exact clean SSH-signed source `4002b2d59508fce70d8e9eed404fd3544635f54d` (tree
+`052ff99ce52045a30c4911259b3bbcad05575bbc`, parent
+`0dc9168a1adbbc80a5e99503c02ab34d58b46a50`) passed its tracked-input preflight on Edge
+`152.0.4191.53` / CDP `1.3`. Its one/no-retry Compendium run
+`20260831130356666-917-5be54ef202` passed **78/78** with zero findings in **65,803 ms**, and the
+exact named verifier accepted it. Exact-source develop Slice
+`20260831130558500-1306-cb8d7cf92834` then stored terminal `fail` once/no-retry after
+**303,148 ms** with **3 findings / 3 scopes**. Its named verifier correctly exited 2 because the
+predecessor status was not PASS. Glass did not run; 4002 will not be retried or relabelled.
+
+The real geometry and both negative controls behaved correctly. Hidden Prime and forced HP overlap
+made the phone ruler red; forcing Prime visible over the real Earth Survey card also produced the
+required measured overlap. Both controls then falsely failed because they compared the entire
+serialized `style` attribute after mutating only named CSS properties. The later protected-save
+`harness` finding ran without a valid predecessor after those early reds and is a cascade, not an
+independent product diagnosis.
+
+Exact SSH-signed successor `4822cab92ae3f300635ef16678f860f60a6872e8` changes no product CSS
+or game byte. One shared executable helper captures,
+restores and inspects only exact value/priority pairs: Prime tier owns `display`, `top`, `left` and
+`transform`; Prime-over-Guide and Prime-over-Survey own `display`; Guide height owns `min-height`.
+Originally absent properties are removed, original priorities are restored, unrelated inline
+publication is preserved, and every affected base/control/restoration red immediately
+causal-stops. Its browser-free develop profile passes **253 files / 2,557 passed / 1 skipped**, all
+three TypeScript programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields.
+No timeout, retry, Edge baseline, product mechanic or browser ruler changed.
+
+- `ARC1A_COMPENDIUM_PR35_PHONE_PRIME_STYLE_CARRIER_PASS_20260831_4002B2D.json.gz`: **452,863 gzip /
+  10,891,033 raw bytes**; gzip/raw SHA-256
+  `82abacc2ef0e9ad3e3e24f3c940478c8eb03ee0166c5036d8b92654c44dec078` /
+  `c2f52c0679be78b384ad15657d0bbcc28facd4c830258b49b69051635cd0d480`.
+- `ARC4_SLICE_PR35_PHONE_PRIME_STYLE_CARRIER_RED_20260831_4002B2D.json.gz`: **2,690 gzip / 9,797
+  raw bytes**; gzip/raw SHA-256
+  `74158ca73aab4de135e2e4980d6f1039bb336d2799c3b32dcf8d4f41dc09149f` /
+  `6ec2dde3260c9576f9be0659cff3464d24375dac1412230138fcbd0d0229cd24`.
+- `ARC4_SLICE_PR35_PHONE_PRIME_STYLE_CARRIER_RED_20260831_4002B2D.log.gz`: **2,286 gzip / 5,502
+  raw bytes**; gzip/raw SHA-256
+  `fc0c532ef58614ea0b098fa7727f1e9e84d283512ff53913b7c3ea48b8d94479` /
+  `67f6960969b25ffc1ded46a1308796df32a4d1690465fd7ecdbade51ca0d2fb0`.
+
+### Signed `7a528c7…` Compendium PASS, then stale Slice-oracle red
+
+Exact clean SSH-signed source `7a528c7798434ae4ab8765d4898b59df9931f9de` (tree
+`d6637a2b6709aef77256d513aeaeab03373f7bfc`, parent
+`c43992f721895900e56928f843d5dcdc5f570f36`) passed Edge preflight on
+`152.0.4191.53` / CDP `1.3`. Its one/no-retry Compendium run
+`20260831064534612-71571-8e4856c2fe` passed **78/78** in **65,570 ms** and the exact named verifier
+accepted it. Exact-source develop Slice `20260831064707724-71924-76b0bac73a0f` then stopped
+terminal-red once/no-retry after **305,022 ms** with **7 findings / 5 scopes**. Glass did not run;
+this source will not be retried.
+
+The retained evidence separates product truth from obsolete observations:
+
+- both isolated lazy-art documents completed one error-free loader/producer/worker lifecycle, with
+  **11** and **8** coherent thumbnail results; the oracle still froze the earlier incidental
+  **3/1** snapshot counts;
+- the native minimum-44-pixel phone Prime control was present but overlapped HP because its second
+  chrome tier used a safe-area guess instead of the measured topbar; an older oracle still expected
+  Prime to be hidden;
+- the Guide was healthy, but a fixed historical `max-height` mutation no longer reproduced the
+  guarded dock collision;
+- two Charter/Prime paths dispatched a dependent mutation while Survey was still settling, so the
+  product correctly refused it; the resulting copy said save authority was read-only even though
+  the actual cause was a transient product transaction;
+- the saturated Charter comparison counted the intentional Share achievement/counter and final
+  `ascended`/ending reconciliation as unrelated drift; the desktop Land descendant then ran after
+  the invalid predecessor and produced a cascade finding.
+
+Exact SSH-signed implementation source `0dc9168a1adbbc80a5e99503c02ab34d58b46a50` replaces count snapshots with per-kind lifecycle/result topology,
+waits for exact same-document F4 revision/receipt settlement before dependent presses, causal-stops
+every descendant after a red predecessor/control, uses measured phone/Guide geometry with exact
+`finally` restoration, distinguishes action settlement from lost authority, and binds Charter Land
+to the exact ordinal-keyed receipt/witness/route/save/reload topology. Routine edits use focused
+tests and the fast browser-free profiles; the full Compendium → Slice → Glass chain remains a
+single attempt on the final clean committed candidate, not an edit-loop tax. No timeout, retry,
+Edge-version baseline, product mechanics, hosted authority or release identity was weakened.
+
+The later exact 4002 run above narrowed that historical causal-stop claim: F4/Charter descendants
+were guarded, but the phone presentation base/control branches still accumulated findings, and
+their whole-attribute restoration carrier was not authoritative. The newer property-scoped repair
+supersedes only those instrument details; the retained 7a528/0dc evidence remains immutable.
+
+The repaired local successor now passes the complete browser-free develop boundary at **253 files /
+2,556 passed / 1 skipped**, all three TypeScript programs, 34 art sources, 1,014/1,014 routes and
+454 non-inert specification fields. The only intermediate fast-gate red was a static ownership test
+that reread and repeatedly compacted the whole source tree; caching one immutable source/compact
+inventory recorded **1.61 seconds** in the final focused run and stayed under the unchanged
+five-second ceiling in the complete parallel profile, without changing assertions or coverage.
+This is changed-source local repair evidence, not a successor browser certificate or hosted authority.
+
+- `ARC1A_COMPENDIUM_PR35_ROLE_REPAIR_PASS_20260831_7A528C7.json.gz`: **521,129 gzip /
+  10,796,522 raw bytes**; gzip/raw SHA-256
+  `b641f54978af20f24ac19422319d192abd65ae2c089496b1d3ac6b89fc55975f` /
+  `77606a6728f54560464a6afc9b58b3ee7f8d111e26f34430220cd2d8f8e13874`.
+- `ARC4_SLICE_PR35_LAZY_PHONE_CHARTER_ORACLES_RED_20260831_7A528C7.json.gz`: **12,185 gzip /
+  96,266 raw bytes**; gzip/raw SHA-256
+  `c3770e345e20a01a0ec5360d19ea9bd12fd5ab99475f439bd02bac3236dab470` /
+  `963a38e30856c5e29a979376dfc2a5a52a6765a2c34d60e9f8c8b46cbfb85c3e`.
+- `ARC4_SLICE_PR35_LAZY_PHONE_CHARTER_ORACLES_RED_20260831_7A528C7.log.gz`: **8,946 gzip /
+  43,702 raw bytes**; gzip/raw SHA-256
+  `83433aa58c4e7602108f18a95ed198b4cdc50061530bb99da8c60d7f3b689b2f` /
+  `578c7fdbe4d5e85ee1c8c6e003882eedc1cd4bda69f1eb7381f5bead27bd0559`.
+
+### Signed `4baa425…` isolated-origin PASS-through, then request-role oracle red
+
+Exact clean SSH-signed source `4baa4250d1ae5813eba0753555b712baddbd595f` passed its fast
+develop boundary, Edge preflight on `152.0.4191.53` / CDP `1.3`, and Compendium run
+`20260831055550346-65276-46a6bd9c52` at **78/78** once/no-retry plus exact named verification.
+Slice run `20260831055711019-65620-5c63ae6d6223` then ran once under the `develop` profile and
+stopped terminal-red after **217,066 ms** with exactly **1 harness finding / 1 scope**. Glass did
+not run and this exact source will not be retried.
+
+This run proves the preceding c874 same-origin replacement race was repaired: the fail-stop order
+crossed the exact live document's visible/focused rAF→later-task receipt, completed all three
+in-place `blob:` thumbnail publications and focus controls, then crossed the isolated closed
+document's own foreground receipt and post-Close settlement before reaching the final ledger
+check. Null/stale document identity remained terminal and did not recur.
+
+The sole red was an overstrict network oracle. Before release and its synchronous recheck, the
+append-only ledger necessarily contained one exact sealed-worker-path request from each owner; by
+final settlement it contained two per owner. Current build proof has exactly one named module
+Worker constructor, a sealed import-free worker/painter entry and no Window painter import. Each
+fresh origin also performs one generated PWA install whose exact ASSETS loop fetches that same
+entry once for its offline cache. The retained red recorded only owners, so it cannot truthfully
+assign initiator order after the fact, but a second painter import/product retry is excluded by the
+build graph.
+
+Exact SSH-signed repair `c43992f721895900e56928f843d5dcdc5f570f36` records monotonic immutable
+method/path/phase and standards-based
+`Sec-Fetch-Dest` roles. It accepts `worker` and the independent `empty` PWA cache-fill in either
+arrival order, waits only while an owner has no request, fails immediately on unknown evidence,
+and rejects a duplicate role per owner before release and after settlement. Because a newly claimed
+service worker may cache-serve the product request without another network hit, exact product
+authority is independently bound to each document token and exactly one loader acquisition,
+producer epoch, worker instance/start/ready, complete acquisition phase, and zero fatal/protocol/
+render errors. Its focused controls, Slice report selftest, consolidated develop profile and final
+independent review are green/CLEAR. No product, save, art, timeout, retry, browser ruler,
+Edge-version baseline or release identity changes.
+
+- `ARC4_SLICE_PR35_LAZY_REQUEST_ROLE_ORACLE_RED_20260831_4BAA425.json.gz`: **1,830 gzip / 5,655 raw
+  bytes**; gzip/raw SHA-256
+  `478ca87aa874ddb182a278a0188f04732f52b236fdc124b4499c068b9c6dd5c9` /
+  `720d3b754286a0d6b4e18ddb193ab145dfce313ca154372126abe506c63a89fa`.
+- `ARC4_SLICE_PR35_LAZY_REQUEST_ROLE_ORACLE_RED_20260831_4BAA425.log.gz`: **1,602 gzip / 3,888 raw
+  bytes**; gzip/raw SHA-256
+  `e7a0abe6c0ea281894b4cc772851baf38fc02bce97853e6adf818ca252ba80b5` /
+  `21da416b93e63f28c7b73e99afeceabc7c79e9e4055037367ac0af33e26cc82f`.
+
+### Signed `c874a0a…` develop-chain stop: lazy-art owners shared persistence authority
+
+Exact clean SSH-signed source `c874a0a885b21149c035655595cc4228d0f746fd` first passed Edge
+preflight on `152.0.4191.53` / CDP `1.3`. Compendium run
+`20260831052802338-59770-918159f6ee` then passed once/no-retry and its exact named verifier
+accepted it. Slice run `20260831052927052-60087-377aa7295a5e` started at
+`2026-08-31T05:29:27.052Z` under the `develop` profile and stopped terminal-red after **218,797
+ms** with exactly **1 harness finding / 1 scope**. Glass did not run and this immutable source will
+not be retried.
+
+The strict foreground receipt observed the exact target, visible/focused page, fresh service token,
+zero visibility/focus losses and a valid visible/focused arm, but the attach-derived document token
+had disappeared before rAF/later-task service. This is not a player, painter, Blob-builder or Edge
+version failure. The live and closed Compendium fixtures both used `URL5`, so they shared one
+IndexedDB/F4 authority. Foreground switching correctly ran production lifecycle checkpoints,
+advanced the shared revision and made the returning page schedule its normal stale-authority
+convergence reload. The preserved `6ae723a…` red below proves the same race at a later timing: art
+had already completed before the next observation crossed into the replacement document.
+
+The first bounded successor gave the closed owner a second ephemeral loopback origin while retaining
+one shared slow-species request ledger and one release latch. Each origin received the same veteran
+seed independently, and the old-document/null token remained terminal. Its initial exact owner-count
+oracle was deliberately fail-closed but, as the signed 4baa evidence above records, still conflated
+the product Worker request with the same-origin PWA cache fill. The current role-aware successor
+retains the isolation/seed/cleanup controls and rejects duplicate request roles without depending on
+arrival order. No timeout, retry, product/save/art logic or browser ruler changes.
+
+- `ARC4_SLICE_PR35_LAZY_ORIGIN_TOPOLOGY_RED_20260831_C874A0A.json.gz`: **2,052 gzip / 6,890 raw
+  bytes**; gzip/raw SHA-256
+  `a7f308006b7752b881eac82478df85a9419b92f2680116ce5f4f8026fac3440f` /
+  `81addcb12169f80497f79ef24f3db84dd0654870f3b4dc6171782926bfa35890`.
+- `ARC4_SLICE_PR35_LAZY_ORIGIN_TOPOLOGY_RED_20260831_C874A0A.log.gz`: **1,802 gzip / 4,451 raw
+  bytes**; gzip/raw SHA-256
+  `7cf8cff3e5a73f2c054f8d6c2330520e979fc073d0a25c0cac0aeff58f2cae18` /
+  `3e763aa416d24a1735aa54fb5e7eee176828310ba036d871cce0fdce12044d7d`.
+
+### Signed `6ae723a…` assurance-split Compendium PASS, then three known Slice-oracle roots
+
+Exact clean SSH-signed handoff source `6ae723afadf04aeecdff9c41b598777634ebba3e` retained the
+browser-free develop boundary at **253 files / 2,548 passed / 1 skipped**, all three strict
+TypeScript programs, **34** art sources with zero findings, **1,014/1,014** routes and **454**
+specification fields. Live Edge preflight passed on `152.0.4191.53` / CDP `1.3`. Compendium run
+`20260831-pr35-assurance-split-6ae723a-compendium-certification` then passed **78/78** in **68,137
+ms**, once/no-retry, with zero findings or blocked outcomes and complete lifecycle cleanup; its
+named verifier passed.
+
+Exact Slice successor `20260831-pr35-assurance-split-6ae723a-slice-certification` ran once with
+zero automatic retries and stopped terminal-red after **224,032 ms** at **4 findings / 4 scopes**.
+Glass did not run. The immutable report and log preserve three independent instrument roots:
+
+- `training-source-error-setup` and its immediate rendered-scene consequence share one cause. The
+  restored Training fixture called ordinary `Survey → Landing` while its checkpoint correctly held
+  every ordinary write, so Survey refused before Landing's existing write-free Training route owner
+  could run.
+- `d-train-post-write-publication-rejection` is an R+1/R+2 oracle defect. Training committed exactly
+  once at revision `2` and scheduled one convergence reload; the fresh completed/non-held document
+  then correctly ran its aggregate progression catch-up at revision `3`, with one
+  `arc9-progression-refresh-v1` receipt, unchanged RNG seed/draws, ordinal `0 → 1`, the exact
+  achievement tail and unchanged best rank `3`. The stale assessor still required revision `2`, no
+  receipt and only the checkpoint achievement prefix.
+- The final `harness` finding is not slow or broken creature art. All three thumbnails were ready,
+  decoded at exactly `132×132`, the worker was released with zero queued/active work and focus/row
+  identity remained exact. The observer still required obsolete `data:image/…` thumbnails after the
+  product deliberately moved 132px warm assets to Window-owned revocable `blob:` URLs; it kept
+  polling until a later document transition produced the secondary missing-API exception.
+
+The bounded successor gives restored Training one guarded smoke-only write-free route into the
+existing `doLand` owner and causal-stops a red setup; binds D-TRAIN to the exact revision-3
+progression successor and independently mutates missing/drifted receipt, RNG, achievement and carrier
+truth; and moves the lazy refill expression into a browser-free compiled builder that requires
+`blob:` thumbnails and turns document loss into structured foreground-identity evidence. The
+30-second art deadline, retry policy, browser baseline, save/product behavior and creature/art
+implementation do not change.
+
+The repaired dirty successor passes **6 focused files / 65 tests**, all three strict TypeScript
+programs and one consolidated develop profile at **253 files / 2,551 passed / 1 skipped**, **34**
+art sources, **1,014/1,014** routes and **454** specification fields. That aggregate stopped its
+first attempt browser-free in 28 seconds on a stale async-route inventory and an obsolete
+all-profile SceneMemory producer binding; both are now mutation-controlled. Compendium authority
+still binds every profile under current producer
+`1a47c883e8713e263b69ad7ab5edc3016403c871ad7288a86d0838bc685d0cb0`; SceneMemory source/build
+controls remain universal but its quarantined current-product binding is production-only. No new
+command, workflow job, timeout or browser stage was added.
+
+- `ARC1A_COMPENDIUM_PR35_ASSURANCE_SPLIT_PASS_20260831_6AE723A.json.gz`: **527,535 gzip /
+  11,066,690 raw bytes**; gzip/raw SHA-256
+  `0e66ce519b6df62fa72c171d215b3424cc7bf80cb01bb15cff3d6dba18186890` /
+  `1f8eab5bb0487e4732995bc283f145133b20b68e8d322c914ef1e212d71bd210`.
+- `ARC4_SLICE_PR35_ASSURANCE_SPLIT_KNOWN_ORACLES_RED_20260831_6AE723A.json.gz`: **34,046 gzip /
+  283,019 raw bytes**; gzip/raw SHA-256
+  `6138ea757ebf2ca3a4731b9e184b89b133fe9eebfb4ab7656ee80c3913efa716` /
+  `144dda6ca4775abec161f9680ee9175369a02afe6c0efeb8f7af383bab3a7de3`.
+- `ARC4_SLICE_PR35_ASSURANCE_SPLIT_KNOWN_ORACLES_RED_20260831_6AE723A.log.gz`: **16,739 gzip /
+  119,160 raw bytes**; gzip/raw SHA-256
+  `18b012ebfa6a74ae054bc7d1ee0a14b485866be84de4d3fa56c9020b8bbb849e` /
+  `1aa3dce2d670268765fb297cd556251f1cbad5c0e781a48d6d5ea04a3b773fb6`.
+
+### Signed `e66babe…` Compendium PASS, then Arc 4 publication-convergence Slice red
+
+Exact clean SSH-signed source `e66babed3773c2f6343fb60f8f7d1e05802f4ba3` passed its hermetic
+tracked develop preflight at **253 files / 2,546 passed / 1 skipped**, all three TypeScript
+programs, **34** art sources, **1,014/1,014** routes and **454** specification fields. Live Edge
+preflight then passed on `152.0.4191.53` / CDP `1.3`. Compendium run
+`20260830-pr35-feed-reopen-e66babe-compendium-certification` passed **78/78** in **65,469 ms**,
+once/no-retry, and its named verifier passed.
+
+The exact-source Slice successor
+`20260830-pr35-feed-reopen-e66babe-slice-certification` stopped terminal-red once/no-retry after
+**224,355 ms**. Its first causal scope was `arc-4-publication-convergence`: the isolated seed-68
+native Sample scenario did not satisfy its committed-hit convergence/reload assessor. The report
+retains five later consequences (`arc-4-structured-ledger`, two Training setup scopes, D-TRAIN
+post-write publication rejection and the final lazy-art harness observation) for **6 findings / 6
+scopes** total. Slice's named verifier correctly rejected the non-PASS predecessor. Glass and
+Recovery did not run; the repaired Feed reopen was not reached. No retry is authorized or implied.
+
+- `ARC1A_COMPENDIUM_PR35_FEED_REOPEN_PASS_20260830_E66BABE.json.gz`: **521,054 gzip / 10,787,598
+  raw bytes**; gzip/raw SHA-256
+  `eb82453f36c4fd4611d8f157cbc504371101a9744fe5851c8f3aab5b238363bf` /
+  `af1440b8ccad9c119baefd02a9d1b46ed5ed9ff30d81a400aca7a6a5b871753e`.
+- `ARC4_SLICE_PR35_PUBLICATION_CONVERGENCE_RED_20260830_E66BABE.json.gz`: **141,514 gzip /
+  1,114,326 raw bytes**; gzip/raw SHA-256
+  `0fe5f108fb3a7daecb4f5dc78adf9f04ee9a5bc45f98fb7179b89691742d60bb` /
+  `eefc766509bb673b6a4373d44813328220c876943e1a5556a037f02f5f0177e4`.
+- `ARC4_SLICE_PR35_PUBLICATION_CONVERGENCE_RED_20260830_E66BABE.log.gz`: **63,304 gzip / 474,009
+  raw bytes**; gzip/raw SHA-256
+  `392616eef198a447068fa8dbcba9aa2af6766b7bc7145021eb9e4584f95d89dc` /
+  `8423b98e5d26951e4ea9f52fa1ecfdb66787c2456e0da5fea611cb941622dda9`.
+
+The changed source relative to `134f62e…` is limited to the post-Feed browser oracle, its
+browser-free controls/evidence and synchronized documentation; it executes after Arc 4 and does
+not explain this earlier stop. The immutable report is therefore retained for bounded read-only
+diagnosis rather than retried or silently treated as proof that the Feed repair failed.
+
+Bounded read-only diagnosis classifies the first scope as an **instrument defect inside an
+exhaustive injected post-durable publication-failure scenario**, not a product defect. The fixture
+begins at revision `134`, seed `68`, ordinal `3`. The trusted Sample correctly commits Capture at
+revision `135` without optimism; replacement boot then correctly reaches the required Arc 9
+progression fixed point at revision `136`, ordinal `5`, with the exact `rare` then `legend`
+successor. The stale assessor reads final `R+2` authority as if it were the Capture `R+1` boundary,
+making its detail attribution, release authority, committed outcome, fault settlement and
+read-only-reload terms impossible for the coherent product result. The five later findings have no
+valid predecessor and are not independent defects. An unchanged retry could merely race before
+catch-up and produce a timing-dependent green, so it is forbidden.
+
+The smallest safe gate split is to retain normal Capture/progression and the pure assessor/mutation
+controls on every develop run while moving only the deliberate browser publication-failure
+injection to production assurance. That profile-bound source change is not implemented or claimed
+by this evidence checkpoint.
+
+### Signed `134f62e…` Compendium PASS, then phase-blind Feed-reopen Slice red
+
+Exact clean SSH-signed quarantine source `134f62e08b8a7180f798394e08a404ed935e2782`
+passed Compendium once/no-retry on Edge `152.0.4191.53` / CDP `1.3`; its named verifier passed.
+The exact-source Slice successor
+`20260830-pr35-quarantine-134f62e-slice-certification` then stopped terminal-red once/no-retry
+after **173,764 ms** with exactly one `harness` finding and one scope. Glass and Recovery did not
+run.
+
+- `ARC5_SLICE_PR35_FEED_REOPEN_CONVERGENCE_RED_20260830_134F62E.json.gz`: **2,915 gzip / 12,550
+  raw bytes**; gzip/raw SHA-256
+  `2d1a30993c2dd660fbbe10bc0126a01c64dc063023df9a60d2b16c383ffb96c7` /
+  `9095773c6bfa6919af38e55f8c7eb6cbab18ada30ebd86baadfdd3a883c2e9c8`.
+- `ARC5_SLICE_PR35_FEED_REOPEN_CONVERGENCE_RED_20260830_134F62E.log.gz`: **2,699 gzip / 7,012 raw
+  bytes**; gzip/raw SHA-256
+  `3ef925a0ed6214fda496bdabbb69359f037d3cebafaa7831e9a25d38de8b1f00` /
+  `eeac0afd8070550ebec1384b7b752cb4c8f746054724bc4ad6330589fd25f50c`.
+
+The retained terminal observation proves the product had already committed revision `128` /
+ownership revision `17`, advanced Meals `0 → 1`, consumed and tombstoned the sole flora lot
+`1 → 0`, retained receipt ordinal `20`, and reopened generation `4` current and idle with
+`feedState: no-flora`, no summary/confirm, one disabled radio, and enabled Back/Close. The runner's
+generic detail opener incorrectly reused its pre-action-only `ready` predicate for both
+post-commit reopen phases. This is immutable harness-red evidence, not a product publication
+failure. The bounded successor derives exact post-Feed availability from durable predecessor facts,
+binds both the state and its visible control shape on same-document reopen/full reload, and replays
+this carrier browser-free. No game, creature, save, timeout or retry behavior changes.
+
+### Signed `cc15e1f…` fixed-eight hard stop; SceneMemory production quarantine
+
+Exact clean SSH-signed source `cc15e1f967f6644405cad7c3460cd8181b6a043f` (tree
+`cb53bbd79e64e5aa8701683219edf2b18e8859d6`, parent
+`5691e77ea470434dd5352901b0a6240a242a48ad`) ran
+`20260830-pr35-fixedeight-cc15e1f-candidate1` once with zero retries on Edge `152.0.4191.53` / CDP
+`1.3`. Lifecycle and browser/server/workspace-lock cleanup completed. Phone `warm-1` P8−P7
+embedder/aggregate deltas were **287,192 / 299,720 bytes** against the **65,536-byte** hard refusal.
+Contract and verdict are null; outcomes are empty. Desktop and candidates 2–3 did not run.
+
+- `ARC1C_SCENEMEM_PR35_FIXEDEIGHT_CALIBRATION_INSTRUMENT_RED_20260830_CC15E1F_CANDIDATE1.json.gz`:
+  **32,448 gzip / 745,707 raw bytes**; gzip/raw SHA-256
+  `702a6ca1ff8ae508f215aa961a946844f0095b7777ac67f6ec7ec6a9d3d0180f` /
+  `f4c5940efcd2deeea9ce7cbc68bb9e13022b889bf57e015d5c1bec04db4692a4`.
+
+This immutable report is instrument-red, not a product verdict or browser PASS. It triggers the
+documented hard stop: no candidates 2–3, retry, wider threshold, extra pass or another redesign.
+SceneMemory certification is production-only/quarantined and never blocks `develop`; its live
+selftest remains changed-instrument-or-production. Develop admission continues as Compendium →
+Slice → Glass. Production remains SceneMemory → Compendium → Slice → Glass → Recovery and
+requires a later explicit SceneMemory activation decision.
+
+The paragraph above preserves the exact 2026-08-30 checkpoint. Exact hosted run `33584052508`
+later proved that host-sensitive live control could still block `develop`; current 2026-09-02
+ownership therefore makes all live SceneMemory native-heap work production-only while deterministic
+controls remain universal. No historical result is relabelled.
+
+### Signed `5691e77…` four-pass instrument red; fixed-eight browser-free implementation complete
+
+Exact clean SSH-signed source `5691e77ea470434dd5352901b0a6240a242a48ad` (tree
+`da82bd9340736240cada13c856b81cbdb82e74f1`, parent
+`8792e8acc5c20562ae3e17c48d46050824eb99d5`) implemented the first fixed-validity replacement:
+P1/P2 settled, P3/P4 formed the validity pair and P4 alone was scored. Its browser-free checkpoint
+passed **154/154** focused SceneMemory tests, **253 files / 2,539 passed / 1 skipped**, all three
+strict TypeScript programs and the producer-authority printer.
+
+Calibration-only run `20260830-pr35-fourpass-5691e77-candidate1` ran once/no-retry on Microsoft
+Edge `152.0.4191.53` / CDP `1.3` and stopped after **8,352 ms** with status
+**`instrument-fail`**. Lifecycle is complete and browser/server/workspace-lock cleanup are all true.
+Desktop initial P4−P3 `usedSize` and aggregate deltas were **68,472 bytes** against the fixed
+**65,536-byte** hard cap. The report has no product contract, verdict or outcomes. Candidates 2 and
+3 did not run; no Compendium, Slice or Glass successor ran.
+
+- `ARC1C_SCENEMEM_PR35_FOURPASS_CALIBRATION_INSTRUMENT_RED_20260830_5691E77_CANDIDATE1.json.gz`:
+  **38,936 gzip / 688,360 raw bytes**; gzip/raw SHA-256
+  `53bf343e503c7a9898ca64116c03c0926aed3221ba224bcb22ae739ae945fcf8` /
+  `5bb037c4e8d1f8e1b24bb902d31fac747410a35e62b2f37f552c91db276d7557`.
+
+The completed phone profile and desktop initial carrier show the same delayed initial V8 rise,
+while later phone snapshots were tightly phase-stable. That makes the four-pass run immutable
+instrument evidence, not a calibration candidate, product verdict, retry allowance or threshold-
+widening authority. The reviewed deterministic successor always takes eight complete passes:
+P1–P6 settle, P7/P8 validate and P8 alone is scored. It retains all eight raw carriers and keeps the
+same four delta fields, deterministic 4/8/16/32/64 KiB derivation and `M >= 64 KiB` refusal. Its
+browser-free implementation is **report v6 / profile v5 / input v6 / verdict v5 / budget v7**.
+Collector / verdict-contract / calibration-required-budget SHA-256 is
+`c4968d0a2cfb489c46df94f603d9730c995760b3ca2a289b1f3774662d663b71` /
+`e973f8c8f3eeae05c1c9c1328926f2ccf6f4aba7b3602f6bf5ab623a6163d599` /
+`5edac549b6ee0fa79afe5b6f282d68f0439c4385f0afe5d8f2ac58035d8eb96a`. The genuine-current
+fixture control closes **4 files / 158 passed**; the complete browser-free suite is **253 files /
+2,543 passed / 1 skipped**, all three strict TypeScript programs pass and the producer-authority
+printer is green. Exact signed `cc15e1f…` then produced the immutable fixed-eight hard stop above;
+no later calibration candidate or activation follows in develop.
+
+### Signed `8792e8a…` Feed-summary successor, then two-pass SceneMemory phase-inconclusive red
+
+Exact clean SSH-signed source `8792e8acc5c20562ae3e17c48d46050824eb99d5` (tree
+`3a6f3639caae6521ed2b6c4fa20fa5392a6fee61`, parent
+`fc18f0416d7b58b2f5b4ed3a0829e259f3dd951b`) fixed only the Slice instrument's Feed-summary
+evidence owner. Its hermetic develop preflight passed **253 files / 2,529 passed / 1 skipped**, all
+three strict TypeScript programs, **34** art sources with zero findings, **1,014/1,014** override
+routes and **454** specification fields with zero inert fields. All five changed-instrument browser
+controls passed once on Microsoft Edge `152.0.4191.53` / CDP `1.3`.
+
+The exact no-retry SceneMemory run
+`20260830-pr35-8792e8a-feed-summary-scenemem-certification` then stopped after **13,322 ms** at
+**43/44**, with only `desktop/heap-plateau` red, one attempt, zero automatic retries, no fatal events
+and complete browser/server/workspace-lock cleanup. The product build remained byte-identical at
+`82557aa745288a5889f11ebbd37f1cedbb8154792d61703ba7fded2939e6ad3b`. Compendium, Slice and Glass
+did not run.
+
+- `ARC1C_SCENEMEM_PR35_FEED_SUMMARY_HEAP_PLATEAU_RED_20260830_8792E8A.json.gz`: **49,864 gzip /
+  788,479 raw bytes**; gzip/raw SHA-256
+  `ddffe7c9c6a3f70be691bbf2aace67dcaf589c9d51bed49815faaeca80e9b2ab` /
+  `26123f30de359a2a89802f8b52a085eca44383b9326135e4f426f0846b34ba13`.
+
+Desktop warm aggregates were 17,946,666 / 18,091,706 / 18,199,046 / 18,472,382 bytes: range
+**525,716** versus 524,288 and maximum positive slope **168,448.8** versus 131,072. The final
+cycle's fixed probe/scored embedder readings fell from **3,402,288** to **3,105,136** bytes, while
+the later BFCache reading fell again to **2,382,592**. All product-owned facts stayed flat across
+every cycle: one scope, 19 leases/textures, 18,350,080 live Canvas bytes, 87 managed entries, 469
+nodes, 70 listeners and zero pending work. V8 slope was ordinary and backing slope was zero.
+
+The original producer's verdict remains an honest two-pass red and is never retried or relabelled.
+Because it retained no third sample, it cannot establish whether its scored endpoint was at a
+repeatable native allocator phase; the replacement instrument therefore treats this failure class
+as phase-inconclusive and requires a fresh fixed validity pair before any product verdict. The
+first bounded repair at signed `5691e77…` always ran four full passes, used P1/P2 only to settle,
+required P3/P4 absolute deltas in V8/embedder/backing/aggregate to fit the 64 KiB refusal ceiling,
+and scored only P4. Its first attempt is the immutable instrument red above. The reviewed successor
+uses six fixed settling passes and a fixed P7/P8 pair, with P8 scoring. Product bytes and the
+existing 524,288-byte range / 131,072-byte-per-cycle slope limits do not change.
+
+`ARC1C_SCENEMEM_PHASE_VALIDITY_2026-08-30.md` owns the immutable four-pass evidence, reviewed
+fixed-eight protocol, precommitted `calibration-required` state machine, discrimination controls
+and completed browser-free implementation hashes plus the fixed-eight hard stop and production-
+quarantine boundary.
+
+### Signed `fc18f04…` expression predecessors, then shared-summary-selector instrument red
+
+Exact clean SSH-signed source `fc18f0416d7b58b2f5b4ed3a0829e259f3dd951b` (tree
+`ca6e2e5327e1a898e8b79580bb86e7203b2c61f4`, parent
+`f219d46693b629ae035d05e5205be98840650ece`) passed its hermetic tracked-input develop profile at
+**253 files / 2,529 passed / 1 skipped**, all three strict TypeScript programs, **34** art sources
+with zero findings, **1,014/1,014** routes and **454** specification fields with zero inert fields.
+All five classifier-required browser-instrument controls passed once.
+
+On the same unchanged clean source and Microsoft Edge `152.0.4191.53` / CDP `1.3`, SceneMemory run
+`20260830-pr35-fc18f04-feed-expression-scenemem-certification` passed **44/44** in **13,132 ms**
+with zero findings, and Compendium run
+`20260830-pr35-fc18f04-feed-expression-compendium-certification` passed **78/78** in **65,485 ms**
+with zero findings/blocked outcomes. Both reports retain complete lifecycle cleanup. Their run-time
+named verifiers passed; the compressed carriers below preserve report status, not verifier stdout.
+
+- `ARC1C_SCENEMEM_PR35_FEED_EXPRESSION_PASS_20260830_FC18F04.json.gz`: **49,848 gzip / 788,453 raw
+  bytes**; gzip/raw SHA-256
+  `d902a0c51ff3d527a0c608dd2398446e0fa44de3bf80c6e82c1351298f684721` /
+  `a1b91935156e15775e31a6c4820385d8b5c4c5e21c4b86a9e58faf6a0e7bad2e`.
+- `ARC1C_COMPENDIUM_PR35_FEED_EXPRESSION_PASS_20260830_FC18F04.json.gz`: **520,555 gzip /
+  10,785,813 raw bytes**; gzip/raw SHA-256
+  `23871cdffe0c0fb989a4be20217d522bf92e833ee138acc7856fee9e4c61104b` /
+  `8bbc7ea2702dda58215f2950e5aeb5aa12a6e65768dc6f9fc1665fca588fa848`.
+
+Slice run `20260830-pr35-fc18f04-feed-expression-slice-certification` then ran exactly once and
+stopped after **162,206 ms** with exactly one `harness` finding and zero PASS markers. Both native
+radio activations had settled: DOM/controller held the exact creature and flora IDs, the Feed
+controller was ready with one mount/two listeners/zero pending work, authority was unchanged,
+confirmation was present/enabled and the coordinator was idle. Only Meals and Quantity were red
+because the observed summary was Rename's `New companion name…` block. Rename, Feed and Breed share
+`.compendium-feed-summary`; the instrument queried the first global match instead of Feed's existing
+`[data-arc5-feed-summary]` under `[data-arc5-feed-body]`.
+
+- `ARC4_SLICE_PR35_FEED_SUMMARY_SELECTOR_INSTRUMENT_RED_20260830_FC18F04.json.gz`: **2,719 gzip /
+  17,424 raw bytes**; gzip/raw SHA-256
+  `393f582fcd3e725790fe7cc2df22aa8304b47157bfa026c37030de034629589c` /
+  `f2379543b8734b0690a0ea4bb3e206e2074538a93d2bb84a3cbb5af135b4afd2`.
+- `ARC4_SLICE_PR35_FEED_SUMMARY_SELECTOR_INSTRUMENT_RED_20260830_FC18F04.log.gz`: **2,493 gzip /
+  9,205 raw bytes**; gzip/raw SHA-256
+  `a6135d948806f7a85b9b1003a47993a080d8a4c839a13ab18bcc4f68c5fb7b6d` /
+  `e9a6e0b0354933b0ff7ae9ddfe139772a52a3e8b0ba41ecc2ee33200c68f77d7`.
+
+This red is instrument-only and makes no Feed durability verdict: the runner stopped before the
+first durable read, trace/hold arm, confirmation dispatch, coordinator claim, writer, persistence
+comparison or contender document. Glass did not run. The bounded successor scopes the dedicated
+semantic summary to the exact Feed mount, retains its owner count, requires exactly one and
+negative-controls zero, duplicate and shared-class substitutions. Focused Feed coverage is **2
+files / 17 passed**; all TypeScript programs and strict unused-symbol checking pass. No product,
+timeout, retry, browser baseline, numeric ruler, creature/genome, persistence or release byte
+changed. The immutable `fc18f04…` Slice report remains FAIL and is never retried or relabelled.
+
+### Signed `f219d46…` native-Feed predecessors, then generated-expression instrument red
+
+Exact clean SSH-signed source `f219d46693b629ae035d05e5205be98840650ece` (tree
+`d92dde7f613cc5b2403cf6b137f86061695b7c7e`, parent
+`51a8ac43f1a583e73dc4d111da04bbdb76abcc02`) passed its hermetic tracked-input develop profile at
+**253 files / 2,528 passed / 1 skipped**, all three strict TypeScript programs, **34** art sources
+with zero findings, **1,014/1,014** routes and **454** specification fields with zero inert fields.
+All five PR-classifier-required browser instrument controls passed once.
+
+On the same unchanged clean source and Microsoft Edge `152.0.4191.53` / CDP `1.3`, SceneMemory run
+`20260830-pr35-f219d46-feed-native-scenemem` passed **44/44** in **13,239 ms**, and Compendium run
+`20260830-pr35-f219d46-feed-native-compendium` passed **78/78** in **64,447 ms**. Both exact named
+verifiers passed with zero findings and complete lifecycle cleanup.
+
+- `ARC1C_SCENEMEM_PR35_FEED_NATIVE_PASS_20260830_F219D46.json.gz`: **49,848 gzip / 787,866 raw
+  bytes**; gzip/raw SHA-256
+  `be26526d359179236a72586dcf7460348b9882d72b46908f6cc12d044873f3c9` /
+  `0b6d2619c90421f9bdc2fc20e8059a3f03c2bc3b0900044d14638945517a4d00`.
+- `ARC1C_COMPENDIUM_PR35_FEED_NATIVE_PASS_20260830_F219D46.json.gz`: **523,112 gzip / 10,886,765
+  raw bytes**; gzip/raw SHA-256
+  `19b5551ca34c8e37a27f0b7a101cb945da4a13536fd23b036efcea6fbd99865d` /
+  `5f531df3c4d96dc24fe81f17434c65d0f72b644315da41e72e4ab793589bd1e0`.
+
+Slice run `20260830-pr35-f219d46-feed-native-slice-certification` then ran exactly once and stopped
+after **155,668 ms** with one `harness` finding: the generated post-click settlement program ended
+with one surplus `}` and `Runtime.evaluate` returned `SyntaxError: Unexpected token '}'`. The raw
+CDP choice dispatch had completed, but the runner stopped before settlement assessment, the flora
+choice, preview, durable read, confirmation, writer or persistence comparison. Its named PASS
+verifier correctly rejected the terminal-red predecessor. Glass did not run.
+
+- `ARC4_SLICE_PR35_FEED_NATIVE_EXPRESSION_INSTRUMENT_RED_20260830_F219D46.json.gz`: **1,769 gzip /
+  5,617 raw bytes**; gzip/raw SHA-256
+  `8b52086c5c87abaf33021c5c2f6f4abea085a333547f6a77e5d77a89fe8ae47c` /
+  `e48bf810e673f5e70f81e3ef1349765c0cea6671915549e6161e445d944bcebc`.
+- `ARC4_SLICE_PR35_FEED_NATIVE_EXPRESSION_INSTRUMENT_RED_20260830_F219D46.log.gz`: **1,601 gzip /
+  3,856 raw bytes**; gzip/raw SHA-256
+  `4aa149e58204e5f9403e54301412ead21491e6039e7057a4aea4fe7b40f34d1d` /
+  `8f8b0d8d01cbe1a748d41a41212b3812598a12932cdc91cffcaf9c8e09686fe8`.
+
+The bounded successor removes exactly the surplus closure and moves the generated settlement
+program into one pure builder shared by runner and test. The browser-free control compiles those
+exact bytes and proves both a missing brace and an extra brace are rejected. Focused Feed coverage
+is **2 files / 17 passed**; all three TypeScript programs and strict unused-symbol checking pass.
+No product, creature/genome, save, timeout, retry, numeric ruler, browser baseline or release byte
+changed. The immutable `f219d46…` report remains FAIL and is never retried or relabelled.
+
+### Signed `51a8ac4…` input-v5 predecessors, then terminal Feed-preview instrument red
+
+Exact clean SSH-signed source `51a8ac43f1a583e73dc4d111da04bbdb76abcc02` (tree
+`0f823714e2e1c6020108f0aa31ae7b038da5dc74`, parent
+`e2ff953807df7b42fe4c979222866e4cfb89b8ce`) passed its hermetic tracked-input develop profile at
+**253 files / 2,524 passed / 1 skipped**, strict root/game/worker TypeScript, **34** art sources with
+zero findings, **1,014/1,014** routes and **454** specification fields with zero inert fields. The
+changed browser-instrument controls also passed once: browser resolver, fixed-second heap phase,
+Compendium live preflight, **591** Compendium mutations and the raw-CDP launcher.
+
+The unchanged source then ran one no-retry browser chain on Microsoft Edge `152.0.4191.53` / CDP
+`1.3`. SceneMemory run `20260830-pr35-51a8ac4-input-v5-scenemem-certification` passed **44/44**
+in **13,495 ms** and its exact named verifier passed. Compendium run
+`20260830-pr35-51a8ac4-input-v5-compendium-certification` passed **78/78** in **63,118 ms** with
+zero findings/blocked outcomes and its exact named verifier passed. Both reports retained clean,
+unchanged begin/end source and complete lifecycle cleanup.
+
+- `ARC1C_SCENEMEM_PR35_INPUT_V5_PASS_20260830_51A8AC4.json.gz`: **49,747 gzip / 788,226 raw
+  bytes**; gzip/raw SHA-256
+  `4410fdfc1270b0a232720670dc0702bb9cf0ee1f6808aad069aff414f2c5f30d` /
+  `1f0d4eca11dd9746dad1627aebb66d8c785580b764904adb4ebe198395b53aa3`.
+- `ARC1C_COMPENDIUM_PR35_INPUT_V5_PASS_20260830_51A8AC4.json.gz`: **520,904 gzip / 10,796,770
+  raw bytes**; gzip/raw SHA-256
+  `2c9a4ac889d3f8050cd2d37f785dbc99b49c2828c5e1037cf79621e558dd1925` /
+  `dd7a8604f2043eae1bd78271168ef84101f818fa6f73c420c43d0f2ca92d7abb`.
+
+Slice run `20260830-pr35-51a8ac4-input-v5-slice-certification` then ran exactly once and stopped
+terminal red after **162,524 ms** with one `harness` scope:
+`Arc 5 exact Feed preview did not reach its browser outcome within 6000ms (last null)`. Its named
+verifier correctly rejected the red predecessor. Glass did not run.
+
+- `ARC4_SLICE_PR35_FEED_PREVIEW_INSTRUMENT_RED_20260830_51A8AC4.json.gz`: **1,684 gzip / 5,321
+  raw bytes**; gzip/raw SHA-256
+  `a6b4e8916cd74b744b875f2e1fc65f4cd4de10e708caa4e35c787e8d0a7e084b` /
+  `bccf99344f9535eb666ea9e5b1c96f411d6cb482d69beddce7cf6c7994cc5ebd`.
+- `ARC4_SLICE_PR35_FEED_PREVIEW_INSTRUMENT_RED_20260830_51A8AC4.log.gz`: **1,513 gzip / 3,750
+  raw bytes**; gzip/raw SHA-256
+  `929276fd29d4895e4601d5d44bd15c13965071cbc9a00b21fbf81ca008ff55b4` /
+  `bbca3b3d7c8d04b9257a33c4e1086ff6535ee2a141837808363f2015295ffab7`.
+
+The red is instrument-only and makes no Feed product verdict. It occurred after opening the exact
+detail but before the first durable read, confirmation trace/hold, action coordinator claim,
+writer or persistence comparison. The old helper targeted a 44px `LABEL`, treated its nonexistent
+`disabled` property as readiness, retained only coordinates and never proved the nested native
+radio received `change`. Its combined preview predicate returned literal `null` whenever any one
+of five facts was false, erasing the distinguishing browser state. Source inspection found no
+product path that can stall the synchronous pre-confirm preview; the controller lifecycle is now
+separately covered by native `input.click()` across detach/reattach.
+
+The bounded dirty successor changes only the Slice evidence path: exact current label↔radio
+ownership, dispatch-time node identity, trusted pointer/click/input/change receipts, synchronous
+post-event current-control identity, controller/listener selection settlement after each choice, and a
+full structured pre-action preview whose authority/coordinator baseline cannot drift. More than
+60 independent field mutations are red. It does not change Feed product code, creature/genome
+structure, persistence, numeric budgets, timeout, retry or browser baseline. The immutable
+`51a8ac4…` report remains FAIL and can never be retried or relabelled.
+
+### Clean `553b06b…` three-candidate SceneMemory source-normalization evidence
+
+Exact clean signed source `553b06bc5b477a90e0d7284360fa84ab99704fb7` supplied exactly three
+one-attempt/no-retry calibration-only SceneMemory observations under one unchanged 52-file build,
+Microsoft Edge `152.0.4191.53` and CDP `1.3`. All three completed 44/44 calibration outcomes with
+identical route/resource topology, stable range/slope, no findings or fatal events and complete
+browser/server/workspace-lock cleanup. Their deterministic carriers are:
+
+- `ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION1_20260830_553B06B.json.gz` — 45,001 gzip /
+  786,775 raw bytes; gzip/raw SHA-256 `7beffdb6ee47b26c96d0d37448dd4685c5ac89c90bd9927de97df416c4db52fe` /
+  `44ee4f8395ff1acf20902233cba37c114ce249077cb9843b1414f08600287fd6`.
+- `ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION2_20260830_553B06B.json.gz` — 44,996 gzip /
+  787,056 raw bytes; gzip/raw SHA-256 `833a7e92166a28a8466c4b7c855564e3884c25a657302f26decdc416c0819fbb` /
+  `f46c978ce56ae96d864e2059809fcb6356c3955c872ae1a266778c79805a7ac4`.
+- `ARC1C_SCENEMEM_PR35_V8_GROWTH_CALIBRATION3_20260830_553B06B.json.gz` — 44,938 gzip /
+  786,758 raw bytes; gzip/raw SHA-256 `380b06b8b3d2f91fa7369c5103aacb0fd8fc9ae26a42d2aa06c77b5a8466a373` /
+  `0212064dd859e8fb60fe8e4df3c04e89f76844653ede182803e6db21b6e1f34d`.
+
+`ARC1C_SCENEMEM_SOURCE_NORMALIZATION_2026-08-30.md` records the exact derivation. Current
+input-v5 retains broad 12 MiB initial-V8 / 18 MiB initial-aggregate safety stops, then judges at
+most 6 MiB V8 growth over the scored fixed-second initial snapshot and a 12 MiB normalized working
+set. Worst retained headroom is 614,128 / 1,230,030 bytes. Raw post-route V8/aggregate totals remain
+diagnostics; all component, range/slope, DOM/listener, ownership, resource, BFCache, answerability
+and surface-vista controls remain active. The baseline is bound to its exact profile, document and
+`${profile}-initial` role, and profile-v3 metrics are re-derived from retained raw evidence during
+named verification. Historical input-v3/v4 reports replay unchanged. These
+three observations are not certificates and grant no later browser, hosted, merge or release
+authority.
+
+### Signed `ebf172c…` SceneMemory stop — one over-tight absolute V8 outcome, no retained-owner drift
+
+Exact clean SSH-signed source `ebf172cc62417c9e193c7fcc1c9e751a1e0a028a` (tree
+`0ba7fe322bc4f21e00f3a76216ef41cecef184e1`, parent
+`656c85e43a59fe775efac102b21a7530c033e5ff`) passed its hermetic tracked-input develop profile at
+**253 files / 2,510 passed / 1 skipped**, all three TypeScript programs and every art/route/spec
+gate. The complete conditional browser-instrument controls were also green. SceneMemory then ran
+once with zero retry as `20260830224113863-74114-9e38e9d458` on Microsoft Edge
+`152.0.4191.53` / CDP `1.3`. It completed cleanly in **12,928 ms** at **43/44** and stopped the
+serial chain. Compendium, Slice, Glass and Recovery did not run.
+
+`ARC1C_SCENEMEM_PR35_CURRENT_HEAD_V8_BUDGET_RED_20260830_EBF172C.json.gz` preserves the exact
+terminal report at **45,097 gzip / 787,600 raw bytes**. Gzip/raw SHA-256 is
+`8060c10871ac0a31ff0eef8183da8f91ec79c8dd09c69a277d1f9855a86a14ac` /
+`a19654d003e04a947a0719150eb332a9bde038c02d41b16f00b2bbffa005ad46`.
+The sole failure is
+`desktop/heap-dom-budget: bfcache: V8 heap used bytes 12594592 exceeded ceiling 12582912`:
+**11,680 bytes (0.093%)** above the 12 MiB absolute V8 ceiling.
+
+This is not an Edge-version rebaseline and the BFCache transition is not the growth owner. The
+same Edge/JavaScript/CDP tuple passed exact 7f/961/656; current desktop cycle 4 → BFCache added
+208,688 bytes, below the 209,248–214,544-byte range of those passes. Every retained-owner witness
+is unchanged: 1 active scope, 19 leases/textures, 18,350,080 live canvas bytes, exact 81/72 peaks,
+43 managed textures / 5,647,874 pixels, 13 shared TextStyle listeners, zero pending/ring/local-
+canvas/render-target owners, one 412,800-pixel vista cache, and BFCache DOM 480 nodes / 70
+listeners. Warm aggregate range **355,208 < 524,288**, V8 slope **115,843.2 < 131,072**, and
+aggregate heap **18,302,798 < 18,874,368** all remain green. The Capture repair's second
+post-Arc-9 publication is real bounded work on the exercised Landing path; removing it would
+recreate the stale-disabled action race rather than repair memory ownership.
+
+The raw absolute V8 ceiling has therefore exhausted its original operational margin as the fixed
+product grew. This report stays immutable FAIL. The next ruler decision requires exactly three
+clean, one-attempt/no-retry calibration candidates on one unchanged signed current producer,
+retained raw replay and preserved slope/range/ownership controls. No threshold is changed from this
+single red, and no browser, product action, timeout or failed stage is retried automatically.
+
+### Signed `656c85e…` green admission predecessors, then exact post-Sample Tame-disabled red
+
+Exact clean SSH-signed source `656c85e43a59fe775efac102b21a7530c033e5ff` (tree
+`7fa36c8470030352b3d8ac497b47354b61d81b2b`, parent
+`961d1071d059e0f73e14a6a4ead61f5e4696535b`) passed its tracked-input develop profile at
+**253 files / 2,510 passed / 1 skipped**, all three TypeScript programs and the art/route/spec
+gates. The unchanged source then ran each permitted browser stage once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`: SceneMemory passed **44/44** in **12,948 ms** and
+Compendium passed **78/78** in **67,187 ms**. Both named verifiers passed. The retained carriers
+are:
+
+- `ARC1C_SCENEMEM_PR35_POST_SAMPLE_TARGET_PREDECESSOR_PASS_20260830_656C85E.json.gz`:
+  **44,966 gzip / 787,316 raw bytes**; gzip/raw SHA-256
+  `5e65452247d0e61a86f7ef15ad7623cf2ce00a37123b34188cbb5fde6a997a10` /
+  `7feb9b218af4339d35674cd7dcffb0288acb6be4e6d53b6036c60f97c6881cfb`.
+- `ARC1C_COMPENDIUM_PR35_POST_SAMPLE_TARGET_PREDECESSOR_PASS_20260830_656C85E.json.gz`:
+  **452,179 gzip / 10,865,558 raw bytes**; gzip/raw SHA-256
+  `b435bb9aa0bb5df0021fbdec216184b4080c6635d94a55d5439aab938c3beea6` /
+  `e4d3db109e5eb3a3b62cf2b6bc728eeb4207409451090b592d4844d07ca7f192`.
+
+Slice `20260830-pr35-656c85e-battery-rightsizing-slice` then stopped terminal red after
+**160,092 ms** with exactly one scope, `arc-4-storage-precondition`, and zero automatic retry.
+Glass and Recovery did not run.
+
+- `ARC4_SLICE_PR35_POST_SAMPLE_TAME_DISABLED_RED_20260830_656C85E.json.gz`:
+  **7,761 gzip / 45,998 raw bytes**; gzip/raw SHA-256
+  `0cc6f554f08bc8ac172d10c5bb5d6e596bd522944c0e9909c8f70b38858a2c0f` /
+  `d0a95f6884cddf968c3b713abdc8dc3d694a324f68324c197abf2758eb5baf63`.
+- `ARC4_SLICE_PR35_POST_SAMPLE_TAME_DISABLED_RED_20260830_656C85E.log.gz`:
+  **7,143 gzip / 22,103 raw bytes**; gzip/raw SHA-256
+  `e6964fd2d9ac946172703ea74ffeff0dc32ef19f883672ade66cfebfa305b68d` /
+  `6ac40bfe6d0cce87aee1dad6dfe6c788e7ad3c4b1f953123c056483408c3cf9a`.
+
+The repaired runner retained the decisive pre-arm state and stopped before arming the hook or
+dispatching input. Capture and Arc 5 ownership were current, Sample was durable at revision 108,
+its Arc 9 progression tail was durable at revision 109, 15/16 Yield remained, the coordinator and
+card were idle, the hold was released and no fault was armed. Nevertheless the native Tame target
+was `disabled:true`, `ariaDisabled:true`, `modelEnabled:false` and unfocused. This is therefore no
+storage-product verdict: no storage injection or product action ran.
+
+Source tracing classifies the exact red as a stale open-card publication race. Sample queued its
+Arc 9 aggregate follow-up before its awaiting UI continuation repainted; that continuation
+correctly projected every Capture row unavailable while Arc 9 owned the shared coordinator, but
+Arc 9 released without republishing the still-open current card. Pertar still had nine eligible
+fauna and the canonical next action remained Tame. The bounded successor refreshes only that
+current visible Capture surface after Arc 9 fully releases, with current-runtime, Training,
+replacement, convergence, coordinator and read-only guards; publication failure converges
+fail-closed. No fixture, Yield cycle, capture pool, creature/genome, art/audio, timeout, retry,
+numeric ruler or Edge baseline changes. The immutable `656c85e…` run remains FAIL and grants no
+Glass, Recovery, hosted, merge, release or deployment authority.
+
+### Signed `961d107…` green admission predecessors, then isolated Arc 4 storage-timeout red
+
+Exact clean SSH-signed source `961d1071d059e0f73e14a6a4ead61f5e4696535b` (tree
+`e1acc7753e8f89ca13bc7dd0fce300c5fba454f3`, parent
+`7f89bb2a70604da5b79673bd22d25786cab468d2`) passed its tracked-input develop profile at
+**253 files / 2,510 passed / 1 skipped**, all three TypeScript programs and the art/route/spec
+gates. The unchanged source then ran each permitted browser stage once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`: SceneMemory passed **44/44** in **12,912 ms** and
+Compendium passed **78/78** in **63,695 ms**. Both named verifiers passed. The retained carriers
+are:
+
+- `ARC1C_SCENEMEM_PR35_STORAGE_REFUSAL_PREDECESSOR_PASS_20260830_961D107.json.gz`:
+  **44,946 gzip / 786,692 raw bytes**; gzip/raw SHA-256
+  `6c1e2180e6d3523bf5b07021c24ad8aa9f6e67c1e0fc72b2433691afad3144aa` /
+  `77607fd1b824e12f973a85d82d45f7b09997523125f839a664ba7a42f224c648`.
+- `ARC1C_COMPENDIUM_PR35_STORAGE_REFUSAL_PREDECESSOR_PASS_20260830_961D107.json.gz`:
+  **450,967 gzip / 10,834,118 raw bytes**; gzip/raw SHA-256
+  `3f39cfca848e5aaa790e0f6e27448881d8985501313c2027f78f0064b53d2b36` /
+  `cc1b28217c57a0ff90051afcb676d24082c3f0426c0650e504ba0e65ce567799`.
+
+Slice `20260830-pr35-961d107-battery-rightsizing-slice` then stopped terminal red after
+**171,033 ms** with exactly one scope, `harness`, and zero automatic retry. The message was
+`Arc 4 storage refusal did not reach its browser outcome within 10000ms (last null)`. Glass and
+Recovery did not run.
+
+- `ARC4_SLICE_PR35_STORAGE_REFUSAL_TIMEOUT_RED_20260830_961D107.json.gz`:
+  **1,689 gzip / 5,263 raw bytes**; gzip/raw SHA-256
+  `304d65abf8ed652420e282897eefdd9f57a34f7f2b41bed780f3fc27a18e822f` /
+  `6b69f8bd2445b3e23979e28a89f78f94d8572ea257f99a121dc893a632e57f4a`.
+- `ARC4_SLICE_PR35_STORAGE_REFUSAL_TIMEOUT_RED_20260830_961D107.log.gz`:
+  **1,509 gzip / 3,745 raw bytes**; gzip/raw SHA-256
+  `bbc957bd99f265d068d487a184a5a96f0bb8525ba7cbd5724e694f95cc8f328a` /
+  `d86d79fa031fb9002ad495a8579993aeb426461395fd116c78ae99458cfb249a`.
+
+This report proves only that the old runner let its generic waiter escape before it retained the
+fault arm, native target/press, coordinator, product, durable and UI state needed to distinguish a
+setup failure from a product failure. It is not evidence that the game mutated ownership or that
+the storage boundary failed. The bounded runner repair now proves readiness before arming, refuses
+to press if the hook does not arm, retains pre-arm/post-arm/post-press/deadline observations, and
+causal-stops before the stale-authority stage on any red. No timeout, retry, product code, save,
+creature/genome, art/audio, numeric ruler or browser baseline is changed. The immutable `961d107…`
+run remains FAIL and grants no Glass, Recovery, hosted, merge, release or deployment authority.
+
+### Signed `7f89bb2…` right-sized admission predecessors, then one-scope Tame fixture-oracle red
+
+Exact clean SSH-signed source `7f89bb2a70604da5b79673bd22d25786cab468d2` (tree
+`9007559da57a52c26510df4c7398287fde7b4839`, parent
+`d611d18ad12bb8587863846ef3799300d2396e6a`) passed its tracked-input develop profile at
+**253 files / 2,510 passed / 1 skipped**, all three TypeScript programs and the art/route/spec
+gates. The conditional SceneMemory heap and Chromium launcher controls passed. The unchanged
+source then ran the browser chain once per stage with zero retry on Microsoft Edge
+`152.0.4191.53` / CDP `1.3`: SceneMemory passed **44/44** in **12,753 ms** and Compendium passed
+**78/78** in **63,310 ms**. Their named verifiers passed. The deterministic carriers are:
+
+- `ARC1C_SCENEMEM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz`: **45,066 gzip /
+  787,362 raw bytes**; gzip/raw SHA-256
+  `d0598401c43cf0d8d0b60f145de501c21ae86d3825d161b88b28f6d95ab2a778` /
+  `2b825b7ba33152ef882f5601ef7dea2b032ef042903bb7e3824740741e495709`.
+- `ARC1C_COMPENDIUM_PR35_BATTERY_RIGHTSIZING_PASS_20260830_7F89BB2.json.gz`: **451,063 gzip /
+  10,821,649 raw bytes**; gzip/raw SHA-256
+  `5ea6181267661e15b19005316e7871050113ed25e6bfe32873a93b0a8a708a50` /
+  `c4b962d76555d3cdc58383904820db12303d9d93d1b9fc63926aec0f0539db5c`.
+
+Slice `20260830-pr35-7f89bb2-battery-rightsizing-slice` then stopped terminal red after
+**159,754 ms** with exactly one scope, `arc-4-tame-greeting-audio`, and zero automatic retry.
+Glass and Recovery did not run.
+
+- `ARC4_SLICE_PR35_TAME_LEDGER_VARIANT_ORACLE_RED_20260830_7F89BB2.json.gz`: **74,024 gzip /
+  608,802 raw bytes**; gzip/raw SHA-256
+  `ad77a941b6b29518e18cfa30faa6be516d124567c78eb4c6b4d46f877dc1edab` /
+  `751415db662857fd0e03a09fc8d9713d31de7d86db4a6b71fe4fec4587bcfb10`.
+- `ARC4_SLICE_PR35_TAME_LEDGER_VARIANT_ORACLE_RED_20260830_7F89BB2.log.gz`: **34,961 gzip /
+  257,710 raw bytes**; gzip/raw SHA-256
+  `da56722b8962fac1ecfcb21012fa93208c0dab26c44421b1bcc76854da27d97c` /
+  `d2d071d20b8bc8d642aa2e8cfc13195b796df045bd64c1f48455dcab8acffc5a`.
+
+Every product/audio outcome was green: native Tame, release, one claimed/started/completed voice,
+assertive-toast counterpart, close/reopen/refresh/wait, reload-no-replay, fresh-fixture isolation,
+the exact classifier and all its mutations. Causal stop reduced d611's five scopes to one. The
+only red was fixture setup `actionAuthorityPrefix`. The new prefix contract had pinned the complete
+Landing witness from the Sample fixture, including its `stateSuccessorSeal` `9ccc8a03…`; the
+equally valid Tame fixture differs only because its different source state derives seal
+`10d953c3…`. All causal Landing fields, ordered receipts, world-identity seal, runtime authority and
+Capture freshness match.
+
+The bounded repair compares every Landing witness field except that source-derived seal against the
+exact invariant baseline, while requiring the seal itself to be a lowercase 64-hex SHA-256. Both
+retained real variants are positive; malformed seals and changed route/receipt fields are negative.
+It changes no game/product, save, creature/genome, art/audio, threshold, retry, timeout or browser
+baseline. The stored `7f89bb2…` Slice remains FAIL and grants no Glass/Recovery/hosted/merge/release
+authority. A changed signed successor must start a fresh no-retry develop chain.
+
+### Signed `d611d18…` consolidated admission predecessors, then terminal-red Pertar ledger oracle
+
+Exact clean SSH-signed source `d611d18ad12bb8587863846ef3799300d2396e6a` (tree
+`f2ab61ec3287b5269c0e206ee0edf374f6258b07`, parent
+`d1b0202fae029d54a8495a3cadcb5d598ad0d8c8`) ran the consolidated develop admission once per
+stage with zero retry on Microsoft Edge `152.0.4191.53` / CDP `1.3`. Root Layout passed
+**787/787** across 10/10 viewports, SceneMemory passed **44/44** in **12,407 ms**, and Compendium
+passed **78/78** in **71,079 ms**. Their deterministic carriers are:
+
+- `ROOT_LAYOUT_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz`: **5,029 gzip /
+  106,976 raw bytes**; gzip/raw SHA-256
+  `bcf4c524187fda97c7b4cbef8c807b8ffc944965533ef6d6bd75baccf2959e31` /
+  `37daf338ebf0cb9048e6caae245f8fe6e4cbff1fcfcab226a954485b487a5f98`.
+- `ARC1C_SCENEMEM_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz`: **44,965 gzip /
+  786,975 raw bytes**; gzip/raw SHA-256
+  `29d99750ce372e617f3276451209561f0593d5631f49518bbce8d430099880fb` /
+  `3c7cea08d02dc533ac1ea8c5fbad953f6aef9ed436599763ff7d1da915e461c4`.
+- `ARC1C_COMPENDIUM_PR35_BATTERY_CONSOLIDATION_PASS_20260830_D611D18.json.gz`: **452,029 gzip /
+  10,849,032 raw bytes**; gzip/raw SHA-256
+  `251ca89cfa08b2663969ffc8acd9f9f2ac32154831b8b46aa0891b1e42cbf9db` /
+  `04085baecbcb7758876233be8db3ed6e845c1e4b9bc56432164c10c2040a4ae1`.
+
+The unchanged source then ran Slice
+`20260830-d611d18-battery-consolidation-slice` once and stopped terminal red after **170,889 ms**.
+It retained five scopes—Tame-audio reset, Tame-audio aggregate, precondition, Sample and a later
+Storage harness timeout—with zero automatic retry. Glass and Recovery did not run.
+
+- `ARC4_SLICE_PR35_PERTAR_LEDGER_ORACLE_RED_20260830_D611D18.json.gz`: **218,580 gzip /
+  1,953,664 raw bytes**; gzip/raw SHA-256
+  `74501e618f1bbe74b7c3b7c60c0375bcfa7911cf762e857f1bcfcaa54ea664f0` /
+  `8fa4790b18a6dcaef94bbf0794de99442c67ac448bc723a65adf56c275d3d9c2`.
+- `ARC4_SLICE_PR35_PERTAR_LEDGER_ORACLE_RED_20260830_D611D18.log.gz`: **100,790 gzip /
+  828,312 raw bytes**; gzip/raw SHA-256
+  `7b4c6c6daefbceb585cedc4aac5cff135b4153dd7a6baa9f104fb4fbeea58f9b` /
+  `d7b4fbde305a9f6dcf5debe430430a2b56ddb4310b6f328a0689151db0ecc20c`.
+
+These are instrument false negatives, not five product defects. Fresh Arc 4 capture ownership was
+incorrectly treated as an empty cross-system ledger even though boot progression, Survey and
+Landing correctly own receipts 0–2 and action-ready ordinal 3. The first Sample then correctly
+committed Capture at receipt 3 / revision `R+1`, followed by the required Arc 9 aggregate refresh at
+receipt 4 / final revision `R+2`; it added exactly achievements `rare`, `legend`, retained best rank
+3, changed no Capture RNG draw, and kept Capture/Arc 5 ownership at `R+1`. The later Storage timeout
+was derivative because Slice continued after the Sample oracle was already red.
+
+The repair changes no game code. One shared browser-free assessor now composes the complete Pertar
+prefix and first-Sample successor with isolated missing/extra/mutated controls; the browser runner
+waits for the exact `R+2` progression fixed point and stops every dependent Arc 4 stage at its first
+red verdict. The immutable `d611d18…` evidence remains FAIL and grants no Glass, Recovery, hosted,
+merge, release or deployment authority. A changed clean signed successor must start one fresh
+SceneMemory → Compendium → Slice → Glass develop chain; it may not retry or relabel this run.
+
+### Signed `4ac4d3c…` Compendium PASS, then terminal-red compact/audio fixture evidence
+
+Exact clean SSH-signed source `4ac4d3cf8b717e0a2a52d53a4e6e2c5eb89637a1` (tree
+`a00c83dd5867c88b89d9474f868f3e930cc18d42`, parent
+`8bdf474e92467652729a6980f706ca3a2813682c`) ran Compendium
+`20260830183843086-13837-7b626b40e8` exactly once with zero retry on Microsoft Edge
+`152.0.4191.53` / CDP `1.3`. It passed all **78/78** outcomes (39 phone + 39 desktop), produced
+all six review PNG identities, and passed its exact named verifier in **65,002 ms**.
+`ARC1C_COMPENDIUM_PR35_EXACTNESS_PASS_20260830_4AC4D3C.json.gz` is **519,732 gzip /
+10,777,529 raw bytes**; gzip/raw SHA-256 is
+`64d9b29a20e0841bbfedc427fffa831895402b1c49bc2db69073e62f2cb8db6b` /
+`ac188c49aaaefff92f1efc9ea5d856de39dc418d6c89407ea974b9aba2fba85b`.
+
+The same unchanged source then ran Slice `20260830184013566-14221-2941ac202e95` exactly once.
+It stopped terminal red after **152,754 ms**, with zero automatic retries and two independent
+scopes: `arc-5-compact-carrier-boot` and `arc-4-tame-greeting-audio-start`. Glass and Recovery did
+not run and have no `4ac4d3c…` successor authority.
+
+- `ARC4_SLICE_PR35_COMPACT_AUDIO_FIXTURE_RED_20260830_4AC4D3C.json.gz` is **140,191 gzip /
+  1,101,615 raw bytes**, SHA-256
+  `4df4d3d0a8f165d9eba78480acff7461e08d79ad278e2e24dbf1280e2ec9c6ab` /
+  `6c39ea537d2647f1439df8efbf7376661d891f9df4b8d3b4df7384597c59ea88`.
+- `ARC4_SLICE_PR35_COMPACT_AUDIO_FIXTURE_RED_20260830_4AC4D3C.log.gz` is **65,708 gzip /
+  455,499 raw bytes**, SHA-256
+  `7012e78bf0d3db3f204a7353fe6ee0ba19563acaca2c300e1352059d84e3efcb` /
+  `026aa75231e0fd08f1a91b00f2d48b80d01fd5cdf516db2fe0390d6cd179151a`.
+
+Both findings are instrument/fixture false negatives, not product defects. Compact-carrier
+upgrade, one-CAS migration, receipt and RNG preservation, four-shard integrity, aligned zero-write
+reload, document replacement and both mutation controls all passed. Its only outer red was the
+shared `fixtureCurrent`; the only nested red required the global F4 runtime to report exactly one
+commit even though the valid Arc 5 boot plus independently valid Arc 9 progression catch-up
+reported two. The repair removes only those two global commit-total predicates, retains both exact
+Arc 5 runtime projections and the isolated upgrade document's one-CAS assertion, and makes this
+stage use the existing fail-stop path so one future red cannot manufacture later work.
+
+The audio fixture separately inherited the veteran save's later Charter chapter `asc === 2`, while
+its sealed scenario and oracle explicitly own Chapter index `1` and the first alien-world bioscan.
+The product therefore correctly returned `charterBioscanBanked: false`; the impossible predicate
+kept polling until the normal 3.6-second toast expiry. The terminal observation still proves one
+real Tame hit and one natural greeting: one claimed event, one voice started/completed, peak one,
+one creature emitter, and zero stops, steals, rejections or faults. The repair restores only the
+shared Pertar fixture to Chapter `1` with `c2-scan` absent/zero and updates its audio-source digest.
+The derived Arc 0 landing-fault fixture remains at its prior later Charter chapter because it owns
+landing publication, not this bioscan reward. The strict live assertive-toast, Charter-copy,
+one-start and no-replay classifiers remain unchanged.
+
+No app/gameplay, save schema, creature/genome, art, balance, audio implementation, timeout, retry,
+numeric ruler or browser baseline changed. No new test or stage was added. Focused coverage is
+**89/89** and the complete browser-free suite remains **251 files / 2,501 passed / 1 skipped** in
+**23.39 seconds**, with all three TypeScript configurations green. This is repair admission only;
+a fresh exact clean signed source must earn one new no-retry Compendium → Slice → Glass → Recovery
+chain.
+
+### Signed `8bdf474…` Compendium PASS, then terminal-red Arc 0 publication-oracle evidence
+
+Exact clean SSH-signed source `8bdf474e92467652729a6980f706ca3a2813682c` (tree
+`7e8f770af63e13e13e57f292ff566f3ceb7f4830`, parent
+`41ca03e8207014b984ed97a3beb150b71162f255`) ran Compendium
+`20260830-pr35-arc3-8bdf474e9246-compendium-certification` exactly once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`. It passed all **78/78** outcomes (39 phone + 39
+desktop), produced all six review PNG identities, and passed its exact named verifier in
+**64,108 ms**. `ARC1C_COMPENDIUM_PR35_ARC0_ORACLE_PASS_20260830_8BDF474.json.gz` is **450,176
+gzip / 10,832,155 raw bytes**, SHA-256
+`802547558972a4c118df18fd2fe857c0ffabcbfcadb6f0cbc71cb31e25c435aa` /
+`c2fa92014af534a96725c3fa81662ebc49d158e3441a972bee663b8d8b1da77a`.
+
+The same unchanged source then ran Slice
+`20260830-pr35-arc3-8bdf474e9246-slice-certification` exactly once. It stopped terminal red after
+**111,490 ms**, with zero automatic retries and exactly one scope:
+`arc-0-landing-publication-convergence`. Glass and Recovery did not run.
+
+- `ARC4_SLICE_PR35_ARC0_PUBLICATION_ORACLE_RED_20260830_8BDF474.json.gz` is **97,319 gzip /
+  726,598 raw bytes**, SHA-256
+  `d8fc5dbf6731c0e95aa5984cd945f1995d9ba25c0dc985cca2ffb59cbdb9305f` /
+  `b0df4530c52c99ee6bdd8e29af1af0b9ba207a45b36b9e6393f067a2540448f3`.
+- `ARC4_SLICE_PR35_ARC0_PUBLICATION_ORACLE_RED_20260830_8BDF474.log.gz` is **43,114 gzip /
+  303,026 raw bytes**, SHA-256
+  `b88600767390ef5d79f17134fda5d5093d1d2fb13121d9d869bc2127389c7a9c` /
+  `46be64ce0506c0d761787acff8f7d4f02d1bd2e54085f9fce74f932691ed1c17`.
+
+This was an instrument false negative, not a game defect. The certified post-Survey fixture and
+held old-document live products have zero differing fields; both serialize to **1,876 bytes** with
+SHA-256 `e353f175bdea46856ef7b6c9e1bc554a50870fa054dc7a687a293bb761ce9e78`.
+Both correctly retain `cardOpen: true` and `cardTitle: "Pertar"`. The obsolete second conjunct
+reused the pre-Survey source-route helper, which requires `cardOpen: false`, making the check
+logically impossible after its own exact Survey setup.
+
+The repair changes no product code. The immutable report proves exact old-document product/state
+parity and the contradictory open-card predicate, while explicitly recording that the historical
+runner did not capture held `cardCode` or target evidence. The new runner atomically captures those
+held values before release, then evaluates complete absolute Pertar route, rendered scene, open
+card, canonical CF1 payload and exact-key target evidence through shared browser-free contracts
+with independent field-level controls.
+`port/v2/tests/pr35-8bdf-arc0-publication-evidence-replay.test.ts` binds all three carriers, source,
+78/78 predecessor, one terminal scope, no retry, no Glass/Recovery authority and the false-negative
+diagnosis plus that historical capture limit. Focused repair coverage is **16/16**; the complete browser-free suite is **251 files /
+2,501 passed / 1 skipped**, and all three TypeScript configurations are green.
+
+### Signed `20d8598…` Compendium PASS, then terminal-red Slice research/fabrication/landing/Pertar evidence
+
+Exact clean SSH-signed source `20d8598913e1009e03538085e59a8b63ac7a6655` (tree
+`14d49ce60f84ca47daf831975f28491a7c8302e1`, parent
+`aa88d916e5141d6f2f8e8969288064ffba0cfc85`) ran Compendium
+`20260830-pr35-arc3-20d8598913e1-compendium-certification` exactly once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`. It completed **78/78** outcomes (39 phone + 39
+desktop), with zero findings or blocked outcomes, in **63,431 ms**. Its report binds the six
+phone/desktop list, focus-pinned and detail review-image identities.
+
+`ARC1C_COMPENDIUM_PR35_ARC3_REPAIR_PASS_20260830_20D8598.json.gz` is **452,409 gzip /
+10,870,954 raw bytes**, SHA-256
+`3a65d9d53f3efb4139357011db1dd96dc438b3b9632c95436d296e9b4263cd49` /
+`3edd72a72f471b9e702956f13d217c940ab989514be8bc86568af1f0fe19ffc0`.
+
+The same unchanged source then ran Slice
+`20260830-pr35-arc3-20d8598913e1-slice-certification` exactly once. It stopped terminal red after
+**120,493 ms**, with zero automatic retries and six findings in this exact order:
+
+1. `arc-3-research-action` — native Enter did not commit Deep Scanners and restore semantic row
+   focus.
+2. `arc-3-fixed-fabrication` — native Enter did not couple Plate into the Arc 2 / Arc 3 / legacy /
+   Charter outcome and restore action focus.
+3. `arc-0-landing-storage-refusal` — the awaited storage-refusal Landing outcome did not satisfy
+   its exact durable/live/coordinator/no-retry contract.
+4. `arc-0-landing-stale-convergence` — the held/released reload did not satisfy the exact
+   later-writer-only convergence contract.
+5. `arc-0-landing-publication-convergence` — the durable one-receipt Landing/reward did not satisfy
+   the exact local-publication/no-retry/reload contract.
+6. `harness` — the legacy-carrier upgrade rehearsal did not reach the exact Pertar
+   surface/card/three-enabled-row outcome within 10,000 ms.
+
+These labels record the immutable observation only. They do not classify six independent product
+defects or assign product/oracle/harness root cause before diagnosis.
+
+- `ARC4_SLICE_PR35_RESEARCH_FABRICATION_LANDING_PERTAR_RED_20260830_20D8598.json.gz` is
+  **317,389 gzip / 2,365,817 raw bytes**, SHA-256
+  `275913fda5c64eb382c7fce361ffa3e23aafe659f5d2fb7313050df9b3c5925e` /
+  `c7e10726de611e32b55978976dd7bea37334cf8cfc282e286700b887a076b889`.
+- `ARC4_SLICE_PR35_RESEARCH_FABRICATION_LANDING_PERTAR_RED_20260830_20D8598.log.gz` is
+  **144,568 gzip / 971,878 raw bytes**, SHA-256
+  `eef6c29cf568c0bb602b18b468f38227c0b5177f9a94b6faad8eb0bd95206585` /
+  `4d83e68ddd21b6a164a7b5245e24e38cb5e418eb239cb2e9a00b29fd0c19f318`.
+
+`port/v2/tests/pr35-20d8598-slice-evidence-replay.test.ts` binds all three gzip/raw identities,
+the exact source/tree/parent tuple, complete Compendium result and browser provenance, six review
+image identities, exact ordered Slice scopes and message hashes, raw-log/child-output parity, seven
+partial screenshot identities, zero PASS markers and the explicit absence of Glass/Recovery
+authority. The stored Slice remains FAIL and is never promoted by a later repair. Glass and
+Recovery did not run and have no `20d8598…` successor authority.
+
+### Signed `4a82d9b…` Compendium PASS, then terminal-red Slice Mine-Charter/Survey harness evidence
+
+Exact clean signed source `4a82d9b82521ea9bd1ac5e7c0754a473bcadd997` ran Compendium
+`20260830-pr35-f4-oracle-4a82d9b82521-compendium-certification` exactly once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`. It passed **78/78** outcomes (39 phone + 39 desktop),
+with zero findings or blocked outcomes, in **64,895 ms** and passed its exact named verifier.
+`ARC1C_COMPENDIUM_PR35_F4_ORACLE_PASS_20260830_4A82D9B.json.gz` is **522,115 gzip /
+10,834,839 raw bytes**, SHA-256
+`61b3eae4153668e670ae598dd8239a6f746154d3612f60fd56942706df00f2e4` /
+`8ba9115c844d411c260b8a931ce24561746da6fe8878488a34235c0a5c721bff`.
+
+The same unchanged source then ran Slice `20260830152819879-75689-abf2a37ffd4d` exactly once.
+It stopped terminal red after **99,332 ms**, with zero automatic retries and three ordered scopes:
+`arc-3-mine-action`, `arc-3-mine-action-controls-failed`, and `harness`.
+
+- `ARC4_SLICE_PR35_MINE_CHARTER_ORACLE_RED_20260830_4A82D9B.json.gz` is **82,153 gzip /
+  632,179 raw bytes**, SHA-256
+  `c544c705b1e5095457876d7b4b025660105325199ab1220270b9057da549d0d3` /
+  `8a2b7308cd28b81035e386ea705791c8f19521581b834b23a7714e11c254b285`.
+- `ARC4_SLICE_PR35_MINE_CHARTER_ORACLE_RED_20260830_4A82D9B.log.gz` is **37,544 gzip /
+  260,179 raw bytes**, SHA-256
+  `5504f772d9ef6f7ce36c023fb3695bcc59aff99748273f601674137433091b16` /
+  `502a0d2e2eb5032d5f6ab1fd45cb05c99ff46e341de65a141e19d154c536ec20`.
+
+The first finding is an oracle defect, not a product failure. One real trusted Mine atomically
+committed its extraction/cooldown and completed accepted Starter Charter `st-mine`: `chs` appended
+`st-mine`, `chp['st-mine']` canonicalized to 1, `chacc` removed it, `charters` advanced 2→3 and
+both current/lifetime Stardust (`essence` / `essenceEarned`) advanced by 15. Every unrelated row
+and extension was preserved. The old exact-action whitelist mislabeled those six coupled fields as
+unrelated drift; the second controls finding inherited that same false premise.
+
+The Survey timeout is a separate harness-sequencing defect, not a navigation or reach failure.
+Escape correctly lifted from Mars and scheduled `persistView`; Slice then sent a one-shot Search
+Enter while that write still owned `activePersist`. Product Search correctly refused and does not
+retry. The formerly post-timeout F4-writable barrier now runs before Enter, remains again after the
+route for stabilization, and the observation retains Search value/focus, Follow outcome, global
+action owner and persistence diagnostics. Mine baseline, Mine controls, Mine outcome, durable
+controls and final controls also fail-stop before dependent mutable work, preventing one root from
+manufacturing later findings.
+
+`port/v2/tests/pr35-4a82-mine-charter-evidence-replay.test.ts` binds all three gzip/raw carriers,
+the exact Compendium/Slice source and run semantics, raw child/log parity, the accepted six-field
+Charter successor and the absence of Glass/Recovery authority. It rejects six successor field
+families, ten structurally valid but product-invalid predecessor pairs and live-only mutations for
+every durable-mapped field/statistic while retaining an unrelated-live-state positive. The executable contract
+also rejects a non-plain progress predecessor and accepts the production-allowed null-prototype
+record. Current browser-free acceptance after the repair is **249 files / 2,488 passed / 1
+skipped**, with all TypeScript programs green. No app/gameplay source, save schema,
+creature/genome/art structure, timeout, retry policy or browser baseline changed. Glass and Recovery
+did not run and have no `4a82d9b…` authority; a fresh clean signed source must earn its own chain.
+
+### Signed `e4f5af4…` Compendium PASS, then terminal-red Slice replacement/Engineering/Survey evidence
+
+Exact clean signed source `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` ran Compendium
+`20260830-pr35-slice-oracle-e4f5af4bf628-compendium-certification` exactly once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`. It passed **78/78** outcomes (39 phone + 39 desktop)
+in **64,831 ms** and passed its exact named verifier. Its immutable carrier
+`ARC1C_COMPENDIUM_PR35_SLICE_ORACLE_REPAIR_PASS_20260830_E4F5AF4.json.gz` is **521,190 gzip /
+10,798,329 raw bytes**, SHA-256
+`62836b0c47307b77a4656fa82075a7eabb7c18332288272b6eab4e1256e0de61` /
+`23f93aaf9af016ffd9c6aeaf137539041a63e10ad339495f1837442e73a2a7ca`.
+
+The same unchanged source then ran Slice
+`20260830-pr35-slice-oracle-e4f5af4bf628-slice-certification` exactly once with zero retry. It
+stopped terminal red after **98,988 ms** with four findings in this exact order:
+`f4-replacement-outcome`, `arc-3-mine-action`, `arc-3-mine-action-controls-failed`, and `harness`.
+The old F4 trace merged requests across transactions and then demanded an F4 carrier inside the
+atomic replacement player row. The real replacement correctly removed the prior authority and
+receipt history at revision 8; the replacement document minted the fresh seed in its separate held
+bootstrap commit at revision 9, then progression and Smoke committed at revisions 10 and 11. The
+old product comparison also treated valid clock normalization and exact route repair as unrelated
+drift. The Arc 3 findings were derivative of that stale product oracle; the final six-second Survey
+timeout was downstream cascade after the root red, not independent permission to continue.
+
+- `ARC4_SLICE_PR35_REPLACEMENT_ENGINEERING_SURVEY_RED_20260830_E4F5AF4.json.gz` is **106,663
+  gzip / 784,482 raw bytes**, SHA-256
+  `405ba09fb441dee907a2a03fa116acd54acfcccd821b10d919e02419f083c3c1` /
+  `4d588a0e6e49fee7b85f662ff26266ef009bff09bdb9d316cd75b1531c5f3ca3`.
+- `ARC4_SLICE_PR35_REPLACEMENT_ENGINEERING_SURVEY_RED_20260830_E4F5AF4.log.gz` is **43,745
+  gzip / 323,366 raw bytes**, SHA-256
+  `f84f5d14529b4b8e1476d7d1f14a8715cda3dd9d0ba75241a076d2b0088acc7a` /
+  `f3fb5deaf0a87b7be832345a8256bea872307fa2c91ea23b0783e0217303861a`.
+
+The report retains seven partial screenshots and zero PASS markers. Glass and Recovery did not run
+and have no `e4f5af4…` authority. The browser-free
+`port/v2/tests/pr35-e4f5-slice-oracle-evidence-replay.test.ts` binds all three gzip/raw identities,
+the exact clean source and named runs, the complete 78/78 Compendium ledger, the ordered four-scope
+Slice red and its reason/message hashes, raw child/log evidence, and the explicit absence of any
+Glass or Recovery successor. It replays the immutable evidence; it never promotes that Slice red.
+
+The changed-source repair replaces the cross-transaction trace with schema v3 evidence for one
+complete native replacement transaction and expectation schema v2. It inventories every readwrite
+first observed before replacement completion, requires exactly one eight-store transaction, then
+freezes so the required later lease-release CAS cannot overwrite the witness. It observes every
+available object-store request method plus index access, then requires the exact 13-request ledger
+and empty index inventories; hidden add/cursor/index work and pre-completion subset/superset side
+transactions are red, while a post-completion lease-release control remains green. Its strict
+post-boot projection SHA-256 is
+`e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`: only conquest and mined-
+world stamps become exact ages from the separately run-bounded `at` clock, while complete saved-
+route geometry, every Atlas `where` and all unrelated product state remain exact. Red setup stops
+before import, red prefix stops before its diagnostic outcome, and red outcome/control stops hide
+and Arc 3. The live periodic heartbeat is stopped, settled and bound to the exact document before
+staging or arming, eliminating the arm→import timer race. Focused transaction,
+clock, route, lifecycle, publication and causal-order mutants fail in both directions; this grants
+no fresh browser authority until a new clean signed source completes its own chain.
+
+### Signed `ae2a002…` Guide/CF1-repair Compendium PASS, then terminal-red Slice instrument drift
+
+Exact clean signed source `ae2a0023da3a90a98e548452113395149847aee5` ran Compendium
+`20260830-pr35-guide-cf1-ae2a0023da3a-compendium-certification` exactly once with zero retry on
+Microsoft Edge `152.0.4191.53` / CDP `1.3`. It passed **78/78** outcomes across phone and desktop
+in **63,446 ms**. Its immutable carrier
+`ARC1C_COMPENDIUM_PR35_GUIDE_CF1_REPAIR_PASS_20260830_AE2A002.json.gz` is **451,761 gzip /
+10,869,876 raw bytes**, SHA-256
+`c41e40c0f7da7829d894f762fe4dee94b1d4a5dd663c07211e76f3700cc56d0f` /
+`864efc28836ca5aaff9ea3efa286169f4fd49f49e6811e68375fb5837f72098d`.
+
+The same unchanged source then ran Slice `20260830132231723-50968-0e9bd00aee77` exactly once
+with zero retry. It stopped terminal red after **91,465 ms** with **8 findings / 8 scopes**:
+four rendered-Guide mutation controls, Atlas setup plus outcome, F4 replacement/outcome, and
+Arc 2 reload/Atlas continuity. These are retained instrument/oracle findings. In particular, the
+F4 replacement did atomically clear the old expedition receipt. The exact chronology is staged
+revision 7 → replacement revision 8 → one independently expected receipt-free product/bootstrap
+commit at revision 9 with ordinal still zero → required `arc9-progression-refresh-v1` receipt zero
+at revision 10 → Smoke receipt one at revision 11; replacement-document runtime commit count was
+two before Smoke. The old oracle incorrectly required the
+post-boot sample itself to remain empty at ordinal zero. Atlas likewise rendered its world row as
+a semantic container with a separate real Travel button, while the old setup conflated the two
+owners. Source-string mutation controls did not alter already-rendered Guide DOM.
+
+- `ARC4_SLICE_PR35_POST_REPAIR_INSTRUMENT_DRIFT_20260830_AE2A002.json.gz` is **78,146 gzip /
+  905,230 raw bytes**, SHA-256
+  `f2749443714acbfebcfd12a0527502b1156a67560eaec068f751ddcde665f045` /
+  `585b006d26970ef9f9e4d2cd954f6f8791df935594535dd3b1dde0b51312412c`.
+- `ARC4_SLICE_PR35_POST_REPAIR_INSTRUMENT_DRIFT_20260830_AE2A002.log.gz` is **37,399 gzip /
+  420,442 raw bytes**, SHA-256
+  `9d57cded083613decc33233db185d0c53d6c6bf1ae7d65f2b74209705cfbc699` /
+  `73fd34e7c3126ad57b15b794e26e1b8f36ef2848dd523ebb4c55ee101b043262`.
+
+Seven partial screenshots—Earth, Galaxy, Guide, Settings, Sol, Sol marker and Universe—remain
+bound inside the exact report. Glass and Recovery did not run. This evidence remains red and grants
+no changed-head PASS, HUMAN, hosted, merge, release, version or deployment authority.
+
+### Signed `941ba45…` sealed-worker Compendium PASS, then terminal Slice Guide/Release + named-CF1 red
+
+Exact clean signed source `941ba45a96e5baabadc255d53db86fa935cefe81` first ran
+`20260830-pr35-sealed-worker-941ba45a96e5-compendium-certification` exactly once with zero
+automatic retries under Microsoft Edge `152.0.4191.53` / CDP `1.3`. It passed all **78/78**
+Compendium outcomes in **65,731 ms**, produced the complete six-image phone/desktop list,
+focus-pinned and detail review packet, and passed its exact named verifier. This is the first clean
+browser proof that the sealed single-file species worker closes the earlier first-install painter-
+import failures. The fixed memory rulers, numeric ceilings and outcome inventory did not move.
+
+- `ARC1C_COMPENDIUM_PR35_SEALED_WORKER_PASS_20260830_941BA45.json.gz`: **452,127** compressed
+  bytes, SHA-256
+  `e6f2aa4dfcbf94830f3c0059a8e64239956ac0d2e0685c8e267a338faba2f6f8`; **10,881,302** raw
+  bytes, SHA-256 `d4b2b2aa07f3b1f4a70903d4d8ae82abe1eaf755523a51d7ecc85d1e610c109b`.
+- Its six review PNG bindings are phone list **718,126** /
+  `17311d46f4cbbf75c0d489cc80beccc52cb516fe32cb434279b84b0765e3ee26`, phone focus-pinned
+  **647,200** / `8a737f97d67296572299d446f9a0417544da9a06ddaa35281ea04a11a3340978`, phone detail
+  **779,305** / `f945ccf1d81106067777688b44ec6e4782d5cdd689aa44dd7142329d72e7b693`, desktop list
+  **620,296** / `6fed609a3205c009ab0ab4cbe287af7b2314d2db6b6423069644ae188dacf9c7`, desktop focus-pinned
+  **609,176** / `787d084512d4112dad77a3ddc091fe4d5c69cf5fe425818f2adf7ba02edd31b5`, and desktop detail
+  **614,132** / `ede79803e3d2873503a8ea833260327f9264d663c3473e9822649f55ac2781da`.
+
+The required successor Slice then ran exactly once with zero retry as
+`20260830115041916-36220-7ed2dd2ef398` on the same clean source and stopped terminal red after
+**63,106 ms**, with **63 findings across 42 scopes**. The first **62** findings are Guide/Release
+instrument drift with two diagnosed causes: the probes synchronously read the preceding DOM before
+the intentionally microtask-deferred archive published, and their oracle still carried the
+superseded 26-partial/15-unavailable inventory plus older Scout, conquest, reward and audio copy
+instead of current 9 categories / 41 topics / 34 partial / 7 unavailable and live player truth.
+The independent final finding is product-red: after accepted custom-world naming, a valid
+keyboard CF1
+Follow never reached its browser outcome before the fixed 6,000 ms diagnostic timeout. Six partial
+Earth/Galaxy/Guide/Settings/Sol/Universe screenshots were retained. Slice was not retried, and Glass
+and Recovery did not run.
+
+- `ARC4_SLICE_PR35_GUIDE_INSTRUMENT_AND_NAMED_CF1_PRODUCT_FAILURE_20260830_941BA45.json.gz`:
+  **40,180**
+  compressed bytes, SHA-256
+  `c7b314352c65e5dd24120eb5982a78e87a899f488a78e3c205156a2e134eedad`; **522,130** raw bytes,
+  SHA-256 `65917019eeb8c74d258b89ab793ad13db2fc2619da1f21d7b0b2b6550e44c07d`.
+- `ARC4_SLICE_PR35_GUIDE_INSTRUMENT_AND_NAMED_CF1_PRODUCT_FAILURE_20260830_941BA45.log.gz`:
+  **19,473**
+  compressed bytes, SHA-256
+  `d5321f9ea85d949f32f6b688ddbc11b8638ae6e776a97feb6502b7ca392416f9`; **253,140** raw bytes,
+  SHA-256 `c54bd170a95eedf884bf591dd4c17241a1460cfcde7dc3a79cfa32bcdc56113c`.
+- The six partial PNG bindings are Earth **588,364** /
+  `4d3b4fbfcf32a4312d53a82d71938cc37426b42f2acaefba486fd2030ee56da0`, Galaxy **576,220** /
+  `804d9cc3025eb27963708a363875c498ee27a9ed472c07f906ebcfeb75434c8b`, Guide **294,892** /
+  `c0eef136185627cc39448d4b872807d947e0bb3605c6c2b9ff7b7528e60bca5b`, Settings **290,540** /
+  `689bf3d685c91179d84e01d03cb53976f8d4f541be4cbf8fd60acbd330a6081a`, Sol **227,540** /
+  `acfd55d7d4e88c886ec98c57e241da8f52f5fd556cad3d6ef7fcb6d9dd0992c5`, and Universe **362,689** /
+  `ca13afd64c08b4528f380124c01de0947d5ee6e408a59de492289fa6a6b136e2`.
+- `port/v2/tests/pr35-sealed-worker-evidence-carrier.test.ts` independently binds all three
+  compressed/raw artifacts, exact clean source, one-attempt/no-retry chronology, browser,
+  authorities, complete Compendium ledger/review packet, the **62 + 1** Slice classification,
+  partial screenshots, and the absence of Glass/Recovery evidence or PASS markers inside the
+  preserved Slice artifacts, without importing a live evaluator or budget that could relabel the
+  history.
+
+The bounded changed-head repair keeps Guide/release publication deferred but makes every dependent
+probe await the exact DOM identity it requested. It binds the canonical **9 categories / 41 unique
+topics / 34 partial / 7 unavailable** map and current gameplay copy, with bidirectional publication,
+mapping, stale-DOM and mutation/restore controls. The named-CF1 product repair removes the accepted
+custom-world name transaction's early aggregate catch-up. Direct Travel owns its accepted route,
+arrival and source-proved galaxy-event aggregate; Follow additionally owns Follow/Jumps/wayfarer.
+If the post-name route refuses or otherwise does
+not join progression, the world-name transaction queues exactly one aggregate catch-up after its
+own settlement instead of starving Follow. A synchronous reservation defers/coalesces ordinary save
+checkpoints across the handoff and re-arms one afterward; private heartbeat/pagehide owners keep
+their exact boundary. The fixed
+timeout remains diagnostic rather than becoming a sleep or retry.
+
+No unrelated gameplay system, creature, genome, art structure or save schema changed in this
+repair. There is no
+changed-head browser certificate yet, so the exact `941ba45…` PASS/red chronology grants no Glass,
+Recovery, HUMAN, hosted, merge, release, version-bump or deploy authority. Edge `.53` is provenance
+only; a compatible point update never triggers rebaseline, repin or threshold movement.
+
+### Signed `dc6004c…` execution-late successor painter-import product stop — 0/78, all blocked
+
+Exact clean signed source `dc6004cf4426df72bea141ac77b0be927f36886c` ran
+`20260830-pr35-execution-late-dc6004cf4426-compendium-certification` exactly once with zero
+automatic retries under Microsoft Edge `152.0.4191.53` / CDP `1.3`. The complete-lifecycle report
+stopped terminal `product-fail` after **3,112 ms** at phone `veteran-earth-planetside` thumb
+settlement, retained zero outcomes, blocked all **78**, and produced no desktop profile, review PNG
+or successor browser-stage evidence.
+
+All eight leased Planetside rows reached `error`. The trusted current-schema worker receipt retained
+epoch 1, worker 1, job 1, kind `thumb132`, stage `import`, code `painter-import`, and the exact
+101-character message `Failed to fetch dynamically imported module:
+http://127.0.0.1:61368/assets/speciespainter-DJWZf0vw.js`. Its SHA-256 is
+`90440d44f6d316cd1f3cfc45d816162f1267eef27eddcddcb413e5cd854e2a08`. Worker arithmetic remains
+coherent: one start/ready/disposal/fatal, one import start, zero import completes or results, and
+exactly one import error. The report remains immutable stored red and is not rewritten as green.
+
+- `ARC1C_COMPENDIUM_PR35_EXECUTION_LATE_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_DC6004C.json.gz`:
+  **6,127** compressed bytes, SHA-256
+  `2e65494085d46cf4b68b62d3df58884b22b9d5a5c9ad1378c018a73c036f6b53`; **38,665** raw bytes,
+  SHA-256 `c48e48a5385799bdf4535bf97b7bacf545b24182998978067b68c9bb08f27a38`.
+- `port/v2/tests/compendium-execution-late-painter-import-product-failure-carrier.test.ts`
+  independently binds the exact gzip/raw bytes and hashes, clean source at both boundaries,
+  one-attempt lifecycle, exact browser/current authorities, zero outcomes/all 78 blocked,
+  phone-only product classification, all eight terminal rows, the complete trusted v2 error receipt
+  and the absence of PNG/successor evidence. It imports neither the live evaluator nor the live
+  budget and passes **4/4** focused assertions.
+
+The carrier passes deterministic `gzip -9 -n` reproduction and gzip integrity. Exact input budget,
+measurement, outcome-contract, collector and producer-v2 SHA-256 values are
+`1e2b751f66be8902d9e09a90f2e2510c518d69b2c5309ac40b7965263c6210af` /
+`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+`06ddfc4853c2f20e95f5433485a852e2cd72afe5a10d128cf1486313d924aabf`. The exact producer record
+binds index `4ae1f01cf82354a8812393ba9b2e95f869bcdde996cfa7bd7ed05d568b330fc7`, owner
+`26418744ec36102969f681b7ad0905ad864de78c72ddcf9d81d41a4537dd0fd1`, species worker
+`901c40143b09d43241fb311a877c422df6fb5d997350cf0da91220ef8a973c1e`, painter
+`de44ec89c54ab8e8d168e369bfdada554a08a9af4fd02f2ca777b7430d2b6686`, and generated service
+worker `a837e771b08c8a3b48c5d4331366cf243d9dcbd538057237273f63e9bf580d2a`.
+
+This exact red grants no fresh Compendium certificate, same-source retry, Slice, Glass, Recovery,
+HUMAN, hosted, merge, release, version-bump or deploy authority. No successor browser stage ran.
+
+The current local successor removes the failed execution-late fetch instead of broadening service-
+worker adoption. Both dedicated worker graphs now statically own their complete renderer dependency:
+the generated species worker contains the species painter and the generated biome-vista worker
+contains the biome renderer. Each remains lazily constructed by the game, but neither worker contains
+`import()` nor an external static import/re-export, so first-install execution has no second worker-
+local module request to cross the `clients.claim()` boundary. Production build enforcement checks
+these properties on both generated worker files in `generateBundle` and again on the final bytes in
+`writeBundle`; source, emitted-graph and two-direction mutants independently make violations red.
+The falsified fetch-time `clients.get()` adoption path is removed, and an unpinned worker request
+continues to receive the exact fail-closed 503 without network fallback, mixed-build service or
+version-specific handling.
+
+Current Compendium producer authority v2 is
+`0889c46e9007273da5c0d5de875e611b147ad5ed8b4280730783131d315c5ddb`, binding index
+`720060efe570bb9c6a802eaad8ea94751b6f38bd35059487e07c36e0afbbc180`, owner
+`7b9bf1843eae0f914a43049bc618524314361a585c1b845cfcedf10e9c069319`, the single-file species
+worker/painter
+`25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`, and generated service
+worker `7227773d0df1c688af2ff48eca58e4c0d9b65b8b7b6046eb3f45cc8da1262d8b`. Current measurement /
+outcome-contract / collector / species-build-graph authorities are
+`5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+`9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+`0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010` /
+`e591551391f3ed31a494c94d7e1f659633daa460f0571b973bc81cd6888a9c66`. Current Scene build
+authority is `4d6a8b3ae7b4e797cd4239db411e027db929d07013dc24c2163604e38d189582`;
+Compendium/Scene budget SHA-256 is
+`d0c39b95f90a46fe38d65cc742ef91436a4e414c558659656250c9cf813b0e17` /
+`4325f0689927f00d5ffcc5a60acc1b47ca8738e250f15d5b64d351ce3af7b325`. The full browser-free
+suite passes **242 files / 2,443 passed / 1 skipped**, all three TypeScript programs pass, both
+generated workers contain zero `import()` expressions, and fixed rulers, numeric ceilings, all
+**78** Compendium outcomes and all **73** v2.0 development bullets remain unchanged. This changed
+source is deliberately browser-uncertified until one clean signed head runs once with no retry.
+
+### Signed `38d8848c…` Compendium painter-import product stop — 0/78, all blocked
+
+Exact signed source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
+`20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` exactly once with zero
+automatic retries under Microsoft Edge `152.0.4191.53` / CDP `1.3`. The complete-lifecycle report
+ended terminal `product-fail` after **3,115 ms** at phone `veteran-earth-planetside` thumb
+settlement, retained zero outcomes, blocked all **78**, and produced no review PNG, desktop profile
+or successor browser-stage evidence.
+
+The product stop is independently actionable rather than a generic timeout: all eight leased
+Planetside rows reached `error`, while the trusted current-schema worker receipt retained epoch 1,
+worker 1, job 1, kind `thumb132`, stage `import`, code `painter-import`, and the exact 101-character
+message `Failed to fetch dynamically imported module:
+http://127.0.0.1:60340/assets/speciespainter-DJWZf0vw.js`. Its SHA-256 is
+`4b70e1e85120ff791ef5461e1d9588edee6d17a6d162dc4b7edc0435d3500c53`. Worker arithmetic is
+coherent: one start/ready/disposal/fatal, one import start, zero import completes or results, and
+exactly one import error. The report remains immutable stored red and is not rewritten as green.
+
+- `ARC1C_COMPENDIUM_PR35_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_38D8848.json.gz`: **6,053**
+  compressed bytes, SHA-256
+  `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`; **37,825** raw bytes,
+  SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`.
+- `port/v2/tests/compendium-painter-import-product-failure-carrier.test.ts` independently binds
+  the exact gzip/raw bytes and hashes, signed clean source at both boundaries, one-attempt
+  lifecycle, exact browser and historical authorities, zero outcomes/all 78 blocked, phone-only
+  product classification, all eight terminal rows, complete trusted v2 error receipt and the
+  absence of PNG/successor evidence. It imports no live evaluator or budget authority and passes
+  **4/4** focused assertions.
+
+The carrier passes deterministic `gzip -9 -n` reproduction and gzip integrity. Measurement /
+outcome-contract / collector / producer-v2 authority at this exact historical input was
+`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+`2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; that input's generated
+service-worker authority was
+`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
+
+The immediate local successor at that historical point used guarded fetch-time `clients.get()`
+adoption. The exact later `dc6004c…` run preserved above falsified that repair: the worker client was
+still not available for portable fetch-time adoption before its execution-late painter import. That
+intermediate code and its authorities remain recorded here as history, not current design or fresh
+certification. The current sealed-worker successor is documented with the later stop above.
+
+This exact red grants no fresh Compendium certificate, same-source retry, Slice, Glass, Recovery,
+HUMAN, hosted, merge, release, version-bump or deploy authority. The repaired successor remains
+uncertified until one clean signed changed source runs once with no retry.
+
+### Signed `d33abdfd…` Compendium recovered-worker outcome-oracle red — 74/78
+
+Exact signed source `d33abdfd513236e72294b81e3bb46b1362f810e1` ran
+`20260830-pr35-first-install-d33abdfd5132-compendium-certification` exactly once with zero automatic
+retries under Microsoft Edge `152.0.4191.53` / CDP `1.3`. The complete-lifecycle report ended stored
+`fail` after **65,724 ms** with all **78** outcomes evaluated: **74 pass**, four fail, zero blocked,
+both profiles complete and all six review-image receipts present. The exact named verifier reproduced
+the terminal fail. No same-source retry or successor browser stage ran.
+
+The four stored reds are exactly `phone/cap-shrink`, `phone/settled-jobs`,
+`desktop/cap-shrink` and `desktop/settled-jobs`. Both cap observations actually shrink **256 → 96**
+entries, reach the exact **6,690,816-byte** phone decoded ceiling, dispose **160** assets, seal four
+warm cycles and restore the original device class. Every warm point has zero queued/active work and
+zero portrait retention. Both final current-schema worker receipts are `ready`, released, balanced
+across worker start/ready/disposal and import start/complete, and end in a current-generation
+`result`; they retain exactly one deliberately induced cumulative paint error while correctly
+clearing `lastError` after replacement and recovery. The stored predicates therefore conflict with
+their own recovered final-worker evidence rather than demonstrating a cache, queue, resource or
+browser failure. The report itself remains immutable stored red and is not rewritten as green.
+
+- `ARC1C_COMPENDIUM_PR35_RECOVERED_WORKER_ORACLE_FAILURE_20260830_D33ABDF.json.gz`: **451,743**
+  compressed bytes, SHA-256
+  `4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab`; **10,813,681** raw bytes,
+  SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`.
+- `port/v2/tests/compendium-recovered-worker-oracle-failure-carrier.test.ts` independently binds
+  the exact gzip/raw bytes and hashes, signed clean source, one-attempt lifecycle, browser and
+  historical authorities, complete **74/4** ledger, exact four reds, healthy cap/resource facts,
+  recovered worker arithmetic, cleared terminal error receipt and all six ignored review-image
+  hashes. It imports no live evaluator or budget authority and passes **8/8** focused assertions.
+
+The carrier passes deterministic `gzip -9 -n` reproduction and gzip integrity. It grants no fresh
+Compendium certificate, Slice, Glass, Recovery, HUMAN, hosted, merge, release, version-bump or deploy
+authority. Any repaired outcome oracle requires a materially changed signed source and one new
+no-retry Compendium attempt; this exact `d33abdfd…` red is never rerun or relabeled.
+
+The then-local oracle repair carried into the exact `38d8848c…` input required `lastError === null`
+on every selected current-v2 released/
+recovered snapshot—including non-final and post-cap samples—while exact cumulative paint/phase/
+result arithmetic still proves the induced paint fault. Terminal current product errors retain the
+opposite requirement: an exact non-null trusted receipt. Historical diagnostics v1 remains
+replayable. At that intermediate input, measurement / outcome-contract SHA-256 was
+`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29`; collector, producer-v2
+and generated service-worker authority were
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+`2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39` /
+`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. Its browser-free closure was
+591 selftest controls, 239 files / 2,431 passed / 1 skipped, all three TypeScript programs and a
+green authority printer. Fixed rulers, ceilings and the 78-outcome inventory are unchanged.
+
+### Signed `830e601b…` Compendium first lazy-painter import stop — 0/78, all blocked
+
+Exact signed source `830e601b8f16092d6f9193ecde329cfefd279bcd` ran
+`20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification` exactly once with zero automatic
+retries under Microsoft Edge `152.0.4191.53` / CDP `1.3`. It stopped terminal
+`instrument-fail` after **33,217 ms** at phone `veteran-earth-planetside`, retained zero outcomes,
+blocked all **78**, and did not run desktop or any successor stage.
+
+All complete long visual keys passed the observation-v2 membership evidence, so the preceding
+visual-key projection repair succeeded. The first lazy painter import was the actual product-red
+event. The historical v1 window diagnostic surface discarded the exact worker error code and
+message, so this index deliberately does not invent either one. This report remains an instrument
+stop rather than a Compendium product certificate.
+
+- `ARC1C_COMPENDIUM_PR35_WORKER_IMPORT_INSTRUMENT_FAILURE_20260830_830E601.json.gz`: **7,357**
+  compressed bytes, SHA-256
+  `90d61baeee297041a2afc7bf776fb504c5ac803140cf0613785859714c5f2aa9`; **54,172** raw bytes,
+  SHA-256 `ef3cec79cf181323705d8a9eff82d9bb8023275590a23a0589515248e626d6b5`.
+- `port/v2/tests/compendium-worker-import-failure-carrier.test.ts` independently replays the exact
+  gzip/raw bytes and hashes, signed source, once-only lifecycle, browser provenance, successful long-
+  key evidence, first-import failure boundary, zero outcomes and all 78 blocked without importing
+  live authority that could relabel the carrier.
+
+Deterministic harness evidence reproduces the code-supported first-activation claim gap and exact
+503 `This document has no retained Celestial Frontier build.` The then-local product repair re-ran all-
+client pin reconciliation inside the post-claim activation barrier. Species diagnostics v2 retains
+one bounded trusted `lastError`; a later adapter protocol/external fatal clears stale `lastError`,
+while a replacement producer clears both `lastEvent` and `lastError` and trusted worker-fatal
+evidence remains. Compendium observation v3 classifies a current trusted product error immediately
+as `product-fail` with no retry only when broker, art, lazy-worker and worker diagnostics are
+complete and the art/lazy schemas are exact. Malformed worker-error ownership is rejected unless
+`jobId`, `kind` and `key` are either all null or all present; recovered cumulative telemetry is
+nonterminal.
+
+At the exact `d33abdfd…` terminal-red input boundary, independent review had made Compendium
+producer authority history-safe schema v2: that authority bound generated `service-worker.js` plus
+index, owner, worker and painter; a service-worker mutant changed it; and historical v1 reports
+replayed unchanged. That input's measurement / outcome contract / collector / producer-v2 SHA-256 was
+`e6aba53d75c17669f4bc8893770023c849d4ed23edb6be36eb938f4491e17e97` /
+`2c751b866ca40fc8e4593dda82d19eb62ca4ff804caffc7531228128b480af21` /
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237` /
+`2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`; generated service-worker
+SHA-256 was `81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`.
+SceneMemory build authority at that boundary was
+`49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; its exact `2046000…`
+certificate remains immutable historical evidence.
+
+That `d33abdfd…` input's browser-free predecessor closure passed **589** Compendium selftest
+controls, worker **20/20**, the focused authority/PWA/worker/budget/carrier run **96/96**, and all
+three TypeScript programs. The canonical **73-bullet** release inventory was preserved, and the full browser-free suite passed
+**238 files / 2,423 passed / 1 skipped**.
+
+This was local input closure only, not a fresh Compendium certificate, named green predecessor,
+hosted result, HUMAN approval, merge, release, version bump or deployment authority.
+The fixed Compendium ruler, numeric ceilings, historical samples and thresholds remain unchanged.
+
+### PR #35 SceneMemory hosted stop and systemic local diagnosis
+
+Hosted run `33278630671` tested draft PR #35 head `017fa6decbc41809188768ccdb98ab86ef1b9ebc`
+against `develop` base `7a9f4c1370dd84292388d718c38ff34214f6203b`. Every predecessor through
+the SceneMemory controls passed; the one-attempt phone product stage stopped at `Earth planetfall
+was rejected`, its verifier reported downstream incompleteness, and all later browser stages were
+skipped. No hosted artifact is copied here, so this index assigns no invented carrier hash.
+
+The same-day [failure diagnosis](PR35_SCENEMEM_FAILURE_DIAGNOSIS_2026-08-29.md) records the
+Survey → Landing two-barrier race, same-commit persistence canonicalization boundary, exact-build
+worker-client pin omission, BFCache fixture/service-worker scope collision, bounded diagnostics,
+negative controls, and the local evidence boundary. The run is consumed; no retry, merge, release,
+version bump, or deployment authority follows.
+
+### Clean `a9f75797…` PR #35 resource-final SceneMemory stop — 43/44, instrument-phase red
+
+Clean committed source `a9f75797d6f838bb7246d3f41164f77e97e6f569` (tree
+`ce6c40eddcdbe85fe5c9a4dcf2a3bae83bbc5b06`, parent/base
+`eba00e03f3376c67ab38c5067e9a32da66ce3a3a`) ran once against PR #35's unchanged `develop`
+base `7a9f4c1370dd84292388d718c38ff34214f6203b`. Exact run
+`20260829-pr35-resource-final-a9f75797-scenemem` used build
+`8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254` and active budget/base
+`bf559acb1688c7f83223f4381b05ccc02309cf86af6344f6c019ffa0d1ba25e0` on Microsoft Edge
+`152.0.4191.53` / CDP `1.3`. It ran from 2026-08-30 03:18:40.048Z through 03:18:51.076Z
+(11,028 ms), with attempt count one and zero automatic retries, and completed browser, server and
+workspace-lock cleanup with zero fatal events.
+
+The exact-budget verdict was **43/44**. Phone passed all 22 outcomes. Desktop passed every
+ownership, lifecycle, answerability, ceiling, BFCache and cleanup outcome; only
+`desktop/heap-plateau` was red. The four measured series below are
+`V8 used / embedder / backing storage / aggregate`, in bytes:
+
+- phone: `11,408,740 / 2,984,112 / 2,971,326 / 17,364,178` →
+  `11,505,044 / 2,997,360 / 2,971,326 / 17,473,730` →
+  `11,602,940 / 2,998,880 / 2,971,326 / 17,573,146` →
+  `11,687,688 / 3,002,504 / 2,971,326 / 17,661,518`; least-squares slopes were
+  `93,474 / 5,669.6 / 0 / 99,143.6` B/cycle and aggregate range was 297,340 B;
+- desktop: `11,950,660 / 2,957,936 / 2,972,498 / 17,881,094` →
+  `12,097,412 / 2,962,112 / 2,972,498 / 18,032,022` →
+  `12,198,548 / 2,964,160 / 2,972,498 / 18,135,206` →
+  `12,277,376 / 3,114,088 / 2,972,498 / 18,363,962`; least-squares slopes were
+  `108,128.4 / 47,050.4 / 0 / 155,178.8` B/cycle and aggregate range was 482,868 B.
+
+The 131,072 B/cycle slope ruler was the only breached number. Desktop V8 itself remained below
+that ruler; the fourth embedder sample alone rose 149,928 B from the third and made the aggregate
+slope exceed the ruler by 24,106.8 B/cycle. Every measured ownership fact stayed flat: phone /
+desktop retained 16 / 17 thumbnail cache entries, one worker import and 16 / 17 total thumbnail
+jobs, with zero queued or active jobs, art leases, subscribers, portraits or protocol errors;
+backing storage was byte-identical across all four samples. Measured DOM stayed 472 nodes / 71
+listeners on phone and 469 / 70 on desktop. Both profiles held one scene scope, 19 scene leases,
+19 live textures and 4,587,520 live canvas pixels; six managed hashes held 87 live and zero cleared
+entries with zero faults. Pending surface, system and persistence work, retired fine owners, ring
+and local-canvas cache entries, product render targets, Shipyard previews/retained DOM/pending work
+and resource faults all stayed zero; the one 412,800-pixel surface-vista cache entry, managed
+texture inventory and 13 shared TextStyle listeners stayed constant. Route inventories repeated
+exactly, BFCache survival passed, and reload released renderer, stage, view and vista cache.
+
+This is a preserved terminal **instrument-phase/ruler observation**, not evidence of a product
+resource leak. The prior dirty Blob-cache diagnostic exercised the same bounded cache and LRU path
+green at 113,378.4 B/cycle, while this clean run's V8 slope was lower; only the isolated final
+embedder movement turned aggregate red. `Map.delete` + `Map.set` can create bounded transient LRU
+churn, but no retained backing-table owner is proved. The evidence therefore justifies no numeric
+threshold change, Edge rebaseline, cache rewrite or other speculative product change. In accordance
+with the serial stop rule, the standalone Compendium stage and every later browser stage were
+skipped, and the run was not retried.
+
+- `ARC1C_SCENEMEM_PR35_RESOURCE_FINAL_FAILURE_20260829_A9F75797.json.gz`: 31,185 compressed
+  bytes, SHA-256 `5cfe7acf15fe6af68e578028374f25be9dd74dd14fa6d5b385eb3e81b7c1d9a0`;
+  430,413 raw bytes, SHA-256
+  `ceeaa327220c51021da26aae98558d695ce657343ced9ddc510fa8ebd61ce74a`.
+
+The carrier passes gzip integrity and decompresses to the exact raw report hash above. This red is
+immutable evidence for its own clean source only; it is not a SceneMemory certificate, a named
+green predecessor, hosted authority, HUMAN approval, merge, release or deployment authority.
+
+### Heap-phase paired diagnostics — fail-closed authority stop and fixed-second-pass direction
+
+Dirty diagnostic `20260829-pr35-a9f75797-heap-phase-diagnostic1` changed the SceneMemory
+collector while supplying the tracked budget. The producer-authority guard correctly stopped
+`instrument-fail` before browser measurement with `scene-memory budget producer authority does
+not match this collector/input set`; it produced no profile or verdict. The unchanged product
+build was still identified as
+`8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254`, but the changed
+collector could not inherit that budget's authority. The invocation ran once with zero automatic
+retries and completed browser/server/workspace-lock cleanup with no fatal event.
+
+- `ARC1C_SCENEMEM_PR35_HEAP_PHASE_DIAGNOSTIC1_INSTRUMENT_STOP_20260829.json.gz`: 5,669
+  compressed bytes, SHA-256
+  `6529648717ef9a0cc9d5ae67fa2c2d49b31102ff9dad8ed03f2af13099bd9ae3`; 15,022 raw
+  bytes, SHA-256 `47d3c9d371c622576410256ebf6fce94c4268ed90afa563ad06e85e9fdb82d4e`.
+
+Dirty no-budget calibration `20260829-pr35-a9f75797-heap-phase-diagnostic2` then exercised two
+fixed complete post-GC measurement passes on that exact unchanged product build and Microsoft Edge
+`152.0.4191.53` / CDP `1.3`. The clean run's first-pass desktop embedder charge had arrived only at
+cycle 4 (+149,928 B from cycle 3), producing the red 155,178.8 B/cycle aggregate slope. In the
+paired diagnostic's first lane, a comparable +160,936 B embedder charge arrived at cycle 2 and the
+same least-squares test instead read 108,199.2 B/cycle green solely because the phase charge moved
+position.
+
+The fixed second lane was stable: desktop embedder samples were
+`[2,926,904, 2,913,008, 2,932,760, 2,930,552]`, a 19,752 B range and 3,069.6 B/cycle slope;
+its aggregate slope was 111,021.6 B/cycle. Phone's fixed-second aggregate slope was 92,435.2
+B/cycle. DOM, listeners, thumbnail cache/jobs/imports, backing storage, scene registry, managed
+resources, vista/ring/local-canvas caches, pending work, route inventory, BFCache and cleanup
+witnesses all remained flat or balanced. A live isolated 512 KiB-per-cycle retained-allocation
+control made **both** fixed lanes report exactly 524,288 B/cycle, and its release control reduced
+backing storage from 2,097,191 bytes to 39, proving that the second lane still detects and releases
+real growth.
+
+- `ARC1C_SCENEMEM_PR35_HEAP_PHASE_DIAGNOSTIC2_20260829.json.gz`: 43,249 compressed bytes,
+  SHA-256 `88d2551efcab8b9448cae2ab8160af62bab3e85436489d0effc35f0c940d3774`; 763,245 raw
+  bytes, SHA-256 `cd0a2751c33ceafc282882318de989fb8f7e7ddb042c0cfc842c5c8611a86f0c`.
+
+The evidence-supported permanent collector direction is therefore two fixed, complete passes for
+every snapshot: retain pass 1 as diagnosis and always score pass 2. It never takes a minimum,
+chooses a best-of result, conditionally retries a sample or retries a red run. No numeric ceiling,
+browser-family/version authority, product build or game byte changes. Both carriers pass gzip
+integrity, but neither is a clean SceneMemory certificate, named green predecessor, calibration or
+budget authority, hosted result, HUMAN approval, merge, release or deployment authority.
+
+### Clean `4f1ed65d…` fixed-second calibration — three 44/44 candidates and authority activation
+
+Clean committed source `4f1ed65db421f16386bc06a167a52a5af9dc51d3` (tree
+`e07c19e10ed1f7f1026d6d7b80d407591c353b53`) supplied exactly three independent
+fixed-second calibration candidates. Every report is schema `cf-v2-scene-memory-report/v3` with
+input `cf-v2-scene-memory-input/v4`, records the same clean commit at source begin and end, keeps
+the product build byte-identical at
+`8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254`, completed all
+browser/server/workspace-lock cleanup, and passed **44/44**. Microsoft Edge `152.0.4191.53` / CDP
+`1.3` is exact run provenance only, not a version baseline or rebaseline event.
+
+- `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CALIBRATION_CANDIDATE1_20260829.json.gz`, run
+  `20260829-pr35-fixed-second-4f1ed65-candidate1`: 786,292 raw bytes, SHA-256
+  `30863b06f0cf383518c47f3b36b87bb1b0ba38e0b3da586d96c4924e88c1c98b`; 49,848 gzip
+  bytes, SHA-256 `248286a1ddbec6b66494a31be2f58ffe05e4cc1d9d9067228191467d3f7849ac`.
+- `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CALIBRATION_CANDIDATE2_20260829.json.gz`, run
+  `20260829-pr35-fixed-second-4f1ed65-candidate2`: 786,927 raw bytes, SHA-256
+  `d60224544f44eabc512465b515623e1c87522fc2014b5ebb571b03f966ae7841`; 49,800 gzip
+  bytes, SHA-256 `03eb43e77669a11d3dbd8ab01c80ff069e5ff0fb2cc0cca0e936727be2b9ced5`.
+- `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CALIBRATION_CANDIDATE3_20260829.json.gz`, run
+  `20260829-pr35-fixed-second-4f1ed65-candidate3`: 786,955 raw bytes, SHA-256
+  `941b9e580bf744c7b5a8aca8e1edad61701227a8f7074d0bc4e9065cf73848ad`; 49,833 gzip
+  bytes, SHA-256 `f3f4f1f71c4c33cf665e24b5aa208af9b6872222988e020902a3646b9ed62788`.
+
+The phone/desktop fixed-second aggregate slopes were respectively 90,528.8 / 115,485.6,
+98,815.2 / 119,155.1 and 97,813.6 / 123,150 B/cycle. Maximum aggregate ranges across the trio
+were 296,020 B phone and 366,268 B desktop, below the unchanged 131,072 B/cycle slope and 524,288
+B range ceilings. All three carriers pass gzip integrity. They are calibration observations, not
+exact-budget certificates or serial-chain predecessors.
+
+Authority-only activation changes only collector
+identity from `aa5c3711eb21277fbf24fc539f2a4564915692259bb874aff662066d4ec67f3a` to
+`7a1dc670327fed3f04fa120a78be64a5a87227a355292f47d37353522f50d931`, producing budget
+SHA-256 `304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184`. Product build,
+input, measurements, samples and numeric ceilings remain unchanged. Its complete browser-free
+battery passed **235 files / 2,404 tests / 1 skipped**, and all three TypeScript programs passed.
+The activation is not an Edge rebaseline; one clean no-retry exact-budget certification plus named
+verification then passed on exact signed source `20460008…` and is preserved immediately below.
+
+### Clean `20460008…` fixed-second SceneMemory certificate — 44/44 exact-budget PASS
+
+Clean committed source `2046000873f98318c767db53d2ffb2abac71cc94` ran the mandatory adjacent
+live heap-phase selftest immediately before certification. Its intentionally retained 512 KiB per
+cycle registered exactly **524,288 B/cycle in both the probe and scored lanes**; after release,
+backing storage fell from **2,097,191 bytes to 39**. This proves the always-scored second complete
+pass still detects real retained growth and releases it before product measurement.
+
+Exact run `20260830-pr35-fixed-second-2046000-scenemem-certification` then ran once with zero
+automatic retries against active budget SHA-256
+`304c325f4c6eda8236494065afc61d319cf8df2223d27ab4ac90f28ac43bc184`. It bound input
+`cf-v2-scene-memory-input/v4`, collector
+`7a1dc670327fed3f04fa120a78be64a5a87227a355292f47d37353522f50d931`, unchanged product
+build `8ef5d89c2abe1615421961b78608ce3e07916b749b08a65fdc13e17b72d5c254`, and exact clean
+source begin/end. Microsoft Edge `152.0.4191.53` / CDP `1.3` is per-run provenance only, not a
+point-version baseline or rebaseline trigger.
+
+The exact-budget result passed **44/44** with no findings or fatal events and browser, server and
+workspace-lock cleanup all true. Phone measured a **91,363.2 B/cycle** maximum warm-heap slope and
+**272,028 B** aggregate range; desktop measured **113,537.6 B/cycle** and **339,144 B**. These
+remain strictly below the unchanged 131,072 B/cycle and 524,288 B rulers. The complete paired raw
+carriers, ownership/resource facts, route and BFCache evidence, all 44 outcome identities and every
+reported metric are independently replayed and exact-hash-bound by
+`port/v2/tests/scenemem-budget.test.ts`.
+
+The named verifier passed for this exact report with the same tracked budget. One earlier verifier
+invocation omitted required `--budget` and correctly failed closed before verification; correcting
+that invocation reused the immutable report and did not rerun the browser product stage.
+
+- `ARC1C_SCENEMEM_PR35_FIXED_SECOND_CERTIFICATION_20260830_2046000.json.gz`: 49,762 compressed
+  bytes, SHA-256 `42ee43f8cf7250a88a0498da62dedb492843be775535a4caa0c4cd6a4229f4d0`;
+  786,854 raw bytes, SHA-256
+  `c43bda32846fe4539d9136bac6d0f002af68b259c01ec43beb447a12dbad5c4d`.
+
+The carrier passes gzip integrity and is the immutable SceneMemory certificate for this exact clean
+source. It authorized the one following Compendium attempt only; that later stage stopped red as
+documented next. It grants no hosted result, HUMAN approval, merge, release, version bump or
+deployment authority.
+
+### Clean `20460008…` Compendium quiescent-contract stop — 76/78, stale warm precondition
+
+Clean committed source `2046000873f98318c767db53d2ffb2abac71cc94` ran exact Compendium run
+`20260830-pr35-2046000-compendium-certification` once with zero automatic retries under Microsoft
+Edge `152.0.4191.53` / CDP `1.3`. The exact browser point version is per-run provenance only; it is
+not a version pin, rebaseline trigger or reason to move a threshold. The report retained all 78
+outcomes and finished **76/78**. Only `phone/warm-precondition` and
+`desktop/warm-precondition` were red. Every resource ceiling, heap/byte/DOM bound, cache plateau,
+identity and ownership check, disposal, answerability, worker release and cleanup outcome was
+green. The exact named verifier reproduced the terminal FAIL, the campaign stopped, and
+Compendium was not retried.
+
+Both profiles recorded the same real closed-panel quiescent state: eight live Planetside leases
+plus an independently bounded 17 most-recent unleased thumbnails, for exactly 25 cached
+thumbnails. The previous warm precondition still demanded full native cache occupancy—96 entries
+on phone or 256 on desktop—even though those values are capacity ceilings rather than the product's
+post-close target. The evidence therefore isolates a stale measurement contract, not a product
+leak, cache shortfall or Edge-version failure. Rolling back the bounded product compaction or
+artificially filling the cache would measure a state players do not retain and is not justified by
+this report.
+
+The permanent browser-free repair keeps the native 96/256 values as ceilings and seals the real
+quiescent outcome independently: exactly 17 unleased cached identities in addition to the exact
+live-lease set; leased identities must be unique, cached and a subset of the unique cache set;
+decoded pixels/bytes must equal exact 132×132 thumbnail math; portrait cache, queued work, active
+work and subscribers must be zero; the worker must be released; and the closed panel must own empty
+diagnostic and raw virtual-window, list and detail DOM. Stable warm membership and counters remain
+required. Independent diagnostic-only/raw-only mutations and direct replay of this preserved real
+carrier prevent duplicate observation channels from masking a missing clause. The then-current
+historical repair owned by this red used measurement authority
+`dacf6ab03b35f65ebd76b3a28a0c2ef2868ea505740f2cbe614d399cef1dbe7a`, under outcome
+contract `a2de8a5830a99678c487c9200519dd560bcf2497c1791e4d5dd6a5dd4b77e092` and collector
+`888b9dfdee9d973d17e1901eb26abf1a49015e6f21f0647f8d3043c3e052c964`. The product
+producer, version-tolerant Edge-family/CDP `1.3` authority, historical samples, historical ruler
+bindings and every numeric ceiling remain unchanged. A fresh exact-source no-retry Compendium
+certificate and named verification are still required; this red is not relabelled green.
+
+- `ARC1C_COMPENDIUM_PR35_QUIESCENT_CONTRACT_FAILURE_20260830_2046000.json.gz`: 291,948
+  compressed bytes, SHA-256
+  `8b3456acc98a2ea6b0f061e34a9d71bfd38ae718eb04989fec6b6f36c84e60c2`; 4,798,248 raw
+  bytes, SHA-256 `6a2a45bd8f20491900119a43aa907ae73d1206a41ae921be78e446b5c5f9c5ea`.
+
+The carrier passes gzip integrity and remains immutable evidence for exact clean source
+`20460008…` only. It grants no green Compendium certificate, successor browser-stage authority,
+hosted result, HUMAN approval, merge, release, version bump or deployment authority.
+
+### Signed `3fb958f8…` Compendium Planetside-settlement instrument stop — 0/78, all blocked
+
+Signed clean source `3fb958f859ff0ea28b4e8bb720adaea98ad3c001` (tree
+`bc5ea5674c98fdd43c466b8bb3a45f87f1ba7763`, direct parent `20460008…`) ran exact Compendium
+run `20260830-pr35-quiescent-3fb958f-compendium-certification` once with zero automatic retries.
+The complete-lifecycle report stopped terminal `instrument-fail` after **32,946 ms** at phone
+`Planetside thumb settlement`; `veteran Earth boot readiness` was the last completed stage. It
+retained one phone partial profile, no desktop profile, no review PNGs, zero measured outcomes and
+all **78/78 expected outcomes blocked**. No Compendium retry and no successor Slice, Glass or
+Recovery stage ran.
+
+All **585** retained candidate-command ledger entries completed with timely target evaluations and
+timely root `Browser.getVersion` heartbeats. Exactly **577** entries were the Planetside-settlement
+phase: every `Runtime.evaluate` completed on time with a by-value result state, and every independent
+heartbeat returned `Edg/152.0.4191.53` on time. The old collector nevertheless retained only the
+generic terminal diagnosis `phase timed out after on-time falsy observations (null)`: it retained
+none of the image/decode/queue/worker/foreground facts needed to identify which predicate remained
+false. This is immutable
+**instrument evidence**, not a product-unanswerability, product-memory, Microsoft Edge update,
+browser-family compatibility, numeric-ruler or rebaseline verdict.
+
+The carrier records the exact authorities that owned this historical run: active budget
+`c941bb1000e0056f661cf3994855a286d6667b3d5b80f5c770aab4d9e0543ef3`, derived measurement
+authority `dacf6ab03b35f65ebd76b3a28a0c2ef2868ea505740f2cbe614d399cef1dbe7a`, collector
+`888b9dfdee9d973d17e1901eb26abf1a49015e6f21f0647f8d3043c3e052c964`, outcome contract
+`a2de8a5830a99678c487c9200519dd560bcf2497c1791e4d5dd6a5dd4b77e092`, product producer
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`, browser transport
+`6da9e2efaaf7f91f9ad93c101368b847a7e77aeb015e83f7768fe11dd85147ce`, and version-tolerant
+Microsoft Edge-family / CDP `1.3` capability authority
+`6eed33ed9784f7c7774c4b1bf8d4e880986e31667324d9a1aa7b8dd62fe5a476`. Browser provenance was
+Microsoft Edge `152.0.4191.53`, revision `@4ee8983fdce2559a0ae8f8376934c5ed353035cd`, V8
+`15.2.23.6`, CDP `1.3`.
+
+- `ARC1C_COMPENDIUM_PR35_PLANETSIDE_SETTLEMENT_INSTRUMENT_FAILURE_20260830_3FB958F.json.gz`:
+  32,830 compressed bytes, SHA-256
+  `ecb786c00f7261ce3306c73d512133ce3e2e74035cf83172e3fe8c735442a0dd`; 512,184 raw bytes,
+  SHA-256 `bf18cff6d43fcf5d6bf1c128471630a338cefb34a4a04762a5d25699f80ce5e5`.
+- `port/v2/tests/compendium-planetside-settlement-failure-carrier.test.ts` independently binds the
+  gzip/raw bytes and hashes, clean source begin/end, exact policy/lifecycle/browser and historical
+  authorities, 78 blocked outcomes, sole partial profile, 577 timely settlement observations with
+  healthy heartbeats, empty review evidence and the terminal null-blind classification. It imports
+  no live Compendium authority that could relabel the stored stop.
+
+Subsequent foreground-service and structured-settlement repair establishes new current authority;
+it does not rebind, retry, relabel or turn this exact `3fb958f8…` carrier into a product verdict or
+green certificate. The carrier grants no successor-stage, hosted, merge, release or deployment
+authority.
+
+### Signed `b2eecfbd…` Compendium Planetside visual-key projection stop — 0/78, all blocked
+
+Signed clean source `b2eecfbd9379f50c25208ca8bcd72501b07e303c` ran exact Compendium attempt
+`20260830-pr35-settlement-evidence-b2eecfbd9379-compendium-certification` once with zero automatic
+retries on Microsoft Edge `152.0.4191.53` / CDP `1.3`. Its complete-lifecycle report stopped
+terminal `instrument-fail` after **33,041 ms** at phone veteran-Earth Planetside settlement. It
+retained one partial phone profile, zero outcomes and all **78/78** expected outcomes blocked. No
+desktop profile, review PNG, Slice, Glass or Recovery successor exists.
+
+Unlike the earlier null-blind stop, this carrier retained an actionable structured observation.
+All eight distinct Planetside images were `ready`, source-present, decoded and exactly **132×132**;
+art queues were empty and the foreground page remained visible/focused. Only the projected
+`visualKey` values were `null`. The complete canonical keys were **766–779 characters**, so the
+generic observation-v1 512-character text projector rejected them even though opaque identity was
+valid in the page realm. This is an instrument-projection failure, not product-memory, product-art,
+Edge compatibility, numeric-ruler or rebaseline evidence.
+
+The red remains bound to its historical capability / measurement / contract / collector / budget
+SHA-256 tuple:
+`35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
+`326d3b3515512cf84182ffa8bb8c3b87c5cd5e10913644a67ce22a1a9b68e66b` /
+`7ac505e156ec45f38b0dedcb57df6b0157efa5f0af56afdae492a0c1f5fc6c24` /
+`ece4edc132dbb5c8cf252d5b113ab3855f115aba1e921a8dc005ce762d9a7690` /
+`c272a12028361c0f51d474480559f285aea8d036dbd5a9be2572978e45240de3`; product producer was
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`.
+
+- `ARC1C_COMPENDIUM_PR35_PLANETSIDE_VISUALKEY_INSTRUMENT_FAILURE_20260830_B2EECFB.json.gz`:
+  **7,010** compressed bytes, SHA-256
+  `b973b596870ae4180a4b82fb9357194548be67c4dad9aa3560c9ec1186538027`; **48,213** raw bytes,
+  SHA-256 `461241011d8c0d80585befaf3a25e631019bc0a3cc0f73bf5b02a7957c815f02`.
+- `port/v2/tests/compendium-planetside-visualkey-failure-carrier.test.ts` independently binds the
+  compressed/raw bytes, exact clean source, one-attempt policy, complete lifecycle, browser and
+  historical authorities, zero outcomes/all 78 blocked, sole phone profile and the eight distinct
+  ready/decoded 132×132 rows with null projected keys. It imports no live authority.
+
+The carrier passes deterministic `gzip -9 -n` reproduction and gzip integrity. It is immutable red
+evidence only and grants no fresh certificate, successor stage, hosted run, merge, release or deploy.
+
+### Signed Compendium opaque-identity observation-v2 authority — browser-free only
+
+The repair retains exact foreground service for fresh lazy-control → veteran Earth → final
+lazy-control and one sealed settlement plan per profile with **85 semantic phases**: **75 list** and
+**10 Planetside**. Each accepted semantic invocation receives a contiguous attempt and exact token/
+page/browser/command/timing binding, then enters append-only `thumbnailSettlementHistory` before the
+phase's latest receipt is inserted or replaced. The latest array remains exactly 85 plan entries and
+must equal the final history receipt in every group. Partial-profile schema v6 keeps its diagnosis,
+the full accepted history and latest completed prefix, plus a structured active next-phase or latest-
+phase-retry tail. Terminal verification rejects omission/reorder and coordinated attempt/token/
+history/page/browser/command/timing laundering.
+
+Partial carriers independently bind lazy/main page authority and require distinct identities whenever
+both exist. Polling retains exactly one terminal command per semantic deadline group; the command
+ledger fails closed above **2,048 entries or 2 MiB**; receipt tokens stop at **256 characters**; and a
+ready-but-unreceipted tail is accepted only with its exact receipt-assembly instrument diagnosis.
+
+Signed implementation `d9d79025794c95d5491ab9c9e1139b66eea7be5e` (tree
+`d4bc3a04bec6243045a6941feadd9074a7722e79`, parent
+`b2eecfbd9379f50c25208ca8bcd72501b07e303c`) changes no product/game byte. Observation v2 validates
+each complete opaque key in the owning page realm and serializes only bounded length plus exact
+membership indices into independently produced leased/cache key inventories. Both inventories cap
+at exactly **256 before `indexOf`/`Set`**, every image must prove membership and per-image
+distinctness, each inventory length must equal its live lease/cache count, and both inventories must
+prove internal distinctness. A literal 256-entry
+inventory passes; a 257-entry inventory produces an explicit instrument error; realistic
+768–831-character keys pass without truncation.
+
+At that historical observation-v2 repair boundary, the signed commit owned capability / measurement / contract /
+collector / budget SHA-256:
+`35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
+`87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d` /
+`abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138` /
+`b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e` /
+`7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; product producer was
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free checks passed
+**565** Compendium selftest controls, focused **35/35**, **237 files / 2,413 passed + one skipped**,
+all three TypeScript programs and the producer-authority printer with both budget matches true;
+independent review was clear. Those signed implementation bytes were not browser-certified. At that
+boundary no report, review PNG, Slice/Glass/Recovery successor, hosted result, merge, release,
+version bump or deployment authority followed. Every earlier tuple above remains exact historical authority for
+its own immutable red carrier only.
+
+### Signed `3f69e88e…` universe-polish + bounded Arc 5 Feed certificate — complete local chain PASS
+
+Signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+`df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) remained committed,
+clean and byte-identical throughout one serial
+**Layout → SceneMemory → Compendium → Slice → Glass → Recovery** campaign on system Microsoft
+Edge `151.0.4129.107` / CDP `1.3`. Every browser stage ran once with zero automatic retries and
+passed its exact source-derived named verifier before or after its successor as applicable.
+
+- Layout `20260829-universe-polish-3f69e88ea8e3-layout` passed **787/787** across ten viewports
+  in **76,603 ms**.
+- SceneMemory `…-scenemem` passed the current input-v4 contract **44/44** in **10,561 ms**,
+  including phone/desktop biome-vista lifecycle and complete cleanup.
+- Compendium `…-compendium` passed **78/78** in **46,239 ms** with zero findings, zero blocked
+  outcomes and all six review-image bindings under the active calibrated ruler.
+- Slice `…-slice` passed in **434,263 ms** with zero findings/scopes, ten screenshots and exact
+  report SHA-256 `33aa30b308e5358e4fc699d9749d804ba8086ebfe6b0ee305314deb1b6483411`.
+- Glass `…-glass` consumed that exact Slice report, passed all **12** viewport classes in
+  **85,823 ms** with zero findings, zero instrument failures and no blocked or omitted controls,
+  and has report SHA-256 `2a67a258f4e0d69a641bec099374de036a9bceb53ae66b328a1221f252f7d591`.
+- Recovery `…-recovery` consumed those exact Slice and Glass hashes, passed all ten stages in
+  **1,290,953 ms**, and retained a real uninterrupted active-browser observation of
+  **1,200,297.5 ms**. It crossed the exact next-cycle boundary with zero findings/fatal events,
+  complete cleanup and report SHA-256
+  `b78e8a52e8746afbe89b7866d5d7e35b519d3168de1da8697c2ffd421b5a5907`.
+
+The first manual Glass verifier invocation omitted its required `--slice-run` argument and exited
+at CLI usage parsing before reading a report or launching a browser. The immediately corrected
+Slice-bound verifier passed against the immutable report and hash above. This was neither a Glass
+rerun nor an evidence retry; the report's own retry count remains zero.
+
+- `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_032631339.json.gz`: 5,205 compressed bytes,
+  SHA-256 `8f6c97b60db09bde8480a1d8b44eac439a886d3385b2103eadf6ef74b3c7e0e1`; 106,976 raw bytes,
+  SHA-256 `2b0cc3ed3de88753d424bd6284f1dd95c4f6b27a6116171727da67ebe7923856`.
+- `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_032713794.json.gz`: 32,712 compressed bytes,
+  SHA-256 `1dd12b2504440f2e4547d85249483abfebcabb55b6fc2c7df9a14fd58b85821b`; 426,923 raw bytes,
+  SHA-256 `3077dba727edcd4bac470e7278f401dca82768138837123eba4e5e5dd6173db9`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_032813280.json.gz`: 557,209 compressed bytes,
+  SHA-256 `89244a33ac7f29637c27ca57b1d5df30dcbf764e23569962025f7ab9ad4a772a`; 8,692,212 raw bytes,
+  SHA-256 `58824d5559c2a24eb74710b2f292e5d8b9413521085f95ab73900e00ddd1fab4`.
+- `ARC4_SLICE_UNIVERSE_POLISH_PASS_20260829_033550528.json.gz`: 1,976 compressed bytes,
+  SHA-256 `9706d63d80752d850ece12e844329c823175286febb76d3aaa6759e900cb1662`; 6,193 raw bytes,
+  SHA-256 `33aa30b308e5358e4fc699d9749d804ba8086ebfe6b0ee305314deb1b6483411`.
+- `ARC4_SLICE_UNIVERSE_POLISH_PASS_20260829_033550528.log.gz`: 3,085 compressed bytes,
+  SHA-256 `5ee5c5cbfb42f555694ffc5a23f0fc459cccbac87d77b4ec660722121fa955e4`; 6,177 raw bytes,
+  SHA-256 `267fae851a68cdf5f74f2552d8ee5a11e9c0f58f718434b0e6bcd10098ea2172`.
+- `ARC4_GLASS_UNIVERSE_POLISH_PASS_20260829_033742848.json.gz`: 78,326 compressed bytes,
+  SHA-256 `c395ec22a02ef4eeaf42930566fb908167a8a6aee740b538d1560b95c51b0f54`; 864,167 raw bytes,
+  SHA-256 `2a67a258f4e0d69a641bec099374de036a9bceb53ae66b328a1221f252f7d591`.
+- `ARC4_RECOVERY_UNIVERSE_POLISH_PASS_20260829_035953353.json.gz`: 305,489 compressed bytes,
+  SHA-256 `7ef48c60a5fb4bbbf21dccac36bcd79e393b275692ed86fd58fc8640e2a5924f`; 3,842,929 raw bytes,
+  SHA-256 `b78e8a52e8746afbe89b7866d5d7e35b519d3168de1da8697c2ffd421b5a5907`.
+
+All seven carriers pass gzip integrity. This exact chain is the complete local automated
+certificate for the universe-wide visual polish and bounded Arc 5 Feed scope. It supplies no HUMAN visual,
+listening, screen-reader, first-journey, physical-device heat/battery/GPU, whole-Gate, hosted,
+merge, release, version or deployment authority.
+
+### Signed `916d921e…` universe-polish restart — four PASS predecessors, rendered-Guide Glass instrument stop
+
+Signed clean source `916d921ebf787ed6c58ec8db567e00bbb61adbf8` (tree
+`26937c9607ddb82f059d825abf3024b7575dc01b`, parent `9d8ffb11c9eb…`) passed Layout
+**787/787** in 76,326 ms, SceneMemory **44/44** in 10,940 ms, Compendium **78/78** in
+44,986 ms and Slice with zero findings in 444,377 ms. Each stage ran once without retry and passed
+its exact named verifier. Glass then completed all 12 viewports in 85,923 ms with zero product
+findings before stopping terminal `instrument-fail` on one small-phone rendered-Guide
+required-copy control. Recovery correctly did not run.
+
+The live Feeding Guide topic and all 18 current Guide rows were green. Two of six injected required
+copy mutants were no-ops: `Meals by 1, capped at 200` and `removes 1 flora from that exact lot`
+each exist once in rendered `textContent`, but cross authored `<b>` boundaries and therefore do not
+exist contiguously in `innerHTML`. The old control called `innerHTML.replace(...)`, left the current
+copy unchanged, and correctly refused to claim that its negative control had fired. This is one
+Glass-instrument defect, not a game, art, Feeding, Guide, Edge or rebaseline failure.
+
+The bounded repair mutates the paragraph's rendered text with exact-one target/change semantics,
+observes the post-assignment DOM text, requires the intended single missing carrier and zero stale
+clauses, and restores exact authored HTML, text and current predicate after every mutant. Its
+browser-free controls cover both real split phrases, absent/duplicate/no-change targets, raw-markup
+misuse, wrong observed output, stale contamination and failed HTML/text/predicate restoration.
+Glass selftest, full v2 **1,712 passed + 1 skipped**, all three typechecks and two independent
+reviews are green. Product, release, build and memory-producer bytes are unchanged.
+
+- `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_025609573.json.gz`: 5,207 compressed bytes,
+  SHA-256 `1e3c270d1a876b90fc02a26dc0702717baf4e4ea797f86789d860437353c19c5`; 106,976 raw bytes,
+  SHA-256 `19dbdda5a51cbb9928bc9fff32ed6941c325b92162d7f9f7e4cd91a1cc5ae70f`.
+- `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_025634382.json.gz`: 32,725 compressed bytes,
+  SHA-256 `7fe274107a1cba5d30b22cab94ded34b730ac1629277716790b8410448a0a76a`; 426,858 raw bytes,
+  SHA-256 `cf377270a4c3af6b37bf9646873c892f3a6b9209aabdda152257ead79c8ade23`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_025733044.json.gz`: 554,571 compressed bytes,
+  SHA-256 `ef340966184369d8042adb6ac355e8e8da358a823abc79de45c9c42cae8b66e2`; 8,635,346 raw bytes,
+  SHA-256 `fdbd12d6081c4a8328410e4a3a2e6959158a11c4885b57d127dbc745a4b9916c`.
+- `ARC4_SLICE_UNIVERSE_POLISH_PASS_20260829_030514665.json.gz`: 1,983 compressed bytes,
+  SHA-256 `01cc7d2284b133877cc0fcc21dd30a9f17656973bb4f38068a0cc8b8b2d9f6c4`; 6,193 raw bytes,
+  SHA-256 `a66ab116c5e18d350434b573682da5f85da9205e0804accd2027439432ce671b`.
+- `ARC4_SLICE_UNIVERSE_POLISH_PASS_20260829_030514665.log.gz`: 3,087 compressed bytes,
+  SHA-256 `d27e960ad99166bb46e368ad28dc9e31ffd57e17863689b9cadb4398e565bdd1`; 6,177 raw bytes,
+  SHA-256 `43f2b5a065e358f3c0dd97c48cccedefc62b623d78b079b4642c46134c67daf6`.
+- `ARC4_GLASS_UNIVERSE_POLISH_GUIDE_CONTROL_INSTRUMENT_FAILURE_20260829_030656096.json.gz`:
+  94,680 compressed bytes, SHA-256
+  `975ea0a342a600c080143641adad3b46f45b6643e39d93a7f74900c6c448b30b`; 1,167,583 raw bytes,
+  SHA-256 `9d7421704af900fdbd4a94ba59e7f60a4483096f7816ea6948c4a928fb9ec9a5`.
+
+All six carriers pass gzip integrity. This campaign is immutable and grants no Glass, Recovery,
+HUMAN, hosted, merge or release authority. The signed repair must restart at Layout.
+
+### Signed `9d8ffb11…` universe-polish restart — three PASS predecessors, raw-CDP Slice instrument stop
+
+Signed clean source `9d8ffb11c9eb3a8066dc295a21e61820962c7cb3` (tree
+`cea338ff1560402b0bd027a1a2e31d2f1704a72f`, parent `bf24a4921eb5…`) passed Layout **787/787**
+in 76,296 ms, SceneMemory **44/44** in 10,648 ms and Compendium **78/78** in 45,406 ms, each
+once without retry and with exact named verification. Slice
+`20260829-universe-polish-9d8ffb11c9eb-slice` then ran once for 437,229 ms and stopped before
+Glass/Recovery with one `arc-5-feed-commit` finding.
+
+The preserved evidence proves the product outcome: one exact durable Feed receipt, Meals 0→1,
+flora 1→0, one real stale loser, byte-identical reload, visible `Meal complete`, and one successful
+post-settlement oscillator start over a complete same-context audio graph. Raw CDP emitted node
+types `Oscillator` and `AudioDestination`; the collector and synthetic fixture instead searched for
+DOM interface names `OscillatorNode` and `AudioDestinationNode`, leaving endpoint IDs null. Every
+downstream mutation/race failure is therefore one instrument cascade.
+
+The repair changes no app/release/build/memory-producer byte. One pure projector now owns the raw
+CDP event vocabulary for both Slice and browser-free tests. Its bounded page observation returns
+missing/bad evidence without throwing; missing/ambiguous endpoints become instrument failures only
+when a final independent wrapper reread still proves the complete
+exact post-settlement start, keeps real duplicates and coherent route/start defects product-red, and gates
+dependent controls on their green premise. Raw-protocol positive plus independent exact-one
+source/destination DOM-name, wrong-session, pre-mark, duplicate-source/destination,
+destroyed-source, disconnected and route-derived cross-context controls are bidirectional; the
+cross-context mutant must change exactly one intermediate on the proved path rather than an
+unrelated branch. Focused 65/65, both report selftests, full 1,712-pass + one-skip v2, all
+typechecks, `artunused`, producer derivation and diff hygiene are green.
+
+- `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_020621336.json.gz`: 5,148 compressed bytes,
+  SHA-256 `7116c9ea83faf8567019e6124c525782f1e5f29662c23a4d935c06fa263a74d5`; 106,976 raw bytes,
+  SHA-256 `01b0e841f175b013d1efbc4e78a9f9266333da23ef60ab9231ad3eccd50a6a17`.
+- `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_020645679.json.gz`: 32,705 compressed bytes,
+  SHA-256 `10842e23a7d8702fd8448b6d1ed2a18733064a0ffe9a44e77b4fdc81abdf2e78`; 426,771 raw bytes,
+  SHA-256 `006b0db985bc5a7522d37a545e76a9d2bc99206df060f53ec7233a042687c5b1`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_020743938.json.gz`: 554,745 compressed bytes,
+  SHA-256 `0459bb92d22c962e8f766774af0a0b4a26c9834c4595db2a347d0a8b273b729f`; 8,621,227 raw bytes,
+  SHA-256 `b3147fdeb91f74f56ffb58484fc37927ce140980f11d42a6bc5a0a39dc19101d`.
+- `ARC4_SLICE_UNIVERSE_POLISH_FEED_ACK_FAILURE_20260829_021516461.json.gz`: 67,276 compressed
+  bytes, SHA-256 `a772a5eacb4cea991f5e42444bc1fd78c492e28d893321665376e72e391bdc6e`; 671,831 raw bytes,
+  SHA-256 `7d51c63a68c2667f3e206514ae33b36a1b95cddbdffd4504c6b139be929d5ec7`.
+- `ARC4_SLICE_UNIVERSE_POLISH_FEED_ACK_FAILURE_20260829_021516461.log.gz`: 32,105 compressed
+  bytes, SHA-256 `6c448238215ad486e1e88818d09bb96a4cb36c4e710f4ed2927015eb69d8a612`; 289,178 raw bytes,
+  SHA-256 `d0ae43cbda9f81599a18f84a846420cf673b6a84070821655d545a7c0b198260`.
+
+All five carriers pass gzip integrity. This campaign is immutable and grants no Slice, Glass,
+Recovery, HUMAN, hosted, merge or release authority. The signed repair must restart at Layout.
+
+### Signed `bf24a492…` universe-polish restart — Layout/SceneMemory/Compendium PASS, Slice instrument stop
+
+Signed clean source `bf24a4921eb5ca757a4978b9d01e44ae39a0a06d` (tree
+`9518b5ff8df81e82837687bfe8c6ea4933ddf97c`, parent `27513798bedd…`) passed Layout **787/787**
+in 76,215 ms, SceneMemory **44/44** in 10,822 ms and Compendium **78/78** in 45,945 ms, each once
+without retry and with exact named verification. Slice
+`20260829-universe-polish-bf24a4921eb5-slice` then ran once for 239,797 ms and stopped before
+Glass/Recovery with ten findings.
+
+Nine findings were one release-oracle cascade: the truthful Feed bulletin used grammatical
+`; refused, stale…`, while Slice and Glass alone required capitalized exact copy. The independent
+tenth finding waited for Feed audio after the imported fixture left Creature Voices off; product
+policy correctly requires both Sound and Creature Voices. The repair leaves app/release bytes and
+memory producers unchanged, case-folds the shared silence promise in both browser oracles and uses
+real Settings to enable and verify both preferences before retaining the exact oscillator/graph
+outcome. Focused 64/64, both report selftests, full 1,711-pass + one-skip v2, all typechecks,
+`artunused`, producer derivation and diff hygiene are green.
+
+- `PHASE4_LAYOUT_UNIVERSE_POLISH_PASS_20260829_014157430.json.gz`: 5,026 compressed bytes,
+  SHA-256 `8c6743839683b1917ba52dbf831967d9902de5be535954069caa140296ed6893`; 106,976 raw bytes,
+  SHA-256 `9ad615522348a5b7c3da7e46230a4c03c3cf96501ebd4f119cb94635ced80a85`.
+- `ARC1C_SCENEMEM_UNIVERSE_POLISH_PASS_20260829_014226362.json.gz`: 30,488 compressed bytes,
+  SHA-256 `025328bd245b90b0a9a54a75f77057309318f241ca5b122a8a3d0df012f4f98d`; 426,760 raw bytes,
+  SHA-256 `dede46d7dfb3d8bc6f57e054ebf2af7e21aa2292aa21c0e42c2663c59ec2b910`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_PASS_20260829_014326379.json.gz`: 450,582 compressed bytes,
+  SHA-256 `0b3e90a0ce26e437823c506a7c1baddcc2f589f05fab94234819030439aa32c4`; 8,595,166 raw bytes,
+  SHA-256 `fa866a078532457531e0525217dde12f6e5a2230124634f7b0cd413f45b8b3db`.
+- `ARC4_SLICE_UNIVERSE_POLISH_RELEASE_NOTE_FAILURE_20260829_014859940.json.gz`: 5,374 compressed
+  bytes, SHA-256 `9878f712f12c5966fc2c816bb3efb5856c2cfdfc5ecc8c2b4cd5913c396c488b`; 122,262 raw bytes,
+  SHA-256 `9d047013a39f522485067f62b11503ddb951f690591b06367b607e9b75a9fef0`.
+- `ARC4_SLICE_UNIVERSE_POLISH_RELEASE_NOTE_FAILURE_20260829_014859940.log.gz`: 3,323 compressed
+  bytes, SHA-256 `caa22e4ad8e493aeacd0659f52625ce1001ceb29b9fb7e5b4010efee0351b857`; 55,984 raw bytes,
+  SHA-256 `02bc7642d85e8fdddff6884591046d8bbe89c92ce95a8976ff1210be1f5e43e9`.
+
+All five carriers pass gzip integrity. This campaign is immutable and grants no Slice, Glass,
+Recovery, HUMAN, hosted, merge or release authority. The signed repair must restart at Layout.
+
+### Signed `b65fd5d…` calibration + signed `27513798…` activation — exact Compendium certificate green
+
+Signed clean calibration source `b65fd5d4a1b7928fc8c722f4e6ac22cc2ef02974` (tree
+`d59e2a9fd3ea61fa24459a41646672c73c5024cf`, parent
+`55126af50f3f7ab7b4eaeee7d81b28f8881c87fa`) stayed clean and unchanged for all four measurements.
+The candidate reports bind measurement authority
+`cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78`, producer authority
+`d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271`, Microsoft Edge
+`151.0.4129.107` / CDP `1.3`, the same exact fixture/input identity and one committed working-tree
+digest. Their distinct run IDs and timestamps satisfy the independent-run rule:
+
+- `20260829-universe-polish-b65fd5d4a1b7-candidate1` ran once with zero automatic retries,
+  completed all 78 calibration outcomes in 45,761 ms and retained no findings;
+- `20260829-universe-polish-b65fd5d4a1b7-candidate2` ran once with zero automatic retries,
+  completed all 78 calibration outcomes in 45,286 ms and retained no findings;
+- `20260829-universe-polish-b65fd5d4a1b7-candidate3` ran once with zero automatic retries,
+  completed all 78 calibration outcomes in 45,357 ms and retained no findings.
+
+These are calibration observations, not current-budget PASS certificates. Across the three runs,
+phone maxima were 10,925,264 B V8 heap, 4,823,337 B backing storage, 16,558,308 B aggregate heap,
+3,210,056 B encoded art and 308,486 B encoded portrait; desktop maxima were 14,570,732 B V8 heap,
+6,331,653 B backing storage, 21,249,926 B aggregate heap, 8,523,880 B encoded art and 308,486 B
+encoded portrait. The reviewed rational-headroom selection is:
+
+- phone: 11,534,336 B V8 heap, 5,242,880 B backing storage, 17,825,792 B aggregate heap,
+  3,407,872 B encoded art and 393,216 B encoded portrait;
+- desktop: 15,728,640 B V8 heap, 6,815,744 B backing storage, 23,068,672 B aggregate heap,
+  8,912,896 B encoded art and 393,216 B encoded portrait.
+
+Every other numeric field remains byte-identical to the prior ruler. The wider aggregate/V8 margins
+avoid turning normal measured spread or sub-one-percent headroom into an immediate false red. The
+384 KiB portrait ceiling conservatively preserves prior cross-platform encoder variance; it is not
+a claim of a fresh Linux measurement. Exact decoded-resource +1 sentinels, fractional next-state
+sentinels and the 512 KiB warm-range rulers remain unchanged.
+
+Paired run `20260829-universe-polish-b65fd5d4a1b7-baseline1` measured the exact broken product at
+`38447019517147319bd08c598202d097ee866874` with collector source `b65fd5d…`. Both phone and
+desktop reproduced all four sealed faults: `unwindowed-1500-rows`, `list-source-440`,
+`full-portrait-dom-exposure` and `eager-art-import`. The selected ceilings retain the exact expected
+**14 phone / 13 desktop** numeric breach inventories.
+
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_CANDIDATE1_20260829.json.gz`: 455,574 compressed bytes,
+  SHA-256 `65c9982ee3339d32b493fe26beb72aa35b2d55cece3b35a981852512ee6cacdc`; 8,683,347
+  decompressed bytes, SHA-256 `d259ddbee5e621dd7694302601ac4a4576bd31ba39d184f93874c446683a5135`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_CANDIDATE2_20260829.json.gz`: 451,313 compressed bytes,
+  SHA-256 `855d823ec0a8866e3f69f8542fd8a1c892ca04760341c3b7b9fa36d9caba66e0`; 8,577,843
+  decompressed bytes, SHA-256 `7d36e634b30a75ae70a15a806dc7288b76815c151110377dbb3717121d36972e`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_CANDIDATE3_20260829.json.gz`: 451,208 compressed bytes,
+  SHA-256 `bf1ad07f82c7e3565644162b7d9195289f844e0be360259689800f4ffa8a9d0c`; 8,581,571
+  decompressed bytes, SHA-256 `7fbd4375d26063a8e000b63fe652cc4d812696255dc5467641332836a7e7c705`.
+- `ARC1_COMPENDIUM_UNIVERSE_POLISH_BASELINE1_SAMPLE_20260829.json.gz`: 2,868 compressed bytes,
+  SHA-256 `353c09949f413d3f4a9a7907167151345475877225033df10156e65c71a978c2`; 14,756
+  decompressed bytes, SHA-256 `fc9afe2499629e9ad16966b0f8da4b370acf056fbd13a2309a1d0a592e5361aa`.
+
+All four calibration carriers pass gzip integrity. Signed activation
+`27513798bedd9e4337d0b1db9712fa784b90b9fd` (tree
+`9ae0ffa3c8d39d0a05b6f8b823576b88af8fb516`, parent `b65fd5d4…`) owns the active budget SHA-256
+`02ee0ada076e444b7f3ad67c47c3de688bbd290d7e1a9a9e7570168f2d4c29f0`; focused 27/27,
+222 selftest controls, full 1,711-pass + one-skip v2, all typechecks, `artunused`, current-producer
+binding and independent review are green.
+
+Its exact run `20260829-universe-polish-27513798bedd-compendium-certification` then completed once
+with zero retries, passed all 78 outcomes in 44,432 ms with complete lifecycle/cleanup, zero
+findings/blocked outcomes and passed named verification. It binds unchanged clean source begin/end,
+the exact active budget, measurement `cd1586e2…`, producer `d97370c0…`, six review PNG manifests and
+Edge `.107` / CDP `1.3`. `ARC1_COMPENDIUM_UNIVERSE_POLISH_ACTIVATION_CERTIFICATION_20260829.json.gz`
+is 453,664 compressed bytes with SHA-256
+`1415773e8eb7474d141b9174939bf618795b76742afd874e4bf73fa7bc0a70e7`; its 8,637,650-byte raw
+report has SHA-256 `3b0116f98a77e3089ef80fd78ebc762a658c74907a2c5e473061718c9860e7a6`.
+After this carrier and synchronized docs are signed, a completely fresh
+Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain begins on that descendant.
+Routine compatible Edge updates remain provenance only and never trigger rebaseline or recalibration.
+
+### Signed `55126af…` universe-polish campaign — Layout/SceneMemory PASS, Compendium product-budget stop
+
+Signed clean source `55126af50f3f7ab7b4eaeee7d81b28f8881c87fa` (tree
+`1b561cae692f38d2b8f38e66578a68657b0567a7`, parent
+`283c8b3b04e0e9a70bb7e4242e3408169c24b02a`) stayed clean and unchanged through every completed
+stage. Layout `20260828-universe-polish-55126af50f3f-layout` ran once with zero retries, passed all
+787 sealed outcomes across ten viewports in 76,378 ms and passed named verification. SceneMemory
+`20260828-universe-polish-55126af50f3f-scenemem` then ran once with zero retries, passed all 44
+outcomes in 10,672 ms and passed named verification.
+
+Compendium `20260828-universe-polish-55126af50f3f-compendium` ran once with zero retries on
+Microsoft Edge `151.0.4129.107` / CDP `1.3`, retained a complete terminal product `fail` report in
+46,681 ms, and its named verifier accepted that exact red report with the expected nonzero result.
+Exactly four of 78 outcomes failed; the other 74 resource, lifecycle, ownership, DOM,
+answerability and cleanup outcomes passed:
+
+- **Phone heap:** V8 used heap was 10,902,116 B against 10,485,760 B (416,356 B / 3.97% over),
+  and backing storage was 4,678,792 B against 4,194,304 B (484,488 B / 11.55% over). Embedder heap
+  was 3,070,912 B against 4,194,304 B and aggregate heap was 16,222,216 B against 16,777,216 B,
+  both within their ceilings.
+- **Phone bytes:** encoded thumbnail bytes were 3,202,320 B against 2,621,440 B (580,880 B /
+  22.16% over), and the retained portrait was 308,486 B against 262,144 B (46,342 B / 17.68%
+  over). Cache entries, decoded pixels/bytes, jobs, leases, subscribers and portrait entries passed.
+- **Desktop heap:** aggregate heap was 21,239,200 B against 20,971,520 B (267,680 B / 1.28%
+  over). V8 used heap was 14,536,484 B against 14,680,064 B, embedder heap was 3,220,288 B against
+  4,194,304 B and backing storage was 6,278,552 B against 6,291,456 B, all within their ceilings.
+- **Desktop bytes:** encoded thumbnail bytes were 8,528,076 B against 6,815,744 B (1,712,332 B /
+  25.12% over), and the retained portrait repeated the 308,486 B against 262,144 B breach. All
+  structural/resource-ownership counts passed.
+
+Warm plateaus passed on both profiles, including desktop's 326,652 B range against 524,288 B.
+Independent diagnostic audits found no leak-shaped lifecycle evidence: the stable plateaus and
+roughly 22–25% encoded-thumbnail increase align with the deliberately richer deterministic art
+producer. The app's harder runtime encoded caps also retained substantial room (phone
+3,202,320/6,690,816 B; desktop 8,528,076/17,842,176 B). This is a real current-product budget red,
+but it is **not** Edge drift and does not request an Edge rebaseline: the version-tolerant browser
+contract accepted `.107` exactly as designed.
+
+This immutable report remains bound to measurement authority
+`3c811274c4f67cf706b621142db2001d614ba6b1a3c3669daf6ce1dacf67b574`. The subsequent
+calibration-required authority-binding repair advances the prospective measurement to
+`cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78`; it does not rewrite this
+report or promote it into a calibration sample.
+
+The fail-fast campaign stopped before Slice, Glass or Recovery. One run cannot move numeric
+ceilings. The prescribed successor is a new signed source that puts the Compendium budget into
+`calibration-required`, then runs exactly three independent current-producer candidates per profile
+plus the paired broken baseline at exact commit
+`38447019517147319bd08c598202d097ee866874`, each once with zero retries. Only that evidence may
+select strict replacement ceilings; certification must then restart the complete serial chain from
+Layout on another unchanged signed source.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260829_001955334.json.gz`: 5,029 compressed bytes,
+  SHA-256 `8a922d61d7195db624984f4ca735b82b5076955d7c641295061cc252573cb000`; 106,976
+  decompressed bytes, SHA-256 `bd2dacb071e4f667a0565b2cd43de06461adcc228bc60b1b37700bbf24f3a813`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260829_002021315.json.gz`: 30,441 compressed bytes,
+  SHA-256 `f9bb59a819c91babe2cc429a41b00ce43cf49582d7d8b0e7db4a13dbcce448c5`; 426,948
+  decompressed bytes, SHA-256 `1355c8a67e64a4cf058e6dd85aeda006396e37e7b885f97b724f173da440ec2d`.
+- `COMPENDIUMMEM_CURRENT_INPUT_FAILURE_20260829_002129399.json.gz`: 452,821 compressed bytes,
+  SHA-256 `25292bcd0ff55a32842c0958d25ae9d299c1ef8470ca6dc7269ccdfd1c092716`; 8,591,680
+  decompressed bytes, SHA-256 `c5adaca207770251b48b3cadf634d80bd03cb55f589814fd3e93c8c635aba5d8`.
+
+All three carriers pass gzip integrity and decompress byte-for-byte to the exact sizes and hashes
+above. They remain immutable failure evidence and must never be relabeled or rerun.
+
+### Signed `a9d35cc…` universe-polish campaign — Layout PASS, SceneMemory instrument stop
+
+Signed clean source `a9d35cc795076a8903807d02ae011288ea5a639c` (tree
+`c2374dc04488654058919d0f539f770ea9e3e467`, parent
+`c55cc63ee3a8c9b761cfccb2de2ad108f46c6b4e`) stayed clean and unchanged through both completed
+stages. Layout `20260828-universe-polish-a9d35cc79507-layout` ran once with zero retries and passed
+all 787 sealed outcomes across ten viewports in 76,183 ms; its named verifier passed.
+
+SceneMemory `20260828-universe-polish-a9d35cc79507-scenemem` then ran once with zero retries and
+stopped terminal `instrument-fail` after 6,059 ms. The phone profile completed its initial sample,
+four warmups, all four measured cycles and BFCache proof. Before reload cleanup, the collector
+passed the 30,000 ms art-phase budget directly to `Runtime.evaluate`; the owned CDP transport
+correctly rejected that request because its command cap is 5,000 ms. Desktop collection,
+contract projection and all 44 outcomes therefore did not run. Browser, server and workspace-lock
+cleanup all passed. This is an instrument timeout-wiring failure, not a product verdict. The serial
+campaign stopped there, so Compendium, Slice, Glass and Recovery correctly did not run.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260829_000555600.json.gz`: 5,028 compressed bytes,
+  SHA-256 `f872b3c4914d893671d40055c0ed8dd4c7ff4d2b1e1bff4874991250d68b355b`; 106,976
+  decompressed bytes, SHA-256 `012bf5ed8fabf6e9c6bc6058a6933861c777bbac6e45dd8c6bfcd92fb3f0b37d`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_INSTRUMENT_FAILURE_20260829_000629495.json.gz`: 15,721
+  compressed bytes, SHA-256 `e88138914aa9c5f838aa9fcb3db3f7fb27621597ea21bd7439daaa78465d2f31`;
+  169,741 decompressed bytes, SHA-256
+  `3cdfe2f6bbece91010e641451c043783227676ad9f2b59f8f706ee505b8b1b73`.
+
+Both carriers were produced with deterministic `gzip -n -9`, pass gzip integrity and decompress
+byte-for-byte to their exact raw artifacts. The repair keeps each CDP command at or below the
+existing 5,000 ms transport cap while the separate 30,000 ms semantic phase deadline remains
+unchanged; it rebinds only producer identity and does not recalibrate a numeric ruler. Any repaired
+evidence must start a new exact-source campaign from Layout with new run IDs rather than retrying
+this immutable stop. Edge `151.0.4129.107` / CDP `1.3` is provenance only.
+
+### Signed `7cb0969…` Final13 campaign — complete exact-source automated chain PASS
+
+Signed clean source `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+`209abfea522c837ea7e236c6e6381f0174ed5f53`, parent
+`5ab4d3ec92a7575fc091ca3b2c358ef01927be02`) remained clean and unchanged through the complete
+once-only Final13 campaign. Layout `20260828-phase4-final13-7cb09699726b-layout` passed 787/787
+sealed outcomes across ten viewports in 75,945 ms. Source-bound SceneMemory
+`20260828-phase4-final13-7cb09699726b-scenemem` passed 42/42 in 10,235 ms. Source-bound
+Compendium `20260828-phase4-final13-7cb09699726b-compendium` passed 78/78 in 43,752 ms, with
+zero findings or blocked outcomes and six exact review-PNG bindings.
+
+Slice `20260828-phase4-final13-7cb09699726b-slice` passed terminally in 423,847 ms with
+parent/child exit `0/0`, zero findings or failed scopes, ten exact review-PNG bindings and zero
+automatic retries. Glass `20260828-phase4-final13-7cb09699726b-glass` then passed all 12
+viewports in 85,944 ms with zero findings or instrument failures and the exact Slice report/log
+predecessor hashes. Recovery `20260828-phase4-final13-7cb09699726b-recovery` passed terminally
+in 1,290,887 ms with zero findings. Its observation verdict passed all 15 outcomes across 308
+samples, spanning 1,200,308.5 ms of browser observation (1,200,309 ms active-play elapsed), and
+the exact next-cycle boundary, recovered UI and complete cleanup all passed. Recovery binds the
+exact Slice report/log and Glass predecessor hashes. Every stage ran exactly once, and every
+exact-run named verifier passed before its successor began.
+
+This is the complete automated Slice → Glass → Recovery certificate for this exact signed
+source only. It grants no HUMAN, hosted, integration, whole-Gate, version, release, deployment,
+preview or publication authority.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_150805271.json.gz`: 4,669 compressed bytes,
+  SHA-256 `bcef7c40e36c900802e6e57fddba60de5b95e653cca8f3231f7731c3c3fc024c`; 106,062
+  decompressed bytes, SHA-256 `7c6a605435c785caa758edbe32841c883d171b89a1c8a5a6ba21afeaac70110e`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_150839984.json.gz`: 22,331 compressed bytes,
+  SHA-256 `ac608d605fd789a84a58ca125b0fe42157ea7218f3dbc9f41d072ef42dff38cd`; 305,665
+  decompressed bytes, SHA-256 `0fc075d677dbb37ff1a7c70d1e3c981ecc7abb746b79e3fd09a3a7b8ce574f75`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_150944210.json.gz`: 442,022 compressed bytes,
+  SHA-256 `717064782d4a0d18844d1762b684ac692c865fd012f7f183d7c7caa4853b33bb`; 8,524,870
+  decompressed bytes, SHA-256 `09425b6b1a35e673c042442970c7ee67c25ba46be53e8ab46247ec3ba6c587b8`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_151711686.json.gz`: 1,919 compressed bytes,
+  SHA-256 `ab5753c1b995e3531003e53d7dd014d6bd49f45cea300a95ee83de64c2d9ae5b`; 6,169 decompressed
+  bytes, SHA-256 `b001d8a1bb80ce131d9a81d660657176f078ca0317ca1cf42fafabada0a098fc`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_151711686.log.gz`: 2,911 compressed bytes,
+  SHA-256 `60d5838b00bf1062b993899d063e7896039c0c6e60f564d78611ee03bf963624`; 5,905 decompressed
+  bytes, SHA-256 `31d38adb81af8349ce52e62c0acce51287a57f1e0fcadeaad0ebe0dce4d3f133`.
+- `PHASE4_GLASS_CURRENT_INPUT_PASS_20260828_151857734.json.gz`: 70,640 compressed bytes,
+  SHA-256 `fdaffe75858907cec26635bb30959da2b2a850f6ef0f7640244af69336336c64`; 845,143
+  decompressed bytes, SHA-256 `c580549251032b9de9e5b112d312b4e3f38f2bbeb79ba6353db6bf24ee9f252a`.
+- `ARC4_RECOVERY_CURRENT_INPUT_PASS_20260828_154058034.json.gz`: 276,918 compressed bytes,
+  SHA-256 `d06fbb646d3eeff95da762bde6029dea80c84e04d7559a09d9e2d9bcb3002b1a`; 3,802,681
+  decompressed bytes, SHA-256 `79f2bf8e3833b100c9fbbdbd0cbaa6a7529ee9cdaf5d4789ab9da37fc496df6b`.
+
+All seven Final13 carriers were produced with deterministic `gzip -n -9`, pass gzip integrity,
+and decompress byte-for-byte to raw artifacts with the exact sizes and SHA-256 values above. The
+six Compendium and ten Slice run-ID PNGs remain in the ignored smoke workspace; their byte sizes
+and SHA-256 bindings are retained inside the reports, matching the established policy of committing
+the compressed result/log carriers rather than duplicate screenshots. Edge `151.0.4129.107` / CDP
+`1.3` is provenance only and never a baseline, rebaseline or numeric-threshold key.
+
+### Signed `5097345…` Final12 campaign — three green predecessors, then Slice mutation-control stop
+
+Signed clean source `509734533dd47a659138f9c6b69c125dc1f75dc2` (tree
+`609e92c6278f43ac3983b97ffe121493bfedaf68`, parent `12d826a…`) remained clean and unchanged
+through every completed Final12 stage. Layout
+`20260828-phase4-final12-509734533dd4-layout` passed 787/787 sealed outcomes across ten viewports
+in 76,474 ms. Source-bound SceneMemory
+`20260828-phase4-final12-509734533dd4-scenemem` passed 42/42 in 9,974 ms. Source-bound Compendium
+`20260828-phase4-final12-509734533dd4-compendium` passed 78/78 in 43,804 ms, with zero findings
+or blocked outcomes and six exact review-PNG bindings.
+
+Slice `20260828-phase4-final12-509734533dd4-slice` then ran once for 414,198 ms and ended stored
+`fail`, parent/child exit `1/1`, with one finding in the single `arc-4-stale-convergence` scope.
+The real-path assessment itself was wholly green: `assessment.ok` was true and every main
+acquisition, empty-CAS, no-mutation, exact-authority, convergence-release, read-only reload,
+Arc-5 preservation and one-native-action check passed. The stop came from the
+`witnessAuthorityControl` negative control: coordinating the before/after `sessionOrdinal` mutation
+correctly made `convergenceRelease` false, but also made the top-level `oldUiConvergence` false. The
+control was therefore double-red instead of isolating only `convergenceRelease`, and the fail-closed
+isolation
+check stopped the campaign. This is an instrument mutation-control coupling, not a demonstrated
+product failure. There was no automatic retry; Glass and Recovery correctly did not start, so
+Final12 grants no Glass, Recovery, HUMAN, hosted, integration, version, release or deployment
+authority.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_140426642.json.gz`: 4,668 compressed bytes,
+  SHA-256 `daebe2ef62e3e318b3b13e74e4324b67e14255dc07b07f3a5f5ae23080c55e78`; 106,062 decompressed
+  bytes, SHA-256 `309c591414980ca4d839478c4963ad9fe68478ce9d98d8d3fb7d9bd2d6a9fdc4`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_140504682.json.gz`: 22,288 compressed bytes,
+  SHA-256 `3834ab2603a8c3b781d58542009f89e9fc5b2c9617c25bb7bebaa82e075b74fa`; 305,506 decompressed
+  bytes, SHA-256 `b22e90bc2e443e42b6790591c58292f16249cbeb8b8da464e7c7d1534e4cf7ac`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_140612082.json.gz`: 443,335 compressed bytes,
+  SHA-256 `a2c235cc33b1de1f3b07f461cd986febcf4e6c95f113338588049021fd0a3a7a`; 8,562,987
+  decompressed bytes, SHA-256 `1d4e5e59af3d7b07d14bc63a25a8f5ff58a6fae99b5481e9e28d7334a8ea9c7c`.
+- `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260828_141326745.json.gz`: 28,329 compressed bytes,
+  SHA-256 `f90f47a50730fc25267e59f3aab8075265b1a3c7296d614e71d2e7cb00863999`; 198,289 decompressed
+  bytes, SHA-256 `2df7f476cfb367385d7e86ffbd06dda3807044cad7feb49d3026e8ddcf4dec8b`.
+- `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260828_141326745.log.gz`: 14,853 compressed bytes,
+  SHA-256 `9fa7af5c0731399148328c5127ac7f9df0357b13118903682c6ad6bfdd195f32`; 88,365 decompressed
+  bytes, SHA-256 `83ae1dc7341c97890618918a42c38b5cc377b0a3eb4cd8aa0b76e5c9a21ad7b2`.
+
+All five Final12 carriers pass gzip integrity and exact decompression size/hash checks. The six
+Compendium and ten Slice run-ID PNGs remain in the ignored smoke workspace; their byte sizes and
+SHA-256 bindings are retained inside the two reports, matching the established policy of committing
+the compressed result/log carriers rather than duplicate screenshots. Edge `151.0.4129.107` / CDP
+`1.3` is provenance only and never a baseline, rebaseline or numeric-threshold key.
+
+### Historical Final11 assessor-repair follow-up — immutable failure retained, repaired replay green
+
+The Final11 carriers and hashes below are unchanged. Recovery remains stored `fail`, with one
+attempt, zero retries and exactly `activePlayProjection` and `closeCheckpoint` false in its stored
+domain assessment. The repaired assessor independently replayed that same immutable
+`recoveryBundle` wholly green; it does not rewrite the carrier or retroactively turn Final11 into a
+Recovery certificate.
+
+The repaired law permits durable raw to lead rendered UI only while rendered remains at or before
+runtime and within the existing 10-second bound, with the exact raw/runtime authority tuple intact.
+Close binds the latest exhausted live state/UI time, exact six-key committed/lost hide witness and
+committed revision outcome. Controls retain Final11's reported 20 ms render lag and 322 ms live-
+close gap, accept the exact close boundary, reject +1 ms, future/excessive lag and each independently
+mutated witness field. This is assessor/tests/docs only: product, save, deterministic content,
+numeric rulers, version identity and browser point-version policy are unchanged. That repair led to
+Final12, whose distinct immutable Slice stop is recorded above.
+
+### Signed `1ca6715…` Final11 campaign — full observation green, then Recovery temporal-oracle stop
+
+Signed clean docs source `1ca67156e27d6bd58a324e33b0e6b752adf568bc` remained unchanged through
+Final11. Layout passed 787/787 in 76,403 ms; SceneMemory passed 42/42 in 10,096 ms; Compendium
+passed 78/78 in 45,982 ms; Slice passed with zero findings and ten PNGs in 416,073 ms; and Glass
+passed all 12 viewports with zero findings or instrument failures in 86,808 ms. Every predecessor
+ran once and passed its named verifier.
+
+Recovery `20260828-phase4-final11-1ca67156e27d-recovery` ran once for 1,291,034 ms. It passed
+through `boundary-crossed`, including all 15 observation outcomes, 309 samples, Node/browser/active
+elapsed times of 1,200,308/1,200,305/1,200,305 ms, the exact next-cycle proof and recovered UI.
+The `recovered` domain assessment then failed only `activePlayProjection` and `closeCheckpoint`;
+cleanup passed and no retry occurred. Recovered raw/rendered/runtime active play was
+1,285,118/1,285,098/1,285,404 ms, a valid 20 ms render lag under the existing 10-second runtime
+law. Exhausted raw/state/UI was 79,709/84,738/84,740 ms and closed raw/state was 85,062/85,062 ms
+with a 2 ms checkpoint. The old oracle compared close against the stale exhausted raw capture and
+reported 5,353 ms instead of binding close to the latest exhausted live runtime, whose gap is only
+322 ms. Final11 therefore exposes an instrument temporal-oracle defect, not a product failure. It
+is immutable and was not retried; it is not a Recovery certificate.
+
+The current repair is contract-only: it permits bounded UI render lag relative to durable raw under
+the existing 10-second runtime law, binds close to the latest exhausted live state/UI time plus the
+exact committed/lost hide witness and committed revision outcome, and mutation-tests both
+directions. It changes no product, save, deterministic content, numeric ruler, browser authority,
+point-version policy, or release identity. A fresh complete chain on the signed clean repair source
+is required.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_112951723.json.gz`: 4,783 compressed bytes,
+  SHA-256 `aaa5b9a071d4ca905c4dfd924f56edda8a7ed589fdc65dc82902ad1ca3d85d6d`; 106,062 decompressed
+  bytes, SHA-256 `700f483c78b5fde4baeace9f4a6ad17fea50c0f92d151d488b1788de484afeae`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_113018245.json.gz`: 24,084 compressed bytes,
+  SHA-256 `0555f55055d2958626823bcae92b6f7c32c04185760d2dc8d2b1c2193e55185a`; 305,731 decompressed
+  bytes, SHA-256 `e7523ad4c6d0d8405997a848f18700c730c590330d797d152f79e52d36cde709`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_113116959.json.gz`: 541,274 compressed bytes,
+  SHA-256 `d78a6fee001583293645de26817be1e0a2241233f377ac558046a379396c9274`; 8,542,263 decompressed
+  bytes, SHA-256 `bc47a2d768080cd9d04257d300dcb4d009035d6611792d10f020d0beb179d5c8`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_113825782.json.gz`: 1,919 compressed bytes,
+  SHA-256 `af4cda59371aa37b73147ba72cf32556f9a9bb0abc67b0055c2f63d202797b26`; 6,169 decompressed
+  bytes, SHA-256 `f374604be62f1f4866c870a4bc3dc9e6b11ad4dcc5944bd515c71c4fae75e31f`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_113825782.log.gz`: 2,913 compressed bytes,
+  SHA-256 `149391caeeb494d45a1c21f35f28479415eac8f5c58660388f866d87b791c8a8`; 5,905 decompressed
+  bytes, SHA-256 `e0b82ad7cd4d7e443b1fb618694923710f31154d3fdaf48e42d2efa479b447de`.
+- `PHASE4_GLASS_CURRENT_INPUT_PASS_20260828_114015380.json.gz`: 74,636 compressed bytes,
+  SHA-256 `15a088d8f053fd99c3566372a7d13226587434ee1709c7ca491d929d18423571`; 845,186 decompressed
+  bytes, SHA-256 `ab83ca765e58b06f3bc559ccf076b299e2d805049777af61112755d55f01fedc`.
+- `ARC4_RECOVERY_CURRENT_INPUT_FAILURE_20260828_120206393.json.gz`: 299,902 compressed bytes,
+  SHA-256 `cb44985eb4894e34d518f521df8506c7b4aec452afcc8a2351f52eb5dd9b698a`; 3,807,719
+  decompressed bytes, SHA-256 `fa035d12a50a55b7e51ebca9de565c59b0f02d5941d1a19ccd4d5f65ae8febcb`.
+
+All seven Final11 carriers pass gzip integrity and exact decompression checks. Edge
+`151.0.4129.107` / CDP `1.3` is provenance only and never a baseline or rebaseline key.
+
+### Signed `4405fb2…` Final10 campaign — five green predecessors, then Recovery offline-reopened status-oracle stop
+
+Signed clean source `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` (tree
+`74133f0749a42ffddcaf5e0444a6c21197ad1da3`, parent `a85e0ed…`) remained clean and unchanged
+through every completed Final10 stage. Layout `20260828-phase4-final10-4405fb2b4ba7-layout`
+passed 787/787 sealed outcomes across ten viewports in 76,517 ms. Source-bound SceneMemory
+`20260828-phase4-final10-4405fb2b4ba7-scenemem` passed 42/42 in 10,121 ms. Source-bound
+Compendium `20260828-phase4-final10-4405fb2b4ba7-compendium` passed 78/78 in 45,542 ms and
+bound all six review PNGs. Slice `20260828-phase4-final10-4405fb2b4ba7-slice` passed with zero
+findings/scopes and ten PNG bindings in 414,827 ms. Glass
+`20260828-phase4-final10-4405fb2b4ba7-glass` passed all 12 viewports with zero findings or
+instrument failures in 86,406 ms. Every green stage ran once and passed its named verifier.
+
+Recovery `20260828-phase4-final10-4405fb2b4ba7-recovery` then ran once and stopped terminal
+`instrument-fail` at `offline-reopened` after 110,549 ms. Fixture, the complete 16-attempt
+burn-down, exhausted disabled-suppression receipt, close/checkpoint and closed/offline proof all
+passed. The active observation, boundary-crossed and recovered stages did not run. Cleanup passed
+with browser, browser context, server and workspace lock released; no automatic retry occurred.
+
+The failure evidence retained the correct Pertar route/card, the exhausted 16/16/0 cycle-0 budget,
+and all three Tame/Scavenge/Sample controls as model-disabled, natively disabled and aria-disabled.
+After the true close and reopen, however, the document was deliberately read-only/ineligible and
+truthfully rendered every verb as `unavailable`. The old phase-blind poll reused an active-authority
+exhaustion predicate that accepted only `empty` or `depleted`, so it rejected this coherent offline
+surface. Its terminal `last:null` records the final unmatched poll; the appended non-null `observed`
+receipt preserves the actual same-document UI → state witness. Final10 therefore exposed an
+instrument semantic/status-oracle defect, not demonstrated product loss. Because the run stopped
+before the later offline raw/state/UI assertion and before the real active-play observation, it makes
+no offline durable-parity, Recovery product-layout, 20-minute recovery or recovered-state claim.
+Final10 is immutable and was not retried. The bounded successor must distinguish offline/ineligible
+`unavailable` from active exhausted `empty`/`depleted`, then restart Layout → SceneMemory →
+Compendium → Slice → Glass → Recovery on a newly signed clean source with fresh run IDs.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_085940581.json.gz` preserves Final10 Layout. The
+  gzip is 4,841 bytes with SHA-256
+  `4329476439bc6bbde11adeeb487e22f1d9a06c5f4b6b0f75642802c720ca9925`; decompressed JSON is
+  106,062 bytes with SHA-256
+  `2fa05df1d8964a99943f1e235936446d02c6e285e41a73f5cc1432e4b786c638`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_090028728.json.gz` preserves Final10 SceneMemory.
+  The gzip is 24,164 bytes with SHA-256
+  `99abfc6d0a084ce0ed874cf5516c833d1d73735e4ebb8c44c0d3ce870075a0e3`; decompressed JSON is
+  305,657 bytes with SHA-256
+  `00161fd6c4d8b5457776dc1768ea2022a142a73c892c8a4cdff207073e88116a`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_090149421.json.gz` preserves Final10 Compendium.
+  The gzip is 541,176 bytes with SHA-256
+  `c93be41ed90be67236b10a2b57a79e252824b00091be9da55f84604de2ade8cd`; decompressed JSON is
+  8,533,320 bytes with SHA-256
+  `6ee3aa6f2e4dd50b7e148302486a4381385df92a10828f1b8b63408c66353035`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_091016498.json.gz` preserves Final10 Slice. The gzip
+  is 1,970 bytes with SHA-256
+  `2c7bbcfc52a8805593be730ff03ebee2c00debf2a8eb82e51fd782bf1d26b12c`; decompressed JSON is
+  6,169 bytes with SHA-256
+  `ef0dcef3001a8384a080b40696480eaf0d1176da3cd30ec2ff5be9d145fb47c5`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_091016498.log.gz` preserves Final10 Slice stdout/stderr.
+  The gzip is 2,967 bytes with SHA-256
+  `80b1942ae7777d91f0015fe45c60901d4ca014839043430e7e9971168f09ebcc`; decompressed log is
+  5,905 bytes with SHA-256
+  `929c4125b322a876a4624080fa90bc78e98bc1d055e41f66bfbc507e524dd501`.
+- `PHASE4_GLASS_CURRENT_INPUT_PASS_20260828_091204762.json.gz` preserves Final10 Glass. The
+  gzip is 74,755 bytes with SHA-256
+  `a17d0e37dc567a08e9847bbf31c102e01f4e90e6859d4870acefbfa382b2d171`; decompressed JSON is
+  845,128 bytes with SHA-256
+  `ca06571c4efa3425e367edc87a1d652fc5da15eecf5a683af0688eb8c078be51`.
+- `ARC4_RECOVERY_CURRENT_INPUT_INSTRUMENT_FAILURE_20260828_091420389.json.gz` preserves the
+  immutable Final10 Recovery offline-reopened instrument failure. The gzip is 84,891 bytes with
+  SHA-256 `c038e5dc37bbedd230afb954e7b576b85a65970bdafbc0ee158f185b07244358`;
+  decompressed JSON is 822,999 bytes with SHA-256
+  `9642a7dfad56df1695693ef2f2cafaf0c0fb4628d8401cc8bcdf839f31a429ce`.
+
+All seven gzip carriers pass integrity checks and decompress byte-for-byte to their exact source
+report or log. The Compendium and Slice reports retain their PNG manifests and hashes; the PNGs
+remain run-bound ignored review evidence rather than additional tracked audit carriers. Edge
+`151.0.4129.107` / CDP `1.3` is run provenance only, never a baseline pin or rebaseline trigger.
+
+### Signed `a85e0ed…` Final9 campaign — five green predecessors, then Recovery exhausted-control oracle stop
+
+Signed clean source `a85e0edf9b7ceca0f13ecf32bb8ac3c88db6ceb1` (tree
+`7260957697be3574626d42e12de78cb60e143969`, parent `c133c89…`) remained clean and unchanged
+through every completed Final9 stage. Layout `20260828-phase4-final9-a85e0edf9b7c-layout` passed
+787/787 sealed outcomes across ten viewports in 76,313 ms. Source-bound SceneMemory
+`20260828-phase4-final9-a85e0edf9b7c-scenemem` passed 42/42 in 10,202 ms. Source-bound Compendium
+`20260828-phase4-final9-a85e0edf9b7c-compendium` passed 78/78 in 46,170 ms and bound all six
+review PNGs. Slice `20260828-phase4-final9-a85e0edf9b7c-slice` passed with zero findings/scopes
+and ten PNG bindings in 414,850 ms. Glass `20260828-phase4-final9-a85e0edf9b7c-glass` passed all
+12 viewports with zero findings or instrument failures in 86,524 ms. Every green stage ran once and
+passed its named verifier.
+
+Recovery `20260828-phase4-final9-a85e0edf9b7c-recovery` then ran once and stopped terminal `fail`
+at the exhausted stage after 87,589 ms. Fixture and complete 16-attempt burn-down passed. The
+reported Tame control was already semantically correct—`disabled:true`,
+`data-model-enabled="false"`, 292×44—but its raw rectangle was y=812.1875…856.1875 in a
+390×844 viewport. The old collector did not scroll the button into the Survey card's clipped
+`overflow:auto` scrollport before testing its centre, collapsed geometry and hit ownership into one
+`ok` bit, and did not retain the actual hit owner. The same unchanged source's Glass certificate
+independently scrolled this exact class of Tame control to y=470.875…514.875, then proved full
+card/viewport containment and stable BUTTON ownership at the same primary-phone viewport. Slice
+also passed its real disabled-suppression path after native reveal. Final9 therefore exposed an
+instrument/oracle defect; it makes no Recovery product-layout verdict and no recovery claim.
+
+Close/checkpoint, closed/offline proof, reopen, the real 20-minute active observation, boundary
+crossing and recovered stages did not run. Cleanup passed with every owned resource released and
+zero automatic retries. Final9 remains immutable and was not retried. The bounded successor repair
+reveals and settles the exact disabled control, retains complete button/card/viewport/scroll/hit/
+document evidence, binds native dispatch to the trusted pointer receipt, restores scroll in
+`finally`, and replays instrument integrity separately from product suppression. Because those
+collector/contract bytes change, the next signed clean successor must restart Layout →
+SceneMemory → Compendium → Slice → Glass → Recovery with fresh run IDs.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_064146278.json.gz` preserves Final9 Layout. The gzip
+  is 4,839 bytes with SHA-256
+  `e9019f1cfd4339c4713f188d9c4431a360cf98cee953b286793dcc9746333286`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `7628b2be0db6ce8aca905582bb92d63eae4e688f8d7aaaa597b1417dd904ecf4`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_064212063.json.gz` preserves Final9 SceneMemory.
+  The gzip is 24,120 bytes with SHA-256
+  `a195d31731899136d699343b736fe6940d2729a50d101caa268d08b3cf063e23`; decompressed JSON is
+  305,647 bytes with SHA-256
+  `b9734acd5c6614e1c7b6f908aaf1e6a4547efef5f0d9d0451359bd96dbf8a3a4`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_064317311.json.gz` preserves Final9 Compendium. The
+  gzip is 542,224 bytes with SHA-256
+  `7612cd6e850057c6a7b5eb33154cbe71ede25e54cdb1a3c6a8ebc5714b125f07`; decompressed JSON is
+  8,563,298 bytes with SHA-256
+  `bd009387b9a3f1430135c2ab264bf9ef32429967c02e0dfdc6da79f414b60441`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_065042577.json.gz` preserves Final9 Slice. The gzip is
+  1,969 bytes with SHA-256
+  `78881cc94b0102b47f9e2973eb757412250f6142327e317d949aa0cef57864e8`; decompressed JSON is
+  6,145 bytes with SHA-256
+  `97d0d85894934d042d09ad3b57d84c9c9f5f0531195066764edf330b51c2604a`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_065042577.log.gz` preserves Final9 Slice stdout/stderr.
+  The gzip is 2,964 bytes with SHA-256
+  `4cb909a1f8a37a3666aa31589a17120e1d627764020980e363f1e7a5dce8f22e`; decompressed log is
+  5,904 bytes with SHA-256
+  `0fd08de0a6e87fb728203e460d931c17e1bb1d03eb8cfed6d67c615c2963f692`.
+- `PHASE4_GLASS_CURRENT_INPUT_PASS_20260828_065238705.json.gz` preserves Final9 Glass. The gzip
+  is 74,599 bytes with SHA-256
+  `762befbad4232993d174896c7a74a46444f554d244b743cf0dce657dd40f25cd`; decompressed JSON is
+  845,103 bytes with SHA-256
+  `a3b1b9a85ea280848e926c38e10894ee0a86000916e8aa5c6ecf7f5b2d7a4f52`.
+- `ARC4_RECOVERY_CURRENT_INPUT_FAILURE_20260828_065439072.json.gz` preserves the immutable Final9
+  Recovery exhausted-stage oracle failure. The gzip is 32,098 bytes with SHA-256
+  `f0cde9db25a3a44b6aa2c16d26df8ac4adc1fc05bbef0e9c49744af969c4a887`; decompressed JSON is
+  322,076 bytes with SHA-256
+  `21d7d4e3e22ee41a06f61f23de490b6aa9b21c686817f7d34203e3caffdfe6b7`.
+
+All seven gzip carriers pass integrity checks and decompress byte-for-byte to their exact source
+report or log. The Compendium and Slice reports retain their PNG manifests and hashes; the PNGs
+remain run-bound ignored review evidence rather than additional tracked audit carriers. Edge
+`151.0.4129.107` / CDP `1.3` is run provenance only, never a baseline pin or rebaseline trigger.
+
+### Signed `c133c89…` Final8 campaign — five green predecessors, then Recovery precondition stop
+
+Signed clean source `c133c89ead736c9c7414af1e6242acd411339853` (tree
+`e93b6808e9442e2bbf48ef5aa158d9c0ee8a78af`, parent `53d030b…`) remained clean and unchanged
+through every completed Final8 stage. Layout `20260828-phase4-final8-c133c89ead73-layout` passed
+787/787 sealed outcomes across ten viewports in 76,318 ms. Source-bound SceneMemory
+`20260828-phase4-final8-c133c89ead73-scenemem` passed 42/42 in 10,168 ms. Source-bound Compendium
+`20260828-phase4-final8-c133c89ead73-compendium` passed 78/78 in 46,530 ms and bound all six
+review PNGs. Slice `20260828-phase4-final8-c133c89ead73-slice` passed with zero findings/scopes
+and ten PNG bindings in 415,546 ms. Glass `20260828-phase4-final8-c133c89ead73-glass` passed all
+12 viewports with zero findings or instrument failures in 87,045 ms. Every green stage ran once and
+passed its named verifier.
+
+Recovery `20260828-phase4-final8-c133c89ead73-recovery` then ran once and stopped terminal `fail`
+at its fixture precondition after 7,633 ms. The sole failed clause was `runtimeCaptureOrder`; every
+other route, durability, authority, rendered UI, ownership, finite-yield, random-pool and action-idle
+clause passed. Burn-down, exhaustion, closure/reopen, the real 20-minute active observation,
+boundary crossing and recovered stages did not run. Cleanup passed, with every owned resource
+released and zero automatic retries. This immutable report therefore makes no Recovery product
+verdict and claims no recovery.
+
+Post-run source review proved the red was an instrument/oracle chronology mismatch. Recovery's old
+ready-surface collector sampled outer state first, then its nested UI expression obtained a second,
+later state snapshot, while the shared precondition correctly expected canonical UI → state order.
+The app's monotonic active-play clock can advance between those calls; equal millisecond values could
+also let the reversed collector false-pass. The bounded local repair captures UI then state, emits
+a browser-derived document/order/timestamp/runtime witness, classifies malformed receipts as
+instrument evidence and preserves a trusted backward runtime as product-red. It does not loosen the
+10-second shared chronology/lag contract or change product code. Because the collector and evidence
+bytes changed, Final8 is immutable and cannot resume; a newly signed clean successor must restart
+Layout → SceneMemory → Compendium → Slice → Glass → Recovery.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_045804245.json.gz` preserves Final8 Layout. The gzip
+  is 4,784 bytes with SHA-256
+  `cf3611f023f92657e53b632e6760ac866bce449849ec5f5f7b104a128f268001`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `ae0c486c2b0bebf2047e55ffec131691dc457bc8f67af60b9b48efa57e70f5b8`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_045839643.json.gz` preserves Final8 SceneMemory.
+  The gzip is 24,057 bytes with SHA-256
+  `a4ac0eeb323cd6558c690d5b1d57d1e5a0a36ec69997db22010e0d520bbef649`; decompressed JSON is
+  305,712 bytes with SHA-256
+  `5bbac8b3c71a396e0ace5ce04e2124c15695f0af92580cca47d85b3057cb2e2a`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_045959479.json.gz` preserves Final8 Compendium. The
+  gzip is 543,085 bytes with SHA-256
+  `f7dcc09f8a7ce419488a63e4c446ea384aea167caeb007ea321cc6f128de71ec`; decompressed JSON is
+  8,579,794 bytes with SHA-256
+  `cfb11b3ba5c735c02c3e4ad0e3a6ba0ed6748a3edbac5157d47e3f9aaad723e8`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_050821691.json.gz` preserves Final8 Slice. The gzip is
+  1,922 bytes with SHA-256
+  `a3872de9538fb71803384e24c8e4116df912e757eb77051fa67517cad780818e`; decompressed JSON is
+  6,145 bytes with SHA-256
+  `39fde2d9ec8bc1bcab19bd4f80998e9db87e77d972ac196ce5a3b1a92c5e9f3f`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_050821691.log.gz` preserves Final8 Slice stdout/stderr.
+  The gzip is 2,913 bytes with SHA-256
+  `39f5e03f7a19449b86499f035d95420b756d55fdd3125b30a27f5e413b046aab`; decompressed log is
+  5,904 bytes with SHA-256
+  `17413ee4af51df0b4642b8280becd2288ca47844b2dede5dbed826f86ca1d486`.
+- `PHASE4_GLASS_CURRENT_INPUT_PASS_20260828_051003109.json.gz` preserves Final8 Glass. The gzip
+  is 74,618 bytes with SHA-256
+  `efe451efaa707d400f70e6a0e5bbbc808d76fc7d7bd2573f4817494f46f90c75`; decompressed JSON is
+  845,064 bytes with SHA-256
+  `0ca296cd4820ba0259facd6cfe0c4fa1eaab096cdd3925f759c0e4f2163b0728`.
+- `ARC4_RECOVERY_CURRENT_INPUT_FAILURE_20260828_051049287.json.gz` preserves the immutable Final8
+  Recovery precondition failure. The gzip is 5,481 bytes with SHA-256
+  `8548618e21b0072db322f6f2b79e56ee61934a7c24cf7d98fe9342f02a79523a`; decompressed JSON is
+  17,028 bytes with SHA-256
+  `986b48734762a20abb78009a3016b337446f06d2ce1ab440c582db391a7c3517`.
+
+All seven gzip carriers pass integrity checks and decompress byte-for-byte to their exact source
+report or log. The Compendium and Slice reports retain their PNG manifests and hashes; the PNGs
+remain run-bound ignored review evidence rather than additional tracked audit carriers. Edge
+`151.0.4129.107` / CDP `1.3` is run provenance only, never a baseline pin or rebaseline trigger.
+
+### Signed `53d030b…` Final7 campaign — four green predecessors, then terminal Glass red
+
+Signed clean source `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` (tree
+`19bdbd9774ba2d1aa5c814582bfc04f5f77620dc`, parent `ea845d7…`) remained clean and unchanged
+through every completed Final7 stage. Layout `20260827-phase4-final7-53d030bb733b-layout` passed
+787/787 sealed outcomes across ten viewports in 76,145 ms. Source-bound SceneMemory
+`20260827-phase4-final7-53d030bb733b-scenemem` passed 42/42 in 10,281 ms. Source-bound Compendium
+`20260827-phase4-final7-53d030bb733b-compendium` passed 78/78 in 46,094 ms and bound all six review
+PNGs. Slice `20260827-phase4-final7-53d030bb733b-slice` passed with zero findings/scopes and ten
+PNG bindings in 415,497 ms. Each completed green stage ran once and passed its named verifier.
+
+Glass `20260827-phase4-final7-53d030bb733b-glass` then ran once across 12 viewports for 75,032 ms
+and stopped terminal `fail` with 25 findings, zero report-classified instrument failures and zero
+automatic retries. Recovery correctly did not run. Post-run review separated one Compendium
+heading/workspace product root and two narrow-phone Inventory product defects from two hostile-row
+Compendium oracle artifacts and four Settings oracle artifacts. Edge `151.0.4129.107` / CDP `1.3`
+is run provenance only.
+
+The bounded local repair lets the Compendium heading share its reserved sticky-Close row, reflows
+`<=360px` Inventory copy above left-aligned wrapping badges without hiding any visible identity or
+status, and makes each Settings control own stable samples, native hit proof, Close clearance and
+exact scroll restoration. These changes alter source and evidence bytes. Final7 is immutable and
+cannot resume. Bounded dirty-tree small-phone and phone-landscape diagnostics passed; they are
+repair evidence only, not a post-repair full/certifying browser-chain PASS. After browser-free
+review, a newly signed clean successor must restart the complete Layout → SceneMemory → Compendium
+→ Slice → Glass → recovery chain with fresh IDs.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_031651483.json.gz` preserves Final7 Layout. The gzip
+  is 4,782 bytes with SHA-256
+  `69db5b56a55b74ba4b3468cb59a2f85576757913cc9114b50da36abe062c6b77`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `85d5220ebc3e592b21c42a49c03a95d78151b02b3971a4ffc61dc0ae9331b215`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_031719888.json.gz` preserves Final7 SceneMemory. The
+  gzip is 24,049 bytes with SHA-256
+  `73997c61e60ba655a7314eed8af8bbaa18a527c8d36da7bc96bdef7db8ed8d35`; decompressed JSON is
+  305,669 bytes with SHA-256
+  `dda4da30da3a9cee3550c4c52f88f1b7ecff61a23507af548fbc863f488558cd`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_031936204.json.gz` preserves Final7 Compendium. The
+  gzip is 543,901 bytes with SHA-256
+  `adf44f5f06ba386065596d1e2578296bb3db6b633c79c2c1b50d91f88e3716f5`; decompressed JSON is
+  8,588,379 bytes with SHA-256
+  `617151d1b72529d260520171337e2977adb7e6e89a72fd7fafbac97347e0cb4d`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_032721592.json.gz` preserves Final7 Slice. The gzip is
+  1,916 bytes with SHA-256
+  `bba4a7f703648e1f1e00796ad8e08e359e809018dc2af162cfa5f88519799b05`; decompressed JSON is
+  6,145 bytes with SHA-256
+  `2a4921075b1790623d0def563b3042b3b2ce72291f0140b3d1200450f9bfb8bb`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_032721592.log.gz` preserves Final7 Slice stdout/stderr.
+  The gzip is 2,912 bytes with SHA-256
+  `7627337e23b902a161f1e18466e643c0c6ad6f893385c3346db7ca56d93790d5`; decompressed log is
+  5,904 bytes with SHA-256
+  `6b8f9c6741d4408dd525ca7436812d9d5cdc21c192cf8c608fa2a5b12d5e5d2a`.
+- `PHASE4_GLASS_CURRENT_INPUT_FAILURE_20260828_032908335.json.gz` preserves Final7 Glass. The gzip
+  is 77,621 bytes with SHA-256
+  `2b5253f05315e3e5b5d59addd509e852ed4006af9eb92ebd7587f1a82ff3fba3`; decompressed JSON is
+  884,622 bytes with SHA-256
+  `98cfa0536acf3d7b6e79f83303e3f01b0929f4e912de7772aa782a1de398ed6f`.
+
+All six gzip carriers pass integrity checks and decompress byte-for-byte to their exact source
+report or log. The Compendium and Slice reports retain their PNG manifests and hashes; the PNGs
+remain run-bound ignored review evidence rather than additional tracked audit carriers.
+
+### Signed `ea845d7…` Final6 campaign — three green predecessors, then one causal Slice instrument stop
+
+Signed clean source `ea845d77d9783599c269f708462eb650e2c3e245` (tree
+`1d041580e3977555898b9f8efaef9f3db5ab2166`, parent `39e4f20…`) remained byte-stable through
+the serial Final6 campaign. Layout `20260827-phase4-final6-ea845d77d978-layout` passed all
+787/787 sealed outcomes across ten viewports in 75,826 ms. Source-bound SceneMemory
+`20260827-phase4-final6-ea845d77d978-scenemem` passed 42/42 in 10,085 ms. Source-bound
+Compendium `20260827-phase4-final6-ea845d77d978-compendium` passed 78/78 in 45,661 ms and
+bound its six review PNGs. Every completed stage passed its named verifier, ran once with zero
+automatic retries, retained complete cleanup, and used Microsoft Edge `151.0.4129.107` / CDP
+`1.3` as per-run provenance only.
+
+Slice `20260827-phase4-final6-ea845d77d978-slice` then ran once for 420,570 ms and stopped
+terminal red with five findings in five scopes. Its first/root finding was instrumental: the exact
+thermal Inventory row was a valid 164px button, but its raw centre at `y=751` lay below the bounded
+panel scrollport. The old collector did not reveal the row, so it correctly skipped the click but
+then incorrectly judged the absent modal, Equip, Close and reload outcomes as four additional
+product failures. Those four descendants were unexercised cascades, not independent product
+verdicts. Static review found the product Inventory lifecycle coherent. Final6 was not retried;
+Glass and recovery correctly did not start.
+
+The current browser-free instrument repair uses the row's real `scrollIntoView` path, waits through
+animation-frame plus later-task settlement, proves exact scrollport containment and centre hit
+ownership, and binds trusted row, Equip and Close receipts to their exact coordinates and owners.
+Each dependent surface/action/Close/reload judgment now requires its full green causal prefix;
+controls run only from a green base; a red action proves quiescence and cleanup before terminating
+mutable successors. No product source or numeric ruler changed. No post-repair browser claim exists:
+Final6 cannot resume, and a newly signed clean successor must restart the chain at Layout.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_014710842.json.gz` preserves the Final6 Layout
+  report. The gzip is 4,781 bytes with SHA-256
+  `52e3d3535a71738fa60e9ae5910aab18d3faf7420f71f09752d8290b6315f1a6`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `7b1543b848acda57c0fc077996dd837a2b8a54dfe32a552ad8fb4a8a9e413305`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_014750410.json.gz` preserves the Final6
+  SceneMemory report. The gzip is 24,029 bytes with SHA-256
+  `541184b8affb1a637909644fc7fb88184f00fbfedf8aa60dff25af411696c720`; decompressed JSON is
+  305,655 bytes with SHA-256
+  `d23ec732491730bfcd718f0ca1ed6d758f83d5142d454ec29601c291965d4ade`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260828_014927668.json.gz` preserves the Final6
+  Compendium report. The gzip is 542,065 bytes with SHA-256
+  `8567a36ca0c4d9d28a5dbe4373ae60c29364843b4657a85ee54c71c8593c85fc`; decompressed JSON is
+  8,587,851 bytes with SHA-256
+  `1416d7cad1512ad4bc251d8870d2ac4681f0aef059887a41f4bcd1ba96aa41aa`.
+- `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260828_015651534.json.gz` preserves the Final6 Slice
+  report. The gzip is 88,669 bytes with SHA-256
+  `cb97ae8d190c77a4f7eec8bf3e1116f4bd7749eed9b7293e356eb8e9e1e3aecc`; decompressed JSON is
+  613,747 bytes with SHA-256
+  `462e0fd5b4187920a2f247ccb109e67e0f1013a2df124d1c39cbbd109c03985c`.
+- `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260828_015651534.log.gz` preserves the paired Slice
+  stdout/stderr record. The gzip is 39,378 bytes with SHA-256
+  `1597df9b40ea6d036007e2fea2985d06ebddd0f5f506e437cf00aeef719dee5e`; decompressed log is
+  254,569 bytes with SHA-256
+  `907a99b02b254bd643c252e7c78974576f954519b4dee30c6e17f6dd9baac808`.
+
+### Signed `39e4f20…` Final5 campaign — Layout and SceneMemory green, then Compendium instrument stop
+
+Signed source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` (tree
+`506127c7c3c6694e9b8befe71cc3c06db56b6028`, parent `041d1cf…`) began clean on
+`openai/mac` and remained byte-stable through the source-bound stages. Layout report
+`20260827-phase4-final5-39e4f20fb35e-layout` passed 787/787 sealed outcomes across all ten
+viewports in 76,129 ms. SceneMemory report
+`20260827-phase4-final5-39e4f20fb35e-scenemem` passed 42/42 with zero findings in 9,980 ms,
+complete browser/server/workspace-lock cleanup and exact clean begin/end source identity. The
+associated Layout schema still embeds no Git/source identity, so its carrier is
+chronology-associated result provenance rather than a reusable standalone exact-source
+predecessor.
+
+Compendium report `20260827-phase4-final5-39e4f20fb35e-compendium` then ran once and stopped
+`instrument-fail` after 3,237 ms. It retained zero product outcomes out of 78 expected, one
+instrument finding—`phone: stable first open did not prove a mounted cold fixture key`—a partial
+non-certifying phone profile, no desktop profile, an empty review packet and zero PNGs. Its last
+completed stage was `producer error publication`; it failed at `producer error cold-key proof`.
+The report binds complete lifecycle cleanup, exact unchanged clean source at begin/end and the
+then-current budget `858c2503ed94770e5cf0595a9e3ad676f87be83806fd58cbf924f1ea2158b8f6`
+with matching producer `bf9ad0b6623913bfff5b5e79a8ed9ac7dbe49424b608bc9fee8621e5c4874dcb`.
+It emitted no separate stdout log. There was no automatic retry, and Slice, Glass and recovery
+correctly did not start. This carrier makes no Compendium product-behavior judgment.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260828_010734681.json.gz` preserves the Final5 Layout
+  report. The gzip is 4,666 bytes with SHA-256
+  `25ae18625393a546b655fb63b61acf2ddf05ad0fdc204b9b412aea5fae67bd84`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `59caff9589373d1ae739013feff9a92859d8ee2d579aca3418550e3d485be78e`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260828_010821484.json.gz` preserves the Final5
+  SceneMemory report. The gzip is 22,290 bytes with SHA-256
+  `d7725f545251ffd985c6ab84cb1990289c01041e6ecfe907fef74c42d94d8c97`; decompressed JSON is
+  305,566 bytes with SHA-256
+  `2fb765c87ca6c85fec9d4a949abb5971e6cb4ee3bea2c44d44e7969fd23c6b33`.
+- `COMPENDIUMMEM_CURRENT_INPUT_INSTRUMENT_FAILURE_20260828_010936591.json.gz` preserves the
+  Final5 Compendium report. The gzip is 9,117 bytes with SHA-256
+  `555fcb6682b6995df23b511f2f675886226306efe9552ddfd4965d76688c34b2`; decompressed JSON is
+  106,942 bytes with SHA-256
+  `2fa2957d0fd557512ea9cbee1483ba560ac72740d8566332614ca73f406e03be`.
+
+The failed oracle compared cardinalities: it required the eight mounted distinct fixture keys to
+outnumber the eight pre-arm cached Planetside keys. Equal counts cannot prove equal membership.
+The report's direct evidence already showed that the first errored row's exact visual key was absent
+from the pre-arm cached-key set, while publication contained exactly one errored row and one
+`jobError`. The bounded repair therefore proves exact set membership rather than `8 > 8`, and its
+paired controls reject a cached/wrong key. It changes the current collector authority to
+`c13a489d32de9a54807d0a16412d8fbd3063656b3282e28f48d074c58bb3faab`, outcome contract to
+`ac7eea3939c32f893620e28fde58a8c12bb21d788d029cb7db60bc2eda216d17`, measurement authority
+to `28b06f3cb26cd5570fa7bbe7565c410e30db3dd11bb0960919bb2e34cda5276c`, and live budget-file
+SHA-256 to `3e6607420342b878bf3f1bc0be562eed72bcbd5206534eda3c85d3ff1c652ae5`.
+Producer authority and every numeric ceiling remain unchanged. Because those evidence bytes now
+differ from signed Final5, the next campaign is a newly signed clean Final6 checkpoint and a
+complete fresh chain from Layout; Final5 cannot resume. Microsoft Edge `151.0.4129.107` / CDP
+`1.3` remains per-run provenance only, not a pin, calibration event or rebaseline trigger.
+
+### Signed `041d1cf…` final4 campaign — four green predecessors, then Glass instrument stop
+
+Signed source `041d1cfdff28c4217d699bdb26eacd5f792f7a80` (tree
+`796f3da97bbfe56dc64cde34598e4a59de2b6e0d`, parent `5ddddbf…`) began clean on
+`openai/mac` and stayed byte-stable. Every stage ran once with a fresh
+`20260827-phase4-final4-041d1cfdff28-*` ID and zero automatic retries. Layout passed 787/787
+sealed outcomes and its 10/10 verifier in 76,058 ms; SceneMemory passed 42/42 and its named
+verifier in 10,277 ms; Compendium passed 78/78 and its named verifier in 46,414 ms; and Slice
+finished terminal PASS with ten screenshots, zero findings/scopes and a passing named verifier in
+414,797 ms. Glass then stopped fail-closed after 74,409 ms with terminal `instrument-fail`, 46
+findings and five instrument failures across all 12 viewports. It was not retried and recovery
+correctly did not start.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_234347046.json.gz` preserves run
+  `20260827-phase4-final4-041d1cfdff28-layout`. The gzip is 4,781 bytes with SHA-256
+  `66bf4a70ef6424db5bae892efd8215e15efc2af72fc77be11e422164ce332c09`; decompressed JSON is
+  106,061 bytes with SHA-256
+  `da6cfcb8415516527e777bd5b056abe772af7e90765b7d7b261aaadba28e7930`.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260827_234435396.json.gz` preserves run
+  `20260827-phase4-final4-041d1cfdff28-scenemem`. The gzip is 23,993 bytes with SHA-256
+  `544ebab6c01b59c59c45b44c5e3ead7fbc473262a0573d7f8a485486ce758a85`; decompressed JSON is
+  305,575 bytes with SHA-256
+  `1350dc76914dbd6b9cb26411896a7e92d2b04e482439b7af2aa3d35650d0f987`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260827_235229369.json.gz` preserves run
+  `20260827-phase4-final4-041d1cfdff28-compendium`. The gzip is 538,322 bytes with SHA-256
+  `b8ce7e6bcbecaff7ab6f150afc32856d68422b1d90ae250c65782e917552d1ca`; decompressed JSON is
+  8,543,685 bytes with SHA-256
+  `e7c26d37cc653da74900ca03700b175c3020e8d07a293542a7e9d9dfa9849585`.
+- `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_000011550.json.gz` and
+  `ARC4_SLICE_CURRENT_INPUT_PASS_20260828_000011550.log.gz` preserve run
+  `20260827-phase4-final4-041d1cfdff28-slice`. The report gzip/raw are 1,920 / 6,145 bytes with
+  SHA-256 `1440866886518d6ba524c5ff794293e3fbacfcf0db476f89be5cd297f673ba17` /
+  `af2eed83289730686b281cfd882eaf5893c54dbb8ff57f823ce3b5ed71db0ed0`; the log gzip/raw are
+  2,912 / 5,904 bytes with SHA-256
+  `19774e72bc5cb54d324e51206c74d2562e5fb469a4c3b5329bf95bb9705b323b` /
+  `d75ca5212a634ef2a4226b1887dee2226fef97b632bc5a147e7828be445a33dd`.
+- `PHASE4_GLASS_CURRENT_INPUT_INSTRUMENT_FAILURE_20260828_000226676.json.gz` preserves run
+  `20260827-phase4-final4-041d1cfdff28-glass`. The gzip is 102,055 bytes with SHA-256
+  `e7bb528cf804bed32d77dab01585d0097094f11f331043448ac3dbf7e612d115`; decompressed JSON is
+  1,518,127 bytes with SHA-256
+  `9ccf29c2c9c6c3315114d1adf2f886a4b1831c5d3279852669e0271285f0fec5`.
+
+The 46 findings reduce to four stale or incomplete harness assumptions plus two connected product
+presentation defects. Twelve `REQUIRED_COPY_EMPTY` rows rejected the valid four-character title
+`Mars` because the generic orbital audit demanded five characters. The generic audit displaced the
+Survey scroller; the small-phone orbital control then sampled the already-rendered, settled
+`Mineral veins` row while it was off-card, without first centring it or proving exact restoration.
+The nine `SETTINGS_CREATURE_VOICE_CONTROL` findings comprise four phone rows that inherited
+unrelated audit scroll state and five laptop rows caused by the real Close overlap; one additional
+laptop `CONTROL_NOT_HITTABLE` finding records the same product defect. The 1280×720 Sound centre
+was genuinely owned by the sticky Close target because the panel had lost its reserved Close
+gutter. Twelve `SHIPYARD_STATE_TRUTH` rows came from
+the independent recipe oracle still calling `earpiece`, `diplobeacon` and `rl-mind` effects
+unavailable after their contact/capture-support consumers became live; the four Shipyard control
+failures cascade from that stale baseline. Twelve `TEXT_CONTRAST_LOW` rows are genuine: canonical
+Exotic `#9A5CFF` measured 2.86:1 against effective bright glass, below 4.5:1.
+
+The bounded repair retains the canonical rarity hue on an opaque `#05070d` reading badge, restores
+the proven 58px panel Close gutter / 44px Close translation / cleared heading geometry, restores
+every audit-touched scroll owner exactly, waits for the real orbital row before measuring it, proves
+live off-card → centred → exact-restored containment, treats nonempty semantic titles as valid, and
+refreshes the three source-independent contact-effect oracle rows. Each repair has a positive and
+negative control. SceneMemory and Compendium bind only their current source/dist producer records;
+numeric rulers and historical samples remain unchanged. Microsoft Edge `151.0.4129.107` / CDP
+`1.3` is provenance only, not a version regression or rebaseline trigger. Because the repair changes
+source, none of the four green final4 predecessors can certify it: after a new signed clean
+checkpoint, the complete chain must restart at Layout with fresh final5 IDs.
+
+### Signed `5ddddbf…` final3 campaign — Layout green, then SceneMemory instrument stop
+
+Signed source `5ddddbfb79ea984d44c86e2107e5e4013f84f1b3` (tree
+`fb62bce43ec3ef4230fec8939f54286292503a8d`, parent `b206cf0…`) began clean on
+`openai/mac` and stayed byte-stable. Layout run `20260827-phase4-final3-layout` passed its
+787/787 sealed outcomes across all ten viewports in 76,133 ms, then its named verifier passed.
+SceneMemory run `20260827-phase4-final3-scenemem` ran once, stopped `instrument-fail` after
+1,662 ms, retained zero product outcomes and complete browser/server/workspace-lock cleanup, and
+was not retried. Compendium, Slice, Glass and recovery correctly did not start.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_223504110.json.gz` preserves the Layout result.
+  The gzip is 4,655 bytes with SHA-256
+  `bff57442cfdb7f85b9f2fc48951e163ecbb46f4ab4c9e86df2e19e706a527a12`; decompressed JSON is
+  106,048 bytes with SHA-256
+  `49f9ce820481859f529ce7237fd6abaf7987285934a78673467f2cf11cbb0272`. Layout schema v2 still
+  lacks Git/source identity, so this is chronology-associated result provenance, not a reusable
+  exact-source predecessor.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_INSTRUMENT_FAILURE_20260827_223521179.json.gz` preserves the
+  SceneMemory JSON report; the instrument emitted no separate stdout log. The gzip is 4,832 bytes
+  with SHA-256 `ff83663c498ddf09d661b9523ffe2ede7f23d2258b6829df3edcb72e327ef417`;
+  decompressed JSON is 12,463 bytes with SHA-256
+  `a2d9da733a0fa6fffc5ddcb62f7d04c75e768f4a7c18d9b89fc30e677d3e7d38`.
+
+The failure happened before either phone or desktop measurement. Twenty-one of the 23 SceneMemory
+producer fields matched; only `buildDist` (`46e47365…` tracked versus `6575498b…` observed) and
+`gameMain` (`7ff00481…` versus `02b85f74…`) were stale. The same browser-free audit found the
+Compendium measurement authority still current while its live producer was stale (`4bdd3e36…`
+tracked versus `4b5aa3a3…` observed) because the built index/owner chunk changed. This is producer
+binding drift from the intentional final2 repair, not a product, numeric-ruler, deadline, cleanup,
+or Edge-version regression. Edge `151.0.4129.107` / CDP `1.3` remains run provenance only.
+
+The bounded repair changes only the two live producer records and adds a source-derived,
+browser-free current-authority test with stale-source, stale-build, duplicate-constant and
+recomputed-owner mutants. SceneMemory's repaired active budget is
+`47d24080df86f1fd207a2d1674eabbf62260b2d2269698ef052691d6a2d8775b`; historical activation
+budget `e6c4aeea…`, all calibration samples and every numeric ceiling remain historical and
+unchanged. Compendium's repaired active budget is `f0bedb67…3c64`, with live producer
+`4b5aa3a3…`; its fixed ruler and samples remain historical and unchanged. Both carriers pass gzip
+integrity. This stopped campaign grants no SceneMemory product verdict or later-stage authority.
+After the repair is signed clean, the chain must restart at Layout with entirely fresh IDs.
+
+### Signed `b206cf0…` final2 campaign — three green predecessors, then one terminal Slice red
+
+Signed source `b206cf0986cf21747967e72700222ea9fa9d10f0` (tree
+`b993f7da15d80ad3892389b7ddaf31cfe96bacae`, parent `7362a0e…`) began clean on
+`openai/mac` and stayed byte-stable through the source-bound stages. The serial campaign used fresh
+`20260827-phase4-final2-*` IDs, one execution per stage and zero automatic retries. Layout passed
+787/787, SceneMemory passed 42/42, and Compendium passed 78/78; all three named verifiers passed.
+Slice then stopped terminal-red with six findings across five scopes, so Glass and recovery
+correctly did not start. Microsoft Edge `151.0.4129.107` is run provenance only: browser authority
+remains compatible Edge family + CDP `1.3` + each gate's capability contract, and a compatible
+point update never triggers rebaselining.
+
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_202017303.json.gz` preserves run
+  `20260827-phase4-final2-layout`: 787/787 sealed outcomes across all ten viewports in 76,135 ms.
+  The gzip is 4,653 bytes with SHA-256
+  `9c870d4393e89d589bf06cf241932faae1dd20b1c06e8b64fb7cf910fc06fe31`; decompressed JSON is
+  106,048 bytes with SHA-256
+  `66a1a38188b0ccdcb48f9aeea03834e46795a679c8b510372e6686b65c3d1c4b`. Layout report schema v2
+  embeds browser/CDP provenance but no Git/source identity, so this is a truthful named result and
+  chronology-associated predecessor, not standalone exact-source proof.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260827_202045397.json.gz` preserves run
+  `20260827-phase4-final2-scenemem`: 42/42 outcomes in 10,177 ms with exact clean begin/end source
+  binding and complete browser/server/workspace-lock cleanup. The gzip is 22,275 bytes with
+  SHA-256 `f05b6859acd77bd6780b0b58c637f85b1a6f53fbea17602ec25300bd711d2070`;
+  decompressed JSON is 305,569 bytes with SHA-256
+  `b9e6e737fbc0a89ca0ecc6d8764a3dd2aca1dde7ded022fde6d800409ac749b9`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260827_202147686.json.gz` preserves run
+  `20260827-phase4-final2-compendium`: 78/78 outcomes in 45,728 ms, exact clean begin/end source
+  binding, complete report lifecycle, active budget SHA-256 `91b91b53…a012`, matching browser
+  authority and matching producer SHA-256 `4bdd3e36…2cb4`. The gzip is 441,302 bytes with SHA-256
+  `0ab5536b76a08c85c882f1bc33f819da14dd9a2b356fbda5ec19be6287c48616`;
+  decompressed JSON is 8,634,871 bytes with SHA-256
+  `fe70ee276ec97e9954d5299b4c00682014caa52296b9c443a255f2bc6bf67dbc`.
+- `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_202908578.{json,log}.gz` preserves terminal run
+  `20260827-phase4-final2-slice`, executed from `20:22:04.353Z` through `20:29:08.578Z`
+  (424,225 ms), with exact clean begin/end source, parent/child exit `1/1`, no source change and no
+  automatic retry. The report gzip is 91,012 bytes with SHA-256
+  `1578d5e5bd23f87dcfb68daec17d105fad93779c44d70adf4c4bca10c66aa655`; decompressed JSON is
+  820,968 bytes with SHA-256
+  `d999b6d15c6a123c3b0d2da2ddb783b7312778123a87ffc3ddd0f314b8d7ff57`. The log gzip is
+  42,579 bytes with SHA-256
+  `d9e815a903038f6c95b56348f1ddf65455e84c5af34879bb121a0803549abd7c`; decompressed log is
+  352,256 bytes with SHA-256
+  `20bfd7c607d5fbab74d5dfd943cfc660e9f32fc0cd2b030a74fd6bf1d965cffa`.
+
+The six Slice findings reduce to two harness roots. First, the saved-route setup ignored a false
+`__smokeStageStoredV4` result while a zoom-triggered persist was still active, reloaded the prior
+`Current Field Repair` expedition, and cascaded into two saved-route plus two Atlas verdicts without
+ever testing the intended outer-route fixture. Second, Arc 4 required the lease-read counter to stay
+equal across `runtime.release()`, although the owned tab-lease release necessarily performs exactly
+one repository read; its structured-ledger failure was a cascade. The preserved report independently
+proves neither the intended saved-route/Atlas product outcomes, all 30 Arc 4 negative-control
+isolations, nor exact browser/server/lock cleanup. It has browser executable/version provenance but
+does not retain the predecessor gates' full CDP/UA/capability envelope.
+
+All five carriers pass gzip integrity. The red is never rewritten as green and grants no Slice,
+Glass, recovery, HUMAN, hosted, integration, version, release or deployment authority. The bounded
+repair joins the one active persist, blocks new writes, atomically clears/stages every direct
+primary, backup and absent-primary fixture, and retains exact byte/hash receipts even on rejection.
+An executable held-writer control observes the page-owned protected hold under a bounded deadline,
+keeps staging pending while a competing persist settles false, and then requires the released
+writer's safe exact +1 committed revision plus exact staged bytes before the affected saved-route/
+Atlas verdicts. Arc 4 requires the product-exact one-read lease release with missing/
+extra-read controls; protected-save targets additionally retain post-boot byte-preservation checks. A newly signed repaired source must restart the
+immutable chain at Layout under fresh IDs.
+
+### Three source-bound green carriers plus one Layout result carrier associated with signed `7362a0e…`
+
+Signed documentation boundary `7362a0ea32e90b24e4988c81d566b82e20549e66` (tree
+`711573279cbf8debbed7e67847016885e5647527`, parent `4a54c0d…`) is embedded by the standalone and
+serial SceneMemory reports and by the serial Compendium report. Their source/build checks stayed
+clean and unchanged. The retained campaign chronology also associates the Layout result below with
+that sequence, but Layout schema v2 embeds no Git/source identity and its non-commit-tagged run ID
+has no separately preserved clean-HEAD/target-blob execution record. Its carrier therefore proves
+the named 787/787 run result and verifier only, not standalone exact-source binding. Every stage ran
+once with zero automatic retries on Microsoft Edge `151.0.4129.107` / CDP `1.3`. Exact Edge version
+remains provenance only; compatible Edge-family point updates never trigger rebaselining,
+recalibration or threshold movement.
+
+- `ARC1C_SCENEMEM_ACTIVATION_PASS_20260827_180121090.json.gz` preserves standalone run
+  `20260827-phase4-activation-scenemem`: 42/42 outcomes, zero findings, complete browser/server/
+  workspace-lock cleanup and 10,159 ms duration. The compressed carrier is 24,078 bytes with
+  SHA-256 `3758559b54b2a04d5afdaeb59be0de7642ecf0cd73acb4a0d6402e61ad0ac953`;
+  decompressed JSON is 305,652 bytes with SHA-256
+  `e0449818a7f5163a1a4428dc58ee1f31eebdf1a2de37a937dae06be67944dcbe`.
+- `PHASE4_LAYOUT_CURRENT_INPUT_PASS_20260827_180204174.json.gz` preserves serial run
+  `20260827-phase4-final-layout`: 787/787 sealed outcomes across all ten viewports and 76,155 ms
+  duration. The compressed carrier is 4,767 bytes with SHA-256
+  `fe93e9e36cb6f2d4f8d345d315b293c433d3ae74f4fff0110d803c5eab4b31d0`; decompressed JSON is
+  106,046 bytes with SHA-256
+  `89440ca9461c5466e72db09a255c5cc50ffad37b4b176a4737049e47050262fe`. The report and verifier
+  do not independently bind this result to `7362a0e…`; it is retained as chronology-associated
+  run provenance only.
+- `ARC1C_SCENEMEM_CURRENT_INPUT_PASS_20260827_180352756.json.gz` preserves serial run
+  `20260827-phase4-final-scenemem`: 42/42 outcomes, zero findings, complete cleanup and 10,216 ms
+  duration. The compressed carrier is 24,076 bytes with SHA-256
+  `5bef9ef38a619882877187f7d240efebd7d0c4fc19df4ca1d76321c2abdabaf8`; decompressed JSON is
+  305,700 bytes with SHA-256
+  `97fb18592bf4bbd9b79cad17ca3e74392a503f3fbabd2a96935e95aa2c525006`.
+- `COMPENDIUMMEM_CURRENT_INPUT_PASS_20260827_180444018.json.gz` preserves serial run
+  `20260827-phase4-final-compendium`: 78/78 outcomes, zero findings, complete lifecycle and
+  44,852 ms duration under Compendium budget SHA-256 `91b91b53…a012` and producer SHA-256
+  `4bdd3e36…2cb4`. The compressed carrier is 543,916 bytes with SHA-256
+  `742d7391cdf2f93e1a3f3c3dbd0fdd02864ace56a88d847675b16bd7c74196ae`; decompressed JSON is
+  8,655,318 bytes with SHA-256
+  `45849b7e53d784c873abd5ddfa5dafdbee72ec8f0b794a32bea3e6f038c2e34f`.
+
+All four carriers pass gzip integrity. The two SceneMemory carriers and Compendium carrier remain
+truthful source-bound evidence for `7362a0e…`; the Layout carrier remains a truthful result carrier
+without standalone source authority. A later harness-source repair cannot inherit any of them as
+predecessors: the final immutable campaign must restart at Layout on one newly signed unchanged
+source. They grant no later Slice, Glass, recovery, HUMAN, hosted, integration, version, release or
+deployment authority.
+
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_181317782.{json,log}.gz` — seventh Slice red after three green predecessors
+
+Retains serial run `20260827-phase4-final-slice` from the same clean signed source `7362a0e…`.
+It ran exactly once from `2026-08-27T18:06:23.569Z` through `18:13:17.782Z` (414,213 ms), ended
+parent/child exit `1/1`, retained ten screenshot-manifest rows and reported 12 findings across 11
+scopes. There was no automatic retry. Glass and recovery correctly did not start.
+
+The red is diagnostic evidence for stale harness assumptions after earlier product hardening, not
+an Edge-version or new product regression. The first finding showed the exact issue: the truthful
+55-bullet development bulletin was canonical, populated and honest, but Slice still looked for
+`DEVELOPMENT PUBLISHING IS ISOLATED` after the live contract had become
+`DEVELOPMENT PUBLISHING STAYS PARKED`. The related findings exposed four more stale or incomplete
+oracles: Settings imported raw tint `0.55` correctly restores to the live slider floor `0.82`;
+Arc 4 convergence releases runtime/audio before pagehide and therefore needs its own exact release
+witness; Training restoration emits the canonical full-address Earth identity rather than legacy
+leaf ID `p133`; and rejected Arc 2 bootstrap leaves Inventory lazily unmounted, closed and empty.
+The bounded repair updates Slice/Glass and their negative controls without changing product bytes,
+numeric rulers, deadlines or browser authority.
+
+Carrier integrity:
+
+- Report gzip: 175,903 bytes, SHA-256
+  `10d91ce46c1d36c415ca54e03f8b802d3b9b376d960a30f6627fc6d08d124152`; decompressed JSON:
+  1,484,514 bytes, SHA-256
+  `dd79ea9b8106713937204ae7b3070bde1bb958695e986861ae6a9aea54ee86ff`.
+- Log gzip: 78,360 bytes, SHA-256
+  `36f659ae98c5179b6cb4842117c56465555c96d0996a7bbb6bb7bce08beaade7`; decompressed log:
+  636,187 bytes, SHA-256
+  `4f92fb9236c20b0e2ce9933bde2ad3c55d16268e728a0a66a2b34e267f9c69cf`.
+
+Both carriers pass gzip integrity. This red is never rewritten as green and authorizes no retry,
+later browser stage, hosted work, integration, HUMAN claim, version, release or deployment. The
+repaired source must be signed clean and restart the full Layout → SceneMemory → Compendium → Slice
+→ Glass → uninterrupted recovery chain with fresh IDs.
+
+### `ARC1C_SCENEMEM_REPAIR_CALIBRATION_2026-08-27.md` and three calibration carriers — heap-only activation evidence
+
+Retains three independent clean current-product SceneMemory calibrations from commit
+`6c9ad85577bd90d6af883dd7b3f13556d24eb3ad`. Named runs
+`20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2` and
+`20260827-phase4-repair-candidate3` each ran once with zero automatic retries, completed 42/42
+calibration outcomes, kept source/build/producer authority stable, used unique browser targets and
+documents, and released browser/server/workspace-lock ownership. Their deterministic carriers are:
+
+- `ARC1C_SCENEMEM_REPAIR_CALIBRATION_CANDIDATE1_20260827.json.gz`: 22,278 compressed bytes,
+  SHA-256 `bd91cbbfba7daf7fd283f2f1d523a34ca0aed1b46a8d5acb6030889b80df75d1`; 305,457
+  decompressed bytes, SHA-256
+  `d447a5c76bcfbc1e9df87c51f0c35bc6e960c70f6afb31f8bdcf54765efcb39b`.
+- `ARC1C_SCENEMEM_REPAIR_CALIBRATION_CANDIDATE2_20260827.json.gz`: 22,268 compressed bytes,
+  SHA-256 `6f7d0a17cc60fda9c8c07d0e41d9206c1ea7d2c63233c0cc3494e03ecfb67a14`; 305,452
+  decompressed bytes, SHA-256
+  `e6ec574ddd5f475158d78bdd960dbd11541e16502b6a6bfce69a5484b34ba7da`.
+- `ARC1C_SCENEMEM_REPAIR_CALIBRATION_CANDIDATE3_20260827.json.gz`: 22,214 compressed bytes,
+  SHA-256 `6015b3620aadf55b3abdb807cdc19bb97b85b37e21b3f3d8ba2e6a1ddd59fc82`; 305,301
+  decompressed bytes, SHA-256
+  `52d54330efc5ca07ded8645fb1b33e029ed7da11cc18ae892c38e0a0e7ce08f7`.
+
+All three pass gzip integrity and deterministic `gzip -9 -n` reproduction. Independent raw-point
+recomputation found maxima of 11,566,152 V8 / 17,681,258 aggregate heap bytes on phone and
+11,630,936 / 17,636,682 on desktop. The activation therefore changes only the two heap fields per
+profile to 12 MiB / 18 MiB, with 951,976–1,237,686 bytes of strict headroom; every other ruler is
+unchanged. The exact metrics, source/producer/build/browser bindings, headroom, paired-red replay,
+boundary controls and claim limits are recorded in
+`ARC1C_SCENEMEM_REPAIR_CALIBRATION_2026-08-27.md`.
+
+All candidates used Microsoft Edge `151.0.4129.107` / CDP `1.3`. The exact build is provenance
+only: the reusable authority remains compatible Edge-family + CDP/capability/profile contracts,
+so routine Edge point updates never require this calibration to be repeated. These carriers are
+calibration-only and grant no exact-budget certificate, later campaign, HUMAN, hosted, integration,
+release, version or deployment authority.
+
+### `ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_163818607.json.gz` — fixed-growth heap/hidden-panel SceneMemory red
+
+Retains named run `20260827-phase4-successor-scenemem` from clean signed source
+`862a75b316142348636abea442dab15e87393642` on branch `openai/mac`. The source and
+working-tree digests remained unchanged. Full named Layout had already passed 787/787 across all
+ten viewports on that exact source. SceneMemory then ran exactly once with zero automatic retries
+on Microsoft Edge `151.0.4129.107`, revision
+`@419e77616b4ed7d0a544b85cb53ccd5b74d5f135`, JavaScript `15.1.23.12` and CDP `1.3`.
+Exact Edge build is run provenance, not a version pin or rebaseline trigger. The collector ran
+`2026-08-27T16:38:18.607Z`–`16:38:28.871Z` (10,264 ms), retained complete
+browser/server/workspace-lock cleanup, and stopped the serial campaign before Compendium, Slice,
+Glass or recovery.
+
+The report passed 40/42 outcomes. All answerability, warm-range/slope, resource ownership,
+registry, same-document and cleanup outcomes were green. Only the phone and desktop
+`heap-dom-budget` outcomes failed. Phone maxima were 11,580,536 V8 heap bytes, 17,758,550 aggregate
+heap bytes, 898 nodes and 90 JavaScript listeners; desktop maxima were 11,635,116,
+17,687,678, 895 and 89 respectively. The original contract collapsed those independent counters
+to the generic `heap or DOM ceiling was exceeded`; replay through the repaired evaluator now names
+every exact field, observed value and ceiling.
+
+Static ownership and one deliberately non-certifying dirty diagnostic separated two causes. The
+avoidable shell cost was fixed: production Inventory now retains state while closed without
+retaining its hidden row tree or dormant subscriptions, and panel openers share one delegated
+focus-capture owner rather than one closure per opener. The diagnostic reduced measured maxima to
+676/673 nodes and 71/70 listeners, below the unchanged 704/80 ceilings, while warm range, slope and
+all other resource outcomes stayed green. The remaining constant heap delta belongs to the much
+larger synchronously loaded Arc 2–5/F4 product graph (the generated main bundle grew by about
+527 KB), not to a lifecycle leak or Edge `.107`. It therefore requires one evidence-backed
+product-growth calibration from three independent clean current-product candidates; routine Edge
+point updates alone never move a ceiling. This preserved clean predecessor is the paired broken
+baseline: after any heap-only activation it must still fail on its unchanged node/listener excess.
+
+Carrier integrity:
+
+- Deterministic `gzip -9 -n`: 22,315 bytes, SHA-256
+  `dc6c149341323912f410bd32498cf4eec3128b5f13f2bbad16ba3a72f495cb47`.
+- Decompressed JSON: 305,891 bytes, SHA-256
+  `3197ca65a1011bf386067d73515a0bcefd17ab91752a2d9d36af5e5dd055dfd7`.
+
+The carrier passes gzip integrity. It grants no SceneMemory, Compendium, Slice, Glass, recovery,
+HUMAN, hosted, integration, release, version or deployment authority. The dirty diagnostic is
+diagnosis only and is not a calibration candidate or certificate.
+
+### `ARC1C_SCENEMEM_CURRENT_INPUT_FAILURE_20260827_132723548.json.gz` — protected-veteran fixture SceneMemory red
+
+Retains named run `20260827-phase4-final-scenemem` from clean signed source
+`bb5dc7c7f4372f712778af67ace2b5f81b71b99d` on branch `openai/mac`. The source and
+working-tree digests remained unchanged. It ran exactly once with zero automatic retries on
+Microsoft Edge `151.0.4129.107`, revision `@419e77616b4ed7d0a544b85cb53ccd5b74d5f135`,
+JavaScript `15.1.23.12` and CDP `1.3`; exact Edge build is run provenance, not a version pin or
+rebaseline trigger. The collector ran `2026-08-27T13:27:23.548Z`–`13:27:56.729Z`
+(33,181 ms), retained complete browser/server/workspace-lock cleanup, and stopped during the phone
+profile before desktop measurement, contract evaluation or a verdict. The PASS-only named verifier
+exited `1` as required for this terminal `fail`; no later campaign stage or retry followed it.
+
+The phone document stayed answerable, but Shipyard preview settlement never became eligible during
+577 observations inside the unchanged 30-second allowance; the old collector reduced every failed
+predicate clause to `last:null`. This is a settlement timeout, but it is not a performance/deadline
+defect, a reason to extend the unchanged 30-second allowance, or an Edge-version defect. The immutable
+`veteran_rich` baseline includes orphan legacy Mine facts for leaf seed `201` but no source-proved
+full address for that world. Arc 3 correctly enters `legacy-refused` /
+`legacy-seed-missing` protection rather than inventing an address. SceneMemory owns the older Arc 1C
+read-only preview/resource contract, not loaded Arc 3 authority. The red exposed a product coupling
+defect: protection should suppress authority-dependent Engineering details/actions, but the
+independently capability-derived ship preview must remain. The bounded repair must keep this exact
+protected baseline, separate that preview from Arc 3 state and retain field-level settlement
+diagnoses. Glass's distinct both-cleared fixture continues to serve its intentional full-Engineering
+coverage; it must not replace SceneMemory's input or broaden its PASS predicate. The repair must not
+loosen the deadline, change the numeric ruler, or repin Edge.
+
+Carrier integrity:
+
+- Deterministic `gzip -9 -n`: 6,855 bytes, SHA-256
+  `9204f183785947bce7518c925e23c0a846c29213884ff60a3c7d08e3a503dbb3`.
+- Decompressed JSON: 22,302 bytes, SHA-256
+  `452d076d8562d80986ac914cae580f3e0357c786a41391544b6c4cc523323b46`.
+
+The carrier passes gzip integrity. SceneMemory produced no log or screenshot files to preserve.
+This red grants no SceneMemory, Compendium, Slice, Glass, recovery, HUMAN, hosted, integration,
+release, version or deployment authority; a new signed clean successor and a fresh no-retry serial
+campaign are required.
+
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_085237038.{json,log}.gz` — sixth exact-input Slice red
+
+Retains run `20260827085237038-27561-1f8e3c1771b7` from clean signed source
+`1e0141be418ca20a37dd82f1115c00b1a005e090` (tree
+`9360ec502dba9d6a588b365cf2a8b9b6de513514`, parent
+`9ce7ddde01201177dff1cacafc06c8424c4098cb`) on branch `openai/mac`. The commit has a good
+ED25519 SSH signature for `79046704+TheDakk@users.noreply.github.com`, fingerprint
+`SHA256:zEMVsGerZMaUimBJbJwXWrpvRqRitWTIlJZ8NBG8qgk`. The report binds an empty status SHA-256,
+clean-tree digest `f0af1e1d…758a`, `sourceChange:false`, Microsoft Edge
+`151.0.4129.107` executable/version provenance, and exactly zero automatic retries. This Slice
+carrier does not retain protocol version, browser revision, JavaScript version or user agent.
+Edge 151 is run provenance, not a browser baseline, pin, threshold change or rebaseline requirement.
+
+The one attempt ran `2026-08-27T08:52:37.038Z`–`08:59:14.139Z` (397,101 ms), reached the
+terminal D-TRAIN audit, and ended parent/child exit `1/1` with no signal or spawn error. It records
+23 findings across 16 scopes. They reduce to four instrument-contract roots plus one Training
+scope-restoration root: the valid 55-row development bulletin met every semantic and authority
+check but Slice still expected 54; a rejected wrong-ordinal fixture advanced the legitimate
+`persistence.ecology.observedActivePlayMs` diagnostic by 1; contextless Tame-audio checks wrongly
+required the mute policy bit to remain true even though settings may synchronously unmute a still
+blocked, zero-context runtime; and the epoch probe wrongly expected private candidate time to
+publish before its real persistence commit. A Training negative control then rebuilt Survey after
+bypassing its document guard without rebinding the lesson to the new action nodes. The resulting
+early Land cascaded through the remaining drill and made the terminal transaction a valid Skip,
+not the intended Finish. Full Finish therefore remains unproved on this input.
+
+The run outcome-clears the committed native Tame, exact result and one-start voice owner,
+accessible counterpart, close/reopen/expiry lifecycle, Arc 5 compact upgrade/aligned fixed point,
+and Arc 4 publication-convergence assessment and its controls. It also stored and reloaded ecology
+epoch 1 after keeping published epoch 0 before commit. These individually green outcomes are not
+a terminal Slice PASS. Because the overall run was red,
+`arc4SuccessEvidence.required:false`, `ok:null`, `ledger:null`, zero ledger lines and zero Arc 4
+PASS markers were emitted. Glass and recovery therefore remained blocked and were not run.
+
+Carrier integrity:
+
+- JSON gzip: 246,615 bytes, SHA-256
+  `80228b85524544d968ec7f288a73492e390526f0adfb41ed086a2e806dce225e`; decompressed
+  2,193,285 bytes, SHA-256
+  `17063c6b0978956a889ce926307bf5d021a3d330a4e4053f196540e14e260555`.
+- Log gzip: 108,363 bytes, SHA-256
+  `0446d2804248509c14772b5631ac065fed26c1e8b14565c430d911b923a8634b`; decompressed
+  918,043 bytes, SHA-256
+  `a87c5741d409e69797bf024ccdd39f8e94719b7c9efbca6ff4460433ca43ef54`.
+
+Both carriers pass gzip integrity, and the report's declared raw-log size/hash match the
+decompressed log. Ten ignored run-bound PNGs existed at audit time and matched the report manifest
+for codex, Earth, galaxy, Guide, phone, Settings, Sol, Sol marker, Training and universe. Only the
+manifest is preserved here; the pixel bytes are not. This evidence grants no durable visual,
+Glass, recovery, HUMAN, hosted, integration, release, version or deployment authority. The bounded
+repair is local and must receive a new signed clean candidate plus one new no-retry Slice; this red
+is never rewritten as green.
+
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_041238239.{json,log}.gz` — Tame-greeting observation Slice red
+
+Retains clean, stable signed-source run `20260827041238239-16243-cbf9ca66283b` at
+`9ce7ddde01201177dff1cacafc06c8424c4098cb` on branch `openai/mac` and Edge
+`151.0.4129.107`. It ran exactly once with zero automatic retries and ended terminal red with
+parent/child exit `1` after 141,336 ms
+(`2026-08-27T04:12:38.239Z`–`04:14:59.575Z`). Its only finding and scope are the first independent
+root, not a cascade: `harness: Arc 4 exact committed Tame greeting voice did not reach its browser
+outcome within 10000ms (last null)`. The retained `last null` contains no terminal observation and
+identifies none of the predicate's individual clauses, so the outer `harness` scope is not a
+product/instrument disposition. The immediately preceding silent-gesture-arm observation did pass.
+The straight-line collector therefore outcome-clears the prior Deep Scanners/Fabrication,
+Survey/Search/remnant, native Skim, four-action Engineering reload, Mineral/Survey-to-rail,
+storage/stale/publication convergence and Arc 5 v1-to-compact-v2 upgrade/fixed-point stages. The
+post-start audio lifecycle and the later exact nine-stage/14-burn Arc 4 ledger were not reached.
+
+Static source analysis—not a retained browser disposition—identifies a product cross-counter defect:
+the global F3 durable `result.revision` is compared with the independent Arc 4/5 ownership
+`OwnershipStateV2.revision`, so the current owner is expected to reject this first Pertar successor
+as `ownership-stale` even though the two counters legitimately differ. The harness also has an
+independent diagnostic flaw: its success predicate requires the transient active voice and creature
+emitter to be observed simultaneously, so it can miss an otherwise correct short voice, then
+collapses every failed clause to `null`. A repair and rerun must preserve the terminal observation,
+separate durable voice-start evidence from transient-active evidence, and compare the ownership
+state only with an explicit ownership revision; this carrier does not claim those repairs have
+landed or passed.
+
+The JSON gzip SHA-256 is
+`fafac2c12d5223b9488588bdceb7f1524d826cfbc1109d9677df0d324b28810e`; its decompressed SHA-256 is
+`b777b6a5fc4a9188053006743aeae8a7ab43fc81a7415915d7a7a1f1f6c79f8e`. The log gzip SHA-256 is
+`b4a62c25d6603576d07631453e5962eb0cf5f7a08a8087f8eae2ecbc1862cbb4`; its decompressed SHA-256 is
+`99af93e2e9478033be9ba15f7233bd19512a810a1783ff71f4cce80298f26938`. The JSON binds seven
+run-specific 1280×800 PNG manifest rows whose byte counts and hashes matched the ignored files at
+audit time, but those PNG bytes are not preserved. Arc 4 evidence is explicitly non-required with
+zero ledger lines and zero PASS markers. This carrier therefore supplies no durable visual, Slice,
+Glass, recovery, HUMAN, hosted or release evidence.
+
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_032748771.{json,log}.gz` — remnant-oracle and post-reload lifecycle Slice red
+
+Retains clean, stable signed-source run `20260827032748771-8092-d2a0130882c1` at
+`bd6b06baa2511c859a4bc227b1a8736b2097fc9d` on Edge `151.0.4129.107`. It ran exactly once with
+zero automatic retries and ended terminal red with parent/child exit `1` after 119,502 ms
+(`2026-08-27T03:27:48.771Z`–`03:29:48.273Z`). The six finding scopes reduce to two independent
+harness roots. First, stale Mars-source expectations plus an obsolete five-key rendered-scene
+receipt rejected the valid Search/remnant correction and current receipt; findings 2–3 cascaded
+and Skim was deliberately skipped. Product Search and the remnant route were correct. Second,
+after reload Slice reopened and retained Survey, then attempted Engineering without yielding the
+card. The product correctly hid the right rail while the card owned the silhouette; finding 4 is
+that lifecycle defect, while the absent storage input and still-armed/stale-authority findings 5–6
+cascade from it. Deep Scanners, fixed Fabrication and the repaired close/reopen lifecycle are
+outcome-cleared. Skim settlement and every later Slice stage remain unproved.
+
+The JSON gzip SHA-256 is
+`c34bd6fa26f417d664291c206facc8cfe604123166986553a1638570bd652ac2`; its decompressed SHA-256 is
+`e75d57e9dc6205e4ffbb8876a6f5d881a34f4edabc88610f943da71cc6b2a5fd`. The log gzip SHA-256 is
+`e9d642acda78cc232ca97b02dc9ff4345dae0a11c67c8b864f27dc0e56526672`; its decompressed SHA-256 is
+`504060415fab5800acc110b5833956aa0acac0cdfe43f3617b99432584d9c05e`. The JSON binds seven
+run-specific 1280×800 PNG manifest rows and hashes, but their ignored bytes are not preserved.
+Arc 4 evidence is explicitly non-required with zero ledger lines and zero PASS markers. This
+carrier therefore supplies no durable visual, Glass, recovery, HUMAN, hosted or release evidence.
+
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827_025804458.{json,log}.gz` — retained-card lifecycle Slice red
+
+Retains clean signed-source run `20260827025804458-2742-c0c871ee52b6` at
+`8a23e2243d83aca6a14430882e3570dd4fcfb8a8` on Edge `151.0.4129.107`. It ran exactly once with
+zero automatic retries, kept source stable, and ended terminal red after 93,582 ms
+(`2026-08-27T02:58:04.458Z`–`02:59:38.040Z`) with three findings. All three are one instrument
+cascade: Slice reopened and retained the Survey card, then attempted to open Engineering before
+yielding it. Intentional product CSS `body.card-open #railrgt {display:none}` therefore gave
+`railshipyard` a zero rectangle; the visible-rail check, native Engineering-open check, and
+six-second Deep Scanners outcome wait failed in sequence. The valid card-context repair from the
+preceding red is outcome-cleared. The product behaved correctly; Deep Scanners and every later
+Slice stage did not run, so this report is neither a verdict on those outcomes nor a Slice PASS.
+
+The JSON gzip SHA-256 is
+`71e70d485a4707b553b66332f743e2594ce0a7d66bad6ed2a5dd777f56b170c5`; its decompressed SHA-256 is
+`59dd8f6877ebfb7167e15a21f9fd28282f2ceed205fa2693ee6d860d7a806731`. The log gzip SHA-256 is
+`818b550e19403afcab5ebdd97d04a2e8b614b080be9a1ed7a3f604b63b63cc04`; its decompressed SHA-256 is
+`cb77de6eb910fd0580f50962b641d06202be0d3f6b8761a2fb0f88e1eaa23662`. The JSON names and hashes
+seven run-bound PNGs from the earlier completed surfaces, but their ignored bytes are not preserved;
+the manifest is provenance only and supplies no durable visual, Glass, recovery, HUMAN, hosted, or
+release evidence.
+
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260827.{json,log}.gz` — changed-source one-finding Slice red
+
+Retains clean signed-source run `20260827000034983-98202-869d966f2f88` at
+`9d4b2b01a7f89ae15b7c7b175867993af649e9f1` on Edge `151.0.4129.107`. It executed once with zero
+retries, kept source stable and ended terminal red after 92,566 ms with only the Arc 3 harness finding. The JSON gzip
+SHA-256 is `42a1b3caa0a0b5a8b1d1932d3d87c1137ec63d6c05c5af3d80bf6ec0318ffaac`; its decompressed
+SHA-256 is `e23fcac2931755bb12c46e90f9bd3c0ae2dac0292484dc9b9003bc5d158ecbe9`. The log gzip SHA-256 is
+`9388d14422bf5998b0c90527d644f19e1af3f6e37ee489cf1e30c965268b8ce7`; its decompressed SHA-256
+is `ca0b2b40fdab8b933f95f75553d4942e7576961b6285c226d80d4f46cba6b0a7`. Settings and retained-
+Survey focus are outcome-cleared relative to the earlier red. The remaining failure is instrument
+evidence for an impossible card-context oracle, not a product verdict or Slice PASS. Its tool-only
+repair is local and unrerun.
+
+### `ARC4_SLICE_CURRENT_INPUT_FAILURE_20260826.{json,log}.gz` — original three-finding Slice red
+
+Retains clean signed-source run `20260826214541492-83064-b252b137f7a3` at
+`8553bd78a2b097dcf65c71f4d47f6815af8ee8c8` on Edge `151.0.4129.107`. It executed once with zero
+retries and ended terminal red after 92,772 ms with two instrument false reds—Settings' stale
+14-control inventory and an unreachable Arc 3 target—plus the retained-Survey focus product
+regression. The JSON gzip SHA-256 is
+`8c2e6cd06cbebfab9cb7122303f3ef8d89ace065e5175e1b02713a6316fc90f8`; its decompressed SHA-256 is
+`afb2b3c20f555c29afe3c32b3948512bcd95c83793ff3aef68c880bf979c5f11`. The log gzip SHA-256 is
+`1a659612b294017f59b05a9613878a3287a1ecea9fc3076ae966298791c10822`; its decompressed SHA-256 is
+`b1b245c837001f6f9817757cb178974bec626ec3e57ad3532445616f8b81d17f`.
+
+The five earlier JSON reports retain run-bound screenshot manifests and hashes. The PNG bytes themselves remain
+ignored under `port/v2/apps/game/smoke/` and are not preserved by these carriers; none of these entries
+claims durable visual evidence, current-input Glass, the real recovery certificate, or a Slice PASS.
+
+### `ARC4_RECOVERY_REALTIME_INSTRUMENT_FAILURE_20260826.json.gz` — first real-time recovery instrument red
+
+Retains clean committed-source run `20260826024124548-13172-6286d5212e` at
+`35a22b130a65f936769dfcfe88b150f44b4295d9` on Edge `151.0.4129.107`. It executed once with zero
+automatic retries, kept the exact clean source tuple stable, completed its lifecycle and released
+the browser, server, browser context and workspace lock. After fixture and 16-step burn-down passed,
+the `exhausted` stage was the exact first and only failure:
+`exhausted Pertar surface timed out; last=null`; active observation, boundary crossing and recovery
+therefore did not run. The then-current poll required all three exhausted rows to say `depleted`,
+while the valid product surface was Tame `empty` plus Scavenge/Sample `depleted`, all disabled. The
+repaired collector accepts only that bounded `empty|depleted` family with at least one depleted row.
+The gzip SHA-256 is `1dba5bba9c88a8dac085af2c3021cd2da869b9a617f350c62d07a2bba4974d11`;
+its decompressed SHA-256 is `a153a339e12ef36654a3c5b11786cfb5576aa66cb434b056a06b01753cf6b4af`.
+Overall status remains `instrument-fail`; this artifact contains no `recoveryClaimed` field and does
+not claim a recovery PASS or certificate.
+
 ### `PR33_BATTERY_FAILURE_DIAGNOSIS_2026-08-23.md` — four-run diagnosis and bounded repair
 
 Classifies all four consumed PR #33 battery failures, binds the exact fourth-run Linux SceneMemory

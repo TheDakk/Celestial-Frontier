@@ -5,7 +5,33 @@
 two places where the shipped implementation differs from the §3 plan, and one instruction that is retracted.
 *(Previously: "awaiting Nick's deploy call", matched-as-of 2026-07-22 — both stale.)*
 
-> **2026-08-13 v2 display overlay (current port contract):** The universal ten-name
+> **2026-08-31 strict v2 display overlay — current local candidate:** the app now owns an explicit,
+> immutable `RawGradeTier` → `DisplayRarityTier` presentation boundary. It accepts only primitive
+> integer raw values 0–14: raw 0–9 uses the matching canonical ten-name row, and raw 10–14 collapses
+> to display tier 9, **Transcendent** / `#F7F1FF`. Missing, malformed, coercible, fractional or
+> out-of-range input produces no rarity callout; it never defaults to Common.
+>
+> The foreground vocabulary and palette remain canonical. Compendium list/detail plus
+> owned/non-missing Records Binder rarity slots present each written rarity token on a shared opaque
+> `#05070d` reading surface; Exotic therefore remains `#9A5CFF` while the evaluated
+> foreground/background pair stays at or above 4.5:1 across supported glass. Missing Binder slots
+> retain their separate missing-state surface. This is a presentation backdrop, not a ladder, roll,
+> persistence or art-color change.
+>
+> Survey and Compendium list/detail use that strict app projector. Owned Binder slots instead use
+> the domain's canonical `displayRarity` / `RARITY_V17` ladder and color, then apply the same opaque
+> reading surface in CSS. Planet rarity remains absent before
+> landing; Compendium presentation reads the stored raw tier rather than an art/designation label.
+> This is the explicit port mechanism the older re-verification note below required. It changes no
+> `rarityRoll` threshold or draw, raw tier, save field, sort/balance authority, deterministic
+> descriptor, seeded art hue/designation, legacy fingerprint or loot policy. Focused automated
+> source/unit gates cover the boundary. Exact clean signed source
+> `7e089f3432a834636064615ac2da13b2b0ac39df` passed the full no-retry local Compendium → Slice →
+> 12-viewport Glass develop chain with zero Slice findings and zero Glass findings/instrument
+> failures; all named verifiers passed. HUMAN visual judgment remains open.
+
+> **2026-08-13 v2 display overlay — historical foundation; current where the 2026-08-26 overlay
+> does not supersede it:** The universal ten-name
 > ladder remains player vocabulary, but **Spectral class** is retired as a visible
 > survey field. V2 filters that legacy descriptor row without changing deterministic
 > descriptor output. Planet rarity is completely absent before landing—there is no
@@ -21,7 +47,7 @@ two places where the shipped implementation differs from the §3 plan, and one i
 > Drop pools disclose their source/ranges and reload cannot reroll a receipt. See
 > `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md`; this direction is not yet a live v2 faucet.
 
-> ### ⚠ RE-VERIFIED 2026-07-31 — the plan and the implementation differ in mechanism
+> ### ⚠ RE-VERIFIED 2026-07-31 — legacy mechanism audit; the port action is superseded
 >
 > **1. Names/colors are NOT routed through `displayRarity`.** §3 item 4 specifies that `speciesGrade`,
 > `spectral` and `colorGrade` resolve names/colors via `displayRarity` / `RARITY_V17`. **They do not.**
@@ -30,11 +56,15 @@ two places where the shipped implementation differs from the §3 plan, and one i
 > rewriting rows 9–14 of `GRADE_TIERS` to read `Transcendent`/`#F7F1FF` — **in the data, not via a
 > conversion function.** The outcome matches the spec; the mechanism does not.
 >
-> **Why it matters:** `spectral` has **no clamp call at all**, so display correctness rests entirely on
-> those table rows staying collapsed. Restore the old names to rows 10–14 and every creature surface
-> silently reverts, while `displayRarity` keeps clamping correctly and every test that exercises it
-> keeps passing. **The port should implement the explicit `RawGradeTier → DisplayRarityTier` conversion
-> this section originally specified** (plan §16.3), rather than carrying the collapse in the table.
+> **Why it still matters to legacy v1:** `spectral` has **no clamp call at all**, so its display
+> correctness rests entirely on those table rows staying collapsed. Restore the old names to rows
+> 10–14 and every creature surface silently reverts, while `displayRarity` keeps clamping correctly
+> and every test that exercises it
+> keeps passing. At this 2026-07-31 audit boundary, the port recommendation was to implement the
+> explicit `RawGradeTier → DisplayRarityTier` conversion from plan §16.3 rather than carry that
+> table-dependent mechanism forward. **The current 2026-08-26 candidate has implemented that strict
+> app projector**, as recorded in the overlay above; this paragraph is no longer an open port action
+> and does not change the legacy table.
 >
 > **2. The old names were not fully deleted.** §0 calls for deleting Anomalous / Unique / Empyrean /
 > Eternal / Omnipotent. They are gone as *rarity names*, but survive as `GRADE_TIERS[*].pre` (**1767–1771**)

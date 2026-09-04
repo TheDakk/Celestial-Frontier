@@ -12,8 +12,9 @@ sheets."* These are the visual reference Gate F's art rubric is judged against.
 
 **Do not build a pixel-comparison gate on these.** A browser screenshot is not
 byte-reproducible: it varies with browser revision, GPU and driver, font rasterisation,
-sub-pixel antialiasing, and DPR. The pinned Edge revision (`tools/deps.pinned.json`) makes
-them *comparable*, not *identical*.
+sub-pixel antialiasing, and DPR. The exact Edge revision recorded in
+`port/baseline-v1.8.9/environment.json` is historical provenance that helps interpret them; it is
+not the current root-gate identity and never makes screenshots byte-identical.
 
 The sha256 in `MANIFEST.json` exists to detect **file corruption in git**, not to compare
 renders. A hash mismatch after a browser update is expected and means nothing.
@@ -65,6 +66,6 @@ spike needs a before/after comparison.
 node tools/uishot.js <outDir>
 ```
 
-⚠ Requires the pinned browser — `npm run preflight` first. Regenerating on a different Edge
-revision produces valid screens that will not hash-match these; that is expected, and the new
-revision should be recorded in `tools/deps.pinned.json` if it becomes the reference.
+⚠ Requires a compatible browser — `npm run preflight` first. Regenerating on a different compatible
+revision produces valid screens that will not hash-match these; that is expected. Retain exact
+browser provenance with the new run, but do not repin or rebaseline merely because Edge updated.

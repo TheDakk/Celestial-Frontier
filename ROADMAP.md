@@ -17,106 +17,96 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-08-23 · ARC 1 MERGED · F3 NEXT ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-04 UTC · CC4D7C9 LOCAL GAPS PROVEN · FOUR BOUNDED ROBUSTNESS ITEMS · NO HOSTED AUTHORITY ◀◀◀
 
-### Current integration state
+### Exact boundary
 
-- PR #33 merged normally into `develop` as
-  `8998ffb77ca5b1f3123d7ea776c41db6e23bd24e` after terminal-green
-  `test-battery` run `32646110946` (one attempt, no retry; battery 50m29s).
-  The approval label was removed. Arc 1A's Compendium, Arc 1B's explicit scene
-  ownership, and Arc 1C's normalized ship state/read-only Shipyard are integrated.
-- The terminal run included SceneMemory, Compendium, Slice Smoke, Glass Matrix,
-  persona synthesis, and preview packaging. It is integration evidence, not a
-  production release, whole-Gate closure, true-GPU-byte measurement, or physical-device
-  heat/battery evidence.
-- `main`, the production site, and the parked development-preview publisher are
-  unchanged. No release, deployment, version bump, publication, or save-schema change occurred.
+- **OpenAI/Codex on macOS:** `/Users/nick/Projects/celestial-frontier-openai-mac`,
+  **openai/mac**, tracking **origin/openai/mac**. Startup was clean and synchronized at
+  **cc4d7c920083c3c630a9c8c8e6fc5a6e40f5e0d4**, tree
+  `976027042d01f87ace54d57eafe0363cd685e415`. Base `develop` remains
+  **7a9f4c1370dd84292388d718c38ff34214f6203b**.
+- Nick authorized the bounded local proof/robustness batch, documentation, signed commit and
+  normal **branch-only push**. No label, dispatch, retry, PR metadata change, merge, release,
+  version bump or deploy is authorized. PR #35 is Ready/open/mergeable with no approval label.
+- The source commit containing this handoff intentionally does not embed its own SHA. The final
+  Git handoff and `git ls-remote origin refs/heads/openai/mac` identify the pushed candidate.
+  Never reinterpret the cc4d7c9 browser evidence below as a certificate for its descendant.
+- SSH origin: `git@github.com:TheDakk/Celestial-Frontier.git`; last authentication account
+  **TheDakk**, fresh fetch/read PASS. GitHub visibility verified **PUBLIC**. Budget mode
+  **UNFROZEN**, private fallback cap **3,000**, **zero authorized hosted attempts**.
+  Push/PR synchronization triggers no workflow; `test-battery` is owner-label-only.
+- Exact review and audit: `audits/PR35_CC4D7C9_FORENSIC_REVIEW_20260904.md` and
+  `audits/PR35_CC4D7C9_LOCAL_PROOF_AND_ROBUSTNESS_20260904.md`. Prior handoffs moved
+  verbatim to `ROADMAP_ARCHIVE.md`; no history was deleted.
 
-### PR #34 Compendium ruler repair
+### Completed local evidence — unchanged clean cc4d7c9
 
-- Runs `32665404776` and `32677088518` are consumed terminal-red, were not retried, and had their
-  labels removed. The second exact Linux report proves the first repaired activation succeeded,
-  then the Close/reopen activation passed a one-shot row check before a deferred
-  ResizeObserver/render turn invalidated its point. A passive 20-second wait issued 112 observations
-  and ended on a clipped 51 ms command with a timely root heartbeat. This is a virtual-row
-  positioning race, not a memory leak or a 51 ms product SLA.
-- The exact report is retained as `audits/PR34_COMPENDIUM_GHA_32677088518_FAILURE.json.gz` with
-  raw/gzip SHA-256 `544015e9…` / `cc5ed778…`. The bounded local correction repositions only through
-  the existing native-scroll path, consumes a double-render boundary, re-proves thumbnail
-  settlement, and requires the same exact owned point before and after that boundary. It then sends
-  one press/release and checks the immediate detail receipt; no click retry or timeout widening exists.
-- Collector `6d681d19…` changes measurement authority to `6a961df8…`. The former active budget
-  `208af955…`, its samples, baseline and local certificate are historical only. Clean repair source
-  `a95889d…` produced three independent 78/78 Edge `.101` candidates and the paired legacy baseline
-  retained by activation commit `d21ba26…`; no numeric memory ceiling was widened and the baseline
-  still breaches 14 phone / 13 desktop fields. Active budget SHA-256 is `faa160b3…`. Exact-budget
-  run `20260823-pr34-render-stable-row-certification` then passed 78/78 plus named verification on
-  clean `d21ba26…`; raw/gzip report hashes are `42753d5e…` / `a2ff5b00…`. PR #34 remains Draft and
-  unmerged; this local proof does not authorize another hosted attempt.
+- Slice `20260904025322131-97983-4d9021b5767b`: **PASS**, **369,040 ms**,
+  including real Shipyard disclosures, source-bound log and ten retained screenshots.
+- Full Glass `20260904030025751-98655-51d159101e76`: **12/12 PASS**, **116,676 ms**,
+  zero findings/instrument failures; bound to that exact Slice.
+- Named Glass verifier: **PASS**. Diagnostic projection: **PASS**; gzip **95,047 bytes**,
+  base64 **126,732 / 700,000 bytes**, complete summary **129,124 / 900,000 bytes**.
+- Chrome targeted `small-phone`, `compact-phone`, `primary-phone`, then `large-phone`:
+  all **PASS**. The extra large row supplies genuine Chrome evidence because the old retained
+  Edge row cannot satisfy the unchanged hosted Chrome-only jq filter.
+- Exact workflow jq extracted like `scenemem-workflow.test.ts`: **both real reports PASS**,
+  no provenance rewriting or altered filter. IDs, durations, hashes and recoverable compressed
+  carriers are in the audit. No product/instrument result was retried.
+- Full chain used Edge **152.0.4191.62 / CDP 1.3**. Targeted rows used official isolated
+  Chrome for Testing **152.0.7977.82 / CDP 1.3** in a temporary directory. No system
+  browser was installed or made default; Chrome processes are closed. Keychain access is
+  unnecessary; Nick may dismiss its prompt. No keep-awake process was started in this batch.
 
-### Remaining Arc 1 evidence
+### Four coverage-neutral robustness changes
 
-- HUMAN review remains required for Arc 1A's six Compendium list/detail/focus images
-  and Arc 1C's phone/desktop ship silhouette and caption readability.
-- Real-device iOS/iPadOS/Android/desktop accessibility, heat, and battery evidence
-  remain open. Arc 1 does not close Gates C, D, I, or any release gate.
+1. Existing changed-input Glass preflight: **5 → 7 minutes**, with its three literal pins.
+2. Pinned Edge **151.0.4129.101** download: **curl transport retries only**
+   (`--retry 3 --retry-all-errors --retry-delay 5`). URL, SHA-256 and certification no-retry
+   rule unchanged; two existing exact-command/mutation literals synchronized.
+3. Shipyard settlement waits for **active and debounced persistence writes both zero**.
+   Debounce count comes from the existing read-only
+   `__smokeSettingsPersistenceDiagnostics()`; no product API/schema change.
+4. `command -v jq >/dev/null` is the first preflight command.
 
-### Next implementation spine
+Independent code review is **CLEAR** after correcting an initial wrong-source debounce lookup.
+No controls, schemas, verifiers, rebaseline, product/instrument retries or gameplay changes were
+added. Existing creatures, plants, biomes, Guardians, loot, graphics, audio, saves and release
+identity remain untouched. Current README, codebase reference, process laws and budget agree.
 
-1. **F3 — persistence authority, split stores, and receipts:** revision/CAS-safe
-   mutations, immutable receipts, v4→v5 migration/recovery, and the tab lease.
-2. **F4 — active-play clock and SessionRNG:** replayable outcome authority and
-   migration away from wall-clock accrual.
-3. **Arc 2 — item instances and readable economy:** only after F3/F4 establish
-   safe mutation, time, and outcome authority.
+### Verification and exact remaining boundary
 
-### SSH and branch discipline
+Working-tree develop profile: **268/268 files, 2,785 passed / 1 skipped**, all three TypeScript
+programs, art/override/spec audits green. That run preceded the reviewed debounce-source correction;
+the final clean tracked-input rehearsal is the final-source static authority. Existing Glass
+selftest, pinned-Edge preflight selftest, Actions policy **66/66**, and root validation/fingerprint
+all pass. No new test inventory was added.
 
-- Use only the matching app/OS/root/branch row in `PARALLEL_GIT_PROTOCOL.md`;
-  Codex macOS is
-  `/Users/nick/Projects/celestial-frontier-openai-mac` on `openai/mac`.
-  All agent roots use `git@github.com:TheDakk/Celestial-Frontier.git` and their
-  local 1Password SSH Agent; no HTTPS/PAT fallback or copied private key.
-- Before a machine's first GitHub write, require the exact-root/branch check,
-  `ssh -T -o BatchMode=yes -o ConnectTimeout=15 git@github.com` (the expected
-  authenticated no-shell exit is 1), and `git ls-remote origin HEAD`.
-- The stale `backup/*` and `hotfix/v12-mobile` remote branches were pruned after
-  being confirmed merged, unused, and PR-free. Do not delete active
-  `openai/*`, `anthropic/*`, `develop`, or `main` branches as cleanup.
+After the complete source/docs commit, run the requested
+`node tools/tracked-input-preflight.mjs --profile=develop` once on the unchanged clean candidate.
+Retain its exact terminal result, duration and log hash in the Git handoff; a red blocks the push.
+Then push `openai/mac` normally and verify the full remote SHA. Do not start another browser
+battery: Part A already ran once on the explicitly requested ancestor. Do not apply a label.
 
-### Streamlined GitHub protocol
+### Paired handoff
 
-- `develop` requires a current, terminal-green `battery` check, normal merge
-  commits, resolved review threads, and an up-to-date head. It requires neither a
-  review count nor the former extra approval for unattributed changes.
-- `branch-flow-guard` remains a manual diagnostic workflow, but is not a required
-  merge context. Do not dispatch it to unblock a green PR.
-- While `GITHUB_ACTIONS_BUDGET.md` is `UNFROZEN`, Nick authorizes one exact
-  changed-head `test-battery` attempt. After that exact battery is green, the
-  agent removes the label, marks a draft Ready if necessary, and merges normally
-  without asking Nick for a second review/guard/merge approval. A red or incomplete
-  battery remains a hard stop.
-- One authorization remains intentionally explicit: a new hosted attempt for a new
-  head. It controls Actions spend; it is not a second merge approval.
-
-### Fresh-session start
-
-1. Verify the exact app/OS/root/branch row and clean worktree; then
-   `git fetch origin`.
-2. Read this handoff, `PROCESS_LAWS.md`, `PARALLEL_GIT_PROTOCOL.md`, and
-   `GITHUB_ACTIONS_BUDGET.md`; inspect the F3 scope in
-   `port/V2_PROGRAM_ROADMAP.md` before proposing or editing F3 work.
-3. Create no new product scope before F3 is decomposed into a bounded owned batch.
-   Preserve the Arc 1 proof boundaries and current HUMAN evidence list.
-4. Claude/Anthropic should receive merged work only by fetching `origin` and
-   merging `origin/develop` into a clean `anthropic/mac` at its next batch—no
-   manual file copying. Nick does not need to open Claude now.
-
-**Current side:** Codex macOS is on `openai/mac`; PR #34's render-stable repair is committed at
-`a95889d…`, active calibration authority is `d21ba26…` / budget `faa160b3…`, and its clean local
-certificate is 78/78 with named verification. Evidence/documentation changes are descendants only.
-**GitHub step:** none.
-**Release status:** `develop` contains Arc 1; `main` and both sites are unchanged.
-**Actions budget:** `UNFROZEN`; PR #34 runs `32665404776` and `32677088518` are consumed
-terminal-red and their labels were removed; no new hosted attempt is authorized by this handoff.
+- **OpenAI/Codex:** finish the final clean tracked-only rehearsal and authorized branch push;
+  no hosted run or merge follows from this batch. Final Git handoff supplies exact SHA/proof.
+- **GitHub:** existing **PR #35**, base **develop**, source **openai/mac**. Metadata remains
+  unchanged in this branch-only batch and must be refreshed within future explicit authority.
+  Copy-ready title: `feat(v2): complete roadmap campaign and harden action-time CI evidence`.
+  Copy-ready description: “Completes the established V2 roadmap without recreating gameplay;
+  preserves the fifteen-stop history and cc4d7c9 forensic review; proves real Slice/full Glass and
+  raw Chrome jq paths locally; adds only seven-minute canary margin, pinned-download transport
+  retries, jq presence and debounce-aware Shipyard settlement. Existing static/selftests pass;
+  exact final tracked proof is in the handoff. No hosted result is claimed. Changes remain on
+  openai/mac until a green authorized PR #35 merge; no release or deployment.”
+- **Anthropic/Claude Code:** Nick may open Claude for read-only review after the verified push.
+  Do not edit the OpenAI branch or copy files. These changes are not in `develop`. Only after
+  a future green PR #35 merge should a clean `anthropic/*` branch fetch and merge
+  `origin/develop` before polish work.
+- **Future hosted authority:** exact final head + base above, `test-battery`, PR #35,
+  `actions-budget-approved`, maximum **122 total runner-minutes** (2 authorization + 120
+  battery), **one attempt, no retry**, merge only if terminal green. None authorized now.
+- **Release:** `develop`, `main` and the live site are unchanged.

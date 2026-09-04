@@ -255,6 +255,7 @@ describe('scene texture ownership', () => {
     expect(source.match(/\bdrawSystem\(/g)).toHaveLength(2);
     expect(source.match(/\bdrawSurface\(/g)).toHaveLength(2);
     expect(source.match(/buildCurrentSceneTransaction\(\)/g)).toHaveLength(4);
+    expect(source.match(/buildCurrentSceneTransaction\(surfaceRoster\)/g)).toHaveLength(1);
     expect(source.indexOf('world.addChildAt(nextLayer, insertionIndex);')).toBeLessThan(
       source.lastIndexOf('retireFineTextureOwner(previousLayer, previousScope);'),
     );

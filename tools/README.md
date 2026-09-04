@@ -72,6 +72,29 @@ is `FROZEN`, do not push, label, dispatch, rerun, merge, sync, or publish; build
 > executable resolver, so it cannot validate or select
 > a different browser; bootperf still owns its older CDP lifecycle and is not covered by
 > the launcher's lifecycle claims.
+>
+> On POSIX the launcher does not treat a released numeric PGID as ownership. A detached Node
+> sentinel remains the group leader, launches Chromium non-detached in that group, reports exact
+> browser lifecycle. After group TERM, it forces and observes the exact browser child when needed,
+> flushes that lifecycle receipt, and only then performs the acknowledged final group-SIGKILL
+> barrier while its own identity is still live. An acknowledgement-loss watchdog owns the same
+> terminal group kill; all three shutdown phases fit inside the caller-owned bound.
+> Parent success requires exact final group identity plus sentinel SIGKILL exit/close. The parent
+> performs no negative-PGID probe or signal at any point; only the still-live sentinel addresses
+> its own group. Lifecycle acceptance is phase-specific: before owned Close, every exit/error is
+> red; after a `Browser.close` request, only `{ code: 0, signal: null }` is clean; during POSIX
+> owned shutdown, clean exit or exact SIGTERM/SIGKILL is accepted, while a crash signal, browser
+> error or nonzero exit stays red. Missing POSIX browser lifecycle is terminal. Shutdown diagnostics
+> remain latched until ownership is terminal, and only afterward does the parent remove and
+> stability-check the profile before returning the error. Stderr-forwarding failure and
+> sentinel-protocol drift also fail closed. Windows retains
+> bounded `taskkill /T` then `/T /F`: an external integer/null-signal exit is accepted only after
+> the exact tree request succeeds, and an exit observed while that request is pending is deferred
+> and checked against its latched result after cleanup. Executable controls retain pure SIGABRT
+> classifier cases and use a receipt-synchronized real-process code-17 exit after `Browser.close`,
+> plus missing-lifecycle, TERM-resistant forced-SIGKILL and pre-barrier-diagnostic controls. The
+> integrated fake-Windows `openChromiumCdpWithLauncher` run has code 17 arrive before taskkill
+> resolves and proves no `Browser.close`, one successful tree request, and socket/profile cleanup.
 > On macOS, Chromium cannot register with LaunchServices from inside the Codex
 > Seatbelt profile. The resolver/launcher therefore rejects
 > `CODEX_SANDBOX=seatbelt` before browser spawn and directs the command through
@@ -159,12 +182,16 @@ is `FROZEN`, do not push, label, dispatch, rerun, merge, sync, or publish; build
 > upgraded to the exact .86 package, and launched 4/4 times. `ubuntu24/20260816.277` already carried
 > .86, made plain apt a no-op, and launched 0/3. This supports one bounded hypothesis only:
 > SHA-verify the exact `.deb` and install those same bytes once with `--reinstall` to normalize the
-> hosted runner. It does not prove the fix. The preflight selftest now statically requires both
+> hosted runner. It did not prove the fix. The historical preflight selftest statically required both
 > workflows' exact ordered URL/SHA/download/hash/reinstall/version/executable/following-preflight
-> chain and rejects per-workflow removal plus outside-step decoys; that browser-free control is green
+> chain and rejected per-workflow removal plus outside-step decoys; that browser-free control was green
 > but cannot prove live launch. This workflow-only normalization changes no timing, retry, fallback,
 > live repository-tool behavior, product, browser package/version, measurement, producer, budget, or
-> authority. Exact `731b2e2…` passed locally; hosted run `32420327368` was consumed at its
+> authority. Current Compendium workflows supersede that package-manager hypothesis: they
+> SHA-verify `.101`, validate embedded package/version metadata, extract it under a fresh
+> `RUNNER_TEMP` owner, and directly pin that executable in preflight, certification and named
+> verification. The structural control now rejects apt use and every missing/wrong extraction or
+> owner-path binding. Exact `731b2e2…` passed locally; hosted run `32420327368` was consumed at its
 > 40-minute lifecycle-pending ceiling with no product verdict. PR #32 remains blocked, no rerun is
 > authorized, and HUMAN review plus Arc 1B remain open.
 >
@@ -208,28 +235,33 @@ is `FROZEN`, do not push, label, dispatch, rerun, merge, sync, or publish; build
 > Activation `b3957e1…` makes budget/test `546d3a81…` / `ef06252a…` active with all prior numeric
 > ceilings still strict. Exact-head battery and HUMAN review remain open.
 >
-> **⚠ The revision matters.** `uilayout` compares against **stored numbers** (787 checks
-> / 10 viewports). Addendum D: thresholds set on one browser revision drift on the next,
-> and Edge **auto-updates silently on Windows**. The pinned revision lives in
-> `tools/deps.pinned.json`. **A version bump is an explicit re-baseline decision, not a
-> regression** — which is why `preflight` only *warns* on drift by default, and fails
-> only under `--assert-pin` (use that in CI).
+> **Browser point version is provenance, not root-gate identity.** `uilayout` seals the
+> exact 787 `viewport/surface/name` outcomes across 10 viewports and requires complete
+> browser provenance, but it does not compare browser-specific numeric samples. A compatible
+> Chromium-family update therefore never triggers a rebaseline or threshold change. Root
+> authority is canonical Chromium-family product + CDP `1.3` + the source-derived CDP method
+> contract + complete executable/product/version/revision/UA/JS/protocol provenance. The exact
+> Edge 150 build remains only in `port/baseline-v1.8.9/` as historical capture evidence.
 
 ## preflight.js — can this machine run the battery at all?
 
 ```
-npm run preflight            # check + report; drift warns
-npm run preflight:ci         # drift is a hard failure
-node tools/preflight.js --selftest  # discriminates supported/excluded Node lines
+npm run preflight            # fail-closed compatibility/capability/provenance check
+npm run preflight:ci         # the same fail-closed compatibility policy in CI
+node tools/preflight.js --selftest  # bidirectional Node + browser-authority controls
+node tools/browser-capability-probe.mjs --selftest  # portable method/sentinel/cleanup controls
 node tools/preflight.js --json
 ```
 
 Checks Node against the declared supported release lines, confirms the npm packages
-resolve, then launches the same canonical browser used by `uilayout.js` through its
-owned CDP probe and compares `Browser.getVersion` to the pin. An executable that is not
-a working Chromium-family browser is therefore blocking, not a warning. `bootperf.js`
-uses the same executable resolver and pinned `ws` transport, but retains its legacy
-fixed-port/startup/cleanup lifecycle.
+resolve, derives the exact CDP method inventory from `uilayout.js` + `bootperf.js`, then
+launches the shared canonical browser owner through `browser-capability-probe.mjs`. The probe
+exercises every declared method with small response sentinels and publishes evidence only after
+target/process cleanup. Wrong family, malformed product, CDP mismatch, incomplete provenance,
+missing capability, cleanup failure, or an executable that is not a working browser is blocking.
+Point-version differences are accepted and retained in provenance. `bootperf.js` uses the same
+executable resolver and pinned `ws` transport, but retains its legacy fixed-port/startup/cleanup
+lifecycle.
 Exit 0 = everything required is present; exit 1 = a suite cannot run.
 
 > **Negative-controlled in both directions before it shipped, and it caught itself.**
@@ -237,9 +269,12 @@ Exit 0 = everything required is present; exit 1 = a suite cannot run.
 > `CF_BROWSER=/nope` reported **PASS, exit 0** — while the layout gate rejected the
 > same value. A green-but-wrong state *inside the check written to prevent green-
 > but-wrong states*. Fixed so preflight and the shared resolver both reject it. Required
-> controls now include: supported Node lines accepted · 20.18/21/22.12/23 rejected · an
-> executable non-browser rejected by a real CDP launch · normal browser run → exit 0 ·
-> bogus `CF_BROWSER` → exit 1 · drift under `--assert-pin` → exit 1.
+> controls now include: supported Node lines accepted · 20.18/21/22.12/23 rejected · older,
+> current and synthetic-future canonical Edge plus Chrome/Chromium accepted · non-Chromium,
+> malformed product, wrong CDP, missing provenance, missing capability and weakened declared-method
+> inventory rejected · command failure, empty screenshot/profile, false target-close and browser-
+> cleanup mutants rejected · an executable non-browser rejected by a real CDP launch · normal compatible
+> browser run → exit 0 · bogus `CF_BROWSER` → exit 1. There is no point-version assertion mode.
 
 > ## ⚠ NEVER run `tools/extract.js` after editing `main.js`
 >
@@ -609,7 +644,8 @@ malformed content fails at the deadline before socket construction. The tool rec
 canonical executable plus product,
 revision, user agent, JavaScript version and protocol version. Startup and commands
 are bounded, an early browser exit retains its exit state and bounded stderr head and
-tail, and cleanup owns TERM→KILL escalation plus removal of only its validated profile.
+tail, and cleanup owns the sentinel-anchored POSIX terminal group barrier (or Windows taskkill)
+plus removal of only its validated profile.
 
 Every ordinary invocation atomically replaces `tools/uilayout-report.json` with
 schema `celestial-frontier/uilayout-report@2`: first `running`, then terminal `pass`,
@@ -643,7 +679,11 @@ schema-v2 layout run plus exact-run verification inside the same local battery. 
 does not embed Git source, the caller must also retain a commit-tagged run ID, unchanged target blob,
 and matching clean HEAD/status before and after the run and verifier. Terminal-green PR test-merge
 CI corresponding to that pushed head remains separate; this reference does not cache the current
-outcome.
+outcome. For the current sentinel repair, the final seven same-source targeted Glass viewports
+passed as bounded diagnostics. Exact SSH-signed implementation
+`1f80b0ad050763bf478b2364ad0194e389a7096e` then passed the hermetic tracked-input develop profile
+and one unchanged-source/no-retry, named-verified Compendium **78/78** → zero-finding Slice → Glass
+**12/12 / 104/104** chain.
 
 ## uilayout.js — the training-card reachability pass
 

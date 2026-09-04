@@ -1,12 +1,264 @@
 # Celestial Frontier — Master Art Direction
 
-**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` Arc 1C art/resource overlay matches code as of 2026-08-23 and appears immediately below; the Arc 1A and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
+> **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
+> all dated art/evidence blocks below remain immutable):** hosted run `33584052508` tested exact
+> head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once with no retry. Layout passed **787/787**;
+> the first and only red was the production-quarantined SceneMemory fixed-eighth phase-validity
+> synthetic allocator selftest,
+> before the develop admission chain began. The authorization is consumed and no hosted authority
+> remains.
+>
+> The local uncommitted successor makes all live SceneMemory native-heap work
+> **production-only/quarantined** while deterministic controls remain universal. Develop admission
+> is **Compendium → Slice → Glass**; production/release, only after explicit SceneMemory activation,
+> is **SceneMemory → Compendium → Slice → Glass → Recovery** on unchanged source. This changes no
+> painter, palette, biome, creature, plant, Guardian or other art/product contract and closes no
+> HUMAN visual criterion. See `ROADMAP.md` for the live handoff and `port/v2/README.md` for the
+> canonical battery commands.
+
+> **2026-09-01 current Guide/Charter/D-TRAIN green evidence overlay (supersedes every older
+> “current” label below; all dated art/evidence checkpoints remain immutable):** exact SSH-signed
+> source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+> `25cb76916c8f3fcd00a916864abb9402932cdbec`) passed the complete browser-free profile at
+> **263 files / 2,719 passed / 1 skipped**. Its unchanged-source, named-verified, once/no-retry
+> chain passed Compendium `20260902020238003-42290-3e0d5a9601` at **78/78** with zero findings;
+> develop Slice `20260902020406920-42750-f6dc8783b4cd` with zero findings/scopes (report/log
+> SHA-256 `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` /
+> `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`); and Glass
+> `20260902021048274-43570-053d2c926673` at **12/12** viewport/reload outcomes and **104/104**
+> controls with zero findings or instrument failures (report SHA-256
+> `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`). Four exact carriers
+> under `audits/` retain the Compendium report, Slice report/log and Glass report.
+>
+> This successor dynamically observes and native-scrolls to the real Guide tail under one clipped
+> absolute deadline with bounded exact restoration, preserves the progression-ceremony queue while
+> `productActionInFlight` owns a newer action and resumes it exactly once, and waits for D-TRAIN's
+> stable raw/live/focus/pending-cleared bulletin fixed point. The only product behavior change is
+> ceremony presentation ordering. The legacy game, creature, plant, biome, Guardian and loot
+> structures, deterministic generation, painters, palettes, silhouettes, anatomy, crops, audio,
+> CSS, save schema, numeric rulers, browser pin/version policy and no-retry policy are unchanged.
+> The green automated chain crosses
+> the current art surfaces; it does **not** close any outstanding human visual/art-direction gate.
+> Hosted run `33572309149` remains immutable red and its ninth authorization consumed. No new hosted
+> attempt, push, merge, release, version bump, publication or deployment is authorized.
+
+> **2026-08-31 current a046 collision-control repair overlay (supersedes every older “current”
+> label below; dated art/evidence checkpoints remain immutable):** exact clean SSH-signed source
+> `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry as
+> `20260831155807329-24237-1c6d2e89d5` in **64,166 ms** with named verification. Its exact-source
+> develop Slice `20260831155943782-24588-a98f13f2c7b7` stopped red once/no-retry after **359,647
+> ms** with one `world-identity-collision-controls-failed` scope; named verification exited 2 and
+> Glass did not run. The Compendium art/catalog stage and base product collision outcome were green.
+>
+> The red was an inert instrument mutant caused by mixing newest-first Atlas rows `[Beta, Alpha]`
+> with receipt order `[Alpha, Beta]`. Signed repair/evidence commit
+> `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives a distinct measured sibling, guards inert/equal
+> cases, causal-stops a red base and proves reversed order executably. It changes no product,
+> genome, anatomy, palette, silhouette, crop, painter, organism, biome, vista or structural art
+> contract; no save, gameplay, ruler, timeout, retry or Edge contract changed. The complete develop
+> profile is green at **253 files / 2,561 passed / 1 skipped**, all
+> TypeScript programs and the **34-source** art gate; independent review is **CLEAR**. Current
+> Compendium producer/budget authority remains
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. The **77-bullet**
+> bulletin remains byte-identical. A fresh signed Compendium → Slice → Glass chain remains; no
+> hosted attempt, release, publication or deployment is authorized.
+
+> **2026-08-31 historical 4002/4822 local successor overlay (superseded above;
+> dated art and evidence checkpoints remain immutable):** exact clean signed source
+> `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry as
+> `20260831130356666-917-5be54ef202`. Its exact-source develop Slice
+> `20260831130558500-1306-cb8d7cf92834` stopped terminal red once/no-retry after **303,148 ms**
+> with **3 findings / 3 scopes**; Glass did not run. The art/catalog stage was fully green, and the
+> Slice roots were whole-`style` restoration false reds after correct phone geometry mutants.
+>
+> Exact SSH-signed source `4822cab92ae3f300635ef16678f860f60a6872e8` changes only the Slice
+> CSS-property carrier and causal-stop tests. It changes
+> no creature, genome, painter, organism, biome, vista, palette, silhouette or art structure. The
+> full develop profile is green at **253 files / 2,557 passed / 1 skipped**, all three TypeScript
+> programs and the **34-source** art gate. The cumulative **77-bullet** development bulletin retains
+> rendered ordered SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+>
+> Current Compendium producer/budget authority remains
+> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. A new clean signed
+> candidate restarts **Compendium → Slice → Glass** exactly once and unchanged-source; SceneMemory
+> remains production-only. No Edge rebaseline, timeout increase, retry, hosted attempt, merge,
+> release, version bump, publication or deployment is authorized.
+
+> **2026-08-30 historical exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (supersedes narrower
+> “current” authority language below; every dated art/evidence checkpoint remains immutable):** exact
+> clean SSH-signed evidence source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium
+> **78/78** once/no-retry in **64,108 ms**. Its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> **111,490 ms** with exactly one Arc 0 Landing publication-oracle scope. The exact carriers and
+> replay are preserved; the stored Slice remains FAIL, and Glass and Recovery did not run.
+>
+> The retained old document kept an exact live product and open Pertar post-Survey card; the stale
+> instrument also required that card to be closed. The replay binds that contradiction and its
+> missing historical held `cardCode`/target capture; the current uncommitted runner atomically
+> captures those values and moves the complete future decision into browser-free contracts. It changes no painter output,
+> organism, biome, vista, seed, genome, anatomy, silhouette, palette, crop or interaction geometry.
+> Final browser-free validation is green at **251 files / 2,501 passed / 1 skipped**, with all
+> TypeScript programs green. The cumulative **74-bullet** development bulletin has rendered ordered SHA-256
+> `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
+>
+> Active derived Compendium producer / index / owner / generated-service-worker authority is
+> `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3` /
+> `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c` /
+> `assets/main-BYnoCcc9.js` (`13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`) /
+> `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Current Scene build
+> authority is `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17`; Compendium / Scene
+> budget-file SHA-256 is `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` /
+> `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. Fixed art rulers,
+> numeric ceilings, historical samples and 78 outcomes are unchanged; an Edge point version is
+> provenance only. No fresh repaired-head browser, Glass, Recovery, Gate, HUMAN, hosted, merge,
+> release, version or deployment authority exists.
+
+> **2026-08-30 historical sealed single-file worker overlay (supersedes the execution-late repair and narrower PWA
+> authority language below; all named earlier art certificates remain immutable history):** exact
+> signed source `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran
+> `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` once/no-retry and stopped
+> terminal `product-fail` after **3,115 ms** at phone Planetside: the first species-painter import
+> failed, zero of 78 outcomes ran and all 78 were blocked. Exact descendant
+> `dc6004cf4426df72bea141ac77b0be927f36886c` repeated that product failure after **3,112 ms** in
+> `20260830-pr35-execution-late-dc6004cf4426-compendium-certification`, despite worker `ready`;
+> neither red was retried or followed by a successor stage. The 38d carrier is 6,053
+> gzip bytes / SHA-256
+> `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`, 37,825 raw bytes /
+> SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`, and independently
+> replays **4/4**.
+>
+> This was worker packaging/PWA ownership, not art generation. Worker construction remains lazy,
+> while the species-art worker statically owns the painter and the biome-vista worker statically owns
+> the renderer. Production builds reject `import()` and external static JavaScript imports in both
+> entries. Fetch-time adoption is removed; every unpinned non-navigation request remains exact 503.
+> No network fallback, cross-build guess or retry exists.
+>
+> Current measurement / contract / collector authorities are
+> `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+> `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; final derived producer /
+> index / owner / SW is `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b` /
+> `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0` /
+> `assets/main-C621myNE.js` (`2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`) /
+> `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Scene build / game-main is
+> `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+> `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; Compendium / Scene budget
+> files are `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` /
+> `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. Combined worker/painter asset
+> `assets/species-art.worker-DnnSDKMy.js` is
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. The green printer binds a
+> **964-module / 52-file** build. The repair changes no painter byte/pixel path, seed, genome,
+> anatomy, silhouette, palette, crop, organism/biome/vista structure, art ruler, ceiling or
+> 78-outcome inventory. This derived reseal is not browser evidence; certification, HUMAN art and
+> physical-device judgment remain pending.
+
+**STATUS:** Everything before the 2026-08-09 GP7 addendum describes the legacy `main.js` / v1.8.9 art contract, last verified against that source on 2026-07-24. The current `port/v2` universe-wide visual implementation remains live as of 2026-08-30 under the sealed single-file worker/PWA boundary above. Its completed local automated browser chain belongs only to historical exact signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae`; current local successors do not inherit that evidence. HUMAN and physical-device judgment remain open. The Arc 1A/1C and GP7 overlays preserve earlier implementation and reset history. ⚠ §6.1 RE-corrected 2026-07-31 (twice in one day): the `BIOME_ATLAS.md` catalog it cites **does exist** and always did — at `tools/BIOME_ATLAS.md`, tracked since 2026-07-21. An earlier correction the same day declared it non-existent after checking only the repo root. It has now been audited against v1.8.9 and promoted to the root as `BIOME_ATLAS.md`.
 **The single source of truth for ALL organism, biome, vista, and color art.**
 Consolidates every art-direction document + every decision from the 2026-07-20 art
 session. When this and a source upload disagree, THIS file wins (it records the
 decisions we actually made). Content catalogs (`BIOME_ATLAS.md` at the repo root, plus the
 fauna/flora data-pack CSVs) remain the *content* source of truth; this is the *direction* source
 of truth.
+
+## 2026-08-29 current local Compendium thumbnail lifetime overlay — dirty diagnostic only
+
+The thumbnail repair changes resource materialization and lifetime, not art structure. The worker
+still paints the same deterministic 440px scratch portrait, downsamples the same settled 132px PNG
+and publishes the same identity-checked data-URL protocol evidence. Only a successful settled
+`thumb132` result is decoded in the Window realm and cached behind a Window-owned revocable Blob
+URL. Selected 440px detail portraits remain data URLs. No seed, genome, painter, rig, silhouette,
+proportion, palette, crop, pixel output, biome treatment or creature/plant/fungus/microbe structure
+changes at this boundary.
+
+Closed surfaces retain at most the most-recent **17** unleased thumbnails—the exact nine
+Compendium plus eight Planetside identities exercised by one desktop SceneMemory route, also
+covering the 16-item phone union. This bounded warm owner prevents the same route from starting a
+fresh worker/import and repainting every thumbnail on every cycle. An active lease protects every
+Blob URL used by a visible image. Oldest-unleased eviction, explicit cache release, device-cap trim,
+consumerless/invalid/oversize/duplicate result, protocol mismatch, late invalidated-producer result,
+non-BFCache pagehide and final loader disposal revoke the external URL exactly once. A BFCache
+suspend retains the same live Document cache and resume reuses it; it does not revoke art the
+restored document still owns.
+
+The earned lesson is two-sided: zero closed-cache entries can manufacture repeated cold worker/V8
+churn, while retaining base64 data URLs can breach page backing storage. Blob URLs remove those
+large base64 strings from the page heap/backing representation, but their PNG bytes remain real
+browser-owned resources. Broker cache counts and encoded-byte ceilings therefore remain truthful
+and must not be weakened merely because storage moved to the Blob registry. The current dirty-source
+SceneMemory diagnostic reached **44/44** and is useful repair evidence only; it is not clean
+exact-source certification and does not supersede the historical signed evidence below.
+
+## 2026-08-29 current v2 universe-wide visual implementation — historical exact-source automation
+
+The richer treatment is now a live **universe-wide** rendering language, not a Sol-specific filter.
+`VisualTreatmentV1` defines the finite `color` / `contrast` / `lighting` / `material` / `atmosphere`
+vocabulary for galaxy, system, planet, biome, species and ship identities. Existing Canvas painters keep
+sole ownership of geometry: their galaxy/system/planet/biome/species results receive one bounded
+surface-space `source-atop` warm/cool depth pass after painting, with the transform reset inside a
+saved context and the original alpha silhouette retained. The deterministic Shipyard SVG uses the
+same material/light language around its existing hull paths and exact capability hardpoints. Raw
+semantic masks and identity-black occluders remain explicit exceptions. Creatures, plants, fungi
+and microbes share the production/audit/worker species finisher, so the polish cannot diverge by
+route.
+
+All **43** live biome keys are now one exact immutable `BiomeProfileV1` authority in
+`@cf/domain-biome-profile`, with schema `cf.domain.biome-profile.v1` and pinned content digest
+`bpd1-6fce883d4d70e3b6bde0fb184b416e8e` binding the authored signature, fauna/flora-family, hazard
+and weather records. The art subpath is a compatibility re-export, not a second table. The preserved
+full `960×430` compositor is live from normal Planetside landings through the canonical world/roster projection and the
+generic, gas-deck, abyss and reef scene routes. It is generated lazily in a single module worker,
+validated at the message and result boundaries, stale-fenced by document/generation/world/scene/
+biome identity, and published only after a successful mount into a one-entry fail-soft cache. Worker,
+protocol, copy, mount or deadline failure leaves the already usable globe intact. Portrait phones
+fit the entire authored composition as a full-width horizon band above the fitted globe instead of
+cover-cropping most of the scene; landscape and desktop keep the complete scene centered.
+
+The saved **Visual effects** and **Screen shake** controls now drive real app-owned policies.
+Effects Off permits zero optional particles and no animated emissive modulation while retaining
+the seeded base glow that identifies bright stars and quasars; reduced motion and low-tier devices
+retain bounded static decoration; full-motion medium/high tiers allow bounded animated particles and
+emissive breathing. Shake
+requires Effects On, Screen shake On and Full motion simultaneously, then caps concurrent impulses
+by device tier; changing a preference cancels disallowed active impulses. These policies affect
+presentation only and never content generation, hit geometry or save identity.
+
+Browser-free coverage is explicit rather than inferred: `visual-authorities`, `canvas-treatment`,
+`surface-polish`, `planet-sprite-finisher`, `speciesportable`, `biome-vista`,
+`biome-vista-ecology`, `biome-vista-surface`, `biome-vista-protocol`, `biome-vista-cache`,
+`universe-polish-main-wiring`, `visual-effect-policy`, `camera-shake-policy`,
+`visual-policy-main-wiring`, `shipyard-preview` and `art-tools-browser-resolution` exercise the
+authorities, live consumers and deliberate missing/mismatched/bypass controls. The seven raw-CDP
+art tools share one cross-platform resolver; explicit `CF_BROWSER` is authoritative. Before evidence
+work, connected `Browser.getVersion` must identify Chrome, Chromium, Edge (`Edg`) or HeadlessChrome
+with a complete four-part point version, executable/product/revision/UA/JS provenance and CDP `1.3`;
+each tool emits that exact tuple, while `speciesaudit`, `proofsheet`, `speciesexport` and JSON output
+from `conformance` / `gp71compare` also persist it.
+Compatible point updates are accepted and never change an art baseline or threshold.
+
+The current SceneMemory **input-v4** contract now has **44 outcomes**: the historical 42-outcome
+scene/resource ruler remains intact, while one added phone outcome and one added desktop outcome bind
+`surfaceVistaWorkerActive`, `surfaceVistaMounted`, `surfaceVistaCacheEntries` and
+`surfaceVistaCachePixels` through the cold zero state, first mounted vista, repeated surface/ascent
+cycles, BFCache and reload-clear/replacement cleanup. The semantic cache ceiling is fixed at one
+entry / 412,800 pixels. This contract and its bidirectional mutation controls are browser-free green.
+Historical exact signed source `3f69e88ea8e34fdb8d9913276601b426ada783ae` passed the then-current
+SceneMemory contract **44/44** in 10,561 ms inside one serial, zero-retry local campaign: Layout
+**787/787**, Compendium **78/78**, Slice with zero findings, Glass across all **12** viewport classes
+with zero findings or instrument failures, and Recovery with a real uninterrupted
+**1,200,297.5 ms** active-browser observation. Every immutable stage passed its source/predecessor-
+bound named verifier, and the product/art sources remained unchanged through the chain.
+
+This is the complete historical exact-source local automated certificate for that universe-polish
+scope; it is not evidence inherited by the current local successor, HUMAN art acceptance or whole-
+Gate/campaign closure. Fixed-seed and six run-bound Compendium images still
+require HUMAN phone/desktop judgment; assistive-technology review and physical-device frame-time,
+heat, battery and true GPU/resource evidence remain open. The presentation-only biome authority
+does not decide gameplay-changing D-9e or own audio playback; those are separate authorities. No hosted run,
+production release, version bump or deploy follows from this certificate.
 
 ## 2026-08-22 v2 Arc 1C overlay — current ship and surface presentation
 

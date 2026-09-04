@@ -1,6 +1,1269 @@
 # Celestial Frontier — PROCESS LAWS
 
-**STATUS:** current as of 2026-08-23. **This is a REFERENCE, not a log** — per CLAUDE.md’s
+> **RIGHT-SIZE THE OUTER ENVELOPE, EXERCISE REPEATED LATE FAILURE CLASSES EARLY, AND REPLAY
+> EVIDENCE INDEPENDENTLY** (2026-09-03 UTC). Workflow/job/step caps are orchestration ceilings,
+> not product timeouts or evidence rulers. When measured hosted duration leaves no operational
+> margin, change the sealed workflow and policy together without adding a job, matrix, retry,
+> browser pin or weaker verdict. The separately authorized pinned-package curl transport retries
+> do not retry a product/instrument result or the battery. PR #35's current successor keeps one
+> two-minute authorization job
+> and one battery job, raises the battery cap from 90 to **120 minutes**, and raises Compendium's
+> independent step cap from 40 to **55 minutes**. Compendium's fixed measurement ruler, numeric
+> ceilings and outcome inventory do not change. A future exact attempt is therefore capped at
+> **122 total runner-minutes**, once and without retry; the number grants no hosted authority.
+>
+> One conditional changed-input diagnostic may exercise multiple minimal rows sequentially inside
+> one existing independently capped step. Give each row its own immutable ID/report, stop after the
+> first nonzero or red result, and never substitute the diagnostic for the unconditional
+> certificate. The current seven-minute Glass canary runs `small-phone` Inventory first, then
+> `large-phone` Capture/Shipyard heartbeat behavior. Full exact-Slice-bound 12-row Glass remains
+> unchanged and mandatory.
+>
+> A stored all-true assessment is not independent verification. Current Glass PASS authority is
+> `cf-v2-glassmatrix/v2`; v1 PASS is refused even for a targeted run. Re-read exact setup,
+> document, selector, descriptor, connection, focus, replacement, geometry, visibility and
+> cumulative ancestor-opacity facts—including CSS filter opacity—from the retained carrier. A DOM
+> replacement requires a
+> structured `cf-v2-f4-heartbeat-cycle-receipt/v1` proving a completed cycle, null reason and the
+> expected Capture or Shipyard refresh. Negative-control exact `visibility:collapse`, direct,
+> ancestor and filter-based transparency, blank names, stale identity and forged assessment maps.
+> Mandatory
+> artifact upload remains hard-fail; the separate step-summary carrier retains diagnosis but does
+> not soften or replace it.
+>
+> When a forced replacement test follows a periodic heartbeat, quiesce and settle the periodic
+> owner before acquiring the deliberate-cycle baseline. Otherwise the ambient timer can replace
+> the node between setup and quiescence and manufacture the same stale-lineage red the test was
+> meant to prevent. Shipyard settlement requires both `pendingPersistenceWrites` and
+> `pendingDebounceWrites` to equal zero before forcing the heartbeat. A zero/duplicate target
+> with exact false/null facts is coherent product-red
+> evidence; only contradictory counts, descriptors, geometry or style are instrument-red.
+
+> **2026-09-04 UTC clarification (matches current code):** check `command -v jq >/dev/null`
+> before any command in the changed-input preflight. The existing pinned Edge package download
+> alone uses `--retry 3 --retry-all-errors --retry-delay 5`; its URL/version/SHA-256 and every
+> product/instrument once/no-retry rule remain unchanged. Keep existing literal assertions and
+> mutation anchors synchronized with that exact download command; add no duplicate verifier.
+
+> **NATIVE KEYBOARD EVIDENCE FOLLOWS SEMANTIC IDENTITY, AND TERMINAL DIAGNOSIS MUST OUTLIVE THE
+> ARTIFACT SERVICE** (2026-09-03 UTC). A DOM-replacing heartbeat invalidates exact element-object
+> identity without invalidating the current control. Before native Tab, retain a document-capture
+> receipt for every trusted same-document Tab even when its origin is wrong. Reacquire the current
+> controls by their authored action and semantic keys. Trusted delivery, document identity and
+> typed carrier shape are instrument facts; correct origin, current-control presence, semantic
+> lineage, restored focus, stable scroll and visibly painted focus are product facts. Never hide a
+> real focus-restoration regression by filtering its Tab receipt out of the instrument.
+>
+> Force the real replacement lifecycle at the reported viewport: quiesce, validate, resume, run
+> one heartbeat, prove old controls disconnected and current semantic replacements were acquired,
+> then issue native Tab. Negative-control lost restoration before Tab as instrument-green/product-
+> red. Computed focus decoration must be visible: a non-none, nonzero outline with zero-alpha color
+> is not painted evidence.
+>
+> GitHub artifact upload is a separate external service and may fail after a producer already
+> emitted its terminal report. Immediately after Glass, validate the exact immutable terminal
+> report, clean source, profile, predecessor, browser/timing prefix and actionable red shape, then
+> retain a deterministic compressed carrier plus first diagnosis in the step summary. Bound the
+> entire rendered/cumulative summary below the service ceiling, not merely the compressed payload.
+> This projection never changes the earlier Glass result, substitutes for named verification,
+> softens mandatory artifact upload, retries, or advances Recovery. PR #35 run `33708487067`
+> earned both halves: Glass stopped on `large-phone` with only `idleKeyboardFocus:false`, then
+> artifact creation independently timed out after finding 27 files, leaving no complete hosted
+> JSON. The bounded local successor passed the forced-heartbeat `large-phone` path in **11,037 ms**
+> with both old nodes disconnected, current replacements acquired, restored Scavenge focus and
+> trusted Tab to visibly focused Sample. Both independent reviews are CLEAR.
+
+> **FOCUS RESTORATION DOES NOT OWN SCROLL, AND GEOMETRY EVIDENCE MUST BE ATOMIC**
+> (2026-09-03 UTC). A DOM-replacing authority heartbeat may preserve the same semantic control,
+> but a passive rerender does not own navigation or reveal: restore that replacement with
+> `focus({preventScroll:true})`. An explicit action-settlement path may retain default focus when
+> revealing its outcome is part of that operation's contract. Do not apply one focus policy to
+> both owners merely because they share a helper.
+>
+> A geometry verdict must derive target rectangle, ancestor scroll, translated layout rectangle,
+> centre hit-test and focus from one reacquired live node in one browser-side chronology across
+> stable frames. Force the ordinary replacement heartbeat in deterministic control, bind its exact
+> document and quiesce/resume receipts, reacquire the replacement node and prove both restored
+> semantic focus and unchanged scroll. Recording a focus witness or Close scroll sample is not
+> enough: require `focused:true` for every judged action/Close and require the Close sample to be
+> settled. A point outside its retained rectangle is an instrument
+> contradiction and causal-stops before product assessment; a wholly absent target may remain
+> coherent evidence for the product assessor.
+>
+> PR #35 run `33694235427` demonstrated both halves on one unchanged hosted source/browser. Its
+> early small-phone preflight passed, but final Glass combined a Sample rectangle centred at y
+> `173.171875` / scroll top `2538` with later y `504.171875` points on `NAV` after a five-second
+> heartbeat replacement and bare focus restoration moved scroll to `2207`. The old report labelled
+> that product red because its multi-command carrier had no same-epoch rule; the corrected class is
+> instrument. Preserve both reports—the early PASS establishes timing variability, not closure.
+> The bounded repair adds deterministic chronology, not a timeout, retry, browser pin, job or
+> control. Exact signed source `7cfb42d…` later passed its tracked-input rehearsal and one
+> unchanged-source, named-verified Compendium → Slice → Glass chain once/no-retry. That local
+> certificate grants no hosted authority.
+
+> **WHEN A HOSTED-ONLY FAILURE CLASS REPEATS LATE, EXERCISE THE SAME MINIMAL OUTCOME EARLY—NEVER
+> SUBSTITUTE IT FOR CERTIFICATION** (2026-09-02). A canary is justified only when it uses the same
+> hosted OS/browser path and the smallest real product row that contains the unresolved class. It
+> must be conditional on the exact runtime/instrument input graph, bounded independently, no-retry,
+> noncertifying, source-stable, and retained under its own immutable ID. Its external verdict must
+> type-check evidence arrays, bind the canonical executable rather than a configured symlink,
+> verify exact viewport/protocol provenance, and require the negative controls that own the prior
+> failure. The original full certificate remains unconditional and exact-predecessor-bound.
+>
+> PR #35's thirteenth run reached Glass only after approximately **70m46s**; its first 320×568@2
+> row then repeated a Glass-only uncertainty. The successor workflow places one five-minute
+> `small-phone` Glass preflight immediately after the shared Chrome launcher selftest and before
+> Layout, Compendium and Slice when Glass/product runtime inputs changed. It requires canonical
+> hosted Chrome/CDP `1.3`, unchanged committed source, terminal noncertifying PASS, zero typed
+> findings/failures/blocked controls/retries, and the exact modal-focus/retention/protected-action/
+> publication/convergence controls that span attempts 12 and 13. The unique preflight report is
+> archived, while the final Compendium → Slice → full 12-row Glass chain is unchanged and
+> mandatory. Test-only sources, declarations, docs and the worker-only typecheck config do not tax
+> the canary. Focused workflow/scope/evidence contracts pass **28/28** and Actions authorization
+> policy controls pass **64/64**. The complete working-source `develop` profile passes **264/264
+> files, 2,739 passed / 1 skipped**, all TypeScript programs and every art/route/specification
+> owner. Exact signed `4a0228d…` passed that hermetic profile and one unchanged-source local
+> Edge/CDP small-phone row in **13,625 ms** with zero findings, instrument failures, blocked
+> controls or retries and all five required Inventory controls. It is noncertifying and does not
+> prove Ubuntu/Chrome. This changes no product, timeout, retry, browser-version, ruler or release
+> policy and grants no hosted authority.
+
+> **A TARGETED NEGATIVE-CONTROL CAMPAIGN MAY OMIT ONLY CONTROLS ITS OBSERVED BASELINE CANNOT
+> LAWFULLY EXERCISE** (2026-09-02). Every selected portrait baseline remains mandatory. Full
+> 12-row Glass still requires at least one visible-trail/non-fallback baseline and exactly one
+> portrait-band plus one trail-fallback control. A targeted eligible baseline carries that same
+> exact-once requirement; a targeted lawful fallback-only baseline instead requires exactly zero
+> executions and names both controls as scoped omissions. The terminal missing-control guards must
+> derive from the same predicate. Never weaken baseline eligibility, synthesize different product
+> geometry or count an omitted control as executed merely to make a diagnostic green.
+>
+> Stable targeted small-phone diagnostic `20260902213203634-49535-0e789796749b` had zero product
+> findings and proved the old `planned > 0` campaign rule intrinsically instrument-red for a
+> fallback-only portrait. The bounded harness repair applies the scope semantics above and aligns
+> both terminal guards. Successor targeted small-phone run
+> `20260902213750107-50317-aa753f436e55` passed with zero findings or instrument failures and is
+> explicitly noncertifying. Focused Inventory instrument tests pass **19/19**, the related
+> four-file set passes **37/37**, and typecheck plus Glass selftest are green. This changes no
+> product behavior, control count, browser policy or retry rule. The consolidated browser-free
+> `develop` profile passes **264/264 files, 2,738 passed / 1 skipped**.
+>
+> Exact SSH-signed implementation `64e405bc6678302c5936945c1b34ac5de5407025`, tree
+> `732bcf9930ac36e7661b14cdfd6cde64137d34f4`, passed that tracked-input profile and one unchanged
+> clean, once/no-retry Edge `152.0.4191.53` / CDP `1.3` chain. Compendium
+> `20260902214924248-53897-bef91ee56a` passed **78/78** in **61,826 ms** (report
+> `128763fc…f105`); Slice `20260902215043536-54220-81ac577271ec` passed in **362,381 ms** with
+> zero findings/scopes and ten screenshots (report/log `7f73b8bb…b7c3` / `1b89495e…0eba`); Glass
+> `20260902215703000-54563-41950fd00ea0` consumed that Slice and passed in **114,022 ms** with
+> **12/12** viewports/reloads and **104/104** controls, zero findings/instrument failures/blocked/
+> omitted work or retries (report `de298933…adc2`). Every named verifier and independent code/docs
+> review is green/**CLEAR**. SSH-signed evidence/reference descendant `112bf7f…` preserves the four
+> deterministic carriers and passes the final tracked-input `develop` profile at **264/264 files,
+> 2,738 passed / 1 skipped**; the current signed handoff-only descendant passes it too. Local
+> closure is complete, but this certificate grants no hosted authority.
+
+> **COMPOSE AN ACTION VERDICT LAST, AND POLL AN ALWAYS-STRUCTURED OUTCOME** (2026-09-02).
+> A green setup object may carry its own `ok`; spread it before computing the composite action
+> verdict so it cannot overwrite a false native receipt, pending baseline or exact action owner.
+> After native input, every poll returns the current action kind/detail, pending count, revision,
+> binding, persistence/lease, coordinator and diagnostic-hold state. A refusal is a structured
+> terminal red, and a committed Inventory action remains incomplete while its lawful Arc 9
+> progression tail still owns the coordinator. A null-only success conjunction discards the very
+> state needed to distinguish product refusal from missing evidence and is never an acceptable
+> timeout diagnosis.
+>
+> PR #35 run `33674116068`, attempt 1, tested exact head
+> `5ae12c7e161e90b3799d6b49a63e2b0438048da6` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Layout **787/787**, Compendium **78/78** plus
+> named verification, and exact-bound Slice passed; SceneMemory correctly skipped as
+> production-only. Glass then stopped instrument-red on its first small-phone row with zero
+> product findings and exact error `small-phone: small-phone/Inventory action settlement: outcome
+> did not arrive within 10000ms (last null)`. Exact-head Glass had computed a composite `ok` before
+> a later spread overwrote it and returned only success-or-null from settlement. The report could
+> not identify the unsettled clause; it proves no product or browser-version defect and was not
+> retried.
+>
+> The bounded harness-only successor completes and exactly restores the offscreen refusal control
+> before arming anything. It then binds the exact document token, top-frame/default runtime
+> context and origin, uses the live browser-process heartbeat as transport authority, quiesces the
+> F4 heartbeat, and arms one diagnostic product-action hold with an exact sequence increment. One
+> native input must yield the trusted operation/instance receipt and exact held pending
+> no-optimism evidence. Wrong hold sequence/operation, contamination or control plumbing is
+> instrument failure. Release must target that same hold identity. Settlement retains structured
+> terminal/refusal/revision/binding/authority evidence on every observation and continues through
+> a lawful Arc 9 tail until the exact owner is idle. Explicit causal stops follow both pending and
+> settlement outcomes. The 10-second semantic bound, no-retry rule, browser policy, job topology,
+> sealed 104-control inventory and all product/UI behavior remain unchanged. At this pre-browser
+> checkpoint, focused Inventory instrument tests passed **17/17**, the related four-file set passed
+> **35/35**, and typecheck plus Glass selftest were green; the newer targeted portrait evidence and
+> current focused counts are recorded by the law above.
+
+> **A MODAL OWNS BACKGROUND ISOLATION FOR ITS WHOLE OPEN LIFETIME, NOT ONLY AT OPEN**
+> (2026-09-02). Snapshot every existing background root before changing it, observe relevant body
+> child and `inert`/`aria-hidden` mutations for as long as the modal owns the top layer, snapshot
+> each newly encountered root exactly once, and idempotently reassert both isolation halves.
+> Disconnect observation before Close/dispose restores every encountered root's exact prior state,
+> including a root that detached while owned. Independently negative-control cleared `inert`,
+> removed `aria-hidden`, late roots, outside-focus redirection, exact restoration and no
+> reacquisition after release. A focus-wrap control may bypass the focus handler, but it must not
+> create a second real accessibility defect by unlocking or adding reachable body background; keep
+> instrument-only sentinels inside the modal and outside the judged control enumeration. A timeout,
+> browser point-version pin, later sample or retry cannot turn a one-time snapshot into lifetime
+> ownership.
+>
+> PR #35 run `33657402955` earned this law on exact head
+> `bdd8a4c46fbbd8484fb9a36d43bb3f60bf660c17` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Every predecessor through Compendium and Slice
+> passed; Glass then causal-stopped on the first 320×568 row with one product finding and no
+> instrument failure or retry. Inventory retained one correct sheet/detail, safe geometry, 44px
+> controls, exact selected identity and Close focus; only `backgroundLocked:false` failed. The
+> report did not name the unlocked sibling. Source proved the general hole: Inventory locked only
+> the body children present at open while later toast/FX roots and attribute writers remained live.
+> The bounded successor mirrors the existing Import-modal lifetime owner, makes the Glass result
+> name each unlocked root, and changes no loot, save, creature, art, gameplay, ruler, retry or
+> browser-version policy.
+>
+> Exact SSH-signed successor `5004fd36f9fdb2632f323d99f1535e9fb2ac5b95` passed the hermetic
+> `develop` rehearsal and required browser/Compendium controls. On that same clean unchanged source,
+> Compendium `20260902185934666-38136-1560adf2b6` passed **78/78**, Slice
+> `20260902190106514-38463-d9be88c2f213` passed with zero findings/scopes, and Glass
+> `20260902190730548-38863-824672142575` consumed that exact Slice and passed **12/12** viewports,
+> **12/12** reload rows and **104/104** controls with zero blocked/omitted work, findings,
+> instrument failures or retries. Every stage ran once and every named verifier passed. The four
+> deterministic carriers are indexed in `audits/README.md`; no HUMAN, hosted, merge or release
+> authority follows from local automation.
+
+> **NATIVE INPUT ADVANCES FROM OBSERVED OUTCOME, NOT A FIXED GESTURE COUNT** (2026-09-01).
+> A browser driver may issue a wheel, touch, key or pointer gesture, but the gesture is only intent;
+> it does not prove that the owned surface moved or that its target became reachable. After every
+> native input, observe the same document and surface, the hit-test owner, computed overflow,
+> `scrollTop`, the current `maxScroll`, exact target identity and target visibility. Derive the next
+> bounded input from the remaining observed distance, accept a growing maximum as new geometry, and
+> tolerate a dropped gesture only inside an explicit stall budget. Visible-but-not-bottom remains
+> incomplete; hidden, non-scrollable, owner-drifted, target-mismatched and bounded no-progress states
+> are named reds. Success requires the exact tail to be visible at the reached bottom after a real
+> native gesture. One Node-owned absolute deadline must begin before setup and clip every CDP setup,
+> observation and native-input command to its remaining budget; a pure state-machine clock cannot
+> bound a command while that command still owns control. `finally` gets its own short cleanup bound
+> and must restore the exact prior scroll position and inline/computed overflow ownership.
+> Negative-control the hosted progression, a dropped wheel followed by progress,
+> growing content, visible-but-not-bottom, hidden/no-progress, owner drift and every restoration
+> field, plus removal of the remaining-budget option from initial observation, wheel dispatch,
+> re-observation, hidden control or restoration. A browser pin, release-length assumption, larger
+> fixed delta, extra fixed gesture or retry cannot substitute for observed outcome.
+>
+> PR #35 hosted run `33572309149` earned this law on clean same-tree synthetic source
+> `778d3cf58937476a65c550e875b946290c0967b4`. Its one/no-retry develop Slice found the Guide's exact
+> release tail present but invisible after fixed native-wheel progress `0→10000→20000`, while the
+> live maximum was `25829` (`scrollHeight 26476`, `clientHeight 647`). That is a harness action-owner
+> failure, not evidence that Guide content or product scrolling was broken. The bounded successor is
+> content-length- and version-agnostic and changes no product scroll behavior, browser policy, ruler,
+> global deadline or retry policy.
+
+> **A PRESENTATION QUEUE DEFERS BEFORE CONSUMPTION WHILE A RECEIPT-BEARING PRODUCT ACTION OWNS THE
+> RESULT** (2026-09-01). An older durable achievement or rank ceremony may already be queued when a
+> newer product action begins, but it must not take the presentation lane from the action that owns
+> the current receipt and result. The drain callback checks that owner before `shift()`: while the
+> product action is in flight, it leaves the FIFO queue byte-for-byte intact and schedules another
+> bounded drain turn. Once the action settles and publishes its own outcome, the old head resumes
+> exactly once and only that delivered head is removed; every suffix ceremony stays ordered. A
+> replacement reload may deliberately clear presentation work, but ordinary deferral may not lose,
+> duplicate or reorder it. Diagnostics must prove that a drain callback actually ran, saw the live
+> owner, deferred before consumption and later delivered the same key. Negative-control a missing
+> guard, a guard placed after `shift()`, queue clearing, lost rescheduling, duplicate or missing
+> delivery, wrong head/suffix, hidden presentation and owner drift. A delay, longer toast duration or
+> retry cannot create queue ownership.
+>
+> The saturated-Charter finding in the same hosted run retained the correct multi-Chapter aggregate,
+> but toast serial advanced `1→3` because an older queued Share ceremony presented during the held
+> Land transaction. The durable Charter result was correct; presentation order was not. The bounded
+> successor holds the old ceremony intact behind the current receipt-bearing product action, keeps
+> that action's aggregate visible, and proves the Share ceremony resumes once afterward. This changes
+> no achievement rule, reward, save schema, Charter settlement or action retry policy.
+
+> **SEMANTIC CONVERGENCE, NOT A SLEEP, OWNS ASYNCHRONOUS FOLLOW-UP SUCCESS** (2026-09-01). A fixed
+> sleep proves only that time passed; it can sample a lawful intermediate state before a queued
+> follow-up completes. Under one absolute bounded deadline, define the complete semantic fixed point
+> and sample it read-only until every named condition agrees. When live state and durable storage can
+> change between reads, bracket the live/focus sample with two identical exact durable reads so one
+> apparent green cannot splice an old row to a newer DOM or the reverse. Training-to-bulletin
+> convergence, for example, requires Training released and removed, the expected live and durable
+> release identity, no queued release, Guide exclusive ownership, exact bulletin heading and restored
+> Back focus, released chrome, and Atlas closed. The polling interval is not authority and may never
+> dispatch or retry the product action. Deadline expiry retains every failed named condition and
+> causally stops dependent raw, focus, write and reload judgments. Negative-control each semantic
+> dimension, unequal durable brackets, a pending follow-up, and a fixed-sleep snapshot that has not
+> converged. More sleep, a looser assertion or a retry cannot manufacture the fixed point.
+>
+> The D-TRAIN finding in hosted run `33572309149` retained a correct Training transaction through its
+> `released` witness, but sampled before the queued development bulletin finished: live `rnSeen` and
+> durable `rn` still held `1.8.9`, while `releasePending` still held `2.0.0-test`. The bounded successor
+> judges the complete post-Training product outcome under one deadline rather than treating that
+> intermediate snapshot as a transaction defect. It changes no Training transaction, bulletin
+> content, save schema, product timeout or retry policy.
+
+> **EPHEMERAL RUNTIME EVIDENCE IS CAPTURED DURING ITS OWNED LIFETIME, NOT RECONSTRUCTED FROM THE
+> FINAL GRAPH** (2026-09-01). A short WebAudio voice may correctly connect, start, acknowledge an
+> action and then disconnect/destroy during normal natural teardown before later durable reads
+> finish. A final node graph cannot distinguish that healthy lifecycle from a voice that never had
+> a route. Capture one ordered same-prefix temporal witness only while the unique post-mark source
+> and every same-context path endpoint to the real destination are simultaneously live, then retain
+> that immutable witness through teardown. Never replace temporal causality with an unordered union
+> of every edge ever observed:
+> edges from disjoint times can manufacture a path that was never simultaneously live. Require one
+> unique source and one contemporaneous ordered route; negative-control duplicates, missing source,
+> dead ends, a false destination, cross-context hops, edge reordering, connect-before-create and
+> disjoint-time segments. Natural disconnect/destroy may close a proven route but may not erase it.
+> A sleep, retry, longer
+> timeout, audio-content change or final-only poll cannot repair lifetime ownership.
+>
+> PR #35 hosted run `33560546382` earned this law on exact head
+> `c0ad51a1a63f7f649493122ab8d7d5e8588f6a9d` / tree
+> `7b1d851c2ed92ecaaaf26aec8c178a0c145c74aa` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`, through same-tree synthetic merge
+> `f03a68d75dd03512d2dc994febc9bb18e5b52d9c`. Root layout passed **787/787** and Compendium
+> passed **78/78** once/no-retry. Slice stopped after **1,017,899 ms** with two independent harness
+> findings. Its Feed finding retained an exact durable winner—global revision **107→108**,
+> ownership **16→17**, receipt/SessionRNG ordinal **20→21**, one ordinal-20
+> `arc5-companion-feed`, fed **0→1**, flora **1→0** with tombstone, one settled toast, zero pending,
+> same-document reopen and reload fixed point. Page instrumentation also retained one successful
+> post-mark oscillator start/connection in a running context. Only the later raw-CDP final graph had
+> forgotten its outgoing edge after normal voice cleanup, so the reported missing acknowledgement
+> route is harness-lifetime evidence, not a Feed/product failure.
+>
+> The bounded successor adds only the ordered same-prefix route witness above and keeps every
+> invalid topology red. The combined focused boundary passes **3 files / 21 tests**; the fresh-wait
+> ownership file separately passes **8/8**; all three TypeScript programs pass; and the complete
+> browser-free develop profile passes **260 files / 2,675 passed / 1 skipped** (**2,676 total**),
+> **34** clean art sources, **1,014/1,014** routes and **454** declared/non-inert fields. Exact clean
+> SSH-signed source `7a8d3a59b6b516700e45737ec6b67a242a5f785d` / tree
+> `517bf3e159a5694ea8e0f12a0e92b127329e6829` passed that boundary hermetically, then completed one
+> unchanged-source/no-retry, named-verified local develop chain on Edge `152.0.4191.53` / CDP
+> `1.3`: Compendium `20260901230136598-19910-e9b7eb9b5e` passed **78/78**; Slice
+> `20260901230304318-20264-c5997bf96c8f` passed with zero findings/scopes and report SHA-256
+> `12e9b7976dc42c39268f14f27d3945aba73e010387e1c39dff6746aafd832c8a`; Glass
+> `20260901230935469-20802-a0d3c9067c92` consumed that exact Slice and passed **12/12** viewports,
+> **104/104** controls and **36/36** Arc 4 outcomes with zero findings/instrument failures and
+> report SHA-256 `c9dcc93e1c457f2fab04ef821665f6910912a669d275b41509d9a89149e45b64`.
+> The compatible browser point version is provenance only. This changes no product audio,
+> gameplay, Feed semantics, save schema, creature/flora state, product timeout, global CDP
+> deadline, ruler, retry or browser policy.
+
+> **AN INTERVENING UI ACTION THAT MAY PERSIST INVALIDATES A DEPENDENT MUTATION'S OLD WRITABILITY
+> PROOF** (2026-09-01). Opening or closing a panel can be product-significant even when it looks
+> presentational: first-open Guide sets `seenGuide` and starts `persistView()`. Before a later Land,
+> Enter, Travel or other mutation, reacquire the current same-document/token F4 predecessor after
+> the intervening action. Require persistence ready, zero pending writes, no `activePersist` or
+> coordinator owner, writable runtime, live/raw revision and SessionRNG parity, correct route/card/
+> action identity and no scheduled convergence reload. Quiesce the same-document F4 heartbeat
+> before acquiring that post-intervention predecessor and keep it quiescent through three
+> independently early-resolving waits, each capped at 15 seconds: post-intervention writable
+> predecessor, live action-surface observation and post-action durable writable/idle fixed point.
+> Dispatch exactly one native action between those waits and resume the heartbeat exactly once in
+> `finally`. If authority never settles, retain the complete state, persistence/coordinator owners
+> and action's `lastOutcome`; a nullable `last null` summary is not actionable. Never retry the action:
+> transport ambiguity after dispatch or a real product refusal is terminal evidence.
+>
+> The second independent finding in exact run `33560546382` was
+> `phone Earth landing did not reach its phone outcome within 6000ms (last null)`. The fresh phone
+> flow opened Guide for the first time, legitimately armed the `seenGuide` write, closed Guide and
+> immediately touched Land using authority proved before that persistence-producing action. The
+> artifact retained only `last null`; it does not directly prove a specific refusal. Source tracing
+> supports the high-confidence root-cause inference because `doLand()` refuses while
+> `activePersist` is owned. The bounded successor adds the three post-Guide waits above, retains
+> heartbeat quiescence through one Land action and durable settlement, resumes once in `finally`,
+> and preserves full predecessor-timeout diagnosis. Its browser-free verification is included in
+> the green counts above. Exact 7a8d3a5's named-verified Slice and Glass chain above certifies the
+> repaired phone journey on the same unchanged source. The harness observation caps intentionally
+> change from 6 seconds to 15 seconds; no Landing/product behavior, save schema, route semantics,
+> product timeout, global CDP deadline, ruler or retry policy changed. The evidence/docs descendant
+> still requires its own tracked-input proof and creates no hosted or merge authority.
+
+> **A CDP COMMAND OWNS ONE BOUNDED ACTION, NOT AN ENTIRE PERSISTENCE CAMPAIGN**
+> (2026-09-01). Never place a table of UI mutations, debounce waits and durable checks inside one
+> `Runtime.evaluate` whose only owner is the transport-wide command deadline. Give each action,
+> settlement observation and raw durable read its own semantic label and bounded command. A real UI
+> handler must synchronously expose its own immediate-persist or debounce arm; the harness must not
+> call a diagnostic save to make that handler look durable. Quiesce every automatic writer first,
+> deterministically demote answerability, then require one exact revision/commit, zero tails, the
+> expected live field and the raw v5 segment on the same document. Bind the full durable row,
+> including extensions and exact top-level shape, across every receipt so collateral mutation cannot
+> be absorbed as the next action's baseline, and repeat
+> raw/live authority through a quiet window before synchronously restoring ticker, heartbeat,
+> answerability and audio authority. Keep an independent exact manifest of selector, live field,
+> durable alias, persistence mode and restore semantics; a self-describing table can test the wrong
+> control while staying green. Negative-control missing handler arms, unrelated writers, extra or
+> missing commits, wrong raw aliases, collateral fields, stable extra keys, individually valid
+> disjoint receipts/quiet predecessors, late writes, swapped manifests and in-flight-heartbeat
+> answerability. A longer timeout, retry or browser pin
+> cannot repair command ownership.
+>
+> PR #35 hosted run `33542791572` earned this law on exact head
+> `2f0ded864742afd0a39bd8c3e2d53cc2550bbbda` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed **78/78** once/no-retry in
+> **1,780,826 ms**. Unchanged-source Slice then stopped once/no-retry after **295,159 ms** with
+> one harness finding/scope: its monolithic writable-Settings `Runtime.evaluate` exceeded the
+> 30-second command deadline. That old command contained all eleven mutate/restore flows plus **23**
+> diagnostic persists, roughly **42–45** total commits. Seven screenshots survived; Glass and
+> Recovery correctly did not run. The authorization is consumed and the red is immutable.
+>
+> The bounded local successor splits all 22 actions into named command-owned receipts, removes every
+> diagnostic save, binds the independent eleven-control manifest and full raw `settings/v5:settings`
+> row, excludes ticker/heartbeat/ecology writers, and restores exact answerability. Its focused
+> boundary passes **21 files / 227 tests** and the complete browser-free develop profile passes
+> **259 files / 2,667 passed / 1 skipped**, all TypeScript programs, **34** art sources,
+> **1,014/1,014** routes and **454** non-inert fields. Compendium producer authority is rebound to
+> `bd8c2aa69dfe9f21fe3b0e254d3102ff029778cc5ce99b7537b0110ec8ed17e4` without changing the
+> measurement contract, fixed ruler, numeric ceilings, historical samples, browser-family policy,
+> timeout or retry policy. Exact SSH-signed source
+> `cf2d176862a68f090b935fb0362fe3aeb052b978` passed its clean tracked-input develop rehearsal.
+> Compendium `20260901200818363-3312-ad36b2aac8` then passed **78/78** and named verification;
+> unchanged-source Slice `20260901200939671-3633-9b419c68c44c` passed with zero findings/scopes
+> and named-verified report SHA-256
+> `a610fdbff0335a5be145eeeeb88d028fd928099cc4c913a9922db2488a1cf158`; Glass
+> `20260901201556259-3986-34e7be99634e` consumed that exact Slice, passed **12/12** viewports,
+> **104/104** controls and **36/36** Arc 4 outcomes with zero findings/instrument failures, and has
+> named-verified report SHA-256
+> `89b77c333a4ae7713bb85e0155c81cdd226fba702075c3884d311712f76b126c`. Every browser stage ran
+> once/no-retry on one unchanged source. SceneMemory remains production-only/quarantined and
+> Recovery remains outside `develop`; this certificate grants no hosted, push or merge authority.
+
+> **A ONE-SHOT AUTOMATIC LATCH IS CLAIMED ONLY BY THE MUTABLE OWNER'S SYNCHRONOUS CLAIM**
+> (2026-09-01). A caller-side readiness or transient-write check is advisory: the owning action may
+> still refuse while it derives its operation, claims the shared coordinator, or installs its
+> persistence barrier. Refusal or deferral is not an attempt. Keep the same visible intent
+> retryable, and claim its latch exactly once only from the owner's synchronous callback after the
+> coordinator and `activePersist` are owned and before the first await. Later eligible ticks must
+> not duplicate that accepted attempt; leaving the target clears ordinary suppression. Apply the
+> same rule to galaxy arrival and wormhole traversal. Retain controls for early claim, missing
+> claim, caller-green/owner-red, a hold that never clears, wrong intent, callback after the first
+> await, and **held → clear → unchanged intent → exactly one accepted action**. A longer timeout,
+> retry, sleep or browser-version pin cannot repair a consumed latch.
+>
+> PR #35 hosted run `33522000552` earned this law on exact head
+> `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed **78/78**; unchanged-source Slice
+> then stopped once/no-retry after **206,138 ms** with exactly one harness finding:
+> `universe-to-galaxy zoom did not reach its browser outcome within 6000ms (last null)`. Glass and
+> Recovery correctly did not run. The exact authorization is consumed and the red is immutable.
+> Exact clean SSH-signed successor `a45220421195042a8702aa1265e96d40d839fc38` adds an identity-
+> cleared, diagnostics-only `activePersist` hold that creates no IndexedDB write, revision, receipt
+> or product mutation, and makes the browser prove the exact held/release/one-arrival sequence with
+> structured state instead of nullable evidence. Its tracked-input develop rehearsal passed **259
+> files / 2,665 passed / 1 skipped**. Compendium `20260901164254371-82172-eaeba62d1a` passed
+> **78/78** and named verification; Slice `20260901164421191-82525-616ea739fbb1` passed with zero
+> findings/scopes and named-verified report SHA-256 `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`;
+> Glass `20260901165038911-82999-7c3323ea05c7` consumed that exact Slice, passed **12/12**
+> viewports with zero findings/instrument failures and named-verified report SHA-256
+> `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`. Every browser stage ran
+> once/no-retry on one unchanged source. SceneMemory remains production-only/quarantined and
+> Recovery remains outside `develop`; the certificate grants no hosted, push or merge authority.
+
+> **A SHARED HARNESS HELPER MUST BE LEXICALLY OWNED BY EVERY EXECUTION MODE THAT CALLS IT**
+> (2026-09-01). A helper may be correct, source-present and fully covered in one journey while a
+> sibling mode fails at runtime if the declaration lives inside a gate the sibling does not enter.
+> Put a shared helper in the nearest common lexical owner, then parse the complete executable and
+> prove exactly one declaration plus every direct call is inside and after that owner. Retain a
+> re-gated mutant whose outside call is inaccessible. `node --check`, TypeScript and string
+> inventory cannot prove lexical reachability across conditionally entered blocks; execute the
+> affected real-browser mode as a bounded diagnostic before recertification.
+>
+> Exact clean SSH-signed source `3f8f8704c851fc4c7547b8644d008dd1bba5d34f` (tree
+> `979726f7035e7ca3c45de4fb80565b5d0d2d4481`, parent `c0f7215bd1ec…`) passed its clean
+> tracked-input develop preflight, browser-CDP selftest and live Compendium preflight on Edge
+> `152.0.4191.53` / CDP `1.3`. Compendium `20260901072803827-52451-8168677f8e` passed **78/78**
+> once/no-retry in **65,672 ms** with zero findings/blocked outcomes, six review PNGs and exact
+> named verification. Unchanged-source Slice `20260901072936648-52803-f33e3b0b5239` completed the
+> ordinary journey and all ten screenshots, entered collision boot/import/baseline and dispatched
+> the first named Search gesture, then stopped before Search settlement once/no-retry after
+> **336,730 ms** with exactly one harness finding/scope:
+> `waitForF4ActionSequenceFixedPoint is not defined`. The helper was inside the first
+> `!OUTCOME_CONTROLS_ONLY` block while the collision adapter called it outside. Glass correctly did
+> not run. Collision Share was never reached, so this exact run did not cross c0's Share boundary.
+> Preserve this exact red; it is no product finding and cannot be answered with a retry,
+> timeout, browser pin or product change.
+>
+> Exact clean SSH-signed successor `4a595e2fa3305bf2531fc4051d09314490587e83` lifts the unchanged
+> waiter to the enclosing `try`, adds the Acorn declaration/call lexical audit and retains the
+> re-gated negative mutant. Its tracked-input develop preflight passed **259 files / 2,660 passed /
+> 1 skipped**; browser-CDP selftest and live Edge preflight passed. Compendium
+> `20260901123144352-62163-00064c788a` passed **78/78** and named verification. Slice
+> `20260901123326914-62541-f7f7c336aa70` passed and named-verified with report SHA-256
+> `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`; Glass
+> `20260901123953804-63082-f5844810dfb5` consumed that exact Slice, passed **12/12** viewports and
+> named verification, and has report SHA-256
+> `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. Each browser stage ran
+> once with no retry. Edge `152.0.4191.53` / CDP `1.3` is provenance only; compatible point updates
+> never require a rebaseline. No hosted, push, merge, product, Arc, Gate, HUMAN, release or
+> deployment authority follows.
+
+> **A GENERIC WRITABLE F4 SNAPSHOT IS NOT A MULTI-RECEIPT ACTION FIXED POINT** (2026-09-01).
+> A writable, idle snapshot may be an intermediate state between an action owner's receipt and a
+> queued aggregate-progression tail. Derive the exact ordered topology from the exact raw/live
+> predecessor instead of assuming one receipt or accepting the first generic writable state. Share
+> always owns one `arc9-share-send-v1`; if the fifth Share adds `share5` or the post-Share aggregate
+> score raises best rank, exactly one `arc9-progression-refresh-v1` follows. Bind the same document
+> token, raw/live predecessor, receipt/revision/ordinal/SessionRNG spans, final persistence outcome,
+> counters, achievements, rank and unrelated progression inputs. Require two consecutive exact
+> final observations; missing, extra, reordered, intermediate or overshot sequences are red. Do not
+> answer this class with a timeout, retry or product behavior change.
+>
+> Exact clean SSH-signed source `c0f7215bd1ec932f6357b6cfc1e045b5644ba389` earned this law.
+> Compendium `20260901061544208-38321-e0d289a02a` passed **78/78** once/no-retry in **64,697 ms**
+> with zero findings/blocked outcomes and exact named verification. Unchanged-source Slice
+> `20260901061722706-38658-429913af5517` stopped once/no-retry after **337,110 ms** with exactly
+> one `collision-share-1` finding/scope and ten screenshots. The correct product advanced
+> revision/ordinal/Shares from **13/8/4** to **15/10/5**, appended Share then aggregate-progression
+> receipts, added `share5`, kept best rank 3 and did not advance SessionRNG. Glass correctly did not
+> run. Preserve this oracle red; it is not product-bug evidence.
+>
+> The bounded successor changes no product source. The harness reads canonical
+> `catalog`/`v5:catalog` in the same read-only transaction as revision/player/receipts,
+> cross-binds exact catalog arrays to legacy raw plus existing live counts/best/hybrids, and proves
+> the successor preserves both representations. Its c0 fixture carries the exact 26 unlock IDs,
+> its rank oracle spans every threshold/factor including permanent saved-rank no-demotion, and every
+> one of the six Share helper results is bound to the waiter arguments. The combined exact clean
+> signed 4a595e2 successor passed the **259 files / 2,660 passed / 1 skipped** tracked-input profile
+> and the one/no-retry, named-verified Compendium **78/78** → Slice (`19833fe4…`) → Glass **12/12**
+> (`a4f6d9b1…`) chain recorded above. Edge point version remains provenance only. No hosted, push,
+> merge, product, Arc, Gate or release authority follows.
+
+> **GENERATED PAGE-REALM EXPRESSIONS MUST BE EXECUTED, NOT ONLY SOURCE-CHECKED** (2026-09-01).
+> JavaScript embedded in a runner string is outside `node --check` and TypeScript's semantic view,
+> and syntactically valid text can still be a runtime category error. In particular,
+> `({documentToken,state,action})()` evaluates every property and then calls the resulting object;
+> it is not an object-valued observation. Build shared page expressions in one pure owner and
+> executable-test the returned value, exact inner-action call count and invalid-input refusal.
+> Retain the historical malformed outer-call as a red control, and source-inventory every browser
+> driver so a corrected desktop expression cannot leave keyboard or phone with the same latent
+> defect.
+>
+> Exact clean SSH-signed source `138cdee0d3840efd899b5ebdbe974fd12d87e828` earned this law.
+> Compendium `20260901055749358-33363-aa39fce457` passed **78/78** with zero findings or blocked
+> outcomes in **64,730 ms** and exact named verification. Unchanged-source develop Slice
+> `20260901055920314-33714-d47f27b9497a` then stopped once/no-retry after **14,746 ms** with exactly
+> one `harness` finding/scope and two screenshots. Real product boot, navigation and the non-Sol
+> Survey card had completed; the shared desktop fixed-point observer then evaluated its read-only
+> action probe and threw `TypeError: {...} is not a function` before the dependent Charter click.
+> The same malformed builder spelling existed in the keyboard and phone siblings. Glass correctly
+> did not run. Preserve that red and do not answer it with a retry, product change, timeout increase
+> or browser pin.
+>
+> The bounded successor exports one `buildEarlyCoreFlowActionSurfaceExpression` contract and routes
+> all three drivers through it. Its positive control returns the exact object and invokes the inner
+> action once; its historical outer-call mutant throws; empty input is rejected; and source
+> inventory requires all three consumers while forbidding the old shape. Focused verification is
+> **2 files / 52 tests**; all three TypeScript programs pass; the full develop profile is **258
+> files / 2,629 passed / 1 skipped**, **34** clean art sources, **1,014/1,014** routes and **454**
+> non-inert fields. Independent final review is **APPROVED**. It became exact signed c0f7215 and its
+> Slice crossed the former expression stop before the separate Share-sequence oracle above halted
+> the chain. The earlier red remains immutable and grants no hosted/product/Arc/Gate/release change.
+
+> **BOOT KIND IS IMMUTABLE PROVENANCE, NOT A READINESS STATE TO NORMALIZE** (2026-09-01). A
+> genuinely new v5 document may remain `fresh-v5` for its entire lifetime after Training and
+> several durable commits. `current-v5` remains the default writable-authority requirement, but an
+> evidence harness may admit `fresh-v5` only at an explicitly named initial-page boundary with no
+> previous token and the exact original document token. The legacy `migrated-v4` boot kind follows
+> the same narrower rule only when a caller explicitly opts in, supplies a non-null expected token
+> exactly equal to the current token, and supplies no previous token; defaults, reloads and
+> replacements remain strict. Carry that token through every predecessor and settlement wait on
+> the same initial document. Never rewrite the observed boot kind, infer authority from a route, or
+> extend either exception to a reload/replacement/current-document wait. Independently reject an
+> absent/unknown boot kind, token drift, a previous-token exceptional bind, missing scene resources,
+> a pending persistence write, lost live authority, or live↔raw revision/SessionRNG drift.
+>
+> Exact clean SSH-signed source `6030035dff1779c3fc3be7e4f46f376ff01455e8` earned this law.
+> Its hermetic tracked-input profile passed **257 files / 2,622 passed / 1 skipped**, all three
+> TypeScript programs and every art/route/specification owner. Browser-CDP selftest and preflight
+> passed; Compendium `20260901051716174-22348-bea719354e` passed **78/78** once/no-retry in
+> **64,220 ms** with named verification. Unchanged-source Slice
+> `20260901051837279-22717-480519033de4` then stopped once/no-retry after **24,458 ms** with one
+> harness scope, before its first keyboard Milky Way Survey action. The retained revision-5
+> document was fully writable and live↔raw exact; only its legitimate `fresh-v5` provenance failed
+> the old generic `current-v5` predicate. Glass correctly did not run. Preserve that red and do not
+> answer it with a retry, timeout increase, boot-kind mutation, browser pin or product change.
+>
+> That bounded successor became exact clean SSH-signed source
+> `138cdee0d3840efd899b5ebdbe974fd12d87e828`. It retained one pure authority contract, bound the
+> original token across desktop, isolated-keyboard and fresh-phone initial journeys and kept every
+> reload/replacement path strict. Its local Slice crossed the former `fresh-v5` rejection and
+> reached the non-Sol Survey fixed-point observer before the separate generated-expression defect
+> above stopped the run. Thus the boot-kind repair is no longer an unsigned pending worktree, but
+> 138cdee's later harness red still supplied no complete Slice or Glass certificate and grants no
+> hosted, product, Arc, Gate or release authority.
+
+> **A FIXTURE MUTATION MAY BE REBOUND ONLY BEFORE IT IS CLAIMED** (2026-08-31). A browser
+> harness must not infer mutation authority from a target handle, a prior ready observation or a
+> successful independent storage read. Foreground the intended target and require two consecutive
+> ready observations from one exact document token: complete document, published Slice/API/hook,
+> persistence ready, no scheduled convergence reload, and one exact safe authority pair
+> (`hold === null` with `mutationBlocked === false`, or `hold === 'protected-payload'` with
+> `mutationBlocked === true`). Recheck all of it atomically immediately before exactly one stateful
+> hook call. Replacement before the call must return a shaped zero-call `unclaimed` receipt; only
+> that receipt permits a new owner bind. Replacement during asynchronous settlement, a false or
+> throwing hook, malformed receipt, or transport ambiguity after dispatch is terminal and must
+> never be retried. Exact storage readback remains independent diagnosis and cannot turn a missing
+> app owner into a valid stage receipt.
+>
+> Exact clean signed source `6238b8dd3eccf6dd106787b6789ad8bb716deac9` earned this law. Its
+> Compendium predecessor passed **78/78** and named verification; unchanged-source Slice
+> `20260901020100211-91399-de1ddbd28c96` stopped once/no-retry after **302,408 ms** with exactly
+> one harness finding. Protected Save entered a replacement phone document before
+> `window.__CF_SLICE__` publication, so the raw staging call threw before the hook ran; the
+> pre-existing 4,305-byte primary remained unchanged instead of the expected 46-byte fixture.
+> Glass correctly did not run. The bounded successor applies one common token-bound contract to all
+> eight stored-v4 staging paths and passes **255 files / 2,576 tests / 1 skipped** plus every
+> TypeScript/art/route/specification owner. Do not repair this class by changing product save
+> semantics, widening a timeout, adding a retry, treating browser point version as authority, or
+> relabelling the immutable red.
+>
+> Exact clean SSH-signed successor `580c99a952c4e06acb776c852b6c5c0edba4722e` then certified the
+> law. Its tracked-input develop profile passed **255 files / 2,576 tests / 1 skipped** plus every
+> TypeScript/art/route/specification owner. On unchanged source, Compendium passed **78/78**,
+> Slice passed the complete journey including Protected Save with zero findings and ten
+> screenshots, and exact-predecessor Glass passed **12/12** viewports and **104/104** controls
+> with zero findings or instrument failures. Every stage ran once/no-retry and every exact named
+> verifier passed. The signed evidence/docs descendant commits the four exact carriers without
+> rebinding certification away from 580c99a.
+
+> **A NUMERIC PGID IS NOT OWNERSHIP AFTER ITS IDENTITY ANCHOR EXITS** (2026-09-02). A
+> browser-created detached group can outlive its original leader, after which `kill(-pgid, 0)` may
+> observe a recycled group and a later TERM may address unrelated work. On POSIX, keep one detached
+> Node sentinel alive as the group leader and launch the browser non-detached inside it. The
+> sentinel, not the parent, sends group TERM while holding its own TERM. If the exact browser child
+> survives, the sentinel SIGKILLs that exact ChildProcess, observes and flushes its lifecycle IPC,
+> then announces its exact final identity, waits for the parent's acknowledgement and sends group
+> SIGKILL to its own still-live group; a watchdog performs the same final kill if acknowledgement
+> is lost. TERM grace plus lifecycle-flush and acknowledgement-watchdog bounds must fit inside the
+> caller-owned shutdown deadline. Parent success
+> requires exact browser PID/lifecycle IPC, the exact final identity, sentinel SIGKILL exit and
+> stdio close. The parent performs no negative-PGID probe or signal at any point; only the live
+> sentinel may address its own group. Browser lifecycle acceptance is phase-owned. Before owned
+> Close, every browser exit or error is terminal. The `Browser.close`-requested phase accepts only
+> exact clean `{ code: 0, signal: null }`. POSIX owned shutdown accepts that clean exit or exact
+> TERM/KILL `{ code: null, signal: "SIGTERM" | "SIGKILL" }`; a crash signal, browser error or
+> nonzero exit remains red. On Windows, an external integer/null-signal exit is accepted only after
+> the exact bounded `taskkill /T` (or `/T /F`) request succeeds. If that exit arrives while the
+> request is pending, defer its verdict and recheck the latched observation after cleanup settles.
+> Missing POSIX lifecycle evidence is terminal. A shutdown diagnostic is latched but must never
+> release ownership before the final barrier; profile removal and stable absence still run before
+> that diagnostic returns. Only after the terminal barrier may stderr release, validated profile
+> removal and stable absence complete. Executable controls retain pure SIGABRT classification and
+> use an explicitly acknowledged real POSIX code-17 exit after `Browser.close`, plus missing-
+> lifecycle, forced-exact-SIGKILL and pre-barrier-diagnostic cases, and an integrated Windows
+> launcher fixture whose external code-17 exit arrives before its successful taskkill request
+> resolves, with no `Browser.close` dispatch and exact socket/profile cleanup. Preserve primary and
+> cleanup failures independently.
+>
+> GitHub run `33453239307` earned this law. Its exact no-retry PR #35 head/base was
+> `73b6f7bcb99e6ed7728794d8be66917ce2ae7d1a` /
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Every invoked stage through Compendium and the
+> Compendium **78/78** named verifier passed; the following Chrome launcher selftest retained or
+> recreated its unique profile, so Slice/Glass did not run. Move that selftest before the long
+> sealed exact-Edge certificate so the cheaper causal owner fails first. Do not add a retry, widen a
+> timeout, change product bytes, pin an Edge point version or reinterpret the hosted red as a product
+> verdict. The local repair passes the real-Edge launcher selftest and the **254-file / 2,567-pass /
+> 1-skip** develop profile. At that historical repair checkpoint, Compendium
+> measurement/browser-CDP authority was
+> `dc470bfd74284084425f6c737d7d421a93396cae9ac81e223492149d0e856836` /
+> `929acd22c89c9697c780a8220c0629278de5583eba8d5f0b74d52d9e3daea8b6`. Collector, outcome contract
+> and producer remain
+> `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d`
+> / `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` /
+> `af74148c97a41a421592baee801611787f065c60a64bf6da38985bf00bdd79c7`. SceneMemory's
+> calibration-required boundary deliberately remains stale until explicit production activation;
+> develop may ignore that mismatch, while production and the standalone authority printer fail
+> closed. Exact clean signed descendant `6238b8d…` committed that launcher repair; exact clean
+> signed successor `580c99a…` later passed live preflight and one unchanged-source/no-retry
+> Compendium **78/78** → zero-finding Slice → Glass **12/12 / 104/104** chain with every named
+> verifier green. That is immutable local browser evidence for that exact source only; it grants no
+> hosted authority.
+>
+> The 2026-09-02 launcher-lifecycle successor is bound at audit time to `browsercdp.mjs` SHA-256
+> `4236ec3fc357d987c525bfde3e58eec09f38373dab8faff61d5712dc598ba7ca`.
+> Compendium measurement authority is
+> `b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da`; producer authority
+> remains `308b97e6f1cedca1cde2c4b857d4fb64f45a3165a64a61fb8acd080447c0ef77`.
+> Every numeric ceiling, historical sample, outcome and compatible-browser policy is unchanged.
+> SceneMemory remains deliberately stale/red and production-only. The final seven same-source
+> targeted Glass viewports passed as bounded diagnostic evidence. Exact SSH-signed implementation
+> `1f80b0ad050763bf478b2364ad0194e389a7096e` then passed its hermetic tracked-input rehearsal and
+> one unchanged-source/no-retry Compendium **78/78** → zero-finding Slice → Glass **12/12 / 104/104**
+> chain with every named verifier green.
+
+> **A SHARED INSTRUMENT PROVES ITSELF BEFORE ANY EXPENSIVE CONSUMER** (2026-09-02). If Layout,
+> SceneMemory, Compendium, Slice or Glass imports one browser launcher, a changed-launcher selftest
+> must run after static setup but before the first of those browser consumers. Do not spend a long
+> product certificate and then discover that its transport owner is red. Keep resolver, launcher,
+> consumer-specific preflight, live product certificate and named verifier in causal order; stop on
+> the first red and never retry an unchanged source automatically. GitHub run `33628648136` earned
+> this law: all work through Compendium's synthetic controls had passed before the later launcher
+> selftest exposed its own Linux lifecycle race, while live Compendium, Slice and Glass never ran.
+> The corrected workflow now runs the shared launcher selftest before root Layout, production-only
+> SceneMemory and Compendium. This ordering changes no game verdict, ruler, browser-version policy
+> or production quarantine.
+
+> **A RESTORATION ORACLE SAMPLES THE STATE THE PRODUCT ACTUALLY RECEIVES** (2026-08-31).
+> A virtual-row helper may legitimately reposition a row while consuming deferred layout and
+> resource settlement. A setup anchor captured before that helper is diagnostic context, not the
+> state a later click handler records for Back. After the helper accepts its final stable point and
+> before native press/release, arm one capture-phase witness on the exact current document. The
+> witness must observe exactly one trusted delegated click synchronously before the product handler
+> and bind the logical row/index, unique target and scroller, hit-tested point, document token,
+> button/detail/phase/current target, panel mode/query/counts, and action-time logical
+> anchor-plus-offset. Read and remove that carrier immediately after input; every failure path must
+> abort the listener and surface an independent cleanup failure. Derive the comparison `before`
+> value from that action witness, while retaining the earlier setup anchor only for chronology.
+>
+> GitHub run `33437596315` earned this law. Its immutable old report sampled desktop setup at
+> `cmem-0773 / -34`; the activation helper then needed three legitimate settlement attempts before
+> its sole click, and the product restored the later `cmem-0773 / -92` state both immediately and
+> after settlement. The phone control stayed `-9 → -9`. Preserve the report's stored **77 pass / 1
+> fail** result and diagnose the stale pre-helper comparator externally; never relabel historical
+> bytes. The bounded successor makes the action-time state explicit and keeps the fixed **±2px**
+> restoration tolerance. Product behavior, CSS, numeric ceilings, timeouts, retry/click policy and
+> the version-tolerant Edge-family + CDP `1.3` policy are unchanged. Do not repair this class by
+> changing the product, widening tolerance, extending a timeout, retrying the click or pinning an
+> Edge point version.
+>
+> Exact clean committed source `3ca7d300f4c8192fef596d4f08e8c493a8875863` historically proved
+> the action-time success path end to end for its exact bytes. Its develop profile passed **254
+> files / 2,567 tests / 1 skipped**, all
+> TypeScript programs and the changed-browser-instrument controls; live preflight accepted Edge
+> `152.0.4191.53` / CDP `1.3`. Compendium passed **78/78** once/no-retry with exactly one trusted
+> action event and complete listener/carrier cleanup. Desktop setup → action → return stayed
+> `-46 → -46 → -46`; phone stayed `-2 → -2 → -2`. The unchanged source then passed develop Slice
+> with zero findings/ten screenshots and full Glass across all 12 viewports with zero findings,
+> zero instrument failures and **104/104** controls executed. The four immutable carriers are
+> indexed in `audits/README.md`. This proves the action-time witness without weakening the law or
+> changing product/CSS, tolerance, timeout, retry, numeric-ruler or browser-version policy. It does
+> not certify the later signed raw failure-cleanup implementation.
+
+> **FAILURE CLEANUP MAY RELEASE RESOURCES, BUT IT MUST NOT REWRITE THE FIRST CAUSAL BOUNDARY**
+> (2026-08-31). If native Back input fails after its action witness is armed, running cleanup through
+> the normal tracked observation wrapper can turn successful cleanup into the apparent last
+> completed/failing stage. That launders the original rejected CDP command from the partial report
+> even though listener/carrier release was correct. Keep the primary error's exact stage and command
+> ledger frozen. Run cleanup through one raw, bounded transport evaluation that owns no observation
+> stage, require exact `{controllerAborted: true, carrierPresent: false}`, and report residue or
+> cleanup failure independently without replacing the primary error.
+>
+> Exact SSH-signed implementation source `4ea8198c9022cc814e5948ed89c756ffb1fe6c11` (tree
+> `f99f110c99a2a1ddb95a69ce7e2c171caf0dbb6c`, parent `3ca7d30…`) implements that raw owner under
+> measurement
+> `5a498342f1090f383f7ae0aa0a62748f0893fb38867103a38540aa5eb762da35` and collector
+> `ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d`, with unchanged contract
+> `1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692` and budget-file SHA-256
+> `454cfe610d550fc55466c1725e95af8236ed6789f5887bfbd746b409cf6fecb8`. Its **618-control**
+> selftest makes the old tracked-cleanup overwrite red and requires a contract-verifiable partial
+> report retaining the original command. Contract, product producer, timeout, retry, numeric ruler,
+> CSS and browser-version policy are unchanged. Exact `3ca7d30…` remains historical evidence; the
+> four historical carriers are committed by 4ea but remain bound only to 3ca.
+>
+> Exact clean signed source `9b37ffcdb5879d243288e511b7d70c59ea935dae` (tree
+> `e05e48c807597e86530e9b258a11e93d9533cd3c`) then certified the law. Its develop profile passed
+> **254/254 files / 2,567 passed / 1 skipped** and all TypeScript, art, route and specification
+> owners. Browser-path, Compendium preflight, all **618** Compendium selftest controls, SceneMemory
+> heap-phase and browser-CDP selftests passed. Live Edge `152.0.4191.53` / CDP `1.3` preflight
+> passed; the point version is provenance only. On unchanged source, Compendium passed **78/78** with
+> one trusted witness and exact desktop `-46 / -46 / -46` plus phone `-2 / -2 / -2`; develop Slice
+> passed with zero findings/ten screenshots; full Glass passed **12/12** viewports and **104/104**
+> controls with zero findings or instrument failures. Every stage ran once/no-retry and every named
+> verifier passed. The signed evidence/docs descendant commits the four exact carriers without
+> rebinding 9b37. SceneMemory certification and Recovery did not run by develop policy.
+
+> **A COPY ORACLE READS THE COPY'S AUTHORITATIVE CARRIER.** A visible panel and the lesson that
+> explains it are separate surfaces even when they describe the same system. Judge tutorial copy
+> from the live lesson/announcement owner and judge panel content from the panel; never require one
+> surface to duplicate prose owned by the other merely to satisfy a test. Bind the carrier's DOM
+> provenance and negative-control a swap back to the adjacent surface. Exact signed source
+> `a9d2a57…` earned this law: Training step 9, focus, hold and all 70 Engineering locks were correct,
+> but Slice searched the Shipyard panel body for words correctly owned by `#tutlive`.
+
+> **A STYLE CONTROL OWNS PROPERTIES, NOT THE SERIALIZED STYLE ATTRIBUTE** (2026-08-31). The
+> inline `style` attribute is a shared, order-sensitive bag. A negative control that mutates named
+> CSS properties must capture only those canonical property names as exact `{value, priority}`
+> pairs; it must never restore or compare `style`/`cssText` wholesale. In `finally`, remove a
+> property only when its captured value and priority were both empty; otherwise restore it with
+> exact `setProperty(name, value, priority)`. Resnapshot the same owned properties, retain
+> prior/current diagnostics, preserve every unrelated inline declaration, and reprove the green
+> product outcome. A green base must turn red under the intended strong mutant, then return green
+> after restoration. Any base, control or restoration red invokes the shared causal-stop before a
+> dependent fixture can run.
+>
+> Exact signed source `4002b2d…` earned this law: hidden Prime, measured HP overlap and visible
+> Prime/Survey overlap all turned the geometry ruler red correctly, but whole-attribute string
+> equality falsely rejected restoration and the runner continued into a five-minute protected-save
+> cascade. Preserve that red; repair the property carrier and stop boundary, not product CSS,
+> timeout, retry policy, browser ruler or Edge-version baseline.
+
+> **A SOURCE-WIDE STATIC AUDIT READS AND COMPACTS EACH FILE ONCE** (2026-08-31). A fail-closed
+> ownership test
+> crossed its five-second ceiling only under the parallel full suite because it synchronously read
+> every source file six separate times and repeatedly normalized the same large text for six
+> predicates. Build one immutable `{path, source, compact}` inventory, deriving each representation
+> once, then run every independent predicate over that same in-memory authority. Prove the exact
+> formerly failing check in isolation and then in its owning profile. Do not “repair” deterministic
+> redundant I/O by increasing the timeout, serializing the complete suite, removing assertions or
+> converting the audit into a weaker sampled scan.
+
+> **UNRELATED MULTI-PAGE BROWSER OUTCOMES MUST NOT SHARE PRODUCT AUTHORITY** (2026-08-31).
+> Two pages on one origin share IndexedDB, revision and F4 lease/lifecycle truth. Foregrounding one
+> can therefore hide and checkpoint the other, legitimately stale its revision and schedule a
+> convergence reload. If an instrument is testing independent presentation owners rather than
+> multi-tab contention, give each owner a separate ephemeral origin and seed its fixture
+> independently. Shared network causality may still use one role-tagged request ledger and one
+> release latch, but the attempt ledger must be append-only: fail immediately before release and
+> again after both settlements on an unknown method/path/destination, non-monotonic attempt or
+> duplicate `(owner, destination)` role. A fresh PWA origin may request one sealed worker entry as
+> `Sec-Fetch-Dest: empty` for its install cache and as `worker` for the product; either can arrive
+> first, and the product request may be cache-served. Keep those roles distinct and bind actual
+> product completion to the exact document token plus one producer epoch/worker instance/start,
+> not to an Edge-version-specific network order or raw request count.
+> Never repair the resulting replacement race by accepting a null/stale document token, rebinding
+> old-row evidence to a new document, widening a deadline or retrying. Exact `c874a0a…` exposed this
+> at foreground arm; preserved `6ae723a…` showed the same race after art completed. Both were
+> harness-topology reds, while the product's stale-authority reload was correct.
+
+> **A DEPENDENT MUTATION REQUIRES A SETTLED PREDECESSOR; A BROWSER ORACLE REQUIRES
+> TOPOLOGY, NOT A SNAPSHOT COUNT** (2026-08-31). A returned click handler, one task turn or one
+> animation frame does not prove that an asynchronous product action and its follow-up receipts have
+> released. Before the next mutation, bind the exact durable receipt/revision, persistence/coordinator
+> idleness, current document and route, then resample the real dependent control. If that predecessor
+> is red, replaced or still settling, preserve its evidence and causal-stop; later observations have
+> no valid authority.
+>
+> A receipt-bearing Survey is such a predecessor, even when its click handler has returned and the
+> dependent Enter/Land control is already visible. Require the same current document, exact Survey
+> receipt and revision, persistence fixed point, route/render/card/action identity and coordinator
+> idle before pointer, keyboard, touch or already-current Enter/Land. Keep diagnostic observations
+> such as `landing.surveyOutcome` non-authoritative. A missing, red or still-settling Survey must stop
+> every descendant instead of creating a cascade of apparently independent findings.
+>
+> GitHub run `33466661094` earned this concrete application. Exact head `06aba9d…` and its
+> tree-equivalent synthetic merge `337ffd2…` passed every prerequisite and Compendium **78/78**;
+> Slice then pressed non-Sol Enter before Survey's F4 settlement. The product correctly refused with
+> **Expedition action settling** and stayed in galaxy. One causal harness race produced 12 downstream
+> findings, Glass correctly skipped and no retry ran. The local fixed-point/causal-stop repair first
+> passed focused **4 files / 73 tests**, all three TypeScript programs, final develop **257 files /
+> 2,622 passed / 1 skipped**, and two independent reviews **APPROVED**. Exact clean signed
+> `4a595e2…` later passed tracked-input and one named-verified **78/78 Compendium → zero-finding
+> Slice → 12/12 Glass** chain once/no-retry. Do not relabel the immutable hosted red, widen time,
+> add a retry or weaken the product fence; the browser certificate belongs only to exact 4a595e2.
+>
+> The verified oracle must model the dependent action's real transaction, not merely wait for it:
+> Atlas Travel owns exactly one `arc9-galaxy-arrival-v1` / `arc9-travel-committed:` commit rather
+> than a no-write outcome; single and sequence runtime schemas bind before/after live↔raw SessionRNG
+> parity; the current Survey rejects retained faults; and paired stable-but-wrong current live/raw
+> revision, seed, ordinal and draw controls must turn red.
+>
+> A document-global lazy producer may legitimately serve more than the first observed surface, so raw
+> per-owner result totals can grow with product topology. Prove each exact owner through its current
+> document/surface identity, loader/producer/worker lifecycle, job phases, outcome parity and error
+> state; never freeze an observed producer snapshot such as `3/1` or `11/8` into the invariant.
+> Likewise, a lazy shell is not a published surface: require the current body/request identity, no
+> loading placeholder and post-publication geometry settlement before judging layout.
+>
+> Mutation controls start only from a green unmodified outcome. Derive a collision or authority mutant
+> from the current measured state rather than an obsolete fixed value, capture the exact mutable
+> carrier, restore that carrier in `finally`, and resample the original outcome to prove exact
+> restoration before any later scope. A red base, red control or failed restoration causal-stops the
+> chain; weakening the assertion, extending time or continuing into dependent findings is not a repair.
+> Never use the index of one ordered view to mutate an independently ordered action trace; choose a
+> distinct measured sibling inside the carrier being mutated and prove the target value changed before
+> assessment.
+
+> **A WRITE-HELD TRAINING ROUTE CANNOT BORROW A WRITE-BEARING SURVEY.** A restored Training
+> checkpoint deliberately refuses ordinary product writes, including Arc 9 Survey. If a browser
+> fixture must place that active lesson on a proven surface, validate the exact current-system
+> selector, present the Survey card without its action/event/settlement, and immediately delegate to
+> the existing rechecked Training-only Landing owner. Never weaken Survey's hold guard or persist a
+> practice route. Treat the setup as one owned boundary and causal-stop before every dependent
+> assertion when it is red.
+
+> **A PRACTICE EVENT IS NOT A DURABLE EXPEDITION FACT.** Write-held Training may emit the exact
+> Atlas and Land lesson events and navigate to the practiced route, but it must not invent an Atlas
+> row or append that world to the surrounding `landed` ledger. Engineering may expose the current
+> source-proven board with every action disabled, while Compendium may honestly remain empty until
+> Finish publishes the checkpoint-owned catalogue. Copy and browser oracles must describe those
+> exact boundaries; never fabricate populated rows merely to make a tour look busy.
+
+> **JUDGE THE FINAL BOOT SUCCESSOR AND THE CURRENT ASSET REPRESENTATION.** A post-durable
+> convergence reload may legitimately load action `R+1` and then commit an aggregate boot catch-up
+> at `R+2`. Bind the final revision, receipt, SessionRNG ordinal, achievement/rank projection and
+> fresh-document commit count; do not require the pre-catch-up endpoint or rely on racing it. The
+> same rule applies to presentation carriers: when production converts successful 132px worker data
+> into Window-owned revocable `blob:` URLs, an observer must require `blob:` rather than an obsolete
+> `data:` transport. Compile generated observation bytes browser-free, guard old-document globals,
+> and surface a replacement as an exact document-identity failure instead of polling until a raw
+> missing-API exception.
+
+> **CHECK COUNTS ARE NOT EXECUTION TIERS; RUN EACH OWNER ONCE** (2026-08-30). Roughly 2,500
+> Vitest assertions are browser-free regression facts inside one roughly 23-second command, not
+> thousands of hosted jobs or browser launches. Keep those fast product assertions. Remove exact
+> duplicate executions around them: the producer-authority test already belongs to `npm test`, the
+> stricter root TypeScript pass subsumes the looser one, and evidence selftests need one owner rather
+> than a second workflow invocation. `overridecontrol` is a 107-mutation, source-rewriting checker
+> selftest (55.46 seconds on the audited Mac); run it when its checker/audited grammar changes and in
+> the production profile, never in the ordinary coding loop. `coveragegap` is a planning report;
+> complete route coverage is already fail-closed in `overridecheck`, so do not present both as
+> independent merge gates.
+>
+> Glass's **104 names are controls inside one browser campaign, not 104 jobs or browser launches**.
+> PR #35 run `33694235427` made the cost visible: the early small-phone canary executed 95 controls;
+> final Glass executed 67 and causally blocked 37 after its first red. Most wall time came from the
+> serial live Compendium certificate (**about 38m35s**) and Slice (**about 24m15s**), and evidence
+> retention alone follows Glass on `develop`: one browser-free exact-report projection and then
+> mandatory artifact upload. The projection adds no browser campaign and cannot change a red Glass
+> result. The correct response to a timing-dependent cross-epoch verdict is a deterministic
+> chronology control inside the existing owner—not another hosted stage, duplicated battery,
+> retry, timeout increase or point-version baseline.
+>
+> Inside that one producer-authority owner, Compendium measurement and producer bytes bind every
+> profile. The quarantined SceneMemory budget binds current product/build bytes only in
+> **production**; its source/build drift controls remain browser-free in every profile. A ruler that
+> cannot run or block `develop` must not make ordinary development red merely because product bytes
+> advanced. The standalone authority printer remains all-authorities fail-closed for explicit
+> production diagnosis.
+>
+> **A PRODUCTION-QUARANTINED LIVE INSTRUMENT CANNOT ALSO BE A DEVELOP BLOCKER** (2026-09-02).
+> Keep its deterministic schema, authority, threshold, mutation and historical-red controls in the
+> universal static suite, but own its host-sensitive live control beside its production certificate.
+> Exact PR #35 run `33584052508` stopped before game load when an unchanged synthetic SceneMemory
+> selftest blob moved P8−P7 embedder/derived aggregate **532,800 bytes** on one physical runner. The
+> prior three passes explicitly recorded Edge `152.0.4191.53` / CDP `1.3`, Node `26.8.1` and Ubuntu
+> image `20260823.283.1`; the failed path proved canonical Edge/CDP `1.3`, the same Node/image and a
+> `centralus` runner but did not preserve the exact Edge point version, so `.53` there is inference,
+> not evidence. Do not retry, widen, add passes, rebaseline Edge or use `continue-on-error`; correct
+> workflow ownership and preserve the strict production failure. Split shared browser scope by its
+> actual live owner so a change to one instrument does not launch unrelated controls.
+>
+> The execution tiers are explicit. During coding, run touched tests and the touched TypeScript
+> program. At a local batch boundary, `node tools/check-profile.mjs --profile=dev` owns the complete
+> fast suite plus all TypeScript programs. `--profile=develop` adds the nonduplicated static
+> art/routing/spec gates, and the final clean
+> `develop` candidate runs one Compendium → Slice → Glass browser admission with exact
+> named predecessors and causal stop. Changed Compendium inputs run its live mutation controls once;
+> changed shared browser transport runs its launcher control once; SceneMemory live native-heap
+> work remains production-only while its deterministic controls stay universal. A production
+> candidate uses `--profile=production`, the full legacy gate when applicable, quarantined
+> SceneMemory certification, launcher/instrument controls, and extends the exact Slice/Glass pair
+> through the uninterrupted Recovery certificate and package smoke. Do not run Recovery on every
+> development edit or make a manual human-preview package recertify the game; preview is a separate-
+> origin play surface, not merge or release evidence. Every certifier retains its own fresh build
+> until a separately reviewed content-addressed build-carrier contract exists.
+
+> **FAULT-INJECTION CHAOS IS NOT ORDINARY DEVELOP ADMISSION** (2026-08-30). Keep the normal native
+> product action, its durable/live/reload outcome and every pure assessor mutation in the develop
+> boundary. Run an isolated post-durable browser publication-failure injection only in production
+> assurance unless that instrument itself changes. Profile it out before execution; never execute it
+> on develop and ignore its red. If production runs it, its first red stops every dependent scenario.
+> Bind the exact `develop|production` profile through the Slice report, named verification, Glass
+> predecessor and Recovery predecessor so evidence cannot cross tiers. The exact `e66babe…` Slice
+> earned this law: Capture correctly committed `R+1` and required progression correctly committed
+> `R+2`, while a stale Capture-only chaos oracle treated final `R+2` authority as the `R+1` action
+> boundary. An unchanged retry could merely race before catch-up and manufacture a timing-dependent
+> green; preserve the red, repair the pure oracle, and do not change product code, timeout or retry.
+
+> **A PRESENTATION CLASS IS NOT AN EVIDENCE OWNER.** CSS classes may intentionally be shared by
+> sibling features, so a browser instrument must never use the first global class match as proof of
+> one exact product surface. Bind the observation to the current semantic mount, query its dedicated
+> data/ARIA/native owner, retain the owner count and fail closed unless that count is exactly one.
+> Negative-control both absence and duplication, plus mutation back to the tempting shared-class
+> selector. Exact `fc18f04…` Feed evidence earned this law: Rename, Feed and Breed all used
+> `.compendium-feed-summary`; Slice read Rename's text even though Feed's exact radio/controller
+> state was correct and Feed already exposed `[data-arc5-feed-summary]` inside its semantic mount.
+
+> **A FOLLOW-UP RECEIPT MUST RELEASE BEFORE IT REPUBLISHES THE SURFACE IT TEMPORARILY
+> DISABLED.** An awaiting action continuation can repaint while a queued aggregate writer owns the
+> shared coordinator, making the honest model read-only. When that follow-up settles, any still-open
+> surface it made stale must be reprojected only after the coordinator and exact persistence barrier
+> release, with current-route/runtime/replacement/Training guards. Do not mask this race with a test
+> sleep, heartbeat wait, easier verb or close/reopen fixture; a publication fault clears the action
+> fence and converges read-only.
+
+> **Historical `8bdf474…` evidence law (superseded by later d611 → 7f → 961 → 656 boundaries):** exact clean SSH-signed
+> source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium 78/78 in 64,108 ms
+> once/no-retry, then its unchanged-source Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> 111,490 ms with exactly one scope, `arc-0-landing-publication-convergence`. Glass and Recovery did
+> not run. The old document's pre-action and held live products had zero differing fields and the
+> same 1,876-byte / `e353f175…e78` identity; both correctly retained the open Pertar post-Survey
+> card. The sole false term reapplied a pre-Survey helper requiring a closed card after setup had
+> explicitly certified an open card. This is an instrument false negative, not a product defect.
+> The immutable red stays red; its browser-free replay proves the contradiction and explicitly
+> binds the historical absence of held `cardCode`/target capture. Its successor runner captured those
+> held values before the corrected assessor could pass. No browser retry, timeout increase, version
+> rebaseline, product/save/schema change or gameplay redesign follows.
+>
+> **PARK NATIVE-ACTION FOCUS BEFORE DISABLING IT.** When a trusted native Enter activation can
+> disable its exact action before the browser finishes default focus handling, synchronously park
+> focus on the action's stable semantic row. Restore the replacement action only while that lineage
+> remains; a later user move to BODY or another control wins. A control without a semantic row must
+> retain its separately proved disable-to-BODY behavior rather than borrowing this allowance.
+>
+> **SETUP TRANSACTIONS ARE OWNED PREDECESSORS.** If an evidence fixture must commit Survey or another
+> durable setup action before the judged action, wait for its exact receipt, route, live publication,
+> coordinator-idle and writable fixed point, then resample raw and live authority. Arm the fault only
+> after that green baseline and invoke the direct action under test once. A composite helper that
+> silently performs the predecessor cannot supply the judged baseline.
+>
+> A one-shot fault hook is itself an owned predecessor. Prove the intended native target is enabled,
+> hit-testable and actually focused while the shared coordinator/card are idle; then require both the
+> hook return and its observable latch before dispatch. A false arm or lost focus must stop before
+> input. Catch the bounded settlement wait, feed its real error and every capture error into the
+> assessor, and retain named pre-arm, post-arm, post-press and deadline states plus terminal durable,
+> UI and interaction evidence. Never let a generic waiter erase the first causal state or continue to
+> a later fault scenario.
+>
+> **A POST-ACTION FIXTURE MUST USE A POST-ACTION ORACLE.** Do not certify a post-Survey state and
+> then recheck it with a pre-Survey UI predicate. The exact `8bdf474…` red required the held state
+> both to equal an open Pertar-card fixture and to have the card closed, so no correct product could
+> pass. Availability is part of that phase boundary: an action that honestly consumes the last
+> eligible lot can transition `ready` to `no-flora`, so its same-document reopen and full reload
+> must require the durable successor's exact availability instead of waiting again for `ready`.
+> Every captured-evidence decision that does not require browser APIs belongs in a shared
+> browser-free contract with one positive baseline and isolated negative controls. Replay the real
+> retained red inside `npm test` to prove both the diagnosis and any evidence it omitted; never
+> substitute pre-action fields for missing held capture just to make the historical report green.
+> Source-marker checks alone prove syntax is present, not that its predicates can ever be jointly
+> true.
+>
+> **VERSIONED DIAGNOSTICS ARE EXACT SCHEMAS.** The current Arc 5 v3 app diagnostic owns its base
+> migration fields plus exact Feed, Breed, Rename and Scout subtrees; wrong, missing and extra fields
+> in any subtree must reject. Historical v2 base-only evidence is accepted only through its explicit
+> legacy replay option. Never repair a stale assessor by ignoring current extra fields, and never
+> call an assessor catch-up a product schema bump.
+>
+> **IDLE IS AN EXACT STATE, NOT AN EMPTY-SET INFERENCE.** A coordinator is idle only when its owner,
+> diagnostic hold and complete fault-latch map all match their current exact schemas: every named
+> latch is present and false, the hold is `idle` with null operation and the fresh-document sequence,
+> and setup/reload has no retained fault. Missing, renamed and extra false keys must reject just like
+> an armed latch. Positive setup must fail-stop before constructing mutants so malformed evidence
+> keeps its owned stage diagnosis instead of escaping as a generic harness exception.
+>
+> **A SAME-TRANSACTION SUBSYSTEM IS OWNED, NOT UNRELATED.** When an action can settle a Charter,
+> achievement, reward, progression refresh or other coupled subsystem inside its one CAS, the exact
+> action oracle must derive that whole successor. It may not freeze those fields as “unrelated.”
+> Prove the accepted successor and independently mutate every coupled field family so broadening the
+> allowance is red.
+>
+> **THE LEDGER IS SHARED EVEN WHEN OWNERSHIP IS FRESH.** Arc-local empty ownership does not imply an
+> empty cross-system receipt ledger. The exact Pertar browser fixture reaches action-ready with boot
+> progression at receipt 0, Survey at 1 and Landing at 2, seed 68, empty capture draws and ordinal 3.
+> Its first Sample owns receipt 3 and Capture result/ownership revision `R+1`; that new tier-5
+> discovery then requires Arc 9 progression receipt 4 and final persistence revision/ordinal `R+2`,
+> adding exactly `rare` then `legend` while best rank remains 3. Tame has no forged progression tail.
+> Compose those predecessors and successors in one browser-free positive, reject missing/extra/
+> reordered receipts and split revision ownership, and wait for the exact final fixed point before
+> reading browser evidence. A witness field derived from the fixture's complete canonical source
+> state is opaque to a bounded state projection: validate its exact digest format and require the
+> full witness bytes to match one invariant template after substituting only that field. Do not pin
+> one fixture's digest, allowlist observed digests, or duplicate the product codec inside the
+> oracle. A red prefix or Sample verdict stops before Storage or later Arc 4 work.
+>
+> **VALIDATE THE PREDECESSOR THE WAY THE PRODUCT DOES.** A mathematically plausible successor is not
+> evidence if its predecessor could never enter the production action. Mirror required fields,
+> bounds, known-ID rules, uniqueness, overlap and plain-record/integer constraints before deriving
+> an exact transition. Include malformed-predecessor controls and an all-required-fields-absent
+> control; structural codec validity alone is not product authority.
+>
+> **A DURABLE PASS MUST ALSO PROVE LIVE PUBLICATION.** Exact raw rows can be correct while a targeted
+> publisher omits one coupled field. Compare every action-owned durable mapping to the live SaveState
+> after commit, then mutate each live-only field family while leaving raw evidence untouched. Those
+> controls must isolate the publication check before a browser campaign can trust the oracle.
+> Required zero-valued properties need presence controls too: coalescing missing to zero is a false
+> green unless the product schema explicitly defines absence as canonical zero.
+>
+> **PUT READINESS BEFORE THE ONE-SHOT ACTION.** If a native input correctly refuses while an earlier
+> write, barrier or coordinator owns authority—and deliberately does not retry—wait for the exact
+> shared writable predicate before dispatch. A barrier after the outcome timeout proves only that
+> the refusal eventually cleared. Do not repair this class with a longer timeout, sleep or retry;
+> retain input value/focus, action owner, named outcome and persistence state in the failure witness.
+>
+> **STOP AT THE CAUSAL BOUNDARY.** A red setup stops its real action; a red real outcome stops its
+> mutants; a green negative control stops later controls; and a red stage stops every mutable
+> successor. Source-order removal and reversal controls must prove each stop. Historical multi-scope
+> reports stay immutable, but current execution must not manufacture derivative stages after a root
+> has already invalidated their premise. At the historical `8bdf474…` repair checkpoint,
+> browser-free validation was green: 251
+> files / 2,501 passed / 1 skipped with all TypeScript programs green. Neither that green result nor
+> local repair bytes grant fresh
+> browser successor authority.
+
+> **2026-08-30 sealed single-file worker design with historical authority checkpoint (product
+> design still matches local code; exact hashes below are checkpoint-bound and supersede the
+> execution-late `clients.get()` repair and the narrower 38d/830/d33 “current” boundaries below;
+> every named run and carrier remains immutable history):** exact signed source
+> `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` first preserved the 3,115 ms painter-import
+> `product-fail`, zero outcomes and all 78 blocked. Exact descendant
+> `dc6004cf4426df72bea141ac77b0be927f36886c` then ran
+> `20260830-pr35-execution-late-dc6004cf4426-compendium-certification` once with no retry and failed
+> again after **3,112 ms** at the same phone veteran-Earth Planetside boundary: its worker reached
+> `ready`, but the first painter import failed, zero outcomes ran and all 78 were blocked. Neither
+> red was retried and neither was followed by Slice, Glass or Recovery. The 38d carrier remains
+> `audits/ARC1C_COMPENDIUM_PR35_PAINTER_IMPORT_PRODUCT_FAILURE_20260830_38D8848.json.gz`, 6,053
+> gzip bytes / SHA-256
+> `e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`, 37,825 raw bytes /
+> SHA-256 `63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`, with independent
+> **4/4** replay.
+>
+> Fetch-time adoption was therefore falsified as a product repair: a first-install worker may
+> cross claim after its entry loads without yielding a usable WorkerClient identity at its later
+> module fetch. Current code removes that fetch boundary. Worker construction remains lazy, but
+> the species worker statically owns the complete painter and the biome-vista worker statically owns
+> the complete renderer. Production build authority rejects `import()` and every external static
+> JavaScript import in either worker entry. The generated service worker no longer adopts an
+> unpinned request at fetch time; every unpinned non-navigation request remains exact **503**.
+> Valid controlled worker creation may still bind its `resultingClientId`, but there is no
+> post-start worker chunk whose safety depends on enumeration, lookup, timing, network fallback,
+> cross-build inference, sleep or retry.
+>
+> At that historical sealed-worker checkpoint, Compendium measurement / contract / collector
+> authorities were
+> `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+> `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`.
+> Its final derived changed-head producer authority was
+> `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3`; it binds index
+> `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c`, owner
+> `assets/main-BYnoCcc9.js` / `13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`, and generated
+> `service-worker.js` `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. The combined
+> worker/painter asset is `assets/species-art.worker-DnnSDKMy.js`, SHA-256
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. At that checkpoint, Scene
+> build / game-main, Compendium budget-file and Scene budget-file authorities were
+> `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17` /
+> `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`,
+> `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b`, and
+> `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. The green authority printer
+> bound a **964-module / 52-file** build.
+> The sealed-worker portion changed worker packaging and PWA ownership only. That checkpoint also
+> included the bounded Engineering focus repair, its 74th release-note bullet and evidence-assessor
+> repairs; no save schema, painter pixel, seed, genome, anatomy, art structure, ruler, numeric
+> ceiling or 78-outcome inventory changed. Fresh signed
+> browser certification remained pending; this derived reseal granted no browser or later-stage authority.
+
+⚠⚠ **A REPLACEMENT CLEARS OLD HISTORY; ITS HELD BOOTSTRAP IS A DIFFERENT TRANSACTION**
+(2026-08-30). Exact `ae2a002…` first proved that a valid new ordinal-zero
+`arc9-progression-refresh-v1` receipt does not mean the old expedition survived replacement. Exact
+signed `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` then passed Compendium 78/78 and stopped its
+once-only Slice terminal red after 98,988 ms with four scopes. Its old F4 trace collapsed the native
+replacement and later held bootstrap boundaries, then expected the replacement player row itself
+to contain F4 seed/ordinal/draw authority. The replacement had correctly cleared the receipt store
+and written the source v5 rows at revision 8 without that later authority. The replacement document
+then minted seed/draw authority in one receipt-free held bootstrap at revision 9, committed the
+independently required Arc 9 receipt zero at revision 10, and let Smoke own receipt one/revision 11.
+
+Inventory every readwrite transaction first observed before the exact replacement completes and
+require exactly one complete native replacement, including exact request order, settlement, source
+bytes, cleared receipts and absent replacement F4 carrier. Pre-completion subset/superset side
+transactions are evidence failure even when they settle. Freeze the witness at replacement
+completion so the required later lease-release CAS cannot overwrite it. Then select the accepted
+boot prefix from an independent production projection of the exact imported fixture. `current` requires
+only the expected receipt-free bootstrap and gives the judged outcome ordinal zero; `ready` requires
+exactly one silent aggregate-only fixed-point receipt at ordinal zero and gives the judged outcome
+ordinal one. Never infer either branch from the observed ledger or accept an arbitrary optional
+prefix. Before staging or arming, stop and settle the live periodic heartbeat and bind its exact
+document witness; otherwise a legitimate timer CAS in the arm→import gap becomes a false second
+transaction.
+
+Bind the exact source legacy SHA separately from the post-import product successor. Across separate
+codec clocks, normalize only the absolute `at` anchor and express every `conq[].t` and `minedw[]`
+stamp as its exact age from `at`; independently require both absolute anchors inside the measured
+run window and monotonic. Preserve every other field exactly, including complete saved-view
+geometry, every Atlas `where`, achievements, rank, cargo, Prime and Compendium state. The current
+strict successor projection is
+`e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`. Controls mutate each
+allowed clock field, every repaired route and unrelated product families independently. A red
+staged-receipt/tracer setup stops before import; a red replacement prefix stops before its
+diagnostic outcome; and a red outcome/control stops hide and Arc 3, rather than manufacturing
+derivative findings or a Survey timeout. The immutable e4f5 Slice remains FAIL; Glass and Recovery
+did not run.
+
+⚠⚠ **A SEMANTIC ROW AND ITS ACTION BUTTON ARE DIFFERENT OWNERS** (2026-08-30). The same Slice
+treated an Atlas world row as though the row itself had to be an enabled activation control. The
+current UI correctly uses the row as a rendered data container and a nested Travel button as the
+native action owner. Prove the row's exact source identity, visibility and geometry separately;
+then prove the current nested button is enabled, reachable, hit-owned and produces the authorized
+route. A `DIV` row is not a disabled Travel action, and a valid button cannot excuse a stale or
+wrong row. Bind the trusted pointer or keydown receipt to the exact native `BUTTON`, its
+`data-atlas-travel`, and its parent `data-aid`; do not enter a navigation waiter until that exact
+prerequisite is green. A red target/receipt stops its dependent action once with the root diagnosis
+instead of manufacturing a timeout cascade. Mutate row identity, action ownership, input identity,
+geometry and coordinates independently, including after reload.
+
+⚠⚠ **A LABEL'S TARGET OWNS THE CHOICE, AND A RERENDER OWNS ITS SUCCESSOR** (2026-08-30). Exact
+signed source `51a8ac43f1a583e73dc4d111da04bbdb76abcc02` passed SceneMemory 44/44 and
+Compendium 78/78, then Slice stopped once at an Arc 5 Feed preview with `last null`. The harness had
+clicked a 44px `LABEL`, treated the label's nonexistent `disabled` property as action readiness and
+retained only pointer coordinates. Feed's semantic owner is the nested native radio and its
+delegated `change`; the label can be visible and apparently enabled while that input is disabled,
+detached, duplicated, replaced or never activated. The retained run stopped before confirmation,
+storage or any Feed mutation, so it is instrument evidence and makes no product verdict.
+
+Bind one current label to one exact nested radio through `htmlFor`, containment, document,
+generation, logical surface, context and controller/listener state. Arm capture-phase evidence
+before dispatch, re-query the same node identity at dispatch, send one raw-CDP left click to the
+radio itself, and require one trusted pointerdown/click/input/change chain. If the controller
+replaces its children, bind the successor; if it later optimizes in place, retain that current
+owner. The certificate requires a nonempty current node identity, the same logical control and the
+controller selection—not one render implementation. Settle the first choice before the second,
+then retain a full preview observation with exact authority and quiescent action-coordinator
+baseline before any durable read, hold, confirmation or writer. A choice/preview red causal-stops
+there. Independently mutate label/radio ownership, geometry, node replacement, every receipt,
+either selection, summary transitions, confirmation and downstream-coordinator drift; never widen
+the deadline or substitute synthetic `.click()`/`.checked`/`change` for the browser certificate.
+
+JavaScript assembled inside a string for `Runtime.evaluate` is a separate program: Node syntax and
+TypeScript validate the surrounding template literal, not the program it eventually contains.
+Factor any nontrivial generated expression into one pure builder used by both the browser runner and
+its browser-free contract. Compile the exact generated bytes without executing them, then
+negative-control one missing and one surplus structural closure. Exact signed `f219d46…` proved why:
+its native radio preparation and raw-CDP dispatch succeeded, but an extra `}` in the following
+settlement expression stopped Slice after 155,668 ms before preview or durable action evidence.
+That immutable report is instrument-only; a long browser route must never be the first parser for a
+generated evidence program again.
+
+⚠⚠ **MUTATING SOURCE TEXT DOES NOT MUTATE DOM THAT WAS ALREADY RENDERED** (2026-08-30). Four
+Guide controls changed their source-side bulletin strings after publication, then judged the old
+DOM and reported that contradictions stayed green. A rendered-text control must mutate the exact
+current DOM node, or mutate the source and force the real publication owner to emit a new exact
+identity before judging it. Bind requested identity, rendered text and restoration in both
+directions. Re-query the reopened current Guide, require exactly one authored carrier, and classify
+all required current-copy baselines before arming any mutation. A required-copy mismatch is a
+product red; missing/nonunique setup, a control that stays green, or failed restoration is an
+instrument red. Only a fully green baseline may run controls, and any red causal-stops later Guide
+or viewport work. A source-only edit plus stale rendered node is instrument failure, never product
+truth.
+
+⚠⚠ **A CLOSED DISCLOSURE'S RETAINED RECT IS NOT VISIBILITY** (2026-08-31). Chromium may retain a
+nonzero `DOMRect`, computed `display`, focusability metadata and a requested scroll position for an
+action inside a closed `<details>`, even though that action is unpainted and excluded from scroll
+overflow. A visibility owner must walk ancestor disclosures: while closed, only the direct first
+`<summary>` subtree is rendered; other descendants become eligible only after the disclosure opens.
+Negative-control both directions—closed keeps Summary and excludes the action from visibility and
+interactive inventories; open admits the same action. Geometry, style and scroll requests cannot
+substitute for paint/reachability.
+
+> **2026-08-29 exact-chain law — historical exact-source certificate:** repair an oracle on preserved evidence, then
+> certify only a fresh unchanged-source chain; never relabel or retry the stored red. Exact signed
+> source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+> `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921ebf78…`) stayed committed, clean
+> and unchanged while Layout 787/787, SceneMemory input-v4 44/44, Compendium 78/78, Slice,
+> 12-viewport Glass and Recovery each ran once with zero automatic retries and passed its exact
+> source/predecessor-bound verifier. Recovery bound the exact Slice (`33aa30b3…`) and Glass
+> (`2a67a258…`) predecessors, passed all ten stages in 1,290,953 ms and retained a real uninterrupted
+> 1,200,297.5 ms active-browser observation (`b78e8a52…`). At that checkpoint, the full v2 battery
+> was 163 files / 1,712 passed + one skipped, with all TypeScript configurations green.
+>
+> That evidence certifies the universe-wide visual treatment and bounded Arc 5 Feed scope only.
+> HUMAN visual/listening/screen-reader/first-journey judgment, physical-device heat/battery/true-GPU
+> evidence, Gate G distant playback and D-9e remain open, as do whole Gates A–I. It grants no hosted
+> attempt, merge, release/version or deployment authority. Exact carriers, sizes and hashes are in
+> `audits/README.md`. Edge `.107` / CDP `1.3` is provenance only; compatible updates never
+> rebaseline or recalibrate. Earlier Final13/Final12/Final11/Final10 evidence remains immutable
+> history.
+
+**STATUS:** current as of 2026-08-31. **This is a REFERENCE, not a log** — per CLAUDE.md’s
 doc-hygiene principle it is never archived; it is refreshed in place as laws are earned or
 superseded. Extracted from ROADMAP.md on 2026-07-30, verbatim, when it reached 88 lines and was
 the largest thing in a file that is supposed to hold only the live agenda.
@@ -10,6 +1273,758 @@ shipped, or with a check that went green while the thing it guarded was broken. 
 roughly by how often they have bitten.
 
 ---
+
+⚠⚠ **A FETCH-TIME CLIENT LOOKUP IS NOT A WORKER-BUILD OWNER; SEAL THE WORKER GRAPH BEFORE
+EXECUTION** (2026-08-30). The current authority and both exact reds are recorded above. A worker can
+load its entry before first-install claim and issue a later controlled request without exposing a
+usable client identity to the service worker. Do not recover that request by adopting it. Keep
+Worker construction lazy, statically own the painter/renderer inside each exact worker entry, reject
+every runtime or external static worker-module edge in the production build, and leave every
+unpinned non-navigation request at 503. Negative-control dynamic import, external static import and
+fetch-time adoption independently; a single-build guess is still ownership invented after execution.
+
+The following 38d/830/d33 first-activation and recovered-receipt laws are historical precursor
+boundaries. Their exact observations and authorities remain valid for their named sources; any
+unqualified “current” wording inside those preserved blocks means current at that historical
+boundary and is superseded by the sealed single-file authority above.
+
+⚠⚠ **FIRST-ACTIVATION OWNERSHIP MUST BE RECONCILED AFTER `clients.claim()` IN THE SAME
+`waitUntil`; A PRE-CLAIM SNAPSHOT CANNOT OWN A REALM CREATED IN THE CLAIM GAP** (2026-08-30).
+Exact signed source `830e601b8f16092d6f9193ecde329cfefd279bcd` ran Compendium once with no retry as
+`20260830-pr35-visualkey-v2-830e601b8f16-compendium-certification`. It stopped after **33,217 ms**
+at phone veteran-Earth Planetside settlement with zero outcomes and all 78 blocked. The long visual-
+key contract worked, but the first lazy species painter import failed; the then-current v1 Window
+diagnostics retained the import stage/count while discarding the worker's code and message. Preserve
+that observation-v2 report and carrier unchanged: the original message cannot be reconstructed from
+evidence that never retained it.
+
+The deterministic PWA harness reproduced the code-supported cause. First activation snapshotted
+clients before `clients.claim()`; a worker created in that gap loaded its entry uncontrolled, then
+became service-worker-controlled at claim without an exact retained-build pin. Its first lazy import
+therefore received the exact **503** `This document has no retained Celestial Frontier build.` A
+worker entry created after claim already pins through `resultingClientId`, which does not repair the
+gap worker. Re-run the complete all-client `preserveLiveClientBuilds` reconciliation after
+`clients.claim()` inside the same activation `waitUntil`. The repaired harness must pin and serve the
+gap worker's exact lazy bytes, a mutant without the second reconciliation must recreate that exact
+503, post-claim worker creation must retain its entry-to-lazy pin, and unrelated unpinned requests
+must remain red. Claim is a realm-ownership transition, not proof that the pre-claim inventory is
+still complete.
+
+The historical history-safe producer record at that checkpoint (superseded by the current
+`f2f1629a…` producer boundary above) was `cf-v2-compendium-producer-authority/v2`, SHA-256
+`2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`. It binds the exact
+generated `service-worker.js` (`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`)
+beside index, owner, species worker and painter. Deleting the post-claim repair therefore changes
+producer authority instead of leaving Compendium apparently source-identical. Historical v1
+producer records remain replayable under their own schema and exact inputs; never rewrite or
+reinterpret them as v2.
+
+⚠⚠ **AN ANSWERABLE, AUTHORITY-VALID PRODUCT FAILURE IS TERMINAL PRODUCT EVIDENCE, NOT
+PENDING WORK OR AN INSTRUMENT TIMEOUT** (2026-08-30). Species-art diagnostics now require the
+nullable immutable `lastError` member in schema `cf-v2-species-art-worker-diagnostics/v2`, carrying
+exactly `{producerEpoch,workerInstanceId,jobId,kind,stage,code,message}`; the message is bounded to
+1–512 characters, and only a trusted, protocol-valid worker error may populate the record. A local
+constructor throw or malformed/untrusted worker message may change current state but must not invent
+that cause-bearing evidence. Worker error ownership is well-formed only when `jobId`, `kind` and
+`key` are either all null or all present and valid. A replacement producer clears both `lastEvent`
+and `lastError`; a later adapter-protocol failure or external/untrusted fatal clears `lastError` too,
+while an exact trusted worker fatal retains its validated record. Producer identity alone cannot
+make stale same-worker evidence current.
+
+Compendium live observation v3 validates authority and exact shape before it classifies product
+state. It refuses terminal product attribution unless broker, worker, exact art schema
+`cf-v2-species-art-diagnostics/v1` and exact lazy schema
+`cf-v2-species-art-worker-diagnostics/v2` are all present. Only then is a current error state with a
+trusted `lastError` matching the current producer immediately `product-error`; the collector
+preserves that terminal tail as `product-fail` with no sleep, repoll or retry. Historical error
+counters or an older `lastError` are cumulative telemetry: if the current producer is coherent and
+`ready`, they remain nonterminal recovery evidence. Do not wait for a known answerable failure to
+become a timeout, and do not let missing authority or stale cumulative telemetry manufacture a
+current failure.
+
+⚠⚠ **A RECOVERED, RELEASED CURRENT WORKER MUST CLEAR ITS TERMINAL ERROR RECEIPT; CUMULATIVE
+ERROR ARITHMETIC IS NOT A LIVE FAILURE** (2026-08-30). Exact signed source
+`d33abdfd513236e72294b81e3bb46b1362f810e1` ran
+`20260830-pr35-first-install-d33abdfd5132-compendium-certification` exactly once with no retry on
+Edge `152.0.4191.53` / CDP `1.3`. It evaluated all 78 outcomes and stored **74 pass / four fail**:
+phone and desktop `cap-shrink` plus `settled-jobs`. Yet both cap paths truthfully shrank **256 →
+96**, reached the exact **6,690,816-byte** decoded ceiling, disposed 160 assets, sealed four warm
+cycles and restored device class; every selected worker snapshot was released and balanced. The
+four reds came from one oracle clause that required the deliberately induced paint error's
+`lastError` to remain non-null after producer replacement and recovery, contradicting the
+diagnostics lifecycle it was supposed to assess.
+
+Keep the exact report red and immutable. For current diagnostics v2, every snapshot accepted as
+released/recovered must be `ready` with `lastError === null`; the one induced paint fault remains
+proved by exact cumulative paint/phase/result arithmetic. Conversely, a terminal current product
+error still requires its exact non-null trusted receipt. Historical diagnostics v1 remains
+replayable without inventing a field it never carried. Negative controls must reject a stale
+receipt on both non-final and post-cap released snapshots, not merely on the last sample. The exact
+carrier is
+`audits/ARC1C_COMPENDIUM_PR35_RECOVERED_WORKER_ORACLE_FAILURE_20260830_D33ABDF.json.gz`:
+451,743 gzip bytes / SHA-256
+`4e714e115ca7f4b5d1d32ba118241ca8b78055596438a4dd22bbb1c1d471ffab`, 10,813,681 raw bytes /
+SHA-256 `e4eb2aba1079a1d42b1da5e7f97d236105917fd497035937b1f6855d63a4289e`, with independent 8/8
+replay. No Slice, Glass or Recovery stage followed this red.
+
+The historical browser-free boundary at that checkpoint was 591 `compendiummem:selftest` controls, including the released-
+snapshot stale-receipt controls, independent 8/8 carrier replay, the full **239 files / 2,431 passed
+/ 1 skipped** suite, all three TypeScript programs and the green authority printer. Scene build authority at that boundary was
+`49bc3ce0529eab7af1dff496c09fb79f08d5ad9e7ab4f1b7a05fc8d2e0d13dfc`; Compendium
+measurement / contract / collector authorities at that boundary were
+`fc54f822dc7f93481fbb1402b7c7940bc9a618b836112fd5514e8130de9f29ed` /
+`f756bc7557613dd6c61ecb35acd9de752d54a7d0e51a52e192f361dca3f4ab29` /
+`2a74e941abbe701ca5c1d3952a7451ccd11ce3284d794f9e22aa0a79c0315237`.
+Producer authority at that boundary remained `2ef58ea042d2d5ecb97715642efeac14e013dfb8b375406cfb47c090cf072e39`
+and generated service-worker SHA-256 remained
+`81dca3977138d0973b52e85c0c82b6636674088546463edb136ec64640b78a14`. The fixed ruler, all
+numeric ceilings and the 78-outcome inventory remain unchanged. Certification remains open; only a
+materially changed signed source may make one new no-retry Compendium attempt.
+
+⚠⚠ **A CLOSED PRESENTATION OWNS NO DETACHED DOM OR LISTENERS; ASYNC COPY MUST
+REPROVE ITS OPEN GENERATION** (2026-08-29). Hiding a route-invalid Survey card left its controller
+models, action fences, context and detached descendants alive, while several Compendium and Survey
+controllers installed root listeners for the lifetime of the document. Separately, a cached Guide
+module could publish synchronously from `onOpen` before the panel manager exposed Guide, while a
+late import could publish into a replaced or closed body.
+
+Destroy presentation whose route identity is gone: release its audio/action owner, detach the
+controllers, clear their models and presentation fences, replace the obsolete DOM, and clear the
+saved card context. A controller installs DOM listeners only while attached, removes all of them on
+detach/dispose, and reattaches exactly once; semantic model or pending state may survive only when
+the still-current product contract requires it. Registered panel buttons use one delegated bubble
+toggle owner for the whole registry, paired with the existing single capture owner that records
+focus lineage. Per-button toggle closures are dormant ownership, not harmless convenience.
+
+Large authored Guide and release archives load only after Guide opens. The panel owns an explicit
+loading state and an honest failure state; a rejected import clears its promise so Close/reopen can
+retry. Every publication rechecks one request generation, the exact body element and
+`openPanelId()`. A cached module still publishes on a microtask because the panel manager invokes
+`onOpen` before exposing the panel. A late success may populate only that still-open generation;
+Close, replacement or a newer request makes it inert.
+
+⚠⚠ **WARM REUSE MUST HAVE AN EXPLICIT BYTE OWNER; MOVING MEMORY OUT OF ONE COUNTER IS
+NOT RESOURCE RELEASE** (2026-08-29). Releasing every unowned species thumbnail made settled cache,
+DOM and listener counters look ideal, but it also made all four nominal SceneMemory warmups and all
+four measured cycles cold: the same route started another worker/import and repainted the same 16
+phone or 17 desktop thumbnails each time. That recurring work raised the desktop V8 warm slope even
+though DOM, listeners, embedder, backing store and registered scene resources were flat. Retaining
+the old base64 data URLs avoided worker churn but charged their much larger strings to page backing
+storage. Neither extreme is a sound lifecycle policy.
+
+The current bounded owner keeps exactly the most-recent **17** unleased 132px thumbnails: one
+SceneMemory desktop route's nine Compendium plus eight Planetside identities (and enough for the
+16-item phone union). The worker protocol remains immutable data-URL evidence. Only after a
+successful, identity-current `thumb132` result settles in the Window realm may the loader decode it
+to a Window-owned revocable Blob URL for broker caching; 440px detail portraits remain on their
+existing data-URL path. An active thumbnail lease protects the URL used by a visible image. Oldest
+unleased eviction, explicit unowned-cache release, device-cap trimming, rejected/invalid/oversize or
+consumerless results, duplicate assets, protocol-mismatched results, late results from an invalidated
+producer generation, non-BFCache pagehide and final loader disposal each relinquish the external
+asset exactly once. BFCache is different: it retains the same live Document cache through suspend
+and resumes it rather than revoking a resource the restored page still owns.
+
+A Blob URL shortens the string retained in V8/backing storage; it does not make the PNG bytes cease
+to exist. Keep the broker's encoded-byte/cache diagnostics and caps truthful, negative-control every
+revocation exit, and do not raise a heap ceiling merely because bytes moved to the browser Blob
+registry. Clean signed activation `2046000873f98318c767db53d2ffb2abac71cc94` subsequently passed
+the exact SceneMemory input-v4 **44/44** once with zero retries and named verification. That
+certificate remains SceneMemory-only: later signed Compendium source `3fb958f…` stopped
+instrument-only before any product verdict, and signed implementation `3eefbbcf…` repaired its
+foreground/structured observation. Exact successor `b2eecfbd…` then exposed a second instrument
+fault: a generic 512-character projector nullified eight valid 766–779-character visual identities.
+Signed implementation `d9d79025…` repairs that evidence boundary without changing product bytes.
+It is browser-free green at 565 selftest controls, focused 35/35, 237 files / 2,413 passed + one
+skipped, all three TypeScript programs and the producer-authority printer with both budget matches
+true, but is not browser-certified.
+
+⚠⚠ **A CAPACITY CEILING IS NOT REQUIRED QUIESCENT OCCUPANCY; CERTIFY THE REAL CLOSED
+STATE** (2026-08-30). After Close correctly compacted the Compendium thumbnail cache to eight live
+Planetside leases plus the bounded 17 unleased warm thumbnails, the historical oracle still required
+all 96 phone or 256 desktop capacity slots to be occupied. It therefore rejected a healthy,
+smaller state even though every plateau, heap, byte, ownership, cleanup and answerability outcome
+was green.
+
+The native 96/256 values are upper bounds, not fill targets. A post-Close warm certificate requires
+the actual semantic state: the Compendium panel is closed; its virtual window, list images and detail
+portrait DOM are empty; the eight distinct ready 132px Planetside identities exactly equal the eight
+live lease keys; exactly 17 distinct cached thumbnails are unleased; decoded accounting matches all
+25 entries; portrait/work/subscriber inventories are zero; and the worker is released. Bind both
+diagnostic and raw DOM channels independently, retain exact key sets rather than counts alone, replay
+the preserved real carrier through the current evaluator as a positive control, and mutate each
+semantic branch independently. Never saturate a cache to make a memory gate pass, weaken product
+cleanup to match an obsolete oracle, relabel the original red, or treat a compatible Edge point
+update as recalibration authority.
+
+⚠⚠ **A HEAP VERDICT REQUIRES A FIXED VALIDITY PAIR; INVALID PHASE IS INSTRUMENT-RED**
+(2026-08-30). The predecessor two-pass protocol was itself evidence-based: exact source
+`a9f75797…` showed that an endpoint-native embedder charge could move between cycles, so it retained
+pass 1 and always scored pass 2; signed `20460008…` then certified that fixed-second producer 44/44.
+Exact signed successor `8792e8ac…` exposed the remaining blind spot. Its final desktop pass-1/pass-2
+embedder readings fell from 3,402,288 to 3,105,136 bytes, yet the later BFCache reading fell again to
+2,382,592. The pass-2 warm series was honestly red under its own ruler, but two passes could not
+prove that the scored endpoint had reached a repeatable allocator phase. All game-owned resources,
+DOM/listeners and pending work remained flat. Preserve that original 43/44 result as a truthful
+two-pass red; later evidence may classify it instrument-inconclusive but can never relabel it PASS.
+
+Exact signed four-pass source `5691e77ea470434dd5352901b0a6240a242a48ad` then ran
+`20260830-pr35-fourpass-5691e77-candidate1` once with zero retries. It stopped after 8,352 ms as
+`instrument-fail`, with complete lifecycle and browser/server/workspace-lock cleanup: desktop
+initial P4−P3 V8 and aggregate deltas were **68,472 bytes** against the **65,536-byte** hard cap.
+No product contract, verdict or outcomes existed. Candidates 2 and 3 did not run. The 38,936-byte
+gzip / 688,360-byte raw carrier is immutable under `audits/`, with gzip/raw SHA-256
+`53bf343e503c7a9898ca64116c03c0926aed3221ba224bcb22ae739ae945fcf8` /
+`5bb037c4e8d1f8e1b24bb902d31fac747410a35e62b2f37f552c91db276d7557`. The four-pass producer is
+therefore honest historical instrument evidence, not a calibration candidate and not authority to
+widen the phase ceiling.
+
+Every successor snapshot therefore always executes **eight** complete
+answerable → GC → heap → carrier → DOM passes. P1–P6 are fixed settling passes. P7/P8 are the fixed
+validity pair. Retain all eight raw carriers and always score only P8—never a minimum, maximum,
+average, best-looking lane or conditionally added extra pass. For V8 used size, embedder used size,
+backing storage and their independently re-derived aggregate, require
+`abs(P8 - P7) <= profile.maxAbsolutePhaseDeltaBytes`. Any missing/reordered/detached carrier,
+resource-fingerprint drift or excessive delta is an **instrument-fail before contract creation**;
+it is never a product leak verdict and never authorizes a sample or run retry.
+
+Derive the phase ceiling only from exactly three clean, one-attempt/no-retry calibration reports on
+one unchanged signed source/build/browser tuple. For each profile, let `M` be the maximum across all
+30 retained snapshot validity pairs and all four fields. Select the smallest member of
+**4/8/16/32/64 KiB** that is strictly greater than `M`. If `M >= 64 KiB`, activation is forbidden:
+stop this campaign for an explicit production-only/quarantine decision instead of widening,
+retrying or automatically adding more passes. The 64 KiB hard cap is half the unchanged 128 KiB/cycle
+product slope ruler, so measurement uncertainty cannot consume the product budget. Negative-control
+P7 and P8 spikes in both directions, each field, cross-component cancellation, forged summaries,
+missing/duplicate/reordered passes and persistent cross-cycle growth. The live isolated
+**512 KiB/cycle** retained-allocation control must remain visible in all eight lanes and must fall
+after release. Calibration may launch only while the canonical tracked budget is explicitly
+`calibration-required`. The browser-free fixed-eight implementation checkpoint is
+**report-v6/profile-v5/input-v6/verdict-v5/budget-v7**: collector SHA-256
+`c4968d0a2cfb489c46df94f603d9730c995760b3ca2a289b1f3774662d663b71`, verdict-contract SHA-256
+`e973f8c8f3eeae05c1c9c1328926f2ccf6f4aba7b3602f6bf5ab623a6163d599` and calibration-required
+budget SHA-256 `5edac549b6ee0fa79afe5b6f282d68f0439c4385f0afe5d8f2ac58035d8eb96a`. Its genuine-current
+fixture control closes **158/158** focused checks across four files; the complete browser-free suite
+is **253 files / 2,543 passed / 1 skipped**, all three strict TypeScript programs pass and the
+producer-authority printer is green. Exact clean signed source
+`cc15e1f967f6644405cad7c3460cd8181b6a043f` then ran
+`20260830-pr35-fixedeight-cc15e1f-candidate1` once with zero retries on Edge
+`152.0.4191.53` / CDP `1.3`. Lifecycle and all cleanup completed, but phone `warm-1` P8−P7
+embedder/aggregate deltas were **287,192 / 299,720 bytes** against **65,536**. Contract and verdict
+were null, outcomes were empty, and desktop plus candidates 2–3 did not run. Preserve the 32,448-byte
+gzip / 745,707-byte raw carrier at gzip/raw SHA-256
+`702a6ca1ff8ae508f215aa961a946844f0095b7777ac67f6ec7ec6a9d3d0180f` /
+`f4c5940efcd2deeea9ce7cbc68bb9e13022b889bf57e015d5c1bec04db4692a4`.
+
+That result triggers the precommitted hard stop. Do not run candidates 2–3, widen the ceiling, add
+passes, retry or start another SceneMemory redesign in this campaign. SceneMemory live native-heap
+work is production-only/quarantined and never blocks a `develop` merge. Deterministic fixed-eight
+mutation controls remain universal; the strict live heap selftest runs in production immediately
+before certification. Production remains SceneMemory →
+Compendium → Slice → Glass → Recovery and requires an explicit future activation decision.
+No SceneMemory browser PASS or product verdict is claimed; product rulers and bytes do not move.
+
+⚠⚠ **NEVER PROJECT OPAQUE CANONICAL IDENTITY THROUGH A GENERIC TEXT CAP; VALIDATE IT IN
+THE OWNER REALM AND SERIALIZE BOUNDED MEMBERSHIP EVIDENCE** (2026-08-30). Exact signed source
+`b2eecfbd…` reached eight distinct ready, decoded 132×132 Planetside images, yet the structured
+instrument stopped before all 78 outcomes because observation v1 sent each canonical `visualKey`
+through a generic 512-character text projector. The real keys were 766–779 characters, so every
+projected key became `null`. A bounded carrier had converted valid owner-realm identity into false
+absence.
+
+Opaque identity is judged where its complete representation is authoritative. The page realm must
+validate each full key, then serialize only bounded length and exact membership indices into
+independently produced leased/cache inventories. Cap both inventories at exactly 256 entries before
+`indexOf` or `Set`; require per-image membership and distinctness, require each inventory length to
+equal its live lease/cache count, and require internal distinctness of each inventory. Negative-control a literal 257-entry inventory and keep
+a literal 256-entry inventory green. Positive-control realistic 768–831-character canonical keys so
+a future generic string cap cannot silently reappear. A serialization limit protects evidence size;
+it never authorizes truncating or rejecting the identity whose membership the evidence claims.
+
+⚠⚠ **PROVE IDENTITY WITH EXACT SET MEMBERSHIP, NOT CARDINALITY** (2026-08-27). Final5's
+Compendium instrument saw eight mounted fixture keys and eight cached Planetside keys, so its
+`mountedDistinctVisualKeys > cachedKeyCount` heuristic failed even though the errored row's exact
+visual key was absent from the pre-arm cache. Two sets can have the same size and different members;
+a count inequality is neither necessary nor sufficient to prove that one particular identity is
+cold or new.
+
+Retain and compare the actual keys. A cold-key proof must name the exact row/key, require that key
+to be absent from the pre-arm set, and bind the corresponding publication, producer error and job
+error. Negative-control cached/wrong-key membership directly, preserve the row/key/error/job
+evidence, and require restoration to pass. Aggregate counts remain useful resource facts, but they
+cannot substitute for identity.
+
+⚠⚠ **A DEPENDENT OUTCOME EXISTS ONLY AFTER ITS COMPLETE CAUSAL PREFIX IS GREEN**
+(2026-08-27). Final6 Slice sampled a valid 164px Inventory row whose raw centre was clipped below
+the panel scrollport. The harness skipped the click, then reported the necessarily absent detail,
+Equip, Close and reload as four additional product failures. One missed prerequisite became five
+findings, while mutation controls constructed on the red base could also pass vacuously.
+
+Exercise the player's real reveal path, await render settlement, prove the exact target lies inside
+its visible scrollport and owns the centre hit, and bind the trusted receipt back to that point.
+Every later judgment must name and require its full green prefix. Do not run semantic mutation
+controls on a red base. When a failed interaction may have started work or retained a modal, prove
+`pendingWork === 0` and exact ownership cleanup, then terminate before later mutable systems; do
+not let a diagnostic cascade cross an authority boundary. A prerequisite failure gets one root
+diagnosis, and unexercised descendants get no product verdict.
+
+Closing a child modal is not proof that its parent surface survived: record the parent's raw
+display/ARIA state, app registration, opener expansion and focus/ownership outcome. Likewise,
+"persisted" is not proved by the carrier alone. Bind committed to reloaded receipt keys, raw bytes
+and parsed semantics, and bind the authority seed/ordinal/draw projection that owns the receipt;
+negative-control missing keys, byte drift, semantic drift and authority drift independently.
+
+⚠⚠ **SETTLE BEFORE GEOMETRY; EACH CONTROL OWNS ITS HIT AND RESTORES THE VIEW IT MOVED**
+(2026-08-27). Final4 Glass showed that a generic audit can leave a card or panel scroller displaced,
+then make a later scoped control judge geometry produced by the earlier check rather than the
+product's settled baseline.
+
+Await the post-render settlement boundary before reading geometry. For every control, snapshot each
+scroll owner it may move, use the native scroll path, require full containment, and prove
+`elementFromPoint(...).closest(...)` owns that exact logical control at the intended native hit
+point. Restore exact `scrollTop`/`scrollLeft` values in `finally`, await settlement again, and prove
+the restored outcome green. A positive, its deliberate negative and the restored positive must be
+isolated per control; audit order and inherited scroll state are never evidence.
+
+⚠⚠ **A NEGATIVE REACHABILITY CONTROL MUST CREATE THE NEGATIVE GEOMETRY BEFORE PRODUCT INPUT**
+(2026-09-02). Setting a scroller to its existing zero position does not move a target offscreen.
+Use native scroll displacement when it exists; otherwise use a narrowly scoped instrument-only
+transform that places the exact target beyond the viewport. Require no dispatched input, no
+receipt listener or receipt, and null hit ownership: the refusal-only probe must use the action
+owner's explicit no-dispatch path and never issue product input. Build the page-evaluated setup and
+restoration from their executable function sources, with the captured prior state serialized as
+data; a hand-copied or interpolated lookalike is not the oracle. Snapshot and restore the complete
+inline-style attribute, transform value/priority and scroll position in `finally`, distinguishing
+an absent style attribute from one that is present but empty. For an originally absent attribute,
+remove it, sample the restored transform evidence, then remove it a second time to defeat
+Chromium's retained-empty normalization; for an originally empty attribute, restore and retain the
+empty carrier. Prove exact restoration before the real action. Any setup, control or restoration
+defect is instrument-red before product action/outcome; product mutation controls may run only
+from a green real-action predecessor.
+
+Disabled semantics do not waive that geometry law. Final9 Recovery sampled a correctly disabled
+292×44 Tame button before revealing it inside the Survey scrollport, collapsed geometry and hit
+ownership into one bit and retained no hit owner. Keep the initial receipt, reveal through the exact
+native scroll owner, re-query/settle twice and retain button/card/viewport/scroll/point/document
+identity before dispatch. A coherent missing control or semantic attribute is product-red;
+malformed/unsettled/replaced evidence is instrument-red. Abort listeners, restore scroll, prove
+owned globals absent, and assert cleanup integrity before emitting any product verdict—especially
+when product and cleanup are red at the same time.
+
+Snapshot-based suppression evidence must also quiesce the complete periodic mutation cycle, not
+merely clear its timer or await its inner lease renewal. Take a smoke-only hold before stopping the
+timer, join the full heartbeat through revision checks, checkpoint work and UI refresh, and prevent
+visibility from restarting it while held. Then capture one synchronized raw → state → UI baseline,
+bind the exhausted/before/after document tokens and monotonic chronology, and prove lease/revision/
+heartbeat counters did not move across the judged input. Resume on a fresh timer boundary only in
+`finally`, after target cleanup and the final state read. Exact quiesce/resume receipts and source-
+order mutations are instrument evidence; an unsuppressed model or durable-state change remains a
+product failure. Every ordinary persistence/action caller must await that complete cycle; only the
+cycle's own checkpoint may bypass itself through a private owner token, and only when no product
+action or ordinary writer already owns the persistence barrier. A coherent unusable target is
+product-red before full dispatch/outcome evidence that cannot exist for it, while collection,
+target-shape and cleanup integrity remain earlier instrument verdicts. A point browser update never
+changes this contract or asks for a rebaseline.
+
+⚠⚠ **SEMANTIC ORACLES JUDGE THE CONTRACT, NOT A CONVENIENT HEURISTIC OR A HISTORICAL
+TABLE** (2026-08-27). A truthful Survey title such as **Mars** is four characters, so an arbitrary
+five-character minimum rejected valid content. Separately, Engineering connected three live
+`contact` consumers while the independent Glass oracle still classified them unavailable.
+
+Require the actual semantic boundary: a required label is nonempty unless its product contract
+defines a stronger rule. Keep source-independent expected tables independent so they can catch a
+bad producer, but update their audited inventory whenever a live consumer is connected or removed.
+Negative-control the semantic absence itself (for example, an empty title) and one currently live
+consumer mapping; a stale oracle is instrument failure, not permission to change the product.
+
+⚠⚠ **A DURABLE FACT DOES NOT DEFINE EVERY PHASE'S PRESENTATION VOCABULARY** (2026-08-28).
+Final10 Recovery observed a coherent reopened same-document UI → state sample with the same
+exhausted 16/16/0 Pertar budget, while the reopened document was deliberately read-only/ineligible.
+That surface rendered all three actions as `unavailable`; the phase-blind oracle demanded the
+eligible active surface's `empty`/`depleted` reasons and stopped before the later raw/state/UI
+durable-parity assertion or recovery outcome. No reopened product verdict followed.
+
+Bind every status predicate to the authority and lifecycle phase it describes. An active,
+eligible exhausted surface uses `empty` or `depleted`; an offline/reopened or otherwise read-only
+ineligible surface uses `unavailable`. Durable exhaustion evidence is necessary in both phases, but
+it is never permission to import one phase's UI vocabulary into the other. Retain phase, document,
+authority, budget, row and disabled-semantics evidence together; negative-control both swaps so
+neither vocabulary can satisfy the opposite phase. If a poll times out, preserve the last coherent
+observation separately from the unmatched terminal poll. A malformed or phase-unbound observation
+is instrument-red; a coherent phase-bound surface that fails its actual contract is product-red.
+
+A candidate terminal PASS must retain schema-bound full surface receipts for the original active-
+exhausted, offline-reopened and reactivated active-exhausted phases. Terminal finalization and the
+named verifier must independently replay and cross-bind their phase, document, cycle, facts,
+SessionRNG, state/UI and first-active-sample evidence. Before observation,
+`active-observation:running` must be persisted and survive later failure. Each wait receipts the
+strict remaining share of one absolute 20-second deadline; clipping or exceeding it is red. The
+exhausted raw/live-state chain and reactivated→first-service binding require at most 20 seconds,
+the same cycle/RNG and revision delta at most one. Missing, swapped, coherently retokened, reversed-
+chronology or coherently recomputed route/card/runtime/pending receipts are instrument-red, as are
+internally assessment-green retiming, +2-revision and next-cycle mutants.
+
+The historical Final10-era local Recovery repair's exact six-region SHA-256/UTF-8-byte inventory was: full collector
+source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+(10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+(6,184 B); offline-reopened→reactivated phase span
+`b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+suppression preparation/collector
+`22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+Browser-free checks for those then-current bytes at locally signed implementation/evidence commit
+`3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+`4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+The synchronized signed clean docs-only descendant supplied immutable Final11. Final11 completed
+the uninterrupted observation, exact next cycle and recovered UI, then exposed two temporal-oracle
+defects in the final assessor. Its stored report remains `fail`, with unchanged hashes, one attempt,
+zero retries and only `activePlayProjection` / `closeCheckpoint` false. The repaired assessor
+independently replays the unchanged `recoveryBundle` wholly green and controls the reported 20 ms/
+322 ms geometry, exact boundary/+1, future/excessive lag and every committed/lost witness field.
+Immutable Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout 787/787,
+SceneMemory 42/42 and Compendium 78/78 before Slice stopped once/no retry: the real stale-
+convergence assessment was wholly green, but the strengthened authority mutant correctly failed
+both `convergenceRelease` and `oldUiConvergence` while its wrapper required only the first.
+Glass/Recovery did not run. Signed harness repair `5ab4d3e…` fixed only that expectation; exact
+signed Final13 source `7cb0969…` then completed the full once-only named-verified chain and real
+20-minute Recovery observation. None of this grants HUMAN judgment, whole-Gate closure,
+hosted/merge or release authority.
+
+⚠⚠ **CONTRAST IS THE COMPOSITED READING SURFACE; A CLOSE OWNER NEEDS EXCLUSIVE HEADER
+GEOMETRY** (2026-08-27). A canonical rarity color can be correct and still become unreadable when
+drawn directly over bright translucent glass, and a single valid Close action can still cover a
+neighboring control when its panel reserves no hit gutter.
+
+Preserve canonical rarity foreground tokens and provide a stable opaque reading surface; the
+current Exotic token remains `#9A5CFF` on shared badge background `#05070d`, producing effective
+text contrast of at least 4.5:1 without changing rarity data or art. Every panel reserves a 58px
+right header gutter, translates its 44px Close owner by 44px into that gutter, and clears the
+heading below floated header geometry so content and focus cannot sit beneath the sticky target.
+Measure the composed foreground/background and native hit ownership, and negative-control removal
+of the badge background and the reserved gutter separately.
+
+⚠⚠ **A CLOSED SURFACE OWNS STATE, NOT ITS OPEN-LIFETIME DOM AND LISTENERS**
+(2026-08-27). SceneMemory exposed a closed Inventory that eagerly retained 224 row-tree nodes and
+six panel/detail subscriptions, while the panel manager attached another focus-capture closure to
+every registered opener. None was a leak across cycles, but all were dormant ownership charged at
+the settled closed boundary.
+
+Retain the semantic state that makes reopening continuous—Inventory data, filters, page and durable
+late action outcomes—while unmounting the row tree and removing the six open-lifetime subscriptions
+on Close. A promise settling after Close may update authoritative state but must not rebuild hidden
+rows. Disposal must prevent a stale registration from reacquiring listeners, while its Close hook
+remains idempotent and disposal-safe. Panel opener focus has one delegated capture owner for all
+registered openers; it records the exact containing opener even when a nested icon was clicked, and
+Close restores that exact element. Count capture listeners semantically (`true` and
+`{capture:true}` are the same owner), negative-control an extra owner, and prove open/open,
+close/close, late settlement and dispose/reopen boundaries independently.
+
+⚠⚠ **REQUIRED TRUE COPY DOES NOT DISPROVE AN ADDITIVE CONTRADICTION** (2026-08-27). A Guide
+oracle required every truthful parked-development phrase but still accepted the same bulletin with
+“the preview battery now publishes the development site” appended. Presence checks are monotonic:
+once their phrases are present, adding a contradictory claim cannot make them false.
+
+For any honesty or capability boundary, require the truthful statements and separately reject
+unnegated affirmative claims. The negative control must append—not replace—the contradiction while
+leaving every required phrase intact, then restore the original copy and prove both directions.
+Bind the same semantic predicate and control in every browser lens that claims the contract; a
+source-marker test for only one lens is not cross-tool evidence. Match affirmative claims in both
+subject→verb and verb→subject order, cover active and passive forms (`publishes`, `is published`,
+`is being published`, `was just published`, `is now deployed`, `has shipped`, `has gone live`), and
+bound the verb lexically: an unbounded `ship` alternative once mistook the truthful noun phrase
+“ship preview” for a production-shipping claim. Scan every rendered bulletin row independently;
+a truthful designated publishing row cannot make a contradictory claim in another row harmless.
+Negative-control both same-row grammar variants and an unrelated-row injection.
+
+⚠⚠ **PROVE THE FINAL LIFECYCLE TRANSITION, NOT A FLAG THAT WAS ALREADY FALSE** (2026-08-27).
+Arc 4 stale convergence cleared its lease before the deliberate runtime release. An oracle that
+checked only `leaseOwned:false`, `answerable:false` and `accruing:false` could therefore pass even
+if the final `release()` became a no-op.
+
+Capture one operation-attributed before/after witness. Bind scenario-specific preconditions: stale
+starts visible with a cleared lease, stale block and stale-write count; committed publication starts
+visible with its live lease/heartbeat and commit count. Then require the release-owned transition
+to invisible, no lease heartbeat and no answerability/accrual; require authority/read counters and
+all release-invariant diagnostics to remain coherent; and independently prove full audio disposal,
+zero nodes/voices/reservations and an allowed released counterpart. Directional controls must change
+only the before authority, only the after tuple, or only the final lifecycle field, and each must
+fail exactly its named clause.
+
+⚠⚠ **ABSENT, BLANK, EMPTY AND CLOSED ARE FOUR DIFFERENT UI FACTS** (2026-08-27). Rejected Arc 2
+bootstrap correctly left Inventory lazy, but the first oracle collapsed a blank
+`data-inventory-state=""` marker to `null` and counted zero rows/actions without proving the panel
+was closed. A mounted blank marker or visible empty shell could pass.
+
+Retain marker presence separately from its raw attribute value. A lazy closed surface must prove
+the marker is absent, the logical-owner field itself is present and exactly `null`, visual and ARIA
+state are hidden, every opener is collapsed, and owned rows/actions are zero. Optional chaining plus
+`?? null` must not turn a deleted diagnostic field into valid closure. Negative-control a missing
+logical-owner property, a blank marker, and logical, visual, ARIA and each-opener closure one field
+at a time; require each mutant to fail only its named reason before restoration passes. Visual state
+comes from `getComputedStyle`, not an inline declaration that a later stylesheet or `!important`
+rule can override; counting children alone never proves lifecycle ownership.
+
+⚠⚠ **A LEAF SEED DOES NOT IDENTIFY A WORLD** (2026-08-27). The first canonical-Training repair
+isolated wrong-parent and wrong-ordinal ID controls by selecting any Atlas row with planet seed
+`133` as Earth and omitting it from outer-state comparison. Planet leaf seeds repeat under different
+stars and galaxies, so that would ignore a legitimate unrelated row while claiming to prove full
+CF1 identity.
+
+When the serialized ID itself is the mutation target, find the physical checkpoint row from its
+independent canonical galaxy coordinates/seed/shape plus star coordinates/seed and planet leaf.
+Then judge parent and ordinal components of the ID separately and remove exactly that one proven
+row from the unrelated-state projection. Never make a full-address control green by reintroducing
+leaf-only matching through a side channel.
+
+⚠⚠ **CLEAN UP OWNERS BEFORE CALIBRATING FIXED PRODUCT GROWTH; A BROWSER POINT UPDATE IS
+NEVER THE TRIGGER** (2026-08-27). Signed source
+`862a75b316142348636abea442dab15e87393642` passed named Layout 787/787, then one no-retry
+SceneMemory run `20260827-phase4-successor-scenemem` completed cleanup and honestly stopped at
+40/42. Only phone/desktop `heap-dom-budget` failed: phone measured 11,580,536 V8 / 17,758,550
+aggregate heap bytes / 898 nodes / 90 listeners; desktop measured 11,635,116 / 17,687,678 / 895 /
+89. Preserve that clean report as the paired broken baseline, not as a sample to average away.
+
+First separate avoidable ownership from fixed growth. After the closed-Inventory and delegated-
+opener repair, deliberately non-certifying dirty diagnostic
+`20260827165427809-91398-352d7132df` measured 676/673 nodes and 71/70 listeners—green under the
+unchanged 704/80 limits—while V8 and aggregate heap remained at the larger Arc 2–5/F4 product
+level. A dirty run diagnoses; it is never a calibration candidate or certificate. The evaluator
+must name every breached field, observed value and ceiling rather than collapse independent
+counters into “heap or DOM exceeded,” and its exact-boundary/next-unit controls must preserve valid
+zero-valued heap components.
+
+For the then-active absolute input-v4 ruler, only after product cleanup could a genuine fixed-growth
+ruler change be considered: collect exactly
+three independent clean, one-attempt/no-retry candidates from one unchanged signed producer, retain
+and replay their raw observations, select strict operational headroom, and change only the V8-used
+and aggregate-heap ceilings actually supported by all three. The preserved `862a75b…` baseline must
+still fail on its unchanged node/listener excess after activation. Microsoft Edge family + CDP
+`1.3` capability/profile authority is stable across compatible point updates; exact version,
+revision, JavaScript version, executable path and user agent are per-run provenance. An Edge update
+alone never starts calibration, repins a ruler or moves a threshold. The source-normalized input-v5
+law below supersedes only this historical choice of absolute post-route heap ruler.
+
+The completed application of that law used signed source
+`6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+`a389646081f9fb5246825d1ac187eeb06504a8e4`) for exactly three clean runs:
+`20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2`, and
+`20260827-phase4-repair-candidate3`. Each ran once with zero retries, retained complete browser,
+server, and workspace-lock cleanup, and used Edge `151.0.4129.107` / CDP `1.3`. Across them, V8
+maxima were 11,566,152 phone and 11,630,936 desktop bytes; aggregate maxima were 17,681,258 and
+17,636,682. Nodes/listeners stayed fixed at 676/71 phone and 673/70 desktop. The evidence therefore
+selects only 12 MiB (`12,582,912`) V8 and 18 MiB (`18,874,368`) aggregate ceilings: exact headroom
+is 1,016,760 / 951,976 V8 bytes and 1,193,110 / 1,237,686 aggregate bytes for phone/desktop. Every
+other ceiling stays unchanged, and the paired `862a75b…` red must remain red on nodes/listeners.
+Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree
+`ff11158ac2ccc214490f6f3289d4a7a3660138e6`, parent `6c9ad855…`) applied only those four
+profile-specific heap values under budget SHA-256
+`e6c4aeea762fc0e36432cda131a0f75dc77fef857ea8bfb852b9188b3aef7375`. Its good signature,
+134-file /1,469-pass /one-skip battery and matching producer bindings closed activation. Signed
+descendant `7362a0ea32e90b24e4988c81d566b82e20549e66` then supplied source-bound standalone
+and serial SceneMemory certificates at 42/42 plus serial Compendium 78/78 before Slice stopped red
+on stale harness assumptions. The retained Layout carrier is 787/787 and verifier-green, but its
+schema embeds no Git/source identity and its non-commit-tagged run lacks a preserved execution
+record, so it is chronology-associated result provenance rather than exact-source evidence. Repairing
+an evidence oracle changes the campaign source regardless: the final fail-fast chain must restart at
+Layout on one newly signed unchanged commit. A browser point update still has no role in that
+decision.
+
+⚠⚠ **JUDGE CURRENT-SOURCE HEAP GROWTH, NOT A MOVING ABSOLUTE POST-ROUTE V8
+FOOTPRINT** (2026-08-30). Exact signed source `ebf172cc62417c9e193c7fcc1c9e751a1e0a028a`
+passed the complete hermetic develop profile and every changed-instrument control, then its one
+no-retry SceneMemory run stopped at 43/44 because desktop BFCache V8 was 12,594,592 bytes—only
+11,680 bytes / 0.093% above the old absolute 12 MiB ceiling. Range, slope, aggregate heap,
+DOM/listeners, textures, caches, pending owners, BFCache lifecycle, answerability and cleanup were
+all green. The same Edge `152.0.4191.53` / CDP `1.3` tuple had already passed recent unchanged
+rulers. That is exhausted absolute-footprint headroom, not retained-owner evidence and not an Edge
+rebaseline trigger.
+
+For a shipped source that legitimately grows, retain a broad initial safety stop and judge the work
+added after the scored fixed-fourth P4 initial snapshot. For every scored heap point `q`, define
+`growth(q) = max(0, q.usedSize - initial.usedSize)` and
+`normalized(q) = growth(q) + q.embedderHeapUsedSize + q.backingStorageSize`. Raw totals remain in
+the report for diagnosis; they are not the current route-admission ruler. Keep the existing raw warm
+aggregate range/slope, DOM/listener, resource, ownership, pending, BFCache, answerability and
+surface-vista rules unchanged.
+
+The completed application used exact signed clean source
+`553b06bc5b477a90e0d7284360fa84ab99704fb7` for exactly three independent calibration-only
+observations, each once with zero retry under one unchanged 52-file build and Edge/CDP tuple. All
+three completed 44/44 calibration outcomes with stable topology and complete cleanup. Worst
+phone/desktop growth was 5,387,552 / 5,677,328 bytes; worst normalized working set was
+11,098,217 / 11,352,882 bytes. Input-v5 therefore retains 12 MiB initial-V8 and 18 MiB
+initial-aggregate safety ceilings, and selects 6 MiB growth plus 12 MiB normalized-working-set
+ceilings—at least 614,128 / 1,230,030 bytes of observed headroom. The old raw 12 MiB post-route
+V8 ceiling would reject two of these three identical-source desktop BFCache samples.
+
+Serialize the changed meaning explicitly: the four-pass replacement producer is
+report-v5/profile-v4/input-v5/verdict-v4/budget-v6; it becomes certifying only after the required
+three-candidate phase derivation and budget activation. Preserve and replay historical
+report-v4/profile-v3/input-v5/verdict-v4/budget-v5, input-v3/verdict-v2 and
+input-v4/verdict-v3 evidence under their original raw semantics; never relabel it. Bind the baseline
+to the exact profile, document token and `${profile}-initial` scored P4 snapshot role, re-derive the
+profile-v4 metric summary, and bind every P3/P4 delta to the activated profile ceiling during named
+verification. Project the v5
+initial heap authority to exactly `usedSize`, `embedderHeapUsedSize` and `backingStorageSize`;
+unscored CDP fields such as `totalSize`, and any future fields, remain raw diagnostics and must not
+silently enter the versioned contract. Negative-control
+exact/+1 on all four new limits, an equal persistent initial offset, a post-initial retained
+allocation, cross-profile and same-profile-warmup substitution, missing/detached initial evidence,
+raw-to-contract projection and metric-summary mutation. Compatible Edge point versions remain
+provenance only and never trigger rebaseline, recalibration or threshold movement.
+
+⚠⚠ **DERIVE CURRENT PRODUCER AUTHORITY FROM CURRENT SOURCE AND THE STANDARD BUILD BEFORE A
+BROWSER CAMPAIGN** (2026-08-27). Final3's ordinary test battery was green while both SceneMemory's
+budget and its test repeated the same stale producer tuple. Layout passed, then SceneMemory spent a
+browser launch only to stop before measurement on stale `buildDist` and `gameMain`; the same
+browser-free derivation found Compendium's measurement current but its built index/owner producer
+stale. Comparing a budget to a duplicated expected constant proves agreement between copies, not
+agreement with the checkout.
+
+Before browser installation or the first campaign stage, run the standard application build under
+the shared workspace lock, hash the current source/dist ownership paths independently, and compare
+both live memory budgets to those observations. The check belongs in the ordinary test battery;
+its standalone reporter must emit exact mismatch paths and exit nonzero. Negative-control at least
+one source leaf, the aggregate dist identity, forged budget-plus-test copies that agree with each
+other, and recomputed Compendium index/owner authorities. A mismatch is instrument evidence: retain
+it, stop the serial chain, and do not retry. If the measurement contract, fixed ruler and product
+semantics are unchanged, rebind only the current top-level producer authority. Never rewrite old
+samples, calibration hashes or certificates, and never infer an Edge regression, recalibration or
+threshold move from producer drift alone.
+
+⚠⚠ **LATCH IRREVERSIBLE CONVERGENCE BEFORE FALLIBLE PRESENTATION** (2026-08-27).
+F4 authority loss originally tried to repaint an already-open full Shipyard before scheduling its
+replacement document. A presentation or diagnostics throw at that point could leave actionable
+controls visible and strand the only reload that could restore a writable fixed point.
+
+Once authority loss is decided, establish the read-only hold and latch exactly one replacement
+before attempting presentation work. An open action surface must demote immediately to its honest
+protected projection, but repaint failure must be witnessed rather than allowed to cancel cleanup
+or reload. Negative-control both exact-one scheduling when repaint throws and the real full-to-
+protected surface outcome, including every action, reason, preview-identity and ownership field.
+
+⚠⚠ **A RESOURCE RULER MUST NOT INHERIT A LATER AUTHORITY PRECONDITION** (2026-08-27).
+SceneMemory reused the immutable rich-veteran save after Arc 3 began refusing orphan legacy Mine
+facts whose leaf seed had no source-proved full world address. The product correctly protected
+authority-dependent Engineering actions, but accidentally erased the independently capability-
+derived read-only ship preview that the older Arc 1C ruler owns. Clearing the orphan facts or adding
+"Engineering loaded" to the ruler would make the run green by changing its input/intent, not by
+repairing the preview contract.
+
+Keep historical baselines byte-immutable and keep a ruler scoped to the product outcome it was
+created to measure. A later authority may suppress only the details/actions it owns; separately
+source-valid inspection stays available. Here, protected Engineering renders unavailable copy and
+zero actions while Shipyard still owns exactly one current-ship preview. A different gate that
+explicitly exercises full loaded Engineering may use its separately named, source-checked derived
+fixture, but that fixture cannot silently replace SceneMemory's protected baseline or broaden its
+PASS predicate. Negative-control missing preview independently from protected Engineering so the
+two concerns cannot collapse again.
+
+⚠⚠ **A POLL MUST RETAIN THE FIELD THAT DID NOT SETTLE** (2026-08-27). The first SceneMemory
+red sampled a responsive document 577 times but returned `last:null`, collapsing panel state,
+protection reason, DOM ownership, preview key, pending work and faults into one unactionable timeout.
+A long observation count does not diagnose which clause stayed false.
+
+Return one structured observation on every poll, compute acceptance from a pure named-reason list,
+and retain both the last sample and its failed reasons at the deadline. Mutation-control each field
+independently so the diagnosis itself cannot become a decorative always-green layer. Deadlines stay
+fixed unless the measured contract changes for an independently justified reason; missing evidence
+must never be converted into a browser-version or performance conclusion.
+
+⚠⚠ **A FIRST RENDER IS NOT PERSISTENCE INTENT** (2026-08-25). Arc 3 recovery exposed a generic
+boot `rerender()` that fire-and-forgot a receipt-free save after an otherwise complete action
+reload. A correct one-revision action therefore appeared as two revisions depending on whether the
+instrument sampled before or after that unowned boot write. Worse, treating every normalized route
+as save intent could let a source-error, protected or Training runtime-only route repair hitchhike
+inside an unrelated bootstrap CAS.
+
+Publish the initial scene with persistence explicitly skipped. Classify a boot write from detached,
+source-proven durable inputs before building any candidate; semantic defaults such as omitted versus
+false flags must fixed-point. Give every allowed repair a named intent and coalesce it with F4,
+route, Arc 2, Arc 3, Arc 4's strict 18-namespace ownership bootstrap and Arc 5's source-bound
+five-carrier compact authority under one receipt-free, lease-fenced commit. Training-deferred or protected
+Arc 4/5 evidence must not hitchhike. Held repairs must restore their original durable bytes before
+another owner can construct a candidate. If a later authority protects after earlier staging, clearing
+pending flags is insufficient: restore every live saved-view, Atlas and compatibility-mirror field
+from the captured durable input before runtime creation. An aligned current replacement must
+prove zero boot commits, null outcome and zero pending persistence work. Negative-control saved-view-
+only and Atlas-only deltas, constant/partial fingerprints, and every protected/source-error/Training
+hold. A render, visibility change or convenient normalization is never itself authority to write.
+
+⚠⚠ **DURABILITY CLASSIFIES ACTION SUCCESS BEFORE PUBLICATION** (2026-08-25). An Arc 3 stale
+authority outcome occurs before the transaction commits: it owns no new carrier, receipt or product
+state and may converge by reloading the newer authority. A verification or publication failure after
+`commitAction()` returns committed is the opposite: the action is already durable. Calling both
+paths “failed” invites a rerun, duplicate receipt or second write.
+
+Model the boundary explicitly. Pre-durable stale, duplicate, lease, protected and storage outcomes
+publish nothing. Before CAS, Arc 4 may retain only a private pending payload of registered plan/
+settlement identities and prepared fingerprint. It mints no evidence token and registers no WeakMap
+entry until the transaction commits; that sole postcommit registration binds the payload to the exact
+committed transaction/kind/revision. The verifier must then bind that evidence, complete prepared
+save, Arc 4 ownership carrier/mirror, aligned Arc 5 manifest/four shards/reconstructed V2, F4 draws and receipt
+before targeted publication. Post-durable verification/publication faults suppress the old live projection,
+retain the exact diagnostic witness and committed receipt evidence, and perform one read-only
+convergence reload. The replacement document must prove a changed loader token, exact committed
+carrier/mirror/receipt bytes, zero boot commits, no carried action outcome and no pending persistence. Never re-derive,
+retry, click again or write again after durability. Negative-control the witness fields, old/new
+document boundary, complete raw evidence and exact unrelated-field preservation; a green UI alone
+cannot classify which side of durability an outcome occupied.
+
+⚠⚠ **A COMPATIBILITY MIRROR OR SUCCESSOR CERTIFICATE MUST MOVE IN THE SAME TRANSACTION AS ITS AUTHORITY**
+(2026-08-24). Arc 2 made `inventory/arc2.loot` the exact-instance authority while the legacy-v4
+`items` / `equip` / `equipAff` fields remained a projection for unported readers. Field Training's
+genuine legacy checkpoint owns those three old fields. Restoring only that mirror would leave the
+new carrier stale, allowing a later boot or Inventory publication to project the pre-Training gear
+back over the restored checkpoint.
+
+When a replacement path owns compatibility fields that mirror a versioned carrier, decide ownership
+before writing: derive the complete carrier from the exact restored fields when the checkpoint owns
+them; preserve the carrier when it does not; and refuse corrupt, future, source-deferred, or partial
+evidence rather than guessing. Arc 4 applies the same law to ownership-v1 and the v4 `codex`, owned
+`c*` names, `bioX` and `scout` compatibility fields. A genuine legacy Training restore therefore
+commits exactly 18 Arc 4 namespace writes, plus its one Arc 2 write when applicable, from the exact
+restored source. Arc 5A extends the law one layer farther: its legacy-v1 digest certificate is valid
+only for one exact Arc 4 source and may upgrade only when aligned. The current representation is
+exactly one version-2 manifest plus four fixed generic delta shards. Boot upgrades an aligned legacy
+certificate through one receipt-free CAS, while an aligned current-v2 fixed point writes nothing.
+Training adds all five Arc 5 writes to the same replacement, and every capture hit or miss must
+pre-certify and commit all 18 exact Arc 4 successor replacements plus all five Arc 5 replacements
+together or refuse before RNG, receipt or CAS. It verifies committed source, delta, target and each
+shard fixed point; a lossless `legacy-protected` carrier is preserved without inventing a mirror.
+The delta contains only V2-exclusive or changed rows, so source-only Arc 4 growth must leave all four
+canonical empty-shard bytes unchanged rather than duplicate the source. Any later internal V2-only
+successor likewise replaces exactly those five carriers; that authority is not a public player
+writer. Commit state, carriers, protected authority and revision under the same fence/CAS boundary.
+After durability, publication verifies
+the committed carrier or reloads; it never performs a second write. Grep every restore/import/reset
+writer whenever a compatibility projection or successor certificate gains a new authority—ordinary
+action tests alone cannot expose a replacement-only split.
+
+⚠⚠ **A MUTATION CONTROL MUST OWN ONE NONEMPTY TARGET INSIDE THE SECTION IT CLAIMS TO TEST**
+(2026-08-25). Arc 4's integration audit found that a source-slicing control can stay green while
+testing nothing: an empty slice accepts every replacement, and an out-of-section replacement changes
+bytes the guard never reads. The named control then appears adversarial without exercising its owner.
+
+Before accepting a source-mutant test, prove the extracted owner section and its guard are nonempty,
+prove the target occurs exactly once inside that section, mutate that in-section occurrence, and
+prove the resulting source differs in the intended field. Keep a positive unmutated control beside
+it. A whole-file match or a passing downstream test cannot repair a vacuous section-local mutant.
+
+⚠⚠ **SINGLE-FLIGHT OWNERSHIP MUST BE CLAIMED SYNCHRONOUSLY AND HELD ACROSS ITS WHOLE BARRIER**
+(2026-08-25). Arc 4 joined queued persistence, Training replacement and product actions under one
+coordinator. A claim made after the first await leaves a double-entry window; a hold that ignores
+queued work admits overlap; and a post-heartbeat guard that treats its own `activePersist` as foreign
+work rejects the action that correctly owns the barrier.
+
+Claim synchronously before the first await. Put queued persistence behind the exact coordinator
+barrier, retain the claim through heartbeat/revalidation, transaction verification and publication,
+and distinguish the claimant's own active persistence from competing work. Static call-order checks
+are insufficient: dynamically overlap the participating actions and persistence path, prove one
+owner proceeds, and prove every refused contender creates no draw, receipt, CAS or live publication.
 
 ⚠⚠ **NATIVE POINTER EVIDENCE MUST SURVIVE THE DEFERRED RENDER, PROVE A STABLE HIT OWNER, AND OWN
 THE IMMEDIATE ACTION RECEIPT** (2026-08-23). PR #34 run `32665404776` positioned a virtual
@@ -54,6 +2069,12 @@ change. Negative-control focused-but-suppressed `focusVisible:false`, forced rem
 shadow, and restoration to green. Never broaden product CSS from `:focus-visible` to `:focus`,
 reorder the route to hide inherited modality, or accept a permanent inline outline as the positive
 control.
+
+Input modality and scroll ownership are separate claims. When a passive DOM replacement restores
+the same semantic control, use `focus({preventScroll:true})` unless that exact operation owns
+navigation or reveal. Prove replacement identity, active element and unchanged ancestor scroll in
+one deterministic rerender control; a healthy focus-visible witness does not excuse an unowned
+scroll jump.
 
 ⚠⚠ **A READY VIRTUAL WINDOW MUST SURVIVE THE SNAPSHOT'S OWN RENDER TURN** (2026-08-23).
 PR #33 run `32614177932` first proved every mounted Compendium thumbnail decoded and the queue
@@ -124,6 +2145,99 @@ make empty CI-kick commits, infer a monthly reset, or bypass a missing required 
 merge authority is not standing Actions-spend authority. Negative-control the workflow policy:
 automatic triggers, a run-by-default input, a missing job guard, a decoy guard, a second battery
 runner, an unparked publisher, or an unknown workflow must all fail locally before any push.
+
+⚠⚠ **LOCAL GREEN THAT READS AN IGNORED INPUT IS NOT CI EVIDENCE** (2026-08-29).
+PR #35 run `33273328362` exposed five suites that read root `main.js`: it existed on the development
+Mac but was ignored and absent from both the exact PR head and base. The ordinary worktree therefore
+passed inputs a clean checkout could never receive. A port test needing legacy bytes must consume
+the unique inline script in tracked `celestial-frontier.html` through one byte-exact helper. Never
+fall back to local `main.js`, trim it, normalize line endings or let two extractors disagree.
+
+Before authorizing hosted work, commit the candidate and run `node
+tools/tracked-input-preflight.mjs --profile=develop` from `port/v2` (or the explicit `production`
+profile for `develop` → `main`). It exports only the exact index into an owned
+temporary tree, performs a fresh install and runs the complete hosted browser-free/static sequence.
+It rejects dirty tracked state and forgotten source-owned untracked/ignored test files, excludes
+dependency-owned `node_modules` tests, and allows unrelated ambient files and artifacts generated
+inside the snapshot. Recheck HEAD, tracked cleanliness and
+forgotten tests after the long run as well as before it; a shared-worktree edit or commit must not
+let an old snapshot print PASS for a new candidate. Directional controls must prove an ambient
+fixture can make the direct workspace pass while the snapshot fails, that tracking it flips the
+snapshot green, that generated output remains green, and that removing/reordering/softening a
+command or workflow step fails.
+
+⚠⚠ **AN OUTER TEST TIMEOUT IS NOT A CHILD-PROCESS BOUND** (2026-08-29).
+The same PR #35 run had two synchronous evidence selftests exceed Vitest's inherited five-second
+case limit under Linux contention while their children had no hard kill. Every synchronous
+selftest child now owns an explicit 15-second termination bound below its 20-second outer case.
+Classify timeout, spawn error, nonzero exit and exit-zero-without-marker separately; a success
+marker printed before a nonzero exit is still red. Direct controls use a hanging child, a nonzero
+child that prints the marker and an exit-zero child that omits it. A 24-way control reproduced the
+old band—every process took 5.711–6.066 seconds—and passed 24/24 under the bounded contract with no
+retry. Stress is diagnosis, not the contract: never answer with automatic retry, an unbounded wait
+or a timeout increase that cannot terminate its child.
+
+⚠⚠ **A GREEN STATIC WIRING CHECK DOES NOT PROVE A CHAINED ACTION'S LIVE BARRIERS**
+(2026-08-29). PR #35 run `33278630671` passed the complete browser-free/type/art/coverage and
+current-authority battery, then real phone SceneMemory stopped at `Earth planetfall was rejected`.
+The one-call Survey → Landing path can begin while the route into a system still owns an ordinary
+checkpoint; Survey then installs a replacement checkpoint. Waiting only the barrier observed after
+Survey is not enough. A chained action must dynamically capture and drain its predecessor barrier,
+start action A exactly once, capture and drain A's replacement barrier, then require A's exact
+settlement promise to succeed before invoking action B exactly once. Both an initial refusal and a
+later durable false stop the chain. Negative-control each omitted barrier, an ignored late false and
+each duplicate call with manually controlled promises; a source-order assertion or retry is not
+equivalent proof.
+
+The always-run SceneMemory verifier's incomplete-inventory failures were downstream fallout from
+the product stop, not additional root causes. Hermetic browser-free parity prevents local-only input
+drift; it cannot, by construction, certify real-browser task ordering, service-worker client-realm
+ownership, or BFCache navigation behavior. Keep those scopes explicit before spending another
+hosted attempt.
+
+⚠⚠ **EXPECTED SAVE SUCCESSORS MUST USE THE TRANSACTION OWNER'S EXACT COMMIT CODEC**
+(2026-08-29). A raw gameplay derivation can differ honestly from its persisted compatibility
+projection when save housekeeping applies an injected-clock floor to an unrelated veteran field.
+Comparing that raw full or owned state with the committed canonical state produces a false
+postcommit-convergence finding after a successful CAS. The F4 deterministic product owner must
+detach its registry once, validate `codecNow` once, and mint the canonicalizer passed to derive from
+that exact registry and clock. Consumers return raw derivation state to the transaction but use the
+owner-minted canonical successor for seals and expected-state comparisons. They must not call the
+codec with a fresh clock, duplicate its rules, or canonicalize state before handing it to the
+owner. Later-clock controls must prove both committed equality and untouched caller state.
+
+That same-clock action rule is distinct from comparing two honest persisted snapshots taken at
+different codec clocks. A cross-clock evidence oracle must derive its expected product independently,
+bind each absolute clock to the run, and normalize only explicitly owned clock-relative fields. It
+must not delete timestamps, route geometry, Atlas sidecars or arbitrary "unrelated" state to make
+two digests agree. Every excluded field needs a bidirectional control; every field not explicitly
+excluded remains exact.
+
+⚠⚠ **AN EXACT-BUILD PWA PIN MUST FOLLOW THE CLIENT REALM, NOT STOP AT THE WINDOW**
+(2026-08-29). The biome-vista module-worker entry was served from its initiating window's exact
+build, but its dynamic import arrived under the new worker client. Without copying the selected
+build to the fetch event's valid `resultingClientId`, the correct fail-closed service worker returned
+503 to that lazy import. Worker and shared-worker creation must persist the initiator-selected pin
+for the resulting child before returning the entry response. Live-build retention must enumerate
+`clients.matchAll({type:'all', includeUncontrolled:true})`; before pruning a pin omitted from that
+snapshot, confirm it with `clients.get()` to cover the reserved-client race. Tests must use distinct
+active/prior bytes and prove that a prior-pinned owner creates a prior-pinned child whose lazy
+imports cannot mix with active assets. Invalid or missing child identity remains terminal.
+
+⚠⚠ **A FAIL-SOFT PRODUCT NEEDS FAIL-CLOSED DIAGNOSTIC EVIDENCE** (2026-08-29). The game may keep
+its already-painted globe usable after a biome-vista worker fault, but SceneMemory must not wait 30
+seconds and report only “did not settle.” Maintain a monotonic fault count plus a bounded exact last
+cause. Positive, missing, malformed, negative, or internally inconsistent fault diagnostics are
+terminal instrument findings; zero alone is accepted only with a coherent empty cause. Treat a
+genuinely stale response as a stale drop, but a current response with mismatched document,
+generation, world, environment, profile, scene, or biome authority as a fault. Capture Landing and
+its bounded rejection witness in one browser task so a convergence reload cannot erase the cause.
+
+A BFCache away document used by an instrument must also live outside the product service-worker
+scope. Serve one minimal page from a separate ephemeral loopback origin, keep it alive through the
+history-entry return, use no external favicon, reject every other path, and close it in `finally`.
+The same-origin fixture once became the app index because the exact-build PWA correctly handled the
+navigation; weakening the product worker would have hidden an instrument bug.
 
 ⚠⚠ **A MARKDOWN POLICY CARRIER IS EXECUTABLE INPUT, NOT A DOCS-ONLY DESCENDANT** (2026-08-20).
 PR #32 run `32440536261` spent its one authorized attempt and failed before browser work because
@@ -1051,6 +3165,48 @@ page's witness. Negative-control wrong target, stale document/service identity, 
 arm and phases, phase reversal, and intervening visibility/focus changes. A timeout must retain the
 last non-null image/decode, queue/active, worker identity/phase/result/error, broker, and foreground
 state; a generic `null` cannot distinguish product from a missing test precondition.
+The exact `3fb958f…` PR #35 recurrence therefore makes the ordered fresh-lazy → veteran-Earth →
+final-lazy service receipts and each target/session/document-bound structured list or Planetside
+observation part of complete-profile terminal evidence; missing, reordered, duplicated, stale,
+hidden/unfocused, loss-bearing, phase-invalid or late evidence is an instrument stop, never a
+product verdict.
+
+The current recurrence seals exactly **85 semantic settlement phases per profile**—**75 list** and
+**10 Planetside**—and never treats polling frequency as plan progress. Each accepted invocation is
+append-only history with contiguous attempts and an exact token/page/browser/command/timing binding;
+the latest 85-entry projection must equal the final receipt in every plan group. A v6 partial keeps
+the diagnosis, full accepted history and latest completed prefix plus the active next-phase or
+latest-phase-retry tail. Terminal verification must reject omission, reorder and coordinated
+attempt/token/history/page/browser/command/timing laundering. Partial page authority is independent:
+lazy/main identities must remain distinct whenever both exist. Polling compacts to exactly one
+terminal command per semantic deadline group, the partial command ledger fails closed above **2,048
+entries or 2 MiB**, receipt tokens are capped at **256 characters**, and a ready-but-unreceipted tail
+is valid only under its exact receipt-assembly instrument diagnosis.
+
+Exact source `b2eecfbd…` proved why bounded structured evidence must not reuse a generic text cap:
+its eight ready/decoded 132×132 rows carried valid 766–779-character page-realm keys, but each v1
+projection became `null`. The one-attempt/no-retry run stopped instrument-only after 33,041 ms with
+zero outcomes, all 78 blocked and no desktop/successor. Its historical measurement / contract /
+collector / budget tuple `326d3b…` / `7ac505…` / `ece4ed…` / `c272a1…` remains bound to that red.
+
+Signed implementation commit `d9d79025794c95d5491ab9c9e1139b66eea7be5e` (tree
+`d4bc3a04bec6243045a6941feadd9074a7722e79`, parent
+`b2eecfbd9379f50c25208ca8bcd72501b07e303c`) changes no product byte. Observation v2 validates
+the full opaque key in the page realm, then serializes only key length and exact membership indices
+into independently produced leased/cache inventories. Cap both inventories at exactly 256 entries
+before `indexOf`/`Set`; require per-image membership/distinctness, require each inventory length to
+equal its live lease/cache count, and require internal inventory distinctness. A literal 256-entry inventory must pass, 257 must fail explicitly, and
+realistic 768–831-character keys must pass. The signed commit owns current capability / measurement / contract /
+collector / budget authority:
+`35eb09daa39f211b8e9015f59b77a983b5870611322d673c47f7ff4f2b61e341` /
+`87d6782ad7d4ceaed3222eef8d2740dfe964db6d02b628fa2c3e125eaea6d06d` /
+`abedc70f6ffcd3130445f4a5e1681ba7a2607210fbb9e6f3522ac8a7ab752138` /
+`b75f426541982bc431c01f127c3410a1030ef0fd51f849e1833d492313025f4e` /
+`7efe9fa86075e33518020d41e7cc48bf9b2bc75ecb7ed9c0e074bd84c4d74200`; producer remains
+`0de7dc1a95ceeb35738d4cb17e7ccd464aab947848a9fe643e7c69355836bf13`. Browser-free closure is
+565 selftest controls, focused 35/35, 237 files / 2,413 passed + one skipped, three green typechecks,
+green authority/budget matches and independent review CLEAR. This is not a browser-certified product
+result; one fresh exact-source Compendium certificate and named verification remain mandatory.
 
 **Correction earned by PR #32's exact-ef6 D-TRAIN Smoke:** a direct fixture write does not own
 setup while an older product writer can still commit. Clean committed
@@ -1151,7 +3307,8 @@ resolver and pinned `ws` transport; any gate claiming the shared owned lifecycle
 it instead of carrying a guessed port, WebSocket loop or cleanup path. The owned launcher uses a
 unique profile, asks Chromium for port 0, reads its
 `DevToolsActivePort`, records exact `Browser.getVersion` provenance, detects early child exit,
-retains bounded stderr head and tail, and performs bounded TERM→KILL shutdown plus profile removal.
+retains bounded stderr head and tail, and uses the sentinel-anchored POSIX terminal barrier
+described above (or Windows taskkill ownership) before profile removal.
 Legacy `bootperf` shares the executable resolver and `ws` transport but still owns its older CDP
 lifecycle, so none of the owned launcher's lifecycle guarantees may be attributed to it yet.
 A prior green browser step does not certify the next process's provenance. Do not turn this class
@@ -1342,11 +3499,27 @@ This normalization changes no package URL/hash/version, browser product/revision
 45/15/5/2-second preflight, 15-second candidate startup, 2-second product observation, attempt/retry
 policy, launcher, preflight, collector, product, measurement `6ba58522…`, producer `d3223177…`,
 budget `74e88c2b…`, or test `485be9da…`. It adds no warmup, sleep, relaunch, fallback, DBus wrapper,
-or recalibration. Because the same shell contract exists in both PR certification and manual preview
-workflows, the preflight selftest now statically requires each unique owned install step's exact
+or recalibration. At that historical point, the same shell contract existed in both PR certification
+and manual-preview workflows, so the preflight selftest then required each unique owned install step's exact
 ordered URL/SHA/download/hash → reinstall → version/executable verification → following preflight
 chain. Its controls reject removal from either workflow and outside-step decoys. The control is green
 and proves workflow configuration only; the next one-attempt browser run still owned the outcome.
+
+**Correction earned by the 2026-08-27 whole-diff audit: an exact package must not take ownership
+of the runner's shared system browser.** Reinstalling or downgrading the sealed Compendium Edge
+package through apt can mutate the executable inherited by another ruler and makes later provenance
+depend on package-manager state. The current owner-authorized test-battery workflow SHA-verifies the exact `.101` deb, verifies its
+embedded package name and version, and extracts those bytes into a fresh owner-named directory under
+`RUNNER_TEMP` with `dpkg-deb`; they never install the package. The job remains Chrome-owned, while
+Compendium preflight, certification and named verification each declare the exact extracted
+`CF_BROWSER` path directly. SceneMemory keeps its separate version-tolerant current-package
+extraction. Its static controls reject apt installation, missing extraction, wrong URL/hash/package/
+version/root, missing or system-browser step pins, softened owners and broken extract → preflight →
+certificate → verifier order. They also bind the certification step's exact ID and the named
+verifier's executable condition, so renaming the producer ID or disabling the verifier cannot turn
+an unverified run green. Exact runtime version/revision/JavaScript/path/UA remain per-run
+provenance under the existing version-tolerant Edge-family/CDP authority; isolation changes no
+numeric ceiling, launch deadline, retry policy or rebaseline rule.
 
 That next exact local run was `20260820-pr32-89bfa05-compendiummem` at `89bfa05…`: it completed
 78/78 outcomes with zero findings and six PNGs, then owned shutdown exited 2. Its terminal log

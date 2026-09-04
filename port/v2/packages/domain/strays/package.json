@@ -1,4 +1,4 @@
 { "name": "@cf/domain-strays", "private": true, "version": "0.0.0", "type": "module",
-  "description": "Domain-pure functions living OUTSIDE the 14 [domain] modules in main.js: cleanName, where-codecs, winEstimate, floraStat, biomeFor+BIOME_SETS, hdGenesFor, _sanitizeSavedGenome. AUTO-LIFTED (tools/lift-strays.mjs).",
+  "description": "Domain-pure functions living OUTSIDE the 14 [domain] modules in main.js: where-codecs, winEstimate, floraStat, biomeFor+BIOME_SETS, hdGenesFor, _sanitizeSavedGenome. AUTO-LIFTED (tools/lift-strays.mjs); cleanName is compatibility-re-exported from Naming.",
   "exports": { ".": "./src/index.ts" },
-  "dependencies": { "@cf/domain-rand": "*", "@cf/domain-speciestraits": "*", "@cf/domain-encutil": "*", "@cf/domain-combatcore": "*" } }
+  "dependencies": { "@cf/domain-rand": "*", "@cf/domain-speciestraits": "*", "@cf/domain-encutil": "*", "@cf/domain-combatcore": "*", "@cf/domain-naming": "*" } }

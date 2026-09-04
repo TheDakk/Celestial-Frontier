@@ -12,23 +12,53 @@
 
    The fit pass scales UNIFORMLY, so aspect ratio survives it: what this
    measures is the proportion the painter actually drew.
-   Usage: node tools/proportioncheck.mjs [fauna|flora|fungi|microbe] [--json out.json] */
+   Usage: node tools/proportioncheck.mjs [fauna|flora|fungi|microbe]
+          [--json out.json] [--browser=<absolute-path>] */
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
-import os from 'node:os';
-import { spawn, execSync } from 'node:child_process';
+import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { closeArtToolServer, withArtBrowserCdp } from './art-browser-contract.mjs';
+import {
+  assertBrowserLaunchAllowed, browserCandidates, findChromiumBrowser,
+} from './browserpath.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.join(here, '..', 'apps', 'game');
 const dist = path.join(appDir, 'dist');
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-const kingdom = process.argv[2] || 'fauna';
-const jsonIx = process.argv.indexOf('--json');
-const jsonOut = jsonIx > 0 ? process.argv[jsonIx + 1] : null;
+const argv = process.argv.slice(2);
+const browserArguments = argv.filter((argument) => argument.startsWith('--browser='));
+if (argv.includes('--browser') || browserArguments.length > 1) {
+  console.error('proportioncheck: --browser requires one exact --browser=<absolute-path> value');
+  process.exit(2);
+}
+const browserOverride = browserArguments[0]?.slice('--browser='.length);
+let kingdom = 'fauna';
+let kingdomSeen = false;
+let jsonOut = null;
+for (let index = 0; index < argv.length; index++) {
+  const argument = argv[index];
+  if (argument.startsWith('--browser=')) continue;
+  if (argument === '--json') {
+    if (jsonOut !== null || index + 1 >= argv.length || argv[index + 1].startsWith('--')) {
+      console.error('usage: node tools/proportioncheck.mjs [fauna|flora|fungi|microbe] [--json out.json] [--browser=<absolute-path>]');
+      process.exit(2);
+    }
+    jsonOut = argv[++index];
+    continue;
+  }
+  if (argument.startsWith('--') || kingdomSeen) {
+    console.error('usage: node tools/proportioncheck.mjs [fauna|flora|fungi|microbe] [--json out.json] [--browser=<absolute-path>]');
+    process.exit(2);
+  }
+  kingdom = argument;
+  kingdomSeen = true;
+}
+assertBrowserLaunchAllowed();
+const browserFile = findChromiumBrowser(browserCandidates(browserOverride));
 
 execSync('npx vite build', { cwd: appDir, stdio: 'ignore' });
 const MIME = { '.html': 'text/html', '.js': 'text/javascript', '.map': 'application/json' };
@@ -40,35 +70,42 @@ const server = http.createServer((req, res) => {
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const URL0 = 'http://127.0.0.1:' + server.address().port + '/audit.html?prop=' + encodeURIComponent(kingdom);
 
-const udd = path.join(os.tmpdir(), 'cf-prop-' + process.pid);
-const port = 9733 + (process.pid % 100);
-const edge = spawn(EDGE, ['--headless=new', '--no-sandbox', '--no-first-run',
-  '--disable-component-extensions-with-background-pages', '--disable-component-update', '--disable-background-networking',
-  '--remote-debugging-port=' + port, '--user-data-dir=' + udd, 'about:blank'], { stdio: 'ignore' });
-let ws0 = null;
-for (let t = 0; t < 50 && !ws0; t++) { await sleep(400); try { ws0 = (await (await fetch('http://127.0.0.1:' + port + '/json/version')).json()).webSocketDebuggerUrl; } catch { /* boot */ } }
-if (!ws0) { console.error('no CDP'); edge.kill(); process.exit(2); }
-const ws = new WebSocket(ws0);
-let mid = 0; const pend = new Map();
-ws.onmessage = (ev) => { const m = JSON.parse(ev.data); if (m.id && pend.has(m.id)) { const p = pend.get(m.id); pend.delete(m.id); m.error ? p.rej(new Error(m.error.message)) : p.res(m.result); } };
-await new Promise((r) => { ws.onopen = r; });
-const send = (method, params = {}, sessionId) => new Promise((res, rej) => { const id = ++mid; pend.set(id, { res, rej }); ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params })); });
-const t0 = await send('Target.createTarget', { url: 'about:blank' });
-const at = await send('Target.attachToTarget', { targetId: t0.targetId, flatten: true });
-const sess = at.sessionId;
-await send('Runtime.enable', {}, sess);
 const errs = [];
-ws.addEventListener('message', (ev) => { const m = JSON.parse(ev.data); if (m.method === 'Runtime.exceptionThrown') errs.push(String(m.params?.exceptionDetails?.exception?.description || 'exception')); });
-await send('Page.navigate', { url: URL0 }, sess);
-const evalIn = async (expr) => {
-  const r = await send('Runtime.evaluate', { expression: expr, returnByValue: true, awaitPromise: true }, sess);
-  if (r.exceptionDetails) throw new Error('eval threw: ' + JSON.stringify(r.exceptionDetails.exception?.description || '').slice(0, 200));
-  return r.result.value;
-};
-let data = null;
-for (let s = 0; s < 900 && !data; s++) { await sleep(300); data = await evalIn('(window.__CF_PROP__&&window.__CF_PROP__.done)?window.__CF_PROP__:null'); }
-if (!data) { console.error('proportions never measured'); ws.close(); edge.kill(); server.close(); process.exit(1); }
-ws.close(); edge.kill(); server.close();
+const data = await withArtBrowserCdp({
+  browserFile,
+  tool: 'proportioncheck',
+  userDataPrefix: 'cf-proportioncheck',
+  startupTimeoutMs: 20_000,
+  cleanup: () => closeArtToolServer(server),
+  onEvent(message) {
+    if (message.method === 'Runtime.exceptionThrown') {
+      errs.push(String(message.params?.exceptionDetails?.exception?.description || 'exception'));
+    }
+  },
+}, async ({ send }) => {
+  const target = await send('Target.createTarget', { url: 'about:blank' });
+  const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+  const sessionId = attached.sessionId;
+  await send('Runtime.enable', {}, sessionId);
+  await send('Page.navigate', { url: URL0 }, sessionId);
+  const evalIn = async (expr) => {
+    const result = await send('Runtime.evaluate', {
+      expression: expr, returnByValue: true, awaitPromise: true,
+    }, sessionId);
+    if (result.exceptionDetails) {
+      throw new Error('eval threw: '
+        + JSON.stringify(result.exceptionDetails.exception?.description || '').slice(0, 200));
+    }
+    return result.result.value;
+  };
+  let measured = null;
+  for (let s = 0; s < 900 && !measured; s++) {
+    await sleep(300);
+    measured = await evalIn('(window.__CF_PROP__&&window.__CF_PROP__.done)?window.__CF_PROP__:null');
+  }
+  if (!measured) throw new Error('proportions never measured');
+  return measured;
+});
 
 const rows = data.rows;
 rows.sort((a, b) => b.aspect - a.aspect);
@@ -124,4 +161,4 @@ if (bigHead.length) {
   if (bigHead.length > 40) console.log(`      … and ${bigHead.length - 40} more`);
 } else console.log('  clean: no end lobe out-masses its trunk');
 if (!hi.length && !lo.length) console.log('  clean: every measured subject sits inside the envelope for its shape class');
-process.exit(errs.length ? 1 : 0);
+process.exitCode = errs.length ? 1 : 0;

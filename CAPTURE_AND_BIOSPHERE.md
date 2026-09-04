@@ -1,46 +1,421 @@
 # Celestial Frontier — Capture & Biosphere Yield
 
-**STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The approved,
-unimplemented v2 ecology/audio overlay matches the next-arc contract as of **2026-08-13**. See the
-2026-07-31 addendum — the epoch clock now drives the stardust harvest as well as biosphere recovery,
-so EPOCH_TICK is a shared knob.
-**Purpose:** How a surveyed world's revealed life earns Compendium pages — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
-**Source of truth:** this doc is the DESIGN spec; main.js implements it.
+> **2026-09-03 UTC current structured Capture-heartbeat evidence overlay (matches current local
+> code):** Capture mechanics remain unchanged. Every lawful F4 heartbeat path now returns one
+> exact `cf-v2-f4-heartbeat-cycle-receipt/v1` with the current document token, a
+> completed/skipped/failed cycle, typed reason and exact Capture/Shipyard/Compendium refresh
+> disposition. The forced `large-phone` native-Tab diagnostic accepts only a completed cycle with
+> null reason and `refresh.capture=completed`, then proves old Scavenge/Sample disconnection,
+> current semantic replacements, restored Scavenge focus and trusted Tab to the current Sample.
+>
+> The changed-input hosted diagnostic runs `small-phone` then this `large-phone` row sequentially
+> inside one five-minute/no-retry step under separate immutable IDs. It is noncertifying and cannot
+> replace exact-Slice-bound 12-row Glass. Current PASS authority is
+> `cf-v2-glassmatrix/v2`; historical v1 red evidence remains readable but v1 PASS is refused.
+> Capture pools, odds, SessionRNG, hit/miss spending, Biosphere Yield, ecology, ownership,
+> creature/genome identity, rewards, persistence/save schema and card structure are unchanged.
+> Focused closure passes **73/73** and the consolidated browser-free `develop` profile passes
+> **268/268 files, 2,785 passed / 1 skipped**. Clean implementation checkpoint `f348b249…` passed
+> Compendium **78/78** with named verification and nine requested immutable targeted Glass rows
+> with zero findings/instrument failures. Those local diagnostics are noncertifying and do not
+> replace the full Slice-bound Glass chain.
+>
+> **2026-09-03 UTC historical predecessor Capture semantic-focus evidence overlay (matches current local code):**
+> Capture mechanics remain unchanged. An ordinary authority heartbeat can replace the open Tame /
+> Scavenge / Sample DOM while preserving the player's semantic focus. The existing passive path
+> restores the matching action with `focus({preventScroll:true})`; explicit action settlement keeps
+> its outcome-reveal behavior.
+>
+> PR #35 run `33708487067` reached `large-phone` Glass after every predecessor passed and stopped
+> with only `idleKeyboardFocus:false`. The old Glass helper retained exact Scavenge/Sample objects
+> across a possible heartbeat. Current evidence instead reacquires the live semantic controls and
+> forces the real F4 heartbeat at that exact viewport before native Tab. It proves the old nodes
+> disconnected, the replacements were acquired, Scavenge focus was restored, and trusted Tab moved
+> visible focus to current Sample. Lost restoration is product-red while trusted transport remains
+> instrument-green; transparent outline paint is also product-red.
+>
+> Targeted Edge/CDP run `20260903043639066-7926-2f4122517015` passed in **11,037 ms** with **3/3**
+> Arc 4 outcomes and zero findings/instrument failures. Focused coverage is **24/24** and the
+> browser-free `develop` profile passes **266/266 files, 2,758 passed / 1 skipped**. Full details
+> are in
+> `audits/ARC4_GLASS_PR35_NATIVE_TAB_IDENTITY_AND_DIAGNOSTIC_RETENTION_REPAIR_20260903_D529A97.md`.
+> Capture pools, odds, SessionRNG, hit/miss spending, Biosphere Yield, ecology, ownership,
+> creature/genome identity, rewards, persistence/save schema and card structure are unchanged; no
+> player-visible release note or hosted authority follows.
 
-## 0. v2.0 next-arc ecology/audio link (approved, not implemented — 2026-08-13)
+> **2026-08-31 current local Capture presentation/readiness overlay (matches local code):** a durable
+> Tame, Scavenge or Sample may queue the existing aggregate Arc 9 achievement/rank receipt before
+> its awaiting Survey UI continuation repaints. While that follow-up owns the shared coordinator,
+> Capture correctly projects read-only. After Arc 9 fully releases, Main now republishes only a
+> still-current, visible, writable, non-Training Survey Capture surface; this prevents otherwise
+> eligible native actions from remaining stale-disabled until the next heartbeat or card reopen.
+> Runtime replacement, convergence, ecology, Training, active persistence and coordinator guards
+> all fail closed, and a publication exception clears the action fence and schedules the existing
+> read-only convergence reload. Capture pools, odds, RNG, hit/miss spending, Yield cycle, ownership,
+> creature/genome identity, rewards and save schema are unchanged.
+> The three Tame/Scavenge/Sample actions now center at the base card-grid scope rather than
+> stretching through all four text rows, retain their minimum 44px target at 412×915 A++/Max/Mono,
+> and preserve the existing ≤390px full-width and short-landscape rules. This is presentation-only;
+> pools, odds, Yield, action ownership and settlement semantics do not change.
+>
+> Exact signed source `656c85e43a59fe775efac102b21a7530c033e5ff` exposed this through a
+> causal pre-arm stop after Sample + Arc 9 were durable at revisions 108/109 with 15/16 Yield,
+> current Arc 4/5 authority and an idle coordinator/card, yet Tame remained model-disabled. No
+> storage hook or judged storage action ran. SceneMemory 44/44 and Compendium 78/78 were green;
+> Slice stayed immutable one-scope red and Glass/Recovery did not run. That source remains
+> historical. Exact clean signed successor `7e089f3432a834636064615ac2da13b2b0ac39df` later passed the
+> full no-retry local Compendium → Slice → 12-viewport Glass develop chain with zero Slice findings
+> and zero Glass findings/instrument failures; all named verifiers passed. Recovery remains outside
+> the develop profile.
 
-The current v2 development slice does not expose Tame, Scavenge, Sample, Biosphere Yield or living
-companions, and its audio is stings-only. The v1 mechanics and formulas below remain unchanged.
-This overlay specifies a later presentation link; it does not alter success odds, attempt spending,
-pool recovery, epoch cadence, Compendium ownership, rare-find rewards or capture randomness.
+> **2026-08-29 current local Arc 6 Guardian acquisition extension:** ordinary Arc 4 capture and
+> Arc 5 lineage ownership remain unchanged. Guardian/Titan conquest now has its own additive,
+> versioned registered carrier instead of pretending that Tame provenance covers it. A new Guardian
+> species creates one catalogue fact, one living individual with `origin:'guardian'`, and one
+> acquisition record bound to the exact canonical world, defender source/Prime Signature, encounter
+> witness and F4 receipt. Legacy Compendium species deduplication remains exact: if that genome is
+> already known, conquest/Prime rewards still settle but no second catalogue row or creature is
+> minted. Battlefield `_mult`/`_wf` never enter ownership; legitimate `apex`/`_titan` identity does.
+> The carrier reloads only by re-resolving its complete CF1 mirror, and forged state/address/plan,
+> duplicate receipt/source-world and corrupt/future/misplaced carriers fail closed. The exact landed,
+> non-Training Survey surface now exposes the registered Guardian/Prime combat action and publishes a
+> captured Guardian/Titan only after the combat transaction and complete carrier fixed point verify.
+> This does not change ordinary biosphere odds, budget, Charter joins or care rules; captured Guardian
+> individuals are not yet selectable through the separate Arc 5 champion writer.
 
-Future capture audio is driven by typed outcomes after the authoritative action resolves:
+> **2026-08-29 current local companion/audio extension:** the real-fauna Compendium detail now owns
+> four bounded exact-instance companion writers over the same compact V2 authority. Feed consumes one
+> exact flora lot; Breed keeps both parents and assigns active-play Recovery around one persisted
+> outcome; Rename changes only one sanitized nickname; Field Scout names, switches or stands down one
+> exact owned fauna by changing only its role pointer. Tastes, stat growth, injury healing, bond,
+> missions, Scout injury interception and Scout +2 fresh-species XP remain separate open owners.
+>
+> The audio owner now exposes six explicit no-autoplay surfaces: durable Tame greeting, committed
+> Feed acknowledgement, exact-owned-fauna Compendium Listen, pre-landing orbital Survey **Listen to
+> biosphere**, and visible inhabited-world Planetside **Listen to biosphere**. The last two join only
+> their already-visible generic biosphere lead to the same no-spoiler signal, consume no Yield or
+> gameplay RNG, grant nothing and write no save. The sixth surface is the post-settlement Combat
+> Chronicle, which owns every already-modelled registered cue including Guardian/Titan motifs,
+> dodge, stun, impacts/criticals/abilities, burn, regeneration, defeat and resolution. Recorded
+> assets, authored continuous ambience/music, broader or more-specific expressions/ecology, device
+> evidence and HUMAN listening remain open.
 
-- **Tame** may use the targeted fauna specimen's deterministic call/foley signature.
-- **Scavenge** uses flora/fungi environmental sonification, never an animal-call fallback.
-- **Sample** uses microbe/substrate/instrument sonification rather than pretending a microorganism
-  has a recorded voice.
-- Miss, Worked Out, success and genuinely-new discovery remain distinct event/caption pairs; sound
-  never fires from a render function and never substitutes for visible odds, remaining attempts or
-  result text.
+> **Historical signed universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
+> signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
+> `df10355a81c21fc6a553c7fa5684b08399bce6d8`, parent `916d921e…`) passed the complete fail-fast
+> chain on Edge `151.0.4129.107` / CDP `1.3`. Layout passed **787/787** in 76,603 ms,
+> SceneMemory **44/44** in 10,561 ms and Compendium **78/78** in 46,239 ms. Slice passed with zero
+> findings in 434,263 ms (raw report `33aa30b3…3411`); Glass passed all 12 viewports/reloads,
+> **104/104** controls and **36/36** Arc 4 outcomes in 85,823 ms with zero findings or instrument
+> failures (raw report `2a67a258…d591`); Recovery passed all **10/10** stages and **15/15**
+> observation outcomes in 1,290,953 ms, including 1,200,298 ms of real active observation (raw
+> report `b78e8a52…5907`). Every stage ran once with zero automatic retries and passed exact named
+> verification; Slice → Glass → Recovery hashes and source identities cross-bind exactly.
+>
+> Arc 5 authority remains deliberately narrow: only the live Feed transaction advances one exact
+> companion by one Meal and consumes/tombstones one exact flora unit through one fenced commit, then
+> may request its bounded acknowledgement. It does not certify tastes, healing, bond, breeding,
+> companion assignment or other care systems. HUMAN first-journey/visual/listening review, screen-reader
+> behavior, physical-device heat/battery/GPU evidence, whole-Gate, hosted/merge, release/version and
+> deployment authority remain open. Compatible browser point updates remain provenance only.
+> Earlier dated evidence blocks below remain historical verbatim where superseded.
 
-The future acquisition writers are explicit and separate from that presentation layer:
+> **Current local Charter join (2026-08-29; later than the signed certificate above):** every
+> eligible Arc 4 hit scenario now pre-computes the same exact Charter successor before either F4
+> draw. The first durable successful Tame, Scavenge, or Sample on each registered source-proven
+> world beyond Sol can bank that world's one Chapter 2 life-discovery tick in the same receipt/CAS
+> as ownership, reward and F4. Exact pre-action ownership discoveries deduplicate by complete CF1
+> world key. A miss, Sol, an unreachable or past-chapter source, a later success on that world,
+> saturated progress, stale authority or failed write banks nothing; post-durable publication
+> failure converges by reload without another draw or write.
+> Eligibility uses exact galaxy/star parent coordinates plus seeds, so a same-seed collision cannot
+> inherit Sol or home-galaxy reach. A successful non-qualifying capture cannot reconcile an imported
+> Charter chapter.
+>
+> This is an explicit v2 replacement for the separate v1.8.9 Discover Life button, not a claim of
+> bug-for-bug parity. Landing still only reveals the roster, and the legacy `surveyed`/Records
+> projection plus `stats.surveys` remain unchanged. The separate control, Survey Records behavior
+> and accepted/weekly bioscan Charters are still unavailable. At that Charter-join checkpoint,
+> focused and full browser-free evidence was green at 230 files / 2,315 passed + one skipped; a fresh clean
+> Slice/Glass/Recovery chain and HUMAN acceptance remain outstanding.
 
-- Every successful Tame, Scavenge or Sample creates or updates the corresponding `CatalogSpecies`
-  discovery record.
-- A successful fauna Tame additionally creates a stable-ID `CreatureInstance` under the planned
+**STATUS:** legacy mechanics match code as of 2026-07-31 (verified against main.js). The current v2
+structured heartbeat receipt, semantic-focus evidence, forced `large-phone` replacement and
+fail-closed Glass v2 boundary match local code as of 2026-09-03 UTC. The older targeted Edge/CDP
+row remains green/noncertifying historical evidence; fresh current-source rows are recorded in the
+live roadmap when complete. The consumed hosted attempt remains red and creates no retry or merge
+authority. The v2
+ecology/audio/Charter overlay matches the player-facing durable Arc 4 capture slice, and the separate
+Guardian acquisition carrier plus player-live verified combat join match the local Arc 6 candidate as
+of **2026-08-29**; the post-capture open-card readiness correction matches local code as of
+**2026-08-30**, while preserving the older signed certificate as pre-Charter evidence. See the
+2026-07-31 addendum — the epoch clock now drives the stardust harvest as
+well as biosphere recovery, so EPOCH_TICK is a shared knob.
+**Purpose:** How a surveyed world's revealed life earns Compendium pages and the narrow v2 Chapter 2 life-discovery deed — the three capture verbs (Tame / Scavenge / Sample), their rarity-and-gear odds, and the Biosphere Yield system that makes every world's life a finite, epoch-recovering resource.
+**Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy mechanics, while
+the current v2 authority is the TypeScript port named in the overlay below.
+
+> **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
+> `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
+> Compendium 78/78 with six PNG bindings, Slice with zero findings and ten screenshots, and full
+> 12-viewport Glass with zero findings or instrument failures, each once with named verification.
+> Recovery then ran once and stopped **instrument-only** at `offline-reopened` after the fixture,
+> complete 16-attempt burn-down, exhausted suppression receipt, close/checkpoint and true closed-
+> target proof passed. The deliberately read-only reopened Pertar surface truthfully rendered all
+> three capture verbs `unavailable`; the phase-blind oracle incorrectly required the active,
+> eligible exhausted vocabulary `empty`/`depleted`. The 20-minute active observation, boundary
+> crossing and recovered-state judgment did not run, so Final10 makes no Recovery product claim.
+>
+> The local successor repair separates offline/ineligible and active/exhausted presentation while
+> retaining exact budget, authority, document, UI/state/runtime and disabled-semantics witnesses.
+> A candidate PASS retains the original active-exhausted, offline-reopened and reactivated active-
+> exhausted Pertar receipts; terminal finalization and named verification independently replay and
+> cross-bind their phase, document, cycle, facts, SessionRNG, state/UI and first-active-sample
+> evidence. Missing, swapped, coherently retokened, reversed or coherently recomputed route/card/
+> runtime/pending receipts are red.
+>
+> Before observation, `active-observation:running` must be persisted and survive any later
+> failure. Each Pertar wait receipts the strict remaining share of one absolute 20-second deadline;
+> clipping or exceeding it is red. The exhausted raw/live-state chain and reactivated→first-service
+> binding require at most 20 seconds, the same cycle/RNG and revision delta at most one. Internally
+> assessment-green retiming, +2-revision and next-cycle mutants remain terminal-red.
+>
+> The exact six-region Recovery SHA-256/UTF-8-byte inventory is: full collector
+> source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+> boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+> helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+> (10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+> (6,184 B); offline-reopened→reactivated phase span
+> `b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+> suppression preparation/collector
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+> seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+> helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+> It changes no capture mechanic, odds, ownership, reward, epoch, save, seed or release identity.
+> Browser-free current-byte checks at locally signed implementation/evidence commit
+> `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+> `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+> 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+> This documentation changed source identity; its signed clean docs-only descendant later supplied
+> immutable Final11. The repaired assessor replayed that unchanged Recovery bundle green. Immutable
+> Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout, SceneMemory and
+> Compendium before Slice stopped once/no retry on the stale one-red wrapper expectation; its product
+> assessment remained wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixed
+> only that harness expectation. Exact signed Final13 source `7cb0969…` then completed the entire
+> once-only named-verified Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain green,
+> including the real 20-minute observation and certificate. Edge
+> `151.0.4129.107` / CDP `1.3` is provenance only; compatible point updates never trigger a
+> rebaseline or threshold change.
+
+> **Historical 2026-08-27 evidence/repair overlay:** current-input Slice had six preserved terminal-red,
+> one-attempt/zero-retry runs. Signed-clean source
+> `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
+> `20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`; it ran 397,101 ms,
+> retained 23 findings across 16 scopes and produced no Arc 4 success marker or ledger. Glass and
+> recovery correctly did not run.
+>
+> All five sixth-red roots are locally repaired with negative controls. Guide/Glass bind the exact 55-bullet
+> development draft; the capture fixture separates both legitimate active-play diagnostic clocks;
+> a blocked contextless Tame greeting accepts either truthful boolean mute state but requires zero
+> context/nodes/voices/emitter; epoch evidence proves private staging before committed publication,
+> raw persistence and reload with eleven isolated controls; and Survey rebinds the current Training
+> scope after replacing its action DOM. A subsequent whole-candidate review found additional
+> repair work in canonical world identity, F4/storage convergence, persistence races, texture
+> cleanup, settings/read-only coverage and the evidence chain. That historical browserless candidate
+> was green at 134 Vitest files / 1,458 passed / one intentional skip, and prior
+> implementation/code plus release-note audits are CLEAR for their reviewed input. Their findings
+> plus the later convergence-latch and per-field F4 controls are repaired. The independent final
+> post-repair whole-diff review was CLEAR. At that boundary no Slice PASS, Glass result, recovery
+> certificate, hosted/HUMAN whole-Gate or release authority followed; Final10 supersedes only the
+> browser-evidence portion as recorded above.
+>
+> Exact Edge build is Slice provenance only. Slice and Glass judge fresh behavior and geometry rather
+> than a version pin, so an Edge update alone never rebaselines, repins or moves thresholds. The
+> Compendium and SceneMemory own separate sealed Edge-family + CDP `1.3` capability/profile
+> authorities; neither uses the exact browser build as a perpetual baseline identity.
+
+> **Historical 2026-08-26 ecology/presentation checkpoint — current mechanics retained where unchanged:** the capture epoch is the sole
+> **published** F4 ecology epoch, derived from visible-and-answerable, lease-owned `activePlayMs`.
+> Crossing an integer edge stages a private candidate; exactly one receipt-free lease/revision CAS
+> must commit it before publication and exact scene/Survey/Planetside/capture reprojection. Those
+> consumers remain fenced while the projection is dirty, and hidden/unanswered time adds nothing.
+> The ordinary Slice deliberately records `recoveryClaimed:false`; elapsed recovery is certified
+> separately. Historical exact signed source `3f69e88…` passed the then-current dedicated
+> uninterrupted 20-minute Arc 4 Recovery run with exact boundary crossing and recovered controls,
+> bound to its exact Slice and Glass predecessors.
+>
+> Capture mechanics continue to use raw deterministic grade internally, but player rarity is a
+> strict ten-name projection only. Integer tiers `0..8` map directly, raw `9..14` show as
+> Transcendent, invalid/missing values show no rarity instead of Common, and raw numbers/internal
+> art-grade labels are never exposed. The narrow Tame-fauna greeting described in §0 is current
+> presentation only: it cannot alter the candidate, odds, attempt, ownership, reward or epoch.
+
+> **2026-08-25 Arc 4 historical recorded durable acquisition boundary:** `@cf/domain-acquisition` separates
+> catalogue species, discovery records, stable fauna `CreatureInstance`s, specimen lots and
+> per-world biosphere progress under 18 owner namespaces. The app now prepares an absent strict
+> ownership-v1 carrier—or reconciles a projectable stale compatibility mirror—inside the same
+> receipt-free lease-fenced boot CAS as F4, route repair and Arc 2/3 bootstrap. Arc 5A then derives
+> its compact V2 manifest and exactly four fixed generic delta shards from that exact final Arc 4
+> source and joins the same commit. An aligned legacy-v1 certificate upgrades through that one
+> receipt-free CAS; an aligned current-v2 five-carrier authority is a zero-write fixed point. Future, corrupt,
+> unrepresentable and lossless `legacy-protected` evidence remains protected rather than rewritten.
+> A genuine legacy Field Training completion couples its one Arc 2 write, all 18 Arc 4 writes and the
+> five Arc 5 carrier writes to the same replacement transaction and verifies both reconstructed
+> ownership authorities after durability. Source-deferred absence stays explicit and write-free.
+>
+> The app's native Survey-card Tame/Scavenge/Sample front door captures the exact current surface, canonical
+> CF1 address, production **full** roster and current ecology epoch. Before either of its two F4 draws
+> exists, registered preflight certifies the miss plus every eligible hit as a complete save under
+> ownership, v4 mirror, Arc 5 compact projection, namespace and byte/counter capacity. Every scenario
+> prepares the exact 18 Arc 4 replacements plus five Arc 5 carrier replacements. The selected
+> outcome then spends one Biosphere attempt on hit or miss and lands both ownership authorities,
+> compatibility fields, F4 authority, one immutable receipt and the next repository revision in one
+> CAS. Only a genuinely first species
+> creates its catalogue/reward facts; later eligible captures may create another stable fauna
+> individual or specimen lot without duplicating that first-only grant. Independent postcommit
+> verification sees no pre-CAS evidence token: before durability the action retains only a private
+> pending payload of registered plan/settlement identities and prepared fingerprint. The committed
+> path alone mints the token and performs the sole WeakMap registration, binding that payload to the
+> exact transaction/kind/revision; verification then binds it to the full prepared save, current
+> Arc 4 carrier/mirror, all five Arc 5 bytes, reconstructed source/delta/target/shard fixed points and
+> F4 result before publishing V1 and V2
+> together. Either projection mismatch performs one read-only convergence reload without a reroll.
+>
+> Capture is now **player-live locally**. Survey shows exactly one Tame, Scavenge and Sample action,
+> the shared Biosphere Yield budget and its active-play recovery countdown. Each action says that it
+> selects uniformly from every eligible species in the canonical full roster—not only the eight-row
+> Planetside preview—and shows the aggregate success chance plus the individual-odds range. This is
+> random eligible-pool presentation; it is not targeted species selection. The same source-bound
+> presentation model owns enabled/disabled status, context identity and action input, so copy cannot
+> imply a target or budget that the writer will not consume. Pending actions disable competing work
+> without optimistic catalogue, creature, specimen, Stardust or attempt publication. Storage refusal
+> and pre-durable stale authority publish nothing; post-durable verification/publication faults clear
+> the old projection and converge by one read-only reload without reroll or second write. Native Close,
+> reload reconstruction and focus return are part of the player path.
+>
+> Guide remains 41 player topics, now **24 partial / 17 unavailable**; Capture/Discover-Life copy
+> described the live bounded actions at that checkpoint. The cumulative **A New Foundation** draft
+> had 54 bullets there; the current candidate has 55.
+> Field Training deliberately remains six lessons plus graduation and adds no Capture lesson.
+> `V2_CURRENT_RELEASE_VERSION` stays `null`; reading the draft does not mutate `rnSeen`, and no
+> production version, shipped release, Charter bioscan, targeted-preview, hosted, preview/publication
+> or HUMAN authority follows.
+> Arc 5A adds no companion control, Guide capability, Training lesson or release bullet.
+>
+> Local Edge `151.0.4129.101` evidence binds dirty executable snapshot
+> `b83ccef544dd3abafe5e661d1fff5f362914385edb7d8a24152d307590f4350f` at base
+> `8633bb48fc89c7ae658fa9ed4a7f47b683be102d`. Slice run
+> `20260825143239498-59502-655815e34a3e` passed once in 336,913 ms with zero findings/scopes/retries,
+> nine ordered Arc 4 stages and 14 burn-down attempts; it explicitly records
+> `recoveryClaimed:false` (report/log SHA-256
+> `4cc6fe02fb6965e4b67baef1d6b90d0a5ac64dff836cdc6416f49d5ad5bbbdde` /
+> `15683111584df5f1fead034b0b28f0e1a9b9ec96c2eb5cc3978b78c5ca1436b2`). Full-certifying Glass
+> passed in 71,713 ms across 12/12 viewports with all 36 Arc 4 outcomes and all planned controls,
+> none blocked/omitted, and zero findings/instrument failures/retries (report SHA-256
+> `03a14ce5d6228aa8d2659b1b749cea090bc049273b16e3b6a7a4294630a42369`). Those reports are
+> historical. Arc 4 remains **[PARTIAL]** because the combined HUMAN first-journey review and later
+> capabilities are open; exact signed Final13 source `7cb0969…` has now passed the repaired Slice
+> control and final Recovery assessor. The legacy formulas below remain parity/design input; current
+> v2 implementation authority is the typed path described here.
+> Those retained Arc 4 reports predate compact Arc 5 V2 and do not certify it. The later exact-input
+> pair for this recorded 2026-08-25 boundary used Slice run
+> `20260825213041239-98104-c96d3b2d0652`, which passed on Edge `151.0.4129.101` in 363,053 ms
+> with exactly one nine-stage/14-burn/`recoveryClaimed:false`/`ok` ledger plus PASS, 10 hashed PNGs
+> and zero findings/failure scopes/retries/source change (report/log SHA-256
+> `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+> `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`). Glass passed on the same
+> Edge in 71,449 ms with 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes and
+> zero blocked/omitted/findings/instrument failures/retries; five-carrier corruption and O(1)
+> source-growth/empty-shard invariance were non-vacuous (report SHA-256
+> `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). Both bind source commit
+> `48ce0b1662a59b21070667be339a1e59503e1f19`, status
+> `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
+> exact historical inputs. Those audits were not current-candidate authority; Final13 now supplies
+> the exact current automated re-audit. Arc 4 remains `[PARTIAL]`: Final11 passed the real 20-minute observation and recovered UI; immutable
+> Final12 then stopped at Slice's stale negative-control expectation before Glass/Recovery. Exact
+> signed Final13 source `7cb0969…` later passed the repaired Slice control and full Recovery assessor,
+> establishing the stable local automated checkpoint. HUMAN review remains open; Arc 5 remains
+> `[PARTIAL]`: its ownership authority is foundational, and the later narrow Feed interaction is
+> player-live without completing the wider care/breeding/companion scope.
+
+## 0. v2.0 ecology/audio and companion link (six explicit audio surfaces and four companion writers live — 2026-08-29)
+
+The current v2 development slice exposes player Tame, Scavenge, Sample and Biosphere Yield through
+the native Survey card, plus exact-instance Feed, Breed/Recovery, Rename and Field Scout controls
+through verified real-fauna Compendium detail. A trusted native **Tame** gesture may now
+synchronously arm exactly one silent audio context only while that same current surface is visible
+and answerable and both Sound and Creature Voices are enabled. Programmatic activation,
+diagnostics, Scavenge/Sample and non-current surfaces cannot arm it. Miss, refusal and convergence
+close with zero creature voice.
+
+After the exact durable Tame success, and only without convergence, playback rechecks the matching
+current ownership revision, exact result species, live wild creature and discovery/acquisition
+identity. It then emits one deterministic greeting through the canonical owned-creature audio
+identity plus the registered visible `role=status`/assertive live-region counterpart. It never
+retries or replays. Turning Sound or Creature Voices off, losing visibility/answerability, losing
+the result surface or replacing/converging it stops the greeting. The audio path writes no state and
+does not alter success odds, attempt spending, pool recovery, epoch cadence, Compendium ownership,
+rare-find rewards or capture randomness.
+
+The boundary is intentionally narrow:
+
+- **Tame** alone may greet from the exact committed current fauna result.
+- **Scavenge** flora/fungi environmental sonification remains future and must never use an
+  animal-call fallback.
+- **Sample** microbe/substrate/instrument sonification remains future and must not pretend a
+  microorganism has a recorded voice.
+- Miss, Worked Out and general success/discovery audio remain outside this path; sound never fires
+  from a render function and never substitutes for visible odds, remaining attempts or result text.
+- The separate real-fauna Compendium Feed action may emit one exact contented expression after its
+  committed durable successor and inline polite/atomic status settle. That status is the sole
+  accessible announcement; the simultaneous corner toast is visual-only. One constant-size latest-
+  successful-ownership fence rejects the same and every superseded result. Historical exact signed
+  source `3f69e88…` passed the then-current Slice oracle requiring the started Feed oscillator to reach one
+  `AudioDestinationNode` entirely within one WebAudio context, followed by exact-bound Glass and
+  Recovery passes.
+- Explicit **Listen** on one exact current owned-fauna Compendium detail projects the existing
+  deterministic call plan after a trusted gesture and matching polite/atomic status; list mount,
+  filtering, focus and navigation never autoplay it.
+- Explicit orbital Survey **Listen to biosphere** requires the exact current pre-landing planet card,
+  system route, ecology epoch and production canonical roster. It exposes only a generic living-
+  biosphere lead; the control never names or filters a roster row and disappears on landing/close.
+- Explicit Planetside **Listen to biosphere** requires the exact current inhabited world and its
+  visible biosphere lead, then renders one generic deterministic neutral signal. It reveals no
+  species, spends no Yield, grants nothing and writes no save.
+- The post-settlement **Combat Chronicle** owns every already-modelled registered cue, including
+  Guardian/Titan motifs, dodge, stun, impacts/criticals/abilities, burn, regeneration, defeat and
+  resolution. Master Sound governs this separate bounded bus; Creature Voices does not.
+- Feed, Breed/Recovery, Rename and Field Scout are the four current Companion controls. Broader
+  tastes/care/bond, injury healing, missions and Scout consequences remain open. Recorded assets,
+  authored continuous ambience/music, broader or more-specific expressions/ecology, device evidence
+  and HUMAN listening also remain open.
+
+The durable acquisition writer remains explicit and separate from the broader future audio
+presentation layer:
+
+- A genuinely first successful Tame, Scavenge or Sample creates the corresponding `CatalogSpecies`
+  first-discovery/reward facts; an eligible repeat does not duplicate them.
+- A successful fauna Tame creates a stable-ID `CreatureInstance` under the
   catalogue-species/living-creature identity split.
-- Successful Scavenge and Sample create collected specimen/resource records or stacks, not living
+- Successful Scavenge and Sample create collected specimen lots, not living
   `CreatureInstance` companions.
-- Miss and Worked Out create none of those acquisition records; attempt spending and Biosphere
-  Yield remain governed by the unchanged mechanics below.
+- A hit or miss spends exactly one attempt. Empty/depleted/protected/capacity-refused scenarios stop
+  before draws, receipt or CAS and create none of those acquisition records.
 
 Biosphere state may later shape the audible density of **already revealed** local ecology: a full
 pool can sound active, Worked Out can become sparse, and epoch recovery can restore the same
 biome/kingdom palette. That is feedback on current visible state, not a new mechanic. It cannot leak
 an unrevealed roster, pre-land rarity, the next random target or whether the next roll will succeed.
 Fauna-free and silent biomes remain honest; flora, fungi and microbes receive their own ecological
-language. See `BIOME_ATLAS.md` §0.
+language. The current app now wires two bounded, non-mutating ecology-listening surfaces: a generic
+**Listen** control for the exact visible inhabited-world Planetside biosphere and exact owned-fauna
+auditions from Compendium detail. The Planetside join binds the canonical biome-profile
+schema/digest/key and roster environment fingerprint at biosphere granularity; it names no species
+and changes no Yield, capture opportunity, reward or save state. The Compendium path requires the
+exact current owned individual and its registered audio identity. Both paths retain explicit visible
+counterparts and lifecycle ownership; neither reveals an unrevealed roster or creates acquisition
+authority. See `BIOME_ATLAS.md` §0 and `AUDIO.md` §0.
 
 A future bonded companion owns a stable living-creature ID. Its visual identity may use the
 complete plain genome, while its voice uses the immutable typed `AudioSignature` projection derived
@@ -167,6 +542,12 @@ const TAME_ODDS=[0.60,0.45,0.36,0.27,0.19,0.13,0.09,0.06,0.04,0.025,0.015,0.010,
 - Absent `bx` (older/fresh saves) ⇒ `bioX` empty ⇒ every visited world reads full pool — safe default.
 
 ## 5. Determinism (seeded? feeds the fingerprint?)
+
+**Current v2 overlay:** the player-live writer does not use the legacy app-layer `Math.random()` or
+a presentation-limited roster. It captures the production full roster at the current canonical
+ecology epoch and consumes the persisted F4 SessionRNG domains `captureCandidate` and
+`captureSuccess` only after all-scenario preflight/capacity succeeds. The legacy statements below
+remain true of `main.js`; they are parity/history, not current v2 writer authority.
 
 - **Rosters, genomes, grades**: fully seeded (WorldGen → Genome → Descriptors). `captureOdds`, `ringGrade`, and `bioPool` are **deterministic** given the world + gear (`bioPool` uses `mulberry32(hashInt(seed,0xB105,5))`; no `Math.random`).
 - **Which species is picked, and hit/miss**: use `Math.random()` on purpose — these are **app-layer, non-deterministic, and do NOT feed the fingerprint**. Nick's law: "a miss costs only the story"; the seeded rosters stay law, capture outcomes do not.

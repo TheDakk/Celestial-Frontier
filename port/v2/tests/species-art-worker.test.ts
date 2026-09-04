@@ -41,6 +41,29 @@ const render = (overrides: Partial<SpeciesArtWorkerRenderRequest> = {}): Species
   ...overrides,
 });
 
+class EvidenceWorker implements SpeciesArtWorkerLike {
+  readonly sent: unknown[] = [];
+  readonly listeners = new Map<string, Array<(event: MessageEvent<unknown> | Event) => void>>();
+  terminated = 0;
+  postMessage(message: unknown): void { this.sent.push(message); }
+  terminate(): void { this.terminated++; }
+  addEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
+    const group = this.listeners.get(type) ?? [];
+    group.push(listener as (event: MessageEvent<unknown> | Event) => void);
+    this.listeners.set(type, group);
+  }
+  emit(data: unknown): void {
+    for (const listener of this.listeners.get('message') ?? []) {
+      listener({ data } as MessageEvent<unknown>);
+    }
+  }
+  emitEvent(type: 'error' | 'messageerror'): void {
+    for (const listener of this.listeners.get(type) ?? []) {
+      listener({ type } as Event);
+    }
+  }
+}
+
 describe('species art worker protocol', () => {
   it('accepts only exact request and response shapes', () => {
     expect(validSpeciesArtWorkerRequest(init())).toBe(true);
@@ -56,6 +79,20 @@ describe('species art worker protocol', () => {
     expect(speciesArtWorkerIdentityMatches(ready, IDENTITY)).toBe(true);
     expect(speciesArtWorkerIdentityMatches(ready, { ...IDENTITY, workerInstanceId: 2 })).toBe(false);
     expect(validSpeciesArtWorkerResponse({ ...ready, copiedPass: true })).toBe(false);
+
+    const structuredError = {
+      schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'error' as const, ...IDENTITY,
+      jobId: null, kind: null, key: null,
+      stage: 'capability' as const, code: 'worker-capability', message: 'x',
+    };
+    expect(validSpeciesArtWorkerResponse(structuredError)).toBe(true);
+    expect(validSpeciesArtWorkerResponse({ ...structuredError, jobId: 1 })).toBe(false);
+    expect(validSpeciesArtWorkerResponse({
+      ...structuredError, jobId: 1, kind: 'thumb132', key: KEY,
+    })).toBe(true);
+    expect(validSpeciesArtWorkerResponse({ ...structuredError, message: 'x'.repeat(512) })).toBe(true);
+    expect(validSpeciesArtWorkerResponse({ ...structuredError, message: '' })).toBe(false);
+    expect(validSpeciesArtWorkerResponse({ ...structuredError, message: 'x'.repeat(513) })).toBe(false);
   });
 
   it('publishes a capability failure before readiness or painter import', async () => {
@@ -255,6 +292,10 @@ describe('species art worker protocol', () => {
     }
     const workers: FakeWorker[] = [];
     const tasks: Array<() => void> = [];
+    const createThumbObjectUrl = vi.spyOn(URL, 'createObjectURL')
+      .mockReturnValue('blob:loader-thumb-1');
+    const revokeThumbObjectUrl = vi.spyOn(URL, 'revokeObjectURL')
+      .mockImplementation(() => {});
     const loader = new SpeciesArtLoader('loader-document', {
       workerFactory: () => {
         const worker = new FakeWorker();
@@ -269,8 +310,9 @@ describe('species art worker protocol', () => {
     lease.subscribe((asset, error) => { received.push(error ?? asset); });
     expect(workers).toHaveLength(0);
     expect(loader.diagnostics()).toMatchObject({
-      schema: 'cf-v2-species-art-worker-diagnostics/v1',
+      schema: 'cf-v2-species-art-worker-diagnostics/v2',
       state: 'idle', importStarts: 0,
+      lastError: null,
       worker: { live: false, starts: 0, ready: 0, disposals: 0 },
     });
     loader.activate();
@@ -342,7 +384,11 @@ describe('species art worker protocol', () => {
       encodeDurationMs: 3,
     });
     expect(received).toHaveLength(1);
-    expect(received[0]).toMatchObject({ key: KEY, width: 132, height: 132, url });
+    expect(received[0]).toMatchObject({
+      key: KEY, width: 132, height: 132, url: 'blob:loader-thumb-1',
+    });
+    expect(createThumbObjectUrl).toHaveBeenCalledOnce();
+    expect(createThumbObjectUrl.mock.calls[0]![0]).toBeInstanceOf(Blob);
     expect(lease.current).toMatchObject({ key: KEY, width: 132, height: 132 });
     expect(loader.artDiagnostics()?.live).toMatchObject({ queuedJobs: 0, activeJobs: 0, leases: 1 });
     expect(loader.diagnostics()).toMatchObject({
@@ -352,6 +398,7 @@ describe('species art worker protocol', () => {
       lastEvent: {
         producerEpoch: 1, workerInstanceId: 1, jobId: 1, kind: 'thumb132', event: 'result',
       },
+      lastError: null,
       worker: { live: false, starts: 1, ready: 1, disposals: 1, fatals: 0, protocolErrors: 0 },
       phases: {
         importStarts: 1, importCompletes: 1,
@@ -367,7 +414,118 @@ describe('species art worker protocol', () => {
     lease.release();
     loader.dispose('test complete');
     expect(worker.terminated).toBe(1);
+    expect(revokeThumbObjectUrl).toHaveBeenCalledExactlyOnceWith('blob:loader-thumb-1');
     expect(workers).toHaveLength(1);
+    vi.restoreAllMocks();
+  });
+
+  it('keeps successful portrait worker data URLs outside thumbnail Blob ownership', () => {
+    class FakeWorker implements SpeciesArtWorkerLike {
+      readonly sent: unknown[] = [];
+      readonly listeners = new Map<string, Array<(event: MessageEvent<unknown> | Event) => void>>();
+      terminated = 0;
+      postMessage(message: unknown): void { this.sent.push(message); }
+      terminate(): void { this.terminated++; }
+      addEventListener(type: 'message' | 'error' | 'messageerror', listener: never): void {
+        const group = this.listeners.get(type) ?? [];
+        group.push(listener as (event: MessageEvent<unknown> | Event) => void);
+        this.listeners.set(type, group);
+      }
+      emitMessage(data: unknown): void {
+        for (const listener of this.listeners.get('message') ?? []) {
+          listener({ data } as MessageEvent<unknown>);
+        }
+      }
+    }
+    const workers: FakeWorker[] = [];
+    const tasks: Array<() => void> = [];
+    // Negative control: either ownership hook becoming reachable for a portrait is terminal.
+    const createObjectUrl = vi.spyOn(URL, 'createObjectURL').mockImplementation(() => {
+      throw new Error('portrait must not acquire a thumbnail Blob URL');
+    });
+    const revokeObjectUrl = vi.spyOn(URL, 'revokeObjectURL').mockImplementation(() => {
+      throw new Error('portrait must not revoke a thumbnail Blob URL');
+    });
+    try {
+      const loader = new SpeciesArtLoader('portrait-document', {
+        workerFactory: () => {
+          const worker = new FakeWorker();
+          workers.push(worker);
+          return worker;
+        },
+        getDeviceClass: () => 'phone',
+        scheduleTask: (task) => { tasks.push(task); },
+      });
+      const received: unknown[] = [];
+      const request = loader.requestPortrait('portrait-owner', GENOME, (asset, error) => {
+        received.push(error ?? asset);
+      });
+      loader.activate();
+      tasks.shift()!();
+
+      const worker = workers[0]!;
+      worker.emitMessage({
+        schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA,
+        type: 'ready',
+        documentToken: 'portrait-document',
+        producerEpoch: 1,
+        workerInstanceId: 1,
+      });
+      const renderRequest = worker.sent[1] as SpeciesArtWorkerRenderRequest;
+      expect(renderRequest).toMatchObject({
+        type: 'render', jobId: 1, kind: 'portrait440', key: KEY,
+      });
+      const emitPhase = (phase: SpeciesArtWorkerPhase): void => {
+        worker.emitMessage({
+          schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA,
+          type: 'phase',
+          documentToken: 'portrait-document',
+          producerEpoch: 1,
+          workerInstanceId: 1,
+          jobId: 1,
+          kind: 'portrait440',
+          key: KEY,
+          phase,
+          performanceNow: 1,
+        });
+      };
+      for (const phase of [
+        'import-start', 'import-complete', 'job-start',
+        'render-complete', 'encode-start', 'encode-complete',
+      ] as const) emitPhase(phase);
+
+      const url = 'data:image/png;base64,cG9ydHJhaXQ=';
+      worker.emitMessage({
+        schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA,
+        type: 'result',
+        documentToken: 'portrait-document',
+        producerEpoch: 1,
+        workerInstanceId: 1,
+        jobId: 1,
+        kind: 'portrait440',
+        key: KEY,
+        width: 440,
+        height: 440,
+        url,
+        encodedBytes: new TextEncoder().encode(url).byteLength,
+        pngBytes: 8,
+        decodedPixels: 440 * 440,
+        importDurationMs: 1,
+        renderDurationMs: 2,
+        encodeDurationMs: 3,
+      });
+
+      expect(received).toHaveLength(1);
+      expect(received[0]).toMatchObject({ key: KEY, width: 440, height: 440, url });
+      expect(request.current).toMatchObject({ key: KEY, width: 440, height: 440, url });
+      expect(createObjectUrl).not.toHaveBeenCalled();
+      loader.dispose('portrait bypass test complete');
+      expect(revokeObjectUrl).not.toHaveBeenCalled();
+      expect(worker.terminated).toBe(1);
+      expect(workers).toHaveLength(1);
+    } finally {
+      vi.restoreAllMocks();
+    }
   });
 
   it('services one animation frame and one later task before every default broker pump', () => {
@@ -475,6 +633,75 @@ describe('species art worker protocol', () => {
     }
   });
 
+  it('exposes deterministic unowned-cache release without disturbing a live loader lease', () => {
+    let sink: SpeciesArtProducerSink | null = null;
+    const requests: SpeciesArtProducerRequest[] = [];
+    const tasks: Array<() => void> = [];
+    const loader = new SpeciesArtLoader('cache-release-document', {
+      createProducer: (next) => {
+        sink = next;
+        return {
+          render: (request) => { requests.push(request); },
+          dispose: () => {},
+        };
+      },
+      scheduleTask: (task) => { tasks.push(task); },
+    });
+    const complete = (request: SpeciesArtProducerRequest): void => {
+      const url = `data:image/png;base64,cache-release-${request.jobId}`;
+      sink!.result({
+        status: 'success', jobId: request.jobId, kind: request.kind, key: request.key,
+        asset: {
+          key: request.key, width: 132, height: 132, url,
+          encodedBytes: new TextEncoder().encode(url).byteLength,
+          decodedPixels: 132 * 132,
+        },
+      });
+    };
+
+    const dormant = loader.releaseUnownedCachedArt();
+    expect(dormant).toEqual({
+      schema: 'cf-v2-species-art-unowned-cache-release/v1',
+      releasedThumbEntries: 0,
+      releasedPortraitEntries: 0,
+      releasedEntries: 0,
+    });
+    expect(Object.isFrozen(dormant)).toBe(true);
+    expect(loader.artDiagnostics()).toBeNull();
+
+    const retained = loader.leaseThumb(GENOME);
+    loader.activate();
+    tasks.shift()!();
+    complete(requests[0]!);
+    const retainedAsset = retained.current;
+    expect(retainedAsset).not.toBeNull();
+    expect(loader.releaseUnownedCachedArt().releasedEntries).toBe(0);
+    expect(retained.current).toBe(retainedAsset);
+
+    retained.release();
+    expect(loader.releaseUnownedCachedArt()).toEqual({
+      schema: 'cf-v2-species-art-unowned-cache-release/v1',
+      releasedThumbEntries: 1,
+      releasedPortraitEntries: 0,
+      releasedEntries: 1,
+    });
+    expect(loader.releaseUnownedCachedArt().releasedEntries).toBe(0);
+    expect(loader.artDiagnostics()).toMatchObject({
+      live: { cacheEntries: 0, leases: 0 },
+      totals: { disposals: 1 },
+    });
+
+    const reacquired = loader.leaseThumb(GENOME);
+    expect(reacquired.current).toBeNull();
+    tasks.shift()!();
+    complete(requests[1]!);
+    expect(reacquired.current).not.toBeNull();
+    expect(reacquired.current).not.toBe(retainedAsset);
+    expect(reacquired.current?.url).not.toBe(retainedAsset?.url);
+    reacquired.release();
+    loader.dispose('cache release test complete');
+  });
+
   it('owns one real device-class subscription and trims a narrowed queue immediately', () => {
     let deviceClass: 'phone' | 'desktop' = 'desktop';
     let deviceChange: (() => void) | null = null;
@@ -555,12 +782,243 @@ describe('species art worker protocol', () => {
     expect(errors).toHaveLength(1);
     expect(loader.diagnostics()).toMatchObject({
       state: 'error', importStarts: 1,
+      lastError: null,
       worker: { live: false, starts: 1, disposals: 1, fatals: 1, protocolErrors: 1 },
     });
     expect(loader.artDiagnostics()?.totals).toMatchObject({ jobStarts: 1, jobErrors: 1 });
     while (tasks.length) tasks.shift()!();
     expect(workerStarts).toBe(1);
     lease.release();
+  });
+
+  it('does not trust malformed worker-error evidence as the last structured error', () => {
+    const worker = new EvidenceWorker();
+    const tasks: Array<() => void> = [];
+    const loader = new SpeciesArtLoader('malformed-error-document', {
+      workerFactory: () => worker,
+      scheduleTask: (task) => { tasks.push(task); },
+    });
+    const lease = loader.leaseThumb(GENOME);
+    loader.activate();
+    tasks.shift()!();
+    const identity = {
+      documentToken: 'malformed-error-document', producerEpoch: 1, workerInstanceId: 1,
+    };
+    worker.emit({ schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'ready', ...identity });
+    const request = worker.sent[1] as SpeciesArtWorkerRenderRequest;
+    worker.emit({
+      schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'error', ...identity,
+      jobId: request.jobId, kind: request.kind, key: request.key,
+      stage: 'import', code: 'painter-import', message: 'x'.repeat(513),
+    });
+    expect(worker.terminated).toBe(1);
+    expect(loader.diagnostics()).toMatchObject({
+      state: 'error', lastError: null,
+      worker: { live: false, disposals: 1, fatals: 1, protocolErrors: 1 },
+      errors: { import: 0 },
+    });
+    lease.release();
+    loader.dispose('malformed error evidence test complete');
+  });
+
+  it('replaces immutable structured worker-error evidence only with a later trusted error', () => {
+    const worker = new EvidenceWorker();
+    const tasks: Array<() => void> = [];
+    const loader = new SpeciesArtLoader('successive-error-document', {
+      workerFactory: () => worker,
+      scheduleTask: (task) => { tasks.push(task); },
+    });
+    const first = loader.leaseThumb({ ...GENOME, seed: 6101 });
+    const second = loader.leaseThumb({ ...GENOME, seed: 6102 });
+    loader.activate();
+    tasks.shift()!();
+    const identity = {
+      documentToken: 'successive-error-document', producerEpoch: 1, workerInstanceId: 1,
+    };
+    worker.emit({ schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'ready', ...identity });
+    const firstRequest = worker.sent[1] as SpeciesArtWorkerRenderRequest;
+    const emitPhase = (request: SpeciesArtWorkerRenderRequest, phase: SpeciesArtWorkerPhase): void => {
+      worker.emit({
+        schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'phase', ...identity,
+        jobId: request.jobId, kind: request.kind, key: request.key, phase, performanceNow: 1,
+      });
+    };
+    for (const phase of ['import-start', 'import-complete', 'job-start'] as const) {
+      emitPhase(firstRequest, phase);
+    }
+    worker.emit({
+      schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'error', ...identity,
+      jobId: firstRequest.jobId, kind: firstRequest.kind, key: firstRequest.key,
+      stage: 'paint', code: 'painter-threw', message: 'first painter failure',
+    });
+    const firstError = loader.diagnostics().lastError;
+    expect(firstError).toEqual({
+      producerEpoch: 1, workerInstanceId: 1,
+      jobId: firstRequest.jobId, kind: firstRequest.kind,
+      stage: 'paint', code: 'painter-threw', message: 'first painter failure',
+    });
+    expect(Object.isFrozen(firstError)).toBe(true);
+
+    expect(tasks).toHaveLength(1);
+    tasks.shift()!();
+    const secondRequest = worker.sent[2] as SpeciesArtWorkerRenderRequest;
+    for (const phase of ['job-start', 'render-complete', 'encode-start'] as const) {
+      emitPhase(secondRequest, phase);
+    }
+    worker.emit({
+      schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'error', ...identity,
+      jobId: secondRequest.jobId, kind: secondRequest.kind, key: secondRequest.key,
+      stage: 'encode', code: 'png-encode', message: 'second encoder failure',
+    });
+    const secondError = loader.diagnostics().lastError;
+    expect(secondError).toEqual({
+      producerEpoch: 1, workerInstanceId: 1,
+      jobId: secondRequest.jobId, kind: secondRequest.kind,
+      stage: 'encode', code: 'png-encode', message: 'second encoder failure',
+    });
+    expect(secondError).not.toBe(firstError);
+    expect(Object.isFrozen(secondError)).toBe(true);
+    expect(loader.diagnostics().lastEvent).toMatchObject({
+      producerEpoch: 1, workerInstanceId: 1,
+      jobId: secondRequest.jobId, kind: secondRequest.kind, event: 'error:encode',
+    });
+    first.release();
+    second.release();
+    loader.dispose('successive error evidence test complete');
+  });
+
+  it('clears a trusted job error when a later untrusted terminal condition owns the same worker', () => {
+    for (const terminal of ['protocol', 'external-fatal'] as const) {
+      const worker = new EvidenceWorker();
+      const tasks: Array<() => void> = [];
+      const loader = new SpeciesArtLoader(`stale-error-${terminal}-document`, {
+        workerFactory: () => worker,
+        scheduleTask: (task) => { tasks.push(task); },
+      });
+      const first = loader.leaseThumb({ ...GENOME, seed: 6201 });
+      const second = loader.leaseThumb({ ...GENOME, seed: 6202 });
+      loader.activate();
+      tasks.shift()!();
+      const identity = {
+        documentToken: `stale-error-${terminal}-document`,
+        producerEpoch: 1,
+        workerInstanceId: 1,
+      };
+      worker.emit({ schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'ready', ...identity });
+      const request = worker.sent[1] as SpeciesArtWorkerRenderRequest;
+      for (const phase of ['import-start', 'import-complete', 'job-start'] as const) {
+        worker.emit({
+          schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'phase', ...identity,
+          jobId: request.jobId, kind: request.kind, key: request.key,
+          phase, performanceNow: 1,
+        });
+      }
+      worker.emit({
+        schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'error', ...identity,
+        jobId: request.jobId, kind: request.kind, key: request.key,
+        stage: 'paint', code: 'painter-threw', message: 'trusted prior paint failure',
+      });
+      expect(loader.diagnostics().lastError).toMatchObject({
+        producerEpoch: 1, workerInstanceId: 1, jobId: request.jobId,
+        stage: 'paint', code: 'painter-threw', message: 'trusted prior paint failure',
+      });
+
+      if (terminal === 'protocol') {
+        worker.emit({ schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'ready', ...identity });
+      } else {
+        worker.emitEvent('error');
+      }
+      expect(worker.terminated).toBe(1);
+      expect(loader.diagnostics()).toMatchObject({
+        state: 'error',
+        lastError: null,
+        worker: {
+          live: false,
+          fatals: 1,
+          protocolErrors: terminal === 'protocol' ? 1 : 0,
+        },
+        errors: { paint: 1 },
+      });
+      first.release();
+      second.release();
+      loader.dispose(`stale ${terminal} evidence test complete`);
+    }
+  });
+
+  it('clears prior producer receipts before a replacement worker can publish', () => {
+    const workers: EvidenceWorker[] = [];
+    const tasks: Array<() => void> = [];
+    const loader = new SpeciesArtLoader('replacement-receipt-document', {
+      workerFactory: () => {
+        const worker = new EvidenceWorker();
+        workers.push(worker);
+        return worker;
+      },
+      scheduleTask: (task) => { tasks.push(task); },
+    });
+    const firstLease = loader.leaseThumb({ ...GENOME, seed: 6301 });
+    loader.activate();
+    tasks.shift()!();
+    const first = workers[0]!;
+    const firstIdentity = {
+      documentToken: 'replacement-receipt-document', producerEpoch: 1, workerInstanceId: 1,
+    };
+    first.emit({
+      schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'ready', ...firstIdentity,
+    });
+    const firstRequest = first.sent[1] as SpeciesArtWorkerRenderRequest;
+    for (const phase of ['import-start', 'import-complete', 'job-start'] as const) {
+      first.emit({
+        schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'phase', ...firstIdentity,
+        jobId: firstRequest.jobId, kind: firstRequest.kind, key: firstRequest.key,
+        phase, performanceNow: 1,
+      });
+    }
+    first.emit({
+      schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'error', ...firstIdentity,
+      jobId: firstRequest.jobId, kind: firstRequest.kind, key: firstRequest.key,
+      stage: 'paint', code: 'painter-threw', message: 'prior producer failure',
+    });
+    expect(first.terminated).toBe(1);
+    expect(loader.diagnostics()).toMatchObject({
+      lastEvent: { producerEpoch: 1, workerInstanceId: 1, event: 'error:paint' },
+      lastError: { producerEpoch: 1, workerInstanceId: 1, stage: 'paint' },
+    });
+
+    const secondLease = loader.leaseThumb({ ...GENOME, seed: 6302 });
+    expect(tasks).toHaveLength(1);
+    tasks.shift()!();
+    expect(workers).toHaveLength(2);
+    expect(loader.diagnostics()).toMatchObject({
+      state: 'loading',
+      identity: { lastProducerEpoch: 2, lastWorkerInstanceId: 2 },
+      lastEvent: null,
+      lastError: null,
+    });
+
+    const second = workers[1]!;
+    const secondIdentity = {
+      documentToken: 'replacement-receipt-document', producerEpoch: 2, workerInstanceId: 2,
+    };
+    second.emit({
+      schema: SPECIES_ART_WORKER_RESPONSE_SCHEMA, type: 'error', ...secondIdentity,
+      jobId: null, kind: null, key: null,
+      stage: 'capability', code: 'worker-capability', message: 'replacement lacks canvas',
+    });
+    expect(second.terminated).toBe(1);
+    expect(loader.diagnostics()).toMatchObject({
+      state: 'error',
+      identity: { lastProducerEpoch: 2, lastWorkerInstanceId: 2 },
+      lastEvent: null,
+      lastError: {
+        producerEpoch: 2, workerInstanceId: 2, jobId: null, kind: null,
+        stage: 'capability', code: 'worker-capability', message: 'replacement lacks canvas',
+      },
+      errors: { capability: 1, paint: 1 },
+    });
+    firstLease.release();
+    secondLease.release();
+    loader.dispose('replacement receipt test complete');
   });
 
   it('settles active and queued owners once on capability or import fatal without retry', () => {
@@ -602,6 +1060,7 @@ describe('species art worker protocol', () => {
       tasks.shift()!();
       expect(workers).toHaveLength(1);
       const worker = workers[0]!;
+      expect(loader.diagnostics().lastError).toBeNull();
       const identity = {
         documentToken: `fatal-${stage}-document`, producerEpoch: 1, workerInstanceId: 1,
       };
@@ -632,14 +1091,26 @@ describe('species art worker protocol', () => {
       expect(workers).toHaveLength(1);
       expect(worker.sent.filter((message) =>
         (message as { type?: string }).type === 'render')).toHaveLength(stage === 'import' ? 1 : 0);
+      const failedRequest = stage === 'import'
+        ? worker.sent[1] as SpeciesArtWorkerRenderRequest : null;
       expect(loader.diagnostics()).toMatchObject({
         state: 'error',
+        lastError: {
+          producerEpoch: 1,
+          workerInstanceId: 1,
+          jobId: failedRequest?.jobId ?? null,
+          kind: failedRequest?.kind ?? null,
+          stage,
+          code: stage === 'import' ? 'painter-import' : 'worker-capability',
+          message: stage === 'import' ? 'painter import refused' : 'OffscreenCanvas unavailable',
+        },
         worker: {
           live: false, starts: 1, ready: stage === 'import' ? 1 : 0,
           disposals: 1, fatals: 1, protocolErrors: 0,
         },
         errors: { [stage]: 1 },
       });
+      expect(Object.isFrozen(loader.diagnostics().lastError)).toBe(true);
       expect(loader.artDiagnostics()).toMatchObject({
         live: { activeJobs: 0, queuedJobs: 0 },
         totals: { jobStarts: 1, jobErrors: 2 },

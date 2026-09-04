@@ -1,14 +1,14 @@
 /* AUTO-LIFTED VERBATIM domain-pure strays from main.js (v1.8.9) — functions
    living OUTSIDE the 14 [domain] modules that fixtures pin or domain code
-   calls: cleanName (13274-13274) · _r2 (14592-14592) · encodeWhere (14593-14601) · decodeWhere (14615-14636) · winEstimate (18459-18462) · STAT_KEYS (16772-16772) · floraStat (16782-16782) · BIOME_SETS (10763-10823) · biomeFor (10824-10835) · hdGenesFor (5605-5701) · _sanitizeSavedGenome (14153-14201) · _sanitizeView (14604-14614) · REGIONS (21951-21958) · RING_SPECTRUM (12219-12226) · ASC_RING_R (22757-22757) · regionAt (21963-21963) · gradeCapAt (12227-12237) · ringGrade (12238-12246).
-   body sha256/16 2b3bbea82355f98f. ⚠ DO NOT EDIT. Regenerate: node tools/lift-strays.mjs */
+   calls: _r2 (14592-14592) · encodeWhere (14593-14601) · decodeWhere (14615-14636) · winEstimate (18459-18462) · floraStat (16782-16782) · BIOME_SETS (10763-10823) · biomeFor (10824-10835) · hdGenesFor (5605-5701) · _sanitizeSavedGenome (14153-14201) · _sanitizeView (14604-14614) · REGIONS (21951-21958) · RING_SPECTRUM (12219-12226) · ASC_RING_R (22757-22757) · regionAt (21963-21963) · gradeCapAt (12227-12237) · ringGrade (12238-12246).
+   body sha256/16 13ba6dbe726f35da. ⚠ DO NOT EDIT. Regenerate: node tools/lift-strays.mjs */
 import { mulberry32, clamp, hashInt } from '@cf/domain-rand';
 import { HOME_GAL_SEED, UCELL, HOME_POS, GR, SOL_POS } from '@cf/domain-worldconfig';
-import { SP_COLOR, FA_TRAIT, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_HABITAT, colorGrade, SP_HEX, FA_SIZE_M, TIER_MAX, habOf, locoOf } from '@cf/domain-speciestraits';
+import { cleanName } from '@cf/domain-naming';
+import { SP_COLOR, FA_TRAIT, FA_DIET, FA_HEAD, FA_LIMBS, FA_SKIN, FA_TAIL, FA_PATTERN, FA_EYES, FA_HABITAT, colorGrade, SP_HEX, FA_SIZE_M, TIER_MAX, habOf, locoOf, STAT_KEYS } from '@cf/domain-speciestraits';
 import { b64encUtf8, b64decUtf8 } from '@cf/domain-encutil';
 import { battleStats } from '@cf/domain-combatcore';
 
-function cleanName(s,n){ return String(s).replace(/[<>&"']/g,'').trim().slice(0,n||24); }   /* verify-pass: one sanitizer, parameterized cap */
 function _r2(n){ return Math.round(n*100)/100; }
 function encodeWhere(w, name){
   const g=w.gal;
@@ -45,7 +45,6 @@ function winEstimate(champ, native){
   const A=champ.stats||battleStats(champ.genome), B=battleStats(native.genome);
   return clamp(A.total/(A.total+B.total), 0.05, 0.95);
 }
-const STAT_KEYS=['vit','fer','res','agi','ins'];
 function floraStat(g){ return STAT_KEYS[(g&&g.seed!=null)?(hashInt(g.seed,0xF0,7)%5):0]; }
 const BIOME_SETS={
  terran:[
@@ -315,4 +314,4 @@ function ringGrade(g, grade, where){
   const dom=g.kingdom==='fauna'?'life':(g.kingdom==='flora'?'forest':(g.kingdom==='fungi'?'fungal':'life'));
   return colorGrade(dom, g.seed, {salt:0x10F, force:cap});
 }
-export { cleanName, _r2, encodeWhere, decodeWhere, winEstimate, STAT_KEYS, floraStat, BIOME_SETS, biomeFor, hdGenesFor, _sanitizeSavedGenome, _sanitizeView, REGIONS, RING_SPECTRUM, ASC_RING_R, regionAt, gradeCapAt, ringGrade };
+export { _r2, encodeWhere, decodeWhere, winEstimate, floraStat, BIOME_SETS, biomeFor, hdGenesFor, _sanitizeSavedGenome, _sanitizeView, REGIONS, RING_SPECTRUM, ASC_RING_R, regionAt, gradeCapAt, ringGrade };

@@ -17,8 +17,9 @@
        --current-root=<gp71-evidence-root> \
        --catalogue=<current-root/index.json> \
        --out=<new-output-directory> \
-       [--old-label=<label>] [--current-label=<label>]
-     node tools/gp71compare.mjs --selftest
+       [--old-label=<label>] [--current-label=<label>] \
+       [--browser=<absolute-path>]
+     node tools/gp71compare.mjs --selftest [--browser=<absolute-path>]
 
    Neither evidence root is ever written. The output must not exist and may
    not overlap either input root.
@@ -27,9 +28,11 @@ import crypto from 'node:crypto';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { spawn } from 'node:child_process';
+import { withArtBrowserCdp } from './art-browser-contract.mjs';
+import {
+  assertBrowserLaunchAllowed, browserCandidates, findChromiumBrowser,
+} from './browserpath.mjs';
 
-const EDGE = 'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe';
 const IDENTITY_SCHEMA = 'cf.gp71.identity-manifest.v1';
 const PORTRAIT_SCHEMA = 'cf.gp71.portrait-manifest.v1';
 const OUTPUT_SCHEMA = 'cf.gp71.portrait-comparison.v1';
@@ -338,60 +341,33 @@ function publicPortrait(row) {
   };
 }
 
-async function openCdp() {
-  assert(fs.existsSync(EDGE), `comparison sheets require Edge at ${EDGE}`);
-  const userData = path.join(os.tmpdir(), `cf-gp71-compare-${process.pid}-${crypto.randomBytes(6).toString('hex')}`);
-  const edge = spawn(EDGE, [
-    '--headless=new', '--no-sandbox', '--no-first-run', '--disable-background-networking',
-    '--disable-component-update', '--disable-component-extensions-with-background-pages',
-    '--remote-debugging-port=0', `--user-data-dir=${userData}`, 'about:blank',
-  ], { stdio: ['ignore', 'ignore', 'pipe'] });
-  let stderr = '';
-  edge.stderr.on('data', (chunk) => { stderr += chunk.toString(); });
-  let debuggerUrl = null;
-  for (let attempt = 0; attempt < 75 && !debuggerUrl; attempt++) {
-    await sleep(100);
-    const match = stderr.match(/DevTools listening on (ws:\/\/[^\s]+)/);
-    if (match) debuggerUrl = match[1];
-    if (edge.exitCode !== null) break;
-  }
-  if (!debuggerUrl) {
-    edge.kill();
-    fail(`comparison sheets: Edge CDP did not start${stderr ? ` (${stderr.trim().slice(-240)})` : ''}`);
-  }
-  const ws = new WebSocket(debuggerUrl);
-  let messageId = 0;
-  const pending = new Map();
-  ws.onmessage = (event) => {
-    const message = JSON.parse(event.data);
-    if (message.id && pending.has(message.id)) {
-      const waiter = pending.get(message.id);
-      pending.delete(message.id);
-      message.error ? waiter.reject(new Error(message.error.message)) : waiter.resolve(message.result);
-    }
-  };
-  await new Promise((resolve, reject) => { ws.onopen = resolve; ws.onerror = reject; });
-  const send = (method, params = {}, sessionId) => new Promise((resolve, reject) => {
-    const id = ++messageId;
-    pending.set(id, { resolve, reject });
-    ws.send(JSON.stringify(sessionId ? { id, method, params, sessionId } : { id, method, params }));
+async function withComparisonBrowser(browserOverride, work) {
+  assertBrowserLaunchAllowed();
+  const browserFile = findChromiumBrowser(browserCandidates(browserOverride));
+  return await withArtBrowserCdp({
+    browserFile,
+    tool: 'gp71compare',
+    userDataPrefix: 'cf-gp71-compare',
+    startupTimeoutMs: 7_500,
+  }, async ({ send, provenance }) => {
+    const target = await send('Target.createTarget', { url: 'about:blank' });
+    const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
+    const sessionId = attached.sessionId;
+    await send('Runtime.enable', {}, sessionId);
+    return await work({
+      provenance,
+      async evaluate(expression) {
+        const result = await send('Runtime.evaluate', {
+          expression, returnByValue: true, awaitPromise: true,
+        }, sessionId);
+        if (result.exceptionDetails) {
+          fail(`comparison canvas failed: ${String(
+            result.exceptionDetails.exception?.description || result.exceptionDetails.text).slice(0, 400)}`);
+        }
+        return result.result.value;
+      },
+    });
   });
-  const target = await send('Target.createTarget', { url: 'about:blank' });
-  const attached = await send('Target.attachToTarget', { targetId: target.targetId, flatten: true });
-  const sessionId = attached.sessionId;
-  await send('Runtime.enable', {}, sessionId);
-  return {
-    async evaluate(expression) {
-      const result = await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true }, sessionId);
-      if (result.exceptionDetails) {
-        fail(`comparison canvas failed: ${String(result.exceptionDetails.exception?.description || result.exceptionDetails.text).slice(0, 400)}`);
-      }
-      return result.result.value;
-    },
-    close() {
-      try { ws.close(); } finally { edge.kill(); }
-    },
-  };
 }
 
 async function composeSheet(browser, family, page, pageCount, rows, labels) {
@@ -463,117 +439,121 @@ async function generate(options) {
     old: options.oldLabel || path.basename(oldEvidence.root),
     current: options.currentLabel || path.basename(currentEvidence.root),
   };
-  let browser = null;
+  let completed = null;
   try {
-    browser = await openCdp();
-    const byFamily = new Map();
-    for (const row of rows) {
-      if (!byFamily.has(row.family)) byFamily.set(row.family, []);
-      byFamily.get(row.family).push(row);
-    }
-    const sheetRecords = [];
-    const rowRecords = [];
-    let completedSheets = 0;
-    const totalSheets = [...byFamily.values()].reduce((sum, members) => sum + Math.ceil(members.length / SPECIES_PER_SHEET), 0);
-    for (const [family, members] of byFamily.entries()) {
-      const familyDir = safeSlug(family);
-      const pageCount = Math.ceil(members.length / SPECIES_PER_SHEET);
-      for (let pageOffset = 0; pageOffset < pageCount; pageOffset++) {
-        const page = pageOffset + 1;
-        const pageRows = members.slice(pageOffset * SPECIES_PER_SHEET, page * SPECIES_PER_SHEET);
-        const composed = await composeSheet(browser, family, page, pageCount, pageRows, labels);
-        const relative = `sheets/${familyDir}/sheet-${String(page).padStart(3, '0')}.png`;
-        const disk = path.join(stage, ...relative.split('/'));
-        fs.mkdirSync(path.dirname(disk), { recursive: true });
-        fs.writeFileSync(disk, composed.buffer);
-        const sheetHash = sha256(composed.buffer);
-        sheetRecords.push({
-          family, page, pages: pageCount, file: relative, sha256: sheetHash,
-          width: composed.width, height: composed.height, species: pageRows.length,
-        });
-        for (const [slot, row] of pageRows.entries()) {
-          rowRecords.push({
-            ordinal: row.ordinal,
-            source_packet_id: row.packetId,
-            family: row.family,
-            set: row.set,
-            species: row.species,
-            changed: row.changed,
-            old: publicPortrait(row.old),
-            current: publicPortrait(row.current),
-            sheet: relative,
-            sheet_sha256: sheetHash,
-            slot: { index: slot, column: slot % 2, row: Math.floor(slot / 2) },
+    completed = await withComparisonBrowser(options.browser, async (browser) => {
+      const byFamily = new Map();
+      for (const row of rows) {
+        if (!byFamily.has(row.family)) byFamily.set(row.family, []);
+        byFamily.get(row.family).push(row);
+      }
+      const sheetRecords = [];
+      const rowRecords = [];
+      let completedSheets = 0;
+      const totalSheets = [...byFamily.values()].reduce(
+        (sum, members) => sum + Math.ceil(members.length / SPECIES_PER_SHEET), 0);
+      for (const [family, members] of byFamily.entries()) {
+        const familyDir = safeSlug(family);
+        const pageCount = Math.ceil(members.length / SPECIES_PER_SHEET);
+        for (let pageOffset = 0; pageOffset < pageCount; pageOffset++) {
+          const page = pageOffset + 1;
+          const pageRows = members.slice(pageOffset * SPECIES_PER_SHEET, page * SPECIES_PER_SHEET);
+          const composed = await composeSheet(browser, family, page, pageCount, pageRows, labels);
+          const relative = `sheets/${familyDir}/sheet-${String(page).padStart(3, '0')}.png`;
+          const disk = path.join(stage, ...relative.split('/'));
+          fs.mkdirSync(path.dirname(disk), { recursive: true });
+          fs.writeFileSync(disk, composed.buffer);
+          const sheetHash = sha256(composed.buffer);
+          sheetRecords.push({
+            family, page, pages: pageCount, file: relative, sha256: sheetHash,
+            width: composed.width, height: composed.height, species: pageRows.length,
           });
-        }
-        completedSheets++;
-        if (completedSheets % 25 === 0 || completedSheets === totalSheets) {
-          console.log(`  ... ${completedSheets}/${totalSheets} comparison sheets`);
+          for (const [slot, row] of pageRows.entries()) {
+            rowRecords.push({
+              ordinal: row.ordinal,
+              source_packet_id: row.packetId,
+              family: row.family,
+              set: row.set,
+              species: row.species,
+              changed: row.changed,
+              old: publicPortrait(row.old),
+              current: publicPortrait(row.current),
+              sheet: relative,
+              sheet_sha256: sheetHash,
+              slot: { index: slot, column: slot % 2, row: Math.floor(slot / 2) },
+            });
+          }
+          completedSheets++;
+          if (completedSheets % 25 === 0 || completedSheets === totalSheets) {
+            console.log(`  ... ${completedSheets}/${totalSheets} comparison sheets`);
+          }
         }
       }
-    }
-    rowRecords.sort((a, b) => a.ordinal - b.ordinal);
-    const setSummary = {};
-    for (const set of Object.keys(EXPECTED_SETS)) {
-      const setRows = rows.filter((row) => row.set === set);
-      setSummary[set] = {
-        total: setRows.length,
-        changed: setRows.filter((row) => row.changed).length,
-        byte_identical: setRows.filter((row) => !row.changed).length,
+      rowRecords.sort((a, b) => a.ordinal - b.ordinal);
+      const setSummary = {};
+      for (const set of Object.keys(EXPECTED_SETS)) {
+        const setRows = rows.filter((row) => row.set === set);
+        setSummary[set] = {
+          total: setRows.length,
+          changed: setRows.filter((row) => row.changed).length,
+          byte_identical: setRows.filter((row) => !row.changed).length,
+        };
+      }
+      const familySummary = [...byFamily.entries()].map(([family, members]) => ({
+        family,
+        total: members.length,
+        changed: members.filter((row) => row.changed).length,
+        byte_identical: members.filter((row) => !row.changed).length,
+        sheets: Math.ceil(members.length / SPECIES_PER_SHEET),
+      }));
+      const output = {
+        schema: OUTPUT_SCHEMA,
+        contract: 'Two immutable, exact 1,250-portrait evidence roots joined by set/species and grouped by the explicit current family index.',
+        browser_provenance: browser.provenance,
+        labels,
+        inputs: {
+          old: {
+            identity_sha256: oldEvidence.identityDigest,
+            identity_manifest_sha256: oldEvidence.identityManifestSha256,
+            portrait_manifest_sha256: oldEvidence.portraitManifestSha256,
+          },
+          current: {
+            identity_sha256: currentEvidence.identityDigest,
+            identity_manifest_sha256: currentEvidence.identityManifestSha256,
+            portrait_manifest_sha256: currentEvidence.portraitManifestSha256,
+          },
+          catalogue_sha256: catalogue.sha256,
+        },
+        summary: {
+          portraits: rows.length,
+          changed: rows.filter((row) => row.changed).length,
+          byte_identical: rows.filter((row) => !row.changed).length,
+          families: byFamily.size,
+          sheets: sheetRecords.length,
+          sets: setSummary,
+          family_rows: familySummary,
+        },
+        sheets: sheetRecords,
+        rows: rowRecords,
       };
-    }
-    const familySummary = [...byFamily.entries()].map(([family, members]) => ({
-      family,
-      total: members.length,
-      changed: members.filter((row) => row.changed).length,
-      byte_identical: members.filter((row) => !row.changed).length,
-      sheets: Math.ceil(members.length / SPECIES_PER_SHEET),
-    }));
-    const output = {
-      schema: OUTPUT_SCHEMA,
-      contract: 'Two immutable, exact 1,250-portrait evidence roots joined by set/species and grouped by the explicit current family index.',
-      labels,
-      inputs: {
-        old: {
-          identity_sha256: oldEvidence.identityDigest,
-          identity_manifest_sha256: oldEvidence.identityManifestSha256,
-          portrait_manifest_sha256: oldEvidence.portraitManifestSha256,
-        },
-        current: {
-          identity_sha256: currentEvidence.identityDigest,
-          identity_manifest_sha256: currentEvidence.identityManifestSha256,
-          portrait_manifest_sha256: currentEvidence.portraitManifestSha256,
-        },
-        catalogue_sha256: catalogue.sha256,
-      },
-      summary: {
-        portraits: rows.length,
-        changed: rows.filter((row) => row.changed).length,
-        byte_identical: rows.filter((row) => !row.changed).length,
-        families: byFamily.size,
-        sheets: sheetRecords.length,
-        sets: setSummary,
-        family_rows: familySummary,
-      },
-      sheets: sheetRecords,
-      rows: rowRecords,
-    };
-    writeJson(path.join(stage, 'comparison-index.json'), output);
+      writeJson(path.join(stage, 'comparison-index.json'), output);
 
-    const oldAfter = loadEvidence(options.oldRoot, 'old evidence postflight');
-    const currentAfter = loadEvidence(options.currentRoot, 'current evidence postflight');
-    evidenceUnchanged(oldEvidence, oldAfter, 'old evidence');
-    evidenceUnchanged(currentEvidence, currentAfter, 'current evidence');
-    assert(hashFile(catalogue.file) === catalogue.sha256, 'catalogue/family metadata changed during comparison');
+      const oldAfter = loadEvidence(options.oldRoot, 'old evidence postflight');
+      const currentAfter = loadEvidence(options.currentRoot, 'current evidence postflight');
+      evidenceUnchanged(oldEvidence, oldAfter, 'old evidence');
+      evidenceUnchanged(currentEvidence, currentAfter, 'current evidence');
+      assert(hashFile(catalogue.file) === catalogue.sha256,
+        'catalogue/family metadata changed during comparison');
+      return { output, sheetRecords };
+    });
     fs.renameSync(stage, out);
     console.log('GP7.1 PORTRAIT COMPARISON PASS');
     console.log(`  exact identities: ${rows.length}`);
-    console.log(`  changed: ${output.summary.changed}; byte-identical: ${output.summary.byte_identical}`);
-    console.log(`  family sheets: ${sheetRecords.length}`);
+    console.log(`  changed: ${completed.output.summary.changed}; byte-identical: ${completed.output.summary.byte_identical}`);
+    console.log(`  family sheets: ${completed.sheetRecords.length}`);
     console.log(`  index: ${path.join(out, 'comparison-index.json')}`);
     console.log('  input evidence roots: hash-verified before and after; never written');
   } finally {
-    if (browser) browser.close();
     if (fs.existsSync(stage)) fs.rmSync(stage, { recursive: true, force: true });
   }
 }
@@ -646,7 +626,7 @@ function expectRejected(label, work, pattern) {
   assert(caught, `SELFTEST ${label}: injected defect was accepted`);
   assert(pattern.test(caught.message), `SELFTEST ${label}: wrong rejection (${caught.message})`);
 }
-async function runSelftest() {
+async function runSelftest(browserOverride) {
   const fixtureSets = Object.freeze({ fixture: 2 });
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'cf-gp71-compare-selftest-'));
   try {
@@ -668,16 +648,12 @@ async function runSelftest() {
     const joined = joinComparison(oldEvidence, currentEvidence, catalogue, fixtureSets);
     assert(joined.length === 2 && joined[0].changed === true && joined[1].changed === false,
       'SELFTEST positive comparison did not distinguish changed and byte-identical portraits');
-    let browser = null;
-    try {
-      browser = await openCdp();
+    await withComparisonBrowser(browserOverride, async (browser) => {
       const sheet = await composeSheet(browser, 'Fixture family', 1, 1, joined, { old: 'OLD', current: 'CURRENT' });
       const dimensions = pngDimensions(sheet.buffer, 'SELFTEST comparison sheet');
       assert(dimensions.width === sheet.width && dimensions.height === sheet.height && sheet.buffer.length > 100,
         'SELFTEST comparison compositor did not produce a complete PNG');
-    } finally {
-      if (browser) browser.close();
-    }
+    });
 
     const staleRoot = path.join(temp, 'stale');
     writeFixtureEvidence(staleRoot, [
@@ -775,6 +751,10 @@ function parseArgs(args) {
     else if (argument.startsWith('--out=')) options.out = argument.slice('--out='.length);
     else if (argument.startsWith('--old-label=')) options.oldLabel = argument.slice('--old-label='.length);
     else if (argument.startsWith('--current-label=')) options.currentLabel = argument.slice('--current-label='.length);
+    else if (argument.startsWith('--browser=')) {
+      assert(options.browser === undefined, 'duplicate --browser option');
+      options.browser = argument.slice('--browser='.length);
+    }
     else fail(`unknown argument: ${argument}`);
   }
   if (!options.help && !options.selftest) {
@@ -794,16 +774,17 @@ function parseArgs(args) {
     '--selftest does not accept comparison inputs');
   }
   if (options.verifyOnly) {
-    assert(options.out === undefined && options.oldLabel === undefined && options.currentLabel === undefined,
-      '--verify-only does not accept output or display-label options');
+    assert(options.out === undefined && options.oldLabel === undefined && options.currentLabel === undefined
+      && options.browser === undefined,
+    '--verify-only does not accept output, display-label, or browser options');
   }
   return options;
 }
 function usage() {
   console.log('Usage:');
   console.log('  node tools/gp71compare.mjs --verify-only --old-root=<gp71-root> --current-root=<gp71-root> --catalogue=<current-index.json>');
-  console.log('  node tools/gp71compare.mjs --old-root=<gp71-root> --current-root=<gp71-root> --catalogue=<current-index.json> --out=<new-dir> [--old-label=<label>] [--current-label=<label>]');
-  console.log('  node tools/gp71compare.mjs --selftest');
+  console.log('  node tools/gp71compare.mjs --old-root=<gp71-root> --current-root=<gp71-root> --catalogue=<current-index.json> --out=<new-dir> [--old-label=<label>] [--current-label=<label>] [--browser=<absolute-path>]');
+  console.log('  node tools/gp71compare.mjs --selftest [--browser=<absolute-path>]');
   console.log('');
   console.log('Each evidence root must contain portraits/, identity-manifest.json, and review-info/manifest.json.');
   console.log('The catalogue must be the hash-bound 196-packet index.json belonging to the current root.');
@@ -813,7 +794,7 @@ function usage() {
 try {
   const options = parseArgs(process.argv.slice(2));
   if (options.help) usage();
-  else if (options.selftest) await runSelftest();
+  else if (options.selftest) await runSelftest(options.browser);
   else if (options.verifyOnly) verifyOnly(options);
   else await generate(options);
 } catch (error) {

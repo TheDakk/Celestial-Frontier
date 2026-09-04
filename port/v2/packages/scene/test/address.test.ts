@@ -1,5 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import {
+  canonicalCF1WorldAtlasId,
   getCanonicalCF1AddressKey,
   getProvenGalaxyKey,
   getProvenPlanetKey,
@@ -18,6 +19,8 @@ import {
   resolveCF1World,
   resolveCF1WorldAddress,
   resolveCF1WorldAddressForDiagnostics,
+  resolveCF1WorldAtlasId,
+  resolveCF1WorldKey,
   type CF1GalaxyKey,
   type CF1StarKey,
   type CF1WorldKey,
@@ -43,6 +46,18 @@ const FOREIGN_GALAXY = {
 };
 const FOREIGN_STAR = { seed: 676840317, x: 27.3, y: -24.6 };
 const FOREIGN_WORLD = { seed: 127909732 };
+const COLLIDING_WORLD_CANDIDATES = Object.freeze([
+  Object.freeze({
+    galaxy: Object.freeze({ seed: 1594395733, x: -5501.81, y: -11753.64 }),
+    star: Object.freeze({ seed: 4077594722, x: -271.54, y: -67.36 }),
+    planet: Object.freeze({ seed: 488332735 }),
+  }),
+  Object.freeze({
+    galaxy: Object.freeze({ seed: 1336287406, x: -2657.91, y: -11817.01 }),
+    star: Object.freeze({ seed: 1391422746, x: -646.79, y: 119.97 }),
+    planet: Object.freeze({ seed: 488332735 }),
+  }),
+]);
 
 function success(result: ReturnType<typeof resolveCF1WorldAddress>) {
   expect(result.ok).toBe(true);
@@ -92,6 +107,33 @@ function firstFineWorld(): { star: { seed: number; x: number; y: number }; plane
 }
 
 describe('@cf/scene — canonical CF1 world-address proof', () => {
+  it('re-proves colliding leaf seeds through distinct canonical keys and Atlas ids', () => {
+    const first = success(resolveCF1WorldAddress(COLLIDING_WORLD_CANDIDATES[0]));
+    const second = success(resolveCF1WorldAddress(COLLIDING_WORLD_CANDIDATES[1]));
+    expect(first.planet).toEqual({ seed: 488332735, ordinal: 2 });
+    expect(second.planet).toEqual({ seed: 488332735, ordinal: 1 });
+    expect(first.key).toBe(
+      'CF1|g:1594395733@-5501.81,-11753.64|s:4077594722@-271.54,-67.36|p:488332735#2',
+    );
+    expect(second.key).toBe(
+      'CF1|g:1336287406@-2657.91,-11817.01|s:1391422746@-646.79,119.97|p:488332735#1',
+    );
+    expect(first.key).not.toBe(second.key);
+    expect(resolveCF1WorldKey(first.key)).toMatchObject({ ok: true, address: { key: first.key } });
+    expect(resolveCF1WorldKey(second.key)).toMatchObject({ ok: true, address: { key: second.key } });
+    const firstAtlasId = canonicalCF1WorldAtlasId(first);
+    const secondAtlasId = canonicalCF1WorldAtlasId(second);
+    expect(firstAtlasId).not.toBe(secondAtlasId);
+    expect(resolveCF1WorldAtlasId(firstAtlasId)).toMatchObject({ ok: true, address: { key: first.key } });
+    expect(resolveCF1WorldAtlasId(secondAtlasId)).toMatchObject({ ok: true, address: { key: second.key } });
+
+    /* Negative controls: leaf-only identity and an altered ordinal cannot
+       resolve to either canonical world. */
+    expect(resolveCF1WorldKey('488332735')).toEqual({ ok: false, reason: 'malformed-address' });
+    expect(resolveCF1WorldKey(first.key.replace('#2', '#1')))
+      .toEqual({ ok: false, reason: 'malformed-address' });
+  });
+
   it('★ re-derives the full Sol → Earth hierarchy and its source-derived key', () => {
     const address = success(resolveCF1WorldAddress(HOME_CANDIDATE));
     expect(address.galaxy).toEqual({

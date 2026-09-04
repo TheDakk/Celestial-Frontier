@@ -1,0 +1,808 @@
+/* F4 app-side authority join.
+
+   The pure clock, SessionRNG codec, tab lease, and revisioned persistence
+   transaction live in their owning packages. This controller only keeps the
+   four pieces on one app lifecycle: a page may accrue while visible,
+   answerable, and holding its exact lease; a save commits the clock and RNG
+   under that same lease and the caller-observed revision. Receipt-bearing
+   product policy is injected as one pure detached derivation; the controller
+   owns no DOM, wall clock, entropy source, retry, or product rules. */
+import { createActivePlayClock, type ActivePlayClock } from '@cf/domain-progression';
+import {
+  MAX_SESSION_RNG_DRAWS_PER_PLAN,
+  createSessionRNG,
+  type SessionRNGState,
+} from '@cf/domain-sessionrng';
+import {
+  createActivePlayPersistenceOwner,
+  createF4DeterministicProductTransactionOwner,
+  createF4MultiOutcomePreDrawTransactionOwner,
+  createF4MultiOutcomeTransactionOwner,
+  createF4NoRngProductTransactionOwner,
+  createF4OutcomeTransactionOwner,
+  createTabLeaseClient,
+  F3_MAX_REVISION,
+  type ActivePlayCommitOutcome,
+  type ContentRegistry,
+  type F4AuthorityV1,
+  type F4DeterministicProductDeriveInput,
+  type F4DeterministicProductTransactionOutcome,
+  type F4MultiOutcomeDeriveInput,
+  type F4MultiOutcomePreDrawAuthorizer,
+  type F4MultiOutcomePreDrawInput,
+  type F4MultiOutcomePreDrawReady,
+  type F4MultiOutcomePreDrawRefusal,
+  type F4MultiOutcomePreDrawTransactionOutcome,
+  type F4MultiOutcomeTransactionOutcome,
+  type F4OutcomeDeriveInput,
+  type F4OutcomeDerivation,
+  type F4OutcomeTransactionOutcome,
+  type F4NoRngProductDeriveInput,
+  type F4NoRngProductOperation,
+  type F4NoRngProductTransactionOutcome,
+  type RevisionedReplacementOutcome,
+  type RevisionedRepository,
+  type SaveStateV2,
+  type StorageBackend,
+  type StorageOperation,
+  type TabLeaseClient,
+  type TabLeaseGrant,
+  type V5ExtensionWrite,
+  type V5Extensions,
+  type V5WritableState,
+  createCombatSettlementPersistenceOwnerV1,
+  type CombatSettlementBrinkAchievementJoinV1,
+  type CombatSettlementCommitOutcomeV1,
+} from '@cf/persistence';
+import type { OwnershipStateV2 } from '@cf/domain-acquisition';
+import type { CombatSettlementPlanV1 } from '@cf/domain-combatcore';
+import type { WorldOpportunitySnapshot } from '@cf/domain-opportunity';
+
+export interface F4RuntimeAuthorityInput {
+  readonly backend: StorageBackend;
+  readonly repository: RevisionedRepository;
+  readonly registry: ContentRegistry;
+  readonly initialRevision: number;
+  readonly initialExtensions: V5Extensions;
+  /** Optional detached canonical parent for receipt-free checkpoint
+      projection. Product commits refresh this parent before returning. */
+  readonly initialState?: SaveStateV2;
+  readonly restoredAuthority: F4AuthorityV1 | null;
+  /** Caller-minted crypto entropy, used only when no saved authority exists. */
+  readonly freshSessionSeed: number;
+  readonly ownerId: string;
+  readonly token: string;
+  readonly leaseTtlMs: number;
+  readonly now: () => number;
+  readonly visible: boolean;
+  readonly answerable: boolean;
+}
+
+export interface F4RuntimeDiagnostics {
+  readonly schema: 'cf-v2-f4-runtime/v1';
+  readonly revision: number;
+  readonly visible: boolean;
+  readonly answerable: boolean;
+  readonly leaseOwned: boolean;
+  readonly staleBlocked: boolean;
+  readonly leaseHeartbeat: number | null;
+  readonly activePlayMs: number;
+  readonly accruing: boolean;
+  readonly sessionSeed: number;
+  readonly sessionOrdinal: number;
+  readonly sessionDraws: Readonly<Record<string, number>>;
+  readonly commits: number;
+  readonly staleWrites: number;
+  readonly leaseLosses: number;
+}
+
+export type F4RuntimeHeartbeatOutcome =
+  | { readonly kind: 'owned'; readonly heartbeat: number }
+  | { readonly kind: 'held-by-other'; readonly remainingMs: number }
+  | {
+      readonly kind: 'storage-error';
+      readonly operation: 'acquire' | 'renew';
+      readonly message: string;
+    }
+  | { readonly kind: 'lost' };
+
+export type F4RuntimeCommitOutcome =
+  | Extract<ActivePlayCommitOutcome, { readonly kind: 'committed' }>
+  | Extract<ActivePlayCommitOutcome, { readonly kind: 'stale' }>
+  | Extract<ActivePlayCommitOutcome, { readonly kind: 'revision-exhausted' }>
+  | Extract<ActivePlayCommitOutcome, { readonly kind: 'lost' }>
+  | { readonly kind: 'lease-unavailable' };
+
+export interface F4RuntimeOutcomeInput {
+  readonly state: SaveStateV2;
+  readonly domain: string;
+  readonly receiptKind: string;
+  readonly codecNow: number;
+  readonly derive: (input: F4OutcomeDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4RuntimeOutcomeCommitOutcome =
+  | Exclude<F4OutcomeTransactionOutcome, { readonly kind: 'committed' }>
+  | (Extract<F4OutcomeTransactionOutcome, { readonly kind: 'committed' }> & {
+    /** Canonical detached state that the caller may publish only after the
+        transaction reports committed. */
+    readonly state: SaveStateV2;
+  })
+  | { readonly kind: 'lease-unavailable' };
+
+export interface F4RuntimeMultiOutcomeInput {
+  readonly state: SaveStateV2;
+  readonly domains: readonly string[];
+  readonly receiptKind: string;
+  readonly codecNow: number;
+  readonly derive: (input: F4MultiOutcomeDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4RuntimeMultiOutcomeCommitOutcome =
+  | Exclude<F4MultiOutcomeTransactionOutcome, { readonly kind: 'committed' }>
+  | (Extract<F4MultiOutcomeTransactionOutcome, { readonly kind: 'committed' }> & {
+    readonly state: SaveStateV2;
+  })
+  | { readonly kind: 'lease-unavailable' };
+
+export interface F4RuntimePreDrawMultiOutcomeInput<Proof, Reason extends string> {
+  readonly state: SaveStateV2;
+  readonly domains: readonly string[];
+  readonly receiptKind: string;
+  readonly codecNow: number;
+  readonly preDraw: (
+    input: F4MultiOutcomePreDrawInput,
+    authorizer: F4MultiOutcomePreDrawAuthorizer<Proof>,
+  ) => F4MultiOutcomePreDrawReady<Proof> | F4MultiOutcomePreDrawRefusal<Reason>;
+}
+
+export type F4RuntimePreDrawMultiOutcomeCommitOutcome<Reason extends string> =
+  | Exclude<F4MultiOutcomePreDrawTransactionOutcome<Reason>, { readonly kind: 'committed' }>
+  | (Extract<F4MultiOutcomePreDrawTransactionOutcome<Reason>, { readonly kind: 'committed' }> & {
+    readonly state: SaveStateV2;
+  })
+  | { readonly kind: 'lease-unavailable' };
+
+export interface F4RuntimeActionInput {
+  readonly state: SaveStateV2;
+  readonly operation: string;
+  readonly receiptKind: string;
+  readonly codecNow: number;
+  readonly derive: (input: F4DeterministicProductDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4RuntimeActionCommitOutcome =
+  | Exclude<F4DeterministicProductTransactionOutcome, { readonly kind: 'committed' }>
+  | (Extract<F4DeterministicProductTransactionOutcome, { readonly kind: 'committed' }> & {
+    /** Canonical detached state that the caller may publish only after the
+        transaction reports committed. */
+    readonly state: SaveStateV2;
+  })
+  | { readonly kind: 'lease-unavailable' };
+
+export interface F4RuntimeCombatSettlementInput {
+  readonly state: SaveStateV2;
+  readonly codecNow: number;
+  readonly plan: CombatSettlementPlanV1;
+  readonly opportunity: WorldOpportunitySnapshot;
+  readonly ownershipV2: OwnershipStateV2 | null;
+  readonly brinkAchievementJoin: CombatSettlementBrinkAchievementJoinV1 | null;
+}
+
+export type F4RuntimeCombatSettlementOutcome =
+  | CombatSettlementCommitOutcomeV1
+  | { readonly kind: 'lease-unavailable' };
+
+export interface F4RuntimeProductInput {
+  readonly state: SaveStateV2;
+  readonly operation: F4NoRngProductOperation;
+  readonly codecNow: number;
+  readonly derive: (input: F4NoRngProductDeriveInput) => F4OutcomeDerivation;
+}
+
+export type F4RuntimeProductCommitOutcome =
+  | Exclude<F4NoRngProductTransactionOutcome, { readonly kind: 'committed' }>
+  | (Extract<F4NoRngProductTransactionOutcome, { readonly kind: 'committed' }> & {
+    /** Canonical detached state that the caller may publish only after the
+        transaction reports committed. */
+    readonly state: SaveStateV2;
+  })
+  | { readonly kind: 'lease-unavailable' };
+
+export type F4RuntimeReplacementOutcome =
+  | RevisionedReplacementOutcome
+  | { readonly kind: 'lease-unavailable' };
+
+export interface F4RuntimeAuthority {
+  /** Acquire or renew this page's lease once. Never retries internally. */
+  heartbeat(): Promise<F4RuntimeHeartbeatOutcome>;
+  /** Stop accrual before asynchronous release when the document hides. */
+  setVisible(visible: boolean): Promise<F4RuntimeHeartbeatOutcome>;
+  setAnswerable(answerable: boolean): void;
+  /** Commit a receipt-free checkpoint. Optional namespaced replacements land
+      in the same lease/revision CAS as state, clock and unchanged RNG. */
+  commit(
+    state: V5WritableState['state'],
+    codecNow: number,
+    extensionWrites?: readonly V5ExtensionWrite[],
+  ): Promise<F4RuntimeCommitOutcome>;
+  /** Plan and commit one receipt-bearing product outcome under this
+      controller's private revision, lease, active-play and RNG authority. */
+  commitOutcome(input: F4RuntimeOutcomeInput): Promise<F4RuntimeOutcomeCommitOutcome>;
+  /** Plan an ordered group of semantic draws and commit the whole product with
+      one receipt, one active-play snapshot, and one revision CAS. */
+  commitOutcomes(input: F4RuntimeMultiOutcomeInput): Promise<F4RuntimeMultiOutcomeCommitOutcome>;
+  /** Capacity-sensitive ordered outcomes. Product policy sees the detached
+      no-value F4 projection first and must return the owner-minted ready proof
+      before any SessionRNG value is evaluated. */
+  commitOutcomesPreDraw<Proof, Reason extends string>(
+    input: F4RuntimePreDrawMultiOutcomeInput<Proof, Reason>,
+  ): Promise<F4RuntimePreDrawMultiOutcomeCommitOutcome<Reason>>;
+  /** Commit an arc-neutral deterministic product action. It consumes one
+      exact-once receipt ordinal but never evaluates or advances a random
+      domain; the caller owns the semantic operation and receipt vocabulary. */
+  commitAction(input: F4RuntimeActionInput): Promise<F4RuntimeActionCommitOutcome>;
+  /** Commit one owner-registered Arc 6 combat settlement through this
+      controller's private lease, revision and active-play authority. */
+  commitCombatSettlement(
+    input: F4RuntimeCombatSettlementInput,
+  ): Promise<F4RuntimeCombatSettlementOutcome>;
+  /** Commit one exact-instance product action that consumes a receipt ordinal
+      but no random draw. */
+  commitProduct(input: F4RuntimeProductInput): Promise<F4RuntimeProductCommitOutcome>;
+  /** Whole-expedition replacement under this runtime's private lease/revision.
+      The repository atomically resets the old receipt namespace. */
+  replace(writes: readonly StorageOperation[]): Promise<F4RuntimeReplacementOutcome>;
+  /** Detached last durable canonical state. Null means an opaque replacement
+      committed or this runtime was constructed without a state parent. */
+  checkpointParent(): SaveStateV2 | null;
+  release(): Promise<void>;
+  diagnostics(): F4RuntimeDiagnostics;
+  readonly revision: number;
+  readonly extensions: V5Extensions;
+  readonly sessionRng: SessionRNGState;
+}
+
+function checkedRevision(value: unknown): number {
+  if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) > F3_MAX_REVISION) {
+    throw new RangeError('F4 initial revision must be a non-negative safe integer at most MAX_SAFE_INTEGER');
+  }
+  return value as number;
+}
+
+function checkedSeed(value: unknown): number {
+  if (!Number.isSafeInteger(value) || (value as number) < 0 || (value as number) > 0xFFFF_FFFF) {
+    throw new RangeError('F4 fresh SessionRNG seed must be a uint32');
+  }
+  return value as number;
+}
+
+function copySessionRng(value: SessionRNGState): SessionRNGState {
+  const canonical = createSessionRNG(value.seed, value.draws, value.ordinal).state();
+  return Object.freeze({
+    seed: canonical.seed,
+    ordinal: canonical.ordinal,
+    draws: Object.freeze(Object.fromEntries(
+      Object.entries(canonical.draws).sort(([left], [right]) => left < right ? -1 : left > right ? 1 : 0),
+    )),
+  });
+}
+
+function copyExtensions(value: V5Extensions): V5Extensions {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('F4 v5 extensions are required');
+  }
+  return value;
+}
+
+function copyCanonicalState(value: SaveStateV2): SaveStateV2 {
+  return structuredClone(value);
+}
+
+export function createF4RuntimeAuthority(input: F4RuntimeAuthorityInput): F4RuntimeAuthority {
+  if (typeof input.now !== 'function') throw new TypeError('F4 runtime requires an injected monotonic clock');
+  let revision = checkedRevision(input.initialRevision);
+  let extensions = copyExtensions(input.initialExtensions);
+  let checkpointParent = input.initialState === undefined
+    ? null : copyCanonicalState(input.initialState);
+  let sessionRng = copySessionRng(input.restoredAuthority?.sessionRng
+    ?? createSessionRNG(checkedSeed(input.freshSessionSeed)).state());
+  let visible = input.visible === true;
+  let requestedVisible = visible;
+  let visibilityGeneration = 0;
+  let answerable = input.answerable === true;
+  let grant: TabLeaseGrant | null = null;
+  let releasePending = false;
+  let commits = 0;
+  let staleWrites = 0;
+  let leaseLosses = 0;
+  let staleBlocked = false;
+  let released = false;
+  let serialized: Promise<void> = Promise.resolve();
+
+  const initialNow = input.now();
+  const clock: ActivePlayClock = createActivePlayClock(
+    input.restoredAuthority?.activePlayMs ?? 0,
+    { visible, answerable, leaseOwned: false },
+    initialNow,
+  );
+  const lease: TabLeaseClient = createTabLeaseClient(input.backend, {
+    ownerId: input.ownerId,
+    token: input.token,
+    ttlMs: input.leaseTtlMs,
+    now: input.now,
+  });
+  const owner = createActivePlayPersistenceOwner(input.repository, input.registry);
+  const outcomeOwner = createF4OutcomeTransactionOwner(input.repository, input.registry);
+  const multiOutcomeOwner = createF4MultiOutcomeTransactionOwner(input.repository, input.registry);
+  const preDrawMultiOutcomeOwner = createF4MultiOutcomePreDrawTransactionOwner(
+    input.repository,
+    input.registry,
+  );
+  const actionOwner = createF4DeterministicProductTransactionOwner(input.repository, input.registry);
+  const combatSettlementOwner = createCombatSettlementPersistenceOwnerV1(
+    input.repository,
+    input.registry,
+  );
+  const productOwner = createF4NoRngProductTransactionOwner(input.repository, input.registry);
+  const publishCheckpointParent = (state: SaveStateV2): void => {
+    checkpointParent = copyCanonicalState(state);
+  };
+
+  const enqueue = <T>(work: () => Promise<T>): Promise<T> => {
+    const run = serialized.then(work, work);
+    serialized = run.then(() => undefined, () => undefined);
+    return run;
+  };
+
+  const setClockEligibility = (): void => {
+    clock.setEligibility({ visible, answerable, leaseOwned: grant !== null && !released }, input.now());
+  };
+  const clearGrant = (lost: boolean): void => {
+    if (lost && grant !== null) leaseLosses++;
+    grant = null;
+    setClockEligibility();
+  };
+  const releaseGrant = async (): Promise<void> => {
+    if (!releasePending) {
+      if (grant === null) return;
+      /* Revoke local authority before the asynchronous storage write, but keep
+         a retry bit until that exact token is durably released. A rejected
+         pagehide release can then be retried by the caller's final fallback
+         without ever resuming accrual or retaining a usable grant. */
+      releasePending = true;
+      clearGrant(false);
+    }
+    const outcome = await lease.release();
+    releasePending = false;
+    if (outcome.kind !== 'released') leaseLosses++;
+  };
+  const blockAndRelease = async (stale: boolean): Promise<void> => {
+    if (stale) staleWrites++;
+    staleBlocked = true;
+    await releaseGrant();
+  };
+
+  const heartbeatUnsafe = async (): Promise<F4RuntimeHeartbeatOutcome> => {
+    if (staleBlocked || released || releasePending) return { kind: 'lost' };
+    if (!visible) {
+      return { kind: 'lost' };
+    }
+    const operation = grant === null ? 'acquire' : 'renew';
+    let outcome: Awaited<ReturnType<TabLeaseClient['acquire'] | TabLeaseClient['renew']>>;
+    try {
+      outcome = operation === 'acquire' ? await lease.acquire() : await lease.renew();
+    } catch (error) {
+      /* Storage failure makes the durable lease state unknowable. Revoke the
+         local grant synchronously so neither active-play nor any caller can
+         continue under authority that was not re-proven. A later explicit
+         heartbeat may reacquire; this owner never retries by itself. */
+      clearGrant(true);
+      return Object.freeze({
+        kind: 'storage-error',
+        operation,
+        message: error instanceof Error ? error.message : String(error),
+      });
+    }
+    if (outcome.kind === 'acquired' || outcome.kind === 'renewed') {
+      /* A hide/release call can synchronously revoke eligibility while the
+         storage request is pending. Do not publish that late grant; release
+         it before the queued successor transition runs. */
+      if (!visible || staleBlocked || released) {
+        grant = outcome.grant;
+        await releaseGrant();
+        return { kind: 'lost' };
+      }
+      grant = outcome.grant;
+      setClockEligibility();
+      return { kind: 'owned', heartbeat: grant.heartbeat };
+    }
+    if (outcome.kind === 'held-by-other') {
+      if (grant !== null) clearGrant(true);
+      return { kind: 'held-by-other', remainingMs: outcome.remainingMs };
+    }
+    clearGrant(true);
+    return { kind: 'lost' };
+  };
+
+  const commitUnsafe = async (
+    state: V5WritableState['state'],
+    codecNow: number,
+    expectedRevision: number,
+    expectedExtensions: V5Extensions,
+    expectedSessionRng: SessionRNGState,
+    extensionWrites: readonly V5ExtensionWrite[],
+  ): Promise<F4RuntimeCommitOutcome> => {
+    if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+    const outcome = await owner.commit({
+      expectedRevision,
+      grant,
+      writable: { state, extensions: expectedExtensions },
+      snapshot: clock.current(input.now()),
+      sessionRng: expectedSessionRng,
+      extensionWrites,
+      now: codecNow,
+    });
+    if (outcome.kind === 'committed') {
+      revision = outcome.revision;
+      extensions = outcome.saved.extensions;
+      sessionRng = copySessionRng(outcome.authority.sessionRng);
+      publishCheckpointParent(outcome.saved.canonicalState);
+      commits++;
+    } else if (outcome.kind === 'stale') {
+      await blockAndRelease(true);
+    } else if (outcome.kind === 'revision-exhausted') {
+      await blockAndRelease(false);
+    } else {
+      clearGrant(true);
+    }
+    return outcome;
+  };
+
+  return Object.freeze({
+    heartbeat(): Promise<F4RuntimeHeartbeatOutcome> {
+      return enqueue(heartbeatUnsafe);
+    },
+    setVisible(nextVisible: boolean): Promise<F4RuntimeHeartbeatOutcome> {
+      const next = nextVisible === true;
+      requestedVisible = next;
+      const generation = ++visibilityGeneration;
+      /* Hiding revokes accrual synchronously, before any asynchronous lease
+         release. Showing becomes effective only after earlier transitions. */
+      if (!next) visible = false;
+      setClockEligibility();
+      return enqueue(async () => {
+        if (!next) {
+          visible = false;
+          await releaseGrant();
+          return { kind: 'lost' };
+        }
+        if (generation !== visibilityGeneration || !requestedVisible || staleBlocked || released) {
+          return { kind: 'lost' };
+        }
+        visible = true;
+        setClockEligibility();
+        return heartbeatUnsafe();
+      });
+    },
+    setAnswerable(nextAnswerable: boolean): void {
+      answerable = nextAnswerable === true;
+      setClockEligibility();
+    },
+    commit(
+      state: V5WritableState['state'],
+      codecNow: number,
+      extensionWrites: readonly V5ExtensionWrite[] = Object.freeze([]),
+    ): Promise<F4RuntimeCommitOutcome> {
+      /* Bind a write to the exact parent visible when its caller submitted it.
+         The queue orders I/O and lifecycle transitions; it must never turn a
+         second same-parent action into a child of an earlier queued commit. */
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      const expectedSessionRng = sessionRng;
+      return enqueue(() => commitUnsafe(
+        state, codecNow, expectedRevision, expectedExtensions, expectedSessionRng, extensionWrites,
+      ));
+    },
+    commitOutcome(outcomeInput: F4RuntimeOutcomeInput): Promise<F4RuntimeOutcomeCommitOutcome> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await outcomeOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state: outcomeInput.state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          domain: outcomeInput.domain,
+          receiptKind: outcomeInput.receiptKind,
+          now: outcomeInput.codecNow,
+          derive: outcomeInput.derive,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          extensions = outcome.saved.extensions;
+          sessionRng = copySessionRng(outcome.authority.sessionRng);
+          publishCheckpointParent(outcome.saved.canonicalState);
+          commits++;
+          return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    commitOutcomes(
+      outcomeInput: F4RuntimeMultiOutcomeInput,
+    ): Promise<F4RuntimeMultiOutcomeCommitOutcome> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      /* Bind order and multiplicity at submission, before an earlier queued
+         lifecycle/storage operation can yield back to a mutable caller. */
+      const domainInput = outcomeInput.domains;
+      const domainCount = Array.isArray(domainInput) ? domainInput.length : -1;
+      if (!Number.isSafeInteger(domainCount) || domainCount < 0
+        || domainCount > MAX_SESSION_RNG_DRAWS_PER_PLAN) {
+        throw new RangeError(
+          `SessionRNG draw plan must contain 1–${MAX_SESSION_RNG_DRAWS_PER_PLAN} domains`,
+        );
+      }
+      const domainSnapshot: string[] = [];
+      for (let index = 0; index < domainCount; index++) domainSnapshot.push(domainInput[index]!);
+      const domains = Object.freeze(domainSnapshot);
+      const receiptKind = outcomeInput.receiptKind;
+      const codecNow = outcomeInput.codecNow;
+      const derive = outcomeInput.derive;
+      const state = outcomeInput.state;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await multiOutcomeOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          domains,
+          receiptKind,
+          now: codecNow,
+          derive,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          extensions = outcome.saved.extensions;
+          sessionRng = copySessionRng(outcome.authority.sessionRng);
+          publishCheckpointParent(outcome.saved.canonicalState);
+          commits++;
+          return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    commitOutcomesPreDraw<Proof, Reason extends string>(
+      outcomeInput: F4RuntimePreDrawMultiOutcomeInput<Proof, Reason>,
+    ): Promise<F4RuntimePreDrawMultiOutcomeCommitOutcome<Reason>> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      const domainInput = outcomeInput.domains;
+      const domainCount = Array.isArray(domainInput) ? domainInput.length : -1;
+      if (!Number.isSafeInteger(domainCount) || domainCount < 1
+        || domainCount > MAX_SESSION_RNG_DRAWS_PER_PLAN) {
+        throw new RangeError(
+          `SessionRNG draw plan must contain 1–${MAX_SESSION_RNG_DRAWS_PER_PLAN} domains`,
+        );
+      }
+      const domainSnapshot: string[] = [];
+      for (let index = 0; index < domainCount; index++) domainSnapshot.push(domainInput[index]!);
+      const domains = Object.freeze(domainSnapshot);
+      const receiptKind = outcomeInput.receiptKind;
+      const codecNow = outcomeInput.codecNow;
+      const preDraw = outcomeInput.preDraw;
+      const state = outcomeInput.state;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await preDrawMultiOutcomeOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          domains,
+          receiptKind,
+          now: codecNow,
+          preDraw,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          extensions = outcome.saved.extensions;
+          sessionRng = copySessionRng(outcome.authority.sessionRng);
+          publishCheckpointParent(outcome.saved.canonicalState);
+          commits++;
+          return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    commitAction(actionInput: F4RuntimeActionInput): Promise<F4RuntimeActionCommitOutcome> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await actionOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state: actionInput.state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          operation: actionInput.operation,
+          receiptKind: actionInput.receiptKind,
+          now: actionInput.codecNow,
+          derive: actionInput.derive,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          extensions = outcome.saved.extensions;
+          sessionRng = copySessionRng(outcome.authority.sessionRng);
+          publishCheckpointParent(outcome.saved.canonicalState);
+          commits++;
+          return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    commitCombatSettlement(
+      combatInput: F4RuntimeCombatSettlementInput,
+    ): Promise<F4RuntimeCombatSettlementOutcome> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await combatSettlementOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state: combatInput.state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          now: combatInput.codecNow,
+          plan: combatInput.plan,
+          opportunity: combatInput.opportunity,
+          ownershipV2: combatInput.ownershipV2,
+          brinkAchievementJoin: combatInput.brinkAchievementJoin,
+        });
+        if (outcome.kind === 'committed' || outcome.kind === 'committed-convergence') {
+          const transaction = outcome.transaction;
+          revision = transaction.revision;
+          extensions = transaction.saved.extensions;
+          sessionRng = copySessionRng(transaction.authority.sessionRng);
+          publishCheckpointParent(transaction.saved.canonicalState);
+          commits++;
+          return outcome;
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    commitProduct(productInput: F4RuntimeProductInput): Promise<F4RuntimeProductCommitOutcome> {
+      const expectedRevision = revision;
+      const expectedExtensions = extensions;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await productOwner.commit({
+          expectedRevision,
+          grant,
+          writable: { state: productInput.state, extensions: expectedExtensions },
+          snapshot: clock.current(input.now()),
+          operation: productInput.operation,
+          now: productInput.codecNow,
+          derive: productInput.derive,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          extensions = outcome.saved.extensions;
+          sessionRng = copySessionRng(outcome.authority.sessionRng);
+          publishCheckpointParent(outcome.saved.canonicalState);
+          commits++;
+          return Object.freeze({ ...outcome, state: outcome.saved.canonicalState });
+        }
+        if (outcome.kind === 'stale') await blockAndRelease(true);
+        else if (outcome.kind === 'revision-exhausted') await blockAndRelease(false);
+        else if (outcome.kind === 'duplicate-receipt') await blockAndRelease(false);
+        else if (outcome.kind === 'lost') clearGrant(true);
+        else if (outcome.kind === 'protected' && outcome.reason !== 'authority-absent') {
+          await blockAndRelease(false);
+        }
+        return outcome;
+      });
+    },
+    replace(writes: readonly StorageOperation[]): Promise<F4RuntimeReplacementOutcome> {
+      const expectedRevision = revision;
+      return enqueue(async () => {
+        if (grant === null || staleBlocked || released) return { kind: 'lease-unavailable' };
+        const outcome = await input.repository.replace({
+          expectedRevision,
+          fences: [grant.check],
+          writes,
+        });
+        if (outcome.kind === 'committed') {
+          revision = outcome.revision;
+          checkpointParent = null;
+          commits++;
+        } else if (outcome.kind === 'stale') {
+          await blockAndRelease(true);
+        } else if (outcome.kind === 'revision-exhausted') {
+          await blockAndRelease(false);
+        } else if (outcome.kind === 'conflict') {
+          /* Revision and lease still matched after the ambiguous CAS refusal.
+             Block this runtime and release that exact lease; clear-only would
+             leave an invisible owner until TTL. */
+          await blockAndRelease(false);
+        } else {
+          clearGrant(true);
+        }
+        return outcome;
+      });
+    },
+    checkpointParent(): SaveStateV2 | null {
+      return checkpointParent === null ? null : copyCanonicalState(checkpointParent);
+    },
+    release(): Promise<void> {
+      released = true;
+      clock.setEligibility({ visible: false, answerable: false, leaseOwned: false }, input.now());
+      visible = false;
+      requestedVisible = false;
+      visibilityGeneration++;
+      answerable = false;
+      return enqueue(releaseGrant);
+    },
+    diagnostics(): F4RuntimeDiagnostics {
+      const snapshot = clock.current(input.now());
+      return Object.freeze({
+        schema: 'cf-v2-f4-runtime/v1',
+        revision,
+        visible,
+        answerable,
+        leaseOwned: grant !== null,
+        staleBlocked,
+        leaseHeartbeat: grant?.heartbeat ?? null,
+        activePlayMs: snapshot.activePlayMs,
+        accruing: snapshot.eligible,
+        sessionSeed: sessionRng.seed,
+        sessionOrdinal: sessionRng.ordinal,
+        sessionDraws: Object.freeze({ ...sessionRng.draws }),
+        commits,
+        staleWrites,
+        leaseLosses,
+      });
+    },
+    get revision(): number { return revision; },
+    get extensions(): V5Extensions { return extensions; },
+    get sessionRng(): SessionRNGState { return copySessionRng(sessionRng); },
+  });
+}

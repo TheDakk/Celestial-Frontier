@@ -145,6 +145,16 @@ describe.sequential('portable species portrait graph', () => {
     expect(worker.match(/createSpeciesCanvas\(1, 1\)/g)).toHaveLength(14);
     const exportLine = worker.match(/export \{ ([^}]+) \};\s*$/)?.[1]?.split(', ').sort();
     expect(exportLine).toEqual([
+      'HD_PALS',
+      '_hdCamo',
+      '_hdFbm',
+      '_hdHash',
+      '_hdPlaceBeast',
+      '_hdPlantBare',
+      '_hdSm',
+      '_hdStampPlant',
+      'hdBeastBare',
+      'hdFloraBare',
       'hdPortraitFaunaCanvas',
       'hdPortraitFloraCanvas',
       'hdPortraitFungiCanvas',

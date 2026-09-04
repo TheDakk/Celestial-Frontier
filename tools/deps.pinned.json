@@ -9,11 +9,12 @@
     "tools/. So `npm install` on a clean clone silently leaves TWO of the nine suites",
     "unrunnable, and nothing said so until 2026-07-31.",
     "",
-    "Verified by `node tools/preflight.js`. This file is the single source for the pin;",
-    "preflight reads it rather than hard-coding anything."
+    "Verified by `node tools/preflight.js`. This file is the single source for package",
+    "versions and the root browser compatibility authority; preflight reads both here."
   ],
   "capturedAt": "2026-07-31",
   "capturedAgainst": "v1.8.9 (tag v1.8.9, commit 92098e9)",
+  "browserAuthorityUpdatedAt": "2026-08-27",
   "node": {
     "supported": "^20.19.0 || ^22.13.0 || >=24.0.0",
     "verifiedWith": "v26.5.1",
@@ -32,10 +33,12 @@
     "required": true,
     "_comment": [
       "NOT an npm package. A system binary, spawned headless and driven over CDP.",
-      "⚠ Addendum D: a layout gate whose thresholds were set on one browser revision",
-      "drifts on the next. uilayout.js compares against STORED numbers (787 checks /",
-      "10 viewports), so that result is only meaningful against a known revision.",
-      "TREAT A VERSION BUMP AS AN EXPLICIT RE-BASELINE, NOT A REGRESSION."
+      "Root uilayout seals the exact viewport/surface/outcome inventory and records complete",
+      "browser provenance; it does not use point version as its verdict identity.",
+      "A compatible Chromium-family update alone never rebaselines outcomes or moves a",
+      "threshold. Family, CDP protocol, required capabilities and provenance fail closed.",
+      "The exact Edge build used for v1.8.9 remains historical evidence only in",
+      "port/baseline-v1.8.9/environment.json."
     ],
     "usedBy": [
       "tools/uilayout.js",
@@ -43,13 +46,48 @@
     ],
     "engine": "Chromium-family, headless, CDP",
     "overrideEnv": "CF_BROWSER",
-    "pinned": {
-      "name": "Microsoft Edge",
-      "version": "150.0.4078.83",
-      "path": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe",
-      "platform": "Windows 11 Pro 10.0.26200",
-      "autoUpdates": true,
-      "_comment": "Edge auto-updates silently on Windows. Expect drift; preflight WARNS rather than fails, because a bump is a decision, not a defect."
+    "authority": {
+      "schema": "cf-root-browser-authority/v1",
+      "family": "Chromium-family",
+      "acceptedProducts": [
+        "Edg",
+        "Chrome",
+        "Chromium",
+        "HeadlessChrome"
+      ],
+      "cdpProtocolVersion": "1.3",
+      "requiredProvenance": [
+        "executable",
+        "product",
+        "revision",
+        "user_agent",
+        "js_version",
+        "protocol_version"
+      ],
+      "capabilityContract": {
+        "schema": "cf-root-browser-capabilities/v1",
+        "probe": "tools/browser-capability-probe.mjs",
+        "requiredMethods": [
+          "Browser.getVersion",
+          "Emulation.setCPUThrottlingRate",
+          "Emulation.setDeviceMetricsOverride",
+          "Emulation.setTouchEmulationEnabled",
+          "Page.addScriptToEvaluateOnNewDocument",
+          "Page.captureScreenshot",
+          "Page.enable",
+          "Page.navigate",
+          "Profiler.enable",
+          "Profiler.setSamplingInterval",
+          "Profiler.start",
+          "Profiler.stop",
+          "Runtime.enable",
+          "Runtime.evaluate",
+          "Target.attachToTarget",
+          "Target.closeTarget",
+          "Target.createTarget"
+        ]
+      },
+      "_comment": "Point version, revision, executable, JavaScript version and user agent are exact per-run provenance, never a compatibility key or automatic rebaseline trigger."
     },
     "resolutionOrder": [
       "$CF_BROWSER",
@@ -66,7 +104,7 @@
     "_resolutionNote": "This declared order mirrors port/v2/tools/browserpath.mjs. Preflight, uilayout and bootperf all invoke that one negative-controlled resolver; uilayout also consumes the shared browsercdp lifecycle, while bootperf lifecycle migration remains open."
   },
   "gatesRequiringBrowser": {
-    "uilayout": "PASS, 787 checks / 10 viewports (on the pinned revision)",
+    "uilayout": "PASS, 787 sealed viewport/surface/outcome checks / 10 viewports; exact browser provenance retained per run",
     "bootperf": "not re-run for v1.8.9; the v1.8.5 PASS stands"
   }
 }

@@ -19,11 +19,14 @@ import {
   systemFor,
 } from '@cf/domain-worldgen';
 import { GCELL, UCELL } from '@cf/domain-worldconfig';
+import { registerCF1WorldAddressAuthority } from '@cf/domain-worldidentity/mint-internal';
 
 const UINT32_MAX = 0xffff_ffff;
 const CF1_COORDINATE_SCALE = 100;
 const CF1_COORDINATE_LIMIT = 1e7;
 const PARENT_CELL_RADIUS = 1;
+export const CF1_WORLD_ATLAS_ID_MAX_CHARS = 192;
+export const CF1_WORLD_ATLAS_ID_PREFIX = 'w|' as const;
 
 declare const CF1_GALAXY_KEY_BRAND: unique symbol;
 declare const CF1_STAR_KEY_BRAND: unique symbol;
@@ -574,6 +577,58 @@ function worldKey(parent: CF1StarKey, planet: ResolvedPlanet): CF1WorldKey {
   return (parent + '|p:' + planet.seed + '#' + planet.ordinal) as CF1WorldKey;
 }
 
+const KEY_UINT = '(0|[1-9]\\d*)';
+const KEY_COORD = '(-?(?:0|[1-9]\\d*)(?:\\.\\d{1,2})?)';
+const WORLD_KEY_PATTERN = new RegExp(
+  `^CF1\\|g:${KEY_UINT}@${KEY_COORD},${KEY_COORD}`
+  + `\\|s:${KEY_UINT}@${KEY_COORD},${KEY_COORD}\\|p:${KEY_UINT}#${KEY_UINT}$`,
+);
+
+/** Re-prove one self-contained canonical world key against the current
+ * generators. The ordinal suffix is checked as well as every seed/coordinate,
+ * so two worlds which share a planet seed cannot alias during persistence. */
+export function resolveCF1WorldKey(value: unknown): ResolveCF1WorldAddressResult {
+  if (typeof value !== 'string'
+    || value.length > CF1_WORLD_ATLAS_ID_MAX_CHARS - CF1_WORLD_ATLAS_ID_PREFIX.length) {
+    return failure('malformed-address');
+  }
+  const match = WORLD_KEY_PATTERN.exec(value);
+  if (!match) return failure('malformed-address');
+  const [galaxySeed, galaxyX, galaxyY, starSeed, starX, starY, planetSeed, ordinal] =
+    match.slice(1).map(Number);
+  if (![galaxySeed, starSeed, planetSeed].every(isExactUint32)
+    || !Number.isSafeInteger(ordinal) || ordinal! < 0) return failure('malformed-address');
+  const resolved = resolveCF1WorldAddress({
+    galaxy: { seed: galaxySeed!, x: galaxyX!, y: galaxyY! },
+    star: { seed: starSeed!, x: starX!, y: starY! },
+    planet: { seed: planetSeed! },
+  });
+  if (!resolved.ok) return resolved;
+  return resolved.address.key === value && resolved.address.planet.ordinal === ordinal
+    ? resolved : failure('malformed-address');
+}
+
+/** Atlas rows remain in the v4 compatibility envelope, but their ids are no
+ * longer leaf-seed authority. Prefix the complete canonical key so colliding
+ * worlds remain separate while the historical `where` field stays readable. */
+export function canonicalCF1WorldAtlasId(address: unknown): string {
+  if (!isCanonicalCF1Address(address) || !('planet' in address)) {
+    throw new TypeError('Atlas world id requires a registered canonical CF1 world address');
+  }
+  const id = `${CF1_WORLD_ATLAS_ID_PREFIX}${address.key}`;
+  if (id.length > CF1_WORLD_ATLAS_ID_MAX_CHARS) {
+    throw new RangeError('canonical CF1 world Atlas id exceeds the supported v4 envelope');
+  }
+  return id;
+}
+
+export function resolveCF1WorldAtlasId(value: unknown): ResolveCF1WorldAddressResult {
+  if (typeof value !== 'string' || !value.startsWith(CF1_WORLD_ATLAS_ID_PREFIX)) {
+    return failure('malformed-address');
+  }
+  return resolveCF1WorldKey(value.slice(CF1_WORLD_ATLAS_ID_PREFIX.length));
+}
+
 function freezeCell(cell: CF1CanonicalCell): CF1CanonicalCell {
   return Object.freeze({ x: cell.x, y: cell.y });
 }
@@ -642,6 +697,7 @@ function registerAddress<T extends CanonicalCF1Address>(address: T): T {
   }
   CANONICAL_ADDRESSES.add(frozen);
   ADDRESS_KEYS.set(frozen, frozen.key);
+  if ('planet' in frozen) registerCF1WorldAddressAuthority(frozen);
   return frozen;
 }
 

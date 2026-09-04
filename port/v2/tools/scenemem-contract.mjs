@@ -11,7 +11,7 @@ export const SCENE_TEXTURE_KINDS = Object.freeze([
 ]);
 
 const PROFILES = Object.freeze(['phone', 'desktop']);
-const BUDGET_FIELDS = Object.freeze([
+const LEGACY_BUDGET_FIELDS = Object.freeze([
   'heapUsedBytesMax', 'embedderHeapUsedBytesMax', 'backingStorageBytesMax',
   'heapAggregateBytesMax', 'warmHeapAggregateRangeBytesMax',
   'warmHeapSlopeBytesPerCycleMax',
@@ -20,6 +20,25 @@ const BUDGET_FIELDS = Object.freeze([
   'managedTextureCountMax', 'managedTexturePixelsMax', 'localCanvasCacheEntriesMax',
   'peakLocalCanvasCacheEntriesMax', 'productRenderTargetsMax',
   'ringCacheEntriesMax', 'peakRingGeometryEntriesMax',
+  'targetElapsedMsMax', 'heartbeatElapsedMsMax',
+]);
+const SURFACE_VISTA_BUDGET_FIELDS = Object.freeze([
+  'surfaceVistaCacheEntriesMax', 'surfaceVistaCachePixelsMax',
+]);
+const RAW_BUDGET_FIELDS = Object.freeze([
+  ...LEGACY_BUDGET_FIELDS, ...SURFACE_VISTA_BUDGET_FIELDS,
+]);
+const CURRENT_BUDGET_FIELDS = Object.freeze([
+  'initialHeapUsedBytesMax', 'initialHeapAggregateBytesMax', 'heapUsedGrowthBytesMax',
+  'embedderHeapUsedBytesMax', 'backingStorageBytesMax',
+  'heapNormalizedWorkingSetBytesMax', 'warmHeapAggregateRangeBytesMax',
+  'warmHeapSlopeBytesPerCycleMax',
+  'documentsMax', 'nodesMax', 'jsEventListenersMax',
+  'peakActiveLeaseCountMax', 'peakLiveTextureCountMax', 'peakLiveCanvasBytesMax',
+  'managedTextureCountMax', 'managedTexturePixelsMax', 'localCanvasCacheEntriesMax',
+  'peakLocalCanvasCacheEntriesMax', 'productRenderTargetsMax',
+  'ringCacheEntriesMax', 'peakRingGeometryEntriesMax',
+  ...SURFACE_VISTA_BUDGET_FIELDS,
   'targetElapsedMsMax', 'heartbeatElapsedMsMax',
 ]);
 const MANAGED_RESOURCE_FIELDS = Object.freeze([
@@ -41,6 +60,26 @@ const SHIPYARD_WITNESS_FIELDS = Object.freeze([
 const CYCLE_INVENTORY_FIELDS = Object.freeze([
   'routes', 'shipyard', 'sceneObjectsByRoute', 'fine', 'surface',
 ]);
+const SURFACE_WITNESS_FIELDS = Object.freeze([
+  'mode', 'owner', 'scope',
+  'surfaceVistaWorkerActive', 'surfaceVistaMounted',
+  'surfaceVistaCacheEntries', 'surfaceVistaCachePixels',
+]);
+const VISTA_STATE_FIELDS = Object.freeze([
+  'surfaceVistaWorkerActive', 'surfaceVistaMounted',
+  'surfaceVistaCacheEntries', 'surfaceVistaCachePixels',
+]);
+const RELOAD_CLEANUP_FIELDS = Object.freeze([
+  'schema', 'documentTokenBefore', 'documentTokenAfter',
+  'release', 'cacheTransition', 'replacement',
+]);
+const RELOAD_RELEASE_FIELDS = Object.freeze([
+  'schema', 'status', 'error', 'reason', 'documentToken',
+  'rendererReleased', 'stageReleased', 'viewDetached',
+]);
+const CACHE_TRANSITION_FIELDS = Object.freeze([
+  'schema', 'documentToken', 'before', 'after',
+]);
 const object = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
 const count = (value) => Number.isSafeInteger(value) && value >= 0;
 const finite = (value) => Number.isFinite(value) && value >= 0;
@@ -53,13 +92,20 @@ function outcome(id, pass, message, details = undefined) {
   return Object.freeze({ id, pass, message, ...(details === undefined ? {} : { details }) });
 }
 
-function assertBudget(profile, budget) {
-  if (!exactKeys(budget, BUDGET_FIELDS)
-    || BUDGET_FIELDS.some((field) => !finite(budget[field]))) {
+function assertBudget(profile, budget, surfaceVistaRequired, sourceNormalizedRequired) {
+  const fields = sourceNormalizedRequired ? CURRENT_BUDGET_FIELDS
+    : surfaceVistaRequired ? RAW_BUDGET_FIELDS
+      : exactKeys(budget, RAW_BUDGET_FIELDS) ? RAW_BUDGET_FIELDS : LEGACY_BUDGET_FIELDS;
+  if (!exactKeys(budget, fields)
+    || fields.some((field) => !finite(budget[field]))) {
     throw new TypeError(`${profile} scene-memory budget is incomplete or invalid`);
   }
   if (budget.targetElapsedMsMax <= 0 || budget.heartbeatElapsedMsMax <= 0) {
     throw new TypeError(`${profile} answerability deadlines must be positive`);
+  }
+  if (surfaceVistaRequired && (budget.surfaceVistaCacheEntriesMax !== 1
+    || budget.surfaceVistaCachePixelsMax !== 412800)) {
+    throw new TypeError(`${profile} surface-vista semantic budget must remain exactly 1 entry / 412800 pixels`);
   }
 }
 
@@ -287,6 +333,10 @@ function liveSignature(point) {
     pending: point?.pending,
     ringCacheEntries: point?.ringCacheEntries,
     peakRingGeometryEntries: point?.peakRingGeometryEntries,
+    surfaceVistaWorkerActive: point?.surfaceVistaWorkerActive,
+    surfaceVistaMounted: point?.surfaceVistaMounted,
+    surfaceVistaCacheEntries: point?.surfaceVistaCacheEntries,
+    surfaceVistaCachePixels: point?.surfaceVistaCachePixels,
   };
 }
 
@@ -302,6 +352,7 @@ function warmSignature(cycle) {
       (route) => cycle?.inventory?.sceneObjectsByRoute?.[route],
     ),
     shipyard: cycle?.inventory?.shipyard,
+    surface: cycle?.inventory?.surface,
     documents: cycle?.dom?.documents,
     nodes: cycle?.dom?.nodes,
     jsEventListeners: cycle?.dom?.jsEventListeners,
@@ -415,6 +466,72 @@ function heapAggregate(point) {
   return heap.usedSize + heap.embedderHeapUsedSize + heap.backingStorageSize;
 }
 
+function heapDomBudgetReasons(pointsWithLabels, initial, budget, sourceNormalizedRequired) {
+  const reasons = [];
+  const check = (label, name, value, ceiling, valid) => {
+    if (!valid(value)) reasons.push(`${label}: ${name} is absent or invalid`);
+    else if (value > ceiling) reasons.push(`${label}: ${name} ${value} exceeded ceiling ${ceiling}`);
+  };
+  const heapCounter = (value) => finite(value) && value >= 0;
+  const domCounter = (value) => count(value) && value > 0;
+  const initialHeapUsed = initial?.heap?.usedSize;
+  if (sourceNormalizedRequired && !heapCounter(initialHeapUsed)) {
+    reasons.push('initial: V8 heap baseline is absent or invalid');
+  } else if (sourceNormalizedRequired) {
+    check('initial', 'V8 heap safety bytes', initialHeapUsed,
+      budget.initialHeapUsedBytesMax, heapCounter);
+    check('initial', 'embedder heap used bytes', initial.heap.embedderHeapUsedSize,
+      budget.embedderHeapUsedBytesMax, heapCounter);
+    check('initial', 'backing storage bytes', initial.heap.backingStorageSize,
+      budget.backingStorageBytesMax, heapCounter);
+    const initialAggregate = heapAggregate(initial);
+    check('initial', 'aggregate heap safety bytes', initialAggregate,
+      budget.initialHeapAggregateBytesMax, heapCounter);
+  }
+  for (const [label, point] of pointsWithLabels) {
+    const heap = point?.heap;
+    if (!object(heap)) {
+      reasons.push(`${label}: heap counters are absent or invalid`);
+    } else {
+      if (sourceNormalizedRequired) {
+        if (heapCounter(initialHeapUsed) && heapCounter(heap.usedSize)) {
+          const growth = Math.max(0, heap.usedSize - initialHeapUsed);
+          check(label, 'V8 heap growth bytes', growth,
+            budget.heapUsedGrowthBytesMax, heapCounter);
+          const normalizedWorkingSet = growth + heap.embedderHeapUsedSize
+            + heap.backingStorageSize;
+          check(label, 'normalized working-set bytes', normalizedWorkingSet,
+            budget.heapNormalizedWorkingSetBytesMax, heapCounter);
+        } else if (!heapCounter(heap.usedSize)) {
+          reasons.push(`${label}: V8 heap used bytes is absent or invalid`);
+        }
+      } else {
+        check(label, 'V8 heap used bytes', heap.usedSize, budget.heapUsedBytesMax, heapCounter);
+      }
+      check(label, 'embedder heap used bytes', heap.embedderHeapUsedSize,
+        budget.embedderHeapUsedBytesMax, heapCounter);
+      check(label, 'backing storage bytes', heap.backingStorageSize,
+        budget.backingStorageBytesMax, heapCounter);
+      if (!sourceNormalizedRequired) {
+        const aggregate = heapAggregate(point);
+        if (finite(aggregate) && aggregate > budget.heapAggregateBytesMax) {
+          reasons.push(`${label}: aggregate heap bytes ${aggregate} exceeded ceiling ${budget.heapAggregateBytesMax}`);
+        }
+      }
+    }
+    const dom = point?.dom;
+    if (!object(dom)) {
+      reasons.push(`${label}: DOM counters are absent or invalid`);
+    } else {
+      check(label, 'documents', dom.documents, budget.documentsMax, domCounter);
+      check(label, 'nodes', dom.nodes, budget.nodesMax, domCounter);
+      check(label, 'JS event listeners', dom.jsEventListeners,
+        budget.jsEventListenersMax, domCounter);
+    }
+  }
+  return reasons;
+}
+
 function leastSquaresSlope(values) {
   if (!Array.isArray(values) || values.length !== SCENE_MEMORY_CYCLE_COUNT
     || values.some((value) => !finite(value))) return Number.POSITIVE_INFINITY;
@@ -440,7 +557,7 @@ function maximumPositiveHeapSlope(cycles) {
   return Math.max(0, ...series.map(leastSquaresSlope));
 }
 
-function diagnosticResourceReasons(point, budget) {
+function diagnosticResourceReasons(point, budget, surfaceVistaRequired) {
   if (!object(point)) return ['resource point absent'];
   const reasons = [];
   for (const field of [
@@ -483,28 +600,158 @@ function diagnosticResourceReasons(point, budget) {
   if (point.shipyardPreviewActiveCount !== 0) reasons.push('settled Shipyard preview must be inactive');
   if (point.shipyardPreviewRetainedCount !== 0) reasons.push('settled Shipyard preview retained resources');
   if (point.shipyardPreviewPendingWork !== 0) reasons.push('settled Shipyard preview work remained');
+  if (surfaceVistaRequired) {
+    if (typeof point.surfaceVistaWorkerActive !== 'boolean') {
+      reasons.push('surface vista worker state invalid');
+    } else if (point.surfaceVistaWorkerActive) reasons.push('surface vista worker remained after ascent');
+    if (typeof point.surfaceVistaMounted !== 'boolean') {
+      reasons.push('surface vista mount state invalid');
+    } else if (point.surfaceVistaMounted) reasons.push('surface vista remained mounted after ascent');
+    if (!count(point.surfaceVistaCacheEntries)) reasons.push('surface vista cache entries invalid');
+    else if (point.surfaceVistaCacheEntries !== 1
+      || point.surfaceVistaCacheEntries > budget.surfaceVistaCacheEntriesMax) {
+      reasons.push('settled surface vista cache must retain exactly one bounded exercised entry');
+    }
+    if (!count(point.surfaceVistaCachePixels)) reasons.push('surface vista cache pixels invalid');
+    else if (point.surfaceVistaCachePixels === 0
+      || point.surfaceVistaCachePixels > budget.surfaceVistaCachePixelsMax) {
+      reasons.push('settled surface vista cache lacked a positive bounded exercise witness');
+    }
+  }
   return reasons;
 }
 
-function profileOutcomes(profile, measurement, budget) {
+function surfaceVistaStateReasons(value, budget, {
+  label, mounted, cacheEntries, cachePixelsPositive,
+}) {
+  if (!exactKeys(value, VISTA_STATE_FIELDS)) return [`${label}: state shape`];
+  const reasons = [];
+  if (typeof value.surfaceVistaWorkerActive !== 'boolean') reasons.push(`${label}: worker state invalid`);
+  else if (value.surfaceVistaWorkerActive) reasons.push(`${label}: worker remained active`);
+  if (typeof value.surfaceVistaMounted !== 'boolean') reasons.push(`${label}: mount state invalid`);
+  else if (value.surfaceVistaMounted !== mounted) reasons.push(`${label}: mount state`);
+  if (!count(value.surfaceVistaCacheEntries)) reasons.push(`${label}: cache entries invalid`);
+  else if (value.surfaceVistaCacheEntries !== cacheEntries
+    || value.surfaceVistaCacheEntries > budget.surfaceVistaCacheEntriesMax) {
+    reasons.push(`${label}: cache entries`);
+  }
+  if (!count(value.surfaceVistaCachePixels)) reasons.push(`${label}: cache pixels invalid`);
+  else if ((cachePixelsPositive && value.surfaceVistaCachePixels === 0)
+    || (!cachePixelsPositive && value.surfaceVistaCachePixels !== 0)
+    || value.surfaceVistaCachePixels > budget.surfaceVistaCachePixelsMax) {
+    reasons.push(`${label}: cache pixels`);
+  }
+  return reasons;
+}
+
+function surfaceVistaLifecycleReasons(pointsWithLabels, cycles, reloadCleanup, budget) {
+  const reasons = [];
+  for (const [label, point] of pointsWithLabels) {
+    const state = Object.fromEntries(VISTA_STATE_FIELDS.map((field) => [field, point?.[field]]));
+    reasons.push(...surfaceVistaStateReasons(state, budget, {
+      label, mounted: false, cacheEntries: 1, cachePixelsPositive: true,
+    }));
+  }
+  for (const [index, cycle] of cycles.entries()) {
+    const surface = cycle?.inventory?.surface;
+    if (!exactKeys(surface, SURFACE_WITNESS_FIELDS)) {
+      reasons.push(`cycle ${index + 1} surface: witness shape`);
+      continue;
+    }
+    if (surface.mode !== true || surface.owner !== true || surface.scope !== true) {
+      reasons.push(`cycle ${index + 1} surface: route owners`);
+    }
+    const state = Object.fromEntries(VISTA_STATE_FIELDS.map((field) => [field, surface[field]]));
+    reasons.push(...surfaceVistaStateReasons(state, budget, {
+      label: `cycle ${index + 1} surface`, mounted: true,
+      cacheEntries: 1, cachePixelsPositive: true,
+    }));
+  }
+  if (!exactKeys(reloadCleanup, RELOAD_CLEANUP_FIELDS)) {
+    reasons.push('reload cleanup: witness shape');
+    return reasons;
+  }
+  if (reloadCleanup.schema !== 'cf-v2-scene-memory-reload-cleanup/v1') {
+    reasons.push('reload cleanup: schema');
+  }
+  const lastToken = cycles.at(-1)?.documentToken;
+  if (!nonempty(reloadCleanup.documentTokenBefore)
+    || reloadCleanup.documentTokenBefore !== lastToken) reasons.push('reload cleanup: prior document token');
+  if (!nonempty(reloadCleanup.documentTokenAfter)
+    || reloadCleanup.documentTokenAfter === reloadCleanup.documentTokenBefore) {
+    reasons.push('reload cleanup: replacement document token');
+  }
+  const release = reloadCleanup.release;
+  if (!exactKeys(release, RELOAD_RELEASE_FIELDS)
+    || release.schema !== 'cf-v2-reload-release/v1'
+    || release.status !== 'released' || release.error !== null
+    || release.reason !== 'save-import'
+    || release.documentToken !== reloadCleanup.documentTokenBefore
+    || release.rendererReleased !== true || release.stageReleased !== true
+    || release.viewDetached !== true) reasons.push('reload cleanup: release witness');
+  const transition = reloadCleanup.cacheTransition;
+  if (!exactKeys(transition, CACHE_TRANSITION_FIELDS)
+    || transition.schema !== 'cf-v2-scene-memory-vista-cache-transition/v1'
+    || transition.documentToken !== reloadCleanup.documentTokenBefore) {
+    reasons.push('reload cleanup: cache transition identity');
+  } else {
+    reasons.push(...surfaceVistaStateReasons(transition.before, budget, {
+      label: 'reload cleanup before', mounted: false,
+      cacheEntries: 1, cachePixelsPositive: true,
+    }));
+    reasons.push(...surfaceVistaStateReasons(transition.after, budget, {
+      label: 'reload cleanup after', mounted: false,
+      cacheEntries: 0, cachePixelsPositive: false,
+    }));
+  }
+  const replacement = reloadCleanup.replacement;
+  if (!object(replacement) || replacement.documentToken !== reloadCleanup.documentTokenAfter) {
+    reasons.push('reload cleanup: replacement identity');
+  } else {
+    const replacementState = Object.fromEntries(
+      VISTA_STATE_FIELDS.map((field) => [field, replacement[field]]),
+    );
+    reasons.push(...surfaceVistaStateReasons(replacementState, budget, {
+      label: 'reload cleanup replacement', mounted: false,
+      cacheEntries: 0, cachePixelsPositive: false,
+    }));
+  }
+  return reasons;
+}
+
+function profileOutcomes(
+  profile, measurement, budget, surfaceVistaRequired, sourceNormalizedRequired,
+) {
   const out = [];
   const precondition = measurement?.precondition;
+  const initial = measurement?.initial;
   const cycles = Array.isArray(measurement?.cycles) ? measurement.cycles : [];
   const bfcache = measurement?.bfcache;
   const preconditionOk = object(precondition) && count(precondition.sceneGeneration)
     && nonempty(precondition.documentToken)
+    && (!sourceNormalizedRequired || (exactKeys(initial, ['documentToken', 'heap'])
+      && exactKeys(initial.heap, [
+        'usedSize', 'embedderHeapUsedSize', 'backingStorageSize',
+      ])
+      && initial.documentToken === precondition.documentToken))
     && precondition.registry?.observationWindow === 0
     && cycles.length === SCENE_MEMORY_CYCLE_COUNT
     && cycles.every((cycle) => cycle?.documentToken === precondition.documentToken);
   out.push(outcome(`${profile}/measurement-precondition`, preconditionOk,
     preconditionOk
-      ? 'explicit window-zero precondition and stable document present'
-      : 'precondition was absent, not reset, or changed documents'));
+      ? (sourceNormalizedRequired
+        ? 'explicit window-zero precondition and source-normalized initial document agree'
+        : 'explicit window-zero precondition and stable document present')
+      : (sourceNormalizedRequired
+        ? 'precondition/initial baseline was absent, not reset, or changed documents'
+        : 'precondition was absent, not reset, or changed documents')));
 
   const complete = cycles.length === SCENE_MEMORY_CYCLE_COUNT
     && cycles.every((cycle, index) => cycle?.cycle === index + 1
       && exactKeys(cycle?.inventory, CYCLE_INVENTORY_FIELDS)
-      && same(cycle?.inventory?.routes, SCENE_MEMORY_ROUTES));
+      && same(cycle?.inventory?.routes, SCENE_MEMORY_ROUTES)
+      && (!surfaceVistaRequired
+        || exactKeys(cycle?.inventory?.surface, SURFACE_WITNESS_FIELDS)));
   out.push(outcome(`${profile}/cycle-inventory`, complete,
     complete ? 'four ordered route inventories present' : 'expected four exact travel inventories'));
 
@@ -582,7 +829,7 @@ function profileOutcomes(profile, measurement, budget) {
       ? 'precondition and all four measured cycles share one managed-resource inventory'
       : 'settled Pixi managed-resource inventory drifted'));
   const diagnosticResources = pointsWithLabels.flatMap(([label, point]) =>
-    diagnosticResourceReasons(point, budget).map((reason) =>
+    diagnosticResourceReasons(point, budget, surfaceVistaRequired).map((reason) =>
       `${label}: ${reason}`));
   out.push(outcome(`${profile}/diagnostic-resource-budget`, diagnosticResources.length === 0,
     diagnosticResources.length
@@ -598,6 +845,30 @@ function profileOutcomes(profile, measurement, budget) {
     ringBound
       ? 'settled ring cache was empty with a positive bounded Sol-route peak'
       : 'ring cache was not evicted or lacked a positive bounded Sol-route peak'));
+
+  if (surfaceVistaRequired) {
+    const initialReasons = surfaceVistaStateReasons(measurement?.initialVista, budget, {
+      label: 'initial universe', mounted: false,
+      cacheEntries: 0, cachePixelsPositive: false,
+    });
+    const firstSurfaceReasons = surfaceVistaStateReasons(
+      measurement?.firstSurfaceVista, budget, {
+        label: 'first surface', mounted: true,
+        cacheEntries: 1, cachePixelsPositive: true,
+      },
+    );
+    const vistaReasons = [
+      ...initialReasons,
+      ...firstSurfaceReasons,
+      ...surfaceVistaLifecycleReasons(
+        pointsWithLabels, cycles, measurement?.reloadCleanup, budget,
+      ),
+    ];
+    out.push(outcome(`${profile}/surface-vista-lifecycle`, vistaReasons.length === 0,
+      vistaReasons.length
+        ? vistaReasons.join('; ')
+        : 'surface vista exercised one bounded cache entry, released ascent owners, and cleared before replacement'));
+  }
 
   const consistent = cycles.length === SCENE_MEMORY_CYCLE_COUNT && cycles.every((cycle) => {
     const fine = cycle?.inventory?.fine;
@@ -629,23 +900,13 @@ function profileOutcomes(profile, measurement, budget) {
   out.push(outcome(`${profile}/answerability`, answerable.length === 0,
     answerable.length ? answerable.join('; ') : 'target and browser heartbeat answered'));
 
-  const heaps = allPoints.map(heapAggregate);
-  const domValid = allPoints.every((point) => object(point?.dom)
-    && count(point.dom.documents) && point.dom.documents > 0
-    && count(point.dom.nodes) && point.dom.nodes > 0
-    && count(point.dom.jsEventListeners) && point.dom.jsEventListeners > 0);
-  const heapDom = heaps.every((aggregate, index) => {
-    const heap = allPoints[index]?.heap;
-    const dom = allPoints[index]?.dom;
-    return aggregate <= budget.heapAggregateBytesMax
-      && heap?.usedSize <= budget.heapUsedBytesMax
-      && heap?.embedderHeapUsedSize <= budget.embedderHeapUsedBytesMax
-      && heap?.backingStorageSize <= budget.backingStorageBytesMax
-      && dom?.documents <= budget.documentsMax && dom?.nodes <= budget.nodesMax
-      && dom?.jsEventListeners <= budget.jsEventListenersMax;
-  }) && domValid;
-  out.push(outcome(`${profile}/heap-dom-budget`, heapDom,
-    heapDom ? 'heap and DOM counters stayed within supplied ceilings' : 'heap or DOM ceiling was exceeded'));
+  const heapDomReasons = heapDomBudgetReasons(
+    pointsWithLabels, measurement?.initial, budget, sourceNormalizedRequired,
+  );
+  out.push(outcome(`${profile}/heap-dom-budget`, heapDomReasons.length === 0,
+    heapDomReasons.length
+      ? heapDomReasons.join('; ')
+      : 'heap and DOM counters stayed within supplied ceilings'));
 
   const warmHeaps = cycles.map(heapAggregate);
   const warmHeapRange = warmHeaps.length === SCENE_MEMORY_CYCLE_COUNT
@@ -678,18 +939,32 @@ function profileOutcomes(profile, measurement, budget) {
 }
 
 export function evaluateSceneMemory(input) {
-  if (!object(input) || input.schema !== 'cf-v2-scene-memory-input/v3'
+  const fixedEighthRequired = input?.schema === 'cf-v2-scene-memory-input/v6';
+  const sourceNormalizedRequired = fixedEighthRequired
+    || input?.schema === 'cf-v2-scene-memory-input/v5';
+  const surfaceVistaRequired = sourceNormalizedRequired
+    || input?.schema === 'cf-v2-scene-memory-input/v4';
+  if (!object(input)
+    || (!surfaceVistaRequired && input.schema !== 'cf-v2-scene-memory-input/v3')
     || !exactKeys(input.profiles, PROFILES) || !exactKeys(input.budgets, PROFILES)) {
     throw new TypeError('scene-memory input requires exact phone and desktop profiles/budgets');
   }
   const outcomes = [];
   for (const profile of PROFILES) {
-    assertBudget(profile, input.budgets[profile]);
-    outcomes.push(...profileOutcomes(profile, input.profiles[profile], input.budgets[profile]));
+    assertBudget(
+      profile, input.budgets[profile], surfaceVistaRequired, sourceNormalizedRequired,
+    );
+    outcomes.push(...profileOutcomes(
+      profile, input.profiles[profile], input.budgets[profile], surfaceVistaRequired,
+      sourceNormalizedRequired,
+    ));
   }
   const failures = outcomes.filter((entry) => !entry.pass);
   return Object.freeze({
-    schema: 'cf-v2-scene-memory-verdict/v2',
+    schema: fixedEighthRequired ? 'cf-v2-scene-memory-verdict/v5'
+      : sourceNormalizedRequired ? 'cf-v2-scene-memory-verdict/v4'
+      : surfaceVistaRequired ? 'cf-v2-scene-memory-verdict/v3'
+        : 'cf-v2-scene-memory-verdict/v2',
     status: failures.length === 0 ? 'pass' : 'fail',
     outcomes: Object.freeze(outcomes),
     failures: Object.freeze(failures),

@@ -3,6 +3,7 @@ main.js
 tools/probe-build.html
 tools/current.json
 tools/uilayout-report.json
+tools/uilayout-*.json
 work/
 extracted/
 files.zip

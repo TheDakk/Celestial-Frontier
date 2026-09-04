@@ -7,6 +7,8 @@
   "include": [
     "src/species-art.worker.ts",
     "src/species-art-protocol.ts",
-    "src/species-art-worker-core.ts"
+    "src/species-art-worker-core.ts",
+    "src/biome-vista.worker.ts",
+    "src/biome-vista-protocol.ts"
   ]
 }

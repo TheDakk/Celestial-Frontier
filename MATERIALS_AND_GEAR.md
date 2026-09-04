@@ -12,12 +12,102 @@ now owns the separate four-stage static inspection foundation described below. *
 `resolvedDepositTier`, grounded cards grade each vein for that world; the §24 power-curve pass ran — archetype
 band restored via the balance sim, two dead relics retuned as sidegrades, sim joined the deploy gate.)*
 **Build phase:** the legacy Forge economy and additive ship image are bundled in v1.8.9;
-the current v2 read-only ship presentation is recorded below. V2 Cargo/Inventory/Forge writers,
-Research, Fabrication and upgrade actions remain open.
-**Current v2 overlay matches code as of:** 2026-08-23.
+the current v2 exact-instance Inventory and Arc 3 Engineering actions are recorded below.
+Authored variable crafting, new loot-occurrence tables, upgrades/sockets and later economy depth remain open.
+**Current v2 overlay matches code as of:** 2026-08-29.
 **Related:** `RARITY_UNIVERSAL.md`, `FORGE_AND_DISCOVERY.md`, `ECONOMY_LOOT_CRAFTING.md`.
 
-> **2026-08-22 Arc 1C v2 materials/gear boundary — current implementation:** clean
+> **2026-08-29 current Pureforged overlay:** eligible fixed slotted recipes now remain
+> actionable when every direct material unit is paid from exceptional stock. Exceptional units are
+> spent first, and an all-exceptional direct-material bill deterministically binds one namespaced
+> `exceptional-v1` modifier to the exact fixed-recipe authority, receipt, generation seed, and
+> `GearInstance`; mixed or ordinary payment creates the unchanged ordinary item. Policy v1 rolls
+> only the three effects with current gameplay consumers—mining yield, rich-strike chance, or
+> capture-contact points—using their existing legacy magnitude ranges. Effects whose gameplay
+> systems are not connected cannot consume exceptional stock as a decorative bonus.
+> **Pureforged** is the current v2 player-facing name; the stable `exceptional-v1` identifier and
+> exceptional-material provenance remain internal compatibility facts rather than displayed gear tiers.
+> The exact-item Inventory inspector labels the axis **Pureforged modifier**, presents its friendly
+> effect and magnitude, and does not expose the internal identifier as the gear's name.
+>
+> The strict Arc 2 codec, F3/F4 transaction, exact-item comparison/search, capability projection,
+> reload, duplicate-receipt refusal, and Slice/Glass evidence oracles preserve and replay that same
+> modifier. Authored natural prefix/suffix pools, drawbacks, upgrades, sockets, vendors, random
+> drop occurrence, and broader variable-crafting policy remain open. The historical Arc 2/3
+> boundaries below describe what was unavailable at those checkpoints and are superseded only for
+> this narrow fully exceptional fixed-gear path.
+
+> **2026-08-29 Arc 6 conquest-affix decision ledger:** the exact mature oracle is implemented and
+> tested as evidence: canonical worn-slot order, 40% `0x5901` gate, `0x5902` selection,
+> planet/tier-seeded six-effect roll, and legacy `replace-slot-bound-affix`. What is **not** decided
+> is how that post-construction, role-less replacement coexists with a v2 `GearInstance`'s natural
+> prefix/suffix and optional Pureforged crafted modifier, or which axis its gameplay consumers read.
+> Legacy had only one slot/base-bound affix, so mapping it to a prefix, suffix, crafted modifier or
+> additive stack would invent semantics. Arc 6 therefore leaves a gated conquest imbue as an
+> explicit pre-CAS refusal. Closure requires one authored coexistence/effect/projection rule plus
+> replacement, duplicate, reload and natural/crafted-conflict controls; numeric gate/roll tuning is
+> not open.
+
+> **2026-08-27 current Deep-Scanner correction:** the exact eligible scanned, registered lifeless
+> non-Earth world now exposes one passive **Mineral veins** Survey row after owned `scan1`. It lists
+> ordinary deposits in canonical order plus the optional biome-only vein, grants nothing and
+> withholds cosmic/exceptional veins, grade, reserves, progress and Mine controls. The Arc 3
+> paragraph below remains the historical implementation boundary before that consumer landed.
+
+> **2026-08-24 Arc 3 Engineering boundary — historical local implementation:** the former read-only
+> Shipyard is now the **Engineering & Shipyard** panel. It preserves the four-stage static ship
+> projection and adds truthful current-world mining, current-star skimming, six research rows and
+> all 62 fixed recipes grouped by output family. Only Deep Scanners is purchasable among the six
+> research rows. Its pure orbital-reveal policy existed, but that checkpoint's Survey surface did
+> not render orbital mineral rows. Only recipe outputs with a connected live effect, exact costs/
+> preconditions and capacity/revision headroom are actionable; fully exceptional slotted outputs
+> and disconnected-effect rows remain unavailable. Mine, Skim, the eligible Deep-Scanner purchase
+> and eligible fixed Fabrication are durable F3/F4 actions; the same transaction updates Cargo/
+> items/technology, Arc 2/3 carriers, ship/reach compatibility, Charter progress where applicable,
+> immutable receipt and revision. One coordinator prevents overlapping Engineering/Inventory work,
+> and UI state publishes only after durability.
+>
+> This is not authored random loot or unrestricted crafting. Recipe effects without a live
+> consumer remain labelled unavailable; natural-affix compatibility, variable modifiers/drawbacks,
+> upgrades, sockets, vendors and full source-to-upgrade pacing remain open.
+
+> **2026-08-24 Arc 2 v2 materials/gear boundary — current local implementation:**
+> `@cf/domain-loot` now owns the exact v1.8.9 62-definition catalogue: 9 parts, 6 components,
+> 5 permanent ship systems, and 42 slotted gear/relic bases across 9 slots, including the 9
+> Signature Relics. It also owns all 47 material ids, all 6 literal legacy affix definitions and
+> magnitude math, exact fixed recipes/prerequisites/Signatures, graph/cycle/salvage audits, and the
+> two legacy earned-imbue paths as pure compatibility evidence. A legacy role-less worn affix is
+> never relabelled as an authored prefix or suffix.
+>
+> Each migrated slotted copy becomes one bounded, versioned `GearInstance` with stable
+> `instanceId`, construction, exact base/slot/effects, inherited legacy affix, source-action
+> provenance, generation seed/ordinal, protection state and equipped binding. The strict
+> `inventory/arc2.loot` v1 carrier holds `GearInventory` plus stackable counts. Migration is
+> all-or-nothing: capacity or extension-byte overflow produces a lossless `legacy-protected`
+> inspection carrier; corrupt, future, unknown, partial, or over-bounds evidence cannot become a
+> writable prefix. The v4 `items` / `equip` / `equipAff` values are now a compatibility mirror of
+> this carrier, including legacy Field Training replacement.
+>
+> The real v2 Inventory presents bounded 48-row pages, slot/rarity/status/text filters, one
+> focus-owned exact-item detail, conditional effect wording, provenance, and candidate-versus-
+> equipped deltas without a synthetic power score. Equip, Unequip, Salvage and pending-claim settle
+> through one F3/F4 revision/lease/receipt transaction; these deterministic actions reserve the
+> global receipt ordinal without consuming a SessionRNG domain draw. Salvage preserves the direct-
+> material legacy rule and explicit equipped/locked/favorite safeguards. The UI publishes only
+> after durability and reload-converges without a second write after a post-commit publication fault.
+>
+> This was **not** the complete Forge or finished loot policy at the Arc 2 boundary. Fixed recipes
+> were inspectable while the source-neutral economy ledger reported sources/rates as
+> `arc3-deferred`; Arc 3's later current overlay above now owns live Mine/Skim, the eligible Deep-
+> Scanner purchase and eligible fixed-Fabrication actions. New loot occurrence/table policy, authored natural-affix
+> compatibility, crafted modifiers/drawbacks, upgrades, sockets, vendor/bulk actions, pacing/recovery,
+> and bespoke v2 Inventory portraits remain open. For the recorded pre-current-WIP Arc 2 candidate,
+> focused tests, one no-retry real Slice Smoke and one Glass Matrix were green on Edge
+> `151.0.4129.101`; they do not certify the current moving working tree. HUMAN item/compare/art review,
+> the end-of-campaign Compendium measurement reseal, hosted/integration evidence, release and
+> deployment remain open.
+
+> **2026-08-22 Arc 1C v2 materials/gear boundary — historical pre-Arc-2 implementation:** clean
 > product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds only the read-only ship
 > inspection projection. Pure, recursively frozen `ShipVisualState` consumes normalized `items`,
 > `ascCh`, and livery seed `0x5111`; `ascStageOf` remains the one capability-stage authority.
@@ -47,7 +137,7 @@ Research, Fabrication and upgrade actions remain open.
 > `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
 > `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
 > is unchanged. This documentation descendant is not the exact certified head. Hosted
-> terminal-green integration, HUMAN silhouette judgment, Cargo/Inventory/Forge,
+> terminal-green integration, HUMAN silhouette judgment, Cargo/Forge,
 > Research/Fabrication/upgrades, release and deployment remain open.
 
 > **2026-08-13 v2 next-arc overlay — historical pre-Arc-1C boundary:** V2
@@ -415,6 +505,11 @@ Rules:
 > `_ITEM_KIND`), matching the Materials layout. The Gear tab keeps its Equipment header + Salvage All. All fp-safe
 > (presentation only). Guarded by smoke §21 sentinels.
 
+> **Current v2 distinction (2026-08-24):** the Arc 2 Inventory implements only exact slotted-gear
+> ownership and actions. It does not pretend that the legacy three-tab Cargo/Fabricator surface has
+> ported. Stackable catalogue outputs remain versioned counts inside the Arc 2 carrier; world
+> materials and production crafting stay with the later engineering writer.
+
 ## 22. Art direction — FULL BESPOKE (Nick, 2026-07-23, LOCKED)
 
 Every material, every gear piece, and every ship tier is **hand-drawn painterly art at the same HD bar as
@@ -515,6 +610,12 @@ remembered-fold preference per group-type across worlds, creatures, and items. E
 6. **Sockets / links / upgrade** rows — kept **OPEN**. (Only the affix list folds; nothing else does.)
 7. **Requirements** (station tier, tech) if any.
 8. italic **flavor text** at the bottom.
+
+> **Current v2 distinction (2026-08-24):** the exact-item detail/compare sheet now implements the
+> truthful subset it can source—base, level, quality, rarity, exact base/legacy effects, conditional
+> context, provenance, equipped binding, and action controls. Crafted-modifier/drawback, upgrades,
+> sockets, authored roll ranges and bespoke ornamental frames remain unavailable until their named
+> policy/art owners land; the sheet does not fabricate empty rows as capability.
 
 **Frame:** a per-tier ornamental **frame around the whole window** (the ladder's normal/magic/rare/unique-
 equivalent borders, `[[rarity_universal]]` §3.11), readable without color (a11y).

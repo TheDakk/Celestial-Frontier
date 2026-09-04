@@ -166,8 +166,23 @@ export interface SpeciesArtBrokerDiagnosticsV1 {
   }>;
 }
 
+export interface SpeciesArtUnownedCacheReleaseV1 {
+  readonly schema: 'cf-v2-species-art-unowned-cache-release/v1';
+  readonly releasedThumbEntries: number;
+  readonly releasedPortraitEntries: number;
+  readonly releasedEntries: number;
+}
+
+export interface SpeciesArtUnownedCacheReleaseOptions {
+  /** Preserve this many most-recent unleased thumbnails as a bounded warm
+   * route cache. Owned thumbnails are always preserved independently. */
+  readonly retainRecentThumbEntries?: number;
+}
+
 export interface SpeciesArtBrokerOptions {
   readonly createProducer: SpeciesArtProducerFactory;
+  /** Releases any external URL/resource owned by a settled cached asset. */
+  readonly disposeAsset?: ((asset: SpeciesArtAsset) => void) | undefined;
   readonly getDeviceClass?: (() => SpeciesArtDeviceClass) | undefined;
   readonly scheduleTask?: SpeciesArtTaskScheduler | undefined;
 }
@@ -300,6 +315,9 @@ export class SpeciesArtBroker {
   constructor(private readonly options: SpeciesArtBrokerOptions) {
     if (typeof options.createProducer !== 'function') {
       throw new TypeError('species art producer factory must be callable');
+    }
+    if (options.disposeAsset !== undefined && typeof options.disposeAsset !== 'function') {
+      throw new TypeError('species art asset disposer must be callable');
     }
     this.scheduleTask = options.scheduleTask ?? defaultScheduleTask;
     if (typeof this.scheduleTask !== 'function') {
@@ -442,6 +460,41 @@ export class SpeciesArtBroker {
   refreshDeviceClass(): void {
     this.trimCaches();
     this.trimQueue();
+  }
+
+  /** Releases cache-only art without disturbing a live lease or request. */
+  releaseUnownedCachedArt(
+    options: SpeciesArtUnownedCacheReleaseOptions = {},
+  ): SpeciesArtUnownedCacheReleaseV1 {
+    const requestedRetention = options.retainRecentThumbEntries ?? 0;
+    if (!Number.isSafeInteger(requestedRetention) || requestedRetention < 0) {
+      throw new RangeError('recent species thumbnail retention must be a non-negative safe integer');
+    }
+    const retainRecentThumbEntries = Math.min(
+      requestedRetention,
+      this.limits().thumbCacheEntries,
+    );
+    let releasedThumbEntries = 0;
+    let releasedPortraitEntries = 0;
+    const unownedThumbKeys = [...this.thumbCache.keys()]
+      .filter((key) => !this.thumbKeyIsLeased(key));
+    const releaseThumbCount = Math.max(0, unownedThumbKeys.length - retainRecentThumbEntries);
+    for (const key of unownedThumbKeys.slice(0, releaseThumbCount)) {
+      if (this.disposeThumbCache(key)) {
+        releasedThumbEntries++;
+      }
+    }
+    for (const key of [...this.portraitCache.keys()]) {
+      if (!this.portraitKeyIsOwned(key) && this.disposePortraitCache(key)) {
+        releasedPortraitEntries++;
+      }
+    }
+    return Object.freeze({
+      schema: 'cf-v2-species-art-unowned-cache-release/v1' as const,
+      releasedThumbEntries,
+      releasedPortraitEntries,
+      releasedEntries: releasedThumbEntries + releasedPortraitEntries,
+    });
   }
 
   failNextJobForTest(message = 'injected species art producer failure'): void {
@@ -780,6 +833,7 @@ export class SpeciesArtBroker {
       port = this.options.createProducer(Object.freeze({
         result: (result: SpeciesArtProducerResult): void => {
           if (generation === this.producerGeneration) this.handleProducerResult(result);
+          else this.disposeSuccessfulResultAsset(result);
         },
         fatal: (error: unknown): void => { this.handleProducerFatal(generation, error); },
       }));
@@ -804,6 +858,7 @@ export class SpeciesArtBroker {
     if (!job || job.jobId === null
       || !result || (result.status !== 'success' && result.status !== 'error')
       || result.jobId !== job.jobId || result.kind !== job.kind || result.key !== job.key) {
+      this.disposeSuccessfulResultAsset(result);
       this.totals0.protocolErrors++;
       this.handleProducerFatal(this.producerGeneration, new Error('species art producer result did not match the active job'));
       return;
@@ -814,6 +869,7 @@ export class SpeciesArtBroker {
     }
     const asset = this.validateAsset(job, result.asset);
     if (!asset) {
+      this.disposeAsset(result.asset);
       this.totals0.protocolErrors++;
       this.handleProducerFatal(this.producerGeneration, new Error('species art producer returned an invalid asset'));
       return;
@@ -823,9 +879,12 @@ export class SpeciesArtBroker {
 
   private validateAsset(job: BrokerJob, candidate: SpeciesArtAsset): SpeciesArtAsset | null {
     const expected = job.kind === 'thumb132' ? THUMB_SIZE : PORTRAIT_SIZE;
+    const validUrl = typeof candidate?.url === 'string'
+      && ((candidate.url.startsWith('data:image/png;base64,')
+          && candidate.url.length > 'data:image/png;base64,'.length)
+        || (candidate.url.startsWith('blob:') && candidate.url.length > 'blob:'.length));
     if (!candidate || candidate.key !== job.key || candidate.width !== expected || candidate.height !== expected
-      || typeof candidate.url !== 'string' || !candidate.url.startsWith('data:image/png;base64,')
-      || candidate.url.length <= 'data:image/png;base64,'.length
+      || !validUrl
       || !Number.isSafeInteger(candidate.encodedBytes) || candidate.encodedBytes <= 0
       || candidate.decodedPixels !== expected * expected) return null;
     return job.kind === 'thumb132'
@@ -858,6 +917,7 @@ export class SpeciesArtBroker {
     else this.totals0.portraitJobCompletes++;
     if (!this.jobHasConsumers(job)) {
       this.totals0.droppedResults++;
+      this.disposeAsset(assetValue);
       job.thumbLeases.clear();
       job.portraitRequests.clear();
       this.continueOrReleaseProducer();
@@ -865,7 +925,9 @@ export class SpeciesArtBroker {
     }
     if (job.kind === 'thumb132') {
       const asset = assetValue as Thumb132;
-      if (!this.cacheThumb(asset)) {
+      const cachedAsset = this.cacheThumb(asset);
+      if (cachedAsset === null) {
+        this.disposeAsset(asset);
         this.settleCompletedJobError(job, new Error('species thumbnail resource budget is exhausted'));
         return;
       }
@@ -874,14 +936,16 @@ export class SpeciesArtBroker {
       for (const lease of leases) {
         lease.job = null;
         if (lease.released) continue;
-        lease.asset = asset;
+        lease.asset = cachedAsset;
         lease.error = null;
         lease.settled = true;
         this.deliverThumb(lease);
       }
     } else {
       const asset = assetValue as Portrait440;
-      if (!this.cachePortrait(asset)) {
+      const cachedAsset = this.cachePortrait(asset);
+      if (cachedAsset === null) {
+        this.disposeAsset(asset);
         this.settleCompletedJobError(job, new Error('species portrait resource budget is exhausted'));
         return;
       }
@@ -891,9 +955,9 @@ export class SpeciesArtBroker {
         request.job = null;
         if (this.portraitOwners.get(request.owner) === request) this.portraitOwners.delete(request.owner);
         if (request.cancelled) continue;
-        request.asset = asset;
+        request.asset = cachedAsset;
         request.settled = true;
-        this.notifyPortrait(request, asset, null);
+        this.notifyPortrait(request, cachedAsset, null);
       }
     }
     this.continueOrReleaseProducer();
@@ -1003,12 +1067,19 @@ export class SpeciesArtBroker {
     for (const lease of this.thumbLeases) if (!lease.released && lease.key === key) return true;
     return false;
   }
+  private portraitKeyIsOwned(key: SpeciesVisualKey): boolean {
+    for (const request of this.portraitOwners.values()) {
+      if (!request.cancelled && !request.settled && request.key === key) return true;
+    }
+    return false;
+  }
   private disposeThumbCache(key: SpeciesVisualKey): boolean {
     const asset = this.thumbCache.get(key);
     if (!asset) return false;
     this.thumbCache.delete(key);
     this.thumbEncodedBytes -= asset.encodedBytes;
     this.totals0.cacheDisposals++;
+    this.disposeAsset(asset);
     return true;
   }
   private disposePortraitCache(key: SpeciesVisualKey): boolean {
@@ -1017,13 +1088,24 @@ export class SpeciesArtBroker {
     this.portraitCache.delete(key);
     this.portraitEncodedBytes -= asset.encodedBytes;
     this.totals0.cacheDisposals++;
+    this.disposeAsset(asset);
     return true;
   }
-  private cacheThumb(asset: Thumb132): boolean {
+  private disposeAsset(asset: SpeciesArtAsset): void {
+    try { this.options.disposeAsset?.(asset); } catch { /* ownership is already revoked */ }
+  }
+  private disposeSuccessfulResultAsset(result: SpeciesArtProducerResult): void {
+    if (result?.status === 'success') this.disposeAsset(result.asset);
+  }
+  private cacheThumb(asset: Thumb132): Thumb132 | null {
     const existing = this.thumbCache.get(asset.key);
-    if (existing) { this.touchThumb(asset.key, existing); return true; }
+    if (existing) {
+      this.touchThumb(asset.key, existing);
+      this.disposeAsset(asset);
+      return existing;
+    }
     const limits = this.limits();
-    if (asset.encodedBytes > limits.thumbEncodedBytes) return false;
+    if (asset.encodedBytes > limits.thumbEncodedBytes) return null;
     while (this.thumbCache.size + 1 > limits.thumbCacheEntries
       || this.thumbCache.size * THUMB_PIXELS + THUMB_PIXELS > limits.thumbDecodedPixels
       || this.thumbCache.size * THUMB_DECODED_BYTES + THUMB_DECODED_BYTES > limits.thumbDecodedBytes
@@ -1032,27 +1114,31 @@ export class SpeciesArtBroker {
       for (const key of this.thumbCache.keys()) {
         if (!this.thumbKeyIsLeased(key)) { victim = key; break; }
       }
-      if (victim === undefined) return false;
+      if (victim === undefined) return null;
       this.disposeThumbCache(victim);
     }
     this.thumbCache.set(asset.key, asset);
     this.thumbEncodedBytes += asset.encodedBytes;
-    return true;
+    return asset;
   }
-  private cachePortrait(asset: Portrait440): boolean {
+  private cachePortrait(asset: Portrait440): Portrait440 | null {
     const existing = this.portraitCache.get(asset.key);
-    if (existing) { this.touchPortrait(asset.key, existing); return true; }
+    if (existing) {
+      this.touchPortrait(asset.key, existing);
+      this.disposeAsset(asset);
+      return existing;
+    }
     const limits = this.limits();
-    if (asset.encodedBytes > limits.portraitEncodedBytes) return false;
+    if (asset.encodedBytes > limits.portraitEncodedBytes) return null;
     while (this.portraitCache.size + 1 > limits.portraitCacheEntries
       || this.portraitEncodedBytes + asset.encodedBytes > limits.portraitEncodedBytes) {
       const victim = this.portraitCache.keys().next().value as SpeciesVisualKey | undefined;
-      if (victim === undefined) return false;
+      if (victim === undefined) return null;
       this.disposePortraitCache(victim);
     }
     this.portraitCache.set(asset.key, asset);
     this.portraitEncodedBytes += asset.encodedBytes;
-    return true;
+    return asset;
   }
   private trimThumbCache(): void {
     const limits = this.limits();

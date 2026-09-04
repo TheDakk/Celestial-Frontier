@@ -1,6 +1,6 @@
 # Builds a commit-bound development preview for an approved human playtest.
-# This workflow uploads an artifact only. It has no Pages/deployment token and
-# cannot alter production or a preview host repository.
+# This workflow is non-certifying and uploads an artifact only. It has no
+# Pages/deployment token and cannot alter production or a preview host repository.
 name: development-preview-package
 
 on:
@@ -72,7 +72,6 @@ jobs:
     environment: development-preview-package
     env:
       CF_BROWSER: /usr/bin/google-chrome
-      CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-manual-compendiummem
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -80,105 +79,25 @@ jobs:
           node-version: 26
           cache: npm
           cache-dependency-path: port/v2/package-lock.json
-      - name: browser provenance
-        working-directory: port/v2
-        run: node tools/browserpath.mjs --print
       - name: install v2 workspace
         working-directory: port/v2
         run: npm ci
-      - name: deterministic, type, and art gates
+      - name: check development preview
         working-directory: port/v2
-        run: |
-          npm test
-          npm run typecheck
-          npm run artunused
-          npm run artaudit
-          npm run overridecheck
-          npm run overridecontrol
-          npm run coveragegap
-          node tools/speccheck.mjs
-          node tools/browserpath.mjs --selftest
-          node tools/browsercdp.mjs --selftest
-          npm run smoke:report:selftest
-          npm run glassmatrix:selftest
-          npm run persona:selftest
-          npm run preview:selftest
-      # Compendium resource certification has an Arc-local Edge authority;
-      # the job-level Chrome selection remains in force for the later smoke,
-      # Glass, persona, and preview browser gates.
-      - name: install exact Arc 1A Edge calibration browser
-        shell: bash
-        env:
-          EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb
-          EDGE_PACKAGE_SHA256: bd7604025424914a61c06293cb6bf269141a29d8c54cf1997110bc96d3365d60
-        run: |
-          set -euo pipefail
-          edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.101-1_amd64.deb"
-          curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"
-          printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict
-          sudo apt-get install --reinstall --yes "$edge_package"
-          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.101-1"
-          test -x /usr/bin/microsoft-edge-stable
-      - name: Compendium memory instrument selftest
+        run: node tools/check-profile.mjs --profile=dev
+      - name: preview producer selftests
         working-directory: port/v2
-        env:
-          CF_BROWSER: /usr/bin/microsoft-edge-stable
-        run: |
-          node tools/compendiummem-browser-preflight.mjs --selftest
-          node tools/compendiummem-browser-preflight.mjs
-          npm run compendiummem:selftest
-      - name: one-attempt Compendium memory certification
-        working-directory: port/v2
-        env:
-          CF_BROWSER: /usr/bin/microsoft-edge-stable
-        run: npm run compendiummem
-      - name: verify current Compendium memory evidence
-        if: always()
-        working-directory: port/v2
-        env:
-          CF_BROWSER: /usr/bin/microsoft-edge-stable
-        run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
-      - name: upload Compendium memory evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: manual-preview-compendium-memory-evidence
-          path: |
-            port/v2/apps/game/smoke/compendiummem-report.json
-            port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
-          if-no-files-found: error
-          retention-days: 14
-      - name: real-browser, responsive, and automated-persona evidence
-        working-directory: port/v2
-        run: |
-          npm run smoke:ci
-          npm run glassmatrix
-          npm run persona:report
         env:
           CF_BROWSER: /usr/bin/google-chrome
+        run: npm run preview:selftest
       - name: build commit-bound preview artifact
         working-directory: port/v2
         env:
-          CF_BROWSER: /usr/bin/google-chrome
           PREVIEW_ORIGIN: ${{ inputs.preview_origin }}
           PREVIEW_OUTPUT: apps/game/smoke/dev-preview-manual-${{ github.run_id }}-${{ github.run_attempt }}
         run: |
           npm run preview:package -- --origin="$PREVIEW_ORIGIN" --output="$PREVIEW_OUTPUT" --approved-publication-candidate
           npm run preview:smoke -- --root="$PREVIEW_OUTPUT"
-      - name: upload structured browser evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: manual-preview-browser-evidence
-          path: |
-            port/v2/apps/game/smoke/slice-smoke-report.json
-            port/v2/apps/game/smoke/slice-smoke.log
-            port/v2/apps/game/smoke/glassmatrix-report.json
-            port/v2/apps/game/smoke/automated-persona-report.json
-            port/v2/apps/game/smoke/automated-persona-report.md
-            port/v2/apps/game/smoke/slice-*.png
-          if-no-files-found: ignore
-          retention-days: 14
       - name: upload playable development preview
         if: success()
         uses: actions/upload-artifact@v6

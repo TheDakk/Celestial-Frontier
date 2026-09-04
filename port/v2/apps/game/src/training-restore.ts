@@ -8,11 +8,48 @@
  * its caller owns source proof, the single repository write and publication.
  */
 import {
+  ARC4_OWNERSHIP_EXTENSION_TARGETS,
+  arc4GuardianLegacyOwnershipMirrorMatchesV1,
+  arc2LootLegacyMirrorMatches,
+  applyV5ExtensionWrites,
+  committedArc5OwnershipState,
   importSaveV2,
+  migrateLegacyOwnership,
+  prepareArc4OwnershipLegacyMigration,
+  prepareArc5OwnershipMigration,
+  prepareArc2LootLegacyRestore,
+  projectArc4GuardianLegacyOwnershipMirrorV1,
+  readArc4Ownership,
+  readArc5OwnershipMigration,
+  readArc2Loot,
+  type Arc4OwnershipLegacyMigrationPreparation,
+  type Arc4GuardianLegacyMirrorProtectionReasonV1,
+  type Arc5OwnershipMigrationEvidence,
+  type Arc5OwnershipMigrationEvidenceV2,
+  type Arc5OwnershipMigrationPreparation,
+  type Arc2LootStateV1,
+  type Arc2LootWritePreparation,
   type ContentRegistry,
+  type ImportTrainingSnapshotIngressV2,
   type LegacyTrainingCheckpointV1,
   type SaveStateV2,
+  type V5Extensions,
 } from '@cf/persistence';
+import { MAX_GEAR_CAPACITY } from '@cf/domain-loot';
+import {
+  SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  canonicalJson,
+  ownershipStateDigestV1,
+  type OwnershipStateV1,
+  type OwnershipStateV2,
+} from '@cf/domain-acquisition';
+import {
+  canonicalCF1WorldAddressFromNav,
+  resolveCF1WorldAddress,
+  resolveCF1WorldAtlasId,
+  resolveViewToNav,
+} from '@cf/scene';
+import { HOME_GAL_SEED, HOME_POS, SOL_POS, SOL_SEED } from '@cf/domain-worldconfig';
 
 const DIRECT_STAT_KEYS = [
   'shares', 'jumps', 'anomalies', 'events', 'duels', 'duelwins',
@@ -20,6 +57,7 @@ const DIRECT_STAT_KEYS = [
   'essenceEarned', 'guardians', 'paragons', 'mines', 'crafts',
   'minedout', 'skims', 'cosmics', 'landings', 'charters',
 ] as const;
+const EMPTY_ARC5_WRITES = Object.freeze([]) as readonly [];
 
 export interface LegacyTrainingRestoreInput {
   /** A detached, already-sanitized copy of the current surrounding save. */
@@ -30,6 +68,8 @@ export interface LegacyTrainingRestoreInput {
   readonly epoch: number;
   /** Source-proven public compatibility view for Earth; never checkpoint data. */
   readonly canonicalEarthView: Record<string, unknown>;
+  /** Composite Atlas id minted from that independently proven Earth address. */
+  readonly canonicalEarthAtlasId: string;
   /** Source-proven view to publish after Training completes. */
   readonly completionView: Record<string, unknown> | null;
 }
@@ -41,6 +81,325 @@ export type LegacyTrainingRestoreResult =
       readonly earthEntry: Record<string, unknown>;
     }
   | { readonly ok: false };
+
+export type PreparedTrainingArc2Restore = Extract<
+  Arc2LootWritePreparation,
+  { readonly kind: 'prepared' }
+>;
+
+export type PreparedTrainingArc4Restore = Extract<
+  Arc4OwnershipLegacyMigrationPreparation,
+  { readonly kind: 'prepared' }
+>;
+
+export type TrainingArc4RestorePreparation =
+  | PreparedTrainingArc4Restore
+  | Extract<Arc4OwnershipLegacyMigrationPreparation, { readonly kind: 'protected' }>
+  | {
+      readonly kind: 'protected';
+      readonly reason: 'target-loaded';
+      readonly mode: OwnershipStateV1['mode'];
+      readonly actualRevision: number;
+    }
+  | {
+      readonly kind: 'protected';
+      readonly reason: 'composite-projection-protected';
+      readonly projectionReason: Arc4GuardianLegacyMirrorProtectionReasonV1;
+      readonly version?: number;
+    }
+  | {
+      readonly kind: 'protected';
+      readonly reason: 'composite-mirror-mismatch';
+    };
+
+export type PreparedTrainingArc5Restore = Extract<
+  Arc5OwnershipMigrationPreparation,
+  { readonly kind: 'prepared' }
+>;
+
+export type TrainingArc5RestorePreparation =
+  | PreparedTrainingArc5Restore
+  | Extract<Arc5OwnershipMigrationPreparation, { readonly kind: 'protected' }>
+  | {
+      readonly kind: 'preserved';
+      readonly state: OwnershipStateV2;
+      readonly evidence: Arc5OwnershipMigrationEvidenceV2;
+      readonly writes: readonly [];
+      readonly extensions: V5Extensions;
+    }
+  | {
+      readonly kind: 'deferred';
+      readonly reason: 'source-deferred';
+      readonly state: OwnershipStateV2 | null;
+      readonly evidence: Arc5OwnershipMigrationEvidence | null;
+      readonly writes: readonly [];
+      readonly extensions: V5Extensions;
+    }
+  | {
+      readonly kind: 'protected';
+      readonly reason: 'arc4-preparation-missing' | 'arc4-preparation-unexpected'
+        | 'target-absent' | 'target-loaded';
+    };
+
+/** Derive Training's coupled Arc 2 namespace from the candidate's restored
+ * compatibility fields. This is preparation only; the caller must land its
+ * one write with the candidate state in the same durable transaction. */
+export function prepareTrainingArc2Restore(
+  checkpointKind: ImportTrainingSnapshotIngressV2['kind'],
+  legacyFieldsRestored: boolean,
+  state: SaveStateV2,
+  extensions: V5Extensions,
+): Arc2LootWritePreparation | null {
+  /* Current-v2 route checkpoints never own inventory. Rebuilding their
+     carrier from the compatibility mirror could erase exact-instance flags,
+     revision or pending rewards. Only the eleven-field legacy checkpoint
+     owns `it`/`eq`/`ea` and therefore requires a replacement carrier. */
+  if (checkpointKind !== 'legacy-v1' || legacyFieldsRestored !== true) return null;
+  return prepareArc2LootLegacyRestore({
+    extensions,
+    legacy: state,
+    capacity: MAX_GEAR_CAPACITY,
+  });
+}
+
+/** Read the post-commit carrier only after durability and prove it is the
+ * exact prepared carrier and the exact compatibility mirror being published.
+ * A null result is convergence-by-reload, never permission to retry. */
+export function committedTrainingArc2State(
+  state: SaveStateV2,
+  prepared: PreparedTrainingArc2Restore,
+  extensions: V5Extensions,
+): Arc2LootStateV1 | null {
+  const carrier = extensions[prepared.write.segment]?.[prepared.write.namespace];
+  const loaded = readArc2Loot(extensions);
+  if (loaded.kind !== 'loaded'
+    || JSON.stringify(loaded.state) !== JSON.stringify(prepared.state)
+    || carrier === undefined
+    || carrier.version !== prepared.write.carrier.version
+    || carrier.json !== prepared.write.carrier.json
+    || !arc2LootLegacyMirrorMatches(loaded.state, state)) return null;
+  return loaded.state;
+}
+
+/** Bootstrap Arc 4 only when a genuine legacy checkpoint actually replaced
+ * the ownership-bearing compatibility fields in the final candidate. Route-
+ * only, source-deferred and no-checkpoint outcomes preserve current authority.
+ * Any existing Arc 4 carrier is explicit protection: Training never rewinds it. */
+export function prepareTrainingArc4Restore(
+  checkpointKind: ImportTrainingSnapshotIngressV2['kind'] | 'source-deferred',
+  legacyFieldsRestored: boolean,
+  state: SaveStateV2,
+  extensions: V5Extensions,
+): TrainingArc4RestorePreparation | null {
+  if (checkpointKind !== 'legacy-v1' || legacyFieldsRestored !== true) return null;
+  const prepared = prepareArc4OwnershipLegacyMigration({
+    extensions,
+    legacy: state,
+    resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  });
+  if (prepared.kind === 'prepared' && prepared.state.mode === 'current') {
+    const projection = projectArc4GuardianLegacyOwnershipMirrorV1(
+      prepared.state,
+      prepared.extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    if (projection.kind === 'protected') {
+      return Object.freeze({
+        kind: 'protected',
+        reason: 'composite-projection-protected',
+        projectionReason: projection.reason,
+        ...(projection.version === undefined ? {} : { version: projection.version }),
+      });
+    }
+    /* Training replaces a historical v4 checkpoint. It may retain an exact
+       Guardian tombstone because the composite mirror still omits that row,
+       but it must refuse before durability if a live separately-carried
+       Guardian/Titan would be erased by the checkpoint replacement. */
+    if (!arc4GuardianLegacyOwnershipMirrorMatchesV1(
+      prepared.state,
+      prepared.extensions,
+      state,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    )) {
+      return Object.freeze({ kind: 'protected', reason: 'composite-mirror-mismatch' });
+    }
+  }
+  if (prepared.kind !== 'already-loaded') return prepared;
+  return Object.freeze({
+    kind: 'protected',
+    reason: 'target-loaded',
+    mode: prepared.state.mode,
+    actualRevision: prepared.state.revision,
+  });
+}
+
+/** Keep Arc 5 coherent with Training's exact replacement boundary. A genuine
+ * legacy restore derives the compact manifest and four fixed delta shards only
+ * after Arc 4's 18 writes are prepared. Current aligned authority is preserved,
+ * while a source-deferred completion may validate but never bootstrap or repair
+ * Arc 5. Any corrupt, future, misplaced, or drifted carrier refuses the replacement. */
+export function prepareTrainingArc5Restore(input: Readonly<{
+  checkpointKind: ImportTrainingSnapshotIngressV2['kind'] | 'source-deferred';
+  legacyFieldsRestored: boolean;
+  baseExtensions: V5Extensions;
+  arc4Preparation: PreparedTrainingArc4Restore | null;
+}>): TrainingArc5RestorePreparation {
+  const legacyReplacement = input.checkpointKind === 'legacy-v1'
+    && input.legacyFieldsRestored === true;
+  if (legacyReplacement) {
+    if (input.arc4Preparation === null) {
+      return Object.freeze({ kind: 'protected', reason: 'arc4-preparation-missing' });
+    }
+    const before = readArc5OwnershipMigration(
+      input.baseExtensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    if (before.kind === 'loaded') {
+      return Object.freeze({ kind: 'protected', reason: 'target-loaded' });
+    }
+    if (before.kind === 'future-version') {
+      return Object.freeze({
+        kind: 'protected', reason: 'target-future', version: before.version,
+      });
+    }
+    if (before.kind === 'corrupt') {
+      return Object.freeze({ kind: 'protected', reason: 'target-corrupt' });
+    }
+    try {
+      const reapplied = applyV5ExtensionWrites(
+        input.baseExtensions,
+        input.arc4Preparation.writes,
+      );
+      if (JSON.stringify(reapplied.extensions)
+        !== JSON.stringify(input.arc4Preparation.extensions)) {
+        return Object.freeze({ kind: 'protected', reason: 'arc4-preparation-unexpected' });
+      }
+    } catch {
+      return Object.freeze({ kind: 'protected', reason: 'arc4-preparation-unexpected' });
+    }
+    const prepared = prepareArc5OwnershipMigration({
+      extensions: input.arc4Preparation.extensions,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    });
+    if (prepared.kind === 'already-loaded') {
+      return Object.freeze({ kind: 'protected', reason: 'target-loaded' });
+    }
+    return prepared;
+  }
+  if (input.arc4Preparation !== null) {
+    return Object.freeze({ kind: 'protected', reason: 'arc4-preparation-unexpected' });
+  }
+  if (input.checkpointKind === 'source-deferred') {
+    const current = readArc5OwnershipMigration(
+      input.baseExtensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    if (current.kind === 'future-version') {
+      return Object.freeze({
+        kind: 'protected', reason: 'target-future', version: current.version,
+      });
+    }
+    if (current.kind === 'corrupt') {
+      return Object.freeze({ kind: 'protected', reason: 'target-corrupt' });
+    }
+    return Object.freeze({
+      kind: 'deferred',
+      reason: 'source-deferred',
+      state: current.kind === 'loaded' ? current.state : null,
+      evidence: current.kind === 'loaded' ? current.evidence : null,
+      writes: EMPTY_ARC5_WRITES,
+      extensions: input.baseExtensions,
+    });
+  }
+  const prepared = prepareArc5OwnershipMigration({
+    extensions: input.baseExtensions,
+    resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  });
+  if (prepared.kind === 'protected') return prepared;
+  if (prepared.kind === 'prepared') {
+    return Object.freeze({ kind: 'protected', reason: 'target-absent' });
+  }
+  return Object.freeze({
+    kind: 'preserved',
+    state: prepared.state,
+    evidence: prepared.evidence,
+    writes: EMPTY_ARC5_WRITES,
+    extensions: input.baseExtensions,
+  });
+}
+
+/** Verify only after Training's single replacement transaction is durable.
+ * All 18 prepared carrier bytes and the registered state digest must agree.
+ * Current state also requires the complete Arc 4 + Guardian v4 mirror;
+ * lossless legacy-protected state instead retains its exact registered evidence. Null means
+ * read-only convergence by reload, never retry. */
+export function committedTrainingArc4State(
+  state: SaveStateV2,
+  prepared: PreparedTrainingArc4Restore,
+  extensions: V5Extensions,
+): OwnershipStateV1 | null {
+  try {
+    if (prepared.writes.length !== ARC4_OWNERSHIP_EXTENSION_TARGETS.length) return null;
+    for (let index = 0; index < ARC4_OWNERSHIP_EXTENSION_TARGETS.length; index++) {
+      const target = ARC4_OWNERSHIP_EXTENSION_TARGETS[index]!;
+      const write = prepared.writes[index]!;
+      const carrier = extensions[target.segment]?.[target.namespace];
+      if (write.segment !== target.segment || write.namespace !== target.namespace
+        || carrier === undefined
+        || carrier.version !== write.carrier.version
+        || carrier.json !== write.carrier.json) return null;
+    }
+    const loaded = readArc4Ownership(extensions, SCENE_OWNERSHIP_ADDRESS_RESOLVER);
+    if (loaded.kind !== 'loaded'
+      || ownershipStateDigestV1(loaded.state) !== ownershipStateDigestV1(prepared.state)) return null;
+    const evidenceDescriptor = Reflect.getOwnPropertyDescriptor(
+      prepared,
+      'migrationSourceEvidence',
+    );
+    if (!evidenceDescriptor || !('value' in evidenceDescriptor)
+      || evidenceDescriptor.get !== undefined || evidenceDescriptor.set !== undefined
+      || evidenceDescriptor.enumerable !== true) return null;
+    const migrated = migrateLegacyOwnership(state);
+    if (loaded.state.mode === 'current') {
+      if (prepared.migration !== 'migrated'
+        || migrated.kind !== 'migrated'
+        || ownershipStateDigestV1(migrated.state) !== ownershipStateDigestV1(prepared.state)
+        || canonicalJson(migrated.sourceEvidence) !== canonicalJson(evidenceDescriptor.value)
+        || !arc4GuardianLegacyOwnershipMirrorMatchesV1(
+          loaded.state,
+          extensions,
+          state,
+          SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+        )) return null;
+    } else {
+      if (prepared.migration !== 'legacy-protected') return null;
+      if (migrated.kind !== 'legacy-protected'
+        || ownershipStateDigestV1(migrated.state) !== ownershipStateDigestV1(prepared.state)
+        || canonicalJson(migrated.sourceEvidence) !== canonicalJson(evidenceDescriptor.value)
+        || JSON.stringify(migrated.sourceEvidence)
+          !== JSON.stringify(prepared.state.legacyProtection)
+        || JSON.stringify(migrated.sourceEvidence)
+          !== JSON.stringify(loaded.state.legacyProtection)) return null;
+    }
+    return loaded.state;
+  } catch {
+    return null;
+  }
+}
+
+/** Bind Training's five newly written compact carriers to their exact durable
+ * bytes, current-v2 evidence and freshly committed Arc 4 source. Null is
+ * read-only convergence by reload; it never authorizes a second write. */
+export function committedTrainingArc5State(
+  prepared: PreparedTrainingArc5Restore,
+  extensions: V5Extensions,
+): ReturnType<typeof committedArc5OwnershipState> {
+  return committedArc5OwnershipState(
+    prepared,
+    extensions,
+    SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  );
+}
 
 function checkpointRaw(
   current: SaveStateV2,
@@ -109,6 +468,19 @@ function checkpointEarthHistory(
 export function buildLegacyTrainingRestoreCandidate(
   input: LegacyTrainingRestoreInput,
 ): LegacyTrainingRestoreResult {
+  const canonicalEarth = resolveCF1WorldAddress({
+    galaxy: { seed: HOME_GAL_SEED, x: HOME_POS.x, y: HOME_POS.y },
+    star: { seed: SOL_SEED, x: SOL_POS.x, y: SOL_POS.y },
+    planet: { seed: 133 },
+  });
+  const idAddress = resolveCF1WorldAtlasId(input.canonicalEarthAtlasId);
+  const viewRoute = resolveViewToNav(input.canonicalEarthView);
+  const viewAddress = viewRoute.ok && viewRoute.state.mode === 'surface'
+    ? canonicalCF1WorldAddressFromNav(viewRoute.state) : null;
+  if (!canonicalEarth.ok || !idAddress.ok || !viewAddress?.ok
+    || idAddress.address.key !== canonicalEarth.address.key
+    || idAddress.address.key !== viewAddress.address.key
+  ) return { ok: false };
   const imported = importSaveV2(
     JSON.stringify(checkpointRaw(input.current, input.checkpoint, input.now)),
     input.registry,
@@ -118,14 +490,19 @@ export function buildLegacyTrainingRestoreCandidate(
 
   const sanitizedEarth = imported.state.logMap.find(([id]) => id === 'p133')?.[1];
   const history = checkpointEarthHistory(input.checkpoint, sanitizedEarth);
-  const oldEarthIndex = input.current.logMap.findIndex(([id]) => id === 'p133');
-  const liveEarth = oldEarthIndex >= 0 ? input.current.logMap[oldEarthIndex]![1] : undefined;
+  const isEarthId = (id: string): boolean => (
+    id === 'p133' || id === input.canonicalEarthAtlasId
+  );
+  const oldEarthIndex = input.current.logMap.findIndex(([id]) => isEarthId(id));
+  const exactEarth = input.current.logMap.find(([id]) => id === input.canonicalEarthAtlasId)?.[1];
+  const legacyEarth = input.current.logMap.find(([id]) => id === 'p133')?.[1];
+  const liveEarth = exactEarth ?? legacyEarth;
   const earthEntry: Record<string, unknown> = {
     ...(liveEarth || sanitizedEarth || {
-      id: 'p133', title: 'Earth', sub: 'Terran World', thumb: null,
+      id: input.canonicalEarthAtlasId, title: 'Earth', sub: 'Terran World', thumb: null,
       sq: false, badge: 'Home', fav: false, t: input.now,
     }),
-    id: 'p133',
+    id: input.canonicalEarthAtlasId,
     title: (liveEarth?.title || sanitizedEarth?.title || history.title || 'Earth'),
     sub: history.sub || liveEarth?.sub || sanitizedEarth?.sub || 'Terran World',
     badge: history.badge || liveEarth?.badge || sanitizedEarth?.badge || 'Home',
@@ -136,20 +513,21 @@ export function buildLegacyTrainingRestoreCandidate(
       : history.t,
     where: input.canonicalEarthView,
   };
-  const logMap = input.current.logMap.slice();
-  if (oldEarthIndex >= 0) logMap[oldEarthIndex] = ['p133', earthEntry];
-  else logMap.push(['p133', earthEntry]);
+  const logMap = input.current.logMap.filter(([id]) => !isEarthId(id));
+  if (oldEarthIndex >= 0) {
+    logMap.splice(Math.min(oldEarthIndex, logMap.length), 0, [input.canonicalEarthAtlasId, earthEntry]);
+  } else logMap.push([input.canonicalEarthAtlasId, earthEntry]);
   if (logMap.length > 120) {
     /* The ordinary exporter keeps the 120 newest rows. A veteran's genuine
        Earth history can be older than 120 later discoveries, yet D-TRAIN's
-       checkpoint explicitly owns that home row. Reserve one slot for p133
+       checkpoint explicitly owns that home row. Reserve one slot for Earth
        without changing its historical timestamp, then keep the newest 119. */
     const newestOtherRows = logMap
-      .filter(([id]) => id !== 'p133')
+      .filter(([id]) => id !== input.canonicalEarthAtlasId)
       .sort(([, left], [, right]) => Number(right.t || 0) - Number(left.t || 0))
       .slice(0, 119);
     logMap.length = 0;
-    logMap.push(...newestOtherRows, ['p133', earthEntry]);
+    logMap.push(...newestOtherRows, [input.canonicalEarthAtlasId, earthEntry]);
   }
 
   const state: SaveStateV2 = {
@@ -178,7 +556,7 @@ export function buildLegacyTrainingRestoreCandidate(
     equip: imported.state.equip,
     equipAff: imported.state.equipAff,
     logMap,
-    homeId: 'p133',
+    homeId: input.canonicalEarthAtlasId,
     savedView: input.completionView,
     tutDone: true,
     tutSnapPending: null,

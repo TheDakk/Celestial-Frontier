@@ -1,5 +1,286 @@
 # Celestial Frontier — Quests & Chapters
 
+> **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
+> all dated quest/evidence blocks below remain immutable):** hosted run `33584052508` tested exact
+> head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once with no retry. Layout passed **787/787**;
+> the first and only red was the production-quarantined SceneMemory fixed-eighth phase-validity
+> synthetic allocator selftest,
+> before the develop admission chain began. The authorization is consumed and no hosted authority
+> remains.
+>
+> The local uncommitted successor makes all live SceneMemory native-heap work
+> **production-only/quarantined** while deterministic controls remain universal. Develop admission
+> is **Compendium → Slice → Glass**; production/release, only after explicit SceneMemory activation,
+> is **SceneMemory → Compendium → Slice → Glass → Recovery** on unchanged source. This changes no
+> quest, Chapter, Charter, reward or save behavior and closes no quest/Chapter criterion. See
+> `ROADMAP.md` for the live handoff and `port/v2/README.md` for the canonical battery commands.
+
+> **2026-09-01 current Charter-notice green evidence overlay (matches exact signed code;
+> supersedes older “current” labels while preserving every dated block):** exact SSH-signed source
+> `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+> `25cb76916c8f3fcd00a916864abb9402932cdbec`) passed the complete browser-free profile at
+> **263 files / 2,719 passed / 1 skipped**. Its unchanged-source, named-verified, once/no-retry
+> chain passed Compendium `20260902020238003-42290-3e0d5a9601` **78/78** with zero findings;
+> develop Slice `20260902020406920-42750-f6dc8783b4cd` with zero findings/scopes (report/log
+> SHA-256 `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` /
+> `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`); and Glass
+> `20260902021048274-43570-053d2c926673` at **12/12** viewport/reload outcomes and **104/104**
+> controls with zero findings/instrument failures (report SHA-256
+> `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`). Four exact retained
+> carriers under `audits/` bind the Compendium report, Slice report/log and Glass report.
+>
+> Saturated multi-chapter recovery now proves the Landing/Charter aggregate keeps its adjacent
+> outcome surface while an older Share ceremony remains queued before shift and resumes exactly
+> once only after `productActionInFlight` and toast ownership clear. The same certificate covers the
+> dynamically observed, deadline-clipped Guide tail and D-TRAIN's stable
+> raw/live/focus/pending-cleared bulletin fixed point. Ceremony presentation ordering is the only
+> product behavior change. The legacy game, Charter chains, eligibility, progress, rewards, loot,
+> receipt/CAS and exact-once rules, save schema, deterministic generation,
+> creatures/plants/biomes/Guardians,
+> audio, CSS, numeric rulers, browser pin/version policy and no-retry policy are unchanged. Hosted run
+> `33572309149` remains immutable red and its ninth authorization consumed; no new hosted attempt,
+> push, merge, release, version bump, publication or deployment is authorized.
+
+> **2026-09-01 current Charter-notice ownership correction (matches local code as of 2026-09-01;
+> supersedes older “current” labels while preserving dated evidence):** PR #35 hosted run
+> `33572309149` tested exact head `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` through synthetic
+> merge `778d3cf58937476a65c550e875b946290c0967b4`. Saturated multi-chapter recovery durably recorded
+> the exact Chapter 1–3 aggregate, but a previously queued Share-achievement ceremony was allowed
+> to consume the adjacent toast while the newer Landing owner was still in flight.
+>
+> The ceremony drain now yields before queue consumption to any active receipt-bearing product
+> owner, preserving and rescheduling the older notice until that owner settles. A Landing/Charter
+> action therefore owns its aggregate completion notice without discarding the deferred ceremony.
+> Charter eligibility, chapter selection, progress, rewards, receipt/CAS, exact-once and no-retry
+> rules are unchanged. The hosted red remains historical evidence; the changed source awaits a new
+> exact-source browser chain.
+
+> **2026-08-29 current local Charter fixed-point correction (supersedes narrower same-date
+> descriptions below where they differ):** Starter Charter acceptance and staged deed successors now
+> use the deterministic transaction owner's `canonicalizeState`, bound to the same detached registry
+> and one validated commit clock as the persisted write. Landing's joined Charter successor follows
+> the same owner-minted canonical proof. This does not alter chain visibility, deed eligibility,
+> counters, rewards, gear, capacity, schema, exact-once receipt ownership or the no-retry rule; it
+> prevents a raw or separately clocked expected state from disagreeing with the committed codec
+> fixed point. Historical exact-source evidence below remains scoped to its named source.
+
+> **2026-08-29 current local Starter Charter board and writers (matches code):** v2 now owns the
+> bounded two-chain Starter board, not merely imported Charter bytes. `trades` remains
+> `st-land → st-mine → st-scan → st-scout → st-conq`; `tour` remains
+> `st-mercury → st-mars → st-giants → st-ice → st-comp`. The board shows every accepted row plus
+> only the first incomplete link in each chain, so accepting a link activates it but never reveals
+> the following link until completion. At most three Charters may be active. Completed ids are
+> permanent; malformed, duplicate, completed-and-accepted, over-cap or unrevealed input is
+> protected rather than normalized into a new outcome. `st-scan` stays visible/unavailable because
+> its accepted bioscan owner does not exist, and weekly rows are neither rolled, accepted nor paid
+> until v2 owns wall-week, deterministic-slate and monotonic-rollover authority. `st-conq` remains
+> the existing verified combat owner's event, including its stage-0 Jump Drive reveal lock.
+>
+> Acceptance is one deterministic F4 product action: one immutable receipt, one lease/revision CAS,
+> no random draw, retry or optimistic publication. A newly accepted state-style deed completes in
+> that same acceptance transaction only when existing durable evidence proves it exactly:
+> non-canonical-Earth landfall (`st-land`), `stats.mines > 0`, an existing legacy Scout id, a
+> parseable legacy `conquered` row whose seed is not 133, exact Mercury/Mars/ice-world landing, or
+> ownership of one canonical T2 component. `st-giants` and unavailable `st-scan` remain count-from-
+> accept deeds. Current
+> landfall and Mine events carry the complete registered `CanonicalCF1WorldAddress`: canonical
+> Earth can never prove `st-land`, and Sol-tour credit requires the exact Sol hierarchy and source
+> ordinal, so a matching leaf seed beneath another galaxy/star cannot impersonate Mercury, Mars,
+> Jupiter, Saturn, Uranus or Neptune. The seed-only `surfSeen` checks survive only as explicit
+> already-proven compatibility evidence for imported v1 saves.
+>
+> Live event writers join Charter state to the transaction that proves the deed: permanent
+> non-Training Landing owns `st-land`, `st-mercury`, `st-mars` and `st-ice`; successful Mine owns
+> `st-mine` and one press toward `st-giants`; eligible fixed Fabrication owns `st-comp` only from
+> the canonical catalogue category `comp`; assigning or switching to a non-null exact Field Scout
+> owns `st-scout`, while unchanged selection and stand-down do not emit its event; verified combat
+> alone owns `st-conq`. No writer opens a second progression transaction. Refusal, stale/lost
+> authority, failed storage and postcommit convergence cannot bank, pay or replay a Charter.
+>
+> Exact completion rewards are unchanged: `st-land` +10 Stardust; `st-mine` +15; `st-scan` +15 and
+> Comms Earpiece (currently unavailable); `st-scout` +15; `st-conq` +25; `st-mercury` +10 plus
+> Miner’s Headlamp; `st-mars` +10 plus Mag-Boots; `st-giants` +15 plus Meteorite Pendant;
+> `st-ice` +10 plus Field Leggings; and `st-comp` +15. Completion removes the active id, appends
+> `chDone`, caps its `chProg`, raises current/lifetime Stardust and `stats.charters`, then refreshes
+> aggregate achievements/best rank inside that same save. Gear is one deterministic Arc 2 instance
+> bound to the Charter id and receipt ordinal. It auto-equips only when it reached inventory and its
+> slot is empty; full inventory routes it to the 500-entry pending-reward carrier and never replaces
+> worn gear. Arc 2/future/corrupt authority, revision exhaustion, reward-capacity or numeric overflow
+> refuses the complete candidate—Stardust is never paid without its promised gear.
+>
+> After exact durable publication, newly appended known achievement ids receive their manifest
+> notification plus the established rarity sting at tier 3; a newly promoted saved best rank gets
+> the unambiguous Rank Up toast, tier-5 sting and the existing four-color gold burst semantic. The
+> burst is capped at 40 and further reduced by the current motion/device effects budget, and obtains
+> only player-chip geometry through AppChrome rather than taking over its DOM. Boot catch-up,
+> Training, replay, already-durable observation, refusal and read-only convergence are silent; these
+> ceremonies grant no additional reward. If a newer receipt-bearing action is still settling, its
+> outcome notice keeps presentation ownership: an older queued ceremony remains intact and resumes
+> only after the product owner and current toast release it.
+
+> **Historical earlier 2026-08-29 Charter-writer overlay (superseded by the current board above):** the live projection then had exact outcome
+> writers for canonical first landfalls, successful Mine actions, eligible fixed Fabricator
+> outputs, one first successful alien-world biosphere observation, successful companion Breed,
+> and verified conquest. Chapter 2 therefore presents its real `c2-conq` milestone instead of
+> hiding it.
+> `bankBredSuccess` preserves the mature `{ok:true}` filter and forward-banking rule: a successful
+> Arc 5 offspring result banks Chapter 3 `c3-breed` / **Breed a hybrid bloodline** inside the same
+> complete save that carries the child and both parents' Recovery. Both success and failure saves
+> are capacity-certified before the one draw. Failure leaves Charter bytes unchanged; refusal,
+> stale authority, duplicate receipt and storage failure bank nothing. Main publishes `ascCh` and
+> `ascProg` only after the exact durable result is verified, then refreshes the objective.
+>
+> Combat banks conquest and reconciles only after the registered battle/conquest fixed point is
+> durable. If the exact one-time starter conquest Charter `st-conq` is accepted, that same combat
+> CAS completes and removes it, awards **25 Stardust** to current and lifetime totals, and raises
+> the honored-Charter count once. Capacity, malformed/stale acceptance, loss, refusal and failed
+> write pay nothing. The weekly `wk-conq` stays fail-closed until v2 owns its wall-week rollover,
+> deterministic slate membership, acceptance and monotonic rollover sidecar; other accepted chains
+> and mature reward ceremonies remain open systems. The current v2 Field
+> Training graduation names live Feed, Breed/Recovery and Rename without claiming its six-step
+> navigation drill performs them. Older dated landfall-only/pre-Arc overlays below remain history.
+
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no quest/chapter product, persistence, art, save, version, ruler or
+> browser policy. It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or deployment
+> authority; physical-device heat/GPU evidence remains open. The seven evidence carriers and
+> synchronized references are preserved in signed local commit `ff00d166fe66b0e0e16ca227fb389662b12565e4`.
+> Keep temporary full caffeinate active while authorized local work continues, then restore it when
+> that work is complete. Next complete the full-code review/polish checkpoint, then begin authorized
+> current-system Arc 7/8 universe-wide visual polish. Edge `.107` / CDP `1.3` is
+> provenance only and compatible point updates never trigger rebaseline. Earlier Final12/Final11/
+> Final10 wording below is historical where superseded.
+
+> **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
+> `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
+> Compendium 78/78 with six PNG bindings, Slice with zero findings and ten screenshots, and full
+> 12-viewport Glass with zero findings or instrument failures, each once with named verification.
+> Recovery ran once and stopped instrument-only at `offline-reopened` after fixture, burn-down,
+> exhausted suppression, close/checkpoint and true closed-target proof. The read-only reopened
+> Pertar surface correctly used `unavailable`; the phase-blind poll expected the active surface's
+> `empty`/`depleted` vocabulary. The 20-minute observation, recovery boundary and recovered-state
+> judgment did not run, so no quest/chapter, Recovery, HUMAN, Gate or release claim follows.
+>
+> Signed implementation/evidence repair `3fbfcd5…` changes only this phase-specific evidence contract and its negative
+> controls; chapter, Training, Charter and reward behavior are unchanged. A candidate PASS retains
+> the original active-exhausted, offline-reopened and reactivated active-exhausted Pertar receipts;
+> terminal finalization and named verification independently replay and cross-bind their phase,
+> document, cycle, facts, SessionRNG, state/UI and first-active-sample evidence. Missing, swapped,
+> coherently retokened, reversed or coherently recomputed route/card/runtime/pending receipts are
+> red.
+>
+> Before observation, `active-observation:running` must be persisted and survive any later
+> failure. Each Pertar wait receipts the strict remaining share of one absolute 20-second deadline;
+> clipping or exceeding it is red. The exhausted raw/live-state chain and reactivated→first-service
+> binding require at most 20 seconds, the same cycle/RNG and revision delta at most one. Internally
+> assessment-green retiming, +2-revision and next-cycle mutants remain terminal-red.
+>
+> The exact six-region Recovery SHA-256/UTF-8-byte inventory is: full collector
+> source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+> boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+> helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+> (10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+> (6,184 B); offline-reopened→reactivated phase span
+> `b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+> suppression preparation/collector
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+> seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+> helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+> Browser-free current-byte checks at locally signed implementation/evidence commit
+> `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+> `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+> 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+> This documentation changed source identity; its signed clean docs-only descendant later supplied
+> immutable Final11. The repaired assessor replayed that unchanged Recovery bundle green. Immutable
+> Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout, SceneMemory and
+> Compendium before Slice stopped once/no retry on the stale one-red wrapper expectation; its product
+> assessment remained wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixed
+> only that harness expectation. Exact signed Final13 source `7cb0969…` then completed the entire
+> once-only named-verified Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain green,
+> including the real 20-minute observation and certificate. Edge
+> `151.0.4129.107` / CDP `1.3` is provenance only and never a rebaseline trigger.
+
+> **Historical 2026-08-27 evidence overlay:** current-input Slice had six preserved terminal-red,
+> one-attempt/zero-retry runs. Signed-clean source
+> `1e0141be418ca20a37dd82f1115c00b1a005e090` supplied sixth run
+> `20260827085237038-27561-1f8e3c1771b7` on Edge `151.0.4129.107`; it ran for
+> 397,101 ms and retained 23 findings across 16 scopes without Arc 4 success evidence. Required was
+> false, `ok`/ledger were null, and no success marker or ledger line exists. Glass and recovery
+> correctly did not run.
+>
+> The chapter/Training-owned root was a negative control that replaced Survey after bypassing the
+> document Escape path, leaving lesson locks bound to the old DOM before Land. Product now exports
+> `refreshTrainingScope()`; Survey invokes it once after the replacement card is visible and
+> aria/dock state is published. It rebuilds allowed roots, locks and spotlight, and only restores
+> focus when existing focus is no longer lesson-owned. Dynamic tests cover Survey-tour, Atlas-add
+> and Land; structural controls reject a missing, duplicate or pre-visibility call. The existing
+> **A LESSON OWNS ITS ESCAPE KEY** release-note bullet now covers this rebuild, so **A New
+> Foundation** remains exactly 55 bullets.
+>
+> The other four sixth-red roots were Guide/Glass count, ecology diagnostic comparison, contextless
+> blocked audio and committed-only epoch timing. Focused repairs and their negative controls were
+> exercised before the later signed campaigns.
+>
+> Browser evidence has three separate version-tolerant authorities. The root browser authority
+> accepts a compatible Chromium-family executable only when CDP `1.3` and the capability inventory
+> derived from the root layout/boot sources pass; every run retains executable, product, revision,
+> user agent, JavaScript version and protocol version as provenance. Compendium and SceneMemory keep
+> their own separately derived capability contracts, producer bindings and fixed rulers. A browser
+> point update alone does not rebaseline any of the three or move its thresholds. At that historical
+> boundary no Slice PASS, Glass result or recovery certificate existed; Final10 supersedes that
+> browser chronology as recorded above. Final13 now supplies the exact-source local Recovery
+> certificate, but no hosted, integration, HUMAN, whole-Gate, preview, release/version or deployment
+> authority.
+>
+> Charter landfall scope is classified from the registered canonical CF1 planet address, never from
+> a globally non-unique leaf seed. Sol credit requires the exact home-galaxy seed and coordinates,
+> the exact Sol-star seed and coordinates, and the planet seed's expected source ordinal. A matching
+> seed under any other hierarchy cannot impersonate Sol, and an unregistered lookalike cannot bank
+> at all. A committed first landing may increment only scope-matching landfall goals from the current
+> chapter onward, with every goal capped at its authored target; intent, refusal or repeat landing
+> grants nothing.
+>
+> Chapter 1 mining credit is equally hierarchy-exact. A committed Mine result counts only when its
+> registered source address has the exact home-galaxy seed and coordinates, exact Sol-star seed and
+> coordinates, the authored dead-world leaf seed, and the expected source ordinal. The same leaf
+> seed under a different galaxy/star coordinate or ordinal cannot impersonate the Sol objective;
+> an intent, refusal, stale write or unrelated committed mine grants no Charter progress.
+
+> **2026-08-25 Arc 4 current-capability overlay:** finite Tame/Scavenge/Sample is now a native
+> Survey-card action over the production full roster and current epoch. It presents a source-bound
+> uniform random eligible pool, truthful preview/full counts and odds, one shared hit-or-miss
+> Biosphere Yield, active-play recovery and committed-only ownership/reward outcomes. It can create
+> the first durable Compendium fact, fauna individual or specimen lot, but it does not add a Charter
+> bioscan goal or a targeted species preview. The Guide remains 41 topics—24 partial/17
+> unavailable—and **A New Foundation** has 54 draft bullets. Field Training deliberately remains
+> six lessons plus graduation with no Capture lesson. Historical exact-input Slice/Glass prove the native
+> hit/miss, refusal, stale/publication, Close/reopen and reload paths, while ordinary Slice correctly
+> records `recoveryClaimed:false`. Exact signed Final13 source `7cb0969…` separately passed the
+> uninterrupted real 20-minute next-cycle Recovery observation; the combined HUMAN first-journey/
+> ownership review remains open. No hosted, release/version, `rnSeen` or preview/publication
+> authority follows.
+
+> **Historical 2026-08-24 Arc 3 Charter/current-capability overlay (superseded by the live Starter board above):** mining and eligible fixed Fabrication are
+> real receipt-backed Engineering actions. The panel displays six research rows but only Deep
+> Scanners is purchasable; its pure orbital-reveal policy exists while current Survey renders no
+> orbital mineral rows. All 62 fixed recipes are listed, but only connected-effect outputs with
+> exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional slotted
+> outputs and disconnected-effect rows remain unavailable. `bankMinedAction` and `bankFixedFabrication` advance a
+> matching live Charter goal only from the committed result; a press, refusal or stale/storage
+> failure banks nothing. The six-lesson v2 Field Training remains a minimal navigation drill, not
+> the legacy 21-step curriculum. Commit `4e0a976` aligns its guidance, the Guide and the development
+> release bulletin with the live Engineering panel without pretending the missing capture/companion/
+> combat lessons exist. The broader chapter/reward ladder remains unported.
+
 > **2026-08-16 D-TRAIN-1 source-truth overlay (current source; local browser
 > evidence recorded below; exact-head CI, integration, real-save Gate C, and
 > human authority remain open):** v1.8.9 Training's reversible checkpoint is the exact eleven-field
@@ -48,7 +329,7 @@
 > they are local outcome evidence for those recorded inputs, not this later
 > documentation state, exact-head CI, integration, Gate C, human, or release authority.
 
-> **2026-08-14 v2 current-truth overlay — CURRENT versus PLANNED:** The current
+> **2026-08-14 v2 Charter overlay — historical pre-Arc-3 boundary:** The then-current
 > v2 Charter facade preserves the canonical legacy `ASC_CHAPTERS_DATA` and imported
 > `ascCh` / `ascProg` bytes for parity and reach, but never renders that raw chapter
 > copy as a player instruction. `projectV2Charter` and `currentV2Objective` expose
@@ -86,7 +367,7 @@
 > verified outcomes.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-31; the newest v2 overlay
-above matches `port/v2` source as of 2026-08-16. Carries v1.8.6 and v1.8.7
+above matches the current local `port/v2` boundary as of 2026-08-29. Carries v1.8.6 and v1.8.7
 (external rounds 8 and 9) updates — see the ⚠ notes inline.
 **Purpose:** The directed-play spine — the ordered campaign ("Chapters", formerly "The Ascent"), the progressive/accept-to-activate Expedition Charters board with gear rewards, the next-step nudges, and Field Training. The **21-step** curriculum described below is the legacy game; the current v2 boundary is explicit here.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
@@ -135,7 +416,7 @@ implement the dated port overlay.
 > unversioned v2 release draft does not claim it complete. D-TRAIN-1 compatibility
 > is described by the newer source-truth overlay above.
 
-> **2026-08-14 v2 Charter current-truth overlay:** `@cf/scene/charter.ts` keeps
+> **Historical 2026-08-14 v2 Charter overlay (superseded by the current Starter board above):** `@cf/scene/charter.ts` keeps
 > `ASC_CHAPTERS_DATA`, `chapterGoalsDone` and forward `bankLandfall` semantics intact
 > for imported progression. The current app instead gives `fillCharters` one
 > `projectV2Charter(save.ascCh, save.ascProg, ascStage())` record and gives the top

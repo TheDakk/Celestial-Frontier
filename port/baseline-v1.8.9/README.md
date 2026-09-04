@@ -1,5 +1,11 @@
 # v1.8.9 baseline — Gate A evidence
 
+> **Current authority note (2026-08-27):** every Edge `150.0.4078.83` reference in this directory
+> is retained historical v1.8.9 capture provenance. Root preflight now accepts compatible Chromium
+> family + CDP `1.3` only after exercising its source-derived capability contract and recording
+> complete run provenance. A compatible point-version update alone never rebaselines or moves a
+> threshold. The discovery/“Phase 0 owes” narrative below records the state at capture time.
+
 **Port Phase 0 deliverable.** See `port/PORT_MASTER_PLAN_v4.0.md` §20 (Phase 0) and §22 (Gate A).
 
 The baseline itself is the **git tag `v1.8.9`** at commit `92098e9`. This directory holds the
@@ -94,9 +100,9 @@ Resolution order is `CF_BROWSER` env → local Windows Edge → common Linux/mac
 provisioning is possible today via `CF_BROWSER`; it is simply not declared or documented anywhere
 outside this file.
 
-**Phase 0 owes:** declare and pin the browser as part of "reproduce all executable dependencies in
-a clean CI environment," and treat any future revision bump as an explicit re-baseline rather than
-a regression.
+**At capture, Phase 0 owed:** declare and verify the browser as part of “reproduce all executable
+dependencies in a clean CI environment.” The initial resolution used an exact revision pin; the
+2026-08-27 authority note above supersedes that current-policy portion of this historical finding.
 
 ## 4. What this evidence does and does not prove
 
@@ -122,7 +128,7 @@ git checkout v1.8.9
 npm install                     # acorn + jsdom only — see §3, this does NOT get you a browser
 node tools/extract.js           # fresh clone ONLY — see §1
 node tools/validate.js          # expect 9/9 and FINGERPRINT MATCH 50/50
-CF_BROWSER=<path> node tools/uilayout.js   # expect PASS 787/10 on Edge 150.0.4078.83
+CF_BROWSER=<path> node tools/uilayout.js   # historical 787/10 was captured on Edge 150.0.4078.83
 ```
 
 ## 6. The freeze rule — this tag does not freeze anything
