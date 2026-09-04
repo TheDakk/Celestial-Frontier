@@ -2197,7 +2197,7 @@ predecessors and distinct Slice control stop are recorded above.
 
 ### 5.2 Arc 3 — engineering loop
 
-**Implementation status (2026-08-26): `[PARTIAL]`, product actions plus the live Deep-Scanner
+**Implementation status (matches code as of 2026-09-04): `[PARTIAL]`, product actions plus the live Deep-Scanner
 projection are implemented locally.** The
 canonical opportunity projections, finite active-play Mine/Skim, Engineering panel, shared action
 coordinator and committed-only Charter banking are implemented. Six research rows are displayed,
@@ -2205,8 +2205,10 @@ but only Deep Scanners is purchasable. Its pure reveal policy now feeds one hone
 exact eligible scanned, registered lifeless non-Earth world: deterministic ordinary **Mineral
 veins** plus the biome marker, with cosmic/exceptional veins, grade, reserves, progress and grounded
 Mine action withheld. All 62 fixed recipes are listed, but only connected-effect outputs
-with exact costs/preconditions and capacity/revision headroom are actionable; fully exceptional
-slotted outputs and disconnected-effect rows remain unavailable. Local commit `c4a02be` records the
+with exact costs/preconditions and capacity/revision headroom are actionable. Eligible fixed
+slotted gear paid entirely with exceptional materials now uses the existing deterministic
+Pureforged path; mixed-stock gear remains ordinary, and disconnected-effect rows remain
+unavailable. Historical local commit `c4a02be` records the
 product/browser-tool batch after the no-retry Slice and Glass passes described in the current-state
 overlay; their distinct dirty-snapshot provenance keeps them historical. Exact signed Final13
 source `7cb0969…` now supplies current-input exact-head/full-chain browser evidence. Economy
@@ -2221,6 +2223,14 @@ failure as terminal red, so this local repair still needs fresh exact-source bro
 
 **Player promise:** surveyed worlds reveal finite, understandable opportunities. Gathering and
 engineering visibly improve what the player can build, see, and reach.
+
+**2026-09-04 remaining research decision:** the other five rows have authored costs and legacy
+math, but their consequences need absent v2 owners: Hull's hostile-bioscan damage mitigation,
+Xenobotany's explorer flora nourishment, and the three drives' distance-timed travel presentation.
+The existing permanent Jump Drive/Array/Intergalactic Drive reach ladder is already live and
+separate. Nick is asked whether to restore the original consequence systems or leave these
+research rows unavailable for initial beta. Do not transfer their effects to unrelated companion
+Feed/combat, invent new prices, or delay immediate travel solely to create a speed-up purchase.
 
 **Build scope:**
 

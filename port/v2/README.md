@@ -12,6 +12,11 @@ Charters preserve semantic focus during refills without scrolling or overriding 
 Three build-owning tools now reuse the existing safe Windows npm launcher; no shell interpolation
 of the working directory is introduced. Actual Windows execution remains a separate check.
 
+Finite typed audio cues also have an injected monotonic lifetime fallback for missed completion
+events, sharing the existing exact cleanup owner. Creature/ecology/combat sound plans and game
+clocks are unchanged. `@cf/art` now declares both existing Genome and PlanetGen dependencies.
+These review corrections do not enable unimplemented research, companion or Guardian rewards.
+
 The early Glass rows now use a shared Node verdict instead of a duplicate workflow jq program:
 
 ```sh

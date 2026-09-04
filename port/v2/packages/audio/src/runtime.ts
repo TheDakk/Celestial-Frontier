@@ -114,6 +114,8 @@ export interface AudioVoiceRequest {
   readonly priority: number;
   readonly cooldownGroup: string;
   readonly cooldownMs: number;
+  /** Optional monotonic lifetime from source start, including its cleanup tail. */
+  readonly maxDurationMs?: number;
   readonly concurrencyGroup: string;
   readonly maxConcurrent: number;
   /** Exact graph node count, excluding the runtime-created per-voice gain. */
@@ -215,9 +217,14 @@ export interface AudioRuntimeDiagnostics {
   readonly faults: Readonly<{ total: number; retained: readonly AudioRuntimeFault[]; budget: number }>;
 }
 
+/** Schedule asynchronously and return exact cancellation ownership. */
+export type AudioVoiceDeadlineScheduler = (callback: () => void, delayMs: number) => () => void;
+
 export interface AudioRuntimeOptions {
   readonly createContext: () => AudioContextLike;
   readonly nowMs: () => number;
+  /** Required only for requests with maxDurationMs; the runtime owns at most one wake. */
+  readonly scheduleVoiceDeadline?: AudioVoiceDeadlineScheduler;
   readonly initialMuted?: boolean;
   readonly initialMasterGain?: number;
   readonly categoryGains?: Readonly<Partial<Record<AudioCategory, number>>>;
@@ -283,7 +290,14 @@ interface ActiveVoice {
   readonly nodes: readonly AudioNodeLike[];
   readonly voiceGain: AudioGainNodeLike;
   readonly nodeCount: number;
+  readonly expiresAtMs: number | null;
   cleaned: boolean;
+}
+
+interface VoiceDeadlineWake {
+  readonly expiresAtMs: number;
+  cancel: (() => void) | null;
+  arming: boolean;
 }
 
 interface CacheEntry {
@@ -567,6 +581,7 @@ class InjectedAudioRuntime implements AudioRuntime {
   private readonly createContext: () => AudioContextLike;
   private readonly nowMs: () => number;
   private readonly verifyCounterpart: ((receipt: AudioCounterpartReceipt) => boolean) | null;
+  private readonly scheduleVoiceDeadline: AudioVoiceDeadlineScheduler | null;
   private readonly budgets: AudioRuntimeBudgets;
   private readonly gains: Record<AudioCategory, number>;
   private readonly active = new Map<string, ActiveVoice>();
@@ -620,6 +635,10 @@ class InjectedAudioRuntime implements AudioRuntime {
   private nodeDisconnectFailures = 0;
   private cacheReleaseFailures = 0;
   private lastNowMs: number | null = null;
+  private deadlineWake: VoiceDeadlineWake | null = null;
+  private deadlineReconciling = false;
+  private deadlineDirty = false;
+  private deadlineFailed = false;
 
   constructor(options: AudioRuntimeOptions) {
     if (options === null || typeof options !== 'object') {
@@ -628,6 +647,7 @@ class InjectedAudioRuntime implements AudioRuntime {
     let createContext: unknown;
     let nowMs: unknown;
     let verifyCounterpart: unknown;
+    let scheduleVoiceDeadline: unknown;
     let budgets: AudioRuntimeOptions['budgets'];
     let initialMuted: unknown;
     let initialMasterGain: unknown;
@@ -639,6 +659,7 @@ class InjectedAudioRuntime implements AudioRuntime {
       createContext = options.createContext;
       nowMs = options.nowMs;
       verifyCounterpart = options.verifyCounterpart;
+      scheduleVoiceDeadline = options.scheduleVoiceDeadline;
       budgets = options.budgets;
       initialMuted = options.initialMuted;
       initialMasterGain = options.initialMasterGain;
@@ -651,6 +672,10 @@ class InjectedAudioRuntime implements AudioRuntime {
     }
     this.createContext = createContext as () => AudioContextLike;
     this.nowMs = nowMs as () => number;
+    if (scheduleVoiceDeadline !== undefined && typeof scheduleVoiceDeadline !== 'function') {
+      throw new TypeError('audio voice deadline scheduler must be a function');
+    }
+    this.scheduleVoiceDeadline = (scheduleVoiceDeadline as AudioVoiceDeadlineScheduler | undefined) ?? null;
     if (verifyCounterpart !== undefined && typeof verifyCounterpart !== 'function') {
       throw new TypeError('audio counterpart verifier must be a function');
     }
@@ -1025,6 +1050,7 @@ class InjectedAudioRuntime implements AudioRuntime {
     let priority: number;
     let cooldownGroup: string;
     let cooldownMs: number;
+    let maxDurationMs: number | null;
     let concurrencyGroup: string;
     let maxConcurrent: number;
     let nodeCount: number;
@@ -1043,6 +1069,7 @@ class InjectedAudioRuntime implements AudioRuntime {
       const priorityValue = request.priority;
       const cooldownGroupValue = request.cooldownGroup;
       const cooldownMsValue = request.cooldownMs;
+      const maxDurationMsValue = request.maxDurationMs;
       const concurrencyGroupValue = request.concurrencyGroup;
       const maxConcurrentValue = request.maxConcurrent;
       const nodeCountValue = request.nodeCount;
@@ -1054,6 +1081,11 @@ class InjectedAudioRuntime implements AudioRuntime {
       priority = boundedInteger(priorityValue, 'audio voice priority', -1_000, 1_000);
       cooldownGroup = boundedAudioKey(cooldownGroupValue, 'audio cooldown group', 128);
       cooldownMs = boundedInteger(cooldownMsValue, 'audio cooldown', 0, 600_000);
+      maxDurationMs = maxDurationMsValue === undefined ? null
+        : boundedInteger(maxDurationMsValue, 'audio voice maximum duration', 1, 2_147_483_647);
+      if (maxDurationMs !== null && (!this.scheduleVoiceDeadline || this.deadlineFailed)) {
+        throw new TypeError('bounded audio voices require an available deadline scheduler');
+      }
       concurrencyGroup = boundedAudioKey(concurrencyGroupValue, 'audio concurrency group', 128);
       maxConcurrent = boundedInteger(
         maxConcurrentValue,
@@ -1091,6 +1123,13 @@ class InjectedAudioRuntime implements AudioRuntime {
       return Object.freeze({ kind: 'fault', reason: 'clock' });
     }
     this.purgeCooldowns(now);
+    this.reconcileVoiceDeadline();
+    this.syncContextState();
+    const postDeadlineUnavailable = this.voiceUnavailableResult();
+    if (postDeadlineUnavailable) return postDeadlineUnavailable;
+    if (maxDurationMs !== null && this.deadlineFailed) {
+      return Object.freeze({ kind: 'rejected', reason: 'invalid-request' });
+    }
     const cooldown = this.cooldowns.get(cooldownGroup);
     if (cooldown && cooldown.untilMs > now) {
       this.cooldownRejects++;
@@ -1176,6 +1215,25 @@ class InjectedAudioRuntime implements AudioRuntime {
         return Object.freeze({ kind: 'rejected', reason: 'node-budget' });
       }
 
+      let expiresAtMs: number | null = null;
+      if (maxDurationMs !== null) {
+        try {
+          expiresAtMs = this.readMonotonicNow() + maxDurationMs;
+          if (!Number.isFinite(expiresAtMs) || expiresAtMs > Number.MAX_SAFE_INTEGER) {
+            throw new TypeError('audio voice deadline is outside the safe clock range');
+          }
+        } catch (error) {
+          this.disconnectOwned([voiceGain, ...nodes], 'voice-disconnect');
+          this.recordFault('clock', error);
+          return Object.freeze({ kind: 'fault', reason: 'clock' });
+        }
+        this.syncContextState();
+        const clockUnavailable = this.voiceUnavailableResult(context, runtimeGraph);
+        if (clockUnavailable) {
+          this.disconnectOwned([voiceGain, ...nodes], 'voice-discard');
+          return clockUnavailable;
+        }
+      }
       const ordinal = ++this.voiceOrdinal;
       const id = `voice-${ordinal.toString(36).padStart(6, '0')}`;
       let installed = false;
@@ -1231,6 +1289,7 @@ class InjectedAudioRuntime implements AudioRuntime {
         nodes,
         voiceGain,
         nodeCount: reservationNodes,
+        expiresAtMs,
         cleaned: false,
       };
       /* Establish the replacement's exact bus policy while both its own gain
@@ -1311,6 +1370,10 @@ class InjectedAudioRuntime implements AudioRuntime {
       this.categoryPolicyGeneration++;
       installed = true;
       this.voicesStarted++;
+      this.reconcileVoiceDeadline();
+      if (!this.active.has(id)) {
+        return Object.freeze({ kind: 'fault', reason: 'voice-start' });
+      }
       if (cooldownMs > 0) this.stampCooldown(cooldownGroup, now + cooldownMs);
       this.observeBudgets();
       return Object.freeze({ kind: 'started', voiceId: id });
@@ -1547,6 +1610,80 @@ class InjectedAudioRuntime implements AudioRuntime {
     }
     this.lastNowMs = now;
     return now;
+  }
+
+  private cancelVoiceDeadline(): void {
+    const wake = this.deadlineWake;
+    this.deadlineWake = null; // stale callbacks lose ownership before injected cancellation.
+    if (wake?.cancel) wake.cancel();
+  }
+
+  private failVoiceDeadline(error: unknown): void {
+    this.deadlineFailed = true;
+    this.recordFault('voice-watchdog', error);
+    try { this.cancelVoiceDeadline(); } catch (cancelError) {
+      this.recordFault('voice-watchdog-cancel', cancelError);
+    }
+    for (const voice of [...this.active.values()]) {
+      if (voice.expiresAtMs !== null) this.finishVoice(voice.id, 'watchdog');
+    }
+  }
+
+  private reconcileVoiceDeadline(): void {
+    this.deadlineDirty = true;
+    if (this.deadlineReconciling) return;
+    this.deadlineReconciling = true;
+    try {
+      // Reentrant source/cancellation adapters may change the set. Bound convergence,
+      // as with category mix ownership, rather than recursively scheduling callbacks.
+      for (let pass = 0; pass < 12; pass++) {
+        this.deadlineDirty = false;
+        if (this.isDisposed() || this.muted || this.hidden || !this.context) {
+          this.cancelVoiceDeadline();
+          return;
+        }
+        const bounded = [...this.active.values()].filter((voice) => voice.expiresAtMs !== null);
+        if (bounded.length === 0) {
+          this.cancelVoiceDeadline();
+          if (this.deadlineDirty) continue;
+          return;
+        }
+        if (this.deadlineFailed || !this.scheduleVoiceDeadline) {
+          throw new Error('audio voice watchdog is unavailable');
+        }
+        const now = this.readMonotonicNow();
+        if (this.deadlineDirty) continue;
+        const expired = bounded.filter((voice) => voice.expiresAtMs! <= now);
+        if (expired.length) {
+          for (const voice of expired) this.finishVoice(voice.id, 'watchdog');
+          continue;
+        }
+        const expiresAtMs = Math.min(...bounded.map((voice) => voice.expiresAtMs!));
+        if (this.deadlineWake?.expiresAtMs === expiresAtMs) return;
+        this.cancelVoiceDeadline();
+        if (this.deadlineDirty) continue;
+        const wake: VoiceDeadlineWake = { expiresAtMs, cancel: null, arming: true };
+        this.deadlineWake = wake;
+        let synchronousWake = false;
+        const cancel = this.scheduleVoiceDeadline(() => {
+          if (this.deadlineWake !== wake) return;
+          if (wake.arming) { synchronousWake = true; return; }
+          this.deadlineWake = null;
+          this.reconcileVoiceDeadline();
+        }, Math.min(2_147_483_647, Math.ceil(expiresAtMs - now)));
+        wake.arming = false;
+        if (typeof cancel !== 'function') throw new TypeError('audio watchdog cancellation is missing');
+        wake.cancel = cancel;
+        if (synchronousWake) throw new Error('audio watchdog scheduler called synchronously');
+        if (this.deadlineWake !== wake) cancel();
+        if (!this.deadlineDirty) return;
+      }
+      throw new Error('audio voice watchdog ownership did not settle');
+    } catch (error) {
+      this.failVoiceDeadline(error);
+    } finally {
+      this.deadlineReconciling = false;
+    }
   }
 
   private voiceAdmission(
@@ -2048,7 +2185,7 @@ class InjectedAudioRuntime implements AudioRuntime {
   private finishVoice(
     id: string,
     reason: 'natural' | 'manual' | 'stolen' | 'mute' | 'hidden' | 'dispose'
-      | 'context-loss' | 'stale-activation',
+      | 'context-loss' | 'stale-activation' | 'watchdog',
     mixAlreadyApplied = false,
   ): void {
     const voice = this.active.get(id);
@@ -2066,6 +2203,7 @@ class InjectedAudioRuntime implements AudioRuntime {
       this.voicesStopped++;
       if (reason === 'stolen') this.voicesStolen++;
     }
+    this.reconcileVoiceDeadline();
   }
 
   private stopAllVoices(

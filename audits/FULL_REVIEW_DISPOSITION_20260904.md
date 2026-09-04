@@ -50,6 +50,8 @@ release or human judgment is inferred from that approval.
 | Ledger literal is a player-visible contradiction | Not established. `economy-ledger.ts:39,103,173` describes analytical source/rate-model availability; no app consumer was found. Do not replace `arc3-deferred` with a false completed model. |
 | No verbatim seals exist | Incorrect generally: `dom5-dependency.test.ts:86`, `biome-vista.test.ts:200`, `overridecheck.mjs:537` and species portability already seal subsets. Inventory real gaps; ThumbArt has intentional lifter adaptations, so a generic header/body equality loop is wrong. |
 | Runs 13–15 were global timeout failures | Unsupported. Retained diagnoses are verdict composition, geometry across DOM replacement, focus lineage and artifact outage. A global time multiplier does not repair those causes. |
+| Compendium store list accidentally omits receipts | Not a missing current store. Both fixture seed paths explicitly open DB version 1; the candidate uses `createIndexedDBBackend('cf-v2-slice')`, default version 2, whose upgrade creates the full store inventory including receipts. Keep this legacy-to-current fixture and historical baseline shape; do not mechanically replace it with the current store list. |
+| Stale app header / conflicting agent rules | App header now correctly says 15 Training IDs and live Atlas favorites. Both agent entry points explicitly distinguish preserved production-v1 details from V2 nonlethal breeding/versioned active-play persistence. The fourteen original facades are a completed milestone, not today's package count. |
 | Human Arc 4.5 before Arc 5 | Conflicts with Nick's approved combined post-Arc-5 sequence at `V2_PROGRAM_ROADMAP.md` §4.10. Early exploration may inform work but does not close that gate. |
 
 References use V2-relative paths unless otherwise noted; original line numbers identify the reviewed
@@ -77,7 +79,7 @@ and policy changes. **Open** means not yet implemented/verified, not silently re
 | P1-helpers | Shared source/server helpers | Open incremental extraction with current source/lock/server cleanup semantics; do not merge distinct trust boundaries merely because helpers share names. |
 | P1-lists | Shared key inventories | Open deduplication where ownership is genuinely the same. Keep independently authored expectations where they detect a missing producer field. |
 | P1-windows | npm.cmd / browser discovery / docs | Three direct npm callers now share the safe invocation owner; four platform/mock tests pass. Windows Chrome resolver change remains deferred because resolver bytes are measurement-authority inputs; actual Windows verification remains open. |
-| P1-audio | Voice watchdog | Open bounded injected-clock lifetime design, preserving normal onended cleanup and suspension semantics. |
+| P1-audio | Voice watchdog | Implemented locally and fake-clock verified: optional finite bound, one injected earliest wake, exact existing cleanup, lifecycle/stale-callback controls and finite caller integration. Native-device scheduling/listening remains open. |
 | P1-tests | Layering/targeted domain gaps | Assessment complete: naming/worldconfig already have direct parity in starcatalog; mint import ownership and Guardian clone refusal already tested. Remaining narrow gaps are malformed/shallow-frozen mint registration and public-registry clone refusal, plus three WorldConfig anchor/freeze assertions. No duplicate blanket suite. |
 | P2-phone | Allocation/navigation/cache/boot | Open measured performance work. Review every save consumer before replacing immediate commits with debounce; preserve travel durability. |
 | P2-main | Extract main.ts | Open incremental extraction along existing owners. Generic action coordinator cannot erase domain-specific CAS, publication and recovery guarantees. |
@@ -85,6 +87,11 @@ and policy changes. **Open** means not yet implemented/verified, not silently re
 | P2-memory | Compendium runtime cost | Open Linux timing analysis and coverage decision; no unmeasured calibration/threshold relaxation. |
 | P2-docs | Documentation diet | Start with live status/disposition. Archive chronological logs verbatim; refresh reference laws in place. Keep OpenAI/Anthropic entry points with one shared protocol. Do not archive current rules or erase history. |
 | P3 | Hygiene findings | Open bounded confirmation: heartbeat branch, wrappers, dependency manifests, painter helpers, case timeouts and focus-ring scheduling. No removal until all callers and source seals are mapped. |
+
+P3 confirmed dependency gap: `@cf/art` already imports Genome in the sealed HD worker and
+PlanetGen in the adapted ThumbArt artifact. Both are now declared with matching workspace-lock
+entries; existing installed links/manifest equality and Haze ownership checks pass. No painter
+source changed. Other P3 items remain open, not bundled into an unreviewed cleanup.
 
 ## Initial execution / verification record
 
@@ -246,3 +253,69 @@ App main source SHA-256 is `df5495ae8e54796ae988257d58c7262fc8371f685b501a032bfd
 Batch 2 is ready for local commit; its exact signed successor is recorded at Git handoff rather
 than self-embedded. No full browser chain, native-device acceptance, production activation,
 release or GitHub write is claimed.
+
+## Local batch 3 — finite audio lifetime and reference/dependency corrections
+
+Base is signed `13d24af38fecdedb363d32a3ecfa4d7c9c3b5924`; this is its locally checked successor,
+not a newly admitted browser certificate. Batch 2 was clean/three commits ahead before editing.
+
+- Runtime accepts optional integer `maxDurationMs` from 1 through 2,147,483,647. Bounded voices
+  require an injected asynchronous scheduler; unbounded compatibility calls allocate no watchdog.
+  The deadline is sampled after graph construction and before starting its sources. One earliest
+  wake uses the injected monotonic clock, not audio-context time, wall-clock rewards or game RNG.
+  Overdue/missing-onended cleanup reuses `finishVoice`, removes the owner before hostile callbacks,
+  and releases sources, nodes, concurrency and mix. Natural/manual/steal/mute/hide/dispose/context
+  paths still own ordinary cleanup. Invalid scheduler/clock behavior fail-closes bounded voices;
+  no global clock or new diagnostics schema was added.
+- Runtime focused suite **78/78 PASS**, 487ms. Initial **75 pass / one fail** exposed only the
+  hostile-getter test's stale expected field inventory; the new optional fields are now included
+  in its once-only-read expectations. No unchanged red retry or timeout increase.
+- Exactly three finite request builders cover creature expressions, generic ecology and all
+  registered combat cue families/motifs. Their bounds use actual last source-stop plans plus a
+  **250ms cleanup-only allowance**. Existing synthesis, source starts/stops, mix policy, seeds,
+  envelopes and `main.ts` are unchanged. The one shared app runtime supplies cancellable browser
+  timers and permits a fake scheduler. Separate legacy stings keep their own native-stop path.
+- Builder suites **18/18 PASS**; final app-owner suite **52/52 PASS**. The initial combined run
+  was **69 pass / one fail**: its new cleanup test incorrectly expected a fake's historical
+  connection array to clear. The existing fake deliberately records disconnect calls instead;
+  the corrected exact-count assertion passes without changing product code.
+- Independent bounded review **CLEAR**. A proposed nested-clock admission issue was retracted:
+  the existing public `voiceAdmissionInProgress` guard already refuses nested play for the entire
+  inner operation. No speculative repair was added. Native timer scheduling/listening is not
+  established by read-only review or deterministic fake-clock tests.
+- Art's existing Genome/PlanetGen imports are now declared in package metadata and lockfile.
+  Installed workspace links and manifest/lock equality pass; Haze ownership **6/6** (390ms),
+  species portability **5/5** (1.37s). No painter source or dependency version changed.
+- Both agent entry points distinguish V1-only consumed-parent/save/clock descriptions from V2's
+  approved nonlethal companions and versioned active-play persistence. Arc 3's body now reflects
+  the already-implemented Pureforged path and the genuine missing research consequence owners.
+  The legacy-v1 Compendium seed remains intentional: current DB version 2 creates receipts on
+  upgrade. Do not remove this fixture coverage to match a current-store list mechanically.
+- Existing V2 audio draft bullet now describes lifetime cleanup; **78** bullets remain,
+  ordered text SHA-256 `21d167aac4d2c147675d97d587507a93b9362bb6a9cf07406c075b258491ccc1`.
+  Slice's ordered authority follows the actual rendered-text digest. Guide/release focused checks
+  **52/52 PASS**, 1.94s. No production version/popup or immutable V1 history changed.
+- All three TypeScript programs pass. Root validation again passes **1,010** renders with zero
+  errors and all **50** V1 fingerprints unchanged. No full profile/browser chain was repeated.
+- One fresh evidence build passed in **1.93s**, 52 files, built-tree SHA-256
+  `ee016dc5a966dc8851bf0f6501919bb75141f4a47eb01f6e9ecca96b15547dd3`.
+  Current Compendium measurement is `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`;
+  only its package-lock input changes to
+  `53527ca265e744f32e47b2cc9bad1663633826782903610faf360503a5f12e4d` for existing art dependency
+  declarations. Collector/measurement algorithms are unchanged. Current producer is
+  `3c20acc35e2839101e551ac10575ef27d29df5edd6d7ae29e97130252605ec1b`, index
+  `fd81bf3649162f778526d6311056cafddc63bd23ab3b87006a4bb1c9ff4557c8`, owner
+  `assets/main-Biahj8TR.js` / `428b859e0a6d055732572b60491628f4481eb1d8b7211cf8eb0918ba69b6f474`,
+  service worker `f5d250928064ff28c07366794bf7a9d4c4cbb3f1daf68ba63a59e6b202a60264`.
+  Species worker/painter remains `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`.
+  The printer correctly exited 2 before current-pin refresh and reports quarantined SceneMemory
+  drift; it is not a failed product run. Historical samples/ruler and numeric ceilings remain
+  unchanged (`a5f05be521eb127f3e74306bd69538bdb6d3b564875ed921f2c7f3c0904def83`).
+
+Final composed-source audio closure is **148/148** across all five affected suites, **697ms**;
+current budget tests **28/28**, **770ms**. Structural comparison to batch-2 HEAD proves exactly
+eight budget paths changed: the two current measurement fields, five current producer fields and
+selection narrative. All unrelated/historical/numeric fields are unchanged. Diff check is clean.
+This completed batch is ready for a local signed commit; exact SHA is reported at Git handoff.
+Remaining campaign work is still open. Research restoration, combat modifier/reward choices,
+fast-lane coverage and real-device/HUMAN acceptance are not inferred from these local checks.

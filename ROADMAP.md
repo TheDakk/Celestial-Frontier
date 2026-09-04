@@ -69,7 +69,7 @@ Local batch 1 is signed at `e0acfabf80a055b4c1132c49a9461c42a391afb0`, two commi
 and locally checked on top of that checkpoint. Ordinary assets omit the API and destructive
 implementations; explicit evidence assets retain them. Native persistence and awaited no-op
 ordering are preserved. Both actual builds have valid PWA hashes; the creature-art worker is
-byte-identical. Current Compendium producer is `e690f6aa…`, measurement `de87857f…`; only current
+byte-identical. Batch 2's Compendium producer is `e690f6aa…`, measurement `de87857f…`; only current
 input bindings changed, not historical calibration, numeric limits or SceneMemory quarantine.
 
 The nonpublishable dirty preview passed in Edge 152.0.4191.62: boot → real Skip Training → Guide,
@@ -82,8 +82,17 @@ affected suites pass in focused final-source closure: 46/46. All three TypeScrip
 art/route/spec and root V1 validation pass. Do not relabel that first aggregate green or call
 this a new full certificate. Full details are in the disposition audit.
 
-Next bounded product-hardening work is the audio voice lifetime safeguard through its existing
-cleanup owner. Continue remaining review/gameplay scope below; retain the pending human choices.
+Batch 2 is signed at `13d24af38fecdedb363d32a3ecfa4d7c9c3b5924`, clean and three commits ahead
+of `origin/openai/mac` before the next edits; no push. Batch 3 is now implemented and locally
+verified: audio lifetime fallback through the existing cleanup owner, explicit art dependency
+metadata and v1/v2 agent-reference clarification. The composed final audio set passes **148/148**
+in 697ms, current budget **28/28**, Guide/release **52/52**, Haze/species portability **11/11**,
+all three TypeScript programs and root V1 validation. Independent audio review is clear.
+One evidence build took 1.93s; current Compendium producer is `3c20acc3…`, measurement `4a93479b…`.
+Only current lock/build bindings changed; species worker/painter, historical samples and all
+numeric limits remain unchanged. No new full profile/browser chain, hosted action or release.
+The exact signed successor is reported at Git handoff, avoiding a self-embedding commit loop.
+Continue remaining review/gameplay scope below; the full campaign is not complete.
 Serializer/seal/domain-test inventory is complete: the report overstated some missing coverage,
 and canonical serializers have distinct byte/admission contracts, so no blanket consolidation.
 
@@ -96,9 +105,10 @@ and canonical serializers have distinct byte/admission contracts, so no blanket 
    meaningful fast integration coverage and full milestone/release coverage explicitly.
    Two canaries alone are not equivalent to the current Compendium → Slice → Glass chain.
    Artifact/download transport resilience is separate from retrying product/instrument outcomes.
-3. **App hardening:** queued persistence and focus first, then isolate destructive smoke hooks with
-   an explicit evidence-build boundary (DEV-only would break production-build certification).
-   Preserve PWA resource identity, actual product semantics and save recovery.
+3. **App hardening:** queued persistence, semantic refill focus, explicit evidence-build isolation
+   and finite audio lifetime are locally implemented/checked. Remaining extraction/performance
+   work must preserve PWA identity, product semantics, save recovery and current audio cleanup;
+   real-device acceptance is separate.
 4. **Gameplay:** finish five unavailable research consumers and the analytical source model,
    authored loot and disclosed rates; extend existing Feed/Breed/Rename/Scout with care, healing,
    bond and missions; complete remaining progression/records. Update Training with owning actions.
@@ -122,6 +132,11 @@ and canonical serializers have distinct byte/admission contracts, so no blanket 
 - Faster develop admission is an explicit pending coverage choice: browser-free + two canaries
   with the long chain deferred to milestones/releases, or retain the full chain on every PR.
   No workflow coverage has been dropped while awaiting that answer.
+- The five unavailable research rows have authored prices/math but missing consequence owners:
+  hostile bioscan damage, explorer flora nourishment and distance-timed travel presentation.
+  Nick is asked whether to restore those original systems or leave those upgrades unavailable
+  for initial beta. Do not apply hull mitigation to unrelated combat, give companion Feed the
+  explorer's nourishment effect, change permanent reach or slow current travel just to sell speed.
 
 ### Paired next steps
 

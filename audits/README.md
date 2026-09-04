@@ -18,6 +18,8 @@ summary of it.
 PR #35 run/merge, bounded implementation status and genuinely open features/decisions.
 Its local batch 2 record covers explicit evidence-build isolation, distributable Edge preview,
 final PWA-byte checks, current-input fingerprints and the preserved readiness-instrument red.
+Batch 3 adds finite audio lifetime cleanup, exact focused results, dependency/reference corrections
+and the subsequent current-build bindings; no hosted attempt or whole-campaign completion follows.
 The older “current” PR #35 entries below are chronological history, not active authority.
 See `../ROADMAP.md` for current work and `../port/V2_PROGRAM_ROADMAP.md` for product acceptance.
 

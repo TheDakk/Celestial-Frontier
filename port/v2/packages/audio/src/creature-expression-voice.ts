@@ -16,6 +16,7 @@ import {
   type SettledCreatureAudioEvent,
 } from './events.js';
 import { AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1 } from './runtime.js';
+import { finiteVoiceMaxDurationMs } from './finite-voice-lifetime.js';
 import type {
   AudioContextLike,
   AudioCounterpartReceipt,
@@ -239,6 +240,16 @@ function noteGapSeconds(rhythm: string, ordinal: number): number {
   }
 }
 
+function voiceDurationSeconds(profile: AudioIdentityProfile, cue: CreatureExpressionCue): number {
+  const scale = cue.expression.durationPermille / 1_000;
+  let duration = 0;
+  for (let index = 0; index < cue.phrase.durationsMs.length; index++) {
+    duration += Math.max(0.040, cue.phrase.durationsMs[index]! * scale / 1_000);
+    if (index + 1 < cue.phrase.durationsMs.length) duration += noteGapSeconds(profile.rhythm, index);
+  }
+  return duration + 0.005;
+}
+
 function createVoiceGraph(
   contextValue: AudioContextLike,
   reservation: AudioVoiceReservation,
@@ -329,6 +340,7 @@ export function createCreatureExpressionVoiceRequest(
     concurrencyGroup: CONCURRENCY_GROUP,
     maxConcurrent: 1,
     nodeCount: VOICE_NODE_COUNT,
+    maxDurationMs: finiteVoiceMaxDurationMs(voiceDurationSeconds(profile, cue)),
     mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
     meaning: Object.freeze({ kind: 'meaningful', counterpart }),
     create: (context: AudioContextLike, reservation: AudioVoiceReservation) =>

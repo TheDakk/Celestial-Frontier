@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "@cf/domain-biome-profile": "*",
+    "@cf/domain-genome": "*",
+    "@cf/domain-planetgen": "*",
     "@cf/domain-rand": "*",
     "@cf/domain-worldconfig": "*",
     "@cf/domain-surveyphrases": "*",

@@ -1,5 +1,12 @@
 # Celestial Frontier — Master Art Direction
 
+**Current implementation reference — matches code as of 2026-09-04.** Static creature/genome,
+hybrid and biome painters are preserved. The art workspace explicitly declares its existing
+Genome and PlanetGen imports; this is dependency metadata, not a painter or visual change.
+Evidence-build separation leaves the species worker/painter byte-identical at its batch-2
+checkpoint. Live scope/results are in `ROADMAP.md`; dated evidence overlays below are historical
+and do not certify later source or close HUMAN visual acceptance.
+
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated art/evidence blocks below remain immutable):** hosted run `33584052508` tested exact
 > head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
