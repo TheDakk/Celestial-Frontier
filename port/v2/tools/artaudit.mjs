@@ -41,6 +41,7 @@ function hasUnconditionalBuild(source) {
   return [
     /^\s*execSync\('npx vite build'/m,
     /^\s*execFileSync\(npm,\s*\[\s*['"]run['"],\s*['"]build['"]\s*\]/m,
+    /^\s*const ([A-Za-z_$][\w$]*) = checkCommandInvocation\('npm',\s*\['run',\s*'build'\]\);\s*execFileSync\(\1\.executable,\s*\1\.args,/m,
   ].some((pattern) => pattern.test(source));
 }
 
@@ -48,17 +49,24 @@ function hasConditionalBuild(source) {
   return [
     /if \(!fs\.existsSync[^)]*\)\)\s*execSync\('npx vite build'/,
     /if \(!fs\.existsSync[^)]*\)\)\s*execFileSync\(npm,\s*\[\s*['"]run['"],\s*['"]build['"]\s*\]/,
+    /if \(!fs\.existsSync[^)]*\)\)\s*(?:\{\s*)?const ([A-Za-z_$][\w$]*) = checkCommandInvocation\('npm',\s*\['run',\s*'build'\]\);\s*execFileSync\(\1\.executable,\s*\1\.args,/,
+    /if \(!fs\.existsSync[^)]*\)\)\s*(?:\{\s*)?execFileSync\(([A-Za-z_$][\w$]*)\.executable,\s*\1\.args,/,
   ].some((pattern) => pattern.test(source));
 }
 
-/* The D-ART-36 ruler must recognize both supported synchronous build forms,
+/* The D-ART-36 ruler must recognize the supported synchronous build forms,
    while still rejecting the conditional form that caused the original stale
    bundle defect. These controls run with the audit so a green result cannot
    depend on one command spelling. */
 for (const control of [
   { name: 'legacy unconditional build', source: "execSync('npx vite build', { stdio: 'inherit' });", always: true, maybe: false },
   { name: 'npm unconditional build', source: "execFileSync(npm, ['run', 'build'], { cwd: appDir });", always: true, maybe: false },
+  { name: 'portable npm unconditional build', source: "const buildInvocation = checkCommandInvocation('npm', ['run', 'build']);\nexecFileSync(buildInvocation.executable, buildInvocation.args, { cwd: appDir });", always: true, maybe: false },
   { name: 'conditional build', source: "if (!fs.existsSync(distDir)) execFileSync(npm, ['run', 'build']);", always: false, maybe: true },
+  { name: 'conditional portable npm build', source: "if (!fs.existsSync(distDir)) { const buildInvocation = checkCommandInvocation('npm', ['run', 'build']);\nexecFileSync(buildInvocation.executable, buildInvocation.args, { cwd: appDir }); }", always: false, maybe: true },
+  { name: 'conditional portable npm execution', source: "const buildInvocation = checkCommandInvocation('npm', ['run', 'build']);\nif (!fs.existsSync(distDir)) execFileSync(buildInvocation.executable, buildInvocation.args, { cwd: appDir });", always: false, maybe: true },
+  { name: 'mismatched portable npm arguments', source: "const buildInvocation = checkCommandInvocation('npm', ['run', 'build']);\nexecFileSync(buildInvocation.executable, otherInvocation.args, { cwd: appDir });", always: false, maybe: false },
+  { name: 'non-build portable npm command', source: "const buildInvocation = checkCommandInvocation('npm', ['test']);\nexecFileSync(buildInvocation.executable, buildInvocation.args, { cwd: appDir });", always: false, maybe: false },
   { name: 'missing build', source: "const page = path.join(distDir, 'index.html');", always: false, maybe: false },
 ]) {
   if (hasUnconditionalBuild(control.source) !== control.always

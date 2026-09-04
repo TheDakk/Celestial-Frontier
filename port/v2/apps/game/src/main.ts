@@ -13,8 +13,8 @@
    · Settings/Compendium/Records · search (code-paste travel) · the shipped
    audio stings · capped COSMIC_EPOCH on an app-owned monotonic session segment.
 
-   Still ahead (recorded in ROADMAP's NEXT): the remaining 15 lessons of the complete 21-step training port,
-   full Atlas chart/favorites presentation, rarity stings, ring↔planet mutual shadows and PROTO star disk.
+   Field Training currently has 15 lesson IDs; a fuller hands-on curriculum remains
+   on the V2 program roadmap. Atlas charting/favorites and rarity stings are live.
    Static deterministic Canvas species portraits and the preserved 43-biome landing vistas are live;
    retained Pixi actors, meshes, and portrait animation remain later work. */
 import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin } from 'pixi.js';
@@ -35,6 +35,7 @@ import {
   registerPanel, fillPanel, openPanel, closePanels, openPanelId,
   createPanelOpenController,
 } from './panels.js';
+import { capturePanelRefillFocus } from './panel-refill-focus.js';
 import {
   CompendiumVirtualList,
   type CompendiumVirtualRow,
@@ -3618,6 +3619,7 @@ function syncBoundedCollectionButtons(
 }
 function fillRecords(): void {
   if (!save) return;
+  const restoreFocus = capturePanelRefillFocus(document.getElementById('recpanel')!, ['data-binder-claim']);
   const st = save.stats || {};
   const rankProjection = projectArc9RecordsRankReadModelV1(save);
   const rank = rankProjection.kind === 'projected'
@@ -3656,6 +3658,7 @@ function fillRecords(): void {
     '[data-binder-claim]',
     arc9BinderClaimPendingId !== null,
   );
+  restoreFocus();
 }
 function frontierEndingPanelStatus(): string | null {
   if (arc9FrontierEndingPending) return 'Saving your Frontier legacy…';
@@ -3688,6 +3691,7 @@ function fillPrimeCodex(): void {
 let arc9AtlasFavoritePendingId: string | null = null;
 function fillAtlas(): void {
   if (!save) return;
+  const restoreFocus = capturePanelRefillFocus(document.getElementById('atlaspanel')!, ['data-atlas-travel', 'data-atlas-favorite']);
   const rows = save.logMap;
   fillPanel('atlas',
     `<h3>Star Atlas <span style="color:#7ec8f0" data-sel="atlas-count">${rows.length}</span></h3>` +
@@ -3709,6 +3713,7 @@ function fillAtlas(): void {
           + `<button type="button" data-atlas-favorite="${esc(id)}" aria-pressed="${favorite}" aria-label="${favoriteLabel}: ${esc(String(e.title || id))}"${favoriteUnavailable ? ' disabled aria-disabled="true"' : ''}>${favorite ? '★ Favorite' : '☆ Favorite'}</button>`
           + '</div></div>';
       }).join('')));
+  restoreFocus();
 }
 document.getElementById('atlaspanel')!.addEventListener('click', async (e) => {
   if (!save || !(e.target instanceof Element)) return;
@@ -3741,6 +3746,7 @@ document.getElementById('atlaspanel')!.addEventListener('click', async (e) => {
    only real v2 actions; never render the unported canonical copy directly. */
 function fillCharters(): void {
   if (!save) return;
+  const restoreFocus = capturePanelRefillFocus(document.getElementById('chpanel')!, ['data-starter-charter-accept']);
   const projection = projectV2Charter(save.ascCh, save.ascProg, ascStage());
   const chapter = !projection
     ? '<div class="centry" data-sel="charter-ch" data-chstate="complete">' +
@@ -3775,6 +3781,7 @@ function fillCharters(): void {
     starterProjection.kind !== 'projected'
       || starterProjection.board.acceptedCount >= starterProjection.board.cap,
   );
+  restoreFocus();
 }
 registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
 document.getElementById('chpanel')!.addEventListener('click', (event) => {
@@ -8487,26 +8494,35 @@ async function persistView(
   heartbeatCycleOwner: typeof F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER | null = null,
   lifecycleCheckpointOwner: typeof F4_LIFECYCLE_CHECKPOINT_OWNER | null = null,
 ): Promise<boolean> {
-  if (namedSearchPersistenceHeld && replacementOwner === null
-    && intent === 'ordinary' && heartbeatCycleOwner === null
-    && lifecycleCheckpointOwner !== F4_LIFECYCLE_CHECKPOINT_OWNER) {
-    /* An ordinary checkpoint (including a settings debounce) that fires while
-       an accepted custom name is settling must
-       not become the activePersist tail that self-refuses its immediately
-       submitted route. The route transaction persists the joined successor;
-       re-arm one ordinary checkpoint afterward for any unrelated live field. */
-    namedSearchPersistenceDeferred = true;
-    return false;
-  }
-  if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
-    || !f4RuntimeMayMutate() || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
+  const admitted = (): boolean => {
+    if (namedSearchPersistenceHeld && replacementOwner === null
+      && intent === 'ordinary' && heartbeatCycleOwner === null
+      && lifecycleCheckpointOwner !== F4_LIFECYCLE_CHECKPOINT_OWNER) {
+      /* An ordinary checkpoint (including a settings debounce) that fires while
+         an accepted custom name is settling must
+         not become the activePersist tail that self-refuses its immediately
+         submitted route. The route transaction persists the joined successor;
+         re-arm one ordinary checkpoint afterward for any unrelated live field. */
+      namedSearchPersistenceDeferred = true;
+      return false;
+    }
+    if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
+      || !f4RuntimeMayMutate() || (replacementTransaction && replacementTransaction !== replacementOwner)
+      || (replacementOwner !== null && replacementTransaction !== replacementOwner)) return false;
+    return true;
+  };
+  if (!admitted()) return false;
   const write = async (): Promise<boolean> => {
     let epochStage: EcologyEpochStage | null = null;
     let durable = false;
     try {
+      // A queued predecessor may have handed authority to Import or Training.
+      if (!admitted()) return false;
       if (heartbeatCycleOwner !== F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER) {
         await settleF4Heartbeat();
       }
+      // No candidate/stage may be built from admission that predates an await.
+      if (!admitted()) return false;
       const runtime = f4Runtime;
       if (!f4RuntimeMayMutate(runtime)) return false;
       const staged = ecologyEpochAuthority.stage(ecologyActivePlayNow(), intent);
@@ -9582,9 +9598,6 @@ async function runArc9AtlasFavoriteChange(
     if (activePersist === actionBarrier) activePersist = null;
     if (openPanelId() === 'atlas') {
       fillAtlas();
-      document.querySelector<HTMLElement>(
-        `#atlaspanel [data-atlas-favorite="${CSS.escape(atlasId)}"]`,
-      )?.focus();
     }
   }
 }

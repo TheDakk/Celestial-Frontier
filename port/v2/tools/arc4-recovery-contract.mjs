@@ -41,9 +41,9 @@ const ARC4_RECOVERY_PERTAR_DEDICATED_SOURCE_SHA256 =
 const ARC4_RECOVERY_PERTAR_PHASE_SOURCE_SHA256 =
   'b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e';
 const ARC4_RECOVERY_COLLECTOR_PRODUCTION_SOURCE_SHA256 =
-  '562d6bbeaa027f80e00362ff5a4e7693f5dcd5c3128533a7c3de008f9392a53c';
+  '91224f5dc68a90811e6fa7f85d1f8b81edbf6bfa2cbf802d741bf4679538d664';
 const ARC4_RECOVERY_COLLECTOR_SOURCE_SHA256 =
-  '8bea3d366639d6cdcf426dabcd7ebf810cc01322d5da5eeab55bd1bedf05ad77';
+  'd588a548e34b3503ee69d3a052c2077dd216e5a159f36da90790c022281aa40a';
 export const ARC4_RECOVERY_PRECONDITION_CHECK_KEYS = Object.freeze([
   'captured', 'routeSettled', 'durableEvidence', 'fixtureIdentity', 'route',
   'renderedReceipt', 'authorityReady', 'activePlayProjection',

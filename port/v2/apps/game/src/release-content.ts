@@ -908,6 +908,7 @@ export const V2_DRAFT_RELEASE = Object.freeze({
     Object.freeze({
       category: 'Bug Fixes',
       bullets: Object.freeze([
+        '⌨ KEEP YOUR PLACE AS THE BOARDS REFRESH: Records, Star Atlas, and Charters preserve the current keyboard control without scrolling to it; an action that disappears or becomes unavailable returns focus to Close. A finished Favorite save no longer takes focus back after you move elsewhere. Queued saves also recheck current save, Training, import, and replacement permissions before preparing a write.',
         '📱 PRIME KEEPS ITS OWN PHONE SKY: On phones, Prime Codex now follows the live measured topbar in its own centered tier, with the trail beneath it. The minimum-44-pixel control clears the explorer, HP, and Search row without expanding the ten-control, five-by-two dock, then yields cleanly while Survey or a dock panel is open.',
         '⏳ SETTLING IS NOT READ-ONLY: If one durable expedition action is still in flight, another mutating press now says that the action is settling and asks you to stay on that location. Read-only expedition is reserved for actual save-authority loss; inspection and Survey Close remain available.',
         '🐾 CAPTURE ACTIONS STAY READY AFTER PROGRESS: When a durable Tame, Scavenge, or Sample also settles new achievement or rank progress, the still-open Survey now republishes its exact current Biosphere actions after that follow-up receipt releases. Eligible actions no longer remain disabled until a later heartbeat or card reopen.',

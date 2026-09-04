@@ -356,7 +356,8 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     }
     const collector = source('glassmatrix.mjs');
     expect(collector).toContain(
-      "const singletonPrefixes = ['--viewport=', '--slice-run=', '--verify-run=', '--profile='];",
+      "const singletonPrefixes = ['--viewport=', '--slice-run=', '--verify-run=', '--profile=',\n"
+      + "  '--verify-targeted-run=', '--browser='];",
     );
     expect(collector).toContain('|| (profileArg && !selectedAssuranceProfile)');
     expect(collector).toContain('|| (sliceRunArg && !selectedSliceRunId)');

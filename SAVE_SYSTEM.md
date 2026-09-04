@@ -1,5 +1,24 @@
 # Celestial Frontier — Save System
 
+## Current v2 checkpoint admission
+
+Matches code as of **2026-09-04** (`port/v2/apps/game/src/main.ts`, `persistView`).
+The same admission predicate runs at invocation, when a queued write starts, and after its
+F4 heartbeat settles, before any ecology stage, candidate projection or commit. It refuses
+protected persistence, held Training checkpoints, in-flight import, pending replacement reload,
+lost runtime write authority and conflicting or released replacement claims. A replacement
+checkpoint requires its exact still-current claim, not merely a matching reason string.
+
+Named-search ordinary checkpoints still set the deferred/rearm latch; private heartbeat-cycle
+and pagehide-lifecycle owners retain their narrow exemptions without bypassing Training or
+replacement protection. Import still drains the existing active-write tail before replacement;
+a refused replacement still rearms the Settings debounce its own claim canceled. Save shape,
+receipts, CAS, publication-after-durability and recovery are unchanged. This is admission
+defense in depth, not evidence that imported saves were previously corrupted.
+
+The dated evidence checkpoints below retain their original scope; `ROADMAP.md` owns current
+integration and verification status.
+
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated save/evidence blocks below remain immutable):** hosted run `33584052508` tested exact
 > head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
@@ -1565,8 +1584,9 @@
 > deployment/version authority follows.
 > No save-format or version change is involved.
 
-**STATUS:** legacy sections match `main.js` as of 2026-07-31; the current v2 overlay
-matches `port/v2` as of 2026-08-30. ⚠ Read the v1.8.7 section (a reverted
+**STATUS:** legacy sections match `main.js` as of 2026-07-31; current v2 checkpoint
+admission above matches `port/v2` as of 2026-09-04. Other dated overlays retain their
+original evidence scope. ⚠ Read the v1.8.7 section (a reverted
 `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`,
 harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated
