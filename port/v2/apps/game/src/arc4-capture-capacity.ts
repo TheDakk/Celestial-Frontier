@@ -18,6 +18,7 @@ import {
   isCapturePreflightReadyV1,
   ownershipStateDigestV1,
   ownershipStateDigestV2,
+  ownershipSourceStateV1,
   planCaptureV1,
   projectCaptureCapacityScenariosV1,
   sha256Hex,
@@ -44,7 +45,7 @@ import {
   canonicalizeV5Extensions,
   isF4MultiOutcomePreDrawSettlementAuthorizerForCodec,
   prepareArc4OwnershipWrite,
-  prepareArc5OwnershipMigrationSuccessor,
+  prepareArc5CaptureOwnershipMigrationSuccessor,
   prepareF4AuthorityUpdate,
   projectArc4GuardianLegacyOwnershipMirrorV1,
   projectF4MultiOutcomeDrawAdvance,
@@ -83,6 +84,20 @@ export const ARC4_FIRST_SPECIES_STARDUST_TIER_MIN = 5 as const;
 export const ARC4_MAX_STARDUST_COUNTER = 1_000_000_000 as const;
 export const ARC4_CAPTURE_RECEIPT_KIND = 'capture-attempt' as const;
 
+export interface Arc4CaptureScoutXpFactV1 {
+  readonly schema: 'cf-v2-arc4-capture-scout-xp/v1';
+  readonly firstForSpecies: boolean;
+  readonly scoutCreatureId: string | null;
+  readonly xpBefore: number | null;
+  readonly xpAfter: number | null;
+  /** Nominal award; the applied delta may be smaller at the XP ceiling. */
+  readonly xpAward: 0 | 2;
+  readonly sourceParentDigest: string;
+  readonly sourceSuccessorDigest: string;
+  readonly ownershipParentDigest: string;
+  readonly ownershipSuccessorDigest: string;
+}
+
 export type Arc4CaptureCapacityRefusalReason =
   | 'preflight-unregistered'
   | 'input-invalid'
@@ -109,6 +124,7 @@ export interface Arc4CaptureCertifiedScenarioV1 {
   readonly tier: number | null;
   readonly stardustReward: number;
   readonly charterBioscanBanked: boolean;
+  readonly scoutXp: Arc4CaptureScoutXpFactV1;
   readonly successorDigest: string;
   readonly ownershipV2Digest: string;
   readonly ownershipWritesDigest: string;
@@ -173,6 +189,8 @@ export type Arc4CaptureSettlementOutcome =
     ownershipV2Digest: string;
     stardustReward: number;
     charterBioscanBanked: boolean;
+    scoutXp: Arc4CaptureScoutXpFactV1;
+    witness: string;
     derivation: F4OutcomeDerivation;
     prepared: PreparedV5SaveWrite;
     authorization: F4MultiOutcomePreDrawAuthorizedSettlement;
@@ -678,19 +696,23 @@ function assertExactArc5MigrationSuccessor(
   base: V5Extensions,
   parent: OwnershipStateV2,
   ownership: Readonly<{ writes: readonly V5ExtensionWrite[]; extensions: V5Extensions }>,
+  scenarios: CaptureCapacityScenariosV1,
+  scenarioIndex: number,
   scenario: CaptureCapacityScenarioV1,
 ): Readonly<{
+  state: OwnershipStateV2;
   stateDigest: string;
   evidence: Arc5OwnershipMigrationEvidenceV2;
   writes: readonly V5ExtensionWrite[];
   combinedWrites: readonly V5ExtensionWrite[];
   extensions: V5Extensions;
 }> {
-  const prepared = prepareArc5OwnershipMigrationSuccessor({
+  const prepared = prepareArc5CaptureOwnershipMigrationSuccessor({
     baseExtensions: base,
     parent,
     successorExtensions: ownership.extensions,
-    successor: scenario.successor,
+    scenarios,
+    scenarioIndex,
     resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   });
   if (prepared.kind !== 'prepared') {
@@ -736,11 +758,77 @@ function assertExactArc5MigrationSuccessor(
     );
   }
   return Object.freeze({
+    state: prepared.state,
     stateDigest,
     evidence: prepared.evidence,
     writes: prepared.writes,
     combinedWrites,
     extensions: prepared.extensions,
+  });
+}
+
+function captureScoutXpFact(
+  parent: OwnershipStateV2,
+  successor: OwnershipStateV2,
+  scenario: CaptureCapacityScenarioV1,
+): Arc4CaptureScoutXpFactV1 {
+  const scoutCreatureId = parent.scoutCreatureId;
+  const before = scoutCreatureId === null
+    ? null : parent.creatures.find((row) => row.creatureId === scoutCreatureId) ?? null;
+  const after = scoutCreatureId === null
+    ? null : successor.creatures.find((row) => row.creatureId === scoutCreatureId) ?? null;
+  if ((scoutCreatureId !== null && (before === null || after === null))
+    || successor.scoutCreatureId !== scoutCreatureId) {
+    throw new CapacityRefusal(
+      'arc5-migration:target-corrupt',
+      'capture Arc 5 successor lost its pre-action Field Scout',
+    );
+  }
+  const eligible = scenario.kind === 'hit'
+    && scenario.firstForSpecies
+    && scoutCreatureId !== null;
+  const xpBefore = before === null ? null : before.xp ?? 0;
+  const xpAfter = after === null ? null : after.xp ?? 0;
+  const expectedAfter = xpBefore === null ? null : eligible
+    ? Math.min(486, xpBefore + 2) : xpBefore;
+  if (xpAfter !== expectedAfter) {
+    throw new CapacityRefusal(
+      'arc5-migration:target-corrupt',
+      'capture Arc 5 successor changed Field Scout XP incorrectly',
+    );
+  }
+  if (before !== null && after !== null
+    && !sameJson({ ...before, xp: after.xp }, after)) {
+    throw new CapacityRefusal(
+      'arc5-migration:target-corrupt',
+      'capture Arc 5 successor changed a Field Scout field other than XP',
+    );
+  }
+  return Object.freeze({
+    schema: 'cf-v2-arc4-capture-scout-xp/v1',
+    firstForSpecies: scenario.firstForSpecies,
+    scoutCreatureId,
+    xpBefore,
+    xpAfter,
+    xpAward: eligible ? 2 : 0,
+    sourceParentDigest: ownershipStateDigestV1(ownershipSourceStateV1(parent)),
+    sourceSuccessorDigest: scenario.successorDigest,
+    ownershipParentDigest: ownershipStateDigestV2(parent),
+    ownershipSuccessorDigest: ownershipStateDigestV2(successor),
+  });
+}
+
+function captureSettlementWitness(
+  plan: CaptureAttemptPlanV1,
+  row: Arc4CaptureCertifiedScenarioV1,
+): string {
+  return canonicalJson({
+    schema: 'cf-v2-arc4-capture-settlement-witness/v1',
+    captureWitness: plan.witness,
+    successorDigest: row.successorDigest,
+    ownershipV2Digest: row.ownershipV2Digest,
+    arc5MigrationWritesDigest: row.arc5MigrationWritesDigest,
+    scoutXp: row.scoutXp as unknown as CanonicalJson,
   });
 }
 
@@ -796,6 +884,8 @@ function scenarioIdentity(scenario: CaptureCapacityScenarioV1): Readonly<{
 
 function prepareScenario(
   scenario: CaptureCapacityScenarioV1,
+  scenarios: CaptureCapacityScenariosV1,
+  scenarioIndex: number,
   sourceOwnership: OwnershipStateV1,
   address: CanonicalCF1WorldAddress,
   parent: OwnershipStateV2,
@@ -809,6 +899,8 @@ function prepareScenario(
     sourceExtensions,
     parent,
     ownership,
+    scenarios,
+    scenarioIndex,
     scenario,
   );
   const mirror = projectArc4GuardianLegacyOwnershipMirrorV1(
@@ -879,6 +971,7 @@ function prepareScenario(
     tier: scenario.tier,
     stardustReward,
     charterBioscanBanked: staged.charterBioscanBanked,
+    scoutXp: captureScoutXpFact(parent, arc5.state, scenario),
     successorDigest: scenario.successorDigest,
     ownershipV2Digest: arc5.stateDigest,
     ownershipWritesDigest: jsonDigest(ownership.writes),
@@ -951,10 +1044,13 @@ export function certifyArc4CaptureCapacityV1(
   }
   const rows: Arc4CaptureCertifiedScenarioV1[] = [];
   const preparedScenarios: PreparedScenarioV1[] = [];
-  for (const scenario of scenarios.scenarios) {
+  for (let scenarioIndex = 0; scenarioIndex < scenarios.scenarios.length; scenarioIndex++) {
+    const scenario = scenarios.scenarios[scenarioIndex]!;
     try {
       const prepared = prepareScenario(
         scenario,
+        scenarios,
+        scenarioIndex,
         preflight.snapshot.ownership,
         preflight.snapshot.address,
         captured.parent,
@@ -1118,10 +1214,11 @@ export function settleCertifiedArc4CaptureV1(
     || selected.publicRow !== certifiedRow) {
     return Object.freeze({ kind: 'refused', reason: 'selected-scenario-uncertified' });
   }
+  const witness = captureSettlementWitness(planned.plan, selected.publicRow);
   const derivation: F4OutcomeDerivation = Object.freeze({
     state: selected.state,
     extensionWrites: selected.extensionWrites,
-    witness: planned.plan.witness,
+    witness,
   });
   let authorization: F4MultiOutcomePreDrawAuthorizedSettlement;
   try {
@@ -1135,6 +1232,8 @@ export function settleCertifiedArc4CaptureV1(
     ownershipV2Digest: selected.publicRow.ownershipV2Digest,
     stardustReward: selected.publicRow.stardustReward,
     charterBioscanBanked: selected.publicRow.charterBioscanBanked,
+    scoutXp: selected.publicRow.scoutXp,
+    witness,
     derivation: authorization.derivation,
     prepared: authorization.prepared,
     authorization,

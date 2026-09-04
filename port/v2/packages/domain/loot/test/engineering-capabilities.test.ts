@@ -22,8 +22,14 @@ const sourceActionId = makeGearSourceActionId({
 function equippedInventory() {
   const migrated = migrateLegacyGear({
     sourceActionId,
-    itemCounts: [['rig3', 1], ['headlamp', 1], ['cg-corona', 1]],
-    equipped: { tool: 'rig3', helmet: 'headlamp', suit: 'cg-corona' },
+    itemCounts: [
+      ['rig3', 1], ['headlamp', 1], ['cg-corona', 1],
+      ['prismpendant', 1], ['cg-void', 1],
+    ],
+    equipped: {
+      tool: 'rig3', helmet: 'headlamp', suit: 'cg-corona',
+      necklace: 'prismpendant', legs: 'cg-void',
+    },
     equippedAffixes: { tool: { k: 'yield', v: 0.25, forId: 'rig3' } },
   });
   return decodeGearInventory(JSON.stringify({
@@ -67,15 +73,18 @@ describe('@cf/domain-loot — registered engineering capabilities', () => {
       schema: 'cf-v2-engineering-capabilities/v1',
       inventoryRevision: 7,
       miningYieldBonus: 2.25,
-      richStrikeChanceBonus: 0.06,
+      richStrikeChanceBonus: 0.08,
       autoExtractor: true,
       jumpDrive: true,
       coronaScoop: true,
       stellarSkimBonus: 1,
       stellarSkimGuard: true,
+      explorerMealHealBonus: 0.2,
+      bioscanDamageReduction: 0.7,
+      travelSpeedBonus: 1,
     });
     expect(capabilities.systemIds).toEqual(['jumpdrive', 'autoext', 'cscoop']);
-    expect(capabilities.equippedInstanceIds).toHaveLength(3);
+    expect(capabilities.equippedInstanceIds).toHaveLength(5);
     expect(capabilities.fingerprint).toMatch(/^ec1:/);
     expect(Object.isFrozen(capabilities)).toBe(true);
     expect(Object.isFrozen(capabilities.equippedInstanceIds)).toBe(true);

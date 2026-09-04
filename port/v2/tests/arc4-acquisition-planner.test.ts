@@ -31,6 +31,7 @@ import {
   isOwnershipSuccessorV1,
   migrateLegacyOwnershipStateV1,
   ownershipStateDigestV1,
+  ownershipSourceStateV1,
   ownershipContentId,
   planCaptureV1,
   preflightCaptureV1,
@@ -74,6 +75,7 @@ import {
   importSaveV2,
   prepareArc2LootLegacyMigration,
   prepareArc2FixedFabrication,
+  prepareArc5CaptureOwnershipMigrationSuccessor,
   prepareArc5OwnershipMigration,
   prepareF4AuthorityUpdate,
   prepareV5SaveWrite,
@@ -101,6 +103,7 @@ import {
   composeCaptureDrawBundleV1,
 } from '../apps/game/src/acquisition-snapshot.js';
 import { registerAcquisitionSnapshotV1 } from '@cf/domain-acquisition/snapshot-internal';
+import { createCaptureOwnershipSourceProjectionSuccessorV2 } from '@cf/domain-acquisition/ownership-v2-internal';
 import {
   canonicalWorldRoster,
   canonicalWorldRosterForDiagnostics,
@@ -796,6 +799,8 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
       './snapshot-internal': './src/snapshot-internal.ts',
       './ownership-v2-internal': './src/ownership-v2-internal.ts',
       './feed-internal': './src/feed.ts',
+      './explorer-meal-internal': './src/explorer-meal.ts',
+      './bioscan-internal': './src/bioscan.ts',
       './breed-internal': './src/breed.ts',
       './rename-internal': './src/rename.ts',
       './combat-settlement-internal': './src/combat-settlement-internal.ts',
@@ -1704,6 +1709,29 @@ describe('Arc 4 exact capture formula and truthful successor', () => {
       .toEqual(preflight.pool);
     expect(projected.scenarios.every((scenario) => !('candidateDraw' in scenario)
       && !('successDraw' in scenario))).toBe(true);
+    const parent = currentArc5Parent(extensions);
+    const projectedHit = createCaptureOwnershipSourceProjectionSuccessorV2(parent, projected, 1);
+    expect(projectedHit.revision).toBe(parent.revision + 1);
+    expect(ownershipStateDigestV1(ownershipSourceStateV1(projectedHit)))
+      .toBe(projected.scenarios[1]?.successorDigest);
+    expect(() => createCaptureOwnershipSourceProjectionSuccessorV2(
+      parent,
+      { ...projected },
+      1,
+    )).toThrow(/registered scenario authority/u);
+    expect(() => createCaptureOwnershipSourceProjectionSuccessorV2(
+      parent,
+      projected,
+      projected.scenarios.length,
+    )).toThrow(/out of range/u);
+    expect(prepareArc5CaptureOwnershipMigrationSuccessor({
+      baseExtensions: extensions,
+      parent: { ...parent } as OwnershipStateV2,
+      successorExtensions: extensions,
+      scenarios: projected,
+      scenarioIndex: 1,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    })).toEqual({ kind: 'protected', reason: 'base-corrupt' });
 
     const draws = composeCaptureDrawBundleV1(preflight, extensions);
     if (draws.kind !== 'planned') throw new Error(`scenario draws were ${draws.reason}`);

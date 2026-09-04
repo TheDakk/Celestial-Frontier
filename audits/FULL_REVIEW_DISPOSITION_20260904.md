@@ -80,7 +80,7 @@ and policy changes. **Open** means not yet implemented/verified, not silently re
 | P1-lists | Shared key inventories | Open deduplication where ownership is genuinely the same. Keep independently authored expectations where they detect a missing producer field. |
 | P1-windows | npm.cmd / browser discovery / docs | Three direct npm callers now share the safe invocation owner; four platform/mock tests pass. Windows Chrome resolver change remains deferred because resolver bytes are measurement-authority inputs; actual Windows verification remains open. |
 | P1-audio | Voice watchdog | Implemented locally and fake-clock verified: optional finite bound, one injected earliest wake, exact existing cleanup, lifecycle/stale-callback controls and finite caller integration. Native-device scheduling/listening remains open. |
-| P1-tests | Layering/targeted domain gaps | Assessment complete: naming/worldconfig already have direct parity in starcatalog; mint import ownership and Guardian clone refusal already tested. Remaining narrow gaps are malformed/shallow-frozen mint registration and public-registry clone refusal, plus three WorldConfig anchor/freeze assertions. No duplicate blanket suite. |
+| P1-tests | Layering/targeted domain gaps | Implemented locally without a duplicate blanket suite: world-identity authority tests now reject malformed/shallow-frozen privileged mint input, retain only the exact deeply frozen registered object and refuse structural/public-registry clones. Star-catalog parity now pins `GCELL=42`, `SOL_POS={560,170}` and frozen home/Sol anchors. Focused tests pass; naming and the remaining world configuration parity stay with their existing direct owners. |
 | P2-phone | Allocation/navigation/cache/boot | Open measured performance work. Review every save consumer before replacing immediate commits with debounce; preserve travel durability. |
 | P2-main | Extract main.ts | Open incremental extraction along existing owners. Generic action coordinator cannot erase domain-specific CAS, publication and recovery guarantees. |
 | P2-tools | Instrument diet | Open duplication/ownership audit; keep historical failure replay, determinism/save safety/art locks. No arbitrary line target or deletion based only on not being in CI. |
@@ -319,3 +319,53 @@ selection narrative. All unrelated/historical/numeric fields are unchanged. Diff
 This completed batch is ready for a local signed commit; exact SHA is reported at Git handoff.
 Remaining campaign work is still open. Research restoration, combat modifier/reward choices,
 fast-lane coverage and real-device/HUMAN acceptance are not inferred from these local checks.
+
+## Local batch 4 — connected research, living-world actions and expedition records
+
+Base is signed `8bf9c45d4aae74a6924bcdc201424db0af4770e6`; this is its local working-copy
+successor, not an exact-source browser certificate or release candidate.
+
+- All six existing Research rows remain the canonical rows with their authored costs and
+  prerequisites. Reinforced Hull reduces only hostile Bioscan wounds by 25%; Xenobotany adds one
+  point only to a safe explorer Flora meal; Fusion, Antimatter and Warp Fold select the existing
+  2x/4x/8x travel-presentation ladder. Existing permanent Jump Drive reach is unchanged. Worn
+  `heal`, `scut` and `speed` capabilities join only their named effects.
+- The analytical economy source model now derives Mine/Skim availability, fixed recipes,
+  Research and connected effects from canonical opportunity, inventory and Engineering facts.
+  Deep Scanner prerequisite authority comes only from canonical owned-item counts. A retained
+  deterministic scenario fixture proves representative source/effect rows without adding random
+  loot, sockets, upgrades or new reward tables.
+- A living-world survey exposes explicit **Discover Life**. Ordinary inspection remains read-only;
+  the native action completes one existing Survey settlement and one deterministic hostile-hazard
+  draw in one F4 receipt/CAS. Reinforced Hull and worn protection affect only the disclosed wound.
+  A standing Scout intercepts at no worse than Critical; otherwise the explorer remains at least
+  1 HP. Hostile survival joins `survivor` and re-runs aggregate/rank projection inside that same
+  receipt, so durable state and ceremony agree without a second write or reroll. Capture/Yield,
+  loot and the accepted `st-scan` Charter remain separate owners.
+- One real owned Flora detail can consume one canonical specimen as an explorer meal. A safe meal
+  applies worn healing and permanent seeded-stat nourishment; poison heals/grows nothing and is
+  nonlethal. `fieldmedic` and high-risk-safe `gambler` join only from the verified meal result.
+  Companion Feed, genomes, creature identity and lineage are unchanged.
+- The exact Field Scout standing before a successful genuinely-first-species capture earns up to
+  +2 XP, capped at 486, in the same durable capture receipt. No Scout, miss or repeat earns XP.
+  Independent review corrected a pre-existing app assumption that Arc 4 and Arc 5 revisions must
+  be equal: each successor now proves its own retained parent +1 and the V1/source projection must
+  still agree. This permits legitimate prior Feed/Breed/Rename/Scout changes without weakening
+  capture publication. A forged Arc 5 parent fails closed.
+- Expedition Records now include a read-only bounded Chronicle & Museum: separate latest-first
+  battle and Legacy Journal galleries plus authority-order first-species discovery and Prime
+  galleries, each capped at 60. It creates no save field, chronology, reward, mission or share
+  card. Arc 9 now has 26 exact live event joins; only `daily` and `decade` remain blocked pending
+  their deliberate time/event authority.
+- The review's narrow world-identity test gaps are closed directly: privileged mint registration
+  refuses malformed/shallow-frozen inputs and public clones, while the exact frozen registry
+  object is retained; star-catalog parity pins and freezes the Sol/home configuration anchors.
+
+Independent bounded review is clear for Scout/capture (**96/96**) and for Bioscan/meal/travel
+(**30/30**). Final composed-source closure is **364/364** across 39 affected test files;
+Guide/Training is **47/47** and the Slice/Glass copy contracts are **95/95**. All three TypeScript
+programs, the Glass selftest and diff check pass. Root validation renders all 1,010 V1 species with
+zero errors and retains all 50 V1 fingerprints. The v2 draft remains 78 unique ordered bullets,
+SHA-256 `198bddf5c969151eba3ad9358cbcd016be0fd7c26b4e8524953892bf40484587`.
+The exact local commit is recorded in the session handoff after creation. No full profile/browser
+chain, hosted action, version bump, release or deployment is claimed here.

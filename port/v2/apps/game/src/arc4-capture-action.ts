@@ -95,6 +95,7 @@ interface Arc4CapturePendingEvidencePayloadV1 {
   readonly preflight: CapturePreflightReadyV1;
   readonly capturePlan: Arc4CaptureDerivedSettlementV1['plan'];
   readonly settlement: Arc4CaptureDerivedSettlementV1;
+  readonly ownershipV2Parent: OwnershipStateV2;
   readonly sourceDraft: SaveStateV2;
   readonly sourceDraftFingerprint: string;
   readonly preparedFingerprint: string;
@@ -420,6 +421,7 @@ export async function commitArc4CaptureAttemptV1(
           preflight,
           capturePlan: settlement.plan,
           settlement,
+          ownershipV2Parent: captured.ownershipV2,
           sourceDraft: preDraw.draft,
           sourceDraftFingerprint: jsonFingerprint(
             preDraw.draft,
@@ -509,6 +511,7 @@ export type Arc4CaptureCommittedMismatchDetailV1 =
   | 'stardust-balance-mismatch'
   | 'stardust-earned-mismatch'
   | 'charter-bioscan-mismatch'
+  | 'scout-xp-mismatch'
   | 'verification-error';
 
 export type Arc4CaptureCommittedVerificationV1 =
@@ -522,6 +525,7 @@ export type Arc4CaptureCommittedVerificationV1 =
     plan: Arc4CaptureDerivedSettlementV1['plan'];
     stardustReward: number;
     charterBioscanBanked: boolean;
+    scoutXp: Arc4CaptureDerivedSettlementV1['scoutXp'];
   }>
   | Readonly<{
     kind: 'mismatch';
@@ -570,8 +574,8 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
   if (transaction.receipt.kind !== ARC4_CAPTURE_RECEIPT_KIND) {
     return mismatch('transaction-receipt-kind-mismatch');
   }
-  if (transaction.receipt.witness !== settlement.plan.witness
-    || settlement.derivation.witness !== settlement.plan.witness) {
+  if (transaction.receipt.witness !== settlement.witness
+    || settlement.derivation.witness !== settlement.witness) {
     return mismatch('transaction-receipt-witness-mismatch');
   }
   if (!sameJson(transaction.saved, settlement.prepared)
@@ -716,6 +720,36 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
     || !sameJson(arc5.evidence, expectedArc5.evidence)) {
     return mismatch('arc5-migration-successor-mismatch');
   }
+  const scoutXp = settlement.scoutXp;
+  const ownershipParent = evidencePayload.ownershipV2Parent;
+  const parentScout = ownershipParent.scoutCreatureId === null
+    ? null : ownershipParent.creatures.find(
+      (row) => row.creatureId === ownershipParent.scoutCreatureId,
+    ) ?? null;
+  const committedScout = arc5.state.scoutCreatureId === null
+    ? null : arc5.state.creatures.find((row) => row.creatureId === arc5.state.scoutCreatureId) ?? null;
+  const expectedAward = settlement.plan.hit
+    && settlement.plan.firstForSpecies
+    && ownershipParent.scoutCreatureId !== null ? 2 : 0;
+  const expectedBefore = parentScout === null ? null : parentScout.xp ?? 0;
+  const expectedAfter = expectedBefore === null ? null
+    : Math.min(486, expectedBefore + expectedAward);
+  if (scoutXp.firstForSpecies !== settlement.plan.firstForSpecies
+    || scoutXp.scoutCreatureId !== ownershipParent.scoutCreatureId
+    || arc5.state.scoutCreatureId !== ownershipParent.scoutCreatureId
+    || scoutXp.xpAward !== expectedAward
+    || scoutXp.xpBefore !== expectedBefore
+    || scoutXp.xpAfter !== expectedAfter
+    || (scoutXp.scoutCreatureId !== null && (parentScout === null || committedScout === null))
+    || (committedScout !== null && (committedScout.xp ?? 0) !== expectedAfter)
+    || (parentScout !== null && committedScout !== null
+      && !sameJson({ ...parentScout, xp: committedScout.xp }, committedScout))
+    || scoutXp.sourceParentDigest !== preflight.snapshot.ownershipDigest
+    || scoutXp.sourceSuccessorDigest !== ownershipStateDigestV1(ownership.state)
+    || scoutXp.ownershipParentDigest !== ownershipStateDigestV2(ownershipParent)
+    || scoutXp.ownershipSuccessorDigest !== ownershipStateDigestV2(arc5.state)) {
+    return mismatch('scout-xp-mismatch');
+  }
   return Object.freeze({
     kind: 'verified',
     durability: 'committed',
@@ -726,6 +760,7 @@ function verifyArc4CommittedCaptureCheckedV1(input: Readonly<{
     plan: settlement.plan,
     stardustReward: expectedReward,
     charterBioscanBanked: settlement.charterBioscanBanked,
+    scoutXp,
   });
 }
 

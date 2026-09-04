@@ -52,6 +52,20 @@ import {
   type CompendiumFeedSurfaceReceiptV1,
 } from './compendium-feed.js';
 import {
+  COMPENDIUM_EXPLORER_MEAL_OUTCOME_SCHEMA_V1,
+  CompendiumExplorerMealController,
+  projectCompendiumExplorerMealV1,
+  type CompendiumExplorerMealModelV1,
+  type CompendiumExplorerMealOutcomeV1,
+  type CompendiumExplorerMealRequestV1,
+  type CompendiumExplorerMealSurfaceV1,
+} from './compendium-explorer-meal.js';
+import {
+  commitArc5ExplorerMealActionV1,
+  publishArc5ExplorerMealAchievementFields,
+  type Arc5ExplorerMealActionOutcomeV1,
+} from './explorer-meal-action.js';
+import {
   CompendiumAuditionController,
   projectCompendiumAuditionV1,
   type CompendiumAuditionActionRequestV1,
@@ -137,7 +151,11 @@ import { createSceneText } from './scene-text.js';
 import {
   shipVisualStateKey,
 } from './shipyard-preview.js';
-import { canonicalWorldRoster, type CanonicalWorldRoster } from './world-roster.js';
+import {
+  canonicalWorldRoster,
+  isCanonicalWorldRoster,
+  type CanonicalWorldRoster,
+} from './world-roster.js';
 import {
   createCurrentWorldDistantEcologyPlaybackV1,
   isCurrentWorldDistantEcologyPlaybackV1,
@@ -279,6 +297,7 @@ import {
   arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
   prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror,
   readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
+  readCombatSettlementAuthorityV1,
   canonicalWorldLandingCount, createEmptyWorldIdentityState,
   encodeWorldIdentityExtensionWrites, hasCanonicalWorldLanded,
   prepareWorldIdentityBootstrap, readWorldIdentity,
@@ -292,7 +311,7 @@ import {
   type CanonicalWorldIdentityStateV1,
 } from '@cf/persistence';
 import {
-  MAX_GEAR_CAPACITY,
+  MAX_GEAR_CAPACITY, projectEngineeringCapabilities,
 } from '@cf/domain-loot';
 import { runF3PersistenceBrowserProbe } from './f3-persistence-browser-probe.js';
 import {
@@ -333,6 +352,10 @@ import {
   createProductActionCoordinator,
   createProductActionDiagnosticHold,
 } from './product-action-coordinator.js';
+import {
+  createTravelPresentationOwner,
+  type TravelPresentationRequest,
+} from './travel-presentation.js';
 import {
   projectEngineeringPanelReadModel,
   projectOrbitalMineralSurveyRow,
@@ -489,11 +512,19 @@ import {
 } from './arc9-sharing-action.js';
 import {
   commitArc9SurveySettlementV1,
+  deriveArc9SurveyFactV1,
   operationForArc9SurveyV1,
+  prepareArc9SurveySettlementV1,
   publishArc9SurveyFieldsV1,
   type Arc9SurveyActionOutcomeV1,
   type Arc9SurveyAddressV1,
 } from './arc9-survey-action.js';
+import {
+  commitBioscanActionV1,
+  projectBioscanActionV1,
+  publishBioscanActionV1,
+  type BioscanActionProjectionV1,
+} from './bioscan-action.js';
 import { runSurveyLandHandoffV1 } from './survey-land-handoff.js';
 import {
   commitArc9AtlasFavoriteV1,
@@ -511,6 +542,10 @@ import {
 } from './arc9-travel-action.js';
 import { projectArc9RecordsRankReadModelV1 } from './records-rank-model.js';
 import { renderArc9RecordsRankPanelV1 } from './records-rank-panel.js';
+import {
+  projectExpeditionChronicleV1,
+  renderExpeditionChronicleV1,
+} from './expedition-chronicle.js';
 import {
   projectArc9NameplateSettingsV1,
   renderArc9NameplateSettingV1,
@@ -628,6 +663,23 @@ type Arc5FeedResult = Readonly<{
   ownershipRevision: number;
 }>;
 let lastArc5FeedResult: Arc5FeedResult | null = null;
+let lastArc5ExplorerMealOutcome: string | null = null;
+type Arc5ExplorerMealResult = Readonly<{
+  poisoned: boolean;
+  hpBefore: number;
+  hpAfter: number;
+  hpMaxBefore: number;
+  hpMaxAfter: number;
+  nourishedStat: 'vit' | 'fer' | 'res' | 'agi' | 'ins';
+  statIncrease: number;
+  foodLotId: string;
+  foodQuantityBefore: number;
+  foodQuantityAfter: number;
+  receiptOrdinal: number;
+  revision: number;
+  ownershipRevision: number;
+}>;
+let lastArc5ExplorerMealResult: Arc5ExplorerMealResult | null = null;
 let lastArc5BreedOutcome: string | null = null;
 type Arc5BreedResult = Readonly<{
   result: 'success' | 'failure';
@@ -1406,6 +1458,7 @@ const showF4 = async (): Promise<void> => {
   startF4Heartbeat();
 };
 addEventListener('pagehide', (event) => {
+  travelPresentationOwner.cancel();
   tameGreetingAudioOwner?.setHidden(true);
   if (!event.persisted) void tameGreetingAudioOwner?.dispose();
   stopF4Heartbeat();
@@ -1992,6 +2045,23 @@ let cardCtx: {
   star: ProvenStar;
   planet: ProvenPlanet;
 } | null = null;
+type ReadyBioscanProjectionV1 = Extract<BioscanActionProjectionV1, { readonly kind: 'ready' }>;
+type BioscanCardStateV1 =
+  | Readonly<{ kind: 'nonliving'; worldKey: string }>
+  | Readonly<{ kind: 'recorded'; worldKey: string }>
+  | Readonly<{ kind: 'unavailable'; worldKey: string; detail: string }>
+  | Readonly<{
+    kind: 'ready';
+    worldKey: string;
+    address: CanonicalCF1WorldAddress;
+    roster: CanonicalWorldRoster;
+    opportunity: WorldOpportunitySnapshot;
+    engineering: EngineeringStateV2;
+    capabilities: ReturnType<typeof projectEngineeringCapabilities>;
+    ownershipV2: OwnershipStateV2;
+    projection: ReadyBioscanProjectionV1;
+  }>;
+let currentBioscanCardState: BioscanCardStateV1 | null = null;
 interface CardTravelAction { label: 'Enter galaxy' | 'Enter system'; run: () => void; }
 let cardTravelAction: CardTravelAction | null = null;
 interface Arc6CombatSurfaceProjection {
@@ -2258,6 +2328,7 @@ function discardSurveyPresentation(reason: string): void {
   combatCardController.detach();
   combatCardController.setState(null);
   currentCapturePresentationFence = null;
+  currentBioscanCardState = null;
   currentArc6CombatProjection = null;
   currentArc6ChampionId = null;
   lastCard = null;
@@ -2492,6 +2563,49 @@ function currentVisualEffectPolicy(): VisualEffectPolicyV1 {
     || activeVisualEffectPolicy.input.motion !== motion
     || activeVisualEffectPolicy.input.deviceTier !== deviceTier) refreshVisualPolicies();
   return activeVisualEffectPolicy!;
+}
+const travelPresentationOwner = createTravelPresentationOwner({
+  document,
+  now: () => performance.now(),
+  currentVisualEffectPolicy,
+  viewport: () => ({ width: innerWidth, height: innerHeight, dpr: DPR }),
+});
+const searchTravelPresentationIntents = new WeakMap<
+  SearchTravelCommitPlan,
+  Omit<TravelPresentationRequest, 'engineeringState' | 'capabilities'>
+>();
+function captureSearchTravelPresentationIntent(plan: SearchTravelCommitPlan): void {
+  try {
+    const origin = nav.mode === 'universe' ? camT : nav.gal;
+    const destination = plan.target.gal;
+    const destinationKey = plan.focusAddress?.key
+      ?? (plan.target.mode === 'system' || plan.target.mode === 'surface'
+        ? getProvenStarKey(plan.target.star) : getProvenGalaxyKey(destination));
+    if (destinationKey === null) return;
+    searchTravelPresentationIntents.set(plan, Object.freeze({
+      distance: Math.hypot(destination.x - origin.x, destination.y - origin.y),
+      destinationKey,
+    }));
+  } catch { /* a visual intent can never reject or delay route authority */ }
+}
+function startSearchTravelPresentation(plan: SearchTravelCommitPlan): void {
+  const intent = searchTravelPresentationIntents.get(plan);
+  searchTravelPresentationIntents.delete(plan);
+  if (intent === undefined || arc3EngineeringState === null) return;
+  try {
+    const runtime = f4Runtime;
+    if (runtime === null) return;
+    const loadout = readArc2EngineeringLoadout(runtime.extensions);
+    if (loadout.kind !== 'loaded') return;
+    const presentation = travelPresentationOwner.start({
+      ...intent,
+      engineeringState: arc3EngineeringState,
+      capabilities: projectEngineeringCapabilities(loadout.loadout),
+    });
+    if (presentation?.longBurn) {
+      toast('Long burn', 'Deep-space distance stretches this lane. Research a faster drive at the Shipyard to cut the crossing.');
+    }
+  } catch { /* durability and navigation already published; presentation is fail-soft */ }
 }
 function currentCameraShakePolicy(): CameraShakePolicyV1 {
   const effectPolicy = currentVisualEffectPolicy();
@@ -3121,6 +3235,16 @@ const compendiumFeedController = new CompendiumFeedController({
     void runCompendiumFeedAction(request);
   },
 });
+const compendiumExplorerMealController = new CompendiumExplorerMealController({
+  root: document.getElementById('codexpanel')!,
+  isCurrent: (surface: CompendiumExplorerMealSurfaceV1) => (
+    codexGeneration === surface.generation
+    && codexMode === 'detail'
+    && codexDetailLogicalId === surface.logicalId
+    && openPanelId() === 'codex'
+  ),
+  onAction: (request) => { void runCompendiumExplorerMealAction(request); },
+});
 const compendiumAuditionController = new CompendiumAuditionController({
   root: document.getElementById('codexpanel')!,
   isCurrent: (surface: CompendiumAuditionSurfaceReceiptV1) => (
@@ -3209,6 +3333,32 @@ function projectCurrentCompendiumFeed(
   }
 }
 
+function projectCurrentCompendiumExplorerMeal(
+  row: readonly [string, CodexRecord],
+  generation: number,
+): CompendiumExplorerMealModelV1 | null {
+  try {
+    const runtime = f4Runtime;
+    if (runtime === null || arc3EngineeringState === null) return null;
+    const loadout = readArc2EngineeringLoadout(runtime.extensions);
+    if (loadout.kind !== 'loaded') return null;
+    return projectCompendiumExplorerMealV1({
+      generation,
+      logicalId: String(row[0]),
+      record: row[1],
+      ownership: arc5OwnershipState,
+      engineering: arc3EngineeringState,
+      capabilities: projectEngineeringCapabilities(loadout.loadout),
+      state: save,
+      protected: arc5OwnershipProtection !== null || arc3EngineeringProtection !== null
+        || !f4RuntimeMayMutate(runtime),
+      fixture: compendiumFixtureRows !== null,
+    });
+  } catch {
+    return null;
+  }
+}
+
 function projectCurrentCompendiumBreed(
   row: readonly [string, CodexRecord],
   generation: number,
@@ -3276,6 +3426,7 @@ function refreshCompendiumFeedState(): void {
   if (row === null || openPanelId() !== 'codex') {
     compendiumAuditionController.refresh();
     compendiumFeedController.refresh();
+    compendiumExplorerMealController.refresh();
     compendiumBreedController.refresh();
     compendiumRenameController.refresh();
     compendiumScoutController.refresh();
@@ -3284,16 +3435,19 @@ function refreshCompendiumFeedState(): void {
   releaseCompendiumAudition('ownership-refreshed');
   const projectedAudition = projectCurrentCompendiumAudition(row, codexGeneration);
   const projectedFeed = projectCurrentCompendiumFeed(row, codexGeneration);
+  const projectedExplorerMeal = projectCurrentCompendiumExplorerMeal(row, codexGeneration);
   const projectedBreed = projectCurrentCompendiumBreed(row, codexGeneration);
   const projectedRename = projectCurrentCompendiumRename(row, codexGeneration);
   const projectedScout = projectCurrentCompendiumScout(row, codexGeneration);
   compendiumAuditionController.setState(projectedAudition);
   compendiumFeedController.setState(projectedFeed);
+  compendiumExplorerMealController.setState(projectedExplorerMeal);
   compendiumBreedController.setState(projectedBreed);
   compendiumRenameController.setState(projectedRename);
   compendiumScoutController.setState(projectedScout);
   compendiumAuditionController.refresh();
   compendiumFeedController.refresh();
+  compendiumExplorerMealController.refresh();
   compendiumBreedController.refresh();
   compendiumRenameController.refresh();
   compendiumScoutController.refresh();
@@ -3316,6 +3470,8 @@ function closeCodexSurface(): void {
   compendiumAuditionController.setState(null);
   compendiumFeedController.detach();
   compendiumFeedController.setState(null);
+  compendiumExplorerMealController.detach();
+  compendiumExplorerMealController.setState(null);
   compendiumBreedController.detach();
   compendiumBreedController.setState(null);
   compendiumRenameController.detach();
@@ -3417,6 +3573,8 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
   compendiumAuditionController.setState(null);
   compendiumFeedController.detach();
   compendiumFeedController.setState(null);
+  compendiumExplorerMealController.detach();
+  compendiumExplorerMealController.setState(null);
   compendiumBreedController.detach();
   compendiumBreedController.setState(null);
   compendiumRenameController.detach();
@@ -3488,6 +3646,8 @@ function fillCodexDetail(idx: number): void {
   compendiumAuditionController.setState(null);
   compendiumFeedController.detach();
   compendiumFeedController.setState(null);
+  compendiumExplorerMealController.detach();
+  compendiumExplorerMealController.setState(null);
   compendiumBreedController.detach();
   compendiumBreedController.setState(null);
   compendiumRenameController.detach();
@@ -3502,6 +3662,7 @@ function fillCodexDetail(idx: number): void {
   const rarityView = projectDisplayRarity(e.tier);
   const auditionModel = projectCurrentCompendiumAudition(row, generation);
   const feedModel = projectCurrentCompendiumFeed(row, generation);
+  const explorerMealModel = projectCurrentCompendiumExplorerMeal(row, generation);
   const breedModel = projectCurrentCompendiumBreed(row, generation);
   const renameModel = projectCurrentCompendiumRename(row, generation);
   const scoutModel = projectCurrentCompendiumScout(row, generation);
@@ -3511,6 +3672,9 @@ function fillCodexDetail(idx: number): void {
   const showFeed = feedModel !== null
     && feedModel.availability !== 'non-fauna'
     && feedModel.availability !== 'fixture';
+  const showExplorerMeal = explorerMealModel !== null
+    && explorerMealModel.availability !== 'non-flora'
+    && explorerMealModel.availability !== 'fixture';
   const showBreed = breedModel !== null
     && breedModel.availability !== 'non-fauna'
     && breedModel.availability !== 'fixture';
@@ -3547,7 +3711,7 @@ function fillCodexDetail(idx: number): void {
   } catch {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
-  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}</div>`);
+  fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}</div>`);
   if (showAudition) {
     compendiumAuditionController.setState(auditionModel);
     compendiumAuditionController.attach(
@@ -3570,6 +3734,12 @@ function fillCodexDetail(idx: number): void {
     compendiumFeedController.setState(feedModel);
     compendiumFeedController.attach(
       document.querySelector<HTMLElement>('#codexpanel [data-arc5-feed-body]')!,
+    );
+  }
+  if (showExplorerMeal) {
+    compendiumExplorerMealController.setState(explorerMealModel);
+    compendiumExplorerMealController.attach(
+      document.querySelector<HTMLElement>('#codexpanel [data-arc5-explorer-meal-body]')!,
     );
   }
   if (showBreed) {
@@ -3653,13 +3823,28 @@ function fillRecords(): void {
       + '<h3>🗂 Binder</h3>'
       + '<div class="empty">The Binder is protected because its saved authority could not be verified. Nothing was changed.</div></section>';
   const binderStatus = binderClaimPanelStatus();
+  let chronicle = '<section class="expedition-chronicle" data-expedition-chronicle-protected>'
+    + '<h3>Expedition Chronicle &amp; Museum</h3>'
+    + '<div class="empty">History is protected because its current durable authorities could not be verified. Nothing was changed.</div></section>';
+  if (f4Runtime !== null && arc5OwnershipState?.mode === 'current') {
+    const combat = readCombatSettlementAuthorityV1(f4Runtime.extensions);
+    if (combat.kind === 'loaded') {
+      const projected = projectExpeditionChronicleV1({
+        save,
+        ownership: ownershipSourceStateV1(arc5OwnershipState),
+        combat: combat.authority,
+      });
+      if (projected.kind === 'projected') {
+        chronicle = renderExpeditionChronicleV1(projected.model);
+      }
+    }
+  }
   const counts: Array<[string, number]> = [
     ['galaxies seen', save.galSeen.length], ['systems charted', save.sysSeen.length],
     ['worlds landed', canonicalWorldLandingCount(worldIdentityState)], ['world types met', save.ptypesSeen.length],
     ['star kinds met', save.starKindsSeen.length], ['species catalogued', save.codex.length],
     ['surveys', save.surveyedSet.length],
   ];
-  const jr = save.journal.slice(-40).reverse();
   fillPanel('rec',
     '<h3>Expedition Records</h3>' +
     counts.map(([k, v]) => `<div class="row" style="min-height:26px"><label>${esc(k)}</label><span style="color:#7ec8f0">${v}</span></div>`).join('') +
@@ -3668,10 +3853,7 @@ function fillRecords(): void {
     binder +
     (binderStatus === null ? ''
       : `<p class="binder-action-status" role="status" aria-live="polite" aria-atomic="true">${esc(binderStatus)}</p>`) +
-    '<h3 style="margin-top:14px">Journal</h3>' +
-    (jr.length === 0
-      ? '<div class="empty" data-sel="journal-empty">No imported Journal entries yet — live Journal writing is not connected in this development slice.</div>'
-      : jr.map((j) => `<div class="centry" data-sel="journal-entry"><b>${esc(j.n)}</b><div class="sub">${esc(j.w)}</div></div>`).join('')));
+    chronicle);
   syncBoundedCollectionButtons(
     document.getElementById('recpanel')!,
     '[data-binder-claim]',
@@ -4071,6 +4253,7 @@ function publishAcceptedSearchNavigation(
   if (focusPlanet && target.mode === 'surface') {
     surveyPlanet(focusPlanet, target.star, target.planet);
   }
+  startSearchTravelPresentation(plan);
 }
 
 function galaxyNavForAcceptedSearchRoute(
@@ -4261,6 +4444,9 @@ const searchTravel = createSearchTravelController({
   mutationsBlocked: () => playerMutationsBlocked(),
   planetNodeForProof,
   commitNavigation: async (plan) => {
+    /* Capture intent-time distance before any name/route durability await.
+       The visual owner starts only after the accepted route publishes. */
+    captureSearchTravelPresentationIntent(plan);
     const { target, focusPlanet, focusAddress, customPlanetName, followedCode } = plan;
     const namedWorld = target.mode === 'surface' && focusPlanet && focusAddress && customPlanetName
       ? focusAddress : null;
@@ -6678,6 +6864,100 @@ function orbitalMineralSurveyRows(
     ? EMPTY_SURVEY_PRESENTATION_ROWS
     : Object.freeze([Object.freeze([row.key, row.value] as const)]);
 }
+function canonicalRosterForBioscanCard(
+  address: CanonicalCF1WorldAddress,
+  prepared: CanonicalWorldRoster | null,
+): CanonicalWorldRoster | null {
+  if (prepared !== null
+    && isCanonicalWorldRoster(prepared)
+    && prepared.worldKey === address.key
+    && prepared.ecologyEpoch === currentEcologyEpoch()) return prepared;
+  const result = canonicalWorldRoster(address, currentEcologyEpoch());
+  return result.ok ? result.roster : null;
+}
+function projectCurrentBioscanCardState(
+  address: CanonicalCF1WorldAddress,
+  roster: CanonicalWorldRoster | null,
+  ownedActionBarrier: Promise<boolean> | null = null,
+): BioscanCardStateV1 {
+  let facts: ReturnType<typeof deriveArc9SurveyFactV1>;
+  try { facts = deriveArc9SurveyFactV1(address); }
+  catch { return Object.freeze({ kind: 'unavailable', worldKey: address.key, detail: 'source-unproven' }); }
+  if (facts.target !== 'world' || !facts.living) {
+    return Object.freeze({ kind: 'nonliving', worldKey: address.key });
+  }
+  const survey = prepareArc9SurveySettlementV1(save, address);
+  if (survey.kind === 'current') {
+    return Object.freeze({ kind: 'recorded', worldKey: address.key });
+  }
+  if (survey.kind !== 'ready') {
+    return Object.freeze({ kind: 'unavailable', worldKey: address.key, detail: `survey:${survey.reason}` });
+  }
+  const runtime = f4Runtime;
+  const ownershipV2 = arc5OwnershipState;
+  if (roster === null || roster.worldKey !== address.key
+    || roster.ecologyEpoch !== currentEcologyEpoch()) {
+    return Object.freeze({ kind: 'unavailable', worldKey: address.key, detail: 'roster-unavailable' });
+  }
+  if (runtime === null || ownershipV2?.mode !== 'current'
+    || arc5OwnershipEvidence?.representationVersion !== ARC5_OWNERSHIP_MIGRATION_VERSION
+    || arc5OwnershipProtection !== null || arc3EngineeringState === null
+    || arc3EngineeringProtection !== null || !f4RuntimeMayMutate(runtime)
+    || activePersist !== ownedActionBarrier || importWriteInFlight || replacementTransaction
+    || replacementReloadPending || trainingCheckpointWriteHeld || trainingActive()
+    || ecologyEpochBlocksActions()) {
+    return Object.freeze({ kind: 'unavailable', worldKey: address.key, detail: 'write-authority-unavailable' });
+  }
+  try {
+    const loadout = readArc2EngineeringLoadout(runtime.extensions);
+    const combat = readCombatSettlementAuthorityV1(runtime.extensions);
+    if (loadout.kind !== 'loaded' || combat.kind !== 'loaded') {
+      return Object.freeze({ kind: 'unavailable', worldKey: address.key, detail: 'authority-unavailable' });
+    }
+    const engineering = arc3EngineeringState;
+    const capabilities = projectEngineeringCapabilities(loadout.loadout);
+    const opportunity = projectWorldOpportunity(address);
+    const projection = projectBioscanActionV1({
+      ownershipV2,
+      engineering,
+      capabilities,
+      state: save,
+      address,
+      roster,
+      opportunity,
+      settled: combat.authority.conquests.some(({ worldKey }) => worldKey === address.key),
+    });
+    if (projection.kind !== 'ready') {
+      return Object.freeze({
+        kind: projection.detail === 'already-recorded' ? 'recorded' : 'unavailable',
+        worldKey: address.key,
+        ...(projection.detail === 'already-recorded' ? {} : { detail: projection.detail }),
+      }) as BioscanCardStateV1;
+    }
+    return Object.freeze({
+      kind: 'ready', worldKey: address.key, address, roster, opportunity,
+      engineering, capabilities, ownershipV2, projection,
+    });
+  } catch {
+    return Object.freeze({ kind: 'unavailable', worldKey: address.key, detail: 'projection-failed' });
+  }
+}
+function bioscanCardActionHtml(state: BioscanCardStateV1): string {
+  if (state.kind === 'nonliving') return '';
+  if (state.kind === 'recorded') {
+    return '<span data-bioscan-status="recorded" role="status" style="color:#7fe6a0;align-self:center;font-size:12px">🔬 Life recorded</span>';
+  }
+  if (state.kind === 'unavailable') {
+    return '<button type="button" data-act="bioscan" disabled title="Discover Life is unavailable until expedition save authority is ready" style="background:#14233c;color:var(--dim);border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;min-height:44px;font:12px system-ui">🔬 Discover Life unavailable</button>';
+  }
+  const probability = Math.round(state.projection.hazard.probability * 100);
+  const damage = state.projection.hazard.finalDamage;
+  const warning = probability > 0 ? ` · ⚠ ${probability}% danger` : ' · safe';
+  const title = probability > 0
+    ? `Hostile wildlife may cause ${damage} field damage. Your Field Scout intercepts it when assigned.`
+    : 'Record this living world. Capture remains a separate action.';
+  return `<button type="button" data-act="bioscan" data-bioscan-world="${esc(state.worldKey)}" data-bioscan-probability="${probability}" data-bioscan-damage="${damage}" title="${esc(title)}" style="background:rgba(127,230,160,0.14);color:#b9f0c8;border:1px solid rgba(127,230,160,0.55);border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">🔬 Discover Life${warning}</button>`;
+}
 function presentPlanetSurvey(
   p: PlanetNode,
   star: ProvenStar,
@@ -6709,10 +6989,10 @@ function presentPlanetSurvey(
     d.title = customName;
     d.sub = (d.sub ? d.sub + ' · ' : '') + 'custom name';
   }
+  const roster = canonicalRosterForBioscanCard(address, preparedCaptureRoster);
+  currentBioscanCardState = projectCurrentBioscanCardState(address, roster);
   let approachEcology: ApproachEcologyPresentation | null = null;
   if (nav.mode === 'system') {
-    const rosterResult = canonicalWorldRoster(address, currentEcologyEpoch());
-    const roster = rosterResult.ok ? rosterResult.roster : null;
     const model = projectApproachEcologyAudioV1({
       generation: ++approachEcologyGeneration,
       ecologyEpoch: currentEcologyEpoch(),
@@ -6722,10 +7002,10 @@ function presentPlanetSurvey(
   }
   showSurvey(
     d,
-    buildCardActions(p),
+    buildCardActions(p, currentBioscanCardState),
     null,
     orbitalMineralSurveyRows(star, resolved.planet),
-    preparedCaptureRoster,
+    roster,
     approachEcology,
   );
   return true;
@@ -6740,6 +7020,14 @@ function startPlanetSurvey(
   if (address === null) return null;
   playSurveyPing();   /* the ACT of surveying answers back (main.js) */
   gameEvent('survey', { planetSeed: p.seed });
+  try {
+    const facts = deriveArc9SurveyFactV1(address);
+    if (facts.target === 'world' && facts.living) {
+      /* Looking at a living world is deliberately write-free. Its existing
+         Survey record now belongs to the explicit Discover Life bioscan. */
+      return Promise.resolve(true);
+    }
+  } catch { return Promise.resolve(false); }
   return settleArc9Survey(address);
 }
 function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet): boolean {
@@ -6748,7 +7036,7 @@ function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet):
   void settlement;
   return true;
 }
-function buildCardActions(p: PlanetNode): string {
+function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): string {
   const address = activeCardWorldAddress();
   const charted = address !== null && atlasEntryForWorld(address) !== null;
   const onThisSurface = nav.mode === 'surface' && !!cardCtx
@@ -6766,6 +7054,7 @@ function buildCardActions(p: PlanetNode): string {
       ? '<span style="color:var(--dim);align-self:center;font-size:12px">★ charted</span>'
       : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">' +
         (charted ? '★ Confirm in Star Atlas' : '+ Add to Star Atlas') + '</button>') +
+    bioscanCardActionHtml(bioscanState) +
     '<button data-act="share" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">⧉ share code</button>' +
     '</div>';
 }
@@ -7619,6 +7908,14 @@ card.addEventListener('click', async (e) => {
     const charted = await addToAtlas();
     if (charted && keyboard) (card.querySelector<HTMLElement>('[data-act="add"]') || surveyDockEl).focus();
   }
+  else if (a === 'bioscan') {
+    const recorded = await runArc9Bioscan();
+    if (recorded && keyboard) {
+      (card.querySelector<HTMLElement>('[data-act="bioscan"]')
+        || card.querySelector<HTMLElement>('[data-act="landcta"], [data-act="leaveworld"]')
+        || surveyDockEl).focus();
+    }
+  }
   else if (a === 'share') {
     const code = cardShareCode();
     if (code) await commitArc9ShareSend(code);
@@ -8116,6 +8413,7 @@ function compendiumDiagnostics(): unknown {
       }),
     }),
     feed: compendiumFeedController.diagnostics(),
+    explorerMeal: compendiumExplorerMealController.diagnostics(),
     lazyArt: speciesArtLoader.diagnostics(),
     art: speciesArtLoader.artDiagnostics(),
   });
@@ -8840,6 +9138,21 @@ let lastArc9BinderClaimStatus: string | null = null;
 let lastArc9ShareSendOutcome: string | null = null;
 let lastArc9ShareFollowOutcome: string | null = null;
 let lastArc9SurveyOutcome: string | null = null;
+let lastArc9BioscanOutcome: string | null = null;
+type Arc9BioscanResultV1 = Readonly<{
+  worldKey: string;
+  target: 'clear' | 'explorer' | 'scout';
+  probability: number;
+  damage: number;
+  hpBefore: number;
+  hpAfter: number;
+  scoutId: string | null;
+  scoutHurtAfter: number | null;
+  receiptOrdinal: number;
+  revision: number;
+  ownershipRevision: number;
+}>;
+let lastArc9BioscanResult: Arc9BioscanResultV1 | null = null;
 let lastArc9AtlasFavoriteOutcome: string | null = null;
 let lastArc9TravelOutcome: string | null = null;
 
@@ -9619,6 +9932,292 @@ async function runArc9AtlasFavoriteChange(
     if (activePersist === actionBarrier) activePersist = null;
     if (openPanelId() === 'atlas') {
       fillAtlas();
+    }
+  }
+}
+
+function freshCurrentBioscanReady(
+  ownedActionBarrier: Promise<boolean> | null = null,
+): Extract<BioscanCardStateV1, { readonly kind: 'ready' }> | null {
+  const address = activeCardWorldAddress();
+  if (address === null) return null;
+  const retained = currentBioscanCardState?.kind === 'ready'
+    && currentBioscanCardState.worldKey === address.key
+    && currentBioscanCardState.roster.ecologyEpoch === currentEcologyEpoch()
+    ? currentBioscanCardState.roster : null;
+  const roster = canonicalRosterForBioscanCard(address, retained);
+  const projection = projectCurrentBioscanCardState(address, roster, ownedActionBarrier);
+  return projection.kind === 'ready' ? projection : null;
+}
+
+function protectArc9BioscanAfterDurability(
+  runtime: F4RuntimeAuthority,
+  detail: string,
+): void {
+  lastArc9BioscanResult = null;
+  lastArc9BioscanOutcome = 'committed-publication-reload';
+  lastArc9SurveyOutcome = 'committed:bioscan-publication-reload';
+  arc5OwnershipState = null;
+  arc5OwnershipEvidence = null;
+  arc5OwnershipProtection = 'committed-publication-reload';
+  lastArc5BootstrapOutcome = 'bioscan-committed-publication-reload';
+  scheduleF4AuthorityConvergenceReload(runtime, detail);
+}
+
+/** The one player-live living-world Survey writer. Card inspection and Land
+ * remain write-free; this explicit action owns one Survey record, one hazard
+ * draw, and any Scout/explorer consequence in the same F4 transaction. */
+async function runArc9Bioscan(): Promise<boolean> {
+  if (blockPlayerMutation('bioscan')) return false;
+  const runtime = f4Runtime;
+  const initial = freshCurrentBioscanReady();
+  if (initial === null || !f4RuntimeMayMutate(runtime)) {
+    lastArc9BioscanResult = null;
+    lastArc9BioscanOutcome = 'unavailable:presentation-or-write-authority';
+    toast(
+      'Discover Life unavailable',
+      'Keep this living world open until expedition save authority is ready.',
+    );
+    refreshPlanetSurveyCard();
+    return false;
+  }
+  const operation = initial.projection.survey.operation;
+  const actionClaim = productActionCoordinator.tryClaim(operation);
+  if (actionClaim === null) {
+    lastArc9BioscanOutcome = 'unavailable:product-action-pending';
+    return false;
+  }
+  const actionBarrier = actionClaim.barrier;
+  const sourceState = save;
+  const sourceStateJson = JSON.stringify(sourceState);
+  const parentOwnership = initial.ownershipV2;
+  const parentEvidence = arc5OwnershipEvidence;
+  const parentOwnershipDigest = ownershipStateDigestV2(parentOwnership);
+  const parentOwnershipRevision = parentOwnership.revision;
+  const intent = Object.freeze({
+    worldKey: initial.worldKey,
+    ecologyEpoch: initial.roster.ecologyEpoch,
+    rosterFingerprint: initial.roster.fullRosterFingerprint,
+    operation,
+    capabilityFingerprint: initial.capabilities.fingerprint,
+    hazard: JSON.stringify(initial.projection.hazard),
+  });
+  const priorPublication = Object.freeze({
+    surveyedSet: save.surveyedSet,
+    ptypesSeen: save.ptypesSeen,
+    starKindsSeen: save.starKindsSeen,
+    hp: save.hp,
+    stats: save.stats,
+    unlocked: save.unlocked,
+    ownershipState: arc5OwnershipState,
+    ownershipEvidence: arc5OwnershipEvidence,
+    ownershipProtection: arc5OwnershipProtection,
+    ownershipBootstrapOutcome: lastArc5BootstrapOutcome,
+  });
+  lastArc9BioscanResult = null;
+  lastArc9BioscanOutcome = 'pending';
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  let durable = false;
+  const restorePublication = (): void => {
+    sourceState.surveyedSet = priorPublication.surveyedSet;
+    sourceState.ptypesSeen = priorPublication.ptypesSeen;
+    sourceState.starKindsSeen = priorPublication.starKindsSeen;
+    sourceState.hp = priorPublication.hp;
+    sourceState.stats = priorPublication.stats;
+    sourceState.unlocked = priorPublication.unlocked;
+    arc5OwnershipState = priorPublication.ownershipState;
+    arc5OwnershipEvidence = priorPublication.ownershipEvidence;
+    arc5OwnershipProtection = priorPublication.ownershipProtection;
+    lastArc5BootstrapOutcome = priorPublication.ownershipBootstrapOutcome;
+  };
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    const fresh = freshCurrentBioscanReady(actionBarrier);
+    if (!f4RuntimeMayMutate(runtime) || importWriteInFlight
+      || replacementTransaction || replacementReloadPending
+      || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+      || save !== sourceState || JSON.stringify(sourceState) !== sourceStateJson
+      || fresh === null || fresh.worldKey !== intent.worldKey
+      || fresh.roster.ecologyEpoch !== intent.ecologyEpoch
+      || fresh.roster.fullRosterFingerprint !== intent.rosterFingerprint
+      || fresh.projection.survey.operation !== intent.operation
+      || fresh.capabilities.fingerprint !== intent.capabilityFingerprint
+      || JSON.stringify(fresh.projection.hazard) !== intent.hazard
+      || fresh.ownershipV2 !== parentOwnership
+      || arc5OwnershipEvidence !== parentEvidence
+      || ownershipStateDigestV2(fresh.ownershipV2) !== parentOwnershipDigest) {
+      lastArc9BioscanOutcome = 'refused:authority-changed';
+      return false;
+    }
+    const attempt = await commitBioscanActionV1({
+      runtime,
+      ownershipV2: fresh.ownershipV2,
+      engineering: fresh.engineering,
+      capabilities: fresh.capabilities,
+      state: sourceState,
+      address: fresh.address,
+      roster: fresh.roster,
+      opportunity: fresh.opportunity,
+      settled: fresh.projection.hazard.safeReason === 'settled',
+      codecNow: Date.now(),
+    });
+    if (attempt.kind === 'refused') {
+      lastArc9BioscanOutcome = `refused:${attempt.detail}`;
+      if (attempt.convergence === 'read-only-reload') {
+        scheduleF4AuthorityConvergenceReload(runtime, `Arc 9 Bioscan authority ${attempt.detail}`);
+      } else if (attempt.detail.includes('capacity')) {
+        toast(
+          'Life record full',
+          'This bioscan could not be added safely; your expedition remains unchanged.',
+          true,
+        );
+      }
+      return false;
+    }
+
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = `arc9-bioscan-committed:${attempt.transaction.revision}`;
+    if (attempt.kind === 'committed-convergence') {
+      protectArc9BioscanAfterDurability(
+        runtime,
+        `Arc 9 Bioscan committed at revision ${attempt.transaction.revision}; ${attempt.detail}`,
+      );
+      return true;
+    }
+
+    try {
+      const checkpoint = runtime.checkpointParent();
+      const loadedOwnership = readArc5OwnershipMigration(
+        runtime.extensions,
+        SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+      );
+      const scoutChanged = attempt.settlement.successor !== null;
+      const writesMatch = scoutChanged
+        ? attempt.ownershipWrites.length === ARC5_OWNERSHIP_EXTENSION_TARGETS.length
+          && attempt.ownershipWrites.every((write, index) => (
+            write.segment === ARC5_OWNERSHIP_EXTENSION_TARGETS[index]!.segment
+            && write.namespace === ARC5_OWNERSHIP_EXTENSION_TARGETS[index]!.namespace
+          ))
+        : attempt.ownershipWrites.length === 0;
+      if (runtime !== f4Runtime
+        || runtime.revision !== attempt.transaction.revision
+        || checkpoint === null || JSON.stringify(checkpoint) !== JSON.stringify(attempt.state)
+        || save !== sourceState || JSON.stringify(sourceState) !== sourceStateJson
+        || attempt.settlement.preflight.parentRevision !== parentOwnershipRevision
+        || attempt.settlement.preflight.parentDigest !== parentOwnershipDigest
+        || attempt.ownershipV2.revision !== parentOwnershipRevision + (scoutChanged ? 1 : 0)
+        || !writesMatch
+        || loadedOwnership.kind !== 'loaded'
+        || ownershipStateDigestV2(loadedOwnership.state)
+          !== ownershipStateDigestV2(attempt.ownershipV2)
+        || ownershipStateDigestV2(attempt.ownershipV2)
+          !== ownershipStateDigestV2(attempt.settlement.successor ?? parentOwnership)
+        || (scoutChanged
+          ? attempt.ownershipV2Evidence?.representationVersion
+            !== ARC5_OWNERSHIP_MIGRATION_VERSION
+          : attempt.ownershipV2Evidence !== null)) {
+        throw new Error('arc9-bioscan-fixed-point-mismatch');
+      }
+      publishBioscanActionV1(sourceState, attempt);
+      if (scoutChanged) {
+        arc5OwnershipState = attempt.ownershipV2;
+        arc5OwnershipEvidence = attempt.ownershipV2Evidence;
+        arc5OwnershipProtection = null;
+        lastArc5BootstrapOutcome = 'bioscan-committed-published';
+      }
+      const target = attempt.settlement.target;
+      lastArc9BioscanResult = Object.freeze({
+        worldKey: fresh.worldKey,
+        target,
+        probability: attempt.hazard.probability,
+        damage: attempt.settlement.damage,
+        hpBefore: attempt.publication.hpBefore,
+        hpAfter: attempt.publication.hpAfter,
+        scoutId: attempt.settlement.scoutAfter?.creatureId ?? null,
+        scoutHurtAfter: attempt.settlement.scoutAfter?.hurt ?? null,
+        receiptOrdinal: attempt.settlement.receiptEvidence.ordinal,
+        revision: attempt.transaction.revision,
+        ownershipRevision: attempt.ownershipV2.revision,
+      });
+      lastArc9BioscanOutcome = `committed:${target}:${attempt.transaction.revision}`;
+      lastArc9SurveyOutcome = 'committed:bioscan:world';
+    } catch (error) {
+      restorePublication();
+      protectArc9BioscanAfterDurability(
+        runtime,
+        `Arc 9 Bioscan committed at revision ${attempt.transaction.revision}; publication ${error instanceof Error ? error.message : String(error)}`,
+      );
+      return true;
+    }
+
+    try {
+      hudText();
+      if (attempt.settlement.successor !== null) refreshCompendiumFeedState();
+      if (openPanelId() === 'rec') fillRecords();
+      gameEvent('bioscan', { worldKey: fresh.worldKey });
+      if (attempt.settlement.hostile) triggerCameraShake();
+      const additions = [
+        ...attempt.survey.addedEventAchievementIds,
+        ...attempt.survey.addedAggregateAchievementIds,
+        ...attempt.achievementIdsAdded,
+        ...attempt.postHazardAggregateAchievementIdsAdded,
+      ];
+      presentProgressionCeremony({
+        revision: attempt.transaction.revision,
+        disposition: 'committed-publication',
+        priorUnlockedIds: attempt.survey.source.unlocked,
+        nextUnlockedIds: attempt.state.unlocked,
+        addedAchievementIds: additions,
+        priorBestRankIndex: attempt.survey.source.bestRank,
+        nextBestRankIndex: attempt.state.stats.bestRank ?? 0,
+      });
+      if (attempt.settlement.target === 'explorer') {
+        toast(
+          '⚠ Hostile life encountered',
+          `Field exposure cost ${attempt.settlement.damage} HP. Explorer health: ${attempt.publication.hpAfter}.`,
+          true,
+        );
+      } else if (attempt.settlement.target === 'scout') {
+        const scoutName = attempt.settlement.scoutAfter?.nickname || 'Field Scout';
+        toast(
+          '🛡️ Scout intercepted the threat',
+          `${scoutName} protected you and is now at ${Math.round((attempt.settlement.scoutAfter?.hurt ?? 0) * 100)}% injury.`,
+          true,
+        );
+      } else {
+        toast(
+          '🔬 Life recorded',
+          `${fresh.roster.view.all.length} life signatures entered in Records. Capture remains a separate action.`,
+          true,
+        );
+      }
+    } catch { /* durable publication remains authoritative if presentation fails */ }
+    return true;
+  } catch (error) {
+    if (durable) {
+      restorePublication();
+      protectArc9BioscanAfterDurability(
+        runtime,
+        `Arc 9 Bioscan committed; publication ${error instanceof Error ? error.message : String(error)}`,
+      );
+      return true;
+    }
+    lastArc9BioscanResult = null;
+    lastArc9BioscanOutcome = `fault:${error instanceof Error ? error.message : String(error)}`;
+    scheduleF4AuthorityConvergenceReload(runtime, `Arc 9 Bioscan ${lastArc9BioscanOutcome}`);
+    return false;
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    /* Bioscan's Survey successor already contains the Arc 9 aggregate fixed
+       point; a second progression receipt would violate the one-CAS law. */
+    if (activePersist === actionBarrier) activePersist = null;
+    if (!f4AuthorityReloadScheduled) {
+      try { refreshPlanetSurveyCard(); }
+      catch { /* the next card-open reconstructs the durable projection */ }
     }
   }
 }
@@ -11335,6 +11934,380 @@ async function runCompendiumFeedAction(request: CompendiumFeedActionRequestV1): 
   }
 }
 
+type Arc5ExplorerMealCommitOutcome = Readonly<{
+  kind: 'committed' | 'unavailable' | 'refused';
+  durability: 'none' | 'committed';
+  convergence: 'none' | 'read-only-reload';
+  detail: string;
+  result: Arc5ExplorerMealResult | null;
+}>;
+
+function compendiumExplorerMealRequestIsCurrent(
+  request: CompendiumExplorerMealRequestV1,
+  parent: OwnershipStateV2,
+): boolean {
+  if (!Object.isFrozen(request) || !Object.isFrozen(request.surface)
+    || codexGeneration !== request.surface.generation
+    || codexMode !== 'detail'
+    || codexDetailLogicalId !== request.surface.logicalId
+    || openPanelId() !== 'codex') return false;
+  const row = currentCompendiumDetailRow();
+  if (row === null) return false;
+  const model = projectCurrentCompendiumExplorerMeal(row, request.surface.generation);
+  if (model === null || model.availability !== 'ready'
+    || model.contextKey !== request.contextKey
+    || model.surface.surfaceKey !== request.surface.surfaceKey
+    || model.surface.speciesId !== request.surface.speciesId
+    || model.ownershipRevision !== request.ownershipRevision
+    || model.ownershipDigest !== request.ownershipDigest
+    || parent.revision !== request.ownershipRevision
+    || ownershipStateDigestV2(parent) !== request.ownershipDigest) return false;
+  const lot = model.lots.find((candidate) => candidate.foodLotId === request.foodLotId);
+  return lot?.quantityBefore === request.foodQuantityBefore
+    && lot.quantityAfter === request.foodQuantityAfter
+    && lot.healAmount === request.healAmount
+    && lot.poisonChance === request.poisonChance
+    && lot.nourishedStat === request.nourishedStat
+    && lot.nourishment === request.nourishment
+    && lot.statIncrease === request.statIncrease;
+}
+
+function arc5ExplorerMealWritesMatchFixedInventory(
+  attempt: Extract<Arc5ExplorerMealActionOutcomeV1, { readonly kind: 'committed' }>,
+): boolean {
+  return attempt.ownershipWrites.length === ARC5_OWNERSHIP_EXTENSION_TARGETS.length
+    && attempt.ownershipWrites.every((write, index) => (
+      write.segment === ARC5_OWNERSHIP_EXTENSION_TARGETS[index]!.segment
+      && write.namespace === ARC5_OWNERSHIP_EXTENSION_TARGETS[index]!.namespace
+    ));
+}
+
+function protectArc5ExplorerMealAfterDurability(
+  runtime: F4RuntimeAuthority,
+  detail: string,
+): void {
+  lastArc5ExplorerMealResult = null;
+  arc5OwnershipState = null;
+  arc5OwnershipEvidence = null;
+  arc5OwnershipProtection = 'committed-publication-reload';
+  lastArc5BootstrapOutcome = 'explorer-meal-committed-publication-reload';
+  lastArc5ExplorerMealOutcome = 'committed-publication-reload';
+  scheduleF4AuthorityConvergenceReload(runtime, detail);
+}
+
+/** Sole player-live explorer meal writer. One exact Flora lot, physiology
+ * snapshot, registered loadout and registered research state are captured
+ * before the shared claim. The domain action rebinds both carriers inside
+ * its one F4 draw/CAS before consuming the lot. */
+async function commitCompendiumExplorerMealAction(
+  request: CompendiumExplorerMealRequestV1,
+): Promise<Arc5ExplorerMealCommitOutcome> {
+  const unavailable = (detail: string): Arc5ExplorerMealCommitOutcome => {
+    lastArc5ExplorerMealResult = null;
+    lastArc5ExplorerMealOutcome = `unavailable:${detail}`;
+    return Object.freeze({
+      kind: 'unavailable', durability: 'none', convergence: 'none', detail, result: null,
+    });
+  };
+  const runtime = f4Runtime;
+  const parent = arc5OwnershipState;
+  const parentEvidence = arc5OwnershipEvidence;
+  const engineering = arc3EngineeringState;
+  if (parent?.mode !== 'current' || parentEvidence?.representationVersion
+    !== ARC5_OWNERSHIP_MIGRATION_VERSION || arc5OwnershipProtection !== null) {
+    return unavailable(arc5OwnershipProtection ?? 'ownership-unavailable');
+  }
+  if (engineering === null || arc3EngineeringProtection !== null) {
+    return unavailable(arc3EngineeringProtection ?? 'research-unavailable');
+  }
+  if (!f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld) {
+    return unavailable('write-authority-unavailable');
+  }
+  const loadout = readArc2EngineeringLoadout(runtime.extensions);
+  if (loadout.kind !== 'loaded') return unavailable(`loadout-${loadout.kind}`);
+  const capabilities = projectEngineeringCapabilities(loadout.loadout);
+  if (!compendiumExplorerMealRequestIsCurrent(request, parent)) {
+    return unavailable('presentation-authority-unavailable');
+  }
+  const parentRevision = parent.revision;
+  const parentDigest = ownershipStateDigestV2(parent);
+  const parentSourceDigest = ownershipStateDigestV1(ownershipSourceStateV1(parent));
+  const sourceState = save;
+  const saveBefore = JSON.stringify(sourceState);
+  const priorHp = sourceState.hp;
+  const priorHpMax = sourceState.HP_MAX;
+  const priorStats = sourceState.pstats;
+  const priorUnlocked = sourceState.unlocked;
+  const priorBestRankIndex = sourceState.stats.bestRank ?? 0;
+
+  const actionClaim = productActionCoordinator.tryClaim('arc5.explorer-meal');
+  if (actionClaim === null) return unavailable('product-action-pending');
+  const actionBarrier = actionClaim.barrier;
+  lastArc5ExplorerMealResult = null;
+  lastArc5ExplorerMealOutcome = 'pending';
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  let durable = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    const currentLoadout = readArc2EngineeringLoadout(runtime.extensions);
+    if (!f4RuntimeMayMutate(runtime) || importWriteInFlight
+      || replacementTransaction || replacementReloadPending || trainingCheckpointWriteHeld
+      || save !== sourceState || JSON.stringify(sourceState) !== saveBefore) {
+      return unavailable('write-authority-changed');
+    }
+    if (arc5OwnershipState !== parent || arc5OwnershipEvidence !== parentEvidence
+      || arc5OwnershipProtection !== null || parent.revision !== parentRevision
+      || ownershipStateDigestV2(parent) !== parentDigest
+      || arc3EngineeringState !== engineering || arc3EngineeringProtection !== null
+      || currentLoadout.kind !== 'loaded'
+      || projectEngineeringCapabilities(currentLoadout.loadout).fingerprint
+        !== capabilities.fingerprint) {
+      return unavailable('product-authority-changed');
+    }
+
+    const attempt = await commitArc5ExplorerMealActionV1({
+      runtime,
+      ownershipV2: parent,
+      engineering,
+      capabilities,
+      state: sourceState,
+      foodLotId: request.foodLotId,
+      codecNow: Date.now(),
+    });
+    lastArc5ExplorerMealOutcome = `${attempt.kind}:${attempt.kind === 'refused'
+      ? attempt.detail : attempt.convergence}`;
+    if (attempt.kind === 'refused') {
+      if (attempt.convergence === 'read-only-reload') {
+        scheduleF4AuthorityConvergenceReload(runtime, `Arc 5 Explorer Meal authority ${attempt.detail}`);
+      }
+      return Object.freeze({
+        kind: 'refused', durability: 'none', convergence: attempt.convergence,
+        detail: attempt.detail, result: null,
+      });
+    }
+
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = `arc5-explorer-meal-committed:${attempt.transaction.revision}`;
+    if (attempt.kind === 'committed-convergence') {
+      protectArc5ExplorerMealAfterDurability(
+        runtime,
+        `Arc 5 Explorer Meal committed at revision ${attempt.transaction.revision}; ${attempt.detail}`,
+      );
+      return Object.freeze({
+        kind: 'committed', durability: 'committed', convergence: 'read-only-reload',
+        detail: `revision:${attempt.transaction.revision};publication-reload`, result: null,
+      });
+    }
+
+    try {
+      const settlement = attempt.settlement;
+      const checkpoint = runtime.checkpointParent();
+      if (runtime !== f4Runtime
+        || runtime.revision !== attempt.transaction.revision
+        || checkpoint === null
+        || JSON.stringify(checkpoint) !== JSON.stringify(attempt.state)
+        || !arc5ExplorerMealWritesMatchFixedInventory(attempt)
+        || attempt.ownershipV2Evidence.representationVersion
+          !== ARC5_OWNERSHIP_MIGRATION_VERSION
+        || attempt.ownershipV2.revision !== parentRevision + 1
+        || ownershipStateDigestV1(ownershipSourceStateV1(attempt.ownershipV2))
+          !== parentSourceDigest
+        || ownershipStateDigestV2(attempt.ownershipV2)
+          !== ownershipStateDigestV2(settlement.successor)
+        || settlement.preflight.parentRevision !== parentRevision
+        || settlement.preflight.parentDigest !== parentDigest
+        || settlement.preflight.foodLotId !== request.foodLotId
+        || settlement.preflight.foodQuantityBefore !== request.foodQuantityBefore
+        || settlement.preflight.foodQuantityAfter !== request.foodQuantityAfter
+        || settlement.foodBefore.lotId !== request.foodLotId
+        || settlement.foodBefore.quantity !== request.foodQuantityBefore
+        || (settlement.foodAfter !== null
+          && (settlement.foodAfter.lotId !== request.foodLotId
+            || settlement.foodAfter.quantity !== request.foodQuantityAfter))
+        || (settlement.foodTombstone !== null
+          && settlement.foodTombstone.lotId !== request.foodLotId)
+        || settlement.consequence.healAmount !== request.healAmount
+        || settlement.preflight.poisonChance !== request.poisonChance
+        || settlement.consequence.nourishedStat !== request.nourishedStat
+        || settlement.consequence.nourishment !== request.nourishment
+        || settlement.consequence.statIncrease !== request.statIncrease
+        || settlement.consequence.hpBefore !== priorHp
+        || settlement.consequence.hpMaxBefore !== priorHpMax
+        || JSON.stringify(settlement.consequence.statsBefore) !== JSON.stringify(priorStats)
+        || attempt.state.hp !== settlement.consequence.hpAfter
+        || attempt.state.HP_MAX !== settlement.consequence.hpMaxAfter
+        || JSON.stringify(attempt.state.pstats)
+          !== JSON.stringify(settlement.consequence.statsAfter)
+        || JSON.stringify(attempt.state.stats) !== JSON.stringify(sourceState.stats)
+        || JSON.stringify(sourceState.unlocked) !== JSON.stringify(priorUnlocked)
+        || (settlement.foodAfter?.quantity ?? 0) !== request.foodQuantityAfter
+        || (settlement.foodAfter === null) !== (request.foodQuantityAfter === 0)
+        || (settlement.foodTombstone !== null) !== (request.foodQuantityAfter === 0)
+        || save !== sourceState || JSON.stringify(sourceState) !== saveBefore) {
+        throw new Error('arc5-explorer-meal-fixed-point-mismatch');
+      }
+      publishArc5ExplorerMealAchievementFields(
+        sourceState,
+        attempt.state,
+        attempt.achievementIdsAdded,
+      );
+      sourceState.hp = attempt.state.hp;
+      sourceState.HP_MAX = attempt.state.HP_MAX;
+      sourceState.pstats = attempt.state.pstats;
+      arc5OwnershipState = attempt.ownershipV2;
+      arc5OwnershipEvidence = attempt.ownershipV2Evidence;
+      arc5OwnershipProtection = null;
+      lastArc5BootstrapOutcome = 'explorer-meal-committed-published';
+      const result: Arc5ExplorerMealResult = Object.freeze({
+        poisoned: settlement.consequence.poisoned,
+        hpBefore: settlement.consequence.hpBefore,
+        hpAfter: settlement.consequence.hpAfter,
+        hpMaxBefore: settlement.consequence.hpMaxBefore,
+        hpMaxAfter: settlement.consequence.hpMaxAfter,
+        nourishedStat: settlement.consequence.nourishedStat,
+        statIncrease: settlement.consequence.statIncrease,
+        foodLotId: request.foodLotId,
+        foodQuantityBefore: request.foodQuantityBefore,
+        foodQuantityAfter: request.foodQuantityAfter,
+        receiptOrdinal: settlement.receiptEvidence.ordinal,
+        revision: attempt.transaction.revision,
+        ownershipRevision: attempt.ownershipV2.revision,
+      });
+      lastArc5ExplorerMealResult = result;
+      lastArc5ExplorerMealOutcome = `committed:${attempt.transaction.revision}`;
+      presentProgressionCeremony({
+        revision: attempt.transaction.revision,
+        disposition: 'committed-publication',
+        priorUnlockedIds: priorUnlocked,
+        nextUnlockedIds: attempt.state.unlocked,
+        addedAchievementIds: attempt.achievementIdsAdded,
+        priorBestRankIndex,
+        nextBestRankIndex: attempt.state.stats.bestRank ?? 0,
+      });
+      return Object.freeze({
+        kind: 'committed', durability: 'committed', convergence: 'none',
+        detail: `revision:${attempt.transaction.revision}`, result,
+      });
+    } catch (error) {
+      sourceState.hp = priorHp;
+      sourceState.HP_MAX = priorHpMax;
+      sourceState.pstats = priorStats;
+      sourceState.unlocked = priorUnlocked;
+      const detail = error instanceof Error ? error.message : String(error);
+      protectArc5ExplorerMealAfterDurability(
+        runtime,
+        `Arc 5 Explorer Meal committed at revision ${attempt.transaction.revision}; publication ${detail}`,
+      );
+      return Object.freeze({
+        kind: 'committed', durability: 'committed', convergence: 'read-only-reload',
+        detail: `revision:${attempt.transaction.revision};publication-reload`, result: null,
+      });
+    }
+  } catch (error) {
+    if (durable) {
+      sourceState.hp = priorHp;
+      sourceState.HP_MAX = priorHpMax;
+      sourceState.pstats = priorStats;
+      sourceState.unlocked = priorUnlocked;
+      protectArc5ExplorerMealAfterDurability(
+        runtime,
+        `Arc 5 Explorer Meal committed; publication ${error instanceof Error ? error.message : String(error)}`,
+      );
+      return Object.freeze({
+        kind: 'committed', durability: 'committed', convergence: 'read-only-reload',
+        detail: 'committed;publication-reload', result: null,
+      });
+    }
+    lastArc5ExplorerMealResult = null;
+    lastArc5ExplorerMealOutcome = 'rejected';
+    return Object.freeze({
+      kind: 'refused', durability: 'none', convergence: 'none',
+      detail: error instanceof Error ? error.message : String(error), result: null,
+    });
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (activePersist === actionBarrier) activePersist = null;
+  }
+}
+
+function compendiumExplorerMealOutcomeCopy(
+  request: CompendiumExplorerMealRequestV1,
+  outcome: Arc5ExplorerMealCommitOutcome,
+): CompendiumExplorerMealOutcomeV1 {
+  if (outcome.kind === 'committed' && outcome.convergence === 'none'
+    && outcome.result !== null) {
+    const result = outcome.result;
+    return Object.freeze({
+      schema: COMPENDIUM_EXPLORER_MEAL_OUTCOME_SCHEMA_V1,
+      kind: 'committed', convergence: 'none', request,
+      title: result.poisoned ? 'Flora consumed — toxic reaction.' : 'Flora meal complete.',
+      detail: result.poisoned
+        ? `HP ${result.hpBefore} → ${result.hpAfter}. The explorer survived and the exact specimen was consumed.`
+        : `HP ${result.hpBefore} → ${result.hpAfter}; ${result.nourishedStat.toUpperCase()} +${result.statIncrease}. The exact specimen was consumed.`,
+    });
+  }
+  if (outcome.durability === 'committed') {
+    return Object.freeze({
+      schema: COMPENDIUM_EXPLORER_MEAL_OUTCOME_SCHEMA_V1,
+      kind: 'committed-convergence', convergence: 'read-only-reload', request,
+      title: 'Meal saved — reload required.',
+      detail: 'The meal is durable, but this tab could not verify its live copy. Reloading cannot consume it twice.',
+    });
+  }
+  return Object.freeze({
+    schema: COMPENDIUM_EXPLORER_MEAL_OUTCOME_SCHEMA_V1,
+    kind: 'refused', convergence: outcome.convergence, request,
+    title: outcome.convergence === 'read-only-reload' ? 'Reload required.' : 'Nothing was eaten.',
+    detail: outcome.detail.includes('pending')
+      ? 'Another expedition action is settling. Explorer health and Flora are unchanged.'
+      : outcome.detail.includes('storage') || outcome.detail.includes('save')
+        ? 'The expedition could not be saved. Explorer health and Flora are unchanged.'
+      : 'Meal authority changed before durability. Explorer health and Flora are unchanged.',
+  });
+}
+
+async function runCompendiumExplorerMealAction(
+  request: CompendiumExplorerMealRequestV1,
+): Promise<void> {
+  let outcome: Arc5ExplorerMealCommitOutcome;
+  try { outcome = await commitCompendiumExplorerMealAction(request); }
+  catch (error) {
+    outcome = Object.freeze({
+      kind: 'refused', durability: 'none', convergence: 'none',
+      detail: error instanceof Error ? error.message : String(error), result: null,
+    });
+  }
+  const copy = compendiumExplorerMealOutcomeCopy(request, outcome);
+  try {
+    compendiumExplorerMealController.settle(copy);
+    if (copy.convergence === 'none') refreshCompendiumFeedState();
+    hudText();
+    updateChips();
+    showCompendiumFeedVisualToast(copy.title, copy.detail);
+  } catch (error) {
+    const detail = error instanceof Error ? error.message : String(error);
+    if (outcome.durability === 'committed' && f4Runtime !== null) {
+      protectArc5ExplorerMealAfterDurability(
+        f4Runtime,
+        `Arc 5 Explorer Meal committed; presentation ${detail}`,
+      );
+      return;
+    }
+    if (f4Runtime !== null) {
+      scheduleF4AuthorityConvergenceReload(
+        f4Runtime,
+        `Arc 5 Explorer Meal presentation rejected before durability (${detail})`,
+      );
+    }
+  }
+}
+
 type Arc5BreedCommitOutcome = Readonly<{
   kind: 'committed' | 'unavailable' | 'refused';
   durability: 'none' | 'committed';
@@ -12514,6 +13487,10 @@ type Arc4CaptureActionOutcome = Readonly<{
     ownedRowId: string | null;
     stardustReward: number;
     charterBioscanBanked: boolean;
+    scoutCreatureId: string | null;
+    scoutXpBefore: number | null;
+    scoutXpAfter: number | null;
+    scoutXpAward: 0 | 2;
     revision: number;
     ownershipRevision: number;
   }> | null;
@@ -12549,7 +13526,8 @@ async function commitArc4CaptureAction(
   const intendedSurface = nav;
   if (intendedSurface.mode !== 'surface') return unavailable('current-surface-required', verb);
   const runtime = f4Runtime;
-  if (arc4OwnershipState?.mode !== 'current' || arc4OwnershipProtection !== null) {
+  const ownershipV1Parent = arc4OwnershipState;
+  if (ownershipV1Parent?.mode !== 'current' || arc4OwnershipProtection !== null) {
     return unavailable(arc4OwnershipProtection ?? 'ownership-unavailable', verb);
   }
   const ownershipV2Parent = arc5OwnershipState;
@@ -12731,8 +13709,15 @@ async function commitArc4CaptureAction(
         committed: attempt,
       });
       if (verified.kind !== 'verified') throw new Error(verified.detail);
-      if (verified.ownership.revision !== verified.ownershipV2.revision) {
-        throw new Error('arc4-arc5-ownership-revision-mismatch');
+      if (verified.ownership.revision !== ownershipV1Parent.revision + 1) {
+        throw new Error('arc4-ownership-parent-revision-mismatch');
+      }
+      if (verified.ownershipV2.revision !== ownershipV2Parent.revision + 1) {
+        throw new Error('arc5-ownership-parent-revision-mismatch');
+      }
+      if (ownershipStateDigestV1(verified.ownership)
+        !== ownershipStateDigestV1(ownershipSourceStateV1(verified.ownershipV2))) {
+        throw new Error('arc4-arc5-ownership-source-mismatch');
       }
       publishArc4CaptureFields(save, transaction.state);
       arc4OwnershipState = verified.ownership;
@@ -12761,6 +13746,10 @@ async function commitArc4CaptureAction(
         ownedRowId: verified.plan.ownedRowId,
         stardustReward: verified.stardustReward,
         charterBioscanBanked: verified.charterBioscanBanked,
+        scoutCreatureId: verified.scoutXp.scoutCreatureId,
+        scoutXpBefore: verified.scoutXp.xpBefore,
+        scoutXpAfter: verified.scoutXp.xpAfter,
+        scoutXpAward: verified.scoutXp.xpAward,
         revision: transaction.revision,
         ownershipRevision: verified.ownershipV2.revision,
       });
@@ -13339,11 +14328,18 @@ function captureOutcomeCopy(outcome: Arc4CaptureActionOutcome): CaptureCardActio
       ? ` Rare Find: +${result.stardustReward} Stardust.` : '';
     const charter = result.charterBioscanBanked
       ? ' Charter: first life discovery on this alien world banked.' : '';
+    const scoutXpApplied = result.scoutXpBefore === null || result.scoutXpAfter === null
+      ? 0 : result.scoutXpAfter - result.scoutXpBefore;
+    const scout = result.scoutXpAward === 2
+      ? scoutXpApplied > 0
+        ? ` Field Scout learned +${scoutXpApplied} XP.`
+        : ' Field Scout is already at maximum level.'
+      : '';
     return Object.freeze({
       schema: CAPTURE_CARD_OUTCOME_SCHEMA,
       kind: 'committed-hit', verb, convergence: 'none',
       title: `${past} ${result.firstForSpecies ? '' : 'another '}${result.speciesName}.`,
-      detail: `${chance} odds. ${discovery}${reward}${charter} 1 Biosphere Yield spent; ${result.remainingAfter} remain.`,
+      detail: `${chance} odds. ${discovery}${reward}${charter}${scout} 1 Biosphere Yield spent; ${result.remainingAfter} remain.`,
     });
   }
   if (outcome.kind === 'committed') {
@@ -14135,9 +15131,10 @@ const READ_ONLY_MUTATION_SELECTOR = [
   '[data-binder-claim]',
   '[data-arc9-explorer-name-save]',
   '[data-atlas-favorite]',
-  '[data-act="landcta"]', '[data-act="add"]', '[data-act="share"]',
+  '[data-act="landcta"]', '[data-act="add"]', '[data-act="bioscan"]', '[data-act="share"]',
   '[data-capture-action]',
   '[data-arc5-feed-confirm]',
+  '[data-arc5-explorer-meal-confirm]',
   '[data-arc5-breed-confirm]',
   '[data-arc5-rename-confirm]',
   '[data-arc5-scout-confirm]',
@@ -14739,6 +15736,8 @@ async function loadSave(): Promise<void> {
   lastArc5BootstrapOutcome = null;
   lastArc5FeedOutcome = null;
   lastArc5FeedResult = null;
+  lastArc5ExplorerMealOutcome = null;
+  lastArc5ExplorerMealResult = null;
   lastArc5BreedOutcome = null;
   lastArc5BreedResult = null;
   lastArc5RenameOutcome = null;
@@ -15668,9 +16667,11 @@ async function loadSave(): Promise<void> {
     approachEcologyController.dispose();
     compendiumAuditionController.dispose();
     compendiumFeedController.dispose();
+    compendiumExplorerMealController.dispose();
     compendiumBreedController.dispose();
     compendiumRenameController.dispose();
     compendiumScoutController.dispose();
+    travelPresentationOwner.dispose();
     engineeringPanelReleased = true;
     engineeringPanelController.dispose();
     captureCardController.dispose();
@@ -15803,6 +16804,22 @@ async function loadSave(): Promise<void> {
               publicationFailure: smokeRejectNextArc0LandingPublication,
             },
             lastFault: lastSmokeArc0LandingFaultWitness,
+          },
+        },
+        bioscan: {
+          schema: 'cf-v2-arc9-bioscan-app-state/v1',
+          lastOutcome: lastArc9BioscanOutcome,
+          lastResult: lastArc9BioscanResult,
+          card: currentBioscanCardState === null ? null : {
+            kind: currentBioscanCardState.kind,
+            worldKey: currentBioscanCardState.worldKey,
+            ...(currentBioscanCardState.kind === 'ready' ? {
+              ecologyEpoch: currentBioscanCardState.roster.ecologyEpoch,
+              rosterFingerprint: currentBioscanCardState.roster.fullRosterFingerprint,
+              operation: currentBioscanCardState.projection.survey.operation,
+              probability: currentBioscanCardState.projection.hazard.probability,
+              damage: currentBioscanCardState.projection.hazard.finalDamage,
+            } : {}),
           },
         },
         atlas: {
@@ -15954,6 +16971,11 @@ async function loadSave(): Promise<void> {
               }),
               lastFault: lastSmokeArc5FeedFaultWitness,
             }),
+          }),
+          explorerMeal: Object.freeze({
+            lastOutcome: lastArc5ExplorerMealOutcome,
+            lastResult: lastArc5ExplorerMealResult,
+            controller: compendiumExplorerMealController.diagnostics(),
           }),
           breed: Object.freeze({
             lastOutcome: lastArc5BreedOutcome,
@@ -16338,6 +17360,7 @@ async function loadSave(): Promise<void> {
        t=0. Full/Auto keep the framerate-aware ease and living scene. */
     const animate = motionOK();
     const effectPolicy = currentVisualEffectPolicy();
+    travelPresentationOwner.tick(performance.now());
     const k = animate ? 1 - Math.pow(0.0025, tk.deltaMS / 1000) : 1;
     cam.x += (camT.x - cam.x) * k; cam.y += (camT.y - cam.y) * k; cam.z += (camT.z - cam.z) * k;
     world.position.set(app.screen.width / 2 - cam.x * cam.z, app.screen.height / 2 - cam.y * cam.z);

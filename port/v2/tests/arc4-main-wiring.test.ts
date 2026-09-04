@@ -204,6 +204,7 @@ function captureErrors(source: string): string[] {
     : '';
   const helperArguments = [
     '      runtime,',
+    '      ownershipV2: ownershipV2Parent,',
     '      state: save,',
     '      nav,',
     '      address: address.address,',
@@ -223,6 +224,14 @@ function captureErrors(source: string): string[] {
   }
   if (helperCall.length === 0 || body.includes('view.preview')) {
     errors.push('capture-helper-inputs');
+  }
+  if (!body.includes('const ownershipV1Parent = arc4OwnershipState;')
+    || !body.includes('const ownershipV2Parent = arc5OwnershipState;')
+    || !body.includes('verified.ownership.revision !== ownershipV1Parent.revision + 1')
+    || !body.includes('verified.ownershipV2.revision !== ownershipV2Parent.revision + 1')
+    || !body.includes('ownershipStateDigestV1(verified.ownership)\n        !== ownershipStateDigestV1(ownershipSourceStateV1(verified.ownershipV2))')
+    || body.includes('verified.ownership.revision !== verified.ownershipV2.revision')) {
+    errors.push('capture-independent-ownership-revisions');
   }
   if (!body.includes('capturePresentationFenceForSurface(runtime, intendedSurface)')
     || !body.includes("!/^cpf1:[0-9a-f]{64}$/u.test(presentationFence)")) {
@@ -325,7 +334,10 @@ function capturePresentationErrors(source: string, cssSource = indexSource): str
   );
   if (!outcomeCopy.includes('const charter = result.charterBioscanBanked')
     || !outcomeCopy.includes("? ' Charter: first life discovery on this alien world banked.' : '';")
-    || !outcomeCopy.includes('${discovery}${reward}${charter} 1 Biosphere Yield spent;')) {
+    || !outcomeCopy.includes('const scoutXpApplied = result.scoutXpBefore === null')
+    || !outcomeCopy.includes('? ` Field Scout learned +${scoutXpApplied} XP.`')
+    || !outcomeCopy.includes(": ' Field Scout is already at maximum level.'")
+    || !outcomeCopy.includes('${discovery}${reward}${charter}${scout} 1 Biosphere Yield spent;')) {
     errors.push('capture-charter-copy');
   }
 
@@ -400,8 +412,13 @@ function capturePresentationErrors(source: string, cssSource = indexSource): str
     'charterBioscanBanked: verified.charterBioscanBanked,',
     resultStart,
   );
+  const resultScout = writer.indexOf(
+    'scoutXpAfter: verified.scoutXp.xpAfter,',
+    resultBioscan,
+  );
   if (!(verifiedCapture >= 0 && publishedCapture > verifiedCapture
-      && resultStart > publishedCapture && resultBioscan > resultStart)) {
+      && resultStart > publishedCapture && resultBioscan > resultStart
+      && resultScout > resultBioscan)) {
     errors.push('capture-charter-publication');
   }
   const staleFault = writer.indexOf("if (faultInjection === 'stale-authority')");
@@ -1304,6 +1321,12 @@ describe('Arc 4 main authority wiring', () => {
         'capture-ecology-input',
       ],
       ['helper', '      runtime,', '      runtime: {} as never,', 'capture-helper-inputs'],
+      [
+        'helper',
+        '      ownershipV2: ownershipV2Parent,',
+        '      ownershipV2: arc5OwnershipState!,',
+        'capture-helper-inputs',
+      ],
       ['helper', '      state: save,', '      state: structuredClone(save),', 'capture-helper-inputs'],
       ['helper', '      nav,', '      nav: intendedSurface,', 'capture-helper-inputs'],
       ['helper', '      address: address.address,', '      address: nav,', 'capture-helper-inputs'],
@@ -1335,6 +1358,17 @@ describe('Arc 4 main authority wiring', () => {
       'attempt = await commitArc4CaptureAttemptV2({',
     );
     expect(captureErrors(missingHelper)).toContain('capture-single-writer');
+
+    const coupledOwnershipRevisions = replaceInSectionExact(
+      mainSource,
+      'async function commitArc4CaptureAction(',
+      '\nfunction captureActivePlayCountdown(',
+      '      publishArc4CaptureFields(save, transaction.state);',
+      "      if (verified.ownership.revision !== verified.ownershipV2.revision) throw new Error('coupled');\n      publishArc4CaptureFields(save, transaction.state);",
+    );
+    expect(coupledOwnershipRevisions).not.toBe(mainSource);
+    expect(captureErrors(coupledOwnershipRevisions))
+      .toContain('capture-independent-ownership-revisions');
 
     const missingCaptureSection = mainSource.replace(
       'async function commitArc4CaptureAction(',
@@ -1711,14 +1745,14 @@ describe('Arc 4 main authority wiring', () => {
     expect(runReconstructionFromSource(receiptMutation).lastArc4CaptureResult).toEqual({});
   });
 
-  it('keeps normal planet Survey as the sole audio and survey-event owner', () => {
+  it('keeps living-world card inspection write-free while retaining Survey audio and event ownership', () => {
     const accepted = runNormalSurveyFromSource(mainSource, true);
     expect(accepted.result).toBe(true);
     expect(accepted.trace).toEqual({
       present: 1,
       audio: 1,
       events: [['survey', { planetSeed: 68 }]],
-      settlements: 1,
+      settlements: 0,
     });
     const rejected = runNormalSurveyFromSource(mainSource, false);
     expect(rejected.result).toBe(false);

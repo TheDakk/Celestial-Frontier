@@ -1,5 +1,35 @@
 # Celestial Frontier — Player Progression
 
+> **2026-09-04 current beta research-consequence and explorer-meal overlay (matches local v2 code
+> as of 2026-09-04; supersedes older research-availability claims while preserving their dated
+> history):** all six Engineering research rows now have live consequences. **Deep Scanners** reveal
+> bounded orbital mineral veins; **Reinforced Hull** reduces hostile bioscan wounds by 25% before
+> worn wound reduction; **Xenobotany Lab** gives a safe Flora meal +1 additional stat nourishment;
+> and **Fusion Drive**, **Antimatter Drive** and **Warp Fold** supply the established 2×, 4× and 8×
+> travel-speed bases, with registered worn speed added to the selected base.
+>
+> Explorer Flora meals are now player-reachable from an exact Flora Compendium detail. The card
+> selects the one canonical matching owned lot and previews heal, poison and the deterministic
+> nourished stat before one **Eat 1** press. Every outcome consumes one exact specimen. Safe meals apply worn heal
+> gear, restore HP and raise the seeded stat by `1 + floraTier + (lab1 ? 1 : 0)` up to 330; a toxic
+> meal grants neither healing nor stat growth, ignores heal gear for its damage ruler, and remains
+> nonlethal. Vitality growth recomputes maximum HP and tops up the increase. The exact ownership lot,
+> explorer physiology, receipt and F4 authority commit atomically without retry or precommit copy.
+> Safe healing joins `fieldmedic`; surviving a safe meal above 40% poison risk also joins `gambler`.
+> Explicit hostile Discover Life joins `survivor` whether its nonlethal wound lands on the Field Scout
+> or explorer. These share their owning action's receipt/CAS; only `daily` and `decade` remain
+> event-owner blocked, for **26 exact event joins / 2 blocked**.
+>
+> A successful Tame, Scavenge, or Sample that catalogues a genuinely fresh species gives the Field
+> Scout standing before that attempt up to +2 XP in the same capture receipt/CAS, capped at 486.
+> A 485-XP Scout gains 1; a capped Scout gains 0; no standing Scout, miss, or repeat species grants
+> Scout XP. This changes no genome, lineage, role selection, or capture pool.
+>
+> The Records board also presents a read-only **Expedition Chronicle & Museum** from already-owned
+> facts: at most 60 rows each for latest-receipt battles, canonical first-species discoveries,
+> Signature-ordered Prime victories without invented dates, and latest-first Legacy Journal entries.
+> It adds no writer, reward, RNG, mission, share card, save field, or global cross-gallery timeline.
+
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated progression/evidence blocks below remain immutable):** hosted run `33584052508` tested
 > exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
@@ -707,7 +737,7 @@
 > replay may still receive its lesson event without receiving progression credit.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlays
-match the local `port/v2` candidate as of 2026-08-30, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
+match the local `port/v2` candidate as of 2026-09-04, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
@@ -758,6 +788,12 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
   - **Vitality** → HP pool, **Ferocity** → attack, **Resilience** → defense, **Agility** → initiative, **Insight** → crit.
 - `HP_MAX = max(20, round(vit·2))`; `recomputeHPMax` tops you up when Vitality grows.
 - **Growth = eating flora.** `healExplorer` mends HP *and* raises one stat: `floraStat(g)` picks 1 of the 5 deterministically from the plant's genome seed; the gain is `1 + floraTier + (Xenobotany Lab ? 1 : 0)`. A toxic meal (poison roll) heals nothing and can gut you to the brink but **never kills** the explorer.
+- **Current v2 meal owner:** one exact owned specimen lot is selected from its verified Flora
+  Compendium page and consumed whether the outcome is safe or toxic. The preview and commit share
+  the same heal, risk and seeded-stat facts. Safe healing includes registered worn `heal`; poison
+  damage does not, grants no stat, and stops at 1 HP. Stats cap at 330, and a Vitality increase
+  recomputes maximum HP and tops up only the increase. Physiology and Flora ownership share one
+  receipt-bearing F4 commit with no retry or optimistic result.
 - **Player battle profile** (`playerBattleStats`): tier = `clamp(floor((total−250)/130), 0..TIER_MAX)`; fixed ability **Frontier Resolve** (regen 0.04, taken ×0.9). Power = sum of the five stats.
 - **The paperdoll.** `paperdollAvatar()` renders the full-body explorer figure; the nine gear sockets pin to it via `DOLL_ANCHORS` (fractional x,y). `playerAvatar()` is the gold-helmeted battler portrait used in duels. `playerCombatant()` fields you with genome `{seed: PLAYER_SEED}`.
 - **`PLAYER_SEED = 0x50A1E5`** — a stable seed so *duels against you* are deterministic and reproducible on every device (your avatar/genome never drift).
@@ -919,10 +955,11 @@ First catalogue of tier ≥ 5 → **`tier − 3`** ☄ (Legendary=5→+2, up thr
   saved choice now has a live Settings selector for Auto/current-rank or every permanently earned
   color, and Settings also owns the identity-only Explorer name editor. These ceremonies are
   notifications only; no separate item/currency reward is implied.
-- Exactly **five event IDs are explicitly blocked, not inferred**: `daily` and `decade` belong to
-  dormant Beacon/Cosmic Events; `survivor`, `fieldmedic`, and `gambler` need the unavailable hostile-
-  field and explorer-flora-care actions. Their future owners must use the same postcommit-only
-  ceremony seam; combat retains its separate bounded post-settlement cue path.
+- Exactly **two event IDs remain explicitly blocked, not inferred**: `daily` and `decade` belong to
+  dormant Beacon/Cosmic Events. Hostile explicit Bioscan now owns `survivor`; safe explorer Flora
+  healing owns `fieldmedic`; and a safe above-40%-risk meal owns `gambler`, each in its true action's
+  transaction and postcommit ceremony seam. Combat retains its separate bounded
+  post-settlement cue path.
 - Field Scout XP path (+2) requires a scout to be *set* and to be a different fauna than the fresh catch; a run with no scout set banks nothing from cataloguing — intended.
 - XP has a 1e6 hard cap but L9 is reached at 486; everything above 486 is inert. Fine today; note if a soft "prestige past 9" is ever wanted.
 - Depth Tax tops out at ×2.5 (Frontier). No open balance flag, but it's the main survivability knob — watch alongside gear scut/hull.

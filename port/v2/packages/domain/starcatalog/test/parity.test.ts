@@ -4,7 +4,9 @@
 import { describe, it, expect } from 'vitest';
 import { loadFixture, checkGenerator, canon } from '../../../../tests/parity.js';
 import { probeRaw, probeParsed } from '../../../../tests/baseline.js';
-import { UCELL, OBS_R, GR, SYS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED } from '@cf/domain-worldconfig';
+import {
+  UCELL, OBS_R, GR, GCELL, SYS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED, SOL_POS,
+} from '@cf/domain-worldconfig';
 import { properName, galaxyName, starName } from '@cf/domain-naming';
 import { starClass, SOL_PLANETS } from '@cf/domain-starcatalog';
 
@@ -12,6 +14,11 @@ describe('@cf/domain-worldconfig — baseline `constants` probe', () => {
   it('anchors match the fingerprint (indices 0–6; 7–9 are app-layer constants, later module)', () => {
     const c = probeParsed('constants') as unknown[];
     expect(canon([UCELL, OBS_R, GR, SYS_R, HOME_GAL_SEED, HOME_POS, SOL_SEED])).toBe(canon(c.slice(0, 7)));
+  });
+  it('pins the remaining grid/Sol anchors and immutable coordinate records directly', () => {
+    expect(GCELL).toBe(42);
+    expect(SOL_POS).toEqual({ x: 560, y: 170 });
+    expect([HOME_POS, SOL_POS].every(Object.isFrozen)).toBe(true);
   });
 });
 

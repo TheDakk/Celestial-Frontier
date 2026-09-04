@@ -91,10 +91,40 @@ all three TypeScript programs and root V1 validation. Independent audio review i
 One evidence build took 1.93s; current Compendium producer is `3c20acc3…`, measurement `4a93479b…`.
 Only current lock/build bindings changed; species worker/painter, historical samples and all
 numeric limits remain unchanged. No new full profile/browser chain, hosted action or release.
-The exact signed successor is reported at Git handoff, avoiding a self-embedding commit loop.
+Batch 3 is signed locally at `8bf9c45d4aae74a6924bcdc201424db0af4770e6`, four commits ahead of
+`origin/openai/mac`. The research-consumer implementation batch starts from that clean checkpoint.
 Continue remaining review/gameplay scope below; the full campaign is not complete.
 Serializer/seal/domain-test inventory is complete: the report overstated some missing coverage,
 and canonical serializers have distinct byte/admission contracts, so no blanket consolidation.
+
+### Gameplay batch 4 — implemented locally; ready for checkpoint
+
+- All six canonical Research rows are purchasable and connected to their existing effects:
+  Reinforced Hull protects only hostile Discover Life; Xenobotany improves only a safe explorer
+  Flora meal; Fusion/Antimatter/Warp Fold drive a deterministic 2x/4x/8x travel presentation.
+  Existing permanent ship reach and the unresearched travel baseline are unchanged.
+- Living Survey cards now offer explicit **Discover Life** without replacing Capture. One durable
+  Survey/hazard receipt records the world; safe worlds do no harm, hostile worlds apply disclosed
+  nonlethal damage through Hull/worn protection or the exact current Field Scout. A hostile result
+  joins `survivor` and its aggregate/rank consequences inside the same CAS.
+- A real Flora detail now lets the explorer **Eat 1** exact specimen for deterministic healing or
+  poison and seeded stat nourishment. Xenobotany adds one only on the safe path; poison never
+  kills. `fieldmedic` and high-risk-safe `gambler` use the true committed result.
+- The exact Scout standing before a genuinely fresh successful capture earns up to +2 XP, capped
+  at 486, in that same receipt. Independent review also fixed the older assumption that Arc 4 and
+  Arc 5 revisions stay numerically equal: each now proves its own retained parent +1 while their
+  source projection remains coherent. Existing companions, twins, genomes and lineage are intact.
+- Expedition Records now render a bounded read-only **Chronicle & Museum** for battles,
+  first-species discoveries, Prime victories and Legacy Journal entries. The 96-achievement map
+  has 26 exact live event joins and exactly two blocked owners (`daily`, `decade`).
+- The analytical economy source model and deterministic scenarios now cover Mine/Skim, recipes,
+  Research and connected effects. No unauthored random loot/affix/socket/vendor policy was added.
+- Focused final-source closure: **364/364** across 39 affected test files; Guide/Training
+  **47/47**; independent Scout/capture **96/96** and Bioscan/meal/travel **30/30**; Glass report
+  selftest PASS; all three TypeScript programs PASS; diff check clean. Root V1 validation rendered
+  all 1,010 species and retained all 50 V1 fingerprints. The v2 draft remains 78 unique ordered
+  bullets, SHA-256 `198bddf5c969151eba3ad9358cbcd016be0fd7c26b4e8524953892bf40484587`.
+  This is local focused evidence, not a full profile, browser certificate, HUMAN gate or release.
 
 ### Remaining completion plan — existing systems, not replacements
 
@@ -109,9 +139,10 @@ and canonical serializers have distinct byte/admission contracts, so no blanket 
    and finite audio lifetime are locally implemented/checked. Remaining extraction/performance
    work must preserve PWA identity, product semantics, save recovery and current audio cleanup;
    real-device acceptance is separate.
-4. **Gameplay:** finish five unavailable research consumers and the analytical source model,
-   authored loot and disclosed rates; extend existing Feed/Breed/Rename/Scout with care, healing,
-   bond and missions; complete remaining progression/records. Update Training with owning actions.
+4. **Gameplay:** next implement the fully authored accepted `st-scan` Starter Charter, deterministic
+   landing/descent and canonical-address wave-offs, then the 50-Paragon hunt. Follow with exact-
+   instance creature progression, the mature Atlas and the living-species pilot. Extend existing
+   Feed/Breed/Rename/Scout with care, bond and missions only after their exact policies are resolved.
 5. **Combat choices:** retain existing conquest/Guardian/Prime/XP/Stardust. Resolve the two named
    affix/extra-Guardian-reward decisions and Arc 5.5 before adding broader party/tactics/retreat.
 6. **Presentation:** preserve established genomes/hybrids/static portraits. Prove a small
@@ -125,6 +156,9 @@ and canonical serializers have distinct byte/admission contracts, so no blanket 
 - Questions pending: conquest imbue's independent/coexisting modifier axis versus replacement;
   extra first-victory Guardian cache versus existing rewards for initial beta. No numerical table,
   stacking rule or capacity fallback is silently invented.
+- Companion-care lethality/anti-farm/bond rules, mission catalogue/timing/reward/injury rules,
+  random-loot/affix/socket/vendor tables, and achievement-reward quantities remain explicit product
+  decisions. They remain in beta scope but are not fabricated from high-level vision language.
 - Preserve the approved **combined post-Arc-5 Arc-4.5 journey/attachment review**. Earlier exploratory
   play is useful but not its substitute. Arc 5.5 remains a separate human combat-model review.
 - Real-device play, listening, anatomy/art judgment and accessibility/heat tests remain open.
@@ -132,17 +166,19 @@ and canonical serializers have distinct byte/admission contracts, so no blanket 
 - Faster develop admission is an explicit pending coverage choice: browser-free + two canaries
   with the long chain deferred to milestones/releases, or retain the full chain on every PR.
   No workflow coverage has been dropped while awaiting that answer.
-- The five unavailable research rows have authored prices/math but missing consequence owners:
+- **Resolved by Nick, 2026-09-04: everything is required for beta.** The five unavailable research
+  rows have authored prices/math but missing consequence owners:
   hostile bioscan damage, explorer flora nourishment and distance-timed travel presentation.
-  Nick is asked whether to restore those original systems or leave those upgrades unavailable
-  for initial beta. Do not apply hull mitigation to unrelated combat, give companion Feed the
+  Restore those original systems; do not leave the upgrades disabled as the beta scope decision.
+  This batch implements their existing effects and records any remaining explicit policy boundary.
+  Do not apply hull mitigation to unrelated combat, give companion Feed the
   explorer's nourishment effect, change permanent reach or slow current travel just to sell speed.
 
 ### Paired next steps
 
-- **OpenAI/Codex:** finish/review/check the bounded local batch, synchronize affected docs and
-  commit completed work on `openai/mac`. Preserve other in-progress agent edits. No hosted action
-  until a new exact candidate and authority are established.
+- **OpenAI/Codex:** commit gameplay batch 4 locally, then continue directly with the accepted
+  `st-scan` Charter and the remaining code-ready beta sequence on `openai/mac`. Preserve other
+  agent work. No hosted action until a new exact candidate and authority are established.
 - **Anthropic/Claude:** PR #35 is available from `origin/develop`; the new local corrections are
   not. Before future coding, use the Anthropic-owned clean branch, fetch/merge develop, and agree
   disjoint ownership. If dirty, finish/safely commit its own work first. No manual file copying.
