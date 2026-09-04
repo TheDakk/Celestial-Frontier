@@ -98,3 +98,43 @@ Masters/projects remain private scratch with backup pending. Nick reports Claude
 in progress. This documentation-only successor does not alter product/evidence/workflow code;
 the earlier source checks remain applicable and are not repeated or relabelled as fresh runs.
 No new GitHub push, hosted run, PR, merge, purchase, release or Phase 2 work is included.
+
+## Fresh terminal confirmation — Blender and Surge
+
+At Nick's request, Blender created a new private scene through its terminal Python entry point,
+saved it, and a second background process reopened the saved `.blend` and rendered frame 1.
+Both processes exited zero. Blender 5.2.1 LTS, Cycles CPU, 32 samples; PNG is 960×640,
+698,677 bytes, inspected visually. The separate render reports 4.39 seconds.
+
+Private scratch: `/private/tmp/cf-aaa-terminal-confirmation-20260904`.
+The script, editable source and hash manifest remain outside the public repository, backup-pending.
+
+- Script SHA-256: `5a48f07aac56d1a9e1c4fc0f76fd482680b49d78003a03ac1afdb32745b62e42`.
+- Saved scene SHA-256: `2c82134480bf564309609e042d6258fd4e5b3b5964c1cd26291333e603de1f10`.
+- PNG SHA-256: `012be5bb149729a9456ba915f06a659a6609b0718eda4dd85349740a4b4497f5`.
+
+Commands used:
+
+```sh
+"/Applications/Blender.app/Contents/MacOS/Blender" --background --factory-startup \
+  --python-exit-code 1 --python /private/tmp/cf-aaa-terminal-confirmation-20260904/create_scene.py
+"/Applications/Blender.app/Contents/MacOS/Blender" --background \
+  /private/tmp/cf-aaa-terminal-confirmation-20260904/readiness-ship.blend \
+  --render-output /private/tmp/cf-aaa-terminal-confirmation-20260904/terminal-ship- \
+  --render-format PNG --render-frame 1
+"/Applications/Surge XT.app/Contents/MacOS/surge-xt-cli" --help
+"/Applications/Surge XT.app/Contents/MacOS/surge-xt-cli" --version
+```
+
+Surge CLI help/version both exit zero; version 1.3.4.f7b97c6. Its documented interface covers
+live audio devices, MIDI/OSC and initial patches; it provides no offline file-export option.
+Live MIDI/OSC playback was not exercised. Offline Surge production is proven through the
+terminal-driven REAPER VST3 project/render path recorded above; `.rpp`, WAV and FLAC hashes
+were rechecked and match. This establishes terminal automation, not a guarantee that REAPER
+never presents startup or evaluation dialogs, and not artistic/pilot acceptance.
+
+Only readiness documentation changes. Product/CI/budget source remains unchanged; earlier
+source checks are retained as earlier evidence, not reported as fresh runs. No new push or
+hosted attempt is authorized. Codex keeps this checkpoint local on `openai/mac`; Claude may
+continue review and the independent lane on `anthropic/windows`, without copying these local
+changes. No PR is needed for the test; no release or deployment occurs.

@@ -57,7 +57,12 @@ Offline promise is a fully installed ready PWA while data remains retained, not 
 ### Current work and next actions
 
 Batch A tool readiness is underway: Blender 5.2.1; REAPER 7.79; Surge XT 1.3.4 instrument/effects
-installed. Blender save/separate-reopen/render PASS. REAPER terminal script loaded Surge VST3 instrument/effects, saved/reopened the project, and rendered 4s WAV/FLAC successfully after Nick opened the startup UI. Waveform verification passes; human listening/browser acceptance and private source backup remain pending.
+installed. A fresh terminal-only Blender save/separate-reopen/render passes (960×640, Cycles
+CPU, 4.39s); PNG inspected. REAPER terminal script loaded Surge VST3 instrument/effects,
+saved/reopened the project, and rendered 4s WAV/FLAC successfully after Nick opened the startup
+UI; output hashes reverified. Surge standalone CLI help/version pass; its live MIDI/OSC path is
+not exercised and offline export uses the verified REAPER VST3 host. Waveform verification
+passes; human listening/browser acceptance and private source backup remain pending.
 Batches B–D: one ship/biome treatment plus quadruped, biped, avian, serpentine, arthropod,
 tentacled, aquatic and flora/fungus at actual 132/300/440, static and animated. No faithful
 animation => protected static portrait and explicit incomplete status. Add coherent audio,
