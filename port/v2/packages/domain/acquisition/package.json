@@ -9,6 +9,8 @@
     "./snapshot-internal": "./src/snapshot-internal.ts",
     "./ownership-v2-internal": "./src/ownership-v2-internal.ts",
     "./feed-internal": "./src/feed.ts",
+    "./explorer-meal-internal": "./src/explorer-meal.ts",
+    "./bioscan-internal": "./src/bioscan.ts",
     "./breed-internal": "./src/breed.ts",
     "./rename-internal": "./src/rename.ts",
     "./scout-internal": "./src/scout.ts",

@@ -144,6 +144,7 @@ function contractErrors(main: string, slice: string, contract = contractSource):
   for (const marker of [
     "'#setsnd'", "'#setvol'", "'#setvoice'", "'[data-pref]'", "'[data-motion]'",
     "'#setcharts'", "'#setfx'", "'#setshake'", "'#setglass'", "'[data-arc5-feed-confirm]'",
+    "'[data-arc5-explorer-meal-confirm]'",
   ]) if (!selector.includes(marker)) errors.push(`selector:${marker}`);
   if (selector.includes("'#setimport'")) errors.push('protected-import-blocked');
   if (selector.includes("'[data-inventory-action]'")) errors.push('inventory-action-capture-swallowed');
@@ -252,6 +253,13 @@ describe('ordinary Settings mutations share the read-only boundary', () => {
     const withoutFeed = mainSource.replace("  '[data-arc5-feed-confirm]',\n", '');
     expect(contractErrors(withoutFeed, sliceSource))
       .toContain("selector:'[data-arc5-feed-confirm]'");
+
+    const withoutExplorerMeal = mainSource.replace(
+      "  '[data-arc5-explorer-meal-confirm]',\n",
+      '',
+    );
+    expect(contractErrors(withoutExplorerMeal, sliceSource))
+      .toContain("selector:'[data-arc5-explorer-meal-confirm]'");
 
     const blockedImport = mainSource.replace(
       "'#dockcharts', '#setsnd',",

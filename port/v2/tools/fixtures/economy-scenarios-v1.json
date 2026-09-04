@@ -1,0 +1,147 @@
+{
+  "schema": "cf-v2-economy-scenarios/v1",
+  "sourceModelVersion": 1,
+  "world": {
+    "galaxy": { "seed": 999, "x": 90, "y": -60 },
+    "star": { "seed": 3037235558, "x": -897.1608293121681, "y": -86.20030916528776 },
+    "planet": { "seed": 171668249 }
+  },
+  "scenarios": [
+    {
+      "id": "fresh-save",
+      "priorExtractions": 0,
+      "initial": {
+        "activePlayMs": 0,
+        "materials": {},
+        "itemCounts": {},
+        "stardust": 0,
+        "signatureIds": [],
+        "researchIds": []
+      },
+      "schedule": [
+        { "kind": "field-samples", "receiptId": "fresh-landfall-1", "activePlayMs": 100 },
+        { "kind": "mine-world", "receiptId": "fresh-mine-1", "receiptOrdinal": 0, "activePlayMs": 1000 },
+        { "kind": "craft", "actionId": "fresh-craft-plate", "receiptOrdinal": 1, "baseId": "plate", "activePlayMs": 1100 }
+      ],
+      "target": { "baseId": "plate", "quantity": 1 },
+      "expected": {
+        "status": "replayed",
+        "state": {
+          "schema": 2,
+          "activePlayMs": 1100,
+          "materials": { "Al": 1, "Cr": 1, "Pm": 1 },
+          "itemCounts": { "plate": 1 },
+          "stardust": 5,
+          "signatureIds": [],
+          "researchIds": [],
+          "appliedReceiptIds": ["fresh-landfall-1", "fresh-mine-1"],
+          "appliedCraftActionIds": ["fresh-craft-plate"],
+          "appliedResearchActionIds": []
+        },
+        "target": {
+          "status": "reached-in-trace",
+          "baseId": "plate",
+          "quantity": 1,
+          "observedAtActivePlayMs": 1100,
+          "etaActivePlayMs": null
+        }
+      }
+    },
+    {
+      "id": "first-return",
+      "priorExtractions": 1,
+      "initial": {
+        "activePlayMs": 1100,
+        "materials": { "Al": 1, "Cr": 1, "Pm": 1 },
+        "itemCounts": { "plate": 1 },
+        "stardust": 5,
+        "signatureIds": [],
+        "researchIds": []
+      },
+      "schedule": [
+        { "kind": "mine-world", "receiptId": "return-mine-2", "receiptOrdinal": 2, "activePlayMs": 5000 }
+      ],
+      "target": { "baseId": "plate", "quantity": 2 },
+      "expected": {
+        "status": "replayed",
+        "state": {
+          "schema": 2,
+          "activePlayMs": 5000,
+          "materials": { "Al": 1, "Ca": 1, "Cr": 3, "Pm": 1 },
+          "itemCounts": { "plate": 1 },
+          "stardust": 5,
+          "signatureIds": [],
+          "researchIds": [],
+          "appliedReceiptIds": ["return-mine-2"],
+          "appliedCraftActionIds": [],
+          "appliedResearchActionIds": []
+        },
+        "target": {
+          "status": "not-reached-in-trace",
+          "baseId": "plate",
+          "quantity": 2,
+          "observedAtActivePlayMs": null,
+          "etaActivePlayMs": null
+        }
+      }
+    },
+    {
+      "id": "mid-reach",
+      "priorExtractions": 8,
+      "initial": {
+        "activePlayMs": 90000,
+        "materials": { "Fe": 10, "H": 8, "He3": 2, "Si": 4 },
+        "itemCounts": { "jumpdrive": 1 },
+        "stardust": 80,
+        "signatureIds": [],
+        "researchIds": []
+      },
+      "schedule": [
+        { "kind": "research", "actionId": "mid-research-scan1", "receiptOrdinal": 9, "researchId": "scan1", "activePlayMs": 91000 },
+        { "kind": "research", "actionId": "mid-research-drive1", "receiptOrdinal": 10, "researchId": "drive1", "activePlayMs": 92000 }
+      ],
+      "target": { "researchId": "drive1" },
+      "expected": {
+        "status": "replayed",
+        "state": {
+          "schema": 2,
+          "activePlayMs": 92000,
+          "materials": {},
+          "itemCounts": { "jumpdrive": 1 },
+          "stardust": 20,
+          "signatureIds": [],
+          "researchIds": ["scan1", "drive1"],
+          "appliedReceiptIds": [],
+          "appliedCraftActionIds": [],
+          "appliedResearchActionIds": ["mid-research-scan1", "mid-research-drive1"]
+        },
+        "target": {
+          "status": "reached-in-trace",
+          "researchId": "drive1",
+          "observedAtActivePlayMs": 92000,
+          "etaActivePlayMs": null
+        }
+      }
+    }
+  ],
+  "fullInventory": {
+    "capacity": 1,
+    "schedule": [
+      { "activePlayMs": 200000, "receiptId": "capacity-fieldsuit-1", "baseId": "fieldsuit", "generationSeed": 101 },
+      { "activePlayMs": 201000, "receiptId": "capacity-headlamp-2", "baseId": "headlamp", "generationSeed": 202 }
+    ],
+    "expected": {
+      "schema": 1,
+      "revision": 2,
+      "capacity": 1,
+      "entryIds": [
+        "gear1|loot1|craft|legacy-v1.8.9-items|recipe%3Afieldsuit|||capacity-fieldsuit-1|0"
+      ],
+      "pendingIds": [
+        "gear1|loot1|craft|legacy-v1.8.9-items|recipe%3Aheadlamp|||capacity-headlamp-2|1"
+      ],
+      "locations": ["inventory", "pending"],
+      "activePlaySchedule": [200000, 201000]
+    }
+  }
+}

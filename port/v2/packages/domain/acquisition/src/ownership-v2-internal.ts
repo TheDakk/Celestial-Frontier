@@ -9,6 +9,9 @@ export {
   createOwnershipSourceProjectionSuccessorV2,
 } from './model-v2.js';
 export {
+  createCaptureOwnershipSourceProjectionSuccessorV2,
+} from './capture-scout-xp.js';
+export {
   EMPTY_OWNERSHIP_DELTA_JSON_V2,
   MAX_OWNERSHIP_DELTA_ROWS_V2,
   OWNERSHIP_DELTA_SCHEMA_V2,
