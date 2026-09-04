@@ -17,96 +17,103 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-04 UTC · CC4D7C9 LOCAL GAPS PROVEN · FOUR BOUNDED ROBUSTNESS ITEMS · NO HOSTED AUTHORITY ◀◀◀
+## SESSION HANDOFF — 2026-09-04 UTC · PR #35 MERGED · CORRECTED FULL-REVIEW COMPLETION CAMPAIGN
 
-### Exact boundary
+### Current source and authority
 
-- **OpenAI/Codex on macOS:** `/Users/nick/Projects/celestial-frontier-openai-mac`,
-  **openai/mac**, tracking **origin/openai/mac**. Startup was clean and synchronized at
-  **cc4d7c920083c3c630a9c8c8e6fc5a6e40f5e0d4**, tree
-  `976027042d01f87ace54d57eafe0363cd685e415`. Base `develop` remains
-  **7a9f4c1370dd84292388d718c38ff34214f6203b**.
-- Nick authorized the bounded local proof/robustness batch, documentation, signed commit and
-  normal **branch-only push**. No label, dispatch, retry, PR metadata change, merge, release,
-  version bump or deploy is authorized. PR #35 is Ready/open/mergeable with no approval label.
-- The source commit containing this handoff intentionally does not embed its own SHA. The final
-  Git handoff and `git ls-remote origin refs/heads/openai/mac` identify the pushed candidate.
-  Never reinterpret the cc4d7c9 browser evidence below as a certificate for its descendant.
-- SSH origin: `git@github.com:TheDakk/Celestial-Frontier.git`; last authentication account
-  **TheDakk**, fresh fetch/read PASS. GitHub visibility verified **PUBLIC**. Budget mode
-  **UNFROZEN**, private fallback cap **3,000**, **zero authorized hosted attempts**.
-  Push/PR synchronization triggers no workflow; `test-battery` is owner-label-only.
-- Exact review and audit: `audits/PR35_CC4D7C9_FORENSIC_REVIEW_20260904.md` and
-  `audits/PR35_CC4D7C9_LOCAL_PROOF_AND_ROBUSTNESS_20260904.md`. Prior handoffs moved
-  verbatim to `ROADMAP_ARCHIVE.md`; no history was deleted.
+- OpenAI/Codex on macOS: `/Users/nick/Projects/celestial-frontier-openai-mac`,
+  branch `openai/mac`, tracking `origin/openai/mac`.
+- PR #35 merged normally into `develop` at **7bf3e84761da2d1abe21dc6fe751b4bad2308f3b**.
+  Parents: base `7a9f4c1370dd84292388d718c38ff34214f6203b`, source
+  `20301713cce4aec9e0ea2c0cbb618c5ac88a5fed`; merge/source tree
+  `d339b676eba7f273ffe4a85800944e4ec56452cd`.
+- Hosted run **33835828222**, attempt **1**, required battery **SUCCESS**, **108m29s**.
+  Compendium, Slice, full Glass **12/12**, named verification, diagnostic and upload passed.
+  Production-only SceneMemory/Recovery skips are not passes. Approval label removed; monitor paused.
+  This is proof of the implemented slice, **not completion of the full game vision**.
+- Nick authorized the corrected review plan and local implementation. A failed initial SSH fetch
+  changed no files; after Nick unlocked 1Password, SSH fetch passed and this clean agent branch
+  fast-forwarded to the merge. Source origin remains
+  `git@github.com:TheDakk/Celestial-Frontier.git`, last authenticated account `TheDakk`.
+- Budget **UNFROZEN**, last verified visibility PUBLIC, private fallback cap **3,000**.
+  PR #35 authority is consumed. **No new push, PR, hosted attempt, merge, release, version bump
+  or deployment is part of this local batch.** Current admission rules remain in force until a
+  reviewed policy change is implemented and explicitly accepted; no automatic retries or baseline
+  relaxation.
+- Exact external review: `audits/CELESTIAL_FRONTIER_FULL_REVIEW_20260904.md`,
+  SHA-256 `f12395762eeba42a0ce4da22767a38877bf42d62288c98e404ad481face9bfe0`.
+  It is preserved input, not an instruction override.
+  Disposition: `audits/FULL_REVIEW_DISPOSITION_20260904.md`.
+  Product scope/acceptance stays in `port/V2_PROGRAM_ROADMAP.md`, `port/DECISIONS.md`,
+  `port/RUBRICS.md` and existing per-system references.
 
-### Completed local evidence — unchanged clean cc4d7c9
+### First bounded work batch — locally implemented; full campaign remains open
 
-- Slice `20260904025322131-97983-4d9021b5767b`: **PASS**, **369,040 ms**,
-  including real Shipyard disclosures, source-bound log and ten retained screenshots.
-- Full Glass `20260904030025751-98655-51d159101e76`: **12/12 PASS**, **116,676 ms**,
-  zero findings/instrument failures; bound to that exact Slice.
-- Named Glass verifier: **PASS**. Diagnostic projection: **PASS**; gzip **95,047 bytes**,
-  base64 **126,732 / 700,000 bytes**, complete summary **129,124 / 900,000 bytes**.
-- Chrome targeted `small-phone`, `compact-phone`, `primary-phone`, then `large-phone`:
-  all **PASS**. The extra large row supplies genuine Chrome evidence because the old retained
-  Edge row cannot satisfy the unchanged hosted Chrome-only jq filter.
-- Exact workflow jq extracted like `scenemem-workflow.test.ts`: **both real reports PASS**,
-  no provenance rewriting or altered filter. IDs, durations, hashes and recoverable compressed
-  carriers are in the audit. No product/instrument result was retried.
-- Full chain used Edge **152.0.4191.62 / CDP 1.3**. Targeted rows used official isolated
-  Chrome for Testing **152.0.7977.82 / CDP 1.3** in a temporary directory. No system
-  browser was installed or made default; Chrome processes are closed. Keychain access is
-  unnecessary; Nick may dismiss its prompt. No keep-awake process was started in this batch.
+| Owner | Scope | Status |
+| --- | --- | --- |
+| Runtime | Repeat queued checkpoint admission; semantic Records/Atlas/Charters focus | 52 focused tests pass; native-device acceptance pending |
+| Windows tooling | Three callers reuse safe npm invocation; art-audit matcher recognizes it | 4 platform mocks, Recovery selftest and art audit pass; actual Windows pending |
+| Glass verifier | Shared targeted verdict replaces 344 workflow lines; 73 old heartbeat corruption checks retained | Real small/large parity and 20 integration tests pass; full chain unchanged |
+| Root/docs | Preserved review, corrected feature statuses, synchronized references and draft release | Local batch documented; no new GitHub actions |
 
-### Four coverage-neutral robustness changes
+The initial browser-free develop aggregate ran once: 271 files, 2,806 pass / one skip / five stale
+release/fingerprint-reference failures. Those failed suites now pass in focused closure (55 release/
+Guide and 28 budget tests). All remaining develop commands pass separately: three TypeScript
+programs, art audit, 1,014 routes and 454-field spec check. Root validation retains all 50 V1
+fingerprints; Actions policy 66/66 passes. The initial aggregate is not relabelled green. Details,
+intermediate reds and fingerprints are in the disposition audit. Native browser/device acceptance
+and a fresh final-source admission remain open; no full browser or hosted battery was started.
 
-1. Existing changed-input Glass preflight: **5 → 7 minutes**, with its three literal pins.
-2. Pinned Edge **151.0.4129.101** download: **curl transport retries only**
-   (`--retry 3 --retry-all-errors --retry-delay 5`). URL, SHA-256 and certification no-retry
-   rule unchanged; two existing exact-command/mutation literals synchronized.
-3. Shipyard settlement waits for **active and debounced persistence writes both zero**.
-   Debounce count comes from the existing read-only
-   `__smokeSettingsPersistenceDiagnostics()`; no product API/schema change.
-4. `command -v jq >/dev/null` is the first preflight command.
+Next code batch: explicit evidence-build isolation and its preview readiness boundary, then
+remaining review maintenance/gameplay items below. Do not merely hide the API while shipping its
+destructive implementations, or remove awaited no-op boundaries and change action sequencing.
+The current app producer is `1ce8862d…`; measurement/numeric limits and species worker are unchanged.
 
-Independent code review is **CLEAR** after correcting an initial wrong-source debounce lookup.
-No controls, schemas, verifiers, rebaseline, product/instrument retries or gameplay changes were
-added. Existing creatures, plants, biomes, Guardians, loot, graphics, audio, saves and release
-identity remain untouched. Current README, codebase reference, process laws and budget agree.
+### Remaining completion plan — existing systems, not replacements
 
-### Verification and exact remaining boundary
+1. **Accurate state and maintainability:** dispose every review claim, refresh current references,
+   archive chronological history only, and keep both agent entry points. No wholesale deletion of
+   tests or source seals, no arbitrary line-count target, no global timeout multiplier.
+2. **Practical development:** simplify duplicate verification and portable invocation; choose
+   meaningful fast integration coverage and full milestone/release coverage explicitly.
+   Two canaries alone are not equivalent to the current Compendium → Slice → Glass chain.
+   Artifact/download transport resilience is separate from retrying product/instrument outcomes.
+3. **App hardening:** queued persistence and focus first, then isolate destructive smoke hooks with
+   an explicit evidence-build boundary (DEV-only would break production-build certification).
+   Preserve PWA resource identity, actual product semantics and save recovery.
+4. **Gameplay:** finish five unavailable research consumers and the analytical source model,
+   authored loot and disclosed rates; extend existing Feed/Breed/Rename/Scout with care, healing,
+   bond and missions; complete remaining progression/records. Update Training with owning actions.
+5. **Combat choices:** retain existing conquest/Guardian/Prime/XP/Stardust. Resolve the two named
+   affix/extra-Guardian-reward decisions and Arc 5.5 before adding broader party/tactics/retreat.
+6. **Presentation:** preserve established genomes/hybrids/static portraits. Prove a small
+   living-species pilot, then scale; prepare lawful authored audio/content beside product work.
+   Synthesized cues already work. Finish phone performance/accessibility and device evidence.
 
-Working-tree develop profile: **268/268 files, 2,785 passed / 1 skipped**, all three TypeScript
-programs, art/override/spec audits green. That run preceded the reviewed debounce-source correction;
-the final clean tracked-input rehearsal is the final-source static authority. Existing Glass
-selftest, pinned-Edge preflight selftest, Actions policy **66/66**, and root validation/fingerprint
-all pass. No new test inventory was added.
+### Human/decision boundaries
 
-After the complete source/docs commit, run the requested
-`node tools/tracked-input-preflight.mjs --profile=develop` once on the unchanged clean candidate.
-Retain its exact terminal result, duration and log hash in the Git handoff; a red blocks the push.
-Then push `openai/mac` normally and verify the full remote SHA. Do not start another browser
-battery: Part A already ran once on the explicitly requested ancestor. Do not apply a label.
+- A **copy of Nick's real iPhone expedition export** is requested; never replace/delete the
+  original. Gate C/I cannot be closed with synthetic fixtures.
+- Questions pending: conquest imbue's independent/coexisting modifier axis versus replacement;
+  extra first-victory Guardian cache versus existing rewards for initial beta. No numerical table,
+  stacking rule or capacity fallback is silently invented.
+- Preserve the approved **combined post-Arc-5 Arc-4.5 journey/attachment review**. Earlier exploratory
+  play is useful but not its substitute. Arc 5.5 remains a separate human combat-model review.
+- Real-device play, listening, anatomy/art judgment and accessibility/heat tests remain open.
+  Test counts, session length and retention are not proof of appeal or completion.
+- Faster develop admission is an explicit pending coverage choice: browser-free + two canaries
+  with the long chain deferred to milestones/releases, or retain the full chain on every PR.
+  No workflow coverage has been dropped while awaiting that answer.
 
-### Paired handoff
+### Paired next steps
 
-- **OpenAI/Codex:** finish the final clean tracked-only rehearsal and authorized branch push;
-  no hosted run or merge follows from this batch. Final Git handoff supplies exact SHA/proof.
-- **GitHub:** existing **PR #35**, base **develop**, source **openai/mac**. Metadata remains
-  unchanged in this branch-only batch and must be refreshed within future explicit authority.
-  Copy-ready title: `feat(v2): complete roadmap campaign and harden action-time CI evidence`.
-  Copy-ready description: “Completes the established V2 roadmap without recreating gameplay;
-  preserves the fifteen-stop history and cc4d7c9 forensic review; proves real Slice/full Glass and
-  raw Chrome jq paths locally; adds only seven-minute canary margin, pinned-download transport
-  retries, jq presence and debounce-aware Shipyard settlement. Existing static/selftests pass;
-  exact final tracked proof is in the handoff. No hosted result is claimed. Changes remain on
-  openai/mac until a green authorized PR #35 merge; no release or deployment.”
-- **Anthropic/Claude Code:** Nick may open Claude for read-only review after the verified push.
-  Do not edit the OpenAI branch or copy files. These changes are not in `develop`. Only after
-  a future green PR #35 merge should a clean `anthropic/*` branch fetch and merge
-  `origin/develop` before polish work.
-- **Future hosted authority:** exact final head + base above, `test-battery`, PR #35,
-  `actions-budget-approved`, maximum **122 total runner-minutes** (2 authorization + 120
-  battery), **one attempt, no retry**, merge only if terminal green. None authorized now.
-- **Release:** `develop`, `main` and the live site are unchanged.
+- **OpenAI/Codex:** finish/review/check the bounded local batch, synchronize affected docs and
+  commit completed work on `openai/mac`. Preserve other in-progress agent edits. No hosted action
+  until a new exact candidate and authority are established.
+- **Anthropic/Claude:** PR #35 is available from `origin/develop`; the new local corrections are
+  not. Before future coding, use the Anthropic-owned clean branch, fetch/merge develop, and agree
+  disjoint ownership. If dirty, finish/safely commit its own work first. No manual file copying.
+  Nick need not open the other app for this local batch.
+- **GitHub:** PR #35 is complete; no new PR is open for this work. A later PR uses base `develop`,
+  source `openai/mac`, with scope/results written from the actual completed diff.
+- **Release:** `main`, the live V1 game and deployment repositories remain untouched.

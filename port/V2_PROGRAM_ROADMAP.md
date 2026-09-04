@@ -1,5 +1,40 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
+## Current completion status — 2026-09-04 (post-PR #35)
+
+**The full V2 vision is not complete.** PR #35 merged as
+`7bf3e84761da2d1abe21dc6fe751b4bad2308f3b` after exact-head hosted run `33835828222`
+passed once. That proves the implemented slice, not Gate H/I or human acceptance.
+The dated evidence overlays below are historical records; they cannot override this status,
+the current `../ROADMAP.md` handoff, or newer source.
+
+Nick approved the corrected full-review completion plan. Review/disposition:
+`../audits/CELESTIAL_FRONTIER_FULL_REVIEW_20260904.md` and
+`../audits/FULL_REVIEW_DISPOSITION_20260904.md`. The latter records inaccurate findings
+rather than converting them into unnecessary product changes.
+
+| Existing program lane | Current playable boundary | Remaining accepted scope |
+| --- | --- | --- |
+| Foundations / Arc 1 | Safe persistence/time/identity, bounded Compendium and ship/universe presentation | Human/save/device/art evidence; current exact candidate proof after changes |
+| Arc 0 | Fifteen Training IDs including graduation; orientation/continuity and truthful capability views | Full hands-on curriculum beside its real owning actions; protected bioscan/weekly owners |
+| Arc 2–3 | Exact Inventory, fixed fabrication, mining/skimming, Deep Scanners; built Jump Drive/Array/Intergalactic Drive already increase reach | Five unavailable research consumers, analytical economy source/rate model, authored loot/affix/rate policy, upgrades/sockets and remaining ship effects |
+| Arc 4–5 | Capture plus Feed, nonlethal Breed/recovery, Rename, role-only Field Scout | Care/healing, bond growth, missions, Scout consequences, durable companion Chronicle and living previews |
+| Arc 6 | Landed battle, conquest, Guardian/Titan capture, Prime claims, XP/Stardust and Combat Chronicle | Arc 5.5 HUMAN model; two explicit affix/extra-Guardian-reward decisions; party/tactics/retreat and wider encounters |
+| Arc 7–8 | Audio platform and working deterministic synthesized cues | Mix/lifecycle/accessibility close-out; rights-bound authored music/ambience/voices and listening evidence |
+| Arc 9–10 | Bounded progression/achievements/Starter Charters/Binder/Atlas actions and PWA automation | Remaining progression, projects, durable museum/history/share features, localization, integration/device/release gates |
+| Visual production | Existing reviewed static art and universe-wide treatment are preserved | Representative living-rig pilot, then biome/species scale and physical-phone quality/performance |
+
+First local batch: persistence/focus hardening, portable npm command reuse, targeted-verifier
+parity, and current documentation. Separate harness/build isolation and measured verification-lane
+simplification follow. Full milestones/release coverage and transport-only retry policy require
+explicit documented boundaries; no global time multiplier or blanket test deletion.
+
+Continue through the existing engineering/economy and companion owners, combined post-Arc-5
+journey/attachment review (§4.10), combat decisions and remaining progression. Training co-delivers
+with each action. Audio/content preparation and living-species pilots can overlap product work.
+Real iPhone save export, human play/listening/art and physical-device gates remain open.
+
+
 > **2026-09-02 current PR #35 battery/program overlay (supersedes every older “current” label;
 > all dated roadmap/evidence blocks below remain immutable):** hosted run `33584052508` tested exact
 > head `18c088de4388edf58eda2c192b71cb94156e26e7` against base

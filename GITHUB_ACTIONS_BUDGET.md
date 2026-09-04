@@ -2,7 +2,24 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current bounded batch (2026-09-04 UTC): cc4d7c9 proof gaps are closed locally; four robustness
+**Current authority — 2026-09-04 after PR #35:** run `33835828222`, attempt 1, passed on
+head `20301713cce4aec9e0ea2c0cbb618c5ac88a5fed` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b` (battery 108m29s). Nick then requested the normal
+merge, verified on develop as `7bf3e84761da2d1abe21dc6fe751b4bad2308f3b`. Approval label
+removed; monitor paused. That exact authority is consumed. Nick authorized the corrected full
+review's local implementation campaign, not another hosted attempt or release. Existing admission,
+no-retry and numerical evidence rules remain in force pending a separately documented policy change.
+Visibility last verified PUBLIC; private fallback cap 3,000. No new push, label, PR mutation,
+dispatch, retry, merge, publication, version bump or deploy is authorized by this local batch.
+The dated states below are preserved history. Current source/ownership and next steps are in
+`ROADMAP.md`; terminal evidence and review corrections are in
+`audits/FULL_REVIEW_DISPOSITION_20260904.md`.
+
+The current local simplification replaces the duplicate jq canary verdict with the source-bound
+Node verifier after retained-report parity. It does not remove either phone row, the final full
+chain, any job/step ceiling, mandatory artifact upload or the one-attempt rule.
+
+**Historical bounded batch (2026-09-04 UTC): cc4d7c9 proof gaps are closed locally; four robustness
 items are implemented; branch-only push is authorized, no hosted attempt is authorized.**
 Exact clean `cc4d7c920083c3c630a9c8c8e6fc5a6e40f5e0d4` passed develop Slice, the full
 12-row Slice-bound Glass matrix, named verification and diagnostic projection. The carrier is

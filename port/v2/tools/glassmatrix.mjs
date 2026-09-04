@@ -37,8 +37,10 @@ import {
   GLASS_MATRIX_REPORT_SCHEMA,
   GLASS_MATRIX_VIEWPORTS,
   GLASS_NEGATIVE_CONTROLS,
+  glassBrowserAuthorityErrors,
   glassShipyardKeyboardHeartbeatSelftestInventory,
   glassTerminalEvidenceErrors,
+  glassViewportInventory,
   shipyardKeyboardHeartbeatInventoryErrors,
 } from './glassmatrix-evidence-contract.mjs';
 import {
@@ -617,6 +619,11 @@ const sliceRunArg = cliArgs.find((arg) => arg.startsWith('--slice-run='));
 const selectedSliceRunId = sliceRunArg ? sliceRunArg.slice('--slice-run='.length) : null;
 const verifyRunArg = cliArgs.find((arg) => arg.startsWith('--verify-run='));
 const selectedVerifyRunId = verifyRunArg ? verifyRunArg.slice('--verify-run='.length) : null;
+const verifyTargetedRunArg = cliArgs.find((arg) => arg.startsWith('--verify-targeted-run='));
+const selectedTargetedVerifyRunId = verifyTargetedRunArg
+  ? verifyTargetedRunArg.slice('--verify-targeted-run='.length) : null;
+const verifyBrowserArg = cliArgs.find((arg) => arg.startsWith('--browser='));
+const expectedTargetedBrowser = verifyBrowserArg ? verifyBrowserArg.slice('--browser='.length) : null;
 const profileArg = cliArgs.find((arg) => arg.startsWith('--profile='));
 const selectedAssuranceProfile = profileArg
   ? /^(?:--profile=)(develop|production)$/.exec(profileArg)?.[1] ?? null
@@ -626,19 +633,26 @@ const currentReportPath = path.join(evidenceDir, viewportLabel
 const selftestOnly = cliArgs.includes('--selftest');
 const unknownArgs = cliArgs.filter((arg) => arg !== '--selftest'
   && !arg.startsWith('--viewport=') && !arg.startsWith('--slice-run=')
-  && !arg.startsWith('--verify-run=') && !arg.startsWith('--profile='));
-const singletonPrefixes = ['--viewport=', '--slice-run=', '--verify-run=', '--profile='];
-const duplicateSingleton = [viewportArg, sliceRunArg, verifyRunArg, profileArg]
-  .some((value, index) => value
-    && cliArgs.filter((arg) => arg.startsWith(singletonPrefixes[index])).length !== 1);
+  && !arg.startsWith('--verify-run=') && !arg.startsWith('--profile=')
+  && !arg.startsWith('--verify-targeted-run=') && !arg.startsWith('--browser='));
+const singletonPrefixes = ['--viewport=', '--slice-run=', '--verify-run=', '--profile=',
+  '--verify-targeted-run=', '--browser='];
+const duplicateSingleton = singletonPrefixes.some((prefix) => (
+  cliArgs.filter((arg) => arg.startsWith(prefix)).length > 1
+));
 if (unknownArgs.length || duplicateSingleton
   || (profileArg && !selectedAssuranceProfile)
   || (sliceRunArg && !selectedSliceRunId)
   || (verifyRunArg && !selectedVerifyRunId)
+  || (verifyTargetedRunArg && (!selectedTargetedVerifyRunId || !viewportArg
+    || !['small-phone', 'large-phone'].includes(viewportLabel)
+    || !expectedTargetedBrowser || !path.isAbsolute(expectedTargetedBrowser)
+    || cliArgs.length !== 3))
+  || (verifyBrowserArg && !verifyTargetedRunArg)
   || (selftestOnly && cliArgs.length !== 1)
   || (viewportArg && (sliceRunArg || verifyRunArg || profileArg))
   || (verifyRunArg && (!sliceRunArg || !profileArg || cliArgs.length !== 3))) {
-  throw new Error('usage: node tools/glassmatrix.mjs [--slice-run=<Slice-run-id> --profile=develop|production | --viewport=<label> | --selftest | --verify-run=<Glass-run-id> --slice-run=<Slice-run-id> --profile=develop|production]');
+  throw new Error('usage: node tools/glassmatrix.mjs [--slice-run=<Slice-run-id> --profile=develop|production | --viewport=<label> | --selftest | --verify-run=<Glass-run-id> --slice-run=<Slice-run-id> --profile=develop|production | --verify-targeted-run=<Glass-run-id> --viewport=small-phone|large-phone --browser=<canonical-Chrome-executable>]');
 }
 const MATRIX_VIEWPORTS = viewportLabel ? VIEWPORTS.filter((vp) => vp.label === viewportLabel) : VIEWPORTS;
 if (viewportLabel && MATRIX_VIEWPORTS.length !== 1) {
@@ -667,7 +681,7 @@ function generatedGlassRunId() {
   return [new Date(startedAt).toISOString().replace(/[^0-9]/g, '').slice(0, 17),
     String(process.pid), crypto.randomBytes(6).toString('hex')].join('-');
 }
-const activeGlassRunId = selftestOnly || selectedVerifyRunId ? null
+const activeGlassRunId = selftestOnly || selectedVerifyRunId || selectedTargetedVerifyRunId ? null
   : assertEvidenceRunId(process.env.CF_V2_GLASSMATRIX_RUN_ID || generatedGlassRunId(), 'Glass');
 function glassArtifactPaths(runId, directory = evidenceDir) {
   assertEvidenceRunId(runId, 'Glass');
@@ -5494,8 +5508,107 @@ function glassRunEvidenceErrors(report, {
   });
 }
 
+/* A canary is a named, source-bound diagnostic, never a Slice predecessor.
+   Reuse the terminal carrier, canonical inventories and live assessors; do
+   not infer a PASS from a stored all-true assessment or summary alone. */
+export function glassTargetedEvidenceErrors(report, {
+  runId, viewport, expectedSource, expectedBrowser,
+} = {}) {
+  const errors = glassRunEvidenceErrors(report, {
+    runId, expectedSource, requirePass: false,
+  });
+  if (!report || typeof report !== 'object' || Array.isArray(report)) return errors;
+  const selectedViewport = glassViewportInventory().find((row) => row.label === viewport);
+  if (!['small-phone', 'large-phone'].includes(viewport) || !selectedViewport) {
+    return [...errors, 'targeted verification requires the small-phone or large-phone canary'];
+  }
+  if (report.status !== 'pass' || report.scope !== 'targeted-diagnostic'
+    || report.certifying !== false || report.predecessors !== null) {
+    errors.push('Glass targeted verification requires a noncertifying PASS without a Slice predecessor');
+  }
+  if (expectedSource?.state !== 'committed' || report.source?.state !== 'committed'
+    || !exactJson(report.source, expectedSource) || !exactJson(report.sourceEnd, expectedSource)) {
+    errors.push('Glass targeted source must match the exact clean committed verifier source');
+  }
+  errors.push(...glassBrowserAuthorityErrors(report));
+  if (typeof expectedBrowser !== 'string' || !path.isAbsolute(expectedBrowser)
+    || report.browser?.executable !== expectedBrowser
+    || !/^Chrome\//.test(report.browser?.product ?? '')) {
+    errors.push('Glass targeted browser must be the expected canonical Chrome executable');
+  }
+  if (!exactJson(report.viewportInventory, [selectedViewport])
+    || report.summary?.viewportCount !== 1
+    || !Array.isArray(report.viewportTimings) || report.viewportTimings.length !== 1
+    || report.viewportTimings[0]?.label !== viewport
+    || !viewportTimingsOutcome(report.viewportTimings, { certifying: false, status: 'pass' }).ok
+    || !exactJson(report.findings, []) || !exactJson(report.instrumentFailures, [])) {
+    errors.push('Glass targeted viewport/timing or zero-finding inventory is malformed');
+  }
+  const controls = report.controlSummary;
+  const executed = controls?.negativeControls;
+  const requiredControls = viewport === 'small-phone'
+    ? ['inventory-modal-focus', 'inventory-modal-retention', 'inventory-protected-action',
+      'inventory-action-publication', 'inventory-convergence-retry']
+    : ['arc4-capture-native-survey-return'];
+  const coverage = Array.isArray(executed) ? controlCoverageOutcome(executed, []) : null;
+  if (controls?.selftestRan !== true || !coverage?.ok
+    || !exactJson(controls.plannedNegativeControls, NEGATIVE_CONTROLS)
+    || !exactJson(executed, coverage.executed)
+    || !exactJson(controls.blockedNegativeControls, [])
+    || !exactJson(controls.omittedNegativeControls, coverage.omitted)
+    || !requiredControls.every((name) => executed.includes(name))) {
+    errors.push('Glass targeted control ledger is malformed or missing a required canary control');
+  }
+  const inventory = report.arc4CaptureOutcomeInventory;
+  const rows = inventory?.outcomes;
+  const arc4 = Array.isArray(rows) ? arc4CaptureOutcomeInventoryOutcome(rows, [selectedViewport]) : null;
+  if (!arc4?.ok || !arc4.complete || inventory.complete !== true
+    || inventory.expectedCount !== arc4.expectedCount || inventory.observedCount !== arc4.observedCount
+    || !exactJson(inventory.omitted, arc4.omitted)
+    || !exactJson(inventory.plannedOutcomeCodes, GLASS_ARC4_CAPTURE_OUTCOME_CODES)
+    || rows.some((row) => row.surface !== 'survey-capture' || row.ok !== true
+      || Array.isArray(row.checks)
+      || !exactJson(Object.keys(row.checks).sort(codeUnitCompare),
+        [...GLASS_ARC4_CAPTURE_CHECK_KEYS[row.code]].sort(codeUnitCompare))
+      || !Object.values(row.checks).every((value) => value === true)
+      || !exactJson(row.reasons, []))) {
+    errors.push('Glass targeted Arc 4 outcome inventory is malformed or incomplete');
+  } else {
+    const diagnostics = rows.find((row) => row.code === 'ARC4_CAPTURE_NATIVE_SURVEY_RETURN')?.diagnostics;
+    const assessment = assessArc4NativeTabFocusEvidence({
+      setup: diagnostics?.sampleFocusSetup, focus: diagnostics?.sampleFocus,
+      heartbeat: diagnostics?.sampleFocusHeartbeat, heartbeatRequired: viewport === 'large-phone',
+    });
+    if (!assessment.ok || !exactJson(diagnostics?.sampleFocusOutcome, assessment)) {
+      errors.push('Glass targeted native Tab raw evidence does not rederive its green assessment');
+    }
+  }
+  const shipyard = report.shipyardKeyboardHeartbeatInventory;
+  const shipyardRows = shipyard?.outcomes;
+  const heartbeat = Array.isArray(shipyardRows)
+    ? shipyardKeyboardHeartbeatInventoryOutcome(shipyardRows, [selectedViewport]) : null;
+  if (!heartbeat?.ok || !heartbeat.complete || shipyard.complete !== true
+    || !exactJson(shipyard.plannedViewports, viewport === 'large-phone' ? [viewport] : [])
+    || shipyard.expectedCount !== heartbeat.expectedCount
+    || shipyard.observedCount !== heartbeat.observedCount
+    || !exactJson(shipyard.omitted, heartbeat.omitted)) {
+    errors.push('Glass targeted Shipyard heartbeat inventory is malformed or incomplete');
+  } else if (viewport === 'large-phone') {
+    errors.push(...shipyardKeyboardHeartbeatInventoryErrors(shipyard));
+    const row = shipyardRows[0];
+    const assessment = assessGlassKeyboardActivationEvidence({
+      setup: row.setup, receipt: row.receipt, heartbeat: row.heartbeat, heartbeatRequired: true,
+    });
+    if (!assessment.ok || !exactJson(row.outcome, assessment)) {
+      errors.push('Glass targeted Shipyard raw evidence does not rederive its green assessment');
+    }
+  }
+  return errors;
+}
+
 function verifyGlassRunEvidence(runId, {
   expectedSource = null, expectedSlice = null, requirePass = true,
+  targetedViewport = null, expectedBrowser = null,
 } = {}) {
   let artifacts;
   try { artifacts = glassArtifactPaths(runId); }
@@ -5509,7 +5622,11 @@ function verifyGlassRunEvidence(runId, {
   catch (error) {
     return { ok: false, errors: [`immutable Glass report is invalid JSON: ${error.message}`], report: null, reportSha256: sha256(bytes), artifacts };
   }
-  const errors = glassRunEvidenceErrors(report, { runId, expectedSource, expectedSlice, requirePass });
+  const errors = targetedViewport
+    ? glassTargetedEvidenceErrors(report, {
+      runId, viewport: targetedViewport, expectedSource, expectedBrowser,
+    })
+    : glassRunEvidenceErrors(report, { runId, expectedSource, expectedSlice, requirePass });
   return { ok: errors.length === 0, errors, report, reportSha256: sha256(bytes), artifacts };
 }
 
@@ -9043,6 +9160,26 @@ function toastAnchorControlOutcome(control) {
 async function main() {
   if (selftestOnly) {
     await reportSelftest();
+    return;
+  }
+  if (selectedTargetedVerifyRunId) {
+    assertEvidenceRunId(selectedTargetedVerifyRunId, 'Glass');
+    const currentSource = sourceIdentity();
+    if (currentSource.state !== 'committed') {
+      throw new Error(`Glass targeted verification requires clean committed source, observed ${JSON.stringify(currentSource.state)}`);
+    }
+    if (fs.realpathSync(expectedTargetedBrowser) !== expectedTargetedBrowser) {
+      throw new Error('Glass targeted verification requires the canonical Chrome executable path');
+    }
+    const verification = verifyGlassRunEvidence(selectedTargetedVerifyRunId, {
+      expectedSource: currentSource, targetedViewport: viewportLabel,
+      expectedBrowser: expectedTargetedBrowser,
+    });
+    if (!verification.ok) {
+      throw new Error(`selected targeted Glass run failed verification: ${verification.errors.join('; ')}`);
+    }
+    console.log(`GLASS MATRIX TARGETED VERIFY: PASS — ${selectedTargetedVerifyRunId}; ${viewportLabel}; noncertifying`);
+    console.log(`report sha256: ${verification.reportSha256}`);
     return;
   }
   if (selectedVerifyRunId) {
@@ -13267,7 +13404,7 @@ async function main() {
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
-          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=77;
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=78;
           const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
@@ -13569,7 +13706,7 @@ async function main() {
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 77-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 78-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -13843,7 +13980,7 @@ async function main() {
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&publishing?.textContent===publishingText&&S.api.state===priorState;
-            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===76
+            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===77
               &&identity?.ok===false&&identity?.identity===false
               &&truthfulFeatureClaims.length===10
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)

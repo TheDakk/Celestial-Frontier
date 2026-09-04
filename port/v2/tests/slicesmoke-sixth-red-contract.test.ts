@@ -102,7 +102,7 @@ function executableDeclaration<T>(name: string, nextDeclaration: string): T {
     'hasUnnegatedSentenceClaim',
     'V2_DRAFT_BULLET_COUNT',
     `return (${expression});`,
-  )(hasUnnegatedSentenceClaim, 77) as T;
+  )(hasUnnegatedSentenceClaim, 78) as T;
 }
 
 interface GuideSpec {
@@ -747,8 +747,8 @@ describe('sixth Slice red contract repairs', () => {
     expect(cf1).not.toContain("result.mode==='system'&&result.title==='Blue Earth'?result:null");
   });
 
-  it('keeps a fixed 77-row Guide oracle with five independent population controls', () => {
-    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 77;');
+  it('keeps a fixed 78-row Guide oracle with five independent population controls', () => {
+    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 78;');
     const owner = section(
       sliceSource,
       '  const releaseDraftCheck = `',
@@ -791,10 +791,10 @@ describe('sixth Slice red contract repairs', () => {
     const glassMissingBulletCount = Number(
       glassSource.match(/inventory\?\.bulletCount===(\d+)/)?.[1],
     );
-    expect(glassExpectedBulletCount).toBe(77);
-    expect(glassMissingBulletCount).toBe(76);
+    expect(glassExpectedBulletCount).toBe(78);
+    expect(glassMissingBulletCount).toBe(77);
     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
-    expect(glassSource).toContain('77-outcome development inventory');
+    expect(glassSource).toContain('78-outcome development inventory');
     expect(glassSource).not.toContain('55-outcome development inventory');
   });
 

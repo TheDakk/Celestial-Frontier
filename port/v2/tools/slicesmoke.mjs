@@ -1196,7 +1196,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 77;
+const V2_DRAFT_BULLET_COUNT = 78;
 const GUIDE_RELEASE_TAIL_TEXT = '🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site.';
 const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save — nothing was stored.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
@@ -6562,8 +6562,8 @@ try {
     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
-    count: 77,
-    sha256: '1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964',
+    count: 78,
+    sha256: '9c0eb6ed6f20ff44250f417c310c6652ccc75683df9aeb64f404edea53461272',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];

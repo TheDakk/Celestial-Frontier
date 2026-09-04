@@ -195,6 +195,16 @@ export function assessArc4NativeTabFocusEvidence(input?: {
   readonly heartbeatRequired?: boolean;
 }): Arc4NativeTabFocusAssessment;
 
+export function glassTargetedEvidenceErrors(report: unknown, options: {
+  readonly runId: string;
+  readonly viewport: string;
+  readonly expectedSource: Readonly<{
+    commit: string; branch: string; state: string;
+    statusSha256: string; workingTreeSha256: string;
+  }>;
+  readonly expectedBrowser: string;
+}): string[];
+
 export function runInventoryOffscreenProbe<TProbe = unknown>(owners: {
   setup: () => InventoryActionOffscreenSetup | Promise<InventoryActionOffscreenSetup>;
   activate: () => TProbe | Promise<TProbe>;
