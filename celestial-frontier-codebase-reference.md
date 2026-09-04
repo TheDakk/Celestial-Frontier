@@ -12,6 +12,13 @@ boundary, not completed browser/device evidence; consult `ROADMAP.md` for curren
 
 ## Current v2 runtime hardening
 
+Audio finite lifetime (matches code as of 2026-09-04): `packages/audio/src/runtime.ts` owns one
+injected deadline wake for optional bounded voices and reuses `finishVoice` for overdue cleanup.
+The creature/ecology/combat builders derive limits from existing envelopes with a cleanup-only
+tail; `tame-greeting-audio.ts` supplies the browser timer adapter. No sound plans, identity,
+gameplay timing or save fields change. See `AUDIO.md` §0.3 for the compatibility/lifecycle limits.
+The art manifest/lock now declares its existing Genome and PlanetGen imports; painters are unchanged.
+
 Matches code as of **2026-09-04**. `main.ts::persistView` uses one local admission predicate
 before queueing, at queued execution and after heartbeat settlement. No denied writer stages
 ecology, projects a candidate or commits. Existing named-search deferral and private heartbeat/

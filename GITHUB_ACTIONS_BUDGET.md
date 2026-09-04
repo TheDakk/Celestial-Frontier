@@ -22,6 +22,9 @@ Explicit evidence-build isolation is also local: certifiers opt into diagnostic 
 preview builds omit it. Its new current-input hashes do not alter numerical budgets, historical
 calibration, coverage or hosted authority. A faster develop lane remains a pending explicit
 coverage decision; no browser stage has been dropped.
+The finite-audio/dependency-metadata successor is likewise local. Its focused checks and one
+current-input build do not consume or grant a hosted attempt. Numeric ceilings and historical
+calibration remain fixed; current candidate fingerprints are recorded in the review disposition.
 
 **Historical bounded batch (2026-09-04 UTC): cc4d7c9 proof gaps are closed locally; four robustness
 items are implemented; branch-only push is authorized, no hosted attempt is authorized.**

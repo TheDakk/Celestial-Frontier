@@ -18,6 +18,7 @@ import {
   type AudioNodeLike,
   type AudioParamLike,
   type AudioScheduledSourceLike,
+  type AudioVoiceDeadlineScheduler,
   type AudioVoiceMixIntentV1,
   type AudioVoiceRequest,
   type AudioVoiceReservation,
@@ -331,6 +332,334 @@ function request(source: FakeSource, options: RequestOptions = {}): AudioVoiceRe
     },
   };
 }
+
+class FakeVoiceDeadlineClock {
+  now = 0;
+  peakPending = 0;
+  readonly history: Array<{ callback: () => void; at: number }> = [];
+  readonly pending = new Set<{ callback: () => void; at: number }>();
+
+  readonly schedule: AudioVoiceDeadlineScheduler = (callback, delayMs) => {
+    const wake = { callback, at: this.now + delayMs };
+    this.history.push(wake);
+    this.pending.add(wake);
+    this.peakPending = Math.max(this.peakPending, this.pending.size);
+    return () => { this.pending.delete(wake); };
+  };
+
+  advanceTo(now: number): void {
+    this.now = now;
+    for (let pass = 0; pass < 20; pass++) {
+      const wake = [...this.pending].find((entry) => entry.at <= now);
+      if (!wake) return;
+      this.pending.delete(wake);
+      wake.callback();
+    }
+    throw new Error('fake watchdog did not settle');
+  }
+}
+
+describe('audio bounded voice watchdog', () => {
+  it('expires idle missing-onended voices exactly once, restoring mix and reusable capacity', async () => {
+    const clock = new FakeVoiceDeadlineClock();
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: () => context, nowMs: () => clock.now,
+      scheduleVoiceDeadline: clock.schedule, budgets: { maxVoices: 1 },
+    });
+    await runtime.activate();
+    const source = new FakeSource('idle-watchdog');
+    expect(runtime.playVoice({ ...request(source, {
+      maxConcurrent: 1, mixIntent: mixIntent({ music: 0.25 }),
+    }), maxDurationMs: 100 })).toEqual({ kind: 'started', voiceId: 'voice-000001' });
+    const lateNatural = source.onended!;
+    expect(context.gains[1]!.gain.value).toBe(0.25);
+    expect(clock.pending.size).toBe(1);
+    clock.advanceTo(99);
+    expect(source.stopCalls).toBe(0);
+    clock.advanceTo(100); // No new play/diagnostic call drives expiration.
+    expect(source.stopCalls).toBe(1);
+    expect(source.disconnectCalls).toBe(1);
+    expect(source.onended).toBeNull();
+    expect(clock.pending.size).toBe(0);
+    expect(context.gains[1]!.gain.value).toBe(1);
+    lateNatural();
+    clock.history[0]!.callback();
+    expect(runtime.stopVoice('voice-000001')).toBe(false);
+    expect(runtime.diagnostics()).toMatchObject({
+      voices: { active: 0, started: 1, completed: 0, stopped: 1 },
+      nodes: { active: 13 }, voiceMix: { activeOwners: 0 },
+    });
+    expect(runtime.playVoice({ ...request(new FakeSource('reuse-watchdog'), {
+      maxConcurrent: 1,
+    }), maxDurationMs: 100 }).kind).toBe('started');
+    await runtime.dispose();
+    expect(clock.pending.size).toBe(0);
+  });
+
+  it('keeps one earliest wake, reschedules early callbacks, and leaves unbounded voices alone', async () => {
+    const clock = new FakeVoiceDeadlineClock();
+    const runtime = createAudioRuntime({
+      createContext: () => new FakeContext(), nowMs: () => clock.now,
+      scheduleVoiceDeadline: clock.schedule,
+    });
+    await runtime.activate();
+    const late = new FakeSource('late');
+    const early = new FakeSource('early');
+    const unbounded = new FakeSource('unbounded');
+    runtime.playVoice({ ...request(late), maxDurationMs: 200 });
+    runtime.playVoice({ ...request(early), maxDurationMs: 100 });
+    runtime.playVoice(request(unbounded));
+    expect(clock.pending.size).toBe(1);
+    const earlyWake = [...clock.pending][0]!;
+    clock.pending.delete(earlyWake);
+    clock.now = 50;
+    earlyWake.callback();
+    expect(early.stopCalls).toBe(0);
+    expect([...clock.pending].map((wake) => wake.at)).toEqual([100]);
+    clock.advanceTo(100);
+    expect(early.stopCalls).toBe(1);
+    expect(late.stopCalls).toBe(0);
+    expect([...clock.pending].map((wake) => wake.at)).toEqual([200]);
+    clock.advanceTo(200);
+    expect(late.stopCalls).toBe(1);
+    expect(unbounded.stopCalls).toBe(0);
+    expect(clock.pending.size).toBe(0);
+    expect(clock.peakPending).toBe(1);
+    await runtime.dispose();
+  });
+
+  it('starts the deadline after graph creation and ignores a suspended audio-context clock', async () => {
+    const clock = new FakeVoiceDeadlineClock();
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: () => context, nowMs: () => clock.now, scheduleVoiceDeadline: clock.schedule,
+    });
+    await runtime.activate();
+    const source = new FakeSource('slow-create');
+    runtime.playVoice({ ...request(source, { create: () => { clock.now = 500; } }), maxDurationMs: 100 });
+    expect([...clock.pending].map((wake) => wake.at)).toEqual([600]);
+    context.forceState('suspended');
+    clock.advanceTo(599);
+    expect(source.stopCalls).toBe(0);
+    clock.advanceTo(600);
+    expect(context.currentTime).toBe(12);
+    expect(source.stopCalls).toBe(1);
+    expect(runtime.diagnostics().voices.active).toBe(0);
+    await runtime.dispose();
+  });
+
+  it.each(['natural', 'manual', 'mute', 'hidden', 'context-loss', 'dispose'] as const)(
+    'cancels the wake on %s and fences its stale callback', async (finish) => {
+      const clock = new FakeVoiceDeadlineClock();
+      const context = new FakeContext();
+      const runtime = createAudioRuntime({
+        createContext: () => context, nowMs: () => clock.now, scheduleVoiceDeadline: clock.schedule,
+      });
+      await runtime.activate();
+      const source = new FakeSource(`cleanup-${finish}`);
+      runtime.playVoice({ ...request(source), maxDurationMs: 100 });
+      const stale = clock.history[0]!.callback;
+      if (finish === 'natural') source.finish();
+      else if (finish === 'manual') runtime.stopVoice('voice-000001');
+      else if (finish === 'mute') await runtime.setMuted(true);
+      else if (finish === 'hidden') await runtime.setHidden(true);
+      else if (finish === 'context-loss') context.forceState('closed');
+      else await runtime.dispose();
+      expect(clock.pending.size).toBe(0);
+      clock.now = 100;
+      stale();
+      expect(source.stopCalls).toBe(1);
+      expect(source.disconnectCalls).toBe(1);
+      expect(runtime.diagnostics().voices).toMatchObject({
+        active: 0, completed: finish === 'natural' ? 1 : 0, stopped: finish === 'natural' ? 0 : 1,
+      });
+      await runtime.dispose();
+    },
+  );
+
+  it('transfers the sole wake on stealing without letting the former callback stop its replacement', async () => {
+    const clock = new FakeVoiceDeadlineClock();
+    const runtime = createAudioRuntime({
+      createContext: () => new FakeContext(), nowMs: () => clock.now,
+      scheduleVoiceDeadline: clock.schedule, budgets: { maxVoices: 1 },
+    });
+    await runtime.activate();
+    const incumbent = new FakeSource('incumbent');
+    const replacement = new FakeSource('replacement');
+    runtime.playVoice({ ...request(incumbent, { maxConcurrent: 1 }), maxDurationMs: 100 });
+    const stale = clock.history[0]!.callback;
+    clock.now = 10;
+    expect(runtime.playVoice({ ...request(replacement, {
+      maxConcurrent: 1, priority: 2,
+    }), maxDurationMs: 200 }).kind).toBe('started');
+    expect(incumbent.stopCalls).toBe(1);
+    clock.now = 100;
+    stale();
+    expect(replacement.stopCalls).toBe(0);
+    expect([...clock.pending].map((wake) => wake.at)).toEqual([210]);
+    clock.advanceTo(210);
+    expect(replacement.stopCalls).toBe(1);
+    expect(clock.peakPending).toBe(1);
+    await runtime.dispose();
+  });
+
+  it('preserves omitted-duration compatibility without any scheduler or extra clock reads', async () => {
+    let reads = 0;
+    const runtime = createAudioRuntime({ createContext: () => new FakeContext(), nowMs: () => { reads++; return 0; } });
+    await runtime.activate();
+    const source = new FakeSource('legacy-unbounded');
+    expect(runtime.playVoice(request(source)).kind).toBe('started');
+    expect(reads).toBe(1);
+    source.finish();
+    expect(reads).toBe(1);
+    await runtime.dispose();
+  });
+
+  it.each([0, -1, 0.5, NaN, Infinity, 2_147_483_648])('rejects invalid duration %s before factory work', async (maxDurationMs) => {
+    const clock = new FakeVoiceDeadlineClock();
+    const runtime = createAudioRuntime({
+      createContext: () => new FakeContext(), nowMs: () => clock.now, scheduleVoiceDeadline: clock.schedule,
+    });
+    await runtime.activate();
+    let creates = 0;
+    expect(runtime.playVoice({ ...request(new FakeSource('invalid-duration'), {
+      create: () => { creates++; },
+    }), maxDurationMs })).toEqual({ kind: 'rejected', reason: 'invalid-request' });
+    expect(creates).toBe(0);
+    expect(clock.history).toHaveLength(0);
+    await runtime.dispose();
+  });
+
+  it('requires a scheduler for bounded requests before allocating their graph', async () => {
+    const runtime = createAudioRuntime({ createContext: () => new FakeContext(), nowMs: () => 0 });
+    await runtime.activate();
+    let creates = 0;
+    expect(runtime.playVoice({ ...request(new FakeSource('missing-scheduler'), {
+      create: () => { creates++; },
+    }), maxDurationMs: 100 })).toEqual({ kind: 'rejected', reason: 'invalid-request' });
+    expect(creates).toBe(0);
+    await runtime.dispose();
+  });
+
+  it.each(['throw', 'synchronous', 'missing-cancel'] as const)('fails closed on a %s scheduler', async (failure) => {
+    let stale: (() => void) | null = null;
+    const schedule = ((callback: () => void) => {
+      stale = callback;
+      if (failure === 'throw') throw new Error('scheduler refused');
+      if (failure === 'synchronous') callback();
+      return failure === 'missing-cancel' ? undefined : () => {};
+    }) as AudioVoiceDeadlineScheduler;
+    const runtime = createAudioRuntime({
+      createContext: () => new FakeContext(), nowMs: () => 0, scheduleVoiceDeadline: schedule,
+    });
+    await runtime.activate();
+    const source = new FakeSource('failed-schedule');
+    expect(runtime.playVoice({ ...request(source), maxDurationMs: 100 }).kind).toBe('fault');
+    expect(source.stopCalls).toBe(1);
+    expect(source.disconnectCalls).toBe(1);
+    (stale as (() => void) | null)?.();
+    expect(runtime.diagnostics()).toMatchObject({ voices: { active: 0, stopped: 1 }, nodes: { active: 13 } });
+    expect(runtime.diagnostics().faults.retained.some((fault) => fault.kind === 'voice-watchdog')).toBe(true);
+    expect(runtime.playVoice({ ...request(new FakeSource('blocked-bounded')), maxDurationMs: 100 }))
+      .toEqual({ kind: 'rejected', reason: 'invalid-request' });
+    expect(runtime.playVoice(request(new FakeSource('unbounded-still-valid'))).kind).toBe('started');
+    await runtime.dispose();
+  });
+
+  it('settles reentrant source cleanup and scheduler disposal without a second wake or retained voice', async () => {
+    const clock = new FakeVoiceDeadlineClock();
+    const context = new FakeContext();
+    const runtime = createAudioRuntime({
+      createContext: () => context, nowMs: () => clock.now, scheduleVoiceDeadline: clock.schedule,
+    });
+    await runtime.activate();
+    const first = new FakeSource('reentrant-first');
+    const second = new FakeSource('reentrant-second');
+    first.stop = () => {
+      first.stopCalls++;
+      runtime.playVoice({ ...request(second), maxDurationMs: 100 });
+    };
+    runtime.playVoice({ ...request(first), maxDurationMs: 100 });
+    clock.advanceTo(100);
+    expect(first.stopCalls).toBe(1);
+    expect(second.startCalls).toBe(1);
+    expect([...clock.pending].map((wake) => wake.at)).toEqual([200]);
+    expect(clock.peakPending).toBe(1);
+    clock.advanceTo(200);
+    expect(second.stopCalls).toBe(1);
+    await runtime.dispose();
+
+    const disposalClock = new FakeVoiceDeadlineClock();
+    const disposalRuntime = createAudioRuntime({
+      createContext: () => new FakeContext(), nowMs: () => 0,
+      scheduleVoiceDeadline: (callback, delay) => {
+        void disposalRuntime.dispose();
+        return disposalClock.schedule(callback, delay);
+      },
+    });
+    await disposalRuntime.activate();
+    const disposed = new FakeSource('scheduler-disposed');
+    expect(disposalRuntime.playVoice({ ...request(disposed), maxDurationMs: 100 }).kind).toBe('fault');
+    expect(disposalClock.pending.size).toBe(0);
+    expect(disposed.stopCalls).toBe(1);
+    expect(disposed.disconnectCalls).toBe(1);
+    await disposalRuntime.dispose();
+  });
+
+  it('fences a throwing cancel and rejects an unsafe pre-start deadline without starting sources', async () => {
+    const clock = new FakeVoiceDeadlineClock();
+    const runtime = createAudioRuntime({
+      createContext: () => new FakeContext(), nowMs: () => clock.now,
+      scheduleVoiceDeadline: (callback, delay) => {
+        const cancel = clock.schedule(callback, delay);
+        return () => { cancel(); throw new Error('cancel refused'); };
+      },
+    });
+    await runtime.activate();
+    const source = new FakeSource('cancel-throws');
+    runtime.playVoice({ ...request(source), maxDurationMs: 100 });
+    expect(() => runtime.stopVoice('voice-000001')).not.toThrow();
+    clock.history[0]!.callback();
+    expect(source.stopCalls).toBe(1);
+    expect(clock.pending.size).toBe(0);
+    await runtime.dispose();
+
+    const unsafeRuntime = createAudioRuntime({
+      createContext: () => new FakeContext(), nowMs: () => Number.MAX_SAFE_INTEGER,
+      scheduleVoiceDeadline: clock.schedule,
+    });
+    await unsafeRuntime.activate();
+    const unsafe = new FakeSource('unsafe-deadline');
+    expect(unsafeRuntime.playVoice({ ...request(unsafe), maxDurationMs: 100 }))
+      .toEqual({ kind: 'fault', reason: 'clock' });
+    expect(unsafe.startCalls).toBe(0);
+    expect(unsafe.disconnectCalls).toBe(1);
+    expect(unsafeRuntime.diagnostics().nodes.active).toBe(13);
+    await unsafeRuntime.dispose();
+  });
+
+  it.each([NaN, -1])('cleans bounded voices safely when the injected clock becomes %s', async (badTime) => {
+    const clock = new FakeVoiceDeadlineClock();
+    const runtime = createAudioRuntime({
+      createContext: () => new FakeContext(), nowMs: () => clock.now, scheduleVoiceDeadline: clock.schedule,
+    });
+    await runtime.activate();
+    const bounded = new FakeSource('bad-clock-bounded');
+    const unbounded = new FakeSource('bad-clock-unbounded');
+    runtime.playVoice({ ...request(bounded), maxDurationMs: 100 });
+    runtime.playVoice(request(unbounded));
+    const wake = [...clock.pending][0]!;
+    clock.pending.delete(wake);
+    clock.now = badTime;
+    expect(() => wake.callback()).not.toThrow();
+    expect(bounded.stopCalls).toBe(1);
+    expect(unbounded.stopCalls).toBe(0);
+    expect(clock.pending.size).toBe(0);
+    expect(runtime.diagnostics().voices.active).toBe(1);
+    await runtime.dispose();
+  });
+});
 
 async function createAudioLabTrace(): Promise<AudioLabSample[]> {
   const first = new FakeContext();
@@ -1231,7 +1560,7 @@ describe('Arc 7 injected audio runtime', () => {
     });
     const runtime = createAudioRuntime(options);
     expect([...optionReads.entries()]).toEqual([
-      ['createContext', 1], ['nowMs', 1], ['verifyCounterpart', 1], ['budgets', 1],
+      ['createContext', 1], ['nowMs', 1], ['verifyCounterpart', 1], ['scheduleVoiceDeadline', 1], ['budgets', 1],
       ['initialMuted', 1], ['initialMasterGain', 1], ['categoryGains', 1],
     ]);
     await runtime.activate();
@@ -1274,7 +1603,7 @@ describe('Arc 7 injected audio runtime', () => {
     expect(runtime.playVoice(requestValue)).toEqual({ kind: 'started', voiceId: 'voice-000001' });
     expect([...requestReads.entries()]).toEqual([
       ['key', 1], ['category', 1], ['priority', 1], ['cooldownGroup', 1],
-      ['cooldownMs', 1], ['concurrencyGroup', 1], ['maxConcurrent', 1],
+      ['cooldownMs', 1], ['maxDurationMs', 1], ['concurrencyGroup', 1], ['maxConcurrent', 1],
       ['nodeCount', 1], ['mixIntent', 1], ['meaning', 1], ['create', 1],
     ]);
     expect([...meaningReads.entries()]).toEqual([['kind', 1], ['counterpart', 1]]);

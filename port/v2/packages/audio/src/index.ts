@@ -163,6 +163,7 @@ export type {
   AudioRuntimeFault,
   AudioRuntimeOptions,
   AudioScheduledSourceLike,
+  AudioVoiceDeadlineScheduler,
   AudioVoiceGraph,
   AudioVoiceMeaning,
   AudioVoiceMixIntentV1,

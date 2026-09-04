@@ -234,7 +234,7 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  'de87857f5b3bf6ae9d2626c185c180fab22ec0e4859e7dc90b3b1f89089b3a29';
+  '4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12';
 const EXPECTED_OUTCOME_CONTRACT_AUTHORITY =
   '1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692';
 const EXPECTED_COLLECTOR_AUTHORITY =
@@ -310,18 +310,18 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  'e690f6aa7134b776c8bf33f665940f46b30efb546cd287e26df2d34866bc9c10';
+  '3c20acc35e2839101e551ac10575ef27d29df5edd6d7ae29e97130252605ec1b';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: '1a393add78ffaa6bb48a2abd42e5c806cb81ac86a2a383cda10e840b55182757',
+      sha256: 'fd81bf3649162f778526d6311056cafddc63bd23ab3b87006a4bb1c9ff4557c8',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/main-CmDVRgZf.js',
-      sha256: '43c99cfc772f6b1e3bad171557e9db8fed444f4329597c5f26de9d4e94982111',
+      relativePath: 'assets/main-Biahj8TR.js',
+      sha256: '428b859e0a6d055732572b60491628f4481eb1d8b7211cf8eb0918ba69b6f474',
     }),
     worker: Object.freeze({
       relativePath: 'assets/species-art.worker-DnnSDKMy.js',
@@ -333,7 +333,7 @@ const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
     }),
     serviceWorker: Object.freeze({
       relativePath: 'service-worker.js',
-      sha256: 'b3c3721e9d3b18d555501876c2bfe8c7232dff264d19e8c133cd1804e1fe5a2b',
+      sha256: 'f5d250928064ff28c07366794bf7a9d4c4cbb3f1daf68ba63a59e6b202a60264',
     }),
   }),
 });
