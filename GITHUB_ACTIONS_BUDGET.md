@@ -2,7 +2,38 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current branch-handoff state (2026-09-03 UTC): a922 forensic prevention repair is pushed on
+**Current bounded batch (2026-09-04 UTC): cc4d7c9 proof gaps are closed locally; four robustness
+items are implemented; branch-only push is authorized, no hosted attempt is authorized.**
+Exact clean `cc4d7c920083c3c630a9c8c8e6fc5a6e40f5e0d4` passed develop Slice, the full
+12-row Slice-bound Glass matrix, named verification and diagnostic projection. The carrier is
+126,732 base64 bytes against 700,000; the whole summary is 129,124 bytes against 900,000.
+Small/compact/primary Chrome rows passed; a real large-phone Chrome row supplies the other
+unchanged workflow-jq verdict. Both jq replays passed without changing provenance or the filter.
+
+The successor raises only the existing changed-input Glass step from **5 to 7 minutes**, adds
+`command -v jq >/dev/null` first, and waits for active plus debounced Shipyard persistence to
+reach zero using existing read-only diagnostics. The pinned Edge **151.0.4129.101** curl alone
+uses `--retry 3 --retry-all-errors --retry-delay 5`; URL/SHA-256 remain unchanged, and the two
+existing literal assertions/mutation anchors are synchronized. This is transport resilience,
+not permission to retry a product/instrument red or a battery. There are no new controls,
+schemas, verifiers, jobs, shards, pins or rebaselines. Source review is CLEAR.
+
+Working-tree develop profile passed 268 files / 2,785 tests + 1 skip before a reviewed diagnostic
+lookup correction. Glass, pinned-Edge preflight, Actions **66/66** and root validation pass after
+the correction. The clean committed candidate must pass the requested final tracked-input
+rehearsal before its authorized normal branch push; the exact final SHA/result/duration/hash
+are emitted at Git handoff, avoiding a self-embedding commit loop. Audit and recoverable carriers:
+`audits/PR35_CC4D7C9_LOCAL_PROOF_AND_ROBUSTNESS_20260904.md`.
+
+Fresh SSH fetch/read PASS; origin is `git@github.com:TheDakk/Celestial-Frontier.git`, account
+`TheDakk`, visibility verified PUBLIC, private fallback cap **3,000**. PR #35 is Ready/open,
+mergeable and has no approval label. A branch push/PR sync does not trigger `test-battery`
+(owner label only); all other workflows are manual. No PR metadata mutation, hosted attempt,
+merge, release or deployment is authorized. Future exact authority remains **122 total
+runner-minutes** (2 + 120), one attempt/no retry, exact head and unchanged base
+`7a9f4c1370dd84292388d718c38ff34214f6203b`; merge only if terminal green.
+
+**Preserved predecessor branch-handoff state (2026-09-03 UTC): a922 forensic prevention repair is pushed on
 `openai/mac` for Claude review; no hosted attempt is authorized.** The external review of pushed head
 `a922c4b74502fc4093ca103d46a189396cad1e8f` correctly found inadequate margin in the hosted
 envelope, a late first execution of the `large-phone` failure class and one remaining stale

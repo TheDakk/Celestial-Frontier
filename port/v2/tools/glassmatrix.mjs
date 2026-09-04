@@ -5220,7 +5220,8 @@ function shipyardPanelSettlementOutcome(value, expectedCardOpen) {
       && persistence?.engineeringBootstrapPending === false
       && runtime?.leaseOwned === true && runtime?.staleBlocked === false,
     persistenceQuiescent: resources?.schema === 'cf-v2-scene-resources/v2'
-      && resources?.pendingPersistenceWrites === 0,
+      && resources?.pendingPersistenceWrites === 0
+      && resources?.pendingDebounceWrites === 0,
     previewIdentity: typeof value?.appStateKey === 'string' && value.appStateKey.length > 0
       && JSON.stringify(value?.previewStateKeys) === JSON.stringify([value.appStateKey])
       && diagnostics?.stateKey === value.appStateKey
@@ -5268,7 +5269,9 @@ function glassShipyardSettlementSelftest() {
       productBootstrapPending: false, engineeringBootstrapPending: false,
       runtime: { leaseOwned: true, staleBlocked: false },
     },
-    sceneResources: { schema: 'cf-v2-scene-resources/v2', pendingPersistenceWrites: 0 },
+    sceneResources: {
+      schema: 'cf-v2-scene-resources/v2', pendingPersistenceWrites: 0, pendingDebounceWrites: 0,
+    },
     diagnostics: {
       schema: 'cf-v2-shipyard-diagnostics/v1', status: 'open', activePreviewCount: 1,
       stateKey: 'ship:v1:glass-settlement', retainedPreviewCount: 0, pendingPreviewWork: 0,
@@ -11183,7 +11186,8 @@ async function main() {
           }
           if (item.shipyard) {
             const shipyardSettlementExpression = `(()=>{const S=window.__CF_SLICE__,s=S?.api?.state?.(),p=s?.persistence||null,
-              r=p?.runtime||null,e=s?.engineering||null,x=s?.sceneResources||null,d=S?.api?.shipyardDiagnostics?.()||null;
+              r=p?.runtime||null,e=s?.engineering||null,x=s?.sceneResources||null,d=S?.api?.shipyardDiagnostics?.()||null,
+              w=S?.api?.__smokeSettingsPersistenceDiagnostics?.()||null;
               const previews=[...document.querySelectorAll('[data-cf-shipyard-preview="v1"]')];
               return {schema:${JSON.stringify(GLASS_SHIPYARD_SETTLEMENT_SCHEMA)},panelOpen:s?.panelOpen??null,
                 cardOpen:s?.cardOpen??null,previewCount:previews.length,
@@ -11195,7 +11199,8 @@ async function main() {
                   seedBootstrapPending:p.seedBootstrapPending??null,bootRouteRepairPending:p.bootRouteRepairPending??null,
                   productBootstrapPending:p.productBootstrapPending??null,engineeringBootstrapPending:p.engineeringBootstrapPending??null,
                   runtime:r?{leaseOwned:r.leaseOwned??null,staleBlocked:r.staleBlocked??null}:null}:null,
-                sceneResources:x?{schema:x.schema??null,pendingPersistenceWrites:x.pendingPersistenceWrites??null}:null,
+                sceneResources:x?{schema:x.schema??null,pendingPersistenceWrites:x.pendingPersistenceWrites??null,
+                  pendingDebounceWrites:w?.pendingDebounceWrites??null}:null,
                 diagnostics:d};})()`;
             await waitFor(`${item.name} panel`, shipyardSettlementExpression, 5000,
               (value) => shipyardPanelSettlementOutcome(value, overSurvey).ok);

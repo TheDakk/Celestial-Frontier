@@ -337,7 +337,7 @@ export function assertCompendiumEdgeWorkflowContract(source, contract) {
     'set -euo pipefail',
     `edge_package="$RUNNER_TEMP/${EDGE_PACKAGE_FILENAME}"`,
     `edge_root="$RUNNER_TEMP/${EDGE_EXTRACT_ROOT_NAME}"`,
-    'curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"',
+    'curl --fail --location --silent --show-error --retry 3 --retry-all-errors --retry-delay 5 "$EDGE_PACKAGE_URL" --output "$edge_package"',
     'printf \'%s  %s\\n\' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict',
     `test "$(dpkg-deb --field "$edge_package" Package)" = "${EDGE_PACKAGE_NAME}"`,
     `test "$(dpkg-deb --field "$edge_package" Version)" = "${EDGE_PACKAGE_VERSION}"`,
@@ -515,7 +515,7 @@ function injectWorkflowBlockScalarDecoy(source, label) {
   const installEnd = workflowBlockEnd(
     lines, installStart, installIndent, lines.length, `SELFTEST ${label}`,
   );
-  const download = 'curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"';
+  const download = 'curl --fail --location --silent --show-error --retry 3 --retry-all-errors --retry-delay 5 "$EDGE_PACKAGE_URL" --output "$edge_package"';
   const downloadLines = exactIndentedWorkflowLines(
     lines, download, installIndent + 4, installStart + 1, installEnd,
   );

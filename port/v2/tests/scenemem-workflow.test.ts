@@ -197,7 +197,7 @@ const ORDERED_CONTRACT = [
   `- name: ${CHROME_LAUNCHER_SELFTEST_NAME}`,
   `run: ${CHROME_LAUNCHER_SELFTEST_COMMAND}`,
   `- name: ${GLASS_PREFLIGHT_NAME}`,
-  'timeout-minutes: 5',
+  'timeout-minutes: 7',
   GLASS_PREFLIGHT_RUN_ID_CHECK,
   GLASS_SMALL_PHONE_REPORT_BINDING,
   GLASS_LARGE_PHONE_REPORT_BINDING,
@@ -359,7 +359,7 @@ const satisfiesSceneWorkflow = (
   if (source.split(GLASS_SMALL_PHONE_PREFLIGHT_COMMAND).length !== 2
     || source.split(GLASS_LARGE_PHONE_PREFLIGHT_COMMAND).length !== 2
     || !hasExactStepCondition(glassPreflight, GLASS_PREFLIGHT_CONDITION)
-    || glassPreflightLines.filter((line) => line === 'timeout-minutes: 5').length !== 1
+    || glassPreflightLines.filter((line) => line === 'timeout-minutes: 7').length !== 1
     || !glassPreflight.includes('CF_BROWSER: /usr/bin/google-chrome')
     || source.split(GLASS_PREFLIGHT_BROWSER_BINDING).length !== 2
     || source.split(GLASS_SMALL_PHONE_REPORT_BINDING).length !== 2
@@ -989,7 +989,7 @@ describe('scene-memory test-battery workflow contract', () => {
       ),
     ))).toBe(false);
     for (const weakened of [
-      ['timeout-minutes: 5', 'timeout-minutes: 50'],
+      ['timeout-minutes: 7', 'timeout-minutes: 50'],
     ] as const) {
       expect(glassPreflight!.split(/\r?\n/u).filter(
         (line) => line.trim() === weakened[0],

@@ -178,12 +178,13 @@ jobs:
         if: >-
           github.event.pull_request.base.ref == 'develop' &&
           steps.scope.outputs.glass_preflight_changed == 'true'
-        timeout-minutes: 5
+        timeout-minutes: 7
         working-directory: port/v2
         shell: bash
         env:
           CF_BROWSER: /usr/bin/google-chrome
         run: |
+          command -v jq >/dev/null
           set -euo pipefail
           verify_preflight_report() {
             local report="$1"
@@ -624,7 +625,7 @@ jobs:
           set -euo pipefail
           edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.101-1_amd64.deb"
           edge_root="$RUNNER_TEMP/compendiummem-edge-151.0.4129.101"
-          curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"
+          curl --fail --location --silent --show-error --retry 3 --retry-all-errors --retry-delay 5 "$EDGE_PACKAGE_URL" --output "$edge_package"
           printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict
           test "$(dpkg-deb --field "$edge_package" Package)" = "microsoft-edge-stable"
           test "$(dpkg-deb --field "$edge_package" Version)" = "151.0.4129.101-1"
