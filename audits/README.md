@@ -16,6 +16,8 @@ summary of it.
 `f12395762eeba42a0ce4da22767a38877bf42d62288c98e404ad481face9bfe0`).
 `FULL_REVIEW_DISPOSITION_20260904.md` records source-grounded corrections, the successful
 PR #35 run/merge, bounded implementation status and genuinely open features/decisions.
+Its local batch 2 record covers explicit evidence-build isolation, distributable Edge preview,
+final PWA-byte checks, current-input fingerprints and the preserved readiness-instrument red.
 The older “current” PR #35 entries below are chronological history, not active authority.
 See `../ROADMAP.md` for current work and `../port/V2_PROGRAM_ROADMAP.md` for product acceptance.
 

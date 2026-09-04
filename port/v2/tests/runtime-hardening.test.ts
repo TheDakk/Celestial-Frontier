@@ -30,6 +30,8 @@ function persistence() {
     kind: 'committed', revision: 9, saved: { canonicalState: candidate },
   }));
   const env = {
+    // These source-execution fixtures include the evidence-only fault contract.
+    __CF_EVIDENCE_BUILD__: true,
     namedSearchPersistenceHeld: false, namedSearchPersistenceDeferred: false,
     F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER: Symbol('cycle'), F4_LIFECYCLE_CHECKPOINT_OWNER: Symbol('lifecycle'),
     persistHold: false, trainingCheckpointWriteHeld: false, importWriteInFlight: false,

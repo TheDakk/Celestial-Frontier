@@ -20,6 +20,7 @@ import { fileURLToPath } from 'node:url';
 import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { assertBuiltGameMode } from './build-mode.mjs';
 import {
   assessF4ReplacementPrefix,
   assessF4ReplacementSetup,
@@ -1433,7 +1434,8 @@ const ARM_F4_REPLACEMENT_TRACE_EXPRESSION = `(()=>{const key='cf_slice_f4_replac
 /* A smoke that reads a stale build can pass for source that no longer
    exists—the species-audit failure class. Build unconditionally, then drive
    exactly those bytes. */
-execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+execSync('npx vite build --mode evidence', { cwd: appDir, stdio: 'inherit' });
+assertBuiltGameMode(dist, 'evidence');
 const candidateSpeciesPainter = findCandidateSpeciesArtBuildGraph(dist).painter;
 const candidateSpeciesPainterPath = `/${candidateSpeciesPainter.relativePath}`;
 if (!fs.existsSync(OUT)) fs.mkdirSync(OUT, { recursive: true });

@@ -18,6 +18,10 @@ The dated states below are preserved history. Current source/ownership and next 
 The current local simplification replaces the duplicate jq canary verdict with the source-bound
 Node verifier after retained-report parity. It does not remove either phone row, the final full
 chain, any job/step ceiling, mandatory artifact upload or the one-attempt rule.
+Explicit evidence-build isolation is also local: certifiers opt into diagnostic code; ordinary
+preview builds omit it. Its new current-input hashes do not alter numerical budgets, historical
+calibration, coverage or hosted authority. A faster develop lane remains a pending explicit
+coverage decision; no browser stage has been dropped.
 
 **Historical bounded batch (2026-09-04 UTC): cc4d7c9 proof gaps are closed locally; four robustness
 items are implemented; branch-only push is authorized, no hosted attempt is authorized.**

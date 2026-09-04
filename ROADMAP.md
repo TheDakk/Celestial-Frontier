@@ -64,10 +64,28 @@ fingerprints; Actions policy 66/66 passes. The initial aggregate is not relabell
 intermediate reds and fingerprints are in the disposition audit. Native browser/device acceptance
 and a fresh final-source admission remain open; no full browser or hosted battery was started.
 
-Next code batch: explicit evidence-build isolation and its preview readiness boundary, then
-remaining review maintenance/gameplay items below. Do not merely hide the API while shipping its
-destructive implementations, or remove awaited no-op boundaries and change action sequencing.
-The current app producer is `1ce8862d…`; measurement/numeric limits and species worker are unchanged.
+Local batch 1 is signed at `e0acfabf80a055b4c1132c49a9461c42a391afb0`, two commits ahead of
+`origin/openai/mac`; it is not pushed. Batch 2's explicit evidence-build isolation is implemented
+and locally checked on top of that checkpoint. Ordinary assets omit the API and destructive
+implementations; explicit evidence assets retain them. Native persistence and awaited no-op
+ordering are preserved. Both actual builds have valid PWA hashes; the creature-art worker is
+byte-identical. Current Compendium producer is `e690f6aa…`, measurement `de87857f…`; only current
+input bindings changed, not historical calibration, numeric limits or SceneMemory quarantine.
+
+The nonpublishable dirty preview passed in Edge 152.0.4191.62: boot → real Skip Training → Guide,
+full source identity and no diagnostic API. One initial readiness-instrument red (inert painted
+Training background) is preserved with its repair. Independent review added transparent-ancestor
+controls; final build-mode/readiness checks are 36/36. Runtime checks are 98/98, budget 28/28.
+The one develop aggregate was 2,842 pass / one skip / four failures (stale release-count assertion
+and three case deadlines). The HTML parser is now lazy, no timeout increased, and all three
+affected suites pass in focused final-source closure: 46/46. All three TypeScript programs,
+art/route/spec and root V1 validation pass. Do not relabel that first aggregate green or call
+this a new full certificate. Full details are in the disposition audit.
+
+Next bounded product-hardening work is the audio voice lifetime safeguard through its existing
+cleanup owner. Continue remaining review/gameplay scope below; retain the pending human choices.
+Serializer/seal/domain-test inventory is complete: the report overstated some missing coverage,
+and canonical serializers have distinct byte/admission contracts, so no blanket consolidation.
 
 ### Remaining completion plan — existing systems, not replacements
 

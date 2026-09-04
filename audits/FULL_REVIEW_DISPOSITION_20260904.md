@@ -66,19 +66,19 @@ and policy changes. **Open** means not yet implemented/verified, not silently re
 | P0-2 | Infra rerun/upload transport retry | Open separate policy. Preserve earlier product/instrument red; require verified immutable upload, final archival failure, bounded transport retries only. Cancellations are not automatically infra-safe. No whole-battery retry authorized. |
 | P0-3 | jq → Node | Implemented locally: shared targeted verifier, retained-report parity, 344 workflow lines removed, former heartbeat corruptions moved to its tests. Full Slice-bound verification is unchanged. jq remains for run-ID extraction. |
 | P0-4 | Persist post-await gate | Implemented and browser-free verified: admission repeats at queued execution/after heartbeat; owner exceptions, failed-import rearm and exact-once save behavior retained. No claim of demonstrated prior import corruption. |
-| P0-5 | Harness outside public bundle | Open dedicated evidence-build contract, not DEV-only gating. Current Slice builds production assets and requires hooks; prove fault implementations absent from distributable assets while product logic/PWA identity remain equivalent. |
+| P0-5 | Harness outside public bundle | Implemented locally: explicit evidence build, distributable dead-code removal, build-consumer admission and ordinary preview readiness. Both final-byte/PWA inspections and distributable Edge flow pass. Unarmed async ordering/native backend are covered; exact-source full certification remains pending. |
 | P0-6a | Artlock CI owner | Gap confirmed, open. Artlock is a real catalogue/browser render, not a cheap static check. Assign changed-art/release ownership and provenance before adding cost. Never auto-bless references. |
-| P0-6b | Verbatim coverage | Open coverage inventory for unsealed artifacts only; preserve existing exact-source tests and lifter transforms. |
+| P0-6b | Verbatim coverage | Inventory complete: 21 artifacts, ten already protected by full-file/regeneration seals; eleven retain parity but lack equivalent full-artifact regeneration coverage. Use actual lifters for those gaps, never generic header hashing over adapted output. Implementation remains open. |
 | P0-7 | Guide/ledger literals | Proposed mechanical fixes rejected for reasons above. Retain correct current Guide; source-model completion belongs to real economy work. |
 | P1-focus | Records/Atlas/Charters focus | Implemented; executable real-function/jsdom checks pass for semantic identity, disabled/removed fallback and later focus ownership. Native keyboard/scroll/device acceptance remains open. |
 | P1-layering | Scene/domain ownership | Open staged move with compatibility re-exports; preserve identities, brands, imports and byte contracts. No blanket architecture rewrite before gameplay. |
-| P1-canonical | Canonical serialization copies | Open compatibility fixtures first; loot digest bytes including existing undefined behavior cannot silently change. |
+| P1-canonical | Canonical serialization copies | Contracts differ for undefined, sparse arrays, integer-key ordering and admission. Loot's four production uses are Gear equality comparisons, not direct digests. Preserve current semantics and encoded Gear bytes; compatibility fixtures must precede any consolidation. |
 | P1-time | Runner budget factor | Global factor rejected. Measure transport/readiness bottlenecks separately from fixed product/evidence deadlines. |
 | P1-helpers | Shared source/server helpers | Open incremental extraction with current source/lock/server cleanup semantics; do not merge distinct trust boundaries merely because helpers share names. |
 | P1-lists | Shared key inventories | Open deduplication where ownership is genuinely the same. Keep independently authored expectations where they detect a missing producer field. |
 | P1-windows | npm.cmd / browser discovery / docs | Three direct npm callers now share the safe invocation owner; four platform/mock tests pass. Windows Chrome resolver change remains deferred because resolver bytes are measurement-authority inputs; actual Windows verification remains open. |
 | P1-audio | Voice watchdog | Open bounded injected-clock lifetime design, preserving normal onended cleanup and suspension semantics. |
-| P1-tests | Layering/targeted domain gaps | Open naming/worldconfig/mint coverage assessment; prioritize real forgery boundaries, no duplicate blanket test suite. |
+| P1-tests | Layering/targeted domain gaps | Assessment complete: naming/worldconfig already have direct parity in starcatalog; mint import ownership and Guardian clone refusal already tested. Remaining narrow gaps are malformed/shallow-frozen mint registration and public-registry clone refusal, plus three WorldConfig anchor/freeze assertions. No duplicate blanket suite. |
 | P2-phone | Allocation/navigation/cache/boot | Open measured performance work. Review every save consumer before replacing immediate commits with debounce; preserve travel durability. |
 | P2-main | Extract main.ts | Open incremental extraction along existing owners. Generic action coordinator cannot erase domain-specific CAS, publication and recovery guarantees. |
 | P2-tools | Instrument diet | Open duplication/ownership audit; keep historical failure replay, determinism/save safety/art locks. No arbitrary line target or deletion based only on not being in CI. |
@@ -160,8 +160,89 @@ import alone is insufficient because PWA precaches emitted runtime chunks. Evide
 opt in; historical baseline builds retain their own contract. Preview stays distributable and
 its existing `__CF_SLICE__.api.state()` readiness read must move to actual DOM/Guide readiness.
 Prove mode separation, save/product equivalence, valid PWA resources and honest current input
-fingerprints without changing fixed numeric limits. No code for this next boundary has landed.
+fingerprints without changing fixed numeric limits. Batch 1 is locally committed as
+`e0acfabf80a055b4c1132c49a9461c42a391afb0`; this next boundary is now in its working-copy batch 2.
+Before any real build, a single-file minifier check showed that hiding only the API left dormant
+fault bodies in output. Explicit compile-time gates at the fault consumers are therefore part
+of this implementation; the unverified API-only state is not accepted or distributed.
 
 The faster-develop coverage decision is requested explicitly: browser-free + two phone canaries
 versus retaining the entire chain on every integration. Deferring the long chain to milestone/
 release is a coverage-policy change, not a free optimization; it is not silently enabled here.
+
+## Local batch 2 — explicit evidence-build isolation
+
+Base is local signed `e0acfabf80a055b4c1132c49a9461c42a391afb0`. All results below use its
+working-copy successor, not an exact clean-source certificate. There is no hosted action.
+
+- `__CF_EVIDENCE_BUILD__` gates the public Slice API and ten additional diagnostic bindings,
+  fault injection selectors and destructive implementations. Default persistence uses the exact
+  native backend/promises. Unarmed holds retain their asynchronous boundaries; frame → task →
+  answerability → art activation ordering is unchanged. Focused runtime checks: **98/98**, eight
+  suites (1.09s), including six new compiled/executable isolation/ordering cases.
+- Seven evidence builders explicitly select `--mode evidence` and verify its parsed HTML marker.
+  Candidate Compendium changes, historical baseline build commands do not. Default preview
+  packaging builds and requires distributable mode. Raw `vite preview` only serves existing dist;
+  a fresh ordinary build is required before manually serving distributable output.
+- Actual distributable build: **965 modules, 1.93s**. Executable JS inspection found **zero** of
+  fourteen diagnostic/fault markers in 24 files including the service worker. All **29** final
+  PWA asset hashes match. Main `assets/main-A8uhAW-r.js`, **1,558,278 bytes**, SHA-256
+  `7f0b0164143031e731dd3e958eff505156e88314c48e9183200f575d750bb0c5`;
+  index `c4ebb29682b53a8c10699b47db44cadef2b417ca42834e34b06b2a394ad88238`;
+  service worker `f5312cde74fc5737f74347c807b3f9569d9b8b81edee0e128e8f6d74620f7de9`.
+  Source maps were excluded from executable-code inspection; this is not source-code secrecy.
+- Local-only package `port/v2/apps/game/smoke/dev-preview-e0acfab-build-isolation-20260904`,
+  content SHA-256 `2fcfc4785722238e5d2008e1267fe238ce197cd31a23a5ab98d60ac3fec60f14`.
+  The first browser check was **instrument-red**: the new readiness predicate incorrectly treated
+  Training's painted inert background as hidden. Repair separated painted readiness from action
+  admission and added the real Skip Training action before Guide. One post-repair check on the
+  same package passed in Edge **152.0.4191.62**, boot → real Skip → normal control restoration →
+  Guide with full `e0acfab…` identity, no diagnostic API/badge. No storage injection or inert
+  removal. Package remains **dirty/local-only/nonpublishable**, and programmatic real-control
+  activation does not claim native pointer/keyboard or physical-device acceptance.
+- Independent review then found an opacity-zero readiness blind spot. The predicate now checks
+  ancestor display/visibility and effective opacity/filter opacity; focused positive, transparent,
+  malformed and inert controls pass. App and package bytes did not change for this instrument
+  correction; the earlier browser result is not relabelled as a new run.
+- Actual evidence build: **965 modules, 1.86s**; fourteen diagnostic/fault markers present in its
+  23 asset JS files, all **29** final PWA hashes match. Built tree is
+  `56dabfc36734e5369fc9faf0dbe0720d9cb3dda0a2eb93e3235bdbdf297c00b9` (52 files).
+  Species worker/painter remains byte-identical:
+  `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`.
+- Current Compendium measurement is
+  `de87857f5b3bf6ae9d2626c185c180fab22ec0e4859e7dc90b3b1f89089b3a29`; collector
+  `3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e` changes only explicit
+  build mode/admission, not the measurement algorithm. Current producer is
+  `e690f6aa7134b776c8bf33f665940f46b30efb546cd287e26df2d34866bc9c10`:
+  index `1a393add78ffaa6bb48a2abd42e5c806cb81ac86a2a383cda10e840b55182757`, owner
+  `assets/main-CmDVRgZf.js` / `43c99cfc772f6b1e3bad171557e9db8fed444f4329597c5f26de9d4e94982111`,
+  service worker `b3c3721e9d3b18d555501876c2bfe8c7232dff264d19e8c133cd1804e1fe5a2b`.
+  The printer's initial exit 2 honestly reported the stale current pins and quarantined
+  SceneMemory mismatch. Current Compendium pins/narrative now reconcile; **28/28** budget tests
+  pass. Every unrelated field, historical sample/ruler and numeric ceiling is unchanged; numeric
+  digest remains `a5f05be521eb127f3e74306bd69538bdb6d3b564875ed921f2c7f3c0904def83`.
+  SceneMemory remains quarantined and its budget was not rewritten.
+- One consolidated develop profile: **274 files, 2,842 passed / one skipped / four failed**,
+  **41.32s**. Three failures were case deadlines during eager parser import/startup; the fourth
+  was an overlooked 77→78 draft-inventory assertion from batch 1. The parser now loads only on
+  actual build inspection, preserving its synchronous parsed-document semantics and avoiding
+  startup cost for malformed CLI/source-only tools. No timeout was raised. The stale count is
+  synchronized with the existing 78-bullet artifact; no new release bullet/version change.
+  Focused final-source closure is recorded below; this first aggregate remains red.
+- Three TypeScript programs, art audit **34/0**, routes **1,014/1,014**, spec **454/0** plus five
+  controls, and root validation all pass. Root validation rendered **1,010** species with zero
+  errors and retained all **50** V1 fingerprints. V1 tracked output is unchanged.
+
+Final-source closure: **46/46** across all three failed suites (16.42s); build-mode/readiness
+**36/36** (832ms), including a fresh-process control proving source-only imports do not load
+jsdom. The three deadline failures occurred during eager parser startup/concurrent static work;
+lazy loading removes that new overhead without increasing deadlines. These focused results do
+not claim a second green aggregate under identical concurrent load. Independent bounded isolation
+review is clear after the opacity and lazy-import repairs. No new build was needed for those
+instrument-only edits. Preview package selftest passed; Recovery and Windows-callsite focused
+checks passed. Glass selftest is owned by the evidence-chain suite, not duplicated afterward.
+
+App main source SHA-256 is `df5495ae8e54796ae988257d58c7262fc8371f685b501a032bfd5cfb4dec47d6`.
+Batch 2 is ready for local commit; its exact signed successor is recorded at Git handoff rather
+than self-embedded. No full browser chain, native-device acceptance, production activation,
+release or GitHub write is claimed.

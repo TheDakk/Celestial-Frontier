@@ -23,6 +23,26 @@ This is browser-free verification of an existing current-clean-source diagnostic
 run or a Slice-bound certificate. `--verify-run` retains its full `--slice-run`/`--profile` contract.
 jq is still checked for later run-ID extraction. No coverage, numerical ceiling or retry changes.
 
+### Explicit evidence builds — matches code as of 2026-09-04
+
+Ordinary `npm run build` / `vite build` is distributable. Only `vite build --mode evidence`
+compiles the browser diagnostic API and fault injection paths. `NODE_ENV`, the development
+server, preview packaging and query parameters do not opt in. Both variants carry one
+`cf-build-mode` HTML head marker, included in PWA final-byte hashes. The named certifiers and
+authority printer explicitly build/check `evidence`; ordinary art-review entrypoints keep their
+default mode, and historical broken-baseline builds keep their exact historical commands.
+Raw `vite preview` only serves the existing `dist`; it does not convert a previous evidence build.
+Run a fresh ordinary build first for manual distributable serving. The packaged preview path
+enforces this boundary independently.
+
+Human preview packages require `distributable`. Their browser check observes the rendered player
+chip, navigation trail and canvas. If fresh Training is active, it uses the real Skip Training
+action in that disposable profile and waits for normal control restoration before opening Guide
+and verifying the complete build identity. It refuses a leaked diagnostic API. Both built modes
+pass final-byte/PWA checks; the distributable preview passed this flow in real Edge. This local
+dirty diagnostic is not a clean-source certificate, a save-format change or human acceptance.
+See the disposition audit for fingerprints and retained intermediate instrument findings.
+
 > **2026-09-04 UTC historical PR #35 forensic-prevention overlay:** the
 > external review of pushed head `a922c4b…` identified narrow hosted-envelope and late-execution
 > risks. The local successor keeps one authorization job and one battery job, with a **120-minute**

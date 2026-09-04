@@ -234,11 +234,11 @@ const RULER_MEASUREMENT_AUTHORITY =
 /* Refreshed once, after the final app build. It deliberately remains a
    separate constant from the immutable historical ruler above. */
 const EXPECTED_MEASUREMENT_AUTHORITY =
-  'b83cbb85149e9d17207865deaf8edc3fc5d12a3e14f5c271a1f7d9110bf681da';
+  'de87857f5b3bf6ae9d2626c185c180fab22ec0e4859e7dc90b3b1f89089b3a29';
 const EXPECTED_OUTCOME_CONTRACT_AUTHORITY =
   '1b17df2e4983b44d929acfb16cb3ed79250ad7c9b68e522418a44fb3a58d6692';
 const EXPECTED_COLLECTOR_AUTHORITY =
-  'ffe0494e42d5bf383141709d5ddeacaa65933ed7a7f1c51a85dac265d5b1621d';
+  '3ce7ed13c57f7feabc2653b9f7ce5eb323bc3305a19646f2cd93af5032d2dc5e';
 const HISTORICAL_VISUAL_KEY_INSTRUMENT_FAILURE = Object.freeze({
   file: 'ARC1C_COMPENDIUM_PR35_PLANETSIDE_VISUALKEY_INSTRUMENT_FAILURE_20260830_B2EECFB.json.gz',
   runId: '20260830-pr35-settlement-evidence-b2eecfbd9379-compendium-certification',
@@ -310,18 +310,18 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  '1ce8862d0fa48cce753b800be337c277f66a26c414eba339b134063221adb1a7';
+  'e690f6aa7134b776c8bf33f665940f46b30efb546cd287e26df2d34866bc9c10';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: '0e8ebbfa233e80bd2639d0ef92ee74ac9cb6d158e48fddd5a87c138741ee06c7',
+      sha256: '1a393add78ffaa6bb48a2abd42e5c806cb81ac86a2a383cda10e840b55182757',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/main-C-tWEeLQ.js',
-      sha256: 'f8907c93ab53ebf0c2207a513e88eaa562e661dbc3ee389b7fabbe52779d6151',
+      relativePath: 'assets/main-CmDVRgZf.js',
+      sha256: '43c99cfc772f6b1e3bad171557e9db8fed444f4329597c5f26de9d4e94982111',
     }),
     worker: Object.freeze({
       relativePath: 'assets/species-art.worker-DnnSDKMy.js',
@@ -333,7 +333,7 @@ const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
     }),
     serviceWorker: Object.freeze({
       relativePath: 'service-worker.js',
-      sha256: '3bc838bdff56b8446a6ffae62beed9fb6bf680e65901b258a2a1c371ce9eca11',
+      sha256: 'b3c3721e9d3b18d555501876c2bfe8c7232dff264d19e8c133cd1804e1fe5a2b',
     }),
   }),
 });

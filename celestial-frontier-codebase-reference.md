@@ -1,5 +1,15 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+## V2 explicit build boundary — implementation as of 2026-09-04
+
+`port/v2/apps/game/vite.config.ts` selects diagnostic code only for exact Vite mode `evidence`;
+`pwa-build.ts` binds the corresponding `cf-build-mode` HTML marker into final PWA asset hashes.
+`tools/build-mode.mjs` is the shared consumer check. Ordinary builds and development-preview
+packages remain distributable and must not expose `__CF_SLICE__` or armable save faults.
+`tools/devpreview-readiness.mjs` observes ordinary rendered UI before the existing real Guide
+outcome check. Awaited inert action holds preserve task ordering. This describes the implementation
+boundary, not completed browser/device evidence; consult `ROADMAP.md` for current verification.
+
 ## Current v2 runtime hardening
 
 Matches code as of **2026-09-04**. `main.ts::persistView` uses one local admission predicate
