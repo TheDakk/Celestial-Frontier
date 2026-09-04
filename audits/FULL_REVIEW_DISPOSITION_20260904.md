@@ -367,5 +367,5 @@ Guide/Training is **47/47** and the Slice/Glass copy contracts are **95/95**. Al
 programs, the Glass selftest and diff check pass. Root validation renders all 1,010 V1 species with
 zero errors and retains all 50 V1 fingerprints. The v2 draft remains 78 unique ordered bullets,
 SHA-256 `198bddf5c969151eba3ad9358cbcd016be0fd7c26b4e8524953892bf40484587`.
-The exact local commit is recorded in the session handoff after creation. No full profile/browser
-chain, hosted action, version bump, release or deployment is claimed here.
+This batch is committed locally at `53770697f6613da3ba469868dae24cf0edc3f58d`. No full
+profile/browser chain, hosted action, version bump, release or deployment is claimed here.

@@ -97,7 +97,7 @@ Continue remaining review/gameplay scope below; the full campaign is not complet
 Serializer/seal/domain-test inventory is complete: the report overstated some missing coverage,
 and canonical serializers have distinct byte/admission contracts, so no blanket consolidation.
 
-### Gameplay batch 4 — implemented locally; ready for checkpoint
+### Gameplay batch 4 — implemented and committed locally
 
 - All six canonical Research rows are purchasable and connected to their existing effects:
   Reinforced Hull protects only hostile Discover Life; Xenobotany improves only a safe explorer
@@ -125,6 +125,8 @@ and canonical serializers have distinct byte/admission contracts, so no blanket 
   all 1,010 species and retained all 50 V1 fingerprints. The v2 draft remains 78 unique ordered
   bullets, SHA-256 `198bddf5c969151eba3ad9358cbcd016be0fd7c26b4e8524953892bf40484587`.
   This is local focused evidence, not a full profile, browser certificate, HUMAN gate or release.
+- Exact local commit: `53770697f6613da3ba469868dae24cf0edc3f58d`; it is five commits ahead
+  of `origin/openai/mac` and is not pushed.
 
 ### Remaining completion plan — existing systems, not replacements
 
@@ -176,9 +178,9 @@ and canonical serializers have distinct byte/admission contracts, so no blanket 
 
 ### Paired next steps
 
-- **OpenAI/Codex:** commit gameplay batch 4 locally, then continue directly with the accepted
-  `st-scan` Charter and the remaining code-ready beta sequence on `openai/mac`. Preserve other
-  agent work. No hosted action until a new exact candidate and authority are established.
+- **OpenAI/Codex:** continue directly with the accepted `st-scan` Charter and the remaining
+  code-ready beta sequence on `openai/mac`. Preserve other agent work. No hosted action until a
+  new exact candidate and authority are established.
 - **Anthropic/Claude:** PR #35 is available from `origin/develop`; the new local corrections are
   not. Before future coding, use the Anthropic-owned clean branch, fetch/merge develop, and agree
   disjoint ownership. If dirty, finish/safely commit its own work first. No manual file copying.
