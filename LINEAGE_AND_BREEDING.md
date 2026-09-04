@@ -1,30 +1,102 @@
 # Earth Lineage, Breeding & Replayability
 
-> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** Current lineage
-> code owns deterministic ancestry, Earth-scaffold inheritance and portrait
-> continuity; it does not yet provide v2 living-creature instances, expeditions,
-> bond or a Chronicle. The next arc must preserve the central player-respect law
-> below by separating `CatalogSpecies` discovery from stable `CreatureInstance`
-> ownership before any companion can leave the roster.
+> **2026-08-29 player-live Breed + Recovery correction:** Arc 5 now has a
+> versioned domain planner, command-availability/Recovery projector and durable app action over the
+> existing V2 ownership, lifted `crossGenome`, F4 SessionRNG/active-play authority and exact-five
+> carrier. It accepts two distinct live owned fauna; rejects exhibits, non-owned, mission-assigned,
+> still-recovering and Injured/Critical (`hurt >= 0.3`) parents before drawing; and permits any
+> eligible fauna pairing without changing the established hybrid/lineage implementation.
 >
-> **PLANNED, not implemented:** each creature instance carries a stable nickname,
-> lineage, assignment, bounded bond state and an append-only/bounded Chronicle of
+> The transparent V1 chance is
+> `clamp(0.95 - (tierA + tierB) * 0.06 + earnedStardustBonus, 0.08, 0.97)`, with the explicit
+> lifetime-earned-Stardust projection capped at `0.15`. Both possible complete-save successors are
+> capacity-certified before one persisted `breedOutcome` draw. Every settled attempt retains both
+> parents and assigns active-play Recovery: eight minutes on success, two on failure; Recovery blocks
+> breed, combat and dispatch and completes at exact `activePlayMs >= readyAtActivePlayMs`. Success
+> admits the existing child successor with half the lower parent's bounded `fed`; failure admits no
+> child. The newborn receives **+2 XP**, plus the one-time **+5 XP** only when this exact unordered
+> pair of canonical parent species has not already paid. New V2 claims are collision-resistant
+> SHA-256 digests over the sorted parent `SpeciesId`s. Imported v1.8.9
+> `pair|<FNV32-base36>` aliases—derived only from `_earthName || speciesName(seed)`, never a
+> nickname—remain read-only paid evidence in either the `xpf` window or `xpa` archive; V2 never
+> writes a second alias. The transaction performs one CAS joining the exact-five ownership
+> successor, XP/`xpf`, any required `xpa` overflow replacement, F4 advance and receipt, with no wall
+> clock, hidden entropy, reroll, optimistic publication or write retry.
+> The success successor also banks the canonical Chapter 3 `c3-breed` / **Breed a hybrid
+> bloodline** goal inside the same pre-draw-certified complete save. Failure preserves Charter
+> progress byte-for-byte, and refusal/stale/storage paths bank nothing. The live app publishes the
+> verified detached `ascCh`/`ascProg`, `unlocked`, `xpf` and optional `xpa` projection only after
+> durability; an ambiguous postcommit result reloads read-only, so lineage creation, XP-first
+> membership and Charter credit cannot separate or apply twice.
+>
+> The action is now reachable only from a real-fauna Compendium detail. One bounded 24-row selector
+> chooses an exact current-species primary and another chooses a distinct exact owned-fauna mate;
+> every candidate remains pageable, the chance is shown without exposing raw genes, and refusal
+> reasons remain explicit. Back/Close stay safe during the single durable transaction, no child or
+> Recovery publishes optimistically, and an unconfirmable commit converges read-only through reload.
+> Current Guide, release, Slice and Glass truth contracts cover the live boundary. No art, genome,
+> portrait, lineage or hybrid-rendering structure was changed; broader care/bond, Chronicle and
+> companion-mission systems remain separate future work.
+
+> **Exact-instance Rename is also player-live without changing lineage authority.** A real-fauna
+> detail pages through exact owned companions 24 at a time and settles one sanitized, at-most-24-
+> character `nickname` through one immutable receipt and exact-five CAS. Assigned, recovering and
+> injured instances may rename because identity alone changes; exhibition, non-owned, protected and
+> revision-exhausted rows refuse. Same-species twins remain distinct, the old name stays visible
+> while pending, and species/genome/traits/lineage/assignment/condition/bond/catalogue alias remain
+> owned by their existing authorities. No RNG, automatic retry or optimistic mutation is involved;
+> convergence faults lock read-only and reload.
+
+> **2026-08-26 historical pre-action lineage correction (superseded where the 2026-08-29 overlay
+> above differs):** the internal, non-exported exact-five V2
+> successor now initializes a newly admitted bred child with
+> `fed = 0.5 * min(clamp(parentA.fed, 0..200), clamp(parentB.fed, 0..200))` exactly once. Reversed
+> parents agree, missing feeding becomes zero, persistence is exact, and later child feeding is not
+> reset. No player capability invokes this successor. Arc 5B odds, eligibility, parent Recovery
+> duration/locks, care, capacity, timing, confirmation and every breeding UI/copy decision remain
+> product-open.
+>
+> Raw genetic grade remains mechanics/internal-art data. Any future lineage or breeding surface must
+> use the strict ten-name rarity projection (valid raw `0..14`, with `9..14` displayed as
+> Transcendent), omit invalid/missing values, and never expose internal grade labels or raw numbers.
+> The current Tame-fauna greeting is confined to the exact durable current-system acquisition result;
+> no breeding, care, Chronicle or Compendium-audition audio is live. Arc 4's ordinary Slice still
+> records `recoveryClaimed:false`, and its pending dedicated 20-minute Biosphere recovery certificate
+> does not prove future Arc 5 parent Recovery.
+
+> **2026-08-25 v2 Arc 5A recorded boundary — CURRENT versus PLANNED at that date:** lineage code owns
+> deterministic ancestry, Earth-scaffold inheritance and portrait continuity. Ownership-v1/v2 now
+> separates `CatalogSpecies` discovery from stable `CreatureInstance` ownership, and Arc 5A
+> reconstructs V2 from one source-bound manifest plus exactly four fixed generic delta shards in app
+> boot, genuine legacy Training and every Arc 4 capture successor. The implemented delta carries only
+> V2-exclusive or changed rows and keeps unchanged Arc 4 ownership out of Arc 5. That is
+> infrastructure only: no player V2-only mutation, expedition, Recovery,
+> bond/Chronicle action or companion presentation is live.
+>
+> **INTERNAL SUCCESSOR SHAPE EXISTS; PLAYER PRODUCT BEHAVIOR remained open at that boundary:** the
+> creature schema has stable
+> nickname, lineage, assignment and nullable bounded bond fields, but no player writer populates or
+> changes the later companion state. The intended Chronicle records
 > meaningful memories such as first landing, first safe return, a notable battle,
 > discovery or offspring. Bond never decays, has no daily streak or expiring task,
 > and repeated low-effort actions cannot grind it indefinitely. Its mechanical
 > effects are small bounded sidegrades—roles, expressions, dialogue and traversal
 > specialties—rather than a mandatory power multiplier; any creature can train
 > any role. Expeditions cannot kill, delete, breed or replace the companion, and
-> an away/favorite guard is enforced below the UI. Normal v2 breeding likewise
-> preserves both living parent instances: child creation grants half the lower
-> parent's `fed` and atomically assigns both parents to a bounded active-play
-> Recovery that blocks breeding, dispatch and combat until complete. Legacy v1
+> an away/favorite guard is enforced below the UI. The internal successor now owns
+> only the one-time half-lower-clamped-parent child `fed` initialization described
+> above. The still-open normal-v2 product contract preserves both living parent
+> instances and atomically assigns both to a disclosed bounded active-play Recovery
+> that blocks breeding, dispatch and combat until complete. Legacy v1
 > parent consumption remains historical parity only. Any future irreversible
 > **Fusion** is separately named, optional, informed-confirmed and never required
 > for progression. The Chronicle must reference stable creature/world/mission ids
-> and remain valid across rename, reload and catalogue deduplication. These are
-> design contracts only and remain unavailable in the v2 Guide until implemented
-> and outcome-tested.
+> and remain valid across rename, reload and catalogue deduplication. The implemented fixed-four-shard
+> compact V2 delta carrier keeps namespace count and unchanged-state growth O(1), but no app path
+> exposed its internal exact-five V2-only successor at that boundary. The 2026-08-29 headless
+> backend action now supplies that narrow Breed + Recovery path, and the current Compendium UI,
+> Guide and draft release expose it. Broader companion product behaviors remain unavailable until
+> separately implemented and outcome-tested.
 >
 > A later **Expedition Museum** is a player-curated, read-only projection over those
 > receipt-backed Chronicle memories, named lineages, selected mementos and world records.
@@ -33,7 +105,7 @@
 > story after a rename, a migration or catalogue deduplication; the Museum may reference the
 > stable IDs but never becomes the identity authority.
 
-_Design north star + build status. Matches code as of 2026-08-11 (Platinum repair reviewed).
+_Design north star + build status. Matches the current local code boundary as of 2026-08-29.
 Companion to `ART_DIRECTION.md` and `PROCEDURAL_CHARACTERISTICS.md`._
 
 > **2026-08-11 Platinum correction:** the hash-bound current-generation review of clean
@@ -168,8 +240,17 @@ Status: ✅ built · 🔶 partial · ⬜ backlog. Ordered roughly by value.
 - ⬜ Signature-trait stabilization (a favored trait passes more reliably).
 - ⬜ Role specialization (scout/harvest/traversal/…) so non-combat lineages matter.
 - ⬜ Collection goals: family mastery, genetic collection (colors/heads/tails/eyes).
-- ⬜ Implement non-consuming normal breeding, half-lower-parent `fed` inheritance,
-  bounded active-play Recovery and reversed-parent outcome vectors; keep any
+- ✅ The player-facing non-consuming Arc 5 action uses two exact, distinct owned fauna,
+  bounded 24-row selectors, established rarity plus lifetime-earned-Stardust odds,
+  pre-draw two-successor capacity proof, one receipt/CAS, and 8-minute success or
+  2-minute failure active-play Recovery. Both parents survive; Recovery blocks Breed,
+  combat and dispatch; wall-clock/closed-game time never advances it.
+- ✅ A newly admitted child's `fed` initializes to half the lower clamped parent value
+  once, with reversed-parent/round-trip/later-care vectors.
+- ✅ A successful child receives +2 XP and the first exact unordered species pairing receives +5;
+  the claim shares Breed's one F4 receipt/CAS, survives the 4,000-key `xpf` window through `xpa`,
+  and honors—but never newly writes—the immutable legacy v1 pair alias.
+- ⬜ Richer offspring-trait preview and broader care/bond/Chronicle work. Keep any
   irreversible Fusion optional, separately named and outside progression.
 
 ### Replayability (§8) & world (§14)

@@ -1,7 +1,8 @@
-# GitHub Actions is a finite 3,000-unit monthly budget. This full battery is
-# deliberately NOT triggered by pushes, PR synchronization, or branch merges.
-# Only the repository owner adding the exact `actions-budget-approved` label
-# starts one fail-fast run for that PR merge ref. See GITHUB_ACTIONS_BUDGET.md.
+# Standard GitHub-hosted runners are free while this repository remains public;
+# the 3,000-minute cap applies fail-closed if visibility changes. This explicit
+# efficiency/intent gate is deliberately NOT triggered by pushes, PR sync, or
+# branch merges. Only the repository owner adding `actions-budget-approved`
+# starts one fail-fast run for that exact PR merge ref. See GITHUB_ACTIONS_BUDGET.md.
 name: test-battery
 
 on:
@@ -54,13 +55,21 @@ jobs:
     name: ${{ needs.authorize.result == 'success' && 'battery' || 'budget-not-authorized' }}
     needs: authorize
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     env:
-      CF_BROWSER: /usr/bin/microsoft-edge-stable
+      CF_BROWSER: /usr/bin/google-chrome
+      CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
       CF_COMPENDIUMMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-compendiummem
       CF_SCENEMEM_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-scenemem
+      CF_V2_SLICE_SMOKE_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-slice
+      CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass-preflight
+      CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass-large-phone-preflight
+      CF_V2_GLASSMATRIX_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-glass
+      CF_V2_ARC4_RECOVERY_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}-recovery
     steps:
       - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v5
         with:
           node-version: 26
@@ -69,8 +78,8 @@ jobs:
             package-lock.json
             port/v2/package-lock.json
 
-      # Cheap/static checks run first so a deterministic red stops before the
-      # expensive browsers. Each dependency tree is installed only once.
+      # Classify the exact PR endpoints before installing dependencies. Unknown
+      # branch flows, missing objects, or an empty endpoint diff fail closed.
       - name: environment
         env:
           CF_BROWSER: /usr/bin/google-chrome
@@ -79,83 +88,534 @@ jobs:
           npm --version
           which google-chrome || which chromium-browser || echo "no chrome found"
           node port/v2/tools/browserpath.mjs --print
-      - run: npm ci
-      - name: preflight contract selftest
-        run: npm run preflight:selftest
-      - name: validate (fingerprint + render + invariants)
-        run: node tools/validate.js
-      - name: smoke (jsdom gameplay flows)
-        run: node tools/smoke.js
-      - name: legacy Field Training checkpoint capture
-        run: npm run trainingcheckpoint
-      - name: layout (10 viewports)
+      - name: classify exact PR scope
+        id: scope
+        shell: bash
+        env:
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+          case "$BASE_BRANCH" in
+            develop|main) ;;
+            *) echo "::error::Unsupported battery base: $BASE_BRANCH"; exit 1 ;;
+          esac
+          [[ "$BASE_SHA" =~ ^[0-9a-f]{40}$ ]]
+          [[ "$HEAD_SHA" =~ ^[0-9a-f]{40}$ ]]
+          git cat-file -e "$BASE_SHA^{commit}"
+          git cat-file -e "$HEAD_SHA^{commit}"
+
+          changed_paths="$RUNNER_TEMP/cf-battery-changed-paths"
+          git diff --name-only --no-renames -z "$BASE_SHA" "$HEAD_SHA" -- > "$changed_paths"
+          node port/v2/tools/battery-scope.mjs \
+            --paths-file="$changed_paths" \
+            --github-output="$GITHUB_OUTPUT"
+
+      # This policy uses only Node built-ins, so it always runs before either
+      # dependency install and stops unauthorized workflow drift cheaply.
+      - name: Actions budget policy selftest
+        run: node tools/actions-budget-policy.js --selftest
+
+      # The production profile always certifies the retained v1 product. A
+      # develop PR pays that cost only when it actually changes a legacy input.
+      - name: install legacy root workspace
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.legacy_changed == 'true'
+        run: npm ci
+      - name: legacy browser-free gates
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.legacy_changed == 'true'
+        run: |
+          npm run preflight:selftest
+          node tools/validate.js
+          node tools/smoke.js
+          npm run trainingcheckpoint
+          node tools/rarity-sanity.js
+          node tools/deadcode.js
+
+      - name: install v2 workspace
+        working-directory: port/v2
+        run: npm ci
+      - name: v2 base-profile static gates
+        working-directory: port/v2
+        shell: bash
+        env:
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+        run: |
+          set -euo pipefail
+          case "$BASE_BRANCH" in
+            develop) node tools/check-profile.mjs --profile=develop ;;
+            main) node tools/check-profile.mjs --profile=production ;;
+            *) echo "::error::Unsupported battery base: $BASE_BRANCH"; exit 1 ;;
+          esac
+      - name: develop changed-art mutation control
+        if: >-
+          github.event.pull_request.base.ref == 'develop' &&
+          steps.scope.outputs.art_instrument_changed == 'true'
+        working-directory: port/v2
+        run: npm run overridecontrol
+
+      # When changed (and on production), the shared launcher proves its own
+      # lifecycle before any root, SceneMemory, or Compendium browser consumer.
+      - name: changed-or-production Chrome launcher selftest
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.browser_transport_changed == 'true'
+        working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/google-chrome
-          CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
+        run: node tools/browsercdp.mjs --selftest
+
+      # When a Glass or v2 product input changes, exercise both the exact
+      # small-phone Inventory boundary and large-phone forced-heartbeat native-
+      # Tab boundary on hosted Chrome/Linux before paying for Compendium and
+      # Slice. These are bounded noncertifying canaries; the immutable Slice-
+      # bound full matrix remains mandatory later.
+      - name: changed Glass small-phone and large-phone action preflights
+        if: >-
+          github.event.pull_request.base.ref == 'develop' &&
+          steps.scope.outputs.glass_preflight_changed == 'true'
+        timeout-minutes: 7
+        working-directory: port/v2
+        shell: bash
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: |
+          command -v jq >/dev/null
+          set -euo pipefail
+          verify_preflight_report() {
+            local report="$1"
+            local expected_run_id="$2"
+            local expected_viewport="$3"
+            local required_controls="$4"
+            local require_native_heartbeat="$5"
+            test -f "$report"
+            test "$(jq -er '.run.id' "$report")" = "$expected_run_id"
+            jq --arg preflight_browser "$preflight_browser" \
+              --arg expected_run_id "$expected_run_id" \
+              --arg expected_artifact_path "$report" \
+              --argjson expected_viewport "$expected_viewport" \
+              --argjson required_controls "$required_controls" \
+              --argjson require_native_heartbeat "$require_native_heartbeat" -e '
+              . as $report |
+              ($report.arc4CaptureOutcomeInventory.outcomes // null) as $arc4_outcomes |
+              ($report.shipyardKeyboardHeartbeatInventory.outcomes // null) as $shipyard_outcomes |
+              ($arc4_outcomes
+                | if type == "array" then map(select(.code == "ARC4_CAPTURE_NATIVE_SURVEY_RETURN"))
+                  else [] end) as $native_outcomes |
+              ($shipyard_outcomes[0].setup // {} | {
+                tag, id, focusKey, surveyClose, captureAction,
+                engineeringSection, accessibleName
+              }) as $shipyard_descriptor |
+              $report.status == "pass" and
+              $report.schema == "cf-v2-glassmatrix/v2" and
+              $report.terminal == true and
+              $report.scope == "targeted-diagnostic" and
+              $report.certifying == false and
+              $report.run.id == $expected_run_id and
+              $report.run.artifactPath == $expected_artifact_path and
+              $report.source.state == "committed" and
+              $report.sourceEnd == $report.source and
+              $report.sourceChange.detected == false and
+              $report.sourceChange.ending == null and
+              $report.summary.viewportCount == 1 and
+              $report.summary.findingCount == 0 and
+              $report.summary.instrumentFailureCount == 0 and
+              ($report.viewportInventory | length) == 1 and
+              $report.viewportInventory[0] == $expected_viewport and
+              $report.browser.executable == $preflight_browser and
+              ($report.browser.product | type) == "string" and
+              ($report.browser.product | test("^Chrome/(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$")) and
+              ($report.browser.revision | type) == "string" and
+              ($report.browser.revision | length) > 0 and
+              ($report.browser.user_agent | type) == "string" and
+              ($report.browser.user_agent | length) > 0 and
+              ($report.browser.js_version | type) == "string" and
+              ($report.browser.js_version | length) > 0 and
+              $report.browser.protocol_version == "1.3" and
+              $report.browser.consistentAcrossViewports == true and
+              ($report.findings | type) == "array" and
+              ($report.findings | length) == 0 and
+              ($report.instrumentFailures | type) == "array" and
+              ($report.instrumentFailures | length) == 0 and
+              $report.controlSummary.selftestRan == true and
+              ($report.controlSummary.blockedNegativeControls | type) == "array" and
+              ($report.controlSummary.blockedNegativeControls | length) == 0 and
+              ($report.controlSummary.negativeControls | type) == "array" and
+              ($required_controls | type) == "array" and
+              ($required_controls | length) > 0 and
+              ($required_controls
+                | map(. as $control
+                  | ($report.controlSummary.negativeControls | index($control)) != null)
+                | all) and
+              $report.controlSummary.automaticRetries == 0 and
+              $report.exit.code == 0 and
+              ($require_native_heartbeat == false or (
+                $report.arc4CaptureOutcomeInventory.plannedOutcomeCodes == [
+                  "ARC4_CAPTURE_NATIVE_SURVEY_RETURN",
+                  "ARC4_CAPTURE_PRESENTATION_TRUTH",
+                  "ARC4_CAPTURE_GEOMETRY_FOCUS"
+                ] and
+                $report.arc4CaptureOutcomeInventory.complete == true and
+                $report.arc4CaptureOutcomeInventory.expectedCount == 3 and
+                $report.arc4CaptureOutcomeInventory.observedCount == 3 and
+                $report.arc4CaptureOutcomeInventory.omitted == [] and
+                ($arc4_outcomes | type) == "array" and
+                ($arc4_outcomes | length) == 3 and
+                ($arc4_outcomes
+                  | all(.viewport == $expected_viewport.label and .ok == true)) and
+                ($native_outcomes | length) == 1 and
+                $native_outcomes[0].checks.idleKeyboardFocus == true and
+                $native_outcomes[0].diagnostics.sampleFocusSetup.schema ==
+                  "cf-v2-glass-arc4-native-tab-setup/v1" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.schema ==
+                  "cf-v2-glass-arc4-native-tab-heartbeat/v2" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.required == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.stateFound == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.seamsAvailable == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.error == null and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.initial.documentToken ==
+                  $native_outcomes[0].diagnostics.sampleFocusSetup.documentToken and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.initial.heartbeatRunning == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.quiescence.schema ==
+                  "cf-v2-f4-heartbeat-quiescence/v1" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.quiescence.documentToken ==
+                  $native_outcomes[0].diagnostics.sampleFocusSetup.documentToken and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.quiescence.wasRunning == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.quiescence.stopped == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.quiescence.cycleSettled == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.resume.schema ==
+                  "cf-v2-f4-heartbeat-resume/v1" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.resume.documentToken ==
+                  $native_outcomes[0].diagnostics.sampleFocusSetup.documentToken and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.resume.running == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cycleReceipt.schema ==
+                  "cf-v2-f4-heartbeat-cycle-receipt/v1" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cycleReceipt.documentToken ==
+                  $native_outcomes[0].diagnostics.sampleFocusSetup.documentToken and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cycleReceipt.cycle == "completed" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cycleReceipt.reason == null and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cycleReceipt.refresh.capture == "completed" and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.documentToken ==
+                  $native_outcomes[0].diagnostics.sampleFocusSetup.documentToken and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.heartbeatRunning == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.originalTargetDisconnected == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.originalPriorDisconnected == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.replacementAcquired == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.priorReplacementAcquired == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.after.priorFocused == true and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cleanup.attempted == false and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cleanup.receipt == null and
+                $native_outcomes[0].diagnostics.sampleFocusHeartbeat.cleanup.error == null and
+                $native_outcomes[0].diagnostics.sampleFocusOutcome.schema ==
+                  "cf-v2-glass-arc4-native-tab-assessment/v2" and
+                $native_outcomes[0].diagnostics.sampleFocusOutcome.ok == true and
+                $native_outcomes[0].diagnostics.sampleFocusOutcome.instrumentOk == true and
+                $native_outcomes[0].diagnostics.sampleFocusOutcome.productOk == true and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.instrumentChecks | type) == "object" and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.instrumentChecks | keys | sort) ==
+                  (["heartbeatRequirement", "setupCarrier", "setupDocument", "focusCarrier",
+                    "documentIdentity", "trustedTabReceipt", "scrollCarrier", "heartbeatLifecycle",
+                    "cycleReceiptCarrier", "captureRerenderCompleted", "replacementObserved",
+                    "receiptReplacementCoherence"] | sort) and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.instrumentChecks
+                  | to_entries | all(.value == true)) and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.productChecks | type) == "object" and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.productChecks | keys | sort) ==
+                  (["setupReady", "setupIdentity", "tabOrigin", "currentControls",
+                    "semanticLineage", "heartbeatFocusRestored", "scrollSettled",
+                    "keyboardFocus", "activeSemanticFocus"] | sort) and
+                ($native_outcomes[0].diagnostics.sampleFocusOutcome.productChecks
+                  | to_entries | all(.value == true)) and
+                $report.shipyardKeyboardHeartbeatInventory.plannedViewports == ["large-phone"] and
+                $report.shipyardKeyboardHeartbeatInventory.complete == true and
+                $report.shipyardKeyboardHeartbeatInventory.expectedCount == 1 and
+                $report.shipyardKeyboardHeartbeatInventory.observedCount == 1 and
+                $report.shipyardKeyboardHeartbeatInventory.omitted == [] and
+                ($shipyard_outcomes | type) == "array" and
+                ($shipyard_outcomes | length) == 1 and
+                $shipyard_outcomes[0].schema ==
+                  "cf-v2-glass-shipyard-keyboard-heartbeat-outcome/v1" and
+                $shipyard_outcomes[0].viewport == "large-phone" and
+                $shipyard_outcomes[0].sectionId == "mining" and
+                $shipyard_outcomes[0].beforeOpen == true and
+                $shipyard_outcomes[0].afterOpen == false and
+                $shipyard_outcomes[0].setup.schema ==
+                  "cf-v2-glass-keyboard-activation-setup/v1" and
+                ($shipyard_outcomes[0].setup | keys | sort) ==
+                  (["schema", "ok", "selector", "documentToken", "documentHref",
+                    "targetCount", "instrumentReady", "productReady", "targetConnected",
+                    "focused", "visible", "tag", "id", "focusKey", "surveyClose",
+                    "captureAction", "engineeringSection", "accessibleName", "display",
+                    "visibility", "opacity", "effectiveOpacity", "rect"] | sort) and
+                $shipyard_outcomes[0].setup.ok == true and
+                $shipyard_outcomes[0].setup.selector ==
+                  "#shipyardpanel details[data-engineering-section=\"mining\"] > summary" and
+                ($shipyard_outcomes[0].setup.documentToken | type) == "string" and
+                ($shipyard_outcomes[0].setup.documentToken | length) > 0 and
+                ($shipyard_outcomes[0].setup.documentHref | type) == "string" and
+                ($shipyard_outcomes[0].setup.documentHref | length) > 0 and
+                $shipyard_outcomes[0].setup.instrumentReady == true and
+                $shipyard_outcomes[0].setup.productReady == true and
+                $shipyard_outcomes[0].setup.targetCount == 1 and
+                $shipyard_outcomes[0].setup.targetConnected == true and
+                $shipyard_outcomes[0].setup.focused == true and
+                $shipyard_outcomes[0].setup.visible == true and
+                $shipyard_outcomes[0].setup.tag == "SUMMARY" and
+                $shipyard_outcomes[0].setup.id == null and
+                $shipyard_outcomes[0].setup.focusKey == "section:mining" and
+                $shipyard_outcomes[0].setup.surveyClose == false and
+                $shipyard_outcomes[0].setup.captureAction == null and
+                $shipyard_outcomes[0].setup.engineeringSection == "mining" and
+                ($shipyard_outcomes[0].setup.accessibleName | type) == "string" and
+                ($shipyard_outcomes[0].setup.accessibleName | length) > 0 and
+                $shipyard_outcomes[0].setup.accessibleName ==
+                  ($shipyard_outcomes[0].setup.accessibleName | gsub("^\\s+|\\s+$"; "")) and
+                ($shipyard_outcomes[0].setup.display | type) == "string" and
+                ($shipyard_outcomes[0].setup.display | length) > 0 and
+                $shipyard_outcomes[0].setup.display != "none" and
+                $shipyard_outcomes[0].setup.visibility == "visible" and
+                ($shipyard_outcomes[0].setup.opacity | type) == "number" and
+                $shipyard_outcomes[0].setup.opacity > 0 and
+                ($shipyard_outcomes[0].setup.effectiveOpacity | type) == "number" and
+                $shipyard_outcomes[0].setup.effectiveOpacity > 0 and
+                ($shipyard_outcomes[0].setup.rect | type) == "array" and
+                ($shipyard_outcomes[0].setup.rect | length) == 4 and
+                ($shipyard_outcomes[0].setup.rect[2] - $shipyard_outcomes[0].setup.rect[0]) >= 44 and
+                ($shipyard_outcomes[0].setup.rect[3] - $shipyard_outcomes[0].setup.rect[1]) >= 44 and
+                $shipyard_outcomes[0].heartbeat.schema ==
+                  "cf-v2-glass-keyboard-activation-heartbeat/v1" and
+                $shipyard_outcomes[0].heartbeat.required == true and
+                $shipyard_outcomes[0].heartbeat.stateFound == true and
+                $shipyard_outcomes[0].heartbeat.seamsAvailable == true and
+                $shipyard_outcomes[0].heartbeat.setupDocumentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.setupDocumentHref ==
+                  $shipyard_outcomes[0].setup.documentHref and
+                $shipyard_outcomes[0].heartbeat.initial.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.initial.documentHref ==
+                  $shipyard_outcomes[0].setup.documentHref and
+                ($shipyard_outcomes[0].heartbeat.initial | keys | sort) ==
+                  (["documentToken", "documentHref", "heartbeatRunning", "currentCount",
+                    "currentConnected", "currentFocused", "current",
+                    "originalTargetDisconnected", "replacementAcquired"] | sort) and
+                $shipyard_outcomes[0].heartbeat.initial.heartbeatRunning == true and
+                $shipyard_outcomes[0].heartbeat.initial.currentCount == 1 and
+                $shipyard_outcomes[0].heartbeat.initial.currentConnected == true and
+                $shipyard_outcomes[0].heartbeat.initial.currentFocused == true and
+                $shipyard_outcomes[0].heartbeat.initial.originalTargetDisconnected == false and
+                $shipyard_outcomes[0].heartbeat.initial.replacementAcquired == false and
+                $shipyard_outcomes[0].heartbeat.initial.current == $shipyard_descriptor and
+                $shipyard_outcomes[0].heartbeat.quiescence.schema ==
+                  "cf-v2-f4-heartbeat-quiescence/v1" and
+                $shipyard_outcomes[0].heartbeat.quiescence.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.quiescence.wasRunning == true and
+                $shipyard_outcomes[0].heartbeat.quiescence.stopped == true and
+                $shipyard_outcomes[0].heartbeat.quiescence.cycleSettled == true and
+                $shipyard_outcomes[0].heartbeat.resume.schema ==
+                  "cf-v2-f4-heartbeat-resume/v1" and
+                $shipyard_outcomes[0].heartbeat.resume.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.resume.running == true and
+                $shipyard_outcomes[0].heartbeat.cycleReceipt.schema ==
+                  "cf-v2-f4-heartbeat-cycle-receipt/v1" and
+                $shipyard_outcomes[0].heartbeat.cycleReceipt.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.cycleReceipt.cycle == "completed" and
+                $shipyard_outcomes[0].heartbeat.cycleReceipt.reason == null and
+                $shipyard_outcomes[0].heartbeat.cycleReceipt.refresh.shipyard == "completed" and
+                $shipyard_outcomes[0].heartbeat.after.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].heartbeat.after.documentHref ==
+                  $shipyard_outcomes[0].setup.documentHref and
+                ($shipyard_outcomes[0].heartbeat.after | keys | sort) ==
+                  (["documentToken", "documentHref", "heartbeatRunning", "currentCount",
+                    "currentConnected", "currentFocused", "current",
+                    "originalTargetDisconnected", "replacementAcquired"] | sort) and
+                $shipyard_outcomes[0].heartbeat.after.heartbeatRunning == true and
+                $shipyard_outcomes[0].heartbeat.after.currentCount == 1 and
+                $shipyard_outcomes[0].heartbeat.after.currentConnected == true and
+                $shipyard_outcomes[0].heartbeat.after.currentFocused == true and
+                $shipyard_outcomes[0].heartbeat.after.originalTargetDisconnected == true and
+                $shipyard_outcomes[0].heartbeat.after.replacementAcquired == true and
+                $shipyard_outcomes[0].heartbeat.after.current == $shipyard_descriptor and
+                $shipyard_outcomes[0].heartbeat.cleanup.attempted == false and
+                $shipyard_outcomes[0].heartbeat.cleanup.receipt == null and
+                $shipyard_outcomes[0].heartbeat.cleanup.error == null and
+                $shipyard_outcomes[0].heartbeat.error == null and
+                $shipyard_outcomes[0].receipt.schema ==
+                  "cf-v2-glass-keyboard-activation-receipt/v1" and
+                ($shipyard_outcomes[0].receipt | keys | sort) ==
+                  (["schema", "key", "code", "trusted", "setupDocumentToken",
+                    "setupDocumentHref", "documentToken", "documentHref", "tag", "focusKey",
+                    "surveyClose", "ignoredUntrustedEnterCount", "currentCount",
+                    "currentConnected", "currentVisible", "currentDisplay", "currentVisibility",
+                    "currentOpacity", "currentEffectiveOpacity", "currentRect",
+                    "originalTargetDisconnected", "replacementAcquired", "eventTargetIsCurrent",
+                    "activeIsCurrent", "current", "eventTarget", "active"] | sort) and
+                $shipyard_outcomes[0].receipt.trusted == true and
+                $shipyard_outcomes[0].receipt.key == "Enter" and
+                $shipyard_outcomes[0].receipt.code == "Enter" and
+                $shipyard_outcomes[0].receipt.tag == "SUMMARY" and
+                $shipyard_outcomes[0].receipt.focusKey == "section:mining" and
+                $shipyard_outcomes[0].receipt.surveyClose == false and
+                ($shipyard_outcomes[0].receipt.ignoredUntrustedEnterCount | type) == "number" and
+                $shipyard_outcomes[0].receipt.ignoredUntrustedEnterCount >= 0 and
+                $shipyard_outcomes[0].receipt.setupDocumentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].receipt.documentToken ==
+                  $shipyard_outcomes[0].setup.documentToken and
+                $shipyard_outcomes[0].receipt.setupDocumentHref ==
+                  $shipyard_outcomes[0].setup.documentHref and
+                $shipyard_outcomes[0].receipt.documentHref ==
+                  $shipyard_outcomes[0].setup.documentHref and
+                $shipyard_outcomes[0].receipt.currentCount == 1 and
+                $shipyard_outcomes[0].receipt.currentConnected == true and
+                $shipyard_outcomes[0].receipt.currentVisible == true and
+                ($shipyard_outcomes[0].receipt.currentDisplay | type) == "string" and
+                ($shipyard_outcomes[0].receipt.currentDisplay | length) > 0 and
+                $shipyard_outcomes[0].receipt.currentDisplay != "none" and
+                $shipyard_outcomes[0].receipt.currentVisibility == "visible" and
+                ($shipyard_outcomes[0].receipt.currentOpacity | type) == "number" and
+                $shipyard_outcomes[0].receipt.currentOpacity > 0 and
+                ($shipyard_outcomes[0].receipt.currentEffectiveOpacity | type) == "number" and
+                $shipyard_outcomes[0].receipt.currentEffectiveOpacity > 0 and
+                ($shipyard_outcomes[0].receipt.currentRect | type) == "array" and
+                ($shipyard_outcomes[0].receipt.currentRect | length) == 4 and
+                ($shipyard_outcomes[0].receipt.currentRect[2] - $shipyard_outcomes[0].receipt.currentRect[0]) >= 44 and
+                ($shipyard_outcomes[0].receipt.currentRect[3] - $shipyard_outcomes[0].receipt.currentRect[1]) >= 44 and
+                $shipyard_outcomes[0].receipt.originalTargetDisconnected == true and
+                $shipyard_outcomes[0].receipt.replacementAcquired == true and
+                $shipyard_outcomes[0].receipt.eventTargetIsCurrent == true and
+                $shipyard_outcomes[0].receipt.activeIsCurrent == true and
+                $shipyard_outcomes[0].receipt.current == $shipyard_descriptor and
+                $shipyard_outcomes[0].receipt.eventTarget == $shipyard_descriptor and
+                $shipyard_outcomes[0].receipt.active == $shipyard_descriptor and
+                $shipyard_outcomes[0].outcome.schema ==
+                  "cf-v2-glass-keyboard-activation-assessment/v1" and
+                $shipyard_outcomes[0].outcome.ok == true and
+                $shipyard_outcomes[0].outcome.instrumentOk == true and
+                $shipyard_outcomes[0].outcome.productOk == true and
+                $shipyard_outcomes[0].outcome.instrumentChecks.heartbeatRequirement == true and
+                ($shipyard_outcomes[0].outcome.instrumentChecks | type) == "object" and
+                ($shipyard_outcomes[0].outcome.instrumentChecks | keys | sort) ==
+                  (["heartbeatRequirement", "setupCarrier", "setupDocument", "setupQueryWitness",
+                    "setupDescriptor", "receiptCarrier", "trustedEnter", "documentIdentity",
+                    "currentQueryWitness", "receiptDescriptors", "heartbeatLifecycle",
+                    "heartbeatCycleCarrier", "shipyardRefreshCompleted",
+                    "heartbeatReplacementScenario", "heartbeatReceiptReplacementCoherence",
+                    "heartbeatCurrentDescriptor"] | sort) and
+                ($shipyard_outcomes[0].outcome.instrumentChecks
+                  | to_entries | all(.value == true)) and
+                ($shipyard_outcomes[0].outcome.productChecks | type) == "object" and
+                ($shipyard_outcomes[0].outcome.productChecks | keys | sort) ==
+                  (["setupReady", "currentTarget", "semanticIdentity", "eventOrigin",
+                    "activeTarget", "replacementLineage", "heartbeatFocusRestored",
+                    "heartbeatSemanticIdentity"] | sort) and
+                ($shipyard_outcomes[0].outcome.productChecks
+                  | to_entries | all(.value == true))
+              ))
+            ' "$report" >/dev/null
+          }
+          small_phone_report="apps/game/smoke/glassmatrix-${CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID}.json"
+          large_phone_report="apps/game/smoke/glassmatrix-${CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID}.json"
+          preflight_browser="$(node tools/browserpath.mjs --print)"
+          small_phone_viewport='{"label":"small-phone","width":320,"height":568,"dpr":2,"mobile":true,"safeArea":{"top":0,"right":0,"bottom":0,"left":0}}'
+          large_phone_viewport='{"label":"large-phone","width":412,"height":915,"dpr":3,"mobile":true,"safeArea":{"top":0,"right":0,"bottom":0,"left":0}}'
+          inventory_controls='["inventory-modal-focus","inventory-modal-retention","inventory-protected-action","inventory-action-publication","inventory-convergence-retry"]'
+          native_tab_controls='["arc4-capture-native-survey-return"]'
+          CF_V2_GLASSMATRIX_RUN_ID="$CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID" node tools/glassmatrix.mjs --viewport=small-phone
+          verify_preflight_report "$small_phone_report" "$CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID" \
+            "$small_phone_viewport" "$inventory_controls" false
+          CF_V2_GLASSMATRIX_RUN_ID="$CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID" node tools/glassmatrix.mjs --viewport=large-phone
+          verify_preflight_report "$large_phone_report" "$CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID" \
+            "$large_phone_viewport" "$native_tab_controls" true
+
+      # The legacy Layout ruler remains complete whenever its retained product
+      # is in scope; the targeted v2 canary above never substitutes for it.
+      - name: layout (10 viewports)
+        id: root_layout
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.legacy_changed == 'true'
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
         run: |
           node tools/uilayout.js --selftest
           node tools/uilayout.js
       - name: verify root layout evidence freshness
-        if: always()
+        if: >-
+          always() &&
+          (github.event.pull_request.base.ref == 'main' || steps.scope.outputs.legacy_changed == 'true') &&
+          (steps.root_layout.outcome == 'success' || steps.root_layout.outcome == 'failure')
         env:
           CF_BROWSER: /usr/bin/google-chrome
-          CF_UILAYOUT_RUN_ID: gha-${{ github.run_id }}-${{ github.run_attempt }}
         run: node tools/uilayout.js --verify-run="$CF_UILAYOUT_RUN_ID"
-      - name: rarity sanity
-        run: node tools/rarity-sanity.js
-      - name: dead code scan
-        run: node tools/deadcode.js
-      - name: install v2 workspace
-        working-directory: port/v2
-        run: npm ci
-      - name: v2 parity, type, art, and coverage gates
-        working-directory: port/v2
-        run: |
-          npm test
-          npm run typecheck
-          npm run artunused
-          npm run artaudit
-          npm run overridecheck
-          npm run overridecontrol
-          npm run coveragegap
-          node tools/speccheck.mjs
 
-      # SceneMemory is the shorter exact-Edge ruler, so it fails first without
-      # weakening either authority or retrying either certificate.
-      - name: install exact Arc 1C Edge scene-memory browser
+      # SceneMemory's live native-heap control and certificate are production-
+      # only. Develop retains their deterministic contract/mutation coverage in
+      # the static profile, while host allocator phase cannot block integration.
+      - name: install current Arc 1C Edge scene-memory browser
+        if: github.event.pull_request.base.ref == 'main'
         shell: bash
         env:
-          EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb
-          EDGE_PACKAGE_SHA256: bd7604025424914a61c06293cb6bf269141a29d8c54cf1997110bc96d3365d60
+          EDGE_PACKAGE_URL: https://go.microsoft.com/fwlink/?linkid=2149051
         run: |
           set -euo pipefail
-          scene_edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.101-1_amd64.deb"
-          curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$scene_edge_package"
-          printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$scene_edge_package" | sha256sum --check --strict
-          sudo apt-get install --reinstall --yes "$scene_edge_package"
-          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.101-1"
-          test -x "$CF_BROWSER"
-      - name: scene-memory instrument and calibration controls
+          scene_edge_package="$RUNNER_TEMP/microsoft-edge-stable-current_amd64.deb"
+          scene_edge_root="$RUNNER_TEMP/scenemem-edge-current"
+          curl --proto '=https' --tlsv1.2 --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$scene_edge_package"
+          test "$(dpkg-deb --field "$scene_edge_package" Package)" = "microsoft-edge-stable"
+          mkdir -p "$scene_edge_root"
+          dpkg-deb --extract "$scene_edge_package" "$scene_edge_root"
+          scene_edge_browser="$scene_edge_root/opt/microsoft/msedge/microsoft-edge"
+          test -x "$scene_edge_browser"
+      - name: scene-memory fixed-eighth phase-validity selftest
+        if: github.event.pull_request.base.ref == 'main'
+        env:
+          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
         working-directory: port/v2
-        run: |
-          node tools/browserpath.mjs --selftest
-          node --check tools/scenemem.mjs
-          node --check tools/scenemem-contract.mjs
-          npx vitest run tests/scenemem-contract.test.ts tests/scenemem-budget.test.ts tests/scenemem-tool.test.ts
+        run: node tools/scenemem.mjs --heap-phase-selftest
       - name: one-attempt scene-memory certification
         id: scenemem
+        if: github.event.pull_request.base.ref == 'main'
         timeout-minutes: 10
+        env:
+          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
         working-directory: port/v2
         run: node tools/scenemem.mjs --budget=budgets/scene-memory-v2.json
       - name: verify current scene-memory evidence
         if: >-
           always() &&
+          github.event.pull_request.base.ref == 'main' &&
           (steps.scenemem.outcome == 'success' || steps.scenemem.outcome == 'failure')
+        env:
+          CF_BROWSER: ${{ runner.temp }}/scenemem-edge-current/opt/microsoft/msedge/microsoft-edge
         working-directory: port/v2
         run: node tools/scenemem.mjs --verify-run="$CF_SCENEMEM_RUN_ID" --budget=budgets/scene-memory-v2.json
 
-      # Compendium retains its separately sealed install -> preflight -> live
-      # certificate chain after the shorter SceneMemory ruler is terminal-green.
+      # Changed-instrument and production mutation controls run before
+      # Compendium reserves its sealed chain. Install -> live preflight ->
+      # certificate -> verifier remains physically uninterrupted in both profiles.
+      - name: changed-or-production Compendium browser instrument selftests
+        if: >-
+          github.event.pull_request.base.ref == 'main' ||
+          steps.scope.outputs.compendium_instrument_changed == 'true'
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: |
+          node tools/browserpath.mjs --selftest
+          node tools/compendiummem-browser-preflight.mjs --selftest
+          npm run compendiummem:selftest
+
+      # Compendium is the first product memory ruler on develop. Production reaches
+      # it only after the production-only SceneMemory certificate is terminal-green.
       - name: install exact Arc 1A Edge calibration browser
         shell: bash
         env:
@@ -164,59 +624,112 @@ jobs:
         run: |
           set -euo pipefail
           edge_package="$RUNNER_TEMP/microsoft-edge-stable_151.0.4129.101-1_amd64.deb"
-          curl --fail --location --silent --show-error "$EDGE_PACKAGE_URL" --output "$edge_package"
+          edge_root="$RUNNER_TEMP/compendiummem-edge-151.0.4129.101"
+          curl --fail --location --silent --show-error --retry 3 --retry-all-errors --retry-delay 5 "$EDGE_PACKAGE_URL" --output "$edge_package"
           printf '%s  %s\n' "$EDGE_PACKAGE_SHA256" "$edge_package" | sha256sum --check --strict
-          sudo apt-get install --reinstall --yes "$edge_package"
-          test "$(dpkg-query -W -f='${Version}' microsoft-edge-stable)" = "151.0.4129.101-1"
-          test -x "$CF_BROWSER"
-      - name: browser provenance and Compendium memory instrument selftests
+          test "$(dpkg-deb --field "$edge_package" Package)" = "microsoft-edge-stable"
+          test "$(dpkg-deb --field "$edge_package" Version)" = "151.0.4129.101-1"
+          test ! -e "$edge_root"
+          mkdir "$edge_root"
+          dpkg-deb --extract "$edge_package" "$edge_root"
+          edge_browser="$edge_root/opt/microsoft/msedge/microsoft-edge"
+          test -x "$edge_browser"
+      - name: Compendium live preflight
         working-directory: port/v2
+        env:
+          CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: |
-          node tools/browserpath.mjs --selftest
-          node tools/compendiummem-browser-preflight.mjs --selftest
           node tools/compendiummem-browser-preflight.mjs
-          npm run compendiummem:selftest
       - name: one-attempt Compendium memory certification
         id: compendium
-        timeout-minutes: 40
+        timeout-minutes: 55
         working-directory: port/v2
+        env:
+          CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: npm run compendiummem
       - name: verify current Compendium memory evidence
         if: >-
           always() &&
           (steps.compendium.outcome == 'success' || steps.compendium.outcome == 'failure')
         working-directory: port/v2
+        env:
+          CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
         run: node tools/compendiummem.mjs --verify-run="$CF_COMPENDIUMMEM_RUN_ID"
 
-      # Chrome gates remain one attempt each and run only after every cheaper
-      # gate and the exact-Edge ruler are green.
-      - name: Chrome provenance and reporter selftests
+      # Remaining Chrome product gates run once after every cheaper control
+      # and the exact-Edge ruler are green.
+      - name: production preview producer selftests
+        if: github.event.pull_request.base.ref == 'main'
+        working-directory: port/v2
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: npm run preview:selftest
+      - name: one-attempt real-browser slice smoke
+        id: slice
+        working-directory: port/v2
+        shell: bash
+        env:
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+          CF_BROWSER: /usr/bin/google-chrome
+        run: |
+          set -euo pipefail
+          case "$BASE_BRANCH" in
+            develop) slice_profile=develop ;;
+            main) slice_profile=production ;;
+            *) echo "::error::Unsupported battery base: $BASE_BRANCH"; exit 1 ;;
+          esac
+          npm run smoke:ci -- --profile="$slice_profile"
+          slice_run_id="$(jq -er '.run.id' apps/game/smoke/slice-smoke-report.json)"
+          test "$slice_run_id" = "$CF_V2_SLICE_SMOKE_RUN_ID"
+          printf 'run_id=%s\n' "$slice_run_id" >> "$GITHUB_OUTPUT"
+          printf 'profile=%s\n' "$slice_profile" >> "$GITHUB_OUTPUT"
+          node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"
+      - name: one-attempt 12-viewport Glass matrix
+        id: glass
+        working-directory: port/v2
+        shell: bash
+        env:
+          CF_BROWSER: /usr/bin/google-chrome
+        run: |
+          set -euo pipefail
+          slice_run_id="${{ steps.slice.outputs.run_id }}"
+          slice_profile="${{ steps.slice.outputs.profile }}"
+          case "$slice_profile" in
+            develop|production) ;;
+            *) echo "::error::Unsupported Slice assurance profile: $slice_profile"; exit 1 ;;
+          esac
+          node tools/glassmatrix.mjs --slice-run="$slice_run_id" --profile="$slice_profile"
+          glass_run_id="$(jq -er '.run.id' apps/game/smoke/glassmatrix-report.json)"
+          test "$glass_run_id" = "$CF_V2_GLASSMATRIX_RUN_ID"
+          printf 'run_id=%s\n' "$glass_run_id" >> "$GITHUB_OUTPUT"
+          node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"
+      - name: retain exact Glass terminal diagnostic
+        if: >-
+          always() &&
+          steps.glass.outcome != 'skipped'
+        working-directory: port/v2
+        shell: bash
+        run: |
+          set -euo pipefail
+          node tools/glassmatrix-diagnostic.mjs \
+            --glass-run="$CF_V2_GLASSMATRIX_RUN_ID" \
+            --slice-run="${{ steps.slice.outputs.run_id }}" \
+            --profile="${{ steps.slice.outputs.profile }}"
+      - name: one-attempt Slice-and-Glass-bound Recovery certification
+        id: recovery
+        if: github.event.pull_request.base.ref == 'main'
         working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/google-chrome
         run: |
-          node tools/browserpath.mjs --selftest
-          node tools/browsercdp.mjs --selftest
-          npm run smoke:report:selftest
-          npm run glassmatrix:selftest
-          npm run persona:selftest
-          npm run preview:selftest
-      - name: one-attempt real-browser slice smoke
-        working-directory: port/v2
-        env:
-          CF_BROWSER: /usr/bin/google-chrome
-        run: npm run smoke:ci
-      - name: one-attempt 12-viewport Glass matrix
-        working-directory: port/v2
-        env:
-          CF_BROWSER: /usr/bin/google-chrome
-        run: npm run glassmatrix
-      - name: automated persona synthesis
-        working-directory: port/v2
-        env:
-          CF_BROWSER: /usr/bin/google-chrome
-        run: npm run persona:report
+          slice_run_id="${{ steps.slice.outputs.run_id }}"
+          glass_run_id="${{ steps.glass.outputs.run_id }}"
+          node tools/arc4recovery.mjs --slice-run="$slice_run_id" --glass-run="$glass_run_id"
+          recovery_run_id="$(jq -er '.runId' apps/game/smoke/arc4-recovery-report.json)"
+          test "$recovery_run_id" = "$CF_V2_ARC4_RECOVERY_RUN_ID"
+          node tools/arc4recovery.mjs --verify-run="$recovery_run_id" --slice-run="$slice_run_id" --glass-run="$glass_run_id"
       - name: package origin-isolated v2 development preview
+        if: github.event.pull_request.base.ref == 'main'
         working-directory: port/v2
         env:
           CF_BROWSER: /usr/bin/google-chrome
@@ -227,64 +740,33 @@ jobs:
 
       # Always preserve whatever the one authorized attempt produced. Missing
       # terminal carriers remain red; artifacts never turn a red into a pass.
-      - name: archive root reports
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: root-reports
-          path: tools/current.json
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: archive root layout evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: root-layout-evidence
-          path: tools/uilayout-report.json
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: archive Compendium memory evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: v2-compendium-memory-evidence
-          path: |
-            port/v2/apps/game/smoke/compendiummem-report.json
-            port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: archive scene-memory evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: v2-scene-memory-evidence
-          path: port/v2/apps/game/smoke/scenemem-report.json
-          if-no-files-found: ignore
-          retention-days: 14
       - name: archive battery reports
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: battery-reports
+          name: battery-evidence
           path: |
             tools/current.json
+            tools/uilayout-report.json
+            tools/uilayout-${{ env.CF_UILAYOUT_RUN_ID }}.json
+            port/v2/apps/game/smoke/scenemem-report.json
+            port/v2/apps/game/smoke/compendiummem-report.json
+            port/v2/apps/game/smoke/compendiummem-${{ env.CF_COMPENDIUMMEM_RUN_ID }}-*.png
             port/v2/apps/game/smoke/slice-smoke-report.json
             port/v2/apps/game/smoke/slice-smoke.log
+            port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.json
+            port/v2/apps/game/smoke/slice-smoke-${{ env.CF_V2_SLICE_SMOKE_RUN_ID }}.log
+            port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_PREFLIGHT_RUN_ID }}.json
+            port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID }}.json
             port/v2/apps/game/smoke/glassmatrix-report.json
-            port/v2/apps/game/smoke/automated-persona-report.json
-            port/v2/apps/game/smoke/automated-persona-report.md
-          if-no-files-found: ignore
-          retention-days: 14
-      - name: archive v2 browser evidence
-        if: always()
-        uses: actions/upload-artifact@v6
-        with:
-          name: v2-browser-evidence
-          path: port/v2/apps/game/smoke/slice-*.png
+            port/v2/apps/game/smoke/glassmatrix-${{ env.CF_V2_GLASSMATRIX_RUN_ID }}.json
+            port/v2/apps/game/smoke/arc4-recovery-report.json
+            port/v2/apps/game/smoke/arc4-recovery-${{ env.CF_V2_ARC4_RECOVERY_RUN_ID }}.json
+            port/v2/apps/game/smoke/slice-*.png
           if-no-files-found: ignore
           retention-days: 14
       - name: archive playable v2 development preview
-        if: success()
+        if: success() && github.event.pull_request.base.ref == 'main'
         uses: actions/upload-artifact@v6
         with:
           name: v2-development-preview

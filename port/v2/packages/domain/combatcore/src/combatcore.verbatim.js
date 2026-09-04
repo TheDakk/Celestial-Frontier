@@ -4,10 +4,10 @@
    The typed surface lives in index.ts / the sibling .d.ts. Bodies here are the
    determinism contract — parity fixtures depend on them byte-for-byte. */
 import { mulberry32, clamp, hashInt } from '@cf/domain-rand';
-import { FA_SIZE, TIER_MAX } from '@cf/domain-speciestraits';
+import { cleanName } from '@cf/domain-naming';
+import { FA_SIZE, TIER_MAX, STAT_KEYS } from '@cf/domain-speciestraits';
 import { describeSpecies, speciesGrade } from '@cf/domain-genome';
 import { b64encUtf8, b64decUtf8 } from '@cf/domain-encutil';
-import { cleanName } from '@cf/domain-strays';
 
 
 const STAT_NAMES=['Vitality','Ferocity','Resilience','Agility','Instinct'];

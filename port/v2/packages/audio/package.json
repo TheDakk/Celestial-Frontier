@@ -1,3 +1,12 @@
 { "name": "@cf/audio", "private": true, "version": "0.0.0", "type": "module",
-  "description": "The game's SHIPPED navigation/survey stings, AUTO-LIFTED verbatim (whoosh, survey ping, rarity sting). ⚠ BROWSER-ONLY (Web Audio). §15 audio scope (voices/ambience/mixer) stays gated behind the human listening test — this package deliberately carries none of it.",
-  "exports": { ".": "./src/index.ts" } }
+  "description": "Shipped navigation/survey stings plus injected Arc 7 identity, taxonomy, event, mixer/lifecycle/lab, and empty-rights foundations. App migration, authored playback/content, and listening proof remain open.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./internal/ecology": "./src/ecology.ts"
+  },
+  "dependencies": {
+    "@cf/domain-biome-profile": "*",
+    "@cf/domain-combatcore": "*",
+    "@cf/domain-descriptors": "*",
+    "@cf/domain-genome": "*"
+  } }

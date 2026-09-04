@@ -66,11 +66,12 @@
     "calibration": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["requiredIndependentRunsPerProfile", "selectionRule", "headroomRationaleRequired", "samples"],
+      "required": ["requiredIndependentRunsPerProfile", "selectionRule", "headroomRationaleRequired", "rulerAuthority", "samples"],
       "properties": {
         "requiredIndependentRunsPerProfile": { "const": 3 },
         "selectionRule": { "type": "string", "minLength": 1 },
         "headroomRationaleRequired": { "const": true },
+        "rulerAuthority": { "$ref": "#/$defs/fixedRulerAuthority" },
         "samples": {
           "type": "object",
           "additionalProperties": false,
@@ -207,19 +208,33 @@
       "additionalProperties": false,
       "required": ["schema", "sha256", "inputs"],
       "properties": {
-        "schema": { "const": "cf-v2-compendium-producer-authority/v1" },
+        "schema": { "const": "cf-v2-compendium-producer-authority/v2" },
         "sha256": { "$ref": "#/$defs/sha256" },
         "inputs": {
           "type": "object",
           "additionalProperties": false,
-          "required": ["index", "owner", "worker", "painter"],
+          "required": ["index", "owner", "worker", "painter", "serviceWorker"],
           "properties": {
             "index": { "$ref": "#/$defs/producerPart" },
             "owner": { "$ref": "#/$defs/producerPart" },
             "worker": { "$ref": "#/$defs/producerPart" },
-            "painter": { "$ref": "#/$defs/producerPart" }
+            "painter": { "$ref": "#/$defs/producerPart" },
+            "serviceWorker": { "$ref": "#/$defs/producerPart" }
           }
         }
+      }
+    },
+    "fixedRulerAuthority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema", "calibrationStatus", "ceilingScope", "measurementAuthoritySha256", "producerAuthoritySha256", "currentCertification"],
+      "properties": {
+        "schema": { "const": "cf-v2-compendium-fixed-ruler-authority/v1" },
+        "calibrationStatus": { "const": "sealed-exact-input" },
+        "ceilingScope": { "const": "numeric-ceilings-only" },
+        "measurementAuthoritySha256": { "$ref": "#/$defs/sha256" },
+        "producerAuthoritySha256": { "$ref": "#/$defs/sha256" },
+        "currentCertification": { "const": "fresh-exact-producer-required" }
       }
     },
     "brokenFault": {
@@ -231,14 +246,14 @@
     "browserAuthority": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["schema", "scope", "product", "revision", "jsVersion", "protocolVersion"],
+      "required": ["schema", "scope", "family", "protocolVersion", "capabilityContract", "capabilityContractSha256"],
       "properties": {
-        "schema": { "const": "cf-v2-compendium-browser-authority/v1" },
+        "schema": { "const": "cf-v2-compendium-browser-authority/v2" },
         "scope": { "const": "arc1a-compendium-memory-only" },
-        "product": { "type": "string", "minLength": 1 },
-        "revision": { "type": "string", "minLength": 1 },
-        "jsVersion": { "type": "string", "minLength": 1 },
-        "protocolVersion": { "type": "string", "minLength": 1 }
+        "family": { "const": "microsoft-edge" },
+        "protocolVersion": { "const": "1.3" },
+        "capabilityContract": { "const": "cf-v2-compendium-cdp-capabilities/v1" },
+        "capabilityContractSha256": { "$ref": "#/$defs/sha256" }
       }
     },
     "sampleBrowser": {

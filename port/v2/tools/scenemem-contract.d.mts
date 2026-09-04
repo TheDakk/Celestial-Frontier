@@ -6,7 +6,7 @@ export type SceneTextureKind =
   | 'scene-canvas' | 'galaxy-haze' | 'planet-texture'
   | 'ring-texture' | 'surface-cloud' | 'star-surface';
 
-export interface SceneMemoryBudget {
+export interface SceneMemoryLegacyBudget {
   heapUsedBytesMax: number;
   embedderHeapUsedBytesMax: number;
   backingStorageBytesMax: number;
@@ -28,6 +28,19 @@ export interface SceneMemoryBudget {
   peakRingGeometryEntriesMax: number;
   targetElapsedMsMax: number;
   heartbeatElapsedMsMax: number;
+}
+
+export interface SceneMemoryRawBudget extends SceneMemoryLegacyBudget {
+  surfaceVistaCacheEntriesMax: number;
+  surfaceVistaCachePixelsMax: number;
+}
+
+export interface SceneMemoryBudget
+  extends Omit<SceneMemoryRawBudget, 'heapUsedBytesMax' | 'heapAggregateBytesMax'> {
+  initialHeapUsedBytesMax: number;
+  initialHeapAggregateBytesMax: number;
+  heapUsedGrowthBytesMax: number;
+  heapNormalizedWorkingSetBytesMax: number;
 }
 
 export interface SceneRegistrySnapshot {
@@ -97,7 +110,14 @@ export interface SceneAnswerabilityWitness {
   };
 }
 
-export interface SceneMemoryPoint {
+export interface SceneMemoryVistaState {
+  surfaceVistaWorkerActive: boolean;
+  surfaceVistaMounted: boolean;
+  surfaceVistaCacheEntries: number;
+  surfaceVistaCachePixels: number;
+}
+
+export interface SceneMemoryLegacyPoint {
   sceneGeneration: number;
   documentToken: string;
   registry: SceneRegistrySnapshot;
@@ -124,27 +144,81 @@ export interface SceneMemoryPoint {
   dom: { documents: number; nodes: number; jsEventListeners: number };
 }
 
+export interface SceneMemoryPoint extends SceneMemoryLegacyPoint, SceneMemoryVistaState {}
+
+export interface SceneMemoryLegacySurfaceWitness {
+  mode: boolean;
+  owner: boolean;
+  scope: boolean;
+}
+
+export interface SceneMemorySurfaceWitness
+  extends SceneMemoryLegacySurfaceWitness, SceneMemoryVistaState {}
+
+export interface SceneMemoryCycleInventory<
+  TSurface extends SceneMemoryLegacySurfaceWitness = SceneMemorySurfaceWitness,
+> {
+  routes: SceneMemoryRoute[];
+  shipyard: {
+    status: 'implemented-static';
+    openerDriven: boolean;
+    closeDriven: boolean;
+    stateKey: string;
+    stateMatch: boolean;
+    openPreviewCount: number;
+    openRetainedPreviewCount: number;
+    openPendingPreviewWork: number;
+    closedPreviewCount: number;
+    closedRetainedPreviewCount: number;
+    closedPendingPreviewWork: number;
+  };
+  sceneObjectsByRoute: Record<SceneMemoryRoute, number>;
+  fine: { requested: boolean; layer: boolean; scope: boolean };
+  surface: TSurface;
+}
+
+export interface SceneMemoryLegacyCycle extends SceneMemoryLegacyPoint {
+  cycle: number;
+  inventory: SceneMemoryCycleInventory<SceneMemoryLegacySurfaceWitness>;
+}
+
 export interface SceneMemoryCycle extends SceneMemoryPoint {
   cycle: number;
-  inventory: {
-    routes: SceneMemoryRoute[];
-    shipyard: {
-      status: 'implemented-static';
-      openerDriven: boolean;
-      closeDriven: boolean;
-      stateKey: string;
-      stateMatch: boolean;
-      openPreviewCount: number;
-      openRetainedPreviewCount: number;
-      openPendingPreviewWork: number;
-      closedPreviewCount: number;
-      closedRetainedPreviewCount: number;
-      closedPendingPreviewWork: number;
-    };
-    sceneObjectsByRoute: Record<SceneMemoryRoute, number>;
-    fine: { requested: boolean; layer: boolean; scope: boolean };
-    surface: { mode: boolean; owner: boolean; scope: boolean };
+  inventory: SceneMemoryCycleInventory;
+}
+
+export interface SceneMemoryReloadCleanupWitness {
+  schema: 'cf-v2-scene-memory-reload-cleanup/v1';
+  documentTokenBefore: string;
+  documentTokenAfter: string;
+  release: {
+    schema: 'cf-v2-reload-release/v1';
+    status: 'released';
+    error: null;
+    reason: 'save-import';
+    documentToken: string;
+    rendererReleased: boolean;
+    stageReleased: boolean;
+    viewDetached: boolean;
   };
+  cacheTransition: {
+    schema: 'cf-v2-scene-memory-vista-cache-transition/v1';
+    documentToken: string;
+    before: SceneMemoryVistaState;
+    after: SceneMemoryVistaState;
+  };
+  replacement: SceneMemoryVistaState & { documentToken: string };
+}
+
+export interface SceneMemoryLegacyBfcacheWitness extends SceneMemoryLegacyPoint {
+  pagehidePersisted: boolean;
+  pageshowPersisted: boolean;
+  resumed: boolean;
+  appAlive: boolean;
+  rendererAlive: boolean;
+  stageAlive: boolean;
+  documentTokenBefore: string;
+  documentTokenAfter: string;
 }
 
 export interface SceneMemoryBfcacheWitness extends SceneMemoryPoint {
@@ -158,17 +232,54 @@ export interface SceneMemoryBfcacheWitness extends SceneMemoryPoint {
   documentTokenAfter: string;
 }
 
-export interface SceneMemoryProfileMeasurement {
+export interface SceneMemoryLegacyProfileMeasurement {
+  precondition: SceneMemoryLegacyPoint;
+  cycles: SceneMemoryLegacyCycle[];
+  bfcache: SceneMemoryLegacyBfcacheWitness;
+}
+
+export interface SceneMemoryV4ProfileMeasurement {
+  initialVista: SceneMemoryVistaState;
+  firstSurfaceVista: SceneMemoryVistaState;
   precondition: SceneMemoryPoint;
   cycles: SceneMemoryCycle[];
   bfcache: SceneMemoryBfcacheWitness;
+  reloadCleanup: SceneMemoryReloadCleanupWitness;
 }
 
-export interface SceneMemoryInput {
+export interface SceneMemoryProfileMeasurement extends SceneMemoryV4ProfileMeasurement {
+  initial: {
+    documentToken: string;
+    heap: SceneMemoryPoint['heap'];
+  };
+}
+
+export interface SceneMemoryLegacyInput {
   schema: 'cf-v2-scene-memory-input/v3';
+  profiles: Record<SceneMemoryProfileName, SceneMemoryLegacyProfileMeasurement>;
+  budgets: Record<SceneMemoryProfileName, SceneMemoryLegacyBudget | SceneMemoryRawBudget>;
+}
+
+export interface SceneMemoryV4Input {
+  schema: 'cf-v2-scene-memory-input/v4';
+  profiles: Record<SceneMemoryProfileName, SceneMemoryV4ProfileMeasurement>;
+  budgets: Record<SceneMemoryProfileName, SceneMemoryRawBudget>;
+}
+
+export interface SceneMemoryV5Input {
+  schema: 'cf-v2-scene-memory-input/v5';
   profiles: Record<SceneMemoryProfileName, SceneMemoryProfileMeasurement>;
   budgets: Record<SceneMemoryProfileName, SceneMemoryBudget>;
 }
+
+export interface SceneMemoryCurrentInput {
+  schema: 'cf-v2-scene-memory-input/v6';
+  profiles: Record<SceneMemoryProfileName, SceneMemoryProfileMeasurement>;
+  budgets: Record<SceneMemoryProfileName, SceneMemoryBudget>;
+}
+
+export type SceneMemoryInput = SceneMemoryLegacyInput | SceneMemoryV4Input
+  | SceneMemoryV5Input | SceneMemoryCurrentInput;
 
 export interface SceneMemoryOutcome {
   readonly id: string;
@@ -178,7 +289,11 @@ export interface SceneMemoryOutcome {
 }
 
 export interface SceneMemoryVerdict {
-  readonly schema: 'cf-v2-scene-memory-verdict/v2';
+  readonly schema:
+    | 'cf-v2-scene-memory-verdict/v2'
+    | 'cf-v2-scene-memory-verdict/v3'
+    | 'cf-v2-scene-memory-verdict/v4'
+    | 'cf-v2-scene-memory-verdict/v5';
   readonly status: 'pass' | 'fail';
   readonly outcomes: readonly SceneMemoryOutcome[];
   readonly failures: readonly SceneMemoryOutcome[];

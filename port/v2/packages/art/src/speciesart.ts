@@ -12,12 +12,12 @@ import {
 import {
   lineageRenderKingdom, resolveOverrideCanvas,
 } from './speciesoverrides.js';
-import { resolveOverride } from './speciescompat.js';
 import {
   speciesVisualKey,
   snapshotSpeciesGenome,
   type SpeciesVisualKey,
 } from './speciesidentity.js';
+import { polishSpeciesCanvasV1 } from './surface-polish.js';
 export { CLIPPED } from './speciesoverrides.js';
 export { speciesVisualKey, type SpeciesVisualKey } from './speciesidentity.js';
 export { resolveOverride, resolveProcedural } from './speciescompat.js';
@@ -219,7 +219,7 @@ export function renderSpeciesPortraitCanvas(g: Record<string, unknown>): HTMLCan
   if (canvas.width !== PORTRAIT_SIZE || canvas.height !== PORTRAIT_SIZE) {
     throw new Error(`species portrait canvas must be ${PORTRAIT_SIZE}x${PORTRAIT_SIZE}`);
   }
-  return canvas as unknown as HTMLCanvasElement;
+  return polishSpeciesCanvasV1(canvas) as unknown as HTMLCanvasElement;
 }
 
 /* Browser audit hook for the outcome-level lineage regression check. */
@@ -246,9 +246,10 @@ export function speciesPortrait(g: Record<string, unknown>): string {
   const key = speciesVisualKey(g);
   const hit = speciesArtCache.get(key);
   if (hit) { touchPortrait(key, hit); return hit.url; }
-  /* Preserve the compatibility URL route byte-for-byte. The lease route is
-     the only caller that consumes the new pre-encoding canvas seam. */
-  const url = resolveOverride(g) ?? verbatimPortrait(g);
+  /* The synchronous audit/compatibility route must encode the same finished
+     canvas the live worker publishes. `verbatimSpeciesPortraitForAudit`
+     remains the explicit raw baseline for before/after comparison. */
+  const url = renderSpeciesPortraitCanvas(g).toDataURL();
   const entry = Object.freeze({ url, encodedBytes: encodedUrlBytes(url) });
   speciesArtCache.set(key, entry);
   portraitEncodedBytes += entry.encodedBytes;

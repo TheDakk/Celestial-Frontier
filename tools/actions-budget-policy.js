@@ -29,8 +29,11 @@ const JOB_TIMEOUTS = Object.freeze({
   'dev-preview-package.yml': Object.freeze({ authorize: '2', package: '45' }),
   'publish-branch-sites.yml': Object.freeze({ production: '30', development: '30' }),
   'sync-agent-branches.yml': Object.freeze({ 'fast-forward': '10' }),
-  'test.yml': Object.freeze({ authorize: '2', 'v2-compendium-memory': '90' }),
+  'test.yml': Object.freeze({ authorize: '2', 'v2-compendium-memory': '120' }),
 });
+const COMPENDIUM_CERTIFICATION_STEP_NAME =
+  'one-attempt Compendium memory certification';
+const COMPENDIUM_CERTIFICATION_STEP_TIMEOUT = '55';
 const BRANCH_AUTH_STEPS_SHA256 =
   '9c3193f9c49dd78c210b138d9f8c214ba17ef5034ef955a9f58959d386f97c30';
 const WORKFLOWS = Object.freeze({
@@ -197,6 +200,23 @@ function assertJobEnvelope(lines, job, where) {
     `${where} job ${job.key}: timeout must remain ${expectedTimeout} minutes`);
 }
 
+function assertNamedStepTimeout(lines, job, stepName, expectedTimeout, where) {
+  const token = `- name: ${stepName}`;
+  const matches = [];
+  for (let index = job.index + 1; index < job.end; index++) {
+    if (indent(lines[index], `${where}:${index + 1}`) === 6 &&
+        lines[index].trim() === token) matches.push(index);
+  }
+  assert(matches.length === 1,
+    `${where} job ${job.key}: expected exactly one ${stepName} step, found ${matches.length}`);
+  const stepEnd = blockEnd(lines, matches[0], 6, job.end,
+    `${where} job ${job.key} step ${stepName}`);
+  const timeout = directEntry(lines, 'timeout-minutes', 8,
+    matches[0] + 1, stepEnd, `${where} job ${job.key} step ${stepName}`);
+  assert(directValue(lines, timeout) === expectedTimeout,
+    `${where} job ${job.key} step ${stepName}: timeout must remain ${expectedTimeout} minutes`);
+}
+
 function assertManualWorkflow(source, where, mode) {
   const lines = linesOf(source, where);
   const on = uniqueDirect(lines, 'on:', 0, 0, lines.length, where);
@@ -272,6 +292,8 @@ function assertOwnerLabelWorkflow(source, where) {
     .filter((entry) => entry.key === 'if');
   assert(forbiddenIf.length === 0,
     `${where}: sealed Compendium owner job must not add an execution-control if`);
+  assertNamedStepTimeout(lines, battery, COMPENDIUM_CERTIFICATION_STEP_NAME,
+    COMPENDIUM_CERTIFICATION_STEP_TIMEOUT, where);
 }
 
 function readCarriers() {
@@ -382,14 +404,20 @@ function selftest() {
     replaceUnique(c.get('test.yml'), '    needs: authorize',
       '    needs: []', 'test.yml')));
   control('battery rejects runner matrix fanout', (c) => c.set('test.yml',
-    replaceUnique(c.get('test.yml'), '    runs-on: ubuntu-latest\n    timeout-minutes: 90',
-      '    runs-on: ubuntu-latest\n    strategy:\n      matrix:\n        shard: [1, 2]\n    timeout-minutes: 90', 'test.yml')));
+    replaceUnique(c.get('test.yml'), '    runs-on: ubuntu-latest\n    timeout-minutes: 120',
+      '    runs-on: ubuntu-latest\n    strategy:\n      matrix:\n        shard: [1, 2]\n    timeout-minutes: 120', 'test.yml')));
   control('battery rejects larger or alternate runner', (c) => c.set('test.yml',
-    replaceUnique(c.get('test.yml'), '    runs-on: ubuntu-latest\n    timeout-minutes: 90',
-      '    runs-on: macos-latest\n    timeout-minutes: 90', 'test.yml')));
+    replaceUnique(c.get('test.yml'), '    runs-on: ubuntu-latest\n    timeout-minutes: 120',
+      '    runs-on: macos-latest\n    timeout-minutes: 120', 'test.yml')));
   control('battery rejects expanded timeout', (c) => c.set('test.yml',
-    replaceUnique(c.get('test.yml'), '    timeout-minutes: 90',
+    replaceUnique(c.get('test.yml'), '    timeout-minutes: 120',
       '    timeout-minutes: 360', 'test.yml')));
+  control('battery rejects reduced Compendium certification timeout', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'), '        timeout-minutes: 55',
+      '        timeout-minutes: 54', 'test.yml')));
+  control('battery rejects expanded Compendium certification timeout', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'), '        timeout-minutes: 55',
+      '        timeout-minutes: 56', 'test.yml')));
   control('authorization failure cannot be softened', (c) => c.set('test.yml',
     replaceUnique(c.get('test.yml'), '    timeout-minutes: 2\n    steps:',
       '    timeout-minutes: 2\n    continue-on-error: true\n    steps:', 'test.yml')));

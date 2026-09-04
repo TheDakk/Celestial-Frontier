@@ -1,6 +1,128 @@
 # Celestial Frontier — Combat & Conquest
 
-> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** The v2 port
+> **2026-08-29 current local Prime/Titan and Frontier-ending closure:** the encounter owner uses
+> the exact nine-Signature registry—Earth/`stone`, Fire/`flame`, Air/`sky`, Stellar/`star`,
+> Water/`ocean`, Electric/`mind`, Poison/`life`, Void and Prism. An unclaimed Elemental Titan can
+> outrank the ordinary Guardian/fauna defender only on a registered, unconquered canonical world
+> whose minimum region, deterministic seed-local 8.5% placement and world-type eligibility match;
+> Void retains first-selection priority. A verified champion win claims that exact Titan's
+> Signature and world inside the same combat receipt/CAS as conquest. A loss, duplicate/stale
+> claim, replay, failed write or non-Titan win claims nothing. The ordered claim count expands the
+> separate galaxy-radius thresholds at 0/2/4/6/8/9, and the ninth distinct claim atomically sets
+> the Frontier-unlocked mirror.
+>
+> The Prime Codex then offers exactly five campaign legacies: Sovereign of the Frontier, Warden of
+> Life, World-Shaper, The Unseen Hand and Prismatic Pathfinder. The Balance/Prismatic choice keeps
+> the mature predicate of three conquered worlds plus the Electric (`mind`) Signature plus 40
+> catalogued species. One ending action mutates only `frontierEnding` through one receipt/F4
+> revision CAS; another known choice cannot overwrite it, an unknown imported ending stays
+> protected, and any durable ambiguity restores the prior live view and converges by read-only
+> reload without retry. The universe remains open after the choice. Older `SIGS` descriptions in
+> the legacy references remain historical source documentation; this overlay is current v2 truth.
+
+> **2026-08-29 current local Arc 6 preservation foundation:** v2 now owns the exact legacy
+> Guardian/Prime encounter projection and a registered, transcript-verified conquest settlement
+> plan. The persistence owner commits the plan through the existing F4/F3 receipt/CAS path: duel
+> counters, ordinary or Guardian-scaled XP, wounds/removal, conquest, Stardust, Chapter compatibility,
+> one canonical battle/conquest ledger, and the corrected conquest-loss `0→3→5` maximum-target
+> progression settle atomically and reload without retry or reroll. The former shared-key bug is
+> closed: +3 then near-break +2, near-break +5 first, and a later ordinary loss after 5 are all
+> independently outcome-tested.
+>
+> Guardian and Titan wins no longer stop at a provenance refusal. A separate registered
+> `cf-v2-guardian-acquisition-state/v1` carrier preserves legacy `_storeSpecies` deduplication while
+> giving a genuinely new species one catalogue row, one living `origin:'guardian'` creature, and one
+> immutable acquisition record bound to the complete CF1 world, defender source/Signature, encounter
+> digest and F4 receipt. `_mult` and `_wf` remain battlefield-only; `apex` and `_titan` survive. The
+> same CAS writes the compatible v4 Compendium row, Guardian counters/achievements, Titan Prime claim,
+> navigable source-proven world route, and ninth-claim Frontier unlock. Reload verification checks the
+> exact combat ledger, the selected champion's owning successor and Guardian carrier fixed point before publication.
+>
+> A separate immutable `arc6.guardian-companions` overlay now turns each live captured Guardian or
+> Titan into an eligible combat champion without inserting it into Arc 5 ownership or mutating the
+> acquisition record. The combat roster joins ordinary Arc 5 living fauna with those separately
+> projected live captures, rejects cross-carrier ID collisions and omits exact tombstones. Captured
+> champions use the existing deterministic forecast, registered settlement, Chronicle and impact-
+> audio path. Their exact win/loss XP and injury changes persist in the overlay and reload; they carry
+> `legacyBredLineage:false`, so defeat permanently replaces the last-live row with an immutable
+> tombstone. Composite Compendium projection, boot, Training restore and later capture reconciliation
+> retain that tombstone without resurrection and omit the lost individual. Prime claims remain an
+> independent conquest authority. No Arc 5 care, breeding, mission, party, tactics, retreat or
+> Recovery field is inferred for these captures.
+>
+> The current local app now exposes this authority on the exact landed, non-Training Survey surface.
+> Its combat card identifies the Titan, Guardian or strongest-fauna defender, offers the explorer and
+> eligible current Arc 5 fauna plus live captured Guardians/Titans as real champion choices, and shows deterministic 160-run forecast,
+> ability, Power, loss stakes and supported reward family. Challenge claims the shared product-action
+> coordinator, settles the heartbeat, rechecks the exact world/ecology/ownership/encounter witness,
+> performs one registered combat transaction, then independently verifies the durable revision,
+> receipt, combat ledger and ownership carriers before publishing the result. Ambiguity enters one
+> read-only convergence reload; it never retries or rerolls the duel.
+>
+> The combat receipt also owns two exact cross-system joins. Verified player damage that leaves
+> **1–19 HP** appends event achievement `brink` inside that same CAS; 20 HP, creature injury and
+> non-damage outcomes do not. A successful conquest with the one accepted starter `st-conq`
+> Charter completes and removes that acceptance, pays **+25 Stardust** to both current and lifetime
+> totals, and increments honored Charters by one. The weekly `wk-conq` remains fail-closed because
+> its wall-week/slate/acceptance lifecycle is not yet owned by v2.
+>
+> The authored one-time Guardian Gear/material reward table is still absent and remains explicitly
+> `unsupported-open`; no reward was invented. The exact legacy 40% conquest gate, worn-slot choice,
+> role-less affix roll and replace-slot behavior are preserved as inspectable evidence, but v2 has no
+> decided rule for coexistence with instance natural affixes and Pureforged crafted modifiers. A
+> conquest whose deterministic gate plans an imbue therefore refuses before CAS. Captured Guardians
+> and Titans are durable Compendium/Guardian-carrier individuals and now re-enter combat through
+> their separate Arc 6 overlay, not the Arc 5 writer. Party roles, tactics, retreat, broader Guardian
+> care/breeding/mission/Recovery and HUMAN audio tuning
+> remain open. Browser-free outcome and wiring controls pass locally; fresh Slice/Glass/HUMAN evidence
+> does not yet follow from that checkpoint.
+>
+> **Current local Combat Chronicle + bounded registered-audio successor:** only after the exact combat
+> transaction is durable and independently verified, Main projects its registered settlement and
+> matching cue plan into one accessible Chronicle panel. It preserves the mature deterministic
+> narrator, renders named timed transcript rows and two native HP meters, then closes with the exact
+> statistics and conquest/loss result. Skip stops any active combat voices and publishes the remaining
+> rows silently; Share copies the complete plain-text log or exposes the exact selected-text fallback.
+> Battle-log sharing is presentation-only and cannot mint the world-Share achievement.
+>
+> Every registered cue owns one exact same-granularity visible caption counterpart. The trusted native
+> Challenge gesture may arm the shared audio runtime, but a session is claimed only from the exact
+> committed, non-converging Arc 6 outcome and registered cue plan. Damage retains deterministic
+> asset-free legacy-impact synthesis plus only its proved critical and ability-proc layers; short
+> deterministic gestures cover initiative, dodge, stun-skipped, burn, regeneration, defeat and
+> resolution. Guardian/Titan entrance, phase, victory and defeat motifs derive only from registered
+> encounter facts. A multi-family cue stays one composite voice, and at most two combat voices are
+> active. Master Sound governs playback; Creature Voices does not. Skip,
+> Close, replacement, hidden/unanswerable state, route/counterpart drift, Sound Off, context loss and
+> disposal cancel the session; Skip completes every remaining caption silently and never invents a
+> result-only motif. Authored/recorded combat assets, ambience and music remain absent.
+
+> **2026-08-26 historical dependency correction (predates the live Arc 6 surface above):** at that
+> checkpoint combat/conquest was not yet a live v2 action, but two persistence seams it would consume
+> were executable. `xpFirsts` keeps only its
+> newest 4,000 bounded unique keys in the `xpf` compatibility window; displaced membership is strict
+> v5 `progression.xp-firsts` archive authority, and `xpa` v1 binds total count plus carrier digest.
+> Missing, mismatched, future or corrupt archive evidence protects rather than rearming an award.
+> There was no live v2 XP-award writer at that checkpoint, so it proved anti-farm persistence
+> authority—not that a combat award call site had landed.
+>
+> `conq[].e` now has executable import/export/readiness coverage: absent or null remains the deliberate
+> one-cycle-ready veteran migration; valid present zero/boundary values round-trip exactly and gate by
+> elapsed epochs; malformed, future and negative inputs sanitize to a **present** bound and cannot
+> impersonate absence. This is codec/readiness proof, not the still-open real-veteran Gate-C run or a
+> live conquest/harvest UI. Any future harvest consumer must use F4's published ecology epoch, which
+> advances from visible-and-answerable active play through one receipt-free CAS before reprojection.
+>
+> The internal-only Arc 5 bred successor now initializes a newly admitted child's `fed` to half the
+> lower clamped parent value once; later care state survives. No player breed writer, parent Recovery
+> rule or live v2 combat reader follows from that seam. Player-facing combat rarity must use the
+> strict ten-name projector (`9..14` display as Transcendent; invalid/missing omitted), never raw
+> tier/internal art-grade labels. The only creature voice currently wired is the exact durable
+> current-system Tame-fauna greeting; combat, victory and Guardian audio remain absent. Ordinary Arc
+> 4 Slice evidence still records `recoveryClaimed:false`, with its dedicated 20-minute recovery
+> certificate pending.
+
+> **2026-08-13 historical pre-Arc-6 overlay — CURRENT versus PLANNED at that date:** The v2 port
 > currently has executable `battleStats`/`runDuel` parity contracts but no live
 > duel, conquest, Guardian encounter or reward action. Legacy v1.8.9 remains the
 > current mechanics authority: it deterministically resolves the fight, then
@@ -11,7 +133,7 @@
 > +5 upgrade. The port must use distinct base/upgrade keys or a stored maximum
 > with a delta, and outcome-test both event orders.
 >
-> **PLANNED, not implemented:** one immutable `CombatReceipt` binds battle id,
+> **PLANNED, not implemented at that historical checkpoint:** one immutable `CombatReceipt` binds battle id,
 > schema, combatant identities, deterministic seed/ordinal, complete transcript,
 > outcome, cue tokens and every reward/wound/ownership mutation. Presentation
 > consumes transcript → cues; persistence consumes the same receipt → rewards,
@@ -21,28 +143,36 @@
 > result is revealed and survive reload without rerolling or replaying rewards.
 > Companion dispatch is a separate, explicitly nonlethal system: **no dispatch
 > permadeath**. Existing conquest risk may remain only as an informed, separately
-> chosen action. Combat, conquest and Guardians stay **Unavailable** in the v2
-> Guide until the real controls and reward outcomes exist.
+> chosen action. Combat, conquest and Guardians were to stay **Unavailable** in the v2
+> Guide until the real controls and reward outcomes existed.
 
-**STATUS:** legacy mechanics reverified against `celestial-frontier.html` on
-2026-08-13; the v2 type-contract overlay remains planned, not implemented. The
+**STATUS:** legacy mechanics reverified against `celestial-frontier.html`; current v2 Guardian/
+Prime encounter, registered settlement, acquisition provenance, F3/CAS writer and player-live
+landed-Surface challenge flow match the local candidate as of 2026-08-29. Exact `brink` and starter
+`st-conq` joins, post-settlement accessible Combat Chronicle and its complete already-modelled
+registered combat/Guardian cue set are live in that settlement. Authored Guardian reward,
+post-construction conquest-
+affix coexistence, weekly conquest-Charter lifecycle, broader Guardian care/breeding/mission/Recovery
+and expanded party/tactics/retreat presentation remain unimplemented. The
 `size` arc CLOSED in v1.8.9 — see the 2026-07-31 addendum; all six readers now
 share one helper and the fingerprint held.
 
-## 0. v2 combat decision and counterplay contract (approved, not implemented)
+## 0. v2 combat decision and counterplay contract (bounded champion slice implemented)
 
-The current deterministic resolver is a useful event source, but it is **not yet
-a combat decision model**. A battle screen must never turn a resolved stat
-comparison into a theatrical set of buttons that do not change the receipt. Before
-shipping a v2 duel, field mission, conquest, or Guardian UI, define and prove this
-player loop:
+The current landed-Surface card implements the minimum honest combat decision: select the explorer,
+one eligible ordinary owned-fauna champion or one live captured Guardian/Titan after reading the exact defender, abilities, deterministic
+forecast, stakes and supported reward family. That selected identity changes the sealed settlement;
+the card exposes no theatrical tactics that the resolver ignores. It is deliberately not the still-
+open party-role, retreat, encounter-phase or equipment-preparation model. Any expansion must preserve
+this player loop:
 
 1. **Read:** a dossier states the encounter's visible hazard/role signals, stakes,
    possible reward family, and the basis of its forecast. It may use only facts
    derived by the real resolver or disclosed authored encounter rules; it must not
    invent a type advantage, hide a scripted immunity, or claim certainty from a
    sample estimate.
-2. **Prepare:** the player chooses a real champion/party, equipment and any
+2. **Prepare:** the current slice chooses one real champion. A later expansion may choose a party,
+   equipment and any
    supported role/loadout inputs. Each shown threat has at least one legible
    preparation response and an accompanying trade-off. Candidate interactions
    already visible in the legacy transcript include initiative/openers, control,
@@ -52,8 +182,12 @@ player loop:
    disclosed risk are sealed into the `CombatReceipt` before resolution. If a future
    encounter offers no meaningful choice beyond a champion, it presents an honest
    champion decision rather than fake tactics.
-4. **Learn:** the result replays the transcript in player language—what happened,
-   which prepared response mattered, and why the reward/injury settled. It cannot
+4. **Learn:** the current slice publishes the verified winner, receipt/revision and exact conquest,
+   XP, injury, capture, Prime and supported reward settlement, then presents its timed accessible
+   Combat Chronicle with HP meters, transcript, statistics, silent Skip completion and plain-text
+   Share fallback. Matching visible captions may synthesize only their registered initiative,
+   dodge, stun-skipped, impact/critical/ability, burn, regeneration, defeat, resolution or
+   Guardian/Titan motif cue. Party-level interpretation and richer tactical explanation remain open. Neither layer may
    roll a second visual, audio, XP or loot outcome.
 
 Counterplay is a readability promise, not a demand for an overloaded action bar:
@@ -62,13 +196,12 @@ understand what that response gives up. A stronger general build may still win, 
 a correct response may still carry risk, but a loss may not be caused by a hidden
 rule or a control whose state never reaches the resolver.
 
-**Required proof before combat UI:** a decision matrix binds every displayed threat,
-response, affected resolver input and trade-off; outcome tests drive the real
-selection/commit path; a deliberately disconnected option fails; transcript/reward/
-injury receipt replay is exact after reload and stale-tab conflict; and human players
-can explain their choice and the outcome without reading developer documentation.
-Party roles, encounter phases and Guardian-specific rules remain design work, not
-current v2 Guide capability.
+**Required proof before expanding the bounded combat UI:** a decision matrix binds every newly
+displayed threat, response, affected resolver input and trade-off; outcome tests drive the real
+selection/commit path; a deliberately disconnected option fails; transcript/reward/injury receipt
+replay is exact after reload and stale-tab conflict; and human players can explain their choice and
+the outcome without reading developer documentation. Party roles, encounter phases, retreat and
+Guardian-specific counterplay remain design work, not current v2 Guide capability.
 
 **Purpose:** How creatures fight — the stat budget, seeded duel resolution, innate arts (classes + archetypes), and named Apex Guardians — and how conquest settles a world: the mercy law, re-win prevention, and the depth tax that grades every field wound by distance.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
@@ -247,7 +380,10 @@ seeded combatant-seed coin described in §2.3.
   `COSMIC_EPOCH` of the last harvest, and absence is the deliberate one-time
   ready migration. `tier` drives yield. `t` is retained legacy timestamp/clamp
   data and does not gate readiness. Presence = "held" (blocks re-conquest;
-  makes bioscans safe).
+  makes bioscans safe). The current port's executable codec/readiness vectors
+  preserve valid present `e`, keep sanitized invalid values present, and prove
+  absent/null cannot be conflated with a present not-ready cycle; they do not
+  constitute the open real-veteran Gate-C run.
 - **`g.hurt`** — persistent wound 0..0.85 on a genome; drives `battleStats` penalty and `creatureCondition`. **Stripped from shared codes** (`normGenome` deletes `hurt`/`xp`/`_mult`/`_wf`) — challengers arrive fresh.
 - **`g.xp`** — win-fed; `levelOf` derives level. Exhibit codes may carry a clamped level (`o.x`) for showcase only (`decodeCreature` sets `exhibit:true`, never owned/breedable).
 - **`g.apex`** — guardian/titan tier band (12–14); `g.ep` = epithet index; `g.brood`/`g.fed` = breeding/feeding bonuses; `g._cradle` = Earth-starter flag.

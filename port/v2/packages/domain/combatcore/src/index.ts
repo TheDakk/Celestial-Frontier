@@ -5,3 +5,6 @@
    (battleStats, abilityOf/Theme, runDuel, the creature codecs, normGenome,
    levelOf) is pure and safe everywhere. */
 export * from './combatcore.verbatim.js';
+export * from './lineage-codec.js';
+export * from './guardian-prime.js';
+export * from './combat-settlement.js';

@@ -1,9 +1,16 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { canon } from '../../../tests/parity.js';
-import { importSaveV2, isPlausibleSaveEnvelope, type ContentRegistry, type SaveStateV2 } from '@cf/persistence';
+import { battleStats } from '@cf/domain-combatcore';
+import { describeSpecies } from '@cf/domain-genome';
+import { harvestReady } from '@cf/domain-progression';
+import {
+  exportSaveV2, importSaveV2, isLegacySliceEnvelope, isPlausibleSaveEnvelope,
+  isKnownFrontierEndingId, sanitizeImportedGenomeV2,
+  type ContentRegistry, type SaveStateV2,
+} from '@cf/persistence';
 
 /* ═══ THE LOAD-PATH PARITY TEST: importSaveV2 vs save-fixtures.json ═══
    The fixture holds post-boot state captured from the REAL
@@ -96,6 +103,12 @@ const approvedExpected = (fixture: typeof FIXTURE_NAMES[number], field: string, 
     }
     return canon(value);
   }
+  /* D-IMPORT: keyed progression carriers are records. v1's `typeof` gate
+     accidentally treated array indices as user-owned keys; v2 contains the
+     malformed field instead of manufacturing numeric-looking progress. */
+  if (fixture === 'hostile_arrays_as_objects' && (field === 'ascProg' || field === 'chProg')) {
+    return canon({});
+  }
   if (fixture !== 'hostile_markup_caps' || (field !== 'stats' && field !== 'codex')) return encoded;
   const value = JSON.parse(encoded) as Record<string, unknown> | Array<[string, { g: Record<string, unknown> }]>;
   if (field === 'stats') (value as Record<string, unknown>).maxGen = 2;
@@ -150,6 +163,92 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
     expect(row.t).toBe(NOW);
     expect(row.e).toBeUndefined();
   });
+  it('Gate C: conq[].e migration preserves one ready legacy cycle, clamps hostile bounds, and round-trips', () => {
+    const source = structuredClone(FX.inputs.veteran_rich) as Record<string, unknown>;
+    source.epoch = 1;
+    source.conq = [
+      ['absent', { t: NOW, tier: 1 }],
+      ['null', { t: NOW, tier: 1, e: null }],
+      ['zero', { t: NOW, tier: 1, e: 0 }],
+      ['boundary', { t: NOW, tier: 1, e: 1 }],
+      ['future', { t: NOW, tier: 1, e: 1_000_000_000 }],
+      ['negative', { t: NOW, tier: 1, e: -7 }],
+      ['malformed', { t: NOW, tier: 1, e: 'not-an-epoch' }],
+    ];
+
+    const imported = importSaveV2(JSON.stringify(source), REGISTRY, NOW);
+    expect(imported.ok).toBe(true);
+    if (!imported.ok) return;
+    expect(imported.state.EPOCH_BASE).toBe(1);
+    const rows = new Map(imported.state.conquered);
+    const row = (id: string) => rows.get(id)!;
+
+    /* Mutation control: assigning `e = 0` unconditionally would erase the
+       absent/null migration signal and make these rows unready at epoch 1. */
+    for (const id of ['absent', 'null']) {
+      expect(Object.hasOwn(row(id), 'e'), `${id} must retain absent e`).toBe(false);
+      expect(harvestReady(row(id), imported.state.EPOCH_BASE), `${id} must be ready once`).toBe(true);
+    }
+
+    expect(Object.hasOwn(row('zero'), 'e')).toBe(true);
+    expect(row('zero').e).toBe(0);
+    expect(Object.hasOwn(row('boundary'), 'e')).toBe(true);
+    expect(row('boundary').e).toBe(1);
+    expect(harvestReady(row('zero'), imported.state.EPOCH_BASE)).toBe(false);
+    expect(harvestReady(row('boundary'), imported.state.EPOCH_BASE)).toBe(false);
+
+    /* Mutation controls: a missing upper clamp cannot retain the hostile
+       future value, and a missing lower clamp cannot retain the negative. */
+    expect(row('future').e).toBe(1);
+    expect(row('negative').e).toBe(0);
+    expect(row('malformed').e).toBe(0);
+    for (const id of ['future', 'negative', 'malformed']) {
+      expect(Object.hasOwn(row(id), 'e'), `${id} must remain a present sanitized stamp`).toBe(true);
+      expect(harvestReady(row(id), imported.state.EPOCH_BASE), `${id} must not impersonate absent`).toBe(false);
+    }
+
+    const reloaded = importSaveV2(exportSaveV2(imported.state, NOW), REGISTRY, NOW);
+    expect(reloaded.ok).toBe(true);
+    if (!reloaded.ok) return;
+    expect(reloaded.state.conquered).toEqual(imported.state.conquered);
+    const reloadedRows = new Map(reloaded.state.conquered);
+    expect(Object.hasOwn(reloadedRows.get('absent')!, 'e')).toBe(false);
+    expect(Object.hasOwn(reloadedRows.get('null')!, 'e')).toBe(false);
+  });
+  it('normalizes notification timestamps only against the injected clock and then reaches a fixed point', () => {
+    const dateNow = vi.spyOn(Date, 'now').mockImplementation(() => {
+      throw new Error('notification import must not consult the ambient wall clock');
+    });
+    try {
+      const future = NOW + 90_000;
+      const imported = importSaveV2(JSON.stringify({
+        notifs: [
+          { id: 1, tt: 'zero', ms: '', t: 0 },
+          { id: 2, tt: 'invalid', ms: '', t: 'not-a-clock' },
+          { id: 3, tt: 'negative', ms: '', t: -1 },
+          { id: 4, tt: 'future', ms: '', t: future },
+          { id: 5, tt: 'over-cap', ms: '', t: 4_000_000_000_001 },
+        ],
+      }), REGISTRY, NOW);
+      expect(imported.ok).toBe(true);
+      if (!imported.ok) return;
+      expect(imported.state.notifications.map(({ t }) => t)).toEqual([
+        NOW, NOW, NOW, future, 4_000_000_000_000,
+      ]);
+
+      const reloaded = importSaveV2(
+        exportSaveV2(imported.state, NOW),
+        REGISTRY,
+        NOW + 180_000,
+      );
+      expect(reloaded.ok).toBe(true);
+      if (!reloaded.ok) return;
+      expect(reloaded.state.notifications).toEqual(imported.state.notifications);
+      expect(dateNow).not.toHaveBeenCalled();
+    } finally {
+      dateNow.mockRestore();
+    }
+  });
   it('D-9i: generation strings become numbers and invalid counters cannot poison maxGen', () => {
     const baseInput = FX.inputs.hostile_markup_caps as { codex: Array<{ g: Record<string, unknown> }> };
     const importedGen = (value: unknown): { genome: unknown; max: unknown } => {
@@ -186,18 +285,224 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
     expect(epochOf(-1)).toBe(0);
     expect(epochOf(1e12)).toBe(10_000);
   });
-  it('one malformed codex genome cannot reject the rest of a valid expedition', () => {
+  it('repairs unsafe descriptor/combat indices and contains irreparable Codex rows without losing the expedition', () => {
     const input = structuredClone(FX.inputs.veteran_rich) as { codex: Array<Record<string, unknown>> };
     const expected = importSaveV2(JSON.stringify(input), REGISTRY, NOW);
     expect(expected.ok).toBe(true);
     const expectedState = (expected as { ok: true; state: SaveStateV2 }).state;
-    input.codex.unshift({ g: { seed: 8675309, kingdom: 'fauna', metab: -1 }, f: 'hostile row' });
+    const baseGenome = structuredClone((input.codex[0] as { g: Record<string, unknown> }).g);
+    input.codex.unshift(
+      { g: { ...baseGenome, seed: 'not-finite' }, f: 'bad seed' },
+      { g: { ...baseGenome, seed: 8675308, kingdom: 'virus' }, f: 'bad kingdom' },
+      { g: {
+        ...baseGenome,
+        seed: 8675309,
+        color: -2.9,
+        body: '3',
+        diet: 'not-a-number',
+        metab: -1,
+        size: 11,
+        /* Not descriptor/combat indices: the bounded repair must not casually
+           rewrite unrelated honest/legacy genome bytes. */
+        limbs: 'legacy-limbs',
+        accent: 'legacy-accent',
+      }, f: 'repairable row' },
+    );
     const recovered = importSaveV2(JSON.stringify(input), REGISTRY, NOW);
     expect(recovered.ok).toBe(true);
     const state = (recovered as { ok: true; state: SaveStateV2 }).state;
-    expect(state.codex).toEqual(expectedState.codex);
+    expect(state.codex.filter(([id]) => id !== 's8675309')).toEqual(expectedState.codex);
+    expect(state.codex.some(([id]) => id === 'snot-finite' || id === 's8675308')).toBe(false);
+    const repaired = new Map(state.codex).get('s8675309')!;
+    expect(repaired.g).toMatchObject({
+      color: 2, body: 3, diet: 0, metab: 1, size: 11,
+      limbs: 'legacy-limbs', accent: 'legacy-accent',
+    });
+    expect(describeSpecies(repaired.g as never).desc).not.toContain('undefined');
+    const combat = battleStats(repaired.g);
+    for (const field of ['vit', 'fer', 'res', 'agi', 'ins', 'tier', 'total'] as const) {
+      expect(Number.isFinite(combat[field]), field).toBe(true);
+    }
     expect(state.essence).toBe(expectedState.essence);
     expect(state.landed).toEqual(expectedState.landed);
+  });
+  it('clones before the lifted mutating genome hardener and preserves valid unwrapped size exactly', () => {
+    const source = Object.freeze({
+      seed: 91, kingdom: 'fauna', color: -2.9, form: 1, body: 1, loco: 1,
+      trait: 1, size: 11, diet: '2', head: 1, limbs: 1, skin: 1, tail: 1,
+      pattern: 1, eyes: 1, behavior: 1, habitat: 1, detail: 1, accent: 1,
+      temper: 1, sense: 1, repro: 1, life: 1, metab: -1, lumin: false,
+      gen: 0, heat: 0.6, brood: 999, _mult: 4, _wf: 'lava',
+    });
+    const before = structuredClone(source);
+    const sanitized = sanitizeImportedGenomeV2(source)!;
+    expect(source).toEqual(before);
+    expect(sanitized).not.toBe(source);
+    expect(sanitized).toMatchObject({ color: 2, diet: 2, metab: 1, size: 11, brood: 200 });
+    expect(sanitized).not.toHaveProperty('_mult');
+    expect(sanitized).not.toHaveProperty('_wf');
+    expect(source).toHaveProperty('_mult', 4);
+    expect(source).toHaveProperty('_wf', 'lava');
+  });
+  it('reconstructs every duplicate-prone legacy Map/Set carrier before projecting DTO arrays', () => {
+    const [techA, techB] = REGISTRY.techs;
+    const [setA, setB] = REGISTRY.binderSets;
+    const [starterA, starterB] = REGISTRY.charterStarters;
+    const [weeklyA, weeklyB] = REGISTRY.charterPool;
+    const [materialA, materialB] = REGISTRY.materials;
+    const [itemA, itemB] = Object.keys(REGISTRY.items);
+    const codexGenome = structuredClone(
+      ((FX.inputs.veteran_rich as { codex: Array<{ g: Record<string, unknown> }> }).codex[0]!.g),
+    );
+    expect([techA, techB, setA, setB, starterA, starterB, weeklyA, weeklyB,
+      materialA, materialB, itemA, itemB].every(Boolean)).toBe(true);
+    const result = importSaveV2(JSON.stringify({
+      epoch: 10,
+      at: NOW,
+      names: [['place', 'first'], ['other', 'middle'], ['place', 'last']],
+      conq: [[7, { t: 1, tier: 1, e: 1 }], [8, { t: 2, tier: 2, e: 2 }], [7, { t: 3, tier: 4, e: 3 }]],
+      setsc: [setA, setB, setA],
+      cargo: [[materialA, 1], [materialB, 2], [materialA, 3]],
+      cgx: [[materialA, 1], [materialB, 1], [materialA, 2]],
+      minedw: [[7, 1], [8, 2], [7, 3]],
+      mx: [[7, 1], [8, 2], [7, 4]],
+      skx: [[7, 1], [8, 2], [7, 5]],
+      bx: [[7, [1, 1]], [8, [2, 2]], ['7', [3, 3]]],
+      tech: [techA, techB, techA],
+      items: [[itemA, 1], [itemB, 2], [itemA, 3]],
+      seen: ['s1', 's2', 's1'],
+      surveyed: ['p1', 'p2', 'p1'],
+      gals: [1, 2, 1], surf: [3, 4, 3], xpf: ['x1', 'x2', 'x1'],
+      sysv: [5, 6, 5], starK: ['G', 'K', 'G'], ptypes: ['rock', 'gas', 'rock'],
+      evts: ['e1', 'e2', 'e1'], evann: ['a1', 'a2', 'a1'], ach: ['u1', 'u2', 'u1'],
+      chs: [starterA, starterB, starterA],
+      chacc: [starterA, weeklyA, weeklyB, weeklyA, starterB],
+      land: [7, 8, 7], cont: [9, 10, 9],
+      wvo: [[7, 1], [8, 2], ['7', 5]],
+      log: [{ id: 'dup', title: 'first' }, { id: 'middle', title: 'middle' }, { id: 'dup', title: 'last' }],
+      codex: [
+        { g: { ...codexGenome, seed: 424200, size: 6 }, f: 'first sighting' },
+        { g: { ...codexGenome, seed: 424200, size: 9 }, f: 'later duplicate' },
+      ],
+    }), REGISTRY, NOW);
+    expect(result.ok).toBe(true);
+    if (!result.ok) return;
+    const s = result.state;
+    /* Map: first insertion slot, last value. */
+    expect(s.customNames).toEqual([['place', 'last'], ['other', 'middle']]);
+    expect(s.conquered.map(([key, row]) => [key, row.tier, row.e])).toEqual([[7, 4, 3], [8, 2, 2]]);
+    expect(s.cargo).toEqual([[materialA!, 3], [materialB!, 2]]);
+    expect(s.cgx).toEqual([[materialA!, 2], [materialB!, 1]]);
+    expect(s.mined.map(([key]) => key)).toEqual([7, 8]);
+    expect(s.mineX).toEqual([[7, 4], [8, 2]]);
+    expect(s.skimX).toEqual([[7, 5], [8, 2]]);
+    expect(s.bioX).toEqual([[7, [3, 3]], [8, [2, 2]]]);
+    expect(s.items).toEqual([[itemA!, 3], [itemB!, 2]]);
+    expect(s.waveOffs).toEqual([[7, 5], [8, 2]]);
+    expect(s.logMap.map(([id, entry]) => [id, entry.title])).toEqual([['dup', 'last'], ['middle', 'middle']]);
+    expect(s.codex).toHaveLength(1);
+    expect(s.codex[0]![1]).toMatchObject({ from: 'first sighting', g: { size: 6 } });
+    /* Set: first accepted occurrence, duplicates collapse. Completed Charter
+       ids also exclude the corresponding accepted rows exactly as v1 did. */
+    expect(s.claimedSets).toEqual([setA, setB]);
+    expect(s.techOwned).toEqual([techA, techB]);
+    expect(s.chDone).toEqual([starterA, starterB]);
+    expect(s.chacc).toEqual([weeklyA, weeklyB]);
+    expect(s.seenSp).toEqual(['s1', 's2']);
+    expect(s.surveyedSet).toEqual(['p1', 'p2']);
+    expect(s.galSeen).toEqual([1, 2]); expect(s.surfSeen).toEqual([3, 4]);
+    expect(s.xpFirsts).toEqual(['x1', 'x2']); expect(s.sysSeen).toEqual([5, 6]);
+    expect(s.starKindsSeen).toEqual(['G', 'K']); expect(s.ptypesSeen).toEqual(['rock', 'gas']);
+    expect(s.eventKeysSeen).toEqual(['e1', 'e2']); expect(s.evAnnounced).toEqual(['a1', 'a2']);
+    expect(s.unlocked).toEqual(['u1', 'u2']); expect(s.landed).toEqual([7, 8]);
+    expect(s.contacted).toEqual([9, 10]);
+  });
+  it('rejects array indices as progression/signature keys while retaining real record keys', () => {
+    const numericSignatureRegistry: ContentRegistry = {
+      ...REGISTRY,
+      sigIds: [...REGISTRY.sigIds, '0'],
+    };
+    const primeRow = {
+      title: 'Numeric signature', sub: 'record only', tier: 7, hex: '#abc', where: null,
+    };
+    const fromArrays = importSaveV2(JSON.stringify({
+      epoch: 0, codex: [], land: [], ascp: [3, 9], chp: [7], prime: [primeRow],
+    }), numericSignatureRegistry, NOW);
+    expect(fromArrays.ok).toBe(true);
+    if (!fromArrays.ok) return;
+    expect(fromArrays.state.ascProg).toEqual({});
+    expect(fromArrays.state.chProg).toEqual({});
+    expect(fromArrays.state.primeFill).toEqual({});
+
+    /* Hostile control: "0" is deliberately a valid injected signature id,
+       so this only stays empty above when the array carrier itself is
+       rejected. The same numeric-looking keys remain valid on real records. */
+    const fromRecords = importSaveV2(JSON.stringify({
+      epoch: 0, codex: [], land: [],
+      ascp: { 0: 3, 1: 9 }, chp: { 0: 7 }, prime: { 0: primeRow },
+    }), numericSignatureRegistry, NOW);
+    expect(fromRecords.ok).toBe(true);
+    if (!fromRecords.ok) return;
+    expect(fromRecords.state.ascProg).toEqual({ 0: 3, 1: 9 });
+    expect(fromRecords.state.chProg).toEqual({ 0: 7 });
+    expect(fromRecords.state.primeFill).toEqual({
+      0: { title: 'Numeric signature', sub: 'record only', tier: 7, hex: '#abc', where: null },
+    });
+  });
+  it('bounds opaque legacy anomaly/ending tokens and requires a separate known-ending resolver', () => {
+    for (const [input, expected] of [
+      [0, 0], [5_555_555, 5_555_555], ['42', '42'], ['k1', 'k1'],
+      ['', null], [-1, null], [1.5, null], [Number.MAX_VALUE, null], ['bad key', null],
+      [true, null], [{ value: 42 }, null],
+    ] as const) {
+      const imported = importSaveV2(JSON.stringify({
+        epoch: 0, codex: [], land: [], anomKey: input,
+      }), REGISTRY, NOW);
+      expect(imported.ok, `anomaly ${JSON.stringify(input)}`).toBe(true);
+      if (!imported.ok) continue;
+      expect(imported.state.lastAnomKey).toBe(expected);
+      const reloaded = importSaveV2(exportSaveV2(imported.state, NOW), REGISTRY, NOW);
+      expect(reloaded.ok).toBe(true);
+      if (reloaded.ok) expect(reloaded.state.lastAnomKey).toBe(expected);
+    }
+
+    for (const ending of ['conquer', 'protect', 'terraform', 'preserve', 'balance', 'dawn'] as const) {
+      const imported = importSaveV2(JSON.stringify({
+        epoch: 0, codex: [], land: [], frontier: 1, ending,
+      }), REGISTRY, NOW);
+      expect(imported.ok).toBe(true);
+      if (!imported.ok) continue;
+      expect(imported.state.frontierEnding).toBe(ending);
+      expect(isKnownFrontierEndingId(imported.state.frontierEnding)).toBe(ending !== 'dawn');
+      const reloaded = importSaveV2(exportSaveV2(imported.state, NOW), REGISTRY, NOW);
+      expect(reloaded.ok).toBe(true);
+      if (reloaded.ok) expect(reloaded.state.frontierEnding).toBe(ending);
+    }
+    for (const ending of ['', 'UPPER', 'bad ending', 'x'.repeat(33), 1, true, { id: 'balance' }]) {
+      const imported = importSaveV2(JSON.stringify({
+        epoch: 0, codex: [], land: [], frontier: 1, ending,
+      }), REGISTRY, NOW);
+      expect(imported.ok).toBe(true);
+      if (imported.ok) expect(imported.state.frontierEnding).toBeNull();
+    }
+  });
+  it('valid unwrapped size is an import/export fixed point across honest and large values', () => {
+    const template = structuredClone(
+      ((FX.inputs.veteran_rich as { codex: Array<{ g: Record<string, unknown> }> }).codex[0]!.g),
+    );
+    for (const size of [6, 9, 11, 1_000_000]) {
+      const first = importSaveV2(JSON.stringify({
+        epoch: 0, codex: [{ g: { ...template, seed: 9000000 + size, size } }], land: [],
+      }), REGISTRY, NOW);
+      expect(first.ok, `first import size ${size}`).toBe(true);
+      if (!first.ok) continue;
+      expect(first.state.codex[0]![1].g.size).toBe(size);
+      const second = importSaveV2(exportSaveV2(first.state, NOW), REGISTRY, NOW);
+      expect(second.ok, `round-trip size ${size}`).toBe(true);
+      if (!second.ok) continue;
+      expect(second.state.codex[0]![1].g.size).toBe(size);
+      expect(canon(second.state.codex[0]![1].g)).toBe(canon(first.state.codex[0]![1].g));
+    }
   });
   it('Atlas travel keeps complete star identity and rejects partial route identities', () => {
     const route = {
@@ -365,6 +670,60 @@ describe('importSaveV2 — parity against the REAL load path (save-fixtures.json
       expect(completed.ingress.trainingSnapshot).toEqual({ kind: 'none' });
       expect(completed.state.tutSnapPending).toBeNull();
     }
+  });
+  it('recognizes only the exact historical two-field development-slice envelopes for all four nav modes', () => {
+    const gal = Object.freeze({ x: 90, y: -60, seed: 999, size: 78 });
+    const star = Object.freeze({ x: 560, y: 170, seed: 424242, kind: 'G' });
+    const cases = [
+      {
+        nav: { mode: 'universe', gal: null, star: null, planet: null },
+        view: null,
+      },
+      {
+        nav: { mode: 'galaxy', gal, star: null, planet: null },
+        view: { type: 'galaxy', gal: { ...gal }, harmlessLegacyField: true },
+      },
+      {
+        nav: { mode: 'system', gal, star, planet: null },
+        view: { type: 'star', gal: { ...gal }, star: { ...star } },
+      },
+      {
+        nav: { mode: 'surface', gal, star, planet: { seed: 133, name: 'Earth' } },
+        view: { type: 'planet', gal: { ...gal }, star: { ...star }, pseed: 133 },
+      },
+    ];
+    for (const value of cases) {
+      expect(isLegacySliceEnvelope(value), JSON.stringify(value)).toBe(true);
+      expect(isPlausibleSaveEnvelope(value), 'slice bridge must stay distinct from whole-v4 proof').toBe(false);
+      expect(importSaveV2(JSON.stringify(value), REGISTRY, NOW).ok).toBe(true);
+    }
+  });
+  it('rejects sparse lookalikes, extra authority fields, and mismatched/non-finite slice identity', () => {
+    const gal = { x: 90, y: -60, seed: 999 };
+    const star = { x: 560, y: 170, seed: 424242 };
+    const surface = {
+      nav: { mode: 'surface', gal, star, planet: { seed: 133 } },
+      view: { type: 'planet', gal: { ...gal }, star: { ...star }, pseed: 133 },
+    };
+    const bad: unknown[] = [
+      null, [], {}, { view: null }, { nav: surface.nav },
+      { ...surface, extra: true },
+      { nav: { ...surface.nav, extra: true }, view: surface.view },
+      { nav: { ...surface.nav, mode: 'planet' }, view: surface.view },
+      { nav: { mode: 'universe', gal: null, star: null, planet: null }, view: {} },
+      { nav: { mode: 'universe', gal, star: null, planet: null }, view: null },
+      { nav: { mode: 'galaxy', gal, star: null, planet: null }, view: { type: 'star', gal } },
+      { nav: { mode: 'galaxy', gal, star: null, planet: null }, view: { type: 'galaxy', gal: { ...gal, x: 91 } } },
+      { nav: { mode: 'galaxy', gal: { ...gal, seed: '999' }, star: null, planet: null }, view: { type: 'galaxy', gal } },
+      { nav: { mode: 'galaxy', gal: { ...gal, x: Number.NaN }, star: null, planet: null }, view: { type: 'galaxy', gal: { ...gal, x: Number.NaN } } },
+      { nav: { mode: 'galaxy', gal: { ...gal, y: Number.POSITIVE_INFINITY }, star: null, planet: null }, view: { type: 'galaxy', gal: { ...gal, y: Number.POSITIVE_INFINITY } } },
+      { nav: { mode: 'system', gal, star, planet: null }, view: { type: 'star', gal, star: { ...star, seed: 1 } } },
+      { nav: { mode: 'system', gal, star, planet: { seed: 133 } }, view: { type: 'star', gal, star } },
+      { nav: { ...surface.nav, planet: null }, view: surface.view },
+      { nav: { ...surface.nav, planet: { seed: 134 } }, view: surface.view },
+      { nav: surface.nav, view: { ...surface.view, pseed: '133' } },
+    ];
+    for (const value of bad) expect(isLegacySliceEnvelope(value), JSON.stringify(value)).toBe(false);
   });
   it('destructive-import envelope rejects sparse lookalikes but accepts real current and veteran saves', () => {
     for (const bad of [null, [], 1, 'x', true, {}, { view: null }, { codex: {} }, { epoch: 0 }, { epoch: 0, codex: [], land: {} }]) {

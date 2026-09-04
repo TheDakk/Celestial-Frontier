@@ -1,7 +1,7 @@
 # Celestial Frontier — Rarity & Grades System
 
 **STATUS:** legacy values match code as of **2026-07-31 (v1.8.9)**; the v2
-type and presentation overlays below match `port/v2` as of 2026-08-13. Every value,
+type and presentation overlays below match the local `port/v2` candidate as of 2026-08-31. Every value,
 threshold and line anchor below was re-extracted from `main.js` during port
 Phase 0 and verified, not carried forward.
 
@@ -9,9 +9,36 @@ Phase 0 and verified, not carried forward.
 how one collapses into the other, the merit boosts, ring caps, guardians and paragons.
 
 **Source of truth:** `main.js` implements the legacy runtime and
-`port/v2/packages/domain/speciestraits` owns the dated port contract; where
+`port/v2/packages/domain/speciestraits` owns the raw/canonical port contract, while
+`port/v2/apps/game/src/rarity-presentation.ts` owns the strict player projection; where
 source and this doc disagree, **source wins and this doc gets fixed**. The ladder
 feeds the 50-probe determinism fingerprint — a mismatch means observable behavior changed.
+
+> **2026-08-31 strict v2 app presentation boundary — current local candidate:**
+> `projectDisplayRarity(value)` accepts only a primitive integer raw grade in the closed range
+> 0–14. Raw 0–9 selects the corresponding canonical ten-name row; raw 10–14 selects display tier 9,
+> **Transcendent** / `#F7F1FF`. Missing, string-coercible, boxed, fractional, non-finite, negative
+> and out-of-range values return `null`, so the player surface omits rarity rather than inventing
+> Common or exposing an internal raw label.
+>
+> Presentation preserves every canonical foreground token. Compendium list/detail plus
+> owned/non-missing Records Binder rarity slots wrap the written rarity in one shared opaque
+> `#05070d` reading surface, so Exotic remains exactly `#9A5CFF` while its effective
+> foreground/background contrast is at least 4.5:1 over supported glass. Missing Binder slots keep
+> their distinct missing-state surface. The backing changes neither raw/display tier identity,
+> persistence, sorting/balance authority nor seeded art color.
+>
+> Survey and both Compendium list/detail paths consume this app projector. Owned Binder slots instead
+> use the domain's canonical `displayRarity` / `RARITY_V17` ladder and color, then apply the same
+> opaque reading surface in CSS. Planet Survey still
+> requires landing before rarity is visible, and Survey refuses to disclose a projected tier when
+> the canonical descriptor name itself is absent. Compendium reads the stored raw tier, not the
+> portrait/art label. The raw 0–14 roll, thresholds, boosts/forces, persistence, sorting authority,
+> deterministic descriptor output, seeded art hue/designation and legacy fingerprint remain
+> unchanged. Exact clean signed source `7e089f3432a834636064615ac2da13b2b0ac39df` passed the full
+> no-retry local Compendium → Slice → 12-viewport Glass develop chain with zero Slice findings and
+> zero Glass findings/instrument failures; all named verifiers passed. HUMAN visual judgment remains
+> open.
 
 > **2026-08-11 v2 executable-contract correction:** Runtime rarity values are
 > byte-unchanged. The port declaration now records that `colorGrade` and
@@ -20,7 +47,8 @@ feeds the 50-probe determinism fingerprint — a mismatch means observable behav
 > their real string-list and keyed-record shapes. Tests exercise the actual
 > calls; this is type parity, not a rarity rebalance or fingerprint re-pin.
 
-> **2026-08-13 v2 presentation boundary:** `spectral()` and `SPECTRA` remain
+> **2026-08-13 v2 presentation boundary — historical foundation; current where the 2026-08-26
+> overlay does not supersede it:** `spectral()` and `SPECTRA` remain
 > deterministic internal contracts because descriptor parity, art hue, epithets, and
 > seeded fixtures may depend on them. Their presence does **not** make **Spectral class**
 > a v2 player class. The app filters that legacy row at render time. Planet cards disclose

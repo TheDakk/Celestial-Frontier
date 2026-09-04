@@ -1,0 +1,34 @@
+{
+  "name": "@cf/domain-acquisition",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Arc 4 truthful catalogue, creature, specimen, discovery, and canonical biosphere ownership state.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./snapshot-internal": "./src/snapshot-internal.ts",
+    "./ownership-v2-internal": "./src/ownership-v2-internal.ts",
+    "./feed-internal": "./src/feed.ts",
+    "./breed-internal": "./src/breed.ts",
+    "./rename-internal": "./src/rename.ts",
+    "./scout-internal": "./src/scout.ts",
+    "./combat-settlement-internal": "./src/combat-settlement-internal.ts",
+    "./guardian-acquisition-internal": "./src/guardian-acquisition.ts",
+    "./guardian-companion-internal": "./src/guardian-companion.ts",
+    "./companion-availability": "./src/companion-availability.ts"
+  },
+  "dependencies": {
+    "@cf/domain-genetics": "*",
+    "@cf/domain-combatcore": "*",
+    "@cf/domain-genome": "*",
+    "@cf/domain-loot": "*",
+    "@cf/domain-naming": "*",
+    "@cf/domain-progression": "*",
+    "@cf/domain-rand": "*",
+    "@cf/domain-sessionrng": "*",
+    "@cf/domain-speciestraits": "*",
+    "@cf/domain-strays": "*",
+    "@cf/domain-worldconfig": "*",
+    "@cf/scene": "*"
+  }
+}

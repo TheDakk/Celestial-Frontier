@@ -1,0 +1,12 @@
+{
+  "name": "@cf/domain-loot",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Arc 2 deterministic GearInstance catalogue, exact-instance inventory, and inspectable presentation domain.",
+  "exports": {
+    ".": "./src/index.ts",
+    "./engineering-internal": "./src/engineering-loadout-internal.ts"
+  },
+  "dependencies": { "@cf/domain-rand": "*" }
+}

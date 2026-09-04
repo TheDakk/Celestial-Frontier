@@ -1,0 +1,176 @@
+{
+  "_comment": [
+    "Non-vacuous descriptor evidence captured from the immutable shipped v1.8.9 HTML.",
+    "The capture command prints a candidate and never writes this sealed fixture.",
+    "Do not replace this evidence merely to make a parity failure pass."
+  ],
+  "captureSchema": "cf-v1.8.9-descriptor-evidence/v1",
+  "capturedAgainst": {
+    "tag": "v1.8.9",
+    "commit": "92098e91ddc2028cbab9149293b58166f483764c"
+  },
+  "source": {
+    "retrieval": "git show 92098e91ddc2028cbab9149293b58166f483764c:celestial-frontier.html",
+    "path": "celestial-frontier.html",
+    "bytes": 1963584,
+    "sha256": "9f90f506a7cfcf5b721d80e7b956e0ef717edf04d004edf825ddb4f0303b3c88"
+  },
+  "capture": {
+    "probeFile": "../v2/tools/v189-descriptor-probe.js",
+    "probeSha256": "a7212fedda9e643467aec932cfcb03dbc4d04b9a8394b14e102ec5d4206d9503",
+    "fakeCanvasFile": "../../tools/fake2d.js",
+    "fakeCanvasSha256": "24a3155535d8f06b69e55e734d05fb2368743c94b1973dd4776f514f050fc662",
+    "canonicalisation": "Gate A san(): sorted object keys, array order preserved, numbers rounded to 1e-9"
+  },
+  "guards": {
+    "solSeed": 424242,
+    "earthPlanetSeed": 133,
+    "proceduralSystemSeed": 1,
+    "proceduralPlanetSeed": 2416138383,
+    "galaxyCell": [
+      -6,
+      4
+    ],
+    "galaxySeed": 2024882063,
+    "galaxyKindCount": 16
+  },
+  "observedErrors": [],
+  "cases": [
+    {
+      "id": "sol-earth-moon-0",
+      "recipe": {
+        "descriptor": "moonDescriptor",
+        "systemSeed": 424242,
+        "planetSeed": 133,
+        "moonIndex": 0
+      },
+      "raw": {
+        "badge": "Home",
+        "logId": "m751153500",
+        "rows": [
+          [
+            "Made of",
+            "Basalt “seas” (maria) and ancient highland rock"
+          ],
+          [
+            "Formed",
+            "~4.5 billion years ago, from debris of a giant impact"
+          ],
+          [
+            "Influence",
+            "Its gravity drives Earth’s ocean tides"
+          ],
+          [
+            "Note",
+            "The only world humans have walked on besides Earth"
+          ]
+        ],
+        "sub": "Earth’s moon",
+        "thumb": "data:image/png;base64,",
+        "title": "The Moon"
+      },
+      "canonicalJson": "{\"badge\":\"Home\",\"logId\":\"m751153500\",\"rows\":[[\"Made of\",\"Basalt “seas” (maria) and ancient highland rock\"],[\"Formed\",\"~4.5 billion years ago, from debris of a giant impact\"],[\"Influence\",\"Its gravity drives Earth’s ocean tides\"],[\"Note\",\"The only world humans have walked on besides Earth\"]],\"sub\":\"Earth’s moon\",\"thumb\":\"data:image/png;base64,\",\"title\":\"The Moon\"}",
+      "canonicalJsonByteLength": 373,
+      "canonicalJsonSha256": "83e5d70efe20f7b2e335e8ba5d62b68567c1d48b926ba5f5ccd2b6d5643521de"
+    },
+    {
+      "id": "system-1-planet-0-moon-0",
+      "recipe": {
+        "descriptor": "moonDescriptor",
+        "systemSeed": 1,
+        "planetIndex": 0,
+        "moonIndex": 0
+      },
+      "raw": {
+        "badge": null,
+        "logId": "m1024076174",
+        "rows": [
+          [
+            "Made of",
+            "Cratered silicate rock and dust"
+          ],
+          [
+            "Surface",
+            "Airless and still, scarred by eons of impacts"
+          ],
+          [
+            "Orbit",
+            "Tidally locked — one face always toward Rium"
+          ]
+        ],
+        "sub": "Rocky moon",
+        "thumb": "data:image/png;base64,",
+        "title": "Rium I"
+      },
+      "canonicalJson": "{\"badge\":null,\"logId\":\"m1024076174\",\"rows\":[[\"Made of\",\"Cratered silicate rock and dust\"],[\"Surface\",\"Airless and still, scarred by eons of impacts\"],[\"Orbit\",\"Tidally locked — one face always toward Rium\"]],\"sub\":\"Rocky moon\",\"thumb\":\"data:image/png;base64,\",\"title\":\"Rium I\"}",
+      "canonicalJsonByteLength": 279,
+      "canonicalJsonSha256": "9fdcd26c107f1d21752aaa529861a4caf844b21fcee109db26920acac30d1060"
+    },
+    {
+      "id": "cell--6-4-galaxy-0",
+      "recipe": {
+        "descriptor": "galaxyDescriptor",
+        "cell": [
+          -6,
+          4
+        ],
+        "galaxyIndex": 0,
+        "galaxySeed": 2024882063
+      },
+      "raw": {
+        "badge": "Colliding",
+        "designation": {
+          "hex": "#c8b272",
+          "label": "Blue-Gold",
+          "name": "Legendary",
+          "tier": 5
+        },
+        "logId": "g2024882063",
+        "notable": true,
+        "rows": [
+          [
+            "Spectral class",
+            "Blue-Gold — Legendary",
+            "grade"
+          ],
+          [
+            "Status",
+            "Colliding with a companion — gravity will merge them into one"
+          ],
+          [
+            "Stars",
+            "~70 billion stars"
+          ],
+          [
+            "Planets",
+            "~99 billion worlds (est. — most stars host planets)"
+          ],
+          [
+            "Diameter",
+            "~68,495 light-years"
+          ],
+          [
+            "Mass",
+            "~740 billion Suns — most of it unseen dark matter"
+          ],
+          [
+            "Core",
+            "A supermassive black hole"
+          ],
+          [
+            "Note",
+            "One of perhaps two trillion galaxies"
+          ]
+        ],
+        "sub": "Barred spiral galaxy",
+        "thumb": "data:image/png;base64,",
+        "thumbSq": true,
+        "title": "Ridroae Galaxy"
+      },
+      "canonicalJson": "{\"badge\":\"Colliding\",\"designation\":{\"hex\":\"#c8b272\",\"label\":\"Blue-Gold\",\"name\":\"Legendary\",\"tier\":5},\"logId\":\"g2024882063\",\"notable\":true,\"rows\":[[\"Spectral class\",\"Blue-Gold — Legendary\",\"grade\"],[\"Status\",\"Colliding with a companion — gravity will merge them into one\"],[\"Stars\",\"~70 billion stars\"],[\"Planets\",\"~99 billion worlds (est. — most stars host planets)\"],[\"Diameter\",\"~68,495 light-years\"],[\"Mass\",\"~740 billion Suns — most of it unseen dark matter\"],[\"Core\",\"A supermassive black hole\"],[\"Note\",\"One of perhaps two trillion galaxies\"]],\"sub\":\"Barred spiral galaxy\",\"thumb\":\"data:image/png;base64,\",\"thumbSq\":true,\"title\":\"Ridroae Galaxy\"}",
+      "canonicalJsonByteLength": 660,
+      "canonicalJsonSha256": "180e5467989ced36e09d0cd7f8352b859f51bfd06211d6ad3e909cd8b6a1a00f"
+    }
+  ],
+  "evidenceSha256": "683a9f62ca03e9e405df4302f10af6e7ca1ee8fb3238e7df3757e35c534d5edd"
+}

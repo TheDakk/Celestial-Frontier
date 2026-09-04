@@ -1,6 +1,250 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-> **2026-08-13 v2 next-arc overlay — CURRENT versus PLANNED:** The playable v2
+> **2026-08-29 current Arc 6 boundary:** Guardian/Titan conquest acquisition, Prime claims,
+> Stardust and compatible Compendium persistence are now executable browser-free, but no Guardian
+> Gear/material drop table exists in authoritative source, so `guardianAuthoredReward` remains
+> explicitly unsupported/open. The exact legacy conquest imbue oracle is executable evidence only.
+> Its role-less replace-slot result has no decided coexistence rule with natural prefix/suffix and
+> Pureforged crafted modifiers; when its 40% gate plans an imbue, settlement refuses before CAS
+> instead of inventing an item mutation. `MATERIALS_AND_GEAR.md` records the precise decision needed.
+> The source-authored one-time starter conquest Charter is now a separate live combat-settlement
+> reward: an accepted `st-conq` pays exactly 25 current/lifetime Stardust and one honored-Charter
+> count on the verified win, then removes its acceptance. It adds no item or material. The weekly
+> conquest Charter remains unavailable until its distinct week/slate lifecycle is implemented.
+
+> **Current Final13 local automated checkpoint (2026-08-28):** exact signed source
+> `7cb09699726b0f2cc069a1f123bce5ccd6d9e41f` (tree
+> `209abfea522c837ea7e236c6e6381f0174ed5f53`, parent `5ab4d3e…`) stayed clean and unchanged.
+> Layout passed 787/787 in 75,945 ms, SceneMemory 42/42 in 10,235 ms and Compendium 78/78 in
+> 43,752 ms with six PNGs. Slice passed in 423,847 ms with ten PNGs (`b001d8a1…`); 12-viewport
+> Glass passed in 85,944 ms (`c5805492…`); Recovery passed in 1,290,887 ms with a real
+> 1,200,308.5 ms active observation (`79f2bf8e…`) bound to those exact predecessors. Every stage
+> ran once and passed named verification; there were no retries, findings or instrument failures.
+> This is the stable local Phase-4 automated checkpoint and real Recovery certificate for that
+> exact source. It changes no economy/loot/crafting product, persistence, art, save, version, ruler
+> or browser policy. It is not HUMAN judgment, whole-Gate, hosted/merge, release/version or
+> deployment authority; physical-device heat/GPU evidence remains open. The seven evidence carriers
+> and synchronized references are preserved in signed local commit
+> `ff00d166fe66b0e0e16ca227fb389662b12565e4`. Keep temporary full caffeinate active while authorized
+> local work continues, then restore it when that work is complete. Next complete the full-code
+> review/polish checkpoint, then begin authorized current-system Arc 7/8 universe-wide visual polish. Edge `.107`
+> / CDP `1.3` is provenance only and compatible point updates never trigger rebaseline. Earlier
+> Final12/Final11/Final10 wording below is historical where superseded.
+
+> **2026-08-29 current Pureforged fixed-craft overlay:** a supported fixed slotted recipe
+> paid entirely from exceptional direct-material stock now creates one deterministic exact-item
+> modifier bound to the fixed-recipe owner, receipt, generation vector, and `GearInstance`. Mixed or
+> ordinary material payment preserves the ordinary output. Exceptional policy v1 deliberately
+> selects only mining yield, rich-strike chance, or capture-contact points because those three have
+> live consumers; the other legacy affix effects cannot currently become paid-but-dormant crafted
+> rewards. Existing magnitude ranges remain unchanged.
+>
+> The modifier survives the strict Arc 2 carrier and F3/F4 save/reload path, participates in
+> inspect/compare/search and the actual mining or capture capability projection, and is checked by
+> browser-free Slice/Glass oracles with unsupported-id controls. Natural affix/drop tables,
+> drawbacks, upgrades, sockets, vendors and general variable crafting remain unimplemented. Older
+> Arc 2/3 paragraphs below remain historical for their dates; this block supersedes only their
+> statement that every fully exceptional slotted craft was unavailable.
+
+> **Historical 2026-08-28 Final10 evidence and phase-oracle repair boundary (superseded by Final11 above):** signed clean source
+> `4405fb2b4ba7ef6898eb334330d7ef4300b5266c` passed Layout 787/787, SceneMemory 42/42,
+> Compendium 78/78 with six PNG bindings, Slice with zero findings and ten screenshots, and full
+> 12-viewport Glass with zero findings or instrument failures, each once with named verification.
+> Recovery ran once and stopped instrument-only at `offline-reopened` after fixture, complete
+> burn-down, exhausted suppression, close/checkpoint and true closed-target proof. The deliberately
+> read-only reopened Pertar card correctly rendered every capture action `unavailable`; the old
+> phase-blind poll required active/exhausted reasons. The 20-minute observation and recovery did not
+> run, so no economy, ownership-recovery, Gate, HUMAN or release claim follows.
+>
+> The local successor repair changes only phase-specific evidence and controls; material, item,
+> recipe, Inventory, ownership, save, RNG and action behavior are unchanged. A candidate PASS
+> retains the original active-exhausted, offline-reopened and reactivated active-exhausted Pertar
+> receipts; terminal finalization and named verification independently replay and cross-bind their
+> phase, document, cycle, facts, SessionRNG, state/UI and first-active-sample evidence. Missing,
+> swapped, coherently retokened, reversed or coherently recomputed route/card/runtime/pending
+> receipts are red.
+>
+> Before observation, `active-observation:running` must be persisted and survive any later
+> failure. Each Pertar wait receipts the strict remaining share of one absolute 20-second deadline;
+> clipping or exceeding it is red. The exhausted raw/live-state chain and reactivated→first-service
+> binding require at most 20 seconds, the same cycle/RNG and revision delta at most one. Internally
+> assessment-green retiming, +2-revision and next-cycle mutants remain terminal-red.
+>
+> The exact six-region Recovery SHA-256/UTF-8-byte inventory is: full collector
+> source `c1b4798eb21bad961d1dd984b515ca1cc884101ce28405c09613c1e361118f84` (217,578 B); production
+> boundary `a96138cc33ace145c77e64de584f4062d0860d4e418c8d3c19d06a1293db56be` (91,758 B); dedicated
+> helper→assessment→wait span `f568a7bb95a49d7dfb9839d2d11cc68743f87cf3af6eb52776f5551dba0e6045`
+> (10,442 B); phase assessment `c5a76e70c096a33df9bc12ba9a044c7d7bfddc1dc082d61e8365f5d7c99b35f5`
+> (6,184 B); offline-reopened→reactivated phase span
+> `b661d676f1679e9fc92590bf7849ee319ea0b8c78f444a91f46b06eccff29b6e` (7,125 B); and disabled-
+> suppression preparation/collector
+> `22e8704122103323d0dd0079ce0d2821d69f249a860f31e4062f51b9f8e68771` (13,190 B). The production
+> seal rejects dead-wrapping/comment-shadowing the sole operative span; the full seal rejects late
+> helper rebinding, while swapped calls/predicates, missing reactivation and dead copies stay red.
+> Browser-free current-byte checks at locally signed implementation/evidence commit
+> `3fbfcd5eba3d39e46a3e3e954e6eb5134a5f698e` (verified embedded SSH signature; parent Final10
+> `4405fb2…`) are 138 Vitest files / 1,494 passed / one skip, typecheck, `artunused`, focused Recovery
+> 5/5, Recovery selftest, root validate at 1,010 renders / 50 probes and independent review CLEAR.
+> This documentation changed source identity; its signed clean docs-only descendant later supplied
+> immutable Final11. The repaired assessor replayed that unchanged Recovery bundle green. Immutable
+> Final12, preserved at signed evidence checkpoint `2bf99bd…`, then passed Layout, SceneMemory and
+> Compendium before Slice stopped once/no retry on the stale one-red wrapper expectation; its product
+> assessment remained wholly green, and Glass/Recovery did not run. Signed repair `5ab4d3e…` fixed
+> only that harness expectation. Exact signed Final13 source `7cb0969…` then completed the entire
+> once-only named-verified Layout → SceneMemory → Compendium → Slice → Glass → Recovery chain green,
+> including the real 20-minute observation and certificate. Edge
+> `151.0.4129.107` / CDP `1.3` is provenance only and never a calibration or rebaseline trigger.
+
+> **Historical Final7 Glass stop and bounded Inventory presentation repair:** signed clean source
+> `53d030bb733beca1a68fd8e42358dfa4b10ed0e2` passed Layout
+> 787/787, SceneMemory 42/42, Compendium 78/78 and Slice with zero findings/scopes, each once with its
+> named verifier. Full Glass then ran once across 12 viewports and stopped terminal-red with 25
+> findings, zero report-classified instrument failures and zero retries; recovery correctly did not
+> run. Post-run review separated one Compendium heading/workspace product root and two genuinely
+> oversized A++/Mono 320px Inventory product defects from two hostile-row Compendium oracle
+> artifacts and four small-phone Settings oracle artifacts.
+>
+> The bounded product repair reflows `<=360px` Inventory rows to one column: complete wrapping copy
+> comes first and left-aligned status badges follow beneath it. Base name, rarity, slot, item level,
+> quality, full `instanceId`, Pending capacity claim, Equipped, Favorite and Locked remain visible;
+> nothing is truncated, hidden or replaced by a summary. No material, item, recipe, effect, quantity,
+> cost, carrier, schema, writer, RNG, action, ordering or numeric ruler changed. The Compendium repair
+> changes only heading/Close-row layout, and the Settings change is an isolated reveal, two-sample
+> settle/hit/native-receipt/exact-scroll-restore oracle repair.
+>
+> Final7 is immutable and cannot resume. At that historical boundary, bounded dirty-tree diagnostics
+> were repair evidence only and the next signed source had to restart the complete chain. Final10
+> supersedes that browser chronology as recorded above.
+
+> **2026-08-27 Final4 Glass recipe-oracle correction — implemented in signed Final5 source:** `earpiece`,
+> `diplobeacon` and `rl-mind` already carry `contact` effects consumed by the live
+> contact/capture-support capability and odds projection. Final4 Glass was wrong because its
+> independent recipe oracle still classified those three effects as unavailable. The repair marks
+> their oracle effect support live; it changes no product behavior, recipe availability, cost,
+> prerequisite, capacity/headroom rule, item definition or progression.
+
+> Signed clean source `39e4f20fb35e47d5a05855f040ad1ae1cd921f75` then supplied historical
+> Final5 Layout and SceneMemory passes before Compendium stopped instrument-only. Its bounded
+> membership-oracle repair became Final6 source `ea845d7…`; the later signed Final7 boundary and its
+> terminal Glass stop are described above. Edge `.107` / CDP `1.3` remains provenance only.
+
+> **2026-08-26 locale-independent economy ordering — current local candidate:** the source-neutral
+> Arc 2 ledger no longer calls ambient `String.prototype.localeCompare()` when it canonicalizes
+> coverage identifiers or quantity maps. One explicit `<` / `>` comparator now gives JavaScript's
+> deterministic UTF-16 code-unit order (for example `Z`, `a`, `ä`) to audit sets, imported snapshots,
+> source receipts and positive-quantity projections. A hostile-locale control makes
+> `localeCompare()` throw and still obtains the exact canonical order.
+>
+> This changes ordering mechanism only. It changes no material/item/recipe/research definition,
+> quantity, cost, source receipt, loot pool, affix/crafting policy, RNG, active-play cursor, save
+> authority, reward rate or ETA claim. It is pure automated determinism evidence, not current
+> real-browser, HUMAN, hosted, integration, release or deployment evidence.
+
+> **2026-08-26 Arc 3 Engineering overlay — current local implementation (2026-08-24
+> foundation):** the port now exposes
+> finite full-CF1 world mining, star skimming, six Research rows and every fixed legacy recipe in
+> the **Engineering & Shipyard** panel. Only Deep Scanners is purchasable among those six research
+> rows. Aligned current Deep Scanner ownership now adds one read-only **Mineral veins** row to the
+> orbital Survey card for an eligible exact proven lifeless non-Earth world. The row preserves
+> ordinary-deposit order and marks the separate biome vein with ✦. Living worlds, Earth,
+> cosmic/exceptional veins, grades, reserves, progress and the Mine action remain omitted from
+> orbit. All 62 fixed recipes are listed;
+> only connected-effect outputs with exact costs/
+> preconditions and capacity/revision headroom are actionable. Fully exceptional direct-material
+> slotted outputs now receive the deterministic three-live-effect exact-item modifier described in
+> the 2026-08-29 overlay; disconnected-effect rows remain unavailable. Mine, Skim, the eligible Deep-Scanner
+> purchase and eligible fixed Fabrication settle through one lease-fenced F3/F4 CAS with the exact
+> Cargo/item/technology changes, Arc 2/3 carriers, compatibility mirrors, Charter mining/fabrication
+> progress, immutable receipt and revision. Resource cursors settle from the prior active-play state;
+> failed writes retain the same plan and stale/duplicate/storage/capacity/revision failures publish
+> no optimistic result.
+>
+> Arc 3 implements fixed sinks and their real resource sources, not the remaining authored economy:
+> variable/natural loot occurrence, compatible natural-affix pools, drawbacks, upgrades,
+> sockets, vendors/bulk targeting, full recovery/pacing and HUMAN comprehension remain open.
+
+> **2026-08-24 Arc 2 v2 overlay — CURRENT versus OPEN:** the port now has executable authority
+> for the mature table facts: all 47 material ids; all 62 item definitions (20 stackables and 42
+> slotted gear/relics across 9 slots); all 6 legacy affixes; fixed recipe, prerequisite and Signature
+> graphs; legacy salvage output; and both earned legacy imbue paths as non-mutating evidence.
+> `GearInstance` gives every slotted copy a stable source-action/receipt-local identity, provenance,
+> exact base effects, inherited legacy affix and bounded construction axes. The strict versioned
+> Inventory codec owns equipped/protected/pending exact instances without collapsing duplicate bases.
+>
+> The v5 `inventory/arc2.loot` carrier migrates legacy gear all-or-nothing. If the truthful expansion
+> cannot fit capacity or extension-byte bounds, it retains the complete source as inspection-only
+> `legacy-protected`; it never truncates to a writable prefix. Future/corrupt/unknown carriers remain
+> protected. Legacy `items` / `equip` / `equipAff` are its compatibility mirror, and genuine legacy
+> Field Training restore now moves that mirror and carrier together under the same checked authority.
+>
+> The real Inventory provides bounded pages, exact inspect/filter/conditional compare, pending claim,
+> and durable Equip, Unequip and confirmed Salvage actions. Each action commits its product state,
+> compatibility projection, F4 authority, immutable receipt and F3 revision exactly once under the
+> current lease. These deterministic choices reserve the next save-lifetime receipt ordinal without
+> advancing a per-domain SessionRNG counter; stale/duplicate/storage failures never publish an
+> optimistic result or reroll.
+>
+> Production now retains that logical Inventory data, query, filters and page while the panel is
+> closed without retaining its hidden row tree or six dormant event subscriptions. Opening installs
+> the subscriptions once and renders the latest state; closing removes both presentation owners
+> idempotently. All registered panel openers share one delegated focus-capture owner rather than one
+> closure per opener, while exact opener focus restoration is unchanged.
+>
+> This ownership repair follows signed clean `862a75b316142348636abea442dab15e87393642`'s named
+> SceneMemory run `20260827-phase4-successor-scenemem`: one attempt, zero retries, complete cleanup
+> and 40/42 outcomes on Edge `151.0.4129.107`. Its only reds combined fixed heap growth with the
+> avoidable hidden surface. A non-certifying dirty diagnostic reduced phone/desktop maxima to
+> 676/673 nodes and 71/70 listeners, below the unchanged 704/80 ceilings; warm range, slope and all
+> other resource outcomes remained green. Signed source
+> `6c9ad85577bd90d6af883dd7b3f13556d24eb3ad` (tree
+> `a389646081f9fb5246825d1ac187eeb06504a8e4`) supplied exactly
+> `20260827-phase4-repair-candidate1`, `20260827-phase4-repair-candidate2`, and
+> `20260827-phase4-repair-candidate3`; each ran once with zero retries and complete cleanup on
+> Edge `.107` / CDP `1.3`. Their phone/desktop V8 maxima were 11,566,152 / 11,630,936 bytes and
+> aggregate maxima were 17,681,258 / 17,636,682 bytes; nodes/listeners stayed 676/71 and 673/70.
+> Signed activation `4a54c0d7473a5cec2c155be2cf8eb57e6fd28a93` (tree
+> `ff11158ac2ccc214490f6f3289d4a7a3660138e6`, parent `6c9ad855…`) changes only V8 to
+> 12 MiB (`12,582,912`) and aggregate heap to
+> 18 MiB (`18,874,368`), providing exact phone/desktop headroom of 1,016,760 / 951,976 and
+> 1,193,110 / 1,237,686 bytes respectively. Every other ceiling stays unchanged, and the preserved
+> `862a75b…` paired red still fails nodes/listeners. Budget SHA-256 is `e6c4aeea…`, and producer
+> bindings match. Signed evidence source `7362a0ea32e90b24e4988c81d566b82e20549e66` then passed
+> standalone SceneMemory 42/42 and its named verifier, followed by a serial Layout 787/787 result
+> carrier plus source-bound SceneMemory 42/42 and Compendium 78/78 carriers with named verification.
+> Layout schema v2 embeds no Git/source identity and that non-commit-tagged run lacks a preserved
+> execution record, so it is chronology-associated provenance rather than exact-source evidence.
+> Slice ran once and stopped terminal-red on preserved stale harness assumptions after product
+> hardening; it was not retried, and Glass and recovery did not run. At that historical
+> post-`7362a0e…`, pre-Final2 boundary, the repaired working tree changed only evidence oracles,
+> focused tests and evidence/documentation carriers and still required a signed clean restart from
+> Layout. Signed `041d1cf…` later supplied Final4 Layout 787/787, SceneMemory 42/42, Compendium
+> 78/78 and Slice PASS before Glass stopped on preserved instrument evidence. Its bounded repair
+> became signed `39e4f20…`; Final5 then passed Layout and SceneMemory before Compendium stopped on
+> the membership-oracle instrument defect described above. Final6 subsequently passed Layout,
+> SceneMemory and Compendium before its causal Inventory harness stop; signed Final7 then passed all
+> four predecessors before the terminal Glass result summarized above. That historical boundary
+> required a fresh signed successor chain from Layout; exact signed Final13 source `7cb0969…` later
+> passed current full Glass and Recovery. Whole-Gate, hosted, HUMAN and release authority remain
+> open. Compatible
+> Edge or Chrome point updates remain provenance only and never trigger calibration, rebaselining,
+> repinning or a threshold change.
+>
+> **At the Arc 2 boundary, still open and deliberately not fabricated:** its economy trace is
+> source-neutral and reports `sourceModelStatus: arc3-deferred`. Arc 3's current overlay above now
+> supplies the separate live world/star sources, eligible Deep-Scanner purchase and eligible fixed-
+> Fabrication actions; the Arc 2
+> trace remains unchanged historical evidence. Authored natural-affix pools and
+> compatibility, crafted modifiers/drawbacks, upgrades, sockets, targeting/vendor policy, complete
+> source-to-upgrade recovery/pacing, and HUMAN phone/desktop item comparison remain later criteria.
+> Fixed recipe and sink truth is executable development authority, not a claim that players can craft.
+>
+> For the recorded pre-current-WIP Arc 2 candidate, focused tests, one no-retry real Slice Smoke and
+> one Glass Matrix were locally green on Edge `151.0.4129.101`. In that recorded candidate, the full
+> suite's sole deliberate red was the Compendium measurement-authority mismatch scheduled for one
+> final multi-Arc reseal. This evidence does not certify the current moving working tree. No hosted,
+> integration, preview, release, version or deployment authority follows.
+
+> **2026-08-13 v2 next-arc overlay — historical pre-Arc-2 boundary:** The playable v2
 > slice currently preserves and displays imported economy state; it does **not**
 > yet run mining, fabrication, equipment changes, conquest loot, Guardian loot or
 > companion expeditions. The mature v1.8.9 table review is 47 materials and 62
@@ -56,11 +300,13 @@ families/tiers, world-cosmic veins (`cosmicVeinFor`), stellar extraction (`skimS
 the 7 cosmic gear pieces (`cg-*`), and the salvage system — is specified in
 `MATERIALS_AND_GEAR.md`. This doc no longer describes the complete engineer track.
 
-## 0. v2 loot usability, pacing and construction contract (approved, not implemented)
+## 0. v2 loot usability, pacing and construction contract (approved; Arc 2 subset implemented)
 
-The planned item-instance economy must feel like an understandable ARPG chase, not
-a spreadsheet of concealed rolls. This section is a future acceptance contract; none
-of its surfaces exist in the current v2 slice.
+The item-instance economy must feel like an understandable ARPG chase, not a spreadsheet of
+concealed rolls. Arc 2 now implements the stable instance, Inventory action, inspect/compare,
+legacy fixed-recipe/salvage and persistence foundations described in the current overlay. The
+remaining source, crafting, richer construction, pacing and human criteria in this section stay
+an acceptance contract rather than current capability.
 
 ### 0.1 Transparent, useful loot
 
@@ -79,6 +325,11 @@ of its surfaces exist in the current v2 slice.
   item level, upgrade, favorite/locked state and salvage eligibility. A filter can
   narrow a list; it cannot delete, hide a pending receipt, or make a protected item
   destructible.
+- At `<=360px`, each exact-instance row uses one column so A++/Mono text cannot be
+  starved by an auto-sized badge column. Complete base name, rarity, slot, item
+  level, quality and `instanceId` copy stays visible and wrapping; Pending capacity
+  claim, Equipped, Favorite and Locked badges remain visible beneath it. This
+  reflow changes no identity, order, action, filter, page, carrier or schema.
 - Salvage is an inspect-first action against one `instanceId`, with a disclosed
   deterministic output preview, explicit protection/favorite guards and a
   revision-checked destruction receipt. There is no bulk action that silently eats

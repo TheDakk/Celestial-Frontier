@@ -15,5 +15,22 @@
    - a RESET removes primary AND backup — "a reset must not resurrect via
      the backup" (CF-RR-002's reset law). */
 export * from './repository.js';
+export * from './revisioned.js';
+export * from './migration-v5.js';
+export * from './tab-lease.js';
+export * from './active-play.js';
+export * from './outcome-transaction.js';
+export * from './arc2-loot.js';
+export * from './arc2-fixed-fabrication.js';
+export * from './arc2-engineering-loadout.js';
+export * from './arc3-engineering.js';
+export * from './arc3-legacy-projection.js';
+export * from './arc4-ownership.js';
+export * from './arc5-ownership-migration.js';
+export * from './xp-firsts-authority.js';
+export * from './combat-settlement.js';
+export * from './guardian-acquisition.js';
+export * from './guardian-companion.js';
 export * from './import-v2.js';
 export * from './export-v2.js';
+export * from './world-identity.js';

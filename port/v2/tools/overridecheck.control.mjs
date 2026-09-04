@@ -64,6 +64,7 @@
    CV proves the new Set dependency cannot be shadowed by a live local binding.
    CW seals the TypeScript compatibility URL wrapper in the opposite direction;
    CX/CY independently seal the generated Canvas body and generated URL wrapper.
+   CZ/DA bind the only approved bare re-export to its exact aliases and count.
    Usage: node tools/overridecheck.control.mjs  (exit 0 = every control fires) */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -88,6 +89,7 @@ const CATALOG = path.join(root, 'packages/domain/descriptors/src/apphooks.verbat
 const ESCAPE = path.join(root, 'packages/art', `routeescape-control-${process.pid}.ts`);
 const VERBATIM = path.join(SRC, 'hdart.verbatim.js');
 const WORKER_VERBATIM = path.join(SRC, 'hdportrait.worker.verbatim.js');
+const BIOME_PROFILE_COMPAT = path.join(SRC, 'biome-visual-profile.ts');
 const CATALOG_WRAPPER = path.join(root, 'packages/domain/descriptors/src/apphooks.ts');
 const orig = fs.readFileSync(VICTIM, 'utf8');
 const routerOrig = fs.readFileSync(ROUTER, 'utf8');
@@ -97,6 +99,7 @@ const quadOrig = fs.readFileSync(QUAD, 'utf8');
 const catalogOrig = fs.readFileSync(CATALOG, 'utf8');
 const verbatimOrig = fs.readFileSync(VERBATIM, 'utf8');
 const workerVerbatimOrig = fs.readFileSync(WORKER_VERBATIM, 'utf8');
+const biomeProfileCompatOrig = fs.readFileSync(BIOME_PROFILE_COMPAT, 'utf8');
 const catalogWrapperOrig = fs.readFileSync(CATALOG_WRAPPER, 'utf8');
 let victimExpected = orig;
 let routerExpected = routerOrig;
@@ -107,6 +110,7 @@ let catalogExpected = catalogOrig;
 let escapeExpected = null;
 let verbatimExpected = verbatimOrig;
 let workerVerbatimExpected = workerVerbatimOrig;
+let biomeProfileCompatExpected = biomeProfileCompatOrig;
 let catalogWrapperExpected = catalogWrapperOrig;
 let tmpExpected = null;
 let nestedExpected = null;
@@ -189,6 +193,11 @@ const writeWorkerVerbatim = (next) => {
   fs.writeFileSync(WORKER_VERBATIM, next);
   workerVerbatimExpected = next;
 };
+const writeBiomeProfileCompat = (next) => {
+  assertCurrent(BIOME_PROFILE_COMPAT, biomeProfileCompatExpected, 'biome-visual-profile.ts');
+  fs.writeFileSync(BIOME_PROFILE_COMPAT, next);
+  biomeProfileCompatExpected = next;
+};
 const writeCatalogWrapper = (next) => {
   assertCurrent(CATALOG_WRAPPER, catalogWrapperExpected, 'apphooks.ts');
   fs.writeFileSync(CATALOG_WRAPPER, next);
@@ -248,6 +257,7 @@ const restore = () => {
   try { removeEscape(); } catch (error) { errors.push(error); }
   try { writeVerbatim(verbatimOrig); } catch (error) { errors.push(error); }
   try { writeWorkerVerbatim(workerVerbatimOrig); } catch (error) { errors.push(error); }
+  try { writeBiomeProfileCompat(biomeProfileCompatOrig); } catch (error) { errors.push(error); }
   try { writeCatalogWrapper(catalogWrapperOrig); } catch (error) { errors.push(error); }
   if (errors.length) throw new AggregateError(errors, 'override controls could not safely restore owned files');
 };
@@ -1026,6 +1036,23 @@ try {
   check('CY: a generated compatibility wrapper cannot omit Canvas serialization', run(), 'parser-fail',
     /generated canvas\/URL wrapper contract changed: hdPortraitFauna must exactly serialize hdPortraitFaunaCanvas\(g\)[\s\S]*PARSER is broken/);
   writeVerbatim(verbatimOrig);
+
+  writeBiomeProfileCompat(replaceOnce(biomeProfileCompatOrig,
+    'BIOME_PROFILE_KEYS_V1 as BIOME_VISUAL_KEYS_V1',
+    'BIOME_PROFILE_KEYS_V1 as BIOME_VISUAL_KEYS_V2',
+    'control CZ'));
+  check('CZ: the approved domain-profile re-export cannot change an alias', run(), 'parser-fail',
+    /biome-visual-profile\.ts@[0-9]+ bare re-export "@cf\/domain-biome-profile" is outside the exact audited dependency surface[\s\S]*PARSER is broken/);
+  writeBiomeProfileCompat(biomeProfileCompatOrig);
+
+  writeBiomeProfileCompat(biomeProfileCompatOrig + '\nexport {\n'
+    + '  BIOME_PROFILE_KEYS_V1 as BIOME_VISUAL_KEYS_V1,\n'
+    + '  BIOME_PROFILES_V1 as BIOME_VISUAL_PROFILES_V1,\n'
+    + '  createBiomeProfileSetV1 as createBiomeVisualProfileAuthorityV1,\n'
+    + "} from '@cf/domain-biome-profile';\n");
+  check('DA: the approved domain-profile re-export cannot be duplicated', run(), 'parser-fail',
+    /biome-visual-profile\.ts@[0-9]+ bare re-export "@cf\/domain-biome-profile" is outside the exact audited dependency surface[\s\S]*PARSER is broken/);
+  writeBiomeProfileCompat(biomeProfileCompatOrig);
 
   let shadowRouter = replaceOnce(routerOrig,
     "import { FAUNA2_NAME } from './faunaoverrides2.js';\n",

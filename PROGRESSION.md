@@ -1,6 +1,541 @@
 # Celestial Frontier — Player Progression
 
-> **2026-08-22 Arc 1C progression overlay — current implementation:** clean
+> **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
+> all dated progression/evidence blocks below remain immutable):** hosted run `33584052508` tested
+> exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once with no retry. Layout passed **787/787**;
+> the first and only red was the production-quarantined SceneMemory fixed-eighth phase-validity
+> synthetic allocator selftest,
+> before the develop admission chain began. The authorization is consumed and no hosted authority
+> remains.
+>
+> The local uncommitted successor makes all live SceneMemory native-heap work
+> **production-only/quarantined** while deterministic controls remain universal. Develop admission
+> is **Compendium → Slice → Glass**; production/release, only after explicit SceneMemory activation,
+> is **SceneMemory → Compendium → Slice → Glass → Recovery** on unchanged source. This changes no
+> progression, Charter, achievement, reward, creature or save behavior and closes no progression
+> criterion. See `ROADMAP.md` for the live handoff and `port/v2/README.md` for the canonical battery
+> commands.
+
+> **2026-09-01 current progression-ceremony green evidence overlay (matches exact signed code;
+> supersedes older “current” labels while preserving every dated block):** exact SSH-signed source
+> `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+> `25cb76916c8f3fcd00a916864abb9402932cdbec`) passed the complete browser-free profile at
+> **263 files / 2,719 passed / 1 skipped**. The same unchanged source passed the named-verified,
+> once/no-retry chain: Compendium `20260902020238003-42290-3e0d5a9601` **78/78**, zero findings;
+> develop Slice `20260902020406920-42750-f6dc8783b4cd`, zero findings/scopes, report/log SHA-256
+> `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` /
+> `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`; and Glass
+> `20260902021048274-43570-053d2c926673`, **12/12** viewport/reload outcomes and **104/104**
+> controls with zero findings/instrument failures, report SHA-256
+> `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`. Four exact retained
+> carriers under `audits/` bind the Compendium report, Slice report/log and Glass report.
+>
+> The progression-ceremony drain now proves its queue remains intact before any shift while
+> `productActionInFlight` belongs to a newer receipt-bearing action, then resumes the deferred
+> ceremony exactly once after product/toast ownership clears. The same certificate also covers the
+> dynamically observed, deadline-clipped Guide tail and D-TRAIN's stable
+> raw/live/focus/pending-cleared bulletin fixed point. Ceremony presentation ordering is the sole
+> product behavior change: the legacy game, achievements, ranks, Charters, rewards, loot,
+> deterministic generation, save schema, creatures/plants/biomes/Guardians, audio, CSS, numeric
+> rulers, browser pin/version policy and no-retry policy are unchanged. Hosted run `33572309149`
+> remains immutable red and its ninth
+> authorization consumed; no new hosted attempt, push, merge, release, version bump, publication or
+> deployment is authorized.
+
+> **2026-09-01 current progression-ceremony ownership correction (matches local code as of
+> 2026-09-01; supersedes older “current” labels while preserving dated evidence):** PR #35's
+> ninth one/no-retry hosted attempt tested exact head
+> `efad4b44c86ad89cbed39c18a39e2bbc9370caaf` through synthetic merge
+> `778d3cf58937476a65c550e875b946290c0967b4`. Its Charter recovery outcome was exact, but an
+> older queued Share-achievement ceremony surfaced while the newer Landing transaction was still
+> held, so the expected one aggregate notice advanced the toast serial twice.
+>
+> Main now checks `productActionInFlight` before it shifts or delivers the serial ceremony queue.
+> An active receipt-bearing owner leaves every queued ceremony intact and re-arms the drain after
+> 200 ms; replacement reload may still clear the queue, and an already-visible toast still delays
+> delivery. The Landing/Charter aggregate therefore retains the immediate outcome surface, while
+> the older ceremony resumes exactly once after product ownership and toast ownership allow it.
+> Smoke-only callback/deferral/delivery counters prove that boundary without adding save state.
+> Achievement, rank, Charter, reward, RNG, copy and sting rules are unchanged. The hosted run
+> remains immutable red, and this changed source has no new browser certificate yet.
+
+> **2026-09-01 current automatic-arrival transient-latch progression overlay (matches local code
+> as of 2026-09-01; supersedes older “current” labels while retaining dated evidence):** authorized
+> PR #35 run `33522000552` tested exact head
+> `6f6fb4fbb80ebdc685fd073ac6b06a1496a8f921` against develop base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b`. Compendium passed; the one/no-retry Slice then
+> stopped when universe-to-galaxy zoom failed to reach its browser outcome within 6 seconds. A
+> transient persistence refusal had consumed the automatic galaxy-arrival one-shot latch before
+> any accepted attempt; wormhole traversal carried the same latent ordering defect.
+>
+> The direct-travel owner now reports synchronous acceptance only after it has claimed the shared
+> coordinator and installed its `activePersist` ownership, before the first await. Galaxy arrival
+> claims its latch only from that callback; wormhole begin derives its accepted result and claims
+> its automatic-key latch inside the same callback. The same unchanged zoom intent remains retryable while persistence is held,
+> then settles exactly one travel commit after release. This
+> changes no Charter, arrival/event award, achievement, rank, reward, reach, balance or deterministic
+> generation rule. The non-mutating diagnostic hold creates no save write, revision or receipt, and
+> Slice may accept `migrated-v4` only for its explicitly bound initial exact document. Exact clean
+> SSH-signed source `a45220421195042a8702aa1265e96d40d839fc38` passed the tracked-input develop
+> profile at **259 files / 2,665 passed / 1 skipped**. On that unchanged source, named-verified
+> Compendium `20260901164254371-82172-eaeba62d1a` passed **78/78**; named-verified Slice
+> `20260901164421191-82525-616ea739fbb1` passed with report SHA-256
+> `d9c4abec7764d37bb029d115d2162931ccc5ffaf3fb26754d2ab3881a4bd902b`; and exact-Slice-bound
+> named-verified Glass `20260901165038911-82999-7c3323ea05c7` passed **12/12** viewport classes
+> with report SHA-256 `2554d6843a198ee02b3a417bb77ea035f2c73bc4db47ff0124e6ccb1783fc887`.
+> Each browser stage ran once with no retry. No timeout, retry, browser
+> pin or hosted authority was added, and no push or merge is authorized.
+
+> **2026-09-01 current Share progression/waiter-scope overlay (supersedes every older “current”
+> label below; dated evidence remains immutable):** exact clean SSH-signed source
+> `4a595e2fa3305bf2531fc4051d09314490587e83` closes the earlier 3f8f870 harness-only lexical red
+> without changing Share owner-plus-conditional-aggregate semantics, achievements or rank rules.
+> Its tracked-input develop preflight passed **259 files / 2,660 passed / 1 skipped**; browser-CDP
+> selftest and live Edge preflight passed. Compendium `20260901123144352-62163-00064c788a`
+> passed **78/78** and named verification. Exact-source Slice
+> `20260901123326914-62541-f7f7c336aa70` passed and named-verified with report SHA-256
+> `19833fe4a24dcbc12367e2bcde5b5be3da33578e278e5b3c29b4943357e4b7dd`. Glass
+> `20260901123953804-63082-f5844810dfb5` consumed that exact Slice, passed all **12/12** viewports
+> and named verification, and has report SHA-256
+> `a4f6d9b1431e47cf87d7a53c49758af3a6d0244e0ba749368dda579de30bf597`. Each browser stage ran
+> once with no retry.
+>
+> The shared waiter now belongs to the enclosing execution scope used by both full-journey and
+> outcome-controls modes; the Acorn audit binds its single declaration to all five direct calls and
+> keeps the re-gated mutant red. This remains a harness-only repair with no product or progression
+> change. Edge `152.0.4191.53` / CDP `1.3` is provenance only; compatible point updates never
+> require a rebaseline. No hosted attempt, push, merge, release, version bump, publication or
+> deployment followed from this local certificate.
+
+> **2026-08-31 historical local a046 collision-control repair overlay (superseded by the current
+> overlay above and every older
+> “current” label below; dated progression and evidence checkpoints remain immutable):** exact
+> clean SSH-signed source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium
+> **78/78** once/no-retry as `20260831155807329-24237-1c6d2e89d5` in **64,166 ms** with named
+> verification. Its exact-source develop Slice `20260831155943782-24588-a98f13f2c7b7` stopped
+> terminal red once/no-retry after **359,647 ms** with one
+> `world-identity-collision-controls-failed` scope; named verification exited 2 and Glass did not
+> run. The base world-identity collision outcome and all product progression state were green.
+>
+> The runner mixed newest-first Atlas rows `[Beta, Alpha]` with receipt order `[Alpha, Beta]`,
+> leaving its pointer mutant inert. Signed repair/evidence commit
+> `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives a distinct measured sibling, rejects inert/equal
+> cases, causal-stops a red base and executes a reversed-order regression. Existing Charter rules,
+> rewards, achievements, ranks, save authority, creature/genome identity, biome and art structures
+> are unchanged; no gameplay, ruler, timeout, retry or Edge contract changed. Focused coverage is
+> **1 file / 6 tests** and independent review is **CLEAR**.
+> **A New Foundation** remains **77** bullets with ordered SHA-256
+> `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+>
+> The complete develop profile is green at **253 files / 2,561 passed / 1 skipped**, all TypeScript
+> programs, **34** art sources, **1,014/1,014** routes and **454** non-inert fields. Current
+> Compendium producer/budget authority remains
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. A fresh signed candidate
+> and one unchanged-source **Compendium → Slice → Glass** chain remain. SceneMemory is
+> production-only. No hosted attempt, push, merge, release, version bump, publication or deployment
+> is authorized.
+
+> **2026-08-30 historical local aggregate-follow-up UI release correction (matches local code and
+> supersedes narrower current overlays below):** aggregate progression still owns only its one
+> coalesced receipt/F4 CAS, canonical achievement append and monotonic best-rank mirror. A capture
+> can queue that follow-up before its awaiting Survey repaint; the repaint is correctly read-only
+> while Arc 9 owns the shared coordinator. Arc 9 now fully releases product/persistence authority
+> before guardedly republishing a still-current visible writable non-Training Capture surface.
+> Replacement, convergence, ecology, coordinator or presentation failure remains fail-closed. This
+> changes no achievement/rank rule, reward, receipt ordering, Capture pool/Yield/RNG, save schema or
+> creature identity. Exact 656 evidence isolated the stale-disabled card before any storage hook;
+> the bounded successor is focused browser-free green and awaits a fresh no-retry browser chain.
+> Its cumulative **A New Foundation** bulletin has 75 unique bullets with rendered ordered SHA-256
+> `52db4f0084c100980d98ae6b847af2ffc0cbbd7430758b77a14b56bb83eac6e1`.
+
+> **2026-08-30 historical exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (matches the local
+> working tree and supersedes narrower “current” status below; dated progression evidence remains
+> immutable):** exact clean SSH-signed evidence source
+> `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium **78/78** once/no-retry in
+> **64,108 ms**. Its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> **111,490 ms** with exactly one Arc 0 Landing publication-oracle scope. The exact carriers and
+> replay are preserved; the stored Slice remains FAIL, and Glass and Recovery did not run.
+>
+> The retained old-document state proves the Landing product was exact and its Pertar card correctly
+> remained open; the stale oracle also required that post-Survey card to be closed. The replay
+> binds that contradiction and its missing historical held `cardCode`/target capture; the current
+> uncommitted runner atomically captures those values and moves the complete future decision into
+> browser-free contracts. No Charter, reward, rank, achievement, save schema, gameplay, retry or timeout changes
+> follow; prior focus, Survey-predecessor, coordinator and Arc 5 v3 repairs remain. Final
+> browser-free validation is green at **251 files / 2,501 passed / 1 skipped**, with all TypeScript
+> programs green. The cumulative **74-bullet** development bulletin has rendered
+> ordered SHA-256
+> `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
+>
+> Active derived Compendium producer / index / owner / generated-service-worker authority is
+> `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3` /
+> `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c` /
+> `assets/main-BYnoCcc9.js` (`13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`) /
+> `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Current Scene build
+> authority is `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17`; Compendium / Scene
+> budget-file SHA-256 is `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` /
+> `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. Fixed rulers, numeric
+> ceilings, historical samples and 78 outcomes are unchanged; compatible Edge point versions are
+> provenance only. No fresh repaired-head browser, Glass, Recovery, Gate, HUMAN, hosted, merge,
+> release, version or deployment authority is claimed.
+
+> **2026-08-30 current Mine/Starter-Charter atomicity clarification (matches local code):** a real
+> durable Mine action owns both extraction and any qualifying accepted `st-mine` settlement in its
+> single F4 receipt/CAS. For the exact retained veteran fixture, the valid successor appends
+> `st-mine` to `chs`, canonicalizes `chp['st-mine']` from the imported over-complete value 2 to the
+> authored completion target 1, removes `st-mine` from `chacc`, advances honored `charters` 2→3,
+> and pays 15 Stardust to both the current balance (`essence`) and lifetime earned counter
+> (`essenceEarned`). Extraction, cooldown, full-address source proof and all unrelated state remain
+> exact. These six Charter/reward fields are coupled Mine-owned effects, never preservation drift.
+> The oracle accepts them only from the same canonical required predecessor as the production
+> Starter-Charter owner, and separately proves every durable field reached the live SaveState;
+> malformed predecessors and live-only publication drift remain red without launching a browser.
+> The exact `4a82d9b…` Slice red that exposed the stale oracle remains FAIL; at that historical
+> changed-head checkpoint its repair was browser-free green at 250 files / 2,495 passed / 1 skipped
+> with typecheck green and changed no player-facing progression rule. The current aggregate boundary
+> is stated at this file's top.
+
+> **2026-08-30 current replacement boot-catch-up clarification:** aggregate progression still owns
+> one receipt/F4 CAS and only the canonical achievement append plus monotonic `stats.bestRank`.
+> Whole-expedition replacement first clears the old receipt history; the replacement document then
+> owns one independently expected receipt-free bootstrap without advancing ordinal. An independently
+> projected `current` state consumes no progression receipt. A projected `ready` state legitimately
+> commits the new expedition's silent ordinal-zero `arc9-progression-refresh-v1` fixed point before
+> publication, so the next judged outcome owns ordinal one. For the retained fixture the exact
+> sequence is replacement revision 8 → bootstrap 9 → Arc 9 revision 10 → Smoke revision 11.
+>
+> The fixture begins with `first`, `field10` and bounded unknown `fake`. Its exact aggregate-only
+> append is `hybrid`, `rare`, `crafter`, `geared`, `lastvein`, `cosmicfind`, `skimmer`, `event1`,
+> `event5`, `guard1`, `essence500`, `bred1`, `bredfail`, `feed5`, `feedfail`, `duel1`, `duelw1` and
+> `jumps5`; `stats.bestRank` remains 3 and the successor is a fixed point. The receipt witness remains
+> `arc9p1:a8f5961bf107300e280aa9cda8160e051e02ab691c80cda40eaf87642d4f62c9`. Event-owned
+> achievements remain excluded and every non-owned save field remains exact.
+>
+> Exact signed `e4f5af4bf628ee2f0b2485077e46dc0ff86b2b0c` passed Compendium 78/78 before its
+> once-only Slice stopped terminal red after 98,988 ms with four scopes. Its F4 finding came from an
+> obsolete native-boundary/raw cross-clock oracle, not aggregate policy or product failure. The
+> strict post-boot product projection is
+> `e40a542553ab61a1f9c5800e856a8f1e3c5efd341fdb73dec776d622258bd31c`; it keeps the full
+> achievement append, route/Atlas repair and unrelated state exact while allowing only bounded
+> clock-age normalization. No achievement, rank, reward, save-schema or player-facing policy changed.
+> Glass and Recovery did not run, and the historical red remains FAIL.
+
+> **2026-08-30 current local canonical-successor + named-CF1 correction (supersedes narrower same-date
+> descriptions below where they differ):** progression-bearing product writers now verify their
+> expected successor with the deterministic transaction owner's `canonicalizeState`, which is bound
+> to the same detached registry and one validated commit clock used by the write. The converted set
+> is Arc 0 Atlas, Landing and world naming; Arc 5 Field Scout; Arc 9 Atlas Favorite, explorer naming,
+> Frontier ending, nameplate, Sharing, Survey and Travel; Binder set claims; and Starter Charter
+> acceptance/staging. Their existing receipt, reward, achievement, rank, idempotence and no-retry
+> rules are unchanged; the correction prevents codec housekeeping from making a valid committed
+> fixed point disagree with a raw or differently clocked prediction. Historical evidence below is
+> not relabelled as proof of this local successor.
+>
+> Accepted custom-world naming no longer starts aggregate progression catch-up before a submitted
+> route can own the shared coordinator. Direct Travel atomically owns its accepted route, arrival,
+> galaxy visit and any proved galaxy-kind event; Follow owns that arrival aggregate plus Jumps and
+> `wayfarer` in one receipt. Direct Travel remains ineligible for Follow/Jumps/`wayfarer`. If the
+> post-name route refuses or otherwise does not join progression, the world-name transaction queues
+> exactly one aggregate catch-up after its own settlement. A synchronous composite reservation
+> defers/coalesces ordinary save checkpoints across that handoff and re-arms one afterward, so a
+> debounce cannot replace the removed progression race.
+> The bounded wait retains its diagnostic timeout; it does not retry, sleep past a refusal or infer a
+> route outcome.
+>
+> This boundary was isolated by exact clean signed source
+> `941ba45a96e5baabadc255d53db86fa935cefe81`: Compendium passed **78/78** once/no-retry in
+> 65,731 ms, then Slice `20260830115041916-36220-7ed2dd2ef398` stopped once/no-retry after 63,106
+> ms with **63 findings / 42 scopes**. Sixty-two are Guide/Release instrument drift from both early
+> reads before deferred DOM publication and stale inventory/player-copy expectations (the superseded
+> 26-partial/15-unavailable split and older Scout, conquest, reward and audio claims instead of the
+> current 9/41/34/7 authority and live copy); the independent final product finding is the named-CF1 Follow
+> starvation repaired above. No Glass or Recovery ran. The current changed head has no browser
+> certificate yet and changes no rank formula, achievement manifest, reward, creature, genome or
+> save schema.
+
+> **2026-08-29 current local Binder and Prime-Frontier progression overlay:** Records now appends
+> the legacy Binder as six exact type-collection pages—**The Spectrum, The Sixteen Realms, Body
+> Plans, Ability Themes, Flora Flavors, and Size Classes**—derived from canonical Compendium species,
+> never from procedural individuals. Seven non-Paragon sets are live one-time claims: Four Crowns
+> **25**, The Five Flavors **40**, Master of Arts **80**, The Bestiary **80**, Warden of Realms
+> **100**, Against All Odds **60**, and The Apex Court **150** Stardust. A completed, unclaimed row
+> crosses one receipt/F4 revision CAS and atomically appends its `claimedSets` id, raises current and
+> lifetime-earned Stardust, and applies any newly proved aggregate achievement/best-rank successor.
+> Incomplete, already claimed, malformed, overflowing, stale, lost, or storage-failed attempts
+> publish nothing and never retry. **The Fifty Paragons** remains visible but unavailable until its
+> deterministic discovery owner is ported; an imported `para10` claim is preserved and is never
+> exposed as a claim target.
+>
+> The Prime Codex now projects the canonical nine Signatures in registry order: **Earth** (`stone`),
+> **Fire** (`flame`), **Air** (`sky`), **Stellar** (`star`), **Water** (`ocean`), **Electric**
+> (`mind`), **Poison** (`life`), **Void**, and **Prism**. An unclaimed Titan may appear only on a
+> registered unconquered world when its minimum region, deterministic 8.5% placement, and
+> world-type rule agree; Void has the established first-selection priority. Only a verified Titan
+> conquest writes that Signature and its exact world in the combat transaction. Counts 0/2/4/6/8/9
+> advance the separate galaxy-radius ladder from Solar Reach through the Frontier, and the ninth
+> distinct claim opens the Frontier ending choice.
+>
+> The five established one-time legacies are **Sovereign of the Frontier**, **Warden of Life**,
+> **World-Shaper**, **The Unseen Hand**, and **Prismatic Pathfinder**. The first four require all
+> nine Signatures; Prismatic Pathfinder additionally requires at least three conquered worlds, the
+> Electric (`mind`) Signature, and at least 40 catalogued species. The action changes only
+> `frontierEnding` through one receipt/F4 CAS, is idempotent only for the same already-durable
+> choice, cannot overwrite a different choice, and never retries or publishes optimistically.
+> Durable ambiguity converges by read-only reload. A syntactically valid unknown imported ending
+> remains visible protected evidence rather than being interpreted, repaired, or overwritten.
+
+> **2026-08-29 current local Arc 9A rank, Records and achievement authority:**
+> `@cf/domain-progression` owns the exact ten-rank ladder, all six expedition-score weights, all ten
+> permanent nameplate rewards, Eternal Frontier foil, endless `✦N` prestige every 3,000 score, and
+> the complete ordered **96-achievement** manifest. The **68** aggregate rules are strict bounded
+> pure projections. The **28** legacy `t:null` rows stay event-owned: they may display a durable
+> unlock, but no nearby counter is allowed to guess that the event happened. Unknown bounded
+> compatibility ids remain explicit and retain legacy rank credit without masquerading as a known
+> achievement.
+>
+> The v2 app now projects sanitized `SaveStateV2` owners into those facts and renders the exact six
+> factors, current/next rank, permanent nameplate reward and all 96 rows across 13 native Records
+> shelves. A coalesced follow-up after each receipt-bearing product action appends every newly proved
+> aggregate id in manifest order and monotonically raises `stats.bestRank` through one F4
+> deterministic transaction: one immutable receipt, one lease/revision CAS, no retry and no
+> precommit publication. The committed canonical save must reopen at the exact fixed point before
+> Main publishes only the detached `unlocked` list and best-rank mirror. Existing event-owned and
+> safe unknown ids keep their order; overflow refuses all-or-nothing. The canonical v4 `ach` and
+> `br` fields remain the only persistence carriers, so no save schema or migration was added.
+>
+> The top-bar nameplate now follows the saved unlocked rank hue, including the Eternal Frontier
+> foil. `progression-ceremony.ts` accepts only an exact append delta from one verified committed
+> publication: every newly appended known achievement keeps manifest order and receives its
+> `Achievement · <name>` text notification plus the established rarity sting at tier 3; a strictly
+> higher saved best-rank index receives the named Rank Up toast, tier-5 sting and existing gold FX
+> semantic. The gold palette is fixed, the mature ceiling is 40 particles, and current motion/device
+> effects policy may lower that count. Main queues each result once by committed revision; it asks
+> AppChrome only for the player-chip center geometry, never its element. Missing geometry or
+> Web Audio leaves the durable fact and text ceremony intact. Boot catch-up, Training sandbox,
+> replay/out-of-order revision, already-durable observation, refused/stale/failed storage and
+> committed convergence are silent. Before consuming a queue entry, Main defers while
+> `productActionInFlight` belongs to a newer receipt-bearing action, preserves the complete queue,
+> and schedules another drain; only an idle product owner and idle toast permit delivery.
+> Replacement reload remains the sole path that clears pending ceremonies. The ceremony is
+> presentation only and invents no currency, item or achievement reward.
+>
+> Settings now offers Auto/current-rank or every color through the durable best-rank record. One native choice
+> uses one receipt/F4 CAS with no retry or optimistic color publication; locked or malformed choices
+> refuse, and unconfirmable durable results reload instead of applying twice. Exact event
+> joins now share their real owning transactions: canonical Earth landing → `home`; durable world
+> naming and exact companion Rename → `namer`; first verified settlement → `settle1`; a successful
+> pairing whose two captured pre-action parent tiers are both Legendary-or-better → `bredlegend`;
+> verified player combat that leaves 1–19 HP → `brink`; valid-world Share → `share`; and an accepted
+> source-proven/reach-authorized CF1 Follow → `wayfarer`; twelve source-derived Survey facts →
+> `civ`, `spacefar`, `sol`, `binary`, `seebh`, `seens`, `seemag`, `seewd`, `seerg`, `seesg`,
+> `seeproto`, and `seebd`; galaxy arrival or wormhole traversal → `quasar`, `dwarfg`, and `worm`;
+> and the first explicit Atlas Favorite → `curator`. Accepted Follow composes its accepted route,
+> Jumps, `wayfarer`, galaxy visit and any proved galaxy-kind event in the same receipt. Capacity is
+> proved before each writer, existing ids are fixed points, and each committed projection is
+> independently rechecked before publication. Those are **23** distinct event rows. Exactly five
+> remain owner-blocked—`daily`, `decade`, `survivor`, `fieldmedic`, and `gambler`; the aggregate
+> action can never stand in for one.
+>
+> Explorer self-rename is now live from **Settings → Explorer name → Change name**. It uses the
+> shipped sanitizer and 24-character cap, changes only `explorerName`, treats cleaned-empty and
+> unchanged input as receipt-free no-ops, and crosses one receipt/F4 CAS without retry or optimistic
+> publication. Durable ambiguity converges read-only through reload. Because this is identity-only,
+> it deliberately does not unlock the discovery-name `namer` achievement. Exactly the five event
+> owners named below remain open; durable achievement/rank notification ceremonies are live, while
+> any separate material reward design remains deliberately absent.
+
+> **2026-08-29 current local Starter Charter progression overlay:** the live two-chain board exposes
+> only one incomplete link per chain plus already accepted rows, requires explicit acceptance before
+> tracking and enforces three active slots. `st-scan` and all weeklies remain protected; `st-conq`
+> stays combat-owned. Exact already-proven durable state may complete a state-style row during the
+> acceptance receipt, but `st-giants` remains a five-press counter and unavailable `st-scan` never
+> auto-completes. New Landing/Mine events carry a full registered world address: canonical Earth is
+> excluded from `st-land`, and Sol-tour filters prove the exact Sol hierarchy/ordinal rather than a
+> reusable planet seed. Live Landing, Mine, canonical fixed-component Fabrication, non-null Scout
+> set/switch and combat writers fold their matching Charter successor into the deed's existing F4
+> receipt/CAS; stand-down, no-op, refusal, stale/storage failure and convergence add nothing.
+>
+> Completion pays the authored 10/15/25 Stardust value to both current and lifetime totals, raises
+> honored Charters once, removes acceptance and may append aggregate achievements/promote best rank
+> in that same candidate. The fixed gear rows are Headlamp (`st-mercury`), Mag-Boots (`st-mars`),
+> Meteorite Pendant (`st-giants`), Field Leggings (`st-ice`) and the currently unavailable Earpiece
+> (`st-scan`). A deterministic Arc 2 instance auto-equips only into an empty slot; inventory overflow
+> uses the 500-entry pending-reward carrier, and exhausted/corrupt/future carrier or numeric capacity
+> refuses all rewards together. Only the verified postcommit progression delta reaches the ceremony
+> path described above.
+
+> **2026-08-29 current Arc 5/6 XP and Charter joins:** successful owned-fauna conquest pays the
+> canonical `20 + world tier` XP, or `60 + world tier` against an Apex Guardian/Elemental Titan, in
+> the same verified combat CAS as injury, conquest and rewards. A first loss by that exact creature
+> on that exact world pays +3; a near-brink result raises the one-time maximum to +5, so ordinary→
+> near-brink pays +3 then +2, near-brink-first pays +5, and no later loss can farm it. The bounded
+> archive/`xpa` carrier preserves older first-award membership. Live captured Guardians and Titans
+> now use that same exact win/loss XP authority as combat champions. Their XP and injury persist in
+> the separate `arc6.guardian-companions` overlay rather than Arc 5; because they carry no bred
+> lineage, a defeat permanently tombstones the last-live state and removes the champion from the
+> combat roster and composite Compendium across reload. Their acquisition record and any Prime
+> Signature claim remain independent. They gain no care, breeding, mission or Recovery progression.
+> Successful nonlethal Breed now gives the newborn +2 XP and adds +5 exactly once for the canonical
+> unordered parent-species pair. Its child XP, canonical `xpf` claim, any `xpa` overflow replacement,
+> `c3-breed` tick and eligible `bredlegend` join share the same pre-draw-certified F4 receipt/CAS as
+> the exact-five ownership successor. Rename remains identity-only and may join `namer`; Field Scout
+> designation changes only the role and does not yet grant fresh-species XP or redirect injury.
+
+> **Earlier local Arc 4 Charter checkpoint (2026-08-29):** the playable capture writer prepared
+> one Chapter 2 `c2-scan` tick only for the first durable successful Tame, Scavenge, or Sample on
+> each complete source-proven world beyond Sol. Exact pre-action ownership discovery provenance
+> supplies world uniqueness; the Charter change shares the capture's pre-draw capacity proof,
+> F4 outcome, receipt, revision and fenced F3 CAS. A miss, exact Sol, unreachable or past-chapter
+> source, later success on that world, saturated goal, stale tab or failed write banks nothing and
+> cannot retry. Unrelated Charter progress is preserved exactly.
+> Capture and Search travel bind exact galaxy/star coordinates plus seeds; same-seed wrong-parent
+> routes cannot inherit reach. A successful capture that earns no bioscan also cannot reconcile an
+> imported Charter chapter.
+>
+> This deliberately replaces, rather than claims parity with, v1.8.9's separate Discover Life
+> control. It does not append to the legacy survey/Records ledger or change `stats.surveys`; Survey
+> Records and accepted/weekly bioscan Charters remain unavailable. Guide, Training and the v2 draft
+> said so explicitly. At that checkpoint, focused and full browser-free product/copy evidence was
+> green at 230 files / 2,315 passed + one skipped; the older signed
+> `3f69e88…` browser certificate predates this writer, so fresh exact-source browser and HUMAN
+> evidence remain open. No release, version, deployment or hosted-write authority follows.
+
+> **2026-08-27 current-candidate progression correction:** capture contact is now a real equipped
+> gear effect rather than inert copy: each effective point adds 1.5 percentage points to capture
+> chance, equipped gear contributes at most +25 points, and the final chance remains capped at 95%.
+> First contact remains unavailable. F4 now distinguishes storage failure while acquiring from
+> failure while renewing its active-play lease. Acquire failure grants no lease and accrues zero;
+> renew failure first settles the already-earned visible/answerable interval, then revokes the lease
+> and stops further accrual immediately. The domain permits reacquisition only through an explicit
+> later heartbeat, while the app makes the document read-only, stops heartbeat/answerability/player
+> mutation and converges through one protected reload instead of starting an automatic reacquire
+> loop. A rejected repository-revision read during authority verification follows the same protected
+> convergence path, and periodic/`pageshow` callbacks cannot reacquire while that hold is set. Cleanup
+> attempts audio disposal and runtime release, aggregates failures into the convergence witness, and
+> reloads regardless.
+>
+> Charter landfall classification also follows the complete registered canonical CF1 address. Sol
+> requires the exact home-galaxy seed/coordinates, Sol-star seed/coordinates and expected planet
+> source ordinal; a colliding leaf seed under another hierarchy is non-Sol, and an unregistered
+> lookalike cannot bank. A committed first landing updates only matching landfall scopes from the
+> current chapter onward and caps every goal at its authored target. These repairs still require the
+> final frozen-producer battery and bound browser campaign before they become current exact evidence.
+> Chapter 1 Mine credit uses the same hierarchy discipline: exact home-galaxy and Sol-star seeds and
+> coordinates, exact dead-world seed, and exact source ordinal. A same-seed planet under any changed
+> parent coordinate or ordinal grants no mining progress.
+>
+> Browser evidence uses three separate version-tolerant authorities: the root Chromium-family/CDP
+> `1.3` authority with source-derived layout/boot capabilities and exact per-run provenance, the
+> Compendium ruler with its own collector/transport capability and producer bindings, and the
+> SceneMemory ruler with its own capability/profile contract and producer binding. Compatible point
+> updates do not merge those rulers or move their fixed thresholds; final battery and independent
+> audits remain pending.
+
+> **2026-08-26 progression checkpoint (historical where superseded):** the published ecology epoch now advances
+> only from F4's visible-and-answerable, lease-owned `activePlayMs`, through one receipt-free
+> lease/revision CAS before publication and exact scene reprojection. Until that refresh completes,
+> epoch-dependent Survey/Planetside/capture progression is fenced. This does not close Arc 4: the
+> ordinary Slice at that checkpoint still recorded `recoveryClaimed:false`. Exact signed
+> `3f69e88…` later completed the uninterrupted 20-minute Recovery certificate; HUMAN first-journey
+> review and fresh evidence for newer local product work remain open.
+>
+> After owned `scan1`, an eligible registered current-system lifeless non-Earth orbital **Mineral
+> veins** Survey row passively lists ordinary mineral deposits in canonical order plus the optional
+> biome-only vein marked `✦`. It grants nothing
+> and exposes no Mine action, cosmic/exceptional material, grades, reserves, progress or extraction
+> state. Player rarity uses the strict ten-name presentation projector: valid raw tiers `0..8` map
+> directly, `9..14` display as Transcendent, and invalid/missing values are omitted rather than
+> defaulted to Common; internal art-grade labels and raw numbers remain private.
+>
+> The XP anti-farm seam is durable and now backs the bounded Arc 6 conquest XP writer: `xpf` holds the newest 4,000
+> bounded unique keys, older membership moves to the strict v5-only `progression.xp-firsts` archive,
+> and `xpa` v1 binds total count plus archive-carrier digest. Missing or inconsistent archive
+> evidence protects instead of rearming one-time awards. Executable `conq[].e` codec/readiness
+> vectors preserve absent-as-ready and present-as-gated semantics, and the combat settlement proves
+> ordinary-loss +3 versus near-brink maximum +5 in both event orders. The real-veteran Gate-C run
+> remains separate and open.
+>
+> Arc 5 Breed is now player-live from a real-fauna Compendium detail. It pages through exact owned
+> instances, requires two distinct eligible fauna, shows the established rarity-plus-lifetime-
+> Stardust chance, certifies success and failure successors before one `breedOutcome` draw, and
+> settles one receipt/CAS. Both parents remain owned; success creates one deterministic child and
+> assigns eight active-play minutes of Recovery, while failure creates no child and assigns two.
+> Recovery blocks Breed, combat and dispatch and never advances from closed-game or wall-clock time.
+> The child initializes `fed` to half the lower clamped parent value exactly once. Exact-instance
+> Rename is also live and changes only one sanitized at-most-24-character companion nickname through
+> a receipt/CAS with no RNG or optimistic publication. A successful Breed gives the child +2 XP
+> and +5 for the first exact unordered species pair, and banks the exact `c3-breed` Charter tick in
+> that same child-bearing save; Rename grants no XP or Charter progress. Broader care, bond and
+> missions remain separate work.
+
+> **2026-08-25 Arc 4 progression overlay — recorded local boundary:** native Survey
+> Tame/Scavenge/Sample actions now turn a finite Biosphere attempt into one durable hit or miss.
+> The card states that it selects randomly from the verb's eligible species across the canonical
+> full roster, not the eight-row preview, and shows aggregate/individual odds plus the shared
+> hit-or-miss budget and active-play recovery countdown. A genuinely first successful species adds
+> its catalogue/discovery facts and eligible Legendary+ Stardust exactly once; repeat success may
+> add another stable fauna instance or specimen lot without paying the first-only reward again.
+> Charter bioscan progress is deliberately not exposed, and no targeted-species preview exists.
+>
+> Player publication follows the single F3/F4 receipt/CAS. Pending, storage-refused and stale paths
+> grant nothing optimistically; a post-durable fault reloads the committed result without reroll or
+> duplicate award. One no-retry Slice pass proves hit, miss, 14-attempt depletion and convergence;
+> full Glass proves the 12-viewport native controls/Close/reopen and exact source-bound copy. The
+> genuine 20-minute next-cycle recovery observation and combined HUMAN first-journey review remain
+> open, so Arc 4 is **[PARTIAL]**. Guide/release copy is current, but Field Training remains six
+> lessons plus graduation with no Capture lesson, and no shipped version/release follows.
+
+> **Historical 2026-08-24 Arc 3 progression overlay (superseded where the current 2026-08-29
+> overlays above differ):** Mine and Skim are live
+> through the Engineering panel. Six research rows are displayed, but only Deep Scanners is
+> purchasable; the 2026-08-26 correction above records its now-live bounded passive orbital Survey
+> row. All 62 fixed recipes are listed, but only connected-effect outputs with exact costs/
+> preconditions and capacity/revision headroom are actionable. As of 2026-08-29, an eligible
+> slotted recipe paid entirely from exceptional direct materials receives one deterministic exact-
+> item modifier—mining yield, rich-strike chance, or capture-contact points—while mixed payment
+> remains ordinary; disconnected-effect rows remain unavailable. Eligible Deep-Scanner and fixed-Fabrication
+> actions use the durable transaction. Canonical source opportunities, technology prerequisites,
+> material/part/Signature/Stardust costs, finite reserves, active-play accrual and revision/capacity
+> headroom are projected before each press and re-derived inside it. Eligible fixed system
+> fabrication can change the normalized ship/reach projection. Charter mining and fabrication counters bank only from the
+> committed result, never from button intent. One shared coordinator serializes Engineering with
+> Inventory publication.
+>
+> At that boundary this did not complete progression: authored random loot, variable crafting,
+> upgrades/sockets, companions, combat/Guardians, the complete Charter/Training journey and HUMAN
+> pacing remained open. The current overlays above supersede its later-landed systems and Charter
+> writers while retaining this Arc 3 transaction foundation.
+
+> **2026-08-24 F3/F4 + Arc 2 progression overlay — current local implementation:** the v5 app now
+> persists one protected F4 authority containing visible/answerable/lease-owned `activePlayMs` and
+> SessionRNG's seed, isolated domain counters, and global receipt ordinal. Hidden, frozen,
+> unanswered, lease-lost, backward and wall-clock-only intervals add zero. A product outcome and its
+> next authority/receipt/revision commit together; a failed write preserves the same planned roll.
+> Arc 2's deterministic Equip, Unequip, Salvage and pending-claim actions consume no domain roll and
+> reserve only the next receipt identity, so UI order cannot perturb later random outcomes.
+>
+> At the Arc 2 boundary, the exact-instance Inventory became live from the desktop rail and the phone's exact 260px 5×2
+> ten-control dock. It can inspect and conditionally compare migrated gear, then durably equip,
+> unequip, salvage or claim a pending item. That Arc did not grant materials, research, reach,
+> crafting, random loot or a ship upgrade; Arc 3 now owns the fixed Engineering subset above.
+> Oversized legacy holds remain complete inspection-only evidence
+> rather than being truncated into false progression. Fixed recipe and economy-sink graphs are
+> inspectable development truth; their Arc 2-local source model reports `arc3-deferred` and exposed
+> no player progression action at that boundary. Arc 3 now owns the fixed actions described above.
+>
+> Genuine legacy Training completion also keeps the Arc 2 carrier aligned with its owned
+> `items` / `equip` / `equipAff` checkpoint fields under one checked transaction. Current-view and
+> source-deferred recovery preserve the carrier; corrupt/future evidence cannot mint gear. For the
+> recorded pre-current-WIP Arc 2 candidate, focused tests plus one no-retry Slice Smoke and one Glass
+> Matrix were terminal green on Edge `151.0.4129.101`, but bind that recorded candidate's dirty
+> inputs and do not certify the current moving tree. Remaining outcome-call-site migration,
+> authored loot/craft progression and HUMAN comparison/pacing
+> remain open; no hosted, integration, Gate, release, version or deployment authority follows.
+
+> **2026-08-22 Arc 1C progression overlay — historical pre-Arc-2 implementation:** clean
 > product/ruler `a4de5007ffc9131b8bc952a0a4cb469d9139039e` adds a read-only Shipyard
 > projection without adding a progression writer. `ShipVisualState` is recursively frozen and
 > derives only from normalized `items`, `ascCh`, and injected livery seed `0x5111`;
@@ -11,7 +546,7 @@
 > an owned named system.
 >
 > The Shipyard exposes four static SVG silhouettes and truthful chassis, provenance, installed
-> systems, and open/fitted hardpoints from the desktop right rail and phone 5×2 nine-control dock.
+> systems, and open/fitted hardpoints from the desktop right rail and then-nine-control 5×2 phone dock.
 > One DOM/SVG preview owner disposes on replace/close. It deliberately offers no Fabrication,
 > Research, upgrade, Cargo, reward, reach, or save mutation and creates no Pixi renderer or
 > `RenderTexture`. The Guide describes this capability as partial inspection only.
@@ -23,15 +558,18 @@
 > `3b71d14ca297ec4d536669d2edf960ac4d01671dd7a0c9eb11a2fb76e4fc43f7`; local run
 > `20260822-arc1-local-certification` passed 42/42 and its named verifier under Edge
 > `151.0.4129.101`, but that certificate remains historical. Clean cross-host SLA repair
-> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` binds active budget SHA-256
+> `7d8dc380cd89ef53aac5a11c3850316e19e1aae9` bound budget SHA-256
 > `5c8a6e7568e02d4e31501e4188dba57d3ac6e6ad183882b98ff9c68170771501`; local one-attempt/no-retry
 > run `20260823-pr33-cross-host-sla-certification` passed exact 42/42 and its named verifier under
 > the same Edge `.101`. Raw/gzip SHA-256 are
 > `d16d40cd4d07f96683490eab920072fb9f3b42e0d0ee54434ffd4d312223f960` /
 > `7c4100244abef8d50f93178aab7c8579ae93fa0b6bef76422cc5c0523edac55a`. Hosted run
 > `32618995487` remains terminal-red at 40/42 and establishes no hosted authority. Product behavior
-> is unchanged. This docs descendant is not the exact certified head. Hosted terminal-green
-> integration, HUMAN silhouette judgment, Cargo/Inventory/Forge writers,
+> is unchanged. SceneMemory now owns its separate version-tolerant Microsoft Edge-family + CDP
+> `1.3` + sealed capability/profile authority; exact `.101` remains historical provenance, the
+> numeric budget is unchanged, and the changed final frozen producer requires a new bound
+> certificate. This docs descendant is not the exact certified head. Hosted terminal-green
+> integration, HUMAN silhouette judgment, Cargo/Forge writers,
 > Fabrication/Research/upgrades, release and deployment remain open.
 
 > **2026-08-16 D-TRAIN-1 progression overlay (current source; local browser
@@ -150,7 +688,7 @@
 > history store, a score substitute or a reward faucet. Rename, migration, reload and
 > catalogue deduplication must preserve the referent of every displayed memory.
 >
-> **2026-08-15 v2 epoch-contract overlay:** `COSMIC_EPOCH` accepts only a
+> **2026-08-15 v2 epoch-contract overlay (historical pre-F3/F4 boundary):** `COSMIC_EPOCH` accepts only a
 > nonnegative safe integer and is capped at 10,000 to bound retained O(epoch)
 > ecology work. `EpochClock.base()` is the immutable sanitized construction
 > origin; it is not the current save value. The browser app constructs once from
@@ -159,16 +697,17 @@
 > clock from that serialized snapshot plus another fresh segment after reload.
 > The real browser gate advances one exact 1,200-second epoch, reads the raw
 > IndexedDB primary, reloads, and requires the advancing snapshot to survive.
-> Current elapsed time is not yet a proved foreground-only active-play policy.
-> F3 owns the CAS/revision and cross-tab lease substrate. F4 owns hidden-tab
+> At that boundary current elapsed time was not yet a proved foreground-only active-play policy.
+> The current F3/F4 overlay above now owns the CAS/revision/lease and visible/answerable active-play
+> authority. In this historical plan, F4 still owned hidden-tab
 > semantics, automatic integer-edge persistence/invalidation, live global-read
 > timing, SessionRNG, and the separate persisted `activePlayMs` clock/accrual
 > policy for future readiness systems.
 > Repeat planet landings do not bank an extra landfall; a veteran Training
 > replay may still receive its lesson event without receiving progression credit.
 
-**STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlay
-matches `port/v2` as of 2026-08-22, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
+**STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlays
+match the local `port/v2` candidate as of 2026-08-30, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
@@ -181,7 +720,9 @@ Progression runs on three parallel tracks, none of which touch world/creature *g
 2. **The explorer (`pstats`).** *You* are a battler too — five stats grown by eating flora, shown on the character sheet paperdoll with nine gear sockets.
 3. **Standing rank (milestones).** A lifetime score over everything you've done climbs the rank ladder (Cadet → Eternal Frontier → infinite ✦ levels), unlocking nameplate colors and gating nothing — pure prestige.
 
-A fourth, collection-side track is the **Compendium** (the species catalogue) and its **Binder** sets/Paragons, which pay one-time ☄ Stardust bounties.
+A fourth, collection-side track is the **Compendium** (the species catalogue) and its **Binder**.
+Current v2 pays the seven non-Paragon set bounties once; the legacy Fifty Paragons remain visible
+protected content until their deterministic discovery owner is ported.
 
 Depth (frontier region / world tier) is the master difficulty dial: farther worlds grant more XP, hide rarer finds, and tax your wounds harder.
 
@@ -197,8 +738,18 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
   - **Conquest** win: **+20 + world tier**
   - **Guardian/Titan** conquest win: **+60 + world tier**
   - Cataloguing a **genuinely new species** teaches your standing **Field Scout** creature **+2** (a single-catalogue path to XP that needs no fight).
-  - **Care faucets (v1.8; ledgering CORRECTED in v1.8.4):** welcome meal **+1** *(once per creature — it was a bare unledgered `awardXP` paying on every loved meal until v1.8.4)* · taste discovered **+2** (once per creature per flavour) · bout survived **+2** · fight taken to the wire **+3** *(both unreachable until v1.8.4: the guard read `mine.id`, which no `fightNow` call site sets — the identity is now derived from the genome)* · conquest lost **+3** · defender pushed to the brink **+5** *(both now keyed per creature per world; unledgered, an unconquered world paid on every attempt forever, and one meal undoes the `hurt=0.85` brake)*. Anti-farm is a **per-creature ledger** (`xpFirsts`, persisted as `xpf`, capped 4000 entries of ≤64 chars), not a global cooldown.
+  - **Care faucets (v1.8; ledgering CORRECTED in v1.8.4):** welcome meal **+1** *(once per creature — it was a bare unledgered `awardXP` paying on every loved meal until v1.8.4)* · taste discovered **+2** (once per creature per flavour) · bout survived **+2** · fight taken to the wire **+3** *(both unreachable until v1.8.4: the guard read `mine.id`, which no `fightNow` call site sets — the identity is now derived from the genome)* · conquest lost **+3** · defender pushed to the brink **+5** *(both now keyed per creature per world; unledgered, an unconquered world paid on every attempt forever, and one meal undoes the `hurt=0.85` brake)*. In legacy v1.8.9, anti-farm is a **per-creature ledger** (`xpFirsts`) whose `xpf` save mirror is capped at 4,000 entries of ≤64 chars, not a global cooldown.
+  - **Current v2 persistence boundary:** the strict archive/`xpa` binding preserves membership older
+    than the newest-4,000 `xpf` window. The live Arc 6 conquest writer pays the win and one-time
+    loss/near-brink awards in its combat CAS. Arc 5 Breed now pays union XP in its own CAS: new pair
+    firsts are 64-character SHA-256 digests over sorted canonical parent `SpeciesId`s, while an
+    imported v1 `pair|<FNV32-base36>` key derived from `_earthName || speciesName(seed)` remains
+    read-only already-paid evidence in either `xpf` or the archive. Other advertised care/duel/Scout
+    faucets still await their true v2 owners.
   - **Union (v1.8, CORRECTED in v1.8.3):** a successful breed pays **+2** to the **newborn**, plus **+5** the first time a given *species pair* is crossed (`awardXPPair`). Until v1.8.3 both awards landed on `aEntry` — which the union consumes moments later, so the XP was destroyed as it was earned. The lineage key was also `[a.kind,b.kind]`, and breeding is always Fauna×Fauna, so it could only ever read `'Fauna+Fauna'`: a once-per-parent payout wearing a lineage's name. It now keys on the two parent **species**, FNV-hashed short so it survives the ledger's 64-char load truncation.
+    V2 preserves that imported key only as a compatibility alias; every new V2 first uses the
+    collision-resistant canonical SpeciesId digest and both awards land directly on the child in
+    Breed's existing exact-five/F4 transaction.
 - **Level-ups wake innate arts, not stats.** `classKit` grants `1 + (lvl≥3) + (lvl≥6)` innate-art slots → **1 / 2 / 3 arts** at levels 1 / 3 / 6. A level-up at 3 or 6 toasts "A new innate art awakens!"
 - Levels are *your* creature's story: a **shared code arrives at level 1** (`normGenome` strips `xp`); an **exhibit** code may carry `xp` clamped to `6·81 = 486` (exactly the L9 threshold).
 
@@ -217,11 +768,40 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
 - Past the summit the ladder never ends: a new **✦N** level every **3000** score beyond 8200.
 - Each rank permanently unlocks a **nameplate color**; the default follows current rank, Eternal Frontier unlocks the iridescent foil.
 - Discrete **achievements** (the `unlocked` set via `checkAch`, e.g. `harvest10` Quartermaster, `essence500` Stockpiler, `brink`, `fieldmedic`, `gambler`) are the finer-grained milestones layered on top.
+- **Current v2 domain boundary:** `rank.ts` preserves those thresholds, weights, rewards and
+  nameplate fallback rules exactly. `achievements.ts` is the versioned, immutable 96-row manifest
+  and pure projection owner: 68 aggregate rules plus 28 action-event rules. Aggregate evaluation
+  accepts only bounded integer/set-count/boolean facts; it contains no clock or entropy source.
+  Event-owned rows report `event-owner-required` until their exact action writer has durably
+  unlocked them. This prevents an aggregate such as “one settled world” from fabricating the
+  witnessed first-settlement achievement.
+- **Current v2 app/persistence boundary:** `arc9-progression-projection.ts` maps only sanitized
+  canonical save owners into the domain snapshot; `records-rank-model.ts` exposes the exact six
+  score factors and all 96 rows, while `records-rank-panel.ts` renders their bounded Records
+  presentation without acquiring action authority. `arc9-progression-action.ts`
+  persists only newly eligible aggregate rows plus a monotonic `bestRank` mirror through the
+  generic F4 deterministic-action owner. The product, F4 authority, immutable receipt, tab-lease
+  fence and repository revision share one CAS; a stale/lost/failed write is never retried or
+  published. Postcommit verification requires the canonical save to re-project with zero eligible
+  aggregate rows and the exact expected best rank. Main schedules that refresh only after the
+  preceding product owner settles, suppresses a boot-baseline fanfare, and publishes a named-rank
+  promotion only after durability. The same typed event adapter is joined by exact owners for
+  canonical Earth `home`, world and companion `namer`, successful Legendary-pair `bredlegend`,
+  first settlement `settle1`, player-at-1–19-HP `brink`, valid-world `share`, accepted-CF1
+  `wayfarer`, twelve source-derived Survey events, source-proved `worm`/`quasar`/`dwarfg` travel,
+  and explicit Atlas Favorite `curator`. Accepted Follow composes route, Jumps, galaxy visit,
+  `wayfarer`, and any proved galaxy-kind event in its one existing receipt. They preserve unknown
+  ids, protect the 146-row bound and independently verify the committed projection without
+  inferring any other event. Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler`
+  still require their absent gameplay transactions. Explorer self-rename is a separate identity-only
+  receipt/CAS and cannot unlock `namer`.
 
 ### Compendium collection progression
 - The species catalogue is the **Compendium** (`codex`, keyed by species id; `_storeSpecies` dedupes — only a genuinely *new* species is "fresh").
 - **Rare-find ☄ Stardust:** on the **first** catalogue of a Legendary+ specimen (`grade.tier ≥ 5`) you earn **`tier − 3`** Stardust, a ✦ Rare Find cinematic, and a rarity sting. Tier ≥ 4 throws a color burst. (Never re-paid — dedupe gates it.)
-- **Binder** sets pay a **one-time** ☄ bounty on completion; the **Fifty Paragons** are named one-of-a-kind legends on fixed worlds.
+- **Binder** sets pay a **one-time** ☄ bounty on completion. Current v2 exposes exactly the seven
+  non-Paragon claims and preserves any imported Paragon-set evidence; **The Fifty Paragons** remains
+  visible but unavailable until its deterministic fixed-world discovery owner is ported.
 - **First Arrival:** reaching a system no record precedes you in pays **+2 ☄**.
 
 ### How depth affects progression
@@ -273,6 +853,13 @@ First catalogue of tier ≥ 5 → **`tier − 3`** ☄ (Legendary=5→+2, up thr
 - **`essence`** (current ☄) + **`essenceEarned`** (lifetime, drives breeding-odds bonus and Stockpiler ach); **`harvests`**, **`guardians`**, **`paragons`**, **`br`** (best rank).
 - **`scout`** — the Field Scout creature id (target of the +2 catalogue XP; must resolve to a Compendium fauna on load).
 - **`ach`** — the unlocked achievement set; ranks are *derived* (`rankInfo`), not stored.
+- **Current v2 projection boundary:** at most 146 bounded unique `ach` tokens (the mature 96-row
+  catalogue plus the save codec's 50-row compatibility allowance) are accepted. Unknown safe ids
+  remain explicit `unsupportedUnlockedIds` and still count exactly as the mature `unlocked.size`
+  rank formula did; they never create a known catalogue row. `br` remains the durable best named-rank
+  index, so unlocked nameplate colors never demote. The aggregate writer preserves existing order,
+  appends only canonical aggregate ids, and refuses a write if the complete successor would exceed
+  that bound. No partial unlock, alternate carrier, save shape, or migration was added in Arc 9.
 - Related economy/gear fields (`ea`, `cargo`, `items`, `eq`, …) are documented in `ECONOMY_LOOT_CRAFTING.md`.
 
 ## 5. Determinism
@@ -291,9 +878,51 @@ First catalogue of tier ≥ 5 → **`tier − 3`** ☄ (Legendary=5→+2, up thr
 - `DEPTH_TAX` / `depthTax` — **12131–12137**; `dangerOf` — **12139**.
 - Compendium `discoverSpecies` — **8781**; character-sheet doll render — **~16220**.
 - Save (codex/pstats/essence) — **10096 / 10186 / 10120**; load scout — **10228**.
+- Current v2 rank/achievement and saved-choice domain —
+  `port/v2/packages/domain/progression/src/rank.ts` and `achievements.ts`; exact metadata/rule,
+  threshold, boundary, unsupported-id, immutability, export and dependency sentinels live in the
+  sibling `test/rank.test.ts` and `test/achievements.test.ts`.
+- Current v2 sanitized adapter, aggregate persistence action and live Records model/panel —
+  `port/v2/apps/game/src/arc9-progression-projection.ts`, `arc9-progression-action.ts`, and
+  `arc9-nameplate-action.ts`, `nameplate-settings.ts`, `records-rank-model.ts` /
+  `records-rank-panel.ts`; fixed-point, one-CAS, stale/storage,
+  hostile-input, capacity, event-owner preservation, Main wiring and presentation evidence lives in
+  `port/v2/tests/arc9-progression.test.ts`, `arc9-main-wiring.test.ts`, and
+  `records-rank-panel.test.ts`.
+- Current exact event joins — `arc0-landing-action.ts` owns `home` only for the complete canonical
+  Earth address (including the legacy-intended Training Earth case), and `arc0-world-name-action.ts`
+  owns `namer` for a committed discovery-name action. `arc5-rename-action.ts` owns the same id for
+  one exact companion name; `arc5-breed-action.ts` owns `bredlegend` only on the proved successful
+  Legendary-pair successor; and the Arc 6 combat action/settlement own `settle1` and the exact
+  1–19-HP `brink` case. `arc9-sharing-action.ts` owns `share` plus `stats.shares` in one
+  `arc9-share-send-v1` receipt for a valid-world native Share, and owns `wayfarer` only for an
+  already-accepted CF1 Follow route. `share5` is an aggregate projection from
+  `sharedCodeCount >= 5`, not a second event owned by the Share action.
+  `arc9-progression-action.ts` owns the optional following `arc9-progression-refresh-v1` receipt
+  that adds `share5` and/or raises best rank after the Share owner settles. `arc9-survey-action.ts`
+  derives twelve observation joins from the registered CF1
+  hierarchy. `arc9-travel-action.ts` derives galaxy visit plus `quasar`/`dwarfg` on arrival and
+  `worm` on proved wormhole traversal; accepted Follow folds that arrival successor into its existing
+  sharing receipt rather than opening a second write. `arc9-atlas-favorite-action.ts` owns only the
+  explicit false-to-true Favorite edge and preserves the Atlas row/route identity in place. Their
+  focused action and fixed-point tests sit beside those owners.
+- `arc9-explorer-name-action.ts` plus `explorer-name-settings.ts` own identity-only explorer
+  self-rename. The action changes only `explorerName`, uses the shipped sanitizer/24-character cap,
+  gives cleaned-empty and unchanged input no receipt, and intentionally has no achievement side
+  effect.
 
 ## 7. Open questions / pending
-- "Milestones" has no single named subsystem in code — this doc reads it as the **RANKS standing ladder + achievements**. Confirm that's the intended scope (vs. e.g. a future dedicated milestone board).
+- Arc 9's standing **rank ladder + 96 achievements** is now live through the bounded Records board,
+  AppChrome nameplate, receipt-following aggregate refresh and committed-publication achievement/
+  rank ceremonies. Newly appended known achievements use text plus sting 3; a saved named-rank
+  promotion uses text, sting 5 and effects-budgeted gold FX from AppChrome-owned geometry. The
+  saved choice now has a live Settings selector for Auto/current-rank or every permanently earned
+  color, and Settings also owns the identity-only Explorer name editor. These ceremonies are
+  notifications only; no separate item/currency reward is implied.
+- Exactly **five event IDs are explicitly blocked, not inferred**: `daily` and `decade` belong to
+  dormant Beacon/Cosmic Events; `survivor`, `fieldmedic`, and `gambler` need the unavailable hostile-
+  field and explorer-flora-care actions. Their future owners must use the same postcommit-only
+  ceremony seam; combat retains its separate bounded post-settlement cue path.
 - Field Scout XP path (+2) requires a scout to be *set* and to be a different fauna than the fresh catch; a run with no scout set banks nothing from cataloguing — intended.
 - XP has a 1e6 hard cap but L9 is reached at 486; everything above 486 is inert. Fine today; note if a soft "prestige past 9" is ever wanted.
 - Depth Tax tops out at ×2.5 (Frontier). No open balance flag, but it's the main survivability knob — watch alongside gear scut/hull.
@@ -314,7 +943,7 @@ the largest of them had never paid in any shipped build.
 | bout survived +2 | ✓ **fixed 2026-07-30** |
 | fight taken to the wire +3 | ✓ **fixed 2026-07-30** |
 | conquest lost +3 | ✓ fixed v1.8.5 |
-| defender nearly broken +5 | ✓ fixed v1.8.5 (⚠ still foreclosed by an earlier +3 — the ledger key omits the near-brink flag) |
+| defender nearly broken +5 | ✓ legacy v1.8.5 remained foreclosed by an earlier +3; current v2 repairs the shared-key bug with a stored 0→3→5 maximum and outcome-tests both orders |
 | **duel won +8** | ✓ **fixed 2026-07-30 — had never paid in ANY build** |
 
 **The duel awards (CF1805-02).** Round 7 correctly diagnosed that `mine.id` is set

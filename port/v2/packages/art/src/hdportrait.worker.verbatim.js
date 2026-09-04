@@ -3612,4 +3612,4 @@ function hdPortraitMicrobeCanvas(g){
   return cv;
 }
 
-export { hdPortraitFaunaCanvas, hdPortraitFloraCanvas, hdPortraitFungiCanvas, hdPortraitMicrobeCanvas };
+export { hdPortraitFaunaCanvas, hdPortraitFloraCanvas, hdPortraitFungiCanvas, hdPortraitMicrobeCanvas, hdBeastBare, _hdPlantBare, hdFloraBare, _hdCamo, _hdStampPlant, _hdPlaceBeast, _hdHash, _hdFbm, _hdSm, HD_PALS };

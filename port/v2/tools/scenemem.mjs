@@ -23,6 +23,7 @@
      node tools/scenemem.mjs --calibrate [--allow-dirty]
      node tools/scenemem.mjs --budget=/absolute/path/to/tracked-budget.json
      node tools/scenemem.mjs --verify-run=<run-id> [--budget=/same/file.json]
+     node tools/scenemem.mjs --heap-phase-selftest
 
    One process owns one build, one browser launch, two profiles, no retry, and a
    RUNNING -> terminal report at apps/game/smoke/scenemem-report.json.
@@ -34,6 +35,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath } from 'node:url';
+import { gunzipSync } from 'node:zlib';
 import { openChromiumCdp } from './browsercdp.mjs';
 import {
   COMPENDIUM_FIXTURE_SPEC_PATH,
@@ -54,6 +56,9 @@ const appDir = path.join(v2Root, 'apps', 'game');
 const distDir = path.join(appDir, 'dist');
 const outputDir = path.join(appDir, 'smoke');
 const reportPath = path.join(outputDir, 'scenemem-report.json');
+const auditRoot = path.join(repoRoot, 'audits');
+const CALIBRATION_BUDGET_RELATIVE_PATH = 'port/v2/budgets/scene-memory-v2.json';
+const calibrationBudgetPath = path.join(repoRoot, ...CALIBRATION_BUDGET_RELATIVE_PATH.split('/'));
 const baselineSavePath = path.join(v2Root, '..', 'baseline-v1.8.9', 'save-fixtures.json');
 const collectorPath = fileURLToPath(import.meta.url);
 const browserCdpPath = fileURLToPath(new URL('./browsercdp.mjs', import.meta.url));
@@ -75,12 +80,30 @@ const pixiManagedResourceOwnerPath = path.join(appDir, 'src', 'pixi-managed-reso
 const pixiBatchTextureArrayPath = path.join(appDir, 'src', 'pixi-batch-texture-array.ts');
 const sceneTextPath = path.join(appDir, 'src', 'scene-text.ts');
 
-const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v2';
+const REPORT_SCHEMA = 'cf-v2-scene-memory-report/v6';
 const LIFECYCLE_SCHEMA = 'cf-v2-scene-memory-report-lifecycle/v1';
-const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v2';
+const BUDGET_SCHEMA = 'cf-v2-scene-memory-budget/v7';
+const PROFILE_SCHEMA = 'cf-v2-scene-memory-profile/v5';
+const HEAP_PHASE_VALIDITY_SCHEMA = 'cf-v2-scene-memory-heap-phase-validity/v2';
+const HEAP_PHASE_POLICY_SCHEMA = 'cf-v2-scene-memory-heap-phase-policy/v2';
+const HEAP_PHASE_DERIVATION_SCHEMA = 'cf-v2-scene-memory-heap-phase-derivation/v2';
+const HEAP_PHASE_DERIVATION_RULE = 'smallest-power-of-two-strictly-greater';
+export const SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA =
+  'cf-v2-scene-memory-browser-authority/v2';
+export const SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE = 'arc1c-scene-memory-only';
+export const SCENE_MEMORY_BROWSER_FAMILY = 'microsoft-edge';
+export const SCENE_MEMORY_BROWSER_PROTOCOL_VERSION = '1.3';
+export const SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT =
+  'cf-v2-scene-memory-cdp-capabilities/v2';
+export const SCENE_MEMORY_BROWSER_PROFILE_CONTRACT =
+  'cf-v2-scene-memory-browser-profiles/v1';
+export const SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA =
+  'cf-v2-scene-memory-shipyard-open-observation/v1';
+const SCENE_MEMORY_PROTECTED_ARC3_REASON =
+  'Engineering details and actions are unavailable while this expedition’s Engineering record is protected.';
 const WARMUP_CYCLES = 4;
 const WARM_CYCLES = SCENE_MEMORY_CYCLE_COUNT;
-const OUTCOME_COUNT = 42;
+const OUTCOME_COUNT = 44;
 const COMMAND_TIMEOUT_MS = 5_000;
 const ANSWERABILITY_TIMEOUT_MS = 2_000;
 const ROUTE_TIMEOUT_MS = 20_000;
@@ -96,19 +119,79 @@ const PROFILES = Object.freeze({
 const HOME_GALAXY = Object.freeze({ seed: 999, x: 90, y: -60 });
 const SOL_STAR = Object.freeze({ seed: 424242, x: 560, y: 170 });
 const EARTH = Object.freeze({ seed: 133, ordinal: 2 });
+const SURFACE_VISTA_CACHE_ENTRIES_MAX = 1;
+const SURFACE_VISTA_CACHE_PIXELS_MAX = 960 * 430;
+const HEAP_PHASE_CONTROL_ALLOCATION_BYTES = 512 * 1024;
+const HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES = 128 * 1024;
+const HEAP_PHASE_SNAPSHOT_PASSES = 8;
+const HEAP_PHASE_SETTLING_PASSES = 6;
+const HEAP_PHASE_VALIDITY_PASSES = Object.freeze([7, 8]);
+const HEAP_PHASE_SCORED_PASS = 8;
+const HISTORICAL_FOUR_PASS_POLICY = Object.freeze({
+  validitySchema: 'cf-v2-scene-memory-heap-phase-validity/v1',
+  snapshotPasses: 4,
+  settlingPasses: 2,
+  validityPasses: Object.freeze([3, 4]),
+  scoredSnapshotPass: 4,
+});
+const CURRENT_HEAP_PHASE_POLICY = Object.freeze({
+  validitySchema: HEAP_PHASE_VALIDITY_SCHEMA,
+  snapshotPasses: HEAP_PHASE_SNAPSHOT_PASSES,
+  settlingPasses: HEAP_PHASE_SETTLING_PASSES,
+  validityPasses: HEAP_PHASE_VALIDITY_PASSES,
+  scoredSnapshotPass: HEAP_PHASE_SCORED_PASS,
+});
+const HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES = 64 * 1024;
+const HEAP_PHASE_ALLOWED_THRESHOLDS_BYTES = Object.freeze(
+  [4, 8, 16, 32, 64].map((kilobytes) => kilobytes * 1024),
+);
+const RELOAD_RELEASE_BINDING = '__cfReloadReleaseWitness';
+const SURFACE_VISTA_RELOAD_CLEANUP_BINDING = '__cfSceneMemoryVistaCacheCleanup';
 const BUDGET_FIELDS = Object.freeze([
-  'heapUsedBytesMax', 'embedderHeapUsedBytesMax', 'backingStorageBytesMax',
-  'heapAggregateBytesMax', 'warmHeapAggregateRangeBytesMax',
+  'initialHeapUsedBytesMax', 'initialHeapAggregateBytesMax', 'heapUsedGrowthBytesMax',
+  'embedderHeapUsedBytesMax', 'backingStorageBytesMax',
+  'heapNormalizedWorkingSetBytesMax', 'warmHeapAggregateRangeBytesMax',
   'warmHeapSlopeBytesPerCycleMax',
   'documentsMax', 'nodesMax', 'jsEventListenersMax',
   'peakActiveLeaseCountMax', 'peakLiveTextureCountMax', 'peakLiveCanvasBytesMax',
   'managedTextureCountMax', 'managedTexturePixelsMax', 'localCanvasCacheEntriesMax',
   'peakLocalCanvasCacheEntriesMax', 'productRenderTargetsMax',
   'ringCacheEntriesMax', 'peakRingGeometryEntriesMax',
+  'surfaceVistaCacheEntriesMax', 'surfaceVistaCachePixelsMax',
   'targetElapsedMsMax', 'heartbeatElapsedMsMax',
 ]);
+export const SCENE_MEMORY_REQUIRED_CDP_DOMAINS = Object.freeze([
+  'Browser', 'Emulation', 'HeapProfiler', 'Log', 'Memory', 'Page', 'Runtime', 'Target',
+]);
+export const SCENE_MEMORY_REQUIRED_CDP_METHODS = Object.freeze([
+  'Browser.getVersion',
+  'Emulation.setDeviceMetricsOverride',
+  'Emulation.setTouchEmulationEnabled',
+  'HeapProfiler.collectGarbage',
+  'HeapProfiler.enable',
+  'Log.enable',
+  'Memory.getDOMCounters',
+  'Page.enable',
+  'Page.getNavigationHistory',
+  'Page.navigate',
+  'Page.navigateToHistoryEntry',
+  'Runtime.enable',
+  'Runtime.addBinding',
+  'Runtime.evaluate',
+  'Runtime.getHeapUsage',
+  'Target.attachToTarget',
+  'Target.closeTarget',
+  'Target.createBrowserContext',
+  'Target.createTarget',
+  'Target.disposeBrowserContext',
+]);
 const BROWSER_AUTHORITY_FIELDS = Object.freeze([
-  'product', 'revision', 'jsVersion', 'protocolVersion',
+  'schema', 'scope', 'family', 'protocolVersion',
+  'capabilityContract', 'capabilityContractSha256',
+  'profileContract', 'profileContractSha256',
+]);
+const BROWSER_PROVENANCE_FIELDS = Object.freeze([
+  'executable', 'product', 'revision', 'userAgent', 'jsVersion', 'protocolVersion',
 ]);
 const PRODUCER_AUTHORITY_FIELDS = Object.freeze([
   'collector', 'browserCdp', 'browserPath', 'workspaceLock', 'fixtureGenerator',
@@ -138,12 +221,45 @@ const readJson = (file) => JSON.parse(fs.readFileSync(file, 'utf8'));
 const hashFile = (file) => sha256(fs.readFileSync(file));
 const portable = (value) => value.split(path.sep).join('/');
 const same = (left, right) => stableJson(left) === stableJson(right);
+export function sceneMemoryCollectorCommandTimeoutMs(timeoutMs = COMMAND_TIMEOUT_MS) {
+  assert(Number.isInteger(timeoutMs) && timeoutMs > 0,
+    'SceneMemory collector command timeout must be a positive integer');
+  return Math.min(timeoutMs, COMMAND_TIMEOUT_MS);
+}
+const absoluteExecutable = (value) => typeof value === 'string' && value.length > 0
+  && (value.startsWith('/') || /^[A-Za-z]:[\\/]/.test(value));
+const EDGE_PRODUCT = /^Edg\/(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)$/;
+export const SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT_SHA256 = sha256(stableJson({
+  requiredDomains: SCENE_MEMORY_REQUIRED_CDP_DOMAINS,
+  requiredMethods: SCENE_MEMORY_REQUIRED_CDP_METHODS,
+}));
+export const SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256 = sha256(stableJson(PROFILES));
+const EXPECTED_BROWSER_AUTHORITY = Object.freeze({
+  schema: SCENE_MEMORY_BROWSER_AUTHORITY_SCHEMA,
+  scope: SCENE_MEMORY_BROWSER_AUTHORITY_SCOPE,
+  family: SCENE_MEMORY_BROWSER_FAMILY,
+  protocolVersion: SCENE_MEMORY_BROWSER_PROTOCOL_VERSION,
+  capabilityContract: SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT,
+  capabilityContractSha256: SCENE_MEMORY_BROWSER_CAPABILITY_CONTRACT_SHA256,
+  profileContract: SCENE_MEMORY_BROWSER_PROFILE_CONTRACT,
+  profileContractSha256: SCENE_MEMORY_BROWSER_PROFILE_CONTRACT_SHA256,
+});
 
-export function terminalOutcomeInventoryErrors(outcomes, canonicalOutcomes = null) {
+export function sceneMemoryVeteranRaw() {
+  const saveFixture = structuredClone(readJson(baselineSavePath).inputs.veteran_rich);
+  saveFixture.view = null;
+  return JSON.stringify(saveFixture);
+}
+
+export function terminalOutcomeInventoryErrors(
+  outcomes, canonicalOutcomes = null, expectedCount = OUTCOME_COUNT,
+) {
   const errors = [];
-  if (!Array.isArray(outcomes) || outcomes.length !== OUTCOME_COUNT
+  if (!Number.isSafeInteger(expectedCount) || expectedCount <= 0) {
+    errors.push('terminal outcome inventory expected count is invalid');
+  } else if (!Array.isArray(outcomes) || outcomes.length !== expectedCount
     || outcomes.some((outcome) => outcome?.pass !== true)) {
-    errors.push(`terminal outcome inventory is not exactly ${OUTCOME_COUNT} green outcomes`);
+    errors.push(`terminal outcome inventory is not exactly ${expectedCount} green outcomes`);
   }
   if (canonicalOutcomes !== null && !same(outcomes, canonicalOutcomes)) {
     errors.push('terminal outcome inventory differs from the imported contract replay');
@@ -290,15 +406,20 @@ function runId() {
 function parseArgs(argv) {
   const options = {
     allowDirty: false, calibrate: false, budgetFile: null, verifyRun: null,
+    heapPhaseSelftest: false,
   };
   for (const arg of argv) {
     if (arg === '--allow-dirty') options.allowDirty = true;
     else if (arg === '--calibrate') options.calibrate = true;
+    else if (arg === '--heap-phase-selftest') options.heapPhaseSelftest = true;
     else if (arg.startsWith('--budget=')) options.budgetFile = path.resolve(arg.slice(9));
     else if (arg.startsWith('--verify-run=')) options.verifyRun = arg.slice(13);
     else fail(`unknown argument: ${arg}`);
   }
   assert(!(options.calibrate && options.budgetFile), '--calibrate and --budget are mutually exclusive');
+  if (options.heapPhaseSelftest) {
+    assert(argv.length === 1, '--heap-phase-selftest accepts no other arguments');
+  }
   if (options.verifyRun !== null) {
     assert(/^[a-z0-9][a-z0-9-]{0,95}$/i.test(options.verifyRun), '--verify-run ID is invalid');
     assert(!options.allowDirty && !options.calibrate,
@@ -307,24 +428,185 @@ function parseArgs(argv) {
   return Object.freeze(options);
 }
 
-function validateBudget(record) {
+export function validSceneMemoryBrowserAuthority(authority) {
+  return authority !== null && typeof authority === 'object' && !Array.isArray(authority)
+    && same(Object.keys(authority).sort(), [...BROWSER_AUTHORITY_FIELDS].sort())
+    && same(authority, EXPECTED_BROWSER_AUTHORITY);
+}
+
+function validBrowserProvenance(browser) {
+  return browser !== null && typeof browser === 'object' && !Array.isArray(browser)
+    && BROWSER_PROVENANCE_FIELDS.every((field) =>
+      typeof browser[field] === 'string' && browser[field].length > 0)
+    && absoluteExecutable(browser.executable);
+}
+
+/** Version-tolerant Arc 1C browser authority. Exact executable, Edge build,
+ * revision, user agent and JavaScript version remain mandatory report
+ * provenance, while only family/protocol/capability/profile compatibility
+ * binds the reusable ruler. */
+export function sceneMemoryBrowserAuthority(browser) {
+  if (!validBrowserProvenance(browser)
+    || !EDGE_PRODUCT.test(browser.product)
+    || browser.protocolVersion !== SCENE_MEMORY_BROWSER_PROTOCOL_VERSION) return null;
+  return EXPECTED_BROWSER_AUTHORITY;
+}
+
+export function sceneMemoryBrowserAuthorityMatches(browser, authority) {
+  const observed = sceneMemoryBrowserAuthority(browser);
+  return observed !== null && validSceneMemoryBrowserAuthority(authority)
+    && same(observed, authority);
+}
+
+export function sceneMemoryBrowserCapabilityInventoryErrors({
+  collectorSource, browserCdpSource,
+} = {}) {
+  if (typeof collectorSource !== 'string' || typeof browserCdpSource !== 'string') {
+    return ['SceneMemory browser capability inventory sources are unavailable'];
+  }
+  const selftestStart = collectorSource.lastIndexOf('async function runHeapPhaseSelftest()');
+  const selftestEnd = collectorSource.indexOf('\nasync function seedSave(', selftestStart);
+  const productionCollectorSource = selftestStart >= 0 && selftestEnd > selftestStart
+    ? collectorSource.slice(0, selftestStart) + collectorSource.slice(selftestEnd)
+    : collectorSource;
+  const domains = SCENE_MEMORY_REQUIRED_CDP_DOMAINS.join('|');
+  const directMethodPattern = new RegExp(`send\\(\\s*["']((${domains})\\.[A-Za-z]+)["']`, 'g');
+  const enableBlocks = [...productionCollectorSource.matchAll(
+    /for \(const method of \[([\s\S]*?)\]\) \{/g,
+  )].map((match) => match[1]).join('\n');
+  const enableMethodPattern = new RegExp(`["']((${domains})\\.[A-Za-z]+)["']`, 'g');
+  const actualMethods = [...new Set(
+    [
+      ...[...productionCollectorSource.matchAll(directMethodPattern)].map((match) => match[1]),
+      ...[...enableBlocks.matchAll(enableMethodPattern)].map((match) => match[1]),
+    ],
+  )].sort();
+  const expectedMethods = [...SCENE_MEMORY_REQUIRED_CDP_METHODS].sort();
+  const errors = [];
+  if (selftestStart < 0 || selftestEnd <= selftestStart) {
+    errors.push('SceneMemory heap phase selftest boundary is missing');
+  }
+  if (!same(actualMethods, expectedMethods)) {
+    const missing = expectedMethods.filter((method) => !actualMethods.includes(method));
+    const extra = actualMethods.filter((method) => !expectedMethods.includes(method));
+    if (missing.length) errors.push(`SceneMemory collector capability inventory is missing ${missing.join(', ')}`);
+    if (extra.length) errors.push(`SceneMemory collector capability inventory has unsealed ${extra.join(', ')}`);
+  }
+  const actualDomains = [...new Set(actualMethods.map((method) => method.split('.')[0]))].sort();
+  const expectedDomains = [...SCENE_MEMORY_REQUIRED_CDP_DOMAINS].sort();
+  if (!same(actualDomains, expectedDomains)) {
+    errors.push('SceneMemory collector CDP domain inventory does not match its authority');
+  }
+  if (!/const version = await send\(["']Browser\.getVersion["']\);/.test(browserCdpSource)) {
+    errors.push('SceneMemory browser transport lacks Browser.getVersion provenance');
+  }
+  return errors;
+}
+
+function sceneMemoryHeapPhasePolicyErrors(policy, budgetStatus, authority) {
+  const errors = [];
+  const expectedKeys = [
+    'schema', 'status', 'snapshotPasses', 'settlingPasses', 'validityPasses',
+    'scoredSnapshotPass', 'calibrationHardCapBytes', 'derivation', 'profiles',
+  ];
+  if (!policy || typeof policy !== 'object' || Array.isArray(policy)
+    || !same(Object.keys(policy).sort(), expectedKeys.sort())) {
+    return ['budget heapPhase policy keys are incomplete or invalid'];
+  }
+  if (policy.schema !== HEAP_PHASE_POLICY_SCHEMA || policy.status !== budgetStatus
+    || policy.snapshotPasses !== HEAP_PHASE_SNAPSHOT_PASSES
+    || policy.settlingPasses !== HEAP_PHASE_SETTLING_PASSES
+    || !same(policy.validityPasses, HEAP_PHASE_VALIDITY_PASSES)
+    || policy.scoredSnapshotPass !== HEAP_PHASE_SCORED_PASS
+    || policy.calibrationHardCapBytes !== HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES) {
+    errors.push('budget heapPhase fixed eight-pass policy drifted');
+  }
+  const derivation = policy.derivation;
+  const derivationKeys = [
+    'schema', 'rule', 'candidateCount', 'candidateSetSha256', 'candidates',
+  ];
+  if (!derivation || typeof derivation !== 'object' || Array.isArray(derivation)
+    || !same(Object.keys(derivation).sort(), derivationKeys.sort())) {
+    errors.push('budget heapPhase derivation is incomplete');
+  } else {
+    if (derivation.schema !== HEAP_PHASE_DERIVATION_SCHEMA
+      || derivation.rule !== HEAP_PHASE_DERIVATION_RULE
+      || derivation.candidateCount !== 3) {
+      errors.push('budget heapPhase derivation rule/count drifted');
+    }
+    const candidates = derivation.candidates;
+    const validCandidate = (candidate) => candidate && typeof candidate === 'object'
+      && !Array.isArray(candidate)
+      && same(Object.keys(candidate).sort(), [
+        'file', 'gzipBytes', 'gzipSha256', 'rawBytes', 'rawSha256', 'runId',
+      ])
+      && /^[a-z0-9][a-z0-9-]{0,95}$/i.test(candidate.runId || '')
+      && /^[A-Z0-9][A-Z0-9_.-]*\.json\.gz$/i.test(candidate.file || '')
+      && Number.isSafeInteger(candidate.rawBytes) && candidate.rawBytes > 0
+      && Number.isSafeInteger(candidate.gzipBytes) && candidate.gzipBytes > 0
+      && /^[a-f0-9]{64}$/.test(candidate.rawSha256 || '')
+      && /^[a-f0-9]{64}$/.test(candidate.gzipSha256 || '');
+    if (budgetStatus === 'calibration-required') {
+      if (!Array.isArray(candidates) || candidates.length !== 0
+        || derivation.candidateSetSha256 !== null) {
+        errors.push('calibration-required heapPhase authority must not claim candidate carriers');
+      }
+    } else if (!Array.isArray(candidates) || candidates.length !== 3
+      || !candidates.every(validCandidate)
+      || new Set(candidates.map((candidate) => candidate.runId)).size !== 3
+      || new Set(candidates.map((candidate) => candidate.file)).size !== 3
+      || new Set(candidates.map((candidate) => candidate.rawSha256)).size !== 3
+      || new Set(candidates.map((candidate) => candidate.gzipSha256)).size !== 3) {
+      errors.push('active heapPhase candidates must be three distinct exact carriers');
+    } else if (derivation.candidateSetSha256 !== sha256(stableJson(candidates))) {
+      errors.push('active heapPhase candidate-set hash is detached from its carriers');
+    } else {
+      errors.push(...sceneMemoryHeapPhaseCandidateAuthorityErrors(
+        candidates, policy.profiles, authority?.producer, authority?.browser,
+      ));
+    }
+  }
+  if (!policy.profiles || typeof policy.profiles !== 'object' || Array.isArray(policy.profiles)
+    || !same(Object.keys(policy.profiles).sort(), Object.keys(PROFILES).sort())) {
+    errors.push('budget heapPhase profiles must be exactly phone and desktop');
+  } else {
+    for (const profile of Object.keys(PROFILES)) {
+      const value = policy.profiles[profile];
+      if (!value || typeof value !== 'object' || Array.isArray(value)
+        || !same(Object.keys(value), ['maxAbsolutePhaseDeltaBytes'])) {
+        errors.push(`budget heapPhase profile ${profile} is malformed`);
+      } else if (budgetStatus === 'calibration-required'
+        ? value.maxAbsolutePhaseDeltaBytes !== null
+        : !HEAP_PHASE_ALLOWED_THRESHOLDS_BYTES.includes(value.maxAbsolutePhaseDeltaBytes)) {
+        errors.push(`budget heapPhase profile ${profile} has an invalid phase ceiling for ${budgetStatus}`);
+      }
+    }
+  }
+  return errors;
+}
+
+export function validateSceneMemoryBudget(record) {
   const errors = [];
   if (!record || typeof record !== 'object' || Array.isArray(record)) {
     return { ok: false, errors: ['budget must be an object'] };
   }
   if (record.schema !== BUDGET_SCHEMA) errors.push(`budget schema must be ${BUDGET_SCHEMA}`);
-  if (!same(Object.keys(record).sort(), ['authority', 'profiles', 'schema'])) {
-    errors.push('budget keys must be exactly schema, authority, and profiles');
+  if (!same(Object.keys(record).sort(), ['authority', 'heapPhase', 'profiles', 'schema', 'status'])) {
+    errors.push('budget keys must be exactly schema, status, authority, heapPhase, and profiles');
   }
+  if (record.status !== 'active' && record.status !== 'calibration-required') {
+    errors.push('budget status must be active or calibration-required');
+  }
+  errors.push(...sceneMemoryHeapPhasePolicyErrors(
+    record.heapPhase, record.status, record.authority,
+  ));
   const browserAuthority = record.authority?.browser;
   const producerAuthority = record.authority?.producer;
   if (!same(Object.keys(record.authority || {}).sort(), ['browser', 'producer'])) {
     errors.push('budget authority must be exactly browser and producer');
   }
-  if (!same(Object.keys(browserAuthority || {}).sort(), [...BROWSER_AUTHORITY_FIELDS].sort())
-    || BROWSER_AUTHORITY_FIELDS.some((field) =>
-      typeof browserAuthority?.[field] !== 'string' || !browserAuthority[field])) {
-    errors.push('budget browser authority must contain the exact nonempty canonical tuple');
+  if (!validSceneMemoryBrowserAuthority(browserAuthority)) {
+    errors.push('budget browser authority must contain the exact Edge-family capability/profile contract');
   }
   if (!same(Object.keys(producerAuthority || {}).sort(), [...PRODUCER_AUTHORITY_FIELDS].sort())
     || PRODUCER_AUTHORITY_FIELDS.some((field) => !/^[a-f0-9]{64}$/.test(
@@ -348,6 +630,10 @@ function validateBudget(record) {
     if (!same(keys, [...BUDGET_FIELDS].sort())) {
       errors.push(`budget profiles.${profile} must contain only the contract fields`);
     }
+    if (ceiling.surfaceVistaCacheEntriesMax !== SURFACE_VISTA_CACHE_ENTRIES_MAX
+      || ceiling.surfaceVistaCachePixelsMax !== SURFACE_VISTA_CACHE_PIXELS_MAX) {
+      errors.push(`budget profiles.${profile} surface vista must remain exactly ${SURFACE_VISTA_CACHE_ENTRIES_MAX} entry / ${SURFACE_VISTA_CACHE_PIXELS_MAX} pixels`);
+    }
   }
   if (!same(Object.keys(record.profiles || {}).sort(), Object.keys(PROFILES).sort())) {
     errors.push('budget profiles must be exactly phone and desktop');
@@ -365,19 +651,22 @@ export function reportBrowserAuthorityErrors(browser, expectedBrowserAuthority) 
   if (!browser || typeof browser !== 'object' || Array.isArray(browser)) {
     return ['terminal report browser authority is missing'];
   }
-  const actual = Object.fromEntries(
-    BROWSER_AUTHORITY_FIELDS.map((field) => [field, browser[field]]),
-  );
-  if (BROWSER_AUTHORITY_FIELDS.some((field) =>
-    typeof actual[field] !== 'string' || !actual[field])) {
+  if (!validBrowserProvenance(browser)) {
     return ['terminal report browser authority is incomplete'];
   }
-  return same(actual, expectedBrowserAuthority)
-    ? []
+  if (!EDGE_PRODUCT.test(browser.product)) {
+    return ['terminal report browser family is not Microsoft Edge'];
+  }
+  if (browser.protocolVersion !== SCENE_MEMORY_BROWSER_PROTOCOL_VERSION) {
+    return ['terminal report browser protocol does not match the SceneMemory contract'];
+  }
+  return sceneMemoryBrowserAuthorityMatches(browser, expectedBrowserAuthority) ? []
     : ['terminal report browser authority does not match the budget'];
 }
 
 function assertBudgetBinding(record, inputs, browser) {
+  assert(record.status === 'active',
+    'scene-memory certification requires an active calibrated budget');
   assert(same(record.authority.producer, producerAuthority(inputs)),
     'scene-memory budget producer authority does not match this collector/input set');
   const browserErrors = reportBrowserAuthorityErrors(browser, record.authority.browser);
@@ -437,13 +726,6 @@ function serveDist() {
       response.end('<!doctype html><meta charset="utf-8"><title>Scene memory seed</title>');
       return;
     }
-    if (url.pathname === '/__scenemem_away__.html') {
-      response.writeHead(200, {
-        'content-type': 'text/html; charset=utf-8', 'cache-control': 'no-store',
-      });
-      response.end('<!doctype html><meta charset="utf-8"><title>Scene memory away</title><script>globalThis.__CF_SCENEMEM_AWAY__=true<\/script>');
-      return;
-    }
     if (url.pathname === '/favicon.ico') {
       response.writeHead(204, { 'cache-control': 'public, max-age=86400' });
       response.end();
@@ -483,6 +765,40 @@ function serveDist() {
   });
 }
 
+export function sceneMemoryBfcacheAwayResponse(pathname) {
+  if (pathname !== '/__scenemem_bfcache_away__.html') {
+    return Object.freeze({ status: 404, headers: Object.freeze({}), body: '' });
+  }
+  return Object.freeze({
+    status: 200,
+    headers: Object.freeze({
+      'content-type': 'text/html; charset=utf-8',
+      'cache-control': 'no-store',
+    }),
+    body: '<!doctype html><meta charset="utf-8"><link rel="icon" href="data:,"><title>Scene memory away</title><script>globalThis.__CF_SCENEMEM_AWAY__=true<\/script>',
+  });
+}
+
+function serveBfcacheAwayPage() {
+  const server = http.createServer((request, response) => {
+    const url = new URL(request.url || '/', 'http://127.0.0.1');
+    const projected = sceneMemoryBfcacheAwayResponse(url.pathname);
+    response.writeHead(projected.status, projected.headers);
+    response.end(projected.body);
+  });
+  return new Promise((resolve, reject) => {
+    server.once('error', reject);
+    server.listen(0, '127.0.0.1', () => {
+      const address = server.address();
+      assert(address && typeof address === 'object', 'bfcache away server has no TCP address');
+      resolve(Object.freeze({
+        origin: `http://127.0.0.1:${address.port}`,
+        close: () => closeStaticServer(server),
+      }));
+    });
+  });
+}
+
 function evaluationValue(response, label) {
   if (response?.exceptionDetails) {
     const description = response.exceptionDetails.exception?.description
@@ -500,11 +816,12 @@ function makeCollector(send, profile) {
   const evaluate = async (sessionId, expression, label, timeoutMs = COMMAND_TIMEOUT_MS) => {
     const response = await send('Runtime.evaluate', {
       expression, awaitPromise: true, returnByValue: true,
-    }, sessionId, { timeoutMs });
+    }, sessionId, { timeoutMs: sceneMemoryCollectorCommandTimeoutMs(timeoutMs) });
     return evaluationValue(response, `${profile} ${label}`);
   };
   const waitValue = async (
     sessionId, label, expression, accept = Boolean, timeoutMs = ROUTE_TIMEOUT_MS,
+    diagnose = null, terminalFailure = null,
   ) => {
     const deadline = performance.now() + timeoutMs;
     let last = null;
@@ -513,15 +830,72 @@ function makeCollector(send, profile) {
       const remaining = Math.max(1, Math.floor(deadline - performance.now()));
       last = await evaluate(sessionId, expression, label, Math.min(COMMAND_TIMEOUT_MS, remaining));
       observations++;
+      if (typeof terminalFailure === 'function' && terminalFailure(last)) {
+        throw new ProductFailure(`${profile} ${label}: product reported a terminal fault`, {
+          observations,
+          last,
+          ...(typeof diagnose === 'function' ? { reasons: diagnose(last) } : {}),
+        });
+      }
       if (accept(last)) return last;
       await sleep(Math.min(50, Math.max(1, deadline - performance.now())));
     }
     throw new ProductFailure(
       `${profile} ${label}: product did not settle inside ${timeoutMs}ms`,
-      { observations, last },
+      {
+        observations,
+        last,
+        ...(typeof diagnose === 'function' ? { reasons: diagnose(last) } : {}),
+      },
     );
   };
   return Object.freeze({ evaluate, waitValue });
+}
+
+export function sceneMemoryShipyardOpenSettlementReasons(value) {
+  const diagnostics = value?.diagnostics;
+  const panelDiagnostics = diagnostics?.engineering;
+  const arc3 = value?.arc3;
+  const presentation = value?.presentation;
+  const stateKeyReady = typeof value?.shipVisualStateKey === 'string'
+    && value.shipVisualStateKey.length > 0;
+  const checks = Object.freeze({
+    observationSchema: value?.schema === SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA,
+    panelOpen: value?.panelOpen === 'shipyard',
+    arc3StateKind: arc3?.stateKind === 'unavailable',
+    arc3Protection: arc3?.protection === 'legacy-refused:legacy-seed-missing',
+    arc3BootstrapPending: arc3?.bootstrapPending === false,
+    arc3BootstrapCandidateReady: arc3?.bootstrapCandidateReady === false,
+    presentationState: presentation?.state === 'unavailable',
+    presentationUnavailableReason:
+      presentation?.unavailableReason === SCENE_MEMORY_PROTECTED_ARC3_REASON,
+    presentationActionControlCount: presentation?.actionControlCount === 0,
+    presentationDiagnosticsActionControlCount:
+      presentation?.diagnosticsActionControlCount === 0,
+    shipVisualStateKey: stateKeyReady,
+    domPreviewCount: value?.domPreviewCount === 1,
+    stateKeyAgreement: !stateKeyReady
+      || (value?.domStateKey === value.shipVisualStateKey
+        && diagnostics?.stateKey === value.shipVisualStateKey),
+    diagnosticsSchema: diagnostics?.schema === 'cf-v2-shipyard-diagnostics/v1',
+    diagnosticsStatus: diagnostics?.status === 'open',
+    diagnosticsActivePreviewCount: diagnostics?.activePreviewCount === 1,
+    diagnosticsRetainedPreviewCount: diagnostics?.retainedPreviewCount === 0,
+    diagnosticsPendingPreviewWork: diagnostics?.pendingPreviewWork === 0,
+    panelDiagnosticsSchema:
+      panelDiagnostics?.schema === 'cf-v2-engineering-panel-diagnostics/v1',
+    panelDiagnosticsActiveCount: panelDiagnostics?.activeCount === 1,
+    panelDiagnosticsPendingWork: panelDiagnostics?.pendingWork === 0,
+    panelDiagnosticsActionControlCount: panelDiagnostics?.actionControlCount === 0,
+    panelDiagnosticsActivePreviewCount: panelDiagnostics?.activePreviewCount === 1,
+    panelDiagnosticsPreviewStateKey: !stateKeyReady
+      || panelDiagnostics?.previewStateKey === value.shipVisualStateKey,
+    panelDiagnosticsRetainedPreviewCount: panelDiagnostics?.retainedPreviewCount === 0,
+    panelDiagnosticsFaultCount: panelDiagnostics?.faultCount === 0,
+  });
+  return Object.freeze(
+    Object.entries(checks).filter(([, ok]) => !ok).map(([reason]) => reason),
+  );
 }
 
 function routeStateExpression() {
@@ -531,7 +905,38 @@ function routeStateExpression() {
     panel:s.panelOpen,sceneMode:r.mode,generation:r.generation,worldChildren:S.world.children.length,
     fineLayer:r.fineLayerActive,fineScope:r.fineScopeActive,pendingSurface:r.pendingSurfaceRefreshes,
     pendingSystem:r.pendingSystemRefreshes,pendingPersistence:r.pendingPersistenceWrites,
-    retiredFine:r.retiredFineOwnerCount,registry:r.registry}})()`;
+    retiredFine:r.retiredFineOwnerCount,registry:r.registry,
+    surfaceVistaWorkerActive:r.surfaceVistaWorkerActive,
+    surfaceVistaMounted:r.surfaceVistaMounted,
+    surfaceVistaCacheEntries:r.surfaceVistaCacheEntries,
+    surfaceVistaCachePixels:r.surfaceVistaCachePixels}})()`;
+}
+
+function surfaceVistaState(scene) {
+  return Object.freeze({
+    surfaceVistaWorkerActive: scene.surfaceVistaWorkerActive,
+    surfaceVistaMounted: scene.surfaceVistaMounted,
+    surfaceVistaCacheEntries: scene.surfaceVistaCacheEntries,
+    surfaceVistaCachePixels: scene.surfaceVistaCachePixels,
+  });
+}
+
+export function sceneMemorySurfaceVistaFaultReasons(value) {
+  const faults = value?.surfaceVistaFaults;
+  if (!Number.isInteger(faults) || faults < 0) {
+    return Object.freeze(['surface vista fault diagnostics are missing or invalid']);
+  }
+  if (faults === 0) {
+    if (value?.surfaceVistaLastError !== null) {
+      return Object.freeze(['surface vista fault diagnostics are inconsistent']);
+    }
+    return Object.freeze([]);
+  }
+  const detail = typeof value.surfaceVistaLastError === 'string'
+    && value.surfaceVistaLastError.length > 0
+    ? value.surfaceVistaLastError
+    : 'cause unavailable';
+  return Object.freeze([`surface vista fault (${faults}): ${detail}`]);
 }
 
 async function postRenderAnswerability(send, sessionId, profile, token) {
@@ -580,7 +985,9 @@ async function postRenderAnswerability(send, sessionId, profile, token) {
   });
 }
 
-async function collectSnapshot({ send, sessionId, collector, profile, label }) {
+export async function sceneMemoryCollectSnapshotPass({
+  send, sessionId, collector, profile, label,
+}) {
   const answerability = await postRenderAnswerability(send, sessionId, profile, label);
   await send('HeapProfiler.collectGarbage', {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
   const heap = await send('Runtime.getHeapUsage', {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
@@ -595,6 +1002,38 @@ async function collectSnapshot({ send, sessionId, collector, profile, label }) {
   const heapAggregateBytes = Number(heap.usedSize || 0)
     + Number(heap.embedderHeapUsedSize || 0) + Number(heap.backingStorageSize || 0);
   return Object.freeze({ label, answerability, heap, heapAggregateBytes, dom, raw });
+}
+
+export async function sceneMemoryCollectFixedSnapshot({
+  send, sessionId, collector, profile, label, phaseThresholdBytes,
+  stableResourcesRequired = false,
+}) {
+  assert(Number.isSafeInteger(phaseThresholdBytes) && phaseThresholdBytes > 0
+    && phaseThresholdBytes <= HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
+  `${profile} ${label}: heap phase threshold must be an integer from 1 through ${HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES}`);
+  const labels = [
+    ...Array.from({ length: HEAP_PHASE_SETTLING_PASSES }, (_, index) =>
+      `${label}-phase-settle-${index + 1}`),
+    `${label}-phase-validity`,
+    label,
+  ];
+  assert(labels.length === HEAP_PHASE_SNAPSHOT_PASSES,
+    'heap phase pass-role inventory drifted');
+  const passes = [];
+  for (const passLabel of labels) {
+    passes.push(await sceneMemoryCollectSnapshotPass({
+      send, sessionId, collector, profile, label: passLabel,
+    }));
+  }
+  const scored = passes[HEAP_PHASE_SCORED_PASS - 1];
+  const provisional = Object.freeze({
+    ...scored,
+    heapPhasePasses: Object.freeze(passes.slice(0, HEAP_PHASE_SCORED_PASS - 1)),
+  });
+  const heapPhaseValidity = deriveSceneMemoryHeapPhaseValidity(
+    provisional, stableResourcesRequired, phaseThresholdBytes,
+  );
+  return Object.freeze({ ...provisional, heapPhaseValidity });
 }
 
 function contractPoint(snapshot) {
@@ -621,10 +1060,12 @@ function contractPoint(snapshot) {
     shipyardPreviewPendingWork: shipyard.pendingPreviewWork,
     pending: scene.pendingSurfaceRefreshes + scene.pendingSystemRefreshes
       + scene.pendingPersistenceWrites
+      + Number(scene.surfaceVistaWorkerActive) + Number(scene.surfaceVistaMounted)
       + scene.retiredFineOwnerCount + shipyard.activePreviewCount
       + shipyard.retainedPreviewCount + shipyard.pendingPreviewWork,
     ringCacheEntries: scene.ringGeometryEntries,
     peakRingGeometryEntries: scene.peakRingGeometryEntries,
+    ...surfaceVistaState(scene),
     answerability: {
       target: { ok: snapshot.answerability.target.ok,
         elapsedMs: snapshot.answerability.target.durationMs,
@@ -651,6 +1092,626 @@ function contractPoint(snapshot) {
       jsEventListeners: snapshot.dom.jsEventListeners,
     },
   });
+}
+
+function snapshotResourcePoint(snapshot) {
+  const { answerability, heap, ...resource } = contractPoint(snapshot);
+  void answerability;
+  void heap;
+  const { tickerTicks, ...route } = snapshot.raw.state;
+  void tickerTicks;
+  return Object.freeze({
+    ...resource,
+    route,
+    compendium: snapshot.raw.compendium,
+    shipyard: snapshot.raw.shipyard,
+  });
+}
+
+function snapshotAggregateMatches(snapshot) {
+  const heap = snapshot?.heap;
+  return Number.isFinite(heap?.usedSize) && Number.isFinite(heap?.embedderHeapUsedSize)
+    && Number.isFinite(heap?.backingStorageSize)
+    && snapshot.heapAggregateBytes === heap.usedSize
+      + heap.embedderHeapUsedSize + heap.backingStorageSize;
+}
+
+function snapshotPassCarrierErrors(snapshot) {
+  const errors = [];
+  const object = (value) => value !== null && typeof value === 'object' && !Array.isArray(value);
+  if (typeof snapshot?.label !== 'string' || snapshot.label.length === 0) {
+    errors.push('label is absent');
+  }
+  if (!snapshotAggregateMatches(snapshot)) errors.push('heap aggregate is detached from raw counters');
+  const target = snapshot?.answerability?.target;
+  const targetValue = target?.value;
+  if (snapshot?.answerability?.token !== snapshot?.label
+    || target?.ok !== true || !Number.isFinite(target?.durationMs)
+    || target.durationMs < 0 || targetValue?.started !== true
+    || !Number.isSafeInteger(targetValue?.before) || !Number.isSafeInteger(targetValue?.after)
+    || targetValue.after <= targetValue.before
+    || typeof targetValue?.documentTokenBefore !== 'string'
+    || targetValue.documentTokenBefore.length === 0
+    || targetValue.documentTokenAfter !== targetValue.documentTokenBefore) {
+    errors.push('answerability target carrier is invalid');
+  }
+  const heartbeat = snapshot?.answerability?.heartbeat;
+  if (heartbeat?.ok !== true || !Number.isFinite(heartbeat?.durationMs)
+    || heartbeat.durationMs < 0 || typeof heartbeat?.product !== 'string'
+    || heartbeat.product.length === 0 || typeof heartbeat?.protocolVersion !== 'string'
+    || heartbeat.protocolVersion.length === 0) {
+    errors.push('answerability heartbeat carrier is invalid');
+  }
+  if (!object(snapshot?.raw?.state) || !object(snapshot?.raw?.scene)
+    || !object(snapshot?.raw?.compendium) || !object(snapshot?.raw?.shipyard)) {
+    errors.push('resource carrier is incomplete');
+  } else if (snapshot.raw.scene.documentToken !== targetValue?.documentTokenBefore
+    || !Number.isSafeInteger(snapshot.raw.state.tickerTicks)
+    || snapshot.raw.state.tickerTicks < targetValue?.after) {
+    errors.push('resource carrier is detached from answerability');
+  }
+  const dom = snapshot?.dom;
+  if (!Number.isSafeInteger(dom?.documents) || dom.documents <= 0
+    || !Number.isSafeInteger(dom?.nodes) || dom.nodes <= 0
+    || !Number.isSafeInteger(dom?.jsEventListeners) || dom.jsEventListeners < 0) {
+    errors.push('DOM carrier is invalid');
+  }
+  return errors;
+}
+
+export function sceneMemorySnapshotPairErrors(snapshot, stableResourcesRequired = false) {
+  const errors = [];
+  const probe = snapshot?.heapPhaseProbe;
+  if (!probe || typeof probe !== 'object') return ['heap phase probe is absent'];
+  errors.push(...snapshotPassCarrierErrors(probe).map((error) => `heap phase probe ${error}`));
+  errors.push(...snapshotPassCarrierErrors(snapshot).map((error) => `scored snapshot ${error}`));
+  if (typeof snapshot?.label !== 'string'
+    || probe.label !== `${snapshot.label}-phase-probe`) {
+    errors.push('heap phase probe order/label is invalid');
+  }
+  try {
+    if (stableResourcesRequired
+      && !same(snapshotResourcePoint(probe), snapshotResourcePoint(snapshot))) {
+      errors.push('heap phase resource fingerprint drifted between fixed passes');
+    }
+  } catch (error) {
+    errors.push(`heap phase resource fingerprint is invalid (${error instanceof Error
+      ? error.message : String(error)})`);
+  }
+  return errors;
+}
+
+function sceneMemoryHeapPhasePasses(snapshot, scoredSnapshotPass = HEAP_PHASE_SCORED_PASS) {
+  if (!Array.isArray(snapshot?.heapPhasePasses)
+    || snapshot.heapPhasePasses.length !== scoredSnapshotPass - 1) return [];
+  return [...snapshot.heapPhasePasses, snapshot];
+}
+
+function heapPhaseDeltas(validity, scored) {
+  const fields = ['usedSize', 'embedderHeapUsedSize', 'backingStorageSize'];
+  const deltas = {};
+  for (const field of fields) {
+    const left = validity?.heap?.[field];
+    const right = scored?.heap?.[field];
+    if (!Number.isFinite(left) || left < 0 || !Number.isFinite(right) || right < 0) return null;
+    deltas[field] = Math.abs(right - left);
+  }
+  if (!snapshotAggregateMatches(validity) || !snapshotAggregateMatches(scored)) return null;
+  deltas.aggregate = Math.abs(scored.heapAggregateBytes - validity.heapAggregateBytes);
+  return Object.freeze(deltas);
+}
+
+function deriveSceneMemoryHeapPhaseValidity(
+  snapshot, stableResourcesRequired, phaseThresholdBytes,
+  policy = CURRENT_HEAP_PHASE_POLICY,
+) {
+  const reasons = [];
+  const passes = sceneMemoryHeapPhasePasses(snapshot, policy.scoredSnapshotPass);
+  if (passes.length !== policy.snapshotPasses) {
+    reasons.push(`heap phase pass inventory must contain exactly ${policy.snapshotPasses} fixed passes`);
+  } else {
+    passes.forEach((pass, index) => {
+      reasons.push(...snapshotPassCarrierErrors(pass)
+        .map((error) => `heap phase pass ${index + 1} ${error}`));
+    });
+    const expectedLabels = [
+      ...Array.from({ length: policy.settlingPasses }, (_, index) =>
+        `${snapshot.label}-phase-settle-${index + 1}`),
+      `${snapshot.label}-phase-validity`,
+      snapshot.label,
+    ];
+    if (!same(passes.map((pass) => pass?.label), expectedLabels)) {
+      reasons.push('heap phase pass order/labels are invalid');
+    }
+    for (let index = 1; index < passes.length; index++) {
+      const previousAfter = passes[index - 1]?.answerability?.target?.value?.after;
+      const currentBefore = passes[index]?.answerability?.target?.value?.before;
+      if (!Number.isSafeInteger(previousAfter) || !Number.isSafeInteger(currentBefore)
+        || currentBefore < previousAfter) {
+        reasons.push(`heap phase ticker progression is invalid between passes ${index} and ${index + 1}`);
+      }
+    }
+    try {
+      const compared = policy.validityPasses.map((pass) => passes[pass - 1]);
+      if (!same(snapshotResourcePoint(compared[0]), snapshotResourcePoint(compared[1]))) {
+        reasons.push(`heap phase validity resource fingerprint drifted between passes ${policy.validityPasses[0]} and ${policy.validityPasses[1]}`);
+      }
+      if (stableResourcesRequired) {
+        const scoredResource = snapshotResourcePoint(passes[policy.scoredSnapshotPass - 1]);
+        for (let index = 0; index < passes.length - 1; index++) {
+          if (!same(snapshotResourcePoint(passes[index]), scoredResource)) {
+            reasons.push(`heap phase resource fingerprint drifted between passes ${index + 1} and ${policy.scoredSnapshotPass}`);
+          }
+        }
+      }
+    } catch (error) {
+      reasons.push(`heap phase resource fingerprint is invalid (${error instanceof Error
+        ? error.message : String(error)})`);
+    }
+  }
+  if (!Number.isSafeInteger(phaseThresholdBytes) || phaseThresholdBytes <= 0
+    || phaseThresholdBytes > HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES) {
+    reasons.push(`heap phase threshold must be an integer from 1 through ${HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES}`);
+  }
+  const deltas = passes.length === policy.snapshotPasses
+    ? heapPhaseDeltas(
+      passes[policy.validityPasses[0] - 1],
+      passes[policy.validityPasses[1] - 1],
+    ) : null;
+  if (deltas === null) reasons.push('heap phase validity deltas are absent or invalid');
+  else if (Number.isSafeInteger(phaseThresholdBytes) && phaseThresholdBytes > 0) {
+    for (const [field, delta] of Object.entries(deltas)) {
+      if (delta > phaseThresholdBytes) {
+        reasons.push(`${field} absolute phase delta ${delta} exceeded ceiling ${phaseThresholdBytes}`);
+      }
+    }
+  }
+  return Object.freeze({
+    schema: policy.validitySchema,
+    status: reasons.length === 0 ? 'valid' : 'invalid',
+    comparedPasses: policy.validityPasses,
+    scoredSnapshotPass: policy.scoredSnapshotPass,
+    maxAbsolutePhaseDeltaBytes: phaseThresholdBytes,
+    deltas,
+    reasons: Object.freeze(reasons),
+  });
+}
+
+export function sceneMemorySnapshotPhaseErrors(
+  snapshot, stableResourcesRequired = false, expectedThresholdBytes = undefined,
+) {
+  const threshold = expectedThresholdBytes === undefined
+    ? snapshot?.heapPhaseValidity?.maxAbsolutePhaseDeltaBytes : expectedThresholdBytes;
+  const expected = deriveSceneMemoryHeapPhaseValidity(
+    snapshot, stableResourcesRequired, threshold,
+  );
+  const errors = [...expected.reasons];
+  if (!same(snapshot?.heapPhaseValidity, expected)) {
+    errors.push('heap phase validity evidence is detached from the retained raw passes');
+  }
+  return errors;
+}
+
+export function sceneMemorySnapshotHistoricalFourPassErrors(
+  snapshot, stableResourcesRequired = false, expectedThresholdBytes = undefined,
+) {
+  const threshold = expectedThresholdBytes === undefined
+    ? snapshot?.heapPhaseValidity?.maxAbsolutePhaseDeltaBytes : expectedThresholdBytes;
+  const expected = deriveSceneMemoryHeapPhaseValidity(
+    snapshot, stableResourcesRequired, threshold, HISTORICAL_FOUR_PASS_POLICY,
+  );
+  const errors = [...expected.reasons];
+  if (!same(snapshot?.heapPhaseValidity, expected)) {
+    errors.push('heap phase validity evidence is detached from the retained raw passes');
+  }
+  return errors;
+}
+
+export function sceneMemoryPhaseThresholdForMaximum(maxObservedBytes) {
+  assert(Number.isSafeInteger(maxObservedBytes) && maxObservedBytes >= 0,
+    'heap phase calibration maximum must be a nonnegative integer');
+  return HEAP_PHASE_ALLOWED_THRESHOLDS_BYTES.find(
+    (threshold) => threshold > maxObservedBytes,
+  ) ?? null;
+}
+
+export function sceneMemoryProfilePhaseMaximum(measurement) {
+  const snapshots = [
+    measurement?.initial,
+    ...(Array.isArray(measurement?.warmups) ? measurement.warmups : []),
+    ...(Array.isArray(measurement?.measured) ? measurement.measured : []),
+    measurement?.bfcacheSnapshot,
+  ];
+  assert(snapshots.length === 10 && snapshots.every(Boolean),
+    'heap phase calibration profile must retain exactly 10 snapshots');
+  const deltas = snapshots.map((snapshot) => {
+    const passes = sceneMemoryHeapPhasePasses(snapshot);
+    assert(passes.length === HEAP_PHASE_SNAPSHOT_PASSES,
+      `heap phase calibration snapshot must retain exactly ${HEAP_PHASE_SNAPSHOT_PASSES} passes`);
+    const value = heapPhaseDeltas(
+      passes[HEAP_PHASE_VALIDITY_PASSES[0] - 1],
+      passes[HEAP_PHASE_VALIDITY_PASSES[1] - 1],
+    );
+    assert(value !== null, 'heap phase calibration snapshot deltas are invalid');
+    return value;
+  });
+  return Object.freeze({
+    snapshotCount: snapshots.length,
+    fieldCount: 4,
+    maximumBytes: Math.max(...deltas.flatMap((value) => Object.values(value))),
+    deltas: Object.freeze(deltas),
+  });
+}
+
+function sceneMemoryContractProfilesFromEvidence(profiles) {
+  return Object.fromEntries(Object.entries(profiles || {}).map(
+    ([profile, measurement]) => [profile, {
+      initial: {
+        documentToken: measurement.initial.raw.scene.documentToken,
+        heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),
+      },
+      initialVista: measurement.initialVista,
+      firstSurfaceVista: measurement.firstSurfaceVista,
+      precondition: measurement.precondition,
+      cycles: measurement.cycles,
+      bfcache: measurement.bfcache,
+      reloadCleanup: measurement.reloadCleanup,
+    }],
+  ));
+}
+
+function sceneMemoryCalibrationBudgetsFromEvidence(profiles) {
+  return Object.fromEntries(Object.entries(profiles || {}).map(
+    ([profile, measurement]) => [
+      profile, calibrationBudget(sceneMemoryMetricSummary(measurement)),
+    ],
+  ));
+}
+
+function sceneMemoryHeapPhaseCandidateAuthorityErrors(
+  candidates, selectedProfiles, expectedProducerAuthority, expectedBrowserAuthority,
+) {
+  const errors = [];
+  const reports = [];
+  const maxima = Object.fromEntries(Object.keys(PROFILES).map((profile) => [profile, []]));
+  const expectedPolicy = {
+    attemptCount: 1,
+    automaticRetries: 0,
+    warmupCycles: WARMUP_CYCLES,
+    measuredWarmCycles: WARM_CYCLES,
+    commandTimeoutMs: COMMAND_TIMEOUT_MS,
+    snapshotPasses: HEAP_PHASE_SNAPSHOT_PASSES,
+    settlingPasses: HEAP_PHASE_SETTLING_PASSES,
+    validityPasses: HEAP_PHASE_VALIDITY_PASSES,
+    scoredSnapshotPass: HEAP_PHASE_SCORED_PASS,
+    phaseInvalidity: 'instrument-fail-before-contract',
+    phaseCalibrationHardCapBytes: HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
+    targetTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
+    heartbeatTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
+  };
+  for (const candidate of candidates) {
+    try {
+      const file = path.resolve(auditRoot, candidate.file);
+      if (path.dirname(file) !== auditRoot || path.basename(file) !== candidate.file) {
+        throw new Error('carrier path escapes the audits root');
+      }
+      const carrierStat = fs.lstatSync(file);
+      if (!carrierStat.isFile() || carrierStat.isSymbolicLink()) {
+        throw new Error('carrier must be a regular non-symlink file');
+      }
+      const trackedCarrier = portable(path.relative(repoRoot, file));
+      let trackedOutput;
+      try {
+        trackedOutput = execFileSync(
+          'git', ['ls-files', '--error-unmatch', '--', trackedCarrier],
+          { cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] },
+        ).trim();
+      } catch {
+        throw new Error('carrier is not tracked by Git');
+      }
+      if (trackedOutput !== trackedCarrier) {
+        throw new Error('carrier Git identity is ambiguous');
+      }
+      const compressed = fs.readFileSync(file);
+      if (compressed.byteLength !== candidate.gzipBytes
+        || sha256(compressed) !== candidate.gzipSha256) {
+        throw new Error('gzip carrier bytes/hash drifted');
+      }
+      const raw = gunzipSync(compressed);
+      if (raw.byteLength !== candidate.rawBytes || sha256(raw) !== candidate.rawSha256) {
+        throw new Error('raw carrier bytes/hash drifted');
+      }
+      const report = JSON.parse(raw.toString('utf8'));
+      if (report.schema !== REPORT_SCHEMA || report.runId !== candidate.runId
+        || report.status !== 'calibration'
+        || report.certification !== 'calibration-only-not-certified'
+        || report.lifecycle?.schema !== LIFECYCLE_SCHEMA
+        || report.lifecycle?.status !== 'complete'
+        || !same(report.policy, expectedPolicy)
+        || !same(report.cleanup, { browser: true, server: true, workspaceLock: true })
+        || !same(report.source?.begin, report.source?.end)
+        || !same(Object.keys(report.source?.begin || {}).sort(), [
+          'branch', 'commit', 'state', 'statusSha256', 'workingTreeSha256',
+        ])
+        || !/^[a-f0-9]{40}$/.test(report.source?.begin?.commit || '')
+        || typeof report.source?.begin?.branch !== 'string'
+        || report.source.begin.branch.length === 0
+        || report.source?.begin?.state !== 'committed'
+        || report.source?.begin?.statusSha256 !== sha256('')
+        || !/^[a-f0-9]{64}$/.test(report.source?.begin?.workingTreeSha256 || '')
+        || report.inputs?.budget !== null
+        || !same(report.budget, { schema: null, path: null, sha256: null })
+        || !same(Object.keys(report.calibrationBoundary || {}).sort(), [
+          'path', 'schema', 'sha256', 'status',
+        ])
+        || report.calibrationBoundary?.schema !== BUDGET_SCHEMA
+        || report.calibrationBoundary?.status !== 'calibration-required'
+        || report.calibrationBoundary?.path !== CALIBRATION_BUDGET_RELATIVE_PATH
+        || !/^[a-f0-9]{64}$/.test(report.calibrationBoundary?.sha256 || '')
+        || report.contractInput?.schema !== 'cf-v2-scene-memory-input/v6'
+        || !report.build || report.build.schema !== 'cf-v2-scene-memory-build/v1'
+        || !Array.isArray(report.build.files)
+        || report.build.sha256 !== sha256(stableJson(report.build.files))
+        || report.inputs?.buildDist !== report.build.sha256
+        || !same(producerAuthority(report.inputs || {}), expectedProducerAuthority)
+        || !sceneMemoryBrowserAuthorityMatches(report.browser, expectedBrowserAuthority)
+        || !Array.isArray(report.outcomes) || report.outcomes.length !== OUTCOME_COUNT
+        || report.outcomes.some((outcome) => outcome?.pass !== true)
+        || !same(report.findings, []) || !same(report.fatalEvents, [])) {
+        throw new Error('terminal calibration identity/lifecycle is incomplete or red');
+      }
+      const resolvedCommit = execFileSync(
+        'git', ['rev-parse', '--verify', `${report.source.begin.commit}^{commit}`],
+        { cwd: repoRoot, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] },
+      ).trim();
+      if (resolvedCommit !== report.source.begin.commit) {
+        throw new Error('calibration source commit is not one immutable literal commit');
+      }
+      const boundaryBlob = execFileSync(
+        'git', [
+          'show', `${report.source.begin.commit}:${CALIBRATION_BUDGET_RELATIVE_PATH}`,
+        ],
+        { cwd: repoRoot, stdio: ['ignore', 'pipe', 'ignore'] },
+      );
+      if (sha256(boundaryBlob) !== report.calibrationBoundary.sha256) {
+        throw new Error('calibration boundary hash is detached from the source commit');
+      }
+      const boundaryBudget = JSON.parse(boundaryBlob.toString('utf8'));
+      const boundaryValidation = validateSceneMemoryBudget(boundaryBudget);
+      if (!boundaryValidation.ok || boundaryBudget.status !== 'calibration-required'
+        || !same(boundaryBudget.authority?.producer, expectedProducerAuthority)
+        || !same(boundaryBudget.authority?.browser, expectedBrowserAuthority)) {
+        throw new Error('source commit lacks the exact calibration-required producer boundary');
+      }
+      const profileErrors = terminalProfileEvidenceErrors(
+        report.profiles, true, false, true, true,
+      );
+      if (profileErrors.length) {
+        throw new Error(`raw profile evidence is invalid (${profileErrors.join('; ')})`);
+      }
+      for (const profile of Object.keys(PROFILES)) {
+        const phaseErrors = sceneMemoryProfilePhaseBudgetErrors(
+          report.profiles[profile], HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
+        );
+        if (phaseErrors.length) {
+          throw new Error(`${profile} calibration phase is invalid (${phaseErrors.join('; ')})`);
+        }
+        maxima[profile].push(sceneMemoryProfilePhaseMaximum(
+          report.profiles[profile],
+        ).maximumBytes);
+      }
+      const expectedContractProfiles = sceneMemoryContractProfilesFromEvidence(
+        report.profiles,
+      );
+      const expectedCalibrationBudgets = sceneMemoryCalibrationBudgetsFromEvidence(
+        report.profiles,
+      );
+      if (!same(report.contractInput.profiles, expectedContractProfiles)
+        || !same(report.contractInput.budgets, expectedCalibrationBudgets)) {
+        throw new Error('calibration contract input is detached from raw profile evidence');
+      }
+      const recomputed = evaluateSceneMemory(report.contractInput);
+      if (recomputed.status !== 'pass' || !same(report.verdict, recomputed)
+        || !same(report.outcomes, recomputed.outcomes)) {
+        throw new Error('calibration product verdict is detached or red');
+      }
+      reports.push(report);
+    } catch (error) {
+      errors.push(`${candidate.runId}: ${error instanceof Error ? error.message : String(error)}`);
+    }
+  }
+  if (reports.length === candidates.length) {
+    const identity = (report) => ({
+      source: report.source.begin,
+      build: report.build,
+      browser: report.browser,
+      inputs: report.inputs,
+      calibrationBoundary: report.calibrationBoundary,
+    });
+    if (!reports.every((report) => same(identity(report), identity(reports[0])))) {
+      errors.push('heapPhase calibration carriers do not share one source/build/browser/input tuple');
+    }
+    if (new Set(reports.map((report) => report.startedAt)).size !== reports.length) {
+      errors.push('heapPhase calibration carriers are not independent attempts');
+    }
+    const targetIds = reports.flatMap((report) => Object.keys(PROFILES)
+      .map((profile) => report.profiles[profile]?.targetId));
+    const documentTokens = reports.flatMap((report) => Object.keys(PROFILES)
+      .map((profile) => report.profiles[profile]?.documentToken));
+    if (targetIds.some((value) => typeof value !== 'string' || value.length === 0)
+      || new Set(targetIds).size !== targetIds.length
+      || documentTokens.some((value) => typeof value !== 'string' || value.length === 0)
+      || new Set(documentTokens).size !== documentTokens.length) {
+      errors.push('heapPhase calibration profile target/document identities are not independent');
+    }
+    for (const profile of Object.keys(PROFILES)) {
+      const observedMaximum = Math.max(...maxima[profile]);
+      const expectedThreshold = sceneMemoryPhaseThresholdForMaximum(observedMaximum);
+      const selected = selectedProfiles?.[profile]?.maxAbsolutePhaseDeltaBytes;
+      if (expectedThreshold === null) {
+        errors.push(`${profile} heapPhase maximum ${observedMaximum} reached the 64 KiB refusal boundary`);
+      } else if (selected !== expectedThreshold) {
+        errors.push(`${profile} heapPhase ceiling ${String(selected)} is not the derived ${expectedThreshold} for maximum ${observedMaximum}`);
+      }
+    }
+  }
+  return errors;
+}
+
+function assertSceneMemoryHeapPhaseSnapshot(
+  snapshot, profile, label, stableResourcesRequired, phaseThresholdBytes,
+) {
+  const errors = sceneMemorySnapshotPhaseErrors(
+    snapshot, stableResourcesRequired, phaseThresholdBytes,
+  );
+  assert(errors.length === 0,
+    `${profile} ${label}: fixed eighth snapshot phase is invalid (${errors.join('; ')})`);
+}
+
+export function sceneMemoryHeapPhaseControlSlopes(snapshots) {
+  assert(Array.isArray(snapshots) && snapshots.length === WARM_CYCLES,
+    'heap phase control requires four fixed retained-growth cycles');
+  const lane = (passIndex) => snapshots.map((snapshot) => {
+    const passes = sceneMemoryHeapPhasePasses(snapshot);
+    const value = passes[passIndex]?.heap?.backingStorageSize;
+    assert(Number.isFinite(value) && value >= 0,
+      `heap phase control pass ${passIndex + 1} backing sample is invalid`);
+    return value;
+  });
+  return Object.freeze(Object.fromEntries(
+    Array.from({ length: HEAP_PHASE_SNAPSHOT_PASSES }, (_, index) => [
+      `pass${index + 1}`, leastSquaresSlope(lane(index)),
+    ]),
+  ));
+}
+
+async function runHeapPhaseSelftest() {
+  let browser = null;
+  let browserContextId = null;
+  let targetId = null;
+  let sessionId = null;
+  const cleanupErrors = [];
+  let primaryError = null;
+  let evidence = null;
+  try {
+    browser = await openChromiumCdp({
+      label: 'SceneMemory fixed-eighth retained-allocation control',
+      userDataPrefix: 'cf-scenemem-heap-phase-control',
+      commandTimeoutMs: COMMAND_TIMEOUT_MS, startupTimeoutMs: 45_000,
+      webSocketOpenTimeoutMs: 15_000, shutdownTimeoutMs: 2_000,
+    });
+    const controlBrowser = browserSample(browser.browser);
+    assert(sceneMemoryBrowserAuthority(controlBrowser) !== null,
+      `heap phase selftest requires Microsoft Edge/CDP 1.3 (${controlBrowser.product} / ${controlBrowser.protocolVersion})`);
+    const context = await browser.send('Target.createBrowserContext');
+    browserContextId = context.browserContextId;
+    const target = await browser.send('Target.createTarget', {
+      url: 'about:blank', browserContextId,
+    });
+    targetId = target.targetId;
+    const attached = await browser.send('Target.attachToTarget', { targetId, flatten: true });
+    sessionId = attached.sessionId;
+    for (const method of ['Runtime.enable', 'HeapProfiler.enable']) {
+      await browser.send(method, {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+    }
+    const installed = await browser.send('Runtime.evaluate', {
+      expression: `(()=>{let ticks=0;globalThis.__cfHeapPhaseRetained=[];
+        globalThis.__CF_SLICE__={documentToken:'heap-phase-control-document',
+          app:{ticker:{started:true,addOnce(callback){setTimeout(()=>{ticks++;callback()},0)}}},
+          api:{state:()=>({tickerTicks:ticks})}};return true})()`,
+      returnByValue: true,
+    }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+    assert(evaluationValue(installed, 'heap phase control install') === true,
+      'heap phase control page did not install');
+    const collector = Object.freeze({
+      evaluate: async (ownedSessionId) => {
+        const response = await browser.send('Runtime.evaluate', {
+          expression: `(()=>{const S=globalThis.__CF_SLICE__,tickerTicks=S.api.state().tickerTicks;
+            return {state:{mode:'control',tickerTicks},
+              scene:{documentToken:S.documentToken,registry:{},managedResources:{}},
+              compendium:{},shipyard:{}}})()`,
+          returnByValue: true,
+        }, ownedSessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+        return evaluationValue(response, 'heap phase control carrier');
+      },
+    });
+    const snapshots = [];
+    const phaseDeltas = [];
+    for (let index = 0; index < WARM_CYCLES; index++) {
+      const allocation = await browser.send('Runtime.evaluate', {
+        expression: `(()=>{const value=new Uint8Array(${HEAP_PHASE_CONTROL_ALLOCATION_BYTES});
+          for(let offset=0;offset<value.length;offset+=4096)value[offset]=${index + 1};
+          globalThis.__cfHeapPhaseRetained.push(value);return value.byteLength})()`,
+        returnByValue: true,
+      }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+      assert(evaluationValue(allocation, `heap phase retained allocation ${index + 1}`)
+        === HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
+      `heap phase retained allocation ${index + 1} was incomplete`);
+      const snapshot = await sceneMemoryCollectFixedSnapshot({
+        send: browser.send, sessionId, collector, profile: 'control',
+        label: `control-${index + 1}`,
+        phaseThresholdBytes: HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
+      });
+      const validityErrors = sceneMemorySnapshotPhaseErrors(
+        snapshot, false, HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
+      );
+      assert(validityErrors.length === 0,
+        `fixed-eighth sampler did not converge its validity pair (${validityErrors.join('; ')})`);
+      snapshots.push(snapshot);
+      phaseDeltas.push(snapshot.heapPhaseValidity.deltas);
+    }
+    const slopes = sceneMemoryHeapPhaseControlSlopes(snapshots);
+    assert(Object.values(slopes).every((slope) => slope > HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES),
+    `fixed-eighth sampler erased retained growth (${JSON.stringify(slopes)})`);
+    const cleared = await browser.send('Runtime.evaluate', {
+      expression: 'globalThis.__cfHeapPhaseRetained=[];true', returnByValue: true,
+    }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+    assert(evaluationValue(cleared, 'heap phase retained allocation release') === true,
+      'heap phase retained allocation release failed');
+    const released = await sceneMemoryCollectSnapshotPass({
+      send: browser.send, sessionId, collector, profile: 'control', label: 'control-release',
+    });
+    assert(released.heap.backingStorageSize
+      < snapshots.at(-1).heap.backingStorageSize - HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
+    'fixed-eighth sampler did not distinguish released backing storage from retained growth');
+    evidence = Object.freeze({
+      browser: controlBrowser,
+      allocationBytesPerCycle: HEAP_PHASE_CONTROL_ALLOCATION_BYTES,
+      minimumSlopeBytesPerCycle: HEAP_PHASE_CONTROL_MIN_SLOPE_BYTES,
+      maximumPhaseDeltaBytes: HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
+      slopes,
+      phaseDeltas,
+      retainedBackingBytes: snapshots.at(-1).heap.backingStorageSize,
+      releasedBackingBytes: released.heap.backingStorageSize,
+    });
+  } catch (error) {
+    primaryError = error;
+  } finally {
+    if (targetId && browser) {
+      try {
+        const closed = await browser.send('Target.closeTarget', { targetId });
+        if (closed?.success !== true) cleanupErrors.push('Target.closeTarget did not confirm success');
+      }
+      catch (error) { cleanupErrors.push(`Target.closeTarget: ${error.message}`); }
+    }
+    if (browserContextId && browser) {
+      try { await browser.send('Target.disposeBrowserContext', { browserContextId }); }
+      catch (error) { cleanupErrors.push(`Target.disposeBrowserContext: ${error.message}`); }
+    }
+    if (browser) {
+      try { await browser.close(); }
+      catch (error) { cleanupErrors.push(`browser: ${error.message}`); }
+    }
+  }
+  if (cleanupErrors.length) {
+    throw new Error(`heap phase selftest cleanup failed: ${cleanupErrors.join('; ')}`, {
+      ...(primaryError ? { cause: primaryError } : {}),
+    });
+  }
+  if (primaryError) throw primaryError;
+  assert(evidence !== null, 'heap phase selftest produced no terminal evidence');
+  console.log(`SCENE MEMORY HEAP PHASE SELFTEST: PASS — ${JSON.stringify(evidence)}`);
+  return 0;
 }
 
 async function seedSave({ send, collector, sessionId, origin, veteranRaw, profile }) {
@@ -721,6 +1782,11 @@ async function driveCycle({ collector, sessionId, profile }) {
   const universe = await observe('route universe start', (value) => exactMode('universe')(value)
     && value.retiredFine === 0 && value.pendingSurface === 0 && value.pendingSystem === 0
     && value.pendingPersistence === 0
+    && value.surfaceVistaWorkerActive === false && value.surfaceVistaMounted === false
+    && ((value.surfaceVistaCacheEntries === 0 && value.surfaceVistaCachePixels === 0)
+      || (value.surfaceVistaCacheEntries === SURFACE_VISTA_CACHE_ENTRIES_MAX
+        && value.surfaceVistaCachePixels > 0
+        && value.surfaceVistaCachePixels <= SURFACE_VISTA_CACHE_PIXELS_MAX))
     && value.registry?.activeScopeCount === 1 && value.registry?.coherent === true);
   sceneObjectsByRoute.universe = universe.worldChildren;
   visitedRoutes.push('universe');
@@ -756,9 +1822,38 @@ async function driveCycle({ collector, sessionId, profile }) {
   sceneObjectsByRoute.system = system.worldChildren;
   visitedRoutes.push('system');
 
-  const landAccepted = await collector.evaluate(sessionId,
-    `window.__CF_SLICE__.api.landOn(${JSON.stringify(EARTH)})`, 'land on Earth');
-  productAssert(landAccepted === true, `${profile}: Earth planetfall was rejected`);
+  /* Capture a rejected product and its bounded state witness in the same
+     browser task. A convergence reload scheduled by the product cannot erase
+     the actionable reason between two separate CDP evaluations. */
+  const landAttempt = await collector.evaluate(sessionId, `(async () => {
+    const api = window.__CF_SLICE__?.api;
+    const accepted = await api.landOn(${JSON.stringify(EARTH)});
+    const state = api?.state?.() ?? null;
+    return {
+      accepted,
+      evidence: state === null ? null : {
+        route: {
+          mode: state.mode ?? null,
+          gal: state.gal ?? null,
+          star: state.star ?? null,
+          planet: state.planet ?? null,
+          planetOrdinal: state.planetOrdinal ?? null,
+        },
+        persistence: state.persistence == null ? null : {
+          protectedDetail: state.persistence.protectedDetail ?? null,
+          convergenceReloadScheduled: state.persistence.convergenceReloadScheduled ?? null,
+          mutationBlockWitness: state.persistence.mutationBlockWitness ?? null,
+          runtime: state.persistence.runtime ?? null,
+        },
+        landing: state.landing ?? null,
+      },
+    };
+  })()`, 'land on Earth with rejection evidence');
+  productAssert(landAttempt?.accepted === true,
+    `${profile}: Earth planetfall was rejected`, landAttempt?.evidence ?? landAttempt);
+  productAssert(landAttempt?.evidence?.route?.mode === 'surface'
+    && landAttempt?.evidence?.persistence?.convergenceReloadScheduled === false,
+  `${profile}: Earth landing scheduled convergence before surface observation`, landAttempt?.evidence);
   const surfaceRoute = await observe('route Earth 133 settled', (value) => exactMode('surface', {
     gal: 999, star: 424242, planet: 133, planetOrdinal: 2,
   })(value) && value?.panel === null, ART_TIMEOUT_MS);
@@ -771,23 +1866,30 @@ async function driveCycle({ collector, sessionId, profile }) {
   productAssert(surfaceDemand?.requested === true,
     `${profile}: surface HD demand was not applied`, surfaceDemand);
   const surface = await collector.waitValue(sessionId, 'surface texture settlement',
-    `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),r=S.api.sceneResourceDiagnostics();return r.mode==='surface'
+    `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),r=S.api.sceneResourceDiagnostics(),settled=r.mode==='surface'
       &&S.documentToken===${JSON.stringify(surfaceDemand.documentToken)}
       &&r.generation===${surfaceDemand.sceneGeneration}&&s.tickerTicks>${surfaceDemand.beforeTicker}
       &&s.rendererDpr===${expectedRendererDpr}
       &&r.pendingSurfaceRefreshes===0&&r.pendingSystemRefreshes===0
       &&r.retiredFineOwnerCount===0
       &&r.surfaceTextureOwnerActive===true
+      &&r.surfaceVistaWorkerActive===false&&r.surfaceVistaMounted===true
+      &&r.surfaceVistaCacheEntries===${SURFACE_VISTA_CACHE_ENTRIES_MAX}
+      &&r.surfaceVistaCachePixels>0
+      &&r.surfaceVistaCachePixels<=${SURFACE_VISTA_CACHE_PIXELS_MAX}
       &&r.surfaceCurrentTierPx===${expectedTierPx}&&r.surfaceRequestedTierPx===0
       &&r.surfaceCurrentBackingWidth===${expectedTierPx}
       &&r.surfaceCurrentBackingHeight===${expectedTierPx}
-      &&r.registry.coherent===true?{...r,rendererDpr:s.rendererDpr}:null})()`,
-  Boolean, ART_TIMEOUT_MS);
+      &&r.registry.coherent===true;return {...r,rendererDpr:s.rendererDpr,settled}})()`,
+  (value) => value?.settled === true, ART_TIMEOUT_MS,
+  sceneMemorySurfaceVistaFaultReasons,
+  (value) => sceneMemorySurfaceVistaFaultReasons(value).length > 0);
   sceneObjectsByRoute.surface = surfaceRoute.worldChildren;
   visitedRoutes.push('surface');
   inventory.surface = {
     mode: surface.mode === 'surface', owner: surface.surfaceTextureOwnerActive === true,
     scope: surface.registry.activeScopes.some((scope) => scope.closed === false && scope.leaseCount > 0),
+    ...surfaceVistaState(surface),
   };
 
   productAssert(await clickVisible(collector, sessionId, '#dockcodex,#railcodex',
@@ -844,21 +1946,36 @@ async function driveCycle({ collector, sessionId, profile }) {
     sessionId,
     'Shipyard open settlement',
     `(()=>{const S=window.__CF_SLICE__,s=S.api.state(),d=S.api.shipyardDiagnostics(),v=s.shipVisual,
+      e=s.engineering,de=d?.engineering,
       nodes=[...document.querySelectorAll('#shipyardpanel [data-cf-shipyard-preview="v1"]')],
+      unavailable=document.querySelector('#shipyardpanel [data-engineering-state]'),
+      actionControlCount=document.querySelectorAll('#shipyardpanel [data-engineering-action]').length,
       domStateKey=nodes[0]?.getAttribute('data-state-key')??null;
-      return s.panelOpen==='shipyard'&&d.schema==='cf-v2-shipyard-diagnostics/v1'
-        &&d.status==='open'&&typeof v?.stateKey==='string'&&v.stateKey.length>0
-        &&nodes.length===1&&domStateKey===v.stateKey&&d.stateKey===v.stateKey
-        &&d.activePreviewCount===1&&d.retainedPreviewCount===0
-        &&d.pendingPreviewWork===0?{stateKey:d.stateKey,canonicalStateKey:v.stateKey,
-          domStateKey,activePreviewCount:nodes.length,
-          retainedPreviewCount:d.retainedPreviewCount,
-          pendingPreviewWork:d.pendingPreviewWork}:null})()`,
-    Boolean,
+      return {schema:${JSON.stringify(SCENE_MEMORY_SHIPYARD_OPEN_OBSERVATION_SCHEMA)},
+        panelOpen:s.panelOpen??null,
+        shipVisualStateKey:v?.stateKey??null,domPreviewCount:nodes.length,domStateKey,
+        arc3:{stateKind:e?.stateKind??null,protection:e?.protection??null,
+          bootstrapPending:e?.bootstrapPending??null,
+          bootstrapCandidateReady:e?.bootstrapCandidateReady??null},
+        presentation:{state:unavailable?.getAttribute('data-engineering-state')??null,
+          unavailableReason:unavailable?.getAttribute('data-engineering-unavailable')??null,
+          actionControlCount,diagnosticsActionControlCount:de?.actionControlCount??null},
+        diagnostics:d?{schema:d.schema??null,status:d.status??null,stateKey:d.stateKey??null,
+          activePreviewCount:d.activePreviewCount??null,
+          retainedPreviewCount:d.retainedPreviewCount??null,
+          pendingPreviewWork:d.pendingPreviewWork??null,
+          engineering:de?{schema:de.schema??null,activeCount:de.activeCount??null,
+            pendingWork:de.pendingWork??null,actionControlCount:de.actionControlCount??null,
+            activePreviewCount:de.activePreviewCount??null,
+            previewStateKey:de.previewStateKey??null,
+            retainedPreviewCount:de.retainedPreviewCount??null,
+            faultCount:de.faultCount??null}:null}:null};})()`,
+    (value) => sceneMemoryShipyardOpenSettlementReasons(value).length === 0,
     ART_TIMEOUT_MS,
+    sceneMemoryShipyardOpenSettlementReasons,
   );
   stages.push({ label: 'shipyard:open', state: shipyardOpen });
-  sceneObjectsByRoute.shipyard = shipyardOpen.activePreviewCount;
+  sceneObjectsByRoute.shipyard = shipyardOpen.domPreviewCount;
   visitedRoutes.push('shipyard');
 
   const closeDriven = await clickVisible(
@@ -881,12 +1998,12 @@ async function driveCycle({ collector, sessionId, profile }) {
   stages.push({ label: 'shipyard:closed', state: shipyardClosed });
   inventory.shipyard = Object.freeze({
     status: 'implemented-static', openerDriven, closeDriven,
-    stateKey: shipyardOpen.stateKey,
-    stateMatch: shipyardOpen.stateKey === shipyardOpen.canonicalStateKey
-      && shipyardOpen.domStateKey === shipyardOpen.canonicalStateKey,
-    openPreviewCount: shipyardOpen.activePreviewCount,
-    openRetainedPreviewCount: shipyardOpen.retainedPreviewCount,
-    openPendingPreviewWork: shipyardOpen.pendingPreviewWork,
+    stateKey: shipyardOpen.diagnostics.stateKey,
+    stateMatch: shipyardOpen.diagnostics.stateKey === shipyardOpen.shipVisualStateKey
+      && shipyardOpen.domStateKey === shipyardOpen.shipVisualStateKey,
+    openPreviewCount: shipyardOpen.domPreviewCount,
+    openRetainedPreviewCount: shipyardOpen.diagnostics.retainedPreviewCount,
+    openPendingPreviewWork: shipyardOpen.diagnostics.pendingPreviewWork,
     closedPreviewCount: shipyardClosed.activePreviewCount,
     closedRetainedPreviewCount: shipyardClosed.retainedPreviewCount,
     closedPendingPreviewWork: shipyardClosed.pendingPreviewWork,
@@ -901,7 +2018,13 @@ async function driveCycle({ collector, sessionId, profile }) {
       `${profile}: ${from} ascent did not pass through the canvas handler`, result);
     await observe(`route ascend ${to}`, accept);
   };
-  await ascend('surface', 'system', exactMode('system', { gal: 999, star: 424242 }));
+  await ascend('surface', 'system', (value) => exactMode('system', {
+    gal: 999, star: 424242,
+  })(value) && value.surfaceVistaWorkerActive === false
+    && value.surfaceVistaMounted === false
+    && value.surfaceVistaCacheEntries === SURFACE_VISTA_CACHE_ENTRIES_MAX
+    && value.surfaceVistaCachePixels > 0
+    && value.surfaceVistaCachePixels <= SURFACE_VISTA_CACHE_PIXELS_MAX);
   await ascend('system', 'galaxy', exactMode('galaxy', { gal: 999 }));
   await ascend('galaxy', 'universe', exactMode('universe'));
   await collector.waitValue(sessionId, 'universe resource settlement', `(()=>{const S=window.__CF_SLICE__,r=S.api.sceneResourceDiagnostics(),c=S.api.compendiumDiagnostics(),y=S.api.shipyardDiagnostics();
@@ -909,6 +2032,10 @@ async function driveCycle({ collector, sessionId, profile }) {
       &&r.surfaceTextureOwnerActive===false&&r.pendingSurfaceRefreshes===0
       &&r.pendingSystemRefreshes===0&&r.pendingPersistenceWrites===0
       &&r.retiredFineOwnerCount===0
+      &&r.surfaceVistaWorkerActive===false&&r.surfaceVistaMounted===false
+      &&r.surfaceVistaCacheEntries===${SURFACE_VISTA_CACHE_ENTRIES_MAX}
+      &&r.surfaceVistaCachePixels>0
+      &&r.surfaceVistaCachePixels<=${SURFACE_VISTA_CACHE_PIXELS_MAX}
       &&r.registry.activeScopeCount===1&&r.ringGeometryEntries===0&&c.panel.mode==='closed'
       &&c.art?.live?.queuedJobs===0&&c.art?.live?.activeJobs===0
       &&y.status==='closed'&&y.stateKey===null&&y.activePreviewCount===0
@@ -920,6 +2047,7 @@ async function driveCycle({ collector, sessionId, profile }) {
     `${profile}: observed route inventory drifted`, visitedRoutes);
   return Object.freeze({
     stages: Object.freeze(stages),
+    surfaceVistaObservation: surface,
     inventory: Object.freeze({ ...inventory, routes: Object.freeze([...visitedRoutes]),
       sceneObjectsByRoute: Object.freeze({ ...sceneObjectsByRoute }) }),
   });
@@ -938,7 +2066,9 @@ function routeInventory(stages) {
   }));
 }
 
-async function collectBfcache({ send, collector, sessionId, origin, profile, documentToken }) {
+async function collectBfcache({
+  send, collector, sessionId, profile, documentToken, phaseThresholdBytes,
+}) {
   const before = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__,r=S.api.sceneResourceDiagnostics();return {
     documentToken:S.documentToken,pagehide:r.persistedPagehideCount,pageshow:r.persistedPageshowCount}})()`,
   'bfcache precondition');
@@ -949,14 +2079,19 @@ async function collectBfcache({ send, collector, sessionId, origin, profile, doc
   });
   const gameEntryId = history.entries?.[history.currentIndex]?.id;
   assert(Number.isInteger(gameEntryId), `${profile}: current game history entry is absent`);
-  await send('Page.navigate', { url: `${origin}/__scenemem_away__.html` }, sessionId, {
-    timeoutMs: COMMAND_TIMEOUT_MS,
-  });
-  await collector.waitValue(sessionId, 'away-page readiness',
-    `globalThis.__CF_SCENEMEM_AWAY__===true?'away':null`, Boolean, ROUTE_TIMEOUT_MS);
-  await send('Page.navigateToHistoryEntry', { entryId: gameEntryId }, sessionId, {
-    timeoutMs: COMMAND_TIMEOUT_MS,
-  });
+  const away = await serveBfcacheAwayPage();
+  try {
+    await send('Page.navigate', {
+      url: `${away.origin}/__scenemem_bfcache_away__.html`,
+    }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
+    await collector.waitValue(sessionId, 'away-page readiness',
+      `globalThis.__CF_SCENEMEM_AWAY__===true?'away':null`, Boolean, ROUTE_TIMEOUT_MS);
+    await send('Page.navigateToHistoryEntry', { entryId: gameEntryId }, sessionId, {
+      timeoutMs: COMMAND_TIMEOUT_MS,
+    });
+  } finally {
+    await away.close();
+  }
   const deadline = performance.now() + ROUTE_TIMEOUT_MS;
   let resumed = null;
   let lastError = null;
@@ -981,20 +2116,122 @@ async function collectBfcache({ send, collector, sessionId, origin, profile, doc
   productAssert(resumed?.documentToken === documentToken && resumed.pagehide > before.pagehide
     && resumed.pageshow > before.pageshow,
   `${profile}: persisted pagehide/pageshow did not complete`, { before, resumed, lastError });
-  const snapshot = await collectSnapshot({
+  const snapshot = await sceneMemoryCollectFixedSnapshot({
     send, sessionId, collector, profile, label: `${profile}-bfcache`,
+    phaseThresholdBytes,
   });
-  const point = contractPoint(snapshot);
   return Object.freeze({
-    ...point,
-    pagehidePersisted: resumed.pagehide === before.pagehide + 1,
-    pageshowPersisted: resumed.pageshow === before.pageshow + 1,
-    resumed: true,
-    appAlive: resumed.appAlive,
-    rendererAlive: resumed.rendererAlive,
-    stageAlive: resumed.stageAlive,
+    snapshot,
+    lifecycle: Object.freeze({
+      pagehidePersisted: resumed.pagehide === before.pagehide + 1,
+      pageshowPersisted: resumed.pageshow === before.pageshow + 1,
+      resumed: true,
+      appAlive: resumed.appAlive,
+      rendererAlive: resumed.rendererAlive,
+      stageAlive: resumed.stageAlive,
+      documentTokenBefore: documentToken,
+      documentTokenAfter: resumed.documentToken,
+    }),
+  });
+}
+
+function bindingPayloadsSince(events, mark, sessionId, name) {
+  return events.slice(mark)
+    .filter((event) => event.sessionId === sessionId
+      && event.method === 'Runtime.bindingCalled' && event.params?.name === name)
+    .map((event) => {
+      try { return JSON.parse(event.params.payload); }
+      catch { return { schema: 'invalid-json', payload: event.params?.payload ?? null }; }
+    });
+}
+
+async function collectReloadCleanup({
+  collector, sessionId, profile, documentToken, veteranRaw, bindingEvents,
+}) {
+  const precondition = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__;
+    return {documentToken:S.documentToken,...(${surfaceVistaState.toString()})(S.api.sceneResourceDiagnostics())}})()`,
+  'surface vista reload precondition');
+  productAssert(precondition?.documentToken === documentToken
+    && precondition.surfaceVistaWorkerActive === false
+    && precondition.surfaceVistaMounted === false
+    && precondition.surfaceVistaCacheEntries === SURFACE_VISTA_CACHE_ENTRIES_MAX
+    && precondition.surfaceVistaCachePixels > 0
+    && precondition.surfaceVistaCachePixels <= SURFACE_VISTA_CACHE_PIXELS_MAX,
+  `${profile}: surface vista reload precondition was not a settled exercised cache`, precondition);
+  const mark = bindingEvents.length;
+  const armed = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__,
+    binding=globalThis[${JSON.stringify(SURFACE_VISTA_RELOAD_CLEANUP_BINDING)}],
+    nativeClear=Map.prototype.clear,
+    state=()=>{const r=S.api.sceneResourceDiagnostics();return {
+      surfaceVistaWorkerActive:r.surfaceVistaWorkerActive,
+      surfaceVistaMounted:r.surfaceVistaMounted,
+      surfaceVistaCacheEntries:r.surfaceVistaCacheEntries,
+      surfaceVistaCachePixels:r.surfaceVistaCachePixels}};
+    if(typeof binding!=='function'||nativeClear.__cfSceneMemoryVistaCleanup===true)return {armed:false};
+    let emitted=false;
+    const wrapped=function(){let before=null,after=null;
+      try{before=state()}catch{}const result=nativeClear.call(this);try{after=state()}catch{}
+      if(!emitted&&before?.surfaceVistaCacheEntries>0&&after?.surfaceVistaCacheEntries===0){
+        emitted=true;Map.prototype.clear=nativeClear;
+        binding(JSON.stringify({schema:'cf-v2-scene-memory-vista-cache-transition/v1',
+          documentToken:S.documentToken,before,after}));}
+      return result};
+    Object.defineProperty(wrapped,'__cfSceneMemoryVistaCleanup',{value:true});
+    Map.prototype.clear=wrapped;return {armed:true,initial:state()}})()`,
+  'arm surface vista reload cleanup binding');
+  productAssert(armed?.armed === true && same(armed.initial, surfaceVistaState(precondition)),
+    `${profile}: surface vista reload cleanup binding did not arm`, armed);
+  const importOutcome = await collector.evaluate(sessionId,
+    `window.__CF_SLICE__.api.importBlob(${JSON.stringify(veteranRaw)},'scenemem-reload-cleanup')`,
+    'request intentional replacement reload');
+  productAssert(importOutcome === null,
+    `${profile}: intentional replacement import was rejected`, importOutcome);
+
+  const deadline = performance.now() + ART_TIMEOUT_MS;
+  let replacement = null;
+  let lastError = null;
+  while (performance.now() < deadline) {
+    try {
+      replacement = await collector.evaluate(sessionId, `(()=>{const S=window.__CF_SLICE__;
+        if(!S?.api||S.documentToken===${JSON.stringify(documentToken)})return null;
+        const s=S.api.state(),r=S.api.sceneResourceDiagnostics();return s.tickerTicks>0
+          &&r.pendingSurfaceRefreshes===0&&r.pendingSystemRefreshes===0
+          &&r.pendingPersistenceWrites===0?{documentToken:S.documentToken,
+            surfaceVistaWorkerActive:r.surfaceVistaWorkerActive,
+            surfaceVistaMounted:r.surfaceVistaMounted,
+            surfaceVistaCacheEntries:r.surfaceVistaCacheEntries,
+            surfaceVistaCachePixels:r.surfaceVistaCachePixels}:null})()`,
+      'replacement document readiness');
+    } catch (error) { lastError = error.message; }
+    const transitions = bindingPayloadsSince(
+      bindingEvents, mark, sessionId, SURFACE_VISTA_RELOAD_CLEANUP_BINDING,
+    );
+    const releases = bindingPayloadsSince(
+      bindingEvents, mark, sessionId, RELOAD_RELEASE_BINDING,
+    );
+    if (replacement && transitions.length >= 1 && releases.length >= 1) break;
+    await sleep(50);
+  }
+  const transitions = bindingPayloadsSince(
+    bindingEvents, mark, sessionId, SURFACE_VISTA_RELOAD_CLEANUP_BINDING,
+  );
+  const releases = bindingPayloadsSince(bindingEvents, mark, sessionId, RELOAD_RELEASE_BINDING);
+  productAssert(replacement && transitions.length === 1 && releases.length === 1,
+    `${profile}: reload cleanup did not yield one cache transition, one release, and one replacement`,
+    { replacement, transitions, releases, lastError });
+  const release = releases[0];
+  return Object.freeze({
+    schema: 'cf-v2-scene-memory-reload-cleanup/v1',
     documentTokenBefore: documentToken,
-    documentTokenAfter: resumed.documentToken,
+    documentTokenAfter: replacement.documentToken,
+    release: Object.freeze({
+      schema: release.schema, status: release.status, error: release.error,
+      reason: release.reason, documentToken: release.documentToken,
+      rendererReleased: release.rendererReleased, stageReleased: release.stageReleased,
+      viewDetached: release.viewDetached,
+    }),
+    cacheTransition: Object.freeze(transitions[0]),
+    replacement: Object.freeze(replacement),
   });
 }
 
@@ -1015,8 +2252,19 @@ function leastSquaresSlope(values) {
   return numerator / denominator;
 }
 
-function metricSummary(measurement) {
+export function sceneMemoryInitialHeapProjection(heap) {
+  return Object.freeze({
+    usedSize: heap?.usedSize,
+    embedderHeapUsedSize: heap?.embedderHeapUsedSize,
+    backingStorageSize: heap?.backingStorageSize,
+  });
+}
+
+export function sceneMemoryMetricSummary(measurement) {
   const points = [measurement.precondition, ...measurement.cycles, measurement.bfcache].filter(Boolean);
+  const initialHeapUsed = measurement.initial?.heap?.usedSize;
+  assert(Number.isFinite(initialHeapUsed) && initialHeapUsed >= 0,
+    'source-normalized heap metrics require the scored fixed-eighth initial V8 baseline');
   const warmAggregates = measurement.cycles.map((point) => point.heap.usedSize
     + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize);
   const warmHeapSlope = Math.max(0, ...[
@@ -1026,7 +2274,17 @@ function metricSummary(measurement) {
     warmAggregates,
   ].map(leastSquaresSlope));
   const max = (select) => Math.max(...points.map(select));
+  const heapGrowth = (point) => Math.max(0, point.heap.usedSize - initialHeapUsed);
   return Object.freeze({
+    initialHeapUsedBytesMax: initialHeapUsed,
+    initialHeapAggregateBytesMax: initialHeapUsed
+      + measurement.initial.heap.embedderHeapUsedSize
+      + measurement.initial.heap.backingStorageSize,
+    heapUsedGrowthBytesMax: max(heapGrowth),
+    heapNormalizedWorkingSetBytesMax: max((point) => heapGrowth(point)
+      + point.heap.embedderHeapUsedSize + point.heap.backingStorageSize),
+    // Raw totals remain report diagnostics. They are deliberately not admission
+    // ceilings because fixed shipped source and allocator phase move them.
     heapUsedBytesMax: max((point) => point.heap.usedSize),
     embedderHeapUsedBytesMax: max((point) => point.heap.embedderHeapUsedSize),
     backingStorageBytesMax: max((point) => point.heap.backingStorageSize),
@@ -1047,6 +2305,8 @@ function metricSummary(measurement) {
     productRenderTargetsMax: max((point) => point.productRenderTargets),
     ringCacheEntriesMax: max((point) => point.ringCacheEntries),
     peakRingGeometryEntriesMax: max((point) => point.peakRingGeometryEntries),
+    surfaceVistaCacheEntriesMax: max((point) => point.surfaceVistaCacheEntries),
+    surfaceVistaCachePixelsMax: max((point) => point.surfaceVistaCachePixels),
     targetElapsedMsMax: max((point) => point.answerability.target.elapsedMs),
     heartbeatElapsedMsMax: max((point) => point.answerability.heartbeat.elapsedMs),
   });
@@ -1064,13 +2324,15 @@ function calibrationBudget(metrics) {
 }
 
 async function collectProfile({
-  send, origin, fixture, veteranRaw, profile, viewport, fatalEvents, sessionProfiles, onProgress,
+  send, origin, fixture, veteranRaw, profile, viewport, fatalEvents, sessionProfiles,
+  bindingEvents, onProgress, phaseThresholdBytes,
 }) {
   const measurement = {
-    schema: 'cf-v2-scene-memory-profile/v1', profile, viewport,
-    targetId: null, documentToken: null, initial: null, warmup: null, precondition: null,
-    warmupInventory: null, measured: [], cycles: [], bfcache: null,
-    routeInventories: [], metrics: null,
+    schema: PROFILE_SCHEMA, profile, viewport,
+    targetId: null, documentToken: null, initial: null, warmup: null, warmups: [], precondition: null,
+    initialVista: null, firstSurfaceVista: null, surfaceVistaObservations: [],
+    warmupInventory: null, measured: [], cycles: [], bfcache: null, bfcacheSnapshot: null,
+    reloadCleanup: null, routeInventories: [], metrics: null,
   };
   let browserContextId = null;
   let targetId = null;
@@ -1090,6 +2352,12 @@ async function collectProfile({
     for (const method of ['Runtime.enable', 'Page.enable', 'HeapProfiler.enable', 'Log.enable']) {
       await send(method, {}, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
     }
+    await send('Runtime.addBinding', { name: RELOAD_RELEASE_BINDING }, sessionId, {
+      timeoutMs: COMMAND_TIMEOUT_MS,
+    });
+    await send('Runtime.addBinding', {
+      name: SURFACE_VISTA_RELOAD_CLEANUP_BINDING,
+    }, sessionId, { timeoutMs: COMMAND_TIMEOUT_MS });
     await send('Emulation.setDeviceMetricsOverride', {
       width: viewport.width, height: viewport.height,
       deviceScaleFactor: viewport.dpr, mobile: viewport.mobile,
@@ -1106,19 +2374,35 @@ async function collectProfile({
       'install exact Compendium fixture');
     productAssert(installed?.installed === fixture.count,
       `${profile}: fixture installed ${String(installed?.installed)} of ${fixture.count}`, installed);
-    measurement.initial = await collectSnapshot({
+    measurement.initial = await sceneMemoryCollectFixedSnapshot({
       send, sessionId, collector, profile, label: `${profile}-initial`,
+      phaseThresholdBytes,
     });
+    onProgress(measurement);
+    assertSceneMemoryHeapPhaseSnapshot(
+      measurement.initial, profile, `${profile}-initial`, false, phaseThresholdBytes,
+    );
+    measurement.initialVista = surfaceVistaState(measurement.initial.raw.scene);
     onProgress(measurement);
 
     for (let index = 0; index < WARMUP_CYCLES; index++) {
       const warmupRoute = await driveCycle({ collector, sessionId, profile });
       measurement.warmupInventory = warmupRoute.inventory;
+      measurement.surfaceVistaObservations.push(warmupRoute.surfaceVistaObservation);
+      if (index === 0) {
+        measurement.firstSurfaceVista = surfaceVistaState(warmupRoute.surfaceVistaObservation);
+      }
       measurement.routeInventories.push(routeInventory(warmupRoute.stages));
-      measurement.warmup = await collectSnapshot({
+      measurement.warmup = await sceneMemoryCollectFixedSnapshot({
         send, sessionId, collector, profile, label: `${profile}-warmup-${index + 1}`,
+        phaseThresholdBytes, stableResourcesRequired: true,
       });
+      measurement.warmups.push(measurement.warmup);
       onProgress(measurement);
+      assertSceneMemoryHeapPhaseSnapshot(
+        measurement.warmup, profile, `${profile}-warmup-${index + 1}`,
+        true, phaseThresholdBytes,
+      );
     }
     measurement.precondition = contractPoint(measurement.warmup);
     productAssert(measurement.precondition.registry.observationWindow === 0,
@@ -1130,11 +2414,17 @@ async function collectProfile({
         `window.__CF_SLICE__.api.__sceneEvidence.beginObservationWindow()`,
         `begin measured observation window ${index + 1}`);
       const driven = await driveCycle({ collector, sessionId, profile });
+      measurement.surfaceVistaObservations.push(driven.surfaceVistaObservation);
       measurement.routeInventories.push(routeInventory(driven.stages));
-      const snapshot = await collectSnapshot({
+      const snapshot = await sceneMemoryCollectFixedSnapshot({
         send, sessionId, collector, profile, label: `${profile}-warm-${index + 1}`,
+        phaseThresholdBytes, stableResourcesRequired: true,
       });
       measurement.measured.push(snapshot);
+      onProgress(measurement);
+      assertSceneMemoryHeapPhaseSnapshot(
+        snapshot, profile, `${profile}-warm-${index + 1}`, true, phaseThresholdBytes,
+      );
       measurement.cycles.push(Object.freeze({
         cycle: index + 1,
         inventory: driven.inventory,
@@ -1142,11 +2432,27 @@ async function collectProfile({
       }));
       onProgress(measurement);
     }
-    measurement.bfcache = await collectBfcache({
-      send, collector, sessionId, origin, profile, documentToken: measurement.documentToken,
+    const bfcacheEvidence = await collectBfcache({
+      send, collector, sessionId, profile, documentToken: measurement.documentToken,
+      phaseThresholdBytes,
+    });
+    measurement.bfcacheSnapshot = bfcacheEvidence.snapshot;
+    onProgress(measurement);
+    assertSceneMemoryHeapPhaseSnapshot(
+      measurement.bfcacheSnapshot, profile, `${profile}-bfcache`, false,
+      phaseThresholdBytes,
+    );
+    measurement.bfcache = Object.freeze({
+      ...contractPoint(measurement.bfcacheSnapshot),
+      ...bfcacheEvidence.lifecycle,
     });
     onProgress(measurement);
-    measurement.metrics = metricSummary(measurement);
+    measurement.reloadCleanup = await collectReloadCleanup({
+      collector, sessionId, profile, documentToken: measurement.documentToken,
+      veteranRaw, bindingEvents,
+    });
+    onProgress(measurement);
+    measurement.metrics = sceneMemoryMetricSummary(measurement);
     const profileFatals = fatalEvents.filter((event) => event.profile === profile);
     productAssert(profileFatals.length === 0,
       `${profile}: browser reported fatal/console-error events`, profileFatals);
@@ -1188,7 +2494,9 @@ function browserSample(browser) {
   });
 }
 
-function makeRunningReport({ id, startedAt, source, inputs, mode, budgetFile }) {
+function makeRunningReport({
+  id, startedAt, source, inputs, mode, budgetFile, calibrationBoundary = null,
+}) {
   return {
     schema: REPORT_SCHEMA, status: 'running', runId: id,
     lifecycle: { schema: LIFECYCLE_SCHEMA, status: 'pending' },
@@ -1196,6 +2504,12 @@ function makeRunningReport({ id, startedAt, source, inputs, mode, budgetFile }) 
     policy: {
       attemptCount: 1, automaticRetries: 0, warmupCycles: WARMUP_CYCLES,
       measuredWarmCycles: WARM_CYCLES, commandTimeoutMs: COMMAND_TIMEOUT_MS,
+      snapshotPasses: HEAP_PHASE_SNAPSHOT_PASSES,
+      settlingPasses: HEAP_PHASE_SETTLING_PASSES,
+      validityPasses: HEAP_PHASE_VALIDITY_PASSES,
+      scoredSnapshotPass: HEAP_PHASE_SCORED_PASS,
+      phaseInvalidity: 'instrument-fail-before-contract',
+      phaseCalibrationHardCapBytes: HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES,
       targetTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
       heartbeatTimeoutMs: ANSWERABILITY_TIMEOUT_MS,
     },
@@ -1210,6 +2524,7 @@ function makeRunningReport({ id, startedAt, source, inputs, mode, budgetFile }) 
     fixture: { count: 1500, rowsSha256: inputs.fixtureRows },
     budget: budgetFile ? { schema: BUDGET_SCHEMA, path: portable(budgetFile), sha256: inputs.budget }
       : { schema: null, path: null, sha256: null },
+    calibrationBoundary,
     profiles: {}, contractInput: null, verdict: null, outcomes: [], findings: [], fatalEvents: [],
     cleanup: { browser: false, server: false, workspaceLock: false },
   };
@@ -1237,6 +2552,15 @@ function unavailableSource(reason) {
   });
 }
 
+export async function sceneMemoryCollectProfilesOnce(collect) {
+  assert(typeof collect === 'function', 'SceneMemory profile collector must be a function');
+  const measurements = {};
+  for (const [profile, viewport] of Object.entries(PROFILES)) {
+    measurements[profile] = await collect(profile, viewport);
+  }
+  return Object.freeze(measurements);
+}
+
 async function runGate(options) {
   const releaseLock = acquireWorkspaceLock('v2 Arc 1C scene memory/resource evidence');
   let lockOwned = true;
@@ -1251,6 +2575,7 @@ async function runGate(options) {
   let build = null;
   let budget = null;
   let authoritativeBudgetFile = null;
+  let calibrationBoundary = null;
   let fixture = null;
   const profiles = {};
   let contractInput = null;
@@ -1258,6 +2583,7 @@ async function runGate(options) {
   let outcomes = [];
   let findings = [];
   const fatalEvents = [];
+  const bindingEvents = [];
   let running = makeRunningReport({
     id, startedAt, source: sourceBegin, inputs: { fixtureRows: null },
     mode: options.calibrate ? 'calibration-only-not-certified'
@@ -1271,16 +2597,32 @@ async function runGate(options) {
     assert(options.calibrate || options.budgetFile,
       'normal scene-memory runs require --budget; use --calibrate for non-certifying evidence');
     fixture = buildCompendiumFixture();
-    if (options.budgetFile) {
+    if (options.calibrate) {
+      const boundaryFile = assertBudgetAuthority(calibrationBudgetPath);
+      const boundaryBudget = readJson(boundaryFile);
+      const validation = validateSceneMemoryBudget(boundaryBudget);
+      assert(validation.ok,
+        `scene memory calibration boundary invalid: ${validation.errors.join('; ')}`);
+      assert(boundaryBudget.status === 'calibration-required',
+        'scene memory calibration requires the tracked budget to be calibration-required');
+      calibrationBoundary = Object.freeze({
+        schema: BUDGET_SCHEMA,
+        status: boundaryBudget.status,
+        path: CALIBRATION_BUDGET_RELATIVE_PATH,
+        sha256: hashFile(boundaryFile),
+      });
+    } else if (options.budgetFile) {
       authoritativeBudgetFile = assertBudgetAuthority(options.budgetFile);
       budget = readJson(authoritativeBudgetFile);
-      const validation = validateBudget(budget);
+      const validation = validateSceneMemoryBudget(budget);
       assert(validation.ok, `scene memory budget invalid: ${validation.errors.join('; ')}`);
+      assert(budget.status === 'active',
+        'scene memory budget is calibration-required; run --calibrate instead of certifying');
       /* The imported contract is also the only semantic validator for a
          budget. Empty measurements intentionally yield a red verdict but
          must not throw when the budget shape is authoritative. */
       evaluateSceneMemory({
-        schema: 'cf-v2-scene-memory-input/v3',
+        schema: 'cf-v2-scene-memory-input/v6',
         profiles: { phone: { cycles: [], bfcache: null }, desktop: { cycles: [], bfcache: null } },
         budgets: budget.profiles,
       });
@@ -1290,7 +2632,7 @@ async function runGate(options) {
     running = makeRunningReport({
       id, startedAt, source: sourceBegin, inputs,
       mode: options.calibrate ? 'calibration-only-not-certified' : 'contract-budget',
-      budgetFile: authoritativeBudgetFile,
+      budgetFile: authoritativeBudgetFile, calibrationBoundary,
     });
     atomicWriteJson(reportPath, running);
     assert(options.allowDirty || sourceBegin.state === 'committed',
@@ -1309,6 +2651,11 @@ async function runGate(options) {
       commandTimeoutMs: COMMAND_TIMEOUT_MS, startupTimeoutMs: 45_000,
       webSocketOpenTimeoutMs: 15_000, shutdownTimeoutMs: 2_000,
       onEvent: (message) => {
+        if (message.method === 'Runtime.bindingCalled'
+          && (message.params?.name === RELOAD_RELEASE_BINDING
+            || message.params?.name === SURFACE_VISTA_RELOAD_CLEANUP_BINDING)) {
+          bindingEvents.push(message);
+        }
         const fatal = message.method === 'Runtime.exceptionThrown'
           || message.method === 'Inspector.targetCrashed'
           || message.method === 'Target.targetCrashed'
@@ -1326,13 +2673,14 @@ async function runGate(options) {
     atomicWriteJson(reportPath, running);
     if (budget) assertBudgetBinding(budget, inputs, launchedBrowser);
 
-    const saveFixture = structuredClone(readJson(baselineSavePath).inputs.veteran_rich);
-    saveFixture.view = null;
-    const veteranRaw = JSON.stringify(saveFixture);
-    for (const [profile, viewport] of Object.entries(PROFILES)) {
+    const veteranRaw = sceneMemoryVeteranRaw();
+    await sceneMemoryCollectProfilesOnce(async (profile, viewport) => {
+      const phaseThresholdBytes = budget?.heapPhase?.profiles?.[profile]
+        ?.maxAbsolutePhaseDeltaBytes ?? HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES;
       const measurement = await collectProfile({
         send: browser.send, origin: server.origin,
         fixture, veteranRaw, profile, viewport, fatalEvents, sessionProfiles,
+        bindingEvents, phaseThresholdBytes,
         onProgress: (partial) => {
           profiles[profile] = partial;
           running = { ...running, profiles: { ...profiles }, fatalEvents: [...fatalEvents] };
@@ -1345,19 +2693,27 @@ async function runGate(options) {
         fatalEvents: [...fatalEvents],
       };
       atomicWriteJson(reportPath, running);
-    }
+      return measurement;
+    });
     const contractBudgets = budget?.profiles ?? Object.fromEntries(
       Object.entries(profiles).map(([profile, measurement]) => [
         profile, calibrationBudget(measurement.metrics),
       ]),
     );
     contractInput = {
-      schema: 'cf-v2-scene-memory-input/v3',
+      schema: 'cf-v2-scene-memory-input/v6',
       profiles: Object.fromEntries(Object.entries(profiles).map(([profile, measurement]) => [
         profile, {
+          initial: {
+            documentToken: measurement.initial.raw.scene.documentToken,
+            heap: sceneMemoryInitialHeapProjection(measurement.initial.heap),
+          },
+          initialVista: measurement.initialVista,
+          firstSurfaceVista: measurement.firstSurfaceVista,
           precondition: measurement.precondition,
           cycles: measurement.cycles,
           bfcache: measurement.bfcache,
+          reloadCleanup: measurement.reloadCleanup,
         },
       ])),
       budgets: contractBudgets,
@@ -1446,8 +2802,266 @@ async function runGate(options) {
   return provisionalExitCode;
 }
 
+function surfaceInventoryFromObservation(observation) {
+  return {
+    mode: observation?.mode === 'surface',
+    owner: observation?.surfaceTextureOwnerActive === true,
+    scope: Array.isArray(observation?.registry?.activeScopes)
+      && observation.registry.activeScopes.some(
+        (scope) => scope?.closed === false && scope?.leaseCount > 0,
+      ),
+    ...surfaceVistaState(observation || {}),
+  };
+}
+
+export function sceneMemoryProfileRawBindingErrors(measurement) {
+  const errors = [];
+  try {
+    const fixedSecondRequired = measurement?.schema === 'cf-v2-scene-memory-profile/v2'
+      || measurement?.schema === 'cf-v2-scene-memory-profile/v3';
+    const historicalFourthRequired = measurement?.schema === 'cf-v2-scene-memory-profile/v4';
+    const fixedEighthRequired = measurement?.schema === PROFILE_SCHEMA;
+    const fixedPhaseRequired = historicalFourthRequired || fixedEighthRequired;
+    const phaseErrors = (snapshot, stableResourcesRequired = false) =>
+      (historicalFourthRequired
+        ? sceneMemorySnapshotHistoricalFourPassErrors(snapshot, stableResourcesRequired)
+        : sceneMemorySnapshotPhaseErrors(snapshot, stableResourcesRequired));
+    if (!measurement?.initial || !same(
+      measurement.initialVista,
+      surfaceVistaState(measurement.initial.raw?.scene || {}),
+    )) errors.push('initial vista evidence is detached from its raw snapshot');
+    if (fixedSecondRequired) {
+      errors.push(...sceneMemorySnapshotPairErrors(measurement.initial)
+        .map((error) => `initial ${error}`));
+      if (measurement.schema === 'cf-v2-scene-memory-profile/v3') {
+        if (measurement.initial?.label !== `${measurement.profile}-initial`) {
+          errors.push('initial snapshot label/profile drifted');
+        }
+        const initialSceneToken = measurement.initial?.raw?.scene?.documentToken;
+        const initialTarget = measurement.initial?.answerability?.target?.value;
+        if (typeof measurement.documentToken !== 'string'
+          || measurement.documentToken.length === 0
+          || initialSceneToken !== measurement.documentToken
+          || initialTarget?.documentTokenBefore !== measurement.documentToken
+          || initialTarget?.documentTokenAfter !== measurement.documentToken) {
+          errors.push('initial snapshot document identity drifted');
+        }
+        if (!same(measurement.metrics, sceneMemoryMetricSummary(measurement))) {
+          errors.push('normalized metric summary is detached from retained profile evidence');
+        }
+      }
+      if (!Array.isArray(measurement.warmups)
+        || measurement.warmups.length !== WARMUP_CYCLES) {
+        errors.push('retained warmup snapshot inventory is incomplete');
+      } else {
+        for (let index = 0; index < WARMUP_CYCLES; index++) {
+          const snapshot = measurement.warmups[index];
+          if (snapshot?.label !== `${measurement.profile}-warmup-${index + 1}`) {
+            errors.push(`warmup snapshot ${index + 1} label/order drifted`);
+          }
+          errors.push(...sceneMemorySnapshotPairErrors(snapshot, true)
+            .map((error) => `warmup snapshot ${index + 1} ${error}`));
+        }
+        if (!same(measurement.warmup, measurement.warmups.at(-1))) {
+          errors.push('final warmup alias is detached from retained warmup evidence');
+        }
+      }
+    } else if (fixedPhaseRequired) {
+      errors.push(...phaseErrors(measurement.initial)
+        .map((error) => `initial ${error}`));
+      if (measurement.initial?.label !== `${measurement.profile}-initial`) {
+        errors.push('initial snapshot label/profile drifted');
+      }
+      const initialSceneToken = measurement.initial?.raw?.scene?.documentToken;
+      const initialTarget = measurement.initial?.answerability?.target?.value;
+      if (typeof measurement.documentToken !== 'string'
+        || measurement.documentToken.length === 0
+        || initialSceneToken !== measurement.documentToken
+        || initialTarget?.documentTokenBefore !== measurement.documentToken
+        || initialTarget?.documentTokenAfter !== measurement.documentToken) {
+        errors.push('initial snapshot document identity drifted');
+      }
+      if (!same(measurement.metrics, sceneMemoryMetricSummary(measurement))) {
+        errors.push('normalized metric summary is detached from retained profile evidence');
+      }
+    }
+    if (fixedPhaseRequired) {
+      if (!Array.isArray(measurement.warmups)
+        || measurement.warmups.length !== WARMUP_CYCLES) {
+        errors.push('retained warmup snapshot inventory is incomplete');
+      } else {
+        for (let index = 0; index < WARMUP_CYCLES; index++) {
+          const snapshot = measurement.warmups[index];
+          if (snapshot?.label !== `${measurement.profile}-warmup-${index + 1}`) {
+            errors.push(`warmup snapshot ${index + 1} label/order drifted`);
+          }
+          errors.push(...phaseErrors(snapshot, true)
+            .map((error) => `warmup snapshot ${index + 1} ${error}`));
+        }
+        if (!same(measurement.warmup, measurement.warmups.at(-1))) {
+          errors.push('final warmup alias is detached from retained warmup evidence');
+        }
+      }
+    }
+    if (!measurement?.warmup || !same(
+      measurement.precondition,
+      contractPoint(measurement.warmup),
+    )) errors.push('precondition is detached from its raw warmup snapshot');
+    if (!Array.isArray(measurement?.surfaceVistaObservations)
+      || measurement.surfaceVistaObservations.length !== WARMUP_CYCLES + WARM_CYCLES) {
+      errors.push('surface vista observation inventory is incomplete');
+    } else {
+      if (!same(
+        measurement.firstSurfaceVista,
+        surfaceVistaState(measurement.surfaceVistaObservations[0]),
+      )) errors.push('first surface vista evidence is detached from its raw observation');
+      for (const [index, observation] of measurement.surfaceVistaObservations.entries()) {
+        const inventory = surfaceInventoryFromObservation(observation);
+        if (inventory.mode !== true || inventory.owner !== true || inventory.scope !== true
+          || !same(surfaceVistaState(observation), measurement.firstSurfaceVista)) {
+          errors.push(`surface vista observation ${index + 1} drifted from the exercised surface`);
+        }
+      }
+      for (let index = 0; index < WARM_CYCLES; index++) {
+        const surface = measurement.cycles?.[index]?.inventory?.surface;
+        const observation = measurement.surfaceVistaObservations[WARMUP_CYCLES + index];
+        if (!same(surface, surfaceInventoryFromObservation(observation))) {
+          errors.push(`cycle ${index + 1} surface vista evidence is detached from its raw observation`);
+        }
+      }
+    }
+    if (!Array.isArray(measurement?.measured) || measurement.measured.length !== WARM_CYCLES
+      || !Array.isArray(measurement?.cycles) || measurement.cycles.length !== WARM_CYCLES) {
+      errors.push('measured snapshot inventory is incomplete');
+    } else {
+      for (let index = 0; index < WARM_CYCLES; index++) {
+        const { cycle, inventory, ...point } = measurement.cycles[index];
+        void inventory;
+        if (cycle !== index + 1) errors.push(`cycle ${index + 1} ordinal drifted`);
+        if (fixedPhaseRequired
+          && measurement.measured[index]?.label !== `${measurement.profile}-warm-${index + 1}`) {
+          errors.push(`cycle ${index + 1} snapshot label/order drifted`);
+        }
+        if (!same(point, contractPoint(measurement.measured[index]))) {
+          errors.push(`cycle ${index + 1} is detached from its raw snapshot`);
+        }
+        if (fixedSecondRequired) {
+          errors.push(...sceneMemorySnapshotPairErrors(measurement.measured[index], true)
+            .map((error) => `cycle ${index + 1} ${error}`));
+        } else if (fixedPhaseRequired) {
+          errors.push(...phaseErrors(measurement.measured[index], true)
+            .map((error) => `cycle ${index + 1} ${error}`));
+        }
+      }
+    }
+    if (!measurement?.bfcacheSnapshot || !measurement?.bfcache) {
+      errors.push('bfcache raw snapshot is absent');
+    } else {
+      const {
+        pagehidePersisted, pageshowPersisted, resumed, appAlive, rendererAlive, stageAlive,
+        documentTokenBefore, documentTokenAfter, ...point
+      } = measurement.bfcache;
+      void pagehidePersisted;
+      void pageshowPersisted;
+      void resumed;
+      void appAlive;
+      void rendererAlive;
+      void stageAlive;
+      void documentTokenBefore;
+      void documentTokenAfter;
+      if (!same(point, contractPoint(measurement.bfcacheSnapshot))) {
+        errors.push('bfcache point is detached from its raw snapshot');
+      }
+      if (fixedPhaseRequired
+        && measurement.bfcacheSnapshot?.label !== `${measurement.profile}-bfcache`) {
+        errors.push('bfcache snapshot label/profile drifted');
+      }
+      if (fixedSecondRequired) {
+        errors.push(...sceneMemorySnapshotPairErrors(measurement.bfcacheSnapshot)
+          .map((error) => `bfcache ${error}`));
+      } else if (fixedPhaseRequired) {
+        errors.push(...phaseErrors(measurement.bfcacheSnapshot)
+          .map((error) => `bfcache ${error}`));
+      }
+    }
+  } catch (error) {
+    errors.push(`raw profile binding could not be re-derived (${error instanceof Error
+      ? error.message : String(error)})`);
+  }
+  return errors;
+}
+
+export function sceneMemoryProfilePhaseBudgetErrors(measurement, phaseThresholdBytes) {
+  if (measurement?.schema !== PROFILE_SCHEMA) {
+    return [`profile schema must be ${PROFILE_SCHEMA} for fixed-eighth phase authority`];
+  }
+  const snapshots = [
+    ['initial', measurement.initial, false],
+    ...(Array.isArray(measurement.warmups) ? measurement.warmups.map(
+      (snapshot, index) => [`warmup ${index + 1}`, snapshot, true],
+    ) : []),
+    ...(Array.isArray(measurement.measured) ? measurement.measured.map(
+      (snapshot, index) => [`cycle ${index + 1}`, snapshot, true],
+    ) : []),
+    ['bfcache', measurement.bfcacheSnapshot, false],
+  ];
+  if (snapshots.length !== 10) return ['phase-authority snapshot inventory must contain 10 snapshots'];
+  return snapshots.flatMap(([label, snapshot, stableResourcesRequired]) =>
+    sceneMemorySnapshotPhaseErrors(
+      snapshot, stableResourcesRequired, phaseThresholdBytes,
+    ).map((error) => `${label} ${error}`));
+}
+
+export function terminalProfileEvidenceErrors(
+  profiles, surfaceVistaRequired = false, fixedSecondRequired = false,
+  sourceNormalizedRequired = false, fixedFinalRequired = false,
+) {
+  const errors = [];
+  const profileKeys = Object.keys(profiles || {}).sort();
+  if (!same(profileKeys, Object.keys(PROFILES).sort())) {
+    errors.push('phone/desktop profile inventory is incomplete');
+  }
+  for (const profile of Object.keys(PROFILES)) {
+    const measurement = profiles?.[profile];
+    if (!measurement || measurement.profile !== profile
+      || !same(measurement.viewport, PROFILES[profile])
+      || (fixedFinalRequired
+        ? measurement.schema !== PROFILE_SCHEMA
+        : sourceNormalizedRequired
+          ? measurement.schema !== 'cf-v2-scene-memory-profile/v3'
+        : fixedSecondRequired && measurement.schema !== 'cf-v2-scene-memory-profile/v2')
+      || !measurement.precondition
+      || ((fixedSecondRequired || fixedFinalRequired) && (!Array.isArray(measurement.warmups)
+        || measurement.warmups.length !== WARMUP_CYCLES
+        || !same(measurement.warmup, measurement.warmups.at(-1))))
+      || !Array.isArray(measurement.measured) || measurement.measured.length !== WARM_CYCLES
+      || !Array.isArray(measurement.cycles) || measurement.cycles.length !== WARM_CYCLES
+      || !measurement.bfcache
+      || !Array.isArray(measurement.routeInventories)
+      || measurement.routeInventories.length !== WARMUP_CYCLES + WARM_CYCLES) {
+      errors.push(`${profile} terminal profile evidence is incomplete, mismatched, or red`);
+    }
+    if (surfaceVistaRequired) {
+      if (!measurement?.initialVista || !measurement?.firstSurfaceVista
+        || !measurement?.reloadCleanup || !measurement?.bfcacheSnapshot
+        || !Array.isArray(measurement?.surfaceVistaObservations)
+        || measurement.surfaceVistaObservations.length !== WARMUP_CYCLES + WARM_CYCLES) {
+        errors.push(`${profile} surface vista evidence is incomplete`);
+      } else {
+        errors.push(...sceneMemoryProfileRawBindingErrors(measurement)
+          .map((error) => `${profile} ${error}`));
+      }
+    }
+  }
+  return errors;
+}
+
 function verifyReport(report, expectedRunId, options) {
   const errors = [];
+  const sourceNormalizedRequired = report?.contractInput?.schema
+    === 'cf-v2-scene-memory-input/v6';
+  const surfaceVistaRequired = sourceNormalizedRequired
+    || report?.contractInput?.schema === 'cf-v2-scene-memory-input/v4';
   let authoritativeBudgetFile = null;
   if (report?.schema !== REPORT_SCHEMA) errors.push(`schema must be ${REPORT_SCHEMA}`);
   if (report?.runId !== expectedRunId) errors.push('report runId does not match --verify-run');
@@ -1456,38 +3070,53 @@ function verifyReport(report, expectedRunId, options) {
     || report?.lifecycle?.status !== 'complete') errors.push('report lifecycle is not complete');
   if (report?.policy?.attemptCount !== 1 || report?.policy?.automaticRetries !== 0
     || report?.policy?.warmupCycles !== WARMUP_CYCLES
-    || report?.policy?.measuredWarmCycles !== WARM_CYCLES) {
-    errors.push('one-attempt/warm-cycle policy drifted');
+    || report?.policy?.measuredWarmCycles !== WARM_CYCLES
+    || report?.policy?.snapshotPasses !== HEAP_PHASE_SNAPSHOT_PASSES
+    || report?.policy?.settlingPasses !== HEAP_PHASE_SETTLING_PASSES
+    || !same(report?.policy?.validityPasses, HEAP_PHASE_VALIDITY_PASSES)
+    || report?.policy?.scoredSnapshotPass !== HEAP_PHASE_SCORED_PASS
+    || report?.policy?.phaseInvalidity !== 'instrument-fail-before-contract'
+    || report?.policy?.phaseCalibrationHardCapBytes
+      !== HEAP_PHASE_CALIBRATION_HARD_CAP_BYTES) {
+    errors.push('one-attempt/warm-cycle/fixed-eighth phase policy drifted');
   }
   if (!same(report?.cleanup, { browser: true, server: true, workspaceLock: true })) {
     errors.push('terminal cleanup is incomplete');
   }
-  const profileKeys = Object.keys(report?.profiles || {}).sort();
-  if (!same(profileKeys, Object.keys(PROFILES).sort())) errors.push('phone/desktop profile inventory is incomplete');
-  for (const profile of Object.keys(PROFILES)) {
-    const measurement = report?.profiles?.[profile];
-    if (!measurement || measurement.profile !== profile
-      || !measurement.precondition
-      || !Array.isArray(measurement.measured) || measurement.measured.length !== WARM_CYCLES
-      || !Array.isArray(measurement.cycles) || measurement.cycles.length !== WARM_CYCLES
-      || !measurement.bfcache
-      || !Array.isArray(measurement.routeInventories)
-      || measurement.routeInventories.length !== WARMUP_CYCLES + WARM_CYCLES) {
-      errors.push(`${profile} terminal profile evidence is incomplete or red`);
-    }
-  }
-  errors.push(...terminalOutcomeInventoryErrors(report?.outcomes));
+  errors.push(...terminalProfileEvidenceErrors(
+    report?.profiles, surfaceVistaRequired, false, sourceNormalizedRequired, true,
+  ));
+  errors.push(...terminalOutcomeInventoryErrors(
+    report?.outcomes, null, surfaceVistaRequired ? OUTCOME_COUNT : 42,
+  ));
   errors.push(...terminalPassEvidenceErrors(report?.fatalEvents, report?.findings));
   if (report?.certification !== 'contract-budget') {
     errors.push('report certification must be contract-budget');
+  }
+  if (report?.calibrationBoundary !== null) {
+    errors.push('certifying report must not claim a calibration boundary');
+  }
+  if (!sourceNormalizedRequired) {
+    errors.push('terminal certification requires the current source-normalized input contract');
   }
   if (!options.budgetFile) errors.push('verification requires the same tracked --budget');
   else {
     try {
       authoritativeBudgetFile = assertBudgetAuthority(options.budgetFile);
       const currentBudget = readJson(authoritativeBudgetFile);
-      const validation = validateBudget(currentBudget);
+      const validation = validateSceneMemoryBudget(currentBudget);
       if (!validation.ok) errors.push(...validation.errors);
+      else if (currentBudget.status !== 'active') {
+        errors.push('terminal verification requires an active calibrated budget');
+      } else {
+        for (const profile of Object.keys(PROFILES)) {
+          const threshold = currentBudget.heapPhase.profiles[profile]
+            .maxAbsolutePhaseDeltaBytes;
+          errors.push(...sceneMemoryProfilePhaseBudgetErrors(
+            report?.profiles?.[profile], threshold,
+          ).map((error) => `${profile} ${error}`));
+        }
+      }
       const expectedReportBudget = {
         schema: BUDGET_SCHEMA,
         path: portable(authoritativeBudgetFile),
@@ -1504,12 +3133,7 @@ function verifyReport(report, expectedRunId, options) {
   try {
     if (!report?.contractInput || !report?.verdict) errors.push('contract input/verdict is absent');
     else {
-      const expectedProfiles = Object.fromEntries(Object.entries(report.profiles || {})
-        .map(([profile, measurement]) => [profile, {
-          precondition: measurement.precondition,
-          cycles: measurement.cycles,
-          bfcache: measurement.bfcache,
-        }]));
+      const expectedProfiles = sceneMemoryContractProfilesFromEvidence(report.profiles);
       if (!same(report.contractInput.profiles, expectedProfiles)) {
         errors.push('contract input is detached from the collected profile evidence');
       }
@@ -1517,7 +3141,9 @@ function verifyReport(report, expectedRunId, options) {
       if (!same(recomputed, report.verdict) || recomputed.status !== 'pass') {
         errors.push('imported contract verdict is stale or red');
       }
-      errors.push(...terminalOutcomeInventoryErrors(report.outcomes, recomputed.outcomes));
+      errors.push(...terminalOutcomeInventoryErrors(
+        report.outcomes, recomputed.outcomes, surfaceVistaRequired ? OUTCOME_COUNT : 42,
+      ));
     }
   } catch (error) { errors.push(`contract replay failed: ${error.message}`); }
   try {
@@ -1541,6 +3167,7 @@ function verifyReport(report, expectedRunId, options) {
 
 async function main() {
   const options = parseArgs(process.argv.slice(2));
+  if (options.heapPhaseSelftest) return await runHeapPhaseSelftest();
   if (options.verifyRun !== null) {
     let report;
     try { report = readJson(reportPath); }

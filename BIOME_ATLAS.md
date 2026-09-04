@@ -1,9 +1,247 @@
 # Celestial Frontier — Biome Atlas & Color Plan (Phase 4)
 
-**STATUS:** §1 verified against code as of **2026-07-31 (v1.8.9)**. §§2–4 are design-pack content and are
-NOT derivable from source — see PROVENANCE below. The approved, unimplemented environmental-audio
-overlay matches the v2 next-arc contract as of **2026-08-13**. Audited and promoted from `tools/` to
-the repo root during port **Phase 0** (Gate A); the file itself dates from 2026-07-20.
+> **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
+> all dated biome/vista/evidence blocks below remain immutable):** hosted run `33584052508` tested
+> exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
+> `7a9f4c1370dd84292388d718c38ff34214f6203b` once with no retry. Layout passed **787/787**;
+> the first and only red was the production-quarantined SceneMemory fixed-eighth phase-validity
+> synthetic allocator selftest,
+> before the develop admission chain began. The authorization is consumed and no hosted authority
+> remains.
+>
+> The local uncommitted successor makes all live SceneMemory native-heap work
+> **production-only/quarantined** while deterministic controls remain universal. Develop admission
+> is **Compendium → Slice → Glass**; production/release, only after explicit SceneMemory activation,
+> is **SceneMemory → Compendium → Slice → Glass → Recovery** on unchanged source. This changes no
+> biome selection, vista composition, palette, creature, plant, Guardian or other product/art
+> contract and closes no HUMAN visual criterion. See `ROADMAP.md` for the live handoff and
+> `port/v2/README.md` for the canonical battery commands.
+
+> **2026-09-01 current Guide/Charter/D-TRAIN green evidence overlay (supersedes every older
+> “current” label below; all dated biome/vista/evidence checkpoints remain immutable):** exact
+> SSH-signed source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` (tree
+> `25cb76916c8f3fcd00a916864abb9402932cdbec`) passed the complete browser-free profile at
+> **263 files / 2,719 passed / 1 skipped**. Its unchanged-source, named-verified, once/no-retry
+> chain passed Compendium `20260902020238003-42290-3e0d5a9601` at **78/78** with zero findings;
+> develop Slice `20260902020406920-42750-f6dc8783b4cd` with zero findings/scopes (report/log
+> SHA-256 `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` /
+> `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`); and Glass
+> `20260902021048274-43570-053d2c926673` at **12/12** viewport/reload outcomes and **104/104**
+> controls with zero findings or instrument failures (report SHA-256
+> `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`). Four exact carriers
+> under `audits/` retain the Compendium report, Slice report/log and Glass report.
+>
+> This successor dynamically observes and native-scrolls to the real Guide tail under one clipped
+> absolute deadline with bounded exact restoration, preserves the progression-ceremony queue while
+> `productActionInFlight` owns a newer action and resumes it exactly once, and waits for D-TRAIN's
+> stable raw/live/focus/pending-cleared bulletin fixed point. The only product behavior change is
+> ceremony presentation ordering. The legacy game, biome selection/profile, vista composition,
+> creature, plant, Guardian and loot structures, deterministic generation, painters, palettes,
+> silhouettes, anatomy,
+> crops, audio, CSS, save schema, numeric rulers, browser pin/version policy and no-retry policy are
+> unchanged. The green automated chain crosses the current biome/vista surfaces; it does **not**
+> close any outstanding human visual, biome-composition or color-direction gate. Hosted run
+> `33572309149` remains immutable red and its ninth authorization consumed. No new hosted attempt,
+> push, merge, release, version bump, publication or deployment is authorized.
+
+> **2026-08-31 current a046 collision-control repair overlay (supersedes every older “current”
+> label below; dated biome/vista/evidence checkpoints remain immutable):** exact clean SSH-signed
+> source `a0460c6aca37ca923768828cde876e449a76cff8` passed Compendium **78/78** once/no-retry as
+> `20260831155807329-24237-1c6d2e89d5` in **64,166 ms** with named verification. Its exact-source
+> develop Slice `20260831155943782-24588-a98f13f2c7b7` stopped red once/no-retry after **359,647
+> ms** with one `world-identity-collision-controls-failed` scope; named verification exited 2 and
+> Glass did not run. The Compendium art/catalog stage and base product collision outcome were green.
+>
+> The red was an inert instrument mutant caused by mixing newest-first Atlas rows `[Beta, Alpha]`
+> with receipt order `[Alpha, Beta]`. Signed repair/evidence commit
+> `23eb6dabeaf40cf0bc7878272b4f4893ad422113` derives a distinct measured sibling, guards inert/equal
+> cases, causal-stops a red base and proves reversed order executably. It makes no product, biome
+> selection, vista composition, palette, silhouette, crop, creature, genome, organism or structural
+> art change; no save, gameplay, ruler, timeout, retry or Edge contract changed. The complete
+> develop profile is green at **253 files / 2,561 passed / 1 skipped**, all
+> TypeScript programs and the **34-source** art gate; independent review is **CLEAR**. Current
+> Compendium producer/budget authority remains
+> `8d0600bbe98ff786818f05d3dff4f1b8da7dd9703863a9575df026b91755ca2b` /
+> `e9c978bfdb885da8cbc6002c0f9af416d96120ca26a617b3758b898652b85a01`. The **77-bullet**
+> bulletin remains byte-identical. A fresh signed Compendium → Slice → Glass chain remains; no
+> hosted attempt, release, publication or deployment is authorized.
+
+> **2026-08-31 historical 4002/4822 local successor overlay (superseded above;
+> dated biome, vista and evidence checkpoints remain immutable):** exact clean signed source
+> `4002b2d59508fce70d8e9eed404fd3544635f54d` passed Compendium **78/78** once/no-retry as
+> `20260831130356666-917-5be54ef202`. Its exact-source develop Slice
+> `20260831130558500-1306-cb8d7cf92834` stopped terminal red once/no-retry after **303,148 ms**
+> with **3 findings / 3 scopes**; Glass did not run. The art/catalog stage was fully green; Slice
+> exposed a whole-`style` restoration false red after correct phone geometry mutants.
+>
+> Exact SSH-signed source `4822cab92ae3f300635ef16678f860f60a6872e8` changes only the Slice
+> property carrier and causal-stop tests. It makes no
+> biome-selection, vista, creature, genome, painter, palette, silhouette, crop or structural art
+> change. The full develop profile is green at **253 files / 2,557 passed / 1 skipped**, all three
+> TypeScript programs and the **34-source** art gate. The **77-bullet** development bulletin retains
+> SHA-256 `11483b3d1e9c2760a00354e6511a27889e62a4f092ee6847589dc1b7a0bfb2c1`.
+>
+> Current Compendium producer/budget authority remains
+> `99436b414f0caa1699c98181a263c93110a9365445f1da47fe08dd80cba97e5d` /
+> `c7d8dc926724d65a390d45a631b98f26cb0499f73ba302b8bb08689a7af924c2`. A new clean signed
+> candidate restarts **Compendium → Slice → Glass** exactly once and unchanged-source; SceneMemory
+> remains production-only. No Edge rebaseline, timeout increase, retry, hosted attempt, merge,
+> release, version bump, publication or deployment is authorized.
+
+> **2026-08-30 historical exact-`8bdf474…` evidence / Arc 0 publication-oracle repair overlay (supersedes narrower
+> “current” authority language below; every dated biome/vista checkpoint remains immutable):** exact
+> clean SSH-signed evidence source `8bdf474e92467652729a6980f706ca3a2813682c` passed Compendium
+> **78/78** once/no-retry in **64,108 ms**. Its unchanged Slice
+> `20260830-pr35-arc3-8bdf474e9246-slice-certification` stopped terminal red once/no-retry after
+> **111,490 ms** with exactly one Arc 0 Landing publication-oracle scope. The exact carriers and
+> replay are preserved; the stored Slice remains FAIL, and Glass and Recovery did not run.
+>
+> The retained old document kept an exact live product and open Pertar post-Survey card; the stale
+> instrument also required that card to be closed. The replay binds that contradiction and its
+> missing historical held `cardCode`/target capture; the current uncommitted runner atomically
+> captures those values and moves the complete future decision into browser-free contracts. It changes no biome
+> selection/profile, vista composition, painter pixels, seed, genome, anatomy, color plan or art
+> structure. Final browser-free validation is green at **251 files / 2,501 passed / 1 skipped**,
+> with all TypeScript programs green. The cumulative **74-bullet** development bulletin has rendered ordered SHA-256
+> `050b8cbf52bc3eeb2a247acd8ecb5c1e01d123bf2e00c19c8f08eafe7d44e892`.
+>
+> Active derived Compendium producer / index / owner / generated-service-worker authority is
+> `f2f1629a98962801a740d0448d955d08c1ccd9157149edb42169bf0a317e43f3` /
+> `45fc756d924fabd03b3b214e0fd80697e463c59a686a190fcee2b076d05de27c` /
+> `assets/main-BYnoCcc9.js` (`13afe063806bca9b829866070c08741ea0749ca07c1d7dcecf3175c1dae9bfa5`) /
+> `5a968f36984021e39a0cb9e70b2ec37b607563c08a29240b078b828f3d0607d3`. Current Scene build
+> authority is `9351f6fc2311365a5dfc8a4c0b0629d862d7c91f6cd00a83e236b1ce824a6e17`; Compendium / Scene
+> budget-file SHA-256 is `c4f6dddffdf88e42819c567c26132a66f3924a7423002cbfca4564e2defb9d0b` /
+> `670f8ecc2c0bc5715fb92b263820db577a70c3faf254151ff11f45de8fe645f7`. Fixed art rulers,
+> numeric ceilings, historical samples and 78 outcomes are unchanged; an Edge point version is
+> provenance only. No fresh repaired-head browser, Glass, Recovery, Gate, HUMAN, hosted, merge,
+> release, version or deployment authority exists.
+
+> **2026-08-30 historical sealed single-file worker/PWA correction (supersedes the execution-late repair and narrower
+> 2026-08-29 PWA description below; its vista evidence remains historical):** exact signed source
+> `38d8848c984089d33f4bafa1043e36c2cbb2ce9e` ran the one-attempt/no-retry Compendium certificate
+> `20260830-pr35-recovered-oracle-38d8848c9840-compendium-certification` and stopped terminal
+> `product-fail` after **3,115 ms** at phone Planetside when the first species-painter import failed.
+> Exact descendant `dc6004cf4426df72bea141ac77b0be927f36886c` failed the same boundary after
+> **3,112 ms** in `20260830-pr35-execution-late-dc6004cf4426-compendium-certification`, despite the
+> worker reaching `ready`; both runs had zero outcomes and all 78 blocked, with no retry or successor.
+> The immutable 38d 6,053-byte gzip carrier
+> (`e45b2f65cc93ad717524d52ebddfdd504e2abedf5296d6d5aa287e949be968aa`) expands to 37,825 bytes
+> (`63014b6dfea3790fe3618344bdf8d5b31de68e1ac54798f5fe80b5a41092ccf5`) and replays **4/4**.
+>
+> Fetch-time adoption was falsified. Worker construction remains lazy, but the species-art worker
+> statically owns its painter and the biome-vista worker statically owns its renderer. Production
+> builds reject `import()` and external static JavaScript imports in either entry. The generated
+> service worker removes fetch-time adoption; every unpinned non-navigation request remains exact
+> 503, with no network fallback, mixed-build guess or retry.
+>
+> Current measurement / contract / collector authorities are
+> `5c408472b808f09e9f31133905635f08b7ef3588fad151f5f68e2a67ff68b1d0` /
+> `9fc43fe4d29453ec4b546a53a2e62bc874499c67bae9f0f0f4c33e8063c41828` /
+> `0af0f5884c0eec67cea7c6696c20a2c691c669fa93ee255fd1c54d17b56d5010`; final derived producer /
+> index / owner / SW is `baa5ae1fb106ba6679e99c0e6d45bb352851cb72877feb3aa71f776df947128b` /
+> `0f769e57d2d76e4b03be32a3a0ea5d61c7275279f4962af748b0aae3a447d8c0` /
+> `assets/main-C621myNE.js` (`2cc35316b84a08ea1035e866949e77a7e36985cac9acb038ac67293e7684e861`) /
+> `927f3e1ac45346ec4b0fa5f69a0b4486008d98783b5bd966c7f9aced7f16530f`. Scene build / game-main is
+> `96bb633f5c92675709655a7c24c2eb92f442324f431087c02b752ad665fcfa9d` /
+> `07bdf8aac9bd8224870f2749df18461576d733c55555698dd247ddeffb83f831`; Compendium / Scene budget
+> files are `eb286baba5843e46110055e29ffeb8098a7f4c9c301d85727ff07427c5ca813c` /
+> `6ce69d1a6888a1a79c159f79a6cf9ba671f1aeec1e40430d54931da36e88cf5d`. Combined worker/painter asset
+> `assets/species-art.worker-DnnSDKMy.js` is
+> `25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172`. The green printer binds a
+> **964-module / 52-file** build. Biome selection/profile content, vista composition, painter
+> pixels, seeds, genomes, anatomy, art structure, rulers, ceilings and the 78-outcome inventory did
+> not change; the reseal is browser-uncertified and HUMAN/physical-device evidence remains open.
+
+> **2026-08-29 current local vista/PWA evidence correction (supersedes narrower same-date
+> descriptions below where they differ; superseded at the worker graph by the boundary above):** the service worker carries an initiating window's
+> exact selected build pin onto a valid module-worker or shared-worker `resultingClientId` before the
+> child can issue lazy imports. Live-build retention includes all client types; pin cleanup confirms
+> a worker omitted from `matchAll` with `clients.get()` before pruning it. The current biome-vista
+> worker instead statically owns its compositor, so no post-start compositor chunk exists.
+>
+> Product behavior remains fail-soft: construction, request, protocol, post-message, worker,
+> copy, mount and deadline failures preserve the fitted globe. Diagnostics now also retain the
+> monotonically counted `surfaceVistaFaults` and a bounded 512-character `surfaceVistaLastError`.
+> SceneMemory treats any observed vista fault as terminal immediately and reports that exact bounded
+> cause instead of waiting for a generic settlement timeout. Its BFCache excursion is served by a
+> separate temporary loopback origin outside the product service worker's scope and is closed during
+> cleanup, so lifecycle evidence does not accidentally exercise PWA update routing. The signed
+> certificate named below remains immutable historical evidence; fresh exact-source browser evidence
+> for this local successor is still required, with no ruler or threshold claim made here.
+
+**STATUS:** §1's legacy source facts remain verified against **v1.8.9**; the historical v2 exact
+43-biome domain-profile authority and live full-vista route matched exact signed source
+`3f69e88ea8e34fdb8d9913276601b426ada783ae` on **2026-08-29**. The current local successor retains
+that content boundary with the vista/PWA lifecycle correction above. §§2–4 remain design-pack content and are NOT derivable from source — see PROVENANCE
+below. The environmental-audio overlay matches the pure canonical current-world plan plus its
+bounded explicit no-spoiler v2 playback join as of **2026-08-29**. Audited and promoted from `tools/` to the repo root during port
+**Phase 0** (Gate A); the file itself dates from 2026-07-20.
+
+> **2026-08-27 current v2 correction:** after owned Deep Scanners, the exact eligible scanned,
+> registered lifeless non-Earth world now renders one passive **Mineral veins** Survey row. It lists
+> canonical ordinary deposits plus the optional biome-only vein and deliberately withholds
+> cosmic/exceptional veins, grades, reserves, extraction progress and Mine controls. A committed
+> Tame-fauna result may also emit one bounded deterministic greeting when its native gesture,
+> current ownership and accessible status counterpart all agree. An exact durable Feed may likewise
+> emit one contented expression after its settled accessible status; neither path is ambience or a
+> general biome soundscape. The 2026-08-25 paragraph below is retained as a historical checkpoint.
+
+> **2026-08-29 current universe-wide visual checkpoint:** all 43 live keys now form one exact,
+> recursively immutable `BiomeProfileV1` authority in dependency-neutral
+> `@cf/domain-biome-profile`. Schema `cf.domain.biome-profile.v1` and digest
+> `bpd1-6fce883d4d70e3b6bde0fb184b416e8e` bind the authored signature,
+> fauna/flora families, hazard and weather values. It changes no biome selection, generation,
+> anatomy, silhouette, proportion, scale, semantic color, seed identity or gameplay geometry. The
+> shared finishing language is live across galaxy/system/planet art and every creature, plant,
+> fungus and microbe route; the Shipyard applies the same material/light direction without changing
+> its hull paths or hardpoints. Sol remains only a calibration case.
+>
+> Normal Planetside landings now request the preserved full `960×430` generic, gas-deck, abyss or
+> reef compositor from the exact proven world and canonical roster. That roster carries one
+> presentation-only environment fingerprint over world, ecology epoch, biosphere, climate and the
+> canonical profile schema/digest/key; it is never an encounter filter. The lazy module worker validates
+> exact scene options and result dimensions, fences stale document/generation/world/scene/biome
+> responses, and publishes only after a successful Pixi mount. A one-entry cache evicts a poisoned
+> mount; construction, protocol, copy, timeout or mount failure leaves the fitted globe usable and
+> never changes landing state. Portrait phones contain the complete vista in a full-width horizon
+> band above the globe instead of cover-cropping resident ecology; wider layouts center the whole
+> composition.
+>
+> Browser-free `visual-authorities`, `biome-vista`, `biome-vista-ecology`,
+> `biome-vista-surface`, `biome-vista-protocol`, `biome-vista-cache`, `surface-polish`,
+> `speciesportable` and live-wiring suites cover the exact 43-key join, preserved compositor,
+> canonical Earth versus same-leaf foreign worlds, terrestrial/aquatic/aerial flora routing,
+> weather/water projection, complete phone containment, fail-soft ownership, and deliberately
+> missing/mismatched/bypass controls. SceneMemory input-v4 now adds phone and desktop
+> `surface-vista-lifecycle` outcomes to the historical ruler for 44 total, binding worker-active,
+> mounted, cache-entry and cache-pixel diagnostics through cold, surface/ascent, BFCache and
+> reload-clear/replacement cleanup; its browser-free controls are green. Exact signed source
+> `3f69e88ea8e34fdb8d9913276601b426ada783ae` then passed SceneMemory **44/44** inside the serial,
+> zero-retry Layout **787/787** → SceneMemory → Compendium **78/78** → Slice →
+> 12-viewport Glass → 20-minute Recovery local chain. Every stage passed its exact
+> source/predecessor-bound named verifier, with no product-source change. Fixed-seed and six
+> run-bound Compendium images still require HUMAN art judgment, and physical-device
+> frame/heat/battery/true-GPU evidence remains open; this certificate does not close Gate F or the
+> wider campaign. `BiomeProfileV1` remains presentation-only: it neither implements gameplay-changing
+> D-9e nor wires Gate G live distant-ecology playback. No hosted, release, version or deployment
+> authority follows.
+
+> **2026-08-25 Arc 3/4 historical opportunity boundary:** canonical Arc 3 world snapshots then derived
+> finite deposits, exceptional/cosmic veins, raw tier and player-facing rarity from the exact
+> source-proven CF1 world. The Engineering panel exposes truthful Mine/Skim actions and displays six
+> research rows, but only Deep Scanners is purchasable. Its pure orbital-reveal policy exists; the
+> current Survey surface does not render orbital mineral rows. All 62 fixed recipes are listed, while
+> only connected-effect outputs with exact costs/preconditions and capacity/revision headroom are
+> actionable; fully exceptional slotted outputs and disconnected-effect rows remain unavailable.
+> This is a resource subset, not a generic biome opportunity resolver:
+> no anomaly, blueprint, lore, Guardian or project-site table has been invented. Arc 4 projects the
+> exact epoch-bound full roster into its acquisition snapshot/plan and exposes native Survey
+> Tame/Scavenge/Sample controls. Those controls select from the complete eligible kingdom pool,
+> show truthful odds and shared Biosphere Yield, and settle through the durable writer; they do not
+> make biome/design-pack rows into targets or runtime keys. Neither package changes the 43 biome
+> definitions. Capture audio was absent at that checkpoint, and real next-cycle recovery plus HUMAN review remain
+> open.
 
 _Originally generated 2026-07-20 from: live `BIOME_SETS` (main.js) + data-pack CSVs (01_EARTH 93 ·
 02_NON_EARTH 315) + Additional Biomes file. Colors are PROPOSED signatures for the biome→dot /
@@ -45,12 +283,21 @@ biome→vista tint._
 > `ammonia`, `stormeye`) do carry floater fauna — `hotglow` carries none, making it a fifth case
 > rather than a gas-biome norm. Separately, **17** biomes carry `flora:[]`.
 
-## 0 · v2.0 next-arc environmental sonification (approved, not implemented — 2026-08-13)
+## 0 · v2.0 environmental sonification (bounded explicit playback live; authored ambience open — 2026-08-29)
 
-The current v2 development package is stings-only. It does not yet play biome ambience, weather,
-distant ecology, creature calls or music. Production v1.8.9 retains its synthesized ambience beds;
-this overlay does not change them, the 43 live biome profiles, roster selection, descent, hazards,
-rarity or any design-pack status below.
+The current v2 player application plays compatibility stings plus exact Tame and Feed creature
+expressions, explicit exact-owned-fauna Compendium Listen, and one bounded generic Planetside
+**Listen to biosphere** signal. `@cf/audio` implements the pure `DistantEcologyHintPlan`, and
+`biome-ecology-audio.ts` joins it to one production canonical inhabited current-world Survey roster.
+The plan binds canonical world identity, profile schema/digest/key, weather, hazard and the roster
+environment fingerprint at biosphere granularity, with alternate-classifier, stale-profile,
+hidden-detail and lifeless-world controls. Main imports that join only inside the trusted explicit
+Listen action after the exact same-granularity visible biosphere counterpart still agrees. Render,
+landing, roster fill and navigation never autoplay it, and it reveals no species, consumes no Yield,
+grants nothing and writes no save. Authored/profile-specific continuous ambience, weather beds,
+music, ducking, reduced-intensity behavior and real-device listening evidence remain open.
+Production v1.8.9 retains its synthesized ambience beds; this overlay does not change them, the 43
+live biome profiles, roster selection, descent, hazards, rarity or any design-pack status below.
 
 The future environment resolver consumes one typed, deterministic biome identity and produces a
 presentation-only soundscape plan from atmosphere, weather, terrain/water, pressure, gravity,
@@ -67,17 +314,24 @@ and empty/silent zones remain intentional rather than being filled for constant 
 biosphere or future companion may modulate density only from visible current state; audio cannot
 reveal an undiscovered roster, pre-land rarity, capture outcome or hidden mechanical advantage.
 
-The implementation seam is a stable `ambientAudioProfile`/environment event plan shared by no
-browser painter: art and audio may read the same pure biome/ecology taxonomy, but each owns its own
-renderer, cache and lifecycle. The mixer, same-origin rights manifest, decoded-byte/node budgets,
-background restart policy, captions and human listening gate are defined in `AUDIO.md` §0.
+The implemented seam is the versioned/digested `BiomeProfileV1` plus a pure environment plan shared
+by no browser painter. Art and audio read the same canonical profile identity, but each owns its own
+renderer, cache and lifecycle. An explicit Planetside **Listen to biosphere** path now requires the
+exact current inhabited-world identity and already-visible accessible biosphere lead before one
+generic deterministic neutral signal can play. It reveals no hidden roster or species, spends no
+Yield, grants no discovery/reward and writes no save; render/navigation never autoplays it. The
+mixer, same-origin rights manifest, decoded-byte/node budgets, background restart policy, captions
+and human listening gate are defined in `AUDIO.md` §0. Authored continuous/specific ecology and
+real-device listening evidence remain Gate-G-open work.
 
-## 0.1 · v2 world-opportunity presentation contract (approved, not implemented — 2026-08-13)
+## 0.1 · v2 world-opportunity presentation contract (resource subset implemented — 2026-08-24)
 
-`WORLD_GENERATION.md` owns the future canonical World Opportunity Manifest; this atlas supplies
-only its **biome compatibility and presentation vocabulary**. No opportunity resolver, capture
-writer, project site, loot source, anomaly, blueprint, Guardian lead or extra biome is live in v2
-because this section exists.
+`WORLD_GENERATION.md` owns the canonical World Opportunity Manifest. Arc 3 now owns its finite
+resource/star-skimming subset and real Engineering actions; this atlas still supplies only
+**biome compatibility and presentation vocabulary**. Arc 4's capture writer/UI consumes canonical
+ecology owned elsewhere; this atlas does not become a generic biome-opportunity resolver, project
+site, new loot-occurrence table, anomaly, blueprint, Guardian lead or extra live biome because that
+player path exists.
 
 For the 43 source-derived live profiles, a future compatibility layer may describe how terrain,
 weather, hazard, life forms and atmosphere make an already-generated opportunity readable:

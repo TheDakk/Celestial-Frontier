@@ -23,6 +23,7 @@ import {
 import { describeSpecies, classifyRealm, ecologyRole, realmBiome, realmModifiers, sapienceTier } from '@cf/domain-genome';
 import type { Genome } from '@cf/domain-genome';
 import { sanitizeEpoch } from '@cf/domain-progression';
+import { CF1_WORLD_ATLAS_ID_MAX_CHARS } from '@cf/scene';
 
 export interface ContentRegistry {
   materials: string[];
@@ -48,12 +49,23 @@ export interface CodexEntry {
      carried so export→import round-trips; parity projection excludes it */
   where: Record<string, unknown> | null;
 }
+export const FRONTIER_ENDING_IDS = Object.freeze([
+  'conquer', 'protect', 'terraform', 'preserve', 'balance',
+] as const);
+export type FrontierEndingId = (typeof FRONTIER_ENDING_IDS)[number];
+export function isKnownFrontierEndingId(value: unknown): value is FrontierEndingId {
+  return typeof value === 'string'
+    && (FRONTIER_ENDING_IDS as readonly string[]).includes(value);
+}
+
 export interface SaveStateV2 {
   /** Compatibility-named carrier for the advancing epoch snapshot. On boot
    * it becomes a new EpochClock construction origin; ordinary app saves must
    * refresh it from EpochClock.current() immediately before export. An
    * in-memory assignment alone does not prove the repository write committed. */
-  EPOCH_BASE: number; essence: number; explorerName: string; lastAnomKey: string | null;
+  /** Opaque bounded v4 compatibility token. Never use it as current event
+   * authority without a version-specific resolver. */
+  EPOCH_BASE: number; essence: number; explorerName: string; lastAnomKey: number | string | null;
   stats: Record<string, number>;
   pstats: Record<string, number>; hp: number; HP_MAX: number;
   customNames: Array<[string, string]>;
@@ -73,11 +85,17 @@ export interface SaveStateV2 {
   sfxVol: number; glassTint: number; motionMode: number; cardExpand: number;
   notifications: Array<{ id: number; tt: string; ms: string; t: number; read: boolean }>;
   surveyedSet: string[]; galSeen: unknown[]; surfSeen: unknown[]; xpFirsts: string[];
+  /** Optional v5 overflow binding mirrored into the additive v4 `xpa` field.
+   * Older saves omit it. Once present, the matching v5 extension is required;
+   * silently treating a lost extension as an old save would re-arm XP. */
+  xpFirstsBinding?: LegacyXpFirstsBindingV1 | null;
   sysSeen: number[]; starKindsSeen: string[]; ptypesSeen: string[];
   eventKeysSeen: string[]; evAnnounced: string[]; unlocked: string[];
   landed: number[]; contacted: number[];
   waveOffs: Array<[number, number]>;
   primeFill: Record<string, { title: string; sub: string; tier: number; hex: string; where: unknown }>;
+  /** Opaque bounded v4 compatibility token. Call isKnownFrontierEndingId
+   * before any future UI or progression trusts it. */
   frontierUnlocked: boolean; frontierEnding: string | null; seenGuide: boolean;
   tutDone: boolean; rnSeen: string; tutSnapPending: unknown; scoutId: string | null;
   chWeek: number; chProg: Record<string, number>; chacc: string[]; chDone: string[];
@@ -86,7 +104,55 @@ export interface SaveStateV2 {
   codex: Array<[string, CodexEntry]>;
 }
 
+export interface LegacyXpFirstsBindingV1 {
+  readonly v: 1;
+  readonly totalCount: number;
+  readonly carrierDigest: string;
+}
+
 const HARVEST_CD = 3600e3;   /* key anchor (CLAUDE.md) — the harvest stamp floor window */
+
+/* Numeric fields read as trait-table indices by the current Genome and
+ * CombatCore descriptors. Honest generated/evolved genes are non-negative
+ * integers, but may drift beyond their table length; those exact values are
+ * identity and MUST NOT be wrapped or clamped here (especially `size`). Only
+ * malformed values are normalized, following the existing share-code
+ * hardener's abs/truncate rule without its lossy 32-bit coercion. `heat`,
+ * `limbs`, and `accent` are deliberately absent: they are not numeric indices
+ * consumed by the current descriptor/combat readers, and honest `heat` is a
+ * fractional biome value. */
+const IMPORTED_GENOME_INDEX_FIELDS = Object.freeze([
+  'color', 'form', 'body', 'loco', 'trait', 'size', 'diet', 'head', 'skin',
+  'tail', 'pattern', 'eyes', 'behavior', 'habitat', 'detail', 'temper',
+  'sense', 'repro', 'life', 'metab', 'ep',
+] as const);
+
+function normalizedGenomeIndex(value: unknown): number {
+  const numeric = typeof value === 'number'
+    ? value
+    : (typeof value === 'string' && value.trim() !== '' ? Number(value) : Number.NaN);
+  if (!Number.isFinite(numeric)) return 0;
+  const normalized = Math.abs(Math.trunc(numeric));
+  return Number.isSafeInteger(normalized) ? normalized : 0;
+}
+
+/** Clone before invoking the byte-verbatim v1 hardener (which intentionally
+ * mutates its argument), then repair only malformed numeric descriptor/combat
+ * indices. Every valid non-negative integer—including an unwrapped size far
+ * above the six presentation classes—survives by exact value and type. */
+export function sanitizeImportedGenomeV2(value: unknown): Record<string, unknown> | null {
+  if (!value || typeof value !== 'object') return null;
+  const clone = { ...(value as Record<string, unknown>) };
+  const sanitized = _sanitizeSavedGenome(clone);
+  if (!sanitized) return null;
+  for (const field of IMPORTED_GENOME_INDEX_FIELDS) {
+    if (!Object.prototype.hasOwnProperty.call(sanitized, field)) continue;
+    const current = sanitized[field];
+    if (typeof current === 'number' && Number.isSafeInteger(current) && current >= 0) continue;
+    sanitized[field] = normalizedGenomeIndex(current);
+  }
+  return sanitized;
+}
 
 /** A genuine v1.8.9 Field Training checkpoint written immediately before
  * its sandbox starts. It owns only the eleven fields below; the surrounding
@@ -377,6 +443,47 @@ function frozenAtlasWhereLookup(
   });
 }
 
+/** Exact compatibility classifier for the one pre-full-save development
+ * envelope written to `cf-v2-slice` by commit e960e21. This is deliberately
+ * separate from the mature v4 classifier: only the historical two-field
+ * shape, an exact four-field nav record, matching route copies, and finite
+ * mode-required identity are accepted. Parsed content still passes through
+ * the ordinary bounded importer; this predicate grants no broader authority. */
+export function isLegacySliceEnvelope(value: unknown): boolean {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
+  const data = value as Record<string, unknown>;
+  if (Object.keys(data).sort().join('|') !== 'nav|view') return false;
+  if (!data.nav || typeof data.nav !== 'object' || Array.isArray(data.nav)) return false;
+  const rawNav = data.nav as Record<string, unknown>;
+  if (Object.keys(rawNav).sort().join('|') !== 'gal|mode|planet|star') return false;
+  const mode = rawNav.mode;
+  if (!['universe', 'galaxy', 'system', 'surface'].includes(String(mode))) return false;
+  if (mode === 'universe') {
+    return data.view === null && rawNav.gal === null && rawNav.star === null && rawNav.planet === null;
+  }
+  if (!data.view || typeof data.view !== 'object' || Array.isArray(data.view)) return false;
+  const rawView = data.view as Record<string, unknown>;
+  const expectedType = mode === 'galaxy' ? 'galaxy' : mode === 'system' ? 'star' : 'planet';
+  if (rawView.type !== expectedType) return false;
+  const samePoint = (a: unknown, b: unknown): boolean => {
+    if (!a || typeof a !== 'object' || Array.isArray(a)
+      || !b || typeof b !== 'object' || Array.isArray(b)) return false;
+    const left = a as Record<string, unknown>, right = b as Record<string, unknown>;
+    return typeof left.seed === 'number' && Number.isFinite(left.seed)
+      && typeof left.x === 'number' && Number.isFinite(left.x)
+      && typeof left.y === 'number' && Number.isFinite(left.y)
+      && left.seed === right.seed && left.x === right.x && left.y === right.y;
+  };
+  if (!samePoint(rawNav.gal, rawView.gal)) return false;
+  if (mode === 'galaxy') return rawNav.star === null && rawNav.planet === null;
+  if (!samePoint(rawNav.star, rawView.star)) return false;
+  if (mode === 'system') return rawNav.planet === null;
+  if (!rawNav.planet || typeof rawNav.planet !== 'object' || Array.isArray(rawNav.planet)) return false;
+  const rawPlanet = rawNav.planet as Record<string, unknown>;
+  return typeof rawPlanet.seed === 'number' && Number.isFinite(rawPlanet.seed)
+    && rawPlanet.seed === rawView.pseed;
+}
+
 /** Import-sheet guard. Boot loading deliberately accepts sparse legacy data
  * and hardens it into defaults; an explicit destructive import must prove it
  * is a whole save envelope before replacing the stored expedition. */
@@ -425,6 +532,36 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       if (typeof version === 'number' && Number.isSafeInteger(version) && version > 1) {
         return { ok: false, reason: 'future-version' };
       }
+    }
+
+    let xpFirstsBinding: LegacyXpFirstsBindingV1 | null = null;
+    if (data.xpa !== undefined) {
+      if (!data.xpa || typeof data.xpa !== 'object' || Array.isArray(data.xpa)) {
+        return { ok: false, reason: 'invalid' };
+      }
+      const binding = data.xpa as Record<string, unknown>;
+      if (Number.isSafeInteger(binding.v) && (binding.v as number) > 1) {
+        return { ok: false, reason: 'future-version' };
+      }
+      const keys = Object.keys(binding).sort();
+      if (keys.length !== 3
+        || keys[0] !== 'carrierDigest'
+        || keys[1] !== 'totalCount'
+        || keys[2] !== 'v') {
+        return { ok: false, reason: 'invalid' };
+      }
+      if (binding.v !== 1
+        || !Number.isSafeInteger(binding.totalCount)
+        || (binding.totalCount as number) <= 4000
+        || typeof binding.carrierDigest !== 'string'
+        || !/^[0-9a-f]{64}$/u.test(binding.carrierDigest)) {
+        return { ok: false, reason: 'invalid' };
+      }
+      xpFirstsBinding = Object.freeze({
+        v: 1,
+        totalCount: binding.totalCount as number,
+        carrierDigest: binding.carrierDigest,
+      });
     }
 
     const num = (v: unknown, d?: number): number => {
@@ -496,7 +633,16 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       landings: num(data.landings), charters: num(data.charters),
       surveys: 0, bestRank: clamp(num(data.br), 0, registry.rankHuesLen - 1),
     };
-    const lastAnomKey = (data.anomKey as string) || null;
+    /* Generated saves use a non-negative five-minute bucket number, while
+       captured legacy fixtures also carry short opaque string tokens. Keep
+       those bytes as inert compatibility data, but reject objects, controls,
+       unbounded strings, fractional/negative numbers, and non-finite values. */
+    const lastAnomKey = typeof data.anomKey === 'number'
+      && Number.isSafeInteger(data.anomKey) && data.anomKey >= 0
+      ? data.anomKey
+      : typeof data.anomKey === 'string'
+        && /^[A-Za-z0-9._:-]{1,64}$/.test(data.anomKey)
+        ? data.anomKey : null;
     const explorerName = cleanName((data.me as string) || '');
     const essence = clamp(num(data.essence), 0, 1e9);
 
@@ -508,15 +654,18 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
        world hostage forever, a wild negative would mint free harvests.
        ABSENT e ⇒ READY (one deliberate migration cycle per world). */
     const _hvFloor = Math.max(0, _atL - HARVEST_CD);
-    const conquered: SaveStateV2['conquered'] = [];
+    /* Reconstruct the original collection owners before projecting DTO arrays.
+       Map.set is last-write-wins without moving an existing key's insertion
+       slot; Set.add is first-occurrence order with duplicate collapse. */
+    const conquered = new Map<unknown, { t: number; tier: number; e?: number }>();
     for (const kv of _capA(data.conq, 20000) as Array<[unknown, Record<string, unknown>]>) {
       if (!kv || kv[0] == null || !kv[1]) continue;
       const _row: { t: number; tier: number; e?: number } = { t: clamp(num(kv[1].t), _hvFloor, _nowL), tier: clamp(num(kv[1].tier), 0, TIER_MAX) };
       if (kv[1].e != null) _row.e = clamp(num(kv[1].e), 0, EPOCH_BASE);
-      conquered.push([kv[0], _row]);
+      conquered.set(kv[0], _row);
     }
-    const claimedSets: string[] = [];
-    for (const s of _capA(data.setsc, 200)) if (registry.binderSets.includes(s as string)) claimedSets.push(s as string);
+    const claimedSets = new Set<string>();
+    for (const s of _capA(data.setsc, 200)) if (registry.binderSets.includes(s as string)) claimedSets.add(s as string);
     const cargo = new Map<string, number>();
     for (const kv of _capA(data.cargo, 200) as Array<[string, unknown]>) { if (kv && registry.materials.includes(kv[0])) cargo.set(kv[0], clamp(num(kv[1]), 0, 1e6)); }
     /* exceptional sub-counts clamp to the HELD quantity — a crafted save can never mint grade */
@@ -547,12 +696,12 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     } else {
       for (const k of mined.keys()) mineX.set(k, 1);
     }
-    const bioX: SaveStateV2['bioX'] = [];
+    const bioX = new Map<number, [number, number]>();
     if (Array.isArray(data.bx)) for (const kv of data.bx.slice(0, 60000) as Array<[unknown, unknown[]]>) {
-      if (kv && kv[0] != null && Array.isArray(kv[1])) bioX.push([num(kv[0]), [clamp(num(kv[1][0]), 0, 999) | 0, clamp(num(kv[1][1]), 0, 1e9) | 0]]);
+      if (kv && kv[0] != null && Array.isArray(kv[1])) bioX.set(num(kv[0]), [clamp(num(kv[1][0]), 0, 999) | 0, clamp(num(kv[1][1]), 0, 1e9) | 0]);
     }
-    const techOwned: string[] = [];
-    for (const t of _capA(data.tech, 100)) if (registry.techs.includes(t as string)) techOwned.push(t as string);
+    const techOwned = new Set<string>();
+    for (const t of _capA(data.tech, 100)) if (registry.techs.includes(t as string)) techOwned.add(t as string);
     /* absent ⇒ empty bench — veterans start crafting from zero like everyone */
     const items = new Map<string, number>();
     for (const kv of _capA(data.items, 300) as Array<[string, unknown]>) { if (kv && itemBy[kv[0]]) items.set(kv[0], clamp(num(kv[1]), 0, 999) | 0); }
@@ -572,7 +721,7 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     }
     const ascCh = clamp(num(data.asc), 0, registry.ascChaptersLen) | 0;
     const ascProg: Record<string, number> = {};
-    if (data.ascp && typeof data.ascp === 'object' /* arrays PASS in the game — typeof gate only */) {
+    if (data.ascp && typeof data.ascp === 'object' && !Array.isArray(data.ascp)) {
       for (const k in data.ascp as Record<string, unknown>) { const v = +((data.ascp as Record<string, unknown>)[k] as number); if (typeof k === 'string' && k.length < 24 && Number.isFinite(v) && v >= 0) ascProg[k] = Math.min(v | 0, 999); }
     }
     const nameHue = Number.isFinite(+(data.nh as number)) ? clamp((+(data.nh as number)) | 0, -1, registry.rankHuesLen - 1) : -1;
@@ -609,6 +758,12 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const galSeen = new Set<unknown>(); for (const s of _capA(data.gals, 20000)) galSeen.add(s);
     const surfSeen = new Set<unknown>(); for (const s of _capA(data.surf, 60000)) surfSeen.add(s);
     const xpFirsts = new Set<string>(); for (const s of _capA(data.xpf, 4000)) if (typeof s === 'string') xpFirsts.add(s.slice(0, 64));
+    if (xpFirstsBinding !== null && (
+      !Array.isArray(data.xpf)
+      || data.xpf.length !== 4000
+      || data.xpf.some((entry) => typeof entry !== 'string' || entry.length > 64)
+      || xpFirsts.size !== 4000
+    )) return { ok: false, reason: 'invalid' };
     const sysSeen = new Set<number>(); for (const s of _capA(data.sysv, 60000)) { const n = +(s as number); if (Number.isFinite(n)) sysSeen.add(n); }
     /* A legacy save may contain sysSeen without ever having serialized the
        corresponding dynamic Records counter. Preserve that v1 shape unless
@@ -629,7 +784,7 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const codex = new Map<string, CodexEntry>();
     for (const e of _capA(data.codex, 1500) as Array<Record<string, unknown>>) {
       try {
-      const _sg = e && e.g && _sanitizeSavedGenome(e.g);
+      const _sg = e && e.g && sanitizeImportedGenomeV2(e.g);
       if (!_sg) continue;
       const savedGenome = _sg as Record<string, unknown>;
       savedGenome.gen = generation(savedGenome.gen);
@@ -728,15 +883,15 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       return Object.freeze({ kind: 'legacy-or-unknown' as const, snapshot: boundedSnapshot });
     })();
     const scoutId = (typeof data.scout === 'string' && codex.has(data.scout)) ? data.scout : null;
-    const chDone: string[] = [];
-    for (const s of _capA(data.chs, 500)) if (registry.charterStarters.includes(s as string)) chDone.push(s as string);
+    const chDone = new Set<string>();
+    for (const s of _capA(data.chs, 500)) if (registry.charterStarters.includes(s as string)) chDone.add(s as string);
     const chWeek = num(data.chw, -1);
     const chProg: Record<string, number> = {};
-    if (data.chp && typeof data.chp === 'object' /* arrays PASS in the game — typeof gate only */) {
+    if (data.chp && typeof data.chp === 'object' && !Array.isArray(data.chp)) {
       for (const k in data.chp as Record<string, unknown>) { const v = +((data.chp as Record<string, unknown>)[k] as number); if (typeof k === 'string' && k.length < 24 && Number.isFinite(v) && v >= 0) chProg[k] = Math.min(v | 0, 999); }
     }
-    const chacc: string[] = [];
-    for (const s of _capA(data.chacc, 50)) if (typeof s === 'string' && !chDone.includes(s) && (registry.charterStarters.includes(s) || registry.charterPool.includes(s))) chacc.push(s);
+    const chacc = new Set<string>();
+    for (const s of _capA(data.chacc, 50)) if (typeof s === 'string' && !chDone.has(s) && (registry.charterStarters.includes(s) || registry.charterPool.includes(s))) chacc.add(s);
 
     /* Atlas — rebuilt with COERCED fields only (renderLog's innerHTML sinks) */
     const _cs = (v: unknown, n: number): string => cleanName(v == null ? '' : v, n);
@@ -773,7 +928,7 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const rawAtlasWhereById = new Map<string, unknown>();
     for (const it of _capA(data.log, 150) as Array<Record<string, unknown>>) {
       if (it && it.id != null) {
-        const _id = _cs(it.id, 24);
+        const _id = _cs(it.id, CF1_WORLD_ATLAS_ID_MAX_CHARS);
         if (!_id) continue;   /* an all-stripped id must not mint an empty key */
         const entry: Record<string, unknown> = {
           id: _id, title: _cs(it.title, 60) || 'Charted place', sub: _cs(it.sub, 120),
@@ -793,17 +948,20 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
     const atlasWhere = frozenAtlasWhereLookup(
       [...logMap].map(([id, entry]) => [entry, rawAtlasWhereById.get(id)] as const),
     );
-    const homeId = (() => { const _h = _cs(data.home, 24); return (_h && logMap.has(_h)) ? _h : null; })();
+    const homeId = (() => {
+      const _h = _cs(data.home, CF1_WORLD_ATLAS_ID_MAX_CHARS);
+      return (_h && logMap.has(_h)) ? _h : null;
+    })();
     const landed = new Set<number>(); for (const s of _capA(data.land, 60000)) { const n = +(s as number); if (Number.isFinite(n)) landed.add(n); }
     const contacted = new Set<number>(); for (const s of _capA(data.cont, 4000)) { const n = +(s as number); if (Number.isFinite(n)) contacted.add(n); }
-    const waveOffs: SaveStateV2['waveOffs'] = [];
+    const waveOffs = new Map<number, number>();
     if (Array.isArray(data.wvo)) for (const e2 of data.wvo.slice(-400) as unknown[]) {
       if (!Array.isArray(e2)) continue;
       const s2 = +(e2[0] as number), n2 = Math.max(0, Math.min(5, (+(e2[1] as number)) | 0));
-      if (Number.isFinite(s2) && n2 > 0) waveOffs.push([s2, n2]);
+      if (Number.isFinite(s2) && n2 > 0) waveOffs.set(s2, n2);
     }
     const primeFill: SaveStateV2['primeFill'] = {};
-    if (data.prime && typeof data.prime === 'object' /* arrays PASS in the game — typeof gate only */) {
+    if (data.prime && typeof data.prime === 'object' && !Array.isArray(data.prime)) {
       const _sanS = (v: unknown, n2: number): string => String(v == null ? '' : v).replace(/[<>&"']/g, '').slice(0, n2);
       for (const k in data.prime as Record<string, unknown>) {
         const f = (data.prime as Record<string, Record<string, unknown>>)[k];
@@ -831,7 +989,11 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       if (idx > (stats.bestRank || 0)) stats.bestRank = idx;
     }
     const frontierUnlocked = !!data.frontier;
-    const frontierEnding = (data.ending as string) || null;
+    /* Unknown legacy/future-within-v4 ids remain round-trippable evidence,
+       not authority: consumers must call isKnownFrontierEndingId first. */
+    const frontierEnding = typeof data.ending === 'string'
+      && /^[a-z][a-z0-9-]{0,31}$/.test(data.ending)
+      ? data.ending : null;
     const seenGuide = !!data.guide;
     /* The shipped legacy restart bug could persist `tut:1` beside its exact
        pre-Training checkpoint. Normalize that proven pair back to pending so
@@ -845,22 +1007,24 @@ export function importSaveV2(raw: string | null | undefined, registry: ContentRe
       ok: true,
       state: {
         EPOCH_BASE, essence, explorerName, lastAnomKey, stats, pstats, hp, HP_MAX,
-        customNames: [...customNames.entries()], conquered,
+        customNames: [...customNames.entries()], conquered: [...conquered.entries()],
         cargo: [...cargo.entries()], cgx: [...cgx.entries()],
         items: [...items.entries()], equip, equipAff, pinnedRecipe, cargoTab,
         seenSp: [...seenSp.values()], journal,
         mined: [...mined.entries()], mineX: [...mineX.entries()], skimX: [...skimX.entries()],
-        bioX, techOwned, claimedSets, ascCh, ascProg, nameHue, savedView,
+        bioX: [...bioX.entries()], techOwned: [...techOwned.values()],
+        claimedSets: [...claimedSets.values()], ascCh, ascProg, nameHue, savedView,
         fsMode, toneMode, fontMode, sndOn, fxOn, chartsOn, shakeOn, salvageConfirm,
         notifOn, tipsOn, sfxVol, glassTint, motionMode, cardExpand, notifications,
         surveyedSet: [...surveyedSet.values()], galSeen: [...galSeen.values()],
-        surfSeen: [...surfSeen.values()], xpFirsts: [...xpFirsts.values()],
+        surfSeen: [...surfSeen.values()], xpFirsts: [...xpFirsts.values()], xpFirstsBinding,
         sysSeen: [...sysSeen.values()], starKindsSeen: [...starKindsSeen.values()],
         ptypesSeen: [...ptypesSeen.values()], eventKeysSeen: [...eventKeysSeen.values()],
         evAnnounced: [...evAnnounced.values()], unlocked: [...unlocked.values()],
         landed: [...landed.values()], contacted: [...contacted.values()],
-        waveOffs, primeFill, frontierUnlocked, frontierEnding, seenGuide, tutDone,
-        rnSeen, tutSnapPending, scoutId, chWeek, chProg, chacc, chDone, homeId,
+        waveOffs: [...waveOffs.entries()], primeFill, frontierUnlocked, frontierEnding, seenGuide, tutDone,
+        rnSeen, tutSnapPending, scoutId, chWeek, chProg,
+        chacc: [...chacc.values()], chDone: [...chDone.values()], homeId,
         voiceOn, combatSfxOn, logMap: [...logMap.entries()],
         codex: [...codex.entries()],
       },

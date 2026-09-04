@@ -1,4 +1,4 @@
 { "name": "@cf/domain-naming", "private": true, "version": "0.0.0", "type": "module",
-  "description": "Module 3/14: procedural proper names. main.js @module Naming (v1.8.9).",
+  "description": "Module 3/14: procedural proper names plus the shared bounded name normalizer. main.js v1.8.9.",
   "exports": { ".": "./src/index.ts" },
   "dependencies": { "@cf/domain-rand": "*", "@cf/domain-worldconfig": "*" } }

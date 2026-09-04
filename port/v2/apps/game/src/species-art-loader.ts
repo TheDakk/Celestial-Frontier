@@ -1,7 +1,7 @@
 /* species-art-loader.ts — Window-side ownership for the dedicated species-art
-   producer. The broker is cheap and safe at boot; the Worker and its heavy
-   painter chunk are constructed only after a real owner exists AND the app
-   explicitly activates background work after its first serviced turn. */
+   producer. The broker is cheap and safe at boot; the sealed Worker graph is
+   constructed only after a real owner exists AND the app explicitly activates
+   background work after its first serviced turn. */
 import {
   SpeciesArtBroker,
   type Portrait440,
@@ -15,6 +15,8 @@ import {
   type SpeciesArtProducerResult,
   type SpeciesArtProducerSink,
   type SpeciesArtTaskScheduler,
+  type SpeciesArtUnownedCacheReleaseV1,
+  type SpeciesArtUnownedCacheReleaseOptions,
   type Thumb132,
   type ThumbLease,
 } from '@cf/art/species-broker';
@@ -29,15 +31,17 @@ import {
 
 export type {
   Portrait440, PortraitListener, PortraitRequest, SpeciesArtDeviceClass,
+  SpeciesArtUnownedCacheReleaseOptions, SpeciesArtUnownedCacheReleaseV1,
   SpeciesVisualKey, Thumb132, ThumbLease,
 };
 
 export type SpeciesArtLazyState = 'idle' | 'loading' | 'ready' | 'error';
 export interface SpeciesArtLazyDiagnostics {
-  readonly schema: 'cf-v2-species-art-worker-diagnostics/v1';
+  readonly schema: 'cf-v2-species-art-worker-diagnostics/v2';
   readonly state: SpeciesArtLazyState;
-  /** Historical name retained for the Arc 1A lazy-import contract. Each
-   * producer instance owns one fresh worker-local painter import. */
+  /** Historical name retained for the Arc 1A protocol. On the sealed worker
+   * graph this counts one first-job painter-acquisition phase per producer;
+   * static module evaluation occurs before worker code and is not timed here. */
   readonly importStarts: number;
   readonly identity: Readonly<{
     documentToken: string;
@@ -50,6 +54,15 @@ export interface SpeciesArtLazyDiagnostics {
     jobId: number;
     kind: 'thumb132' | 'portrait440';
     event: string;
+  }> | null;
+  readonly lastError: Readonly<{
+    producerEpoch: number;
+    workerInstanceId: number;
+    jobId: number | null;
+    kind: 'thumb132' | 'portrait440' | null;
+    stage: 'capability' | 'protocol' | 'import' | 'paint' | 'encode';
+    code: string;
+    message: string;
   }> | null;
   readonly worker: Readonly<{
     live: boolean;
@@ -73,6 +86,7 @@ export interface SpeciesArtLazyDiagnostics {
   }>;
   readonly results: Readonly<{
     count: number;
+    /** Historical field: maximum first-job painter-acquisition hook duration. */
     maxImportDurationMs: number;
     maxRenderDurationMs: number;
     maxEncodeDurationMs: number;
@@ -149,6 +163,8 @@ export type SpeciesArtWorkerFactory = () => SpeciesArtWorkerLike;
 export interface SpeciesArtLoaderOptions {
   readonly createProducer?: SpeciesArtProducerFactory;
   readonly workerFactory?: SpeciesArtWorkerFactory;
+  readonly createThumbObjectUrl?: (dataUrl: string) => string;
+  readonly revokeThumbObjectUrl?: (url: string) => void;
   readonly getDeviceClass?: () => SpeciesArtDeviceClass;
   readonly subscribeDeviceClassChange?: (listener: () => void) => () => void;
   readonly scheduleTask?: SpeciesArtTaskScheduler;
@@ -186,6 +202,21 @@ const defaultWorkerFactory: SpeciesArtWorkerFactory = () => new Worker(
   new URL('./species-art.worker.ts', import.meta.url),
   { type: 'module', name: 'cf-species-art' },
 );
+
+/* The worker protocol remains immutable data-URL evidence. The window turns
+   settled thumbnails into revocable Blob URLs before caching so warm route
+   reuse does not retain the much larger base64 strings in V8 backing store. */
+const defaultCreateThumbObjectUrl = (dataUrl: string): string => {
+  const prefix = 'data:image/png;base64,';
+  if (!dataUrl.startsWith(prefix) || dataUrl.length <= prefix.length) {
+    throw new Error('species thumbnail producer did not provide PNG data');
+  }
+  const binary = atob(dataUrl.slice(prefix.length));
+  const bytes = new Uint8Array(binary.length);
+  for (let index = 0; index < binary.length; index++) bytes[index] = binary.charCodeAt(index);
+  return URL.createObjectURL(new Blob([bytes], { type: 'image/png' }));
+};
+const defaultRevokeThumbObjectUrl = (url: string): void => { URL.revokeObjectURL(url); };
 
 const workerError = (value: unknown): Error => value instanceof Error
   ? value : new Error(typeof value === 'string' ? value : 'species art worker failed');
@@ -259,12 +290,13 @@ function createWorkerProducer(
   workerFactory: SpeciesArtWorkerFactory,
   identity: WorkerIdentity,
   sink: SpeciesArtProducerSink,
+  createThumbObjectUrl: (dataUrl: string) => string,
   onWorkerReady: () => void,
   onPhase: (response: Extract<SpeciesArtWorkerResponse, { readonly type: 'phase' }>) => void,
   onResult: (response: Extract<SpeciesArtWorkerResponse, { readonly type: 'result' }>) => void,
   onJobError: (response: Extract<SpeciesArtWorkerResponse, { readonly type: 'error' }>) => void,
   onProtocolError: () => void,
-  onFatal: (error: Error) => void,
+  onFatal: (error: Error, trustedWorkerError: boolean) => void,
 ): SpeciesArtProducerPort {
   const worker = workerFactory();
   let disposed = false;
@@ -274,12 +306,12 @@ function createWorkerProducer(
   let phasePlan: readonly SpeciesArtWorkerPhase[] = Object.freeze([]);
   let phaseIndex = 0;
 
-  const terminateFatal = (value: unknown): void => {
+  const terminateFatal = (value: unknown, trustedWorkerError = false): void => {
     if (disposed) return;
     const error = workerError(value);
     disposed = true;
     try { worker.terminate(); } catch { /* ownership is already revoked */ }
-    onFatal(error);
+    onFatal(error, trustedWorkerError);
     sink.fatal(error);
   };
   const exactPending = (response: {
@@ -340,7 +372,7 @@ function createWorkerProducer(
       const error = new Error(`${response.stage}/${response.code}: ${response.message}`);
       if (response.jobId === null || response.kind === null || response.key === null) {
         onJobError(response);
-        terminateFatal(error);
+        terminateFatal(error, true);
         return;
       }
       const request = pending;
@@ -368,7 +400,7 @@ function createWorkerProducer(
       onJobError(response);
       if (response.stage === 'capability'
         || response.stage === 'protocol' || response.stage === 'import') {
-        terminateFatal(error);
+        terminateFatal(error, true);
         return;
       }
       pending = null;
@@ -390,11 +422,23 @@ function createWorkerProducer(
     pending = null;
     phasePlan = Object.freeze([]);
     phaseIndex = 0;
+    let assetUrl = response.url;
+    if (request.kind === 'thumb132') {
+      try {
+        assetUrl = createThumbObjectUrl(response.url);
+        if (!assetUrl.startsWith('blob:') || assetUrl.length <= 'blob:'.length) {
+          throw new Error('species thumbnail object URL factory returned invalid ownership');
+        }
+      } catch (error) {
+        terminateFatal(error);
+        return;
+      }
+    }
     const result: SpeciesArtProducerResult = Object.freeze({
       status: 'success', jobId: request.jobId, kind: request.kind, key: request.key,
       asset: Object.freeze({
         key: request.key,
-        url: response.url,
+        url: assetUrl,
         width: response.width,
         height: response.height,
         encodedBytes: response.encodedBytes,
@@ -450,6 +494,7 @@ export class SpeciesArtLoader {
   private lastProducerEpoch0 = 0;
   private lastWorkerInstanceId0 = 0;
   private lastEvent0: SpeciesArtLazyDiagnostics['lastEvent'] = null;
+  private lastError0: SpeciesArtLazyDiagnostics['lastError'] = null;
   private readonly phases0 = {
     importStarts: 0,
     importCompletes: 0,
@@ -481,9 +526,16 @@ export class SpeciesArtLoader {
     options: SpeciesArtLoaderOptions = {},
   ) {
     if (!documentToken) throw new TypeError('species art document token must be non-empty');
+    const createThumbObjectUrl = options.createThumbObjectUrl ?? defaultCreateThumbObjectUrl;
+    const revokeThumbObjectUrl = options.revokeThumbObjectUrl ?? defaultRevokeThumbObjectUrl;
+    if (typeof createThumbObjectUrl !== 'function' || typeof revokeThumbObjectUrl !== 'function') {
+      throw new TypeError('species thumbnail object URL ownership must be callable');
+    }
     this.workerFactory = options.workerFactory ?? defaultWorkerFactory;
     const createProducer: SpeciesArtProducerFactory = options.createProducer
       ? (sink) => {
+        this.lastEvent0 = null;
+        this.lastError0 = null;
         this.state0 = 'loading';
         this.importStarts0++;
         try {
@@ -503,11 +555,13 @@ export class SpeciesArtLoader {
         });
         this.lastProducerEpoch0 = identity.producerEpoch;
         this.lastWorkerInstanceId0 = identity.workerInstanceId;
+        this.lastEvent0 = null;
+        this.lastError0 = null;
         this.state0 = 'loading';
         this.importStarts0++;
         try {
           return createWorkerProducer(
-            this.workerFactory, identity, sink,
+            this.workerFactory, identity, sink, createThumbObjectUrl,
             () => { this.workerReady0++; },
             (response) => {
               const { phase, kind } = response;
@@ -550,6 +604,15 @@ export class SpeciesArtLoader {
             },
             (response) => {
               const { stage } = response;
+              this.lastError0 = Object.freeze({
+                producerEpoch: response.producerEpoch,
+                workerInstanceId: response.workerInstanceId,
+                jobId: response.jobId,
+                kind: response.kind,
+                stage,
+                code: response.code,
+                message: response.message,
+              });
               if (response.jobId !== null && response.kind !== null) {
                 this.lastEvent0 = Object.freeze({
                   producerEpoch: identity.producerEpoch,
@@ -562,8 +625,14 @@ export class SpeciesArtLoader {
               this.errors0[stage]++;
               if (stage === 'import') this.state0 = 'error';
             },
-            () => { this.adapterProtocolErrors0++; },
-            () => { this.state0 = 'error'; },
+            () => {
+              this.lastError0 = null;
+              this.adapterProtocolErrors0++;
+            },
+            (_error, trustedWorkerError) => {
+              if (!trustedWorkerError) this.lastError0 = null;
+              this.state0 = 'error';
+            },
           );
         } catch (error) {
           this.state0 = 'error';
@@ -572,6 +641,9 @@ export class SpeciesArtLoader {
       };
     this.broker = new SpeciesArtBroker({
       createProducer,
+      disposeAsset: (asset) => {
+        if (asset.url.startsWith('blob:')) revokeThumbObjectUrl(asset.url);
+      },
       getDeviceClass: options.getDeviceClass ?? defaultDeviceClass,
       scheduleTask: options.scheduleTask ?? defaultScheduleTask,
     });
@@ -589,7 +661,7 @@ export class SpeciesArtLoader {
   diagnostics(): SpeciesArtLazyDiagnostics {
     const broker = this.broker.diagnostics();
     return Object.freeze({
-      schema: 'cf-v2-species-art-worker-diagnostics/v1' as const,
+      schema: 'cf-v2-species-art-worker-diagnostics/v2' as const,
       state: this.state0,
       importStarts: this.importStarts0,
       identity: Object.freeze({
@@ -598,6 +670,7 @@ export class SpeciesArtLoader {
         lastWorkerInstanceId: this.lastWorkerInstanceId0,
       }),
       lastEvent: this.lastEvent0,
+      lastError: this.lastError0,
       worker: Object.freeze({
         live: broker.state.producer === 'live',
         starts: broker.totals.producerStarts,
@@ -632,6 +705,12 @@ export class SpeciesArtLoader {
   ): PortraitRequest {
     this.requested = true;
     return this.broker.requestPortrait(owner, genome, listener);
+  }
+
+  releaseUnownedCachedArt(
+    options: SpeciesArtUnownedCacheReleaseOptions = {},
+  ): SpeciesArtUnownedCacheReleaseV1 {
+    return this.broker.releaseUnownedCachedArt(options);
   }
 
   trimArtNow(deviceClass: SpeciesArtDeviceClass): SpeciesArtDiagnosticsV1 {

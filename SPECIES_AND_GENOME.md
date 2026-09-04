@@ -1,13 +1,122 @@
 # Celestial Frontier — Species & Genome System
 
-**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the v2 reset
-overlay below matches `port/v2` as of 2026-08-11, and the approved, unimplemented
-audio-identity overlay matches the next-arc contract as of 2026-08-13. ⚠ v1.8.9: every reader of the
+**STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
+ownership, four bounded companion writers, Guardian/Titan acquisition, rarity presentation and six
+explicit audio-surface overlays match the local `port/v2` candidate as of 2026-08-29. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
+
+> **2026-08-29 current local species/companion boundary:** Arc 5 exposes four exact-instance writers
+> from verified real-fauna Compendium detail without changing the established creature structure.
+> Feed advances bounded `fed` and consumes one exact flora lot. Breed uses the existing lifted
+> `crossGenome` successor after one persisted outcome draw, keeps both parents, creates one
+> deterministic child only on success, initializes its inherited `fed` once, and assigns active-play
+> Recovery to both parents. Rename changes only one sanitized at-most-24-character nickname. Field
+> Scout changes only `scoutCreatureId`; it does not alter genome, lineage, injury, Recovery, mission
+> or bond state. The later Scout injury interception and +2 fresh-species XP remain separate open
+> consequence owners.
+>
+> Arc 6 Guardian/Titan conquest adds a living `origin:'guardian'` individual only through the
+> registered acquisition carrier and preserves exact catalogue deduplication. Battlefield `_mult`
+> and `_wf` are stripped before ownership, while legitimate `apex` and `_titan` identity survives;
+> no anatomy, silhouette, proportions, trait table, seed, descriptor or share-code structure changes.
+> Breed's `bredlegend`, Rename's `namer` and player-combat `brink` join their true Arc 9 achievement
+> owners; the complete Records surface separately presents all 96 achievement rows and exact ranks.
+>
+> The current Binder is another read-only consumer of those established species facts. Its six
+> legacy pages project rarity spectrum, sixteen realms, fauna body plans, ability themes, flora
+> stat flavors and fauna size classes from canonical Compendium species **types**, not owned
+> procedural individuals; it changes no genome or creature structure. Seven non-Paragon completion
+> sets can be claimed once for their authored Stardust rewards. The Fifty Paragons remains a visible
+> protected boundary: an imported `para10` claim is retained, but no Paragon is generated,
+> discovered, awarded, or exposed as a current claim target by the Binder.
+>
+> Six presentation-only audio surfaces are live: the durable Tame greeting, committed Feed
+> acknowledgement, explicit exact-owned-fauna Compendium Listen, orbital Survey and visible
+> inhabited-world Planetside **Listen to biosphere**, and the post-settlement Combat Chronicle. Both
+> biosphere controls use the same generic no-spoiler signal. The Chronicle owns every already-
+> modelled registered cue, including Guardian/Titan motifs, dodge, stun, impacts/criticals/abilities,
+> burn, regeneration, defeat and resolution. Recorded assets, authored continuous ambience/music,
+> broader or more-specific creature expressions and ecology, device evidence and HUMAN listening
+> remain open.
+
+> **2026-08-27 current-candidate correction:** the Tame greeting can truthfully retain an unmuted
+> preference even when no AudioContext exists; “contextless” means blocked/not created, not muted.
+> Descriptor parity now compares exact populated-galaxy, Earth-Moon and procedural-moon bytes from
+> the immutable v1.8.9 source rather than treating an empty historical fixture as sufficient.
+> Canonical v5 world identity is being completed so same-seed worlds cannot collide across distinct
+> galaxy/star/ordinal addresses; the final carrier/browser proof remains pending at this moving-tree
+> checkpoint.
+
+> **Historical 2026-08-26 current-candidate species boundary — superseded where the 2026-08-29
+> overlay above differs:** the internal-only Arc 5 bred-successor seam
+> initializes a newly admitted child with
+> `fed = 0.5 * min(clamp(parentA.fed, 0..200), clamp(parentB.fed, 0..200))` exactly once. Reversing
+> the parents yields the same value, absent input becomes zero, encode/decode preserves it, and a
+> later care change is not overwritten. No public/player breed action invokes this seam: breeding
+> odds, parent Recovery duration and locks, care/timing/capacity, confirmation, UI and copy remain
+> Arc 5B product-open.
+>
+> Raw deterministic grade remains mechanics/internal-art data. Player surfaces use only the strict
+> ten-name rarity projector: integer tiers `0..8` map directly, raw `9..14` present as
+> Transcendent, invalid/missing values are omitted rather than coerced to Common, and neither the
+> internal art label nor raw tier number is shown. Planet rarity stays hidden before landing; a
+> legitimate scientific stellar class is not a creature rarity label.
+>
+> The app now has two deliberately narrow creature expressions through one audio owner. A trusted native Tame gesture may arm
+> one silent audio context only while the current surface is visible and answerable and Sound plus
+> Creature Voices are enabled. Playback occurs only after the exact durable successful fauna result,
+> no convergence, and a matching current ownership revision/species/live-wild-creature identity; it
+> emits one deterministic greeting with a visible live-region counterpart and no retry/replay.
+> Disabling sound/voices, losing visibility/answerability or replacing the result stops it. A trusted
+> native Feed gesture may likewise produce one deterministic contented acknowledgement only after
+> the exact committed durable non-converging meal successor and polite/atomic status counterpart
+> agree. That inline status is the sole accessible announcement; its companion corner toast is
+> visual-only. A constant-size latest-successful-ownership fence rejects both the same Feed result
+> and every superseded result; the mutable `fed` value does not enter audio identity. These are exact current-system Tame
+> and Feed expressions only: Compendium audition, distant ecology playback, ambience, broader
+> companion actions, music and combat audio remain absent. Ordinary Arc 4 Slice evidence still says
+> `recoveryClaimed:false`; its dedicated uninterrupted 20-minute recovery certificate remains open.
+
+> **2026-08-25 Arc 4/5A ownership overlay — historical recorded boundary; Arc 4 player-live, Arc 5A infrastructure-only:** the port had a strict
+> identity split between immutable catalogue/discovery facts, stable owned fauna instances and
+> nonliving specimen lots. Ownership-v1 binds canonical genome identity, exact CF1 provenance,
+> biosphere progress and bounded legacy evidence. Ownership-v2 adds receipt-bound acquisitions,
+> deterministic fauna-only bred-child successors, ordered parent/lineage evidence and tombstones;
+> its active compact representation is one source-bound version-2 manifest plus exactly four fixed
+> generic delta shards. The app reconstructs V2 from exact Arc 4 source + canonical changed/V2-only
+> rows and verifies source/delta/target/shard fixed points without duplicating unchanged ownership.
+> Arc 4's native Survey Tame/Scavenge/Sample controls now consume the canonical full roster through
+> the durable writer. A first successful verb creates the one catalogue/discovery fact; Tame may
+> add a stable-ID living fauna instance, while Scavenge/Sample add nonliving specimen lots. Eligible
+> repeats can add another individual/lot without duplicating the first-only page or Stardust grant.
+> Hit/miss, reload, storage refusal, stale convergence, publication convergence and 12-viewport
+> presentation/geometry are locally browser-proven. Arc 5A boot now creates or loads those five
+> carriers in the shared receipt-free CAS; an aligned legacy-v1 certificate upgrades once and an
+> aligned current-v2 fixed point writes nothing. Genuine legacy Training couples one Arc 2, 18 Arc 4
+> and five Arc 5 writes; every capture hit or miss advances 18+5 replacements and postcommit-publishes Arc 4/V2
+> together. No public or Arc 5-only breed/care/companion writer, Recovery, assignment, Chronicle or
+> mission UI exists. The internal V2-only successor produces the same exact five-carrier tuple and
+> now applies the one-time child-`fed` rule above, but is not exported publicly. Source-only growth
+> preserves all four canonical empty-shard bytes, keeping
+> unchanged-state growth O(1). The real
+> 20-minute Arc 4 recovery edge and HUMAN ownership/first-journey review remain open.
+> Retained Arc 4 browser evidence predates compact Arc 5 V2. The later exact-input evidence for this
+> recorded 2026-08-25 boundary is Slice run
+> `20260825213041239-98104-c96d3b2d0652` on Edge `151.0.4129.101` (363,053 ms, zero
+> findings/retries/source change; report/log SHA-256
+> `b19ba6f749cb12e5c8fe23bdc1e779fce8fb04ebbb47653e65313ef2f47784ad` /
+> `5a5be42cea5a67401472fe214f663ce8ca1bed7b3c6dbccd29b83fd8d1ea9225`) and Glass on the same Edge
+> (71,449 ms, 12/12 viewport plus reload rows, 95/95 controls, 36/36 Arc 4 outcomes, zero
+> blocked/omitted/findings/instrument failures/retries; report SHA-256
+> `c46b81fbac123c1df22b03949e64589bf1d8d52898613efe01c809b840df177e`). Both bind source commit
+> `48ce0b1662a59b21070667be339a1e59503e1f19`, status
+> `729e139b14a978c39457ed9ab24990b7e1fd3f3bb63fef3efeeca24b45e4fb9f` and working tree
+> `a375f64327e00f9aeaa4e7f46b8f5b4af271aad5230ba301484114520ec8e361`; audits were CLEAR for those
+> exact historical inputs. Current-candidate re-audits are not final.
 
 > **2026-08-11 v2 executable-contract correction:** No genome, descriptor or
 > portrait output changed. The SpeciesTraits declaration now matches its tables:
@@ -43,32 +152,40 @@ runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract
 > **PASS with optional polish only**; the sealed archive's generated UNREVIEWED status
 > remains its preparation state, and final all-bloodline certification remains open.
 
-> **2026-08-13 v2 next-arc audio identity — approved, not implemented:** Catalogue
+> **2026-08-24 v2 Arc 7 audio identity — historical package foundation, superseded for current
+> playback by the 2026-08-26 boundary above:** Catalogue
 > identity and living-creature identity are separate. The Earth catalogue owns 1,010
 > identities and 1,014 set-qualified route rows; every art/audio join carries the exact
-> catalogue set/kingdom + species rather than a bare display name. A living specimen's
-> visual identity continues to use its canonical **complete plain genome**. Future audio
-> instead uses an immutable typed `AudioSignature` projection derived only from selected
-> audio-relevant phenotype fields, exact Earth owner when present, lineage markers that
+> catalogue set/kingdom + species rather than a bare display name. `@cf/audio` now pins that
+> complete route inventory to a coarse kingdom taxonomy and rejects legacy/mammal fallback in
+> ordinary sound witnesses. A living specimen's visual identity continues to use its canonical
+> **complete plain genome**. The package audio pipeline instead uses an immutable typed
+> `AudioSignature` projection derived only from selected audio-relevant phenotype fields, exact
+> Earth owner when present, lineage markers that
 > survive persistence and an explicit resolver version. It excludes mutable `xp`, `hurt`,
 > `fed`, `brood`, `assignment` and `bond`. They may share a pure body/rig/habitat taxonomy,
 > but neither renderer owns the other's runtime. Same seed is insufficient when
 > reverse-parent children inherit different audio-relevant phenotype or lineage, while
 > changing any excluded mutable field must leave the signature, audio profile and cue plan
 > exactly unchanged. The audio product is stable typed data, not byte-identical browser PCM.
-> Current v2 remains stings-only; this paragraph changes no genome, save, portrait,
-> descriptor, Guide capability or player mechanic.
+> Resolver-v1 and its negative/positive vectors were implemented only over an already-normalized
+> `AudioIdentityInput`. At this historical 2026-08-24 boundary, the canonical app creature/save →
+> audio-input projector, authored voice graph and player playback were not implemented and the app
+> remained stings-only; the narrow current Tame and Feed expressions above supersede that playback boundary.
+> This package-foundation paragraph changed no genome, save, portrait, descriptor, Guide capability
+> or player mechanic.
 >
-> Fauna will use curated biological/foley families; flora, fungi and microbes will receive
-> kingdom-appropriate ecological or Compendium sonification and must never fall through to
-> an animal voice. The promise is a recognizable deterministic specimen signature assembled
-> from curated palettes and synthesis, **not** one recorded sample for every Earth species.
-> Bred signatures blend from the `_earthBlend` name, exact `_earthBlendKingdom` owner and
-> `_anchorVal` fields that survive current normalization. They may not depend on complete
-> `parents` objects until the sharing/save contract explicitly preserves the required
-> lineage. Automated identity acceptance includes negative controls for each excluded
-> mutable field. See `AUDIO.md` §0 for the typed resolver, rights, listening and resource
-> gates.
+> The package assigns fauna and each non-fauna kingdom a distinct truthful coarse policy; curated
+> biological/foley families and authored ecological or Compendium sonification remain future and
+> must never fall through to an animal voice. The promise is a recognizable deterministic specimen
+> signature assembled from curated palettes and synthesis, **not** one recorded sample for every
+> Earth species.
+> Resolver-v1 accepts exact owner/anchor and ordered parent-seed fields and keeps reverse-parent
+> signatures distinct, but no app projector claims a complete parent-voice blend. It may not depend
+> on unregistered legacy `parents` objects. Ownership-v2 now defines a receipt-bound ordered parent
+> projection for future writers; at this historical boundary no audio app projector consumed it. Automated
+> identity acceptance includes negative controls for each excluded mutable
+> field. See `AUDIO.md` §0 for the typed resolver, rights, listening and resource gates.
 
 > **B15.4 classifier + naming (render/text-only, fp 50/50):** `FA_BODY[0]` renamed `"six-limbed"` →
 > `"sturdy-limbed"` (Plan 0 is now a "land grazer" whose limb count is set by the limb gene, not the
@@ -214,7 +331,10 @@ it explicitly. It is render ownership metadata, not a new RNG draw.
 - The draw order and the hard-coded `form` length `18` are baked into the **50-probe determinism fingerprint** (`tools/baseline.json`); changing either re-rolls the universe and fails validation.
 - Markers `x`/`aq`/`af` are set *after* synthesis and ride WITHOUT touching the rng stream, so adding them didn't move the fingerprint. `crossGenome` inheritance of markers is likewise stream-neutral.
 - `_earthName`/`_earthArt`/`_earthFlora` are gated on a name being present, so probed (un-named) creatures are untouched → fingerprint safe.
-- **Rarity is deterministic and authoritative** — see RARITY_AND_GRADES.md.
+- **Rarity mechanics are deterministic and authoritative; presentation is narrower.** Player
+  surfaces accept only valid integer raw tiers `0..14`, map them through the ten-name ladder
+  (`9..14` → Transcendent), and omit invalid/missing values. Internal art-grade labels and raw tier
+  numbers do not cross that boundary. See RARITY_AND_GRADES.md.
 
 ## 6. Code anchors
 - `@module SpeciesTraits [domain]` — main.js ~1379–1609. `SP_COLOR`/`SP_HEX` ~1386; all `FA_*` tables ~1546–1598; `FLORA_FORM`/`FUNGI_FORM`/`MICROBE_FORM` ~1515–1523; `EX_*`/`AQ_*`/`AIR_*` + `habOf`/`locoOf`/`floraFormOf` ~1530–1544; `speciesName` ~1602.

@@ -5,7 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { loadFixture, checkGenerator, canon } from '../../../../tests/parity.js';
 import { probeRaw } from '../../../../tests/baseline.js';
 import { _statOpen, battleStats, abilityOf, abilityTheme, runDuel, encodeCreature, decodeCreature, levelOf, normGenome } from '@cf/domain-combatcore';
-import { cleanName } from '@cf/domain-strays';
+import { cleanName } from '@cf/domain-naming';
 import { makeGenome } from '@cf/domain-genome';
 
 const fx = loadFixture();
@@ -48,7 +48,7 @@ describe('baseline probes (recipes mirror tools/probe.js exactly)', () => {
   it('normGenome probe', () => {
     expect(canon(normGenome(G1()))).toBe(probeRaw('normGenome'));
   });
-  it('cleanName probe (via @cf/domain-strays)', () => {
+  it('cleanName probe (via its @cf/domain-naming owner)', () => {
     expect(canon([cleanName('<b>Evil&"Name\'</b> with a very long tail beyond cap'), cleanName('  ok  ')])).toBe(probeRaw('cleanName'));
   });
 });

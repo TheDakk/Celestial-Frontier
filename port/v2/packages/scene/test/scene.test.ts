@@ -9,6 +9,9 @@ import {
   homeUniverse,
   universeGalaxies,
   land,
+  canonicalCF1StarAddressFromNav,
+  canonicalCF1WorldAddressFromNav,
+  isCanonicalCF1Address,
   navFromCanonicalCF1Address,
   navToView,
   provenGalaxyCell,
@@ -172,6 +175,67 @@ describe('@cf/scene — zoom-mode state machine (Gate D navigation core)', () =>
     });
   });
 
+  it('recovers a source-reproved world address only from the registered exact surface NavState', () => {
+    const world = homeWorldAddress();
+    const resolvedNav = stateOf(navFromCanonicalCF1Address(world));
+    expect(resolvedNav.mode).toBe('surface');
+    if (resolvedNav.mode !== 'surface') throw new Error('world address did not produce a surface');
+    const surface = resolvedNav;
+    const recovered = canonicalCF1WorldAddressFromNav(surface);
+    expect(recovered.ok).toBe(true);
+    if (!recovered.ok) throw new Error(recovered.reason);
+    expect(recovered.address.key).toBe(world.key);
+    expect(recovered.address.planet).toEqual({ seed: 133, ordinal: 2 });
+    expect(isCanonicalCF1Address(recovered.address)).toBe(true);
+    expect(Object.isFrozen(recovered.address)).toBe(true);
+
+    expect(canonicalCF1WorldAddressFromNav(NAV_HOME)).toEqual({
+      ok: false, reason: 'surface-nav-required',
+    });
+    expect(canonicalCF1WorldAddressFromNav({ ...surface })).toEqual({
+      ok: false, reason: 'unproven-nav-state',
+    });
+    expect(canonicalCF1WorldAddressFromNav({
+      ...surface,
+      star: { ...surface.star, seed: surface.star.seed + 1 },
+    })).toEqual({ ok: false, reason: 'unproven-nav-state' });
+    expect(canonicalCF1WorldAddressFromNav({
+      ...surface,
+      planet: { ...surface.planet, ordinal: surface.planet.ordinal + 1 },
+    })).toEqual({ ok: false, reason: 'unproven-nav-state' });
+  });
+
+  it('recovers a source-reproved star address only from the registered exact system NavState', () => {
+    const world = homeWorldAddress();
+    const surface = stateOf(navFromCanonicalCF1Address(world));
+    const system = stateOf(ascend(surface));
+    expect(system.mode).toBe('system');
+    if (system.mode !== 'system') throw new Error('world ascent did not produce a system');
+    const recovered = canonicalCF1StarAddressFromNav(system);
+    expect(recovered.ok).toBe(true);
+    if (!recovered.ok) throw new Error(recovered.reason);
+    const expected = resolveCF1StarAddress({
+      galaxy: world.galaxy,
+      star: world.star,
+    });
+    expect(expected.ok).toBe(true);
+    if (!expected.ok) throw new Error(expected.reason);
+    expect(recovered.address.key).toBe(expected.address.key);
+    expect(recovered.address.star.seed).toBe(SOL_SEED);
+    expect(isCanonicalCF1Address(recovered.address)).toBe(true);
+    expect(Object.isFrozen(recovered.address)).toBe(true);
+
+    expect(canonicalCF1StarAddressFromNav(NAV_HOME)).toEqual({
+      ok: false, reason: 'system-nav-required',
+    });
+    expect(canonicalCF1StarAddressFromNav(surface)).toEqual({
+      ok: false, reason: 'system-nav-required',
+    });
+    expect(canonicalCF1StarAddressFromNav({ ...system })).toEqual({
+      ok: false, reason: 'unproven-nav-state',
+    });
+  });
+
   it('emits only the exact legacy slim keys and source-reproves every round-trip tier', () => {
     const world = homeWorldAddress();
     const surface = stateOf(navFromCanonicalCF1Address(world));
@@ -321,8 +385,13 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(ascStageOf([], 3)).toBe(3);   /* all chapters done = free */
   });
   it('★ stage 0 is SOL ONLY; stage 1 the Neighborhood ring; foreign stars wait for the IG drive', async () => {
-    const { ascAllowsStar, ascHintFor, primeReachHint } = await import('@cf/scene');
-    const { SOL_POS } = await import('@cf/domain-worldconfig');
+    const {
+      ascAllowsCanonicalStar,
+      ascAllowsStar,
+      ascHintFor,
+      primeReachHint,
+    } = await import('@cf/scene');
+    const { HOME_POS, SOL_POS } = await import('@cf/domain-worldconfig');
     const { ASC_RING_R } = await import('@cf/domain-strays');
     const sol = { x: SOL_POS.x, y: SOL_POS.y, seed: 424242 };
     const near = { x: SOL_POS.x + (ASC_RING_R as number) * 0.9, y: SOL_POS.y, seed: 7 };
@@ -334,52 +403,132 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(ascAllowsStar(2, 999, far)).toBe(true);
     expect(ascAllowsStar(2, 1000, sol)).toBe(false);   /* foreign galaxy */
     expect(ascAllowsStar(3, 1000, sol)).toBe(true);
-    /* A star/drive gate and an imported galaxy-radius gate are distinct
-       facts. Both name the current-slice boundary without directing a fresh
-       player to absent mining/fabrication/Shipyard systems, but the radius
-       copy must not pretend the player can collect or write Signatures. */
-    const safeCharterCopy = (hint: string): boolean =>
-      /Charter system/i.test(hint)
-        && !/prime signature radius|shipyard|\bbuild\b|mine|fabricat/i.test(hint);
-    const safeCharterHint = (stage: number): boolean => safeCharterCopy(ascHintFor(stage));
+    const home = { x: HOME_POS.x, y: HOME_POS.y, seed: 999 };
+    expect(ascAllowsCanonicalStar(0, home, sol)).toBe(true);
+    expect(ascAllowsCanonicalStar(0, { ...home, x: home.x + 1 }, sol)).toBe(false);
+    expect(ascAllowsCanonicalStar(0, home, { ...sol, x: sol.x + 1 })).toBe(false);
+    expect(ascAllowsCanonicalStar(2, { ...home, y: home.y + 1 }, far)).toBe(false);
+    expect(ascAllowsCanonicalStar(3, { ...home, y: home.y + 1 }, far)).toBe(true);
+    /* Star/system and Prime-radius gates point to their distinct live owners. */
+    const liveCharterHint = (stage: number, hint: string): boolean => {
+      const stageCopy = stage <= 0
+        ? /Sol is your current reach[\s\S]{0,160}fabricate the Jump Drive/i.test(hint)
+        : stage === 1
+          ? /owned Jump Drive covers the Neighborhood[\s\S]{0,160}fabricate the Long-Range Array/i.test(hint)
+          : stage === 2
+            ? /owned Long-Range Array covers the home galaxy[\s\S]{0,160}fabricate the Intergalactic Drive/i.test(hint)
+            : /Intergalactic star reach is already preserved[\s\S]{0,160}blocked by a different boundary/i.test(hint);
+      return stageCopy
+        && !/next Charter system is not available|Prime Signature radius|chapter progress[^.!?]{0,64}(?:grants|creates|mints)/i.test(hint);
+    };
     const safePrimeRadiusHint = (hint: string): boolean =>
       /Your saved Prime Signature radius ends here/i.test(hint)
-        && /Prime Signature radius expansion is not available in this development slice/i.test(hint)
-        && !/collect|earn|award|write|next Charter system|shipyard|\bbuild\b|mine|fabricat/i.test(hint);
-    expect(safeCharterHint(0)).toBe(true);
-    expect(safeCharterHint(1)).toBe(true);
-    expect(safeCharterHint(2)).toBe(true);
-    expect(safeCharterHint(3)).toBe(true);
+        && /Verified Titan victories claim Prime Signatures that expand it/i.test(hint)
+        && /open the Prime Codex to review your frontier/i.test(hint)
+        && !/not available|next Charter system|Engineering|\bbuild\b|mine|fabricat|chapter/i.test(hint);
+    expect(liveCharterHint(0, ascHintFor(0))).toBe(true);
+    expect(liveCharterHint(1, ascHintFor(1))).toBe(true);
+    expect(liveCharterHint(2, ascHintFor(2))).toBe(true);
+    expect(liveCharterHint(3, ascHintFor(3))).toBe(true);
     expect(safePrimeRadiusHint(primeReachHint())).toBe(true);
-    /* Negative control: the legacy exhortation must fail the same outcome
-       check, proving the check is about the player-visible words. */
-    const legacyHint = 'Sol is your charter for now — build the ⚡ Jump Drive at the 🛠 Shipyard.';
-    expect(safeCharterCopy(legacyHint)).toBe(false);
+    /* Bidirectional controls: the former no-system message, a wrong system,
+       and a chapter-authority overclaim all fail the same outcome check. */
+    expect(liveCharterHint(
+      0,
+      'Sol is your charter for now. This development slice preserves reach but does not award the next Charter system.',
+    )).toBe(false);
+    expect(liveCharterHint(
+      1,
+      'Your owned Jump Drive covers the Neighborhood. Engineering can fabricate the Intergalactic Drive.',
+    )).toBe(false);
+    expect(liveCharterHint(
+      0,
+      ascHintFor(0) + ' Chapter progress grants the missing drive.',
+    )).toBe(false);
     expect(safePrimeRadiusHint(
       'Your saved Prime Signature radius ends here. Collect Prime Signatures to expand it.',
+    )).toBe(false);
+    expect(safePrimeRadiusHint(
+      'Your saved Prime Signature radius ends here. Prime Signature radius expansion is not available in this development slice.',
     )).toBe(false);
     expect(safePrimeRadiusHint(
       'Your saved reach is preserved. The next Charter system is not available in this development slice.',
     )).toBe(false);
   });
-  it('★ landfall BANKING: credit lands in every chapter from the current on (the review catch)', async () => {
+  it('★ landfall and bioscan BANKING: source-proven credit lands in every chapter from the current on', async () => {
     const {
-      ASC_CHAPTERS_DATA, ascStageOf, bankLandfall, canAdvanceV2Chapter, chapterGoalsDone,
+      ASC_CHAPTERS_DATA, ascStageOf, bankBioscan, bankBredSuccess, bankConquest, bankLandfall,
+      canAdvanceV2Chapter, chapterGoalsDone,
       currentObjective, currentV2Objective, projectV2Charter,
+      isSolLandfallAddress,
     } = await import('@cf/scene');
+    const earth = homeWorldAddress();
+    const marsResult = resolveCF1WorldAddress({
+      galaxy: HOME_WORLD_CANDIDATE.galaxy,
+      star: HOME_WORLD_CANDIDATE.star,
+      planet: { seed: 134 },
+    });
+    const venusResult = resolveCF1WorldAddress({
+      galaxy: HOME_WORLD_CANDIDATE.galaxy,
+      star: HOME_WORLD_CANDIDATE.star,
+      planet: { seed: 135 },
+    });
+    const foreignResult = resolveCF1WorldAddress({
+      galaxy: { seed: 2168115821, x: -1104.3939002789557, y: -1400.6738864816725 },
+      star: { seed: 2404948836, x: 79.28673347271979, y: 172.30901278089732 },
+      planet: { seed: 2525295284 },
+    });
+    if (!marsResult.ok || !venusResult.ok || !foreignResult.ok) {
+      throw new Error('Charter landfall fixture failed source proof');
+    }
     const prog: Record<string, number> = {};
     /* a Sol landing at chapter 0 banks c1-land only */
-    expect(bankLandfall(0, prog, 133)).toBe(true);
+    expect(bankLandfall(0, prog, earth)).toBe(true);
     expect(prog['c1-land']).toBe(1);
     expect(prog['c2-land']).toBeUndefined();
     /* a NON-Sol landing at chapter 0 banks the FUTURE chapter's goal silently */
-    expect(bankLandfall(0, prog, 99999)).toBe(true);
+    expect(bankLandfall(0, prog, foreignResult.address)).toBe(true);
     expect(prog['c2-land']).toBe(1);
     expect(prog['c1-land']).toBe(1);   /* sol goal untouched */
+    /* A same-leaf lookalike outside the exact Sol hierarchy is non-Sol at
+       the pure classifier and cannot enter the banking seam without the
+       canonical-address registry. This makes the retired seed-only rule red. */
+    const foreignSameLeaf = {
+      ...foreignResult.address,
+      planet: { seed: 133, ordinal: 2 },
+    } as CanonicalCF1WorldAddress;
+    expect(isSolLandfallAddress(earth)).toBe(true);
+    expect(isSolLandfallAddress(foreignSameLeaf)).toBe(false);
+    expect(bankLandfall(0, {}, foreignSameLeaf)).toBe(false);
+    /* Bioscan banking accepts only a registered non-Sol hierarchy. Lifetime
+       first-success uniqueness belongs to the atomic Arc 4 caller. */
+    const scanProgress: Record<string, number> = {};
+    expect(bankBioscan(0, scanProgress, earth)).toBe(false);
+    expect(bankBioscan(0, scanProgress, foreignResult.address)).toBe(true);
+    expect(scanProgress['c2-scan']).toBe(1);
+    expect(bankBioscan(0, { 'c2-scan': 2 }, foreignResult.address)).toBe(false);
+    expect(bankBioscan(0, {}, foreignSameLeaf)).toBe(false);
+    /* Breeding parity is the legacy `{ ok: true }` filter: only a successful
+       child result banks the later Chapter 3 deed, once and capped at one. */
+    const breedProgress: Record<string, number> = {};
+    expect(bankBredSuccess(0, breedProgress, false)).toBe(false);
+    expect(breedProgress['c3-breed']).toBeUndefined();
+    expect(bankBredSuccess(0, breedProgress, true)).toBe(true);
+    expect(breedProgress['c3-breed']).toBe(1);
+    expect(bankBredSuccess(0, breedProgress, true)).toBe(false);
+    expect(bankBredSuccess(3, {}, true)).toBe(false);
+    /* Conquest likewise banks only a verified settlement and caps the lone
+       Chapter 2 flag at one. */
+    const conquestProgress: Record<string, number> = {};
+    expect(bankConquest(0, conquestProgress, false)).toBe(false);
+    expect(bankConquest(0, conquestProgress, true)).toBe(true);
+    expect(conquestProgress['c2-conq']).toBe(1);
+    expect(bankConquest(0, conquestProgress, true)).toBe(false);
+    expect(bankConquest(2, {}, true)).toBe(false);
     /* capped at n — no overshoot */
-    bankLandfall(0, prog, 134); bankLandfall(0, prog, 135);
+    bankLandfall(0, prog, marsResult.address); bankLandfall(0, prog, venusResult.address);
     expect(prog['c1-land']).toBe(2);
-    expect(bankLandfall(0, { 'c1-land': 2, 'c2-land': 3 }, 131)).toBe(false);
+    expect(bankLandfall(0, { 'c1-land': 2, 'c2-land': 3 }, earth)).toBe(false);
     /* Canonical legacy order is preserved for imported progression/parity,
        even though the live v2 chip must not render that next legacy goal. */
     expect(ASC_CHAPTERS_DATA[0]!.goals.map((goal) => goal.id)).toEqual([
@@ -393,36 +542,43 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(chapterGoalsDone(0, { 'c1-land': 2, 'c1-mine': 8, 'c1-part': 4, 'c1-comp': 2, 'c1-jump': 1 })).toBe(true);
     expect(chapterGoalsDone(0, { 'c1-land': 2 })).toBe(false);
 
-    /* The player-facing projection is a different contract: only outcomes
-       v2 can write are allowed through. This is the fresh-save state. */
+    /* The player-facing projection admits only actions with exact v2 outcome
+       writers. This is the fresh-save state. */
     const fresh: Record<string, number> = {};
     const first = projectV2Charter(0, fresh, ascStageOf([], 0))!;
-    const visibleCopy = (view: typeof first): string =>
-      [view.name, view.intro, view.note, ...view.goals.map((goal) => goal.t)].join(' ');
     const honestProjection = (view: typeof first): boolean =>
-      view.goals.every((goal) => goal.ev === 'landfall')
-        && !/mine|fabricat|shipyard|build the/i.test(visibleCopy(view));
+      view.goals.every((goal) => ['landfall', 'mined', 'crafted', 'bioscan', 'bred', 'conquest'].includes(goal.ev));
     expect(first.state).toBe('actionable');
-    expect(first.goals.map((goal) => goal.id)).toEqual(['c1-land']);
+    expect(first.goals.map((goal) => goal.id)).toEqual([
+      'c1-land', 'c1-mine', 'c1-part', 'c1-comp', 'c1-jump',
+    ]);
     expect(currentV2Objective(0, fresh, ascStageOf([], 0))).toMatchObject({
       text: 'Make planetfall on 2 worlds of Sol', have: 0, need: 2,
     });
     expect(honestProjection(first)).toBe(true);
-    /* Negative control: the same outcome check must reject a legacy mining
-       goal if one is accidentally appended to the view. */
-    const legacyMine = ASC_CHAPTERS_DATA[0]!.goals.find((goal) => goal.id === 'c1-mine')!;
-    expect(honestProjection({ ...first, goals: [...first.goals, legacyMine] })).toBe(false);
+    /* Arc 6 now owns the exact conquest settlement writer, so its Chapter 2
+       goal is visible at the real stage-1 reach. A made-up later event still
+       fails the live-writer classifier. */
+    const legacyConquest = ASC_CHAPTERS_DATA[1]!.goals.find((goal) => goal.id === 'c2-conq')!;
+    const chapter2 = projectV2Charter(1, {}, 1)!;
+    expect(chapter2.goals.map((goal) => goal.id)).toContain('c2-conq');
+    expect(honestProjection({ ...first, goals: [...first.goals, legacyConquest] })).toBe(true);
+    expect(honestProjection({
+      ...first,
+      goals: [...first.goals, { id: 'future-mission', ev: 'mission', n: 1, t: 'Future mission' }],
+    })).toBe(false);
 
-    /* Two real Sol landfalls complete the only fresh-save visible milestone.
-       They must stop at the boundary rather than forging a mining/fabrication
-       completion, a Shipyard instruction, or an unearned reach stage. */
-    expect(bankLandfall(0, fresh, 133)).toBe(true);
-    expect(bankLandfall(0, fresh, 134)).toBe(true);
+    /* Two real Sol landfalls reveal the next exact action without forging
+       canonical chapter completion or an unearned reach stage. */
+    expect(bankLandfall(0, fresh, earth)).toBe(true);
+    expect(bankLandfall(0, fresh, marsResult.address)).toBe(true);
     const boundary = projectV2Charter(0, fresh, ascStageOf([], 0))!;
-    expect(boundary.state).toBe('boundary');
-    expect(boundary.goals.map((goal) => goal.id)).toEqual(['c1-land']);
+    expect(boundary.state).toBe('actionable');
+    expect(boundary.goals.map((goal) => goal.id)).toEqual([
+      'c1-land', 'c1-mine', 'c1-part', 'c1-comp', 'c1-jump',
+    ]);
     expect(honestProjection(boundary)).toBe(true);
-    expect(currentV2Objective(0, fresh, ascStageOf([], 0))).toBeNull();
+    expect(currentV2Objective(0, fresh, ascStageOf([], 0))?.text).toMatch(/Mine Sol/);
     expect(chapterGoalsDone(0, fresh)).toBe(false);
     expect(canAdvanceV2Chapter(0, fresh, ascStageOf([], 0))).toBe(false);
     /* Positive control: a genuinely complete imported canonical chapter can
@@ -443,7 +599,7 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(canAdvanceV2Chapter(0, importedComplete, poweredCompleteStage)).toBe(true);
     expect(projectV2Charter(0, importedComplete, poweredCompleteStage)!.state).toBe('complete');
     const saturatedSolRecord = { ...importedComplete };
-    expect(bankLandfall(0, saturatedSolRecord, 133)).toBe(false);
+    expect(bankLandfall(0, saturatedSolRecord, earth)).toBe(false);
     /* An ascCh alone is never reach. The safe default hides the Chapter 2
        non-Sol goal; actual saved Jump Drive stage makes it visible. */
     const malformedChapterTwoStage = ascStageOf([], 1);
@@ -451,8 +607,77 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     expect(projectV2Charter(1, {}, malformedChapterTwoStage)!.goals).toEqual([]);
     expect(currentV2Objective(1, {}, malformedChapterTwoStage)).toBeNull();
     expect(projectV2Charter(1, {})!.goals).toEqual([]);
-    expect(projectV2Charter(1, {}, poweredCompleteStage)!.goals.map((goal) => goal.id)).toEqual(['c2-land']);
-    expect(projectV2Charter(2, {}, ascStageOf([['igdrive', 1]], 2))!.goals).toEqual([]);
+    expect(projectV2Charter(1, {}, poweredCompleteStage)!.goals.map((goal) => goal.id)).toEqual([
+      'c2-land', 'c2-scan', 'c2-conq', 'c2-array',
+    ]);
+    expect(projectV2Charter(2, {}, ascStageOf([['igdrive', 1]], 2))!.goals.map((goal) => goal.id)).toEqual([
+      'c3-breed', 'c3-gear', 'c3-mine', 'c3-ig',
+    ]);
+  });
+  it('banks exact mined-action and fixed-fabrication filters into later chapters with caps', async () => {
+    const {
+      bankFixedFabrication, bankMinedAction, isSolDeadWorldAddress,
+    } = await import('@cf/scene');
+    const marsResult = resolveCF1WorldAddress({
+      galaxy: { seed: 999, x: 90, y: -60 },
+      star: { seed: 424242, x: 560, y: 170 },
+      planet: { seed: 134 },
+    });
+    const foreignResult = resolveCF1WorldAddress({
+      galaxy: { seed: 2168115821, x: -1104.3939002789557, y: -1400.6738864816725 },
+      star: { seed: 2404948836, x: 79.28673347271979, y: 172.30901278089732 },
+      planet: { seed: 2525295284 },
+    });
+    if (!marsResult.ok || !foreignResult.ok) throw new Error('Charter address fixture failed');
+    expect(isSolDeadWorldAddress(marsResult.address)).toBe(true);
+    /* Directional collision controls retain every seed while changing one
+       omitted hierarchy component at a time. The old three-seed shortcut
+       accepted all three even though none is the exact Sol source. */
+    const wrongGalaxyCoordinate = {
+      ...marsResult.address,
+      galaxy: { ...marsResult.address.galaxy, x: marsResult.address.galaxy.x + 0.01 },
+    } as CanonicalCF1WorldAddress;
+    const wrongStarCoordinate = {
+      ...marsResult.address,
+      star: { ...marsResult.address.star, y: marsResult.address.star.y + 0.01 },
+    } as CanonicalCF1WorldAddress;
+    const wrongPlanetOrdinal = {
+      ...marsResult.address,
+      planet: { ...marsResult.address.planet, ordinal: marsResult.address.planet.ordinal + 1 },
+    } as CanonicalCF1WorldAddress;
+    expect(isSolDeadWorldAddress(wrongGalaxyCoordinate)).toBe(false);
+    expect(isSolDeadWorldAddress(wrongStarCoordinate)).toBe(false);
+    expect(isSolDeadWorldAddress(wrongPlanetOrdinal)).toBe(false);
+    expect(bankMinedAction(0, {}, wrongGalaxyCoordinate)).toBe(false);
+    expect(bankMinedAction(0, {}, wrongStarCoordinate)).toBe(false);
+    expect(bankMinedAction(0, {}, wrongPlanetOrdinal)).toBe(false);
+    const prog: Record<string, number> = {};
+    expect(bankMinedAction(0, prog, marsResult.address)).toBe(true);
+    expect(prog).toMatchObject({ 'c1-mine': 1, 'c3-mine': 1 });
+    /* Earth and a foreign same-leaf-capable address cannot satisfy the
+       Chapter 1 dead-world scope, but every successful mine banks Chapter 3. */
+    expect(bankMinedAction(0, prog, homeWorldAddress())).toBe(true);
+    expect(bankMinedAction(0, prog, foreignResult.address)).toBe(true);
+    expect(prog).toMatchObject({ 'c1-mine': 1, 'c3-mine': 3 });
+    prog['c1-mine'] = 8; prog['c3-mine'] = 20;
+    expect(bankMinedAction(0, prog, marsResult.address)).toBe(false);
+
+    expect(bankFixedFabrication(0, prog, { id: 'plate', category: 'part' })).toBe(true);
+    expect(bankFixedFabrication(0, prog, { id: 'coil', category: 'comp' })).toBe(true);
+    expect(bankFixedFabrication(0, prog, { id: 'jumpdrive', category: 'sys' })).toBe(true);
+    expect(bankFixedFabrication(0, prog, { id: 'array', category: 'sys' })).toBe(true);
+    expect(bankFixedFabrication(0, prog, { id: 'igdrive', category: 'sys' })).toBe(true);
+    expect(bankFixedFabrication(0, prog, { id: 'fieldsuit', category: 'gear' })).toBe(true);
+    expect(prog).toMatchObject({
+      'c1-part': 1, 'c1-comp': 1, 'c1-jump': 1,
+      'c2-array': 1, 'c3-ig': 1, 'c3-gear': 1,
+    });
+    expect(bankFixedFabrication(0, prog, { id: 'rl-stone', category: 'relic' })).toBe(false);
+    expect(bankFixedFabrication(0, prog, { id: 'not-array', category: 'sys' })).toBe(false);
+    expect(bankFixedFabrication(0, prog, { id: 'not-jump', category: 'sys' })).toBe(false);
+    expect(bankFixedFabrication(0, prog, { id: 'fieldsuit', category: 'gear' })).toBe(true);
+    expect(prog['c3-gear']).toBe(2);
+    expect(bankFixedFabrication(0, prog, { id: 'fieldsuit', category: 'gear' })).toBe(false);
   });
   it('Charter data is deeply immutable and malformed chapter indexes fail closed', async () => {
     const { ASC_CHAPTERS_DATA, ASC_CHAPTER_COUNT, bankLandfall, projectV2Charter } =
@@ -466,7 +691,7 @@ describe('@cf/scene — the charter & Ascent gates (pure, main.js 21959/22791/22
     for (const invalid of invalidChapters) {
       const prog = { ...complete };
       const before = JSON.stringify(prog);
-      expect(bankLandfall(invalid, prog, 133), `invalid ascCh ${String(invalid)}`).toBe(false);
+      expect(bankLandfall(invalid, prog, homeWorldAddress()), `invalid ascCh ${String(invalid)}`).toBe(false);
       expect(JSON.stringify(prog), `invalid ascCh ${String(invalid)} mutated progress`).toBe(before);
       if (invalid !== ASC_CHAPTER_COUNT) expect(projectV2Charter(invalid, prog, 3)).toBeNull();
     }

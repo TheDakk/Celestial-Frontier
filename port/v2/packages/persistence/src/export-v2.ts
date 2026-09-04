@@ -20,6 +20,7 @@
    After one pass those transforms are idempotent — hence the fixed-point
    form f(f(x)) === f(f(f(x))), plus direct survival assertions for the
    fields that must not move at all. */
+import { CF1_WORLD_ATLAS_ID_PREFIX } from '@cf/scene';
 import type { SaveStateV2 } from './import-v2.js';
 
 export function exportSaveV2(s: SaveStateV2, now: number): string {
@@ -35,6 +36,7 @@ export function exportSaveV2(s: SaveStateV2, now: number): string {
   const _thumbRegens = (e: Record<string, unknown>): boolean => {
     const k = e.id ? String(e.id)[0] : '';
     if (k === 'p' || k === 's' || k === 'm' || k === 'c' || k === 'b') return true;
+    if (String(e.id || '').startsWith(`${CF1_WORLD_ATLAS_ID_PREFIX}CF1|`)) return true;
     if (k === 'g' || k === 'r') return !!(e.where && (e.where as { gal?: { seed?: unknown } }).gal && (e.where as { gal: { seed?: unknown } }).gal.seed != null);
     return false;
   };
@@ -96,6 +98,7 @@ export function exportSaveV2(s: SaveStateV2, now: number): string {
     items: s.items, eq: s.equip, ea: s.equipAff,
     crafts: s.stats.crafts || 0, minedout: s.stats.minedout || 0,
     xpf: s.xpFirsts.slice(-4000),
+    ...(s.xpFirstsBinding == null ? {} : { xpa: s.xpFirstsBinding }),
     skims: s.stats.skims || 0, cosmics: s.stats.cosmics || 0,
     asc: s.ascCh, ascp: s.ascProg,
     names: s.customNames,
