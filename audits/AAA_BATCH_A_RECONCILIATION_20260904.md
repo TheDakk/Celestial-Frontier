@@ -77,3 +77,24 @@ the startup window. Application-wide settings and licensing were not bypassed.
 The parked branch also has a verified local recovery bundle, requiring landed `7bf3e84` as its
 base. This is an additional local recovery carrier, not an independent off-device backup.
 Batches B–D remain unstarted at this checkpoint; complete readiness/source backup first.
+
+## REAPER startup resolved — terminal workflow verified
+
+After Nick opened REAPER, the prepared isolated Lua script ran successfully. It loaded the Surge
+XT VST3 instrument and Effects, saved the project, reopened it, and verified two enabled/online
+plugins and all three MIDI notes. A separate terminal `-renderproject` invocation exited zero.
+No UI scripting, licensing bypass, global preference mutation or additional installation was used.
+
+Actual outputs: exactly **4.0 seconds, 48 kHz, stereo**. WAV is 24-bit PCM / 192,000 frames /
+1,152,690 bytes; FLAC is 16-bit / 96,729 bytes. WAV peak **-28.42 dBFS**, RMS **-42.29 dBFS**;
+347,216 nonzero samples, no clipping. The quiet three-note phrase is tool readiness, not proposed
+soundtrack quality. No artistic listening acceptance or browser playback claim is made.
+
+- Project SHA-256: `ba97595c2840799d1d517a14968de29929f625a117751f062a77da95b195b736`.
+- WAV SHA-256: `ab918498276dfa96faeaee3493d400e63e88ee4b4e73cbec72bc5209b18c33b9`.
+- FLAC SHA-256: `52b1829012c6c0c9775bf9bf472a60280fa65218394a7b69fdfc924126ef1e36`.
+
+Masters/projects remain private scratch with backup pending. Nick reports Claude's review is
+in progress. This documentation-only successor does not alter product/evidence/workflow code;
+the earlier source checks remain applicable and are not repeated or relabelled as fresh runs.
+No new GitHub push, hosted run, PR, merge, purchase, release or Phase 2 work is included.

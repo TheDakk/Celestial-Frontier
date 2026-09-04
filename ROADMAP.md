@@ -57,7 +57,7 @@ Offline promise is a fully installed ready PWA while data remains retained, not 
 ### Current work and next actions
 
 Batch A tool readiness is underway: Blender 5.2.1; REAPER 7.79; Surge XT 1.3.4 instrument/effects
-installed. Blender save/separate-reopen/render PASS; REAPER startup blocks Lua/audio export, and Computer Use permissions are pending. Private source backup is pending.
+installed. Blender save/separate-reopen/render PASS. REAPER terminal script loaded Surge VST3 instrument/effects, saved/reopened the project, and rendered 4s WAV/FLAC successfully after Nick opened the startup UI. Waveform verification passes; human listening/browser acceptance and private source backup remain pending.
 Batches B–D: one ship/biome treatment plus quadruped, biped, avian, serpentine, arthropod,
 tentacled, aquatic and flora/fungus at actual 132/300/440, static and animated. No faithful
 animation => protected static portrait and explicit incomplete status. Add coherent audio,
@@ -79,5 +79,7 @@ diff. Main, live site and deployment remain untouched.
 
 Root validation PASS (1,010 clean species, 50 unchanged fingerprints). Browser-free develop
 PASS: 268 files, 2,785 tests / one skip, all TypeScript/art/route/spec owners. No browser chain,
-hosted run or product-source change. Blender readiness render is inspected; REAPER/Surge actual
-save/reopen/render and source backup remain blocking prerequisites for Batches B–D.
+hosted run or product-source change. Blender readiness render is inspected; REAPER/Surge
+terminal save/reopen/render now passes (48kHz stereo, WAV 24-bit/FLAC 16-bit, four seconds,
+non-silent and unclipped). Private source-backup selection/verification remains the prerequisite
+for Batches B–D. Claude review is in progress; no new push or CI change is part of this checkpoint.
