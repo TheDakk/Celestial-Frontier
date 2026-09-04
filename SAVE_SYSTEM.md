@@ -16,6 +16,12 @@ a refused replacement still rearms the Settings debounce its own claim canceled.
 receipts, CAS, publication-after-durability and recovery are unchanged. This is admission
 defense in depth, not evidence that imported saves were previously corrupted.
 
+The following local build-isolation batch selects the native storage backend in distributable
+builds. One-shot rejection/alteration wrappers and externally callable raw-save staging belong
+only to explicit evidence builds. Unarmed asynchronous hold boundaries remain asynchronous in
+both variants; disabling diagnostics must not change checkpoint/interleaving semantics. Current
+output/verification status is in `ROADMAP.md`.
+
 The dated evidence checkpoints below retain their original scope; `ROADMAP.md` owns current
 integration and verification status.
 

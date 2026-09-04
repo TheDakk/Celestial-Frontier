@@ -30,6 +30,7 @@ import {
   glassVeteranPreferenceRaw,
 } from './glass-engineering-fixture-contract.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { assertBuiltGameMode } from './build-mode.mjs';
 import { verifySliceRunEvidence } from './smokereport.mjs';
 import {
   GLASS_ARC4_CAPTURE_CHECK_KEYS,
@@ -9269,7 +9270,8 @@ async function main() {
     atomicCreateFile(artifacts.report, JSON.stringify(sentinel, null, 2) + '\n');
     runArtifactReserved = true;
     atomicWriteJson(currentReportPath, sentinel);
-    execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+    execSync('npx vite build --mode evidence', { cwd: appDir, stdio: 'inherit' });
+    assertBuiltGameMode(dist, 'evidence');
   const server = staticServer();
   await new Promise((resolve, reject) => {
     server.once('error', reject);

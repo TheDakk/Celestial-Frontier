@@ -1,5 +1,14 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **EVIDENCE CODE IS AN EXPLICIT BUILD CONTRACT** (matches code as of 2026-09-04).
+> Default builds and human previews omit diagnostic bindings and destructive fault implementations;
+> only `--mode evidence` opts in. Hiding the public API alone does not prove dead-code elimination.
+> Inspect executable output in both modes, preserve awaited no-op ordering and native persistence,
+> and bind the mode marker into final PWA hashes. Certifiers verify evidence mode; preview packaging
+> verifies distributable mode. Historical calibration builds retain their exact commands/rulers.
+> Preview checks use ordinary UI. Training's inert background may prove painted readiness but not
+> action reachability; finish/skip through its real control before activating a background action.
+
 > **QUEUE ADMISSION IS NOT EXECUTION ADMISSION; ONE VERDICT OWNER** (matches code as of
 > 2026-09-04). A queued checkpoint must repeat its full hold/owner checks before execution and
 > after heartbeat settlement. Preserve exact replacement ownership, named-search deferral and

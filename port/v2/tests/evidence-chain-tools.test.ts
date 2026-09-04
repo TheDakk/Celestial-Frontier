@@ -328,9 +328,9 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
       expect(contract).toContain('Browsing, filtering, focusing, and returning through the Compendium never auto-play it');
       expect(contract).toContain('The biosphere signal grants a discovery reward and changes the save.');
     }
-    expect(slice).toContain('const V2_DRAFT_BULLET_COUNT = 77;');
-    expect(collector).toContain('expectedBulletCount=77');
-    expect(collector).toContain('exact five-section, 77-outcome development inventory');
+    expect(slice).toContain('const V2_DRAFT_BULLET_COUNT = 78;');
+    expect(collector).toContain('expectedBulletCount=78');
+    expect(collector).toContain('exact five-section, 78-outcome development inventory');
  }, 20_000);
 
   it('rejects invalid full Glass invocations without changing the current evidence pointer', () => {
