@@ -4,7 +4,9 @@
 > EVIDENCE INDEPENDENTLY** (2026-09-03 UTC). Workflow/job/step caps are orchestration ceilings,
 > not product timeouts or evidence rulers. When measured hosted duration leaves no operational
 > margin, change the sealed workflow and policy together without adding a job, matrix, retry,
-> browser pin or weaker verdict. PR #35's current successor keeps one two-minute authorization job
+> browser pin or weaker verdict. The separately authorized pinned-package curl transport retries
+> do not retry a product/instrument result or the battery. PR #35's current successor keeps one
+> two-minute authorization job
 > and one battery job, raises the battery cap from 90 to **120 minutes**, and raises Compendium's
 > independent step cap from 40 to **55 minutes**. Compendium's fixed measurement ruler, numeric
 > ceilings and outcome inventory do not change. A future exact attempt is therefore capped at
@@ -13,7 +15,7 @@
 > One conditional changed-input diagnostic may exercise multiple minimal rows sequentially inside
 > one existing independently capped step. Give each row its own immutable ID/report, stop after the
 > first nonzero or red result, and never substitute the diagnostic for the unconditional
-> certificate. The current five-minute Glass canary runs `small-phone` Inventory first, then
+> certificate. The current seven-minute Glass canary runs `small-phone` Inventory first, then
 > `large-phone` Capture/Shipyard heartbeat behavior. Full exact-Slice-bound 12-row Glass remains
 > unchanged and mandatory.
 >
@@ -32,8 +34,16 @@
 > When a forced replacement test follows a periodic heartbeat, quiesce and settle the periodic
 > owner before acquiring the deliberate-cycle baseline. Otherwise the ambient timer can replace
 > the node between setup and quiescence and manufacture the same stale-lineage red the test was
-> meant to prevent. A zero/duplicate target with exact false/null facts is coherent product-red
+> meant to prevent. Shipyard settlement requires both `pendingPersistenceWrites` and
+> `pendingDebounceWrites` to equal zero before forcing the heartbeat. A zero/duplicate target
+> with exact false/null facts is coherent product-red
 > evidence; only contradictory counts, descriptors, geometry or style are instrument-red.
+
+> **2026-09-04 UTC clarification (matches current code):** check `command -v jq >/dev/null`
+> before any command in the changed-input preflight. The existing pinned Edge package download
+> alone uses `--retry 3 --retry-all-errors --retry-delay 5`; its URL/version/SHA-256 and every
+> product/instrument once/no-retry rule remain unchanged. Keep existing literal assertions and
+> mutation anchors synchronized with that exact download command; add no duplicate verifier.
 
 > **NATIVE KEYBOARD EVIDENCE FOLLOWS SEMANTIC IDENTITY, AND TERMINAL DIAGNOSIS MUST OUTLIVE THE
 > ARTIFACT SERVICE** (2026-09-03 UTC). A DOM-replacing heartbeat invalidates exact element-object

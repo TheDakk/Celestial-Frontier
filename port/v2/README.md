@@ -1,18 +1,21 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-09-03 UTC current PR #35 forensic-prevention overlay (matches current local code):** the
+> **2026-09-04 UTC current PR #35 forensic-prevention overlay (matches current local code):** the
 > external review of pushed head `a922c4b…` identified narrow hosted-envelope and late-execution
 > risks. The local successor keeps one authorization job and one battery job, with a **120-minute**
 > battery cap and **55-minute** Compendium step cap. These are orchestration ceilings only; they do
-> not change a product timeout, Compendium ruler/ceiling, browser-version policy or retry rule. A
+> not change a product timeout, Compendium ruler/ceiling, browser-version policy or battery retry
+> rule. A
 > future exact attempt would be bounded at **122 total runner-minutes** including authorization,
 > once and with no retry, but none is currently authorized.
 >
-> The existing five-minute changed-input Glass diagnostic now runs `small-phone` then
+> The existing seven-minute changed-input Glass diagnostic now runs `small-phone` then
 > `large-phone` sequentially, each under a distinct immutable ID/report. `small-phone` retains the
 > five Inventory controls; `large-phone` requires the forced Capture native-Tab path plus one
 > forced Shipyard `mining` disclosure heartbeat and trusted Enter. Either red stops the step. This
 > remains noncertifying and cannot replace the unconditional exact-Slice-bound 12-row Glass.
+> Its first command requires `jq`. Only the pinned Edge package download has transport retries
+> (`--retry 3 --retry-all-errors --retry-delay 5`); package URL/version/SHA-256 remain unchanged.
 >
 > F4 returns `cf-v2-f4-heartbeat-cycle-receipt/v1` for every lawful completed/skipped/failed exit.
 > Shipyard evidence re-queries the current semantic Summary after replacement and binds full
@@ -23,7 +26,8 @@
 > the deep carrier rather than trusting assessment booleans.
 >
 > The forced Shipyard path quiesces and settles the ambient heartbeat before rebinding its live
-> baseline, so the natural five-second timer cannot race the deliberate cycle. Missing or duplicate
+> baseline, requiring both `pendingPersistenceWrites` and `pendingDebounceWrites` to equal zero,
+> so the natural five-second timer cannot race the deliberate cycle. Missing or duplicate
 > setup targets use coherent false/null evidence and remain product-red; contradictory empty
 > carriers remain instrument-red.
 >
@@ -43,6 +47,11 @@
 > Claude review; no approval label, hosted run, merge, release or deployment followed. Exact IDs,
 > timings, digests and rationale are in
 > `../../audits/PR35_A922_FORENSIC_PREVENTION_REPAIR_20260903.md`.
+> The subsequent cc4d7c9 review gaps are closed by a real develop Slice → full 12-row Glass →
+> named verification → diagnostic projection, three narrow Chrome rows and exact workflow-jq
+> replay over real small/large Chrome reports. This pre-robustness evidence belongs only to
+> `cc4d7c920083c3c630a9c8c8e6fc5a6e40f5e0d4`; it is not rebound to the successor.
+> See `../../audits/PR35_CC4D7C9_LOCAL_PROOF_AND_ROBUSTNESS_20260904.md`.
 
 > **2026-09-03 UTC historical predecessor native-Tab identity / terminal-diagnostic overlay (matches current local
 > code):** PR #35 run `33708487067`, job `100502739510`, attempt 1, tested exact head
@@ -3917,7 +3926,7 @@ rejected before Glass can reserve a run ID or replace the last terminal current 
 
 For a `develop` PR whose exact diff changes Glass, its direct runtime/build/fixture graph, game
 runtime source, or package runtime source, the hosted workflow first runs one **noncertifying
-five-minute sequential Glass diagnostic** immediately after the shared Chrome launcher selftest.
+seven-minute sequential Glass diagnostic** immediately after the shared Chrome launcher selftest.
 It executes 320×568@2 `small-phone` first and 412×915@3 `large-phone` second, once/no-retry on
 committed unchanged source and the resolver's canonical Chrome/CDP `1.3`. Each row owns a distinct
 immutable ID/report path; a red first row prevents the second. `small-phone` requires the five
@@ -4023,7 +4032,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 
 | Tool | Role |
 |---|---|
-| **Current PR #35 forensic-prevention boundary (2026-09-03 UTC; clean-source local diagnostics green, hosted certificate absent)** | One authorization job plus one battery job remain; caps are 2 + 120 runner-minutes, with Compendium independently capped at 55. The changed-input Glass diagnostic keeps one five-minute/no-retry step and runs distinct immutable `small-phone` then `large-phone` rows sequentially. The second row binds structured F4 completion to both Capture native Tab and Shipyard `mining` disclosure Enter across semantic replacement. Glass v2 PASS, full descriptors, exact visibility, cumulative ancestor opacity, geometry and assessment maps are replayed by shared consumers and hosted jq. Product Shipyard focus restoration pre-existed; artifact upload remains hard-fail; the final 12-row certificate is unchanged. Focused 73/73, all TypeScript, Glass/Recovery/persona, Actions policy 66/66 and the 268-file browser-free profile are green. Exact clean `f348b249…` also passed Compendium 78/78 plus named verification and nine requested targeted Glass rows with zero findings/instrument failures; these do not replace full certification. No gameplay, release or hosted authority follows. |
+| **Current PR #35 forensic-prevention boundary (2026-09-04 UTC; cc4d7c9 Slice/full Glass and real Chrome jq green, hosted certificate absent)** | One authorization job plus one battery job remain; caps are 2 + 120 runner-minutes, with Compendium independently capped at 55. The changed-input Glass diagnostic keeps one seven-minute/no-retry step and runs distinct immutable `small-phone` then `large-phone` rows sequentially. Its first command requires jq; the existing pinned Edge download alone permits three transport retries with URL/version/SHA-256 unchanged. Shipyard settlement waits for active and debounced writes to reach zero using the existing read-only diagnostics. The second row binds structured F4 completion to both Capture native Tab and Shipyard `mining` disclosure Enter across semantic replacement. Glass v2 PASS, full descriptors, exact visibility, cumulative ancestor opacity, geometry and assessment maps are replayed by shared consumers and hosted jq. Product Shipyard focus restoration pre-existed; artifact upload remains hard-fail; the final 12-row certificate is unchanged. Focused 73/73, all TypeScript, Glass/Recovery/persona, Actions policy 66/66 and the 268-file browser-free profile are green. Exact clean `f348b249…` also passed Compendium 78/78 plus named verification and nine requested targeted Glass rows with zero findings/instrument failures; these do not replace full certification. No gameplay, release or hosted authority follows. |
 | **Historical predecessor native-Tab identity / diagnostic-retention boundary (2026-09-03 UTC; local successor green)** | Hosted run `33708487067` passed every predecessor through Layout 787/787, Compendium 78/78 and exact-bound Slice, then full Glass stopped at row four `large-phone` with only `idleKeyboardFocus:false`. Artifact creation separately timed out after finding 27 files, so no full hosted JSON exists. Native Tab evidence now retains trusted same-document delivery, reacquires current Scavenge/Sample semantic controls through a forced real F4 heartbeat at that exact viewport, and product-classifies wrong origin, missing controls, stale lineage, lost focus, unsettled scroll and transparent paint. Targeted run `20260903043639066-7926-2f4122517015` passed in 11,037 ms with old nodes disconnected, replacements acquired, restored Scavenge focus and trusted Tab to visibly focused Sample. A post-Glass browser-free projection exact-binds terminal report/source/profile/Slice/browser/timing/red shape and retains deterministic gzip/base64 evidence in the step summary under a 900,000-byte whole-summary cap; it cannot soften Glass, verification, Recovery or artifact upload. Reviews are CLEAR; focused coverage is 24/24 and 12/12, Actions policy 64/64, and the browser-free develop profile passes 266/266 files, 2,758 passed / 1 skipped. Compendium authority remains `b83cbb85…681da` / `c216cdc9…d8cae`. No gameplay, retry, timeout, browser pin, viewport, job or hosted authority is added. |
 | **Current Slice Guide/Charter/D-TRAIN boundary (2026-09-01; exact-source local develop chain green)** | Exact SSH-signed source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` / tree `25cb76916c8f3fcd00a916864abb9402932cdbec` passed the complete browser-free develop profile at 263 files / 2,719 passed / 1 skipped, plus browser-CDP selftest and live preflight on compatible Edge `152.0.4191.53` / CDP `1.3`. Its once/no-retry unchanged-source chain named-verified Compendium `20260902020238003-42290-3e0d5a9601` at 78/78 with zero findings; Slice `20260902020406920-42750-f6dc8783b4cd` with zero findings/scopes and report/log SHA-256 `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` / `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`; and exact-Slice-bound Glass `20260902021048274-43570-053d2c926673` at 12/12 viewports, 12/12 reload rows and 104/104 controls with no findings/instrument failures and report SHA-256 `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`. Guide uses observed dynamic native-wheel progress with full remaining-time/restoration ownership; the ceremony queue defers intact during `productActionInFlight` and resumes once; D-TRAIN requires stable raw/live/focus/bulletin convergence. Hosted run `33572309149` stays immutable red and consumed. No legacy game, save schema, generation, creature/plant/biome/Guardian structure, loot balance, CSS, numeric ruler/ceiling, retry or browser-version policy changed; no hosted, merge, Gate/Arc/HUMAN, release or deploy authority follows. |
 | **Current Slice Survey-dependent action boundary (2026-09-01)** | A receipt-bearing Survey is an asynchronous F4 predecessor even after its handler returns and Enter/Land is visible. `slicesmoke` must establish one exact same-document fixed point—Survey receipt and revision, persistence, current route/render/card/action identity and coordinator idle—before every dependent pointer, keyboard, touch or already-current Enter/Land. A missing, red, replaced or still-settling predecessor causal-stops descendants; `state().landing.surveyOutcome` remains diagnostic and cannot mint action authority. Atlas Travel must settle exactly one `arc9-galaxy-arrival-v1` / `arc9-travel-committed:` commit; single/sequence runtime schema binds before/after live↔raw SessionRNG parity; current Survey rejects retained faults; paired stable-but-wrong live/raw revision/seed/ordinal/draw controls are red. Focused 73/73, all TypeScript programs and the 257-file/2,622-pass/1-skip develop profile are green, with two independent reviews APPROVED. Hosted run `33466661094` remains immutable red; exact clean signed `4a595e2…` later passed tracked-input and one named-verified **78/78 Compendium → zero-finding Slice → 12/12 Glass** chain once/no-retry. The hosted red is not relabelled. Product copy/refusal, saves, gameplay, rulers, timeouts, retries and browser-version policy remain unchanged. |

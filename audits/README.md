@@ -10,7 +10,22 @@ summary of it.
 
 ## Contents
 
-### Current PR #35 a922 forensic prevention repair
+### Current PR #35 cc4d7c9 local proof and four-item robustness batch
+
+`PR35_CC4D7C9_FORENSIC_REVIEW_20260904.md` preserves the exact external review.
+`PR35_CC4D7C9_LOCAL_PROOF_AND_ROBUSTNESS_20260904.md` records its disposition, every local
+browser run ID/duration/hash, named verification, projection bytes, raw workflow-jq verdicts,
+bounded code changes, existing selftests and final-head handoff boundary.
+
+The `PR35_CC4D7C9_20260904_*` compressed carriers retain the real Slice/full Glass reports,
+Slice raw log and ten screenshots, all four targeted Chrome reports, diagnostic summary,
+jq replay and verification logs. Evidence belongs to clean `cc4d7c9`; it is not relabelled as
+the robustness descendant. No gameplay or new test inventory was added. Only the canary's
+seven-minute orchestration margin, pinned-curl transport retry, jq prerequisite and honest
+debounce-aware Shipyard settlement changed. A normal branch push is authorized; hosted Actions,
+PR metadata changes, merge and release/deploy are not.
+
+### Historical predecessor PR #35 a922 forensic prevention repair
 
 The external read-only review of pushed head
 `a922c4b74502fc4093ca103d46a189396cad1e8f` is preserved by exact input digest and assessed in

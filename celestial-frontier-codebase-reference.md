@@ -1,18 +1,22 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-> **2026-09-03 UTC current PR #35 forensic-prevention architecture overlay (matches current local
+> **2026-09-04 UTC current PR #35 forensic-prevention architecture overlay (matches current local
 > code):** `.github/workflows/test.yml` retains one two-minute authorization job and one battery
 > job. The battery orchestration cap is 120 minutes and Compendium's independent step cap is 55;
 > `tools/actions-budget-policy.js` seals both and rejects topology/retry/soft-fail drift. These are
 > not product deadlines, memory rulers, browser pins or hosted authority. One exact future attempt
 > would have a 122-runner-minute maximum including authorization, once/no-retry.
 >
-> The changed-input Glass step remains one five-minute process and executes distinct immutable
+> The changed-input Glass step remains one seven-minute process and executes distinct immutable
 > `small-phone` then `large-phone` targeted rows sequentially. The first retains Inventory
 > action/modal evidence; the second binds Capture native Tab and one Shipyard `mining` Summary
 > native Enter across forced ordinary F4 heartbeat replacements. Either red stops immediately.
 > The diagnostic is noncertifying; Compendium → exact Slice → full 12-row Glass remains the
 > unconditional `develop` certificate.
+> The preflight starts with `command -v jq >/dev/null`. Only the existing pinned Edge download
+> uses `--retry 3 --retry-all-errors --retry-delay 5`, with identical URL/version/SHA-256; neither
+> a product/instrument red nor a battery is retried. Existing exact-command assertions and the
+> existing download mutation anchor are synchronized; no new control or verifier is added.
 >
 > `runF4HeartbeatCycle()` now resolves one
 > `cf-v2-f4-heartbeat-cycle-receipt/v1` for every lawful completed/skipped/failed path, binding the
@@ -23,7 +27,8 @@
 > re-queries the current Summary by selector and full descriptor, proves original disconnection,
 > current replacement/focus, completed `refresh.shipyard`, trusted current-target Enter and the
 > expected disclosure toggle.
-> The ambient timer is quiesced and settled before that baseline is rebound. This closes the
+> The ambient timer is quiesced and settled before that baseline is rebound. Settlement requires
+> both `pendingPersistenceWrites === 0` and `pendingDebounceWrites === 0`. This closes the
 > setup-to-quiescence race; coherent missing/duplicate targets remain product-red with exact null
 > evidence instead of being misclassified as malformed instrumentation.
 >
@@ -47,6 +52,11 @@
 > `f348b249…` passed Compendium **78/78** with named verification and nine immutable targeted Glass
 > rows with zero findings/instrument failures under Edge `152.0.4191.53` / CDP `1.3`; the rows are
 > local noncertifying diagnostics, not a full Slice-bound Glass certificate.
+> Subsequent clean `cc4d7c9` evidence closed the previously unexecuted Slice/full-v2-Glass paths:
+> Slice and full 12-row Glass passed, as did named verification and diagnostic projection
+> (126,732 base64 bytes against 700,000). Real small/large Chrome reports passed the unchanged
+> workflow jq filter. The Part B successor changes only orchestration/settlement robustness;
+> the audit `audits/PR35_CC4D7C9_LOCAL_PROOF_AND_ROBUSTNESS_20260904.md` preserves exact provenance.
 
 > **2026-09-03 UTC historical predecessor Glass native-Tab identity / diagnostic-retention architecture overlay
 > (matches the signed local descendant containing this reference):** hosted PR #35 run
@@ -4850,7 +4860,7 @@ witness, exact descriptor and trusted receipt integrity are instrument outcomes.
 
 The terminal writer emits `cf-v2-glassmatrix/v2`. Every current PASS consumer requires its deep
 Shipyard inventory; v1 may be replayed only when historically red. The changed-input canary runs
-small then large sequentially inside one five-minute/no-retry step, while the full 12-row
+small then large sequentially inside one seven-minute/no-retry step, while the full 12-row
 certificate remains unconditional. The terminal report is exact-validated and deterministically
 projected to the step summary after Glass so diagnosis survives an independent artifact-service
 failure without softening the failed Glass step, mandatory upload or Recovery ordering.
