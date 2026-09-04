@@ -1,5 +1,18 @@
 # Port decisions — resolutions to `PORT_MASTER_PLAN_v4.0.md` §23
 
+## Decided 2026-09-04 — audiovisual pilot authoring and limits
+
+Nick accepted the Blender/REAPER/Surge plan with five amendments; only campaign Phase 0/1
+Batches A–D are authorized. Canvas-only asset origin is relaxed; protected portraits, deterministic
+identity and gameplay remain intact. Unlanded gameplay is parked first. Eight body plans replace
+the three-example pilot. Top bar/dock/rails leads Phase 2 after pilot approval. Claude owns
+CI/budget policy on anthropic/windows. Batch A fixes <=128 MiB installed pack and <=256 MiB
+update-overlap payload before measuring. Private hashed, independently backed-up editable sources;
+optimized outputs only in public Git; no Git LFS. Installed-PWA offline promise is conditional on
+completed install and retained data. See `AAA_ASSET_POLICY.md`; enforcement/backup verification
+remains open. No purchases, hosted runs, protected-portrait changes or release.
+
+
 **STATUS:** live record. Appended as decisions are made; nothing here is deleted.
 
 §23 of the master plan lists "Known Decisions and Open Items to Resolve Before Production
