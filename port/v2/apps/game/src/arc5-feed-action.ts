@@ -33,6 +33,10 @@ import type {
   F4RuntimeActionCommitOutcome,
   F4RuntimeAuthority,
 } from './f4-runtime-authority.js';
+import {
+  stageWeeklyCharterProductEventsV1,
+  type WeeklyCharterActionFactV1,
+} from './starter-charter-action.js';
 
 export interface Arc5FeedActionInputV1 {
   readonly runtime: Pick<F4RuntimeAuthority, 'commitAction'>;
@@ -58,6 +62,7 @@ export type Arc5FeedActionOutcomeV1 =
     convergence: 'none';
     transaction: Extract<F4RuntimeActionCommitOutcome, { readonly kind: 'committed' }>;
     settlement: Arc5FeedSettlementV1;
+    weeklyCharter: WeeklyCharterActionFactV1;
     ownershipV2: OwnershipStateV2;
     ownershipV2Evidence: Arc5OwnershipMigrationEvidenceV2;
     ownershipWrites: PreparedArc5OwnershipMigrationSuccessorV2['writes'];
@@ -221,6 +226,20 @@ function sameJson(left: unknown, right: unknown): boolean {
   try { return JSON.stringify(left) === JSON.stringify(right); } catch { return false; }
 }
 
+/** Publish only the SaveState fields a joined Weekly Charter feed event can
+ * change. Ownership itself remains in the compact Arc 5 carrier. */
+export function publishArc5FeedSaveFieldsV1(
+  target: SaveStateV2,
+  committed: SaveStateV2,
+): void {
+  target.chWeek = committed.chWeek;
+  target.chProg = { ...committed.chProg };
+  target.chacc = [...committed.chacc];
+  target.essence = committed.essence;
+  target.stats = { ...committed.stats };
+  target.unlocked = [...committed.unlocked];
+}
+
 /** Commit one nonlethal deterministic feed. A domain refusal consumes no F4
  * receipt. Once F4 planning begins there is exactly one repository attempt;
  * every noncommit or postcommit mismatch remains unpublished and is never
@@ -256,6 +275,9 @@ export async function commitArc5FeedActionV1(
   let selected: Readonly<{
     settlement: Arc5FeedSettlementV1;
     prepared: PreparedArc5OwnershipMigrationSuccessorV2;
+    weeklyCharter: WeeklyCharterActionFactV1;
+    witness: string;
+    expectedStateJson: string;
   }> | null = null;
   let carrierProtection: Arc5OwnershipV2SuccessorProtectionReason | null = null;
   let transaction: F4RuntimeActionCommitOutcome;
@@ -277,11 +299,28 @@ export async function commitArc5FeedActionV1(
           carrierProtection = prepared.reason;
           throw new Error(`Arc 5 feed ownership carrier refused ${prepared.reason}`);
         }
-        selected = Object.freeze({ settlement, prepared });
+        const weekly = stageWeeklyCharterProductEventsV1({
+          draft,
+          extensions,
+          predecessorWrites: prepared.writes,
+          predecessorWitness: settlement.witness,
+          events: Object.freeze([{ kind: 'fed', ok: true }]),
+          codecNow: captured.codecNow,
+        });
+        if (weekly.kind !== 'ready') {
+          throw new Error(`Arc 5 feed weekly Charter refused ${weekly.reason}`);
+        }
+        selected = Object.freeze({
+          settlement,
+          prepared,
+          weeklyCharter: weekly.fact,
+          witness: weekly.witness,
+          expectedStateJson: JSON.stringify(draft),
+        });
         return Object.freeze({
           state: draft,
-          extensionWrites: prepared.writes,
-          witness: settlement.witness,
+          extensionWrites: weekly.extensionWrites,
+          witness: weekly.witness,
         });
       },
     });
@@ -309,6 +348,9 @@ export async function commitArc5FeedActionV1(
   const committedSelection = selected as Readonly<{
     settlement: Arc5FeedSettlementV1;
     prepared: PreparedArc5OwnershipMigrationSuccessorV2;
+    weeklyCharter: WeeklyCharterActionFactV1;
+    witness: string;
+    expectedStateJson: string;
   }> | null;
   if (committedSelection === null) {
     return Object.freeze({
@@ -330,8 +372,10 @@ export async function commitArc5FeedActionV1(
     || transaction.plan.receiptOrdinal !== settlement.receiptEvidence.ordinal
     || transaction.receipt.ordinal !== settlement.receiptEvidence.ordinal
     || transaction.receipt.kind !== ARC5_FEED_RECEIPT_KIND_V1
-    || transaction.receipt.witness !== settlement.witness
+    || transaction.receipt.witness !== committedSelection.witness
+    || !sameJson(committedSelection.weeklyCharter.events, [{ kind: 'fed', ok: true }])
     || !sameJson(transaction.state, transaction.saved.canonicalState)
+    || JSON.stringify(transaction.state) !== committedSelection.expectedStateJson
     || ownershipStateDigestV2(committed.state)
       !== ownershipStateDigestV2(settlement.successor)) {
     return Object.freeze({
@@ -348,6 +392,7 @@ export async function commitArc5FeedActionV1(
     convergence: 'none',
     transaction,
     settlement,
+    weeklyCharter: committedSelection.weeklyCharter,
     ownershipV2: committed.state,
     ownershipV2Evidence: committed.evidence,
     ownershipWrites: committedSelection.prepared.writes,

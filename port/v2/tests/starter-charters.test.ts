@@ -8,6 +8,7 @@ import {
   stageStarterCharterAcceptV1,
   stageStarterCharterEventV1,
 } from '../apps/game/src/starter-charters.js';
+import { stageStarterCharterActionV1 } from '../apps/game/src/starter-charter-action.js';
 import {
   applyV5ExtensionWrites,
   createEmptyWorldIdentityState,
@@ -16,8 +17,10 @@ import {
   encodeWorldIdentityExtensionWrites,
   migrateStoredV4ToV5,
   prepareArc2LootLegacyMigration,
+  prepareArc2LootInventoryWrite,
   prepareF4AuthorityUpdate,
   prepareV5SaveWrite,
+  projectArc2LootLegacyMirror,
   recordCanonicalWorldLanding,
   readArc2Loot,
   V4_PRIMARY_KEY,
@@ -25,6 +28,11 @@ import {
   type SaveStateV2,
   type V5Extensions,
 } from '@cf/persistence';
+import {
+  createGearInstance,
+  getFixedCraftGenerationPlan,
+  makeGearSourceActionId,
+} from '@cf/domain-loot';
 import { createSessionRNG } from '@cf/domain-sessionrng';
 import {
   resolveCF1WorldAddress,
@@ -125,7 +133,7 @@ async function fixture(save: SaveStateV2, codecNow = 10) {
 }
 
 describe('starter Charters', () => {
-  it('reveals one link per chain, keeps st-scan honest, and enforces the three-slot cap', () => {
+  it('reveals one live link per chain, exposes st-scan only in sequence, and enforces the three-slot cap', () => {
     const fresh = projectStarterCharterBoardV1(state());
     expect(fresh.kind).toBe('projected');
     if (fresh.kind !== 'projected') return;
@@ -136,7 +144,7 @@ describe('starter Charters', () => {
     blocked.chDone = ['st-land', 'st-mine'];
     const scan = projectStarterCharterBoardV1(blocked);
     expect(scan.kind === 'projected' && scan.board.rows[0]).toMatchObject({
-      definition: { id: 'st-scan' }, status: 'unavailable',
+      definition: { id: 'st-scan', event: 'bioscan' }, status: 'available',
     });
     const full = state();
     full.chacc = ['wk-land', 'wk-mine', 'wk-scan'];
@@ -145,6 +153,44 @@ describe('starter Charters', () => {
     });
     expect(acceptance).toMatchObject({ kind: 'refused', reason: 'three accepted Charters is the exact cap' });
     expect(renderStarterCharterBoardV1(fresh.board)).toContain('data-starter-charter-accept="st-land"');
+  });
+
+  it('makes st-scan count from acceptance and never backfills an older Survey record', () => {
+    const scannedBeforeAcceptance = state();
+    scannedBeforeAcceptance.chDone = ['st-land', 'st-mine'];
+    scannedBeforeAcceptance.surveyedSet = [foreignWorld(133).key];
+    const accepted = stageStarterCharterAcceptV1({
+      draft: scannedBeforeAcceptance,
+      extensions: EXTENSIONS,
+      id: 'st-scan',
+      receiptOrdinal: 1,
+    });
+    expect(accepted.kind).toBe('ready');
+    expect(scannedBeforeAcceptance).toMatchObject({
+      chacc: ['st-scan'],
+      chDone: ['st-land', 'st-mine'],
+      chProg: {},
+      essence: 10,
+    });
+  });
+
+  it('keeps generic Charter witness composition JSON-only and duplicate-key protected', () => {
+    for (const predecessorWitness of [
+      'opaque-witness',
+      JSON.stringify({ starterCharter: { forged: true } }),
+    ]) {
+      const draft = state();
+      draft.chacc = ['st-land'];
+      const staged = stageStarterCharterActionV1({
+        draft,
+        extensions: EXTENSIONS,
+        predecessorWrites: Object.freeze([]),
+        predecessorWitness,
+        event: { kind: 'landfall', address: foreignWorld(133) },
+        receiptOrdinal: 2,
+      });
+      expect(staged.kind).toBe('refused');
+    }
   });
 
   it('accepts a live row, completes already-proven work atomically, and never counts training Earth', () => {
@@ -254,18 +300,17 @@ describe('starter Charters', () => {
     expect(wrongOrdinal).toMatchObject({ chacc: ['st-mercury'], chDone: [], essence: 10 });
   });
 
-  it('can complete two accepted landfall rows in one event and pays no unsupported scan row', () => {
+  it('does not let landfall counterfeit an accepted Discover Life Charter', () => {
     const landing = state();
-    landing.chacc = ['st-land', 'st-mercury', 'st-scan'];
+    landing.chacc = ['st-land', 'st-scan'];
     const result = stageStarterCharterEventV1({
       draft: landing, extensions: EXTENSIONS,
       event: { kind: 'landfall', address: solWorld(131) }, receiptOrdinal: 5,
     });
-    /* Mercury includes gear, so an absent Arc 2 carrier protects the whole
-       reward instead of paying a partial Stardust/gear successor. */
-    expect(result).toMatchObject({ kind: 'refused', reason: 'starter-gear:absent' });
+    expect(result).toMatchObject({ kind: 'ready' });
     expect(landing.chDone).toContain('st-land');
     expect(landing.chDone).not.toContain('st-scan');
+    expect(landing.chacc).toContain('st-scan');
   });
 
   it('accepts through one receipt/CAS, publishes only after durability, and is replay-free', async () => {
@@ -334,6 +379,83 @@ describe('starter Charters', () => {
       });
       expect(loot.state.inventory.equipped[0]).toMatchObject({ slot: 'helmet' });
     }
+    await built.runtime.release();
+  });
+
+  it('requires the exact committed starter gear carrier, not only its legacy mirror', async () => {
+    const source = state();
+    source.surfSeen.push(131);
+    const built = await fixture(source);
+    const authority: Pick<F4RuntimeAuthority, 'commitAction'> = Object.freeze({
+      commitAction: async (input) => {
+        const committed = await built.runtime.commitAction(input);
+        if (committed.kind !== 'committed') return committed;
+        const loaded = readArc2Loot(committed.saved.extensions);
+        if (loaded.kind !== 'loaded' || loaded.state.kind !== 'inventory') return committed;
+        const original = loaded.state.inventory.entries[0]?.instance;
+        if (!original) return committed;
+        const replacement = createGearInstance(makeGearSourceActionId({
+          kind: 'expedition', ownerId: 'starter-accept-postcommit-substitution',
+          actionKey: 'wrong-headlamp', receiptId: 'fixture',
+        }), 0, getFixedCraftGenerationPlan('headlamp', original.generation.seed));
+        const inventory = Object.freeze({
+          ...loaded.state.inventory,
+          entries: loaded.state.inventory.entries.map((entry) => Object.freeze({
+            ...entry,
+            instance: entry.instance.instanceId === original.instanceId ? replacement : entry.instance,
+          })),
+          equipped: loaded.state.inventory.equipped.map((binding) => Object.freeze({
+            ...binding,
+            instanceId: binding.instanceId === original.instanceId
+              ? replacement.instanceId : binding.instanceId,
+          })),
+        });
+        const altered = prepareArc2LootInventoryWrite({
+          extensions: committed.saved.extensions,
+          inventory,
+          stackableCounts: loaded.state.stackableCounts,
+        });
+        if (altered.kind !== 'prepared') throw new Error(altered.kind);
+        expect(projectArc2LootLegacyMirror(altered.state)).toEqual({
+          items: committed.state.items,
+          equip: committed.state.equip,
+          equipAff: committed.state.equipAff,
+        });
+        return Object.freeze({
+          ...committed,
+          saved: Object.freeze({ ...committed.saved, extensions: altered.extensions }),
+        });
+      },
+    });
+    const outcome = await commitStarterCharterAcceptV1({
+      state: built.state, id: 'st-mercury', codecNow: 10, authority,
+    });
+    expect(outcome).toMatchObject({
+      kind: 'committed-convergence', detail: 'committed-verification-mismatch',
+    });
+    expect(await built.repository.revision()).toBe(1);
+    await built.runtime.release();
+  });
+
+  it('refuses a divergent parent Arc 2 mirror before acceptance or receipt durability', async () => {
+    const built = await fixture(state());
+    built.state.items = [['headlamp', 1]];
+    const before = JSON.stringify(built.state);
+    const ordinal = built.runtime.sessionRng.ordinal;
+    const outcome = await commitStarterCharterAcceptV1({
+      state: built.state, id: 'st-land', codecNow: 10, authority: built.runtime,
+    });
+    expect(outcome).toMatchObject({
+      kind: 'refused', detail: 'rejected',
+      transaction: {
+        kind: 'rejected', stage: 'derive',
+        message: 'starter Charter Arc 2 authority diverged',
+      },
+    });
+    expect(JSON.stringify(built.state)).toBe(before);
+    expect(await built.repository.revision()).toBe(0);
+    expect(await built.repository.readReceipt(ordinal)).toBeUndefined();
+    expect(built.runtime.sessionRng).toMatchObject({ ordinal, draws: {} });
     await built.runtime.release();
   });
 

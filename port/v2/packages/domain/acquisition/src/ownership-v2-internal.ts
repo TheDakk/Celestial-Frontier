@@ -7,6 +7,7 @@
    application. */
 export {
   createOwnershipSourceProjectionSuccessorV2,
+  isOwnershipSuccessorV2,
 } from './model-v2.js';
 export {
   createCaptureOwnershipSourceProjectionSuccessorV2,

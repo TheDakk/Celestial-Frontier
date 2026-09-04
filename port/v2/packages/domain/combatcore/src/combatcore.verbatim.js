@@ -9,6 +9,24 @@ import { FA_SIZE, TIER_MAX, STAT_KEYS } from '@cf/domain-speciestraits';
 import { describeSpecies, speciesGrade } from '@cf/domain-genome';
 import { b64encUtf8, b64decUtf8 } from '@cf/domain-encutil';
 
+function projectCreatureInnateArts(g){
+  const K=classKit(g), arts=[];
+  for(let i=0;i<K.slots;i++){
+    const id=K.cls.verbs[i], ar=ARCHETYPES.find(a=>a.id===id);
+    if(!ar) throw new Error('CombatCore innate art is unavailable: '+String(id));
+    arts.push(Object.freeze({
+      id:ar.id, label:ar.n, description:ar.d, slot:i+1,
+      effects:Object.freeze({...ar.mk(i)})
+    }));
+  }
+  return Object.freeze({
+    className:K.cls.name,
+    classGroup:K.cls.group,
+    level:K.lvl,
+    awakenedInnateSlots:K.slots,
+    arts:Object.freeze(arts)
+  });
+}
 
 const STAT_NAMES=['Vitality','Ferocity','Resilience','Agility','Instinct'];
 const STAT_HUES=['#7fe6a0','#ff8a72','#8fb4ff','#ffd96a','#c79fff'];
@@ -815,4 +833,4 @@ function runDuel(mine, theirs){
   return {A, B, log, winner, hpA, hpB, maxA, maxB, turnA0:_turnA0};   /* CF1715-20: the log renders initiative from the RESOLVED coin, not a >= re-guess (contradicted the fight 49.4% of equal-AGI duels) */
 }
 
-export { abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf, ABILITY_THEMES };
+export { abilityOf, battleStats, STAT_NAMES, STAT_HUES, runDuel, decodeCreature, encodeCreature, playerCombatant, playerAvatar, paperdollAvatar, DOLL_ANCHORS, statBlockHTML, _statOpen, abilityTheme, normGenome, PLAYER_SEED, levelOf, ABILITY_THEMES, projectCreatureInnateArts };

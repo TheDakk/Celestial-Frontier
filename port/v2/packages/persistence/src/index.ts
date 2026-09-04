@@ -34,3 +34,4 @@ export * from './guardian-companion.js';
 export * from './import-v2.js';
 export * from './export-v2.js';
 export * from './world-identity.js';
+export * from './descent-waveoffs.js';

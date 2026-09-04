@@ -1,13 +1,21 @@
 # Celestial Frontier — Species & Genome System
 
 **STATUS:** legacy mechanics below match `main.js` as of 2026-07-31; the current v2 reset,
-ownership, four bounded companion writers, Guardian/Titan acquisition, rarity presentation and six
-explicit audio-surface overlays match the local `port/v2` candidate as of 2026-08-29. ⚠ v1.8.9: every reader of the
+ownership, bounded companion writers, exact-instance progression, Guardian/Titan acquisition,
+rarity presentation and explicit audio-surface overlays match the local `port/v2` candidate as of
+2026-09-04. ⚠ v1.8.9: every reader of the
 `size` gene now goes through `_szOf` (`% FA_SIZE.length`) — see the inline note
 in §2.4.
 **Purpose:** how a numeric seed becomes a fully-described living species — the four kingdoms, the trait genes, the FA_* trait tables, the color language, the descriptors/naming/classifier layers, and the named-Earth overlay.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
 runtime and `port/v2/packages/domain/speciestraits` owns the dated port contract.
+
+> **2026-09-04 exact-instance progression presentation:** a Compendium fauna page no longer has to
+> collapse an owned species into one generic XP story. The v2 projector keys every live twin by its
+> stable `creatureId`, combines the immutable canonical genome with only that individual's XP for
+> the existing CombatCore level/class calculation, and presents wounds and assignment/Recovery
+> state separately. Tombstoned snapshots are labelled retired history. No seed, anatomy, portrait,
+> descriptor, genome field, lineage, acquisition identity or share-code behavior changes.
 
 > **2026-08-29 current local species/companion boundary:** Arc 5 exposes four exact-instance writers
 > from verified real-fauna Compendium detail without changing the established creature structure.

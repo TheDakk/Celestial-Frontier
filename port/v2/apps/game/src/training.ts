@@ -1,11 +1,12 @@
 /* training.ts — FIELD TRAINING, the framework + the first arc (main.js
    TUT_STEPS as behavioral reference). The slice keeps its six hands-on
    navigation lessons — welcome · find-earth · survey-tour · atlas-add ·
-   atlas-open · land — then adds bounded READ-ONLY orientation for the live
-   Planetside, Engineering, Compendium, Records, sharing, and Guardian/combat
-   surfaces. No capture, inventory spend, crafting, companion mutation, or
-   combat result may masquerade as Training progress: those lessons require a
-   separately versioned sandbox authority before they can become hands-on.
+   atlas-open · land — adds one hands-on, versioned in-memory Forge practice,
+   then keeps bounded READ-ONLY orientation for the live Planetside,
+   Engineering, Compendium, Records, sharing, and Guardian/combat surfaces.
+   No capture, live inventory spend, companion mutation, or combat result may
+   masquerade as Training progress: those lessons require their own separately
+   versioned sandbox authority before they can become hands-on.
    Carried laws: the lesson card publishes --tut-bot (CF1805-01:
    any surface that can rise above the card must clear it) and NEVER covers
    the dock (CF1806-02's family); a `spot` gets the spotlight ring; `allow`
@@ -72,7 +73,7 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
     },
     {
       id: 'land', spot: '#survey [data-act="landcta"]', allow: ['#survey [data-act="landcta"]'],
-      text: () => 'Now stand on it. Press <b>Land</b> on Earth’s card. <b>Planetside</b> opens: the world at ground level, painted from its own survey. This development slice does not simulate the mature game’s hostile descent odds or wave-offs yet; the Guide marks those systems as still to come.',
+      text: () => 'Now stand on it. Press <b>Land safely</b> on Earth’s card. <b>Planetside</b> opens: the world at ground level, painted from its own survey. Earth and known-world returns are guaranteed. On an unfamiliar frontier world, the same button shows the exact current success chance; a failed approach waves off safely, cannot defeat you, and teaches that exact world for a stronger next attempt.',
       when: (t, d) => t === 'landfall' && d.planetSeed === 133,
     },
     {
@@ -86,10 +87,23 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
       when: panelOpened('shipyard'),
     },
     {
+      id: 'engineering-forge-practice',
+      spot: '#shipyardpanel [data-training-forge-practice="true"]',
+      allow: [
+        '#shipyardpanel [data-pnx]',
+        '#shipyardpanel [data-engineering-section="fabricator"]',
+        '#shipyardpanel [data-training-forge-practice="true"]',
+      ],
+      text: () => 'Try the real <b>Iron Plate</b> recipe with loaned practice materials. Open Fabricator if needed, then press the highlighted <b>Practice Forge Iron Plate</b> control. This versioned simulator uses the real fabrication derivation, but its ore, plate, receipt, inventory, Charters, achievements, route, and random state are erased when the lesson ends.',
+      when: (t, d) => t === 'training-forge-practice'
+        && d.schema === 'cf-v2-training-forge-practice-completion/v1'
+        && d.baseId === 'plate' && d.outputCount === 1,
+    },
+    {
       id: 'engineering-tour', spot: '#shipyardpanel', btn: 'Engineering understood',
       allow: ['#shipyardpanel [data-pnx]', '#shipyardpanel details > summary'],
       closePanelsAfter: true,
-      text: () => 'Engineering shows only source-proven opportunities. A grounded lifeless world can expose <b>Mine</b>; an eligible star can expose <b>Skim</b>. All six Research rows have connected effects: orbital mineral detail, lighter hostile bioscan wounds, stronger explorer nourishment, and the 2×/4×/8× travel-speed ladder. The fixed Fabricator exposes only connected outputs, and an eligible slotted gear craft made entirely from exceptional direct materials may receive one deterministic <b>Pureforged</b> modifier. You may inspect the sections, but Training keeps every action button locked so no ore, Stardust, research, recipe, or inventory fact changes.',
+      text: () => 'Practice complete: the simulated Iron Plate and loaned materials are gone, while your expedition is unchanged. Live Engineering shows only source-proven opportunities. A grounded lifeless world can expose <b>Mine</b>; an eligible star can expose <b>Skim</b>. All six Research rows have connected effects: orbital mineral detail, lighter hostile bioscan wounds, stronger explorer nourishment, and the 2×/4×/8× travel-speed ladder. The fixed Fabricator exposes only connected outputs, and an eligible slotted gear craft made entirely from exceptional direct materials may receive one deterministic <b>Pureforged</b> modifier. You may inspect the sections, but Training now keeps every live action button locked so no ore, Stardust, research, recipe, or inventory fact changes.',
     },
     {
       id: 'compendium-open', spot: '#dockcodex,#railcodex',
@@ -101,7 +115,7 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
       id: 'compendium-tour', spot: '#codexpanel', btn: 'Companions understood',
       allow: ['#codexpanel [data-pnx]'],
       closePanelsAfter: true,
-      text: () => 'Captured fauna details expose the live exact-instance companion controls after Training: <b>Listen</b>; <b>Feed</b> one eligible companion with one exact flora lot; nonlethal <b>Breed</b> with active-play Recovery; identity-only <b>Rename</b>; and the <b>Field Scout</b> selector. Field Scout can name, switch, or stand down one exact owned companion, intercept hostile Discover Life injury, and earn up to +2 XP when a later successful capture catalogues a genuinely fresh species. A real Flora detail separately offers <b>Eat 1</b> for explorer healing, poison, and stat nourishment. Companion tastes, care, bond, dispatch, missions, and friendly duels are not live yet. This tour changes none of those facts.',
+      text: () => 'Captured fauna details expose the live exact-instance companion controls after Training: <b>Listen</b>; <b>Feed</b> one eligible companion with one exact flora lot; nonlethal <b>Breed</b> with active-play Recovery; identity-only <b>Rename</b>; and the <b>Field Scout</b> selector. Every same-species twin keeps its own level, XP, condition, class, and named innate arts; the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats. Field Scout can name, switch, or stand down one exact owned companion, intercept hostile Discover Life injury, and earn up to +2 XP when a later successful capture catalogues a genuinely fresh species. A real Flora detail separately offers <b>Eat 1</b> for explorer healing, poison, and stat nourishment. Companion tastes, care, bond, dispatch, missions, and friendly duels are not live yet. This tour changes none of those facts.',
     },
     {
       id: 'records-open', spot: '#dockrecords,#railrecords',
@@ -121,7 +135,7 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
     },
     {
       id: 'grad', btn: 'Finish for now',
-      text: () => 'Well flown, Pathfinder. This short drill stays focused on real navigation: chart, travel, and land; its board briefings are read-only. After Finish, a survey card’s <b>Share</b> prepares a verified CF1 world code, and pasting a valid CF1 code into Search follows its source-proven route when your ship and Prime reach allow it. Accepted Atlas, Search, and CF1 arrivals may paint the same deterministic, skippable hyperlane streaks; the three drive researches use 2×, 4×, and 8× speed bases without changing permanent reach. A living world’s card also offers explicit <b>Discover Life</b>: ordinary inspection stays write-free, while that one durable action records the world and resolves its shown hazard. Reinforced Hull and worn gear reduce the wound; a Field Scout intercepts at no worse than Critical, otherwise the explorer stays at or above 1 HP. Capture remains separate. On Planetside, <b>Tame</b>, <b>Scavenge</b>, and <b>Sample</b> each choose uniformly from the full eligible biosphere and share finite <b>Biosphere Yield</b>. The first durable success on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick; a miss, Sol, repeat, stale tab, or failed write banks nothing. When that success catalogues a genuinely fresh species, the Scout standing before the attempt earns up to +2 XP in the same capture save, capped at 486. Accepted and weekly bioscan Charters remain unavailable. A real fauna Compendium detail can <b>Feed</b>, nonlethally <b>Breed</b>, <b>Rename</b>, or select a <b>Field Scout</b>. A real Flora detail can <b>Eat 1</b> for explorer healing, poison, and nourishment. This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat. Companion tastes, Power growth, injury care, bond, dispatch, friendly duels, and missions remain unavailable.',
+      text: () => 'Well flown, Pathfinder. This drill teaches real navigation — chart, travel, and land — plus one isolated Iron Plate Forge practice; every other board briefing is read-only. The practice used the real recipe derivation, then erased its loaned ore and result without changing your expedition. After Finish, a survey card’s <b>Share</b> prepares a verified CF1 world code, and pasting a valid CF1 code into Search follows its source-proven route when your ship and Prime reach allow it. Accepted Atlas, Search, and CF1 arrivals may paint the same deterministic, skippable hyperlane streaks; the three drive researches use 2×, 4×, and 8× speed bases without changing permanent reach. An unfamiliar world’s Land button discloses its exact descent chance and nonlethal wave-off damage before commitment; each exact-world wave-off improves the next attempt. A living world’s card also offers explicit <b>Discover Life</b>: ordinary inspection stays write-free, while that one durable action records the world and resolves its shown hazard. Reinforced Hull and worn gear reduce the wound; a Field Scout intercepts at no worse than Critical, otherwise the explorer stays at or above 1 HP. If the <b>Discover Life</b> Starter Charter is accepted, that same verified action completes and rewards it; weekly Charters remain protected until their wall-week lifecycle exists. Capture remains separate. On Planetside, <b>Tame</b>, <b>Scavenge</b>, and <b>Sample</b> each choose uniformly from the full eligible biosphere and share finite <b>Biosphere Yield</b>. The first durable success on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick; a miss, Sol, repeat, stale tab, or failed write banks nothing. When that success catalogues a genuinely fresh species, the Scout standing before the attempt earns up to +2 XP in the same capture save, capped at 486. A real fauna Compendium detail can <b>Feed</b>, nonlethally <b>Breed</b>, <b>Rename</b>, or select a <b>Field Scout</b>. A real Flora detail can <b>Eat 1</b> for explorer healing, poison, and nourishment. This drill performs no live capture, meal, breeding, rename, Field Scout change, persistent Engineering action, or combat. Companion tastes, injury care, bond, dispatch, friendly duels, and missions remain unavailable.',
     },
   ];
 }

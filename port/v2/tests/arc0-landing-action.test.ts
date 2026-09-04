@@ -5,7 +5,17 @@ import { beforeAll, describe, expect, it } from 'vitest';
 
 import { sha256Hex } from '@cf/domain-acquisition';
 import { installCaptureHooks } from '@cf/domain-descriptors';
-import { projectWorldOpportunity } from '@cf/domain-opportunity';
+import {
+  DESCENT_OUTCOME_DOMAINS_V1,
+  descentWaveOffCountV1,
+  projectWorldOpportunity,
+} from '@cf/domain-opportunity';
+import {
+  MAX_GEAR_CAPACITY,
+  createGearInstance,
+  getFixedCraftGenerationPlan,
+  makeGearSourceActionId,
+} from '@cf/domain-loot';
 import { MAX_UNLOCKED_ACHIEVEMENT_IDS } from '@cf/domain-progression';
 import { createSessionRNG } from '@cf/domain-sessionrng';
 import {
@@ -18,14 +28,20 @@ import {
   createEmptyWorldIdentityState,
   createMemoryBackend,
   createRevisionedRepository,
+  encodeArc2LootCarrier,
   encodeWorldIdentityExtensionWrites,
   exportSaveV2,
   hasCanonicalWorldLanded,
   importSaveV2,
   initializeFreshV5,
+  prepareArc2LootLegacyMigration,
+  prepareArc2LootInventoryWrite,
   prepareF4AuthorityUpdate,
   prepareWorldIdentityBootstrap,
   recordCanonicalWorldLanding,
+  projectArc2LootLegacyMirror,
+  readArc2Loot,
+  readDescentWaveOffCarrierV1,
   readF4Authority,
   readSaveV5,
   readWorldIdentity,
@@ -50,6 +66,10 @@ import {
   type Arc0LandingActionInput,
 } from '../apps/game/src/arc0-landing-action.js';
 import { createF4RuntimeAuthority } from '../apps/game/src/f4-runtime-authority.js';
+import {
+  WEEKLY_CHARTER_MS_V1,
+  weeklyCharterSlateForWeekV1,
+} from '../apps/game/src/weekly-charters.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const baseline = path.join(here, '..', '..', 'baseline-v1.8.9');
@@ -79,6 +99,26 @@ function surface(address: CanonicalCF1WorldAddress): SurfaceNav {
 
 function solWorld(seed: number): CanonicalCF1WorldAddress {
   return world({ galaxy: HOME_GALAXY, star: SOL, planet: { seed } });
+}
+
+function solWorldOfType(types: ReadonlySet<string>): CanonicalCF1WorldAddress {
+  for (let seed = 100; seed < 1_000; seed++) {
+    const resolved = resolveCF1WorldAddress({
+      galaxy: HOME_GALAXY, star: SOL, planet: { seed },
+    });
+    if (!resolved.ok) continue;
+    const address = resolved.address;
+    if (types.has(projectWorldOpportunity(address).source.planetType)) return address;
+  }
+  throw new Error('landing fixture found no requested Sol world type');
+}
+
+function weeklyWeekContaining(...ids: string[]): number {
+  for (let week = 0; week < 10_000; week++) {
+    const slate = new Set(weeklyCharterSlateForWeekV1(week).map(({ id }) => id));
+    if (ids.every((id) => slate.has(id as never))) return week;
+  }
+  throw new Error(`weekly landing fixture found no slate containing ${ids.join(',')}`);
 }
 
 function foreign133(): CanonicalCF1WorldAddress {
@@ -171,16 +211,23 @@ interface FixtureOptions {
   readonly identity?: CanonicalWorldIdentityStateV1;
   readonly identityMode?: IdentityMode;
   readonly storageFailure?: boolean;
+  readonly sessionSeed?: number;
 }
 
 async function runtimeFixture(options: FixtureOptions = {}) {
   const state = options.state ?? baseState();
   const session = createSessionRNG(
-    0xA0A0_0001,
+    options.sessionSeed ?? 0xA0A0_0001,
     { 'prior.random': 2 },
     7,
   ).state();
-  const f4 = prepareF4AuthorityUpdate({}, { activePlayMs: 0 }, session);
+  const loot = prepareArc2LootLegacyMigration({
+    extensions: {},
+    legacy: state,
+    capacity: MAX_GEAR_CAPACITY,
+  });
+  if (loot.kind !== 'prepared') throw new Error(`landing Arc 2 fixture was ${loot.kind}`);
+  const f4 = prepareF4AuthorityUpdate(loot.extensions, { activePlayMs: 0 }, session);
   const identity = options.identity ?? createEmptyWorldIdentityState();
   let extensions = f4.extensions;
   if (options.identityMode !== 'absent') {
@@ -290,7 +337,7 @@ describe('Arc 0 durable landing action', () => {
     await fixture.runtime.release();
   });
 
-  it('commits one first landing, sample payout, Charter delta, route, identity, and no-RNG receipt', async () => {
+  it('commits one first landing, sample payout, Charter delta, route, identity, and fixed descent receipt', async () => {
     const address = solWorld(134);
     const fixture = await runtimeFixture();
     const beforeState = structuredClone(fixture.state);
@@ -310,18 +357,22 @@ describe('Arc 0 durable landing action', () => {
     expect(outcome.transaction).toMatchObject({
       revision: 2,
       plan: {
-        operation: `arc0.land:${sha256Hex(address.key)}`,
         receiptOrdinal: 7,
+        draws: [
+          { domain: 'descent.success' },
+          { domain: 'descent.damage' },
+        ],
       },
       receipt: { ordinal: 7, kind: ARC0_LANDING_RECEIPT_KIND },
     });
-    expect(operationForArc0Landing(address)).toBe(outcome.transaction.plan.operation);
+    expect(operationForArc0Landing(address)).toBe(`arc0.land:${sha256Hex(address.key)}`);
     expect(outcome.transaction.receipt.witness).toBe(outcome.witness.encoded);
+    expect(outcome.arc2LootState?.kind).toBe('inventory');
     expect(outcome.transaction.state.savedView).toEqual(navToView(surface(address)));
     expect(outcome.transaction.state.landed).toContain(address.planet.seed);
     expect(outcome.transaction.state.stats.landings).toBe(1);
     expect(outcome.transaction.state.stats.essenceEarned).toBe(
-      outcome.witness.facts.sample.kind === 'reward'
+      outcome.witness.facts.sample?.kind === 'reward'
         ? outcome.witness.facts.sample.stardust : -1,
     );
     expect(outcome.transaction.state.ascProg['c1-land']).toBe(1);
@@ -339,7 +390,7 @@ describe('Arc 0 durable landing action', () => {
     expect(fixture.runtime.sessionRng).toEqual({
       seed: 0xA0A0_0001,
       ordinal: 8,
-      draws: { 'prior.random': 2 },
+      draws: { 'prior.random': 2, 'descent.success': 1, 'descent.damage': 1 },
     });
     expect(outcome.verification.worldIdentity.kind).toBe('loaded');
     if (outcome.verification.worldIdentity.kind === 'loaded') {
@@ -354,7 +405,10 @@ describe('Arc 0 durable landing action', () => {
       expect(readF4Authority(persisted.extensions)).toMatchObject({
         kind: 'loaded',
         authority: {
-          sessionRng: { ordinal: 8, draws: { 'prior.random': 2 } },
+          sessionRng: {
+            ordinal: 8,
+            draws: { 'prior.random': 2, 'descent.success': 1, 'descent.damage': 1 },
+          },
         },
       });
     }
@@ -374,7 +428,7 @@ describe('Arc 0 durable landing action', () => {
 
     expect(outcome.kind).toBe('committed');
     if (outcome.kind !== 'committed') return;
-    const sampleStardust = outcome.witness.facts.sample.kind === 'reward'
+    const sampleStardust = outcome.witness.facts.sample?.kind === 'reward'
       ? outcome.witness.facts.sample.stardust : 0;
     expect(outcome.witness.facts.starterCharters).toMatchObject({
       changed: true,
@@ -402,6 +456,210 @@ describe('Arc 0 durable landing action', () => {
       expect(persisted.state.chDone).toEqual(['st-land']);
       expect(persisted.state.stats.charters).toBe(1);
     }
+  });
+
+  it('lets one permanent first hostile Landing settle wk-land and wk-hostile in the same receipt', async () => {
+    const week = weeklyWeekContaining('wk-land', 'wk-hostile');
+    const codecNow = week * WEEKLY_CHARTER_MS_V1 + 1;
+    const address = solWorldOfType(new Set(['venus', 'lava', 'gas']));
+    const state = baseState();
+    state.tutDone = true;
+    state.chDone = ['st-land', 'st-mine', 'st-scan', 'st-scout', 'st-conq'];
+    state.chWeek = week;
+    state.chacc = ['wk-land', 'wk-hostile'];
+    state.chProg = { 'wk-land': 2, 'wk-hostile': 0 };
+    const fixture = await runtimeFixture({ state, sessionSeed: 0xA0A0_0001 });
+    const outcome = await commitArc0LandingAction({
+      ...actionInput(fixture, address),
+      codecNow,
+    });
+
+    expect(outcome.kind).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.witness.facts.weeklyCharters).toMatchObject({
+      changed: true,
+      events: [{ kind: 'landfall', worldKey: address.key, first: true }],
+      progressIds: ['wk-land', 'wk-hostile'],
+      completions: [
+        { id: 'wk-land', stardust: 20 },
+        { id: 'wk-hostile', stardust: 35 },
+      ],
+    });
+    expect(outcome.transaction.state.chacc).toEqual([]);
+    expect(outcome.transaction.state.chProg).toMatchObject({
+      'wk-land': 3,
+      'wk-hostile': 1,
+    });
+    expect(outcome.transaction.state.stats.charters).toBe(2);
+    expect(outcome.transaction.receipt.kind).toBe(ARC0_LANDING_RECEIPT_KIND);
+    expect(fixture.receiptCas()).toBe(1);
+    expect(verifyArc0LandingPostcommit({
+      transaction: outcome.transaction,
+      address,
+      witness: outcome.witness,
+    })).toMatchObject({ kind: 'verified' });
+  });
+
+  it('binds an exact Arc 2 starter-gear successor, not only its legacy mirror', async () => {
+    const address = solWorld(134);
+    const state = baseState();
+    state.chacc = ['st-mars'];
+    const fixture = await runtimeFixture({ state });
+    const outcome = await commitArc0LandingAction(actionInput(fixture, address));
+
+    expect(outcome.kind).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.witness.facts.starterCharters.completions).toMatchObject([{
+      id: 'st-mars', gearId: 'magboots', alreadyProven: false,
+    }]);
+    expect(outcome.arc2LootState?.kind).toBe('inventory');
+    const durable = readArc2Loot(outcome.transaction.saved.extensions);
+    expect(durable.kind).toBe('loaded');
+    if (durable.kind !== 'loaded' || durable.state.kind !== 'inventory'
+      || outcome.arc2LootState === null) return;
+    expect(encodeArc2LootCarrier(durable.state))
+      .toEqual(encodeArc2LootCarrier(outcome.arc2LootState));
+    expect(projectArc2LootLegacyMirror(durable.state)).toEqual({
+      items: outcome.transaction.state.items,
+      equip: outcome.transaction.state.equip,
+      equipAff: outcome.transaction.state.equipAff,
+    });
+  });
+
+  it('rejects a same-mirror Arc 2 postcommit substitution with wrong provenance', async () => {
+    const address = solWorld(134);
+    const state = baseState();
+    state.chacc = ['st-mars'];
+    const fixture = await runtimeFixture({ state });
+    const outcome = await commitArc0LandingAction(actionInput(fixture, address));
+
+    expect(outcome.kind).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    const loaded = readArc2Loot(outcome.transaction.saved.extensions);
+    expect(loaded.kind).toBe('loaded');
+    if (loaded.kind !== 'loaded' || loaded.state.kind !== 'inventory') return;
+    const original = loaded.state.inventory.entries[0]?.instance;
+    if (!original) throw new Error('expected Landing starter gear');
+    const replacement = createGearInstance(makeGearSourceActionId({
+      kind: 'expedition',
+      ownerId: 'arc0-landing-postcommit-substitution',
+      actionKey: 'wrong-magboots',
+      receiptId: 'fixture',
+    }), 0, getFixedCraftGenerationPlan('magboots', original.generation.seed));
+    const inventory = Object.freeze({
+      ...loaded.state.inventory,
+      entries: loaded.state.inventory.entries.map((entry) => Object.freeze({
+        ...entry,
+        instance: entry.instance.instanceId === original.instanceId
+          ? replacement : entry.instance,
+      })),
+      equipped: loaded.state.inventory.equipped.map((binding) => Object.freeze({
+        ...binding,
+        instanceId: binding.instanceId === original.instanceId
+          ? replacement.instanceId : binding.instanceId,
+      })),
+    });
+    const altered = prepareArc2LootInventoryWrite({
+      extensions: outcome.transaction.saved.extensions,
+      inventory,
+      stackableCounts: loaded.state.stackableCounts,
+    });
+    expect(altered.kind).toBe('prepared');
+    if (altered.kind !== 'prepared') return;
+    expect(projectArc2LootLegacyMirror(altered.state)).toEqual({
+      items: outcome.transaction.state.items,
+      equip: outcome.transaction.state.equip,
+      equipAff: outcome.transaction.state.equipAff,
+    });
+    expect(verifyArc0LandingPostcommit({
+      transaction: Object.freeze({
+        ...outcome.transaction,
+        saved: Object.freeze({
+          ...outcome.transaction.saved,
+          extensions: altered.extensions,
+        }),
+      }),
+      address,
+      witness: outcome.witness,
+    })).toEqual({ kind: 'mismatch', detail: 'arc2-loot-state-mismatch' });
+  });
+
+  it('rejects an exact Arc 2 carrier substitution on a successful no-gear landing', async () => {
+    const address = solWorld(134);
+    const fixture = await runtimeFixture();
+    const outcome = await commitArc0LandingAction(actionInput(fixture, address));
+
+    expect(outcome.kind).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.witness.facts.starterCharters.completions).toEqual([]);
+    const loaded = readArc2Loot(outcome.transaction.saved.extensions);
+    expect(loaded.kind).toBe('loaded');
+    if (loaded.kind !== 'loaded' || loaded.state.kind !== 'inventory') return;
+    const altered = prepareArc2LootInventoryWrite({
+      extensions: outcome.transaction.saved.extensions,
+      inventory: Object.freeze({
+        ...loaded.state.inventory,
+        revision: loaded.state.inventory.revision + 1,
+      }),
+      stackableCounts: loaded.state.stackableCounts,
+    });
+    expect(altered.kind).toBe('prepared');
+    if (altered.kind !== 'prepared') return;
+    expect(projectArc2LootLegacyMirror(altered.state)).toEqual({
+      items: outcome.transaction.state.items,
+      equip: outcome.transaction.state.equip,
+      equipAff: outcome.transaction.state.equipAff,
+    });
+    expect(verifyArc0LandingPostcommit({
+      transaction: Object.freeze({
+        ...outcome.transaction,
+        saved: Object.freeze({
+          ...outcome.transaction.saved,
+          extensions: altered.extensions,
+        }),
+      }),
+      address,
+      witness: outcome.witness,
+    })).toEqual({ kind: 'mismatch', detail: 'arc2-loot-state-mismatch' });
+  });
+
+  it('refuses a divergent parent Arc 2 mirror before draws, gear staging, or receipt durability', async () => {
+    const address = solWorld(134);
+    const state = baseState();
+    state.chacc = ['st-mars'];
+    const fixture = await runtimeFixture({ state });
+    fixture.state.items = [['headlamp', 1]];
+    const beforeSession = structuredClone(fixture.runtime.sessionRng);
+    const outcome = await commitArc0LandingAction(actionInput(fixture, address));
+
+    expect(outcome).toMatchObject({
+      kind: 'refused',
+      durability: 'none',
+      detail: 'engineering:legacy-mirror-divergent',
+      transaction: { kind: 'pre-draw-refused' },
+    });
+    expect(fixture.runtime.sessionRng).toEqual(beforeSession);
+    expect(await fixture.repository.revision()).toBe(1);
+    expect(fixture.receiptCas()).toBe(0);
+    expect(await fixture.backend.keys('receipts')).toEqual([]);
+  });
+
+  it('refuses a divergent parent Arc 2 mirror on a no-gear landing before any draw', async () => {
+    const address = solWorld(134);
+    const fixture = await runtimeFixture();
+    fixture.state.items = [['headlamp', 1]];
+    const beforeSession = structuredClone(fixture.runtime.sessionRng);
+    const outcome = await commitArc0LandingAction(actionInput(fixture, address));
+
+    expect(outcome).toMatchObject({
+      kind: 'refused',
+      durability: 'none',
+      detail: 'engineering:legacy-mirror-divergent',
+      transaction: { kind: 'pre-draw-refused' },
+    });
+    expect(fixture.runtime.sessionRng).toEqual(beforeSession);
+    expect(await fixture.repository.revision()).toBe(1);
+    expect(fixture.receiptCas()).toBe(0);
   });
 
   it('commits a repeat without a second sample, landing stat, or Charter bank', async () => {
@@ -434,8 +692,90 @@ describe('Arc 0 durable landing action', () => {
     expect(fixture.runtime.sessionRng).toEqual({
       seed: 0xA0A0_0001,
       ordinal: 9,
-      draws: { 'prior.random': 2 },
+      draws: { 'prior.random': 2, 'descent.success': 1, 'descent.damage': 1 },
     });
+  });
+
+  it('atomically waves off in orbit, learns +20 for the exact world, and never publishes landing fields', async () => {
+    const address = solWorld(132);
+    const state = baseState();
+    state.hp = 10;
+    const fixture = await runtimeFixture({ state, sessionSeed: 19_245 });
+    const before = structuredClone(fixture.state);
+    const first = await commitArc0LandingAction(actionInput(fixture, address));
+
+    expect(first.kind).toBe('committed');
+    if (first.kind !== 'committed') return;
+    expect(first.witness.facts).toMatchObject({
+      permanentLanding: false,
+      sample: null,
+      achievement: null,
+      starterCharters: { changed: false, progressIds: [], completions: [] },
+      descent: {
+        kind: 'wave-off', navigation: 'orbit', drawsConsumed: 2,
+        waveOffCountBefore: 0, waveOffCountAfter: 1,
+      },
+    });
+    expect(first.transaction.plan).toMatchObject({
+      draws: DESCENT_OUTCOME_DOMAINS_V1.map((domain) => ({ domain })),
+    });
+    expect(first.transaction.state.hp).toBeGreaterThanOrEqual(1);
+    expect(first.transaction.state.hp).toBeLessThan(before.hp);
+    expect(first.transaction.state.savedView).toEqual(before.savedView);
+    expect(first.transaction.state.landed).toEqual(before.landed);
+    expect(first.transaction.state.ascProg).toEqual(before.ascProg);
+    expect(first.transaction.state.cargo).toEqual(before.cargo);
+    expect(first.transaction.state.essence).toBe(before.essence);
+    expect(first.transaction.state.unlocked).toEqual(before.unlocked);
+    expect(first.transaction.state.chDone).toEqual(before.chDone);
+    expect(first.worldIdentityWrites).toEqual([]);
+    expect(first.arc2LootState).toBeNull();
+    const firstWaveOff = readDescentWaveOffCarrierV1(first.transaction.saved.extensions);
+    expect(firstWaveOff.kind).toBe('loaded');
+    if (firstWaveOff.kind === 'loaded') {
+      expect(descentWaveOffCountV1(firstWaveOff.state, address)).toBe(1);
+    }
+    expect(first.transaction.state.waveOffs).toEqual([[address.planet.seed, 1]]);
+    expect(fixture.receiptCas()).toBe(1);
+    expect(fixture.runtime.sessionRng).toEqual({
+      seed: 19_245,
+      ordinal: 8,
+      draws: { 'prior.random': 2, 'descent.success': 1, 'descent.damage': 1 },
+    });
+
+    const second = await commitArc0LandingAction({
+      ...actionInput(fixture, address),
+      state: first.transaction.state,
+    });
+    expect(second.kind).toBe('committed');
+    if (second.kind !== 'committed') return;
+    expect(second.witness.facts.descent).toMatchObject({
+      kind: 'wave-off', waveOffCountBefore: 1, waveOffCountAfter: 2,
+      policy: {
+        waveOffCount: 1,
+        learnedApproachBonus: 20,
+        successPercent: Math.min(100, first.witness.facts.descent.policy.successPercent + 20),
+      },
+    });
+    expect(second.transaction.state.waveOffs).toEqual([[address.planet.seed, 2]]);
+    expect(fixture.runtime.sessionRng.draws).toMatchObject({
+      'descent.success': 2, 'descent.damage': 2,
+    });
+  });
+
+  it('keeps a failed descent nonlethal when the explorer is already at one HP', async () => {
+    const address = solWorld(132);
+    const state = baseState();
+    state.hp = 1;
+    const fixture = await runtimeFixture({ state, sessionSeed: 19_245 });
+    const outcome = await commitArc0LandingAction(actionInput(fixture, address));
+
+    expect(outcome.kind).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.witness.facts.descent).toMatchObject({
+      kind: 'wave-off', navigation: 'orbit', hpBefore: 1, hpAfter: 1, damage: 0,
+    });
+    expect(outcome.transaction.state.hp).toBe(1);
   });
 
   it('claims an unresolved already-landed mirror without rewarding or banking it again', async () => {
@@ -480,6 +820,7 @@ describe('Arc 0 durable landing action', () => {
       'c1-comp': 2,
       'c1-jump': 1,
     };
+    state.waveOffs = [[address.planet.seed, 2]];
     const fixture = await runtimeFixture({ state });
     const outcome = await commitArc0LandingAction(actionInput(fixture, address));
 
@@ -512,6 +853,11 @@ describe('Arc 0 durable landing action', () => {
     expect(outcome.transaction.state.ascCh).toBe(1);
     expect(outcome.transaction.state.landed).toContain(133);
     expect(outcome.transaction.state.unlocked).toEqual(['home']);
+    expect(outcome.witness.facts.descent).toMatchObject({
+      kind: 'landed', drawsConsumed: 0, waveOffCountBefore: 2, waveOffCountAfter: 0,
+    });
+    expect(outcome.transaction.state.waveOffs).toEqual([]);
+    expect(fixture.runtime.sessionRng.draws).toEqual({ 'prior.random': 2 });
     const persisted = await readSaveV5(fixture.backend, REGISTRY, NOW);
     expect(persisted.kind).toBe('loaded');
     if (persisted.kind === 'loaded') expect(persisted.state.unlocked).toEqual(['home']);
@@ -524,6 +870,7 @@ describe('Arc 0 durable landing action', () => {
     state.essence = 1_000_000_000;
     state.stats.essenceEarned = 1_000_000_000;
     state.stats.landings = 1_000_000_000;
+    state.waveOffs = [[address.planet.seed, 2]];
     /* Route-only Training must not parse Charter state that it will not use.
        This JSON-equivalent null-prototype carrier is accepted by the save
        codec but deliberately rejected by checkedCharter. */
@@ -550,43 +897,54 @@ describe('Arc 0 durable landing action', () => {
         delta: {},
       },
       achievement: null,
+      descent: {
+        kind: 'landed', drawsConsumed: 0, waveOffCountBefore: 2, waveOffCountAfter: 2,
+      },
     });
     expect(outcome.worldIdentityWrites).toEqual([]);
     expect(outcome.transaction.state.savedView).toEqual(navToView(surface(address)));
     const routeOnly = structuredClone(outcome.transaction.state);
     routeOnly.savedView = fixture.state.savedView;
     expect(JSON.stringify(routeOnly)).toBe(before);
+    expect(outcome.transaction.state.waveOffs).toEqual([[address.planet.seed, 2]]);
+    expect(fixture.runtime.sessionRng.draws).toEqual({ 'prior.random': 2 });
     expect(outcome.verification.worldIdentity.kind).toBe('loaded');
     if (outcome.verification.worldIdentity.kind === 'loaded') {
       expect(hasCanonicalWorldLanded(outcome.verification.worldIdentity.state, address)).toBe(false);
     }
   });
 
-  it('keeps canonical Earth permanent during Training but still sample-free', async () => {
+  it('keeps canonical Earth route-only during Training and consumes no draw', async () => {
     const address = solWorld(133);
-    const fixture = await runtimeFixture();
+    const state = baseState();
+    state.waveOffs = [[address.planet.seed, 2]];
+    const fixture = await runtimeFixture({ state });
     const outcome = await commitArc0LandingAction(actionInput(fixture, address, true));
 
     expect(outcome.kind).toBe('committed');
     if (outcome.kind !== 'committed') return;
     expect(outcome.witness.facts).toMatchObject({
       landing: 'first',
-      permanentLanding: true,
+      permanentLanding: false,
       training: true,
       sample: { kind: 'suppressed', reason: 'canonical-earth' },
-      charter: { banked: true },
-      achievement: {
-        id: 'home',
-        owner: 'landing:earth',
-        alreadyUnlocked: false,
-        added: true,
+      charter: { banked: false },
+      achievement: null,
+      descent: {
+        kind: 'landed', drawsConsumed: 0, waveOffCountBefore: 2, waveOffCountAfter: 2,
       },
     });
-    expect(outcome.transaction.state.landed).toContain(133);
-    expect(outcome.transaction.state.unlocked).toEqual(['home']);
+    expect(outcome.transaction.state.landed).not.toContain(133);
+    expect(outcome.transaction.state.unlocked).toEqual([]);
     expect(outcome.transaction.state.stats.landings).toBe(0);
+    expect(outcome.transaction.state.waveOffs).toEqual([[address.planet.seed, 2]]);
+    expect(fixture.runtime.sessionRng).toEqual({
+      seed: 0xA0A0_0001,
+      ordinal: 8,
+      draws: { 'prior.random': 2 },
+    });
     if (outcome.verification.worldIdentity.kind === 'loaded') {
-      expect(hasCanonicalWorldLanded(outcome.verification.worldIdentity.state, address)).toBe(true);
+      expect(hasCanonicalWorldLanded(outcome.verification.worldIdentity.state, address)).toBe(false);
     }
   });
 
@@ -701,7 +1059,7 @@ describe('Arc 0 durable landing action', () => {
       kind: 'refused',
       durability: 'none',
       detail,
-      transaction: { kind: 'rejected', stage: 'derive' },
+      transaction: { kind: 'pre-draw-refused' },
     });
     expect(JSON.stringify(fixture.state)).toBe(beforeState);
     expect(fixture.runtime.sessionRng).toEqual(beforeSession);
@@ -734,7 +1092,7 @@ describe('Arc 0 durable landing action', () => {
       kind: 'refused',
       durability: 'none',
       detail,
-      transaction: { kind: 'rejected', stage: 'derive' },
+      transaction: { kind: 'pre-draw-refused' },
     });
     expect(JSON.stringify(state)).toBe(before);
     expect(fixture.receiptCas()).toBe(0);
@@ -752,6 +1110,11 @@ describe('Arc 0 durable landing action', () => {
           calls++;
           return { kind: 'lease-unavailable' };
         },
+        async commitOutcomesPreDraw() {
+          calls++;
+          return { kind: 'lease-unavailable' };
+        },
+        extensions: {},
       },
       state: baseState(),
       surface: surface(address),
@@ -781,6 +1144,11 @@ describe('Arc 0 durable landing action', () => {
           calls++;
           return { kind: 'lease-unavailable' };
         },
+        async commitOutcomesPreDraw() {
+          calls++;
+          return { kind: 'lease-unavailable' };
+        },
+        extensions: {},
       },
       state: baseState(),
       surface: surface(other),

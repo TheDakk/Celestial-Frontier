@@ -10,6 +10,7 @@
     "@cf/domain-loot": "*",
     "@cf/domain-progression": "*",
     "@cf/domain-rand": "*",
+    "@cf/domain-sessionrng": "*",
     "@cf/domain-speciestraits": "*",
     "@cf/domain-starcatalog": "*",
     "@cf/domain-strays": "*",

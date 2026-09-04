@@ -1,5 +1,16 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+## V2 exact-instance creature progression — implementation as of 2026-09-04
+
+`apps/game/src/compendium-creature-progression.ts` verifies one real fauna Compendium record against
+the privileged registered Arc 5 ownership object, then projects live creatures and immutable
+tombstone history by stable `creatureId`. Every row reuses CombatCore `levelOf` and `battleStats`,
+shows the exact `6·L²` XP span, class, the always-awake first innate slot plus the second/third
+slots at L3/L6, individual wounds, and mission or active-play Recovery status. Same-species twins remain
+separate. Completed Recovery is a read-time status only; the next authorized companion action still
+owns clearing its stored assignment. Deep-equal authority clones fail closed. The projector and its
+semantic markup mutate no ownership, genome, lineage, clock or combat value.
+
 ## V2 beta Research consumers — implementation as of 2026-09-04
 
 The six-row Engineering catalogue is fully purchasable through the existing Arc 3 receipt/CAS
@@ -1079,16 +1090,18 @@ below retain their checkpoint scope; `ROADMAP.md` owns current integration and v
 > **2026-08-29 current local Starter Charter overlay:** `starter-charters.ts` owns the canonical
 > five-link `trades` and five-link `tour` definitions, their authored counts/Stardust/fixed gear,
 > one-link reveal, accept-to-activate rule and exact three-active cap. The board retains accepted
-> rows plus the first incomplete row in each chain. `st-scan` remains visible/unavailable and blocks
-> later newly revealed trades until its real bioscan owner exists; weekly rows are an explicit
-> protected boundary, never rolled or paid. `st-conq` remains the verified combat owner's +25
+> rows plus the first incomplete row in each chain. `st-scan` is live through explicit Discover
+> Life after acceptance and blocks later newly revealed trades only until that exact Bioscan receipt
+> completes it; weekly rows are an explicit protected boundary, never rolled or paid. `st-conq`
+> remains the verified combat owner's +25
 > Stardust completion and retains its Jump Drive reveal lock.
 >
 > `commitStarterCharterAcceptV1` is a deterministic F4 product action with one receipt/CAS, no draw,
 > retry or optimistic publication. It can complete an accepted state deed immediately only from
 > exact existing evidence: non-canonical-Earth landing, positive Mine count, existing legacy Scout,
 > a parseable legacy `conquered` row whose seed is not 133, Mercury/Mars/ice landing, or a canonical
-> T2 component. Giant mines stay count-only and `st-scan` never auto-completes. New landfall/mining
+> T2 component. Giant mines and `st-scan` stay count-from-accept; an older Survey never auto-completes
+> the Discover Life Charter. New landfall/mining
 > events carry the complete
 > registered CF1 world address; Sol-tour filters require `isSolLandfallAddress` plus the authored
 > seed/ordinal, and canonical Earth never proves `st-land`. Imported `surfSeen` seed fallbacks are
@@ -1103,7 +1116,7 @@ below retain their checkpoint scope; `ROADMAP.md` owns current integration and v
 > current/lifetime Stardust, raises `stats.charters` and refreshes aggregate achievements/best rank
 > in that candidate.
 >
-> Fixed reward gear is Earpiece (`st-scan`, unavailable), Headlamp (`st-mercury`), Mag-Boots
+> Fixed reward gear is Earpiece (`st-scan`), Headlamp (`st-mercury`), Mag-Boots
 > (`st-mars`), Meteorite Pendant (`st-giants`) and Field Leggings (`st-ice`). Each is a deterministic
 > Arc 2 instance derived from Charter id plus receipt ordinal. An inventory grant auto-equips only
 > when its slot is empty; full inventory creates a pending reward up to the exact 500-entry cap.

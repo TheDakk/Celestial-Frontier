@@ -23,6 +23,11 @@ function landingWiringErrors(source: string): string[] {
     '\nlet lastArc0AtlasOutcome:',
   );
   if (body.length === 0) return ['landing-source-section'];
+  const waveOffPublisher = sourceSection(
+    publisher,
+    "  if (facts.descent.kind === 'wave-off') {",
+    '\n  save.savedView =',
+  );
   const claim = body.indexOf('const actionClaim = productActionCoordinator.tryClaim(operation);');
   const hold = body.indexOf('await smokeProductActionHold.holdIfArmed(actionClaim.operation);', claim);
   const heartbeat = body.indexOf('await settleF4Heartbeat();', hold);
@@ -80,12 +85,24 @@ function landingWiringErrors(source: string): string[] {
     || !publisher.includes('save.equip = { ...committed.equip };')
     || !publisher.includes('save.equipAff = Object.fromEntries(')
     || !publisher.includes('facts.achievement !== null || facts.starterCharters.changed')
-    || !publisher.includes("facts.sample.kind === 'reward' || facts.starterCharters.changed")) {
+    || !publisher.includes("facts.sample?.kind === 'reward' || facts.starterCharters.changed")) {
     errors.push('landing-starter-charter-publication');
   }
-  if (!body.includes('facts.starterCharters.completions.some(({ gearId }) => gearId !== null)')
+  if (!waveOffPublisher.includes('save.hp = committed.hp;')
+    || !waveOffPublisher.includes('return;')
+    || /save\.(?:savedView|landed|ascCh|ascProg|chacc|chDone|chProg|cargo|essence|stats|items|equip|equipAff|unlocked)\s*=/u
+      .test(waveOffPublisher)) {
+    errors.push('landing-wave-off-publication-fence');
+  }
+  if (!body.includes("if (facts.descent.kind === 'landed')")
+    || !body.includes('attempt.arc2LootState === null')
+    || !body.includes('JSON.stringify(encodeArc2LootCarrier(loaded.state))')
+    || !body.includes('JSON.stringify(encodeArc2LootCarrier(attempt.arc2LootState))')
     || !body.includes('arc2LootLegacyMirrorMatches(loaded.state, attempt.transaction.state)')
-    || !body.includes('lastStarterCharterAcceptStatus = `Completed ${titles}. Reward: ${rewards}.`;')
+    || !body.includes('committedLandingLootState = loaded.state;')) {
+    errors.push('landing-exact-arc2-fixed-point');
+  }
+  if (!body.includes('lastStarterCharterAcceptStatus = `Completed ${titles}. Reward: ${rewards}.`;')
     || !body.includes('Starter Charter complete')
     || !body.includes("if (openPanelId() === 'rec') fillRecords();")) {
     errors.push('landing-starter-charter-presentation');
@@ -257,6 +274,14 @@ describe('Arc 0 main landing wiring', () => {
       '        const loaded = readArc2Loot(runtime.extensions);',
       '        const loaded = { kind: \'absent\' } as const; // mutation control omitted exact gear carrier',
     ))).toContain('landing-durable-order');
+    expect(landingWiringErrors(main.replace(
+      "      if (facts.descent.kind === 'landed') {",
+      '      if (false) { // mutation control skipped exact Arc 2 fixed point',
+    ))).toContain('landing-exact-arc2-fixed-point');
+    expect(landingWiringErrors(main.replace(
+      '    save.hp = committed.hp;',
+      '    save.hp = committed.hp; save.savedView = committed.savedView; // mutation control',
+    ))).toContain('landing-wave-off-publication-fence');
     expect(landingWiringErrors(main.replace(
       '        ...facts.starterCharters.addedAchievementIds,',
       '        // mutation control omitted Starter Charter achievements',

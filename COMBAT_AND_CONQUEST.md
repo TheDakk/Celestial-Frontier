@@ -1,5 +1,12 @@
 # Celestial Frontier — Combat & Conquest
 
+> **2026-09-04 exact-instance progression presentation (matches local v2 code):** Compendium fauna
+> details reuse `levelOf` and `battleStats` from the existing CombatCore rather than copying combat
+> balance. Each stable owned creature ID gets its own XP span, class, L3/L6 innate awakening count,
+> wounds and mission/active-play Recovery status; same-species twins are never merged. The projection
+> is display-only, gives no stats or XP, clears no Recovery assignment, and labels tombstones as
+> retired history rather than selectable champions.
+
 > **2026-08-29 current local Prime/Titan and Frontier-ending closure:** the encounter owner uses
 > the exact nine-Signature registry—Earth/`stone`, Fire/`flame`, Air/`sky`, Stellar/`star`,
 > Water/`ocean`, Electric/`mind`, Poison/`life`, Void and Prism. An unclaimed Elemental Titan can

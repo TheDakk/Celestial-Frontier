@@ -34,6 +34,7 @@ const ALLOWED_INTERNAL_MODULE_REFERENCES = Object.freeze([
   'packages/domain/loot/src/engineering-capabilities.ts',
   'packages/domain/loot/src/index.ts',
   'packages/domain/loot/test/engineering-capabilities.test.ts',
+  'packages/domain/opportunity/test/descent.test.ts',
   'packages/persistence/src/arc2-engineering-loadout.ts',
   'packages/persistence/test/arc2-fixed-fabrication.test.ts',
   'packages/persistence/test/arc2-engineering-loadout.test.ts',
@@ -41,6 +42,7 @@ const ALLOWED_INTERNAL_MODULE_REFERENCES = Object.freeze([
 const ALLOWED_MINT_REFERENCES = Object.freeze([
   'packages/domain/loot/src/engineering-loadout-internal.ts',
   'packages/domain/loot/test/engineering-capabilities.test.ts',
+  'packages/domain/opportunity/test/descent.test.ts',
   'packages/persistence/src/arc2-engineering-loadout.ts',
   'packages/persistence/test/arc2-fixed-fabrication.test.ts',
   'packages/persistence/test/arc2-engineering-loadout.test.ts',

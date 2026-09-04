@@ -12,6 +12,10 @@ import {
   renderArc9BinderPanelV1,
 } from '../apps/game/src/binder-sets.js';
 import {
+  paragonCodexIdV1,
+  paragonGenomeV1,
+} from '../apps/game/src/paragon-finder.js';
+import {
   createMemoryBackend,
   createRevisionedRepository,
   migrateStoredV4ToV5,
@@ -21,7 +25,13 @@ import {
   type ContentRegistry,
   type SaveStateV2,
 } from '@cf/persistence';
-import { makeGenome } from '@cf/domain-genome';
+import {
+  classifyRealm,
+  describeSpecies,
+  makeGenome,
+  sapienceTier,
+  type Genome,
+} from '@cf/domain-genome';
 import { createSessionRNG } from '@cf/domain-sessionrng';
 
 const REGISTRY = REGISTRY_JSON as unknown as ContentRegistry;
@@ -60,6 +70,26 @@ function kingdomCodex(): SaveStateV2['codex'] {
   }) as SaveStateV2['codex'];
 }
 
+function paragonCodex(count = 10): SaveStateV2['codex'] {
+  return Array.from({ length: count }, (_, index) => {
+    const g = { ...paragonGenomeV1(index) } as unknown as Genome;
+    const description = describeSpecies(g);
+    const id = paragonCodexIdV1(index);
+    return [id, {
+      id,
+      name: description.name,
+      kind: description.kind,
+      tier: description.grade.tier,
+      realm: classifyRealm(g),
+      sapient: sapienceTier(g),
+      from: `Paragon site #${index + 1}`,
+      hybrid: false,
+      g: g as unknown as Record<string, unknown>,
+      where: null,
+    }];
+  });
+}
+
 async function fixture(save: SaveStateV2, codecNow = 10): Promise<Readonly<{
   runtime: F4RuntimeAuthority;
   state: SaveStateV2;
@@ -87,7 +117,7 @@ async function fixture(save: SaveStateV2, codecNow = 10): Promise<Readonly<{
 }
 
 describe('Arc 9 Binder', () => {
-  it('projects canonical pages, seven claimable sets, and an honest Paragon boundary', () => {
+  it('projects canonical pages, eight claimable sets, and all fifty Paragon slots', () => {
     const save = state();
     save.codex = kingdomCodex();
     save.claimedSets = ['para10'];
@@ -103,10 +133,16 @@ describe('Arc 9 Binder', () => {
     });
     expect(projected.model.pages.find(({ id }) => id === 'flavors')?.slots.map(({ color }) => color))
       .toEqual(['#7fe6a0', '#ff8a72', '#8fb4ff', '#ffd96a', '#c79fff']);
-    expect(projected.model.paragon).toMatchObject({ status: 'unavailable', preservedClaim: true });
+    expect(projected.model.paragon).toMatchObject({
+      status: 'finder-ready', found: 0, total: 50, milestoneClaimed: true,
+    });
+    expect(projected.model.paragon.slots).toHaveLength(50);
     const html = renderArc9BinderPanelV1(projected.model);
     expect(html).toContain('data-binder-claim="kingdoms"');
     expect(html).toContain('The Fifty Paragons');
+    expect(html.match(/data-binder-paragon=/g)).toHaveLength(50);
+    expect(html.match(/<button type="button" class="binder-slot paragon/g)).toHaveLength(50);
+    expect(html).toContain('aria-label="Plot course to Paragon 1"');
     expect(html).not.toContain('data-binder-claim="para10"');
   });
 
@@ -160,19 +196,66 @@ describe('Arc 9 Binder', () => {
     await built.runtime.release();
   });
 
-  it('refuses incomplete, Paragon, corrupt and stale writes without publishing a reward', async () => {
+  it('claims Seeker of Legends at ten exact Paragons for +120 Stardust once', async () => {
+    const save = state();
+    save.codex = paragonCodex();
+    const built = await fixture(save);
+    const priorOrdinal = built.runtime.sessionRng.ordinal;
+    const projected = projectArc9BinderReadModelV1(built.state);
+    expect(projected.kind).toBe('projected');
+    if (projected.kind !== 'projected') return;
+    expect(projected.model.paragon).toMatchObject({ found: 10, total: 50 });
+    expect(projected.model.sets.find(({ id }) => id === 'para10')).toMatchObject({
+      name: 'Seeker of Legends', progress: '10 / 10', complete: true,
+      claimed: false, stardust: 120,
+    });
+    expect(renderArc9BinderPanelV1(projected.model)).toContain('data-binder-claim="para10"');
+
+    const claimed = await commitArc9BinderSetClaimV1({
+      state: built.state, setId: 'para10', codecNow: 10, authority: built.runtime,
+    });
+    expect(claimed.kind).toBe('committed');
+    if (claimed.kind !== 'committed') return;
+    expect(claimed.state.claimedSets).toEqual(['para10']);
+    expect(claimed.state.essence).toBe(130);
+    expect(claimed.state.stats.essenceEarned).toBe(140);
+    expect(claimed.facts).toMatchObject({ setId: 'para10', stardust: 120 });
+    expect(built.runtime.sessionRng.ordinal).toBe(priorOrdinal + 1);
+    publishArc9BinderSetClaimFieldsV1(built.state, claimed);
+    expect((await commitArc9BinderSetClaimV1({
+      state: built.state, setId: 'para10', codecNow: 10, authority: built.runtime,
+    })).kind).toBe('current');
+    expect(built.runtime.sessionRng.ordinal).toBe(priorOrdinal + 1);
+    await built.runtime.release();
+  });
+
+  it('refuses incomplete, forged, corrupt and stale writes without publishing a reward', async () => {
     const save = state();
     const built = await fixture(save);
     const { runtime } = built;
     expect((await commitArc9BinderSetClaimV1({
       state: built.state, setId: 'kingdoms', codecNow: 10, authority: runtime,
     })).kind).toBe('refused');
-    await expect(commitArc9BinderSetClaimV1({
-      state: save, setId: 'para10' as never, codecNow: 10, authority: runtime,
-    })).rejects.toThrow();
+    expect((await commitArc9BinderSetClaimV1({
+      state: built.state, setId: 'para10', codecNow: 10, authority: runtime,
+    })).kind).toBe('refused');
     const corrupt = state();
     corrupt.codex = [["dup", kingdomCodex()[0]![1]], ["dup", kingdomCodex()[1]![1]]];
     expect(projectArc9BinderReadModelV1(corrupt).kind).toBe('protected');
+
+    const forged = state();
+    const forgedGenome = makeGenome(
+      paragonGenomeV1(0).seed, 'fauna', 1,
+    ) as unknown as Record<string, unknown>;
+    const forgedEntry = kingdomCodex()[0]![1];
+    forged.codex = [[paragonCodexIdV1(0), {
+      ...forgedEntry,
+      id: paragonCodexIdV1(0),
+      g: forgedGenome,
+    }]];
+    expect(projectArc9BinderReadModelV1(forged)).toMatchObject({
+      kind: 'protected', reason: expect.stringContaining('paragon-genome-mismatch'),
+    });
 
     const eligible = state();
     eligible.codex = kingdomCodex();

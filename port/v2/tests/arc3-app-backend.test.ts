@@ -706,6 +706,52 @@ describe('Arc 3 app action transaction seam', () => {
     expect(second.derivation.state.ascProg).toMatchObject({ 'c1-mine': 2, 'c3-mine': 2 });
   });
 
+  it('settles the drawn Deep veins weekly only on its first exact Mine transaction', () => {
+    const save = freshSave();
+    save.chDone = ['st-land', 'st-mine', 'st-scan', 'st-scout', 'st-conq'];
+    save.chWeek = 2899;
+    save.chacc = ['wk-mine'];
+    save.chProg = { 'wk-mine': 2 };
+    const mars = surface(world(MARS));
+    const extensions = productExtensions({ save, sources: sources(mars) });
+    const first = deriveArc3MineAction({
+      draft: structuredClone(save), extensions, currentSurface: mars,
+      activePlayMs: 100, receiptOrdinal: 0, codecNow: NOW,
+    });
+    expect(first.kind).toBe('ready');
+    if (first.kind !== 'ready') return;
+    expect((first.derivation.result as MiningResult).firstMine).toBe(true);
+    expect(first.derivation.weeklyCharter).toMatchObject({
+      changed: true,
+      events: [{ kind: 'mined', worldKey: world(MARS).key, first: true }],
+      progressIds: ['wk-mine'],
+      completions: [{ id: 'wk-mine', stardust: 25 }],
+    });
+    expect(first.derivation.state).toMatchObject({
+      chWeek: 2899, chacc: [], chProg: { 'wk-mine': 3 },
+      essence: save.essence + 25,
+      stats: { essenceEarned: (save.stats.essenceEarned ?? 0) + 25, charters: 1 },
+    });
+    expect(JSON.parse(first.derivation.witness)).toMatchObject({
+      weeklyCharter: { events: [{ kind: 'mined', first: true }] },
+    });
+
+    const applied = applyV5ExtensionWrites(extensions, first.derivation.extensionWrites);
+    const repeat = deriveArc3MineAction({
+      draft: structuredClone(first.derivation.state), extensions: applied.extensions,
+      currentSurface: mars, activePlayMs: 101, receiptOrdinal: 1, codecNow: NOW + 1,
+    });
+    expect(repeat.kind).toBe('ready');
+    if (repeat.kind !== 'ready') return;
+    expect((repeat.derivation.result as MiningResult).firstMine).toBe(false);
+    expect(repeat.derivation.weeklyCharter).toMatchObject({
+      changed: false, events: [{ kind: 'mined', first: false }], completions: [],
+    });
+    expect(repeat.derivation.state).toMatchObject({
+      chacc: [], chProg: { 'wk-mine': 3 }, essence: save.essence + 25,
+    });
+  });
+
   it('joins a giant-world Mine Charter, reward gear, progression, and both carriers under one receipt', async () => {
     const save = freshSave();
     save.chDone = ['st-mercury', 'st-mars'];

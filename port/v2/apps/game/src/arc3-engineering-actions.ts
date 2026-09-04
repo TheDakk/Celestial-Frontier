@@ -71,6 +71,7 @@ import {
   publishStarterCharterActionFieldsV1,
   stageStarterCharterActionV1,
   type StarterCharterActionFactV1,
+  type WeeklyCharterActionFactV1,
 } from './starter-charter-action.js';
 
 export const ARC3_APP_BOOT_DIAGNOSTICS_SCHEMA = 'cf-v2-arc3-app-boot/v1' as const;
@@ -684,6 +685,7 @@ export type Arc3AppDerivation = Readonly<{
   nextArc2State: Arc2LootInventoryV1 | null;
   arc2Settlement: Arc2FixedFabricationReady | null;
   starterCharter: StarterCharterActionFactV1 | null;
+  weeklyCharter: WeeklyCharterActionFactV1 | null;
   projection: Arc3LegacyEngineeringProjection;
   minedTimestampIntent: Arc3LegacyMinedTimestampIntent;
   result: MiningResult | StellarSkimResult | ResearchPurchaseResult | FixedFabricationResult;
@@ -729,9 +731,10 @@ export function deriveArc3MineAction(input: Readonly<{
     requireArc3LegacyParity(engineering.state, input.draft, input.codecNow);
     const current = canonicalCF1WorldAddressFromNav(input.currentSurface);
     if (!current.ok) return refused(`mine-address-${current.reason}`);
+    const opportunity = projectWorldOpportunity(current.address);
     const plan = planWorldMining({
       state: engineering.state,
-      opportunity: projectWorldOpportunity(current.address),
+      opportunity,
       currentSurface: input.currentSurface,
       capabilities: loadout.capabilities,
       activePlay: { activePlayMs: input.activePlayMs },
@@ -773,6 +776,12 @@ export function deriveArc3MineAction(input: Readonly<{
       predecessorWrites: Object.freeze([write]),
       predecessorWitness: plan.witness,
       event: { kind: 'mined', address: current.address },
+      weekly: {
+        codecNow: input.codecNow,
+        events: Object.freeze([
+          { kind: 'mined', opportunity, first: plan.result.firstMine },
+        ]),
+      },
       receiptOrdinal: input.receiptOrdinal,
     });
     if (starterCharter.kind === 'refused') {
@@ -809,6 +818,7 @@ export function deriveArc3MineAction(input: Readonly<{
         nextArc2State,
         arc2Settlement: null,
         starterCharter: starterCharter.fact,
+        weeklyCharter: starterCharter.weeklyFact,
         projection,
         minedTimestampIntent: intent,
         result: plan.result,
@@ -880,6 +890,7 @@ export function deriveArc3SkimAction(input: Readonly<{
         nextArc2State: null,
         arc2Settlement: null,
         starterCharter: null,
+        weeklyCharter: null,
         projection,
         minedTimestampIntent: Object.freeze({ kind: 'preserve' }),
         result: plan.result,
@@ -952,6 +963,7 @@ export function deriveArc3ResearchAction(input: Readonly<{
         nextArc2State: null,
         arc2Settlement: null,
         starterCharter: null,
+        weeklyCharter: null,
         projection,
         minedTimestampIntent: intent,
         result: plan.result,
@@ -1097,6 +1109,7 @@ export function deriveArc3FixedFabricationAction(input: Readonly<{
         nextArc2State: finalArc2.state,
         arc2Settlement: settlement,
         starterCharter: starterCharter.fact,
+        weeklyCharter: starterCharter.weeklyFact,
         projection,
         minedTimestampIntent: intent,
         result: plan.result,
@@ -1173,7 +1186,7 @@ const RESEARCH_OWNED_FIELDS = Object.freeze([
 ] as const satisfies readonly OwnedField[]);
 const MINE_OWNED_FIELDS = Object.freeze([
   'cargo', 'cgx', 'essence', 'items', 'equip', 'equipAff', 'stats', 'ascCh', 'ascProg',
-  'chacc', 'chDone', 'chProg', 'unlocked', 'mineX', 'mined', 'skimX', 'techOwned',
+  'chacc', 'chDone', 'chWeek', 'chProg', 'unlocked', 'mineX', 'mined', 'skimX', 'techOwned',
 ] as const satisfies readonly OwnedField[]);
 const FIXED_FABRICATION_OWNED_FIELDS = Object.freeze([
   'cargo', 'cgx', 'essence', 'items', 'equip', 'equipAff', 'stats', 'ascCh', 'ascProg',

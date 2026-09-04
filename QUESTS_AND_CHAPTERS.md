@@ -72,9 +72,11 @@
 > only the first incomplete link in each chain, so accepting a link activates it but never reveals
 > the following link until completion. At most three Charters may be active. Completed ids are
 > permanent; malformed, duplicate, completed-and-accepted, over-cap or unrevealed input is
-> protected rather than normalized into a new outcome. `st-scan` stays visible/unavailable because
-> its accepted bioscan owner does not exist, and weekly rows are neither rolled, accepted nor paid
-> until v2 owns wall-week, deterministic-slate and monotonic-rollover authority. `st-conq` remains
+> protected rather than normalized into a new outcome. `st-scan` is live through the explicit
+> Discover Life action: only a scan performed after acceptance can complete it, and its Earpiece,
+> Stardust, Charter and progression consequences share that Bioscan receipt. Weekly rows are neither
+> rolled, accepted nor paid until v2 owns wall-week, deterministic-slate and monotonic-rollover
+> authority. `st-conq` remains
 > the existing verified combat owner's event, including its stage-0 Jump Drive reveal lock.
 >
 > Acceptance is one deterministic F4 product action: one immutable receipt, one lease/revision CAS,
@@ -82,8 +84,8 @@
 > that same acceptance transaction only when existing durable evidence proves it exactly:
 > non-canonical-Earth landfall (`st-land`), `stats.mines > 0`, an existing legacy Scout id, a
 > parseable legacy `conquered` row whose seed is not 133, exact Mercury/Mars/ice-world landing, or
-> ownership of one canonical T2 component. `st-giants` and unavailable `st-scan` remain count-from-
-> accept deeds. Current
+> ownership of one canonical T2 component. `st-giants` and live `st-scan` remain count-from-accept
+> deeds: accepting either never retroactively turns an older counter or Survey into completion. Current
 > landfall and Mine events carry the complete registered `CanonicalCF1WorldAddress`: canonical
 > Earth can never prove `st-land`, and Sol-tour credit requires the exact Sol hierarchy and source
 > ordinal, so a matching leaf seed beneath another galaxy/star cannot impersonate Mercury, Mars,
@@ -99,7 +101,7 @@
 > authority, failed storage and postcommit convergence cannot bank, pay or replay a Charter.
 >
 > Exact completion rewards are unchanged: `st-land` +10 Stardust; `st-mine` +15; `st-scan` +15 and
-> Comms Earpiece (currently unavailable); `st-scout` +15; `st-conq` +25; `st-mercury` +10 plus
+> Comms Earpiece; `st-scout` +15; `st-conq` +25; `st-mercury` +10 plus
 > Miner’s Headlamp; `st-mars` +10 plus Mag-Boots; `st-giants` +15 plus Meteorite Pendant;
 > `st-ice` +10 plus Field Leggings; and `st-comp` +15. Completion removes the active id, appends
 > `chDone`, caps its `chProg`, raises current/lifetime Stardust and `stats.charters`, then refreshes

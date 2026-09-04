@@ -67,7 +67,13 @@ function installDom(): void {
     <div id="chpanel"><button>Charters</button></div>
     <div id="shipyardpanel">
       <button data-pnx="shipyard">Close Shipyard</button>
-      <details><summary>Fabricator</summary><button class="engineering-action">Craft</button></details>
+      <details data-engineering-section="fabricator"><summary>Fabricator</summary>
+        <article data-recipe-id="plate">
+          <button class="engineering-action" data-engineering-action="fabricate"
+            data-action-id="plate" data-model-enabled="true"
+            data-training-forge-practice="true">Practice Forge Iron Plate</button>
+        </article>
+      </details>
     </div>
     <div id="inventorypanel"><button>Inventory action</button></div>
     <div id="combatpanel"><button>Chronicle action</button></div>
@@ -138,6 +144,9 @@ function driveToGraduation(training: typeof import('../apps/game/src/training.js
   driveToPlanetsideBriefing(training);
   document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
   training.gameEvent('panel-open', { id: 'shipyard', open: true });
+  training.gameEvent('training-forge-practice', {
+    schema: 'cf-v2-training-forge-practice-completion/v1', baseId: 'plate', outputCount: 1,
+  });
   document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
   training.gameEvent('panel-open', { id: 'codex', open: true });
   document.querySelector<HTMLButtonElement>('[data-sel="tutbtn"]')!.click();
@@ -150,12 +159,16 @@ function driveToGraduation(training: typeof import('../apps/game/src/training.js
 function graduationCopyIsTruthful(html: string): boolean {
   const copy = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
     .replace(/\s+([,.;:])/g, '$1').trim();
-  return /short drill stays focused on real navigation/i.test(copy)
-    && /board briefings are read-only/i.test(copy)
+  return /drill teaches real navigation/i.test(copy)
+    && /one isolated Iron Plate Forge practice/i.test(copy)
+    && /every other board briefing is read-only/i.test(copy)
+    && /real recipe derivation[^.!?]{0,80}erased its loaned ore and result without changing your expedition/i.test(copy)
     && /survey card’s Share prepares a verified CF1 world code/i.test(copy)
     && /pasting a valid CF1 code into Search follows its source-proven route when your ship and Prime reach allow it/i.test(copy)
     && /Accepted Atlas, Search, and CF1 arrivals may paint the same deterministic, skippable hyperlane streaks/i.test(copy)
     && /three drive researches use 2×, 4×, and 8× speed bases without changing permanent reach/i.test(copy)
+    && /unfamiliar world’s Land button discloses its exact descent chance and nonlethal wave-off damage before commitment/i.test(copy)
+    && /each exact-world wave-off improves the next attempt/i.test(copy)
     && /living world’s card also offers explicit Discover Life/i.test(copy)
     && /ordinary inspection stays write-free, while that one durable action records the world and resolves its shown hazard/i.test(copy)
     && /Reinforced Hull and worn gear reduce the wound/i.test(copy)
@@ -165,11 +178,12 @@ function graduationCopyIsTruthful(html: string): boolean {
     && /first durable success on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick/i.test(copy)
     && /a miss, Sol, repeat, stale tab, or failed write banks nothing/i.test(copy)
     && /genuinely fresh species, the Scout standing before the attempt earns up to \+2 XP in the same capture save, capped at 486/i.test(copy)
-    && /Accepted and weekly bioscan Charters remain unavailable/i.test(copy)
+    && /If the Discover Life Starter Charter is accepted, that same verified action completes and rewards it/i.test(copy)
+    && /weekly Charters remain protected until their wall-week lifecycle exists/i.test(copy)
     && /real fauna Compendium detail can Feed, nonlethally Breed, Rename, or select a Field Scout/i.test(copy)
     && /real Flora detail can Eat 1 for explorer healing, poison, and nourishment/i.test(copy)
-    && /This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat/i.test(copy)
-    && /Companion tastes, Power growth, injury care, bond, dispatch, friendly duels, and missions remain unavailable/i.test(copy)
+    && /This drill performs no live capture, meal, breeding, rename, Field Scout change, persistent Engineering action, or combat/i.test(copy)
+    && /Companion tastes, injury care, bond, dispatch, friendly duels, and missions remain unavailable/i.test(copy)
     && !/(?:Surveying|landing)[^.!?]{0,80}(?:discovers|captures) (?:its )?life/i.test(copy)
     && !/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(copy)
     && !/miss(?:es)?[^.!?]{0,48}(?:cost|spend)s? (?:nothing|no Yield|zero)/i.test(copy)
@@ -198,11 +212,17 @@ function curriculumCopyIsTruthful(steps: readonly { id: string; text: () => stri
     && !/Earth is charted|Atlas’s first entry/i.test(text('atlas-open'))
     && /will not roll a capture or spend Yield/i.test(text('planetside-briefing'))
     && /Opening and inspecting this board changes nothing/i.test(text('engineering-open'))
-    && /Training keeps every action button locked/i.test(text('engineering-tour'))
+    && /real <b>Iron Plate<\/b> recipe with loaned practice materials/i.test(text('engineering-forge-practice'))
+    && /versioned simulator uses the real fabrication derivation/i.test(text('engineering-forge-practice'))
+    && /receipt, inventory, Charters, achievements, route, and random state are erased/i.test(text('engineering-forge-practice'))
+    && /Practice complete[^.!?]{0,100}your expedition is unchanged/i.test(text('engineering-tour'))
+    && /Training now keeps every live action button locked/i.test(text('engineering-tour'))
     && /All six Research rows have connected effects/i.test(text('engineering-tour'))
     && /deterministic <b>Pureforged<\/b> modifier/i.test(text('engineering-tour'))
     && /an empty new expedition is honest, not a training cache/i.test(text('compendium-open'))
     && /live exact-instance companion controls after Training/i.test(text('compendium-tour'))
+    && /Every same-species twin keeps its own level, XP, condition, class, and named innate arts/i.test(text('compendium-tour'))
+    && /second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats/i.test(text('compendium-tour'))
     && /Field Scout can name, switch, or stand down one exact owned companion, intercept hostile Discover Life injury, and earn up to \+2 XP when a later successful capture catalogues a genuinely fresh species/i.test(text('compendium-tour'))
     && /real Flora detail separately offers <b>Eat 1<\/b> for explorer healing, poison, and stat nourishment/i.test(text('compendium-tour'))
     && /Companion tastes, care, bond, dispatch, missions, and friendly duels are not live yet/i.test(text('compendium-tour'))
@@ -238,7 +258,7 @@ describe('Field Training completion transaction UI', () => {
     const steps = training.buildSteps(deps);
     expect(steps.map((step) => step.id)).toEqual([
       'welcome', 'find-earth', 'survey-tour', 'atlas-add', 'atlas-open', 'land',
-      'planetside-briefing', 'engineering-open', 'engineering-tour',
+      'planetside-briefing', 'engineering-open', 'engineering-forge-practice', 'engineering-tour',
       'compendium-open', 'compendium-tour', 'records-open', 'records-tour',
       'horizon', 'grad',
     ]);
@@ -335,6 +355,17 @@ describe('Field Training completion transaction UI', () => {
       expect(training.trainingStepId()).toBe('engineering-open');
     }
     training.gameEvent('panel-open', { id: 'shipyard', open: true });
+    expect(training.trainingStepId()).toBe('engineering-forge-practice');
+    const practice = document.querySelector<HTMLButtonElement>('[data-training-forge-practice="true"]')!;
+    expect(practice.closest('[inert]')).toBeNull();
+    expect(document.querySelector('[data-pnx="shipyard"]')?.closest('[inert]')).toBeNull();
+    training.gameEvent('training-forge-practice', {
+      schema: 'wrong', baseId: 'plate', outputCount: 1,
+    });
+    expect(training.trainingStepId()).toBe('engineering-forge-practice');
+    training.gameEvent('training-forge-practice', {
+      schema: 'cf-v2-training-forge-practice-completion/v1', baseId: 'plate', outputCount: 1,
+    });
     expect(training.trainingStepId()).toBe('engineering-tour');
     expect(document.querySelector('[data-pnx="shipyard"]')?.closest('[inert]')).toBeNull();
     expect(document.querySelector('#shipyardpanel summary')?.closest('[inert]')).toBeNull();

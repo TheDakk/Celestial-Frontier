@@ -906,15 +906,16 @@ export function projectLegacyOwnershipMirror(state: OwnershipStateV1): LegacyOwn
        that exact key even when a hostile direct migration adapter supplied an
        inconsistent display id. */
     const legacyCodexId = `s${species.genome.seed}`;
+    const category = discovery.provenance.kind === 'legacy'
+      ? 0 : discovery.provenance.kind === 'world' ? 1 : 2;
     const order = discovery.provenance.kind === 'legacy'
       ? discovery.provenance.legacySourceIndex
-      : discovery.provenance.sourceOrdinal;
-    return { species, discovery, legacyCodexId, order };
+      : discovery.provenance.kind === 'world'
+        ? discovery.provenance.sourceOrdinal
+        : discovery.provenance.receiptOrdinal;
+    return { species, discovery, legacyCodexId, category, order };
   }).sort((left, right) => {
-    const leftLegacy = left.discovery.provenance.kind === 'legacy';
-    const rightLegacy = right.discovery.provenance.kind === 'legacy';
-    if (leftLegacy !== rightLegacy) return leftLegacy ? -1 : 1;
-    return left.order - right.order
+    return left.category - right.category || left.order - right.order
       || (left.legacyCodexId < right.legacyCodexId ? -1 : left.legacyCodexId > right.legacyCodexId ? 1 : 0);
   });
   const codexOwners = new Map<string, string>();
@@ -966,7 +967,9 @@ export function projectLegacyOwnershipMirror(state: OwnershipStateV1): LegacyOwn
     const source = discovery.provenance;
     const from = source.kind === 'legacy'
       ? source.from
-      : `Canonical world ${source.worldAddress.planet.seed}`;
+      : source.kind === 'paragon'
+        ? `Paragon site #${source.paragonIndex + 1}`
+        : `Canonical world ${source.worldAddress.planet.seed}`;
     const where = source.kind === 'legacy'
       ? source.legacyLocation?.display ?? null
       : legacyWorldWhere(source.worldAddress);

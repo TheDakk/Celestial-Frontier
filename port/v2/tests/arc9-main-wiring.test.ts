@@ -230,7 +230,7 @@ function arc9MainErrors(source: string): string[] {
     .replace(followAction, '')
     .replace(worldNameAction, '');
   const settleMatches = [...progressionOwnerSource.matchAll(
-    /actionClaim\.settle\(durable\);\n\s+if \(durable\) queueArc9ProgressionRefresh\(actionClaim\.operation\);/gu,
+    /actionClaim\.settle\(durable\);\n\s+if \(durable(?: && durableResult === 'landed')?\) \{?\n?\s*queueArc9ProgressionRefresh\(actionClaim\.operation\);/gu,
   )].length;
   const rawSettles = [...progressionOwnerSource.matchAll(/actionClaim\.settle\(durable\);/gu)].length;
   if (settleMatches !== rawSettles || rawSettles < 10) {

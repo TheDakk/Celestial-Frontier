@@ -110,6 +110,9 @@ export const COMBAT_BRINK_ACHIEVEMENT_ID_V1 = 'brink' as const;
 export const COMBAT_BRINK_ACHIEVEMENT_OWNER_V1 = 'survival:below-twenty-hp' as const;
 export const COMBAT_STARTER_CONQUEST_CHARTER_ID_V1 = 'st-conq' as const;
 export const COMBAT_STARTER_CONQUEST_CHARTER_STARDUST_V1 = 25 as const;
+export const COMBAT_WEEKLY_CONQUEST_CHARTER_ID_V1 = 'wk-conq' as const;
+export const COMBAT_WEEKLY_CONQUEST_CHARTER_STARDUST_V1 = 30 as const;
+export const COMBAT_WEEKLY_CHARTER_MS_V1 = 604_800_000 as const;
 
 /** App-prepared event-owner join. The persistence owner independently binds
  * every field to the exact settled player injury and current unlocked list
@@ -141,6 +144,47 @@ export interface CombatSettlementStarterConquestCharterFactV1 {
   readonly lifetimeStardustAfter: number;
   readonly honoredChartersBefore: number;
   readonly honoredChartersAfter: number;
+}
+
+export interface CombatSettlementWeeklyConquestPublicationV1 {
+  readonly chWeek: number;
+  readonly chProg: Readonly<Record<string, number>>;
+  readonly chacc: readonly string[];
+  readonly chDone: readonly string[];
+  readonly essence: number;
+  readonly stats: Readonly<Record<string, number>>;
+  readonly unlocked: readonly string[];
+}
+
+export interface CombatSettlementWeeklyConquestCharterFactV1 {
+  readonly id: typeof COMBAT_WEEKLY_CONQUEST_CHARTER_ID_V1;
+  readonly worldKey: string;
+  readonly first: true;
+  readonly changed: boolean;
+  readonly rollover: Readonly<{
+    readonly wallWeek: number;
+    readonly sourceWeek: number;
+    readonly effectiveWeek: number;
+    readonly status: 'initialized' | 'forward-rollover' | 'same-week' | 'backward-preserved';
+    readonly expiredAcceptedIds: readonly string[];
+    readonly clearedProgressIds: readonly string[];
+  }>;
+  readonly progressed: boolean;
+  readonly completed: boolean;
+  readonly stardustReward: 0 | typeof COMBAT_WEEKLY_CONQUEST_CHARTER_STARDUST_V1;
+  readonly addedAchievementIds: readonly string[];
+  readonly priorBestRankIndex: number;
+  readonly nextBestRankIndex: number;
+}
+
+/** App-prepared generic weekly-event join. Combat independently rebinds its
+ * exact source and the only allowed wk-conq delta before composing it with
+ * the verified conquest in one receipt. */
+export interface CombatSettlementWeeklyConquestJoinV1 {
+  readonly kind: 'prepared';
+  readonly fact: CombatSettlementWeeklyConquestCharterFactV1;
+  readonly source: CombatSettlementWeeklyConquestPublicationV1;
+  readonly successor: CombatSettlementWeeklyConquestPublicationV1;
 }
 
 interface CombatBattleEvidenceV1 {
@@ -197,6 +241,10 @@ const DIGEST = /^[0-9a-f]{64}$/u;
 const WORLD_KEY_MAX = 2_048;
 const TEXT_MAX = 4_096;
 const COUNTER_MAX = 1_000_000_000;
+const COMBAT_WEEKLY_CHARTER_IDS_V1 = new Set([
+  'wk-land', 'wk-mine', 'wk-scan', 'wk-sp',
+  'wk-conq', 'wk-feed', 'wk-breed', 'wk-hostile',
+]);
 
 function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);

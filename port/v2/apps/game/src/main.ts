@@ -100,16 +100,26 @@ import {
   type CompendiumScoutSurfaceReceiptV1,
 } from './compendium-scout.js';
 import {
+  projectCompendiumCreatureProgressionV1,
+  type CompendiumCreatureProgressionV1,
+} from './compendium-creature-progression.js';
+import { CompendiumCreatureProgressionSurfaceV1 } from './compendium-creature-progression-surface.js';
+import { LivingSpeciesPreviewControllerV1 } from './living-species-preview.js';
+import {
   bindSpeciesThumb,
   SpeciesArtLoader,
   SpeciesThumbLeaseGroup,
-  type Portrait440,
   type SpeciesThumbBinding,
 } from './species-art-loader.js';
 import {
   initTraining, gameEvent, trainingActive, trainingStepId, refreshTrainingScope,
   type TrainingEndIntent, type TrainingEndResult,
 } from './training.js';
+import {
+  createTrainingForgePracticeAdapterV1,
+  TRAINING_FORGE_IRON_PLATE_BASE_ID_V1,
+  type TrainingForgePracticeActionOutcomeV1,
+} from './training-forge-practice.js';
 import {
   buildLegacyTrainingRestoreCandidate,
   committedTrainingArc4State,
@@ -172,6 +182,7 @@ import {
   biomeVistaMountLayoutV1,
   buildBiomeVistaRenderRequestV1,
 } from './biome-vista-surface.js';
+import { projectLandingCardPresentationV1 } from './landing-card.js';
 import {
   mountAndCommitBiomeVistaV1,
   mountCachedBiomeVistaV1,
@@ -241,7 +252,7 @@ import {
   type ShipVisualState,
 } from '@cf/scene';
 import {
-  SCENE_ENGINEERING_ADDRESS_RESOLVER, projectWorldOpportunity,
+  SCENE_ENGINEERING_ADDRESS_RESOLVER, projectDescentApproachV1, projectWorldOpportunity,
   type EngineeringStateV2, type WorldOpportunitySnapshot,
 } from '@cf/domain-opportunity';
 import {
@@ -290,14 +301,17 @@ import {
   guardianLegacyCompanionSliceMatchesV1,
   stageGuardianLegacyCompanionSliceV1,
   readArc4Ownership,
+  ARC4_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_VERSION,
   ARC5_OWNERSHIP_EXTENSION_TARGETS,
   committedArc5OwnershipState,
   prepareArc5OwnershipMigration, readArc5OwnershipMigration,
   arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
+  encodeArc2LootCarrier,
   prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror,
   readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
   readCombatSettlementAuthorityV1,
+  loadDescentWaveOffAuthorityV1,
   canonicalWorldLandingCount, createEmptyWorldIdentityState,
   encodeWorldIdentityExtensionWrites, hasCanonicalWorldLanded,
   prepareWorldIdentityBootstrap, readWorldIdentity,
@@ -331,6 +345,7 @@ import { InventoryPanelController } from './inventory-panel.js';
 import {
   commitArc0LandingAction,
   operationForArc0Landing,
+  projectArc0DescentWeatherV1,
   type Arc0LandingWitnessFacts,
 } from './arc0-landing-action.js';
 import {
@@ -497,6 +512,7 @@ import {
   type Arc9BinderClaimableSetIdV1,
   type Arc9BinderSetClaimActionOutcomeV1,
 } from './binder-sets.js';
+import { projectArc9ParagonFinderV1 } from './paragon-finder.js';
 import {
   ARC9_EXPLORER_NAME_OPERATION_V1,
   commitArc9ExplorerNameChangeV1,
@@ -533,6 +549,26 @@ import {
   type Arc9AtlasFavoriteActionOutcomeV1,
 } from './arc9-atlas-favorite-action.js';
 import {
+  commitArc9AtlasHomeV1,
+  commitArc9AtlasRemoveV1,
+  commitArc9AtlasUndoV1,
+  operationForArc9AtlasHomeV1,
+  operationForArc9AtlasRemoveV1,
+  operationForArc9AtlasUndoV1,
+  publishArc9AtlasHomeFieldsV1,
+  publishArc9AtlasRemoveFieldsV1,
+  publishArc9AtlasUndoFieldsV1,
+  type Arc9AtlasDeleteReceiptV1,
+} from './arc9-atlas-row-actions.js';
+import {
+  projectStarAtlasV1,
+  renderStarAtlasV1,
+  STAR_ATLAS_FILTERS_V1,
+  STAR_ATLAS_VIEWS_V1,
+  type StarAtlasFilterV1,
+  type StarAtlasViewV1,
+} from './star-atlas-panel.js';
+import {
   commitArc9GalaxyArrivalRouteV1,
   commitArc9TravelSettlementV1,
   operationForArc9TravelV1,
@@ -540,6 +576,19 @@ import {
   type Arc9TravelActionKindV1,
   type Arc9TravelActionOutcomeV1,
 } from './arc9-travel-action.js';
+import {
+  commitWeeklyCharterAcceptV1,
+  commitWeeklyCharterRolloverV1,
+  operationForWeeklyCharterAcceptV1,
+  operationForWeeklyCharterRolloverV1,
+  projectWeeklyCharterBoardV1,
+  publishWeeklyCharterFieldsV1,
+  renderWeeklyCharterBoardV1,
+  WEEKLY_CHARTER_IDS_V1,
+  type WeeklyCharterIdV1,
+  type WeeklyCharterActionOutcomeV1,
+} from './weekly-charters.js';
+import type { WeeklyCharterActionFactV1 } from './starter-charter-action.js';
 import { projectArc9RecordsRankReadModelV1 } from './records-rank-model.js';
 import { renderArc9RecordsRankPanelV1 } from './records-rank-panel.js';
 import {
@@ -795,6 +844,7 @@ let lastF4HideWitness: Readonly<{
   visibilityOutcome: string | null; visibilityError: string | null;
 }> | null = null;
 function scheduleF4AuthorityConvergenceReload(runtime: F4RuntimeAuthority, detail: string): void {
+  clearArc9AtlasUndo();
   persistHold = 'transient-read';
   persistenceProtectedDetail = detail;
   runtime.setAnswerable(false);
@@ -2660,6 +2710,7 @@ function applyDisplayPreferences(): void {
   body.classList.toggle('motion-reduced', !motionOK());
   refreshVisualPolicies();
   applyGlass();
+  signalLivingSpeciesEnvironment();
   syncTopbarH(); syncDockH(); syncCtxH(); syncHintH(); syncSurfaceChromeBottom();
 }
 reducedMotionQuery.addEventListener('change', () => {
@@ -3214,7 +3265,90 @@ let codexRows: readonly CodexVirtualRow[] = Object.freeze([]);
 let codexWindow: CompendiumWindowSnapshot = EMPTY_CODEX_WINDOW;
 let codexReturnState: CodexReturnState | null = null;
 let codexDetailLogicalId: string | null = null;
-let codexDetailArtCancel: (() => void) | null = null;
+let livingSpeciesPortrait: HTMLImageElement | null = null;
+const livingSpeciesEnvironmentListeners = new Set<() => void>();
+function signalLivingSpeciesEnvironment(): void {
+  for (const listener of livingSpeciesEnvironmentListeners) listener();
+}
+const livingSpeciesPreview = new LivingSpeciesPreviewControllerV1({
+  owner: 'codex-living-detail',
+  requestPortrait: (owner, genome, listener) => (
+    speciesArtLoader.requestPortrait(owner, genome, listener)
+  ),
+  createRenderer: (asset, plan, generation) => {
+    const target = livingSpeciesPortrait;
+    if (target === null) throw new Error('living portrait target is unavailable');
+    const token = String(generation);
+    let attached = false;
+    return {
+      identityKey: plan.identityKey,
+      resourceKind: 'image',
+      attach(): void {
+        if (target !== livingSpeciesPortrait || !target.isConnected) {
+          throw new Error('living portrait target became stale');
+        }
+        target.dataset.livingGeneration = token;
+        target.dataset.livingMotion = plan.primaryMotion;
+        target.dataset.artState = 'ready';
+        target.style.transformOrigin = '50% 68%';
+        target.style.willChange = motionOK() ? 'transform, opacity' : 'auto';
+        target.src = asset.url;
+        attached = true;
+      },
+      draw(frame): void {
+        if (!attached || target !== livingSpeciesPortrait
+          || target.dataset.livingGeneration !== token || !target.isConnected) {
+          throw new Error('living portrait frame target became stale');
+        }
+        target.style.transform = `translate3d(${frame.translateX}px, ${frame.translateY}px, 0) `
+          + `rotate(${frame.rotationDegrees}deg) scale(${frame.scaleX}, ${frame.scaleY})`;
+        target.style.opacity = String(frame.opacity);
+        target.style.willChange = frame.mode === 'animated' ? 'transform, opacity' : 'auto';
+      },
+      destroy(): void {
+        if (target.dataset.livingGeneration !== token) return;
+        target.removeAttribute('src');
+        delete target.dataset.livingGeneration;
+        delete target.dataset.livingMotion;
+        target.style.removeProperty('transform');
+        target.style.removeProperty('transform-origin');
+        target.style.removeProperty('will-change');
+        target.style.removeProperty('opacity');
+      },
+    };
+  },
+  ticker: {
+    subscribe(listener) {
+      const tick = (): void => listener(app.ticker.deltaMS);
+      app.ticker.add(tick);
+      return () => { app.ticker.remove(tick); };
+    },
+  },
+  environment: {
+    snapshot: () => {
+      const connected = livingSpeciesPortrait?.isConnected === true;
+      return Object.freeze({
+        connected,
+        visible: connected && document.visibilityState === 'visible'
+          && codexMode === 'detail' && openPanelId() === 'codex',
+        reducedMotion: save === undefined ? reducedMotionQuery.matches : !motionOK(),
+      });
+    },
+    subscribe(listener) {
+      livingSpeciesEnvironmentListeners.add(listener);
+      document.addEventListener('visibilitychange', listener);
+      return () => {
+        livingSpeciesEnvironmentListeners.delete(listener);
+        document.removeEventListener('visibilitychange', listener);
+      };
+    },
+  },
+  onFault: () => {
+    if (livingSpeciesPortrait?.isConnected) {
+      livingSpeciesPortrait.dataset.artState = 'error';
+    }
+  },
+});
 let codexRenderCommits = 0;
 let codexStaleCompletionDrops = 0;
 let codexClosedCompletionCommits = 0;
@@ -3297,6 +3431,13 @@ const compendiumScoutController = new CompendiumScoutController({
     void runCompendiumScoutAction(request);
   },
 });
+const compendiumCreatureProgressionSurface = new CompendiumCreatureProgressionSurfaceV1({
+  isCurrent: () => codexMode === 'detail' && openPanelId() === 'codex',
+  project: (pageIndex) => {
+    const row = currentCompendiumDetailRow();
+    return row === null ? null : projectCurrentCompendiumCreatureProgression(row, pageIndex);
+  },
+});
 
 function projectCurrentCompendiumAudition(
   row: readonly [string, CodexRecord],
@@ -3327,6 +3468,25 @@ function projectCurrentCompendiumFeed(
       ownership: arc5OwnershipState,
       protected: arc5OwnershipProtection !== null || !f4RuntimeMayMutate(),
       fixture: compendiumFixtureRows !== null,
+    });
+  } catch {
+    return null;
+  }
+}
+
+function projectCurrentCompendiumCreatureProgression(
+  row: readonly [string, CodexRecord],
+  pageIndex = 0,
+): CompendiumCreatureProgressionV1 | null {
+  try {
+    return projectCompendiumCreatureProgressionV1({
+      logicalId: String(row[0]),
+      record: row[1],
+      ownership: arc5OwnershipState,
+      protected: arc5OwnershipProtection !== null,
+      fixture: compendiumFixtureRows !== null,
+      observedActivePlayMs: f4Runtime?.diagnostics().activePlayMs ?? 0,
+      pageIndex,
     });
   } catch {
     return null;
@@ -3439,6 +3599,7 @@ function refreshCompendiumFeedState(): void {
   const projectedBreed = projectCurrentCompendiumBreed(row, codexGeneration);
   const projectedRename = projectCurrentCompendiumRename(row, codexGeneration);
   const projectedScout = projectCurrentCompendiumScout(row, codexGeneration);
+  compendiumCreatureProgressionSurface.refresh();
   compendiumAuditionController.setState(projectedAudition);
   compendiumFeedController.setState(projectedFeed);
   compendiumExplorerMealController.setState(projectedExplorerMeal);
@@ -3459,8 +3620,9 @@ function disposeCodexList(): void {
   codexWindow = EMPTY_CODEX_WINDOW;
 }
 function cancelCodexDetailArt(): void {
-  codexDetailArtCancel?.();
-  codexDetailArtCancel = null;
+  livingSpeciesPreview.close();
+  livingSpeciesPortrait = null;
+  signalLivingSpeciesEnvironment();
 }
 function closeCodexSurface(): void {
   const wasOpen = codexMode !== 'closed';
@@ -3478,6 +3640,7 @@ function closeCodexSurface(): void {
   compendiumRenameController.setState(null);
   compendiumScoutController.detach();
   compendiumScoutController.setState(null);
+  compendiumCreatureProgressionSurface.detach();
   disposeCodexList();
   cancelCodexDetailArt();
   /* Detail uses the approved 440px portrait path rather than a thumbnail
@@ -3581,6 +3744,7 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
   compendiumRenameController.setState(null);
   compendiumScoutController.detach();
   compendiumScoutController.setState(null);
+  compendiumCreatureProgressionSurface.detach();
   codexList = null;
   codexWindow = EMPTY_CODEX_WINDOW;
   cancelCodexDetailArt();
@@ -3654,6 +3818,7 @@ function fillCodexDetail(idx: number): void {
   compendiumRenameController.setState(null);
   compendiumScoutController.detach();
   compendiumScoutController.setState(null);
+  compendiumCreatureProgressionSurface.detach();
   const generation = ++codexGeneration;
   codexMode = 'detail';
   codexDetailLogicalId = String(row[0]);
@@ -3712,6 +3877,9 @@ function fillCodexDetail(idx: number): void {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
   fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}</div>`);
+  compendiumCreatureProgressionSurface.attach(
+    document.querySelector<HTMLElement>('#codexpanel [data-sel="codex-detail"]')!,
+  );
   if (showAudition) {
     compendiumAuditionController.setState(auditionModel);
     compendiumAuditionController.attach(
@@ -3750,25 +3918,10 @@ function fillCodexDetail(idx: number): void {
   }
   const portrait = document.querySelector<HTMLImageElement>('#codexpanel [data-sel="detail-portrait"]');
   if (portrait) {
-    const publishPortrait = (asset: Portrait440 | null, error?: unknown): void => {
-      const current = codexGeneration === generation && codexMode === 'detail'
-        && codexDetailLogicalId === String(row[0]) && openPanelId() === 'codex'
-        && portrait.isConnected;
-      if (!current) { codexStaleCompletionDrops++; return; }
-      if (error !== undefined || !asset || asset.width !== 440 || asset.height !== 440) {
-        portrait.removeAttribute('src');
-        portrait.dataset.artState = 'error';
-        return;
-      }
-      portrait.src = asset.url;
-      portrait.dataset.artState = 'ready';
-    };
+    livingSpeciesPortrait = portrait;
+    signalLivingSpeciesEnvironment();
     try {
-      const request = speciesArtLoader.requestPortrait(
-        'codex-detail', e.g as Record<string, unknown>, publishPortrait,
-      );
-      codexDetailArtCancel = request.cancel;
-      if (request.current) publishPortrait(request.current);
+      livingSpeciesPreview.select(e.g as Record<string, unknown>);
     } catch {
       portrait.dataset.artState = 'error';
     }
@@ -3788,13 +3941,21 @@ function starterCharterPanelStatus(): string | null {
   if (starterCharterAcceptPendingId !== null) return 'Saving this Starter Charter acceptance…';
   return lastStarterCharterAcceptStatus;
 }
+function weeklyCharterPanelStatus(): string | null {
+  if (weeklyCharterPending !== null) {
+    return weeklyCharterPending.kind === 'rollover'
+      ? 'Refreshing the exact weekly Charter slate…'
+      : 'Saving this weekly Charter acceptance…';
+  }
+  return lastWeeklyCharterStatus;
+}
 function binderClaimPanelStatus(): string | null {
   if (arc9BinderClaimPendingId !== null) return 'Saving this Binder Set claim…';
   return lastArc9BinderClaimStatus;
 }
 function syncBoundedCollectionButtons(
   root: HTMLElement,
-  selector: '[data-starter-charter-accept]' | '[data-binder-claim]',
+  selector: '[data-starter-charter-accept]' | '[data-weekly-charter-accept]' | '[data-binder-claim]',
   pending: boolean,
   unavailable = false,
 ): void {
@@ -3889,36 +4050,130 @@ function fillPrimeCodex(): void {
 }
 /* THE STAR ATLAS ('log' in the game): every charted place, tap to TRAVEL
    (jumpToView — the same charter gates as everything else) */
+let arc9AtlasView: StarAtlasViewV1 = 'list';
+let arc9AtlasFilter: StarAtlasFilterV1 = 'all';
 let arc9AtlasFavoritePendingId: string | null = null;
+let arc9AtlasRowPending: Readonly<{
+  kind: 'home' | 'remove';
+  atlasId: string;
+}> | null = null;
+let arc9AtlasUndoPending = false;
+let lastArc9AtlasRowStatus: string | null = null;
+type Arc9AtlasUndoStateV1 = Readonly<{
+  receipt: Arc9AtlasDeleteReceiptV1;
+  pair: SaveStateV2['logMap'][number];
+  route: NavState | null;
+  title: string;
+  expiresAt: number;
+}>;
+let arc9AtlasUndo: Arc9AtlasUndoStateV1 | null = null;
+
+function retainedAtlasRouteMatches(
+  pair: SaveStateV2['logMap'][number],
+  route: NavState | null,
+): boolean {
+  const current = atlasRouteStates.get(pair[1]);
+  return route === null ? current === undefined : current === route;
+}
+
+function clearArc9AtlasUndo(): void {
+  arc9AtlasUndo = null;
+}
+
+function liveArc9AtlasUndo(): Arc9AtlasUndoStateV1 | null {
+  const undo = arc9AtlasUndo;
+  if (undo === null) return null;
+  if (performance.now() >= undo.expiresAt
+    || !retainedAtlasRouteMatches(undo.pair, undo.route)) {
+    clearArc9AtlasUndo();
+    return null;
+  }
+  return undo;
+}
+
+function atlasMutationsAvailable(): boolean {
+  return !arc9AtlasUndoPending && !smokeForceReadOnly && f4RuntimeMayMutate()
+    && activePersist === null && !importWriteInFlight
+    && replacementTransaction === null && !replacementReloadPending
+    && !trainingCheckpointWriteHeld && !trainingActive()
+    && !ecologyEpochBlocksActions();
+}
 function fillAtlas(): void {
   if (!save) return;
-  const restoreFocus = capturePanelRefillFocus(document.getElementById('atlaspanel')!, ['data-atlas-travel', 'data-atlas-favorite']);
-  const rows = save.logMap;
-  fillPanel('atlas',
-    `<h3>Star Atlas <span style="color:#7ec8f0" data-sel="atlas-count">${rows.length}</span></h3>` +
-    (rows.length === 0
-      ? '<div class="empty" data-sel="atlas-empty">Nothing charted yet — tap “+ Add to Star Atlas” on any survey card.</div>'
-      : rows.map(([id, e]) => {
-        const travelable = atlasRouteStates.has(e as Record<string, unknown>);
-        const unavailable = travelable ? '' : ' · route unavailable in this build';
-        const favorite = e.fav === true;
-        const favoriteUnavailable = arc9AtlasFavoritePendingId !== null
-          || smokeForceReadOnly || !f4RuntimeMayMutate()
-          || trainingCheckpointWriteHeld || trainingActive()
-          || ecologyEpochBlocksActions();
-        const favoriteLabel = favorite ? 'Remove Favorite' : 'Mark Favorite';
-        return `<div class="centry atlas-entry" data-sel="atlas-entry" data-aid="${esc(id)}">`
-          + `<div class="atlas-entry-copy"><b>${esc(String(e.title || id))}</b>${e.badge ? ` <span class="sub">· ${esc(String(e.badge))}</span>` : ''}<span class="sub" style="display:block">${esc(String(e.sub || ''))}${unavailable}</span></div>`
-          + '<div class="atlas-entry-actions">'
-          + `<button type="button" data-atlas-travel="${esc(id)}" aria-label="Travel to ${esc(String(e.title || id))}"${travelable ? '' : ' disabled aria-disabled="true"'}>Travel</button>`
-          + `<button type="button" data-atlas-favorite="${esc(id)}" aria-pressed="${favorite}" aria-label="${favoriteLabel}: ${esc(String(e.title || id))}"${favoriteUnavailable ? ' disabled aria-disabled="true"' : ''}>${favorite ? '★ Favorite' : '☆ Favorite'}</button>`
-          + '</div></div>';
-      }).join('')));
+  const panel = document.getElementById('atlaspanel')!;
+  const restoreFocus = capturePanelRefillFocus(panel, [
+    'data-atlas-view', 'data-atlas-filter', 'data-atlas-travel-home',
+    'data-atlas-undo', 'data-atlas-travel', 'data-atlas-favorite',
+    'data-atlas-home', 'data-atlas-remove',
+  ]);
+  const routeDestinations: Array<readonly [string, number, number]> = [];
+  for (const [id, entry] of save.logMap) {
+    const route = atlasRouteStates.get(entry);
+    if (route?.gal !== null && route?.gal !== undefined) {
+      routeDestinations.push(Object.freeze([id, route.gal.x, route.gal.y]));
+    }
+  }
+  const identityCurrent = worldIdentityProtection === null
+    && !worldIdentityBootstrapPending;
+  const combat = f4Runtime === null
+    ? null : readCombatSettlementAuthorityV1(f4Runtime.extensions);
+  const combatCurrent = combat?.kind === 'loaded';
+  const projection = projectStarAtlasV1({
+    state: save,
+    view: arc9AtlasView,
+    filter: arc9AtlasFilter,
+    routeDestinations,
+    landedWorldKeys: identityCurrent
+      ? worldIdentityState.records.filter((record) => record.landed).map((record) => record.key)
+      : [''],
+    conqueredWorldKeys: combatCurrent
+      ? combat.authority.conquests.map((record) => record.worldKey)
+      : [''],
+    currentGalaxy: nav.mode === 'universe' ? null : Object.freeze({
+      x: nav.gal.x,
+      y: nav.gal.y,
+    }),
+  });
+  const undo = liveArc9AtlasUndo();
+  fillPanel('atlas', renderStarAtlasV1(projection, {
+    mutationsAvailable: atlasMutationsAvailable(),
+    pending: arc9AtlasFavoritePendingId === null
+      ? arc9AtlasRowPending
+      : Object.freeze({ kind: 'favorite' as const, atlasId: arc9AtlasFavoritePendingId }),
+    undo: undo === null ? null : Object.freeze({
+      atlasId: undo.receipt.atlasId,
+      title: undo.title,
+    }),
+    status: lastArc9AtlasRowStatus,
+  }));
   restoreFocus();
 }
-document.getElementById('atlaspanel')!.addEventListener('click', async (e) => {
-  if (!save || !(e.target instanceof Element)) return;
-  const favoriteButton = e.target.closest<HTMLButtonElement>('[data-atlas-favorite]');
+document.getElementById('atlaspanel')!.addEventListener('click', async (event) => {
+  if (!save || !(event.target instanceof Element)) return;
+  const viewButton = event.target.closest<HTMLButtonElement>('[data-atlas-view]');
+  if (viewButton !== null) {
+    const value = viewButton.dataset.atlasView;
+    if (value !== undefined && STAR_ATLAS_VIEWS_V1.includes(value as StarAtlasViewV1)) {
+      arc9AtlasView = value as StarAtlasViewV1;
+      fillAtlas();
+    }
+    return;
+  }
+  const filterButton = event.target.closest<HTMLButtonElement>('[data-atlas-filter]');
+  if (filterButton !== null) {
+    const value = filterButton.dataset.atlasFilter;
+    if (value !== undefined && STAR_ATLAS_FILTERS_V1.includes(value as StarAtlasFilterV1)) {
+      arc9AtlasFilter = value as StarAtlasFilterV1;
+      fillAtlas();
+    }
+    return;
+  }
+  const undoButton = event.target.closest<HTMLButtonElement>('[data-atlas-undo]');
+  if (undoButton !== null) {
+    void runArc9AtlasUndo();
+    return;
+  }
+  const favoriteButton = event.target.closest<HTMLButtonElement>('[data-atlas-favorite]');
   if (favoriteButton !== null) {
     const atlasId = favoriteButton.dataset.atlasFavorite;
     const hit = atlasId === undefined
@@ -3927,27 +4182,43 @@ document.getElementById('atlaspanel')!.addEventListener('click', async (e) => {
     void runArc9AtlasFavoriteChange(atlasId, !hit[1].fav);
     return;
   }
-  const travelButton = e.target.closest<HTMLButtonElement>('[data-atlas-travel]');
+  const homeButton = event.target.closest<HTMLButtonElement>('[data-atlas-home]');
+  if (homeButton !== null) {
+    const atlasId = homeButton.dataset.atlasHome;
+    if (atlasId !== undefined) void runArc9AtlasHomeChange(atlasId, save.homeId !== atlasId);
+    return;
+  }
+  const removeButton = event.target.closest<HTMLButtonElement>('[data-atlas-remove]');
+  if (removeButton !== null) {
+    const atlasId = removeButton.dataset.atlasRemove;
+    if (atlasId !== undefined) void runArc9AtlasRemove(atlasId);
+    return;
+  }
+  const travelButton = event.target.closest<HTMLButtonElement>(
+    '[data-atlas-travel],[data-atlas-travel-home]',
+  );
   if (travelButton === null) return;
-  const atlasId = travelButton.dataset.atlasTravel;
+  const atlasId = travelButton.dataset.atlasTravel
+    ?? travelButton.dataset.atlasTravelHome;
   const hit = atlasId === undefined
     ? undefined : save.logMap.find(([id]) => id === atlasId);
-  if (hit !== undefined) {
-    const route = atlasRouteStates.get(hit[1] as Record<string, unknown>);
-    if (!route) return;
-    const keyboard = document.activeElement === travelButton;
-    const moved = await searchTravel.jumpToProvenNav(route);
-    if (!moved) return;
-    closePanels();
-    if (keyboard) app.canvas.focus();
-  }
+  if (hit === undefined) return;
+  const route = atlasRouteStates.get(hit[1]);
+  if (!route) return;
+  const keyboard = document.activeElement === travelButton;
+  const moved = await searchTravel.jumpToProvenNav(route);
+  if (!moved) return;
+  closePanels();
+  if (keyboard) app.canvas.focus();
 });
 /* CHARTERS — current-slice projection over canonical saved chapter data.
    The pure projection keeps legacy progress/reach intact while presenting
    only real v2 actions; never render the unported canonical copy directly. */
 function fillCharters(): void {
   if (!save) return;
-  const restoreFocus = capturePanelRefillFocus(document.getElementById('chpanel')!, ['data-starter-charter-accept']);
+  const restoreFocus = capturePanelRefillFocus(document.getElementById('chpanel')!, [
+    'data-starter-charter-accept', 'data-weekly-charter-accept',
+  ]);
   const projection = projectV2Charter(save.ascCh, save.ascProg, ascStage());
   const chapter = !projection
     ? '<div class="centry" data-sel="charter-ch" data-chstate="complete">' +
@@ -3971,10 +4242,18 @@ function fillCharters(): void {
     ? renderStarterCharterBoardV1(starterProjection.board)
     : '<section data-starter-charter-board-protected><h3>Starter Charters</h3>'
       + '<div class="empty">Starter Charters are protected because their saved authority could not be verified. Nothing was changed.</div></section>';
+  const weeklyProjection = projectWeeklyCharterBoardV1(save, Date.now());
+  const weekly = weeklyProjection.kind === 'projected'
+    ? renderWeeklyCharterBoardV1(weeklyProjection.board)
+    : '<section data-weekly-charter-board-protected><h3>Weekly Charters</h3>'
+      + '<div class="empty">Weekly Charters are protected because their saved week or Charter authority could not be verified. Nothing was changed.</div></section>';
   const starterStatus = starterCharterPanelStatus();
-  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter
+  const weeklyStatus = weeklyCharterPanelStatus();
+  fillPanel('ch', '<h3>Charters — Current Expedition</h3>' + chapter + starter + weekly
     + (starterStatus === null ? ''
-      : `<p class="starter-charter-status" role="status" aria-live="polite" aria-atomic="true">${esc(starterStatus)}</p>`));
+      : `<p class="starter-charter-status" role="status" aria-live="polite" aria-atomic="true">${esc(starterStatus)}</p>`)
+    + (weeklyStatus === null ? ''
+      : `<p class="weekly-charter-status" role="status" aria-live="polite" aria-atomic="true">${esc(weeklyStatus)}</p>`));
   syncBoundedCollectionButtons(
     document.getElementById('chpanel')!,
     '[data-starter-charter-accept]',
@@ -3982,11 +4261,34 @@ function fillCharters(): void {
     starterProjection.kind !== 'projected'
       || starterProjection.board.acceptedCount >= starterProjection.board.cap,
   );
+  syncBoundedCollectionButtons(
+    document.getElementById('chpanel')!,
+    '[data-weekly-charter-accept]',
+    weeklyCharterPending !== null,
+    weeklyProjection.kind !== 'projected'
+      || !weeklyProjection.board.tradesComplete
+      || weeklyProjection.board.acceptedCount >= weeklyProjection.board.cap,
+  );
   restoreFocus();
 }
-registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
+function openCharters(): void {
+  fillCharters();
+  const projection = projectWeeklyCharterBoardV1(save, Date.now());
+  if (projection.kind === 'projected' && projection.board.rolloverRequired) {
+    void runWeeklyCharterRollover();
+  }
+}
+registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: openCharters });
 document.getElementById('chpanel')!.addEventListener('click', (event) => {
   if (!(event.target instanceof Element)) return;
+  const weeklyButton = event.target.closest<HTMLButtonElement>('[data-weekly-charter-accept]');
+  if (weeklyButton !== null && !weeklyButton.disabled) {
+    const weeklyId = WEEKLY_CHARTER_IDS_V1.find(
+      (candidate): candidate is WeeklyCharterIdV1 => candidate === weeklyButton.dataset.weeklyCharterAccept,
+    );
+    if (weeklyId !== undefined) void runWeeklyCharterAccept(weeklyId);
+    return;
+  }
   const button = event.target.closest<HTMLButtonElement>('[data-starter-charter-accept]');
   if (button === null || button.disabled) return;
   const id = STARTER_CHARTER_IDS_V1.find(
@@ -4052,8 +4354,28 @@ registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [docu
   fillRecords();
   gameEvent('panel-open', { id: 'rec', open: true });
 } });
-document.getElementById('recpanel')!.addEventListener('click', (event) => {
+document.getElementById('recpanel')!.addEventListener('click', async (event) => {
   if (!(event.target instanceof Element)) return;
+  const paragonButton = event.target.closest<HTMLButtonElement>('[data-binder-paragon]');
+  if (paragonButton !== null) {
+    const index = Number(paragonButton.dataset.binderParagon);
+    if (!Number.isInteger(index) || index < 0 || index >= 50) return;
+    const finder = projectArc9ParagonFinderV1(index);
+    if (finder.kind !== 'located') {
+      toast(
+        'Paragon route unavailable',
+        'This fixed Paragon site could not be regenerated safely. Your current route is unchanged.',
+        true,
+      );
+      return;
+    }
+    const keyboard = document.activeElement === paragonButton;
+    const moved = await searchTravel.jumpToCanonicalAddress(finder.address);
+    if (!moved) return;
+    closePanels();
+    if (keyboard) app.canvas.focus();
+    return;
+  }
   const button = event.target.closest<HTMLButtonElement>('[data-binder-claim]');
   if (button === null || button.disabled) return;
   const setId = ARC9_BINDER_CLAIMABLE_SET_IDS_V1.find(
@@ -4074,10 +4396,12 @@ const engineeringPanelController = new EngineeringPanelController({
   panel: document.getElementById('shipyardpanel')!,
   openers: [document.getElementById('dockshipyard'), document.getElementById('railshipyard')],
   onAction: (request) => {
+    if (runTrainingForgePracticeRequest(request)) return;
     engineeringPanelController.setPending(request);
     void runEngineeringPanelAction(request);
   },
 });
+const trainingForgePractice = createTrainingForgePracticeAdapterV1();
 let engineeringPanelReleased = false;
 const engineeringPanelRegistration = engineeringPanelController.registration();
 registerPanel({
@@ -4086,8 +4410,85 @@ registerPanel({
     refreshEngineeringPanelState();
     engineeringPanelRegistration.onOpen();
     gameEvent('panel-open', { id: 'shipyard', open: true });
+    prepareTrainingForgePracticeSurface();
+  },
+  onClose: () => {
+    trainingForgePractice.exit();
+    engineeringPanelRegistration.onClose();
   },
 });
+
+function trainingForgeStatus(detail: string): void {
+  const status = document.querySelector<HTMLElement>('#tutcard [data-sel="tutstatus"]');
+  if (status === null) return;
+  status.hidden = false;
+  status.textContent = detail;
+}
+
+function prepareTrainingForgePracticeSurface(): boolean {
+  if (!trainingActive() || trainingStepId() !== 'engineering-forge-practice') return false;
+  const runtime = f4Runtime;
+  if (runtime === null) {
+    trainingForgeStatus('The practice Forge is waiting for expedition read authority.');
+    return false;
+  }
+  const opened = trainingForgePractice.enter({
+    state: save,
+    extensions: runtime.extensions,
+    codecNow: Date.now(),
+  });
+  if (opened.kind !== 'ready') {
+    trainingForgeStatus(`Practice Forge unavailable: ${opened.detail}`);
+    return false;
+  }
+  const row = document.querySelector<HTMLElement>(
+    `#shipyardpanel [data-recipe-id="${TRAINING_FORGE_IRON_PLATE_BASE_ID_V1}"]`,
+  );
+  const button = row?.querySelector<HTMLButtonElement>('[data-engineering-action="fabricate"]');
+  const fabricator = row?.closest<HTMLDetailsElement>('[data-engineering-section="fabricator"]');
+  if (row === null || button == null || fabricator == null) {
+    trainingForgePractice.exit();
+    trainingForgeStatus('The canonical Iron Plate practice control is unavailable.');
+    return false;
+  }
+  fabricator.open = true;
+  button.dataset.trainingForgePractice = 'true';
+  button.dataset.modelEnabled = 'true';
+  button.dataset.disabledReason = 'Training uses loaned materials in an isolated simulator.';
+  button.disabled = false;
+  button.setAttribute('aria-disabled', 'false');
+  button.title = 'Uses loaned materials; changes no expedition fact.';
+  button.textContent = `Practice Forge ${opened.snapshot.plan.name}`;
+  refreshTrainingScope();
+  return true;
+}
+
+function runTrainingForgePracticeRequest(request: EngineeringPanelActionRequest): boolean {
+  if (!trainingActive() || trainingStepId() !== 'engineering-forge-practice'
+    || request.operation !== 'fabricate'
+    || request.id !== TRAINING_FORGE_IRON_PLATE_BASE_ID_V1) return false;
+  engineeringPanelController.setPending(request);
+  let outcome: TrainingForgePracticeActionOutcomeV1;
+  try { outcome = trainingForgePractice.fabricate(); }
+  catch (error) {
+    outcome = Object.freeze({
+      kind: 'refused',
+      reason: 'fixed-point-mismatch',
+      detail: error instanceof Error ? error.message : String(error),
+      snapshot: trainingForgePractice.snapshot(),
+    });
+  }
+  engineeringPanelController.setPending(null);
+  if (outcome.kind !== 'completed') {
+    trainingForgeStatus(`Practice Forge stopped safely: ${outcome.detail}`);
+    return true;
+  }
+  gameEvent(outcome.completion.event.type, { ...outcome.completion.event.detail });
+  trainingForgePractice.exit();
+  refreshEngineeringPanelState();
+  refreshTrainingScope();
+  return true;
+}
 function shipyardDiagnostics(): unknown {
   const diagnostics = engineeringPanelController.diagnostics();
   const panelOpen = openPanelId() === 'shipyard';
@@ -6958,6 +7359,64 @@ function bioscanCardActionHtml(state: BioscanCardStateV1): string {
     : 'Record this living world. Capture remains a separate action.';
   return `<button type="button" data-act="bioscan" data-bioscan-world="${esc(state.worldKey)}" data-bioscan-probability="${probability}" data-bioscan-damage="${damage}" title="${esc(title)}" style="background:rgba(127,230,160,0.14);color:#b9f0c8;border:1px solid rgba(127,230,160,0.55);border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">🔬 Discover Life${warning}</button>`;
 }
+type LandingCardStateV1 =
+  | Readonly<{
+    readonly kind: 'ready';
+    readonly worldKey: string;
+    readonly label: string;
+    readonly title: string;
+    readonly successPercent: number;
+    readonly damageMin: number;
+    readonly damageMax: number;
+  }>
+  | Readonly<{ readonly kind: 'unavailable' }>;
+function projectCurrentLandingCardState(
+  address: CanonicalCF1WorldAddress,
+): LandingCardStateV1 {
+  const runtime = f4Runtime;
+  if (runtime === null || worldIdentityProtection !== null) {
+    return Object.freeze({ kind: 'unavailable' });
+  }
+  try {
+    const loadout = readArc2EngineeringLoadout(runtime.extensions);
+    const waveOffs = loadDescentWaveOffAuthorityV1({
+      extensions: runtime.extensions,
+      legacyWaveOffs: save.waveOffs,
+    });
+    if (loadout.kind !== 'loaded' || waveOffs.kind !== 'loaded') {
+      return Object.freeze({ kind: 'unavailable' });
+    }
+    const opportunity = projectWorldOpportunity(address);
+    const policy = projectDescentApproachV1({
+      address,
+      opportunity,
+      capabilities: loadout.capabilities,
+      waveOffs: waveOffs.state,
+      stormActive: projectArc0DescentWeatherV1(address, opportunity) !== null,
+      trainingActive: trainingActive(),
+      alreadyLanded: hasCanonicalWorldLanded(worldIdentityState, address),
+      reinforcedHull: save.techOwned.includes('hull1'),
+    });
+    const presentation = projectLandingCardPresentationV1(policy, save.hp);
+    return Object.freeze({
+      kind: 'ready',
+      worldKey: presentation.worldKey,
+      label: presentation.label,
+      title: presentation.title,
+      successPercent: presentation.successPercent,
+      damageMin: presentation.damageMin,
+      damageMax: presentation.damageMax,
+    });
+  } catch {
+    return Object.freeze({ kind: 'unavailable' });
+  }
+}
+function landingCardActionHtml(state: LandingCardStateV1): string {
+  if (state.kind === 'unavailable') {
+    return '<button type="button" data-act="landcta" disabled title="Landing is unavailable until expedition authority is ready" style="background:rgba(202,162,79,0.08);color:var(--dim);border:1px solid rgba(202,162,79,0.35);border-radius:999px;padding:8px 16px;min-height:44px;font:12px system-ui">⛳ Landing unavailable</button>';
+  }
+  return `<button type="button" data-act="landcta" data-landing-world="${esc(state.worldKey)}" data-landing-success="${state.successPercent}" data-landing-damage-min="${state.damageMin}" data-landing-damage-max="${state.damageMax}" title="${esc(state.title)}" aria-label="${esc(`${state.label}. ${state.title}`)}" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">${esc(state.label)}</button>`;
+}
 function presentPlanetSurvey(
   p: PlanetNode,
   star: ProvenStar,
@@ -7039,6 +7498,9 @@ function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet):
 function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): string {
   const address = activeCardWorldAddress();
   const charted = address !== null && atlasEntryForWorld(address) !== null;
+  const landingState = address === null
+    ? Object.freeze({ kind: 'unavailable' as const })
+    : projectCurrentLandingCardState(address);
   const onThisSurface = nav.mode === 'surface' && !!cardCtx
     && getProvenPlanetKey(nav.planet) === getProvenPlanetKey(cardCtx.planet)
     && nav.planet.seed === p.seed && nav.planet.ordinal === p.ordinal;
@@ -7049,7 +7511,7 @@ function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): stri
   return '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px">' +
     (onThisSurface
       ? '<button data-act="leaveworld" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⬆ Leave world</button>'
-      : '<button data-act="landcta" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⛳ Land</button>') +
+      : landingCardActionHtml(landingState)) +
     (charted && !trainingAdd
       ? '<span style="color:var(--dim);align-self:center;font-size:12px">★ charted</span>'
       : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">' +
@@ -7310,6 +7772,11 @@ function publishArc0LandingFields(
   committed: SaveStateV2,
   facts: Arc0LandingWitnessFacts,
 ): void {
+  save.waveOffs = committed.waveOffs.map(([seed, count]) => [seed, count]);
+  if (facts.descent.kind === 'wave-off') {
+    save.hp = committed.hp;
+    return;
+  }
   save.savedView = structuredClone(committed.savedView);
   if (facts.permanentLanding) {
     save.landed = committed.landed.slice();
@@ -7329,7 +7796,7 @@ function publishArc0LandingFields(
   if (facts.achievement !== null || facts.starterCharters.changed) {
     save.unlocked = committed.unlocked.slice();
   }
-  if (facts.sample.kind === 'reward' || facts.starterCharters.changed) {
+  if (facts.sample?.kind === 'reward' || facts.starterCharters.changed) {
     save.cargo = committed.cargo.map(([materialId, count]) => [materialId, count]);
     save.essence = committed.essence;
     save.stats = { ...committed.stats };
@@ -7405,12 +7872,15 @@ async function doLand(): Promise<boolean> {
   }
   const actionBarrier = actionClaim.barrier;
   const priorLandingPublication = Object.freeze({
+    hp: save.hp,
+    waveOffs: save.waveOffs,
     savedView: save.savedView,
     landed: save.landed,
     ascCh: save.ascCh,
     ascProg: save.ascProg,
     chacc: save.chacc,
     chDone: save.chDone,
+    chWeek: save.chWeek,
     chProg: save.chProg,
     cargo: save.cargo,
     essence: save.essence,
@@ -7425,14 +7895,18 @@ async function doLand(): Promise<boolean> {
     nav,
     savedRouteWriteHeld,
     starterStatus: lastStarterCharterAcceptStatus,
+    weeklyStatus: lastWeeklyCharterStatus,
   });
   const restoreLandingPublication = (): void => {
+    save.hp = priorLandingPublication.hp;
+    save.waveOffs = priorLandingPublication.waveOffs;
     save.savedView = priorLandingPublication.savedView;
     save.landed = priorLandingPublication.landed;
     save.ascCh = priorLandingPublication.ascCh;
     save.ascProg = priorLandingPublication.ascProg;
     save.chacc = priorLandingPublication.chacc;
     save.chDone = priorLandingPublication.chDone;
+    save.chWeek = priorLandingPublication.chWeek;
     save.chProg = priorLandingPublication.chProg;
     save.cargo = priorLandingPublication.cargo;
     save.essence = priorLandingPublication.essence;
@@ -7447,12 +7921,14 @@ async function doLand(): Promise<boolean> {
     nav = priorLandingPublication.nav;
     savedRouteWriteHeld = priorLandingPublication.savedRouteWriteHeld;
     lastStarterCharterAcceptStatus = priorLandingPublication.starterStatus;
+    lastWeeklyCharterStatus = priorLandingPublication.weeklyStatus;
     try { inventoryPanelController.setState(arc2LootState); }
     catch { /* the replacement document owns recovery */ }
   };
   productActionInFlight = true;
   activePersist = actionBarrier;
   let durable = false;
+  let durableResult: 'landed' | 'wave-off' | 'unknown' = 'unknown';
   try {
     await smokeProductActionHold.holdIfArmed(actionClaim.operation);
     await settleF4Heartbeat();
@@ -7545,6 +8021,8 @@ async function doLand(): Promise<boolean> {
     }
 
     durable = true;
+    durableResult = attempt.kind === 'committed'
+      ? attempt.witness.facts.descent.kind : attempt.result;
     f4LastCheckpointAt = performance.now();
     lastPersistenceOutcome = `arc0-land-committed:${attempt.transaction.revision}`;
     if (attempt.kind === 'committed-convergence') {
@@ -7552,7 +8030,7 @@ async function doLand(): Promise<boolean> {
         runtime,
         `Arc 0 landing committed at revision ${attempt.transaction.revision}; ${attempt.detail}`,
       );
-      return true;
+      return attempt.result === 'landed';
     }
 
     try {
@@ -7578,15 +8056,32 @@ async function doLand(): Promise<boolean> {
       }
       const facts = attempt.witness.facts;
       let committedLandingLootState = arc2LootState;
-      if (facts.starterCharters.completions.some(({ gearId }) => gearId !== null)) {
+      if (facts.descent.kind === 'landed') {
         const loaded = readArc2Loot(runtime.extensions);
         if (loaded.kind !== 'loaded'
+          || loaded.state.kind !== 'inventory'
+          || attempt.arc2LootState === null
+          || JSON.stringify(encodeArc2LootCarrier(loaded.state))
+            !== JSON.stringify(encodeArc2LootCarrier(attempt.arc2LootState))
           || !arc2LootLegacyMirrorMatches(loaded.state, attempt.transaction.state)) {
-          throw new Error('Arc 0 landing Starter Charter gear carrier did not retain its exact durable fixed point');
+          throw new Error('Arc 0 landing Arc 2 carrier did not retain its exact durable fixed point');
         }
         committedLandingLootState = loaded.state;
       }
       publishArc0LandingFields(attempt.transaction.state, facts);
+      if (facts.descent.kind === 'wave-off') {
+        const learnedChance = Math.min(100, facts.descent.policy.successPercent + 20);
+        toast(
+          '⚠ Descent wave-off',
+          `Approach aborted safely — ${facts.descent.damage} damage, ${facts.descent.hpAfter} HP remains. Exact-world approach data raises the next attempt to ${learnedChance}%.`,
+          true,
+        );
+        triggerCameraShake();
+        hudText();
+        updateChips();
+        refreshPlanetSurveyCard();
+        return false;
+      }
       if (facts.starterCharters.changed) {
         arc2LootState = committedLandingLootState;
         inventoryPanelController.setState(arc2LootState);
@@ -7605,7 +8100,7 @@ async function doLand(): Promise<boolean> {
       nav = surface;
       savedRouteWriteHeld = false;
 
-      if (facts.sample.kind === 'reward') {
+      if (facts.sample?.kind === 'reward') {
         const samples = facts.sample.materials.map(({ id, quantity }) => `${quantity}× ${id}`).join(' · ');
         toast(
           '⛳ Ground Survey',
@@ -7677,7 +8172,7 @@ async function doLand(): Promise<boolean> {
         runtime,
         `Arc 0 landing committed at revision ${attempt.transaction.revision}; publication ${detail}`,
       );
-      return true;
+      return durableResult === 'landed';
     }
   } catch (error) {
     if (durable) restoreLandingPublication();
@@ -7685,11 +8180,13 @@ async function doLand(): Promise<boolean> {
       ? 'committed-publication-reload'
       : `rejected:${error instanceof Error ? error.message : String(error)}`;
     scheduleF4AuthorityConvergenceReload(runtime, `Arc 0 landing ${lastArc0LandingOutcome}`);
-    return durable;
+    return durable && durableResult === 'landed';
   } finally {
     productActionInFlight = false;
     actionClaim.settle(durable);
-    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (durable && durableResult === 'landed') {
+      queueArc9ProgressionRefresh(actionClaim.operation);
+    }
     if (activePersist === actionBarrier) activePersist = null;
   }
 }
@@ -7775,6 +8272,7 @@ async function addToAtlas(): Promise<boolean> {
   const operation = operationForArc0Atlas(address);
   const actionClaim = productActionCoordinator.tryClaim(operation);
   if (actionClaim === null) return false;
+  clearArc9AtlasUndo();
   const actionBarrier = actionClaim.barrier;
   productActionInFlight = true;
   activePersist = actionBarrier;
@@ -9132,6 +9630,35 @@ let lastArc9FrontierEndingOutcome: string | null = null;
 let starterCharterAcceptPendingId: StarterCharterIdV1 | null = null;
 let lastStarterCharterAcceptOutcome: string | null = null;
 let lastStarterCharterAcceptStatus: string | null = null;
+let weeklyCharterPending: Readonly<{
+  kind: 'rollover' | 'accept';
+  id: WeeklyCharterIdV1 | null;
+}> | null = null;
+let lastWeeklyCharterOutcome: string | null = null;
+let lastWeeklyCharterStatus: string | null = null;
+function publishWeeklyCharterPresentation(fact: WeeklyCharterActionFactV1 | null): void {
+  if (fact === null || !fact.changed) return;
+  if (fact.completions.length > 0) {
+    const titles = fact.completions.map(({ title }) => title).join(', ');
+    const rewards = fact.completions.map(({ stardust }) => `+${stardust} Stardust`).join(' · ');
+    lastWeeklyCharterStatus = `Completed ${titles}. Reward: ${rewards}.`;
+    toastCharterCompletion(
+      fact.completions.length === 1
+        ? `★ ${titles} — Weekly Charter complete`
+        : `★ ${fact.completions.length} Weekly Charters — complete`,
+      `${titles} · Reward: ${rewards}.`,
+    );
+  } else if (fact.progressIds.length > 0) {
+    const count = new Set(fact.progressIds).size;
+    lastWeeklyCharterStatus = count === 1
+      ? 'Weekly Charter progress recorded.'
+      : `Progress recorded on ${count} Weekly Charters.`;
+  } else if (fact.rollover.status === 'initialized'
+    || fact.rollover.status === 'forward-rollover') {
+    lastWeeklyCharterStatus = 'Weekly Charter slate refreshed.';
+  }
+  if (openPanelId() === 'ch') fillCharters();
+}
 let arc9BinderClaimPendingId: Arc9BinderClaimableSetIdV1 | null = null;
 let lastArc9BinderClaimOutcome: string | null = null;
 let lastArc9BinderClaimStatus: string | null = null;
@@ -9167,6 +9694,214 @@ function boundedCollectionRefusalNeedsReload(outcome: BoundedCollectionRefusalV1
     || kind === 'lease-unavailable' || kind === 'protected'
     || kind === 'storage-error';
 }
+
+function weeklyCharterRefusalNeedsReload(
+  outcome: Extract<WeeklyCharterActionOutcomeV1, { readonly kind: 'refused' }>,
+): boolean {
+  const kind = outcome.transaction?.kind;
+  return kind === 'stale' || kind === 'revision-exhausted'
+    || kind === 'duplicate-receipt' || kind === 'lost'
+    || kind === 'lease-unavailable' || kind === 'protected'
+    || kind === 'storage-error';
+}
+
+async function runWeeklyCharterAction(
+  kind: 'rollover' | 'accept',
+  id: WeeklyCharterIdV1 | null,
+): Promise<boolean> {
+  const runtime = f4Runtime;
+  if (weeklyCharterPending !== null || starterCharterAcceptPendingId !== null
+    || arc9BinderClaimPendingId !== null || smokeForceReadOnly
+    || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
+    || replacementTransaction || replacementReloadPending
+    || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()) {
+    lastWeeklyCharterOutcome = 'unavailable:write-authority';
+    lastWeeklyCharterStatus = 'Weekly Charters are unavailable until the current expedition action settles.';
+    if (openPanelId() === 'ch') fillCharters();
+    return false;
+  }
+  const codecNow = Date.now();
+  const projection = projectWeeklyCharterBoardV1(save, codecNow);
+  if (projection.kind !== 'projected') {
+    lastWeeklyCharterOutcome = 'refused:protected';
+    lastWeeklyCharterStatus = 'Weekly Charters are protected because their saved week could not be verified. Nothing changed.';
+    if (openPanelId() === 'ch') fillCharters();
+    return false;
+  }
+  if (kind === 'rollover' && !projection.board.rolloverRequired) {
+    lastWeeklyCharterOutcome = 'current:week';
+    lastWeeklyCharterStatus = 'This weekly Charter slate is already current.';
+    return true;
+  }
+  const selected = id === null ? null
+    : projection.board.rows.find(({ definition }) => definition.id === id) ?? null;
+  if (kind === 'accept' && (id === null || selected === null
+    || selected.status !== 'available' || !projection.board.tradesComplete
+    || projection.board.acceptedCount >= projection.board.cap)) {
+    lastWeeklyCharterOutcome = 'refused:unavailable-row';
+    lastWeeklyCharterStatus = 'That weekly Charter is locked, already active, or outside this exact slate.';
+    if (openPanelId() === 'ch') fillCharters();
+    return false;
+  }
+  let operation: string;
+  try {
+    operation = kind === 'rollover'
+      ? operationForWeeklyCharterRolloverV1(codecNow)
+      : operationForWeeklyCharterAcceptV1(save, codecNow, id!);
+  } catch {
+    lastWeeklyCharterOutcome = 'refused:operation';
+    lastWeeklyCharterStatus = 'Weekly Charter authority could not be derived safely. Nothing changed.';
+    return false;
+  }
+  const actionClaim = productActionCoordinator.tryClaim(operation);
+  if (actionClaim === null) {
+    lastWeeklyCharterOutcome = 'unavailable:product-action-pending';
+    lastWeeklyCharterStatus = 'Another expedition action is still settling. Nothing changed.';
+    if (openPanelId() === 'ch') fillCharters();
+    return false;
+  }
+  const actionBarrier = actionClaim.barrier;
+  const sourceState = save;
+  const sourceStateJson = JSON.stringify(sourceState);
+  const prior = Object.freeze({
+    chWeek: sourceState.chWeek,
+    chProg: sourceState.chProg,
+    chacc: sourceState.chacc,
+    essence: sourceState.essence,
+    stats: sourceState.stats,
+    unlocked: sourceState.unlocked,
+  });
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  weeklyCharterPending = Object.freeze({ kind, id });
+  lastWeeklyCharterOutcome = 'pending';
+  lastWeeklyCharterStatus = null;
+  if (openPanelId() === 'ch') fillCharters();
+  let durable = false;
+  let convergence = false;
+  let writeAttempted = false;
+  let outcome: WeeklyCharterActionOutcomeV1 | null = null;
+  const restoreLiveParent = (): void => {
+    if (save !== sourceState) return;
+    sourceState.chWeek = prior.chWeek;
+    sourceState.chProg = prior.chProg;
+    sourceState.chacc = prior.chacc;
+    sourceState.essence = prior.essence;
+    sourceState.stats = prior.stats;
+    sourceState.unlocked = prior.unlocked;
+  };
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
+      || importWriteInFlight || replacementTransaction || replacementReloadPending
+      || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+      || save !== sourceState || JSON.stringify(sourceState) !== sourceStateJson
+      || weeklyCharterPending?.kind !== kind || weeklyCharterPending.id !== id) {
+      lastWeeklyCharterOutcome = 'refused:authority-changed';
+      lastWeeklyCharterStatus = 'Weekly Charter authority changed before settlement. Nothing changed.';
+      return false;
+    }
+    writeAttempted = true;
+    outcome = kind === 'rollover'
+      ? await commitWeeklyCharterRolloverV1({
+        state: sourceState,
+        codecNow,
+        authority: runtime,
+      })
+      : await commitWeeklyCharterAcceptV1({
+        state: sourceState,
+        id: id!,
+        codecNow,
+        authority: runtime,
+      });
+    if (outcome.kind === 'current') {
+      lastWeeklyCharterOutcome = 'current:' + outcome.week;
+      lastWeeklyCharterStatus = kind === 'rollover'
+        ? 'This weekly Charter slate is already current.'
+        : 'That weekly Charter is already accepted or complete.';
+      return true;
+    }
+    if (outcome.kind === 'refused') {
+      lastWeeklyCharterOutcome = 'refused:' + outcome.detail;
+      lastWeeklyCharterStatus = 'Weekly Charter settlement was refused. Nothing changed.';
+      if (weeklyCharterRefusalNeedsReload(outcome)) {
+        convergence = true;
+        scheduleF4AuthorityConvergenceReload(runtime, 'Weekly Charter ' + outcome.detail);
+      }
+      return false;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = 'weekly-charter-' + kind + '-committed:' + outcome.transaction.revision;
+    if (outcome.kind === 'committed-convergence') {
+      convergence = true;
+      lastWeeklyCharterOutcome = 'committed-convergence:' + outcome.detail;
+      lastWeeklyCharterStatus = 'The weekly Charter change committed; reloading its exact result without retry.';
+      scheduleF4AuthorityConvergenceReload(runtime, 'Weekly Charter ' + outcome.detail);
+      return true;
+    }
+    try {
+      const checkpoint = runtime.checkpointParent();
+      if (runtime !== f4Runtime || runtime.revision !== outcome.transaction.revision
+        || checkpoint === null || checkpoint.chWeek !== outcome.state.chWeek
+        || JSON.stringify(checkpoint.chProg) !== JSON.stringify(outcome.state.chProg)
+        || JSON.stringify(checkpoint.chacc) !== JSON.stringify(outcome.state.chacc)
+        || checkpoint.essence !== outcome.state.essence
+        || JSON.stringify(checkpoint.stats) !== JSON.stringify(outcome.state.stats)
+        || JSON.stringify(checkpoint.unlocked) !== JSON.stringify(outcome.state.unlocked)) {
+        throw new Error('Weekly Charter runtime did not retain its exact durable fixed point');
+      }
+      publishWeeklyCharterFieldsV1(sourceState, outcome);
+      lastWeeklyCharterOutcome = 'committed:' + kind + ':' + outcome.facts.receiptOrdinal;
+      lastWeeklyCharterStatus = kind === 'rollover'
+        ? 'The exact weekly Charter slate is current.'
+        : 'Accepted ' + (selected?.definition.title ?? id ?? 'weekly Charter') + '.';
+      updateChips();
+      if (openPanelId() === 'rec') fillRecords();
+      return true;
+    } catch (error) {
+      restoreLiveParent();
+      convergence = true;
+      lastWeeklyCharterOutcome = 'committed-publication-reload';
+      lastWeeklyCharterStatus = 'The weekly Charter change committed, but presentation could not be verified. Reloading without retry.';
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Weekly Charter publication ' + (error instanceof Error ? error.message : String(error)),
+      );
+      return true;
+    }
+  } catch (error) {
+    if (durable) restoreLiveParent();
+    lastWeeklyCharterOutcome = durable ? 'committed-fault' : 'fault';
+    lastWeeklyCharterStatus = durable || writeAttempted
+      ? 'The weekly Charter result became ambiguous. Reloading without retry.'
+      : 'Weekly Charter settlement was unavailable. Nothing changed.';
+    if (durable || writeAttempted) {
+      convergence = true;
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Weekly Charter fault ' + (error instanceof Error ? error.message : String(error)),
+      );
+    }
+    return durable;
+  } finally {
+    weeklyCharterPending = null;
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    if (activePersist === actionBarrier) activePersist = null;
+    if (!convergence && openPanelId() === 'ch') fillCharters();
+  }
+}
+
+async function runWeeklyCharterRollover(): Promise<boolean> {
+  return runWeeklyCharterAction('rollover', null);
+}
+
+async function runWeeklyCharterAccept(id: WeeklyCharterIdV1): Promise<boolean> {
+  return runWeeklyCharterAction('accept', id);
+}
+
 
 async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
   const runtime = f4Runtime;
@@ -9328,10 +10063,16 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
       if (outcome.facts.stage.extensionWrites.length > 0) {
         const loaded = readArc2Loot(runtime.extensions);
         if (loaded.kind !== 'loaded'
+          || loaded.state.kind !== 'inventory'
+          || outcome.arc2LootState === null
+          || JSON.stringify(encodeArc2LootCarrier(loaded.state))
+            !== JSON.stringify(encodeArc2LootCarrier(outcome.arc2LootState))
           || !arc2LootLegacyMirrorMatches(loaded.state, outcome.state)) {
           throw new Error('Starter Charter gear carrier did not retain its exact durable fixed point');
         }
         nextArc2LootState = loaded.state;
+      } else if (outcome.arc2LootState !== null) {
+        throw new Error('Starter Charter exposed an unexpected exact gear successor');
       }
       publishStarterCharterAcceptFieldsV1(sourceState, outcome);
       arc2LootState = nextArc2LootState;
@@ -9769,12 +10510,430 @@ async function settleArc9DirectTravel(
   }
 }
 
+function arc9AtlasRowActionBlocked(): boolean {
+  return arc9AtlasFavoritePendingId !== null || arc9AtlasRowPending !== null
+    || arc9AtlasUndoPending || smokeForceReadOnly || !f4RuntimeMayMutate()
+    || activePersist !== null || importWriteInFlight
+    || replacementTransaction !== null || replacementReloadPending
+    || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions();
+}
+
+function atlasRowRefusalNeedsReload(
+  outcome: Readonly<{ convergence: 'none' | 'read-only-reload' }>,
+): boolean {
+  return outcome.convergence === 'read-only-reload';
+}
+
+async function runArc9AtlasHomeChange(atlasId: string, desired: boolean): Promise<boolean> {
+  const runtime = f4Runtime;
+  if (arc9AtlasRowActionBlocked() || runtime === null) {
+    lastArc9AtlasRowStatus = 'Home is unavailable until the current expedition action settles.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  let operation: string;
+  try { operation = operationForArc9AtlasHomeV1(atlasId); }
+  catch {
+    lastArc9AtlasRowStatus = 'That Atlas row is not a valid Home target.';
+    return false;
+  }
+  const targetIndex = save.logMap.findIndex(([id]) => id === atlasId);
+  const targetPair = targetIndex < 0 ? null : save.logMap[targetIndex] ?? null;
+  if (targetPair === null) return false;
+  const targetEntry = targetPair[1];
+  const priorHomeId = save.homeId;
+  const priorRoute = atlasRouteStates.get(targetEntry);
+  const actionClaim = productActionCoordinator.tryClaim(operation);
+  if (actionClaim === null) {
+    lastArc9AtlasRowStatus = 'Another expedition action is still settling.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  clearArc9AtlasUndo();
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  arc9AtlasRowPending = Object.freeze({ kind: 'home', atlasId });
+  lastArc9AtlasRowStatus = null;
+  if (openPanelId() === 'atlas') fillAtlas();
+  let durable = false;
+  let convergence = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
+      || importWriteInFlight || replacementTransaction || replacementReloadPending
+      || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+      || save.logMap[targetIndex] !== targetPair || targetPair[1] !== targetEntry
+      || save.homeId !== priorHomeId) {
+      lastArc9AtlasRowStatus = 'Atlas authority changed before Home could settle. Nothing changed.';
+      return false;
+    }
+    const outcome = await commitArc9AtlasHomeV1({
+      runtime,
+      state: save,
+      atlasId,
+      desired,
+      codecNow: Date.now(),
+    });
+    if (outcome.kind === 'refused') {
+      lastArc9AtlasRowStatus = 'Home was refused because the exact Atlas authority could not be proved.';
+      if (atlasRowRefusalNeedsReload(outcome)) {
+        convergence = true;
+        scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Home ' + outcome.detail);
+      }
+      return false;
+    }
+    if (outcome.kind === 'current') {
+      lastArc9AtlasRowStatus = desired
+        ? 'That exact place is already Home.'
+        : 'That exact place is already not Home.';
+      return true;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = 'arc9-atlas-home-committed:' + outcome.transaction.revision;
+    if (outcome.kind === 'committed-convergence') {
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Home committed; reloading its exact durable result without retry.';
+      scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Home ' + outcome.detail);
+      return true;
+    }
+    try {
+      const checkpoint = runtime.checkpointParent();
+      if (runtime !== f4Runtime || runtime.revision !== outcome.transaction.revision
+        || checkpoint === null || checkpoint.homeId !== outcome.plan.homeIdAfter
+        || JSON.stringify(checkpoint.logMap) !== JSON.stringify(outcome.transaction.state.logMap)) {
+        throw new Error('Atlas Home runtime did not retain its exact durable fixed point');
+      }
+      publishArc9AtlasHomeFieldsV1(save, outcome);
+      if (save.logMap[targetIndex] !== targetPair
+        || targetPair[1] !== targetEntry
+        || atlasRouteStates.get(targetEntry) !== priorRoute) {
+        throw new Error('Atlas Home publication replaced its exact route-owning row');
+      }
+      lastArc9AtlasRowStatus = desired
+        ? 'Home now points to ' + String(targetEntry.title || atlasId) + '.'
+        : 'Home has been cleared.';
+      toast(desired ? '⌂ Atlas Home set' : 'Atlas Home cleared', lastArc9AtlasRowStatus, true);
+      return true;
+    } catch (error) {
+      save.homeId = priorHomeId;
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Home committed, but presentation could not be verified. Reloading without retry.';
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Home publication ' + (error instanceof Error ? error.message : String(error)),
+      );
+      return true;
+    }
+  } catch (error) {
+    if (durable) save.homeId = priorHomeId;
+    lastArc9AtlasRowStatus = durable
+      ? 'Home became ambiguous after commit. Reloading without retry.'
+      : 'Home could not be changed. Nothing changed.';
+    if (durable) {
+      convergence = true;
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Home fault ' + (error instanceof Error ? error.message : String(error)),
+      );
+    }
+    return durable;
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    arc9AtlasRowPending = null;
+    if (activePersist === actionBarrier) activePersist = null;
+    if (!convergence && openPanelId() === 'atlas') fillAtlas();
+  }
+}
+
+async function runArc9AtlasRemove(atlasId: string): Promise<boolean> {
+  const runtime = f4Runtime;
+  if (arc9AtlasRowActionBlocked() || runtime === null) {
+    lastArc9AtlasRowStatus = 'Remove is unavailable until the current expedition action settles.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  let operation: string;
+  try { operation = operationForArc9AtlasRemoveV1(atlasId); }
+  catch {
+    lastArc9AtlasRowStatus = 'That Atlas row is not a valid removal target.';
+    return false;
+  }
+  const targetIndex = save.logMap.findIndex(([id]) => id === atlasId);
+  const targetPair = targetIndex < 0 ? null : save.logMap[targetIndex] ?? null;
+  if (targetPair === null) return false;
+  const targetEntry = targetPair[1];
+  const title = String(targetEntry.title || atlasId);
+  const priorHomeId = save.homeId;
+  const priorRows = save.logMap.slice();
+  const priorRoutes = priorRows.map(([, entry]) => atlasRouteStates.get(entry));
+  const retainedRoute = atlasRouteStates.get(targetEntry) ?? null;
+  const actionClaim = productActionCoordinator.tryClaim(operation);
+  if (actionClaim === null) {
+    lastArc9AtlasRowStatus = 'Another expedition action is still settling.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  clearArc9AtlasUndo();
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  arc9AtlasRowPending = Object.freeze({ kind: 'remove', atlasId });
+  lastArc9AtlasRowStatus = null;
+  if (openPanelId() === 'atlas') fillAtlas();
+  let durable = false;
+  let convergence = false;
+  let published = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
+      || importWriteInFlight || replacementTransaction || replacementReloadPending
+      || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+      || save.logMap.length !== priorRows.length
+      || priorRows.some((pair, index) => save.logMap[index] !== pair)
+      || save.homeId !== priorHomeId) {
+      lastArc9AtlasRowStatus = 'Atlas authority changed before Remove could settle. Nothing changed.';
+      return false;
+    }
+    const outcome = await commitArc9AtlasRemoveV1({
+      runtime,
+      state: save,
+      atlasId,
+      codecNow: Date.now(),
+    });
+    if (outcome.kind === 'refused') {
+      lastArc9AtlasRowStatus = 'Remove was refused because the exact Atlas authority could not be proved.';
+      if (atlasRowRefusalNeedsReload(outcome)) {
+        convergence = true;
+        scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Remove ' + outcome.detail);
+      }
+      return false;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = 'arc9-atlas-remove-committed:' + outcome.transaction.revision;
+    if (outcome.kind === 'committed-convergence') {
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Remove committed; reloading its exact durable result without retry.';
+      scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Remove ' + outcome.detail);
+      return true;
+    }
+    try {
+      const checkpoint = runtime.checkpointParent();
+      if (runtime !== f4Runtime || runtime.revision !== outcome.transaction.revision
+        || checkpoint === null || checkpoint.homeId !== outcome.plan.homeIdAfter
+        || JSON.stringify(checkpoint.logMap) !== JSON.stringify(outcome.transaction.state.logMap)) {
+        throw new Error('Atlas Remove runtime did not retain its exact durable fixed point');
+      }
+      publishArc9AtlasRemoveFieldsV1(save, outcome);
+      published = true;
+      const survivors = priorRows.filter((_, index) => index !== targetIndex);
+      if (save.logMap.length !== survivors.length
+        || survivors.some((pair, index) => save.logMap[index] !== pair)
+        || survivors.some(([, entry], index) => atlasRouteStates.get(entry) !== priorRoutes[
+          index < targetIndex ? index : index + 1
+        ])) {
+        throw new Error('Atlas Remove publication replaced a surviving route-owning row');
+      }
+      if (retainedAtlasRouteMatches(targetPair, retainedRoute)) {
+        const undo = Object.freeze({
+          receipt: outcome.undoReceipt,
+          pair: targetPair,
+          route: retainedRoute,
+          title,
+          expiresAt: performance.now() + 8_000,
+        });
+        arc9AtlasUndo = undo;
+        window.setTimeout(() => {
+          if (arc9AtlasUndo === undo && performance.now() >= undo.expiresAt) {
+            clearArc9AtlasUndo();
+            if (openPanelId() === 'atlas') fillAtlas();
+          }
+        }, 8_050);
+        lastArc9AtlasRowStatus = 'Removed ' + title + '. Undo is available for eight seconds.';
+      } else {
+        lastArc9AtlasRowStatus = 'Removed ' + title + '.';
+      }
+      toast('Atlas entry removed', lastArc9AtlasRowStatus, true);
+      return true;
+    } catch (error) {
+      if (published && !save.logMap.includes(targetPair)) {
+        save.logMap.splice(targetIndex, 0, targetPair);
+      }
+      save.homeId = priorHomeId;
+      clearArc9AtlasUndo();
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Remove committed, but presentation could not be verified. Reloading without retry.';
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Remove publication ' + (error instanceof Error ? error.message : String(error)),
+      );
+      return true;
+    }
+  } catch (error) {
+    clearArc9AtlasUndo();
+    lastArc9AtlasRowStatus = durable
+      ? 'Remove became ambiguous after commit. Reloading without retry.'
+      : 'Remove could not be completed. Nothing changed.';
+    if (durable) {
+      convergence = true;
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Remove fault ' + (error instanceof Error ? error.message : String(error)),
+      );
+    }
+    return durable;
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    arc9AtlasRowPending = null;
+    if (activePersist === actionBarrier) activePersist = null;
+    if (!convergence && openPanelId() === 'atlas') fillAtlas();
+  }
+}
+
+async function runArc9AtlasUndo(): Promise<boolean> {
+  const runtime = f4Runtime;
+  const undo = liveArc9AtlasUndo();
+  if (undo === null) {
+    lastArc9AtlasRowStatus = 'That removal can no longer be undone.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  if (arc9AtlasRowActionBlocked() || runtime === null) {
+    lastArc9AtlasRowStatus = 'Undo is unavailable until the current expedition action settles.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  let operation: string;
+  try { operation = operationForArc9AtlasUndoV1(undo.receipt); }
+  catch {
+    clearArc9AtlasUndo();
+    lastArc9AtlasRowStatus = 'That Undo receipt is no longer valid.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  const actionClaim = productActionCoordinator.tryClaim(operation);
+  if (actionClaim === null) {
+    lastArc9AtlasRowStatus = 'Another expedition action is still settling.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  const sourceStateJson = JSON.stringify(save);
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  arc9AtlasUndoPending = true;
+  lastArc9AtlasRowStatus = null;
+  if (openPanelId() === 'atlas') fillAtlas();
+  let durable = false;
+  let convergence = false;
+  let published = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
+      || importWriteInFlight || replacementTransaction || replacementReloadPending
+      || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+      || arc9AtlasUndo !== undo || performance.now() >= undo.expiresAt
+      || !retainedAtlasRouteMatches(undo.pair, undo.route)
+      || JSON.stringify(save) !== sourceStateJson) {
+      clearArc9AtlasUndo();
+      lastArc9AtlasRowStatus = 'Atlas authority changed before Undo could settle. Nothing changed.';
+      return false;
+    }
+    const outcome = await commitArc9AtlasUndoV1({
+      runtime,
+      state: save,
+      deleteReceipt: undo.receipt,
+      codecNow: Date.now(),
+    });
+    if (outcome.kind === 'refused') {
+      clearArc9AtlasUndo();
+      lastArc9AtlasRowStatus = 'Undo was refused because the exact removal successor could not be proved.';
+      if (atlasRowRefusalNeedsReload(outcome)) {
+        convergence = true;
+        scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Undo ' + outcome.detail);
+      }
+      return false;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = 'arc9-atlas-undo-committed:' + outcome.transaction.revision;
+    if (outcome.kind === 'committed-convergence') {
+      clearArc9AtlasUndo();
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Undo committed; reloading its exact durable result without retry.';
+      scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Undo ' + outcome.detail);
+      return true;
+    }
+    try {
+      const checkpoint = runtime.checkpointParent();
+      const checkpointPair = checkpoint?.logMap[outcome.plan.targetIndex];
+      if (runtime !== f4Runtime || runtime.revision !== outcome.transaction.revision
+        || checkpoint === null || checkpoint.homeId !== outcome.plan.homeIdAfter
+        || checkpointPair?.[0] !== outcome.plan.atlasId
+        || JSON.stringify(checkpointPair) !== outcome.plan.removedPairJson
+        || !retainedAtlasRouteMatches(undo.pair, undo.route)) {
+        throw new Error('Atlas Undo runtime did not retain its exact durable fixed point');
+      }
+      publishArc9AtlasUndoFieldsV1(save, outcome, undo.pair);
+      published = true;
+      if (save.logMap[outcome.plan.targetIndex] !== undo.pair
+        || !retainedAtlasRouteMatches(undo.pair, undo.route)) {
+        throw new Error('Atlas Undo did not restore the exact route-owning pair');
+      }
+      clearArc9AtlasUndo();
+      lastArc9AtlasRowStatus = 'Restored ' + undo.title + ' to its original Atlas position.';
+      toast('Atlas removal undone', lastArc9AtlasRowStatus, true);
+      return true;
+    } catch (error) {
+      if (published && save.logMap[outcome.plan.targetIndex] === undo.pair) {
+        save.logMap.splice(outcome.plan.targetIndex, 1);
+        save.homeId = outcome.plan.homeIdBefore;
+      }
+      clearArc9AtlasUndo();
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Undo committed, but presentation could not be verified. Reloading without retry.';
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Undo publication ' + (error instanceof Error ? error.message : String(error)),
+      );
+      return true;
+    }
+  } catch (error) {
+    clearArc9AtlasUndo();
+    lastArc9AtlasRowStatus = durable
+      ? 'Undo became ambiguous after commit. Reloading without retry.'
+      : 'Undo could not be completed. Nothing changed.';
+    if (durable) {
+      convergence = true;
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Undo fault ' + (error instanceof Error ? error.message : String(error)),
+      );
+    }
+    return durable;
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    arc9AtlasUndoPending = false;
+    if (activePersist === actionBarrier) activePersist = null;
+    if (!convergence && openPanelId() === 'atlas') fillAtlas();
+  }
+}
+
 async function runArc9AtlasFavoriteChange(
   atlasId: string,
   desired: boolean,
 ): Promise<boolean> {
   const runtime = f4Runtime;
-  if (arc9AtlasFavoritePendingId !== null || smokeForceReadOnly
+  if (arc9AtlasFavoritePendingId !== null || arc9AtlasRowPending !== null
+    || arc9AtlasUndoPending || smokeForceReadOnly
     || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
     || replacementTransaction || replacementReloadPending
     || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()) {
@@ -9799,6 +10958,7 @@ async function runArc9AtlasFavoriteChange(
     lastArc9AtlasFavoriteOutcome = 'unavailable:product-action-pending';
     return false;
   }
+  clearArc9AtlasUndo();
   const actionBarrier = actionClaim.barrier;
   const priorFavorite = targetEntry.fav;
   const priorStats = save.stats;
@@ -10006,9 +11166,21 @@ async function runArc9Bioscan(): Promise<boolean> {
     surveyedSet: save.surveyedSet,
     ptypesSeen: save.ptypesSeen,
     starKindsSeen: save.starKindsSeen,
+    codex: save.codex,
     hp: save.hp,
     stats: save.stats,
     unlocked: save.unlocked,
+    chacc: save.chacc,
+    chDone: save.chDone,
+    chWeek: save.chWeek,
+    chProg: save.chProg,
+    essence: save.essence,
+    items: save.items,
+    equip: save.equip,
+    equipAff: save.equipAff,
+    arc2LootState,
+    starterStatus: lastStarterCharterAcceptStatus,
+    weeklyStatus: lastWeeklyCharterStatus,
     ownershipState: arc5OwnershipState,
     ownershipEvidence: arc5OwnershipEvidence,
     ownershipProtection: arc5OwnershipProtection,
@@ -10023,13 +11195,27 @@ async function runArc9Bioscan(): Promise<boolean> {
     sourceState.surveyedSet = priorPublication.surveyedSet;
     sourceState.ptypesSeen = priorPublication.ptypesSeen;
     sourceState.starKindsSeen = priorPublication.starKindsSeen;
+    sourceState.codex = priorPublication.codex;
     sourceState.hp = priorPublication.hp;
     sourceState.stats = priorPublication.stats;
     sourceState.unlocked = priorPublication.unlocked;
+    sourceState.chacc = priorPublication.chacc;
+    sourceState.chDone = priorPublication.chDone;
+    sourceState.chWeek = priorPublication.chWeek;
+    sourceState.chProg = priorPublication.chProg;
+    sourceState.essence = priorPublication.essence;
+    sourceState.items = priorPublication.items;
+    sourceState.equip = priorPublication.equip;
+    sourceState.equipAff = priorPublication.equipAff;
+    arc2LootState = priorPublication.arc2LootState;
+    lastStarterCharterAcceptStatus = priorPublication.starterStatus;
+    lastWeeklyCharterStatus = priorPublication.weeklyStatus;
     arc5OwnershipState = priorPublication.ownershipState;
     arc5OwnershipEvidence = priorPublication.ownershipEvidence;
     arc5OwnershipProtection = priorPublication.ownershipProtection;
     lastArc5BootstrapOutcome = priorPublication.ownershipBootstrapOutcome;
+    try { inventoryPanelController.setState(arc2LootState); }
+    catch { /* the replacement document owns recovery */ }
   };
   try {
     await smokeProductActionHold.holdIfArmed(actionClaim.operation);
@@ -10094,12 +11280,33 @@ async function runArc9Bioscan(): Promise<boolean> {
         runtime.extensions,
         SCENE_OWNERSHIP_ADDRESS_RESOLVER,
       );
+      const paragonAdded = attempt.paragon.kind === 'added';
       const scoutChanged = attempt.settlement.successor !== null;
-      const writesMatch = scoutChanged
-        ? attempt.ownershipWrites.length === ARC5_OWNERSHIP_EXTENSION_TARGETS.length
+      const ownershipChanged = paragonAdded || scoutChanged;
+      const starterGearChanged = attempt.starterCharter.completions.some(
+        ({ gearId }) => gearId !== null,
+      );
+      let committedBioscanLootState = arc2LootState;
+      if (starterGearChanged) {
+        const loadedLoot = readArc2Loot(runtime.extensions);
+        if (loadedLoot.kind !== 'loaded'
+          || loadedLoot.state.kind !== 'inventory'
+          || attempt.arc2LootState === null
+          || JSON.stringify(encodeArc2LootCarrier(loadedLoot.state))
+            !== JSON.stringify(encodeArc2LootCarrier(attempt.arc2LootState))
+          || !arc2LootLegacyMirrorMatches(loadedLoot.state, attempt.state)) {
+          throw new Error('Arc 9 Bioscan Starter Charter gear did not retain its exact durable fixed point');
+        }
+        committedBioscanLootState = loadedLoot.state;
+      }
+      const expectedOwnershipTargets = paragonAdded
+        ? [...ARC4_OWNERSHIP_EXTENSION_TARGETS, ...ARC5_OWNERSHIP_EXTENSION_TARGETS]
+        : scoutChanged ? ARC5_OWNERSHIP_EXTENSION_TARGETS : [];
+      const writesMatch = ownershipChanged
+        ? attempt.ownershipWrites.length === expectedOwnershipTargets.length
           && attempt.ownershipWrites.every((write, index) => (
-            write.segment === ARC5_OWNERSHIP_EXTENSION_TARGETS[index]!.segment
-            && write.namespace === ARC5_OWNERSHIP_EXTENSION_TARGETS[index]!.namespace
+            write.segment === expectedOwnershipTargets[index]!.segment
+            && write.namespace === expectedOwnershipTargets[index]!.namespace
           ))
         : attempt.ownershipWrites.length === 0;
       if (runtime !== f4Runtime
@@ -10108,21 +11315,32 @@ async function runArc9Bioscan(): Promise<boolean> {
         || save !== sourceState || JSON.stringify(sourceState) !== sourceStateJson
         || attempt.settlement.preflight.parentRevision !== parentOwnershipRevision
         || attempt.settlement.preflight.parentDigest !== parentOwnershipDigest
-        || attempt.ownershipV2.revision !== parentOwnershipRevision + (scoutChanged ? 1 : 0)
+        || attempt.ownershipV2.revision !== parentOwnershipRevision + (ownershipChanged ? 1 : 0)
         || !writesMatch
         || loadedOwnership.kind !== 'loaded'
         || ownershipStateDigestV2(loadedOwnership.state)
           !== ownershipStateDigestV2(attempt.ownershipV2)
-        || ownershipStateDigestV2(attempt.ownershipV2)
-          !== ownershipStateDigestV2(attempt.settlement.successor ?? parentOwnership)
-        || (scoutChanged
+        || (!paragonAdded && ownershipStateDigestV2(attempt.ownershipV2)
+          !== ownershipStateDigestV2(attempt.settlement.successor ?? parentOwnership))
+        || (ownershipChanged
           ? attempt.ownershipV2Evidence?.representationVersion
             !== ARC5_OWNERSHIP_MIGRATION_VERSION
           : attempt.ownershipV2Evidence !== null)) {
         throw new Error('arc9-bioscan-fixed-point-mismatch');
       }
       publishBioscanActionV1(sourceState, attempt);
-      if (scoutChanged) {
+      if (attempt.starterCharter.changed) {
+        arc2LootState = committedBioscanLootState;
+        inventoryPanelController.setState(arc2LootState);
+        const completions = attempt.starterCharter.completions;
+        if (completions.length > 0) {
+          const titles = completions.map(({ title }) => title).join(', ');
+          const rewards = completions.map((completion) => `+${completion.stardust} Stardust`
+            + (completion.gearId === null ? '' : ` + ${completion.gearId} starter gear`)).join(' · ');
+          lastStarterCharterAcceptStatus = `Completed ${titles}. Reward: ${rewards}.`;
+        }
+      }
+      if (ownershipChanged) {
         arc5OwnershipState = attempt.ownershipV2;
         arc5OwnershipEvidence = attempt.ownershipV2Evidence;
         arc5OwnershipProtection = null;
@@ -10155,8 +11373,15 @@ async function runArc9Bioscan(): Promise<boolean> {
 
     try {
       hudText();
-      if (attempt.settlement.successor !== null) refreshCompendiumFeedState();
+      updateChips();
+      publishWeeklyCharterPresentation(attempt.weeklyCharter);
+      if (attempt.settlement.successor !== null || attempt.paragon.kind === 'added') {
+        refreshCompendiumFeedState();
+      }
+      if (attempt.starterCharter.changed && attempt.weeklyCharter?.changed !== true
+        && openPanelId() === 'ch') fillCharters();
       if (openPanelId() === 'rec') fillRecords();
+      if (attempt.starterCharter.changed && openPanelId() === 'shipyard') refreshEngineeringPanelState();
       gameEvent('bioscan', { worldKey: fresh.worldKey });
       if (attempt.settlement.hostile) triggerCameraShake();
       const additions = [
@@ -10164,6 +11389,8 @@ async function runArc9Bioscan(): Promise<boolean> {
         ...attempt.survey.addedAggregateAchievementIds,
         ...attempt.achievementIdsAdded,
         ...attempt.postHazardAggregateAchievementIdsAdded,
+        ...attempt.starterCharter.addedAchievementIds,
+        ...(attempt.weeklyCharter?.addedAchievementIds ?? []),
       ];
       presentProgressionCeremony({
         revision: attempt.transaction.revision,
@@ -10174,6 +11401,31 @@ async function runArc9Bioscan(): Promise<boolean> {
         priorBestRankIndex: attempt.survey.source.bestRank,
         nextBestRankIndex: attempt.state.stats.bestRank ?? 0,
       });
+      if (attempt.starterCharter.completions.length > 0) {
+        const completions = attempt.starterCharter.completions;
+        const titles = completions.map(({ title }) => title).join(', ');
+        const rewards = completions.map((completion) => `+${completion.stardust} Stardust`
+          + (completion.gearId === null ? '' : ` + ${completion.gearId} starter gear`)).join(' · ');
+        toastCharterCompletion(
+          completions.length === 1
+            ? `★ ${titles} — Starter Charter complete`
+            : `★ ${completions.length} Starter Charters — complete`,
+          `${titles} · Reward: ${rewards}.`,
+        );
+      }
+      if (attempt.paragon.kind === 'added' && attempt.paragon.codexId !== null) {
+        const paragonEntry = attempt.state.codex.find(
+          ([id]) => id === attempt.paragon.codexId,
+        )?.[1];
+        if (paragonEntry !== undefined) {
+          toast(
+            '🏲 Paragon discovered',
+            `${paragonEntry.name} has joined the Fifty-Paragon record.`,
+            true,
+          );
+          if (typeof paragonEntry.tier === 'number') playRaritySting(paragonEntry.tier);
+        }
+      }
       if (attempt.settlement.target === 'explorer') {
         toast(
           '⚠ Hostile life encountered',
@@ -11384,15 +12636,23 @@ async function commitArc3EngineeringAction(spec: Readonly<{
       spec.publish(save, outcome.state, verified);
       arc3EngineeringState = verified.state;
       lastArc3ProjectionDiagnostics = verified.projection.diagnostics;
-      if (committedPlan.starterCharter?.changed === true) {
+      const starterCharter = committedPlan.starterCharter;
+      const weeklyCharter = committedPlan.weeklyCharter;
+      publishWeeklyCharterPresentation(weeklyCharter);
+      if (starterCharter?.changed === true || weeklyCharter?.changed === true) {
+        const first = starterCharter?.changed === true ? starterCharter : weeklyCharter!;
+        const last = weeklyCharter?.changed === true ? weeklyCharter : starterCharter!;
         presentProgressionCeremony({
           revision: outcome.revision,
           disposition: 'committed-publication',
-          priorUnlockedIds: committedPlan.starterCharter.priorUnlockedIds,
-          nextUnlockedIds: committedPlan.starterCharter.nextUnlockedIds,
-          addedAchievementIds: committedPlan.starterCharter.addedAchievementIds,
-          priorBestRankIndex: committedPlan.starterCharter.priorBestRankIndex,
-          nextBestRankIndex: committedPlan.starterCharter.nextBestRankIndex,
+          priorUnlockedIds: first.priorUnlockedIds,
+          nextUnlockedIds: last.nextUnlockedIds,
+          addedAchievementIds: [
+            ...(starterCharter?.addedAchievementIds ?? []),
+            ...(weeklyCharter?.addedAchievementIds ?? []),
+          ],
+          priorBestRankIndex: first.priorBestRankIndex,
+          nextBestRankIndex: last.nextBestRankIndex,
         });
       }
       return Object.freeze({
@@ -15128,9 +16388,10 @@ const READ_ONLY_MUTATION_SELECTOR = [
   '[data-arc9-nameplate-choice]',
   '[data-frontier-ending-id]',
   '[data-starter-charter-accept]',
+  '[data-weekly-charter-accept]',
   '[data-binder-claim]',
   '[data-arc9-explorer-name-save]',
-  '[data-atlas-favorite]',
+  '[data-atlas-favorite]', '[data-atlas-home]', '[data-atlas-remove]', '[data-atlas-undo]',
   '[data-act="landcta"]', '[data-act="add"]', '[data-act="bioscan"]', '[data-act="share"]',
   '[data-capture-action]',
   '[data-arc5-feed-confirm]',
@@ -15614,6 +16875,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     importedRouteIngress = prepared.ingress;
     trainingSnapshotIngress = prepared.ingress.trainingSnapshot;
     trainingCheckpointWriteHeld = trainingSnapshotIngress.kind !== 'none';
+    clearArc9AtlasUndo();
     atlasRouteStates = prepared.atlasRoutes;
     nav = prepared.nav;
     savedRouteWriteHeld = false;
@@ -16664,6 +17926,7 @@ async function loadSave(): Promise<void> {
     visualViewport?.removeEventListener('resize', syncRendererDensity);
     rendererDensitySync.cancel();
     closeCodexSurface();
+    livingSpeciesPreview.dispose();
     approachEcologyController.dispose();
     compendiumAuditionController.dispose();
     compendiumFeedController.dispose();
@@ -16672,6 +17935,7 @@ async function loadSave(): Promise<void> {
     compendiumRenameController.dispose();
     compendiumScoutController.dispose();
     travelPresentationOwner.dispose();
+    trainingForgePractice.dispose();
     engineeringPanelReleased = true;
     engineeringPanelController.dispose();
     captureCardController.dispose();

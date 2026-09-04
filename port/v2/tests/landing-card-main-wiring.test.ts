@@ -1,0 +1,35 @@
+import { readFileSync } from 'node:fs';
+import { describe, expect, it } from 'vitest';
+
+const MAIN_URL = new URL('../apps/game/src/main.ts', import.meta.url);
+
+describe('Landing card Main wiring', () => {
+  const source = readFileSync(MAIN_URL, 'utf8');
+
+  it('projects card copy from the same exact authority inputs as Landing', () => {
+    const start = source.indexOf('function projectCurrentLandingCardState(');
+    const end = source.indexOf('\nfunction landingCardActionHtml(', start);
+    const body = source.slice(start, end);
+    expect(start).toBeGreaterThanOrEqual(0);
+    expect(end).toBeGreaterThan(start);
+    expect(body).toContain('readArc2EngineeringLoadout(runtime.extensions)');
+    expect(body).toContain('loadDescentWaveOffAuthorityV1({');
+    expect(body).toContain('projectWorldOpportunity(address)');
+    expect(body).toContain('projectArc0DescentWeatherV1(address, opportunity) !== null');
+    expect(body).toContain('hasCanonicalWorldLanded(worldIdentityState, address)');
+    expect(body).toContain("save.techOwned.includes('hull1')");
+    expect(body).toContain('projectLandingCardPresentationV1(policy, save.hp)');
+  });
+
+  it('surfaces exact chance and bounded wave-off damage without writing', () => {
+    const start = source.indexOf('function landingCardActionHtml(');
+    const end = source.indexOf('\nfunction presentPlanetSurvey(', start);
+    const body = source.slice(start, end);
+    expect(body).toContain('data-landing-success=');
+    expect(body).toContain('data-landing-damage-min=');
+    expect(body).toContain('data-landing-damage-max=');
+    expect(body).toContain('aria-label=');
+    expect(body).not.toMatch(/commit|persist|mutate|save\.[A-Za-z_$][\w$]*\s*=/u);
+    expect(source).toContain(': landingCardActionHtml(landingState)) +');
+  });
+});

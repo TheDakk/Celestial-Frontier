@@ -5,6 +5,15 @@ import { describe, expect, it } from 'vitest';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const mainSource = fs.readFileSync(path.join(here, '../apps/game/src/main.ts'), 'utf8');
+const bioscanActionSource = fs.readFileSync(
+  path.join(here, '../apps/game/src/bioscan-action.ts'), 'utf8',
+);
+const captureActionSource = fs.readFileSync(
+  path.join(here, '../apps/game/src/arc4-capture-action.ts'), 'utf8',
+);
+const captureCapacitySource = fs.readFileSync(
+  path.join(here, '../apps/game/src/arc4-capture-capacity.ts'), 'utf8',
+);
 
 function section(source: string, startText: string, endText: string): string {
   const start = source.indexOf(startText);
@@ -61,14 +70,25 @@ function errors(source: string): string[] {
     'await commitBioscanActionV1({',
     'durable = true;',
     'const checkpoint = runtime.checkpointParent();',
+    "const paragonAdded = attempt.paragon.kind === 'added';",
+    'const starterGearChanged = attempt.starterCharter.completions.some(',
+    'const loadedLoot = readArc2Loot(runtime.extensions);',
+    'const expectedOwnershipTargets = paragonAdded',
+    '? [...ARC4_OWNERSHIP_EXTENSION_TARGETS, ...ARC5_OWNERSHIP_EXTENSION_TARGETS]',
     'publishBioscanActionV1(sourceState, attempt);',
+    'inventoryPanelController.setState(arc2LootState);',
+    'if (ownershipChanged) {',
     "lastArc9BioscanOutcome = `committed:${target}:${attempt.transaction.revision}`;",
     "gameEvent('bioscan', { worldKey: fresh.worldKey });",
     '...attempt.achievementIdsAdded,',
     '...attempt.postHazardAggregateAchievementIdsAdded,',
+    '...attempt.starterCharter.addedAchievementIds,',
     'presentProgressionCeremony({',
     'nextUnlockedIds: attempt.state.unlocked,',
     'nextBestRankIndex: attempt.state.stats.bestRank ?? 0,',
+    'toastCharterCompletion(',
+    "if (attempt.paragon.kind === 'added' && attempt.paragon.codexId !== null)",
+    "'🏲 Paragon discovered'",
     'actionClaim.settle(durable);',
     'if (activePersist === actionBarrier) activePersist = null;',
   ]) || action.includes('queueArc9ProgressionRefresh(')
@@ -79,12 +99,28 @@ function errors(source: string): string[] {
     || !source.includes("schema: 'cf-v2-arc9-bioscan-app-state/v1'")) {
     result.push('Bioscan read-only guard or diagnostics are missing');
   }
+  if (!action.includes('codex: save.codex,')
+    || !action.includes('sourceState.codex = priorPublication.codex;')
+    || !action.includes('attempt.ownershipV2.revision !== parentOwnershipRevision + (ownershipChanged ? 1 : 0)')
+    || !action.includes('attempt.settlement.successor !== null || attempt.paragon.kind === \'added\'')) {
+    result.push('Paragon Bioscan does not protect Codex rollback or publish the combined ownership successor');
+  }
   return result;
 }
 
 describe('living-world Bioscan Main wiring', () => {
   it('keeps inspection read-only and connects one explicit durable Discover Life action', () => {
     expect(errors(mainSource)).toEqual([]);
+  });
+
+  it('keeps accepted st-scan on explicit Discover Life instead of Capture or Chapter 2 c2-scan', () => {
+    expect(bioscanActionSource.match(/event: \{ kind: 'bioscan', address: captured\.address \}/gu))
+      .toHaveLength(1);
+    expect(bioscanActionSource).toContain('stageStarterCharterActionV1({');
+    expect(captureActionSource).not.toContain("kind: 'bioscan'");
+    expect(captureActionSource).not.toContain('stageStarterCharterActionV1({');
+    expect(captureCapacitySource).not.toContain("kind: 'bioscan'");
+    expect(captureCapacitySource).not.toContain("'st-scan'");
   });
 
   it('negative-controls publication and the living-world write boundary', () => {
@@ -103,6 +139,22 @@ describe('living-world Bioscan Main wiring', () => {
     expect(errors(mainSource.replace(
       '        ...attempt.postHazardAggregateAchievementIdsAdded,',
       '        // post-hazard aggregate refresh omitted',
+    ))).toContain('Bioscan is not one rechecked F4 commit and fixed-point publication');
+    expect(errors(mainSource.replace(
+      '        ...attempt.starterCharter.addedAchievementIds,',
+      '        // accepted Starter Charter progression omitted',
+    ))).toContain('Bioscan is not one rechecked F4 commit and fixed-point publication');
+    expect(errors(mainSource.replace(
+      '        const loadedLoot = readArc2Loot(runtime.extensions);',
+      '        const loadedLoot = { kind: \'absent\' as const };',
+    ))).toContain('Bioscan is not one rechecked F4 commit and fixed-point publication');
+    expect(errors(mainSource.replace(
+      '    codex: save.codex,',
+      '    // Codex rollback parent omitted',
+    ))).toContain('Paragon Bioscan does not protect Codex rollback or publish the combined ownership successor');
+    expect(errors(mainSource.replace(
+      '? [...ARC4_OWNERSHIP_EXTENSION_TARGETS, ...ARC5_OWNERSHIP_EXTENSION_TARGETS]',
+      '? ARC5_OWNERSHIP_EXTENSION_TARGETS',
     ))).toContain('Bioscan is not one rechecked F4 commit and fixed-point publication');
     expect(errors(mainSource.replace(
       '        nextBestRankIndex: attempt.state.stats.bestRank ?? 0,',

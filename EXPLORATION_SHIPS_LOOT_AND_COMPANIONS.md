@@ -27,6 +27,18 @@
 > victories, and latest-first Legacy Journal entries. It creates no new timeline, reward, writer,
 > receipt, RNG, save field, mission, or share card.
 
+> **2026-09-04 deterministic descent overlay — matches local v2 code:** Landing now uses the
+> established world-type/biome ladder, the same deterministic static weather shown by the biome
+> vista, equipped global/family landing gear, Reinforced Hull and worn strut protection. An
+> unfamiliar-world card shows the exact current success percentage and bounded nonlethal wave-off
+> damage before the press. An ordinary approach reserves exactly the two fixed SessionRNG domains
+> for success and scrape damage inside one F4 transaction; Earth, active Training and exact known-
+> world returns use zero draws and are guaranteed. A failed approach remains in orbit, cannot reduce
+> the explorer below 1 HP, and records +20 percentage points of learned approach for that complete
+> canonical world, up to five wave-offs. A successful landing clears only that exact-world learning
+> row and composes route, world identity, field samples, Starter Charter and achievement effects in
+> the same durable product. The compatibility seed mirror never makes another same-seed world safe.
+
 > **2026-08-29 current local exploration handoff/fixed-point correction (supersedes narrower
 > same-date descriptions below where they differ):** the real Survey-to-Landing route now drains the
 > existing route checkpoint, invokes Survey exactly once, captures and drains Survey's replacement
@@ -83,17 +95,16 @@
 > durable chart is never reported as usable while remaining untravelable. This closes the current
 > implementation seam, not the later HUMAN journey review or fresh exact-source browser evidence.
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-29**, except
-the explicit D-ARC4-BIOSCAN replacement remains a ◐ local candidate pending HUMAN acceptance.
+**STATUS:** approved product direction and implementation contract as of **2026-09-04**.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
-exact-instance Inventory, Arc 3 Engineering/Pureforged actions, Arc 4 player-facing capture loop,
-and Arc 5 exact-instance Feed, Breed/Recovery, Rename and Field Scout actions described below. Arc 5A's compact
-ownership-v2 five-carrier authority spans boot, genuine legacy Training, Arc 4 capture and those
-four player-live companion writers. Wider tastes/care/bond, injury healing, companion expeditions,
-friendly duels and
-missions remain open. Five non-Deep-Scanner research purchases, disconnected-effect recipes,
-authored random loot and upgrades/sockets remain **not implemented** unless a row below explicitly
-says otherwise. Player-facing landed combat/Guardian presentation is live at the bounded Arc 6
+exact-instance Inventory, Arc 3 Engineering/Pureforged actions and all six connected Research
+consequences, Arc 4 player-facing capture/Discover Life loop, deterministic Landing/descent, and
+Arc 5 exact-instance Feed, Breed/Recovery, Rename, Field Scout and progression presentations
+described below. Arc 5A's compact ownership-v2 five-carrier authority spans boot, genuine legacy
+Training, Arc 4 capture and those player-live companion writers. Wider tastes/care/bond, injury
+healing, companion expeditions, friendly duels and missions remain open. Authored random loot,
+natural affixes, upgrades, sockets and vendors remain **not implemented** unless a row below
+explicitly says otherwise. Player-facing landed combat/Guardian presentation is live at the bounded Arc 6
 scope recorded in `COMBAT_AND_CONQUEST.md`. This document coordinates the
 existing system specs; it does not silently promote planned behavior into the in-game Guide.
 
@@ -653,7 +664,7 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 | System | Current v2 executable state | Next owned outcome |
 |---|---|---|
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
-| Charters / reach language | The board owns the two established Starter chains, a three-active cap and one receipt/CAS Accept path. Committed-only landfall, mining, eligible fixed fabrication, Field Scout and verified conquest writers bank exact deeds and their 10–25 Stardust, supported-Gear, achievement and rank outcomes atomically; full-address Sol checks reject leaf-seed aliases. The base Discover Life Survey action is live but cannot counterfeit the separate accepted Charter. Imported drive/chapter facts still gate reach | Keep accepted Discover-life and weekly Charters fail-closed until their canonical lifecycle and wall-week/slate/acceptance/rollover authorities exist; never infer progress from projections |
+| Charters / reach language | The board owns the two established Starter chains, a three-active cap and one receipt/CAS Accept path. Committed-only landfall, mining, explicit Discover Life after `st-scan` acceptance, eligible fixed fabrication, Field Scout and verified conquest writers bank exact deeds and their 10–25 Stardust, supported Gear, achievement and rank outcomes atomically; full-address Sol checks reject leaf-seed aliases. The ordinary Discover Life record cannot counterfeit an unaccepted Charter, and an older Survey never completes a later acceptance. Imported drive/chapter facts still gate reach | Keep weekly Charters fail-closed until their wall-week/slate/acceptance/rollover authorities exist; never infer progress from projections |
 | Compendium | Virtualized 1,500-row browsing surface with bounded asynchronous thumbnails and selected static detail; list-mode heading and sticky Close share the reserved first header row; native Arc 4 acquisition may add durable rows through Survey, not through the Compendium panel itself | HUMAN Arc 1 art review, then any separately bounded living selected preview |
 | Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current published epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Historical Final10–Final13 chronology remains preserved below. Historical exact signed source `3f69e88…` passed its once-only named-verified chain, including the complete real 20-minute Recovery observation and exact next-cycle/recovered UI | Complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
 | Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; `<=360px` rows stack full visible identity copy above all status badges without changing semantics; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |

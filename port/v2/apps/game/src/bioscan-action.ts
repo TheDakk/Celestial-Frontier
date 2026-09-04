@@ -2,18 +2,22 @@
 
    The existing Arc 9 survey ledger always completes. One SessionRNG hazard
    draw may additionally wound the explorer (never below 1 HP) or the exact
-   active Field Scout (never beyond Critical 0.85). Charting and capture stay
-   separate; this action grants no species, Yield, loot or capture credit. */
+   active Field Scout (never beyond Critical 0.85). At one of the fixed Fifty
+   Paragon home worlds it can add that exact species to the catalogue, but it
+   never captures an individual or spends Biosphere Yield. */
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   canonicalJson,
   isOwnershipStateV2,
+  ownershipSourceStateV1,
+  ownershipStateDigestV1,
   ownershipStateDigestV2,
   sha256Hex,
   type OwnershipStateV2,
 } from '@cf/domain-acquisition';
 import {
   preflightArc5BioscanV1,
+  settleArc5BioscanParagonV1,
   settleArc5BioscanV1,
   type Arc5BioscanPreflightV1,
   type Arc5BioscanSettlementV1,
@@ -33,12 +37,21 @@ import {
 } from '@cf/domain-opportunity';
 import {
   committedArc5OwnershipState,
+  arc4OwnershipLegacyMirrorMatches,
+  arc2LootLegacyMirrorMatches,
+  encodeArc2LootCarrier,
+  prepareArc4OwnershipWrite,
+  prepareArc5CompositeOwnershipMigrationSuccessor,
   prepareArc5OwnershipV2Successor,
   readArc2EngineeringLoadout,
+  readArc2Loot,
   readArc3Engineering,
+  readArc4Ownership,
   readArc5OwnershipMigration,
   readCombatSettlementAuthorityV1,
   type Arc5OwnershipMigrationEvidenceV2,
+  type Arc2LootInventoryV1,
+  type CodexEntry,
   type PreparedArc5OwnershipMigrationSuccessorV2,
   type SaveStateV2,
   type V5ExtensionWrite,
@@ -65,6 +78,16 @@ import {
   type BioscanHazardPolicyV1,
 } from './bioscan-hazard.js';
 import { isCanonicalWorldRoster, type CanonicalWorldRoster } from './world-roster.js';
+import {
+  publishStarterCharterActionFieldsV1,
+  stageStarterCharterActionV1,
+  type StarterCharterActionFactV1,
+  type WeeklyCharterActionFactV1,
+} from './starter-charter-action.js';
+import {
+  findArc9ParagonAtCurrentWorldV1,
+  projectArc9ParagonLegacyCodexEntryV1,
+} from './paragon-finder.js';
 
 export const BIOSCAN_ACTION_DOMAIN_V1 = DOMAINS.surveyHazard;
 export const ARC9_BIOSCAN_RECEIPT_KIND_V1 = 'arc9-bioscan-v1' as const;
@@ -107,8 +130,17 @@ export type BioscanActionOutcomeV1 =
     ownershipV2: OwnershipStateV2;
     ownershipV2Evidence: Arc5OwnershipMigrationEvidenceV2 | null;
     ownershipWrites: readonly V5ExtensionWrite[];
+    extensionWrites: readonly V5ExtensionWrite[];
+    starterCharter: StarterCharterActionFactV1;
+    weeklyCharter: WeeklyCharterActionFactV1 | null;
+    arc2LootState: Arc2LootInventoryV1 | null;
     achievementIdsAdded: readonly (typeof ARC9_BIOSCAN_ACHIEVEMENT_ID_V1)[];
     postHazardAggregateAchievementIdsAdded: readonly string[];
+    paragon: Readonly<{
+      kind: 'none' | 'repeat' | 'added';
+      index: number | null;
+      codexId: string | null;
+    }>;
     survey: Arc9SurveySettlementReadyV1;
     sourceState: SaveStateV2;
     publication: Readonly<{
@@ -134,8 +166,19 @@ interface BioscanSelectionV1 {
   readonly survey: Arc9SurveySettlementReadyV1;
   readonly hazard: BioscanHazardPolicyV1;
   readonly prepared: PreparedArc5OwnershipMigrationSuccessorV2 | null;
+  readonly expectedOwnership: OwnershipStateV2;
+  readonly ownershipWrites: readonly V5ExtensionWrite[];
+  readonly paragon: Readonly<{
+    kind: 'none' | 'repeat' | 'added';
+    index: number | null;
+    codexId: string | null;
+  }>;
   readonly achievement: Arc9EventAchievementJoinPreparationV1 | null;
   readonly postHazardAggregateAchievementIdsAdded: readonly string[];
+  readonly extensionWrites: readonly V5ExtensionWrite[];
+  readonly starterCharter: StarterCharterActionFactV1;
+  readonly weeklyCharter: WeeklyCharterActionFactV1 | null;
+  readonly expectedArc2LootState: Arc2LootInventoryV1 | null;
   readonly expectedState: SaveStateV2;
   readonly sourceState: SaveStateV2;
   readonly witness: string;
@@ -325,6 +368,7 @@ function witnessForBioscanV1(input: Readonly<{
   scanHitsAfter: number;
   ownershipParentDigest: string;
   ownershipSuccessorDigest: string;
+  paragon: BioscanSelectionV1['paragon'];
   achievement: Arc9EventAchievementJoinPreparationV1 | null;
   postHazardAggregateAchievementIdsAdded: readonly string[];
   finalBestRankIndex: number;
@@ -361,6 +405,7 @@ function witnessForBioscanV1(input: Readonly<{
       parentDigest: input.ownershipParentDigest,
       successorDigest: input.ownershipSuccessorDigest,
     },
+    paragon: input.paragon,
     achievement: input.achievement === null ? null : {
       achievementId: input.achievement.achievementId,
       owner: input.achievement.owner,
@@ -406,6 +451,7 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
       codecNow: captured.codecNow,
       derive: ({ value, receiptOrdinal, draft, extensions }) => {
         const loadout = readArc2EngineeringLoadout(extensions);
+        const loot = readArc2Loot(extensions);
         const engineering = readArc3Engineering(extensions, SCENE_ENGINEERING_ADDRESS_RESOLVER);
         const ownership = readArc5OwnershipMigration(
           extensions,
@@ -413,6 +459,9 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
         );
         const combat = readCombatSettlementAuthorityV1(extensions);
         if (loadout.kind !== 'loaded'
+          || loot.kind !== 'loaded'
+          || loot.state.kind !== 'inventory'
+          || !arc2LootLegacyMirrorMatches(loot.state, draft)
           || loadout.capabilities.fingerprint !== captured.capabilities.fingerprint
           || engineering.kind !== 'loaded'
           || encodeEngineeringState(engineering.state) !== encodeEngineeringState(captured.engineering)
@@ -444,28 +493,101 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
           receiptOrdinal, captured.roster.worldKey,
         );
         let prepared: PreparedArc5OwnershipMigrationSuccessorV2 | null = null;
-        if (settlement.successor !== null) {
+        let expectedOwnership = settlement.successor ?? captured.ownershipV2;
+        let ownershipWrites: readonly V5ExtensionWrite[] = Object.freeze([]);
+        let paragonEntry: CodexEntry | null = null;
+        let paragon: BioscanSelectionV1['paragon'] = Object.freeze({
+          kind: 'none', index: null, codexId: null,
+        });
+        const paragonLocation = findArc9ParagonAtCurrentWorldV1(captured.address);
+        if (paragonLocation.kind === 'protected') {
+          throw new Error(`Paragon finder ${paragonLocation.reason}`);
+        }
+        if (paragonLocation.kind === 'located') {
+          const sourceParent = ownershipSourceStateV1(ownership.state);
+          if (!arc4OwnershipLegacyMirrorMatches(sourceParent, draft)) {
+            sourceAuthorityProtection = true;
+            throw new Error('Paragon legacy ownership mirror diverged');
+          }
+          const alreadyCatalogued = draft.codex.some(([id]) => id === paragonLocation.codexId);
+          if (!alreadyCatalogued && draft.codex.length >= 1_500) {
+            throw new Error('Paragon legacy Codex capacity is exhausted');
+          }
+          const joined = settleArc5BioscanParagonV1(
+            settlement,
+            paragonLocation.index,
+            captured.address,
+          );
+          expectedOwnership = joined.successor ?? captured.ownershipV2;
+          paragon = Object.freeze({
+            kind: joined.kind,
+            index: paragonLocation.index,
+            codexId: paragonLocation.codexId,
+          });
+          if (joined.kind === 'added') {
+            const arc4 = prepareArc4OwnershipWrite({
+              extensions,
+              state: joined.sourceSuccessor,
+              resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+            });
+            if (arc4.kind !== 'prepared') {
+              throw new Error(`Paragon Arc 4 ownership ${arc4.reason}`);
+            }
+            const result = prepareArc5CompositeOwnershipMigrationSuccessor({
+              baseExtensions: extensions,
+              parent: captured.ownershipV2,
+              successorExtensions: arc4.extensions,
+              successor: joined.sourceSuccessor,
+              successorV2: expectedOwnership,
+              resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+            });
+            if (result.kind !== 'prepared') {
+              throw new Error(`Paragon Arc 5 ownership ${result.reason}`);
+            }
+            prepared = result;
+            ownershipWrites = Object.freeze([...arc4.writes, ...result.writes]);
+            paragonEntry = projectArc9ParagonLegacyCodexEntryV1(paragonLocation);
+          }
+        }
+        if (prepared === null && settlement.successor !== null) {
           const result = prepareArc5OwnershipV2Successor({
             baseExtensions: extensions, parent: captured.ownershipV2,
             successor: settlement.successor, resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
           });
           if (result.kind !== 'prepared') throw new Error(`bioscan ownership ${result.reason}`);
           prepared = result;
+          ownershipWrites = result.writes;
         }
         const hostile = settlement.hostile;
         const nextStats = {
           ...survey.successorState.stats,
           ...(hostile ? { scanhits: (draft.stats.scanhits ?? 0) + 1 } : {}),
+          ...(paragonEntry === null ? {} : {
+            paragons: (draft.stats.paragons ?? 0) + 1,
+            best: Math.max(draft.stats.best ?? 0, paragonEntry.tier ?? 0),
+            maxGen: Math.max(
+              draft.stats.maxGen ?? 0,
+              typeof paragonEntry.g.gen === 'number' ? paragonEntry.g.gen : 0,
+            ),
+          }),
         };
         if (!Number.isSafeInteger(nextStats.scanhits ?? 0) || (nextStats.scanhits ?? 0) > 1_000_000_000) {
           throw new Error('bioscan close-call counter is exhausted');
         }
         const physiologyState: SaveStateV2 = {
           ...survey.successorState,
+          codex: paragonEntry === null
+            ? survey.successorState.codex
+            : [...survey.successorState.codex, [paragonEntry.id, paragonEntry]],
           hp: settlement.target === 'explorer'
             ? Math.max(1, draft.hp - settlement.damage) : draft.hp,
           stats: nextStats,
         };
+        if (paragonEntry !== null
+          && (!Number.isSafeInteger(nextStats.paragons ?? -1)
+            || (nextStats.paragons ?? -1) > 1_000_000_000)) {
+          throw new Error('Paragon discovery counter is exhausted');
+        }
         let achievement: Arc9EventAchievementJoinPreparationV1 | null = null;
         let postHazardAggregateAchievementIdsAdded: readonly string[] = Object.freeze([]);
         let nextState = physiologyState;
@@ -479,6 +601,8 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
           }
           achievement = join;
           nextState = { ...physiologyState, unlocked: [...join.nextUnlockedIds] };
+        }
+        if (hostile || paragon.kind === 'added') {
           const refresh = prepareArc9ProgressionRefreshV1(nextState);
           if (refresh.kind === 'protected') {
             throw new Error(`bioscan progression ${refresh.reason}`);
@@ -492,13 +616,19 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
             throw new Error('bioscan progression fixed point');
           }
         }
+        if (paragon.kind === 'added') {
+          const sourceSuccessor = ownershipSourceStateV1(expectedOwnership);
+          if (!arc4OwnershipLegacyMirrorMatches(sourceSuccessor, nextState)) {
+            throw new Error('Paragon legacy ownership projection did not reach its fixed point');
+          }
+        }
         const publication = Object.freeze({
           hpBefore: draft.hp,
           hpAfter: nextState.hp,
           scanHitsBefore: draft.stats.scanhits ?? 0,
           scanHitsAfter: nextStats.scanhits ?? 0,
         });
-        const witness = witnessForBioscanV1({
+        const bioscanWitness = witnessForBioscanV1({
           survey,
           hazard,
           hazardOutcome,
@@ -511,15 +641,62 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
           ...publication,
           ownershipParentDigest: ownershipStateDigestV2(captured.ownershipV2),
           ownershipSuccessorDigest: ownershipStateDigestV2(
-            settlement.successor ?? captured.ownershipV2,
+            expectedOwnership,
           ),
+          paragon,
           achievement,
           postHazardAggregateAchievementIdsAdded,
           finalBestRankIndex: nextState.stats.bestRank ?? 0,
         });
+        const charterState = clonePlain(
+          nextState,
+          new Set<object>(),
+          { count: 0 },
+          0,
+        ) as SaveStateV2;
+        const starterCharter = stageStarterCharterActionV1({
+          draft: charterState,
+          extensions,
+          predecessorWrites: ownershipWrites,
+          predecessorWitness: JSON.stringify({ bioscanWitness }),
+          event: { kind: 'bioscan', address: captured.address },
+          weekly: {
+            codecNow: captured.codecNow,
+            events: Object.freeze([
+              Object.freeze({
+                kind: 'bioscan' as const, opportunity: captured.opportunity, first: true,
+              }),
+              ...(paragon.kind === 'added' && paragon.codexId !== null
+                ? [Object.freeze({
+                  kind: 'species' as const, codexId: paragon.codexId, first: true,
+                })]
+                : []),
+            ]),
+          },
+          receiptOrdinal,
+        });
+        if (starterCharter.kind === 'refused') {
+          throw new Error(`bioscan starter Charter ${starterCharter.reason}`);
+        }
+        let expectedArc2LootState: Arc2LootInventoryV1 | null = null;
+        if (starterCharter.fact.completions.some(({ gearId }) => gearId !== null)) {
+          const stagedLoot = readArc2Loot(starterCharter.extensions);
+          if (stagedLoot.kind !== 'loaded' || stagedLoot.state.kind !== 'inventory'
+            || !arc2LootLegacyMirrorMatches(stagedLoot.state, charterState)) {
+            throw new Error('bioscan starter Charter exact gear successor is unavailable');
+          }
+          expectedArc2LootState = stagedLoot.state;
+        }
         selected = Object.freeze({
-          settlement, survey, hazard, prepared, achievement,
-          postHazardAggregateAchievementIdsAdded, witness, publication,
+          settlement, survey, hazard, prepared, expectedOwnership, ownershipWrites, paragon,
+          achievement,
+          postHazardAggregateAchievementIdsAdded,
+          extensionWrites: starterCharter.extensionWrites,
+          starterCharter: starterCharter.fact,
+          weeklyCharter: starterCharter.weeklyFact,
+          expectedArc2LootState,
+          witness: starterCharter.witness,
+          publication,
           sourceState: clonePlain(
             draft,
             new Set<object>(),
@@ -527,16 +704,16 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
             0,
           ) as SaveStateV2,
           expectedState: clonePlain(
-            nextState,
+            charterState,
             new Set<object>(),
             { count: 0 },
             0,
           ) as SaveStateV2,
         });
         return Object.freeze({
-          state: nextState,
-          extensionWrites: prepared?.writes ?? Object.freeze([]),
-          witness,
+          state: charterState,
+          extensionWrites: starterCharter.extensionWrites,
+          witness: starterCharter.witness,
         });
       },
     });
@@ -561,6 +738,10 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
     transaction.saved.extensions,
     SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   );
+  const durableArc4 = readArc4Ownership(
+    transaction.saved.extensions,
+    SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+  );
   const committedSuccessor = chosen.prepared === null ? null : committedArc5OwnershipState(
     chosen.prepared,
     transaction.saved.extensions,
@@ -571,7 +752,12 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
     : committedSuccessor?.state ?? null;
   const fixedPoint = prepareArc9SurveySettlementV1(transaction.state, captured.address);
   const progressionFixedPoint = prepareArc9ProgressionRefreshV1(transaction.state);
-  const expectedOwnership = chosen.settlement.successor ?? captured.ownershipV2;
+  const expectedOwnership = chosen.expectedOwnership;
+  const expectedSource = ownershipSourceStateV1(expectedOwnership);
+  const charterGearChanged = chosen.starterCharter.completions.some(
+    ({ gearId }) => gearId !== null,
+  );
+  const durableLoot = charterGearChanged ? readArc2Loot(transaction.saved.extensions) : null;
   let committedHazard: ReturnType<typeof resolveBioscanHazardV1>;
   try {
     committedHazard = resolveBioscanHazardV1(chosen.hazard, transaction.plan.value);
@@ -603,10 +789,32 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
       ? Math.max(1, captured.state.hp - chosen.settlement.damage) : captured.state.hp)
     || (transaction.state.stats.scanhits ?? 0) !== ((captured.state.stats.scanhits ?? 0)
       + (chosen.settlement.hostile ? 1 : 0))
+    || (transaction.state.stats.paragons ?? 0) !== ((captured.state.stats.paragons ?? 0)
+      + (chosen.paragon.kind === 'added' ? 1 : 0))
     || (chosen.achievement === null
       ? chosen.settlement.hostile
       : achievementFixedPoint?.kind !== 'prepared' || achievementFixedPoint.added)
+    || chosen.starterCharter.event.kind !== 'bioscan'
+    || chosen.starterCharter.event.worldKey !== captured.address.key
+    || (chosen.weeklyCharter !== null
+      && (chosen.weeklyCharter.events.length !== (chosen.paragon.kind === 'added' ? 2 : 1)
+        || !chosen.weeklyCharter.events.some((event) => event.kind === 'bioscan'
+          && event.worldKey === captured.address.key && event.first === true)
+        || (chosen.paragon.kind === 'added'
+          && !chosen.weeklyCharter.events.some((event) => event.kind === 'species'
+            && event.codexId === chosen.paragon.codexId && event.first === true))))
+    || (charterGearChanged && (durableLoot?.kind !== 'loaded'
+      || durableLoot.state.kind !== 'inventory'
+      || chosen.expectedArc2LootState === null
+      || !sameJson(
+        encodeArc2LootCarrier(durableLoot.state),
+        encodeArc2LootCarrier(chosen.expectedArc2LootState),
+      )
+      || !arc2LootLegacyMirrorMatches(durableLoot.state, transaction.state)))
     || committedOwnershipState === null
+    || (chosen.paragon.kind !== 'none' && (durableArc4.kind !== 'loaded'
+      || ownershipStateDigestV1(durableArc4.state) !== ownershipStateDigestV1(expectedSource)
+      || !arc4OwnershipLegacyMirrorMatches(durableArc4.state, transaction.state)))
     || ownershipStateDigestV2(committedOwnershipState)
       !== ownershipStateDigestV2(expectedOwnership)) {
     return Object.freeze({
@@ -619,11 +827,16 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
     settlement: chosen.settlement, hazard: chosen.hazard, state: transaction.state,
     ownershipV2: committedOwnershipState,
     ownershipV2Evidence: committedSuccessor?.evidence ?? null,
-    ownershipWrites: chosen.prepared?.writes ?? Object.freeze([]),
+    ownershipWrites: chosen.ownershipWrites,
+    extensionWrites: chosen.extensionWrites,
+    starterCharter: chosen.starterCharter,
+    weeklyCharter: chosen.weeklyCharter,
+    arc2LootState: chosen.expectedArc2LootState,
     achievementIdsAdded: chosen.achievement?.added
       ? Object.freeze([ARC9_BIOSCAN_ACHIEVEMENT_ID_V1])
       : Object.freeze([]),
     postHazardAggregateAchievementIdsAdded: chosen.postHazardAggregateAchievementIdsAdded,
+    paragon: chosen.paragon,
     survey: chosen.survey, sourceState: chosen.sourceState, publication: chosen.publication,
   });
 }
@@ -644,9 +857,11 @@ export function publishBioscanActionV1(
   target.surveyedSet = [...outcome.state.surveyedSet];
   target.ptypesSeen = [...outcome.state.ptypesSeen];
   target.starKindsSeen = [...outcome.state.starKindsSeen];
+  target.codex = structuredClone(outcome.state.codex);
   target.hp = outcome.state.hp;
   target.stats = { ...outcome.state.stats };
   target.unlocked = [...outcome.state.unlocked];
+  publishStarterCharterActionFieldsV1(target, outcome.state);
   if (!sameJson(target, outcome.state)) {
     throw new TypeError('Bioscan publication did not reproduce its committed fixed point');
   }

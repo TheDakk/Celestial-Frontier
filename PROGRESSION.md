@@ -1,5 +1,14 @@
 # Celestial Frontier — Player Progression
 
+> **2026-09-04 exact-instance companion progression overlay (matches local v2 code):** one
+> Compendium species detail now derives a separate progression row for every stable owned creature
+> ID, so same-species twins retain independent XP, wounds, mission/Recovery state and names. It
+> reuses CombatCore's exact `min(9, floor(sqrt(xp / 6)))` curve, class result and L3/L6 innate-slot
+> awakenings; the row shows the current XP span without adding raw-stat power. Recovery readiness
+> uses persisted active-play time. Immutable tombstones appear only as retired history and never as
+> an active companion. This projection is read-only and leaves genomes, lineage, ownership and the
+> active-play clock byte-for-byte unchanged.
+
 > **2026-09-04 current beta research-consequence and explorer-meal overlay (matches local v2 code
 > as of 2026-09-04; supersedes older research-availability claims while preserving their dated
 > history):** all six Engineering research rows now have live consequences. **Deep Scanners** reveal
@@ -365,24 +374,27 @@
 > and the first explicit Atlas Favorite → `curator`. Accepted Follow composes its accepted route,
 > Jumps, `wayfarer`, galaxy visit and any proved galaxy-kind event in the same receipt. Capacity is
 > proved before each writer, existing ids are fixed points, and each committed projection is
-> independently rechecked before publication. Those are **23** distinct event rows. Exactly five
-> remain owner-blocked—`daily`, `decade`, `survivor`, `fieldmedic`, and `gambler`; the aggregate
-> action can never stand in for one.
+> independently rechecked before publication. Hostile Discover Life now owns `survivor`, a safe
+> healing explorer Flora meal owns `fieldmedic`, and a safe meal whose disclosed poison risk was
+> above 40% owns `gambler` in their respective product receipts. Those are **26** distinct event
+> rows. Exactly two remain owner-blocked—`daily` and `decade`; the aggregate action can never stand
+> in for either one.
 >
 > Explorer self-rename is now live from **Settings → Explorer name → Change name**. It uses the
 > shipped sanitizer and 24-character cap, changes only `explorerName`, treats cleaned-empty and
 > unchanged input as receipt-free no-ops, and crosses one receipt/F4 CAS without retry or optimistic
 > publication. Durable ambiguity converges read-only through reload. Because this is identity-only,
-> it deliberately does not unlock the discovery-name `namer` achievement. Exactly the five event
+> it deliberately does not unlock the discovery-name `namer` achievement. Exactly the two event
 > owners named below remain open; durable achievement/rank notification ceremonies are live, while
 > any separate material reward design remains deliberately absent.
 
 > **2026-08-29 current local Starter Charter progression overlay:** the live two-chain board exposes
 > only one incomplete link per chain plus already accepted rows, requires explicit acceptance before
-> tracking and enforces three active slots. `st-scan` and all weeklies remain protected; `st-conq`
-> stays combat-owned. Exact already-proven durable state may complete a state-style row during the
-> acceptance receipt, but `st-giants` remains a five-press counter and unavailable `st-scan` never
-> auto-completes. New Landing/Mine events carry a full registered world address: canonical Earth is
+> tracking and enforces three active slots. `st-scan` is live through the explicit Discover Life
+> transaction; all weeklies remain protected and `st-conq` stays combat-owned. Exact already-proven
+> durable state may complete a state-style row during the acceptance receipt, but `st-giants` remains
+> a five-press counter and `st-scan` remains count-from-accept rather than borrowing an older Survey.
+> New Landing/Mine events carry a full registered world address: canonical Earth is
 > excluded from `st-land`, and Sol-tour filters prove the exact Sol hierarchy/ordinal rather than a
 > reusable planet seed. Live Landing, Mine, canonical fixed-component Fabrication, non-null Scout
 > set/switch and combat writers fold their matching Charter successor into the deed's existing F4
@@ -391,8 +403,8 @@
 > Completion pays the authored 10/15/25 Stardust value to both current and lifetime totals, raises
 > honored Charters once, removes acceptance and may append aggregate achievements/promote best rank
 > in that same candidate. The fixed gear rows are Headlamp (`st-mercury`), Mag-Boots (`st-mars`),
-> Meteorite Pendant (`st-giants`), Field Leggings (`st-ice`) and the currently unavailable Earpiece
-> (`st-scan`). A deterministic Arc 2 instance auto-equips only into an empty slot; inventory overflow
+> Meteorite Pendant (`st-giants`), Field Leggings (`st-ice`) and the Comms Earpiece (`st-scan`). A
+> deterministic Arc 2 instance auto-equips only into an empty slot; inventory overflow
 > uses the 500-entry pending-reward carrier, and exhausted/corrupt/future carrier or numeric capacity
 > refuses all rewards together. Only the verified postcommit progression delta reaches the ceremony
 > path described above.
@@ -412,7 +424,9 @@
 > unordered parent-species pair. Its child XP, canonical `xpf` claim, any `xpa` overflow replacement,
 > `c3-breed` tick and eligible `bredlegend` join share the same pre-draw-certified F4 receipt/CAS as
 > the exact-five ownership successor. Rename remains identity-only and may join `namer`; Field Scout
-> designation changes only the role and does not yet grant fresh-species XP or redirect injury.
+> designation itself changes only the role; the Scout standing before a hostile Discover Life action
+> intercepts its nonlethal wound, and the Scout standing before a genuinely fresh successful capture
+> receives up to +2 XP in that capture transaction, capped at 486.
 
 > **Earlier local Arc 4 Charter checkpoint (2026-08-29):** the playable capture writer prepared
 > one Chapter 2 `c2-scan` tick only for the first durable successful Tame, Scavenge, or Sample on
@@ -751,8 +765,8 @@ Progression runs on three parallel tracks, none of which touch world/creature *g
 3. **Standing rank (milestones).** A lifetime score over everything you've done climbs the rank ladder (Cadet → Eternal Frontier → infinite ✦ levels), unlocking nameplate colors and gating nothing — pure prestige.
 
 A fourth, collection-side track is the **Compendium** (the species catalogue) and its **Binder**.
-Current v2 pays the seven non-Paragon set bounties once; the legacy Fifty Paragons remain visible
-protected content until their deterministic discovery owner is ported.
+Current v2 pays the established non-Paragon set bounties once; the Fifty Paragons retain their
+deterministic identities, locations and separate Seeker of Legends milestone.
 
 Depth (frontier region / world tier) is the master difficulty dial: farther worlds grant more XP, hide rarer finds, and tax your wounds harder.
 
