@@ -35,7 +35,7 @@ function assess(source: string): string[] {
   const land = section(source, 'async function doLand(', '\nlet lastArc0AtlasOutcome:');
   const atlas = section(source, 'async function addToAtlas(', "\ncard.addEventListener('click'");
   const persist = section(source, 'async function persistView(', '\nlet _persistT');
-  const search = section(source, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importclose')");
+  const search = section(source, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importretry')");
   const searchName = section(
     search,
     'async function commitArc0WorldNameForSearch(',

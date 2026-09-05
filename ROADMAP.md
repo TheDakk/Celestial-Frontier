@@ -17,79 +17,104 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-05 UTC · REVIEW BATCHES 1–3 MERGED (PR #39 · AGENT LANE 6m28s) · TWO-LANE BATTERY + REVIEW BRANCHES LIVE · NO HOSTED AUTHORITY REMAINS ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-05 UTC · V2 STARTS FRESH: LEGACY SAVE IMPORT WITHDRAWN, SETTINGS IMPORT DOOR REMOVED · LOCAL BATCH ON anthropic/mac · NO HOSTED AUTHORITY ◀◀◀
 
 ### Exact boundary
 
-- **Anthropic/Claude Code on Windows:** `C:\Projects\celestial-frontier-anthropic-windows`,
-  branch **anthropic/windows**, fast-forwarded to `develop`
-  **1d719c63fbcdb6d0e6ab98a96b16e487aafe1239** (merge of PR #39) plus this handoff commit; its
-  exact SHA is stated at the Git handoff and `origin/anthropic/windows` carries it after the push.
-  The review branch `anthropic/review-batches-1-3-20260905` (tip `1219648…`) is merged and left
-  dormant. Codex's `openai/review-batches-1-3-20260904` (tip `121df53…`) is untouched; PR #37 is
-  closed as superseded.
-- Nick's authority chain: "do everything for me" (2026-09-04) and "authorize per Codex"
-  (2026-09-05). Nick refreshed the GitHub CLI login himself. Under that authority Claude created
-  the `actions-full-chain-approved` label, opened and merged PRs #36, #38 and #39 through their
-  own agent-lane runs, marked PR #37 ready and then closed it as superseded, and removed each
-  approval label after its run. Budget **UNFROZEN**, visibility **PUBLIC**, private fallback
-  **3,000**. **Zero** further hosted attempts, labels, merges or releases are authorized.
+- **Anthropic/Claude Code on macOS:** `/Users/nick/Projects/celestial-frontier-anthropic-mac`,
+  branch **anthropic/mac**, based on `develop` **1d719c63fbcdb6d0e6ab98a96b16e487aafe1239** (merge of
+  PR #39) plus the 2026-09-05 Windows handoff commit `55f5651a6b926c36b1cc5d40f9a7cb3f6ffec290`
+  (fast-forwarded and pushed as a branch push, which triggers nothing). This batch is committed
+  locally on top of that; its SHA is stated at the Git handoff. **Nothing is pushed** after the
+  fast-forward; no PR exists; no hosted attempt is authorized.
+- Nick's decisions this session (2026-09-05): (1) "Nobody is running old saves… treat it as a
+  brand-new game. But we want saves going forward for v2." (2) Remove the player-facing import door
+  now, keep the Training recovery dialog. (3) Recovery lock offers reload/update only — no hidden
+  paste path. Recorded in `port/DECISIONS.md` (Gate C row), `port/RUBRICS.md` (Gate C rows),
+  `port/V2_PROGRAM_ROADMAP.md`, `port/v2/README.md`, `SAVE_SYSTEM.md`, `UI_PRESENTATION.md`,
+  `PROCESS_LAWS.md`, `celestial-frontier-codebase-reference.md`, `port/DEVELOPMENT_PREVIEW.md` and
+  the `port/v2/DEVIATIONS.md` overlay.
+- Budget **UNFROZEN**, visibility **PUBLIC**, private fallback **3,000**. **Zero** hosted attempts,
+  labels, merges or releases are authorized. The next hosted run of this head will change sealed
+  Glass/Slice outcomes (see below) and therefore needs Nick's exact authorization as a re-seal.
 
-### What `develop` now contains (this session's three merges)
+### What changed (product, v2 only; v1 `main.js`/html untouched)
 
-1. **PR #36** — two-lane `test-battery`: `actions-budget-approved` runs the bounded agent lane on
-   `develop` (browser-free `develop` profile, changed-input controls, legacy root gates only when
-   legacy inputs changed, small-phone then large-phone Glass canaries on every agent PR) and the
-   full chain on `main`; `actions-full-chain-approved` runs the full chain on `develop`. Edge
-   install, Compendium preflight/certification, Slice and Glass carry one shared guard
-   `if: steps.lane.outputs.lane == 'full'`, sealed by the Actions policy, the Compendium preflight
-   contract and the workflow tests.
-2. **PR #38** — the sealed branch-flow validator also admits bounded review branches
-   `openai/review-*` and `anthropic/review-*` into `develop` (never into `main`); policy seal
-   updated, two rejection controls added (81 controls); rule recorded in
-   `PARALLEL_GIT_PROTOCOL.md` and `GITHUB_ACTIONS_BUDGET.md`.
-3. **PR #39** — Codex's signed Batches 1–3 (`e0acfab` → `13d24af` → `8bf9c45`, reconcile merge
-   `121df53`) integrated by Claude as merge `1219648`: queued save admission repeats before
-   commit, semantic panel focus, portable npm invocation, the shared targeted Glass verdict
-   verifier (the workflow's two phone verdicts now call it instead of the duplicated jq filter),
-   explicit distributable/evidence-build isolation (the test harness leaves the phone bundle),
-   finite audio voice cleanup, and reference/dependency corrections. No Batch 4 gameplay, no
-   checkpoint, no parked WIP, no audiovisual assets.
+1. **Settings → “Bring expedition” door removed** (`#setimport` row, listener, paste textarea,
+   Pick file, Import & reload, live error region, `cf_v2_import_original` keepsake). The retained
+   `#importsheet` element is now only the nonclosable **Field Training recovery sheet**
+   (`unknown-checkpoint` / `route-unavailable`, copy “Update and reload.” / “Reload to retry.”,
+   single **Reload to retry** action; Escape and outside focus return to it). The
+   `__CF_EVIDENCE_BUILD__` slice API keeps `importBlob` as the Slice/Glass **replacement driver**
+   (fixture seeding + reload-evidence chain); no player path reaches it.
+2. **Not changed on purpose:** the v1.8.9 codec (`import-v2.ts` / v4 envelope / v5 partition /
+   `migrateLegacyOwnership`) is v2's own load path for a brand-new game and stays. "Legacy" in the
+   persistence packages means that codec, not a player import.
+3. Guide + `V2_DRAFT_RELEASE` copy: no import promises; the draft bulletin is **77** outcomes (the two
+   import bullets became one fresh-start bullet). Read-only mode: “a protected reload is the only
+   recovery path.”
 
-### Hosted records this session
+### Instruments and seals touched (every change negative-controlled)
 
-| PR | Head | Run | Lane | Wall | Merge |
-| --- | --- | --- | --- | --- | --- |
-| #36 | `15ae437` | 33935183563 | agent | 12m47s | `0cad14d` |
-| #38 | `365ce43` | 33938776553 | agent | 12m48s | `f03761d` |
-| #39 | `1219648` | 33940061406 | agent | 6m28s | `1d719c6` |
+- `tools/slicesmoke.mjs`: door steps replaced by an **absence** check (no `#setimport`, no stale
+  import controls, recovery sheet hidden without a lock); the whitespace replacement now drives the
+  evidence seam and asserts the keepsake is **never written**; phone import-modal block retired;
+  D-TRAIN refusal reads `[data-sel="recovery-copy"]`, requires Close absent and no import copy;
+  `V2_DRAFT_BULLET_COUNT = 77`; `GUIDE_DRAFT_BULLET_AUTHORITY` resealed to 77 /
+  `bbb06e0d2daced207d5c9c30d32739dcf3cc7794943dc321f246ef44a90c07c8`.
+- `tools/glassmatrix.mjs` + `glassmatrix-evidence-contract.mjs`: `import`, `import-preferences`,
+  `import-modal` and the import `MODAL_ESCAPE_RESTORE` outcomes retired; `#setimport` left the
+  Settings focus rows; negative controls `modal-background-containment-restore` and
+  `modal-live-error` retired (modal law stays proven by `inventory-modal-*` and the Slice D-TRAIN
+  refusal). **Ledger versioning:** `GLASS_NEGATIVE_CONTROL_LEDGERS` /
+  `glassPlannedNegativeControlLedger` judge a carrier against the exact ledger it planned, so the
+  retained PR35 phone carriers (104 planned) replay green while new runs plan 102; swapped,
+  reordered, partial and non-array ledgers match nothing (negative-controlled). `import-phase-sequence`
+  and the replacement/reload outcomes are unchanged (harness-driven). Bullet pins 78→77 (control 76).
+- `budgets/compendium-memory-v1.json`: **producer authority only** re-derived by
+  `print-producer-authorities.mjs` after the final build (`430b92d75d40…`, owner
+  `assets/main-Bh74eiXq.js`); measurement authority, ruler, ceilings and calibration samples untouched;
+  `selectionRule` cites the previous and current producers. `tools/devpreview.mjs` storage contract:
+  no localStorage keys.
+- Tests: `read-only-settings-main-wiring` now rejects any `#setimport` (selector or markup) with
+  injected-door controls; anchors moved to `#importretry`; Guide/release regexes follow the copy;
+  `f4-heartbeat` re-anchored on `phase('release-started')`; `compendium-budget` pins follow the
+  producer authority.
 
-All three passed on their first attempt; each approval label was removed afterwards and each run
-record is posted on its PR. #36 and #38 edited the workflow and root tools, so every changed-input
-control ran; #39 edited the workflow only, so the legacy gates and root layout were skipped. A
-v2-app-only agent PR is expected near **4–5 minutes** (**not measured**).
+### Local gates on this head (macOS, Node 26.7.0)
 
-### Verification notes
-
-- Every merged tree was checked locally on Windows before its PR: Actions policy selftest, the
-  Compendium preflight selftest, the three workflow-pinning test files and a YAML parse. With
-  Codex's Node verifier in `develop`, the former Windows-only jq replay failure is gone.
-- Codex's exact-source `develop` profile for the reconciled candidate is recorded on PR #37
-  (274 files, 2,886 tests passed). No full browser chain or production certification is claimed;
-  Gate C (real iPhone save export), production SceneMemory activation and the HUMAN gates stay open.
+- `npm run typecheck` PASS · `npm run artunused` PASS · `npx vitest run` **274 files / 2,886 passed / 1 skipped, 0 failed**
+- `node tools/glassmatrix.mjs --selftest` PASS · `npm run preview:selftest` PASS · `npm run smoke:report:selftest` PASS
+- Glass ledger negative controls PASS (7/7) · `npm install` relinked five workspace packages that the
+  local checkout lacked (`package-lock.json` restored; its only diff was key order)
+- `node tools/slicesmoke.mjs --profile=develop` **PASS** (Slice + Arc 4 ledger; exact 77-outcome bulletin;
+  Guide 9/43/41) on local Edge. ⚠ The new smoke *absence* check (no `#setimport`, no stale import
+  controls) has no in-run negative control yet — its vitest twin (`read-only-settings-main-wiring`
+  injecting a door) is the only both-directions proof; add a smoke-side injected-door control before
+  trusting a hosted PASS of that step.
+- Glass agent-lane canaries: `node tools/glassmatrix.mjs --viewport=small-phone` **PASS** (10,923 ms, 0 findings,
+  0 instrument failures) then `--viewport=large-phone` **PASS** (10,439 ms, 0/0) — targeted, noncertifying.
+  The full certifying 12-viewport matrix was **not** run locally (it requires `--slice-run=<immutable Slice
+  run id>` from `smoke:ci`); it is the hosted full lane's job. No hosted run. No certification is claimed.
 
 ### Paired handoff
 
-- **Anthropic/Claude Code:** nothing pending on GitHub. Next candidates from the full review:
-  artlock CI ownership and the eleven-artifact verbatim-seal gap; reconcile support on request.
-  Any new head needs Nick's separate exact hosted authorization.
-- **OpenAI/Codex:** before continuing Batch A, synchronize `openai/mac` from a clean worktree by
-  merging `origin/develop` (`1d719c6`) through the shared protocol; do not cherry-pick or copy.
-  Batch 4 (connected research effects, Discover Life, meals, Scout XP, Chronicle & Museum) still
-  waits for Nick's real save export and its own PR from a bounded `openai/review-*` branch, which
-  the validator now admits. Do not edit `.github/workflows` or the budget policy in the campaign.
-- **Nick:** nothing required. To run a full chain on a `develop` PR, apply
-  `actions-full-chain-approved`; to run the agent lane, apply `actions-budget-approved`. Remove the
-  label after each run.
+- **Anthropic/Claude Code:** batch committed locally on `anthropic/mac`; not pushed. Next candidates
+  unchanged: **artlock CI ownership** (P0-6a — Nick's lane/cost decision first; baseline
+  `reference/artlock.json` is dated 2026-08-08 and has not been run) and the **eleven-artifact
+  verbatim-seal gap** (P0-6b — implementation, but it adds instrument code against the "freeze
+  instrument growth" rule). New open product decision from this batch: **how v2 protects saves from
+  Safari's 7-day script-writable-storage eviction** (IndexedDB included; Home Screen web apps exempt) —
+  install guidance, export/backup, or account. Any hosted run of this head is a re-seal and needs
+  Nick's exact authorization.
+- **OpenAI/Codex:** the "waits for Nick's real save export" blocker on Batch 4 is **gone**. Before
+  continuing, synchronize `openai/mac` from a clean worktree by merging `origin/develop` (`1d719c6`)
+  through the shared protocol; do not cherry-pick or copy. Note the docs inconsistency: the review's
+  Batch A was Claude's and Batch B (P0 4–7, largely shipped in PR #39) was Codex's, while the prior
+  handoff said "continuing Batch A" — confirm the intended batch with Nick. Do not edit
+  `.github/workflows` or the budget policy in the campaign. Do not reintroduce any import door.
+- **Nick:** nothing required on GitHub. Decide (a) whether this head goes to a PR + one agent-lane
+  attempt (it re-seals Glass/Slice), (b) the artlock CI lane, (c) the ITP save-protection answer.
 - **GitHub / Release:** `main`, the v1.8.9 live site, protected portraits and deployment are
-  unchanged. No version bump.
+  unchanged. No version bump. `gh` is set to HTTPS for git operations (harmless today; `gh config set
+  git_protocol ssh` would align it with the SSH-only rule).

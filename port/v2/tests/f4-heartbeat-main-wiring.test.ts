@@ -240,7 +240,7 @@ function integrationErrors(source: string): string[] {
   const importCatch = section(
     source,
     '    /* A repository I/O exception leaves the same authority eligible for a',
-    '  /* Best-effort extra keepsake only:',
+    "  phase('release-started');",
   );
   if (!importCatch.includes(
     "handleF4HeartbeatStorageError(runtime, renewal, 'failed-import F4 heartbeat');",

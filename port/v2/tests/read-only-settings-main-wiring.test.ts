@@ -145,11 +145,12 @@ function contractErrors(main: string, slice: string, contract = contractSource):
     "'#setsnd'", "'#setvol'", "'#setvoice'", "'[data-pref]'", "'[data-motion]'",
     "'#setcharts'", "'#setfx'", "'#setshake'", "'#setglass'", "'[data-arc5-feed-confirm]'",
   ]) if (!selector.includes(marker)) errors.push(`selector:${marker}`);
-  if (selector.includes("'#setimport'")) errors.push('protected-import-blocked');
+  /* v2 starts every explorer fresh (2026-09-05): the save-import door must not
+     exist anywhere in the shell, so neither the read-only selector nor the
+     Settings markup may name it. */
+  if (selector.includes("'#setimport'")) errors.push('import-door-selector');
+  if (main.includes('id="setimport"') || main.includes("'#setimport'")) errors.push('import-door-present');
   if (selector.includes("'[data-inventory-action]'")) errors.push('inventory-action-capture-swallowed');
-  if (!main.includes("el.querySelector('#setimport')!.addEventListener('click', openImportSheet);")) {
-    errors.push('protected-import-unavailable');
-  }
   for (const hook of [
     '__smokeSettingsPersistenceDiagnostics: settingsPersistenceSmokeDiagnostics',
     '__smokeQuiesceSettingsPersistence: smokeQuiesceSettingsPersistence',
@@ -257,7 +258,7 @@ describe('ordinary Settings mutations share the read-only boundary', () => {
       "'#dockcharts', '#setsnd',",
       "'#setimport', '#dockcharts', '#setsnd',",
     );
-    expect(contractErrors(blockedImport, sliceSource)).toContain('protected-import-blocked');
+    expect(contractErrors(blockedImport, sliceSource)).toContain('import-door-selector');
 
     const swallowedInventoryAction = mainSource.replace(
       "'#dockcharts', '#setsnd',",
@@ -266,11 +267,11 @@ describe('ordinary Settings mutations share the read-only boundary', () => {
     expect(contractErrors(swallowedInventoryAction, sliceSource))
       .toContain('inventory-action-capture-swallowed');
 
-    const missingImport = mainSource.replace(
-      "el.querySelector('#setimport')!.addEventListener('click', openImportSheet);",
-      "/* negative control: protected import unavailable */",
+    const presentImport = mainSource.replace(
+      '<div class="row"><label>Field Training</label>',
+      '<div class="row"><label>Save data</label><button id="setimport">Bring expedition</button></div><div class="row"><label>Field Training</label>',
     );
-    expect(contractErrors(missingImport, sliceSource)).toContain('protected-import-unavailable');
+    expect(contractErrors(presentImport, sliceSource)).toContain('import-door-present');
 
     const missingPostHeartbeatAnswerability = mainSource.replace(
       '    f4Runtime?.setAnswerable(false);\n    tameGreetingAudioOwner?.setAnswerable(false);',

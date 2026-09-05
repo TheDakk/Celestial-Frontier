@@ -3039,6 +3039,13 @@ base or stale-reload substitutions. At that boundary it did not close F3/F4. The
 overlay now records the live CAS/revision/tab lease, visible/answerable active-play/SessionRNG
 authority and Arc 3 Auto-Extractor settlement.
 
+**2026-09-05:** the Settings save-import door (“Bring expedition”, `#setimport`, paste/pick/import
+controls, `cf_v2_import_original` keepsake) is removed — v2 starts every explorer fresh (Nick).
+`#importsheet` survives only as the nonclosable Field Training recovery sheet (reload/update only), and
+the evidence-build `importBlob` seam remains the Slice/Glass replacement driver. Glass retired
+`modal-background-containment-restore` and `modal-live-error`; retained carriers are judged against the
+ledger they planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`). The draft bulletin is 77 outcomes.
+
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
 43 authored stable IDs and 41 player topics with search, categories, native-keyboard
@@ -3086,9 +3093,9 @@ healing, forge, Capture, and the rest of the legacy 21-step curriculum remain op
 systems; live capture and companion actions do not add a seventh lesson.
 Genuine v1.8.9 checkpoints restore only their eleven owned pre-drill surfaces;
 surrounding expedition state stays with the surrounding save. Unknown checkpoint
-or unavailable-route recovery reuses the import sheet in a stricter persistent
-mode: background inert, focus trapped, no Close/Escape dismissal, release bulletin
-suppressed, and only reload/retry or trusted complete import available.
+or unavailable-route recovery opens the Field Training recovery sheet (the retained
+`#importsheet` element): background inert, focus trapped, no Close/Escape dismissal, release bulletin
+suppressed, and only reload/retry available (trusted complete import was withdrawn 2026-09-05).
 Outside Training, ordinary panels use z24 above an open z23 survey card. During
 Training, the intentional lesson choreography remains authoritative and keyboard
 focus is locked to the live lesson. The phone gate injects the former lower panel

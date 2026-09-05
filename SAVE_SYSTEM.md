@@ -1216,9 +1216,9 @@ integration and verification status.
 > writer cannot silently drift away from its next reader. Repository reset clears the
 > canonical complete `STORES` list rather than a hand-maintained subset; a store-growth
 > control seeds and proves every current store empty after reset.
-> The player-facing import door now lives at **Settings → Bring expedition**;
-> moving it out of the eighth dock slot did not create a second loader or weaken
-> any byte-protection rule. That dock slot now opens the canonical v2 Guide
+> The player-facing import door (**Settings → Bring expedition**) was removed on
+> 2026-09-05 — v2 starts every explorer fresh (Nick) — and no second loader exists; the
+> evidence-build `importBlob` seam remains the Slice/Glass replacement driver only. That dock slot now opens the canonical v2 Guide
 > catalogue (9 categories /43 authored ids /41 legacy-live topics, currently 25 partial /16
 > unavailable); first open
 > updates the existing `guide`/`seenGuide` save field through the ordinary
@@ -1269,12 +1269,9 @@ integration and verification status.
 > write to finish, holds new ordinary writes, and only then stores the proven
 > complete replacement envelope. This prevents an older same-tab settings
 > autosave from racing behind and overwriting the imported expedition. JSON
-> classification and the live primary use the whitespace-trimmed candidate,
-> while the best-effort `cf_v2_import_original` keepsake receives the exact
-> submitted text, including legal surrounding whitespace. File selection is
-> decoded to text by the browser; the moderator's external source file remains
-> the authoritative byte-for-byte backup, including when browser storage refuses
-> the extra keepsake.
+> classification and the live primary use the whitespace-trimmed candidate. The former
+> `cf_v2_import_original` keepsake, file picker and paste textarea were removed with the
+> player door on 2026-09-05; the replacement seam is reachable only from evidence builds.
 >
 > The five intentional v2 replacement-page transitions—current Training
 > restart after its view snapshot commits, atomic Training completion after its

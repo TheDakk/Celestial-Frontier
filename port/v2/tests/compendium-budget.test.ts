@@ -310,18 +310,18 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  '3c20acc35e2839101e551ac10575ef27d29df5edd6d7ae29e97130252605ec1b';
+  '430b92d75d40b01f3278f0b00916603c1359acb9278b77142ab3eae810ce5f45';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: 'fd81bf3649162f778526d6311056cafddc63bd23ab3b87006a4bb1c9ff4557c8',
+      sha256: 'd1aad178e1a33cdac871e90676efca02c4c9e5cb909599ac3d029f8fa9c88186',
     }),
     owner: Object.freeze({
-      relativePath: 'assets/main-Biahj8TR.js',
-      sha256: '428b859e0a6d055732572b60491628f4481eb1d8b7211cf8eb0918ba69b6f474',
+      relativePath: 'assets/main-Bh74eiXq.js',
+      sha256: '1d34289e5afdfcb8e8f7928bde46ed0b86dcc8690482bf0bed922af929939779',
     }),
     worker: Object.freeze({
       relativePath: 'assets/species-art.worker-DnnSDKMy.js',
@@ -333,7 +333,7 @@ const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
     }),
     serviceWorker: Object.freeze({
       relativePath: 'service-worker.js',
-      sha256: 'f5d250928064ff28c07366794bf7a9d4c4cbb3f1daf68ba63a59e6b202a60264',
+      sha256: 'd303bf4b27000cf0e424f427fa5fbb5840050ab253dd2ba2ba7af49dbe9017b6',
     }),
   }),
 });

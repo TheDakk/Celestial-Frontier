@@ -2281,31 +2281,26 @@ function invalidateSurveyTravel(): void {
   card.querySelector('[data-act="travel"]')?.remove();
 }
 
-/* ---- the save-import sheet (Phase 4's second UI component; GATE C's front
-   door): paste or pick your cfcc_save_v2 blob — VALIDATED through the real
-   importSaveV2 first and stored as primary. The player's external backup
-   remains the authoritative exact copy; the app only ATTEMPTS an additional
-   untouched local keepsake because browser storage may refuse it. ---- */
+/* ---- the Field Training recovery sheet: a nonclosable modal shown only while
+   an unrecognized checkpoint or an unverifiable Sol route locks exploration.
+   v2 starts every explorer fresh (Nick, 2026-09-05): there is no player-facing
+   save import, so reload/update is the only exit. The evidence-build importBlob
+   below survives solely as the Slice/Glass replacement driver. ---- */
 const sheet = document.createElement('div');
-sheet.id = 'importsheet';
+sheet.id = 'importsheet';   /* id retained: text-scale CSS, MODAL_SEL and the Training boundary list key on it */
 sheet.setAttribute('role', 'dialog');
 sheet.setAttribute('aria-modal', 'true');
-sheet.setAttribute('aria-label', 'Bring your expedition');
+sheet.setAttribute('aria-label', 'Field Training recovery');
 sheet.style.cssText = 'position:fixed;inset:0;padding:calc(var(--safe-top,0px) + 16px) calc(var(--safe-right,0px) + 16px) calc(var(--safe-bottom,0px) + 16px) calc(var(--safe-left,0px) + 16px);' +
   'box-sizing:border-box;align-items:center;justify-content:center;overflow:hidden;background:rgba(4,6,12,0.7);display:none;z-index:40';
 sheet.innerHTML =
   '<div style="position:relative;width:min(520px,100%);box-sizing:border-box;max-height:100%;overflow:auto;' +
   'background:rgba(10,16,30,0.97);border:1px solid #2a3c5e;border-radius:12px;padding:18px;color:#cfe0f4;font:13px/1.5 system-ui,sans-serif">' +
-  '<h2 style="font-size:15px;margin:0 0 4px">Bring your expedition</h2>' +
-  '<span data-sel="import-safety" style="color:var(--dim)">Paste or pick a moderator-provided copied expedition save. Keep that external moderator backup as the authoritative exact copy. The app checks the save before storing it and attempts an additional exact local keepsake after import, but browser storage can refuse that keepsake.</span>' +
-  '<textarea id="importtext" aria-label="Paste expedition save data" style="width:100%;height:120px;margin:10px 0;background:#0b1220;color:#cfe0f4;border:1px solid #22304a;border-radius:8px;padding:8px;box-sizing:border-box;font:12px monospace"></textarea>' +
-  '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
-  '<button id="importgo" style="background:#1d3a5e;color:#eaf2ff;border:1px solid #3a5c8e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Import & reload</button>' +
-  '<button id="importpick" type="button" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Pick file</button>' +
-  '<input id="importfile" aria-label="Choose an expedition save file" type="file" accept=".json,.txt" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">' +
-  '<button id="importretry" type="button" hidden style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Reload to retry</button>' +
-  '<button id="importclose" style="background:transparent;color:var(--dim);border:1px solid #22304a;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">close</button>' +
-  '</div><div id="importmsg" role="alert" aria-live="assertive" aria-atomic="true" style="margin-top:8px;color:#e8a0a0"></div></div>';
+  '<h2 style="font-size:15px;margin:0 0 4px">Field Training recovery</h2>' +
+  '<span data-sel="recovery-copy" style="color:var(--dim)"></span>' +
+  '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">' +
+  '<button id="importretry" type="button" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Reload to retry</button>' +
+  '</div></div>';
 document.body.appendChild(sheet);
 const importBackgroundState = new Map<HTMLElement, { inert: boolean; ariaHidden: string | null }>();
 let importBackgroundObserver: MutationObserver | null = null;
@@ -2324,41 +2319,28 @@ function enforceImportBackgroundInert(): void {
     if (child instanceof HTMLElement) rememberAndLockImportBackground(child);
   }
 }
-function configureImportSheet(): void {
+function configureRecoverySheet(): void {
   const title = sheet.querySelector<HTMLElement>('h2')!;
-  const safety = sheet.querySelector<HTMLElement>('[data-sel="import-safety"]')!;
-  const close = sheet.querySelector<HTMLButtonElement>('#importclose')!;
-  const retry = sheet.querySelector<HTMLButtonElement>('#importretry')!;
-  sheet.dataset.mode = trainingRecoveryLock || 'import';
-  if (trainingRecoveryLock) {
-    title.textContent = trainingRecoveryLock === 'unknown-checkpoint'
-      ? 'Field Training checkpoint protected'
-      : 'Field Training route unavailable';
-    safety.textContent = trainingRecoveryLock === 'unknown-checkpoint'
-      ? 'This checkpoint is not recognized by this build. Exploration is locked so no change can appear saved while its bytes remain protected. Update and reload, or import a trusted complete expedition.'
-      : 'Field Training could not verify its route to Sol. Exploration is locked so practice cannot become unsaved session-only progress. Reload to retry, or import a trusted complete expedition.';
-    close.hidden = true;
-    close.disabled = true;
-    retry.hidden = false;
-    sheet.setAttribute('aria-label', title.textContent || 'Field Training recovery');
-    return;
-  }
-  title.textContent = 'Bring your expedition';
-  safety.textContent = 'Paste or pick a moderator-provided copied expedition save. Keep that external moderator backup as the authoritative exact copy. The app checks the save before storing it and attempts an additional exact local keepsake after import, but browser storage can refuse that keepsake.';
-  close.hidden = false;
-  close.disabled = false;
-  retry.hidden = true;
-  sheet.setAttribute('aria-label', 'Bring your expedition');
+  const copy = sheet.querySelector<HTMLElement>('[data-sel="recovery-copy"]')!;
+  const lock: TrainingRecoveryLock = trainingRecoveryLock ?? 'route-unavailable';
+  sheet.dataset.mode = lock;
+  title.textContent = lock === 'unknown-checkpoint'
+    ? 'Field Training checkpoint protected'
+    : 'Field Training route unavailable';
+  copy.textContent = lock === 'unknown-checkpoint'
+    ? 'This checkpoint is not recognized by this build. Exploration is locked so no change can appear saved while its bytes remain protected. Update and reload.'
+    : 'Field Training could not verify its route to Sol. Exploration is locked so practice cannot become unsaved session-only progress. Reload to retry.';
+  sheet.setAttribute('aria-label', title.textContent);
 }
 /* ---- THE DOCK: eight live controls, every press proven by an EFFECT (the
    simrun-dom law — a dead button never ships). charts/sound flip the REAL
    save fields and persist through exportSaveV2. ---- */
-function openImportSheet(): void {
+function openRecoverySheet(): void {
   closePanels();
-  configureImportSheet();
+  configureRecoverySheet();
   if (sheet.style.display !== 'none') {
     enforceImportBackgroundInert();
-    (sheet.querySelector('#importtext') as HTMLTextAreaElement | null)?.focus();
+    refocusRecoverySheet();
     return;
   }
   importBackgroundState.clear();
@@ -2372,30 +2354,20 @@ function openImportSheet(): void {
     subtree: true,
   });
   sheet.style.display = 'flex';
-  (sheet.querySelector('#importtext') as HTMLTextAreaElement | null)?.focus();
+  refocusRecoverySheet();
 }
-function closeImportSheet(): void {
-  if (trainingRecoveryLock) {
-    (sheet.querySelector<HTMLElement>('#importtext') || sheet.querySelector<HTMLElement>('button'))?.focus();
-    return;
-  }
-  importBackgroundObserver?.disconnect();
-  importBackgroundObserver = null;
-  sheet.style.display = 'none';
-  for (const [el, { inert, ariaHidden }] of importBackgroundState) {
-    el.inert = inert;
-    if (ariaHidden === null) el.removeAttribute('aria-hidden'); else el.setAttribute('aria-hidden', ariaHidden);
-  }
-  importBackgroundState.clear();
-  document.getElementById('docksets')?.focus();
+/* The recovery sheet is never dismissable: Escape and any outside focus return
+   to its single action, and only its reload leaves this document. */
+function refocusRecoverySheet(): void {
+  sheet.querySelector<HTMLElement>('#importretry')?.focus();
 }
 function openTrainingRecoverySheet(reason: TrainingRecoveryLock): void {
   trainingRecoveryLock = reason;
-  openImportSheet();
+  openRecoverySheet();
 }
 document.addEventListener('focusin', (event) => {
   if (sheet.style.display === 'none' || sheet.contains(event.target as Node)) return;
-  (sheet.querySelector<HTMLElement>('#importtext') || sheet.querySelector<HTMLElement>('button'))?.focus();
+  refocusRecoverySheet();
 }, true);
 surveyDockEl.addEventListener('click', () => {
   /* Re-show a retained card. A fresh replacement document deliberately has
@@ -2589,8 +2561,7 @@ function fillSettings(): void {
       `<button data-motion="${v}" aria-pressed="${save.motionMode === v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
     '</span></div>' +
     `<div class="row"><label>Panel tint</label><input id="setglass" aria-label="Panel tint" type="range" min="82" max="98" value="${Math.round(Math.max(save.glassTint, 0.82) * 100)}"></div>` +
-    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>` +
-    `<div class="row"><label>Save data</label><button id="setimport" data-sel="set-import">Bring expedition</button></div>`);
+    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>`);
   const el = document.getElementById('setpanel')!;
   const refillAndFocus = (selector: string): void => {
     fillSettings();
@@ -2769,7 +2740,6 @@ function fillSettings(): void {
       toast('Save unavailable', 'Field Training was not restarted; your current expedition is unchanged.');
     }
   });
-  el.querySelector('#setimport')!.addEventListener('click', openImportSheet);
   el.querySelector('#setglass')!.addEventListener('input', (e) => {
     save.glassTint = (+(e.target as HTMLInputElement).value) / 100;
     applyGlass(); persistSoon();
@@ -4315,17 +4285,13 @@ const searchTravel = createSearchTravelController({
     (action || app.canvas).focus();
   },
 });
-sheet.querySelector('#importclose')!.addEventListener('click', closeImportSheet);
-sheet.querySelector('#importpick')!.addEventListener('click', () => (sheet.querySelector('#importfile') as HTMLInputElement).click());
 sheet.querySelector('#importretry')!.addEventListener('click', () => {
   const replacement = claimReplacementTransaction('training-recovery');
   if (replacement) scheduleReplacementReload(replacement);
 });
-sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
-  const f = (e.target as HTMLInputElement).files?.[0];
-  if (!f) return;
-  void f.text().then((txt) => { (sheet.querySelector('#importtext') as HTMLTextAreaElement).value = txt; });
-});
+/* Evidence-build replacement driver only. Slice and Glass call it through
+   __CF_SLICE__.api to prove the whole-save replacement/reload chain; no
+   player control reaches it since the save-import door was removed. */
 async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<string | null> {
   /* returns an error message, or null on success (then we reload) */
   let phaseSequence = 0;
@@ -4439,21 +4405,12 @@ async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<stri
     releaseReplacementTransaction(replacement);
     return 'Storage refused the write (private mode?).';
   }
-  /* Best-effort extra keepsake only: the external moderator backup remains
-     authoritative. The live primary evolves through exportSaveV2 from the
-     first frame, so retain the exact input locally when browser storage
-     permits it, without blocking an otherwise valid import when it does not. */
-  try { localStorage.setItem('cf_v2_import_original', raw); } catch { /* keepsake only */ }
   phase('release-started');
   scheduleReplacementReload(replacement, (witness) => {
     phase('release-complete', witness.error);
   });
   return null;
 }
-sheet.querySelector('#importgo')!.addEventListener('click', () => {
-  const raw = (sheet.querySelector('#importtext') as HTMLTextAreaElement).value;
-  void importBlob(raw).then((err) => { if (err) (sheet.querySelector('#importmsg') as HTMLElement).textContent = err; });
-});
 
 /* ---- the Charter toast: name the honest current-slice boundary ---- */
 const toastEl = document.createElement('div');
@@ -16058,7 +16015,7 @@ async function loadSave(): Promise<void> {
         trimArtNow: (deviceClass: 'phone' | 'desktop') => speciesArtLoader.trimArtNow(deviceClass),
         failNextThumb: (message?: string) => speciesArtLoader.failNextThumb(message),
       }),
-      importBlob,   /* Gate C's front door, drivable by the smoke */
+      importBlob,   /* evidence-build replacement driver for Slice/Glass; the player door is gone (2026-09-05) */
       __smokeArmImportRace: smokeArmImportRace,
       __smokeReleaseImportRace: smokeReleaseImportRace,
       __smokeDrainFixturePersist: smokeDrainFixturePersist,
@@ -16576,7 +16533,7 @@ async function loadSave(): Promise<void> {
     if (sheet.style.display !== 'none') {
       e.preventDefault();
       e.stopPropagation();
-      closeImportSheet();
+      refocusRecoverySheet();
       return;
     }
     if (searchTravel.blurIfFocused()) return;
