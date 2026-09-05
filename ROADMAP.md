@@ -29,7 +29,7 @@ WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` stays parked except individually 
 
 | Step | State | Commit / push / gates |
 | --- | --- | --- |
-| 1 — core integration | Fast gates green; browser pending | Real signed-core merge candidate; 286 files / 2,951 passed / 1 skipped |
+| 1 — core integration | First Slice red; bounded expectation repair | Merge `e77e5e0`; fast green 286 / 2,951 / 1; first living-world setup expected an obsolete write |
 | 2a — accepted st-scan | Pending | Recover only completed authored scope |
 | 2b — descent/wave-offs | Pending | Canonical-address deterministic outcome |
 | 2c — 50-Paragon hunt | Pending | Existing authored table only |
@@ -88,6 +88,26 @@ Final corrected core source: typecheck PASS, artunused PASS, Vitest **286 files 
 1 skipped** (38.13s). Root validate PASS (1,010 renders and all 50 fingerprints). The real
 merge is now committed for unchanged-source local browser gates; checkpoint 1 is not complete
 until those gates pass and the branch is pushed.
+
+First clean-source Slice on merge `e77e5e0` stopped after 33.262s:
+`POINTER EARTH SURVEY: Survey did not reach its exact same-document fixed point before the dependent action`.
+Its setup expected a discovery commit from living-world card inspection, which is deliberately
+read-only in the approved core. Mercury/nonliving and star commits remain. The bounded existing
+assessor repair checks unchanged raw/save/RNG/receipts/runtime and prior outcome, with negative
+controls; it does not fake `current:world` or alter product behavior. Neither phone Glass ran.
+The failed log SHA is `5c19919decee1fcfefc00bc35cab5b295577a8539cb46c57796aec836d7e71c4`.
+No unchanged-source browser retry; the correction will be a new commit. Full details are in
+`audits/BATCH4_OVERNIGHT_REPORT_20260905.md`.
+
+Inspection repair focused checks passed after correcting stale test mutation labels (12/12
+Arc0 cases and 49/49 early fixed-point cases). Full fast then stopped at the stale public
+TypeScript union (`inspection` not assignable to `commit | current | either`); its corresponding
+`.d.mts` declaration is now aligned. Artunused/Vitest did not run after that typecheck red.
+No game source, producer pin, measurement input or hosted policy changed in this repair.
+
+Inspection correction final fast PASS: **286 files / 2,954 passed / 1 skipped** (37.82s);
+typecheck and artunused PASS. It is committed separately from `e77e5e0` before the next
+unchanged-source Slice/phone sequence. Checkpoint 1 remains pending browser acceptance/push.
 
 ### Scope and continuation
 

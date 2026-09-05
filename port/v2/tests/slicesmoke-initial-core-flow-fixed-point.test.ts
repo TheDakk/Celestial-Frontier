@@ -78,6 +78,31 @@ function currentFixture() {
   return value;
 }
 
+const INSPECTION_EXPECTED = {
+  ...EXPECTED, surveyTarget: 'world', settlement: 'inspection',
+  route: { ...EXPECTED.route, mode: 'system', star: 424242, starX: 560, starY: 170,
+    navStarKey: 'CF1|g:999@90,-60|s:424242@560,170' },
+  presentation: { cardOpen: true, cardTitle: 'Earth', actionOk: true, actionLabel: '⛳ Land' },
+} as const;
+function inspectionFixture(priorOutcome: string | null = null) {
+  const value: any = currentFixture();
+  Object.assign(value.state, INSPECTION_EXPECTED.route, { cardOpen: true, cardTitle: 'Earth' });
+  Object.assign(value.state.renderedScene, { mode: 'system',
+    starKey: INSPECTION_EXPECTED.route.navStarKey });
+  value.action.label = '⛳ Land';
+  value.beforeAuthority.state.landing = { surveyOutcome: priorOutcome };
+  value.state.landing.surveyOutcome = priorOutcome;
+  value.beforeAuthority.state.save = {
+    stats: { shares: 0, surveys: 0, best: 0, bestRank: 0, hybrids: 0 }, unlocked: [],
+  };
+  value.state.save = { ...structuredClone(value.beforeAuthority.state.save),
+    landed: [], items: [], cargo: [], savedView: null };
+  value.afterAuthority.state = { ...value.state,
+    save: structuredClone(value.beforeAuthority.state.save) };
+
+  return value;
+}
+
 describe('early core-flow Survey fixed point', () => {
   it('executes one object-valued Survey surface across all three journey drivers', () => {
     const state = { mode: 'galaxy', cardOpen: true };
@@ -195,6 +220,57 @@ describe('early core-flow Survey fixed point', () => {
         ...EXPECTED, settlement: 'current',
       }).reasons).toContain('Survey current fixed point: exact no-write authority, current outcome, and idle coordinator');
     }
+  });
+  it('accepts living-world inspection with exact no-write authority and unchanged prior outcomes', () => {
+    for (const previous of [null, 'committed:star:records', 'current:world']) {
+      expect(assessEarlyCoreFlowActionFixedPoint(inspectionFixture(previous), INSPECTION_EXPECTED))
+        .toEqual({ status: 'ready', reasons: [] });
+    }
+    expect(assessEarlyCoreFlowActionFixedPoint(inspectionFixture(), {
+      ...INSPECTION_EXPECTED, settlement: 'current',
+    }).status).toBe('pending');
+    expect(() => assessEarlyCoreFlowActionFixedPoint(currentFixture(), {
+      ...EXPECTED, settlement: 'inspection',
+    })).toThrow(TypeError);
+  });
+  it('rejects every injected inspection write or outcome change without weakening committed Survey', () => {
+    const mutations: readonly [string, (value: ReturnType<typeof inspectionFixture>) => void][] = [
+      ['revision', (v) => { v.afterAuthority.raw.revision += 1; }],
+      ['receipt', (v) => { v.afterAuthority.raw.receiptRows.push({ ordinal: 2, kind: 'arc9-survey-v1' }); }],
+      ['raw save', (v) => { v.afterAuthority.raw.legacyRaw = '{"surveyed":["Earth"]}'; }],
+      ['RNG', (v) => { v.state.persistence.runtime.sessionOrdinal += 1; }],
+      ['commit counter', (v) => { v.state.persistence.runtime.commits += 1; }],
+      ['persistence outcome', (v) => { v.state.persistence.lastOutcome = 'arc9-survey-committed:4'; }],
+      ['Survey outcome', (v) => { v.state.landing.surveyOutcome = 'current:world'; }],
+      ['missing prior outcome', (v) => { delete v.beforeAuthority.state.landing.surveyOutcome; }],
+      ['Survey record', (v) => { v.state.save.stats.surveys += 1; }],
+      ['unlock', (v) => { v.state.save.unlocked.push('unearned'); }],
+      ['busy owner', (v) => { v.state.landing.actionCoordinator.owner.busy = true; }],
+    ];
+    for (const [name, mutate] of mutations) {
+      const control = inspectionFixture(); mutate(control);
+      expect(assessEarlyCoreFlowActionFixedPoint(control, INSPECTION_EXPECTED).reasons, name)
+        .toContain('Survey inspection fixed point: exact no-write authority, unchanged save/outcomes, and idle coordinator');
+      expect(assessEarlyCoreFlowActionFixedPoint(inspectionFixture(), INSPECTION_EXPECTED), `${name} restoration`)
+        .toEqual({ status: 'ready', reasons: [] });
+    }
+    expect(assess(fixture())).toEqual({ status: 'ready', reasons: [] });
+    expect(assessEarlyCoreFlowActionFixedPoint(currentFixture(), { ...EXPECTED, settlement: 'current' }))
+      .toEqual({ status: 'ready', reasons: [] });
+  });
+  it('selects inspection only for the six living Earth setup calls', () => {
+    for (const label of ['pointer Earth Survey', 'keyboard Earth Survey',
+      'keyboard journey Earth Survey', 'keyboard journey repeat Earth Survey',
+      'phone Earth Survey', 'phone repeat Earth Survey']) {
+      const marker = `label: '${label}',`;
+      expect(sliceSmokeSource.split(marker), label).toHaveLength(2);
+      const start = sliceSmokeSource.indexOf(marker);
+      const call = sliceSmokeSource.slice(start, sliceSmokeSource.indexOf('\n  });', start));
+      expect(call, label).toContain("settlement: 'inspection'");
+      expect(call.replace("settlement: 'inspection'", "settlement: 'commit'"), `${label} injected commit`)
+        .not.toContain("settlement: 'inspection'");
+    }
+    expect(sliceSmokeSource.match(/settlement: 'inspection'/g)).toHaveLength(6);
   });
   it('keeps the exact hosted pending Survey action pending', () => {
     const hosted = fixture() as any; const coordinator = hosted.state.landing.actionCoordinator;
