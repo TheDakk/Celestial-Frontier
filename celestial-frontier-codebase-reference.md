@@ -1583,11 +1583,12 @@ below retain their checkpoint scope; `ROADMAP.md` owns current integration and v
 > Repaint/diagnostic failure is retained in the convergence witness and cannot cancel cleanup or
 > reload. While protected, all nine Settings controls
 > (Sound, Volume, Creature voices, Text size, Text tone, Font, Star charts, Motion and Panel tint)
-> plus Restart Training and lesson actions are read-only. The event guard deliberately excludes
-> **Bring expedition** so the protected replacement route remains reachable; import still validates
-> the complete candidate and must claim versioned persistence authority, refuses with zero writes if
-> that authority is unavailable, and on success performs one exclusive whole-save replacement
-> followed by reload. This exception grants no authority for ordinary protected-state mutations.
+> plus Restart Training and lesson actions are read-only. The former **Bring expedition** exception
+> no longer exists: the save-import door was removed on 2026-09-05 (v2 starts every explorer fresh),
+> so a protected reload is the only recovery path. The evidence-build `importBlob` seam still
+> validates a complete candidate, must claim versioned persistence authority, refuses with zero
+> writes if that authority is unavailable, and on success performs one exclusive whole-save
+> replacement followed by reload; it grants no authority for ordinary protected-state mutations.
 >
 > Engineering presentation now publishes one atomic `{ship, engineering, reason}` view. The ship is
 > the same capability/reach projection consumed by travel and remains valid when Arc 3 is protected
@@ -3009,12 +3010,10 @@ below retain their checkpoint scope; `ROADMAP.md` owns current integration and v
 > `releasePending` across open and reload. `V2_CURRENT_RELEASE_VERSION` is `null`,
 > so that playtest identity cannot trigger an update or imply a production release. The Guide also renders the full source
 > commit supplied by the guarded development package. First Guide open persists
-> `seenGuide`. Import moved to **Settings →
-> Bring expedition** through the same guarded loader and a named, focus-trapped
-> top-layer modal. The live primary is parsed from the whitespace-trimmed JSON
-> candidate, while the best-effort `cf_v2_import_original` keepsake retains the
-> exact submitted text; a selected file is browser-decoded to text, so the
-> moderator-held external file remains the byte-for-byte authority. Planet cards bind the captured galaxy+star `{seed,x,y}` context
+> `seenGuide`. The player-facing import door (**Settings → Bring expedition**, paste/pick controls
+> and the `cf_v2_import_original` keepsake) was removed on 2026-09-05; `#importsheet` survives only as
+> the nonclosable Field Training recovery sheet, and the evidence-build `importBlob` seam still parses
+> the whitespace-trimmed JSON candidate for Slice/Glass replacement proofs. Planet cards bind the captured galaxy+star `{seed,x,y}` context
 > before Land/Atlas/Share, rejecting equal-seed coordinate substitution.
 > Guide and Settings render above an open survey card; other panel stacking
 > remains unchanged for Training. Field Training is six live

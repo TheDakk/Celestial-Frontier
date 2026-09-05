@@ -33,7 +33,7 @@ function wiringErrors(main: string, owner: string): string[] {
   const adapter = section(
     main,
     '/* ---- THE SEARCH BAR',
-    "\nsheet.querySelector('#importclose')",
+    "\nsheet.querySelector('#importretry')",
   );
   const importBlock = section(
     main,
@@ -326,7 +326,7 @@ describe('MAIN-1 Search/CF1 travel extraction wiring', () => {
     );
     expect(wiringErrors(withoutImport, ownerSource)).toContain('factory-import');
 
-    const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importclose')");
+    const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importretry')");
     const directListener = mainSource.replace(
       adapter,
       adapter + "\ndocument.getElementById('searchbox')!.addEventListener('keydown', () => {});",
@@ -335,7 +335,7 @@ describe('MAIN-1 Search/CF1 travel extraction wiring', () => {
   });
 
   it('negative-controls every injected name, Compendium, focus, and boundary-notice binding', () => {
-    const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importclose')");
+    const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importretry')");
     for (const [needle, replacement] of [
       [
         '  currentPlanetName: (address) => worldIdentityName(worldIdentityState, address),',
@@ -369,7 +369,7 @@ describe('MAIN-1 Search/CF1 travel extraction wiring', () => {
   });
 
   it('negative-controls the atomic commit order and Survey-after-render seam', () => {
-    const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importclose')");
+    const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importretry')");
     const withoutCanonicalNameAdapter = replaceOnce(
       adapter,
       '    const attempt = await commitArc0WorldNameAction({\n      runtime,\n      state: save,\n      surface,\n      address,\n      name,\n      codecNow: Date.now(),\n    });\n',
@@ -463,7 +463,7 @@ describe('MAIN-1 Search/CF1 travel extraction wiring', () => {
   });
 
   it('negative-controls composite sequencing, joined progression, and the old early refresh', () => {
-    const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importclose')");
+    const adapter = section(mainSource, '/* ---- THE SEARCH BAR', "\nsheet.querySelector('#importretry')");
     const commit = section(adapter, '  commitNavigation:', '\n  onPrimeReachBlocked:');
     const bypassedSequence = replaceOnce(
       commit,

@@ -1049,10 +1049,11 @@ checks, not conclusions from those tests. Dated evidence below keeps its origina
 > **Visual effects**, **Screen shake**, **Motion** and **Panel tint**, plus **Field Training Restart**
 > and the in-lesson Training controls.
 > The underlying save bytes remain unchanged and a read-only witness is published, while inspection
-> surfaces such as Compendium remain available. **Settings → Bring expedition** is intentionally
-> outside that ordinary-mutation selector only as the protected recovery door: it must still validate
-> a complete supported replacement, coordinate pending persistence, claim the exclusive replacement
-> transaction and reload. It grants no ordinary preference or progression-write authority.
+> surfaces such as Compendium remain available. The former **Settings → Bring expedition** recovery
+> door was removed on 2026-09-05 (v2 starts every explorer fresh): no player control can replace the
+> expedition, `read-only-settings-main-wiring` rejects any `#setimport` reappearance, and a protected
+> reload is the only recovery path. The evidence-build `importBlob` seam still validates a complete
+> replacement, coordinates pending persistence, claims the exclusive transaction and reloads.
 >
 > HD surface replacement keeps the displayed predecessor attached and leased until an
 > identity-current successor is acquired, its real backing proves the claimed tier, and publication
@@ -1742,7 +1743,7 @@ checks, not conclusions from those tests. Dated evidence below keeps its origina
 > partially ported systems and a visible **Not yet in v2** explanation for
 > unported systems; dormant `beacon` / `events` remain retained in the source
 > contract but hidden from the 41-topic player catalogue. First open persists
-> `seenGuide`; import moved without loss to **Settings → Bring expedition**.
+> `seenGuide`; the former import door (**Settings → Bring expedition**) was removed on 2026-09-05.
 > The same panel exposes all 56 immutable legacy release entries plus **A New
 > Foundation**, the cumulative categorized 77-bullet v2.0 development bulletin. Its rendered
 > ordered SHA-256 is `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`. It summarizes
@@ -1766,13 +1767,12 @@ checks, not conclusions from those tests. Dated evidence below keeps its origina
 > status described
 > above controls activation, reload and rollback; no update path forces reload, mixes builds or
 > rewrites expedition data.
-> **Settings → Bring expedition** opens above every dock/panel as a true
-> `aria-modal` dialog, keeps Tab focus inside, and in ordinary import mode lets
-> Escape close only the dialog before restoring Settings focus. In Training
-> recovery mode the same sheet is intentionally nonclosable: Close is absent,
-> Escape is consumed, background content remains inert/hidden, and retry/import
-> stays until protected state is replaced. The phone gate injects its old z=11
-> layer and must observe the dock become exposed.
+> The retained `#importsheet` element is now only the **Field Training recovery sheet** (the
+> import mode was removed on 2026-09-05). It opens above every dock/panel as a true `aria-modal`
+> dialog, keeps Tab focus inside, and is intentionally nonclosable: Close is absent, Escape is
+> consumed, background content remains inert/hidden, and **Reload to retry** stays until protected
+> state is replaced. The desktop D-TRAIN refusal in Slice proves that modal law; the former phone
+> z=11 import-modal control was retired with the door.
 > On a 390×844 phone, browser smoke also opens the real Guide panel and requires
 > at least 8px clearance above the measured dock. Its negative control injects
 > the superseded fixed `max-height` and must reproduce the overlap, so the check

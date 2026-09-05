@@ -39,6 +39,7 @@ import {
   GLASS_MATRIX_VIEWPORTS,
   GLASS_NEGATIVE_CONTROLS,
   glassBrowserAuthorityErrors,
+  glassPlannedNegativeControlLedger,
   glassShipyardKeyboardHeartbeatSelftestInventory,
   glassTerminalEvidenceErrors,
   glassViewportInventory,
@@ -5551,9 +5552,12 @@ export function glassTargetedEvidenceErrors(report, {
     ? ['inventory-modal-focus', 'inventory-modal-retention', 'inventory-protected-action',
       'inventory-action-publication', 'inventory-convergence-retry']
     : ['arc4-capture-native-survey-return'];
-  const coverage = Array.isArray(executed) ? controlCoverageOutcome(executed, []) : null;
+  /* A retained carrier is judged against the exact ledger it planned (see
+     GLASS_NEGATIVE_CONTROL_LEDGERS); an unknown planned list matches nothing. */
+  const ledger = glassPlannedNegativeControlLedger(controls?.plannedNegativeControls) ?? NEGATIVE_CONTROLS;
+  const coverage = Array.isArray(executed) ? controlCoverageOutcome(executed, [], ledger) : null;
   if (controls?.selftestRan !== true || !coverage?.ok
-    || !exactJson(controls.plannedNegativeControls, NEGATIVE_CONTROLS)
+    || !exactJson(controls.plannedNegativeControls, ledger)
     || !exactJson(executed, coverage.executed)
     || !exactJson(controls.blockedNegativeControls, [])
     || !exactJson(controls.omittedNegativeControls, coverage.omitted)
@@ -8979,12 +8983,12 @@ function productBlockedSuffixForViewport(viewport, findingCode, executedControls
   }));
 }
 
-function controlCoverageOutcome(executedControls = [], blockedControls = []) {
+function controlCoverageOutcome(executedControls = [], blockedControls = [], ledger = NEGATIVE_CONTROLS) {
   const executed = [...new Set(executedControls)];
   const blockedRows = blockedControls.map((row) => typeof row === 'string'
     ? { name: row, viewport: null, findingCode: null } : row);
   const blockedNames = blockedRows.map((row) => row?.name);
-  const invalid = [...executed, ...blockedNames].filter((name) => !NEGATIVE_CONTROLS.includes(name));
+  const invalid = [...executed, ...blockedNames].filter((name) => !ledger.includes(name));
   const duplicateBlocked = blockedNames.filter((name, index) => blockedNames.indexOf(name) !== index);
   const overlap = blockedNames.filter((name) => executed.includes(name));
   if (invalid.length || duplicateBlocked.length || overlap.length
@@ -8993,11 +8997,11 @@ function controlCoverageOutcome(executedControls = [], blockedControls = []) {
   }
   return {
     ok: true,
-    executed: executed.filter((name) => NEGATIVE_CONTROLS.includes(name))
+    executed: executed.filter((name) => ledger.includes(name))
       .sort(codeUnitCompare),
     blocked: blockedRows.slice()
       .sort((a, b) => codeUnitCompare(a.name, b.name)),
-    omitted: NEGATIVE_CONTROLS.filter((name) => !executed.includes(name) && !blockedNames.includes(name)),
+    omitted: ledger.filter((name) => !executed.includes(name) && !blockedNames.includes(name)),
   };
 }
 
@@ -9334,7 +9338,7 @@ async function main() {
     chromeYieldControlRun = false, chromeRestoreControlRun = false, chromeLandscapeControlRun = false,
     objectiveYieldControlRun = false, topChromeControlRun = false, portraitBandControlRun = false,
     portraitFallbackControlRun = false,
-    modalControlRun = false, modalLiveControlRun = false, closeLabelControlRun = false,
+    closeLabelControlRun = false,
     hiddenOpenerControlRun = false, reloadBindingControlRun = false,
     releaseDetailControlRun = false, releaseTailControlRun = false, phoneDockControlRun = false,
     shipyardControlRun = false, inventoryControlRun = false, arc4CaptureControlRun = false,
@@ -13290,9 +13294,9 @@ async function main() {
               {id:'breeding',required:['real fauna Compendium detail','one exact owned companion of that detail’s species as the primary parent','one different exact owned fauna companion as the mate','Identical same-species twins remain separate exact instances','at most 24 candidates per page','paging keeps every eligible owned companion reachable','Exhibition creatures, mission-assigned companions, companions already in Recovery, and companions at 30% hurt or more stay disabled and explain why','same exact companion cannot occupy both parent roles','shown success chance comes from both parents’ established rarity tiers plus a bounded bonus from lifetime-earned Stardust','raw genetic values stay hidden','Both parents remain yours','success creates one deterministic child with its exact lineage','grants that child +2 XP','first successful union of each canonical unordered species pair grants the child another +5 XP','8 active-play minutes of Recovery','failure creates no child','2 active-play minutes of Recovery','Recovery blocks Breed, combat, and dispatch','Closing the game or moving the wall clock does not advance it','proves both possible complete save successors before its one outcome draw','one receipt-bearing compare-and-swap with no retry and no optimistic child, XP, pair claim, or Recovery','refusal, stale result, overflow, or failed write draws nothing and adds nothing','requires reload and cannot breed twice','Back and Close remain available around the action','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit','Parent consumption, taste or bond effects, manual genetic editing, broader care, missions, and combat remain unavailable'],requiredControls:['Both parents remain yours','success creates one deterministic child with its exact lineage','grants that child +2 XP','first successful union of each canonical unordered species pair grants the child another +5 XP','proves both possible complete save successors before its one outcome draw','successful outcome also banks the Chapter 3 Breed a hybrid bloodline goal inside that same offspring save','failed pairing, refusal, stale result, or failed write banks no Charter credit'],forbidden:['Both parents are consumed','Recovery advances while the game is closed','same exact companion can occupy both parent roles','failed attempt creates one child','Breeding automatically retries','A failed pairing also banks the Charter hybrid bloodline goal'],stale:'Breeding remains unavailable in this development slice.',contradictions:['Both parents are consumed.','Recovery advances while the game is closed.','The same exact companion can occupy both parent roles.','A failed attempt creates one child.','Breeding automatically retries.','A failed pairing also banks the Charter hybrid bloodline goal.']},
               {id:'research',paragraph:2,required:['Engineering & Shipyard combines the capability-derived ship preview','Research Bench lists exactly six canonical rows','Deep Scanners is the only current purchase','adds a bounded Mineral veins row to eligible orbital Survey cards','Orbit shows only the ordered ordinary deposits plus a separately marked biome vein','cosmic and exceptional veins, grades, reserves and progress, and mining remain grounded','other five','visible but disabled','Fabricator groups all 62 fixed recipes','exposes an action only when its output has a connected gameplay effect','When every direct material unit for a slotted craft comes from exceptional stock','exact item receives one deterministic Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','bound to its recipe and receipt','mixed stock remains an ordinary craft','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable','Only one Engineering action can be pending','receipt-bearing transaction commits'],requiredControls:['exposes an action only when its output has a connected gameplay effect','When every direct material unit for a slotted craft comes from exceptional stock','exact item receives one deterministic Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','bound to its recipe and receipt','mixed stock remains an ordinary craft','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable'],forbidden:['current Survey card does not yet render those orbital rows','All six research rows can be purchased','Mixed stock also receives a Pureforged modifier','The Pureforged modifier rerolls after reload','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available','Orbit now shows cosmic and exceptional veins'],stale:'The Shipyard is read-only in this development slice, and fabrication, Research Bench purchases, and upgrades remain unavailable.',contradictions:['The current Survey card does not yet render those orbital rows.','All six research rows can be purchased.','Mixed stock also receives a Pureforged modifier.','The Pureforged modifier rerolls after reload.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.','Orbit now shows cosmic and exceptional veins.']},
               {id:'crafting',paragraph:2,required:['Inventory is a separate board','stable item instance','Equip, Unequip, Salvage, and pending-reward claim','Engineering & Shipyard → Fabricator','lists all 62 fixed recipes','can settle only rows whose output has a connected effect','A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','as part of that exact item through comparison and reload','a mixed-material craft does not','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable'],requiredControls:['can settle only rows whose output has a connected effect','A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier','mining yield, rich-strike chance, or capture-contact points','as part of that exact item through comparison and reload','a mixed-material craft does not','Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable'],forbidden:['Mixed stock also receives a Pureforged modifier','The Pureforged modifier rerolls after reload','Authored affixes/drawbacks are now available','Upgrades are now available','Item upgrades are now available','Sockets are now available','Vendors are now available'],stale:'Inventory exposes only the imported Equip, Unequip, Salvage, and reward-claim actions; Fabricator recipes are not available in this slice.',contradictions:['Mixed stock also receives a Pureforged modifier.','The Pureforged modifier rerolls after reload.','Authored affixes/drawbacks are now available.','Upgrades are now available.','Item upgrades are now available.','Sockets are now available.','Vendors are now available.']},
-             {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
+             {id:'settings',paragraph:1,required:['normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating.'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating.'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'Restart begins the current six-lesson drill in Sol and restores the pre-training view when the drill finishes or is skipped. If persistence fails, restart is cancelled.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
               {id:'settings',name:'settings-audio',paragraph:0,required:audioSettingsRequired,requiredControls:audioSettingsRequired,forbidden:audioGuideForbidden,stale:'Creature voices and master Sound own the same generic world signal.',contradictions:audioGuideContradictions},
-              {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, or if its destination is no longer authorized by your saved reach, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
+              {id:'saving',paragraph:1,required:['On reload, a saved galaxy, star, or planet location is regenerated from the seeded universe','accepted only when it is source-verified','If that saved location is stale, forged, or incomplete, or if its destination is no longer authorized by your saved reach, the view returns safely to Cosmos','normal Finish or Skip source-verifies and immediately restores the exact pre-Training view','If verification pauses, that exact view stays saved','when Sol can still be verified, Training returns there','reload can restart safely and retry','Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating.'],requiredControls:['Older v1.8.9 Training checkpoints restore only the eleven pre-drill record groups they captured','every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view','Skip from Welcome stays in Sol','completing the drill after Land stays at Earth','An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen','leaves the stored expedition unchanged','reload after updating.'],forbidden:['reload safely restarts Field Training from proven Sol','Older v1.8.9 Training checkpoints restore the entire expedition','That older checkpoint restores the pre-Training view','Skip from Welcome stays at Earth','completing the drill after Land stays in Sol','An unrecognized checkpoint can close recovery and continue exploring','An unrecognized checkpoint may clear the stored expedition'],stale:'A newer-build, incomplete, or corrupt stored expedition remains protected, and there is no cloud account yet.',contradiction:'If verification pauses, a reload safely restarts Field Training from proven Sol.',contradictions:['Older v1.8.9 Training checkpoints restore the entire expedition.','That older checkpoint restores the pre-Training view.','Skip from Welcome stays at Earth.','Completing the drill after Land stays in Sol.','An unrecognized checkpoint can close recovery and continue exploring.','An unrecognized checkpoint may clear the stored expedition.']},
             ];
             const check=(article,spec)=>{const text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),lower=text.toLowerCase(),missing=spec.required.filter((part)=>!text.includes(part)),stale=spec.forbidden.filter((part)=>lower.includes(part.toLowerCase()));return {ok:!!article&&missing.length===0&&stale.length===0,missing,stale,text};};
             let error=null,baselineComplete=false;
@@ -13406,7 +13410,7 @@ async function main() {
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
-          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=78;
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=77;
           const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
@@ -13592,7 +13596,7 @@ async function main() {
               &&trainingText.includes('completing the drill after Land stays at Earth')
               &&trainingText.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
               &&trainingText.includes('leaves the stored expedition unchanged')
-              &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction,
+              &&trainingText.includes('reload after updating.')&&!trainingContradiction,
             artContradiction=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(artText)
               ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(artText)
               ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(artText)
@@ -13708,7 +13712,7 @@ async function main() {
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 78-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 77-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -13982,7 +13986,7 @@ async function main() {
               &&coldArt?.textContent===coldArtText&&coldArt?.parentNode===coldArtParent&&coldArt?.nextSibling===coldArtNext
               &&worker?.textContent===workerText&&worker?.parentNode===workerParent&&worker?.nextSibling===workerNext
               &&shipyard?.textContent===shipyardText&&hdSurface?.textContent===hdSurfaceText&&publishing?.textContent===publishingText&&S.api.state===priorState;
-            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===77
+            return {ok:!error&&baseline?.ok===true&&order?.ok===false&&inventory?.ok===false&&inventory?.bulletCount===76
               &&identity?.ok===false&&identity?.identity===false
               &&truthfulFeatureClaims.length===10
               &&truthfulFeatureClaims.every((row)=>row.result?.ok===true&&row.result?.honest===true&&row.result?.overclaim===false)
@@ -14243,7 +14247,7 @@ async function main() {
           required: [{ selector: '[data-pnx]', min: 1 }, { selector: '.row', min: 6 }, { selector: 'input[type=range]', min: 2 }],
           interactiveRoots: ['#setpanel'], contrastSelectors: ['#setpanel'],
           focusSelectors: ['#setsnd', '#setvoice', ...(vp.label === 'primary-phone' || vp.label === 'desktop'
-            ? ['#setpanel [data-pnx]', '#setvol', '#setglass', '#setimport'] : [])],
+            ? ['#setpanel [data-pnx]', '#setvol', '#setglass'] : [])],
           overlapPairs: [['#setpanel', '#dock']],
         }));
         if (vp.label === 'laptop-720p') {
@@ -14437,68 +14441,18 @@ async function main() {
           add(vp.label, 'settings-text-xl', await audit({
             ...common, surface: 'settings-text-xl', root: '#setpanel', textMin: 80,
             required: [{ selector: '[data-pnx]', min: 1 }, { selector: '.row', min: 9 }, { selector: '[data-pref]', min: 9 }],
-            interactiveRoots: ['#setpanel'], contrastSelectors: ['#setpanel'], focusSelectors: ['#setpanel [data-pnx]', '#setvol', '#setglass', '#setimport'], overlapPairs: [['#setpanel', '#dock']],
+            interactiveRoots: ['#setpanel'], contrastSelectors: ['#setpanel'], focusSelectors: ['#setpanel [data-pnx]', '#setvol', '#setglass'], overlapPairs: [['#setpanel', '#dock']],
           }));
         }
 
-        await evalIn(`(()=>{ const keep=document.createElement('div'),plain=document.createElement('div');
-          keep.id='cf-modal-state-keep';keep.inert=true;keep.setAttribute('aria-hidden','keep');
-          plain.id='cf-modal-state-plain';document.body.append(keep,plain);document.getElementById('setimport')?.click();})()`);
-        await waitFor('Import open', `getComputedStyle(document.getElementById('importsheet')).display!=='none' && document.activeElement?.id==='importtext'`);
-        add(vp.label, 'import', await audit({
-          ...common, surface: 'import', root: '#importsheet > div', textMin: 140,
-          required: [{ selector: '#importtext', min: 1 }, { selector: '#importgo', min: 1 }, { selector: '#importclose', min: 1 }],
-          fitSelectors: ['#importsheet > div'], interactiveRoots: ['#importsheet > div'], contrastSelectors: ['#importsheet > div'],
-          focusSelectors: ['#importtext', '#importgo', '#importclose'], overlapPairs: [],
-        }));
-        const importPreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#importsheet > div','#importsheet > div > span','var(--dim)')`);
-        addOutcome(vp.label, 'import-preferences', 'PREFERENCE_SURFACE_INERT', '#importsheet > div > span', importPreference,
-          'populated import guidance computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
-        const modalCheck = `(()=>{ const sheet=document.getElementById('importsheet'),background=[...document.body.children].filter(el=>el!==sheet&&el instanceof HTMLElement);
-          const contained=sheet.contains(document.activeElement),locked=background.every(el=>el.inert&&el.getAttribute('aria-hidden')==='true');
-          return {ok:contained&&locked,contained,locked,focus:document.activeElement?.id||null,unlocked:background.filter(el=>!el.inert||el.getAttribute('aria-hidden')!=='true').map(el=>el.id||el.tagName)};})()`;
-        addOutcome(vp.label, 'import-modal', 'MODAL_BACKGROUND_NOT_CONTAINED', '#importsheet', await evalIn(`(()=>{ document.querySelector('canvas')?.focus();return ${modalCheck};})()`),
-          'programmatic background focus is redirected and every direct background surface is inert/hidden while the modal is open');
-        if (!modalControlRun) {
-          modalControlRun = true;
-          const modalControl = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'),stop=e=>e.stopImmediatePropagation();document.addEventListener('focusin',stop,true);
-            canvas.inert=false;canvas.removeAttribute('aria-hidden');canvas.focus();const result=${modalCheck};canvas.inert=true;canvas.setAttribute('aria-hidden','true');
-            document.removeEventListener('focusin',stop,true);document.getElementById('importtext').focus();return result;})()`);
-          if (modalControl.ok) recordInstrumentFailure(`${vp.label}: unlocked background-focus modal injection stayed green (${JSON.stringify(modalControl)})`);
-        }
-        const modalErrorCheck = `(()=>{ const msg=document.getElementById('importmsg');return {ok:msg?.getAttribute('role')==='alert'&&msg?.getAttribute('aria-live')==='assertive'&&!!msg.textContent.trim(),
-          role:msg?.getAttribute('role')||null,live:msg?.getAttribute('aria-live')||null,text:msg?.textContent||''};})()`;
-        await evalIn(`(()=>{ const input=document.getElementById('importtext');input.value='{bad';document.getElementById('importgo').click();return true;})()`);
-        const modalError = await waitFor('Import live error', modalErrorCheck);
-        addOutcome(vp.label, 'import-modal', 'MODAL_ERROR_NOT_ANNOUNCED', '#importmsg', modalError,
-          'invalid import renders a nonempty assertive live error without replacing the expedition');
-        if (!modalLiveControlRun) {
-          modalLiveControlRun = true;
-          const liveControl = await evalIn(`(()=>{ const msg=document.getElementById('importmsg'),role=msg.getAttribute('role'),live=msg.getAttribute('aria-live');msg.removeAttribute('role');msg.removeAttribute('aria-live');
-            const result=${modalErrorCheck};msg.setAttribute('role',role);msg.setAttribute('aria-live',live);return result;})()`);
-          if (liveControl.ok) recordInstrumentFailure(`${vp.label}: plain-div import-error injection stayed green (${JSON.stringify(liveControl)})`);
-          recordControls('modal-live-error');
-        }
-        const importClose = await evalIn(`(()=>{ document.dispatchEvent(new KeyboardEvent('keydown',{key:'Escape',bubbles:true})); return {display:getComputedStyle(document.getElementById('importsheet')).display,focus:document.activeElement?.id||null}; })()`);
-        if (importClose.display !== 'none' || importClose.focus !== 'docksets') {
-          recordGlassProductFinding(findings, vp.label, 'import',
-            { code: 'MODAL_ESCAPE_RESTORE', surface: 'import', element: '#importsheet', actual: importClose, expected: { display: 'none', focus: 'docksets' } }, causalControlsArmed);
-        }
-        const modalRestoreCheck = `(()=>{ const keep=document.getElementById('cf-modal-state-keep'),plain=document.getElementById('cf-modal-state-plain'),canvas=document.querySelector('canvas'),dock=document.getElementById('dock');
-          return {ok:!!keep&&keep.inert&&keep.getAttribute('aria-hidden')==='keep'&&!!plain&&!plain.inert&&plain.getAttribute('aria-hidden')===null&&!canvas.inert&&!dock.inert,
-            keepInert:keep?.inert,keepAria:keep?.getAttribute('aria-hidden')||null,plainInert:plain?.inert,plainAria:plain?.getAttribute('aria-hidden')||null,
-            canvasInert:canvas?.inert,dockInert:dock?.inert};})()`;
-        const modalRestore = await evalIn(modalRestoreCheck);
-        addOutcome(vp.label, 'import-modal', 'MODAL_BACKGROUND_NOT_RESTORED', '#importsheet', modalRestore,
-          'closing restores each background surface’s exact prior inert/aria-hidden state');
-        const modalRestoreControl = await evalIn(`(()=>{ const keep=document.getElementById('cf-modal-state-keep');keep.inert=false;keep.removeAttribute('aria-hidden');
-          const result=${modalRestoreCheck};keep.inert=true;keep.setAttribute('aria-hidden','keep');return result;})()`);
-        if (modalRestoreControl.ok) recordInstrumentFailure(`${vp.label}: exact modal-state restoration corruption stayed green (${JSON.stringify(modalRestoreControl)})`);
-        if (modalControlRun) recordControls('modal-background-containment-restore');
-        await evalIn(`(()=>{ document.getElementById('cf-modal-state-keep')?.remove();document.getElementById('cf-modal-state-plain')?.remove();})()`);
+        /* The Settings save-import modal was removed (v2 starts fresh, 2026-09-05).
+           Modal containment/restoration and live-error announcement are proven
+           on the inventory modal (inventory-modal-* outcomes) and, for the
+           nonclosable Training recovery sheet, by the Slice D-TRAIN refusal. */
+        await evalIn(`(()=>{ document.querySelector('#setpanel [data-pnx]')?.click(); return true; })()`);
         addOutcome(vp.label, 'settings', 'PANEL_DISCLOSURE_STATE', '#docksets',
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#docksets','#setpanel',false)`),
-          'Settings opener exposes expanded=false after opening the import modal');
+          'Settings opener exposes expanded=false after closing Settings');
 
         /* Browser zoom changes the CSS viewport and triggers reflow. Model
            150% by reducing CSS pixels while retaining DPR, rather than using
@@ -14818,8 +14772,6 @@ async function main() {
   if (!portraitFallbackControlRun && !targetedProductBlocked && portraitControlsRequired) {
     recordInstrumentFailure('Planetside portrait trail-fallback control never ran');
   }
-  if (!modalControlRun && !targetedProductBlocked) recordInstrumentFailure('import modal containment control never ran');
-  if (!modalLiveControlRun && !targetedProductBlocked) recordInstrumentFailure('import live-error control never ran');
   if (!closeLabelControlRun && !targetedProductBlocked) recordInstrumentFailure('panel close accessible-name control never ran');
   if (!closeIntegrityControlRun && !targetedProductBlocked) recordInstrumentFailure('duplicate/misplaced close integrity controls never ran');
   if (!toastAnchorControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width > 900)) {

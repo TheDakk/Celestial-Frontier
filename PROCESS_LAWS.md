@@ -3725,7 +3725,8 @@ Loaded unfinished Training has a separate write boundary. Any recognized pending
 write-held. A loaded `tut:0` save without a checkpoint is also held and may be seated at proven Sol
 in runtime only until the one atomic completion write; this does not fabricate an eleven-field
 snapshot. Fresh empty onboarding may use ordinary saves. An unknown checkpoint or unavailable
-recovery route enters a persistent modal lock: the import sheet remains modal, background-inert,
-focus-trapped, nonclosable by Close or Escape, and reopens synchronously on every boot while the
-protected source remains. Only retry/reload or a trusted complete import may replace it; session
-practice must not appear to make progress over protected bytes.
+recovery route enters a persistent modal lock: the Field Training recovery sheet (`#importsheet`)
+remains modal, background-inert, focus-trapped, nonclosable by Close or Escape, and reopens
+synchronously on every boot while the protected source remains. Only retry/reload may replace it
+(trusted complete import was withdrawn with the save-import door on 2026-09-05); session practice
+must not appear to make progress over protected bytes.
