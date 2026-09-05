@@ -1,5 +1,33 @@
 # Batch 4 overnight report — 2026-09-05
 
+## Review correction — tracked v1 test source, 2026-09-05
+
+Signed correction source: `2881cda1818b4d81b98f10da63c442b9f837d504`, successor to reviewed `bc42dbc`.
+Only the travel-presentation test's module-level legacy read changes to
+`readTrackedV1Source().script`. The sixth test still uses fs/fileURLToPath, so those
+imports remain. All six test bodies/assertions, product files, tools, pins and authorities are unchanged.
+
+With root `main.js` absent: typecheck PASS (2.470 s), artunused PASS (1.749 s),
+Vitest PASS (301 files / 3,100 passed / 1 skipped; 61.000 s), and
+`node tools/check-profile.mjs --profile=develop` PASS once (67.410 s).
+The profile also passes artaudit (34 sources), overridecheck (1,014 keys) and speccheck
+(454 fields). Both full suites used local `VITEST_MAX_WORKERS=4`; selection and timeouts
+are unchanged. The ignored bootstrap was restored byte-for-byte; unrelated .DS_Store is untouched.
+
+The first unrestricted Vitest run stopped at 299 files passed / 2 failed: the existing
+arc4-acquisition-planner 5,000 ms and evidence-chain-tools 20,000 ms timeout limits.
+No ENOENT occurred. That red is retained; only the local worker cap changed before the passing run.
+Initial / passing-suite / profile log SHA256:
+`d5ffb8673de34e5a5f4c0d06923c02a29c81e310e1b7d50ad17a65e07cc555ce` /
+`18e5f66f378fefe1c6d4b4423927d46c093773810a208cf329477bdb6c3a9f5e` /
+`09c98d45f492b34549eecb5f6754d8448bca5a630d8e5ad5e04d59dc2132092f`.
+
+Codex publishes the signed correction and the three requested handoff documents; the final
+handoff names the reporting successor's exact pushed SHA. Claude may fetch that head from its
+own anthropic/windows checkout; this work is not in develop. Nick separately authorizes the
+single agent-lane attempt. Budget UNFROZEN, PUBLIC, zero hosted attempts authorized.
+No PR, label, hosted attempt, merge or release was performed.
+
 ## Morning report — Batch 4 complete, 2026-09-05
 
 The signed core and all five primary gameplay items are accepted and pushed. Stretch 3a–3c
