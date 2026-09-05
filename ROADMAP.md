@@ -24,9 +24,11 @@ the archive verbatim and refresh this handoff in place.
 - **Anthropic/Claude Code on macOS:** `/Users/nick/Projects/celestial-frontier-anthropic-mac`,
   branch **anthropic/mac**, based on `develop` **1d719c63fbcdb6d0e6ab98a96b16e487aafe1239** (merge of
   PR #39) plus the 2026-09-05 Windows handoff commit `55f5651a6b926c36b1cc5d40f9a7cb3f6ffec290`
-  (fast-forwarded and pushed as a branch push, which triggers nothing). This batch is committed
-  locally on top of that; its SHA is stated at the Git handoff. **Nothing is pushed** after the
-  fast-forward; no PR exists; no hosted attempt is authorized.
+  (fast-forwarded and pushed as a branch push, which triggers nothing). This batch went out as **PR #40** (head
+  `88bd00168f15b9cf88f2d07d7f1d32ed9949de20`), passed its one Nick-authorized agent-lane attempt
+  (run `33944372214`, battery job `101247702939`, **6m29s**) and merged normally as `develop`
+  **9ea01041dcdc711190bbf909ea8bb743cd993734**; the label was removed and `anthropic/mac` is
+  fast-forwarded to that merge plus this record commit. No hosted authority remains.
 - Nick's decisions this session (2026-09-05): (1) "Nobody is running old saves… treat it as a
   brand-new game. But we want saves going forward for v2." (2) Remove the player-facing import door
   now, keep the Training recovery dialog. (3) Recovery lock offers reload/update only — no hidden
@@ -99,7 +101,7 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **Anthropic/Claude Code:** batch committed locally on `anthropic/mac`; not pushed. Next candidates
+- **Anthropic/Claude Code:** PR #40 merged; `anthropic/mac` sits on `develop` `9ea0104…` plus this record. Next candidates
   unchanged: **artlock CI ownership** (P0-6a — Nick's lane/cost decision first; baseline
   `reference/artlock.json` is dated 2026-08-08 and has not been run) and the **eleven-artifact
   verbatim-seal gap** (P0-6b — implementation, but it adds instrument code against the "freeze
@@ -115,8 +117,8 @@ the archive verbatim and refresh this handoff in place.
   `openai/review-*` branch and Nick's exact hosted authorization. Once this batch's PR merges, sync
   again before touching Settings/Guide/Training code, and do not reintroduce any import door. Do not
   edit `.github/workflows` or the budget policy in the campaign.
-- **Nick:** nothing required on GitHub. Decide (a) whether this head goes to a PR + one agent-lane
-  attempt (it re-seals Glass/Slice), (b) the artlock CI lane, (c) the ITP save-protection answer.
+- **Nick:** nothing required on GitHub. Open decisions: (a) the artlock CI lane, (b) the ITP
+  save-protection answer (install guidance, export/backup, or account).
 - **GitHub / Release:** `main`, the v1.8.9 live site, protected portraits and deployment are
   unchanged. No version bump. `gh` is set to HTTPS for git operations (harmless today; `gh config set
   git_protocol ssh` would align it with the SSH-only rule).

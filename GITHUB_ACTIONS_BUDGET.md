@@ -2,7 +2,19 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current state (2026-09-05 UTC): PR #39 (`anthropic/review-batches-1-3-20260905` → `develop`)
+**Current state (2026-09-05 UTC, later): PR #40 (`anthropic/mac` → `develop`, v2 starts fresh /
+save-import door removed) consumed one Nick-authorized agent-lane attempt ("Go ahead and apply
+actions-budget-approved"), passed in **6m29s** and merged as
+`9ea01041dcdc711190bbf909ea8bb743cd993734`; the approval label was removed; no hosted authority
+remains.** Run `33944372214` attempt 1, authorization job `101247689950`, battery job
+`101247702939`, head `88bd00168f15b9cf88f2d07d7f1d32ed9949de20` → base
+`1d719c63fbcdb6d0e6ab98a96b16e487aafe1239`, lane `agent`. The head edited v2 app/tests/tools only
+(no workflow, root tool or legacy input), so this is the first measured **v2-app-only agent-lane
+attempt: 6m29s** (the earlier estimate of 4–5 minutes was not met; the run re-sealed Glass phone
+canaries against the 102-control ledger). Every future attempt still needs its own exact
+authorization; nothing here authorizes a `main` merge, release or deployment.
+
+**Previous state (2026-09-05 UTC): PR #39 (`anthropic/review-batches-1-3-20260905` → `develop`)
 consumed one Nick-authorized agent-lane attempt, passed in 6m28s and merged as
 `1d719c63fbcdb6d0e6ab98a96b16e487aafe1239`; the approval label was removed; no hosted authority
 remains.** Run `33940061406` attempt 1, battery job `101235592867`, head `1219648…`, lane `agent`:
