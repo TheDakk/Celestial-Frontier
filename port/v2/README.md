@@ -11,7 +11,7 @@ established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Surv
 backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
 Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
 and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
-two SessionRNG draws and one receipt/CAS. A wave-off leaves orbit, HP at least 1 and canonical
+two SessionRNG draws and one receipt/CAS. A wave-off leaves the ship in orbit, with HP at least 1 and canonical
 learning (+20 percentage points per failure, capped at five), without landing rewards. Success
 clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
 Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;

@@ -1,6 +1,6 @@
 # Batch 4 overnight report — 2026-09-05
 
-**Checkpoint 3b implemented, full fast green — 2026-09-05.** Clean-source browser acceptance is next. Prior acceptance and all exact failures remain below. Base develop:
+**Checkpoint 3c implemented, full fast green — 2026-09-05.** Clean-source browser acceptance is next. Prior acceptance and all exact failures remain below. Base develop:
 `9ea01041dcdc711190bbf909ea8bb743cd993734`; owned review branch:
 `openai/review-batch4-gameplay-20260905` (OpenAI/Codex, macOS,
 `/Users/nick/Projects/celestial-frontier-openai-mac`). Clean `openai/mac` remains `84b6f22`.
@@ -14,8 +14,8 @@
 | 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
 | 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
 | 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
-| 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
-| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
+| 3c bounded extraction | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
 | 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
 
 ## Decisions made unattended
@@ -3641,3 +3641,56 @@ verifier proof. No hosted attempt occurred.
   ]
 }
 ```
+
+## Step3c implementation/full-fast PASS
+
+# Stretch 3c — Landing presentation extraction
+
+Prepared patch: `/private/tmp/cf-step3c-landing-presentation-extraction/step3c-landing-presentation.patch`.
+SHA256: `55ea989a4bef26ae323b867a485ee52fad6dca6a6a8a8750973b6a5877a1010b`.
+Applied at its separate ordered checkpoint after primary and 3b acceptance. Exact execution results are recorded with this checkpoint.
+
+The three-file delta moves step-2 Landing presentation into the existing `port/v2/apps/game/src/landing-card.ts`: the exported ready/unavailable `LandingCardStateV1` union is at prepared-after lines 29–40 and `landingCardActionHtml` at 110–118. Main imports both and passes its existing `esc` function at the same single card callsite. The moved state fields and renderer body were compared as text again during this review and are identical apart from the new export/signature location and supplied escape argument.
+
+Main still owns `projectCurrentLandingCardState`, exact world/save/gear authority, navigation and action wiring. `descent-policy.ts` and `arc0-landing-action.ts` still own policy and one-receipt settlement. Their source, all RNG/HP/learning rules, action token, HTML, visible risk disclosure, accessible names, style and escaping behavior are unchanged. No generic coordinator, new state owner or blanket Main rewrite is introduced.
+
+The existing `landing-card-main-wiring.test.ts` follows the renderer to its new file and keeps independently authored exact data attributes, `aria-describedby`, visible disclosure literal/removal control, no-write check and single exact Main callsite. It additionally refuses a missing renderer source span. `landing-card.test.ts` is unchanged, including its literal safe labels, +20 learning, nonlethal floor, 100%-guaranteed zero-risk disclosure and clone-policy refusal (`:56–96` in current source). Expected output is not generated from the renderer under test.
+
+The final current-reference review also corrected the shared wave-off sentence in all eight overlays: a wave-off leaves the ship in orbit. This matches the existing behavior and changes no rule.
+
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.632,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.443,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 67.208,
+    "log": "3-npx.log",
+    "sha256": "6f0ca03a71c968a53b5948afff2cc0ef81a14c46b77f7a65884215364cbfb27b"
+  }
+]

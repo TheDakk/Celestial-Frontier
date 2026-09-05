@@ -26,6 +26,19 @@ export interface LandingCardPresentationV1 {
   readonly learnedApproachBonus: number;
 }
 
+export type LandingCardStateV1 =
+  | Readonly<{
+    readonly kind: 'ready';
+    readonly worldKey: string;
+    readonly label: string;
+    readonly title: string;
+    readonly disclosure: string;
+    readonly successPercent: number;
+    readonly damageMin: number;
+    readonly damageMax: number;
+  }>
+  | Readonly<{ readonly kind: 'unavailable' }>;
+
 function checkedHp(value: unknown): number {
   if (!Number.isSafeInteger(value) || (value as number) < 1) {
     throw new RangeError('Landing card requires current positive explorer HP');
@@ -92,4 +105,14 @@ export function projectLandingCardPresentationV1(
     safeReason: policy.safeReason,
     learnedApproachBonus: policy.learnedApproachBonus,
   });
+}
+
+export function landingCardActionHtml(
+  state: LandingCardStateV1,
+  esc: (value: unknown) => string,
+): string {
+  if (state.kind === 'unavailable') {
+    return '<button type="button" data-act="landcta" disabled title="Landing is unavailable until expedition authority is ready" style="background:rgba(202,162,79,0.08);color:var(--dim);border:1px solid rgba(202,162,79,0.35);border-radius:999px;padding:8px 16px;min-height:44px;font:12px system-ui">⛳ Landing unavailable</button>';
+  }
+  return `<span style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;max-width:100%"><button type="button" data-act="landcta" data-landing-world="${esc(state.worldKey)}" data-landing-success="${state.successPercent}" data-landing-damage-min="${state.damageMin}" data-landing-damage-max="${state.damageMax}" title="${esc(state.title)}" aria-label="${esc(state.label)}" aria-describedby="landing-approach-disclosure" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">${esc(state.label)}</button><span id="landing-approach-disclosure" data-landing-disclosure style="max-width:32ch;color:var(--text);font:12px/1.4 system-ui">${esc(state.disclosure)}</span></span>`;
 }

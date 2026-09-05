@@ -178,7 +178,11 @@ import {
   buildBiomeVistaRenderRequestV1,
 } from './biome-vista-surface.js';
 import { projectDescentApproachV1 } from './descent-policy.js';
-import { projectLandingCardPresentationV1 } from './landing-card.js';
+import {
+  landingCardActionHtml,
+  projectLandingCardPresentationV1,
+  type LandingCardStateV1,
+} from './landing-card.js';
 import {
   mountAndCommitBiomeVistaV1,
   mountCachedBiomeVistaV1,
@@ -7156,18 +7160,6 @@ function bioscanCardActionHtml(state: BioscanCardStateV1): string {
     : 'Record this living world. Capture remains a separate action.';
   return `<button type="button" data-act="bioscan" data-bioscan-world="${esc(state.worldKey)}" data-bioscan-probability="${probability}" data-bioscan-damage="${damage}" title="${esc(title)}" style="background:rgba(127,230,160,0.14);color:#b9f0c8;border:1px solid rgba(127,230,160,0.55);border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">🔬 Discover Life${warning}</button>`;
 }
-type LandingCardStateV1 =
-  | Readonly<{
-    readonly kind: 'ready';
-    readonly worldKey: string;
-    readonly label: string;
-    readonly title: string;
-    readonly disclosure: string;
-    readonly successPercent: number;
-    readonly damageMin: number;
-    readonly damageMax: number;
-  }>
-  | Readonly<{ readonly kind: 'unavailable' }>;
 function projectCurrentLandingCardState(
   address: CanonicalCF1WorldAddress,
 ): LandingCardStateV1 {
@@ -7208,12 +7200,6 @@ function projectCurrentLandingCardState(
   } catch {
     return Object.freeze({ kind: 'unavailable' });
   }
-}
-function landingCardActionHtml(state: LandingCardStateV1): string {
-  if (state.kind === 'unavailable') {
-    return '<button type="button" data-act="landcta" disabled title="Landing is unavailable until expedition authority is ready" style="background:rgba(202,162,79,0.08);color:var(--dim);border:1px solid rgba(202,162,79,0.35);border-radius:999px;padding:8px 16px;min-height:44px;font:12px system-ui">⛳ Landing unavailable</button>';
-  }
-  return `<span style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;max-width:100%"><button type="button" data-act="landcta" data-landing-world="${esc(state.worldKey)}" data-landing-success="${state.successPercent}" data-landing-damage-min="${state.damageMin}" data-landing-damage-max="${state.damageMax}" title="${esc(state.title)}" aria-label="${esc(state.label)}" aria-describedby="landing-approach-disclosure" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">${esc(state.label)}</button><span id="landing-approach-disclosure" data-landing-disclosure style="max-width:32ch;color:var(--text);font:12px/1.4 system-ui">${esc(state.disclosure)}</span></span>`;
 }
 function presentPlanetSurvey(
   p: PlanetNode,
@@ -7309,7 +7295,7 @@ function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): stri
   return '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px">' +
     (onThisSurface
       ? '<button data-act="leaveworld" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⬆ Leave world</button>'
-      : landingCardActionHtml(landingState)) +
+      : landingCardActionHtml(landingState, esc)) +
     (charted && !trainingAdd
       ? '<span style="color:var(--dim);align-self:center;font-size:12px">★ charted</span>'
       : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">' +
