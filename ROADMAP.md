@@ -122,6 +122,24 @@ the archive verbatim and refresh this handoff in place.
   moved together); replay the fast gates and both phone canaries on `b173353` in a scratch checkout;
   then give Nick a merge/no-merge recommendation with the exact PR base/source/title/body. **Do not**
   open the PR, label, or merge — Nick authorizes the one agent-lane attempt after the review.
+- **Claude's morning review — DONE 2026-09-05 (read-only; scratch checkout of `b173353`, removed afterwards).**
+  Checkpoint table matches `git log` (all 20 cited SHAs on the branch, commit times within seconds of the
+  stated push times, `e77e5e0` is a real merge with `5377069` as second parent, all 35 commits carry SSH
+  signatures). Scope clean: no `.github/workflows`, Actions policy, artlock/`reference/` or legacy
+  `main.js`/html edits; no import door reintroduced; `port/DECISIONS.md` gains only row 19 (2026-09-04,
+  arrived with signed core `5377069`, not overnight — Nick should confirm he said it); all 79-bullet pins
+  and the Compendium producer authority (`c1e784b7…`, producer + `selectionRule` only) moved together.
+  Replayed on `b173353`: typecheck, artunused, root validate (50 fingerprints), budget policy (81), Glass
+  selftest, artaudit, overridecheck, speccheck, small-phone (`20260905152330714-93349-df89d86d2a7e`, 0/0)
+  and large-phone (`20260905152346577-93488-f8551e668961`, 0/0) all PASS; vitest 301/3,100 PASS **only
+  after `node tools/extract.js`**. ⚠ **One hosted-red blocker:** `port/v2/tests/travel-presentation.test.ts`
+  reads the gitignored root `main.js` at module top level, so on any fresh clone (and the hosted `develop`
+  profile, which runs `npm test` with no bootstrap) it throws ENOENT and the file fails (300/301). Proven
+  fix in scratch: replace the `readFileSync` with `readTrackedV1Source().script` from
+  `test-support/tracked-v1-source.ts` (the pattern `dom5-dependency.test.ts` already uses); 6/6 pass with no
+  `main.js`. **Recommendation: no-merge as-is; merge after Codex lands that one bounded correction on the
+  review branch (new signed head, fast gates rerun), then Nick authorizes the single agent-lane attempt.**
+  Slice `--profile=develop` was not replayed here (Codex's PASS on `b173353` stands as its evidence).
 
 ### Paired handoff
 
