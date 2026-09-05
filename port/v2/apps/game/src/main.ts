@@ -100,6 +100,11 @@ import {
   type CompendiumScoutSurfaceReceiptV1,
 } from './compendium-scout.js';
 import {
+  projectCompendiumCreatureProgressionV1,
+  type CompendiumCreatureProgressionV1,
+} from './compendium-creature-progression.js';
+import { CompendiumCreatureProgressionSurfaceV1 } from './compendium-creature-progression-surface.js';
+import {
   bindSpeciesThumb,
   SpeciesArtLoader,
   SpeciesThumbLeaseGroup,
@@ -3274,6 +3279,14 @@ const compendiumScoutController = new CompendiumScoutController({
   },
 });
 
+const compendiumCreatureProgressionSurface = new CompendiumCreatureProgressionSurfaceV1({
+  isCurrent: () => codexMode === 'detail' && openPanelId() === 'codex',
+  project: (pageIndex) => {
+    const row = currentCompendiumDetailRow();
+    return row === null ? null : projectCurrentCompendiumCreatureProgression(row, pageIndex);
+  },
+});
+
 function projectCurrentCompendiumAudition(
   row: readonly [string, CodexRecord],
   generation: number,
@@ -3303,6 +3316,25 @@ function projectCurrentCompendiumFeed(
       ownership: arc5OwnershipState,
       protected: arc5OwnershipProtection !== null || !f4RuntimeMayMutate(),
       fixture: compendiumFixtureRows !== null,
+    });
+  } catch {
+    return null;
+  }
+}
+
+function projectCurrentCompendiumCreatureProgression(
+  row: readonly [string, CodexRecord],
+  pageIndex = 0,
+): CompendiumCreatureProgressionV1 | null {
+  try {
+    return projectCompendiumCreatureProgressionV1({
+      logicalId: String(row[0]),
+      record: row[1],
+      ownership: arc5OwnershipState,
+      protected: arc5OwnershipProtection !== null,
+      fixture: compendiumFixtureRows !== null,
+      observedActivePlayMs: f4Runtime?.diagnostics().activePlayMs ?? 0,
+      pageIndex,
     });
   } catch {
     return null;
@@ -3415,6 +3447,7 @@ function refreshCompendiumFeedState(): void {
   const projectedBreed = projectCurrentCompendiumBreed(row, codexGeneration);
   const projectedRename = projectCurrentCompendiumRename(row, codexGeneration);
   const projectedScout = projectCurrentCompendiumScout(row, codexGeneration);
+  compendiumCreatureProgressionSurface.refresh();
   compendiumAuditionController.setState(projectedAudition);
   compendiumFeedController.setState(projectedFeed);
   compendiumExplorerMealController.setState(projectedExplorerMeal);
@@ -3454,6 +3487,7 @@ function closeCodexSurface(): void {
   compendiumRenameController.setState(null);
   compendiumScoutController.detach();
   compendiumScoutController.setState(null);
+  compendiumCreatureProgressionSurface.detach();
   disposeCodexList();
   cancelCodexDetailArt();
   /* Detail uses the approved 440px portrait path rather than a thumbnail
@@ -3557,6 +3591,7 @@ function fillCodex(filter?: string, restore?: CodexReturnState | null): void {
   compendiumRenameController.setState(null);
   compendiumScoutController.detach();
   compendiumScoutController.setState(null);
+  compendiumCreatureProgressionSurface.detach();
   codexList = null;
   codexWindow = EMPTY_CODEX_WINDOW;
   cancelCodexDetailArt();
@@ -3630,6 +3665,7 @@ function fillCodexDetail(idx: number): void {
   compendiumRenameController.setState(null);
   compendiumScoutController.detach();
   compendiumScoutController.setState(null);
+  compendiumCreatureProgressionSurface.detach();
   const generation = ++codexGeneration;
   codexMode = 'detail';
   codexDetailLogicalId = String(row[0]);
@@ -3688,6 +3724,9 @@ function fillCodexDetail(idx: number): void {
     body = '<div class="empty">This record did not decode — the genome may predate the Compendium.</div>';
   }
   fillPanel('codex', `<h3><button id="codexback" style="background:none;border:0;color:#9fdcff;cursor:pointer;font:13px var(--ui);padding:8px;min-height:44px">‹ Compendium</button></h3><div data-sel="codex-detail">${body}${showAudition ? '<section class="compendium-feed" data-arc7-audition-body aria-label="Creature call audition"></section>' : ''}${showRename ? '<section class="compendium-feed" data-arc5-rename-body aria-label="Rename companion"></section>' : ''}${showScout ? '<section class="compendium-feed" data-arc5-scout-body aria-label="Field Scout"></section>' : ''}${showFeed ? '<section class="compendium-feed" data-arc5-feed-body aria-label="Feed companion"></section>' : ''}${showExplorerMeal ? '<section class="compendium-feed" data-arc5-explorer-meal-body aria-label="Eat flora"></section>' : ''}${showBreed ? '<section class="compendium-feed" data-arc5-breed-body aria-label="Breed companions"></section>' : ''}</div>`);
+  compendiumCreatureProgressionSurface.attach(
+    document.querySelector<HTMLElement>('#codexpanel [data-sel="codex-detail"]')!,
+  );
   if (showAudition) {
     compendiumAuditionController.setState(auditionModel);
     compendiumAuditionController.attach(

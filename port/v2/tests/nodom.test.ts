@@ -44,6 +44,7 @@ const EXPECTED_DOMAIN_FILES = Object.freeze([
   'biome-profile/src/index.ts',
   'combatcore/src/combatcore.verbatim.js',
   'combatcore/src/combat-settlement.ts',
+  'combatcore/src/creature-level-progress.ts',
   'combatcore/src/guardian-prime.ts',
   'combatcore/src/index.ts',
   'combatcore/src/lineage-codec.ts',

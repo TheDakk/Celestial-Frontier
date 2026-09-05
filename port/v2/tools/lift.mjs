@@ -73,7 +73,17 @@ const adapterExports = name === 'Descriptors'
   : [];
 const thumbAdapterExports = name === 'ThumbArt'
   ? ['installPlanetSpriteFinisher', 'installThumbSurfaceFinisher'] : [];
-const moduleExports = [...new Set([...exportsList, ...adapterExports, ...thumbAdapterExports])];
+/* CombatCore keeps the class/archetype tables private in the sealed legacy
+   body. Export one bounded, deeply-frozen read adapter instead of either
+   copying those tables into v2 or exposing their mutable arrays directly. */
+const combatCoreAdapterExports = name === 'CombatCore'
+  ? ['projectCreatureInnateArts'] : [];
+const moduleExports = [...new Set([
+  ...exportsList,
+  ...adapterExports,
+  ...thumbAdapterExports,
+  ...combatCoreAdapterExports,
+])];
 
 /* ThumbArt's public getPlanetSprite and its lexical planetThumb consumer must
    pass through one finishing owner. Keeping that hook inside the generated
@@ -141,6 +151,27 @@ function installThumbSurfaceFinisher(finisher){
   if(_cfThumbSurfaceFinisherInstalled) throw new Error('thumbnail surface finisher is already installed');
   _cfFinishThumbSurface=finisher;
   _cfThumbSurfaceFinisherInstalled=true;
+}
+`;
+}
+if (name === 'CombatCore') {
+  adapterPrelude = `function projectCreatureInnateArts(g){
+  const K=classKit(g), arts=[];
+  for(let i=0;i<K.slots;i++){
+    const id=K.cls.verbs[i], ar=ARCHETYPES.find(a=>a.id===id);
+    if(!ar) throw new Error('CombatCore innate art is unavailable: '+String(id));
+    arts.push(Object.freeze({
+      id:ar.id, label:ar.n, description:ar.d, slot:i+1,
+      effects:Object.freeze({...ar.mk(i)})
+    }));
+  }
+  return Object.freeze({
+    className:K.cls.name,
+    classGroup:K.cls.group,
+    level:K.lvl,
+    awakenedInnateSlots:K.slots,
+    arts:Object.freeze(arts)
+  });
 }
 `;
 }

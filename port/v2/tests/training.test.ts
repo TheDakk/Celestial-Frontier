@@ -213,7 +213,10 @@ function curriculumCopyIsTruthful(steps: readonly { id: string; text: () => stri
     && /live exact-instance companion controls after Training/i.test(text('compendium-tour'))
     && /Field Scout can name, switch, or stand down one exact owned companion, intercept hostile Discover Life injury, and earn up to \+2 XP when a later successful capture catalogues a genuinely fresh species/i.test(text('compendium-tour'))
     && /real Flora detail separately offers <b>Eat 1<\/b> for explorer healing, poison, and stat nourishment/i.test(text('compendium-tour'))
-    && /Companion tastes, care, bond, dispatch, missions, and friendly duels are not live yet/i.test(text('compendium-tour'))
+    && /Companion tastes, stat or Power growth from Feed, injury care, bond, dispatch, missions, and friendly duels remain unavailable/i.test(text('compendium-tour'))
+    && /Every same-species twin keeps its own level, XP, condition, class, and named innate arts/i.test(text('compendium-tour'))
+    && /the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats/i.test(text('compendium-tour'))
+    && !/Same-species twins share one progression row|Innate art slots unlock at levels 2 and 5|Progression rewrites the creature’s genome or base stats|Companion Feed grows stats or Power|Companion Feed heals injuries/i.test(text('compendium-tour'))
     && /Records are evidence, not a reward fountain/i.test(text('records-tour'))
     && /26 exact-event achievements appear only after their owning transaction verifies/i.test(text('records-tour'))
     && /only daily and decade still lack event owners/i.test(text('records-tour'))
@@ -344,6 +347,22 @@ describe('Field Training completion transaction UI', () => {
         ) }
       : step);
     expect(curriculumCopyIsTruthful(forgedCurriculum)).toBe(false);
+
+    const compendiumCopy = steps.find((step) => step.id === 'compendium-tour')!.text();
+    const changeCompendium = (copy: string) => steps.map((step) => step.id === 'compendium-tour'
+      ? { ...step, text: () => copy } : step);
+    for (const anchor of ["Every same-species twin keeps its own level, XP, condition, class, and named innate arts", "the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats", "Companion tastes, stat or Power growth from Feed, injury care, bond, dispatch, missions, and friendly duels remain unavailable"]) {
+      expect(compendiumCopy.split(anchor), anchor).toHaveLength(2);
+      const omitted = compendiumCopy.replace(anchor, 'progression boundary omitted');
+      expect(omitted, anchor).not.toBe(compendiumCopy);
+      expect(curriculumCopyIsTruthful(changeCompendium(omitted)), anchor).toBe(false);
+      expect(curriculumCopyIsTruthful(steps), anchor + ' restored').toBe(true);
+    }
+    for (const contradiction of ["Same-species twins share one progression row.", "Innate art slots unlock at levels 2 and 5.", "Progression rewrites the creature’s genome or base stats.", "Companion Feed grows stats or Power.", "Companion Feed heals injuries."]) {
+      expect(curriculumCopyIsTruthful(changeCompendium(compendiumCopy + ' ' + contradiction)), contradiction)
+        .toBe(false);
+      expect(curriculumCopyIsTruthful(steps), contradiction + ' restored').toBe(true);
+    }
   });
 
   it('advances board orientation only from exact real open lifecycles and locks every mutation', async () => {

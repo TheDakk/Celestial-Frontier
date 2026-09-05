@@ -1,6 +1,6 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-## Overnight Batch 4 — checkpoint 2c implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -23,8 +23,13 @@ shows all fifty: found entries Inspect the exact existing Compendium record; mis
 existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
 New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
 Pre-feature development saves with an already-scanned home retain their recorded refusal; no
-backfill or repeated hazard is invented. Static portraits remain unchanged. Individual progression
-presentation and mature Atlas remain later checkpoints.
+backfill or repeated hazard is invented. Static portraits remain unchanged. Exact-instance progression now displays each individual's
+XP, level, class, innate arts, wounds and active-play Recovery, with distinct twins and retained
+tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
+preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
+focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
+remains the next checkpoint.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
@@ -82,6 +87,27 @@ after ten exact Paragons and pays 120 current/lifetime Stardust only through its
 Claim receipt/CAS. Prior claims stay claimed. Missing slots use the source-proven finder and existing
 ship/Prime reach checks; found slots open the exact Compendium record through Inspect without travel
 or acquisition. Existing static portrait owners are unchanged.
+
+Step 2d adds `compendium-creature-progression.ts` and its surface owner to the existing fauna
+detail. The registered Arc 5 owner supplies exact live individuals plus immutable retired
+tombstone snapshots; a matching species identity never merges their separate IDs, names, XP or
+condition. At most 24 rows mount per page, with XP/level progress, class/group, named innate arts
+and effects, wounds, and active-play Recovery status. This is a read-only projection: it creates
+no XP, care, Feed stat growth, new assignment, ownership write or clock advancement. A recovered
+assignment is only cleared by an existing companion action, never by its display heartbeat.
+
+`creature-level-progress.ts` uses the lifted `levelOf` authority for the existing
+`min(9, floor(sqrt(xp / 6)))` curve and accepts the registered finite 0–486 XP range. Fractional XP
+remains exact; only independent integer cursors search the level thresholds. The frozen
+`projectCreatureInnateArts` adapter reads the existing private class/ability tables and the 3/6
+level awakenings, without rewriting genomes, base stats or combat rules.
+
+The surface refresh is fenced to the current detail and ownership. A passive heartbeat restores
+only the same enabled pager with `preventScroll`; if it disappeared, became disabled or its
+surface vanished, focus falls back to that panel's Close with the same scroll policy. Restoration
+requires that the old pager still owned focus; a user move elsewhere is respected. Only an explicit
+page press may choose the alternate pager with ordinary focus behavior. The existing lifecycle
+detaches this section when its detail closes or changes.
 
 The safe explorer-meal successor joins `fieldmedic`, and a safe meal above 40% poison risk also
 joins `gambler`. Any hostile explicit Bioscan joins `survivor` whether its wound lands on the Scout
@@ -4566,7 +4592,7 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
   by the 56 legacy releases. Its exact 79-bullet implemented-outcome inventory has rendered
-  ordered SHA-256 `62f3490095d87bb99903ddf3e5ad0e5f03dadbe38da874835bd9f98654756194`
+  ordered SHA-256 `cfb34202b24e064af24a80f99083609aa63539d52ebce0042d7b4a231fb854e9`
   and is checked structurally and in the rendered Guide. Tail proof dispatches one adaptive
   native wheel per fresh exact-document/tail/hit-owner/geometry observation until the final item
   is visible at bottom, then restores scroll and inline overflow ownership exactly; unchanged

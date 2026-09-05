@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-## Overnight Batch 4 — checkpoint 2c implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -23,8 +23,13 @@ shows all fifty: found entries Inspect the exact existing Compendium record; mis
 existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
 New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
 Pre-feature development saves with an already-scanned home retain their recorded refusal; no
-backfill or repeated hazard is invented. Static portraits remain unchanged. Individual progression
-presentation and mature Atlas remain later checkpoints.
+backfill or repeated hazard is invented. Static portraits remain unchanged. Exact-instance progression now displays each individual's
+XP, level, class, innate arts, wounds and active-play Recovery, with distinct twins and retained
+tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
+preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
+focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
+remains the next checkpoint.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
@@ -48,7 +53,7 @@ rather than converting them into unnecessary product changes.
 | Foundations / Arc 1 | Safe persistence/time/identity, bounded Compendium and ship/universe presentation | Human/save/device/art evidence; current exact candidate proof after changes |
 | Arc 0 | Fifteen Training IDs including graduation; orientation/continuity and truthful capability views; accepted st-scan completion from a later explicit Bioscan in its owning receipt; disclosed deterministic descent odds, nonlethal orbit-preserving wave-offs, canonical-address learning and safe Earth/Training/proven-world returns | Full hands-on curriculum beside its real owning actions; weekly bioscan Charter and weekly lifecycle owners |
 | Arc 2–3 | Exact Inventory, fixed fabrication, mining/skimming, all six Research consumers, capability-derived ship/reach, and Search/CF1/Atlas travel presentation | Authored random loot/affix/rate policy, upgrades/sockets, remaining ship depth, and human economy/pacing evidence |
-| Arc 4–5 | Capture with fresh-species Field Scout XP, explicit Discover Life with nonlethal Scout interception, explorer Flora meals, companion Feed, nonlethal Breed/recovery, Rename, and exact Field Scout selection | Companion taste/care/healing, bond growth, missions, dispatch/return, and living-preview depth |
+| Arc 4–5 | Capture with fresh-species Field Scout XP, explicit Discover Life with nonlethal Scout interception, explorer Flora meals, companion Feed, nonlethal Breed/recovery, Rename, exact Field Scout selection, and bounded read-only individual XP/level/class/innate/wound/Recovery presentation preserving twins and retired history | Companion taste/care/healing, bond growth, missions, dispatch/return, and living-preview depth |
 | Arc 6 | Landed battle, conquest, Guardian/Titan capture, Prime claims, XP/Stardust and Combat Chronicle | Arc 5.5 HUMAN model; two explicit affix/extra-Guardian-reward decisions; party/tactics/retreat and wider encounters |
 | Arc 7–8 | Audio platform and working deterministic synthesized cues | Mix/lifecycle/accessibility close-out; rights-bound authored music/ambience/voices and listening evidence |
 | Arc 9–10 | Bounded progression, 26 exact achievement joins, Starter Charters, six Binder type pages/eight Set claims, the fifty exact-home catalogue-only Paragon trails with found Inspect/missing travel and a separate ten-Paragon 120-Stardust Claim, existing Atlas actions, the read-only four-gallery Expedition Chronicle & Museum, and PWA automation | The two event-owner gaps, achievement rewards, projects, share cards, localization, integration/device/release gates |

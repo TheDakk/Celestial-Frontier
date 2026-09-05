@@ -6783,7 +6783,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 79,
-    sha256: '62f3490095d87bb99903ddf3e5ad0e5f03dadbe38da874835bd9f98654756194',
+    sha256: 'cfb34202b24e064af24a80f99083609aa63539d52ebce0042d7b4a231fb854e9',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -27366,7 +27366,10 @@ try {
     || !/live exact-instance companion controls after Training/i.test(compendiumTourFocus.announcement)
     || !/intercept hostile Discover Life injury, and earn up to \+2 XP when a later successful capture catalogues a genuinely fresh species/i.test(compendiumTourFocus.announcement)
     || !/real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment/i.test(compendiumTourFocus.announcement)
-    || !/Companion tastes, care, bond, dispatch, missions, and friendly duels are not live yet/i.test(compendiumTourFocus.announcement)) {
+    || !/Companion tastes, stat or Power growth from Feed, injury care, bond, dispatch, missions, and friendly duels remain unavailable/i.test(compendiumTourFocus.announcement)
+    || !/Every same-species twin keeps its own level, XP, condition, class, and named innate arts/i.test(compendiumTourFocus.announcement)
+    || !/the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats/i.test(compendiumTourFocus.announcement)
+    || /Same-species twins share one progression row|Innate art slots unlock at levels 2 and 5|Progression rewrites the creature’s genome or base stats|Companion Feed grows stats or Power|Companion Feed heals injuries/i.test(compendiumTourFocus.announcement)) {
     fails.push('DRILL COMPENDIUM TOUR: real catalogue rows, read-only lock, or Field Scout truth drifted: '
       + JSON.stringify({ tour: compendiumTour, focus: compendiumTourFocus, rows: compendiumHeldRows }));
   }
