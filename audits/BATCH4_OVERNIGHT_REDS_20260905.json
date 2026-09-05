@@ -1,5 +1,63 @@
 [
   {
+    "kind": "hosted-instrument-timeout",
+    "date": "2026-09-05",
+    "pr": 41,
+    "source": "67f5fcffc89aea1edea5f510cfdc9452c7e775bd",
+    "runId": "33976307813",
+    "jobId": "101333510983",
+    "lane": "agent",
+    "runUrl": "https://github.com/TheDakk/Celestial-Frontier/actions/runs/33976307813",
+    "jobUrl": "https://github.com/TheDakk/Celestial-Frontier/actions/runs/33976307813/job/101333510983",
+    "stage": "v2 base-profile static gates",
+    "evidenceProvenance": "Nick-supplied Claude hosted review; raw hosted logs not fetched in this correction.",
+    "counts": {
+      "failed": 1,
+      "passed": 3099,
+      "skipped": 1
+    },
+    "testFile": "port/v2/tests/glass-targeted-verifier.test.ts",
+    "testNamePrefix": "keeps the new CLI separate from full verification",
+    "observedMs": 16693,
+    "perTestCapMs": 15000,
+    "previousGreenMs": 13372,
+    "cause": "Instrument timing under the larger runner workload; unchanged test file on the PR, with three synchronous glassmatrix.mjs launches. No product assertion failure reported.",
+    "comparison": {
+      "testFiles": [
+        274,
+        301
+      ],
+      "heavyFileSeconds": {
+        "evidence-chain-tools": [
+          30.3,
+          35.7
+        ],
+        "arc4-acquisition-planner": [
+          19.7,
+          22.8
+        ],
+        "training-restore": [
+          15.3,
+          17.6
+        ],
+        "arc4-recovery-tool": [
+          13.4,
+          17.4
+        ]
+      }
+    },
+    "disposition": {
+      "correctionSource": "8f8948feb857a279b347ec7ffa096582befd7a3c",
+      "changes": "Eleven timeout literals only in the three authorized test files; assertions, fixtures, selection, worker settings and global config unchanged; optional acquisition 30000 ms cap and evidence child 15000 ms cap retained.",
+      "verification": "Fresh clean checkout, root main.js absent, worker overrides unset: typecheck and artunused PASS; Vitest 301 files / 3100 passed / 1 skipped; exact develop profile PASS once.",
+      "hostedRetryRun": false,
+      "approvalLabelRemoved": true,
+      "prRemainsOpen": true,
+      "hostedAttemptsAuthorized": 0,
+      "next": "Nick separately authorizes attempt 2 for the exact pushed reporting successor."
+    }
+  },
+  {
     "kind": "measurement-incomplete",
     "source": "4fa82d0c9fd648fcb05497552e244d594b1a959f",
     "command": [

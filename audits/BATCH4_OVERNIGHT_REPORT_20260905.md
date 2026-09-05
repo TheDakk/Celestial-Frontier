@@ -1,5 +1,60 @@
 # Batch 4 overnight report — 2026-09-05
 
+## PR #41 hosted-timeout correction — 2026-09-05
+
+Nick/Claude's hosted handoff reports run `33976307813`, battery job `101333510983`,
+agent lane on `67f5fcffc89aea1edea5f510cfdc9452c7e775bd`, RED at
+“v2 base-profile static gates”: 1 failed / 3,099 passed / 1 skipped. The unchanged
+Glass targeted CLI test took 16,693 ms against its 15,000 ms cap (PR #40: 13,372 ms).
+The larger 301-file suite slowed heavy files across the runner; this is an instrument
+timeout correction. No retry was run; the approval label was removed; PR #41 remains open.
+
+Signed, locally verified correction head: `8f8948feb857a279b347ec7ffa096582befd7a3c`.
+Only eleven timeout literals changed: Glass targeted CLI test 15,000 → 60,000 ms and
+its child 10,000 → 20,000 ms; four evidence-chain test caps and five acquisition-planner
+20,000 ms test caps → 60,000 ms. The optional acquisition 30,000 ms cap and evidence-chain
+15,000 ms child timeout remain unchanged. Assertions, fixtures, selection, worker settings,
+global config, product, tools, pins, policy and workflows are unchanged.
+
+All requested commands passed on that exact signed source in a fresh local checkout with
+no root `main.js`, no worker overrides and clean tracked source before/after:
+typecheck 2.955 s; artunused 1.476 s; Vitest 301 files / 3,100 passed / 1 skipped
+(43.631 s); exact `node tools/check-profile.mjs --profile=develop` once (46.837 s).
+The profile also passed artaudit, overridecheck and speccheck. No browser run was repeated.
+
+OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`,
+`openai/review-batch4-gameplay-20260905` and its matching origin branch; unrelated
+untracked `.DS_Store` remains untouched. These four reporting files form a signed
+documentation-only successor; the final user handoff names its exact pushed SHA.
+Budget UNFROZEN, PUBLIC per Nick, private fallback cap 3,000; zero hosted attempts authorized.
+The authorized branch push updates existing PR #41 → `develop` without a workflow trigger
+(the battery is label-only; other workflows are manual). Codex stops after this push.
+Nick separately authorizes agent-lane attempt 2 for the exact reported head and base;
+Claude may fetch the correction from its own `anthropic/windows` checkout. No new PR,
+label, hosted attempt, merge or release is authorized. No need to open Claude now unless
+Nick wants that review; the copy-ready PR fields remain in the proposed-PR audit.
+
+Hosted evidence provenance: the run/job IDs, stage, counts and timings above were supplied
+by Nick from Claude's review; this correction did not fetch or re-run the hosted logs.
+Reported PR #40 → PR #41 heavy-file timings: evidence-chain-tools 30.3 → 35.7 s,
+arc4-acquisition-planner 19.7 → 22.8 s, training-restore 15.3 → 17.6 s,
+arc4-recovery-tool 13.4 → 17.4 s; suite size 274 → 301 files.
+Run: https://github.com/TheDakk/Celestial-Frontier/actions/runs/33976307813
+Job: https://github.com/TheDakk/Celestial-Frontier/actions/runs/33976307813/job/101333510983
+
+Local command log SHA256 (source `8f8948feb857a279b347ec7ffa096582befd7a3c`):
+
+| Command | Result | Log SHA256 |
+| --- | --- | --- |
+| `npm run typecheck` | PASS, 2.955 s | `4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e` |
+| `npm run artunused` | PASS, 1.476 s | `0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b` |
+| `npx vitest run` | PASS, 301 files / 3,100 passed / 1 skipped, 43.631 s | `736aac7da7f7936d695f37c1b1ba225510fa0b4c9a803cf104dc146104187423` |
+| `node tools/check-profile.mjs --profile=develop` | PASS once, 46.837 s | `45035d85a587453c6710886c36644fea635a6bd43457fd173ee25372361cb739` |
+
+Independent scope review: CLEAR; reversing the eleven authorized numeric replacements
+reproduces the three prior test files byte-for-byte. No additional test/instrument change.
+Earlier records below retain their original source, worker settings and authorization state.
+
 ## Review correction — tracked v1 test source, 2026-09-05
 
 Signed correction source: `2881cda1818b4d81b98f10da63c442b9f837d504`, successor to reviewed `bc42dbc`.

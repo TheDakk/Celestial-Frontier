@@ -19,6 +19,40 @@ the archive verbatim and refresh this handoff in place.
 
 ## SESSION HANDOFF — 2026-09-05 · BATCH 4 FINAL REVIEW HANDOFF
 
+## PR #41 hosted-timeout correction — 2026-09-05
+
+Nick/Claude's hosted handoff reports run `33976307813`, battery job `101333510983`,
+agent lane on `67f5fcffc89aea1edea5f510cfdc9452c7e775bd`, RED at
+“v2 base-profile static gates”: 1 failed / 3,099 passed / 1 skipped. The unchanged
+Glass targeted CLI test took 16,693 ms against its 15,000 ms cap (PR #40: 13,372 ms).
+The larger 301-file suite slowed heavy files across the runner; this is an instrument
+timeout correction. No retry was run; the approval label was removed; PR #41 remains open.
+
+Signed, locally verified correction head: `8f8948feb857a279b347ec7ffa096582befd7a3c`.
+Only eleven timeout literals changed: Glass targeted CLI test 15,000 → 60,000 ms and
+its child 10,000 → 20,000 ms; four evidence-chain test caps and five acquisition-planner
+20,000 ms test caps → 60,000 ms. The optional acquisition 30,000 ms cap and evidence-chain
+15,000 ms child timeout remain unchanged. Assertions, fixtures, selection, worker settings,
+global config, product, tools, pins, policy and workflows are unchanged.
+
+All requested commands passed on that exact signed source in a fresh local checkout with
+no root `main.js`, no worker overrides and clean tracked source before/after:
+typecheck 2.955 s; artunused 1.476 s; Vitest 301 files / 3,100 passed / 1 skipped
+(43.631 s); exact `node tools/check-profile.mjs --profile=develop` once (46.837 s).
+The profile also passed artaudit, overridecheck and speccheck. No browser run was repeated.
+
+OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`,
+`openai/review-batch4-gameplay-20260905` and its matching origin branch; unrelated
+untracked `.DS_Store` remains untouched. These four reporting files form a signed
+documentation-only successor; the final user handoff names its exact pushed SHA.
+Budget UNFROZEN, PUBLIC per Nick, private fallback cap 3,000; zero hosted attempts authorized.
+The authorized branch push updates existing PR #41 → `develop` without a workflow trigger
+(the battery is label-only; other workflows are manual). Codex stops after this push.
+Nick separately authorizes agent-lane attempt 2 for the exact reported head and base;
+Claude may fetch the correction from its own `anthropic/windows` checkout. No new PR,
+label, hosted attempt, merge or release is authorized. No need to open Claude now unless
+Nick wants that review; the copy-ready PR fields remain in the proposed-PR audit.
+
 ## Review correction — tracked v1 test source, 2026-09-05
 
 Signed correction source: `2881cda1818b4d81b98f10da63c442b9f837d504`, successor to reviewed `bc42dbc`.
