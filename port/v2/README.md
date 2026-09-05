@@ -1,5 +1,53 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+## Current review implementation — matches code as of 2026-09-04
+
+PR #35 passed its one hosted battery and merged into `develop` at `7bf3e847…`; it is no longer
+awaiting integration. The full game vision remains unfinished. Current scope, verified results
+and open decisions are in `../../ROADMAP.md` and `../../audits/FULL_REVIEW_DISPOSITION_20260904.md`.
+The dated overlays below retain historical evidence, not authority for the current working tree.
+
+Queued saves repeat admission before writing and after heartbeat settlement. Records, Atlas and
+Charters preserve semantic focus during refills without scrolling or overriding later user focus.
+Three build-owning tools now reuse the existing safe Windows npm launcher; no shell interpolation
+of the working directory is introduced. Actual Windows execution remains a separate check.
+
+Finite typed audio cues also have an injected monotonic lifetime fallback for missed completion
+events, sharing the existing exact cleanup owner. Creature/ecology/combat sound plans and game
+clocks are unchanged. `@cf/art` now declares both existing Genome and PlanetGen dependencies.
+These review corrections do not enable unimplemented research, companion or Guardian rewards.
+
+The early Glass rows now use a shared Node verdict instead of a duplicate workflow jq program:
+
+```sh
+node tools/glassmatrix.mjs --verify-targeted-run=<immutable-run-id> --viewport=small-phone --browser=<canonical-Chrome-executable>
+# Use --viewport=large-phone for that row's own immutable run ID.
+```
+
+This is browser-free verification of an existing current-clean-source diagnostic, not a browser
+run or a Slice-bound certificate. `--verify-run` retains its full `--slice-run`/`--profile` contract.
+jq is still checked for later run-ID extraction. No coverage, numerical ceiling or retry changes.
+
+### Explicit evidence builds — matches code as of 2026-09-04
+
+Ordinary `npm run build` / `vite build` is distributable. Only `vite build --mode evidence`
+compiles the browser diagnostic API and fault injection paths. `NODE_ENV`, the development
+server, preview packaging and query parameters do not opt in. Both variants carry one
+`cf-build-mode` HTML head marker, included in PWA final-byte hashes. The named certifiers and
+authority printer explicitly build/check `evidence`; ordinary art-review entrypoints keep their
+default mode, and historical broken-baseline builds keep their exact historical commands.
+Raw `vite preview` only serves the existing `dist`; it does not convert a previous evidence build.
+Run a fresh ordinary build first for manual distributable serving. The packaged preview path
+enforces this boundary independently.
+
+Human preview packages require `distributable`. Their browser check observes the rendered player
+chip, navigation trail and canvas. If fresh Training is active, it uses the real Skip Training
+action in that disposable profile and waits for normal control restoration before opening Guide
+and verifying the complete build identity. It refuses a leaked diagnostic API. Both built modes
+pass final-byte/PWA checks; the distributable preview passed this flow in real Edge. This local
+dirty diagnostic is not a clean-source certificate, a save-format change or human acceptance.
+See the disposition audit for fingerprints and retained intermediate instrument findings.
+
 > **2026-09-04 UTC two-lane battery overlay (Claude, `anthropic/windows`; matches current local
 > code):** the hosted `test-battery` now has two owner-only lanes inside its unchanged
 > `pull_request: [labeled]` trigger. `actions-budget-approved` on an agent → `develop` PR runs the
@@ -14,7 +62,7 @@
 > run. Local commands are unchanged: `node ../../tools/actions-budget-policy.js --selftest` from
 > this directory (or `npm run actionsbudget:selftest` at repository root) proves the lane seals.
 >
-> **2026-09-04 UTC current PR #35 forensic-prevention overlay (matches current local code):** the
+> **2026-09-04 UTC historical PR #35 forensic-prevention overlay:** the
 > external review of pushed head `a922c4b…` identified narrow hosted-envelope and late-execution
 > risks. The local successor keeps one authorization job and one battery job, with a **120-minute**
 > battery cap and **55-minute** Compendium step cap. These are orchestration ceilings only; they do
@@ -3968,7 +4016,7 @@ directions.
 
 Current terminal PASS evidence uses `cf-v2-glassmatrix/v2`. Historical v1 non-PASS reports remain
 readable for diagnosis, but a v1 full or targeted PASS is rejected. Glass's named verifier,
-Recovery, the diagnostic projection, persona synthesis and hosted jq all require the deep current
+Recovery, the diagnostic projection, persona synthesis and the shared targeted verifier all require the deep current
 Shipyard heartbeat carrier for PASS.
 
 Run `33708487067` earned this boundary after full Glass reached `large-phone` with only

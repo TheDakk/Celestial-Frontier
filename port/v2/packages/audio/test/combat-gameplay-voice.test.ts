@@ -324,6 +324,7 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
       cooldownGroup: `combat-gameplay:${fixture.cue.cueId}`, cooldownMs: 0,
       concurrencyGroup: 'combat-gameplay-impact', maxConcurrent: 2,
       nodeCount: 11,
+      maxDurationMs: expect.any(Number),
       mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
       meaning: { kind: 'meaningful', counterpart: fixture.counterpart },
     });
@@ -379,6 +380,11 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
     expect(firstContext.bufferSources[0]!.stopWhens).toEqual([t + 0.08]);
     expect(firstContext.oscillators[1]!.stopWhens).toEqual([t + 0.22]);
     expect(firstContext.oscillators[2]!.stopWhens).toEqual([t + 0.24]);
+    const finalStopMs = (Math.max(...[...firstContext.oscillators, ...firstContext.bufferSources]
+      .map((source) => source.stopWhens[0]!)) - firstContext.currentTime) * 1_000;
+    expect(Number.isSafeInteger(request.maxDurationMs)).toBe(true);
+    expect(request.maxDurationMs! - finalStopMs).toBeGreaterThanOrEqual(249.999);
+    expect(request.maxDurationMs! - finalStopMs).toBeLessThan(251.001);
   });
 
   it('refuses structural cue/plan clones and counterpart drift while admitting registered non-impact cues', () => {
@@ -471,6 +477,11 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
       for (const source of graph.sources) source.start();
       expect([...context.oscillators, ...context.bufferSources]
         .every((source) => source.stopWhens.length === 1)).toBe(true);
+      const finalStopMs = (Math.max(...[...context.oscillators, ...context.bufferSources]
+        .map((source) => source.stopWhens[0]!)) - context.currentTime) * 1_000;
+      expect(Number.isSafeInteger(request.maxDurationMs)).toBe(true);
+      expect(request.maxDurationMs! - finalStopMs, sample.cue.families.join('+')).toBeGreaterThanOrEqual(249.999);
+      expect(request.maxDurationMs! - finalStopMs, sample.cue.families.join('+')).toBeLessThan(251.001);
     }
   });
 
@@ -502,6 +513,7 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
     const runtime = createAudioRuntime({
       createContext: () => context,
       nowMs: () => 400,
+      scheduleVoiceDeadline: () => () => {},
       verifyCounterpart: (receipt: AudioCounterpartReceipt) =>
         receipt.counterpartKey === fixture.counterpart.counterpartKey
         && receipt.eventKey === fixture.counterpart.eventKey
@@ -540,6 +552,7 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
     const rejectedContext = new SynthesisContext();
     const rejectedRuntime = createAudioRuntime({
       createContext: () => rejectedContext, nowMs: () => 400, verifyCounterpart: () => false,
+      scheduleVoiceDeadline: () => () => {},
     });
     await rejectedRuntime.activate();
     expect(rejectedRuntime.playVoice(request))
@@ -559,6 +572,7 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
     };
     const faultRuntime = createAudioRuntime({
       createContext: () => faultContext, nowMs: () => 500,
+      scheduleVoiceDeadline: () => () => {},
       verifyCounterpart: () => true,
     });
     await faultRuntime.activate();
@@ -572,6 +586,7 @@ describe('Arc 8 source-authored combat gameplay voice', () => {
     const stopContext = new SynthesisContext();
     const stopRuntime = createAudioRuntime({
       createContext: () => stopContext, nowMs: () => 500,
+      scheduleVoiceDeadline: () => () => {},
       verifyCounterpart: () => true,
     });
     await stopRuntime.activate();

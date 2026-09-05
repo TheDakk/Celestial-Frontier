@@ -80,6 +80,7 @@ import {
   findCandidateSpeciesArtBuildGraph,
 } from './speciesart-build.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { assertBuiltGameMode } from './build-mode.mjs';
 
 export { candidateSpeciesPainterChunkSource } from './speciesart-build.mjs';
 
@@ -447,6 +448,7 @@ function exactInputs(fixture) {
   return Object.freeze(inputs);
 }
 function candidateProducerAuthorityFromDist() {
+  assertBuiltGameMode(distDir, 'evidence');
   const graph = Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html', sha256: hashFile(path.join(distDir, 'index.html')),
@@ -3506,7 +3508,7 @@ async function runGate({ calibrate }) {
       throw new Error('numeric Compendium budget is calibration-required; certification refuses to launch a browser');
     }
     gateStage = 'candidate build';
-    execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+    execSync('npx vite build --mode evidence', { cwd: appDir, stdio: 'inherit' });
     const builtProducer = candidateProducerAuthorityFromDist();
     const candidateSpeciesArt = builtProducer.graph;
     const producerAuthority = builtProducer.authority;

@@ -13,8 +13,8 @@
    · Settings/Compendium/Records · search (code-paste travel) · the shipped
    audio stings · capped COSMIC_EPOCH on an app-owned monotonic session segment.
 
-   Still ahead (recorded in ROADMAP's NEXT): the remaining 15 lessons of the complete 21-step training port,
-   full Atlas chart/favorites presentation, rarity stings, ring↔planet mutual shadows and PROTO star disk.
+   Field Training currently has 15 lesson IDs; a fuller hands-on curriculum remains
+   on the V2 program roadmap. Atlas charting/favorites and rarity stings are live.
    Static deterministic Canvas species portraits and the preserved 43-biome landing vistas are live;
    retained Pixi actors, meshes, and portrait animation remain later work. */
 import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin } from 'pixi.js';
@@ -35,6 +35,7 @@ import {
   registerPanel, fillPanel, openPanel, closePanels, openPanelId,
   createPanelOpenController,
 } from './panels.js';
+import { capturePanelRefillFocus } from './panel-refill-focus.js';
 import {
   CompendiumVirtualList,
   type CompendiumVirtualRow,
@@ -574,7 +575,8 @@ const F4_LEASE_TTL_MS = 10_000;
 const F4_HEARTBEAT_MS = F4_LEASE_TTL_MS / 2;
 const F4_CHECKPOINT_MS = 30_000;
 const F4_OWNER_ID = 'celestial-frontier-game-tab';
-const F4_START_HIDDEN_FOR_SMOKE = typeof (window as unknown as Record<string, unknown>).__cfF4StartHidden === 'function';
+const F4_START_HIDDEN_FOR_SMOKE = __CF_EVIDENCE_BUILD__
+  && typeof (window as unknown as Record<string, unknown>).__cfF4StartHidden === 'function';
 let f4VisibilityOverrideHidden = F4_START_HIDDEN_FOR_SMOKE;
 const f4PageVisible = (): boolean => document.visibilityState === 'visible' && !f4VisibilityOverrideHidden;
 let f4Runtime: F4RuntimeAuthority | null = null;
@@ -710,7 +712,19 @@ let smokeRejectNextF4HeartbeatStorage = false;
 let smokeRejectNextF4RevisionVerification = false;
 let smokeF4LeaseReadCount = 0;
 let smokeF4RevisionReadCount = 0;
-const smokeF4ConvergenceReloadHold = createProductActionDiagnosticHold();
+/* Even an unarmed evidence hold is async. Keep that same await boundary in
+   ordinary play without constructing any armable gate or retained latch. */
+const inactiveEvidenceHold: ReturnType<typeof createProductActionDiagnosticHold> = Object.freeze({
+  arm: () => false,
+  async holdIfArmed(_operation: string): Promise<void> {},
+  release: () => false,
+  diagnostics: () => Object.freeze({
+    schema: 'cf-v2-product-action-hold-diagnostics/v1' as const,
+    phase: 'idle' as const, operation: null, sequence: 0,
+  }),
+});
+const smokeF4ConvergenceReloadHold = __CF_EVIDENCE_BUILD__
+  ? createProductActionDiagnosticHold() : inactiveEvidenceHold;
 let lastF4HeartbeatStorageFault: Readonly<{
   schema: 'cf-v2-f4-heartbeat-storage-fault/v1';
   context: string;
@@ -773,7 +787,8 @@ function scheduleF4AuthorityConvergenceReload(runtime: F4RuntimeAuthority, detai
         }),
       });
       try {
-        const binding = (window as unknown as Record<string, unknown>).__cfF4AuthorityConvergenceWitness;
+        const binding = __CF_EVIDENCE_BUILD__
+          ? (window as unknown as Record<string, unknown>).__cfF4AuthorityConvergenceWitness : undefined;
         if (typeof binding === 'function') {
           (binding as (payload: string) => unknown)(JSON.stringify(witness));
         }
@@ -829,7 +844,7 @@ function handleF4HeartbeatStorageError(
 async function ensureF4RevisionCurrent(runtime: F4RuntimeAuthority): Promise<boolean> {
   try {
     smokeF4RevisionReadCount += 1;
-    if (smokeRejectNextF4RevisionVerification) {
+    if (__CF_EVIDENCE_BUILD__ && smokeRejectNextF4RevisionVerification) {
       smokeRejectNextF4RevisionVerification = false;
       throw new Error('slice-smoke injected F4 revision verification failure');
     }
@@ -882,7 +897,8 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
         throw new Error('product bootstrap candidate is missing');
       }
       if (productBootstrapWasPending) {
-        const rejector = (window as unknown as Record<string, unknown>).__cfRejectArc2ProductBootstrap;
+        const rejector = __CF_EVIDENCE_BUILD__
+          ? (window as unknown as Record<string, unknown>).__cfRejectArc2ProductBootstrap : undefined;
         if (typeof rejector === 'function' && (rejector as (payload: string) => unknown)(JSON.stringify({
           schema: 'cf-v2-arc2-bootstrap-control/v1',
           documentToken: DOCUMENT_TOKEN,
@@ -892,7 +908,8 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
         }
       }
       if (engineeringBootstrapWasPending) {
-        const rejector = (window as unknown as Record<string, unknown>).__cfRejectArc3EngineeringBootstrap;
+        const rejector = __CF_EVIDENCE_BUILD__
+          ? (window as unknown as Record<string, unknown>).__cfRejectArc3EngineeringBootstrap : undefined;
         const payload = JSON.stringify({
           schema: 'cf-v2-arc3-bootstrap-control/v1',
           documentToken: DOCUMENT_TOKEN,
@@ -1318,7 +1335,7 @@ const checkpointAndHideF4 = (): Promise<void> => {
     let visibilityOutcome: string | null = null;
     let visibilityError: string | null = null;
     try {
-      if (smokeRejectNextF4HideCheckpoint) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextF4HideCheckpoint) {
         smokeRejectNextF4HideCheckpoint = false;
         throw new Error('slice-smoke injected F4 hide checkpoint rejection');
       }
@@ -1509,6 +1526,7 @@ type BootPhaseWitness = {
 };
 let bootPhaseSequence = 0;
 function emitBootPhase(stage: BootPhaseStage): void {
+  if (!__CF_EVIDENCE_BUILD__) return;
   const witness: BootPhaseWitness = {
     schema: 'cf-v2-boot-phase/v1', documentToken: DOCUMENT_TOKEN,
     sequence: ++bootPhaseSequence, stage,
@@ -1652,7 +1670,8 @@ function scheduleReplacementReload(
        evidence outside the dying execution context, so a vanished global can
        never masquerade as a replacement page becoming ready. */
     try {
-      const binding = (window as unknown as Record<string, unknown>).__cfReloadReleaseWitness;
+      const binding = __CF_EVIDENCE_BUILD__
+        ? (window as unknown as Record<string, unknown>).__cfReloadReleaseWitness : undefined;
       if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
     } catch { /* evidence harness fails closed when its binding is absent/broken */ }
     try { afterRelease?.(witness); }
@@ -1716,7 +1735,7 @@ let smokeRejectArc5FeedStorageBoundary = false;
 /* Browser-gate one-shot storage faults still cross the production revision
    repository and exact product-action owner. Only the armed action-scoped
    compare-and-apply is rejected; ordinary play delegates byte-for-byte. */
-const persistenceBackend: StorageBackend = {
+const persistenceBackend: StorageBackend = __CF_EVIDENCE_BUILD__ ? {
   get: (store, key) => {
     if (store === 'meta' && key === F3_ACTIVE_PLAY_LEASE_KEY) {
       smokeF4LeaseReadCount++;
@@ -1749,7 +1768,7 @@ const persistenceBackend: StorageBackend = {
   },
   keys: (store) => indexedDBPersistenceBackend.keys(store),
   clear: (stores) => indexedDBPersistenceBackend.clear(stores),
-};
+} : indexedDBPersistenceBackend;
 const repo = createSaveRepository(persistenceBackend);
 const revisionRepo = createRevisionedRepository(persistenceBackend);
 const EMPTY_V5_EXTENSIONS: V5Extensions = Object.freeze({});
@@ -1929,6 +1948,7 @@ let renderedSceneReceipt: RenderedSceneReceipt = Object.freeze({
 });
 let smokeAbortNextRenderBeforeReceipt = false;
 function abortRenderBeforeReceiptForSmoke(): boolean {
+  if (!__CF_EVIDENCE_BUILD__) return false;
   if (!smokeAbortNextRenderBeforeReceipt) return false;
   smokeAbortNextRenderBeforeReceipt = false;
   return true;
@@ -3618,6 +3638,7 @@ function syncBoundedCollectionButtons(
 }
 function fillRecords(): void {
   if (!save) return;
+  const restoreFocus = capturePanelRefillFocus(document.getElementById('recpanel')!, ['data-binder-claim']);
   const st = save.stats || {};
   const rankProjection = projectArc9RecordsRankReadModelV1(save);
   const rank = rankProjection.kind === 'projected'
@@ -3656,6 +3677,7 @@ function fillRecords(): void {
     '[data-binder-claim]',
     arc9BinderClaimPendingId !== null,
   );
+  restoreFocus();
 }
 function frontierEndingPanelStatus(): string | null {
   if (arc9FrontierEndingPending) return 'Saving your Frontier legacy…';
@@ -3688,6 +3710,7 @@ function fillPrimeCodex(): void {
 let arc9AtlasFavoritePendingId: string | null = null;
 function fillAtlas(): void {
   if (!save) return;
+  const restoreFocus = capturePanelRefillFocus(document.getElementById('atlaspanel')!, ['data-atlas-travel', 'data-atlas-favorite']);
   const rows = save.logMap;
   fillPanel('atlas',
     `<h3>Star Atlas <span style="color:#7ec8f0" data-sel="atlas-count">${rows.length}</span></h3>` +
@@ -3709,6 +3732,7 @@ function fillAtlas(): void {
           + `<button type="button" data-atlas-favorite="${esc(id)}" aria-pressed="${favorite}" aria-label="${favoriteLabel}: ${esc(String(e.title || id))}"${favoriteUnavailable ? ' disabled aria-disabled="true"' : ''}>${favorite ? '★ Favorite' : '☆ Favorite'}</button>`
           + '</div></div>';
       }).join('')));
+  restoreFocus();
 }
 document.getElementById('atlaspanel')!.addEventListener('click', async (e) => {
   if (!save || !(e.target instanceof Element)) return;
@@ -3741,6 +3765,7 @@ document.getElementById('atlaspanel')!.addEventListener('click', async (e) => {
    only real v2 actions; never render the unported canonical copy directly. */
 function fillCharters(): void {
   if (!save) return;
+  const restoreFocus = capturePanelRefillFocus(document.getElementById('chpanel')!, ['data-starter-charter-accept']);
   const projection = projectV2Charter(save.ascCh, save.ascProg, ascStage());
   const chapter = !projection
     ? '<div class="centry" data-sel="charter-ch" data-chstate="complete">' +
@@ -3775,6 +3800,7 @@ function fillCharters(): void {
     starterProjection.kind !== 'projected'
       || starterProjection.board.acceptedCount >= starterProjection.board.cap,
   );
+  restoreFocus();
 }
 registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
 document.getElementById('chpanel')!.addEventListener('click', (event) => {
@@ -4315,7 +4341,8 @@ async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<stri
     };
     lastImportPhaseWitness = witness;
     try {
-      const binding = (window as unknown as Record<string, unknown>).__cfImportPhaseWitness;
+      const binding = __CF_EVIDENCE_BUILD__
+        ? (window as unknown as Record<string, unknown>).__cfImportPhaseWitness : undefined;
       if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
     } catch { /* optional evidence is fail-closed in the harness */ }
   };
@@ -7147,7 +7174,7 @@ async function doLand(): Promise<boolean> {
     }
     const priorUnlocked = save.unlocked;
     const priorBestRank = save.stats.bestRank ?? 0;
-    const faultInjection = smokeRejectNextArc0LandingStorage
+    const faultInjection = !__CF_EVIDENCE_BUILD__ ? null : smokeRejectNextArc0LandingStorage
       ? 'storage-failure'
       : smokeStaleNextArc0LandingAuthority
         ? 'stale-authority'
@@ -7240,7 +7267,7 @@ async function doLand(): Promise<boolean> {
     }
 
     try {
-      if (smokeRejectNextArc0LandingPublication) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc0LandingPublication) {
         smokeRejectNextArc0LandingPublication = false;
         lastSmokeArc0LandingFaultWitness = Object.freeze({
           schema: 'cf-v2-arc0-landing-fault-witness/v1',
@@ -8487,26 +8514,35 @@ async function persistView(
   heartbeatCycleOwner: typeof F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER | null = null,
   lifecycleCheckpointOwner: typeof F4_LIFECYCLE_CHECKPOINT_OWNER | null = null,
 ): Promise<boolean> {
-  if (namedSearchPersistenceHeld && replacementOwner === null
-    && intent === 'ordinary' && heartbeatCycleOwner === null
-    && lifecycleCheckpointOwner !== F4_LIFECYCLE_CHECKPOINT_OWNER) {
-    /* An ordinary checkpoint (including a settings debounce) that fires while
-       an accepted custom name is settling must
-       not become the activePersist tail that self-refuses its immediately
-       submitted route. The route transaction persists the joined successor;
-       re-arm one ordinary checkpoint afterward for any unrelated live field. */
-    namedSearchPersistenceDeferred = true;
-    return false;
-  }
-  if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
-    || !f4RuntimeMayMutate() || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
+  const admitted = (): boolean => {
+    if (namedSearchPersistenceHeld && replacementOwner === null
+      && intent === 'ordinary' && heartbeatCycleOwner === null
+      && lifecycleCheckpointOwner !== F4_LIFECYCLE_CHECKPOINT_OWNER) {
+      /* An ordinary checkpoint (including a settings debounce) that fires while
+         an accepted custom name is settling must
+         not become the activePersist tail that self-refuses its immediately
+         submitted route. The route transaction persists the joined successor;
+         re-arm one ordinary checkpoint afterward for any unrelated live field. */
+      namedSearchPersistenceDeferred = true;
+      return false;
+    }
+    if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
+      || !f4RuntimeMayMutate() || (replacementTransaction && replacementTransaction !== replacementOwner)
+      || (replacementOwner !== null && replacementTransaction !== replacementOwner)) return false;
+    return true;
+  };
+  if (!admitted()) return false;
   const write = async (): Promise<boolean> => {
     let epochStage: EcologyEpochStage | null = null;
     let durable = false;
     try {
+      // A queued predecessor may have handed authority to Import or Training.
+      if (!admitted()) return false;
       if (heartbeatCycleOwner !== F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER) {
         await settleF4Heartbeat();
       }
+      // No candidate/stage may be built from admission that predates an await.
+      if (!admitted()) return false;
       const runtime = f4Runtime;
       if (!f4RuntimeMayMutate(runtime)) return false;
       const staged = ecologyEpochAuthority.stage(ecologyActivePlayNow(), intent);
@@ -8533,7 +8569,7 @@ async function persistView(
         throw new Error(`receipt-free checkpoint projection refused (${projection.detail})`);
       }
       const candidate = projection.state;
-      if (smokeRejectNextPersist) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextPersist) {
         /* Browser evidence needs a deterministic storage-rejection outcome;
            this diagnostics-only latch enters the same pre-durable branch as
            an IndexedDB failure without changing ordinary repository behavior. */
@@ -8577,7 +8613,7 @@ async function persistView(
       }
       if (epochStage !== null) ecologyEpochAuthority.reject(epochStage);
       lastEcologyEdgeOutcome = `${intent}:rejected`;
-      if (!(error instanceof Error && error.message === 'slice-smoke injected persistence rejection')) {
+      if (!(__CF_EVIDENCE_BUILD__ && error instanceof Error && error.message === 'slice-smoke injected persistence rejection')) {
         if (runtime) scheduleF4AuthorityConvergenceReload(
           runtime,
           `save attempt rejected (${error instanceof Error ? error.message : String(error)}); reload required`,
@@ -8784,7 +8820,8 @@ function smokeResumeSettingsPersistence(): Readonly<{
   });
 }
 const productActionCoordinator = createProductActionCoordinator();
-const smokeProductActionHold = createProductActionDiagnosticHold();
+const smokeProductActionHold = __CF_EVIDENCE_BUILD__
+  ? createProductActionDiagnosticHold() : inactiveEvidenceHold;
 let arc9ProgressionRefreshQueued = false;
 let lastArc9ProgressionOutcome: string | null = null;
 let arc9ExplorerNameEditing = false;
@@ -9582,9 +9619,6 @@ async function runArc9AtlasFavoriteChange(
     if (activePersist === actionBarrier) activePersist = null;
     if (openPanelId() === 'atlas') {
       fillAtlas();
-      document.querySelector<HTMLElement>(
-        `#atlaspanel [data-atlas-favorite="${CSS.escape(atlasId)}"]`,
-      )?.focus();
     }
   }
 }
@@ -10603,7 +10637,7 @@ async function commitArc3EngineeringAction(spec: Readonly<{
     const codecNow = Date.now();
     const priorSessionRng = runtime.sessionRng;
     const plannedHolder: { value: Arc3AppDerivation | null } = { value: null };
-    const faultInjection = smokeRejectNextArc3ActionStorage
+    const faultInjection = !__CF_EVIDENCE_BUILD__ ? null : smokeRejectNextArc3ActionStorage
       ? 'storage-failure'
       : smokeStaleNextArc3ActionAuthority
         ? 'stale-authority'
@@ -10718,7 +10752,7 @@ async function commitArc3EngineeringAction(spec: Readonly<{
         || JSON.stringify(outcome.state) !== JSON.stringify(outcome.saved.canonicalState)) {
         throw new Error('Arc 3 runtime did not retain its exact durable checkpoint');
       }
-      if (smokeRejectNextArc3Publication) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc3Publication) {
         smokeRejectNextArc3Publication = false;
         lastSmokeArc3ActionFaultWitness = Object.freeze({
           schema: 'cf-v2-arc3-action-fault-witness/v1',
@@ -11028,7 +11062,7 @@ async function commitCompendiumFeedAction(
       return unavailable('ownership-authority-changed');
     }
 
-    const faultInjection = smokeRejectNextArc5FeedStorage
+    const faultInjection = !__CF_EVIDENCE_BUILD__ ? null : smokeRejectNextArc5FeedStorage
       ? 'storage-failure'
       : smokeStaleNextArc5FeedAuthority ? 'stale-authority' : null;
     if (faultInjection === 'storage-failure') smokeRejectNextArc5FeedStorage = false;
@@ -11122,7 +11156,7 @@ async function commitCompendiumFeedAction(
     }
 
     try {
-      if (smokeRejectNextArc5FeedPublication) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc5FeedPublication) {
         smokeRejectNextArc5FeedPublication = false;
         lastSmokeArc5FeedFaultWitness = Object.freeze({
           schema: 'cf-v2-arc5-feed-fault-witness/v1',
@@ -12562,7 +12596,7 @@ async function commitArc4CaptureAction(
     if (!rosterResult.ok) {
       return unavailable(`world-roster:${rosterResult.reason}`, verb);
     }
-    const faultInjection = smokeRejectNextArc4ActionStorage
+    const faultInjection = !__CF_EVIDENCE_BUILD__ ? null : smokeRejectNextArc4ActionStorage
       ? 'storage-failure'
       : smokeStaleNextArc4ActionAuthority
         ? 'stale-authority'
@@ -12679,7 +12713,7 @@ async function commitArc4CaptureAction(
     }
 
     try {
-      if (smokeRejectNextArc4Publication) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc4Publication) {
         smokeRejectNextArc4Publication = false;
         lastSmokeArc4ActionFaultWitness = Object.freeze({
           schema: 'cf-v2-arc4-action-fault-witness/v1',
@@ -14255,7 +14289,8 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     };
     lastTrainingRestoreWitness = witness;
     try {
-      const binding = (window as unknown as Record<string, unknown>).__cfTrainingRestoreWitness;
+      const binding = __CF_EVIDENCE_BUILD__
+        ? (window as unknown as Record<string, unknown>).__cfTrainingRestoreWitness : undefined;
       if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
     } catch { /* optional diagnostics are fail-closed in the browser harness */ }
   };
@@ -14303,7 +14338,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     let legacyGearRestored = false;
 
     if (checkpoint.kind === 'current-view') {
-      const restored = smokeRejectNextTrainingRouteResolution
+      const restored = __CF_EVIDENCE_BUILD__ && smokeRejectNextTrainingRouteResolution
         ? (smokeRejectNextTrainingRouteResolution = false,
             { ok: false as const, reason: 'source-error' as const })
         : resolveViewToNav(checkpoint.view);
@@ -14329,7 +14364,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
         candidate.tutSnapPending = null;
       }
     } else if (checkpoint.kind === 'legacy-v1') {
-      const earth = smokeRejectNextTrainingRouteResolution
+      const earth = __CF_EVIDENCE_BUILD__ && smokeRejectNextTrainingRouteResolution
         ? (smokeRejectNextTrainingRouteResolution = false,
             { ok: false as const, reason: 'source-error' as const })
         : searchTravel.trainingEarthSurfaceNav();
@@ -14380,7 +14415,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     }
     candidate.EPOCH_BASE = epoch;
 
-    const prepared = smokeRejectNextTrainingCandidateProof
+    const prepared = __CF_EVIDENCE_BUILD__ && smokeRejectNextTrainingCandidateProof
       ? (smokeRejectNextTrainingCandidateProof = false, null)
       : prepareTrainingCandidate(candidate, now, expectedEarthKey);
     if (!prepared) {
@@ -14434,7 +14469,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     writeStarted = true;
     let trainingCommittedState: SaveStateV2 | null = null;
     const write = (async (): Promise<boolean> => {
-      if (smokeRejectNextTrainingCommit) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextTrainingCommit) {
         smokeRejectNextTrainingCommit = false;
         throw new Error('slice-smoke injected Training commit rejection');
       }
@@ -14473,7 +14508,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
 
     /* Publish only after durability. All route proof is bound to the final
        import's exact objects; the global descriptor seam keeps its one Map. */
-    if (smokeRejectNextTrainingPublish) {
+    if (__CF_EVIDENCE_BUILD__ && smokeRejectNextTrainingPublish) {
       smokeRejectNextTrainingPublish = false;
       throw new Error('slice-smoke injected post-durable Training publication failure');
     }
@@ -14636,6 +14671,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
 
 const F4_FRESH_RACE_RELEASE_KEY = 'cf_slice_f4_fresh_race_release';
 async function awaitSmokeFreshInitializationRaceGate(): Promise<void> {
+  if (!__CF_EVIDENCE_BUILD__) return;
   /* Optional native-browser ordering seam. Runtime.addBinding exists before
      module evaluation, so two genuinely empty documents can both finish the
      stable absence read before either enters the production initializer. */
@@ -15697,6 +15733,7 @@ async function loadSave(): Promise<void> {
   /* diagnostics handle for tools/slicesmoke.mjs — a WebGL canvas reads BLACK
      through 2D drawImage without preserveDrawingBuffer, so the smoke asks
      Pixi's extract (which re-renders) instead of scraping the canvas */
+  if (__CF_EVIDENCE_BUILD__) {
   (window as unknown as Record<string, unknown>).__CF_SLICE__ = {
     documentToken: DOCUMENT_TOKEN,   /* reload/import waits must reject the prior document's still-live handle */
     app, world, cam, camT,   /* camT drives the zoom-transition smoke leg */
@@ -16274,6 +16311,7 @@ async function loadSave(): Promise<void> {
       },
     },
   };
+  }
   emitBootPhase('slice-published');
   /* the CMB band-pick (main.js ringPick): a tap on EMPTY space near the
      observable-universe ring — and only there — opens the origin card */
@@ -16592,7 +16630,8 @@ async function loadSave(): Promise<void> {
            animation frame, and this serviced task boundary. */
         speciesArtLoader.activate();
         try {
-          const binding = (window as unknown as Record<string, unknown>).__cfSliceReadyWitness;
+          const binding = __CF_EVIDENCE_BUILD__
+            ? (window as unknown as Record<string, unknown>).__cfSliceReadyWitness : undefined;
           if (typeof binding !== 'function') return;
           const backdropBackingWidth = activeBackdropCanvas?.width ?? 0;
           const backdropBackingHeight = activeBackdropCanvas?.height ?? 0;

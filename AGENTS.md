@@ -60,6 +60,14 @@ OpenAI/Codex or Anthropic/Claude resume without relying on chat or app-private c
 - `original/celestial-frontier-v1.0.html` — pristine pre-refactor build (the determinism baseline was captured from it).
 
 ## Hard rules
+**Version scope (matches code as of 2026-09-04):** legacy HTML/`main.js`, `HARVEST_CD`,
+the v1 save key and consumed-breeding-parent descriptions below refer to production **v1.8.9**.
+V2 uses its versioned persistence/active-play owners and **nonlethal individual-parent breeding
+with recovery**, per `port/DECISIONS.md` and `BREEDING_AND_SHARING.md`. Do not port a v1 invariant
+back over an approved v2 change. Shared determinism, protected-save, exact-outcome, mobile-first,
+documentation and authorization rules still apply to both. The original fourteen Phase-0 facades
+are a completed milestone, not the current total package count.
+
 1. **Never break determinism.** All world/genome/descriptor content derives from seeds (`mulberry32`, `hashInt`, `cellRng`). No `Math.random()` / `Date.now()` in anything that feeds generation, or share codes and cross-device parity break.
 2. **Edit by exact, unique string match only.** Verify match count before writing; a bad match must never silently corrupt the file. Work on a copy, not in place.
 3. **Encoding caution:** the source mixes literal `\uXXXX` escape text in JS strings with real UTF-8 chars (—, ·, ❤, emoji). When a match fails, inspect true bytes (`cat -A`) before retrying. Prefer HTML entities in static markup.

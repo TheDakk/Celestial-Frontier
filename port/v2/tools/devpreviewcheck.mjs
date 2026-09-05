@@ -13,6 +13,7 @@ import { openChromiumCdp } from './browsercdp.mjs';
 import { findChromiumBrowser } from './browserpath.mjs';
 import { verifyPackage } from './devpreview.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { developmentPreviewReadiness } from './devpreview-readiness.mjs';
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const DEV_PREVIEW_CDP_COMMAND_TIMEOUT_MS = 30_000;
@@ -297,13 +298,7 @@ try {
     try {
       const result = await browser.send('Runtime.evaluate', {
         expression: `(()=>{ try {
-          const dev=window.__CF_DEV_PREVIEW__, slice=window.__CF_SLICE__;
-          const state=slice?.api?.state?.();
-          return {ready:!!dev&&!!state&&!!document.querySelector('canvas'),dev,state:state?{mode:state.mode}:null,
-            badge:!!document.getElementById('cf-dev-preview-banner'),
-            legacyBadge:!!document.getElementById('cf-development-site-banner'),
-            badgeStyle:!!document.querySelector('[data-cf-dev-banner-style]'),
-            blocked:document.documentElement.dataset.cfPreviewBlocked||null};
+          return (${developmentPreviewReadiness.toString()})(document,window);
         } catch(error){ return {ready:false,why:String(error&&error.message||error)}; } })()`,
         returnByValue: true,
       }, session);
@@ -328,8 +323,38 @@ try {
   if (outcome.badge || outcome.legacyBadge || outcome.badgeStyle) {
     throw new Error(`development identity escaped the Guide into a corner badge (${JSON.stringify({ badge: outcome.badge, legacyBadge: outcome.legacyBadge, badgeStyle: outcome.badgeStyle })})`);
   }
+  // A fresh disposable profile begins in Field Training. Exercise its real
+  // durable Skip action once; never remove inert or call a diagnostic bypass.
+  if (outcome.training) {
+    const skip = await browser.send('Runtime.evaluate', {
+      expression: `(()=>{ const button=document.querySelector('[data-sel="tutskip"]');
+        if(!button || button.disabled || button.closest('[hidden],[inert]')) return false;
+        button.click(); return true; })()`, returnByValue: true,
+    }, session);
+    if (skip.exceptionDetails || skip.result.value !== true) {
+      throw new Error('packaged Training did not expose its ordinary Skip action');
+    }
+    const trainingDeadline = Date.now() + 10000;
+    let training = null;
+    while (Date.now() < trainingDeadline) {
+      const result = await browser.send('Runtime.evaluate', {
+        expression: `(()=>{ const guide=document.getElementById('dockguide'); return {
+          complete: !document.body.classList.contains('training')
+            && !document.querySelector('[data-sel="tutskip"]') && !!guide && !guide.disabled
+            && !guide.closest('[inert]'),
+          status: document.querySelector('[data-sel="tutstatus"]')?.textContent||null
+        }; })()`, returnByValue: true,
+      }, session);
+      if (!result.exceptionDetails) training = result.result.value;
+      if (training?.complete) break;
+      await sleep(50);
+    }
+    if (!training?.complete) {
+      throw new Error(`packaged Training Skip did not durably restore ordinary controls (${JSON.stringify(training)})`);
+    }
+  }
   const opened = await browser.send('Runtime.evaluate', {
-    expression: `(()=>{ const button=document.getElementById('dockguide'); if(!button) return false; button.click(); return true; })()`,
+    expression: `(()=>{ const button=document.getElementById('dockguide'); if(!button || button.disabled || button.closest('[inert]')) return false; button.click(); return true; })()`,
     returnByValue: true,
   }, session);
   if (opened.exceptionDetails || opened.result.value !== true) {
@@ -358,7 +383,7 @@ try {
   if (errors.length) throw new Error(`packaged app emitted ${errors.length} console error(s): ${JSON.stringify(errors[0].params).slice(0, 400)}`);
   console.log(`DEV PREVIEW BROWSER CHECK: PASS — ${manifest.source.commit}`);
   console.log(`  browser ${browser.browser.product}; executable ${browser.browser.executable}`);
-  console.log(`  loopback boot mode ${outcome.state.mode}; no corner badge; Guide identity ${guideIdentity.text.trim()}`);
+  console.log(`  loopback rendered trail ${outcome.trail}; distributable without diagnostic API; no corner badge; Guide identity ${guideIdentity.text.trim()}`);
   console.log(`  expected remote origin ${manifest.expectedOrigin}; publishable ${String(manifest.publishable)}`);
 } catch (error) {
   exitCode = 1;

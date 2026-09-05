@@ -187,6 +187,7 @@ describe('Arc 7 distant-ecology generic voice request owner', () => {
       concurrencyGroup: 'distant-ecology',
       maxConcurrent: 1,
       nodeCount: 2,
+      maxDurationMs: expect.any(Number),
       mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
       meaning: { kind: 'meaningful', counterpart: input.counterpart },
     });
@@ -222,6 +223,10 @@ describe('Arc 7 distant-ecology generic voice request owner', () => {
     expect(firstContext.oscillators[0]!.startWhens).toEqual([undefined]);
     expect(firstContext.oscillators[0]!.stopWhens).toEqual(secondContext.oscillators[0]!.stopWhens);
     expect(firstContext.oscillators[0]!.stopWhens[0]).toBeGreaterThan(firstContext.currentTime);
+    const finalStopMs = (firstContext.oscillators[0]!.stopWhens[0]! - firstContext.currentTime) * 1_000;
+    expect(Number.isSafeInteger(first.maxDurationMs)).toBe(true);
+    expect(first.maxDurationMs! - finalStopMs).toBeGreaterThanOrEqual(249.999);
+    expect(first.maxDurationMs! - finalStopMs).toBeLessThan(251.001);
 
     const changed = createDistantEcologyVoiceRequest(pipeline('pertar'));
     const changedContext = new SynthesisContext();
@@ -327,6 +332,7 @@ describe('Arc 7 distant-ecology generic voice request owner', () => {
     const runtime = createAudioRuntime({
       createContext: () => context,
       nowMs: () => 200,
+      scheduleVoiceDeadline: () => () => {},
       verifyCounterpart: (receipt: AudioCounterpartReceipt) =>
         receipt.counterpartKey === input.counterpart.counterpartKey
         && receipt.eventKey === input.counterpart.eventKey
@@ -363,6 +369,7 @@ describe('Arc 7 distant-ecology generic voice request owner', () => {
     const rejectedRuntime = createAudioRuntime({
       createContext: () => rejectedContext,
       nowMs: () => 200,
+      scheduleVoiceDeadline: () => () => {},
       verifyCounterpart: () => false,
     });
     await rejectedRuntime.activate();
