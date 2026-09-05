@@ -19,6 +19,13 @@ Their exact-source develop profile is now green; see
 PR; WIP remains parked. The faster-lane coverage decision is selected below; Claude implements
 it. No hosted attempts, labels, merge or release are authorized.
 
+**Subsequent PR36 reconciliation:** the original three signed batches now have a merge descendant
+`121df53d0d101822f32f2ca98a878db10518e65d`, combining landed `0cad14d…` with `8bf9c45…` without
+rebasing. It is pushed in [draft PR #37](https://github.com/TheDakk/Celestial-Frontier/pull/37).
+Fresh exact-source develop and 79-control Actions policy selftest pass. No labels are applied;
+the fixed-four-branch authorization guard still rejects the named review branch. See the current
+overlay in `PARKED_BATCHES_1_3_PR_PREPARATION_20260904.md`. Batch 4/WIP remain excluded.
+
 This is a finding/evidence ledger, not a replacement roadmap.
 Product scope and acceptance remain in `../port/V2_PROGRAM_ROADMAP.md`, `../port/DECISIONS.md`
 and `../port/RUBRICS.md`. Current batch state is in `../ROADMAP.md`.
