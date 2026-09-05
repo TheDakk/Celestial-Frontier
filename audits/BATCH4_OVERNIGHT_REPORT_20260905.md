@@ -7,8 +7,8 @@ This is a live checkpoint report, not final acceptance. Base develop:
 
 | Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
 | --- | --- | --- | --- | --- |
-| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | Documentation checkpoint push follows; previous backup 07:13:39 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
-| 2a accepted st-scan | Pending | — | — | — |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
 | 2b descent/wave-offs | Pending | — | — | — |
 | 2c 50-Paragon hunt | Pending | — | — | — |
 | 2d exact-instance progression | Pending | — | — | — |
@@ -1190,4 +1190,145 @@ parked. Commit this source for unchanged-source Slice and both phone checks befo
     "sha256": "0ec5f517906b5a5ac66c9ea0b7eef92231b57846240cf10c60b85fb232241354"
   }
 ]
+```
+
+## Checkpoint 2a accepted — source 4a82f161da2a7b3c4a029421d8a16c23fc62955d
+
+The accepted st-scan Starter Charter now completes only from a later explicit Discover Life,
+settling its authored 15 current/lifetime Stardust and one Earpiece in that Bioscan's single
+F4 receipt/CAS. Earlier Survey, Capture and landfall never substitute. Existing inventory
+publication, empty-slot equip, capacity, stale-tab and failed-write boundaries remain exact.
+Guide, Training, all eight current overlays and six current-reference statements agree;
+dated historical carriers remain verbatim. Weekly lifecycle stays parked. Two source-review
+Paragon validation gaps and fractional-XP progression compatibility are prepared as bounded
+later-step fixes; they are not integrated or claimed tested at this checkpoint.
+
+Fast PASS: **286 files / 2,980 passed / 1 skipped**. Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures. This reporting successor changes only
+documentation; source-bound browser evidence names the preceding implementation commit exactly.
+Phone reports are local Edge targeted diagnostics, not a twelve-row certificate or named Chrome
+verifier proof. No hosted attempt occurred.
+
+```json
+{
+  "source": "4a82f161da2a7b3c4a029421d8a16c23fc62955d",
+  "fast": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 2.341,
+      "log": "1-npm.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "seconds": 1.343,
+      "log": "2-npm.log",
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "--maxWorkers=4"
+      ],
+      "exitCode": 0,
+      "seconds": 59.956,
+      "log": "3-npx.log",
+      "sha256": "0ec5f517906b5a5ac66c9ea0b7eef92231b57846240cf10c60b85fb232241354"
+    }
+  ],
+  "browser": [
+    {
+      "command": [
+        "node",
+        "tools/slicesmoke.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 0,
+      "seconds": 369.674,
+      "log": "1-node.log",
+      "sha256": "876615679f8a495cd13c9f59155b1c3e5765341dadf3e92bcd2d0f2e43b849c7"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=small-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 15.652,
+      "log": "2-node.log",
+      "sha256": "009a998653e61ae196cdbcb516486760990ef858e7c6c453c36cb1ef7607d0b1"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=large-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 15.871,
+      "log": "3-node.log",
+      "sha256": "1a8d17989deab1cbf82a0dc17ab3083ad96131c85a9d75fccfef4d05b8ba4757"
+    }
+  ],
+  "phones": [
+    {
+      "id": "20260905084458232-43718-e61972a6c183",
+      "source": "4a82f161da2a7b3c4a029421d8a16c23fc62955d",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905084458232-43718-e61972a6c183.json"
+    },
+    {
+      "id": "20260905084514360-43868-d2601441f645",
+      "source": "4a82f161da2a7b3c4a029421d8a16c23fc62955d",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905084514360-43868-d2601441f645.json"
+    }
+  ]
+}
 ```

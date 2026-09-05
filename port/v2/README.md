@@ -3074,7 +3074,10 @@ each source-proven world beyond Sol banks that world's one Chapter 2 life-discov
 same transaction; misses, Sol, later successes on that world, stale tabs and failed writes bank
 nothing. Explicit Discover Life separately owns the exact living-world Survey record and one
 nonlethal hazard receipt (`bioscan-action.ts`); it catalogues no species and spends no Yield at this
-core checkpoint. Accepted st-scan and weekly bioscan completion remain separate, protected owners. The same current manual
+2a checkpoint. If st-scan was accepted before that explicit Bioscan, the same receipt completes the
+Starter Charter and grants its authored 15 current/lifetime Stardust and exact Earpiece. Earlier
+Survey records, Capture and landfall never substitute or backfill it. Weekly bioscan completion
+remains protected. The same current manual
 now documents Breed's +2/+5 XP rules, two-chain Starter acceptance/rewards, Binder's six pages and
 seven claims, postcommit progression ceremonies, the complete nine-row Prime Codex and its five
 ending choices without presenting protected weeklies, Paragons or later prestige as live.
