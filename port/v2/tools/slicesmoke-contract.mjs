@@ -3523,7 +3523,7 @@ const ARC0_LANDING_FAULT_ARM_KEYS = Object.freeze([
    projection. An empty or partially renamed fault map must not pass merely
    because every value that happens to remain is false, and a diagnostic hold
    from an earlier action is not an idle predecessor. */
-export function arc0LandingCoordinatorIsIdle(state, { clearFault = false } = {}) {
+export function arc0LandingCoordinatorIsIdle(state, { clearFault = false, expectedReleasedHold = null } = {}) {
   const landing = state?.landing;
   const coordinator = landing?.actionCoordinator;
   const owner = coordinator?.owner;
@@ -3540,7 +3540,14 @@ export function arc0LandingCoordinatorIsIdle(state, { clearFault = false } = {})
     && owner.busy === false && owner.operation === null
     && exactKeys(hold, ['schema', 'phase', 'operation', 'sequence'])
     && hold.schema === 'cf-v2-product-action-hold-diagnostics/v1'
-    && hold.phase === 'idle' && hold.operation === null && hold.sequence === 0
+    && (expectedReleasedHold === null
+      ? hold.phase === 'idle' && hold.operation === null && hold.sequence === 0
+      : exactKeys(expectedReleasedHold, ['schema', 'phase', 'operation', 'sequence'])
+        && expectedReleasedHold.schema === 'cf-v2-product-action-hold-diagnostics/v1'
+        && expectedReleasedHold.phase === 'released'
+        && /^arc0\.land:[0-9a-f]{64}$/u.test(expectedReleasedHold.operation)
+        && safeInt(expectedReleasedHold.sequence) && expectedReleasedHold.sequence > 0
+        && exactJson(hold, expectedReleasedHold))
     && exactKeys(faultArmed, ARC0_LANDING_FAULT_ARM_KEYS)
     && ARC0_LANDING_FAULT_ARM_KEYS.every((key) => faultArmed[key] === false)
     && (!clearFault || coordinator.lastFault === null);
@@ -4146,6 +4153,7 @@ export function assessSingleF4ActionCommit({
   state = null,
   expectedKind,
   expectedPersistenceLastOutcome,
+  expectedReleasedHold = null,
 } = {}) {
   if (!nonEmptyString(expectedKind) || !nonEmptyString(expectedPersistenceLastOutcome)) {
     throw new TypeError('single F4 action commit requires exact receipt kind and persistence outcome');
@@ -4222,9 +4230,9 @@ export function assessSingleF4ActionCommit({
   }
   add('exact persistence outcome', settledState?.persistence?.lastOutcome
     === expectedPersistenceLastOutcome);
-  add('idle clear landing action coordinator', arc0LandingCoordinatorIsIdle(
-    settledState, { clearFault: true },
-  ));
+  add('idle clear landing action coordinator',
+    (expectedReleasedHold === null || expectedKind === 'arc0-land')
+      && arc0LandingCoordinatorIsIdle(settledState, { clearFault: true, expectedReleasedHold }));
   return { ok: reasons.length === 0, reasons };
 }
 

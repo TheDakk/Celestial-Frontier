@@ -258,8 +258,8 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
         : JSON.stringify(value);
     const hash = (kind: string, value: any) => createHash('sha256')
       .update(`arc0-landing:${kind}:v1\u0000${canonical(value)}`).digest('hex');
-    const assess = Function('canonicalJson', 'createHash', 'assessSingleF4ActionCommit', 'COLLISION_REACH_WORLDS',
-      `${owner}\nreturn assessBoundedDescentWaveOff;`)(canonical, createHash, assessSingleF4ActionCommit, [
+    const assess = Function('canonicalJson', 'createHash', 'assessSingleF4ActionCommit', 'arc0LandingCoordinatorIsIdle', 'COLLISION_REACH_WORLDS',
+      `${owner}\nreturn assessBoundedDescentWaveOff;`)(canonical, createHash, assessSingleF4ActionCommit, arc0LandingCoordinatorIsIdle, [
         { name: 'Twin Reach Alpha', key: 'CF1|g:350410949@-7896.51,-370.06|s:127200472@-119.83,75.99|p:1349616177#0' },
         { name: 'Twin Reach Beta', key: 'CF1|g:350410949@-7896.51,-370.06|s:127200472@167.56,-36.82|p:1349616177#0' },
       ]);
@@ -284,8 +284,8 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       const afterState: any = { ...structuredClone(route), persistence: { lastOutcome: 'arc0-land-committed:8', runtime: {
         schema: 'cf-v2-f4-runtime/v1', revision: 8, commits: 6, sessionSeed: 10, sessionOrdinal: 4,
         sessionDraws: { 'descent.success': 1, 'descent.damage': 1 } } } };
-      const beforeLegacy = { hp: 55, wvo: [[901, 3], [902, 5]], land: [133], ess: 7, view: { type: 'system' } };
-      const afterLegacy = { ...structuredClone(beforeLegacy), hp: 53, wvo: [[131, 1], [901, 3], [902, 5]] };
+      const beforeLegacy = { hp: 55, at: 1_000, wvo: [[901, 3], [902, 5]], land: [133], ess: 7, view: { type: 'system' } };
+      const afterLegacy = { ...structuredClone(beforeLegacy), hp: 53, at: 1_100, wvo: [[131, 1], [901, 3], [902, 5]] };
       const waveOffs = { schema: 'cf-v2-descent-wave-offs/v1', version: 1,
         records: [[worldKey, 1]], unresolved: [[901, 3], [902, 5]] };
       const facts: any = {
@@ -323,7 +323,7 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       const raw = (authority: any, legacy: any, learned: boolean) => ({
         revision: authority.raw.revision, legacyRaw: JSON.stringify(legacy), legacy,
         authority: { sessionRng: { seed: authority.raw.seed, ordinal: authority.raw.ordinal, draws: authority.raw.draws } },
-        playerRow: { data: { hp: legacy.hp, ess: legacy.ess }, extensions: { 'f4.authority': { version: 1, json: 'fixture' } } },
+        playerRow: { data: { hp: legacy.hp, at: legacy.at, ess: legacy.ess }, extensions: { 'f4.authority': { version: 1, json: 'fixture' } } },
         catalogRow: { data: { wvo: legacy.wvo, land: legacy.land }, extensions: learned
           ? { 'descent.wave-offs': { version: 1, json: JSON.stringify(waveOffs) } } : {} },
         creaturesRaw: '{"data":[]}', inventoryRaw: '{"data":[]}', settingsRaw: '{"volume":1}',
@@ -412,6 +412,63 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       expect(assess(wrongExactWorld).ok, `${title} identical leaf seed is insufficient`).toBe(false);
       expect(assess(value).ok, `${title} restored exact address`).toBe(true);
     }
+    const heldFixture = () => {
+      const value: any = fixture();
+      value.beforeState.persistence.documentToken = value.beforeAuthority.token;
+      const held = structuredClone(value.beforeState);
+      const hold = { schema: 'cf-v2-product-action-hold-diagnostics/v1', phase: 'holding',
+        operation: `arc0.land:${'a'.repeat(64)}`, sequence: 1 };
+      held.landing.actionCoordinator = { ...held.landing.actionCoordinator, inFlight: true,
+        owner: { schema: 'cf-v2-product-action-coordinator-diagnostics/v1', busy: true, operation: hold.operation }, hold };
+      value.landingHoldProof = { held, protectedState: structuredClone(held), released: true };
+      value.afterState.landing.actionCoordinator.hold = { ...hold, phase: 'released' };
+      return value;
+    };
+    expect(assess(heldFixture()).ok).toBe(true);
+    const noProof = heldFixture(); delete noProof.landingHoldProof;
+    expect(assess(noProof).ok, 'released hold remains rejected by default').toBe(false);
+    expect(arc0LandingCoordinatorIsIdle(heldFixture().afterState, { clearFault: true })).toBe(false);
+    for (const [name, mutate] of [
+      ['wrong operation', (v: any) => { v.afterState.landing.actionCoordinator.hold.operation = `arc0.land:${'b'.repeat(64)}`; }],
+      ['wrong sequence', (v: any) => { v.afterState.landing.actionCoordinator.hold.sequence = 2; }],
+      ['still holding', (v: any) => { v.afterState.landing.actionCoordinator.hold.phase = 'holding'; }],
+      ['missing held', (v: any) => { delete v.landingHoldProof.held; }],
+      ['missing protected', (v: any) => { delete v.landingHoldProof.protectedState; }],
+      ['missing release', (v: any) => { delete v.landingHoldProof.released; }],
+      ['failed release', (v: any) => { v.landingHoldProof.released = false; }],
+      ['protected mismatch', (v: any) => { v.landingHoldProof.protectedState.landing.actionCoordinator.hold.sequence = 2; }],
+      ['held wrong operation', (v: any) => { v.landingHoldProof.held.landing.actionCoordinator.hold.operation = `arc0.land:${'b'.repeat(64)}`; }],
+      ['held wrong document', (v: any) => { v.landingHoldProof.held.persistence.documentToken = 'wrong-document'; }],
+      ['protected wrong authority', (v: any) => { v.landingHoldProof.protectedState.persistence.runtime.sessionOrdinal += 1; }],
+      ['still in flight', (v: any) => { v.afterState.landing.actionCoordinator.inFlight = true; }],
+      ['held reward changed', (v: any) => { v.afterRaw.playerRow.data.ess += 1; }],
+    ] as const) {
+      const value = heldFixture(); mutate(value);
+      expect(assess(value).ok, name).toBe(false);
+      expect(assess(heldFixture()).ok, `${name} restored`).toBe(true);
+    }
+    for (const [name, mutate] of [
+      ['missing timestamp', (v: any) => { delete v.afterRaw.legacy.at; }],
+      ['fractional timestamp', (v: any) => { v.afterRaw.legacy.at = 1.5; }],
+      ['negative timestamp', (v: any) => { v.beforeRaw.legacy.at = -1; }],
+      ['player timestamp mismatch', (v: any) => { v.afterRaw.playerRow.data.at += 1; }],
+      ['before timestamp mismatch', (v: any) => { v.beforeRaw.playerRow.data.at += 1; }],
+      ['encoded timestamp mismatch', (v: any) => { const raw = JSON.parse(v.afterRaw.legacyRaw); raw.at += 1; v.afterRaw.legacyRaw = JSON.stringify(raw); }],
+      ['adjacent protected reward', (v: any) => { v.afterRaw.playerRow.data.ess += 1; }],
+    ] as const) {
+      const value = fixture(); mutate(value);
+      expect(assess(value).ok, name).toBe(false);
+      expect(assess(fixture()).ok, `${name} restored`).toBe(true);
+    }
+    const earlierClock = fixture();
+    earlierClock.afterRaw.legacy.at = 900;
+    earlierClock.afterRaw.playerRow.data.at = 900;
+    earlierClock.afterRaw.legacyRaw = JSON.stringify(earlierClock.afterRaw.legacy);
+    earlierClock.afterAuthority.raw.legacyRaw = earlierClock.afterRaw.legacyRaw;
+    expect(assess(earlierClock).ok, 'writer clock is valid and matched, not assumed monotonic').toBe(true);
+    proveEachMarkerRequired(sliceSource, [
+      ['Charter-only released hold evidence', 'landingHoldProof: expectedChapter === 3 ? ceremonyRace : null'],
+    ]);
     const desktop = section(sliceSource, '  const completeDesktopMercuryLand = async (label, { migratedDocumentToken = null } = {}) => {',
       '  /* Complete the fresh Chapter-1 landfall goal with a second genuine Sol');
     proveEachMarkerRequired(desktop, [
