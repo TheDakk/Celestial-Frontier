@@ -3,7 +3,8 @@
    The existing Arc 9 survey ledger always completes. One SessionRNG hazard
    draw may additionally wound the explorer (never below 1 HP) or the exact
    active Field Scout (never beyond Critical 0.85). Charting and capture stay
-   separate; this action grants no species, Yield, loot or capture credit. */
+   separate; this action grants no species, Yield or capture credit. An accepted
+   Starter Charter can pay its authored Stardust and gear in this same receipt. */
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   canonicalJson,
@@ -33,12 +34,16 @@ import {
 } from '@cf/domain-opportunity';
 import {
   committedArc5OwnershipState,
+  arc2LootLegacyMirrorMatches,
+  encodeArc2LootCarrier,
   prepareArc5OwnershipV2Successor,
   readArc2EngineeringLoadout,
+  readArc2Loot,
   readArc3Engineering,
   readArc5OwnershipMigration,
   readCombatSettlementAuthorityV1,
   type Arc5OwnershipMigrationEvidenceV2,
+  type Arc2LootInventoryV1,
   type PreparedArc5OwnershipMigrationSuccessorV2,
   type SaveStateV2,
   type V5ExtensionWrite,
@@ -65,6 +70,11 @@ import {
   type BioscanHazardPolicyV1,
 } from './bioscan-hazard.js';
 import { isCanonicalWorldRoster, type CanonicalWorldRoster } from './world-roster.js';
+import {
+  publishStarterCharterActionFieldsV1,
+  stageStarterCharterActionV1,
+  type StarterCharterActionFactV1,
+} from './starter-charter-action.js';
 
 export const BIOSCAN_ACTION_DOMAIN_V1 = DOMAINS.surveyHazard;
 export const ARC9_BIOSCAN_RECEIPT_KIND_V1 = 'arc9-bioscan-v1' as const;
@@ -107,6 +117,9 @@ export type BioscanActionOutcomeV1 =
     ownershipV2: OwnershipStateV2;
     ownershipV2Evidence: Arc5OwnershipMigrationEvidenceV2 | null;
     ownershipWrites: readonly V5ExtensionWrite[];
+    extensionWrites: readonly V5ExtensionWrite[];
+    starterCharter: StarterCharterActionFactV1;
+    arc2LootState: Arc2LootInventoryV1 | null;
     achievementIdsAdded: readonly (typeof ARC9_BIOSCAN_ACHIEVEMENT_ID_V1)[];
     postHazardAggregateAchievementIdsAdded: readonly string[];
     survey: Arc9SurveySettlementReadyV1;
@@ -136,6 +149,9 @@ interface BioscanSelectionV1 {
   readonly prepared: PreparedArc5OwnershipMigrationSuccessorV2 | null;
   readonly achievement: Arc9EventAchievementJoinPreparationV1 | null;
   readonly postHazardAggregateAchievementIdsAdded: readonly string[];
+  readonly extensionWrites: readonly V5ExtensionWrite[];
+  readonly starterCharter: StarterCharterActionFactV1;
+  readonly expectedArc2LootState: Arc2LootInventoryV1 | null;
   readonly expectedState: SaveStateV2;
   readonly sourceState: SaveStateV2;
   readonly witness: string;
@@ -406,6 +422,7 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
       codecNow: captured.codecNow,
       derive: ({ value, receiptOrdinal, draft, extensions }) => {
         const loadout = readArc2EngineeringLoadout(extensions);
+        const loot = readArc2Loot(extensions);
         const engineering = readArc3Engineering(extensions, SCENE_ENGINEERING_ADDRESS_RESOLVER);
         const ownership = readArc5OwnershipMigration(
           extensions,
@@ -413,6 +430,9 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
         );
         const combat = readCombatSettlementAuthorityV1(extensions);
         if (loadout.kind !== 'loaded'
+          || loot.kind !== 'loaded'
+          || loot.state.kind !== 'inventory'
+          || !arc2LootLegacyMirrorMatches(loot.state, draft)
           || loadout.capabilities.fingerprint !== captured.capabilities.fingerprint
           || engineering.kind !== 'loaded'
           || encodeEngineeringState(engineering.state) !== encodeEngineeringState(captured.engineering)
@@ -498,7 +518,7 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
           scanHitsBefore: draft.stats.scanhits ?? 0,
           scanHitsAfter: nextStats.scanhits ?? 0,
         });
-        const witness = witnessForBioscanV1({
+        const bioscanWitness = witnessForBioscanV1({
           survey,
           hazard,
           hazardOutcome,
@@ -517,9 +537,40 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
           postHazardAggregateAchievementIdsAdded,
           finalBestRankIndex: nextState.stats.bestRank ?? 0,
         });
+        const charterState = clonePlain(
+          nextState,
+          new Set<object>(),
+          { count: 0 },
+          0,
+        ) as SaveStateV2;
+        const starterCharter = stageStarterCharterActionV1({
+          draft: charterState,
+          extensions,
+          predecessorWrites: prepared?.writes ?? Object.freeze([]),
+          predecessorWitness: JSON.stringify({ bioscanWitness }),
+          event: { kind: 'bioscan', address: captured.address },
+          receiptOrdinal,
+        });
+        if (starterCharter.kind === 'refused') {
+          throw new Error(`bioscan starter Charter ${starterCharter.reason}`);
+        }
+        let expectedArc2LootState: Arc2LootInventoryV1 | null = null;
+        if (starterCharter.fact.completions.some(({ gearId }) => gearId !== null)) {
+          const stagedLoot = readArc2Loot(starterCharter.extensions);
+          if (stagedLoot.kind !== 'loaded' || stagedLoot.state.kind !== 'inventory'
+            || !arc2LootLegacyMirrorMatches(stagedLoot.state, charterState)) {
+            throw new Error('bioscan starter Charter exact gear successor is unavailable');
+          }
+          expectedArc2LootState = stagedLoot.state;
+        }
         selected = Object.freeze({
           settlement, survey, hazard, prepared, achievement,
-          postHazardAggregateAchievementIdsAdded, witness, publication,
+          postHazardAggregateAchievementIdsAdded,
+          extensionWrites: starterCharter.extensionWrites,
+          starterCharter: starterCharter.fact,
+          expectedArc2LootState,
+          witness: starterCharter.witness,
+          publication,
           sourceState: clonePlain(
             draft,
             new Set<object>(),
@@ -527,16 +578,16 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
             0,
           ) as SaveStateV2,
           expectedState: clonePlain(
-            nextState,
+            charterState,
             new Set<object>(),
             { count: 0 },
             0,
           ) as SaveStateV2,
         });
         return Object.freeze({
-          state: nextState,
-          extensionWrites: prepared?.writes ?? Object.freeze([]),
-          witness,
+          state: charterState,
+          extensionWrites: starterCharter.extensionWrites,
+          witness: starterCharter.witness,
         });
       },
     });
@@ -572,6 +623,10 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
   const fixedPoint = prepareArc9SurveySettlementV1(transaction.state, captured.address);
   const progressionFixedPoint = prepareArc9ProgressionRefreshV1(transaction.state);
   const expectedOwnership = chosen.settlement.successor ?? captured.ownershipV2;
+  const charterGearChanged = chosen.starterCharter.completions.some(
+    ({ gearId }) => gearId !== null,
+  );
+  const durableLoot = charterGearChanged ? readArc2Loot(transaction.saved.extensions) : null;
   let committedHazard: ReturnType<typeof resolveBioscanHazardV1>;
   try {
     committedHazard = resolveBioscanHazardV1(chosen.hazard, transaction.plan.value);
@@ -606,6 +661,16 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
     || (chosen.achievement === null
       ? chosen.settlement.hostile
       : achievementFixedPoint?.kind !== 'prepared' || achievementFixedPoint.added)
+    || chosen.starterCharter.event.kind !== 'bioscan'
+    || chosen.starterCharter.event.worldKey !== captured.address.key
+    || (charterGearChanged && (durableLoot?.kind !== 'loaded'
+      || durableLoot.state.kind !== 'inventory'
+      || chosen.expectedArc2LootState === null
+      || !sameJson(
+        encodeArc2LootCarrier(durableLoot.state),
+        encodeArc2LootCarrier(chosen.expectedArc2LootState),
+      )
+      || !arc2LootLegacyMirrorMatches(durableLoot.state, transaction.state)))
     || committedOwnershipState === null
     || ownershipStateDigestV2(committedOwnershipState)
       !== ownershipStateDigestV2(expectedOwnership)) {
@@ -620,6 +685,9 @@ export async function commitBioscanActionV1(input: BioscanActionInputV1): Promis
     ownershipV2: committedOwnershipState,
     ownershipV2Evidence: committedSuccessor?.evidence ?? null,
     ownershipWrites: chosen.prepared?.writes ?? Object.freeze([]),
+    extensionWrites: chosen.extensionWrites,
+    starterCharter: chosen.starterCharter,
+    arc2LootState: chosen.expectedArc2LootState,
     achievementIdsAdded: chosen.achievement?.added
       ? Object.freeze([ARC9_BIOSCAN_ACHIEVEMENT_ID_V1])
       : Object.freeze([]),
@@ -647,6 +715,7 @@ export function publishBioscanActionV1(
   target.hp = outcome.state.hp;
   target.stats = { ...outcome.state.stats };
   target.unlocked = [...outcome.state.unlocked];
+  publishStarterCharterActionFieldsV1(target, outcome.state);
   if (!sameJson(target, outcome.state)) {
     throw new TypeError('Bioscan publication did not reproduce its committed fixed point');
   }

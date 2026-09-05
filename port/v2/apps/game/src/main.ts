@@ -296,7 +296,7 @@ import {
   prepareArc5OwnershipMigration, readArc5OwnershipMigration,
   arc2LootLegacyMirrorMatches, prepareArc2LootLegacyMigration,
   prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror,
-  readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
+  encodeArc2LootCarrier, readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
   readCombatSettlementAuthorityV1,
   canonicalWorldLandingCount, createEmptyWorldIdentityState,
   encodeWorldIdentityExtensionWrites, hasCanonicalWorldLanded,
@@ -9285,10 +9285,16 @@ async function runStarterCharterAccept(id: StarterCharterIdV1): Promise<void> {
       if (outcome.facts.stage.extensionWrites.length > 0) {
         const loaded = readArc2Loot(runtime.extensions);
         if (loaded.kind !== 'loaded'
+          || loaded.state.kind !== 'inventory'
+          || outcome.arc2LootState === null
+          || JSON.stringify(encodeArc2LootCarrier(loaded.state))
+            !== JSON.stringify(encodeArc2LootCarrier(outcome.arc2LootState))
           || !arc2LootLegacyMirrorMatches(loaded.state, outcome.state)) {
           throw new Error('Starter Charter gear carrier did not retain its exact durable fixed point');
         }
         nextArc2LootState = loaded.state;
+      } else if (outcome.arc2LootState !== null) {
+        throw new Error('Starter Charter exposed an unexpected exact gear successor');
       }
       publishStarterCharterAcceptFieldsV1(sourceState, outcome);
       arc2LootState = nextArc2LootState;
@@ -9966,6 +9972,15 @@ async function runArc9Bioscan(): Promise<boolean> {
     hp: save.hp,
     stats: save.stats,
     unlocked: save.unlocked,
+    chacc: save.chacc,
+    chDone: save.chDone,
+    chProg: save.chProg,
+    essence: save.essence,
+    items: save.items,
+    equip: save.equip,
+    equipAff: save.equipAff,
+    arc2LootState,
+    starterStatus: lastStarterCharterAcceptStatus,
     ownershipState: arc5OwnershipState,
     ownershipEvidence: arc5OwnershipEvidence,
     ownershipProtection: arc5OwnershipProtection,
@@ -9983,10 +9998,21 @@ async function runArc9Bioscan(): Promise<boolean> {
     sourceState.hp = priorPublication.hp;
     sourceState.stats = priorPublication.stats;
     sourceState.unlocked = priorPublication.unlocked;
+    sourceState.chacc = priorPublication.chacc;
+    sourceState.chDone = priorPublication.chDone;
+    sourceState.chProg = priorPublication.chProg;
+    sourceState.essence = priorPublication.essence;
+    sourceState.items = priorPublication.items;
+    sourceState.equip = priorPublication.equip;
+    sourceState.equipAff = priorPublication.equipAff;
+    arc2LootState = priorPublication.arc2LootState;
+    lastStarterCharterAcceptStatus = priorPublication.starterStatus;
     arc5OwnershipState = priorPublication.ownershipState;
     arc5OwnershipEvidence = priorPublication.ownershipEvidence;
     arc5OwnershipProtection = priorPublication.ownershipProtection;
     lastArc5BootstrapOutcome = priorPublication.ownershipBootstrapOutcome;
+    try { inventoryPanelController.setState(arc2LootState); }
+    catch { /* the replacement document owns recovery */ }
   };
   try {
     await smokeProductActionHold.holdIfArmed(actionClaim.operation);
@@ -10052,6 +10078,22 @@ async function runArc9Bioscan(): Promise<boolean> {
         SCENE_OWNERSHIP_ADDRESS_RESOLVER,
       );
       const scoutChanged = attempt.settlement.successor !== null;
+      const starterGearChanged = attempt.starterCharter.completions.some(
+        ({ gearId }) => gearId !== null,
+      );
+      let committedBioscanLootState = arc2LootState;
+      if (starterGearChanged) {
+        const loadedLoot = readArc2Loot(runtime.extensions);
+        if (loadedLoot.kind !== 'loaded'
+          || loadedLoot.state.kind !== 'inventory'
+          || attempt.arc2LootState === null
+          || JSON.stringify(encodeArc2LootCarrier(loadedLoot.state))
+            !== JSON.stringify(encodeArc2LootCarrier(attempt.arc2LootState))
+          || !arc2LootLegacyMirrorMatches(loadedLoot.state, attempt.state)) {
+          throw new Error('Arc 9 Bioscan Starter Charter gear did not retain its exact durable fixed point');
+        }
+        committedBioscanLootState = loadedLoot.state;
+      }
       const writesMatch = scoutChanged
         ? attempt.ownershipWrites.length === ARC5_OWNERSHIP_EXTENSION_TARGETS.length
           && attempt.ownershipWrites.every((write, index) => (
@@ -10079,6 +10121,17 @@ async function runArc9Bioscan(): Promise<boolean> {
         throw new Error('arc9-bioscan-fixed-point-mismatch');
       }
       publishBioscanActionV1(sourceState, attempt);
+      if (attempt.starterCharter.changed) {
+        arc2LootState = committedBioscanLootState;
+        inventoryPanelController.setState(arc2LootState);
+        const completions = attempt.starterCharter.completions;
+        if (completions.length > 0) {
+          const titles = completions.map(({ title }) => title).join(', ');
+          const rewards = completions.map((completion) => `+${completion.stardust} Stardust`
+            + (completion.gearId === null ? '' : ` + ${completion.gearId} starter gear`)).join(' · ');
+          lastStarterCharterAcceptStatus = `Completed ${titles}. Reward: ${rewards}.`;
+        }
+      }
       if (scoutChanged) {
         arc5OwnershipState = attempt.ownershipV2;
         arc5OwnershipEvidence = attempt.ownershipV2Evidence;
@@ -10112,8 +10165,11 @@ async function runArc9Bioscan(): Promise<boolean> {
 
     try {
       hudText();
+      updateChips();
       if (attempt.settlement.successor !== null) refreshCompendiumFeedState();
+      if (attempt.starterCharter.changed && openPanelId() === 'ch') fillCharters();
       if (openPanelId() === 'rec') fillRecords();
+      if (attempt.starterCharter.changed && openPanelId() === 'shipyard') refreshEngineeringPanelState();
       gameEvent('bioscan', { worldKey: fresh.worldKey });
       if (attempt.settlement.hostile) triggerCameraShake();
       const additions = [
@@ -10121,6 +10177,7 @@ async function runArc9Bioscan(): Promise<boolean> {
         ...attempt.survey.addedAggregateAchievementIds,
         ...attempt.achievementIdsAdded,
         ...attempt.postHazardAggregateAchievementIdsAdded,
+        ...attempt.starterCharter.addedAchievementIds,
       ];
       presentProgressionCeremony({
         revision: attempt.transaction.revision,
@@ -10131,6 +10188,18 @@ async function runArc9Bioscan(): Promise<boolean> {
         priorBestRankIndex: attempt.survey.source.bestRank,
         nextBestRankIndex: attempt.state.stats.bestRank ?? 0,
       });
+      if (attempt.starterCharter.completions.length > 0) {
+        const completions = attempt.starterCharter.completions;
+        const titles = completions.map(({ title }) => title).join(', ');
+        const rewards = completions.map((completion) => `+${completion.stardust} Stardust`
+          + (completion.gearId === null ? '' : ` + ${completion.gearId} starter gear`)).join(' · ');
+        toastCharterCompletion(
+          completions.length === 1
+            ? `★ ${titles} — Starter Charter complete`
+            : `★ ${completions.length} Starter Charters — complete`,
+          `${titles} · Reward: ${rewards}.`,
+        );
+      }
       if (attempt.settlement.target === 'explorer') {
         toast(
           '⚠ Hostile life encountered',

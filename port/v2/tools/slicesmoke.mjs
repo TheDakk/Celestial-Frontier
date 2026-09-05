@@ -6564,7 +6564,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 77,
-    sha256: '379bb64ef214edb961813d069e8b0f95fcba21fc7564095cae0a4da136b09e70',
+    sha256: '8f7a40185fb2a89c1fe055b0109623f77d087cdc4248ee00fe20398fe3456c4f',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -6900,7 +6900,10 @@ try {
       'first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction',
       'A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing',
       'Chapter 2 capture milestone is separate from the live Discover Life action',
-      'Accepted and weekly bioscan Charters remain unavailable',
+      'accepted Discover Life Starter Charter completes only from a later explicit Bioscan',
+      'in that same receipt',
+      'older Surveys and capture do not count',
+      'Weekly bioscan Charters remain protected until their separate lifecycle is complete',
       'Field Scout interception is live on hostile Discover Life',
       'real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment',
       'Companion Feed still does not discover tastes or flavours, grow stats or Power, heal injuries, apply poison, or build a bond',
@@ -7347,8 +7350,8 @@ try {
       /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i,
       /A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing/i,
       /(?:base )?Discover Life (?:Survey )?action is live|live Discover Life action/i,
-      /accepted Discover-life Charter remains unavailable/i,
-      /neither ordinary capture nor the base Survey action counterfeits that Charter|never borrows capture or the base Survey action/i,
+      /accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt/i,
+      /older Surveys and capture do not count/i,
       /One successful Breed banks Breed a hybrid bloodline in the same offspring save/i,
       /failed pairing, refusal, stale tab, or failed write banks no breeding credit/i,
       /first verified conquest banks Chapter 2’s conquest goal/i,
@@ -7363,7 +7366,7 @@ try {
         ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)\\b[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(text)
       ||/(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(text)
       ||/\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(text)
-      ||/Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(text)
+      ||/Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}weekly[^.!?]{0,48}(?:Charter|bioscan)|(?:older Survey|ordinary capture)[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(text)
       ||unnegated(text,/(?:failed pairing|refusal|stale (?:Breed )?(?:tab|result)|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i)
       ||/Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)/i.test(text)
       ||/Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i.test(text)
@@ -7399,7 +7402,7 @@ try {
     const bioscanContradictions=[];for(const copy of ['Capture advances the Charter bioscan milestone.',
       'A miss banks one Chapter 2 life-discovery tick.','A successful capture on Sol banks one Charter bioscan tick.',
       'A later success on the same world banks another life-discovery tick.','A stale tab still banks one life-discovery tick.',
-      'A failed write advances the Charter bioscan.','Discover Life completes an accepted bioscan Charter.']){
+      'A failed write advances the Charter bioscan.','An older Survey completes the accepted Discover Life Starter Charter retroactively.']){
      contradictionMarker.textContent=copy;article?.appendChild(contradictionMarker);
      try{bioscanContradictions.push({copy,result:${renderedCharterGuideCheck('Chapters')}});}finally{contradictionMarker.remove();}}
     const breedContradictions=[];for(const copy of ['A failed pairing also banks the Charter hybrid bloodline goal.',
@@ -7695,7 +7698,7 @@ try {
         ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)\\b[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(captureText)
         ||/(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(captureText)
         ||/\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(captureText)
-        ||/Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(captureText)
+        ||/Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}weekly[^.!?]{0,48}(?:Charter|bioscan)|(?:older Survey|ordinary capture)[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(captureText)
         ||/(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)/i.test(captureText),
       captureContract=captureHeading==='Gameplay'
         &&captureText.includes('living planet’s Survey card offers explicit Discover Life before or after landing')
@@ -7724,7 +7727,9 @@ try {
         &&captureText.includes('first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction')
         &&captureText.includes('a miss, Sol, repeat, stale tab, or failed write banks nothing')
         &&captureText.includes('Chapter 2 milestone is separate from Discover Life')
-        &&captureText.includes('Accepted and weekly bioscan Charters remain unavailable')
+        &&captureText.includes('accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt')
+        &&captureText.includes('older Surveys and capture do not count')
+        &&captureText.includes('Weekly bioscan Charters remain protected until their separate lifecycle is complete')
         &&captureText.includes('Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail')
         &&captureText.includes('friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable')
         &&!captureContradiction,
@@ -7733,7 +7738,8 @@ try {
         &&starterCharterText.includes('first planetfall beyond canonical Earth, one Mine, a non-null Field Scout assignment or switch, verified conquest')
         &&starterCharterText.includes('Each supported completion pays its established 10–25 Stardust once in the same receipt')
         &&starterCharterText.includes('A verified conquest banks Chapter 2 conquest and can honor one accepted starter st-conq for +25 Stardust in the same combat save')
-        &&starterCharterText.includes('base Discover Life Survey action is live, but its accepted Charter remains unavailable until the separate accepted-bioscan lifecycle has an exact owner')
+        &&starterCharterText.includes('accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt')
+        &&starterCharterText.includes('older Surveys and capture do not count')
         &&starterCharterText.includes('Accepted wk-conq remains fail-closed because its weekly lifecycle owner is missing')
         &&rankRecordText.includes('Records also houses the Binder’s six established type pages and seven current-proof Set claims')
         &&rankRecordText.includes('One completed unclaimed Set pays its established 25–150 Stardust')
@@ -8074,17 +8080,21 @@ try {
     const bioscanExclusionMissing=${releaseDraftCheck};
     row.textContent=prior.replace('Ordinary inspection stays write-free','Discover Life action boundary removed');
     const discoverLifeMissing=${releaseDraftCheck};
-    row.textContent=prior.replace('Accepted and weekly bioscan Charters remain unavailable','mature bioscan availability boundary removed');
-    const matureBioscanMissing=${releaseDraftCheck};row.textContent=prior;
+    row.textContent=prior.replace('accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt','accepted bioscan receipt boundary removed');
+    const matureBioscanMissing=${releaseDraftCheck};
+    row.textContent=prior.replace('older Surveys and capture do not count','accepted bioscan no-backfill boundary removed');
+    const starterBackfillMissing=${releaseDraftCheck};
+    row.textContent=prior.replace('Weekly bioscan Charters remain protected until their separate lifecycle is complete','weekly bioscan boundary removed');
+    const weeklyBioscanMissing=${releaseDraftCheck};row.textContent=prior;
     const claims=['Tame targets the selected preview row.','Tame chooses only from the visible preview.',
       'Biosphere Yield is separate for each action.','Capture advances the Charter bioscan milestone.',
       'A miss banks one Chapter 2 life-discovery tick.','A successful capture on Sol banks one Charter bioscan tick.',
       'A later success on the same world banks another life-discovery tick.','A stale tab still banks one life-discovery tick.',
-      'A failed write advances the Charter bioscan.','Discover Life completes an accepted bioscan Charter.'],contradictions=[];
+      'A failed write advances the Charter bioscan.','An older Survey completes the accepted Discover Life Starter Charter retroactively.'],contradictions=[];
     for(const copy of claims){row.textContent=prior+' '+copy;const result=${releaseDraftCheck};contradictions.push({copy,result});}
     row.textContent=prior;
     wrongSection.appendChild(row);const placement=${releaseDraftCheck};parent.insertBefore(row,next);
-    const restored=${releaseDraftCheck};return {missing,bioscanMissing,bioscanExclusionMissing,discoverLifeMissing,matureBioscanMissing,contradictions,placement,
+    const restored=${releaseDraftCheck};return {missing,bioscanMissing,bioscanExclusionMissing,discoverLifeMissing,matureBioscanMissing,starterBackfillMissing,weeklyBioscanMissing,contradictions,placement,
       restored:row.textContent===prior&&row.parentNode===parent&&restored.captureContract===true&&restored.honest===true};})()`);
   if (releaseCaptureCopyCtl.missing?.complete || releaseCaptureCopyCtl.missing?.captureContract
     || releaseCaptureCopyCtl.missing?.captureContradiction
@@ -8092,6 +8102,8 @@ try {
     || releaseCaptureCopyCtl.bioscanExclusionMissing?.complete || releaseCaptureCopyCtl.bioscanExclusionMissing?.captureContract
     || releaseCaptureCopyCtl.discoverLifeMissing?.complete || releaseCaptureCopyCtl.discoverLifeMissing?.captureContract
     || releaseCaptureCopyCtl.matureBioscanMissing?.complete || releaseCaptureCopyCtl.matureBioscanMissing?.captureContract
+    || releaseCaptureCopyCtl.starterBackfillMissing?.complete || releaseCaptureCopyCtl.starterBackfillMissing?.captureContract
+    || releaseCaptureCopyCtl.weeklyBioscanMissing?.complete || releaseCaptureCopyCtl.weeklyBioscanMissing?.captureContract
     || releaseCaptureCopyCtl.contradictions?.length !== 10
     || releaseCaptureCopyCtl.contradictions.some(({ result }) => result?.complete
       || result?.honest || result?.captureContract || !result?.captureContradiction)

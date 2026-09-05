@@ -9,7 +9,7 @@ const mutants = [
   'A later success on the same world banks another life-discovery tick.',
   'A stale tab still banks one life-discovery tick.',
   'A failed write advances the Charter bioscan.',
-  'Discover Life completes an accepted bioscan Charter.',
+  'An older Survey completes the accepted Discover Life Starter Charter retroactively.',
 ] as const;
 
 function section(start: string, end: string): string {
@@ -33,7 +33,9 @@ describe('Slice explicit Discover Life copy authority', () => {
       'catalogues no species and spends no Biosphere Yield',
       'Field Scout interception is live on hostile Discover Life',
       'first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol',
-      'Accepted and weekly bioscan Charters remain unavailable',
+      'accepted Discover Life Starter Charter completes only from a later explicit Bioscan',
+      'older Surveys and capture do not count',
+      'Weekly bioscan Charters remain protected until their separate lifecycle is complete',
     ]) expect(guide, marker).toContain(marker);
 
     const charter = section(
@@ -41,7 +43,8 @@ describe('Slice explicit Discover Life copy authority', () => {
       '  const renderedTrainingRestoreGuideCheck = (expectedTitle) => `',
     );
     expect(charter).toContain('Discover Life (?:Survey )?action is live|live Discover Life action');
-    expect(charter).toContain('accepted Discover-life Charter remains unavailable');
+    expect(charter).toContain('accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt');
+    expect(charter).toContain('older Surveys and capture do not count');
     for (const mutant of mutants) expect(charter, mutant).toContain(mutant);
   });
 
@@ -53,7 +56,9 @@ describe('Slice explicit Discover Life copy authority', () => {
       'Any hostile outcome owns survivor',
       'first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol',
       'a miss, Sol, repeat, stale tab, or failed write banks nothing',
-      'Accepted and weekly bioscan Charters remain unavailable',
+      'accepted Discover Life Starter Charter completes only from a later explicit Bioscan',
+      'older Surveys and capture do not count',
+      'Weekly bioscan Charters remain protected until their separate lifecycle is complete',
     ]) expect(oracle, marker).toContain(marker);
 
     const controls = section(
@@ -61,7 +66,7 @@ describe('Slice explicit Discover Life copy authority', () => {
       '  const releaseLiveProgressionCtl = await evalIn(',
     );
     for (const marker of [
-      'bioscanMissing', 'bioscanExclusionMissing', 'discoverLifeMissing', 'matureBioscanMissing',
+      'bioscanMissing', 'bioscanExclusionMissing', 'discoverLifeMissing', 'matureBioscanMissing', 'starterBackfillMissing', 'weeklyBioscanMissing',
       'releaseCaptureCopyCtl.contradictions?.length !== 10',
       ...mutants,
     ]) expect(controls, marker).toContain(marker);

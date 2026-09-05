@@ -22,7 +22,10 @@ const BIOSCAN_REQUIRED = Object.freeze([
   'banks that world’s one Chapter 2 life-discovery tick in the same capture transaction',
   'A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing',
   'Chapter 2 capture milestone is separate from the live Discover Life action',
-  'Accepted and weekly bioscan Charters remain unavailable',
+  'accepted Discover Life Starter Charter completes only from a later explicit Bioscan',
+  'in that same receipt',
+  'older Surveys and capture do not count',
+  'Weekly bioscan Charters remain protected until their separate lifecycle is complete',
 ]);
 
 const BIOSCAN_CONTRADICTIONS = Object.freeze([
@@ -35,7 +38,7 @@ const BIOSCAN_CONTRADICTIONS = Object.freeze([
 ]);
 
 const DISCOVER_LIFE_CONTRADICTION =
-  'Discover Life completes an accepted bioscan Charter.';
+  'An older Survey completes the accepted Discover Life Starter Charter retroactively.';
 
 function exactSpan(source: string, start: string, end: string): string | null {
   const startIndex = source.indexOf(start);
@@ -92,7 +95,9 @@ function glassBioscanCopyContract(source: string): boolean {
     && assessment.includes("captureText.includes('Capture remains a separate landed action')")
     && assessment.includes("captureText.includes('first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction')")
     && assessment.includes("captureText.includes('That Chapter 2 milestone is separate from Discover Life')")
-    && assessment.includes("captureText.includes('Accepted and weekly bioscan Charters remain unavailable')")
+    && assessment.includes("captureText.includes('accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt')")
+    && assessment.includes("captureText.includes('older Surveys and capture do not count')")
+    && assessment.includes("captureText.includes('Weekly bioscan Charters remain protected until their separate lifecycle is complete')")
     && assessment.includes('||captureBioscanContradiction')
     && assessment.includes('&&!captureContradiction&&!discoverLifeContradiction')
     && assessment.includes('honest=!overclaim&&!captureContradiction&&!discoverLifeContradiction')
@@ -100,15 +105,17 @@ function glassBioscanCopyContract(source: string): boolean {
     && !assessment.includes('discoverLifeAvailabilityContradiction=')
     && !assessment.includes('v2’s current replacement for v1.8.9’s separate Discover Life action');
 
-  const releaseControlContract = controls.includes('captureLimitControls.length===11')
+  const releaseControlContract = controls.includes('captureLimitControls.length===13')
     && controls.includes('captureContradictions.length===5')
     && controls.includes('bioscanContradictions.length===6')
     && controls.includes('living planet’s Survey card offers explicit Discover Life before or after landing')
     && controls.includes('Any hostile outcome owns survivor in that same receipt whether Scout or explorer absorbs the wound')
     && controls.includes('Capture remains a separate landed action')
-    && controls.includes('Accepted and weekly bioscan Charters remain unavailable')
+    && controls.includes('accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt')
+    && controls.includes('older Surveys and capture do not count')
+    && controls.includes('Weekly bioscan Charters remain protected until their separate lifecycle is complete')
     && BIOSCAN_CONTRADICTIONS.every((copy) => controls.includes(copy))
-    && controls.includes(DISCOVER_LIFE_CONTRADICTION)
+    && occurrences(controls, DISCOVER_LIFE_CONTRADICTION) === 2
     && controls.includes('row.result?.discoverLifeContradiction===true')
     && controls.includes('discoverLifeChanged&&discoverLifeContradictory?.ok===false')
     && controls.includes('discoverLifeContradictory?.discoverLifeContradiction===true')
@@ -242,7 +249,7 @@ describe('Glass Charter bioscan Guide/copy source contract', () => {
       DISCOVER_LIFE_CONTRADICTION,
       'captureBioscanContradiction=',
       'discoverLifeContradiction=',
-      'captureLimitControls.length===11',
+      'captureLimitControls.length===13',
       'bioscanContradictions.length===6',
       'discoverLifeChanged&&discoverLifeContradictory?.ok===false',
       'discoverLifeContradictory?.discoverLifeContradiction===true',
