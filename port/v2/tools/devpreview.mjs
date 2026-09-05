@@ -648,7 +648,7 @@ function packagePreviewLocked(args) {
     storage: {
       isolation: 'exact-origin',
       indexedDbName: 'cf-v2-slice',
-      localStorageKeys: ['cf_v2_import_original'],
+      localStorageKeys: [],
       contract: 'The guarded app runs only on expectedOrigin or loopback. Production and preview therefore cannot share browser storage.',
     },
     indexing: 'noindex,nofollow,noarchive,nosnippet plus robots.txt Disallow: /',

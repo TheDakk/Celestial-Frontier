@@ -1043,7 +1043,7 @@ function trainingRestoreCopyIsTruthful(body: string): boolean {
     && /That older checkpoint contains no saved view: Skip from Welcome stays in Sol, while completing the drill after Land stays at Earth/i.test(body)
     && /An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen/i.test(body)
     && /leaves the stored expedition unchanged/i.test(body)
-    && /reload after updating, or import a trusted complete expedition/i.test(body)
+    && /reload after updating\./i.test(body)
     && TRAINING_RESTORE_CONTRADICTIONS.every((pattern) => !pattern.test(body))
     && TRAINING_LEGACY_RECOVERY_CONTRADICTIONS.every((pattern) => !pattern.test(body));
 }
@@ -1271,7 +1271,7 @@ describe('v2 Guide capability filter', () => {
       'every ordinary save-mutating preference and Training control—including Creature voices and both sliders—remains inspection-only',
     );
     expect(getGuideTopic('settings')?.body).toContain(
-      'Bring expedition</b> remains available for recovery',
+      'a protected reload is the only recovery path',
     );
     expect(getGuideTopic('settings')?.body).toContain(
       'stops active-play eligibility and accrual immediately, then converges through a protected reload instead of silently reacquiring',
@@ -2469,7 +2469,7 @@ describe('legacy and v2 release channels', () => {
       /Versioned split-store saves, a per-document tab lease, revision fences, immutable receipts/,
       /A lease-storage failure or rejected repository-revision read immediately stops eligibility and accrual and converges through protected reload instead of silently reacquiring/,
       /Promotion and recovery now recheck the exact primary, backup, revision, and lease evidence immediately before writing/,
-      /every ordinary save-mutating preference and Training control—including Creature Voices—remains inspection-only; Bring expedition remains available for recovery/,
+      /every ordinary save-mutating preference and Training control—including Creature Voices—remains inspection-only; a protected reload is the only recovery path/,
       /exactly one 44-pixel top-right Close action/,
       /Spacing inside either desktop rail belongs to that command deck and leaves the active panel open/,
       /a genuine empty-sky press still dismisses it/,
@@ -2491,7 +2491,7 @@ describe('legacy and v2 release channels', () => {
       /every other expedition field is retained from the surrounding save/,
       /That older checkpoint contains no saved view: Skip from Welcome stays in Sol, while completing the drill after Land stays at Earth/,
       /An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen and leaves the stored expedition unchanged/,
-      /reload after updating, or import a trusted complete expedition/,
+      /reload after updating\./,
       /Only a world’s first landing banks the live landfall objective/,
       /a matching planet seed elsewhere cannot impersonate Sol/,
       /Chapter 1 Mine credit likewise requires the exact home-galaxy, Sol-star, dead-world, coordinate, and source-ordinal hierarchy/,
@@ -2621,7 +2621,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 78,
+        inventory: bullets.length === 77,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
@@ -2647,7 +2647,7 @@ describe('legacy and v2 release channels', () => {
       category: section.category,
       bullets: index === 1 ? section.bullets.filter((_, bulletIndex) => bulletIndex !== 3) : section.bullets,
     }));
-    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(77);
+    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(76);
     expect(bulletinOutcome(missingMiddle).inventory).toBe(false);
     const missingRequired = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
@@ -2787,7 +2787,7 @@ describe('legacy and v2 release channels', () => {
     const writableVoiceWhileProtected = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
       bullets: section.bullets.map((bullet) => bullet.replace(
-        'every ordinary save-mutating preference and Training control—including Creature Voices—remains inspection-only; Bring expedition remains available for recovery',
+        'every ordinary save-mutating preference and Training control—including Creature Voices—remains inspection-only; a protected reload is the only recovery path',
         'most Settings controls remain inspection-only',
       )),
     }));
