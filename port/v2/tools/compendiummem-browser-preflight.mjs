@@ -60,6 +60,7 @@ const EDGE_WORKFLOW_CONTRACTS = Object.freeze([
     ]),
     certificationId: 'compendium',
     certificationBrowser: EDGE_EXTRACTED_BROWSER,
+    laneGuard: "steps.lane.outputs.lane == 'full'",
     verifierBrowser: EDGE_EXTRACTED_BROWSER,
     verifierIfHeader: 'if: >-',
     verifierIfBody: Object.freeze([
@@ -143,6 +144,27 @@ function assertNoWorkflowExecutionControls(lines, start, end, indent, label) {
     `${label}: execution-control keys may not skip or soften the required chain (lines ${forbidden.join(', ')})`);
 }
 
+// The three owned Compendium steps run on the full chain only. They must share
+// exactly one direct `if:` equal to the workflow's full-lane guard, so no step
+// of the install -> preflight -> certification adjacency can be skipped or
+// softened independently of the lane the owner selected.
+function assertExactExecutionGuard(lines, start, end, indent, expectedGuard, label) {
+  const conditions = [];
+  const softened = [];
+  for (let index = start + 1; index < end; index++) {
+    if (yamlIndent(lines[index], `${label} line ${index + 1}`) !== indent) continue;
+    const trimmed = lines[index].trim();
+    if (/^if\s*:/.test(trimmed)) conditions.push(index);
+    if (/^continue-on-error\s*:/.test(trimmed)) softened.push(index + 1);
+  }
+  assert(softened.length === 0,
+    `${label}: execution-control keys may not skip or soften the required chain (lines ${softened.join(', ')})`);
+  assert(conditions.length === 1 && lines[conditions[0]].trim() === `if: ${expectedGuard}`,
+    `${label}: execution-control keys may not skip or soften the required chain; `
+      + `the step must own exactly one full-lane guard if: ${expectedGuard} (found ${conditions.length})`);
+  return conditions[0];
+}
+
 function workflowJobBounds(lines, contract, label) {
   const jobsLines = exactIndentedWorkflowLines(lines, 'jobs:', 0);
   assert(jobsLines.length === 1, `${label}: expected one exact root jobs mapping`);
@@ -200,6 +222,7 @@ export function assertCompendiumEdgeWorkflowContract(source, contract) {
     && typeof contract.preflightBrowser === 'string'
     && (contract.certificationId === null || typeof contract.certificationId === 'string')
     && typeof contract.certificationBrowser === 'string'
+    && typeof contract.laneGuard === 'string' && contract.laneGuard.trim()
     && typeof contract.verifierBrowser === 'string'
     && typeof contract.verifierIfHeader === 'string'
     && Array.isArray(contract.verifierIfBody),
@@ -234,8 +257,9 @@ export function assertCompendiumEdgeWorkflowContract(source, contract) {
   `${label}: exact Edge extraction step must belong to job ${contract.jobName}`);
   const installStart = installHeaders[0];
   const installEnd = workflowBlockEnd(lines, installStart, stepIndent, stepsEnd, label);
-  assertNoWorkflowExecutionControls(
-    lines, installStart, installEnd, stepIndent + 2, `${label} Edge extraction`,
+  assertExactExecutionGuard(
+    lines, installStart, installEnd, stepIndent + 2, contract.laneGuard,
+    `${label} Edge extraction`,
   );
   assert(installEnd < stepsEnd,
     `${label}: exact Edge extraction step has no following preflight step`);
@@ -251,8 +275,9 @@ export function assertCompendiumEdgeWorkflowContract(source, contract) {
   `${label}: Compendium preflight must be the step immediately after exact Edge extraction`);
   const preflightStart = preflightHeaders[0];
   const preflightEnd = workflowBlockEnd(lines, preflightStart, stepIndent, stepsEnd, label);
-  assertNoWorkflowExecutionControls(
-    lines, preflightStart, preflightEnd, stepIndent + 2, `${label} preflight`,
+  assertExactExecutionGuard(
+    lines, preflightStart, preflightEnd, stepIndent + 2, contract.laneGuard,
+    `${label} preflight`,
   );
 
   const certificationHeader = `- name: ${EDGE_CERTIFICATION_STEP_NAME}`;
@@ -268,8 +293,9 @@ export function assertCompendiumEdgeWorkflowContract(source, contract) {
   const certificationEnd = workflowBlockEnd(
     lines, certificationStart, stepIndent, stepsEnd, label,
   );
-  assertNoWorkflowExecutionControls(
-    lines, certificationStart, certificationEnd, stepIndent + 2, `${label} certification`,
+  assertExactExecutionGuard(
+    lines, certificationStart, certificationEnd, stepIndent + 2, contract.laneGuard,
+    `${label} certification`,
   );
 
   const verifierHeader = `- name: ${EDGE_VERIFIER_STEP_NAME}`;
@@ -648,6 +674,23 @@ function mutateWorkflowVerifierCondition(source, contract, variant, label) {
   } else {
     lines[ifLine] = `${' '.repeat(indent + 2)}if: \${{ always() && false }}`;
   }
+  return lines.join('\n');
+}
+
+function mutateWorkflowLaneGuard(source, contract, stepName, replacement, label) {
+  const lines = source.split(/\r?\n/);
+  const headers = exactWorkflowLines(lines, `- name: ${stepName}`);
+  assert(headers.length === 1,
+    `SELFTEST ${label}: expected one ${stepName} step for lane-guard mutation`);
+  const start = headers[0];
+  const indent = yamlIndent(lines[start], `SELFTEST ${label} step`);
+  const end = workflowBlockEnd(lines, start, indent, lines.length, `SELFTEST ${label}`);
+  const guardLine = exactDirectLine(
+    lines, `if: ${contract.laneGuard}`, indent + 2, start + 1, end,
+    `SELFTEST ${label} lane guard`,
+  );
+  if (replacement === null) lines.splice(guardLine, 1);
+  else lines[guardLine] = `${' '.repeat(indent + 2)}if: ${replacement}`;
   return lines.join('\n');
 }
 
@@ -1187,6 +1230,26 @@ async function runSelftest() {
     await expectRejected(`${contract.relative} verifier continue-on-error`,
       () => assertCompendiumEdgeWorkflowContract(softenedVerifier, contract),
       /verifier may not soften failure/);
+
+    for (const [target, stepName] of [
+      ['install', EDGE_PROVISION_STEP_NAME],
+      ['preflight', contract.preflightStepName],
+      ['certification', EDGE_CERTIFICATION_STEP_NAME],
+    ]) {
+      const unguarded = mutateWorkflowLaneGuard(
+        source, contract, stepName, null, `${contract.relative} ${target} unguarded`,
+      );
+      await expectRejected(`${contract.relative} ${target} without full-lane guard`,
+        () => assertCompendiumEdgeWorkflowContract(unguarded, contract),
+        /must own exactly one full-lane guard/);
+      const foreignGuard = mutateWorkflowLaneGuard(
+        source, contract, stepName, "steps.lane.outputs.lane != 'agent'",
+        `${contract.relative} ${target} foreign guard`,
+      );
+      await expectRejected(`${contract.relative} ${target} foreign guard`,
+        () => assertCompendiumEdgeWorkflowContract(foreignGuard, contract),
+        /must own exactly one full-lane guard/);
+    }
   }
 
   const authority = selftestAuthority();
