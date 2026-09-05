@@ -13,8 +13,10 @@ Keep the v1.8.9 codec and evidence-build `importBlob` seam as-is, the 77-outcome
 and Glass's planned-ledger matching. This decision does not restart implementation from scratch.
 
 Blender/REAPER/Surge terminal readiness and browser audio decoding passed in the retained evidence.
-Continue Batch A with complete relative-path audio source preservation; independent source backup
-still requires a selected, verified destination. No unchanged tool test reruns, Phase 2, purchases,
+Batch A now preserves all nine original audio project/recipe/evidence/output files unchanged,
+with all five original manifest references valid. See `../audits/AAA_BATCH_A_SYNC_20260905.md`.
+Independent source backup still requires a selected, verified destination; original scratch output
+paths remain unchanged and portable replay is not claimed. No unchanged tool test reruns, Phase 2, purchases,
 protected-portrait changes, workflow/policy changes, hosted attempts or release are authorized.
 The accepted Phase 0/1 scope, 128/256 MiB policy and pilot approval stop remain in force.
 
