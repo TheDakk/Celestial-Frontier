@@ -29,7 +29,7 @@ WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` stays parked except individually 
 
 | Step | State | Commit / push / gates |
 | --- | --- | --- |
-| 1 — core integration | First Slice red; bounded expectation repair | Merge `e77e5e0`; fast green 286 / 2,951 / 1; first living-world setup expected an obsolete write |
+| 1 — core integration | Second Slice red; bounded current-diagnostic repair | Merge `e77e5e0`, correction `d260f19`; fast green 286 / 2,954 / 1; no Glass or push yet |
 | 2a — accepted st-scan | Pending | Recover only completed authored scope |
 | 2b — descent/wave-offs | Pending | Canonical-address deterministic outcome |
 | 2c — 50-Paragon hunt | Pending | Existing authored table only |
@@ -108,6 +108,30 @@ No game source, producer pin, measurement input or hosted policy changed in this
 Inspection correction final fast PASS: **286 files / 2,954 passed / 1 skipped** (37.82s);
 typecheck and artunused PASS. It is committed separately from `e77e5e0` before the next
 unchanged-source Slice/phone sequence. Checkpoint 1 remains pending browser acceptance/push.
+
+Second Slice on corrected source `d260f19` stopped at 125.132s after passing Survey:
+`Arc 5 legacy-carrier upgrade rehearsal exact Pertar capture card did not reach its exact Pertar surface/card/three-enabled-row outcome within 10000ms`.
+All three controls are present/enabled. Existing capture evidence rejects the new
+`ownershipV2.explorerMeal` diagnostic: replay returns false; removing only that field from a
+clone returns true. Align its explicit strict shape and current fixture prefixes; keep historical
+provenance and planned Glass ledgers. Full errors are in the overnight REDS JSON. No Glass ran.
+
+The current fixture correction independently reproduces both old progression witnesses before
+removing the obsolete Survey counts/ordinal. Capture outcomes retain the same seeded draws.
+Current diagnostics remain exact; historical pre-Meal replay is explicitly flagged. No new
+instrument owner, budget, timeout or historical Glass ledger change is introduced.
+
+Diagnostic correction full fast stopped at two cases: Glass's separate current selftest fixture
+also omitted Explorer Meal, and historical Final11 replay exceeded its unchanged five-second
+unit-test limit under concurrent load. The former fixture is aligned; no timeout changed.
+Exact outputs and counts (2 failed files / 2 tests) are retained in the overnight report.
+The next run isolated Final11 alone. Its new per-field controls repeated the full large replay;
+they now test the existing strict UI boundary directly while all full integration/historical
+replays remain. Every field/flag/restoration case and the five-second timeout are preserved.
+
+Diagnostic correction final fast PASS: **286 files / 2,954 passed / 1 skipped**;
+typecheck/artunused and Glass selftest PASS. New correction commit precedes clean-source
+Slice → small-phone → large-phone. No game source or Compendium authority changed.
 
 ### Scope and continuation
 

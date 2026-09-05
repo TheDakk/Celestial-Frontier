@@ -2317,6 +2317,20 @@ function arc5OwnershipV2SelftestState(evidence) {
         lastFault: null,
       },
     },
+    explorerMeal: {
+      lastOutcome: null,
+      lastResult: null,
+      controller: {
+        attachedMountCount: 0,
+        delegatedListenerCount: 0,
+        pendingWork: 0,
+        convergenceLatched: false,
+        actionControlCount: 0,
+        contextKey: null,
+        lastRequest: null,
+        lastOutcome: null,
+      },
+    },
     breed: {
       lastOutcome: null,
       lastResult: null,
