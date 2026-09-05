@@ -82,14 +82,14 @@ const INSPECTION_EXPECTED = {
   ...EXPECTED, surveyTarget: 'world', settlement: 'inspection',
   route: { ...EXPECTED.route, mode: 'system', star: 424242, starX: 560, starY: 170,
     navStarKey: 'CF1|g:999@90,-60|s:424242@560,170' },
-  presentation: { cardOpen: true, cardTitle: 'Earth', actionOk: true, actionLabel: '⛳ Land' },
+  presentation: { cardOpen: true, cardTitle: 'Earth', actionOk: true, actionLabel: '⛳ Land safely' },
 } as const;
 function inspectionFixture(priorOutcome: string | null = null) {
   const value: any = currentFixture();
   Object.assign(value.state, INSPECTION_EXPECTED.route, { cardOpen: true, cardTitle: 'Earth' });
   Object.assign(value.state.renderedScene, { mode: 'system',
     starKey: INSPECTION_EXPECTED.route.navStarKey });
-  value.action.label = '⛳ Land';
+  value.action.label = '⛳ Land safely';
   value.beforeAuthority.state.landing = { surveyOutcome: priorOutcome };
   value.state.landing.surveyOutcome = priorOutcome;
   value.beforeAuthority.state.save = {
@@ -233,6 +233,18 @@ describe('early core-flow Survey fixed point', () => {
       ...EXPECTED, settlement: 'inspection',
     })).toThrow(TypeError);
   });
+  it.each(['⛳ Land', '⛳ Return safely', '⛳ Land · 95%', '⛳ Land · 100%'])(
+    'rejects a wrong Earth landing label %s and restores its exact guaranteed action',
+    (wrongLabel) => {
+      const control = inspectionFixture();
+      control.action.label = wrongLabel;
+      expect(assessEarlyCoreFlowActionFixedPoint(control, INSPECTION_EXPECTED))
+        .toEqual({ status: 'pending', reasons: ['core-flow card/action presentation'] });
+      control.action.label = '⛳ Land safely';
+      expect(assessEarlyCoreFlowActionFixedPoint(control, INSPECTION_EXPECTED))
+        .toEqual({ status: 'ready', reasons: [] });
+    },
+  );
   it('rejects every injected inspection write or outcome change without weakening committed Survey', () => {
     const mutations: readonly [string, (value: ReturnType<typeof inspectionFixture>) => void][] = [
       ['revision', (v) => { v.afterAuthority.raw.revision += 1; }],
@@ -267,6 +279,9 @@ describe('early core-flow Survey fixed point', () => {
       const start = sliceSmokeSource.indexOf(marker);
       const call = sliceSmokeSource.slice(start, sliceSmokeSource.indexOf('\n  });', start));
       expect(call, label).toContain("settlement: 'inspection'");
+      expect(call, label).toContain("actionLabel: '⛳ Land safely'");
+      expect(call.replace("actionLabel: '⛳ Land safely'", "actionLabel: '⛳ Land'"), `${label} wrong label`)
+        .not.toContain("actionLabel: '⛳ Land safely'");
       expect(call.replace("settlement: 'inspection'", "settlement: 'commit'"), `${label} injected commit`)
         .not.toContain("settlement: 'inspection'");
     }

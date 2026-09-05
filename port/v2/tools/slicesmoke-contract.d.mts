@@ -271,6 +271,14 @@ export function assessEarlyCoreFlowActionFixedPoint(
   }>,
 ): EarlyCoreFlowActionFixedPointAssessment;
 
+export function assessSingleF4ActionCommit(input?: Readonly<{
+  readonly beforeAuthority?: unknown;
+  readonly afterAuthority?: unknown;
+  readonly state?: unknown;
+  readonly expectedKind?: string;
+  readonly expectedPersistenceLastOutcome?: string;
+}>): SliceContractAssessment;
+
 export function assessF4ActionCommitSequence(input?: Readonly<{
   readonly beforeAuthority?: unknown;
   readonly afterAuthority?: unknown;

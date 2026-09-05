@@ -1,6 +1,9 @@
 # Batch 4 overnight report — 2026-09-05
 
-This is a live checkpoint report, not final acceptance. Base develop:
+**Blocked overnight handoff — 2026-09-05 09:50 UTC.** Core and 2a are accepted and pushed.
+The 2b correction passes fast gates, but 1Password signing failed twice and GitHub SSH failed.
+Its corrected browser acceptance, checkpoint and subsequent ordered work are blocked.
+This report and the correction are local and uncommitted. Base develop:
 `9ea01041dcdc711190bbf909ea8bb743cd993734`; owned review branch:
 `openai/review-batch4-gameplay-20260905` (OpenAI/Codex, macOS,
 `/Users/nick/Projects/celestial-frontier-openai-mac`). Clean `openai/mac` remains `84b6f22`.
@@ -9,14 +12,14 @@ This is a live checkpoint report, not final acceptance. Base develop:
 | --- | --- | --- | --- | --- |
 | 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
 | 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
-| 2b descent/wave-offs | Pending | — | — | — |
-| 2c 50-Paragon hunt | Pending | — | — | — |
-| 2d exact-instance progression | Pending | — | — | — |
-| 2e mature Atlas | Pending | — | — | — |
-| 3a authority controls | In signed core | Pending | Included in full Vitest | No UI change |
-| 3b same-owner lists | Pending | — | — | — |
-| 3c bounded extraction | Pending | — | — | — |
-| 3d phone analysis | Pending | — | — | — |
+| 2b descent/wave-offs | Local signed product `d469c499dfaa7d1e09a3755299246b4949c89ee7`; correction staged | Blocked: 1Password signer and GitHub SSH | Typecheck/artunused PASS; 290 files / 3,018 passed / 1 skipped | First source Slice RED at33.823s on exact Earth label; corrected-source run blocked before commit; phones not run |
+| 2c 50-Paragon hunt | Seven reviewed patch layers prepared; not integrated | Blocked by required preceding clean signed checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Blocked by required preceding clean signed checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Blocked by required preceding clean signed checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Separate ordered checkpoint blocked by signing | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Blocked by checkpoint prerequisite | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Blocked by checkpoint prerequisite | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Fresh clean-source measurement blocked | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
 
 ## Decisions made unattended
 
@@ -103,7 +106,7 @@ AssertionError: expected false to be true // Object.is equality
 No browser ran after those reds. Root validator passed: **1,010 renders / zero failures;
 50 fingerprints identical to the v1.0 baseline**. Final fast/browser results follow below.
 
-## WIP still parked
+## Initial WIP parking record — superseded by the current disposition below
 
 All `cf1b9a7843200ecc281c5113b4139909dc0e3a29` WIP is parked until individually completed:
 accepted Starter, descent, Paragons, creature progression and Atlas are staged recovery scopes.
@@ -1609,3 +1612,403 @@ checkpoint2b awaits that unchanged-source browser acceptance and push.
   }
 ]
 ```
+
+## Step 2b first browser red — exact Land presentation
+
+Clean `d469c499dfaa7d1e09a3755299246b4949c89ee7` stopped Slice at33.823s, exit1.
+`POINTER EARTH SURVEY: Survey did not reach its exact same-document fixed point before the dependent action`
+reports only `core-flow card/action presentation`. Expected exact label `⛳ Land`; observed
+`⛳ Land safely`, enabled,44px high, same document, exact Earth card and unchanged inspection
+authority. This is the new authored guaranteed-descent label. Before changing any consumer,
+inspect all seven fixed Land-label expectations and independently derive their exact current
+Earth/Mercury/revisit policy; no wildcard or observed-label oracle substitution. Neither phone
+ran. Source log SHA-256 `51e9ef1e3daf47ee3b4a2e92d21665ebd7633f79703f0cec6b198f83fb739a07`.
+Full literal failure is retained as the newest REDS JSON entry; no unchanged-source retry.
+
+## Step 2b bounded descent-flow correction
+
+All six exact Slice Land labels belong to canonical Earth and now require `⛳ Land safely`.
+Mercury’s authored cratered approach is 95%; the two collision-world approaches are 90%.
+The existing flows may issue one additional explicit Land only after proving a durable exact-world
+wave-off, protected rewards/state, HP floor, exact canonical learning and the next 100% card.
+No saved fixture, guaranteed gear, timeout or observed authority is substituted. Early Mercury
+Survey→Land is expressed as the same two explicit actions with its actual intermediate fixed point.
+A Charter wave-off adds its own toast; retain the held-Share deferral proof and bind the eventual
+completion toast to the real post-wave-off predecessor. Refusal, storage failure or stale state
+never qualifies for the second action. These are bounded existing-flow adaptations to Step2b.
+
+The two existing generic F4 assessors now independently replay only the fixed `descent.success`
+and `descent.damage` counters from the exact current 25-field Land witness; safe paths retain
+zero draws and all actions retain one ordinal per receipt. Non-Land authority remains unchanged.
+Focused scratch verification passed 15 selected tests across three files. Initial scratch-only
+`acorn` resolution red (resolved with the existing root dependency fallback, no product edit):
+
+```text
+
+ RUN  v4.1.10 /private/tmp/cf-step2b-f4-descent-draw-followup/after/port/v2
+
+ ❯ tests/slicesmoke-share-settlement-fixed-point.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/slicesmoke-share-settlement-fixed-point.test.ts [ tests/slicesmoke-share-settlement-fixed-point.test.ts ]
+Error: Cannot find package 'acorn' imported from /private/tmp/cf-step2b-f4-descent-draw-followup/after/port/v2/tests/slicesmoke-share-settlement-fixed-point.test.ts
+ ❯ tests/slicesmoke-share-settlement-fixed-point.test.ts:3:1
+      1| import { readFileSync } from 'node:fs';
+      2| import { fileURLToPath } from 'node:url';
+      3| import { parse } from 'acorn';
+       | ^
+      4| import { describe, expect, it } from 'vitest';
+      5| import { projectExplorerRank } from '@cf/domain-progression';
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  13 passed | 59 skipped (72)
+   Start at  05:24:17
+   Duration  4.23s (transform 296ms, setup 0ms, import 3.97s, tests 19ms, environment 0ms)
+
+```
+
+### Step2b bounded-flow patch and focused correction
+
+Both existing-contract patches applied cleanly. The final bounded-flow patch is
+`227fc5c4966e334f2c50791902bfab7f068bda4ae8d4b5fd83b515627f03b651`; it includes the six
+Earth labels and supersedes the earlier Earth-only patch. Final scratch verification: all89
+tests across three existing owners PASS6.49s; syntax PASS. Complete durable-row delta checks
+preserve all unrelated canonical records. Current product/producer bytes are unchanged.
+The initial scratch run caught two missing explicit await wrappers; fixed at the expressions
+without changing the existing async-boundary test. Its exact red follows:
+
+```text
+
+ RUN  v4.1.10 /private/tmp/cf-step2b-bounded-descent-flow/verify/port/v2
+
+ ❯ tests/slicesmoke-arc0-landing-contract.test.ts (13 tests | 1 failed) 90ms
+     × awaits every asynchronous landing route before observing state 18ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/slicesmoke-arc0-landing-contract.test.ts > Slice Arc 0 Landing fault evidence contract > awaits every asynchronous landing route before observing state
+AssertionError: expected [ …(2) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   [
++     "window.__CF_SLICE__.api.landHere(",
++   ],
++   [
++     "window.__CF_SLICE__.api.landHere(",
++   ],
++ ]
+
+ ❯ tests/slicesmoke-arc0-landing-contract.test.ts:1156:36
+    1154|     const unawaited = (source: string) => [...source.matchAll(callPatt…
+    1155|       .filter((match) => source.slice(Math.max(0, match.index - 6), ma…
+    1156|     expect(unawaited(sliceSource)).toEqual([]);
+       |                                    ^
+    1157|     calls.forEach((call, index) => {
+    1158|       expect(sliceSource.slice(call.index - 6, call.index)).toBe('awai…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 2 passed (3)
+      Tests  1 failed | 88 passed (89)
+   Start at  05:35:54
+   Duration  6.90s (transform 368ms, setup 0ms, import 6.05s, tests 619ms, environment 0ms)
+
+```
+
+### Step2b integrated typecheck stop — missing existing-helper declaration
+
+```text
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+tests/slicesmoke-arc0-landing-contract.test.ts(9,3): error TS2305: Module '"../tools/slicesmoke-contract.mjs"' has no exported member 'assessSingleF4ActionCommit'.
+```
+
+The existing JavaScript helper was already exported and runtime-tested; its partial declaration
+file omitted it. Added the matching signature beside the existing sequence signature. No runtime
+code, assertion or test suppression changed. Log SHA256
+`6e2433748247204fe5b8b6c32d9030aeec3ddd248c9b644e3328d0d766b51173`.
+
+### Step2b full-fast Feed mutation-anchor red
+
+```text
+ FAIL  tests/slicesmoke-feed-causal-chain.test.ts > Slice Arc 5 Feed causal-chain evidence > causal-orders both native Feed choice/preview sequences with retained diagnostics
+AssertionError: expected 2 to be 1 // Object.is equality
+
+- Expected
++ Received
+
+- 1
++ 2
+
+ ❯ reverseMarkers tests/slicesmoke-feed-causal-chain.test.ts:2449:46
+    2447|     const reverseMarkers = (candidate: string, first: string, second: …
+    2448|       expect(occurrences(candidate, first)).toBe(1);
+    2449|       expect(occurrences(candidate, second)).toBe(1);
+       |                                              ^
+    2450|       return candidate.replace(first, '__CF_FEED_FIRST__')
+    2451|         .replace(second, first).replace('__CF_FEED_FIRST__', second);
+ ❯ tests/slicesmoke-feed-causal-chain.test.ts:2465:31
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 289 passed (290)
+      Tests  1 failed | 3017 passed | 1 skipped (3019)
+   Start at  05:40:37
+   Duration  61.28s (transform 10.74s, setup 0ms, import 97.21s, tests 114.67s, environment 865ms)
+
+```
+
+The new descent flow legitimately reads the same durable snapshot. Scope the Feed ordering
+mutation to its existing initial-Feed owner, asserting that owner exists and both markers remain
+unique within it; reverse the same two operations and require the same semantic rejection.
+No production source or positive/negative expectation changed. Full log SHA256
+`aeca7ba877029439b86bff8d9fe7644a98604877339ba5e17277a96fc5ae26c9`.
+
+Root initially invoked the patch script from port/v2 with a root-relative path, producing
+`FileNotFoundError: port/v2/tests/slicesmoke-feed-causal-chain.test.ts`. Its following focused
+command therefore repeated the unchanged Feed red; retained `/private/tmp/cf-step2b-feed-focused.log`.
+The actual patch now uses absolute repository paths; no browser ran after this command error.
+
+## Step2b descent-flow correction — final full-fast PASS
+
+Typecheck and artunused PASS; full selected Vitest **290 files / 3,018 passed / 1 skipped**
+with four workers. The Feed causal owner passes all12 focused tests. Exact current code and
+producer remain unchanged fromd469c49; only existing Slice consumers, focused test expectations
+and the omitted existing-helper declaration changed. This new committed source must pass Slice
+and both phone checks before checkpoint2b is accepted.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.478,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.324,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 60.052,
+    "log": "3-npx.log",
+    "sha256": "b8e4fdf1d6810ffd0149be7cd59ededdfebc9c89a5ac88d3f2f6ce20f1642262"
+  }
+]
+```
+
+
+## Final blocked disposition — 2026-09-05
+
+### Decisions made unattended
+
+Continue to require the configured SSH signing identity and clean committed browser source.
+After two identical signing failures and a failed GitHub SSH preflight, preserve every byte
+and stop dependent checkpoint transitions. The unattended instruction does not supply the
+missing 1Password authorization. This is an external authentication blocker, not a reserved
+product decision or an automatic approval-review rejection. No unchanged-source browser retry,
+unsigned checkpoint, authentication change or hosted write was used to bypass it.
+
+The product and focused consumer corrections are complete for 2b, but the step is not accepted.
+The later primary layers remain reviewed preparation: they were never integrated or declared
+green. The signed original WIP and both owned source branches remain preserved. No product
+change was reverted because a signed revert would encounter the same unavailable signer.
+Only the reporting/recovery handoff changed after the final fast suite.
+
+### Exact blocker output
+
+Both attempts at the same new signed correction commit exited128; no new commit object was
+written, and HEAD stayed `d469c499dfaa7d1e09a3755299246b4949c89ee7`:
+
+```text
+error: 1Password: failed to fill whole buffer
+
+fatal: failed to write commit object
+```
+
+The existing GitHub SSH preflight exited255 before any push:
+
+```text
+sign_and_send_pubkey: signing failed for ED25519 "GitHub" from agent: communication with agent failed
+git@github.com: Permission denied (publickey).
+```
+
+Computer Use could not inspect the pending sign prompt because Accessibility and Screen
+Recording permissions were still pending. No permission grant or approval was inferred from
+elapsed time. The signed local HEAD was preserved in a verified Git bundle instead.
+
+### Current per-item WIP disposition
+
+| WIP item | Current disposition |
+| --- | --- |
+| Accepted Starter bioscan Charter | Complete and pushed in2a: explicit later Bioscan settles the authored15 Stardust/Earpiece in one receipt/CAS. |
+| Descent/wave-offs | Product implemented in signed locald469c49; exact consumer corrections staged and all fast checks green. Clean-source browser acceptance and checkpoint blocked by signing. |
+| Fifty-Paragon hunt | Seven prepared layers include exact50 home/genome identities, same-Bioscan catalogue only, found Inspect and separate authored+120 Claim after10. Not integrated; blocked by ordered checkpoint prerequisite. |
+| Exact-instance progression | Six prepared layers include exact individual/twin XP, level/class/innates, wounds/recovery, existing486 cap and finite fractional-XP compatibility. Not integrated; blocked by checkpoint prerequisite. |
+| Mature Atlas | Two prepared layers include List/Chart filters, Home, exact Remove/8-second Undo, route restoration and accessible bounded clusters. Not integrated; blocked by checkpoint prerequisite. |
+| Weekly Charter lifecycle/joins | Parked: outside accepted Starter recovery. |
+| Forge Training | Parked: additional lesson work is outside the ordered scope; existing curriculum copy follows completed mechanics. |
+| Living portrait preview | Parked: separate graphics pilot approval remains required. |
+| Unrelated bulk copy/whole-file WIP replacements | Parked: selective owned changes preserve fresh-start policy, current evidence and signed history. |
+
+The old player import door, real-save-export wait and blanket78-bullet WIP claim are superseded.
+Fresh v2 stays new for everyone; v1.8.9 codec/evidence importBlob and planned Glass ledgers remain.
+Current completed product copy has78 outcomes; no prepared79-outcome Paragon inventory is live.
+Reserved care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities,
+conquest–imbue coexistence and extra Guardian cache stay excluded. Audio-source backup
+requires Nick's destination and is outside this batch. Arc4.5, Arc5.5 HUMAN and Gate C real-device
+persistence reviews stay open.
+
+### Final source and remaining acceptance
+
+- Base develop: `9ea01041dcdc711190bbf909ea8bb743cd993734`.
+- Final Git HEAD: `d469c499dfaa7d1e09a3755299246b4949c89ee7`; signed locally and one commit ahead
+  of the recorded origin. It is not the exact source of the corrected fast PASS.
+- Corrected fast-tested source: that HEAD plus `validated-product-correction.patch`, SHA256
+  `bd43d66b8ab64443180737d157b752af36195c3fadb5f9817e7f5cf7eb1f6a8b`.
+- Last pushed head: `2ae776b17244d8207cb37ee45d9adf52eb99f21d` at08:48:02UTC.
+- Last fully browser-accepted implementation: `4a82f161da2a7b3c4a029421d8a16c23fc62955d`.
+- Final current-source fast suite:290files/3,018passed/1skipped, typecheck/artunused PASS.
+  Glass report selftest PASS; root validation PASS, all50 fingerprints identical; budget selftest
+  PASS81 controls. These final static checks ran against the staged corrected tree, not a newly
+  signed commit. No corrected-source Slice or phone success is claimed.
+- Current producer `8c30457fe75bc5d148d1c184547221b50d32f5079b251200425665677c123d0c`;
+  measurement/ruler/ceilings/samples unchanged. Current78-bullet rendered-li hash
+  `af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53`.
+- Protected reference locks, workflows and Actions policy are byte-identical to base develop.
+
+### Proposed PR fields — held until correction acceptance and Claude review
+
+Base: `develop`
+Source: `openai/review-batch4-gameplay-20260905`
+Title: `Connect authored expedition progression, Starter Charter and deterministic descent`
+
+Description:
+
+> Recover signed Batch4 core onto fresh-start develop: authored Research effects, explicit
+> Discover Life/hazard settlement, nonlethal Flora meals, Scout XP and read-only Records.
+> Complete the accepted Starter bioscan Charter and deterministic terrain/weather descent
+> with canonical wave-off learning, matching Guide/Training copy and exact receipt/CAS fences.
+>
+> Current local validation: typecheck/artunused PASS;290test files/3,018tests pass,1skip;
+> Glass selftest, all50 legacy fingerprints and81 budget controls pass. Core and Starter
+> checkpoints passed Slice and both local Edge phone diagnostics. Descent's corrected source
+> still requires a signed commit and clean-source browser acceptance after a 1Password outage.
+> Paragons, individual progression and mature Atlas are prepared but not included. No hosted
+> run or release is authorized. Keep this PR unopened until the blocked checks and Claude's
+> review are complete; update these fields around the actual accepted final scope.
+
+### Paired handoff and recovery
+
+Codex resumes in the same owned macOS checkout and review branch after 1Password SSH signing
+is available. Inspect the staged correction, commit normally, run the exact new-source
+Slice→small-phone→large-phone sequence, stop first red, and push only the accepted checkpoint.
+Then proceed2c→2d→2e and the stretch list; do not reapply already integrated2a/2b layers.
+Re-run final checks on the eventual accepted head. Current local report/ROADMAP changes must
+join the signed checkpoint before Git handoff.
+
+Claude can read the pushed2a checkpoint now, but cannot read this newer local report through
+Git until signing and pushing recover. Nick need not open Claude for this blocked handoff;
+once the complete candidate is pushed, Claude reviews and Nick authorizes the exact agent-lane
+attempt separately. No PR, label, merge, release, purchase or hosted attempt occurred.
+
+The ignored recovery directory is
+`port/v2/apps/game/smoke/overnight-recovery-20260905/` in this checkout. It contains a verified
+Git bundle preserving signedd469c49 (requires existing pushed2ae776b), the final uncommitted
+patch, prepared remaining primary/reference layers, helper scripts and a hashed manifest.
+It is a local recovery copy, not a remote backup. The existing Git worktree remains authoritative.
+
+### Final static check records
+
+```json
+[
+  {
+    "command": [
+      "node",
+      "tools/glassmatrix.mjs",
+      "--selftest"
+    ],
+    "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac/port/v2",
+    "exitCode": 0,
+    "seconds": 1.975,
+    "log": "/private/tmp/cf-overnight-batch4-20260905/blocked-handoff-final-static/1.log",
+    "sha256": "c8f8ecabf4fa8c386cf0a6474708e6644549228bbf468849c97d5bfaca6ce067"
+  },
+  {
+    "command": [
+      "node",
+      "tools/validate.js"
+    ],
+    "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+    "exitCode": 0,
+    "seconds": 12.659,
+    "log": "/private/tmp/cf-overnight-batch4-20260905/blocked-handoff-final-static/2.log",
+    "sha256": "5ecee9f6bb71ab4e80a6e0400d7759f1f3797cc5441586f717716180bf0e82db"
+  },
+  {
+    "command": [
+      "node",
+      "tools/actions-budget-policy.js",
+      "--selftest"
+    ],
+    "cwd": "/Users/nick/Projects/celestial-frontier-openai-mac",
+    "exitCode": 0,
+    "seconds": 0.129,
+    "log": "/private/tmp/cf-overnight-batch4-20260905/blocked-handoff-final-static/3.log",
+    "sha256": "0063238bf68259d103bbe4ff952457663a031ff20bed4807b703778e1df62a9e"
+  }
+]
+```
+
+## Interim P2-phone analysis — existing accepted2a evidence only
+
+Detailed source IDs, artifact hashes and limits are retained in
+`audits/BATCH4_PHONE_EVIDENCE_20260905.md`. Source is accepted2a
+`4a82f161da2a7b3c4a029421d8a16c23fc62955d`, Edge152.0.4191.62/CDP1.3, one sample per phone.
+No new measurement or current2b browser proof was produced.
+
+| Recorded diagnostic | Small phone | Large phone |
+| --- | ---: | ---: |
+| Replacement-document ready-emitted | 734.8ms | 638.9ms |
+| First tick in that document | 352.7ms | 333.3ms |
+| Reload elapsed | 772ms | 676ms |
+| Actual renderer DPR | 2 | 2 |
+| Combined canvas backing pixels | 1,454,080 | 3,015,840 |
+| Released canvas dimensions, each | 1×1 | 1×1 |
+
+Slice recorded a27ms galaxy rebuild and functional navigation, without route latency
+measurements. Disposed audio snapshot cache active0/peak0/budget32/evictions0 is an inactive
+context, not a populated-cache performance result. No native allocation profile, art-cache
+hit/miss series, cold-boot/TTI or physical iPhone/Safari/thermal measurement is available.
+Fresh P2-phone profiling on the eventual clean committed source remains blocked/pending.
