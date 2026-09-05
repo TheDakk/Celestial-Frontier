@@ -11,7 +11,7 @@
 | 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
 | 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
 | 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
-| 2d exact-instance progression | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped | Pending clean-source Slice and both phones |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
 | 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
 | 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
 | 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
@@ -2944,3 +2944,137 @@ Integration review CLEAR: reviewed layers and accepted descent/Paragon fixes rem
     "sha256": "5d8df778d30a39affc978b4f313b0241fa02c676e64d76ee45858a194276f89e"
   }
 ]
+
+## Checkpoint 2d accepted — source a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303
+
+Exact-instance Compendium progression now shows each individual’s XP, level, class, innate arts, wounds and active-play recovery. Twins retain distinct identities and retired snapshots remain available. The existing curve, 486 XP cap and innate unlocks at levels 3/6 are unchanged; valid fractional XP is displayed without rewriting ownership. No new XP source, Feed stat growth, injury healing, care or bond was added. Passive refresh preserves semantic focus with preventScroll, does not steal focus, and falls back to the owning Close when the focused action disappears or is disabled. The CombatCore adapter, lifter and generated artifact agree; the sealed legacy body remains unchanged. The exact pure-domain source inventory now includes creature-level-progress.ts (88 files), preserving every scanner and mutation control. Guide, Training and eight current references agree. The draft stays at 79 outcomes, with its newly rendered hash pinned together. Only the Compendium producer is refreshed after the final build. Mature Atlas remains the next ordered checkpoint.
+
+Fast PASS: **297 files / 3,071 passed / 1 skipped**. Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures. This reporting successor changes only
+documentation; source-bound browser evidence names the preceding implementation commit exactly.
+Phone reports are local Edge targeted diagnostics, not a twelve-row certificate or named Chrome
+verifier proof. No hosted attempt occurred.
+
+```json
+{
+  "source": "a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303",
+  "fast": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 2.631,
+      "log": "1-npm.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "seconds": 1.377,
+      "log": "2-npm.log",
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "--maxWorkers=4"
+      ],
+      "exitCode": 0,
+      "seconds": 61.135,
+      "log": "3-npx.log",
+      "sha256": "5d8df778d30a39affc978b4f313b0241fa02c676e64d76ee45858a194276f89e"
+    }
+  ],
+  "browser": [
+    {
+      "command": [
+        "node",
+        "tools/slicesmoke.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 0,
+      "seconds": 371.504,
+      "log": "1-node.log",
+      "sha256": "5d01420853f6585d6d96f15b44484e6bd1522c7139faa8cc79c24d46409cc703"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=small-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 16.058,
+      "log": "2-node.log",
+      "sha256": "9884aac455ace9e350c45845e011b3dded941fb5322eb337ed3d53d9c152fcc0"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=large-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 16.1,
+      "log": "3-node.log",
+      "sha256": "27130c381defa1ff248674a4562412382e2400857a413283701650d19cd035ff"
+    }
+  ],
+  "phones": [
+    {
+      "id": "20260905120842186-71078-c483eb15976a",
+      "source": "a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905120842186-71078-c483eb15976a.json"
+    },
+    {
+      "id": "20260905120858092-71208-a8cefc4d6647",
+      "source": "a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905120858092-71208-a8cefc4d6647.json"
+    }
+  ]
+}
+```
