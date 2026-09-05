@@ -29,7 +29,7 @@ WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` stays parked except individually 
 
 | Step | State | Commit / push / gates |
 | --- | --- | --- |
-| 1 — core integration | Second Slice red; bounded current-diagnostic repair | Merge `e77e5e0`, correction `d260f19`; fast green 286 / 2,954 / 1; no Glass or push yet |
+| 1 — core integration | Fourth Slice red; combined-receipt repair | Merge `e77e5e0`; current `b422860`; fast green 286 / 2,955 / 1; no Glass or push yet |
 | 2a — accepted st-scan | Pending | Recover only completed authored scope |
 | 2b — descent/wave-offs | Pending | Canonical-address deterministic outcome |
 | 2c — 50-Paragon hunt | Pending | Existing authored table only |
@@ -141,6 +141,21 @@ extend timeouts or change gameplay without evidence. Full finding retained; no G
 Scout-result correction final fast PASS: **286 files / 2,955 passed / 1 skipped**;
 typecheck/artunused PASS. Exact no-Scout fields and replay preservation are required. New
 commit precedes the next browser sequence; checkpoint 1 still awaits all browser gates/push.
+
+Fourth Slice on `b422860` passed greeting start and every audio lifecycle clause, then failed
+only final capture receipt/result verification (150.495s). Current capture combines plan,
+Scout and save facts in a settlement witness; the old consumer still expects the inner plan.
+Bind the full wrapper independently. Exact red retained; no Glass/audio/product change.
+
+Combined-receipt focused checks PASS (44 tests / 37 wrapper controls). Full fast hit only
+one existing malformed-CLI child timeout (20,224ms / 20,000ms). Local Vitest now runs all
+cases with `--maxWorkers=4`; no timeout, assertion, CI or budget setting changes. Original
+red is retained. This bounds scheduling contention without expanding instrument work.
+
+Periodic backup checkpoint: full four-worker Vitest PASS **286 files / 2,956 passed /
+1 skipped**; typecheck/artunused PASS. Commit and branch-push the full-wrapper correction
+near the two-hour checkpoint, with all four browser reds retained. This is backup progress,
+not completed step-1 acceptance: Slice and both phones still must pass before step 2 begins.
 
 ### Scope and continuation
 

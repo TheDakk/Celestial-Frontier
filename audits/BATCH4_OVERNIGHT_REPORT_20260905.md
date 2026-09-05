@@ -7,7 +7,7 @@ This is a live checkpoint report, not final acceptance. Base develop:
 
 | Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
 | --- | --- | --- | --- | --- |
-| 1 signed core integration | `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; correction `d260f19c01e57815bfb7f3a94ee27b23d867fb08` | Pending | Typecheck/artunused PASS; 286 files / 2,954 passed / 1 skipped (37.82s) | Two retained Slice reds; next correction pending; neither Glass ran |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; current `b42286039b6e7dff1a080d91623550de34944745` | Pending | Typecheck/artunused PASS; 286 files / 2,955 passed / 1 skipped | Four retained Slice reds; combined-receipt correction pending; neither Glass ran |
 | 2a accepted st-scan | Pending | — | — | — |
 | 2b descent/wave-offs | Pending | — | — | — |
 | 2c 50-Paragon hunt | Pending | — | — | — |
@@ -498,6 +498,104 @@ unchanged-source browser sequence.
     "seconds": 38.485,
     "log": "3-npx.log",
     "sha256": "88f403ccd30e21d7c356e41942c86eb4ec80b74753c2b031171edc4025627257"
+  }
+]
+```
+
+## Checkpoint 1 fourth browser red — combined capture settlement receipt
+
+Clean source `b42286039b6e7dff1a080d91623550de34944745` passed Tame greeting start and
+all actual audio lifecycle clauses, then stopped after **150.495s**:
+
+```text
+SLICE SMOKE: FAIL — 1 finding
+SLICE SMOKE: FAILURE TITLES
+  1. ARC 4 TAME GREETING AUDIO
+ARC 4 TAME GREETING AUDIO: isolated native Tame did not arm silently, bind exactly one durable greeting to its assertive toast, remain single-start through close/reopen/refresh/wait, or reload without replay
+```
+
+Only `committedTame` and `exactResult` are false. Fixture, answerable document, silent arm,
+voice owner, accessible counterpart, close/reopen/wait, reload and fresh-fixture isolation are
+true. Current producer `arc4-capture-capacity.ts` wraps the plan in
+`cf-v2-arc4-capture-settlement-witness/v1`; the existing receipt consumer still expects the
+inner `cf-v2-capture-plan-witness/v1` at the top level. Bind the entire combined receipt's
+Scout/Charter/save facts independently before using its inner event; do not merely unwrap or
+accept unknown fields. Full literal finding is in the REDS JSON. Log SHA-256:
+`4f30b14f1b589f4f72328b0402a76d052134e1e211ad57338c1c075bfcaccdaa`.
+Neither phone canary ran; no unchanged-source retry or audio/gameplay change follows.
+The existing failure output retains the classifier/controls, not the full in-memory Tame bundle;
+only seven screenshots were emitted before this stop. No full retained-bundle replay is claimed.
+Current-wrapper validation is independently derived from source and focused controls; the next
+clean-source browser run must establish actual acceptance. The migration digest hashes exactly
+five ordered Arc5-only `{segment, namespace, carrier}` writes with `JSON.stringify`, matching
+the authored writer; sorted canonical JSON or combined Arc4+Arc5 writes would be incorrect.
+
+## Checkpoint 1 combined-receipt correction — scheduling timeout retained
+
+Focused checks PASS **4 files / 44 tests**, including 37 strict wrapper mutations/restorations.
+Full fast: typecheck/artunused PASS; Vitest **1 failed / 285 passed files;
+1 failed / 2,955 passed / 1 skipped** (40.29s). Its only failure was:
+
+```text
+FAIL tests/evidence-chain-tools.test.ts > Slice → Glass → Arc 4 recovery evidence chain > fails closed on one representative malformed profile call per evidence producer
+Error: Test timed out in 20000ms.
+```
+
+That case runs three child programs and took 20,224ms under the full concurrent run. No
+assertion failure was reported. Preserve the exact log SHA-256
+`f248823efe22e2f54550abed84882078f2013b309f16e1759461a42eedbe5f4b`.
+Unattended execution choice: run the same complete local Vitest selection with
+`--maxWorkers=4` to bound CPU contention. This changes local scheduling only; every case,
+assertion, timeout, CI command and budget policy stays unchanged. Retain this limit for
+subsequent overnight checkpoints. The source is unchanged by the scheduling choice.
+No browser ran after the timeout.
+
+## Periodic backup checkpoint — combined-receipt correction fast-green
+
+The complete test selection with four local workers PASS: **286 files / 2,956 passed /
+1 skipped**; typecheck and artunused PASS. Every existing timeout is unchanged. The 37 new
+wrapper controls operate on the small receipt boundary and restore the positive source.
+This correction is being committed and branch-pushed as Nick's roughly two-hour backup
+checkpoint. **Step 1 remains incomplete until Slice and both phone canaries pass.** No later
+gameplay layer is integrated and no hosted run/PR/label follows this push. Exact commit/push
+metadata will be added after the operation; the new clean committed source owns the next
+browser sequence.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.543,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.31,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 57.041,
+    "log": "3-npx.log",
+    "sha256": "ef493efb891cef216eb2a24e15ea376af4c8289cc6c19e83b0393780b55e3da9"
   }
 ]
 ```

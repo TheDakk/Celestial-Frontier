@@ -9,6 +9,7 @@ const {
   ARC4_PERTAR_LEDGER_PREFIX_SELFTEST,
   ARC4_PERTAR_PROGRESSION_TAIL_SELFTEST,
   ARC4_PUBLICATION_PROGRESSION_SELFTEST,
+  ARC4_CAPTURE_SETTLEMENT_SELFTEST,
 } = arc4Contract;
 
 type Assessment = Readonly<{
@@ -180,6 +181,35 @@ const currentOwners = Object.freeze({
   sample: sampleOwner,
   storage: storageOwner,
   press: pressOwner,
+});
+
+describe('current capture settlement receipt binding', () => {
+  it('binds every wrapper and Scout fact, rejects noncanonical or historical-only receipts, and restores green', () => {
+    const result = ARC4_CAPTURE_SETTLEMENT_SELFTEST as Readonly<{
+      positive: boolean;
+      controls: Readonly<Record<string, Readonly<{
+        mutationApplied: boolean; rejected: boolean; restored: boolean;
+      }>>>;
+    }>;
+    const fields = [
+      'schema', 'captureWitness', 'successorDigest', 'ownershipV2Digest',
+      'arc5MigrationWritesDigest', 'scoutXp',
+      ...[
+        'schema', 'firstForSpecies', 'scoutCreatureId', 'xpBefore', 'xpAfter', 'xpAward',
+        'sourceParentDigest', 'sourceSuccessorDigest', 'ownershipParentDigest',
+        'ownershipSuccessorDigest',
+      ].map((key) => `scout.${key}`),
+    ];
+    expect(Object.keys(result.controls)).toEqual([
+      ...fields.flatMap((field) => [`${field}.missing`, `${field}.changed`]),
+      'extraWrapperField', 'extraScoutField', 'oldInnerOnly',
+      'noncanonicalWrapper', 'noncanonicalInner',
+    ]);
+    expect(result.positive).toBe(true);
+    for (const [name, control] of Object.entries(result.controls)) {
+      expect(control, name).toEqual({ mutationApplied: true, rejected: true, restored: true });
+    }
+  });
 });
 
 describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
