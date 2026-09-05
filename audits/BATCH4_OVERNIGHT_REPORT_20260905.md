@@ -1,6 +1,6 @@
 # Batch 4 overnight report — 2026-09-05
 
-**Primary checkpoints 2a–2e accepted and pushed — 2026-09-05.** Ordered stretch checkpoint 3a verifies the existing narrow authority controls. Base develop:
+**Checkpoint 3b implemented, full fast green — 2026-09-05.** Clean-source browser acceptance is next. Prior acceptance and all exact failures remain below. Base develop:
 `9ea01041dcdc711190bbf909ea8bb743cd993734`; owned review branch:
 `openai/review-batch4-gameplay-20260905` (OpenAI/Codex, macOS,
 `/Users/nick/Projects/celestial-frontier-openai-mac`). Clean `openai/mac` remains `84b6f22`.
@@ -13,8 +13,8 @@
 | 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
 | 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
 | 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
-| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
-| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
+| 3b same-owner lists | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
 | 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
 | 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
 
@@ -3450,3 +3450,52 @@ verifier proof. No hosted attempt occurred.
   "phones": []
 }
 ```
+
+## Step3b implementation/full-fast PASS
+
+# Stretch 3b — one production research-order owner
+
+Prepared patch: `/private/tmp/cf-step3b-research-alias/step3b.patch`.
+SHA256: `515cc6b4c36a02811fe705a5e2e335d0ba8b806ca5ea138909a8c52ea6ef0765`.
+Applied at the ordered checkpoint after primary acceptance. Exact execution evidence is recorded with this checkpoint.
+
+`port/v2/packages/domain/opportunity/src/state.ts:33–41` remains the canonical frozen six-ID tuple. `engineering-panel.ts` imports that public `RESEARCH_IDS` through the app's existing dependency and exports `ENGINEERING_RESEARCH_ORDER` as its alias. The public export name and its derived `EngineeringResearchRowId` union remain unchanged. Only the duplicate production tuple is removed: no runtime action, recipe/research content, package/lockfile or browser contract changes.
+
+Independent expectations remain: the panel test authors six literal rows at `port/v2/tests/engineering-panel.test.ts:141–171`, checks their rendered order at `:475–484`, and rejects a missing row and swapped order at `:1237–1247`. `port/v2/tools/engineering-browser-contract.mjs:3–13` explicitly owns its separate six literal IDs; `:958–971` binds the observed research/action inventory to that independent list. Neither oracle is rebuilt from the aliased producer tuple. Thus a missing producer field cannot disappear from both sides through this deduplication.
+
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.833,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.502,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 62.366,
+    "log": "3-npx.log",
+    "sha256": "7644aaa180216401a9f30cf638a1547914d2e7e62e56eada22c53144b61ff1a3"
+  }
+]
