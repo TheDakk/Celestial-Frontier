@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Overnight Batch 4 — checkpoint 2c implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -23,8 +23,13 @@ shows all fifty: found entries Inspect the exact existing Compendium record; mis
 existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
 New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
 Pre-feature development saves with an already-scanned home retain their recorded refusal; no
-backfill or repeated hazard is invented. Static portraits remain unchanged. Individual progression
-presentation and mature Atlas remain later checkpoints.
+backfill or repeated hazard is invented. Static portraits remain unchanged. Exact-instance progression now displays each individual's
+XP, level, class, innate arts, wounds and active-play Recovery, with distinct twins and retained
+tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
+preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
+focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
+remains the next checkpoint.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
@@ -3079,7 +3084,7 @@ ledger they planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`). The draft bulletin is 77
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
 43 authored stable IDs and 41 player topics with search, categories, native-keyboard
-cross-links and capability-aware v2 copy. At the current Step 2c boundary, 35 topics are
+cross-links and capability-aware v2 copy. At the current Step 2d boundary, 35 topics are
 partial and 6 are unavailable; the Capture/Discover guidance separates write-free living-world
 inspection, explicit durable Discover Life, and landed random-pool Capture without inventing targeted selection. It states the current
 capture-backed Charter rule exactly: the first durable successful Tame, Scavenge, or Sample on
@@ -3101,6 +3106,11 @@ ending choices without presenting protected weeklies or later prestige as live. 
 hunt uses missing-slot travel through existing reach checks and found-slot Inspect of the exact
 Compendium record, with static portraits unchanged. At ten exact Paragons, Seeker of Legends
 (`para10`) offers a separate once-only Claim for 120 Stardust; a sighting never pays it automatically.
+A real fauna detail now shows read-only progression in pages of at most 24 exact companions and
+retired records: separate XP, level, class, named innate arts, wounds and active-play Recovery.
+Finite fractional XP in 0–486 is preserved, and the established additional art slots awaken at
+levels 3 and 6. Passive refresh preserves the owned pager or panel Close without scrolling or
+stealing focus elsewhere. This grants no Feed stat/Power growth, injury care, bond or missions.
 Intentionally dormant topics remain source-recorded and player-hidden. No legacy promise is
 presented as current behavior.
 The current local implementation keeps only `release-identity.ts` eager. `guide-content.ts` and
@@ -3111,7 +3121,7 @@ publication. A cached archive publishes on the following microtask because panel
 before the manager exposes the open panel. Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
 categorized v2.0 development bulletin, now 79 bullets. Its rendered ordered SHA-256 is
-`62f3490095d87bb99903ddf3e5ad0e5f03dadbe38da874835bd9f98654756194`. The draft summarizes the
+`cfb34202b24e064af24a80f99083609aa63539d52ebce0042d7b4a231fb854e9`. The draft summarizes the
 implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
 nonempty bullets, the key player-facing outcomes, and a final item reached through bounded adaptive
@@ -3124,13 +3134,15 @@ the Slice/Glass replacement seam. `#importsheet` is only the nonclosable Field T
 surface; it does not restore Bring expedition or its former modal controls. This is deliberately
 an honest manual for the current slice, not a claim that tooltip deep-links,
 Advanced Briefings, or every late-game system has already been ported.
-Field Training is equally explicit about its boundary: the slice runs the six
-welcome/find-Earth/survey/chart/Atlas/land lessons and then an honest
-"Finish for now" step. The handoff points to narrow real-fauna Compendium Feed, Breed/Recovery and
-Rename, but performs no meal, pairing or rename and adds no lesson. Field Scout is separately live
-from real-fauna detail but also has no Training lesson. Cache, tastes/growth/care, duel, hazard,
-healing, forge, Capture, and the rest of the legacy 21-step curriculum remain open with their
-systems; live capture and companion actions do not add a seventh lesson.
+**Current curriculum correction (pre-existing reference drift, 2026-09-05):** Field Training
+uses the existing 15 cards. The six welcome/find-Earth/survey/chart/Atlas/land cards lead into
+read-only Planetside, Engineering, Compendium, Records and combat/horizon orientation, then
+**Finish for now** with CF1 Share/Follow guidance. The board-open and tour cards use the real
+existing panels. The Compendium briefing describes each exact companion's XP, class/innates and
+condition alongside Listen, Feed, Breed/Recovery, Rename and Field Scout; it performs none of
+those actions. Training locks board mutations and grants no capture, meal, pairing, rename,
+Scout change, engineering transaction or combat outcome. It creates no loaned creature cache
+and does not imply that the legacy 21-step hands-on curriculum or broader care systems are live.
 Genuine v1.8.9 checkpoints restore only their eleven owned pre-drill surfaces;
 surrounding expedition state stays with the surrounding save. Unknown checkpoint
 or unavailable-route recovery opens the Field Training recovery sheet (the retained

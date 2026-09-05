@@ -1,6 +1,6 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-## Overnight Batch 4 — checkpoint 2c implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -23,8 +23,13 @@ shows all fifty: found entries Inspect the exact existing Compendium record; mis
 existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
 New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
 Pre-feature development saves with an already-scanned home retain their recorded refusal; no
-backfill or repeated hazard is invented. Static portraits remain unchanged. Individual progression
-presentation and mature Atlas remain later checkpoints.
+backfill or repeated hazard is invented. Static portraits remain unchanged. Exact-instance progression now displays each individual's
+XP, level, class, innate arts, wounds and active-play Recovery, with distinct twins and retained
+tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
+preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
+focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
+remains the next checkpoint.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN

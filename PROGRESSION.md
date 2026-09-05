@@ -1,6 +1,6 @@
 # Celestial Frontier — Player Progression
 
-## Overnight Batch 4 — checkpoint 2c implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -23,8 +23,13 @@ shows all fifty: found entries Inspect the exact existing Compendium record; mis
 existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
 New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
 Pre-feature development saves with an already-scanned home retain their recorded refusal; no
-backfill or repeated hazard is invented. Static portraits remain unchanged. Individual progression
-presentation and mature Atlas remain later checkpoints.
+backfill or repeated hazard is invented. Static portraits remain unchanged. Exact-instance progression now displays each individual's
+XP, level, class, innate arts, wounds and active-play Recovery, with distinct twins and retained
+tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
+preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
+focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
+remains the next checkpoint.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
@@ -792,10 +797,29 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
 ## 2. Rules & mechanics
 
 ### Creature XP & leveling
-- XP lives on the creature's genome as `g.xp`. Level is a pure function of it (`levelOf`):
+
+**Current v2 presentation (Step 2d, 2026-09-05):** a real fauna Compendium detail shows at most
+24 exact companion/history rows per page. Each stable individual retains its own XP, level, class
+and class group, named innate arts/effects, wounds and current assignment/active-play Recovery
+status. Same-species twins never collapse into one progression row. Existing Arc 5 tombstone
+snapshots are labelled retired history, never restored as active ownership.
+
+The existing `levelOf` owner remains `min(9, floor(sqrt(xp / 6)))`, capped at level 9 / 486 XP.
+The registered individual carrier accepts every finite value in 0–486, including fractional XP;
+presentation preserves that exact value and derives level thresholds from CombatCore without
+rounding the stored owner. At 24.5 XP the display is L2, 0.5 of the 30-XP span toward 54. Additional
+innate slots awaken at levels 3 and 6 (54 and 216 XP). Class names and arts come from the existing
+private CombatCore tables through a frozen read projection, not new combat or stat rules.
+
+Opening, paging and refreshing this section writes no XP, genome, ownership or clock. Recovery
+status reads active-play time; reaching its deadline does not clear the stored assignment until
+an existing companion action owns that mutation. Companion Feed remains one exact Meal and
+provides no stat/Power growth or injury care. This display adds no care, bond, mission or XP faucet.
+
+- **Legacy v1.8.9 storage:** XP lives on the creature's genome as `g.xp`. Level is a pure function of it (`levelOf`):
   `level = min(9, floor(sqrt(xp / 6)))` — i.e. **level L requires 6·L² XP**. Cap **L9**.
   - **Retune confirmed:** the curve is **6·l²** (halved from the old **12·l²** — same shape, half the XP per level, so leveling comes twice as fast).
-- Only catalogued **Fauna** earn XP (`awardXP` bails on non-Fauna). `g.xp` is hard-capped at 1e6.
+- **Legacy v1.8.9:** only catalogued **Fauna** earn XP (`awardXP` bails on non-Fauna). `g.xp` is hard-capped at 1e6.
 - **XP faucets — victories AND care.** (v1.8 broadened this; this doc still said "victories only" until v1.8.3.)
   - Friendly **duel** win: **+8**
   - **Conquest** win: **+20 + world tier**
@@ -922,7 +946,10 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
 First catalogue of tier ≥ 5 → **`tier − 3`** ☄ (Legendary=5→+2, up through the summit grades). First Arrival → +2 ☄. Harvest (settled world, hourly) → `6 + tier·4` ☄.
 
 ## 4. Data / save fields
-- **Creature XP:** stored *inside* each Compendium entry's genome — `codex` saves as `{g, f, w}` (genome / from / where), so `g.xp` rides along. No separate xp field.
+- **Legacy v1.8.9 creature XP:** stored *inside* each Compendium entry's genome — `codex` saves as `{g, f, w}` (genome / from / where), so `g.xp` rides along. No separate xp field in that legacy carrier.
+- **Current v2 creature XP:** the registered exact `CreatureInstance` carries its own finite `xp`
+  in 0–486 independently of the shared species genome. The progression display preserves
+  fractional values and retired snapshots; it neither rounds ownership nor writes the catalogue.
 - **`pstats`** — saved verbatim as `pstats` (each key coerced/clamped 1..330 on load).
 - **`me`** — explorer name; **`nh`** — nameplate hue.
 - **`essence`** (current ☄) + **`essenceEarned`** (lifetime, drives breeding-odds bonus and Stockpiler ach); **`harvests`**, **`guardians`**, **`paragons`**, **`br`** (best rank).
