@@ -133,6 +133,15 @@ Diagnostic correction final fast PASS: **286 files / 2,954 passed / 1 skipped**;
 typecheck/artunused and Glass selftest PASS. New correction commit precedes clean-source
 Slice → small-phone → large-phone. No game source or Compendium authority changed.
 
+Third Slice on `46b8dbc` passed Capture setup and stopped at Tame greeting result observation
+(145.897s). Capture/global/ownership succeeded; the exact result checker appears stale against
+the four Scout XP fields and waits past toast expiry. Investigate that bounded owner; do not
+extend timeouts or change gameplay without evidence. Full finding retained; no Glass ran.
+
+Scout-result correction final fast PASS: **286 files / 2,955 passed / 1 skipped**;
+typecheck/artunused PASS. Exact no-Scout fields and replay preservation are required. New
+commit precedes the next browser sequence; checkpoint 1 still awaits all browser gates/push.
+
 ### Scope and continuation
 
 The full instruction is committed in `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md`.

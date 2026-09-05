@@ -428,3 +428,76 @@ A new correction commit now precedes the next clean-source browser sequence.
   }
 ]
 ```
+
+## Checkpoint 1 third browser red — capture result fields
+
+Clean source `46b8dbc12b0f4ff756076f7bd398dc28c9b52f59` passed the corrected Capture
+surface/prefix and stopped after **145.897s**:
+
+```text
+SLICE SMOKE: FAIL — 1 finding
+SLICE SMOKE: FAILURE TITLES
+  1. ARC 4 TAME GREETING AUDIO START
+ARC 4 TAME GREETING AUDIO START: bounded post-release observation did not prove the exact result/global/ownership/claim/counterpart/runtime/toast clauses
+```
+
+Retained assessment: result false; global/ownership/runtime true; claim/counterpart/toast false
+at final observation. The committed capture result contains the four new Scout XP fields.
+Investigate its existing strict result comparison first: the expected audio poll may reject the
+current result until its native toast expires. No change to audio/gameplay or timeout is assumed.
+Full exact finding/observation is in the REDS JSON. Log SHA-256:
+`4735b626b69b9aa6e7610a9d3bb4639517816bd38293c6c615af5d990945eef2`.
+Neither Glass canary ran; no unchanged-source browser retry.
+
+Two existing strict capture-result inventories omitted the Scout fields: generic Pertar action
+results and the Tame greeting start observation. Both prescribed fixtures have no Field Scout;
+the independent expectation is exactly `null / null / null / 0`, with unknown and missing fields
+still refused. Preserve all four fields in the existing Tame close/reopen result projection too.
+No product/audio change, new collector or timeout change is required for this correction.
+
+## Checkpoint 1 Scout result correction — final fast PASS
+
+Focused checks PASS 4 files / 43 tests. Full fast: typecheck/artunused PASS; Vitest
+**286 files / 2,955 passed / 1 skipped**. All original no-Scout result, missing/wrong-field,
+unknown-key and close/reopen restoration boundaries remain strict. A bounded read-only sweep
+found no further living-world Survey receipt assumptions: the three late receipt-bearing
+Survey setups target Mercury and correctly remain. Commit the correction before the next
+unchanged-source browser sequence.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.322,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.147,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run"
+    ],
+    "exitCode": 0,
+    "seconds": 38.485,
+    "log": "3-npx.log",
+    "sha256": "88f403ccd30e21d7c356e41942c86eb4ec80b74753c2b031171edc4025627257"
+  }
+]
+```
