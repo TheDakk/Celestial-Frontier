@@ -1,10 +1,6 @@
 # Batch 4 overnight report — 2026-09-05
 
-**Checkpoint 2c in progress — 2026-09-05.** Core, Starter Charter 2a and descent 2b are
-accepted and pushed through `8546ad2`. Paragons 2c passed full fast on signed `c5094c5`;
-Slice stopped at the saturated-Charter wave-off boundary, before either phone. A bounded
-instrument correction is in preparation. Historical failures, resolved signing outage and
-superseded handoffs remain below. Base develop:
+**Checkpoint 2c accepted — 2026-09-05.** Core, Starter Charter, descent and the Fifty-Paragon hunt are accepted. Signed `16cb949f2caa0398708f195f39c43822df336780` passes full fast, Slice and both phone diagnostics. The reporting checkpoint is being pushed before progression 2d. All fourteen browser reds, corrections and resolved signing outage remain below. Base develop:
 `9ea01041dcdc711190bbf909ea8bb743cd993734`; owned review branch:
 `openai/review-batch4-gameplay-20260905` (OpenAI/Codex, macOS,
 `/Users/nick/Projects/celestial-frontier-openai-mac`). Clean `openai/mac` remains `84b6f22`.
@@ -14,7 +10,7 @@ superseded handoffs remain below. Base develop:
 | 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
 | 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
 | 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
-| 2c 50-Paragon hunt | Implemented; signed source follows | Acceptance pending | Typecheck/artunused PASS; 292 files / 3,046 passed / 1 skipped | Pending clean-source sequence |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
 | 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
 | 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
 | 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
@@ -2753,4 +2749,155 @@ Typecheck/artunused PASS;292files/3,047tests passed/1skip.
     "sha256": "a0891aa5d5137250d2cef1eec039ab324ad850beae658305a7ab2058b7ac082b"
   }
 ]
+```
+
+## Checkpoint 2c accepted — source 16cb949f2caa0398708f195f39c43822df336780
+
+The authored Fifty Paragons now have exact fixed genomes and canonical homes. Explicit Discover
+Life at an eligible home adds the catalogue record in that Bioscan's existing receipt/CAS;
+creatures, specimens and Yield remain unchanged. Found Binder entries Inspect the exact stored
+record; missing entries use existing reach-checked travel. Ten finds unlock the separate,
+once-only authored +120 Stardust Claim. Provenance binds the index to its exact genome and
+record keys to record IDs. Pre-feature development saves with an already-scanned home retain
+their explicit refusal; no backfill or repeated hazard was introduced. Guide, Training and eight
+current references agree, and the draft now has 79 outcomes. Static portraits remain unchanged.
+The missing existing Main import, unused test import and exact source/export inventory omissions
+were corrected before acceptance; full errors remain in the report. The no-DOM denominator is
+now the exact 87 source files with all prior scanner and mutation controls preserved. Compendium
+producer alone was re-derived after the final product rebuild; measurement and ruler are intact.
+Exact-instance progression and mature Atlas remain the next ordered, unintegrated checkpoints.
+
+The saturated-Charter Slice wave-off boundary now binds its deliberate released diagnostic hold to retained held/protected/released evidence. Both save-timestamp readers must agree with encoded legacy data; protected rewards remain exact. The prior red is preserved, default idle predecessors stay strict, and no game behavior changed for this repair.
+The later collision journey now shares the same existing card-action helper at module scope; its geometry and hit-test body is unchanged, and a focused nested-scope negative control covers the exact ReferenceError.
+The phone contrast gate found native light backgrounds on missing Paragon buttons. They now use the existing dark Binder surface and44px touch floor, retaining colors and focus. The existing Claim-button height test is bound to its own selector, preserving its original negative control.
+Protected wave-off save comparison derives only the codec’s exact conquest/mining timestamp clamps on its expected predecessor. Observed successor bytes, rewards, epochs, IDs, order and all neighbors remain checked; the retained collision red replays green without changing its evidence.
+
+Fast PASS: **292 files / 3,047 passed / 1 skipped**. Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures. This reporting successor changes only
+documentation; source-bound browser evidence names the preceding implementation commit exactly.
+Phone reports are local Edge targeted diagnostics, not a twelve-row certificate or named Chrome
+verifier proof. No hosted attempt occurred.
+
+```json
+{
+  "source": "16cb949f2caa0398708f195f39c43822df336780",
+  "fast": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 2.403,
+      "log": "1-npm.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "seconds": 1.721,
+      "log": "2-npm.log",
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "--maxWorkers=4"
+      ],
+      "exitCode": 0,
+      "seconds": 61.777,
+      "log": "3-npx.log",
+      "sha256": "a0891aa5d5137250d2cef1eec039ab324ad850beae658305a7ab2058b7ac082b"
+    }
+  ],
+  "browser": [
+    {
+      "command": [
+        "node",
+        "tools/slicesmoke.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 0,
+      "seconds": 370.62,
+      "log": "1-node.log",
+      "sha256": "7b637fec0e5e46ebed626e37624c7670ac52eed741930d12ae459a5aadbbb00d"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=small-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 15.875,
+      "log": "2-node.log",
+      "sha256": "23108fc61d05fc71877fa5492048983311a173e285c5bf9c8782c6086607e94e"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=large-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 16.029,
+      "log": "3-node.log",
+      "sha256": "fb3fc186dbb5229f038defe2c0a0938f5863cebf538439d0c411e75acee2649c"
+    }
+  ],
+  "phones": [
+    {
+      "id": "20260905115703612-69052-1cb5fa89ae14",
+      "source": "16cb949f2caa0398708f195f39c43822df336780",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905115703612-69052-1cb5fa89ae14.json"
+    },
+    {
+      "id": "20260905115719797-69186-cfa9a36ba628",
+      "source": "16cb949f2caa0398708f195f39c43822df336780",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905115719797-69186-cfa9a36ba628.json"
+    }
+  ]
+}
 ```
