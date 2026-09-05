@@ -1,5 +1,23 @@
 [
   {
+    "source": "15d7a997b4939faf2126eecb076bd8a3abbde893",
+    "command": [
+      "node",
+      "tools/slicesmoke.mjs",
+      "--profile=develop"
+    ],
+    "exitCode": 1,
+    "seconds": 348.047,
+    "logSha256": "5ebaa50edcadbb0561dce232aacc052136b26f74856d62ea33cf118470937aa8",
+    "failureLines": [
+      "SLICE SMOKE: FAIL \u2014 1 finding",
+      "SLICE SMOKE: FAILURE TITLES",
+      "  1. harness",
+      "SLICE SMOKE: FAILURE DETAILS",
+      "  - harness: phoneCardActionCheck is not defined"
+    ]
+  },
+  {
     "source": "c5094c5759e88973aead5468d20b437311fdd69d",
     "command": [
       "node",

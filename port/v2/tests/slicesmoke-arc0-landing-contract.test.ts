@@ -1,3 +1,4 @@
+import { parse } from 'acorn';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
@@ -202,6 +203,32 @@ const exactPertarSurveyRouteEvidence = () => ({
 });
 
 describe('Slice Arc 0 Landing fault evidence contract', () => {
+  it('shares the one unchanged card-action factory across phone and later collision scopes', () => {
+    const topLevelFactories = (source: string) => parse(source, {
+      ecmaVersion: 'latest', sourceType: 'module',
+    }).body.filter((node: any) => node.type === 'VariableDeclaration'
+      && node.declarations.some((entry: any) => entry.id.type === 'Identifier'
+        && entry.id.name === 'phoneCardActionCheck'));
+    const declarations = topLevelFactories(sliceSource);
+    expect(declarations).toHaveLength(1);
+    expect(occurrences(sliceSource, 'const phoneCardActionCheck =')).toBe(1);
+    const declaration = declarations[0]!;
+    const exactFactory = sliceSource.slice(declaration.start, declaration.end);
+    const run = (factory: string) => Function(`${factory}\nreturn phoneCardActionCheck('landcta');`)();
+    expect(run(exactFactory)).toContain('#survey [data-act="landcta"]');
+    expect(run(exactFactory)).toContain('b.height>=44');
+    const nested = sliceSource.replace(exactFactory, `{ ${exactFactory} }`);
+    expect(topLevelFactories(nested)).toHaveLength(0);
+    expect(() => run(`{ ${exactFactory} }`)).toThrow(ReferenceError);
+    expect(topLevelFactories(nested.replace(`{ ${exactFactory} }`, exactFactory))).toHaveLength(1);
+    expect(run(exactFactory)).toContain('#survey [data-act="landcta"]');
+    proveEachMarkerRequired(sliceSource, [
+      ['phone wave-off action', "const learnedLandAction = await evalNavPh(phoneCardActionCheck('landcta'));"],
+      ['desktop panel wave-off action', "const nextAction = await evalPanel(phoneCardActionCheck('landcta'));"],
+      ['later collision wave-off action', "const nextAction = await evalF4Control(collisionTarget.session, phoneCardActionCheck('landcta'));"],
+    ]);
+  });
+
   it('keeps desktop Mercury waits bound to the explicitly staged compatibility document', async () => {
     const owner = section(sliceSource,
       '  const completeDesktopMercuryLand = async (label, { migratedDocumentToken = null } = {}) => {',

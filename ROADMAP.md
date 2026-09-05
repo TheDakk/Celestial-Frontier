@@ -65,6 +65,10 @@ Compendium producer6f8e0ee67716ac716e13ce5acbe9eaebfaeb75bdffc96c354d098bfecff0d
 Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12, ruler, ceilings
 and samples unchanged. Exact-instance progression2d and mature Atlas2e remain prepared/unintegrated.
 
+### Latest boundary status
+
+Signed15d7a99 stopped at the later collision wave-off caller because phoneCardActionCheck was outside its lexical scope. The single unchanged helper now lives at module scope; all callers and geometry are retained. Full fast passes292files/3,047tests/1skip. Both exact browser reds are retained. A new signed clean-source browser sequence follows; no phones have run on the red sources.
+
 ### Parked scope and paired handoff
 
 Weeklies, Forge Training, living portrait preview and unrelated bulk WIP copy remain parked.
