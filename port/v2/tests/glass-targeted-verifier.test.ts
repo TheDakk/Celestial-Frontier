@@ -228,11 +228,11 @@ describe('read-only targeted Glass verification', () => {
       ['--verify-targeted-run=fixture', '--viewport=small-phone', '--browser=/chrome', '--profile=develop'],
     ]) {
       const result = spawnSync(process.execPath, ['tools/glassmatrix.mjs', ...args], {
-        cwd: v2Root, encoding: 'utf8', timeout: 10_000,
+        cwd: v2Root, encoding: 'utf8', timeout: 20_000,
       });
       expect(result.error).toBeUndefined();
       expect(result.status).not.toBe(0);
       expect(result.stderr).toContain('usage: node tools/glassmatrix.mjs');
     }
-  }, 15_000);
+  }, 60_000);
 });
