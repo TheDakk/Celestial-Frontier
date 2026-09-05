@@ -157,3 +157,158 @@ Claude reads the pushed branch for morning review; Nick need not open the other 
   }
 ]
 ```
+
+## Checkpoint 1 first browser red — retained, no retry of unchanged source
+
+Real signed-core merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5` has parents
+`9ea01041dcdc711190bbf909ea8bb743cd993734` and `53770697f6613da3ba469868dae24cf0edc3f58d`.
+Slice stopped after **33.262s**; neither Glass canary started:
+
+```text
+SLICE SMOKE: FAIL — 1 finding
+SLICE SMOKE: FAILURE TITLES
+  1. POINTER EARTH SURVEY
+POINTER EARTH SURVEY: Survey did not reach its exact same-document fixed point before the dependent action
+```
+
+```json
+{
+  "source": "e77e5e09a0840a2ad7d33a81c95c7bc784523ae5",
+  "exitCode": 1,
+  "seconds": 33.262,
+  "firstFailure": "POINTER EARTH SURVEY",
+  "assessment": {
+    "status": "pending",
+    "reasons": [
+      "Survey action commit: exact raw revision successor",
+      "Survey action commit: exact live runtime successor",
+      "Survey action commit: exact SessionRNG successor",
+      "Survey action commit: exact action receipt",
+      "Survey action commit: exact persistence outcome",
+      "Survey action commit: exact published world outcome"
+    ]
+  },
+  "expected": {
+    "documentToken": "2023af8c-e4fd-4ad7-8608-61017b9e5f01",
+    "renderedSerial": 1,
+    "surveyTarget": "world",
+    "route": {
+      "mode": "system",
+      "gal": 999,
+      "galX": 90,
+      "galY": -60,
+      "star": 424242,
+      "starX": 560,
+      "starY": 170,
+      "planet": null,
+      "planetOrdinal": null,
+      "navGalaxyKey": "CF1|g:999@90,-60",
+      "navStarKey": "CF1|g:999@90,-60|s:424242@560,170",
+      "navWorldKey": null,
+      "epoch": 0
+    },
+    "presentation": {
+      "cardOpen": true,
+      "cardTitle": "Earth",
+      "actionOk": true,
+      "actionLabel": "\u26f3 Land"
+    },
+    "settlement": "commit"
+  },
+  "logSha256": "5c19919decee1fcfefc00bc35cab5b295577a8539cb46c57796aec836d7e71c4"
+}
+```
+
+The old setup expected an `arc9-survey-v1` write from opening Earth's card. Approved core
+`startPlanetSurvey` deliberately keeps **living-world** inspection write-free and gives its
+Survey/hazard transaction to explicit Discover Life. Nonliving Mercury and star observations
+still write, and those expectations remain. Existing `current` settlement means a completed
+Survey owner with `current:world`; inspection preserves the earlier diagnostic, so that mode
+cannot honestly represent the new action. The existing fixed-point assessor receives a narrow
+world-inspection expectation requiring exact unchanged raw/save/RNG/runtime/receipt authority,
+unchanged prior outcome and the same idle route/card/action. Existing star/current/commit
+contracts and subsequent Atlas/Share/Land commits remain. Focused mutation controls require a
+write or outcome drift to fail. No new collector, budget, timeout or retry owner is added.
+
+Automatic approval review initially rejected broad `git add -A` because three resolved files
+still had unmerged index entries. Their contents were separately checked for conflict markers,
+Slice syntax and the 77-count, then those exact three files were staged. The empty unmerged
+list and clean staged diff allowed the normal signed merge commit; no approval bypass occurred.
+
+### Inspection repair diagnostics
+
+The first focused run passed 127 of 128 cases and stopped on two stale test-only mutation
+markers in `tests/slicesmoke-arc0-landing-contract.test.ts`:
+
+```text
+collects one awaited action across a held and explicitly released convergence reload
+Expected []
+Received: receipt control splice guard: expected one marker, got 0
+Received: Ocean split mutant: expected one marker, got 0
+```
+
+The markers now name the injected receipt/Ocean writes. That file then passed 12/12; the
+realistic compact-snapshot early fixed-point suite passed 49/49. Those focused outputs are
+retained in the subagent transcript, not a fabricated disk log. The first full repair gate
+stopped at typecheck (artunused and Vitest did not start):
+
+```text
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+tests/slicesmoke-initial-core-flow-fixed-point.test.ts(226,79): error TS2345: Argument of type '{ readonly documentToken: "initial-milky-way-owner-token"; readonly renderedSerial: 8; readonly surveyTarget: 'world'; readonly settlement: 'inspection'; readonly route: { readonly gal: 999; ... 11 more ...; readonly navStarKey: 'CF1|g:999@90,-60|s:424242@560,170'; }; readonly presentation: { readonly cardOpen: true...' is not assignable to parameter of type 'Readonly<{ readonly documentToken: string; readonly renderedSerial: number; readonly surveyTarget: "star" | "world"; readonly route: Readonly<{ readonly mode: "galaxy" | "system"; readonly gal: number; ... 10 more ...; readonly epoch: number; }>; readonly presentation?: Readonly<...> | null; readonly settlement?: "c...'.
+  Types of property 'settlement' are incompatible.
+    Type '"inspection"' is not assignable to type '"commit" | "current" | "either"'.
+tests/slicesmoke-initial-core-flow-fixed-point.test.ts(233,20): error TS2322: Type '"inspection"' is not assignable to type '"commit" | "current" | "either"'.
+tests/slicesmoke-initial-core-flow-fixed-point.test.ts(252,59): error TS2345: Argument of type '{ readonly documentToken: "initial-milky-way-owner-token"; readonly renderedSerial: 8; readonly surveyTarget: 'world'; readonly settlement: 'inspection'; readonly route: { readonly gal: 999; ... 11 more ...; readonly navStarKey: 'CF1|g:999@90,-60|s:424242@560,170'; }; readonly presentation: { readonly cardOpen: true...' is not assignable to parameter of type 'Readonly<{ readonly documentToken: string; readonly renderedSerial: number; readonly surveyTarget: "star" | "world"; readonly route: Readonly<{ readonly mode: "galaxy" | "system"; readonly gal: number; ... 10 more ...; readonly epoch: number; }>; readonly presentation?: Readonly<...> | null; readonly settlement?: "c...'.
+  Types of property 'settlement' are incompatible.
+    Type '"inspection"' is not assignable to type '"commit" | "current" | "either"'.
+tests/slicesmoke-initial-core-flow-fixed-point.test.ts(254,71): error TS2345: Argument of type '{ readonly documentToken: "initial-milky-way-owner-token"; readonly renderedSerial: 8; readonly surveyTarget: 'world'; readonly settlement: 'inspection'; readonly route: { readonly gal: 999; ... 11 more ...; readonly navStarKey: 'CF1|g:999@90,-60|s:424242@560,170'; }; readonly presentation: { readonly cardOpen: true...' is not assignable to parameter of type 'Readonly<{ readonly documentToken: string; readonly renderedSerial: number; readonly surveyTarget: "star" | "world"; readonly route: Readonly<{ readonly mode: "galaxy" | "system"; readonly gal: number; ... 10 more ...; readonly epoch: number; }>; readonly presentation?: Readonly<...> | null; readonly settlement?: "c...'.
+  Types of property 'settlement' are incompatible.
+    Type '"inspection"' is not assignable to type '"commit" | "current" | "either"'.
+```
+
+The matching public declaration now admits `inspection` alongside the unchanged existing modes.
+No game code or Compendium producer changed during this repair. Final fast results follow.
+
+Inspection repair final fast: typecheck/artunused PASS; **286 files / 2,954 passed / 1 skipped**
+(37.82s Vitest). These results apply to the correction committed after `e77e5e0`; the browser
+run will start only from the resulting clean source.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.343,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.481,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run"
+    ],
+    "exitCode": 0,
+    "seconds": 38.452,
+    "log": "3-npx.log",
+    "sha256": "0a5fc974cf11c4a920d5739b8fe36abad67eead61c6bd189cef5d6917536c42d"
+  }
+]
+```

@@ -8757,6 +8757,7 @@ try {
   }
   await waitForDesktopSurveyFixedPoint({
     label: 'pointer Earth Survey',
+    settlement: 'inspection',
     beforeAuthority: pointerEarthBeforeAuthority,
     routeState: pointerEarthRoute,
     cardTitle: 'Earth',
@@ -8810,7 +8811,7 @@ try {
     cardTitle: 'Earth',
     actionLabel: '⛳ Land',
     actionExpression: earthLandActionCheck,
-    settlement: 'current',
+    settlement: 'inspection',
   });
   const surveyCloseCheck = `(()=>{ const card=document.getElementById('survey'),closes=card?[...card.querySelectorAll('[data-survey-close]')]:[],
     close=closes[0]||null,foreign=card?[...card.querySelectorAll('[data-pnx]')]:[],c=card?.getBoundingClientRect(),r=close?.getBoundingClientRect(),
@@ -15377,18 +15378,13 @@ try {
       && after.some(({ key }) => key === addedKey && !beforeByKey.has(key))
       && before.every(({ key, raw }) => afterByKey.get(key) === raw);
   };
-  const arc0LandingSurveyReceiptDeltaExact = (beforeRaw, afterRaw) => {
-    const before = arc0LandingSurveyReceipts(beforeRaw);
-    const after = arc0LandingSurveyReceipts(afterRaw);
-    const receipt = after[0];
-    return before.length === 0 && after.length === 1
-      && receipt?.key === `receipt:${receipt?.row?.ordinal}`
-      && receipt?.raw === JSON.stringify(receipt?.row)
-      && receipt?.row?.ordinal === beforeRaw?.authority?.sessionRng?.ordinal
-      && receipt?.row?.kind === 'arc9-survey-v1'
-      && arc0LandingSurveyReceiptPattern.test(receipt?.row?.witness ?? '')
-      && receipt?.row?.witness === ARC0_PERTAR_SURVEY_RECEIPT_WITNESS
-      && arc0LandingReceiptDeltaExact(beforeRaw, afterRaw, receipt?.key);
+  const arc0LandingSurveyReceiptsUnchanged = (beforeRaw, afterRaw) => {
+    return arc0LandingSurveyReceipts(beforeRaw).length === 0
+      && arc0LandingSurveyReceipts(afterRaw).length === 0
+      && arc0LandingReceiptArraysAligned(beforeRaw)
+      && arc0LandingReceiptArraysAligned(afterRaw)
+      && canonicalJson(afterRaw?.receiptKeys) === canonicalJson(beforeRaw?.receiptKeys)
+      && canonicalJson(afterRaw?.receiptRawRows) === canonicalJson(beforeRaw?.receiptRawRows);
   };
   const arc0LandingSurveyOwnedProjection = (raw) => ({
     surveyed: structuredClone(raw?.legacy?.surveyed ?? null),
@@ -15397,21 +15393,18 @@ try {
     bestRank: raw?.legacy?.br ?? null,
     unlocked: structuredClone(raw?.legacy?.ach ?? null),
   });
-  const arc0LandingSurveyDeltaExact = (beforeRaw, afterRaw) => {
+  const arc0LandingSurveyStateUnchanged = (beforeRaw, afterRaw) => {
     const before = arc0LandingSurveyOwnedProjection(beforeRaw);
     const after = arc0LandingSurveyOwnedProjection(afterRaw);
     return Array.isArray(before.surveyed) && Array.isArray(before.ptypes)
       && Array.isArray(before.starKinds) && Array.isArray(before.unlocked)
       && !before.surveyed.includes(ARC4_PERTAR_FIXTURE.worldKey)
-      && canonicalJson(after.surveyed)
-        === canonicalJson([...before.surveyed, ARC4_PERTAR_FIXTURE.worldKey])
-      && after.surveyed.filter((key) => key === ARC4_PERTAR_FIXTURE.worldKey).length === 1
-      && !before.ptypes.includes('ocean')
-      && canonicalJson(after.ptypes) === canonicalJson([...before.ptypes, 'ocean'])
-      && after.ptypes.filter((planetType) => planetType === 'ocean').length === 1
-      && canonicalJson(after.starKinds) === canonicalJson(before.starKinds)
+      && !after.surveyed?.includes(ARC4_PERTAR_FIXTURE.worldKey)
+      && !before.ptypes.includes('ocean') && !after.ptypes?.includes('ocean')
       && before.bestRank === 3 && after.bestRank === 3
-      && canonicalJson(after.unlocked) === canonicalJson(before.unlocked);
+      && canonicalJson(after) === canonicalJson(before)
+      && ['legacyRaw', 'playerRaw', 'creaturesRaw', 'catalogRaw', 'inventoryRaw',
+        'settingsRaw', 'authorityJson'].every((field) => afterRaw?.[field] === beforeRaw?.[field]);
   };
   const arc0LandingSurveyLivePublicationExact = (sourceFixture, fixture) => {
     const raw = fixture?.raw;
@@ -15435,12 +15428,13 @@ try {
         && state?.save?.stats?.surveys === legacy?.surveyed?.length
         && state?.save?.stats?.bestRank === legacy?.br
         && canonicalJson(state?.save?.unlocked) === canonicalJson(legacy?.ach)
-        && state?.persistence?.lastOutcome === `arc9-survey-committed:${raw?.revision}`
+        && state?.persistence?.lastOutcome === sourceFixture?.state?.persistence?.lastOutcome
+        && state?.landing?.surveyOutcome === sourceFixture?.state?.landing?.surveyOutcome
         && runtime?.revision === raw?.revision
         && runtime?.sessionSeed === authority?.seed
         && runtime?.sessionOrdinal === authority?.ordinal
         && canonicalJson(runtime?.sessionDraws) === canonicalJson(authority?.draws)
-        && runtime?.commits === sourceFixture?.state?.persistence?.runtime?.commits + 1
+        && runtime?.commits === sourceFixture?.state?.persistence?.runtime?.commits
         && state?.sceneResources?.pendingPersistenceWrites === 0
         && state?.landing?.lastOutcome === null
         && arc0LandingCoordinatorIdle(state, { clearFault: true });
@@ -15460,18 +15454,20 @@ try {
       awaitedSettlement: evidence?.surveySettledState?.persistence?.runtime?.revision
           === afterRaw?.revision
         && evidence?.surveySettledState?.persistence?.lastOutcome
-          === `arc9-survey-committed:${afterRaw?.revision}`
+          === sourceFixture?.state?.persistence?.lastOutcome
+        && evidence?.surveySettledState?.landing?.surveyOutcome
+          === sourceFixture?.state?.landing?.surveyOutcome
         && arc0LandingCoordinatorIdle(evidence?.surveySettledState, { clearFault: true }),
       sameDocument: fixture?.token === sourceFixture?.token
         && evidence?.surveyedReady?.token === sourceFixture?.token
         && fixture?.state?.persistence?.documentToken === sourceFixture?.token,
-      oneAtomicCommit: afterRaw?.revision === beforeRaw?.revision + 1
+      noAtomicCommit: afterRaw?.revision === beforeRaw?.revision
         && afterRaw?.revisionRaw === String(afterRaw.revision)
         && afterAuthority?.seed === beforeAuthority?.seed
-        && afterAuthority?.ordinal === beforeAuthority?.ordinal + 1
+        && afterAuthority?.ordinal === beforeAuthority?.ordinal
         && canonicalJson(afterAuthority?.draws) === canonicalJson(beforeAuthority?.draws),
-      oneSurveyReceipt: arc0LandingSurveyReceiptDeltaExact(beforeRaw, afterRaw),
-      durableSurveyDelta: arc0LandingSurveyDeltaExact(beforeRaw, afterRaw),
+      noSurveyReceipt: arc0LandingSurveyReceiptsUnchanged(beforeRaw, afterRaw),
+      durableSurveyUnchanged: arc0LandingSurveyStateUnchanged(beforeRaw, afterRaw),
       currentRoute: arc0LandingSurveyRouteExact(
         fixture?.state, evidence?.surveyCardCode, evidence?.surveyTarget,
       ),
@@ -15593,7 +15589,7 @@ try {
         && Number.isSafeInteger(material?.quantityAfter)
         && new Map(actualCargo).get(material.id) === material.quantityAfter);
     return beforeReceipts.length === 0 && committedReceipts.length === 1
-      && arc0LandingSurveyReceipts(beforeRaw).length === 1
+      && arc0LandingSurveyReceipts(beforeRaw).length === 0
       && arc0LandingReceiptDeltaExact(beforeRaw, committedRaw, receipt?.key)
       && receipt?.raw === JSON.stringify(receipt?.row)
       && Number.isSafeInteger(beforeAuthorityOrdinal)
@@ -15771,7 +15767,7 @@ try {
       failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: retained source fault control did not reject before Survey; no product action was issued: '
         + JSON.stringify({ sourceRetainedFaultRejected, sourceRetainedFaultControl }));
     }
-    const expectedSurveyRevision = sourceFixture.raw.revision + 1;
+    const expectedSurveyRevision = sourceFixture.raw.revision;
     let surveyAction;
     try {
       surveyAction = await evalIn(`(async()=>{const S=window.__CF_SLICE__;
@@ -15804,7 +15800,8 @@ try {
           &&s.starX===${ARC4_PERTAR_FIXTURE.publicStar.x}&&s.starY===${ARC4_PERTAR_FIXTURE.publicStar.y}
           &&s.planet===null&&s.planetOrdinal===null&&s.cardOpen===true&&s.cardTitle==='Pertar'
           &&s.persistence?.runtime?.revision===${expectedSurveyRevision}
-          &&s.persistence?.lastOutcome==='arc9-survey-committed:${expectedSurveyRevision}'
+          &&s.persistence?.lastOutcome===${JSON.stringify(sourceFixture.state.persistence.lastOutcome)}
+          &&s.landing?.surveyOutcome===${JSON.stringify(sourceFixture.state.landing.surveyOutcome)}
           &&s.sceneResources?.pendingPersistenceWrites===0
           &&s.landing?.actionCoordinator?.inFlight===false
           &&s.landing?.actionCoordinator?.owner?.busy===false?s:null})()`);
@@ -15862,22 +15859,25 @@ try {
     const surveyReceiptControlAligned = arc0LandingReceiptArraysAligned(
       surveyReceiptControl.fixture.raw,
     );
-    const surveyReceiptIndex = surveyReceiptControl.fixture.raw.receiptRows.findIndex(
-      (row) => row?.kind === 'arc9-survey-v1',
-    );
-    if (surveyReceiptControlAligned && surveyReceiptIndex >= 0) {
-      surveyReceiptControl.fixture.raw.receiptRows.splice(surveyReceiptIndex, 1);
-      surveyReceiptControl.fixture.raw.receiptKeys.splice(surveyReceiptIndex, 1);
-      surveyReceiptControl.fixture.raw.receiptRawRows.splice(surveyReceiptIndex, 1);
+    const surveyReceiptIndex = surveyReceiptControl.fixture.raw.receiptRows.length;
+    const syntheticSurveyReceipt = {
+      ordinal: sourceFixture.raw.authority.sessionRng.ordinal,
+      kind: 'arc9-survey-v1', witness: ARC0_PERTAR_SURVEY_RECEIPT_WITNESS,
+    };
+    if (surveyReceiptControlAligned) {
+      surveyReceiptControl.fixture.raw.receiptRows.push(syntheticSurveyReceipt);
+      surveyReceiptControl.fixture.raw.receiptKeys.push(`receipt:${syntheticSurveyReceipt.ordinal}`);
+      surveyReceiptControl.fixture.raw.receiptRawRows.push(JSON.stringify(syntheticSurveyReceipt));
     }
-    const surveyWitnessControl = structuredClone(surveyEvidence);
+    const surveyWitnessControl = structuredClone(surveyReceiptControl);
     let surveyWitnessControlMutated = false;
-    if (surveyReceiptControlAligned && surveyReceiptIndex >= 0) {
+    if (surveyReceiptControlAligned) {
       const row = surveyWitnessControl.fixture.raw.receiptRows[surveyReceiptIndex];
       row.witness = `arc9sv1:${'0'.repeat(64)}`;
       surveyWitnessControl.fixture.raw.receiptRawRows[surveyReceiptIndex]
         = JSON.stringify(row);
       surveyWitnessControlMutated = row.witness !== ARC0_PERTAR_SURVEY_RECEIPT_WITNESS
+        && arc0LandingSurveyReceiptPattern.test(row.witness)
         && arc0LandingReceiptArraysAligned(surveyWitnessControl.fixture.raw);
     }
     const surveyRouteControl = structuredClone(surveyEvidence);
@@ -15923,9 +15923,8 @@ try {
       return control;
     };
     const surveyPtypeControl = surveyDeltaControl((raw) => {
-      raw.legacy.ptypes[raw.legacy.ptypes.length - 1] = 'control-ocean';
-      raw.catalogRow.data.ptypes[raw.catalogRow.data.ptypes.length - 1]
-        = 'control-ocean';
+      raw.legacy.ptypes.push('ocean');
+      raw.catalogRow.data.ptypes.push('ocean');
     });
     const surveyRankControl = surveyDeltaControl((raw, state) => {
       raw.legacy.br = 4;
@@ -15957,8 +15956,8 @@ try {
     };
     if (!surveyReceiptControlAligned || !surveyWitnessControlMutated
       || surveyControls.preSurveyBaseline.ok
-      || !arc0LandingSurveyIsolatedControl(surveyControls.receipt, 'oneSurveyReceipt')
-      || !arc0LandingSurveyIsolatedControl(surveyControls.witness, 'oneSurveyReceipt')
+      || !arc0LandingSurveyIsolatedControl(surveyControls.receipt, 'noSurveyReceipt')
+      || !arc0LandingSurveyIsolatedControl(surveyControls.witness, 'noSurveyReceipt')
       || !arc0LandingSurveyIsolatedControl(surveyControls.route, 'currentRoute')
       || !arc0LandingSurveyIsolatedControl(
         surveyControls.publication, 'currentLivePublication',
@@ -15979,13 +15978,13 @@ try {
       ) || !arc0LandingSurveyIsolatedControl(
         surveyControls.holdSequence, 'currentLivePublication',
       ) || !arc0LandingSurveyIsolatedControl(
-        surveyControls.ptype, 'durableSurveyDelta',
+        surveyControls.ptype, 'durableSurveyUnchanged',
       ) || !arc0LandingSurveyIsolatedControl(
-        surveyControls.rank, 'durableSurveyDelta',
+        surveyControls.rank, 'durableSurveyUnchanged',
       ) || !arc0LandingSurveyIsolatedControl(
-        surveyControls.unlocked, 'durableSurveyDelta',
+        surveyControls.unlocked, 'durableSurveyUnchanged',
       )) {
-      failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: explicit Survey did not settle as one current-route receipt before Landing faults were armed: '
+      failSliceWithoutCascade('ARC 0 LANDING SURVEY SETUP: living-world inspection did not retain its exact no-write fixed point before Landing faults were armed: '
         + JSON.stringify({ assessment: surveyAssessment, controls: surveyControls,
           evidence: surveyEvidence }));
     }
@@ -16221,20 +16220,20 @@ try {
   let arc0LandingPublicationPrefixControlPrepared = true;
   for (const raw of [arc0LandingPublicationPrefixControl.heldRaw,
     arc0LandingPublicationPrefixControl.reloadedRaw]) {
-    const surveyReceiptIndexes = raw.receiptRows.map((row, index) => (
-      row?.kind === 'arc9-survey-v1' ? index : -1
-    )).filter((index) => index >= 0);
-    if (!arc0LandingReceiptArraysAligned(raw) || surveyReceiptIndexes.length !== 1) {
+    if (!arc0LandingReceiptArraysAligned(raw)
+      || arc0LandingSurveyReceipts(raw).length !== 0) {
       arc0LandingPublicationPrefixControlPrepared = false;
       continue;
     }
-    const surveyReceiptIndex = surveyReceiptIndexes[0];
-    raw.receiptRows[surveyReceiptIndex].witness += ':prefix-control';
-    raw.receiptRawRows[surveyReceiptIndex] = JSON.stringify(
-      raw.receiptRows[surveyReceiptIndex],
-    );
+    const prefixOrdinal = Math.max(-1, ...raw.receiptRows.map((row) => row.ordinal)) + 1;
+    const unexpectedPrefix = { ordinal: prefixOrdinal, kind: 'arc9-survey-v1',
+      witness: ARC0_PERTAR_SURVEY_RECEIPT_WITNESS };
+    raw.receiptRows.unshift(unexpectedPrefix);
+    raw.receiptKeys.unshift(`receipt:${prefixOrdinal}`);
+    raw.receiptRawRows.unshift(JSON.stringify(unexpectedPrefix));
     arc0LandingPublicationPrefixControlPrepared
-      &&= arc0LandingReceiptArraysAligned(raw);
+      &&= arc0LandingReceiptArraysAligned(raw)
+        && arc0LandingSurveyReceipts(raw).length === 1;
   }
   const arc0LandingPublicationOrdinalControl = structuredClone(
     arc0LandingPublicationEvidence,
@@ -23415,6 +23414,7 @@ try {
   }
   await waitForKeyboardSurveyFixedPoint({
     label: 'keyboard journey Earth Survey',
+    settlement: 'inspection',
     beforeAuthority: kEarthBeforeAuthority,
     routeState: kEarthRoute,
     cardTitle: 'Earth',
@@ -23450,7 +23450,7 @@ try {
     cardTitle: 'Earth',
     actionLabel: '⛳ Land',
     actionExpression: keyboardJourneyLandActionCheck,
-    settlement: 'current',
+    settlement: 'inspection',
     allowFresh: true,
   });
   await keyK('Enter', 'Enter');
@@ -24468,6 +24468,7 @@ try {
   }
   await waitForPhoneSurveyFixedPoint({
     label: 'phone Earth Survey',
+    settlement: 'inspection',
     beforeAuthority: phoneEarthBeforeAuthority,
     routeState: phoneSolSetup,
     cardTitle: 'Earth',
@@ -24635,7 +24636,7 @@ try {
     cardTitle: 'Earth',
     actionLabel: '⛳ Land',
     actionExpression: phoneCardActionCheck('landcta'),
-    settlement: 'current',
+    settlement: 'inspection',
     allowFresh: true,
   });
   const phoneReland = await evalNavPh(phoneCardActionCheck('landcta'));

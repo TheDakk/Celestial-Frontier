@@ -3560,8 +3560,9 @@ export function buildEarlyCoreFlowActionSurfaceExpression(actionExpression) {
 /** Certify an exact early core-flow action predecessor. Route/card paint alone
  * is insufficient: the document must also own current writable F4 authority
  * and the shared action coordinator must have returned to its idle fixed
- * point. Galaxy cards are presentation-only; this contract starts at the
- * first receipt-bearing star/world Survey before Enter-system or Land. */
+ * point. Galaxy cards are presentation-only. Star and nonliving-world Survey
+ * retain their exact commit/current contracts; a living-world card uses a
+ * separate no-write inspection expectation before Land or Discover Life. */
 export function assessEarlyCoreFlowActionFixedPoint(observation, expected) {
   const route = expected?.route;
   const presentation = expected?.presentation ?? null;
@@ -3573,7 +3574,8 @@ export function assessEarlyCoreFlowActionFixedPoint(observation, expected) {
     || !route || typeof route !== 'object' || Array.isArray(route)
     || !['star', 'world'].includes(surveyTarget)
     || (surveyTarget === 'star' ? route.mode !== 'galaxy' : route.mode !== 'system')
-    || !['commit', 'current', 'either'].includes(settlement)
+    || !['commit', 'current', 'either', 'inspection'].includes(settlement)
+    || (settlement === 'inspection' && surveyTarget !== 'world')
     || !(presentation === null
       || (presentation && typeof presentation === 'object' && !Array.isArray(presentation)
         && presentation.cardOpen === true && presentation.actionOk === true
@@ -3666,11 +3668,31 @@ export function assessEarlyCoreFlowActionFixedPoint(observation, expected) {
     && Number.isFinite(beforeRuntime?.activePlayMs)
     && Number.isFinite(afterRuntime?.activePlayMs)
     && afterRuntime.activePlayMs >= beforeRuntime.activePlayMs;
-  const surveyCurrent = exactJson(observation?.afterAuthority?.raw, observation?.beforeAuthority?.raw)
+  const surveyNoWrite = exactJson(observation?.afterAuthority?.raw, observation?.beforeAuthority?.raw)
     && currentRuntimeExact
     && afterPersistence?.lastOutcome === beforePersistence?.lastOutcome
-    && state?.landing?.surveyOutcome === `current:${surveyTarget}`
     && arc0LandingCoordinatorIsIdle(state, { clearFault: true });
+  const surveyCurrent = surveyNoWrite
+    && state?.landing?.surveyOutcome === `current:${surveyTarget}`;
+  const beforeState = observation?.beforeAuthority?.state;
+  const afterState = observation?.afterAuthority?.state;
+  const priorSurveyOutcome = beforeState?.landing?.surveyOutcome;
+  const surveyInspection = surveyTarget === 'world' && surveyNoWrite
+    && (priorSurveyOutcome === null || nonEmptyString(priorSurveyOutcome))
+    && state?.landing?.surveyOutcome === priorSurveyOutcome
+    && afterState?.landing?.surveyOutcome === priorSurveyOutcome
+    && state?.persistence?.lastOutcome === beforePersistence?.lastOutcome
+    && beforeState?.save !== null && typeof beforeState?.save === 'object'
+    && !Array.isArray(beforeState.save)
+    && exactJson({
+      stats: {
+        shares: state?.save?.stats?.shares, surveys: state?.save?.stats?.surveys,
+        best: state?.save?.stats?.best, bestRank: state?.save?.stats?.bestRank,
+        hybrids: state?.save?.stats?.hybrids,
+      },
+      unlocked: state?.save?.unlocked,
+    }, beforeState.save)
+    && exactJson(afterState?.save, beforeState.save);
   if ((settlement === 'commit' || settlement === 'either') && !surveyCommitted
     && !(settlement === 'either' && surveyCurrent)) {
     if (!surveyCommit.ok) {
@@ -3683,6 +3705,9 @@ export function assessEarlyCoreFlowActionFixedPoint(observation, expected) {
   if ((settlement === 'current' || settlement === 'either') && !surveyCurrent
     && !(settlement === 'either' && surveyCommitted)) {
     reasons.push('Survey current fixed point: exact no-write authority, current outcome, and idle coordinator');
+  }
+  if (settlement === 'inspection' && !surveyInspection) {
+    reasons.push('Survey inspection fixed point: exact no-write authority, unchanged save/outcomes, and idle coordinator');
   }
   return Object.freeze({
     status: reasons.length === 0 ? 'ready' : 'pending',

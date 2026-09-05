@@ -267,7 +267,7 @@ export function assessEarlyCoreFlowActionFixedPoint(
       readonly actionOk: true;
       readonly actionLabel: string;
     }> | null;
-    readonly settlement?: 'commit' | 'current' | 'either';
+    readonly settlement?: 'commit' | 'current' | 'either' | 'inspection';
   }>,
 ): EarlyCoreFlowActionFixedPointAssessment;
 
