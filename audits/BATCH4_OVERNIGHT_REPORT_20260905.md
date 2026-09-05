@@ -2507,3 +2507,75 @@ Typecheck, artunused and full Vitest (292 files / 3,046 passed / 1 skipped) pass
   }
 ]
 ```
+
+## Step2c corrected-source Slice red — helper scope
+
+Slice stopped on signed `15d7a99` after348.047s, before either phone: `phoneCardActionCheck is not defined`. The later wave-off branch reaches a helper outside its lexical scope. Review every bounded-descent caller and correct the exact expression owner; do not retry this unchanged source.
+
+```json
+{
+  "source": "15d7a997b4939faf2126eecb076bd8a3abbde893",
+  "command": [
+    "node",
+    "tools/slicesmoke.mjs",
+    "--profile=develop"
+  ],
+  "exitCode": 1,
+  "seconds": 348.047,
+  "logSha256": "5ebaa50edcadbb0561dce232aacc052136b26f74856d62ea33cf118470937aa8",
+  "failureLines": [
+    "SLICE SMOKE: FAIL \u2014 1 finding",
+    "SLICE SMOKE: FAILURE TITLES",
+    "  1. harness",
+    "SLICE SMOKE: FAILURE DETAILS",
+    "  - harness: phoneCardActionCheck is not defined"
+  ]
+}
+```
+
+### Step2c helper-scope correction
+
+AST inspection found one escaped caller: the collision journey is outside the phone block that declared `phoneCardActionCheck`. Phone Charter and desktop-panel callers were already in scope. The single unchanged self-contained factory moves to module scope, leaving every call and geometry/hit-test byte intact (factory SHA256 `cc3d7529827d17f1e1b968b86dafe5a08990e8e4b49977941280e9118dea8e97`). Patch SHA256 `b4edcaf34f573e718d186af5ac68c4ac85cc01c48ccca8476bc5017d2c6e289b`. Existing-owner test executes expression creation, rejects a nested-scope mutant with ReferenceError, restores it and anchors all three caller families. Focused four files / 92 tests PASS in7.06s; source syntax and exact applicability PASS. No product, producer, geometry, control, timeout or hosted policy changes.
+
+### Step2c scope-corrected full-fast PASS
+
+Typecheck/artunused PASS; 292 files / 3,047 tests passed / 1 skipped.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.594,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.526,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 66.404,
+    "log": "3-npx.log",
+    "sha256": "da3bfa2740709b3410693da0fb887eea27a1e17d6be3dba14b4418c76c0b35a3"
+  }
+]
+```

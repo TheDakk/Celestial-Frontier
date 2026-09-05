@@ -4764,6 +4764,15 @@ const renderedSceneAdvanced = (before, after) => renderedSceneMatchesNav(after)
    Their first authored chances are 95%/90%, so one exact-world wave-off adds
    enough learning to guarantee the next approach. This is never a retry of
    a refusal, storage error, stale action, or failed gate. */
+// Shared by the existing phone, desktop-panel and later collision journeys.
+  const phoneCardActionCheck = (act) => `(()=>{ const S=window.__CF_SLICE__,state=S.api.state();
+    const button=document.querySelector('#survey [data-act="${act}"]');
+    if(!button) return {state,ok:false,why:'missing'};
+    const b=button.getBoundingClientRect(),x=(b.left+b.right)/2,y=(b.top+b.bottom)/2;
+    const hit=document.elementFromPoint(x,y);
+    return {state,ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:(button.textContent||'').trim(),
+      x,y,w:b.width,h:b.height,hit:hit&&(hit.id||hit.getAttribute&&hit.getAttribute('data-act')||hit.tagName)}; })()`;
+
 const MERCURY_DESCENT_WORLD_KEY = 'CF1|g:999@90,-60|s:424242@560,170|p:131#0';
 const boundedDescentWorld = (key) => key === MERCURY_DESCENT_WORLD_KEY
   ? { key, seed: 131, ordinal: 0, title: 'Mercury', type: 'rocky', biome: 'cratered',
@@ -24756,13 +24765,6 @@ try {
      way down: survey Earth, touch the real 44px Land action, then touch the
      surface card's real 44px Leave-world action back to system. A desktop
      Escape assertion cannot prove either control exists or can be reached. */
-  const phoneCardActionCheck = (act) => `(()=>{ const S=window.__CF_SLICE__,state=S.api.state();
-    const button=document.querySelector('#survey [data-act="${act}"]');
-    if(!button) return {state,ok:false,why:'missing'};
-    const b=button.getBoundingClientRect(),x=(b.left+b.right)/2,y=(b.top+b.bottom)/2;
-    const hit=document.elementFromPoint(x,y);
-    return {state,ok:b.width>0&&b.height>=44&&!!hit&&button.contains(hit),label:(button.textContent||'').trim(),
-      x,y,w:b.width,h:b.height,hit:hit&&(hit.id||hit.getAttribute&&hit.getAttribute('data-act')||hit.tagName)}; })()`;
   await evalNavPh(`(()=>{ return window.__CF_SLICE__.api.descendSystem(${JSON.stringify(SOL_STAR)}); })()`);
   const phoneSolSetup = await waitNavPhValue('phone Sol setup', `(()=>{ const s=window.__CF_SLICE__.api.state(); return s.mode==='system'&&s.star===424242?s:null; })()`);
   const phoneEarthBeforeAuthority = await waitNavPhF4Writable(
