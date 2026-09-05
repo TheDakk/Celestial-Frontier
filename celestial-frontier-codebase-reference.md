@@ -11,7 +11,7 @@ established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Surv
 backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
 Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
 and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
-two SessionRNG draws and one receipt/CAS. A wave-off leaves orbit, HP at least 1 and canonical
+two SessionRNG draws and one receipt/CAS. A wave-off leaves the ship in orbit, with HP at least 1 and canonical
 learning (+20 percentage points per failure, capped at five), without landing rewards. Success
 clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
 Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
@@ -65,6 +65,8 @@ settles and consumes them; inspection or Training alone cannot bind them, and la
 that leaf seed do not inherit the consumed count. Successful non-Training arrival clears the exact
 approach count; Training preserves it. Outcome, HP, learning and the compatibility mirror commit
 together under one receipt/CAS, with no optimistic publication or automatic retry.
+
+`apps/game/src/landing-card.ts` owns the ready/unavailable `LandingCardStateV1`, the presentation projector and `landingCardActionHtml`. Main supplies its existing escape function and retains exact world/save authority projection and action wiring. The extraction preserves the rendered controls, visible chance/HP/learning disclosure and accessibility attributes; policy and settlement remain in `descent-policy.ts` and `arc0-landing-action.ts`.
 
 `explorer-meal.ts` owns exact legacy nourishment/poison arithmetic over one canonical Flora lot,
 with the beta-safe 1 HP floor, 330 stat ceiling, Vitality-derived maximum HP, and same-transaction

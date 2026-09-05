@@ -2,13 +2,15 @@ import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
 const MAIN_URL = new URL('../apps/game/src/main.ts', import.meta.url);
+const CARD_URL = new URL('../apps/game/src/landing-card.ts', import.meta.url);
 
 describe('Landing card Main wiring', () => {
   const source = readFileSync(MAIN_URL, 'utf8');
+  const cardSource = readFileSync(CARD_URL, 'utf8');
 
   it('projects card copy from the same exact authority inputs as Landing', () => {
     const start = source.indexOf('function projectCurrentLandingCardState(');
-    const end = source.indexOf('\nfunction landingCardActionHtml(', start);
+    const end = source.indexOf('\nfunction presentPlanetSurvey(', start);
     const body = source.slice(start, end);
     expect(start).toBeGreaterThanOrEqual(0);
     expect(end).toBeGreaterThan(start);
@@ -22,9 +24,9 @@ describe('Landing card Main wiring', () => {
   });
 
   it('surfaces exact chance and bounded wave-off damage without writing', () => {
-    const start = source.indexOf('function landingCardActionHtml(');
-    const end = source.indexOf('\nfunction presentPlanetSurvey(', start);
-    const body = source.slice(start, end);
+    const start = cardSource.indexOf('export function landingCardActionHtml(');
+    expect(start).toBeGreaterThanOrEqual(0);
+    const body = cardSource.slice(start);
     expect(body).toContain('data-landing-success=');
     expect(body).toContain('data-landing-damage-min=');
     expect(body).toContain('data-landing-damage-max=');
@@ -35,6 +37,6 @@ describe('Landing card Main wiring', () => {
     const titleOnly = body.replace('>${esc(state.disclosure)}</span>', '></span>');
     expect(titleOnly).not.toContain('>${esc(state.disclosure)}</span>');
     expect(body).not.toMatch(/commit|persist|mutate|save\.[A-Za-z_$][\w$]*\s*=/u);
-    expect(source).toContain(': landingCardActionHtml(landingState)) +');
+    expect(source).toContain(': landingCardActionHtml(landingState, esc)) +');
   });
 });
