@@ -48,6 +48,20 @@ pass final-byte/PWA checks; the distributable preview passed this flow in real E
 dirty diagnostic is not a clean-source certificate, a save-format change or human acceptance.
 See the disposition audit for fingerprints and retained intermediate instrument findings.
 
+> **2026-09-04 UTC two-lane battery overlay (Claude, `anthropic/windows`; matches current local
+> code):** the hosted `test-battery` now has two owner-only lanes inside its unchanged
+> `pull_request: [labeled]` trigger. `actions-budget-approved` on an agent → `develop` PR runs the
+> bounded agent lane: the browser-free `develop` profile, the changed-input art/launcher controls,
+> the legacy root gates only when legacy inputs changed, and the small-phone then large-phone Glass
+> canaries on every agent PR. `actions-full-chain-approved` on `develop`, and either label on
+> `develop` → `main`, runs the full chain: the same admission, then the exact-Edge Compendium
+> certificate, the immutable Slice and its twelve-row Glass successor, all behind one shared guard
+> `if: steps.lane.outputs.lane == 'full'` that the Actions policy, the Compendium browser-preflight
+> contract and the workflow tests pin. Caps, one-attempt/no-retry, artifact upload and the required
+> `battery` context are unchanged; the agent lane's hosted duration is not measured until its first
+> run. Local commands are unchanged: `node ../../tools/actions-budget-policy.js --selftest` from
+> this directory (or `npm run actionsbudget:selftest` at repository root) proves the lane seals.
+>
 > **2026-09-04 UTC historical PR #35 forensic-prevention overlay:** the
 > external review of pushed head `a922c4b…` identified narrow hosted-envelope and late-execution
 > risks. The local successor keeps one authorization job and one battery job, with a **120-minute**

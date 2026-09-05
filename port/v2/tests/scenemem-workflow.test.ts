@@ -35,7 +35,7 @@ const GLASS_SMALL_PHONE_VERIFY =
 const GLASS_LARGE_PHONE_VERIFY =
   'node tools/glassmatrix.mjs --verify-targeted-run="$CF_V2_GLASSMATRIX_LARGE_PHONE_PREFLIGHT_RUN_ID" --viewport=large-phone --browser="$preflight_browser"';
 const GLASS_PREFLIGHT_CONDITION =
-  "        if: >-\n          github.event.pull_request.base.ref == 'develop' &&\n          steps.scope.outputs.glass_preflight_changed == 'true'";
+  "        if: >-\n          github.event.pull_request.base.ref == 'develop' &&\n          (steps.lane.outputs.lane == 'agent' ||\n          steps.scope.outputs.glass_preflight_changed == 'true')";
 const COMPENDIUM_CHANGED_OR_PRODUCTION_CONDITION =
   "        if: >-\n          github.event.pull_request.base.ref == 'main' ||\n          steps.scope.outputs.compendium_instrument_changed == 'true'";
 const TRANSPORT_CHANGED_OR_PRODUCTION_CONDITION =
@@ -68,7 +68,8 @@ const HEAP_PHASE_SOURCE_CONTRACT = [
 ] as const;
 const ZERO_DEFAULT_CONTRACT = [
   'on:\n  pull_request:\n    types: [labeled]',
-  "github.event.label.name == 'actions-budget-approved' &&",
+  "(github.event.label.name == 'actions-budget-approved' ||",
+  "github.event.label.name == 'actions-full-chain-approved') &&",
   'github.actor == github.repository_owner',
   'needs: authorize',
 ] as const;
