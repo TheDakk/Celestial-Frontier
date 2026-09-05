@@ -16,11 +16,16 @@ const BUDGET_MODES = Object.freeze(['FROZEN', 'UNFROZEN']);
 const RUN_TOKEN = 'RUN_ONE_AUTHORIZED_WORKFLOW';
 const STOP_TOKEN = 'DO_NOT_RUN';
 const APPROVAL_LABEL = 'actions-budget-approved';
+const FULL_CHAIN_LABEL = 'actions-full-chain-approved';
 const OWNER_GUARD = 'github.actor == github.repository_owner';
 const MANUAL_GUARD =
   `inputs.actions_budget_authorization == '${RUN_TOKEN}' && ${OWNER_GUARD}`;
+// Two owner-only labels select the battery lane: the approval label runs the
+// bounded agent lane on develop (and the full chain on main); the full-chain
+// label runs the full Compendium -> Slice -> Glass chain on develop.
 const LABEL_GUARD =
-  `github.event.label.name == '${APPROVAL_LABEL}' && ${OWNER_GUARD}`;
+  `(github.event.label.name == '${APPROVAL_LABEL}' || ` +
+  `github.event.label.name == '${FULL_CHAIN_LABEL}') && ${OWNER_GUARD}`;
 const PARKED_GUARD = `${MANUAL_GUARD} && false`;
 const BATTERY_DISPLAY =
   "needs.authorize.result == 'success' && 'battery' || 'budget-not-authorized'";
@@ -34,6 +39,18 @@ const JOB_TIMEOUTS = Object.freeze({
 const COMPENDIUM_CERTIFICATION_STEP_NAME =
   'one-attempt Compendium memory certification';
 const COMPENDIUM_CERTIFICATION_STEP_TIMEOUT = '55';
+// The lane selector's non-comment bytes are sealed so nobody can remap a label
+// to a more expensive lane, and the three long stages must carry exactly the
+// full-lane guard so the bounded agent lane can never reach them.
+const LANE_STEP_NAME = 'select battery lane';
+const LANE_STEP_SHA256 =
+  '234c2bc1355343972bba0447c5dd94c799b3f8fae7e7123c0650341fef1a39fa';
+const FULL_LANE_GUARD = "steps.lane.outputs.lane == 'full'";
+const FULL_LANE_STEPS = Object.freeze([
+  COMPENDIUM_CERTIFICATION_STEP_NAME,
+  'one-attempt real-browser slice smoke',
+  'one-attempt 12-viewport Glass matrix',
+]);
 const BRANCH_AUTH_STEPS_SHA256 =
   '9c3193f9c49dd78c210b138d9f8c214ba17ef5034ef955a9f58959d386f97c30';
 const WORKFLOWS = Object.freeze({
@@ -200,7 +217,7 @@ function assertJobEnvelope(lines, job, where) {
     `${where} job ${job.key}: timeout must remain ${expectedTimeout} minutes`);
 }
 
-function assertNamedStepTimeout(lines, job, stepName, expectedTimeout, where) {
+function namedStepBounds(lines, job, stepName, where) {
   const token = `- name: ${stepName}`;
   const matches = [];
   for (let index = job.index + 1; index < job.end; index++) {
@@ -209,12 +226,36 @@ function assertNamedStepTimeout(lines, job, stepName, expectedTimeout, where) {
   }
   assert(matches.length === 1,
     `${where} job ${job.key}: expected exactly one ${stepName} step, found ${matches.length}`);
-  const stepEnd = blockEnd(lines, matches[0], 6, job.end,
+  const end = blockEnd(lines, matches[0], 6, job.end,
     `${where} job ${job.key} step ${stepName}`);
+  return { start: matches[0], end };
+}
+
+function assertNamedStepTimeout(lines, job, stepName, expectedTimeout, where) {
+  const { start, end } = namedStepBounds(lines, job, stepName, where);
   const timeout = directEntry(lines, 'timeout-minutes', 8,
-    matches[0] + 1, stepEnd, `${where} job ${job.key} step ${stepName}`);
+    start + 1, end, `${where} job ${job.key} step ${stepName}`);
   assert(directValue(lines, timeout) === expectedTimeout,
     `${where} job ${job.key} step ${stepName}: timeout must remain ${expectedTimeout} minutes`);
+}
+
+function assertNamedStepSha(lines, job, stepName, expectedSha, where) {
+  const { start, end } = namedStepBounds(lines, job, stepName, where);
+  const owned = lines.slice(start, end)
+    .filter((line) => line.trim() && !line.trim().startsWith('#'));
+  assert(sha256(owned.join('\n')) === expectedSha,
+    `${where} job ${job.key} step ${stepName}: lane selection changed outside its sealed contract`);
+}
+
+function assertNamedStepGuard(lines, job, stepName, expectedGuard, where) {
+  const { start, end } = namedStepBounds(lines, job, stepName, where);
+  const label = `${where} job ${job.key} step ${stepName}`;
+  const guard = directEntry(lines, 'if', 8, start + 1, end, label);
+  assert(normalizedExpression(directValue(lines, guard)) === expectedGuard,
+    `${label}: must run only under the exact full-lane guard ${expectedGuard}`);
+  const keys = directKeys(lines, 8, start + 1, end, label);
+  assert(!keys.some((entry) => entry.key === 'continue-on-error'),
+    `${label}: failure may not be softened`);
 }
 
 function assertManualWorkflow(source, where, mode) {
@@ -294,6 +335,10 @@ function assertOwnerLabelWorkflow(source, where) {
     `${where}: sealed Compendium owner job must not add an execution-control if`);
   assertNamedStepTimeout(lines, battery, COMPENDIUM_CERTIFICATION_STEP_NAME,
     COMPENDIUM_CERTIFICATION_STEP_TIMEOUT, where);
+  assertNamedStepSha(lines, battery, LANE_STEP_NAME, LANE_STEP_SHA256, where);
+  for (const stepName of FULL_LANE_STEPS) {
+    assertNamedStepGuard(lines, battery, stepName, FULL_LANE_GUARD, where);
+  }
 }
 
 function readCarriers() {
@@ -418,6 +463,45 @@ function selftest() {
   control('battery rejects expanded Compendium certification timeout', (c) => c.set('test.yml',
     replaceUnique(c.get('test.yml'), '        timeout-minutes: 55',
       '        timeout-minutes: 56', 'test.yml')));
+  control('battery rejects a third lane label', (c) => c.set('test.yml',
+    mutateJobCondition(c.get('test.yml'), 'authorize', `'${FULL_CHAIN_LABEL}')`,
+      `'${FULL_CHAIN_LABEL}' || github.event.label.name == 'any-label')`, 'test.yml')));
+  control('battery rejects a renamed full-chain label', (c) => c.set('test.yml',
+    mutateJobCondition(c.get('test.yml'), 'authorize', FULL_CHAIN_LABEL,
+      'actions-full-chain', 'test.yml')));
+  control('battery rejects an owner guard covering only one lane label', (c) => c.set('test.yml',
+    mutateJobCondition(
+      mutateJobCondition(c.get('test.yml'), 'authorize',
+        `(github.event.label.name == '${APPROVAL_LABEL}' ||`,
+        `github.event.label.name == '${APPROVAL_LABEL}' ||`, 'test.yml'),
+      'authorize', `'${FULL_CHAIN_LABEL}') &&`, `'${FULL_CHAIN_LABEL}' &&`, 'test.yml')));
+  control('lane selector cannot map the agent label to the full chain', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'), 'develop/actions-budget-approved) lane=agent ;;',
+      'develop/actions-budget-approved) lane=full ;;', 'test.yml')));
+  control('lane selector cannot map the full-chain label to the agent lane', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'), 'develop/actions-full-chain-approved) lane=full ;;',
+      'develop/actions-full-chain-approved) lane=agent ;;', 'test.yml')));
+  control('lane selector cannot accept an unknown label/base pair', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'),
+      '*) echo "::error::Unsupported battery lane: $APPROVAL_LABEL -> $BASE_BRANCH"; exit 1 ;;',
+      '*) lane=agent ;;', 'test.yml')));
+  control('lane selector cannot be renamed away from its seal', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'), `      - name: ${LANE_STEP_NAME}\n`,
+      `      - name: ${LANE_STEP_NAME} later\n`, 'test.yml')));
+  for (const stepName of FULL_LANE_STEPS) {
+    control(`${stepName} cannot run outside the full lane`, (c) => c.set('test.yml',
+      replaceUnique(c.get('test.yml'), `      - name: ${stepName}\n`,
+        `      - name: ${stepName}\n        if: always()\n`, 'test.yml')));
+  }
+  control('Compendium certification cannot drop its full-lane guard', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'), `        id: compendium\n        if: ${FULL_LANE_GUARD}\n`,
+      '        id: compendium\n', 'test.yml')));
+  control('full-lane guard cannot be inverted', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'), `        id: slice\n        if: ${FULL_LANE_GUARD}\n`,
+      "        id: slice\n        if: steps.lane.outputs.lane != 'agent'\n", 'test.yml')));
+  control('full-lane guard cannot be softened', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'), `        id: glass\n        if: ${FULL_LANE_GUARD}\n`,
+      `        id: glass\n        if: ${FULL_LANE_GUARD}\n        continue-on-error: true\n`, 'test.yml')));
   control('authorization failure cannot be softened', (c) => c.set('test.yml',
     replaceUnique(c.get('test.yml'), '    timeout-minutes: 2\n    steps:',
       '    timeout-minutes: 2\n    continue-on-error: true\n    steps:', 'test.yml')));

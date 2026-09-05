@@ -61,7 +61,7 @@ const GLASS_LARGE_PHONE_VERIFY =
 const GLASS_LARGE_PHONE_VERIFY_ARGS =
   '"$large_phone_viewport" "$native_tab_controls" true';
 const GLASS_PREFLIGHT_CONDITION =
-  "        if: >-\n          github.event.pull_request.base.ref == 'develop' &&\n          steps.scope.outputs.glass_preflight_changed == 'true'";
+  "        if: >-\n          github.event.pull_request.base.ref == 'develop' &&\n          (steps.lane.outputs.lane == 'agent' ||\n          steps.scope.outputs.glass_preflight_changed == 'true')";
 const GLASS_PREFLIGHT_VERDICT_TOKENS = [
   '$report.status == "pass"',
   '$report.schema == "cf-v2-glassmatrix/v2"',
@@ -184,7 +184,8 @@ const HEAP_PHASE_SOURCE_CONTRACT = [
 ] as const;
 const ZERO_DEFAULT_CONTRACT = [
   'on:\n  pull_request:\n    types: [labeled]',
-  "github.event.label.name == 'actions-budget-approved' &&",
+  "(github.event.label.name == 'actions-budget-approved' ||",
+  "github.event.label.name == 'actions-full-chain-approved') &&",
   'github.actor == github.repository_owner',
   'needs: authorize',
 ] as const;

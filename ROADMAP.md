@@ -17,96 +17,88 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-04 UTC · CC4D7C9 LOCAL GAPS PROVEN · FOUR BOUNDED ROBUSTNESS ITEMS · NO HOSTED AUTHORITY ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-04 UTC · TWO-LANE BATTERY BUILT ON ANTHROPIC/WINDOWS · LOCAL ONLY · NO HOSTED AUTHORITY ◀◀◀
 
 ### Exact boundary
 
-- **OpenAI/Codex on macOS:** `/Users/nick/Projects/celestial-frontier-openai-mac`,
-  **openai/mac**, tracking **origin/openai/mac**. Startup was clean and synchronized at
-  **cc4d7c920083c3c630a9c8c8e6fc5a6e40f5e0d4**, tree
-  `976027042d01f87ace54d57eafe0363cd685e415`. Base `develop` remains
-  **7a9f4c1370dd84292388d718c38ff34214f6203b**.
-- Nick authorized the bounded local proof/robustness batch, documentation, signed commit and
-  normal **branch-only push**. No label, dispatch, retry, PR metadata change, merge, release,
-  version bump or deploy is authorized. PR #35 is Ready/open/mergeable with no approval label.
-- The source commit containing this handoff intentionally does not embed its own SHA. The final
-  Git handoff and `git ls-remote origin refs/heads/openai/mac` identify the pushed candidate.
-  Never reinterpret the cc4d7c9 browser evidence below as a certificate for its descendant.
-- SSH origin: `git@github.com:TheDakk/Celestial-Frontier.git`; last authentication account
-  **TheDakk**, fresh fetch/read PASS. GitHub visibility verified **PUBLIC**. Budget mode
-  **UNFROZEN**, private fallback cap **3,000**, **zero authorized hosted attempts**.
-  Push/PR synchronization triggers no workflow; `test-battery` is owner-label-only.
-- Exact review and audit: `audits/PR35_CC4D7C9_FORENSIC_REVIEW_20260904.md` and
-  `audits/PR35_CC4D7C9_LOCAL_PROOF_AND_ROBUSTNESS_20260904.md`. Prior handoffs moved
-  verbatim to `ROADMAP_ARCHIVE.md`; no history was deleted.
+- **Anthropic/Claude Code on Windows:** `C:\Projects\celestial-frontier-anthropic-windows`,
+  branch **anthropic/windows**, based on landed `develop`
+  **7bf3e84761da2d1abe21dc6fe751b4bad2308f3b** (fast-forwarded; a local duplicate review
+  commit was dropped before this work). `origin/anthropic/windows` is older and unchanged.
+- Nick selected the coverage policy recorded in Codex's Batches 1–3 handoff: the browser-free
+  `develop` profile plus the two phone Glass canaries on every agent → `develop` PR; the full
+  Compendium → Slice → twelve-row Glass chain on `develop` → `main` and under a separate
+  on-demand label. Claude owns CI/budget policy; Codex's audiovisual campaign edits neither.
+- Parked backup `openai/parked-gameplay-20260904` (tip `cf1b9a78…`) is on origin. Codex's
+  prepared Batches 1–3 candidate (`openai/review-batches-1-3-20260904`, head `8bf9c45d…`) is
+  local on the Mac; its Batch 1 also rewrites `.github/workflows/test.yml` (workflow jq verdicts
+  → shared Node verifier, −344 lines) and `GITHUB_ACTIONS_BUDGET.md`. Whichever lands second
+  reconciles through Git and produces fresh exact-source evidence; no worktree copying.
+- Budget mode **UNFROZEN**, visibility last verified **PUBLIC**, private fallback **3,000**.
+  Zero hosted attempts, labels, pushes, merges or releases are authorized by this batch.
 
-### Completed local evidence — unchanged clean cc4d7c9
+### What this batch changed
 
-- Slice `20260904025322131-97983-4d9021b5767b`: **PASS**, **369,040 ms**,
-  including real Shipyard disclosures, source-bound log and ten retained screenshots.
-- Full Glass `20260904030025751-98655-51d159101e76`: **12/12 PASS**, **116,676 ms**,
-  zero findings/instrument failures; bound to that exact Slice.
-- Named Glass verifier: **PASS**. Diagnostic projection: **PASS**; gzip **95,047 bytes**,
-  base64 **126,732 / 700,000 bytes**, complete summary **129,124 / 900,000 bytes**.
-- Chrome targeted `small-phone`, `compact-phone`, `primary-phone`, then `large-phone`:
-  all **PASS**. The extra large row supplies genuine Chrome evidence because the old retained
-  Edge row cannot satisfy the unchanged hosted Chrome-only jq filter.
-- Exact workflow jq extracted like `scenemem-workflow.test.ts`: **both real reports PASS**,
-  no provenance rewriting or altered filter. IDs, durations, hashes and recoverable compressed
-  carriers are in the audit. No product/instrument result was retried.
-- Full chain used Edge **152.0.4191.62 / CDP 1.3**. Targeted rows used official isolated
-  Chrome for Testing **152.0.7977.82 / CDP 1.3** in a temporary directory. No system
-  browser was installed or made default; Chrome processes are closed. Keychain access is
-  unnecessary; Nick may dismiss its prompt. No keep-awake process was started in this batch.
+- `.github/workflows/test.yml`: the authorize guard admits `actions-budget-approved` or
+  `actions-full-chain-approved` (owner only; trigger still `pull_request: [labeled]`); a new
+  `select battery lane` step maps the exact label/base pair to `lane=agent|full` before any
+  install and stops the job on any other pair; the two-row Glass canary step runs on every
+  agent-lane PR (full lane: when Glass inputs changed, as before); the Edge install, Compendium
+  live preflight, Compendium certification, Slice and twelve-row Glass carry exactly
+  `if: steps.lane.outputs.lane == 'full'`. Caps (2 + 120, 55-minute Compendium step, 7-minute
+  canary step), one attempt/no retry, artifact upload, the required `battery` context and the
+  historical jq verdict blocks are unchanged.
+- `tools/actions-budget-policy.js`: two-label owner guard; seals the lane selector's non-comment
+  bytes and the full-lane guards on Compendium certification, Slice and Glass; **13** new
+  negative controls (**79** total).
+- `port/v2/tools/compendiummem-browser-preflight.mjs`: the workflow contract requires the exact
+  full-lane guard on its three owned steps (previously any condition was forbidden); its selftest
+  adds unguarded and foreign-guard controls beside the retained `if: false`/soft-fail controls.
+- `port/v2/tests/scenemem-workflow.test.ts` (authorize tokens, exact canary condition) and
+  `port/v2/tests/evidence-chain-tools.test.ts` (Slice/Glass guard, lane-selector contract, five
+  guarded stages, mutation controls). `tracked-input-preflight.test.ts` needed no change.
+- References refreshed in place: `GITHUB_ACTIONS_BUDGET.md` (top entry + fail-closed section),
+  `PARALLEL_GIT_PROTOCOL.md`, `CLAUDE.md`, `AGENTS.md`, `port/v2/README.md` overlay, this handoff.
+  No new instrument, schema, verifier, job, shard, pin, timeout or baseline was added.
 
-### Four coverage-neutral robustness changes
+### Local evidence (Windows, browser-free)
 
-1. Existing changed-input Glass preflight: **5 → 7 minutes**, with its three literal pins.
-2. Pinned Edge **151.0.4129.101** download: **curl transport retries only**
-   (`--retry 3 --retry-all-errors --retry-delay 5`). URL, SHA-256 and certification no-retry
-   rule unchanged; two existing exact-command/mutation literals synchronized.
-3. Shipyard settlement waits for **active and debounced persistence writes both zero**.
-   Debounce count comes from the existing read-only
-   `__smokeSettingsPersistenceDiagnostics()`; no product API/schema change.
-4. `command -v jq >/dev/null` is the first preflight command.
-
-Independent code review is **CLEAR** after correcting an initial wrong-source debounce lookup.
-No controls, schemas, verifiers, rebaseline, product/instrument retries or gameplay changes were
-added. Existing creatures, plants, biomes, Guardians, loot, graphics, audio, saves and release
-identity remain untouched. Current README, codebase reference, process laws and budget agree.
-
-### Verification and exact remaining boundary
-
-Working-tree develop profile: **268/268 files, 2,785 passed / 1 skipped**, all three TypeScript
-programs, art/override/spec audits green. That run preceded the reviewed debounce-source correction;
-the final clean tracked-input rehearsal is the final-source static authority. Existing Glass
-selftest, pinned-Edge preflight selftest, Actions policy **66/66**, and root validation/fingerprint
-all pass. No new test inventory was added.
-
-After the complete source/docs commit, run the requested
-`node tools/tracked-input-preflight.mjs --profile=develop` once on the unchanged clean candidate.
-Retain its exact terminal result, duration and log hash in the Git handoff; a red blocks the push.
-Then push `openai/mac` normally and verify the full remote SHA. Do not start another browser
-battery: Part A already ran once on the explicitly requested ancestor. Do not apply a label.
+- `node tools/actions-budget-policy.js --selftest`: **PASS, 79 fail-closed controls**; plain
+  policy validation PASS.
+- `node tools/compendiummem-browser-preflight.mjs --selftest`: **PASS**.
+- Vitest `scenemem-workflow`, `evidence-chain-tools`, `tracked-input-preflight`: **28 passed /
+  1 failed**; the failure is the pre-existing Windows-only `spawnSync jq ENOENT` replay case.
+- The edited workflow parses as valid YAML; every per-step condition was read back from the parse.
+- Consolidated `check-profile --profile=develop` on this Windows checkout after a fresh lockfile
+  install: **268 files, 2,774 passed / 8 failed / 5 skipped**, profile red on Windows. The same
+  nine files run targeted give identical results on the untouched base `7bf3e84` in a throwaway
+  worktree (jq ENOENT, two path-separator cases, one `spawnSync npm.cmd EINVAL` load failure),
+  and the five extra full-profile failures (`arc4-capture-card`, the Slice selftest deadline,
+  `rarity-main-wiring`, `training-restore`, `speciesart` cache trim) pass targeted on this branch:
+  Windows load/deadline artifacts, none touching lane-owned files. Ubuntu remains the authority.
+- Not run: any browser chain or hosted run. The agent lane's hosted duration is **not measured**
+  until its first authorized run.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** finish the final clean tracked-only rehearsal and authorized branch push;
-  no hosted run or merge follows from this batch. Final Git handoff supplies exact SHA/proof.
-- **GitHub:** existing **PR #35**, base **develop**, source **openai/mac**. Metadata remains
-  unchanged in this branch-only batch and must be refreshed within future explicit authority.
-  Copy-ready title: `feat(v2): complete roadmap campaign and harden action-time CI evidence`.
-  Copy-ready description: “Completes the established V2 roadmap without recreating gameplay;
-  preserves the fifteen-stop history and cc4d7c9 forensic review; proves real Slice/full Glass and
-  raw Chrome jq paths locally; adds only seven-minute canary margin, pinned-download transport
-  retries, jq presence and debounce-aware Shipyard settlement. Existing static/selftests pass;
-  exact final tracked proof is in the handoff. No hosted result is claimed. Changes remain on
-  openai/mac until a green authorized PR #35 merge; no release or deployment.”
-- **Anthropic/Claude Code:** Nick may open Claude for read-only review after the verified push.
-  Do not edit the OpenAI branch or copy files. These changes are not in `develop`. Only after
-  a future green PR #35 merge should a clean `anthropic/*` branch fetch and merge
-  `origin/develop` before polish work.
-- **Future hosted authority:** exact final head + base above, `test-battery`, PR #35,
-  `actions-budget-approved`, maximum **122 total runner-minutes** (2 authorization + 120
-  battery), **one attempt, no retry**, merge only if terminal green. None authorized now.
+- **Anthropic/Claude Code:** this batch is committed locally on `anthropic/windows` (exact SHA in
+  the Git handoff; not pushed). On Nick's word, push the branch and open the PR. Base **develop**
+  (`7bf3e84…`), source **anthropic/windows**. Copy-ready title:
+  `ci(battery): add bounded agent lane and on-demand full-chain label`. Description: “Adds a
+  fail-closed lane selector to test-battery: `actions-budget-approved` runs the bounded agent lane
+  on develop (browser-free develop profile, changed-input controls, two phone Glass canaries on
+  every agent PR) and the full chain on main; `actions-full-chain-approved` runs the full chain on
+  develop. Edge install, Compendium preflight/certification, Slice and Glass carry one shared
+  full-lane guard sealed by the Actions policy (79 controls), the Compendium preflight contract and
+  the workflow tests. Caps, one-attempt/no-retry, artifact upload and the required battery context
+  are unchanged. Docs refreshed. Local: policy and preflight selftests PASS; pinning tests pass
+  except the Windows-only jq replay. No hosted result is claimed.” The PR's own first run under
+  `actions-budget-approved` exercises and measures the agent lane.
+- **GitHub (Nick):** the repository label **`actions-full-chain-approved`** must exist before it
+  can be applied (create it once in the repository's Labels page; `actions-budget-approved`
+  already exists). Branch protection needs no change: both lanes emit `battery`.
+- **OpenAI/Codex:** continue Batch A locally; do not edit `.github/workflows` or the budget
+  policy. Recommended order: this lane lands first (small, static, its own agent-lane run), then
+  the Batches 1–3 PR goes through the agent lane; Batch 1's jq → Node verifier rewrite then
+  reconciles onto the lane through Git with fresh exact-source evidence.
 - **Release:** `develop`, `main` and the live site are unchanged.
