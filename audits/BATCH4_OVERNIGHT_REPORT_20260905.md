@@ -3157,3 +3157,72 @@ The renderer preserves the existing noninteractive DIV row, native data-sel/data
     "sha256": "a24fb33435066064ba4c46feabe4715408a05dd1f8c1c6a99eaaf9d5b1cd1172"
   }
 ]
+
+## Step2e unavailable-route explanation red
+
+Signed23866bf stopped in Slice after375.616s; neither phone ran. Both invalid/incomplete imported rows were visible, correctly disabled, geometrically reachable and byte-stable. Only honest=false failed: their visible route-unavailable explanation was omitted by the new renderer. Restore that existing user-facing explanation for List/cluster rows and disabled unmapped Chart destinations; preserve every refusal and gate expectation. Existing renderer test covers both views.
+
+```json
+{
+  "source": "23866bf7da878d8610afe2b28672cc0ee8041c7b",
+  "command": [
+    "node",
+    "tools/slicesmoke.mjs",
+    "--profile=develop"
+  ],
+  "exitCode": 1,
+  "seconds": 375.616,
+  "logSha256": "7f8b19202cb98a8f66ad088c41a24a231fd99b8d532be0dbaeb9534618958373",
+  "failureLines": [
+    "SLICE SMOKE: FAIL \u2014 1 finding",
+    "SLICE SMOKE: FAILURE TITLES",
+    "  1. ATLAS UNAVAILABLE ROUTES",
+    "SLICE SMOKE: FAILURE DETAILS",
+    "  - ATLAS UNAVAILABLE ROUTES: incomplete/forged imports were not visible, disabled, honest, and byte-stable: {\"unavailableAtlas\":{\"rows\":[{\"id\":\"legacy-star\",\"target\":{\"settled\":true,\"panelOpen\":\"atlas\",\"panelScrollTop\":943,\"row\":{\"exists\":true,\"id\":\"legacy-star\",\"tag\":\"DIV\",\"interactive\":false,\"travelCount\":1,\"favoriteCount\":1},\"travel\":{\"exists\":true,\"id\":\"legacy-star\",\"tag\":\"BUTTON\",\"type\":\"button\",\"disabled\":true,\"ariaDisabled\":\"true\",\"ariaLabel\":\"Travel to Legacy chart\",\"rendered\":true,\"width\":76.578125,\"height\":44,\"x\":93.4140625,\"y\":410.5,\"hit\":true,\"focus\":false}},\"assessment\":{\"ok\":true,\"checks\":{\"settled\":true,\"panel\":true,\"rowIdentity\":true,\"rowStructure\":true,\"travelIdentity\":true,\"nativeButton\":true,\"availability\":true,\"accessibleName\":true,\"geometry\":true,\"hit\":true,\"focus\":true}},\"honest\":false,\"dispatch\":{\"kind\":\"cdp-mouse\",\"x\":93.4140625,\"y\":410.5,\"button\":\"left\",\"clickCount\":1},\"pointer\":{\"targetId\":null,\"tag\":\"BUTTON\",\"closeOwner\":null,\"panelCloseOwner\":null,\"atlasTravelId\":\"legacy-star\",\"atlasRowId\":\"legacy-star\",\"atlasActionTag\":\"BUTTON\",\"x\":93.4140625,\"y\":410.5,\"pointerType\":\"mouse\",\"trusted\":true}},{\"id\":\"forged-earth\",\"target\":{\"settled\":true,\"panelOpen\":\"atlas\",\"panelScrollTop\":1926,\"row\":{\"exists\":true,\"id\":\"forged-earth\",\"tag\":\"DIV\",\"interactive\":false,\"travelCount\":1,\"favoriteCount\":1},\"travel\":{\"exists\":true,\"id\":\"forged-earth\",\"tag\":\"BUTTON\",\"type\":\"button\",\"disabled\":true,\"ariaDisabled\":\"true\",\"ariaLabel\":\"Travel to Forged Earth\",\"rendered\":true,\"width\":76.578125,\"height\":44,\"x\":93.4140625,\"y\":410.5,\"hit\":true,\"focus\":false}},\"assessment\":{\"ok\":true,\"checks\":{\"settled\":true,\"panel\":true,\"rowIdentity\":true,\"rowStructure\":true,\"travelIdentity\":true,\"nativeButton\":true,\"availability\":true,\"accessibleName\":true,\"geometry\":true,\"hit\":true,\"focus\":true}},\"honest\":false,\"dispatch\":{\"kind\":\"cdp-mouse\",\"x\":93.4140625,\"y\":410.5,\"button\":\"left\",\"clickCount\":1},\"pointer\":{\"targetId\":null,\"tag\":\"BUTTON\",\"closeOwner\":null,\"panelCloseOwner\":null,\"atlasTravelId\":\"forged-earth\",\"atlasRowId\":\"forged-earth\",\"atlasActionTag\":\"BUTTON\",\"x\":93.4140625,\"y\":410.5,\"pointerType\":\"mouse\",\"trusted\":true}}],\"stable\":true},\"rawStable\":true}"
+  ]
+}
+```
+
+## Step2e implementation/full-fast PASS
+
+Atlas now offers List and Chart views, the authored All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, exact-row Remove and a single eight-second Undo. Undo is bound to its deletion receipt and route sidecar: an originally absent route stays absent, while a formerly present route must still match before restoration. Chart clusters open the existing List actions for their exact members and return focus to their Chart origin or owning Close. Existing travel, hyperlane, motion, speed and Favorite owners remain authoritative. No companion, reward, progression, import-door or protected-portrait behavior was added. Guide, Training and all eight current references agree; the draft remains 79 outcomes and all rendered hash pins move together. Only the current Compendium producer is refreshed; measurement authority, ruler, ceilings and samples remain unchanged. After this checkpoint is accepted, all five primary items are complete and the separately ordered stretch list follows.
+The renderer preserves the existing noninteractive DIV row, native data-sel/data-aid and count identifiers alongside its new controls. Source-owner tests now read the correct renderer; Travel and Home negative controls bind exact precommit/publication spans. The real refill test executes the shipped projection, renderer and availability owner. All prior expectations remain.
+
+The first signed Atlas browser run also caught a missing visible explanation on unavailable routes. The existing Route unavailable message is restored in List/cluster rows and unmapped Chart destinations; disabled actions and byte-stable refusal behavior are preserved. The existing renderer test covers both presentations.
+
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.536,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.412,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 66.318,
+    "log": "3-npx.log",
+    "sha256": "cb8404f4c7decfd5c5fe8d56036a1d028aa054b1af770b3d58ac99d6c64b9f1c"
+  }
+]
