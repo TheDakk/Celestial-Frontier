@@ -14,7 +14,7 @@
 | 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
 | 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
 | 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
-| 3b same-owner lists | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
+| 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
 | 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
 | 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
 
@@ -3499,3 +3499,145 @@ Independent expectations remain: the panel test authors six literal rows at `por
     "sha256": "7644aaa180216401a9f30cf638a1547914d2e7e62e56eada22c53144b61ff1a3"
   }
 ]
+
+## Checkpoint 3b accepted — source 34ecd3ab57d7af9b592c87874a4ee9683e3506d9
+
+# Stretch 3b — one production research-order owner
+
+Prepared patch: `/private/tmp/cf-step3b-research-alias/step3b.patch`.
+SHA256: `515cc6b4c36a02811fe705a5e2e335d0ba8b806ca5ea138909a8c52ea6ef0765`.
+Applied at the ordered checkpoint after primary acceptance. Exact execution evidence is recorded with this checkpoint.
+
+`port/v2/packages/domain/opportunity/src/state.ts:33–41` remains the canonical frozen six-ID tuple. `engineering-panel.ts` imports that public `RESEARCH_IDS` through the app's existing dependency and exports `ENGINEERING_RESEARCH_ORDER` as its alias. The public export name and its derived `EngineeringResearchRowId` union remain unchanged. Only the duplicate production tuple is removed: no runtime action, recipe/research content, package/lockfile or browser contract changes.
+
+Independent expectations remain: the panel test authors six literal rows at `port/v2/tests/engineering-panel.test.ts:141–171`, checks their rendered order at `:475–484`, and rejects a missing row and swapped order at `:1237–1247`. `port/v2/tools/engineering-browser-contract.mjs:3–13` explicitly owns its separate six literal IDs; `:958–971` binds the observed research/action inventory to that independent list. Neither oracle is rebuilt from the aliased producer tuple. Thus a missing producer field cannot disappear from both sides through this deduplication.
+
+Fast PASS: **301 files / 3,100 passed / 1 skipped**. Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures. This reporting successor changes only
+documentation; source-bound browser evidence names the preceding implementation commit exactly.
+Phone reports are local Edge targeted diagnostics, not a twelve-row certificate or named Chrome
+verifier proof. No hosted attempt occurred.
+
+```json
+{
+  "source": "34ecd3ab57d7af9b592c87874a4ee9683e3506d9",
+  "fast": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 2.833,
+      "log": "1-npm.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "seconds": 1.502,
+      "log": "2-npm.log",
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "--maxWorkers=4"
+      ],
+      "exitCode": 0,
+      "seconds": 62.366,
+      "log": "3-npx.log",
+      "sha256": "7644aaa180216401a9f30cf638a1547914d2e7e62e56eada22c53144b61ff1a3"
+    }
+  ],
+  "browser": [
+    {
+      "command": [
+        "node",
+        "tools/slicesmoke.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 0,
+      "seconds": 384.468,
+      "log": "1-node.log",
+      "sha256": "b427df7bdc9da939022d7922d8801ec0984e6061abf086a7cf6ff75a49145b92"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=small-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 16.319,
+      "log": "2-node.log",
+      "sha256": "49b1ccaa9813104f03dfca46c4e66f22ccaf2032088726a3ae6ec3b6534cdac4"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=large-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 16.557,
+      "log": "3-node.log",
+      "sha256": "496ae437cfc02479ff5c0bc942b9eed9cc3a0918c27b2d9ddfc01e59602b6e5e"
+    }
+  ],
+  "phones": [
+    {
+      "id": "20260905125450777-80135-82a8c409defa",
+      "source": "34ecd3ab57d7af9b592c87874a4ee9683e3506d9",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905125450777-80135-82a8c409defa.json"
+    },
+    {
+      "id": "20260905125507226-80285-ca6482b19aa9",
+      "source": "34ecd3ab57d7af9b592c87874a4ee9683e3506d9",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905125507226-80285-ca6482b19aa9.json"
+    }
+  ]
+}
+```
