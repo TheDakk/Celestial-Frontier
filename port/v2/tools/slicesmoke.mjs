@@ -9281,15 +9281,20 @@ try {
     if (!Array.isArray(saved.landed) || !saved.landed.includes(133)) fails.push('Earth (133) not in the save’s landed set after reload: ' + JSON.stringify(saved.landed));
     if (typeof saved.essence !== 'number') fails.push('save.essence is not a number — importSaveV2 did not run');
   }
-  const completeDesktopMercuryLand = async (label) => {
+  const completeDesktopMercuryLand = async (label, { migratedDocumentToken = null } = {}) => {
+    // Only the explicitly staged compatibility document retains migrated-v4.
+    // Reuse the exact-document exception; default/replacement rules stay strict.
+    const authorityOptions = {
+      allowMigrated: migratedDocumentToken !== null, expectedToken: migratedDocumentToken,
+    };
     if (await evalIn(`window.__CF_SLICE__.api.surveyOn(${JSON.stringify(MERCURY)})`) !== true) {
       failSliceWithoutCascade(`${label}: Mercury Survey refused before the explicit Land`);
     }
-    const beforeAuthority = await waitForF4Writable(`${label} Land predecessor`);
+    const beforeAuthority = await waitForF4Writable(`${label} Land predecessor`, authorityOptions);
     const beforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
     const beforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
     const accepted = await evalIn(`(async()=>await window.__CF_SLICE__.api.landHere())()`);
-    const firstAuthority = await waitForF4Writable(`${label} first Land settlement`);
+    const firstAuthority = await waitForF4Writable(`${label} first Land settlement`, authorityOptions);
     const firstState = await evalIn(`window.__CF_SLICE__.api.state()`);
     const first = boundedDescentReceipt(beforeAuthority, firstAuthority);
     if (first.facts?.descent?.kind === 'wave-off') {
@@ -9304,7 +9309,7 @@ try {
           + JSON.stringify({ accepted, assessment, evidence }));
       }
       const learnedAccepted = await evalIn(`(async()=>await window.__CF_SLICE__.api.landHere())()`);
-      const learnedAuthority = await waitForF4Writable(`${label} guaranteed Land settlement`);
+      const learnedAuthority = await waitForF4Writable(`${label} guaranteed Land settlement`, authorityOptions);
       const learned = boundedDescentReceipt(firstAuthority, learnedAuthority);
       if (learnedAccepted !== true || learned.facts?.descent?.kind !== 'landed'
         || learned.facts?.worldKey !== MERCURY_DESCENT_WORLD_KEY
@@ -9410,7 +9415,9 @@ try {
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await sleep(350);
-  await completeDesktopMercuryLand('COMPATIBILITY MERCURY LANDFALL');
+  await completeDesktopMercuryLand('COMPATIBILITY MERCURY LANDFALL', {
+    migratedDocumentToken: oneBadFieldBoot.persistence.documentToken,
+  });
   await sleep(450);
   /* Escape consumes any open surface card while lifting in the same action;
      from outer modes it closes a card before the next press climbs. Drive the

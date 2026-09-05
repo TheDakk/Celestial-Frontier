@@ -202,6 +202,52 @@ const exactPertarSurveyRouteEvidence = () => ({
 });
 
 describe('Slice Arc 0 Landing fault evidence contract', () => {
+  it('keeps desktop Mercury waits bound to the explicitly staged compatibility document', async () => {
+    const owner = section(sliceSource,
+      '  const completeDesktopMercuryLand = async (label, { migratedDocumentToken = null } = {}) => {',
+      '  /* Complete the fresh Chapter-1 landfall goal with a second genuine Sol');
+    const worldKey = 'CF1|g:999@90,-60|s:424242@560,170|p:131#0';
+    for (const migratedDocumentToken of [null, 'fixture-migrated-document-token']) {
+      for (const firstWaveOff of [false, true]) {
+        const waits: Array<{ label: string; options: unknown }> = [];
+        let landCalls = 0;
+        // This seam checks wait-option propagation only. The existing durable
+        // wave-off and boot-readiness tests independently reject forged facts.
+        const run = Function('evalIn', 'waitForF4Writable', 'failSliceWithoutCascade',
+          'MERCURY', 'ARC4_DURABLE_READ_EXPRESSION', 'boundedDescentReceipt',
+          'earthLandActionCheck', 'MERCURY_DESCENT_WORLD_KEY', 'assessBoundedDescentWaveOff',
+          `${owner}\nreturn completeDesktopMercuryLand;`)(
+          async (expression: string) => {
+            if (expression.includes('api.surveyOn(')) return true;
+            if (expression.includes('api.landHere(')) {
+              landCalls += 1;
+              return !(firstWaveOff && landCalls === 1);
+            }
+            return {};
+          },
+          async (label: string, options: unknown) => {
+            waits.push({ label, options }); return { index: waits.length };
+          },
+          (message: string) => { throw new Error(message); }, { seed: 131, ordinal: 0 }, 'raw-expression',
+          (_before: unknown, after: { index: number }) => ({ facts: { worldKey, descent: {
+            kind: firstWaveOff && after.index === 2 ? 'wave-off' : 'landed',
+            policy: { successPercent: after.index === 3 ? 100 : 95 },
+          } } }), 'action-expression', worldKey, () => ({ ok: true }),
+        );
+        if (migratedDocumentToken === null) await run('OBJECTIVE MERCURY LANDFALL');
+        else await run('COMPATIBILITY MERCURY LANDFALL', { migratedDocumentToken });
+        expect(waits).toHaveLength(firstWaveOff ? 3 : 2);
+        expect(waits.map((row) => row.options)).toEqual(Array.from({ length: waits.length }, () => ({
+          allowMigrated: migratedDocumentToken !== null, expectedToken: migratedDocumentToken,
+        })));
+      }
+    }
+    proveEachMarkerRequired(sliceSource, [
+      ['default objective authority', "await completeDesktopMercuryLand('OBJECTIVE MERCURY LANDFALL');"],
+      ['explicit compatibility document', "await completeDesktopMercuryLand('COMPATIBILITY MERCURY LANDFALL', {\n    migratedDocumentToken: oneBadFieldBoot.persistence.documentToken,\n  });"],
+    ]);
+  });
+
   it('permits one learned approach only after an exact durable authored wave-off', () => {
     const owner = section(sliceSource,
       'const MERCURY_DESCENT_WORLD_KEY =', 'const earlyCoreFlowSurveyExpectation = (');
@@ -366,7 +412,7 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       expect(assess(wrongExactWorld).ok, `${title} identical leaf seed is insufficient`).toBe(false);
       expect(assess(value).ok, `${title} restored exact address`).toBe(true);
     }
-    const desktop = section(sliceSource, '  const completeDesktopMercuryLand = async (label) => {',
+    const desktop = section(sliceSource, '  const completeDesktopMercuryLand = async (label, { migratedDocumentToken = null } = {}) => {',
       '  /* Complete the fresh Chapter-1 landfall goal with a second genuine Sol');
     proveEachMarkerRequired(desktop, [
       ['real Survey predecessor', 'api.surveyOn(${JSON.stringify(MERCURY)})'],

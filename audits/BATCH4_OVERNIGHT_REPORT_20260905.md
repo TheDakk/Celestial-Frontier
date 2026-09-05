@@ -1,9 +1,10 @@
 # Batch 4 overnight report — 2026-09-05
 
-**Blocked overnight handoff — 2026-09-05 09:50 UTC.** Core and 2a are accepted and pushed.
-The 2b correction passes fast gates, but 1Password signing failed twice and GitHub SSH failed.
-Its corrected browser acceptance, checkpoint and subsequent ordered work are blocked.
-This report and the correction are local and uncommitted. Base develop:
+**Resumed campaign — 2026-09-05 10:17 UTC.** Nick unlocked 1Password; signed correction
+`04aac3c` committed, SSH authenticated as TheDakk and repository read passed. Core and 2a remain
+accepted and pushed. Step2b's next Slice stopped on the rich fixture's migrated-v4 boot boundary;
+its narrow existing-consumer correction is in progress. Prior signing failures remain historical
+records below. Base develop:
 `9ea01041dcdc711190bbf909ea8bb743cd993734`; owned review branch:
 `openai/review-batch4-gameplay-20260905` (OpenAI/Codex, macOS,
 `/Users/nick/Projects/celestial-frontier-openai-mac`). Clean `openai/mac` remains `84b6f22`.
@@ -12,14 +13,14 @@ This report and the correction are local and uncommitted. Base develop:
 | --- | --- | --- | --- | --- |
 | 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
 | 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
-| 2b descent/wave-offs | Local signed product `d469c499dfaa7d1e09a3755299246b4949c89ee7`; correction staged | Blocked: 1Password signer and GitHub SSH | Typecheck/artunused PASS; 290 files / 3,018 passed / 1 skipped | First source Slice RED at33.823s on exact Earth label; corrected-source run blocked before commit; phones not run |
-| 2c 50-Paragon hunt | Seven reviewed patch layers prepared; not integrated | Blocked by required preceding clean signed checkpoint | Preparation only; no product acceptance claimed | Not run |
-| 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Blocked by required preceding clean signed checkpoint | Preparation only; no product acceptance claimed | Not run |
-| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Blocked by required preceding clean signed checkpoint | Preparation only; no product acceptance claimed | Not run |
-| 3a authority controls | Already implemented in signed core and verified by all full suites | Separate ordered checkpoint blocked by signing | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
-| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Blocked by checkpoint prerequisite | Independently authored browser lists retained | Not run |
-| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Blocked by checkpoint prerequisite | No code extraction claimed | Not run |
-| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Fresh clean-source measurement blocked | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+| 2b descent/wave-offs | Signed correction `04aac3c30fcef7a1c70c7601ed9199d90b1c7a4b` | Acceptance pending | Typecheck/artunused PASS; 290 files / 3,018 passed / 1 skipped | Resumed Slice RED71.918s at migrated-v4 compatibility setup; no phones; correction in progress |
+| 2c 50-Paragon hunt | Seven reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
 
 ## Decisions made unattended
 
@@ -2012,3 +2013,71 @@ measurements. Disposed audio snapshot cache active0/peak0/budget32/evictions0 is
 context, not a populated-cache performance result. No native allocation profile, art-cache
 hit/miss series, cold-boot/TTI or physical iPhone/Safari/thermal measurement is available.
 Fresh P2-phone profiling on the eventual clean committed source remains blocked/pending.
+
+## Resumption and Step2b second browser red — migrated document provenance
+
+Nick reported “Unlocked and ready” at this resumption. The exact staged port/v2 correction
+matched SHA256`bd43d66b8ab64443180737d157b752af36195c3fadb5f9817e7f5cf7eb1f6a8b`; signing then
+succeeded as`04aac3c30fcef7a1c70c7601ed9199d90b1c7a4b`. GitHub SSH authenticated asTheDakk
+(exit1 is GitHub's expected no-shell response); repository HEAD read returned9ea0104. No config,
+key, workflow or policy changed. The unchanged fast-tested correction was then browser-tested.
+
+Slice stopped71.918s at `COMPATIBILITY MERCURY LANDFALL Land predecessor` after its existing
+15000ms deadline. Only `boot readiness` failed: this deliberately staged complete-v4 fixture
+retains `migrated-v4` in the same document, while the new helper used current-v5-only defaults.
+The live/raw runtime remained writable and coupled, revision6/ordinal3, with no pending bootstrap.
+The existing assessor already supports a migrated document only with an exact expected token
+and no replacement token. Pass that existing mode only from the named compatibility fixture,
+bound to its already captured `oneBadFieldBoot.persistence.documentToken`, through all three
+helper waits. Preserve default Objective Mercury policy and all authority/timeout checks.
+
+No phone ran. Full literal error is newest in REDS JSON. Log SHA256
+`d5df7d43bc28301bc3f878b56b45fd2fdc6dd2901a1d5a09a39205939526bed2`. No unchanged-source retry.
+
+## Step2b migrated-boundary correction — full-fast PASS
+
+Existing compatibility-document allowance is bound to its captured token for all three
+Mercury waits; default Objective/replacement readiness is unchanged. Two-file patch SHA256
+`71d53ed9c844aed533cda809d770e0943bc821ef803920b7441b57d76c21cf63`;22focusedtests/2files
+passed4.13s. Full selected suite now passes290files/3,019tests/1skip, plus typecheck/artunused.
+No product, fixture, timeout, readiness-contract or producer changed. Commit this source for
+its next exact clean-source browser run.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.459,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.56,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 62.52,
+    "log": "3-npx.log",
+    "sha256": "ec82b087937490a5bf57d81d4c7806368dffa0ecc857590d625963db364d0c5f"
+  }
+]
+```
