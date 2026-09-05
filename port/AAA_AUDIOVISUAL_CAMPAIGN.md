@@ -36,14 +36,20 @@ plan below; the original complete wording is retained to make review context ins
 ## 2026-09-04 continuation — selected admission coverage and readiness
 
 Nick accepted Claude's disposition corrections. The entire parked branch is backed up unchanged
-on origin; Batches 1–3 through `8bf9c45…` have an exact-source develop PASS and a prepared,
-unopened PR. Batch 4 waits for the real save export and a separate PR; WIP stays parked.
+on origin; Batches 1–3 through `8bf9c45…` are preserved in tested merge `121df53…` with landed
+PR36 develop. Draft PR #37 is open. Batch 4 waits for the real save export and a separate PR;
+WIP stays parked.
 
 The selected future agent-PR coverage is browser-free develop plus the existing two phone
 preflight rows. Full Compendium → Slice → twelve-row Glass runs on develop-to-main and through
 a separately requested on-demand label. This supersedes this document's earlier full-chain-on-
 every-agent-PR requirement. Claude owns implementation on `anthropic/windows`; Codex makes no
-new workflow/budget-policy edits. No hosted attempts, labels, merges or release are authorized.
+new workflow/budget-policy edits within the audiovisual campaign. PR36 subsequently landed at
+`0cad14d…`; Nick separately authorized reconciling the historical Batches 1–3 Node-verifier change
+with that lane on the review branch. Exact merge `121df53…` is pushed in draft PR #37 with fresh
+static/policy PASS and no approval labels. Lane selection, authorization and all five full guards
+remain unchanged. The fixed-four-branch gate still requires a separate decision for the review
+ref. No hosted attempt, production merge or release occurred.
 
 Blender save/reopen/render and REAPER/Surge save/reopen/export now pass. A bounded browser
 probe decodes both audio outputs and renders them through an offline Web Audio graph. Two

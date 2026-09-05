@@ -80,22 +80,35 @@ production-source prerequisite. Original disposition and unchanged parked-backup
 new current-side documentation remains local. Budget remains UNFROZEN; last recorded visibility
 PUBLIC, private fallback 3,000. No hosted attempts, labels, merges or release authorized.
 
-Prepared local source `openai/review-batches-1-3-20260904` points directly to signed
-`8bf9c45d4aae74a6924bcdc201424db0af4770e6`; exact range from landed `7bf3e84…` contains only
-Batches 1–3. Exact-archive develop PASS: 274 files, 2,885 tests / one skip, all owners, 42.915s;
-1,845 tracked file hashes unchanged. Two phone preflight rows are not yet run on this candidate.
-PR is not opened and candidate branch is not pushed. Exact base/source/title/body and evidence:
-`audits/PARKED_BATCHES_1_3_PR_PREPARATION_20260904.md`. Batch 4 awaits Nick's real save export and
-its own PR; WIP stays parked. These fixes have not been applied to the audiovisual checkout.
+Nick subsequently authorized a merge commit on the named review branch and PR opening.
+`openai/review-batches-1-3-20260904` now tracks origin at merge
+`121df53d0d101822f32f2ca98a878db10518e65d`, parents signed `8bf9c45…` and PR36 develop
+`0cad14dea80b4f2d5052210fa19d583bd0ada085`. Original signed Batches 1–3 are untouched; Batch 4
+and WIP stay excluded. [Draft PR #37](https://github.com/TheDakk/Celestial-Frontier/pull/37) is
+open into develop, labels absent. Exact-source standard tracked-input develop PASS: 274 files,
+2,886 passed / one skipped, all owners, 47.133s wrapper; Actions policy selftest PASS, 79 controls.
+Workflow lane/authorize bytes and all five full guards equal develop; only phone jq verdicts
+become the Node verifier. The fixed-four-branch shell still rejects this review ref; resolve that
+explicit policy choice before labeling. PR is mergeable but draft/blocked, no hosted attempt.
+Current title/body, source evidence and history:
+`audits/PARKED_BATCHES_1_3_PR_PREPARATION_20260904.md` and
+`audits/BATCHES_1_3_PR37_EXACT_EVIDENCE_20260904.json`.
+
+Codex used the requested review branch temporarily in its owned Mac folder, then returned to
+`openai/mac`; no review code was installed into the audiovisual branch. Batch 4 awaits Nick's
+real save export and its own PR; WIP stays parked. Before the next audiovisual coding batch,
+safely synchronize this clean branch with current develop under the protocol; it still carries
+landed PR35 product source, with local documentation-only successors.
 
 Claude on `anthropic/windows`: fetch/read the backed-up parked verifier as reference and continue
 the lane; do not merge/copy parked gameplay. Nick selected browser-free develop plus existing
 small/large phone rows on every agent PR; full Compendium → Slice → twelve-row Glass only on
-develop-to-main or a separate on-demand label. This coverage choice is pending Claude's workflow/
-protocol implementation and does not authorize a run. The old Batch 1 workflow/verifier tests
-must be composed with Claude's lane through Git. Codex makes no new CI/budget-policy edit.
-GitHub action now: none. Nick need not open another app. After a future authorized merge, the
-other clean agent branch syncs from develop. Main, live site and deployment remain untouched.
+develop-to-main or a separate on-demand label. Claude's implementation is landed as PR36;
+Codex reconciled the historical Node-verifier rewrite on the separate review branch under Nick's
+explicit instruction, preserving lane and policy code. GitHub action now: leave approval labels
+absent until the review-branch gate is resolved. Nick need not open another app. After a future
+authorized merge, the other clean agent branch syncs from develop. Main, live site and deployment
+remain untouched. PR #37's title/body already covers the exact merged head and current evidence.
 
 ### Local checks at Batch A checkpoint
 
@@ -104,6 +117,7 @@ PASS: 268 files, 2,785 tests / one skip, all TypeScript/art/route/spec owners. N
 hosted run or product-source change. Blender readiness render is inspected; REAPER/Surge
 terminal save/reopen/render now passes (48kHz stereo, WAV 24-bit/FLAC 16-bit, four seconds,
 non-silent and unclipped). Private source-backup selection/verification remains the prerequisite
-for production Batches B–D. Claude's review corrections are accepted. Only the unchanged parked
-backup received the later authorized push; local documentation, the prepared PR candidate and
-concept assets are not integrated. No CI implementation, hosted attempt or release occurred.
+for production Batches B–D. Claude's review corrections are accepted and PR36's lane is landed.
+The unchanged parked backup and exact tested review merge are pushed; draft PR #37 is open.
+Local audiovisual documentation/concepts and the review candidate are not integrated into develop.
+No hosted attempt or release was performed for this review handoff.

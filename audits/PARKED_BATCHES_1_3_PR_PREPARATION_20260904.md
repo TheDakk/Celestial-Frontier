@@ -1,4 +1,32 @@
-# Batches 1–3 — prepared PR, not opened
+# Batches 1–3 — preparation history and PR #37
+
+**Current 2026-09-04 handoff:** Nick subsequently authorized merging PR36 develop into this
+review branch and opening the PR after fresh checks. Merge commit
+`121df53d0d101822f32f2ca98a878db10518e65d` has parents `8bf9c45…` and landed
+`0cad14dea80b4f2d5052210fa19d583bd0ada085`; the three original signed commits remain intact.
+The exact merge is pushed and [draft PR #37](https://github.com/TheDakk/Celestial-Frontier/pull/37)
+is open, base `develop`, source `openai/review-batches-1-3-20260904`, labels absent.
+
+Fresh standard tracked-input develop PASS: 274 files, 2,886 passed / one skipped, all three
+TypeScript programs/art/routes/spec; 47.133s wrapper. Actions policy selftest PASS: 79 controls.
+Both ran once on the unchanged clean exact merge. Independent merge review is clear. Workflow
+bytes outside the phone verdict implementation match develop; the lane selector's sealed bytes,
+two-label owner guard and five full guards are unchanged. Only the jq verdict implementation
+became the existing Node verifier. Reconstructable proof is in
+`BATCHES_1_3_PR37_EXACT_EVIDENCE_20260904.json`.
+
+The existing sealed branch-flow shell accepts only the four fixed agent branches, so a future
+approval label would reject this review branch before testing. Nick was informed and asked about
+Claude admitting the exact review branch; no policy allowance or approval label was added here.
+PR #37 is mergeable but currently blocked/draft. No hosted attempt, main merge or release occurred.
+
+Codex returned to the preserved clean `openai/mac` audiovisual checkout. Claude on
+`anthropic/windows` can review the Node-verifier/lane composition and separately resolve the
+branch-policy choice when authorized. Neither candidate nor audiovisual work is integrated into
+develop. Nick need not open another app merely to complete this PR handoff.
+
+The exact title and description are current in PR #37. Earlier unopened preparation below is
+retained as history; its old base, 2,885 count and candidate head do not certify the merged source.
 
 Nick reviewed Claude's disposition corrections and authorized the unchanged parked-branch backup
 push plus preparation of only the first three signed batches. No candidate push, PR opening,
