@@ -29,7 +29,7 @@ WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` stays parked except individually 
 
 | Step | State | Commit / push / gates |
 | --- | --- | --- |
-| 1 — core integration | Slice PASS; small-phone recipe truth red | `a0bd9da` local; `5ac99f9` pushed 07:13:39 UTC; fast 286 / 2,958 / 1; large phone not run |
+| 1 — core integration | Slice PASS; small-phone Guide controls instrument-red | `5c07efe` local; `5ac99f9` pushed 07:13:39 UTC; fast 286 / 2,959 / 1; large phone not run |
 | 2a — accepted st-scan | Pending | Recover only completed authored scope |
 | 2b — descent/wave-offs | Pending | Canonical-address deterministic outcome |
 | 2c — 50-Paragon hunt | Pending | Existing authored table only |
@@ -176,6 +176,20 @@ Shipyard oracle correction fast PASS: **286 files / 2,959 passed / 1 skipped**;
 typecheck/artunused PASS. Seventeen independent effect-support literals and their local seal
 now reflect the signed core. All 62 rows/statuses/enabled states and existing corruption
 controls remain. Commit before the next clean-source browser sequence.
+
+Clean `5c07efe`: Slice PASS in **367.006s**; Shipyard passes. Small-phone Glass then
+stops instrument-red at four F2 Guide controls (all 22 product topics true, zero product
+findings). Repair only their stale removal/contradiction behavior. The full literal finding
+is retained in the REDS JSON; large phone did not run.
+
+The new actual-Guide replay passed focused checks but full typecheck caught its overly
+narrow inferred Map key. The test now accepts an arbitrary search string with the exact
+catalogue topic value type. Original TS2345 is retained; later fast gates did not run.
+
+Guide-control correction final fast PASS: **286 files / 2,962 passed / 1 skipped**;
+typecheck/artunused PASS. Two explicit forbidden claims and audio paragraph 5 fix the
+existing checker; actual 22-topic replay and exact historical failure controls pass.
+Commit before the next clean-source Slice/phone sequence.
 
 ### Scope and continuation
 
