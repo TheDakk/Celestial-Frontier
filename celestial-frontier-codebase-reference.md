@@ -4388,8 +4388,10 @@ Search/Atlas/direct arrival uses the travel receipt without earning Follow. Atla
 only the exact row's `fav` field in place, preserving its WeakMap route sidecar; false-to-true owns
 `curator`, unfavorite never removes it, and unchanged state is receipt-free. Main publishes each
 committed detached carrier only after its owning fixed point succeeds. Explorer self-rename is live
-but identity-only and cannot unlock `namer`. Exactly `daily`, `decade`, `survivor`, `fieldmedic`,
-and `gambler` remain owner-blocked; no aggregate proxy may mint them.
+but identity-only and cannot unlock `namer`. Explicit hostile Discover Life joins `survivor` in
+`bioscan-action.ts`; safe explorer Flora healing joins `fieldmedic` and, above 40% poison risk,
+`gambler` in `explorer-meal-action.ts`. Only `daily` and `decade` remain owner-blocked; no aggregate
+proxy may mint them.
 
 `planProgressionCeremonyV1` validates the exact prior/next append and best-rank transition after an
 owner's committed publication. It rejects reordered/unknown/duplicate achievement deltas and rank
@@ -4511,14 +4513,14 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `release-content.ts`, wired by `main.ts`): `LEGACY_GUIDE_CATEGORIES` and
   `LEGACY_RELEASES` are exact source-addressed snapshots, guarded by
   `tests/guide-release.test.ts`. `getGuideCatalogue` defaults to 41 player topics—currently
-  34 partial and 7 unavailable—with dormant topics hidden and unavailable topics retained with
+  35 partial and 6 unavailable—with dormant topics hidden and unavailable topics retained with
   honest copy; `getGuideTopic` and
   `searchGuide` keep stable ids, search and live cross-links. `fillGuide` /
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
   by the 56 legacy releases. Its exact 77-bullet implemented-outcome inventory has rendered
-  ordered SHA-256 `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`
+  ordered SHA-256 `379bb64ef214edb961813d069e8b0f95fcba21fc7564095cae0a4da136b09e70`
   and is checked structurally and in the rendered Guide. Tail proof dispatches one adaptive
   native wheel per fresh exact-document/tail/hit-owner/geometry observation until the final item
   is visible at bottom, then restores scroll and inline overflow ownership exactly; unchanged

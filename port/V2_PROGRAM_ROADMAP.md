@@ -2209,6 +2209,14 @@ predecessors and distinct Slice control stop are recorded above.
 
 ### 5.2 Arc 3 — engineering loop
 
+Current source refinement (2026-09-05): all six Research purchases have their authored consumers: Deep
+Scanners reveal orbital minerals, Hull reduces hostile Discover Life damage, Xenobotany augments safe
+explorer nourishment, and the three drives shorten travel presentation at 2×/4×/8×. The existing
+`engineering-panel.ts`, `bioscan-hazard.ts`, `explorer-meal-action.ts` and travel owners preserve
+canonical costs, permanent reach and one-receipt settlement. The dated status/evidence below is
+historical where it still lists five missing consumers; no acceptance claim is advanced here.
+
+
 **Implementation status (matches code as of 2026-09-04): `[PARTIAL]`, product actions plus the live Deep-Scanner
 projection are implemented locally.** The
 canonical opportunity projections, finite active-play Mine/Skim, Engineering panel, shared action
@@ -2368,6 +2376,16 @@ Arc 4.5 is a hard product gate. It is not optional polish and cannot be passed b
 retention metric, or technically green demo.
 
 ### 5.5 Arc 5 — companions
+
+Current source refinement (2026-09-05): Field Scout designation remains a role-only action, while
+`bioscan-action.ts` joins nonlethal Scout interception and `arc4-capture-capacity.ts` joins up to
++2 pre-action Scout XP on a genuinely fresh successful species capture, capped at 486. The explorer
+has a separate exact-lot Flora meal (`explorer-meal-action.ts`). Records also has the read-only
+`expedition-chronicle.ts` projection; it creates no companion mission or bond authority. Current
+`ownershipV2` v3 diagnostics include the exact `explorerMeal` subtree in addition to Feed, Breed,
+Rename and Scout; only explicit legacy replay admits the known historical shape. These current
+owners supersede their absence claims in the dated implementation/evidence below.
+
 
 **Implementation status (2026-08-29): `[PARTIAL]`; compact authority and four bounded exact-instance
 companion writers are player-live: Feed, nonlethal Breed with active-play Recovery, Rename, and
@@ -2721,6 +2739,14 @@ audio/memory/node plateaus; transcript-to-cue coverage; human listening/repetiti
 heat and speaker/headphone/mono acceptance.
 
 ### 5.10 Arc 9 — progression, legacy, projects, and records
+
+Current source refinement (2026-09-05): there are 26 true-owner event joins and two blocked rows,
+`daily` and `decade`. Hostile Discover Life owns `survivor`; safe Flora healing owns `fieldmedic` and
+above-40%-risk safe healing owns `gambler`. Each joins its action receipt. The read-only Expedition
+Chronicle & Museum projects four independent galleries, each capped at 60, from existing saved
+facts (`expedition-chronicle.ts`). The dated five-blocked-owner and absent-Chronicle descriptions
+below remain historical; current exact-source gate outcomes belong to the overnight report.
+
 
 Arc 9 closes player history and remaining current-system progression rather than leaving it between
 “feature parity” and optional projects.

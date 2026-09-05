@@ -848,3 +848,103 @@ sequence. Later patches are being context-refreshed to preserve this correction.
   }
 ]
 ```
+
+
+## Checkpoint 1 third Slice PASS, eighth browser stop — bulletin corruption controls
+
+Clean source `d2afe528e11ba3fb7b9b75762fbeb458fb491a3a` passes local develop Slice in
+**367.432s** (log SHA `57ad10b60f75e3d191448db7da8f176a81e22332e598575ad1ca0aea484790d7`).
+Small-phone Glass passes the repaired 22-topic Guide controls, then stops after **13.182s**:
+
+```text
+GLASS VIEWPORT INSTRUMENT-RED — small-phone; 8544 ms; findings 0; instrument failures 1
+GLASS MATRIX INSTRUMENT FAILURE
+- small-phone: development-release reorder/inventory/authority controls did not fail closed
+```
+
+The actual 77-outcome bulletin baseline passes every contract. Inspect the existing deliberately
+corrupted release variants and their exact expected rejection. Full literal finding is retained
+in the REDS JSON; parsed local artifact `/private/tmp/cf-release-eighth-red.json`.
+Log SHA-256 `7c1717838996b2987c64483c02d475f00f76596222f02504fc359ea69d2e14ef`.
+Large-phone Glass did not run. No unchanged-source retry or later gameplay integration.
+
+
+## Release-control fast typecheck stop and bounded correction
+
+Focused executable checks passed, but full typecheck stopped (1.548s), before the remaining
+fast gates, because the new test imports an existing JavaScript browser-contract owner without
+its own declaration shim:
+
+```text
+tests/exceptional-crafting-evidence-contract.test.ts(6,43): error TS7016: Could not find a declaration file for module '../tools/engineering-browser-contract.mjs'. '/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/tools/engineering-browser-contract.mjs' implicitly has an 'any' type.
+```
+
+The import now has the same narrow `@ts-expect-error` declaration-boundary annotation used by
+the existing Engineering test. No assertion, runtime behavior, compiler setting or product
+interface changed. Log SHA-256
+`02b545be88c6cda1919a1423c2c8c7c64502897a9bdb5b04837b986187384676`.
+The first edit attempt's unique-match assertion refused the wrong imported symbol before any
+write. A mistakenly sequenced fast invocation then repeated the same TypeScript failure;
+its separate log remains in `step1-release-controls-typed-fast`. The corrected import is
+`hasUnnegatedSentenceClaim`; a new fast run follows. No browser ran after either failure.
+
+
+## Checkpoint 1 bulletin-control correction and current references — final fast PASS
+
+The sole false clause among 196 aggregate release controls was the generic Travel Research
+reach claim. The existing predicate recognized named drives but omitted that explicit generic
+subject. Its one-line addition rejects unnegated reach expansion while accepting “never
+extends” and “does not increase” permanent reach. The existing focused test executes Main's
+actual release renderer plus the complete Glass detail/mutation expressions. All controls and
+restoration pass; removing the added clause reproduces the sole historical failure. Focused
+PASS **1 file / 8 tests**, with all 11 truthful, 14 unavailable and 13 Shipyard contradiction
+rows independently retained.
+
+Five current references now describe the actual Research/Scout/Meal/Chronicle owners, removed
+player import door, current Guide split and strict inspection/Meal diagnostics. The original
+2026-09-01 Survey evidence row stays verbatim beneath a separate current refinement; its old
+certification is not applied to new semantics. Two current bulletin-hash statements now match
+`379bb64ef214edb961813d069e8b0f95fcba21fc7564095cae0a4da136b09e70`; historical hashes stay intact.
+
+Full corrected fast PASS: typecheck/artunused, **286 files / 2,964 passed / 1 skipped**,
+four local workers. No game-source, producer/measurement, numeric ruler, timeout or hosted
+setting change. Commit these completed corrections before the next clean-source browser run.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.381,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.533,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 57.688,
+    "log": "3-npx.log",
+    "sha256": "e69f17bba996d002a9a407b1ec7d27f94a1a9175354f8ac1bb4a4f0f04538375"
+  }
+]
+```

@@ -13709,6 +13709,7 @@ async function main() {
               ||/Reinforced Hull[^.!?]{0,96}(?:reduces?|mitigates?)[^.!?]{0,64}(?:all combat|conquest|duel|skim)/i.test(shipyardText)
               ||/Xenobotany[^.!?]{0,96}(?:changes?|improves?|feeds?|heals?)[^.!?]{0,64}(?:companion|Feed)/i.test(shipyardText)
               ||/(?:Fusion|Antimatter|Warp Fold)[^.!?]{0,128}(?:extends?|increases?)[^.!?]{0,64}(?:permanent )?reach/i.test(shipyardText)
+              ||unnegated(shipyardText,/Travel research[^.!?]{0,128}(?:extends?|increases?)[^.!?]{0,64}(?:permanent )?reach/i)
               ||/(?:travel|drive)[^.!?]{0,128}(?:slows?|delays?)[^.!?]{0,64}(?:unresearched|baseline)/i.test(shipyardText)
               ||unnegated(shipyardText,/(?:reward|cost|Charter tick|optimistic panel change)[^.!?]{0,80}publishes? before[^.!?]{0,48}(?:transaction )?commit/i)
               ||/(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)/i.test(shipyardText)
