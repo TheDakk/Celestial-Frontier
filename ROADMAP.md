@@ -29,7 +29,7 @@ WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` stays parked except individually 
 
 | Step | State | Commit / push / gates |
 | --- | --- | --- |
-| 1 — core integration | Slice PASS; small-phone Guide controls instrument-red | `5c07efe` local; `5ac99f9` pushed 07:13:39 UTC; fast 286 / 2,959 / 1; large phone not run |
+| 1 — core integration | Slice/Guide PASS; bulletin controls instrument-red | `d2afe52` local; `5ac99f9` pushed 07:13:39 UTC; fast 286 / 2,962 / 1; large phone not run |
 | 2a — accepted st-scan | Pending | Recover only completed authored scope |
 | 2b — descent/wave-offs | Pending | Canonical-address deterministic outcome |
 | 2c — 50-Paragon hunt | Pending | Existing authored table only |
@@ -190,6 +190,21 @@ Guide-control correction final fast PASS: **286 files / 2,962 passed / 1 skipped
 typecheck/artunused PASS. Two explicit forbidden claims and audio paragraph 5 fix the
 existing checker; actual 22-topic replay and exact historical failure controls pass.
 Commit before the next clean-source Slice/phone sequence.
+
+Clean `d2afe52`: Slice PASS **367.432s** and all rendered Guide controls pass.
+Small-phone then stops instrument-red at development-bulletin corruption controls; the real
+77-outcome baseline is all true. Full exact diagnostic retained; large phone did not run.
+
+Full typecheck caught the release replay test’s JavaScript-contract import without a
+declaration shim (TS7016). The same narrow import annotation as the Engineering test now
+marks that boundary. An exact-match edit refusal and mistakenly repeated typecheck are
+retained in the report; no later fast or browser gate ran after either red.
+
+Bulletin-control correction final fast PASS: **286 files / 2,964 passed / 1 skipped**;
+typecheck/artunused PASS. The exact full rendered release sequence now passes, including
+196 aggregate clauses and truthful Research reach negations. Five current references and two
+current bulletin hash statements are synchronized; dated certification records remain intact.
+Commit before the next clean-source Slice and phone gates.
 
 ### Scope and continuation
 

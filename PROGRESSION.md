@@ -786,8 +786,10 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
     loss/near-brink awards in its combat CAS. Arc 5 Breed now pays union XP in its own CAS: new pair
     firsts are 64-character SHA-256 digests over sorted canonical parent `SpeciesId`s, while an
     imported v1 `pair|<FNV32-base36>` key derived from `_earthName || speciesName(seed)` remains
-    read-only already-paid evidence in either `xpf` or the archive. Other advertised care/duel/Scout
-    faucets still await their true v2 owners.
+    read-only already-paid evidence in either `xpf` or the archive. A genuinely fresh successful
+    capture gives the exact Scout standing before that attempt up to +2 XP in the same receipt,
+    capped at 486; no Scout, miss or repeat species gives Scout XP. Other advertised care/duel
+    faucets still await their true v2 owners. `arc4-capture-capacity.ts` owns the joined Scout facts.
   - **Union (v1.8, CORRECTED in v1.8.3):** a successful breed pays **+2** to the **newborn**, plus **+5** the first time a given *species pair* is crossed (`awardXPPair`). Until v1.8.3 both awards landed on `aEntry` — which the union consumes moments later, so the XP was destroyed as it was earned. The lineage key was also `[a.kind,b.kind]`, and breeding is always Fauna×Fauna, so it could only ever read `'Fauna+Fauna'`: a once-per-parent payout wearing a lineage's name. It now keys on the two parent **species**, FNV-hashed short so it survives the ledger's 64-char load truncation.
     V2 preserves that imported key only as a compatibility alias; every new V2 first uses the
     collision-resistant canonical SpeciesId digest and both awards land directly on the child in
@@ -840,7 +842,9 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
   and explicit Atlas Favorite `curator`. Accepted Follow composes route, Jumps, galaxy visit,
   `wayfarer`, and any proved galaxy-kind event in its one existing receipt. They preserve unknown
   ids, protect the 146-row bound and independently verify the committed projection without
-  inferring any other event. Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler`
+  inferring any other event. Explicit hostile Discover Life joins `survivor`; safe explorer Flora
+  healing joins `fieldmedic`, and safe healing above 40% poison risk also joins `gambler`, each in
+  its owning receipt (`bioscan-action.ts`, `explorer-meal-action.ts`). Only `daily` and `decade`
   still require their absent gameplay transactions. Explorer self-rename is a separate identity-only
   receipt/CAS and cannot unlock `namer`.
 

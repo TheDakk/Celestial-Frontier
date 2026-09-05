@@ -95,17 +95,18 @@ reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended de
 > durable chart is never reported as usable while remaining untravelable. This closes the current
 > implementation seam, not the later HUMAN journey review or fresh exact-source browser evidence.
 
-**STATUS:** approved product direction and implementation contract as of **2026-08-29**, except
-the explicit D-ARC4-BIOSCAN replacement remains a ◐ local candidate pending HUMAN acceptance.
+**STATUS:** current implementation contract matches the recovered local core as of **2026-09-05**;
+implementation status does not close the combined Arc 4.5 or separate Arc 5.5 HUMAN reviews. The
+older D-ARC4-BIOSCAN replacement records below describe their named historical checkpoints.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
 exact-instance Inventory, Arc 3 Engineering/Pureforged actions, Arc 4 player-facing capture loop,
 and Arc 5 exact-instance Feed, Breed/Recovery, Rename and Field Scout actions described below. Arc 5A's compact
 ownership-v2 five-carrier authority spans boot, genuine legacy Training, Arc 4 capture and those
 four player-live companion writers. Wider tastes/care/bond, injury healing, companion expeditions,
 friendly duels and
-missions remain open. Five non-Deep-Scanner research purchases, disconnected-effect recipes,
-authored random loot and upgrades/sockets remain **not implemented** unless a row below explicitly
-says otherwise. Player-facing landed combat/Guardian presentation is live at the bounded Arc 6
+missions remain open. All six Research purchases have their authored mineral, hostile-Bioscan,
+explorer-nourishment or travel-presentation consumers. Disconnected-effect recipes, authored random
+loot and upgrades/sockets remain **not implemented** unless a row below explicitly says otherwise. Player-facing landed combat/Guardian presentation is live at the bounded Arc 6
 scope recorded in `COMBAT_AND_CONQUEST.md`. This document coordinates the
 existing system specs; it does not silently promote planned behavior into the in-game Guide.
 
@@ -1281,9 +1282,9 @@ cannot understand, enjoy or comfortably use it.
 - broader Cargo-material source coverage beyond the live finite Mine/Skim subset, explorer paper
   doll/bespoke item art, saved advanced filters and broader Inventory policy beyond the live exact
   gear actions;
-- Research beyond the live Deep Scanners purchase, fixed Fabrication outputs whose effects are not
-  yet connected, authored upgrade writers and richer visual vessel progression beyond the live
-  Engineering panel;
+- fixed Fabrication outputs whose effects are not yet connected, authored upgrade writers and
+  richer visual vessel progression beyond the live Engineering panel; all six authored Research
+  purchases and their existing consumers are implemented;
 - production item-instance loot sources, authored natural-affix compatibility/deeper pools,
   crafted modifiers beyond the bounded Pureforged path, drawbacks, upgrades/sockets and Guardian drops;
 - broader world-opportunity presentation and economy source/rate/recovery/pacing coverage beyond
@@ -1291,13 +1292,14 @@ cannot understand, enjoy or comfortably use it.
 - the combined HUMAN first-journey/ownership review over the locally automated player-facing capture
   loop;
 - player-visible Arc 5 V2 mutation actions beyond bounded Feed, Breed/Recovery, Rename and
-  role-only Field Scout; all still need complete HUMAN/physical-device evidence;
+  Field Scout designation plus its Bioscan injury interception and fresh-species capture XP;
+  all still need complete HUMAN/physical-device evidence;
 - injury care, richer lineage/offspring preview, creature XP/classes and Companion bond;
 - friendly duels, broader party/tactics/retreat combat, Guardian care/breeding/mission/Recovery,
   authored extra Guardian rewards, conquest-modifier coexistence and the Fifty Paragons;
 - Companion missions/return loot;
-- optional bounded world projects/outposts plus a personal Chronicle/museum and later private
-  shareable build/ship/companion stories;
+- optional bounded world projects/outposts, later private shareable build/ship/companion stories,
+  and semantics beyond the live read-only Expedition Chronicle & Museum (`expedition-chronicle.ts`);
 - complete creature/biome/combat/ship/music audio and accessibility mixer;
 - live Field Training/tooltip/Advanced Briefing coverage for those systems;
 - remaining event-achievement owners/rewards, Discover-life/weekly Charter lifecycle, broader
