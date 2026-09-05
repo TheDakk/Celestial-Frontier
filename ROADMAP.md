@@ -101,7 +101,22 @@ the archive verbatim and refresh this handoff in place.
 
 ### Paired handoff
 
-- **Anthropic/Claude Code:** PR #40 merged; `anthropic/mac` sits on `develop` `9ea0104…` plus this record. Next candidates
+- **Anthropic/Claude Code (later on 2026-09-05, local batch on `anthropic/mac`, no PR):** (1) the Slice smoke
+  absence check now carries its **in-run both-directions control** — an injected `#setimport` row plus a
+  stale `#importtext` turns the check red and its removal restores green (`slicesmoke --profile=develop`
+  PASS with the control; vitest 274/2,886 unchanged). (2) **Artlock evidence for the P0-6a lane decision:**
+  `node tools/artlock.mjs` against the last bless (2026-08-06, `5499e4e`) reports **[DRIFT] 1250 of 1250
+  assets changed** (undeclared flora/fauna/quadruped/bird/invert/species classes) and **[SAME] 4 HARD
+  pairs** (Wheat≈Rye 0.26, Barley≈Wheat 0.32, Barley≈Rye 0.32, Stick Insect≈Mudminnow 0.57) → FAIL.
+  Sensor-stability control: a scratch whole-catalogue bless followed by a re-render reports **0 of 1250**
+  drift with identical SAME/HARD counts, so the drift is real, not instrument noise. Causes are plausibly
+  both: **136 art-source commits since the bless** (incl. `c55cc63` universe-wide visual polish 2026-08-28,
+  the Wave 2d/2e full-reset repairs 2026-08-10, D-ART-188) and the browser moving to **Edge 152.0.4191.62**;
+  separating the two needs the Aug 6 source re-rendered under today's Edge. ⚠ artlock **rewrites**
+  `reference/samepairs.json` and `reference/shapepairs.json` on every run (the ratchet) — both were
+  restored here; a CI wiring must treat those as outputs, never as inputs. **A re-bless is a human claim
+  ("someone looked") and is Nick's, not an agent's**; wiring artlock into any lane before a fresh bless
+  turns every art PR red on day one. The four HARD pairs are worth an art look regardless. Next candidates
   unchanged: **artlock CI ownership** (P0-6a — Nick's lane/cost decision first; baseline
   `reference/artlock.json` is dated 2026-08-08 and has not been run) and the **eleven-artifact
   verbatim-seal gap** (P0-6b — implementation, but it adds instrument code against the "freeze

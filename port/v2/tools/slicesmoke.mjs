@@ -8607,14 +8607,34 @@ try {
      sheet must stay hidden, and nothing on the page may still carry the old
      paste/pick/import controls. The evidence-only importBlob seam remains
      the replacement driver below. */
-  const importDoor = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
-    document.getElementById('docksets').click();
-    const sheet=document.getElementById('importsheet');
-    return { button:!!document.getElementById('setimport'), sheetHidden:!!sheet&&sheet.style.display==='none',
-      panel:S.api.state().panelOpen, stale:['importtext','importgo','importpick','importfile','importclose','importmsg']
-        .filter((id)=>!!document.getElementById(id)), oldDock:!!document.getElementById('docksave') }; })()`);
-  if (importDoor.button || !importDoor.sheetHidden || importDoor.panel !== 'set' || importDoor.stale.length !== 0 || importDoor.oldDock) {
+  const importDoorCheck = `(()=>{ const S=window.__CF_SLICE__,sheet=document.getElementById('importsheet');
+    const button=!!document.getElementById('setimport'),sheetHidden=!!sheet&&sheet.style.display==='none',
+      panel=S.api.state().panelOpen,stale=['importtext','importgo','importpick','importfile','importclose','importmsg']
+        .filter((id)=>!!document.getElementById(id)),oldDock=!!document.getElementById('docksave');
+    return {ok:!button&&sheetHidden&&panel==='set'&&stale.length===0&&!oldDock,button,sheetHidden,panel,stale,oldDock}; })()`;
+  await evalIn(`(()=>{ document.getElementById('docksets').click(); return true; })()`);
+  const importDoor = await evalIn(importDoorCheck);
+  if (!importDoor.ok) {
     fails.push('SETTINGS IMPORT DOOR still exists or the recovery sheet opened without a lock: ' + JSON.stringify(importDoor));
+  }
+  /* Negative control, both directions: inject the removed door (a Settings
+     row control plus one stale paste field inside the recovery sheet), prove
+     the absence check turns red, remove the injection, prove it is green
+     again. A check that cannot see a re-added door would bless the exact
+     regression this step exists to catch. */
+  const importDoorCtl = await evalIn(`(()=>{ const panel=document.getElementById('setpanel'),sheet=document.getElementById('importsheet');
+    if(!panel||!sheet) return {injected:false};
+    const row=document.createElement('div');row.className='row';row.innerHTML='<label>Save data</label><button id="setimport">Bring expedition</button>';
+    const field=document.createElement('textarea');field.id='importtext';
+    panel.append(row);sheet.firstElementChild?.append(field);
+    const injected=${importDoorCheck};
+    row.remove();field.remove();
+    const restored=${importDoorCheck};
+    return {injected:true,red:injected,green:restored}; })()`);
+  if (!importDoorCtl.injected || importDoorCtl.red.ok || !importDoorCtl.red.button || !importDoorCtl.red.stale.includes('importtext')
+    || !importDoorCtl.green.ok) {
+    fails.push('SETTINGS IMPORT DOOR CONTROL FAILED — an injected door stayed green or its removal did not restore green: '
+      + JSON.stringify(importDoorCtl));
   }
   await evalIn(`(()=>{ document.querySelector('#setpanel [data-pnx]')?.click(); return true; })()`);
   /* FOCUS RESTORATION: closing returns focus to the opener button */
