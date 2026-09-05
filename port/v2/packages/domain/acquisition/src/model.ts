@@ -18,6 +18,7 @@ import {
   sha256Hex,
   type CanonicalJson,
 } from './canonical.js';
+import { paragonGenomeV1 } from './paragon-internal.js';
 
 export const OWNERSHIP_STATE_SCHEMA = 'cf-v2-ownership-state/v1' as const;
 export const OWNERSHIP_STATE_VERSION = 1 as const;
@@ -81,12 +82,23 @@ export interface WorldDiscoveryProvenanceV1 {
   readonly sourceOrdinal: number;
 }
 
-export type DiscoveryProvenanceV1 = LegacyDiscoveryProvenanceV1 | WorldDiscoveryProvenanceV1;
+export interface ParagonDiscoveryProvenanceV1 {
+  readonly kind: 'paragon';
+  readonly paragonIndex: number;
+  readonly worldKey: string;
+  readonly worldAddress: CanonicalCF1WorldAddress;
+  readonly receiptOrdinal: number;
+}
+
+export type DiscoveryProvenanceV1 =
+  | LegacyDiscoveryProvenanceV1
+  | WorldDiscoveryProvenanceV1
+  | ParagonDiscoveryProvenanceV1;
 
 export interface DiscoveryRecordV1 {
   readonly recordId: DiscoveryRecordId;
   readonly speciesId: SpeciesId;
-  readonly acquisition: 'legacy' | AcquisitionVerbV1;
+  readonly acquisition: 'legacy' | AcquisitionVerbV1 | 'paragon';
   readonly provenance: DiscoveryProvenanceV1;
   readonly firstForSpecies: boolean;
 }
@@ -238,7 +250,17 @@ interface WorldDiscoveryProvenanceMirrorV1 {
   readonly cycle: number;
   readonly sourceOrdinal: number;
 }
-type DiscoveryProvenanceMirrorV1 = LegacyDiscoveryProvenanceMirrorV1 | WorldDiscoveryProvenanceMirrorV1;
+interface ParagonDiscoveryProvenanceMirrorV1 {
+  readonly kind: 'paragon';
+  readonly paragonIndex: number;
+  readonly worldKey: string;
+  readonly worldAddress: CanonicalCF1WorldAddressMirrorV1;
+  readonly receiptOrdinal: number;
+}
+type DiscoveryProvenanceMirrorV1 =
+  | LegacyDiscoveryProvenanceMirrorV1
+  | WorldDiscoveryProvenanceMirrorV1
+  | ParagonDiscoveryProvenanceMirrorV1;
 
 export interface DiscoveryRecordMirrorV1 extends Omit<DiscoveryRecordV1, 'provenance'> {
   readonly provenance: DiscoveryProvenanceMirrorV1;
@@ -523,6 +545,55 @@ export function createWorldDiscoveryRecordV1(input: Readonly<{
   const row: DiscoveryRecordV1 = Object.freeze({
     recordId: discoveryId(simple.recordId!), speciesId: speciesId(simple.speciesId!),
     acquisition: simple.verb, provenance, firstForSpecies: simple.firstForSpecies,
+  });
+  DISCOVERY_ROWS.set(row, Object.freeze({
+    ...row,
+    provenance: Object.freeze({ ...provenance, worldAddress: mirror }),
+  }));
+  return row;
+}
+
+/** Catalogue-only observation of one of the fixed Fifty Paragons. This is
+ * deliberately not a capture verb: it owns no creature, specimen lot, or
+ * Biosphere Yield row. The caller must still prove the exact Paragon genome
+ * and home-world binding before this registered provenance is constructed. */
+export function createParagonDiscoveryRecordV1(input: Readonly<{
+  recordId: DiscoveryRecordId;
+  speciesId: SpeciesId;
+  paragonIndex: number;
+  worldAddress: CanonicalCF1WorldAddress;
+  receiptOrdinal: number;
+}>): DiscoveryRecordV1 {
+  const captured = ownPlainFields(input, [
+    'recordId', 'speciesId', 'paragonIndex', 'worldAddress', 'receiptOrdinal',
+  ], 'Paragon discovery');
+  const worldAddress = captured.worldAddress;
+  if (!isCanonicalCF1Address(worldAddress) || !('planet' in worldAddress)) {
+    throw new TypeError('Paragon discovery requires a runtime-proven world address');
+  }
+  const simple = record(canonicalizeData({
+    recordId: captured.recordId,
+    speciesId: captured.speciesId,
+    paragonIndex: captured.paragonIndex,
+    receiptOrdinal: captured.receiptOrdinal,
+  }), 'Paragon discovery');
+  exactKeys(simple, [
+    'recordId', 'speciesId', 'paragonIndex', 'receiptOrdinal',
+  ], 'Paragon discovery');
+  const mirror = addressMirror(worldAddress);
+  const provenance: ParagonDiscoveryProvenanceV1 = Object.freeze({
+    kind: 'paragon',
+    paragonIndex: integer(simple.paragonIndex!, 'Paragon index', 49),
+    worldKey: mirror.key,
+    worldAddress,
+    receiptOrdinal: integer(simple.receiptOrdinal!, 'Paragon receipt ordinal', 0xFFFF_FFFE),
+  });
+  const row: DiscoveryRecordV1 = Object.freeze({
+    recordId: discoveryId(simple.recordId!),
+    speciesId: speciesId(simple.speciesId!),
+    acquisition: 'paragon',
+    provenance,
+    firstForSpecies: true,
   });
   DISCOVERY_ROWS.set(row, Object.freeze({
     ...row,
@@ -880,11 +951,26 @@ function validateRelationships(state: OwnershipStateV1): void {
   }
   const firstObservations = new Map<SpeciesId, number>();
   const discoverySuccesses = new Set<string>();
+  const paragonIndices = new Set<number>();
   for (const row of state.discoveries) {
     const species = catalog.get(row.speciesId);
     if (!species) throw new TypeError('discovery references an absent species');
     if (row.firstForSpecies) {
       firstObservations.set(row.speciesId, (firstObservations.get(row.speciesId) ?? 0) + 1);
+    }
+    if (row.provenance.kind === 'paragon') {
+      if (species.kingdom !== 'fauna' || row.acquisition !== 'paragon'
+        || !row.firstForSpecies || paragonIndices.has(row.provenance.paragonIndex)) {
+        throw new TypeError('Paragon catalogue provenance is invalid or repeated');
+      }
+      const expected = canonicalGenomeIdentityV1(paragonGenomeV1(row.provenance.paragonIndex));
+      if (species.speciesId !== expected.speciesId
+        || species.genomeIdentity !== expected.genomeIdentity
+        || canonicalJson(species.genome) !== canonicalJson(expected.genome)) {
+        throw new TypeError('Paragon catalogue provenance does not match its exact indexed genome');
+      }
+      paragonIndices.add(row.provenance.paragonIndex);
+      continue;
     }
     if (row.provenance.kind !== 'world') continue;
     if (row.provenance.verb !== expectedVerb(species.kingdom)) {
@@ -961,6 +1047,9 @@ function validateRelationships(state: OwnershipStateV1): void {
   }
   for (const row of state.discoveries) {
     const species = catalog.get(row.speciesId)!;
+    if (row.provenance.kind === 'paragon' && acquisitionOwners.has(row.recordId)) {
+      throw new TypeError('Paragon catalogue observation cannot own an individual or specimen');
+    }
     if ((row.provenance.kind === 'legacy' || species.kingdom !== 'fauna')
       && !acquisitionOwners.has(row.recordId)) {
       throw new TypeError('acquisition audit row lacks its required owned row');
@@ -1262,6 +1351,28 @@ function decodeDiscovery(value: CanonicalJson, resolver: OwnershipAddressResolve
       from: typeof provenance.from === 'string' ? provenance.from : '',
       legacyLocation: location,
       firstForSpecies: source.firstForSpecies === true,
+    });
+  }
+  if (provenance.kind === 'paragon') {
+    if (source.acquisition !== 'paragon' || source.firstForSpecies !== true) {
+      throw new TypeError('Paragon discovery semantics are invalid');
+    }
+    exactKeys(provenance, [
+      'kind', 'paragonIndex', 'worldKey', 'worldAddress', 'receiptOrdinal',
+    ], 'Paragon provenance');
+    const mirror = addressMirrorFromJson(provenance.worldAddress!);
+    const address = reboundWorldAddress(mirror, resolver, 'Paragon provenance');
+    if (address.key !== provenance.worldKey) {
+      throw new TypeError('Paragon provenance could not be rebound');
+    }
+    return createParagonDiscoveryRecordV1({
+      recordId: discoveryId(source.recordId!),
+      speciesId: speciesId(source.speciesId!),
+      paragonIndex: integer(provenance.paragonIndex!, 'Paragon index', 49),
+      worldAddress: address,
+      receiptOrdinal: integer(
+        provenance.receiptOrdinal!, 'Paragon receipt ordinal', 0xFFFF_FFFE,
+      ),
     });
   }
   if (provenance.kind !== 'world' || (source.acquisition !== 'tame'

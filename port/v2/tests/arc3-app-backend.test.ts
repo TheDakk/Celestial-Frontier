@@ -911,6 +911,35 @@ describe('Arc 3 app action transaction seam', () => {
     expect(plan.state.ascProg).toEqual({ 'c1-part': 3 });
   });
 
+  it.each([
+    ['hull1', [], [['Ti', 5], ['Fe', 8]], 40],
+    ['lab1', [], [['C', 6], ['P', 3], ['H2O', 4]], 60],
+    ['drive1', [], [['H', 8], ['He3', 2], ['Fe', 4]], 40],
+    ['drive2', ['drive1'], [['He3', 6], ['Pt', 2], ['U', 2]], 120],
+    ['drive3', ['drive2'], [['Pz', 1], ['Ir', 3], ['U', 4]], 300],
+  ] as const)('derives the connected %s consumer through the existing atomic purchase owner', (
+    researchId,
+    priorResearch,
+    cargo,
+    essence,
+  ) => {
+    const save = freshSave();
+    save.cargo = cargo.map(([id, amount]) => [id, amount]);
+    save.techOwned = [...priorResearch];
+    save.essence = essence;
+    const mars = surface(world(MARS));
+    const extensions = productExtensions({ save, sources: sources(mars) });
+    const derived = deriveArc3ResearchAction({
+      draft: structuredClone(save), extensions, researchId, receiptOrdinal: 7, codecNow: NOW,
+    });
+    expect(derived.kind).toBe('ready');
+    if (derived.kind !== 'ready') return;
+    expect(derived.derivation.result).toMatchObject({ researchId });
+    expect(derived.derivation.state.techOwned).toEqual([...priorResearch, researchId]);
+    expect(derived.derivation.state.cargo).toEqual(cargo.map(([id]) => [id, 0]));
+    expect(derived.derivation.state.essence).toBe(0);
+  });
+
   it('lands one dual-carrier fixed craft under one CAS/receipt and verifies every owned projection', async () => {
     const save = freshSave();
     save.cargo = [['Fe', 10]];

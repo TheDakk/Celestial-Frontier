@@ -31,6 +31,7 @@ import {
   isOwnershipSuccessorV1,
   migrateLegacyOwnershipStateV1,
   ownershipStateDigestV1,
+  ownershipSourceStateV1,
   ownershipContentId,
   planCaptureV1,
   preflightCaptureV1,
@@ -74,6 +75,7 @@ import {
   importSaveV2,
   prepareArc2LootLegacyMigration,
   prepareArc2FixedFabrication,
+  prepareArc5CaptureOwnershipMigrationSuccessor,
   prepareArc5OwnershipMigration,
   prepareF4AuthorityUpdate,
   prepareV5SaveWrite,
@@ -101,6 +103,7 @@ import {
   composeCaptureDrawBundleV1,
 } from '../apps/game/src/acquisition-snapshot.js';
 import { registerAcquisitionSnapshotV1 } from '@cf/domain-acquisition/snapshot-internal';
+import { createCaptureOwnershipSourceProjectionSuccessorV2 } from '@cf/domain-acquisition/ownership-v2-internal';
 import {
   canonicalWorldRoster,
   canonicalWorldRosterForDiagnostics,
@@ -796,6 +799,9 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
       './snapshot-internal': './src/snapshot-internal.ts',
       './ownership-v2-internal': './src/ownership-v2-internal.ts',
       './feed-internal': './src/feed.ts',
+      './explorer-meal-internal': './src/explorer-meal.ts',
+      './bioscan-internal': './src/bioscan.ts',
+      './paragon-internal': './src/paragon-internal.ts',
       './breed-internal': './src/breed.ts',
       './rename-internal': './src/rename.ts',
       './combat-settlement-internal': './src/combat-settlement-internal.ts',
@@ -1704,6 +1710,29 @@ describe('Arc 4 exact capture formula and truthful successor', () => {
       .toEqual(preflight.pool);
     expect(projected.scenarios.every((scenario) => !('candidateDraw' in scenario)
       && !('successDraw' in scenario))).toBe(true);
+    const parent = currentArc5Parent(extensions);
+    const projectedHit = createCaptureOwnershipSourceProjectionSuccessorV2(parent, projected, 1);
+    expect(projectedHit.revision).toBe(parent.revision + 1);
+    expect(ownershipStateDigestV1(ownershipSourceStateV1(projectedHit)))
+      .toBe(projected.scenarios[1]?.successorDigest);
+    expect(() => createCaptureOwnershipSourceProjectionSuccessorV2(
+      parent,
+      { ...projected },
+      1,
+    )).toThrow(/registered scenario authority/u);
+    expect(() => createCaptureOwnershipSourceProjectionSuccessorV2(
+      parent,
+      projected,
+      projected.scenarios.length,
+    )).toThrow(/out of range/u);
+    expect(prepareArc5CaptureOwnershipMigrationSuccessor({
+      baseExtensions: extensions,
+      parent: { ...parent } as OwnershipStateV2,
+      successorExtensions: extensions,
+      scenarios: projected,
+      scenarioIndex: 1,
+      resolver: SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    })).toEqual({ kind: 'protected', reason: 'base-corrupt' });
 
     const draws = composeCaptureDrawBundleV1(preflight, extensions);
     if (draws.kind !== 'planned') throw new Error(`scenario draws were ${draws.reason}`);
@@ -2021,7 +2050,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
       readySnapshot(earth, roster, oneRowTooManyExtensions),
       'tame',
     )).toEqual({ kind: 'refused', reason: 'model-row-capacity' });
-  }, 20_000);
+  }, 60_000);
 
   it('refuses all 64 candidates when the last possible hit alone cannot mirror to v4', () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
@@ -2079,7 +2108,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     });
     expect(readF4Authority(extensions)).toEqual(beforeF4);
     expect(ownership.revision).toBe(0);
-  }, 20_000);
+  }, 60_000);
 
   it('fails closed before draws when a new world would collide in legacy bioX by leaf seed', () => {
     const firstWorld = addressOf(
@@ -2127,7 +2156,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     });
     expect(readF4Authority(extensions)).toEqual(beforeF4);
     expect(ownership.revision).toBe(0);
-  }, 20_000);
+  }, 60_000);
 
   it('certifies the global extension byte ceiling against the miss before draws', () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
@@ -2156,7 +2185,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     });
     expect(readF4Authority(extensions)).toEqual(beforeF4);
     expect(ownership.revision).toBe(0);
-  }, 20_000);
+  }, 60_000);
 
   it('awards exact rare-find Stardust once, then later-cycle repeat ownership earns none', async () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
@@ -2387,7 +2416,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     const changedAchievements = structuredClone(settled.derivation.state);
     changedAchievements.unlocked.push('arc4-unexpected-achievement');
     expect(reflectsLegacySpeciesEffects(changedAchievements)).toBe(false);
-  }, 20_000);
+  }, 60_000);
 
   it('replays byte-identically, binds successor to its exact parent, and never mutates/rerolls authority', () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);

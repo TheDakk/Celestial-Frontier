@@ -1,4 +1,5 @@
 import { createRequire } from 'node:module';
+import { readFileSync } from 'node:fs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type {
   TrainingDeps,
@@ -147,29 +148,34 @@ function driveToGraduation(training: typeof import('../apps/game/src/training.js
   expect(training.trainingStepId()).toBe('grad');
 }
 
+const PARAGON_TRAINING_BAD = /Found Paragons plot a course instead of opening Inspect|Missing silhouettes open Inspect instead of plotting a course|Discover Life on any world adds a Paragon catalogue record|An ordinary\-world Bioscan catalogues a species|A Paragon sighting creates an owned companion|A Paragon sighting creates a specimen|A Paragon sighting grants Capture credit|A Paragon sighting spends 1 Biosphere Yield|A Paragon sighting automatically pays 120 Stardust|Seeker of Legends is claimable after one Paragon|Repeat Paragon sightings add a discovery reward|A prior Paragon\-set claim can pay again|Returning to a previously recorded Paragon home backfills its catalogue record/i;
+
 function graduationCopyIsTruthful(html: string): boolean {
   const copy = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
     .replace(/\s+([,.;:])/g, '$1').trim();
-  return /short drill stays focused on real navigation/i.test(copy)
+  return ["On ordinary worlds, it catalogues no species", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward"].every((part) => copy.includes(part))
+    && !PARAGON_TRAINING_BAD.test(copy)
+    && /short drill stays focused on real navigation/i.test(copy)
     && /board briefings are read-only/i.test(copy)
     && /survey card’s Share prepares a verified CF1 world code/i.test(copy)
     && /pasting a valid CF1 code into Search follows its source-proven route when your ship and Prime reach allow it/i.test(copy)
-    && /use Tame, Scavenge, and Sample after Finish/i.test(copy)
-    && /each chooses uniformly from its eligible species across the full biosphere, not only the at-most-eight-row preview/i.test(copy)
-    && /All three share finite Biosphere Yield/i.test(copy)
-    && /hit or miss spends 1 attempt/i.test(copy)
-    && /pool fully recovers at the next 20-minute active-play cycle/i.test(copy)
-    && /never while the game is closed/i.test(copy)
-    && /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i.test(copy)
-    && /A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing/i.test(copy)
-    && /v2’s current replacement for v1\.8\.9’s separate Discover Life action/i.test(copy)
-    && /Survey Records and accepted or weekly bioscan Charters remain unavailable/i.test(copy)
-    && /real fauna Compendium detail can Feed one exact unassigned companion below the 200-Meal cap with one exact flora lot through Use 1/i.test(copy)
-    && /Breed two distinct exact owned fauna with nonlethal active-play Recovery/i.test(copy)
-    && /Rename one exact owned companion without changing its creature identity/i.test(copy)
-    && /name and stand down the role-only Field Scout/i.test(copy)
+    && /Accepted Atlas, Search, and CF1 arrivals may paint the same deterministic, skippable hyperlane streaks/i.test(copy)
+    && /three drive researches use 2×, 4×, and 8× speed bases without changing permanent reach/i.test(copy)
+    && /living world’s card also offers explicit Discover Life/i.test(copy)
+    && /ordinary inspection stays write-free, while that one durable action records the world and resolves its shown hazard/i.test(copy)
+    && /Reinforced Hull and worn gear reduce the wound/i.test(copy)
+    && /Field Scout intercepts at no worse than Critical, otherwise the explorer stays at or above 1 HP/i.test(copy)
+    && /Capture remains separate/i.test(copy)
+    && /Tame, Scavenge, and Sample each choose uniformly from the full eligible biosphere and share finite Biosphere Yield/i.test(copy)
+    && /first durable success on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick/i.test(copy)
+    && /a miss, Sol, repeat, stale tab, or failed write banks nothing/i.test(copy)
+    && /genuinely fresh species, the Scout standing before the attempt earns up to \+2 XP in the same capture save, capped at 486/i.test(copy)
+    && /If the Discover Life Starter Charter is accepted, that same verified action completes and rewards it/i.test(copy)
+    && /weekly Charters remain protected until their wall-week lifecycle exists/i.test(copy)
+    && /real fauna Compendium detail can Feed, nonlethally Breed, Rename, or select a Field Scout/i.test(copy)
+    && /real Flora detail can Eat 1 for explorer healing, poison, and nourishment/i.test(copy)
     && /This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat/i.test(copy)
-    && /Tastes, stat or Power growth, injury care, healing, poison, bond, explorer eating, Scout interception or XP, dispatch, friendly duels, and missions remain unavailable/i.test(copy)
+    && /Companion tastes, Power growth, injury care, bond, dispatch, friendly duels, and missions remain unavailable/i.test(copy)
     && !/(?:Surveying|landing)[^.!?]{0,80}(?:discovers|captures) (?:its )?life/i.test(copy)
     && !/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(copy)
     && !/miss(?:es)?[^.!?]{0,48}(?:cost|spend)s? (?:nothing|no Yield|zero)/i.test(copy)
@@ -179,8 +185,9 @@ function graduationCopyIsTruthful(html: string): boolean {
     && !/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(copy)
     && !/Both parents are consumed|Recovery advances while the game is closed|Breed automatically retries/i.test(copy)
     && !/Rename changes (?:the )?(?:creature |companion )?(?:genome|species|lineage)|Rename automatically retries/i.test(copy)
-    && !/Field Scout (?:intercepts?|redirects?)[^.!?]{0,64}(?:harm|injury|damage)|Field Scout (?:earns?|gains?)[^.!?]{0,32}XP/i.test(copy)
-    && !/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(copy)
+    && !/(?:miss|repeat species|no standing Scout)[^.!?]{0,64}(?:earns?|gains?|grants?)[^.!?]{0,32}Scout XP/i.test(copy)
+    && !/Stats?[^.!?]{0,48}(?:is|are) (?:now )?(?:increased|raised|grown) by (?:companion )?feeding/i.test(copy)
+    && !/Research[^.!?]{0,64}(?:ignores?|bypasses?)[^.!?]{0,48}(?:prerequisites?|costs?)/i.test(copy)
     && !/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\bsource-proven world beyond Sol\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(copy)
     && !/(?:every|any) (?:capture|Tame|Scavenge|Sample)[^.!?]{0,64}(?:banks|advances|counts)[^.!?]{0,48}(?:Charter|bioscan|life-discovery)/i.test(copy)
     && !/(?:miss|later success|repeat|stale tab|failed write)[^.!?]{0,96}(?:banks|advances|counts) (?:a|the|one)[^.!?]{0,48}(?:Charter|bioscan|life-discovery)/i.test(copy)
@@ -190,19 +197,37 @@ function graduationCopyIsTruthful(html: string): boolean {
 
 function curriculumCopyIsTruthful(steps: readonly { id: string; text: () => string }[]): boolean {
   const text = (id: string): string => steps.find((step) => step.id === id)?.text() ?? '';
-  return /without changing your expedition’s Atlas/i.test(text('atlas-add'))
+  const recordsCopy = text('records-tour').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  return ["a found entry offers Inspect to open its exact Compendium record without travelling", "Back returns to the Compendium list", "After Training, a missing silhouette plots its source-proven home through the existing reach checks", "At an exact fixed home, an explicit Discover Life Bioscan adds only the exact Paragon catalogue record in that same verified save", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Finding ten makes Seeker of Legends claimable through the separate Binder Claim for its established 120 Stardust, once", "a sighting never pays that Set reward automatically", "This briefing plots no course, discovers no species and claims no reward"].every((part) => recordsCopy.includes(part))
+    && !PARAGON_TRAINING_BAD.test(recordsCopy)
+    && /without changing your expedition’s Atlas/i.test(text('atlas-add'))
     && /Outside Training.*adds a new chart or confirms/i.test(text('atlas-add'))
     && /practiced without changing your expedition’s charts/i.test(text('atlas-open'))
     && /Outside Training.*charted planet entry returns to its live system survey/i.test(text('atlas-open'))
     && !/Earth is charted|Atlas’s first entry/i.test(text('atlas-open'))
+    && /After Training, use <b>List<\/b> or <b>Chart<\/b>/i.test(text('atlas-open'))
+    && /All, Favorites, Visited, Conquered, and Life filters/i.test(text('atlas-open'))
+    && /Nearby Chart lights open an exact candidate list with Return to Chart/i.test(text('atlas-open'))
+    && ["This drill changes your Home", "This drill removes a saved row", "Chart cluster selection travels automatically", "Undo lasts forever"].every((claim) => !text('atlas-open').includes(claim))
+    && /Home selects one exact chart; Remove offers one eight-second Undo/i.test(text('atlas-open'))
+    && /This drill changes no Home, favorite, or saved row/i.test(text('atlas-open'))
     && /will not roll a capture or spend Yield/i.test(text('planetside-briefing'))
     && /Opening and inspecting this board changes nothing/i.test(text('engineering-open'))
     && /Training keeps every action button locked/i.test(text('engineering-tour'))
+    && /All six Research rows have connected effects/i.test(text('engineering-tour'))
     && /deterministic <b>Pureforged<\/b> modifier/i.test(text('engineering-tour'))
     && /an empty new expedition is honest, not a training cache/i.test(text('compendium-open'))
-    && /role-only <b>Field Scout<\/b> selector/i.test(text('compendium-tour'))
-    && /interception, Scout XP, dispatch, missions, care, bond, and friendly duels are not live yet/i.test(text('compendium-tour'))
+    && /live exact-instance companion controls after Training/i.test(text('compendium-tour'))
+    && /Field Scout can name, switch, or stand down one exact owned companion, intercept hostile Discover Life injury, and earn up to \+2 XP when a later successful capture catalogues a genuinely fresh species/i.test(text('compendium-tour'))
+    && /real Flora detail separately offers <b>Eat 1<\/b> for explorer healing, poison, and stat nourishment/i.test(text('compendium-tour'))
+    && /Companion tastes, stat or Power growth from Feed, injury care, bond, dispatch, missions, and friendly duels remain unavailable/i.test(text('compendium-tour'))
+    && /Every same-species twin keeps its own level, XP, condition, class, and named innate arts/i.test(text('compendium-tour'))
+    && /the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats/i.test(text('compendium-tour'))
+    && !/Same-species twins share one progression row|Innate art slots unlock at levels 2 and 5|Progression rewrites the creature’s genome or base stats|Companion Feed grows stats or Power|Companion Feed heals injuries/i.test(text('compendium-tour'))
     && /Records are evidence, not a reward fountain/i.test(text('records-tour'))
+    && /26 exact-event achievements appear only after their owning transaction verifies/i.test(text('records-tour'))
+    && /only daily and decade still lack event owners/i.test(text('records-tour'))
+    && /Expedition Chronicle &amp; Museum[^.!?]{0,160}battle, first-species discovery, Prime-victory, and Legacy Journal galleries/i.test(text('records-tour'))
     && /losing one of those captured rulers is permanent/i.test(text('horizon'))
     && /battle-log Share changes no expedition fact/i.test(text('horizon'))
     && !/(?:Training|tour)[^.!?]{0,80}(?:rolls?|spends?|crafts?|feeds?|breeds?|renames?|fights?)[^.!?]{0,80}(?:for you|automatically)/i.test(
@@ -236,11 +261,69 @@ describe('Field Training completion transaction UI', () => {
       'horizon', 'grad',
     ]);
     expect(curriculumCopyIsTruthful(steps)).toBe(true);
+    for (const fact of [
+      'After Training, use <b>List</b> or <b>Chart</b>',
+      'All, Favorites, Visited, Conquered, and Life filters',
+      'Nearby Chart lights open an exact candidate list with Return to Chart',
+      'Home selects one exact chart; Remove offers one eight-second Undo',
+      'This drill changes no Home, favorite, or saved row',
+    ]) {
+      expect(curriculumCopyIsTruthful(steps.map((step) => step.id === 'atlas-open'
+        ? { ...step, text: () => step.text().replace(fact, 'omitted') } : step))).toBe(false);
+      expect(curriculumCopyIsTruthful(steps)).toBe(true);
+    }
+    for (const contradiction of ["This drill changes your Home", "This drill removes a saved row", "Chart cluster selection travels automatically", "Undo lasts forever"]) {
+      expect(curriculumCopyIsTruthful(steps.map((step) => step.id === 'atlas-open'
+        ? { ...step, text: () => step.text() + ' ' + contradiction } : step))).toBe(false);
+      expect(curriculumCopyIsTruthful(steps)).toBe(true);
+    }
+    // Execute the existing Slice atlas-open copy condition against this lesson.
+    const sliceCopySource = readFileSync(new URL('../tools/slicesmoke.mjs', import.meta.url), 'utf8');
+    const copyStart = "  if (!/practiced without changing your expedition";
+    const copyEnd = ")) {\n    fails.push('DRILL COPY: Atlas practice";
+    expect(sliceCopySource.split(copyStart)).toHaveLength(2);
+    const copyAt = sliceCopySource.indexOf(copyStart) + '  if ('.length;
+    const copyStop = sliceCopySource.indexOf(copyEnd, copyAt);
+    expect(copyStop).toBeGreaterThan(copyAt);
+    const rejectsAtlasCopy = Function('atlasOpenCopy', 'return (' + sliceCopySource.slice(copyAt, copyStop + 1) + ');') as (copy: string) => boolean;
+    const atlasCopyNode = document.createElement('div');
+    atlasCopyNode.innerHTML = steps.find((step) => step.id === 'atlas-open')!.text();
+    const atlasCopyText = atlasCopyNode.textContent!;
+    expect(rejectsAtlasCopy(atlasCopyText)).toBe(false);
+    for (const fact of ["After Training, use List or Chart", "All, Favorites, Visited, Conquered, and Life filters", "Nearby Chart lights open an exact candidate list with Return to Chart", "Home selects one exact chart; Remove offers one eight-second Undo", "This drill changes no Home, favorite, or saved row"]) {
+      expect(atlasCopyText.split(fact)).toHaveLength(2);
+      expect(rejectsAtlasCopy(atlasCopyText.replace(fact, 'omitted'))).toBe(true);
+      expect(rejectsAtlasCopy(atlasCopyText)).toBe(false);
+    }
+    for (const contradiction of ["This drill changes your Home", "This drill removes a saved row", "Chart cluster selection travels automatically", "Undo lasts forever"]) {
+      expect(rejectsAtlasCopy(atlasCopyText + ' ' + contradiction)).toBe(true);
+      expect(rejectsAtlasCopy(atlasCopyText)).toBe(false);
+    }
     expect(curriculumCopyIsTruthful(steps.map((step) => step.id === 'atlas-open'
       ? { ...step, text: () => 'Earth is charted — your Atlas’s first entry.' }
       : step))).toBe(false);
     const graduation = steps.find((step) => step.id === 'grad')!.text();
     expect(graduationCopyIsTruthful(graduation)).toBe(true);
+    const plainGraduation = graduation.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    for (const anchor of ["On ordinary worlds, it catalogues no species", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward"]) {
+      expect(plainGraduation.split(anchor), anchor).toHaveLength(2);
+      expect(graduationCopyIsTruthful(plainGraduation.replace(anchor, 'omitted'))).toBe(false);
+      expect(graduationCopyIsTruthful(graduation)).toBe(true);
+    }
+    const recordsStep = steps.find((step) => step.id === 'records-tour')!;
+    const recordsHtml = recordsStep.text();
+    const recordsCopy = recordsHtml.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    const changeRecords = (copy: string) => steps.map((step) => step.id === 'records-tour'
+      ? { ...step, text: () => copy } : step);
+    for (const anchor of ["a found entry offers Inspect to open its exact Compendium record without travelling", "Back returns to the Compendium list", "After Training, a missing silhouette plots its source-proven home through the existing reach checks", "At an exact fixed home, an explicit Discover Life Bioscan adds only the exact Paragon catalogue record in that same verified save", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Finding ten makes Seeker of Legends claimable through the separate Binder Claim for its established 120 Stardust, once", "a sighting never pays that Set reward automatically", "This briefing plots no course, discovers no species and claims no reward"]) {
+      expect(recordsCopy.split(anchor), anchor).toHaveLength(2);
+      expect(curriculumCopyIsTruthful(changeRecords(recordsCopy.replace(anchor, 'omitted')))).toBe(false);
+      expect(curriculumCopyIsTruthful(steps)).toBe(true);
+    }
+    for (const copy of ["Found Paragons plot a course instead of opening Inspect.", "Missing silhouettes open Inspect instead of plotting a course.", "Discover Life on any world adds a Paragon catalogue record.", "An ordinary-world Bioscan catalogues a species.", "A Paragon sighting creates an owned companion.", "A Paragon sighting creates a specimen.", "A Paragon sighting grants Capture credit.", "A Paragon sighting spends 1 Biosphere Yield.", "A Paragon sighting automatically pays 120 Stardust.", "Seeker of Legends is claimable after one Paragon.", "Repeat Paragon sightings add a discovery reward.", "A prior Paragon-set claim can pay again.", "Returning to a previously recorded Paragon home backfills its catalogue record."]) {
+      expect(graduationCopyIsTruthful(graduation + ' ' + copy)).toBe(false);
+      expect(curriculumCopyIsTruthful(changeRecords(recordsHtml + ' ' + copy))).toBe(false);
+    }
     expect(graduationCopyIsTruthful(
       graduation.replace(
         'a survey card’s <b>Share</b> prepares a verified CF1 world code',
@@ -252,12 +335,12 @@ describe('Field Training completion transaction UI', () => {
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation.replace(
-        'each chooses uniformly from its eligible species across the full biosphere',
+        'each choose uniformly from the full eligible biosphere',
         'each targets the selected preview row',
       ),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
-      graduation.replace('a hit or miss spends 1 attempt', 'misses spend nothing'),
+      graduation.replace('share finite <b>Biosphere Yield</b>', 'have independent Yield pools'),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation + ' The Yield pool recovers while the game is closed.',
@@ -266,12 +349,12 @@ describe('Field Training completion transaction UI', () => {
       graduation + ' Capture advances the Charter bioscan milestone.',
     )).toBe(false);
     expect(graduationCopyIsTruthful(
-      graduation + ' Every Research row is now purchasable.',
+      graduation + ' Research ignores prerequisites and costs.',
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation.replace(
-        'one exact unassigned companion below the 200-Meal cap with one exact flora lot through <b>Use 1</b>',
-        'any companion with any flora',
+        'A real fauna Compendium detail can <b>Feed</b>, nonlethally <b>Breed</b>, <b>Rename</b>, or select a <b>Field Scout</b>.',
+        'Any companion can Feed, Breed, Rename, or become a Field Scout.',
       ),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
@@ -282,8 +365,8 @@ describe('Field Training completion transaction UI', () => {
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation.replace(
-        'two distinct exact owned fauna with nonlethal active-play Recovery',
-        'two owned creatures',
+        'nonlethally <b>Breed</b>',
+        '<b>Breed</b> by consuming both parents',
       ),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
@@ -291,24 +374,40 @@ describe('Field Training completion transaction UI', () => {
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation.replace(
-        'one exact owned companion without changing its creature identity',
-        'a companion',
+        '<b>Rename</b>',
+        '<b>Reroll</b>',
       ),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation + ' Rename changes the companion genome.',
     )).toBe(false);
     expect(graduationCopyIsTruthful(
-      graduation + ' Field Scout intercepts injury and earns XP.',
+      graduation + ' A miss earns Scout XP.',
     )).toBe(false);
 
     const forgedCurriculum = steps.map((step) => step.id === 'compendium-tour'
       ? { ...step, text: () => step.text().replace(
-          'interception, Scout XP, dispatch, missions, care, bond, and friendly duels are not live yet',
-          'Field Scout automatically intercepts injury and earns XP',
+          'intercept hostile Discover Life injury, and earn up to +2 XP when a later successful capture catalogues a genuinely fresh species',
+          'automatically dispatch and earn XP on misses',
         ) }
       : step);
     expect(curriculumCopyIsTruthful(forgedCurriculum)).toBe(false);
+
+    const compendiumCopy = steps.find((step) => step.id === 'compendium-tour')!.text();
+    const changeCompendium = (copy: string) => steps.map((step) => step.id === 'compendium-tour'
+      ? { ...step, text: () => copy } : step);
+    for (const anchor of ["Every same-species twin keeps its own level, XP, condition, class, and named innate arts", "the second and third art slots awaken at levels 3 and 6 without rewriting the creature’s genome or base stats", "Companion tastes, stat or Power growth from Feed, injury care, bond, dispatch, missions, and friendly duels remain unavailable"]) {
+      expect(compendiumCopy.split(anchor), anchor).toHaveLength(2);
+      const omitted = compendiumCopy.replace(anchor, 'progression boundary omitted');
+      expect(omitted, anchor).not.toBe(compendiumCopy);
+      expect(curriculumCopyIsTruthful(changeCompendium(omitted)), anchor).toBe(false);
+      expect(curriculumCopyIsTruthful(steps), anchor + ' restored').toBe(true);
+    }
+    for (const contradiction of ["Same-species twins share one progression row.", "Innate art slots unlock at levels 2 and 5.", "Progression rewrites the creature’s genome or base stats.", "Companion Feed grows stats or Power.", "Companion Feed heals injuries."]) {
+      expect(curriculumCopyIsTruthful(changeCompendium(compendiumCopy + ' ' + contradiction)), contradiction)
+        .toBe(false);
+      expect(curriculumCopyIsTruthful(steps), contradiction + ' restored').toBe(true);
+    }
   });
 
   it('advances board orientation only from exact real open lifecycles and locks every mutation', async () => {

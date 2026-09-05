@@ -4,20 +4,14 @@
    detached, deeply frozen read model, emits one immutable synchronous request,
    and waits for Main to publish pending/settled state. It never plans, spends,
    awaits, retries, or optimistically changes an expedition fact. */
+import { RESEARCH_IDS } from '@cf/domain-opportunity';
 import type { ShipInstalledSystemId, ShipVisualState } from '@cf/scene';
 import { ShipyardPreviewOwner, shipVisualStateKey } from './shipyard-preview.js';
 
 export const ENGINEERING_PANEL_READ_MODEL_SCHEMA = 'cf-v2-engineering-panel-read-model/v1' as const;
 export const ENGINEERING_PANEL_DIAGNOSTICS_SCHEMA = 'cf-v2-engineering-panel-diagnostics/v1' as const;
 
-export const ENGINEERING_RESEARCH_ORDER = Object.freeze([
-  'scan1',
-  'hull1',
-  'lab1',
-  'drive1',
-  'drive2',
-  'drive3',
-] as const);
+export const ENGINEERING_RESEARCH_ORDER = RESEARCH_IDS;
 
 export type EngineeringResearchRowId = (typeof ENGINEERING_RESEARCH_ORDER)[number];
 export type EngineeringOpportunityStatus = 'ready' | 'worked-out' | 'waiting' | 'unavailable';

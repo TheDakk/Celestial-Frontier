@@ -78,6 +78,7 @@ export interface EngineeringResearchDefinition {
   readonly materialCost: Readonly<Record<string, number>>;
   readonly stardustCost: number;
   readonly prerequisiteId: ResearchId | null;
+  readonly jumpDriveRequired: boolean;
   /** Availability means this exact behavior has a deterministic consumer.
       Other catalogue rows remain inspectable while purchase fails closed. */
   readonly consumerStatus: 'available' | 'unavailable';
@@ -86,37 +87,30 @@ export interface EngineeringResearchDefinition {
 const RESEARCH_PRESENTATION: Readonly<Record<ResearchId, Readonly<{
   name: string;
   description: string;
-  prerequisiteId: ResearchId | null;
 }>>> = Object.freeze({
   scan1: Object.freeze({
     name: 'Deep Scanners',
     description: 'Survey cards reveal a world’s mineral veins from orbit',
-    prerequisiteId: null,
   }),
   hull1: Object.freeze({
     name: 'Reinforced Hull',
     description: 'Hostile bioscans wound you 25% lighter',
-    prerequisiteId: null,
   }),
   lab1: Object.freeze({
     name: 'Xenobotany Lab',
     description: 'Eating flora grows the nourished stat by +1 more',
-    prerequisiteId: null,
   }),
   drive1: Object.freeze({
     name: 'Fusion Drive',
     description: 'Hyperlanes run twice as quick',
-    prerequisiteId: null,
   }),
   drive2: Object.freeze({
     name: 'Antimatter Drive',
     description: 'Hyperlanes run four times as quick — far jumps stop straining',
-    prerequisiteId: 'drive1',
   }),
   drive3: Object.freeze({
     name: 'Warp Fold',
     description: 'Distance becomes a rumor — every jump arrives in a breath',
-    prerequisiteId: 'drive2',
   }),
 });
 
@@ -774,7 +768,9 @@ export const ENGINEERING_RESEARCH_CATALOGUE: readonly EngineeringResearchDefinit
       ...RESEARCH_PRESENTATION[id],
       materialCost: sink.materialCost,
       stardustCost: sink.stardustCost,
-      consumerStatus: id === 'scan1' ? 'available' as const : 'unavailable' as const,
+      prerequisiteId: sink.prerequisiteId,
+      jumpDriveRequired: sink.jumpDriveRequired,
+      consumerStatus: 'available' as const,
     };
   }),
 );
@@ -820,7 +816,7 @@ export interface ResearchPurchaseConsumption {
 }
 
 export interface ResearchPurchaseResult {
-  readonly researchId: 'scan1';
+  readonly researchId: ResearchId;
   readonly quote: EngineeringResearchQuote;
   /** The outer Arc 2 inventory transaction must consume this exact bill in
       the same CAS that publishes `nextState`. */
@@ -930,7 +926,7 @@ function checkedJumpDriveOwnership(value: unknown): boolean {
   return value;
 }
 
-function researchSuccessor(state: EngineeringStateV2, researchId: 'scan1'): EngineeringStateV2 {
+function researchSuccessor(state: EngineeringStateV2, researchId: ResearchId): EngineeringStateV2 {
   return successorState(state, (draft) => {
     draft.research.push(researchId);
     draft.research.sort((left, right) => RESEARCH_IDS.indexOf(left) - RESEARCH_IDS.indexOf(right));
@@ -977,7 +973,7 @@ export function planResearchPurchase(
     consumerStatus: definition.consumerStatus,
   });
   if (owned) return deepFreeze({ status: 'refused', reason: 'already-owned', quote });
-  if (researchId === 'scan1' && !jumpDriveOwned) {
+  if (definition.jumpDriveRequired && !jumpDriveOwned) {
     return deepFreeze({ status: 'refused', reason: 'progression-locked', quote });
   }
   if (missingPrerequisiteId !== null) {
@@ -986,7 +982,7 @@ export function planResearchPurchase(
   if (missingMaterials.length > 0 || missingStardust > 0) {
     return deepFreeze({ status: 'refused', reason: 'insufficient-assets', quote });
   }
-  if (definition.consumerStatus === 'unavailable' || researchId !== 'scan1') {
+  if (definition.consumerStatus === 'unavailable') {
     return deepFreeze({ status: 'refused', reason: 'consumer-unavailable', quote });
   }
 

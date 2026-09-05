@@ -15,6 +15,6 @@ export const REGISTRY = {
   '@cf/domain-genetics': ['evolveGenome', 'crossGenome'],
   '@cf/domain-ecology': ['biosphere', 'civilization', 'planetSpecies'],
   '@cf/domain-descriptors': ['galaxyStats', 'fmtBig', 'roman', 'describePick', 'slimGal', 'starDescriptor', 'planetDescriptor', 'moonDescriptor', 'galaxyDescriptor', 'wormholeDescriptor', 'cmbDescriptor', 'oortDescriptor', 'kuiperDescriptor', 'visitorDescriptor', 'beltDescriptor', 'SOL_MOONS'],
-  '@cf/domain-combatcore': ['abilityOf', 'battleStats', 'STAT_NAMES', 'STAT_HUES', 'runDuel', 'decodeCreature', 'encodeCreature', 'playerCombatant', 'playerAvatar', 'paperdollAvatar', 'DOLL_ANCHORS', 'statBlockHTML', '_statOpen', 'abilityTheme', 'normGenome', 'PLAYER_SEED', 'levelOf', 'ABILITY_THEMES'],
+  '@cf/domain-combatcore': ['abilityOf', 'battleStats', 'STAT_NAMES', 'STAT_HUES', 'runDuel', 'decodeCreature', 'encodeCreature', 'playerCombatant', 'playerAvatar', 'paperdollAvatar', 'DOLL_ANCHORS', 'statBlockHTML', '_statOpen', 'abilityTheme', 'normGenome', 'PLAYER_SEED', 'levelOf', 'ABILITY_THEMES', 'projectCreatureInnateArts', 'projectCreatureLevelProgressV1', 'projectCreatureClassProgressionV1', 'CREATURE_XP_MAX_V1'],
   '@cf/domain-strays': ['_r2', 'encodeWhere', 'decodeWhere', 'winEstimate', 'floraStat', 'BIOME_SETS', 'biomeFor', 'hdGenesFor', '_sanitizeSavedGenome', '_sanitizeView', 'REGIONS', 'RING_SPECTRUM', 'ASC_RING_R', 'regionAt', 'gradeCapAt', 'ringGrade'],
 };
