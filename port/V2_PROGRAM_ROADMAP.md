@@ -32,7 +32,7 @@ explicit documented boundaries; no global time multiplier or blanket test deleti
 Continue through the existing engineering/economy and companion owners, combined post-Arc-5
 journey/attachment review (§4.10), combat decisions and remaining progression. Training co-delivers
 with each action. Audio/content preparation and living-species pilots can overlap product work.
-Real iPhone save export, human play/listening/art and physical-device gates remain open.
+Real-device v2 save persistence (Gate C, re-scoped 2026-09-05: no legacy import), human play/listening/art and physical-device gates remain open.
 
 
 > **2026-09-02 current PR #35 battery/program overlay (supersedes every older “current” label;
@@ -1241,8 +1241,8 @@ Those belong to F3.
 - [EXEC] Controls that restore pre-classification overwrite, omit a reset store, substitute a
   malformed backup, and force a transient failure.
 - [EXEC] Browser reload proof through persisted IndexedDB data.
-- [HUMAN] Gate C stays open until a real veteran/current-device save imports, reads back, and its
-  original legacy source remains recoverable.
+- [HUMAN] Gate C stays open until a v2 save on a real device persists, reloads and recovers, and the
+  Safari 7-day storage-eviction question has a product answer (re-scoped 2026-09-05: no legacy import).
 
 **F1a implementation record (2026-08-14):** `SaveRepository.recover` now accepts the supported
 classifier and proves the exact backup before replacement; reset clears the canonical `STORES`
@@ -3005,7 +3005,7 @@ the live gate ledger and bind evidence to exact head/device/artifact.
 | --- | --- | --- |
 | **A — baseline integrity** | Baseline fixtures, decisions, docs, visual/audio profiles, all batches | Immutable v1.8.9 evidence, golden seeds/screens/profiles, negative controls, documented intentional deviations. |
 | **B — domain parity** | Domain facades, F4, Arc 2 manifests/economy, Arc 5 lineage | No DOM/clock/randomness in domains, explicit rarity conversion, genome/combat/economy parity. F4 alone cannot close it. |
-| **C — save safety** | F1a, Arc 0 import/continuity, F3, Arc 2/5 migrations | Real veteran/iPhone save import/readback, legacy preservation, migration/recovery scenarios. |
+| **C — save safety** | F1a, F3, Arc 2/5 migrations, real-device persistence | v2 save persist/reload/recover on a real device, ITP-eviction answer, migration/recovery scenarios (legacy import withdrawn 2026-09-05). |
 | **D — engine proof** | F2, Arc 1A–C, performance work | Desktop/phone universe → Earth → land → leave → save/reload, answerability, repeated-travel plateau. |
 | **E — creature quality** | Living-species visual lane, Arcs 5–6 | Representative Earth plus three radically different procedural archetypes pass anatomy/motion/personality/mobile/human review. |
 | **F — universe quality** | Universe/biome visual lane, Arcs 3–6 | Galaxy through landing, 43 biome/LOD/occlusion/material review, fixed-seed art and physical-device performance. |

@@ -1,5 +1,20 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+> **D-FRESH-START-IMPORT-DOOR — 2026-09-05 UTC current deviation overlay (matches current local
+> code; local diagnostics green, hosted certificate absent):** Nick withdrew the legacy-save
+> requirement ("nobody is running old saves… treat it as a brand-new game; we want saves going forward
+> for v2"). The Settings **Bring expedition** door, its paste/pick/import controls and the
+> `cf_v2_import_original` keepsake are removed; `#importsheet` survives only as the nonclosable Field
+> Training recovery sheet (reload/update only). The v1.8.9 codec stays as v2's own load path and the
+> evidence-build `importBlob` seam stays as the Slice/Glass replacement driver. Glass retired the
+> import surfaces and the `modal-background-containment-restore` / `modal-live-error` controls and now
+> judges a retained carrier against the exact ledger it planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`), so
+> PR35's phone carriers replay unchanged. The draft bulletin is 77 outcomes; the Compendium **producer**
+> authority was re-derived after the final build while measurement authority, ruler, ceilings and
+> samples are untouched. Gate C is re-scoped to v2 persistence on a real device, including the Safari
+> 7-day storage-eviction question. This is a product-scope removal plus evidence/instrument scope: no
+> gameplay, codec, ruler, browser-version, retry, release or version change follows.
+>
 > **D-PR35-A922-FORENSIC-PREVENTION — 2026-09-03 UTC current deviation overlay (matches current
 > local code; local diagnostics green, hosted certificate absent):** workflow orchestration now retains its one
 > authorization job plus one battery job under a 120-minute battery / 55-minute Compendium envelope,

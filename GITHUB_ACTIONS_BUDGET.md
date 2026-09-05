@@ -2,15 +2,28 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current state (2026-09-05 UTC, Claude on `anthropic/review-batches-1-3-20260905`): Codex's
-reconciled Batches 1–3 candidate (PR #37 head `121df53d0d10`) is integrated on a bounded review
-branch as a real merge of `develop` `f03761da…` (PR #38) with that head; no signed commit was
+**Current state (2026-09-05 UTC): PR #39 (`anthropic/review-batches-1-3-20260905` → `develop`)
+consumed one Nick-authorized agent-lane attempt, passed in 6m28s and merged as
+`1d719c63fbcdb6d0e6ab98a96b16e487aafe1239`; the approval label was removed; no hosted authority
+remains.** Run `33940061406` attempt 1, battery job `101235592867`, head `1219648…`, lane `agent`:
+the sealed validator admitted the review branch; policy selftest PASS (81 controls); `develop`
+profile PASS (1m43s); changed-art control and Chrome launcher selftest green; both phone Glass
+canaries PASS (2m17s, Codex's Node verifier); legacy gates and root layout skipped (no legacy
+input changed); Edge install, Compendium, Slice, Glass, Recovery and preview skipped by the
+full-lane guard. Codex's signed Batches 1–3 (`e0acfab` → `13d24af` → `8bf9c45`, reconcile merge
+`121df53`) are therefore in `develop`; PR #37 is closed as superseded, its branch untouched.
+Three agent-lane measurements now exist: 12m47s and 12m48s when a PR edits the workflow and root
+tools, 6m28s when it edits the workflow only; a v2-app-only PR is expected near 4–5 minutes
+(**not measured**). Every future attempt still needs its own exact authorization; nothing here
+authorizes a `main` merge, release or deployment.
+
+**Preserved integration note (2026-09-05 UTC, Claude on `anthropic/review-batches-1-3-20260905`):
+Codex's reconciled Batches 1–3 candidate (PR #37 head `121df53d0d10`) was integrated on a bounded
+review branch as a real merge of `develop` `f03761da…` (PR #38) with that head; no signed commit was
 rewritten.** Only this file, `ROADMAP.md` and `ROADMAP_ARCHIVE.md` conflicted, and each is resolved
 by keeping both sides' records; `.github/workflows/test.yml` (lane selector, two-label guard, review
 branches, five full-lane guards, plus Codex's Node phone verdicts), the Actions policy, the
-Compendium preflight contract, the tests and the product code merged cleanly. The review PR runs the
-bounded agent lane under one `actions-budget-approved` authorization; PR #37 is superseded by it and
-closed with a pointer. Nothing here authorizes a `main` merge, release or deployment.
+Compendium preflight contract, the tests and the product code merged cleanly.
 
 **Policy decision (2026-09-05 UTC, Claude under Nick's "authorize per Codex" instruction):
 bounded review branches `openai/review-*` and `anthropic/review-*` are admitted into `develop`.**
@@ -1174,6 +1187,25 @@ the 14-phone/13-desktop broken-baseline breaches. Exact-budget run
 `d21ba26…`; raw/gzip hashes are `42753d5e…` / `a2ff5b00…`. The repaired exact head then passed
 hosted run `32681394532` and merged normally. That consumed run is integration evidence only and
 does not authorize a new changed-head hosted attempt.
+
+## Consumed PR #39 attempts
+
+1. **2026-09-05 02:47–02:54 UTC — run `33940061406`, attempt 1: SUCCESS (6m28s wall, battery job
+   6m21s).** Head `12196480920056de304898333e2b46e0fbd16f15` (`anthropic/review-batches-1-3-20260905`,
+   a bounded review branch admitted by the validator), base `develop`
+   `f03761da399e97761e1d5a17a5622b1eeba27944`, trigger `actions-budget-approved` by the owner,
+   lane `agent`. Legacy gates skipped; changed-input controls and both phone canaries green.
+   Approval label removed; merged as `1d719c63fbcdb6d0e6ab98a96b16e487aafe1239` under Nick's
+   "authorize per Codex" instruction and the standing green-PR authority. Record posted on the PR.
+
+## Consumed PR #38 attempts
+
+1. **2026-09-05 02:20–02:33 UTC — run `33938776553`, attempt 1: SUCCESS (12m48s wall, battery job
+   12m41s).** Head `365ce432b87b3bee289050eeb15780a00f0ad138` (`anthropic/windows`), base `develop`
+   `0cad14dea80b4f2d5052210fa19d583bd0ada085`, trigger `actions-budget-approved` by the owner, lane
+   `agent`, policy 81 controls. Approval label removed; merged as
+   `f03761da399e97761e1d5a17a5622b1eeba27944` under Nick's authorization and the standing green-PR
+   authority.
 
 ## Consumed PR #36 attempts
 

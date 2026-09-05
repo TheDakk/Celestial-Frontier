@@ -574,7 +574,8 @@ private; verify the selected organization's Pages/access-control plan before pub
 The v2 app currently owns:
 
 - IndexedDB database `cf-v2-slice`;
-- localStorage keepsake `cf_v2_import_original` when a legacy expedition is imported.
+- no localStorage keys (the former `cf_v2_import_original` keepsake was removed with the
+  save-import door on 2026-09-05).
 
 Those names remain stable. Isolation is supplied by the browser's **exact origin boundary**,
 not by silently changing save keys in a test build. `tools/devpreview.mjs` therefore:
