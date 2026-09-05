@@ -16,6 +16,7 @@ import {
   type AudioCounterpartReceipt,
   type AudioRuntime,
   type AudioRuntimeDiagnostics,
+  type AudioVoiceDeadlineScheduler,
   type AudioVoiceStartResult,
   type CombatCuePlanV1,
   type CombatCueV1,
@@ -229,6 +230,8 @@ export interface TameGreetingAudioOwner {
 export interface TameGreetingAudioOwnerOptions {
   readonly createContext: () => AudioContextLike;
   readonly nowMs: () => number;
+  /** Injectable for tests; the browser owner supplies real timers by default. */
+  readonly scheduleVoiceDeadline?: AudioVoiceDeadlineScheduler;
   readonly readPolicy: () => TameGreetingAudioPolicy;
   readonly verifyCounterpart: (receipt: AudioCounterpartReceipt) => boolean;
   /** Test seam only; production uses the registered current Arc 5 projector. */
@@ -389,6 +392,10 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     this.#runtime = createAudioRuntime({
       createContext: options.createContext,
       nowMs: options.nowMs,
+      scheduleVoiceDeadline: options.scheduleVoiceDeadline ?? ((callback, delayMs) => {
+        const timer = globalThis.setTimeout(callback, delayMs);
+        return () => globalThis.clearTimeout(timer);
+      }),
       initialMuted: true,
       verifyCounterpart: options.verifyCounterpart,
     });

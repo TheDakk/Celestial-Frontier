@@ -22,6 +22,7 @@ import path from 'node:path';
 import { execFileSync, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { assertBuiltGameMode } from './build-mode.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -454,6 +455,7 @@ export function verifyPackage(root) {
   const actual = fileInventory(resolved);
   assert(JSON.stringify(actual) === JSON.stringify(manifest.files), 'preview file inventory/hash mismatch');
   assert(aggregateInventory(actual) === manifest.contentSha256, 'preview aggregate hash mismatch');
+  assertBuiltGameMode(resolved, 'distributable');
   const htmlEntries = actual.filter((file) => file.path.endsWith('.html')).map((file) => file.path);
   assert(htmlEntries.includes('index.html'), 'preview package has no index.html');
   for (const entry of htmlEntries) {
@@ -556,6 +558,7 @@ function packagePreviewLocked(args) {
     lockfileSha256 = sha256Bytes(fs.readFileSync(path.join(buildV2Root, 'package-lock.json')));
     execSync('npx vite build', { cwd: buildAppDir, stdio: 'inherit' });
     assert(fs.existsSync(path.join(buildDistDir, 'index.html')), 'vite build did not produce index.html');
+    assertBuiltGameMode(buildDistDir, 'distributable');
     fs.cpSync(buildDistDir, output, { recursive: true, errorOnExist: true, force: false });
   } finally {
     if (snapshot) snapshot.cleanup();
@@ -758,7 +761,7 @@ function runSelftest() {
   expectRejected('output escape', () => validateOutputPath(path.join(fs.realpathSync(os.tmpdir()), 'dev-preview-escape')),
     /direct child/);
 
-  const source = '<!doctype html><html><head><title>x</title><script type="module" crossorigin src="/assets/x.js"></script></head><body><main>x</main></body></html>';
+  const source = '<!doctype html><html><head><title>x</title><meta name="cf-build-mode" content="distributable"><script type="module" crossorigin src="/assets/x.js"></script></head><body><main>x</main></body></html>';
   const transformed = transformHtml(source, {
     expectedOrigin: DEFAULT_ORIGIN,
     entryName: 'index.html',

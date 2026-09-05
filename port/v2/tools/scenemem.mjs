@@ -48,6 +48,8 @@ import {
   SCENE_MEMORY_ROUTES,
 } from './scenemem-contract.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { checkCommandInvocation } from './check-profile.mjs';
+import { assertBuiltGameMode } from './build-mode.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -340,6 +342,7 @@ function sourceIdentity() {
 }
 
 function distIdentity() {
+  assertBuiltGameMode(distDir, 'evidence');
   const files = [];
   const visit = (directory) => {
     for (const name of fs.readdirSync(directory).sort()) {
@@ -2638,8 +2641,8 @@ async function runGate(options) {
     assert(options.allowDirty || sourceBegin.state === 'committed',
       'scene memory evidence requires committed clean source (use --allow-dirty for diagnostic work only)');
 
-    const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-    execFileSync(npm, ['run', 'build'], { cwd: appDir, stdio: 'inherit' });
+    const buildInvocation = checkCommandInvocation('npm', ['run', 'build', '--', '--mode', 'evidence']);
+    execFileSync(buildInvocation.executable, buildInvocation.args, { cwd: appDir, stdio: 'inherit' });
     build = distIdentity();
     inputs = exactInputs(fixture, authoritativeBudgetFile, build.sha256);
     running = { ...running, inputs, build };

@@ -2,6 +2,16 @@
 
 **Current mode: `UNFROZEN`**
 
+**Current state (2026-09-05 UTC, Claude on `anthropic/review-batches-1-3-20260905`): Codex's
+reconciled Batches 1–3 candidate (PR #37 head `121df53d0d10`) is integrated on a bounded review
+branch as a real merge of `develop` `f03761da…` (PR #38) with that head; no signed commit was
+rewritten.** Only this file, `ROADMAP.md` and `ROADMAP_ARCHIVE.md` conflicted, and each is resolved
+by keeping both sides' records; `.github/workflows/test.yml` (lane selector, two-label guard, review
+branches, five full-lane guards, plus Codex's Node phone verdicts), the Actions policy, the
+Compendium preflight contract, the tests and the product code merged cleanly. The review PR runs the
+bounded agent lane under one `actions-budget-approved` authorization; PR #37 is superseded by it and
+closed with a pointer. Nothing here authorizes a `main` merge, release or deployment.
+
 **Policy decision (2026-09-05 UTC, Claude under Nick's "authorize per Codex" instruction):
 bounded review branches `openai/review-*` and `anthropic/review-*` are admitted into `develop`.**
 Codex's reconciled Batches 1–3 candidate (PR #37, head `121df53d0d10`, branch
@@ -25,6 +35,21 @@ the repository (`actions-budget-approved`, `actions-full-chain-approved`). A v2-
 expected near **7–8 minutes** (not measured). Codex's parked Batch 1 rewrite of the same workflow
 must reconcile onto the lane through Git before its PR. Every future attempt still needs its own
 exact authorization; nothing here authorizes a `main` merge, release or deployment.
+
+**Preserved merged-source note (2026-09-04, Codex, superseded by the state above):** the two-lane policy from
+`develop` is retained. `actions-budget-approved` selects browser-free `develop` admission and both
+phone Glass canaries for agent → `develop`; `actions-full-chain-approved` selects the full chain
+there, and either authorized label selects the full chain for `develop` → `main`. The full-lane
+selector/guards, owner-only labels, caps, mandatory upload and one-attempt/no-retry rules remain
+unchanged. Codex's source-bound Node verdict now verifies the two phone reports in place of the
+duplicate jq verdict; neither phone row is removed. The full chain remains available in its
+approved lane. No hosted attempt or release follows from this merge. Current exact-source and
+branch authority is recorded in `ROADMAP.md`.
+
+**Preserved implementation records:** both originating batches below are retained verbatim.
+Their references to “current”, local-only authority, pending lane decisions or untouched jq
+verdicts describe their original checkpoints; the merged-source statement above owns current
+lane/verifier interpretation and does not manufacture new hosted authority.
 
 **Preserved predecessor batch (2026-09-04 UTC, Claude on `anthropic/windows`): two-lane battery — the
 bounded agent lane is the default for agent → `develop` PRs, the full chain runs by base or by an
@@ -58,6 +83,30 @@ batch-1 replacement. Local evidence on this Windows checkout: policy selftest PA
 controls, Compendium preflight selftest PASS, the three pinning test files pass except the one
 pre-existing Windows-only jq ENOENT replay case, and the edited workflow parses as valid YAML with
 the expected per-step conditions. No browser chain or hosted run is claimed.
+
+**Current authority — 2026-09-04 after PR #35:** run `33835828222`, attempt 1, passed on
+head `20301713cce4aec9e0ea2c0cbb618c5ac88a5fed` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b` (battery 108m29s). Nick then requested the normal
+merge, verified on develop as `7bf3e84761da2d1abe21dc6fe751b4bad2308f3b`. Approval label
+removed; monitor paused. That exact authority is consumed. Nick authorized the corrected full
+review's local implementation campaign, not another hosted attempt or release. Existing admission,
+no-retry and numerical evidence rules remain in force pending a separately documented policy change.
+Visibility last verified PUBLIC; private fallback cap 3,000. No new push, label, PR mutation,
+dispatch, retry, merge, publication, version bump or deploy is authorized by this local batch.
+The dated states below are preserved history. Current source/ownership and next steps are in
+`ROADMAP.md`; terminal evidence and review corrections are in
+`audits/FULL_REVIEW_DISPOSITION_20260904.md`.
+
+The current local simplification replaces the duplicate jq canary verdict with the source-bound
+Node verifier after retained-report parity. It does not remove either phone row, the final full
+chain, any job/step ceiling, mandatory artifact upload or the one-attempt rule.
+Explicit evidence-build isolation is also local: certifiers opt into diagnostic code; ordinary
+preview builds omit it. Its new current-input hashes do not alter numerical budgets, historical
+calibration, coverage or hosted authority. A faster develop lane remains a pending explicit
+coverage decision; no browser stage has been dropped.
+The finite-audio/dependency-metadata successor is likewise local. Its focused checks and one
+current-input build do not consume or grant a hosted attempt. Numeric ceilings and historical
+calibration remain fixed; current candidate fingerprints are recorded in the review disposition.
 
 **Preserved predecessor batch (2026-09-04 UTC): cc4d7c9 proof gaps are closed locally; four robustness
 items are implemented; branch-only push is authorized, no hosted attempt is authorized.**
