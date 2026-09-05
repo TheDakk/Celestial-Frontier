@@ -109,10 +109,12 @@ the archive verbatim and refresh this handoff in place.
   Dakk's exact authorization.
 - **OpenAI/Codex:** the "waits for Dakk's real save export" blocker on Batch 4 is **gone**. Before
   continuing, synchronize `openai/mac` from a clean worktree by merging `origin/develop` (`1d719c6`)
-  through the shared protocol; do not cherry-pick or copy. Note the docs inconsistency: the review's
-  Batch A was Claude's and Batch B (P0 4–7, largely shipped in PR #39) was Codex's, while the prior
-  handoff said "continuing Batch A" — confirm the intended batch with Dakk. Do not edit
-  `.github/workflows` or the budget policy in the campaign. Do not reintroduce any import door.
+  through the shared protocol; do not cherry-pick or copy. Dakk clarified (2026-09-05): Codex's
+  **Batch A is the audiovisual pilot** (distinct from the external review's lettered batches); continue
+  it after the sync. Batch 4 no longer waits for any save export — only its own PR from a bounded
+  `openai/review-*` branch and Dakk's exact hosted authorization. Once this batch's PR merges, sync
+  again before touching Settings/Guide/Training code, and do not reintroduce any import door. Do not
+  edit `.github/workflows` or the budget policy in the campaign.
 - **Dakk:** nothing required on GitHub. Decide (a) whether this head goes to a PR + one agent-lane
   attempt (it re-seals Glass/Slice), (b) the artlock CI lane, (c) the ITP save-protection answer.
 - **GitHub / Release:** `main`, the v1.8.9 live site, protected portraits and deployment are
