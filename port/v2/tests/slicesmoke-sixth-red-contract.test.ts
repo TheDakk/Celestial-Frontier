@@ -137,8 +137,8 @@ describe('sixth Slice red contract repairs', () => {
     const expectedCategoryIds = catalogue.map((category) => category.id);
     expect(catalogue).toHaveLength(9);
     expect(expected).toHaveLength(41);
-    expect(expected.filter((topic) => topic.availability === 'partial')).toHaveLength(34);
-    expect(expected.filter((topic) => topic.availability === 'unavailable')).toHaveLength(7);
+    expect(expected.filter((topic) => topic.availability === 'partial')).toHaveLength(35);
+    expect(expected.filter((topic) => topic.availability === 'unavailable')).toHaveLength(6);
     const categoryAuthorityOwner = section(
       sliceSource,
       '  const GUIDE_CATEGORY_AUTHORITY = Object.freeze([',
@@ -392,10 +392,18 @@ describe('sixth Slice red contract repairs', () => {
       honest: false,
       liveProgressionContradiction: true,
     });
+    for (const claim of ['A miss earns Scout XP.', 'A repeat species grants Scout XP.',
+      'A capture with no standing Scout awards Scout XP.']) {
+      starter.textContent = `${prior} ${claim}`;
+      expect(releaseDom.window.eval(releaseCheck), claim).toMatchObject({
+        complete: false, honest: false, liveProgressionContradiction: true,
+      });
+    }
     starter.textContent = prior;
     expect(releaseDom.window.eval(releaseCheck)).toMatchObject({
       complete: true,
       honest: true,
+      liveProgressionContradiction: false,
     });
     releaseDom.window.close();
   });

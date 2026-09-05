@@ -1,10 +1,13 @@
-import { describe, expect, it } from 'vitest';
+import { beforeAll, describe, expect, it } from 'vitest';
+import { installCaptureHooks } from '@cf/domain-descriptors';
 import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   canonicalGenomeIdentityV1,
   createCatalogSpeciesV1,
+  createBiosphereProgressV1,
   createInitialOwnershipStateV1,
   createLegacyDiscoveryRecordV1,
+  createWorldDiscoveryRecordV1,
   createCreatureInstanceV1,
   createOwnershipSuccessorV1,
   createSpecimenLotV1,
@@ -26,6 +29,7 @@ import {
   createCreatureInstanceV2,
   createF4ReceiptEvidenceV2,
   createOwnershipSuccessorV2,
+  createOwnershipCaptureSourceProjectionSuccessorV2,
   createOwnershipSourceSuccessorV2,
   createSpecimenTombstoneV2,
   decodeOwnershipStateV2,
@@ -43,9 +47,12 @@ import {
   type OwnershipStateContentsV2,
   type OwnershipStateV2,
 } from '../src/model-v2.js';
+import { resolveCF1WorldAddress } from '@cf/scene';
 import {
   createOwnershipSourceProjectionSuccessorV2,
 } from '../src/ownership-v2-internal.js';
+
+beforeAll(() => installCaptureHooks());
 
 interface Fixture {
   readonly source: OwnershipStateV1;
@@ -828,6 +835,114 @@ describe('@cf/domain-acquisition — Arc 5 ownership V2 foundation', () => {
       .toThrow(/exact registered Arc 4 successor/u);
     expect(() => createOwnershipSourceProjectionSuccessorV2({ ...parent }, successor))
       .toThrow(/parent must be registered/u);
+  });
+
+  it('adds fresh-species Scout XP in the same V2 successor without disturbing V2-only rows', () => {
+    const source = fixture().source;
+    const migrated = migrateOwnershipStateV1ToV2(source);
+    const { acquisition, child } = plannedBreed(migrated);
+    const priorScout = migrated.creatures.find((row) => row.creatureId === migrated.scoutCreatureId)!;
+    const enrichedScout = createCreatureInstanceV2({
+      ...priorScout,
+      nickname: 'Field Atlas',
+      xp: 485,
+      hurt: 0.4,
+      fed: 123,
+      brood: 9,
+    });
+    const enriched = createOwnershipSuccessorV2(migrated, contents(migrated, {
+      bredAcquisitions: [acquisition],
+      creatures: [
+        ...migrated.creatures.map((row) => row.creatureId === enrichedScout.creatureId
+          ? enrichedScout : row),
+        child,
+      ],
+    }));
+    const captureSource = ownershipSourceStateV1(enriched);
+    const identity = canonicalGenomeIdentityV1({ seed: 909, kingdom: 'flora', form: 2 });
+    const resolved = resolveCF1WorldAddress({
+      galaxy: { seed: 999, x: 90, y: -60 },
+      star: { seed: 424242, x: 560, y: 170 },
+      planet: { seed: 133 },
+    });
+    if (!resolved.ok) throw new Error(`capture Scout XP address was ${resolved.reason}`);
+    const discovery = createWorldDiscoveryRecordV1({
+      recordId: ownershipContentId('discovery', 'fresh-scout-xp') as DiscoveryRecordId,
+      speciesId: identity.speciesId,
+      verb: 'scavenge',
+      worldAddress: resolved.address,
+      cycle: 0,
+      sourceOrdinal: 0,
+      firstForSpecies: true,
+    });
+    const lot = createSpecimenLotV1({
+      lotId: ownershipContentId('specimen', 'fresh-scout-xp') as SpecimenLotId,
+      speciesId: identity.speciesId,
+      kind: 'flora',
+      quantity: 1,
+      origin: 'wild',
+      acquisitionRecordId: discovery.recordId,
+    });
+    const sourceSuccessor = createOwnershipSuccessorV1(captureSource, {
+      catalogSpecies: [...captureSource.catalogSpecies, createCatalogSpeciesV1({
+        identity,
+        alias: null,
+        firstObservationId: discovery.recordId,
+      })],
+      discoveries: [...captureSource.discoveries, discovery],
+      creatures: captureSource.creatures,
+      specimenLots: [...captureSource.specimenLots, lot],
+      biosphereProgress: [...captureSource.biosphereProgress, createBiosphereProgressV1({
+        worldAddress: resolved.address,
+        cycle: 0,
+        used: 1,
+        successful: [{ speciesId: identity.speciesId, source: 'scavenge' }],
+      })],
+      legacyBioX: captureSource.legacyBioX,
+      scoutCreatureId: captureSource.scoutCreatureId,
+    });
+    const projected = createOwnershipCaptureSourceProjectionSuccessorV2(
+      enriched,
+      sourceSuccessor,
+      true,
+    );
+    expect(projected.revision).toBe(enriched.revision + 1);
+    expect(ownershipSourceStateV1(projected).revision).toBe(captureSource.revision + 1);
+    expect(projected.revision).not.toBe(ownershipSourceStateV1(projected).revision);
+    expect(projected.bredAcquisitions).toEqual(enriched.bredAcquisitions);
+    expect(projected.creatures.find((row) => row.creatureId === child.creatureId)).toEqual(child);
+    const learned = projected.creatures.find((row) => row.creatureId === enrichedScout.creatureId)!;
+    expect(learned.xp).toBe(486);
+    expect({ ...learned, xp: enrichedScout.xp }).toEqual(enrichedScout);
+
+    const bredScoutParent = createOwnershipSuccessorV2(migrated, contents(migrated, {
+      bredAcquisitions: [acquisition],
+      creatures: [...migrated.creatures, child],
+      scoutCreatureId: child.creatureId,
+    }));
+    const bredScoutProjected = createOwnershipCaptureSourceProjectionSuccessorV2(
+      bredScoutParent,
+      sourceSuccessor,
+      true,
+    );
+    const parentBredScout = bredScoutParent.creatures.find(
+      (row) => row.creatureId === child.creatureId,
+    )!;
+    const learnedBredScout = bredScoutProjected.creatures.find(
+      (row) => row.creatureId === child.creatureId,
+    )!;
+    expect(learnedBredScout.xp).toBe(2);
+    expect({ ...learnedBredScout, xp: parentBredScout.xp }).toEqual(parentBredScout);
+    for (const prior of bredScoutParent.creatures) {
+      if (prior.creatureId === child.creatureId) continue;
+      expect(bredScoutProjected.creatures.find((row) => row.creatureId === prior.creatureId))
+        .toEqual(prior);
+    }
+    expect(() => createOwnershipCaptureSourceProjectionSuccessorV2(
+      enriched,
+      sourceSuccessor,
+      false,
+    )).toThrow(/first-species authority/u);
   });
 
   it('fails hostile structures, forged registration, malformed witnesses, and drifted identities closed', () => {

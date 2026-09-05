@@ -19,7 +19,7 @@ const RESEARCH_GUIDE_TRUTH = Object.freeze([
   CONNECTED_EFFECT_TRUTH,
   'bound to its recipe and receipt',
   'mixed stock remains an ordinary craft',
-  'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
+  'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random drops, upgrades, sockets, and vendors remain separate beta work',
 ]);
 const CRAFTING_GUIDE_TRUTH = Object.freeze([
   'A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier',
@@ -29,11 +29,11 @@ const CRAFTING_GUIDE_TRUTH = Object.freeze([
   'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable',
 ]);
 const RELEASE_TRUTH = Object.freeze([
-  'A slotted craft paid entirely from exceptional direct materials now receives one deterministic Pureforged modifier',
+  'A slotted craft paid entirely from exceptional direct materials receives one deterministic Pureforged modifier',
   CONNECTED_EFFECT_TRUTH,
   'bound to the exact recipe, receipt, and item',
   'mixed stock remains ordinary',
-  'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
+  'Authored natural affixes/drawbacks, random drops, upgrades, sockets, and vendors remain unavailable',
 ]);
 const FALSE_CLAIMS = Object.freeze([
   'Mixed stock also receives a Pureforged modifier.',
@@ -137,8 +137,8 @@ function sliceExceptionalCopyContract(source: string): boolean {
     && RELEASE_TRUTH.every((copy) => releaseControls.includes(copy))
     && FALSE_CLAIMS.every((copy) => releaseControls.includes(copy))
     && featureControls.includes(TRUTHFUL_FEATURE_CLAIM)
-    && featureControls.includes('releaseOverclaimCtl.truthful?.length !== 10')
-    && featureControls.includes('releaseOverclaimCtl.unavailable?.length !== 18')
+    && featureControls.includes('releaseOverclaimCtl.truthful?.length !== 13')
+    && featureControls.includes('releaseOverclaimCtl.unavailable?.length !== 14')
     && !source.includes('Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable');
 }
 
@@ -168,7 +168,7 @@ function glassExceptionalCopyContract(source: string): boolean {
     && occurrences(assessment, '(?:mixed stock|mixed-material craft)') === 2
     && assessment.includes('Pureforged[^.!?]{0,80}(?:rerolls?|changes?)')
     && controls.includes(TRUTHFUL_FEATURE_CLAIM)
-    && controls.includes('truthfulFeatureClaims.length===10')
+    && controls.includes('truthfulFeatureClaims.length===11')
     && controls.includes('unavailableFeatureClaims.length===14')
     && controls.includes('shipyardExceptionalMissing')
     && controls.includes('shipyardEffectSetMissing')

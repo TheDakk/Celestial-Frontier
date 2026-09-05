@@ -6544,7 +6544,7 @@ try {
     ['life-compendium', 'rarity', 'partial'], ['life-compendium', 'specimen', 'partial'],
     ['life-compendium', 'drift', 'unavailable'], ['life-compendium', 'sapience', 'unavailable'],
     ['breeding-feeding', 'breeding', 'partial'], ['breeding-feeding', 'feeding', 'partial'],
-    ['breeding-feeding', 'injuries', 'partial'], ['breeding-feeding', 'eating', 'unavailable'],
+    ['breeding-feeding', 'injuries', 'partial'], ['breeding-feeding', 'eating', 'partial'],
     ['explorer', 'stats', 'partial'], ['explorer', 'hp', 'partial'],
     ['explorer', 'rank', 'partial'], ['explorer', 'achievements', 'partial'],
     ['combat', 'duels', 'unavailable'], ['combat', 'abilities', 'unavailable'],
@@ -6564,7 +6564,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 77,
-    sha256: 'bbb06e0d2daced207d5c9c30d32739dcf3cc7794943dc321f246ef44a90c07c8',
+    sha256: '379bb64ef214edb961813d069e8b0f95fcba21fc7564095cae0a4da136b09e70',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -6700,7 +6700,7 @@ try {
     copy:guideCopyAssessment,search:guideSearchIngress,categoryIds: guideInventory.categoryIds };
   if (!guide.open || !guide.ok || guide.categoryCount !== 9 || new Set(guide.categoryIds).size !== 9
     || guide.topicCount !== 41 || guide.uniqueTopicCount !== 41
-    || guide.partialCount !== 34 || guide.unavailableCount !== 7
+    || guide.partialCount !== 35 || guide.unavailableCount !== 6
     || guide.availableCount !== 0 || guide.invalidAvailabilityCount !== 0
     || !guide.copy.ok || !guide.search.ok || !guide.releases || guide.buildCount !== 1 || !guide.buildInsideGuide
     || !/Celestial Frontier v2\.0 development/i.test(guide.buildText)
@@ -6774,15 +6774,15 @@ try {
   };
   if (guideAvailabilityCtl.missingCategory.ok || guideAvailabilityCtl.omittedWait.publicationReady
     || guideAvailabilityCtl.omittedWait.assessment.ok || guideAvailabilityCtl.partialToUnavailable.ok
-    || guideAvailabilityCtl.partialToUnavailable.partialCount !== 33
-    || guideAvailabilityCtl.partialToUnavailable.unavailableCount !== 8
-    || guideAvailabilityCtl.unavailableToPartial.ok || guideAvailabilityCtl.unavailableToPartial.partialCount !== 35
-    || guideAvailabilityCtl.unavailableToPartial.unavailableCount !== 6
-    || guideAvailabilityCtl.constantCountSwap.ok || guideAvailabilityCtl.constantCountSwap.partialCount !== 34
-    || guideAvailabilityCtl.constantCountSwap.unavailableCount !== 7 || guideAvailabilityCtl.staleCategory.ok
+    || guideAvailabilityCtl.partialToUnavailable.partialCount !== 34
+    || guideAvailabilityCtl.partialToUnavailable.unavailableCount !== 7
+    || guideAvailabilityCtl.unavailableToPartial.ok || guideAvailabilityCtl.unavailableToPartial.partialCount !== 36
+    || guideAvailabilityCtl.unavailableToPartial.unavailableCount !== 5
+    || guideAvailabilityCtl.constantCountSwap.ok || guideAvailabilityCtl.constantCountSwap.partialCount !== 35
+    || guideAvailabilityCtl.constantCountSwap.unavailableCount !== 6 || guideAvailabilityCtl.staleCategory.ok
     || !guideAvailabilityCtl.restored.ok || guideAvailabilityCtl.restored.topicCount !== 41
-    || guideAvailabilityCtl.restored.partialCount !== 34 || guideAvailabilityCtl.restored.unavailableCount !== 7) {
-    fails.push('GUIDE INVENTORY CONTROL FAILED — exact 41-topic 34-partial/7-unavailable identity authority did not reject missing, unsynchronized, both-direction, constant-count-swap, or stale-category mutations and restore: '
+    || guideAvailabilityCtl.restored.partialCount !== 35 || guideAvailabilityCtl.restored.unavailableCount !== 6) {
+    fails.push('GUIDE INVENTORY CONTROL FAILED — exact 41-topic 35-partial/6-unavailable identity authority did not reject missing, unsynchronized, both-direction, constant-count-swap, or stale-category mutations and restore: '
       + JSON.stringify(guideAvailabilityCtl));
   }
   const guideSearch = await guideSearchTopic('landing', 'Guide stable landing');
@@ -6837,7 +6837,7 @@ try {
   }
   const arc3GuideSpecs = [
     { id: 'survey', title: 'Survey cards', missingAnchor: 'selection is navigation and inspection', required: [
-      'selection is navigation and inspection', 'does not spend a resource, catalogue life, make a capture attempt, or authorize extraction',
+      'selection is navigation and inspection', 'does not spend a resource, record a living-world Survey, catalogue life, make a capture attempt, or authorize extraction',
       'landing still catalogues nothing', 'at-most-eight-row strip is only a preview',
       'Tame, Scavenge, and Sample', 'separate finite actions', 'choose uniformly', 'full biosphere',
       'separate grounded mineral reveal and its finite Mine action', 'not itself a mining receipt',
@@ -6858,7 +6858,7 @@ try {
       'does not bank a mining Charter goal', 'no wall-clock recharge',
     ], contradictions: ['A remnant skim can never harm HP, and corona passes are unlimited.'] },
     { id: 'stardust', title: 'Stardust', missingAnchor: 'Each supported Starter Charter pays its established 10–25 Stardust once', required: [
-      'preserves its imported/current Stardust', 'Deep Scanners purchase or eligible fixed Fabricator recipe spends its stated Stardust',
+      'preserves its imported/current Stardust', 'any successful Research purchase or eligible fixed Fabricator recipe spends its stated Stardust',
       'same durable transaction as the result',
       'first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus',
       'same durable transaction as its page and ownership', 'result shows the exact amount',
@@ -6874,14 +6874,21 @@ try {
       'A later-cycle repeat earns a new Rare Find reward.',
       'Weekly Charters now pay Stardust.', 'Passive Stardust gain is now live.',
       'Starter Charter rewards remain unavailable.', 'Binder Set claims do not pay Stardust.'] },
-    { id: 'discover', title: 'Discovering life', missingAnchor: 'selector are available only from a real fauna Compendium detail', required: [
-      'Landing on a living world reveals its biosphere roster', 'does not add a Compendium page',
+    { id: 'discover', title: 'Discovering life', missingAnchor: 'Discover Life is the single durable bioscan', required: [
+      'living planet’s Survey card offers Discover Life before or after landing',
+      'Ordinary card inspection remains write-free', 'Discover Life is the single durable bioscan',
+      'records that exact living world and resolves one deterministic hazard draw',
+      'catalogues no species and spends no Biosphere Yield',
+      'Reinforced Hull reduces hostile damage by 25% before worn bioscan protection',
+      'assigned Field Scout takes the nonlethal wound and is capped at Critical',
+      'explorer remains at or above 1 HP',
+      'Landing reveals the biosphere roster', 'still adds no Compendium page',
       'at most eight rows as a preview', 'choose uniformly from every eligible species for that action in the full biosphere',
       'including species outside that preview', 'no species row is a target',
       'Tame chooses fauna and a hit adds one owned creature', 'Scavenge chooses flora or fungi',
       'Sample chooses microbes', 'either hit adds one specimen lot, never a living companion',
       'selected species and its exact chance are shown with the result',
-      'three actions share one finite Biosphere Yield', 'Every attempt spends 1 Yield on a hit or miss',
+      'three capture actions share one finite Biosphere Yield', 'Every attempt spends 1 Yield on a hit or miss',
       'successful species leaves that action’s eligible pool', 'rest of the world’s current cycle',
       'miss stays eligible', 'Empty, worked-out, or protected-save refusals roll nothing and spend nothing',
       'Busy, stale, and failed-write outcomes publish nothing and leave saved Yield and draw counters unchanged',
@@ -6892,13 +6899,12 @@ try {
       'result shows the exact amount', 'miss adds no page, creature, specimen, or Stardust',
       'first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction',
       'A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing',
-      'v2’s current replacement for v1.8.9’s separate Discover Life action',
-      'Survey Records and accepted or weekly bioscan Charters remain unavailable',
-      'Narrow feeding, nonlethal companion', 'role-only Field Scout selector',
-      'selector are available only from a real fauna Compendium detail',
-      'eligible fauna or the explorer can also challenge that world’s strongest defender through Conquest',
-      'Field Scout interception of hostile injury, fresh-species Scout XP, dispatch, missions, care, bond, passive evolution, and friendly duels remain unavailable',
-      'feeding does not yet discover tastes or flavours, grow stats or Power, heal injuries, apply poison, build a bond, or let the explorer eat',
+      'Chapter 2 capture milestone is separate from the live Discover Life action',
+      'Accepted and weekly bioscan Charters remain unavailable',
+      'Field Scout interception is live on hostile Discover Life',
+      'real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment',
+      'Companion Feed still does not discover tastes or flavours, grow stats or Power, heal injuries, apply poison, or build a bond',
+      'Dispatch, missions, care, bond, passive evolution, and friendly duels remain unavailable',
     ], contradictions: [
       'The player chooses a visible species row to target.', 'Sample creates a living companion.',
       'Tame chooses only from the visible preview.',
@@ -6911,26 +6917,27 @@ try {
       'A later success on the same world banks another life-discovery tick.',
       'A stale tab still banks one life-discovery tick.',
       'A failed write advances the Charter bioscan.',
-      'The separate Discover Life action is now available.',
-      'Field Scout now intercepts hostile injury.',
+      'Survey catalogues life and makes a capture attempt.',
       'Surface conquest has not been connected in this build.',
     ] },
-    { id: 'research', title: 'Research & ships', missingAnchor: 'Research Bench lists exactly six canonical rows', required: [
-      'Engineering & Shipyard', 'Research Bench lists exactly six canonical rows', 'Deep Scanners is the only current purchase',
-      'adds a bounded Mineral veins row to eligible orbital Survey cards',
-      'Orbit shows only the ordered ordinary deposits plus a separately marked biome vein',
-      'cosmic and exceptional veins, grades, reserves and progress, and mining remain grounded',
-      'other five', 'visible but disabled',
-      'Fabricator groups all 62 fixed recipes', 'built drive or Array changes the actual ship and reach',
+    { id: 'research', title: 'Research & ships', missingAnchor: 'Research Bench lists exactly six canonical, durably purchasable rows', required: [
+      'Engineering & Shipyard', 'Research Bench lists exactly six canonical, durably purchasable rows',
+      'Deep Scanners reveal bounded orbital mineral facts',
+      'Reinforced Hull reduces hostile Discover Life damage by 25%',
+      'Xenobotany Lab adds one permanent nourishment point to every safe explorer Flora meal',
+      'Fusion Drive, Antimatter Drive, and Warp Fold successively shorten the deterministic distance-scaled hyperlane presentation',
+      'never replace permanent reach systems or slow an unresearched expedition',
+      'Fabricator groups all 62 fixed recipes',
       'When every direct material unit for a slotted craft comes from exceptional stock',
       'exact item receives one deterministic Pureforged modifier',
       'mining yield, rich-strike chance, or capture-contact points',
       'bound to its recipe and receipt',
       'mixed stock remains an ordinary craft',
-      'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
+      'Equipped healing, bioscan-protection, and travel-speed gear now join the already-live mining, skimming, and capture effects',
+      'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random drops, upgrades, sockets, and vendors remain separate beta work',
       'Only one Engineering action can be pending', 'receipt-bearing transaction commits',
     ], contradictions: [
-      'All six research rows can be purchased, and Research banks Charter fabrication credit.',
+      'Research banks Charter fabrication credit.',
       'The current Survey card does not yet render those orbital rows.',
       'Orbital Survey also shows cosmic and exceptional veins, grades, reserves, progress, and Mine.',
       'Mixed stock also receives a Pureforged modifier.',
@@ -6952,11 +6959,19 @@ try {
       'Authored affixes/drawbacks are now available.',
       'Upgrades are now available.', 'Item upgrades are now available.', 'Sockets are now available.', 'Vendors are now available.',
     ] },
-    { id: 'achievements', title: 'Achievements', missingAnchor: 'those Arc 3 counters are not yet listed as separate Records totals', required: [
-      'Records board preserves and displays imported exploration totals, Stardust earned, and Journal entries',
+    { id: 'achievements', title: 'Achievements', missingAnchor: 'Expedition Chronicle & Museum', required: [
+      'Records board preserves and displays imported exploration totals and Stardust earned',
       'First landfalls visibly update the worlds-landed total',
       'Mine, Skim, and fixed Fabricator settlements also preserve their compatible expedition counters',
       'those Arc 3 counters are not yet listed as separate Records totals', 'live Journal writing is not connected',
+      'Expedition Chronicle & Museum', 'four independently ordered galleries of at most 60 rows each',
+      'Battle Chronicle is latest receipt first', 'Discovery Museum follows canonical immutable first-species record order',
+      'Prime Victories follows Signature order without inventing claim time',
+      'Legacy Journal preserves its established append order, latest first',
+      'Museum creates no writer, receipt, reward, RNG, save field, mission, share card, or global cross-gallery timeline',
+      'all 96 achievements in 13 shelves', '68 aggregate milestones',
+      'Twenty-six exact live event joins', 'Exactly two event owners remain blocked: daily and decade',
+      'Achievement reward claims also remain open',
     ], contradictions: [
       'The Records board now displays the mining counter.', 'The Records board now lists the skimming total.',
       'The visible Records rows now include the Fabricator counter.',
@@ -6966,8 +6981,8 @@ try {
     text=(article?.textContent||'').replace(/\\s+/g,' ').trim(),title=article?.querySelector('h4')?.textContent?.trim()||'',
     status=article?.querySelector('[data-guide-status]')?.getAttribute('data-guide-status')||null,
     required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),
-    contradictory=/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)|current Survey card does not yet (?:render|show|paint)[^.!?]{0,80}(?:orbit|mineral)|(?:renders|shows|paints) every orbital mineral|orbital Survey (?:also |now )?(?:shows|reveals|includes|names)[^.!?]{0,96}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|(?:Mine|Skim|Survey)[^.!?]{0,80}earns? Stardust|(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)|(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)|(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)|miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)|(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)|Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)|(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)|(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)|(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)|(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)|\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)|(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)|(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)|All six research rows can be purchased|Research banks Charter fabrication credit|(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)|Pureforged[^.!?]{0,80}(?:rerolls?|changes?)[^.!?]{0,64}(?:reload|reopen)|authored (?:natural )?affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
-    const policyContradictory=/Weekly Charters?[^.!?]{0,64}(?:pay|earn|award)[^.!?]{0,32}Stardust|passive Stardust gain[^.!?]{0,32}(?:live|available)|Starter Charter rewards?[^.!?]{0,32}(?:remain|are) unavailable|Binder Set claims?[^.!?]{0,32}(?:do not|never) pay Stardust|Field Scout[^.!?]{0,64}(?:intercepts?|redirects?|takes) (?:hostile )?(?:injury|damage|hits?)|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i.test(text),
+    contradictory=/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)|current Survey card does not yet (?:render|show|paint)[^.!?]{0,80}(?:orbit|mineral)|(?:renders|shows|paints) every orbital mineral|orbital Survey (?:also |now )?(?:shows|reveals|includes|names)[^.!?]{0,96}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|(?:Mine|Skim|Survey)[^.!?]{0,80}earns? Stardust|(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)|(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)|(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)|miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)|(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)|Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)|(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)|(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)|(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)\\b[^.!?]{0,64}(?:Charter|bioscan|life-discovery)|(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)|\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)|(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)|(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)|All six research rows can be purchased|Research banks Charter fabrication credit|(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)|Pureforged[^.!?]{0,80}(?:rerolls?|changes?)[^.!?]{0,64}(?:reload|reopen)|authored (?:natural )?affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
+    const policyContradictory=/Weekly Charters?[^.!?]{0,64}(?:pay|earn|award)[^.!?]{0,32}Stardust|passive Stardust gain[^.!?]{0,32}(?:live|available)|Starter Charter rewards?[^.!?]{0,32}(?:remain|are) unavailable|Binder Set claims?[^.!?]{0,32}(?:do not|never) pay Stardust|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i.test(text),
       anyContradictory=contradictory||policyContradictory;
     return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!anyContradictory,
       title,status,missing,contradictory:anyContradictory,text};})()`;
@@ -7054,23 +7069,26 @@ try {
       'complete genome—not only the displayed name or seed—owns visual identity',
       'Planetside shares the same bounded thumbnail lease path',
       'thumbnails are released when their visible owner leaves',
-      'Browsing and non-fauna details remain read-only',
       'successful first Planetside capture can add one page',
       'Tame also adds an owned fauna creature', 'Scavenge and Sample add specimen lots',
       'Later-world or later-cycle successes add another creature or lot without duplicating the page',
       'real fauna detail alone exposes narrow exact-instance Feed, Breed, Rename, Listen, and Field Scout actions',
-      'same owned fauna can become eligible conquest champions',
-      'Scout interception, dispatch, missions, care, bond, and broader husbandry remain unavailable',
+      'real Flora detail can expose the explorer’s separate Eat 1 action',
+      'Owned fauna can become eligible conquest champions',
+      'designated Field Scout can intercept hostile Discover Life injury',
+      'Dispatch, missions, companion care, bond, and broader husbandry remain unavailable',
     ] },
     { id: 'specimen', title: 'Reading a specimen card', required: [
       'exact 440px portrait', 'same complete-genome identity as its exact 132px list thumbnail',
       '440px image is reserved for this detail rather than the list or Planetside',
       'Back returns to the saved list position and restores focus to the same logical row',
-      'Close returns focus to the exact Compendium opener', 'Back and Close both remain available around feeding, breeding, renaming, and Field Scout selection',
+      'Close returns focus to the exact Compendium opener', 'Both remain available around explorer eating, companion feeding, breeding, renaming, and Field Scout selection',
       'Capture happens only through Planetside’s random full-biosphere Tame, Scavenge, and Sample pools, never from a Compendium row',
       'Tame hit adds one owned fauna creature',
       'Scavenge or Sample adds one specimen lot and never a living companion',
-      'Only a real fauna detail offers Feed',
+      'real Flora detail previews the exact canonical owned specimen lot, healing, poison risk, and nourished stat',
+      'One specimen is consumed on either the safe or toxic durable outcome',
+      'Only a real fauna detail offers companion Feed',
       'one exact unassigned owned companion below the 200-Meal cap and one exact owned flora lot',
       'Identical same-species twins remain separate exact instances',
       'Rename chooses one exact owned companion of this species from bounded 24-row pages',
@@ -7081,10 +7099,13 @@ try {
       'one immutable receipt and one compare-and-swap with no retry or optimistic publication',
       'requires reload, and cannot rename twice',
       'Field Scout chooses one exact owned companion of this fauna species from bounded 24-row pages',
-      'Assigned, recovering, and injured companions remain eligible because this changes only a role',
+      'Assigned, recovering, and injured companions remain eligible because the role selector itself changes only the Scout pointer',
       'choose another companion to switch Scouts, or choose the current Scout to Stand down',
-      'One exact-five compare-and-swap changes only the Scout identity, with no RNG, retry, or optimistic publication',
-      'hostile-injury interception, fresh-species Scout XP, dispatch, missions, and friendly duels remain unavailable',
+      'One exact-five compare-and-swap settles that choice with no RNG, retry, or optimistic publication',
+      'designated Scout intercepts hostile Discover Life damage in the bioscan’s own transaction and remains at or below Critical',
+      'Scout standing before that successful attempt earns up to +2 XP in the same capture transaction, capped at 486',
+      'no standing Scout, miss, or repeat grants Scout XP',
+      'Companion tastes and flavours, stat or Power growth from Feed, injury care or healing, companion poison, bond, dispatch, missions, and friendly duels remain unavailable',
     ] },
     { id: 'feeding', title: 'Feeding beasts', required: [
       'real fauna Compendium detail',
@@ -7099,10 +7120,12 @@ try {
       'trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status',
       'one deterministic synthesized acknowledgement after that status appears',
       'Refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent',
+      'every older successful result also remain silent',
       'Back and Close remain available',
-      'tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, friendly duels, and missions remain unavailable',
+      'tastes and flavours, stat or Power growth, injury care or healing, companion poison, and bond remain unavailable',
+      'explorer’s separate Eat 1 action lives on a real Flora detail and owns healing, poison, and nourishment without changing companion Feed',
       'Rename changes only one selected exact companion’s nickname',
-      'Field Scout separately changes only the exact role and does not redirect injury or earn Scout XP yet',
+      'Field Scout separately selects the exact role and can intercept hostile Discover Life injury',
     ] },
     { id: 'breeding', title: 'Breeding', required: [
       'real fauna Compendium detail', 'one exact owned companion of that detail’s species as the primary parent',
@@ -7137,12 +7160,12 @@ try {
       ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
       ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
       ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
-      ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
+      ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
       ||/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(text)
       ||/(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i.test(text)
       ||/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries|(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(text)
       ||/Exhibition companions may still be renamed|Rename changes the selected companion genome|unchanged name consumes one receipt|Rename automatically retries|stale rename changes the nickname/i.test(text);
-    const scoutContradictory=unnegated(text,/Field Scout[^.!?]{0,64}(?:intercepts?|redirects?|takes) (?:hostile )?(?:injury|damage|hits?)|Field Scouts?[^.!?]{0,64}earns? \\+?2 XP|Field Scout[^.!?]{0,64}(?:dispatches?|runs missions?)|Field Scout[^.!?]{0,64}(?:automatically )?retries|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i),
+    const scoutContradictory=unnegated(text,/Field Scout[^.!?]{0,96}(?:dies|is lost|falls below Critical)|(?:miss|repeat species|no standing Scout)[^.!?]{0,64}(?:earns?|grants?|awards?)[^.!?]{0,32}Scout XP|Field Scout[^.!?]{0,64}(?:dispatches?|runs missions?)|Field Scout[^.!?]{0,64}(?:automatically )?retries|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i),
       anyContradictory=contradictory||scoutContradictory;
     return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!anyContradictory,
       title,status,missing,contradictory:anyContradictory,text};})()`;
@@ -7323,24 +7346,24 @@ try {
       /canonical progress and owned reach/i,/(?:invents? no|without invented) goals?|chapter progress alone never mints one/i,
       /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i,
       /A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing/i,
-      /v2’s current replacement for v1[.]8[.]9’s separate Discover Life action/i,
-      /Survey Records and accepted or weekly bioscan Charters remain unavailable/i,
+      /(?:base )?Discover Life (?:Survey )?action is live|live Discover Life action/i,
+      /accepted Discover-life Charter remains unavailable/i,
+      /neither ordinary capture nor the base Survey action counterfeits that Charter|never borrows capture or the base Survey action/i,
       /One successful Breed banks Breed a hybrid bloodline in the same offspring save/i,
       /failed pairing, refusal, stale tab, or failed write banks no breeding credit/i,
       /first verified conquest banks Chapter 2’s conquest goal/i,
       /starter Conquer a world Charter \\(\\s*st-conq\\s*\\)[^.!?]{0,240}(?:removes it from accepted work|same verified conquest)/i,
       /25 Stardust/i,/accepted weekly conquest \\(\\s*wk-conq\\s*\\) refuses before combat/i,
-      /Discover life remains visible but unavailable[^.!?]{0,160}never borrows capture or Survey credit/i,
       /Weekly rows likewise remain protected until wall-week, slate, acceptance, and rollover authority are complete/i,
       /Saved Prime Signatures separately/i],
       missing=required.map((pattern)=>pattern.source).filter((_,index)=>!required[index].test(text)),
       stale=/only Charter outcome this slice writes|only new Charter goal progress|requires (?:a )?(?:real )?(?:newly )?banked landfall|only after a newly changed/i.test(text),
       contradictory=unnegated(text,/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i)
         ||unnegated(text,/chapter (?:numbers?|progress)[^.!?]{0,64}(?:alone )?(?:grants?|creates?|mints?)[^.!?]{0,48}(?:drive|system|reach|one)/i)
-        ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(text)
+        ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)\\b[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(text)
       ||/(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(text)
       ||/\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(text)
-      ||/(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)/i.test(text)
+      ||/Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(text)
       ||unnegated(text,/(?:failed pairing|refusal|stale (?:Breed )?(?:tab|result)|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i)
       ||/Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)/i.test(text)
       ||/Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i.test(text)
@@ -7376,7 +7399,7 @@ try {
     const bioscanContradictions=[];for(const copy of ['Capture advances the Charter bioscan milestone.',
       'A miss banks one Chapter 2 life-discovery tick.','A successful capture on Sol banks one Charter bioscan tick.',
       'A later success on the same world banks another life-discovery tick.','A stale tab still banks one life-discovery tick.',
-      'A failed write advances the Charter bioscan.','The separate Discover Life action is now available.']){
+      'A failed write advances the Charter bioscan.','Discover Life completes an accepted bioscan Charter.']){
      contradictionMarker.textContent=copy;article?.appendChild(contradictionMarker);
      try{bioscanContradictions.push({copy,result:${renderedCharterGuideCheck('Chapters')}});}finally{contradictionMarker.remove();}}
     const breedContradictions=[];for(const copy of ['A failed pairing also banks the Charter hybrid bloodline goal.',
@@ -7566,7 +7589,7 @@ try {
       coldArt=bulletNodes.find((item)=>/COLD PLANETSIDE ART NO LONGER FREEZES THE DECK/.test(item.textContent||'')),
       worker=bulletNodes.find((item)=>/ONE BACKGROUND PAINTER AT A TIME/.test(item.textContent||'')),
       shipyard=bulletNodes.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||'')),
-     capture=bulletNodes.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
+     capture=bulletNodes.find((item)=>/DISCOVER LIFE AND CAPTURE HAVE HONEST LIMITS/.test(item.textContent||'')),
       starterCharter=bulletNodes.find((item)=>/THE CHARTER STOPS AT THE LIVE FRONTIER/.test(item.textContent||'')),
       rankRecord=bulletNodes.find((item)=>/EVERY EXPEDITION HAS A RANKED RECORD/.test(item.textContent||'')),
       fieldScout=bulletNodes.find((item)=>/ONE EXACT FIELD SCOUT, NEVER A GUESS/.test(item.textContent||'')),
@@ -7574,7 +7597,7 @@ try {
       frontierAudio=bulletNodes.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
       creatureListen=bulletNodes.find((item)=>/CREATURE CALLS ARE YOURS TO REQUEST/.test(item.textContent||'')),
       biosphereListen=bulletNodes.find((item)=>/HEAR A LIVING WORLD WITHOUT SPOILERS/.test(item.textContent||'')),
-     meal=bulletNodes.find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||'')),
+     meal=bulletNodes.find((item)=>/TWO EXACT MEAL PATHS, NO INVENTED CARE/.test(item.textContent||'')),
       breed=bulletNodes.find((item)=>/TWO PARENTS, ONE DURABLE OUTCOME/.test(item.textContent||'')),
       rename=bulletNodes.find((item)=>/ONE COMPANION, ONE DURABLE NAME/.test(item.textContent||'')),
       hdSurface=bulletNodes.find((item)=>/HD SURFACES HAVE ONE NAMED OWNER/.test(item.textContent||'')),
@@ -7629,8 +7652,7 @@ try {
       workerContract=headingFor(worker)==='Under the Hood'
         &&(worker?.textContent||'').includes('A dedicated worker is constructed only after a real owner and a serviced boot turn, with its complete portrait graph sealed into that exact worker entry')
         &&(worker?.textContent||'').includes('terminates an idle or replaced producer without a synchronous renderer fallback'),
-      shipyardContradiction=/all six Research rows can (?:currently )?be purchased/i.test(shipyardText)
-        ||/current Survey card does not yet (?:render|paint|show)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
+      shipyardContradiction=/current Survey card does not yet (?:render|paint|show)[^.!?]{0,64}(?:orbital|mineral) rows/i.test(shipyardText)
         ||/(?:renders?|paints?|shows?) every orbital mineral/i.test(shipyardText)
         ||/orbital Survey (?:also |now )?(?:shows|reveals|includes|names)[^.!?]{0,96}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)/i.test(shipyardText)
         ||/(?:Research|Skim)[^.!?]{0,64}banks? (?:a |the )?(?:mining|fabrication|Charter) (?:goal|credit|tick)/i.test(shipyardText)
@@ -7643,18 +7665,20 @@ try {
         ||/vendors?[^.!?]{0,80}(?:is|are) (?:now )?(?:available|live|playable)/i.test(shipyardText),
       shipyardContract=shipyardHeading==='New Features & Systems'
         &&shipyardText.includes('finite grounded Mine and Jump-gated Skim actions')
-        &&shipyardText.includes('exactly six Research rows')&&shipyardText.includes('all 62 fixed Fabricator recipes')
-        &&shipyardText.includes('Only Deep Scanners can currently be purchased')
-        &&shipyardText.includes('durable ownership now adds one Mineral veins row to eligible lifeless non-Earth orbital Survey cards')
-        &&shipyardText.includes('preserves ordinary-deposit order and marks the separate biome vein with ✦')
-        &&shipyardText.includes('cosmic and exceptional veins, grades, reserves, progress, and mining remain grounded')
+        &&shipyardText.includes('six durably purchasable Research rows')&&shipyardText.includes('all 62 fixed Fabricator recipes')
+        &&shipyardText.includes('Deep Scanners reveal bounded orbital mineral facts')
+        &&shipyardText.includes('Reinforced Hull reduces hostile Discover Life damage by 25%')
+        &&shipyardText.includes('Xenobotany Lab adds one permanent nourishment point to a safe explorer Flora meal')
+        &&shipyardText.includes('Fusion Drive, Antimatter Drive, and Warp Fold use the established 2×, 4×, and 8× travel-speed bases')
+        &&shipyardText.includes('Equipped healing, bioscan-protection, and travel-speed gear feed those same registered consumers')
+        &&shipyardText.includes('Speed never replaces permanent reach or slows the unresearched baseline')
         &&shipyardText.includes('Fabrication enables only outputs with connected effects')
         &&shipyardText.includes('exact cost, prerequisite, revision, and capacity headroom')
-        &&shipyardText.includes('A slotted craft paid entirely from exceptional direct materials now receives one deterministic Pureforged modifier')
+        &&shipyardText.includes('A slotted craft paid entirely from exceptional direct materials receives one deterministic Pureforged modifier')
         &&shipyardText.includes('mining yield, rich-strike chance, or capture-contact points')
         &&shipyardText.includes('bound to the exact recipe, receipt, and item')
         &&shipyardText.includes('mixed stock remains ordinary')
-        &&shipyardText.includes('Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable')
+        &&shipyardText.includes('Authored natural affixes/drawbacks, random drops, upgrades, sockets, and vendors remain unavailable')
         &&shipyardText.includes('Built permanent systems change the real ship and star reach')
         &&shipyardText.includes('Remnant skim damage is previewed before it can spend HP')
         &&shipyardText.includes('Engineering can spend preserved Stardust but does not earn it')
@@ -7668,46 +7692,59 @@ try {
         ||/Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)/i.test(captureText)
         ||/(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)/i.test(captureText)
         ||/(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)/i.test(captureText)
-        ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(captureText)
+        ||/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)\\b[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(captureText)
         ||/(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(captureText)
         ||/\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(captureText)
-        ||/(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)/i.test(captureText)
+        ||/Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(captureText)
         ||/(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)/i.test(captureText),
       captureContract=captureHeading==='Gameplay'
-        &&captureText.includes('Tame chooses uniformly from every eligible fauna in the full biosphere')
-        &&captureText.includes('Scavenge from eligible flora and fungi')
-        &&captureText.includes('Sample from eligible microbes')
-        &&captureText.includes('not only the at-most-eight-row Planetside preview')
+        &&captureText.includes('living planet’s Survey card offers explicit Discover Life before or after landing')
+        &&captureText.includes('Ordinary inspection stays write-free')
+        &&captureText.includes('action records that exact world and resolves one shown deterministic hazard without cataloguing a species or spending Biosphere Yield')
+        &&captureText.includes('Reinforced Hull reduces hostile damage by 25% before worn bioscan protection')
+        &&captureText.includes('assigned Field Scout intercepts the nonlethal wound at no worse than Critical')
+        &&captureText.includes('Any hostile outcome owns survivor in that same receipt whether Scout or explorer absorbs the wound')
+        &&captureText.includes('safe scans do not')
+        &&captureText.includes('Capture remains a separate landed action')
+        &&captureText.includes('Tame chooses uniformly from eligible fauna in the full biosphere')
+        &&captureText.includes('Scavenge from flora and fungi')
+        &&captureText.includes('Sample from microbes')
+        &&captureText.includes('not only the at-most-eight-row preview')
+        &&captureText.includes('Equipped capture-chance gear adds 1.5 percentage points per point before the 95% overall ceiling, capped at +25 points')
         &&captureText.includes('All three share one finite Biosphere Yield')
-        &&captureText.includes('every attempt spends 1 on a hit or miss')
+        &&captureText.includes('every hit or miss spends 1')
         &&captureText.includes('next 20-minute active-play cycle')
-        &&captureText.includes('never from closing the game or moving the wall clock')
-        &&captureText.includes('successful species leaves that action’s pool for the rest of the cycle')
+        &&captureText.includes('never from closing the game or changing the wall clock')
+        &&captureText.includes('hit removes that species from its action pool for the cycle')
         &&captureText.includes('miss stays eligible')
         &&captureText.includes('first successful observation adds one Compendium page plus one owned creature for Tame or one specimen lot for Scavenge and Sample')
         &&captureText.includes('Legendary-or-better first find also awards its one Rare Find Stardust bonus')
-        &&captureText.includes('exact amount shown in the result')
-        &&captureText.includes('later-world or later-cycle repeat adds another creature or lot without another page or first-find reward')
-        &&captureText.includes('miss adds none of them')
-        &&captureText.includes('Scavenge and Sample never create living companions')
+        &&captureText.includes('repeat adds another creature or lot without another page or first-find reward')
+        &&captureText.includes('miss adds none')
         &&captureText.includes('first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction')
-        &&captureText.includes('A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing')
-        &&captureText.includes('v2’s current replacement for v1.8.9’s separate Discover Life action')
-        &&captureText.includes('Survey Records and accepted or weekly bioscan Charters remain unavailable')
-        &&captureText.includes('Narrow Feed, nonlethal Breed, exact-instance Rename, requested Listen, and role-only Field Scout are available from a real fauna Compendium detail')
-        &&captureText.includes('Field Scout interception and XP, friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable')
+        &&captureText.includes('a miss, Sol, repeat, stale tab, or failed write banks nothing')
+        &&captureText.includes('Chapter 2 milestone is separate from Discover Life')
+        &&captureText.includes('Accepted and weekly bioscan Charters remain unavailable')
+        &&captureText.includes('Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail')
+        &&captureText.includes('friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable')
         &&!captureContradiction,
-      liveProgressionContradiction=/Charter rewards?[^.!?]{0,48}(?:remain|are) unavailable|Binder (?:Set )?claims?[^.!?]{0,48}(?:do not|never) pay Stardust|Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)|Field Scout[^.!?]{0,64}(?:intercepts?|redirects?|takes) (?:hostile )?(?:injury|damage|hits?)|Field Scouts?[^.!?]{0,64}earns? \\+?2 XP|accepted wk-conq[^.!?]{0,96}(?:completes?|pays?|awards?)/i.test(text),
+      liveProgressionContradiction=/Charter rewards?[^.!?]{0,48}(?:remain|are) unavailable|Binder (?:Set )?claims?[^.!?]{0,48}(?:do not|never) pay Stardust|Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)|(?:miss|repeat species|no standing Scout)[^.!?]{0,64}(?:earns?|grants?|awards?)\\b(?!\\s+no\\b)[^.!?]{0,32}Scout XP|accepted wk-conq[^.!?]{0,96}(?:completes?|pays?|awards?)/i.test(text),
       liveProgressionContract=starterCharterText.includes('two established starter chains one unfinished link at a time')
         &&starterCharterText.includes('first planetfall beyond canonical Earth, one Mine, a non-null Field Scout assignment or switch, verified conquest')
         &&starterCharterText.includes('Each supported completion pays its established 10–25 Stardust once in the same receipt')
         &&starterCharterText.includes('A verified conquest banks Chapter 2 conquest and can honor one accepted starter st-conq for +25 Stardust in the same combat save')
-        &&starterCharterText.includes('Discover life stays visible but unavailable until its accepted-bioscan owner exists')
+        &&starterCharterText.includes('base Discover Life Survey action is live, but its accepted Charter remains unavailable until the separate accepted-bioscan lifecycle has an exact owner')
         &&starterCharterText.includes('Accepted wk-conq remains fail-closed because its weekly lifecycle owner is missing')
         &&rankRecordText.includes('Records also houses the Binder’s six established type pages and seven current-proof Set claims')
         &&rankRecordText.includes('One completed unclaimed Set pays its established 25–150 Stardust')
-        &&fieldScoutText.includes('Assigned, recovering, and injured companions stay eligible because this changes only the Scout role')
-        &&fieldScoutText.includes('The Scout does not yet intercept hostile injury, earn +2 XP for a fresh species, dispatch, run missions, or add care or bond outcomes')
+        &&rankRecordText.includes('Twenty-six exact joins now belong to their true actions')
+        &&rankRecordText.includes('any hostile Discover Life encounter whether the Field Scout or explorer takes the nonlethal wound')
+        &&rankRecordText.includes('Exactly two event owners—daily and decade—remain open')
+        &&rankRecordText.includes('read-only Expedition Chronicle & Museum projects four escaped, independently ordered, at-most-60-row galleries')
+        &&fieldScoutText.includes('Assigned, recovering, and injured companions stay eligible because the selector itself changes only the Scout pointer')
+        &&fieldScoutText.includes('standing Scout intercepts hostile Discover Life damage in that bioscan’s own save and remains at or below Critical')
+        &&fieldScoutText.includes('Scout standing before the attempt earns up to +2 XP in the same capture transaction, capped at 486')
+        &&fieldScoutText.includes('485 gains 1, the cap gains 0, and a capture with no standing Scout, a miss, or a repeat species grants no Scout XP')
         &&surfaceConquestText.includes('A landed non-Training Surface now lets the explorer, an eligible ordinary owned-fauna companion, or a live captured Guardian or Titan challenge')
         &&surfaceConquestText.includes('Chapter 2 conquest and the settle1 achievement bank in that same save')
         &&surfaceConquestText.includes('adds +25 current and lifetime-earned Stardust, and honors one Charter')
@@ -7748,21 +7785,24 @@ try {
         &&mealText.includes('real fauna Compendium detail')
         &&mealText.includes('one exact unassigned owned companion below the 200-Meal cap')
         &&mealText.includes('one exact owned flora lot through Use 1')
-        &&mealText.includes('Same-species twins remain separate exact instances')
+        &&mealText.includes('Same-species twins remain separate')
         &&mealText.includes('assigned, recovering, and capped companions stay disabled and explain why')
         &&mealText.includes('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora')
         &&mealText.includes('emptying that exact lot on its final unit')
         &&mealText.includes('no retry or optimistic change')
-        &&mealText.includes('Back and Close remain available')
-        &&mealText.includes('Refused, stale, and failed writes use and publish nothing')
-        &&mealText.includes('requires reload and cannot feed twice')
         &&mealText.includes('trusted native Feed gesture, exact current ownership successor, and still-current accessible settled status')
         &&mealText.includes('one deterministic synthesized acknowledgement after that status appears')
-        &&/refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(mealText)
-        &&mealText.includes('Tastes and flavours, stat or Power growth, injury care or healing, poison, bond, explorer eating, friendly duels, and missions remain unavailable')
-        &&mealText.includes('Companion Breed is a separate action with its own exact-parent eligibility, odds, lineage, and active-play Recovery')
+        &&/refused, stale, converging, replayed, hidden, route-lost, counterpart-lost, and older results remain silent/i.test(mealText)
+        &&mealText.includes('Companion Feed is still only an inventory spend and meal counter')
+        &&mealText.includes('tastes, Power growth, injury care or healing, companion poison, and bond remain open')
+        &&mealText.includes('real Flora detail previews the explorer’s healing, poison risk, and deterministic nourished stat')
+        &&mealText.includes('Eat 1 consumes the canonical exact owned specimen in one receipt-bearing transaction')
+        &&mealText.includes('safe meal restores shown HP with worn healing gear, raises the stat up to 330, gains +1 nourishment from Xenobotany')
+        &&mealText.includes('toxic meal grants no healing or stat and leaves the explorer at or above 1 HP')
+        &&mealText.includes('Safe healing owns fieldmedic')&&mealText.includes('safe meal above 40% poison risk also owns gambler')
+        &&mealText.includes('Companion Breed remains separate')
         &&mealText.includes('Rename is identity-only')
-        &&mealText.includes('Field Scout changes only the exact role without intercepting injury or earning Scout XP yet')
+        &&mealText.includes('Field Scout can intercept hostile Discover Life injury')
         &&!mealContradiction,
       breedContradiction=/Both parents are consumed|Recovery advances while the game is closed|same exact companion can occupy both parent roles|failed attempt creates one child|Breeding automatically retries/i.test(breedText)
         ||/(?:failed pairing|refusal|stale result|failed write)[^.!?]{0,96}(?:banks?|adds?|awards?|grants?)\\s+(?!no(?:thing)?\\b)[^.!?]{0,64}(?:Charter|hybrid bloodline|breeding credit)/i.test(breedText),
@@ -7809,8 +7849,7 @@ try {
         &&publishingText.includes('The separate branch-site workflow remains manually parked')
         &&publishingText.includes('production remains the v1.8.9 main-branch site')
         &&!publishingContradiction;
-    const overclaim=/all six Research rows[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:bought|purchased|playable|available|live)/i.test(text)
-      ||/all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:actionable|playable|available|live)/i.test(text)
+    const overclaim=/all 62 fixed Fabricator recipes[^.!?]{0,80}(?:(?:can (?:now )?be)|are(?: now)?)\\s+(?:actionable|playable|available|live)/i.test(text)
       ||/(?:dormant|disconnected|unsupported) (?:Fabricator )?(?:effects?|outputs?|recipes?)[^.!?]{0,80}(?:is|are) (?:now )?(?:actionable|playable|available|live)/i.test(text)
       ||/(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)/i.test(text)
       ||/Pureforged[^.!?]{0,80}(?:rerolls?|changes?)[^.!?]{0,64}(?:reload|reopen)/i.test(text)
@@ -7818,13 +7857,12 @@ try {
       ||/\\b(?:item )?upgrades?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bsockets?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/\\bvendors?\\b[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-      ||/(?:biosphere discovery|Discover Life|duels?|creature combat|passive evolution|companion assignment|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
-      ||/\\b(?:Field Scouts are|Field Scout is) (?:now )?(?:playable|available|live)\\b/i.test(text)
+      ||/(?:duels?|creature combat|passive evolution|companion missions?|missions?)[^.!?]{0,80}(?:is|are) (?:now )?(?:playable|available|live)/i.test(text)
       ||/(?<!Narrow )\\bFeeding is (?:now )?(?:live|playable|available)/i.test(text)
       ||/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(text)
       ||/(?:Feed|meal)[^.!?]{0,48}(?:automatically )?retries/i.test(text)
       ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
-      ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
+      ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
       ||/\\bv2(?:\\.0)?\\s+(?:port|game|build)\\s+(?:is\\s+)?(?:complete|finished|production[- ]ready|fully ported)\\b/i.test(text)
       ||/\\b(?:all|every)\\s+legacy\\s+(?:system|mechanic|feature)s?\\b[^.!?]{0,80}\\b(?:ported|playable|available|live)\\b/i.test(text)
       ||breedContradiction||renameContradiction;
@@ -7971,14 +8009,14 @@ try {
     .find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||''));
     if(!row)return {missing:{complete:true,shipyardContract:true},contradictions:[],restored:false,error:'missing Engineering release row'};
     const prior=row.textContent;
-    row.textContent=prior.replace('Only Deep Scanners can currently be purchased','Research purchase boundary removed');
+    row.textContent=prior.replace('six durably purchasable Research rows','Research purchase boundary removed');
     const missing=${releaseDraftCheck};
-    row.textContent=prior.replace('durable ownership now adds one Mineral veins row to eligible lifeless non-Earth orbital Survey cards',
+    row.textContent=prior.replace('Deep Scanners reveal bounded orbital mineral facts',
       'orbital Survey consumer omitted');
     const surveyMissing=${releaseDraftCheck};
     row.textContent=prior.replace('Engineering can spend preserved Stardust but does not earn it','Engineering Stardust boundary omitted');
     const stardustMissing=${releaseDraftCheck};
-    row.textContent=prior.replace('A slotted craft paid entirely from exceptional direct materials now receives one deterministic Pureforged modifier',
+    row.textContent=prior.replace('A slotted craft paid entirely from exceptional direct materials receives one deterministic Pureforged modifier',
       'Pureforged outcome omitted');
     const exceptionalMissing=${releaseDraftCheck};
     row.textContent=prior.replace('mining yield, rich-strike chance, or capture-contact points',
@@ -7989,14 +8027,13 @@ try {
     const bindingMissing=${releaseDraftCheck};
     row.textContent=prior.replace('mixed stock remains ordinary','mixed-stock boundary omitted');
     const mixedMissing=${releaseDraftCheck};
-    row.textContent=prior.replace('Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
+    row.textContent=prior.replace('Authored natural affixes/drawbacks, random drops, upgrades, sockets, and vendors remain unavailable',
       'advanced crafting boundary omitted');
     const advancedBoundaryMissing=${releaseDraftCheck};
     row.textContent=prior.replace('and no reward, cost, Charter tick, or optimistic panel change publishes before',
       'and reward, cost, Charter tick, or optimistic panel change publishes before');
     const publicationChanged=row.textContent!==prior,publicationPolarity=${releaseDraftCheck};
-    const claims=['All six Research rows can currently be purchased.',
-      'The current Survey card does not yet render those orbital mineral rows.',
+    const claims=['The current Survey card does not yet render those orbital mineral rows.',
       'The current Survey card renders every orbital mineral.',
       'Orbital Survey also shows cosmic and exceptional veins, grades, reserves, progress, and Mine.',
       'Mixed stock also receives a Pureforged modifier.',
@@ -8018,32 +8055,32 @@ try {
     || releaseShipyardCopyCtl.publicationPolarity?.shipyardContract !== false
     || releaseShipyardCopyCtl.publicationPolarity?.honest !== false
     || releaseShipyardCopyCtl.publicationPolarity?.shipyardContradiction !== true
-    || releaseShipyardCopyCtl.contradictions?.length !== 11
+    || releaseShipyardCopyCtl.contradictions?.length !== 10
     || releaseShipyardCopyCtl.contradictions.some((row) => row.result?.complete || row.result?.honest
       || !row.result?.shipyardContradiction) || !releaseShipyardCopyCtl.restored) {
     fails.push('GUIDE RELEASE ENGINEERING CONTROL FAILED — missing/contradictory Arc 3 truth stayed complete or failed to restore: '
       + JSON.stringify(releaseShipyardCopyCtl));
   }
   const releaseCaptureCopyCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
-    row=rows.find((item)=>/BIOSPHERE CAPTURE HAS HONEST LIMITS/.test(item.textContent||'')),
+    row=rows.find((item)=>/DISCOVER LIFE AND CAPTURE HAVE HONEST LIMITS/.test(item.textContent||'')),
     wrongSection=rows.find((item)=>/ENGINEERING TURNS OPPORTUNITY INTO REACH/.test(item.textContent||''))?.parentNode;
     if(!row||!wrongSection)return {missing:{complete:true,captureContract:true},contradictions:[],placement:{captureContract:true},restored:false,error:'missing Capture release row'};
     const prior=row.textContent,parent=row.parentNode,next=row.nextSibling;
-    row.textContent=prior.replace('Tame chooses uniformly from every eligible fauna in the full biosphere','capture selection boundary removed');
+    row.textContent=prior.replace('Tame chooses uniformly from eligible fauna in the full biosphere','capture selection boundary removed');
     const missing=${releaseDraftCheck};
     row.textContent=prior.replace('first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction','bioscan scope removed');
     const bioscanMissing=${releaseDraftCheck};
-    row.textContent=prior.replace('A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing','bioscan exclusion boundary removed');
+    row.textContent=prior.replace('a miss, Sol, repeat, stale tab, or failed write banks nothing','bioscan exclusion boundary removed');
     const bioscanExclusionMissing=${releaseDraftCheck};
-    row.textContent=prior.replace('v2’s current replacement for v1.8.9’s separate Discover Life action','Discover Life replacement boundary removed');
+    row.textContent=prior.replace('Ordinary inspection stays write-free','Discover Life action boundary removed');
     const discoverLifeMissing=${releaseDraftCheck};
-    row.textContent=prior.replace('Survey Records and accepted or weekly bioscan Charters remain unavailable','mature bioscan availability boundary removed');
+    row.textContent=prior.replace('Accepted and weekly bioscan Charters remain unavailable','mature bioscan availability boundary removed');
     const matureBioscanMissing=${releaseDraftCheck};row.textContent=prior;
     const claims=['Tame targets the selected preview row.','Tame chooses only from the visible preview.',
       'Biosphere Yield is separate for each action.','Capture advances the Charter bioscan milestone.',
       'A miss banks one Chapter 2 life-discovery tick.','A successful capture on Sol banks one Charter bioscan tick.',
       'A later success on the same world banks another life-discovery tick.','A stale tab still banks one life-discovery tick.',
-      'A failed write advances the Charter bioscan.','The separate Discover Life action is now available.'],contradictions=[];
+      'A failed write advances the Charter bioscan.','Discover Life completes an accepted bioscan Charter.'],contradictions=[];
     for(const copy of claims){row.textContent=prior+' '+copy;const result=${releaseDraftCheck};contradictions.push({copy,result});}
     row.textContent=prior;
     wrongSection.appendChild(row);const placement=${releaseDraftCheck};parent.insertBefore(row,next);
@@ -8071,13 +8108,13 @@ try {
     if(!starter||!binder||!scout||!conquest)return {missing:[],contradictions:[],restored:false,error:'missing live-progression release rows'};
     const fixtures=[[starter,'first planetfall beyond canonical Earth, one Mine, a non-null Field Scout assignment or switch, verified conquest','starter writer identity omitted'],
       [binder,'One completed unclaimed Set pays its established 25–150 Stardust','Binder reward omitted'],
-      [scout,'Assigned, recovering, and injured companions stay eligible because this changes only the Scout role','Scout role-only boundary omitted'],
+      [scout,'Assigned, recovering, and injured companions stay eligible because the selector itself changes only the Scout pointer','Scout role boundary omitted'],
       [conquest,'A landed non-Training Surface now lets the explorer, an eligible ordinary owned-fauna companion, or a live captured Guardian or Titan challenge','Surface Conquest owner omitted']],missing=[];
     for(const [row,anchor,replacement] of fixtures){const prior=row.textContent;row.textContent=prior.replace(anchor,replacement);
       missing.push({anchor,changed:row.textContent!==prior,result:${releaseDraftCheck}});row.textContent=prior;}
     const prior=starter.textContent,contradictions=[];
     for(const copy of ['Starter Charter rewards remain unavailable.','Binder Set claims do not pay Stardust.',
-      'Conquest goals remain hidden.','Field Scout now intercepts hostile injury.','Accepted wk-conq now completes and pays Stardust.']){
+      'Conquest goals remain hidden.','A miss earns Scout XP.','Accepted wk-conq now completes and pays Stardust.']){
       starter.textContent=prior+' '+copy;contradictions.push({copy,result:${releaseDraftCheck}});}
     starter.textContent=prior;const restored=${releaseDraftCheck};return {missing,contradictions,
       restored:restored.complete===true&&restored.honest===true&&restored.liveProgressionContract===true
@@ -8093,7 +8130,7 @@ try {
       + JSON.stringify(releaseLiveProgressionCtl));
   }
   const releaseMealCopyCtl = await evalIn(`(()=>{ const row=[...document.querySelectorAll('#guidepanel .guide-topic li')]
-    .find((item)=>/ONE EXACT MEAL SETTLES ONCE/.test(item.textContent||''));
+    .find((item)=>/TWO EXACT MEAL PATHS, NO INVENTED CARE/.test(item.textContent||''));
     if(!row)return {missing:{complete:true,mealContract:true},contradictions:[],restored:false,error:'missing Feed release row'};
     const prior=row.textContent;row.textContent=prior.replace('One receipt-bearing compare-and-swap raises Meals by 1 and removes exactly 1 flora','meal authority removed');
     const missing=${releaseDraftCheck};const contradictions=[];
@@ -8367,28 +8404,29 @@ try {
     if(!row)return {truthful:[],unavailable:[],restored:false,error:'missing overclaim control row'};const prior=row.textContent,
       truthfulClaims=['Mining is now playable.','Eligible fixed Fabricator crafting is now playable.',
         'Fully exceptional direct-material gear crafting is now playable with a deterministic Pureforged modifier.',
-        'Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.',
+        'All six Research rows can now be purchased.','Discover Life is now playable.',
+        'Capture is now playable.','Narrow real-fauna Compendium Feed is now playable.','Explorer Flora eating is now playable.',
         'Breeding is now playable.','Renaming is now available.',
-        'Role-only Field Scout selection is now live.','Landed non-Training Conquest is now playable.',
+        'Field Scout selection, interception, and fresh-species XP are now live.','Landed non-Training Conquest is now playable.',
         'Exploration audio is now live.'],
-      unavailableClaims=['All six Research rows can now be purchased.','All 62 fixed Fabricator recipes are now actionable.',
+      unavailableClaims=['All 62 fixed Fabricator recipes are now actionable.',
         'Disconnected Fabricator outputs are now playable.',
         'Mixed stock also receives a Pureforged modifier.','Pureforged modifiers reroll after reload.',
         'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Item upgrades are now live.',
-        'Sockets are now available.','Vendors are now live.','The separate Discover Life action is now available.',
+        'Sockets are now available.','Vendors are now live.',
         'Creature combat is now playable.','Feeding is now playable.',
-        'Field Scouts are now live.','Duels are now playable.',
-        'Passive evolution is now available.','Companion assignment is now live.',
+        'Duels are now playable.',
+        'Passive evolution is now available.',
         'Missions are now playable.'],truthful=[],unavailable=[];
     for(const copy of truthfulClaims){row.textContent=prior+' '+copy;truthful.push({copy,result:${releaseDraftCheck}});}
     for(const copy of unavailableClaims){row.textContent=prior+' '+copy;unavailable.push({copy,result:${releaseDraftCheck}});}
     row.textContent=prior;const restored=${releaseDraftCheck};return {truthful,unavailable,restored}; })()`);
-  if (releaseOverclaimCtl.truthful?.length !== 10
+  if (releaseOverclaimCtl.truthful?.length !== 13
     || releaseOverclaimCtl.truthful.some((row) => !row.result?.complete || !row.result?.honest || row.result?.overclaim)
-    || releaseOverclaimCtl.unavailable?.length !== 18
+    || releaseOverclaimCtl.unavailable?.length !== 14
     || releaseOverclaimCtl.unavailable.some((row) => !row.result?.complete || row.result?.honest || !row.result?.overclaim)
     || !releaseOverclaimCtl.restored?.complete || !releaseOverclaimCtl.restored?.honest) {
-    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — a live Mining/crafting/Capture/Feed/Breed/Rename/role-only Scout/Surface Conquest claim went red, an unavailable claim stayed green, or copy failed to restore: '
+    fails.push('GUIDE RELEASE FEATURE-TRUTH CONTROL FAILED — a live Research/Discover Life/Capture/meal/companion/Scout/Conquest claim went red, an unavailable claim stayed green, or copy failed to restore: '
       + JSON.stringify(releaseOverclaimCtl));
   }
   const releaseCompanionWriteCtl = await evalIn(`(()=>{ const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
@@ -23030,16 +23068,21 @@ try {
     failSliceWithoutCascade('ATLAS KEYBOARD CONTROLS FAILED — an untrusted or wrong action/row/role receipt stayed green');
   }
   /* 4c-records. Records over the real save: ordinary imported exploration
-     rows remain, worlds-landed is the only visible Arc 3 writer, and Journal
-     remains the only live subsection. Persisted Mine/Skim/Fabricator stats
-     must not acquire an unimplemented visible row. */
+     rows remain, worlds-landed is the only visible Arc 3 writer, and the
+     read-only Chronicle projects four exact durable galleries without adding
+     a Journal writer. Persisted Mine/Skim/Fabricator stats must not acquire an
+     unimplemented visible row. */
   const renderedRecordsCheck = `(()=>{ const panel=document.getElementById('recpanel'),rows=panel?[...panel.querySelectorAll('.row')]:[],
     labels=rows.map((row)=>(row.querySelector('label')?.textContent||'').trim()),
     landed=rows.find((row)=>/worlds landed/i.test(row.querySelector('label')?.textContent||''))?.textContent||'',
     arc3Rows=labels.filter((label)=>/(?:mine|mined|mining|skim|fabricat)/i.test(label)),
-    journal=!![...(panel?.querySelectorAll('h3')||[])].find((heading)=>(heading.textContent||'').trim()==='Journal'),
-    jempty=!!panel?.querySelector('[data-sel=journal-empty]'),jn=panel?.querySelectorAll('[data-sel=journal-entry]').length||0;
-    return {ok:!!panel&&labels.includes('worlds landed')&&arc3Rows.length===0&&journal&&(jempty||jn>0),labels,landed,arc3Rows,journal,jempty,jn};})()`;
+    chronicle=panel?.querySelector('[data-expedition-chronicle="cf-v2-expedition-chronicle/v1"]'),
+    sections=chronicle?[...chronicle.querySelectorAll('[data-chronicle-section]')].map((row)=>row.getAttribute('data-chronicle-section')):[],
+    journal=chronicle?.querySelector('[data-chronicle-section="legacy-journal"]')||null,
+    jempty=!!journal?.querySelector('.empty'),jn=journal?.querySelectorAll('[data-chronicle-entry]').length||0;
+    return {ok:!!panel&&labels.includes('worlds landed')&&arc3Rows.length===0&&!!chronicle
+      &&JSON.stringify(sections)===JSON.stringify(['battles','discoveries','prime-codex','legacy-journal'])
+      &&!!journal&&(jempty||jn>0),labels,landed,arc3Rows,sections,journal:!!journal,jempty,jn};})()`;
   const rec = await evalIn(`(()=>{ document.getElementById('dockrecords').click();const result=${renderedRecordsCheck};
     document.querySelector('#recpanel [data-pnx]').click();return result;})()`);
   const recordsLandedPattern = new RegExp('worlds landed\\s*' + normalizedRecordsLandedCount + '$');
@@ -24327,14 +24370,14 @@ try {
     fails.push('PHONE FRESH ASCENT: real pinch-out Sol -> Milky Way -> Cosmos receipts drifted: '
       + JSON.stringify({ sol: freshOriginReady, galaxy: freshPhoneGalaxy, universe: freshPhoneUniverse }));
   }
-  /* This origin is genuinely fresh: prove the empty Compendium and Journal
-     surfaces render the honest read-only boundary. The veteran desktop
+  /* This origin is genuinely fresh: prove the empty Compendium and Chronicle
+     Journal gallery render the honest read-only boundary. The veteran desktop
      origin cannot exercise an empty-state outcome. */
   const freshEmptyCopy = await evalNavPh(`(()=>{ document.getElementById('dockcodex')?.click();
     const codex=document.querySelector('#codexpanel .empty')?.textContent||'';
     const codexOpen=window.__CF_SLICE__.api.state().panelOpen;
     document.querySelector('#codexpanel [data-pnx]')?.click();document.getElementById('dockrecords')?.click();
-    const journal=document.querySelector('#recpanel [data-sel="journal-empty"]')?.textContent||'';
+    const journal=document.querySelector('#recpanel [data-chronicle-section="legacy-journal"] .empty')?.textContent||'';
     const journalOpen=window.__CF_SLICE__.api.state().panelOpen;
     document.querySelector('#recpanel [data-pnx]')?.click();return {codex,journal,codexOpen,journalOpen};})()`);
   if (freshOriginReady.tutActive || freshOriginReady.codexCount !== 0
@@ -26847,6 +26890,7 @@ try {
     || !engineeringHold.held || engineeringHold.unavailable
     || engineeringHold.actions !== ENGINEERING_ACTION_CONTROL_COUNT || !engineeringHold.allLocked
     || !/source-proven opportunities/i.test(engineeringTour.announcement)
+    || !/All six Research rows have connected effects/i.test(engineeringTourFocus.announcement)
     || !/Pureforged/i.test(engineeringTourFocus.announcement)) {
     fails.push('DRILL ENGINEERING TOUR: populated board, held authority, or read-only lock drifted: '
       + JSON.stringify({ tour: engineeringTour, focus: engineeringTourFocus, hold: engineeringHold }));
@@ -26895,8 +26939,10 @@ try {
     || compendiumHeldRows.count !== 0 || compendiumHeldRows.rows !== 0
     || !/No species yet.*imported discoveries appear here.*Live catalogue writing arrives with the discovery path/i
       .test(compendiumHeldRows.emptyText)
-    || !/role-only Field Scout/i.test(compendiumTourFocus.announcement)
-    || !/interception, Scout XP, dispatch, missions, care, bond, and friendly duels are not live yet/i.test(compendiumTourFocus.announcement)) {
+    || !/live exact-instance companion controls after Training/i.test(compendiumTourFocus.announcement)
+    || !/intercept hostile Discover Life injury, and earn up to \+2 XP when a later successful capture catalogues a genuinely fresh species/i.test(compendiumTourFocus.announcement)
+    || !/real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment/i.test(compendiumTourFocus.announcement)
+    || !/Companion tastes, care, bond, dispatch, missions, and friendly duels are not live yet/i.test(compendiumTourFocus.announcement)) {
     fails.push('DRILL COMPENDIUM TOUR: real catalogue rows, read-only lock, or Field Scout truth drifted: '
       + JSON.stringify({ tour: compendiumTour, focus: compendiumTourFocus, rows: compendiumHeldRows }));
   }
@@ -26938,7 +26984,9 @@ try {
   if (!recordsTour.ok || recordsTourFocus.active !== 'tutbtn' || !recordsTourFocus.allowed
     || !/Field Training, step 13 of 15/i.test(recordsTour.announcement)
     || !/Records are evidence, not a reward fountain/i.test(recordsTourFocus.announcement)
-    || !/remaining event joins and achievement reward claims stay unavailable/i.test(recordsTourFocus.announcement)) {
+    || !/26 exact-event achievements appear only after their owning transaction verifies/i.test(recordsTourFocus.announcement)
+    || !/only daily and decade still lack event owners/i.test(recordsTourFocus.announcement)
+    || !/Expedition Chronicle & Museum.*battle, first-species discovery, Prime-victory, and Legacy Journal galleries/i.test(recordsTourFocus.announcement)) {
     fails.push('DRILL RECORDS TOUR: populated evidence board or read-only truth drifted: '
       + JSON.stringify({ tour: recordsTour, focus: recordsTourFocus }));
   }
@@ -26990,7 +27038,9 @@ try {
     || !/Field Training, step 15 of 15/i.test(gradFocus.announcement)
     || !/CF1 world code/i.test(gradFocus.announcement)
     || !/Biosphere Yield/i.test(gradFocus.announcement)
-    || !/20-minute active-play cycle/i.test(gradFocus.announcement)
+    || !/explicit Discover Life/i.test(gradFocus.announcement)
+    || !/Scout standing before the attempt earns up to \+2 XP.*capped at 486/i.test(gradFocus.announcement)
+    || !/real Flora detail can Eat 1 for explorer healing, poison, and nourishment/i.test(gradFocus.announcement)
     || !/This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat/i.test(gradFocus.announcement)) {
     fails.push('DRILL KEYBOARD: graduation was not focused and announced: ' + JSON.stringify(gradFocus));
   }
@@ -28470,7 +28520,7 @@ if (OUTCOME_CONTROLS_ONLY) {
   console.log('SLICE OUTCOME CONTROLS: PASS — two source-generated leaf-seed-colliding worlds retain distinct Search/name/Atlas/Land/save-reload/share identity, and F4 heartbeat lease-storage plus revision-read failures stop answerability/accrual/audio/heartbeat without automatic reacquisition before a read-only convergence reload.');
   process.exit(0);
 }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact 77-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT accessible and focused · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact 77-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT absent; Training recovery reload-only · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
 console.log(ARC4_SLICE_PASS_MARKER);
 console.log(sliceScreenshotInventoryLine());

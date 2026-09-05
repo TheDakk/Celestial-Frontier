@@ -948,9 +948,39 @@ export function createOwnershipSourceSuccessorV2(
  * The compact-delta persistence owner still refuses any V2 state that its
  * fixed carrier inventory cannot represent. This bridge is exported solely through the package's
  * `ownership-v2-internal` subpath, never from the public root. */
-export function createOwnershipSourceProjectionSuccessorV2(
+function assertCaptureFirstSpeciesProjection(
+  source: OwnershipStateV1,
+  successor: OwnershipStateV1,
+  firstForSpecies: boolean,
+): void {
+  const priorDiscoveries = new Set(source.discoveries.map((row) => row.recordId));
+  const addedDiscoveries = successor.discoveries.filter((row) => !priorDiscoveries.has(row.recordId));
+  const priorSpecies = new Set(source.catalogSpecies.map((row) => row.speciesId));
+  const addedSpecies = successor.catalogSpecies.filter((row) => !priorSpecies.has(row.speciesId));
+  if (addedDiscoveries.length > 1 || addedSpecies.length > 1) {
+    throw new TypeError('capture source projection must add at most one discovery and species');
+  }
+  const discovery = addedDiscoveries[0] ?? null;
+  const actualFirstForSpecies = discovery?.firstForSpecies === true;
+  if (actualFirstForSpecies !== firstForSpecies) {
+    throw new TypeError('capture first-species authority does not match its Arc 4 successor');
+  }
+  if (firstForSpecies) {
+    const species = addedSpecies[0];
+    if (discovery === null || species === undefined
+      || species.speciesId !== discovery.speciesId
+      || species.firstObservationId !== discovery.recordId) {
+      throw new TypeError('capture first-species authority lacks its exact catalogue observation');
+    }
+  } else if (addedSpecies.length !== 0) {
+    throw new TypeError('capture non-first successor cannot add a catalogue species');
+  }
+}
+
+function createOwnershipSourceProjectionSuccessorCheckedV2(
   parent: OwnershipStateV2,
   sourceSuccessor: OwnershipStateV1,
+  captureFirstForSpecies: boolean | null,
 ): OwnershipStateV2 {
   const registered = STATES.get(parent);
   if (!registered) throw new TypeError('ownership V2 source parent must be registered');
@@ -959,6 +989,13 @@ export function createOwnershipSourceProjectionSuccessorV2(
   }
   if (!isOwnershipSuccessorV1(sourceSuccessor, registered.source)) {
     throw new TypeError('ownership V2 source projection requires the exact registered Arc 4 successor');
+  }
+  if (captureFirstForSpecies !== null) {
+    assertCaptureFirstSpeciesProjection(
+      registered.source,
+      sourceSuccessor,
+      captureFirstForSpecies,
+    );
   }
   const pairedSource = createOwnershipSourceSuccessorV2(parent, {
     catalogSpecies: sourceSuccessor.catalogSpecies,
@@ -974,7 +1011,11 @@ export function createOwnershipSourceProjectionSuccessorV2(
   }
 
   const priorCreatureIds = new Set(registered.source.creatures.map((row) => row.creatureId));
-  const creatures = [...parent.creatures];
+  const creatures = parent.creatures.map((row) => {
+    if (!captureFirstForSpecies || row.creatureId !== parent.scoutCreatureId) return row;
+    const xp = Math.min(486, (row.xp ?? 0) + 2);
+    return row.xp === xp ? row : createCreatureInstanceV2({ ...row, xp });
+  });
   for (const row of pairedSource.creatures) {
     if (!priorCreatureIds.has(row.creatureId)) creatures.push(createCreatureInstanceV2(row));
   }
@@ -993,6 +1034,32 @@ export function createOwnershipSourceProjectionSuccessorV2(
     specimenTombstones: parent.specimenTombstones,
     scoutCreatureId: parent.scoutCreatureId,
   });
+}
+
+export function createOwnershipSourceProjectionSuccessorV2(
+  parent: OwnershipStateV2,
+  sourceSuccessor: OwnershipStateV1,
+): OwnershipStateV2 {
+  return createOwnershipSourceProjectionSuccessorCheckedV2(parent, sourceSuccessor, null);
+}
+
+/** Capture-only Arc 4 source bridge. The registered capture successor remains
+ * the first-species authority; a genuine first observation grants the
+ * pre-action Field Scout +2 XP in the same V2 +1, capped by the canonical
+ * creature XP ceiling. */
+export function createOwnershipCaptureSourceProjectionSuccessorV2(
+  parent: OwnershipStateV2,
+  sourceSuccessor: OwnershipStateV1,
+  firstForSpecies: boolean,
+): OwnershipStateV2 {
+  if (typeof firstForSpecies !== 'boolean') {
+    throw new TypeError('capture first-species authority must be boolean');
+  }
+  return createOwnershipSourceProjectionSuccessorCheckedV2(
+    parent,
+    sourceSuccessor,
+    firstForSpecies,
+  );
 }
 
 export function isOwnershipStateV2(value: unknown): value is OwnershipStateV2 {

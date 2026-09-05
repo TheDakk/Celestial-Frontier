@@ -250,6 +250,11 @@ describe('synchronous semantic panel refill focus', () => {
       esc: String, fillPanel: (_id: string, html: string) => {
         root.innerHTML = `<button data-pnx="${id}">Close</button>${html}`;
       },
+      f4Runtime: { extensions: {} }, arc5OwnershipState: { mode: 'current' },
+      readCombatSettlementAuthorityV1: () => ({ kind: 'loaded', authority: {} }),
+      ownershipSourceStateV1: () => ({}),
+      projectExpeditionChronicleV1: () => ({ kind: 'projected', model: {} }),
+      renderExpeditionChronicleV1: () => '<section data-test-chronicle>Retained expedition history</section>',
       projectArc9RecordsRankReadModelV1: () => ({ kind: 'protected' }),
       projectArc9BinderReadModelV1: () => ({ kind: 'projected', model: {} }),
       renderArc9BinderPanelV1: () => '<button data-binder-claim="set">Claim</button>',
@@ -269,6 +274,8 @@ describe('synchronous semantic panel refill focus', () => {
         : ['fillCharters', "\nregisterPanel({ id: 'ch'", '[data-starter-charter-accept="st"]'];
     const fill = appFunction(name!, end!, env);
     fill();
+    if (id === 'rec') expect(root.querySelector('[data-test-chronicle]')?.textContent)
+      .toBe('Retained expedition history');
     root.querySelector<HTMLElement>(selector!)!.focus();
     fill();
     expect(document.activeElement).toBe(root.querySelector(selector!));

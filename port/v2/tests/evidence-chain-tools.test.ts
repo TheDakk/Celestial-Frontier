@@ -376,7 +376,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(output).toContain('trail/portrait controls: measured-opposite mutation, eligible baseline, exact property restoration, no-op rejection, and first-red causal stop accepted');
     expect(collector).toContain('full certifying Glass requires --slice-run=<immutable-Slice-run-id>');
     expect(collector).toContain('full certifying Glass requires clean committed source');
-    expect(collector).toContain('Equipped capture-chance gear is included in the shown odds at +1.5 percentage points per point before the 95% overall chance ceiling, with its contribution capped at +25 percentage points; first contact remains unavailable');
+    expect(collector).toContain('Equipped capture-chance gear adds 1.5 percentage points per point before the 95% overall ceiling, capped at +25 points; first contact remains unavailable');
     expect(collector).toContain('The shown odds ignore equipped capture-chance gear.');
     expect(collector).toContain('A wrong-world detour keeps only its real Close available, and Escape dismisses it without abandoning Sol or the lesson');
    expect(collector).toContain('Escape from a wrong-world detour abandons Sol and the lesson.');

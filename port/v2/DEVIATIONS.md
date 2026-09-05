@@ -1,5 +1,17 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## Overnight Batch 4 — checkpoint 1 implementation, 2026-09-05
+
+Matches the current recovered core implementation, not a browser acceptance claim. Signed
+`5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
+Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
+486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
+Accepted st-scan completion, descent, Paragon acquisition, individual progression presentation
+and mature Atlas remain later checkpoints. Existing tables and F3/F4 receipt/save owners govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 77 bullets
+at this checkpoint. Real-device v2 persistence and the combined Arc 4.5 / separate Arc 5.5 HUMAN
+reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
+
 > **D-FRESH-START-IMPORT-DOOR — 2026-09-05 UTC current deviation overlay (matches current local
 > code; local diagnostics green, hosted certificate absent):** Nick withdrew the legacy-save
 > requirement ("nobody is running old saves… treat it as a brand-new game; we want saves going forward

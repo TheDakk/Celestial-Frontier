@@ -33,6 +33,12 @@ export interface EngineeringCapabilitySnapshot {
   readonly coronaScoop: boolean;
   readonly stellarSkimBonus: number;
   readonly stellarSkimGuard: boolean;
+  /** Raw legacy `_equipBonus('heal')` multiplier from worn gear. */
+  readonly explorerMealHealBonus: number;
+  /** Legacy `_equipBonus('scut')`, capped before hostile-bioscan damage. */
+  readonly bioscanDamageReduction: number;
+  /** Raw legacy `_equipBonus('speed')` value added to the research drive multiplier. */
+  readonly travelSpeedBonus: number;
 }
 
 /** Capture/contact authority derived from the same persistence-issued Arc 2
@@ -133,6 +139,15 @@ export function projectEngineeringCapabilities(
     coronaScoop: hasSystem('cscoop'),
     stellarSkimBonus: finiteEffect(totals.get('skim') ?? 0, 'stellar skim bonus'),
     stellarSkimGuard: (totals.get('skimguard') ?? 0) > 0,
+    explorerMealHealBonus: finiteEffect(
+      totals.get('heal') ?? 0,
+      'explorer meal healing bonus',
+    ),
+    bioscanDamageReduction: Math.min(
+      0.7,
+      finiteEffect(totals.get('scut') ?? 0, 'bioscan damage reduction'),
+    ),
+    travelSpeedBonus: finiteEffect(totals.get('speed') ?? 0, 'travel speed bonus'),
   });
   CAPABILITIES.add(capability);
   return capability;

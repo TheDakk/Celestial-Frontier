@@ -60,6 +60,7 @@ describe('@cf/persistence — Arc 5 internal V2 source-projection boundary', () 
       'utf8',
     );
     expect(publicRoot).not.toContain('createOwnershipSourceProjectionSuccessorV2');
+    expect(publicRoot).not.toContain('createCaptureOwnershipSourceProjectionSuccessorV2');
 
     expect(importSpecifiers(
       `import { createOwnershipSourceProjectionSuccessorV2 } from '${INTERNAL_SPECIFIER}';`,
@@ -67,5 +68,10 @@ describe('@cf/persistence — Arc 5 internal V2 source-projection boundary', () 
     expect(importSpecifiers(
       `const authority = import('${INTERNAL_SPECIFIER}')`,
     )).toEqual([INTERNAL_SPECIFIER]);
+
+    const persistenceOwner = fs.readFileSync(path.join(V2_ROOT, PERSISTENCE_OWNER), 'utf8');
+    expect(persistenceOwner).toContain('prepareArc5CaptureOwnershipMigrationSuccessor');
+    expect(persistenceOwner).toContain('createCaptureOwnershipSourceProjectionSuccessorV2(');
+    expect(persistenceOwner).not.toContain('captureFirstForSpecies: boolean');
   });
 });
