@@ -3081,6 +3081,47 @@ const receiptMap = (evidence) => {
   }]));
 };
 
+/* Current capture settlement binds the original plan to both independently
+   reconstructed ownership lineages. The prescribed Pertar sequence has no
+   Field Scout; it must never award Scout XP or acquire an assignment. */
+const captureSettlementFacts = (before, after, oracle) => {
+  const leftRows = inspectV5Rows(before).rows, rightRows = inspectV5Rows(after).rows;
+  const leftSource = inspectArc4Ownership(leftRows);
+  const rightSource = inspectArc4Ownership(rightRows);
+  const left = inspectArc5OwnershipMigration(leftRows, leftSource);
+  const right = inspectArc5OwnershipMigration(rightRows, rightSource);
+  const fixed = (migration) => migration.namespaceInventoryMatches === true
+    && migration.manifestShapeMatches === true && migration.sourceFixedPointMatches === true
+    && migration.deltaFixedPointMatches === true && migration.targetFixedPointMatches === true;
+  if (!oracle || !fixed(left) || !fixed(right)
+    || left.target?.scoutCreatureId !== null || right.target?.scoutCreatureId !== null
+    || !hexDigest(left.sourceDigest) || !hexDigest(right.sourceDigest)
+    || !hexDigest(left.targetDigest) || !hexDigest(right.targetDigest)) return null;
+  const firstForSpecies = oracle.hit === true
+    && !leftSource.mirror.catalogSpecies.some((row) => (
+      row.speciesId === oracle.candidate.speciesId
+    ));
+  /* V5 writes use public constructor order; their digest is JSON.stringify,
+     whereas the enclosing witness uses canonical JSON. Rebuild that order. */
+  const writes = ARC5_OWNERSHIP_EXTENSION_TARGETS.map(({ segment, namespace }, index) => ({
+    segment, namespace,
+    carrier: { version: right.carriers[index].version, json: right.carriers[index].json },
+  }));
+  return {
+    successorDigest: right.sourceDigest,
+    ownershipV2Digest: right.targetDigest,
+    arc5MigrationWritesDigest: sha256(JSON.stringify(writes)),
+    scoutXp: {
+      schema: 'cf-v2-arc4-capture-scout-xp/v1',
+      firstForSpecies, scoutCreatureId: null, xpBefore: null, xpAfter: null, xpAward: 0,
+      sourceParentDigest: left.sourceDigest,
+      sourceSuccessorDigest: right.sourceDigest,
+      ownershipParentDigest: left.targetDigest,
+      ownershipSuccessorDigest: right.targetDigest,
+    },
+  };
+};
+
 const captureReceiptTransition = (
   before, after, expected, requireProgressionTail = false,
 ) => {
@@ -3108,14 +3149,22 @@ const captureReceiptTransition = (
       && progressionReceipt.row.ordinal === expectedOrdinal + 1
       && progressionReceipt.row.kind === progression.receiptKind
       && progressionReceipt.row.witness === progression.witness;
-  const witness = parseJson(receipt?.row?.witness);
+  const settlement = parseJson(receipt?.row?.witness);
+  const witness = parseJson(settlement?.captureWitness);
+  const facts = captureSettlementFacts(before, after, oracle);
+  const exactSettlement = facts !== null && exactKeys(settlement, [
+    'schema', 'captureWitness', 'successorDigest', 'ownershipV2Digest',
+    'arc5MigrationWritesDigest', 'scoutXp',
+  ]) && settlement.schema === 'cf-v2-arc4-capture-settlement-witness/v1'
+    && same(omitted(settlement, ['schema', 'captureWitness']), facts)
+    && receipt.row.witness === canonicalToolJson(settlement);
   const exactWitness = exactKeys(witness, [
     'schema', 'event', 'candidateDraw', 'successDraw', 'chance', 'hit', 'spent',
     'successorDigest',
   ]) && oracle !== null && witness.schema === 'cf-v2-capture-plan-witness/v1'
     && witness.event === oracle.event && witness.successorDigest
       === inspectArc4Ownership(inspectV5Rows(after).rows)?.manifest?.stateDigest
-    && receipt.row.witness === canonicalToolJson(witness)
+    && settlement.captureWitness === canonicalToolJson(witness)
     && sameNumber(witness.candidateDraw, oracle.candidateDraw)
     && sameNumber(witness.successDraw, oracle.successDraw)
     && sameNumber(witness.chance, oracle.chance)
@@ -3137,9 +3186,9 @@ const captureReceiptTransition = (
       && exactKeys(receipt.row, ['ordinal', 'kind', 'witness'])
       && receipt.row.ordinal === expectedOrdinal
       && receipt.row.kind === ARC4_CAPTURE_RECEIPT_KIND && exactWitness
-      && expectedMatches && exactProgressionReceipt,
-    oldStable, newKeys, receipt, witness, oracle, expectedMatches,
-    progressionReceipt, exactProgressionReceipt,
+      && exactSettlement && expectedMatches && exactProgressionReceipt,
+    oldStable, newKeys, receipt, witness, settlement, oracle, expectedMatches,
+    exactSettlement, progressionReceipt, exactProgressionReceipt,
   });
 };
 
@@ -6260,10 +6309,12 @@ const ownershipExtensions = (mirror, {
   return extensions;
 };
 
-const captureReceipt = (before, expected, stateDigest) => {
+const captureReceipt = (before, expected, after) => {
   const oracle = captureAttemptOracle(before, expected?.verb);
   if (oracle === null) throw new Error('Arc 4 selftest capture oracle was unavailable');
-  const witness = canonicalToolJson({
+  const facts = captureSettlementFacts(before, after, oracle);
+  if (facts === null) throw new Error('Arc 4 selftest settlement facts were unavailable');
+  const captureWitness = canonicalToolJson({
     schema: 'cf-v2-capture-plan-witness/v1',
     event: oracle.event,
     candidateDraw: oracle.candidateDraw,
@@ -6271,7 +6322,10 @@ const captureReceipt = (before, expected, stateDigest) => {
     chance: oracle.chance,
     hit: oracle.hit,
     spent: 1,
-    successorDigest: stateDigest,
+    successorDigest: facts.successorDigest,
+  });
+  const witness = canonicalToolJson({
+    schema: 'cf-v2-arc4-capture-settlement-witness/v1', captureWitness, ...facts,
   });
   return { ordinal: oracle.receiptOrdinal, kind: ARC4_CAPTURE_RECEIPT_KIND, witness };
 };
@@ -7195,7 +7249,7 @@ const hitNaiveCarrierDigest = sha256(JSON.stringify({
   legacyProtection: hitCarrierOrderedMirror.legacyProtection,
 }));
 const hitReceiptSelftest = captureReceipt(
-  beforeRawSelftest, firstExpected, hitManifestDigest,
+  beforeRawSelftest, firstExpected, makeDurable(hitMirror()),
 );
 const hitRawSelftest = makeDurable(hitMirror(), {
   revision: 1, ordinal: 1,
@@ -7223,7 +7277,7 @@ const missManifestDigest = inspectArc4Ownership(inspectV5Rows(
   makeDurable(missMirror()),
 ).rows).manifest.stateDigest;
 const missReceiptSelftest = captureReceipt(
-  hitRawSelftest, secondExpected, missManifestDigest,
+  hitRawSelftest, secondExpected, makeDurable(missMirror()),
 );
 const missRawSelftest = makeDurable(missMirror(), {
   revision: 2, ordinal: 2,
@@ -7520,9 +7574,11 @@ const withReceiptWitness = (evidence, ordinal, fields) => {
   const next = structuredClone(evidence);
   const index = next.receiptRows.findIndex((row) => row?.ordinal === ordinal);
   if (index < 0) throw new Error('Arc 4 selftest receipt mutation target is absent');
-  const witness = parseJson(next.receiptRows[index].witness);
+  const settlement = parseJson(next.receiptRows[index].witness);
+  const witness = parseJson(settlement.captureWitness);
   Object.assign(witness, fields);
-  next.receiptRows[index].witness = canonicalToolJson(witness);
+  settlement.captureWitness = canonicalToolJson(witness);
+  next.receiptRows[index].witness = canonicalToolJson(settlement);
   next.receiptRawRows[index] = JSON.stringify(next.receiptRows[index]);
   return next;
 };
@@ -7579,9 +7635,8 @@ const makeHitDurable = (mirror) => {
     ownedCounters: ARC4_PERTAR_FIXTURE.v4OwnedCounters.afterFirstHit,
   };
   const provisional = makeDurable(mirror, options);
-  const digest = inspectArc4Ownership(inspectV5Rows(provisional).rows).manifest.stateDigest;
   return makeDurable(mirror, {
-    ...options, receipts: [captureReceipt(beforeRawSelftest, firstExpected, digest)],
+    ...options, receipts: [captureReceipt(beforeRawSelftest, firstExpected, provisional)],
   });
 };
 
@@ -7646,7 +7701,7 @@ const progressionHitManifestDigestSelftest = inspectArc4Ownership(inspectV5Rows(
 ).rows).manifest.stateDigest;
 const progressionHitCaptureReceiptSelftest = captureReceipt(
   pertarActionReadyRawSelftest, firstExpected,
-  progressionHitManifestDigestSelftest,
+  makeDurable(progressionHitMirrorSelftest),
 );
 const progressionActionRawSelftest = makeDurable(progressionHitMirrorSelftest, {
   revision: pertarActionReadyRawSelftest.revision + 1,
@@ -8880,7 +8935,7 @@ const tameGreetingAfterRawSelftest = makeDurable(tameGreetingMirrorSelftest, {
   ...tameGreetingAfterOptionsSelftest,
   receipts: [captureReceipt(
     tameGreetingBeforeRawSelftest, tameGreetingExpectedSelftest,
-    tameGreetingManifestDigestSelftest,
+    makeDurable(tameGreetingMirrorSelftest, tameGreetingAfterOptionsSelftest),
   )],
 });
 const tameGreetingResultSelftest = Object.freeze({
@@ -9479,6 +9534,62 @@ const closeCheckpointBoundaryBundleSelftest
   = withClosedAndOfflineActivePlaySelftest(
     exhaustionBundleSelftest, closeCheckpointBoundaryActivePlaySelftest,
   );
+
+const captureSettlementMutationSelftest = (mutate) => {
+  const after = structuredClone(hitRawSelftest);
+  const original = after.receiptRows[0].witness;
+  const settlement = JSON.parse(original);
+  const changed = mutate(settlement);
+  after.receiptRows[0].witness = changed ?? canonicalToolJson(settlement);
+  after.receiptRawRows[0] = JSON.stringify(after.receiptRows[0]);
+  const mutationApplied = after.receiptRows[0].witness !== original;
+  const rejected = captureReceiptTransition(beforeRawSelftest, after, firstExpected)?.ok === false;
+  after.receiptRows[0].witness = original;
+  after.receiptRawRows[0] = JSON.stringify(after.receiptRows[0]);
+  return Object.freeze({ mutationApplied, rejected,
+    restored: captureReceiptTransition(beforeRawSelftest, after, firstExpected)?.ok === true });
+};
+const captureSettlementFieldMutationsSelftest = (fields, scout = false) => Object.fromEntries(
+  fields.flatMap((field) => ['missing', 'changed'].map((kind) => [
+    `${scout ? 'scout.' : ''}${field}.${kind}`,
+    captureSettlementMutationSelftest((settlement) => {
+      const target = scout ? settlement.scoutXp : settlement;
+      if (kind === 'missing') delete target[field];
+      else target[field] = typeof target[field] === 'boolean' ? !target[field]
+        : typeof target[field] === 'number' ? target[field] + 1
+          : target[field] === null ? 0 : `${target[field]}x`;
+    }),
+  ])),
+);
+export const ARC4_CAPTURE_SETTLEMENT_SELFTEST = Object.freeze({
+  positive: captureReceiptTransition(beforeRawSelftest, hitRawSelftest, firstExpected)?.ok === true,
+  controls: Object.freeze({
+    ...captureSettlementFieldMutationsSelftest([
+      'schema', 'captureWitness', 'successorDigest', 'ownershipV2Digest',
+      'arc5MigrationWritesDigest', 'scoutXp',
+    ]),
+    ...captureSettlementFieldMutationsSelftest([
+      'schema', 'firstForSpecies', 'scoutCreatureId', 'xpBefore', 'xpAfter', 'xpAward',
+      'sourceParentDigest', 'sourceSuccessorDigest', 'ownershipParentDigest',
+      'ownershipSuccessorDigest',
+    ], true),
+    extraWrapperField: captureSettlementMutationSelftest((row) => { row.extra = true; }),
+    extraScoutField: captureSettlementMutationSelftest((row) => { row.scoutXp.extra = true; }),
+    oldInnerOnly: captureSettlementMutationSelftest((row) => row.captureWitness),
+    noncanonicalWrapper: captureSettlementMutationSelftest((row) => (
+      JSON.stringify(Object.fromEntries(Object.entries(row).reverse()))
+    )),
+    noncanonicalInner: captureSettlementMutationSelftest((row) => {
+      row.captureWitness = JSON.stringify(Object.fromEntries(
+        Object.entries(JSON.parse(row.captureWitness)).reverse(),
+      ));
+    }),
+  }),
+});
+if (!ARC4_CAPTURE_SETTLEMENT_SELFTEST.positive
+  || Object.values(ARC4_CAPTURE_SETTLEMENT_SELFTEST.controls).some((control) => (
+    control.mutationApplied !== true || control.rejected !== true || control.restored !== true
+  ))) throw new Error(`Arc 4 capture settlement selftest failed: ${JSON.stringify(ARC4_CAPTURE_SETTLEMENT_SELFTEST)}`);
 
 const positiveSelftestAssessments = Object.freeze({
   durable: assessArc4DurableEvidence(beforeRawSelftest),
@@ -11193,7 +11304,7 @@ const isolatedNegativeSelftests = Object.freeze({
   }),
   arc5RetainedOldCarrierSet: Object.freeze({
     expected: Object.freeze([
-      'durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
+      'durableEvidence', 'arc5CarrierSuccessor', 'receipt', 'unrelatedDurable',
       'ownershipV2Live',
     ]),
     result: assessArc4CommittedHit({
@@ -11201,7 +11312,7 @@ const isolatedNegativeSelftests = Object.freeze({
     }),
   }),
   arc5TypedDeltaHitchhike: Object.freeze({
-    expected: 'arc5CarrierSuccessor',
+    expected: Object.freeze(['arc5CarrierSuccessor', 'receipt']),
     result: assessArc4CommittedHit(negativeArc5HitchhikeBundleSelftest),
   }),
   f4SerializerOrder: Object.freeze({
@@ -11220,7 +11331,7 @@ const isolatedNegativeSelftests = Object.freeze({
   }),
   coordinatedManifestReceiptDigest: Object.freeze({
     expected: Object.freeze([
-      'durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
+      'durableEvidence', 'arc5CarrierSuccessor', 'receipt', 'unrelatedDurable',
       'ownershipV2Live',
     ]),
     result: assessArc4CommittedHit({
@@ -12139,7 +12250,7 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
   || !exactFixtureAttemptOracle(
     secondAttemptOracleSelftest, secondExpected, SELFTEST_EVENTS[1], 9,
   )
-  || parseJson(missReceiptSelftest.witness)?.event
+  || parseJson(parseJson(missReceiptSelftest.witness)?.captureWitness)?.event
     !== secondAttemptOracleSelftest?.event
   || laggedPreconditionBundleSelftest.raw.authority.activePlayMs !== 0
   || persistenceStateOf(laggedPreconditionBundleSelftest.ui)
