@@ -755,3 +755,96 @@ Commit this correction before the new clean-source Slice → small-phone → lar
   }
 ]
 ```
+
+
+## Checkpoint 1 second Slice PASS, seventh browser stop — Guide corruption controls
+
+Clean source `5c07efe3d0cfa049bc94a59522913ee5e6e69fe8` passes local develop Slice in
+**367.006s** (log SHA `f50be6784fbe3b4ed8becca12c9874619fede6022766a999fb966f34cf62748e`).
+Small-phone Glass then passes Shipyard and stops after **12.489s**, exit 2:
+
+```text
+GLASS VIEWPORT INSTRUMENT-RED — small-phone; 7910 ms; findings 0; instrument failures 1
+GLASS MATRIX INSTRUMENT FAILURE
+- small-phone: rendered F2 Guide negative controls failed
+```
+
+All 22 rendered product topics pass. The retained control evidence shows four false flags:
+Discover Bioscan's contradiction rejection, Discover Audio's removal rejection, and the
+Charters/Ascent contradiction rejections. Every required-copy control and every restoration
+passes. Correct the bounded existing stale-copy controls while retaining their independent
+intent. No product copy is presumed wrong solely because these instrument controls fail.
+The full literal diagnostic is retained in the REDS JSON; local parsed copy is
+`/private/tmp/cf-guide-seventh-red.json`. Log SHA-256:
+`31f8fcb78511d2c331fcbae1f3811b765c48f74aee9dfe69ad4363d40d733543`.
+Large-phone Glass did not run; no later gameplay integration or hosted attempt follows.
+
+
+## Guide-control fast typecheck stop and bounded correction
+
+The focused 60-test check passed, but the complete fast sequence stopped immediately at
+TypeScript (1.320s), before artunused or Vitest:
+
+```text
+tests/glass-bioscan-copy-contract.test.ts(174,30): error TS2345: Argument of type 'string' is not assignable to parameter of type '"abilities" | "achievements" | "ascent" | "atlas" | "beacon" | "binder" | "breeding" | "charters" | "classes" | "codes" | "colors" | "conquest" | "crafting" | "determinism" | ... 28 more ... | "zoom"'.
+```
+
+The test's query is an arbitrary input string, while Map inferred only the authored ID union.
+Its key type is explicitly string; its value type remains the exact catalogue topic type.
+Unknown queries still return undefined. No assertion or production code changed.
+Log SHA-256 `ba8ae07c714c21dcd3d493632340092522b67debe225998dc8ce8c4a5b7abfe8`.
+
+
+## Checkpoint 1 Guide-control correction — final fast PASS
+
+Two injected stale claims were missing from the existing forbidden arrays, and the audio
+paragraph moved from 4 to 5 when Discover Life was added. Added those two exact forbidden
+claims and targeted the current audio paragraph. Product copy and every prior required
+carrier, mutation and restoration remain. The existing test now executes the actual 22-topic
+Glass expression against current rendered Guide bodies; the old source reproduced the exact
+four retained failures, and the historical mutants continue to fail with exact old IDs.
+Focused PASS **3 files / 60 tests**.
+
+After the test-only Map typing correction, full fast PASS: typecheck/artunused,
+**286 files / 2,962 passed / 1 skipped**, four local workers. No game source, producer,
+measurement, timeout or hosted setting changed. Commit before the next clean-source browser
+sequence. Later patches are being context-refreshed to preserve this correction.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.354,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.47,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 60.55,
+    "log": "3-npx.log",
+    "sha256": "4831b471ce92033aaace3995236cffb9d1ce726fd4c18c61971fb649590b495c"
+  }
+]
+```
