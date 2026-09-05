@@ -15,7 +15,7 @@
 | 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
 | 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
 | 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
-| 3c bounded extraction | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
+| 3c bounded extraction | Accepted source `b76b69aa7099f3d7db99380e6687be18be7ead51`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures |
 | 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
 
 ## Decisions made unattended
@@ -3694,3 +3694,149 @@ The final current-reference review also corrected the shared wave-off sentence i
     "sha256": "6f0ca03a71c968a53b5948afff2cc0ef81a14c46b77f7a65884215364cbfb27b"
   }
 ]
+
+## Checkpoint 3c accepted — source b76b69aa7099f3d7db99380e6687be18be7ead51
+
+# Stretch 3c — Landing presentation extraction
+
+Prepared patch: `/private/tmp/cf-step3c-landing-presentation-extraction/step3c-landing-presentation.patch`.
+SHA256: `55ea989a4bef26ae323b867a485ee52fad6dca6a6a8a8750973b6a5877a1010b`.
+Applied at its separate ordered checkpoint after primary and 3b acceptance. Exact execution results are recorded with this checkpoint.
+
+The three-file delta moves step-2 Landing presentation into the existing `port/v2/apps/game/src/landing-card.ts`: the exported ready/unavailable `LandingCardStateV1` union is at prepared-after lines 29–40 and `landingCardActionHtml` at 110–118. Main imports both and passes its existing `esc` function at the same single card callsite. The moved state fields and renderer body were compared as text again during this review and are identical apart from the new export/signature location and supplied escape argument.
+
+Main still owns `projectCurrentLandingCardState`, exact world/save/gear authority, navigation and action wiring. `descent-policy.ts` and `arc0-landing-action.ts` still own policy and one-receipt settlement. Their source, all RNG/HP/learning rules, action token, HTML, visible risk disclosure, accessible names, style and escaping behavior are unchanged. No generic coordinator, new state owner or blanket Main rewrite is introduced.
+
+The existing `landing-card-main-wiring.test.ts` follows the renderer to its new file and keeps independently authored exact data attributes, `aria-describedby`, visible disclosure literal/removal control, no-write check and single exact Main callsite. It additionally refuses a missing renderer source span. `landing-card.test.ts` is unchanged, including its literal safe labels, +20 learning, nonlethal floor, 100%-guaranteed zero-risk disclosure and clone-policy refusal (`:56–96` in current source). Expected output is not generated from the renderer under test.
+
+The final current-reference review also corrected the shared wave-off sentence in all eight overlays: a wave-off leaves the ship in orbit. This matches the existing behavior and changes no rule.
+
+Fast PASS: **301 files / 3,100 passed / 1 skipped**. Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures. This reporting successor changes only
+documentation; source-bound browser evidence names the preceding implementation commit exactly.
+Phone reports are local Edge targeted diagnostics, not a twelve-row certificate or named Chrome
+verifier proof. No hosted attempt occurred.
+
+```json
+{
+  "source": "b76b69aa7099f3d7db99380e6687be18be7ead51",
+  "fast": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 2.632,
+      "log": "1-npm.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "seconds": 1.443,
+      "log": "2-npm.log",
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "--maxWorkers=4"
+      ],
+      "exitCode": 0,
+      "seconds": 67.208,
+      "log": "3-npx.log",
+      "sha256": "6f0ca03a71c968a53b5948afff2cc0ef81a14c46b77f7a65884215364cbfb27b"
+    }
+  ],
+  "browser": [
+    {
+      "command": [
+        "node",
+        "tools/slicesmoke.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 0,
+      "seconds": 374.555,
+      "log": "1-node.log",
+      "sha256": "93e2c6f6ba9f2b812a6e71b9e331534e7051fbc3fa30ae7a4fb3c58e021153e3"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=small-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 16.742,
+      "log": "2-node.log",
+      "sha256": "8913784be6cf06900dfd526332f9a3d764c153a62a1e1086b8710ff14cfe33f3"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=large-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 16.167,
+      "log": "3-node.log",
+      "sha256": "1e0ed3d37387a5503f3de6477e9c71936f3154bfdfa895f27b452a80d44d0e77"
+    }
+  ],
+  "phones": [
+    {
+      "id": "20260905130448827-82289-0980a0b3326f",
+      "source": "b76b69aa7099f3d7db99380e6687be18be7ead51",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905130448827-82289-0980a0b3326f.json"
+    },
+    {
+      "id": "20260905130505505-82440-b058674b0097",
+      "source": "b76b69aa7099f3d7db99380e6687be18be7ead51",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905130505505-82440-b058674b0097.json"
+    }
+  ]
+}
+```
