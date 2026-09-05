@@ -99,6 +99,30 @@ the archive verbatim and refresh this handoff in place.
   The full certifying 12-viewport matrix was **not** run locally (it requires `--slice-run=<immutable Slice
   run id>` from `smoke:ci`); it is the hosted full lane's job. No hosted run. No certification is claimed.
 
+### ⏭ NEXT SESSION — Batch 4 overnight review is PENDING (recorded 2026-09-05, later)
+
+- Codex ran the unattended Batch 4 overnight prompt and pushed its review branch
+  **`origin/openai/review-batch4-gameplay-20260905`**: validated product head
+  **`b173353b9e273c4b223e8ee8d6ee181081f79b4a`**, signed report-only successor **`bc42dbc`** (branch head),
+  base `develop` **`9ea01041dcdc711190bbf909ea8bb743cd993734`** (unchanged). Codex's own report says: signed core
+  `5377069` merged as a real merge parent, all five primary items accepted at their own checkpoints
+  (2a st-scan Starter Charter, 2b deterministic descent/wave-offs, 2c 50-Paragon hunt + `para10` Claim,
+  2d exact-instance creature progression, 2e mature Atlas), stretch 3a–3c done, 3d measurement-only with
+  answerability/throttled-rebuild parked (`npm run perf -- 4` incomplete). Claimed final gates on `b173353`:
+  vitest **301 files / 3,100 passed / 1 skipped**, typecheck/artunused, Glass selftest, Slice develop
+  profile, both phone canaries (zero findings), root validate (50 fingerprints), budget selftest (81). Draft
+  bulletin **79 outcomes**; Compendium producer `c1e784b7…`; sixteen browser/profile reds recorded and
+  corrected on new sources; no product reversion. Weekly Charter lifecycle, Forge Training, living
+  portrait preview and bulk WIP copy stay parked from `cf1b9a7`.
+- **Claude's job next session (read-only on the review branch, own worktree only):** fetch; read
+  `audits/BATCH4_OVERNIGHT_REPORT_20260905.md`, `BATCH4_OVERNIGHT_REDS_20260905.json`,
+  `BATCH4_PHONE_EVIDENCE_20260905.md`, `BATCH4_PROPOSED_PR_20260905.md` from the branch via `git show`;
+  verify the checkpoint table against `git log`; diff `bc42dbc` vs `develop` for scope (no import door,
+  no `.github/workflows`/policy/artlock reference edits, no reserved product decisions fabricated, pins
+  moved together); replay the fast gates and both phone canaries on `b173353` in a scratch checkout;
+  then give Nick a merge/no-merge recommendation with the exact PR base/source/title/body. **Do not**
+  open the PR, label, or merge — Nick authorizes the one agent-lane attempt after the review.
+
 ### Paired handoff
 
 - **Anthropic/Claude Code (later on 2026-09-05, local batch on `anthropic/mac`, no PR):** (1) the Slice smoke
