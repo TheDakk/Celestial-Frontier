@@ -246,6 +246,7 @@ describe('mature Star Atlas projection', () => {
     expect(listHtml).toContain(`data-atlas-remove="${legacyId}" disabled aria-disabled="true"`);
     expect(listHtml).toContain(`data-atlas-undo="${firstId}" disabled aria-disabled="true"`);
     expect(listHtml).not.toMatch(/role="button"|tabindex=/u);
+    expect(listHtml).toContain('data-atlas-route-unavailable>Route unavailable</span>');
 
     const chart = ready(project(
       state, 'chart', 'visited', common, [FIRST_WORLD.key], [SECOND_WORLD.key],
@@ -264,6 +265,7 @@ describe('mature Star Atlas projection', () => {
     });
     expect(chartUndo).toContain(`data-atlas-undo="${firstId}"`);
     expect(chartHtml).not.toContain('data-atlas-undo=');
+    expect(chartHtml).toContain(' — Route unavailable</button>');
   });
 
   it('escapes saved display text at every HTML sink and protects malformed authorities', () => {

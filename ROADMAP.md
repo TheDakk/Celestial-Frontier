@@ -47,8 +47,10 @@ the overnight report and REDS JSON retain all exact evidence and historical fail
 Atlas now offers List and Chart views, the authored All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, exact-row Remove and a single eight-second Undo. Undo is bound to its deletion receipt and route sidecar: an originally absent route stays absent, while a formerly present route must still match before restoration. Chart clusters open the existing List actions for their exact members and return focus to their Chart origin or owning Close. Existing travel, hyperlane, motion, speed and Favorite owners remain authoritative. No companion, reward, progression, import-door or protected-portrait behavior was added. Guide, Training and all eight current references agree; the draft remains 79 outcomes and all rendered hash pins move together. Only the current Compendium producer is refreshed; measurement authority, ruler, ceilings and samples remain unchanged. After this checkpoint is accepted, all five primary items are complete and the separately ordered stretch list follows.
 The renderer preserves the existing noninteractive DIV row, native data-sel/data-aid and count identifiers alongside its new controls. Source-owner tests now read the correct renderer; Travel and Home negative controls bind exact precommit/publication spans. The real refill test executes the shipped projection, renderer and availability owner. All prior expectations remain.
 
+The first signed Atlas browser run also caught a missing visible explanation on unavailable routes. The existing Route unavailable message is restored in List/cluster rows and unmapped Chart destinations; disabled actions and byte-stable refusal behavior are preserved. The existing renderer test covers both presentations.
+
 Current bulletin79 outcomes; SHA256351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042.
-Current Compendium producerb12f95204af08c39f14e4a383b9eb024e44d9039878a11132f359e58950bf969.
+Current Compendium producerdc31cbe1f60ebd435576d929936d694b3fa4f36a0fa307d0ad8c0ff5269f9d18.
 Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12,
 ruler, ceilings and samples unchanged. SceneMemory native heap stays quarantined.
 Full local Vitest uses four workers with unchanged selection/timeouts.

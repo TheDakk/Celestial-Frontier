@@ -1,5 +1,23 @@
 [
   {
+    "source": "23866bf7da878d8610afe2b28672cc0ee8041c7b",
+    "command": [
+      "node",
+      "tools/slicesmoke.mjs",
+      "--profile=develop"
+    ],
+    "exitCode": 1,
+    "seconds": 375.616,
+    "logSha256": "7f8b19202cb98a8f66ad088c41a24a231fd99b8d532be0dbaeb9534618958373",
+    "failureLines": [
+      "SLICE SMOKE: FAIL \u2014 1 finding",
+      "SLICE SMOKE: FAILURE TITLES",
+      "  1. ATLAS UNAVAILABLE ROUTES",
+      "SLICE SMOKE: FAILURE DETAILS",
+      "  - ATLAS UNAVAILABLE ROUTES: incomplete/forged imports were not visible, disabled, honest, and byte-stable: {\"unavailableAtlas\":{\"rows\":[{\"id\":\"legacy-star\",\"target\":{\"settled\":true,\"panelOpen\":\"atlas\",\"panelScrollTop\":943,\"row\":{\"exists\":true,\"id\":\"legacy-star\",\"tag\":\"DIV\",\"interactive\":false,\"travelCount\":1,\"favoriteCount\":1},\"travel\":{\"exists\":true,\"id\":\"legacy-star\",\"tag\":\"BUTTON\",\"type\":\"button\",\"disabled\":true,\"ariaDisabled\":\"true\",\"ariaLabel\":\"Travel to Legacy chart\",\"rendered\":true,\"width\":76.578125,\"height\":44,\"x\":93.4140625,\"y\":410.5,\"hit\":true,\"focus\":false}},\"assessment\":{\"ok\":true,\"checks\":{\"settled\":true,\"panel\":true,\"rowIdentity\":true,\"rowStructure\":true,\"travelIdentity\":true,\"nativeButton\":true,\"availability\":true,\"accessibleName\":true,\"geometry\":true,\"hit\":true,\"focus\":true}},\"honest\":false,\"dispatch\":{\"kind\":\"cdp-mouse\",\"x\":93.4140625,\"y\":410.5,\"button\":\"left\",\"clickCount\":1},\"pointer\":{\"targetId\":null,\"tag\":\"BUTTON\",\"closeOwner\":null,\"panelCloseOwner\":null,\"atlasTravelId\":\"legacy-star\",\"atlasRowId\":\"legacy-star\",\"atlasActionTag\":\"BUTTON\",\"x\":93.4140625,\"y\":410.5,\"pointerType\":\"mouse\",\"trusted\":true}},{\"id\":\"forged-earth\",\"target\":{\"settled\":true,\"panelOpen\":\"atlas\",\"panelScrollTop\":1926,\"row\":{\"exists\":true,\"id\":\"forged-earth\",\"tag\":\"DIV\",\"interactive\":false,\"travelCount\":1,\"favoriteCount\":1},\"travel\":{\"exists\":true,\"id\":\"forged-earth\",\"tag\":\"BUTTON\",\"type\":\"button\",\"disabled\":true,\"ariaDisabled\":\"true\",\"ariaLabel\":\"Travel to Forged Earth\",\"rendered\":true,\"width\":76.578125,\"height\":44,\"x\":93.4140625,\"y\":410.5,\"hit\":true,\"focus\":false}},\"assessment\":{\"ok\":true,\"checks\":{\"settled\":true,\"panel\":true,\"rowIdentity\":true,\"rowStructure\":true,\"travelIdentity\":true,\"nativeButton\":true,\"availability\":true,\"accessibleName\":true,\"geometry\":true,\"hit\":true,\"focus\":true}},\"honest\":false,\"dispatch\":{\"kind\":\"cdp-mouse\",\"x\":93.4140625,\"y\":410.5,\"button\":\"left\",\"clickCount\":1},\"pointer\":{\"targetId\":null,\"tag\":\"BUTTON\",\"closeOwner\":null,\"panelCloseOwner\":null,\"atlasTravelId\":\"forged-earth\",\"atlasRowId\":\"forged-earth\",\"atlasActionTag\":\"BUTTON\",\"x\":93.4140625,\"y\":410.5,\"pointerType\":\"mouse\",\"trusted\":true}}],\"stable\":true},\"rawStable\":true}"
+    ]
+  },
+  {
     "source": "445c452fc2b124854d65416f260675ce4416a334",
     "command": [
       "node",

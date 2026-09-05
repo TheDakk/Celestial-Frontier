@@ -575,7 +575,9 @@ export function renderStarAtlasV1(
       return `<div class="centry atlas-entry${row.home ? ' is-home' : ''}" role="listitem" data-sel="atlas-entry" data-aid="${escapeHtml(row.id)}" data-atlas-id="${escapeHtml(row.id)}">`
         + `<div class="atlas-entry-copy"><b>${row.home ? '<span aria-hidden="true">⌂ </span>' : ''}${escapeHtml(row.title)}</b>`
         + `${row.badge ? ` <span class="badge">${escapeHtml(row.badge)}</span>` : ''}`
-        + `<span class="sub" style="display:block">${escapeHtml(row.subtitle)}</span></div>`
+        + `<span class="sub" style="display:block">${escapeHtml(row.subtitle)}</span>`
+        + (row.travelable ? '' : '<span class="sub" data-atlas-route-unavailable>Route unavailable</span>')
+        + '</div>'
         + '<div class="atlas-entry-actions">'
         + `<button type="button" data-atlas-travel="${escapeHtml(row.id)}"${disabled(!row.travelable)} aria-label="Travel to ${escapeHtml(row.title)}">Travel</button>`
         + `<button type="button" data-atlas-favorite="${escapeHtml(row.id)}" aria-pressed="${String(row.favorite)}"${disabled(unavailable)} aria-label="${row.favorite ? 'Remove Favorite from' : 'Mark Favorite'} ${escapeHtml(row.title)}">${row.favorite ? '★' : '☆'} Favorite</button>`
@@ -638,7 +640,7 @@ export function renderStarAtlasV1(
       + '</div>'
       + (unmapped.length === 0 ? ''
         : `<div class="atlas-chart-unmapped" role="list" aria-label="Charted places without map coordinates">${unmapped.map((point) => (
-          `<div role="listitem"><button type="button" data-atlas-travel="${escapeHtml(point.id)}" data-atlas-chart-point${disabled(!point.travelable)}>Travel to ${escapeHtml(point.title)}</button></div>`
+          `<div role="listitem"><button type="button" data-atlas-travel="${escapeHtml(point.id)}" data-atlas-chart-point${disabled(!point.travelable)}>Travel to ${escapeHtml(point.title)}${point.travelable ? '' : ' — Route unavailable'}</button></div>`
         )).join('')}</div>`);
   }
   return '<section data-star-atlas-body aria-label="Star Atlas">'
