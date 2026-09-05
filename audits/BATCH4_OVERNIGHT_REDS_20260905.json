@@ -1,5 +1,19 @@
 [
   {
+    "source": "46b8dbc12b0f4ff756076f7bd398dc28c9b52f59",
+    "command": [
+      "node",
+      "tools/slicesmoke.mjs",
+      "--profile=develop"
+    ],
+    "exitCode": 1,
+    "seconds": 145.897,
+    "logSha256": "4735b626b69b9aa6e7610a9d3bb4639517816bd38293c6c615af5d990945eef2",
+    "failureLines": [
+      "  - ARC 4 TAME GREETING AUDIO START: bounded post-release observation did not prove the exact result/global/ownership/claim/counterpart/runtime/toast clauses: {\"ok\":false,\"checks\":{\"result\":false,\"global\":true,\"ownership\":true,\"claim\":false,\"counterpart\":false,\"runtime\":true,\"toast\":false},\"observation\":{\"documentToken\":\"73fc3df4-b4ea-43b7-9caa-ddf0a43d4549\",\"answerable\":true,\"globalRevision\":77,\"captureRevision\":1,\"ownershipRevision\":1,\"cardOpen\":true,\"result\":{\"hit\":true,\"speciesId\":\"species-v1:1b7f32606f538497e96bc6242ef2121e7b510bbe3986f10a5c7330fa9fe975c3\",\"speciesName\":\"Glauothoid\",\"kingdom\":\"fauna\",\"sourceOrdinal\":5,\"tier\":2,\"chance\":0.61,\"worldKey\":\"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3\",\"ecologyEpoch\":0,\"fullRosterFingerprint\":\"cwr1:19:5923:65565395\",\"firstForSpecies\":true,\"spent\":1,\"remainingAfter\":15,\"ownedRowId\":\"creature-v1:7da8c3d24ba0ff5a43096b45ff3d35b06e2651605b03fe23249b17dae0c15718\",\"stardustReward\":0,\"charterBioscanBanked\":true,\"scoutCreatureId\":null,\"scoutXpBefore\":null,\"scoutXpAfter\":null,\"scoutXpAward\":0,\"revision\":77,\"ownershipRevision\":1},\"audio\":{\"schema\":\"cf-v2-tame-greeting-audio/v1\",\"disposed\":false,\"armed\":0,\"claimedEvents\":1,\"activeVoiceId\":null,\"activeCombatVoiceIds\":[],\"lastEventKey\":\"arc4:taming-succeeded:discovery-v1:4f3eadd14eafebccbfa8a9f885ed547143f565a0fc02538f04a69b819a621341\",\"lastEventKind\":\"taming-succeeded\",\"lastDisposition\":\"counterpart-lost\",\"counterpart\":{\"key\":\"capture-toast:1\",\"generation\":1,\"status\":\"lost\"},\"runtime\":{\"state\":\"running\",\"contextState\":\"running\",\"contextGeneration\":1,\"muted\":false,\"hidden\":false,\"gains\":{\"master\":0.1369,\"effectiveMaster\":0.1369,\"categories\":{\"music\":1,\"ambience\":1,\"creature\":1,\"combat-gameplay\":1,\"ui\":1}},\"voiceMix\":{\"schema\":\"cf.audio.voice-mix-intent/v1\",\"activeOwners\":0,\"owners\":[],\"factors\":{\"music\":1,\"ambience\":1,\"creature\":1,\"combat-gameplay\":1,\"ui\":1},\"effectiveCategoryGains\":{\"music\":1,\"ambience\":1,\"creature\":1,\"combat-gameplay\":1,\"ui\":1}},\"nodes\":{\"active\":13,\"peak\":16,\"budget\":96},\"cache\":{\"active\":0,\"peak\":0,\"budget\":32,\"evictions\":0},\"voices\":{\"active\":0,\"peak\":1,\"budget\":24,\"ids\":[],\"started\":1,\"completed\":1,\"stopped\":0,\"stolen\":0,\"cooldownRejects\":0,\"concurrencyRejects\":0},\"creatureEmitters\":{\"active\":0,\"peak\":1,\"budget\":8},\"cooldowns\":{\"active\":1,\"budget\":128},\"reservations\":{\"voices\":{\"active\":0,\"peak\":1,\"activePlusReservedPeak\":1},\"nodes\":{\"active\":0,\"peak\":3,\"activePlusReservedPeak\":16}},\"cleanup\":{\"sourceStopFailures\":0,\"nodeDisconnectFailures\":0,\"cacheReleaseFailures\":0},\"peaks\":{\"master\":0.0013431962579488754,\"music\":0,\"ambience\":0,\"creature\":0.009811514057219028,\"combat-gameplay\":0,\"ui\":0},\"faults\":{\"total\":0,\"retained\":[],\"budget\":20}}},\"toast\":{\"visible\":false,\"serial\":1,\"role\":\"status\",\"live\":\"assertive\",\"atomic\":\"true\",\"title\":\"Tamed Glauothoid.\",\"detail\":\"61% odds. New Compendium page; one owned creature. Charter: first life discovery on this alien world banked. 1 Biosphere Yield spent; 15 remain.\"}}}"
+    ]
+  },
+  {
     "source": "d260f19c01e57815bfb7f3a94ee27b23d867fb08",
     "command": [
       "node",

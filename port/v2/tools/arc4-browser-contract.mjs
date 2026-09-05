@@ -3448,6 +3448,7 @@ const exactAppCaptureResult = (
       'hit', 'speciesId', 'speciesName', 'kingdom', 'sourceOrdinal', 'tier',
       'chance', 'worldKey', 'ecologyEpoch', 'fullRosterFingerprint',
       'firstForSpecies', 'spent', 'remainingAfter', 'ownedRowId',
+      'scoutCreatureId', 'scoutXpBefore', 'scoutXpAfter', 'scoutXpAward',
       'stardustReward', 'charterBioscanBanked', 'revision', 'ownershipRevision',
     ])
     && result.hit === expected.hit
@@ -3466,6 +3467,9 @@ const exactAppCaptureResult = (
     && result?.stardustReward === expected.stardustReward
     && typeof charterBioscanBanked === 'boolean'
     && result?.charterBioscanBanked === charterBioscanBanked
+    // This prescribed Pertar sequence never assigns a Field Scout.
+    && result.scoutCreatureId === null && result.scoutXpBefore === null
+    && result.scoutXpAfter === null && result.scoutXpAward === 0
     && counter(committedRevision) && result?.revision === committedRevision
     && counter(committedOwnershipRevision)
     && result?.ownershipRevision === committedOwnershipRevision
@@ -4421,6 +4425,10 @@ const tameGreetingResultProjection = (result) => ({
   ownedRowId: result?.ownedRowId ?? null,
   stardustReward: result?.stardustReward ?? null,
   charterBioscanBanked: result?.charterBioscanBanked ?? null,
+  scoutCreatureId: result?.scoutCreatureId,
+  scoutXpBefore: result?.scoutXpBefore,
+  scoutXpAfter: result?.scoutXpAfter,
+  scoutXpAward: result?.scoutXpAward,
   revision: result?.revision ?? null,
   ownershipRevision: result?.ownershipRevision ?? null,
 });
@@ -4440,6 +4448,7 @@ export const assessArc4TameGreetingStartObservation = (observation) => {
       'hit', 'speciesId', 'speciesName', 'kingdom', 'sourceOrdinal', 'tier',
       'chance', 'worldKey', 'ecologyEpoch', 'fullRosterFingerprint',
       'firstForSpecies', 'spent', 'remainingAfter', 'ownedRowId',
+      'scoutCreatureId', 'scoutXpBefore', 'scoutXpAfter', 'scoutXpAward',
       'stardustReward', 'charterBioscanBanked', 'revision', 'ownershipRevision',
     ]) && result.hit === true && result.speciesId === expected.speciesId
       && result.speciesName === expected.speciesName && result.kingdom === 'fauna'
@@ -4453,6 +4462,8 @@ export const assessArc4TameGreetingStartObservation = (observation) => {
       && boundedText(result.ownedRowId, 192)
       && result.stardustReward === expected.stardustReward
       && result.charterBioscanBanked === true
+      && result.scoutCreatureId === null && result.scoutXpBefore === null
+      && result.scoutXpAfter === null && result.scoutXpAward === 0
       && Number.isSafeInteger(result.revision) && result.revision >= 0
       && Number.isSafeInteger(result.ownershipRevision)
       && result.ownershipRevision >= 0,
@@ -4554,6 +4565,7 @@ export const assessArc4TameGreetingAudio = ({
     ownedRowId: creature?.creatureId,
     stardustReward: expected?.stardustReward,
     charterBioscanBanked: true,
+    scoutCreatureId: null, scoutXpBefore: null, scoutXpAfter: null, scoutXpAward: 0,
     revision: afterRaw?.revision,
     ownershipRevision: afterRaw?.captureRevision,
   });
@@ -7598,6 +7610,7 @@ const hitResultSelftest = {
   firstForSpecies: true, spent: 1, remainingAfter: 15,
   ownedRowId: SELFTEST_IDS.lot, stardustReward: 2,
   charterBioscanBanked: true, revision: 1,
+  scoutCreatureId: null, scoutXpBefore: null, scoutXpAfter: null, scoutXpAward: 0,
   ownershipRevision: hitRawSelftest.captureRevision,
 };
 const hitOutcomeSelftest = {
@@ -7693,6 +7706,7 @@ const missResultSelftest = {
   firstForSpecies: false, spent: 1, remainingAfter: 14,
   ownedRowId: null, stardustReward: 0,
   charterBioscanBanked: false, revision: 2,
+  scoutCreatureId: null, scoutXpBefore: null, scoutXpAfter: null, scoutXpAward: 0,
   ownershipRevision: missRawSelftest.captureRevision,
 };
 const missOutcomeSelftest = {
@@ -8884,6 +8898,7 @@ const tameGreetingResultSelftest = Object.freeze({
   ownedRowId: tameGreetingCreatureIdSelftest,
   stardustReward: 0,
   charterBioscanBanked: true,
+  scoutCreatureId: null, scoutXpBefore: null, scoutXpAfter: null, scoutXpAward: 0,
   revision: tameGreetingAfterRawSelftest.revision,
   ownershipRevision: tameGreetingAfterRawSelftest.captureRevision,
 });
