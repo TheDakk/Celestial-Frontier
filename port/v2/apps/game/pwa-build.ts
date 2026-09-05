@@ -455,6 +455,11 @@ function assertSealedWorkerGraphs(records: readonly BuiltWorkerGraphRecord[]): v
   }
 }
 
+/** Evidence harnesses are a separate, explicit build, not a DEV-only feature. */
+export function gameBuildMode(mode: string): 'evidence' | 'distributable' {
+  return mode === 'evidence' ? 'evidence' : 'distributable';
+}
+
 export function celestialFrontierPwaPlugin(): Plugin {
   let resolved: ResolvedConfig | null = null;
   let base = '/';
@@ -476,6 +481,7 @@ export function celestialFrontierPwaPlugin(): Plugin {
       order: 'post',
       handler(html, context) {
         if (!context.path.endsWith('/index.html') && context.path !== '/index.html') return html;
+        if (!resolved) throw new Error('Celestial Frontier PWA plugin was not configured');
         return {
           html,
           tags: [
@@ -483,6 +489,7 @@ export function celestialFrontierPwaPlugin(): Plugin {
             { tag: 'link', attrs: { rel: 'icon', href: assetPath(base, CF_PWA_ICON), type: 'image/svg+xml' }, injectTo: 'head' },
             { tag: 'meta', attrs: { name: 'theme-color', content: '#0b1428' }, injectTo: 'head' },
             { tag: 'meta', attrs: { name: 'cf-pwa-enabled', content: 'true' }, injectTo: 'head' },
+            { tag: 'meta', attrs: { name: 'cf-build-mode', content: gameBuildMode(resolved.mode) }, injectTo: 'head' },
           ],
         };
       },
@@ -525,7 +532,8 @@ export function celestialFrontierPwaPlugin(): Plugin {
           fileName,
           source: readFileSync(resolve(outDir, fileName), 'utf8'),
         })));
-        /* Some Vite/Rolldown finalizers append source-map references after
+        /* The index's build-mode marker is part of this exact asset identity.
+           Some Vite/Rolldown finalizers append source-map references after
            generateBundle. Hash the bytes that were actually written, then
            replace only the generated worker. This prevents a plausible
            pre-finalization digest from rejecting the real deployed bundle. */

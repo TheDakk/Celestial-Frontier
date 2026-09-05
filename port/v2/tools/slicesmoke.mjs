@@ -20,6 +20,7 @@ import { fileURLToPath } from 'node:url';
 import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { assertBuiltGameMode } from './build-mode.mjs';
 import {
   assessF4ReplacementPrefix,
   assessF4ReplacementSetup,
@@ -1198,7 +1199,6 @@ const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
 const V2_DRAFT_BULLET_COUNT = 77;
 const GUIDE_RELEASE_TAIL_TEXT = '🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site.';
-const INVALID_IMPORT_ERROR = 'That does not load as a Celestial Frontier save — nothing was stored.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
     g.onsuccess=()=>{db.close();resolve(String(g.result||''))}; g.onerror=()=>reject(g.error); }; })`;
@@ -1433,7 +1433,8 @@ const ARM_F4_REPLACEMENT_TRACE_EXPRESSION = `(()=>{const key='cf_slice_f4_replac
 /* A smoke that reads a stale build can pass for source that no longer
    exists—the species-audit failure class. Build unconditionally, then drive
    exactly those bytes. */
-execSync('npx vite build', { cwd: appDir, stdio: 'inherit' });
+execSync('npx vite build --mode evidence', { cwd: appDir, stdio: 'inherit' });
+assertBuiltGameMode(dist, 'evidence');
 const candidateSpeciesPainter = findCandidateSpeciesArtBuildGraph(dist).painter;
 const candidateSpeciesPainterPath = `/${candidateSpeciesPainter.relativePath}`;
 if (!fs.existsSync(OUT)) fs.mkdirSync(OUT, { recursive: true });
@@ -6053,7 +6054,7 @@ try {
     const setsHidden = document.getElementById('setpanel').style.display === 'none';
     document.getElementById('docksets').click();
     const rst = !!document.getElementById('setrestart');
-    const imp = !!document.getElementById('setimport');
+    const imp = !!document.getElementById('setimport');   /* must be ABSENT: v2 has no save-import door */
     const vol = document.getElementById('setvol');
     vol.value = '30'; vol.dispatchEvent(new Event('input'));
     const v = st().sfxVol;
@@ -6099,7 +6100,7 @@ try {
   if (Math.abs(law.v - 0.3) > 1e-9) fails.push('volume slider did not drive save.sfxVol: ' + JSON.stringify(law.v));
   if (law.c !== null) fails.push('the corner ✕ did not close the panel: ' + JSON.stringify(law.c));
   if (!law.rst) fails.push('Settings lost the Restart-training control (the game promise)');
-  if (!law.imp) fails.push('Settings lost the Bring-expedition import control');
+  if (law.imp) fails.push('Settings still exposes the removed Bring-expedition import control');
   if (!law.a11y?.ok) fails.push('SETTINGS STATE SEMANTICS: current choices lack pressed/group state: ' + JSON.stringify(law.a11y));
   if (law.a11yControl) fails.push('SETTINGS STATE SEMANTICS CONTROL FAILED — removing aria-pressed stayed green');
   if (law.voiceA11yControl) fails.push('SETTINGS STATE SEMANTICS CONTROL FAILED — removing Creature Voices aria-pressed stayed green');
@@ -6563,7 +6564,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 77,
-    sha256: '1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964',
+    sha256: 'bbb06e0d2daced207d5c9c30d32739dcf3cc7794943dc321f246ef44a90c07c8',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -7452,7 +7453,7 @@ try {
       'every other expedition field is retained from the surrounding save','That older checkpoint contains no saved view',
       'Skip from Welcome stays in Sol','completing the drill after Land stays at Earth',
       'An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen',
-      'leaves the stored expedition unchanged','reload after updating, or import a trusted complete expedition'],
+      'leaves the stored expedition unchanged','reload after updating.'],
     missing=required.filter((part)=>!text.includes(part)),
     contradictory=/\\balways\\b[^.!?]{0,80}\\brestor(?:e|es|ed)\\b[^.!?]{0,40}\\bimmediately\\b/i.test(text)
       ||/verification[^.!?]{0,48}pauses?[^.!?]{0,72}(?:clear|discard|lose)s?[^.!?]{0,48}(?:view|location)/i.test(text)
@@ -7604,7 +7605,7 @@ try {
         &&trainingText.includes('completing the drill after Land stays at Earth')
         &&trainingText.includes('An unrecognized checkpoint or unavailable recovery route locks exploration behind a recovery screen')
         &&trainingText.includes('leaves the stored expedition unchanged')
-        &&trainingText.includes('reload after updating, or import a trusted complete expedition')&&!trainingContradiction,
+        &&trainingText.includes('reload after updating.')&&!trainingContradiction,
       artContradiction=/(?:mounts?|renders?|loads?|keeps?)[^.!?]{0,80}\\b(?:all|every)\\b[^.!?]{0,40}\\b1,?500\\b/i.test(artText)
         ||/(?:132px|thumbnail)[^.!?]{0,80}(?:displayed )?(?:name|seed)[^.!?]{0,40}(?:alone|only)/i.test(artText)
         ||/(?:list|Planetside)[^.!?]{0,48}(?:uses?|renders?|loads?|keeps?)[^.!?]{0,32}(?:440px|440-pixel)/i.test(artText)
@@ -8601,52 +8602,21 @@ try {
         releasePending: guideReload.releasePending }));
   }
 
-  const importAccess = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+  /* v2 starts every explorer fresh (2026-09-05): the Settings save-import door
+     is gone. Settings must open without any import control, the recovery
+     sheet must stay hidden, and nothing on the page may still carry the old
+     paste/pick/import controls. The evidence-only importBlob seam remains
+     the replacement driver below. */
+  const importDoor = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
     document.getElementById('docksets').click();
-    const button=document.getElementById('setimport'); if(button) button.click();
     const sheet=document.getElementById('importsheet');
-    return { button:!!button, open:!!sheet&&sheet.style.display!=='none', panel:S.api.state().panelOpen,
-      focus:document.activeElement&&document.activeElement.id,
-      oldDock:!!document.getElementById('docksave'), safety:(sheet?.querySelector('[data-sel=import-safety]')?.textContent||'').trim() }; })()`);
-  if (!importAccess.button || !importAccess.open || importAccess.panel !== null
-    || importAccess.focus !== 'importtext' || importAccess.oldDock) {
-    fails.push('SETTINGS IMPORT path is missing, unfocused, or still duplicated in the dock: ' + JSON.stringify(importAccess));
+    return { button:!!document.getElementById('setimport'), sheetHidden:!!sheet&&sheet.style.display==='none',
+      panel:S.api.state().panelOpen, stale:['importtext','importgo','importpick','importfile','importclose','importmsg']
+        .filter((id)=>!!document.getElementById(id)), oldDock:!!document.getElementById('docksave') }; })()`);
+  if (importDoor.button || !importDoor.sheetHidden || importDoor.panel !== 'set' || importDoor.stale.length !== 0 || importDoor.oldDock) {
+    fails.push('SETTINGS IMPORT DOOR still exists or the recovery sheet opened without a lock: ' + JSON.stringify(importDoor));
   }
-  if (!/keep that external moderator backup as the authoritative exact copy/i.test(importAccess.safety)
-    || !/attempts an additional exact local keepsake/i.test(importAccess.safety)
-    || /provided blob is kept byte-for-byte/i.test(importAccess.safety)) {
-    fails.push('SETTINGS IMPORT safety copy overpromises browser keepsake durability: ' + JSON.stringify(importAccess.safety));
-  }
-  /* Drive the visible front door, not the diagnostic importBlob seam. An
-     invalid paste must become one exact, visible, assertive atomic alert,
-     while the authoritative primary remains byte-for-byte untouched. */
-  const preModalRejectRaw = await evalIn(READ_PRIMARY_EXPRESSION);
-  const importErrorCheck = `(()=>{ const sheet=document.getElementById('importsheet'),msg=document.getElementById('importmsg');
-    const cs=msg?getComputedStyle(msg):null,r=msg?.getBoundingClientRect();
-    const text=msg?.textContent||'',visible=!!r&&r.width>0&&r.height>0&&cs?.display!=='none'&&cs?.visibility!=='hidden';
-    const role=msg?.getAttribute('role')||null,live=msg?.getAttribute('aria-live')||null,atomic=msg?.getAttribute('aria-atomic')||null;
-    const tickerStarted=window.__CF_SLICE__.app.ticker.started===true;
-    return {ok:sheet?.style.display!=='none'&&text===${JSON.stringify(INVALID_IMPORT_ERROR)}&&visible&&role==='alert'&&live==='assertive'&&atomic==='true'&&tickerStarted,
-      text,visible,role,live,atomic,tickerStarted}; })()`;
-  await evalIn(`(()=>{ const input=document.getElementById('importtext'),msg=document.getElementById('importmsg');
-    input.value='this is not JSON'; msg.textContent=''; document.getElementById('importgo').click(); return true; })()`);
-  const importError = await waitDesktopValue('invalid Import button visible error', `(()=>{ const result=${importErrorCheck}; return result.text?result:null; })()`);
-  const postModalRejectRaw = await evalIn(READ_PRIMARY_EXPRESSION);
-  if (!importError.ok) fails.push('IMPORT ERROR ALERT: actual invalid button click lacked its exact visible assertive/atomic error: ' + JSON.stringify(importError));
-  if (postModalRejectRaw !== preModalRejectRaw) {
-    fails.push('IMPORT ERROR ALERT: rejected modal input changed exact primary bytes');
-  }
-  const importErrorCtl = await evalIn(`(()=>{ const msg=document.getElementById('importmsg');
-    if(!msg) return {ok:true,missing:true}; const role=msg.getAttribute('role'),live=msg.getAttribute('aria-live');
-    msg.removeAttribute('role'); msg.removeAttribute('aria-live'); const result=${importErrorCheck};
-    if(role!==null) msg.setAttribute('role',role); if(live!==null) msg.setAttribute('aria-live',live); return result; })()`);
-  if (importErrorCtl.ok) fails.push('IMPORT ERROR ALERT CONTROL FAILED — removed role/live stayed green: ' + JSON.stringify(importErrorCtl));
-  const importTickerCtl = await evalIn(`(()=>{ const app=window.__CF_SLICE__.app;app.stop();const result=${importErrorCheck};app.start();return result;})()`);
-  if (importTickerCtl.ok || importTickerCtl.tickerStarted) {
-    fails.push('IMPORT VALIDATION TICKER CONTROL FAILED — stopped renderer stayed green after rejected pre-claim input: '
-      + JSON.stringify(importTickerCtl));
-  }
-  await evalIn(`(()=>{ document.getElementById('importclose').click(); return true; })()`);
+  await evalIn(`(()=>{ document.querySelector('#setpanel [data-pnx]')?.click(); return true; })()`);
   /* FOCUS RESTORATION: closing returns focus to the opener button */
   const focusBack = await evalIn(`(()=>{ const b=document.getElementById('docksets');
     b.focus(); b.click();
@@ -10162,39 +10132,24 @@ try {
       + JSON.stringify({ refuseFuture, preserved: postFutureImportRaw === preFutureImportRaw }));
   }
 
-  /* Drive one valid import through the visible textarea/button with legal
-     surrounding JSON whitespace. The live primary may use the checked,
-     trimmed candidate, but the best-effort recovery keepsake promises the
-     exact submitted textarea text. The injected trimmed-localStorage control
-     proves this comparison rejects the defect that prompted the check. */
+  /* Drive one valid replacement through the evidence-only importBlob seam
+     with legal surrounding JSON whitespace so the accepted boot below is a
+     real `current-v5` primary rather than an in-memory fresh default. The
+     former player keepsake (cf_v2_import_original) no longer exists: the
+     door is gone, so nothing may write that key. */
   const whitespaceImportRaw = ` \n${vrRaw}\n\t`;
   const whitespaceImportToken = await sliceToken(sess);
-  const whitespaceImportStart = await evalIn(`(()=>{ document.getElementById('docksets')?.click();
-    document.getElementById('setimport')?.click(); const input=document.getElementById('importtext'),go=document.getElementById('importgo');
-    if(!(input instanceof HTMLTextAreaElement)||!(go instanceof HTMLButtonElement)) return {started:false,input:!!input,go:!!go};
-    input.value=${JSON.stringify(whitespaceImportRaw)}; go.click(); return {started:true,length:input.value.length}; })()`);
-  if (!whitespaceImportStart.started || whitespaceImportStart.length !== whitespaceImportRaw.length) {
-    fails.push('IMPORT EXACT KEEPSAKE: visible valid-import path did not receive every textarea byte: '
-      + JSON.stringify(whitespaceImportStart));
+  const whitespaceImportStart = await evalIn(`(()=>{ const S=window.__CF_SLICE__;
+    if(typeof S?.api?.importBlob!=='function') return {started:false};
+    void S.api.importBlob(${JSON.stringify(whitespaceImportRaw)}); return {started:true}; })()`);
+  if (!whitespaceImportStart.started) {
+    fails.push('REPLACEMENT DRIVER: evidence-build importBlob seam is missing: ' + JSON.stringify(whitespaceImportStart));
   }
-  await waitForSlice(sess, 'desktop exact-keepsake whitespace import', { previousToken: whitespaceImportToken });
-  await assertBootTickerRunning('post-import replacement boot');
-  const whitespaceKeepsake = await evalIn(`(()=>{ const expected=${JSON.stringify(whitespaceImportRaw)};
-    const actual=localStorage.getItem('cf_v2_import_original');
-    return {exact:actual===expected,actualLength:actual?.length??null,expectedLength:expected.length,
-      leading:actual?.slice(0,2)??null,trailing:actual?.slice(-2)??null}; })()`);
-  if (!whitespaceKeepsake.exact) {
-    fails.push('IMPORT EXACT KEEPSAKE: valid JSON surrounding whitespace was not retained byte-for-byte after reload: '
-      + JSON.stringify(whitespaceKeepsake));
-  }
-  const whitespaceKeepsakeControl = await evalIn(`(()=>{ const key='cf_v2_import_original',expected=${JSON.stringify(whitespaceImportRaw)};
-    const before=localStorage.getItem(key); localStorage.setItem(key,expected.trim());
-    const acceptedTrimmed=localStorage.getItem(key)===expected;
-    if(before===null)localStorage.removeItem(key);else localStorage.setItem(key,before);
-    return {acceptedTrimmed,restored:localStorage.getItem(key)===before}; })()`);
-  if (whitespaceKeepsakeControl.acceptedTrimmed || !whitespaceKeepsakeControl.restored) {
-    fails.push('IMPORT EXACT KEEPSAKE CONTROL FAILED — injected trimmed storage was accepted or not restored: '
-      + JSON.stringify(whitespaceKeepsakeControl));
+  await waitForSlice(sess, 'desktop whitespace replacement', { previousToken: whitespaceImportToken });
+  await assertBootTickerRunning('post-replacement boot');
+  const staleKeepsake = await evalIn(`localStorage.getItem('cf_v2_import_original')`);
+  if (staleKeepsake !== null) {
+    fails.push('REMOVED IMPORT KEEPSAKE was still written after the door was removed: ' + JSON.stringify(staleKeepsake));
   }
 
   /* F4 native evidence joins the published runtime diagnostics to the raw
@@ -21610,7 +21565,7 @@ try {
     const mark = events.length;
     const refusal = await evalIn(`(async()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('importsheet'),
       close=document.getElementById('importclose'),retry=document.getElementById('importretry'),
-      title=(sheet?.querySelector('h2')?.textContent||'').trim(),safety=sheet?.querySelector('[data-sel="import-safety"]')?.textContent||'',
+      title=(sheet?.querySelector('h2')?.textContent||'').trim(),safety=sheet?.querySelector('[data-sel="recovery-copy"]')?.textContent||'',
       backgrounds=[...document.body.children].filter((node)=>node instanceof HTMLElement&&node!==sheet),
       beforeCard=!!document.getElementById('tutcard'),beforeActions=document.querySelectorAll('[data-sel="tutbtn"],[data-sel="tutskip"]').length,
       visible=!!sheet&&getComputedStyle(sheet).display==='flex'&&sheet.getBoundingClientRect().width>0,
@@ -21643,8 +21598,8 @@ try {
       || refusal.afterCard || refusal.afterActions !== 0 || !refusal.visible || !refusal.afterVisible
       || refusal.mode !== 'unknown-checkpoint' || refusal.title !== 'Field Training checkpoint protected'
       || !/not recognized.*Exploration is locked/i.test(refusal.safety)
-      || refusal.ariaLabel !== refusal.title || refusal.closeHidden !== true || refusal.closeDisabled !== true
-      || refusal.retryHidden !== false || !refusal.escapeConsumed || !refusal.focusInside
+      || refusal.ariaLabel !== refusal.title || refusal.closeHidden !== null || refusal.closeDisabled !== null
+      || /import a trusted/i.test(refusal.safety) || refusal.retryHidden !== false || !refusal.escapeConsumed || !refusal.focusInside
       || !refusal.backgroundInert || !refusal.controlExposed || !refusal.controlRelocked
       || !refusal.backgroundRelocked || !refusal.sheetExcludedBefore || !refusal.sheetExcludedAfter
       || refusal.unlockedBackgrounds.length !== 0
@@ -24136,46 +24091,10 @@ try {
     fails.push('PHONE LOWER CHROME INVENTORY CONTROL FAILED — removed Inventory membership/grid stayed green: '
       + JSON.stringify(phDockInventoryCtl));
   }
-  /* Settings import is a true modal outcome. It must cover the high-z phone
-     dock, own focus, and consume Escape instead of letting the world behind it
-     close a card or ascend. Recreate the old z=11 layering as the control. */
-  const phoneImportModalCheck = `(()=>{ const sheet=document.getElementById('importsheet'),dock=document.getElementById('dock'),probe=document.getElementById('dockguide');
-    if(!sheet||!dock||!probe) return {ok:false,why:'missing'};
-    const b=probe.getBoundingClientRect(),x=(b.left+b.right)/2,y=(b.top+b.bottom)/2,hit=document.elementFromPoint(x,y);
-    const ss=getComputedStyle(sheet),ds=getComputedStyle(dock),visible=ss.display!=='none'&&ss.visibility!=='hidden';
-    const blocked=!!hit&&sheet.contains(hit),focus=document.activeElement&&document.activeElement.id;
-    return {ok:visible&&blocked&&Number(ss.zIndex)>Number(ds.zIndex)&&focus==='importtext',visible,blocked,focus,
-      sheetZ:ss.zIndex,dockZ:ds.zIndex,hit:hit&&(hit.id||hit.tagName),mode:window.__CF_SLICE__.api.state().mode}; })()`;
-  await evalPh(`(()=>{ document.getElementById('docksets').click(); document.getElementById('setimport').click(); return true; })()`);
-  const phoneImportModal = await evalPh(phoneImportModalCheck);
-  if (!phoneImportModal.ok) {
-    fails.push('PHONE SETTINGS IMPORT: modal did not own focus/stacking over the dock: ' + JSON.stringify(phoneImportModal));
-  }
-  const phoneImportModalCtl = await evalPh(`(()=>{ const sheet=document.getElementById('importsheet'),dock=document.getElementById('dock'),
-    prior=sheet.style.zIndex,priorInert=dock.inert,priorHidden=dock.getAttribute('aria-hidden');
-    dock.inert=false;dock.removeAttribute('aria-hidden');sheet.style.zIndex='11'; const result=${phoneImportModalCheck};
-    sheet.style.zIndex=prior;dock.inert=priorInert;if(priorHidden===null)dock.removeAttribute('aria-hidden');else dock.setAttribute('aria-hidden',priorHidden);return result; })()`);
-  if (phoneImportModalCtl.ok || phoneImportModalCtl.blocked) {
-    fails.push('PHONE SETTINGS IMPORT CONTROL FAILED — injected low-z modal still blocked the dock: ' + JSON.stringify(phoneImportModalCtl));
-  }
-  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab', modifiers: 8 }, ph);
-  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', modifiers: 8 }, ph);
-  const phoneImportShiftWrap = await evalPh(`document.activeElement&&document.activeElement.id`);
-  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab' }, ph);
-  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab' }, ph);
-  const phoneImportForwardWrap = await evalPh(`document.activeElement&&document.activeElement.id`);
-  if (phoneImportShiftWrap !== 'importclose' || phoneImportForwardWrap !== 'importtext') {
-    fails.push('PHONE SETTINGS IMPORT: modal focus did not wrap internally: '
-      + JSON.stringify([phoneImportShiftWrap, phoneImportForwardWrap]));
-  }
-  const phoneImportMode = phoneImportModal.mode;
-  await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, ph);
-  await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, ph);
-  const phoneImportClosed = await evalPh(`(()=>{ const sheet=document.getElementById('importsheet'),s=window.__CF_SLICE__.api.state();
-    return {closed:sheet.style.display==='none',mode:s.mode,focus:document.activeElement&&document.activeElement.id}; })()`);
-  if (!phoneImportClosed.closed || phoneImportClosed.mode !== phoneImportMode || phoneImportClosed.focus !== 'docksets') {
-    fails.push('PHONE SETTINGS IMPORT: Escape did not close only the modal and restore focus: ' + JSON.stringify(phoneImportClosed));
-  }
+  /* The Settings save-import modal was removed (v2 starts fresh, 2026-09-05).
+     The phone recovery sheet's modal law is proven by the desktop D-TRAIN
+     recovery refusal, and the phone dock's own inventory modal keeps its
+     stacking/focus proof below. */
   /* A high-z panel that merely fits the viewport can still bury the dock's
      top row. Open the real Guide at 390×844 and compare rendered rectangles;
      the shared panel cap must leave a visible gap above the measured dock. */
