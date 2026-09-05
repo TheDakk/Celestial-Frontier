@@ -3523,7 +3523,7 @@ const ARC0_LANDING_FAULT_ARM_KEYS = Object.freeze([
    projection. An empty or partially renamed fault map must not pass merely
    because every value that happens to remain is false, and a diagnostic hold
    from an earlier action is not an idle predecessor. */
-export function arc0LandingCoordinatorIsIdle(state, { clearFault = false } = {}) {
+export function arc0LandingCoordinatorIsIdle(state, { clearFault = false, expectedReleasedHold = null } = {}) {
   const landing = state?.landing;
   const coordinator = landing?.actionCoordinator;
   const owner = coordinator?.owner;
@@ -3540,7 +3540,14 @@ export function arc0LandingCoordinatorIsIdle(state, { clearFault = false } = {})
     && owner.busy === false && owner.operation === null
     && exactKeys(hold, ['schema', 'phase', 'operation', 'sequence'])
     && hold.schema === 'cf-v2-product-action-hold-diagnostics/v1'
-    && hold.phase === 'idle' && hold.operation === null && hold.sequence === 0
+    && (expectedReleasedHold === null
+      ? hold.phase === 'idle' && hold.operation === null && hold.sequence === 0
+      : exactKeys(expectedReleasedHold, ['schema', 'phase', 'operation', 'sequence'])
+        && expectedReleasedHold.schema === 'cf-v2-product-action-hold-diagnostics/v1'
+        && expectedReleasedHold.phase === 'released'
+        && /^arc0\.land:[0-9a-f]{64}$/u.test(expectedReleasedHold.operation)
+        && safeInt(expectedReleasedHold.sequence) && expectedReleasedHold.sequence > 0
+        && exactJson(hold, expectedReleasedHold))
     && exactKeys(faultArmed, ARC0_LANDING_FAULT_ARM_KEYS)
     && ARC0_LANDING_FAULT_ARM_KEYS.every((key) => faultArmed[key] === false)
     && (!clearFault || coordinator.lastFault === null);
@@ -3560,8 +3567,9 @@ export function buildEarlyCoreFlowActionSurfaceExpression(actionExpression) {
 /** Certify an exact early core-flow action predecessor. Route/card paint alone
  * is insufficient: the document must also own current writable F4 authority
  * and the shared action coordinator must have returned to its idle fixed
- * point. Galaxy cards are presentation-only; this contract starts at the
- * first receipt-bearing star/world Survey before Enter-system or Land. */
+ * point. Galaxy cards are presentation-only. Star and nonliving-world Survey
+ * retain their exact commit/current contracts; a living-world card uses a
+ * separate no-write inspection expectation before Land or Discover Life. */
 export function assessEarlyCoreFlowActionFixedPoint(observation, expected) {
   const route = expected?.route;
   const presentation = expected?.presentation ?? null;
@@ -3573,7 +3581,8 @@ export function assessEarlyCoreFlowActionFixedPoint(observation, expected) {
     || !route || typeof route !== 'object' || Array.isArray(route)
     || !['star', 'world'].includes(surveyTarget)
     || (surveyTarget === 'star' ? route.mode !== 'galaxy' : route.mode !== 'system')
-    || !['commit', 'current', 'either'].includes(settlement)
+    || !['commit', 'current', 'either', 'inspection'].includes(settlement)
+    || (settlement === 'inspection' && surveyTarget !== 'world')
     || !(presentation === null
       || (presentation && typeof presentation === 'object' && !Array.isArray(presentation)
         && presentation.cardOpen === true && presentation.actionOk === true
@@ -3666,11 +3675,31 @@ export function assessEarlyCoreFlowActionFixedPoint(observation, expected) {
     && Number.isFinite(beforeRuntime?.activePlayMs)
     && Number.isFinite(afterRuntime?.activePlayMs)
     && afterRuntime.activePlayMs >= beforeRuntime.activePlayMs;
-  const surveyCurrent = exactJson(observation?.afterAuthority?.raw, observation?.beforeAuthority?.raw)
+  const surveyNoWrite = exactJson(observation?.afterAuthority?.raw, observation?.beforeAuthority?.raw)
     && currentRuntimeExact
     && afterPersistence?.lastOutcome === beforePersistence?.lastOutcome
-    && state?.landing?.surveyOutcome === `current:${surveyTarget}`
     && arc0LandingCoordinatorIsIdle(state, { clearFault: true });
+  const surveyCurrent = surveyNoWrite
+    && state?.landing?.surveyOutcome === `current:${surveyTarget}`;
+  const beforeState = observation?.beforeAuthority?.state;
+  const afterState = observation?.afterAuthority?.state;
+  const priorSurveyOutcome = beforeState?.landing?.surveyOutcome;
+  const surveyInspection = surveyTarget === 'world' && surveyNoWrite
+    && (priorSurveyOutcome === null || nonEmptyString(priorSurveyOutcome))
+    && state?.landing?.surveyOutcome === priorSurveyOutcome
+    && afterState?.landing?.surveyOutcome === priorSurveyOutcome
+    && state?.persistence?.lastOutcome === beforePersistence?.lastOutcome
+    && beforeState?.save !== null && typeof beforeState?.save === 'object'
+    && !Array.isArray(beforeState.save)
+    && exactJson({
+      stats: {
+        shares: state?.save?.stats?.shares, surveys: state?.save?.stats?.surveys,
+        best: state?.save?.stats?.best, bestRank: state?.save?.stats?.bestRank,
+        hybrids: state?.save?.stats?.hybrids,
+      },
+      unlocked: state?.save?.unlocked,
+    }, beforeState.save)
+    && exactJson(afterState?.save, beforeState.save);
   if ((settlement === 'commit' || settlement === 'either') && !surveyCommitted
     && !(settlement === 'either' && surveyCurrent)) {
     if (!surveyCommit.ok) {
@@ -3683,6 +3712,9 @@ export function assessEarlyCoreFlowActionFixedPoint(observation, expected) {
   if ((settlement === 'current' || settlement === 'either') && !surveyCurrent
     && !(settlement === 'either' && surveyCommitted)) {
     reasons.push('Survey current fixed point: exact no-write authority, current outcome, and idle coordinator');
+  }
+  if (settlement === 'inspection' && !surveyInspection) {
+    reasons.push('Survey inspection fixed point: exact no-write authority, unchanged save/outcomes, and idle coordinator');
   }
   return Object.freeze({
     status: reasons.length === 0 ? 'ready' : 'pending',
@@ -3968,10 +4000,151 @@ export function assessLazyProductProducerSettlement(
   return { ok: reasons.length === 0, reasons };
 }
 
+/* Receipt-local descent replay, not a replacement for each caller's world,
+   equipment and complete-save oracle. It derives expected counters only;
+   observed authority is never rewritten or normalized. */
+function arc0LandingDrawSuccessor(before, receipt) {
+  const uint32 = (value) => safeInt(value) && value <= 0xffff_ffff;
+  const finiteNonnegative = (value) => Number.isFinite(value) && value >= 0;
+  const draws = before?.draws;
+  if (!uint32(before?.seed) || !uint32(before?.ordinal)
+    || before.ordinal === 0xffff_ffff || draws === null || typeof draws !== 'object'
+    || Array.isArray(draws) || Object.entries(draws).some(([domain, count]) => (
+      domain.length < 1 || domain.length > 64 || /[\u0000-\u001f\u007f]/u.test(domain)
+      || !uint32(count)
+    )) || !exactKeys(receipt, ['ordinal', 'kind', 'witness'])
+    || receipt.kind !== 'arc0-land' || receipt.ordinal !== before.ordinal
+    || typeof receipt.witness !== 'string' || receipt.witness.length > 4096) return null;
+  const facts = parsedRecord(receipt.witness);
+  if (!exactKeys(facts, [
+    'schema', 'worldKey', 'planetSeed', 'planetOrdinal', 'landing',
+    'permanentLanding', 'training', 'landingKnownBefore', 'identityLandedAfter',
+    'claimedLegacyIdentity', 'legacyMirrorContainsSeedAfter', 'savedView', 'sample',
+    'charter', 'starterCharters', 'achievement', 'descentWeather', 'descent',
+    'stateSuccessorSeal', 'worldIdentitySuccessorSeal', 'waveOffStateSuccessorSeal',
+    'waveOffLegacySuccessorSeal', 'arc2LootSuccessorSeal', 'waveOffProtectedStateSeal',
+    'receiptOrdinal',
+  ]) || JSON.stringify(facts) !== receipt.witness
+    || facts.schema !== 'cf-v2-arc0-landing-witness/v1'
+    || facts.receiptOrdinal !== before.ordinal
+    || !['first', 'repeat', 'unresolved-already-landed'].includes(facts.landing)
+    || ['permanentLanding', 'training', 'landingKnownBefore', 'identityLandedAfter',
+      'claimedLegacyIdentity'].some((key) => typeof facts[key] !== 'boolean')
+    || ![null, true, false].includes(facts.legacyMirrorContainsSeedAfter)
+    || ['stateSuccessorSeal', 'worldIdentitySuccessorSeal', 'waveOffStateSuccessorSeal',
+      'waveOffLegacySuccessorSeal'].some((key) => !hexDigest(facts[key]))
+    || ![null, 'rain', 'snow', 'dust', 'ash', 'haze'].includes(facts.descentWeather)) return null;
+  const descent = facts.descent;
+  const policy = descent?.policy;
+  if (!exactKeys(policy, [
+    'schema', 'key', 'address', 'opportunityIdentity', 'capabilityFingerprint',
+    'planetType', 'biomeKey', 'typeBase', 'baseSuccessPercent', 'stormActive',
+    'stormAdjustedPercent', 'waveOffCount', 'learnedApproachBonus', 'globalGearBonus',
+    'familyGearBonus', 'landingGuaranteed', 'successPercent', 'damageMin', 'damageMax',
+    'waveOffDamageReduction', 'safeReason', 'requiredDomains',
+  ]) || policy.schema !== 'cf-v2-descent-policy/v1'
+    || policy.key !== facts.worldKey || policy.address?.key !== facts.worldKey
+    || policy.address?.format !== 'CF1'
+    || policy.address?.planet?.seed !== facts.planetSeed
+    || policy.address?.planet?.ordinal !== facts.planetOrdinal
+    || !uint32(facts.planetSeed) || !safeInt(facts.planetOrdinal)
+    || policy.opportunityIdentity !== `cf-v2-world-opportunity/v3:${facts.worldKey}`
+    || !nonEmptyString(policy.capabilityFingerprint)) return null;
+  const { galaxy, star, planet } = policy.address;
+  if (!uint32(galaxy?.seed) || !uint32(star?.seed)
+    || ![galaxy?.x, galaxy?.y, star?.x, star?.y].every(Number.isFinite)
+    || facts.worldKey !== `CF1|g:${galaxy.seed}@${galaxy.x},${galaxy.y}`
+      + `|s:${star.seed}@${star.x},${star.y}|p:${planet.seed}#${planet.ordinal}`) return null;
+  const typeTiers = {
+    terran: [95, 2, 2], ocean: [90, 2, 2], rocky: [90, 2, 2], ice: [85, 3, 4],
+    desert: [85, 3, 4], gas: [65, 4, 6], venus: [25, 5, 7], lava: [20, 6, 8],
+  };
+  const typeBase = Object.hasOwn(typeTiers, policy.planetType)
+    ? typeTiers[policy.planetType] : typeTiers.terran;
+  if (typeof policy.planetType !== 'string'
+    || !(policy.biomeKey === null || nonEmptyString(policy.biomeKey))
+    || !exactJson(policy.typeBase, {
+      successPercent: typeBase[0], damageMin: typeBase[1], damageMax: typeBase[2],
+    }) || !finiteNonnegative(policy.baseSuccessPercent) || policy.baseSuccessPercent > 100
+    || (policy.biomeKey === null && policy.baseSuccessPercent !== typeBase[0])
+    || typeof policy.stormActive !== 'boolean'
+    || policy.stormActive !== (facts.descentWeather !== null)
+    || !safeInt(policy.waveOffCount) || policy.waveOffCount > 5
+    || policy.learnedApproachBonus !== policy.waveOffCount * 20
+    || ![policy.globalGearBonus, policy.familyGearBonus, policy.waveOffDamageReduction]
+      .every(finiteNonnegative)
+    || (!['lava', 'venus', 'gas', 'ice'].includes(policy.planetType) && policy.familyGearBonus !== 0)
+    || typeof policy.landingGuaranteed !== 'boolean') return null;
+  const safeReason = facts.training ? 'training'
+    : facts.worldKey === 'CF1|g:999@90,-60|s:424242@560,170|p:133#2' ? 'earth'
+      : facts.landing === 'repeat' ? 'revisit' : null;
+  const stormAdjusted = policy.stormActive
+    ? Math.max(policy.baseSuccessPercent >= 90 ? 90 : 5, policy.baseSuccessPercent - 5)
+    : policy.baseSuccessPercent;
+  const successPercent = safeReason !== null || policy.landingGuaranteed ? 100
+    : Math.min(100, stormAdjusted + policy.waveOffCount * 20
+      + policy.globalGearBonus + policy.familyGearBonus);
+  const damageRange = policy.baseSuccessPercent >= 90 ? [2, 2]
+    : policy.baseSuccessPercent >= 75 ? [3, 4]
+      : policy.baseSuccessPercent >= 55 ? [4, 6]
+        : policy.baseSuccessPercent >= 30 ? [5, 7] : [6, 8];
+  const requiredDomains = safeReason === null ? ['descent.success', 'descent.damage'] : [];
+  if (policy.safeReason !== safeReason || policy.stormAdjustedPercent !== stormAdjusted
+    || policy.successPercent !== successPercent
+    || policy.damageMin !== damageRange[0] || policy.damageMax !== damageRange[1]
+    || !exactJson(policy.requiredDomains, requiredDomains)
+    || !safeInt(descent.hpBefore) || descent.hpBefore < 1) return null;
+  const expectedDraws = Object.fromEntries(Object.entries(draws));
+  const values = [];
+  for (const domain of requiredDomains) {
+    const counter = Object.hasOwn(draws, domain) ? draws[domain] : 0;
+    if (counter === 0xffff_ffff) return null;
+    let domainHash = 0x811c9dc5;
+    for (let index = 0; index < domain.length; index++) {
+      domainHash = Math.imul(domainHash ^ domain.charCodeAt(index), 0x01000193);
+    }
+    let hash = Math.imul((before.seed | 0) ^ domainHash, 374_761_393);
+    hash = Math.imul(hash ^ (counter | 0), 668_265_263);
+    hash ^= hash >>> 15;
+    hash = Math.imul(hash, 2_246_822_519);
+    hash ^= hash >>> 13;
+    let value = ((hash >>> 0) + 0x6D2B79F5) | 0;
+    let mixed = Math.imul(value ^ value >>> 15, 1 | value);
+    mixed = mixed + Math.imul(mixed ^ mixed >>> 7, 61 | mixed) ^ mixed;
+    values.push(((mixed ^ mixed >>> 14) >>> 0) / 4_294_967_296);
+    expectedDraws[domain] = counter + 1;
+  }
+  const landed = safeReason !== null || values[0] * 100 < successPercent;
+  const expectedDescent = landed ? {
+    kind: 'landed', navigation: 'surface', policy, drawsConsumed: requiredDomains.length,
+    hpBefore: descent.hpBefore, hpAfter: descent.hpBefore, damage: 0,
+    waveOffCountBefore: policy.waveOffCount,
+    waveOffCountAfter: safeReason === 'training' ? policy.waveOffCount : 0,
+    persistenceOutcome: safeReason === 'training' ? 'unchanged' : 'success',
+  } : (() => {
+    const rawDamage = damageRange[0] + Math.floor(values[1] * (damageRange[1] - damageRange[0] + 1));
+    const gearAdjustedDamage = Math.max(0, rawDamage - policy.waveOffDamageReduction);
+    const damage = Math.min(gearAdjustedDamage, descent.hpBefore - 1);
+    return {
+      kind: 'wave-off', navigation: 'orbit', policy, drawsConsumed: 2,
+      hpBefore: descent.hpBefore, hpAfter: descent.hpBefore - damage,
+      rawDamage, gearAdjustedDamage, damage, waveOffCountBefore: policy.waveOffCount,
+      waveOffCountAfter: Math.min(5, policy.waveOffCount + 1), persistenceOutcome: 'failure',
+    };
+  })();
+  if (!exactJson(descent, expectedDescent)
+    || facts.permanentLanding !== (landed && !facts.training)
+    || (landed ? !hexDigest(facts.arc2LootSuccessorSeal) || facts.waveOffProtectedStateSeal !== null
+      : facts.arc2LootSuccessorSeal !== null || !hexDigest(facts.waveOffProtectedStateSeal)
+        || facts.sample !== null || facts.achievement !== null)) return null;
+  return expectedDraws;
+}
+
+
 /* A returned action handler is not a durable boundary. This compact assessor
    proves one same-document F4 action commit without depending on IndexedDB's
    lexicographic receipt ordering: raw/live revisions and commit count advance
-   once, SessionRNG advances once without changing its seed/draw families,
+   once, SessionRNG advances once with only a verified Land draw pair,
    every predecessor receipt survives by key, and exactly the caller-owned
    receipt/outcome publishes after the global action coordinator clears. */
 export function assessSingleF4ActionCommit({
@@ -3980,6 +4153,7 @@ export function assessSingleF4ActionCommit({
   state = null,
   expectedKind,
   expectedPersistenceLastOutcome,
+  expectedReleasedHold = null,
 } = {}) {
   if (!nonEmptyString(expectedKind) || !nonEmptyString(expectedPersistenceLastOutcome)) {
     throw new TypeError('single F4 action commit requires exact receipt kind and persistence outcome');
@@ -3991,6 +4165,10 @@ export function assessSingleF4ActionCommit({
   const settledState = state ?? afterAuthority?.state;
   const beforeRuntime = beforeAuthority?.state?.persistence?.runtime;
   const afterRuntime = afterAuthority?.state?.persistence?.runtime;
+  const landReceipt = expectedKind === 'arc0-land' && Array.isArray(after?.receiptRows)
+    ? after.receiptRows.find((row) => row?.ordinal === before?.ordinal) : null;
+  const expectedDraws = expectedKind === 'arc0-land'
+    ? arc0LandingDrawSuccessor(before, landReceipt) : before?.draws;
 
   add('same document identity', nonEmptyString(beforeAuthority?.token)
     && afterAuthority?.token === beforeAuthority.token);
@@ -4012,7 +4190,7 @@ export function assessSingleF4ActionCommit({
     && !Array.isArray(before.draws)
     && after?.seed === before.seed
     && after?.ordinal === before.ordinal + 1
-    && exactJson(after?.draws, before.draws));
+    && expectedDraws !== null && exactJson(after?.draws, expectedDraws));
   add('exact live/raw SessionRNG parity', beforeRuntime?.sessionSeed === before?.seed
     && beforeRuntime?.sessionOrdinal === before?.ordinal
     && exactJson(beforeRuntime?.sessionDraws, before?.draws)
@@ -4045,11 +4223,16 @@ export function assessSingleF4ActionCommit({
     && exactJson(addedKeys, [expectedReceiptKey])
     && receipt?.ordinal === before?.ordinal
     && receipt?.kind === expectedKind);
+  if (expectedKind === 'arc0-land') {
+    add('exact committed Land outcome', expectedDraws !== null
+      && settledState?.landing?.lastOutcome === `committed:${before?.revision + 1}`
+      && afterAuthority?.state?.landing?.lastOutcome === settledState?.landing?.lastOutcome);
+  }
   add('exact persistence outcome', settledState?.persistence?.lastOutcome
     === expectedPersistenceLastOutcome);
-  add('idle clear landing action coordinator', arc0LandingCoordinatorIsIdle(
-    settledState, { clearFault: true },
-  ));
+  add('idle clear landing action coordinator',
+    (expectedReleasedHold === null || expectedKind === 'arc0-land')
+      && arc0LandingCoordinatorIsIdle(settledState, { clearFault: true, expectedReleasedHold }));
   return { ok: reasons.length === 0, reasons };
 }
 
@@ -4073,6 +4256,19 @@ export function assessF4ActionCommitSequence({
   const beforeRuntime = beforeAuthority?.state?.persistence?.runtime;
   const afterRuntime = afterAuthority?.state?.persistence?.runtime;
   const count = expectedKinds.length;
+  /* This is an expected-counter cursor, never substituted into either
+     observed authority. Every non-Land receipt remains a zero-draw action. */
+  let expectedDraws = before?.draws;
+  let lastLandIndex = -1;
+  for (let index = 0; index < count; index++) {
+    if (expectedKinds[index] !== 'arc0-land') continue;
+    lastLandIndex = index;
+    const receipt = Array.isArray(after?.receiptRows)
+      ? after.receiptRows.find((row) => row?.ordinal === before?.ordinal + index) : null;
+    expectedDraws = expectedDraws === null ? null : arc0LandingDrawSuccessor({
+      seed: before?.seed, ordinal: before?.ordinal + index, draws: expectedDraws,
+    }, receipt);
+  }
 
   add('same document identity', nonEmptyString(beforeAuthority?.token)
     && afterAuthority?.token === beforeAuthority.token);
@@ -4092,7 +4288,7 @@ export function assessF4ActionCommitSequence({
     && before?.draws !== null && typeof before?.draws === 'object'
     && !Array.isArray(before.draws)
     && after?.seed === before.seed && after?.ordinal === before.ordinal + count
-    && exactJson(after?.draws, before.draws));
+    && expectedDraws !== null && exactJson(after?.draws, expectedDraws));
   add('exact live/raw SessionRNG parity', beforeRuntime?.sessionSeed === before?.seed
     && beforeRuntime?.sessionOrdinal === before?.ordinal
     && exactJson(beforeRuntime?.sessionDraws, before?.draws)
@@ -4128,6 +4324,11 @@ export function assessF4ActionCommitSequence({
     && expectedKeys.every((key) => addedKeys.includes(key))
     && tail.every((row, index) => row?.ordinal === before.ordinal + index
       && row?.kind === expectedKinds[index]));
+  if (lastLandIndex >= 0) {
+    add('exact committed Land outcome', expectedDraws !== null
+      && state?.landing?.lastOutcome === `committed:${before?.revision + lastLandIndex + 1}`
+      && afterAuthority?.state?.landing?.lastOutcome === state?.landing?.lastOutcome);
+  }
   add('exact persistence outcome', state?.persistence?.lastOutcome
     === expectedPersistenceLastOutcome);
   add('idle clear landing action coordinator', arc0LandingCoordinatorIsIdle(
@@ -4375,7 +4576,9 @@ export function assessCharterLandSettlementTopology({
       'permanentLanding', 'training', 'landingKnownBefore', 'identityLandedAfter',
       'claimedLegacyIdentity', 'legacyMirrorContainsSeedAfter', 'savedView', 'sample',
       'charter', 'starterCharters', 'achievement', 'stateSuccessorSeal',
-      'worldIdentitySuccessorSeal', 'receiptOrdinal',
+      'worldIdentitySuccessorSeal', 'receiptOrdinal', 'descentWeather', 'descent',
+      'waveOffStateSuccessorSeal', 'waveOffLegacySuccessorSeal',
+      'arc2LootSuccessorSeal', 'waveOffProtectedStateSeal',
     ])
     && landFacts.schema === 'cf-v2-arc0-landing-witness/v1'
     && landFacts.worldKey === expectedWorldKey
@@ -4405,6 +4608,27 @@ export function assessCharterLandSettlementTopology({
     && hexDigest(landFacts.stateSuccessorSeal)
     && hexDigest(landFacts.worldIdentitySuccessorSeal)
     && landFacts.receiptOrdinal === before?.ordinal);
+  const descent = landFacts?.descent;
+  const policy = descent?.policy;
+  add('independent Mercury descent', landFacts?.descentWeather === null
+    && descent?.kind === 'landed' && descent.navigation === 'surface'
+    && descent.persistenceOutcome === 'success' && descent.drawsConsumed === 2
+    && descent.hpAfter === descent.hpBefore && descent.damage === 0
+    && descent.waveOffCountAfter === 0
+    && [0, 1].includes(descent.waveOffCountBefore)
+    && policy?.key === expectedWorldKey && policy.planetType === 'rocky'
+    && policy.biomeKey === 'cratered' && policy.baseSuccessPercent === 95
+    && policy.stormActive === false && policy.stormAdjustedPercent === 95
+    && policy.safeReason === null && policy.landingGuaranteed === false
+    && policy.waveOffCount === descent.waveOffCountBefore
+    && policy.learnedApproachBonus === descent.waveOffCountBefore * 20
+    && policy.successPercent === (descent.waveOffCountBefore === 0 ? 95 : 100)
+    && policy.globalGearBonus === 0 && policy.familyGearBonus === 0
+    && policy.waveOffDamageReduction === 0 && policy.damageMin === 2 && policy.damageMax === 2
+    && hexDigest(landFacts.waveOffStateSuccessorSeal)
+    && hexDigest(landFacts.waveOffLegacySuccessorSeal)
+    && hexDigest(landFacts.arc2LootSuccessorSeal) && landFacts.waveOffProtectedStateSeal === null);
+  const expectedLandingDraws = arc0LandingDrawSuccessor(before, tailRows[0]);
   add('exact live Mercury route and saved view', state?.mode === 'surface'
     && state?.gal === 999 && state?.galX === 90 && state?.galY === -60
     && state?.galSize === 78
@@ -4423,7 +4647,8 @@ export function assessCharterLandSettlementTopology({
   add('exact F4 revision span', after?.revision === finalRevision
     && after?.revisionRaw === String(finalRevision));
   add('exact SessionRNG receipt span', after?.ordinal === before?.ordinal + commitCount
-    && after?.seed === before?.seed && exactJson(after?.draws, before?.draws));
+    && after?.seed === before?.seed && expectedLandingDraws !== null
+    && exactJson(after?.draws, expectedLandingDraws));
   add('exact live runtime settlement',
     afterAuthority?.state?.persistence?.runtime?.revision === finalRevision
       && afterAuthority?.state?.persistence?.runtime?.commits

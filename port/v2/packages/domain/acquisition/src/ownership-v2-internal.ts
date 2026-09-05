@@ -7,7 +7,11 @@
    application. */
 export {
   createOwnershipSourceProjectionSuccessorV2,
+  isOwnershipSuccessorV2,
 } from './model-v2.js';
+export {
+  createCaptureOwnershipSourceProjectionSuccessorV2,
+} from './capture-scout-xp.js';
 export {
   EMPTY_OWNERSHIP_DELTA_JSON_V2,
   MAX_OWNERSHIP_DELTA_ROWS_V2,

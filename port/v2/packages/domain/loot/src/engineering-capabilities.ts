@@ -7,6 +7,7 @@
    canonical stackable counts. The resulting object is frozen and privately
    registered so a structural clone cannot be used as action authority. */
 import { getLootCatalogueDefinition } from './catalogue.js';
+import type { LandingFamily } from './catalogue.js';
 import { encodeGearInstance } from './gear.js';
 import {
   isArc2EngineeringLoadout,
@@ -33,6 +34,20 @@ export interface EngineeringCapabilitySnapshot {
   readonly coronaScoop: boolean;
   readonly stellarSkimBonus: number;
   readonly stellarSkimGuard: boolean;
+  /** Raw legacy `_equipBonus('heal')` multiplier from worn gear. */
+  readonly explorerMealHealBonus: number;
+  /** Legacy `_equipBonus('scut')`, capped before hostile-bioscan damage. */
+  readonly bioscanDamageReduction: number;
+  /** Raw legacy `_equipBonus('speed')` value added to the research drive multiplier. */
+  readonly travelSpeedBonus: number;
+  /** Raw legacy `_equipBonus('land')` points from exact worn gear. */
+  readonly landingSuccessBonus: number;
+  /** Exact legacy per-family landing points from worn `landfam` effects. */
+  readonly landingFamilyBonus: Readonly<Record<LandingFamily, number>>;
+  /** Any positive worn `land100` effect guarantees the ordinary descent roll. */
+  readonly landingGuaranteed: boolean;
+  /** Raw legacy `_equipBonus('struts')` points removed from a wave-off scrape. */
+  readonly waveOffDamageReduction: number;
 }
 
 /** Capture/contact authority derived from the same persistence-issued Arc 2
@@ -133,6 +148,27 @@ export function projectEngineeringCapabilities(
     coronaScoop: hasSystem('cscoop'),
     stellarSkimBonus: finiteEffect(totals.get('skim') ?? 0, 'stellar skim bonus'),
     stellarSkimGuard: (totals.get('skimguard') ?? 0) > 0,
+    explorerMealHealBonus: finiteEffect(
+      totals.get('heal') ?? 0,
+      'explorer meal healing bonus',
+    ),
+    bioscanDamageReduction: Math.min(
+      0.7,
+      finiteEffect(totals.get('scut') ?? 0, 'bioscan damage reduction'),
+    ),
+    travelSpeedBonus: finiteEffect(totals.get('speed') ?? 0, 'travel speed bonus'),
+    landingSuccessBonus: finiteEffect(totals.get('land') ?? 0, 'landing success bonus'),
+    landingFamilyBonus: deepFreeze({
+      lava: finiteEffect(totals.get('landfam.lava') ?? 0, 'lava landing-family bonus'),
+      venus: finiteEffect(totals.get('landfam.venus') ?? 0, 'venus landing-family bonus'),
+      gas: finiteEffect(totals.get('landfam.gas') ?? 0, 'gas landing-family bonus'),
+      ice: finiteEffect(totals.get('landfam.ice') ?? 0, 'ice landing-family bonus'),
+    }),
+    landingGuaranteed: (totals.get('land100') ?? 0) > 0,
+    waveOffDamageReduction: finiteEffect(
+      totals.get('struts') ?? 0,
+      'wave-off damage reduction',
+    ),
   });
   CAPABILITIES.add(capability);
   return capability;

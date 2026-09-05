@@ -1,5 +1,134 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
+
+Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
+`5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
+Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
+486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
+The accepted Discover Life Starter Charter completes only on a later explicit Bioscan for its
+established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Survey or Capture
+backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
+Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
+and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
+two SessionRNG draws and one receipt/CAS. A wave-off leaves the ship in orbit, with HP at least 1 and canonical
+learning (+20 percentage points per failure, capped at five), without landing rewards. Success
+clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
+Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
+fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
+The Fifty Paragons now use their authored fixed genomes and exact home worlds. Explicit Discover
+Life at an eligible home adds only its catalogue record in that same Bioscan receipt; it creates
+no companion/specimen, spends no Yield and grants no capture or extra discovery award. Binder
+shows all fifty: found entries Inspect the exact existing Compendium record; missing entries use
+existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
+New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
+Pre-feature development saves with an already-scanned home retain their recorded refusal; no
+backfill or repeated hazard is invented. Static portraits remain unchanged. Exact-instance progression now displays each individual's
+XP, level, class, innate arts, wounds and active-play Recovery, with distinct twins and retained
+tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
+preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
+focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
+Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
+at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
+reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
+
+## V2 beta Research and descent consumers — implementation as of 2026-09-05
+
+The six-row Engineering catalogue is fully purchasable through the existing Arc 3 receipt/CAS
+owner. `projectEngineeringCapabilities` replays the registered Arc 2 loadout and exposes the legacy
+`heal`, capped `scut`, and `speed` effects beside the existing mining/skimming/capture values.
+It also exposes `landingSuccessBonus` (`land`), `landingFamilyBonus` (`landfam`),
+`landingGuaranteed` (`land100`) and `waveOffDamageReduction` (`struts`) for descent.
+Deep Scanners keep their orbit-only mineral reveal; Reinforced Hull and `scut` gear feed the
+explicit living-world Bioscan hazard; Xenobotany and `heal` gear feed the explorer Flora meal; the
+three speed researches plus `speed` gear feed a deterministic, skippable, device/motion-bounded
+Search/CF1/Atlas travel presentation. Permanent Jump/Array/Intergalactic systems and Prime
+Signatures still own reach—speed research cannot cross a locked boundary.
+
+`packages/domain/opportunity/src/state.ts::RESEARCH_IDS` owns the frozen six-row production research order. `engineering-panel.ts::ENGINEERING_RESEARCH_ORDER` is its public alias, retaining the existing row-ID type. The panel fixtures and tool-owned Engineering catalogue keep their independently authored six-row expectations, including missing-row and order refusals.
+
+`descent-policy.ts` projects type/biome odds, deterministic weather, exact worn gear and learned
+approaches before `arc0-landing-action.ts` settles one selected outcome. Ordinary attempts reserve
+exactly `descent.success` and `descent.damage`; canonical Earth, Training and proven full-address
+landed returns consume no descent draws. A wave-off keeps orbit and the explorer at 1 HP or more;
+only HP and wave-off progress change in the save. Reinforced Hull does not reduce descent damage.
+The canonical wave-off extension owns full-address learning. Legacy seed-only counts remain
+unresolved compatibility evidence until the first matching source-proven non-Training descent
+settles and consumes them; inspection or Training alone cannot bind them, and later worlds sharing
+that leaf seed do not inherit the consumed count. Successful non-Training arrival clears the exact
+approach count; Training preserves it. Outcome, HP, learning and the compatibility mirror commit
+together under one receipt/CAS, with no optimistic publication or automatic retry.
+
+`apps/game/src/landing-card.ts` owns the ready/unavailable `LandingCardStateV1`, the presentation projector and `landingCardActionHtml`. Main supplies its existing escape function and retains exact world/save authority projection and action wiring. The extraction preserves the rendered controls, visible chance/HP/learning disclosure and accessibility attributes; policy and settlement remain in `descent-policy.ts` and `arc0-landing-action.ts`.
+
+`explorer-meal.ts` owns exact legacy nourishment/poison arithmetic over one canonical Flora lot,
+with the beta-safe 1 HP floor, 330 stat ceiling, Vitality-derived maximum HP, and same-transaction
+`fieldmedic`/high-risk `gambler` event joins. `compendium-explorer-meal.ts` exposes one bounded
+owner-minted **Eat 1** request and never changes companion Feed/Breed/Rename/Scout or genome data.
+The explicit living-world **Discover Life** action replaces automatic living-world Survey ledger
+publication: one `survey.hazard` draw and one F4 transaction join the existing Arc 9 Survey successor,
+close-call counter, explorer HP or exact Field Scout injury, and the five-carrier Arc 5 successor.
+Scout injury is nonlethal and capped at `.85`; protected legacy Scouts above that cap refuse rather
+than being silently normalized. Conquered worlds remain clear. Capture/census publication remains a
+separate landed action. A successful capture that catalogues a genuinely fresh species also gives
+the Scout standing before that attempt up to +2 XP in the same capture receipt/CAS, capped at 486;
+no standing Scout, miss, or repeat species grants Scout XP. The reward changes no genome, lineage,
+role selection, or capture-pool fact.
+
+Step 2c adds the exact-home catalogue exception through `paragon-finder.ts` and the existing
+`bioscan-action.ts` receipt. All fifty indexed genomes and fixed homes use the authored deterministic
+recipe. A matching source-proven home can add its exact catalogue species and acquisition audit
+while preserving owned creatures, specimen lots and Biosphere Yield; it grants no Capture credit.
+The joined Arc 4/Arc 5 successors and legacy catalogue mirror settle atomically with Bioscan.
+Ownership validation checks the full indexed genome; Binder checks that each pair key equals its
+record id before that row may count toward discovery or a claim. A previously Bioscanned home in a
+pre-feature development save still refuses as `already-recorded`, so returning cannot backfill it.
+Records retains six Binder type pages and now has eight claim owners; `para10` becomes claimable
+after ten exact Paragons and pays 120 current/lifetime Stardust only through its separate once-only
+Claim receipt/CAS. Prior claims stay claimed. Missing slots use the source-proven finder and existing
+ship/Prime reach checks; found slots open the exact Compendium record through Inspect without travel
+or acquisition. Existing static portrait owners are unchanged.
+
+Step 2d adds `compendium-creature-progression.ts` and its surface owner to the existing fauna
+detail. The registered Arc 5 owner supplies exact live individuals plus immutable retired
+tombstone snapshots; a matching species identity never merges their separate IDs, names, XP or
+condition. At most 24 rows mount per page, with XP/level progress, class/group, named innate arts
+and effects, wounds, and active-play Recovery status. This is a read-only projection: it creates
+no XP, care, Feed stat growth, new assignment, ownership write or clock advancement. A recovered
+assignment is only cleared by an existing companion action, never by its display heartbeat.
+
+`creature-level-progress.ts` uses the lifted `levelOf` authority for the existing
+`min(9, floor(sqrt(xp / 6)))` curve and accepts the registered finite 0–486 XP range. Fractional XP
+remains exact; only independent integer cursors search the level thresholds. The frozen
+`projectCreatureInnateArts` adapter reads the existing private class/ability tables and the 3/6
+level awakenings, without rewriting genomes, base stats or combat rules.
+
+The surface refresh is fenced to the current detail and ownership. A passive heartbeat restores
+only the same enabled pager with `preventScroll`; if it disappeared, became disabled or its
+surface vanished, focus falls back to that panel's Close with the same scroll policy. Restoration
+requires that the old pager still owned focus; a user move elsewhere is respected. Only an explicit
+page press may choose the alternate pager with ordinary focus behavior. The existing lifecycle
+detaches this section when its detail closes or changes.
+
+The safe explorer-meal successor joins `fieldmedic`, and a safe meal above 40% poison risk also
+joins `gambler`. Any hostile explicit Bioscan joins `survivor` whether its wound lands on the Scout
+or explorer; a safe scan does not. The current event-owned achievement boundary is therefore 26
+exact joins with only `daily` and `decade` still blocked.
+
+`expedition-chronicle.ts` projects one escaped read-only Records surface from already-registered
+facts. Battle Chronicle sorts at most 60 fights by latest receipt ordinal; Discovery Museum follows
+canonical immutable first-species record IDs; Prime Victories follows Signature ID and invents no
+claim time; Legacy Journal retains its established append order with latest entries first. Invalid
+or protected authority produces one protected panel. This owner adds no writer, receipt, reward,
+RNG, save field, mission, share card, or semantic chronology across the four galleries.
+
 ## V2 explicit build boundary — implementation as of 2026-09-04
 
 `port/v2/apps/game/vite.config.ts` selects diagnostic code only for exact Vite mode `evidence`;
@@ -4237,6 +4366,33 @@ inside its fresh green predecessor chain without reopening either numeric ruler.
 separate.
 
 ### Star Atlas (bookmarks)
+
+**Current v2 (Step 2e, 2026-09-05):** `star-atlas-state.ts`, `star-atlas-panel.ts` and
+`arc9-atlas-row-actions.ts` own the bounded 120-row List/Chart view, All/Favorites/Visited/
+Conquered/Life filters, Home, exact Remove and one-level Undo. Favorites includes Home; visited
+and conquered facts use complete canonical world keys for current rows, with preserved seed facts
+used only for legacy `p<seed>` rows. Chart coordinates and its current-view marker come from
+source-proven routes; compatibility location text cannot mint a route. Incomplete routes remain
+visible but cannot travel, including Travel Home. Accepted planet travel returns to Survey and
+keeps Land explicit; existing ship/Prime reach checks and Search/CF1/Atlas hyperlane semantics remain.
+
+Overlapping Chart points merge into bounded 44px cluster controls. Opening one shows its exact
+member rows with the existing List actions and performs no travel. Return to Chart restores the
+originating cluster; if it is gone, focus falls back to the Chart view control, then that panel's
+Close. Passive semantic refills preserve current focus ownership without claiming a new route.
+
+Favorite retains its existing exact-row/route and first false-to-true `curator` owner. Home, Remove
+and Undo use their exact expected-state receipt and one F4 CAS, with no RNG, optimistic publication
+or automatic retry. Remove preserves every surviving pair and route identity and clears Home only
+when that exact row was Home. For eight monotonic seconds its one-level Undo retains the removed
+pair and the exact present-or-absent route association. Undo requires the exact removal successor,
+receipt, retained pair and unchanged route identity, then restores the original pair at its original
+position and restores the prior Home state. An originally absent route stays absent; Undo never
+synthesizes one or deletes another row's route. Other save/source stores remain unchanged. Another
+Atlas mutation, route-identity change or convergence reload expires the retained Undo; stale or
+failed writes never publish, and ambiguous durable outcomes converge read-only without retry.
+
+**Legacy v1.8.9 implementation:** the icon/auto-add details below describe the original game.
 The `logMap` Map. `addToLog`, `renderLog`. Every survey card (galaxy/star/planet/moon/etc.)
 has a uniform **bookmark row**: **+ Add to Star Atlas**, **☆ favorite**, **⌂ home** — the
 icons auto-add to the Atlas on tap. Entries can be favorited/home-set from the Atlas list
@@ -4350,8 +4506,10 @@ Search/Atlas/direct arrival uses the travel receipt without earning Follow. Atla
 only the exact row's `fav` field in place, preserving its WeakMap route sidecar; false-to-true owns
 `curator`, unfavorite never removes it, and unchanged state is receipt-free. Main publishes each
 committed detached carrier only after its owning fixed point succeeds. Explorer self-rename is live
-but identity-only and cannot unlock `namer`. Exactly `daily`, `decade`, `survivor`, `fieldmedic`,
-and `gambler` remain owner-blocked; no aggregate proxy may mint them.
+but identity-only and cannot unlock `namer`. Explicit hostile Discover Life joins `survivor` in
+`bioscan-action.ts`; safe explorer Flora healing joins `fieldmedic` and, above 40% poison risk,
+`gambler` in `explorer-meal-action.ts`. Only `daily` and `decade` remain owner-blocked; no aggregate
+proxy may mint them.
 
 `planProgressionCeremonyV1` validates the exact prior/next append and best-rank transition after an
 owner's committed publication. It rejects reordered/unknown/duplicate achievement deltas and rank
@@ -4473,14 +4631,14 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `release-content.ts`, wired by `main.ts`): `LEGACY_GUIDE_CATEGORIES` and
   `LEGACY_RELEASES` are exact source-addressed snapshots, guarded by
   `tests/guide-release.test.ts`. `getGuideCatalogue` defaults to 41 player topics—currently
-  34 partial and 7 unavailable—with dormant topics hidden and unavailable topics retained with
+  35 partial and 6 unavailable—with dormant topics hidden and unavailable topics retained with
   honest copy; `getGuideTopic` and
   `searchGuide` keep stable ids, search and live cross-links. `fillGuide` /
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
-  by the 56 legacy releases. Its exact 77-bullet implemented-outcome inventory has rendered
-  ordered SHA-256 `1ad35cf24a8faeb058cecc00640ee2e0aa1de8bf4b22257a114895f1d2fbe964`
+  by the 56 legacy releases. Its exact 79-bullet implemented-outcome inventory has rendered
+  ordered SHA-256 `351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`
   and is checked structurally and in the rendered Guide. Tail proof dispatches one adaptive
   native wheel per fresh exact-document/tail/hit-owner/geometry observation until the final item
   is visible at bottom, then restores scroll and inline overflow ownership exactly; unchanged

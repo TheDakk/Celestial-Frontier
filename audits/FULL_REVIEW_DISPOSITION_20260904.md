@@ -1,5 +1,19 @@
 # Full review disposition — 2026-09-04
 
+## Current applicability — PR #41 integrated, 2026-09-05
+
+Develop `c1791e210158de864fdd475323c3091d9ecbae58` includes the reviewed Batch 4 head
+`05c1d7fc7049a7b9813d2be1be020dc0d552b74f` through PR #41. Nick reports its second
+agent-lane attempt GREEN and the exact authorized merge complete. Batch 4 is landed;
+the current draft has 79 outcomes. No player import door returns. The earlier 77/78
+counts, Batch 4 parking/PR prerequisites and prior current-disposition statements below
+are retained checkpoint records. The parked WIP remains separate and unvalidated.
+ROADMAP.md owns current source, sync checks, audiovisual Batch A and zero hosted authority.
+
+> Current applicability — 2026-09-05: the dated records below are retained history. Fresh-start develop `9ea0104` removes the player import door and starts the overnight Batch 4 review at **77** ordered release outcomes. Later checkpoints, exact source, gates and remaining work are owned by `BATCH4_OVERNIGHT_REPORT_20260905.md` and `../ROADMAP.md`; old 78-count and save-export prerequisites are superseded.
+
+
+
 ## Current disposition — 2026-09-05
 
 PRs #36/#38/#39/#40 are landed in develop `9ea01041dcdc711190bbf909ea8bb743cd993734`.
@@ -423,5 +437,8 @@ Guide/Training is **47/47** and the Slice/Glass copy contracts are **95/95**. Al
 programs, the Glass selftest and diff check pass. Root validation renders all 1,010 V1 species with
 zero errors and retains all 50 V1 fingerprints. The v2 draft remains 78 unique ordered bullets,
 SHA-256 `198bddf5c969151eba3ad9358cbcd016be0fd7c26b4e8524953892bf40484587`.
+The exact local commit is recorded in the session handoff after creation. No full profile/browser
+chain, hosted action, version bump, release or deployment is claimed here.
+
 This batch is committed locally at `53770697f6613da3ba469868dae24cf0edc3f58d`. No full
 profile/browser chain, hosted action, version bump, release or deployment is claimed here.

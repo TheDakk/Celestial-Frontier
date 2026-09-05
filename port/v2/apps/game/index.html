@@ -467,10 +467,74 @@
     #atlaspanel .atlas-entry-actions > button[aria-pressed="true"] { color: #ffd56a;
       border-color: #caa24f; background: rgba(202,162,79,.14); }
     #atlaspanel .atlas-entry-actions > button:disabled { opacity: .56; cursor: default; }
+    /* The mature Atlas stays a semantic DOM surface in both views. Chart
+       coordinates are emitted by its pure projector; these scoped rules only
+       place those native 44px buttons over a code-native map field. */
+    #atlaspanel [data-star-atlas-body] { display: grid; gap: 8px; min-width: 0; }
+    #atlaspanel [data-star-atlas-body] > h3 { margin-bottom: 0; }
+    #atlaspanel :is(.atlas-view-tabs,.atlas-filters) { display: flex; flex-wrap: wrap;
+      gap: 6px; min-width: 0; }
+    #atlaspanel :is(.atlas-view-tabs,.atlas-filters) > button,
+    #atlaspanel [data-atlas-travel-home], #atlaspanel .atlas-undo,
+    #atlaspanel .atlas-cluster-back,
+    #atlaspanel .atlas-chart-unmapped button { display: inline-flex; align-items: center;
+      justify-content: center; min-width: 44px; min-height: 44px; box-sizing: border-box;
+      border: 1px solid #405477; border-radius: 999px; background: rgba(22,34,57,.78);
+      color: #cfe0f4; cursor: pointer; padding: 7px 12px; font: 700 12px var(--ui);
+      touch-action: manipulation; }
+    #atlaspanel :is(.atlas-view-tabs,.atlas-filters) > button[aria-pressed="true"] {
+      color: #ffd56a; border-color: #caa24f; background: rgba(202,162,79,.14); }
+    #atlaspanel [data-atlas-travel-home], #atlaspanel .atlas-undo { justify-self: start; }
+    #atlaspanel :is([data-atlas-travel-home],.atlas-undo,.atlas-chart-unmapped button):disabled {
+      opacity: .56; cursor: default; }
+    #atlaspanel .atlas-list { display: grid; gap: 4px; min-width: 0; }
+    #atlaspanel .atlas-entry.is-home { padding-inline: 8px; border-radius: 10px;
+      background: linear-gradient(90deg,rgba(202,162,79,.15),rgba(202,162,79,.025)); }
+    #atlaspanel .atlas-chart { position: relative; isolation: isolate; width: 100%;
+      min-width: 220px; min-height: 240px; aspect-ratio: 1 / 1; box-sizing: border-box; overflow: hidden;
+      border: 1px solid rgba(88,112,154,.78); border-radius: 12px;
+      background:
+        radial-gradient(circle at 23% 28%,rgba(126,200,240,.16),transparent 2px),
+        radial-gradient(circle at 72% 62%,rgba(232,200,122,.13),transparent 2px),
+        linear-gradient(rgba(25,43,72,.28) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(25,43,72,.28) 1px,transparent 1px),
+        radial-gradient(circle at 50% 42%,#101d35,#060b16 76%);
+      background-size: auto,auto,24px 24px,24px 24px,auto; }
+    #atlaspanel .atlas-chart-point { position: absolute; z-index: 2;
+      left: var(--atlas-x); top: var(--atlas-y); transform: translate(-50%,-50%);
+      display: grid; place-items: center; width: 44px; height: 44px; min-width: 44px;
+      min-height: 44px; box-sizing: border-box; padding: 0; border: 0;
+      border-radius: 50%; background: transparent; color: #b9e7ff; cursor: pointer;
+      touch-action: manipulation; }
+    #atlaspanel [data-atlas-cluster] > span { min-width: 28px; min-height: 28px; }
+    #atlaspanel [data-atlas-cluster-candidates] { display: grid; gap: 8px; min-width: 0; }
+    #atlaspanel .atlas-cluster-back { justify-self: start; }
+    #atlaspanel .atlas-chart-point > span { display: grid; place-items: center;
+      width: 14px; height: 14px; box-sizing: border-box; border: 1px solid currentColor;
+      border-radius: 50%; background: #142b45; box-shadow: 0 0 9px currentColor;
+      font: 700 12px/1 var(--ui); pointer-events: none; }
+    #atlaspanel .atlas-chart-point.is-favorite > span { width: 20px; height: 20px;
+      color: #9fdcff; }
+    #atlaspanel .atlas-chart-point.is-home > span { width: 24px; height: 24px;
+      color: #ffd56a; background: #3b301a; }
+    #atlaspanel .atlas-chart-point:disabled { opacity: .48; cursor: default; }
+    #atlaspanel .atlas-chart-current { position: absolute; z-index: 3;
+      left: var(--atlas-x); top: var(--atlas-y); transform: translate(-50%,-50%);
+      display: grid; place-items: center; width: 32px; height: 32px; color: #7ee8ff;
+      font: 700 24px/1 var(--ui); text-shadow: 0 0 7px #07101d; pointer-events: none; }
+    #atlaspanel .atlas-chart-unmapped { display: grid; gap: 6px; min-width: 0; }
+    #atlaspanel .atlas-chart-unmapped button { width: 100%; border-radius: 10px; }
+    #atlaspanel [data-atlas-status] { min-height: 20px; margin: 0; color: var(--dim); }
     @media (max-width: 420px) {
       #atlaspanel .atlas-entry { grid-template-columns: minmax(0,1fr); }
       #atlaspanel .atlas-entry-actions { justify-content: flex-start; }
       #atlaspanel .atlas-entry-actions > button { flex: 1 1 112px; }
+      #atlaspanel :is(.atlas-view-tabs,.atlas-filters) > button { flex: 1 1 88px; }
+      #atlaspanel .atlas-chart { min-height: 220px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      #atlaspanel [data-star-atlas-body], #atlaspanel [data-star-atlas-body] * {
+        animation: none !important; transition: none !important; }
     }
     .panel .empty { color: var(--faint); font-style: italic; padding: 12px 0; }
     /* Shipyard's one code-native preview owns no renderer or animation.
@@ -612,6 +676,8 @@
     .binder-slot { min-width: 0; padding: 5px 6px; border: 1px solid #57709a;
       border-radius: 7px; text-align: center; font-size: 10px; overflow-wrap: anywhere; }
     .binder-slot:not(.missing) { background: #05070d; }
+    button.binder-slot.paragon { appearance: none; min-height: 44px;
+      background: #05070d; font-family: var(--ui); cursor: pointer; }
     .binder-slot.missing { border-color: rgba(87,112,154,.42); color: var(--dim); }
     .binder-set { min-height: 52px; padding: 6px 0;
       border-bottom: 1px solid rgba(64,84,119,.38); }

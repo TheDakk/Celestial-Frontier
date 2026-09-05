@@ -341,7 +341,7 @@ function captureErrors(source: string): string[] {
     '\nfunction captureActivePlayCountdown(',
   );
   if (writer.length === 0) return ['capture-section'];
-  const arc4Ready = writer.indexOf("if (arc4OwnershipState?.mode !== 'current'");
+  const arc4Ready = writer.indexOf("if (ownershipV1Parent?.mode !== 'current'");
   const arc5Ready = writer.indexOf("if (ownershipV2Parent?.mode !== 'current'");
   const claim = writer.indexOf('const actionClaim = productActionCoordinator.tryClaim(');
   const durable = writer.indexOf('durable = true;');
