@@ -17,58 +17,75 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-05 · BACKUP CLOSED; PORTABLE SHIP PASS; AUDIO OPEN
+## SESSION HANDOFF — 2026-09-05 · BATCH A BACKUP CLOSED; SHIP REPLAY PASS; AUDIO OPEN
 
-OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`, openai/mac,
-tracking origin/openai/mac. Base develop remains c1791e210158de864fdd475323c3091d9ecbae58.
-The clean sync bc211be passed301 files/3,100 tests/1 skip plus typecheck/artunused without root
-main.js. No game/test inputs changed in these source/documentation checkpoints; no battery rerun.
+OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`, branch
+`openai/mac`, tracking `origin/openai/mac`. Develop remains
+`c1791e210158de864fdd475323c3091d9ecbae58`. The signed sync
+`bc211bef1f4def92a27933b7c79a090d8913fae4` passed typecheck, artunused and 301 files /
+3,100 tests / 1 skip with root main.js absent. No game, test or integration inputs changed
+in these private-source/documentation checkpoints; unchanged gates were not repeated.
 
-### Completed backup checkpoint
+### Checkpoints and source state
 
-Signed/pushed629e0cceeb4df474ab2a7c8f9da21085c368aead closes source preservation. The37 immutable
-source inputs plus sorted ustar passed forced iCloud eviction/download and38/38 destination
-checksums; truncated scratch control correctly failed. Native39/39 per-file uploaded/current
-states were recorded because global brctl status/monitor timed out. No fabricated status line.
-OneDrive listing responded and copy completed, but brctl rejected its non-CloudDocs path;
-secondary remains COPIED/UNVERIFIED. Full paths are in a companion private index outside the
-immutable bundle and Git. See audits/AAA_BATCH_A_BACKUP_20260905.md/.json.
+- Backup: signed/pushed `629e0cceeb4df474ab2a7c8f9da21085c368aead`.
+  **Source-preservation prerequisite CLOSED** by forced iCloud eviction/download and
+  38/38 checksum matches: all 37 immutable bundle inputs plus sorted ustar. Native per-file
+  metadata proved all 39 package items uploaded, then Current/reallocated after download;
+  global brctl status/monitor timeouts are retained. The truncated scratch control failed
+  correctly and was deleted. OneDrive was responsive and copied, but brctl refused its
+  non-CloudDocs eviction; secondary remains COPIED / UNVERIFIED. Full private locations
+  live in the companion backup index. Originals remain unchanged. Evidence:
+  `audits/AAA_BATCH_A_BACKUP_20260905.md` and adjacent JSON.
+- Portable replay: signed/pushed `cb3e9a7d92059ffadefca9015250e288f5f6d930`.
+  Seven derivative files have explicit environment/root bindings, with no historical path
+  fallback. Relative ecosystem.py remains intact. Four Python AST and one JavaScript parse
+  check pass. The RPP preserves embedded MIDI/Surge state; the derivative Lua's render sinks
+  now match that final RPP. One fresh-directory ship save/render passed with identical
+  decoded image data; PNG file hashes differ only in recorded render metadata.
+  **Portable audio is OPEN:** one fresh-config REAPER attempt produced no files after the
+  45.02-second wait; the process later disappeared without a retained exit status. Its log
+  only records Metal context creation. Cause unknown; Computer Use permission unavailable.
+  Nick was asked about any startup dialog. No duplicate render or audio acceptance claimed.
+  Private derivative work/results are preserved, excluding generated application config and
+  registration. Evidence: `audits/AAA_BATCH_A_PORTABLE_REPLAY_20260905.md` and JSON.
+- B–D inputs: status-only checkpoint delivered in
+  `audits/AAA_BATCH_B_D_INPUT_STATUS_20260905.md`. **No B–D production work started.**
+  The final user handoff supplies this documentation-only checkpoint's exact pushed SHA.
 
-### Portable replay checkpoint
+### Exact next work and boundaries
 
-See audits/AAA_BATCH_A_PORTABLE_REPLAY_20260905.md/.json. Seven derivative files now use explicit
-bundle/config/tool dependency paths; original37 inputs are unchanged. Four Python AST and one
-JavaScript parse check pass. The RPP's embedded MIDI/Surge state is unchanged; its output path
-is rebound for the fresh directory. Lua's derivative sink strings match the final preserved RPP.
+Next bounded task: identify the REAPER startup/render blocker with native UI access or Nick's
+observation, finish the portable audio cue and compare the stored output hashes/waveform facts.
+Do not call the whole portable replay prerequisite closed or silently reuse historical readiness.
+The verified primary source backup remains closed; secondary OneDrive recovery remains optional
+and unverified until its native evict/download plus checksum proof succeeds.
 
-One ship save/separate-process render passed. PNG hashes differ only in metadata; decoded image
-header/scanlines are identical. This proves relocated ship-terminal replay only. No Lanternback
-or other tool-readiness reruns occurred.
+Existing ship/audio tool examples and the invented Lanternback/Jungle concept are not accepted
+pilot assets. B still needs a pilot ship/biome and eight body plans at 132 / 300 / 440, static
+and animated (48 conditions); unfaithful families retain their correct static portrait and remain
+incomplete. C needs the authored sound set/listening pack; D needs actual-game art/audio
+integration, styleguide, three mockups and device/human acceptance. The 128 MiB complete-pack /
+256 MiB retained-update policy is reserved; enforcement/device proof remains open. Offline is
+an installed, complete-ready-PWA promise while data is retained.
 
-Portable audio is OPEN: one fresh-config REAPER render launch waited45.02s with no output; the
-process later disappeared without a retained exit code or WAV/FLAC files. The log only shows
-Metal context creation. Cause unknown; UI automation permission unavailable. Nick has a pending
-question about any startup dialog. Do not call this audio/plugin/waveform/listening acceptance.
-The private derivative work/results are preserved separately, excluding generated REAPER
-.runtime defaults/config/registration. Next bounded step is to identify the startup/render
-blocker with UI access or Nick's observation and finish the one-cue output comparison.
+Nick's latest bound is B–D status only. Production needs him to lift that bound; the existing
+integrated-pilot approval stop still prevents Phase 2/top bar/dock/rails work. No protected
+portrait/artlock reference, import door, Settings/Guide/Training, workflow or Actions-policy edit.
+Artlock CI lane, ITP save protection and confirmation of DECISIONS row 19 wording stay open.
 
-### Next checkpoint and boundaries
+### Paired next steps
 
-B–D input status table is next, with no production work yet. Eight body plans still need all
-132/300/440 static+animated conditions; existing concept/readiness examples do not close them.
-128MiB complete pack/256MiB aggregate update policy remains reserved; enforcement/device proof
-is open. Installed-PWA promise remains conditional on retained ready content. The integrated
-pilot approval stop and Phase2/topbar/dock/rails boundary remain.
+- **Codex:** all authorized unaffected work is checkpointed; portable audio awaits the remaining
+  observation/UI access. Keep originals and backup immutable. New audiovisual records remain
+  on openai/mac, not develop. Do not start a larger diagnostic loop or B–D production unasked.
+- **Claude:** continue its own work. Anthropic/mac c860f57 and unmerged 173c806 negative control
+  remain untouched; no cross-agent file copying or immediate synchronization is requested.
+- **Nick:** no GitHub action or PR fields needed, and no need to open Claude. Native UI access
+  or a REAPER startup observation is needed to close portable audio. All three open decisions
+  remain yours. Main/live site are unchanged; no release or deployment occurred.
 
-- Codex: checkpoint this partial portable result, then record the requested B–D status table.
-  Audio remains a visible open prerequisite; no blind repeat or larger diagnostic loop.
-- Claude: continue its own work; anthropic/mac c860f57 and unmerged173c806 are untouched.
-  Audiovisual records stay on openai/mac; no manual copying or GitHub action requested.
-- Nick: REAPER observation or native UI permission is needed to resolve the remaining audio
-  proof. No need to open Claude. Artlock CI lane, ITP save protection and DECISIONS row19 remain open.
-
-Budget UNFROZEN, PUBLIC, private fallback3,000. Established SSH origin/account is
-`git@github.com:TheDakk/Celestial-Frontier.git` / TheDakk. Only normal branch pushes authorized;
-no workflow trigger, hosted attempt, label, PR, merge, release, purchase, protected-portrait,
-artlock-reference, Settings/Guide/Training/import-door or workflow/Actions-policy edit.
+Budget UNFROZEN, PUBLIC, private fallback 3,000. Established SSH origin/account:
+`git@github.com:TheDakk/Celestial-Frontier.git` / TheDakk; current fetch/read passed. Only normal
+openai/mac branch pushes are authorized and trigger no workflow. No hosted attempts, labels,
+PRs, merges, releases or purchases were performed. Prior handoffs are archived verbatim.

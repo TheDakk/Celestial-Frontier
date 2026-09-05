@@ -1,5 +1,14 @@
 # Celestial Frontier v2 — Complete Graphics, Audio & Polish Production Plan
 
+## Current standing — B–D inputs recorded, no production started, 2026-09-05
+
+The requested input table is `../audits/AAA_BATCH_B_D_INPUT_STATUS_20260905.md`. Existing
+readiness examples remain separate from the not-started pilot art/sound/integration work.
+Primary source backup is CLOSED; portable ship replay passed; portable audio remains OPEN
+with an unobserved fresh-REAPER startup/render failure. ROADMAP owns the exact next step.
+Nick must lift the latest B–D status-only bound before production; the integrated-pilot
+approval stop still prevents Phase 2. Earlier checkpoint records below retain their scope.
+
 ## Current Batch A checkpoint — portable ship verified, audio still open, 2026-09-05
 
 Primary iCloud backup is CLOSED at629e0cc; OneDrive remains copied/unverified. Seven derivative
