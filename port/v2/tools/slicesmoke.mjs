@@ -4803,7 +4803,26 @@ const assessBoundedDescentWaveOff = ({
   const same = (left, right) => canonicalJson(left) === canonicalJson(right);
   const hash = (kind, value) => createHash('sha256')
     .update(`arc0-landing:${kind}:v1\u0000${canonicalJson(value)}`).digest('hex');
-  const projectedRows = (raw) => {
+  // canonicalV4FromState re-imports at the new codec clock. Only these two
+  // legacy timer fields have moving save-relative floors; readiness/awards
+  // remain in their existing epoch/counter owners.
+  const clampedTimer = (stamp, at, windowMs) => Math.min(at, Math.max(Math.max(0, at - windowMs), stamp));
+  const timerReadersExact = (raw) => {
+    const at = raw?.legacy?.at, conq = raw?.legacy?.conq, mined = raw?.legacy?.minedw;
+    const encoded = JSON.parse(raw.legacyRaw), inventory = JSON.parse(raw.inventoryRaw);
+    const canonicalStamp = (stamp, windowMs) => typeof stamp === 'number' && Number.isFinite(stamp)
+      && stamp === clampedTimer(stamp, at, windowMs);
+    return Number.isSafeInteger(at) && at >= 0
+      && Array.isArray(conq) && conq.every((row) => Array.isArray(row) && row.length === 2
+        && row[0] !== null && row[1] && typeof row[1] === 'object' && !Array.isArray(row[1])
+        && canonicalStamp(row[1].t, 3_600_000))
+      && Array.isArray(mined) && mined.every((row) => Array.isArray(row) && row.length === 2
+        && row[0] !== null && canonicalStamp(row[1], 18_000_000))
+      && same(conq, raw.playerRow?.data?.conq) && same(conq, encoded?.conq)
+      && same(mined, inventory?.data?.minedw) && same(mined, encoded?.minedw)
+      && JSON.stringify(inventory) === raw.inventoryRaw;
+  };
+  const projectedRows = (raw, expectedExportAt = null) => {
     if (!raw?.playerRow?.data || !raw?.catalogRow?.data || !raw?.legacy
       || ['creaturesRaw', 'inventoryRaw', 'settingsRaw'].some((key) => typeof raw[key] !== 'string')) return null;
     const player = structuredClone(raw.playerRow), catalog = structuredClone(raw.catalogRow);
@@ -4816,10 +4835,25 @@ const assessBoundedDescentWaveOff = ({
     delete legacy.hp;
     delete legacy.wvo;
     delete legacy.at;
+    let inventoryRaw = raw.inventoryRaw;
+    if (expectedExportAt !== null) {
+      // Derive expected successor bytes from the predecessor; never rewrite
+      // observed after evidence or exempt a timer record from comparison.
+      const conq = raw.legacy.conq.map(([id, row]) => [id, { ...row,
+        t: clampedTimer(row.t, expectedExportAt, 3_600_000) }]);
+      const mined = raw.legacy.minedw.map(([id, stamp]) => [id,
+        clampedTimer(stamp, expectedExportAt, 18_000_000)]);
+      player.data.conq = structuredClone(conq);
+      legacy.conq = conq;
+      legacy.minedw = mined;
+      const inventory = JSON.parse(raw.inventoryRaw);
+      inventory.data.minedw = mined;
+      inventoryRaw = JSON.stringify(inventory);
+    }
     return { player, catalog, legacy, creatures: raw.creaturesRaw,
-      inventory: raw.inventoryRaw, settings: raw.settingsRaw };
+      inventory: inventoryRaw, settings: raw.settingsRaw };
   };
-  const beforeProjection = projectedRows(beforeRaw), afterProjection = projectedRows(afterRaw);
+  const beforeProjection = projectedRows(beforeRaw, afterRaw?.legacy?.at), afterProjection = projectedRows(afterRaw);
   const beforeCarrier = beforeRaw?.catalogRow?.extensions?.['descent.wave-offs'] ?? null;
   const afterCarrier = afterRaw?.catalogRow?.extensions?.['descent.wave-offs'] ?? null;
   let prior = null, next = null;
@@ -4905,6 +4939,7 @@ const assessBoundedDescentWaveOff = ({
     Number.isSafeInteger(raw?.legacy?.at) && raw.legacy.at >= 0
       && raw.playerRow?.data?.at === raw.legacy.at
       && JSON.parse(raw.legacyRaw)?.at === raw.legacy.at));
+  check('canonical timer readers agree', timerReadersExact(beforeRaw) && timerReadersExact(afterRaw));
   check('no durable rewards or other changes', beforeProjection !== null && afterProjection !== null
     && same(beforeProjection, afterProjection)
     && same(afterRaw?.catalogRow?.data?.wvo, afterRaw?.legacy?.wvo)
@@ -28956,7 +28991,7 @@ if (OUTCOME_CONTROLS_ONLY) {
   console.log('SLICE OUTCOME CONTROLS: PASS — two source-generated leaf-seed-colliding worlds retain distinct Search/name/Atlas/Land/save-reload/share identity, and F4 heartbeat lease-storage plus revision-read failures stop answerability/accrual/audio/heartbeat without automatic reacquisition before a read-only convergence reload.');
   process.exit(0);
 }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact 77-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT absent; Training recovery reload-only · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact ' + V2_DRAFT_BULLET_COUNT + '-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT absent; Training recovery reload-only · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
 console.log(ARC4_SLICE_PASS_MARKER);
 console.log(sliceScreenshotInventoryLine());
