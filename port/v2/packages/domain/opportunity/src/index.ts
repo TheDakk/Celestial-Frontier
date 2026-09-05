@@ -6,5 +6,6 @@
 export * from './planner.js';
 export * from './field-samples.js';
 export * from './economy-source-model.js';
+export * from './descent-waveoffs.js';
 export * from './snapshot.js';
 export * from './state.js';

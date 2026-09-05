@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
-import { getGuideCatalogue } from '../apps/game/src/guide-content.js';
+import { getGuideCatalogue, getGuideTopic } from '../apps/game/src/guide-content.js';
 import { getReleaseHistory, V2_DRAFT_RELEASE } from '../apps/game/src/release-content.js';
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { assessArc4EpochSnapshot } from '../tools/arc4-browser-contract.mjs';
@@ -102,7 +102,7 @@ function executableDeclaration<T>(name: string, nextDeclaration: string): T {
     'hasUnnegatedSentenceClaim',
     'V2_DRAFT_BULLET_COUNT',
     `return (${expression});`,
-  )(hasUnnegatedSentenceClaim, 77) as T;
+  )(hasUnnegatedSentenceClaim, 78) as T;
 }
 
 interface GuideSpec {
@@ -704,6 +704,115 @@ describe('sixth Slice red contract repairs', () => {
     ]);
   });
 
+  it('keeps the existing Land lesson and Guide ingress truthful about exact-world descent', () => {
+    const landOwner = section(
+      sliceSource,
+      "  const landCopy = await evalT(`",
+      "  /* The final lesson allows only Earth's exact Land button.",
+    );
+    expect(landOwner.split('  if (')).toHaveLength(2);
+    const conditionStart = landOwner.indexOf('  if (') + '  if ('.length;
+    const conditionEnd = landOwner.indexOf(') {', conditionStart);
+    expect(conditionEnd).toBeGreaterThan(conditionStart);
+    const rejects = new Function(
+      'landCopy', `return (${landOwner.slice(conditionStart, conditionEnd)});`,
+    ) as (copy: string) => boolean;
+    const trainingSource = readFileSync(
+      new URL('../apps/game/src/training.ts', import.meta.url), 'utf8',
+    );
+    const lesson = section(
+      trainingSource,
+      "      id: 'land', spot:",
+      "      when: (t, d) => t === 'landfall'",
+    );
+    expect(lesson.split('      text: () => ')).toHaveLength(2);
+    const expression = lesson.slice(lesson.indexOf('      text: () => ')
+      + '      text: () => '.length).trim().replace(/,$/u, '');
+    const html = new Function(`return (${expression});`)() as string;
+    const copy = html.replace(/<[^>]+>/gu, '').replace(/\s+/gu, ' ').trim();
+    expect(rejects(copy)).toBe(false);
+    for (const needle of [
+      'Press Land safely on Earth’s card',
+      'Earth and known-world returns are guaranteed',
+      'same button and visible approach note show the exact current success chance',
+      'possible HP cost, and learned approach',
+      'a failed approach waves off safely, cannot defeat you',
+      'teaches that exact world for a stronger next attempt',
+    ]) {
+      expect(copy.split(needle), needle).toHaveLength(2);
+      expect(rejects(copy.replace(needle, 'required descent disclosure removed')), needle).toBe(true);
+      expect(rejects(copy), needle).toBe(false);
+    }
+    for (const contradiction of [
+      'This slice does not simulate descent odds or wave-offs.',
+      'Descent odds are not yet ported.',
+      'Wave-offs can defeat you.',
+      'Wave-offs share learning across same-seed worlds.',
+      'Earth landing can fail.',
+      'Known-world returns can fail.',
+      'Reinforced Hull reduces descent damage.',
+    ]) {
+      expect(rejects(`${copy} ${contradiction}`), contradiction).toBe(true);
+      expect(rejects(copy), contradiction).toBe(false);
+    }
+
+    const guideOwner = section(glassSource,
+      "              {id:'landing',required:",
+      "              {id:'search',required:",
+    ).trim().replace(/,$/u, '');
+    const spec = new Function(`return (${guideOwner});`)() as {
+      id: string; required: string[]; requiredControls: string[];
+      forbidden: string[]; stale: string; contradictions: string[];
+    };
+    const required = [
+      'A first-time descent uses the exact world’s authored type and biome chance, current deterministic weather, equipped landing gear, and exact-world approach learning',
+      'The Land control and its visible approach note disclose the final success chance, nonlethal wave-off damage range, and learned approach before commitment',
+      'A 100% approach is shown as guaranteed with zero descent damage risk',
+      'A wave-off keeps the ship in orbit, leaves the explorer at 1 HP or more',
+      'adds +20% exact-world approach knowledge for the next attempt, up to five wave-offs',
+      'Earth, Training, and known-world returns are guaranteed and consume no landing draws',
+    ];
+    expect(spec.requiredControls).toEqual(required);
+    expect(spec.required).toEqual([
+      'Any galaxy, star, or planet route arriving from Search, the Star Atlas, or a saved location is regenerated from the seeded universe before it is accepted',
+      'navigation uses only the source-verified destination',
+      'A stale or forged route cannot act',
+      ...required,
+    ]);
+    expect(spec.contradictions).toEqual([
+      'The legacy descent-risk and wave-off model is not yet part of this slice.',
+      'legacy descent odds and wave-off progression are not yet ported.',
+      'Wave-offs can defeat the explorer.',
+      'Wave-offs teach every world with the same planet seed.',
+      'A 100% approach still risks HP damage.',
+      'Earth, Training, and known-world returns can fail.',
+      'Reinforced Hull reduces descent damage.',
+    ]);
+    const checkStart = '            const check=(article,spec)=>';
+    const checkEnd = ';\n            let error=null,baselineComplete=false;';
+    const checkOwner = section(glassSource, checkStart, checkEnd);
+    const checkExpression = checkOwner.slice(checkStart.length).replaceAll('\\\\s', '\\s');
+    const check = new Function(`return ((article,spec)=>${checkExpression});`)() as (
+      article: { textContent: string }, expected: typeof spec,
+    ) => { ok: boolean; missing: string[]; stale: string[] };
+    const body = getGuideTopic('landing')!.body.replace(/<[^>]+>/gu, '')
+      .replace(/\s+/gu, ' ').trim();
+    expect(check({ textContent: body }, spec).ok).toBe(true);
+    for (const needle of required) {
+      expect(body.split(needle), needle).toHaveLength(2);
+      const result = check({ textContent: body.replace(needle, 'required descent disclosure removed') }, spec);
+      expect(result.ok, needle).toBe(false);
+      expect(result.missing, needle).toEqual([needle]);
+      expect(check({ textContent: body }, spec).ok).toBe(true);
+    }
+    for (const contradiction of [spec.stale, ...spec.contradictions]) {
+      const result = check({ textContent: `${body} ${contradiction}` }, spec);
+      expect(result.ok, contradiction).toBe(false);
+      expect(result.stale.length, contradiction).toBeGreaterThan(0);
+      expect(check({ textContent: body }, spec).ok).toBe(true);
+    }
+  });
+
   it('keeps Guide Release and valid-CF1 waiters diagnostic instead of truthy or lossy', () => {
     const guideRelease = section(
       sliceSource,
@@ -755,8 +864,8 @@ describe('sixth Slice red contract repairs', () => {
     expect(cf1).not.toContain("result.mode==='system'&&result.title==='Blue Earth'?result:null");
   });
 
-  it('keeps a fixed 77-row Guide oracle with five independent population controls', () => {
-    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 77;');
+  it('keeps a fixed 78-row Guide oracle with five independent population controls', () => {
+    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 78;');
     const owner = section(
       sliceSource,
       '  const releaseDraftCheck = `',
@@ -799,10 +908,10 @@ describe('sixth Slice red contract repairs', () => {
     const glassMissingBulletCount = Number(
       glassSource.match(/inventory\?\.bulletCount===(\d+)/)?.[1],
     );
-    expect(glassExpectedBulletCount).toBe(77);
-    expect(glassMissingBulletCount).toBe(76);
+    expect(glassExpectedBulletCount).toBe(78);
+    expect(glassMissingBulletCount).toBe(77);
     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
-    expect(glassSource).toContain('77-outcome development inventory');
+    expect(glassSource).toContain('78-outcome development inventory');
     expect(glassSource).not.toContain('55-outcome development inventory');
   });
 

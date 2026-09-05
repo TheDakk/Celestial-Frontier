@@ -165,6 +165,7 @@ describe('Engineering panel production read model', () => {
       'fieldsuit', 'hazmat', 'thermal', 'presshull', 'cryoline', 'visor', 'compass',
       'surgeon', 'fieldlegs', 'cg-proto', 'cg-genesis', 'cg-void', 'cg-chron',
       'rl-stone', 'rl-sky', 'rl-life', 'rl-void',
+      'struts', 'stabil', 'anchor', 'greaves', 'magboots', 'gravboots', 'rl-ocean',
     ];
     const model = projectEngineeringPanelReadModel({
       ship: ship([]), nav: surface(world(MARS)), engineering: state(),
@@ -177,7 +178,7 @@ describe('Engineering panel production read model', () => {
     expect(recipes.map(({ baseId, effectSupport }) => ({ id: baseId, effectSupport })))
       .toEqual(oracle.map(({ id, effectSupport }) => ({ id, effectSupport })));
     expect(oracle.filter(({ effectSupport }) => effectSupport === 'unavailable').map(({ id }) => id))
-      .toEqual(['struts', 'stabil', 'anchor', 'greaves', 'magboots', 'gravboots', 'rl-ocean']);
+      .toEqual([]);
     expect(oracle.filter(({ modelEnabled }) => modelEnabled === 'true').map(({ id }) => id))
       .toEqual(['plate', 'chip', 'headlamp']);
     const glass = fs.readFileSync(fileURLToPath(new URL('../tools/glassmatrix.mjs', import.meta.url)), 'utf8');
@@ -230,7 +231,7 @@ describe('Engineering panel production read model', () => {
     expect(model.fabricationGroups.flatMap(({ recipes }) => recipes).find(({ baseId }) => baseId === 'fieldsuit'))
       .toMatchObject({
         effectSupport: 'live', status: 'unavailable',
-        effectDetail: 'Live effects: bioscan protection. Unavailable effects: landing safety.',
+        effectDetail: 'Live effects: bioscan protection, landing safety.',
       });
     expect(model.fabricationGroups.flatMap(({ recipes }) => recipes).find(({ baseId }) => baseId === 'rig1')?.effectSupport)
       .toBe('live');
@@ -254,7 +255,7 @@ describe('Engineering panel production read model', () => {
     });
     expect(eligible.find(({ baseId }) => baseId === 'fieldsuit')).toMatchObject({
       status: 'unavailable', effectSupport: 'live',
-      effectDetail: 'Live effects: bioscan protection. Unavailable effects: landing safety.',
+      effectDetail: 'Live effects: bioscan protection, landing safety.',
     });
     expect(eligible.find(({ baseId }) => baseId === 'fieldsuit')?.reason)
       .toContain('Missing 2 Carbon Weave.');

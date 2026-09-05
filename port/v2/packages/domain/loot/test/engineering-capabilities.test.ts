@@ -82,12 +82,17 @@ describe('@cf/domain-loot — registered engineering capabilities', () => {
       explorerMealHealBonus: 0.2,
       bioscanDamageReduction: 0.7,
       travelSpeedBonus: 1,
+      landingSuccessBonus: 10,
+      landingFamilyBonus: { lava: 0, venus: 0, gas: 0, ice: 0 },
+      landingGuaranteed: false,
+      waveOffDamageReduction: 0,
     });
     expect(capabilities.systemIds).toEqual(['jumpdrive', 'autoext', 'cscoop']);
     expect(capabilities.equippedInstanceIds).toHaveLength(5);
     expect(capabilities.fingerprint).toMatch(/^ec1:/);
     expect(Object.isFrozen(capabilities)).toBe(true);
     expect(Object.isFrozen(capabilities.equippedInstanceIds)).toBe(true);
+    expect(Object.isFrozen(capabilities.landingFamilyBonus)).toBe(true);
     expect(isEngineeringCapabilitySnapshot(capabilities)).toBe(true);
     expect(isEngineeringCapabilitySnapshot({ ...capabilities })).toBe(false);
   });

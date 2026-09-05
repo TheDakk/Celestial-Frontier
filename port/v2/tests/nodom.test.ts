@@ -72,6 +72,7 @@ const EXPECTED_DOMAIN_FILES = Object.freeze([
   'loot/src/recipe.ts',
   'naming/src/cleanname.verbatim.js',
   'naming/src/index.ts',
+  'opportunity/src/descent-waveoffs.ts',
   'opportunity/src/field-samples.ts',
   'opportunity/src/index.ts',
   'opportunity/src/economy-source-model.ts',
@@ -289,6 +290,19 @@ describe('★ GATE B — no-DOM / no-nondeterminism lint over packages/domain', 
       expect(hits, hits.join('; ')).toEqual([]);
     });
   }
+  it('keeps the app-placed descent policy pure under the same domain rules', () => {
+    const rel = 'apps/game/src/descent-policy.ts';
+    const raw = fs.readFileSync(path.join(here, '..', rel), 'utf8');
+    expect(scanFile(rel, raw)).toEqual([]);
+    for (const injected of [
+      'export const forbiddenProbe = document.body;',
+      'export const forbiddenProbe = Math.random();',
+      'export const forbiddenProbe = Date.now();',
+    ]) {
+      expect(scanFile(rel, `${raw}\n${injected}\n`).length, injected).toBeGreaterThan(0);
+      expect(scanFile(rel, raw), `${injected} restoration`).toEqual([]);
+    }
+  });
   const deterministicControls = [
     {
       name: 'Math.random',

@@ -8,7 +8,7 @@ This is a live checkpoint report, not final acceptance. Base develop:
 | Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
 | --- | --- | --- | --- | --- |
 | 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
-| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
 | 2b descent/wave-offs | Pending | — | — | — |
 | 2c 50-Paragon hunt | Pending | — | — | — |
 | 2d exact-instance progression | Pending | — | — | — |
@@ -1331,4 +1331,281 @@ verifier proof. No hosted attempt occurred.
     }
   ]
 }
+```
+
+## Step 2b integration and unattended descent choices
+
+Step 2a completed checkpoint `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed at
+2026-09-05 08:48:02 UTC before any Step2b product was applied. Five ordered 2b layers applied,
+preserving the encoder import already added by 2a. Current documentation and Guide/Training
+now describe deterministic landing and wave-offs. The draft grows 77→78; all count pins and
+the rendered-li hash move together to `af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53`.
+
+Use the authored v1 terrain/biome tables with existing v2 seeded static weather. Earth, Training
+and proven canonical revisits roll nothing; ordinary approaches use two named SessionRNG draws
+in one ordinal/receipt even when gear guarantees success. Preflight every possible successor
+before consuming RNG. Wave-offs remain in orbit, leave HP at least1 and award no landing deed.
+Canonical learning gains20 percentage points per failure, capped at5; success clears that world.
+Landing/struts effects apply, while Hull stays hostile Discover Life only.
+
+For existing unresolved seed-only wave-off evidence, preserve the authored legacy count until
+its first matching source-verified canonical encounter binds it once. A legacy seed cannot prove
+its original full address; this least-change compatibility choice avoids deleting stored learning
+or fabricating an old address. Fresh-start v2 games begin empty. No new import door or migration
+policy is introduced. Four deeper current references and the eight current overlays agree;
+dated evidence remains unchanged.
+
+Existing Pertar evidence expectations are independently derived from the unchanged seed68 raw
+fixture: Volcanic Archipelago base70, seeded rain−5, no worn bonus, success draw
+0.3569247468840331 under65%; damage draw0.14373434195294976, landing retains55HP. Current
+source-ready draw map stays empty; action-ready owns one descent.success and descent.damage.
+Receipt field inventory extends19→25 for the real descent and existing carrier seals. Historical
+Glass planned ledgers remain unchanged. Seven remaining descent recipe effects become live,
+while exact62 recipe IDs, statuses, enabled-state affordability and other gates remain.
+
+## Step 2b unused-code fast stop
+
+Typecheck PASS; artunused stopped before Vitest (1.356s):
+
+```text
+apps/game/src/arc0-landing-action.ts(36,3): error TS6133: 'readDescentWaveOffCarrierV1' is declared but its value is never read.
+tests/arc0-landing-action.test.ts(100,10): error TS6133: 'solWorldOfType' is declared but its value is never read.
+```
+
+Removed the unused import and uncalled fixture helper only; every action assertion remains.
+Original log SHA-256 `1fa13ec1e7ac4499edf92f213d2067410d0abeb2d23f94c006de5395b93e8f3e`.
+No browser ran after the red.
+
+## Step 2b full-fast current-owner red
+
+Typecheck/artunused PASS. Full Vitest: 3 failed / 287 passed files; 5 failed / 3,007 passed /
+1 skipped (60.02s). Log SHA-256 `a16d651476e0ec9f297dae29b69509086d00f46a74ee79d1179134dc60e0af8e`.
+The exact Field Suit detail now includes connected landing safety. Landing now queues aggregate
+progression only for a durable landed result; a durable wave-off cannot trigger that catch-up.
+The existing strict wiring test is being separated into that exact landed-only owner and the
+unchanged ordinary owners, with absent/unguarded/reversed/refused-result mutations. Orbital
+scanner refresh now has distinct landed/wave-off branches and is under bounded source review.
+No browser ran after red.
+
+```text
+ FAIL  tests/arc9-main-wiring.test.ts > Arc 9 Main/Records integration > keeps aggregate refresh receipt-bearing, nonoptimistic, Training-safe, and player-visible
+AssertionError: expected [ Array(1) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "one or more durable product owners do not schedule progression catch-up",
++ ]
+
+ ❯ tests/arc9-main-wiring.test.ts:275:40
+    273| describe('Arc 9 Main/Records integration', () => {
+    274|   it('keeps aggregate refresh receipt-bearing, nonoptimistic, Training…
+    275|     expect(arc9MainErrors(mainSource)).toEqual([]);
+       |                                        ^
+    276|   });
+    277|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/engineering-panel-model.test.ts > Engineering panel production read model > projects a registered lifeless surface, all six research rows, and the exact 62-recipe catalogue
+AssertionError: expected { baseId: 'fieldsuit', …(11) } to match object { effectSupport: 'live', …(2) }
+(14 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "effectDetail": "Live effects: bioscan protection. Unavailable effects: landing safety.",
++   "effectDetail": "Live effects: bioscan protection, landing safety.",
+    "effectSupport": "live",
+    "status": "unavailable",
+  }
+
+ ❯ tests/engineering-panel-model.test.ts:232:8
+    230|       .toBe('owned');
+    231|     expect(model.fabricationGroups.flatMap(({ recipes }) => recipes).f…
+    232|       .toMatchObject({
+       |        ^
+    233|         effectSupport: 'live', status: 'unavailable',
+    234|         effectDetail: 'Live effects: bioscan protection. Unavailable e…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/engineering-panel-model.test.ts > Engineering panel production read model > offers connected contact gear only when its ordinary fabrication gates pass
+AssertionError: expected { baseId: 'fieldsuit', …(11) } to match object { status: 'unavailable', …(2) }
+(14 matching properties omitted from actual)
+
+- Expected
++ Received
+
+  {
+-   "effectDetail": "Live effects: bioscan protection. Unavailable effects: landing safety.",
++   "effectDetail": "Live effects: bioscan protection, landing safety.",
+    "effectSupport": "live",
+    "status": "unavailable",
+  }
+
+ ❯ tests/engineering-panel-model.test.ts:256:67
+    254|       status: 'unavailable', effectSupport: 'live',
+    255|     });
+    256|     expect(eligible.find(({ baseId }) => baseId === 'fieldsuit')).toMa…
+       |                                                                   ^
+    257|       status: 'unavailable', effectSupport: 'live',
+    258|       effectDetail: 'Live effects: bioscan protection. Unavailable eff…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/orbital-mineral-main-wiring.test.ts > v2 Deep Scanner — main Survey wiring > uses the registered Arc 3 state and exact selected address through one escaped read-only row path
+AssertionError: expected [ 'surface-refresh-removal' ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "surface-refresh-removal",
++ ]
+
+ ❯ tests/orbital-mineral-main-wiring.test.ts:152:38
+    150| describe('v2 Deep Scanner — main Survey wiring', () => {
+    151|   it('uses the registered Arc 3 state and exact selected address throu…
+    152|     expect(wiringErrors(mainSource)).toEqual([]);
+       |                                      ^
+    153|   });
+    154|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/orbital-mineral-main-wiring.test.ts > v2 Deep Scanner — main Survey wiring > negative-controls immediate/reload refresh ownership and duplicate Survey effects
+AssertionError: expected [] to include 'surface-refresh-removal'
+ ❯ tests/orbital-mineral-main-wiring.test.ts:258:45
+    256|         '      updateChips();',
+    257|     );
+    258|     expect(wiringErrors(retainedOnSurface)).toContain('surface-refresh…
+       |                                             ^
+    259|
+    260|     const duplicatePing = replaceInSectionExact(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  3 failed | 287 passed (290)
+      Tests  5 failed | 3007 passed | 1 skipped (3013)
+   Start at  04:50:42
+   Duration  60.02s (transform 10.26s, setup 0ms, import 93.95s, tests 113.39s, environment 760ms)
+
+
+```
+
+## Step 2b existing-owner corrections — focused PASS
+
+The three existing test owners pass **3 files / 16 tests** (798ms) against current source.
+Engineering retains the same Field Suit affordability gate while requiring both now-live effects.
+Arc9's ordinary durable owners retain their prior aggregate catch-up rule; the separately checked
+Land owner requires one durable landed-only follow-up, with omission, unguarded, reversed-result
+and refused-result mutations. The original minimum total owner count remains ten.
+
+The orbital scanner correction no longer counts all refresh calls indiscriminately. Training and
+ordinary successful landing must enter SurfaceNav then refresh; wave-off must refresh, retain its
+SystemNav and visible card, and return false before successful-landing publication. All original
+address, escaping, no-write, research, reload and duplicate-Survey controls remain. Independent
+removals and wrong-navigation mutations reject. The test-only patch is SHA-256
+`1c7bc7e873d04390455af3bf26f9bcc6b9e1125235d9ca1b60147c25cf3b2bda`.
+The separate scratch preparation initially had a mutation span selecting an earlier repeated
+world-identity assignment; it was narrowed to the exact doLand three-line sequence before its
+4/4 PASS. No product code, timeout, browser instrument or producer changed in these repairs.
+
+Final rebuilt producer remains `8c30457fe75bc5d148d1c184547221b50d32f5079b251200425665677c123d0c`;
+measurement authority, ruler, ceilings and samples match develop. Full fast follows.
+
+### Retained scratch mutation-anchor red (preparation only)
+
+This is the exact visible tool-output transcript, not an original redirected raw log; the
+original tool exit metadata was not retained. SHA-256
+`49be83da4b31b5a8ebe047c26a33a81e1e8e01a1c0f40cfd9ca3718c9482a0fb`.
+No product regression or rerun is inferred from this test-preparation failure.
+
+```text
+
+ RUN  v4.1.10 /private/tmp/cf-step2b-orbital-wiring-followup/after/port/v2
+
+ ❯ tests/orbital-mineral-main-wiring.test.ts (4 tests | 1 failed) 14ms
+     × negative-controls immediate/reload refresh ownership and duplicate Survey effects 5ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/orbital-mineral-main-wiring.test.ts > v2 Deep Scanner — main Survey wiring > negative-controls immediate/reload refresh ownership and duplicate Survey effects
+Error: source section must contain exactly one mutation target:       nav = surface;
+ ❯ replaceInSectionExact tests/orbital-mineral-main-wiring.test.ts:45:11
+     43|   const body = source.slice(start, end);
+     44|   if (occurrences(body, needle) !== 1) {
+     45|     throw new Error(`source section must contain exactly one mutation …
+       |           ^
+     46|   }
+     47|   return source.slice(0, start) + body.replace(needle, replacement) + …
+ ❯ tests/orbital-mineral-main-wiring.test.ts:302:32
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 3 passed (4)
+   Start at  04:54:54
+   Duration  113ms (transform 14ms, setup 0ms, import 20ms, tests 14ms, environment 0ms)
+
+
+```
+
+## Step 2b final fast PASS
+
+Typecheck/artunused PASS; full current selection:
+
+```text
+ Test Files  290 passed (290)
+      Tests  3012 passed | 1 skipped (3013)
+   Duration  62.15s (transform 12.08s, setup 0ms, import 102.73s, tests 113.92s, environment 642ms)
+```
+
+Commit the complete authored descent source before Slice → small-phone → large-phone;
+checkpoint2b awaits that unchanged-source browser acceptance and push.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.384,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.196,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 62.685,
+    "log": "3-npx.log",
+    "sha256": "adb00210b3e65b7cf2cd809d9fa4fb90763cd29e1766e81f026fb9f0843a6342"
+  }
+]
 ```

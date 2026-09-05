@@ -151,6 +151,8 @@ import {
   assessArc4Exhaustion,
   assessArc4PublicationConvergence,
   assessArc4PertarLedgerPrefix,
+  ARC4_PERTAR_DESCENT_LANDING,
+  ARC4_PERTAR_DESCENT_DRAWS,
   assessArc4StaleConvergence,
   assessArc4StorageRefusal,
   assessArc4TameGreetingStartObservation,
@@ -1197,7 +1199,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 77;
+const V2_DRAFT_BULLET_COUNT = 78;
 const GUIDE_RELEASE_TAIL_TEXT = '🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -6563,8 +6565,8 @@ try {
     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
-    count: 77,
-    sha256: '8f7a40185fb2a89c1fe055b0109623f77d087cdc4248ee00fe20398fe3456c4f',
+    count: 78,
+    sha256: 'af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -15610,6 +15612,13 @@ try {
       && receipt?.row?.ordinal === beforeAuthorityOrdinal
       && facts?.receiptOrdinal === beforeAuthorityOrdinal
       && facts?.schema === 'cf-v2-arc0-landing-witness/v1'
+      && Object.keys(facts).length === 25
+      && facts.descentWeather === ARC4_PERTAR_DESCENT_LANDING.descentWeather
+      && canonicalJson(facts.descent) === canonicalJson(ARC4_PERTAR_DESCENT_LANDING.descent)
+      && facts.waveOffStateSuccessorSeal === ARC4_PERTAR_DESCENT_LANDING.waveOffStateSuccessorSeal
+      && facts.waveOffLegacySuccessorSeal === ARC4_PERTAR_DESCENT_LANDING.waveOffLegacySuccessorSeal
+      && facts.arc2LootSuccessorSeal === ARC4_PERTAR_DESCENT_LANDING.arc2LootSuccessorSeal
+      && facts.waveOffProtectedStateSeal === null
       && facts?.worldKey === ARC4_PERTAR_FIXTURE.worldKey
       && facts?.planetSeed === ARC4_PERTAR_FIXTURE.planet.seed
       && facts?.planetOrdinal === ARC4_PERTAR_FIXTURE.planet.ordinal
@@ -15723,7 +15732,8 @@ try {
         && committedRaw?.revisionRaw === String(committedRaw.revision)
         && committedAuthority?.seed === beforeAuthority?.seed
         && committedAuthority?.ordinal === beforeAuthority?.ordinal + 1
-        && canonicalJson(committedAuthority?.draws) === canonicalJson(beforeAuthority?.draws),
+        && canonicalJson(beforeAuthority?.draws) === canonicalJson(ARC4_PERTAR_FIXTURE.initialSessionDraws)
+        && canonicalJson(committedAuthority?.draws) === canonicalJson(ARC4_PERTAR_DESCENT_DRAWS),
       durableLandingReward: arc0LandingPublicationProductExact(evidence),
       durableRoute: arc4PertarLegacyRouteExact(committedRaw, arc4PertarSavedPlanetView)
         && arc4PertarSplitRouteExact(committedRaw, arc4PertarSavedPlanetView)
@@ -26806,9 +26816,16 @@ try {
     fails.push('DRILL KEYBOARD: land did not become the focused/reachable action after Atlas: ' + JSON.stringify(landFocus));
   }
   const landCopy = await evalT(`(document.querySelector('[data-sel=tuttext]')||{}).textContent||''`);
-  if (!/does not simulate.*descent odds or wave-offs/i.test(landCopy)
-    || /hostile worlds fight the descent|always shows your odds/i.test(landCopy)) {
-    fails.push('DRILL COPY: Land lesson advertises unported descent odds/wave-offs: ' + JSON.stringify(landCopy));
+  if (!/Press Land safely on Earth’s card/i.test(landCopy)
+    || !/Earth and known-world returns are guaranteed/i.test(landCopy)
+    || !/same button and visible approach note show the exact current success chance/i.test(landCopy)
+    || !/possible HP cost, and learned approach/i.test(landCopy)
+    || !/a failed approach waves off safely, cannot defeat you/i.test(landCopy)
+    || !/teaches that exact world for a stronger next attempt/i.test(landCopy)
+    || /does not simulate.*descent odds or wave-offs|descent[^.]*not yet ported/i.test(landCopy)
+    || /wave-offs can defeat you|wave-offs share learning across same-seed worlds/i.test(landCopy)
+    || /Earth landing can fail|known-world returns can fail|Reinforced Hull reduces descent damage/i.test(landCopy)) {
+    fails.push('DRILL COPY: Land lesson lost truthful safe-return, chance, HP, or exact-world learning disclosure: ' + JSON.stringify(landCopy));
   }
   /* The final lesson allows only Earth's exact Land button. The canvas must
      reject focus/pointer input; breaking that exact lock must expose the

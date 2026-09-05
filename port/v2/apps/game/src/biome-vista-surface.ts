@@ -111,7 +111,19 @@ function residentClass(genome: Readonly<Record<string, unknown>>): ResidentClass
   return 'land';
 }
 
-function staticWeather(type: PlanetType, band: string, seed: number): string | null {
+export type StaticBiomeWeatherV1 = 'rain' | 'snow' | 'dust' | 'ash' | 'haze' | null;
+
+/** One deterministic weather authority shared by vista presentation and
+ * descent policy, so the visible storm and its landing modifier cannot drift. */
+export function projectStaticBiomeWeatherV1(
+  typeValue: string,
+  band: string,
+  seed: number,
+): StaticBiomeWeatherV1 {
+  const type = planetType(typeValue);
+  if (typeof band !== 'string' || !Number.isInteger(seed) || seed < 0 || seed > 0xffff_ffff) {
+    throw new TypeError('static biome weather requires a canonical climate and planet seed');
+  }
   const candidate = type === 'terran'
     ? (band === 'temperate' ? 'rain' : band === 'hot' ? 'haze' : 'snow')
     : type === 'ocean' ? 'rain'
@@ -163,7 +175,7 @@ export function buildBiomeVistaRenderRequestV1(
     biomeKey: key,
   });
   const tod = timeOfDay(planet.seed);
-  const wx = staticWeather(type, band, planet.seed);
+  const wx = projectStaticBiomeWeatherV1(type, band, planet.seed);
   const rows = roster.view.all;
   const fauna = rows.filter((row) => row.kingdom === 'fauna');
   const land = fauna.filter((row) => residentClass(row) === 'land');

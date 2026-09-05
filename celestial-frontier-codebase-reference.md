@@ -1,32 +1,51 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-## Overnight Batch 4 — checkpoint 2a implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2b implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
 Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
 486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
-The authored accepted Discover Life Starter Charter now completes only on a later explicit
-Bioscan: one completion grants its established 15 Stardust and Earpiece in that same F4
-receipt/CAS. Acceptance never backfills earlier Survey records; Capture and landfall cannot
-substitute. Exact gear publication, stale tabs, capacity/protection and failed writes refuse
-without partial reward, hazard, receipt or RNG publication. Weekly Charters stay parked.
-Descent, Paragon acquisition, individual progression presentation and mature Atlas remain later
-checkpoints. Existing authored tables and the eighteen Arc 4 namespaces/v5 topology govern.
-V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 77 bullets
-at this checkpoint. Real-device v2 persistence and the combined Arc 4.5 / separate Arc 5.5 HUMAN
+The accepted Discover Life Starter Charter completes only on a later explicit Bioscan for its
+established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Survey or Capture
+backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
+Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
+and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
+two SessionRNG draws and one receipt/CAS. A wave-off leaves orbit, HP at least 1 and canonical
+learning (+20 percentage points per failure, capped at five), without landing rewards. Success
+clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
+Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
+fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
+Paragon acquisition, individual progression presentation and mature Atlas remain later checkpoints.
+Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 78 bullets
+at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
 reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
 
-## V2 beta Research consumers — implementation as of 2026-09-04
+## V2 beta Research and descent consumers — implementation as of 2026-09-05
 
 The six-row Engineering catalogue is fully purchasable through the existing Arc 3 receipt/CAS
 owner. `projectEngineeringCapabilities` replays the registered Arc 2 loadout and exposes the legacy
 `heal`, capped `scut`, and `speed` effects beside the existing mining/skimming/capture values.
+It also exposes `landingSuccessBonus` (`land`), `landingFamilyBonus` (`landfam`),
+`landingGuaranteed` (`land100`) and `waveOffDamageReduction` (`struts`) for descent.
 Deep Scanners keep their orbit-only mineral reveal; Reinforced Hull and `scut` gear feed the
 explicit living-world Bioscan hazard; Xenobotany and `heal` gear feed the explorer Flora meal; the
 three speed researches plus `speed` gear feed a deterministic, skippable, device/motion-bounded
 Search/CF1/Atlas travel presentation. Permanent Jump/Array/Intergalactic systems and Prime
 Signatures still own reach—speed research cannot cross a locked boundary.
+
+`descent-policy.ts` projects type/biome odds, deterministic weather, exact worn gear and learned
+approaches before `arc0-landing-action.ts` settles one selected outcome. Ordinary attempts reserve
+exactly `descent.success` and `descent.damage`; canonical Earth, Training and proven full-address
+landed returns consume no descent draws. A wave-off keeps orbit and the explorer at 1 HP or more;
+only HP and wave-off progress change in the save. Reinforced Hull does not reduce descent damage.
+The canonical wave-off extension owns full-address learning. Legacy seed-only counts remain
+unresolved compatibility evidence until the first matching source-proven non-Training descent
+settles and consumes them; inspection or Training alone cannot bind them, and later worlds sharing
+that leaf seed do not inherit the consumed count. Successful non-Training arrival clears the exact
+approach count; Training preserves it. Outcome, HP, learning and the compatibility mirror commit
+together under one receipt/CAS, with no optimistic publication or automatic retry.
 
 `explorer-meal.ts` owns exact legacy nourishment/poison arithmetic over one canonical Flora lot,
 with the beta-safe 1 HP floor, 330 stat ceiling, Vitality-derived maximum HP, and same-transaction
@@ -4524,8 +4543,8 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
-  by the 56 legacy releases. Its exact 77-bullet implemented-outcome inventory has rendered
-  ordered SHA-256 `8f7a40185fb2a89c1fe055b0109623f77d087cdc4248ee00fe20398fe3456c4f`
+  by the 56 legacy releases. Its exact 78-bullet implemented-outcome inventory has rendered
+  ordered SHA-256 `af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53`
   and is checked structurally and in the rendered Guide. Tail proof dispatches one adaptive
   native wheel per fresh exact-document/tail/hit-owner/geometry observation until the final item
   is visible at bottom, then restores scroll and inline overflow ownership exactly; unchanged

@@ -83,6 +83,7 @@ const SIGNATURE_NAMES: Readonly<Record<string, string>> = Object.freeze({
 });
 const LIVE_GEAR_EFFECTS = new Set([
   'yield', 'strike', 'skim', 'skimguard', 'contact', 'scut', 'heal', 'speed',
+  'land', 'landfam', 'land100', 'struts',
 ]);
 const MAX_GEAR_INVENTORY_REVISION = 0xffff_ffff;
 const EFFECT_NAMES: Readonly<Record<string, string>> = Object.freeze({
