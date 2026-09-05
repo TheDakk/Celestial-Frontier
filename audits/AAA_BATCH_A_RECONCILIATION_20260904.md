@@ -138,3 +138,50 @@ source checks are retained as earlier evidence, not reported as fresh runs. No n
 hosted attempt is authorized. Codex keeps this checkpoint local on `openai/mac`; Claude may
 continue review and the independent lane on `anthropic/windows`, without copying these local
 changes. No PR is needed for the test; no release or deployment occurs.
+
+## Continued Batch A — backed-up Git branch, concept example and browser audio
+
+Nick accepted Claude's disposition corrections and explicitly authorized the unchanged parked
+branch push. Fresh origin fetch and remote read-back passed: both parked refs remain
+`cf1b9a7843200ecc281c5113b4139909dc0e3a29`. Workflows remain label/manual-only, so no hosted
+workflow is triggered by that branch push. Batches 1–3 have a separate local ref through
+`8bf9c45…` and exact-source develop PASS; PR remains unopened. Full state/copy-ready fields live
+in `PARKED_BATCHES_1_3_PR_PREPARATION_20260904.md`. Batch 4 and WIP remain excluded.
+
+At Nick's separate request for a creature and ecosystem example, Blender authored a private
+Jungle world-inspired amphibian concept, working name **Lanternback**. Landed biome profile
+`jungle` permits amphibians and tree/vine/fern/flower/palm forms with humid weather. The invented
+specimen has four connected limbs, a swept tail, modeled gill fans, soft skin and restrained
+photophores. The scene uses layered plants, buttressed trunks, roots, a side pool, spores and
+atmospheric lighting. Two cameras share one 450-object/26-material scene. One bounded refinement
+softened the gill membranes and reduced skin gloss after inspecting the first preview.
+
+Final separate-reopen Blender 5.2.1 LTS / Cycles CPU / 64-sample renders both exit zero and were
+visually inspected: ecosystem **1600×1000**, 1,892,410 bytes; creature **1400×1000**, 1,667,468
+bytes. Scene SHA-256 `4f4cd1e8b10e838222584032048c986ca3bf2056b456095c0c5ce901d567cf92`.
+Logical private source ID: `cf-blender-lanternback-jungle-concept-20260904-v2`. The source,
+original revision, authoring modules and export recipe are hash-verified in two local locations;
+this remains **independent-backup-pending**, not an off-device backup. Location mappings stay in
+the private inventory. Renders/manifests stay outside the public game repository.
+
+This concept has no exact canonical genome mapping, motion, 132/300/440 coverage, texture-pack
+integration or iPhone performance proof. It does not replace protected portraits or satisfy the
+eight-body-plan acceptance. Nick's request for a concrete example authorizes this bounded private
+exploration while independent source-backup selection remains pending for production work.
+Blender is the authoring/render pipeline; the delivered game continues to use its browser/Pixi
+runtime. Players install none of the authoring tools.
+
+One isolated Edge 152.0.4191.62 / CDP 1.3 probe now decodes both unchanged REAPER/Surge WAV and
+FLAC outputs: stereo, 48 kHz, 192,000 frames, exactly four seconds. Both render through a 0.6-gain
+OfflineAudioContext graph with nonzero output and no clipping; invalid audio is correctly
+rejected. This proves browser decode/processing, not audible listening, autoplay, Safari/iPhone
+or in-game audio lifecycle acceptance. No game page, existing browser profile or save was touched.
+The probe uses the existing CDP launcher and cleans up its isolated browser. Structured proof,
+render hashes and exact-source profile evidence are committed in
+`AAA_BATCH_A_CONTINUATION_EVIDENCE_20260904.json`.
+
+Current user-selected coverage is static develop plus both existing phone preflights per agent
+PR; full Compendium/Slice/twelve-row Glass on develop-to-main or a separate on-demand label.
+Claude implements this policy on `anthropic/windows`. No new workflow/budget-policy edits were
+made here. Independent backup selection and human listening/device acceptance remain open.
+No candidate push, PR opening, hosted attempt, label, merge, purchase, Phase 2 or release.

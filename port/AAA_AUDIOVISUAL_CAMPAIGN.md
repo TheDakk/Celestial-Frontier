@@ -33,6 +33,26 @@ changes, hosted runs, release or deployment is authorized.
 These amendments supersede contradictory provisional paragraphs in the preserved reviewed
 plan below; the original complete wording is retained to make review context inspectable.
 
+## 2026-09-04 continuation — selected admission coverage and readiness
+
+Nick accepted Claude's disposition corrections. The entire parked branch is backed up unchanged
+on origin; Batches 1–3 through `8bf9c45…` have an exact-source develop PASS and a prepared,
+unopened PR. Batch 4 waits for the real save export and a separate PR; WIP stays parked.
+
+The selected future agent-PR coverage is browser-free develop plus the existing two phone
+preflight rows. Full Compendium → Slice → twelve-row Glass runs on develop-to-main and through
+a separately requested on-demand label. This supersedes this document's earlier full-chain-on-
+every-agent-PR requirement. Claude owns implementation on `anthropic/windows`; Codex makes no
+new workflow/budget-policy edits. No hosted attempts, labels, merges or release are authorized.
+
+Blender save/reopen/render and REAPER/Surge save/reopen/export now pass. A bounded browser
+probe decodes both audio outputs and renders them through an offline Web Audio graph. Two
+Blender Jungle-inspired concept stills are available for Nick's requested creature/ecosystem
+example. This is authored concept exploration, not a canonical identity replacement or body-plan
+acceptance. Private editable source is hashed and locally preserved; independent backup remains
+pending. See `../audits/AAA_BATCH_A_RECONCILIATION_20260904.md` and
+`../audits/PARKED_BATCHES_1_3_PR_PREPARATION_20260904.md`.
+
 ## Review summary
 
 **Recommendation:** retain the working game and its deterministic foundations; selectively refactor crowded code while introducing a hybrid asset-production workflow. Blender produces authored visual assets, REAPER arranges and mixes audio, Surge XT supplies synthesis inside the audio production workflow, and the existing browser runtime delivers the optimized results. Players install none of those authoring tools.

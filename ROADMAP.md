@@ -36,7 +36,8 @@ SSH authentication as `TheDakk`, repository read and fetch passed. Landed baseli
 All post-merge local commits and 85 unfinished gameplay files are preserved at
 `cf1b9a7843200ecc281c5113b4139909dc0e3a29` on local `openai/parked-gameplay-20260904`.
 Every file matches the pre-parking SHA-256 inventory. This is explicitly unvalidated WIP, not
-integration. The active branch was safely recreated from landed develop without reset or force
+integration. Nick later authorized an unchanged backup push; origin read-back confirms the same
+`cf1b9a7…` parked tip. The active branch was safely recreated from landed develop without reset or force
 operations. Pilot product source starts at landed develop; no dependency on parked Research,
 Charter/descent/Paragon/Atlas/progression work. Ignored old build output is not evidence.
 
@@ -62,7 +63,11 @@ CPU, 4.39s); PNG inspected. REAPER terminal script loaded Surge VST3 instrument/
 saved/reopened the project, and rendered 4s WAV/FLAC successfully after Nick opened the startup
 UI; output hashes reverified. Surge standalone CLI help/version pass; its live MIDI/OSC path is
 not exercised and offline export uses the verified REAPER VST3 host. Waveform verification
-passes; human listening/browser acceptance and private source backup remain pending.
+passes. A fresh isolated Edge probe decodes both outputs and processes them through Web Audio;
+audible listening, Safari/iPhone/in-game acceptance and independent source backup remain pending.
+Nick's requested private creature/ecosystem Blender example is rendered and inspected; its
+invented Jungle-inspired Lanternback is concept exploration, not canonical/body-plan acceptance.
+Sources and outputs are hashed and locally preserved; independent backup is still pending.
 Batches B–D: one ship/biome treatment plus quadruped, biped, avian, serpentine, arthropod,
 tentacled, aquatic and flora/fungus at actual 132/300/440, static and animated. No faithful
 animation => protected static portrait and explicit incomplete status. Add coherent audio,
@@ -70,15 +75,27 @@ styleguide/three mockups and actual-game integration, then submit local pilot fo
 
 ### Paired next steps / Git
 
-Codex: complete Batch A readiness, then authorized B–D locally. Budget file remains UNFROZEN;
-last recorded visibility PUBLIC, private fallback cap 3,000. Nick authorizes the disposition push
-only, no hosted run. Workflow events are owner-label-only battery/manual-only other workflows,
-so a branch-only documentation push triggers no hosted workflow.
-Claude on `anthropic/windows`: read disposition at the exact pushed head through Git and build
-the cheap lane independently. Do not merge/copy parked gameplay. Nick may continue Claude now;
-opening the other app is not required for Codex to proceed. No PR needed for this document handoff.
-A later candidate uses base `develop`, source `openai/mac`, with exact title/body from the finished
-diff. Main, live site and deployment remain untouched.
+Codex: continue Batch A; independent source-backup selection/verification is the remaining
+production-source prerequisite. Original disposition and unchanged parked-backup pushes are done;
+new current-side documentation remains local. Budget remains UNFROZEN; last recorded visibility
+PUBLIC, private fallback 3,000. No hosted attempts, labels, merges or release authorized.
+
+Prepared local source `openai/review-batches-1-3-20260904` points directly to signed
+`8bf9c45d4aae74a6924bcdc201424db0af4770e6`; exact range from landed `7bf3e84…` contains only
+Batches 1–3. Exact-archive develop PASS: 274 files, 2,885 tests / one skip, all owners, 42.915s;
+1,845 tracked file hashes unchanged. Two phone preflight rows are not yet run on this candidate.
+PR is not opened and candidate branch is not pushed. Exact base/source/title/body and evidence:
+`audits/PARKED_BATCHES_1_3_PR_PREPARATION_20260904.md`. Batch 4 awaits Nick's real save export and
+its own PR; WIP stays parked. These fixes have not been applied to the audiovisual checkout.
+
+Claude on `anthropic/windows`: fetch/read the backed-up parked verifier as reference and continue
+the lane; do not merge/copy parked gameplay. Nick selected browser-free develop plus existing
+small/large phone rows on every agent PR; full Compendium → Slice → twelve-row Glass only on
+develop-to-main or a separate on-demand label. This coverage choice is pending Claude's workflow/
+protocol implementation and does not authorize a run. The old Batch 1 workflow/verifier tests
+must be composed with Claude's lane through Git. Codex makes no new CI/budget-policy edit.
+GitHub action now: none. Nick need not open another app. After a future authorized merge, the
+other clean agent branch syncs from develop. Main, live site and deployment remain untouched.
 
 ### Local checks at Batch A checkpoint
 
@@ -87,4 +104,6 @@ PASS: 268 files, 2,785 tests / one skip, all TypeScript/art/route/spec owners. N
 hosted run or product-source change. Blender readiness render is inspected; REAPER/Surge
 terminal save/reopen/render now passes (48kHz stereo, WAV 24-bit/FLAC 16-bit, four seconds,
 non-silent and unclipped). Private source-backup selection/verification remains the prerequisite
-for Batches B–D. Claude review is in progress; no new push or CI change is part of this checkpoint.
+for production Batches B–D. Claude's review corrections are accepted. Only the unchanged parked
+backup received the later authorized push; local documentation, the prepared PR candidate and
+concept assets are not integrated. No CI implementation, hosted attempt or release occurred.

@@ -10,6 +10,15 @@ this disposition for Claude's read-only review; no gameplay or CI implementation
 with this document. Claude owns the cheap agent-to-develop lane on `anthropic/windows`.
 The parked Node-verifier work is relevant reference, not automatically integrated code.
 
+**Later 2026-09-04 reviewed disposition:** Claude reviewed the corrections and Nick accepted
+them. Nick authorized an unchanged origin backup of the entire parked tip; remote read-back
+matches `cf1b9a7843200ecc281c5113b4139909dc0e3a29`. Only Batches 1–3 through signed
+`8bf9c45d4aae74a6924bcdc201424db0af4770e6` are prepared for a separate, unopened PR.
+Their exact-source develop profile is now green; see
+`PARKED_BATCHES_1_3_PR_PREPARATION_20260904.md`. Batch 4 awaits the real save export and its own
+PR; WIP remains parked. The faster-lane coverage decision is selected below; Claude implements
+it. No hosted attempts, labels, merge or release are authorized.
+
 This is a finding/evidence ledger, not a replacement roadmap.
 Product scope and acceptance remain in `../port/V2_PROGRAM_ROADMAP.md`, `../port/DECISIONS.md`
 and `../port/RUBRICS.md`. Current batch state is in `../ROADMAP.md`.
@@ -74,7 +83,7 @@ and policy changes. **Open** means not yet implemented/verified, not silently re
 
 | ID | Finding/proposal | Corrected disposition / next acceptance |
 | --- | --- | --- |
-| P0-1 | Faster develop lane | Open policy design. Preserve meaningful gameplay/save assurance; explicitly name full checks deferred to milestones/release. Current production SceneMemory activation is still open. Measure cost; 8–12 minutes is not proven. |
+| P0-1 | Faster develop lane | Nick selected browser-free develop plus the existing small/large phone preflight on every agent PR; full Compendium → Slice → twelve-row Glass only on develop-to-main and a separate on-demand label. Claude implements on anthropic/windows; selection is not implementation or hosted/label authority. Production SceneMemory activation remains open. Measure cost; 8–12 minutes is not proven. |
 | P0-2 | Infra rerun/upload transport retry | Open separate policy. Preserve earlier product/instrument red; require verified immutable upload, final archival failure, bounded transport retries only. Cancellations are not automatically infra-safe. No whole-battery retry authorized. |
 | P0-3 | jq → Node | Implemented locally: shared targeted verifier, retained-report parity, 344 workflow lines removed, former heartbeat corruptions moved to its tests. Full Slice-bound verification is unchanged. jq remains for run-ID extraction. |
 | P0-4 | Persist post-await gate | Implemented and browser-free verified: admission repeats at queued execution/after heartbeat; owner exceptions, failed-import rearm and exact-once save behavior retained. No claim of demonstrated prior import corruption. |
