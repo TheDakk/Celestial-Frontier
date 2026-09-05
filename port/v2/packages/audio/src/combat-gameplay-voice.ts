@@ -13,6 +13,7 @@ import {
   type CombatCueV1,
 } from './combat-cues.js';
 import { AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1 } from './runtime.js';
+import { finiteVoiceMaxDurationMs } from './finite-voice-lifetime.js';
 import type {
   AudioContextLike,
   AudioCounterpartReceipt,
@@ -560,6 +561,32 @@ function createNonImpactVoiceGraph(
   }
 }
 
+/** The final scheduled source for each existing composite envelope. These
+ * bounds include the graph's 10 ms start offset, not a new audible tail. */
+function voiceDurationSeconds(cue: CombatCueV1): number {
+  if (cue.impact !== null) {
+    const heavy = Math.max(0.15, Math.min(1, cue.impact.damageFraction || 0.3));
+    return 0.01 + Math.max(0.12 + heavy * 0.22, 0.08,
+      cue.impact.critical ? 0.22 : 0, cue.impact.abilityProc ? 0.24 : 0);
+  }
+  if (cue.guardianMotif !== null) {
+    const duration = cue.guardianMotif.motif === 'entrance' ? 0.72 : 0.54;
+    return 0.01 + Math.max(duration, 0.025 + duration * 0.82, 0.06 + duration * 0.62);
+  }
+  const primary = cue.families[0];
+  if (primary === 'initiative') return 0.01 + 0.16;
+  if (primary === 'dodge') return 0.01 + 0.12;
+  if (primary === 'stun-skipped') return 0.01 + 0.2;
+  if (primary === 'burn' || primary === 'regen') {
+    return 0.01 + Math.max(cue.families.includes('burn') ? 0.2 : 0,
+      cue.families.includes('regen') ? 0.02 + 0.24 : 0,
+      cue.families.includes('defeat') ? 0.01 + 0.34 : 0);
+  }
+  if (primary === 'defeat') return 0.01 + 0.34;
+  if (primary === 'resolution') return 0.01 + Math.max(0.28, 0.055 + 0.32);
+  throw new TypeError(`combat cue family ${String(primary)} has no authored synthesis`);
+}
+
 /** Render one registered cue through its stable first-family counterpart.
  * Multi-family rows (for example burn+regen+defeat or a critical ability
  * strike) remain one composite voice, preventing duplicate semantics. */
@@ -580,6 +607,7 @@ export function createCombatGameplayVoiceRequest(
     concurrencyGroup: CONCURRENCY_GROUP,
     maxConcurrent: MAX_CONCURRENT,
     nodeCount: nodeCount(cue),
+    maxDurationMs: finiteVoiceMaxDurationMs(voiceDurationSeconds(cue)),
     mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
     meaning: Object.freeze({ kind: 'meaningful', counterpart }),
     create: (context: AudioContextLike, reservation: AudioVoiceReservation) => (

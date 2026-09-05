@@ -17,83 +17,71 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## ▶▶▶ SESSION HANDOFF — 2026-09-05 UTC · TWO-LANE BATTERY MERGED INTO DEVELOP (PR #36 · AGENT LANE 12m47s) · NO HOSTED AUTHORITY REMAINS ◀◀◀
+## ▶▶▶ SESSION HANDOFF — 2026-09-05 UTC · REVIEW BATCHES 1–3 INTEGRATED ON A BOUNDED REVIEW BRANCH · ONE AGENT-LANE ATTEMPT PENDING ◀◀◀
 
 ### Exact boundary
 
 - **Anthropic/Claude Code on Windows:** `C:\Projects\celestial-frontier-anthropic-windows`,
-  branch **anthropic/windows**, fast-forwarded to `develop`
-  **0cad14dea80b4f2d5052210fa19d583bd0ada085** (merge of PR #36, head `15ae4372a6ee`) plus this
-  handoff commit; its exact SHA is stated at the Git handoff, and `origin/anthropic/windows`
-  carries it after the authorized push.
-- Nick explicitly authorized, in order: refreshing the GitHub CLI login on this PC, creating the
-  `actions-full-chain-approved` label, pushing `anthropic/windows`, opening PR #36, one hosted
-  attempt under `actions-budget-approved`, and the merge on terminal green (standing green-PR
-  authority). All are done. The approval label was removed after the run.
-- Budget mode **UNFROZEN**, visibility **PUBLIC**, private fallback **3,000**. **Zero** further
-  hosted attempts, labels, merges or releases are authorized by this handoff.
-- Repository labels now: `actions-budget-approved` (bounded agent lane on `develop`; full chain
-  on `main`) and `actions-full-chain-approved` (full chain on `develop`). Both are owner-only
-  triggers of the unchanged `pull_request: [labeled]` workflow.
+  temporarily on **anthropic/review-batches-1-3-20260905** (a bounded review branch admitted by
+  the policy decision below), created from `develop` **f03761da399e97761e1d5a17a5622b1eeba27944**
+  (merge of PR #38) and merging Codex's PR #37 head **121df53d0d101822f32f2ca98a878db10518e65d**
+  with a real merge commit. Codex's three signed commits (`e0acfab…`, `13d24af…`, `8bf9c45…`) and
+  its reconcile merge are ancestors, unchanged. The worktree returns to `anthropic/windows` after
+  the merge. `openai/mac` (audiovisual campaign) and the parked backup are untouched.
+- Nick's authority: "authorize per Codex" (2026-09-05), following "do everything for me"
+  (2026-09-04). It covered the review-branch policy decision, PR #38, marking PR #37 ready, and
+  one hosted attempt plus merge for the reconciled candidate. Budget **UNFROZEN**, visibility
+  **PUBLIC**, private fallback **3,000**.
+- Repository labels: `actions-budget-approved` (agent lane on `develop`; full chain on `main`) and
+  `actions-full-chain-approved` (full chain on `develop`).
 
-### Hosted record — PR #36 (`anthropic/windows` → `develop`)
+### Hosted records this session
 
-- `test-battery` run **33935183563**, attempt 1; authorize job 101221616380 (2s); battery job
-  **101221627059**: **SUCCESS**, wall **12m47s**, job **12m40s**. Head `15ae4372a6ee`, base
-  `7bf3e84`. Lane selected: `agent (actions-budget-approved -> develop)`.
-- Scope: 12 changed paths; legacy, art-instrument, compendium-instrument, browser-transport and
-  glass-preflight all `true`, because the PR edits the workflow itself. Every changed-input
-  control therefore ran: this is an **upper bound** for the agent lane, not its typical cost.
-- Steps: policy selftest PASS (79 controls) · legacy browser-free gates 1m38s · v2 `develop`
-  profile **PASS, 268 test files**, 2m28s · changed-art mutation control 1m54s · Chrome launcher
-  selftest 0m29s · Glass `small-phone` then `large-phone` canaries **PASS**, 4m03s · root layout
-  (10 viewports) 1m27s + freshness verify · Compendium instrument selftests 0m10s ·
-  `battery-evidence` archived. Skipped by the full-lane guard: Edge install, Compendium
-  preflight/certification/verify, Slice, 12-viewport Glass, Glass diagnostic, Recovery, preview.
-- A v2-app-only agent PR additionally skips the legacy gates, root layout and the changed-art
-  control (about 5 minutes here), so roughly **7–8 minutes** is the expected agent-lane cost;
-  that figure is **not measured** yet.
-- The exact record is also posted as a comment on PR #36. The retained `battery-evidence`
-  artifact holds the two canary reports.
+- **PR #36** (`anthropic/windows` → `develop`, two-lane battery): run **33935183563** SUCCESS,
+  **12m47s**, lane `agent`; merged as `0cad14dea80b4f2d5052210fa19d583bd0ada085`.
+- **PR #38** (`anthropic/windows` → `develop`, review-branch admission + PR #36 handoff): run
+  **33938776553** SUCCESS, **12m48s**, lane `agent`, policy 81 controls; merged as
+  `f03761da399e97761e1d5a17a5622b1eeba27944`. Both PRs edit the workflow itself, so every
+  changed-input control ran; a v2-app-only PR is expected near 7–8 minutes (**not measured**).
+- **PR #37** (`openai/review-batches-1-3-20260904`, head `121df53d…`): opened by Codex as a draft,
+  correctly flagged as blocked by the sealed branch-flow validator; marked ready by Claude, then
+  **CONFLICTING** after PR #38 moved `develop` (documentation files only). Superseded by the review
+  branch above; closed with a pointer once the review PR is open. No label was applied to it.
 
-### Review-branch policy decision (2026-09-05, after the merge above)
+### What this review branch carries (Codex's Batches 1–3, per its handoff)
 
-- Codex opened **PR #37** (`openai/review-batches-1-3-20260904` → `develop`, head
-  `121df53d0d10`, draft, mergeable) and correctly flagged that the sealed branch-flow validator
-  admitted only the four machine branches, so its battery would stop at authorization. Nick
-  instructed "authorize per Codex"; Claude, owning CI/budget policy, decided to admit bounded
-  review branches `openai/review-*` and `anthropic/review-*` into `develop` (never into `main`),
-  updated the authorize-steps seal and added two rejection controls, and recorded the rule in
-  `PARALLEL_GIT_PROTOCOL.md` and `GITHUB_ACTIONS_BUDGET.md`. This lands through its own
-  agent-lane PR from `anthropic/windows`; then PR #37 is marked ready, labelled
-  `actions-budget-approved`, and merged on terminal green under the same authority.
+- Queued save admission and semantic panel focus, portable npm invocation, the shared targeted
+  Glass verdict verification, explicit distributable/evidence-build isolation, finite audio voice
+  cleanup, and the corresponding reference/dependency corrections. No Batch 4 gameplay, no
+  checkpoint, no parked WIP, no audiovisual assets.
+- `test.yml`: `develop`'s lane selector, two-label owner guard, review-branch admission, agent/full
+  canary condition and all five `if: steps.lane.outputs.lane == 'full'` guards, with the two
+  phone-verdict bodies calling Codex's existing source-bound Node verifier instead of the
+  duplicated jq filter. Policy code and the lane selector's sealed bytes are unchanged from
+  `develop`. Tests compose the lane pins with the retained Node-verifier/corruption coverage.
+- Merge resolution: `GITHUB_ACTIONS_BUDGET.md` keeps both sides' entries newest-first (Codex's
+  merged-source note relabelled as preserved); this file is rewritten as one handoff; the archive
+  keeps every prior block (both superseded handoffs archived verbatim above Codex's parent-handoff
+  entry; the duplicate local-only copy is referenced, not repeated).
 
-### Now in `develop`
+### Verification and the pending boundary
 
-- The two-lane battery and its sealed policy (79 controls), the Compendium preflight contract
-  requiring the exact full-lane guard, the pinning tests, and the refreshed references
-  (`GITHUB_ACTIONS_BUDGET.md`, `PARALLEL_GIT_PROTOCOL.md`, `CLAUDE.md`, `AGENTS.md`,
-  `port/v2/README.md`).
-- **Conflict ahead, by design:** Codex's parked Batch 1 (`e0acfab…`, on
-  `openai/parked-gameplay-20260904`) rewrites the same `.github/workflows/test.yml` (workflow jq
-  verdicts → shared Node verifier, −344 lines) and `GITHUB_ACTIONS_BUDGET.md`. The prepared
-  Batches 1–3 candidate must merge `origin/develop` (`0cad14d`) into its branch (a merge commit,
-  never a rebase of the signed commits), resolve `test.yml` by keeping the lane selector, the
-  two-label authorize guard and the five `steps.lane.outputs.lane == 'full'` guards while
-  replacing the jq verdict blocks with the Node verifier, refresh the policy seal only if the
-  lane step's non-comment bytes change (they should not), re-run the exact-source `develop`
-  profile, then open its PR and request `actions-budget-approved` — the agent lane, about
-  thirteen minutes.
+- Local on the merged tree (Windows, browser-free): recorded at the Git handoff — policy selftest,
+  Compendium preflight selftest, the three workflow-pinning test files, YAML parse.
+- Hosted: the review PR runs the bounded agent lane under one authorized `actions-budget-approved`;
+  merge on terminal green under the standing authority. The two phone rows and the static profile
+  are the hosted evidence for this head; no full chain is implied. Native iPhone/save/listening
+  acceptance, production SceneMemory activation and the HUMAN gates remain open.
 
 ### Paired handoff
 
-- **Anthropic/Claude Code:** nothing pending on GitHub. This handoff commit is pushed to
-  `origin/anthropic/windows` (no workflow trigger). Next Claude batches, per the full review:
-  artlock CI ownership and the eleven-artifact verbatim-seal gap, or reconcile support for Codex
-  on request. Any new head still needs Nick's separate exact hosted authorization.
-- **OpenAI/Codex:** continue Batch A locally; reconcile the Batches 1–3 candidate as described
-  above before requesting its PR; do not touch `.github/workflows` or the budget policy beyond
-  that reconcile. Batch 4 still waits for Nick's real save export and its own PR.
-- **GitHub:** no PR is open from Claude. `develop` = `0cad14d`; `main` and the live site are
-  unchanged.
-- **Release:** unchanged. No version bump, deployment or `main` merge.
+- **Anthropic/Claude Code:** after the review PR merges, fast-forward `anthropic/windows` to
+  `develop`, record the run in this handoff and the budget log, push the handoff, close PR #37.
+  Next candidates per the full review: artlock CI ownership; the eleven-artifact verbatim-seal gap.
+- **OpenAI/Codex:** the Mac checkout returns to `openai/mac` for the audiovisual pilot (Batch A);
+  after the review PR merges, `openai/mac` synchronizes from a clean worktree by merging
+  `origin/develop` through the shared protocol. Batch 4 still awaits Nick's real save export and
+  its own PR from a bounded `openai/review-*` branch. Do not edit `.github/workflows` or the budget
+  policy in the campaign.
+- **GitHub / Release:** `main`, the v1.8.9 live site, protected portraits and deployment are
+  unchanged. No version bump.

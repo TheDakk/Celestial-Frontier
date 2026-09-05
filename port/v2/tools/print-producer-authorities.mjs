@@ -14,6 +14,8 @@ import {
 } from './compendiummem-fixture.mjs';
 import { findCandidateSpeciesArtBuildGraph } from './speciesart-build.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { checkCommandInvocation } from './check-profile.mjs';
+import { assertBuiltGameMode } from './build-mode.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const v2Root = path.resolve(here, '..');
@@ -68,6 +70,7 @@ export function producerAuthorityCheckProfileExitCode(report, profile) {
 }
 
 function distIdentity() {
+  assertBuiltGameMode(distDir, 'evidence');
   const files = [];
   const visit = (directory) => {
     for (const name of fs.readdirSync(directory).sort()) {
@@ -173,8 +176,8 @@ function compendiumAuthorities(fixture) {
 export function collectCurrentProducerAuthorities() {
   const releaseWorkspaceLock = acquireWorkspaceLock('current producer authority build');
   try {
-    const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-    execFileSync(npm, ['run', 'build'], { cwd: appDir, stdio: 'inherit' });
+    const buildInvocation = checkCommandInvocation('npm', ['run', 'build', '--', '--mode', 'evidence']);
+    execFileSync(buildInvocation.executable, buildInvocation.args, { cwd: appDir, stdio: 'inherit' });
     const fixture = buildCompendiumFixture();
     const build = distIdentity();
     const sceneMemory = sceneMemoryProducerAuthority(fixture, build);

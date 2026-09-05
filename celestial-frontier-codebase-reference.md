@@ -1,5 +1,45 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+## V2 explicit build boundary — implementation as of 2026-09-04
+
+`port/v2/apps/game/vite.config.ts` selects diagnostic code only for exact Vite mode `evidence`;
+`pwa-build.ts` binds the corresponding `cf-build-mode` HTML marker into final PWA asset hashes.
+`tools/build-mode.mjs` is the shared consumer check. Ordinary builds and development-preview
+packages remain distributable and must not expose `__CF_SLICE__` or armable save faults.
+`tools/devpreview-readiness.mjs` observes ordinary rendered UI before the existing real Guide
+outcome check. Awaited inert action holds preserve task ordering. This describes the implementation
+boundary, not completed browser/device evidence; consult `ROADMAP.md` for current verification.
+
+## Current v2 runtime hardening
+
+Audio finite lifetime (matches code as of 2026-09-04): `packages/audio/src/runtime.ts` owns one
+injected deadline wake for optional bounded voices and reuses `finishVoice` for overdue cleanup.
+The creature/ecology/combat builders derive limits from existing envelopes with a cleanup-only
+tail; `tame-greeting-audio.ts` supplies the browser timer adapter. No sound plans, identity,
+gameplay timing or save fields change. See `AUDIO.md` §0.3 for the compatibility/lifecycle limits.
+The art manifest/lock now declares its existing Genome and PlanetGen imports; painters are unchanged.
+
+Matches code as of **2026-09-04**. `main.ts::persistView` uses one local admission predicate
+before queueing, at queued execution and after heartbeat settlement. No denied writer stages
+ecology, projects a candidate or commits. Existing named-search deferral and private heartbeat/
+lifecycle exceptions remain narrow; Training/import/reload holds and exact replacement-claim
+ownership are rechecked. Import's active-tail drain and failed-replacement debounce rearm remain
+unchanged. This adds defense in depth, not a finding of proven import corruption; save schemas,
+receipts, revision CAS and durable-publication ordering are unchanged. See `SAVE_SYSTEM.md`.
+
+`panel-refill-focus.ts::capturePanelRefillFocus` is a synchronous, single-use continuation for
+Records, Atlas and Charters. It matches authored action/row identity after DOM replacement and
+disabled-state projection, restores the unique available control or sticky Close using
+`preventScroll`, and leaves another current focus owner alone. Atlas Favorite no longer
+unconditionally refocuses its action at async settlement. Explicit Settings actions and the
+Engineering/Capture action-specific focus owners are unchanged. `runtime-hardening.test.ts`
+executes these real app functions with injected dependencies plus the DOM helper; it does not
+claim native browser geometry or device acceptance. See `UI_PRESENTATION.md`.
+
+The main header now accurately identifies 15 current Training lesson IDs, the remaining
+hands-on curriculum, and already-live Atlas favorites/rarity stings. Dated evidence overlays
+below retain their checkpoint scope; `ROADMAP.md` owns current integration and verification.
+
 > **2026-09-04 UTC current PR #35 forensic-prevention architecture overlay (matches current local
 > code):** `.github/workflows/test.yml` retains one two-minute authorization job and one battery
 > job. The battery orchestration cap is 120 minutes and Compendium's independent step cap is 55;

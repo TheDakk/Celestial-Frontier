@@ -410,7 +410,7 @@ function capturePresentationErrors(source: string, cssSource = indexSource): str
     ? writer.slice(staleFault, staleFaultEnd) : '';
   const writerCall = writer.indexOf('attempt = await commitArc4CaptureAttemptV1({');
   const durableBoundary = writer.indexOf('durable = true;');
-  const publicationFault = writer.indexOf('if (smokeRejectNextArc4Publication)');
+  const publicationFault = writer.indexOf('if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc4Publication)');
   const publicationFaultEnd = writer.indexOf('      const verified =', publicationFault);
   const publicationFaultBody = publicationFault >= 0 && publicationFaultEnd > publicationFault
     ? writer.slice(publicationFault, publicationFaultEnd) : '';
@@ -1503,7 +1503,7 @@ describe('Arc 4 main authority wiring', () => {
       'async function commitArc4CaptureAction(',
       '\nfunction captureActivePlayCountdown(',
       '    durable = true;',
-      "    if (smokeRejectNextArc4Publication) { /* injected before durability */ }\n    durable = true;",
+      "    if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc4Publication) { /* injected before durability */ }\n    durable = true;",
     );
     expect(earlyPublicationFault).not.toBe(mainSource);
     expect(capturePresentationErrors(earlyPublicationFault)).toContain('capture-fault-boundaries');

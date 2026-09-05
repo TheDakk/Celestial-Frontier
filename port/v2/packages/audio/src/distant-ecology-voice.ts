@@ -9,6 +9,7 @@ import {
 } from './ecology.js';
 import { audioHash32, boundedAudioKey } from './identity.js';
 import { AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1 } from './runtime.js';
+import { finiteVoiceMaxDurationMs } from './finite-voice-lifetime.js';
 import type {
   AudioContextLike,
   AudioCounterpartReceipt,
@@ -274,6 +275,7 @@ export function createDistantEcologyVoiceRequest(
     concurrencyGroup: CONCURRENCY_GROUP,
     maxConcurrent: 1,
     nodeCount: VOICE_NODE_COUNT,
+    maxDurationMs: finiteVoiceMaxDurationMs(0.56 + (audioHash32(plan.planId, 0xD15EC0) % 121) / 1_000 + 0.005),
     mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
     meaning: Object.freeze({ kind: 'meaningful', counterpart }),
     create: (context: AudioContextLike, reservation: AudioVoiceReservation) =>

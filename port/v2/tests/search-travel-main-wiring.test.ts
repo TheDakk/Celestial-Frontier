@@ -491,8 +491,8 @@ describe('MAIN-1 Search/CF1 travel extraction wiring', () => {
 
     const withoutOrdinaryDeferral = replaceOnce(
       mainSource,
-      '    namedSearchPersistenceDeferred = true;\n    return false;',
-      '    /* negative control dropped the deferred checkpoint */\n    return false;',
+      '      namedSearchPersistenceDeferred = true;\n      return false;',
+      '      /* negative control dropped the deferred checkpoint */\n      return false;',
     );
     expect(wiringErrors(withoutOrdinaryDeferral, ownerSource))
       .toContain('composite-persistence-reservation');

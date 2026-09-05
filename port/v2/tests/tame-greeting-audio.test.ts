@@ -275,7 +275,7 @@ function fixture() {
 
 type MutablePolicy = { -readonly [Key in keyof TameGreetingAudioPolicy]: TameGreetingAudioPolicy[Key] };
 
-function harness(policyPatch: Partial<TameGreetingAudioPolicy> = {}) {
+function harness(policyPatch: Partial<TameGreetingAudioPolicy> = {}, browserDeadline = false) {
   const data = fixture();
   const policy: MutablePolicy = {
     soundOn: true,
@@ -289,6 +289,7 @@ function harness(policyPatch: Partial<TameGreetingAudioPolicy> = {}) {
   const contexts: FakeContext[] = [];
   let nowMs = 100;
   let liveCounterpart = true;
+  const deadlines = new Set<{ callback: () => void; at: number }>();
   const owner = createTameGreetingAudioOwner({
     createContext: () => {
       const context = new FakeContext();
@@ -296,6 +297,13 @@ function harness(policyPatch: Partial<TameGreetingAudioPolicy> = {}) {
       return context;
     },
     nowMs: () => nowMs,
+    ...(browserDeadline ? {} : {
+      scheduleVoiceDeadline: (callback: () => void, delayMs: number) => {
+        const deadline = { callback, at: nowMs + delayMs };
+        deadlines.add(deadline);
+        return () => { deadlines.delete(deadline); };
+      },
+    }),
     readPolicy: () => policy,
     verifyCounterpart: () => liveCounterpart,
   });
@@ -304,6 +312,7 @@ function harness(policyPatch: Partial<TameGreetingAudioPolicy> = {}) {
     owner,
     policy,
     contexts,
+    pendingDeadlines: () => deadlines.size,
     advance: (elapsedMs: number) => { nowMs += elapsedMs; },
     loseCounterpart: () => { liveCounterpart = false; owner.counterpartLost(); },
   };
@@ -478,6 +487,36 @@ function combatCounterpart(cue: CombatCueV1, generation = 11) {
 }
 
 describe('Arc 7/8 player-live Tame greeting owner', () => {
+  it('releases an idle finite voice through the default browser deadline when onended is lost', async () => {
+    vi.useFakeTimers();
+    const h = harness({}, true);
+    try {
+      expect(h.owner.armNativeTameGesture()).toBe(true);
+      const claim = h.owner.claimCommittedTameGreeting(h.outcome, h.state)!;
+      await expect(h.owner.playClaimedTameGreeting(claim, counterpart(claim.eventKey)))
+        .resolves.toMatchObject({ kind: 'started' });
+      const oscillator = h.contexts[0]!.oscillators[0]!;
+      expect(oscillator.starts).toBe(1);
+      expect(oscillator.stops).toBe(1); // authored stop was scheduled, but no onended arrives
+      expect(vi.getTimerCount()).toBe(1);
+      // No next play request, diagnostic poll, route change, or visibility event
+      // drives expiry. Only the browser timer and injected monotonic clock do.
+      h.advance(10_000);
+      await vi.advanceTimersByTimeAsync(10_000);
+      expect(oscillator.stops).toBe(2);
+      // This suite's node fake retains connection history after disconnect.
+      expect(oscillator.disconnects).toBe(1);
+      expect(h.owner.diagnostics().runtime).toMatchObject({
+        voices: { active: 0 }, creatureEmitters: { active: 0 },
+        nodes: { active: 13 }, voiceMix: { activeOwners: 0 },
+      });
+      expect(vi.getTimerCount()).toBe(0);
+    } finally {
+      await h.owner.dispose();
+      vi.useRealTimers();
+    }
+  });
+
   it('claims the exact registered wild Tame event before await and starts one synthesized voice', async () => {
     const h = harness();
     const beforeState = JSON.stringify(h.state);
@@ -628,6 +667,7 @@ describe('Arc 7/8 player-live Tame greeting owner', () => {
       else h.owner.syncRoute('cf1:replacement-world');
       expect(h.owner.diagnostics().runtime.voices.active).toBe(0);
       expect(h.contexts[0]!.oscillators[0]!.stops).toBeGreaterThan(0);
+      expect(h.pendingDeadlines()).toBe(0);
     }
   });
 });

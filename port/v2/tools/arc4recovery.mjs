@@ -21,6 +21,8 @@ import { fileURLToPath } from 'node:url';
 import { performance } from 'node:perf_hooks';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { acquireWorkspaceLock } from './workspacelock.mjs';
+import { checkCommandInvocation } from './check-profile.mjs';
+import { assertBuiltGameMode } from './build-mode.mjs';
 import { verifySliceRunEvidence } from './smokereport.mjs';
 import {
   GLASS_ARC4_CAPTURE_CHECK_KEYS,
@@ -370,6 +372,7 @@ function sourceIdentity() {
 }
 
 function distIdentity() {
+  assertBuiltGameMode(distDir, 'evidence');
   const files = [];
   const visit = (directory) => {
     for (const name of fs.readdirSync(directory).sort()) {
@@ -1274,8 +1277,8 @@ async function runCertificate(options) {
     persistRunning();
     assert(ordinarySliceSeal.ok, 'ordinary Slice recovery non-claim seal is red');
     assert(instrumentSeal.ok, 'Arc 4 recovery no-forged-time instrument seal is red');
-    const npm = process.platform === 'win32' ? 'npm.cmd' : 'npm';
-    execFileSync(npm, ['run', 'build'], { cwd: appDir, stdio: 'inherit' });
+    const buildInvocation = checkCommandInvocation('npm', ['run', 'build', '--', '--mode', 'evidence']);
+    execFileSync(buildInvocation.executable, buildInvocation.args, { cwd: appDir, stdio: 'inherit' });
     build = distIdentity();
     report = { ...report, build, inputs: inputIdentity(build.sha256, predecessors) };
     persistRunning();

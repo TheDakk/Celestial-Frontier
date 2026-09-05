@@ -1,5 +1,25 @@
 # Celestial Frontier — UI / Presentation System
 
+## Current v2 panel-refill focus
+
+Matches code as of **2026-09-04** (`main.ts` and `panel-refill-focus.ts` in
+`port/v2/apps/game/src`). Records, Star Atlas and Charters capture the currently focused
+control's authored semantic identity immediately before a synchronous refill and restore its
+unique enabled replacement after final disabled states are applied. Removed, disabled or
+ambiguous actions fall back to that panel's sticky Close control. Both paths use
+`focus({preventScroll:true})`: a passive refill does not own navigation or reveal.
+
+Focus outside the panel is untouched. Atlas Favorite's asynchronous completion refreshes from
+the focus current at settlement; it no longer unconditionally takes focus back to Favorite
+after the user has moved elsewhere. Pending/removed action fallback may therefore remain on
+Close. Settings' explicit action refocus and Engineering/Capture's separately owned action
+continuations keep their established policies; this helper does not replace them.
+
+Browser-free checks execute all three real refill functions and the shared helper. Native
+scroll geometry, keyboard paint and assistive-technology acceptance remain browser/device
+checks, not conclusions from those tests. Dated evidence below keeps its original scope;
+`ROADMAP.md` owns current integration and verification status.
+
 > **2026-09-03 UTC current Shipyard keyboard-evidence overlay (matches current local code):** this
 > batch changes evidence only. `EngineeringPanelController` already captured disclosure open state
 > and `data-focus-key`, rebuilt the panel, then restored the corresponding current control; the
@@ -2288,8 +2308,9 @@
 > #208 executable evidence. No host/human/Ready/
 > merge/release/deploy/version authority follows.
 
-**STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; the
-current v2 overlays match the local `port/v2` candidate as of 2026-08-30. The addenda at the end preserve
+**STATUS:** legacy sections match `main.js` + the html + `tools/` as of 2026-08-12; current
+v2 panel-refill focus above matches the local `port/v2` candidate as of 2026-09-04.
+Other dated overlays retain their original evidence scope. The addenda at the end preserve
 **THE ART-HOLD LAW** (v1.8.5), **THE TRAINING LAYOUT CONTRACT** (v1.8.6), and
 its part two (v1.8.7): nothing expensive may be synthesised behind a blocking
 full-screen surface, and any surface raised over training must clear the lesson
