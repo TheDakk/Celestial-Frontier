@@ -69,6 +69,10 @@ and samples unchanged. Exact-instance progression2d and mature Atlas2e remain pr
 
 Signed15d7a99 stopped at the later collision wave-off caller because phoneCardActionCheck was outside its lexical scope. The single unchanged helper now lives at module scope; all callers and geometry are retained. Full fast passes292files/3,047tests/1skip. Both exact browser reds are retained. A new signed clean-source browser sequence follows; no phones have run on the red sources.
 
+### Latest product correction
+
+Slice42d621d passed; small-phone stopped on low-contrast missing Paragon buttons (ratio1.05). Their native light background is now replaced with the existing dark Binder surface and an explicit44px touch floor. Existing Claim-button negative control is scoped to its exact selector so this separate44px rule cannot hide a broken Claim rule. Full fast:292files/3,047tests/1skip PASS. Current producer45502f708c2081c54d72749e9a23cb9ae74cdf96144cffe7599a7c07aedb6798; measurement unchanged. New signed-source browser acceptance is next.
+
 ### Parked scope and paired handoff
 
 Weeklies, Forge Training, living portrait preview and unrelated bulk WIP copy remain parked.

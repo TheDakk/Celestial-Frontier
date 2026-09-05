@@ -1,5 +1,23 @@
 [
   {
+    "source": "42d621da910f65e2af5e53990eaf020dd4da9921",
+    "command": [
+      "node",
+      "tools/glassmatrix.mjs",
+      "--viewport=small-phone"
+    ],
+    "exitCode": 1,
+    "seconds": 11.629,
+    "logSha256": "942e641d14255845648822b355c66216f0c1844477cbca2134516e6a7ad79d89",
+    "failureLines": [
+      "GLASS VIEWPORT START \u2014 small-phone (320x568@2)",
+      "GLASS VIEWPORT PRODUCT-RED \u2014 small-phone; 6592 ms; findings 1; instrument failures 0",
+      "GLASS MATRIX PRODUCT FINDINGS \u2014 1 across 1 viewport classes",
+      "COUNTS {\"TEXT_CONTRAST_LOW\":1}",
+      "- [TEXT_CONTRAST_LOW] small-phone/records-over-survey div.binder-grid > button.binder-slot.paragon:nth-of-type(1): actual={\"ratio\":1.05,\"threshold\":4.5,\"color\":\"rgb(240, 244, 255)\",\"background\":[239,239,239,1],\"sample\":\"#1 \u2014 ?\"} expected=\"WCAG contrast against bright artwork beneath glass\""
+    ]
+  },
+  {
     "source": "15d7a997b4939faf2126eecb076bd8a3abbde893",
     "command": [
       "node",
