@@ -2579,3 +2579,102 @@ Typecheck/artunused PASS; 292 files / 3,047 tests passed / 1 skipped.
   }
 ]
 ```
+
+## Step2c Slice PASS, small-phone product red
+
+Signed42d621da910f65e2af5e53990eaf020dd4da9921 passed Slice in377.848s, log SHA256 `8aacc59f67ff146e0bf3f4bfc0e26b7dd4b62c71b4dad306d47d19c817adb7f0`. Small-phone Glass then stopped on unreadable missing-Paragon button text: native button background239/239/239 with light labels, ratio1.05 against4.5 requirement. Large phone did not run. Immutable diagnostic report `apps/game/smoke/glassmatrix-20260905113024857-63801-1a8404ea2c8a.json` records one product finding, zero instrument failures. Correct the actual Paragon button CSS using the existing Binder dark surface and44px touch height; do not weaken contrast or retry unchanged source.
+
+```json
+{
+  "source": "42d621da910f65e2af5e53990eaf020dd4da9921",
+  "command": [
+    "node",
+    "tools/glassmatrix.mjs",
+    "--viewport=small-phone"
+  ],
+  "exitCode": 1,
+  "seconds": 11.629,
+  "logSha256": "942e641d14255845648822b355c66216f0c1844477cbca2134516e6a7ad79d89",
+  "failureLines": [
+    "GLASS VIEWPORT START \u2014 small-phone (320x568@2)",
+    "GLASS VIEWPORT PRODUCT-RED \u2014 small-phone; 6592 ms; findings 1; instrument failures 0",
+    "GLASS MATRIX PRODUCT FINDINGS \u2014 1 across 1 viewport classes",
+    "COUNTS {\"TEXT_CONTRAST_LOW\":1}",
+    "- [TEXT_CONTRAST_LOW] small-phone/records-over-survey div.binder-grid > button.binder-slot.paragon:nth-of-type(1): actual={\"ratio\":1.05,\"threshold\":4.5,\"color\":\"rgb(240, 244, 255)\",\"background\":[239,239,239,1],\"sample\":\"#1 \u2014 ?\"} expected=\"WCAG contrast against bright artwork beneath glass\""
+  ]
+}
+```
+
+### Step2c CSS correction exposed an existing unscoped negative control
+
+Full fast: typecheck/artunused PASS; 291 files passed / one failed, 3,046 tests passed / one failed / one skipped. Log SHA256 `1caacb6dca83e3ba18d28ea41e143cd5314a8bcd17d9aacdf85cef0fcc296d13`. The Claim-button44px mutation was judged by searching all collection CSS. Adding an unrelated44px Paragon rule masked the deliberately broken Claim rule. Bind that existing check to its exact Claim selector body; retain the original mutation and all expectations. No product or geometry change accompanies this test correction.
+
+```text
+ ❯ tests/starter-charter-binder-main-wiring.test.ts (2 tests | 1 failed) 17ms
+     × negative-controls heartbeat, exact publication, id validation, and accessible actions 11ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/starter-charter-binder-main-wiring.test.ts > Starter Charter and Binder Main wiring > negative-controls heartbeat, exact publication, id validation, and accessible actions
+AssertionError: expected [] to include 'bounded collection controls lack thei…'
+ ❯ tests/starter-charter-binder-main-wiring.test.ts:286:9
+    284|       'min-width: 72px; min-height: 44px;',
+    285|       'min-width: 72px; min-height: 20px;',
+    286|     ))).toContain('bounded collection controls lack their accessible r…
+       |         ^
+    287|
+    288|     expect(wiringErrors(replaceInSectionExact(
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 291 passed (292)
+      Tests  1 failed | 3046 passed | 1 skipped (3048)
+   Start at  07:32:27
+   Duration  63.72s (transform 12.88s, setup 0ms, import 100.29s, tests 120.55s, environment 587ms)
+
+
+```
+
+### Step2c Binder correction full-fast PASS
+
+Typecheck/artunused and292files/3,047tests PASS,1skip. CSS review CLEAR: opaque existing dark Binder surface,44px floor and existing UI family; missing/found colors, rarity grades, borders, font sizes and focus outline remain. Compendium producer becomes `45502f708c2081c54d72749e9a23cb9ae74cdf96144cffe7599a7c07aedb6798` from `6f8e0ee67716ac716e13ce5acbe9eaebfaeb75bdffc96c354d098bfecff0d1d3` after rebuilt index CSS. Measurement, ruler, ceilings and samples remain unchanged.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.468,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.424,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 66.314,
+    "log": "3-npx.log",
+    "sha256": "f5e479b916f47350448814b1229959d9ce6153e9628daf98d37d7909ad772422"
+  }
+]
+```

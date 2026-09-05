@@ -310,14 +310,14 @@ const HISTORICAL_RULER_PRODUCER_AUTHORITY_RECORD = Object.freeze({
 /* Refreshed once, after the final app build. Historical samples continue to
    bind their explicit historical producer authorities rather than these live authorities. */
 const EXPECTED_PRODUCER_AUTHORITY =
-  '6f8e0ee67716ac716e13ce5acbe9eaebfaeb75bdffc96c354d098bfecff0d1d3';
+  '45502f708c2081c54d72749e9a23cb9ae74cdf96144cffe7599a7c07aedb6798';
 const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
   schema: 'cf-v2-compendium-producer-authority/v2',
   sha256: EXPECTED_PRODUCER_AUTHORITY,
   inputs: Object.freeze({
     index: Object.freeze({
       relativePath: 'index.html',
-      sha256: '4fa67d96b47f28bc55023c847bd42fb760dea58fe088c663fafb18efbfcf8b70',
+      sha256: 'fbb8b1f1adefa345a84cc316fdfebdf67c05583cea609d393f9792adea43fd9d',
     }),
     owner: Object.freeze({
       relativePath: 'assets/main-BmCy9gjV.js',
@@ -333,7 +333,7 @@ const EXPECTED_PRODUCER_AUTHORITY_RECORD = Object.freeze({
     }),
     serviceWorker: Object.freeze({
       relativePath: 'service-worker.js',
-      sha256: 'b67f6d0e74e0173380da27956eb4b0d36dd2ac2bee3a7802e7214c9c5be1336c',
+      sha256: '52474b6e67618ed70a6e924b6bbb5306a873ae7f58536a73446f15a16dc19e81',
     }),
   }),
 });
