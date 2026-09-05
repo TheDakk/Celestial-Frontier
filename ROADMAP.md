@@ -32,8 +32,8 @@ red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS 
 | Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
 | --- | --- | --- | --- | --- |
 | 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
-| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
-| 2b descent/wave-offs | Pending | — | — | — |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Implemented; commit/browser next | — | Typecheck/artunused PASS; 290 files / 3,012 passed / 1 skipped | Pending clean-source run |
 | 2c 50-Paragon hunt | Pending | — | — | — |
 | 2d exact-instance progression | Pending | — | — | — |
 | 2e mature Atlas | Pending | — | — | — |
@@ -88,3 +88,13 @@ Nick's exact hosted authorization. Nick need not open another app overnight. Pro
 `develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
 Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
 trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+
+Step2a checkpoint was pushed08:48:02UTC as`2ae776b`; Step2b is now implemented and awaiting
+fast/browser acceptance. Authored static-weather descent and canonical learning(+20,cap5) apply;
+legacy seed-only counts bind once on their first matching canonical encounter because their
+original address is unknowable. Fresh games start empty. This preserves stored learning without
+inventing history; full reasoning, exact Pertar facts and current78-bullet hash are in the report.
+
+Step 2b final fast PASS: 290 files / 3,012 tests / 1 skipped; typecheck/artunused pass.
+Unused-code and existing-owner reds were corrected and preserved in the report. Product
+source is ready for its clean committed browser sequence. No 2c or later work is integrated.

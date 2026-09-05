@@ -1,20 +1,25 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Overnight Batch 4 — checkpoint 2a implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2b implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
 Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
 486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
-The authored accepted Discover Life Starter Charter now completes only on a later explicit
-Bioscan: one completion grants its established 15 Stardust and Earpiece in that same F4
-receipt/CAS. Acceptance never backfills earlier Survey records; Capture and landfall cannot
-substitute. Exact gear publication, stale tabs, capacity/protection and failed writes refuse
-without partial reward, hazard, receipt or RNG publication. Weekly Charters stay parked.
-Descent, Paragon acquisition, individual progression presentation and mature Atlas remain later
-checkpoints. Existing authored tables and the eighteen Arc 4 namespaces/v5 topology govern.
-V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 77 bullets
-at this checkpoint. Real-device v2 persistence and the combined Arc 4.5 / separate Arc 5.5 HUMAN
+The accepted Discover Life Starter Charter completes only on a later explicit Bioscan for its
+established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Survey or Capture
+backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
+Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
+and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
+two SessionRNG draws and one receipt/CAS. A wave-off leaves orbit, HP at least 1 and canonical
+learning (+20 percentage points per failure, capped at five), without landing rewards. Success
+clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
+Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
+fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
+Paragon acquisition, individual progression presentation and mature Atlas remain later checkpoints.
+Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 78 bullets
+at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
 reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
 
 ## Current review implementation — matches code as of 2026-09-04
@@ -3066,7 +3071,7 @@ ledger they planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`). The draft bulletin is 77
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
 43 authored stable IDs and 41 player topics with search, categories, native-keyboard
-cross-links and capability-aware v2 copy. At the current core boundary, 35 topics are
+cross-links and capability-aware v2 copy. At the current Step 2b boundary, 35 topics are
 partial and 6 are unavailable; the Capture/Discover guidance separates write-free living-world
 inspection, explicit durable Discover Life, and landed random-pool Capture without inventing targeted selection. It states the current
 capture-backed Charter rule exactly: the first durable successful Tame, Scavenge, or Sample on
@@ -3074,11 +3079,12 @@ each source-proven world beyond Sol banks that world's one Chapter 2 life-discov
 same transaction; misses, Sol, later successes on that world, stale tabs and failed writes bank
 nothing. Explicit Discover Life separately owns the exact living-world Survey record and one
 nonlethal hazard receipt (`bioscan-action.ts`); it catalogues no species and spends no Yield at this
-2a checkpoint. If st-scan was accepted before that explicit Bioscan, the same receipt completes the
+2b checkpoint. If st-scan was accepted before that explicit Bioscan, the same receipt completes the
 Starter Charter and grants its authored 15 current/lifetime Stardust and exact Earpiece. Earlier
 Survey records, Capture and landfall never substitute or backfill it. Weekly bioscan completion
-remains protected. The same current manual
-now documents Breed's +2/+5 XP rules, two-chain Starter acceptance/rewards, Binder's six pages and
+remains protected. The same current manual documents the visible Land chance, nonlethal wave-off
+HP cost and exact-world learned approach, together with guaranteed Earth/Training/proven-world
+returns. It also documents Breed's +2/+5 XP rules, two-chain Starter acceptance/rewards, Binder's six pages and
 seven claims, postcommit progression ceremonies, the complete nine-row Prime Codex and its five
 ending choices without presenting protected weeklies, Paragons or later prestige as live.
 Intentionally dormant topics remain source-recorded and player-hidden. No legacy promise is
@@ -3090,8 +3096,8 @@ settles, and request/body/open-panel fences prevent a closed or replaced Guide f
 publication. A cached archive publishes on the following microtask because panel `onOpen` runs
 before the manager exposes the open panel. Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
-categorized v2.0 development bulletin, now 77 bullets. Its rendered ordered SHA-256 is
-`8f7a40185fb2a89c1fe055b0109623f77d087cdc4248ee00fe20398fe3456c4f`. The draft summarizes the
+categorized v2.0 development bulletin, now 78 bullets. Its rendered ordered SHA-256 is
+`af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53`. The draft summarizes the
 implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
 nonempty bullets, the key player-facing outcomes, and a final item reached through bounded adaptive

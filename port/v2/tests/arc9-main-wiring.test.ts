@@ -218,7 +218,15 @@ function arc9MainErrors(source: string): string[] {
       errors.push(`${label} queues a second progression refresh`);
     }
   }
+  const landingAction = section(source, 'async function doLand(', '\nlet lastArc0AtlasOutcome:');
+  const landingFollowUp = /actionClaim\.settle\(durable\);\n\s+if \(durable && durableResult === 'landed'\) \{\n\s+queueArc9ProgressionRefresh\(actionClaim\.operation\);\n\s+\}/u;
+  if (!landingFollowUp.test(landingAction)
+    || landingAction.split('queueArc9ProgressionRefresh(').length !== 2
+    || landingAction.split('actionClaim.settle(durable);').length !== 2) {
+    errors.push('landing progression catch-up is not restricted to one durable landed result');
+  }
   const progressionOwnerSource = source
+    .replace(landingAction, '')
     .replace(explorerNameAction, '')
     .replace(frontierEndingAction, '')
     .replace(starterCharterAction, '')
@@ -233,7 +241,7 @@ function arc9MainErrors(source: string): string[] {
     /actionClaim\.settle\(durable\);\n\s+if \(durable\) queueArc9ProgressionRefresh\(actionClaim\.operation\);/gu,
   )].length;
   const rawSettles = [...progressionOwnerSource.matchAll(/actionClaim\.settle\(durable\);/gu)].length;
-  if (settleMatches !== rawSettles || rawSettles < 10) {
+  if (settleMatches !== rawSettles || rawSettles + 1 < 10) {
     errors.push('one or more durable product owners do not schedule progression catch-up');
   }
 
@@ -397,6 +405,22 @@ describe('Arc 9 Main/Records integration', () => {
       '    actionClaim.settle(durable);',
       '    actionClaim.settle(durable);\n    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);',
     ))).toContain('Frontier ending queues a second progression refresh');
+
+    for (const replacement of [
+      'if (durable) {',
+      "if (durable && durableResult === 'wave-off') {",
+      "if (durableResult === 'landed') {",
+    ]) {
+      expect(arc9MainErrors(replaceInSectionExact(
+        mainSource, 'async function doLand(', '\nlet lastArc0AtlasOutcome:',
+        "if (durable && durableResult === 'landed') {", replacement,
+      ))).toContain('landing progression catch-up is not restricted to one durable landed result');
+    }
+    expect(arc9MainErrors(replaceInSectionExact(
+      mainSource, 'async function doLand(', '\nlet lastArc0AtlasOutcome:',
+      '      queueArc9ProgressionRefresh(actionClaim.operation);',
+      '      // mutation omits the landed successor refresh',
+    ))).toContain('landing progression catch-up is not restricted to one durable landed result');
 
     expect(arc9MainErrors(replaceInSectionExact(
       mainSource,

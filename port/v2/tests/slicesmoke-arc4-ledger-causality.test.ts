@@ -6,6 +6,8 @@ import * as arc4Contract from '../tools/arc4-browser-contract.mjs';
 
 const {
   ARC4_PERTAR_FIXTURE,
+  ARC4_PERTAR_DESCENT_LANDING,
+  ARC4_PERTAR_DESCENT_DRAWS,
   ARC4_PERTAR_LEDGER_PREFIX_SELFTEST,
   ARC4_PERTAR_PROGRESSION_TAIL_SELFTEST,
   ARC4_PUBLICATION_PROGRESSION_SELFTEST,
@@ -315,12 +317,30 @@ describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
       priorBestRankIndex: 3,
       nextBestRankIndex: 3,
     });
+    expect(ARC4_PERTAR_FIXTURE.initialSessionDraws).toEqual({});
+    expect(ARC4_PERTAR_DESCENT_DRAWS).toEqual({ 'descent.success': 1, 'descent.damage': 1 });
+    expect(ARC4_PERTAR_DESCENT_LANDING).toMatchObject({
+      descentWeather: 'rain',
+      descent: {
+        kind: 'landed', navigation: 'surface', drawsConsumed: 2,
+        hpBefore: 55, hpAfter: 55, damage: 0,
+        waveOffCountBefore: 0, waveOffCountAfter: 0, persistenceOutcome: 'success',
+        policy: { planetType: 'ocean', biomeKey: 'volcisle', baseSuccessPercent: 70,
+          stormActive: true, stormAdjustedPercent: 65, successPercent: 65,
+          safeReason: null, requiredDomains: ['descent.success', 'descent.damage'] },
+      },
+      waveOffStateSuccessorSeal: '88ed6120a970c2bda5aaa7e4d4f39be3766293b9a17aa8277141a15c7bc94b56',
+      waveOffLegacySuccessorSeal: '9d7ceb80430c32a69624b2ad4a2a9bbe6b4e15366a8021c947058322d8a42e7d',
+      arc2LootSuccessorSeal: 'af67a21664d77c83434ddd0ce394c85b4c596ffb672d101540e815c1e2574457',
+      waveOffProtectedStateSeal: null,
+    });
     expect(prefix.sourceReady.ok).toBe(true);
     expect(prefix.actionReady.ok).toBe(true);
     expect(prefix.actionReadyTameVariant.ok).toBe(true);
     expect(Object.keys(prefix.controls)).toEqual([
       'staleEmptyLedger', 'missingReceipt', 'extraReceipt', 'reorderedReceipts',
       'bootWitness', 'unexpectedSurveyReceipt', 'landingWitness', 'landingStateSuccessorSeal',
+      'descentWeather', 'descentOutcome', 'descentPolicy', 'waveOffStateSeal', 'waveOffLegacySeal', 'arc2LootSeal', 'waveOffProtectedSeal', 'missingDescentField', 'extraDescentField', 'descentWitnessOrder', 'authorityDraws', 'runtimeDraws',
       'authorityOrdinal', 'runtimeOrdinal',
     ]);
     expect(Object.values(prefix.controls).every((control) => control.ok === false)).toBe(true);
@@ -352,8 +372,10 @@ describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
       beforeOrdinal: 2,
       actionOrdinal: 3,
       fixedPointOrdinal: 4,
-      actionDraws: { 'capture.candidate': 1, 'capture.success': 1 },
-      fixedPointDraws: { 'capture.candidate': 1, 'capture.success': 1 },
+      actionDraws: { 'capture.candidate': 1, 'capture.success': 1,
+        'descent.damage': 1, 'descent.success': 1 },
+      fixedPointDraws: { 'capture.candidate': 1, 'capture.success': 1,
+        'descent.damage': 1, 'descent.success': 1 },
     });
     expect(Object.keys(publication.controls)).toEqual([
       'captureOnlyEndpoint',

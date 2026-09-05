@@ -172,6 +172,8 @@ import {
   biomeVistaMountLayoutV1,
   buildBiomeVistaRenderRequestV1,
 } from './biome-vista-surface.js';
+import { projectDescentApproachV1 } from './descent-policy.js';
+import { projectLandingCardPresentationV1 } from './landing-card.js';
 import {
   mountAndCommitBiomeVistaV1,
   mountCachedBiomeVistaV1,
@@ -298,6 +300,7 @@ import {
   prepareArc2LootInventoryWrite, projectArc2LootLegacyMirror,
   encodeArc2LootCarrier, readArc2EngineeringLoadout, readArc2Loot, readArc3Engineering,
   readCombatSettlementAuthorityV1,
+  loadDescentWaveOffAuthorityV1,
   canonicalWorldLandingCount, createEmptyWorldIdentityState,
   encodeWorldIdentityExtensionWrites, hasCanonicalWorldLanded,
   prepareWorldIdentityBootstrap, readWorldIdentity,
@@ -331,6 +334,7 @@ import { InventoryPanelController } from './inventory-panel.js';
 import {
   commitArc0LandingAction,
   operationForArc0Landing,
+  projectArc0DescentWeatherV1,
   type Arc0LandingWitnessFacts,
 } from './arc0-landing-action.js';
 import {
@@ -6915,6 +6919,65 @@ function bioscanCardActionHtml(state: BioscanCardStateV1): string {
     : 'Record this living world. Capture remains a separate action.';
   return `<button type="button" data-act="bioscan" data-bioscan-world="${esc(state.worldKey)}" data-bioscan-probability="${probability}" data-bioscan-damage="${damage}" title="${esc(title)}" style="background:rgba(127,230,160,0.14);color:#b9f0c8;border:1px solid rgba(127,230,160,0.55);border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">🔬 Discover Life${warning}</button>`;
 }
+type LandingCardStateV1 =
+  | Readonly<{
+    readonly kind: 'ready';
+    readonly worldKey: string;
+    readonly label: string;
+    readonly title: string;
+    readonly disclosure: string;
+    readonly successPercent: number;
+    readonly damageMin: number;
+    readonly damageMax: number;
+  }>
+  | Readonly<{ readonly kind: 'unavailable' }>;
+function projectCurrentLandingCardState(
+  address: CanonicalCF1WorldAddress,
+): LandingCardStateV1 {
+  const runtime = f4Runtime;
+  if (runtime === null || worldIdentityProtection !== null) {
+    return Object.freeze({ kind: 'unavailable' });
+  }
+  try {
+    const loadout = readArc2EngineeringLoadout(runtime.extensions);
+    const waveOffs = loadDescentWaveOffAuthorityV1({
+      extensions: runtime.extensions,
+      legacyWaveOffs: save.waveOffs,
+    });
+    if (loadout.kind !== 'loaded' || waveOffs.kind !== 'loaded') {
+      return Object.freeze({ kind: 'unavailable' });
+    }
+    const opportunity = projectWorldOpportunity(address);
+    const policy = projectDescentApproachV1({
+      address,
+      opportunity,
+      capabilities: loadout.capabilities,
+      waveOffs: waveOffs.state,
+      stormActive: projectArc0DescentWeatherV1(address, opportunity) !== null,
+      trainingActive: trainingActive(),
+      alreadyLanded: hasCanonicalWorldLanded(worldIdentityState, address),
+    });
+    const presentation = projectLandingCardPresentationV1(policy, save.hp);
+    return Object.freeze({
+      kind: 'ready',
+      worldKey: presentation.worldKey,
+      label: presentation.label,
+      title: presentation.title,
+      disclosure: presentation.disclosure,
+      successPercent: presentation.successPercent,
+      damageMin: presentation.damageMin,
+      damageMax: presentation.damageMax,
+    });
+  } catch {
+    return Object.freeze({ kind: 'unavailable' });
+  }
+}
+function landingCardActionHtml(state: LandingCardStateV1): string {
+  if (state.kind === 'unavailable') {
+    return '<button type="button" data-act="landcta" disabled title="Landing is unavailable until expedition authority is ready" style="background:rgba(202,162,79,0.08);color:var(--dim);border:1px solid rgba(202,162,79,0.35);border-radius:999px;padding:8px 16px;min-height:44px;font:12px system-ui">⛳ Landing unavailable</button>';
+  }
+  return `<span style="display:flex;flex-direction:column;align-items:flex-start;gap:4px;max-width:100%"><button type="button" data-act="landcta" data-landing-world="${esc(state.worldKey)}" data-landing-success="${state.successPercent}" data-landing-damage-min="${state.damageMin}" data-landing-damage-max="${state.damageMax}" title="${esc(state.title)}" aria-label="${esc(state.label)}" aria-describedby="landing-approach-disclosure" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">${esc(state.label)}</button><span id="landing-approach-disclosure" data-landing-disclosure style="max-width:32ch;color:var(--text);font:12px/1.4 system-ui">${esc(state.disclosure)}</span></span>`;
+}
 function presentPlanetSurvey(
   p: PlanetNode,
   star: ProvenStar,
@@ -6996,6 +7059,9 @@ function surveyPlanet(p: PlanetNode, star: ProvenStar, supplied?: ProvenPlanet):
 function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): string {
   const address = activeCardWorldAddress();
   const charted = address !== null && atlasEntryForWorld(address) !== null;
+  const landingState = address === null
+    ? Object.freeze({ kind: 'unavailable' as const })
+    : projectCurrentLandingCardState(address);
   const onThisSurface = nav.mode === 'surface' && !!cardCtx
     && getProvenPlanetKey(nav.planet) === getProvenPlanetKey(cardCtx.planet)
     && nav.planet.seed === p.seed && nav.planet.ordinal === p.ordinal;
@@ -7006,7 +7072,7 @@ function buildCardActions(p: PlanetNode, bioscanState: BioscanCardStateV1): stri
   return '<div style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 4px">' +
     (onThisSurface
       ? '<button data-act="leaveworld" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⬆ Leave world</button>'
-      : '<button data-act="landcta" style="background:rgba(202,162,79,0.14);color:#ffd9a0;border:1px solid #caa24f;border-radius:999px;padding:8px 16px;cursor:pointer;min-height:44px;font:12px system-ui">⛳ Land</button>') +
+      : landingCardActionHtml(landingState)) +
     (charted && !trainingAdd
       ? '<span style="color:var(--dim);align-self:center;font-size:12px">★ charted</span>'
       : '<button data-act="add" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:9px;padding:8px 14px;cursor:pointer;min-height:44px;font:12px system-ui">' +
@@ -7267,6 +7333,11 @@ function publishArc0LandingFields(
   committed: SaveStateV2,
   facts: Arc0LandingWitnessFacts,
 ): void {
+  save.waveOffs = committed.waveOffs.map(([seed, count]) => [seed, count]);
+  if (facts.descent.kind === 'wave-off') {
+    save.hp = committed.hp;
+    return;
+  }
   save.savedView = structuredClone(committed.savedView);
   if (facts.permanentLanding) {
     save.landed = committed.landed.slice();
@@ -7286,7 +7357,7 @@ function publishArc0LandingFields(
   if (facts.achievement !== null || facts.starterCharters.changed) {
     save.unlocked = committed.unlocked.slice();
   }
-  if (facts.sample.kind === 'reward' || facts.starterCharters.changed) {
+  if (facts.sample?.kind === 'reward' || facts.starterCharters.changed) {
     save.cargo = committed.cargo.map(([materialId, count]) => [materialId, count]);
     save.essence = committed.essence;
     save.stats = { ...committed.stats };
@@ -7362,6 +7433,8 @@ async function doLand(): Promise<boolean> {
   }
   const actionBarrier = actionClaim.barrier;
   const priorLandingPublication = Object.freeze({
+    hp: save.hp,
+    waveOffs: save.waveOffs,
     savedView: save.savedView,
     landed: save.landed,
     ascCh: save.ascCh,
@@ -7384,6 +7457,8 @@ async function doLand(): Promise<boolean> {
     starterStatus: lastStarterCharterAcceptStatus,
   });
   const restoreLandingPublication = (): void => {
+    save.hp = priorLandingPublication.hp;
+    save.waveOffs = priorLandingPublication.waveOffs;
     save.savedView = priorLandingPublication.savedView;
     save.landed = priorLandingPublication.landed;
     save.ascCh = priorLandingPublication.ascCh;
@@ -7410,6 +7485,7 @@ async function doLand(): Promise<boolean> {
   productActionInFlight = true;
   activePersist = actionBarrier;
   let durable = false;
+  let durableResult: 'landed' | 'wave-off' | 'unknown' = 'unknown';
   try {
     await smokeProductActionHold.holdIfArmed(actionClaim.operation);
     await settleF4Heartbeat();
@@ -7502,6 +7578,8 @@ async function doLand(): Promise<boolean> {
     }
 
     durable = true;
+    durableResult = attempt.kind === 'committed'
+      ? attempt.witness.facts.descent.kind : attempt.result;
     f4LastCheckpointAt = performance.now();
     lastPersistenceOutcome = `arc0-land-committed:${attempt.transaction.revision}`;
     if (attempt.kind === 'committed-convergence') {
@@ -7509,7 +7587,7 @@ async function doLand(): Promise<boolean> {
         runtime,
         `Arc 0 landing committed at revision ${attempt.transaction.revision}; ${attempt.detail}`,
       );
-      return true;
+      return attempt.result === 'landed';
     }
 
     try {
@@ -7535,15 +7613,32 @@ async function doLand(): Promise<boolean> {
       }
       const facts = attempt.witness.facts;
       let committedLandingLootState = arc2LootState;
-      if (facts.starterCharters.completions.some(({ gearId }) => gearId !== null)) {
+      if (facts.descent.kind === 'landed') {
         const loaded = readArc2Loot(runtime.extensions);
         if (loaded.kind !== 'loaded'
+          || loaded.state.kind !== 'inventory'
+          || attempt.arc2LootState === null
+          || JSON.stringify(encodeArc2LootCarrier(loaded.state))
+            !== JSON.stringify(encodeArc2LootCarrier(attempt.arc2LootState))
           || !arc2LootLegacyMirrorMatches(loaded.state, attempt.transaction.state)) {
-          throw new Error('Arc 0 landing Starter Charter gear carrier did not retain its exact durable fixed point');
+          throw new Error('Arc 0 landing Arc 2 carrier did not retain its exact durable fixed point');
         }
         committedLandingLootState = loaded.state;
       }
       publishArc0LandingFields(attempt.transaction.state, facts);
+      if (facts.descent.kind === 'wave-off') {
+        const learnedChance = Math.min(100, facts.descent.policy.successPercent + 20);
+        toast(
+          '⚠ Descent wave-off',
+          `Approach aborted safely — ${facts.descent.damage} damage, ${facts.descent.hpAfter} HP remains. Exact-world approach data raises the next attempt to ${learnedChance}%.`,
+          true,
+        );
+        triggerCameraShake();
+        hudText();
+        updateChips();
+        refreshPlanetSurveyCard();
+        return false;
+      }
       if (facts.starterCharters.changed) {
         arc2LootState = committedLandingLootState;
         inventoryPanelController.setState(arc2LootState);
@@ -7562,7 +7657,7 @@ async function doLand(): Promise<boolean> {
       nav = surface;
       savedRouteWriteHeld = false;
 
-      if (facts.sample.kind === 'reward') {
+      if (facts.sample?.kind === 'reward') {
         const samples = facts.sample.materials.map(({ id, quantity }) => `${quantity}× ${id}`).join(' · ');
         toast(
           '⛳ Ground Survey',
@@ -7634,7 +7729,7 @@ async function doLand(): Promise<boolean> {
         runtime,
         `Arc 0 landing committed at revision ${attempt.transaction.revision}; publication ${detail}`,
       );
-      return true;
+      return durableResult === 'landed';
     }
   } catch (error) {
     if (durable) restoreLandingPublication();
@@ -7642,11 +7737,13 @@ async function doLand(): Promise<boolean> {
       ? 'committed-publication-reload'
       : `rejected:${error instanceof Error ? error.message : String(error)}`;
     scheduleF4AuthorityConvergenceReload(runtime, `Arc 0 landing ${lastArc0LandingOutcome}`);
-    return durable;
+    return durable && durableResult === 'landed';
   } finally {
     productActionInFlight = false;
     actionClaim.settle(durable);
-    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);
+    if (durable && durableResult === 'landed') {
+      queueArc9ProgressionRefresh(actionClaim.operation);
+    }
     if (activePersist === actionBarrier) activePersist = null;
   }
 }

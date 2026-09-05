@@ -1,20 +1,25 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-## Overnight Batch 4 — checkpoint 2a implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2b implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
 Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
 486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
-The authored accepted Discover Life Starter Charter now completes only on a later explicit
-Bioscan: one completion grants its established 15 Stardust and Earpiece in that same F4
-receipt/CAS. Acceptance never backfills earlier Survey records; Capture and landfall cannot
-substitute. Exact gear publication, stale tabs, capacity/protection and failed writes refuse
-without partial reward, hazard, receipt or RNG publication. Weekly Charters stay parked.
-Descent, Paragon acquisition, individual progression presentation and mature Atlas remain later
-checkpoints. Existing authored tables and the eighteen Arc 4 namespaces/v5 topology govern.
-V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 77 bullets
-at this checkpoint. Real-device v2 persistence and the combined Arc 4.5 / separate Arc 5.5 HUMAN
+The accepted Discover Life Starter Charter completes only on a later explicit Bioscan for its
+established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Survey or Capture
+backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
+Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
+and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
+two SessionRNG draws and one receipt/CAS. A wave-off leaves orbit, HP at least 1 and canonical
+learning (+20 percentage points per failure, capped at five), without landing rewards. Success
+clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
+Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
+fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
+Paragon acquisition, individual progression presentation and mature Atlas remain later checkpoints.
+Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 78 bullets
+at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
 reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
 
 > **2026-09-04 V2 beta-consumer overlay — matches current local code:** all six established
@@ -100,7 +105,7 @@ reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended de
 > durable chart is never reported as usable while remaining untravelable. This closes the current
 > implementation seam, not the later HUMAN journey review or fresh exact-source browser evidence.
 
-**STATUS:** current implementation contract matches the recovered local core as of **2026-09-05**;
+**STATUS:** current implementation contract matches the local Step 2b checkpoint as of **2026-09-05**;
 implementation status does not close the combined Arc 4.5 or separate Arc 5.5 HUMAN reviews. The
 older D-ARC4-BIOSCAN replacement records below describe their named historical checkpoints.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
@@ -110,8 +115,10 @@ ownership-v2 five-carrier authority spans boot, genuine legacy Training, Arc 4 c
 four player-live companion writers. Wider tastes/care/bond, injury healing, companion expeditions,
 friendly duels and
 missions remain open. All six Research purchases have their authored mineral, hostile-Bioscan,
-explorer-nourishment or travel-presentation consumers. Disconnected-effect recipes, authored random
-loot and upgrades/sockets remain **not implemented** unless a row below explicitly says otherwise. Player-facing landed combat/Guardian presentation is live at the bounded Arc 6
+explorer-nourishment or travel-presentation consumers. Worn landing and wave-off effects now have
+live descent consumers, connecting the seven previously unsupported gear rows; recipe costs,
+prerequisites and capacity still gate each craft. Authored random loot and upgrades/sockets remain
+**not implemented** unless a row below explicitly says otherwise. Player-facing landed combat/Guardian presentation is live at the bounded Arc 6
 scope recorded in `COMBAT_AND_CONQUEST.md`. This document coordinates the
 existing system specs; it does not silently promote planned behavior into the in-game Guide.
 
@@ -670,13 +677,13 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 
 | System | Current v2 executable state | Next owned outcome |
 |---|---|---|
-| Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
+| Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting. Unfamiliar-world Land uses authored type/biome odds, seeded weather, worn landing gear and approach learning, with chance and nonlethal HP cost disclosed before commitment. A wave-off stays in orbit and adds 20 percentage points of learning at that exact address, capped at five wave-offs. Canonical Earth, Training and proven full-address landed returns are safe and consume no landing draws. Successful non-Training arrival clears that address's wave-offs; Training preserves them. One receipt/CAS settles the chosen outcome, HP and canonical learning before publication | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
 | Charters / reach language | The board owns the two established Starter chains, a three-active cap and one receipt/CAS Accept path. Committed-only landfall, mining, eligible fixed fabrication, Field Scout and verified conquest writers bank exact deeds and their 10–25 Stardust, supported-Gear, achievement and rank outcomes atomically; full-address Sol checks reject leaf-seed aliases. A later explicit Discover Life after st-scan acceptance completes that Starter Charter with 15 Stardust and the exact Earpiece in the Bioscan receipt; earlier Survey or Capture never backfills it. Saved drive/chapter facts still gate reach | Keep weekly Charters fail-closed until wall-week/slate/acceptance/rollover authorities exist; never infer progress from projections |
 | Compendium | Virtualized 1,500-row browsing surface with bounded asynchronous thumbnails and selected static detail; list-mode heading and sticky Close share the reserved first header row; native Arc 4 acquisition may add durable rows through Survey, not through the Compendium panel itself | HUMAN Arc 1 art review, then any separately bounded living selected preview |
 | Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current published epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Historical Final10–Final13 chronology remains preserved below. Historical exact signed source `3f69e88…` passed its once-only named-verified chain, including the complete real 20-minute Recovery observation and exact next-cycle/recovered UI | Complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |
 | Inventory / character portrait | Exact-instance gear carrier and real bounded Inventory inspect/filter/conditional compare plus Equip/Unequip/Salvage/pending-claim are live and receipt-backed; `<=360px` rows stack full visible identity copy above all status badges without changing semantics; oversized legacy holds are lossless inspection-only | Authored new-loot/upgrade/socket/modifier policy, paper-doll/bespoke item art and HUMAN phone/desktop readability |
 | Shipyard / ship upgrades | Engineering & Shipyard retains the pure normalized ship projection/four static SVG silhouettes and exposes real Mine/Skim, all six Research purchases, eligible fixed-Fabrication actions and the ordered ordinary-plus-biome-only orbital **Mineral veins** Survey row after owned `scan1`. Hull and Xenobotany feed Bioscan and explorer meals; the drive research ladder feeds the Search/CF1/Atlas travel presentation; connected exact system outputs still own permanent reach | HUMAN silhouette, Engineering/travel comprehension and pacing; authored random loot, upgrades, sockets and wider variable construction; the Survey row remains informational and never becomes Mine/reserve/grade/cosmic authority |
-| Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six purchasable Research rows and all 62 listed fixed recipes are present. Research and connected-effect recipes have exact costs/preconditions/capacity/revision headroom. Equipped `heal`, `scut`, and `speed` now join the existing live capability effects. A supported slotted craft paid wholly from exceptional direct materials receives one deterministic exact-item **Pureforged** mining-yield, rich-strike or capture-contact modifier; mixed stock remains ordinary | Specify authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing without changing the Pureforged fixed-craft contract |
+| Materials / crafting / loot | All 47 material/62 item/six-affix facts, finite canonical Mine/Skim sources, six purchasable Research rows and all 62 listed fixed recipes are present. Research and connected-effect recipes have exact costs/preconditions/capacity/revision headroom. Equipped `heal`, `scut`, `speed`, `land`, `landfam`, `land100`, and `struts` join the existing live capability effects; all 62 listed recipes now have connected effects, while exact costs and prerequisites still determine availability. A supported slotted craft paid wholly from exceptional direct materials receives one deterministic exact-item **Pureforged** mining-yield, rich-strike or capture-contact modifier; mixed stock remains ordinary | Specify authored random-loot sources, natural-affix compatibility, upgrades/sockets and recovery/pacing without changing the Pureforged fixed-craft contract |
 | Breeding / care | A real fauna Compendium detail exposes exact-instance Feed, nonlethal Breed/Recovery, Rename and Field Scout writers over the compact five-carrier V2 authority. Companion Feed remains one exact lot/one Meal. A real Flora detail separately gives the explorer one canonical-lot Eat action with deterministic healing or poison and stat nourishment. The assigned Field Scout intercepts hostile Discover Life injury at no worse than Critical. Same-species twins remain distinct; Back/Close, no optimism, stale refusal and reload convergence are shared boundaries | Complete final exact-source browser/HUMAN companion evidence; implement companion tastes/flavours, Power growth, injury care/healing, poison, bond, friendly duels and missions separately |
 | Records / legacy | Records projects ranks, 96 achievements, 26 exact event joins with only `daily`/`decade` blocked, and one escaped read-only Expedition Chronicle & Museum: four independent max-60 galleries for battles, first-species discoveries, Prime victories and Legacy Journal | Achievement reward policy, semantic cross-gallery chronology, museum rewards, missions, share cards and broader projects remain separate; never invent dates or action order |
 | Combat / conquest / Guardians | A landed non-Training Surface offers explorer, eligible-fauna or captured Guardian/Titan champion choice against the deterministic Titan/Guardian/strongest-fauna defender, with a 160-run forecast and one receipt/CAS settlement. It persists conquest, tier-scaled Stardust/XP/injury/loss, Guardian/Titan acquisition, Prime Signature/Frontier, `c2-conq`, `settle1`, `brink`, and accepted `st-conq` +25 in the same verified outcome. The post-settlement Combat Chronicle is live with the complete already-modelled registered cue set for ordinary fauna and captured champions | Add party/tactics/retreat, authored extra Guardian rewards and the decided conquest-modifier coexistence policy; complete browser/HUMAN combat review |

@@ -142,9 +142,9 @@ export const ENGINEERING_GLASS_RECIPE_ORACLE = Object.freeze([
   recipeFixtureRow('thermal', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('presshull', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('cryoline', 'unavailable', 'live', 'false', true),
-  recipeFixtureRow('struts', 'unavailable', 'unavailable', 'false', true),
-  recipeFixtureRow('stabil', 'unavailable', 'unavailable', 'false', true),
-  recipeFixtureRow('anchor', 'unavailable', 'unavailable', 'false', true),
+  recipeFixtureRow('struts', 'unavailable', 'live', 'false', true),
+  recipeFixtureRow('stabil', 'unavailable', 'live', 'false', true),
+  recipeFixtureRow('anchor', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('headlamp', 'available', 'live', 'true', false),
   recipeFixtureRow('visor', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('voidhelm', 'unavailable', 'live', 'false', true),
@@ -157,9 +157,9 @@ export const ENGINEERING_GLASS_RECIPE_ORACLE = Object.freeze([
   recipeFixtureRow('gripgloves', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('surgeon', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('fieldlegs', 'unavailable', 'live', 'false', true),
-  recipeFixtureRow('greaves', 'unavailable', 'unavailable', 'false', true),
-  recipeFixtureRow('magboots', 'unavailable', 'unavailable', 'false', true),
-  recipeFixtureRow('gravboots', 'unavailable', 'unavailable', 'false', true),
+  recipeFixtureRow('greaves', 'unavailable', 'live', 'false', true),
+  recipeFixtureRow('magboots', 'unavailable', 'live', 'false', true),
+  recipeFixtureRow('gravboots', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('cg-proto', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('cg-genesis', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('cg-void', 'unavailable', 'live', 'false', true),
@@ -168,7 +168,7 @@ export const ENGINEERING_GLASS_RECIPE_ORACLE = Object.freeze([
   recipeFixtureRow('cg-plasma', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('cg-corona', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('rl-stone', 'unavailable', 'live', 'false', true),
-  recipeFixtureRow('rl-ocean', 'unavailable', 'unavailable', 'false', true),
+  recipeFixtureRow('rl-ocean', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('rl-flame', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('rl-sky', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('rl-life', 'unavailable', 'live', 'false', true),
@@ -177,7 +177,7 @@ export const ENGINEERING_GLASS_RECIPE_ORACLE = Object.freeze([
   recipeFixtureRow('rl-void', 'unavailable', 'live', 'false', true),
   recipeFixtureRow('rl-prism', 'unavailable', 'live', 'false', true),
 ]);
-const ENGINEERING_GLASS_ORACLE_SHA256 = '578ba5beb446e0a0637c039e714b2084c1af13b3a00b39226af80c6b3e8fc01b';
+const ENGINEERING_GLASS_ORACLE_SHA256 = '131621eaa8cc2c74f58408e7d9618df939506b528d20b60a72567af75f7b311e';
 const engineeringGlassOracleSha256 = createHash('sha256').update(JSON.stringify({
   research: ENGINEERING_GLASS_RESEARCH_ORACLE,
   recipes: ENGINEERING_GLASS_RECIPE_ORACLE,

@@ -72,7 +72,7 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
     },
     {
       id: 'land', spot: '#survey [data-act="landcta"]', allow: ['#survey [data-act="landcta"]'],
-      text: () => 'Now stand on it. Press <b>Land</b> on Earth’s card. <b>Planetside</b> opens: the world at ground level, painted from its own survey. This development slice does not simulate the mature game’s hostile descent odds or wave-offs yet; the Guide marks those systems as still to come.',
+      text: () => 'Now stand on it. Press <b>Land safely</b> on Earth’s card. <b>Planetside</b> opens: the world at ground level, painted from its own survey. Earth and known-world returns are guaranteed. On an unfamiliar frontier world, the same button and visible approach note show the exact current success chance, possible HP cost, and learned approach; a failed approach waves off safely, cannot defeat you, and teaches that exact world for a stronger next attempt.',
       when: (t, d) => t === 'landfall' && d.planetSeed === 133,
     },
     {

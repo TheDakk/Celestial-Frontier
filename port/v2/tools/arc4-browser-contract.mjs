@@ -153,8 +153,95 @@ const ARC4_PERTAR_BOOT_PROGRESSION_WITNESS =
   'arc9p1:8bfd4634e1e932eabead451a44fdf8e7ef35693c58b0179ebf8045a68558c05b';
 const ARC4_PERTAR_SURVEY_WITNESS =
   'arc9sv1:21678a94072ba2e5d0df32cdde8454d265cf0edac9310acf98576d2696244ece';
+/* Independently derived from the existing seed-68 Pertar source: Volcanic
+   Archipelago base 70, static rain -5, no worn descent effects; success draw
+   0.3569247468840331 lands at 65%. Seed-only landed evidence is not a canonical
+   revisit. The two named draws still own exactly one Land receipt. */
+export const ARC4_PERTAR_DESCENT_LANDING = Object.freeze({
+  "descentWeather": "rain",
+  "descent": Object.freeze({
+    "kind": "landed",
+    "navigation": "surface",
+    "policy": Object.freeze({
+      "schema": "cf-v2-descent-policy/v1",
+      "key": "CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3",
+      "address": Object.freeze({
+        "format": "CF1",
+        "galaxy": Object.freeze({
+          "seed": 999,
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "home": true,
+          "quasar": false,
+          "dwarf": false,
+          "parentCell": Object.freeze({
+            "x": 0,
+            "y": -1
+          })
+        }),
+        "star": Object.freeze({
+          "seed": 1347060996,
+          "x": 414.31,
+          "y": 168.49,
+          "layer": "coarse",
+          "parentCell": Object.freeze({
+            "x": 9,
+            "y": 4
+          })
+        }),
+        "planet": Object.freeze({
+          "seed": 546621068,
+          "ordinal": 3
+        }),
+        "key": "CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3"
+      }),
+      "opportunityIdentity": "cf-v2-world-opportunity/v3:CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3",
+      "capabilityFingerprint": "ec1:430:ae5789c7",
+      "planetType": "ocean",
+      "biomeKey": "volcisle",
+      "typeBase": Object.freeze({
+        "successPercent": 90,
+        "damageMin": 2,
+        "damageMax": 2
+      }),
+      "baseSuccessPercent": 70,
+      "stormActive": true,
+      "stormAdjustedPercent": 65,
+      "waveOffCount": 0,
+      "learnedApproachBonus": 0,
+      "globalGearBonus": 0,
+      "familyGearBonus": 0,
+      "landingGuaranteed": false,
+      "successPercent": 65,
+      "damageMin": 4,
+      "damageMax": 6,
+      "waveOffDamageReduction": 0,
+      "safeReason": null,
+      "requiredDomains": Object.freeze(["descent.success", "descent.damage"])
+    }),
+    "drawsConsumed": 2,
+    "hpBefore": 55,
+    "hpAfter": 55,
+    "damage": 0,
+    "waveOffCountBefore": 0,
+    "waveOffCountAfter": 0,
+    "persistenceOutcome": "success"
+  }),
+  "waveOffStateSuccessorSeal": "88ed6120a970c2bda5aaa7e4d4f39be3766293b9a17aa8277141a15c7bc94b56",
+  "waveOffLegacySuccessorSeal": "9d7ceb80430c32a69624b2ad4a2a9bbe6b4e15366a8021c947058322d8a42e7d",
+  "arc2LootSuccessorSeal": "af67a21664d77c83434ddd0ce394c85b4c596ffb672d101540e815c1e2574457",
+  "waveOffProtectedStateSeal": null
+});
+export const ARC4_PERTAR_DESCENT_DRAWS = Object.freeze({
+  "descent.success": 1,
+  "descent.damage": 1
+});
 const ARC4_PERTAR_LANDING_WITNESS =
-  '{"schema":"cf-v2-arc0-landing-witness/v1","worldKey":"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3","planetSeed":546621068,"planetOrdinal":3,"landing":"unresolved-already-landed","permanentLanding":true,"training":false,"landingKnownBefore":true,"identityLandedAfter":true,"claimedLegacyIdentity":true,"legacyMirrorContainsSeedAfter":true,"savedView":{"type":"planet","gal":{"x":90,"y":-60,"size":78,"sp":0,"tilt":0.62,"rot":0.5,"seed":999,"home":true,"quasar":false,"dwarf":false},"star":{"x":414.31,"y":168.49,"seed":1347060996},"pseed":546621068},"sample":{"kind":"suppressed","reason":"unresolved-already-landed"},"charter":{"banked":false,"ascChBefore":1,"ascChAfter":1,"stage":1,"progressSeal":"479d7c8742762c9fb5fa62cfdb8b9621bf70959410c8c2aece801e707f8a27a1","delta":{}},"starterCharters":{"changed":false,"progressIds":[],"completions":[],"priorUnlockedIds":[],"nextUnlockedIds":[],"addedAchievementIds":[],"priorBestRankIndex":0,"nextBestRankIndex":0},"achievement":null,"stateSuccessorSeal":"9ccc8a03c32960e4eef9322cf2aee9e02d8942dcfc9c9cc78c092259e7ae1e65","worldIdentitySuccessorSeal":"040de02d9a443e9d6a6ee3091492ea098daf3cb8663efae0b323333b8a51442b","receiptOrdinal":1}';
+  "{\"schema\":\"cf-v2-arc0-landing-witness/v1\",\"worldKey\":\"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3\",\"planetSeed\":546621068,\"planetOrdinal\":3,\"landing\":\"unresolved-already-landed\",\"permanentLanding\":true,\"training\":false,\"landingKnownBefore\":true,\"identityLandedAfter\":true,\"claimedLegacyIdentity\":true,\"legacyMirrorContainsSeedAfter\":true,\"savedView\":{\"type\":\"planet\",\"gal\":{\"x\":90,\"y\":-60,\"size\":78,\"sp\":0,\"tilt\":0.62,\"rot\":0.5,\"seed\":999,\"home\":true,\"quasar\":false,\"dwarf\":false},\"star\":{\"x\":414.31,\"y\":168.49,\"seed\":1347060996},\"pseed\":546621068},\"sample\":{\"kind\":\"suppressed\",\"reason\":\"unresolved-already-landed\"},\"charter\":{\"banked\":false,\"ascChBefore\":1,\"ascChAfter\":1,\"stage\":1,\"progressSeal\":\"479d7c8742762c9fb5fa62cfdb8b9621bf70959410c8c2aece801e707f8a27a1\",\"delta\":{}},\"starterCharters\":{\"changed\":false,\"progressIds\":[],\"completions\":[],\"priorUnlockedIds\":[],\"nextUnlockedIds\":[],\"addedAchievementIds\":[],\"priorBestRankIndex\":0,\"nextBestRankIndex\":0},\"achievement\":null,\"descentWeather\":\"rain\",\"descent\":{\"kind\":\"landed\",\"navigation\":\"surface\",\"policy\":{\"schema\":\"cf-v2-descent-policy/v1\",\"key\":\"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3\",\"address\":{\"format\":\"CF1\",\"galaxy\":{\"seed\":999,\"x\":90,\"y\":-60,\"size\":78,\"sp\":0,\"tilt\":0.62,\"rot\":0.5,\"home\":true,\"quasar\":false,\"dwarf\":false,\"parentCell\":{\"x\":0,\"y\":-1}},\"star\":{\"seed\":1347060996,\"x\":414.31,\"y\":168.49,\"layer\":\"coarse\",\"parentCell\":{\"x\":9,\"y\":4}},\"planet\":{\"seed\":546621068,\"ordinal\":3},\"key\":\"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3\"},\"opportunityIdentity\":\"cf-v2-world-opportunity/v3:CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3\",\"capabilityFingerprint\":\"ec1:430:ae5789c7\",\"planetType\":\"ocean\",\"biomeKey\":\"volcisle\",\"typeBase\":{\"successPercent\":90,\"damageMin\":2,\"damageMax\":2},\"baseSuccessPercent\":70,\"stormActive\":true,\"stormAdjustedPercent\":65,\"waveOffCount\":0,\"learnedApproachBonus\":0,\"globalGearBonus\":0,\"familyGearBonus\":0,\"landingGuaranteed\":false,\"successPercent\":65,\"damageMin\":4,\"damageMax\":6,\"waveOffDamageReduction\":0,\"safeReason\":null,\"requiredDomains\":[\"descent.success\",\"descent.damage\"]},\"drawsConsumed\":2,\"hpBefore\":55,\"hpAfter\":55,\"damage\":0,\"waveOffCountBefore\":0,\"waveOffCountAfter\":0,\"persistenceOutcome\":\"success\"},\"worldIdentitySuccessorSeal\":\"040de02d9a443e9d6a6ee3091492ea098daf3cb8663efae0b323333b8a51442b\",\"waveOffStateSuccessorSeal\":\"88ed6120a970c2bda5aaa7e4d4f39be3766293b9a17aa8277141a15c7bc94b56\",\"waveOffLegacySuccessorSeal\":\"9d7ceb80430c32a69624b2ad4a2a9bbe6b4e15366a8021c947058322d8a42e7d\",\"arc2LootSuccessorSeal\":\"af67a21664d77c83434ddd0ce394c85b4c596ffb672d101540e815c1e2574457\",\"receiptOrdinal\":1,\"stateSuccessorSeal\":\"9ccc8a03c32960e4eef9322cf2aee9e02d8942dcfc9c9cc78c092259e7ae1e65\",\"waveOffProtectedStateSeal\":null}";
 const ARC4_PERTAR_TAME_LANDING_STATE_SEAL =
   '10d953c315de7295a53d221ea1d2f93899de8f7ab127db26d3e5cdff170e7533';
 const ARC4_PERTAR_SAMPLE_PROGRESSION_WITNESS =
@@ -2890,8 +2977,10 @@ const exactArc4PertarPrefixRows = (raw, phase) => {
       'permanentLanding', 'training', 'landingKnownBefore',
       'identityLandedAfter', 'claimedLegacyIdentity',
       'legacyMirrorContainsSeedAfter', 'savedView', 'sample', 'charter',
-      'starterCharters', 'achievement', 'stateSuccessorSeal',
-      'worldIdentitySuccessorSeal', 'receiptOrdinal',
+      'starterCharters', 'achievement', 'descentWeather', 'descent',
+      'worldIdentitySuccessorSeal', 'waveOffStateSuccessorSeal',
+      'waveOffLegacySuccessorSeal', 'arc2LootSuccessorSeal', 'receiptOrdinal',
+      'stateSuccessorSeal', 'waveOffProtectedStateSeal',
     ])
     && landing.witness === JSON.stringify(expectedLandingFacts)
     && hexDigest(landingFacts.stateSuccessorSeal);
@@ -2910,17 +2999,19 @@ export const assessArc4PertarLedgerPrefix = ({ raw, state, phase } = {}) => {
     ? ARC4_PERTAR_FIXTURE.sourceReadySessionOrdinal
     : phase === 'action-ready'
       ? ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal : null;
+  const expectedDraws = phase === 'source-ready'
+    ? ARC4_PERTAR_FIXTURE.initialSessionDraws : ARC4_PERTAR_DESCENT_DRAWS;
   const checks = {
     phase: expectedOrdinal !== null,
     durableEvidence: durable.ok === true,
     exactPrefix: exactArc4PertarPrefixRows(raw, phase),
     authority: raw?.authority?.sessionRng?.seed === ARC4_PERTAR_FIXTURE.sessionSeed
       && raw?.authority?.sessionRng?.ordinal === expectedOrdinal
-      && same(raw?.authority?.sessionRng?.draws, ARC4_PERTAR_FIXTURE.initialSessionDraws),
+      && same(raw?.authority?.sessionRng?.draws, expectedDraws),
     runtimeParity: runtime?.revision === raw?.revision
       && runtime?.sessionSeed === ARC4_PERTAR_FIXTURE.sessionSeed
       && runtime?.sessionOrdinal === expectedOrdinal
-      && same(runtime?.sessionDraws, ARC4_PERTAR_FIXTURE.initialSessionDraws),
+      && same(runtime?.sessionDraws, expectedDraws),
     emptyCaptureOwnership: raw?.captureRevision === 0 && mirror?.revision === 0
       && ['catalogSpecies', 'discoveries', 'creatures', 'specimenLots', 'biosphereProgress']
         .every((field) => Array.isArray(mirror?.[field]) && mirror[field].length === 0),
@@ -7082,6 +7173,7 @@ const pertarSourceReadyStateSelftest = appState(
 const pertarActionReadyRawSelftest = makeDurable(emptyMirror(), {
   revision: 11,
   ordinal: ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal,
+  draws: ARC4_PERTAR_DESCENT_DRAWS,
   receipts: pertarPrefixRowsSelftest,
 });
 const pertarActionReadyStateSelftest = appState(
@@ -7156,6 +7248,73 @@ const pertarPrefixControlsSelftest = Object.freeze({
     raw.receiptRows[1].witness = JSON.stringify(facts);
     raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
   }),
+  descentWeather: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.descentWeather = null;
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  descentOutcome: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.descent.drawsConsumed = 0;
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  descentPolicy: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.descent.policy.successPercent = 100;
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  waveOffStateSeal: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.waveOffStateSuccessorSeal = '0'.repeat(64);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  waveOffLegacySeal: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.waveOffLegacySuccessorSeal = '0'.repeat(64);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  arc2LootSeal: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.arc2LootSuccessorSeal = '0'.repeat(64);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  waveOffProtectedSeal: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.waveOffProtectedStateSeal = '0'.repeat(64);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  missingDescentField: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    delete facts.descentWeather;
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  extraDescentField: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.unownedDescentField = true;
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  descentWitnessOrder: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    raw.receiptRows[1].witness = JSON.stringify(Object.fromEntries(
+      Object.entries(facts).reverse(),
+    ));
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  authorityDraws: pertarPrefixMutationSelftest((raw) => {
+    raw.authority.sessionRng.draws['descent.success'] = 0;
+  }),
+  runtimeDraws: pertarPrefixMutationSelftest((_raw, state) => {
+    state.persistence.runtime.sessionDraws['descent.damage'] = 0;
+  }),
   authorityOrdinal: pertarPrefixMutationSelftest((raw) => {
     raw.authority.sessionRng.ordinal += 1;
   }),
@@ -7166,6 +7325,7 @@ const pertarPrefixControlsSelftest = Object.freeze({
 const pertarPrefixControlNamesSelftest = Object.freeze([
   'staleEmptyLedger', 'missingReceipt', 'extraReceipt', 'reorderedReceipts',
   'bootWitness', 'unexpectedSurveyReceipt', 'landingWitness', 'landingStateSuccessorSeal',
+  'descentWeather', 'descentOutcome', 'descentPolicy', 'waveOffStateSeal', 'waveOffLegacySeal', 'arc2LootSeal', 'waveOffProtectedSeal', 'missingDescentField', 'extraDescentField', 'descentWitnessOrder', 'authorityDraws', 'runtimeDraws',
   'authorityOrdinal', 'runtimeOrdinal',
 ]);
 const pertarTameLandingRawSelftest = pertarLandingSealVariantSelftest(
@@ -7706,7 +7866,8 @@ const progressionHitCaptureReceiptSelftest = captureReceipt(
 const progressionActionRawSelftest = makeDurable(progressionHitMirrorSelftest, {
   revision: pertarActionReadyRawSelftest.revision + 1,
   ordinal: ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal + 1,
-  draws: { 'capture.candidate': 1, 'capture.success': 1 },
+  draws: { ...ARC4_PERTAR_DESCENT_DRAWS,
+    'capture.candidate': 1, 'capture.success': 1 },
   receipts: [
     ...pertarPrefixRowsSelftest,
     progressionHitCaptureReceiptSelftest,
@@ -7723,7 +7884,8 @@ const progressionHitReceiptSelftest = Object.freeze({
 const progressionHitRawSelftest = makeDurable(progressionHitMirrorSelftest, {
   revision: pertarActionReadyRawSelftest.revision + 2,
   ordinal: ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal + 2,
-  draws: { 'capture.candidate': 1, 'capture.success': 1 },
+  draws: { ...ARC4_PERTAR_DESCENT_DRAWS,
+    'capture.candidate': 1, 'capture.success': 1 },
   receipts: [
     ...pertarPrefixRowsSelftest,
     progressionHitCaptureReceiptSelftest,

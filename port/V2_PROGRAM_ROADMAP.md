@@ -1,20 +1,25 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-## Overnight Batch 4 — checkpoint 2a implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2b implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
 Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
 486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
-The authored accepted Discover Life Starter Charter now completes only on a later explicit
-Bioscan: one completion grants its established 15 Stardust and Earpiece in that same F4
-receipt/CAS. Acceptance never backfills earlier Survey records; Capture and landfall cannot
-substitute. Exact gear publication, stale tabs, capacity/protection and failed writes refuse
-without partial reward, hazard, receipt or RNG publication. Weekly Charters stay parked.
-Descent, Paragon acquisition, individual progression presentation and mature Atlas remain later
-checkpoints. Existing authored tables and the eighteen Arc 4 namespaces/v5 topology govern.
-V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 77 bullets
-at this checkpoint. Real-device v2 persistence and the combined Arc 4.5 / separate Arc 5.5 HUMAN
+The accepted Discover Life Starter Charter completes only on a later explicit Bioscan for its
+established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Survey or Capture
+backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
+Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
+and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
+two SessionRNG draws and one receipt/CAS. A wave-off leaves orbit, HP at least 1 and canonical
+learning (+20 percentage points per failure, capped at five), without landing rewards. Success
+clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
+Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
+fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
+Paragon acquisition, individual progression presentation and mature Atlas remain later checkpoints.
+Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 78 bullets
+at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
 reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
 
 ## Current completion status — 2026-09-04 (post-PR #35)
@@ -33,7 +38,7 @@ rather than converting them into unnecessary product changes.
 | Existing program lane | Current playable boundary | Remaining accepted scope |
 | --- | --- | --- |
 | Foundations / Arc 1 | Safe persistence/time/identity, bounded Compendium and ship/universe presentation | Human/save/device/art evidence; current exact candidate proof after changes |
-| Arc 0 | Fifteen Training IDs including graduation; orientation/continuity and truthful capability views; accepted st-scan completion from a later explicit Bioscan in its owning receipt | Full hands-on curriculum beside its real owning actions; weekly bioscan Charter and weekly lifecycle owners |
+| Arc 0 | Fifteen Training IDs including graduation; orientation/continuity and truthful capability views; accepted st-scan completion from a later explicit Bioscan in its owning receipt; disclosed deterministic descent odds, nonlethal orbit-preserving wave-offs, canonical-address learning and safe Earth/Training/proven-world returns | Full hands-on curriculum beside its real owning actions; weekly bioscan Charter and weekly lifecycle owners |
 | Arc 2–3 | Exact Inventory, fixed fabrication, mining/skimming, all six Research consumers, capability-derived ship/reach, and Search/CF1/Atlas travel presentation | Authored random loot/affix/rate policy, upgrades/sockets, remaining ship depth, and human economy/pacing evidence |
 | Arc 4–5 | Capture with fresh-species Field Scout XP, explicit Discover Life with nonlethal Scout interception, explorer Flora meals, companion Feed, nonlethal Breed/recovery, Rename, and exact Field Scout selection | Companion taste/care/healing, bond growth, missions, dispatch/return, and living-preview depth |
 | Arc 6 | Landed battle, conquest, Guardian/Titan capture, Prime claims, XP/Stardust and Combat Chronicle | Arc 5.5 HUMAN model; two explicit affix/extra-Guardian-reward decisions; party/tactics/retreat and wider encounters |
