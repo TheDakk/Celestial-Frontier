@@ -1,5 +1,16 @@
 # Celestial Frontier v2 — Complete Graphics, Audio & Polish Production Plan
 
+## Current Batch A checkpoint — independent primary backup verified, 2026-09-05
+
+Nick selected existing iCloud Drive and responsive OneDrive storage. The primary iCloud copy
+passed forced eviction/download and38/38 checksums (37 bundle inputs plus sorted ustar); the
+truncated scratch control failed as required. Source preservation is CLOSED. Global brctl
+status was unavailable; native39/39 per-file upload/current states and actual brctl eviction
+are recorded explicitly. OneDrive copied but refused brctl eviction, so remains unverified.
+Originals are immutable; full locations live in a companion private index. Portable replay
+is the next separate checkpoint; B–D production remains not started. See
+`../audits/AAA_BATCH_A_BACKUP_20260905.md`. Earlier pending-backup entries are history.
+
 ## Current campaign continuation — PR #41 landed, 2026-09-05
 
 The pilot now builds on landed develop `c1791e210158de864fdd475323c3091d9ecbae58`,

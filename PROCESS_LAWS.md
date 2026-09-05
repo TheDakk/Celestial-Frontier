@@ -1,5 +1,14 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **A CLOUD-SYNC COPY IS A BACKUP ONLY AFTER FORCED READ-BACK** (Nick, 2026-09-05).
+> Upload/sync indicators and same-disk copies do not establish recoverability. Wait for every
+> selected backup item to report uploaded, evict only the uploaded destination copy, request
+> download, and hash the re-materialized bytes against the immutable source inventory. Preserve
+> the archive/checksum identities, timestamps, actual status results and a scratch-only truncated
+> file rejection. Never evict originals or label a responsive-but-unverified secondary complete.
+> A cloud placeholder cannot count as restored content. Record unavailable status commands and
+> the exact substitute per-file state evidence; do not turn a tool timeout into a success claim.
+
 > **EVIDENCE CODE IS AN EXPLICIT BUILD CONTRACT** (matches code as of 2026-09-04).
 > Default builds and human previews omit diagnostic bindings and destructive fault implementations;
 > only `--mode evidence` opts in. Hiding the public API alone does not prove dead-code elimination.

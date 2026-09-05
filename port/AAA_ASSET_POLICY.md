@@ -41,6 +41,10 @@ The existing export/recovery protections remain required.
   and derivation links to each shipped output. Verify the working and backup bytes before calling
   a source backed up. Retain at least one separate backup copy; two folders on one disk are not
   an independent failure domain. Sync presence alone is not proof of remote recoverability.
+  **Nick's 2026-09-05 cloud-backup rule:** after upload completes, force eviction/download of
+  the destination copy and verify every restored file plus its archive against the frozen
+  checksums. Retain timestamps/status evidence and a scratch-only truncated-file negative
+  control. A secondary copy remains unverified until it completes the same proof.
 - Local working root and backup destination must be recorded in the private source inventory.
   Cloud upload awaits Nick's selection/authorization of that destination. Until verified, sources
   are marked `backup-pending` and cannot be the sole basis of a completed deliverable.

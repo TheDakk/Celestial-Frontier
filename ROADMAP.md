@@ -17,106 +17,57 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-05 · PR #41 SYNC; AUDIOVISUAL BATCH A
+## SESSION HANDOFF — 2026-09-05 · BATCH A ICLOUD BACKUP VERIFIED; PORTABLE REPLAY NEXT
 
-### Integration and authority
+OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`, `openai/mac`,
+tracking origin/openai/mac. This batch started clean at fba61fb0d51d6d3d377fdcfdd889e016987f41ba.
+Develop remains c1791e210158de864fdd475323c3091d9ecbae58 (PR41); signed sync bc211be passed
+301 files/3,100 tests/1 skip plus typecheck/artunused with root main.js absent. No game/test input
+changed here, so unchanged gates are not repeated. Main/live site remain unchanged.
 
-OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`,
-branch `openai/mac`, tracking `origin/openai/mac`. The clean pre-merge head was
-`84b6f22d2e6ecc948d161b33bb02feda2f11abf9`; fetched `origin/develop` is exactly
-`c1791e210158de864fdd475323c3091d9ecbae58`. This checkpoint joins them with a real
-signed merge; no cherry-pick, copy, rebase or history rewrite. Both former handoffs
-and archive-side records are retained verbatim in `ROADMAP_ARCHIVE.md`.
-The signed real merge is **`bc211bef1f4def92a27933b7c79a090d8913fae4`**, verified
-and pushed to origin/openai/mac. This later documentation-only successor records its
-results and Batch A continuation; its exact pushed head is supplied in the user handoff.
+### Backup checkpoint
 
-PR #41 is merged into develop at `c1791e2`. Nick's Claude-verified handoff reports
-merge time 16:55:06 UTC; exact reviewed head `05c1d7fc7049a7b9813d2be1be020dc0d552b74f`.
-Run `33976307813` was RED (3m29s, Glass targeted CLI 15 s cap at 16.7 s);
-run `33977956355` was GREEN (8m10s) after the bounded timeout correction.
-The label was removed; merging triggered no run. These hosted facts are Nick's
-supplied review evidence, not a new hosted run or independent log replay here.
+**Source-preservation prerequisite CLOSED via primary iCloud forced read-back.** See
+`audits/AAA_BATCH_A_BACKUP_20260905.md` and adjacent JSON. Nick selected existing iCloud Drive
+and a responsive OneDrive secondary; no purchase. The immutable bundle is37 files/10,742,015 bytes
+(35 payload files plus index/restore notes); sorted ustar is10,769,920 bytes. Both copies used
+rsync-a with source mtimes preserved. Full paths live in a new companion private backup index;
+the37 original bundle inputs remain unchanged.
 
-The runtime, tests, tools, producer pins and protected artlock references take landed
-develop unchanged. All workflow bytes and `tools/actions-budget-policy.js` remain
-exactly develop's. No player import door may return; v1.8.9 codec and evidence-build
-`importBlob` remain. V2 starts fresh; the current draft has 79 outcomes, and retained
-Glass carriers are judged against their planned `GLASS_NEGATIVE_CONTROL_LEDGERS`.
-Batch 4 is integrated; its old save-export/PR prerequisites are superseded. Parked WIP
-`cf1b9a7843200ecc281c5113b4139909dc0e3a29` and prior review refs remain untouched.
+Global brctl status/monitor timed out without output; native per-file metadata instead proved
+39/39 uploaded. iCloud brctl eviction succeeded and all39 destination files became cloud-only;
+explicit download requests restored all39. At22:51:46.640097 UTC, all37 files plus tar passed
+destination shasum and the source files matched previous public evidence. The truncated scratch
+negative control failed as required and was deleted. Backup law now requires forced cloud
+read-back, not just sync presence. All exact hashes/timestamps and tool limitations are recorded.
 
-SSH origin is `git@github.com:TheDakk/Celestial-Frontier.git`; established account
-`TheDakk`, current fetch PASS. Budget UNFROZEN, PUBLIC per Nick, private fallback
-3,000; zero hosted attempts, labels, PRs into develop, remote merges or releases
-are authorized. The requested local merge and normal openai/mac branch push are
-authorized; the branch push triggers no workflow (label-only battery, others manual).
+OneDrive listing responded, copy completed and upload metadata was positive, but brctl refused
+its non-CloudDocs path. No supported CLI eviction was found; Finder automation permission was
+unavailable. Secondary status is COPIED/UNVERIFIED, not “unresponsive/skipped” or verified backup.
+A later OneDrive native evict/download plus matching hashes can close it; the primary is complete.
 
-### Bootstrap-free verification and process law
+### Remaining authorized Batch A work
 
-Root ignored `main.js` and unrelated Finder `.DS_Store` were moved intact to a private
-local backup before switching to clean openai/mac. Root `main.js` stays absent during
-`npm run typecheck`, `npm run artunused` and `npx vitest run` from port/v2; expected
-301 files / 3,100 passed / 1 skipped. All three commands passed once on the exact clean
-merge: typecheck **2.423 s**, artunused **1.330 s**, Vitest **45.079 s** with all **301 files /
-3,100 passed / 1 skipped**. No worker override, global config or selection change; root
-main.js remains absent. Source/HEAD stayed clean and unchanged throughout. No profile,
-browser or policy suite was added to Nick's three-command sync verification.
-V2 tests needing legacy source must read tracked `celestial-frontier.html` through
-`test-support/tracked-v1-source.ts`, never the gitignored machine bootstrap. Verify
-without root main.js before any hosted attempt. The existing ignored-input law in
-PROCESS_LAWS.md now names that helper and the required absent-bootstrap verification.
-No Settings/Guide/Training code was changed. Exact results/hashes are recorded in
-`audits/AAA_BATCH_A_PR41_SYNC_20260905.md` and its adjacent JSON.
+Next checkpoint: portable replay in a fresh derivative working copy using CF_AV_BUNDLE_ROOT.
+Resolve ship/Lanternback output paths, preserve relative ecosystem.py, isolate REAPER's config,
+relocate RPP/Lua outputs and browser verifier dependency. Replay one ship and one audio cue;
+compare stored output hashes and report exact matches or documented nondeterminism. Do not rerun
+unchanged tool-readiness probes or alter immutable originals. Then give B–D inputs a done/not-started
+table only; no B–D work. The128/256MiB installed-pack policy remains reserved, enforcement/device
+acceptance open. Eight body plans still require132/300/440 static+animated proof; invented
+Lanternback concept does not close canonical coverage. The integrated-pilot approval stop stands;
+Phase2/topbar/dock/rails are not authorized.
 
-### Audiovisual Batch A state
+### Boundaries and paired next steps
 
-The accepted plan is `port/AAA_AUDIOVISUAL_CAMPAIGN.md`, Phase 0/1 Batches A–D only,
-with the integrated pilot approval stop. Batch A means source/tool readiness. Blender
-5.2.1 save/separate-reopen/render and REAPER 7.79 + Surge XT 1.3.4 save/reopen/export
-already passed; browser WAV/FLAC decoding also passed. Do not repeat unchanged tool tests.
-Human listening, Safari/iPhone and in-game audiovisual acceptance remain open.
+- Codex: sign/push this backup evidence checkpoint, then complete the separately recorded
+  portable replay and input-status checkpoint. New audiovisual records stay on openai/mac.
+- Claude: continue only its own work; leave anthropic/mac c860f57 and unmerged173c806 negative
+  control untouched by Codex. No manual copying, synchronization or PR requested now.
+- Nick: no GitHub action needed and no need to open Claude now. OneDrive remains an optional
+  unverified secondary. Artlock CI lane, ITP save protection and DECISIONS row19 wording stay open.
 
-`port/AAA_ASSET_POLICY.md` reserves 128 MiB for a complete installed pack and 256 MiB
-aggregate retained payload during update overlap, counted before measuring. Enforcement
-and real-device acceptance remain unproven. Offline is an installed, complete-ready-PWA
-promise while storage is retained, with no eviction or deleted-save recovery guarantee.
-The source policy requires editable .blend/.rpp/patches/WAV masters to remain outside
-public Git, hashed and independently backed up; only optimized outputs, small code and
-provenance records enter Git; no LFS. The current backup status is recorded below.
-
-Batch A resumed by consolidating the existing masters, recipes, outputs and evidence into
-a durable private working-source folder outside the public repo and app-private scratch.
-Logical bundle `cf-batch-a-readiness-sources-20260905` preserves both ship tests,
-both Lanternback .blend revisions and outputs, and the full original audio hierarchy.
-**35/35 copied files match byte-for-byte (10,731,051 bytes); 23 existing manifest
-references were also verified.** The new private index and restore notes retain location
-mappings and the known absolute-path/plugin/config dependencies without changing originals.
-No app launch, rerender, upload or public binary was needed. This is same-Mac preservation;
-independent backup is still unselected/unverified, and portable replay remains unproved.
-Nick has a pending destination question. The next bounded source step is to copy this bundle
-to that selected independent destination and verify read-back bytes before closing backup.
-The Lanternback/forest render remains invented concept art, not canonical creature coverage.
-
-Later B–D work retains one ship/biome treatment and all eight body plans: quadruped,
-biped, avian, serpentine, arthropod, tentacled, aquatic, flora/fungus; each static and
-animated at actual 132/300/440. Unfaithful families keep their correct static portraits
-and remain incomplete. Audio, candidate styleguide, three interface mockups and real-game
-integration lead to Nick's pilot approval stop. No Phase 2; top bar/dock/rails leads it
-after approval. No purchases, protected-portrait edits, CI/policy edits or release.
-
-### Open decisions and paired next steps
-
-Nick's artlock CI lane, ITP save protection and confirmation that DECISIONS row 19's
-wording is his remain open. This sync decides none of them.
-
-- **OpenAI/Codex:** sync/checks/push are complete; Batch A's consolidated local source
-  handoff is verified and its known restore gaps recorded. Independent backup awaits Nick's
-  destination. Do not repeat the passed tool tests or advance beyond the pilot approval stop.
-- **Anthropic/Claude Code:** leave anthropic/mac `c860f57` and its unmerged `173c806`
-  Slice injected-door negative control alone. Claude owns that worktree and any later
-  sync there. Audiovisual-only records remain on openai/mac, not develop; no manual copying.
-- **Nick:** no GitHub action/PR fields needed, and no need to open Claude now. An independent
-  backup destination remains needed before that Batch A prerequisite can close.
-- **Release:** develop is verified at c1791e2; main/live site are unchanged by this sync.
-  No hosted run, merge into develop/main, release or deployment is performed here.
+Budget UNFROZEN, PUBLIC, private fallback3,000. Established SSH origin/account remains
+`git@github.com:TheDakk/Celestial-Frontier.git` / TheDakk. Authorized branch push triggers no
+workflow; zero hosted runs, labels, PRs, merges, releases or purchases. No Settings/Guide/Training,
+import door, workflow, Actions policy, protected-portrait or artlock-reference changes.
