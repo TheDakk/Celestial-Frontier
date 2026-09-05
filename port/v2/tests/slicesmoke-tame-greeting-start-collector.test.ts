@@ -249,6 +249,9 @@ const START_CONTRACT_FIELDS = [
   ['Charter result key',
     "'stardustReward', 'charterBioscanBanked', 'revision', 'ownershipRevision',"],
   ['Charter result equality', 'result.charterBioscanBanked === true'],
+  ['Scout result keys', "'scoutCreatureId', 'scoutXpBefore', 'scoutXpAfter', 'scoutXpAward',"],
+  ['no assigned Scout result', 'result.scoutCreatureId === null && result.scoutXpBefore === null'],
+  ['no Scout award result', 'result.scoutXpAfter === null && result.scoutXpAward === 0'],
   ['global clause', 'global: Number.isSafeInteger(observation?.globalRevision)'],
   ['ownership clause', 'ownership: Number.isSafeInteger(observation?.captureRevision)'],
   ['claim clause', 'claim: tameGreetingAudioShape(observation)'],
@@ -265,6 +268,9 @@ const GENERIC_RESULT_FIELDS = [
   ['global result key',
     "'stardustReward', 'charterBioscanBanked', 'revision', 'ownershipRevision',"],
   ['Charter result type', "typeof charterBioscanBanked === 'boolean'"],
+  ['Scout result keys', "'scoutCreatureId', 'scoutXpBefore', 'scoutXpAfter', 'scoutXpAward',"],
+  ['no assigned Scout result', 'result.scoutCreatureId === null && result.scoutXpBefore === null'],
+  ['no Scout award result', 'result.scoutXpAfter === null && result.scoutXpAward === 0'],
   ['Charter result binding',
     'result?.charterBioscanBanked === charterBioscanBanked'],
   ['global transaction binding', 'result?.revision === committedRevision'],
@@ -436,6 +442,7 @@ function activeObservation(): Record<string, any> {
       ownedRowId: 'creature-v1:collector-selftest',
       stardustReward: expected.stardustReward,
       charterBioscanBanked: true,
+      scoutCreatureId: null, scoutXpBefore: null, scoutXpAfter: null, scoutXpAward: 0,
       revision: 31,
       ownershipRevision: 1,
     },
@@ -728,6 +735,33 @@ describe('Slice Arc 4 Tame greeting post-release collector', () => {
         control.expected,
       );
     }
+  });
+
+  it('requires the four current Scout fields and preserves them through Tame replay', () => {
+    const positive = activeObservation();
+    const fields = ['scoutCreatureId', 'scoutXpBefore', 'scoutXpAfter', 'scoutXpAward'] as const;
+    const wrong = ['creature-v1:unexpected-scout', 0, 2, 2] as const;
+    const projection = new Function(
+      `${resultProjectionOwner}; return tameGreetingResultProjection;`,
+    )() as (result: Record<string, unknown>) => Record<string, unknown>;
+    const expected = projection(positive.result);
+    expect(assessArc4TameGreetingStartObservation(positive).ok).toBe(true);
+    expect(fields.map((field) => expected[field])).toEqual([null, null, null, 0]);
+    for (const [index, field] of fields.entries()) {
+      for (const mutation of ['missing', 'wrong'] as const) {
+        const mutant = structuredClone(positive);
+        if (mutation === 'missing') delete mutant.result[field];
+        else mutant.result[field] = wrong[index];
+        expectOnlyChecksRed(assessArc4TameGreetingStartObservation(mutant), ['result']);
+        expect(projection(mutant.result), `${field}:${mutation}`).not.toEqual(expected);
+        expect(assessArc4TameGreetingStartObservation(positive).ok).toBe(true);
+        expect(projection(positive.result)).toEqual(expected);
+      }
+    }
+    const unknown = structuredClone(positive);
+    unknown.result.unrecognizedCaptureField = true;
+    expectOnlyChecksRed(assessArc4TameGreetingStartObservation(unknown), ['result']);
+    expect(assessArc4TameGreetingStartObservation(positive).ok).toBe(true);
   });
 
   it('keeps one-start and peak ownership strict after natural completion', () => {

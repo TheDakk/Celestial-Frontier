@@ -24,6 +24,20 @@ function replaceExact(source: string, needle: string, replacement: string): stri
   return source.replace(needle, replacement);
 }
 
+function replaceFeedCommit(source: string, needle: string, replacement: string): string {
+  const owner = section(source, 'async function commitCompendiumFeedAction(',
+    '\nfunction compendiumFeedOutcomeCopy(');
+  if (owner.length === 0) throw new Error('Missing exact Feed commit owner');
+  return replaceExact(source, owner, replaceExact(owner, needle, replacement));
+}
+
+function replaceFeedPresentation(source: string, needle: string, replacement: string): string {
+  const owner = section(source, 'async function runCompendiumFeedAction(',
+    '\ntype Arc5ExplorerMealCommitOutcome');
+  if (owner.length === 0) throw new Error('Missing exact Feed presentation owner');
+  return replaceExact(source, owner, replaceExact(owner, needle, replacement));
+}
+
 function contractErrors(
   main: string,
   controller = controllerSource,
@@ -39,7 +53,7 @@ function contractErrors(
   const presentation = section(
     main,
     'async function runCompendiumFeedAction(',
-    '\ntype Arc4CaptureActionOutcome',
+    '\ntype Arc5ExplorerMealCommitOutcome',
   );
   const controllerOwner = section(
     main,
@@ -273,7 +287,8 @@ describe('player-live Compendium Feed wiring', () => {
     const mutants: Array<[string, string, string, string?]> = [
       [
         'claim removed',
-        mainSource.replace(
+        replaceFeedCommit(
+          mainSource,
           "productActionCoordinator.tryClaim('arc5.companion-feed')",
           "productActionCoordinator.peek('arc5.companion-feed')",
         ),
@@ -281,7 +296,8 @@ describe('player-live Compendium Feed wiring', () => {
       ],
       [
         'await before claim',
-        mainSource.replace(
+        replaceFeedCommit(
+          mainSource,
           "  const actionClaim = productActionCoordinator.tryClaim('arc5.companion-feed');",
           "  await Promise.resolve();\n  const actionClaim = productActionCoordinator.tryClaim('arc5.companion-feed');",
         ),
@@ -289,7 +305,8 @@ describe('player-live Compendium Feed wiring', () => {
       ],
       [
         'second attempt',
-        mainSource.replace(
+        replaceFeedCommit(
+          mainSource,
           'attempt = await commitArc5FeedActionV1({',
           'void commitArc5FeedActionV1({ ...({} as never) });\n      attempt = await commitArc5FeedActionV1({',
         ),
@@ -297,12 +314,13 @@ describe('player-live Compendium Feed wiring', () => {
       ],
       [
         'carrier check removed',
-        mainSource.replace('arc5FeedWritesMatchFixedInventory(attempt)', 'true'),
+        replaceFeedCommit(mainSource, 'arc5FeedWritesMatchFixedInventory(attempt)', 'true'),
         'exact-five-carriers',
       ],
       [
         'cross-owner publication',
-        mainSource.replace(
+        replaceFeedCommit(
+          mainSource,
           'arc5OwnershipState = attempt.ownershipV2;',
           'arc4OwnershipState = attempt.ownershipV2 as never;',
         ),
@@ -336,7 +354,7 @@ describe('player-live Compendium Feed wiring', () => {
       ],
       [
         'Feed restored the duplicate assertive global announcement',
-        replaceExact(
+        replaceFeedPresentation(
           mainSource,
           '    showCompendiumFeedVisualToast(copy.title, copy.detail);',
           '    toast(copy.title, copy.detail, true);',
@@ -432,7 +450,7 @@ describe('player-live Compendium Feed wiring', () => {
       ],
       [
         'read-only selector removed',
-        mainSource.replace("  '[data-arc5-feed-confirm]',\n", ''),
+        replaceExact(mainSource, "  '[data-arc5-feed-confirm]',\n", ''),
         'read-only-selector',
       ],
     ];

@@ -19,6 +19,13 @@ function replaceExact(source: string, needle: string, replacement: string): stri
   return source.replace(needle, replacement);
 }
 
+function replaceScoutCommit(source: string, needle: string, replacement: string): string {
+  const owner = section(source, 'async function commitCompendiumScoutAction(',
+    '\nfunction compendiumScoutOutcomeCopy(');
+  if (owner.length === 0) throw new Error('Missing exact Scout commit owner');
+  return replaceExact(source, owner, replaceExact(owner, needle, replacement));
+}
+
 function contractErrors(main: string, controller = controllerSource): string[] {
   const errors: string[] = [];
   const owner = section(
@@ -310,7 +317,7 @@ describe('Arc 5 player-live Field Scout wiring', () => {
       'JSON.stringify(attempt.ownershipV2.creatures)\n          !== JSON.stringify(parent.creatures)',
       'false /* removed unchanged-creatures proof */',
     ))).toContain('fixed-point:JSON.stringify(attempt.ownershipV2.creatures)');
-    expect(contractErrors(replaceExact(
+    expect(contractErrors(replaceScoutCommit(
       mainSource,
       '    try {\n'
         + '      const settlement = attempt.settlement;\n'

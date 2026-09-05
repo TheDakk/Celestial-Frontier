@@ -17,7 +17,7 @@ import {
 } from './starter-charters.js';
 
 export type StarterCharterActionEventFactV1 =
-  | Readonly<{ kind: 'landfall' | 'mined'; worldKey: string; planetSeed: number }>
+  | Readonly<{ kind: 'landfall' | 'mined' | 'bioscan'; worldKey: string; planetSeed: number }>
   | Readonly<{ kind: 'scout-set'; scoutId: string }>
   | Readonly<{ kind: 'crafted'; baseId: string; category: string }>;
 
@@ -34,7 +34,7 @@ export interface StarterCharterActionFactV1 {
 }
 
 function compactEvent(event: StarterCharterEventV1): StarterCharterActionEventFactV1 {
-  if (event.kind === 'landfall' || event.kind === 'mined') {
+  if (event.kind === 'landfall' || event.kind === 'mined' || event.kind === 'bioscan') {
     return Object.freeze({
       kind: event.kind,
       worldKey: event.address.key,

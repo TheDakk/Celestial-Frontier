@@ -6,6 +6,7 @@ import {
   replayEconomyTrace,
   type EconomyCraftEvent,
   type EconomyReplayInput,
+  type EconomyResearchEvent,
   type EconomySourceReceiptEvent,
 } from '@cf/domain-loot';
 
@@ -73,7 +74,13 @@ describe('@cf/domain-loot — source-neutral economy ledger', () => {
       'Mg', 'Na', 'Cu', 'Zn', 'Sn', 'Mn', 'He', 'N', 'Cl', 'CO2', 'Th', 'Li', 'Co',
     ]);
     expect(audit.stardustSinks).toEqual({ itemRecipes: 320, research: 580, combined: 900 });
-    expect(audit.sourceModelStatus).toBe('arc3-deferred');
+    expect(audit.sourceModelStatus).toBe('absent');
+    expect(auditEconomyCoverage(
+      LOOT_CATALOGUE_V1,
+      LEGACY_RESEARCH_SINKS_V1,
+      audit.combinedSinkMaterialIds.concat(audit.sinklessMaterialIds),
+      authority,
+    ).sourceModelStatus).toBe('registered');
     expect(LEGACY_RESEARCH_SINKS_V1).toHaveLength(6);
 
     const removed = LOOT_CATALOGUE_V1.map((definition) => definition.id === 'cg-proto'
@@ -118,7 +125,7 @@ describe('@cf/domain-loot — source-neutral economy ledger', () => {
     expect(first.status).toBe('replayed');
     if (first.status !== 'replayed') return;
     expect(first.state).toMatchObject({
-      schema: 1,
+      schema: 2,
       activePlayMs: 1_170,
       materials: {},
       itemCounts: { jumpdrive: 1 },
@@ -208,5 +215,52 @@ describe('@cf/domain-loot — source-neutral economy ledger', () => {
         etaActivePlayMs: null,
       },
     });
+  });
+
+  it('replays all six exact research sinks with their product prerequisites', () => {
+    const research = (
+      researchId: EconomyResearchEvent['researchId'],
+      index: number,
+    ): EconomyResearchEvent => ({
+      kind: 'research', actionId: `research-${researchId}`,
+      activePlayMs: 2_000 + index, researchId,
+    });
+    const result = replayEconomyTrace({
+      initial: initial({
+        materials: { Fe: 40, Si: 8, Ti: 8, C: 8, P: 4, H2O: 5, H: 10, He3: 10, Pt: 3, U: 7, Pz: 1, Ir: 3 },
+        itemCounts: { jumpdrive: 1 },
+        stardust: 600,
+      }),
+      sourceAuthorities: authority,
+      events: [
+        research('scan1', 0), research('hull1', 1), research('lab1', 2),
+        research('drive1', 3), research('drive2', 4), research('drive3', 5),
+      ],
+      target: { researchId: 'drive3' },
+    });
+    expect(result.status).toBe('replayed');
+    if (result.status !== 'replayed') return;
+    expect(result.state.researchIds).toEqual([
+      'scan1', 'hull1', 'lab1', 'drive1', 'drive2', 'drive3',
+    ]);
+    expect(result.state.appliedResearchActionIds).toHaveLength(6);
+    expect(result.state.stardust).toBe(20);
+    expect(result.target).toEqual({
+      status: 'reached-in-trace', researchId: 'drive3',
+      observedAtActivePlayMs: 2_005, etaActivePlayMs: null,
+    });
+
+    expect(replayEconomyTrace({
+      initial: initial({ materials: { Pz: 1, Ir: 3, U: 4 }, stardust: 300 }),
+      sourceAuthorities: authority,
+      events: [research('drive3', 0)],
+      target: null,
+    })).toMatchObject({ status: 'rejected', reason: 'research-blocked', eventIndex: 0 });
+    expect(replayEconomyTrace({
+      initial: initial({ materials: { Fe: 6, Si: 4 }, stardust: 20 }),
+      sourceAuthorities: authority,
+      events: [{ ...research('scan1', 0), jumpDriveOwned: true } as EconomyResearchEvent],
+      target: null,
+    })).toMatchObject({ status: 'rejected', reason: 'research-blocked', eventIndex: 0 });
   });
 });

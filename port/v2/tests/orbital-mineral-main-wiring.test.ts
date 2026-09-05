@@ -12,10 +12,10 @@ const mainSource = fs.readFileSync(
 const PRESENT_PLANET_SURVEY_CALL = [
   '  showSurvey(',
   '    d,',
-  '    buildCardActions(p),',
+  '    buildCardActions(p, currentBioscanCardState),',
   '    null,',
   '    orbitalMineralSurveyRows(star, resolved.planet),',
-  '    preparedCaptureRoster,',
+  '    roster,',
   '    approachEcology,',
   '  );',
 ].join('\n');
@@ -81,7 +81,7 @@ function wiringErrors(source: string): string[] {
   const projector = section(
     source,
     'function orbitalMineralSurveyRows(',
-    '\nfunction presentPlanetSurvey(',
+    '\nfunction canonicalRosterForBioscanCard(',
   );
   if (projector.length === 0) {
     errors.push('orbital-projector-section');
@@ -132,8 +132,39 @@ function wiringErrors(source: string): string[] {
   const land = section(source, 'async function doLand(', '\nlet lastArc0AtlasOutcome:');
   const atlas = section(source, 'async function addToAtlas(', "\ncard.addEventListener('click'");
   const action = section(source, 'async function runEngineeringPanelAction(', '\nasync function smokeCommitF4Outcome(');
-  if (occurrences(land, 'refreshPlanetSurveyCard();') !== 2) {
-    errors.push('surface-refresh-removal');
+  const trainingLanding = section(
+    land,
+    '  if (trainingCheckpointWriteHeld) {',
+    '\n  const runtime = f4Runtime;',
+  );
+  const landed = section(
+    land,
+    '      worldIdentityState = attempt.verification.worldIdentity.state;',
+    '\n    } catch (error) {',
+  );
+  /* Both successful landing paths must rebuild after entering SurfaceNav.
+     A third refresh now belongs to a failed descent that remains in orbit. */
+  for (const landing of [trainingLanding, landed]) {
+    const surfaceNav = landing.indexOf('nav = surface;');
+    const refresh = landing.indexOf('refreshPlanetSurveyCard();');
+    const settled = landing.indexOf('return true;', refresh);
+    if (occurrences(landing, 'refreshPlanetSurveyCard();') !== 1
+      || !(surfaceNav >= 0 && refresh > surfaceNav && settled > refresh)) {
+      errors.push('surface-refresh-removal');
+    }
+  }
+  const waveOff = section(
+    land,
+    "      if (facts.descent.kind === 'wave-off') {",
+    '\n      if (facts.starterCharters.changed) {',
+  );
+  const waveOffRefresh = waveOff.indexOf('refreshPlanetSurveyCard();');
+  const waveOffReturn = waveOff.indexOf('return false;', waveOffRefresh);
+  if (occurrences(waveOff, 'refreshPlanetSurveyCard();') !== 1
+    || !(waveOffRefresh >= 0 && waveOffReturn > waveOffRefresh)
+    || /\bnav\s*=/u.test(waveOff)
+    || waveOff.includes('hideSurvey(')) {
+    errors.push('wave-off-orbital-refresh-retention');
   }
   if (!atlas.includes('refreshPlanetSurveyCard();')) errors.push('atlas-refresh-retention');
   if (!action.includes("if (outcome.operation === 'purchase-research') refreshPlanetSurveyCard();")) {
@@ -156,7 +187,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const noProtection = replaceInSectionExact(
       mainSource,
       'function orbitalMineralSurveyRows(',
-      '\nfunction presentPlanetSurvey(',
+      '\nfunction canonicalRosterForBioscanCard(',
       'arc3EngineeringProtection !== null',
       'false',
     );
@@ -165,7 +196,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const surfaceLeak = replaceInSectionExact(
       mainSource,
       'function orbitalMineralSurveyRows(',
-      '\nfunction presentPlanetSurvey(',
+      '\nfunction canonicalRosterForBioscanCard(',
       "nav.mode !== 'system'",
       'false',
     );
@@ -174,7 +205,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const forgedLeaf = replaceInSectionExact(
       mainSource,
       'function orbitalMineralSurveyRows(',
-      '\nfunction presentPlanetSurvey(',
+      '\nfunction canonicalRosterForBioscanCard(',
       'planet: { seed: planet.seed },',
       'planet: { seed: 133 },',
     );
@@ -183,7 +214,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const legacyMirror = replaceInSectionExact(
       mainSource,
       'function orbitalMineralSurveyRows(',
-      '\nfunction presentPlanetSurvey(',
+      '\nfunction canonicalRosterForBioscanCard(',
       'engineering: arc3EngineeringState,',
       "engineering: { ...arc3EngineeringState, research: save.techOwned },",
     );
@@ -215,7 +246,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const writingProjector = replaceInSectionExact(
       mainSource,
       'function orbitalMineralSurveyRows(',
-      '\nfunction presentPlanetSurvey(',
+      '\nfunction canonicalRosterForBioscanCard(',
       '  const address = resolveCF1WorldAddress({',
       '  void persistView();\n  const address = resolveCF1WorldAddress({',
     );
@@ -256,6 +287,49 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
         '      updateChips();',
     );
     expect(wiringErrors(retainedOnSurface)).toContain('surface-refresh-removal');
+
+    const retainedInTraining = replaceInSectionExact(
+      mainSource,
+      'async function doLand(',
+      '\nlet lastArc0AtlasOutcome:',
+      '    buildCurrentSceneTransaction(); triggerCameraShake(); hudText();\n' +
+        '    refreshPlanetSurveyCard();',
+      '    buildCurrentSceneTransaction(); triggerCameraShake(); hudText();\n' +
+        '    updateChips();',
+    );
+    expect(wiringErrors(retainedInTraining)).toContain('surface-refresh-removal');
+
+    const landedStillInOrbit = replaceInSectionExact(
+      mainSource,
+      'async function doLand(',
+      '\nlet lastArc0AtlasOutcome:',
+      '      worldIdentityState = attempt.verification.worldIdentity.state;\n' +
+        '      worldIdentityProtection = null;\n      nav = surface;',
+      '      worldIdentityState = attempt.verification.worldIdentity.state;\n' +
+        '      worldIdentityProtection = null;\n      void surface;',
+    );
+    expect(wiringErrors(landedStillInOrbit)).toContain('surface-refresh-removal');
+
+    const waveOffBlock = '        updateChips();\n' +
+      '        refreshPlanetSurveyCard();\n' +
+      '        return false;';
+    for (const replacement of [
+      '        updateChips();\n        return false;',
+      '        updateChips();\n        nav = surface;\n' +
+        '        refreshPlanetSurveyCard();\n        return false;',
+      '        updateChips();\n        refreshPlanetSurveyCard();',
+    ]) {
+      const staleOrLandedWaveOff = replaceInSectionExact(
+        mainSource,
+        'async function doLand(',
+        '\nlet lastArc0AtlasOutcome:',
+        waveOffBlock,
+        replacement,
+      );
+      expect(wiringErrors(staleOrLandedWaveOff))
+        .toContain('wave-off-orbital-refresh-retention');
+    }
+    expect(wiringErrors(mainSource)).toEqual([]);
 
     const duplicatePing = replaceInSectionExact(
       mainSource,

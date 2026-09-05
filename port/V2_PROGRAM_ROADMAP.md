@@ -1,5 +1,44 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
+
+Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
+`5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
+Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
+486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
+The accepted Discover Life Starter Charter completes only on a later explicit Bioscan for its
+established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Survey or Capture
+backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
+Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
+and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
+two SessionRNG draws and one receipt/CAS. A wave-off leaves the ship in orbit, with HP at least 1 and canonical
+learning (+20 percentage points per failure, capped at five), without landing rewards. Success
+clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
+Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
+fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
+The Fifty Paragons now use their authored fixed genomes and exact home worlds. Explicit Discover
+Life at an eligible home adds only its catalogue record in that same Bioscan receipt; it creates
+no companion/specimen, spends no Yield and grants no capture or extra discovery award. Binder
+shows all fifty: found entries Inspect the exact existing Compendium record; missing entries use
+existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
+New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
+Pre-feature development saves with an already-scanned home retain their recorded refusal; no
+backfill or repeated hazard is invented. Static portraits remain unchanged. Exact-instance progression now displays each individual's
+XP, level, class, innate arts, wounds and active-play Recovery, with distinct twins and retained
+tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
+preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
+focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
+Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
+at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
+reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
+
 ## Current completion status — 2026-09-04 (post-PR #35)
 
 **The full V2 vision is not complete.** PR #35 merged as
@@ -16,12 +55,12 @@ rather than converting them into unnecessary product changes.
 | Existing program lane | Current playable boundary | Remaining accepted scope |
 | --- | --- | --- |
 | Foundations / Arc 1 | Safe persistence/time/identity, bounded Compendium and ship/universe presentation | Human/save/device/art evidence; current exact candidate proof after changes |
-| Arc 0 | Fifteen Training IDs including graduation; orientation/continuity and truthful capability views | Full hands-on curriculum beside its real owning actions; protected bioscan/weekly owners |
-| Arc 2–3 | Exact Inventory, fixed fabrication, mining/skimming, Deep Scanners; built Jump Drive/Array/Intergalactic Drive already increase reach | Five unavailable research consumers, analytical economy source/rate model, authored loot/affix/rate policy, upgrades/sockets and remaining ship effects |
-| Arc 4–5 | Capture plus Feed, nonlethal Breed/recovery, Rename, role-only Field Scout | Care/healing, bond growth, missions, Scout consequences, durable companion Chronicle and living previews |
+| Arc 0 | Fifteen Training IDs including graduation; orientation/continuity and truthful capability views; accepted st-scan completion from a later explicit Bioscan in its owning receipt; disclosed deterministic descent odds, nonlethal orbit-preserving wave-offs, canonical-address learning and safe Earth/Training/proven-world returns | Full hands-on curriculum beside its real owning actions; weekly bioscan Charter and weekly lifecycle owners |
+| Arc 2–3 | Exact Inventory, fixed fabrication, mining/skimming, all six Research consumers, capability-derived ship/reach, and Search/CF1/Atlas travel presentation | Authored random loot/affix/rate policy, upgrades/sockets, remaining ship depth, and human economy/pacing evidence |
+| Arc 4–5 | Capture with fresh-species Field Scout XP, explicit Discover Life with nonlethal Scout interception, explorer Flora meals, companion Feed, nonlethal Breed/recovery, Rename, exact Field Scout selection, and bounded read-only individual XP/level/class/innate/wound/Recovery presentation preserving twins and retired history | Companion taste/care/healing, bond growth, missions, dispatch/return, and living-preview depth |
 | Arc 6 | Landed battle, conquest, Guardian/Titan capture, Prime claims, XP/Stardust and Combat Chronicle | Arc 5.5 HUMAN model; two explicit affix/extra-Guardian-reward decisions; party/tactics/retreat and wider encounters |
 | Arc 7–8 | Audio platform and working deterministic synthesized cues | Mix/lifecycle/accessibility close-out; rights-bound authored music/ambience/voices and listening evidence |
-| Arc 9–10 | Bounded progression/achievements/Starter Charters/Binder/Atlas actions and PWA automation | Remaining progression, projects, durable museum/history/share features, localization, integration/device/release gates |
+| Arc 9–10 | Bounded progression, 26 exact achievement joins, Starter Charters, six Binder type pages/eight Set claims, the fifty exact-home catalogue-only Paragon trails with found Inspect/missing travel and a separate ten-Paragon 120-Stardust Claim, bounded Atlas List/Chart and five filters with Home, exact-row Remove/eight-second Undo and cluster-to-List choice, the read-only four-gallery Expedition Chronicle & Museum, and PWA automation | The two event-owner gaps, achievement rewards, projects, share cards, localization, integration/device/release gates |
 | Visual production | Existing reviewed static art and universe-wide treatment are preserved | Representative living-rig pilot, then biome/species scale and physical-phone quality/performance |
 
 First local batch: persistence/focus hardening, portable npm command reuse, targeted-verifier
@@ -2197,6 +2236,14 @@ predecessors and distinct Slice control stop are recorded above.
 
 ### 5.2 Arc 3 — engineering loop
 
+Current source refinement (2026-09-05): all six Research purchases have their authored consumers: Deep
+Scanners reveal orbital minerals, Hull reduces hostile Discover Life damage, Xenobotany augments safe
+explorer nourishment, and the three drives shorten travel presentation at 2×/4×/8×. The existing
+`engineering-panel.ts`, `bioscan-hazard.ts`, `explorer-meal-action.ts` and travel owners preserve
+canonical costs, permanent reach and one-receipt settlement. The dated status/evidence below is
+historical where it still lists five missing consumers; no acceptance claim is advanced here.
+
+
 **Implementation status (matches code as of 2026-09-04): `[PARTIAL]`, product actions plus the live Deep-Scanner
 projection are implemented locally.** The
 canonical opportunity projections, finite active-play Mine/Skim, Engineering panel, shared action
@@ -2224,12 +2271,13 @@ failure as terminal red, so this local repair still needs fresh exact-source bro
 **Player promise:** surveyed worlds reveal finite, understandable opportunities. Gathering and
 engineering visibly improve what the player can build, see, and reach.
 
-**2026-09-04 remaining research decision:** the other five rows have authored costs and legacy
+**2026-09-04 research scope resolved by Nick:** the other five rows have authored costs and legacy
 math, but their consequences need absent v2 owners: Hull's hostile-bioscan damage mitigation,
 Xenobotany's explorer flora nourishment, and the three drives' distance-timed travel presentation.
 The existing permanent Jump Drive/Array/Intergalactic Drive reach ladder is already live and
-separate. Nick is asked whether to restore the original consequence systems or leave these
-research rows unavailable for initial beta. Do not transfer their effects to unrelated companion
+separate. Nick requires all five for beta; restore the original consequence systems, with their
+existing v2 ownership and nonlethal constraints. Implementation is in progress, not complete.
+Do not transfer their effects to unrelated companion
 Feed/combat, invent new prices, or delay immediate travel solely to create a speed-up purchase.
 
 **Build scope:**
@@ -2355,6 +2403,16 @@ Arc 4.5 is a hard product gate. It is not optional polish and cannot be passed b
 retention metric, or technically green demo.
 
 ### 5.5 Arc 5 — companions
+
+Current source refinement (2026-09-05): Field Scout designation remains a role-only action, while
+`bioscan-action.ts` joins nonlethal Scout interception and `arc4-capture-capacity.ts` joins up to
++2 pre-action Scout XP on a genuinely fresh successful species capture, capped at 486. The explorer
+has a separate exact-lot Flora meal (`explorer-meal-action.ts`). Records also has the read-only
+`expedition-chronicle.ts` projection; it creates no companion mission or bond authority. Current
+`ownershipV2` v3 diagnostics include the exact `explorerMeal` subtree in addition to Feed, Breed,
+Rename and Scout; only explicit legacy replay admits the known historical shape. These current
+owners supersede their absence claims in the dated implementation/evidence below.
+
 
 **Implementation status (2026-08-29): `[PARTIAL]`; compact authority and four bounded exact-instance
 companion writers are player-live: Feed, nonlethal Breed with active-play Recovery, Rename, and
@@ -2708,6 +2766,14 @@ audio/memory/node plateaus; transcript-to-cue coverage; human listening/repetiti
 heat and speaker/headphone/mono acceptance.
 
 ### 5.10 Arc 9 — progression, legacy, projects, and records
+
+Current source refinement (2026-09-05): there are 26 true-owner event joins and two blocked rows,
+`daily` and `decade`. Hostile Discover Life owns `survivor`; safe Flora healing owns `fieldmedic` and
+above-40%-risk safe healing owns `gambler`. Each joins its action receipt. The read-only Expedition
+Chronicle & Museum projects four independent galleries, each capped at 60, from existing saved
+facts (`expedition-chronicle.ts`). The dated five-blocked-owner and absent-Chronicle descriptions
+below remain historical; current exact-source gate outcomes belong to the overnight report.
+
 
 Arc 9 closes player history and remaining current-system progression rather than leaving it between
 “feature parity” and optional projects.

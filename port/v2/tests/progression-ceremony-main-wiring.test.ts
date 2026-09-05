@@ -200,6 +200,11 @@ function ceremonyWiringErrors(source: string): string[] {
     favorite: section(
       source,
       'async function runArc9AtlasFavoriteChange(',
+      '\nfunction freshCurrentBioscanReady(',
+    ),
+    bioscan: section(
+      source,
+      'async function runArc9Bioscan(',
       '\nasync function settleArc9Survey(',
     ),
     survey: section(
@@ -226,6 +231,11 @@ function ceremonyWiringErrors(source: string): string[] {
       source,
       'async function commitArc3EngineeringAction(',
       '\nasync function mineCurrentSurface()',
+    ),
+    explorerMeal: section(
+      source,
+      'async function commitCompendiumExplorerMealAction(',
+      '\nfunction compendiumExplorerMealOutcomeCopy(',
     ),
     breed: section(
       source,
@@ -309,6 +319,24 @@ function ceremonyWiringErrors(source: string): string[] {
   ]) || owners.favorite.includes('queueArc9ProgressionRefresh(')
     || !owners.favorite.includes("...(outcome.curatorAdded ? ['curator'] : [])")) {
     errors.push('Atlas Favorite ceremony is not its one-receipt fixed point');
+  }
+  if (!inOrder(owners.bioscan, [
+    "if (attempt.kind === 'committed-convergence')",
+    'publishBioscanActionV1(sourceState, attempt);',
+    'presentProgressionCeremony({',
+  ]) || owners.bioscan.includes('queueArc9ProgressionRefresh(')
+    || !owners.bioscan.includes('...attempt.survey.addedEventAchievementIds')
+    || !owners.bioscan.includes('...attempt.survey.addedAggregateAchievementIds')) {
+    errors.push('Bioscan ceremony is not its one-receipt Survey fixed point');
+  }
+  if (!inOrder(owners.explorerMeal, [
+    "if (attempt.kind === 'committed-convergence')",
+    'publishArc5ExplorerMealAchievementFields(',
+    'sourceState.hp = attempt.state.hp;',
+    'arc5OwnershipState = attempt.ownershipV2;',
+    'presentProgressionCeremony({',
+  ]) || !owners.explorerMeal.includes('addedAchievementIds: attempt.achievementIdsAdded')) {
+    errors.push('Explorer Meal ceremony is not bound to its same-CAS achievement publication');
   }
   if (!inOrder(owners.survey, [
     "if (outcome.kind === 'committed-convergence')",

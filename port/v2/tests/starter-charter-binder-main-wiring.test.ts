@@ -233,8 +233,10 @@ function wiringErrors(main: string, index: string): string[] {
     errors.push('Binder ambiguity or durable presentation failure can invite retry');
   }
 
-  if (!styles.includes('#chpanel button[data-starter-charter-accept], #recpanel button[data-binder-claim]')
-    || !styles.includes('min-height: 44px')
+  const claimActions = section(styles,
+    '#chpanel button[data-starter-charter-accept], #recpanel button[data-binder-claim] {', '}');
+  if (claimActions.length === 0
+    || !claimActions.includes('min-height: 44px')
     || !styles.includes('.starter-charter-status, .binder-action-status')
     || !styles.includes('.binder-grid')) {
     errors.push('bounded collection controls lack their accessible responsive CSS');

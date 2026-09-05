@@ -1,6 +1,10 @@
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { runInNewContext } from 'node:vm';
 import { describe, expect, it } from 'vitest';
+import { getReleaseHistory, V2_DEVELOPMENT_VERSION } from '../apps/game/src/release-content.js';
+// @ts-expect-error The executable browser contract intentionally has no declaration shim.
+import { hasUnnegatedSentenceClaim } from '../tools/engineering-browser-contract.mjs';
 
 const sliceSource = readFileSync(
   new URL('../tools/slicesmoke.mjs', import.meta.url),
@@ -19,7 +23,7 @@ const RESEARCH_GUIDE_TRUTH = Object.freeze([
   CONNECTED_EFFECT_TRUTH,
   'bound to its recipe and receipt',
   'mixed stock remains an ordinary craft',
-  'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
+  'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random drops, upgrades, sockets, and vendors remain separate beta work',
 ]);
 const CRAFTING_GUIDE_TRUTH = Object.freeze([
   'A slotted item made entirely from exceptional direct materials carries one deterministic, recipe-and-receipt-bound Pureforged modifier',
@@ -29,11 +33,11 @@ const CRAFTING_GUIDE_TRUTH = Object.freeze([
   'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, random authored drops, targeting tags, item upgrades, sockets, and vendors remain unavailable',
 ]);
 const RELEASE_TRUTH = Object.freeze([
-  'A slotted craft paid entirely from exceptional direct materials now receives one deterministic Pureforged modifier',
+  'A slotted craft paid entirely from exceptional direct materials receives one deterministic Pureforged modifier',
   CONNECTED_EFFECT_TRUTH,
   'bound to the exact recipe, receipt, and item',
   'mixed stock remains ordinary',
-  'Pureforged effects without a connected consumer, authored natural affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable',
+  'Authored natural affixes/drawbacks, random drops, upgrades, sockets, and vendors remain unavailable',
 ]);
 const FALSE_CLAIMS = Object.freeze([
   'Mixed stock also receives a Pureforged modifier.',
@@ -137,8 +141,8 @@ function sliceExceptionalCopyContract(source: string): boolean {
     && RELEASE_TRUTH.every((copy) => releaseControls.includes(copy))
     && FALSE_CLAIMS.every((copy) => releaseControls.includes(copy))
     && featureControls.includes(TRUTHFUL_FEATURE_CLAIM)
-    && featureControls.includes('releaseOverclaimCtl.truthful?.length !== 10')
-    && featureControls.includes('releaseOverclaimCtl.unavailable?.length !== 18')
+    && featureControls.includes('releaseOverclaimCtl.truthful?.length !== 13')
+    && featureControls.includes('releaseOverclaimCtl.unavailable?.length !== 14')
     && !source.includes('Outputs with dormant effects, fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable');
 }
 
@@ -168,7 +172,7 @@ function glassExceptionalCopyContract(source: string): boolean {
     && occurrences(assessment, '(?:mixed stock|mixed-material craft)') === 2
     && assessment.includes('Pureforged[^.!?]{0,80}(?:rerolls?|changes?)')
     && controls.includes(TRUTHFUL_FEATURE_CLAIM)
-    && controls.includes('truthfulFeatureClaims.length===10')
+    && controls.includes('truthfulFeatureClaims.length===11')
     && controls.includes('unavailableFeatureClaims.length===14')
     && controls.includes('shipyardExceptionalMissing')
     && controls.includes('shipyardEffectSetMissing')
@@ -182,6 +186,94 @@ function glassExceptionalCopyContract(source: string): boolean {
     && controls.includes('shipyardAdvancedMissing?.shipyardContract===false')
     && occurrences(ingress, CRAFTING_GUIDE_TRUTH[0]!) === 2
     && !source.includes('Fully exceptional slotted crafting, authored affixes/drawbacks, item upgrades, sockets, and vendors remain unavailable');
+}
+
+interface ReleaseReplayAssessment {
+  readonly ok: boolean;
+  readonly honest: boolean;
+  readonly overclaim: boolean;
+  readonly shipyardContract: boolean;
+  readonly shipyardContradiction: boolean;
+  readonly bulletCount: number;
+}
+
+interface ReleaseReplayResult {
+  readonly ok: boolean;
+  readonly error: string | null;
+  readonly restored: boolean;
+  readonly baseline: ReleaseReplayAssessment;
+  readonly truthfulFeatureClaims: readonly { copy: string; result: ReleaseReplayAssessment }[];
+  readonly unavailableFeatureClaims: readonly { copy: string; result: ReleaseReplayAssessment }[];
+  readonly shipyardContradictions: readonly { copy: string; result: ReleaseReplayAssessment }[];
+}
+
+const require = createRequire(import.meta.url);
+const { JSDOM } = require('jsdom') as {
+  JSDOM: new (html: string, options: Record<string, unknown>) => {
+    readonly window: {
+      readonly document: Document;
+      eval(source: string): unknown;
+      close(): void;
+    };
+  };
+};
+
+// Replay the existing product render body and both actual Glass expressions.
+// Only their document/state hosts are supplied here; no duplicate verdict owner.
+async function replayRenderedReleaseControls(source: string) {
+  const mainSource = readFileSync(new URL('../apps/game/src/main.ts', import.meta.url), 'utf8');
+  const renderer = exactSpan(mainSource, 'function renderReleaseView(', 'function renderRelease(');
+  const assessment = exactSpan(source, 'const developmentDetailCheck = `',
+    'const developmentDetail = await evalIn(developmentDetailCheck);');
+  const controls = exactSpan(source, 'const detailControls = await evalIn(', 'if (!detailControls.ok)');
+  expect(renderer).not.toBeNull();
+  expect(assessment).not.toBeNull();
+  expect(controls).not.toBeNull();
+  if (!renderer || !assessment || !controls) throw new Error('Release replay owner missing');
+  const renderBody = renderer.slice(renderer.indexOf('  const release = releases[index];'),
+    renderer.lastIndexOf('}'));
+  const dom = new JSDOM('<div id="guidepanel"></div>', { runScripts: 'outside-only' });
+  const document = dom.window.document;
+  const panel = document.querySelector<HTMLElement>('#guidepanel');
+  if (!panel) throw new Error('Release replay panel missing');
+  const releases = getReleaseHistory({ includeDraft: true, includeLegacy: false });
+  const escapeText = (value: unknown): string => {
+    const carrier = document.createElement('span');
+    carrier.textContent = String(value ?? '');
+    return carrier.innerHTML;
+  };
+  Function('index', 'focusResult', 'releases', 'guideBodyEl', 'esc',
+    'V2_DEVELOPMENT_VERSION', 'focusGuide', renderBody)(
+    0, false, releases, () => panel, escapeText, V2_DEVELOPMENT_VERSION, () => {},
+  );
+  dom.window.eval('window.__CF_SLICE__={api:{state:()=>({rnSeen:"1.8.9",releasePending:null})}};');
+  const expression = Function('hasUnnegatedSentenceClaim', 'guideReleaseBaseline',
+    `${assessment}\nreturn developmentDetailCheck;`)(
+    hasUnnegatedSentenceClaim, { rnSeen: '1.8.9', releasePending: null },
+  ) as string;
+  try {
+    const result = await Function('developmentDetailCheck', 'evalIn',
+      `return (async()=>{${controls}\nreturn detailControls;})();`)(
+      expression, (input: string) => dom.window.eval(input),
+    ) as ReleaseReplayResult;
+    const after = dom.window.eval(expression) as ReleaseReplayAssessment;
+    const shipyard = [...panel.querySelectorAll('li')]
+      .find((row) => row.textContent?.includes('ENGINEERING TURNS OPPORTUNITY INTO REACH'));
+    if (!shipyard) throw new Error('Release replay Shipyard missing');
+    const original = shipyard.innerHTML;
+    const reachClaims = [
+      'Travel research extends permanent reach.',
+      'Travel research never extends permanent reach.',
+      'Travel research does not increase permanent reach.',
+    ].map((copy) => {
+      try {
+        shipyard.textContent = shipyard.textContent + ' ' + copy;
+        return { copy, result: dom.window.eval(expression) as ReleaseReplayAssessment };
+      } finally { shipyard.innerHTML = original; }
+    });
+    const final = dom.window.eval(expression) as ReleaseReplayAssessment;
+    return { result, after, reachClaims, final };
+  } finally { dom.window.close(); }
 }
 
 type EffectRow = {
@@ -234,6 +326,47 @@ function exceptionalFixture(
 }
 
 describe('Pureforged browser-evidence truth', () => {
+  it('replays every current rendered release control and preserves the Research reach boundary', async () => {
+    const { result, after, reachClaims, final } = await replayRenderedReleaseControls(glassSource);
+    expect(result.error).toBeNull();
+    expect(result.baseline.ok).toBe(true);
+    expect(result.ok).toBe(true);
+    expect(result.restored).toBe(true);
+    expect(after.ok).toBe(true);
+    expect(final.ok).toBe(true);
+    expect(result.truthfulFeatureClaims).toHaveLength(11);
+    expect(result.truthfulFeatureClaims.every((row) => row.result.ok && row.result.honest
+      && !row.result.overclaim)).toBe(true);
+    expect(result.unavailableFeatureClaims).toHaveLength(14);
+    expect(result.unavailableFeatureClaims.every((row) => !row.result.ok && !row.result.honest
+      && row.result.overclaim)).toBe(true);
+    expect(result.shipyardContradictions).toHaveLength(13);
+    expect(result.shipyardContradictions.every((row) => !row.result.ok && !row.result.honest
+      && !row.result.shipyardContract && row.result.shipyardContradiction)).toBe(true);
+    expect(reachClaims[0]!.result).toMatchObject({ ok: false, honest: false,
+      shipyardContract: false, shipyardContradiction: true });
+    for (const row of reachClaims.slice(1)) {
+      expect(row.result, row.copy).toMatchObject({ ok: true, honest: true,
+        shipyardContract: true, shipyardContradiction: false });
+    }
+  });
+
+  it('rejects the historical generic Research-reach false green and restores the bulletin', async () => {
+    const marker = "              ||unnegated(shipyardText,/Travel research[^.!?]{0,128}(?:extends?|increases?)[^.!?]{0,64}(?:permanent )?reach/i)\n";
+    expect(occurrences(glassSource, marker)).toBe(1);
+    const { result, after, final } = await replayRenderedReleaseControls(glassSource.replace(marker, ''));
+    expect(result.error).toBeNull();
+    expect(result.baseline.ok).toBe(true);
+    expect(result.ok).toBe(false);
+    expect(result.restored).toBe(true);
+    expect(after.ok).toBe(true);
+    expect(final.ok).toBe(true);
+    const escaped = Array.from(result.shipyardContradictions)
+      .filter((row) => row.result.ok || row.result.honest || row.result.shipyardContract
+        || !row.result.shipyardContradiction);
+    expect(escaped.map((row) => row.copy)).toEqual(['Travel research extends permanent reach.']);
+  });
+
   it('binds Slice Guide and release evidence to the live feature and still-open advanced systems', () => {
     expect(sliceExceptionalCopyContract(sliceSource)).toBe(true);
   });

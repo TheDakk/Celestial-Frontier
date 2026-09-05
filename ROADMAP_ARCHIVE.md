@@ -1,3 +1,1700 @@
+## ARCHIVED 2026-09-05 — final Batch 4 morning report
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 3d GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
+branch `openai/review-batch4-gameplay-20260905`, matching origin tracking branch.
+Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; untouched clean `openai/mac` stays `84b6f22`.
+Signed core `5377069` joined through real merge `e77e5e0`; no signed history rewritten.
+Current accepted implementation source `b173353b9e273c4b223e8ee8d6ee181081f79b4a`. This documentation successor is being
+committed/pushed; the next step records its actual pushed SHA/time. Full exact evidence and every
+red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS JSON.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
+| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
+| 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
+| 3c bounded extraction | Accepted source `b76b69aa7099f3d7db99380e6687be18be7ead51`; documentation successor follows | `4fa82d0c9fd648fcb05497552e244d594b1a959f` pushed 2026-09-05 13:05:48 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures |
+| 3d phone analysis | Accepted source `b173353b9e273c4b223e8ee8d6ee181081f79b4a`; documentation successor follows | `b173353b9e273c4b223e8ee8d6ee181081f79b4a` pushed 2026-09-05 13:11:29 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 386.147s; small/large phone 16.466s / 16.521s PASS; zero findings/instrument failures |
+
+### Latest completed outcome and decisions made unattended
+
+The first P2-phone analytical pass is complete using existing tools only. Exact-source Slice and phone diagnostics on b76b69aa7099f3d7db99380e6687be18be7ead51 provide replacement readiness of 684.1 ms (small) and 620.7 ms (large), actual renderer DPR 2, combined app/backdrop backing pixels of 1,454,080 and 3,015,840, and released canvases of 1×1. Both audio snapshots are disposed, unused and empty; their zeros do not prove a populated-cache workload. Slice reports one 29 ms galaxy rebuild.
+
+The existing 4× CPU profiler ran once on clean reporting successor 4fa82d0c9fd648fcb05497552e244d594b1a959f. It observed first paint at 1,292 ms, then ended incomplete: answerable NEVER and throttled galaxy rebuild -1. Those unresolved timings are parked with their exact output. No product or instrument change and no retry is made in this measure-only step. Physical iPhone/Safari persistence, native heap/GPU allocation, populated art/audio cache behavior, installed offline bytes, thermal/battery and response-time percentiles remain unmeasured.
+
+The current phone evidence report preserves source/report/log identities and the historical Step 2a samples. The final required validation runs on this signed documentation successor; this step changes no product source, authority, control, ruler or performance threshold. All primary work and stretch 3a–3c are already accepted and pushed. After the final required checks, Codex publishes the review-only morning report; Claude reviews through Git before Nick authorizes one exact hosted attempt.
+
+- Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md` owns scope and order:
+  checkpoint/push after every completed step and approximately two hours; no PR/hosted attempt.
+- Current draft: 79 outcomes; rendered ordered-li SHA-256 `351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`.
+- Current Compendium producer: `c1e784b7f32016066b0a41a81b5917b63c0712ef876a35d7ff3d7a90fe9acce4`. Measurement authority
+  `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler, ceilings and
+  samples unchanged. SceneMemory native heap remains quarantined from develop.
+- Local Vitest uses four workers after recorded CPU contention; full selection and original
+  timeouts remain. Existing strict consumers/copy controls follow the approved product;
+  no new collector, ruler, timeout, workflow or policy change.
+- Fresh v2 has no legacy player import door; v1.8.9 codec, evidence-only importBlob and planned
+  Glass ledgers remain. Canonical identity and one lease-fenced receipt/CAS govern every write.
+
+### Blocked / reverted and parked work
+
+Core's eight browser reds were corrected on new commits and retained verbatim; Step2a's missing
+import and five stale copy checks were corrected before its green browser run. No unchanged
+source browser retry. See the report for all subsequent exact failures and dispositions.
+No product step has been reverted unless explicitly recorded in the table/report.
+Remaining `cf1b9a7` WIP is parked until individually completed. Weekly lifecycle/joins, Forge
+Training, living portrait preview and unrelated bulk copy remain excluded. No companion
+care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities, conquest-imbue
+coexistence or extra Guardian first-victory cache. Audio-source backup destination is outside
+this batch. Protected portraits, CI/policy, main and the live release remain untouched.
+Combined post-Arc-5 Arc4.5 review, separate Arc5.5 HUMAN combat review and Gate C real-device v2
+persistence remain open. Phone checks here are local Edge targeted diagnostics, not full matrix
+certification or Chrome named-verifier proof; actual source/report IDs remain in the full report.
+
+### Paired handoff and next action
+
+Codex pushes this completed checkpoint, then proceeds to **Claude morning review; proposed PR remains unopened** in the authorized order.
+Claude reads the pushed branch through Git for morning review; no copying or integration before
+Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
+Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
+trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+
+
+## ARCHIVED 2026-09-05 — overnight checkpoint 3d complete
+
+## SESSION HANDOFF — 2026-09-05 · BATCH 4 · STEP 3d FAST GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical root /Users/nick/Projects/celestial-frontier-openai-mac,
+branch openai/review-batch4-gameplay-20260905, matching origin tracking branch.
+Base develop9ea01041dcdc711190bbf909ea8bb743cd993734; clean openai/mac stays84b6f22.
+Step3d is implemented; full fast301files/3100tests/1skip passes.
+Commit the implementation, then run clean-source Slice→small→large, stopping at first red.
+Accept/push before the final review-only morning report and push. The committed overnight instructions own the full ordered scope;
+the overnight report and REDS JSON retain all exact evidence and historical failures.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
+| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
+| 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
+| 3c bounded extraction | Accepted source `b76b69aa7099f3d7db99380e6687be18be7ead51`; documentation successor follows | `4fa82d0c9fd648fcb05497552e244d594b1a959f` pushed 2026-09-05 13:05:48 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures |
+| 3d phone analysis | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
+
+### Decisions made unattended and current implementation
+
+The first P2-phone analytical pass is complete using existing tools only. Exact-source Slice and phone diagnostics on b76b69aa7099f3d7db99380e6687be18be7ead51 provide replacement readiness of 684.1 ms (small) and 620.7 ms (large), actual renderer DPR 2, combined app/backdrop backing pixels of 1,454,080 and 3,015,840, and released canvases of 1×1. Both audio snapshots are disposed, unused and empty; their zeros do not prove a populated-cache workload. Slice reports one 29 ms galaxy rebuild.
+
+The existing 4× CPU profiler ran once on clean reporting successor 4fa82d0c9fd648fcb05497552e244d594b1a959f. It observed first paint at 1,292 ms, then ended incomplete: answerable NEVER and throttled galaxy rebuild -1. Those unresolved timings are parked with their exact output. No product or instrument change and no retry is made in this measure-only step. Physical iPhone/Safari persistence, native heap/GPU allocation, populated art/audio cache behavior, installed offline bytes, thermal/battery and response-time percentiles remain unmeasured.
+
+The current phone evidence report preserves source/report/log identities and the historical Step 2a samples. The final required validation runs on this signed documentation successor; this step changes no product source, authority, control, ruler or performance threshold. All primary work and stretch 3a–3c are already accepted and pushed. After the final required checks, Codex publishes the review-only morning report; Claude reviews through Git before Nick authorizes one exact hosted attempt.
+
+Current bulletin79 outcomes; SHA256351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042.
+Current Compendium producerc1e784b7f32016066b0a41a81b5917b63c0712ef876a35d7ff3d7a90fe9acce4.
+Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12,
+ruler, ceilings and samples unchanged. SceneMemory native heap stays quarantined.
+Full local Vitest uses four workers with unchanged selection/timeouts.
+
+### Parked scope and paired handoff
+
+Weekly lifecycle/joins, Forge Training, living portrait preview and unrelated bulk WIP stay
+parked. No care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities,
+conquest-imbue coexistence or extra Guardian cache. Audio-source backup is outside this batch.
+No legacy player-import door; v1 codec, evidence importBlob and planned Glass ledgers remain.
+Combined Arc4.5, separate Arc5.5 HUMAN and real-device Gate C remain open.
+Protected portraits, CI/policy and release are untouched. Prior reds/signing outage remain
+history; no unchanged-source browser retry. Edge phones are targeted diagnostics only.
+
+Codex completes this acceptance/push and continues the ordered scope. Claude reviews pushed
+checkpoints later; Nick need not open another app now. Proposed PR base develop, source
+openai/review-batch4-gameplay-20260905; final title/body at completion. BudgetUNFROZEN/PUBLIC,
+private fallback3,000, zero hosted attempts authorized. Branch pushes trigger no workflow.
+No PR, label, hosted attempt, merge, purchase or release is authorized.
+
+
+## ARCHIVED 2026-09-05 — before step3d browser acceptance
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 3c GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
+branch `openai/review-batch4-gameplay-20260905`, matching origin tracking branch.
+Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; untouched clean `openai/mac` stays `84b6f22`.
+Signed core `5377069` joined through real merge `e77e5e0`; no signed history rewritten.
+Current accepted implementation source `b76b69aa7099f3d7db99380e6687be18be7ead51`. This documentation successor is being
+committed/pushed; the next step records its actual pushed SHA/time. Full exact evidence and every
+red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS JSON.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
+| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
+| 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
+| 3c bounded extraction | Accepted source `b76b69aa7099f3d7db99380e6687be18be7ead51`; documentation successor follows | `4fa82d0c9fd648fcb05497552e244d594b1a959f` pushed 2026-09-05 13:05:48 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Latest completed outcome and decisions made unattended
+
+# Stretch 3c — Landing presentation extraction
+
+Prepared patch: `/private/tmp/cf-step3c-landing-presentation-extraction/step3c-landing-presentation.patch`.
+SHA256: `55ea989a4bef26ae323b867a485ee52fad6dca6a6a8a8750973b6a5877a1010b`.
+Applied at its separate ordered checkpoint after primary and 3b acceptance. Exact execution results are recorded with this checkpoint.
+
+The three-file delta moves step-2 Landing presentation into the existing `port/v2/apps/game/src/landing-card.ts`: the exported ready/unavailable `LandingCardStateV1` union is at prepared-after lines 29–40 and `landingCardActionHtml` at 110–118. Main imports both and passes its existing `esc` function at the same single card callsite. The moved state fields and renderer body were compared as text again during this review and are identical apart from the new export/signature location and supplied escape argument.
+
+Main still owns `projectCurrentLandingCardState`, exact world/save/gear authority, navigation and action wiring. `descent-policy.ts` and `arc0-landing-action.ts` still own policy and one-receipt settlement. Their source, all RNG/HP/learning rules, action token, HTML, visible risk disclosure, accessible names, style and escaping behavior are unchanged. No generic coordinator, new state owner or blanket Main rewrite is introduced.
+
+The existing `landing-card-main-wiring.test.ts` follows the renderer to its new file and keeps independently authored exact data attributes, `aria-describedby`, visible disclosure literal/removal control, no-write check and single exact Main callsite. It additionally refuses a missing renderer source span. `landing-card.test.ts` is unchanged, including its literal safe labels, +20 learning, nonlethal floor, 100%-guaranteed zero-risk disclosure and clone-policy refusal (`:56–96` in current source). Expected output is not generated from the renderer under test.
+
+The final current-reference review also corrected the shared wave-off sentence in all eight overlays: a wave-off leaves the ship in orbit. This matches the existing behavior and changes no rule.
+
+- Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md` owns scope and order:
+  checkpoint/push after every completed step and approximately two hours; no PR/hosted attempt.
+- Current draft: 79 outcomes; rendered ordered-li SHA-256 `351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`.
+- Current Compendium producer: `c1e784b7f32016066b0a41a81b5917b63c0712ef876a35d7ff3d7a90fe9acce4`. Measurement authority
+  `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler, ceilings and
+  samples unchanged. SceneMemory native heap remains quarantined from develop.
+- Local Vitest uses four workers after recorded CPU contention; full selection and original
+  timeouts remain. Existing strict consumers/copy controls follow the approved product;
+  no new collector, ruler, timeout, workflow or policy change.
+- Fresh v2 has no legacy player import door; v1.8.9 codec, evidence-only importBlob and planned
+  Glass ledgers remain. Canonical identity and one lease-fenced receipt/CAS govern every write.
+
+### Blocked / reverted and parked work
+
+Core's eight browser reds were corrected on new commits and retained verbatim; Step2a's missing
+import and five stale copy checks were corrected before its green browser run. No unchanged
+source browser retry. See the report for all subsequent exact failures and dispositions.
+No product step has been reverted unless explicitly recorded in the table/report.
+Remaining `cf1b9a7` WIP is parked until individually completed. Weekly lifecycle/joins, Forge
+Training, living portrait preview and unrelated bulk copy remain excluded. No companion
+care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities, conquest-imbue
+coexistence or extra Guardian first-victory cache. Audio-source backup destination is outside
+this batch. Protected portraits, CI/policy, main and the live release remain untouched.
+Combined post-Arc-5 Arc4.5 review, separate Arc5.5 HUMAN combat review and Gate C real-device v2
+persistence remain open. Phone checks here are local Edge targeted diagnostics, not full matrix
+certification or Chrome named-verifier proof; actual source/report IDs remain in the full report.
+
+### Paired handoff and next action
+
+Codex pushes this completed checkpoint, then proceeds to **3d phone analysis and final gate set** in the authorized order.
+Claude reads the pushed branch through Git for morning review; no copying or integration before
+Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
+Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
+trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+
+
+## ARCHIVED 2026-09-05 — overnight checkpoint 3c complete
+
+## SESSION HANDOFF — 2026-09-05 · BATCH 4 · STEP 3c FAST GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical root /Users/nick/Projects/celestial-frontier-openai-mac,
+branch openai/review-batch4-gameplay-20260905, matching origin tracking branch.
+Base develop9ea01041dcdc711190bbf909ea8bb743cd993734; clean openai/mac stays84b6f22.
+Step3c is implemented; full fast301files/3100tests/1skip passes.
+Commit the implementation, then run clean-source Slice→small→large, stopping at first red.
+Accept/push before 3d existing-tool phone measurement and final validation. The committed overnight instructions own the full ordered scope;
+the overnight report and REDS JSON retain all exact evidence and historical failures.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
+| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
+| 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
+| 3c bounded extraction | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Decisions made unattended and current implementation
+
+# Stretch 3c — Landing presentation extraction
+
+Prepared patch: `/private/tmp/cf-step3c-landing-presentation-extraction/step3c-landing-presentation.patch`.
+SHA256: `55ea989a4bef26ae323b867a485ee52fad6dca6a6a8a8750973b6a5877a1010b`.
+Applied at its separate ordered checkpoint after primary and 3b acceptance. Exact execution results are recorded with this checkpoint.
+
+The three-file delta moves step-2 Landing presentation into the existing `port/v2/apps/game/src/landing-card.ts`: the exported ready/unavailable `LandingCardStateV1` union is at prepared-after lines 29–40 and `landingCardActionHtml` at 110–118. Main imports both and passes its existing `esc` function at the same single card callsite. The moved state fields and renderer body were compared as text again during this review and are identical apart from the new export/signature location and supplied escape argument.
+
+Main still owns `projectCurrentLandingCardState`, exact world/save/gear authority, navigation and action wiring. `descent-policy.ts` and `arc0-landing-action.ts` still own policy and one-receipt settlement. Their source, all RNG/HP/learning rules, action token, HTML, visible risk disclosure, accessible names, style and escaping behavior are unchanged. No generic coordinator, new state owner or blanket Main rewrite is introduced.
+
+The existing `landing-card-main-wiring.test.ts` follows the renderer to its new file and keeps independently authored exact data attributes, `aria-describedby`, visible disclosure literal/removal control, no-write check and single exact Main callsite. It additionally refuses a missing renderer source span. `landing-card.test.ts` is unchanged, including its literal safe labels, +20 learning, nonlethal floor, 100%-guaranteed zero-risk disclosure and clone-policy refusal (`:56–96` in current source). Expected output is not generated from the renderer under test.
+
+The final current-reference review also corrected the shared wave-off sentence in all eight overlays: a wave-off leaves the ship in orbit. This matches the existing behavior and changes no rule.
+
+Current bulletin79 outcomes; SHA256351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042.
+Current Compendium producerc1e784b7f32016066b0a41a81b5917b63c0712ef876a35d7ff3d7a90fe9acce4.
+Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12,
+ruler, ceilings and samples unchanged. SceneMemory native heap stays quarantined.
+Full local Vitest uses four workers with unchanged selection/timeouts.
+
+### Parked scope and paired handoff
+
+Weekly lifecycle/joins, Forge Training, living portrait preview and unrelated bulk WIP stay
+parked. No care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities,
+conquest-imbue coexistence or extra Guardian cache. Audio-source backup is outside this batch.
+No legacy player-import door; v1 codec, evidence importBlob and planned Glass ledgers remain.
+Combined Arc4.5, separate Arc5.5 HUMAN and real-device Gate C remain open.
+Protected portraits, CI/policy and release are untouched. Prior reds/signing outage remain
+history; no unchanged-source browser retry. Edge phones are targeted diagnostics only.
+
+Codex completes this acceptance/push and continues the ordered scope. Claude reviews pushed
+checkpoints later; Nick need not open another app now. Proposed PR base develop, source
+openai/review-batch4-gameplay-20260905; final title/body at completion. BudgetUNFROZEN/PUBLIC,
+private fallback3,000, zero hosted attempts authorized. Branch pushes trigger no workflow.
+No PR, label, hosted attempt, merge, purchase or release is authorized.
+
+
+## ARCHIVED 2026-09-05 — before step3c browser acceptance
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 3b GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
+branch `openai/review-batch4-gameplay-20260905`, matching origin tracking branch.
+Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; untouched clean `openai/mac` stays `84b6f22`.
+Signed core `5377069` joined through real merge `e77e5e0`; no signed history rewritten.
+Current accepted implementation source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`. This documentation successor is being
+committed/pushed; the next step records its actual pushed SHA/time. Full exact evidence and every
+red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS JSON.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
+| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
+| 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Latest completed outcome and decisions made unattended
+
+# Stretch 3b — one production research-order owner
+
+Prepared patch: `/private/tmp/cf-step3b-research-alias/step3b.patch`.
+SHA256: `515cc6b4c36a02811fe705a5e2e335d0ba8b806ca5ea138909a8c52ea6ef0765`.
+Applied at the ordered checkpoint after primary acceptance. Exact execution evidence is recorded with this checkpoint.
+
+`port/v2/packages/domain/opportunity/src/state.ts:33–41` remains the canonical frozen six-ID tuple. `engineering-panel.ts` imports that public `RESEARCH_IDS` through the app's existing dependency and exports `ENGINEERING_RESEARCH_ORDER` as its alias. The public export name and its derived `EngineeringResearchRowId` union remain unchanged. Only the duplicate production tuple is removed: no runtime action, recipe/research content, package/lockfile or browser contract changes.
+
+Independent expectations remain: the panel test authors six literal rows at `port/v2/tests/engineering-panel.test.ts:141–171`, checks their rendered order at `:475–484`, and rejects a missing row and swapped order at `:1237–1247`. `port/v2/tools/engineering-browser-contract.mjs:3–13` explicitly owns its separate six literal IDs; `:958–971` binds the observed research/action inventory to that independent list. Neither oracle is rebuilt from the aliased producer tuple. Thus a missing producer field cannot disappear from both sides through this deduplication.
+
+- Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md` owns scope and order:
+  checkpoint/push after every completed step and approximately two hours; no PR/hosted attempt.
+- Current draft: 79 outcomes; rendered ordered-li SHA-256 `351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`.
+- Current Compendium producer: `61021aad1dc3f48f37449d49e237ace6bc8f7fbfd4f467d0f43d356d0046fa1a`. Measurement authority
+  `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler, ceilings and
+  samples unchanged. SceneMemory native heap remains quarantined from develop.
+- Local Vitest uses four workers after recorded CPU contention; full selection and original
+  timeouts remain. Existing strict consumers/copy controls follow the approved product;
+  no new collector, ruler, timeout, workflow or policy change.
+- Fresh v2 has no legacy player import door; v1.8.9 codec, evidence-only importBlob and planned
+  Glass ledgers remain. Canonical identity and one lease-fenced receipt/CAS govern every write.
+
+### Blocked / reverted and parked work
+
+Core's eight browser reds were corrected on new commits and retained verbatim; Step2a's missing
+import and five stale copy checks were corrected before its green browser run. No unchanged
+source browser retry. See the report for all subsequent exact failures and dispositions.
+No product step has been reverted unless explicitly recorded in the table/report.
+Remaining `cf1b9a7` WIP is parked until individually completed. Weekly lifecycle/joins, Forge
+Training, living portrait preview and unrelated bulk copy remain excluded. No companion
+care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities, conquest-imbue
+coexistence or extra Guardian first-victory cache. Audio-source backup destination is outside
+this batch. Protected portraits, CI/policy, main and the live release remain untouched.
+Combined post-Arc-5 Arc4.5 review, separate Arc5.5 HUMAN combat review and Gate C real-device v2
+persistence remain open. Phone checks here are local Edge targeted diagnostics, not full matrix
+certification or Chrome named-verifier proof; actual source/report IDs remain in the full report.
+
+### Paired handoff and next action
+
+Codex pushes this completed checkpoint, then proceeds to **3c bounded Landing presentation extraction** in the authorized order.
+Claude reads the pushed branch through Git for morning review; no copying or integration before
+Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
+Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
+trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+
+
+## ARCHIVED 2026-09-05 — overnight checkpoint 3b complete
+
+## SESSION HANDOFF — 2026-09-05 · BATCH 4 · STEP 3b FAST GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical root /Users/nick/Projects/celestial-frontier-openai-mac,
+branch openai/review-batch4-gameplay-20260905, matching origin tracking branch.
+Base develop9ea01041dcdc711190bbf909ea8bb743cd993734; clean openai/mac stays84b6f22.
+Step3b is implemented; full fast301files/3100tests/1skip passes.
+Commit the implementation, then run clean-source Slice→small→large, stopping at first red.
+Accept/push before 3c bounded Landing presentation extraction. The committed overnight instructions own the full ordered scope;
+the overnight report and REDS JSON retain all exact evidence and historical failures.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
+| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
+| 3b same-owner lists | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Decisions made unattended and current implementation
+
+# Stretch 3b — one production research-order owner
+
+Prepared patch: `/private/tmp/cf-step3b-research-alias/step3b.patch`.
+SHA256: `515cc6b4c36a02811fe705a5e2e335d0ba8b806ca5ea138909a8c52ea6ef0765`.
+Applied at the ordered checkpoint after primary acceptance. Exact execution evidence is recorded with this checkpoint.
+
+`port/v2/packages/domain/opportunity/src/state.ts:33–41` remains the canonical frozen six-ID tuple. `engineering-panel.ts` imports that public `RESEARCH_IDS` through the app's existing dependency and exports `ENGINEERING_RESEARCH_ORDER` as its alias. The public export name and its derived `EngineeringResearchRowId` union remain unchanged. Only the duplicate production tuple is removed: no runtime action, recipe/research content, package/lockfile or browser contract changes.
+
+Independent expectations remain: the panel test authors six literal rows at `port/v2/tests/engineering-panel.test.ts:141–171`, checks their rendered order at `:475–484`, and rejects a missing row and swapped order at `:1237–1247`. `port/v2/tools/engineering-browser-contract.mjs:3–13` explicitly owns its separate six literal IDs; `:958–971` binds the observed research/action inventory to that independent list. Neither oracle is rebuilt from the aliased producer tuple. Thus a missing producer field cannot disappear from both sides through this deduplication.
+
+Current bulletin79 outcomes; SHA256351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042.
+Current Compendium producer61021aad1dc3f48f37449d49e237ace6bc8f7fbfd4f467d0f43d356d0046fa1a.
+Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12,
+ruler, ceilings and samples unchanged. SceneMemory native heap stays quarantined.
+Full local Vitest uses four workers with unchanged selection/timeouts.
+
+### Parked scope and paired handoff
+
+Weekly lifecycle/joins, Forge Training, living portrait preview and unrelated bulk WIP stay
+parked. No care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities,
+conquest-imbue coexistence or extra Guardian cache. Audio-source backup is outside this batch.
+No legacy player-import door; v1 codec, evidence importBlob and planned Glass ledgers remain.
+Combined Arc4.5, separate Arc5.5 HUMAN and real-device Gate C remain open.
+Protected portraits, CI/policy and release are untouched. Prior reds/signing outage remain
+history; no unchanged-source browser retry. Edge phones are targeted diagnostics only.
+
+Codex completes this acceptance/push and continues the ordered scope. Claude reviews pushed
+checkpoints later; Nick need not open another app now. Proposed PR base develop, source
+openai/review-batch4-gameplay-20260905; final title/body at completion. BudgetUNFROZEN/PUBLIC,
+private fallback3,000, zero hosted attempts authorized. Branch pushes trigger no workflow.
+No PR, label, hosted attempt, merge, purchase or release is authorized.
+
+
+## ARCHIVED 2026-09-05 — before step3b browser acceptance
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 3a GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
+branch `openai/review-batch4-gameplay-20260905`, matching origin tracking branch.
+Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; untouched clean `openai/mac` stays `84b6f22`.
+Signed core `5377069` joined through real merge `e77e5e0`; no signed history rewritten.
+Current accepted implementation source `f21feed5881b478bb2aeec4c1af7e93b076a870a`. This documentation successor is being
+committed/pushed; the next step records its actual pushed SHA/time. Full exact evidence and every
+red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS JSON.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
+| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Latest completed outcome and decisions made unattended
+
+# Stretch 3a — existing focused authority controls
+
+Source coverage matches the narrow overnight request. This checkpoint needs no new test suite or product change; the controls are already in core. The full fast suite at this ordered checkpoint exercises these existing tests; no duplicate suite is added.
+
+- `port/v2/packages/domain/worldidentity/test/authority.test.ts:16–26`: the internal mint rejects a frozen outer address with a mutable galaxy child and a deeply frozen address with malformed negative planet ordinal. Both expect the specific “deeply frozen canonical address” refusal; the untouched valid object remains unregistered.
+- The same file, `:29–36`: registration returns the identical object and the public predicate accepts it; a separately constructed deeply frozen structural clone and `structuredClone(valid)` both remain unregistered. These controls exercise the public exact-object registry, not a second test-local registry.
+- `port/v2/packages/domain/starcatalog/test/parity.test.ts:18–21`: the three direct assertions pin `GCELL === 42`, `SOL_POS === { x: 560, y: 170 }`, and `Object.isFrozen` on both `HOME_POS` and `SOL_POS`. The existing independent baseline anchor probe remains at `:14–16`.
+
+The production boundaries are `worldidentity/src/authority.ts:45–62` (public WeakMap identity check and internal shape/deep-freeze admission) and `worldconfig/src/index.ts:8–12` (the literal constants and frozen coordinate records). No mint policy or generator baseline is changed. Coverage is the requested malformed/shallow case and exact-object clone distinction, not an exhaustive malformed-input matrix.
+
+- Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md` owns scope and order:
+  checkpoint/push after every completed step and approximately two hours; no PR/hosted attempt.
+- Current draft: 79 outcomes; rendered ordered-li SHA-256 `351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`.
+- Current Compendium producer: `dc31cbe1f60ebd435576d929936d694b3fa4f36a0fa307d0ad8c0ff5269f9d18`. Measurement authority
+  `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler, ceilings and
+  samples unchanged. SceneMemory native heap remains quarantined from develop.
+- Local Vitest uses four workers after recorded CPU contention; full selection and original
+  timeouts remain. Existing strict consumers/copy controls follow the approved product;
+  no new collector, ruler, timeout, workflow or policy change.
+- Fresh v2 has no legacy player import door; v1.8.9 codec, evidence-only importBlob and planned
+  Glass ledgers remain. Canonical identity and one lease-fenced receipt/CAS govern every write.
+
+### Blocked / reverted and parked work
+
+Core's eight browser reds were corrected on new commits and retained verbatim; Step2a's missing
+import and five stale copy checks were corrected before its green browser run. No unchanged
+source browser retry. See the report for all subsequent exact failures and dispositions.
+No product step has been reverted unless explicitly recorded in the table/report.
+Remaining `cf1b9a7` WIP is parked until individually completed. Weekly lifecycle/joins, Forge
+Training, living portrait preview and unrelated bulk copy remain excluded. No companion
+care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities, conquest-imbue
+coexistence or extra Guardian first-victory cache. Audio-source backup destination is outside
+this batch. Protected portraits, CI/policy, main and the live release remain untouched.
+Combined post-Arc-5 Arc4.5 review, separate Arc5.5 HUMAN combat review and Gate C real-device v2
+persistence remain open. Phone checks here are local Edge targeted diagnostics, not full matrix
+certification or Chrome named-verifier proof; actual source/report IDs remain in the full report.
+
+### Paired handoff and next action
+
+Codex pushes this completed checkpoint, then proceeds to **3b same-owner Research ID alias** in the authorized order.
+Claude reads the pushed branch through Git for morning review; no copying or integration before
+Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
+Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
+trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+
+
+## ARCHIVED 2026-09-05 — overnight checkpoint 3a complete
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 2e GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
+branch `openai/review-batch4-gameplay-20260905`, matching origin tracking branch.
+Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; untouched clean `openai/mac` stays `84b6f22`.
+Signed core `5377069` joined through real merge `e77e5e0`; no signed history rewritten.
+Current accepted implementation source `890ab26a02a332327228e73eb7986e62b10e281b`. This documentation successor is being
+committed/pushed; the next step records its actual pushed SHA/time. Full exact evidence and every
+red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS JSON.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Latest completed outcome and decisions made unattended
+
+Atlas now offers List and Chart views, the authored All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, exact-row Remove and a single eight-second Undo. Undo is bound to its deletion receipt and route sidecar: an originally absent route stays absent, while a formerly present route must still match before restoration. Chart clusters open the existing List actions for their exact members and return focus to their Chart origin or owning Close. Existing travel, hyperlane, motion, speed and Favorite owners remain authoritative. No companion, reward, progression, import-door or protected-portrait behavior was added. Guide, Training and all eight current references agree; the draft remains 79 outcomes and all rendered hash pins move together. Only the current Compendium producer is refreshed; measurement authority, ruler, ceilings and samples remain unchanged. After this checkpoint is accepted, all five primary items are complete and the separately ordered stretch list follows.
+The renderer preserves the existing noninteractive DIV row, native data-sel/data-aid and count identifiers alongside its new controls. Source-owner tests now read the correct renderer; Travel and Home negative controls bind exact precommit/publication spans. The real refill test executes the shipped projection, renderer and availability owner. All prior expectations remain.
+
+The first signed Atlas browser run also caught a missing visible explanation on unavailable routes. The existing Route unavailable message is restored in List/cluster rows and unmapped Chart destinations; disabled actions and byte-stable refusal behavior are preserved. The existing renderer test covers both presentations.
+
+- Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md` owns scope and order:
+  checkpoint/push after every completed step and approximately two hours; no PR/hosted attempt.
+- Current draft: 79 outcomes; rendered ordered-li SHA-256 `351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`.
+- Current Compendium producer: `dc31cbe1f60ebd435576d929936d694b3fa4f36a0fa307d0ad8c0ff5269f9d18`. Measurement authority
+  `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler, ceilings and
+  samples unchanged. SceneMemory native heap remains quarantined from develop.
+- Local Vitest uses four workers after recorded CPU contention; full selection and original
+  timeouts remain. Existing strict consumers/copy controls follow the approved product;
+  no new collector, ruler, timeout, workflow or policy change.
+- Fresh v2 has no legacy player import door; v1.8.9 codec, evidence-only importBlob and planned
+  Glass ledgers remain. Canonical identity and one lease-fenced receipt/CAS govern every write.
+
+### Blocked / reverted and parked work
+
+Core's eight browser reds were corrected on new commits and retained verbatim; Step2a's missing
+import and five stale copy checks were corrected before its green browser run. No unchanged
+source browser retry. See the report for all subsequent exact failures and dispositions.
+No product step has been reverted unless explicitly recorded in the table/report.
+Remaining `cf1b9a7` WIP is parked until individually completed. Weekly lifecycle/joins, Forge
+Training, living portrait preview and unrelated bulk copy remain excluded. No companion
+care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities, conquest-imbue
+coexistence or extra Guardian first-victory cache. Audio-source backup destination is outside
+this batch. Protected portraits, CI/policy, main and the live release remain untouched.
+Combined post-Arc-5 Arc4.5 review, separate Arc5.5 HUMAN combat review and Gate C real-device v2
+persistence remain open. Phone checks here are local Edge targeted diagnostics, not full matrix
+certification or Chrome named-verifier proof; actual source/report IDs remain in the full report.
+
+### Paired handoff and next action
+
+Codex pushes this completed checkpoint, then proceeds to **3a existing narrow authority controls** in the authorized order.
+Claude reads the pushed branch through Git for morning review; no copying or integration before
+Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
+Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
+trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+
+
+## ARCHIVED 2026-09-05 — overnight checkpoint 2e complete
+
+## SESSION HANDOFF — 2026-09-05 · BATCH 4 · STEP 2e FAST GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical root /Users/nick/Projects/celestial-frontier-openai-mac,
+branch openai/review-batch4-gameplay-20260905, matching origin tracking branch.
+Base develop9ea01041dcdc711190bbf909ea8bb743cd993734; clean openai/mac stays84b6f22.
+Step2e is implemented; full fast301files/3100tests/1skip passes.
+Commit the implementation, then run clean-source Slice→small→large, stopping at first red.
+Accept/push before 3a narrow authority controls, then the remaining stretch list. The committed overnight instructions own the full ordered scope;
+the overnight report and REDS JSON retain all exact evidence and historical failures.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Decisions made unattended and current implementation
+
+Atlas now offers List and Chart views, the authored All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, exact-row Remove and a single eight-second Undo. Undo is bound to its deletion receipt and route sidecar: an originally absent route stays absent, while a formerly present route must still match before restoration. Chart clusters open the existing List actions for their exact members and return focus to their Chart origin or owning Close. Existing travel, hyperlane, motion, speed and Favorite owners remain authoritative. No companion, reward, progression, import-door or protected-portrait behavior was added. Guide, Training and all eight current references agree; the draft remains 79 outcomes and all rendered hash pins move together. Only the current Compendium producer is refreshed; measurement authority, ruler, ceilings and samples remain unchanged. After this checkpoint is accepted, all five primary items are complete and the separately ordered stretch list follows.
+The renderer preserves the existing noninteractive DIV row, native data-sel/data-aid and count identifiers alongside its new controls. Source-owner tests now read the correct renderer; Travel and Home negative controls bind exact precommit/publication spans. The real refill test executes the shipped projection, renderer and availability owner. All prior expectations remain.
+
+The first signed Atlas browser run also caught a missing visible explanation on unavailable routes. The existing Route unavailable message is restored in List/cluster rows and unmapped Chart destinations; disabled actions and byte-stable refusal behavior are preserved. The existing renderer test covers both presentations.
+
+Current bulletin79 outcomes; SHA256351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042.
+Current Compendium producerdc31cbe1f60ebd435576d929936d694b3fa4f36a0fa307d0ad8c0ff5269f9d18.
+Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12,
+ruler, ceilings and samples unchanged. SceneMemory native heap stays quarantined.
+Full local Vitest uses four workers with unchanged selection/timeouts.
+
+### Parked scope and paired handoff
+
+Weekly lifecycle/joins, Forge Training, living portrait preview and unrelated bulk WIP stay
+parked. No care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities,
+conquest-imbue coexistence or extra Guardian cache. Audio-source backup is outside this batch.
+No legacy player-import door; v1 codec, evidence importBlob and planned Glass ledgers remain.
+Combined Arc4.5, separate Arc5.5 HUMAN and real-device Gate C remain open.
+Protected portraits, CI/policy and release are untouched. Prior reds/signing outage remain
+history; no unchanged-source browser retry. Edge phones are targeted diagnostics only.
+
+Codex completes this acceptance/push and continues the ordered scope. Claude reviews pushed
+checkpoints later; Nick need not open another app now. Proposed PR base develop, source
+openai/review-batch4-gameplay-20260905; final title/body at completion. BudgetUNFROZEN/PUBLIC,
+private fallback3,000, zero hosted attempts authorized. Branch pushes trigger no workflow.
+No PR, label, hosted attempt, merge, purchase or release is authorized.
+
+
+## ARCHIVED 2026-09-05 — before step2e browser acceptance
+
+## SESSION HANDOFF — 2026-09-05 · BATCH 4 · STEP 2e FAST GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical root /Users/nick/Projects/celestial-frontier-openai-mac,
+branch openai/review-batch4-gameplay-20260905, matching origin tracking branch.
+Base develop9ea01041dcdc711190bbf909ea8bb743cd993734; clean openai/mac stays84b6f22.
+Step2e is implemented; full fast301files/3100tests/1skip passes.
+Commit the implementation, then run clean-source Slice→small→large, stopping at first red.
+Accept/push before 3a narrow authority controls, then the remaining stretch list. The committed overnight instructions own the full ordered scope;
+the overnight report and REDS JSON retain all exact evidence and historical failures.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Decisions made unattended and current implementation
+
+Atlas now offers List and Chart views, the authored All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, exact-row Remove and a single eight-second Undo. Undo is bound to its deletion receipt and route sidecar: an originally absent route stays absent, while a formerly present route must still match before restoration. Chart clusters open the existing List actions for their exact members and return focus to their Chart origin or owning Close. Existing travel, hyperlane, motion, speed and Favorite owners remain authoritative. No companion, reward, progression, import-door or protected-portrait behavior was added. Guide, Training and all eight current references agree; the draft remains 79 outcomes and all rendered hash pins move together. Only the current Compendium producer is refreshed; measurement authority, ruler, ceilings and samples remain unchanged. After this checkpoint is accepted, all five primary items are complete and the separately ordered stretch list follows.
+The renderer preserves the existing noninteractive DIV row, native data-sel/data-aid and count identifiers alongside its new controls. Source-owner tests now read the correct renderer; Travel and Home negative controls bind exact precommit/publication spans. The real refill test executes the shipped projection, renderer and availability owner. All prior expectations remain.
+
+Current bulletin79 outcomes; SHA256351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042.
+Current Compendium producerb12f95204af08c39f14e4a383b9eb024e44d9039878a11132f359e58950bf969.
+Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12,
+ruler, ceilings and samples unchanged. SceneMemory native heap stays quarantined.
+Full local Vitest uses four workers with unchanged selection/timeouts.
+
+### Parked scope and paired handoff
+
+Weekly lifecycle/joins, Forge Training, living portrait preview and unrelated bulk WIP stay
+parked. No care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities,
+conquest-imbue coexistence or extra Guardian cache. Audio-source backup is outside this batch.
+No legacy player-import door; v1 codec, evidence importBlob and planned Glass ledgers remain.
+Combined Arc4.5, separate Arc5.5 HUMAN and real-device Gate C remain open.
+Protected portraits, CI/policy and release are untouched. Prior reds/signing outage remain
+history; no unchanged-source browser retry. Edge phones are targeted diagnostics only.
+
+Codex completes this acceptance/push and continues the ordered scope. Claude reviews pushed
+checkpoints later; Nick need not open another app now. Proposed PR base develop, source
+openai/review-batch4-gameplay-20260905; final title/body at completion. BudgetUNFROZEN/PUBLIC,
+private fallback3,000, zero hosted attempts authorized. Branch pushes trigger no workflow.
+No PR, label, hosted attempt, merge, purchase or release is authorized.
+
+
+## ARCHIVED 2026-09-05 — before step2e browser acceptance
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 2d GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
+branch `openai/review-batch4-gameplay-20260905`, matching origin tracking branch.
+Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; untouched clean `openai/mac` stays `84b6f22`.
+Signed core `5377069` joined through real merge `e77e5e0`; no signed history rewritten.
+Current accepted implementation source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`. This documentation successor is being
+committed/pushed; the next step records its actual pushed SHA/time. Full exact evidence and every
+red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS JSON.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Latest completed outcome and decisions made unattended
+
+Exact-instance Compendium progression now shows each individual’s XP, level, class, innate arts, wounds and active-play recovery. Twins retain distinct identities and retired snapshots remain available. The existing curve, 486 XP cap and innate unlocks at levels 3/6 are unchanged; valid fractional XP is displayed without rewriting ownership. No new XP source, Feed stat growth, injury healing, care or bond was added. Passive refresh preserves semantic focus with preventScroll, does not steal focus, and falls back to the owning Close when the focused action disappears or is disabled. The CombatCore adapter, lifter and generated artifact agree; the sealed legacy body remains unchanged. The exact pure-domain source inventory now includes creature-level-progress.ts (88 files), preserving every scanner and mutation control. Guide, Training and eight current references agree. The draft stays at 79 outcomes, with its newly rendered hash pinned together. Only the Compendium producer is refreshed after the final build. Mature Atlas remains the next ordered checkpoint.
+
+- Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md` owns scope and order:
+  checkpoint/push after every completed step and approximately two hours; no PR/hosted attempt.
+- Current draft: 79 outcomes; rendered ordered-li SHA-256 `cfb34202b24e064af24a80f99083609aa63539d52ebce0042d7b4a231fb854e9`.
+- Current Compendium producer: `44dcf11db46fb4be5d31d01182fd22293fdde837573cd239dcb55382f1c20980`. Measurement authority
+  `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler, ceilings and
+  samples unchanged. SceneMemory native heap remains quarantined from develop.
+- Local Vitest uses four workers after recorded CPU contention; full selection and original
+  timeouts remain. Existing strict consumers/copy controls follow the approved product;
+  no new collector, ruler, timeout, workflow or policy change.
+- Fresh v2 has no legacy player import door; v1.8.9 codec, evidence-only importBlob and planned
+  Glass ledgers remain. Canonical identity and one lease-fenced receipt/CAS govern every write.
+
+### Blocked / reverted and parked work
+
+Core's eight browser reds were corrected on new commits and retained verbatim; Step2a's missing
+import and five stale copy checks were corrected before its green browser run. No unchanged
+source browser retry. See the report for all subsequent exact failures and dispositions.
+No product step has been reverted unless explicitly recorded in the table/report.
+Remaining `cf1b9a7` WIP is parked until individually completed. Weekly lifecycle/joins, Forge
+Training, living portrait preview and unrelated bulk copy remain excluded. No companion
+care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities, conquest-imbue
+coexistence or extra Guardian first-victory cache. Audio-source backup destination is outside
+this batch. Protected portraits, CI/policy, main and the live release remain untouched.
+Combined post-Arc-5 Arc4.5 review, separate Arc5.5 HUMAN combat review and Gate C real-device v2
+persistence remain open. Phone checks here are local Edge targeted diagnostics, not full matrix
+certification or Chrome named-verifier proof; actual source/report IDs remain in the full report.
+
+### Paired handoff and next action
+
+Codex pushes this completed checkpoint, then proceeds to **2e mature Atlas** in the authorized order.
+Claude reads the pushed branch through Git for morning review; no copying or integration before
+Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
+Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
+trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+
+
+## ARCHIVED 2026-09-05 — overnight checkpoint 2d complete
+
+## SESSION HANDOFF — 2026-09-05 · BATCH 4 · STEP 2d FAST GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical root /Users/nick/Projects/celestial-frontier-openai-mac,
+branch openai/review-batch4-gameplay-20260905, matching origin tracking branch.
+Base develop9ea01041dcdc711190bbf909ea8bb743cd993734; clean openai/mac stays84b6f22.
+Paragons2c is accepted/pushed4647b21cca897f34095daa5b4f5ef12ab3f3ba5c at11:58:07UTC.
+Progression2d is implemented; full fast297files/3,071tests/1skip and independent review pass.
+Commit this implementation, run clean-source Slice→small→large, stop first red, then
+accept/push before mature Atlas2e. The committed overnight instructions own full scope.
+The report and REDS JSON preserve every failure and evidence identity.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped | Pending clean-source Slice and both phones |
+| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Decisions made unattended and current implementation
+
+Exact-instance Compendium progression now shows each individual’s XP, level, class, innate arts, wounds and active-play recovery. Twins retain distinct identities and retired snapshots remain available. The existing curve, 486 XP cap and innate unlocks at levels 3/6 are unchanged; valid fractional XP is displayed without rewriting ownership. No new XP source, Feed stat growth, injury healing, care or bond was added. Passive refresh preserves semantic focus with preventScroll, does not steal focus, and falls back to the owning Close when the focused action disappears or is disabled. The CombatCore adapter, lifter and generated artifact agree; the sealed legacy body remains unchanged. The exact pure-domain source inventory now includes creature-level-progress.ts (88 files), preserving every scanner and mutation control. Guide, Training and eight current references agree. The draft stays at 79 outcomes, with its newly rendered hash pinned together. Only the Compendium producer is refreshed after the final build. Mature Atlas remains the next ordered checkpoint.
+
+Current bulletin79 outcomes, hashcfb34202b24e064af24a80f99083609aa63539d52ebce0042d7b4a231fb854e9.
+Current Compendium producer44dcf11db46fb4be5d31d01182fd22293fdde837573cd239dcb55382f1c20980.
+Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12,
+ruler, ceilings and samples unchanged. SceneMemory native heap stays quarantined.
+Full local Vitest uses four workers with unchanged selection/timeouts.
+
+### Parked scope and paired handoff
+
+Weekly lifecycle/joins, Forge Training, living portrait preview and unrelated bulk WIP remain
+parked. No care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities,
+conquest-imbue coexistence or extra Guardian cache. Audio-source backup is outside this batch.
+No legacy player-import door; v1 codec, evidence importBlob and planned Glass ledgers remain.
+Combined Arc4.5, separate Arc5.5 HUMAN and real-device Gate C remain open.
+Protected portraits, CI/policy and release are untouched. Prior reds/signing outage are retained
+history; no unchanged-source browser retry. Local Edge phones are targeted diagnostics only.
+
+Codex completes2d acceptance/push, then2e and the ordered stretch list. Claude reviews pushed
+checkpoints later; Nick need not open another app now. Proposed PR base develop, source
+openai/review-batch4-gameplay-20260905; final title/body at completion. BudgetUNFROZEN/PUBLIC,
+private fallback3,000, zero hosted attempts authorized. Branch pushes trigger no workflow.
+No PR, label, hosted attempt, merge, purchase or release is authorized.
+
+
+## ARCHIVED 2026-09-05 — before step2d browser acceptance
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 2c GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
+branch `openai/review-batch4-gameplay-20260905`, matching origin tracking branch.
+Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; untouched clean `openai/mac` stays `84b6f22`.
+Signed core `5377069` joined through real merge `e77e5e0`; no signed history rewritten.
+Current accepted implementation source `16cb949f2caa0398708f195f39c43822df336780`. This documentation successor is being
+committed/pushed; the next step records its actual pushed SHA/time. Full exact evidence and every
+red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS JSON.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
+| 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Latest completed outcome and decisions made unattended
+
+The authored Fifty Paragons now have exact fixed genomes and canonical homes. Explicit Discover
+Life at an eligible home adds the catalogue record in that Bioscan's existing receipt/CAS;
+creatures, specimens and Yield remain unchanged. Found Binder entries Inspect the exact stored
+record; missing entries use existing reach-checked travel. Ten finds unlock the separate,
+once-only authored +120 Stardust Claim. Provenance binds the index to its exact genome and
+record keys to record IDs. Pre-feature development saves with an already-scanned home retain
+their explicit refusal; no backfill or repeated hazard was introduced. Guide, Training and eight
+current references agree, and the draft now has 79 outcomes. Static portraits remain unchanged.
+The missing existing Main import, unused test import and exact source/export inventory omissions
+were corrected before acceptance; full errors remain in the report. The no-DOM denominator is
+now the exact 87 source files with all prior scanner and mutation controls preserved. Compendium
+producer alone was re-derived after the final product rebuild; measurement and ruler are intact.
+Exact-instance progression and mature Atlas remain the next ordered, unintegrated checkpoints.
+
+The saturated-Charter Slice wave-off boundary now binds its deliberate released diagnostic hold to retained held/protected/released evidence. Both save-timestamp readers must agree with encoded legacy data; protected rewards remain exact. The prior red is preserved, default idle predecessors stay strict, and no game behavior changed for this repair.
+The later collision journey now shares the same existing card-action helper at module scope; its geometry and hit-test body is unchanged, and a focused nested-scope negative control covers the exact ReferenceError.
+The phone contrast gate found native light backgrounds on missing Paragon buttons. They now use the existing dark Binder surface and44px touch floor, retaining colors and focus. The existing Claim-button height test is bound to its own selector, preserving its original negative control.
+Protected wave-off save comparison derives only the codec’s exact conquest/mining timestamp clamps on its expected predecessor. Observed successor bytes, rewards, epochs, IDs, order and all neighbors remain checked; the retained collision red replays green without changing its evidence.
+
+- Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md` owns scope and order:
+  checkpoint/push after every completed step and approximately two hours; no PR/hosted attempt.
+- Current draft: 79 outcomes; rendered ordered-li SHA-256 `62f3490095d87bb99903ddf3e5ad0e5f03dadbe38da874835bd9f98654756194`.
+- Current Compendium producer: `45502f708c2081c54d72749e9a23cb9ae74cdf96144cffe7599a7c07aedb6798`. Measurement authority
+  `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler, ceilings and
+  samples unchanged. SceneMemory native heap remains quarantined from develop.
+- Local Vitest uses four workers after recorded CPU contention; full selection and original
+  timeouts remain. Existing strict consumers/copy controls follow the approved product;
+  no new collector, ruler, timeout, workflow or policy change.
+- Fresh v2 has no legacy player import door; v1.8.9 codec, evidence-only importBlob and planned
+  Glass ledgers remain. Canonical identity and one lease-fenced receipt/CAS govern every write.
+
+### Blocked / reverted and parked work
+
+Core's eight browser reds were corrected on new commits and retained verbatim; Step2a's missing
+import and five stale copy checks were corrected before its green browser run. No unchanged
+source browser retry. See the report for all subsequent exact failures and dispositions.
+No product step has been reverted unless explicitly recorded in the table/report.
+Remaining `cf1b9a7` WIP is parked until individually completed. Weekly lifecycle/joins, Forge
+Training, living portrait preview and unrelated bulk copy remain excluded. No companion
+care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities, conquest-imbue
+coexistence or extra Guardian first-victory cache. Audio-source backup destination is outside
+this batch. Protected portraits, CI/policy, main and the live release remain untouched.
+Combined post-Arc-5 Arc4.5 review, separate Arc5.5 HUMAN combat review and Gate C real-device v2
+persistence remain open. Phone checks here are local Edge targeted diagnostics, not full matrix
+certification or Chrome named-verifier proof; actual source/report IDs remain in the full report.
+
+### Paired handoff and next action
+
+Codex pushes this completed checkpoint, then proceeds to **2d exact-instance creature progression** in the authorized order.
+Claude reads the pushed branch through Git for morning review; no copying or integration before
+Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
+Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
+trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+
+
+## ARCHIVED 2026-09-05 — overnight checkpoint 2c complete
+
+## SESSION HANDOFF — 2026-09-05 · BATCH 4 · STEP 2c BROWSER BOUNDARY CORRECTION
+
+### Morning report
+
+Core, Starter Charter2a and deterministic descent2b are accepted and pushed. Latest pushed
+checkpoint8546ad225d485541b377bef62db50c6c841256d6 at10:33:35UTC includes accepted2b source
+879cad4e58b2d8d6cb924964f9a592e346e36dce. Paragons2c is now implemented and full fast is green;
+its first signed-source Slice stopped on the saturated-Charter wave-off boundary. Neither phone ran. The exact red is retained; the bounded diagnostic-hold/serialization-stamp correction now passes full fast (292 files / 3,046 tests / 1 skip). A new signed-source browser run is next. Full exact failures and evidence remain in
+`audits/BATCH4_OVERNIGHT_REPORT_20260905.md`.
+
+OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, branch
+`openai/review-batch4-gameplay-20260905`, matching origin. Base develop9ea01041dcdc711190bbf909ea8bb743cd993734.
+Clean openai/mac84b6f22 and parkedcf1b9a7 remain untouched. Nick restored the existing1Password
+signer; SSH authenticated asTheDakk and checkpoint pushes work. No signed history was rewritten.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Implemented; signed source follows | Acceptance pending | Typecheck/artunused PASS; 292 files / 3,046 passed / 1 skipped | Pending clean-source sequence |
+| 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Decisions made unattended and current implementation
+
+The fifty authored Paragons retain their fixed genomes and exact canonical home worlds.
+Explicit Discover Life at an eligible home adds only its catalogue record in the same Bioscan
+receipt/CAS; creatures, specimens and Yield are retained. Found Binder rows Inspect their exact
+existing record; missing rows use existing reach-checked travel. Ten records unlock the separate
+once-only authored+120 Stardust Claim. New provenance binds index to exact genome; record pair
+keys must equal record IDs. An already-scanned pre-feature development home retains its explicit
+refusal; no backfill or repeated hazard is invented. Static portraits remain unchanged.
+
+Guide, Training and all eight current references agree. New source inventory names exactly87
+pure-domain files and one internal deterministic Paragon export; independent expectations,
+compositor/mint restrictions and forbidden-global controls remain strict. Missing existing Main
+import, unused test import and exact-list omissions were corrected; all failures remain recorded.
+Full fast:292files/3,046tests/1skip; typecheck/artunused PASS. Browser acceptance pending.
+Current79-bullet hash62f3490095d87bb99903ddf3e5ad0e5f03dadbe38da874835bd9f98654756194;
+Compendium producer6f8e0ee67716ac716e13ce5acbe9eaebfaeb75bdffc96c354d098bfecff0d1d3.
+Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12, ruler, ceilings
+and samples unchanged. Exact-instance progression2d and mature Atlas2e remain prepared/unintegrated.
+
+### Latest boundary status
+
+Signed15d7a99 stopped at the later collision wave-off caller because phoneCardActionCheck was outside its lexical scope. The single unchanged helper now lives at module scope; all callers and geometry are retained. Full fast passes292files/3,047tests/1skip. Both exact browser reds are retained. A new signed clean-source browser sequence follows; no phones have run on the red sources.
+
+### Latest product correction
+
+Slice42d621d passed; small-phone stopped on low-contrast missing Paragon buttons (ratio1.05). Their native light background is now replaced with the existing dark Binder surface and an explicit44px touch floor. Existing Claim-button negative control is scoped to its exact selector so this separate44px rule cannot hide a broken Claim rule. Full fast:292files/3,047tests/1skip PASS. Current producer45502f708c2081c54d72749e9a23cb9ae74cdf96144cffe7599a7c07aedb6798; measurement unchanged. New signed-source browser acceptance is next.
+
+### Latest exact timer boundary
+
+445c452 stopped on collision wave-off comparison: only existing conquest/mining save-relative timer clamps differed. The expected predecessor now receives exactly those source-defined clamps; observed successor, receipt/rewards and all neighbors remain exact. Retained evidence replay and focused negatives pass. Full fast292files/3,047tests/1skip PASS. The terminal PASS banner uses the existing79-bullet constant. New signed-source browser sequence follows.
+
+### Parked scope and paired handoff
+
+Weeklies, Forge Training, living portrait preview and unrelated bulk WIP copy remain parked.
+Reserved care/bond/missions, random loot/affix/socket/vendor, achievement quantities,
+conquest–imbue coexistence and extra Guardian cache remain excluded. Audio-source backup is
+outside this batch. Fresh v2 has no legacy import door; codec/evidence importBlob and planned
+Glass ledgers remain. Arc4.5/Arc5.5 HUMAN and real-device Gate C remain open. Protected portraits,
+CI/policy and release remain untouched; SceneMemory stays quarantined. Existing2a phone numbers
+in `audits/BATCH4_PHONE_EVIDENCE_20260905.md` are historical diagnostics, not current2c proof.
+
+Codex commits this fast-green2c implementation, runs exact clean-source Slice→small→large,
+stops first red, and accepts/pushes only after green; then2d→2e→stretch/final in order.
+Claude reviews pushed checkpoints through Git; Nick need not open Claude now. Proposed PR base
+`develop`, source`openai/review-batch4-gameplay-20260905`; final title/body must describe the final
+accepted scope. No PR, label, hosted attempt, merge, purchase or release authorized.
+BudgetUNFROZEN/PUBLIC, privatefallback3,000; branch pushes trigger no workflow.
+
+
+## ARCHIVED 2026-09-05 — Step2c implementation ready for browser
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 2b GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
+branch `openai/review-batch4-gameplay-20260905`, matching origin tracking branch.
+Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; untouched clean `openai/mac` stays `84b6f22`.
+Signed core `5377069` joined through real merge `e77e5e0`; no signed history rewritten.
+Current accepted implementation source `879cad4e58b2d8d6cb924964f9a592e346e36dce`. This documentation successor is being
+committed/pushed; the next step records its actual pushed SHA/time. Full exact evidence and every
+red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS JSON.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Seven reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Latest completed outcome and decisions made unattended
+
+Deterministic descent now uses the authored type/biome and seeded-weather tables, live landing
+gear and struts, and canonical wave-off learning (+20 percentage points, capped at five).
+Earth, Training and proven canonical revisits consume no draws; ordinary attempts use exactly
+two named SessionRNG draws in one fenced receipt/CAS. A wave-off retains orbit, HP at least one
+and no landing reward; successful descent clears that world's learning. Legacy seed-only
+learning binds on its first verified canonical encounter because its original address is unknown.
+Guide, Training, all current references and the 78-outcome bulletin agree. Protected portraits
+remain unchanged. The exact-label, receipt, optional learned approach and migrated-document
+consumer corrections preserve fixed fixtures, independent expectations and original deadlines.
+All ten prior browser reds remain in the report, alongside the resolved 1Password outage.
+After Nick unlocked the existing signer, signed commits and GitHub SSH checks succeeded.
+The current source passes Slice and both local Edge phone diagnostics; real-device persistence
+and the separate human reviews remain open. Paragon, progression and Atlas layers remain
+prepared but unintegrated until their own ordered checkpoints.
+
+- Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md` owns scope and order:
+  checkpoint/push after every completed step and approximately two hours; no PR/hosted attempt.
+- Current draft: 78 outcomes; rendered ordered-li SHA-256 `af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53`.
+- Current Compendium producer: `8c30457fe75bc5d148d1c184547221b50d32f5079b251200425665677c123d0c`. Measurement authority
+  `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler, ceilings and
+  samples unchanged. SceneMemory native heap remains quarantined from develop.
+- Local Vitest uses four workers after recorded CPU contention; full selection and original
+  timeouts remain. Existing strict consumers/copy controls follow the approved product;
+  no new collector, ruler, timeout, workflow or policy change.
+- Fresh v2 has no legacy player import door; v1.8.9 codec, evidence-only importBlob and planned
+  Glass ledgers remain. Canonical identity and one lease-fenced receipt/CAS govern every write.
+
+### Blocked / reverted and parked work
+
+Core's eight browser reds were corrected on new commits and retained verbatim; Step2a's missing
+import and five stale copy checks were corrected before its green browser run. No unchanged
+source browser retry. See the report for all subsequent exact failures and dispositions.
+No product step has been reverted unless explicitly recorded in the table/report.
+Remaining `cf1b9a7` WIP is parked until individually completed. Weekly lifecycle/joins, Forge
+Training, living portrait preview and unrelated bulk copy remain excluded. No companion
+care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities, conquest-imbue
+coexistence or extra Guardian first-victory cache. Audio-source backup destination is outside
+this batch. Protected portraits, CI/policy, main and the live release remain untouched.
+Combined post-Arc-5 Arc4.5 review, separate Arc5.5 HUMAN combat review and Gate C real-device v2
+persistence remain open. Phone checks here are local Edge targeted diagnostics, not full matrix
+certification or Chrome named-verifier proof; actual source/report IDs remain in the full report.
+
+### Paired handoff and next action
+
+Codex pushes this completed checkpoint, then proceeds to **2c — the authored 50-Paragon hunt** in the authorized order.
+Claude reads the pushed branch through Git for morning review; no copying or integration before
+Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
+Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
+trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+
+
+## ARCHIVED 2026-09-05 — overnight checkpoint 2b complete
+
+## SESSION HANDOFF — 2026-09-05 · OVERNIGHT BATCH 4 · RESUMED
+
+### Morning report
+
+Nick unlocked 1Password. Signed correction `04aac3c30fcef7a1c70c7601ed9199d90b1c7a4b` committed;
+SSH authenticated asTheDakk and repository read passed. Core and Starter2a are accepted and
+pushed. Step2b remains active: its second Slice stopped at the migrated-v4 compatibility
+fixture's default boot expectation; the bounded existing-consumer repair is in progress.
+Full exact reds, decisions, WIP disposition and checkpoint evidence remain in
+`audits/BATCH4_OVERNIGHT_REPORT_20260905.md`; its earlier blocked handoff is historical.
+
+OpenAI/Codex, macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, branch
+`openai/review-batch4-gameplay-20260905`, matching origin. Base develop9ea01041dcdc711190bbf909ea8bb743cd993734;
+last pushed2ae776b17244d8207cb37ee45d9adf52eb99f21d at08:48:02UTC. Clean `openai/mac`84b6f22 and
+parkedcf1b9a7 remain untouched. Signed core joined through realmergee77e5e0; no history rewritten.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Signed correction `04aac3c30fcef7a1c70c7601ed9199d90b1c7a4b` | Acceptance pending | Typecheck/artunused PASS; 290 files / 3,018 passed / 1 skipped | Resumed Slice RED71.918s at migrated-v4 compatibility setup; no phones; correction in progress |
+| 2c 50-Paragon hunt | Seven reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Decisions made unattended and current acceptance
+
+The two failed sign attempts and SSH failure are preserved; Nick's unlock restored the same
+configured signing path. Corrected2b full fast passed290files/3,018tests/1skip. Glassselftest,
+root50fingerprints and policy81 also passed. These are static results; no current2b browser
+acceptance is claimed. Last all-green browser implementation is2a4a82f161da2a7b3c4a029421d8a16c23fc62955d.
+
+Slice04aac3c stopped71.918s with only `boot readiness`: the rich complete-v4 fixture retains
+`migrated-v4`, but its new Mercury helper assumed current-v5. Use only the existing explicit
+migrated mode bound to the fixture's captured document token for all three helper waits;
+keep ordinary Objective Mercury defaults, exact raw/live authority and15000ms deadline.
+No phone ran and no unchanged-source browser retry follows. All prior descent wave-off,
+exact-label, receipt/RNG and mutation-control corrections remain; the report owns their evidence.
+
+Current78-bullet hash af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53;
+Compendium producer8c30457fe75bc5d148d1c184547221b50d32f5079b251200425665677c123d0c.
+Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12, ruler,
+ceilings and samples unchanged.2c/2d/2e remain prepared and unintegrated. All eight2c layers
+rehearse cleanly on final2b, preserving the descent contract and focused controls.
+
+### Parked scope and paired handoff
+
+Weeklies, Forge Training, living portrait preview and unrelated bulk WIP copy stay parked.
+No reserved care/bond/missions, random loot/affix/socket/vendor, achievement quantities,
+conquest–imbue coexistence or extra Guardian cache. Audio-source backup is outside this batch.
+Fresh v2 has no legacy import door; codec/evidence importBlob and planned Glass ledgers remain.
+Arc4.5, Arc5.5 HUMAN and real-device Gate C remain open; protected art, CI/policy and release
+remain untouched. SceneMemory stays quarantined. Local ignored recovery pack remains available
+at `port/v2/apps/game/smoke/overnight-recovery-20260905/`; it describes the prior signing stop.
+Existing2a phone metrics and their limits are in `audits/BATCH4_PHONE_EVIDENCE_20260905.md`.
+
+Codex completes the narrow2b correction, full fast, new signed-source Slice→small→large,
+then accepts/pushes2b and proceeds2c→2d→2e→stretch/final in order. Stop first red. Claude reads
+pushed checkpoints through Git; Nick need not open Claude now. Final proposed PR base`develop`,
+source`openai/review-batch4-gameplay-20260905`; rewrite the held report title/body around the
+final accepted scope. No PR, label, hosted attempt, merge, purchase or release authorized.
+BudgetUNFROZEN/PUBLIC, privatefallback3,000; branch pushes trigger no workflow.
+
+The migrated-document consumer repair is integrated and full fast is green:290files/3,019tests/1skip;
+typecheck/artunused PASS. Product and producer remain unchanged. Commit and run the exact new-source
+Slice→small→large sequence before accepting2b.
+
+
+## ARCHIVED 2026-09-05 — signing restored, descent validation resumed
+
+## SESSION HANDOFF — 2026-09-05 · OVERNIGHT BATCH 4 · BLOCKED BY SIGNING
+
+### Morning report
+
+Core and accepted Starter Charter2a are complete and pushed. Descent2b is implemented and its
+consumer correction passes all fast checks, but 1Password signing failed twice and GitHub SSH
+preflight failed. The correction and this handoff remain local and staged; the browser gate
+requires a new clean signed commit. Subsequent ordered checkpoints are blocked, with prepared
+layers preserved for resumption. Full exact reds, per-item WIP disposition, decisions, source
+identities and copy-ready held PR fields are in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md`.
+
+OpenAI/Codex, macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, branch
+`openai/review-batch4-gameplay-20260905`, tracking its matching origin. Final local Git HEAD
+`d469c499dfaa7d1e09a3755299246b4949c89ee7`; last pushed `2ae776b17244d8207cb37ee45d9adf52eb99f21d`
+at08:48:02UTC; base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`. `openai/mac` remains
+untouched at84b6f22; original parked signed WIPcf1b9a7 remains preserved. No signed history was rewritten.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Local signed product `d469c499dfaa7d1e09a3755299246b4949c89ee7`; correction staged | Blocked: 1Password signer and GitHub SSH | Typecheck/artunused PASS; 290 files / 3,018 passed / 1 skipped | First source Slice RED at33.823s on exact Earth label; corrected-source run blocked before commit; phones not run |
+| 2c 50-Paragon hunt | Seven reviewed patch layers prepared; not integrated | Blocked by required preceding clean signed checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Blocked by required preceding clean signed checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Blocked by required preceding clean signed checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 3a authority controls | Already implemented in signed core and verified by all full suites | Separate ordered checkpoint blocked by signing | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Blocked by checkpoint prerequisite | Independently authored browser lists retained | Not run |
+| 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Blocked by checkpoint prerequisite | No code extraction claimed | Not run |
+| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Fresh clean-source measurement blocked | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+
+### Decisions made unattended
+
+Keep the configured signer and exact-source browser rule. Both commit attempts exited128 with
+`error: 1Password: failed to fill whole buffer` / `fatal: failed to write commit object`.
+SSH then exited255: `signing failed ... communication with agent failed` / `Permission denied
+(publickey)`. No GitHub write followed. Computer Use permissions were pending, so no sign prompt
+could be inspected. This external blocker is not an approval-review rejection or product decision.
+No product revert occurred because it would require the same unavailable signer.
+
+Current fast-tested code is HEAD plus the staged product-correction patch SHA256
+`bd43d66b8ab64443180737d157b752af36195c3fadb5f9817e7f5cf7eb1f6a8b`. All290files/3,018tests pass
+with1skip, typecheck/artunused pass; Glassselftest passes; root50fingerprints remain identical;
+policy selftest81 controls passes. Descent's corrected-source browser acceptance remains pending.
+Latest all-green browser source is accepted2a `4a82f161da2a7b3c4a029421d8a16c23fc62955d`.
+
+Descent choices: authored type/biome/static weather; exact canonical learning+20/cap5; legacy
+seed-only learning binds on its first verified encounter because original address is unknowable.
+Earth/Training/canonical revisit use no draws; ordinary attempts use two named draws/one receipt.
+The existing Mercury/collision flows permit one additional explicit Land only after proving an
+actual durable wave-off and guaranteed next approach, with unchanged rewards and unrelated state.
+All previous reds and focused-control corrections remain in the report; no unchanged browser retry.
+
+Current78-bullet hash `af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53`;
+Compendium producer `8c30457fe75bc5d148d1c184547221b50d32f5079b251200425665677c123d0c`.
+Measurement `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler,
+ceilings and samples unchanged. No prepared79-bullet Paragon inventory is live.
+
+### Interim P2-phone findings
+
+Existing accepted2a Edge phone evidence records replacement readiness734.8/638.9ms,
+rendererDPR2, combined backing pixels1,454,080/3,015,840, and released canvases1×1.
+Slice recorded27ms galaxy rebuild. These are historical diagnostic samples, not current2b
+proof, cold-boot/TTI, native allocation, populated art-cache or physical-iPhone measurements.
+Full evidence and limitations are in `audits/BATCH4_PHONE_EVIDENCE_20260905.md`.
+
+### Parked boundaries and recovery
+
+Weeklies, Forge Training, living portrait preview and unrelated bulk WIP copy remain parked.
+Paragons, individual progression and mature Atlas are prepared but unintegrated; no acceptance
+is claimed. Reserved care/bond/missions, random loot/affix/socket/vendor tables, achievement
+quantities, conquest–imbue coexistence and extra Guardian cache remain excluded. Audio-source
+backup remains outside this batch. Fresh v2 has no import door; codec/evidence importBlob and
+planned Glass ledgers remain. Arc4.5/Arc5.5 HUMAN and real-device Gate C remain open. Protected
+art locks, workflows and Actions policy are byte-identical to develop; SceneMemory stays quarantined.
+
+A verified signed-HEAD Git bundle and hashed recovery pack are retained in ignored
+`port/v2/apps/game/smoke/overnight-recovery-20260905/`. The pack preserves the uncommitted change,
+prepared2c/2d/2e layers and reference patches, scripts and exact source manifest. This local copy
+does not substitute for the blocked remote push. Full source paths and commands are in the report.
+
+### Paired handoff — next action
+
+Codex: after 1Password SSH signing is available, verify this same checkout/branch, inspect and
+normally commit the staged correction, then run clean-source Slice→small-phone→large-phone.
+Stop first red. Accept/push2b only after green, then integrate2c→2d→2e and complete stretch/final
+checks. Do not reapply2a/2b product layers or rewrite existing signed commits.
+Claude: the remote is only through accepted2a; read the completed candidate after Codex can push
+this handoff and subsequent checkpoints. Nick need not open Claude now. Proposed held PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; exact title/body in the full report.
+Nick separately authorizes the hosted agent lane after morning review. Budget UNFROZEN, PUBLIC,
+private fallback3,000, zero hosted attempts authorized. No PR, label, merge, release or purchase.
+
+
+## ARCHIVED 2026-09-05 — overnight signing blocker
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 2a GREEN
+
+### Morning report
+
+OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
+branch `openai/review-batch4-gameplay-20260905`, matching origin tracking branch.
+Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; untouched clean `openai/mac` stays `84b6f22`.
+Signed core `5377069` joined through real merge `e77e5e0`; no signed history rewritten.
+Current accepted implementation source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`. This documentation successor is being
+committed/pushed; the next step records its actual pushed SHA/time. Full exact evidence and every
+red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS JSON.
+
+| Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
+| --- | --- | --- | --- | --- |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
+| 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
+| 2b descent/wave-offs | Implemented; commit/browser next | — | Typecheck/artunused PASS; 290 files / 3,012 passed / 1 skipped | Pending clean-source run |
+| 2c 50-Paragon hunt | Pending | — | — | — |
+| 2d exact-instance progression | Pending | — | — | — |
+| 2e mature Atlas | Pending | — | — | — |
+| 3a authority controls | In signed core | Pending | Included in full Vitest | No UI change |
+| 3b same-owner lists | Pending | — | — | — |
+| 3c bounded extraction | Pending | — | — | — |
+| 3d phone analysis | Pending | — | — | — |
+
+### Latest completed outcome and decisions made unattended
+
+The accepted st-scan Starter Charter now completes only from a later explicit Discover Life,
+settling its authored 15 current/lifetime Stardust and one Earpiece in that Bioscan's single
+F4 receipt/CAS. Earlier Survey, Capture and landfall never substitute. Existing inventory
+publication, empty-slot equip, capacity, stale-tab and failed-write boundaries remain exact.
+Guide, Training, all eight current overlays and six current-reference statements agree;
+dated historical carriers remain verbatim. Weekly lifecycle stays parked. Two source-review
+Paragon validation gaps and fractional-XP progression compatibility are prepared as bounded
+later-step fixes; they are not integrated or claimed tested at this checkpoint.
+
+- Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md` owns scope and order:
+  checkpoint/push after every completed step and approximately two hours; no PR/hosted attempt.
+- Current draft: 77 outcomes; rendered ordered-li SHA-256 `8f7a40185fb2a89c1fe055b0109623f77d087cdc4248ee00fe20398fe3456c4f`.
+- Current Compendium producer: `2df5f7497cb3b90e937bb5e3199e0346607b7dccfba4635f5a57e74e46e22a82`. Measurement authority
+  `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler, ceilings and
+  samples unchanged. SceneMemory native heap remains quarantined from develop.
+- Local Vitest uses four workers after recorded CPU contention; full selection and original
+  timeouts remain. Existing strict consumers/copy controls follow the approved product;
+  no new collector, ruler, timeout, workflow or policy change.
+- Fresh v2 has no legacy player import door; v1.8.9 codec, evidence-only importBlob and planned
+  Glass ledgers remain. Canonical identity and one lease-fenced receipt/CAS govern every write.
+
+### Blocked / reverted and parked work
+
+Core's eight browser reds were corrected on new commits and retained verbatim; Step2a's missing
+import and five stale copy checks were corrected before its green browser run. No unchanged
+source browser retry. See the report for all subsequent exact failures and dispositions.
+No product step has been reverted unless explicitly recorded in the table/report.
+Remaining `cf1b9a7` WIP is parked until individually completed. Weekly lifecycle/joins, Forge
+Training, living portrait preview and unrelated bulk copy remain excluded. No companion
+care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities, conquest-imbue
+coexistence or extra Guardian first-victory cache. Audio-source backup destination is outside
+this batch. Protected portraits, CI/policy, main and the live release remain untouched.
+Combined post-Arc-5 Arc4.5 review, separate Arc5.5 HUMAN combat review and Gate C real-device v2
+persistence remain open. Phone checks here are local Edge targeted diagnostics, not full matrix
+certification or Chrome named-verifier proof; actual source/report IDs remain in the full report.
+
+### Paired handoff and next action
+
+Codex pushes this completed checkpoint, then proceeds to **2b — deterministic descent and canonical wave-offs** in the authorized order.
+Claude reads the pushed branch through Git for morning review; no copying or integration before
+Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
+Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
+trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+
+Step2a checkpoint was pushed08:48:02UTC as`2ae776b`; Step2b is now implemented and awaiting
+fast/browser acceptance. Authored static-weather descent and canonical learning(+20,cap5) apply;
+legacy seed-only counts bind once on their first matching canonical encounter because their
+original address is unknowable. Fresh games start empty. This preserves stored learning without
+inventing history; full reasoning, exact Pertar facts and current78-bullet hash are in the report.
+
+Step 2b final fast PASS: 290 files / 3,012 tests / 1 skipped; typecheck/artunused pass.
+Unused-code and existing-owner reds were corrected and preserved in the report. Product
+source is ready for its clean committed browser sequence. No 2c or later work is integrated.
+
+Step 2b first clean-source Slice on `d469c49` stopped33.823s at Earth Survey’s exact action
+label: expected `⛳ Land`, observed authored `⛳ Land safely`. Only presentation mismatch;
+write-free inspection authority remained unchanged. Audit all fixed label consumers with exact
+independent fixture policy before correction. Neither phone ran; full red retained.
+
+Step2b descent-flow correction now passes full fast: 290 files / 3,018 tests / 1 skipped.
+Exact labels and bounded receipt-proven wave-off flows are integrated; all prior reds retained.
+Commit this corrected source, then run Slice and the two phones before checkpoint acceptance.
+
+
+## ARCHIVED 2026-09-05 — overnight checkpoint 2a complete
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CORE PUSHED; STEP 2a IMPLEMENTED
+
+### Morning report
+
+OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
+branch `openai/review-batch4-gameplay-20260905`, tracking its matching origin branch.
+Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; clean `openai/mac` stays `84b6f22`.
+Signed core `5377069` joined through real merge `e77e5e0`; no signed commit rewritten.
+
+| Step | State | Exact source / results |
+| --- | --- | --- |
+| 1 — core integration | Complete; `419a00b` pushed 08:30:49 UTC | `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd`; typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; Slice 368.569s; both phone Glass PASS, zero findings/instrument failures |
+| 2a — accepted st-scan | Fast PASS; clean-source browsers next | 286 files / 2,980 passed / 1 skipped; authored 15 Stardust + one Earpiece |
+| 2b — descent/wave-offs | Pending | Authored deterministic policy and canonical-address learning |
+| 2c — 50-Paragon hunt | Pending | Two source-review validation gaps identified for correction before integration |
+| 2d — exact-instance progression | Pending | Existing XP/level/class owners |
+| 2e — mature Atlas | Pending | Existing route/record owners |
+| 3a — narrow authority tests | Present in signed core; ordered verification pending | No new suite |
+| 3b — same-owner lists | Pending | Independent expectations retained |
+| 3c — bounded main extraction | Pending | Only step-2 code |
+| 3d — phone analytical pass | Pending | Measure only |
+
+Browser evidence is local Edge 152.0.4191.62, CDP 1.3; phone runs are targeted diagnostics,
+not a twelve-row certificate or the separate Chrome verifier. Exact immutable IDs:
+small `20260905082236086-39307-3c46f4fc031c`, large `20260905082251619-39454-5c02854b7dc6`.
+Both start/end on clean `b572dbf` with no source change. This successor changes only reports.
+The full report, log hashes and eight preserved browser reds are in
+`audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and `audits/BATCH4_OVERNIGHT_REDS_20260905.json`.
+The first periodic backup `5ac99f9` was pushed at 07:13:39 UTC; next-step record will cite this
+checkpoint's actual pushed SHA/time. Final acceptance remains pending all remaining steps.
+
+### Decisions made unattended
+
+- Follow Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md`: one checkpoint and
+  branch-only push per completed step and approximately every two hours; no PR/hosted run.
+- Preserve fresh-start v2, evidence-only importBlob, v1.8.9 codec and planned Glass ledgers.
+  Core remains 77 outcomes, current rendered-li hash `379bb64ef214edb961813d069e8b0f95fcba21fc7564095cae0a4da136b09e70`.
+- Existing strict consumers and copy mutation controls were repaired for the approved product;
+  no new collector, ruler, timeout, workflow or budget policy. Local Vitest uses four workers
+  to avoid observed CPU contention while preserving full test selection and original timeouts.
+- Compendium producer `018843bc2e019a18520f7ef555ff0fc81e868327f84e008bcc328f756cdd0e5e` only;
+  measurement `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler,
+  ceilings and samples unchanged. Historical/quarantined SceneMemory stays outside develop.
+
+### Blocked / reverted and parked work
+
+Eight core browser reds were diagnosed and corrected on new commits, with every original
+output retained; none was retried on unchanged source. Final current core all green. No
+product step reverted. WIP `cf1b9a7` stays parked until each ordered step is completed;
+weekly lifecycle, Forge Training, living portrait preview and unrelated bulk copy remain excluded.
+No care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities,
+conquest-imbue coexistence or extra Guardian first-victory cache. Audio-source backup destination
+is outside this batch. Protected portraits, CI/policy and main/live release remain untouched.
+Combined post-Arc-5 Arc 4.5 review and separate Arc 5.5 HUMAN combat review stay open; Gate C
+remains real-device v2 persistence.
+
+### Paired handoff
+
+Codex completes 2a fast/browser gates and pushes it before 2b; then the remaining ordered list.
+Claude reads the pushed branch through Git for morning review; no copying or integration before
+Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
+`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
+Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
+trigger no workflow. SSH origin/account checks passed with `TheDakk`; no authentication change.
+
+Step 2a fast found a missing existing encoder import, then five stale copy-owner expectations.
+The import and focused copy corrections pass (60/60 related tests); full fast follows. All
+original errors are retained in the report. No browser ran after a red. The current Step 2a
+producer is `2df5f7497cb3b90e937bb5e3199e0346607b7dccfba4635f5a57e74e46e22a82`; 77 bullets,
+rendered hash `8f7a40185fb2a89c1fe055b0109623f77d087cdc4248ee00fe20398fe3456c4f`.
+
+
+## ARCHIVED 2026-09-05 — overnight checkpoint 1 completed
+
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 1 IN PROGRESS
+
+### Morning report
+
+Base develop: `9ea01041dcdc711190bbf909ea8bb743cd993734`. OpenAI/Codex on macOS in
+`/Users/nick/Projects/celestial-frontier-openai-mac`, temporarily on Nick's explicitly named
+`openai/review-batch4-gameplay-20260905`. The clean `openai/mac` tip remains `84b6f22`.
+Signed Batch 4 core `53770697f6613da3ba469868dae24cf0edc3f58d` is being joined by a real merge;
+WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` stays parked except individually completed steps.
+
+| Step | State | Commit / push / gates |
+| --- | --- | --- |
+| 1 — core integration | Slice/Guide PASS; bulletin controls instrument-red | `d2afe52` local; `5ac99f9` pushed 07:13:39 UTC; fast 286 / 2,962 / 1; large phone not run |
+| 2a — accepted st-scan | Pending | Recover only completed authored scope |
+| 2b — descent/wave-offs | Pending | Canonical-address deterministic outcome |
+| 2c — 50-Paragon hunt | Pending | Existing authored table only |
+| 2d — exact-instance progression | Pending | Existing XP/level owners |
+| 2e — mature Atlas | Pending | Existing route/record owners |
+| 3a — narrow domain assertions | Present in signed core; verify | No new suite |
+| 3b — shared list ownership | Pending | Preserve independent test expectations |
+| 3c — bounded main extraction | Pending | Only step-2 code |
+| 3d — phone analytical pass | Pending | Measure only, no performance changes |
+
+### Decisions made unattended
+
+- Nick's overnight checkpoint protocol supersedes the older no-intermediate-push campaign rule:
+  each completed step runs its fast gates, applicable browser gates, commits and pushes this
+  exact bounded review branch. No hosted run or PR follows a branch push.
+- Fresh-start develop owns import-door removal, its tests, planned Glass ledgers and the initial
+  77-bullet count. Core outcome copy may change the rendered bullet hash; later added outcomes
+  change count and every pin together. No stale 78-count or save-export prerequisite is carried.
+- The standalone authority printer can report exit 2 for stale/quarantined SceneMemory and the
+  deliberately not-yet-updated Compendium producer. Its observed Compendium producer is copied
+  only after proving measurement inputs unchanged. No ruler, ceilings or samples change.
+
+### Blocked / reverted
+
+Checkpoint 1 first fast run: typecheck PASS; artunused stopped before Vitest with
+`tests/explorer-meal-action.test.ts(26,3): error TS6133: 'SCENE_ENGINEERING_ADDRESS_RESOLVER' is declared but its value is never read.`
+The unused import was removed from the recovered test; no assertion/product behavior changed.
+Corrected fast run follows. Original output is retained in the checkpoint evidence. No product
+step has required reversal. Temporary bullet-hash extraction also refused a stale syntax delimiter
+before producing output; the corrected read-only extraction uses TypeScript stripping and the
+actual rendered li text. An initial printer command used the root directory and was corrected to
+port/v2; these command setup errors are not product gate results.
+
+The corrected first full Vitest run stopped at **13 failed / 273 passed files; 21 failed /
+2,930 passed / 1 skipped tests**. Fixed inventories, literal copy assertions and mutation spans
+still described the pre-core source. Repairs preserve independent expected values and scope each
+mutant to its actual action owner. The next full run reduced this to **1 failed / 285 passed
+files; 3 failed / 2,948 passed / 1 skipped tests**, all Guide/release expectations after restoring
+existing Pureforged and Feed chronology detail. A Charter contradiction regex mistook
+“counterfeits” for “counts”; it now requires a word boundary. A release Scout contradiction
+mistook “grants no Scout XP” for a positive award; its exact verb/negative boundary is explicit.
+The historical Pureforged positive control and item-upgrade/vendor negative controls remain.
+Original diagnostics and final results are indexed in the overnight report. No product step
+has been reversed or counted complete on red evidence.
+
+Browser-free copy review then found Glass's shortened Feed expectation, a missing reverse-passive
+Feed contradiction, omitted implemented Atlas travel detail, and two case-sensitive Charter
+sentence carriers. These are aligned to the existing outcome and removal controls. That final
+Guide sentence restoration exposed three additional stale `guide-release` expectations (same
+1-file / 3-test red count); only those expectations are being aligned. The previous full source
+run passed 286 files / 2,951 tests / 1 skipped. It is retained as an intermediate result, not
+substituted for the final corrected source. Root validate passed 1,010 renders and all 50 original
+fingerprints. The current draft remains 77; no new player-visible outcome was invented.
+
+Final corrected core source: typecheck PASS, artunused PASS, Vitest **286 files / 2,951 passed /
+1 skipped** (38.13s). Root validate PASS (1,010 renders and all 50 fingerprints). The real
+merge is now committed for unchanged-source local browser gates; checkpoint 1 is not complete
+until those gates pass and the branch is pushed.
+
+First clean-source Slice on merge `e77e5e0` stopped after 33.262s:
+`POINTER EARTH SURVEY: Survey did not reach its exact same-document fixed point before the dependent action`.
+Its setup expected a discovery commit from living-world card inspection, which is deliberately
+read-only in the approved core. Mercury/nonliving and star commits remain. The bounded existing
+assessor repair checks unchanged raw/save/RNG/receipts/runtime and prior outcome, with negative
+controls; it does not fake `current:world` or alter product behavior. Neither phone Glass ran.
+The failed log SHA is `5c19919decee1fcfefc00bc35cab5b295577a8539cb46c57796aec836d7e71c4`.
+No unchanged-source browser retry; the correction will be a new commit. Full details are in
+`audits/BATCH4_OVERNIGHT_REPORT_20260905.md`.
+
+Inspection repair focused checks passed after correcting stale test mutation labels (12/12
+Arc0 cases and 49/49 early fixed-point cases). Full fast then stopped at the stale public
+TypeScript union (`inspection` not assignable to `commit | current | either`); its corresponding
+`.d.mts` declaration is now aligned. Artunused/Vitest did not run after that typecheck red.
+No game source, producer pin, measurement input or hosted policy changed in this repair.
+
+Inspection correction final fast PASS: **286 files / 2,954 passed / 1 skipped** (37.82s);
+typecheck and artunused PASS. It is committed separately from `e77e5e0` before the next
+unchanged-source Slice/phone sequence. Checkpoint 1 remains pending browser acceptance/push.
+
+Second Slice on corrected source `d260f19` stopped at 125.132s after passing Survey:
+`Arc 5 legacy-carrier upgrade rehearsal exact Pertar capture card did not reach its exact Pertar surface/card/three-enabled-row outcome within 10000ms`.
+All three controls are present/enabled. Existing capture evidence rejects the new
+`ownershipV2.explorerMeal` diagnostic: replay returns false; removing only that field from a
+clone returns true. Align its explicit strict shape and current fixture prefixes; keep historical
+provenance and planned Glass ledgers. Full errors are in the overnight REDS JSON. No Glass ran.
+
+The current fixture correction independently reproduces both old progression witnesses before
+removing the obsolete Survey counts/ordinal. Capture outcomes retain the same seeded draws.
+Current diagnostics remain exact; historical pre-Meal replay is explicitly flagged. No new
+instrument owner, budget, timeout or historical Glass ledger change is introduced.
+
+Diagnostic correction full fast stopped at two cases: Glass's separate current selftest fixture
+also omitted Explorer Meal, and historical Final11 replay exceeded its unchanged five-second
+unit-test limit under concurrent load. The former fixture is aligned; no timeout changed.
+Exact outputs and counts (2 failed files / 2 tests) are retained in the overnight report.
+The next run isolated Final11 alone. Its new per-field controls repeated the full large replay;
+they now test the existing strict UI boundary directly while all full integration/historical
+replays remain. Every field/flag/restoration case and the five-second timeout are preserved.
+
+Diagnostic correction final fast PASS: **286 files / 2,954 passed / 1 skipped**;
+typecheck/artunused and Glass selftest PASS. New correction commit precedes clean-source
+Slice → small-phone → large-phone. No game source or Compendium authority changed.
+
+Third Slice on `46b8dbc` passed Capture setup and stopped at Tame greeting result observation
+(145.897s). Capture/global/ownership succeeded; the exact result checker appears stale against
+the four Scout XP fields and waits past toast expiry. Investigate that bounded owner; do not
+extend timeouts or change gameplay without evidence. Full finding retained; no Glass ran.
+
+Scout-result correction final fast PASS: **286 files / 2,955 passed / 1 skipped**;
+typecheck/artunused PASS. Exact no-Scout fields and replay preservation are required. New
+commit precedes the next browser sequence; checkpoint 1 still awaits all browser gates/push.
+
+Fourth Slice on `b422860` passed greeting start and every audio lifecycle clause, then failed
+only final capture receipt/result verification (150.495s). Current capture combines plan,
+Scout and save facts in a settlement witness; the old consumer still expects the inner plan.
+Bind the full wrapper independently. Exact red retained; no Glass/audio/product change.
+
+Combined-receipt focused checks PASS (44 tests / 37 wrapper controls). Full fast hit only
+one existing malformed-CLI child timeout (20,224ms / 20,000ms). Local Vitest now runs all
+cases with `--maxWorkers=4`; no timeout, assertion, CI or budget setting changes. Original
+red is retained. This bounds scheduling contention without expanding instrument work.
+
+Periodic backup checkpoint: full four-worker Vitest PASS **286 files / 2,956 passed /
+1 skipped**; typecheck/artunused PASS. Commit and branch-push the full-wrapper correction
+near the two-hour checkpoint, with all four browser reds retained. This is backup progress,
+not completed step-1 acceptance: Slice and both phones still must pass before step 2 begins.
+
+Periodic backup `5ac99f9` was pushed and remote-tracking verified at **07:13:39 UTC**.
+Fifth Slice passed full Tame audio and actual Sample hit, then stopped only because two
+intentional Arc5 corruptions now also fail the stronger receipt check (151.516s). Align the
+existing expected failure lists; all positive hit/pending checks are true. No Glass ran.
+
+Dependent-control correction final fast PASS: **286 files / 2,958 passed / 1 skipped**;
+typecheck/artunused PASS. Four corruption failure sets and existing inner-witness mutation
+targets are aligned. New commit precedes the next Slice/phone sequence.
+
+Clean `a0bd9da`: Slice PASS in **365.632s**, then small-phone Glass stopped on one
+`SHIPYARD_STATE_TRUTH` finding (recipeMatch/recipeTruth only; zero instrument failures).
+The large-phone canary did not run. Exact source/log hashes and literal finding are retained
+in the overnight report/REDS JSON. Current recipe expectations are being compared with the
+approved core owner before a bounded correction; step 2 remains unintegrated.
+
+Shipyard oracle correction fast PASS: **286 files / 2,959 passed / 1 skipped**;
+typecheck/artunused PASS. Seventeen independent effect-support literals and their local seal
+now reflect the signed core. All 62 rows/statuses/enabled states and existing corruption
+controls remain. Commit before the next clean-source browser sequence.
+
+Clean `5c07efe`: Slice PASS in **367.006s**; Shipyard passes. Small-phone Glass then
+stops instrument-red at four F2 Guide controls (all 22 product topics true, zero product
+findings). Repair only their stale removal/contradiction behavior. The full literal finding
+is retained in the REDS JSON; large phone did not run.
+
+The new actual-Guide replay passed focused checks but full typecheck caught its overly
+narrow inferred Map key. The test now accepts an arbitrary search string with the exact
+catalogue topic value type. Original TS2345 is retained; later fast gates did not run.
+
+Guide-control correction final fast PASS: **286 files / 2,962 passed / 1 skipped**;
+typecheck/artunused PASS. Two explicit forbidden claims and audio paragraph 5 fix the
+existing checker; actual 22-topic replay and exact historical failure controls pass.
+Commit before the next clean-source Slice/phone sequence.
+
+Clean `d2afe52`: Slice PASS **367.432s** and all rendered Guide controls pass.
+Small-phone then stops instrument-red at development-bulletin corruption controls; the real
+77-outcome baseline is all true. Full exact diagnostic retained; large phone did not run.
+
+Full typecheck caught the release replay test’s JavaScript-contract import without a
+declaration shim (TS7016). The same narrow import annotation as the Engineering test now
+marks that boundary. An exact-match edit refusal and mistakenly repeated typecheck are
+retained in the report; no later fast or browser gate ran after either red.
+
+Bulletin-control correction final fast PASS: **286 files / 2,964 passed / 1 skipped**;
+typecheck/artunused PASS. The exact full rendered release sequence now passes, including
+196 aggregate clauses and truthful Research reach negations. Five current references and two
+current bulletin hash statements are synchronized; dated certification records remain intact.
+Commit before the next clean-source Slice and phone gates.
+
+### Scope and continuation
+
+The full instruction is committed in `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md`.
+No companion care/bond/missions; random loot/affix/socket/vendor quantities; achievement rewards;
+conquest-imbue coexistence; extra Guardian first-victory cache; protected portraits/art locks;
+CI/policy edits; hosted attempts; purchases or release. Preserve combined post-Arc-5 Arc 4.5
+review and the separate Arc 5.5 HUMAN combat gate. V2 starts fresh: no player import door;
+v1.8.9 codec and evidence-only importBlob remain. Gate C is real-device v2 persistence.
+Audio-source backup destination is outside this batch and remains pending.
+
+### Paired handoff
+
+Codex continues the ordered overnight checkpoints and pushes each completed step; no PR opens.
+Claude's morning review reads this branch through Git, without copying files or integrating it
+before Nick's separate hosted authorization. Nick need not open another app overnight. Final
+report supplies proposed `develop` ← `openai/review-batch4-gameplay-20260905` PR fields.
+Budget UNFROZEN, PUBLIC, private fallback 3,000; zero hosted attempts authorized. Normal SSH
+origin `git@github.com:TheDakk/Celestial-Frontier.git`, established `TheDakk` authentication and
+current fetch passed. Main/live site and both parked/review backup refs remain unchanged.
+
+
+## ARCHIVED 2026-09-05 — overnight Batch 4 campaign begins
+
+## ▶▶▶ SESSION HANDOFF — 2026-09-05 UTC · V2 STARTS FRESH: LEGACY SAVE IMPORT WITHDRAWN, SETTINGS IMPORT DOOR REMOVED · LOCAL BATCH ON anthropic/mac · NO HOSTED AUTHORITY ◀◀◀
+
+### Exact boundary
+
+- **Anthropic/Claude Code on macOS:** `/Users/nick/Projects/celestial-frontier-anthropic-mac`,
+  branch **anthropic/mac**, based on `develop` **1d719c63fbcdb6d0e6ab98a96b16e487aafe1239** (merge of
+  PR #39) plus the 2026-09-05 Windows handoff commit `55f5651a6b926c36b1cc5d40f9a7cb3f6ffec290`
+  (fast-forwarded and pushed as a branch push, which triggers nothing). This batch is committed
+  locally on top of that; its SHA is stated at the Git handoff. **Nothing is pushed** after the
+  fast-forward; no PR exists; no hosted attempt is authorized.
+- Nick's decisions this session (2026-09-05): (1) "Nobody is running old saves… treat it as a
+  brand-new game. But we want saves going forward for v2." (2) Remove the player-facing import door
+  now, keep the Training recovery dialog. (3) Recovery lock offers reload/update only — no hidden
+  paste path. Recorded in `port/DECISIONS.md` (Gate C row), `port/RUBRICS.md` (Gate C rows),
+  `port/V2_PROGRAM_ROADMAP.md`, `port/v2/README.md`, `SAVE_SYSTEM.md`, `UI_PRESENTATION.md`,
+  `PROCESS_LAWS.md`, `celestial-frontier-codebase-reference.md`, `port/DEVELOPMENT_PREVIEW.md` and
+  the `port/v2/DEVIATIONS.md` overlay.
+- Budget **UNFROZEN**, visibility **PUBLIC**, private fallback **3,000**. **Zero** hosted attempts,
+  labels, merges or releases are authorized. The next hosted run of this head will change sealed
+  Glass/Slice outcomes (see below) and therefore needs Nick's exact authorization as a re-seal.
+
+### What changed (product, v2 only; v1 `main.js`/html untouched)
+
+1. **Settings → “Bring expedition” door removed** (`#setimport` row, listener, paste textarea,
+   Pick file, Import & reload, live error region, `cf_v2_import_original` keepsake). The retained
+   `#importsheet` element is now only the nonclosable **Field Training recovery sheet**
+   (`unknown-checkpoint` / `route-unavailable`, copy “Update and reload.” / “Reload to retry.”,
+   single **Reload to retry** action; Escape and outside focus return to it). The
+   `__CF_EVIDENCE_BUILD__` slice API keeps `importBlob` as the Slice/Glass **replacement driver**
+   (fixture seeding + reload-evidence chain); no player path reaches it.
+2. **Not changed on purpose:** the v1.8.9 codec (`import-v2.ts` / v4 envelope / v5 partition /
+   `migrateLegacyOwnership`) is v2's own load path for a brand-new game and stays. "Legacy" in the
+   persistence packages means that codec, not a player import.
+3. Guide + `V2_DRAFT_RELEASE` copy: no import promises; the draft bulletin is **77** outcomes (the two
+   import bullets became one fresh-start bullet). Read-only mode: “a protected reload is the only
+   recovery path.”
+
+### Instruments and seals touched (every change negative-controlled)
+
+- `tools/slicesmoke.mjs`: door steps replaced by an **absence** check (no `#setimport`, no stale
+  import controls, recovery sheet hidden without a lock); the whitespace replacement now drives the
+  evidence seam and asserts the keepsake is **never written**; phone import-modal block retired;
+  D-TRAIN refusal reads `[data-sel="recovery-copy"]`, requires Close absent and no import copy;
+  `V2_DRAFT_BULLET_COUNT = 77`; `GUIDE_DRAFT_BULLET_AUTHORITY` resealed to 77 /
+  `bbb06e0d2daced207d5c9c30d32739dcf3cc7794943dc321f246ef44a90c07c8`.
+- `tools/glassmatrix.mjs` + `glassmatrix-evidence-contract.mjs`: `import`, `import-preferences`,
+  `import-modal` and the import `MODAL_ESCAPE_RESTORE` outcomes retired; `#setimport` left the
+  Settings focus rows; negative controls `modal-background-containment-restore` and
+  `modal-live-error` retired (modal law stays proven by `inventory-modal-*` and the Slice D-TRAIN
+  refusal). **Ledger versioning:** `GLASS_NEGATIVE_CONTROL_LEDGERS` /
+  `glassPlannedNegativeControlLedger` judge a carrier against the exact ledger it planned, so the
+  retained PR35 phone carriers (104 planned) replay green while new runs plan 102; swapped,
+  reordered, partial and non-array ledgers match nothing (negative-controlled). `import-phase-sequence`
+  and the replacement/reload outcomes are unchanged (harness-driven). Bullet pins 78→77 (control 76).
+- `budgets/compendium-memory-v1.json`: **producer authority only** re-derived by
+  `print-producer-authorities.mjs` after the final build (`430b92d75d40…`, owner
+  `assets/main-Bh74eiXq.js`); measurement authority, ruler, ceilings and calibration samples untouched;
+  `selectionRule` cites the previous and current producers. `tools/devpreview.mjs` storage contract:
+  no localStorage keys.
+- Tests: `read-only-settings-main-wiring` now rejects any `#setimport` (selector or markup) with
+  injected-door controls; anchors moved to `#importretry`; Guide/release regexes follow the copy;
+  `f4-heartbeat` re-anchored on `phase('release-started')`; `compendium-budget` pins follow the
+  producer authority.
+
+### Local gates on this head (macOS, Node 26.7.0)
+
+- `npm run typecheck` PASS · `npm run artunused` PASS · `npx vitest run` **274 files / 2,886 passed / 1 skipped, 0 failed**
+- `node tools/glassmatrix.mjs --selftest` PASS · `npm run preview:selftest` PASS · `npm run smoke:report:selftest` PASS
+- Glass ledger negative controls PASS (7/7) · `npm install` relinked five workspace packages that the
+  local checkout lacked (`package-lock.json` restored; its only diff was key order)
+- `node tools/slicesmoke.mjs --profile=develop` **PASS** (Slice + Arc 4 ledger; exact 77-outcome bulletin;
+  Guide 9/43/41) on local Edge. ⚠ The new smoke *absence* check (no `#setimport`, no stale import
+  controls) has no in-run negative control yet — its vitest twin (`read-only-settings-main-wiring`
+  injecting a door) is the only both-directions proof; add a smoke-side injected-door control before
+  trusting a hosted PASS of that step.
+- Glass agent-lane canaries: `node tools/glassmatrix.mjs --viewport=small-phone` **PASS** (10,923 ms, 0 findings,
+  0 instrument failures) then `--viewport=large-phone` **PASS** (10,439 ms, 0/0) — targeted, noncertifying.
+  The full certifying 12-viewport matrix was **not** run locally (it requires `--slice-run=<immutable Slice
+  run id>` from `smoke:ci`); it is the hosted full lane's job. No hosted run. No certification is claimed.
+
+### Paired handoff
+
+- **Anthropic/Claude Code:** batch committed locally on `anthropic/mac`; not pushed. Next candidates
+  unchanged: **artlock CI ownership** (P0-6a — Nick's lane/cost decision first; baseline
+  `reference/artlock.json` is dated 2026-08-08 and has not been run) and the **eleven-artifact
+  verbatim-seal gap** (P0-6b — implementation, but it adds instrument code against the "freeze
+  instrument growth" rule). New open product decision from this batch: **how v2 protects saves from
+  Safari's 7-day script-writable-storage eviction** (IndexedDB included; Home Screen web apps exempt) —
+  install guidance, export/backup, or account. Any hosted run of this head is a re-seal and needs
+  Nick's exact authorization.
+- **OpenAI/Codex:** the "waits for Nick's real save export" blocker on Batch 4 is **gone**. Before
+  continuing, synchronize `openai/mac` from a clean worktree by merging `origin/develop` (`1d719c6`)
+  through the shared protocol; do not cherry-pick or copy. Nick clarified (2026-09-05): Codex's
+  **Batch A is the audiovisual pilot** (distinct from the external review's lettered batches); continue
+  it after the sync. Batch 4 no longer waits for any save export — only its own PR from a bounded
+  `openai/review-*` branch and Nick's exact hosted authorization. Once this batch's PR merges, sync
+  again before touching Settings/Guide/Training code, and do not reintroduce any import door. Do not
+  edit `.github/workflows` or the budget policy in the campaign.
+- **Nick:** nothing required on GitHub. Decide (a) whether this head goes to a PR + one agent-lane
+  attempt (it re-seals Glass/Slice), (b) the artlock CI lane, (c) the ITP save-protection answer.
+- **GitHub / Release:** `main`, the v1.8.9 live site, protected portraits and deployment are
+  unchanged. No version bump. `gh` is set to HTTPS for git operations (harmless today; `gh config set
+  git_protocol ssh` would align it with the SSH-only rule).
+
 ## ARCHIVED 2026-09-05 UTC — superseded by the fresh-start decision batch (legacy save import withdrawn; Settings save-import door removed)
 
 Moved verbatim from ROADMAP.md; every fact below was true at 55f5651 and is retained unchanged.
