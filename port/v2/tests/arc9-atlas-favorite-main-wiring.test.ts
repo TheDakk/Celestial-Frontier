@@ -132,7 +132,7 @@ function wiringErrors(main: string, documentHtml: string): string[] {
   const action = section(
     main,
     'async function runArc9AtlasFavoriteChange(',
-    '\nasync function settleArc9Survey(',
+    '\nfunction freshCurrentBioscanReady(',
   );
   if (!ordered(action, [
     'if (arc9AtlasFavoritePendingId !== null || smokeForceReadOnly',
@@ -301,7 +301,7 @@ describe('Arc 9 Atlas Favorite Main and HTML wiring', () => {
     const action = section(
       source,
       'async function runArc9AtlasFavoriteChange(',
-      '\nasync function settleArc9Survey(',
+      '\nfunction freshCurrentBioscanReady(',
     );
     const oneTrainingFence = replaceOnce(
       action,
@@ -317,7 +317,7 @@ describe('Arc 9 Atlas Favorite Main and HTML wiring', () => {
     const action = section(
       source,
       'async function runArc9AtlasFavoriteChange(',
-      '\nasync function settleArc9Survey(',
+      '\nfunction freshCurrentBioscanReady(',
     );
     const withoutHeartbeatAction = replaceOnce(
       action,

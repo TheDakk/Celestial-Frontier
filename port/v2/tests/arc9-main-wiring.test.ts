@@ -178,6 +178,11 @@ function arc9MainErrors(source: string): string[] {
   const atlasFavoriteAction = section(
     source,
     'async function runArc9AtlasFavoriteChange(',
+    '\nfunction freshCurrentBioscanReady(',
+  );
+  const bioscanAction = section(
+    source,
+    'async function runArc9Bioscan(',
     '\nasync function settleArc9Survey(',
   );
   const followAction = section(
@@ -190,7 +195,7 @@ function arc9MainErrors(source: string): string[] {
     'async function commitArc0WorldNameForSearch(',
     '\nfunction publishAcceptedSearchNavigation(',
   );
-  /* Starter Charter, Binder, Survey, Travel, Atlas Favorite, and accepted
+  /* Starter Charter, Binder, Bioscan/Survey, Travel, Atlas Favorite, and accepted
      Follow atomically include their event joins, aggregate refresh, and rank
      fixed point in the same receipt. World name is the composite predecessor
      of Search Travel/Follow: its adapter queues a catch-up only after a joined
@@ -201,6 +206,7 @@ function arc9MainErrors(source: string): string[] {
     ['world-name composite predecessor', worldNameAction],
     ['Starter Charter', starterCharterAction],
     ['Binder', binderAction],
+    ['Bioscan', bioscanAction],
     ['Survey', surveyAction],
     ['direct Travel', directTravelAction],
     ['Atlas Favorite', atlasFavoriteAction],
@@ -217,6 +223,7 @@ function arc9MainErrors(source: string): string[] {
     .replace(frontierEndingAction, '')
     .replace(starterCharterAction, '')
     .replace(binderAction, '')
+    .replace(bioscanAction, '')
     .replace(surveyAction, '')
     .replace(directTravelAction, '')
     .replace(atlasFavoriteAction, '')
@@ -362,7 +369,7 @@ describe('Arc 9 Main/Records integration', () => {
     expect(arc9MainErrors(replaceInSectionExact(
       mainSource,
       'async function runArc9AtlasFavoriteChange(',
-      '\nasync function settleArc9Survey(',
+      '\nfunction freshCurrentBioscanReady(',
       '    actionClaim.settle(durable);',
       '    actionClaim.settle(durable);\n    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);',
     ))).toContain('Atlas Favorite queues a second progression refresh');

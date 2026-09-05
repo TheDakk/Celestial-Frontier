@@ -154,22 +154,22 @@ function graduationCopyIsTruthful(html: string): boolean {
     && /board briefings are read-only/i.test(copy)
     && /survey card’s Share prepares a verified CF1 world code/i.test(copy)
     && /pasting a valid CF1 code into Search follows its source-proven route when your ship and Prime reach allow it/i.test(copy)
-    && /use Tame, Scavenge, and Sample after Finish/i.test(copy)
-    && /each chooses uniformly from its eligible species across the full biosphere, not only the at-most-eight-row preview/i.test(copy)
-    && /All three share finite Biosphere Yield/i.test(copy)
-    && /hit or miss spends 1 attempt/i.test(copy)
-    && /pool fully recovers at the next 20-minute active-play cycle/i.test(copy)
-    && /never while the game is closed/i.test(copy)
-    && /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i.test(copy)
-    && /A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing/i.test(copy)
-    && /v2’s current replacement for v1\.8\.9’s separate Discover Life action/i.test(copy)
-    && /Survey Records and accepted or weekly bioscan Charters remain unavailable/i.test(copy)
-    && /real fauna Compendium detail can Feed one exact unassigned companion below the 200-Meal cap with one exact flora lot through Use 1/i.test(copy)
-    && /Breed two distinct exact owned fauna with nonlethal active-play Recovery/i.test(copy)
-    && /Rename one exact owned companion without changing its creature identity/i.test(copy)
-    && /name and stand down the role-only Field Scout/i.test(copy)
+    && /Accepted Atlas, Search, and CF1 arrivals may paint the same deterministic, skippable hyperlane streaks/i.test(copy)
+    && /three drive researches use 2×, 4×, and 8× speed bases without changing permanent reach/i.test(copy)
+    && /living world’s card also offers explicit Discover Life/i.test(copy)
+    && /ordinary inspection stays write-free, while that one durable action records the world and resolves its shown hazard/i.test(copy)
+    && /Reinforced Hull and worn gear reduce the wound/i.test(copy)
+    && /Field Scout intercepts at no worse than Critical, otherwise the explorer stays at or above 1 HP/i.test(copy)
+    && /Capture remains separate/i.test(copy)
+    && /Tame, Scavenge, and Sample each choose uniformly from the full eligible biosphere and share finite Biosphere Yield/i.test(copy)
+    && /first durable success on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick/i.test(copy)
+    && /a miss, Sol, repeat, stale tab, or failed write banks nothing/i.test(copy)
+    && /genuinely fresh species, the Scout standing before the attempt earns up to \+2 XP in the same capture save, capped at 486/i.test(copy)
+    && /Accepted and weekly bioscan Charters remain unavailable/i.test(copy)
+    && /real fauna Compendium detail can Feed, nonlethally Breed, Rename, or select a Field Scout/i.test(copy)
+    && /real Flora detail can Eat 1 for explorer healing, poison, and nourishment/i.test(copy)
     && /This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat/i.test(copy)
-    && /Tastes, stat or Power growth, injury care, healing, poison, bond, explorer eating, Scout interception or XP, dispatch, friendly duels, and missions remain unavailable/i.test(copy)
+    && /Companion tastes, Power growth, injury care, bond, dispatch, friendly duels, and missions remain unavailable/i.test(copy)
     && !/(?:Surveying|landing)[^.!?]{0,80}(?:discovers|captures) (?:its )?life/i.test(copy)
     && !/(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i.test(copy)
     && !/miss(?:es)?[^.!?]{0,48}(?:cost|spend)s? (?:nothing|no Yield|zero)/i.test(copy)
@@ -179,8 +179,9 @@ function graduationCopyIsTruthful(html: string): boolean {
     && !/(?:assigned|recovering|capped) companions?[^.!?]{0,80}(?:can|may) (?:still )?be fed/i.test(copy)
     && !/Both parents are consumed|Recovery advances while the game is closed|Breed automatically retries/i.test(copy)
     && !/Rename changes (?:the )?(?:creature |companion )?(?:genome|species|lineage)|Rename automatically retries/i.test(copy)
-    && !/Field Scout (?:intercepts?|redirects?)[^.!?]{0,64}(?:harm|injury|damage)|Field Scout (?:earns?|gains?)[^.!?]{0,32}XP/i.test(copy)
-    && !/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(copy)
+    && !/(?:miss|repeat species|no standing Scout)[^.!?]{0,64}(?:earns?|gains?|grants?)[^.!?]{0,32}Scout XP/i.test(copy)
+    && !/Stats?[^.!?]{0,48}(?:is|are) (?:now )?(?:increased|raised|grown) by (?:companion )?feeding/i.test(copy)
+    && !/Research[^.!?]{0,64}(?:ignores?|bypasses?)[^.!?]{0,48}(?:prerequisites?|costs?)/i.test(copy)
     && !/(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\bsource-proven world beyond Sol\b)[^.!?]{0,160}(?:banks?|advances?|counts?)[^.!?]{0,64}(?:Charter|bioscan|life-discovery)/i.test(copy)
     && !/(?:every|any) (?:capture|Tame|Scavenge|Sample)[^.!?]{0,64}(?:banks|advances|counts)[^.!?]{0,48}(?:Charter|bioscan|life-discovery)/i.test(copy)
     && !/(?:miss|later success|repeat|stale tab|failed write)[^.!?]{0,96}(?:banks|advances|counts) (?:a|the|one)[^.!?]{0,48}(?:Charter|bioscan|life-discovery)/i.test(copy)
@@ -198,11 +199,17 @@ function curriculumCopyIsTruthful(steps: readonly { id: string; text: () => stri
     && /will not roll a capture or spend Yield/i.test(text('planetside-briefing'))
     && /Opening and inspecting this board changes nothing/i.test(text('engineering-open'))
     && /Training keeps every action button locked/i.test(text('engineering-tour'))
+    && /All six Research rows have connected effects/i.test(text('engineering-tour'))
     && /deterministic <b>Pureforged<\/b> modifier/i.test(text('engineering-tour'))
     && /an empty new expedition is honest, not a training cache/i.test(text('compendium-open'))
-    && /role-only <b>Field Scout<\/b> selector/i.test(text('compendium-tour'))
-    && /interception, Scout XP, dispatch, missions, care, bond, and friendly duels are not live yet/i.test(text('compendium-tour'))
+    && /live exact-instance companion controls after Training/i.test(text('compendium-tour'))
+    && /Field Scout can name, switch, or stand down one exact owned companion, intercept hostile Discover Life injury, and earn up to \+2 XP when a later successful capture catalogues a genuinely fresh species/i.test(text('compendium-tour'))
+    && /real Flora detail separately offers <b>Eat 1<\/b> for explorer healing, poison, and stat nourishment/i.test(text('compendium-tour'))
+    && /Companion tastes, care, bond, dispatch, missions, and friendly duels are not live yet/i.test(text('compendium-tour'))
     && /Records are evidence, not a reward fountain/i.test(text('records-tour'))
+    && /26 exact-event achievements appear only after their owning transaction verifies/i.test(text('records-tour'))
+    && /only daily and decade still lack event owners/i.test(text('records-tour'))
+    && /Expedition Chronicle &amp; Museum[^.!?]{0,160}battle, first-species discovery, Prime-victory, and Legacy Journal galleries/i.test(text('records-tour'))
     && /losing one of those captured rulers is permanent/i.test(text('horizon'))
     && /battle-log Share changes no expedition fact/i.test(text('horizon'))
     && !/(?:Training|tour)[^.!?]{0,80}(?:rolls?|spends?|crafts?|feeds?|breeds?|renames?|fights?)[^.!?]{0,80}(?:for you|automatically)/i.test(
@@ -252,12 +259,12 @@ describe('Field Training completion transaction UI', () => {
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation.replace(
-        'each chooses uniformly from its eligible species across the full biosphere',
+        'each choose uniformly from the full eligible biosphere',
         'each targets the selected preview row',
       ),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
-      graduation.replace('a hit or miss spends 1 attempt', 'misses spend nothing'),
+      graduation.replace('share finite <b>Biosphere Yield</b>', 'have independent Yield pools'),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation + ' The Yield pool recovers while the game is closed.',
@@ -266,12 +273,12 @@ describe('Field Training completion transaction UI', () => {
       graduation + ' Capture advances the Charter bioscan milestone.',
     )).toBe(false);
     expect(graduationCopyIsTruthful(
-      graduation + ' Every Research row is now purchasable.',
+      graduation + ' Research ignores prerequisites and costs.',
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation.replace(
-        'one exact unassigned companion below the 200-Meal cap with one exact flora lot through <b>Use 1</b>',
-        'any companion with any flora',
+        'A real fauna Compendium detail can <b>Feed</b>, nonlethally <b>Breed</b>, <b>Rename</b>, or select a <b>Field Scout</b>.',
+        'Any companion can Feed, Breed, Rename, or become a Field Scout.',
       ),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
@@ -282,8 +289,8 @@ describe('Field Training completion transaction UI', () => {
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation.replace(
-        'two distinct exact owned fauna with nonlethal active-play Recovery',
-        'two owned creatures',
+        'nonlethally <b>Breed</b>',
+        '<b>Breed</b> by consuming both parents',
       ),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
@@ -291,21 +298,21 @@ describe('Field Training completion transaction UI', () => {
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation.replace(
-        'one exact owned companion without changing its creature identity',
-        'a companion',
+        '<b>Rename</b>',
+        '<b>Reroll</b>',
       ),
     )).toBe(false);
     expect(graduationCopyIsTruthful(
       graduation + ' Rename changes the companion genome.',
     )).toBe(false);
     expect(graduationCopyIsTruthful(
-      graduation + ' Field Scout intercepts injury and earns XP.',
+      graduation + ' A miss earns Scout XP.',
     )).toBe(false);
 
     const forgedCurriculum = steps.map((step) => step.id === 'compendium-tour'
       ? { ...step, text: () => step.text().replace(
-          'interception, Scout XP, dispatch, missions, care, bond, and friendly duels are not live yet',
-          'Field Scout automatically intercepts injury and earns XP',
+          'intercept hostile Discover Life injury, and earn up to +2 XP when a later successful capture catalogues a genuinely fresh species',
+          'automatically dispatch and earn XP on misses',
         ) }
       : step);
     expect(curriculumCopyIsTruthful(forgedCurriculum)).toBe(false);

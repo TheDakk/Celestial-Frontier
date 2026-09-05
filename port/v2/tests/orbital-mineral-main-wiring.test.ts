@@ -12,10 +12,10 @@ const mainSource = fs.readFileSync(
 const PRESENT_PLANET_SURVEY_CALL = [
   '  showSurvey(',
   '    d,',
-  '    buildCardActions(p),',
+  '    buildCardActions(p, currentBioscanCardState),',
   '    null,',
   '    orbitalMineralSurveyRows(star, resolved.planet),',
-  '    preparedCaptureRoster,',
+  '    roster,',
   '    approachEcology,',
   '  );',
 ].join('\n');
@@ -81,7 +81,7 @@ function wiringErrors(source: string): string[] {
   const projector = section(
     source,
     'function orbitalMineralSurveyRows(',
-    '\nfunction presentPlanetSurvey(',
+    '\nfunction canonicalRosterForBioscanCard(',
   );
   if (projector.length === 0) {
     errors.push('orbital-projector-section');
@@ -156,7 +156,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const noProtection = replaceInSectionExact(
       mainSource,
       'function orbitalMineralSurveyRows(',
-      '\nfunction presentPlanetSurvey(',
+      '\nfunction canonicalRosterForBioscanCard(',
       'arc3EngineeringProtection !== null',
       'false',
     );
@@ -165,7 +165,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const surfaceLeak = replaceInSectionExact(
       mainSource,
       'function orbitalMineralSurveyRows(',
-      '\nfunction presentPlanetSurvey(',
+      '\nfunction canonicalRosterForBioscanCard(',
       "nav.mode !== 'system'",
       'false',
     );
@@ -174,7 +174,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const forgedLeaf = replaceInSectionExact(
       mainSource,
       'function orbitalMineralSurveyRows(',
-      '\nfunction presentPlanetSurvey(',
+      '\nfunction canonicalRosterForBioscanCard(',
       'planet: { seed: planet.seed },',
       'planet: { seed: 133 },',
     );
@@ -183,7 +183,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const legacyMirror = replaceInSectionExact(
       mainSource,
       'function orbitalMineralSurveyRows(',
-      '\nfunction presentPlanetSurvey(',
+      '\nfunction canonicalRosterForBioscanCard(',
       'engineering: arc3EngineeringState,',
       "engineering: { ...arc3EngineeringState, research: save.techOwned },",
     );
@@ -215,7 +215,7 @@ describe('v2 Deep Scanner — main Survey wiring', () => {
     const writingProjector = replaceInSectionExact(
       mainSource,
       'function orbitalMineralSurveyRows(',
-      '\nfunction presentPlanetSurvey(',
+      '\nfunction canonicalRosterForBioscanCard(',
       '  const address = resolveCF1WorldAddress({',
       '  void persistView();\n  const address = resolveCF1WorldAddress({',
     );

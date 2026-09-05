@@ -178,7 +178,10 @@ describe('Engineering panel production read model', () => {
     expect(model.fabricationGroups.flatMap(({ recipes }) => recipes).find(({ baseId }) => baseId === 'autoext')?.status)
       .toBe('owned');
     expect(model.fabricationGroups.flatMap(({ recipes }) => recipes).find(({ baseId }) => baseId === 'fieldsuit'))
-      .toMatchObject({ effectSupport: 'unavailable', status: 'unavailable' });
+      .toMatchObject({
+        effectSupport: 'live', status: 'unavailable',
+        effectDetail: 'Live effects: bioscan protection. Unavailable effects: landing safety.',
+      });
     expect(model.fabricationGroups.flatMap(({ recipes }) => recipes).find(({ baseId }) => baseId === 'rig1')?.effectSupport)
       .toBe('live');
     expect(Object.isFrozen(model)).toBe(true);
@@ -200,8 +203,18 @@ describe('Engineering panel production read model', () => {
       status: 'unavailable', effectSupport: 'live',
     });
     expect(eligible.find(({ baseId }) => baseId === 'fieldsuit')).toMatchObject({
-      status: 'unavailable', reason: 'Gameplay effect is not connected.',
-      effectSupport: 'unavailable',
+      status: 'unavailable', effectSupport: 'live',
+      effectDetail: 'Live effects: bioscan protection. Unavailable effects: landing safety.',
+    });
+    expect(eligible.find(({ baseId }) => baseId === 'fieldsuit')?.reason)
+      .toContain('Missing 2 Carbon Weave.');
+    expect(eligible.find(({ baseId }) => baseId === 'surgeon')).toMatchObject({
+      status: 'unavailable', effectSupport: 'live',
+      effectDetail: 'Live effects: flora healing.',
+    });
+    expect(eligible.find(({ baseId }) => baseId === 'compass')).toMatchObject({
+      status: 'unavailable', effectSupport: 'live',
+      effectDetail: 'Live effects: travel speed.',
     });
 
     const missingParts = projectEngineeringPanelReadModel({
@@ -256,7 +269,7 @@ describe('Engineering panel production read model', () => {
     expect(noElapsed.mining.autoExtractorDue).toBe(0);
   });
 
-  it('prioritizes unavailable research consumers while exposing exact owned costs', () => {
+  it('exposes complete research consumers while preserving exact owned costs and prerequisites', () => {
     const mars = world(MARS);
     const model = projectEngineeringPanelReadModel({
       ship: ship([]), nav: surface(mars), engineering: state({ research: ['drive2'] }),
@@ -266,8 +279,9 @@ describe('Engineering panel production read model', () => {
       status: 'owned', reason: 'Already researched.',
     });
     expect(model.research.find(({ id }) => id === 'drive3')).toMatchObject({
-      status: 'unavailable', reason: 'Gameplay effect is not connected.',
+      status: 'unavailable',
     });
+    expect(model.research.find(({ id }) => id === 'drive3')?.reason).toContain('Missing 1 Prismatium.');
     expect(model.research.find(({ id }) => id === 'scan1')?.costs.materials)
       .toEqual([
         { id: 'Fe', label: 'Iron', required: 6, owned: 0 },

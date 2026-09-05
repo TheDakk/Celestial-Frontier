@@ -19,21 +19,25 @@ import {
   deepFreeze,
 } from './internal.js';
 
-export const ECONOMY_LEDGER_SCHEMA = 1 as const;
+export const ECONOMY_LEDGER_SCHEMA = 2 as const;
+
+export type EconomyResearchId = 'scan1' | 'hull1' | 'lab1' | 'drive1' | 'drive2' | 'drive3';
 
 export interface EconomySinkDefinition {
-  readonly id: string;
+  readonly id: EconomyResearchId;
   readonly materialCost: Readonly<Record<string, number>>;
   readonly stardustCost: number;
+  readonly prerequisiteId: EconomyResearchId | null;
+  readonly jumpDriveRequired: boolean;
 }
 
 export const LEGACY_RESEARCH_SINKS_V1: readonly EconomySinkDefinition[] = deepFreeze([
-  { id: 'scan1', materialCost: { Fe: 6, Si: 4 }, stardustCost: 20 },
-  { id: 'hull1', materialCost: { Ti: 5, Fe: 8 }, stardustCost: 40 },
-  { id: 'lab1', materialCost: { C: 6, P: 3, H2O: 4 }, stardustCost: 60 },
-  { id: 'drive1', materialCost: { H: 8, He3: 2, Fe: 4 }, stardustCost: 40 },
-  { id: 'drive2', materialCost: { He3: 6, Pt: 2, U: 2 }, stardustCost: 120 },
-  { id: 'drive3', materialCost: { Pz: 1, Ir: 3, U: 4 }, stardustCost: 300 },
+  { id: 'scan1', materialCost: { Fe: 6, Si: 4 }, stardustCost: 20, prerequisiteId: null, jumpDriveRequired: true },
+  { id: 'hull1', materialCost: { Ti: 5, Fe: 8 }, stardustCost: 40, prerequisiteId: null, jumpDriveRequired: false },
+  { id: 'lab1', materialCost: { C: 6, P: 3, H2O: 4 }, stardustCost: 60, prerequisiteId: null, jumpDriveRequired: false },
+  { id: 'drive1', materialCost: { H: 8, He3: 2, Fe: 4 }, stardustCost: 40, prerequisiteId: null, jumpDriveRequired: false },
+  { id: 'drive2', materialCost: { He3: 6, Pt: 2, U: 2 }, stardustCost: 120, prerequisiteId: 'drive1', jumpDriveRequired: false },
+  { id: 'drive3', materialCost: { Pz: 1, Ir: 3, U: 4 }, stardustCost: 300, prerequisiteId: 'drive2', jumpDriveRequired: false },
 ]);
 
 export interface EconomyCoverageAudit {
@@ -50,7 +54,7 @@ export interface EconomyCoverageAudit {
     research: number;
     combined: number;
   }>;
-  readonly sourceModelStatus: 'arc3-deferred';
+  readonly sourceModelStatus: 'absent' | 'registered';
 }
 
 export interface EconomyLedgerSnapshot {
@@ -60,6 +64,8 @@ export interface EconomyLedgerSnapshot {
   readonly itemCounts: Readonly<Record<string, number>>;
   readonly stardust: number;
   readonly signatureIds: readonly string[];
+  /** Optional only for schema-1 analytical callers; schema-2 outputs it. */
+  readonly researchIds?: readonly EconomyResearchId[];
 }
 
 export interface EconomySourceAuthority {
@@ -85,11 +91,22 @@ export interface EconomyCraftEvent {
   readonly baseId: string;
 }
 
-export type EconomyTraceEvent = EconomySourceReceiptEvent | EconomyCraftEvent;
+export interface EconomyResearchEvent {
+  readonly kind: 'research';
+  readonly actionId: string;
+  readonly activePlayMs: number;
+  readonly researchId: EconomyResearchId;
+}
+
+export type EconomyTraceEvent = EconomySourceReceiptEvent | EconomyCraftEvent | EconomyResearchEvent;
 
 export interface EconomyTarget {
   readonly baseId: string;
   readonly quantity: number;
+}
+
+export interface EconomyResearchTarget {
+  readonly researchId: EconomyResearchId;
 }
 
 export interface EconomyReplayInput {
@@ -97,13 +114,15 @@ export interface EconomyReplayInput {
   /** Empty means Arc 3 has not supplied a production source model. */
   readonly sourceAuthorities: readonly EconomySourceAuthority[];
   readonly events: readonly EconomyTraceEvent[];
-  readonly target: EconomyTarget | null;
+  readonly target: EconomyTarget | EconomyResearchTarget | null;
 }
 
 export interface EconomyLedgerState extends EconomyLedgerSnapshot {
   readonly schema: typeof ECONOMY_LEDGER_SCHEMA;
   readonly appliedReceiptIds: readonly string[];
   readonly appliedCraftActionIds: readonly string[];
+  readonly appliedResearchActionIds: readonly string[];
+  readonly researchIds: readonly EconomyResearchId[];
 }
 
 export type EconomyTargetOutcome =
@@ -112,6 +131,12 @@ export type EconomyTargetOutcome =
       baseId: string;
       quantity: number;
       observedAtActivePlayMs: null;
+      etaActivePlayMs: null;
+    }>
+  | Readonly<{
+      status: 'source-model-absent' | 'not-reached-in-trace' | 'reached-in-trace';
+      researchId: EconomyResearchId;
+      observedAtActivePlayMs: number | null;
       etaActivePlayMs: null;
     }>
   | Readonly<{
@@ -133,13 +158,15 @@ export type EconomyTargetOutcome =
 export type EconomyReplayRejectionReason =
   | 'unknown-asset'
   | 'duplicate-receipt'
+  | 'duplicate-action'
   | 'backward-active-play'
   | 'unknown-source-owner'
   | 'source-version-mismatch'
   | 'source-authority-conflict'
   | 'quantity-overflow'
   | 'overspend'
-  | 'craft-blocked';
+  | 'craft-blocked'
+  | 'research-blocked';
 
 export type EconomyReplayResult =
   | Readonly<{
@@ -160,6 +187,10 @@ const CATALOGUE_IDS = new Set<string>(LOOT_CATALOGUE_V1.map(({ id }) => id));
 const SIGNATURE_IDS = new Set<string>(LOOT_CATALOGUE_V1.flatMap(({ signatureId }) => (
   signatureId === null ? [] : [signatureId]
 )));
+const RESEARCH_IDS: readonly EconomyResearchId[] = Object.freeze(
+  LEGACY_RESEARCH_SINKS_V1.map(({ id }) => id),
+);
+const RESEARCH_ID_SET = new Set<string>(RESEARCH_IDS);
 
 function codeUnitCompare(left: string, right: string): number {
   return left < right ? -1 : left > right ? 1 : 0;
@@ -174,9 +205,19 @@ export function auditEconomyCoverage(
   recipesValue: readonly Pick<RecipeAuditDefinition, 'id' | 'materialCost' | 'stardustCost'>[] = LOOT_CATALOGUE_V1,
   researchValue: readonly EconomySinkDefinition[] = LEGACY_RESEARCH_SINKS_V1,
   materialIdsValue: readonly string[] = LEGACY_MATERIAL_IDS_V1,
+  sourceAuthoritiesValue: readonly EconomySourceAuthority[] = Object.freeze([]),
 ): EconomyCoverageAudit {
-  if (!Array.isArray(recipesValue) || !Array.isArray(researchValue) || !Array.isArray(materialIdsValue)) {
-    throw new TypeError('economy coverage audit requires recipe, research, and material arrays');
+  if (!Array.isArray(recipesValue) || !Array.isArray(researchValue)
+    || !Array.isArray(materialIdsValue) || !Array.isArray(sourceAuthoritiesValue)) {
+    throw new TypeError('economy coverage audit requires recipe, research, material, and source arrays');
+  }
+  const sourceOwners = new Set<string>();
+  for (const authority of sourceAuthoritiesValue) {
+    assertPlainRecord(authority, 'economy source authority');
+    const ownerId = checkedText(authority.ownerId, 'economy source ownerId');
+    checkedInteger(authority.version, 1, UINT32_MAX, `economy source ${ownerId} version`);
+    if (sourceOwners.has(ownerId)) throw new RangeError(`economy source owner ${ownerId} is duplicated`);
+    sourceOwners.add(ownerId);
   }
   const materialCounts = new Map<string, number>();
   for (const materialId of materialIdsValue) {
@@ -210,7 +251,7 @@ export function auditEconomyCoverage(
       research: researchStardust,
       combined: itemStardust + researchStardust,
     },
-    sourceModelStatus: 'arc3-deferred',
+    sourceModelStatus: sourceOwners.size === 0 ? 'absent' : 'registered',
   });
 }
 
@@ -263,12 +304,23 @@ function checkedInitial(value: EconomyLedgerSnapshot): EconomyLedgerSnapshot | E
     }
     if (!signatureIds.includes(id)) signatureIds.push(id);
   }
+  const researchValue = value.researchIds ?? [];
+  if (!Array.isArray(researchValue)) throw new TypeError('economy initial researchIds must be an array');
+  const researchIds: EconomyResearchId[] = [];
+  for (const id of researchValue) {
+    if (typeof id !== 'string' || !RESEARCH_ID_SET.has(id) || researchIds.includes(id as EconomyResearchId)) {
+      return rejected('unknown-asset', -1, null, `unknown or duplicate research ${String(id)}`);
+    }
+    researchIds.push(id as EconomyResearchId);
+  }
+  researchIds.sort((left, right) => RESEARCH_IDS.indexOf(left) - RESEARCH_IDS.indexOf(right));
   return deepFreeze({
     activePlayMs: checkedInteger(value.activePlayMs, 0, Number.MAX_SAFE_INTEGER, 'economy initial activePlayMs'),
     materials: positiveQuantities(materials),
     itemCounts: positiveQuantities(itemCounts),
     stardust: checkedInteger(value.stardust, 0, Number.MAX_SAFE_INTEGER, 'economy initial stardust'),
     signatureIds: signatureIds.sort(),
+    researchIds,
   });
 }
 
@@ -298,33 +350,47 @@ export function replayEconomyTrace(input: EconomyReplayInput): EconomyReplayResu
     authorityVersions.set(ownerId, version);
   }
 
-  let target: EconomyTarget | null = null;
+  let target: EconomyTarget | EconomyResearchTarget | null = null;
   if (input.target !== null) {
     assertPlainRecord(input.target, 'economy target');
-    if (typeof input.target.baseId !== 'string' || !CATALOGUE_IDS.has(input.target.baseId)) {
-      return rejected('unknown-asset', -1, null, `unknown target ${String(input.target.baseId)}`);
+    if ('baseId' in input.target && !('researchId' in input.target)) {
+      if (typeof input.target.baseId !== 'string' || !CATALOGUE_IDS.has(input.target.baseId)) {
+        return rejected('unknown-asset', -1, null, `unknown target ${String(input.target.baseId)}`);
+      }
+      target = {
+        baseId: input.target.baseId,
+        quantity: checkedInteger(input.target.quantity, 1, Number.MAX_SAFE_INTEGER, 'economy target quantity'),
+      };
+    } else if ('researchId' in input.target && !('baseId' in input.target)
+      && typeof input.target.researchId === 'string'
+      && RESEARCH_ID_SET.has(input.target.researchId)) {
+      target = { researchId: input.target.researchId as EconomyResearchId };
+    } else {
+      return rejected('unknown-asset', -1, null, 'economy target is neither one item nor one research row');
     }
-    target = {
-      baseId: input.target.baseId,
-      quantity: checkedInteger(input.target.quantity, 1, Number.MAX_SAFE_INTEGER, 'economy target quantity'),
-    };
   }
 
   const materials = { ...initialResult.materials };
   const itemCounts = { ...initialResult.itemCounts };
+  const researchIds = [...(initialResult.researchIds ?? [])];
   let stardust = initialResult.stardust;
   let activePlayMs = initialResult.activePlayMs;
   const receiptIds = new Set<string>();
   const appliedReceiptIds: string[] = [];
   const appliedCraftActionIds: string[] = [];
-  let targetObservedAt = target !== null && (itemCounts[target.baseId] ?? 0) >= target.quantity
-    ? activePlayMs
-    : null;
+  const appliedResearchActionIds: string[] = [];
+  const actionIds = new Set<string>();
+  let targetObservedAt = target === null
+    ? null
+    : 'baseId' in target
+      ? (itemCounts[target.baseId] ?? 0) >= target.quantity ? activePlayMs : null
+      : researchIds.includes(target.researchId) ? activePlayMs : null;
 
   for (const [eventIndex, event] of input.events.entries()) {
     const rawEvent: unknown = event;
     assertPlainRecord(rawEvent, `economy event ${eventIndex}`);
-    if (rawEvent.kind !== 'source-receipt' && rawEvent.kind !== 'craft') {
+    if (rawEvent.kind !== 'source-receipt' && rawEvent.kind !== 'craft'
+      && rawEvent.kind !== 'research') {
       return rejected('unknown-asset', eventIndex, null, 'unknown economy event kind');
     }
     const eventId = checkedText(
@@ -369,6 +435,9 @@ export function replayEconomyTrace(input: EconomyReplayInput): EconomyReplayResu
       receiptIds.add(eventId);
       appliedReceiptIds.push(eventId);
     } else if (event.kind === 'craft') {
+      if (actionIds.has(eventId)) {
+        return rejected('duplicate-action', eventIndex, eventId, `action ${eventId} was already applied`);
+      }
       if (typeof event.baseId !== 'string' || !CATALOGUE_IDS.has(event.baseId)) {
         return rejected('unknown-asset', eventIndex, eventId, `unknown craft output ${String(event.baseId)}`);
       }
@@ -404,9 +473,41 @@ export function replayEconomyTrace(input: EconomyReplayInput): EconomyReplayResu
       const nextCount = addChecked(itemCounts[event.baseId] ?? 0, 1);
       if (nextCount === null) return rejected('quantity-overflow', eventIndex, eventId, `${event.baseId} exceeds safe integer storage`);
       itemCounts[event.baseId] = nextCount;
+      actionIds.add(eventId);
       appliedCraftActionIds.push(eventId);
       if (target !== null && targetObservedAt === null
-        && event.baseId === target.baseId && nextCount >= target.quantity) {
+        && 'baseId' in target && event.baseId === target.baseId && nextCount >= target.quantity) {
+        targetObservedAt = activePlayMs;
+      }
+    } else {
+      if (actionIds.has(eventId)) {
+        return rejected('duplicate-action', eventIndex, eventId, `action ${eventId} was already applied`);
+      }
+      if (typeof event.researchId !== 'string' || !RESEARCH_ID_SET.has(event.researchId)) {
+        return rejected('unknown-asset', eventIndex, eventId, 'research event is not canonical');
+      }
+      const researchId = event.researchId as EconomyResearchId;
+      const sink = LEGACY_RESEARCH_SINKS_V1.find(({ id }) => id === researchId)!;
+      if (researchIds.includes(researchId)
+        || (sink.jumpDriveRequired && (itemCounts.jumpdrive ?? 0) < 1)
+        || (sink.prerequisiteId !== null && !researchIds.includes(sink.prerequisiteId))) {
+        return rejected('research-blocked', eventIndex, eventId, `research ${researchId} is already owned or prerequisite-blocked`);
+      }
+      if (Object.entries(sink.materialCost).some(([id, quantity]) => (materials[id] ?? 0) < quantity)
+        || stardust < sink.stardustCost) {
+        return rejected('overspend', eventIndex, eventId, `research ${researchId} exceeds available resources`);
+      }
+      for (const [materialId, quantity] of Object.entries(sink.materialCost)) {
+        const next = materials[materialId]! - quantity;
+        if (next > 0) materials[materialId] = next; else delete materials[materialId];
+      }
+      stardust -= sink.stardustCost;
+      researchIds.push(researchId);
+      researchIds.sort((left, right) => RESEARCH_IDS.indexOf(left) - RESEARCH_IDS.indexOf(right));
+      actionIds.add(eventId);
+      appliedResearchActionIds.push(eventId);
+      if (target !== null && targetObservedAt === null
+        && 'researchId' in target && target.researchId === researchId) {
         targetObservedAt = activePlayMs;
       }
     }
@@ -419,12 +520,23 @@ export function replayEconomyTrace(input: EconomyReplayInput): EconomyReplayResu
     itemCounts: positiveQuantities(itemCounts),
     stardust,
     signatureIds: [...initialResult.signatureIds],
+    researchIds,
     appliedReceiptIds,
     appliedCraftActionIds,
+    appliedResearchActionIds,
   });
   let targetOutcome: EconomyTargetOutcome | null = null;
   if (target !== null) {
-    targetOutcome = targetObservedAt !== null
+    if ('researchId' in target) {
+      targetOutcome = deepFreeze({
+        status: targetObservedAt !== null
+          ? 'reached-in-trace'
+          : authorityVersions.size === 0 ? 'source-model-absent' : 'not-reached-in-trace',
+        researchId: target.researchId,
+        observedAtActivePlayMs: targetObservedAt,
+        etaActivePlayMs: null,
+      });
+    } else targetOutcome = targetObservedAt !== null
       ? deepFreeze({
           status: 'reached-in-trace',
           baseId: target.baseId,

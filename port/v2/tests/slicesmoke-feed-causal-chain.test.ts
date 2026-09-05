@@ -35,7 +35,7 @@ const glassSource = readFileSync(
   'utf8',
 );
 const FEED_RELEASE_SILENCE_PREDICATE_SOURCE =
-  '/refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(mealText)';
+  '/refused, stale, converging, replayed, hidden, route-lost, counterpart-lost, and older results remain silent/i.test(mealText)';
 const feedReleaseSilenceWiringIsSemantic = (owner: string): boolean =>
   owner.includes(FEED_RELEASE_SILENCE_PREDICATE_SOURCE);
 const digest = (character: string): string => character.repeat(64);

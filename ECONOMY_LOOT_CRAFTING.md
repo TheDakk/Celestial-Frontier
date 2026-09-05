@@ -1,5 +1,36 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
+## Overnight Batch 4 — checkpoint 1 implementation, 2026-09-05
+
+Matches the current recovered core implementation, not a browser acceptance claim. Signed
+`5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
+Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
+486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
+Accepted st-scan completion, descent, Paragon acquisition, individual progression presentation
+and mature Atlas remain later checkpoints. Existing tables and F3/F4 receipt/save owners govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 77 bullets
+at this checkpoint. Real-device v2 persistence and the combined Arc 4.5 / separate Arc 5.5 HUMAN
+reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
+
+> **2026-09-04 current beta Engineering-consumer and explorer-meal overlay (matches local v2
+> code as of 2026-09-04; supersedes older research-availability claims without rewriting their
+> dated history):** all six Research Bench rows now have deterministic gameplay consumers and are
+> purchasable when their established resource, progression and prerequisite checks pass. **Deep
+> Scanners** reveal the bounded orbital Mineral veins row; **Reinforced Hull** makes a hostile
+> bioscan wound 25% lighter before the separately capped worn-gear wound reduction; and the
+> **Xenobotany Lab** adds exactly +1 to a safe flora meal's nourished stat. **Fusion Drive**,
+> **Antimatter Drive** and **Warp Fold** provide the established 2×, 4× and 8× hyperlane-speed
+> bases respectively, with the live worn `speed` effect added to that base.
+>
+> An exact owned Flora page in the Compendium now exposes one bounded canonical matching specimen
+> lot (the lexicographically first exact lot) and previews
+> healing, poison risk and deterministic stat nourishment before one native **Eat 1** action. One
+> exact specimen is consumed on either outcome. A safe meal heals (including the live worn `heal`
+> bonus) and grows its seeded stat, capped at 330; poison uses the unboosted heal base for damage,
+> grants no stat, and cannot reduce the explorer below 1 HP. Vitality growth recomputes maximum HP
+> and preserves the legacy top-up. HP, maximum HP, all five stats, the Flora-lot successor and the
+> immutable receipt settle in one F4 transaction with no optimistic publication or automatic retry.
+
 > **2026-08-29 current Arc 6 boundary:** Guardian/Titan conquest acquisition, Prime claims,
 > Stardust and compatible Compendium persistence are now executable browser-free, but no Guardian
 > Gear/material drop table exists in authoritative source, so `guardianAuthoredReward` remains
@@ -424,6 +455,9 @@ the collection side in `PROGRESSION.md`).
   - `hull1` Reinforced Hull {Ti5,Fe8} sd40 — bioscans wound 25% lighter.
   - `lab1` Xenobotany Lab {C6,P3,H2O4} sd60 — flora meals grow +1 more stat.
   - `drive1` Fusion {H8,He3,Fe4} sd40 → `drive2` Antimatter {He3,Pt,U} sd120 → `drive3` Warp Fold {Pz,Ir,U} sd300. `driveMult()` = 1/2/4/8 (+ `_equipBonus('speed')`).
+- **Current v2 consumer boundary:** every one of those six rows is actionable when its canonical
+  quote passes. Scanners feed orbital Survey, Hull feeds hostile bioscan injury, Xenobotany feeds
+  the Compendium's explorer Flora meal, and all three drives feed the real travel presentation.
 
 ### Crafting / blueprints
 - `ITEMS` is the master recipe list; `ITEM_BY` indexes it by id. Three rungs: **T1 parts** (elements → plates/wire/chips/weave…) → **T2 components** (parts → coils/cores/hull segs…) → **T3 ship systems** (`cat:'sys'`, build once) and **explorer gear** (`cat:'gear'`).
@@ -507,7 +541,9 @@ the collection side in `PROGRESSION.md`).
 - ✅ **FIXED (v1.6, 2026-07-20):** the affix `v` load clamp was a flat `0..5`, but `contact`/`land` roll integers up to 12 — so a legit `land 12`/`contact 12` was silently **clamped down to 5 on reload** (data loss). The load path now clamps to each affix's own `def.hi` (`AFFIX_DEFS.find(d=>d.k===a.k)`), so flat affixes survive to 12 and pct affixes (≤0.35) are unaffected. Save writes `ea` raw, so the roundtrip is lossless. Guarded by the smoke suite's save/load leg.
 - Burst size is documented as "the future upgrade knob (rigs/recipes may extend it)" — no recipe extends `MINE_BURST` today; pending design.
 - Only **one** affix faucet exists (conquest spoils, 40%). Additional faucets (rich-strike loot, guardian drops) are open design space; the core supports them.
-- `_equipBonus('scut')` is clamped 0..0.7 at the callsite; affix + gear + hull stacking should be re-checked against that ceiling when new scut sources ship.
+- Current v2 hostile bioscan resolves the Reinforced Hull factor first, then applies the registered
+  worn `scut` total clamped to `0..0.7`; any future wound-reduction source must preserve and retest
+  that ordering and ceiling.
 
 ## ⚠ v1.8.4 — the harvest clock, and the Fabricator's dead button
 

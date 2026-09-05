@@ -266,8 +266,8 @@ describe('Arc 9 CF1 Share/Follow Main durability wiring', () => {
   it('negative-controls read-only capture and direct native clipboard bypasses', () => {
     const writableShare = replaceOnce(
       source,
-      "  '[data-act=\"landcta\"]', '[data-act=\"add\"]', '[data-act=\"share\"]',",
-      "  '[data-act=\"landcta\"]', '[data-act=\"add\"]',",
+      "  '[data-act=\"landcta\"]', '[data-act=\"add\"]', '[data-act=\"bioscan\"]', '[data-act=\"share\"]',",
+      "  '[data-act=\"landcta\"]', '[data-act=\"add\"]', '[data-act=\"bioscan\"]',",
     );
     expect(wiringErrors(writableShare)).toContain('read-only-share');
 

@@ -63,8 +63,14 @@ function tameGreetingWiringErrors(
     'type Arc4CaptureActionOutcome =',
     '\nlet lastArc4CaptureResult:',
   );
-  const coherence = writer.indexOf(
-    'if (verified.ownership.revision !== verified.ownershipV2.revision) {',
+  const v1ParentRevision = writer.indexOf(
+    'if (verified.ownership.revision !== ownershipV1Parent.revision + 1) {',
+  );
+  const v2ParentRevision = writer.indexOf(
+    'if (verified.ownershipV2.revision !== ownershipV2Parent.revision + 1) {',
+  );
+  const sourceCoherence = writer.indexOf(
+    'if (ownershipStateDigestV1(verified.ownership)',
   );
   const publication = writer.indexOf('publishArc4CaptureFields(save, transaction.state);');
   const globalRevision = writer.indexOf('revision: transaction.revision,');
@@ -88,11 +94,14 @@ function tameGreetingWiringErrors(
   );
   if ((outcomeShape.match(/ownershipRevision: number;/g) ?? []).length !== 1
     || (audioResultShape.match(/readonly ownershipRevision: number;/g) ?? []).length !== 1
-    || coherence < 0 || publication <= coherence
+    || v1ParentRevision < 0 || v2ParentRevision <= v1ParentRevision
+    || sourceCoherence <= v2ParentRevision || publication <= sourceCoherence
     || globalRevision <= publication || ownershipRevision <= globalRevision
     || (writer.match(/revision: transaction\.revision,/g) ?? []).length !== 1
     || (writer.match(/ownershipRevision: verified\.ownershipV2\.revision,/g) ?? []).length !== 1
-    || !writer.includes("throw new Error('arc4-arc5-ownership-revision-mismatch');")
+    || !writer.includes("throw new Error('arc4-ownership-parent-revision-mismatch');")
+    || !writer.includes("throw new Error('arc5-ownership-parent-revision-mismatch');")
+    || !writer.includes("throw new Error('arc4-arc5-ownership-source-mismatch');")
     || !audioClaim.includes('state.revision !== outcome.result.ownershipRevision')
     || audioClaim.includes('state.revision !== outcome.result.revision')) {
     errors.push('ownership-revision-authority');
@@ -315,12 +324,28 @@ describe('Arc 7/8 Tame greeting — Main wiring', () => {
     expect(tameGreetingWiringErrors(ownershipFromGlobal, controllerSource))
       .toContain('ownership-revision-authority');
 
-    const incoherentPublication = replaceExact(
+    const missingV1ParentProof = replaceExact(
       mainSource,
-      'if (verified.ownership.revision !== verified.ownershipV2.revision) {',
+      'if (verified.ownership.revision !== ownershipV1Parent.revision + 1) {',
       'if (false) {',
     );
-    expect(tameGreetingWiringErrors(incoherentPublication, controllerSource))
+    expect(tameGreetingWiringErrors(missingV1ParentProof, controllerSource))
+      .toContain('ownership-revision-authority');
+
+    const missingV2ParentProof = replaceExact(
+      mainSource,
+      'if (verified.ownershipV2.revision !== ownershipV2Parent.revision + 1) {',
+      'if (false) {',
+    );
+    expect(tameGreetingWiringErrors(missingV2ParentProof, controllerSource))
+      .toContain('ownership-revision-authority');
+
+    const missingSourceCoherence = replaceExact(
+      mainSource,
+      'if (ownershipStateDigestV1(verified.ownership)',
+      'if (false && ownershipStateDigestV1(verified.ownership)',
+    );
+    expect(tameGreetingWiringErrors(missingSourceCoherence, controllerSource))
       .toContain('ownership-revision-authority');
   });
 
