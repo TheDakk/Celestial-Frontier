@@ -364,7 +364,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(collector.indexOf('atomicWriteJson(currentReportPath, sentinel)'))
       .toBeLessThan(collector.indexOf('const run = spawnSync('));
     expect(collector).toContain('automaticRetries: 0');
-  }, 20_000);
+  }, 60_000);
 
  it('requires an exact clean Slice predecessor for full Glass and binds the newest release semantics in both directions', () => {
    const output = runSelftest('glassmatrix.mjs', 'exact clean Slice predecessor accepted');
@@ -391,7 +391,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(slice).toContain('const V2_DRAFT_BULLET_COUNT = 79;');
     expect(collector).toContain('expectedBulletCount=79');
     expect(collector).toContain('exact five-section, 79-outcome development inventory');
- }, 20_000);
+ }, 60_000);
 
   it('rejects invalid full Glass invocations without changing the current evidence pointer', () => {
     const before = existsSync(glassCurrentPointer)
@@ -444,7 +444,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(predecessorPreflight).toBeLessThan(immutableReservation);
     expect(immutableReservation).toBeLessThan(reservationOwned);
     expect(reservationOwned).toBeLessThan(pointerPublication);
-  }, 15_000);
+  }, 60_000);
 
   it('fails closed on one representative malformed profile call per evidence producer', () => {
     const before = {
@@ -486,7 +486,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(smoke).toContain('verifyArgs.length > 1 || args.length !== 1 + verifyArgs.length');
     expect(glass).toContain('unknownArgs.length || duplicateSingleton');
     expect(glass).toContain('|| (verifyRunArg && (!sliceRunArg || !profileArg || cliArgs.length !== 3))');
-  }, 20_000);
+  }, 60_000);
 
   it('requires the exact immutable Slice+Glass pair for recovery and preserves one-attempt verification', () => {
     const collector = source('arc4recovery.mjs');

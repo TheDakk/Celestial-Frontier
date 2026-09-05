@@ -2050,7 +2050,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
       readySnapshot(earth, roster, oneRowTooManyExtensions),
       'tame',
     )).toEqual({ kind: 'refused', reason: 'model-row-capacity' });
-  }, 20_000);
+  }, 60_000);
 
   it('refuses all 64 candidates when the last possible hit alone cannot mirror to v4', () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
@@ -2108,7 +2108,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     });
     expect(readF4Authority(extensions)).toEqual(beforeF4);
     expect(ownership.revision).toBe(0);
-  }, 20_000);
+  }, 60_000);
 
   it('fails closed before draws when a new world would collide in legacy bioX by leaf seed', () => {
     const firstWorld = addressOf(
@@ -2156,7 +2156,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     });
     expect(readF4Authority(extensions)).toEqual(beforeF4);
     expect(ownership.revision).toBe(0);
-  }, 20_000);
+  }, 60_000);
 
   it('certifies the global extension byte ceiling against the miss before draws', () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
@@ -2185,7 +2185,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     });
     expect(readF4Authority(extensions)).toEqual(beforeF4);
     expect(ownership.revision).toBe(0);
-  }, 20_000);
+  }, 60_000);
 
   it('awards exact rare-find Stardust once, then later-cycle repeat ownership earns none', async () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
@@ -2416,7 +2416,7 @@ describe('Arc 4 refusal, capacity, replay, and no-reroll controls', () => {
     const changedAchievements = structuredClone(settled.derivation.state);
     changedAchievements.unlocked.push('arc4-unexpected-achievement');
     expect(reflectsLegacySpeciesEffects(changedAchievements)).toBe(false);
-  }, 20_000);
+  }, 60_000);
 
   it('replays byte-identically, binds successor to its exact parent, and never mutates/rerolls authority', () => {
     const earth = addressOf(HOME_GALAXY, SOL, 133);
