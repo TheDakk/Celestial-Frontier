@@ -676,3 +676,82 @@ Slice and two-phone sequence; the published periodic backup remains `5ac99f9` un
   }
 ]
 ```
+
+
+## Checkpoint 1 Slice PASS, sixth browser stop — small-phone recipe truth
+
+Clean source `a0bd9dad7ac827345175ec16ee1bdea3fa4512ba` passed the full local develop
+Slice in **365.632s**, including its eight-stage Arc 4 ledger and 14 burn steps, with
+zero console errors. Direct runner evidence uses the resolved local Microsoft Edge;
+it is not a named structured Chrome certificate. Log SHA-256:
+`b06666e5cbdf8a850aeb3c723ff2893d34460fd0707640b8788a90191f3daa09`.
+
+The immediately following small-phone Glass canary stopped after **11.354s**:
+
+```text
+GLASS VIEWPORT PRODUCT-RED — small-phone; 6444 ms; findings 1; instrument failures 0
+GLASS MATRIX PRODUCT FINDINGS — 1 across 1 viewport classes
+COUNTS {"SHIPYARD_STATE_TRUTH":1}
+```
+
+Only recipeMatch/recipeTruth are false in the retained Shipyard finding. State, six
+research rows, groups, action inventory, diagnostics, geometry, opener and preview
+accessibility all pass. Investigate the existing recipe-effect expectations against
+the recovered current capability owner. The literal finding is retained in the REDS
+JSON; log SHA-256 `b66802de9c3bf18fa9dc3c7a2bcd46661c93b04264b1a0ed6cec9b3f9278b1d2`.
+Large-phone Glass did not run. Step 2 remains unintegrated until core acceptance.
+
+
+## Checkpoint 1 Shipyard oracle correction — final fast PASS
+
+The signed core enabled the existing `scut`, `heal` and `speed` recipe effects. Seventeen
+independent recipe rows still said their effects were unavailable. Only those literal
+`effectSupport` expectations and their local inventory seal changed; all 62 IDs, ordering,
+statuses and enabled flags stay independently authored. Only plate/chip/headlamp are enabled
+in this fixture. The Glass predicate and existing Earpiece mutation control stay unchanged.
+The existing model test rejects every stale expectation and every regressed producer row,
+then restores each. Focused PASS **3 files / 39 tests**; the retained 62-row finding matches
+the corrected oracle in a bounded replay, not a new browser result.
+
+Full fast PASS: typecheck, artunused, **286 files / 2,959 passed / 1 skipped**, four local
+workers. No product, Compendium authority, timeout, budget or historical ledger change.
+Commit this correction before the new clean-source Slice → small-phone → large-phone run.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.393,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.57,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 56.987,
+    "log": "3-npx.log",
+    "sha256": "db0d4bbdfd623043046822533121c08afbc04eb29fe8f54998a0801a00a34a9f"
+  }
+]
+```

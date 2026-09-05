@@ -29,7 +29,7 @@ WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` stays parked except individually 
 
 | Step | State | Commit / push / gates |
 | --- | --- | --- |
-| 1 — core integration | Backup pushed; fifth Slice red in expected corruption failures | `5ac99f9`, pushed 07:13:39 UTC; fast 286 / 2,956 / 1; actual Tame/Sample pass; no Glass yet |
+| 1 — core integration | Slice PASS; small-phone recipe truth red | `a0bd9da` local; `5ac99f9` pushed 07:13:39 UTC; fast 286 / 2,958 / 1; large phone not run |
 | 2a — accepted st-scan | Pending | Recover only completed authored scope |
 | 2b — descent/wave-offs | Pending | Canonical-address deterministic outcome |
 | 2c — 50-Paragon hunt | Pending | Existing authored table only |
@@ -165,6 +165,17 @@ existing expected failure lists; all positive hit/pending checks are true. No Gl
 Dependent-control correction final fast PASS: **286 files / 2,958 passed / 1 skipped**;
 typecheck/artunused PASS. Four corruption failure sets and existing inner-witness mutation
 targets are aligned. New commit precedes the next Slice/phone sequence.
+
+Clean `a0bd9da`: Slice PASS in **365.632s**, then small-phone Glass stopped on one
+`SHIPYARD_STATE_TRUTH` finding (recipeMatch/recipeTruth only; zero instrument failures).
+The large-phone canary did not run. Exact source/log hashes and literal finding are retained
+in the overnight report/REDS JSON. Current recipe expectations are being compared with the
+approved core owner before a bounded correction; step 2 remains unintegrated.
+
+Shipyard oracle correction fast PASS: **286 files / 2,959 passed / 1 skipped**;
+typecheck/artunused PASS. Seventeen independent effect-support literals and their local seal
+now reflect the signed core. All 62 rows/statuses/enabled states and existing corruption
+controls remain. Commit before the next clean-source browser sequence.
 
 ### Scope and continuation
 

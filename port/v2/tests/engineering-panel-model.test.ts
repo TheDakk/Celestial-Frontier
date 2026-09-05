@@ -27,6 +27,8 @@ import {
   type SurfaceNav,
 } from '@cf/scene';
 import { projectEngineeringPanelReadModel } from '../apps/game/src/engineering-panel-model.js';
+// @ts-expect-error The executable browser oracle intentionally has no declaration shim.
+import { ENGINEERING_GLASS_RECIPE_ORACLE } from '../tools/engineering-browser-contract.mjs';
 
 const SOL = {
   galaxy: { seed: 999, x: 90, y: -60 },
@@ -158,6 +160,54 @@ function ship(items: readonly (readonly [string, number])[]) {
 }
 
 describe('Engineering panel production read model', () => {
+  it('keeps the independent Glass recipe oracle aligned with the authored live gear effects', () => {
+    const newlyLive = [
+      'fieldsuit', 'hazmat', 'thermal', 'presshull', 'cryoline', 'visor', 'compass',
+      'surgeon', 'fieldlegs', 'cg-proto', 'cg-genesis', 'cg-void', 'cg-chron',
+      'rl-stone', 'rl-sky', 'rl-life', 'rl-void',
+    ];
+    const model = projectEngineeringPanelReadModel({
+      ship: ship([]), nav: surface(world(MARS)), engineering: state(),
+      loadout: loadout(), economy, activePlayMs: 100_000,
+    });
+    const recipes = model.fabricationGroups.flatMap((group) => group.recipes);
+    type OracleRow = { id: string; status: string; effectSupport: string;
+      modelEnabled: string; disabled: boolean };
+    const oracle = ENGINEERING_GLASS_RECIPE_ORACLE as readonly OracleRow[];
+    expect(recipes.map(({ baseId, effectSupport }) => ({ id: baseId, effectSupport })))
+      .toEqual(oracle.map(({ id, effectSupport }) => ({ id, effectSupport })));
+    expect(oracle.filter(({ effectSupport }) => effectSupport === 'unavailable').map(({ id }) => id))
+      .toEqual(['struts', 'stabil', 'anchor', 'greaves', 'magboots', 'gravboots', 'rl-ocean']);
+    expect(oracle.filter(({ modelEnabled }) => modelEnabled === 'true').map(({ id }) => id))
+      .toEqual(['plate', 'chip', 'headlamp']);
+    const glass = fs.readFileSync(fileURLToPath(new URL('../tools/glassmatrix.mjs', import.meta.url)), 'utf8');
+    const start = '            recipeTruth=JSON.stringify(groups.flatMap((group)=>group.recipes)';
+    const end = ',\n            recipeMatch=';
+    expect(glass.split(start)).toHaveLength(2);
+    expect(glass.split(end)).toHaveLength(2);
+    const expression = glass.slice(glass.indexOf(start) + start.indexOf('JSON.stringify'),
+      glass.indexOf(end, glass.indexOf(start)));
+    const check = new Function('groups', 'expectedRecipeOracle', `return (${expression});`) as (
+      groups: { recipes: (OracleRow & { ariaDisabled: string })[] }[], expected: readonly OracleRow[],
+    ) => boolean;
+    const groups = [{ recipes: oracle.map((row) => ({ ...row,
+      effectSupport: recipes.find(({ baseId }) => baseId === row.id)!.effectSupport,
+      ariaDisabled: String(row.disabled) })) }];
+    expect(check(groups, oracle)).toBe(true);
+    for (const id of newlyLive) {
+      const row = groups[0]!.recipes.find((candidate) => candidate.id === id)!;
+      expect(row, id).toMatchObject({ effectSupport: 'live', status: 'unavailable',
+        modelEnabled: 'false', disabled: true });
+      row.effectSupport = 'unavailable';
+      expect(check(groups, oracle), id).toBe(false);
+      row.effectSupport = 'live';
+      const staleOracle = oracle.map((candidate) => candidate.id === id
+        ? { ...candidate, effectSupport: 'unavailable' } : candidate);
+      expect(check(groups, staleOracle), id).toBe(false);
+      expect(check(groups, oracle), id).toBe(true);
+    }
+  });
+
   it('projects a registered lifeless surface, all six research rows, and the exact 62-recipe catalogue', () => {
     const mars = world(MARS);
     const owned = [['jumpdrive', 1], ['autoext', 1], ['rig3', 1], ['headlamp', 1]] as const;
