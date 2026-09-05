@@ -33,7 +33,7 @@ rather than converting them into unnecessary product changes.
 | Existing program lane | Current playable boundary | Remaining accepted scope |
 | --- | --- | --- |
 | Foundations / Arc 1 | Safe persistence/time/identity, bounded Compendium and ship/universe presentation | Human/save/device/art evidence; current exact candidate proof after changes |
-| Arc 0 | Fifteen Training IDs including graduation; orientation/continuity and truthful capability views | Full hands-on curriculum beside its real owning actions; accepted/weekly bioscan Charter and weekly lifecycle owners |
+| Arc 0 | Fifteen Training IDs including graduation; orientation/continuity and truthful capability views; accepted st-scan completion from a later explicit Bioscan in its owning receipt | Full hands-on curriculum beside its real owning actions; weekly bioscan Charter and weekly lifecycle owners |
 | Arc 2–3 | Exact Inventory, fixed fabrication, mining/skimming, all six Research consumers, capability-derived ship/reach, and Search/CF1/Atlas travel presentation | Authored random loot/affix/rate policy, upgrades/sockets, remaining ship depth, and human economy/pacing evidence |
 | Arc 4–5 | Capture with fresh-species Field Scout XP, explicit Discover Life with nonlethal Scout interception, explorer Flora meals, companion Feed, nonlethal Breed/recovery, Rename, and exact Field Scout selection | Companion taste/care/healing, bond growth, missions, dispatch/return, and living-preview depth |
 | Arc 6 | Landed battle, conquest, Guardian/Titan capture, Prime claims, XP/Stardust and Combat Chronicle | Arc 5.5 HUMAN model; two explicit affix/extra-Guardian-reward decisions; party/tactics/retreat and wider encounters |
