@@ -17,107 +17,105 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-04 · AUDIOVISUAL PILOT BATCH A
+## SESSION HANDOFF — 2026-09-05 · DEVELOP SYNC AND AUDIOVISUAL PILOT BATCH A
 
-### Authority and scope
-
-Nick accepted `port/AAA_AUDIOVISUAL_CAMPAIGN.md` with five amendments: Phase 0/1 Batches A–D
-only. Stop after the integrated pilot for Nick's review. No Phase 2, purchases, protected-portrait
-changes, hosted runs or release. Top bar/dock/rails leads Phase 2 after approval. Claude owns the
-cheap agent-to-develop CI lane on `anthropic/windows`; Codex does not edit CI/budget policy.
-
-### Source and parking
+### Exact source and authority
 
 OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`,
-tracking `origin/openai/mac`. SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`; fresh
-SSH authentication as `TheDakk`, repository read and fetch passed. Landed baseline is
-`7bf3e84761da2d1abe21dc6fe751b4bad2308f3b` (PR #35 merge).
+tracking `origin/openai/mac`. The checkout was clean at
+`3ffee05113904cf5cc8d45a90a6d2704ddf1b1eb` before the requested real merge of
+`origin/develop` **`9ea01041dcdc711190bbf909ea8bb743cd993734`**. These are the two merge parents;
+no rebase or signed-history rewrite. Exact resulting SHA and terminal check results are reported
+at Git handoff, after committing the source so the checks can bind that unchanged commit.
+SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`; established authentication as `TheDakk`
+and this batch's repository fetch passed.
 
-All post-merge local commits and 85 unfinished gameplay files are preserved at
-`cf1b9a7843200ecc281c5113b4139909dc0e3a29` on local `openai/parked-gameplay-20260904`.
-Every file matches the pre-parking SHA-256 inventory. This is explicitly unvalidated WIP, not
-integration. Nick later authorized an unchanged backup push; origin read-back confirms the same
-`cf1b9a7…` parked tip. The active branch was safely recreated from landed develop without reset or force
-operations. Pilot product source starts at landed develop; no dependency on parked Research,
-Charter/descent/Paragon/Atlas/progression work. Ignored old build output is not evidence.
+Nick explicitly authorized this merge, documentation conflict resolution, browser-free checks
+and normal `openai/mac` branch push. Budget UNFROZEN, last verified PUBLIC, private fallback
+3,000. Branch push triggers no workflow. No PR, label, hosted attempt, release or deployment is
+requested. `.github/workflows` and `tools/actions-budget-policy.js` are inherited byte-for-byte
+from develop. Any future hosted attempt requires its own exact authorization.
 
-The full review and `audits/FULL_REVIEW_DISPOSITION_20260904.md` are retained for Claude.
-Disposition claims are parked-source evidence, not current develop behavior.
-`audits/AAA_BATCH_A_RECONCILIATION_20260904.md` records the reconciliation.
+### Landed decisions and preserved work
 
-### Policy fixed before measuring
+- PR #36 landed the two-lane battery; PR #38 admitted bounded `openai/review-*` and
+  `anthropic/review-*` branches into develop. Agent PRs run browser-free develop plus both phone
+  Glass canaries. Full Compendium → Slice → twelve-row Glass runs on develop-to-main or the
+  separately authorized full-chain label. The policy selftest expects 81 controls.
+- PR #39 integrated the original signed Batches 1–3 through Claude's merge `1219648`, with PR
+  merge `1d719c63fbcdb6d0e6ab98a96b16e487aafe1239`. PR #37 is closed as superseded.
+  `openai/review-batches-1-3-20260904` stays at `121df53d0d101822f32f2ca98a878db10518e65d`.
+- PR #40 landed at `9ea0104`. **Nick's 2026-09-05 decision: v2 is a brand-new game for everyone.**
+  No legacy player-save import; never restore Settings “Bring expedition” or a hidden paste path.
+  Gate C is v2 persistence on a real device. Keep the existing v1.8.9 codec and evidence-build
+  `importBlob` replacement seam. Training recovery remains reload/update-only. The draft bulletin
+  is **77 outcomes**. Glass judges retained carriers by their planned
+  `GLASS_NEGATIVE_CONTROL_LEDGERS`, not by the newest ledger alone.
+- Local and origin `openai/parked-gameplay-20260904` stay at
+  `cf1b9a7843200ecc281c5113b4139909dc0e3a29`. Batch 4 / checkpoint / 85-file WIP are not in the
+  pilot source. **Batch 4 no longer waits for any save export**; it requires its own bounded
+  `openai/review-*` PR and Nick's exact hosted authorization. WIP remains unvalidated and parked.
 
-`port/AAA_ASSET_POLICY.md`: <=128 MiB complete installed pack, <=256 MiB aggregate pack payload
-through an update. Count response-body bytes including shell/media and duplicate caches; measure
-decoded/GPU memory separately. Defer updates rather than deleting active-client assets or saves.
-PWA enforcement is not yet established. Editable Blender/REAPER/patch/WAV masters stay outside
-public Git, SHA-256 indexed and independently backed up; optimized outputs only, no Git LFS.
-Private backup location awaits Nick's selection. Temporary readiness sources are backup-pending.
-Offline promise is a fully installed ready PWA while data remains retained, not eviction immunity.
+### Merge verification boundary
 
-### Current work and next actions
+The branch's additional work is documentation/audit/campaign policy only. All `port/v2` runtime,
+build tools, tests, budgets and package inputs match landed develop. Therefore no additional
+`main.ts` producer change is introduced: keep develop's Compendium producer
+`430b92d75d40b01f3278f0b00916603c1359acb9278b77142ab3eae810ce5f45` and corresponding test pins.
+The develop profile's existing producer-authority check rebuilds and verifies that identity;
+there is no duplicate standalone printer run. Measurement authority, calibration and ceilings
+remain byte-identical to develop.
 
-Batch A tool readiness is underway: Blender 5.2.1; REAPER 7.79; Surge XT 1.3.4 instrument/effects
-installed. A fresh terminal-only Blender save/separate-reopen/render passes (960×640, Cycles
-CPU, 4.39s); PNG inspected. REAPER terminal script loaded Surge VST3 instrument/effects,
-saved/reopened the project, and rendered 4s WAV/FLAC successfully after Nick opened the startup
-UI; output hashes reverified. Surge standalone CLI help/version pass; its live MIDI/OSC path is
-not exercised and offline export uses the verified REAPER VST3 host. Waveform verification
-passes. A fresh isolated Edge probe decodes both outputs and processes them through Web Audio;
-audible listening, Safari/iPhone/in-game acceptance and independent source backup remain pending.
-Nick's requested private creature/ecosystem Blender example is rendered and inspected; its
-invented Jungle-inspired Lanternback is concept exploration, not canonical/body-plan acceptance.
-Sources and outputs are hashed and locally preserved; independent backup is still pending.
-Batches B–D: one ship/biome treatment plus quadruped, biped, avian, serpentine, arthropod,
-tentacled, aquatic and flora/fungus at actual 132/300/440, static and animated. No faithful
-animation => protected static portrait and explicit incomplete status. Add coherent audio,
-styleguide/three mockups and actual-game integration, then submit local pilot for approval.
+Required next checks on the clean committed merge, once and stop on red:
+`node port/v2/tools/tracked-input-preflight.mjs --profile=develop` (isolated exact-source
+browser-free profile) and `node tools/actions-budget-policy.js --selftest` (81 controls).
+Do not present earlier PR #37 / Claude results as evidence for this new merge. No local browser
+chain or hosted certificate is requested by this sync. Root `node tools/validate.js` passed after
+resolution: 1,010 renders, zero boot/render errors and all 50 v1 fingerprints unchanged. Push
+only the tested merge after both remaining checks pass.
 
-### Paired next steps / Git
+### Audiovisual Batch A and policies
 
-Codex: continue Batch A; independent source-backup selection/verification is the remaining
-production-source prerequisite. Original disposition and unchanged parked-backup pushes are done;
-new current-side documentation remains local. Budget remains UNFROZEN; last recorded visibility
-PUBLIC, private fallback 3,000. No hosted attempts, labels, merges or release authorized.
+Nick accepted `port/AAA_AUDIOVISUAL_CAMPAIGN.md` with five amendments: Phase 0/1 Batches A–D
+only; the integrated pilot approval stop stands. No Phase 2, purchases or protected-portrait
+changes. Top bar/dock/rails leads Phase 2 after approval. This campaign does not edit CI or budget
+policy; Claude owns that lane. Batch A here means **audiovisual source/tool readiness**, not the
+external review's lettered implementation batches.
 
-Nick subsequently authorized a merge commit on the named review branch and PR opening.
-`openai/review-batches-1-3-20260904` now tracks origin at merge
-`121df53d0d101822f32f2ca98a878db10518e65d`, parents signed `8bf9c45…` and PR36 develop
-`0cad14dea80b4f2d5052210fa19d583bd0ada085`. Original signed Batches 1–3 are untouched; Batch 4
-and WIP stay excluded. [Draft PR #37](https://github.com/TheDakk/Celestial-Frontier/pull/37) is
-open into develop, labels absent. Exact-source standard tracked-input develop PASS: 274 files,
-2,886 passed / one skipped, all owners, 47.133s wrapper; Actions policy selftest PASS, 79 controls.
-Workflow lane/authorize bytes and all five full guards equal develop; only phone jq verdicts
-become the Node verifier. The fixed-four-branch shell still rejects this review ref; resolve that
-explicit policy choice before labeling. PR is mergeable but draft/blocked, no hosted attempt.
-Current title/body, source evidence and history:
-`audits/PARKED_BATCHES_1_3_PR_PREPARATION_20260904.md` and
-`audits/BATCHES_1_3_PR37_EXACT_EVIDENCE_20260904.json`.
+`port/AAA_ASSET_POLICY.md` fixed the ceilings before measuring: complete installed pack ≤128 MiB,
+aggregate retained pack payload during update overlap ≤256 MiB. Count actual cached response
+bodies including duplicated caches; decoded/GPU memory is separate. Enforcement and real-device
+acceptance remain unproven. Offline is an installed, complete, ready PWA promise while storage
+is retained; never promise immunity to eviction or save recovery after deletion.
 
-Codex used the requested review branch temporarily in its owned Mac folder, then returned to
-`openai/mac`; no review code was installed into the audiovisual branch. Batch 4 awaits Nick's
-real save export and its own PR; WIP stays parked. Before the next audiovisual coding batch,
-safely synchronize this clean branch with current develop under the protocol; it still carries
-landed PR35 product source, with local documentation-only successors.
+Blender 5.2.1 save/separate-reopen/render passes. REAPER 7.79 loaded Surge XT 1.3.4 instrument and
+effects, saved/reopened and exported a four-second WAV/FLAC cue. Isolated Edge decoded both and
+processed them through Web Audio. Existing hashed logs are historical tool-readiness evidence;
+do not rerun unchanged tests. Human listening, Safari/iPhone and in-game audio acceptance remain
+open. The rendered Lanternback/forest concept is an invented example, not canonical portrait
+replacement or accepted eight-body-plan coverage.
 
-Claude on `anthropic/windows`: fetch/read the backed-up parked verifier as reference and continue
-the lane; do not merge/copy parked gameplay. Nick selected browser-free develop plus existing
-small/large phone rows on every agent PR; full Compendium → Slice → twelve-row Glass only on
-develop-to-main or a separate on-demand label. Claude's implementation is landed as PR36;
-Codex reconciled the historical Node-verifier rewrite on the separate review branch under Nick's
-explicit instruction, preserving lane and policy code. GitHub action now: leave approval labels
-absent until the review-branch gate is resolved. Nick need not open another app. After a future
-authorized merge, the other clean agent branch syncs from develop. Main, live site and deployment
-remain untouched. PR #37's title/body already covers the exact merged head and current evidence.
+Editable `.blend`, `.rpp`, patches and WAV masters remain outside public Git, SHA-256 indexed;
+optimized outputs only, no Git LFS. **Independent backup destination is still unselected and
+unverified.** Local copies on this Mac do not close that prerequisite. Next bounded Batch A task,
+after sync/push: preserve the complete existing audio project/recipe/output relative layout in
+the private source store and verify its manifest. No rerender or source upload is required.
 
-### Local checks at Batch A checkpoint
+Batches B–D retain one ship/biome treatment plus quadruped, biped, avian, serpentine, arthropod,
+tentacled, aquatic and flora/fungus at actual 132/300/440, static and animated. Unfaithful families
+keep the protected static portrait and are explicitly incomplete. Then audio, styleguide/three
+mockups and actual-game integration lead to Nick's pilot approval stop.
 
-Root validation PASS (1,010 clean species, 50 unchanged fingerprints). Browser-free develop
-PASS: 268 files, 2,785 tests / one skip, all TypeScript/art/route/spec owners. No browser chain,
-hosted run or product-source change. Blender readiness render is inspected; REAPER/Surge
-terminal save/reopen/render now passes (48kHz stereo, WAV 24-bit/FLAC 16-bit, four seconds,
-non-silent and unclipped). Private source-backup selection/verification remains the prerequisite
-for production Batches B–D. Claude's review corrections are accepted and PR36's lane is landed.
-The unchanged parked backup and exact tested review merge are pushed; draft PR #37 is open.
-Local audiovisual documentation/concepts and the review candidate are not integrated into develop.
-No hosted attempt or release was performed for this review handoff.
+### Paired handoff
+
+- **OpenAI/Codex:** finish the committed-merge checks and authorized `openai/mac` push, report
+  exact SHA/results, then continue only the bounded Batch A source preservation above. Preserve
+  both parked/review refs. No new Batch 4 PR is requested by this sync.
+- **Anthropic/Claude Code:** may continue unrelated work in its own owned folder. At its next
+  coding batch, fetch and merge latest `origin/develop` into its own clean branch. Codex's
+  audiovisual documentation is on `openai/mac`, not integrated into develop; do not copy files
+  or expect those assets to be installed. The fresh-start decision is already on develop.
+- **Nick:** no GitHub action or PR fields needed now; no need to open Claude now. Independent
+  master backup still needs a chosen destination before that deliverable can be complete.
+- **Release:** develop remains `9ea0104`; main/live site, protected portraits and production
+  version remain unchanged. No hosted run, release or deployment in this batch.

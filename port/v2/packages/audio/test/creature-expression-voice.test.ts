@@ -164,12 +164,12 @@ const PHENOTYPE: ImmutableAudioPhenotype = Object.freeze({
   heatBand: 1,
 });
 
-function pipeline(kingdom: 'fauna' | 'flora' = 'fauna') {
+function pipeline(kingdom: 'fauna' | 'flora' = 'fauna', seed = PHENOTYPE.seed) {
   const signature = createAudioSignature({
     owner: kingdom === 'fauna'
       ? { route: 'catalogue', kingdom, name: 'Tardigrade' }
       : { route: 'catalogue', kingdom, name: 'Apple' },
-    phenotype: { ...PHENOTYPE, kingdom },
+    phenotype: { ...PHENOTYPE, kingdom, seed },
     lineage: { parentSeeds: null, anchorBasisPoints: null },
   });
   const profile = createAudioIdentityProfile(signature);
@@ -194,6 +194,22 @@ const RESERVATION: AudioVoiceReservation = Object.freeze({
 });
 
 describe('Arc 7 creature-expression voice request owner', () => {
+  it('keeps the watchdog beyond every note and gap for all four deterministic rhythms', () => {
+    const rhythms = new Set<string>();
+    for (let seed = 1; seed <= 64; seed++) {
+      const input = pipeline('fauna', seed);
+      const request = createCreatureExpressionVoiceRequest(input);
+      const context = new SynthesisContext();
+      const graph = request.create(context, RESERVATION);
+      graph.source.start();
+      rhythms.add(input.profile.rhythm);
+      const finalStopMs = (context.oscillators[0]!.stopWhens[0]! - context.currentTime) * 1_000;
+      expect(request.maxDurationMs! - finalStopMs, input.profile.rhythm).toBeGreaterThanOrEqual(249.999);
+      expect(request.maxDurationMs! - finalStopMs, input.profile.rhythm).toBeLessThan(251.001);
+    }
+    expect(rhythms).toEqual(new Set(['even', 'syncopated', 'clustered', 'spaced']));
+  });
+
   it('deterministically renders one bounded fauna oscillator and gain envelope', () => {
     const input = pipeline();
     const first = createCreatureExpressionVoiceRequest(input);
@@ -210,6 +226,7 @@ describe('Arc 7 creature-expression voice request owner', () => {
       concurrencyGroup: 'creature-expression',
       maxConcurrent: 1,
       nodeCount: 2,
+      maxDurationMs: expect.any(Number),
       mixIntent: AUDIO_NEUTRAL_VOICE_MIX_INTENT_V1,
       meaning: { kind: 'meaningful', counterpart: input.counterpart },
     });
@@ -239,6 +256,10 @@ describe('Arc 7 creature-expression voice request owner', () => {
     expect(firstContext.oscillators[0]!.stopWhens).toHaveLength(1);
     expect(firstContext.oscillators[0]!.stopWhens[0]).toBeGreaterThan(firstContext.currentTime);
     expect(firstContext.oscillators[0]!.stopWhens).toEqual(secondContext.oscillators[0]!.stopWhens);
+    const finalStopMs = (firstContext.oscillators[0]!.stopWhens[0]! - firstContext.currentTime) * 1_000;
+    expect(Number.isSafeInteger(first.maxDurationMs)).toBe(true);
+    expect(first.maxDurationMs! - finalStopMs).toBeGreaterThanOrEqual(249.999);
+    expect(first.maxDurationMs! - finalStopMs).toBeLessThan(251.001);
     firstContext.oscillators[0]!.finish();
     expect(ended).toBe(1);
     firstGraph.source.stop();
@@ -301,6 +322,7 @@ describe('Arc 7 creature-expression voice request owner', () => {
     const runtime = createAudioRuntime({
       createContext: () => context,
       nowMs: () => 100,
+      scheduleVoiceDeadline: () => () => {},
       verifyCounterpart: (receipt: AudioCounterpartReceipt) =>
         receipt.counterpartKey === input.counterpart.counterpartKey
         && receipt.eventKey === input.counterpart.eventKey
@@ -330,6 +352,7 @@ describe('Arc 7 creature-expression voice request owner', () => {
     const rejectedRuntime = createAudioRuntime({
       createContext: () => rejectedContext,
       nowMs: () => 100,
+      scheduleVoiceDeadline: () => () => {},
       verifyCounterpart: () => false,
     });
     await rejectedRuntime.activate();

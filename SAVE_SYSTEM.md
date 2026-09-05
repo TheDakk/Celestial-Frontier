@@ -1,5 +1,30 @@
 # Celestial Frontier — Save System
 
+## Current v2 checkpoint admission
+
+Matches code as of **2026-09-04** (`port/v2/apps/game/src/main.ts`, `persistView`).
+The same admission predicate runs at invocation, when a queued write starts, and after its
+F4 heartbeat settles, before any ecology stage, candidate projection or commit. It refuses
+protected persistence, held Training checkpoints, in-flight import, pending replacement reload,
+lost runtime write authority and conflicting or released replacement claims. A replacement
+checkpoint requires its exact still-current claim, not merely a matching reason string.
+
+Named-search ordinary checkpoints still set the deferred/rearm latch; private heartbeat-cycle
+and pagehide-lifecycle owners retain their narrow exemptions without bypassing Training or
+replacement protection. Import still drains the existing active-write tail before replacement;
+a refused replacement still rearms the Settings debounce its own claim canceled. Save shape,
+receipts, CAS, publication-after-durability and recovery are unchanged. This is admission
+defense in depth, not evidence that imported saves were previously corrupted.
+
+The following local build-isolation batch selects the native storage backend in distributable
+builds. One-shot rejection/alteration wrappers and externally callable raw-save staging belong
+only to explicit evidence builds. Unarmed asynchronous hold boundaries remain asynchronous in
+both variants; disabling diagnostics must not change checkpoint/interleaving semantics. Current
+output/verification status is in `ROADMAP.md`.
+
+The dated evidence checkpoints below retain their original scope; `ROADMAP.md` owns current
+integration and verification status.
+
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated save/evidence blocks below remain immutable):** hosted run `33584052508` tested exact
 > head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
@@ -1191,9 +1216,9 @@
 > writer cannot silently drift away from its next reader. Repository reset clears the
 > canonical complete `STORES` list rather than a hand-maintained subset; a store-growth
 > control seeds and proves every current store empty after reset.
-> The player-facing import door now lives at **Settings → Bring expedition**;
-> moving it out of the eighth dock slot did not create a second loader or weaken
-> any byte-protection rule. That dock slot now opens the canonical v2 Guide
+> The player-facing import door (**Settings → Bring expedition**) was removed on
+> 2026-09-05 — v2 starts every explorer fresh (Nick) — and no second loader exists; the
+> evidence-build `importBlob` seam remains the Slice/Glass replacement driver only. That dock slot now opens the canonical v2 Guide
 > catalogue (9 categories /43 authored ids /41 legacy-live topics, currently 25 partial /16
 > unavailable); first open
 > updates the existing `guide`/`seenGuide` save field through the ordinary
@@ -1244,12 +1269,9 @@
 > write to finish, holds new ordinary writes, and only then stores the proven
 > complete replacement envelope. This prevents an older same-tab settings
 > autosave from racing behind and overwriting the imported expedition. JSON
-> classification and the live primary use the whitespace-trimmed candidate,
-> while the best-effort `cf_v2_import_original` keepsake receives the exact
-> submitted text, including legal surrounding whitespace. File selection is
-> decoded to text by the browser; the moderator's external source file remains
-> the authoritative byte-for-byte backup, including when browser storage refuses
-> the extra keepsake.
+> classification and the live primary use the whitespace-trimmed candidate. The former
+> `cf_v2_import_original` keepsake, file picker and paste textarea were removed with the
+> player door on 2026-09-05; the replacement seam is reachable only from evidence builds.
 >
 > The five intentional v2 replacement-page transitions—current Training
 > restart after its view snapshot commits, atomic Training completion after its
@@ -1565,8 +1587,9 @@
 > deployment/version authority follows.
 > No save-format or version change is involved.
 
-**STATUS:** legacy sections match `main.js` as of 2026-07-31; the current v2 overlay
-matches `port/v2` as of 2026-08-30. ⚠ Read the v1.8.7 section (a reverted
+**STATUS:** legacy sections match `main.js` as of 2026-07-31; current v2 checkpoint
+admission above matches `port/v2` as of 2026-09-04. Other dated overlays retain their
+original evidence scope. ⚠ Read the v1.8.7 section (a reverted
 `size` clamp that corrupted bred creatures) and the v1.8.8 section (`conq[].e`,
 harvest on play time).
 **Purpose:** persist the player's *progress* (never the universe — that's regenerated

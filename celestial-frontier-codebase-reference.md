@@ -1,5 +1,45 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+## V2 explicit build boundary — implementation as of 2026-09-04
+
+`port/v2/apps/game/vite.config.ts` selects diagnostic code only for exact Vite mode `evidence`;
+`pwa-build.ts` binds the corresponding `cf-build-mode` HTML marker into final PWA asset hashes.
+`tools/build-mode.mjs` is the shared consumer check. Ordinary builds and development-preview
+packages remain distributable and must not expose `__CF_SLICE__` or armable save faults.
+`tools/devpreview-readiness.mjs` observes ordinary rendered UI before the existing real Guide
+outcome check. Awaited inert action holds preserve task ordering. This describes the implementation
+boundary, not completed browser/device evidence; consult `ROADMAP.md` for current verification.
+
+## Current v2 runtime hardening
+
+Audio finite lifetime (matches code as of 2026-09-04): `packages/audio/src/runtime.ts` owns one
+injected deadline wake for optional bounded voices and reuses `finishVoice` for overdue cleanup.
+The creature/ecology/combat builders derive limits from existing envelopes with a cleanup-only
+tail; `tame-greeting-audio.ts` supplies the browser timer adapter. No sound plans, identity,
+gameplay timing or save fields change. See `AUDIO.md` §0.3 for the compatibility/lifecycle limits.
+The art manifest/lock now declares its existing Genome and PlanetGen imports; painters are unchanged.
+
+Matches code as of **2026-09-04**. `main.ts::persistView` uses one local admission predicate
+before queueing, at queued execution and after heartbeat settlement. No denied writer stages
+ecology, projects a candidate or commits. Existing named-search deferral and private heartbeat/
+lifecycle exceptions remain narrow; Training/import/reload holds and exact replacement-claim
+ownership are rechecked. Import's active-tail drain and failed-replacement debounce rearm remain
+unchanged. This adds defense in depth, not a finding of proven import corruption; save schemas,
+receipts, revision CAS and durable-publication ordering are unchanged. See `SAVE_SYSTEM.md`.
+
+`panel-refill-focus.ts::capturePanelRefillFocus` is a synchronous, single-use continuation for
+Records, Atlas and Charters. It matches authored action/row identity after DOM replacement and
+disabled-state projection, restores the unique available control or sticky Close using
+`preventScroll`, and leaves another current focus owner alone. Atlas Favorite no longer
+unconditionally refocuses its action at async settlement. Explicit Settings actions and the
+Engineering/Capture action-specific focus owners are unchanged. `runtime-hardening.test.ts`
+executes these real app functions with injected dependencies plus the DOM helper; it does not
+claim native browser geometry or device acceptance. See `UI_PRESENTATION.md`.
+
+The main header now accurately identifies 15 current Training lesson IDs, the remaining
+hands-on curriculum, and already-live Atlas favorites/rarity stings. Dated evidence overlays
+below retain their checkpoint scope; `ROADMAP.md` owns current integration and verification.
+
 ## Approved audiovisual authoring exception — 2026-09-04
 
 Nick permits Blender-authored assets and REAPER/Surge audio alongside existing procedural
@@ -7,8 +47,9 @@ painters/runtime. Canvas-only asset origin is relaxed; painterly identity, prote
 portraits, deterministic game state and runtime budgets remain. Phase 0/1 pilot only: eight body
 plans at 132/300/440, static/animated. See `port/AAA_AUDIOVISUAL_CAMPAIGN.md` and
 `port/AAA_ASSET_POLICY.md`. This records policy, not implemented media. Product baseline is
-landed PR #35; later gameplay is parked. Claude owns CI/budget policy. No Phase 2/release.
-
+landed develop `9ea0104` (PRs #36/#38/#39/#40); Batch 4 and WIP remain parked. V2 starts fresh:
+no player import door; the existing codec/evidence seam stays. Claude owns CI/budget policy.
+No Phase 2/release. This reference was reconciled against code on 2026-09-05.
 
 > **2026-09-04 UTC current PR #35 forensic-prevention architecture overlay (matches current local
 > code):** `.github/workflows/test.yml` retains one two-minute authorization job and one battery
@@ -1553,11 +1594,12 @@ landed PR #35; later gameplay is parked. Claude owns CI/budget policy. No Phase 
 > Repaint/diagnostic failure is retained in the convergence witness and cannot cancel cleanup or
 > reload. While protected, all nine Settings controls
 > (Sound, Volume, Creature voices, Text size, Text tone, Font, Star charts, Motion and Panel tint)
-> plus Restart Training and lesson actions are read-only. The event guard deliberately excludes
-> **Bring expedition** so the protected replacement route remains reachable; import still validates
-> the complete candidate and must claim versioned persistence authority, refuses with zero writes if
-> that authority is unavailable, and on success performs one exclusive whole-save replacement
-> followed by reload. This exception grants no authority for ordinary protected-state mutations.
+> plus Restart Training and lesson actions are read-only. The former **Bring expedition** exception
+> no longer exists: the save-import door was removed on 2026-09-05 (v2 starts every explorer fresh),
+> so a protected reload is the only recovery path. The evidence-build `importBlob` seam still
+> validates a complete candidate, must claim versioned persistence authority, refuses with zero
+> writes if that authority is unavailable, and on success performs one exclusive whole-save
+> replacement followed by reload; it grants no authority for ordinary protected-state mutations.
 >
 > Engineering presentation now publishes one atomic `{ship, engineering, reason}` view. The ship is
 > the same capability/reach projection consumed by travel and remains valid when Arc 3 is protected
@@ -2979,12 +3021,10 @@ landed PR #35; later gameplay is parked. Claude owns CI/budget policy. No Phase 
 > `releasePending` across open and reload. `V2_CURRENT_RELEASE_VERSION` is `null`,
 > so that playtest identity cannot trigger an update or imply a production release. The Guide also renders the full source
 > commit supplied by the guarded development package. First Guide open persists
-> `seenGuide`. Import moved to **Settings →
-> Bring expedition** through the same guarded loader and a named, focus-trapped
-> top-layer modal. The live primary is parsed from the whitespace-trimmed JSON
-> candidate, while the best-effort `cf_v2_import_original` keepsake retains the
-> exact submitted text; a selected file is browser-decoded to text, so the
-> moderator-held external file remains the byte-for-byte authority. Planet cards bind the captured galaxy+star `{seed,x,y}` context
+> `seenGuide`. The player-facing import door (**Settings → Bring expedition**, paste/pick controls
+> and the `cf_v2_import_original` keepsake) was removed on 2026-09-05; `#importsheet` survives only as
+> the nonclosable Field Training recovery sheet, and the evidence-build `importBlob` seam still parses
+> the whitespace-trimmed JSON candidate for Slice/Glass replacement proofs. Planet cards bind the captured galaxy+star `{seed,x,y}` context
 > before Land/Atlas/Share, rejecting equal-seed coordinate substitution.
 > Guide and Settings render above an open survey card; other panel stacking
 > remains unchanged for Training. Field Training is six live

@@ -1,5 +1,31 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **EVIDENCE CODE IS AN EXPLICIT BUILD CONTRACT** (matches code as of 2026-09-04).
+> Default builds and human previews omit diagnostic bindings and destructive fault implementations;
+> only `--mode evidence` opts in. Hiding the public API alone does not prove dead-code elimination.
+> Inspect executable output in both modes, preserve awaited no-op ordering and native persistence,
+> and bind the mode marker into final PWA hashes. Certifiers verify evidence mode; preview packaging
+> verifies distributable mode. Historical calibration builds retain their exact commands/rulers.
+> Preview checks use ordinary UI. Training's inert background may prove painted readiness but not
+> action reachability; finish/skip through its real control before activating a background action.
+
+> **QUEUE ADMISSION IS NOT EXECUTION ADMISSION; ONE VERDICT OWNER** (matches code as of
+> 2026-09-04). A queued checkpoint must repeat its full hold/owner checks before execution and
+> after heartbeat settlement. Preserve exact replacement ownership, named-search deferral and
+> private lifecycle exceptions; none exempts Training/import protection. Test the shipped function
+> across both await boundaries, including refused replacement debounce rearming.
+>
+> A synchronous panel refill may preserve the current semantic action with `preventScroll`, or
+> fall back to Close if that action disappeared/became disabled. It must not steal focus after a
+> user moved elsewhere. Browser-free focus tests do not prove native scroll/paint behavior.
+>
+> The changed-input Glass workflow calls the same read-only targeted Node verifier as local
+> tooling. It binds the immutable run, current clean source and canonical Chrome executable, and
+> rederives raw heartbeat assessments. Retained-report parity and the former heartbeat corruption
+> cases precede removal of the duplicate jq verdict. The two canaries remain noncertifying;
+> the full Slice-bound matrix, time caps and no-retry rule are unchanged. jq remains required for
+> later run-ID extraction, not as a second verdict implementation.
+
 > **RIGHT-SIZE THE OUTER ENVELOPE, EXERCISE REPEATED LATE FAILURE CLASSES EARLY, AND REPLAY
 > EVIDENCE INDEPENDENTLY** (2026-09-03 UTC). Workflow/job/step caps are orchestration ceilings,
 > not product timeouts or evidence rulers. When measured hosted duration leaves no operational
@@ -3699,7 +3725,8 @@ Loaded unfinished Training has a separate write boundary. Any recognized pending
 write-held. A loaded `tut:0` save without a checkpoint is also held and may be seated at proven Sol
 in runtime only until the one atomic completion write; this does not fabricate an eleven-field
 snapshot. Fresh empty onboarding may use ordinary saves. An unknown checkpoint or unavailable
-recovery route enters a persistent modal lock: the import sheet remains modal, background-inert,
-focus-trapped, nonclosable by Close or Escape, and reopens synchronously on every boot while the
-protected source remains. Only retry/reload or a trusted complete import may replace it; session
-practice must not appear to make progress over protected bytes.
+recovery route enters a persistent modal lock: the Field Training recovery sheet (`#importsheet`)
+remains modal, background-inert, focus-trapped, nonclosable by Close or Escape, and reopens
+synchronously on every boot while the protected source remains. Only retry/reload may replace it
+(trusted complete import was withdrawn with the save-import door on 2026-09-05); session practice
+must not appear to make progress over protected bytes.

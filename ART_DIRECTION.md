@@ -1,5 +1,12 @@
 # Celestial Frontier — Master Art Direction
 
+**Current implementation reference — matches code as of 2026-09-04.** Static creature/genome,
+hybrid and biome painters are preserved. The art workspace explicitly declares its existing
+Genome and PlanetGen imports; this is dependency metadata, not a painter or visual change.
+Evidence-build separation leaves the species worker/painter byte-identical at its batch-2
+checkpoint. Live scope/results are in `ROADMAP.md`; dated evidence overlays below are historical
+and do not certify later source or close HUMAN visual acceptance.
+
 ## Approved audiovisual authoring exception — 2026-09-04
 
 Nick permits Blender-authored assets and REAPER/Surge audio alongside existing procedural
@@ -7,8 +14,9 @@ painters/runtime. Canvas-only asset origin is relaxed; painterly identity, prote
 portraits, deterministic game state and runtime budgets remain. Phase 0/1 pilot only: eight body
 plans at 132/300/440, static/animated. See `port/AAA_AUDIOVISUAL_CAMPAIGN.md` and
 `port/AAA_ASSET_POLICY.md`. This records policy, not implemented media. Product baseline is
-landed PR #35; later gameplay is parked. Claude owns CI/budget policy. No Phase 2/release.
-
+landed develop `9ea0104` (PRs #36/#38/#39/#40); Batch 4 and WIP remain parked. V2 starts fresh:
+no player import door; the existing codec/evidence seam stays. Claude owns CI/budget policy.
+No Phase 2/release. This reference was reconciled against code on 2026-09-05.
 
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated art/evidence blocks below remain immutable):** hosted run `33584052508` tested exact

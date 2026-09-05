@@ -1,5 +1,11 @@
 # AUDIO — creature voices, combat, ambience, feedback grammar
 
+**Current runtime reference — matches code as of 2026-09-04.** Finite typed creature, biosphere
+and combat voices have a monotonic maximum lifetime as a fallback for a missing browser `onended`
+event. The original natural/manual/steal/mute/hide/dispose cleanup remains the owner; this does not
+change sound identity, envelopes, game clocks or rewards. Detailed current behavior is in §0.3;
+dated signed evidence below is historical, not a certificate for this successor.
+
 ## Approved audiovisual authoring exception — 2026-09-04
 
 Nick permits Blender-authored assets and REAPER/Surge audio alongside existing procedural
@@ -7,8 +13,9 @@ painters/runtime. Canvas-only asset origin is relaxed; painterly identity, prote
 portraits, deterministic game state and runtime budgets remain. Phase 0/1 pilot only: eight body
 plans at 132/300/440, static/animated. See `port/AAA_AUDIOVISUAL_CAMPAIGN.md` and
 `port/AAA_ASSET_POLICY.md`. This records policy, not implemented media. Product baseline is
-landed PR #35; later gameplay is parked. Claude owns CI/budget policy. No Phase 2/release.
-
+landed develop `9ea0104` (PRs #36/#38/#39/#40); Batch 4 and WIP remain parked. V2 starts fresh:
+no player import door; the existing codec/evidence seam stays. Claude owns CI/budget policy.
+No Phase 2/release. This reference was reconciled against code on 2026-09-05.
 
 > **Historical signed universe-polish + bounded Arc 5 Feed local automated checkpoint (2026-08-29):** exact
 > signed clean source `3f69e88ea8e34fdb8d9913276601b426ada783ae` (tree
@@ -31,8 +38,8 @@ landed PR #35; later gameplay is parked. Claude owns CI/budget policy. No Phase 
 > remain historical verbatim where superseded.
 
 **STATUS:** the legacy sections describe immutable production v1.8.9; their last source audit was
-2026-07-30. The dated v2 overlay below matches the current local development candidate and approved
-direction as of **2026-08-29**. It distinguishes the player-live compatibility stings and two exact
+2026-07-30. The v2 reference below matches the current local development candidate and approved
+direction as of **2026-09-04**. It distinguishes the player-live compatibility stings and two exact
 settled synthesized creature expressions—Tame greeting and accepted Feed acknowledgement—plus an
 explicit owned-fauna Compendium selection audition, one generic current-world biosphere pulse
 exposed only by explicit orbital or landed controls, and
@@ -96,7 +103,7 @@ whole layer undocumented despite being the largest single feature of v1.8.
 > certificate. Edge `151.0.4129.107` / CDP `1.3` is provenance only, never an audio
 > ruler or rebaseline trigger.
 
-## 0. v2.0 overlay — current boundary and approved next-arc direction (2026-08-29)
+## 0. v2.0 reference — current boundary and approved next-arc direction (2026-09-04)
 
 ### 0.1 Truth boundary
 
@@ -308,6 +315,21 @@ acknowledgement and explicit owned-fauna Compendium audition are the only curren
 render those creature call plans.
 
 ### 0.3 Typed runtime, buses and lifecycle
+
+**Finite lifetime fallback (2026-09-04):** `AudioVoiceRequest.maxDurationMs` is optional for
+compatibility. A bounded request requires the injected `scheduleVoiceDeadline` owner and uses
+the runtime's existing monotonic `nowMs`, never the game clock or `AudioContext.currentTime`.
+At most one asynchronous wake targets the earliest live deadline; normal completion and every
+cleanup boundary cancel/reschedule it. An overdue voice releases through `finishVoice`, including
+its source handlers, nodes, concurrency slot and mix ownership. Browser scheduling may deliver a
+wake late; this is cleanup on the next serviced callback, not a hard real-time guarantee.
+
+The three current finite request builders derive their bounds from their existing source stop
+plans, including scheduling lead and a 250ms cleanup-only tail. That tail changes no audible
+envelope or plan. The shared app audio owner injects browser timers; deterministic tests inject a
+scheduler and clock. Requests without a bound retain existing behavior and schedule no watchdog.
+Legacy compatibility stings retain their separate native-stop owner. Listening/physical-device
+acceptance remains distinct from fake-clock lifetime proof.
 
 The v2 package grows in stages behind one typed event boundary:
 

@@ -1,5 +1,16 @@
 # Batches 1–3 — preparation history and PR #37
 
+## Integration disposition — 2026-09-05
+
+PR #39 integrated these original signed Batches 1–3 via Claude's merge `1219648`; GitHub's
+integration merge is `1d719c63fbcdb6d0e6ab98a96b16e487aafe1239`. PR #37 is closed as superseded.
+The OpenAI review ref remains `121df53d0d101822f32f2ca98a878db10518e65d`; parked backup remains
+`cf1b9a7843200ecc281c5113b4139909dc0e3a29`. PR #38 resolved the former branch-admission blocker.
+PR #40 landed fresh-start v2 at `9ea0104`: no legacy player import and no real-save-export
+prerequisite for Batch 4. Batch 4 still requires its own bounded review PR and exact hosted
+authorization. No replacement Batches 1–3 PR is needed. Original preparation/PR #37 fields and
+results below are historical, not current instructions or proof of the new develop sync.
+
 **Current 2026-09-04 handoff:** Nick subsequently authorized merging PR36 develop into this
 review branch and opening the PR after fresh checks. Merge commit
 `121df53d0d101822f32f2ca98a878db10518e65d` has parents `8bf9c45…` and landed

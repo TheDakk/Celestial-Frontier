@@ -1,5 +1,35 @@
 # Full review disposition — 2026-09-04
 
+## Current disposition — 2026-09-05
+
+PRs #36/#38/#39/#40 are landed in develop `9ea01041dcdc711190bbf909ea8bb743cd993734`.
+Batches 1–3 are integrated without rewriting their signed commits; PR #37 is closed as
+superseded. P0-1's selected two-lane coverage and bounded review-branch admission are implemented;
+P0-3's Node phone verifier and the Batch 1–3 runtime fixes are landed. No new CI/policy edit is
+part of the audiovisual campaign. Original per-batch evidence below retains its original source.
+
+V2 starts fresh for everyone. No player import door; v1.8.9 codec/evidence `importBlob` seam stays.
+The bulletin is 77 outcomes; retained Glass carriers are judged by their planned ledger. Batch 4
+no longer depends on a real save export: its bounded review PR and exact hosted authorization
+remain separate. P1-tests' additional controls and the Batch 4 entries below are parked-source
+work, not landed capabilities. WIP stays parked at `cf1b9a7`; the pilot runtime equals develop.
+
+### Preserved differing develop-side disposition records
+
+The following lines are retained verbatim from the develop parent. They record its earlier
+assessment, superseded by the current disposition above where applicable.
+
+```text
+Status: implementation in progress. This is a finding/evidence ledger, not a replacement roadmap.
+| P0-1 | Faster develop lane | Open policy design. Preserve meaningful gameplay/save assurance; explicitly name full checks deferred to milestones/release. Current production SceneMemory activation is still open. Measure cost; 8–12 minutes is not proven. |
+| P1-tests | Layering/targeted domain gaps | Assessment complete: naming/worldconfig already have direct parity in starcatalog; mint import ownership and Guardian clone refusal already tested. Remaining narrow gaps are malformed/shallow-frozen mint registration and public-registry clone refusal, plus three WorldConfig anchor/freeze assertions. No duplicate blanket suite. |
+```
+
+### Preserved OpenAI checkpoint records
+
+All original records below are retained in their recorded order. Their former “current”,
+“not integrated”, “waiting for export” and PR-open statements are historical.
+
 Status: implementation evidence preserved on parked branch; no claim of integration.
 
 **2026-09-04 audiovisual-campaign reconciliation:** all post-PR-35 local work is explicitly

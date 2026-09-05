@@ -1,5 +1,23 @@
 # Celestial Frontier v2 — Complete Graphics, Audio & Polish Production Plan
 
+## Current campaign continuation — 2026-09-05
+
+The pilot now uses landed develop `9ea01041dcdc711190bbf909ea8bb743cd993734`: PRs #36/#38/#39/#40
+include the two-lane battery, bounded review-branch admission, signed Batches 1–3 and the v2
+fresh-start decision. PR #37 is closed as superseded; its review ref and the parked backup stay
+unchanged. Batch 4 no longer waits for any save export; only its own bounded review PR and Nick's
+exact hosted authorization remain. The September 4 checkpoints below are preserved history.
+
+V2 is a brand-new game for everyone; no player-facing legacy import door may be reintroduced.
+Keep the v1.8.9 codec and evidence-build `importBlob` seam as-is, the 77-outcome draft bulletin,
+and Glass's planned-ledger matching. This decision does not restart implementation from scratch.
+
+Blender/REAPER/Surge terminal readiness and browser audio decoding passed in the retained evidence.
+Continue Batch A with complete relative-path audio source preservation; independent source backup
+still requires a selected, verified destination. No unchanged tool test reruns, Phase 2, purchases,
+protected-portrait changes, workflow/policy changes, hosted attempts or release are authorized.
+The accepted Phase 0/1 scope, 128/256 MiB policy and pilot approval stop remain in force.
+
 **Prepared for Nick · September 4, 2026**  
 **Status: review submission · Blender + REAPER + Surge XT edition · no game implementation started by this planning task.**
 

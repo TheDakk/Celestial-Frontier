@@ -18,6 +18,15 @@ implied.
 `develop` is the integration branch. `main` is the production branch.
 Neither agent may commit directly to either one.
 
+**Bounded review branches (policy decision 2026-09-05, Claude under Nick's authority):** when an
+agent's machine branch is occupied by unrelated in-flight work, that agent may carry one reviewed
+candidate to `develop` on a branch named `openai/review-*` or `anthropic/review-*`. Such a branch
+is still owned by the same agent, is pushed only from that agent's own worktree above, is admitted
+into `develop` by the sealed branch-flow validator exactly like the four machine branches, and
+never flows into `main`. It is not synchronized by the fast-forward workflow and is left dormant
+or deleted after its merge. Every other rule here (no direct commits, no force operations, exact
+hosted authorization, paired handoff) applies to it unchanged.
+
 ## Fail-closed workspace identity
 
 The app, operating system, physical Git root, and branch form one identity.
@@ -107,7 +116,9 @@ While frozen:
 After Nick lifts the freeze, each hosted attempt still needs exact one-run
 authorization: workflow, PR/ref, full head/base SHA, configured maximum runner
 minutes, and one-attempt/no-retry stopping rule. Only Nick applies the exact
-`actions-budget-approved` PR label or authorizes the manual workflow token. Never
+`actions-budget-approved` PR label (bounded agent lane on `develop`, full chain on
+`main`) or `actions-full-chain-approved` PR label (full chain on `develop`), or
+authorizes the manual workflow token. Never
 rerun an unchanged red or canceled head. The standing green-PR merge authority is
 not standing authority to spend Actions capacity.
 
@@ -208,9 +219,11 @@ hosted attempt. There is no automatic post-merge battery or branch publication
 under the conservation policy.
 As of 2026-08-23, the active `develop` ruleset names `battery` as its only required
 status context; `branch-flow-guard` is a manual diagnostic, not a merge prerequisite.
-That context is profile-aware but never weaker than its destination: agent → `develop`
-runs the final-head V2 static admission plus Compendium and the immutable Slice → Glass
-chain, adding the legacy root gate when those tracked inputs changed. SceneMemory live native-heap
+That context is lane-aware but never weaker than its destination: under
+`actions-budget-approved`, agent → `develop` runs the bounded agent lane (the final-head V2
+static admission plus the two immutable phone Glass canaries, adding the legacy root gate when
+those tracked inputs changed); under `actions-full-chain-approved` it also runs Compendium and
+the immutable Slice → Glass chain. SceneMemory live native-heap
 work is production-only/quarantined and requires a later explicit activation decision; its
 deterministic mutation controls remain universal. `develop` → `main` is a separate production
 authorization and adds the strict live selftest, SceneMemory certification, exhaustive instrument

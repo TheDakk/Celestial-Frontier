@@ -1,5 +1,20 @@
 # Development Preview — Separate-Origin Human Playtesting
 
+## Current build boundary — matches implementation as of 2026-09-04
+
+Preview packaging and package verification require the ordinary **distributable** build marker.
+`--mode evidence` is reserved for explicit instruments and is refused as a human preview even if
+its file hashes are coherent. The packaged browser check no longer calls `__CF_SLICE__`: it
+observes populated player/navigation UI and a live canvas, requires the diagnostic API absent,
+then opens the actual Guide and verifies full manifest-bound identity. For fresh Training, it
+first clicks the real Skip Training action in its disposable browser profile and waits for normal
+completion/control restoration. Painted-but-inert background UI can prove rendering, never action
+reachability: Guide activation separately refuses inert/disabled controls. Existing origin isolation,
+exact-commit packaging, local-only dirty diagnostics and no-publication defaults are unchanged.
+Both build outputs and the distributable Edge flow passed locally; exact details and the repaired
+readiness-instrument red are in `../audits/FULL_REVIEW_DISPOSITION_20260904.md`. This dirty diagnostic
+is not publishable or a clean-source certificate; historical overlays do not certify this boundary.
+
 > **2026-09-02 current browser-ownership/Glass repair overlay (supersedes older “current” labels;
 > dated evidence remains immutable):** exact clean source
 > `05690215771db91601cf9dbcbcaa8d771fe540b5` passed the complete browser-free develop profile,
@@ -559,7 +574,8 @@ private; verify the selected organization's Pages/access-control plan before pub
 The v2 app currently owns:
 
 - IndexedDB database `cf-v2-slice`;
-- localStorage keepsake `cf_v2_import_original` when a legacy expedition is imported.
+- no localStorage keys (the former `cf_v2_import_original` keepsake was removed with the
+  save-import door on 2026-09-05).
 
 Those names remain stable. Isolation is supplied by the browser's **exact origin boundary**,
 not by silently changing save keys in a test build. `tools/devpreview.mjs` therefore:
@@ -567,6 +583,7 @@ not by silently changing save keys in a test build. `tools/devpreview.mjs` there
 - rejects `https://celestialfrontier.github.io` and every path-based origin input;
 - requires a root HTTPS origin;
 - replaces each built module entry with a runtime origin guard;
+- requires the `distributable` build marker before packaging and again during verification;
 - permits the guarded build to run only on that exact origin or loopback for local review;
 - rejects either historical floating DEV-badge id/style and leaves visible version/build
   identity to the in-game Guide;
@@ -616,7 +633,8 @@ approved builds come from the exact committed snapshot; dirty local builds are v
 nonpublishable. The producer and browser check also use the shared workspace lock, so they
 fail closed rather than overlap `overridecontrol` or another source-mutating/build gate.
 `preview:smoke` then serves those exact packaged bytes over loopback and boots them in the
-owned real Chromium harness at 320×568. It requires the app, canvas, manifest binding, and
+owned real Chromium harness at 320×568. It requires populated ordinary player/trail UI, a live
+canvas, no exposed diagnostic API, the distributable marker, manifest binding, and
 Guide identity to be live; it rejects either historical corner badge id/style and requires the
 Guide to show v2.0 plus the full manifest commit.
 Every CI/publication workflow that packages a preview runs this outcome check before

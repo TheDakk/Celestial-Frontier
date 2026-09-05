@@ -55,14 +55,14 @@ function landingWiringErrors(source: string): string[] {
     || !body.includes("|| (p.seed === 133 && training && trainingStepId() === 'land'))")) {
     errors.push('landing-training-event-fence');
   }
-  if (!body.includes("const faultInjection = smokeRejectNextArc0LandingStorage")
+  if (!body.includes("const faultInjection = !__CF_EVIDENCE_BUILD__ ? null : smokeRejectNextArc0LandingStorage")
     || !body.includes("if (faultInjection === 'storage-failure') smokeRejectArc0LandingStorageBoundary = true;")
     || !body.includes("if (faultInjection === 'storage-failure') smokeRejectArc0LandingStorageBoundary = false;")
     || !body.includes('await revisionRepo.mutate({')
     || !body.includes('lastSmokeArc0LandingFaultWitness = Object.freeze({')) {
     errors.push('landing-fault-evidence');
   }
-  if (!body.includes('if (smokeRejectNextArc0LandingPublication)')
+  if (!body.includes('if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc0LandingPublication)')
     || !body.includes("outcome: 'committed-publication-reload'")
     || !body.includes("lastArc0LandingOutcome = 'committed-publication-reload';")) {
     errors.push('landing-postcommit-convergence');
@@ -242,7 +242,7 @@ describe('Arc 0 main landing wiring', () => {
       'refreshPlanetSurveyCard(); void persistView();\n      if ((facts.permanentLanding',
     ))).toContain('landing-no-optimistic-writer');
     expect(landingWiringErrors(main.replace(
-      "if (smokeRejectNextArc0LandingPublication) {",
+      "if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc0LandingPublication) {",
       'if (false) { // mutation control removed publication failure',
     ))).toContain('landing-postcommit-convergence');
     expect(landingWiringErrors(main.replace(

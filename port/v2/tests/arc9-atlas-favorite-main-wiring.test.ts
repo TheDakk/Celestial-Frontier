@@ -170,9 +170,9 @@ function wiringErrors(main: string, documentHtml: string): string[] {
     "    if (openPanelId() === 'atlas') {\n      fillAtlas();",
     '\n    }\n  }',
   );
-  if (!focusRestore.includes(
-    '`#atlaspanel [data-atlas-favorite="${CSS.escape(atlasId)}"]`',
-  ) || !focusRestore.includes(')?.focus();')) errors.push('focus-restoration');
+  if (!focusRestore.includes('fillAtlas();') || focusRestore.includes('.focus(')
+    || !render.includes('capturePanelRefillFocus(')
+    || !render.includes('restoreFocus();')) errors.push('focus-restoration');
 
   for (const guard of [
     'smokeForceReadOnly',
@@ -392,8 +392,8 @@ describe('Arc 9 Atlas Favorite Main and HTML wiring', () => {
 
     const noFocus = replaceOnce(
       action,
-      '      )?.focus();',
-      '      );',
+      "    if (openPanelId() === 'atlas') {\n      fillAtlas();",
+      "    if (openPanelId() === 'atlas') {\n      fillAtlas();\n      document.body.focus();",
     );
     expect(wiringErrors(source.replace(action, noFocus), html)).toContain('focus-restoration');
   });

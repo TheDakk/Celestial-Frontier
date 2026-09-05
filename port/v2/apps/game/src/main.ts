@@ -13,8 +13,8 @@
    · Settings/Compendium/Records · search (code-paste travel) · the shipped
    audio stings · capped COSMIC_EPOCH on an app-owned monotonic session segment.
 
-   Still ahead (recorded in ROADMAP's NEXT): the remaining 15 lessons of the complete 21-step training port,
-   full Atlas chart/favorites presentation, rarity stings, ring↔planet mutual shadows and PROTO star disk.
+   Field Training currently has 15 lesson IDs; a fuller hands-on curriculum remains
+   on the V2 program roadmap. Atlas charting/favorites and rarity stings are live.
    Static deterministic Canvas species portraits and the preserved 43-biome landing vistas are live;
    retained Pixi actors, meshes, and portrait animation remain later work. */
 import { Application, BatchTextureArray, Container, Graphics, Sprite, Texture, Text, TextStyle, cleanHash, extensions, CullerPlugin } from 'pixi.js';
@@ -35,6 +35,7 @@ import {
   registerPanel, fillPanel, openPanel, closePanels, openPanelId,
   createPanelOpenController,
 } from './panels.js';
+import { capturePanelRefillFocus } from './panel-refill-focus.js';
 import {
   CompendiumVirtualList,
   type CompendiumVirtualRow,
@@ -574,7 +575,8 @@ const F4_LEASE_TTL_MS = 10_000;
 const F4_HEARTBEAT_MS = F4_LEASE_TTL_MS / 2;
 const F4_CHECKPOINT_MS = 30_000;
 const F4_OWNER_ID = 'celestial-frontier-game-tab';
-const F4_START_HIDDEN_FOR_SMOKE = typeof (window as unknown as Record<string, unknown>).__cfF4StartHidden === 'function';
+const F4_START_HIDDEN_FOR_SMOKE = __CF_EVIDENCE_BUILD__
+  && typeof (window as unknown as Record<string, unknown>).__cfF4StartHidden === 'function';
 let f4VisibilityOverrideHidden = F4_START_HIDDEN_FOR_SMOKE;
 const f4PageVisible = (): boolean => document.visibilityState === 'visible' && !f4VisibilityOverrideHidden;
 let f4Runtime: F4RuntimeAuthority | null = null;
@@ -710,7 +712,19 @@ let smokeRejectNextF4HeartbeatStorage = false;
 let smokeRejectNextF4RevisionVerification = false;
 let smokeF4LeaseReadCount = 0;
 let smokeF4RevisionReadCount = 0;
-const smokeF4ConvergenceReloadHold = createProductActionDiagnosticHold();
+/* Even an unarmed evidence hold is async. Keep that same await boundary in
+   ordinary play without constructing any armable gate or retained latch. */
+const inactiveEvidenceHold: ReturnType<typeof createProductActionDiagnosticHold> = Object.freeze({
+  arm: () => false,
+  async holdIfArmed(_operation: string): Promise<void> {},
+  release: () => false,
+  diagnostics: () => Object.freeze({
+    schema: 'cf-v2-product-action-hold-diagnostics/v1' as const,
+    phase: 'idle' as const, operation: null, sequence: 0,
+  }),
+});
+const smokeF4ConvergenceReloadHold = __CF_EVIDENCE_BUILD__
+  ? createProductActionDiagnosticHold() : inactiveEvidenceHold;
 let lastF4HeartbeatStorageFault: Readonly<{
   schema: 'cf-v2-f4-heartbeat-storage-fault/v1';
   context: string;
@@ -773,7 +787,8 @@ function scheduleF4AuthorityConvergenceReload(runtime: F4RuntimeAuthority, detai
         }),
       });
       try {
-        const binding = (window as unknown as Record<string, unknown>).__cfF4AuthorityConvergenceWitness;
+        const binding = __CF_EVIDENCE_BUILD__
+          ? (window as unknown as Record<string, unknown>).__cfF4AuthorityConvergenceWitness : undefined;
         if (typeof binding === 'function') {
           (binding as (payload: string) => unknown)(JSON.stringify(witness));
         }
@@ -829,7 +844,7 @@ function handleF4HeartbeatStorageError(
 async function ensureF4RevisionCurrent(runtime: F4RuntimeAuthority): Promise<boolean> {
   try {
     smokeF4RevisionReadCount += 1;
-    if (smokeRejectNextF4RevisionVerification) {
+    if (__CF_EVIDENCE_BUILD__ && smokeRejectNextF4RevisionVerification) {
       smokeRejectNextF4RevisionVerification = false;
       throw new Error('slice-smoke injected F4 revision verification failure');
     }
@@ -882,7 +897,8 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
         throw new Error('product bootstrap candidate is missing');
       }
       if (productBootstrapWasPending) {
-        const rejector = (window as unknown as Record<string, unknown>).__cfRejectArc2ProductBootstrap;
+        const rejector = __CF_EVIDENCE_BUILD__
+          ? (window as unknown as Record<string, unknown>).__cfRejectArc2ProductBootstrap : undefined;
         if (typeof rejector === 'function' && (rejector as (payload: string) => unknown)(JSON.stringify({
           schema: 'cf-v2-arc2-bootstrap-control/v1',
           documentToken: DOCUMENT_TOKEN,
@@ -892,7 +908,8 @@ async function ensureBootAuthorityCommit(runtime: F4RuntimeAuthority): Promise<b
         }
       }
       if (engineeringBootstrapWasPending) {
-        const rejector = (window as unknown as Record<string, unknown>).__cfRejectArc3EngineeringBootstrap;
+        const rejector = __CF_EVIDENCE_BUILD__
+          ? (window as unknown as Record<string, unknown>).__cfRejectArc3EngineeringBootstrap : undefined;
         const payload = JSON.stringify({
           schema: 'cf-v2-arc3-bootstrap-control/v1',
           documentToken: DOCUMENT_TOKEN,
@@ -1318,7 +1335,7 @@ const checkpointAndHideF4 = (): Promise<void> => {
     let visibilityOutcome: string | null = null;
     let visibilityError: string | null = null;
     try {
-      if (smokeRejectNextF4HideCheckpoint) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextF4HideCheckpoint) {
         smokeRejectNextF4HideCheckpoint = false;
         throw new Error('slice-smoke injected F4 hide checkpoint rejection');
       }
@@ -1509,6 +1526,7 @@ type BootPhaseWitness = {
 };
 let bootPhaseSequence = 0;
 function emitBootPhase(stage: BootPhaseStage): void {
+  if (!__CF_EVIDENCE_BUILD__) return;
   const witness: BootPhaseWitness = {
     schema: 'cf-v2-boot-phase/v1', documentToken: DOCUMENT_TOKEN,
     sequence: ++bootPhaseSequence, stage,
@@ -1652,7 +1670,8 @@ function scheduleReplacementReload(
        evidence outside the dying execution context, so a vanished global can
        never masquerade as a replacement page becoming ready. */
     try {
-      const binding = (window as unknown as Record<string, unknown>).__cfReloadReleaseWitness;
+      const binding = __CF_EVIDENCE_BUILD__
+        ? (window as unknown as Record<string, unknown>).__cfReloadReleaseWitness : undefined;
       if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
     } catch { /* evidence harness fails closed when its binding is absent/broken */ }
     try { afterRelease?.(witness); }
@@ -1716,7 +1735,7 @@ let smokeRejectArc5FeedStorageBoundary = false;
 /* Browser-gate one-shot storage faults still cross the production revision
    repository and exact product-action owner. Only the armed action-scoped
    compare-and-apply is rejected; ordinary play delegates byte-for-byte. */
-const persistenceBackend: StorageBackend = {
+const persistenceBackend: StorageBackend = __CF_EVIDENCE_BUILD__ ? {
   get: (store, key) => {
     if (store === 'meta' && key === F3_ACTIVE_PLAY_LEASE_KEY) {
       smokeF4LeaseReadCount++;
@@ -1749,7 +1768,7 @@ const persistenceBackend: StorageBackend = {
   },
   keys: (store) => indexedDBPersistenceBackend.keys(store),
   clear: (stores) => indexedDBPersistenceBackend.clear(stores),
-};
+} : indexedDBPersistenceBackend;
 const repo = createSaveRepository(persistenceBackend);
 const revisionRepo = createRevisionedRepository(persistenceBackend);
 const EMPTY_V5_EXTENSIONS: V5Extensions = Object.freeze({});
@@ -1929,6 +1948,7 @@ let renderedSceneReceipt: RenderedSceneReceipt = Object.freeze({
 });
 let smokeAbortNextRenderBeforeReceipt = false;
 function abortRenderBeforeReceiptForSmoke(): boolean {
+  if (!__CF_EVIDENCE_BUILD__) return false;
   if (!smokeAbortNextRenderBeforeReceipt) return false;
   smokeAbortNextRenderBeforeReceipt = false;
   return true;
@@ -2261,31 +2281,26 @@ function invalidateSurveyTravel(): void {
   card.querySelector('[data-act="travel"]')?.remove();
 }
 
-/* ---- the save-import sheet (Phase 4's second UI component; GATE C's front
-   door): paste or pick your cfcc_save_v2 blob — VALIDATED through the real
-   importSaveV2 first and stored as primary. The player's external backup
-   remains the authoritative exact copy; the app only ATTEMPTS an additional
-   untouched local keepsake because browser storage may refuse it. ---- */
+/* ---- the Field Training recovery sheet: a nonclosable modal shown only while
+   an unrecognized checkpoint or an unverifiable Sol route locks exploration.
+   v2 starts every explorer fresh (Nick, 2026-09-05): there is no player-facing
+   save import, so reload/update is the only exit. The evidence-build importBlob
+   below survives solely as the Slice/Glass replacement driver. ---- */
 const sheet = document.createElement('div');
-sheet.id = 'importsheet';
+sheet.id = 'importsheet';   /* id retained: text-scale CSS, MODAL_SEL and the Training boundary list key on it */
 sheet.setAttribute('role', 'dialog');
 sheet.setAttribute('aria-modal', 'true');
-sheet.setAttribute('aria-label', 'Bring your expedition');
+sheet.setAttribute('aria-label', 'Field Training recovery');
 sheet.style.cssText = 'position:fixed;inset:0;padding:calc(var(--safe-top,0px) + 16px) calc(var(--safe-right,0px) + 16px) calc(var(--safe-bottom,0px) + 16px) calc(var(--safe-left,0px) + 16px);' +
   'box-sizing:border-box;align-items:center;justify-content:center;overflow:hidden;background:rgba(4,6,12,0.7);display:none;z-index:40';
 sheet.innerHTML =
   '<div style="position:relative;width:min(520px,100%);box-sizing:border-box;max-height:100%;overflow:auto;' +
   'background:rgba(10,16,30,0.97);border:1px solid #2a3c5e;border-radius:12px;padding:18px;color:#cfe0f4;font:13px/1.5 system-ui,sans-serif">' +
-  '<h2 style="font-size:15px;margin:0 0 4px">Bring your expedition</h2>' +
-  '<span data-sel="import-safety" style="color:var(--dim)">Paste or pick a moderator-provided copied expedition save. Keep that external moderator backup as the authoritative exact copy. The app checks the save before storing it and attempts an additional exact local keepsake after import, but browser storage can refuse that keepsake.</span>' +
-  '<textarea id="importtext" aria-label="Paste expedition save data" style="width:100%;height:120px;margin:10px 0;background:#0b1220;color:#cfe0f4;border:1px solid #22304a;border-radius:8px;padding:8px;box-sizing:border-box;font:12px monospace"></textarea>' +
-  '<div style="display:flex;gap:8px;flex-wrap:wrap">' +
-  '<button id="importgo" style="background:#1d3a5e;color:#eaf2ff;border:1px solid #3a5c8e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Import & reload</button>' +
-  '<button id="importpick" type="button" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Pick file</button>' +
-  '<input id="importfile" aria-label="Choose an expedition save file" type="file" accept=".json,.txt" tabindex="-1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)">' +
-  '<button id="importretry" type="button" hidden style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Reload to retry</button>' +
-  '<button id="importclose" style="background:transparent;color:var(--dim);border:1px solid #22304a;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">close</button>' +
-  '</div><div id="importmsg" role="alert" aria-live="assertive" aria-atomic="true" style="margin-top:8px;color:#e8a0a0"></div></div>';
+  '<h2 style="font-size:15px;margin:0 0 4px">Field Training recovery</h2>' +
+  '<span data-sel="recovery-copy" style="color:var(--dim)"></span>' +
+  '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">' +
+  '<button id="importretry" type="button" style="background:#14233c;color:#cfe0f4;border:1px solid #2a3c5e;border-radius:8px;padding:8px 14px;cursor:pointer;min-height:44px">Reload to retry</button>' +
+  '</div></div>';
 document.body.appendChild(sheet);
 const importBackgroundState = new Map<HTMLElement, { inert: boolean; ariaHidden: string | null }>();
 let importBackgroundObserver: MutationObserver | null = null;
@@ -2304,41 +2319,28 @@ function enforceImportBackgroundInert(): void {
     if (child instanceof HTMLElement) rememberAndLockImportBackground(child);
   }
 }
-function configureImportSheet(): void {
+function configureRecoverySheet(): void {
   const title = sheet.querySelector<HTMLElement>('h2')!;
-  const safety = sheet.querySelector<HTMLElement>('[data-sel="import-safety"]')!;
-  const close = sheet.querySelector<HTMLButtonElement>('#importclose')!;
-  const retry = sheet.querySelector<HTMLButtonElement>('#importretry')!;
-  sheet.dataset.mode = trainingRecoveryLock || 'import';
-  if (trainingRecoveryLock) {
-    title.textContent = trainingRecoveryLock === 'unknown-checkpoint'
-      ? 'Field Training checkpoint protected'
-      : 'Field Training route unavailable';
-    safety.textContent = trainingRecoveryLock === 'unknown-checkpoint'
-      ? 'This checkpoint is not recognized by this build. Exploration is locked so no change can appear saved while its bytes remain protected. Update and reload, or import a trusted complete expedition.'
-      : 'Field Training could not verify its route to Sol. Exploration is locked so practice cannot become unsaved session-only progress. Reload to retry, or import a trusted complete expedition.';
-    close.hidden = true;
-    close.disabled = true;
-    retry.hidden = false;
-    sheet.setAttribute('aria-label', title.textContent || 'Field Training recovery');
-    return;
-  }
-  title.textContent = 'Bring your expedition';
-  safety.textContent = 'Paste or pick a moderator-provided copied expedition save. Keep that external moderator backup as the authoritative exact copy. The app checks the save before storing it and attempts an additional exact local keepsake after import, but browser storage can refuse that keepsake.';
-  close.hidden = false;
-  close.disabled = false;
-  retry.hidden = true;
-  sheet.setAttribute('aria-label', 'Bring your expedition');
+  const copy = sheet.querySelector<HTMLElement>('[data-sel="recovery-copy"]')!;
+  const lock: TrainingRecoveryLock = trainingRecoveryLock ?? 'route-unavailable';
+  sheet.dataset.mode = lock;
+  title.textContent = lock === 'unknown-checkpoint'
+    ? 'Field Training checkpoint protected'
+    : 'Field Training route unavailable';
+  copy.textContent = lock === 'unknown-checkpoint'
+    ? 'This checkpoint is not recognized by this build. Exploration is locked so no change can appear saved while its bytes remain protected. Update and reload.'
+    : 'Field Training could not verify its route to Sol. Exploration is locked so practice cannot become unsaved session-only progress. Reload to retry.';
+  sheet.setAttribute('aria-label', title.textContent);
 }
 /* ---- THE DOCK: eight live controls, every press proven by an EFFECT (the
    simrun-dom law — a dead button never ships). charts/sound flip the REAL
    save fields and persist through exportSaveV2. ---- */
-function openImportSheet(): void {
+function openRecoverySheet(): void {
   closePanels();
-  configureImportSheet();
+  configureRecoverySheet();
   if (sheet.style.display !== 'none') {
     enforceImportBackgroundInert();
-    (sheet.querySelector('#importtext') as HTMLTextAreaElement | null)?.focus();
+    refocusRecoverySheet();
     return;
   }
   importBackgroundState.clear();
@@ -2352,30 +2354,20 @@ function openImportSheet(): void {
     subtree: true,
   });
   sheet.style.display = 'flex';
-  (sheet.querySelector('#importtext') as HTMLTextAreaElement | null)?.focus();
+  refocusRecoverySheet();
 }
-function closeImportSheet(): void {
-  if (trainingRecoveryLock) {
-    (sheet.querySelector<HTMLElement>('#importtext') || sheet.querySelector<HTMLElement>('button'))?.focus();
-    return;
-  }
-  importBackgroundObserver?.disconnect();
-  importBackgroundObserver = null;
-  sheet.style.display = 'none';
-  for (const [el, { inert, ariaHidden }] of importBackgroundState) {
-    el.inert = inert;
-    if (ariaHidden === null) el.removeAttribute('aria-hidden'); else el.setAttribute('aria-hidden', ariaHidden);
-  }
-  importBackgroundState.clear();
-  document.getElementById('docksets')?.focus();
+/* The recovery sheet is never dismissable: Escape and any outside focus return
+   to its single action, and only its reload leaves this document. */
+function refocusRecoverySheet(): void {
+  sheet.querySelector<HTMLElement>('#importretry')?.focus();
 }
 function openTrainingRecoverySheet(reason: TrainingRecoveryLock): void {
   trainingRecoveryLock = reason;
-  openImportSheet();
+  openRecoverySheet();
 }
 document.addEventListener('focusin', (event) => {
   if (sheet.style.display === 'none' || sheet.contains(event.target as Node)) return;
-  (sheet.querySelector<HTMLElement>('#importtext') || sheet.querySelector<HTMLElement>('button'))?.focus();
+  refocusRecoverySheet();
 }, true);
 surveyDockEl.addEventListener('click', () => {
   /* Re-show a retained card. A fresh replacement document deliberately has
@@ -2569,8 +2561,7 @@ function fillSettings(): void {
       `<button data-motion="${v}" aria-pressed="${save.motionMode === v}" class="${save.motionMode === v ? 'on' : ''}">${t}</button>`).join('') +
     '</span></div>' +
     `<div class="row"><label>Panel tint</label><input id="setglass" aria-label="Panel tint" type="range" min="82" max="98" value="${Math.round(Math.max(save.glassTint, 0.82) * 100)}"></div>` +
-    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>` +
-    `<div class="row"><label>Save data</label><button id="setimport" data-sel="set-import">Bring expedition</button></div>`);
+    `<div class="row"><label>Field Training</label><button id="setrestart" data-sel="set-restart">Restart</button></div>`);
   const el = document.getElementById('setpanel')!;
   const refillAndFocus = (selector: string): void => {
     fillSettings();
@@ -2749,7 +2740,6 @@ function fillSettings(): void {
       toast('Save unavailable', 'Field Training was not restarted; your current expedition is unchanged.');
     }
   });
-  el.querySelector('#setimport')!.addEventListener('click', openImportSheet);
   el.querySelector('#setglass')!.addEventListener('input', (e) => {
     save.glassTint = (+(e.target as HTMLInputElement).value) / 100;
     applyGlass(); persistSoon();
@@ -3618,6 +3608,7 @@ function syncBoundedCollectionButtons(
 }
 function fillRecords(): void {
   if (!save) return;
+  const restoreFocus = capturePanelRefillFocus(document.getElementById('recpanel')!, ['data-binder-claim']);
   const st = save.stats || {};
   const rankProjection = projectArc9RecordsRankReadModelV1(save);
   const rank = rankProjection.kind === 'projected'
@@ -3656,6 +3647,7 @@ function fillRecords(): void {
     '[data-binder-claim]',
     arc9BinderClaimPendingId !== null,
   );
+  restoreFocus();
 }
 function frontierEndingPanelStatus(): string | null {
   if (arc9FrontierEndingPending) return 'Saving your Frontier legacy…';
@@ -3688,6 +3680,7 @@ function fillPrimeCodex(): void {
 let arc9AtlasFavoritePendingId: string | null = null;
 function fillAtlas(): void {
   if (!save) return;
+  const restoreFocus = capturePanelRefillFocus(document.getElementById('atlaspanel')!, ['data-atlas-travel', 'data-atlas-favorite']);
   const rows = save.logMap;
   fillPanel('atlas',
     `<h3>Star Atlas <span style="color:#7ec8f0" data-sel="atlas-count">${rows.length}</span></h3>` +
@@ -3709,6 +3702,7 @@ function fillAtlas(): void {
           + `<button type="button" data-atlas-favorite="${esc(id)}" aria-pressed="${favorite}" aria-label="${favoriteLabel}: ${esc(String(e.title || id))}"${favoriteUnavailable ? ' disabled aria-disabled="true"' : ''}>${favorite ? '★ Favorite' : '☆ Favorite'}</button>`
           + '</div></div>';
       }).join('')));
+  restoreFocus();
 }
 document.getElementById('atlaspanel')!.addEventListener('click', async (e) => {
   if (!save || !(e.target instanceof Element)) return;
@@ -3741,6 +3735,7 @@ document.getElementById('atlaspanel')!.addEventListener('click', async (e) => {
    only real v2 actions; never render the unported canonical copy directly. */
 function fillCharters(): void {
   if (!save) return;
+  const restoreFocus = capturePanelRefillFocus(document.getElementById('chpanel')!, ['data-starter-charter-accept']);
   const projection = projectV2Charter(save.ascCh, save.ascProg, ascStage());
   const chapter = !projection
     ? '<div class="centry" data-sel="charter-ch" data-chstate="complete">' +
@@ -3775,6 +3770,7 @@ function fillCharters(): void {
     starterProjection.kind !== 'projected'
       || starterProjection.board.acceptedCount >= starterProjection.board.cap,
   );
+  restoreFocus();
 }
 registerPanel({ id: 'ch', el: document.getElementById('chpanel')!, btns: [document.getElementById('dockcharters'), document.getElementById('railcharters')], onOpen: fillCharters });
 document.getElementById('chpanel')!.addEventListener('click', (event) => {
@@ -4289,17 +4285,13 @@ const searchTravel = createSearchTravelController({
     (action || app.canvas).focus();
   },
 });
-sheet.querySelector('#importclose')!.addEventListener('click', closeImportSheet);
-sheet.querySelector('#importpick')!.addEventListener('click', () => (sheet.querySelector('#importfile') as HTMLInputElement).click());
 sheet.querySelector('#importretry')!.addEventListener('click', () => {
   const replacement = claimReplacementTransaction('training-recovery');
   if (replacement) scheduleReplacementReload(replacement);
 });
-sheet.querySelector('#importfile')!.addEventListener('change', (e) => {
-  const f = (e.target as HTMLInputElement).files?.[0];
-  if (!f) return;
-  void f.text().then((txt) => { (sheet.querySelector('#importtext') as HTMLTextAreaElement).value = txt; });
-});
+/* Evidence-build replacement driver only. Slice and Glass call it through
+   __CF_SLICE__.api to prove the whole-save replacement/reload chain; no
+   player control reaches it since the save-import door was removed. */
 async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<string | null> {
   /* returns an error message, or null on success (then we reload) */
   let phaseSequence = 0;
@@ -4315,7 +4307,8 @@ async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<stri
     };
     lastImportPhaseWitness = witness;
     try {
-      const binding = (window as unknown as Record<string, unknown>).__cfImportPhaseWitness;
+      const binding = __CF_EVIDENCE_BUILD__
+        ? (window as unknown as Record<string, unknown>).__cfImportPhaseWitness : undefined;
       if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
     } catch { /* optional evidence is fail-closed in the harness */ }
   };
@@ -4412,21 +4405,12 @@ async function importBlob(raw: string, diagnosticPhaseId?: string): Promise<stri
     releaseReplacementTransaction(replacement);
     return 'Storage refused the write (private mode?).';
   }
-  /* Best-effort extra keepsake only: the external moderator backup remains
-     authoritative. The live primary evolves through exportSaveV2 from the
-     first frame, so retain the exact input locally when browser storage
-     permits it, without blocking an otherwise valid import when it does not. */
-  try { localStorage.setItem('cf_v2_import_original', raw); } catch { /* keepsake only */ }
   phase('release-started');
   scheduleReplacementReload(replacement, (witness) => {
     phase('release-complete', witness.error);
   });
   return null;
 }
-sheet.querySelector('#importgo')!.addEventListener('click', () => {
-  const raw = (sheet.querySelector('#importtext') as HTMLTextAreaElement).value;
-  void importBlob(raw).then((err) => { if (err) (sheet.querySelector('#importmsg') as HTMLElement).textContent = err; });
-});
 
 /* ---- the Charter toast: name the honest current-slice boundary ---- */
 const toastEl = document.createElement('div');
@@ -7147,7 +7131,7 @@ async function doLand(): Promise<boolean> {
     }
     const priorUnlocked = save.unlocked;
     const priorBestRank = save.stats.bestRank ?? 0;
-    const faultInjection = smokeRejectNextArc0LandingStorage
+    const faultInjection = !__CF_EVIDENCE_BUILD__ ? null : smokeRejectNextArc0LandingStorage
       ? 'storage-failure'
       : smokeStaleNextArc0LandingAuthority
         ? 'stale-authority'
@@ -7240,7 +7224,7 @@ async function doLand(): Promise<boolean> {
     }
 
     try {
-      if (smokeRejectNextArc0LandingPublication) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc0LandingPublication) {
         smokeRejectNextArc0LandingPublication = false;
         lastSmokeArc0LandingFaultWitness = Object.freeze({
           schema: 'cf-v2-arc0-landing-fault-witness/v1',
@@ -8487,26 +8471,35 @@ async function persistView(
   heartbeatCycleOwner: typeof F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER | null = null,
   lifecycleCheckpointOwner: typeof F4_LIFECYCLE_CHECKPOINT_OWNER | null = null,
 ): Promise<boolean> {
-  if (namedSearchPersistenceHeld && replacementOwner === null
-    && intent === 'ordinary' && heartbeatCycleOwner === null
-    && lifecycleCheckpointOwner !== F4_LIFECYCLE_CHECKPOINT_OWNER) {
-    /* An ordinary checkpoint (including a settings debounce) that fires while
-       an accepted custom name is settling must
-       not become the activePersist tail that self-refuses its immediately
-       submitted route. The route transaction persists the joined successor;
-       re-arm one ordinary checkpoint afterward for any unrelated live field. */
-    namedSearchPersistenceDeferred = true;
-    return false;
-  }
-  if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
-    || !f4RuntimeMayMutate() || (replacementTransaction && replacementTransaction !== replacementOwner)) return false;
+  const admitted = (): boolean => {
+    if (namedSearchPersistenceHeld && replacementOwner === null
+      && intent === 'ordinary' && heartbeatCycleOwner === null
+      && lifecycleCheckpointOwner !== F4_LIFECYCLE_CHECKPOINT_OWNER) {
+      /* An ordinary checkpoint (including a settings debounce) that fires while
+         an accepted custom name is settling must
+         not become the activePersist tail that self-refuses its immediately
+         submitted route. The route transaction persists the joined successor;
+         re-arm one ordinary checkpoint afterward for any unrelated live field. */
+      namedSearchPersistenceDeferred = true;
+      return false;
+    }
+    if (persistHold || trainingCheckpointWriteHeld || importWriteInFlight || replacementReloadPending
+      || !f4RuntimeMayMutate() || (replacementTransaction && replacementTransaction !== replacementOwner)
+      || (replacementOwner !== null && replacementTransaction !== replacementOwner)) return false;
+    return true;
+  };
+  if (!admitted()) return false;
   const write = async (): Promise<boolean> => {
     let epochStage: EcologyEpochStage | null = null;
     let durable = false;
     try {
+      // A queued predecessor may have handed authority to Import or Training.
+      if (!admitted()) return false;
       if (heartbeatCycleOwner !== F4_HEARTBEAT_CYCLE_CHECKPOINT_OWNER) {
         await settleF4Heartbeat();
       }
+      // No candidate/stage may be built from admission that predates an await.
+      if (!admitted()) return false;
       const runtime = f4Runtime;
       if (!f4RuntimeMayMutate(runtime)) return false;
       const staged = ecologyEpochAuthority.stage(ecologyActivePlayNow(), intent);
@@ -8533,7 +8526,7 @@ async function persistView(
         throw new Error(`receipt-free checkpoint projection refused (${projection.detail})`);
       }
       const candidate = projection.state;
-      if (smokeRejectNextPersist) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextPersist) {
         /* Browser evidence needs a deterministic storage-rejection outcome;
            this diagnostics-only latch enters the same pre-durable branch as
            an IndexedDB failure without changing ordinary repository behavior. */
@@ -8577,7 +8570,7 @@ async function persistView(
       }
       if (epochStage !== null) ecologyEpochAuthority.reject(epochStage);
       lastEcologyEdgeOutcome = `${intent}:rejected`;
-      if (!(error instanceof Error && error.message === 'slice-smoke injected persistence rejection')) {
+      if (!(__CF_EVIDENCE_BUILD__ && error instanceof Error && error.message === 'slice-smoke injected persistence rejection')) {
         if (runtime) scheduleF4AuthorityConvergenceReload(
           runtime,
           `save attempt rejected (${error instanceof Error ? error.message : String(error)}); reload required`,
@@ -8784,7 +8777,8 @@ function smokeResumeSettingsPersistence(): Readonly<{
   });
 }
 const productActionCoordinator = createProductActionCoordinator();
-const smokeProductActionHold = createProductActionDiagnosticHold();
+const smokeProductActionHold = __CF_EVIDENCE_BUILD__
+  ? createProductActionDiagnosticHold() : inactiveEvidenceHold;
 let arc9ProgressionRefreshQueued = false;
 let lastArc9ProgressionOutcome: string | null = null;
 let arc9ExplorerNameEditing = false;
@@ -9582,9 +9576,6 @@ async function runArc9AtlasFavoriteChange(
     if (activePersist === actionBarrier) activePersist = null;
     if (openPanelId() === 'atlas') {
       fillAtlas();
-      document.querySelector<HTMLElement>(
-        `#atlaspanel [data-atlas-favorite="${CSS.escape(atlasId)}"]`,
-      )?.focus();
     }
   }
 }
@@ -10603,7 +10594,7 @@ async function commitArc3EngineeringAction(spec: Readonly<{
     const codecNow = Date.now();
     const priorSessionRng = runtime.sessionRng;
     const plannedHolder: { value: Arc3AppDerivation | null } = { value: null };
-    const faultInjection = smokeRejectNextArc3ActionStorage
+    const faultInjection = !__CF_EVIDENCE_BUILD__ ? null : smokeRejectNextArc3ActionStorage
       ? 'storage-failure'
       : smokeStaleNextArc3ActionAuthority
         ? 'stale-authority'
@@ -10718,7 +10709,7 @@ async function commitArc3EngineeringAction(spec: Readonly<{
         || JSON.stringify(outcome.state) !== JSON.stringify(outcome.saved.canonicalState)) {
         throw new Error('Arc 3 runtime did not retain its exact durable checkpoint');
       }
-      if (smokeRejectNextArc3Publication) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc3Publication) {
         smokeRejectNextArc3Publication = false;
         lastSmokeArc3ActionFaultWitness = Object.freeze({
           schema: 'cf-v2-arc3-action-fault-witness/v1',
@@ -11028,7 +11019,7 @@ async function commitCompendiumFeedAction(
       return unavailable('ownership-authority-changed');
     }
 
-    const faultInjection = smokeRejectNextArc5FeedStorage
+    const faultInjection = !__CF_EVIDENCE_BUILD__ ? null : smokeRejectNextArc5FeedStorage
       ? 'storage-failure'
       : smokeStaleNextArc5FeedAuthority ? 'stale-authority' : null;
     if (faultInjection === 'storage-failure') smokeRejectNextArc5FeedStorage = false;
@@ -11122,7 +11113,7 @@ async function commitCompendiumFeedAction(
     }
 
     try {
-      if (smokeRejectNextArc5FeedPublication) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc5FeedPublication) {
         smokeRejectNextArc5FeedPublication = false;
         lastSmokeArc5FeedFaultWitness = Object.freeze({
           schema: 'cf-v2-arc5-feed-fault-witness/v1',
@@ -12562,7 +12553,7 @@ async function commitArc4CaptureAction(
     if (!rosterResult.ok) {
       return unavailable(`world-roster:${rosterResult.reason}`, verb);
     }
-    const faultInjection = smokeRejectNextArc4ActionStorage
+    const faultInjection = !__CF_EVIDENCE_BUILD__ ? null : smokeRejectNextArc4ActionStorage
       ? 'storage-failure'
       : smokeStaleNextArc4ActionAuthority
         ? 'stale-authority'
@@ -12679,7 +12670,7 @@ async function commitArc4CaptureAction(
     }
 
     try {
-      if (smokeRejectNextArc4Publication) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextArc4Publication) {
         smokeRejectNextArc4Publication = false;
         lastSmokeArc4ActionFaultWitness = Object.freeze({
           schema: 'cf-v2-arc4-action-fault-witness/v1',
@@ -14255,7 +14246,8 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     };
     lastTrainingRestoreWitness = witness;
     try {
-      const binding = (window as unknown as Record<string, unknown>).__cfTrainingRestoreWitness;
+      const binding = __CF_EVIDENCE_BUILD__
+        ? (window as unknown as Record<string, unknown>).__cfTrainingRestoreWitness : undefined;
       if (typeof binding === 'function') (binding as (payload: string) => unknown)(JSON.stringify(witness));
     } catch { /* optional diagnostics are fail-closed in the browser harness */ }
   };
@@ -14303,7 +14295,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     let legacyGearRestored = false;
 
     if (checkpoint.kind === 'current-view') {
-      const restored = smokeRejectNextTrainingRouteResolution
+      const restored = __CF_EVIDENCE_BUILD__ && smokeRejectNextTrainingRouteResolution
         ? (smokeRejectNextTrainingRouteResolution = false,
             { ok: false as const, reason: 'source-error' as const })
         : resolveViewToNav(checkpoint.view);
@@ -14329,7 +14321,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
         candidate.tutSnapPending = null;
       }
     } else if (checkpoint.kind === 'legacy-v1') {
-      const earth = smokeRejectNextTrainingRouteResolution
+      const earth = __CF_EVIDENCE_BUILD__ && smokeRejectNextTrainingRouteResolution
         ? (smokeRejectNextTrainingRouteResolution = false,
             { ok: false as const, reason: 'source-error' as const })
         : searchTravel.trainingEarthSurfaceNav();
@@ -14380,7 +14372,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     }
     candidate.EPOCH_BASE = epoch;
 
-    const prepared = smokeRejectNextTrainingCandidateProof
+    const prepared = __CF_EVIDENCE_BUILD__ && smokeRejectNextTrainingCandidateProof
       ? (smokeRejectNextTrainingCandidateProof = false, null)
       : prepareTrainingCandidate(candidate, now, expectedEarthKey);
     if (!prepared) {
@@ -14434,7 +14426,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     writeStarted = true;
     let trainingCommittedState: SaveStateV2 | null = null;
     const write = (async (): Promise<boolean> => {
-      if (smokeRejectNextTrainingCommit) {
+      if (__CF_EVIDENCE_BUILD__ && smokeRejectNextTrainingCommit) {
         smokeRejectNextTrainingCommit = false;
         throw new Error('slice-smoke injected Training commit rejection');
       }
@@ -14473,7 +14465,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
 
     /* Publish only after durability. All route proof is bound to the final
        import's exact objects; the global descriptor seam keeps its one Map. */
-    if (smokeRejectNextTrainingPublish) {
+    if (__CF_EVIDENCE_BUILD__ && smokeRejectNextTrainingPublish) {
       smokeRejectNextTrainingPublish = false;
       throw new Error('slice-smoke injected post-durable Training publication failure');
     }
@@ -14636,6 +14628,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
 
 const F4_FRESH_RACE_RELEASE_KEY = 'cf_slice_f4_fresh_race_release';
 async function awaitSmokeFreshInitializationRaceGate(): Promise<void> {
+  if (!__CF_EVIDENCE_BUILD__) return;
   /* Optional native-browser ordering seam. Runtime.addBinding exists before
      module evaluation, so two genuinely empty documents can both finish the
      stable absence read before either enters the production initializer. */
@@ -15697,6 +15690,7 @@ async function loadSave(): Promise<void> {
   /* diagnostics handle for tools/slicesmoke.mjs — a WebGL canvas reads BLACK
      through 2D drawImage without preserveDrawingBuffer, so the smoke asks
      Pixi's extract (which re-renders) instead of scraping the canvas */
+  if (__CF_EVIDENCE_BUILD__) {
   (window as unknown as Record<string, unknown>).__CF_SLICE__ = {
     documentToken: DOCUMENT_TOKEN,   /* reload/import waits must reject the prior document's still-live handle */
     app, world, cam, camT,   /* camT drives the zoom-transition smoke leg */
@@ -16021,7 +16015,7 @@ async function loadSave(): Promise<void> {
         trimArtNow: (deviceClass: 'phone' | 'desktop') => speciesArtLoader.trimArtNow(deviceClass),
         failNextThumb: (message?: string) => speciesArtLoader.failNextThumb(message),
       }),
-      importBlob,   /* Gate C's front door, drivable by the smoke */
+      importBlob,   /* evidence-build replacement driver for Slice/Glass; the player door is gone (2026-09-05) */
       __smokeArmImportRace: smokeArmImportRace,
       __smokeReleaseImportRace: smokeReleaseImportRace,
       __smokeDrainFixturePersist: smokeDrainFixturePersist,
@@ -16274,6 +16268,7 @@ async function loadSave(): Promise<void> {
       },
     },
   };
+  }
   emitBootPhase('slice-published');
   /* the CMB band-pick (main.js ringPick): a tap on EMPTY space near the
      observable-universe ring — and only there — opens the origin card */
@@ -16538,7 +16533,7 @@ async function loadSave(): Promise<void> {
     if (sheet.style.display !== 'none') {
       e.preventDefault();
       e.stopPropagation();
-      closeImportSheet();
+      refocusRecoverySheet();
       return;
     }
     if (searchTravel.blurIfFocused()) return;
@@ -16592,7 +16587,8 @@ async function loadSave(): Promise<void> {
            animation frame, and this serviced task boundary. */
         speciesArtLoader.activate();
         try {
-          const binding = (window as unknown as Record<string, unknown>).__cfSliceReadyWitness;
+          const binding = __CF_EVIDENCE_BUILD__
+            ? (window as unknown as Record<string, unknown>).__cfSliceReadyWitness : undefined;
           if (typeof binding !== 'function') return;
           const backdropBackingWidth = activeBackdropCanvas?.width ?? 0;
           const backdropBackingHeight = activeBackdropCanvas?.height ?? 0;

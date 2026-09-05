@@ -76,7 +76,7 @@ function installDom(): void {
       <button data-act="add">Chart</button>
       <button data-act="landcta">Land</button>
     </div>
-    <div id="importsheet"><button>Import</button></div>
+    <div id="importsheet"><button id="importretry">Reload to retry</button></div>
     <span id="primechip">Prime Codex · 0 / 9</span>
     <canvas tabindex="0"></canvas>
   </body></html>`, { url: 'https://example.test/' });

@@ -181,7 +181,7 @@ function diagnosticFaultContractErrors(source: string): string[] {
   }
   const backendFault = sourceSection(
     source,
-    'const persistenceBackend: StorageBackend = {',
+    'const persistenceBackend: StorageBackend = __CF_EVIDENCE_BUILD__ ? {',
     '\nconst repo = createSaveRepository(persistenceBackend);',
   );
   if (!backendFault.includes('if (smokeRejectArc3StorageBoundary)')

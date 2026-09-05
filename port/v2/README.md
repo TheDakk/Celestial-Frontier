@@ -1,6 +1,83 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-> **2026-09-04 UTC current PR #35 forensic-prevention overlay (matches current local code):** the
+## Current integration — matches code as of 2026-09-05
+
+Develop `9ea01041dcdc711190bbf909ea8bb743cd993734` includes PRs #36/#38/#39/#40. V2 starts fresh:
+no Settings “Bring expedition”, paste/file import door or hidden player import path. Gate C now
+covers v2 persistence on a real device. The existing v1.8.9 codec and evidence-build `importBlob`
+replacement seam remain; Training recovery is reload/update-only. The draft bulletin is 77
+outcomes. `GLASS_NEGATIVE_CONTROL_LEDGERS` binds retained carriers to the ledger they planned.
+
+The signed Batches 1–3, two-lane battery and bounded review-branch admission are landed. PR #37
+is closed as superseded. Agent PRs use browser-free develop plus both phone Glass canaries;
+full-chain work remains separately selected/authorized. No campaign workflow/policy changes.
+The current producer is already pinned by develop; measurement authority and budgets are unchanged
+by the docs-only OpenAI merge. Current source/check status is in `../../ROADMAP.md`; the earlier
+records below are preserved with their checkpoint scope.
+
+## Current review implementation — matches code as of 2026-09-04
+
+PR #35 passed its one hosted battery and merged into `develop` at `7bf3e847…`; it is no longer
+awaiting integration. The full game vision remains unfinished. Current scope, verified results
+and open decisions are in `../../ROADMAP.md` and `../../audits/FULL_REVIEW_DISPOSITION_20260904.md`.
+The dated overlays below retain historical evidence, not authority for the current working tree.
+
+Queued saves repeat admission before writing and after heartbeat settlement. Records, Atlas and
+Charters preserve semantic focus during refills without scrolling or overriding later user focus.
+Three build-owning tools now reuse the existing safe Windows npm launcher; no shell interpolation
+of the working directory is introduced. Actual Windows execution remains a separate check.
+
+Finite typed audio cues also have an injected monotonic lifetime fallback for missed completion
+events, sharing the existing exact cleanup owner. Creature/ecology/combat sound plans and game
+clocks are unchanged. `@cf/art` now declares both existing Genome and PlanetGen dependencies.
+These review corrections do not enable unimplemented research, companion or Guardian rewards.
+
+The early Glass rows now use a shared Node verdict instead of a duplicate workflow jq program:
+
+```sh
+node tools/glassmatrix.mjs --verify-targeted-run=<immutable-run-id> --viewport=small-phone --browser=<canonical-Chrome-executable>
+# Use --viewport=large-phone for that row's own immutable run ID.
+```
+
+This is browser-free verification of an existing current-clean-source diagnostic, not a browser
+run or a Slice-bound certificate. `--verify-run` retains its full `--slice-run`/`--profile` contract.
+jq is still checked for later run-ID extraction. No coverage, numerical ceiling or retry changes.
+
+### Explicit evidence builds — matches code as of 2026-09-04
+
+Ordinary `npm run build` / `vite build` is distributable. Only `vite build --mode evidence`
+compiles the browser diagnostic API and fault injection paths. `NODE_ENV`, the development
+server, preview packaging and query parameters do not opt in. Both variants carry one
+`cf-build-mode` HTML head marker, included in PWA final-byte hashes. The named certifiers and
+authority printer explicitly build/check `evidence`; ordinary art-review entrypoints keep their
+default mode, and historical broken-baseline builds keep their exact historical commands.
+Raw `vite preview` only serves the existing `dist`; it does not convert a previous evidence build.
+Run a fresh ordinary build first for manual distributable serving. The packaged preview path
+enforces this boundary independently.
+
+Human preview packages require `distributable`. Their browser check observes the rendered player
+chip, navigation trail and canvas. If fresh Training is active, it uses the real Skip Training
+action in that disposable profile and waits for normal control restoration before opening Guide
+and verifying the complete build identity. It refuses a leaked diagnostic API. Both built modes
+pass final-byte/PWA checks; the distributable preview passed this flow in real Edge. This local
+dirty diagnostic is not a clean-source certificate, a save-format change or human acceptance.
+See the disposition audit for fingerprints and retained intermediate instrument findings.
+
+> **2026-09-04 UTC two-lane battery overlay (Claude, `anthropic/windows`; matches current local
+> code):** the hosted `test-battery` now has two owner-only lanes inside its unchanged
+> `pull_request: [labeled]` trigger. `actions-budget-approved` on an agent → `develop` PR runs the
+> bounded agent lane: the browser-free `develop` profile, the changed-input art/launcher controls,
+> the legacy root gates only when legacy inputs changed, and the small-phone then large-phone Glass
+> canaries on every agent PR. `actions-full-chain-approved` on `develop`, and either label on
+> `develop` → `main`, runs the full chain: the same admission, then the exact-Edge Compendium
+> certificate, the immutable Slice and its twelve-row Glass successor, all behind one shared guard
+> `if: steps.lane.outputs.lane == 'full'` that the Actions policy, the Compendium browser-preflight
+> contract and the workflow tests pin. Caps, one-attempt/no-retry, artifact upload and the required
+> `battery` context are unchanged; the agent lane's hosted duration is not measured until its first
+> run. Local commands are unchanged: `node ../../tools/actions-budget-policy.js --selftest` from
+> this directory (or `npm run actionsbudget:selftest` at repository root) proves the lane seals.
+>
+> **2026-09-04 UTC historical PR #35 forensic-prevention overlay:** the
 > external review of pushed head `a922c4b…` identified narrow hosted-envelope and late-execution
 > risks. The local successor keeps one authorization job and one battery job, with a **120-minute**
 > battery cap and **55-minute** Compendium step cap. These are orchestration ceilings only; they do
@@ -2977,6 +3054,13 @@ base or stale-reload substitutions. At that boundary it did not close F3/F4. The
 overlay now records the live CAS/revision/tab lease, visible/answerable active-play/SessionRNG
 authority and Arc 3 Auto-Extractor settlement.
 
+**2026-09-05:** the Settings save-import door (“Bring expedition”, `#setimport`, paste/pick/import
+controls, `cf_v2_import_original` keepsake) is removed — v2 starts every explorer fresh (Nick).
+`#importsheet` survives only as the nonclosable Field Training recovery sheet (reload/update only), and
+the evidence-build `importBlob` seam remains the Slice/Glass replacement driver. Glass retired
+`modal-background-containment-restore` and `modal-live-error`; retained carriers are judged against the
+ledger they planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`). The draft bulletin is 77 outcomes.
+
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
 43 authored stable IDs and 41 player topics with search, categories, native-keyboard
@@ -3024,9 +3108,9 @@ healing, forge, Capture, and the rest of the legacy 21-step curriculum remain op
 systems; live capture and companion actions do not add a seventh lesson.
 Genuine v1.8.9 checkpoints restore only their eleven owned pre-drill surfaces;
 surrounding expedition state stays with the surrounding save. Unknown checkpoint
-or unavailable-route recovery reuses the import sheet in a stricter persistent
-mode: background inert, focus trapped, no Close/Escape dismissal, release bulletin
-suppressed, and only reload/retry or trusted complete import available.
+or unavailable-route recovery opens the Field Training recovery sheet (the retained
+`#importsheet` element): background inert, focus trapped, no Close/Escape dismissal, release bulletin
+suppressed, and only reload/retry available (trusted complete import was withdrawn 2026-09-05).
 Outside Training, ordinary panels use z24 above an open z23 survey card. During
 Training, the intentional lesson choreography remains authoritative and keyboard
 focus is locked to the live lesson. The phone gate injects the former lower panel
@@ -3954,7 +4038,7 @@ directions.
 
 Current terminal PASS evidence uses `cf-v2-glassmatrix/v2`. Historical v1 non-PASS reports remain
 readable for diagnosis, but a v1 full or targeted PASS is rejected. Glass's named verifier,
-Recovery, the diagnostic projection, persona synthesis and hosted jq all require the deep current
+Recovery, the diagnostic projection, persona synthesis and the shared targeted verifier all require the deep current
 Shipyard heartbeat carrier for PASS.
 
 Run `33708487067` earned this boundary after full Glass reached `large-phone` with only

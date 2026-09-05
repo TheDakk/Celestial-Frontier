@@ -43,7 +43,7 @@ export const GLASS_NEGATIVE_CONTROLS = Object.freeze([
   'mobile-chrome-yield-restore', 'mobile-landscape-surface-chrome-yield', 'planetside-top-chrome-clearance',
   'planetside-portrait-band-viability', 'planetside-portrait-trail-fallback',
   'mobile-surface-objective-yield',
-  'modal-background-containment-restore', 'modal-live-error', 'panel-close-accessible-name',
+  'panel-close-accessible-name',
   'hidden-panel-opener-focus-fallback',
   'replacement-document-loader-token-phase',
   'import-phase-sequence',
@@ -99,6 +99,27 @@ export const GLASS_NEGATIVE_CONTROLS = Object.freeze([
   'ultra-viewport-render-budget',
   'ultra-same-backing-resize',
 ]);
+
+/* Retired negative controls. The Settings save-import modal was removed on
+   2026-09-05 (v2 starts every explorer fresh), taking its two modal controls
+   with it. Retained hosted carriers that PLANNED the earlier ledger are still
+   judged against that exact ledger, never silently promoted to the current
+   one; a report is matched to a ledger only by planning it exactly. */
+export const GLASS_RETIRED_NEGATIVE_CONTROLS = Object.freeze([
+  Object.freeze({ name: 'modal-background-containment-restore', before: 'panel-close-accessible-name', retired: '2026-09-05', reason: 'save-import modal removed' }),
+  Object.freeze({ name: 'modal-live-error', before: 'panel-close-accessible-name', retired: '2026-09-05', reason: 'save-import modal removed' }),
+]);
+export const GLASS_NEGATIVE_CONTROLS_2026_09_04 = Object.freeze(GLASS_NEGATIVE_CONTROLS.flatMap((name) => [
+  ...GLASS_RETIRED_NEGATIVE_CONTROLS.filter((row) => row.before === name).map((row) => row.name),
+  name,
+]));
+export const GLASS_NEGATIVE_CONTROL_LEDGERS = Object.freeze([
+  GLASS_NEGATIVE_CONTROLS, GLASS_NEGATIVE_CONTROLS_2026_09_04,
+]);
+export function glassPlannedNegativeControlLedger(planned) {
+  if (!Array.isArray(planned)) return null;
+  return GLASS_NEGATIVE_CONTROL_LEDGERS.find((ledger) => exactJson(planned, ledger)) ?? null;
+}
 
 export const GLASS_ARC4_CAPTURE_OUTCOME_CODES = Object.freeze([
   'ARC4_CAPTURE_NATIVE_SURVEY_RETURN',
@@ -518,10 +539,11 @@ function fullArc4OutcomeErrors(report) {
 
 function fullNegativeControlErrors(report) {
   const controls = report?.controlSummary;
-  const expectedExecuted = [...GLASS_NEGATIVE_CONTROLS].sort(codeUnitCompare);
+  const ledger = glassPlannedNegativeControlLedger(controls?.plannedNegativeControls) ?? GLASS_NEGATIVE_CONTROLS;
+  const expectedExecuted = [...ledger].sort(codeUnitCompare);
   if (!record(controls)
     || controls.selftestRan !== true
-    || !exactJson(controls.plannedNegativeControls, GLASS_NEGATIVE_CONTROLS)
+    || !exactJson(controls.plannedNegativeControls, ledger)
     || !exactJson(controls.negativeControls, expectedExecuted)
     || !exactJson(controls.blockedNegativeControls, [])
     || !exactJson(controls.omittedNegativeControls, [])) {

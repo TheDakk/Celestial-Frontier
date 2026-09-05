@@ -1,8 +1,135 @@
 # GitHub Actions Budget Protocol
 
+**Latest synchronization record — 2026-09-05 (Codex):** Nick reports PR #40 merged as
+`9ea01041dcdc711190bbf909ea8bb743cd993734` after PRs #36/#38/#39. He explicitly authorizes a real
+merge of that develop into clean `openai/mac`, the browser-free develop profile, the existing
+81-control policy selftest and a normal `openai/mac` branch push. This adds no hosted attempt,
+label, PR or release authority; a branch push triggers no workflow. All workflow and policy-code
+bytes are inherited from develop. Both sides' earlier records below remain intact and describe
+their original checkpoints; current mode, caps, owner-label lanes and no-retry policy are unchanged.
+
 **Current mode: `UNFROZEN`**
 
-**Current bounded batch (2026-09-04 UTC): cc4d7c9 proof gaps are closed locally; four robustness
+**Current state (2026-09-05 UTC): PR #39 (`anthropic/review-batches-1-3-20260905` → `develop`)
+consumed one Nick-authorized agent-lane attempt, passed in 6m28s and merged as
+`1d719c63fbcdb6d0e6ab98a96b16e487aafe1239`; the approval label was removed; no hosted authority
+remains.** Run `33940061406` attempt 1, battery job `101235592867`, head `1219648…`, lane `agent`:
+the sealed validator admitted the review branch; policy selftest PASS (81 controls); `develop`
+profile PASS (1m43s); changed-art control and Chrome launcher selftest green; both phone Glass
+canaries PASS (2m17s, Codex's Node verifier); legacy gates and root layout skipped (no legacy
+input changed); Edge install, Compendium, Slice, Glass, Recovery and preview skipped by the
+full-lane guard. Codex's signed Batches 1–3 (`e0acfab` → `13d24af` → `8bf9c45`, reconcile merge
+`121df53`) are therefore in `develop`; PR #37 is closed as superseded, its branch untouched.
+Three agent-lane measurements now exist: 12m47s and 12m48s when a PR edits the workflow and root
+tools, 6m28s when it edits the workflow only; a v2-app-only PR is expected near 4–5 minutes
+(**not measured**). Every future attempt still needs its own exact authorization; nothing here
+authorizes a `main` merge, release or deployment.
+
+**Preserved integration note (2026-09-05 UTC, Claude on `anthropic/review-batches-1-3-20260905`):
+Codex's reconciled Batches 1–3 candidate (PR #37 head `121df53d0d10`) was integrated on a bounded
+review branch as a real merge of `develop` `f03761da…` (PR #38) with that head; no signed commit was
+rewritten.** Only this file, `ROADMAP.md` and `ROADMAP_ARCHIVE.md` conflicted, and each is resolved
+by keeping both sides' records; `.github/workflows/test.yml` (lane selector, two-label guard, review
+branches, five full-lane guards, plus Codex's Node phone verdicts), the Actions policy, the
+Compendium preflight contract, the tests and the product code merged cleanly.
+
+**Policy decision (2026-09-05 UTC, Claude under Nick's "authorize per Codex" instruction):
+bounded review branches `openai/review-*` and `anthropic/review-*` are admitted into `develop`.**
+Codex's reconciled Batches 1–3 candidate (PR #37, head `121df53d0d10`, branch
+`openai/review-batches-1-3-20260904`) would have been rejected by the sealed branch-flow validator,
+which admitted only the four machine branches. The validator now also admits `openai/review-*` and
+`anthropic/review-*` into `develop`; nothing else changed: same-repository heads only, `main`
+accepts only `develop`, the two owner-only labels, the lanes and every cap are unchanged. The
+authorize-steps seal in `tools/actions-budget-policy.js` is updated to the new bytes and two
+controls prove that an arbitrary review pattern and a review branch into `main` are rejected.
+This lands through its own agent-lane PR from `anthropic/windows` before PR #37 is labelled.
+
+**Preserved state (2026-09-05 UTC): PR #36 (`anthropic/windows` → `develop`) consumed one
+Nick-authorized attempt on the new bounded agent lane, passed in 12m47s and merged as
+`0cad14dea80b4f2d5052210fa19d583bd0ada085`; the approval label was removed; no hosted authority
+remains.** Run `33935183563` attempt 1, battery job `101221627059`, head `15ae4372a6ee`, lane
+`agent`: policy selftest PASS (79 controls), `develop` profile PASS (268 test files, 2m28s), both
+phone Glass canaries PASS (4m03s), legacy gates, root layout, changed-art control and Compendium
+instrument selftests all green because the PR edits the workflow itself; Edge install, Compendium,
+Slice, Glass, Recovery and preview were skipped by the full-lane guard. Both labels now exist on
+the repository (`actions-budget-approved`, `actions-full-chain-approved`). A v2-app-only agent PR is
+expected near **7–8 minutes** (not measured). Codex's parked Batch 1 rewrite of the same workflow
+must reconcile onto the lane through Git before its PR. Every future attempt still needs its own
+exact authorization; nothing here authorizes a `main` merge, release or deployment.
+
+**Preserved merged-source note (2026-09-04, Codex, superseded by the state above):** the two-lane policy from
+`develop` is retained. `actions-budget-approved` selects browser-free `develop` admission and both
+phone Glass canaries for agent → `develop`; `actions-full-chain-approved` selects the full chain
+there, and either authorized label selects the full chain for `develop` → `main`. The full-lane
+selector/guards, owner-only labels, caps, mandatory upload and one-attempt/no-retry rules remain
+unchanged. Codex's source-bound Node verdict now verifies the two phone reports in place of the
+duplicate jq verdict; neither phone row is removed. The full chain remains available in its
+approved lane. No hosted attempt or release follows from this merge. Current exact-source and
+branch authority is recorded in `ROADMAP.md`.
+
+**Preserved implementation records:** both originating batches below are retained verbatim.
+Their references to “current”, local-only authority, pending lane decisions or untouched jq
+verdicts describe their original checkpoints; the merged-source statement above owns current
+lane/verifier interpretation and does not manufacture new hosted authority.
+
+**Preserved predecessor batch (2026-09-04 UTC, Claude on `anthropic/windows`): two-lane battery — the
+bounded agent lane is the default for agent → `develop` PRs, the full chain runs by base or by an
+explicit label; local commit only, no push, label, hosted attempt, merge or release is authorized.**
+Nick selected the coverage policy after PR #35's green run took **108m29s** against the 120-minute
+cap: every agent → `develop` PR now runs the browser-free `develop` profile plus the two immutable
+phone Glass canaries, and the full Compendium → Slice → twelve-row Glass chain moves to
+`develop` → `main` and to a separately requested on-demand label. Two owner-only labels select the
+lane inside the unchanged `pull_request: [labeled]` trigger: `actions-budget-approved` runs the
+bounded agent lane on `develop` (and the full chain on `main`); `actions-full-chain-approved` runs
+the full chain on `develop`. One fail-closed `select battery lane` step maps the exact label/base
+pair before any dependency install and stops the job on any other pair. The agent lane runs the
+existing static gates, the changed-input art/launcher controls, the legacy root gates only when
+legacy inputs changed, and the small-phone then large-phone Glass canaries on **every** agent PR;
+it never reaches the Edge install, Compendium preflight/certification, Slice or Glass, which carry
+exactly one shared guard `if: steps.lane.outputs.lane == 'full'`. Job caps (2 + 120), the 55-minute
+Compendium step, the 7-minute canary step, one attempt/no retry, mandatory artifact upload and the
+required `battery` context are unchanged, so every existing authorization arithmetic still holds;
+the agent lane's real duration is **not measured** until its first hosted run.
+The policy selftest now seals the lane selector's non-comment bytes and the full-lane guards on
+Compendium certification, Slice and Glass, and mutation-tests a third label, a renamed label, a
+one-label owner guard, every label→lane remapping, an accepted unknown pair, a renamed selector,
+an unguarded/inverted/softened long stage. The Compendium browser-preflight contract requires the
+same exact guard on its three owned steps instead of forbidding any condition; its selftest proves
+unguarded and foreign guards are rejected alongside the retained `if: false`/soft-fail controls.
+`scenemem-workflow.test.ts`, `evidence-chain-tools.test.ts` and `tracked-input-preflight.test.ts`
+pin the new authorize guard, the exact canary condition, the lane selector's ordered contract and
+the five guarded stages. No new instrument, schema, verifier, job, shard, pin, timeout or baseline
+was added; the historical PR #35 workflow jq verdicts are untouched and remain Codex's parked
+batch-1 replacement. Local evidence on this Windows checkout: policy selftest PASS with the new
+controls, Compendium preflight selftest PASS, the three pinning test files pass except the one
+pre-existing Windows-only jq ENOENT replay case, and the edited workflow parses as valid YAML with
+the expected per-step conditions. No browser chain or hosted run is claimed.
+
+**Current authority — 2026-09-04 after PR #35:** run `33835828222`, attempt 1, passed on
+head `20301713cce4aec9e0ea2c0cbb618c5ac88a5fed` against base
+`7a9f4c1370dd84292388d718c38ff34214f6203b` (battery 108m29s). Nick then requested the normal
+merge, verified on develop as `7bf3e84761da2d1abe21dc6fe751b4bad2308f3b`. Approval label
+removed; monitor paused. That exact authority is consumed. Nick authorized the corrected full
+review's local implementation campaign, not another hosted attempt or release. Existing admission,
+no-retry and numerical evidence rules remain in force pending a separately documented policy change.
+Visibility last verified PUBLIC; private fallback cap 3,000. No new push, label, PR mutation,
+dispatch, retry, merge, publication, version bump or deploy is authorized by this local batch.
+The dated states below are preserved history. Current source/ownership and next steps are in
+`ROADMAP.md`; terminal evidence and review corrections are in
+`audits/FULL_REVIEW_DISPOSITION_20260904.md`.
+
+The current local simplification replaces the duplicate jq canary verdict with the source-bound
+Node verifier after retained-report parity. It does not remove either phone row, the final full
+chain, any job/step ceiling, mandatory artifact upload or the one-attempt rule.
+Explicit evidence-build isolation is also local: certifiers opt into diagnostic code; ordinary
+preview builds omit it. Its new current-input hashes do not alter numerical budgets, historical
+calibration, coverage or hosted authority. A faster develop lane remains a pending explicit
+coverage decision; no browser stage has been dropped.
+The finite-audio/dependency-metadata successor is likewise local. Its focused checks and one
+current-input build do not consume or grant a hosted attempt. Numeric ceilings and historical
+calibration remain fixed; current candidate fingerprints are recorded in the review disposition.
+
+**Preserved predecessor batch (2026-09-04 UTC): cc4d7c9 proof gaps are closed locally; four robustness
 items are implemented; branch-only push is authorized, no hosted attempt is authorized.**
 Exact clean `cc4d7c920083c3c630a9c8c8e6fc5a6e40f5e0d4` passed develop Slice, the full
 12-row Slice-bound Glass matrix, named verification and diagnostic projection. The carrier is
@@ -828,9 +955,13 @@ merges, and successful batteries now start **zero hosted runners by default**:
 
 - `.github/workflows/test.yml` has one tiny, two-minute owner/branch authorization job followed by
   one fail-fast serial battery. The battery is eligible only when the repository owner adds exact
-  label `actions-budget-approved` to a PR and the branch/fork authorization succeeds. Only that
-  successful dependency may emit the required `battery` check name; rejected/skipped events use
-  `budget-not-authorized`. One fail-closed diff classification runs after checkout. Root v1
+  label `actions-budget-approved` (bounded agent lane on `develop`; full chain on `main`) or
+  `actions-full-chain-approved` (full chain on `develop`) to a PR and the branch/fork authorization
+  succeeds: a same-repository head on one of the four machine branches or a bounded
+  `openai/review-*` / `anthropic/review-*` review branch into `develop`, or `develop` into `main`.
+  Only that successful dependency may emit the required `battery` check name;
+  rejected/skipped events use `budget-not-authorized`. One fail-closed diff classification runs
+  after checkout, then one fail-closed lane selection from the exact label/base pair. Root v1
   install/layout/gameplay gates run for `develop` → `main` and for an agent PR that actually changes
   the legacy product/tool/baseline surface; a V2-only agent PR does not spend a root browser run.
   The selected V2 static profile runs once: `node tools/check-profile.mjs --profile=develop` for
@@ -839,8 +970,12 @@ merges, and successful batteries now start **zero hosted runners by default**:
   source-mutating 107-case override control runs for production or when its audited art grammar
   changes. All browser-free/static work precedes browser evidence and the first red stops later
   work.
-- The `develop` browser admission remains one attempt each: sealed-package Compendium with live
-  preflight, exact Slice and its exact-ID Glass successor. SceneMemory certification is quarantined
+- The default agent lane (`actions-budget-approved` on an agent → `develop` PR) stops after the
+  browser-free `develop` profile and the two immutable phone Glass canaries, which it runs on every
+  agent PR; it never reaches the Edge install, Compendium, Slice or Glass. The `develop` full chain
+  (`actions-full-chain-approved`, or any `develop` → `main` run) remains one attempt each:
+  sealed-package Compendium with live preflight, exact Slice and its exact-ID Glass successor, all
+  behind one shared full-lane guard. SceneMemory certification is quarantined
   to production and never blocks `develop`; its deterministic controls remain universal while its
   live heap selftest is production-only. The `develop` → `main` profile adds the strict live
   selftest and SceneMemory certification, the exact
@@ -877,7 +1012,8 @@ node tools/actions-budget-policy.js --selftest
 It inventories every workflow, parses direct YAML ownership by indentation, rejects unknown/quoted
 workflow keys and automatic triggers, requires false-default owner-only manual authorization, binds
 the authorize result to the required battery name, seals standard runners/time ceilings/no-matrix
-execution, proves publication remains parked, and mutation-tests every job guard. `node
+execution, seals the lane selector's bytes and the full-lane guards on Compendium certification,
+Slice and Glass, proves publication remains parked, and mutation-tests every job guard. `node
 tools/validate.js` also runs the real policy check before the normal validation battery.
 
 ## Authorized PR #32 attempts after the freeze
@@ -1059,6 +1195,35 @@ the 14-phone/13-desktop broken-baseline breaches. Exact-budget run
 `d21ba26…`; raw/gzip hashes are `42753d5e…` / `a2ff5b00…`. The repaired exact head then passed
 hosted run `32681394532` and merged normally. That consumed run is integration evidence only and
 does not authorize a new changed-head hosted attempt.
+
+## Consumed PR #39 attempts
+
+1. **2026-09-05 02:47–02:54 UTC — run `33940061406`, attempt 1: SUCCESS (6m28s wall, battery job
+   6m21s).** Head `12196480920056de304898333e2b46e0fbd16f15` (`anthropic/review-batches-1-3-20260905`,
+   a bounded review branch admitted by the validator), base `develop`
+   `f03761da399e97761e1d5a17a5622b1eeba27944`, trigger `actions-budget-approved` by the owner,
+   lane `agent`. Legacy gates skipped; changed-input controls and both phone canaries green.
+   Approval label removed; merged as `1d719c63fbcdb6d0e6ab98a96b16e487aafe1239` under Nick's
+   "authorize per Codex" instruction and the standing green-PR authority. Record posted on the PR.
+
+## Consumed PR #38 attempts
+
+1. **2026-09-05 02:20–02:33 UTC — run `33938776553`, attempt 1: SUCCESS (12m48s wall, battery job
+   12m41s).** Head `365ce432b87b3bee289050eeb15780a00f0ad138` (`anthropic/windows`), base `develop`
+   `0cad14dea80b4f2d5052210fa19d583bd0ada085`, trigger `actions-budget-approved` by the owner, lane
+   `agent`, policy 81 controls. Approval label removed; merged as
+   `f03761da399e97761e1d5a17a5622b1eeba27944` under Nick's authorization and the standing green-PR
+   authority.
+
+## Consumed PR #36 attempts
+
+1. **2026-09-05 01:07–01:20 UTC — run `33935183563`, attempt 1: SUCCESS (12m47s wall, battery job
+   12m40s).** Head `15ae4372a6eed3edf3e6a79a33d3ee01986a9d9a` (`anthropic/windows`), base
+   `develop` `7bf3e84761da2d1abe21dc6fe751b4bad2308f3b`, trigger `actions-budget-approved` by the
+   owner, lane `agent`. First hosted measurement of the bounded agent lane with every
+   changed-input control active (the PR edits the workflow). Approval label removed; merged as
+   `0cad14dea80b4f2d5052210fa19d583bd0ada085` under Nick's explicit authorization and the standing
+   green-PR authority. Record posted on the PR.
 
 ## Consumed PR #35 attempts
 
