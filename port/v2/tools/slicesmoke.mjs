@@ -17220,10 +17220,10 @@ try {
     || !arc4ExactFailureSet(arc4HitV4MaxGenControl,
       ['v4OwnedCompatibility', 'v4OwnedCounters'])
     || !arc4ExactFailureSet(arc4HitRetainedArc5Control,
-      ['durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
+      ['durableEvidence', 'arc5CarrierSuccessor', 'receipt', 'unrelatedDurable',
         'ownershipV2Live'])
     || !arc4ExactFailureSet(arc4HitTargetDigestControl,
-      ['durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
+      ['durableEvidence', 'arc5CarrierSuccessor', 'receipt', 'unrelatedDurable',
         'ownershipV2Live'])
     || !arc4BrowserOutcomePasses({ released: arc4HitReleased,
       assessment: arc4Hit, surface: 'survey' })) {
@@ -17884,7 +17884,7 @@ try {
     || !arc4ExactFailureSet(arc4MissV4ScanhitsControl,
       ['v4OwnedCompatibility', 'v4OwnedCounters'])
     || !arc4ExactFailureSet(arc4MissRetainedArc5Control,
-      ['durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
+      ['durableEvidence', 'arc5CarrierSuccessor', 'receipt', 'unrelatedDurable',
         'ownershipV2Live'])
     || !arc4BrowserOutcomePasses({ released: true,
       assessment: arc4Miss, surface: 'survey' })) {
@@ -17982,14 +17982,18 @@ try {
       row.witness = 'not-json';
     });
     const eventControlAfter = arc4MutateNewReceipt(after, ordinal, (row) => {
-      const witness = JSON.parse(row.witness);
+      const settlement = JSON.parse(row.witness);
+      const witness = JSON.parse(settlement.captureWitness);
       witness.event = 'c'.repeat(64);
-      row.witness = canonicalJson(witness);
+      settlement.captureWitness = canonicalJson(witness);
+      row.witness = canonicalJson(settlement);
     });
     const digestControlAfter = arc4MutateNewReceipt(after, ordinal, (row) => {
-      const witness = JSON.parse(row.witness);
+      const settlement = JSON.parse(row.witness);
+      const witness = JSON.parse(settlement.captureWitness);
       witness.successorDigest = 'd'.repeat(64);
-      row.witness = canonicalJson(witness);
+      settlement.captureWitness = canonicalJson(witness);
+      row.witness = canonicalJson(settlement);
     });
     const v4ControlAfter = arc4MutateV4Ever(after, (ever) => { ever.scanhits += 1; });
     const v4CoordinatedBefore = arc4MutateV4Ever(
@@ -18074,7 +18078,7 @@ try {
       },
       arc5CarrierSuccessor: {
         expected: [
-          'durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
+          'durableEvidence', 'arc5CarrierSuccessor', 'receipt', 'unrelatedDurable',
           'ownershipV2Live',
         ],
         result: assessArc4BurnStep({

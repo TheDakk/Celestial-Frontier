@@ -29,7 +29,7 @@ WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` stays parked except individually 
 
 | Step | State | Commit / push / gates |
 | --- | --- | --- |
-| 1 — core integration | Fourth Slice red; combined-receipt repair | Merge `e77e5e0`; current `b422860`; fast green 286 / 2,955 / 1; no Glass or push yet |
+| 1 — core integration | Backup pushed; fifth Slice red in expected corruption failures | `5ac99f9`, pushed 07:13:39 UTC; fast 286 / 2,956 / 1; actual Tame/Sample pass; no Glass yet |
 | 2a — accepted st-scan | Pending | Recover only completed authored scope |
 | 2b — descent/wave-offs | Pending | Canonical-address deterministic outcome |
 | 2c — 50-Paragon hunt | Pending | Existing authored table only |
@@ -156,6 +156,15 @@ Periodic backup checkpoint: full four-worker Vitest PASS **286 files / 2,956 pas
 1 skipped**; typecheck/artunused PASS. Commit and branch-push the full-wrapper correction
 near the two-hour checkpoint, with all four browser reds retained. This is backup progress,
 not completed step-1 acceptance: Slice and both phones still must pass before step 2 begins.
+
+Periodic backup `5ac99f9` was pushed and remote-tracking verified at **07:13:39 UTC**.
+Fifth Slice passed full Tame audio and actual Sample hit, then stopped only because two
+intentional Arc5 corruptions now also fail the stronger receipt check (151.516s). Align the
+existing expected failure lists; all positive hit/pending checks are true. No Glass ran.
+
+Dependent-control correction final fast PASS: **286 files / 2,958 passed / 1 skipped**;
+typecheck/artunused PASS. Four corruption failure sets and existing inner-witness mutation
+targets are aligned. New commit precedes the next Slice/phone sequence.
 
 ### Scope and continuation
 
