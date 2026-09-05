@@ -1,10 +1,9 @@
 # Batch 4 overnight report — 2026-09-05
 
-**Resumed campaign — 2026-09-05 10:17 UTC.** Nick unlocked 1Password; signed correction
-`04aac3c` committed, SSH authenticated as TheDakk and repository read passed. Core and 2a remain
-accepted and pushed. Step2b's next Slice stopped on the rich fixture's migrated-v4 boot boundary;
-its narrow existing-consumer correction is in progress. Prior signing failures remain historical
-records below. Base develop:
+**Checkpoint 2b accepted — 2026-09-05.** Core, Starter Charter2a and deterministic descent2b
+are complete. Exact signed source`879cad4` passes full fast, Slice and both phone diagnostics.
+Its reporting checkpoint is being pushed before Paragons2c begins. Historical failures,
+resolved signing outage and superseded handoffs remain below. Base develop:
 `9ea01041dcdc711190bbf909ea8bb743cd993734`; owned review branch:
 `openai/review-batch4-gameplay-20260905` (OpenAI/Codex, macOS,
 `/Users/nick/Projects/celestial-frontier-openai-mac`). Clean `openai/mac` remains `84b6f22`.
@@ -13,7 +12,7 @@ records below. Base develop:
 | --- | --- | --- | --- | --- |
 | 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
 | 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
-| 2b descent/wave-offs | Signed correction `04aac3c30fcef7a1c70c7601ed9199d90b1c7a4b` | Acceptance pending | Typecheck/artunused PASS; 290 files / 3,018 passed / 1 skipped | Resumed Slice RED71.918s at migrated-v4 compatibility setup; no phones; correction in progress |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
 | 2c 50-Paragon hunt | Seven reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
 | 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
 | 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
@@ -2080,4 +2079,151 @@ its next exact clean-source browser run.
     "sha256": "ec82b087937490a5bf57d81d4c7806368dffa0ecc857590d625963db364d0c5f"
   }
 ]
+```
+
+## Checkpoint 2b accepted — source 879cad4e58b2d8d6cb924964f9a592e346e36dce
+
+Deterministic descent now uses the authored type/biome and seeded-weather tables, live landing
+gear and struts, and canonical wave-off learning (+20 percentage points, capped at five).
+Earth, Training and proven canonical revisits consume no draws; ordinary attempts use exactly
+two named SessionRNG draws in one fenced receipt/CAS. A wave-off retains orbit, HP at least one
+and no landing reward; successful descent clears that world's learning. Legacy seed-only
+learning binds on its first verified canonical encounter because its original address is unknown.
+Guide, Training, all current references and the 78-outcome bulletin agree. Protected portraits
+remain unchanged. The exact-label, receipt, optional learned approach and migrated-document
+consumer corrections preserve fixed fixtures, independent expectations and original deadlines.
+All ten prior browser reds remain in the report, alongside the resolved 1Password outage.
+After Nick unlocked the existing signer, signed commits and GitHub SSH checks succeeded.
+The current source passes Slice and both local Edge phone diagnostics; real-device persistence
+and the separate human reviews remain open. Paragon, progression and Atlas layers remain
+prepared but unintegrated until their own ordered checkpoints.
+
+Fast PASS: **290 files / 3,019 passed / 1 skipped**. Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures. This reporting successor changes only
+documentation; source-bound browser evidence names the preceding implementation commit exactly.
+Phone reports are local Edge targeted diagnostics, not a twelve-row certificate or named Chrome
+verifier proof. No hosted attempt occurred.
+
+```json
+{
+  "source": "879cad4e58b2d8d6cb924964f9a592e346e36dce",
+  "fast": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 2.459,
+      "log": "1-npm.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "seconds": 1.56,
+      "log": "2-npm.log",
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "--maxWorkers=4"
+      ],
+      "exitCode": 0,
+      "seconds": 62.52,
+      "log": "3-npx.log",
+      "sha256": "ec82b087937490a5bf57d81d4c7806368dffa0ecc857590d625963db364d0c5f"
+    }
+  ],
+  "browser": [
+    {
+      "command": [
+        "node",
+        "tools/slicesmoke.mjs",
+        "--profile=develop"
+      ],
+      "exitCode": 0,
+      "seconds": 373.47,
+      "log": "1-node.log",
+      "sha256": "50903ece833ea93c150f089360ac20e07d588ee35c9371f7b08c0e5967853e7b"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=small-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 15.576,
+      "log": "2-node.log",
+      "sha256": "91bb3672017c946adffdafe0b8d2cc647addc82a4b20978fbcf9a20b3a053cef"
+    },
+    {
+      "command": [
+        "node",
+        "tools/glassmatrix.mjs",
+        "--viewport=large-phone"
+      ],
+      "exitCode": 0,
+      "seconds": 16.338,
+      "log": "3-node.log",
+      "sha256": "2a4d4606190bc91f1903950e44648f16b7923aa8c1b972f1c95204d3c3224e0c"
+    }
+  ],
+  "phones": [
+    {
+      "id": "20260905103143255-54961-52ba159b6884",
+      "source": "879cad4e58b2d8d6cb924964f9a592e346e36dce",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905103143255-54961-52ba159b6884.json"
+    },
+    {
+      "id": "20260905103158805-55096-8c190fc90781",
+      "source": "879cad4e58b2d8d6cb924964f9a592e346e36dce",
+      "status": "pass",
+      "scope": "targeted-diagnostic",
+      "certifying": false,
+      "summary": {
+        "viewportCount": 1,
+        "findingCount": 0,
+        "instrumentFailureCount": 0,
+        "counts": {}
+      },
+      "browser": {
+        "executable": "/Applications/Microsoft Edge.app/Contents/MacOS/Microsoft Edge",
+        "product": "Edg/152.0.4191.62",
+        "revision": "@98614824c284c7a332f949435bc56c0107ee732f",
+        "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/152.0.0.0 Safari/537.36 Edg/152.0.0.0",
+        "js_version": "15.2.23.8",
+        "protocol_version": "1.3",
+        "consistentAcrossViewports": true
+      },
+      "artifactPath": "apps/game/smoke/glassmatrix-20260905103158805-55096-8c190fc90781.json"
+    }
+  ]
+}
 ```
