@@ -52,6 +52,8 @@ three speed researches plus `speed` gear feed a deterministic, skippable, device
 Search/CF1/Atlas travel presentation. Permanent Jump/Array/Intergalactic systems and Prime
 Signatures still own reach—speed research cannot cross a locked boundary.
 
+`packages/domain/opportunity/src/state.ts::RESEARCH_IDS` owns the frozen six-row production research order. `engineering-panel.ts::ENGINEERING_RESEARCH_ORDER` is its public alias, retaining the existing row-ID type. The panel fixtures and tool-owned Engineering catalogue keep their independently authored six-row expectations, including missing-row and order refusals.
+
 `descent-policy.ts` projects type/biome odds, deterministic weather, exact worn gear and learned
 approaches before `arc0-landing-action.ts` settles one selected outcome. Ordinary attempts reserve
 exactly `descent.success` and `descent.damage`; canonical Earth, Training and proven full-address
