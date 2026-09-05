@@ -18,6 +18,15 @@ implied.
 `develop` is the integration branch. `main` is the production branch.
 Neither agent may commit directly to either one.
 
+**Bounded review branches (policy decision 2026-09-05, Claude under Nick's authority):** when an
+agent's machine branch is occupied by unrelated in-flight work, that agent may carry one reviewed
+candidate to `develop` on a branch named `openai/review-*` or `anthropic/review-*`. Such a branch
+is still owned by the same agent, is pushed only from that agent's own worktree above, is admitted
+into `develop` by the sealed branch-flow validator exactly like the four machine branches, and
+never flows into `main`. It is not synchronized by the fast-forward workflow and is left dormant
+or deleted after its merge. Every other rule here (no direct commits, no force operations, exact
+hosted authorization, paired handoff) applies to it unchanged.
+
 ## Fail-closed workspace identity
 
 The app, operating system, physical Git root, and branch form one identity.

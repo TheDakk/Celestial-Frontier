@@ -56,6 +56,18 @@ the archive verbatim and refresh this handoff in place.
 - The exact record is also posted as a comment on PR #36. The retained `battery-evidence`
   artifact holds the two canary reports.
 
+### Review-branch policy decision (2026-09-05, after the merge above)
+
+- Codex opened **PR #37** (`openai/review-batches-1-3-20260904` → `develop`, head
+  `121df53d0d10`, draft, mergeable) and correctly flagged that the sealed branch-flow validator
+  admitted only the four machine branches, so its battery would stop at authorization. Nick
+  instructed "authorize per Codex"; Claude, owning CI/budget policy, decided to admit bounded
+  review branches `openai/review-*` and `anthropic/review-*` into `develop` (never into `main`),
+  updated the authorize-steps seal and added two rejection controls, and recorded the rule in
+  `PARALLEL_GIT_PROTOCOL.md` and `GITHUB_ACTIONS_BUDGET.md`. This lands through its own
+  agent-lane PR from `anthropic/windows`; then PR #37 is marked ready, labelled
+  `actions-budget-approved`, and merged on terminal green under the same authority.
+
 ### Now in `develop`
 
 - The two-lane battery and its sealed policy (79 controls), the Compendium preflight contract

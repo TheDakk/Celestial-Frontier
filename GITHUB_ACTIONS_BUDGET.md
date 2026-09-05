@@ -2,7 +2,18 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current state (2026-09-05 UTC): PR #36 (`anthropic/windows` → `develop`) consumed one
+**Policy decision (2026-09-05 UTC, Claude under Nick's "authorize per Codex" instruction):
+bounded review branches `openai/review-*` and `anthropic/review-*` are admitted into `develop`.**
+Codex's reconciled Batches 1–3 candidate (PR #37, head `121df53d0d10`, branch
+`openai/review-batches-1-3-20260904`) would have been rejected by the sealed branch-flow validator,
+which admitted only the four machine branches. The validator now also admits `openai/review-*` and
+`anthropic/review-*` into `develop`; nothing else changed: same-repository heads only, `main`
+accepts only `develop`, the two owner-only labels, the lanes and every cap are unchanged. The
+authorize-steps seal in `tools/actions-budget-policy.js` is updated to the new bytes and two
+controls prove that an arbitrary review pattern and a review branch into `main` are rejected.
+This lands through its own agent-lane PR from `anthropic/windows` before PR #37 is labelled.
+
+**Preserved state (2026-09-05 UTC): PR #36 (`anthropic/windows` → `develop`) consumed one
 Nick-authorized attempt on the new bounded agent lane, passed in 12m47s and merged as
 `0cad14dea80b4f2d5052210fa19d583bd0ada085`; the approval label was removed; no hosted authority
 remains.** Run `33935183563` attempt 1, battery job `101221627059`, head `15ae4372a6ee`, lane
@@ -876,7 +887,9 @@ merges, and successful batteries now start **zero hosted runners by default**:
   one fail-fast serial battery. The battery is eligible only when the repository owner adds exact
   label `actions-budget-approved` (bounded agent lane on `develop`; full chain on `main`) or
   `actions-full-chain-approved` (full chain on `develop`) to a PR and the branch/fork authorization
-  succeeds. Only that successful dependency may emit the required `battery` check name;
+  succeeds: a same-repository head on one of the four machine branches or a bounded
+  `openai/review-*` / `anthropic/review-*` review branch into `develop`, or `develop` into `main`.
+  Only that successful dependency may emit the required `battery` check name;
   rejected/skipped events use `budget-not-authorized`. One fail-closed diff classification runs
   after checkout, then one fail-closed lane selection from the exact label/base pair. Root v1
   install/layout/gameplay gates run for `develop` → `main` and for an agent PR that actually changes

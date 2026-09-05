@@ -41,6 +41,7 @@ jobs:
           if [[ "$BASE_BRANCH" == "develop" ]]; then
             case "$HEAD_BRANCH" in
               openai/windows|openai/mac|anthropic/windows|anthropic/mac) exit 0 ;;
+              openai/review-*|anthropic/review-*) exit 0 ;;
             esac
           fi
           if [[ "$BASE_BRANCH" == "main" && "$HEAD_BRANCH" == "develop" ]]; then
