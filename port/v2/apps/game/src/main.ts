@@ -292,6 +292,7 @@ import {
   guardianLegacyCompanionSliceMatchesV1,
   stageGuardianLegacyCompanionSliceV1,
   readArc4Ownership,
+  ARC4_OWNERSHIP_EXTENSION_TARGETS,
   ARC5_OWNERSHIP_MIGRATION_VERSION,
   ARC5_OWNERSHIP_EXTENSION_TARGETS,
   committedArc5OwnershipState,
@@ -501,6 +502,7 @@ import {
   type Arc9BinderClaimableSetIdV1,
   type Arc9BinderSetClaimActionOutcomeV1,
 } from './binder-sets.js';
+import { projectArc9ParagonFinderV1 } from './paragon-finder.js';
 import {
   ARC9_EXPLORER_NAME_OPERATION_V1,
   commitArc9ExplorerNameChangeV1,
@@ -4026,8 +4028,48 @@ registerPanel({ id: 'rec', el: document.getElementById('recpanel')!, btns: [docu
   fillRecords();
   gameEvent('panel-open', { id: 'rec', open: true });
 } });
-document.getElementById('recpanel')!.addEventListener('click', (event) => {
+document.getElementById('recpanel')!.addEventListener('click', async (event) => {
   if (!(event.target instanceof Element)) return;
+  const paragonButton = event.target.closest<HTMLButtonElement>('[data-binder-paragon]');
+  if (paragonButton !== null) {
+    const index = Number(paragonButton.dataset.binderParagon);
+    if (!Number.isInteger(index) || index < 0 || index >= 50) return;
+    if (!save || compendiumFixtureRows !== null) return;
+    const binder = projectArc9BinderReadModelV1(save);
+    if (binder.kind !== 'projected') {
+      fillRecords();
+      return;
+    }
+    const slot = binder.model.paragon.slots[index];
+    if (slot === undefined || slot.index !== index) return;
+    if (slot.found) {
+      const sourceIndex = activeCodexSource().findIndex(
+        ([logicalId, record]) => String(logicalId) === slot.codexId && record.id === slot.codexId,
+      );
+      if (sourceIndex < 0) {
+        fillRecords();
+        return;
+      }
+      codexOpenController.present('', paragonButton);
+      fillCodexDetail(sourceIndex);
+      return;
+    }
+    const finder = projectArc9ParagonFinderV1(index);
+    if (finder.kind !== 'located') {
+      toast(
+        'Paragon route unavailable',
+        'This fixed Paragon site could not be regenerated safely. Your current route is unchanged.',
+        true,
+      );
+      return;
+    }
+    const keyboard = document.activeElement === paragonButton;
+    const moved = await searchTravel.jumpToCanonicalAddress(finder.address);
+    if (!moved) return;
+    closePanels();
+    if (keyboard) app.canvas.focus({ preventScroll: true });
+    return;
+  }
   const button = event.target.closest<HTMLButtonElement>('[data-binder-claim]');
   if (button === null || button.disabled) return;
   const setId = ARC9_BINDER_CLAIMABLE_SET_IDS_V1.find(
@@ -10066,6 +10108,7 @@ async function runArc9Bioscan(): Promise<boolean> {
     surveyedSet: save.surveyedSet,
     ptypesSeen: save.ptypesSeen,
     starKindsSeen: save.starKindsSeen,
+    codex: save.codex,
     hp: save.hp,
     stats: save.stats,
     unlocked: save.unlocked,
@@ -10092,6 +10135,7 @@ async function runArc9Bioscan(): Promise<boolean> {
     sourceState.surveyedSet = priorPublication.surveyedSet;
     sourceState.ptypesSeen = priorPublication.ptypesSeen;
     sourceState.starKindsSeen = priorPublication.starKindsSeen;
+    sourceState.codex = priorPublication.codex;
     sourceState.hp = priorPublication.hp;
     sourceState.stats = priorPublication.stats;
     sourceState.unlocked = priorPublication.unlocked;
@@ -10174,7 +10218,9 @@ async function runArc9Bioscan(): Promise<boolean> {
         runtime.extensions,
         SCENE_OWNERSHIP_ADDRESS_RESOLVER,
       );
+      const paragonAdded = attempt.paragon.kind === 'added';
       const scoutChanged = attempt.settlement.successor !== null;
+      const ownershipChanged = paragonAdded || scoutChanged;
       const starterGearChanged = attempt.starterCharter.completions.some(
         ({ gearId }) => gearId !== null,
       );
@@ -10191,11 +10237,14 @@ async function runArc9Bioscan(): Promise<boolean> {
         }
         committedBioscanLootState = loadedLoot.state;
       }
-      const writesMatch = scoutChanged
-        ? attempt.ownershipWrites.length === ARC5_OWNERSHIP_EXTENSION_TARGETS.length
+      const expectedOwnershipTargets = paragonAdded
+        ? [...ARC4_OWNERSHIP_EXTENSION_TARGETS, ...ARC5_OWNERSHIP_EXTENSION_TARGETS]
+        : scoutChanged ? ARC5_OWNERSHIP_EXTENSION_TARGETS : [];
+      const writesMatch = ownershipChanged
+        ? attempt.ownershipWrites.length === expectedOwnershipTargets.length
           && attempt.ownershipWrites.every((write, index) => (
-            write.segment === ARC5_OWNERSHIP_EXTENSION_TARGETS[index]!.segment
-            && write.namespace === ARC5_OWNERSHIP_EXTENSION_TARGETS[index]!.namespace
+            write.segment === expectedOwnershipTargets[index]!.segment
+            && write.namespace === expectedOwnershipTargets[index]!.namespace
           ))
         : attempt.ownershipWrites.length === 0;
       if (runtime !== f4Runtime
@@ -10204,14 +10253,14 @@ async function runArc9Bioscan(): Promise<boolean> {
         || save !== sourceState || JSON.stringify(sourceState) !== sourceStateJson
         || attempt.settlement.preflight.parentRevision !== parentOwnershipRevision
         || attempt.settlement.preflight.parentDigest !== parentOwnershipDigest
-        || attempt.ownershipV2.revision !== parentOwnershipRevision + (scoutChanged ? 1 : 0)
+        || attempt.ownershipV2.revision !== parentOwnershipRevision + (ownershipChanged ? 1 : 0)
         || !writesMatch
         || loadedOwnership.kind !== 'loaded'
         || ownershipStateDigestV2(loadedOwnership.state)
           !== ownershipStateDigestV2(attempt.ownershipV2)
-        || ownershipStateDigestV2(attempt.ownershipV2)
-          !== ownershipStateDigestV2(attempt.settlement.successor ?? parentOwnership)
-        || (scoutChanged
+        || (!paragonAdded && ownershipStateDigestV2(attempt.ownershipV2)
+          !== ownershipStateDigestV2(attempt.settlement.successor ?? parentOwnership))
+        || (ownershipChanged
           ? attempt.ownershipV2Evidence?.representationVersion
             !== ARC5_OWNERSHIP_MIGRATION_VERSION
           : attempt.ownershipV2Evidence !== null)) {
@@ -10229,7 +10278,7 @@ async function runArc9Bioscan(): Promise<boolean> {
           lastStarterCharterAcceptStatus = `Completed ${titles}. Reward: ${rewards}.`;
         }
       }
-      if (scoutChanged) {
+      if (ownershipChanged) {
         arc5OwnershipState = attempt.ownershipV2;
         arc5OwnershipEvidence = attempt.ownershipV2Evidence;
         arc5OwnershipProtection = null;
@@ -10263,7 +10312,9 @@ async function runArc9Bioscan(): Promise<boolean> {
     try {
       hudText();
       updateChips();
-      if (attempt.settlement.successor !== null) refreshCompendiumFeedState();
+      if (attempt.settlement.successor !== null || attempt.paragon.kind === 'added') {
+        refreshCompendiumFeedState();
+      }
       if (attempt.starterCharter.changed && openPanelId() === 'ch') fillCharters();
       if (openPanelId() === 'rec') fillRecords();
       if (attempt.starterCharter.changed && openPanelId() === 'shipyard') refreshEngineeringPanelState();
@@ -10296,6 +10347,19 @@ async function runArc9Bioscan(): Promise<boolean> {
             : `★ ${completions.length} Starter Charters — complete`,
           `${titles} · Reward: ${rewards}.`,
         );
+      }
+      if (attempt.paragon.kind === 'added' && attempt.paragon.codexId !== null) {
+        const paragonEntry = attempt.state.codex.find(
+          ([id]) => id === attempt.paragon.codexId,
+        )?.[1];
+        if (paragonEntry !== undefined) {
+          toast(
+            '🏲 Paragon discovered',
+            `${paragonEntry.name} has joined the Fifty-Paragon record.`,
+            true,
+          );
+          if (typeof paragonEntry.tier === 'number') playRaritySting(paragonEntry.tier);
+        }
       }
       if (attempt.settlement.target === 'explorer') {
         toast(

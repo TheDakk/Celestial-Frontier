@@ -6,6 +6,7 @@
 import {
   MAX_OWNERSHIP_REVISION,
   type CreatureInstanceV1,
+  type OwnershipStateV1,
 } from './model.js';
 import {
   LAST_USABLE_F4_RECEIPT_ORDINAL_V2,
@@ -18,6 +19,11 @@ import {
   type F4ReceiptEvidenceV2,
   type OwnershipStateV2,
 } from './model-v2.js';
+import {
+  settleParagonCatalogueSourceV1,
+  type ParagonCatalogueSourceSettlementV1,
+} from './paragon.js';
+import type { CanonicalCF1WorldAddress } from '@cf/scene';
 import { canonicalJson, sha256Hex } from './canonical.js';
 
 export const ARC5_BIOSCAN_ACTION_KIND_V1 = 'hostile-bioscan' as const;
@@ -51,6 +57,10 @@ export interface Arc5BioscanSettlementV1 {
 }
 
 const PREFLIGHTS = new WeakMap<object, OwnershipStateV2>();
+const SETTLEMENTS = new WeakMap<object, Readonly<{
+  parent: OwnershipStateV2;
+  worldKey: string;
+}>>();
 
 function refused(reason: Arc5BioscanPreflightRefusalV1): Arc5BioscanPreflightOutcomeV1 {
   return Object.freeze({ kind: 'refused', reason });
@@ -127,8 +137,67 @@ export function settleArc5BioscanV1(
     actionKind: ARC5_BIOSCAN_ACTION_KIND_V1,
     witnessDigest: sha256Hex(witness),
   });
-  return Object.freeze({
+  const settlement = Object.freeze({
     schema: 'cf-v2-arc5-bioscan-settlement/v1', preflight, hostile, damage,
     target, scoutAfter, successor, receiptEvidence, witness,
+  });
+  SETTLEMENTS.set(settlement, Object.freeze({ parent, worldKey }));
+  return settlement;
+}
+
+export type Arc5BioscanParagonSettlementV1 =
+  | Readonly<{
+      kind: 'added';
+      paragon: Extract<ParagonCatalogueSourceSettlementV1, { readonly kind: 'added' }>;
+      /** The source-changing Arc 4 state for the first catalogue hit. */
+      sourceSuccessor: OwnershipStateV1;
+      successor: OwnershipStateV2;
+    }>
+  | Readonly<{
+      kind: 'repeat';
+      paragon: Extract<ParagonCatalogueSourceSettlementV1, { readonly kind: 'repeat' }>;
+      sourceSuccessor: null;
+      /** Null only when the repeat also carried no Scout injury. */
+      successor: OwnershipStateV2 | null;
+    }>;
+
+/** Compose catalogue-only Paragon provenance with the exact owner-minted
+ * Bioscan injury settlement. Both changes share one V2 +1; a repeat preserves
+ * the original Scout-only result and never advances ownership by itself. */
+export function settleArc5BioscanParagonV1(
+  settlement: Arc5BioscanSettlementV1,
+  index: number,
+  address: CanonicalCF1WorldAddress,
+): Arc5BioscanParagonSettlementV1 {
+  const registered = settlement && typeof settlement === 'object'
+    ? SETTLEMENTS.get(settlement) : undefined;
+  if (registered === undefined || registered.worldKey !== address.key
+    || settlement.receiptEvidence.ordinal > LAST_USABLE_F4_RECEIPT_ORDINAL_V2) {
+    throw new TypeError('Paragon join requires the exact registered Bioscan settlement');
+  }
+  const paragon = settleParagonCatalogueSourceV1({
+    parent: registered.parent,
+    index,
+    address,
+    receiptOrdinal: settlement.receiptEvidence.ordinal,
+  });
+  if (paragon.kind === 'repeat') {
+    return Object.freeze({
+      kind: 'repeat', paragon, sourceSuccessor: null,
+      successor: settlement.successor,
+    });
+  }
+  const rows = settlement.successor ?? registered.parent;
+  const successor = createOwnershipSuccessorV2(registered.parent, {
+    source: paragon.sourceSuccessor,
+    bredAcquisitions: rows.bredAcquisitions,
+    creatures: rows.creatures,
+    creatureTombstones: rows.creatureTombstones,
+    specimenLots: rows.specimenLots,
+    specimenTombstones: rows.specimenTombstones,
+    scoutCreatureId: rows.scoutCreatureId,
+  });
+  return Object.freeze({
+    kind: 'added', paragon, sourceSuccessor: paragon.sourceSuccessor, successor,
   });
 }

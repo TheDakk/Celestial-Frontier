@@ -147,10 +147,14 @@ function driveToGraduation(training: typeof import('../apps/game/src/training.js
   expect(training.trainingStepId()).toBe('grad');
 }
 
+const PARAGON_TRAINING_BAD = /Found Paragons plot a course instead of opening Inspect|Missing silhouettes open Inspect instead of plotting a course|Discover Life on any world adds a Paragon catalogue record|An ordinary\-world Bioscan catalogues a species|A Paragon sighting creates an owned companion|A Paragon sighting creates a specimen|A Paragon sighting grants Capture credit|A Paragon sighting spends 1 Biosphere Yield|A Paragon sighting automatically pays 120 Stardust|Seeker of Legends is claimable after one Paragon|Repeat Paragon sightings add a discovery reward|A prior Paragon\-set claim can pay again|Returning to a previously recorded Paragon home backfills its catalogue record/i;
+
 function graduationCopyIsTruthful(html: string): boolean {
   const copy = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ')
     .replace(/\s+([,.;:])/g, '$1').trim();
-  return /short drill stays focused on real navigation/i.test(copy)
+  return ["On ordinary worlds, it catalogues no species", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward"].every((part) => copy.includes(part))
+    && !PARAGON_TRAINING_BAD.test(copy)
+    && /short drill stays focused on real navigation/i.test(copy)
     && /board briefings are read-only/i.test(copy)
     && /survey card’s Share prepares a verified CF1 world code/i.test(copy)
     && /pasting a valid CF1 code into Search follows its source-proven route when your ship and Prime reach allow it/i.test(copy)
@@ -192,7 +196,10 @@ function graduationCopyIsTruthful(html: string): boolean {
 
 function curriculumCopyIsTruthful(steps: readonly { id: string; text: () => string }[]): boolean {
   const text = (id: string): string => steps.find((step) => step.id === id)?.text() ?? '';
-  return /without changing your expedition’s Atlas/i.test(text('atlas-add'))
+  const recordsCopy = text('records-tour').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  return ["a found entry offers Inspect to open its exact Compendium record without travelling", "Back returns to the Compendium list", "After Training, a missing silhouette plots its source-proven home through the existing reach checks", "At an exact fixed home, an explicit Discover Life Bioscan adds only the exact Paragon catalogue record in that same verified save", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Finding ten makes Seeker of Legends claimable through the separate Binder Claim for its established 120 Stardust, once", "a sighting never pays that Set reward automatically", "This briefing plots no course, discovers no species and claims no reward"].every((part) => recordsCopy.includes(part))
+    && !PARAGON_TRAINING_BAD.test(recordsCopy)
+    && /without changing your expedition’s Atlas/i.test(text('atlas-add'))
     && /Outside Training.*adds a new chart or confirms/i.test(text('atlas-add'))
     && /practiced without changing your expedition’s charts/i.test(text('atlas-open'))
     && /Outside Training.*charted planet entry returns to its live system survey/i.test(text('atlas-open'))
@@ -249,6 +256,26 @@ describe('Field Training completion transaction UI', () => {
       : step))).toBe(false);
     const graduation = steps.find((step) => step.id === 'grad')!.text();
     expect(graduationCopyIsTruthful(graduation)).toBe(true);
+    const plainGraduation = graduation.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    for (const anchor of ["On ordinary worlds, it catalogues no species", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward"]) {
+      expect(plainGraduation.split(anchor), anchor).toHaveLength(2);
+      expect(graduationCopyIsTruthful(plainGraduation.replace(anchor, 'omitted'))).toBe(false);
+      expect(graduationCopyIsTruthful(graduation)).toBe(true);
+    }
+    const recordsStep = steps.find((step) => step.id === 'records-tour')!;
+    const recordsHtml = recordsStep.text();
+    const recordsCopy = recordsHtml.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    const changeRecords = (copy: string) => steps.map((step) => step.id === 'records-tour'
+      ? { ...step, text: () => copy } : step);
+    for (const anchor of ["a found entry offers Inspect to open its exact Compendium record without travelling", "Back returns to the Compendium list", "After Training, a missing silhouette plots its source-proven home through the existing reach checks", "At an exact fixed home, an explicit Discover Life Bioscan adds only the exact Paragon catalogue record in that same verified save", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Finding ten makes Seeker of Legends claimable through the separate Binder Claim for its established 120 Stardust, once", "a sighting never pays that Set reward automatically", "This briefing plots no course, discovers no species and claims no reward"]) {
+      expect(recordsCopy.split(anchor), anchor).toHaveLength(2);
+      expect(curriculumCopyIsTruthful(changeRecords(recordsCopy.replace(anchor, 'omitted')))).toBe(false);
+      expect(curriculumCopyIsTruthful(steps)).toBe(true);
+    }
+    for (const copy of ["Found Paragons plot a course instead of opening Inspect.", "Missing silhouettes open Inspect instead of plotting a course.", "Discover Life on any world adds a Paragon catalogue record.", "An ordinary-world Bioscan catalogues a species.", "A Paragon sighting creates an owned companion.", "A Paragon sighting creates a specimen.", "A Paragon sighting grants Capture credit.", "A Paragon sighting spends 1 Biosphere Yield.", "A Paragon sighting automatically pays 120 Stardust.", "Seeker of Legends is claimable after one Paragon.", "Repeat Paragon sightings add a discovery reward.", "A prior Paragon-set claim can pay again.", "Returning to a previously recorded Paragon home backfills its catalogue record."]) {
+      expect(graduationCopyIsTruthful(graduation + ' ' + copy)).toBe(false);
+      expect(curriculumCopyIsTruthful(changeRecords(recordsHtml + ' ' + copy))).toBe(false);
+    }
     expect(graduationCopyIsTruthful(
       graduation.replace(
         'a survey card’s <b>Share</b> prepares a verified CF1 world code',

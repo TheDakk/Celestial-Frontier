@@ -164,7 +164,10 @@ const SHARING_COPY_CONTRADICTIONS = Object.freeze([
   /(?:named|custom)[^.!?]{0,64}(?:progression|catch-up)[^.!?]{0,64}before[^.!?]{0,32}Follow/i,
 ]);
 
+const PARAGON_COPY_CONTRADICTION = /Found Paragons plot a course instead of opening Inspect|Missing silhouettes open Inspect instead of plotting a course|Discover Life on any world adds a Paragon catalogue record|An ordinary\-world Bioscan catalogues a species|A Paragon sighting creates an owned companion|A Paragon sighting creates a specimen|A Paragon sighting grants Capture credit|A Paragon sighting spends 1 Biosphere Yield|A Paragon sighting automatically pays 120 Stardust|Seeker of Legends is claimable after one Paragon|Repeat Paragon sightings add a discovery reward|A prior Paragon\-set claim can pay again|Returning to a previously recorded Paragon home backfills its catalogue record/i;
+
 const CAPTURE_COPY_CONTRADICTIONS = Object.freeze([
+  PARAGON_COPY_CONTRADICTION,
   /(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)/i,
   /(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)/i,
   /(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)/i,
@@ -399,7 +402,8 @@ function skimmingGuideCopyIsTruthful(body: string): boolean {
 
 function stardustGuideCopyIsTruthful(body: string): boolean {
   const copy = plainCopy(body);
-  return /preserves its imported\/current Stardust/i.test(copy)
+  return copy.includes("Seeker of Legends is the eighth Set: its separate Claim pays 120 Stardust once after ten exact Paragons; a sighting does not pay it automatically")
+    && /preserves its imported\/current Stardust/i.test(copy)
     && /any successful Research purchase or eligible fixed Fabricator recipe spends its stated Stardust/i.test(copy)
     && /same durable transaction as the result/i.test(copy)
     && /first successful Legendary-or-better Tame, Scavenge, or Sample observation earns its one Rare Find Stardust bonus/i.test(copy)
@@ -419,7 +423,8 @@ function stardustGuideCopyIsTruthful(body: string): boolean {
 
 function surveyBoundaryCopyIsTruthful(body: string): boolean {
   const copy = plainCopy(body);
-  return /selection is navigation and inspection/i.test(copy)
+  return ["On ordinary worlds, it catalogues no species and spends no Biosphere Yield", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward"].every((part) => copy.includes(part))
+    && /selection is navigation and inspection/i.test(copy)
     && /does not spend a resource, record a living-world Survey, catalogue life, make a capture attempt, or authorize extraction/i.test(copy)
     && /Discover Life is the separate durable bioscan that records the exact living world and resolves its one deterministic field hazard/i.test(copy)
     && /catalogues no species and spends no Biosphere Yield/i.test(copy)
@@ -441,7 +446,8 @@ function surveyBoundaryCopyIsTruthful(body: string): boolean {
 
 function captureGuideCopyIsTruthful(body: string): boolean {
   const copy = plainCopy(body);
-  return /living planet’s Survey card offers Discover Life before or after landing/i.test(copy)
+  return ["On ordinary worlds, it catalogues no species and spends no Biosphere Yield", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Binder Claim becomes available at ten exact Paragons and pays its established 120 Stardust once", "discovering a Paragon never pays that Set reward automatically", "A development save that recorded a Paragon home before this feature keeps its already-recorded Bioscan refusal; returning does not backfill the Paragon"].every((part) => copy.includes(part))
+    && /living planet’s Survey card offers Discover Life before or after landing/i.test(copy)
     && /Ordinary card inspection remains write-free/i.test(copy)
     && /Discover Life is the single durable bioscan[^.!?]{0,160}records that exact living world[^.!?]{0,160}deterministic hazard draw/i.test(copy)
     && /catalogues no species and spends no Biosphere Yield/i.test(copy)
@@ -516,7 +522,8 @@ function rarityCaptureCopyIsTruthful(body: string): boolean {
 
 function charterCaptureBoundaryIsTruthful(body: string): boolean {
   const copy = plainCopy(body);
-  return /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i.test(copy)
+  return ["At an exact fixed Paragon home, that same Bioscan can also add only the exact Paragon catalogue record", "it creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "This catalogue exception does not count as the Chapter 2 capture milestone"].every((part) => copy.includes(part))
+    && /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i.test(copy)
     && /A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing/i.test(copy)
     && /Chapter 2 capture milestone is separate from the live Discover Life action/i.test(copy)
     && /Discover Life(?: action[^.!?]{0,96})? owns the existing per-world Survey record(?: and hazard|, hazard, and any accepted st-scan completion in the same receipt)/i.test(copy)
@@ -558,7 +565,8 @@ function engineeringReleaseCopyIsTruthful(body: string): boolean {
 }
 
 function captureReleaseCopyIsTruthful(body: string): boolean {
-  return /DISCOVER LIFE AND CAPTURE HAVE HONEST LIMITS/i.test(body)
+  return ["On ordinary worlds, the action records that exact world and resolves one shown deterministic hazard without cataloguing a species or spending Biosphere Yield", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward"].every((part) => body.includes(part))
+    && /DISCOVER LIFE AND CAPTURE HAVE HONEST LIMITS/i.test(body)
     && /living planet’s Survey card offers explicit Discover Life before or after landing/i.test(body)
     && /Ordinary inspection stays write-free/i.test(body)
     && /action records that exact world and resolves one shown deterministic hazard without cataloguing a species or spending Biosphere Yield/i.test(body)
@@ -658,24 +666,20 @@ function breedingReleaseCopyIsTruthful(body: string): boolean {
 
 function binderGuideCopyIsTruthful(body: string): boolean {
   const copy = plainCopy(body);
-  return /Binder lives in Records/i.test(copy)
+  return ["Eight established collection sets are live: Four Crowns, The Five Flavors, Master of Arts, The Bestiary, Warden of Realms, Against All Odds, The Apex Court, and Seeker of Legends", "A missing silhouette offers Plot course", "to its source-proven home through the existing ship and Prime reach checks", "an accepted world route opens Survey, and Land remains separate", "A found entry offers Inspect", "which opens that exact existing Compendium record without travel or acquisition", "Its ordinary Back control returns to the Compendium list", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Binder Claim becomes available at ten exact Paragons and pays its established 120 Stardust once", "discovering a Paragon never pays that Set reward automatically", "A prior Paragon-set claim remains claimed and can never pay again"].every((part) => copy.includes(part))
+    && /Binder lives in Records/i.test(copy)
     && /six established type pages: the Spectrum, Sixteen Realms, Body Plans, Ability Themes, Flora Flavors, and Size Classes/i.test(copy)
     && /Slots are species types, not individual creatures/i.test(copy)
-    && /Seven established collection sets are live: Four Crowns, The Five Flavors, Master of Arts, The Bestiary, Warden of Realms, Against All Odds, and The Apex Court/i.test(copy)
     && /completed unclaimed set exposes one exact Claim action/i.test(copy)
     && /one-time Stardust reward, lifetime-earned total, claimed-set record, achievements, and rank refresh settle in one receipt and one compare-and-swap with no retry or optimistic reward/i.test(copy)
-    && /Fifty Paragons remain visible but unavailable/i.test(copy)
-    && /imported Paragon-set claim is preserved as evidence and can never become a new claim button/i.test(copy)
-    && !/Fifty Paragons[^.!?]{0,120}(?:claimable|available to claim|pay Stardust)/i.test(copy);
+    && !PARAGON_COPY_CONTRADICTION.test(copy);
 }
 
 function binderReleaseCopyIsTruthful(body: string): boolean {
-  return /Records also houses the Binder’s six established type pages and seven current-proof Set claims/i.test(body)
+  return ["Records also houses the Binder’s six established type pages and eight current-proof Set claims", "the Fifty-Paragon hunt is live, and prior Set claims remain claimed", "Missing silhouettes plot their source-proven homes, while found entries use Inspect to open the exact Compendium record without travel", "Seeker of Legends is a separate Binder Claim at ten exact Paragons for 120 Stardust once", "a sighting never pays that Set reward automatically"].every((part) => body.includes(part))
     && /completed unclaimed Set pays its established 25–150 Stardust/i.test(body)
     && /updates lifetime earned, records the claim, and refreshes achievements and rank in one receipt and one compare-and-swap with no retry or optimistic reward/i.test(body)
-    && /Fifty Paragons remain visible but unavailable/i.test(body)
-    && /imported Paragon evidence cannot become a claim button/i.test(body)
-    && !/Fifty Paragons[^.!?]{0,120}(?:claimable|available to claim|pay Stardust)/i.test(body);
+    && !PARAGON_COPY_CONTRADICTION.test(body);
 }
 
 function starterCharterReleaseCopyIsTruthful(body: string): boolean {
@@ -1144,6 +1148,54 @@ function legacyGuideTopics(): LegacyGuideTopic[] {
 }
 
 describe('canonical Guide source and inventory', () => {
+
+  it('requires the Paragon exception, Inspect/travel split, separate claim and development-save limit', () => {
+    const cases = [
+      [surveyBoundaryCopyIsTruthful, plainCopy(getGuideTopic('survey')!.body), ["On ordinary worlds, it catalogues no species and spends no Biosphere Yield", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward"]],
+      [captureGuideCopyIsTruthful, plainCopy(getGuideTopic('discover')!.body), ["On ordinary worlds, it catalogues no species and spends no Biosphere Yield", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Binder Claim becomes available at ten exact Paragons and pays its established 120 Stardust once", "discovering a Paragon never pays that Set reward automatically", "A development save that recorded a Paragon home before this feature keeps its already-recorded Bioscan refusal; returning does not backfill the Paragon"]],
+      [binderGuideCopyIsTruthful, plainCopy(getGuideTopic('binder')!.body), ["Eight established collection sets are live: Four Crowns, The Five Flavors, Master of Arts, The Bestiary, Warden of Realms, Against All Odds, The Apex Court, and Seeker of Legends", "A missing silhouette offers Plot course", "to its source-proven home through the existing ship and Prime reach checks", "an accepted world route opens Survey, and Land remains separate", "A found entry offers Inspect", "which opens that exact existing Compendium record without travel or acquisition", "Its ordinary Back control returns to the Compendium list", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Binder Claim becomes available at ten exact Paragons and pays its established 120 Stardust once", "discovering a Paragon never pays that Set reward automatically", "A prior Paragon-set claim remains claimed and can never pay again"]],
+      [charterCaptureBoundaryIsTruthful, plainCopy(getGuideTopic('charters')!.body), ["At an exact fixed Paragon home, that same Bioscan can also add only the exact Paragon catalogue record", "it creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "This catalogue exception does not count as the Chapter 2 capture milestone"]],
+      [charterCaptureBoundaryIsTruthful, plainCopy(getGuideTopic('ascent')!.body), ["At an exact fixed Paragon home, that same Bioscan can also add only the exact Paragon catalogue record", "it creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "This catalogue exception does not count as the Chapter 2 capture milestone"]],
+    ] as const;
+    for (const [predicate, original, anchors] of cases) {
+      expect(predicate(original)).toBe(true);
+      for (const anchor of anchors) {
+        expect(original.split(anchor), anchor).toHaveLength(2);
+        const changed = original.replace(anchor, 'isolated Paragon boundary omitted');
+        expect(changed).not.toBe(original);
+        expect(predicate(changed), anchor).toBe(false);
+        expect(predicate(original), anchor + ' restored').toBe(true);
+      }
+      for (const copy of ["Found Paragons plot a course instead of opening Inspect.", "Missing silhouettes open Inspect instead of plotting a course.", "Discover Life on any world adds a Paragon catalogue record.", "An ordinary-world Bioscan catalogues a species.", "A Paragon sighting creates an owned companion.", "A Paragon sighting creates a specimen.", "A Paragon sighting grants Capture credit.", "A Paragon sighting spends 1 Biosphere Yield.", "A Paragon sighting automatically pays 120 Stardust.", "Seeker of Legends is claimable after one Paragon.", "Repeat Paragon sightings add a discovery reward.", "A prior Paragon-set claim can pay again.", "Returning to a previously recorded Paragon home backfills its catalogue record."]) {
+        expect(predicate(original + ' ' + copy), copy).toBe(false);
+        expect(predicate(original), copy + ' restored').toBe(true);
+      }
+    }
+    const draft = V2_DRAFT_RELEASE.sections.flatMap((section) => section.bullets);
+    const records = draft.find((row) => row.includes('EVERY EXPEDITION HAS A RANKED RECORD'))!;
+    expect(binderReleaseCopyIsTruthful(records)).toBe(true);
+    for (const anchor of ["Records also houses the Binder’s six established type pages and eight current-proof Set claims", "the Fifty-Paragon hunt is live, and prior Set claims remain claimed", "Missing silhouettes plot their source-proven homes, while found entries use Inspect to open the exact Compendium record without travel", "Seeker of Legends is a separate Binder Claim at ten exact Paragons for 120 Stardust once", "a sighting never pays that Set reward automatically"]) {
+      expect(records.split(anchor), anchor).toHaveLength(2);
+      expect(binderReleaseCopyIsTruthful(records.replace(anchor, 'omitted'))).toBe(false);
+      expect(binderReleaseCopyIsTruthful(records)).toBe(true);
+    }
+    const legends = draft.filter((row) => row.includes('FOLLOW THE FIFTY:'));
+    expect(legends).toHaveLength(1);
+    const original = legends[0]!;
+    const truthful = (copy: string) => ["FOLLOW THE FIFTY:", "A missing silhouette plots its source-proven home through existing ship and Prime reach checks", "a found entry uses Inspect to open its exact existing Compendium record without travel", "Back returns to the Compendium list", "Discover Life at an exact fixed home adds only that Paragon catalogue record in the same verified save", "with no owned companion or specimen, no Capture credit and no Biosphere Yield spend", "Repeat sightings add no duplicate record or discovery reward", "Seeker of Legends becomes claimable after ten exact Paragons through a separate Binder Claim and pays its established 120 Stardust once", "a sighting never pays that Set reward automatically"].every((part) => copy.includes(part))
+      && !PARAGON_COPY_CONTRADICTION.test(copy);
+    expect(truthful(original)).toBe(true);
+    for (const anchor of ["FOLLOW THE FIFTY:", "A missing silhouette plots its source-proven home through existing ship and Prime reach checks", "a found entry uses Inspect to open its exact existing Compendium record without travel", "Back returns to the Compendium list", "Discover Life at an exact fixed home adds only that Paragon catalogue record in the same verified save", "with no owned companion or specimen, no Capture credit and no Biosphere Yield spend", "Repeat sightings add no duplicate record or discovery reward", "Seeker of Legends becomes claimable after ten exact Paragons through a separate Binder Claim and pays its established 120 Stardust once", "a sighting never pays that Set reward automatically"]) {
+      expect(original.split(anchor), anchor).toHaveLength(2);
+      expect(truthful(original.replace(anchor, 'omitted')), anchor).toBe(false);
+    }
+    for (const copy of ["Found Paragons plot a course instead of opening Inspect.", "Missing silhouettes open Inspect instead of plotting a course.", "Discover Life on any world adds a Paragon catalogue record.", "An ordinary-world Bioscan catalogues a species.", "A Paragon sighting creates an owned companion.", "A Paragon sighting creates a specimen.", "A Paragon sighting grants Capture credit.", "A Paragon sighting spends 1 Biosphere Yield.", "A Paragon sighting automatically pays 120 Stardust.", "Seeker of Legends is claimable after one Paragon.", "Repeat Paragon sightings add a discovery reward.", "A prior Paragon-set claim can pay again.", "Returning to a previously recorded Paragon home backfills its catalogue record."]) {
+      expect(truthful(original + ' ' + copy), copy).toBe(false);
+      expect(binderReleaseCopyIsTruthful(records + ' ' + copy), copy).toBe(false);
+    }
+    expect(truthful(original)).toBe(true);
+  });
+
   it('is an exact snapshot of the mature v1.8.9 Guide literal', () => {
     expect(sha256(guideLiteral)).toBe(LEGACY_GUIDE_SYNC.sourceSha256);
     expect(evaluateLiteral(guideLiteral)).toEqual(LEGACY_GUIDE_CATEGORIES);
@@ -2281,7 +2333,7 @@ describe('v2 Guide capability filter', () => {
       ],
       [
         'Binder Paragon boundary', binderGuideCopyIsTruthful, binder,
-        binder.replace('The Fifty Paragons remain visible but unavailable', 'The Fifty Paragons are available to claim'),
+        binder.replace("which opens that exact existing Compendium record without travel or acquisition", "which plots a course instead of opening the exact record"),
       ],
       [
         'Binder atomic reward', binderReleaseCopyIsTruthful, recordsBullet,
@@ -2718,7 +2770,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 78,
+        inventory: bullets.length === 79,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,
@@ -2746,7 +2798,7 @@ describe('legacy and v2 release channels', () => {
       category: section.category,
       bullets: index === 1 ? section.bullets.filter((_, bulletIndex) => bulletIndex !== 3) : section.bullets,
     }));
-    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(77);
+    expect(missingMiddle.flatMap((section) => section.bullets)).toHaveLength(78);
     expect(bulletinOutcome(missingMiddle).inventory).toBe(false);
     const missingRequired = V2_DRAFT_RELEASE.sections.map((section) => ({
       category: section.category,
