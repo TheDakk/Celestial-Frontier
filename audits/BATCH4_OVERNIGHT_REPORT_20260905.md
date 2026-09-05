@@ -7,7 +7,7 @@ This is a live checkpoint report, not final acceptance. Base develop:
 
 | Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
 | --- | --- | --- | --- | --- |
-| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; current `b42286039b6e7dff1a080d91623550de34944745` | Pending | Typecheck/artunused PASS; 286 files / 2,955 passed / 1 skipped | Four retained Slice reds; combined-receipt correction pending; neither Glass ran |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; periodic backup `5ac99f9efc86b1e19d2ec0c5d59c70cc5653fffb` | 2026-09-05 07:13:39 (backup) | Typecheck/artunused PASS; 286 files / 2,956 passed / 1 skipped; four workers | Five retained Slice reds; actual Tame/Sample pass; corruption expectation repair pending; neither Glass ran |
 | 2a accepted st-scan | Pending | — | — | — |
 | 2b descent/wave-offs | Pending | — | — | — |
 | 2c 50-Paragon hunt | Pending | — | — | — |
@@ -596,6 +596,83 @@ browser sequence.
     "seconds": 57.041,
     "log": "3-npx.log",
     "sha256": "ef493efb891cef216eb2a24e15ea376af4c8289cc6c19e83b0393780b55e3da9"
+  }
+]
+```
+
+## Periodic backup 1 — pushed
+
+Commit `5ac99f9efc86b1e19d2ec0c5d59c70cc5653fffb` was pushed to
+`origin/openai/review-batch4-gameplay-20260905` at **2026-09-05 07:13:39 UTC**;
+the remote-tracking SHA matched. Fast gates PASS **286 / 2,956 / 1** with four local workers.
+This is the authorized periodic backup, not completed core acceptance. No PR/label/hosted run.
+
+## Checkpoint 1 fifth browser red — stronger corruption controls
+
+That clean pushed source passed the full Tame audio classification and actual Sample hit,
+then stopped after **151.516s**:
+
+```text
+SLICE SMOKE: FAIL — 1 finding
+SLICE SMOKE: FAILURE TITLES
+  1. ARC 4 SAMPLE HIT
+ARC 4 SAMPLE HIT: one held native action did not remain non-optimistic then commit hidden ordinal-13 first-page/+2 truth
+```
+
+The retained positive pending and hit assessments are fully true. The deliberately corrupted
+`hitRetainedArc5Control` and `hitTargetDigestControl` now correctly fail five checks:
+`durableEvidence`, `arc5CarrierSuccessor`, `receipt`, `unrelatedDurable`, `ownershipV2Live`.
+The existing Slice expectation still lists the old four failures, omitting `receipt`.
+Align only these expected failure sets and identical migration mutants with the strengthened
+binding; do not remove the receipt check or change the positive product outcome. Full literal
+finding is retained in the REDS JSON. Log SHA-256:
+`216a21cf7182c68aea982f358d26f12d60e2bbb46c75141b25fc53e2f3a72f19`.
+Neither phone canary ran; the next correction will precede a new committed-source run.
+
+## Checkpoint 1 dependent-control correction — final fast PASS
+
+Aligned four existing expected Arc5-corruption failure sets with the additional receipt rejection.
+The burn event/digest mutants now target the intended inner capture witness; no extra outer
+field can counterfeit those controls. Focused checks PASS **4 files / 46 tests**. Full fast
+PASS: typecheck/artunused; **286 files / 2,958 passed / 1 skipped** with four local workers.
+No product, authority, timeout or historical ledger change. Commit before the next clean-source
+Slice and two-phone sequence; the published periodic backup remains `5ac99f9` until the next push.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.242,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.289,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 57.405,
+    "log": "3-npx.log",
+    "sha256": "ca968f3be8dd65f10439bbc169065d5383ac9037e6b61fc75b899187d3cd3ec2"
   }
 ]
 ```

@@ -212,6 +212,85 @@ describe('current capture settlement receipt binding', () => {
   });
 });
 
+describe('Slice current capture receipt mutation expectations', () => {
+  const expectedFailures = [
+    'durableEvidence', 'arc5CarrierSuccessor', 'receipt', 'unrelatedDurable',
+    'ownershipV2Live',
+  ];
+  const exactFailureOwner = section(sliceSource,
+    '  const arc4ExactFailureSet = (result, expected) =>',
+    '  const arc4MutateStateActivePlay = (state) => {');
+  const exactFailureSet = new Function(`${exactFailureOwner}; return arc4ExactFailureSet;`)() as (
+    result: { ok: boolean; checks: Record<string, boolean> }, expected: readonly string[],
+  ) => boolean;
+
+  it('requires the receipt dependency in all four existing Arc5 migration mutants', () => {
+    const owners = [
+      ...['arc4HitRetainedArc5Control', 'arc4HitTargetDigestControl',
+        'arc4MissRetainedArc5Control'].map((name) => {
+        const matches = [...sliceSource.matchAll(new RegExp(
+          `arc4ExactFailureSet\\(${name},\\s*(\\[[\\s\\S]*?\\])\\)`, 'gu',
+        ))];
+        expect(matches, name).toHaveLength(1);
+        return matches[0]![1]!;
+      }),
+      section(sliceSource, '      arc5CarrierSuccessor: {', '      downwardRuntime: {')
+        .match(/expected:\s*(\[[\s\S]*?\])/u)![1]!,
+    ];
+    const failed = { ok: false, checks: Object.fromEntries(expectedFailures.map((key) => [key, false])) };
+    for (const owner of owners) {
+      const parse = (value: string) => new Function(`return (${value});`)() as string[];
+      expect(parse(owner)).toEqual(expectedFailures);
+      expect(exactFailureSet(failed, parse(owner))).toBe(true);
+      expect(owner.split("'receipt', ")).toHaveLength(2);
+      const staleOwner = owner.replace("'receipt', ", '');
+      expect(exactFailureSet(failed, parse(staleOwner))).toBe(false);
+      expect(exactFailureSet({ ...failed, checks: { ...failed.checks, unexpected: false } },
+        parse(owner))).toBe(false);
+      expect(exactFailureSet({ ...failed, checks: { ...failed.checks, receipt: true } },
+        parse(owner))).toBe(false);
+      expect(exactFailureSet(failed, parse(owner))).toBe(true);
+    }
+  });
+
+  it('mutates the inner event and inner successor digest while retaining the exact settlement envelope', () => {
+    const rows = [
+      ['event', 'event', 'c', '    const digestControlAfter ='],
+      ['digest', 'successorDigest', 'd', '    const v4ControlAfter ='],
+    ] as const;
+    const inner = { schema: 'cf-v2-capture-plan-witness/v1', event: 'a'.repeat(64),
+      candidateDraw: 0.1, successDraw: 0.2, chance: 0.3, hit: true, spent: 1,
+      successorDigest: 'b'.repeat(64) };
+    const settlement = { schema: 'cf-v2-arc4-capture-settlement-witness/v1',
+      captureWitness: JSON.stringify(inner), successorDigest: 'b'.repeat(64),
+      ownershipV2Digest: 'e'.repeat(64), arc5MigrationWritesDigest: 'f'.repeat(64),
+      scoutXp: { scoutCreatureId: null, xpBefore: null, xpAfter: null, xpAward: 0 } };
+    const original = { ordinal: 2, kind: 'capture-attempt', witness: JSON.stringify(settlement) };
+    for (const [name, field, digit, end] of rows) {
+      const owner = section(sliceSource,
+        `    const ${name}ControlAfter = arc4MutateNewReceipt(after, ordinal, (row) => {`, end);
+      const run = (source: string) => new Function('after', 'ordinal', 'arc4MutateNewReceipt',
+        'canonicalJson', `${source}; return ${name}ControlAfter;`)(original, 2,
+        (after: typeof original, ordinal: number, mutate: (row: typeof original) => void) => {
+          expect(ordinal).toBe(2);
+          const row = structuredClone(after); mutate(row); return row;
+        }, JSON.stringify) as typeof original;
+      const exact = (row: typeof original) => {
+        const outer = JSON.parse(row.witness) as typeof settlement;
+        return JSON.stringify({ ...outer, captureWitness: settlement.captureWitness })
+            === JSON.stringify(settlement)
+          && JSON.stringify(JSON.parse(outer.captureWitness))
+            === JSON.stringify({ ...inner, [field]: digit.repeat(64) });
+      };
+      expect(exact(run(owner))).toBe(true);
+      expect(owner.split('JSON.parse(settlement.captureWitness)')).toHaveLength(2);
+      expect(exact(run(owner.replace('JSON.parse(settlement.captureWitness)', 'settlement')))).toBe(false);
+      expect(original.witness).toBe(JSON.stringify(settlement));
+      expect(exact(run(owner))).toBe(true);
+    }
+  });
+});
+
 describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
   it('seals the real Pertar setup prefix and first-Sample progression successor', () => {
     const prefix = ARC4_PERTAR_LEDGER_PREFIX_SELFTEST as Readonly<{
