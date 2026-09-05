@@ -6783,7 +6783,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 79,
-    sha256: 'cfb34202b24e064af24a80f99083609aa63539d52ebce0042d7b4a231fb854e9',
+    sha256: '351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -27181,8 +27181,17 @@ try {
   if (!/practiced without changing your expedition(?:'|’|&#8217;|&rsquo;)s charts/i.test(atlasOpenCopy)
     || !/charted planet entry.*returns to its live system survey/i.test(atlasOpenCopy)
     || !/Land remains your choice/i.test(atlasOpenCopy)
+    || !atlasOpenCopy.includes("After Training, use List or Chart")
+    || !atlasOpenCopy.includes("All, Favorites, Visited, Conquered, and Life filters")
+    || !atlasOpenCopy.includes("Nearby Chart lights open an exact candidate list with Return to Chart")
+    || !atlasOpenCopy.includes("Home selects one exact chart; Remove offers one eight-second Undo")
+    || !atlasOpenCopy.includes("This drill changes no Home, favorite, or saved row")
+    || atlasOpenCopy.includes("This drill changes your Home")
+    || atlasOpenCopy.includes("This drill removes a saved row")
+    || atlasOpenCopy.includes("Chart cluster selection travels automatically")
+    || atlasOpenCopy.includes("Undo lasts forever")
     || /travels there instantly/i.test(atlasOpenCopy)) {
-    fails.push('DRILL COPY: Atlas travel still implies direct/automatic planetfall: ' + JSON.stringify(atlasOpenCopy));
+    fails.push('DRILL COPY: Atlas practice, List/Chart, exact selection, or Home/Remove/Undo contract is missing or contradictory: ' + JSON.stringify(atlasOpenCopy));
   }
   const atl = await evalT(`(()=>{const s=window.__CF_SLICE__.api.state();return {
     count:s.atlasCount,lastOutcome:s.atlas?.lastOutcome,rows:s.atlas?.rows,travelable:s.atlas?.travelable};})()`);

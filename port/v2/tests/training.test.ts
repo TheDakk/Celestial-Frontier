@@ -1,4 +1,5 @@
 import { createRequire } from 'node:module';
+import { readFileSync } from 'node:fs';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type {
   TrainingDeps,
@@ -204,6 +205,12 @@ function curriculumCopyIsTruthful(steps: readonly { id: string; text: () => stri
     && /practiced without changing your expedition’s charts/i.test(text('atlas-open'))
     && /Outside Training.*charted planet entry returns to its live system survey/i.test(text('atlas-open'))
     && !/Earth is charted|Atlas’s first entry/i.test(text('atlas-open'))
+    && /After Training, use <b>List<\/b> or <b>Chart<\/b>/i.test(text('atlas-open'))
+    && /All, Favorites, Visited, Conquered, and Life filters/i.test(text('atlas-open'))
+    && /Nearby Chart lights open an exact candidate list with Return to Chart/i.test(text('atlas-open'))
+    && ["This drill changes your Home", "This drill removes a saved row", "Chart cluster selection travels automatically", "Undo lasts forever"].every((claim) => !text('atlas-open').includes(claim))
+    && /Home selects one exact chart; Remove offers one eight-second Undo/i.test(text('atlas-open'))
+    && /This drill changes no Home, favorite, or saved row/i.test(text('atlas-open'))
     && /will not roll a capture or spend Yield/i.test(text('planetside-briefing'))
     && /Opening and inspecting this board changes nothing/i.test(text('engineering-open'))
     && /Training keeps every action button locked/i.test(text('engineering-tour'))
@@ -254,6 +261,44 @@ describe('Field Training completion transaction UI', () => {
       'horizon', 'grad',
     ]);
     expect(curriculumCopyIsTruthful(steps)).toBe(true);
+    for (const fact of [
+      'After Training, use <b>List</b> or <b>Chart</b>',
+      'All, Favorites, Visited, Conquered, and Life filters',
+      'Nearby Chart lights open an exact candidate list with Return to Chart',
+      'Home selects one exact chart; Remove offers one eight-second Undo',
+      'This drill changes no Home, favorite, or saved row',
+    ]) {
+      expect(curriculumCopyIsTruthful(steps.map((step) => step.id === 'atlas-open'
+        ? { ...step, text: () => step.text().replace(fact, 'omitted') } : step))).toBe(false);
+      expect(curriculumCopyIsTruthful(steps)).toBe(true);
+    }
+    for (const contradiction of ["This drill changes your Home", "This drill removes a saved row", "Chart cluster selection travels automatically", "Undo lasts forever"]) {
+      expect(curriculumCopyIsTruthful(steps.map((step) => step.id === 'atlas-open'
+        ? { ...step, text: () => step.text() + ' ' + contradiction } : step))).toBe(false);
+      expect(curriculumCopyIsTruthful(steps)).toBe(true);
+    }
+    // Execute the existing Slice atlas-open copy condition against this lesson.
+    const sliceCopySource = readFileSync(new URL('../tools/slicesmoke.mjs', import.meta.url), 'utf8');
+    const copyStart = "  if (!/practiced without changing your expedition";
+    const copyEnd = ")) {\n    fails.push('DRILL COPY: Atlas practice";
+    expect(sliceCopySource.split(copyStart)).toHaveLength(2);
+    const copyAt = sliceCopySource.indexOf(copyStart) + '  if ('.length;
+    const copyStop = sliceCopySource.indexOf(copyEnd, copyAt);
+    expect(copyStop).toBeGreaterThan(copyAt);
+    const rejectsAtlasCopy = Function('atlasOpenCopy', 'return (' + sliceCopySource.slice(copyAt, copyStop + 1) + ');') as (copy: string) => boolean;
+    const atlasCopyNode = document.createElement('div');
+    atlasCopyNode.innerHTML = steps.find((step) => step.id === 'atlas-open')!.text();
+    const atlasCopyText = atlasCopyNode.textContent!;
+    expect(rejectsAtlasCopy(atlasCopyText)).toBe(false);
+    for (const fact of ["After Training, use List or Chart", "All, Favorites, Visited, Conquered, and Life filters", "Nearby Chart lights open an exact candidate list with Return to Chart", "Home selects one exact chart; Remove offers one eight-second Undo", "This drill changes no Home, favorite, or saved row"]) {
+      expect(atlasCopyText.split(fact)).toHaveLength(2);
+      expect(rejectsAtlasCopy(atlasCopyText.replace(fact, 'omitted'))).toBe(true);
+      expect(rejectsAtlasCopy(atlasCopyText)).toBe(false);
+    }
+    for (const contradiction of ["This drill changes your Home", "This drill removes a saved row", "Chart cluster selection travels automatically", "Undo lasts forever"]) {
+      expect(rejectsAtlasCopy(atlasCopyText + ' ' + contradiction)).toBe(true);
+      expect(rejectsAtlasCopy(atlasCopyText)).toBe(false);
+    }
     expect(curriculumCopyIsTruthful(steps.map((step) => step.id === 'atlas-open'
       ? { ...step, text: () => 'Earth is charted — your Atlas’s first entry.' }
       : step))).toBe(false);

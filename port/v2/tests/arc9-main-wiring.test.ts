@@ -173,8 +173,11 @@ function arc9MainErrors(source: string): string[] {
   const directTravelAction = section(
     source,
     'async function settleArc9DirectTravel(',
-    '\nasync function runArc9AtlasFavoriteChange(',
+    '\nfunction arc9AtlasRowActionBlocked(',
   );
+  const atlasHomeAction = section(source, 'async function runArc9AtlasHomeChange(', '\nasync function runArc9AtlasRemove(');
+  const atlasRemoveAction = section(source, 'async function runArc9AtlasRemove(', '\nasync function runArc9AtlasUndo(');
+  const atlasUndoAction = section(source, 'async function runArc9AtlasUndo(', '\nasync function runArc9AtlasFavoriteChange(');
   const atlasFavoriteAction = section(
     source,
     'async function runArc9AtlasFavoriteChange(',
@@ -210,6 +213,9 @@ function arc9MainErrors(source: string): string[] {
     ['Survey', surveyAction],
     ['direct Travel', directTravelAction],
     ['Atlas Favorite', atlasFavoriteAction],
+    ['Atlas Home', atlasHomeAction],
+    ['Atlas Remove', atlasRemoveAction],
+    ['Atlas Undo', atlasUndoAction],
     ['accepted Follow', followAction],
     ['Frontier ending', frontierEndingAction],
   ] as const) {
@@ -235,6 +241,9 @@ function arc9MainErrors(source: string): string[] {
     .replace(surveyAction, '')
     .replace(directTravelAction, '')
     .replace(atlasFavoriteAction, '')
+    .replace(atlasHomeAction, '')
+    .replace(atlasRemoveAction, '')
+    .replace(atlasUndoAction, '')
     .replace(followAction, '')
     .replace(worldNameAction, '');
   const settleMatches = [...progressionOwnerSource.matchAll(

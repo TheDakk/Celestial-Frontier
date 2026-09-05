@@ -1,6 +1,6 @@
 # Batch 4 overnight report — 2026-09-05
 
-**Checkpoint 2c accepted — 2026-09-05.** Core, Starter Charter, descent and the Fifty-Paragon hunt are accepted. Signed `16cb949f2caa0398708f195f39c43822df336780` passes full fast, Slice and both phone diagnostics. The reporting checkpoint is being pushed before progression 2d. All fourteen browser reds, corrections and resolved signing outage remain below. Base develop:
+**Checkpoint 2e implemented, full fast green — 2026-09-05.** Clean-source browser acceptance is next. Prior acceptance and all exact failures remain below. Base develop:
 `9ea01041dcdc711190bbf909ea8bb743cd993734`; owned review branch:
 `openai/review-batch4-gameplay-20260905` (OpenAI/Codex, macOS,
 `/Users/nick/Projects/celestial-frontier-openai-mac`). Clean `openai/mac` remains `84b6f22`.
@@ -11,8 +11,8 @@
 | 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
 | 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
 | 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
-| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
-| 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
+| 2e mature Atlas | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
 | 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
 | 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
 | 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
@@ -3078,3 +3078,82 @@ verifier proof. No hosted attempt occurred.
   ]
 }
 ```
+
+## Step2e first full-fast red and bounded corrections
+
+Typecheck/artunused passed; full Vitest stopped with4failed/297passed files,6failed/3,094passed tests/1skip. Full log SHA25690ce234d9b098c83a35f30069ce556b8808067da0496fc32947587b0464ea2fb at /private/tmp/cf-overnight-batch4-20260905/step2e-fast/3-npx.log. Exact failure headings/errors below; the repeated whole-Main received-string diff is omitted from this summary.
+
+```text
+ ❯ tests/runtime-hardening.test.ts (16 tests | 1 failed) 194ms
+ ❯ tests/arc9-travel-main-wiring.test.ts (8 tests | 3 failed) 55ms
+ ❯ tests/star-atlas-main-wiring.test.ts (7 tests | 1 failed) 50ms
+ ❯ tests/slicesmoke-atlas-travel-contract.test.ts (6 tests | 1 failed) 60ms
+ FAIL  tests/arc9-travel-main-wiring.test.ts > Arc 9 atomic Travel Main wiring > joins production galaxy and worm routes to one guarded F4 owner while retaining inspection
+AssertionError: expected [ 'one-cas-no-refresh' ] to deeply equal []
+ ❯ tests/arc9-travel-main-wiring.test.ts:342:34
+ FAIL  tests/arc9-travel-main-wiring.test.ts > Arc 9 atomic Travel Main wiring > negative-controls read-only/Training inspection and post-heartbeat authority
+Error: Arc 9 Travel mutation target is not unique:       || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+ ❯ tests/arc9-travel-main-wiring.test.ts:360:30
+ FAIL  tests/arc9-travel-main-wiring.test.ts > Arc 9 atomic Travel Main wiring > negative-controls one-CAS publication without optimism, retry, or a second refresh
+Error: Arc 9 Travel mutation target is not unique:     actionClaim.settle(durable);
+ ❯ tests/arc9-travel-main-wiring.test.ts:392:27
+ FAIL  tests/runtime-hardening.test.ts > synchronous semantic panel refill focus > executes the real atlas refill and its final disabled-state projection
+TypeError: atlasRouteStates.get is not a function
+ ❯ tests/runtime-hardening.test.ts:276:5
+ FAIL  tests/slicesmoke-atlas-travel-contract.test.ts > Slice Atlas native Travel contract > binds every repaired Atlas path to the native child action and rejects stale wrapper activation
+AssertionError: expected '/* THE SLICE (Phases 3–4) — a Pixi re…' to contain '<div class="centry atlas-entry" data-…'
+ ❯ tests/slicesmoke-atlas-travel-contract.test.ts:319:24
+ FAIL  tests/star-atlas-main-wiring.test.ts > mature Atlas route authority after heartbeat > refuses lost route or absence authority before Home and Remove commit
+Error: Atlas mutation target is not unique in async function runArc9AtlasHomeChange(atlasId: string, desired: boolean): Promise<boolean> {:       || atlasRouteStates.get(targetEntry) !== priorRoute
+ ❯ tests/star-atlas-main-wiring.test.ts:446:23
+ Test Files  4 failed | 297 passed (301)
+      Tests  6 failed | 3094 passed | 1 skipped (3101)
+```
+
+Travel test end markers had expanded across new neighboring Home/Remove/Undo owners. Each now stops at its exact next declaration. Home precommit/publication mutations are scoped independently and checked reciprocally; all expectations remain. Patch SHA256c071a209f610b8d198e1ef180ca4637077a3c35f9563b7f8adfc41151b40f991; focused2files/15tests PASS. The real-refill fixture now supplies the actual new Atlas dependencies and executes the shipped projector, renderer and availability owner with a complete exact row;16tests PASS. No fake renderer replaces the focus outcome.
+
+The renderer source-owner test also exposed a real compatibility omission before browser execution: retained native tools use DIV/data-sel/data-aid rows and the data-sel Atlas-count marker. The new renderer preserves those exact identifiers alongside its new data-atlas-id/count attributes. Its wrapper remains noninteractive and the existing native Travel child remains authoritative. No collector or independent native expectation is changed.
+
+The Slice Atlas owner correction (SHA256b1725a5bb6ea617cd29211e701078c542f7834a7e95087b863f3e538e678909c) passes6focusedtests. Its initial scratch run found the additional stale single-Travel handler literal; the current combined Travel/Home native selector is now pinned, with all prior action/stale-wrapper/44px controls retained. No collector was edited. Compendium producer after compatible renderer rebuild is b12f95204af08c39f14e4a383b9eb024e44d9039878a11132f359e58950bf969; measurement/ruler/ceilings/samples unchanged.
+
+## Step2e implementation/full-fast PASS
+
+Atlas now offers List and Chart views, the authored All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, exact-row Remove and a single eight-second Undo. Undo is bound to its deletion receipt and route sidecar: an originally absent route stays absent, while a formerly present route must still match before restoration. Chart clusters open the existing List actions for their exact members and return focus to their Chart origin or owning Close. Existing travel, hyperlane, motion, speed and Favorite owners remain authoritative. No companion, reward, progression, import-door or protected-portrait behavior was added. Guide, Training and all eight current references agree; the draft remains 79 outcomes and all rendered hash pins move together. Only the current Compendium producer is refreshed; measurement authority, ruler, ceilings and samples remain unchanged. After this checkpoint is accepted, all five primary items are complete and the separately ordered stretch list follows.
+The renderer preserves the existing noninteractive DIV row, native data-sel/data-aid and count identifiers alongside its new controls. Source-owner tests now read the correct renderer; Travel and Home negative controls bind exact precommit/publication spans. The real refill test executes the shipped projection, renderer and availability owner. All prior expectations remain.
+
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.818,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.784,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 65.447,
+    "log": "3-npx.log",
+    "sha256": "a24fb33435066064ba4c46feabe4715408a05dd1f8c1c6a99eaaf9d5b1cd1172"
+  }
+]

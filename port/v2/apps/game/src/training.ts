@@ -67,7 +67,7 @@ export function buildSteps(deps: TrainingDeps): TutStep[] {
     },
     {
       id: 'atlas-open', spot: '#dockatlas,#railatlas', allow: ['#dockatlas', '#railatlas', '#atlaspanel'],
-      text: () => 'That was the real Atlas action, practiced without changing your expedition’s charts. Open the <b>Star Atlas</b> (the dock — or the right rail on desktop). Outside Training, tapping a charted planet entry returns to its live system survey; <b>Land</b> remains your choice.',
+      text: () => 'That was the real Atlas action, practiced without changing your expedition’s charts. Open the <b>Star Atlas</b> (the dock — or the right rail on desktop). Outside Training, tapping a charted planet entry returns to its live system survey; <b>Land</b> remains your choice. After Training, use <b>List</b> or <b>Chart</b> and the All, Favorites, Visited, Conquered, and Life filters. Nearby Chart lights open an exact candidate list with Return to Chart. Home selects one exact chart; Remove offers one eight-second Undo. This drill changes no Home, favorite, or saved row.',
       when: (t, d) => t === 'atlas-open' && !!d.open,
     },
     {

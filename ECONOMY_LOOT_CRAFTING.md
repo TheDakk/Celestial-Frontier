@@ -1,6 +1,6 @@
 # Celestial Frontier — Economy, Loot & Crafting
 
-## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -28,8 +28,12 @@ XP, level, class, innate arts, wounds and active-play Recovery, with distinct tw
 tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
 preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
 focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
-No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
-remains the next checkpoint.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
@@ -481,6 +485,14 @@ the collection side in `PROGRESSION.md`).
 - **Current v2 consumer boundary:** every one of those six rows is actionable when its canonical
   quote passes. Scanners feed orbital Survey, Hull feeds hostile bioscan injury, Xenobotany feeds
   the Compendium's explorer Flora meal, and all three drives feed the real travel presentation.
+
+**Current v2 descent consumer (2026-09-05):** `descent-policy.ts` combines authored type/biome
+chance and damage, seeded static weather, worn landing bonuses and struts, and exact-address
+learning (+20 percentage points per wave-off, capped at five). Any 100% approach, including one
+guaranteed by gear or learning, discloses zero descent HP risk. The existing Landing receipt/CAS
+settles the outcome and canonical wave-off state once. Reinforced Hull remains limited to hostile
+Discover Life; it adds no descent damage reduction. This connects the existing gear effects
+without adding item tables, random-loot policy or measurement authority.
 
 ### Crafting / blueprints
 - `ITEMS` is the master recipe list; `ITEM_BY` indexes it by id. Three rungs: **T1 parts** (elements → plates/wire/chips/weave…) → **T2 components** (parts → coils/cores/hull segs…) → **T3 ship systems** (`cat:'sys'`, build once) and **explorer gear** (`cat:'gear'`).

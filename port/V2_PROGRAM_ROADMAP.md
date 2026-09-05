@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — Complete Program Roadmap
 
-## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -28,8 +28,12 @@ XP, level, class, innate arts, wounds and active-play Recovery, with distinct tw
 tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
 preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
 focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
-No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
-remains the next checkpoint.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
@@ -56,7 +60,7 @@ rather than converting them into unnecessary product changes.
 | Arc 4–5 | Capture with fresh-species Field Scout XP, explicit Discover Life with nonlethal Scout interception, explorer Flora meals, companion Feed, nonlethal Breed/recovery, Rename, exact Field Scout selection, and bounded read-only individual XP/level/class/innate/wound/Recovery presentation preserving twins and retired history | Companion taste/care/healing, bond growth, missions, dispatch/return, and living-preview depth |
 | Arc 6 | Landed battle, conquest, Guardian/Titan capture, Prime claims, XP/Stardust and Combat Chronicle | Arc 5.5 HUMAN model; two explicit affix/extra-Guardian-reward decisions; party/tactics/retreat and wider encounters |
 | Arc 7–8 | Audio platform and working deterministic synthesized cues | Mix/lifecycle/accessibility close-out; rights-bound authored music/ambience/voices and listening evidence |
-| Arc 9–10 | Bounded progression, 26 exact achievement joins, Starter Charters, six Binder type pages/eight Set claims, the fifty exact-home catalogue-only Paragon trails with found Inspect/missing travel and a separate ten-Paragon 120-Stardust Claim, existing Atlas actions, the read-only four-gallery Expedition Chronicle & Museum, and PWA automation | The two event-owner gaps, achievement rewards, projects, share cards, localization, integration/device/release gates |
+| Arc 9–10 | Bounded progression, 26 exact achievement joins, Starter Charters, six Binder type pages/eight Set claims, the fifty exact-home catalogue-only Paragon trails with found Inspect/missing travel and a separate ten-Paragon 120-Stardust Claim, bounded Atlas List/Chart and five filters with Home, exact-row Remove/eight-second Undo and cluster-to-List choice, the read-only four-gallery Expedition Chronicle & Museum, and PWA automation | The two event-owner gaps, achievement rewards, projects, share cards, localization, integration/device/release gates |
 | Visual production | Existing reviewed static art and universe-wide treatment are preserved | Representative living-rig pilot, then biome/species scale and physical-phone quality/performance |
 
 First local batch: persistence/focus hardening, portable npm command reuse, targeted-verifier

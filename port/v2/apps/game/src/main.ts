@@ -544,6 +544,26 @@ import {
   type Arc9AtlasFavoriteActionOutcomeV1,
 } from './arc9-atlas-favorite-action.js';
 import {
+  commitArc9AtlasHomeV1,
+  commitArc9AtlasRemoveV1,
+  commitArc9AtlasUndoV1,
+  operationForArc9AtlasHomeV1,
+  operationForArc9AtlasRemoveV1,
+  operationForArc9AtlasUndoV1,
+  publishArc9AtlasHomeFieldsV1,
+  publishArc9AtlasRemoveFieldsV1,
+  publishArc9AtlasUndoFieldsV1,
+  type Arc9AtlasDeleteReceiptV1,
+} from './arc9-atlas-row-actions.js';
+import {
+  projectStarAtlasV1,
+  renderStarAtlasV1,
+  STAR_ATLAS_FILTERS_V1,
+  STAR_ATLAS_VIEWS_V1,
+  type StarAtlasFilterV1,
+  type StarAtlasViewV1,
+} from './star-atlas-panel.js';
+import {
   commitArc9GalaxyArrivalRouteV1,
   commitArc9TravelSettlementV1,
   operationForArc9TravelV1,
@@ -806,6 +826,7 @@ let lastF4HideWitness: Readonly<{
   visibilityOutcome: string | null; visibilityError: string | null;
 }> | null = null;
 function scheduleF4AuthorityConvergenceReload(runtime: F4RuntimeAuthority, detail: string): void {
+  clearArc9AtlasUndo();
   persistHold = 'transient-read';
   persistenceProtectedDetail = detail;
   runtime.setAnswerable(false);
@@ -3904,36 +3925,157 @@ function fillPrimeCodex(): void {
 }
 /* THE STAR ATLAS ('log' in the game): every charted place, tap to TRAVEL
    (jumpToView — the same charter gates as everything else) */
+let arc9AtlasView: StarAtlasViewV1 = 'list';
+let arc9AtlasClusterId: string | null = null;
+let arc9AtlasFilter: StarAtlasFilterV1 = 'all';
 let arc9AtlasFavoritePendingId: string | null = null;
+let arc9AtlasRowPending: Readonly<{
+  kind: 'home' | 'remove';
+  atlasId: string;
+}> | null = null;
+let arc9AtlasUndoPending = false;
+let lastArc9AtlasRowStatus: string | null = null;
+type Arc9AtlasUndoStateV1 = Readonly<{
+  receipt: Arc9AtlasDeleteReceiptV1;
+  pair: SaveStateV2['logMap'][number];
+  route: NavState | null;
+  title: string;
+  expiresAt: number;
+}>;
+let arc9AtlasUndo: Arc9AtlasUndoStateV1 | null = null;
+
+function retainedAtlasRouteMatches(
+  pair: SaveStateV2['logMap'][number],
+  route: NavState | null,
+): boolean {
+  const current = atlasRouteStates.get(pair[1]);
+  return route === null ? current === undefined : current === route;
+}
+
+function clearArc9AtlasUndo(): void {
+  arc9AtlasUndo = null;
+}
+
+function liveArc9AtlasUndo(): Arc9AtlasUndoStateV1 | null {
+  const undo = arc9AtlasUndo;
+  if (undo === null) return null;
+  if (performance.now() >= undo.expiresAt
+    || !retainedAtlasRouteMatches(undo.pair, undo.route)) {
+    clearArc9AtlasUndo();
+    return null;
+  }
+  return undo;
+}
+
+function atlasMutationsAvailable(): boolean {
+  return !arc9AtlasUndoPending && !smokeForceReadOnly && f4RuntimeMayMutate()
+    && activePersist === null && !importWriteInFlight
+    && replacementTransaction === null && !replacementReloadPending
+    && !trainingCheckpointWriteHeld && !trainingActive()
+    && !ecologyEpochBlocksActions();
+}
 function fillAtlas(): void {
   if (!save) return;
-  const restoreFocus = capturePanelRefillFocus(document.getElementById('atlaspanel')!, ['data-atlas-travel', 'data-atlas-favorite']);
-  const rows = save.logMap;
-  fillPanel('atlas',
-    `<h3>Star Atlas <span style="color:#7ec8f0" data-sel="atlas-count">${rows.length}</span></h3>` +
-    (rows.length === 0
-      ? '<div class="empty" data-sel="atlas-empty">Nothing charted yet — tap “+ Add to Star Atlas” on any survey card.</div>'
-      : rows.map(([id, e]) => {
-        const travelable = atlasRouteStates.has(e as Record<string, unknown>);
-        const unavailable = travelable ? '' : ' · route unavailable in this build';
-        const favorite = e.fav === true;
-        const favoriteUnavailable = arc9AtlasFavoritePendingId !== null
-          || smokeForceReadOnly || !f4RuntimeMayMutate()
-          || trainingCheckpointWriteHeld || trainingActive()
-          || ecologyEpochBlocksActions();
-        const favoriteLabel = favorite ? 'Remove Favorite' : 'Mark Favorite';
-        return `<div class="centry atlas-entry" data-sel="atlas-entry" data-aid="${esc(id)}">`
-          + `<div class="atlas-entry-copy"><b>${esc(String(e.title || id))}</b>${e.badge ? ` <span class="sub">· ${esc(String(e.badge))}</span>` : ''}<span class="sub" style="display:block">${esc(String(e.sub || ''))}${unavailable}</span></div>`
-          + '<div class="atlas-entry-actions">'
-          + `<button type="button" data-atlas-travel="${esc(id)}" aria-label="Travel to ${esc(String(e.title || id))}"${travelable ? '' : ' disabled aria-disabled="true"'}>Travel</button>`
-          + `<button type="button" data-atlas-favorite="${esc(id)}" aria-pressed="${favorite}" aria-label="${favoriteLabel}: ${esc(String(e.title || id))}"${favoriteUnavailable ? ' disabled aria-disabled="true"' : ''}>${favorite ? '★ Favorite' : '☆ Favorite'}</button>`
-          + '</div></div>';
-      }).join('')));
+  const panel = document.getElementById('atlaspanel')!;
+  const restoreFocus = capturePanelRefillFocus(panel, [
+    'data-atlas-view', 'data-atlas-filter', 'data-atlas-travel-home',
+    'data-atlas-undo', 'data-atlas-travel', 'data-atlas-favorite',
+    'data-atlas-home', 'data-atlas-remove',
+    'data-atlas-cluster', 'data-atlas-cluster-back',
+  ]);
+  const routeDestinations: Array<readonly [string, number, number]> = [];
+  for (const [id, entry] of save.logMap) {
+    const route = atlasRouteStates.get(entry);
+    if (route?.gal !== null && route?.gal !== undefined) {
+      routeDestinations.push(Object.freeze([id, route.gal.x, route.gal.y]));
+    }
+  }
+  const identityCurrent = worldIdentityProtection === null
+    && !worldIdentityBootstrapPending;
+  const combat = f4Runtime === null
+    ? null : readCombatSettlementAuthorityV1(f4Runtime.extensions);
+  const combatCurrent = combat?.kind === 'loaded';
+  const projection = projectStarAtlasV1({
+    state: save,
+    view: arc9AtlasView,
+    filter: arc9AtlasFilter,
+    routeDestinations,
+    landedWorldKeys: identityCurrent
+      ? worldIdentityState.records.filter((record) => record.landed).map((record) => record.key)
+      : [''],
+    conqueredWorldKeys: combatCurrent
+      ? combat.authority.conquests.map((record) => record.worldKey)
+      : [''],
+    currentGalaxy: nav.mode === 'universe' ? null : Object.freeze({
+      x: nav.gal.x,
+      y: nav.gal.y,
+    }),
+  });
+  const undo = liveArc9AtlasUndo();
+  fillPanel('atlas', renderStarAtlasV1(projection, {
+    clusterId: arc9AtlasClusterId,
+    mutationsAvailable: atlasMutationsAvailable(),
+    pending: arc9AtlasFavoritePendingId === null
+      ? arc9AtlasRowPending
+      : Object.freeze({ kind: 'favorite' as const, atlasId: arc9AtlasFavoritePendingId }),
+    undo: undo === null ? null : Object.freeze({
+      atlasId: undo.receipt.atlasId,
+      title: undo.title,
+    }),
+    status: lastArc9AtlasRowStatus,
+  }));
   restoreFocus();
 }
-document.getElementById('atlaspanel')!.addEventListener('click', async (e) => {
-  if (!save || !(e.target instanceof Element)) return;
-  const favoriteButton = e.target.closest<HTMLButtonElement>('[data-atlas-favorite]');
+document.getElementById('atlaspanel')!.addEventListener('click', async (event) => {
+  if (!save || !(event.target instanceof Element)) return;
+  const viewButton = event.target.closest<HTMLButtonElement>('[data-atlas-view]');
+  if (viewButton !== null) {
+    const value = viewButton.dataset.atlasView;
+    if (value !== undefined && STAR_ATLAS_VIEWS_V1.includes(value as StarAtlasViewV1)) {
+      arc9AtlasClusterId = null;
+      arc9AtlasView = value as StarAtlasViewV1;
+      fillAtlas();
+    }
+    return;
+  }
+  const filterButton = event.target.closest<HTMLButtonElement>('[data-atlas-filter]');
+  if (filterButton !== null) {
+    const value = filterButton.dataset.atlasFilter;
+    if (value !== undefined && STAR_ATLAS_FILTERS_V1.includes(value as StarAtlasFilterV1)) {
+      arc9AtlasClusterId = null;
+      arc9AtlasFilter = value as StarAtlasFilterV1;
+      fillAtlas();
+    }
+    return;
+  }
+  const clusterButton = event.target.closest<HTMLButtonElement>('[data-atlas-cluster]');
+  if (clusterButton !== null) {
+    arc9AtlasClusterId = clusterButton.dataset.atlasCluster ?? null;
+    fillAtlas();
+    document.getElementById('atlaspanel')?.querySelector<HTMLButtonElement>(
+      '[data-atlas-cluster-back]',
+    )?.focus();
+    return;
+  }
+  const clusterBack = event.target.closest<HTMLButtonElement>('[data-atlas-cluster-back]');
+  if (clusterBack !== null) {
+    const priorCluster = arc9AtlasClusterId;
+    arc9AtlasClusterId = null;
+    fillAtlas();
+    const panel = document.getElementById('atlaspanel');
+    const origin = Array.from(panel?.querySelectorAll<HTMLButtonElement>(
+      '[data-atlas-cluster]',
+    ) ?? []).find((button) => button.dataset.atlasCluster === priorCluster);
+    (origin ?? panel?.querySelector<HTMLButtonElement>('[data-atlas-view="chart"]')
+      ?? panel?.querySelector<HTMLButtonElement>('[data-pnx]'))?.focus();
+    return;
+  }
+  const undoButton = event.target.closest<HTMLButtonElement>('[data-atlas-undo]');
+  if (undoButton !== null) {
+    void runArc9AtlasUndo();
+    return;
+  }
+  const favoriteButton = event.target.closest<HTMLButtonElement>('[data-atlas-favorite]');
   if (favoriteButton !== null) {
     const atlasId = favoriteButton.dataset.atlasFavorite;
     const hit = atlasId === undefined
@@ -3942,20 +4084,34 @@ document.getElementById('atlaspanel')!.addEventListener('click', async (e) => {
     void runArc9AtlasFavoriteChange(atlasId, !hit[1].fav);
     return;
   }
-  const travelButton = e.target.closest<HTMLButtonElement>('[data-atlas-travel]');
+  const homeButton = event.target.closest<HTMLButtonElement>('[data-atlas-home]');
+  if (homeButton !== null) {
+    const atlasId = homeButton.dataset.atlasHome;
+    if (atlasId !== undefined) void runArc9AtlasHomeChange(atlasId, save.homeId !== atlasId);
+    return;
+  }
+  const removeButton = event.target.closest<HTMLButtonElement>('[data-atlas-remove]');
+  if (removeButton !== null) {
+    const atlasId = removeButton.dataset.atlasRemove;
+    if (atlasId !== undefined) void runArc9AtlasRemove(atlasId);
+    return;
+  }
+  const travelButton = event.target.closest<HTMLButtonElement>(
+    '[data-atlas-travel],[data-atlas-travel-home]',
+  );
   if (travelButton === null) return;
-  const atlasId = travelButton.dataset.atlasTravel;
+  const atlasId = travelButton.dataset.atlasTravel
+    ?? travelButton.dataset.atlasTravelHome;
   const hit = atlasId === undefined
     ? undefined : save.logMap.find(([id]) => id === atlasId);
-  if (hit !== undefined) {
-    const route = atlasRouteStates.get(hit[1] as Record<string, unknown>);
-    if (!route) return;
-    const keyboard = document.activeElement === travelButton;
-    const moved = await searchTravel.jumpToProvenNav(route);
-    if (!moved) return;
-    closePanels();
-    if (keyboard) app.canvas.focus();
-  }
+  if (hit === undefined) return;
+  const route = atlasRouteStates.get(hit[1]);
+  if (!route) return;
+  const keyboard = document.activeElement === travelButton;
+  const moved = await searchTravel.jumpToProvenNav(route);
+  if (!moved) return;
+  closePanels();
+  if (keyboard) app.canvas.focus();
 });
 /* CHARTERS — current-slice projection over canonical saved chapter data.
    The pure projection keeps legacy progress/reach intact while presenting
@@ -7910,6 +8066,7 @@ async function addToAtlas(): Promise<boolean> {
   const operation = operationForArc0Atlas(address);
   const actionClaim = productActionCoordinator.tryClaim(operation);
   if (actionClaim === null) return false;
+  clearArc9AtlasUndo();
   const actionBarrier = actionClaim.barrier;
   productActionInFlight = true;
   activePersist = actionBarrier;
@@ -9910,12 +10067,432 @@ async function settleArc9DirectTravel(
   }
 }
 
+function arc9AtlasRowActionBlocked(): boolean {
+  return arc9AtlasFavoritePendingId !== null || arc9AtlasRowPending !== null
+    || arc9AtlasUndoPending || smokeForceReadOnly || !f4RuntimeMayMutate()
+    || activePersist !== null || importWriteInFlight
+    || replacementTransaction !== null || replacementReloadPending
+    || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions();
+}
+
+function atlasRowRefusalNeedsReload(
+  outcome: Readonly<{ convergence: 'none' | 'read-only-reload' }>,
+): boolean {
+  return outcome.convergence === 'read-only-reload';
+}
+
+async function runArc9AtlasHomeChange(atlasId: string, desired: boolean): Promise<boolean> {
+  const runtime = f4Runtime;
+  if (arc9AtlasRowActionBlocked() || runtime === null) {
+    lastArc9AtlasRowStatus = 'Home is unavailable until the current expedition action settles.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  let operation: string;
+  try { operation = operationForArc9AtlasHomeV1(atlasId); }
+  catch {
+    lastArc9AtlasRowStatus = 'That Atlas row is not a valid Home target.';
+    return false;
+  }
+  const targetIndex = save.logMap.findIndex(([id]) => id === atlasId);
+  const targetPair = targetIndex < 0 ? null : save.logMap[targetIndex] ?? null;
+  if (targetPair === null) return false;
+  const targetEntry = targetPair[1];
+  const priorHomeId = save.homeId;
+  const priorRoute = atlasRouteStates.get(targetEntry);
+  const actionClaim = productActionCoordinator.tryClaim(operation);
+  if (actionClaim === null) {
+    lastArc9AtlasRowStatus = 'Another expedition action is still settling.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  clearArc9AtlasUndo();
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  arc9AtlasRowPending = Object.freeze({ kind: 'home', atlasId });
+  lastArc9AtlasRowStatus = null;
+  if (openPanelId() === 'atlas') fillAtlas();
+  let durable = false;
+  let convergence = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
+      || importWriteInFlight || replacementTransaction || replacementReloadPending
+      || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+      || save.logMap[targetIndex] !== targetPair || targetPair[1] !== targetEntry
+      || atlasRouteStates.get(targetEntry) !== priorRoute
+      || save.homeId !== priorHomeId) {
+      lastArc9AtlasRowStatus = 'Atlas authority changed before Home could settle. Nothing changed.';
+      return false;
+    }
+    const outcome = await commitArc9AtlasHomeV1({
+      runtime,
+      state: save,
+      atlasId,
+      desired,
+      codecNow: Date.now(),
+    });
+    if (outcome.kind === 'refused') {
+      lastArc9AtlasRowStatus = 'Home was refused because the exact Atlas authority could not be proved.';
+      if (atlasRowRefusalNeedsReload(outcome)) {
+        convergence = true;
+        scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Home ' + outcome.detail);
+      }
+      return false;
+    }
+    if (outcome.kind === 'current') {
+      lastArc9AtlasRowStatus = desired
+        ? 'That exact place is already Home.'
+        : 'That exact place is already not Home.';
+      return true;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = 'arc9-atlas-home-committed:' + outcome.transaction.revision;
+    if (outcome.kind === 'committed-convergence') {
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Home committed; reloading its exact durable result without retry.';
+      scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Home ' + outcome.detail);
+      return true;
+    }
+    try {
+      const checkpoint = runtime.checkpointParent();
+      if (runtime !== f4Runtime || runtime.revision !== outcome.transaction.revision
+        || checkpoint === null || checkpoint.homeId !== outcome.plan.homeIdAfter
+        || JSON.stringify(checkpoint.logMap) !== JSON.stringify(outcome.transaction.state.logMap)) {
+        throw new Error('Atlas Home runtime did not retain its exact durable fixed point');
+      }
+      publishArc9AtlasHomeFieldsV1(save, outcome);
+      if (save.logMap[targetIndex] !== targetPair
+        || targetPair[1] !== targetEntry
+        || atlasRouteStates.get(targetEntry) !== priorRoute) {
+        throw new Error('Atlas Home publication replaced its exact route-owning row');
+      }
+      lastArc9AtlasRowStatus = desired
+        ? 'Home now points to ' + String(targetEntry.title || atlasId) + '.'
+        : 'Home has been cleared.';
+      toast(desired ? '⌂ Atlas Home set' : 'Atlas Home cleared', lastArc9AtlasRowStatus, true);
+      return true;
+    } catch (error) {
+      save.homeId = priorHomeId;
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Home committed, but presentation could not be verified. Reloading without retry.';
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Home publication ' + (error instanceof Error ? error.message : String(error)),
+      );
+      return true;
+    }
+  } catch (error) {
+    if (durable) save.homeId = priorHomeId;
+    lastArc9AtlasRowStatus = durable
+      ? 'Home became ambiguous after commit. Reloading without retry.'
+      : 'Home could not be changed. Nothing changed.';
+    if (durable) {
+      convergence = true;
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Home fault ' + (error instanceof Error ? error.message : String(error)),
+      );
+    }
+    return durable;
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    arc9AtlasRowPending = null;
+    if (activePersist === actionBarrier) activePersist = null;
+    if (!convergence && openPanelId() === 'atlas') fillAtlas();
+  }
+}
+
+async function runArc9AtlasRemove(atlasId: string): Promise<boolean> {
+  const runtime = f4Runtime;
+  if (arc9AtlasRowActionBlocked() || runtime === null) {
+    lastArc9AtlasRowStatus = 'Remove is unavailable until the current expedition action settles.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  let operation: string;
+  try { operation = operationForArc9AtlasRemoveV1(atlasId); }
+  catch {
+    lastArc9AtlasRowStatus = 'That Atlas row is not a valid removal target.';
+    return false;
+  }
+  const targetIndex = save.logMap.findIndex(([id]) => id === atlasId);
+  const targetPair = targetIndex < 0 ? null : save.logMap[targetIndex] ?? null;
+  if (targetPair === null) return false;
+  const targetEntry = targetPair[1];
+  const title = String(targetEntry.title || atlasId);
+  const priorHomeId = save.homeId;
+  const priorRows = save.logMap.slice();
+  const priorRoutes = priorRows.map(([, entry]) => atlasRouteStates.get(entry));
+  const retainedRoute = atlasRouteStates.get(targetEntry) ?? null;
+  const actionClaim = productActionCoordinator.tryClaim(operation);
+  if (actionClaim === null) {
+    lastArc9AtlasRowStatus = 'Another expedition action is still settling.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  clearArc9AtlasUndo();
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  arc9AtlasRowPending = Object.freeze({ kind: 'remove', atlasId });
+  lastArc9AtlasRowStatus = null;
+  if (openPanelId() === 'atlas') fillAtlas();
+  let durable = false;
+  let convergence = false;
+  let published = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
+      || importWriteInFlight || replacementTransaction || replacementReloadPending
+      || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+      || save.logMap.length !== priorRows.length
+      || priorRows.some((pair, index) => save.logMap[index] !== pair)
+      || priorRows.some(([, entry], index) => atlasRouteStates.get(entry) !== priorRoutes[index])
+      || save.homeId !== priorHomeId) {
+      lastArc9AtlasRowStatus = 'Atlas authority changed before Remove could settle. Nothing changed.';
+      return false;
+    }
+    const outcome = await commitArc9AtlasRemoveV1({
+      runtime,
+      state: save,
+      atlasId,
+      codecNow: Date.now(),
+    });
+    if (outcome.kind === 'refused') {
+      lastArc9AtlasRowStatus = 'Remove was refused because the exact Atlas authority could not be proved.';
+      if (atlasRowRefusalNeedsReload(outcome)) {
+        convergence = true;
+        scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Remove ' + outcome.detail);
+      }
+      return false;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = 'arc9-atlas-remove-committed:' + outcome.transaction.revision;
+    if (outcome.kind === 'committed-convergence') {
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Remove committed; reloading its exact durable result without retry.';
+      scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Remove ' + outcome.detail);
+      return true;
+    }
+    try {
+      const checkpoint = runtime.checkpointParent();
+      if (runtime !== f4Runtime || runtime.revision !== outcome.transaction.revision
+        || checkpoint === null || checkpoint.homeId !== outcome.plan.homeIdAfter
+        || JSON.stringify(checkpoint.logMap) !== JSON.stringify(outcome.transaction.state.logMap)) {
+        throw new Error('Atlas Remove runtime did not retain its exact durable fixed point');
+      }
+      publishArc9AtlasRemoveFieldsV1(save, outcome);
+      published = true;
+      const survivors = priorRows.filter((_, index) => index !== targetIndex);
+      if (save.logMap.length !== survivors.length
+        || survivors.some((pair, index) => save.logMap[index] !== pair)
+        || survivors.some(([, entry], index) => atlasRouteStates.get(entry) !== priorRoutes[
+          index < targetIndex ? index : index + 1
+        ])) {
+        throw new Error('Atlas Remove publication replaced a surviving route-owning row');
+      }
+      if (retainedAtlasRouteMatches(targetPair, retainedRoute)) {
+        const undo = Object.freeze({
+          receipt: outcome.undoReceipt,
+          pair: targetPair,
+          route: retainedRoute,
+          title,
+          expiresAt: performance.now() + 8_000,
+        });
+        arc9AtlasUndo = undo;
+        window.setTimeout(() => {
+          if (arc9AtlasUndo === undo && performance.now() >= undo.expiresAt) {
+            clearArc9AtlasUndo();
+            if (openPanelId() === 'atlas') fillAtlas();
+          }
+        }, 8_050);
+        lastArc9AtlasRowStatus = 'Removed ' + title + '. Undo is available for eight seconds.';
+      } else {
+        lastArc9AtlasRowStatus = 'Removed ' + title + '.';
+      }
+      toast('Atlas entry removed', lastArc9AtlasRowStatus, true);
+      return true;
+    } catch (error) {
+      if (published && !save.logMap.includes(targetPair)) {
+        save.logMap.splice(targetIndex, 0, targetPair);
+      }
+      save.homeId = priorHomeId;
+      clearArc9AtlasUndo();
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Remove committed, but presentation could not be verified. Reloading without retry.';
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Remove publication ' + (error instanceof Error ? error.message : String(error)),
+      );
+      return true;
+    }
+  } catch (error) {
+    clearArc9AtlasUndo();
+    lastArc9AtlasRowStatus = durable
+      ? 'Remove became ambiguous after commit. Reloading without retry.'
+      : 'Remove could not be completed. Nothing changed.';
+    if (durable) {
+      convergence = true;
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Remove fault ' + (error instanceof Error ? error.message : String(error)),
+      );
+    }
+    return durable;
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    arc9AtlasRowPending = null;
+    if (activePersist === actionBarrier) activePersist = null;
+    if (!convergence && openPanelId() === 'atlas') fillAtlas();
+  }
+}
+
+async function runArc9AtlasUndo(): Promise<boolean> {
+  const runtime = f4Runtime;
+  const undo = liveArc9AtlasUndo();
+  if (undo === null) {
+    lastArc9AtlasRowStatus = 'That removal can no longer be undone.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  if (arc9AtlasRowActionBlocked() || runtime === null) {
+    lastArc9AtlasRowStatus = 'Undo is unavailable until the current expedition action settles.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  let operation: string;
+  try { operation = operationForArc9AtlasUndoV1(undo.receipt); }
+  catch {
+    clearArc9AtlasUndo();
+    lastArc9AtlasRowStatus = 'That Undo receipt is no longer valid.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  const actionClaim = productActionCoordinator.tryClaim(operation);
+  if (actionClaim === null) {
+    lastArc9AtlasRowStatus = 'Another expedition action is still settling.';
+    if (openPanelId() === 'atlas') fillAtlas();
+    return false;
+  }
+  const sourceStateJson = JSON.stringify(save);
+  const actionBarrier = actionClaim.barrier;
+  productActionInFlight = true;
+  activePersist = actionBarrier;
+  arc9AtlasUndoPending = true;
+  lastArc9AtlasRowStatus = null;
+  if (openPanelId() === 'atlas') fillAtlas();
+  let durable = false;
+  let convergence = false;
+  let published = false;
+  try {
+    await smokeProductActionHold.holdIfArmed(actionClaim.operation);
+    await settleF4Heartbeat();
+    if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)
+      || importWriteInFlight || replacementTransaction || replacementReloadPending
+      || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()
+      || arc9AtlasUndo !== undo || performance.now() >= undo.expiresAt
+      || !retainedAtlasRouteMatches(undo.pair, undo.route)
+      || JSON.stringify(save) !== sourceStateJson) {
+      clearArc9AtlasUndo();
+      lastArc9AtlasRowStatus = 'Atlas authority changed before Undo could settle. Nothing changed.';
+      return false;
+    }
+    const outcome = await commitArc9AtlasUndoV1({
+      runtime,
+      state: save,
+      deleteReceipt: undo.receipt,
+      codecNow: Date.now(),
+    });
+    if (outcome.kind === 'refused') {
+      clearArc9AtlasUndo();
+      lastArc9AtlasRowStatus = 'Undo was refused because the exact removal successor could not be proved.';
+      if (atlasRowRefusalNeedsReload(outcome)) {
+        convergence = true;
+        scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Undo ' + outcome.detail);
+      }
+      return false;
+    }
+    durable = true;
+    f4LastCheckpointAt = performance.now();
+    lastPersistenceOutcome = 'arc9-atlas-undo-committed:' + outcome.transaction.revision;
+    if (outcome.kind === 'committed-convergence') {
+      clearArc9AtlasUndo();
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Undo committed; reloading its exact durable result without retry.';
+      scheduleF4AuthorityConvergenceReload(runtime, 'Arc 9 Atlas Undo ' + outcome.detail);
+      return true;
+    }
+    try {
+      const checkpoint = runtime.checkpointParent();
+      const checkpointPair = checkpoint?.logMap[outcome.plan.targetIndex];
+      if (runtime !== f4Runtime || runtime.revision !== outcome.transaction.revision
+        || checkpoint === null || checkpoint.homeId !== outcome.plan.homeIdAfter
+        || checkpointPair?.[0] !== outcome.plan.atlasId
+        || JSON.stringify(checkpointPair) !== outcome.plan.removedPairJson
+        || !retainedAtlasRouteMatches(undo.pair, undo.route)) {
+        throw new Error('Atlas Undo runtime did not retain its exact durable fixed point');
+      }
+      publishArc9AtlasUndoFieldsV1(save, outcome, undo.pair);
+      published = true;
+      if (save.logMap[outcome.plan.targetIndex] !== undo.pair
+        || !retainedAtlasRouteMatches(undo.pair, undo.route)) {
+        throw new Error('Atlas Undo did not restore the exact route-owning pair');
+      }
+      clearArc9AtlasUndo();
+      lastArc9AtlasRowStatus = 'Restored ' + undo.title + ' to its original Atlas position.';
+      toast('Atlas removal undone', lastArc9AtlasRowStatus, true);
+      return true;
+    } catch (error) {
+      if (published && save.logMap[outcome.plan.targetIndex] === undo.pair) {
+        save.logMap.splice(outcome.plan.targetIndex, 1);
+        save.homeId = outcome.plan.homeIdBefore;
+      }
+      clearArc9AtlasUndo();
+      convergence = true;
+      lastArc9AtlasRowStatus = 'Undo committed, but presentation could not be verified. Reloading without retry.';
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Undo publication ' + (error instanceof Error ? error.message : String(error)),
+      );
+      return true;
+    }
+  } catch (error) {
+    clearArc9AtlasUndo();
+    lastArc9AtlasRowStatus = durable
+      ? 'Undo became ambiguous after commit. Reloading without retry.'
+      : 'Undo could not be completed. Nothing changed.';
+    if (durable) {
+      convergence = true;
+      scheduleF4AuthorityConvergenceReload(
+        runtime,
+        'Arc 9 Atlas Undo fault ' + (error instanceof Error ? error.message : String(error)),
+      );
+    }
+    return durable;
+  } finally {
+    productActionInFlight = false;
+    actionClaim.settle(durable);
+    arc9AtlasUndoPending = false;
+    if (activePersist === actionBarrier) activePersist = null;
+    if (!convergence && openPanelId() === 'atlas') fillAtlas();
+  }
+}
+
 async function runArc9AtlasFavoriteChange(
   atlasId: string,
   desired: boolean,
 ): Promise<boolean> {
   const runtime = f4Runtime;
-  if (arc9AtlasFavoritePendingId !== null || smokeForceReadOnly
+  if (arc9AtlasFavoritePendingId !== null || arc9AtlasRowPending !== null
+    || arc9AtlasUndoPending || smokeForceReadOnly
     || !f4RuntimeMayMutate(runtime) || activePersist || importWriteInFlight
     || replacementTransaction || replacementReloadPending
     || trainingCheckpointWriteHeld || trainingActive() || ecologyEpochBlocksActions()) {
@@ -9940,6 +10517,7 @@ async function runArc9AtlasFavoriteChange(
     lastArc9AtlasFavoriteOutcome = 'unavailable:product-action-pending';
     return false;
   }
+  clearArc9AtlasUndo();
   const actionBarrier = actionClaim.barrier;
   const priorFavorite = targetEntry.fav;
   const priorStats = save.stats;
@@ -15356,7 +15934,7 @@ const READ_ONLY_MUTATION_SELECTOR = [
   '[data-starter-charter-accept]',
   '[data-binder-claim]',
   '[data-arc9-explorer-name-save]',
-  '[data-atlas-favorite]',
+  '[data-atlas-favorite]', '[data-atlas-home]', '[data-atlas-remove]', '[data-atlas-undo]',
   '[data-act="landcta"]', '[data-act="add"]', '[data-act="bioscan"]', '[data-act="share"]',
   '[data-capture-action]',
   '[data-arc5-feed-confirm]',
@@ -15840,6 +16418,7 @@ async function completeTraining(intent: TrainingEndIntent): Promise<TrainingEndR
     importedRouteIngress = prepared.ingress;
     trainingSnapshotIngress = prepared.ingress.trainingSnapshot;
     trainingCheckpointWriteHeld = trainingSnapshotIngress.kind !== 'none';
+    clearArc9AtlasUndo();
     atlasRouteStates = prepared.atlasRoutes;
     nav = prepared.nav;
     savedRouteWriteHeld = false;
