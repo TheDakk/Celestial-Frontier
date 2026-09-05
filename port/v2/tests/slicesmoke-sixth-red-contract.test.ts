@@ -370,7 +370,7 @@ describe('sixth Slice red contract repairs', () => {
     );
     const replacementAnchors = [...guideReleaseOwner.matchAll(/\.replace\('((?:\\.|[^'])*)'/gu)]
       .map((match) => Function(`return '${match[1]}'`)() as string);
-    expect(replacementAnchors).toHaveLength(42);
+    expect(replacementAnchors).toHaveLength(44);
     expect([...new Set(replacementAnchors)].filter((anchor) =>
       !`${currentGuideCopy}\n${currentReleaseCopy}`.includes(anchor))).toEqual([]);
     const starter = [...releaseDom.window.document.querySelectorAll('#guidepanel li')]

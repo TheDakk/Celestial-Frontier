@@ -1,13 +1,18 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Overnight Batch 4 — checkpoint 1 implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2a implementation, 2026-09-05
 
-Matches the current recovered core implementation, not a browser acceptance claim. Signed
+Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
 Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
 486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
-Accepted st-scan completion, descent, Paragon acquisition, individual progression presentation
-and mature Atlas remain later checkpoints. Existing tables and F3/F4 receipt/save owners govern.
+The authored accepted Discover Life Starter Charter now completes only on a later explicit
+Bioscan: one completion grants its established 15 Stardust and Earpiece in that same F4
+receipt/CAS. Acceptance never backfills earlier Survey records; Capture and landfall cannot
+substitute. Exact gear publication, stale tabs, capacity/protection and failed writes refuse
+without partial reward, hazard, receipt or RNG publication. Weekly Charters stay parked.
+Descent, Paragon acquisition, individual progression presentation and mature Atlas remain later
+checkpoints. Existing authored tables and the eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 77 bullets
 at this checkpoint. Real-device v2 persistence and the combined Arc 4.5 / separate Arc 5.5 HUMAN
 reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
@@ -3083,7 +3088,7 @@ publication. A cached archive publishes on the following microtask because panel
 before the manager exposes the open panel. Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
 categorized v2.0 development bulletin, now 77 bullets. Its rendered ordered SHA-256 is
-`379bb64ef214edb961813d069e8b0f95fcba21fc7564095cae0a4da136b09e70`. The draft summarizes the
+`8f7a40185fb2a89c1fe055b0109623f77d087cdc4248ee00fe20398fe3456c4f`. The draft summarizes the
 implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
 nonempty bullets, the key player-facing outcomes, and a final item reached through bounded adaptive

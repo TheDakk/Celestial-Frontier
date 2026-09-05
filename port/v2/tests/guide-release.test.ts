@@ -179,7 +179,7 @@ const CAPTURE_COPY_CONTRADICTIONS = Object.freeze([
   /(?:ordinary (?:card )?inspection|opening (?:the )?Survey card)[^.!?]{0,96}(?:records?|writes?|banks?)[^.!?]{0,48}(?:Survey|Discover Life|living world)/i,
   /Discover Life[^.!?]{0,96}(?:catalogues?|captures?|adds?) (?!no\b)[^.!?]{0,48}(?:species|Compendium page|creature|specimen)/i,
   /Discover Life[^.!?]{0,96}(?:spends?|uses?) (?!no\b)[^.!?]{0,48}(?:Biosphere Yield|Yield)/i,
-  /Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i,
+  /Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}weekly[^.!?]{0,48}(?:Charter|bioscan)|(?:older Survey|ordinary capture)[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i,
   /(?:Scavenge|Sample)(?![^.!?]*\bnever\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)/i,
   /(?:first contact|civilization contact)[^.!?]{0,96}(?:is|are) (?:now )?(?:live|playable|available)/i,
   /capture-chance gear[^.!?]{0,64}(?:unspecified|unknown) bonus/i,
@@ -474,7 +474,9 @@ function captureGuideCopyIsTruthful(body: string): boolean {
     && /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i.test(copy)
     && /A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing/i.test(copy)
     && /Chapter 2 capture milestone is separate from the live Discover Life action, which owns the per-world Survey record and hazard/i.test(copy)
-    && /Accepted and weekly bioscan Charters remain unavailable/i.test(copy)
+    && /accepted Discover Life Starter Charter completes only from a later explicit Bioscan/i.test(copy)
+    && /older Surveys and capture do not count/i.test(copy)
+    && /Weekly bioscan Charters remain protected/i.test(copy)
     && /Sound and Creature voices on[^.!?]{0,160}verified Tame[^.!?]{0,160}exact committed Feed[^.!?]{0,160}explicit Listen action on a real owned-fauna Compendium detail/i.test(copy)
     && /one deterministic synthesized expression only while its exact current identity and accessible status counterpart agree/i.test(copy)
     && /Compendium list mounting, focus, filtering, and navigation never play a call/i.test(copy)
@@ -517,15 +519,16 @@ function charterCaptureBoundaryIsTruthful(body: string): boolean {
   return /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i.test(copy)
     && /A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing/i.test(copy)
     && /Chapter 2 capture milestone is separate from the live Discover Life action/i.test(copy)
-    && /Discover Life(?: action[^.!?]{0,96})? owns the existing per-world Survey record and hazard/i.test(copy)
-    && /Accepted and weekly bioscan Charters remain unavailable\./.test(copy)
+    && /Discover Life(?: action[^.!?]{0,96})? owns the existing per-world Survey record(?: and hazard|, hazard, and any accepted st-scan completion in the same receipt)/i.test(copy)
+    && /An accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt; older Surveys and capture do not count\./.test(copy)
+    && /Weekly bioscan Charters remain protected until their separate lifecycle is complete\./.test(copy)
     && /One successful Breed banks Breed a hybrid bloodline in the same offspring save/i.test(copy)
     && /failed pairing, refusal, stale tab, or failed write banks no breeding credit/i.test(copy)
     && /first verified conquest banks Chapter 2’s conquest goal/i.test(copy)
     && /starter Conquer a world Charter \(\s*st-conq\s*\)[^.!?]{0,240}removes it from accepted work[^.!?]{0,160}records it complete[^.!?]{0,160}25 Stardust[^.!?]{0,160}current and lifetime-earned totals[^.!?]{0,160}(?:increments honored Charters once|honors one Charter)/i.test(copy)
     && /accepted weekly conquest \(\s*wk-conq\s*\) refuses before combat/i.test(copy)
-    && /base Discover Life Survey action is live[^.!?]{0,160}accepted Discover-life Charter remains unavailable|accepted Discover-life Charter remains unavailable[^.!?]{0,160}never borrows capture or the base Survey action/i.test(copy)
-    && /neither ordinary capture nor the base Survey action counterfeits that Charter|never borrows capture or the base Survey action/i.test(copy)
+    && /accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt/i.test(copy)
+    && /older Surveys and capture do not count/i.test(copy)
     && /Weekly rows likewise remain protected until wall-week, slate, acceptance, and rollover authority are complete/i.test(copy)
     && COMBAT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy))
     && CAPTURE_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(copy));
@@ -583,7 +586,9 @@ function captureReleaseCopyIsTruthful(body: string): boolean {
     && /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/i.test(body)
     && /a miss, Sol, repeat, stale tab, or failed write banks nothing/i.test(body)
     && /Chapter 2 milestone is separate from Discover Life/i.test(body)
-    && /Accepted and weekly bioscan Charters remain unavailable/i.test(body)
+    && /accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt/i.test(body)
+    && /older Surveys and capture do not count/i.test(body)
+    && /Weekly bioscan Charters remain protected until their separate lifecycle is complete/i.test(body)
     && /Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail/i.test(body)
     && /friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable/i.test(body)
     && FIELD_SCOUT_COPY_CONTRADICTIONS.every((pattern) => !pattern.test(body))
@@ -685,11 +690,11 @@ function starterCharterReleaseCopyIsTruthful(body: string): boolean {
     && /Full-address Sol hierarchy is required[^.!?]{0,96}matching leaf seed elsewhere earns nothing/i.test(body)
     && /supported completion pays its established 10–25 Stardust once in the same receipt/i.test(body)
     && /supported gear uses the exact inventory carrier with empty-slot auto-equip only/i.test(body)
-    && /base Discover Life Survey action is live, but its accepted Charter remains unavailable until the separate accepted-bioscan lifecycle has an exact owner/i.test(body)
-    && /ordinary capture and the base Survey action cannot counterfeit it/i.test(body)
+    && /accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt/i.test(body)
+    && /older Surveys and capture do not count/i.test(body)
     && /Accepted wk-conq remains fail-closed because its weekly lifecycle owner is missing/i.test(body)
     && /wall-week, slate, acceptance, and rollover authority must all be complete/i.test(body)
-    && !/accepted Discover-life Charter[^.!?]{0,96}(?:is live|completes|pays)/i.test(body);
+    && !/older Surveys?[^.!?]{0,96}(?:complete|pay)[^.!?]{0,96}Discover Life Starter Charter/i.test(body);
 }
 
 function frontierEndingGuideCopyIsTruthful(body: string): boolean {
@@ -1382,7 +1387,7 @@ describe('v2 Guide capability filter', () => {
     expect(charterCaptureBoundaryIsTruthful(getGuideTopic('charters')!.body)).toBe(true);
     for (const id of ['charters', 'ascent'] as const) {
       const original = getGuideTopic(id)!.body;
-      const required = 'Accepted and weekly bioscan Charters remain unavailable.';
+      const required = 'An accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt; older Surveys and capture do not count.';
       expect(original.split(required), `${id} exact bioscan boundary`).toHaveLength(2);
       expect(charterCaptureBoundaryIsTruthful(
         original.replace(required, 'bioscan Charter boundary omitted'),
@@ -1631,7 +1636,7 @@ describe('v2 Guide capability filter', () => {
       capture + ' A later success on the same world banks another life-discovery tick.',
     )).toBe(false);
     expect(captureGuideCopyIsTruthful(
-      capture + ' Discover Life completes an accepted bioscan Charter.',
+      capture + ' An older Survey completes the accepted Discover Life Starter Charter retroactively.',
     )).toBe(false);
     expect(captureGuideCopyIsTruthful(
       capture.replace(
@@ -2634,7 +2639,7 @@ describe('legacy and v2 release channels', () => {
       /repeat adds another creature or lot without another page or first-find reward/,
       /first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction/,
       /[Aa] miss, Sol, repeat, stale tab, or failed write banks nothing/,
-      /Chapter 2 milestone is separate from Discover Life[^\n]*Accepted and weekly bioscan Charters remain unavailable/,
+      /Chapter 2 milestone is separate from Discover Life[^\n]*accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt[^\n]*older Surveys and capture do not count[^\n]*Weekly bioscan Charters remain protected until their separate lifecycle is complete/,
       /Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail/,
       /ONE EXACT FIELD SCOUT, NEVER A GUESS:[^\n]*bounded 24-row pages[^\n]*same-species twins remain separate by stable instance identity[^\n]*One exact-five compare-and-swap[^\n]*standing Scout intercepts hostile Discover Life damage[^\n]*genuinely fresh species[^\n]*earns up to \+2 XP[^\n]*capped at 486[^\n]*485 gains 1[^\n]*cap gains 0[^\n]*no standing Scout, a miss, or a repeat species grants no Scout XP/,
       /ONE WORLD, ONE VERIFIED DUEL:[^\n]*landed non-Training Surface[^\n]*live captured Guardian or Titan[^\n]*exact 160-run forecast[^\n]*One immutable receipt and one compare-and-swap[^\n]*no retry, reroll, or optimistic result[^\n]*accessible timed Combat Chronicle[^\n]*two HP meters[^\n]*Skip stops active combat sound[^\n]*Share battle log copies plain text[^\n]*without granting the world-Share achievement[^\n]*Every already-modelled registered initiative, dodge, stun, impact\/critical\/ability, burn, regeneration, defeat, resolution, and Guardian or Titan motif owns an exact visible-caption counterpart[^\n]*Composite events remain one voice[^\n]*at most two combat voices overlap[^\n]*Master Sound—not Creature voices—governs playback[^\n]*Authored or recorded combat assets, ambience, and music remain unavailable[^\n]*separate combat-only companion record[^\n]*rather than ordinary Arc 5 ownership[^\n]*exact loss-XP[^\n]*XP and injury survive reload[^\n]*defeat permanently removes them through an immutable tombstone[^\n]*absent from the roster and composite Compendium across reload, Training restore, and capture reconciliation[^\n]*Defeated Guardians and Titans join the Compendium[^\n]*Titan win claims its Prime Signature[^\n]*ninth distinct claim unlocks the Frontier[^\n]*Prime claims remain independent of later champion use[^\n]*starter st-conq[^\n]*adds \+25 current and lifetime-earned Stardust[^\n]*Accepted wk-conq refuses before combat[^\n]*legacy 40% conquest-imbue gate[^\n]*natural and Pureforged gear/,

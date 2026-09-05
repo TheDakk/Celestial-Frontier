@@ -1000,3 +1000,194 @@ All eight prior browser reds remain verbatim in the REDS JSON and prior report s
 
 Codex now pushes the completed core and continues 2a. Claude reviews the pushed branch in the
 morning; Nick need not open another app overnight. No PR or hosted authority is consumed.
+
+## Checkpoint 1 push and Step 2a integration
+
+Completed core checkpoint `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed successfully
+at 2026-09-05 08:30:49 UTC. Tested clean product source is `b572dbf`; only report/archive differs.
+Step 2a layers then applied. First typecheck stopped before artunused/Vitest:
+
+```text
+apps/game/src/main.ts(9290,29): error TS2304: Cannot find name 'encodeArc2LootCarrier'.
+apps/game/src/main.ts(9291,32): error TS2304: Cannot find name 'encodeArc2LootCarrier'.
+apps/game/src/main.ts(10090,29): error TS2304: Cannot find name 'encodeArc2LootCarrier'.
+apps/game/src/main.ts(10091,32): error TS2304: Cannot find name 'encodeArc2LootCarrier'.
+```
+
+The recovered exact gear-publication checks omitted their existing persistence import. Added
+that import only; no predicate or product behavior changed. Log SHA-256
+`1a64d0952b93a3a972a647d83bec71c60b9c2fb647a9d6b9e33e7c28c8cd2b8e`.
+New final build/producer derivation precedes the corrected fast run.
+
+A post-import authority command initially used the repository root and stopped with
+`MODULE_NOT_FOUND` for root `tools/print-producer-authorities.mjs`; no build occurred.
+It was run from its owning `port/v2` directory. The final existing printer built successfully
+and proved measurement unchanged before updating only the Compendium producer to
+`2df5f7497cb3b90e937bb5e3199e0346607b7dccfba4635f5a57e74e46e22a82`.
+The draft remains 77, rendered-li hash
+`8f7a40185fb2a89c1fe055b0109623f77d087cdc4248ee00fe20398fe3456c4f`.
+
+## Step 2a full-fast copy-owner red and correction
+
+Typecheck/artunused passed. Full Vitest stopped at 3 failed / 283 passed files; 5 failed /
+2,975 passed / 1 skipped tests (60.70s). Product action tests passed. Log SHA-256
+`4f678ca80ee6a0d834cc5ce56323b0a578c5c7885dd65d9160a87e490d2e094a`.
+The Charter predicate now accepts its exact new Survey/hazard/accepted st-scan sentence while
+retaining the old valid conjunction. Both separate retroactive-Survey contradiction carriers
+are required (removing either no longer hides behind the other). The existing Slice replacement
+anchor inventory is 44 after two authored Bioscan removal controls were added; all anchors must
+still appear in actual rendered current copy. No product or browser source changes.
+
+```text
+ FAIL  tests/glass-bioscan-copy-contract.test.ts > Glass Charter bioscan Guide/copy source contract > fails closed when any required rule, contradiction, or independent availability control is removed
+AssertionError: An older Survey completes the accepted Discover Life Starter Charter retroactively.: expected true to be false // Object.is equality
+
+- Expected
++ Received
+
+- false
++ true
+
+ ❯ tests/glass-bioscan-copy-contract.test.ts:260:57
+    258|       const mutated = glassSource.replace(marker, `glass-bioscan-mutat…
+    259|       expect(mutated, marker).not.toBe(glassSource);
+    260|       expect(glassBioscanCopyContract(mutated), marker).toBe(false);
+       |                                                         ^
+    261|     }
+    262|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/5]⎯
+
+ FAIL  tests/guide-release.test.ts > v2 Guide capability filter > uses current-slice copy for partial topics and explicit copy for unavailable topics
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/guide-release.test.ts:1387:79
+    1385|     expect(getGuideTopic('charters')?.body).toContain('newly built Jum…
+    1386|     expect(getGuideTopic('charters')?.body).toContain('canonical progr…
+    1387|     expect(charterCaptureBoundaryIsTruthful(getGuideTopic('charters')!…
+       |                                                                               ^
+    1388|     for (const id of ['charters', 'ascent'] as const) {
+    1389|       const original = getGuideTopic(id)!.body;
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/5]⎯
+
+ FAIL  tests/guide-release.test.ts > v2 Guide capability filter > documents live Scout, conquest, Prime, ranks, achievements, and starter Charter joins without claiming their open successors
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/guide-release.test.ts:2161:56
+    2159|     expect(rankReleaseCopyIsTruthful(rankBullet ?? '')).toBe(true);
+    2160|     expect(recordsGuideCopyIsTruthful(achievements)).toBe(true);
+    2161|     expect(charterCaptureBoundaryIsTruthful(charters)).toBe(true);
+       |                                                        ^
+    2162|     expect(stardustGuideCopyIsTruthful(stardust)).toBe(true);
+    2163|     expect(getGuideTopic('guardians')?.body).toContain('battlefield mo…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/5]⎯
+
+ FAIL  tests/guide-release.test.ts > v2 Guide capability filter > documents Starter Charters, Binder claims, progression ceremonies, and Frontier endings at their exact live boundaries
+AssertionError: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/guide-release.test.ts:2268:56
+    2266|     expect(getGuideTopic('binder')?.availability).toBe('partial');
+    2267|     expect(getGuideTopic('endings')?.availability).toBe('partial');
+    2268|     expect(charterCaptureBoundaryIsTruthful(charters)).toBe(true);
+       |                                                        ^
+    2269|     expect(starterCharterReleaseCopyIsTruthful(charterBullet)).toBe(tr…
+    2270|     expect(binderGuideCopyIsTruthful(binder)).toBe(true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/5]⎯
+
+ FAIL  tests/slicesmoke-sixth-red-contract.test.ts > sixth Slice red contract repairs > keeps every rendered Guide and release oracle green on current exact copy before browser spend
+AssertionError: expected [ …(44) ] to have a length of 42 but got 44
+
+- Expected
++ Received
+
+- 42
++ 44
+
+ ❯ tests/slicesmoke-sixth-red-contract.test.ts:373:32
+    371|     const replacementAnchors = [...guideReleaseOwner.matchAll(/\.repla…
+    372|       .map((match) => Function(`return '${match[1]}'`)() as string);
+    373|     expect(replacementAnchors).toHaveLength(42);
+       |                                ^
+    374|     expect([...new Set(replacementAnchors)].filter((anchor) =>
+    375|       !`${currentGuideCopy}\n${currentReleaseCopy}`.includes(anchor)))…
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/5]⎯
+
+
+ Test Files  3 failed | 283 passed (286)
+      Tests  5 failed | 2975 passed | 1 skipped (2981)
+   Start at  04:32:40
+   Duration  60.70s (transform 10.90s, setup 0ms, import 93.39s, tests 116.57s, environment 582ms)
+
+
+```
+
+## Step 2a final fast PASS
+
+Typecheck/artunused PASS; **286 files / 2,980 passed / 1 skipped** (59.47s Vitest;
+four local workers). Focused copy controls 60/60. The authored accepted st-scan completion
+requires a later explicit Bioscan and atomically grants 15 Stardust and one Earpiece.
+Prior inspections/Survey, Capture and landfall cannot substitute. Exact gear publication,
+worn-slot preservation, capacity, rollback and stale/storage refusal controls pass.
+The current eight reference overlays and Guide/Training/bulletin agree; weekly lifecycle stays
+parked. Commit this source for unchanged-source Slice and both phone checks before 2b.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.341,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.343,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 59.956,
+    "log": "3-npx.log",
+    "sha256": "0ec5f517906b5a5ac66c9ea0b7eef92231b57846240cf10c60b85fb232241354"
+  }
+]
+```

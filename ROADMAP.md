@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CORE GREEN; STEP 2a NEXT
+## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CORE PUSHED; STEP 2a IMPLEMENTED
 
 ### Morning report
 
@@ -28,8 +28,8 @@ Signed core `5377069` joined through real merge `e77e5e0`; no signed commit rewr
 
 | Step | State | Exact source / results |
 | --- | --- | --- |
-| 1 — core integration | All local gates PASS; this documentation checkpoint is being pushed | `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd`; typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; Slice 368.569s; both phone Glass PASS, zero findings/instrument failures |
-| 2a — accepted st-scan | Next, after checkpoint 1 push | Authored 15 Stardust + one Earpiece, explicit later Bioscan only |
+| 1 — core integration | Complete; `419a00b` pushed 08:30:49 UTC | `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd`; typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; Slice 368.569s; both phone Glass PASS, zero findings/instrument failures |
+| 2a — accepted st-scan | Fast PASS; clean-source browsers next | 286 files / 2,980 passed / 1 skipped; authored 15 Stardust + one Earpiece |
 | 2b — descent/wave-offs | Pending | Authored deterministic policy and canonical-address learning |
 | 2c — 50-Paragon hunt | Pending | Two source-review validation gaps identified for correction before integration |
 | 2d — exact-instance progression | Pending | Existing XP/level/class owners |
@@ -75,9 +75,15 @@ remains real-device v2 persistence.
 
 ### Paired handoff
 
-Codex pushes this completed core checkpoint, then completes 2a–2e in order and the stretch list.
+Codex completes 2a fast/browser gates and pushes it before 2b; then the remaining ordered list.
 Claude reads the pushed branch through Git for morning review; no copying or integration before
 Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
 `develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
 Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
 trigger no workflow. SSH origin/account checks passed with `TheDakk`; no authentication change.
+
+Step 2a fast found a missing existing encoder import, then five stale copy-owner expectations.
+The import and focused copy corrections pass (60/60 related tests); full fast follows. All
+original errors are retained in the report. No browser ran after a red. The current Step 2a
+producer is `2df5f7497cb3b90e937bb5e3199e0346607b7dccfba4635f5a57e74e46e22a82`; 77 bullets,
+rendered hash `8f7a40185fb2a89c1fe055b0109623f77d087cdc4248ee00fe20398fe3456c4f`.

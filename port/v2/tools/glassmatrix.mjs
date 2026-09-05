@@ -13218,7 +13218,10 @@ async function main() {
               'banks that world’s one Chapter 2 life-discovery tick in the same capture transaction',
               'A miss, Sol, a later success on that world, a stale tab, or a failed write banks nothing',
               'Chapter 2 capture milestone is separate from the live Discover Life action',
-              'Accepted and weekly bioscan Charters remain unavailable',
+              'accepted Discover Life Starter Charter completes only from a later explicit Bioscan',
+              'in that same receipt',
+              'older Surveys and capture do not count',
+              'Weekly bioscan Charters remain protected until their separate lifecycle is complete',
             ],bioscanForbidden=[
               'Capture completes an accepted or weekly bioscan Charter',
               'Capture never banks the Charter’s separate bioscan milestone',
@@ -13484,7 +13487,7 @@ async function main() {
             discoverLifeContradiction=/(?:ordinary (?:card |Survey )?inspection|opening (?:the )?Survey card)[^.!?]{0,96}(?:records?|writes?|banks?)[^.!?]{0,48}(?:Survey|Discover Life|living world)/i.test(captureText)
               ||/Discover Life[^.!?]{0,96}(?:catalogues?|captures?|adds?) (?!no\\b)[^.!?]{0,48}(?:species|Compendium page|creature|specimen)/i.test(captureText)
               ||/Discover Life[^.!?]{0,96}(?:spends?|uses?) (?!no\\b)[^.!?]{0,48}(?:Biosphere Yield|Yield)/i.test(captureText)
-              ||/(?:Capture|Discover Life)[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(captureText)
+              ||/Capture[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)|Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}weekly[^.!?]{0,48}(?:Charter|bioscan)|(?:older Survey|ordinary capture)[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(captureText)
               ||/(?:safe|no-wound) Discover Life[^.!?]{0,96}(?:grants?|owns?|awards?)[^.!?]{0,32}survivor/i.test(captureText)
               ||/(?:Scout-intercepted|Field Scout)[^.!?]{0,96}hostile Discover Life[^.!?]{0,96}(?:grants?|owns?|awards?) no survivor/i.test(captureText),
             captureContradiction=/(?:preview row|Planetside preview)[^.!?]{0,80}(?:is|as) (?:the )?(?:chosen )?(?:capture )?target/i.test(captureText)
@@ -13520,7 +13523,9 @@ async function main() {
               &&captureText.includes('first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction')
               &&captureText.includes('a miss, Sol, repeat, stale tab, or failed write banks nothing')
               &&captureText.includes('That Chapter 2 milestone is separate from Discover Life')
-              &&captureText.includes('Accepted and weekly bioscan Charters remain unavailable')
+              &&captureText.includes('accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt')
+              &&captureText.includes('older Surveys and capture do not count')
+              &&captureText.includes('Weekly bioscan Charters remain protected until their separate lifecycle is complete')
               &&captureText.includes('Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail')
               &&captureText.includes('friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable')
               &&!captureContradiction&&!discoverLifeContradiction,
@@ -13771,8 +13776,8 @@ async function main() {
             ||/optimistic(?:ally)?[^.!?]{0,48}(?:changes|updates|spends|raises)/i.test(text)
             ||/(?:taste|flavou?r|stats?|Power|injury|healing|poison|bond|explorer eating)[^.!?]{0,80}(?:is|are) (?:now )?(?:live|available|changed|increased|discovered|healed)/i.test(text)
             ||/(?:Companion Feed|feeding)[^.!?]{0,96}(?:heals? injuries?|raises? (?:stats?|Power)|discovers? tastes?|builds? bond)/i.test(text)
-            ||/(?:Capture|Discover Life)[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(text)
-            ||/(?:accepted|weekly) bioscan Charters?[^.!?]{0,64}(?:is|are) (?:now )?(?:live|available|playable)/i.test(text)
+            ||/Capture[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)|Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}weekly[^.!?]{0,48}(?:Charter|bioscan)|(?:older Survey|ordinary capture)[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(text)
+            ||/weekly bioscan Charters?[^.!?]{0,64}(?:is|are) (?:now )?(?:live|available|playable)/i.test(text)
             ||unnegated(text,/(?:Museum|Chronicle)[^.!?]{0,96}(?:writes?|creates?)[^.!?]{0,48}(?:save|reward|mission|share|global timeline)/i)
             ||/Meals can rise above 200/i.test(text)
             ||/Every Compendium detail offers Feed/i.test(text)
@@ -13852,7 +13857,7 @@ async function main() {
                 'Mixed stock also receives a Pureforged modifier.','Pureforged modifiers reroll after reload.',
                 'Authored affixes/drawbacks are now available.','Upgrades are now playable.','Sockets are now available.','Vendors are now live.',
                 'Creature combat is now playable.','Field Scout missions are now playable.','Companion Feed now heals injuries.',
-                'Discover Life now completes an accepted bioscan Charter.','Weekly bioscan Charters are now live.',
+                'An older Survey completes the accepted Discover Life Starter Charter retroactively.','Weekly bioscan Charters are now live.',
                 'The Expedition Chronicle writes a reward and one global timeline.']){
                 claim.textContent=claimText+' '+copy;unavailableFeatureClaims.push({copy,result:${developmentDetailCheck}});
               }claim.textContent=claimText;
@@ -13879,7 +13884,9 @@ async function main() {
                 'every hit or miss spends 1',
                 'pool recovers at the next 20-minute active-play cycle, never from closing the game or changing the wall clock',
                 'first durable successful Tame, Scavenge, or Sample on each source-proven world beyond Sol also banks that world’s one Chapter 2 life-discovery tick in the same capture transaction',
-                'Accepted and weekly bioscan Charters remain unavailable',
+                'accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt',
+                'older Surveys and capture do not count',
+                'Weekly bioscan Charters remain protected until their separate lifecycle is complete',
                 'Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail',
               ]){
                 const changed=captureText.replace(part,'isolated capture limit omitted');
@@ -13907,7 +13914,7 @@ async function main() {
                 capture.textContent=captureText+' '+copy;bioscanContradictions.push({copy,result:${developmentDetailCheck}});
                 capture.textContent=captureText;
               }
-              capture.textContent=captureText+' Discover Life completes an accepted bioscan Charter.';
+              capture.textContent=captureText+' An older Survey completes the accepted Discover Life Starter Charter retroactively.';
              discoverLifeChanged=capture.textContent!==captureText;
              discoverLifeContradictory=${developmentDetailCheck};capture.textContent=captureText;
               for(const [node,prior,part] of [[frontierAudio,frontierAudioText,'an explorer-requested call from one exact owned-fauna detail'],
@@ -14088,7 +14095,7 @@ async function main() {
               &&firstContract?.ok===false&&recoveryContract?.ok===false&&placementContract?.ok===false&&placementContract?.charterPlacement===false
               &&worldCodeStale?.ok===false&&worldCodeStale?.worldCodeContract===false
               &&atlasRouteStale?.ok===false&&atlasRouteStale?.atlasRouteContract===false
-              &&captureLimitControls.length===11
+              &&captureLimitControls.length===13
               &&captureLimitControls.every((row)=>row.changed&&row.result?.ok===false
                 &&row.result?.captureContract===false&&row.result?.captureContradiction===false
                 &&row.result?.captureBioscanContradiction===false&&row.result?.discoverLifeContradiction===false
