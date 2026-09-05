@@ -1,3 +1,4 @@
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import {
@@ -5,6 +6,7 @@ import {
   arc0LandingSurveyRouteIsExact,
   assessArc0LandingAwaitBoundary,
   assessArc0LandingPublicationWithheld,
+  assessSingleF4ActionCommit,
 } from '../tools/slicesmoke-contract.mjs';
 
 const sliceSource = readFileSync(
@@ -200,6 +202,194 @@ const exactPertarSurveyRouteEvidence = () => ({
 });
 
 describe('Slice Arc 0 Landing fault evidence contract', () => {
+  it('permits one learned approach only after an exact durable authored wave-off', () => {
+    const owner = section(sliceSource,
+      'const MERCURY_DESCENT_WORLD_KEY =', 'const earlyCoreFlowSurveyExpectation = (');
+    const canonical = (value: any): string => Array.isArray(value)
+      ? `[${value.map(canonical).join(',')}]`
+      : value && typeof value === 'object'
+        ? `{${Object.keys(value).sort().map((key) => `${JSON.stringify(key)}:${canonical(value[key])}`).join(',')}}`
+        : JSON.stringify(value);
+    const hash = (kind: string, value: any) => createHash('sha256')
+      .update(`arc0-landing:${kind}:v1\u0000${canonical(value)}`).digest('hex');
+    const assess = Function('canonicalJson', 'createHash', 'assessSingleF4ActionCommit', 'COLLISION_REACH_WORLDS',
+      `${owner}\nreturn assessBoundedDescentWaveOff;`)(canonical, createHash, assessSingleF4ActionCommit, [
+        { name: 'Twin Reach Alpha', key: 'CF1|g:350410949@-7896.51,-370.06|s:127200472@-119.83,75.99|p:1349616177#0' },
+        { name: 'Twin Reach Beta', key: 'CF1|g:350410949@-7896.51,-370.06|s:127200472@167.56,-36.82|p:1349616177#0' },
+      ]);
+    // Synthetic raw fixture: the independently authored seed10 first success
+    // draw is .9993766504339874 and damage draw .5748063516803086.
+    // Mercury95 therefore waves off for2HP, preserves rewards and learns20%.
+    const worldKey = 'CF1|g:999@90,-60|s:424242@560,170|p:131#0';
+    const galaxyKey = 'CF1|g:999@90,-60';
+    const starKey = `${galaxyKey}|s:424242@560,170`;
+    const fixture = () => {
+      const landing = { schema: 'cf-v2-arc0-landing-app-state/v1', lastOutcome: 'committed:8',
+        actionCoordinator: { inFlight: false,
+          owner: { schema: 'cf-v2-product-action-coordinator-diagnostics/v1', busy: false, operation: null },
+          hold: { schema: 'cf-v2-product-action-hold-diagnostics/v1', phase: 'idle', operation: null, sequence: 0 },
+          faultArmed: { storageFailure: false, staleAuthority: false, publicationFailure: false }, lastFault: null } };
+      const route = { mode: 'system', navGalaxyKey: galaxyKey, navStarKey: starKey, navWorldKey: null,
+        planet: null, planetOrdinal: null, epoch: 12, cardOpen: true, cardTitle: 'Mercury',
+        save: { landed: [133], essence: 7, items: [], stats: { landings: 1 }, savedView: { type: 'system' } },
+        renderedScene: { mode: 'system', starKey, worldKey: null }, landing };
+      const beforeState: any = { ...structuredClone(route), persistence: { lastOutcome: 'arc9-survey-committed:7', runtime: {
+        schema: 'cf-v2-f4-runtime/v1', revision: 7, commits: 5, sessionSeed: 10, sessionOrdinal: 3, sessionDraws: {} } } };
+      const afterState: any = { ...structuredClone(route), persistence: { lastOutcome: 'arc0-land-committed:8', runtime: {
+        schema: 'cf-v2-f4-runtime/v1', revision: 8, commits: 6, sessionSeed: 10, sessionOrdinal: 4,
+        sessionDraws: { 'descent.success': 1, 'descent.damage': 1 } } } };
+      const beforeLegacy = { hp: 55, wvo: [[901, 3], [902, 5]], land: [133], ess: 7, view: { type: 'system' } };
+      const afterLegacy = { ...structuredClone(beforeLegacy), hp: 53, wvo: [[131, 1], [901, 3], [902, 5]] };
+      const waveOffs = { schema: 'cf-v2-descent-wave-offs/v1', version: 1,
+        records: [[worldKey, 1]], unresolved: [[901, 3], [902, 5]] };
+      const facts: any = {
+        schema: 'cf-v2-arc0-landing-witness/v1', worldKey, planetSeed: 131, planetOrdinal: 0,
+        landing: 'first', permanentLanding: false, training: false, landingKnownBefore: false,
+        identityLandedAfter: false, claimedLegacyIdentity: false, legacyMirrorContainsSeedAfter: false,
+        savedView: beforeLegacy.view, sample: null,
+        charter: { banked: false, ascChBefore: null, ascChAfter: null, stage: null, progressSeal: null, delta: {} },
+        starterCharters: { changed: false, progressIds: [], completions: [], priorUnlockedIds: [], nextUnlockedIds: [],
+          addedAchievementIds: [], priorBestRankIndex: 0, nextBestRankIndex: 0 }, achievement: null, descentWeather: null,
+        descent: { kind: 'wave-off', navigation: 'orbit', drawsConsumed: 2,
+          hpBefore: 55, hpAfter: 53, rawDamage: 2, gearAdjustedDamage: 2, damage: 2,
+          waveOffCountBefore: 0, waveOffCountAfter: 1, persistenceOutcome: 'failure',
+          policy: { schema: 'cf-v2-descent-policy/v1', key: worldKey,
+            address: { format: 'CF1', key: worldKey, galaxy: { seed: 999, x: 90, y: -60 },
+              star: { seed: 424242, x: 560, y: 170 }, planet: { seed: 131, ordinal: 0 } },
+            opportunityIdentity: `cf-v2-world-opportunity/v3:${worldKey}`, capabilityFingerprint: 'synthetic-no-gear',
+            planetType: 'rocky', biomeKey: 'cratered', typeBase: { successPercent: 90, damageMin: 2, damageMax: 2 },
+            baseSuccessPercent: 95, stormActive: false, stormAdjustedPercent: 95,
+            waveOffCount: 0, learnedApproachBonus: 0, globalGearBonus: 0, familyGearBonus: 0,
+            landingGuaranteed: false, successPercent: 95, damageMin: 2, damageMax: 2,
+            waveOffDamageReduction: 0, safeReason: null, requiredDomains: ['descent.success', 'descent.damage'] } },
+        stateSuccessorSeal: 'a'.repeat(64), worldIdentitySuccessorSeal: 'b'.repeat(64),
+        waveOffStateSuccessorSeal: 'c'.repeat(64), waveOffLegacySuccessorSeal: hash('wave-off-legacy', afterLegacy.wvo),
+        arc2LootSuccessorSeal: null, waveOffProtectedStateSeal: 'd'.repeat(64), receiptOrdinal: 3,
+      };
+      const prefix = [{ ordinal: 2, kind: 'arc9-survey-v1', witness: 'fixture-prior' }];
+      const beforeAuthority: any = { token: 'bounded-wave-off-document', state: beforeState, raw: {
+        revision: 7, revisionRaw: '7', seed: 10, ordinal: 3, draws: {}, legacyRaw: JSON.stringify(beforeLegacy),
+        receiptKeys: ['receipt:2'], receiptRows: prefix } };
+      const afterAuthority: any = { token: beforeAuthority.token, state: afterState, raw: {
+        revision: 8, revisionRaw: '8', seed: 10, ordinal: 4, draws: { 'descent.success': 1, 'descent.damage': 1 },
+        legacyRaw: JSON.stringify(afterLegacy), receiptKeys: ['receipt:2', 'receipt:3'],
+        receiptRows: [...prefix, { ordinal: 3, kind: 'arc0-land', witness: JSON.stringify(facts) }] } };
+      const raw = (authority: any, legacy: any, learned: boolean) => ({
+        revision: authority.raw.revision, legacyRaw: JSON.stringify(legacy), legacy,
+        authority: { sessionRng: { seed: authority.raw.seed, ordinal: authority.raw.ordinal, draws: authority.raw.draws } },
+        playerRow: { data: { hp: legacy.hp, ess: legacy.ess }, extensions: { 'f4.authority': { version: 1, json: 'fixture' } } },
+        catalogRow: { data: { wvo: legacy.wvo, land: legacy.land }, extensions: learned
+          ? { 'descent.wave-offs': { version: 1, json: JSON.stringify(waveOffs) } } : {} },
+        creaturesRaw: '{"data":[]}', inventoryRaw: '{"data":[]}', settingsRaw: '{"volume":1}',
+        receiptKeys: authority.raw.receiptKeys, receiptRows: authority.raw.receiptRows,
+      });
+      return { worldKey, beforeAuthority, afterAuthority, beforeRaw: raw(beforeAuthority, beforeLegacy, false),
+        afterRaw: raw(afterAuthority, afterLegacy, true), beforeState, afterState,
+        nextAction: { ok: true, label: '⛳ Land safely' } };
+    };
+    const rewrite = (value: any, mutate: (facts: any) => void) => {
+      const facts = JSON.parse(value.afterAuthority.raw.receiptRows[1].witness);
+      mutate(facts); value.afterAuthority.raw.receiptRows[1].witness = JSON.stringify(facts);
+    };
+    expect(assess(fixture())).toMatchObject({ ok: true });
+    for (const [name, mutate] of [
+      ['unknown world', (v: any) => { v.worldKey += ':wrong'; }],
+      ['wrong seed draw', (v: any) => { v.beforeAuthority.raw.seed = 68; v.afterAuthority.raw.seed = 68; }],
+      ['refusal', (v: any) => { v.afterState.landing.lastOutcome = 'refused:storage'; }],
+      ['pending action', (v: any) => { v.afterState.landing.actionCoordinator.inFlight = true; }],
+      ['wrong receipt', (v: any) => { v.afterAuthority.raw.receiptRows[1].kind = 'arc9-survey-v1'; }],
+      ['missing damage draw', (v: any) => { delete v.afterAuthority.raw.draws['descent.damage']; }],
+      ['extra receipt', (v: any) => { v.afterAuthority.raw.receiptKeys.push('receipt:4'); v.afterAuthority.raw.receiptRows.push({ ordinal: 4, kind: 'extra', witness: 'extra' }); }],
+      ['HP0', (v: any) => { v.afterRaw.legacy.hp = 0; }],
+      ['landing reward', (v: any) => { v.afterRaw.catalogRow.data.land.push(131); }],
+      ['other durable reward', (v: any) => { v.afterRaw.inventoryRaw = '{"ess":1}'; }],
+      ['live reward', (v: any) => { v.afterState.save.essence += 1; }],
+      ['left orbit', (v: any) => { v.afterState.mode = 'surface'; }],
+      ['other world learning', (v: any) => { const c = v.afterRaw.catalogRow.extensions['descent.wave-offs']; const x = JSON.parse(c.json); x.records[0][0] += ':wrong'; c.json = JSON.stringify(x); }],
+      ['lost unrelated learning', (v: any) => { const c = v.afterRaw.catalogRow.extensions['descent.wave-offs']; const x = JSON.parse(c.json); x.unresolved.pop(); c.json = JSON.stringify(x); }],
+      ['malformed prior', (v: any) => { v.beforeRaw.catalogRow.extensions['descent.wave-offs'] = { version: 1, json: '{"schema":"cf-v2-descent-wave-offs/v1","version":1,"records":[null],"unresolved":[]}' }; }],
+      ['risk label', (v: any) => { v.nextAction.label = '⛳ Land · 95%'; }],
+      ['revisit label', (v: any) => { v.nextAction.label = '⛳ Return safely'; }],
+      ['disabled action', (v: any) => { v.nextAction.ok = false; }],
+      ['false success', (v: any) => rewrite(v, (f) => { f.descent.kind = 'landed'; })],
+      ['Charter credit', (v: any) => rewrite(v, (f) => { f.charter.banked = true; })],
+      ['other biome', (v: any) => rewrite(v, (f) => { f.descent.policy.biomeKey = 'glacier'; })],
+      ['invented gear', (v: any) => rewrite(v, (f) => { f.descent.policy.globalGearBonus = 5; })],
+      ['wrong count', (v: any) => rewrite(v, (f) => { f.descent.waveOffCountAfter = 2; })],
+      ['wrong seal', (v: any) => rewrite(v, (f) => { f.waveOffLegacySuccessorSeal = '0'.repeat(64); })],
+    ] as const) {
+      const value = fixture(); mutate(value);
+      expect(assess(value).ok, name).toBe(false);
+      expect(assess(fixture()).ok, `${name} restored`).toBe(true);
+    }
+    for (const [title, x, y] of [['Twin Reach Alpha', -119.83, 75.99], ['Twin Reach Beta', 167.56, -36.82]] as const) {
+      const value = fixture();
+      const collisionStarKey = `CF1|g:350410949@-7896.51,-370.06|s:127200472@${x},${y}`;
+      const collisionWorldKey = `${collisionStarKey}|p:1349616177#0`;
+      value.worldKey = collisionWorldKey;
+      for (const state of [value.beforeState, value.afterState]) {
+        state.navGalaxyKey = 'CF1|g:350410949@-7896.51,-370.06';
+        state.navStarKey = collisionStarKey; state.cardTitle = title;
+        state.renderedScene.starKey = collisionStarKey;
+      }
+      value.afterRaw.legacy.wvo = [[901, 3], [902, 5], [1349616177, 1]];
+      value.afterRaw.catalogRow.data.wvo = value.afterRaw.legacy.wvo;
+      value.afterRaw.legacyRaw = JSON.stringify(value.afterRaw.legacy);
+      value.afterAuthority.raw.legacyRaw = value.afterRaw.legacyRaw;
+      value.afterRaw.catalogRow.extensions['descent.wave-offs']!.json = JSON.stringify({
+        schema: 'cf-v2-descent-wave-offs/v1', version: 1,
+        records: [[collisionWorldKey, 1]], unresolved: [[901, 3], [902, 5]],
+      });
+      rewrite(value, (facts) => {
+        facts.worldKey = collisionWorldKey; facts.planetSeed = 1349616177; facts.descentWeather = 'snow';
+        facts.waveOffLegacySuccessorSeal = hash('wave-off-legacy', value.afterRaw.legacy.wvo);
+        const policy = facts.descent.policy;
+        policy.key = collisionWorldKey; policy.address.key = collisionWorldKey;
+        policy.address.galaxy = { seed: 350410949, x: -7896.51, y: -370.06 };
+        policy.address.star = { seed: 127200472, x, y };
+        policy.address.planet = { seed: 1349616177, ordinal: 0 };
+        policy.opportunityIdentity = `cf-v2-world-opportunity/v3:${collisionWorldKey}`;
+        policy.planetType = 'ice'; policy.biomeKey = 'glacier';
+        policy.typeBase = { successPercent: 85, damageMin: 3, damageMax: 4 };
+        policy.baseSuccessPercent = 90; policy.stormAdjustedPercent = 90;
+        policy.stormActive = true; policy.successPercent = 90;
+      });
+      expect(assess(value).ok, `${title} independent glacier90 wave-off`).toBe(true);
+      const wrongExactWorld = structuredClone(value);
+      wrongExactWorld.afterRaw.catalogRow.extensions['descent.wave-offs']!.json = JSON.stringify({
+        schema: 'cf-v2-descent-wave-offs/v1', version: 1,
+        records: [[title === 'Twin Reach Alpha'
+          ? 'CF1|g:350410949@-7896.51,-370.06|s:127200472@167.56,-36.82|p:1349616177#0'
+          : 'CF1|g:350410949@-7896.51,-370.06|s:127200472@-119.83,75.99|p:1349616177#0', 1]],
+        unresolved: [[901, 3], [902, 5]],
+      });
+      expect(assess(wrongExactWorld).ok, `${title} identical leaf seed is insufficient`).toBe(false);
+      expect(assess(value).ok, `${title} restored exact address`).toBe(true);
+    }
+    const desktop = section(sliceSource, '  const completeDesktopMercuryLand = async (label) => {',
+      '  /* Complete the fresh Chapter-1 landfall goal with a second genuine Sol');
+    proveEachMarkerRequired(desktop, [
+      ['real Survey predecessor', 'api.surveyOn(${JSON.stringify(MERCURY)})'],
+      ['wave-off only branch', "if (first.facts?.descent?.kind === 'wave-off')"],
+      ['durable wave-off proof', 'const assessment = assessBoundedDescentWaveOff(evidence);'],
+      ['no second action on invalid first result', 'if (accepted !== false || !assessment.ok)'],
+      ['one learned approach', 'const learnedAccepted = await evalIn(`(async()=>await window.__CF_SLICE__.api.landHere())()`);'],
+      ['guaranteed learned result', 'learned.facts?.descent?.policy?.successPercent !== 100'],
+    ]);
+    expect(occurrences(desktop, 'api.landHere()')).toBe(2);
+    expect(desktop).not.toMatch(/\b(?:for|while)\s*\(/u);
+    const collision = section(sliceSource, '    const landBeforeAuthority = addAuthority;', '    const landed = landAuthority.state;');
+    proveEachMarkerRequired(collision, [
+      ['collision wave-off only', "if (first.facts?.descent?.kind === 'wave-off')"],
+      ['exact collision proof', 'const assessment = assessBoundedDescentWaveOff(evidence);'],
+      ['first trusted pointer', "landPress.pointer?.trusted !== true || landPress.pointer?.act !== 'landcta'"],
+      ['preserve first pointer', 'const landApproachPointers = [landPress.pointer];'],
+      ['preserve second pointer', 'landApproachPointers.push(landPress.pointer);'],
+      ['guaranteed collision result', 'learned.facts?.descent?.policy?.successPercent !== 100'],
+    ]);
+    expect(occurrences(collision, "nativeControlClick(collisionTarget.session, '#survey [data-act=\"landcta\"]')")).toBe(2);
+  });
+
   it('classifies refused, wrong-document and never-settled actions before generic harness handling', () => {
     const exact = {
       actualAccepted: true,

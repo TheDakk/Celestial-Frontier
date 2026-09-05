@@ -1895,7 +1895,11 @@ const assessCollisionWorldOutcome = ({
       || !collisionShareMatches(action.shareCode, world)) reasons.push(`Share ${index}`);
     if (action?.addPointer?.trusted !== true || action.addPointer.act !== 'add'
       || action.afterAdd?.atlasCount !== expectedAtlasCount) reasons.push(`Atlas Add ${index}`);
-    if (action?.landPointer?.trusted !== true || action.landPointer.act !== 'landcta'
+    if (!Array.isArray(action?.landApproachPointers)
+      || ![1, 2].includes(action.landApproachPointers.length)
+      || action.landApproachPointers.some((pointer) => pointer?.trusted !== true || pointer?.act !== 'landcta')
+      || canonicalJson(action.landApproachPointers.at(-1)) !== canonicalJson(action.landPointer)
+      || action?.landPointer?.trusted !== true || action.landPointer.act !== 'landcta'
       || action.landed?.mode !== 'surface' || action.landed?.navWorldKey !== world.key
       || action.landed?.planet !== world.planet.seed
       || action.landed?.planetOrdinal !== world.planet.ordinal
@@ -4756,6 +4760,144 @@ const requireRenderedSceneMatch = (label, state) => {
 const renderedSceneAdvanced = (before, after) => renderedSceneMatchesNav(after)
   && Number.isInteger(before?.renderedScene?.serial)
   && after.renderedScene.serial > before.renderedScene.serial;
+/* Only these existing Slice journeys may take a second explicit approach.
+   Their first authored chances are 95%/90%, so one exact-world wave-off adds
+   enough learning to guarantee the next approach. This is never a retry of
+   a refusal, storage error, stale action, or failed gate. */
+const MERCURY_DESCENT_WORLD_KEY = 'CF1|g:999@90,-60|s:424242@560,170|p:131#0';
+const boundedDescentWorld = (key) => key === MERCURY_DESCENT_WORLD_KEY
+  ? { key, seed: 131, ordinal: 0, title: 'Mercury', type: 'rocky', biome: 'cratered',
+    base: 95, weather: null, starKey: 'CF1|g:999@90,-60|s:424242@560,170' }
+  : COLLISION_REACH_WORLDS.some((world) => world.key === key)
+    ? { key, seed: 1349616177, ordinal: 0,
+      title: COLLISION_REACH_WORLDS.find((world) => world.key === key).name,
+      type: 'ice', biome: 'glacier', base: 90, weather: 'snow',
+      starKey: key.slice(0, key.lastIndexOf('|p:')) }
+    : null;
+const boundedDescentReceipt = (beforeAuthority, afterAuthority) => {
+  const index = afterAuthority?.raw?.receiptKeys?.indexOf(`receipt:${beforeAuthority?.raw?.ordinal}`) ?? -1;
+  const receipt = index < 0 ? null : afterAuthority.raw.receiptRows[index];
+  let facts = null;
+  try { facts = JSON.parse(receipt?.witness ?? 'null'); } catch {}
+  return { receipt, facts };
+};
+const assessBoundedDescentWaveOff = ({
+  worldKey, beforeAuthority, afterAuthority, beforeRaw, afterRaw,
+  beforeState, afterState, nextAction,
+}) => {
+  try {
+  const target = boundedDescentWorld(worldKey);
+  const { receipt, facts } = boundedDescentReceipt(beforeAuthority, afterAuthority);
+  const descent = facts?.descent, policy = descent?.policy;
+  const checks = {};
+  const check = (name, value) => { checks[name] = value === true; };
+  const same = (left, right) => canonicalJson(left) === canonicalJson(right);
+  const hash = (kind, value) => createHash('sha256')
+    .update(`arc0-landing:${kind}:v1\u0000${canonicalJson(value)}`).digest('hex');
+  const projectedRows = (raw) => {
+    if (!raw?.playerRow?.data || !raw?.catalogRow?.data || !raw?.legacy
+      || ['creaturesRaw', 'inventoryRaw', 'settingsRaw'].some((key) => typeof raw[key] !== 'string')) return null;
+    const player = structuredClone(raw.playerRow), catalog = structuredClone(raw.catalogRow);
+    delete player.data.hp;
+    delete player.extensions?.['f4.authority'];
+    delete catalog.data.wvo;
+    delete catalog.extensions?.['descent.wave-offs'];
+    const legacy = structuredClone(raw.legacy);
+    delete legacy.hp;
+    delete legacy.wvo;
+    return { player, catalog, legacy, creatures: raw.creaturesRaw,
+      inventory: raw.inventoryRaw, settings: raw.settingsRaw };
+  };
+  const beforeProjection = projectedRows(beforeRaw), afterProjection = projectedRows(afterRaw);
+  const beforeCarrier = beforeRaw?.catalogRow?.extensions?.['descent.wave-offs'] ?? null;
+  const afterCarrier = afterRaw?.catalogRow?.extensions?.['descent.wave-offs'] ?? null;
+  let prior = null, next = null;
+  try {
+    prior = beforeCarrier === null
+      ? { schema: 'cf-v2-descent-wave-offs/v1', version: 1, records: [],
+        unresolved: [...beforeRaw.legacy.wvo].sort(([a], [b]) => a - b) }
+      : JSON.parse(beforeCarrier.json);
+    next = JSON.parse(afterCarrier.json);
+  } catch {}
+  let expectedWaveOffs = null;
+  if (target && prior?.schema === 'cf-v2-descent-wave-offs/v1' && prior.version === 1
+    && Array.isArray(prior.records) && Array.isArray(prior.unresolved)
+    && !prior.records.some(([key]) => key === worldKey)
+    && !prior.unresolved.some(([seed]) => seed === target.seed)) {
+    expectedWaveOffs = { schema: prior.schema, version: 1,
+      records: [...prior.records, [worldKey, 1]].sort(([a], [b]) => a < b ? -1 : a > b ? 1 : 0),
+      unresolved: prior.unresolved };
+  }
+  const expectedLegacy = target && Array.isArray(beforeRaw?.legacy?.wvo)
+    ? [...new Map([...beforeRaw.legacy.wvo, [target.seed, 1]])].sort(([a], [b]) => a - b) : null;
+  check('known authored world', target !== null);
+  check('one durable exact Land receipt', assessSingleF4ActionCommit({
+    beforeAuthority, afterAuthority, state: afterState, expectedKind: 'arc0-land',
+    expectedPersistenceLastOutcome: `arc0-land-committed:${afterAuthority?.raw?.revision}`,
+  }).ok);
+  check('same raw checkpoint', beforeRaw?.revision === beforeAuthority?.raw?.revision
+    && afterRaw?.revision === afterAuthority?.raw?.revision
+    && beforeRaw?.legacyRaw === beforeAuthority?.raw?.legacyRaw
+    && afterRaw?.legacyRaw === afterAuthority?.raw?.legacyRaw
+    && same(beforeRaw?.receiptRows, beforeAuthority?.raw?.receiptRows)
+    && same(afterRaw?.receiptRows, afterAuthority?.raw?.receiptRows)
+    && same(beforeRaw?.authority?.sessionRng, { seed: beforeAuthority?.raw?.seed,
+      ordinal: beforeAuthority?.raw?.ordinal, draws: beforeAuthority?.raw?.draws })
+    && same(afterRaw?.authority?.sessionRng, { seed: afterAuthority?.raw?.seed,
+      ordinal: afterAuthority?.raw?.ordinal, draws: afterAuthority?.raw?.draws }));
+  check('actual exact-world wave-off', target !== null && receipt?.kind === 'arc0-land'
+    && facts?.schema === 'cf-v2-arc0-landing-witness/v1'
+    && facts.worldKey === worldKey && facts.planetSeed === target.seed && facts.planetOrdinal === target.ordinal
+    && facts.receiptOrdinal === beforeAuthority?.raw?.ordinal
+    && descent?.kind === 'wave-off' && descent.navigation === 'orbit'
+    && descent.persistenceOutcome === 'failure' && descent.drawsConsumed === 2
+    && descent.waveOffCountBefore === 0 && descent.waveOffCountAfter === 1);
+  check('independent first approach', target !== null && policy?.key === worldKey
+    && policy.planetType === target.type && policy.biomeKey === target.biome
+    && policy.baseSuccessPercent === target.base && policy.stormAdjustedPercent === target.base
+    && policy.successPercent === target.base && policy.safeReason === null
+    && facts.descentWeather === target.weather && policy.stormActive === (target.weather !== null)
+    && policy.waveOffCount === 0 && policy.learnedApproachBonus === 0
+    && policy.globalGearBonus === 0 && policy.familyGearBonus === 0
+    && policy.landingGuaranteed === false && policy.waveOffDamageReduction === 0
+    && policy.damageMin === 2 && policy.damageMax === 2);
+  check('canonical learning only for this world', expectedWaveOffs !== null
+    && afterCarrier?.version === 1 && afterCarrier.json === JSON.stringify(expectedWaveOffs)
+    && same(next, expectedWaveOffs) && same(afterRaw?.legacy?.wvo, expectedLegacy)
+    && facts?.waveOffLegacySuccessorSeal === hash('wave-off-legacy', afterRaw?.legacy?.wvo));
+  check('no durable rewards or other changes', beforeProjection !== null && afterProjection !== null
+    && same(beforeProjection, afterProjection)
+    && same(afterRaw?.catalogRow?.data?.wvo, afterRaw?.legacy?.wvo)
+    && same(beforeRaw?.receiptKeys, beforeAuthority?.raw?.receiptKeys)
+    && same(afterRaw?.receiptKeys, afterAuthority?.raw?.receiptKeys));
+  check('exact nonlethal HP', Number.isSafeInteger(beforeRaw?.legacy?.hp) && beforeRaw.legacy.hp >= 1
+    && descent?.hpBefore === beforeRaw.legacy.hp && descent.rawDamage === 2
+    && descent.gearAdjustedDamage === 2 && descent.damage === Math.min(2, beforeRaw.legacy.hp - 1)
+    && descent.hpAfter === beforeRaw.legacy.hp - descent.damage && descent.hpAfter >= 1
+    && afterRaw?.legacy?.hp === descent.hpAfter && afterRaw?.playerRow?.data?.hp === descent.hpAfter);
+  check('no landing credit', facts?.permanentLanding === false && facts.training === false
+    && facts.identityLandedAfter === false && facts.claimedLegacyIdentity === false
+    && facts.sample === null && facts.achievement === null && facts.arc2LootSuccessorSeal === null
+    && typeof facts.waveOffProtectedStateSeal === 'string' && /^[0-9a-f]{64}$/.test(facts.waveOffProtectedStateSeal)
+    && same(facts.charter, { banked: false, ascChBefore: null, ascChAfter: null,
+      stage: null, progressSeal: null, delta: {} })
+    && same(facts.starterCharters, { changed: false, progressIds: [], completions: [],
+      priorUnlockedIds: [], nextUnlockedIds: [], addedAchievementIds: [],
+      priorBestRankIndex: 0, nextBestRankIndex: 0 }));
+  check('unchanged orbit and live rewards', target !== null && beforeState?.mode === 'system'
+    && afterState?.mode === 'system' && beforeState.navStarKey === target.starKey
+    && afterState.navStarKey === target.starKey && beforeState.navWorldKey === null
+    && afterState.navWorldKey === null && afterState.planet === null && afterState.planetOrdinal === null
+    && beforeState.navGalaxyKey === afterState.navGalaxyKey && beforeState.epoch === afterState.epoch
+    && same(beforeState.save, afterState.save) && afterState.cardOpen === true
+    && afterState.cardTitle === target.title && afterState.renderedScene?.mode === 'system'
+    && afterState.renderedScene?.starKey === target.starKey && afterState.renderedScene?.worldKey === null);
+  check('next explicit approach guaranteed', target !== null && Math.min(100, target.base + 20) === 100
+    && nextAction?.ok === true && nextAction.label === '⛳ Land safely');
+  return { ok: Object.values(checks).every(Boolean), checks };
+  } catch { return { ok: false, checks: { 'well-formed bounded wave-off evidence': false } }; }
+};
+
 const earlyCoreFlowSurveyExpectation = (
   beforeAuthority, routeState, {
     cardTitle, actionLabel, settlement = 'commit',
@@ -8775,7 +8917,7 @@ try {
     beforeAuthority: pointerEarthBeforeAuthority,
     routeState: pointerEarthRoute,
     cardTitle: 'Earth',
-    actionLabel: '⛳ Land',
+    actionLabel: '⛳ Land safely',
     actionExpression: earthLandActionCheck,
   });
   if (pointerEarthSurvey.cardOpen) await keyIn('Escape', 'Escape');
@@ -8823,7 +8965,7 @@ try {
     beforeAuthority: keyboardEarthBeforeAuthority,
     routeState: keyboardEarthRoute,
     cardTitle: 'Earth',
-    actionLabel: '⛳ Land',
+    actionLabel: '⛳ Land safely',
     actionExpression: earthLandActionCheck,
     settlement: 'inspection',
   });
@@ -9139,13 +9281,51 @@ try {
     if (!Array.isArray(saved.landed) || !saved.landed.includes(133)) fails.push('Earth (133) not in the save’s landed set after reload: ' + JSON.stringify(saved.landed));
     if (typeof saved.essence !== 'number') fails.push('save.essence is not a number — importSaveV2 did not run');
   }
+  const completeDesktopMercuryLand = async (label) => {
+    if (await evalIn(`window.__CF_SLICE__.api.surveyOn(${JSON.stringify(MERCURY)})`) !== true) {
+      failSliceWithoutCascade(`${label}: Mercury Survey refused before the explicit Land`);
+    }
+    const beforeAuthority = await waitForF4Writable(`${label} Land predecessor`);
+    const beforeState = await evalIn(`window.__CF_SLICE__.api.state()`);
+    const beforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+    const accepted = await evalIn(`(async()=>await window.__CF_SLICE__.api.landHere())()`);
+    const firstAuthority = await waitForF4Writable(`${label} first Land settlement`);
+    const firstState = await evalIn(`window.__CF_SLICE__.api.state()`);
+    const first = boundedDescentReceipt(beforeAuthority, firstAuthority);
+    if (first.facts?.descent?.kind === 'wave-off') {
+      const afterRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);
+      const nextAction = await evalIn(earthLandActionCheck);
+      const evidence = { worldKey: MERCURY_DESCENT_WORLD_KEY, beforeAuthority,
+        afterAuthority: firstAuthority, beforeRaw, afterRaw, beforeState,
+        afterState: firstState, nextAction };
+      const assessment = assessBoundedDescentWaveOff(evidence);
+      if (accepted !== false || !assessment.ok) {
+        failSliceWithoutCascade(`${label}: first action was not an exact durable wave-off; no second Land was issued: `
+          + JSON.stringify({ accepted, assessment, evidence }));
+      }
+      const learnedAccepted = await evalIn(`(async()=>await window.__CF_SLICE__.api.landHere())()`);
+      const learnedAuthority = await waitForF4Writable(`${label} guaranteed Land settlement`);
+      const learned = boundedDescentReceipt(firstAuthority, learnedAuthority);
+      if (learnedAccepted !== true || learned.facts?.descent?.kind !== 'landed'
+        || learned.facts?.worldKey !== MERCURY_DESCENT_WORLD_KEY
+        || learned.facts?.descent?.policy?.successPercent !== 100) {
+        failSliceWithoutCascade(`${label}: the one learned approach did not land; no further action was issued: `
+          + JSON.stringify({ learnedAccepted, learned, firstAuthority, learnedAuthority }));
+      }
+    } else if (accepted !== true || first.facts?.descent?.kind !== 'landed'
+      || first.facts?.worldKey !== MERCURY_DESCENT_WORLD_KEY) {
+      failSliceWithoutCascade(`${label}: Land refused or did not publish an exact landed receipt; no second action was issued: `
+        + JSON.stringify({ accepted, beforeAuthority, firstAuthority, firstState }));
+    }
+  };
+
   /* Complete the fresh Chapter-1 landfall goal with a second genuine Sol
      world. The next visible writer is Mine—not the former generic slice
      refusal—and its negative controls exercise this exact rendered chip. */
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await sleep(350);
-  await evalIn(`(async()=>await window.__CF_SLICE__.api.landOn(${JSON.stringify(MERCURY)}))()`);
+  await completeDesktopMercuryLand('OBJECTIVE MERCURY LANDFALL');
   await sleep(450);
   const liveGoalBoundaryCheck = `(()=>{ const s=window.__CF_SLICE__.api.state();return {ok:s.mode==='surface'
     &&/Mine Sol’s dead worlds 8 times/i.test(s.objective)&&/0\\s*\\/\\s*8/.test(s.objective)
@@ -9230,7 +9410,7 @@ try {
   await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape' }, sess);
   await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape' }, sess);
   await sleep(350);
-  await evalIn(`(async()=>await window.__CF_SLICE__.api.landOn(${JSON.stringify(MERCURY)}))()`);
+  await completeDesktopMercuryLand('COMPATIBILITY MERCURY LANDFALL');
   await sleep(450);
   /* Escape consumes any open surface card while lifting in the same action;
      from outer modes it closes a card before the next press climbs. Drive the
@@ -23444,7 +23624,7 @@ try {
     beforeAuthority: kEarthBeforeAuthority,
     routeState: kEarthRoute,
     cardTitle: 'Earth',
-    actionLabel: '⛳ Land',
+    actionLabel: '⛳ Land safely',
     actionExpression: keyboardJourneyLandActionCheck,
     allowFresh: true,
   });
@@ -23474,7 +23654,7 @@ try {
     beforeAuthority: kEarthAgainBeforeAuthority,
     routeState: kEarthAgainRoute,
     cardTitle: 'Earth',
-    actionLabel: '⛳ Land',
+    actionLabel: '⛳ Land safely',
     actionExpression: keyboardJourneyLandActionCheck,
     settlement: 'inspection',
     allowFresh: true,
@@ -24498,7 +24678,7 @@ try {
     beforeAuthority: phoneEarthBeforeAuthority,
     routeState: phoneSolSetup,
     cardTitle: 'Earth',
-    actionLabel: '⛳ Land',
+    actionLabel: '⛳ Land safely',
     actionExpression: phoneCardActionCheck('landcta'),
     allowFresh: true,
   });
@@ -24660,7 +24840,7 @@ try {
     beforeAuthority: phoneRepeatEarthBeforeAuthority,
     routeState: phoneRepeatEarthRoute,
     cardTitle: 'Earth',
-    actionLabel: '⛳ Land',
+    actionLabel: '⛳ Land safely',
     actionExpression: phoneCardActionCheck('landcta'),
     settlement: 'inspection',
     allowFresh: true,
@@ -25245,6 +25425,7 @@ try {
       preLandAuthority = shareAuthority;
     }
     const baseline = charterLandBaseline(beforeLand);
+    const beforeLandRaw = await evalNavPh(ARC4_DURABLE_READ_EXPRESSION);
     const settledLandAction = await evalNavPh(phoneCardActionCheck('landcta'));
     if (!settledLandAction.ok || !/Land/.test(settledLandAction.label)) {
       fails.push(`${label}: Land action changed before its settled browser touch: `
@@ -25308,7 +25489,34 @@ try {
     }
     let outcome;
     let landAuthority;
+    let learnedCharterApproach = false;
     try {
+      const firstLandAuthority = await waitNavPhF4Writable(`${label} first Land settlement`);
+      const firstLandState = await evalNavPh(`window.__CF_SLICE__.api.state()`);
+      const first = boundedDescentReceipt(preLandAuthority, firstLandAuthority);
+      if (first.facts?.descent?.kind === 'wave-off') {
+        const firstLandRaw = await evalNavPh(ARC4_DURABLE_READ_EXPRESSION);
+        const learnedLandAction = await evalNavPh(phoneCardActionCheck('landcta'));
+        const evidence = { worldKey: MERCURY_DESCENT_WORLD_KEY,
+          beforeAuthority: preLandAuthority, afterAuthority: firstLandAuthority,
+          beforeRaw: beforeLandRaw, afterRaw: firstLandRaw,
+          beforeState: beforeLand, afterState: firstLandState, nextAction: learnedLandAction };
+        const assessment = assessBoundedDescentWaveOff(evidence);
+        if (!assessment.ok) {
+          failSliceWithoutCascade(`${label}: first Land was not an exact durable wave-off; no second touch was issued: `
+            + JSON.stringify({ assessment, evidence }));
+        }
+        // The held first gesture still proves Share-ceremony deferral. The
+        // final completion must supersede this legitimate wave-off outcome.
+        beforeLand = firstLandState;
+        preLandAuthority = firstLandAuthority;
+        learnedCharterApproach = true;
+        await touchNav(learnedLandAction.x, learnedLandAction.y);
+      } else if (first.facts?.descent?.kind !== 'landed'
+        || first.facts?.worldKey !== MERCURY_DESCENT_WORLD_KEY) {
+        failSliceWithoutCascade(`${label}: refused or invalid first Land; no second touch was issued: `
+          + JSON.stringify({ firstLandAuthority, firstLandState }));
+      }
       await waitNavPhValue(`${label} browser-touch re-land`, `(()=>{ const s=window.__CF_SLICE__.api.state();
         return s.mode==='surface'&&s.planet===131?s:null; })()`);
       landAuthority = await waitNavPhF4Writable(`${label} Land and progression settlement`);
@@ -25334,7 +25542,9 @@ try {
       expectedChapter,
       expectedStage,
     });
-    const topologyExact = topologyAssessment.ok;
+    const finalDescent = boundedDescentReceipt(preLandAuthority, landAuthority).facts?.descent;
+    const topologyExact = topologyAssessment.ok && (!learnedCharterApproach
+      || (finalDescent?.policy?.successPercent === 100 && finalDescent?.waveOffCountBefore === 1));
     const toastExact = expectedChapter === 3
       ? outcome.toastOn && outcome.toastSerial === beforeLand.toastSerial + 1
         && /3 Charter chapters/i.test(outcome.toastText) && /complete/i.test(outcome.toastText)
@@ -25661,6 +25871,7 @@ try {
     return {ok:state.panelOpen==='ch'&&state.save.ascCh===3&&record?.getAttribute('data-chstate')==='complete'
       &&/Charter record/.test(text)&&!/Chapter 1/.test(text),panelOpen:state.panelOpen,ascCh:state.save.ascCh,
       state:record?.getAttribute('data-chstate')||null,text};})()`;
+  const panelBeforeRaw = await evalPanel(ARC4_DURABLE_READ_EXPRESSION);
   const panelBefore = await evalPanel(`(()=>{ const s=window.__CF_SLICE__.api.state(),panel=document.getElementById('chpanel');
     return {panelOpen:s.panelOpen,ascCh:s.save.ascCh,text:panel?.textContent||'',land:${phoneCardActionCheck('landcta')}};})()`);
   if (!panelSurveyCommit.ok || panelSurveyAuthority?.token !== panelDocumentToken
@@ -25670,10 +25881,11 @@ try {
       + JSON.stringify({ panelSurveyed, panelSurveyBeforeAuthority, panelSurveyAuthority,
         panelSurveyCommit, panelBefore }));
   } else {
-    await evalPanel(`(()=>{const button=document.querySelector('#survey [data-act="landcta"]');
+    const armPanelLandEvents = () => evalPanel(`(()=>{const button=document.querySelector('#survey [data-act="landcta"]');
       window.__cfCharterLandEvents=[];for(const type of ['pointerdown','pointerup','click'])button.addEventListener(type,(event)=>{
         window.__cfCharterLandEvents.push({type,trusted:event.isTrusted,act:event.target.closest('[data-act]')?.dataset.act||null});
       },{once:true,capture:true});return true;})()`);
+    await armPanelLandEvents();
     await send('Input.dispatchMouseEvent', {
       type: 'mousePressed', x: panelBefore.land.x, y: panelBefore.land.y, button: 'left', clickCount: 1,
     }, panelSession);
@@ -25683,7 +25895,42 @@ try {
     const panelImmediate = await evalPanel(`(()=>({state:window.__CF_SLICE__.api.state(),
       events:window.__cfCharterLandEvents||[]}))()`);
     let panelLanded = false;
+    let finalPanelLandPredecessor = panelSurveyAuthority;
+    let learnedPanelApproach = false;
+    const panelLandApproachEvents = [];
     try {
+      const firstPanelAuthority = await waitPanelF4Writable('CHARTER PANEL REFRESH first Land settlement');
+      const firstPanelState = await evalPanel(`window.__CF_SLICE__.api.state()`);
+      const firstEvents = await evalPanel(`window.__cfCharterLandEvents||[]`);
+      panelLandApproachEvents.push(firstEvents);
+      const first = boundedDescentReceipt(panelSurveyAuthority, firstPanelAuthority);
+      if (first.facts?.descent?.kind === 'wave-off') {
+        const firstRaw = await evalPanel(ARC4_DURABLE_READ_EXPRESSION);
+        const nextAction = await evalPanel(phoneCardActionCheck('landcta'));
+        const evidence = { worldKey: MERCURY_DESCENT_WORLD_KEY,
+          beforeAuthority: panelSurveyAuthority, afterAuthority: firstPanelAuthority,
+          beforeRaw: panelBeforeRaw, afterRaw: firstRaw,
+          beforeState: panelBefore.land.state, afterState: firstPanelState, nextAction };
+        const assessment = assessBoundedDescentWaveOff(evidence);
+        if (!assessment.ok || !exactTrustedCharterLandReceipt(firstEvents)) {
+          failSliceWithoutCascade('CHARTER PANEL REFRESH: first Land was not an exact trusted durable wave-off; no second mouse action was issued: '
+            + JSON.stringify({ firstEvents, assessment, evidence }));
+        }
+        finalPanelLandPredecessor = firstPanelAuthority;
+        learnedPanelApproach = true;
+        await armPanelLandEvents();
+        await send('Input.dispatchMouseEvent', {
+          type: 'mousePressed', x: nextAction.x, y: nextAction.y, button: 'left', clickCount: 1,
+        }, panelSession);
+        await send('Input.dispatchMouseEvent', {
+          type: 'mouseReleased', x: nextAction.x, y: nextAction.y, button: 'left', clickCount: 1,
+        }, panelSession);
+        panelLandApproachEvents.push(await evalPanel(`window.__cfCharterLandEvents||[]`));
+      } else if (first.facts?.descent?.kind !== 'landed'
+        || first.facts?.worldKey !== MERCURY_DESCENT_WORLD_KEY) {
+        failSliceWithoutCascade('CHARTER PANEL REFRESH: invalid first Land; no second mouse action was issued: '
+          + JSON.stringify({ firstPanelAuthority, firstPanelState }));
+      }
       await waitPanelValue('CHARTER PANEL REFRESH browser mouse Land', `(()=>{ const s=window.__CF_SLICE__.api.state();
         return s.mode==='surface'&&s.save.ascCh===3?s:null;})()`);
       const panelLandAuthority = await waitPanelF4Writable('CHARTER PANEL REFRESH Land and progression settlement');
@@ -25698,29 +25945,33 @@ try {
         [...panelEvents, { type: 'click', trusted: true, act: 'landcta' }],
       ].every((events) => exactTrustedCharterLandReceipt(events) === false);
       const panelTopology = assessCharterLandSettlementTopology({
-        beforeAuthority: panelSurveyAuthority,
+        beforeAuthority: finalPanelLandPredecessor,
         afterAuthority: panelLandAuthority,
         state: panelState,
         expectedChapter: 3,
         expectedStage: 3,
       });
-      const panelTopologyExact = panelTopology.ok;
+      const panelFinalDescent = boundedDescentReceipt(finalPanelLandPredecessor, panelLandAuthority).facts?.descent;
+      const panelTopologyExact = panelTopology.ok && (!learnedPanelApproach
+        || (panelFinalDescent?.policy?.successPercent === 100 && panelFinalDescent?.waveOffCountBefore === 1));
       panelLanded = panelAfter.ok
         && panelLandAuthority?.token === panelDocumentToken
         && charterRouteExact(panelState)
         && exactTrustedCharterLandReceipt(panelEvents)
+        && [1, 2].includes(panelLandApproachEvents.length)
+        && panelLandApproachEvents.every(exactTrustedCharterLandReceipt)
         && pointerControlsReject
         && panelTopologyExact;
       if (!panelLanded) {
         fails.push('CHARTER PANEL REFRESH: open board stayed on the pre-Land chapter or the trusted pointer receipt drifted: '
-          + JSON.stringify({ panelAfter, panelLandAuthority, panelEvents, pointerControlsReject,
+          + JSON.stringify({ panelAfter, panelLandAuthority, panelEvents, panelLandApproachEvents, pointerControlsReject,
             panelTopology, panelImmediate }));
       }
     } catch (error) {
       const panelFinal = await evalPanel(`(()=>({state:window.__CF_SLICE__.api.state(),
         events:window.__cfCharterLandEvents||[]}))()`);
       fails.push('CHARTER PANEL REFRESH: browser mouse Land did not reach its durable fixed point: '
-        + JSON.stringify({ error: String(error?.message || error), panelBefore, panelImmediate, panelFinal }));
+        + JSON.stringify({ error: String(error?.message || error), panelBefore, panelImmediate, panelLandApproachEvents, panelFinal }));
     }
     if (panelLanded) {
       const stalePanelCtl = await evalPanel(`(()=>{ const panel=document.getElementById('chpanel'),prior=panel.innerHTML;
@@ -27922,17 +28173,51 @@ try {
         + JSON.stringify(afterAdd));
     }
     const landBeforeAuthority = addAuthority;
-    const landPress = await nativeControlClick(collisionTarget.session, '#survey [data-act="landcta"]');
-    await waitControlValue(collisionTarget.session, `collision Land ${index}`,
-      `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='surface'
-        &&state.navWorldKey===${JSON.stringify(world.key)}?state:null;})()`);
-    const landAuthority = await waitForControlCommitSequence({
+    const landBeforeRaw = await evalF4Control(collisionTarget.session, ARC4_DURABLE_READ_EXPRESSION);
+    let landPress = await nativeControlClick(collisionTarget.session, '#survey [data-act="landcta"]');
+    const landApproachPointers = [landPress.pointer];
+    let landAuthority = await waitForControlCommitSequence({
       session: collisionTarget.session,
       label: `collision Land ${index}`,
       beforeAuthority: landBeforeAuthority,
       expectedKinds: ['arc0-land'],
       persistencePrefix: 'arc0-land-committed:',
     });
+    const first = boundedDescentReceipt(landBeforeAuthority, landAuthority);
+    if (first.facts?.descent?.kind === 'wave-off') {
+      const firstRaw = await evalF4Control(collisionTarget.session, ARC4_DURABLE_READ_EXPRESSION);
+      const nextAction = await evalF4Control(collisionTarget.session, phoneCardActionCheck('landcta'));
+      const evidence = { worldKey: world.key, beforeAuthority: landBeforeAuthority,
+        afterAuthority: landAuthority, beforeRaw: landBeforeRaw, afterRaw: firstRaw,
+        beforeState: afterAdd, afterState: landAuthority.state, nextAction };
+      const assessment = assessBoundedDescentWaveOff(evidence);
+      if (!assessment.ok || landPress.pointer?.trusted !== true || landPress.pointer?.act !== 'landcta') {
+        failSliceWithoutCascade(`COLLISION LAND ${index}: first action was not an exact trusted durable wave-off; no second press was issued: `
+          + JSON.stringify({ landPress, assessment, evidence }));
+      }
+      const learnedBeforeAuthority = landAuthority;
+      landPress = await nativeControlClick(collisionTarget.session, '#survey [data-act="landcta"]');
+      landApproachPointers.push(landPress.pointer);
+      landAuthority = await waitForControlCommitSequence({
+        session: collisionTarget.session,
+        label: `collision learned Land ${index}`,
+        beforeAuthority: learnedBeforeAuthority,
+        expectedKinds: ['arc0-land'],
+        persistencePrefix: 'arc0-land-committed:',
+      });
+      const learned = boundedDescentReceipt(learnedBeforeAuthority, landAuthority);
+      if (learned.facts?.descent?.kind !== 'landed' || learned.facts?.worldKey !== world.key
+        || learned.facts?.descent?.policy?.successPercent !== 100) {
+        failSliceWithoutCascade(`COLLISION LAND ${index}: the one learned approach did not land; no further press was issued: `
+          + JSON.stringify({ landApproachPointers, learned, landAuthority }));
+      }
+    } else if (first.facts?.descent?.kind !== 'landed' || first.facts?.worldKey !== world.key) {
+      failSliceWithoutCascade(`COLLISION LAND ${index}: invalid first approach; no second press was issued: `
+        + JSON.stringify({ landAuthority }));
+    }
+    await waitControlValue(collisionTarget.session, `collision Land ${index}`,
+      `(()=>{const state=window.__CF_SLICE__.api.state();return state.mode==='surface'
+        &&state.navWorldKey===${JSON.stringify(world.key)}?state:null;})()`);
     const landed = landAuthority.state;
     if (landed.mode !== 'surface' || landed.navWorldKey !== world.key
       || landed.landing?.lastOutcome !== `committed:${landAuthority.raw.revision}`) {
@@ -27943,7 +28228,7 @@ try {
       `window.__CF_SLICE__.api.__smokePersistNow()`);
     collisionActions.push({
       searchReceipt, search, sharePointer: sharePress.pointer, shareCode,
-      addPointer: addPress.pointer, afterAdd, landPointer: landPress.pointer, landed, persisted,
+      addPointer: addPress.pointer, afterAdd, landPointer: landPress.pointer, landApproachPointers, landed, persisted,
     });
   }
   const collisionBeforeReloadToken = await sliceToken(collisionTarget.session);
