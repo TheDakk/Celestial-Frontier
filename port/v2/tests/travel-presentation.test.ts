@@ -20,6 +20,7 @@ import {
   travelDestinationSeed,
 } from '../apps/game/src/travel-presentation.js';
 import { resolveVisualEffectPolicyV1 } from '../apps/game/src/visual-effect-policy.js';
+import { readTrackedV1Source } from '../test-support/tracked-v1-source.js';
 
 interface TestWindow extends Window {
   close(): void;
@@ -33,9 +34,7 @@ const require = createRequire(import.meta.url);
 const { JSDOM } = require('jsdom') as {
   JSDOM: new (html: string, options?: Record<string, unknown>) => TestDom;
 };
-const LEGACY_SOURCE = fs.readFileSync(fileURLToPath(
-  new URL('../../../main.js', import.meta.url),
-), 'utf8');
+const LEGACY_SOURCE = readTrackedV1Source().script;
 
 const openDoms: TestDom[] = [];
 afterEach(() => {
