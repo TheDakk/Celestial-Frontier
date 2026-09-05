@@ -27,7 +27,9 @@ branch `openai/mac`, tracking `origin/openai/mac`. The clean pre-merge head was
 `c1791e210158de864fdd475323c3091d9ecbae58`. This checkpoint joins them with a real
 signed merge; no cherry-pick, copy, rebase or history rewrite. Both former handoffs
 and archive-side records are retained verbatim in `ROADMAP_ARCHIVE.md`.
-The result SHA and requested bootstrap-free verification will be recorded after commit.
+The signed real merge is **`bc211bef1f4def92a27933b7c79a090d8913fae4`**, verified
+and pushed to origin/openai/mac. This later documentation-only successor records its
+results and Batch A continuation; its exact pushed head is supplied in the user handoff.
 
 PR #41 is merged into develop at `c1791e2`. Nick's Claude-verified handoff reports
 merge time 16:55:06 UTC; exact reviewed head `05c1d7fc7049a7b9813d2be1be020dc0d552b74f`.
@@ -55,11 +57,17 @@ authorized; the branch push triggers no workflow (label-only battery, others man
 Root ignored `main.js` and unrelated Finder `.DS_Store` were moved intact to a private
 local backup before switching to clean openai/mac. Root `main.js` stays absent during
 `npm run typecheck`, `npm run artunused` and `npx vitest run` from port/v2; expected
-301 files / 3,100 passed / 1 skipped. Checks are pending this merge commit.
+301 files / 3,100 passed / 1 skipped. All three commands passed once on the exact clean
+merge: typecheck **2.423 s**, artunused **1.330 s**, Vitest **45.079 s** with all **301 files /
+3,100 passed / 1 skipped**. No worker override, global config or selection change; root
+main.js remains absent. Source/HEAD stayed clean and unchanged throughout. No profile,
+browser or policy suite was added to Nick's three-command sync verification.
 V2 tests needing legacy source must read tracked `celestial-frontier.html` through
 `test-support/tracked-v1-source.ts`, never the gitignored machine bootstrap. Verify
-without root main.js before any hosted attempt; record this in PROCESS_LAWS.md in the
-following results/documentation batch. No Settings/Guide/Training edits are planned.
+without root main.js before any hosted attempt. The existing ignored-input law in
+PROCESS_LAWS.md now names that helper and the required absent-bootstrap verification.
+No Settings/Guide/Training code was changed. Exact results/hashes are recorded in
+`audits/AAA_BATCH_A_PR41_SYNC_20260905.md` and its adjacent JSON.
 
 ### Audiovisual Batch A state
 
@@ -73,15 +81,22 @@ Human listening, Safari/iPhone and in-game audiovisual acceptance remain open.
 aggregate retained payload during update overlap, counted before measuring. Enforcement
 and real-device acceptance remain unproven. Offline is an installed, complete-ready-PWA
 promise while storage is retained, with no eviction or deleted-save recovery guarantee.
-Editable .blend/.rpp/patches/WAV masters remain outside public Git, hashed and independently
-backed up; only optimized outputs, small code and provenance records enter Git; no LFS.
+The source policy requires editable .blend/.rpp/patches/WAV masters to remain outside
+public Git, hashed and independently backed up; only optimized outputs, small code and
+provenance records enter Git; no LFS. The current backup status is recorded below.
 
-The original audio readiness bundle is locally preserved as
-`cf-reaper-surge-audio-readiness-20260904` (9/9 files, 5/5 manifest references,
-1,345,968 bytes including private inventory). Independent backup remains unselected
-and unverified. Nick has been asked for an existing destination; local inventory can
-continue meanwhile. Existing scratch paths do not establish portable replay.
-The Lanternback/forest render is invented concept art, not canonical creature coverage.
+Batch A resumed by consolidating the existing masters, recipes, outputs and evidence into
+a durable private working-source folder outside the public repo and app-private scratch.
+Logical bundle `cf-batch-a-readiness-sources-20260905` preserves both ship tests,
+both Lanternback .blend revisions and outputs, and the full original audio hierarchy.
+**35/35 copied files match byte-for-byte (10,731,051 bytes); 23 existing manifest
+references were also verified.** The new private index and restore notes retain location
+mappings and the known absolute-path/plugin/config dependencies without changing originals.
+No app launch, rerender, upload or public binary was needed. This is same-Mac preservation;
+independent backup is still unselected/unverified, and portable replay remains unproved.
+Nick has a pending destination question. The next bounded source step is to copy this bundle
+to that selected independent destination and verify read-back bytes before closing backup.
+The Lanternback/forest render remains invented concept art, not canonical creature coverage.
 
 Later B–D work retains one ship/biome treatment and all eight body plans: quadruped,
 biped, avian, serpentine, arthropod, tentacled, aquatic, flora/fungus; each static and
@@ -95,8 +110,9 @@ after approval. No purchases, protected-portrait edits, CI/policy edits or relea
 Nick's artlock CI lane, ITP save protection and confirmation that DECISIONS row 19's
 wording is his remain open. This sync decides none of them.
 
-- **OpenAI/Codex:** commit the real merge, run the three requested checks with root
-  main.js absent, push openai/mac, then continue bounded Batch A source readiness.
+- **OpenAI/Codex:** sync/checks/push are complete; Batch A's consolidated local source
+  handoff is verified and its known restore gaps recorded. Independent backup awaits Nick's
+  destination. Do not repeat the passed tool tests or advance beyond the pilot approval stop.
 - **Anthropic/Claude Code:** leave anthropic/mac `c860f57` and its unmerged `173c806`
   Slice injected-door negative control alone. Claude owns that worktree and any later
   sync there. Audiovisual-only records remain on openai/mac, not develop; no manual copying.

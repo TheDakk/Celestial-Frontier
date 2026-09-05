@@ -1,0 +1,137 @@
+{
+  "recordType": "PR41 integration sync and bounded audiovisual Batch A source preservation",
+  "date": "2026-09-05",
+  "merge": {
+    "head": "bc211bef1f4def92a27933b7c79a090d8913fae4",
+    "parents": [
+      "84b6f22d2e6ecc948d161b33bb02feda2f11abf9",
+      "c1791e210158de864fdd475323c3091d9ecbae58"
+    ],
+    "tree": "6884a13a41b9a231c4403f066f118ef283ee529d",
+    "pushedTo": "origin/openai/mac",
+    "sourceCleanBeforeAfter": true,
+    "commands": [
+      {
+        "source": "bc211bef1f4def92a27933b7c79a090d8913fae4",
+        "command": [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        "exitCode": 0,
+        "seconds": 2.423,
+        "logSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e",
+        "rootMainAbsent": true,
+        "workerOverrides": null
+      },
+      {
+        "source": "bc211bef1f4def92a27933b7c79a090d8913fae4",
+        "command": [
+          "npm",
+          "run",
+          "artunused"
+        ],
+        "exitCode": 0,
+        "seconds": 1.33,
+        "logSha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b",
+        "rootMainAbsent": true,
+        "workerOverrides": null
+      },
+      {
+        "source": "bc211bef1f4def92a27933b7c79a090d8913fae4",
+        "command": [
+          "npx",
+          "vitest",
+          "run"
+        ],
+        "exitCode": 0,
+        "seconds": 45.079,
+        "logSha256": "86d964935e723a1d5328d735a5d169c891450468a060bfafdfdf127724dbb9ec",
+        "rootMainAbsent": true,
+        "workerOverrides": null
+      }
+    ],
+    "testFilesPassed": 301,
+    "testsPassed": 3100,
+    "testsSkipped": 1
+  },
+  "hostedHandoff": {
+    "provenance": "Nick-supplied Claude-verified state; no new hosted read/run in this sync",
+    "pr": 41,
+    "mergedHead": "05c1d7fc7049a7b9813d2be1be020dc0d552b74f",
+    "merge": "c1791e210158de864fdd475323c3091d9ecbae58",
+    "mergedUtc": "2026-09-05T16:55:06Z",
+    "attempts": [
+      {
+        "runId": "33976307813",
+        "result": "RED",
+        "duration": "3m29s"
+      },
+      {
+        "runId": "33977956355",
+        "result": "GREEN",
+        "duration": "8m10s"
+      }
+    ],
+    "labelRemoved": true,
+    "remainingHostedAuthority": 0
+  },
+  "sourcePreservation": {
+    "logicalBundleId": "cf-batch-a-readiness-sources-20260905",
+    "groups": [
+      {
+        "group": "ship-original",
+        "sourceId": "cf-blender-ship-readiness-20260904",
+        "files": 7,
+        "bytes": 817965
+      },
+      {
+        "group": "ship-terminal",
+        "sourceId": "cf-blender-terminal-confirmation-20260904",
+        "files": 5,
+        "bytes": 811770
+      },
+      {
+        "group": "lanternback-source",
+        "sourceId": "cf-blender-lanternback-jungle-concept-20260904-v2",
+        "files": 8,
+        "bytes": 2801216
+      },
+      {
+        "group": "lanternback-outputs",
+        "sourceId": "cf-blender-lanternback-jungle-concept-20260904-v2",
+        "files": 5,
+        "bytes": 4954132
+      },
+      {
+        "group": "audio",
+        "sourceId": "cf-reaper-surge-audio-readiness-20260904",
+        "files": 10,
+        "bytes": 1345968
+      }
+    ],
+    "copiedFiles": 35,
+    "copiedBytes": 10731051,
+    "copiedFilesVerified": 35,
+    "priorManifestReferencesVerified": 23,
+    "contentManifestSha256": "735ada77c6439513f3026389d5d5f5d56d9d00fb13637ed524aaed9305e25916",
+    "privateIndexBytes": 8283,
+    "privateIndexSha256": "62ecfa838c1c25c5476499ce2a892fcc5e45542c8457eceedaed57e8288488d9",
+    "restoreNotesBytes": 2681,
+    "restoreNotesSha256": "89ce134346044268bf4553b257907949d4eb32b6b3d5e3de5fb17be6bc9f2b5e",
+    "backupStatus": "pending; independent destination unselected and unverified",
+    "portableReplay": "not verified; restore prerequisites recorded",
+    "applicationsLaunched": 0,
+    "rerenders": 0,
+    "uploads": 0,
+    "binaryFilesAddedToPublicGit": 0
+  },
+  "unchangedFromDevelop": "Runtime/tests/tools/producer pins/workflows/Actions policy code/protected artlock references",
+  "openDecisions": [
+    "independent source backup destination",
+    "artlock CI lane",
+    "ITP save protection",
+    "Nick confirmation of DECISIONS row 19 wording"
+  ],
+  "scope": "Phase 0/1 A-D only; no new PR, label, hosted run, integration merge, purchase, portrait change, Phase 2 or release"
+}

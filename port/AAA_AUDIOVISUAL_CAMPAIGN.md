@@ -1,5 +1,30 @@
 # Celestial Frontier v2 — Complete Graphics, Audio & Polish Production Plan
 
+## Current campaign continuation — PR #41 landed, 2026-09-05
+
+The pilot now builds on landed develop `c1791e210158de864fdd475323c3091d9ecbae58`,
+including PR #41's exact reviewed head `05c1d7fc7049a7b9813d2be1be020dc0d552b74f`.
+OpenAI's signed real sync is `bc211bef1f4def92a27933b7c79a090d8913fae4`, pushed after
+all three requested v2 checks passed without root main.js (301 files / 3,100 passed /
+1 skipped). Batch 4 is integrated; its former save-export and review-PR prerequisites
+below are historical. V2 starts fresh; no player import door; the draft has 79 outcomes.
+The parked WIP and both agents' independent work remain untouched.
+
+Batch A now has one durable local source handoff, logical bundle
+`cf-batch-a-readiness-sources-20260905`: both ship readiness tests, both Lanternback
+masters and renders, and the complete REAPER/Surge cue hierarchy. All 35 copied files
+(10,731,051 bytes) match their originals; 23 prior manifest references verify. Private
+location mappings and restore notes retain absolute-path, plugin/config and verifier
+dependencies. Existing tool tests were not repeated. Independent backup remains pending
+Nick's selected destination; local preservation does not prove independent recovery or
+portable replay. See `../audits/AAA_BATCH_A_PR41_SYNC_20260905.md`.
+
+The 128/256 MiB installed-pack policy, eight-body-plan static/animated sweep at 132/300/440,
+Phase 0/1 A–D authority and integrated pilot approval stop remain. No Phase 2, protected
+portrait edits, purchases, CI/policy changes, hosted runs or releases are authorized.
+Artlock CI lane, ITP save protection and Nick's confirmation of DECISIONS row 19 remain
+open decisions. Earlier continuation records below retain their checkpoint scope.
+
 ## Current campaign continuation — 2026-09-05
 
 The pilot now uses landed develop `9ea01041dcdc711190bbf909ea8bb743cd993734`: PRs #36/#38/#39/#40

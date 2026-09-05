@@ -2179,6 +2179,16 @@ passed inputs a clean checkout could never receive. A port test needing legacy b
 the unique inline script in tracked `celestial-frontier.html` through one byte-exact helper. Never
 fall back to local `main.js`, trim it, normalize line endings or let two extractors disagree.
 
+**Reaffirmed by Nick, 2026-09-05 after PR #41:** v2 tests read tracked legacy source through
+`port/v2/test-support/tracked-v1-source.ts` (`readTrackedV1Source().script`, imported with the
+existing `.js` module specifier). Never read the gitignored root `main.js` in a v2 test.
+The Batch 4 travel-presentation test passed locally with that bootstrap present but failed
+in Claude's fresh checkout; the helper correction restored portability. Before any hosted
+attempt, verify the candidate suites with root `main.js` absent: preserve/move an existing
+bootstrap aside, or use a clean tracked checkout, and record the exact committed source.
+A local bootstrap must not silently become a test dependency again. This requirement also
+applies when using the existing tracked-input preflight described below.
+
 Before authorizing hosted work, commit the candidate and run `node
 tools/tracked-input-preflight.mjs --profile=develop` from `port/v2` (or the explicit `production`
 profile for `develop` → `main`). It exports only the exact index into an owned
