@@ -1,7 +1,7 @@
 {
   "date": "2026-09-05",
   "sourceHead": "629e0cceeb4df474ab2a7c8f9da21085c368aead",
-  "status": "PARTIAL: ship replay PASS; audio replay UNPROVED",
+  "status": "Scoped relocated ship and audio renders completed; exact audio reproduction and unattended fresh-config startup not established",
   "changedDerivativeFiles": [
     {
       "path": "ship-original/readiness.py",
@@ -91,7 +91,15 @@
     ],
     "interpretation": "PNG file hashes differ; decoded image data is identical. Differences are render metadata."
   },
-  "audio": {
+  "scopeLimitations": [
+    "Selected ship-terminal and audio RPP renders from relocated derivative copy completed; other recipe changes have syntax/review evidence only.",
+    "Audio PCM differs; cause of variation and musical/listening equivalence not established. FLAC hashes/STREAMINFO compared; fresh FLAC decoding not claimed.",
+    "Audio-device prompts reported by Nick; no promise of unattended first-start or cross-machine configuration portability.",
+    "Derivative work is privately preserved and hashed; generated .runtime defaults/config/registration excluded. Existing independently verified primary backup covers the immutable original bundle."
+  ],
+  "originals": "All37 immutable source inputs still match the verified backup checksum set.",
+  "next": "Bounded Batch A replay checkpoint recorded. Do not launch another readiness test or start B-D production under the status-only bound. Future unattended audio startup must use a supported device configuration; integrated-pilot approval stop remains.",
+  "priorAudioAttempt": {
     "exitCode": null,
     "seconds": 45.02,
     "outputs": [],
@@ -103,11 +111,120 @@
     "uiObservation": "Unavailable: Computer Use permissions not granted; user question pending",
     "historicalReadinessEvidence": "Unchanged historical log/outputs; not a new authoring/plugin/waveform/listening pass"
   },
-  "scopeLimitations": [
-    "Only ship-terminal was dynamically replayed; other script paths have syntax/review evidence only.",
-    "Audio render, plugin-load, waveform comparison and complete portable replay remain open.",
-    "Separate derivative work is privately preserved; .runtime application defaults/config/registration excluded."
-  ],
-  "originals": "All37 immutable source inputs still match the verified backup checksum set.",
-  "next": "Identify REAPER startup/render blockage with native UI access or Nick observation, then complete the bounded audio proof before marking portable replay done."
+  "audio": {
+    "continuationSourceHead": "9d6bc9aba52d561a714287091e8a699474467dfb",
+    "process": {
+      "startedUtc": "2026-09-05T23:34:00.929272+00:00",
+      "finishedWaitUtc": "2026-09-05T23:34:41.205233+00:00",
+      "exitCode": 0,
+      "seconds": 40.277,
+      "outputs": [
+        {
+          "name": "audio-readiness.wav",
+          "bytes": 1152690,
+          "sha256": "ede7279cdb73d384a80c9ee447b1dd75f607f4ef3c767af95ed8f8280fceca4e"
+        },
+        {
+          "name": "audio-readiness.flac",
+          "bytes": 96731,
+          "sha256": "624694193393fbe51d7472856c8b68aa8ace07ed2ce49fbe7f56a83f625138bc"
+        }
+      ],
+      "logSha256": "764cae1b03b62f92cbb3b023497108a71bdecaa7d37b9117d65f1f0d98ca3964",
+      "isolatedTaskConfig": "reused resources initialized by the prior fresh [REAPER] configuration; no original/user configuration copied",
+      "processLifecycle": "new session, retained parent through bounded wait; if still running, leaves only this task PID alive for targeted diagnosis"
+    },
+    "comparison": {
+      "verifiedUtc": "2026-09-05T23:37:47.189653+00:00",
+      "wav": {
+        "stored": {
+          "bytes": 1152690,
+          "sha256": "ab918498276dfa96faeaee3493d400e63e88ee4b4e73cbec72bc5209b18c33b9",
+          "pcmSha256": "8f303c2c6b1a1dfdf7b3644e921fbe187698707560673e81275c13435aacc637",
+          "channels": 2,
+          "sampleRate": 48000,
+          "sampleWidthBytes": 3,
+          "frames": 192000,
+          "durationSeconds": 4.0,
+          "peakDbFS": -28.421705495958008,
+          "rmsDbFS": -42.29373277548418,
+          "nonzeroSamples": 347216
+        },
+        "replay": {
+          "bytes": 1152690,
+          "sha256": "ede7279cdb73d384a80c9ee447b1dd75f607f4ef3c767af95ed8f8280fceca4e",
+          "pcmSha256": "44f8fb1277b4790435d24e21852dd6cf345464416a0efd37b87b01dbd273d473",
+          "channels": 2,
+          "sampleRate": 48000,
+          "sampleWidthBytes": 3,
+          "frames": 192000,
+          "durationSeconds": 4.0,
+          "peakDbFS": -28.904430576020612,
+          "rmsDbFS": -42.30059530408012,
+          "nonzeroSamples": 347156
+        },
+        "exactFileMatch": false,
+        "exactPcmMatch": false,
+        "differingSamples": 349096,
+        "totalSamples": 384000,
+        "maxAbsolute24BitSampleDifference": 474356,
+        "peakDifferenceDb": -0.48272508006260395,
+        "rmsDifferenceDb": -0.0068625285959385
+      },
+      "flac": {
+        "stored": {
+          "bytes": 96729,
+          "sha256": "52b1829012c6c0c9775bf9bf472a60280fa65218394a7b69fdfc924126ef1e36",
+          "streamInfo": {
+            "sampleRate": 48000,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "frames": 192000,
+            "durationSeconds": 4.0,
+            "declaredPcmMd5": "f38f0ec171757a868fdc5985ab06c8e2"
+          },
+          "decodeVerification": "not performed; native afconvert rejected cfmt with fmt? on both stored and replay files; browser readiness not repeated"
+        },
+        "replay": {
+          "bytes": 96731,
+          "sha256": "624694193393fbe51d7472856c8b68aa8ace07ed2ce49fbe7f56a83f625138bc",
+          "streamInfo": {
+            "sampleRate": 48000,
+            "channels": 2,
+            "bitsPerSample": 16,
+            "frames": 192000,
+            "durationSeconds": 4.0,
+            "declaredPcmMd5": "b730eb57f2ec2c72ae2ed5d3a7be00f6"
+          },
+          "decodeVerification": "not performed; native afconvert rejected cfmt with fmt? on both stored and replay files; browser readiness not repeated"
+        }
+      },
+      "waveformNegativeControls": [
+        {
+          "mutation": "truncated",
+          "rejected": true,
+          "diagnosis": "fmt chunk and/or data chunk missing"
+        },
+        {
+          "mutation": "silent",
+          "rejected": true,
+          "diagnosis": "Silent or clipping waveform"
+        }
+      ],
+      "interpretation": "Relocated saved synthesis project rendered successfully with unchanged project bytes except output path. WAV PCM and file hashes differ; sample variation is observed, not merely container metadata. Cause not isolated. Similar format and level measurements do not prove musical/listening equivalence. No claim of deterministic audio export, universal headless startup, fresh-config first-launch success, or pilot acceptance.",
+      "privacy": "Command-line tools only; no screen, UI, accessibility, or user-global configuration inspection. User reported audio-device-selection prompts during the task; user intervention cannot be excluded."
+    },
+    "rppCheck": "SHA256 8aa6f0969b8550d6ddfdf3088ddb53bfb2c1c9017b086fff8f852ac56604d889; byte-identical to immutable RPP except one RENDER_FILE field. Embedded MIDI and instrument/effect state unchanged.",
+    "startupEvidence": "Second launch reused only the isolated resources initialized from the first fresh [REAPER] config; original and user-global settings/registration were not copied. Parent remained attached until exit; new process session used. First-attempt cause is still unknown. Nick reported repeated audio-device prompts; no fully unattended claim.",
+    "deviceInspection": "Neither task configuration contains a persisted Core Audio device choice. Local CLI help supports render-and-exit but documents no dummy/no-device selection switch; no guessed configuration edit.",
+    "privacyBoundary": "Nick requires command-line-only operation. No screen inspection, screenshots, accessibility, Finder automation or Computer Use; earlier UI request withdrawn."
+  },
+  "privateDerivativePreservation": {
+    "fileCountExcludingIndex": 57,
+    "bytesExcludingIndex": 12829765,
+    "indexSha256": "a8f37e4bc25933b5e051aa66e1b8ad38c69e0137b1ec2c5c7f217e0452cc95c7",
+    "immutableOriginalInputsVerified": 37,
+    "applicationRuntimeConfigCopied": false,
+    "independentBackup": "Verified original bundle backup unchanged; derivative working preservation is local, not a new independent-backup claim."
+  }
 }

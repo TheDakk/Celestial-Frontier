@@ -1,5 +1,21 @@
 # Celestial Frontier v2 — Complete Graphics, Audio & Polish Production Plan
 
+## Current standing — command-line audio replay recorded, 2026-09-05
+
+Nick requires command-line-only work: no screen inspection, screenshots, accessibility or
+Computer Use. The UI-access request in earlier historical checkpoints is withdrawn. A second
+isolated REAPER launch rendered the relocated preserved RPP to WAV/FLAC and exited 0 in
+40.277s. The first attempt remains unexplained. WAV format/level checks pass, but samples differ
+from the stored cue; cause and listening equivalence are unproved. Nick reported device prompts,
+so unattended first-start is not established. FLAC hashes/stream metadata are recorded without
+a new decode claim. No excluded original configuration, registration or user-global settings
+were copied. Selected ship/audio replay results are now recorded; all original inputs remain
+unchanged. See `../audits/AAA_BATCH_A_PORTABLE_REPLAY_20260905.md` and JSON.
+
+Primary backup stays CLOSED; OneDrive stays copied/unverified. No further readiness launches in
+this batch. B–D remains status-only until Nick lifts that bound; the integrated-pilot approval
+stop prevents Phase 2. ROADMAP owns current next steps; older checkpoint sections below are history.
+
 ## Current standing — B–D inputs recorded, no production started, 2026-09-05
 
 The requested input table is `../audits/AAA_BATCH_B_D_INPUT_STATUS_20260905.md`. Existing

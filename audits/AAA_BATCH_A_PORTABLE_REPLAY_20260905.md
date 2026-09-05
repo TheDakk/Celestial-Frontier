@@ -1,5 +1,51 @@
 # Batch A — portable replay checkpoint, 2026-09-05
 
+## CLI continuation — selected audio render completed, 2026-09-05 23:37 UTC
+
+Nick requires command-line-only work for privacy. No screen inspection, screenshots,
+accessibility, Computer Use or user-global REAPER settings were accessed in this continuation;
+the earlier request for UI access is withdrawn. The prior incomplete attempt below is retained
+as history, with its unknown cause unchanged.
+
+One corrected launcher retained its parent until REAPER exited and started a separate process
+session. It reused only the disposable resources initialized by the earlier fresh `[REAPER]`
+configuration; no original configuration or registration was copied. The supported
+`-newinst -nosplash -cfgfile <task-config> -renderproject <relocated-rpp>` command ran from
+23:34:00.929272 to 23:34:41.205233 UTC: **exit 0, 40.277 seconds**, both outputs created.
+The RPP still differs from its immutable source only in its one output path. Embedded MIDI,
+Surge instrument/effect state and every other project byte are unchanged.
+
+| Output | Stored SHA-256 | Replayed SHA-256 |
+| --- | --- | --- |
+| WAV | `ab918498276dfa96faeaee3493d400e63e88ee4b4e73cbec72bc5209b18c33b9` | `ede7279cdb73d384a80c9ee447b1dd75f607f4ef3c767af95ed8f8280fceca4e` |
+| FLAC | `52b1829012c6c0c9775bf9bf472a60280fa65218394a7b69fdfc924126ef1e36` | `624694193393fbe51d7472856c8b68aa8ace07ed2ce49fbe7f56a83f625138bc` |
+
+The replay WAV is 1,152,690 bytes, stereo, 48 kHz, 24-bit PCM, 192,000 frames / 4 seconds.
+Its peak is -28.9044 dBFS and RMS -42.3006 dBFS: non-silent and unclipped. It is **not an exact
+reproduction**: 349,096 / 384,000 samples differ; peak changes -0.4827 dB and RMS -0.006863 dB.
+This is actual sample variation, not solely metadata. The cause was not isolated; similar levels
+do not establish musical equivalence or listening acceptance. In-memory truncated and silent
+negative controls were rejected. The replay FLAC is 96,731 bytes; its STREAMINFO declares
+stereo 48 kHz / 16-bit / 192,000 samples. Native afconvert rejected conversion setup for both
+stored and replay FLAC, so only hashes and stream metadata are claimed; browser readiness
+was not repeated. Full measurements and process/log hashes are in the adjacent JSON.
+
+Nick reported repeated audio-device-selection prompts despite choosing system default. Neither
+task configuration stores an explicit Core Audio device selection, and installed CLI help exposes
+no documented dummy/no-device switch. **Unattended fresh-config startup is not proven**;
+user interaction cannot be excluded. No speculative device setting, license change, second render
+or screen access followed. A targeted process sample found the task PID already exited and
+collected no call stack. The render does not depend on an excluded original reaper.ini, but it
+does depend on installed REAPER/Surge and initialized task resources.
+
+The requested selected ship/audio replays are now recorded. Path portability is demonstrated
+for those two renders; exact audio equivalence, unattended startup and pilot acceptance remain
+explicit limitations. All 37 immutable inputs still match the original public evidence. Updated
+outputs, scripts, logs and hashes are preserved in the separate private working bundle without
+application configuration/registration. B–D remains status-only; no Phase 2 or hosted action.
+
+## Earlier checkpoint — preserved history
+
 **Partial: ship replay passes; audio replay remains unproved.** This checkpoint follows verified
 primary iCloud backup `629e0cceeb4df474ab2a7c8f9da21085c368aead`. It does not close all portable replay prerequisites.
 
