@@ -7,7 +7,7 @@ This is a live checkpoint report, not final acceptance. Base develop:
 
 | Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
 | --- | --- | --- | --- | --- |
-| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; periodic backup `5ac99f9efc86b1e19d2ec0c5d59c70cc5653fffb` | 2026-09-05 07:13:39 (backup) | Typecheck/artunused PASS; 286 files / 2,956 passed / 1 skipped; four workers | Five retained Slice reds; actual Tame/Sample pass; corruption expectation repair pending; neither Glass ran |
+| 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | Documentation checkpoint push follows; previous backup 07:13:39 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
 | 2a accepted st-scan | Pending | — | — | — |
 | 2b descent/wave-offs | Pending | — | — | — |
 | 2c 50-Paragon hunt | Pending | — | — | — |
@@ -948,3 +948,55 @@ setting change. Commit these completed corrections before the next clean-source 
   }
 ]
 ```
+
+## Checkpoint 1 accepted — exact clean source b572dbf
+
+All three browser commands passed in order on `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd`.
+Both immutable phone reports begin/end on that clean source with no source change, status pass,
+terminal true, exit 0, one viewport, zero findings and zero instrument failures. Edge
+152.0.4191.62/CDP 1.3; targeted diagnostics are not a full twelve-row Glass certificate or
+Chrome named-verifier proof. Small ID `20260905082236086-39307-3c46f4fc031c`; large ID
+`20260905082251619-39454-5c02854b7dc6`. Direct Slice stdout is retained as run evidence, not
+misrepresented as a structured certificate. This reporting successor changes documentation only.
+All eight prior browser reds remain verbatim in the REDS JSON and prior report sections.
+
+```json
+[
+  {
+    "command": [
+      "node",
+      "tools/slicesmoke.mjs",
+      "--profile=develop"
+    ],
+    "exitCode": 0,
+    "seconds": 368.569,
+    "log": "1-node.log",
+    "sha256": "08be1887023bfca85a6751715de80a7ad9495f8d9dbc1515bc2a704fe526736b"
+  },
+  {
+    "command": [
+      "node",
+      "tools/glassmatrix.mjs",
+      "--viewport=small-phone"
+    ],
+    "exitCode": 0,
+    "seconds": 15.471,
+    "log": "2-node.log",
+    "sha256": "98e16798a9ce83ef77fe1460599a34883a924d22c23bcb6672f762dd3ef3bcaf"
+  },
+  {
+    "command": [
+      "node",
+      "tools/glassmatrix.mjs",
+      "--viewport=large-phone"
+    ],
+    "exitCode": 0,
+    "seconds": 15.551,
+    "log": "3-node.log",
+    "sha256": "e6516e0f109a4af4676ba7aca54585100798a94635c5a2169e73f2c72086d385"
+  }
+]
+```
+
+Codex now pushes the completed core and continues 2a. Claude reviews the pushed branch in the
+morning; Nick need not open another app overnight. No PR or hosted authority is consumed.
