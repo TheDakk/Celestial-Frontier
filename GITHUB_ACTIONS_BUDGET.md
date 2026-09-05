@@ -3,6 +3,19 @@
 **Current mode: `UNFROZEN`**
 
 **Current state (2026-09-05 UTC, latest): PR #41 (`openai/review-batch4-gameplay-20260905` → `develop`,
+Codex Batch 4 gameplay) attempt 2 on head `05c1d7fc7049a7b9813d2be1be020dc0d552b74f` (base
+`9ea01041dcdc711190bbf909ea8bb743cd993734`), Nick-authorized as "one agent-lane attempt … do not merge",
+**PASSED in 8m10s**; the label was removed; the PR is open, terminal-green and mergeable; **no merge yet
+and no hosted authority remains.** Run `33977956355` attempt 1, authorization job `101337886311` (4s), battery
+job `101337900972`, lane `agent`: policy selftest, v2 develop profile (301 files / 3,100 passed / 1 skipped),
+both phone Glass canaries and the Compendium instrument selftests green; legacy gates, root layout, changed-art
+control, Edge installs, Compendium, Slice, Glass matrix, Recovery and preview skipped by the lane guards.
+Measured agent-lane duration for this v2-app-only PR: **8m10s** (attempt 1 red was 3m29s at the develop profile).
+The head differs from red head `67f5fcf` only by explicit per-test timeout headroom in three unchanged-assertion
+test files plus audit records. Merging PR #41 needs Nick's separate say-so (standing merge authority applies to
+this exact green head).
+
+**Previous state (2026-09-05 UTC, later): PR #41 (`openai/review-batch4-gameplay-20260905` → `develop`,
 Codex Batch 4 gameplay, head `67f5fcffc89aea1edea5f510cfdc9452c7e775bd`, product head `2881cda`) consumed one
 Nick-authorized agent-lane attempt ("Do all those steps for me") and went **RED in 3m29s**; the label was removed;
 no merge; no hosted authority remains.** Run `33976307813` attempt 1, authorization job `101333500544` (pass),

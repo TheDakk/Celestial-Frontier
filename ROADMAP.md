@@ -153,6 +153,12 @@ the archive verbatim and refresh this handoff in place.
   files. Label removed, no retry, PR left open and mergeable. **Next:** Codex widens the three marginal per-test
   caps on the review branch (see `GITHUB_ACTIONS_BUDGET.md` current state), pushes a signed head; Nick authorizes
   attempt 2. Claude could not push to the review branch (openai/* is Codex-owned).
+- **Attempt 2 GREEN (2026-09-05, Nick's exact authorization, "do not merge"):** Codex pushed `8f8948f` (timeout
+  headroom in glass-targeted-verifier / evidence-chain-tools / arc4-acquisition-planner, assertions unchanged)
+  + record `05c1d7f`. Claude verified head/base, labelled once; run `33977956355` **PASS 8m10s** (battery job
+  `101337900972`): develop profile 301 / 3,100 / 1 skipped, both phone canaries green. Label removed. **PR #41 is
+  open, terminal-green, mergeable at `05c1d7f`, NOT merged** — Nick decides the merge. After merge: fast-forward
+  `anthropic/mac` onto the merge, Codex syncs `openai/mac` from `develop`, then the Batch A audiovisual pilot.
 
 ### Paired handoff
 
