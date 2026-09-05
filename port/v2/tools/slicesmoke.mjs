@@ -4783,7 +4783,7 @@ const boundedDescentReceipt = (beforeAuthority, afterAuthority) => {
 };
 const assessBoundedDescentWaveOff = ({
   worldKey, beforeAuthority, afterAuthority, beforeRaw, afterRaw,
-  beforeState, afterState, nextAction,
+  beforeState, afterState, nextAction, landingHoldProof = null,
 }) => {
   try {
   const target = boundedDescentWorld(worldKey);
@@ -4799,12 +4799,14 @@ const assessBoundedDescentWaveOff = ({
       || ['creaturesRaw', 'inventoryRaw', 'settingsRaw'].some((key) => typeof raw[key] !== 'string')) return null;
     const player = structuredClone(raw.playerRow), catalog = structuredClone(raw.catalogRow);
     delete player.data.hp;
+    delete player.data.at; // exportSaveV2 writes the codec wall-clock stamp on each save.
     delete player.extensions?.['f4.authority'];
     delete catalog.data.wvo;
     delete catalog.extensions?.['descent.wave-offs'];
     const legacy = structuredClone(raw.legacy);
     delete legacy.hp;
     delete legacy.wvo;
+    delete legacy.at;
     return { player, catalog, legacy, creatures: raw.creaturesRaw,
       inventory: raw.inventoryRaw, settings: raw.settingsRaw };
   };
@@ -4830,10 +4832,35 @@ const assessBoundedDescentWaveOff = ({
   }
   const expectedLegacy = target && Array.isArray(beforeRaw?.legacy?.wvo)
     ? [...new Map([...beforeRaw.legacy.wvo, [target.seed, 1]])].sort(([a], [b]) => a - b) : null;
+  let expectedReleasedHold = null;
+  if (landingHoldProof !== null) {
+    const held = landingHoldProof.held, protectedState = landingHoldProof.protectedState;
+    const hold = held?.landing?.actionCoordinator?.hold;
+    const expectedHeld = { inFlight: true,
+      owner: { schema: 'cf-v2-product-action-coordinator-diagnostics/v1', busy: true, operation: hold?.operation },
+      hold, faultArmed: { storageFailure: false, staleAuthority: false, publicationFailure: false }, lastFault: null };
+    const heldStateExact = (state) => state?.persistence?.documentToken === beforeAuthority?.token
+      && state?.landing?.schema === 'cf-v2-arc0-landing-app-state/v1'
+      && same(state.landing.actionCoordinator, expectedHeld)
+      && state.persistence.runtime?.revision === beforeAuthority?.raw?.revision
+      && state.persistence.runtime?.sessionOrdinal === beforeAuthority?.raw?.ordinal
+      && state.persistence.runtime?.sessionSeed === beforeAuthority?.raw?.seed
+      && same(state.persistence.runtime?.sessionDraws, beforeAuthority?.raw?.draws);
+    if (worldKey === MERCURY_DESCENT_WORLD_KEY && landingHoldProof.released === true
+      && arc0LandingCoordinatorIsIdle(beforeState, { clearFault: true })
+      && same(Object.keys(hold ?? {}).sort(), ['operation', 'phase', 'schema', 'sequence'])
+      && hold?.schema === 'cf-v2-product-action-hold-diagnostics/v1'
+      && hold.phase === 'holding' && /^arc0\.land:[0-9a-f]{64}$/u.test(hold.operation)
+      && hold.sequence === 1 && heldStateExact(held) && heldStateExact(protectedState)) {
+      expectedReleasedHold = { ...hold, phase: 'released' };
+    }
+  }
+  check('exact deliberate hold release', landingHoldProof === null || expectedReleasedHold !== null);
   check('known authored world', target !== null);
   check('one durable exact Land receipt', assessSingleF4ActionCommit({
     beforeAuthority, afterAuthority, state: afterState, expectedKind: 'arc0-land',
     expectedPersistenceLastOutcome: `arc0-land-committed:${afterAuthority?.raw?.revision}`,
+    expectedReleasedHold,
   }).ok);
   check('same raw checkpoint', beforeRaw?.revision === beforeAuthority?.raw?.revision
     && afterRaw?.revision === afterAuthority?.raw?.revision
@@ -4865,6 +4892,10 @@ const assessBoundedDescentWaveOff = ({
     && afterCarrier?.version === 1 && afterCarrier.json === JSON.stringify(expectedWaveOffs)
     && same(next, expectedWaveOffs) && same(afterRaw?.legacy?.wvo, expectedLegacy)
     && facts?.waveOffLegacySuccessorSeal === hash('wave-off-legacy', afterRaw?.legacy?.wvo));
+  check('exact codec timestamps', [beforeRaw, afterRaw].every((raw) =>
+    Number.isSafeInteger(raw?.legacy?.at) && raw.legacy.at >= 0
+      && raw.playerRow?.data?.at === raw.legacy.at
+      && JSON.parse(raw.legacyRaw)?.at === raw.legacy.at));
   check('no durable rewards or other changes', beforeProjection !== null && afterProjection !== null
     && same(beforeProjection, afterProjection)
     && same(afterRaw?.catalogRow?.data?.wvo, afterRaw?.legacy?.wvo)
@@ -25570,7 +25601,8 @@ try {
         const evidence = { worldKey: MERCURY_DESCENT_WORLD_KEY,
           beforeAuthority: preLandAuthority, afterAuthority: firstLandAuthority,
           beforeRaw: beforeLandRaw, afterRaw: firstLandRaw,
-          beforeState: beforeLand, afterState: firstLandState, nextAction: learnedLandAction };
+          beforeState: beforeLand, afterState: firstLandState, nextAction: learnedLandAction,
+          landingHoldProof: expectedChapter === 3 ? ceremonyRace : null };
         const assessment = assessBoundedDescentWaveOff(evidence);
         if (!assessment.ok) {
           failSliceWithoutCascade(`${label}: first Land was not an exact durable wave-off; no second touch was issued: `

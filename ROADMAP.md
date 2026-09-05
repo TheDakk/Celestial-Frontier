@@ -17,14 +17,14 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-05 · BATCH 4 · STEP 2c FAST GREEN
+## SESSION HANDOFF — 2026-09-05 · BATCH 4 · STEP 2c BROWSER BOUNDARY CORRECTION
 
 ### Morning report
 
 Core, Starter Charter2a and deterministic descent2b are accepted and pushed. Latest pushed
 checkpoint8546ad225d485541b377bef62db50c6c841256d6 at10:33:35UTC includes accepted2b source
 879cad4e58b2d8d6cb924964f9a592e346e36dce. Paragons2c is now implemented and full fast is green;
-its clean signed-source browser acceptance is next. Full exact failures and evidence remain in
+its first signed-source Slice stopped on the saturated-Charter wave-off boundary. Neither phone ran. The exact red is retained; the bounded diagnostic-hold/serialization-stamp correction now passes full fast (292 files / 3,046 tests / 1 skip). A new signed-source browser run is next. Full exact failures and evidence remain in
 `audits/BATCH4_OVERNIGHT_REPORT_20260905.md`.
 
 OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, branch
