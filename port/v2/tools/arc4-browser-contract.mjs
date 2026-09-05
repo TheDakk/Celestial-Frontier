@@ -154,11 +154,11 @@ const ARC4_PERTAR_BOOT_PROGRESSION_WITNESS =
 const ARC4_PERTAR_SURVEY_WITNESS =
   'arc9sv1:21678a94072ba2e5d0df32cdde8454d265cf0edac9310acf98576d2696244ece';
 const ARC4_PERTAR_LANDING_WITNESS =
-  '{"schema":"cf-v2-arc0-landing-witness/v1","worldKey":"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3","planetSeed":546621068,"planetOrdinal":3,"landing":"unresolved-already-landed","permanentLanding":true,"training":false,"landingKnownBefore":true,"identityLandedAfter":true,"claimedLegacyIdentity":true,"legacyMirrorContainsSeedAfter":true,"savedView":{"type":"planet","gal":{"x":90,"y":-60,"size":78,"sp":0,"tilt":0.62,"rot":0.5,"seed":999,"home":true,"quasar":false,"dwarf":false},"star":{"x":414.31,"y":168.49,"seed":1347060996},"pseed":546621068},"sample":{"kind":"suppressed","reason":"unresolved-already-landed"},"charter":{"banked":false,"ascChBefore":1,"ascChAfter":1,"stage":1,"progressSeal":"479d7c8742762c9fb5fa62cfdb8b9621bf70959410c8c2aece801e707f8a27a1","delta":{}},"starterCharters":{"changed":false,"progressIds":[],"completions":[],"priorUnlockedIds":[],"nextUnlockedIds":[],"addedAchievementIds":[],"priorBestRankIndex":0,"nextBestRankIndex":0},"achievement":null,"stateSuccessorSeal":"9ccc8a03c32960e4eef9322cf2aee9e02d8942dcfc9c9cc78c092259e7ae1e65","worldIdentitySuccessorSeal":"040de02d9a443e9d6a6ee3091492ea098daf3cb8663efae0b323333b8a51442b","receiptOrdinal":2}';
+  '{"schema":"cf-v2-arc0-landing-witness/v1","worldKey":"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3","planetSeed":546621068,"planetOrdinal":3,"landing":"unresolved-already-landed","permanentLanding":true,"training":false,"landingKnownBefore":true,"identityLandedAfter":true,"claimedLegacyIdentity":true,"legacyMirrorContainsSeedAfter":true,"savedView":{"type":"planet","gal":{"x":90,"y":-60,"size":78,"sp":0,"tilt":0.62,"rot":0.5,"seed":999,"home":true,"quasar":false,"dwarf":false},"star":{"x":414.31,"y":168.49,"seed":1347060996},"pseed":546621068},"sample":{"kind":"suppressed","reason":"unresolved-already-landed"},"charter":{"banked":false,"ascChBefore":1,"ascChAfter":1,"stage":1,"progressSeal":"479d7c8742762c9fb5fa62cfdb8b9621bf70959410c8c2aece801e707f8a27a1","delta":{}},"starterCharters":{"changed":false,"progressIds":[],"completions":[],"priorUnlockedIds":[],"nextUnlockedIds":[],"addedAchievementIds":[],"priorBestRankIndex":0,"nextBestRankIndex":0},"achievement":null,"stateSuccessorSeal":"9ccc8a03c32960e4eef9322cf2aee9e02d8942dcfc9c9cc78c092259e7ae1e65","worldIdentitySuccessorSeal":"040de02d9a443e9d6a6ee3091492ea098daf3cb8663efae0b323333b8a51442b","receiptOrdinal":1}';
 const ARC4_PERTAR_TAME_LANDING_STATE_SEAL =
   '10d953c315de7295a53d221ea1d2f93899de8f7ab127db26d3e5cdff170e7533';
 const ARC4_PERTAR_SAMPLE_PROGRESSION_WITNESS =
-  'arc9p1:ca4c7dff47e0659ad90ee11f24441920e8fde2ccbc6cd474bd4b174338f4f6a1';
+  'arc9p1:2fc001a89819c20cca537ce2dff25ce5b88a1497e7d4a913d9a8b23217cb9013';
 const ARC4_PERTAR_SOURCE_FACTS = Object.freeze({
   arc2LoadoutFingerprint: 'el1:2644:1286ebff',
   engineeringCapabilityFingerprint: 'ec1:430:ae5789c7',
@@ -202,19 +202,19 @@ export const ARC4_PERTAR_FIXTURE = Object.freeze({
   contactCapturePoints: 30,
   candidates: ARC4_PERTAR_CANDIDATES,
   sessionSeed: 68,
-  /* Replacement begins at zero. Boot progression owns receipt 0, then the
-     fixture's real Survey and Landing setup own receipts 1 and 2. */
+  /* Replacement begins at zero. Boot progression owns receipt 0 and Landing
+     owns receipt 1. Living-world card inspection is deliberately read-only. */
   initialSessionOrdinal: 0,
   initialSessionDraws: Object.freeze({}),
   sourceReadySessionOrdinal: 1,
-  actionReadySessionOrdinal: 3,
+  actionReadySessionOrdinal: 2,
   sourceReadyReceipt: Object.freeze({
     ordinal: 0,
     kind: 'arc9-progression-refresh-v1',
     witness: ARC4_PERTAR_BOOT_PROGRESSION_WITNESS,
   }),
   actionReadyReceiptKinds: Object.freeze([
-    'arc9-progression-refresh-v1', 'arc9-survey-v1', 'arc0-land',
+    'arc9-progression-refresh-v1', 'arc0-land',
   ]),
   v4OwnedCounters: Object.freeze({
     before: Object.freeze({ hybrids: 0, best: 0, maxGen: 0, bestRank: 3 }),
@@ -1940,6 +1940,25 @@ const arc5FeedDiagnosticsShape = (value) => exactKeys(value, [
   && arc5FeedControllerDiagnosticsShape(value.controller)
   && arc5FeedCoordinatorDiagnosticsShape(value.actionCoordinator);
 
+const arc5ExplorerMealControllerDiagnosticsShape = (value) => exactKeys(value, [
+  'attachedMountCount', 'delegatedListenerCount', 'pendingWork',
+  'convergenceLatched', 'actionControlCount', 'contextKey', 'lastRequest', 'lastOutcome',
+])
+  && [0, 1].includes(value.attachedMountCount)
+  && [0, 1].includes(value.delegatedListenerCount)
+  && [0, 1].includes(value.pendingWork)
+  && typeof value.convergenceLatched === 'boolean'
+  && counter(value.actionControlCount)
+  && nullableBoundedText(value.contextKey, 2_048)
+  && nullableRecord(value.lastRequest) && nullableRecord(value.lastOutcome);
+
+const arc5ExplorerMealDiagnosticsShape = (value) => exactKeys(value, [
+  'lastOutcome', 'lastResult', 'controller',
+])
+  && nullableBoundedText(value.lastOutcome, 256)
+  && nullableRecord(value.lastResult)
+  && arc5ExplorerMealControllerDiagnosticsShape(value.controller);
+
 const arc5BreedControllerDiagnosticsShape = (value) => exactKeys(value, [
   'schema', 'attachedMountCount', 'retainedDomCount', 'pendingWork',
   'convergenceLatched', 'delegatedListenerCount',
@@ -2056,14 +2075,26 @@ const arc5AppDiagnosticsCoreShape = (value) => ['loaded', 'unavailable'].include
       && value.deltaShardCount === null && Array.isArray(value.deltaShardDigests)
       && value.deltaShardDigests.length === 0);
 
+const arc5AppDiagnosticsActionShapes = (value) => arc5FeedDiagnosticsShape(value.feed)
+  && arc5BreedDiagnosticsShape(value.breed)
+  && arc5RenameDiagnosticsShape(value.rename)
+  && arc5ScoutDiagnosticsShape(value.scout);
+
 const arc5AppDiagnosticsShape = (value) => exactKeys(value, [
+  ...ARC5_APP_DIAGNOSTIC_BASE_KEYS, 'feed', 'explorerMeal', 'breed', 'rename', 'scout',
+])
+  && value.schema === 'cf-v2-arc5-app-state/v3'
+  && arc5AppDiagnosticsActionShapes(value)
+  && arc5ExplorerMealDiagnosticsShape(value.explorerMeal)
+  && arc5AppDiagnosticsCoreShape(value);
+
+/* Retained pre-Explorer-Meal v3 carriers have this exact known shape. Only
+   explicit historical replay admits it; current evidence must include Meal. */
+const preExplorerMealArc5AppDiagnosticsShape = (value) => exactKeys(value, [
   ...ARC5_APP_DIAGNOSTIC_BASE_KEYS, 'feed', 'breed', 'rename', 'scout',
 ])
   && value.schema === 'cf-v2-arc5-app-state/v3'
-  && arc5FeedDiagnosticsShape(value.feed)
-  && arc5BreedDiagnosticsShape(value.breed)
-  && arc5RenameDiagnosticsShape(value.rename)
-  && arc5ScoutDiagnosticsShape(value.scout)
+  && arc5AppDiagnosticsActionShapes(value)
   && arc5AppDiagnosticsCoreShape(value);
 
 const legacyArc5AppDiagnosticsShape = (value) => exactKeys(
@@ -2074,7 +2105,9 @@ const legacyArc5AppDiagnosticsShape = (value) => exactKeys(
 
 const arc5EvidenceDiagnosticsShape = (value, allowLegacyArc5Diagnostics) => (
   arc5AppDiagnosticsShape(value)
-  || (allowLegacyArc5Diagnostics === true && legacyArc5AppDiagnosticsShape(value))
+  || (allowLegacyArc5Diagnostics === true && (
+    legacyArc5AppDiagnosticsShape(value) || preExplorerMealArc5AppDiagnosticsShape(value)
+  ))
 );
 
 const expectedArc5Outcome = (actual, expected) => expected === undefined
@@ -2844,16 +2877,14 @@ const exactArc4PertarPrefixRows = (raw, phase) => {
     : phase === 'action-ready'
       ? ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal : null;
   if (expectedLength === null || raw.receiptRows.length !== expectedLength) return false;
-  const [boot, survey, landing] = raw.receiptRows;
+  const [boot, landing] = raw.receiptRows;
   if (!same(boot, ARC4_PERTAR_FIXTURE.sourceReadyReceipt)) return false;
   if (phase === 'source-ready') return true;
   const landingFacts = parseJson(landing?.witness);
   const expectedLandingFacts = parseJson(ARC4_PERTAR_LANDING_WITNESS);
   if (!record(landingFacts) || !record(expectedLandingFacts)) return false;
   expectedLandingFacts.stateSuccessorSeal = landingFacts.stateSuccessorSeal;
-  return survey?.ordinal === 1 && survey?.kind === 'arc9-survey-v1'
-    && survey?.witness === ARC4_PERTAR_SURVEY_WITNESS
-    && landing?.ordinal === 2 && landing?.kind === 'arc0-land'
+  return landing?.ordinal === 1 && landing?.kind === 'arc0-land'
     && exactKeys(landingFacts, [
       'schema', 'worldKey', 'planetSeed', 'planetOrdinal', 'landing',
       'permanentLanding', 'training', 'landingKnownBefore',
@@ -2868,7 +2899,8 @@ const exactArc4PertarPrefixRows = (raw, phase) => {
 
 /** Exact composed ledger phase for the Pertar browser fixture. Fresh means a
  * new document with empty Arc 4 ownership, not an empty cross-system ledger:
- * boot progression, Survey, and Landing are independently owned predecessors. */
+ * boot progression and Landing are independently owned predecessors. Living
+ * Survey-card inspection must not append a receipt. */
 export const assessArc4PertarLedgerPrefix = ({ raw, state, phase } = {}) => {
   const durable = assessArc4DurableEvidence(raw);
   const mirror = durable.ownership?.mirror;
@@ -6623,6 +6655,21 @@ const appArc5FeedState = () => ({
   },
 });
 
+const appArc5ExplorerMealState = () => ({
+  lastOutcome: null,
+  lastResult: null,
+  controller: {
+    attachedMountCount: 0,
+    delegatedListenerCount: 0,
+    pendingWork: 0,
+    convergenceLatched: false,
+    actionControlCount: 0,
+    contextKey: null,
+    lastRequest: null,
+    lastOutcome: null,
+  },
+});
+
 const appArc5BreedState = () => ({
   lastOutcome: null,
   lastResult: null,
@@ -6724,6 +6771,7 @@ const appOwnershipV2State = (raw, {
     specimenTombstones: unavailable ? 0 : target.specimenTombstones.length,
     biospheres: unavailable ? 0 : source.biosphereProgress.length,
     feed: appArc5FeedState(),
+    explorerMeal: appArc5ExplorerMealState(),
     breed: appArc5BreedState(),
     rename: appArc5RenameState(),
     scout: appArc5ScoutState(),
@@ -6953,10 +7001,7 @@ const secondExpected = ARC4_PERTAR_FIXTURE.actions.secondMiss;
 const pertarPrefixRowsSelftest = Object.freeze([
   ARC4_PERTAR_FIXTURE.sourceReadyReceipt,
   Object.freeze({
-    ordinal: 1, kind: 'arc9-survey-v1', witness: ARC4_PERTAR_SURVEY_WITNESS,
-  }),
-  Object.freeze({
-    ordinal: 2, kind: 'arc0-land', witness: ARC4_PERTAR_LANDING_WITNESS,
+    ordinal: 1, kind: 'arc0-land', witness: ARC4_PERTAR_LANDING_WITNESS,
   }),
 ]);
 const pertarSourceReadyRawSelftest = makeDurable(emptyMirror(), {
@@ -6969,7 +7014,7 @@ const pertarSourceReadyStateSelftest = appState(
   appCaptureState(pertarSourceReadyRawSelftest),
 );
 const pertarActionReadyRawSelftest = makeDurable(emptyMirror(), {
-  revision: 12,
+  revision: 11,
   ordinal: ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal,
   receipts: pertarPrefixRowsSelftest,
 });
@@ -6986,10 +7031,10 @@ const pertarPrefixAssessmentSelftest = (raw, state, phase = 'action-ready') => (
 );
 const pertarLandingSealVariantSelftest = (seal) => {
   const raw = structuredClone(pertarActionReadyRawSelftest);
-  const facts = JSON.parse(raw.receiptRows[2].witness);
+  const facts = JSON.parse(raw.receiptRows[1].witness);
   facts.stateSuccessorSeal = seal;
-  raw.receiptRows[2].witness = JSON.stringify(facts);
-  raw.receiptRawRows[2] = JSON.stringify(raw.receiptRows[2]);
+  raw.receiptRows[1].witness = JSON.stringify(facts);
+  raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
   return raw;
 };
 const pertarPrefixMutationSelftest = (mutate) => {
@@ -7014,32 +7059,36 @@ const pertarPrefixControlsSelftest = Object.freeze({
     raw.receiptRows.push(row);
   }),
   reorderedReceipts: pertarPrefixMutationSelftest((raw) => {
-    [raw.receiptRows[1], raw.receiptRows[2]]
-      = [raw.receiptRows[2], raw.receiptRows[1]];
-    [raw.receiptRawRows[1], raw.receiptRawRows[2]]
-      = [raw.receiptRawRows[2], raw.receiptRawRows[1]];
-    [raw.receiptKeys[1], raw.receiptKeys[2]]
-      = [raw.receiptKeys[2], raw.receiptKeys[1]];
+    [raw.receiptRows[0], raw.receiptRows[1]]
+      = [raw.receiptRows[1], raw.receiptRows[0]];
+    [raw.receiptRawRows[0], raw.receiptRawRows[1]]
+      = [raw.receiptRawRows[1], raw.receiptRawRows[0]];
+    [raw.receiptKeys[0], raw.receiptKeys[1]]
+      = [raw.receiptKeys[1], raw.receiptKeys[0]];
   }),
   bootWitness: pertarPrefixMutationSelftest((raw) => {
     raw.receiptRows[0].witness += ':mutated';
     raw.receiptRawRows[0] = JSON.stringify(raw.receiptRows[0]);
   }),
-  surveyWitness: pertarPrefixMutationSelftest((raw) => {
-    raw.receiptRows[1].witness += ':mutated';
-    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  unexpectedSurveyReceipt: pertarPrefixMutationSelftest((raw) => {
+    const row = {
+      ordinal: 2, kind: 'arc9-survey-v1', witness: ARC4_PERTAR_SURVEY_WITNESS,
+    };
+    raw.receiptKeys.push('receipt:2');
+    raw.receiptRows.push(row);
+    raw.receiptRawRows.push(JSON.stringify(row));
   }),
   landingWitness: pertarPrefixMutationSelftest((raw) => {
-    const facts = JSON.parse(raw.receiptRows[2].witness);
+    const facts = JSON.parse(raw.receiptRows[1].witness);
     facts.planetOrdinal += 1;
-    raw.receiptRows[2].witness = JSON.stringify(facts);
-    raw.receiptRawRows[2] = JSON.stringify(raw.receiptRows[2]);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
   }),
   landingStateSuccessorSeal: pertarPrefixMutationSelftest((raw) => {
-    const facts = JSON.parse(raw.receiptRows[2].witness);
+    const facts = JSON.parse(raw.receiptRows[1].witness);
     facts.stateSuccessorSeal = 'not-a-sha256-digest';
-    raw.receiptRows[2].witness = JSON.stringify(facts);
-    raw.receiptRawRows[2] = JSON.stringify(raw.receiptRows[2]);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
   }),
   authorityOrdinal: pertarPrefixMutationSelftest((raw) => {
     raw.authority.sessionRng.ordinal += 1;
@@ -7050,7 +7099,7 @@ const pertarPrefixControlsSelftest = Object.freeze({
 });
 const pertarPrefixControlNamesSelftest = Object.freeze([
   'staleEmptyLedger', 'missingReceipt', 'extraReceipt', 'reorderedReceipts',
-  'bootWitness', 'surveyWitness', 'landingWitness', 'landingStateSuccessorSeal',
+  'bootWitness', 'unexpectedSurveyReceipt', 'landingWitness', 'landingStateSuccessorSeal',
   'authorityOrdinal', 'runtimeOrdinal',
 ]);
 const pertarTameLandingRawSelftest = pertarLandingSealVariantSelftest(
@@ -7101,7 +7150,7 @@ const arc5AppDiagnosticsMutationSelftest = (subtree, kind) => {
 };
 const arc5AppDiagnosticsShapeControlsSelftest = Object.freeze(
   Object.fromEntries(
-    ['feed', 'breed', 'rename', 'scout'].flatMap((subtree) => (
+    ['feed', 'explorerMeal', 'breed', 'rename', 'scout'].flatMap((subtree) => (
       ['wrong', 'missing', 'extra'].map((kind) => [
         `${subtree}:${kind}`,
         arc5AppDiagnosticsMutationSelftest(subtree, kind),
@@ -9486,8 +9535,15 @@ const progressionTailControlsSelftest = Object.freeze({
     bundle.after.receiptRawRows.push(JSON.stringify(row));
   }),
   wrongTailWitness: progressionHitMutationSelftest((bundle) => {
-    bundle.after.receiptRows[1].witness += ':mutated';
-    bundle.after.receiptRawRows[1] = JSON.stringify(bundle.after.receiptRows[1]);
+    const index = bundle.after.receiptRows.findIndex((row) => (
+      row.ordinal === ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal + 1
+      && row.kind === firstExpected.progressionTail.receiptKind
+    ));
+    if (index !== bundle.after.receiptRows.length - 1) {
+      throw new Error('Sample progression witness control missed its exact tail owner');
+    }
+    bundle.after.receiptRows[index].witness += ':mutated';
+    bundle.after.receiptRawRows[index] = JSON.stringify(bundle.after.receiptRows[index]);
   }),
   wrongAchievementDelta: progressionHitMutationSelftest((bundle) => {
     bundle.after.legacy.ach = ['rare'];
@@ -11962,7 +12018,7 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
   || sha256(canonicalToolJson(ARC4_OWNERSHIP_EXTENSION_TARGETS))
     !== 'cb4bf8df5f5eaca8f57b842a2187c5c5791516dc7d4e389d58f9ab729b15b026'
   || sha256(canonicalToolJson(ARC4_PERTAR_FIXTURE))
-    !== 'dca0074daa1d1858133e8d1c308c5b17ac5003e05460a497d65fd3f065d9e655'
+    !== '8780d18f55dc18bed840222eb01878ee17548b69894f920ab65b987acb477361'
   || sha256(canonicalToolJson(ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET))
     !== 'e548f628e5859335b608a12632e66d4220432ab188a76af460fbc5261eefded4'
   || sha256(canonicalToolJson(ARC5_OWNERSHIP_EXTENSION_TARGETS))

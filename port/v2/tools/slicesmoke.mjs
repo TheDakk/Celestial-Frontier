@@ -14648,7 +14648,7 @@ try {
       ),
       actionAuthorityPrefix: actionLedgerPrefix.ok === true,
       exactSetupRevisionSpan: landedRaw?.revision
-        === wrongOrdinal?.rawBefore?.revision + 2,
+        === wrongOrdinal?.rawBefore?.revision + 1,
       exactSurface: arc4PertarSurfaceObservationExact(surface),
     };
     return { ok: Object.values(checks).every((value) => value === true), checks };

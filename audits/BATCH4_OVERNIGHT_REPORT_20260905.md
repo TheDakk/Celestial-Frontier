@@ -7,7 +7,7 @@ This is a live checkpoint report, not final acceptance. Base develop:
 
 | Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
 | --- | --- | --- | --- | --- |
-| 1 signed core integration | Real merge candidate, SHA follows after browser gates | Pending | Typecheck/artunused PASS; 286 files / 2,951 passed / 1 skipped (38.13s) | Pending on clean committed source |
+| 1 signed core integration | `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; correction `d260f19c01e57815bfb7f3a94ee27b23d867fb08` | Pending | Typecheck/artunused PASS; 286 files / 2,954 passed / 1 skipped (37.82s) | Two retained Slice reds; next correction pending; neither Glass ran |
 | 2a accepted st-scan | Pending | — | — | — |
 | 2b descent/wave-offs | Pending | — | — | — |
 | 2c 50-Paragon hunt | Pending | — | — | — |
@@ -309,6 +309,122 @@ run will start only from the resulting clean source.
     "seconds": 38.452,
     "log": "3-npx.log",
     "sha256": "0a5fc974cf11c4a920d5739b8fe36abad67eead61c6bd189cef5d6917536c42d"
+  }
+]
+```
+
+## Checkpoint 1 second browser red — current diagnostic inventory
+
+Source `d260f19c01e57815bfb7f3a94ee27b23d867fb08` passed the corrected Survey stage,
+then stopped after **125.132s**; no Glass canary ran:
+
+```text
+SLICE SMOKE: FAIL — 1 finding
+SLICE SMOKE: FAILURE TITLES
+  1. harness
+harness: Arc 5 legacy-carrier upgrade rehearsal exact Pertar capture card did not reach its exact Pertar surface/card/three-enabled-row outcome within 10000ms
+```
+
+The retained UI has exactly Tame, Scavenge and Sample, all model-enabled/native-enabled,
+with loaded current ownership. A read-only replay of the existing completeness predicate gives
+`retainedComplete:false`; removing only the newly authored `ownershipV2.explorerMeal` field
+from a diagnostic clone gives `true`. The field itself is valid new core output; its old strict
+consumer inventory must be aligned without allowing unknown or missing current fields.
+The related fresh Pertar receipt prefix must reflect living-world inspection's zero write,
+while historical fixtures and Glass's planned-ledger matching retain their explicit provenance.
+The full literal browser error lines for both failed sources are retained in
+`BATCH4_OVERNIGHT_REDS_20260905.json`. Second raw-log SHA-256:
+`0d229db23924e6cc93f391313620866fd37758ad6c739246686f798c4fc986e7`.
+No product change, timeout extension, weaker ruler or unchanged-source rerun follows this red.
+
+The correction keeps the current diagnostic inventory exact (including Explorer Meal) and
+admits the exact pre-Meal v3 shape only through the existing explicit historical replay flag.
+The current fresh-Pertar prefix is independently derived as boot receipt 0 plus Land receipt 1;
+inspection adds neither revision nor receipt. Capture draws retain their seeded domain/count
+addresses, so species and odds do not change. The pure-source derivation first reproduced the
+historical boot `arc9p1:8bfd4634e1e932eabead451a44fdf8e7ef35693c58b0179ebf8045a68558c05b`
+and Sample `arc9p1:ca4c7dff47e0659ad90ee11f24441920e8fde2ccbc6cd474bd4b174338f4f6a1`.
+Removing only the obsolete Survey aggregate increments (living/type counts 3/3 → 2/2) and
+moving the Sample progression receipt 4 → 3 gives
+`arc9p1:2fc001a89819c20cca537ce2dff25ce5b88a1497e7d4a913d9a8b23217cb9013`.
+The existing Landing state-seal validator keeps its documented canonical-SHA requirement;
+no observed browser seal was copied into a new acceptance pin. Historical Glass planned
+ledgers remain unchanged. These are bounded repairs to existing product-evidence owners,
+not new collectors, budgets, schema authorities or retry rules.
+
+## Checkpoint 1 diagnostic correction — fast red retained
+
+Full fast on the diagnostic/prefix repair: typecheck and artunused PASS; Vitest
+**2 failed / 284 passed files; 2 failed / 2,952 passed / 1 skipped** (39.31s).
+
+```text
+FAIL tests/arc4-recovery-tool.test.ts > Arc 4 real-time recovery certificate instrument > retains Final11 as a failure while its immutable bundle replays green
+Error: Test timed out in 5000ms.
+FAIL tests/evidence-chain-tools.test.ts > Slice → Glass → Arc 4 recovery evidence chain > requires an exact clean Slice predecessor for full Glass and binds the newest release semantics in both directions
+GLASS MATRIX INSTRUMENT FAILURE
+GLASS MATRIX REPORT SELFTEST: Arc 4 presentation/geometry/return controls failed
+```
+
+The existing Glass current selftest fixture separately omitted Explorer Meal. Its strict
+completeness check therefore correctly rejected the fixture. Add the exact new idle field to
+that current fixture only; historical planned ledgers are untouched. The Final11 case was
+previously green in the focused run and exceeded its existing five-second unit-test timeout
+under the full concurrent run; no timeout or test intent was changed. Full log SHA-256:
+`e728f8e15ce216d3197c5d68b90d97813d782f2143624563ddeb7f8533960f33`.
+No browser ran after this red.
+
+After the Glass fixture correction, full fast had **1 failed / 285 passed files;
+1 failed / 2,953 passed / 1 skipped** (38.67s), solely the same Final11 timeout:
+`Error: Test timed out in 5000ms.` Log SHA-256
+`fd7d1225e68d2940e3d5c93104c063cb025aae6b9cc384744aea0d4b06047ff6`.
+Diagnosis refined the initial load attribution: the newly added eight Meal-field wrong/missing
+controls were each replaying the entire large retained recovery bundle three times. They now
+exercise the same exported strict UI completeness boundary directly, with both historical flags
+and restoration controls. Existing full-bundle positive, subtree and historical-integration
+replays remain. No case, field, acceptance condition or timeout was removed or enlarged.
+
+## Checkpoint 1 diagnostic correction — final fast PASS
+
+Typecheck and artunused PASS; Vitest **286 files / 2,954 passed / 1 skipped**.
+The reduced repeated work preserves all field and full-recovery outcomes under unchanged
+timeouts. Glass selftest also PASS on the corrected current fixture. No game source changed
+since the original core merge; current producer and measurement pins remain unchanged.
+A new correction commit now precedes the next clean-source browser sequence.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.142,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.362,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run"
+    ],
+    "exitCode": 0,
+    "seconds": 38.408,
+    "log": "3-npx.log",
+    "sha256": "4182ffcf1747ca2f150688de02476ad5d8d0429255540b2e26db85f63d1bee87"
   }
 ]
 ```

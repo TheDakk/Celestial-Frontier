@@ -154,7 +154,7 @@ function runnerContractPasses(owners: {
     && owners.setup.includes("phase: 'action-ready'")
     && owners.setup.includes('sourceAuthorityPrefix: sourceLedgerPrefix.ok === true')
     && owners.setup.includes('actionAuthorityPrefix: actionLedgerPrefix.ok === true')
-    && owners.setup.includes('=== wrongOrdinal?.rawBefore?.revision + 2')
+    && owners.setup.includes('=== wrongOrdinal?.rawBefore?.revision + 1')
     && owners.reset.includes('const arc4TameAudioResetLedger = assessArc4PertarLedgerPrefix({')
     && owners.reset.includes("phase: 'action-ready'")
     && owners.reset.includes('actionReadyLedger: arc4TameAudioResetLedger.ok === true')
@@ -196,9 +196,9 @@ describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
     }>;
 
     expect(ARC4_PERTAR_FIXTURE.sourceReadySessionOrdinal).toBe(1);
-    expect(ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal).toBe(3);
+    expect(ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal).toBe(2);
     expect(ARC4_PERTAR_FIXTURE.actionReadyReceiptKinds).toEqual([
-      'arc9-progression-refresh-v1', 'arc9-survey-v1', 'arc0-land',
+      'arc9-progression-refresh-v1', 'arc0-land',
     ]);
     expect(ARC4_PERTAR_FIXTURE.actions.firstHit.progressionTail).toMatchObject({
       receiptKind: 'arc9-progression-refresh-v1',
@@ -211,7 +211,7 @@ describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
     expect(prefix.actionReadyTameVariant.ok).toBe(true);
     expect(Object.keys(prefix.controls)).toEqual([
       'staleEmptyLedger', 'missingReceipt', 'extraReceipt', 'reorderedReceipts',
-      'bootWitness', 'surveyWitness', 'landingWitness', 'landingStateSuccessorSeal',
+      'bootWitness', 'unexpectedSurveyReceipt', 'landingWitness', 'landingStateSuccessorSeal',
       'authorityOrdinal', 'runtimeOrdinal',
     ]);
     expect(Object.values(prefix.controls).every((control) => control.ok === false)).toBe(true);
@@ -237,12 +237,12 @@ describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
 
     expect(publication.positive.ok).toBe(true);
     expect(publication.positive.publicationBoundary).toEqual({
-      beforeRevision: 12,
-      actionRevision: 13,
-      fixedPointRevision: 14,
-      beforeOrdinal: 3,
-      actionOrdinal: 4,
-      fixedPointOrdinal: 5,
+      beforeRevision: 11,
+      actionRevision: 12,
+      fixedPointRevision: 13,
+      beforeOrdinal: 2,
+      actionOrdinal: 3,
+      fixedPointOrdinal: 4,
       actionDraws: { 'capture.candidate': 1, 'capture.success': 1 },
       fixedPointDraws: { 'capture.candidate': 1, 'capture.success': 1 },
     });
@@ -286,6 +286,15 @@ describe('Slice Arc 4 composed ledger and causal-stop contract', () => {
   });
 
   it('rejects omission of the progression tail, stale empty-ledger logic, and noncausal failure collection', () => {
+    const currentSpan = '=== wrongOrdinal?.rawBefore?.revision + 1';
+    expect(setupOwner.split(currentSpan)).toHaveLength(2);
+    const obsoleteSurveyWrite = setupOwner.replace(
+      currentSpan, '=== wrongOrdinal?.rawBefore?.revision + 2',
+    );
+    expect(runnerContractPasses({
+      ...currentOwners, setup: obsoleteSurveyWrite,
+    })).toBe(false);
+    expect(runnerContractPasses(currentOwners)).toBe(true);
     expect(runnerContractPasses({
       ...currentOwners,
       sample: sampleOwner.replace(
