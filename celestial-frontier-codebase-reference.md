@@ -1,6 +1,6 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-## Overnight Batch 4 — checkpoint 2b implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2c implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -16,9 +16,17 @@ learning (+20 percentage points per failure, capped at five), without landing re
 clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
 Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
 fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
-Paragon acquisition, individual progression presentation and mature Atlas remain later checkpoints.
+The Fifty Paragons now use their authored fixed genomes and exact home worlds. Explicit Discover
+Life at an eligible home adds only its catalogue record in that same Bioscan receipt; it creates
+no companion/specimen, spends no Yield and grants no capture or extra discovery award. Binder
+shows all fifty: found entries Inspect the exact existing Compendium record; missing entries use
+existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
+New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
+Pre-feature development saves with an already-scanned home retain their recorded refusal; no
+backfill or repeated hazard is invented. Static portraits remain unchanged. Individual progression
+presentation and mature Atlas remain later checkpoints.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
-V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 78 bullets
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
 reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
 
@@ -60,6 +68,20 @@ separate landed action. A successful capture that catalogues a genuinely fresh s
 the Scout standing before that attempt up to +2 XP in the same capture receipt/CAS, capped at 486;
 no standing Scout, miss, or repeat species grants Scout XP. The reward changes no genome, lineage,
 role selection, or capture-pool fact.
+
+Step 2c adds the exact-home catalogue exception through `paragon-finder.ts` and the existing
+`bioscan-action.ts` receipt. All fifty indexed genomes and fixed homes use the authored deterministic
+recipe. A matching source-proven home can add its exact catalogue species and acquisition audit
+while preserving owned creatures, specimen lots and Biosphere Yield; it grants no Capture credit.
+The joined Arc 4/Arc 5 successors and legacy catalogue mirror settle atomically with Bioscan.
+Ownership validation checks the full indexed genome; Binder checks that each pair key equals its
+record id before that row may count toward discovery or a claim. A previously Bioscanned home in a
+pre-feature development save still refuses as `already-recorded`, so returning cannot backfill it.
+Records retains six Binder type pages and now has eight claim owners; `para10` becomes claimable
+after ten exact Paragons and pays 120 current/lifetime Stardust only through its separate once-only
+Claim receipt/CAS. Prior claims stay claimed. Missing slots use the source-proven finder and existing
+ship/Prime reach checks; found slots open the exact Compendium record through Inspect without travel
+or acquisition. Existing static portrait owners are unchanged.
 
 The safe explorer-meal successor joins `fieldmedic`, and a safe meal above 40% poison risk also
 joins `gambler`. Any hostile explicit Bioscan joins `survivor` whether its wound lands on the Scout
@@ -4543,8 +4565,8 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideMenu` / `renderGuideCategory` / `renderGuideTopic` /
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
-  by the 56 legacy releases. Its exact 78-bullet implemented-outcome inventory has rendered
-  ordered SHA-256 `af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53`
+  by the 56 legacy releases. Its exact 79-bullet implemented-outcome inventory has rendered
+  ordered SHA-256 `62f3490095d87bb99903ddf3e5ad0e5f03dadbe38da874835bd9f98654756194`
   and is checked structurally and in the rendered Guide. Tail proof dispatches one adaptive
   native wheel per fresh exact-document/tail/hit-owner/geometry observation until the final item
   is visible at bottom, then restores scroll and inline overflow ownership exactly; unchanged

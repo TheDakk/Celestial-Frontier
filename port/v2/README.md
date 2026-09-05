@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Overnight Batch 4 — checkpoint 2b implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2c implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -16,9 +16,17 @@ learning (+20 percentage points per failure, capped at five), without landing re
 clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
 Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
 fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
-Paragon acquisition, individual progression presentation and mature Atlas remain later checkpoints.
+The Fifty Paragons now use their authored fixed genomes and exact home worlds. Explicit Discover
+Life at an eligible home adds only its catalogue record in that same Bioscan receipt; it creates
+no companion/specimen, spends no Yield and grants no capture or extra discovery award. Binder
+shows all fifty: found entries Inspect the exact existing Compendium record; missing entries use
+existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
+New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
+Pre-feature development saves with an already-scanned home retain their recorded refusal; no
+backfill or repeated hazard is invented. Static portraits remain unchanged. Individual progression
+presentation and mature Atlas remain later checkpoints.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
-V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 78 bullets
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
 reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
 
@@ -3071,22 +3079,28 @@ ledger they planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`). The draft bulletin is 77
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
 43 authored stable IDs and 41 player topics with search, categories, native-keyboard
-cross-links and capability-aware v2 copy. At the current Step 2b boundary, 35 topics are
+cross-links and capability-aware v2 copy. At the current Step 2c boundary, 35 topics are
 partial and 6 are unavailable; the Capture/Discover guidance separates write-free living-world
 inspection, explicit durable Discover Life, and landed random-pool Capture without inventing targeted selection. It states the current
 capture-backed Charter rule exactly: the first durable successful Tame, Scavenge, or Sample on
 each source-proven world beyond Sol banks that world's one Chapter 2 life-discovery tick in the
 same transaction; misses, Sol, later successes on that world, stale tabs and failed writes bank
 nothing. Explicit Discover Life separately owns the exact living-world Survey record and one
-nonlethal hazard receipt (`bioscan-action.ts`); it catalogues no species and spends no Yield at this
-2b checkpoint. If st-scan was accepted before that explicit Bioscan, the same receipt completes the
+nonlethal hazard receipt (`bioscan-action.ts`). On ordinary worlds it catalogues no species; at an
+exact fixed Paragon home, the same Bioscan can add only its indexed catalogue record. Neither path
+spends Yield, and the Paragon exception creates no owned companion/specimen or Capture credit.
+An already-recorded home in a pre-feature development save keeps its Bioscan refusal and cannot
+backfill a Paragon. If st-scan was accepted before that explicit Bioscan, the same receipt completes the
 Starter Charter and grants its authored 15 current/lifetime Stardust and exact Earpiece. Earlier
 Survey records, Capture and landfall never substitute or backfill it. Weekly bioscan completion
 remains protected. The same current manual documents the visible Land chance, nonlethal wave-off
 HP cost and exact-world learned approach, together with guaranteed Earth/Training/proven-world
 returns. It also documents Breed's +2/+5 XP rules, two-chain Starter acceptance/rewards, Binder's six pages and
-seven claims, postcommit progression ceremonies, the complete nine-row Prime Codex and its five
-ending choices without presenting protected weeklies, Paragons or later prestige as live.
+eight claims, postcommit progression ceremonies, the complete nine-row Prime Codex and its five
+ending choices without presenting protected weeklies or later prestige as live. The Fifty-Paragon
+hunt uses missing-slot travel through existing reach checks and found-slot Inspect of the exact
+Compendium record, with static portraits unchanged. At ten exact Paragons, Seeker of Legends
+(`para10`) offers a separate once-only Claim for 120 Stardust; a sighting never pays it automatically.
 Intentionally dormant topics remain source-recorded and player-hidden. No legacy promise is
 presented as current behavior.
 The current local implementation keeps only `release-identity.ts` eager. `guide-content.ts` and
@@ -3096,8 +3110,8 @@ settles, and request/body/open-panel fences prevent a closed or replaced Guide f
 publication. A cached archive publishes on the following microtask because panel `onOpen` runs
 before the manager exposes the open panel. Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
-categorized v2.0 development bulletin, now 78 bullets. Its rendered ordered SHA-256 is
-`af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53`. The draft summarizes the
+categorized v2.0 development bulletin, now 79 bullets. Its rendered ordered SHA-256 is
+`62f3490095d87bb99903ddf3e5ad0e5f03dadbe38da874835bd9f98654756194`. The draft summarizes the
 implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
 nonempty bullets, the key player-facing outcomes, and a final item reached through bounded adaptive
@@ -4127,6 +4141,7 @@ node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_
 
 | Tool | Role |
 |---|---|
+| **Current Step 2c Guide/Records copy boundary (2026-09-05)** | The existing F2 Guide ingress now covers 23 required current-copy topics, including Binder, with baseline/removal/contradiction/restoration controls over the actual rendered topic. Current Records has six Binder type pages and eight Set claims. This implementation inventory does not recertify a historical source; the dated 22-topic Glass certificate below remains evidence only for its named checkpoint. `../../audits/BATCH4_OVERNIGHT_REPORT_20260905.md` owns current gate acceptance. |
 | **Current PR #35 forensic-prevention boundary (2026-09-04 UTC; cc4d7c9 Slice/full Glass and real Chrome jq green, hosted certificate absent)** | One authorization job plus one battery job remain; caps are 2 + 120 runner-minutes, with Compendium independently capped at 55. The changed-input Glass diagnostic keeps one seven-minute/no-retry step and runs distinct immutable `small-phone` then `large-phone` rows sequentially. Its first command requires jq; the existing pinned Edge download alone permits three transport retries with URL/version/SHA-256 unchanged. Shipyard settlement waits for active and debounced writes to reach zero using the existing read-only diagnostics. The second row binds structured F4 completion to both Capture native Tab and Shipyard `mining` disclosure Enter across semantic replacement. Glass v2 PASS, full descriptors, exact visibility, cumulative ancestor opacity, geometry and assessment maps are replayed by shared consumers and hosted jq. Product Shipyard focus restoration pre-existed; artifact upload remains hard-fail; the final 12-row certificate is unchanged. Focused 73/73, all TypeScript, Glass/Recovery/persona, Actions policy 66/66 and the 268-file browser-free profile are green. Exact clean `f348b249…` also passed Compendium 78/78 plus named verification and nine requested targeted Glass rows with zero findings/instrument failures; these do not replace full certification. No gameplay, release or hosted authority follows. |
 | **Historical predecessor native-Tab identity / diagnostic-retention boundary (2026-09-03 UTC; local successor green)** | Hosted run `33708487067` passed every predecessor through Layout 787/787, Compendium 78/78 and exact-bound Slice, then full Glass stopped at row four `large-phone` with only `idleKeyboardFocus:false`. Artifact creation separately timed out after finding 27 files, so no full hosted JSON exists. Native Tab evidence now retains trusted same-document delivery, reacquires current Scavenge/Sample semantic controls through a forced real F4 heartbeat at that exact viewport, and product-classifies wrong origin, missing controls, stale lineage, lost focus, unsettled scroll and transparent paint. Targeted run `20260903043639066-7926-2f4122517015` passed in 11,037 ms with old nodes disconnected, replacements acquired, restored Scavenge focus and trusted Tab to visibly focused Sample. A post-Glass browser-free projection exact-binds terminal report/source/profile/Slice/browser/timing/red shape and retains deterministic gzip/base64 evidence in the step summary under a 900,000-byte whole-summary cap; it cannot soften Glass, verification, Recovery or artifact upload. Reviews are CLEAR; focused coverage is 24/24 and 12/12, Actions policy 64/64, and the browser-free develop profile passes 266/266 files, 2,758 passed / 1 skipped. Compendium authority remains `b83cbb85…681da` / `c216cdc9…d8cae`. No gameplay, retry, timeout, browser pin, viewport, job or hosted authority is added. |
 | **Current Slice Guide/Charter/D-TRAIN boundary (2026-09-01; exact-source local develop chain green)** | Exact SSH-signed source `4a4f0b81c85eee32c538a29d8b46f55af73ae7bb` / tree `25cb76916c8f3fcd00a916864abb9402932cdbec` passed the complete browser-free develop profile at 263 files / 2,719 passed / 1 skipped, plus browser-CDP selftest and live preflight on compatible Edge `152.0.4191.53` / CDP `1.3`. Its once/no-retry unchanged-source chain named-verified Compendium `20260902020238003-42290-3e0d5a9601` at 78/78 with zero findings; Slice `20260902020406920-42750-f6dc8783b4cd` with zero findings/scopes and report/log SHA-256 `56088a0c5cc03fc45150b937a0cd9e38f054fedcf7df97de0dfe1ba411cd591d` / `05b69008a783488af9fbdc0a802119ff0c6c223ab737c48027bae450f0eb2276`; and exact-Slice-bound Glass `20260902021048274-43570-053d2c926673` at 12/12 viewports, 12/12 reload rows and 104/104 controls with no findings/instrument failures and report SHA-256 `df8767c9d2d00843426fe68cab58b59a64043092d7ba5700476425746e5226b2`. Guide uses observed dynamic native-wheel progress with full remaining-time/restoration ownership; the ceremony queue defers intact during `productActionInFlight` and resumes once; D-TRAIN requires stable raw/live/focus/bulletin convergence. Hosted run `33572309149` stays immutable red and consumed. No legacy game, save schema, generation, creature/plant/biome/Guardian structure, loot balance, CSS, numeric ruler/ceiling, retry or browser-version policy changed; no hosted, merge, Gate/Arc/HUMAN, release or deploy authority follows. |

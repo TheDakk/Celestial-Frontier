@@ -1,6 +1,6 @@
 # Celestial Frontier — Player Progression
 
-## Overnight Batch 4 — checkpoint 2b implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2c implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -16,9 +16,17 @@ learning (+20 percentage points per failure, capped at five), without landing re
 clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
 Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
 fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
-Paragon acquisition, individual progression presentation and mature Atlas remain later checkpoints.
+The Fifty Paragons now use their authored fixed genomes and exact home worlds. Explicit Discover
+Life at an eligible home adds only its catalogue record in that same Bioscan receipt; it creates
+no companion/specimen, spends no Yield and grants no capture or extra discovery award. Binder
+shows all fifty: found entries Inspect the exact existing Compendium record; missing entries use
+existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
+New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
+Pre-feature development saves with an already-scanned home retain their recorded refusal; no
+backfill or repeated hazard is invented. Static portraits remain unchanged. Individual progression
+presentation and mature Atlas remain later checkpoints.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
-V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 78 bullets
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
 reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
 
@@ -773,8 +781,11 @@ Progression runs on three parallel tracks, none of which touch world/creature *g
 3. **Standing rank (milestones).** A lifetime score over everything you've done climbs the rank ladder (Cadet → Eternal Frontier → infinite ✦ levels), unlocking nameplate colors and gating nothing — pure prestige.
 
 A fourth, collection-side track is the **Compendium** (the species catalogue) and its **Binder**.
-Current v2 pays the seven non-Paragon set bounties once; the legacy Fifty Paragons remain visible
-protected content until their deterministic discovery owner is ported.
+Current v2 exposes eight one-time Set claims, including `para10`, **Seeker of Legends**: ten
+exact Paragon catalogue records unlock a separate **Claim** for 120 current/lifetime Stardust.
+The Fifty are fixed legends shared by every explorer; an explicit Discover Life Bioscan at a
+source-proven home can add only its exact catalogue record. A sighting creates no owned companion
+or specimen, spends no Yield, grants no Capture credit and never pays that Set reward automatically.
 
 Depth (frontier region / world tier) is the master difficulty dial: farther worlds grant more XP, hide rarer finds, and tax your wounds harder.
 
@@ -861,9 +872,11 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
 ### Compendium collection progression
 - The species catalogue is the **Compendium** (`codex`, keyed by species id; `_storeSpecies` dedupes — only a genuinely *new* species is "fresh").
 - **Rare-find ☄ Stardust:** on the **first** catalogue of a Legendary+ specimen (`grade.tier ≥ 5`) you earn **`tier − 3`** Stardust, a ✦ Rare Find cinematic, and a rarity sting. Tier ≥ 4 throws a color burst. (Never re-paid — dedupe gates it.)
-- **Binder** sets pay a **one-time** ☄ bounty on completion. Current v2 exposes exactly the seven
-  non-Paragon claims and preserves any imported Paragon-set evidence; **The Fifty Paragons** remains
-  visible but unavailable until its deterministic fixed-world discovery owner is ported.
+- **Binder** sets expose a separate **one-time Claim** when complete. Current v2 keeps six type
+  pages and eight Set claims; `para10` pays 120 current/lifetime Stardust after ten exact Paragons.
+  All fifty missing silhouettes can plot their source-proven homes through existing ship/Prime
+  reach checks; found entries **Inspect** the exact existing Compendium record without travel.
+  Prior claims stay claimed and cannot pay twice. Paragon portraits retain the existing static art.
 - **First Arrival:** reaching a system no record precedes you in pays **+2 ☄**.
 
 ### How depth affects progression

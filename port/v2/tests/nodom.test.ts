@@ -35,6 +35,8 @@ const EXPECTED_DOMAIN_FILES = Object.freeze([
   'acquisition/src/model-v2.ts',
   'acquisition/src/model.ts',
   'acquisition/src/ownership-v2-internal.ts',
+  'acquisition/src/paragon-internal.ts',
+  'acquisition/src/paragon.ts',
   'acquisition/src/rename.ts',
   'acquisition/src/scout.ts',
   ['acquisition/src/snapshot', 'internal.ts'].join('-'),

@@ -12,8 +12,8 @@ resolved signing outage and superseded handoffs remain below. Base develop:
 | --- | --- | --- | --- | --- |
 | 1 signed core integration | Merge `e77e5e09a0840a2ad7d33a81c95c7bc784523ae5`; accepted source `b572dbf5840c4fee5cbfbfa175b14e1c07f1c3cd` | `419a00bd06971ed2f1e7f1367b73842702a099ea` pushed 2026-09-05 08:30:49 | Typecheck/artunused PASS; 286 files / 2,964 passed / 1 skipped; four workers | Slice PASS 368.569s; small/large phone PASS 15.471s / 15.551s, both zero findings/instrument failures |
 | 2a accepted st-scan | Accepted source `4a82f161da2a7b3c4a029421d8a16c23fc62955d`; documentation successor follows | `2ae776b17244d8207cb37ee45d9adf52eb99f21d` pushed 2026-09-05 08:48:02 | Typecheck/artunused PASS; 286 files / 2,980 passed / 1 skipped; four workers | Slice 369.674s; small/large phone 15.652s / 15.871s PASS; zero findings/instrument failures |
-| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
-| 2c 50-Paragon hunt | Seven reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
+| 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
+| 2c 50-Paragon hunt | Implemented; signed source follows | Acceptance pending | Typecheck/artunused PASS; 292 files / 3,046 passed / 1 skipped | Pending clean-source sequence |
 | 2d exact-instance progression | Six reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
 | 2e mature Atlas | Two reviewed patch layers prepared; not integrated | Pending preceding accepted checkpoint | Preparation only; no product acceptance claimed | Not run |
 | 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
@@ -2226,4 +2226,206 @@ verifier proof. No hosted attempt occurred.
     }
   ]
 }
+```
+
+## Step2b pushed and Step2c integrated
+
+Accepted2b reporting checkpoint8546ad225d485541b377bef62db50c6c841256d6 pushed at
+2026-09-05 10:33:35UTC, before applying any2c product. Seven exact Paragon layers and its
+current-reference patch applied cleanly; all eight current overlays and every user-named
+release pin now agree on79 outcomes, rendered-li hash
+62f3490095d87bb99903ddf3e5ad0e5f03dadbe38da874835bd9f98654756194. The final2b rehearsal
+preserved all nineteen bounded-descent hunks and seven complete contract/test owners.
+
+A bounded independent current-copy review found no mismatch across exact50 identities/homes,
+catalogue-only Bioscan, exact found Inspect, separate once-only+120 Claim after10 and no-backfill.
+Dated historical and superseded legacy Guide copy remains intact. These are source reviews;
+current2c gates still own acceptance.
+
+### Initial Step2c typecheck stop
+
+```text
+
+> cf-v2@0.0.0 typecheck
+> tsc --noEmit && tsc --noEmit -p apps/game/tsconfig.json && tsc --noEmit -p apps/game/tsconfig.worker.json
+
+apps/game/src/main.ts(10240,15): error TS2552: Cannot find name 'ARC4_OWNERSHIP_EXTENSION_TARGETS'. Did you mean 'ARC5_OWNERSHIP_EXTENSION_TARGETS'?
+```
+
+The joined Bioscan publication used existing ARC4_OWNERSHIP_EXTENSION_TARGETS but omitted its
+Main import. Added that existing exported constant beside the Arc5 targets; no namespace or
+shape changed. Initial printer producer62e00b258fb8d2949c28a3304cdb0d3dfde42b29fc513cf19d1a4ae85f04cbfb
+is superseded by the corrected final rebuild below. Measurement/ruler/ceilings/samples remain
+unchanged. Typecheck log SHA25658291bd9027523415d997cd9f55ba2662d127a2f85ae3698a4ec8cfd4b30f14d.
+
+### Step2c unused-code stop
+
+```text
+
+> cf-v2@0.0.0 artunused
+> tsc --noEmit --noUnusedLocals
+
+tests/bioscan-action.test.ts(76,3): error TS6133: 'findArc9ParagonAtCurrentWorldV1' is declared but its value is never read.
+```
+
+Removed only the unused test import. Corrected product producer remains
+`6f8e0ee67716ac716e13ce5acbe9eaebfaeb75bdffc96c354d098bfecff0d1d3`; measurement matches.
+No runtime change or rebuild is needed for this test-only correction. Log SHA256
+`a23e6cba1560aeb0b0ec3b7bb435f99ac41862f2783eb9fe4741b9dc93119f2e`.
+
+### Step2c exact-inventory full-fast red
+
+Typecheck/artunused PASS. Full Vitest found two inventory expectation omissions while
+3,044tests passed and1skipped. Exact output:
+
+```text
+ FAIL  tests/arc4-acquisition-planner.test.ts > Arc 4 registered acquisition snapshot ownership > keeps both mints statically owned by the one app compositor with non-vacuous controls
+AssertionError: expected { '.': './src/index.ts', …(13) } to deeply equal { '.': './src/index.ts', …(12) }
+
+- Expected
++ Received
+
+@@ -7,9 +7,10 @@
+    "./explorer-meal-internal": "./src/explorer-meal.ts",
+    "./feed-internal": "./src/feed.ts",
+    "./guardian-acquisition-internal": "./src/guardian-acquisition.ts",
+    "./guardian-companion-internal": "./src/guardian-companion.ts",
+    "./ownership-v2-internal": "./src/ownership-v2-internal.ts",
++   "./paragon-internal": "./src/paragon-internal.ts",
+    "./rename-internal": "./src/rename.ts",
+    "./scout-internal": "./src/scout.ts",
+    "./snapshot-internal": "./src/snapshot-internal.ts",
+  }
+
+ ❯ tests/arc4-acquisition-planner.test.ts:797:30
+    795|       'utf8',
+    796|     )) as { exports: Record<string, string> };
+    797|     expect(manifest.exports).toEqual({
+       |                              ^
+    798|       '.': './src/index.ts',
+    799|       './snapshot-internal': './src/snapshot-internal.ts',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/2]⎯
+
+ FAIL  tests/nodom.test.ts > ★ GATE B — no-DOM / no-nondeterminism lint over packages/domain > scans the exact domain source inventory (85 files)
+AssertionError: expected [ …(2) ] to deeply equal []
+
+- Expected
++ Received
+
+- []
++ [
++   "unexpected domain source: acquisition/src/paragon-internal.ts",
++   "unexpected domain source: acquisition/src/paragon.ts",
++ ]
+
+ ❯ tests/nodom.test.ts:274:89
+    272|   const relativeFiles = files.map((file) => path.relative(domainRoot, …
+    273|   it(`scans the exact domain source inventory (${EXPECTED_DOMAIN_FILES…
+    274|     expect(exactInventoryErrors('domain source', relativeFiles, EXPECT…
+       |                                                                                         ^
+    275|   });
+    276|   it('negative control: a count-preserving domain source substitution …
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/2]⎯
+
+
+ Test Files  2 failed | 290 passed (292)
+      Tests  2 failed | 3044 passed | 1 skipped (3047)
+   Start at  06:38:33
+   Duration  61.28s (transform 12.05s, setup 0ms, import 94.01s, tests 120.83s, environment 938ms)
+
+```
+
+Review and register only the explicit two new pure-domain Paragon source paths (denominator85→87)
+and the single owned internal export. Keep the independent expected lists, compositor/mint
+restrictions, recursive scanner, count-preserving substitution control and forbidden-global
+controls unchanged. Full log SHA256
+`f23ad4ef79ea05904c2169563a3c446172d8f7f7ffa53b960ade332204856f65`.
+
+### Step2c exact inventory correction and scratch setup record
+
+Gate B now names exactly87 files and retains the unchanged recursive scan and mutation controls;
+all99focusedchecks pass. The manifest adds only the authored internal export: one existing
+compositor/mint ownership test passes, with its30unrelated tests excluded from that focused run.
+Source review confirms that Paragon-internal exposes only four fixed constants and seed/genome
+accessors, imports only genome/rand, and exposes no mint or registry. The public acquisition root
+does not re-export it. No additional control or runtime change was needed.
+
+Initial manifest-test scratch setup lacked the existing baseline path; restoring its read-only
+link fixed this setup error without product changes:
+
+```text
+
+ RUN  v4.1.10 /private/tmp/cf-step2c-paragon-manifest-followup/after/port/v2
+
+ ❯ tests/arc4-acquisition-planner.test.ts (0 test)
+
+⎯⎯⎯⎯⎯⎯ Failed Suites 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/arc4-acquisition-planner.test.ts [ tests/arc4-acquisition-planner.test.ts ]
+Error: ENOENT: no such file or directory, open '/private/tmp/cf-step2c-paragon-manifest-followup/after/port/baseline-v1.8.9/content-registry.json'
+ ❯ tests/arc4-acquisition-planner.test.ts:123:41
+    121|
+    122| const V2_ROOT = fileURLToPath(new URL('../', import.meta.url));
+    123| const CAPACITY_REGISTRY = JSON.parse(fs.readFileSync(path.join(
+       |                                         ^
+    124|   V2_ROOT,
+    125|   '..',
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  no tests
+   Start at  06:46:17
+   Duration  692ms (transform 506ms, setup 0ms, import 0ms, tests 0ms, environment 0ms)
+
+```
+
+## Step2c final full-fast PASS
+
+Typecheck/artunused and all292files/3,046tests PASS,1skip, four workers. All current references
+and Guide/Training were reviewed against the integrated source. The79-outcome rendered hash is
+`62f3490095d87bb99903ddf3e5ad0e5f03dadbe38da874835bd9f98654756194`; final Compendium producer
+`6f8e0ee67716ac716e13ce5acbe9eaebfaeb75bdffc96c354d098bfecff0d1d3`. Measurement, ruler, numeric
+ceilings and samples remain unchanged. Next: clean signed-source Slice and both phone checks.
+
+```json
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.192,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.4,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 56.227,
+    "log": "3-npx.log",
+    "sha256": "3e2eff9470434c11dd1c602b959dee6f5eacf16cf10b9324d2603cb8091fea98"
+  }
+]
 ```

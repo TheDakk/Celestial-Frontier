@@ -643,6 +643,18 @@ const orderedDiscovery = (value) => {
         'kind', 'verb', 'worldKey', 'worldAddress', 'cycle', 'sourceOrdinal',
       ], { worldAddress });
     }
+  } else if (provenance?.kind === 'paragon') {
+    const worldAddress = orderedWorldAddress(provenance.worldAddress);
+    if (worldAddress !== null && worldAddress.format === 'CF1'
+      && boundedText(worldAddress.key, 512) && provenance.worldKey === worldAddress.key
+      && counter(provenance.paragonIndex) && provenance.paragonIndex < 50
+      && uint32(provenance.receiptOrdinal) && provenance.receiptOrdinal <= 0xffff_fffe
+      && value.acquisition === 'paragon' && value.firstForSpecies === true
+      && arc5DiscoveryId(value.recordId) && arc5SpeciesId(value.speciesId)) {
+      orderedProvenance = orderedObject(provenance, [
+        'kind', 'paragonIndex', 'worldKey', 'worldAddress', 'receiptOrdinal',
+      ], { worldAddress });
+    }
   } else if (provenance?.kind === 'legacy') {
     const legacyLocation = provenance.legacyLocation === null
       ? null : orderedObject(provenance.legacyLocation, ['display']);
@@ -1710,15 +1722,16 @@ const projectLegacyMirror = (mirror) => {
         throw new Error('catalogue relation');
       }
       const legacyCodexId = `s${species.genome.seed}`;
+      const category = discovery.provenance?.kind === 'legacy'
+        ? 0 : discovery.provenance?.kind === 'world' ? 1 : 2;
       const order = discovery.provenance?.kind === 'legacy'
-        ? discovery.provenance.legacySourceIndex : discovery.provenance?.sourceOrdinal;
+        ? discovery.provenance.legacySourceIndex
+        : discovery.provenance?.kind === 'world'
+          ? discovery.provenance.sourceOrdinal : discovery.provenance?.receiptOrdinal;
       if (!counter(order)) throw new Error('source order');
-      return { species, discovery, legacyCodexId, order };
+      return { species, discovery, legacyCodexId, category, order };
     }).sort((left, right) => {
-      const leftLegacy = left.discovery.provenance.kind === 'legacy';
-      const rightLegacy = right.discovery.provenance.kind === 'legacy';
-      if (leftLegacy !== rightLegacy) return leftLegacy ? -1 : 1;
-      return left.order - right.order
+      return left.category - right.category || left.order - right.order
         || (left.legacyCodexId < right.legacyCodexId ? -1
           : left.legacyCodexId > right.legacyCodexId ? 1 : 0);
     });
@@ -1751,7 +1764,10 @@ const projectLegacyMirror = (mirror) => {
       if (species.alias !== null) names.push([`c${legacyCodexId}`, species.alias]);
       const provenance = discovery.provenance;
       const from = provenance.kind === 'legacy'
-        ? provenance.from : `Canonical world ${provenance.worldAddress.planet.seed}`;
+        ? provenance.from
+        : provenance.kind === 'paragon'
+          ? `Paragon site #${provenance.paragonIndex + 1}`
+          : `Canonical world ${provenance.worldAddress.planet.seed}`;
       const where = provenance.kind === 'legacy'
         ? provenance.legacyLocation?.display ?? null : legacyWorldWhere(provenance.worldAddress);
       return { legacyCodexId, g: genome, f: from, w: where };

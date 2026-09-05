@@ -801,6 +801,7 @@ describe('Arc 4 registered acquisition snapshot ownership', () => {
       './feed-internal': './src/feed.ts',
       './explorer-meal-internal': './src/explorer-meal.ts',
       './bioscan-internal': './src/bioscan.ts',
+      './paragon-internal': './src/paragon-internal.ts',
       './breed-internal': './src/breed.ts',
       './rename-internal': './src/rename.ts',
       './combat-settlement-internal': './src/combat-settlement-internal.ts',

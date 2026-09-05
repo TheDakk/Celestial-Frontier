@@ -19,6 +19,7 @@ import {
 } from '@cf/domain-acquisition';
 import {
   preflightArc5BioscanV1,
+  settleArc5BioscanParagonV1,
   settleArc5BioscanV1,
 } from '@cf/domain-acquisition/bioscan-internal';
 import { makeGenome } from '@cf/domain-genome';
@@ -35,7 +36,7 @@ import {
   projectWorldOpportunity,
 } from '@cf/domain-opportunity';
 import { createSessionRNG, DOMAINS } from '@cf/domain-sessionrng';
-import { resolveCF1WorldAddress } from '@cf/scene';
+import { resolveCF1WorldAddress, type CanonicalCF1WorldAddress } from '@cf/scene';
 import {
   ARC3_ENGINEERING_NAMESPACE,
   ARC3_ENGINEERING_SEGMENT,
@@ -52,6 +53,8 @@ import {
   prepareArc5OwnershipMigration,
   prepareF4AuthorityUpdate,
   prepareV5SaveWrite,
+  projectLegacyOwnershipMirror,
+  readArc4Ownership,
   readArc2EngineeringLoadout,
   readArc2Loot,
   projectArc2LootLegacyMirror,
@@ -69,6 +72,10 @@ import {
 } from '../apps/game/src/bioscan-action.js';
 import { prepareArc9ProgressionRefreshV1 } from '../apps/game/src/arc9-progression-projection.js';
 import { createF4RuntimeAuthority } from '../apps/game/src/f4-runtime-authority.js';
+import {
+  projectArc9ParagonFinderV1,
+  projectArc9ParagonLegacyCodexEntryV1,
+} from '../apps/game/src/paragon-finder.js';
 import { canonicalWorldRoster } from '../apps/game/src/world-roster.js';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
@@ -124,6 +131,7 @@ async function fixture(
     pendingRewardCapacityExhausted?: boolean;
     inventoryRevisionExhausted?: boolean;
     ownershipV2?: OwnershipStateV2;
+    address?: CanonicalCF1WorldAddress;
   }> = {},
 ) {
   const imported = importSaveV2('{}', REGISTRY, NOW);
@@ -260,7 +268,7 @@ async function fixture(
     now: () => 0, visible: true, answerable: true,
   });
   if ((await runtime.heartbeat()).kind !== 'owned') throw new Error('bioscan lease unavailable');
-  const address = earth();
+  const address = options.address ?? earth();
   const roster = canonicalWorldRoster(address, 0);
   if (!roster.ok) throw new Error(roster.reason);
   return {
@@ -269,6 +277,25 @@ async function fixture(
     opportunity: projectWorldOpportunity(address),
     armReceiptStorageFailure() { failReceiptCommit = true; },
   };
+}
+
+function priorParagonOwnership(
+  index: number,
+  address: CanonicalCF1WorldAddress,
+): OwnershipStateV2 {
+  const parent = migrateOwnershipStateV1ToV2(emptyOwnership());
+  const preflight = preflightArc5BioscanV1(parent);
+  if (preflight.kind !== 'ready') throw new Error(preflight.reason);
+  const bioscan = settleArc5BioscanV1(preflight.preflight, false, 0, 0, address.key);
+  const joined = settleArc5BioscanParagonV1(bioscan, index, address);
+  if (joined.kind !== 'added') throw new Error('Paragon ownership fixture was not added');
+  return joined.successor;
+}
+
+function paragonLocation(index = 0) {
+  const location = projectArc9ParagonFinderV1(index);
+  if (location.kind !== 'located') throw new Error(`Paragon ${index} was ${location.kind}`);
+  return location;
 }
 
 describe('hostile bioscan action', () => {
@@ -323,6 +350,7 @@ describe('hostile bioscan action', () => {
     expect(outcome.state.stats.surveys).toBe(1);
     expect(outcome.state.hp).toBeGreaterThanOrEqual(1);
     expect(outcome.settlement.hostile).toBe(false);
+    expect(outcome.paragon).toEqual({ kind: 'none', index: null, codexId: null });
     expect(outcome.achievementIdsAdded).toEqual([]);
     expect(outcome.postHazardAggregateAchievementIdsAdded).toEqual([]);
     expect(outcome.starterCharter).toMatchObject({
@@ -353,6 +381,135 @@ describe('hostile bioscan action', () => {
     }
     const repeat = await commitBioscanActionV1({ ...input, state: outcome.state });
     expect(repeat).toMatchObject({ kind: 'refused', detail: 'already-recorded', transaction: null });
+    await f.runtime.release();
+  });
+
+  it('catalogues the exact home-world Paragon in the same Bioscan receipt without capture or Yield', async () => {
+    const location = paragonLocation();
+    const f = await fixture(0xB105CA7, [], {
+      address: location.address,
+      configureState(state) {
+        state.chDone = ['st-land', 'st-mine', 'st-scan', 'st-scout', 'st-conq'];
+      },
+    });
+    const before = JSON.stringify(f.state);
+    const outcome = await commitBioscanActionV1({
+      runtime: f.runtime, ownershipV2: f.ownershipV2, engineering: f.engineering,
+      capabilities: f.capabilities, state: f.state, address: f.address,
+      roster: f.roster, opportunity: f.opportunity, settled: false, codecNow: NOW,
+    });
+    expect(outcome.kind, JSON.stringify(outcome)).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.paragon).toEqual({
+      kind: 'added', index: location.index, codexId: location.codexId,
+    });
+    expect(outcome.transaction).toMatchObject({
+      revision: 1,
+      plan: { domain: DOMAINS.surveyHazard, receiptOrdinal: 0 },
+    });
+    expect(outcome.state.stats.paragons).toBe(1);
+    // A catalogue sighting does not auto-claim the separate Binder milestone.
+    expect(outcome.state.essence).toBe(f.state.essence);
+    expect(outcome.state.stats.charters ?? 0).toBe(f.state.stats.charters ?? 0);
+    expect(outcome.state.codex).toHaveLength(1);
+    expect(outcome.state.codex[0]).toEqual([
+      location.codexId,
+      projectArc9ParagonLegacyCodexEntryV1(location),
+    ]);
+    expect(outcome.postHazardAggregateAchievementIdsAdded).toContain('first');
+    expect(outcome.state.unlocked).toContain('first');
+    const source = ownershipSourceStateV1(outcome.ownershipV2);
+    expect(source).toMatchObject({ revision: 1, scoutCreatureId: null });
+    expect(source.catalogSpecies).toHaveLength(1);
+    expect(source.discoveries).toHaveLength(1);
+    expect(source.discoveries[0]).toMatchObject({
+      acquisition: 'paragon', firstForSpecies: true,
+      provenance: {
+        kind: 'paragon', paragonIndex: location.index,
+        worldKey: location.address.key, receiptOrdinal: 0,
+      },
+    });
+    expect(source.creatures).toEqual([]);
+    expect(source.specimenLots).toEqual([]);
+    expect(source.biosphereProgress).toEqual([]);
+    expect(outcome.ownershipV2.creatures).toEqual([]);
+    expect(outcome.ownershipV2.specimenLots).toEqual([]);
+    expect(outcome.ownershipWrites).toHaveLength(23);
+    expect(JSON.stringify(f.state)).toBe(before);
+    expect(await f.repository.revision()).toBe(1);
+    expect(await f.repository.readReceipt(0)).toEqual(outcome.transaction.receipt);
+    expect(f.runtime.sessionRng).toEqual({
+      seed: 0xB105CA7,
+      ordinal: 1,
+      draws: { [DOMAINS.surveyHazard]: 1 },
+    });
+    const durableArc4 = readArc4Ownership(
+      f.runtime.extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    expect(durableArc4.kind).toBe('loaded');
+    if (durableArc4.kind === 'loaded') {
+      expect(durableArc4.state).toEqual(source);
+      expect(projectLegacyOwnershipMirror(durableArc4.state)).toMatchObject({
+        kind: 'projected',
+        codex: [{ legacyCodexId: location.codexId, f: 'Paragon site #1' }],
+      });
+    }
+    const published = structuredClone(f.state);
+    publishBioscanActionV1(published, outcome);
+    expect(published).toEqual(outcome.state);
+    await f.runtime.release();
+  });
+
+  it('treats an exact already-catalogued Paragon as a fixed point with no repeat reward', async () => {
+    const location = paragonLocation();
+    const ownershipV2 = priorParagonOwnership(location.index, location.address);
+    const legacyEntry = projectArc9ParagonLegacyCodexEntryV1(location);
+    const ownershipMirror = projectLegacyOwnershipMirror(ownershipSourceStateV1(ownershipV2));
+    expect(ownershipMirror.kind).toBe('projected');
+    if (ownershipMirror.kind !== 'projected') return;
+    expect({
+      legacyCodexId: legacyEntry.id,
+      g: legacyEntry.g,
+      f: legacyEntry.from,
+      w: legacyEntry.where,
+    }).toEqual(ownershipMirror.codex[0]);
+    const f = await fixture(0xB105CA7, [], {
+      address: location.address,
+      ownershipV2,
+      configureState(state) {
+        state.codex = [[legacyEntry.id, structuredClone(legacyEntry)]];
+        state.stats = {
+          ...state.stats,
+          paragons: 1,
+          best: legacyEntry.tier ?? 0,
+          maxGen: typeof legacyEntry.g.gen === 'number' ? legacyEntry.g.gen : 0,
+        };
+        const refresh = prepareArc9ProgressionRefreshV1(state);
+        if (refresh.kind === 'ready') {
+          state.unlocked = [...refresh.successorState.unlocked];
+          state.stats = { ...refresh.successorState.stats };
+        }
+      },
+    });
+    const sourceBefore = ownershipSourceStateV1(f.ownershipV2);
+    const outcome = await commitBioscanActionV1({
+      runtime: f.runtime, ownershipV2: f.ownershipV2, engineering: f.engineering,
+      capabilities: f.capabilities, state: f.state, address: f.address,
+      roster: f.roster, opportunity: f.opportunity, settled: false, codecNow: NOW,
+    });
+    expect(outcome.kind, JSON.stringify(outcome)).toBe('committed');
+    if (outcome.kind !== 'committed') return;
+    expect(outcome.paragon).toEqual({
+      kind: 'repeat', index: location.index, codexId: location.codexId,
+    });
+    expect(outcome.state.stats.paragons).toBe(1);
+    expect(outcome.state.codex).toEqual(f.state.codex);
+    expect(outcome.ownershipWrites).toEqual([]);
+    expect(ownershipSourceStateV1(outcome.ownershipV2)).toEqual(sourceBefore);
+    expect(outcome.ownershipV2.revision).toBe(f.ownershipV2.revision);
+    expect(outcome.postHazardAggregateAchievementIdsAdded).toEqual([]);
+    expect(await f.repository.revision()).toBe(1);
     await f.runtime.release();
   });
 
@@ -776,6 +933,125 @@ describe('hostile bioscan action', () => {
     expect(f.runtime.sessionRng).toEqual({ seed: 0xB105CA7, ordinal: 0, draws: {} });
     expect(JSON.stringify(await readSaveV5(f.backend, REGISTRY, NOW)))
       .toBe(JSON.stringify(savedBefore));
+    await f.runtime.release();
+  });
+
+  it('refuses a stale exact-home Paragon Bioscan without a retry, receipt, or RNG advance', async () => {
+    const location = paragonLocation();
+    const f = await fixture(0xB105CA7, [], { address: location.address });
+    const savedBefore = await readSaveV5(f.backend, REGISTRY, NOW);
+    await f.repository.mutate({
+      expectedRevision: 0,
+      writes: [{ store: 'player', key: 'paragon-race-winner', value: 'other-tab' }],
+    });
+    const outcome = await commitBioscanActionV1({
+      runtime: f.runtime, ownershipV2: f.ownershipV2, engineering: f.engineering,
+      capabilities: f.capabilities, state: f.state, address: f.address,
+      roster: f.roster, opportunity: f.opportunity, settled: false, codecNow: NOW,
+    });
+    expect(outcome).toMatchObject({
+      kind: 'refused', durability: 'none', convergence: 'read-only-reload',
+      detail: 'transaction:stale',
+      transaction: { kind: 'stale', expectedRevision: 0, actualRevision: 1 },
+    });
+    expect(await f.repository.readReceipt(0)).toBeUndefined();
+    expect(f.runtime.sessionRng).toEqual({ seed: 0xB105CA7, ordinal: 0, draws: {} });
+    expect(JSON.stringify(await readSaveV5(f.backend, REGISTRY, NOW)))
+      .toBe(JSON.stringify(savedBefore));
+    await f.runtime.release();
+  });
+
+  it('fails exact-home Paragon storage once with no receipt, revision, or optimistic publication', async () => {
+    const location = paragonLocation();
+    const f = await fixture(0xB105CA7, [], { address: location.address });
+    const before = JSON.stringify(f.state);
+    const savedBefore = await readSaveV5(f.backend, REGISTRY, NOW);
+    f.armReceiptStorageFailure();
+    const outcome = await commitBioscanActionV1({
+      runtime: f.runtime, ownershipV2: f.ownershipV2, engineering: f.engineering,
+      capabilities: f.capabilities, state: f.state, address: f.address,
+      roster: f.roster, opportunity: f.opportunity, settled: false, codecNow: NOW,
+    });
+    expect(outcome).toMatchObject({
+      kind: 'refused', durability: 'none', convergence: 'read-only-reload',
+      detail: 'transaction:storage-error',
+      transaction: { kind: 'storage-error', message: 'forced Starter Charter Bioscan storage failure' },
+    });
+    expect(JSON.stringify(f.state)).toBe(before);
+    expect(await f.repository.revision()).toBe(0);
+    expect(await f.repository.readReceipt(0)).toBeUndefined();
+    expect(f.runtime.sessionRng).toEqual({ seed: 0xB105CA7, ordinal: 0, draws: {} });
+    expect(JSON.stringify(await readSaveV5(f.backend, REGISTRY, NOW)))
+      .toBe(JSON.stringify(savedBefore));
+    await f.runtime.release();
+  });
+
+  it('refuses an exhausted Paragon counter before saving any transaction consequence', async () => {
+    const location = paragonLocation();
+    const f = await fixture(0xB105CA7, [], {
+      address: location.address,
+      configureState(state) {
+        state.stats = { ...state.stats, paragons: 1_000_000_000 };
+      },
+    });
+    const before = JSON.stringify(f.state);
+    const outcome = await commitBioscanActionV1({
+      runtime: f.runtime, ownershipV2: f.ownershipV2, engineering: f.engineering,
+      capabilities: f.capabilities, state: f.state, address: f.address,
+      roster: f.roster, opportunity: f.opportunity, settled: false, codecNow: NOW,
+    });
+    expect(outcome).toMatchObject({
+      kind: 'refused', durability: 'none', convergence: 'none',
+      detail: 'transaction:rejected',
+      transaction: {
+        kind: 'rejected', stage: 'derive',
+        message: 'Paragon discovery counter is exhausted',
+      },
+    });
+    expect(JSON.stringify(f.state)).toBe(before);
+    expect(await f.repository.revision()).toBe(0);
+    expect(await f.repository.readReceipt(0)).toBeUndefined();
+    expect(f.runtime.sessionRng).toEqual({ seed: 0xB105CA7, ordinal: 0, draws: {} });
+    await f.runtime.release();
+  });
+
+  it('requires the exact postcommit Paragon Arc 4 and Arc 5 carriers', async () => {
+    const location = paragonLocation();
+    const f = await fixture(0xB105CA7, [], { address: location.address });
+    const extensionsBefore = f.runtime.extensions;
+    const runtime = {
+      commitOutcome: async (...args: Parameters<typeof f.runtime.commitOutcome>) => {
+        const committed = await f.runtime.commitOutcome(...args);
+        return committed.kind === 'committed'
+          ? Object.freeze({
+              ...committed,
+              saved: Object.freeze({ ...committed.saved, extensions: extensionsBefore }),
+            })
+          : committed;
+      },
+    };
+    const outcome = await commitBioscanActionV1({
+      runtime, ownershipV2: f.ownershipV2, engineering: f.engineering,
+      capabilities: f.capabilities, state: f.state, address: f.address,
+      roster: f.roster, opportunity: f.opportunity, settled: false, codecNow: NOW,
+    });
+    expect(outcome).toMatchObject({
+      kind: 'committed-convergence', durability: 'committed',
+      convergence: 'read-only-reload', detail: 'committed-bioscan-fixed-point-mismatch',
+      transaction: { kind: 'committed', revision: 1 },
+    });
+    expect(await f.repository.revision()).toBe(1);
+    expect(await f.repository.readReceipt(0)).toBeDefined();
+    const durableArc4 = readArc4Ownership(
+      f.runtime.extensions,
+      SCENE_OWNERSHIP_ADDRESS_RESOLVER,
+    );
+    expect(durableArc4.kind).toBe('loaded');
+    if (durableArc4.kind === 'loaded') {
+      expect(durableArc4.state.discoveries[0]?.provenance).toMatchObject({
+        kind: 'paragon', paragonIndex: 0,
+      });
+    }
     await f.runtime.release();
   });
 

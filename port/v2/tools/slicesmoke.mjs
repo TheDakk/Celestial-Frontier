@@ -1199,7 +1199,7 @@ const STALE_AUTOSAVE_RAW = (() => {
 })();
 const FUTURE_V99_RAW = JSON.stringify({ v: 99, epoch: 0, codex: [], land: [], at: 1 });
 const RELEASE_FIXTURE_VERSION = '2.0.0-test';
-const V2_DRAFT_BULLET_COUNT = 78;
+const V2_DRAFT_BULLET_COUNT = 79;
 const GUIDE_RELEASE_TAIL_TEXT = '🌐 DEVELOPMENT PUBLISHING STAYS PARKED: The owner-authorized, labelled PR battery can build, browser-check, and archive an exact-commit v2.0 preview package with full Guide identity, origin refusal, and byte inventory; it does not publish. The separate branch-site workflow remains manually parked, and production remains the v1.8.9 main-branch site.';
 const READ_PRIMARY_EXPRESSION = `new Promise((resolve,reject)=>{ const q=indexedDB.open('cf-v2-slice');
   q.onerror=()=>reject(q.error); q.onsuccess=()=>{ const db=q.result,tx=db.transaction('meta','readonly'),g=tx.objectStore('meta').get('save');
@@ -6707,8 +6707,8 @@ try {
     sha256: 'a9fa0a2dda99b6f8a4961e1e38084bf4f4976151154d034aeb34a741f9f5ccac',
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
-    count: 78,
-    sha256: 'af45980c0e67feebc027465f7a864c7ac80f351806b189d3e44fda465247dc53',
+    count: 79,
+    sha256: '62f3490095d87bb99903ddf3e5ad0e5f03dadbe38da874835bd9f98654756194',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -7022,7 +7022,13 @@ try {
       'living planet’s Survey card offers Discover Life before or after landing',
       'Ordinary card inspection remains write-free', 'Discover Life is the single durable bioscan',
       'records that exact living world and resolves one deterministic hazard draw',
-      'catalogues no species and spends no Biosphere Yield',
+      "On ordinary worlds, it catalogues no species and spends no Biosphere Yield",
+      "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record",
+      "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield",
+      "Repeat sightings add no duplicate record or discovery reward",
+      "Binder Claim becomes available at ten exact Paragons and pays its established 120 Stardust once",
+      "discovering a Paragon never pays that Set reward automatically",
+      "A development save that recorded a Paragon home before this feature keeps its already-recorded Bioscan refusal; returning does not backfill the Paragon",
       'Reinforced Hull reduces hostile damage by 25% before worn bioscan protection',
       'assigned Field Scout takes the nonlethal wound and is capped at Critical',
       'explorer remains at or above 1 HP',
@@ -7052,7 +7058,8 @@ try {
       'real Flora detail separately offers Eat 1 for explorer healing, poison, and stat nourishment',
       'Companion Feed still does not discover tastes or flavours, grow stats or Power, heal injuries, apply poison, or build a bond',
       'Dispatch, missions, care, bond, passive evolution, and friendly duels remain unavailable',
-    ], contradictions: [
+    ], requiredControls: ["On ordinary worlds, it catalogues no species and spends no Biosphere Yield", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "becomes available at ten exact Paragons and pays its established", "120 Stardust", "discovering a Paragon never pays that Set reward automatically", "A development save that recorded a Paragon home before this feature keeps its already-recorded Bioscan refusal; returning does not backfill the Paragon"], contradictions: [
+      "Found Paragons plot a course instead of opening Inspect.", "Missing silhouettes open Inspect instead of plotting a course.", "Discover Life on any world adds a Paragon catalogue record.", "An ordinary-world Bioscan catalogues a species.", "A Paragon sighting creates an owned companion.", "A Paragon sighting creates a specimen.", "A Paragon sighting grants Capture credit.", "A Paragon sighting spends 1 Biosphere Yield.", "A Paragon sighting automatically pays 120 Stardust.", "Seeker of Legends is claimable after one Paragon.", "Repeat Paragon sightings add a discovery reward.", "A prior Paragon-set claim can pay again.", "Returning to a previously recorded Paragon home backfills its catalogue record.",
       'The player chooses a visible species row to target.', 'Sample creates a living companion.',
       'Tame chooses only from the visible preview.',
       'Only a hit spends Yield.', 'Biosphere Yield is separate for each action.',
@@ -7067,6 +7074,9 @@ try {
       'Survey catalogues life and makes a capture attempt.',
       'Surface conquest has not been connected in this build.',
     ] },
+    { id: 'binder', title: 'The Binder & the Fifty Paragons', missingAnchor: "which opens that exact existing Compendium record without travel or acquisition",
+      required: ["Eight established collection sets are live: Four Crowns, The Five Flavors, Master of Arts, The Bestiary, Warden of Realms, Against All Odds, The Apex Court, and Seeker of Legends", "A missing silhouette offers Plot course", "to its source-proven home through the existing ship and Prime reach checks", "an accepted world route opens Survey, and Land remains separate", "A found entry offers Inspect", "which opens that exact existing Compendium record without travel or acquisition", "Its ordinary Back control returns to the Compendium list", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "Binder Claim becomes available at ten exact Paragons and pays its established 120 Stardust once", "discovering a Paragon never pays that Set reward automatically", "A prior Paragon-set claim remains claimed and can never pay again"],
+      requiredControls: ["Eight established collection sets are live: Four Crowns, The Five Flavors, Master of Arts, The Bestiary, Warden of Realms, Against All Odds, The Apex Court, and Seeker of Legends", "to its source-proven home through the existing ship and Prime reach checks", "an accepted world route opens Survey, and Land remains separate", "which opens that exact existing Compendium record without travel or acquisition", "Its ordinary Back control returns to the Compendium list", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward", "becomes available at ten exact Paragons and pays its established", "120 Stardust", "discovering a Paragon never pays that Set reward automatically", "A prior Paragon-set claim remains claimed and can never pay again"], contradictions: ["Found Paragons plot a course instead of opening Inspect.", "Missing silhouettes open Inspect instead of plotting a course.", "Discover Life on any world adds a Paragon catalogue record.", "An ordinary-world Bioscan catalogues a species.", "A Paragon sighting creates an owned companion.", "A Paragon sighting creates a specimen.", "A Paragon sighting grants Capture credit.", "A Paragon sighting spends 1 Biosphere Yield.", "A Paragon sighting automatically pays 120 Stardust.", "Seeker of Legends is claimable after one Paragon.", "Repeat Paragon sightings add a discovery reward.", "A prior Paragon-set claim can pay again.", "Returning to a previously recorded Paragon home backfills its catalogue record."] },
     { id: 'research', title: 'Research & ships', missingAnchor: 'Research Bench lists exactly six canonical, durably purchasable rows', required: [
       'Engineering & Shipyard', 'Research Bench lists exactly six canonical, durably purchasable rows',
       'Deep Scanners reveal bounded orbital mineral facts',
@@ -7130,7 +7140,7 @@ try {
     required=${JSON.stringify(spec.required)},missing=required.filter((part)=>!text.includes(part)),
     contradictory=/Survey[^.!?]{0,80}(?:catalogues life|makes a capture attempt|authorizes mining)|current Survey card does not yet (?:render|show|paint)[^.!?]{0,80}(?:orbit|mineral)|(?:renders|shows|paints) every orbital mineral|orbital Survey (?:also |now )?(?:shows|reveals|includes|names)[^.!?]{0,96}(?:cosmic|exceptional|grades?|reserves?|progress|Mine)|Living worlds can be mined|wall clock accrues new loads|remnant skim can never harm HP|corona passes are unlimited|(?:Mine|Skim|Survey)[^.!?]{0,80}earns? Stardust|(?:you|the player|the explorer)[^.!?]{0,32}(?:choose|select|target)[^.!?]{0,64}(?:species|row|life-form)|(?:Tame|Scavenge|Sample|Capture)[^.!?]{0,32}(?:targets?|uses? the selected|lets? you choose)[^.!?]{0,48}(?:species|row|preview)|(?:Tame|Scavenge|Sample)[^.!?]{0,96}(?:draws?|chooses?)[^.!?]{0,48}(?:only|solely)[^.!?]{0,48}(?:preview|visible|eight-row)|miss(?:es)?[^.!?]{0,64}(?:cost|spend)s? (?:nothing|no Yield|zero)|(?:only|just) (?:a )?(?:hit|success)[^.!?]{0,64}spends?[^.!?]{0,32}(?:Yield|attempt)|Biosphere Yield[^.!?]{0,96}(?:separate|individual|independent)[^.!?]{0,48}(?:for|per|between)[^.!?]{0,32}(?:Tame|Scavenge|Sample|verb|action)|(?:pool|Yield)[^.!?]{0,64}(?:recovers?|refills?|recharges?)[^.!?]{0,32}(?:while|when|from|with)[^.!?]{0,48}(?:closed|offline|wall clock|real time)|(?:repeat|later-world|later-cycle)[^.!?]{0,80}(?:also |again )?(?:adds?|earns?|awards?)(?: a)? (?:second|new) (?:Compendium page|Rare Find|first-find reward)|(?:Capture|Tame|Scavenge|Sample)(?![^.!?]{0,160}\\bsource-proven world beyond Sol\\b)[^.!?]{0,160}(?:banks?|advances?|counts?)\\b[^.!?]{0,64}(?:Charter|bioscan|life-discovery)|(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)|\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)|(?:separate )?Discover Life action[^.!?]{0,64}(?:is|becomes) (?:now )?(?:live|available|restored)|(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)|All six research rows can be purchased|Research banks Charter fabrication credit|(?:mixed stock|mixed-material craft)[^.!?]{0,80}(?:receives?|carries?|gets?|adds?)[^.!?]{0,80}(?:Pureforged|crafted modifier)|Pureforged[^.!?]{0,80}(?:rerolls?|changes?)[^.!?]{0,64}(?:reload|reopen)|authored (?:natural )?affixes\\/drawbacks are now available|(?:item )?upgrades are now available|sockets are now available|vendors are now available|Records board now (?:displays|lists)[^.!?]*(?:mining|skimming)|visible Records rows now include[^.!?]*Fabricator/i.test(text);
     const policyContradictory=/Weekly Charters?[^.!?]{0,64}(?:pay|earn|award)[^.!?]{0,32}Stardust|passive Stardust gain[^.!?]{0,32}(?:live|available)|Starter Charter rewards?[^.!?]{0,32}(?:remain|are) unavailable|Binder Set claims?[^.!?]{0,32}(?:do not|never) pay Stardust|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)/i.test(text),
-      anyContradictory=contradictory||policyContradictory;
+      anyContradictory=contradictory||policyContradictory||/Found Paragons plot a course instead of opening Inspect|Missing silhouettes open Inspect instead of plotting a course|Discover Life on any world adds a Paragon catalogue record|An ordinary\-world Bioscan catalogues a species|A Paragon sighting creates an owned companion|A Paragon sighting creates a specimen|A Paragon sighting grants Capture credit|A Paragon sighting spends 1 Biosphere Yield|A Paragon sighting automatically pays 120 Stardust|Seeker of Legends is claimable after one Paragon|Repeat Paragon sightings add a discovery reward|A prior Paragon\-set claim can pay again|Returning to a previously recorded Paragon home backfills its catalogue record/i.test(text);
     return {ok:title.includes(${JSON.stringify(spec.title)})&&status==='partial'&&missing.length===0&&!anyContradictory,
       title,status,missing,contradictory:anyContradictory,text};})()`;
   for (const spec of arc3GuideSpecs) {
@@ -7143,9 +7153,21 @@ try {
       const missing=${renderedArc3GuideCheck(spec)};if(textNode)textNode.nodeValue=prior;
       const contradictions=[];for(const copy of ${JSON.stringify(spec.contradictions)}){marker.textContent=copy;article?.appendChild(marker);
         const result=${renderedArc3GuideCheck(spec)};marker.remove();contradictions.push({copy,result});}
-      const restored=${renderedArc3GuideCheck(spec)};return {textNodeFound:!!textNode,missing,contradictions,restored};})()`);
+      const requiredChecks=[];
+      for(const needle of ${JSON.stringify(spec.requiredControls??[])}){
+        const walk=article?document.createTreeWalker(article,NodeFilter.SHOW_TEXT):null,matches=[];
+        let candidate;while(walk&&(candidate=walk.nextNode()))if((candidate.nodeValue||'').includes(needle))matches.push(candidate);
+        const target=matches.length===1?matches[0]:null,priorValue=target?.nodeValue??null;
+        try{if(target)target.nodeValue=priorValue.replace(needle,'required Paragon outcome omitted');
+          requiredChecks.push({needle,count:matches.length,changed:!!target&&target.nodeValue!==priorValue,result:${renderedArc3GuideCheck(spec)}});}
+        finally{if(target)target.nodeValue=priorValue;}
+      }
+      const restored=${renderedArc3GuideCheck(spec)};return {textNodeFound:!!textNode,missing,contradictions,requiredChecks,restored};})()`);
     if (!rendered.ok) fails.push(`GUIDE Arc 3 ${spec.id} truth did not render: ` + JSON.stringify(rendered));
     if (!control.textNodeFound || control.missing?.ok || !control.missing?.missing?.includes(spec.missingAnchor)
+      || control.requiredChecks?.length !== (spec.requiredControls?.length??0)
+      || control.requiredChecks.some((row)=>row.count!==1||!row.changed||row.result?.ok
+        ||!row.result?.missing?.some((part)=>part.includes(row.needle)))
       || control.contradictions?.length !== spec.contradictions.length
       || control.contradictions.some((row) => row.result?.ok || !row.result?.contradictory) || !control.restored?.ok) {
       fails.push(`GUIDE ARC 3 ${spec.id.toUpperCase()} CONTROL FAILED — missing/contradictory player copy stayed current or failed to restore: `
@@ -7739,6 +7761,8 @@ try {
      capture=bulletNodes.find((item)=>/DISCOVER LIFE AND CAPTURE HAVE HONEST LIMITS/.test(item.textContent||'')),
       starterCharter=bulletNodes.find((item)=>/THE CHARTER STOPS AT THE LIVE FRONTIER/.test(item.textContent||'')),
       rankRecord=bulletNodes.find((item)=>/EVERY EXPEDITION HAS A RANKED RECORD/.test(item.textContent||'')),
+      paragon=bulletNodes.find((item)=>/FOLLOW THE FIFTY:/.test(item.textContent||'')),
+      paragonText=paragon?.textContent||'',
       fieldScout=bulletNodes.find((item)=>/ONE EXACT FIELD SCOUT, NEVER A GUESS/.test(item.textContent||'')),
       surfaceConquest=bulletNodes.find((item)=>/ONE WORLD, ONE VERIFIED DUEL/.test(item.textContent||'')),
       frontierAudio=bulletNodes.find((item)=>/THE FRONTIER SPEAKS/.test(item.textContent||'')),
@@ -7843,11 +7867,14 @@ try {
         ||/(?:miss|later success|repeat|stale tab|failed write)(?![^.!?]{0,128}\\bbanks nothing\\b)[^.!?]{0,128}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(captureText)
         ||/\\b(?:on|in) Sol\\b[^.!?]{0,96}(?:banks?|advances?|counts?)[^.!?]{0,48}(?:Charter|bioscan|life-discovery|tick)/i.test(captureText)
         ||/Discover Life[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}weekly[^.!?]{0,48}(?:Charter|bioscan)|(?:older Survey|ordinary capture)[^.!?]{0,128}(?:completes?|advances?|banks?)[^.!?]{0,64}(?:accepted|weekly)[^.!?]{0,48}(?:Charter|bioscan)/i.test(captureText)
-        ||/(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)/i.test(captureText),
+        ||/(?:Scavenge|Sample)(?![^.!?]*\\bnever\\b)[^.!?]{0,128}(?:creates?|adds?)[^.!?]{0,64}(?:living companions?|owned creatures?)/i.test(captureText)||/Found Paragons plot a course instead of opening Inspect|Missing silhouettes open Inspect instead of plotting a course|Discover Life on any world adds a Paragon catalogue record|An ordinary\-world Bioscan catalogues a species|A Paragon sighting creates an owned companion|A Paragon sighting creates a specimen|A Paragon sighting grants Capture credit|A Paragon sighting spends 1 Biosphere Yield|A Paragon sighting automatically pays 120 Stardust|Seeker of Legends is claimable after one Paragon|Repeat Paragon sightings add a discovery reward|A prior Paragon\-set claim can pay again|Returning to a previously recorded Paragon home backfills its catalogue record/i.test(captureText),
       captureContract=captureHeading==='Gameplay'
         &&captureText.includes('living planet’s Survey card offers explicit Discover Life before or after landing')
         &&captureText.includes('Ordinary inspection stays write-free')
-        &&captureText.includes('action records that exact world and resolves one shown deterministic hazard without cataloguing a species or spending Biosphere Yield')
+        &&captureText.includes('On ordinary worlds, the action records that exact world and resolves one shown deterministic hazard without cataloguing a species or spending Biosphere Yield')
+        &&captureText.includes("At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record")
+        &&captureText.includes("It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield")
+        &&captureText.includes("Repeat sightings add no duplicate record or discovery reward")
         &&captureText.includes('Reinforced Hull reduces hostile damage by 25% before worn bioscan protection')
         &&captureText.includes('assigned Field Scout intercepts the nonlethal wound at no worse than Critical')
         &&captureText.includes('Any hostile outcome owns survivor in that same receipt whether Scout or explorer absorbs the wound')
@@ -7877,7 +7904,7 @@ try {
         &&captureText.includes('Narrow companion Feed, nonlethal Breed, exact-instance Rename, requested Listen, and Field Scout selection are available from a real fauna detail')
         &&captureText.includes('friendly duels, passive evolution, dispatch, missions, care, and bond remain unavailable')
         &&!captureContradiction,
-      liveProgressionContradiction=/Charter rewards?[^.!?]{0,48}(?:remain|are) unavailable|Binder (?:Set )?claims?[^.!?]{0,48}(?:do not|never) pay Stardust|Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)|(?:miss|repeat species|no standing Scout)[^.!?]{0,64}(?:earns?|grants?|awards?)\\b(?!\\s+no\\b)[^.!?]{0,32}Scout XP|accepted wk-conq[^.!?]{0,96}(?:completes?|pays?|awards?)/i.test(text),
+      liveProgressionContradiction=/Charter rewards?[^.!?]{0,48}(?:remain|are) unavailable|Binder (?:Set )?claims?[^.!?]{0,48}(?:do not|never) pay Stardust|Conquest goals?[^.!?]{0,80}(?:remain|stay|are) (?:hidden|unavailable)|Surface conquest[^.!?]{0,64}(?:has not been connected|is unavailable)|(?:miss|repeat species|no standing Scout)[^.!?]{0,64}(?:earns?|grants?|awards?)\\b(?!\\s+no\\b)[^.!?]{0,32}Scout XP|accepted wk-conq[^.!?]{0,96}(?:completes?|pays?|awards?)/i.test(text)||/Found Paragons plot a course instead of opening Inspect|Missing silhouettes open Inspect instead of plotting a course|Discover Life on any world adds a Paragon catalogue record|An ordinary\-world Bioscan catalogues a species|A Paragon sighting creates an owned companion|A Paragon sighting creates a specimen|A Paragon sighting grants Capture credit|A Paragon sighting spends 1 Biosphere Yield|A Paragon sighting automatically pays 120 Stardust|Seeker of Legends is claimable after one Paragon|Repeat Paragon sightings add a discovery reward|A prior Paragon\-set claim can pay again|Returning to a previously recorded Paragon home backfills its catalogue record/i.test(text),
       liveProgressionContract=starterCharterText.includes('two established starter chains one unfinished link at a time')
         &&starterCharterText.includes('first planetfall beyond canonical Earth, one Mine, a non-null Field Scout assignment or switch, verified conquest')
         &&starterCharterText.includes('Each supported completion pays its established 10–25 Stardust once in the same receipt')
@@ -7885,7 +7912,21 @@ try {
         &&starterCharterText.includes('accepted Discover Life Starter Charter completes only from a later explicit Bioscan in that same receipt')
         &&starterCharterText.includes('older Surveys and capture do not count')
         &&starterCharterText.includes('Accepted wk-conq remains fail-closed because its weekly lifecycle owner is missing')
-        &&rankRecordText.includes('Records also houses the Binder’s six established type pages and seven current-proof Set claims')
+        &&rankRecordText.includes("Records also houses the Binder’s six established type pages and eight current-proof Set claims")
+        &&rankRecordText.includes("the Fifty-Paragon hunt is live, and prior Set claims remain claimed")
+        &&rankRecordText.includes("Missing silhouettes plot their source-proven homes, while found entries use Inspect to open the exact Compendium record without travel")
+        &&rankRecordText.includes("Seeker of Legends is a separate Binder Claim at ten exact Paragons for 120 Stardust once")
+        &&rankRecordText.includes("a sighting never pays that Set reward automatically")
+        &&(paragon?.parentElement?.previousElementSibling?.textContent||'').trim()==='New Features & Systems'
+        &&paragonText.includes("FOLLOW THE FIFTY:")
+        &&paragonText.includes("A missing silhouette plots its source-proven home through existing ship and Prime reach checks")
+        &&paragonText.includes("a found entry uses Inspect to open its exact existing Compendium record without travel")
+        &&paragonText.includes("Back returns to the Compendium list")
+        &&paragonText.includes("Discover Life at an exact fixed home adds only that Paragon catalogue record in the same verified save")
+        &&paragonText.includes("with no owned companion or specimen, no Capture credit and no Biosphere Yield spend")
+        &&paragonText.includes("Repeat sightings add no duplicate record or discovery reward")
+        &&paragonText.includes("Seeker of Legends becomes claimable after ten exact Paragons through a separate Binder Claim and pays its established 120 Stardust once")
+        &&paragonText.includes("a sighting never pays that Set reward automatically")
         &&rankRecordText.includes('One completed unclaimed Set pays its established 25–150 Stardust')
         &&rankRecordText.includes('Twenty-six exact joins now belong to their true actions')
         &&rankRecordText.includes('any hostile Discover Life encounter whether the Field Scout or explorer takes the nonlethal wound')
@@ -8230,15 +8271,20 @@ try {
     const starterBackfillMissing=${releaseDraftCheck};
     row.textContent=prior.replace('Weekly bioscan Charters remain protected until their separate lifecycle is complete','weekly bioscan boundary removed');
     const weeklyBioscanMissing=${releaseDraftCheck};row.textContent=prior;
+    const paragonMissing=[];
+    for(const anchor of ["On ordinary worlds, the action records that exact world and resolves one shown deterministic hazard without cataloguing a species or spending Biosphere Yield", "At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record", "It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield", "Repeat sightings add no duplicate record or discovery reward"]){
+      row.textContent=prior.replace(anchor,'Paragon catalogue boundary omitted');
+      paragonMissing.push({anchor,changed:row.textContent!==prior,result:${releaseDraftCheck}});row.textContent=prior;
+    }
     const claims=['Tame targets the selected preview row.','Tame chooses only from the visible preview.',
       'Biosphere Yield is separate for each action.','Capture advances the Charter bioscan milestone.',
       'A miss banks one Chapter 2 life-discovery tick.','A successful capture on Sol banks one Charter bioscan tick.',
       'A later success on the same world banks another life-discovery tick.','A stale tab still banks one life-discovery tick.',
-      'A failed write advances the Charter bioscan.','An older Survey completes the accepted Discover Life Starter Charter retroactively.'],contradictions=[];
+      'A failed write advances the Charter bioscan.','An older Survey completes the accepted Discover Life Starter Charter retroactively.',"Found Paragons plot a course instead of opening Inspect.","Missing silhouettes open Inspect instead of plotting a course.","Discover Life on any world adds a Paragon catalogue record.","An ordinary-world Bioscan catalogues a species.","A Paragon sighting creates an owned companion.","A Paragon sighting creates a specimen.","A Paragon sighting grants Capture credit.","A Paragon sighting spends 1 Biosphere Yield.","A Paragon sighting automatically pays 120 Stardust.","Seeker of Legends is claimable after one Paragon.","Repeat Paragon sightings add a discovery reward.","A prior Paragon-set claim can pay again.","Returning to a previously recorded Paragon home backfills its catalogue record."],contradictions=[];
     for(const copy of claims){row.textContent=prior+' '+copy;const result=${releaseDraftCheck};contradictions.push({copy,result});}
     row.textContent=prior;
     wrongSection.appendChild(row);const placement=${releaseDraftCheck};parent.insertBefore(row,next);
-    const restored=${releaseDraftCheck};return {missing,bioscanMissing,bioscanExclusionMissing,discoverLifeMissing,matureBioscanMissing,starterBackfillMissing,weeklyBioscanMissing,contradictions,placement,
+    const restored=${releaseDraftCheck};return {missing,bioscanMissing,bioscanExclusionMissing,discoverLifeMissing,matureBioscanMissing,starterBackfillMissing,weeklyBioscanMissing,paragonMissing,contradictions,placement,
       restored:row.textContent===prior&&row.parentNode===parent&&restored.captureContract===true&&restored.honest===true};})()`);
   if (releaseCaptureCopyCtl.missing?.complete || releaseCaptureCopyCtl.missing?.captureContract
     || releaseCaptureCopyCtl.missing?.captureContradiction
@@ -8248,7 +8294,9 @@ try {
     || releaseCaptureCopyCtl.matureBioscanMissing?.complete || releaseCaptureCopyCtl.matureBioscanMissing?.captureContract
     || releaseCaptureCopyCtl.starterBackfillMissing?.complete || releaseCaptureCopyCtl.starterBackfillMissing?.captureContract
     || releaseCaptureCopyCtl.weeklyBioscanMissing?.complete || releaseCaptureCopyCtl.weeklyBioscanMissing?.captureContract
-    || releaseCaptureCopyCtl.contradictions?.length !== 10
+    || releaseCaptureCopyCtl.paragonMissing?.length !== 4
+    || releaseCaptureCopyCtl.paragonMissing.some(({changed,result})=>!changed||result?.complete||result?.captureContract!==false)
+    || releaseCaptureCopyCtl.contradictions?.length !== 23
     || releaseCaptureCopyCtl.contradictions.some(({ result }) => result?.complete
       || result?.honest || result?.captureContract || !result?.captureContradiction)
     || releaseCaptureCopyCtl.placement?.complete || releaseCaptureCopyCtl.placement?.captureContract
@@ -8259,26 +8307,41 @@ try {
   const releaseLiveProgressionCtl = await evalIn(`(()=>{const rows=[...document.querySelectorAll('#guidepanel .guide-topic li')],
     starter=rows.find((item)=>/THE CHARTER STOPS AT THE LIVE FRONTIER/.test(item.textContent||'')),
     binder=rows.find((item)=>/EVERY EXPEDITION HAS A RANKED RECORD/.test(item.textContent||'')),
+    paragon=rows.find((item)=>/FOLLOW THE FIFTY:/.test(item.textContent||'')),
     scout=rows.find((item)=>/ONE EXACT FIELD SCOUT, NEVER A GUESS/.test(item.textContent||'')),
     conquest=rows.find((item)=>/ONE WORLD, ONE VERIFIED DUEL/.test(item.textContent||''));
-    if(!starter||!binder||!scout||!conquest)return {missing:[],contradictions:[],restored:false,error:'missing live-progression release rows'};
+    if(!starter||!binder||!paragon||!scout||!conquest)return {missing:[],contradictions:[],restored:false,error:'missing live-progression release rows'};
     const fixtures=[[starter,'first planetfall beyond canonical Earth, one Mine, a non-null Field Scout assignment or switch, verified conquest','starter writer identity omitted'],
       [binder,'One completed unclaimed Set pays its established 25–150 Stardust','Binder reward omitted'],
       [scout,'Assigned, recovering, and injured companions stay eligible because the selector itself changes only the Scout pointer','Scout role boundary omitted'],
-      [conquest,'A landed non-Training Surface now lets the explorer, an eligible ordinary owned-fauna companion, or a live captured Guardian or Titan challenge','Surface Conquest owner omitted']],missing=[];
+      [conquest,'A landed non-Training Surface now lets the explorer, an eligible ordinary owned-fauna companion, or a live captured Guardian or Titan challenge','Surface Conquest owner omitted'],
+      [binder,"Records also houses the Binder’s six established type pages and eight current-proof Set claims","Paragon copy omitted"],
+      [binder,"the Fifty-Paragon hunt is live, and prior Set claims remain claimed","Paragon copy omitted"],
+      [binder,"Missing silhouettes plot their source-proven homes, while found entries use Inspect to open the exact Compendium record without travel","Paragon copy omitted"],
+      [binder,"Seeker of Legends is a separate Binder Claim at ten exact Paragons for 120 Stardust once","Paragon copy omitted"],
+      [binder,"a sighting never pays that Set reward automatically","Paragon copy omitted"],
+      [paragon,"FOLLOW THE FIFTY:","Paragon copy omitted"],
+      [paragon,"A missing silhouette plots its source-proven home through existing ship and Prime reach checks","Paragon copy omitted"],
+      [paragon,"a found entry uses Inspect to open its exact existing Compendium record without travel","Paragon copy omitted"],
+      [paragon,"Back returns to the Compendium list","Paragon copy omitted"],
+      [paragon,"Discover Life at an exact fixed home adds only that Paragon catalogue record in the same verified save","Paragon copy omitted"],
+      [paragon,"with no owned companion or specimen, no Capture credit and no Biosphere Yield spend","Paragon copy omitted"],
+      [paragon,"Repeat sightings add no duplicate record or discovery reward","Paragon copy omitted"],
+      [paragon,"Seeker of Legends becomes claimable after ten exact Paragons through a separate Binder Claim and pays its established 120 Stardust once","Paragon copy omitted"],
+      [paragon,"a sighting never pays that Set reward automatically","Paragon copy omitted"]],missing=[];
     for(const [row,anchor,replacement] of fixtures){const prior=row.textContent;row.textContent=prior.replace(anchor,replacement);
       missing.push({anchor,changed:row.textContent!==prior,result:${releaseDraftCheck}});row.textContent=prior;}
     const prior=starter.textContent,contradictions=[];
     for(const copy of ['Starter Charter rewards remain unavailable.','Binder Set claims do not pay Stardust.',
-      'Conquest goals remain hidden.','A miss earns Scout XP.','Accepted wk-conq now completes and pays Stardust.']){
+      'Conquest goals remain hidden.','A miss earns Scout XP.','Accepted wk-conq now completes and pays Stardust.',"Found Paragons plot a course instead of opening Inspect.","Missing silhouettes open Inspect instead of plotting a course.","Discover Life on any world adds a Paragon catalogue record.","An ordinary-world Bioscan catalogues a species.","A Paragon sighting creates an owned companion.","A Paragon sighting creates a specimen.","A Paragon sighting grants Capture credit.","A Paragon sighting spends 1 Biosphere Yield.","A Paragon sighting automatically pays 120 Stardust.","Seeker of Legends is claimable after one Paragon.","Repeat Paragon sightings add a discovery reward.","A prior Paragon-set claim can pay again.","Returning to a previously recorded Paragon home backfills its catalogue record."]){
       starter.textContent=prior+' '+copy;contradictions.push({copy,result:${releaseDraftCheck}});}
     starter.textContent=prior;const restored=${releaseDraftCheck};return {missing,contradictions,
       restored:restored.complete===true&&restored.honest===true&&restored.liveProgressionContract===true
         &&restored.liveProgressionContradiction===false};})()`);
-  if (releaseLiveProgressionCtl.missing?.length !== 4
+  if (releaseLiveProgressionCtl.missing?.length !== 18
     || releaseLiveProgressionCtl.missing.some(({ changed, result }) => !changed || result?.complete
       || result?.liveProgressionContract !== false)
-    || releaseLiveProgressionCtl.contradictions?.length !== 5
+    || releaseLiveProgressionCtl.contradictions?.length !== 18
     || releaseLiveProgressionCtl.contradictions.some(({ result }) => result?.complete || result?.honest
       || result?.liveProgressionContract || result?.liveProgressionContradiction !== true)
     || !releaseLiveProgressionCtl.restored) {
@@ -27278,6 +27341,15 @@ try {
     || !/Records are evidence, not a reward fountain/i.test(recordsTourFocus.announcement)
     || !/26 exact-event achievements appear only after their owning transaction verifies/i.test(recordsTourFocus.announcement)
     || !/only daily and decade still lack event owners/i.test(recordsTourFocus.announcement)
+    || !recordsTourFocus.announcement.includes("a found entry offers Inspect to open its exact Compendium record without travelling")
+    || !recordsTourFocus.announcement.includes("Back returns to the Compendium list")
+    || !recordsTourFocus.announcement.includes("After Training, a missing silhouette plots its source-proven home through the existing reach checks")
+    || !recordsTourFocus.announcement.includes("At an exact fixed home, an explicit Discover Life Bioscan adds only the exact Paragon catalogue record in that same verified save")
+    || !recordsTourFocus.announcement.includes("It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield")
+    || !recordsTourFocus.announcement.includes("Repeat sightings add no duplicate record or discovery reward")
+    || !recordsTourFocus.announcement.includes("Finding ten makes Seeker of Legends claimable through the separate Binder Claim for its established 120 Stardust, once")
+    || !recordsTourFocus.announcement.includes("a sighting never pays that Set reward automatically")
+    || !recordsTourFocus.announcement.includes("This briefing plots no course, discovers no species and claims no reward")
     || !/Expedition Chronicle & Museum.*battle, first-species discovery, Prime-victory, and Legacy Journal galleries/i.test(recordsTourFocus.announcement)) {
     fails.push('DRILL RECORDS TOUR: populated evidence board or read-only truth drifted: '
       + JSON.stringify({ tour: recordsTour, focus: recordsTourFocus }));
@@ -27331,6 +27403,10 @@ try {
     || !/CF1 world code/i.test(gradFocus.announcement)
     || !/Biosphere Yield/i.test(gradFocus.announcement)
     || !/explicit Discover Life/i.test(gradFocus.announcement)
+    || !gradFocus.announcement.includes("On ordinary worlds, it catalogues no species")
+    || !gradFocus.announcement.includes("At one of the Fifty Paragons’ exact fixed homes, that same verified Bioscan can add only the exact Paragon catalogue record")
+    || !gradFocus.announcement.includes("It creates no owned companion or specimen, grants no Capture credit and spends no Biosphere Yield")
+    || !gradFocus.announcement.includes("Repeat sightings add no duplicate record or discovery reward")
     || !/Scout standing before the attempt earns up to \+2 XP.*capped at 486/i.test(gradFocus.announcement)
     || !/real Flora detail can Eat 1 for explorer healing, poison, and nourishment/i.test(gradFocus.announcement)
     || !/This drill performs no capture, meal, breeding, rename, Field Scout change, engineering action, or combat/i.test(gradFocus.announcement)) {

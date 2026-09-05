@@ -43,6 +43,7 @@ import {
   encodeOwnershipDeltaV2,
   ownershipDeltaDigestV2,
   ownershipDeltaMirrorV2,
+  isOwnershipSuccessorV2,
   type OwnershipDeltaRowV2,
   type OwnershipDeltaV2,
 } from '@cf/domain-acquisition/ownership-v2-internal';
@@ -344,6 +345,10 @@ interface CapturedCaptureSuccessorPreparationInput {
   readonly resolver: OwnershipAddressResolver;
 }
 
+interface CapturedCompositeSuccessorPreparationInput extends CapturedSuccessorPreparationInput {
+  readonly successorV2: OwnershipStateV2;
+}
+
 interface CapturedV2SuccessorPreparationInput {
   readonly baseExtensions: unknown;
   readonly parent: OwnershipStateV2;
@@ -431,6 +436,26 @@ function captureCaptureSuccessorPreparationInput(
     successorExtensions: captured.successorExtensions,
     scenarios: captured.scenarios,
     scenarioIndex: captured.scenarioIndex as number,
+    resolver: captured.resolver as OwnershipAddressResolver,
+  });
+}
+
+function captureCompositeSuccessorPreparationInput(
+  value: unknown,
+): CapturedCompositeSuccessorPreparationInput | null {
+  const captured = capturePlainInput(value, [
+    'baseExtensions', 'parent', 'successorExtensions', 'successor', 'successorV2', 'resolver',
+  ]);
+  if (captured === null || !isOwnershipStateV2(captured.parent)
+    || !isOwnershipStateV2(captured.successorV2)
+    || captured.successor === null || typeof captured.successor !== 'object'
+    || captured.resolver === null || typeof captured.resolver !== 'object') return null;
+  return Object.freeze({
+    baseExtensions: captured.baseExtensions,
+    parent: captured.parent,
+    successorExtensions: captured.successorExtensions,
+    successor: captured.successor as OwnershipStateV1,
+    successorV2: captured.successorV2,
     resolver: captured.resolver as OwnershipAddressResolver,
   });
 }
@@ -1138,6 +1163,8 @@ function prepareArc5OwnershipMigrationSuccessorChecked(input: Readonly<{
 }>, capture: Readonly<{
   scenarios: CaptureCapacityScenariosV1;
   scenarioIndex: number;
+}> | null, composite: Readonly<{
+  successor: OwnershipStateV2;
 }> | null): Arc5OwnershipMigrationSuccessorPreparation {
   const captured = captureSuccessorPreparationInput(input);
   if (captured === null) return successorProtected('base-corrupt');
@@ -1212,13 +1239,27 @@ function prepareArc5OwnershipMigrationSuccessorChecked(input: Readonly<{
   let directState: OwnershipStateV2;
   let encoded: EncodedCurrentV2;
   try {
-    directState = capture === null
-      ? createOwnershipSourceProjectionSuccessorV2(captured.parent, captured.successor)
-      : createCaptureOwnershipSourceProjectionSuccessorV2(
+    if (composite !== null) {
+      if (!isOwnershipSuccessorV2(composite.successor, captured.parent)
+        || ownershipSourceStateV1(composite.successor) !== captured.successor) {
+        return successorProtected('successor-conflict', {
+          expectedRevision: expectedSourceRevision,
+          actualRevision: captured.successor.revision,
+        });
+      }
+      directState = composite.successor;
+    } else if (capture === null) {
+      directState = createOwnershipSourceProjectionSuccessorV2(
+        captured.parent,
+        captured.successor,
+      );
+    } else {
+      directState = createCaptureOwnershipSourceProjectionSuccessorV2(
         captured.parent,
         capture.scenarios,
         capture.scenarioIndex,
       );
+    }
     const directSource = ownershipSourceStateV1(directState);
     if (ownershipStateDigestV1(directSource) !== stagedDigest
       || directState.revision !== captured.parent.revision + 1) {
@@ -1266,7 +1307,29 @@ export function prepareArc5OwnershipMigrationSuccessor(input: Readonly<{
   successor: OwnershipStateV1;
   resolver: OwnershipAddressResolver;
 }>): Arc5OwnershipMigrationSuccessorPreparation {
-  return prepareArc5OwnershipMigrationSuccessorChecked(input, null);
+  return prepareArc5OwnershipMigrationSuccessorChecked(input, null, null);
+}
+
+/** Source-changing Arc 4 + V2 consequence in one exact +1. The supplied V2
+ * successor must be the registered direct child of `parent` and own the exact
+ * registered Arc 4 successor supplied beside it. */
+export function prepareArc5CompositeOwnershipMigrationSuccessor(input: Readonly<{
+  baseExtensions: unknown;
+  parent: OwnershipStateV2;
+  successorExtensions: unknown;
+  successor: OwnershipStateV1;
+  successorV2: OwnershipStateV2;
+  resolver: OwnershipAddressResolver;
+}>): Arc5OwnershipMigrationSuccessorPreparation {
+  const captured = captureCompositeSuccessorPreparationInput(input);
+  if (captured === null) return successorProtected('base-corrupt');
+  return prepareArc5OwnershipMigrationSuccessorChecked({
+    baseExtensions: captured.baseExtensions,
+    parent: captured.parent,
+    successorExtensions: captured.successorExtensions,
+    successor: captured.successor,
+    resolver: captured.resolver,
+  }, null, Object.freeze({ successor: captured.successorV2 }));
 }
 
 /** Capture-only source advancement binds the planner's registered
@@ -1296,7 +1359,7 @@ export function prepareArc5CaptureOwnershipMigrationSuccessor(input: Readonly<{
   }, Object.freeze({
     scenarios: captured.scenarios,
     scenarioIndex: captured.scenarioIndex,
-  }));
+  }), null);
 }
 
 /** Prepare one exact V2-only +1. The domain boundary proves `successor` is
