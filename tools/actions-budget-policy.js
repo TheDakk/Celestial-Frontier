@@ -51,8 +51,12 @@ const FULL_LANE_STEPS = Object.freeze([
   'one-attempt real-browser slice smoke',
   'one-attempt 12-viewport Glass matrix',
 ]);
+// Seals the authorize job's steps: same-repository heads only; into develop
+// from the four machine branches or a bounded `openai/review-*` /
+// `anthropic/review-*` review branch (policy decision 2026-09-05); into main
+// only from develop. Any other byte in that block fails closed.
 const BRANCH_AUTH_STEPS_SHA256 =
-  '9c3193f9c49dd78c210b138d9f8c214ba17ef5034ef955a9f58959d386f97c30';
+  '137bc96a32f5f45db2263a1e45a288e1ff7511bb0d6ebcfc9a1d675e3b7b1ee7';
 const WORKFLOWS = Object.freeze({
   'branch-flow-guard.yml': 'manual',
   'dev-preview-package.yml': 'manual-chain',
@@ -509,6 +513,15 @@ function selftest() {
     replaceUnique(c.get('test.yml'),
       '          echo "::error::Disallowed flow: $HEAD_BRANCH -> $BASE_BRANCH"\n          exit 1',
       '          echo "branch flow bypassed"\n          exit 0', 'test.yml')));
+  control('branch validator cannot admit arbitrary review branches', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'),
+      '              openai/review-*|anthropic/review-*) exit 0 ;;',
+      '              */review-*|*) exit 0 ;;', 'test.yml')));
+  control('branch validator cannot admit review branches into main', (c) => c.set('test.yml',
+    replaceUnique(c.get('test.yml'),
+      '          if [[ "$BASE_BRANCH" == "main" && "$HEAD_BRANCH" == "develop" ]]; then',
+      '          if [[ "$BASE_BRANCH" == "main" && ("$HEAD_BRANCH" == "develop" || "$HEAD_BRANCH" == openai/review-*) ]]; then',
+      'test.yml')));
   control('quoted trigger cannot escape workflow inventory', (c) => c.set('test.yml',
     replaceUnique(c.get('test.yml'), '  pull_request:\n',
       '  "push":\n  pull_request:\n', 'test.yml')));
