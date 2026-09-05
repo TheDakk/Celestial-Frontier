@@ -47,6 +47,63 @@ const workflowStepLines = (value: string, stepName: string): string[] | null => 
   }
   return activeLines(lines.slice(start, end).join('\n'));
 };
+// Slice, Glass and the three owned Compendium steps run only on the full chain
+// (develop -> main, or an agent PR under `actions-full-chain-approved`). The
+// bounded agent lane stops after the browser-free develop profile and the two
+// phone Glass canaries. Every long stage carries exactly this guard and nothing
+// else; the lane itself is selected once, before any dependency install.
+const LANE_STEP_NAME = 'select battery lane';
+const LANE_FULL_GUARD = "if: steps.lane.outputs.lane == 'full'";
+const LANE_GATED_STEPS = [
+  'install exact Arc 1A Edge calibration browser',
+  'Compendium live preflight',
+  'one-attempt Compendium memory certification',
+  'one-attempt real-browser slice smoke',
+  'one-attempt 12-viewport Glass matrix',
+] as const;
+const LANE_SELECTOR_CONTRACT = [
+  'id: lane',
+  'shell: bash',
+  'BASE_BRANCH: ${{ github.event.pull_request.base.ref }}',
+  'APPROVAL_LABEL: ${{ github.event.label.name }}',
+  'set -euo pipefail',
+  'case "$BASE_BRANCH/$APPROVAL_LABEL" in',
+  'main/actions-budget-approved|main/actions-full-chain-approved) lane=full ;;',
+  'develop/actions-full-chain-approved) lane=full ;;',
+  'develop/actions-budget-approved) lane=agent ;;',
+  '*) echo "::error::Unsupported battery lane: $APPROVAL_LABEL -> $BASE_BRANCH"; exit 1 ;;',
+  'esac',
+  'printf \'lane=%s\\n\' "$lane" >> "$GITHUB_OUTPUT"',
+] as const;
+const workflowLaneErrors = (value: string): string[] => {
+  const errors: string[] = [];
+  const lane = workflowStepLines(value, LANE_STEP_NAME);
+  if (!lane) errors.push('missing-or-duplicate-lane-step');
+  let prior = -1;
+  for (const item of LANE_SELECTOR_CONTRACT) {
+    const matches = lane?.flatMap((line, index) => line === item ? [index] : []) ?? [];
+    if (matches.length !== 1) errors.push(`missing-or-duplicate:${item}`);
+    else if (matches[0]! <= prior) errors.push(`misordered:${item}`);
+    else prior = matches[0]!;
+  }
+  const laneOffset = value.indexOf(`      - name: ${LANE_STEP_NAME}`);
+  const installOffset = value.indexOf('      - name: install v2 workspace');
+  if (laneOffset < 0 || installOffset <= laneOffset) errors.push('lane-selected-after-install');
+  for (const name of LANE_GATED_STEPS) {
+    const lines = workflowStepLines(value, name);
+    const conditions = (lines ?? []).filter((line) => line.startsWith('if:'));
+    if (!lines || conditions.length !== 1 || conditions[0] !== LANE_FULL_GUARD) {
+      errors.push(`unguarded-full-chain-stage:${name}`);
+    }
+  }
+  if (value.split(LANE_FULL_GUARD).length - 1 !== LANE_GATED_STEPS.length) {
+    errors.push('full-lane-guard-count');
+  }
+  if (value.split("steps.lane.outputs.lane == 'agent'").length - 1 !== 1) {
+    errors.push('agent-lane-canary-binding');
+  }
+  return errors;
+};
 const workflowEvidenceChainErrors = (value: string): string[] => {
   const errors: string[] = [];
   const globallyRequired = [
@@ -58,6 +115,7 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
   ];
   const sliceCommands = [
     'id: slice',
+    LANE_FULL_GUARD,
     'shell: bash',
     'BASE_BRANCH: ${{ github.event.pull_request.base.ref }}',
     'set -euo pipefail',
@@ -75,6 +133,7 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
   ];
   const glassCommands = [
     'id: glass',
+    LANE_FULL_GUARD,
     'shell: bash',
     'set -euo pipefail',
     'slice_run_id="${{ steps.slice.outputs.run_id }}"',
@@ -132,7 +191,8 @@ const workflowEvidenceChainErrors = (value: string): string[] => {
   );
   const archive = workflowStepLines(value, 'archive battery reports');
   for (const [name, lines] of [['slice', slice], ['glass', glass]] as const) {
-    if ((lines ?? []).some((line) => line.startsWith('if:'))) {
+    const conditions = (lines ?? []).filter((line) => line.startsWith('if:'));
+    if (conditions.length !== 1 || conditions[0] !== LANE_FULL_GUARD) {
       errors.push(`conditional-common-stage:${name}`);
     }
     if ((lines ?? []).some((line) => line.startsWith('continue-on-error:'))) {
@@ -646,6 +706,69 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(workflowEvidenceChainErrors(reorderedGlassVerifier)).toContain(
       'misordered:node tools/glassmatrix.mjs --verify-run="$glass_run_id" --slice-run="$slice_run_id" --profile="$slice_profile"',
     );
+  });
+
+  it('keeps the agent lane bounded and gates every long stage on the exact lane selector', () => {
+    expect(workflowLaneErrors(workflow)).toEqual([]);
+    const laneHeader = `      - name: ${LANE_STEP_NAME}`;
+    const laneStart = workflow.indexOf(laneHeader);
+    const laneEnd = workflow.indexOf('      # This policy uses only Node built-ins', laneStart);
+    expect(laneStart).toBeGreaterThanOrEqual(0);
+    expect(laneEnd).toBeGreaterThan(laneStart);
+    const laneStep = workflow.slice(laneStart, laneEnd);
+    expect(workflowLaneErrors(workflow.replace(laneStep, '')))
+      .toContain('missing-or-duplicate-lane-step');
+    expect(workflowLaneErrors(workflow.replace(laneHeader, `${laneHeader} renamed`)))
+      .toContain('missing-or-duplicate-lane-step');
+    for (const [current, mutant] of [
+      [
+        'develop/actions-budget-approved) lane=agent ;;',
+        'develop/actions-budget-approved) lane=full ;;',
+      ],
+      [
+        'develop/actions-full-chain-approved) lane=full ;;',
+        'develop/actions-full-chain-approved) lane=agent ;;',
+      ],
+      [
+        '*) echo "::error::Unsupported battery lane: $APPROVAL_LABEL -> $BASE_BRANCH"; exit 1 ;;',
+        '*) lane=agent ;;',
+      ],
+    ] as const) {
+      expect(workflow.split(current).length - 1, current).toBe(1);
+      expect(workflowLaneErrors(workflow.replace(current, mutant)), current)
+        .toContain(`missing-or-duplicate:${current}`);
+    }
+    const withGuard = (source: string, stepName: string, replacement: string): string => {
+      const start = source.indexOf(`      - name: ${stepName}`);
+      expect(start, stepName).toBeGreaterThanOrEqual(0);
+      const guardAt = source.indexOf(`        ${LANE_FULL_GUARD}\n`, start);
+      expect(guardAt, stepName).toBeGreaterThan(start);
+      return source.slice(0, guardAt) + replacement
+        + source.slice(guardAt + `        ${LANE_FULL_GUARD}\n`.length);
+    };
+    for (const name of LANE_GATED_STEPS) {
+      expect(workflowLaneErrors(withGuard(workflow, name, '')), name)
+        .toContain(`unguarded-full-chain-stage:${name}`);
+      expect(workflowLaneErrors(withGuard(
+        workflow, name, "        if: steps.lane.outputs.lane != 'agent'\n",
+      )), name).toContain(`unguarded-full-chain-stage:${name}`);
+      expect(workflowLaneErrors(withGuard(workflow, name, '        if: always()\n')), name)
+        .toContain(`unguarded-full-chain-stage:${name}`);
+    }
+    for (const stage of [
+      ['one-attempt real-browser slice smoke', 'slice'],
+      ['one-attempt 12-viewport Glass matrix', 'glass'],
+    ] as const) {
+      expect(workflowEvidenceChainErrors(withGuard(workflow, stage[0], '')), stage[0])
+        .toContain(`conditional-common-stage:${stage[1]}`);
+      expect(workflowEvidenceChainErrors(withGuard(
+        workflow, stage[0], "        if: github.event.pull_request.base.ref == 'main'\n",
+      )), stage[0]).toContain(`conditional-common-stage:${stage[1]}`);
+    }
+    expect(workflowLaneErrors(workflow.replace(
+      "(steps.lane.outputs.lane == 'agent' ||",
+      "(steps.lane.outputs.lane == 'full' ||",
+    ))).toContain('agent-lane-canary-binding');
   });
 
   it('binds the Slice writer, stdout, and reporter to one exact ten-image inventory', () => {

@@ -2,7 +2,9 @@
 # the 3,000-minute cap applies fail-closed if visibility changes. This explicit
 # efficiency/intent gate is deliberately NOT triggered by pushes, PR sync, or
 # branch merges. Only the repository owner adding `actions-budget-approved`
-# starts one fail-fast run for that exact PR merge ref. See GITHUB_ACTIONS_BUDGET.md.
+# (bounded agent lane on develop; full chain on main) or
+# `actions-full-chain-approved` (full chain on develop) starts one fail-fast
+# run for that exact PR merge ref. See GITHUB_ACTIONS_BUDGET.md.
 name: test-battery
 
 on:
@@ -20,7 +22,8 @@ jobs:
   authorize:
     name: authorize Actions budget
     if: >-
-      github.event.label.name == 'actions-budget-approved' &&
+      (github.event.label.name == 'actions-budget-approved' ||
+      github.event.label.name == 'actions-full-chain-approved') &&
       github.actor == github.repository_owner
     runs-on: ubuntu-latest
     timeout-minutes: 2
@@ -112,6 +115,30 @@ jobs:
             --paths-file="$changed_paths" \
             --github-output="$GITHUB_OUTPUT"
 
+      # Select the hosted lane from the exact owner label and base branch before
+      # any dependency install. `actions-budget-approved` on an agent -> develop
+      # PR runs the bounded agent lane (browser-free develop profile plus the
+      # two phone Glass canaries); `actions-full-chain-approved` on develop, and
+      # either label on develop -> main, runs the full Compendium -> Slice ->
+      # Glass chain. Unknown pairs fail closed. The policy selftest seals this
+      # step's bytes and the full-lane guards on the long stages.
+      - name: select battery lane
+        id: lane
+        shell: bash
+        env:
+          BASE_BRANCH: ${{ github.event.pull_request.base.ref }}
+          APPROVAL_LABEL: ${{ github.event.label.name }}
+        run: |
+          set -euo pipefail
+          case "$BASE_BRANCH/$APPROVAL_LABEL" in
+            main/actions-budget-approved|main/actions-full-chain-approved) lane=full ;;
+            develop/actions-full-chain-approved) lane=full ;;
+            develop/actions-budget-approved) lane=agent ;;
+            *) echo "::error::Unsupported battery lane: $APPROVAL_LABEL -> $BASE_BRANCH"; exit 1 ;;
+          esac
+          printf 'lane=%s\n' "$lane" >> "$GITHUB_OUTPUT"
+          echo "battery lane: $lane ($APPROVAL_LABEL -> $BASE_BRANCH)"
+
       # This policy uses only Node built-ins, so it always runs before either
       # dependency install and stops unauthorized workflow drift cheaply.
       - name: Actions budget policy selftest
@@ -169,15 +196,17 @@ jobs:
           CF_BROWSER: /usr/bin/google-chrome
         run: node tools/browsercdp.mjs --selftest
 
-      # When a Glass or v2 product input changes, exercise both the exact
-      # small-phone Inventory boundary and large-phone forced-heartbeat native-
-      # Tab boundary on hosted Chrome/Linux before paying for Compendium and
-      # Slice. These are bounded noncertifying canaries; the immutable Slice-
-      # bound full matrix remains mandatory later.
+      # The bounded agent lane always exercises both the exact small-phone
+      # Inventory boundary and large-phone forced-heartbeat native-Tab boundary
+      # on hosted Chrome/Linux; the develop full chain does so when a Glass or
+      # v2 product input changes, before paying for Compendium and Slice. These
+      # are bounded noncertifying canaries; the immutable Slice-bound full matrix
+      # remains mandatory on the full chain.
       - name: changed Glass small-phone and large-phone action preflights
         if: >-
           github.event.pull_request.base.ref == 'develop' &&
-          steps.scope.outputs.glass_preflight_changed == 'true'
+          (steps.lane.outputs.lane == 'agent' ||
+          steps.scope.outputs.glass_preflight_changed == 'true')
         timeout-minutes: 7
         working-directory: port/v2
         shell: bash
@@ -614,9 +643,12 @@ jobs:
           node tools/compendiummem-browser-preflight.mjs --selftest
           npm run compendiummem:selftest
 
-      # Compendium is the first product memory ruler on develop. Production reaches
-      # it only after the production-only SceneMemory certificate is terminal-green.
+      # Compendium is the first product memory ruler of the full chain (develop
+      # under `actions-full-chain-approved`, and every develop -> main run); the
+      # bounded agent lane stops before it. Production reaches it only after the
+      # production-only SceneMemory certificate is terminal-green.
       - name: install exact Arc 1A Edge calibration browser
+        if: steps.lane.outputs.lane == 'full'
         shell: bash
         env:
           EDGE_PACKAGE_URL: https://packages.microsoft.com/repos/edge/pool/main/m/microsoft-edge-stable/microsoft-edge-stable_151.0.4129.101-1_amd64.deb
@@ -635,6 +667,7 @@ jobs:
           edge_browser="$edge_root/opt/microsoft/msedge/microsoft-edge"
           test -x "$edge_browser"
       - name: Compendium live preflight
+        if: steps.lane.outputs.lane == 'full'
         working-directory: port/v2
         env:
           CF_BROWSER: ${{ runner.temp }}/compendiummem-edge-151.0.4129.101/opt/microsoft/msedge/microsoft-edge
@@ -642,6 +675,7 @@ jobs:
           node tools/compendiummem-browser-preflight.mjs
       - name: one-attempt Compendium memory certification
         id: compendium
+        if: steps.lane.outputs.lane == 'full'
         timeout-minutes: 55
         working-directory: port/v2
         env:
@@ -666,6 +700,7 @@ jobs:
         run: npm run preview:selftest
       - name: one-attempt real-browser slice smoke
         id: slice
+        if: steps.lane.outputs.lane == 'full'
         working-directory: port/v2
         shell: bash
         env:
@@ -686,6 +721,7 @@ jobs:
           node tools/smokereport.mjs --verify-run="$slice_run_id" --profile="$slice_profile"
       - name: one-attempt 12-viewport Glass matrix
         id: glass
+        if: steps.lane.outputs.lane == 'full'
         working-directory: port/v2
         shell: bash
         env:
