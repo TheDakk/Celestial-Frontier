@@ -337,6 +337,9 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     expect(certificate.scenarios[0]).toMatchObject({
       kind: 'miss', candidateSpeciesId: null, sourceOrdinal: null,
       firstForSpecies: false, tier: null, stardustReward: 0,
+      scoutXp: {
+        scoutCreatureId: null, xpBefore: null, xpAfter: null, xpAward: 0,
+      },
     });
     expect(certificate.scenarios.slice(1).map((row) => row.candidateSpeciesId))
       .toEqual(certificate.candidateOrder);
@@ -347,6 +350,10 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
         && /^[0-9a-f]{64}$/u.test(row.arc5MigrationWritesDigest)
         && /^[0-9a-f]{64}$/u.test(row.legacyV4Digest)
         && /^[0-9a-f]{64}$/u.test(row.completeSaveDigest)
+        && /^[0-9a-f]{64}$/u.test(row.scoutXp.sourceParentDigest)
+        && /^[0-9a-f]{64}$/u.test(row.scoutXp.sourceSuccessorDigest)
+        && /^[0-9a-f]{64}$/u.test(row.scoutXp.ownershipParentDigest)
+        && /^[0-9a-f]{64}$/u.test(row.scoutXp.ownershipSuccessorDigest)
     ))).toBe(true);
     expect(JSON.stringify(certificate)).not.toMatch(/candidateDraw|successDraw|"value"/u);
 
@@ -354,6 +361,13 @@ describe('Arc 4 registered all-scenario capture capacity certificate', () => {
     expect(isArc4CaptureDerivedSettlementV1(settled)).toBe(true);
     expect(isArc4CaptureDerivedSettlementV1({ ...settled })).toBe(false);
     expect(settled.plan.hit).toBe(true);
+    expect(settled.witness).toBe(settled.derivation.witness);
+    expect(settled.witness).not.toBe(settled.plan.witness);
+    expect(settled.witness.length).toBeLessThanOrEqual(4_096);
+    expect(JSON.parse(settled.witness)).toMatchObject({
+      captureWitness: settled.plan.witness,
+      scoutXp: settled.scoutXp,
+    });
     expect(settled.derivation.extensionWrites).toHaveLength(
       ARC4_OWNERSHIP_EXTENSION_TARGETS.length + ARC5_OWNERSHIP_EXTENSION_TARGETS.length,
     );

@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { gunzipSync } from 'node:zlib';
 import { describe, expect, it } from 'vitest';
 // @ts-expect-error The executable JavaScript domain contract intentionally has no declaration shim.
-import { assessArc4ExhaustionRecovery } from '../tools/arc4-browser-contract.mjs';
+import { assessArc4ExhaustionRecovery, arc4CaptureUiSnapshotComplete } from '../tools/arc4-browser-contract.mjs';
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { ARC4_RECOVERY_PERTAR_POLL_TIMING_SCHEMA, ARC4_RECOVERY_PERTAR_SURFACE_TIMEOUT_MS, assessArc4RecoveryInstrumentSeal, assessArc4RecoveryPertarPollTiming } from '../tools/arc4-recovery-contract.mjs';
 import { runBoundedNodeMarker } from '../test-support/bounded-child.js';
@@ -521,6 +521,15 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
           lastFault: null,
         },
       },
+      explorerMeal: {
+        lastOutcome: null,
+        lastResult: null,
+        controller: {
+          attachedMountCount: 0, delegatedListenerCount: 0, pendingWork: 0,
+          convergenceLatched: false, actionControlCount: 0, contextKey: null,
+          lastRequest: null, lastOutcome: null,
+        },
+      },
       breed: {
         lastOutcome: null,
         lastResult: null,
@@ -568,7 +577,7 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
     const currentReplay = assessArc4ExhaustionRecovery(currentDiagnostics);
     expect(currentReplay.ok, currentReplay.reasons.join(', ')).toBe(true);
 
-    const arc5DiagnosticSubtrees = ['feed', 'breed', 'rename', 'scout'] as const;
+    const arc5DiagnosticSubtrees = ['feed', 'explorerMeal', 'breed', 'rename', 'scout'] as const;
     const arc5DiagnosticControls = ['wrong', 'missing', 'extra'] as const;
     for (const subtree of arc5DiagnosticSubtrees) {
       for (const control of arc5DiagnosticControls) {
@@ -592,6 +601,56 @@ describe('Arc 4 real-time recovery certificate instrument', () => {
           'exhaustedLive', 'ownershipV2Live', 'uiComplete',
         ]);
       }
+    }
+
+    // The previous v3 shape is historical evidence only, never a current carrier.
+    const preMealDiagnostics = structuredClone(currentDiagnostics);
+    for (const snapshot of diagnosticSnapshots(preMealDiagnostics)) {
+      delete snapshot.ownershipV2.explorerMeal;
+    }
+    expect(assessArc4ExhaustionRecovery(preMealDiagnostics).ok).toBe(false);
+    expect(assessArc4ExhaustionRecovery(preMealDiagnostics, {
+      allowLegacyArc5Diagnostics: true,
+    }).ok).toBe(true);
+
+    const mealFieldControls: Readonly<Record<string, unknown>> = {
+      attachedMountCount: 2,
+      delegatedListenerCount: 2,
+      pendingWork: 2,
+      convergenceLatched: null,
+      actionControlCount: -1,
+      contextKey: '',
+      lastRequest: [],
+      lastOutcome: [],
+    };
+    // Field-shape mutants exercise the existing strict UI boundary directly;
+    // the complete retained-bundle replays above bind that boundary to Recovery.
+    expect(arc4CaptureUiSnapshotComplete(currentDiagnostics.exhaustedUi)).toBe(true);
+    for (const [field, invalid] of Object.entries(mealFieldControls)) {
+      for (const mutate of ['wrong', 'missing'] as const) {
+        const mutant = structuredClone(currentDiagnostics.exhaustedUi);
+        const controller = mutant.ownershipV2.explorerMeal.controller;
+        if (mutate === 'wrong') controller[field] = invalid;
+        else delete controller[field];
+        for (const allowLegacyArc5Diagnostics of [false, true]) {
+          expect(arc4CaptureUiSnapshotComplete(mutant, {
+            allowLegacyArc5Diagnostics,
+          }), `Meal ${field}:${mutate}:${allowLegacyArc5Diagnostics}`).toBe(false);
+        }
+        expect(arc4CaptureUiSnapshotComplete(currentDiagnostics.exhaustedUi)).toBe(true);
+      }
+    }
+    for (const source of [currentDiagnostics, preMealDiagnostics]) {
+      const extraDiagnostic = structuredClone(source);
+      for (const snapshot of diagnosticSnapshots(extraDiagnostic)) {
+        snapshot.ownershipV2.unknownAction = {};
+      }
+      expect(assessArc4ExhaustionRecovery(extraDiagnostic, {
+        allowLegacyArc5Diagnostics: true,
+      }).ok).toBe(false);
+      expect(assessArc4ExhaustionRecovery(source, {
+        allowLegacyArc5Diagnostics: true,
+      }).ok).toBe(true);
     }
 
     const legacyWithExtraFeed = structuredClone(report.recoveryBundle);

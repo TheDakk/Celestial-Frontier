@@ -352,6 +352,8 @@ describe('@cf/persistence — Arc 5 compact ownership delta', () => {
       'createCreatureInstanceV2',
       'createOwnershipSuccessorV2',
       'createOwnershipSourceProjectionSuccessorV2',
+      'createOwnershipCaptureSourceProjectionSuccessorV2',
+      'createCaptureOwnershipSourceProjectionSuccessorV2',
       'deriveOwnershipDeltaV2',
       'deriveOwnershipDeltaSuccessorV2',
       'applyOwnershipDeltaV2',
@@ -561,6 +563,13 @@ describe('@cf/persistence — Arc 5 compact ownership delta', () => {
     expect(advanced.writes).toHaveLength(5);
     expect(advanced.evidence.deltaRowCount).toBe(0);
     expect(advanced.state.revision).toBe(initial.state.revision + 1);
+    const priorScout = initial.state.creatures.find(
+      (row) => row.creatureId === initial.state.scoutCreatureId,
+    );
+    const genericScout = advanced.state.creatures.find(
+      (row) => row.creatureId === advanced.state.scoutCreatureId,
+    );
+    expect(genericScout).toEqual(priorScout);
     expect(advanced.writes.slice(1).map((write) => write.carrier.json)).toEqual(initialShards);
     expect(advanced.writes[0].carrier.json).not.toBe(initial.writes[0].carrier.json);
     expect(advanced.extensions.settings).toEqual(staged.extensions.settings);

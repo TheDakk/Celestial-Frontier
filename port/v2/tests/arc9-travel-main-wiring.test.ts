@@ -103,7 +103,7 @@ function wiringErrors(main: string): string[] {
   const owner = section(
     main,
     'async function settleArc9DirectTravel(',
-    '\nasync function runArc9AtlasFavoriteChange(',
+    '\nfunction arc9AtlasRowActionBlocked(): boolean {',
   );
   if (!ordered(owner, [
     'if (smokeForceReadOnly || !f4RuntimeMayMutate(runtime)',
@@ -355,7 +355,7 @@ describe('Arc 9 atomic Travel Main wiring', () => {
     const owner = section(
       source,
       'async function settleArc9DirectTravel(',
-      '\nasync function runArc9AtlasFavoriteChange(',
+      '\nfunction arc9AtlasRowActionBlocked(): boolean {',
     );
     const oneTrainingFence = replaceOnce(
       owner,
@@ -378,7 +378,7 @@ describe('Arc 9 atomic Travel Main wiring', () => {
     const owner = section(
       source,
       'async function settleArc9DirectTravel(',
-      '\nasync function runArc9AtlasFavoriteChange(',
+      '\nfunction arc9AtlasRowActionBlocked(): boolean {',
     );
     const optimistic = replaceOnce(
       owner,
@@ -542,7 +542,7 @@ describe('Arc 9 atomic Travel Main wiring', () => {
     const owner = section(
       source,
       'async function settleArc9DirectTravel(',
-      '\nasync function runArc9AtlasFavoriteChange(',
+      '\nfunction arc9AtlasRowActionBlocked(): boolean {',
     );
     const callbackBeforeOwnership = replaceOnce(
       owner,

@@ -6,13 +6,22 @@ import {
   SCENE_OWNERSHIP_ADDRESS_RESOLVER,
   ACTIVE_PLAY_CAPTURE_CYCLE_MS,
   canonicalJson,
+  canonicalGenomeIdentityV1,
   capturePresentationFenceV1,
+  createCatalogSpeciesV1,
+  createCreatureInstanceV1,
   createEmptyOwnershipStateV1,
+  createInitialOwnershipStateV1,
+  createLegacyDiscoveryRecordV1,
   createLegacyProtectedOwnershipStateV1,
+  ownershipContentId,
   ownershipSourceStateV1,
   ownershipStateDigestV1,
   ownershipStateDigestV2,
   type AcquisitionVerbV1,
+  type CreatureInstanceId,
+  type DiscoveryRecordId,
+  type OwnershipStateV1,
   type OwnershipStateV2,
 } from '@cf/domain-acquisition';
 import { installCaptureHooks } from '@cf/domain-descriptors';
@@ -142,7 +151,11 @@ function seedForSuccessDraw(predicate: (value: number) => boolean): number {
 const HIT_SEED = seedForSuccessDraw((value) => value < 0.001);
 const MISS_SEED = seedForSuccessDraw((value) => value > 0.99);
 
-function authorityExtensions(seed: number, withContact = true): Readonly<{
+function authorityExtensions(
+  seed: number,
+  withContact = true,
+  source: OwnershipStateV1 = createEmptyOwnershipStateV1(),
+): Readonly<{
   extensions: V5Extensions;
   authority: ReturnType<typeof prepareF4AuthorityUpdate>['authority'];
   ownershipV2: OwnershipStateV2;
@@ -165,7 +178,7 @@ function authorityExtensions(seed: number, withContact = true): Readonly<{
   );
   const arc4 = applyV5ExtensionWrites(
     f4.extensions,
-    encodeArc4Ownership(createEmptyOwnershipStateV1()).writes,
+    encodeArc4Ownership(source).writes,
   ).extensions;
   const arc5 = prepareArc5OwnershipMigration({
     extensions: arc4,
@@ -185,8 +198,9 @@ async function runtimeFixture(
   failReceiptCommit = false,
   withContact = true,
   transformExtensions: (extensions: V5Extensions) => V5Extensions = (extensions) => extensions,
+  ownershipSource: OwnershipStateV1 = createEmptyOwnershipStateV1(),
 ) {
-  const initial = authorityExtensions(seed, withContact);
+  const initial = authorityExtensions(seed, withContact, ownershipSource);
   const initialExtensions = transformExtensions(initial.extensions);
   const base = createMemoryBackend();
   let receiptCas = 0;
@@ -223,6 +237,54 @@ async function runtimeFixture(
     ownershipV2: initial.ownershipV2,
     receiptCas: () => receiptCas,
   };
+}
+
+function scoutOwnershipSource(xp: number | null): Readonly<{
+  state: OwnershipStateV1;
+  scout: OwnershipStateV1['creatures'][number];
+}> {
+  const identity = canonicalGenomeIdentityV1({ seed: 987_654_321, kingdom: 'fauna', form: 6 });
+  const discovery = createLegacyDiscoveryRecordV1({
+    recordId: ownershipContentId('discovery', `scout-xp-${xp ?? 'null'}`) as DiscoveryRecordId,
+    speciesId: identity.speciesId,
+    legacyCodexId: `scout-xp-${xp ?? 'null'}`,
+    legacySourceIndex: 0,
+    from: 'Legacy',
+    legacyLocation: null,
+    firstForSpecies: true,
+  });
+  const scout = createCreatureInstanceV1({
+    creatureId: ownershipContentId('creature', `scout-xp-${xp ?? 'null'}`) as CreatureInstanceId,
+    speciesId: identity.speciesId,
+    genomeIdentity: identity.genomeIdentity,
+    genome: identity.genome,
+    nickname: 'Atlas',
+    origin: 'legacy',
+    acquisitionRecordId: discovery.recordId,
+    lineage: { kind: 'none', generation: 0 },
+    xp,
+    hurt: 0.25,
+    fed: 91,
+    brood: 3,
+    assignment: null,
+    bond: null,
+  });
+  return Object.freeze({
+    scout,
+    state: createInitialOwnershipStateV1({
+      catalogSpecies: [createCatalogSpeciesV1({
+        identity,
+        alias: 'First Friend',
+        firstObservationId: discovery.recordId,
+      })],
+      discoveries: [discovery],
+      creatures: [scout],
+      specimenLots: [],
+      biosphereProgress: [],
+      legacyBioX: [],
+      scoutCreatureId: scout.creatureId,
+    }),
+  });
 }
 
 type Arc5CaptureProtectionVariant =
@@ -271,7 +333,9 @@ function nextCaptureValues(state: ReturnType<typeof createSessionRNG>['state'] e
 function committed(
   value: Arc4CaptureAttemptOutcomeV1,
 ): Extract<Arc4CaptureAttemptOutcomeV1, { kind: 'committed' }> {
-  if (value.kind !== 'committed') throw new Error(`capture outcome was ${value.kind}`);
+  if (value.kind !== 'committed') {
+    throw new Error(`capture outcome was ${value.kind}:${'detail' in value ? value.detail : ''}`);
+  }
   return value;
 }
 
@@ -316,7 +380,11 @@ describe('Arc 4 headless durable capture action', () => {
         },
       });
       expect(outcome.transaction.receipt).toMatchObject({
-        ordinal: 0, kind: 'capture-attempt', witness: outcome.settlement.plan.witness,
+        ordinal: 0, kind: 'capture-attempt', witness: outcome.settlement.witness,
+      });
+      expect(JSON.parse(outcome.settlement.witness)).toMatchObject({
+        captureWitness: outcome.settlement.plan.witness,
+        scoutXp: outcome.settlement.scoutXp,
       });
       expect(outcome.transaction.plan.draws.map(({ domain }) => domain)).toEqual([
         DOMAINS.captureCandidate, DOMAINS.captureSuccess,
@@ -341,6 +409,9 @@ describe('Arc 4 headless durable capture action', () => {
         kind: 'verified', durability: 'committed', convergence: 'none',
         plan: { verb: row.verb, hit: row.hit },
         charterBioscanBanked: false,
+        scoutXp: {
+          scoutCreatureId: null, xpBefore: null, xpAfter: null, xpAward: 0,
+        },
       });
       const loaded = readArc4Ownership(
         fixture.runtime.extensions,
@@ -369,6 +440,112 @@ describe('Arc 4 headless durable capture action', () => {
       }
       await fixture.runtime.release();
     }
+  }, 20_000);
+
+  it('teaches only the pre-action Field Scout on a genuine first-species capture', async () => {
+    const context = captureContext();
+    for (const [priorXp, expectedXp] of [[null, 2], [485, 486], [486, 486]] as const) {
+      const source = scoutOwnershipSource(priorXp);
+      const fixture = await runtimeFixture(
+        HIT_SEED,
+        baseState(),
+        false,
+        true,
+        (extensions) => extensions,
+        source.state,
+      );
+      const sourceRevision = ownershipSourceStateV1(fixture.ownershipV2).revision;
+      const v2Revision = fixture.ownershipV2.revision;
+      const stagedState = stageArc4BootstrapLegacyProjection({
+        source: fixture.state,
+        state: source.state,
+        extensions: fixture.runtime.extensions,
+        registry: REGISTRY,
+        codecNow: NOW,
+      });
+      if (stagedState.kind !== 'staged') {
+        throw new Error(`Scout legacy fixed point was ${stagedState.detail}`);
+      }
+      const outcome = committed(await commitArc4CaptureAttemptV1({
+        runtime: fixture.runtime,
+        ownershipV2: fixture.ownershipV2,
+        state: stagedState.candidate,
+        ...context,
+        presentationFence: presentationFence(context, fixture.runtime.extensions),
+        verb: 'tame',
+        codecNow: NOW,
+      }));
+      expect(outcome.settlement.plan).toMatchObject({ hit: true, firstForSpecies: true });
+      expect(outcome.settlement.scoutXp).toMatchObject({
+        scoutCreatureId: source.scout.creatureId,
+        xpBefore: priorXp ?? 0,
+        xpAfter: expectedXp,
+        xpAward: 2,
+      });
+      expect(outcome.settlement.plan.ownedRowId).not.toBe(source.scout.creatureId);
+      expect(outcome.transaction.state.xpFirsts).toEqual(stagedState.candidate.xpFirsts);
+      expect(outcome.transaction.state.xpFirstsBinding)
+        .toEqual(stagedState.candidate.xpFirstsBinding);
+      const verified = verifyArc4CommittedCaptureV1({
+        runtimeExtensions: fixture.runtime.extensions,
+        committed: outcome,
+      });
+      expect(verified.kind).toBe('verified');
+      if (verified.kind === 'verified') {
+        expect(ownershipSourceStateV1(verified.ownershipV2).revision).toBe(sourceRevision + 1);
+        expect(verified.ownershipV2.revision).toBe(v2Revision + 1);
+        expect(verified.scoutXp).toEqual(outcome.settlement.scoutXp);
+        const durableScout = verified.ownershipV2.creatures.find(
+          (row) => row.creatureId === source.scout.creatureId,
+        );
+        expect(durableScout).toBeDefined();
+        expect(durableScout?.xp ?? 0).toBe(expectedXp);
+        expect(durableScout === undefined ? null : { ...durableScout, xp: source.scout.xp })
+          .toEqual(source.scout);
+        const captured = verified.ownershipV2.creatures.find(
+          (row) => row.creatureId === outcome.settlement.plan.ownedRowId,
+        );
+        expect(captured?.xp).toBeNull();
+      }
+      expect(fixture.receiptCas()).toBe(1);
+      await fixture.runtime.release();
+    }
+    const missSource = scoutOwnershipSource(17);
+    const missFixture = await runtimeFixture(
+      MISS_SEED,
+      baseState(),
+      false,
+      true,
+      (extensions) => extensions,
+      missSource.state,
+    );
+    const missStagedState = stageArc4BootstrapLegacyProjection({
+      source: missFixture.state,
+      state: missSource.state,
+      extensions: missFixture.runtime.extensions,
+      registry: REGISTRY,
+      codecNow: NOW,
+    });
+    if (missStagedState.kind !== 'staged') {
+      throw new Error(`miss Scout legacy fixed point was ${missStagedState.detail}`);
+    }
+    const miss = committed(await commitArc4CaptureAttemptV1({
+      runtime: missFixture.runtime,
+      ownershipV2: missFixture.ownershipV2,
+      state: missStagedState.candidate,
+      ...context,
+      presentationFence: presentationFence(context, missFixture.runtime.extensions),
+      verb: 'tame',
+      codecNow: NOW,
+    }));
+    expect(miss.settlement.plan.hit).toBe(false);
+    expect(miss.settlement.scoutXp).toMatchObject({
+      scoutCreatureId: missSource.scout.creatureId,
+      xpBefore: 17,
+      xpAfter: 17,
+      xpAward: 0,
+    });
+    await missFixture.runtime.release();
   }, 20_000);
 
   it('commits, verifies, reloads, and publishes one first-world alien Charter bioscan', async () => {

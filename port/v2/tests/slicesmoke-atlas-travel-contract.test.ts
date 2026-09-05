@@ -9,6 +9,10 @@ const mainSource = readFileSync(
   new URL('../apps/game/src/main.ts', import.meta.url),
   'utf8',
 );
+const atlasPanelSource = readFileSync(
+  new URL('../apps/game/src/star-atlas-panel.ts', import.meta.url),
+  'utf8',
+);
 const indexSource = readFileSync(
   new URL('../apps/game/index.html', import.meta.url),
   'utf8',
@@ -316,9 +320,18 @@ describe('Slice Atlas native Travel contract', () => {
   });
 
   it('binds every repaired Atlas path to the native child action and rejects stale wrapper activation', () => {
-    expect(mainSource).toContain('<div class="centry atlas-entry" data-sel="atlas-entry" data-aid="${esc(id)}">');
-    expect(mainSource).toContain('<button type="button" data-atlas-travel="${esc(id)}"');
-    expect(mainSource).toContain("e.target.closest<HTMLButtonElement>('[data-atlas-travel]')");
+    const rowMarkup = section(
+      atlasPanelSource,
+      '      return `<div class="centry atlas-entry',
+      '\n        + `<div class="atlas-entry-copy"',
+    );
+    expect(rowMarkup).toContain('role="listitem"');
+    expect(rowMarkup).toContain('data-sel="atlas-entry"');
+    expect(rowMarkup).toContain('data-aid="${escapeHtml(row.id)}"');
+    expect(rowMarkup).toContain('data-atlas-id="${escapeHtml(row.id)}"');
+    expect(atlasPanelSource).toContain('<button type="button" data-atlas-travel="${escapeHtml(row.id)}"');
+    expect(mainSource).toContain("fillPanel('atlas', renderStarAtlasV1(projection, {");
+    expect(mainSource).toContain("const travelButton = event.target.closest<HTMLButtonElement>(\n    '[data-atlas-travel],[data-atlas-travel-home]',\n  );");
 
     const authorization = section(
       sliceSource,

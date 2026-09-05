@@ -319,7 +319,10 @@ describe('encounter identity, suppression, and settlement-safe projections', () 
     expect(combatPackage.dependencies).toHaveProperty('@cf/domain-worldidentity');
     expect(source).not.toContain("from '@cf/scene'");
     expect(source).not.toContain(mintSpecifier);
-    expect(mintConsumers).toEqual(['scene/src/address.ts']);
+    // The privileged mint negative controls are the only test consumer; scene owns production minting.
+    expect(mintConsumers).toEqual([
+      'domain/worldidentity/test/authority.test.ts', 'scene/src/address.ts',
+    ]);
     expect(identityPackage.exports?.['.']).toBe('./src/index.ts');
     expect(identityPackage.exports?.['./mint-internal']).toBe('./src/mint-internal.ts');
   });

@@ -128,9 +128,13 @@ function independentFullRosterFingerprint(
 
 function mainWorldRosterAuthorityErrors(source: string): string[] {
   const errors: string[] = [];
-  if (!source.includes(
-    "import { canonicalWorldRoster, type CanonicalWorldRoster } from './world-roster.js';",
-  )) {
+  const rosterImports = [...source.matchAll(
+    /import\s*\{([^{}]*)\}\s*from\s*['"]\.\/world-roster\.js['"];?/gu,
+  )];
+  const rosterBindings = rosterImports.length === 1
+    ? rosterImports[0]![1]!.split(',').map((name) => name.trim()).filter(Boolean) : [];
+  if (!rosterBindings.includes('canonicalWorldRoster')
+    || !rosterBindings.includes('type CanonicalWorldRoster')) {
     errors.push('canonical roster import missing');
   }
   if (!source.includes('canonicalCF1WorldAddressFromNav(state)')) {
@@ -755,8 +759,8 @@ describe('MAIN-3 — full world roster vs Planetside preview', () => {
     expect(mainWorldRosterAuthorityErrors(mainSource)).toEqual([]);
 
     const missingImport = mainSource.replace(
-      "import { canonicalWorldRoster, type CanonicalWorldRoster } from './world-roster.js';",
-      "import { type CanonicalWorldRoster } from './world-roster.js';",
+      '  canonicalWorldRoster,\n',
+      '',
     );
     expect(missingImport).not.toBe(mainSource);
     expect(mainWorldRosterAuthorityErrors(missingImport)).toContain(

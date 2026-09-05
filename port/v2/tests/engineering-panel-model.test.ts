@@ -27,6 +27,8 @@ import {
   type SurfaceNav,
 } from '@cf/scene';
 import { projectEngineeringPanelReadModel } from '../apps/game/src/engineering-panel-model.js';
+// @ts-expect-error The executable browser oracle intentionally has no declaration shim.
+import { ENGINEERING_GLASS_RECIPE_ORACLE } from '../tools/engineering-browser-contract.mjs';
 
 const SOL = {
   galaxy: { seed: 999, x: 90, y: -60 },
@@ -158,6 +160,55 @@ function ship(items: readonly (readonly [string, number])[]) {
 }
 
 describe('Engineering panel production read model', () => {
+  it('keeps the independent Glass recipe oracle aligned with the authored live gear effects', () => {
+    const newlyLive = [
+      'fieldsuit', 'hazmat', 'thermal', 'presshull', 'cryoline', 'visor', 'compass',
+      'surgeon', 'fieldlegs', 'cg-proto', 'cg-genesis', 'cg-void', 'cg-chron',
+      'rl-stone', 'rl-sky', 'rl-life', 'rl-void',
+      'struts', 'stabil', 'anchor', 'greaves', 'magboots', 'gravboots', 'rl-ocean',
+    ];
+    const model = projectEngineeringPanelReadModel({
+      ship: ship([]), nav: surface(world(MARS)), engineering: state(),
+      loadout: loadout(), economy, activePlayMs: 100_000,
+    });
+    const recipes = model.fabricationGroups.flatMap((group) => group.recipes);
+    type OracleRow = { id: string; status: string; effectSupport: string;
+      modelEnabled: string; disabled: boolean };
+    const oracle = ENGINEERING_GLASS_RECIPE_ORACLE as readonly OracleRow[];
+    expect(recipes.map(({ baseId, effectSupport }) => ({ id: baseId, effectSupport })))
+      .toEqual(oracle.map(({ id, effectSupport }) => ({ id, effectSupport })));
+    expect(oracle.filter(({ effectSupport }) => effectSupport === 'unavailable').map(({ id }) => id))
+      .toEqual([]);
+    expect(oracle.filter(({ modelEnabled }) => modelEnabled === 'true').map(({ id }) => id))
+      .toEqual(['plate', 'chip', 'headlamp']);
+    const glass = fs.readFileSync(fileURLToPath(new URL('../tools/glassmatrix.mjs', import.meta.url)), 'utf8');
+    const start = '            recipeTruth=JSON.stringify(groups.flatMap((group)=>group.recipes)';
+    const end = ',\n            recipeMatch=';
+    expect(glass.split(start)).toHaveLength(2);
+    expect(glass.split(end)).toHaveLength(2);
+    const expression = glass.slice(glass.indexOf(start) + start.indexOf('JSON.stringify'),
+      glass.indexOf(end, glass.indexOf(start)));
+    const check = new Function('groups', 'expectedRecipeOracle', `return (${expression});`) as (
+      groups: { recipes: (OracleRow & { ariaDisabled: string })[] }[], expected: readonly OracleRow[],
+    ) => boolean;
+    const groups = [{ recipes: oracle.map((row) => ({ ...row,
+      effectSupport: recipes.find(({ baseId }) => baseId === row.id)!.effectSupport,
+      ariaDisabled: String(row.disabled) })) }];
+    expect(check(groups, oracle)).toBe(true);
+    for (const id of newlyLive) {
+      const row = groups[0]!.recipes.find((candidate) => candidate.id === id)!;
+      expect(row, id).toMatchObject({ effectSupport: 'live', status: 'unavailable',
+        modelEnabled: 'false', disabled: true });
+      row.effectSupport = 'unavailable';
+      expect(check(groups, oracle), id).toBe(false);
+      row.effectSupport = 'live';
+      const staleOracle = oracle.map((candidate) => candidate.id === id
+        ? { ...candidate, effectSupport: 'unavailable' } : candidate);
+      expect(check(groups, staleOracle), id).toBe(false);
+      expect(check(groups, oracle), id).toBe(true);
+    }
+  });
+
   it('projects a registered lifeless surface, all six research rows, and the exact 62-recipe catalogue', () => {
     const mars = world(MARS);
     const owned = [['jumpdrive', 1], ['autoext', 1], ['rig3', 1], ['headlamp', 1]] as const;
@@ -178,7 +229,10 @@ describe('Engineering panel production read model', () => {
     expect(model.fabricationGroups.flatMap(({ recipes }) => recipes).find(({ baseId }) => baseId === 'autoext')?.status)
       .toBe('owned');
     expect(model.fabricationGroups.flatMap(({ recipes }) => recipes).find(({ baseId }) => baseId === 'fieldsuit'))
-      .toMatchObject({ effectSupport: 'unavailable', status: 'unavailable' });
+      .toMatchObject({
+        effectSupport: 'live', status: 'unavailable',
+        effectDetail: 'Live effects: bioscan protection, landing safety.',
+      });
     expect(model.fabricationGroups.flatMap(({ recipes }) => recipes).find(({ baseId }) => baseId === 'rig1')?.effectSupport)
       .toBe('live');
     expect(Object.isFrozen(model)).toBe(true);
@@ -200,8 +254,18 @@ describe('Engineering panel production read model', () => {
       status: 'unavailable', effectSupport: 'live',
     });
     expect(eligible.find(({ baseId }) => baseId === 'fieldsuit')).toMatchObject({
-      status: 'unavailable', reason: 'Gameplay effect is not connected.',
-      effectSupport: 'unavailable',
+      status: 'unavailable', effectSupport: 'live',
+      effectDetail: 'Live effects: bioscan protection, landing safety.',
+    });
+    expect(eligible.find(({ baseId }) => baseId === 'fieldsuit')?.reason)
+      .toContain('Missing 2 Carbon Weave.');
+    expect(eligible.find(({ baseId }) => baseId === 'surgeon')).toMatchObject({
+      status: 'unavailable', effectSupport: 'live',
+      effectDetail: 'Live effects: flora healing.',
+    });
+    expect(eligible.find(({ baseId }) => baseId === 'compass')).toMatchObject({
+      status: 'unavailable', effectSupport: 'live',
+      effectDetail: 'Live effects: travel speed.',
     });
 
     const missingParts = projectEngineeringPanelReadModel({
@@ -256,7 +320,7 @@ describe('Engineering panel production read model', () => {
     expect(noElapsed.mining.autoExtractorDue).toBe(0);
   });
 
-  it('prioritizes unavailable research consumers while exposing exact owned costs', () => {
+  it('exposes complete research consumers while preserving exact owned costs and prerequisites', () => {
     const mars = world(MARS);
     const model = projectEngineeringPanelReadModel({
       ship: ship([]), nav: surface(mars), engineering: state({ research: ['drive2'] }),
@@ -266,8 +330,9 @@ describe('Engineering panel production read model', () => {
       status: 'owned', reason: 'Already researched.',
     });
     expect(model.research.find(({ id }) => id === 'drive3')).toMatchObject({
-      status: 'unavailable', reason: 'Gameplay effect is not connected.',
+      status: 'unavailable',
     });
+    expect(model.research.find(({ id }) => id === 'drive3')?.reason).toContain('Missing 1 Prismatium.');
     expect(model.research.find(({ id }) => id === 'scan1')?.costs.materials)
       .toEqual([
         { id: 'Fe', label: 'Iron', required: 6, owned: 0 },

@@ -153,12 +153,99 @@ const ARC4_PERTAR_BOOT_PROGRESSION_WITNESS =
   'arc9p1:8bfd4634e1e932eabead451a44fdf8e7ef35693c58b0179ebf8045a68558c05b';
 const ARC4_PERTAR_SURVEY_WITNESS =
   'arc9sv1:21678a94072ba2e5d0df32cdde8454d265cf0edac9310acf98576d2696244ece';
+/* Independently derived from the existing seed-68 Pertar source: Volcanic
+   Archipelago base 70, static rain -5, no worn descent effects; success draw
+   0.3569247468840331 lands at 65%. Seed-only landed evidence is not a canonical
+   revisit. The two named draws still own exactly one Land receipt. */
+export const ARC4_PERTAR_DESCENT_LANDING = Object.freeze({
+  "descentWeather": "rain",
+  "descent": Object.freeze({
+    "kind": "landed",
+    "navigation": "surface",
+    "policy": Object.freeze({
+      "schema": "cf-v2-descent-policy/v1",
+      "key": "CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3",
+      "address": Object.freeze({
+        "format": "CF1",
+        "galaxy": Object.freeze({
+          "seed": 999,
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "home": true,
+          "quasar": false,
+          "dwarf": false,
+          "parentCell": Object.freeze({
+            "x": 0,
+            "y": -1
+          })
+        }),
+        "star": Object.freeze({
+          "seed": 1347060996,
+          "x": 414.31,
+          "y": 168.49,
+          "layer": "coarse",
+          "parentCell": Object.freeze({
+            "x": 9,
+            "y": 4
+          })
+        }),
+        "planet": Object.freeze({
+          "seed": 546621068,
+          "ordinal": 3
+        }),
+        "key": "CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3"
+      }),
+      "opportunityIdentity": "cf-v2-world-opportunity/v3:CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3",
+      "capabilityFingerprint": "ec1:430:ae5789c7",
+      "planetType": "ocean",
+      "biomeKey": "volcisle",
+      "typeBase": Object.freeze({
+        "successPercent": 90,
+        "damageMin": 2,
+        "damageMax": 2
+      }),
+      "baseSuccessPercent": 70,
+      "stormActive": true,
+      "stormAdjustedPercent": 65,
+      "waveOffCount": 0,
+      "learnedApproachBonus": 0,
+      "globalGearBonus": 0,
+      "familyGearBonus": 0,
+      "landingGuaranteed": false,
+      "successPercent": 65,
+      "damageMin": 4,
+      "damageMax": 6,
+      "waveOffDamageReduction": 0,
+      "safeReason": null,
+      "requiredDomains": Object.freeze(["descent.success", "descent.damage"])
+    }),
+    "drawsConsumed": 2,
+    "hpBefore": 55,
+    "hpAfter": 55,
+    "damage": 0,
+    "waveOffCountBefore": 0,
+    "waveOffCountAfter": 0,
+    "persistenceOutcome": "success"
+  }),
+  "waveOffStateSuccessorSeal": "88ed6120a970c2bda5aaa7e4d4f39be3766293b9a17aa8277141a15c7bc94b56",
+  "waveOffLegacySuccessorSeal": "9d7ceb80430c32a69624b2ad4a2a9bbe6b4e15366a8021c947058322d8a42e7d",
+  "arc2LootSuccessorSeal": "af67a21664d77c83434ddd0ce394c85b4c596ffb672d101540e815c1e2574457",
+  "waveOffProtectedStateSeal": null
+});
+export const ARC4_PERTAR_DESCENT_DRAWS = Object.freeze({
+  "descent.success": 1,
+  "descent.damage": 1
+});
 const ARC4_PERTAR_LANDING_WITNESS =
-  '{"schema":"cf-v2-arc0-landing-witness/v1","worldKey":"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3","planetSeed":546621068,"planetOrdinal":3,"landing":"unresolved-already-landed","permanentLanding":true,"training":false,"landingKnownBefore":true,"identityLandedAfter":true,"claimedLegacyIdentity":true,"legacyMirrorContainsSeedAfter":true,"savedView":{"type":"planet","gal":{"x":90,"y":-60,"size":78,"sp":0,"tilt":0.62,"rot":0.5,"seed":999,"home":true,"quasar":false,"dwarf":false},"star":{"x":414.31,"y":168.49,"seed":1347060996},"pseed":546621068},"sample":{"kind":"suppressed","reason":"unresolved-already-landed"},"charter":{"banked":false,"ascChBefore":1,"ascChAfter":1,"stage":1,"progressSeal":"479d7c8742762c9fb5fa62cfdb8b9621bf70959410c8c2aece801e707f8a27a1","delta":{}},"starterCharters":{"changed":false,"progressIds":[],"completions":[],"priorUnlockedIds":[],"nextUnlockedIds":[],"addedAchievementIds":[],"priorBestRankIndex":0,"nextBestRankIndex":0},"achievement":null,"stateSuccessorSeal":"9ccc8a03c32960e4eef9322cf2aee9e02d8942dcfc9c9cc78c092259e7ae1e65","worldIdentitySuccessorSeal":"040de02d9a443e9d6a6ee3091492ea098daf3cb8663efae0b323333b8a51442b","receiptOrdinal":2}';
+  "{\"schema\":\"cf-v2-arc0-landing-witness/v1\",\"worldKey\":\"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3\",\"planetSeed\":546621068,\"planetOrdinal\":3,\"landing\":\"unresolved-already-landed\",\"permanentLanding\":true,\"training\":false,\"landingKnownBefore\":true,\"identityLandedAfter\":true,\"claimedLegacyIdentity\":true,\"legacyMirrorContainsSeedAfter\":true,\"savedView\":{\"type\":\"planet\",\"gal\":{\"x\":90,\"y\":-60,\"size\":78,\"sp\":0,\"tilt\":0.62,\"rot\":0.5,\"seed\":999,\"home\":true,\"quasar\":false,\"dwarf\":false},\"star\":{\"x\":414.31,\"y\":168.49,\"seed\":1347060996},\"pseed\":546621068},\"sample\":{\"kind\":\"suppressed\",\"reason\":\"unresolved-already-landed\"},\"charter\":{\"banked\":false,\"ascChBefore\":1,\"ascChAfter\":1,\"stage\":1,\"progressSeal\":\"479d7c8742762c9fb5fa62cfdb8b9621bf70959410c8c2aece801e707f8a27a1\",\"delta\":{}},\"starterCharters\":{\"changed\":false,\"progressIds\":[],\"completions\":[],\"priorUnlockedIds\":[],\"nextUnlockedIds\":[],\"addedAchievementIds\":[],\"priorBestRankIndex\":0,\"nextBestRankIndex\":0},\"achievement\":null,\"descentWeather\":\"rain\",\"descent\":{\"kind\":\"landed\",\"navigation\":\"surface\",\"policy\":{\"schema\":\"cf-v2-descent-policy/v1\",\"key\":\"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3\",\"address\":{\"format\":\"CF1\",\"galaxy\":{\"seed\":999,\"x\":90,\"y\":-60,\"size\":78,\"sp\":0,\"tilt\":0.62,\"rot\":0.5,\"home\":true,\"quasar\":false,\"dwarf\":false,\"parentCell\":{\"x\":0,\"y\":-1}},\"star\":{\"seed\":1347060996,\"x\":414.31,\"y\":168.49,\"layer\":\"coarse\",\"parentCell\":{\"x\":9,\"y\":4}},\"planet\":{\"seed\":546621068,\"ordinal\":3},\"key\":\"CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3\"},\"opportunityIdentity\":\"cf-v2-world-opportunity/v3:CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3\",\"capabilityFingerprint\":\"ec1:430:ae5789c7\",\"planetType\":\"ocean\",\"biomeKey\":\"volcisle\",\"typeBase\":{\"successPercent\":90,\"damageMin\":2,\"damageMax\":2},\"baseSuccessPercent\":70,\"stormActive\":true,\"stormAdjustedPercent\":65,\"waveOffCount\":0,\"learnedApproachBonus\":0,\"globalGearBonus\":0,\"familyGearBonus\":0,\"landingGuaranteed\":false,\"successPercent\":65,\"damageMin\":4,\"damageMax\":6,\"waveOffDamageReduction\":0,\"safeReason\":null,\"requiredDomains\":[\"descent.success\",\"descent.damage\"]},\"drawsConsumed\":2,\"hpBefore\":55,\"hpAfter\":55,\"damage\":0,\"waveOffCountBefore\":0,\"waveOffCountAfter\":0,\"persistenceOutcome\":\"success\"},\"worldIdentitySuccessorSeal\":\"040de02d9a443e9d6a6ee3091492ea098daf3cb8663efae0b323333b8a51442b\",\"waveOffStateSuccessorSeal\":\"88ed6120a970c2bda5aaa7e4d4f39be3766293b9a17aa8277141a15c7bc94b56\",\"waveOffLegacySuccessorSeal\":\"9d7ceb80430c32a69624b2ad4a2a9bbe6b4e15366a8021c947058322d8a42e7d\",\"arc2LootSuccessorSeal\":\"af67a21664d77c83434ddd0ce394c85b4c596ffb672d101540e815c1e2574457\",\"receiptOrdinal\":1,\"stateSuccessorSeal\":\"9ccc8a03c32960e4eef9322cf2aee9e02d8942dcfc9c9cc78c092259e7ae1e65\",\"waveOffProtectedStateSeal\":null}";
 const ARC4_PERTAR_TAME_LANDING_STATE_SEAL =
   '10d953c315de7295a53d221ea1d2f93899de8f7ab127db26d3e5cdff170e7533';
 const ARC4_PERTAR_SAMPLE_PROGRESSION_WITNESS =
-  'arc9p1:ca4c7dff47e0659ad90ee11f24441920e8fde2ccbc6cd474bd4b174338f4f6a1';
+  'arc9p1:2fc001a89819c20cca537ce2dff25ce5b88a1497e7d4a913d9a8b23217cb9013';
 const ARC4_PERTAR_SOURCE_FACTS = Object.freeze({
   arc2LoadoutFingerprint: 'el1:2644:1286ebff',
   engineeringCapabilityFingerprint: 'ec1:430:ae5789c7',
@@ -202,19 +289,19 @@ export const ARC4_PERTAR_FIXTURE = Object.freeze({
   contactCapturePoints: 30,
   candidates: ARC4_PERTAR_CANDIDATES,
   sessionSeed: 68,
-  /* Replacement begins at zero. Boot progression owns receipt 0, then the
-     fixture's real Survey and Landing setup own receipts 1 and 2. */
+  /* Replacement begins at zero. Boot progression owns receipt 0 and Landing
+     owns receipt 1. Living-world card inspection is deliberately read-only. */
   initialSessionOrdinal: 0,
   initialSessionDraws: Object.freeze({}),
   sourceReadySessionOrdinal: 1,
-  actionReadySessionOrdinal: 3,
+  actionReadySessionOrdinal: 2,
   sourceReadyReceipt: Object.freeze({
     ordinal: 0,
     kind: 'arc9-progression-refresh-v1',
     witness: ARC4_PERTAR_BOOT_PROGRESSION_WITNESS,
   }),
   actionReadyReceiptKinds: Object.freeze([
-    'arc9-progression-refresh-v1', 'arc9-survey-v1', 'arc0-land',
+    'arc9-progression-refresh-v1', 'arc0-land',
   ]),
   v4OwnedCounters: Object.freeze({
     before: Object.freeze({ hybrids: 0, best: 0, maxGen: 0, bestRank: 3 }),
@@ -554,6 +641,18 @@ const orderedDiscovery = (value) => {
     if (worldAddress !== null) {
       orderedProvenance = orderedObject(provenance, [
         'kind', 'verb', 'worldKey', 'worldAddress', 'cycle', 'sourceOrdinal',
+      ], { worldAddress });
+    }
+  } else if (provenance?.kind === 'paragon') {
+    const worldAddress = orderedWorldAddress(provenance.worldAddress);
+    if (worldAddress !== null && worldAddress.format === 'CF1'
+      && boundedText(worldAddress.key, 512) && provenance.worldKey === worldAddress.key
+      && counter(provenance.paragonIndex) && provenance.paragonIndex < 50
+      && uint32(provenance.receiptOrdinal) && provenance.receiptOrdinal <= 0xffff_fffe
+      && value.acquisition === 'paragon' && value.firstForSpecies === true
+      && arc5DiscoveryId(value.recordId) && arc5SpeciesId(value.speciesId)) {
+      orderedProvenance = orderedObject(provenance, [
+        'kind', 'paragonIndex', 'worldKey', 'worldAddress', 'receiptOrdinal',
       ], { worldAddress });
     }
   } else if (provenance?.kind === 'legacy') {
@@ -1623,15 +1722,16 @@ const projectLegacyMirror = (mirror) => {
         throw new Error('catalogue relation');
       }
       const legacyCodexId = `s${species.genome.seed}`;
+      const category = discovery.provenance?.kind === 'legacy'
+        ? 0 : discovery.provenance?.kind === 'world' ? 1 : 2;
       const order = discovery.provenance?.kind === 'legacy'
-        ? discovery.provenance.legacySourceIndex : discovery.provenance?.sourceOrdinal;
+        ? discovery.provenance.legacySourceIndex
+        : discovery.provenance?.kind === 'world'
+          ? discovery.provenance.sourceOrdinal : discovery.provenance?.receiptOrdinal;
       if (!counter(order)) throw new Error('source order');
-      return { species, discovery, legacyCodexId, order };
+      return { species, discovery, legacyCodexId, category, order };
     }).sort((left, right) => {
-      const leftLegacy = left.discovery.provenance.kind === 'legacy';
-      const rightLegacy = right.discovery.provenance.kind === 'legacy';
-      if (leftLegacy !== rightLegacy) return leftLegacy ? -1 : 1;
-      return left.order - right.order
+      return left.category - right.category || left.order - right.order
         || (left.legacyCodexId < right.legacyCodexId ? -1
           : left.legacyCodexId > right.legacyCodexId ? 1 : 0);
     });
@@ -1664,7 +1764,10 @@ const projectLegacyMirror = (mirror) => {
       if (species.alias !== null) names.push([`c${legacyCodexId}`, species.alias]);
       const provenance = discovery.provenance;
       const from = provenance.kind === 'legacy'
-        ? provenance.from : `Canonical world ${provenance.worldAddress.planet.seed}`;
+        ? provenance.from
+        : provenance.kind === 'paragon'
+          ? `Paragon site #${provenance.paragonIndex + 1}`
+          : `Canonical world ${provenance.worldAddress.planet.seed}`;
       const where = provenance.kind === 'legacy'
         ? provenance.legacyLocation?.display ?? null : legacyWorldWhere(provenance.worldAddress);
       return { legacyCodexId, g: genome, f: from, w: where };
@@ -1940,6 +2043,25 @@ const arc5FeedDiagnosticsShape = (value) => exactKeys(value, [
   && arc5FeedControllerDiagnosticsShape(value.controller)
   && arc5FeedCoordinatorDiagnosticsShape(value.actionCoordinator);
 
+const arc5ExplorerMealControllerDiagnosticsShape = (value) => exactKeys(value, [
+  'attachedMountCount', 'delegatedListenerCount', 'pendingWork',
+  'convergenceLatched', 'actionControlCount', 'contextKey', 'lastRequest', 'lastOutcome',
+])
+  && [0, 1].includes(value.attachedMountCount)
+  && [0, 1].includes(value.delegatedListenerCount)
+  && [0, 1].includes(value.pendingWork)
+  && typeof value.convergenceLatched === 'boolean'
+  && counter(value.actionControlCount)
+  && nullableBoundedText(value.contextKey, 2_048)
+  && nullableRecord(value.lastRequest) && nullableRecord(value.lastOutcome);
+
+const arc5ExplorerMealDiagnosticsShape = (value) => exactKeys(value, [
+  'lastOutcome', 'lastResult', 'controller',
+])
+  && nullableBoundedText(value.lastOutcome, 256)
+  && nullableRecord(value.lastResult)
+  && arc5ExplorerMealControllerDiagnosticsShape(value.controller);
+
 const arc5BreedControllerDiagnosticsShape = (value) => exactKeys(value, [
   'schema', 'attachedMountCount', 'retainedDomCount', 'pendingWork',
   'convergenceLatched', 'delegatedListenerCount',
@@ -2056,14 +2178,26 @@ const arc5AppDiagnosticsCoreShape = (value) => ['loaded', 'unavailable'].include
       && value.deltaShardCount === null && Array.isArray(value.deltaShardDigests)
       && value.deltaShardDigests.length === 0);
 
+const arc5AppDiagnosticsActionShapes = (value) => arc5FeedDiagnosticsShape(value.feed)
+  && arc5BreedDiagnosticsShape(value.breed)
+  && arc5RenameDiagnosticsShape(value.rename)
+  && arc5ScoutDiagnosticsShape(value.scout);
+
 const arc5AppDiagnosticsShape = (value) => exactKeys(value, [
+  ...ARC5_APP_DIAGNOSTIC_BASE_KEYS, 'feed', 'explorerMeal', 'breed', 'rename', 'scout',
+])
+  && value.schema === 'cf-v2-arc5-app-state/v3'
+  && arc5AppDiagnosticsActionShapes(value)
+  && arc5ExplorerMealDiagnosticsShape(value.explorerMeal)
+  && arc5AppDiagnosticsCoreShape(value);
+
+/* Retained pre-Explorer-Meal v3 carriers have this exact known shape. Only
+   explicit historical replay admits it; current evidence must include Meal. */
+const preExplorerMealArc5AppDiagnosticsShape = (value) => exactKeys(value, [
   ...ARC5_APP_DIAGNOSTIC_BASE_KEYS, 'feed', 'breed', 'rename', 'scout',
 ])
   && value.schema === 'cf-v2-arc5-app-state/v3'
-  && arc5FeedDiagnosticsShape(value.feed)
-  && arc5BreedDiagnosticsShape(value.breed)
-  && arc5RenameDiagnosticsShape(value.rename)
-  && arc5ScoutDiagnosticsShape(value.scout)
+  && arc5AppDiagnosticsActionShapes(value)
   && arc5AppDiagnosticsCoreShape(value);
 
 const legacyArc5AppDiagnosticsShape = (value) => exactKeys(
@@ -2074,7 +2208,9 @@ const legacyArc5AppDiagnosticsShape = (value) => exactKeys(
 
 const arc5EvidenceDiagnosticsShape = (value, allowLegacyArc5Diagnostics) => (
   arc5AppDiagnosticsShape(value)
-  || (allowLegacyArc5Diagnostics === true && legacyArc5AppDiagnosticsShape(value))
+  || (allowLegacyArc5Diagnostics === true && (
+    legacyArc5AppDiagnosticsShape(value) || preExplorerMealArc5AppDiagnosticsShape(value)
+  ))
 );
 
 const expectedArc5Outcome = (actual, expected) => expected === undefined
@@ -2844,23 +2980,23 @@ const exactArc4PertarPrefixRows = (raw, phase) => {
     : phase === 'action-ready'
       ? ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal : null;
   if (expectedLength === null || raw.receiptRows.length !== expectedLength) return false;
-  const [boot, survey, landing] = raw.receiptRows;
+  const [boot, landing] = raw.receiptRows;
   if (!same(boot, ARC4_PERTAR_FIXTURE.sourceReadyReceipt)) return false;
   if (phase === 'source-ready') return true;
   const landingFacts = parseJson(landing?.witness);
   const expectedLandingFacts = parseJson(ARC4_PERTAR_LANDING_WITNESS);
   if (!record(landingFacts) || !record(expectedLandingFacts)) return false;
   expectedLandingFacts.stateSuccessorSeal = landingFacts.stateSuccessorSeal;
-  return survey?.ordinal === 1 && survey?.kind === 'arc9-survey-v1'
-    && survey?.witness === ARC4_PERTAR_SURVEY_WITNESS
-    && landing?.ordinal === 2 && landing?.kind === 'arc0-land'
+  return landing?.ordinal === 1 && landing?.kind === 'arc0-land'
     && exactKeys(landingFacts, [
       'schema', 'worldKey', 'planetSeed', 'planetOrdinal', 'landing',
       'permanentLanding', 'training', 'landingKnownBefore',
       'identityLandedAfter', 'claimedLegacyIdentity',
       'legacyMirrorContainsSeedAfter', 'savedView', 'sample', 'charter',
-      'starterCharters', 'achievement', 'stateSuccessorSeal',
-      'worldIdentitySuccessorSeal', 'receiptOrdinal',
+      'starterCharters', 'achievement', 'descentWeather', 'descent',
+      'worldIdentitySuccessorSeal', 'waveOffStateSuccessorSeal',
+      'waveOffLegacySuccessorSeal', 'arc2LootSuccessorSeal', 'receiptOrdinal',
+      'stateSuccessorSeal', 'waveOffProtectedStateSeal',
     ])
     && landing.witness === JSON.stringify(expectedLandingFacts)
     && hexDigest(landingFacts.stateSuccessorSeal);
@@ -2868,7 +3004,8 @@ const exactArc4PertarPrefixRows = (raw, phase) => {
 
 /** Exact composed ledger phase for the Pertar browser fixture. Fresh means a
  * new document with empty Arc 4 ownership, not an empty cross-system ledger:
- * boot progression, Survey, and Landing are independently owned predecessors. */
+ * boot progression and Landing are independently owned predecessors. Living
+ * Survey-card inspection must not append a receipt. */
 export const assessArc4PertarLedgerPrefix = ({ raw, state, phase } = {}) => {
   const durable = assessArc4DurableEvidence(raw);
   const mirror = durable.ownership?.mirror;
@@ -2878,17 +3015,19 @@ export const assessArc4PertarLedgerPrefix = ({ raw, state, phase } = {}) => {
     ? ARC4_PERTAR_FIXTURE.sourceReadySessionOrdinal
     : phase === 'action-ready'
       ? ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal : null;
+  const expectedDraws = phase === 'source-ready'
+    ? ARC4_PERTAR_FIXTURE.initialSessionDraws : ARC4_PERTAR_DESCENT_DRAWS;
   const checks = {
     phase: expectedOrdinal !== null,
     durableEvidence: durable.ok === true,
     exactPrefix: exactArc4PertarPrefixRows(raw, phase),
     authority: raw?.authority?.sessionRng?.seed === ARC4_PERTAR_FIXTURE.sessionSeed
       && raw?.authority?.sessionRng?.ordinal === expectedOrdinal
-      && same(raw?.authority?.sessionRng?.draws, ARC4_PERTAR_FIXTURE.initialSessionDraws),
+      && same(raw?.authority?.sessionRng?.draws, expectedDraws),
     runtimeParity: runtime?.revision === raw?.revision
       && runtime?.sessionSeed === ARC4_PERTAR_FIXTURE.sessionSeed
       && runtime?.sessionOrdinal === expectedOrdinal
-      && same(runtime?.sessionDraws, ARC4_PERTAR_FIXTURE.initialSessionDraws),
+      && same(runtime?.sessionDraws, expectedDraws),
     emptyCaptureOwnership: raw?.captureRevision === 0 && mirror?.revision === 0
       && ['catalogSpecies', 'discoveries', 'creatures', 'specimenLots', 'biosphereProgress']
         .every((field) => Array.isArray(mirror?.[field]) && mirror[field].length === 0),
@@ -3049,6 +3188,47 @@ const receiptMap = (evidence) => {
   }]));
 };
 
+/* Current capture settlement binds the original plan to both independently
+   reconstructed ownership lineages. The prescribed Pertar sequence has no
+   Field Scout; it must never award Scout XP or acquire an assignment. */
+const captureSettlementFacts = (before, after, oracle) => {
+  const leftRows = inspectV5Rows(before).rows, rightRows = inspectV5Rows(after).rows;
+  const leftSource = inspectArc4Ownership(leftRows);
+  const rightSource = inspectArc4Ownership(rightRows);
+  const left = inspectArc5OwnershipMigration(leftRows, leftSource);
+  const right = inspectArc5OwnershipMigration(rightRows, rightSource);
+  const fixed = (migration) => migration.namespaceInventoryMatches === true
+    && migration.manifestShapeMatches === true && migration.sourceFixedPointMatches === true
+    && migration.deltaFixedPointMatches === true && migration.targetFixedPointMatches === true;
+  if (!oracle || !fixed(left) || !fixed(right)
+    || left.target?.scoutCreatureId !== null || right.target?.scoutCreatureId !== null
+    || !hexDigest(left.sourceDigest) || !hexDigest(right.sourceDigest)
+    || !hexDigest(left.targetDigest) || !hexDigest(right.targetDigest)) return null;
+  const firstForSpecies = oracle.hit === true
+    && !leftSource.mirror.catalogSpecies.some((row) => (
+      row.speciesId === oracle.candidate.speciesId
+    ));
+  /* V5 writes use public constructor order; their digest is JSON.stringify,
+     whereas the enclosing witness uses canonical JSON. Rebuild that order. */
+  const writes = ARC5_OWNERSHIP_EXTENSION_TARGETS.map(({ segment, namespace }, index) => ({
+    segment, namespace,
+    carrier: { version: right.carriers[index].version, json: right.carriers[index].json },
+  }));
+  return {
+    successorDigest: right.sourceDigest,
+    ownershipV2Digest: right.targetDigest,
+    arc5MigrationWritesDigest: sha256(JSON.stringify(writes)),
+    scoutXp: {
+      schema: 'cf-v2-arc4-capture-scout-xp/v1',
+      firstForSpecies, scoutCreatureId: null, xpBefore: null, xpAfter: null, xpAward: 0,
+      sourceParentDigest: left.sourceDigest,
+      sourceSuccessorDigest: right.sourceDigest,
+      ownershipParentDigest: left.targetDigest,
+      ownershipSuccessorDigest: right.targetDigest,
+    },
+  };
+};
+
 const captureReceiptTransition = (
   before, after, expected, requireProgressionTail = false,
 ) => {
@@ -3076,14 +3256,22 @@ const captureReceiptTransition = (
       && progressionReceipt.row.ordinal === expectedOrdinal + 1
       && progressionReceipt.row.kind === progression.receiptKind
       && progressionReceipt.row.witness === progression.witness;
-  const witness = parseJson(receipt?.row?.witness);
+  const settlement = parseJson(receipt?.row?.witness);
+  const witness = parseJson(settlement?.captureWitness);
+  const facts = captureSettlementFacts(before, after, oracle);
+  const exactSettlement = facts !== null && exactKeys(settlement, [
+    'schema', 'captureWitness', 'successorDigest', 'ownershipV2Digest',
+    'arc5MigrationWritesDigest', 'scoutXp',
+  ]) && settlement.schema === 'cf-v2-arc4-capture-settlement-witness/v1'
+    && same(omitted(settlement, ['schema', 'captureWitness']), facts)
+    && receipt.row.witness === canonicalToolJson(settlement);
   const exactWitness = exactKeys(witness, [
     'schema', 'event', 'candidateDraw', 'successDraw', 'chance', 'hit', 'spent',
     'successorDigest',
   ]) && oracle !== null && witness.schema === 'cf-v2-capture-plan-witness/v1'
     && witness.event === oracle.event && witness.successorDigest
       === inspectArc4Ownership(inspectV5Rows(after).rows)?.manifest?.stateDigest
-    && receipt.row.witness === canonicalToolJson(witness)
+    && settlement.captureWitness === canonicalToolJson(witness)
     && sameNumber(witness.candidateDraw, oracle.candidateDraw)
     && sameNumber(witness.successDraw, oracle.successDraw)
     && sameNumber(witness.chance, oracle.chance)
@@ -3105,9 +3293,9 @@ const captureReceiptTransition = (
       && exactKeys(receipt.row, ['ordinal', 'kind', 'witness'])
       && receipt.row.ordinal === expectedOrdinal
       && receipt.row.kind === ARC4_CAPTURE_RECEIPT_KIND && exactWitness
-      && expectedMatches && exactProgressionReceipt,
-    oldStable, newKeys, receipt, witness, oracle, expectedMatches,
-    progressionReceipt, exactProgressionReceipt,
+      && exactSettlement && expectedMatches && exactProgressionReceipt,
+    oldStable, newKeys, receipt, witness, settlement, oracle, expectedMatches,
+    exactSettlement, progressionReceipt, exactProgressionReceipt,
   });
 };
 
@@ -3416,6 +3604,7 @@ const exactAppCaptureResult = (
       'hit', 'speciesId', 'speciesName', 'kingdom', 'sourceOrdinal', 'tier',
       'chance', 'worldKey', 'ecologyEpoch', 'fullRosterFingerprint',
       'firstForSpecies', 'spent', 'remainingAfter', 'ownedRowId',
+      'scoutCreatureId', 'scoutXpBefore', 'scoutXpAfter', 'scoutXpAward',
       'stardustReward', 'charterBioscanBanked', 'revision', 'ownershipRevision',
     ])
     && result.hit === expected.hit
@@ -3434,6 +3623,9 @@ const exactAppCaptureResult = (
     && result?.stardustReward === expected.stardustReward
     && typeof charterBioscanBanked === 'boolean'
     && result?.charterBioscanBanked === charterBioscanBanked
+    // This prescribed Pertar sequence never assigns a Field Scout.
+    && result.scoutCreatureId === null && result.scoutXpBefore === null
+    && result.scoutXpAfter === null && result.scoutXpAward === 0
     && counter(committedRevision) && result?.revision === committedRevision
     && counter(committedOwnershipRevision)
     && result?.ownershipRevision === committedOwnershipRevision
@@ -4389,6 +4581,10 @@ const tameGreetingResultProjection = (result) => ({
   ownedRowId: result?.ownedRowId ?? null,
   stardustReward: result?.stardustReward ?? null,
   charterBioscanBanked: result?.charterBioscanBanked ?? null,
+  scoutCreatureId: result?.scoutCreatureId,
+  scoutXpBefore: result?.scoutXpBefore,
+  scoutXpAfter: result?.scoutXpAfter,
+  scoutXpAward: result?.scoutXpAward,
   revision: result?.revision ?? null,
   ownershipRevision: result?.ownershipRevision ?? null,
 });
@@ -4408,6 +4604,7 @@ export const assessArc4TameGreetingStartObservation = (observation) => {
       'hit', 'speciesId', 'speciesName', 'kingdom', 'sourceOrdinal', 'tier',
       'chance', 'worldKey', 'ecologyEpoch', 'fullRosterFingerprint',
       'firstForSpecies', 'spent', 'remainingAfter', 'ownedRowId',
+      'scoutCreatureId', 'scoutXpBefore', 'scoutXpAfter', 'scoutXpAward',
       'stardustReward', 'charterBioscanBanked', 'revision', 'ownershipRevision',
     ]) && result.hit === true && result.speciesId === expected.speciesId
       && result.speciesName === expected.speciesName && result.kingdom === 'fauna'
@@ -4421,6 +4618,8 @@ export const assessArc4TameGreetingStartObservation = (observation) => {
       && boundedText(result.ownedRowId, 192)
       && result.stardustReward === expected.stardustReward
       && result.charterBioscanBanked === true
+      && result.scoutCreatureId === null && result.scoutXpBefore === null
+      && result.scoutXpAfter === null && result.scoutXpAward === 0
       && Number.isSafeInteger(result.revision) && result.revision >= 0
       && Number.isSafeInteger(result.ownershipRevision)
       && result.ownershipRevision >= 0,
@@ -4522,6 +4721,7 @@ export const assessArc4TameGreetingAudio = ({
     ownedRowId: creature?.creatureId,
     stardustReward: expected?.stardustReward,
     charterBioscanBanked: true,
+    scoutCreatureId: null, scoutXpBefore: null, scoutXpAfter: null, scoutXpAward: 0,
     revision: afterRaw?.revision,
     ownershipRevision: afterRaw?.captureRevision,
   });
@@ -6216,10 +6416,12 @@ const ownershipExtensions = (mirror, {
   return extensions;
 };
 
-const captureReceipt = (before, expected, stateDigest) => {
+const captureReceipt = (before, expected, after) => {
   const oracle = captureAttemptOracle(before, expected?.verb);
   if (oracle === null) throw new Error('Arc 4 selftest capture oracle was unavailable');
-  const witness = canonicalToolJson({
+  const facts = captureSettlementFacts(before, after, oracle);
+  if (facts === null) throw new Error('Arc 4 selftest settlement facts were unavailable');
+  const captureWitness = canonicalToolJson({
     schema: 'cf-v2-capture-plan-witness/v1',
     event: oracle.event,
     candidateDraw: oracle.candidateDraw,
@@ -6227,7 +6429,10 @@ const captureReceipt = (before, expected, stateDigest) => {
     chance: oracle.chance,
     hit: oracle.hit,
     spent: 1,
-    successorDigest: stateDigest,
+    successorDigest: facts.successorDigest,
+  });
+  const witness = canonicalToolJson({
+    schema: 'cf-v2-arc4-capture-settlement-witness/v1', captureWitness, ...facts,
   });
   return { ordinal: oracle.receiptOrdinal, kind: ARC4_CAPTURE_RECEIPT_KIND, witness };
 };
@@ -6623,6 +6828,21 @@ const appArc5FeedState = () => ({
   },
 });
 
+const appArc5ExplorerMealState = () => ({
+  lastOutcome: null,
+  lastResult: null,
+  controller: {
+    attachedMountCount: 0,
+    delegatedListenerCount: 0,
+    pendingWork: 0,
+    convergenceLatched: false,
+    actionControlCount: 0,
+    contextKey: null,
+    lastRequest: null,
+    lastOutcome: null,
+  },
+});
+
 const appArc5BreedState = () => ({
   lastOutcome: null,
   lastResult: null,
@@ -6724,6 +6944,7 @@ const appOwnershipV2State = (raw, {
     specimenTombstones: unavailable ? 0 : target.specimenTombstones.length,
     biospheres: unavailable ? 0 : source.biosphereProgress.length,
     feed: appArc5FeedState(),
+    explorerMeal: appArc5ExplorerMealState(),
     breed: appArc5BreedState(),
     rename: appArc5RenameState(),
     scout: appArc5ScoutState(),
@@ -6953,10 +7174,7 @@ const secondExpected = ARC4_PERTAR_FIXTURE.actions.secondMiss;
 const pertarPrefixRowsSelftest = Object.freeze([
   ARC4_PERTAR_FIXTURE.sourceReadyReceipt,
   Object.freeze({
-    ordinal: 1, kind: 'arc9-survey-v1', witness: ARC4_PERTAR_SURVEY_WITNESS,
-  }),
-  Object.freeze({
-    ordinal: 2, kind: 'arc0-land', witness: ARC4_PERTAR_LANDING_WITNESS,
+    ordinal: 1, kind: 'arc0-land', witness: ARC4_PERTAR_LANDING_WITNESS,
   }),
 ]);
 const pertarSourceReadyRawSelftest = makeDurable(emptyMirror(), {
@@ -6969,8 +7187,9 @@ const pertarSourceReadyStateSelftest = appState(
   appCaptureState(pertarSourceReadyRawSelftest),
 );
 const pertarActionReadyRawSelftest = makeDurable(emptyMirror(), {
-  revision: 12,
+  revision: 11,
   ordinal: ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal,
+  draws: ARC4_PERTAR_DESCENT_DRAWS,
   receipts: pertarPrefixRowsSelftest,
 });
 const pertarActionReadyStateSelftest = appState(
@@ -6986,10 +7205,10 @@ const pertarPrefixAssessmentSelftest = (raw, state, phase = 'action-ready') => (
 );
 const pertarLandingSealVariantSelftest = (seal) => {
   const raw = structuredClone(pertarActionReadyRawSelftest);
-  const facts = JSON.parse(raw.receiptRows[2].witness);
+  const facts = JSON.parse(raw.receiptRows[1].witness);
   facts.stateSuccessorSeal = seal;
-  raw.receiptRows[2].witness = JSON.stringify(facts);
-  raw.receiptRawRows[2] = JSON.stringify(raw.receiptRows[2]);
+  raw.receiptRows[1].witness = JSON.stringify(facts);
+  raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
   return raw;
 };
 const pertarPrefixMutationSelftest = (mutate) => {
@@ -7014,32 +7233,103 @@ const pertarPrefixControlsSelftest = Object.freeze({
     raw.receiptRows.push(row);
   }),
   reorderedReceipts: pertarPrefixMutationSelftest((raw) => {
-    [raw.receiptRows[1], raw.receiptRows[2]]
-      = [raw.receiptRows[2], raw.receiptRows[1]];
-    [raw.receiptRawRows[1], raw.receiptRawRows[2]]
-      = [raw.receiptRawRows[2], raw.receiptRawRows[1]];
-    [raw.receiptKeys[1], raw.receiptKeys[2]]
-      = [raw.receiptKeys[2], raw.receiptKeys[1]];
+    [raw.receiptRows[0], raw.receiptRows[1]]
+      = [raw.receiptRows[1], raw.receiptRows[0]];
+    [raw.receiptRawRows[0], raw.receiptRawRows[1]]
+      = [raw.receiptRawRows[1], raw.receiptRawRows[0]];
+    [raw.receiptKeys[0], raw.receiptKeys[1]]
+      = [raw.receiptKeys[1], raw.receiptKeys[0]];
   }),
   bootWitness: pertarPrefixMutationSelftest((raw) => {
     raw.receiptRows[0].witness += ':mutated';
     raw.receiptRawRows[0] = JSON.stringify(raw.receiptRows[0]);
   }),
-  surveyWitness: pertarPrefixMutationSelftest((raw) => {
-    raw.receiptRows[1].witness += ':mutated';
-    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  unexpectedSurveyReceipt: pertarPrefixMutationSelftest((raw) => {
+    const row = {
+      ordinal: 2, kind: 'arc9-survey-v1', witness: ARC4_PERTAR_SURVEY_WITNESS,
+    };
+    raw.receiptKeys.push('receipt:2');
+    raw.receiptRows.push(row);
+    raw.receiptRawRows.push(JSON.stringify(row));
   }),
   landingWitness: pertarPrefixMutationSelftest((raw) => {
-    const facts = JSON.parse(raw.receiptRows[2].witness);
+    const facts = JSON.parse(raw.receiptRows[1].witness);
     facts.planetOrdinal += 1;
-    raw.receiptRows[2].witness = JSON.stringify(facts);
-    raw.receiptRawRows[2] = JSON.stringify(raw.receiptRows[2]);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
   }),
   landingStateSuccessorSeal: pertarPrefixMutationSelftest((raw) => {
-    const facts = JSON.parse(raw.receiptRows[2].witness);
+    const facts = JSON.parse(raw.receiptRows[1].witness);
     facts.stateSuccessorSeal = 'not-a-sha256-digest';
-    raw.receiptRows[2].witness = JSON.stringify(facts);
-    raw.receiptRawRows[2] = JSON.stringify(raw.receiptRows[2]);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  descentWeather: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.descentWeather = null;
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  descentOutcome: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.descent.drawsConsumed = 0;
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  descentPolicy: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.descent.policy.successPercent = 100;
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  waveOffStateSeal: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.waveOffStateSuccessorSeal = '0'.repeat(64);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  waveOffLegacySeal: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.waveOffLegacySuccessorSeal = '0'.repeat(64);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  arc2LootSeal: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.arc2LootSuccessorSeal = '0'.repeat(64);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  waveOffProtectedSeal: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.waveOffProtectedStateSeal = '0'.repeat(64);
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  missingDescentField: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    delete facts.descentWeather;
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  extraDescentField: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    facts.unownedDescentField = true;
+    raw.receiptRows[1].witness = JSON.stringify(facts);
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  descentWitnessOrder: pertarPrefixMutationSelftest((raw) => {
+    const facts = JSON.parse(raw.receiptRows[1].witness);
+    raw.receiptRows[1].witness = JSON.stringify(Object.fromEntries(
+      Object.entries(facts).reverse(),
+    ));
+    raw.receiptRawRows[1] = JSON.stringify(raw.receiptRows[1]);
+  }),
+  authorityDraws: pertarPrefixMutationSelftest((raw) => {
+    raw.authority.sessionRng.draws['descent.success'] = 0;
+  }),
+  runtimeDraws: pertarPrefixMutationSelftest((_raw, state) => {
+    state.persistence.runtime.sessionDraws['descent.damage'] = 0;
   }),
   authorityOrdinal: pertarPrefixMutationSelftest((raw) => {
     raw.authority.sessionRng.ordinal += 1;
@@ -7050,7 +7340,8 @@ const pertarPrefixControlsSelftest = Object.freeze({
 });
 const pertarPrefixControlNamesSelftest = Object.freeze([
   'staleEmptyLedger', 'missingReceipt', 'extraReceipt', 'reorderedReceipts',
-  'bootWitness', 'surveyWitness', 'landingWitness', 'landingStateSuccessorSeal',
+  'bootWitness', 'unexpectedSurveyReceipt', 'landingWitness', 'landingStateSuccessorSeal',
+  'descentWeather', 'descentOutcome', 'descentPolicy', 'waveOffStateSeal', 'waveOffLegacySeal', 'arc2LootSeal', 'waveOffProtectedSeal', 'missingDescentField', 'extraDescentField', 'descentWitnessOrder', 'authorityDraws', 'runtimeDraws',
   'authorityOrdinal', 'runtimeOrdinal',
 ]);
 const pertarTameLandingRawSelftest = pertarLandingSealVariantSelftest(
@@ -7101,7 +7392,7 @@ const arc5AppDiagnosticsMutationSelftest = (subtree, kind) => {
 };
 const arc5AppDiagnosticsShapeControlsSelftest = Object.freeze(
   Object.fromEntries(
-    ['feed', 'breed', 'rename', 'scout'].flatMap((subtree) => (
+    ['feed', 'explorerMeal', 'breed', 'rename', 'scout'].flatMap((subtree) => (
       ['wrong', 'missing', 'extra'].map((kind) => [
         `${subtree}:${kind}`,
         arc5AppDiagnosticsMutationSelftest(subtree, kind),
@@ -7134,7 +7425,7 @@ const hitNaiveCarrierDigest = sha256(JSON.stringify({
   legacyProtection: hitCarrierOrderedMirror.legacyProtection,
 }));
 const hitReceiptSelftest = captureReceipt(
-  beforeRawSelftest, firstExpected, hitManifestDigest,
+  beforeRawSelftest, firstExpected, makeDurable(hitMirror()),
 );
 const hitRawSelftest = makeDurable(hitMirror(), {
   revision: 1, ordinal: 1,
@@ -7162,7 +7453,7 @@ const missManifestDigest = inspectArc4Ownership(inspectV5Rows(
   makeDurable(missMirror()),
 ).rows).manifest.stateDigest;
 const missReceiptSelftest = captureReceipt(
-  hitRawSelftest, secondExpected, missManifestDigest,
+  hitRawSelftest, secondExpected, makeDurable(missMirror()),
 );
 const missRawSelftest = makeDurable(missMirror(), {
   revision: 2, ordinal: 2,
@@ -7459,9 +7750,11 @@ const withReceiptWitness = (evidence, ordinal, fields) => {
   const next = structuredClone(evidence);
   const index = next.receiptRows.findIndex((row) => row?.ordinal === ordinal);
   if (index < 0) throw new Error('Arc 4 selftest receipt mutation target is absent');
-  const witness = parseJson(next.receiptRows[index].witness);
+  const settlement = parseJson(next.receiptRows[index].witness);
+  const witness = parseJson(settlement.captureWitness);
   Object.assign(witness, fields);
-  next.receiptRows[index].witness = canonicalToolJson(witness);
+  settlement.captureWitness = canonicalToolJson(witness);
+  next.receiptRows[index].witness = canonicalToolJson(settlement);
   next.receiptRawRows[index] = JSON.stringify(next.receiptRows[index]);
   return next;
 };
@@ -7518,9 +7811,8 @@ const makeHitDurable = (mirror) => {
     ownedCounters: ARC4_PERTAR_FIXTURE.v4OwnedCounters.afterFirstHit,
   };
   const provisional = makeDurable(mirror, options);
-  const digest = inspectArc4Ownership(inspectV5Rows(provisional).rows).manifest.stateDigest;
   return makeDurable(mirror, {
-    ...options, receipts: [captureReceipt(beforeRawSelftest, firstExpected, digest)],
+    ...options, receipts: [captureReceipt(beforeRawSelftest, firstExpected, provisional)],
   });
 };
 
@@ -7549,6 +7841,7 @@ const hitResultSelftest = {
   firstForSpecies: true, spent: 1, remainingAfter: 15,
   ownedRowId: SELFTEST_IDS.lot, stardustReward: 2,
   charterBioscanBanked: true, revision: 1,
+  scoutCreatureId: null, scoutXpBefore: null, scoutXpAfter: null, scoutXpAward: 0,
   ownershipRevision: hitRawSelftest.captureRevision,
 };
 const hitOutcomeSelftest = {
@@ -7584,12 +7877,13 @@ const progressionHitManifestDigestSelftest = inspectArc4Ownership(inspectV5Rows(
 ).rows).manifest.stateDigest;
 const progressionHitCaptureReceiptSelftest = captureReceipt(
   pertarActionReadyRawSelftest, firstExpected,
-  progressionHitManifestDigestSelftest,
+  makeDurable(progressionHitMirrorSelftest),
 );
 const progressionActionRawSelftest = makeDurable(progressionHitMirrorSelftest, {
   revision: pertarActionReadyRawSelftest.revision + 1,
   ordinal: ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal + 1,
-  draws: { 'capture.candidate': 1, 'capture.success': 1 },
+  draws: { ...ARC4_PERTAR_DESCENT_DRAWS,
+    'capture.candidate': 1, 'capture.success': 1 },
   receipts: [
     ...pertarPrefixRowsSelftest,
     progressionHitCaptureReceiptSelftest,
@@ -7606,7 +7900,8 @@ const progressionHitReceiptSelftest = Object.freeze({
 const progressionHitRawSelftest = makeDurable(progressionHitMirrorSelftest, {
   revision: pertarActionReadyRawSelftest.revision + 2,
   ordinal: ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal + 2,
-  draws: { 'capture.candidate': 1, 'capture.success': 1 },
+  draws: { ...ARC4_PERTAR_DESCENT_DRAWS,
+    'capture.candidate': 1, 'capture.success': 1 },
   receipts: [
     ...pertarPrefixRowsSelftest,
     progressionHitCaptureReceiptSelftest,
@@ -7644,6 +7939,7 @@ const missResultSelftest = {
   firstForSpecies: false, spent: 1, remainingAfter: 14,
   ownedRowId: null, stardustReward: 0,
   charterBioscanBanked: false, revision: 2,
+  scoutCreatureId: null, scoutXpBefore: null, scoutXpAfter: null, scoutXpAward: 0,
   ownershipRevision: missRawSelftest.captureRevision,
 };
 const missOutcomeSelftest = {
@@ -8817,7 +9113,7 @@ const tameGreetingAfterRawSelftest = makeDurable(tameGreetingMirrorSelftest, {
   ...tameGreetingAfterOptionsSelftest,
   receipts: [captureReceipt(
     tameGreetingBeforeRawSelftest, tameGreetingExpectedSelftest,
-    tameGreetingManifestDigestSelftest,
+    makeDurable(tameGreetingMirrorSelftest, tameGreetingAfterOptionsSelftest),
   )],
 });
 const tameGreetingResultSelftest = Object.freeze({
@@ -8835,6 +9131,7 @@ const tameGreetingResultSelftest = Object.freeze({
   ownedRowId: tameGreetingCreatureIdSelftest,
   stardustReward: 0,
   charterBioscanBanked: true,
+  scoutCreatureId: null, scoutXpBefore: null, scoutXpAfter: null, scoutXpAward: 0,
   revision: tameGreetingAfterRawSelftest.revision,
   ownershipRevision: tameGreetingAfterRawSelftest.captureRevision,
 });
@@ -9416,6 +9713,62 @@ const closeCheckpointBoundaryBundleSelftest
     exhaustionBundleSelftest, closeCheckpointBoundaryActivePlaySelftest,
   );
 
+const captureSettlementMutationSelftest = (mutate) => {
+  const after = structuredClone(hitRawSelftest);
+  const original = after.receiptRows[0].witness;
+  const settlement = JSON.parse(original);
+  const changed = mutate(settlement);
+  after.receiptRows[0].witness = changed ?? canonicalToolJson(settlement);
+  after.receiptRawRows[0] = JSON.stringify(after.receiptRows[0]);
+  const mutationApplied = after.receiptRows[0].witness !== original;
+  const rejected = captureReceiptTransition(beforeRawSelftest, after, firstExpected)?.ok === false;
+  after.receiptRows[0].witness = original;
+  after.receiptRawRows[0] = JSON.stringify(after.receiptRows[0]);
+  return Object.freeze({ mutationApplied, rejected,
+    restored: captureReceiptTransition(beforeRawSelftest, after, firstExpected)?.ok === true });
+};
+const captureSettlementFieldMutationsSelftest = (fields, scout = false) => Object.fromEntries(
+  fields.flatMap((field) => ['missing', 'changed'].map((kind) => [
+    `${scout ? 'scout.' : ''}${field}.${kind}`,
+    captureSettlementMutationSelftest((settlement) => {
+      const target = scout ? settlement.scoutXp : settlement;
+      if (kind === 'missing') delete target[field];
+      else target[field] = typeof target[field] === 'boolean' ? !target[field]
+        : typeof target[field] === 'number' ? target[field] + 1
+          : target[field] === null ? 0 : `${target[field]}x`;
+    }),
+  ])),
+);
+export const ARC4_CAPTURE_SETTLEMENT_SELFTEST = Object.freeze({
+  positive: captureReceiptTransition(beforeRawSelftest, hitRawSelftest, firstExpected)?.ok === true,
+  controls: Object.freeze({
+    ...captureSettlementFieldMutationsSelftest([
+      'schema', 'captureWitness', 'successorDigest', 'ownershipV2Digest',
+      'arc5MigrationWritesDigest', 'scoutXp',
+    ]),
+    ...captureSettlementFieldMutationsSelftest([
+      'schema', 'firstForSpecies', 'scoutCreatureId', 'xpBefore', 'xpAfter', 'xpAward',
+      'sourceParentDigest', 'sourceSuccessorDigest', 'ownershipParentDigest',
+      'ownershipSuccessorDigest',
+    ], true),
+    extraWrapperField: captureSettlementMutationSelftest((row) => { row.extra = true; }),
+    extraScoutField: captureSettlementMutationSelftest((row) => { row.scoutXp.extra = true; }),
+    oldInnerOnly: captureSettlementMutationSelftest((row) => row.captureWitness),
+    noncanonicalWrapper: captureSettlementMutationSelftest((row) => (
+      JSON.stringify(Object.fromEntries(Object.entries(row).reverse()))
+    )),
+    noncanonicalInner: captureSettlementMutationSelftest((row) => {
+      row.captureWitness = JSON.stringify(Object.fromEntries(
+        Object.entries(JSON.parse(row.captureWitness)).reverse(),
+      ));
+    }),
+  }),
+});
+if (!ARC4_CAPTURE_SETTLEMENT_SELFTEST.positive
+  || Object.values(ARC4_CAPTURE_SETTLEMENT_SELFTEST.controls).some((control) => (
+    control.mutationApplied !== true || control.rejected !== true || control.restored !== true
+  ))) throw new Error(`Arc 4 capture settlement selftest failed: ${JSON.stringify(ARC4_CAPTURE_SETTLEMENT_SELFTEST)}`);
+
 const positiveSelftestAssessments = Object.freeze({
   durable: assessArc4DurableEvidence(beforeRawSelftest),
   arc5TypedDeltaDurable: assessArc4DurableEvidence(arc5TypedDeltaRawSelftest),
@@ -9486,8 +9839,15 @@ const progressionTailControlsSelftest = Object.freeze({
     bundle.after.receiptRawRows.push(JSON.stringify(row));
   }),
   wrongTailWitness: progressionHitMutationSelftest((bundle) => {
-    bundle.after.receiptRows[1].witness += ':mutated';
-    bundle.after.receiptRawRows[1] = JSON.stringify(bundle.after.receiptRows[1]);
+    const index = bundle.after.receiptRows.findIndex((row) => (
+      row.ordinal === ARC4_PERTAR_FIXTURE.actionReadySessionOrdinal + 1
+      && row.kind === firstExpected.progressionTail.receiptKind
+    ));
+    if (index !== bundle.after.receiptRows.length - 1) {
+      throw new Error('Sample progression witness control missed its exact tail owner');
+    }
+    bundle.after.receiptRows[index].witness += ':mutated';
+    bundle.after.receiptRawRows[index] = JSON.stringify(bundle.after.receiptRows[index]);
   }),
   wrongAchievementDelta: progressionHitMutationSelftest((bundle) => {
     bundle.after.legacy.ach = ['rare'];
@@ -11122,7 +11482,7 @@ const isolatedNegativeSelftests = Object.freeze({
   }),
   arc5RetainedOldCarrierSet: Object.freeze({
     expected: Object.freeze([
-      'durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
+      'durableEvidence', 'arc5CarrierSuccessor', 'receipt', 'unrelatedDurable',
       'ownershipV2Live',
     ]),
     result: assessArc4CommittedHit({
@@ -11130,7 +11490,7 @@ const isolatedNegativeSelftests = Object.freeze({
     }),
   }),
   arc5TypedDeltaHitchhike: Object.freeze({
-    expected: 'arc5CarrierSuccessor',
+    expected: Object.freeze(['arc5CarrierSuccessor', 'receipt']),
     result: assessArc4CommittedHit(negativeArc5HitchhikeBundleSelftest),
   }),
   f4SerializerOrder: Object.freeze({
@@ -11149,7 +11509,7 @@ const isolatedNegativeSelftests = Object.freeze({
   }),
   coordinatedManifestReceiptDigest: Object.freeze({
     expected: Object.freeze([
-      'durableEvidence', 'arc5CarrierSuccessor', 'unrelatedDurable',
+      'durableEvidence', 'arc5CarrierSuccessor', 'receipt', 'unrelatedDurable',
       'ownershipV2Live',
     ]),
     result: assessArc4CommittedHit({
@@ -11962,7 +12322,7 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
   || sha256(canonicalToolJson(ARC4_OWNERSHIP_EXTENSION_TARGETS))
     !== 'cb4bf8df5f5eaca8f57b842a2187c5c5791516dc7d4e389d58f9ab729b15b026'
   || sha256(canonicalToolJson(ARC4_PERTAR_FIXTURE))
-    !== 'dca0074daa1d1858133e8d1c308c5b17ac5003e05460a497d65fd3f065d9e655'
+    !== '8780d18f55dc18bed840222eb01878ee17548b69894f920ab65b987acb477361'
   || sha256(canonicalToolJson(ARC5_OWNERSHIP_MIGRATION_EXTENSION_TARGET))
     !== 'e548f628e5859335b608a12632e66d4220432ab188a76af460fbc5261eefded4'
   || sha256(canonicalToolJson(ARC5_OWNERSHIP_EXTENSION_TARGETS))
@@ -12068,7 +12428,7 @@ if (ARC4_OWNERSHIP_EXTENSION_TARGETS.length !== 18
   || !exactFixtureAttemptOracle(
     secondAttemptOracleSelftest, secondExpected, SELFTEST_EVENTS[1], 9,
   )
-  || parseJson(missReceiptSelftest.witness)?.event
+  || parseJson(parseJson(missReceiptSelftest.witness)?.captureWitness)?.event
     !== secondAttemptOracleSelftest?.event
   || laggedPreconditionBundleSelftest.raw.authority.activePlayMs !== 0
   || persistenceStateOf(laggedPreconditionBundleSelftest.ui)

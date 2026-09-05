@@ -2,8 +2,8 @@
 
    The canonical two chains, accept-to-activate rule, three-slot cap, already-
    proven checks, Stardust, starter gear and exact event filters are preserved.
-   `st-scan` stays visible but unavailable until an accepted bioscan owner is
-   authorized; weekly rows are preserved but never rolled or paid here. */
+   Explicit Discover Life owns accepted `st-scan`; weekly rows are preserved
+   but never rolled or paid here. */
 import { hashInt } from '@cf/domain-rand';
 import { isCanonicalEarthWorldAddress } from '@cf/domain-opportunity';
 import {
@@ -18,11 +18,15 @@ import {
   makeGearSourceActionId,
 } from '@cf/domain-loot';
 import {
+  applyV5ExtensionWrites,
+  arc2LootLegacyMirrorMatches,
+  encodeArc2LootCarrier,
   prepareArc2LootInventoryWrite,
   projectArc2LootLegacyMirror,
   readArc2Loot,
   readWorldIdentity,
   type SaveStateV2,
+  type Arc2LootInventoryV1,
   type V5ExtensionWrite,
   type V5Extensions,
 } from '@cf/persistence';
@@ -57,6 +61,7 @@ export type StarterCharterIdV1 = (typeof STARTER_CHARTER_IDS_V1)[number];
 export type StarterCharterEventV1 =
   | Readonly<{ kind: 'landfall'; address: CanonicalCF1WorldAddress }>
   | Readonly<{ kind: 'mined'; address: CanonicalCF1WorldAddress }>
+  | Readonly<{ kind: 'bioscan'; address: CanonicalCF1WorldAddress }>
   | Readonly<{ kind: 'scout-set'; scoutId: string }>
   | Readonly<{ kind: 'crafted'; baseId: string; category: string }>;
 
@@ -86,10 +91,10 @@ const DEFINITIONS: readonly StarterCharterDefinitionV1[] = Object.freeze([
     stardust: 15, gearId: null, availability: 'live',
   }),
   Object.freeze({
-    id: 'st-scan', chain: 'trades', event: 'landfall', count: 1,
+    id: 'st-scan', chain: 'trades', event: 'bioscan', count: 1,
     title: 'Discover life',
-    description: 'The accepted bioscan Charter owner is not yet available in v2.',
-    stardust: 15, gearId: 'earpiece', availability: 'unavailable',
+    description: 'Complete one explicit Discover Life action after accepting this Charter.',
+    stardust: 15, gearId: 'earpiece', availability: 'live',
   }),
   Object.freeze({
     id: 'st-scout', chain: 'trades', event: 'scout-set', count: 1,
@@ -259,7 +264,7 @@ export function projectStarterCharterBoardV1(state: SaveStateV2): StarterCharter
         status: definition.availability === 'live' ? 'accepted' : 'unavailable',
         progress: Math.min(checked.progress[id] ?? 0, definition.count),
         lockedReason: definition.availability === 'live'
-          ? null : 'Accepted bioscan Charter settlement is not available in v2.',
+          ? null : 'This accepted Starter Charter is not yet available in v2.',
       }));
     }
     for (const chain of ['trades', 'tour'] as const) {
@@ -272,7 +277,7 @@ export function projectStarterCharterBoardV1(state: SaveStateV2): StarterCharter
         status: definition.availability === 'live' && !stageLocked ? 'available' : 'unavailable',
         progress: Math.min(checked.progress[id] ?? 0, definition.count),
         lockedReason: definition.availability !== 'live'
-          ? 'Discover Life remains visible but cannot be accepted until its exact lifecycle owner exists.'
+          ? 'This Starter Charter remains visible until its exact lifecycle owner is available.'
           : stageLocked ? 'Build the Jump Drive before the conquest trade is revealed.' : null,
       }));
     }
@@ -376,8 +381,8 @@ function eventMatches(definition: StarterCharterDefinitionV1, event: StarterChar
     case 'st-ice': return event.kind === 'landfall'
       && exactSolWorld(event.address, new Set([137, 138]));
     case 'st-comp': return event.kind === 'crafted' && event.category === 'comp';
+    case 'st-scan': return event.kind === 'bioscan';
     case 'st-conq':
-    case 'st-scan':
       return false;
   }
 }
@@ -698,6 +703,7 @@ export type StarterCharterAcceptActionOutcomeV1 =
     kind: 'committed';
     state: SaveStateV2;
     facts: StarterCharterAcceptFactsV1;
+    arc2LootState: Arc2LootInventoryV1 | null;
     transaction: Extract<F4RuntimeActionCommitOutcome, { readonly kind: 'committed' }>;
   }>
   | Readonly<{
@@ -752,6 +758,7 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
     facts: StarterCharterAcceptFactsV1;
     witness: string;
     expectedStateJson: string;
+    expectedArc2LootState: Arc2LootInventoryV1 | null;
   }> | null = null;
   const transaction = await input.authority.commitAction({
     state: input.state,
@@ -759,6 +766,11 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
     receiptKind: STARTER_CHARTER_ACCEPT_RECEIPT_KIND_V1,
     codecNow: input.codecNow,
     derive: ({ draft, extensions, receiptOrdinal, canonicalizeState }) => {
+      const sourceLoot = readArc2Loot(extensions);
+      if (sourceLoot.kind !== 'loaded' || sourceLoot.state.kind !== 'inventory'
+        || !arc2LootLegacyMirrorMatches(sourceLoot.state, draft)) {
+        throw new Error('starter Charter Arc 2 authority diverged');
+      }
       const source = publicationFields(draft);
       const staged = stageStarterCharterAcceptV1({
         draft, extensions, id: input.id, receiptOrdinal,
@@ -774,11 +786,25 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
         source,
         successor: publicationFields(draft),
       });
+      let expectedArc2LootState: Arc2LootInventoryV1 | null = null;
+      if (staged.facts.completions.some(({ gearId }) => gearId !== null)) {
+        const stagedExtensions = applyV5ExtensionWrites(
+          extensions,
+          staged.facts.extensionWrites,
+        ).extensions;
+        const stagedLoot = readArc2Loot(stagedExtensions);
+        if (stagedLoot.kind !== 'loaded' || stagedLoot.state.kind !== 'inventory'
+          || !arc2LootLegacyMirrorMatches(stagedLoot.state, draft)) {
+          throw new Error('starter Charter exact gear successor is unavailable');
+        }
+        expectedArc2LootState = stagedLoot.state;
+      }
       const witness = `${STARTER_CHARTER_ACCEPT_WITNESS_SCHEMA_V1}:${sha256Hex(canonicalJson(facts))}`;
       selected = Object.freeze({
         facts,
         witness,
         expectedStateJson: canonicalJson(canonicalizeState(draft)),
+        expectedArc2LootState,
       });
       return Object.freeze({
         state: draft,
@@ -794,8 +820,11 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
     facts: StarterCharterAcceptFactsV1;
     witness: string;
     expectedStateJson: string;
+    expectedArc2LootState: Arc2LootInventoryV1 | null;
   }> | null;
   if (!plan) return Object.freeze({ kind: 'committed-convergence', detail: 'missing-plan', transaction });
+  const durableLoot = plan.expectedArc2LootState === null
+    ? null : readArc2Loot(transaction.saved.extensions);
   if (transaction.plan.operation !== operationForStarterCharterAcceptV1(input.id)
     || transaction.plan.receiptOrdinal !== plan.facts.receiptOrdinal
     || transaction.receipt.ordinal !== plan.facts.receiptOrdinal
@@ -803,13 +832,19 @@ export async function commitStarterCharterAcceptV1(input: Readonly<{
     || transaction.receipt.witness !== plan.witness
     || canonicalJson(transaction.state) !== canonicalJson(transaction.saved.canonicalState)
     || canonicalJson(transaction.state) !== plan.expectedStateJson
-    || canonicalJson(publicationFields(transaction.state)) !== canonicalJson(plan.facts.successor)) {
+    || canonicalJson(publicationFields(transaction.state)) !== canonicalJson(plan.facts.successor)
+    || (plan.expectedArc2LootState !== null && (durableLoot?.kind !== 'loaded'
+      || durableLoot.state.kind !== 'inventory'
+      || encodeArc2LootCarrier(durableLoot.state).json
+        !== encodeArc2LootCarrier(plan.expectedArc2LootState).json
+      || !arc2LootLegacyMirrorMatches(durableLoot.state, transaction.state)))) {
     return Object.freeze({
       kind: 'committed-convergence', detail: 'committed-verification-mismatch', transaction,
     });
   }
   return Object.freeze({
-    kind: 'committed', state: transaction.state, facts: plan.facts, transaction,
+    kind: 'committed', state: transaction.state, facts: plan.facts,
+    arc2LootState: plan.expectedArc2LootState, transaction,
   });
 }
 
