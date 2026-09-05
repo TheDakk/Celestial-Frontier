@@ -1,0 +1,113 @@
+{
+  "date": "2026-09-05",
+  "sourceHead": "629e0cceeb4df474ab2a7c8f9da21085c368aead",
+  "status": "PARTIAL: ship replay PASS; audio replay UNPROVED",
+  "changedDerivativeFiles": [
+    {
+      "path": "ship-original/readiness.py",
+      "originalSha256": "340ce1890c5ef88d5a64fa99d4c46010c8e28b4de2e90124180a46400f15cb98",
+      "derivativeSha256": "ac7da317662a466f32c88db91638d865aaf6d5927785f73b08ed9b6efd4b93a5"
+    },
+    {
+      "path": "ship-terminal/create_scene.py",
+      "originalSha256": "5a48f07aac56d1a9e1c4fc0f76fd482680b49d78003a03ac1afdb32745b62e42",
+      "derivativeSha256": "3a3d7fded5983d97e343f487b053d781eeea767b593bf8307cf302b0e95f9566"
+    },
+    {
+      "path": "lanternback-source/creature_scene.py",
+      "originalSha256": "922f29f5473c1e1da347ca3e3e6c541b75305c24455a0462d789778e43b4a3b7",
+      "derivativeSha256": "e598688fec8919ade37cfd02171fc69bfa0775df2f2d2db0c5142186d1caa9f9"
+    },
+    {
+      "path": "lanternback-source/render_view.py",
+      "originalSha256": "2ee90cd5ea5151fae3c726dad0ae1a6f058d2fb65d544aae651dab23a67125b4",
+      "derivativeSha256": "7abf7aec7260a22cf7a12c5806d4d2aaa35331b5331eea6cda282ee5381e0486"
+    },
+    {
+      "path": "audio/create-audio-readiness.lua",
+      "originalSha256": "e3437fb2b1fdfe932e19c9a335bdbf3918cd0f885beed1e68a04629391680677",
+      "derivativeSha256": "4635b09ff58f8ce386c09e16a941af7806b7b03c0c4e3b2de07bd138c5f8dd62"
+    },
+    {
+      "path": "audio/audio-readiness.rpp",
+      "originalSha256": "ba97595c2840799d1d517a14968de29929f625a117751f062a77da95b195b736",
+      "derivativeSha256": "8aa6f0969b8550d6ddfdf3088ddb53bfb2c1c9017b086fff8f852ac56604d889"
+    },
+    {
+      "path": "audio/browser_decode.mjs",
+      "originalSha256": "3d8c5259b5f9ec4ce3e45087b26bb28388ebb754a0863159176950b71e78966c",
+      "derivativeSha256": "75955c6bd520e6d6fe3229cbcf1a07f67498745ed20fa2625ace297da127793f"
+    }
+  ],
+  "paths": "CF_AV_BUNDLE_ROOT required, no historical-path fallback; CF_REAPER_CONFIG_ROOT for fresh config; CF_BROWSER_CDP_MODULE explicitly identifies the existing launcher dependency. RPP render path is rebound to the fresh bundle before launch; no shell substitution inside RPP.",
+  "relativeEcosystemImportPreserved": true,
+  "visualAstChecksPassed": 4,
+  "browserVerifierSyntax": "PASS; no browser execution",
+  "luaSinkCorrection": "Historical Lua raw FourCC assignments changed in derivative only to the existing final RPP base64 sinks: ZXZhdxgAAQ== and Y2FsZhAAAAAFAAAA; retained audio project otherwise unchanged except output path.",
+  "ship": {
+    "verifiedUtc": "2026-09-05T22:58:40.887634+00:00",
+    "storedSha256": "012be5bb149729a9456ba915f06a659a6609b0718eda4dd85349740a4b4497f5",
+    "replayedSha256": "ad5bedc79f15e214442c0c6380247644c9aca895ecc57b005ece668bbb5567c6",
+    "bytes": 698700,
+    "exactMatch": false,
+    "commands": [
+      {
+        "stage": 1,
+        "exitCode": 0,
+        "seconds": 2.831,
+        "logSha256": "868f40eca7377d07e4b5953743470003eb106b97447438e8f339c56132354bc3"
+      },
+      {
+        "stage": 2,
+        "exitCode": 0,
+        "seconds": 5.111,
+        "logSha256": "100120cef72fe7f00962aff6fcca61c009bb8878a7e5c4d42541a4d9240e7588"
+      }
+    ],
+    "identicalImageHeader": true,
+    "identicalDecodedScanlines": true,
+    "decodedScanlineSha256": "3675d7b1c5b6aea4cd378532ccafe5a3745054890c58dd87a4c901be0db726c9",
+    "differingChunks": [
+      {
+        "chunk": "tEXt",
+        "key": "File"
+      },
+      {
+        "chunk": "tEXt",
+        "key": "Date"
+      },
+      {
+        "chunk": "tEXt",
+        "key": "RenderTime"
+      },
+      {
+        "chunk": "tEXt",
+        "key": "cycles.ViewLayer.total_time"
+      },
+      {
+        "chunk": "tEXt",
+        "key": "cycles.ViewLayer.render_time"
+      }
+    ],
+    "interpretation": "PNG file hashes differ; decoded image data is identical. Differences are render metadata."
+  },
+  "audio": {
+    "exitCode": null,
+    "seconds": 45.02,
+    "outputs": [],
+    "logSha256": "5cd480e950735988de04c5b0eb82b14faceb4791ba67175db13dbea381bc4b3a",
+    "attempts": 1,
+    "freshConfigInitialBytes": "[REAPER]\n",
+    "subsequentProcessObservation": "PID11054 absent; no files in outputs; exit code unavailable",
+    "reason": "Unknown; startup log only reports Metal context creation",
+    "uiObservation": "Unavailable: Computer Use permissions not granted; user question pending",
+    "historicalReadinessEvidence": "Unchanged historical log/outputs; not a new authoring/plugin/waveform/listening pass"
+  },
+  "scopeLimitations": [
+    "Only ship-terminal was dynamically replayed; other script paths have syntax/review evidence only.",
+    "Audio render, plugin-load, waveform comparison and complete portable replay remain open.",
+    "Separate derivative work is privately preserved; .runtime application defaults/config/registration excluded."
+  ],
+  "originals": "All37 immutable source inputs still match the verified backup checksum set.",
+  "next": "Identify REAPER startup/render blockage with native UI access or Nick observation, then complete the bounded audio proof before marking portable replay done."
+}

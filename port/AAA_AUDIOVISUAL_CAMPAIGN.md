@@ -1,5 +1,14 @@
 # Celestial Frontier v2 — Complete Graphics, Audio & Polish Production Plan
 
+## Current Batch A checkpoint — portable ship verified, audio still open, 2026-09-05
+
+Primary iCloud backup is CLOSED at629e0cc; OneDrive remains copied/unverified. Seven derivative
+files have explicit portable path bindings. One fresh-directory ship save/render reproduced
+identical image data; PNG metadata changed. One fresh-config REAPER render attempt produced no
+files and later ended without a retained exit status. Cause unobserved; audio proof remains OPEN,
+with Nick's UI observation/permission question pending. No duplicate render or B–D production.
+See `../audits/AAA_BATCH_A_PORTABLE_REPLAY_20260905.md`; older pending checkpoints are historical.
+
 ## Current Batch A checkpoint — independent primary backup verified, 2026-09-05
 
 Nick selected existing iCloud Drive and responsive OneDrive storage. The primary iCloud copy
