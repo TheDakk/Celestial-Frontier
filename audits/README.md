@@ -10,6 +10,26 @@ summary of it.
 
 ## Contents
 
+### Overnight Batch 4 completion and review handoff — 2026-09-05
+
+[BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md](BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md)
+preserves Nick's exact authority. The
+[BATCH4_OVERNIGHT_REPORT_20260905.md](BATCH4_OVERNIGHT_REPORT_20260905.md) records every
+checkpoint, signed/pushed source, gate outcome, WIP disposition and unattended decision.
+[BATCH4_OVERNIGHT_REDS_20260905.json](BATCH4_OVERNIGHT_REDS_20260905.json) retains fifteen
+corrected browser reds and the unresolved measurement-only profiler result.
+[BATCH4_PHONE_EVIDENCE_20260905.md](BATCH4_PHONE_EVIDENCE_20260905.md) separates observed
+phone values from unmeasured physical-device/native-heap/cache claims.
+[BATCH4_PROPOSED_PR_20260905.md](BATCH4_PROPOSED_PR_20260905.md) contains review-only fields;
+no PR or hosted attempt was opened.
+
+The new raw log/report archive remains locally retained, outside Git, after automatic approval review rejected its public export. Its publication is parked pending separate authorization; the committed report preserves exact source/result/artifact identities.
+Final validated source b173353b9e273c4b223e8ee8d6ee181081f79b4a passed typecheck, artunused,
+301 files / 3,100 tests / 1 skipped, Glass selftest, Slice and both local Edge phone rows,
+50 legacy fingerprints and 81 policy controls. The distinct once-only 4× profiler on
+4fa82d0 recorded paint at 1,292 ms but unresolved answerability/rebuild; it was not retried.
+These are local diagnostics, not full-chain/Chrome certification or a physical iPhone result.
+
 ### Full project review and corrected completion campaign — 2026-09-04
 
 `CELESTIAL_FRONTIER_FULL_REVIEW_20260904.md` preserves the exact external review (SHA-256
