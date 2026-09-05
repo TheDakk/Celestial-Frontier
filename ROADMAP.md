@@ -140,6 +140,12 @@ the archive verbatim and refresh this handoff in place.
   `main.js`. **Recommendation: no-merge as-is; merge after Codex lands that one bounded correction on the
   review branch (new signed head, fast gates rerun), then Nick authorizes the single agent-lane attempt.**
   Slice `--profile=develop` was not replayed here (Codex's PASS on `b173353` stands as its evidence).
+- **Correction landed (2026-09-05, later):** Codex pushed signed `2881cda` (the one-line `readTrackedV1Source()`
+  swap, product files unchanged from `b173353`) and report successor **`67f5fcf`** (branch head). Claude replayed
+  typecheck, artunused and vitest **301 / 3,100 / 1 skipped** on `2881cda` in a fresh scratch with **no root
+  `main.js`** — PASS. **Recommendation is now MERGE-READY**: Nick opens the PR (`develop` ← 
+  `openai/review-batch4-gameplay-20260905` at `67f5fcf`, title/body per `audits/BATCH4_PROPOSED_PR_20260905.md`),
+  applies `actions-budget-approved` once, and either agent merges on terminal green under standing authority.
 
 ### Paired handoff
 
