@@ -2,7 +2,31 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current bounded batch (2026-09-04 UTC, Claude on `anthropic/windows`): two-lane battery — the
+**Policy decision (2026-09-05 UTC, Claude under Nick's "authorize per Codex" instruction):
+bounded review branches `openai/review-*` and `anthropic/review-*` are admitted into `develop`.**
+Codex's reconciled Batches 1–3 candidate (PR #37, head `121df53d0d10`, branch
+`openai/review-batches-1-3-20260904`) would have been rejected by the sealed branch-flow validator,
+which admitted only the four machine branches. The validator now also admits `openai/review-*` and
+`anthropic/review-*` into `develop`; nothing else changed: same-repository heads only, `main`
+accepts only `develop`, the two owner-only labels, the lanes and every cap are unchanged. The
+authorize-steps seal in `tools/actions-budget-policy.js` is updated to the new bytes and two
+controls prove that an arbitrary review pattern and a review branch into `main` are rejected.
+This lands through its own agent-lane PR from `anthropic/windows` before PR #37 is labelled.
+
+**Preserved state (2026-09-05 UTC): PR #36 (`anthropic/windows` → `develop`) consumed one
+Nick-authorized attempt on the new bounded agent lane, passed in 12m47s and merged as
+`0cad14dea80b4f2d5052210fa19d583bd0ada085`; the approval label was removed; no hosted authority
+remains.** Run `33935183563` attempt 1, battery job `101221627059`, head `15ae4372a6ee`, lane
+`agent`: policy selftest PASS (79 controls), `develop` profile PASS (268 test files, 2m28s), both
+phone Glass canaries PASS (4m03s), legacy gates, root layout, changed-art control and Compendium
+instrument selftests all green because the PR edits the workflow itself; Edge install, Compendium,
+Slice, Glass, Recovery and preview were skipped by the full-lane guard. Both labels now exist on
+the repository (`actions-budget-approved`, `actions-full-chain-approved`). A v2-app-only agent PR is
+expected near **7–8 minutes** (not measured). Codex's parked Batch 1 rewrite of the same workflow
+must reconcile onto the lane through Git before its PR. Every future attempt still needs its own
+exact authorization; nothing here authorizes a `main` merge, release or deployment.
+
+**Preserved predecessor batch (2026-09-04 UTC, Claude on `anthropic/windows`): two-lane battery — the
 bounded agent lane is the default for agent → `develop` PRs, the full chain runs by base or by an
 explicit label; local commit only, no push, label, hosted attempt, merge or release is authorized.**
 Nick selected the coverage policy after PR #35's green run took **108m29s** against the 120-minute
@@ -863,7 +887,9 @@ merges, and successful batteries now start **zero hosted runners by default**:
   one fail-fast serial battery. The battery is eligible only when the repository owner adds exact
   label `actions-budget-approved` (bounded agent lane on `develop`; full chain on `main`) or
   `actions-full-chain-approved` (full chain on `develop`) to a PR and the branch/fork authorization
-  succeeds. Only that successful dependency may emit the required `battery` check name;
+  succeeds: a same-repository head on one of the four machine branches or a bounded
+  `openai/review-*` / `anthropic/review-*` review branch into `develop`, or `develop` into `main`.
+  Only that successful dependency may emit the required `battery` check name;
   rejected/skipped events use `budget-not-authorized`. One fail-closed diff classification runs
   after checkout, then one fail-closed lane selection from the exact label/base pair. Root v1
   install/layout/gameplay gates run for `develop` → `main` and for an agent PR that actually changes
@@ -1099,6 +1125,16 @@ the 14-phone/13-desktop broken-baseline breaches. Exact-budget run
 `d21ba26…`; raw/gzip hashes are `42753d5e…` / `a2ff5b00…`. The repaired exact head then passed
 hosted run `32681394532` and merged normally. That consumed run is integration evidence only and
 does not authorize a new changed-head hosted attempt.
+
+## Consumed PR #36 attempts
+
+1. **2026-09-05 01:07–01:20 UTC — run `33935183563`, attempt 1: SUCCESS (12m47s wall, battery job
+   12m40s).** Head `15ae4372a6eed3edf3e6a79a33d3ee01986a9d9a` (`anthropic/windows`), base
+   `develop` `7bf3e84761da2d1abe21dc6fe751b4bad2308f3b`, trigger `actions-budget-approved` by the
+   owner, lane `agent`. First hosted measurement of the bounded agent lane with every
+   changed-input control active (the PR edits the workflow). Approval label removed; merged as
+   `0cad14dea80b4f2d5052210fa19d583bd0ada085` under Nick's explicit authorization and the standing
+   green-PR authority. Record posted on the PR.
 
 ## Consumed PR #35 attempts
 
