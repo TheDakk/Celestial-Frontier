@@ -146,6 +146,13 @@ the archive verbatim and refresh this handoff in place.
   `main.js`** — PASS. **Recommendation is now MERGE-READY**: Nick opens the PR (`develop` ← 
   `openai/review-batch4-gameplay-20260905` at `67f5fcf`, title/body per `audits/BATCH4_PROPOSED_PR_20260905.md`),
   applies `actions-budget-approved` once, and either agent merges on terminal green under standing authority.
+- **Attempt 1 RED (2026-09-05, Nick authorized "do all those steps"):** Claude opened **PR #41**
+  (`develop` ← `openai/review-batch4-gameplay-20260905` @ `67f5fcf`), applied the label once; run `33976307813`
+  failed in 3m29s at the v2 develop profile: `tests/glass-targeted-verifier.test.ts` (unchanged by the PR) blew its
+  15 s per-test cap (16.7 s; 13.4 s in PR #40's green run). Whole suite ~20 % slower on the runner with 27 more
+  files. Label removed, no retry, PR left open and mergeable. **Next:** Codex widens the three marginal per-test
+  caps on the review branch (see `GITHUB_ACTIONS_BUDGET.md` current state), pushes a signed head; Nick authorizes
+  attempt 2. Claude could not push to the review branch (openai/* is Codex-owned).
 
 ### Paired handoff
 

@@ -2,7 +2,21 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current state (2026-09-05 UTC, later): PR #40 (`anthropic/mac` → `develop`, v2 starts fresh /
+**Current state (2026-09-05 UTC, latest): PR #41 (`openai/review-batch4-gameplay-20260905` → `develop`,
+Codex Batch 4 gameplay, head `67f5fcffc89aea1edea5f510cfdc9452c7e775bd`, product head `2881cda`) consumed one
+Nick-authorized agent-lane attempt ("Do all those steps for me") and went **RED in 3m29s**; the label was removed;
+no merge; no hosted authority remains.** Run `33976307813` attempt 1, authorization job `101333500544` (pass),
+battery job `101333510983` (fail at step "v2 base-profile static gates"): vitest **1 failed / 3,099 passed /
+1 skipped** — `tests/glass-targeted-verifier.test.ts` "keeps the new CLI separate…" exceeded its own **15,000 ms**
+per-test cap (three `spawnSync` launches of `glassmatrix.mjs`). That file is **unchanged by the PR** (last touched
+`e0acfab`, Batch 1–3) and took 13,372 ms in PR #40's green run vs 16,693 ms here; every heavy file ran ~15–25 %
+slower on this run (evidence-chain-tools 30.3→35.7 s, arc4-acquisition-planner 19.7→22.8 s,
+training-restore 15.3→17.6 s, arc4-recovery-tool 13.4→17.4 s) because the suite grew 274→301 files. Instrument
+timing, not product. Per protocol no retry was run. Next attempt needs (a) a bounded test-only correction on the
+review branch widening the marginal caps (glass-targeted-verifier 15 s; evidence-chain-tools 15/20 s;
+arc4-acquisition-planner 20 s) or cheapening the spawns, and (b) Nick's fresh exact authorization.
+
+**Previous state (2026-09-05 UTC, later): PR #40 (`anthropic/mac` → `develop`, v2 starts fresh /
 save-import door removed) consumed one Nick-authorized agent-lane attempt ("Go ahead and apply
 actions-budget-approved"), passed in **6m29s** and merged as
 `9ea01041dcdc711190bbf909ea8bb743cd993734`; the approval label was removed; no hosted authority
