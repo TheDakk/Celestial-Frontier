@@ -311,7 +311,7 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       const afterState: any = { ...structuredClone(route), persistence: { lastOutcome: 'arc0-land-committed:8', runtime: {
         schema: 'cf-v2-f4-runtime/v1', revision: 8, commits: 6, sessionSeed: 10, sessionOrdinal: 4,
         sessionDraws: { 'descent.success': 1, 'descent.damage': 1 } } } };
-      const beforeLegacy = { hp: 55, at: 1_000, wvo: [[901, 3], [902, 5]], land: [133], ess: 7, view: { type: 'system' } };
+      const beforeLegacy = { hp: 55, at: 1_000, conq: [], minedw: [], wvo: [[901, 3], [902, 5]], land: [133], ess: 7, view: { type: 'system' } };
       const afterLegacy = { ...structuredClone(beforeLegacy), hp: 53, at: 1_100, wvo: [[131, 1], [901, 3], [902, 5]] };
       const waveOffs = { schema: 'cf-v2-descent-wave-offs/v1', version: 1,
         records: [[worldKey, 1]], unresolved: [[901, 3], [902, 5]] };
@@ -350,10 +350,10 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       const raw = (authority: any, legacy: any, learned: boolean) => ({
         revision: authority.raw.revision, legacyRaw: JSON.stringify(legacy), legacy,
         authority: { sessionRng: { seed: authority.raw.seed, ordinal: authority.raw.ordinal, draws: authority.raw.draws } },
-        playerRow: { data: { hp: legacy.hp, at: legacy.at, ess: legacy.ess }, extensions: { 'f4.authority': { version: 1, json: 'fixture' } } },
+        playerRow: { data: { hp: legacy.hp, at: legacy.at, conq: legacy.conq, ess: legacy.ess }, extensions: { 'f4.authority': { version: 1, json: 'fixture' } } },
         catalogRow: { data: { wvo: legacy.wvo, land: legacy.land }, extensions: learned
           ? { 'descent.wave-offs': { version: 1, json: JSON.stringify(waveOffs) } } : {} },
-        creaturesRaw: '{"data":[]}', inventoryRaw: '{"data":[]}', settingsRaw: '{"volume":1}',
+        creaturesRaw: '{"data":[]}', inventoryRaw: JSON.stringify({ data: { minedw: legacy.minedw, items: [] } }), settingsRaw: '{"volume":1}',
         receiptKeys: authority.raw.receiptKeys, receiptRows: authority.raw.receiptRows,
       });
       return { worldKey, beforeAuthority, afterAuthority, beforeRaw: raw(beforeAuthority, beforeLegacy, false),
@@ -438,6 +438,71 @@ describe('Slice Arc 0 Landing fault evidence contract', () => {
       });
       expect(assess(wrongExactWorld).ok, `${title} identical leaf seed is insufficient`).toBe(false);
       expect(assess(value).ok, `${title} restored exact address`).toBe(true);
+    }
+    const timerFixture = (nextAt = 100_000_150) => {
+      const value: any = fixture();
+      const priorAt = 100_000_000;
+      // Floor-bound rows move only to the new exact floor; interior stamps
+      // and fractional values stay fixed until an actual clamp reaches them.
+      const conq = [[501, { t: priorAt - 3_600_000, tier: 4, e: 5 }],
+        [502, { t: priorAt - 1_000, tier: 2 }], [503, { t: priorAt - 0.5, tier: 9, e: 12 }]];
+      const mined = [[801, priorAt - 18_000_000], [802, priorAt - 500]];
+      const clamp = (stamp: number, at: number, window: number) => Math.min(at, Math.max(Math.max(0, at - window), stamp));
+      for (const [raw, authority, at, next] of [
+        [value.beforeRaw, value.beforeAuthority, priorAt, false],
+        [value.afterRaw, value.afterAuthority, nextAt, true],
+      ] as const) {
+        raw.legacy.at = at; raw.playerRow.data.at = at;
+        raw.legacy.conq = conq.map(([id, row]: any) => [id, { ...row,
+          t: next ? clamp(row.t, at, 3_600_000) : row.t }]);
+        raw.playerRow.data.conq = structuredClone(raw.legacy.conq);
+        raw.legacy.minedw = mined.map(([id, stamp]: any) => [id,
+          next ? clamp(stamp, at, 18_000_000) : stamp]);
+        raw.inventoryRaw = JSON.stringify({ data: { minedw: raw.legacy.minedw, items: [['plate', 3]], mx: [[801, 4]] },
+          extensions: { 'fixture-protected': { version: 1, json: 'keep-exact' } } });
+        raw.legacyRaw = JSON.stringify(raw.legacy);
+        authority.raw.legacyRaw = raw.legacyRaw;
+      }
+      return value;
+    };
+    const syncTimerReaders = (value: any) => {
+      value.afterRaw.playerRow.data.conq = structuredClone(value.afterRaw.legacy.conq);
+      const inventory = JSON.parse(value.afterRaw.inventoryRaw);
+      inventory.data.minedw = value.afterRaw.legacy.minedw;
+      value.afterRaw.inventoryRaw = JSON.stringify(inventory);
+      value.afterRaw.legacyRaw = JSON.stringify(value.afterRaw.legacy);
+      value.afterAuthority.raw.legacyRaw = value.afterRaw.legacyRaw;
+    };
+    expect(assess(timerFixture()).ok, 'exact moving floors and unchanged interior timers').toBe(true);
+    expect(assess(timerFixture(99_999_900)).ok, 'backward codec clock uses exact upper clamp').toBe(true);
+    for (const [name, mutate] of [
+      ['conquest floor wrong', (v: any) => { v.afterRaw.legacy.conq[0][1].t += 1; }],
+      ['mined floor wrong', (v: any) => { v.afterRaw.legacy.minedw[0][1] += 1; }],
+      ['interior conquest moved', (v: any) => { v.afterRaw.legacy.conq[1][1].t += 150; }],
+      ['interior mined moved', (v: any) => { v.afterRaw.legacy.minedw[1][1] += 150; }],
+      ['conquest ID changed', (v: any) => { v.afterRaw.legacy.conq[0][0] = 999; }],
+      ['mined ID changed', (v: any) => { v.afterRaw.legacy.minedw[0][0] = 999; }],
+      ['conquest order changed', (v: any) => { v.afterRaw.legacy.conq.reverse(); }],
+      ['mined count changed', (v: any) => { v.afterRaw.legacy.minedw.pop(); }],
+      ['epoch reward changed', (v: any) => { v.afterRaw.legacy.conq[0][1].e += 1; }],
+      ['conquest tier changed', (v: any) => { v.afterRaw.legacy.conq[0][1].tier += 1; }],
+    ] as const) {
+      const value = timerFixture(); mutate(value); syncTimerReaders(value);
+      expect(assess(value).ok, name).toBe(false);
+      expect(assess(timerFixture()).ok, `${name} restored`).toBe(true);
+    }
+    for (const [name, mutate] of [
+      ['legacy/partition conquest mismatch', (v: any) => { v.afterRaw.playerRow.data.conq[0][1].t += 1; }],
+      ['encoded legacy mismatch', (v: any) => { const x = JSON.parse(v.afterRaw.legacyRaw); x.minedw[0][1] += 1; v.afterRaw.legacyRaw = JSON.stringify(x); v.afterAuthority.raw.legacyRaw = v.afterRaw.legacyRaw; }],
+      ['inventory timer mismatch', (v: any) => { const x = JSON.parse(v.afterRaw.inventoryRaw); x.data.minedw[0][1] += 1; v.afterRaw.inventoryRaw = JSON.stringify(x); }],
+      ['inventory reward neighbor', (v: any) => { const x = JSON.parse(v.afterRaw.inventoryRaw); x.data.items[0][1] += 1; v.afterRaw.inventoryRaw = JSON.stringify(x); }],
+      ['inventory epoch neighbor', (v: any) => { const x = JSON.parse(v.afterRaw.inventoryRaw); x.data.mx[0][1] += 1; v.afterRaw.inventoryRaw = JSON.stringify(x); }],
+      ['inventory extension neighbor', (v: any) => { const x = JSON.parse(v.afterRaw.inventoryRaw); x.extensions['fixture-protected'].json = 'changed'; v.afterRaw.inventoryRaw = JSON.stringify(x); }],
+      ['noncanonical predecessor floor', (v: any) => { v.beforeRaw.legacy.conq[0][1].t -= 1; }],
+    ] as const) {
+      const value = timerFixture(); mutate(value);
+      expect(assess(value).ok, name).toBe(false);
+      expect(assess(timerFixture()).ok, `${name} restored`).toBe(true);
     }
     const heldFixture = () => {
       const value: any = fixture();

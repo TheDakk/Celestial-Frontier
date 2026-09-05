@@ -73,6 +73,10 @@ Signed15d7a99 stopped at the later collision wave-off caller because phoneCardAc
 
 Slice42d621d passed; small-phone stopped on low-contrast missing Paragon buttons (ratio1.05). Their native light background is now replaced with the existing dark Binder surface and an explicit44px touch floor. Existing Claim-button negative control is scoped to its exact selector so this separate44px rule cannot hide a broken Claim rule. Full fast:292files/3,047tests/1skip PASS. Current producer45502f708c2081c54d72749e9a23cb9ae74cdf96144cffe7599a7c07aedb6798; measurement unchanged. New signed-source browser acceptance is next.
 
+### Latest exact timer boundary
+
+445c452 stopped on collision wave-off comparison: only existing conquest/mining save-relative timer clamps differed. The expected predecessor now receives exactly those source-defined clamps; observed successor, receipt/rewards and all neighbors remain exact. Retained evidence replay and focused negatives pass. Full fast292files/3,047tests/1skip PASS. The terminal PASS banner uses the existing79-bullet constant. New signed-source browser sequence follows.
+
 ### Parked scope and paired handoff
 
 Weeklies, Forge Training, living portrait preview and unrelated bulk WIP copy remain parked.
