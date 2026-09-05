@@ -2,7 +2,40 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current bounded batch (2026-09-04 UTC): cc4d7c9 proof gaps are closed locally; four robustness
+**Current bounded batch (2026-09-04 UTC, Claude on `anthropic/windows`): two-lane battery — the
+bounded agent lane is the default for agent → `develop` PRs, the full chain runs by base or by an
+explicit label; local commit only, no push, label, hosted attempt, merge or release is authorized.**
+Nick selected the coverage policy after PR #35's green run took **108m29s** against the 120-minute
+cap: every agent → `develop` PR now runs the browser-free `develop` profile plus the two immutable
+phone Glass canaries, and the full Compendium → Slice → twelve-row Glass chain moves to
+`develop` → `main` and to a separately requested on-demand label. Two owner-only labels select the
+lane inside the unchanged `pull_request: [labeled]` trigger: `actions-budget-approved` runs the
+bounded agent lane on `develop` (and the full chain on `main`); `actions-full-chain-approved` runs
+the full chain on `develop`. One fail-closed `select battery lane` step maps the exact label/base
+pair before any dependency install and stops the job on any other pair. The agent lane runs the
+existing static gates, the changed-input art/launcher controls, the legacy root gates only when
+legacy inputs changed, and the small-phone then large-phone Glass canaries on **every** agent PR;
+it never reaches the Edge install, Compendium preflight/certification, Slice or Glass, which carry
+exactly one shared guard `if: steps.lane.outputs.lane == 'full'`. Job caps (2 + 120), the 55-minute
+Compendium step, the 7-minute canary step, one attempt/no retry, mandatory artifact upload and the
+required `battery` context are unchanged, so every existing authorization arithmetic still holds;
+the agent lane's real duration is **not measured** until its first hosted run.
+The policy selftest now seals the lane selector's non-comment bytes and the full-lane guards on
+Compendium certification, Slice and Glass, and mutation-tests a third label, a renamed label, a
+one-label owner guard, every label→lane remapping, an accepted unknown pair, a renamed selector,
+an unguarded/inverted/softened long stage. The Compendium browser-preflight contract requires the
+same exact guard on its three owned steps instead of forbidding any condition; its selftest proves
+unguarded and foreign guards are rejected alongside the retained `if: false`/soft-fail controls.
+`scenemem-workflow.test.ts`, `evidence-chain-tools.test.ts` and `tracked-input-preflight.test.ts`
+pin the new authorize guard, the exact canary condition, the lane selector's ordered contract and
+the five guarded stages. No new instrument, schema, verifier, job, shard, pin, timeout or baseline
+was added; the historical PR #35 workflow jq verdicts are untouched and remain Codex's parked
+batch-1 replacement. Local evidence on this Windows checkout: policy selftest PASS with the new
+controls, Compendium preflight selftest PASS, the three pinning test files pass except the one
+pre-existing Windows-only jq ENOENT replay case, and the edited workflow parses as valid YAML with
+the expected per-step conditions. No browser chain or hosted run is claimed.
+
+**Preserved predecessor batch (2026-09-04 UTC): cc4d7c9 proof gaps are closed locally; four robustness
 items are implemented; branch-only push is authorized, no hosted attempt is authorized.**
 Exact clean `cc4d7c920083c3c630a9c8c8e6fc5a6e40f5e0d4` passed develop Slice, the full
 12-row Slice-bound Glass matrix, named verification and diagnostic projection. The carrier is
@@ -828,9 +861,11 @@ merges, and successful batteries now start **zero hosted runners by default**:
 
 - `.github/workflows/test.yml` has one tiny, two-minute owner/branch authorization job followed by
   one fail-fast serial battery. The battery is eligible only when the repository owner adds exact
-  label `actions-budget-approved` to a PR and the branch/fork authorization succeeds. Only that
-  successful dependency may emit the required `battery` check name; rejected/skipped events use
-  `budget-not-authorized`. One fail-closed diff classification runs after checkout. Root v1
+  label `actions-budget-approved` (bounded agent lane on `develop`; full chain on `main`) or
+  `actions-full-chain-approved` (full chain on `develop`) to a PR and the branch/fork authorization
+  succeeds. Only that successful dependency may emit the required `battery` check name;
+  rejected/skipped events use `budget-not-authorized`. One fail-closed diff classification runs
+  after checkout, then one fail-closed lane selection from the exact label/base pair. Root v1
   install/layout/gameplay gates run for `develop` → `main` and for an agent PR that actually changes
   the legacy product/tool/baseline surface; a V2-only agent PR does not spend a root browser run.
   The selected V2 static profile runs once: `node tools/check-profile.mjs --profile=develop` for
@@ -839,8 +874,12 @@ merges, and successful batteries now start **zero hosted runners by default**:
   source-mutating 107-case override control runs for production or when its audited art grammar
   changes. All browser-free/static work precedes browser evidence and the first red stops later
   work.
-- The `develop` browser admission remains one attempt each: sealed-package Compendium with live
-  preflight, exact Slice and its exact-ID Glass successor. SceneMemory certification is quarantined
+- The default agent lane (`actions-budget-approved` on an agent → `develop` PR) stops after the
+  browser-free `develop` profile and the two immutable phone Glass canaries, which it runs on every
+  agent PR; it never reaches the Edge install, Compendium, Slice or Glass. The `develop` full chain
+  (`actions-full-chain-approved`, or any `develop` → `main` run) remains one attempt each:
+  sealed-package Compendium with live preflight, exact Slice and its exact-ID Glass successor, all
+  behind one shared full-lane guard. SceneMemory certification is quarantined
   to production and never blocks `develop`; its deterministic controls remain universal while its
   live heap selftest is production-only. The `develop` → `main` profile adds the strict live
   selftest and SceneMemory certification, the exact
@@ -877,7 +916,8 @@ node tools/actions-budget-policy.js --selftest
 It inventories every workflow, parses direct YAML ownership by indentation, rejects unknown/quoted
 workflow keys and automatic triggers, requires false-default owner-only manual authorization, binds
 the authorize result to the required battery name, seals standard runners/time ceilings/no-matrix
-execution, proves publication remains parked, and mutation-tests every job guard. `node
+execution, seals the lane selector's bytes and the full-lane guards on Compendium certification,
+Slice and Glass, proves publication remains parked, and mutation-tests every job guard. `node
 tools/validate.js` also runs the real policy check before the normal validation battery.
 
 ## Authorized PR #32 attempts after the freeze
