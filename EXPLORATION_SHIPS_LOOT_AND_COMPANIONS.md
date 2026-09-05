@@ -1,6 +1,6 @@
 # Celestial Frontier — Exploration, Ships, Loot & Companions
 
-## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -28,8 +28,12 @@ XP, level, class, innate arts, wounds and active-play Recovery, with distinct tw
 tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
 preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
 focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
-No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
-remains the next checkpoint.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
@@ -118,7 +122,7 @@ reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended de
 > durable chart is never reported as usable while remaining untravelable. This closes the current
 > implementation seam, not the later HUMAN journey review or fresh exact-source browser evidence.
 
-**STATUS:** current implementation contract matches the local Step 2d checkpoint as of **2026-09-05**;
+**STATUS:** current implementation contract matches the local Step 2e checkpoint as of **2026-09-05**;
 implementation status does not close the combined Arc 4.5 or separate Arc 5.5 HUMAN reviews. The
 older D-ARC4-BIOSCAN replacement records below describe their named historical checkpoints.
 The current `port/v2` build is the playable Phase-4 exploration/survey slice plus the bounded Arc 2
@@ -691,6 +695,7 @@ farm. Survey can reveal a lead; only the owned action and receipt may grant its 
 | System | Current v2 executable state | Next owned outcome |
 |---|---|---|
 | Universe travel, Survey, Planetside | Live, deterministic and save-backed; galaxy/star/planet ingress from Search, generated actions, saved boot/import and Atlas is source-proven at runtime, with planet ordinal identity captured before orbit sorting. Unfamiliar-world Land uses authored type/biome odds, seeded weather, worn landing gear and approach learning, with chance and nonlethal HP cost disclosed before commitment. A wave-off stays in orbit and adds 20 percentage points of learning at that exact address, capped at five wave-offs. Canonical Earth, Training and proven full-address landed returns are safe and consume no landing draws. Successful non-Training arrival clears that address's wave-offs; Training preserves them. One receipt/CAS settles the chosen outcome, HP and canonical learning before publication | Reuse the navigation seam without mistaking it for persisted receipt authority; add richer biome scenes |
+| Star Atlas | At most 120 saved rows support List/Chart and All, Favorites, Visited, Conquered and Life filters. Only source-proven route coordinates place Chart points; canonical world keys keep same-seed worlds distinct. Overlapping 44px targets form bounded clusters that open exact destinations through the existing List actions, with Return to Chart restoring the originating control. Favorite, Home and Remove use exact-row receipts/CAS; Home travel respects existing reach and unavailable routes. Remove preserves every surviving row and route and offers one eight-second Undo restoring the exact original pair, position, Home state and present-or-absent route; another Atlas mutation, changed route identity or convergence reload expires it | HUMAN navigation/comprehension and physical-phone evidence; existing Search/CF1/Atlas hyperlane, reach and explicit Land rules remain in force |
 | Charters / reach language | The board owns the two established Starter chains, a three-active cap and one receipt/CAS Accept path. Committed-only landfall, mining, eligible fixed fabrication, Field Scout and verified conquest writers bank exact deeds and their 10–25 Stardust, supported-Gear, achievement and rank outcomes atomically; full-address Sol checks reject leaf-seed aliases. A later explicit Discover Life after st-scan acceptance completes that Starter Charter with 15 Stardust and the exact Earpiece in the Bioscan receipt; earlier Survey or Capture never backfills it. Saved drive/chapter facts still gate reach | Keep weekly Charters fail-closed until wall-week/slate/acceptance/rollover authorities exist; never infer progress from projections |
 | Compendium | Virtualized 1,500-row browsing surface with bounded asynchronous thumbnails and selected static detail. Real fauna detail adds read-only 24-row pages of exact companion XP/level/class/innate arts, wounds and active-play Recovery, preserving twins and retired history; list-mode heading and sticky Close share the reserved first header row; native Arc 4 capture adds durable catalogue rows, and explicit Discover Life at an exact Paragon home adds only that fixed catalogue record; Compendium inspection itself grants nothing | HUMAN Arc 1 art review, then any separately bounded living selected preview |
 | Capture / specimen acquisition | Native receipt-backed Tame/Scavenge/Sample controls consume a uniform eligible pool from the canonical full roster/current published epoch, show truthful odds/Yield/recovery, and durably settle hit-or-miss spend plus first-only/repeat catalogue/fauna/specimen/Stardust outcomes. Arc 5A advances the exact five-carrier V2 authority in that same CAS and publishes both authorities together. Historical Final10–Final13 chronology remains preserved below. Historical exact signed source `3f69e88…` passed its once-only named-verified chain, including the complete real 20-minute Recovery observation and exact next-cycle/recovered UI | Complete the combined HUMAN first-journey/ownership review; companion semantics remain Arc 5 |

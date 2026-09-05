@@ -1,6 +1,6 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -28,8 +28,12 @@ XP, level, class, innate arts, wounds and active-play Recovery, with distinct tw
 tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
 preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
 focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
-No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
-remains the next checkpoint.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN

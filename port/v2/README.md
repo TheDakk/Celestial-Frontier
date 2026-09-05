@@ -1,6 +1,6 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
-## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -28,8 +28,12 @@ XP, level, class, innate arts, wounds and active-play Recovery, with distinct tw
 tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
 preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
 focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
-No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
-remains the next checkpoint.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
@@ -3084,7 +3088,7 @@ ledger they planned (`GLASS_NEGATIVE_CONTROL_LEDGERS`). The draft bulletin is 77
 The former save-import dock slot now opens the source-addressed **Guide to the
 Universe**, not a replacement mini-manual. It retains all 9 mature categories,
 43 authored stable IDs and 41 player topics with search, categories, native-keyboard
-cross-links and capability-aware v2 copy. At the current Step 2d boundary, 35 topics are
+cross-links and capability-aware v2 copy. At the current Step 2e boundary, 35 topics are
 partial and 6 are unavailable; the Capture/Discover guidance separates write-free living-world
 inspection, explicit durable Discover Life, and landed random-pool Capture without inventing targeted selection. It states the current
 capture-backed Charter rule exactly: the first durable successful Tame, Scavenge, or Sample on
@@ -3111,6 +3115,14 @@ retired records: separate XP, level, class, named innate arts, wounds and active
 Finite fractional XP in 0–486 is preserved, and the established additional art slots awaken at
 levels 3 and 6. Passive refresh preserves the owned pager or panel Close without scrolling or
 stealing focus elsewhere. This grants no Feed stat/Power growth, injury care, bond or missions.
+The Atlas guidance now covers its bounded 120-row List/Chart views and All/Favorites/Visited/
+Conquered/Life filters. Chart positions use source-proven routes and keep canonical world identity;
+overlapping 44px targets open a bounded exact-destination list through the existing row actions.
+Return to Chart restores its originating control without automatic travel. Home and exact Remove
+settle through their receipt/CAS owners, preserving survivors and existing reach/hyperlane rules.
+The one-level eight-second Undo restores the exact pair, position, Home and present-or-absent route;
+another Atlas mutation, route-identity change or convergence reload expires it. Travel Home stays
+disabled when its route is unavailable, and planet travel still returns to Survey before explicit Land.
 Intentionally dormant topics remain source-recorded and player-hidden. No legacy promise is
 presented as current behavior.
 The current local implementation keeps only `release-identity.ts` eager. `guide-content.ts` and
@@ -3121,7 +3133,7 @@ publication. A cached archive publishes on the following microtask because panel
 before the manager exposes the open panel. Opening it persists the existing `seenGuide` field. The Guide also carries the full
 56-release/398-bullet legacy history beside **A New Foundation**, the cumulative
 categorized v2.0 development bulletin, now 79 bullets. Its rendered ordered SHA-256 is
-`cfb34202b24e064af24a80f99083609aa63539d52ebce0042d7b4a231fb854e9`. The draft summarizes the
+`351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`. The draft summarizes the
 implemented playtest
 surface rather than the open roadmap; tests require canonical section order, unique
 nonempty bullets, the key player-facing outcomes, and a final item reached through bounded adaptive

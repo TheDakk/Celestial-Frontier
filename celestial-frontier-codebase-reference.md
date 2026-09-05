@@ -1,6 +1,6 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
-## Overnight Batch 4 — checkpoint 2d implementation, 2026-09-05
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
 `5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
@@ -28,8 +28,12 @@ XP, level, class, innate arts, wounds and active-play Recovery, with distinct tw
 tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
 preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
 focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
-No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Mature Atlas
-remains the next checkpoint.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
 Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
 V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
 at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
@@ -4347,6 +4351,33 @@ inside its fresh green predecessor chain without reopening either numeric ruler.
 separate.
 
 ### Star Atlas (bookmarks)
+
+**Current v2 (Step 2e, 2026-09-05):** `star-atlas-state.ts`, `star-atlas-panel.ts` and
+`arc9-atlas-row-actions.ts` own the bounded 120-row List/Chart view, All/Favorites/Visited/
+Conquered/Life filters, Home, exact Remove and one-level Undo. Favorites includes Home; visited
+and conquered facts use complete canonical world keys for current rows, with preserved seed facts
+used only for legacy `p<seed>` rows. Chart coordinates and its current-view marker come from
+source-proven routes; compatibility location text cannot mint a route. Incomplete routes remain
+visible but cannot travel, including Travel Home. Accepted planet travel returns to Survey and
+keeps Land explicit; existing ship/Prime reach checks and Search/CF1/Atlas hyperlane semantics remain.
+
+Overlapping Chart points merge into bounded 44px cluster controls. Opening one shows its exact
+member rows with the existing List actions and performs no travel. Return to Chart restores the
+originating cluster; if it is gone, focus falls back to the Chart view control, then that panel's
+Close. Passive semantic refills preserve current focus ownership without claiming a new route.
+
+Favorite retains its existing exact-row/route and first false-to-true `curator` owner. Home, Remove
+and Undo use their exact expected-state receipt and one F4 CAS, with no RNG, optimistic publication
+or automatic retry. Remove preserves every surviving pair and route identity and clears Home only
+when that exact row was Home. For eight monotonic seconds its one-level Undo retains the removed
+pair and the exact present-or-absent route association. Undo requires the exact removal successor,
+receipt, retained pair and unchanged route identity, then restores the original pair at its original
+position and restores the prior Home state. An originally absent route stays absent; Undo never
+synthesizes one or deletes another row's route. Other save/source stores remain unchanged. Another
+Atlas mutation, route-identity change or convergence reload expires the retained Undo; stale or
+failed writes never publish, and ambiguous durable outcomes converge read-only without retry.
+
+**Legacy v1.8.9 implementation:** the icon/auto-add details below describe the original game.
 The `logMap` Map. `addToLog`, `renderLog`. Every survey card (galaxy/star/planet/moon/etc.)
 has a uniform **bookmark row**: **+ Add to Star Atlas**, **☆ favorite**, **⌂ home** — the
 icons auto-add to the Atlas on tap. Entries can be favorited/home-set from the Atlas list
@@ -4592,7 +4623,7 @@ Compendium / Star Atlas / Cosmic Events / Settings.
   `renderGuideSearch` own the panel. `getReleaseHistory({includeDraft:true})`
   supplies **A New Foundation**, the cumulative v2.0 development entry, followed
   by the 56 legacy releases. Its exact 79-bullet implemented-outcome inventory has rendered
-  ordered SHA-256 `cfb34202b24e064af24a80f99083609aa63539d52ebce0042d7b4a231fb854e9`
+  ordered SHA-256 `351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`
   and is checked structurally and in the rendered Guide. Tail proof dispatches one adaptive
   native wheel per fresh exact-document/tail/hit-owner/geometry observation until the final item
   is visible at bottom, then restores scroll and inline overflow ownership exactly; unchanged

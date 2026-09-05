@@ -999,16 +999,32 @@ function rankReleaseCopyIsTruthful(body: string): boolean {
 
 function atlasGuideCopyIsTruthful(body: string): boolean {
   const copy = plainCopy(body);
-  return /Each row keeps Travel and Favorite as separate controls/i.test(copy)
-    && /Favorite changes only that exact imported row in place so its proven route remains attached/i.test(copy)
+  return /semantic List and Chart views/i.test(copy)
+    && /filter All, Favorites, Visited, Conquered, or Life/i.test(copy)
+    && copy.includes("Nearby Chart lights share one large control when their touch targets would overlap")
+    && copy.includes("Choose that control to open a bounded list of its exact destinations")
+    && copy.includes("Return to Chart restores the originating control")
+    && copy.includes("This selection spends nothing and travels nowhere")
+    && ["The legacy chart view, home marker, and undo are not yet ported", "Chart cluster selection travels automatically", "Chart filters spend Stardust", "Home can travel an unavailable route", "Remove discards another row", "Undo lasts forever", "Undo survives another Atlas mutation", "Same-seed worlds share Visited and Conquered"].every((claim) => !copy.includes(claim))
+    && /Chart uses only source-proven route coordinates and marks the current view/i.test(copy)
+    && /compatibility location text never becomes route or chart authority/i.test(copy)
+    && /Exact canonical world keys own Visited and Conquered, so same-seed worlds remain independent/i.test(copy)
+    && /only legacy p&lt;seed&gt; rows use their preserved seed facts/i.test(copy)
+    && /Favorite, Home, and Remove act on one exact row through one receipt and one compare-and-swap with no retry or optimistic publication/i.test(copy)
+    && /Favorite preserves that same row and its route sidecar/i.test(copy)
     && /first explicit false-to-true choice owns curator/i.test(copy)
     && /unfavoriting never removes it and an unchanged choice writes nothing/i.test(copy)
+    && /Custom names and source-verified composite identities are preserved/i.test(copy)
+    && /Home points to one exact row and Travel Home remains disabled if its route is unavailable/i.test(copy)
+    && /Remove preserves every surviving pair and route identity/i.test(copy)
+    && /Undo remains available for eight seconds/i.test(copy)
+    && /restores the exact original pair, position, Home state, and present-or-absent route sidecar/i.test(copy)
+    && /expires after another Atlas mutation, route-identity change, or convergence reload/i.test(copy)
     && /Accepted Atlas, Search, and CF1 arrivals may paint the same deterministic, skippable hyperlane streak overlay after the route publishes/i.test(copy)
     && /Unresearched travel keeps the established baseline/i.test(copy)
     && /Fusion, Antimatter, and Warp Fold use 2×, 4×, and 8× speed bases/i.test(copy)
     && /equipped travel-speed gear added to the active base/i.test(copy)
-    && /Effects, Motion, and device limits may reduce or omit the treatment without delaying or changing the destination/i.test(copy)
-    && /legacy chart view, home marker, and undo are not yet ported/i.test(copy);
+    && /Effects, Motion, and device limits may reduce or omit the treatment without delaying or changing the destination/i.test(copy);
 }
 
 function hdAttachmentReleaseCopyIsTruthful(body: string): boolean {
@@ -1286,6 +1302,48 @@ describe('v2 Guide capability filter', () => {
     expect(rankBullet).toBeDefined();
     expect(cf1SharingGuideCopyIsTruthful(codes)).toBe(true);
     expect(atlasGuideCopyIsTruthful(atlas)).toBe(true);
+    for (const fact of [
+      'semantic <b>List</b> and <b>Chart</b> views',
+      'filter All, Favorites, Visited, Conquered, or Life',
+      "Nearby Chart lights share one large control when their touch targets would overlap",
+      "Choose that control to open a bounded list of its exact destinations",
+      "<b>Return to Chart</b> restores the originating control",
+      "This selection spends nothing and travels nowhere",
+      'source-proven route coordinates',
+      'Exact canonical world keys own Visited and Conquered',
+      'one receipt and one compare-and-swap',
+      'present-or-absent route sidecar',
+      'available for eight seconds',
+    ]) {
+      expect(atlas).toContain(fact);
+      expect(atlasGuideCopyIsTruthful(atlas.replace(fact, 'omitted'))).toBe(false);
+      expect(atlasGuideCopyIsTruthful(atlas)).toBe(true);
+    }
+    for (const contradiction of ["The legacy chart view, home marker, and undo are not yet ported", "Chart cluster selection travels automatically", "Chart filters spend Stardust", "Home can travel an unavailable route", "Remove discards another row", "Undo lasts forever", "Undo survives another Atlas mutation", "Same-seed worlds share Visited and Conquered"]) {
+      expect(atlasGuideCopyIsTruthful(atlas + ' ' + contradiction)).toBe(false);
+      expect(atlasGuideCopyIsTruthful(atlas)).toBe(true);
+    }
+    const atlasRelease = bullets.find((bullet) => bullet.includes('THE ATLAS LEADS BACK'));
+    expect(atlasRelease).toBeDefined();
+    const glassCopySource = readFileSync(new URL('../tools/glassmatrix.mjs', import.meta.url), 'utf8');
+    const atlasStart = '            atlasRouteContract=';
+    const atlasEnd = ',\n            captureBioscanContradiction=';
+    expect(glassCopySource.split(atlasStart)).toHaveLength(2);
+    const atlasExpression = glassCopySource.slice(glassCopySource.indexOf(atlasStart) + atlasStart.length,
+      glassCopySource.indexOf(atlasEnd, glassCopySource.indexOf(atlasStart)));
+    expect(atlasExpression).toContain('atlasRouteText.includes');
+    const actualGlassAtlasContract = Function('atlasRouteText', 'return (' + atlasExpression + ');') as (copy: string) => boolean;
+    const atlasReleaseText = plainCopy(atlasRelease!);
+    expect(actualGlassAtlasContract(atlasReleaseText)).toBe(true);
+    for (const fact of ["Star Atlas restores semantic List and Chart views plus All, Favorites, Visited, Conquered, and Life filters", "Overlapping Chart targets become one large control for a bounded exact-destination list", "Return to Chart restoring focus and no automatic travel", "Chart coordinates come only from source-proven route sidecars", "the current view has its own marker", "canonical world-key history keeps same-seed worlds independent", "only legacy p-seed rows use preserved seed facts", "Favorite, Home, and Remove each settle one exact row through one receipt and one compare-and-swap with no retry or optimistic publication", "Travel Home remains honest when its route is unavailable", "Remove preserves every survivor", "one eight-second Undo that restores the exact pair, source position, Home state, and present-or-absent route sidecar", "another Atlas mutation, route-identity change, or convergence reload expires it"]) {
+      expect(atlasReleaseText.split(fact)).toHaveLength(2);
+      expect(actualGlassAtlasContract(atlasReleaseText.replace(fact, 'omitted'))).toBe(false);
+      expect(actualGlassAtlasContract(atlasReleaseText)).toBe(true);
+    }
+    for (const contradiction of ["The legacy chart view, home marker, and undo are not yet ported", "Chart cluster selection travels automatically", "Chart filters spend Stardust", "Home can travel an unavailable route", "Remove discards another row", "Undo lasts forever", "Undo survives another Atlas mutation", "Same-seed worlds share Visited and Conquered"]) {
+      expect(actualGlassAtlasContract(atlasReleaseText + ' ' + contradiction)).toBe(false);
+      expect(actualGlassAtlasContract(atlasReleaseText)).toBe(true);
+    }
     expect(cf1SharingReleaseCopyIsTruthful(worldCodes!)).toBe(true);
     expect(releaseTravelRowsAgree(worldCodes!, rankBullet!)).toBe(true);
     expect(rankGuideCopyIsTruthful(rank)).toBe(true);
