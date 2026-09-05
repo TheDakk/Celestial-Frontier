@@ -865,20 +865,21 @@ describe('@cf/domain-opportunity — Deep Scanners reveal without mining authori
 });
 
 describe('@cf/domain-opportunity — exact research and fixed fabrication plans', () => {
-  it('makes only the exact Deep Scanners consumer available in the inspectable catalogue', () => {
+  it('makes all six implemented research consumers available in the inspectable catalogue', () => {
     expect(ENGINEERING_RESEARCH_CATALOGUE.map((entry) => ({
       id: entry.id,
       materialCost: entry.materialCost,
       stardustCost: entry.stardustCost,
       prerequisiteId: entry.prerequisiteId,
+      jumpDriveRequired: entry.jumpDriveRequired,
       consumerStatus: entry.consumerStatus,
     }))).toEqual([
-      { id: 'scan1', materialCost: { Fe: 6, Si: 4 }, stardustCost: 20, prerequisiteId: null, consumerStatus: 'available' },
-      { id: 'hull1', materialCost: { Ti: 5, Fe: 8 }, stardustCost: 40, prerequisiteId: null, consumerStatus: 'unavailable' },
-      { id: 'lab1', materialCost: { C: 6, P: 3, H2O: 4 }, stardustCost: 60, prerequisiteId: null, consumerStatus: 'unavailable' },
-      { id: 'drive1', materialCost: { H: 8, He3: 2, Fe: 4 }, stardustCost: 40, prerequisiteId: null, consumerStatus: 'unavailable' },
-      { id: 'drive2', materialCost: { He3: 6, Pt: 2, U: 2 }, stardustCost: 120, prerequisiteId: 'drive1', consumerStatus: 'unavailable' },
-      { id: 'drive3', materialCost: { Pz: 1, Ir: 3, U: 4 }, stardustCost: 300, prerequisiteId: 'drive2', consumerStatus: 'unavailable' },
+      { id: 'scan1', materialCost: { Fe: 6, Si: 4 }, stardustCost: 20, prerequisiteId: null, jumpDriveRequired: true, consumerStatus: 'available' },
+      { id: 'hull1', materialCost: { Ti: 5, Fe: 8 }, stardustCost: 40, prerequisiteId: null, jumpDriveRequired: false, consumerStatus: 'available' },
+      { id: 'lab1', materialCost: { C: 6, P: 3, H2O: 4 }, stardustCost: 60, prerequisiteId: null, jumpDriveRequired: false, consumerStatus: 'available' },
+      { id: 'drive1', materialCost: { H: 8, He3: 2, Fe: 4 }, stardustCost: 40, prerequisiteId: null, jumpDriveRequired: false, consumerStatus: 'available' },
+      { id: 'drive2', materialCost: { He3: 6, Pt: 2, U: 2 }, stardustCost: 120, prerequisiteId: 'drive1', jumpDriveRequired: false, consumerStatus: 'available' },
+      { id: 'drive3', materialCost: { Pz: 1, Ir: 3, U: 4 }, stardustCost: 300, prerequisiteId: 'drive2', jumpDriveRequired: false, consumerStatus: 'available' },
     ]);
   });
 
@@ -939,7 +940,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     expect(encodeEngineeringState(plan.nextState)).toContain('"research":["scan1","drive2"]');
   });
 
-  it('keeps owned, prerequisite, asset, and unavailable-consumer refusals exact', () => {
+  it('keeps owned, prerequisite, and asset refusals exact while planning the complete ladder', () => {
     expect(() => planResearchPurchase({
       state: JSON.parse(encodeEngineeringState(createEngineeringState())) as EngineeringStateV2,
       researchId: 'scan1',
@@ -994,7 +995,7 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     expect(prerequisite).toMatchObject({
       status: 'refused',
       reason: 'prerequisite-missing',
-      quote: { missingPrerequisiteId: 'drive1', consumerStatus: 'unavailable' },
+      quote: { missingPrerequisiteId: 'drive1', consumerStatus: 'available' },
     });
 
     const insufficient = planResearchPurchase({
@@ -1018,18 +1019,29 @@ describe('@cf/domain-opportunity — exact research and fixed fabrication plans'
     });
 
     const sparse = legacySparseState(['drive2']);
-    const unavailable = planResearchPurchase({
+    const finalDrive = planResearchPurchase({
       state: sparse,
       researchId: 'drive3',
       jumpDriveOwned: true,
       assets: { materials: { Pz: 1, Ir: 3, U: 4 }, stardust: 300 },
       receiptOrdinal: 4,
     });
-    expect(unavailable).toMatchObject({
-      status: 'refused',
-      reason: 'consumer-unavailable',
-      quote: { missingPrerequisiteId: null, missingMaterials: [], missingStardust: 0 },
+    expect(finalDrive).toMatchObject({
+      status: 'planned',
+      result: {
+        researchId: 'drive3',
+        quote: { missingPrerequisiteId: null, missingMaterials: [], missingStardust: 0 },
+        consume: {
+          materials: [
+            { id: 'Ir', quantity: 3 },
+            { id: 'Pz', quantity: 1 },
+            { id: 'U', quantity: 4 },
+          ],
+          stardust: 300,
+        },
+      },
     });
+    if (finalDrive.status === 'planned') expect(finalDrive.nextState.research).toEqual(['drive2', 'drive3']);
     expect(encodeEngineeringState(sparse)).toContain('"research":["drive2"]');
   });
 

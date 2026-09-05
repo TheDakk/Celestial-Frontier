@@ -1,5 +1,44 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
+
+Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
+`5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
+Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
+486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
+The accepted Discover Life Starter Charter completes only on a later explicit Bioscan for its
+established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Survey or Capture
+backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
+Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
+and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
+two SessionRNG draws and one receipt/CAS. A wave-off leaves the ship in orbit, with HP at least 1 and canonical
+learning (+20 percentage points per failure, capped at five), without landing rewards. Success
+clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
+Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
+fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
+The Fifty Paragons now use their authored fixed genomes and exact home worlds. Explicit Discover
+Life at an eligible home adds only its catalogue record in that same Bioscan receipt; it creates
+no companion/specimen, spends no Yield and grants no capture or extra discovery award. Binder
+shows all fifty: found entries Inspect the exact existing Compendium record; missing entries use
+existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
+New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
+Pre-feature development saves with an already-scanned home retain their recorded refusal; no
+backfill or repeated hazard is invented. Static portraits remain unchanged. Exact-instance progression now displays each individual's
+XP, level, class, innate arts, wounds and active-play Recovery, with distinct twins and retained
+tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
+preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
+focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
+Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
+at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
+reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
+
 > **D-FRESH-START-IMPORT-DOOR — 2026-09-05 UTC current deviation overlay (matches current local
 > code; local diagnostics green, hosted certificate absent):** Nick withdrew the legacy-save
 > requirement ("nobody is running old saves… treat it as a brand-new game; we want saves going forward

@@ -351,6 +351,26 @@ authorize new affix pools, rerolls, upgrades, sockets, vendors or disconnected e
 
 ---
 
+## Decided 2026-09-04 (Nick) — feature-complete beta scope
+
+### 19. Existing research consequences — **RESTORE, DO NOT OMIT FOR BETA**
+
+Nick's direction is “We want everything implemented for the beta.” The five remaining research
+rows are therefore implementation work, not features to leave disabled for a reduced beta:
+Reinforced Hull consumes hostile-bioscan damage, Xenobotany Lab consumes explorer flora
+nourishment, and Fusion/Antimatter/Warp Fold consume distance-derived travel presentation.
+Preserve their authored costs, prerequisites and effects; do not substitute companion Feed,
+ordinary combat damage or permanent travel reach for those original consumers. Presentation must
+not delay durable navigation or manufacture waiting solely to sell a speed upgrade.
+
+This resolves inclusion, not unimplemented numeric content tables or conflicting legacy/v2
+creature stakes. Existing nonlethal ownership decisions and the named Arc 6 decisions below still
+govern implementation. A pure resolver is not completion: keep each status partial until its real
+action, persistence, UI and focused outcome evidence are connected. Human/device acceptance and
+new GitHub/release authority remain separate.
+
+---
+
 ## Open implementation decisions exposed 2026-08-29 — Arc 6 reward carriers
 
 These are not new requests for numeric tuning. Source review proved the legacy inputs but found no

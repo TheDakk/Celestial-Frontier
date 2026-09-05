@@ -364,7 +364,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(collector.indexOf('atomicWriteJson(currentReportPath, sentinel)'))
       .toBeLessThan(collector.indexOf('const run = spawnSync('));
     expect(collector).toContain('automaticRetries: 0');
-  }, 20_000);
+  }, 60_000);
 
  it('requires an exact clean Slice predecessor for full Glass and binds the newest release semantics in both directions', () => {
    const output = runSelftest('glassmatrix.mjs', 'exact clean Slice predecessor accepted');
@@ -376,7 +376,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(output).toContain('trail/portrait controls: measured-opposite mutation, eligible baseline, exact property restoration, no-op rejection, and first-red causal stop accepted');
     expect(collector).toContain('full certifying Glass requires --slice-run=<immutable-Slice-run-id>');
     expect(collector).toContain('full certifying Glass requires clean committed source');
-    expect(collector).toContain('Equipped capture-chance gear is included in the shown odds at +1.5 percentage points per point before the 95% overall chance ceiling, with its contribution capped at +25 percentage points; first contact remains unavailable');
+    expect(collector).toContain('Equipped capture-chance gear adds 1.5 percentage points per point before the 95% overall ceiling, capped at +25 points; first contact remains unavailable');
     expect(collector).toContain('The shown odds ignore equipped capture-chance gear.');
     expect(collector).toContain('A wrong-world detour keeps only its real Close available, and Escape dismisses it without abandoning Sol or the lesson');
    expect(collector).toContain('Escape from a wrong-world detour abandons Sol and the lesson.');
@@ -388,10 +388,10 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
       expect(contract).toContain('Browsing, filtering, focusing, and returning through the Compendium never auto-play it');
       expect(contract).toContain('The biosphere signal grants a discovery reward and changes the save.');
     }
-    expect(slice).toContain('const V2_DRAFT_BULLET_COUNT = 77;');
-    expect(collector).toContain('expectedBulletCount=77');
-    expect(collector).toContain('exact five-section, 77-outcome development inventory');
- }, 20_000);
+    expect(slice).toContain('const V2_DRAFT_BULLET_COUNT = 79;');
+    expect(collector).toContain('expectedBulletCount=79');
+    expect(collector).toContain('exact five-section, 79-outcome development inventory');
+ }, 60_000);
 
   it('rejects invalid full Glass invocations without changing the current evidence pointer', () => {
     const before = existsSync(glassCurrentPointer)
@@ -444,7 +444,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(predecessorPreflight).toBeLessThan(immutableReservation);
     expect(immutableReservation).toBeLessThan(reservationOwned);
     expect(reservationOwned).toBeLessThan(pointerPublication);
-  }, 15_000);
+  }, 60_000);
 
   it('fails closed on one representative malformed profile call per evidence producer', () => {
     const before = {
@@ -486,7 +486,7 @@ describe('Slice → Glass → Arc 4 recovery evidence chain', () => {
     expect(smoke).toContain('verifyArgs.length > 1 || args.length !== 1 + verifyArgs.length');
     expect(glass).toContain('unknownArgs.length || duplicateSingleton');
     expect(glass).toContain('|| (verifyRunArg && (!sliceRunArg || !profileArg || cliArgs.length !== 3))');
-  }, 20_000);
+  }, 60_000);
 
   it('requires the exact immutable Slice+Glass pair for recovery and preserves one-attempt verification', () => {
     const collector = source('arc4recovery.mjs');

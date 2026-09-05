@@ -3,6 +3,7 @@ import { createRequire } from 'node:module';
 import { transformSync } from 'rolldown/utils';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { capturePanelRefillFocus } from '../apps/game/src/panel-refill-focus.js';
+import { projectStarAtlasV1, renderStarAtlasV1 } from '../apps/game/src/star-atlas-panel.js';
 
 const main = readFileSync(new URL('../apps/game/src/main.ts', import.meta.url), 'utf8');
 
@@ -242,18 +243,31 @@ describe('synchronous semantic panel refill focus', () => {
     root.id = `${id}panel`;
     const env = {
       document, capturePanelRefillFocus,
-      save: { logMap: [['a', { title: 'Earth', fav: false }]], stats: {}, galSeen: [], sysSeen: [],
+      save: { logMap: [['a', { id: 'a', title: 'Earth', sub: '', badge: '', t: 0, fav: false }]],
+        homeId: null, landed: [], conquered: [], stats: {}, galSeen: [], sysSeen: [],
         ptypesSeen: [], starKindsSeen: [], codex: [], surveyedSet: [], journal: [], ascProg: {} },
-      atlasRouteStates: { has: () => true }, arc9AtlasFavoritePendingId: null,
+      atlasRouteStates: { has: () => true, get: () => ({ gal: { x: 90, y: -60 } }) },
+      arc9AtlasFavoritePendingId: null, arc9AtlasRowPending: null, arc9AtlasUndoPending: false,
+      arc9AtlasView: 'list', arc9AtlasFilter: 'all', arc9AtlasClusterId: null,
+      lastArc9AtlasRowStatus: null, liveArc9AtlasUndo: () => null,
+      projectStarAtlasV1, renderStarAtlasV1, nav: { mode: 'universe' },
+      worldIdentityProtection: null, worldIdentityBootstrapPending: false,
+      activePersist: null, importWriteInFlight: false, replacementTransaction: null,
+      replacementReloadPending: false, atlasMutationsAvailable: () => true,
       smokeForceReadOnly: false, f4RuntimeMayMutate: () => true, trainingCheckpointWriteHeld: false,
       trainingActive: () => false, ecologyEpochBlocksActions: () => false,
       esc: String, fillPanel: (_id: string, html: string) => {
         root.innerHTML = `<button data-pnx="${id}">Close</button>${html}`;
       },
+      f4Runtime: { extensions: {} }, arc5OwnershipState: { mode: 'current' },
+      readCombatSettlementAuthorityV1: () => ({ kind: 'loaded', authority: { conquests: [] } }),
+      ownershipSourceStateV1: () => ({}),
+      projectExpeditionChronicleV1: () => ({ kind: 'projected', model: {} }),
+      renderExpeditionChronicleV1: () => '<section data-test-chronicle>Retained expedition history</section>',
       projectArc9RecordsRankReadModelV1: () => ({ kind: 'protected' }),
       projectArc9BinderReadModelV1: () => ({ kind: 'projected', model: {} }),
       renderArc9BinderPanelV1: () => '<button data-binder-claim="set">Claim</button>',
-      binderClaimPanelStatus: () => null, canonicalWorldLandingCount: () => 0, worldIdentityState: {},
+      binderClaimPanelStatus: () => null, canonicalWorldLandingCount: () => 0, worldIdentityState: { records: [] },
       projectV2Charter: () => null, ascStage: () => 0,
       projectStarterCharterBoardV1: () => ({ kind: 'projected', board: { acceptedCount: 0, cap: 3 } }),
       renderStarterCharterBoardV1: () => '<button data-starter-charter-accept="st">Accept</button>',
@@ -267,8 +281,11 @@ describe('synchronous semantic panel refill focus', () => {
       ? ['fillAtlas', "\ndocument.getElementById('atlaspanel')!", '[data-atlas-favorite="a"]']
       : id === 'rec' ? ['fillRecords', '\nfunction frontierEndingPanelStatus', '[data-binder-claim="set"]']
         : ['fillCharters', "\nregisterPanel({ id: 'ch'", '[data-starter-charter-accept="st"]'];
+    env.atlasMutationsAvailable = appFunction('atlasMutationsAvailable', '\nfunction fillAtlas(', env) as () => boolean;
     const fill = appFunction(name!, end!, env);
     fill();
+    if (id === 'rec') expect(root.querySelector('[data-test-chronicle]')?.textContent)
+      .toBe('Retained expedition history');
     root.querySelector<HTMLElement>(selector!)!.focus();
     fill();
     expect(document.activeElement).toBe(root.querySelector(selector!));

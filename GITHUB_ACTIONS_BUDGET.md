@@ -2,7 +2,12 @@
 
 **Current mode: `UNFROZEN`**
 
-**Current state (2026-09-05 UTC, latest): PR #41 (`openai/review-batch4-gameplay-20260905` → `develop`,
+**Current state (2026-09-05 UTC, final): PR #41 merged as `develop`
+`c1791e210158de864fdd475323c3091d9ecbae58` (Nick: "merge PR #41"; Claude merged exact head `05c1d7f` at 16:55:06 UTC;
+the merge triggered no run — the workflow fires only on a PR label). No hosted authority remains; nothing here
+authorizes a `main` merge, release or deployment.**
+
+**Previous state (2026-09-05 UTC, latest): PR #41 (`openai/review-batch4-gameplay-20260905` → `develop`,
 Codex Batch 4 gameplay) attempt 2 on head `05c1d7fc7049a7b9813d2be1be020dc0d552b74f` (base
 `9ea01041dcdc711190bbf909ea8bb743cd993734`), Nick-authorized as "one agent-lane attempt … do not merge",
 **PASSED in 8m10s**; the label was removed; the PR is open, terminal-green and mergeable; **no merge yet

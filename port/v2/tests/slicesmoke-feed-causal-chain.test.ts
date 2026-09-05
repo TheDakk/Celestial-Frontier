@@ -35,7 +35,7 @@ const glassSource = readFileSync(
   'utf8',
 );
 const FEED_RELEASE_SILENCE_PREDICATE_SOURCE =
-  '/refused, stale, converging, replayed, hidden, route-lost, and counterpart-lost paths remain silent/i.test(mealText)';
+  '/refused, stale, converging, replayed, hidden, route-lost, counterpart-lost, and older results remain silent/i.test(mealText)';
 const feedReleaseSilenceWiringIsSemantic = (owner: string): boolean =>
   owner.includes(FEED_RELEASE_SILENCE_PREDICATE_SOURCE);
 const digest = (character: string): string => character.repeat(64);
@@ -2462,11 +2462,17 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       'const nativeDispatch = await driver.clickPoint(dispatchPreflight);',
       "const nativeDispatch = await driver.evaluate('document.querySelector(\\\"input\\\")?.click()');",
     ))).toBe(false);
-    expect(isCausalFeedWiring(reverseMarkers(
+    const initialFeedOwner = owner(
       source,
+      "    const initialFeedUi = await arc5FeedOpenDetail(arc5FeedFixture, 'Arc 5 Feed');",
+      '    /* A genuinely separate same-origin document now wins',
+    );
+    expect(initialFeedOwner).not.toBeNull();
+    expect(isCausalFeedWiring(replaceOnce(source, initialFeedOwner!, reverseMarkers(
+      initialFeedOwner!,
       'const selectedUi = await collectArc5FeedPreview(',
       'const beforeRaw = await evalIn(ARC4_DURABLE_READ_EXPRESSION);',
-    ))).toBe(false);
+    )))).toBe(false);
     expect(isCausalFeedWiring(reverseMarkers(
       source,
       'const winnerSelectedUi = await collectArc5FeedPreview(',

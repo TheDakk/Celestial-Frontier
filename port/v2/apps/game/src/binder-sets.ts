@@ -1,9 +1,10 @@
 /* Arc 9 Binder projection and exact set-claim owner.
 
    The Binder collects canonical species TYPES, never procedural individuals.
-   Seven legacy sets can be proven entirely from the current Compendium and
-   claimed once through one F4 receipt/CAS. The Paragon set stays visible as
-   unavailable because its legacy acquisition authority is not ported. */
+   Eight legacy sets can be proven entirely from the current Compendium and
+   claimed once through one F4 receipt/CAS. The eighth is Seeker of Legends:
+   exact deterministic Paragon identities own its progress. The Finder remains
+   read-only; Paragon acquisition is not duplicated outside Discover Life. */
 import {
   ABILITY_THEMES,
   STAT_HUES,
@@ -29,6 +30,14 @@ import type {
   F4RuntimeActionCommitOutcome,
   F4RuntimeAuthority,
 } from './f4-runtime-authority.js';
+import {
+  ARC9_PARAGON_COUNT_V1,
+  ARC9_PARAGON_MILESTONE_COUNT_V1,
+  ARC9_PARAGON_MILESTONE_NAME_V1,
+  ARC9_PARAGON_MILESTONE_STARDUST_V1,
+  projectArc9ParagonCatalogueV1,
+  type Arc9ParagonCatalogueSlotV1,
+} from './paragon-finder.js';
 
 export const ARC9_BINDER_SET_CLAIM_RECEIPT_KIND_V1 = 'arc9-binder-set-claim-v1' as const;
 export const ARC9_BINDER_SET_CLAIM_WITNESS_SCHEMA_V1 =
@@ -39,7 +48,7 @@ const MAX_CLAIMED_SET_ROWS = 200;
 const MAX_STARDUST = Number.MAX_SAFE_INTEGER;
 
 export const ARC9_BINDER_CLAIMABLE_SET_IDS_V1 = Object.freeze([
-  'kingdoms', 'flavors', 'themes', 'bodies', 'realms', 'xeno', 'court',
+  'kingdoms', 'flavors', 'themes', 'bodies', 'realms', 'xeno', 'court', 'para10',
 ] as const);
 export type Arc9BinderClaimableSetIdV1 =
   (typeof ARC9_BINDER_CLAIMABLE_SET_IDS_V1)[number];
@@ -76,8 +85,11 @@ export interface Arc9BinderReadModelV1 {
   readonly sets: readonly Arc9BinderSetV1[];
   readonly claimedSetIds: readonly string[];
   readonly paragon: Readonly<{
-    status: 'unavailable';
-    preservedClaim: boolean;
+    status: 'finder-ready';
+    found: number;
+    total: typeof ARC9_PARAGON_COUNT_V1;
+    slots: readonly Arc9ParagonCatalogueSlotV1[];
+    milestoneClaimed: boolean;
     note: string;
   }>;
 }
@@ -95,6 +107,7 @@ interface BinderOwnership {
   readonly kinds: ReadonlySet<string>;
   readonly sizes: ReadonlySet<number>;
   readonly court: ReadonlySet<number>;
+  readonly paragons: number;
   readonly xeno: boolean;
 }
 
@@ -150,6 +163,13 @@ const SET_DEFINITIONS: readonly SetDefinition[] = Object.freeze([
       .map((label, index) => `${label} ${own.court.has(12 + index) ? '✓' : '—'}`).join(' · '),
     complete: (own: BinderOwnership) => own.court.size >= 3,
   }),
+  Object.freeze({
+    id: 'para10', name: ARC9_PARAGON_MILESTONE_NAME_V1,
+    description: 'Find 10 of the Fifty Paragons',
+    stardust: ARC9_PARAGON_MILESTONE_STARDUST_V1,
+    progress: (own: BinderOwnership) => `${own.paragons} / ${ARC9_PARAGON_MILESTONE_COUNT_V1}`,
+    complete: (own: BinderOwnership) => own.paragons >= ARC9_PARAGON_MILESTONE_COUNT_V1,
+  }),
 ]);
 
 function plainRecord(value: unknown, label: string): Record<string, unknown> {
@@ -187,7 +207,7 @@ function checkedClaimedSets(value: unknown): readonly string[] {
   if (!Array.isArray(value) || value.length > MAX_CLAIMED_SET_ROWS) {
     throw new RangeError('Binder claimed-set carrier exceeds its bound');
   }
-  const known = new Set<string>([...ARC9_BINDER_CLAIMABLE_SET_IDS_V1, 'para10']);
+  const known = new Set<string>(ARC9_BINDER_CLAIMABLE_SET_IDS_V1);
   const seen = new Set<string>();
   const result: string[] = [];
   for (const id of value) {
@@ -210,8 +230,12 @@ function checkedCodex(value: unknown): readonly CodexEntry[] {
       || ids.has(row[0])) {
       throw new TypeError(`Binder Compendium pair ${index} is invalid`);
     }
+    const entry = checkedCodexEntry(row[1], index);
+    if (row[0] !== entry.id) {
+      throw new TypeError(`Binder Compendium pair ${index} key does not match its record id`);
+    }
     ids.add(row[0]);
-    return checkedCodexEntry(row[1], index);
+    return entry;
   }));
 }
 
@@ -219,7 +243,7 @@ function positiveModulo(value: number, length: number): number {
   return ((value % length) + length) % length;
 }
 
-function ownershipOf(entries: readonly CodexEntry[]): BinderOwnership {
+function ownershipOf(entries: readonly CodexEntry[], paragons: number): BinderOwnership {
   const tiers = new Set<number>();
   const realms = new Set<string>();
   const bodies = new Set<number>();
@@ -247,7 +271,7 @@ function ownershipOf(entries: readonly CodexEntry[]): BinderOwnership {
     }
     if (entry.kind === 'Flora') flavors.add(floraStat(genome));
   }
-  return Object.freeze({ tiers, realms, bodies, themes, flavors, kinds, sizes, court, xeno });
+  return Object.freeze({ tiers, realms, bodies, themes, flavors, kinds, sizes, court, paragons, xeno });
 }
 
 function slot(id: string, label: string, have: boolean, color: string): Arc9BinderSlotV1 {
@@ -284,7 +308,12 @@ function abilityThemeColor(id: string): string {
 function modelOf(state: SaveStateV2): Arc9BinderReadModelV1 {
   const entries = checkedCodex(state.codex);
   const claimedSetIds = checkedClaimedSets(state.claimedSets);
-  const own = ownershipOf(entries);
+  const paragonProjection = projectArc9ParagonCatalogueV1(entries);
+  if (paragonProjection.kind !== 'projected') {
+    throw new TypeError(`Binder Paragon projection is protected: ${paragonProjection.reason}`);
+  }
+  const paragonCatalogue = paragonProjection.catalogue;
+  const own = ownershipOf(entries, paragonCatalogue.found);
   const pages: readonly Arc9BinderPageV1[] = Object.freeze([
     page('spectrum', '🎨', 'The Spectrum', RARITY_V17.map((rarity) => slot(
       String(rarity.t), rarity.name,
@@ -322,9 +351,12 @@ function modelOf(state: SaveStateV2): Arc9BinderReadModelV1 {
     sets,
     claimedSetIds,
     paragon: Object.freeze({
-      status: 'unavailable',
-      preservedClaim: claimed.has('para10'),
-      note: 'The Fifty Paragons remain protected until their deterministic discovery owner is ported.',
+      status: 'finder-ready',
+      found: paragonCatalogue.found,
+      total: paragonCatalogue.total,
+      slots: paragonCatalogue.slots,
+      milestoneClaimed: claimed.has('para10'),
+      note: 'Named one-of-a-kind deep-spectrum legends at fixed deterministic worlds.',
     }),
   });
 }
@@ -557,10 +589,15 @@ export function renderArc9BinderPanelV1(model: Arc9BinderReadModelV1): string {
         ? `<button type="button" data-binder-claim="${escapeHtml(set.id)}">Claim ✦ ${set.stardust}</button>`
         : `<span class="sub">${escapeHtml(set.progress)}</span>`)
     + '</div>').join('');
+  const paragons = model.paragon.slots.map((slot) => `<button type="button" class="binder-slot paragon${slot.found ? '' : ' missing'}"`
+    + ` data-binder-paragon="${slot.index}"`
+    + ` aria-label="${slot.found ? 'Inspect' : 'Plot course to'} Paragon ${slot.number}${slot.found ? `: ${escapeHtml(slot.ownedName ?? slot.expectedName)}` : ''}"`
+    + (slot.found ? ` style="border-color:${escapeHtml(slot.color)};color:${escapeHtml(slot.color)}"` : '')
+    + `>${slot.found ? escapeHtml(slot.ownedName ?? slot.expectedName) : `#${slot.number} — ?`}</button>`).join('');
   return '<section class="records-binder" data-arc9-binder><h3>🗂 Binder</h3>'
     + '<p class="sub">Collect types, not individuals — these slots are identical for every explorer.</p>'
-    + pages + '<h4>🏅 Sets</h4>' + sets
-    + `<div class="binder-paragon-boundary"><b>🜲 The Fifty Paragons</b><div class="sub">${escapeHtml(model.paragon.note)}`
-    + (model.paragon.preservedClaim ? ' Your imported Paragon-set claim remains preserved.' : '')
-    + '</div></div></section>';
+    + pages
+    + `<section class="binder-paragons"><h4>🜲 The Fifty Paragons <span class="sub">${model.paragon.found} / ${model.paragon.total}</span></h4>`
+    + `<p class="sub">${escapeHtml(model.paragon.note)}</p><div class="binder-grid">${paragons}</div></section>`
+    + '<h4>🏅 Sets</h4>' + sets + '</section>';
 }
