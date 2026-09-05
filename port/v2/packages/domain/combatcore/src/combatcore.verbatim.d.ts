@@ -12,6 +12,21 @@ export interface Ability {
   theme: string; themeLabel: string; col: string;
   [k: string]: string | number | boolean | undefined;
 }
+export type CreatureInnateEffectValue = number | boolean;
+export interface CreatureInnateArt {
+  readonly id: string;
+  readonly label: string;
+  readonly description: string;
+  readonly slot: 1 | 2 | 3;
+  readonly effects: Readonly<Record<string, CreatureInnateEffectValue>>;
+}
+export interface CreatureInnateArtsProjection {
+  readonly className: string;
+  readonly classGroup: string;
+  readonly level: number;
+  readonly awakenedInnateSlots: 1 | 2 | 3;
+  readonly arts: readonly CreatureInnateArt[];
+}
 export interface Combatant { name: string; genome: Genome | { seed: number }; stats?: BattleStats; [k: string]: unknown; }
 export interface DuelResult { [k: string]: unknown; }
 export interface CreatureEntry { name?: string; genome: Partial<Genome> | Record<string, unknown>; xp?: number; [k: string]: unknown; }
@@ -24,6 +39,10 @@ export function encodeCreature(entry: CreatureEntry, champ?: boolean): string;
 export function decodeCreature(code: string): CreatureEntry | null;
 export function normGenome(g: Record<string, unknown>): Genome;
 export function levelOf(g: { xp?: unknown }): number;
+/** Generator-owned adapter over CombatCore's private class/archetype tables. */
+export function projectCreatureInnateArts(
+  g: Genome | Record<string, unknown>,
+): CreatureInnateArtsProjection;
 export function playerCombatant(): Combatant;            /* app-coupled */
 export function playerAvatar(): unknown;                 /* app-coupled (document) */
 export function paperdollAvatar(): unknown;              /* app-coupled (document) */

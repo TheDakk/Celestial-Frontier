@@ -1,8 +1,9 @@
+import { assessF4ActionCommitSequence } from '../tools/slicesmoke-contract.mjs';
 import { readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { createRequire } from 'node:module';
 import { describe, expect, it } from 'vitest';
-import { getGuideCatalogue } from '../apps/game/src/guide-content.js';
+import { getGuideCatalogue, getGuideTopic } from '../apps/game/src/guide-content.js';
 import { getReleaseHistory, V2_DRAFT_RELEASE } from '../apps/game/src/release-content.js';
 // @ts-expect-error The executable JavaScript evidence contract intentionally has no declaration shim.
 import { assessArc4EpochSnapshot } from '../tools/arc4-browser-contract.mjs';
@@ -102,7 +103,7 @@ function executableDeclaration<T>(name: string, nextDeclaration: string): T {
     'hasUnnegatedSentenceClaim',
     'V2_DRAFT_BULLET_COUNT',
     `return (${expression});`,
-  )(hasUnnegatedSentenceClaim, 77) as T;
+  )(hasUnnegatedSentenceClaim, 79) as T;
 }
 
 interface GuideSpec {
@@ -137,8 +138,8 @@ describe('sixth Slice red contract repairs', () => {
     const expectedCategoryIds = catalogue.map((category) => category.id);
     expect(catalogue).toHaveLength(9);
     expect(expected).toHaveLength(41);
-    expect(expected.filter((topic) => topic.availability === 'partial')).toHaveLength(34);
-    expect(expected.filter((topic) => topic.availability === 'unavailable')).toHaveLength(7);
+    expect(expected.filter((topic) => topic.availability === 'partial')).toHaveLength(35);
+    expect(expected.filter((topic) => topic.availability === 'unavailable')).toHaveLength(6);
     const categoryAuthorityOwner = section(
       sliceSource,
       '  const GUIDE_CATEGORY_AUTHORITY = Object.freeze([',
@@ -370,7 +371,7 @@ describe('sixth Slice red contract repairs', () => {
     );
     const replacementAnchors = [...guideReleaseOwner.matchAll(/\.replace\('((?:\\.|[^'])*)'/gu)]
       .map((match) => Function(`return '${match[1]}'`)() as string);
-    expect(replacementAnchors).toHaveLength(42);
+    expect(replacementAnchors).toHaveLength(44);
     expect([...new Set(replacementAnchors)].filter((anchor) =>
       !`${currentGuideCopy}\n${currentReleaseCopy}`.includes(anchor))).toEqual([]);
     const starter = [...releaseDom.window.document.querySelectorAll('#guidepanel li')]
@@ -392,10 +393,18 @@ describe('sixth Slice red contract repairs', () => {
       honest: false,
       liveProgressionContradiction: true,
     });
+    for (const claim of ['A miss earns Scout XP.', 'A repeat species grants Scout XP.',
+      'A capture with no standing Scout awards Scout XP.']) {
+      starter.textContent = `${prior} ${claim}`;
+      expect(releaseDom.window.eval(releaseCheck), claim).toMatchObject({
+        complete: false, honest: false, liveProgressionContradiction: true,
+      });
+    }
     starter.textContent = prior;
     expect(releaseDom.window.eval(releaseCheck)).toMatchObject({
       complete: true,
       honest: true,
+      liveProgressionContradiction: false,
     });
     releaseDom.window.close();
   });
@@ -696,6 +705,115 @@ describe('sixth Slice red contract repairs', () => {
     ]);
   });
 
+  it('keeps the existing Land lesson and Guide ingress truthful about exact-world descent', () => {
+    const landOwner = section(
+      sliceSource,
+      "  const landCopy = await evalT(`",
+      "  /* The final lesson allows only Earth's exact Land button.",
+    );
+    expect(landOwner.split('  if (')).toHaveLength(2);
+    const conditionStart = landOwner.indexOf('  if (') + '  if ('.length;
+    const conditionEnd = landOwner.indexOf(') {', conditionStart);
+    expect(conditionEnd).toBeGreaterThan(conditionStart);
+    const rejects = new Function(
+      'landCopy', `return (${landOwner.slice(conditionStart, conditionEnd)});`,
+    ) as (copy: string) => boolean;
+    const trainingSource = readFileSync(
+      new URL('../apps/game/src/training.ts', import.meta.url), 'utf8',
+    );
+    const lesson = section(
+      trainingSource,
+      "      id: 'land', spot:",
+      "      when: (t, d) => t === 'landfall'",
+    );
+    expect(lesson.split('      text: () => ')).toHaveLength(2);
+    const expression = lesson.slice(lesson.indexOf('      text: () => ')
+      + '      text: () => '.length).trim().replace(/,$/u, '');
+    const html = new Function(`return (${expression});`)() as string;
+    const copy = html.replace(/<[^>]+>/gu, '').replace(/\s+/gu, ' ').trim();
+    expect(rejects(copy)).toBe(false);
+    for (const needle of [
+      'Press Land safely on Earth’s card',
+      'Earth and known-world returns are guaranteed',
+      'same button and visible approach note show the exact current success chance',
+      'possible HP cost, and learned approach',
+      'a failed approach waves off safely, cannot defeat you',
+      'teaches that exact world for a stronger next attempt',
+    ]) {
+      expect(copy.split(needle), needle).toHaveLength(2);
+      expect(rejects(copy.replace(needle, 'required descent disclosure removed')), needle).toBe(true);
+      expect(rejects(copy), needle).toBe(false);
+    }
+    for (const contradiction of [
+      'This slice does not simulate descent odds or wave-offs.',
+      'Descent odds are not yet ported.',
+      'Wave-offs can defeat you.',
+      'Wave-offs share learning across same-seed worlds.',
+      'Earth landing can fail.',
+      'Known-world returns can fail.',
+      'Reinforced Hull reduces descent damage.',
+    ]) {
+      expect(rejects(`${copy} ${contradiction}`), contradiction).toBe(true);
+      expect(rejects(copy), contradiction).toBe(false);
+    }
+
+    const guideOwner = section(glassSource,
+      "              {id:'landing',required:",
+      "              {id:'search',required:",
+    ).trim().replace(/,$/u, '');
+    const spec = new Function(`return (${guideOwner});`)() as {
+      id: string; required: string[]; requiredControls: string[];
+      forbidden: string[]; stale: string; contradictions: string[];
+    };
+    const required = [
+      'A first-time descent uses the exact world’s authored type and biome chance, current deterministic weather, equipped landing gear, and exact-world approach learning',
+      'The Land control and its visible approach note disclose the final success chance, nonlethal wave-off damage range, and learned approach before commitment',
+      'A 100% approach is shown as guaranteed with zero descent damage risk',
+      'A wave-off keeps the ship in orbit, leaves the explorer at 1 HP or more',
+      'adds +20% exact-world approach knowledge for the next attempt, up to five wave-offs',
+      'Earth, Training, and known-world returns are guaranteed and consume no landing draws',
+    ];
+    expect(spec.requiredControls).toEqual(required);
+    expect(spec.required).toEqual([
+      'Any galaxy, star, or planet route arriving from Search, the Star Atlas, or a saved location is regenerated from the seeded universe before it is accepted',
+      'navigation uses only the source-verified destination',
+      'A stale or forged route cannot act',
+      ...required,
+    ]);
+    expect(spec.contradictions).toEqual([
+      'The legacy descent-risk and wave-off model is not yet part of this slice.',
+      'legacy descent odds and wave-off progression are not yet ported.',
+      'Wave-offs can defeat the explorer.',
+      'Wave-offs teach every world with the same planet seed.',
+      'A 100% approach still risks HP damage.',
+      'Earth, Training, and known-world returns can fail.',
+      'Reinforced Hull reduces descent damage.',
+    ]);
+    const checkStart = '            const check=(article,spec)=>';
+    const checkEnd = ';\n            let error=null,baselineComplete=false;';
+    const checkOwner = section(glassSource, checkStart, checkEnd);
+    const checkExpression = checkOwner.slice(checkStart.length).replaceAll('\\\\s', '\\s');
+    const check = new Function(`return ((article,spec)=>${checkExpression});`)() as (
+      article: { textContent: string }, expected: typeof spec,
+    ) => { ok: boolean; missing: string[]; stale: string[] };
+    const body = getGuideTopic('landing')!.body.replace(/<[^>]+>/gu, '')
+      .replace(/\s+/gu, ' ').trim();
+    expect(check({ textContent: body }, spec).ok).toBe(true);
+    for (const needle of required) {
+      expect(body.split(needle), needle).toHaveLength(2);
+      const result = check({ textContent: body.replace(needle, 'required descent disclosure removed') }, spec);
+      expect(result.ok, needle).toBe(false);
+      expect(result.missing, needle).toEqual([needle]);
+      expect(check({ textContent: body }, spec).ok).toBe(true);
+    }
+    for (const contradiction of [spec.stale, ...spec.contradictions]) {
+      const result = check({ textContent: `${body} ${contradiction}` }, spec);
+      expect(result.ok, contradiction).toBe(false);
+      expect(result.stale.length, contradiction).toBeGreaterThan(0);
+      expect(check({ textContent: body }, spec).ok).toBe(true);
+    }
+  });
+
   it('keeps Guide Release and valid-CF1 waiters diagnostic instead of truthy or lossy', () => {
     const guideRelease = section(
       sliceSource,
@@ -747,8 +865,8 @@ describe('sixth Slice red contract repairs', () => {
     expect(cf1).not.toContain("result.mode==='system'&&result.title==='Blue Earth'?result:null");
   });
 
-  it('keeps a fixed 77-row Guide oracle with five independent population controls', () => {
-    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 77;');
+  it('keeps a fixed 79-row Guide oracle with five independent population controls', () => {
+    expect(sliceSource).toContain('const V2_DRAFT_BULLET_COUNT = 79;');
     const owner = section(
       sliceSource,
       '  const releaseDraftCheck = `',
@@ -791,10 +909,10 @@ describe('sixth Slice red contract repairs', () => {
     const glassMissingBulletCount = Number(
       glassSource.match(/inventory\?\.bulletCount===(\d+)/)?.[1],
     );
-    expect(glassExpectedBulletCount).toBe(77);
-    expect(glassMissingBulletCount).toBe(76);
+    expect(glassExpectedBulletCount).toBe(79);
+    expect(glassMissingBulletCount).toBe(78);
     expect(glassMissingBulletCount).toBe(glassExpectedBulletCount - 1);
-    expect(glassSource).toContain('77-outcome development inventory');
+    expect(glassSource).toContain('79-outcome development inventory');
     expect(glassSource).not.toContain('55-outcome development inventory');
   });
 
@@ -2525,6 +2643,208 @@ describe('sixth Slice red contract repairs', () => {
     }), 'IDB lexicographic receipt:10 before ordinal 11').toEqual({ ok: true, reasons: [] });
   });
 
+  it('binds single and sequenced Land receipts to the exact two descent draws or a proven safe zero-draw path', () => {
+    const mercuryWorldKey = 'CF1|g:999@90,-60|s:424242@560,170|p:131#0';
+    const factsFor = () => ({
+      schema: 'cf-v2-arc0-landing-witness/v1', worldKey: mercuryWorldKey,
+      planetSeed: 131, planetOrdinal: 0, landing: 'unresolved-already-landed',
+      permanentLanding: true, training: false, landingKnownBefore: true,
+      identityLandedAfter: true, claimedLegacyIdentity: true, legacyMirrorContainsSeedAfter: true,
+      savedView: { type: 'planet', gal: { seed: 999, x: 90, y: -60 },
+        star: { seed: 424242, x: 560, y: 170 }, pseed: 131 },
+      sample: { kind: 'suppressed', reason: 'unresolved-already-landed' },
+      charter: { banked: false, ascChBefore: 0, ascChAfter: 0, stage: 0,
+        progressSeal: 'a'.repeat(64), delta: {} },
+      starterCharters: { changed: false, progressIds: [], completions: [], priorUnlockedIds: [],
+        nextUnlockedIds: [], addedAchievementIds: [], priorBestRankIndex: 0, nextBestRankIndex: 0 },
+      achievement: null, descentWeather: null,
+      descent: {
+        kind: 'landed', navigation: 'surface', drawsConsumed: 2,
+        hpBefore: 55, hpAfter: 55, damage: 0, waveOffCountBefore: 0,
+        waveOffCountAfter: 0, persistenceOutcome: 'success',
+        policy: {
+          schema: 'cf-v2-descent-policy/v1', key: mercuryWorldKey,
+          address: { format: 'CF1', key: mercuryWorldKey,
+            galaxy: { seed: 999, x: 90, y: -60 }, star: { seed: 424242, x: 560, y: 170 },
+            planet: { seed: 131, ordinal: 0 } },
+          opportunityIdentity: `cf-v2-world-opportunity/v3:${mercuryWorldKey}`,
+          capabilityFingerprint: 'fixture-no-worn-effects', planetType: 'rocky', biomeKey: 'cratered',
+          typeBase: { successPercent: 90, damageMin: 2, damageMax: 2 },
+          baseSuccessPercent: 95, stormActive: false, stormAdjustedPercent: 95,
+          waveOffCount: 0, learnedApproachBonus: 0, globalGearBonus: 0, familyGearBonus: 0,
+          landingGuaranteed: false, successPercent: 95, damageMin: 2, damageMax: 2,
+          waveOffDamageReduction: 0, safeReason: null,
+          requiredDomains: ['descent.success', 'descent.damage'],
+        },
+      },
+      stateSuccessorSeal: 'b'.repeat(64), worldIdentitySuccessorSeal: 'c'.repeat(64),
+      waveOffStateSuccessorSeal: 'd'.repeat(64), waveOffLegacySuccessorSeal: 'e'.repeat(64),
+      arc2LootSuccessorSeal: 'f'.repeat(64), waveOffProtectedStateSeal: null, receiptOrdinal: 3,
+    });
+    const fixture = (sequence = false) => {
+      const count = sequence ? 2 : 1;
+      const draws: Record<string, number> = { terrain: 4 };
+      const nextDraws = { ...draws, 'descent.success': 1, 'descent.damage': 1 };
+      const landing = { schema: 'cf-v2-arc0-landing-app-state/v1', lastOutcome: 'committed:8',
+        actionCoordinator: { inFlight: false,
+          owner: { schema: 'cf-v2-product-action-coordinator-diagnostics/v1', busy: false, operation: null },
+          hold: { schema: 'cf-v2-product-action-hold-diagnostics/v1', phase: 'idle', operation: null, sequence: 0 },
+          faultArmed: { storageFailure: false, staleAuthority: false, publicationFailure: false }, lastFault: null } };
+      const runtime = { schema: 'cf-v2-f4-runtime/v1', revision: 7, commits: 5,
+        sessionSeed: 68, sessionOrdinal: 3, sessionDraws: draws };
+      const prior = { ordinal: 2, kind: 'arc9-add-v1', witness: 'prior:2' };
+      const afterState = { landing, persistence: {
+        lastOutcome: sequence ? 'arc9-progression-committed:9' : 'arc0-land-committed:8',
+        runtime: { ...runtime, revision: 7 + count, commits: 5 + count,
+          sessionOrdinal: 3 + count, sessionDraws: nextDraws as Record<string, number> } } };
+      return {
+        beforeAuthority: { token: 'land-draw-document',
+          raw: { revision: 7, revisionRaw: '7', seed: 68, ordinal: 3, draws,
+            receiptKeys: ['receipt:2'], receiptRows: [prior] },
+          state: { landing, persistence: { lastOutcome: 'arc9-add-committed:7', runtime } } },
+        afterAuthority: { token: 'land-draw-document',
+          raw: { revision: 7 + count, revisionRaw: String(7 + count), seed: 68,
+            ordinal: 3 + count, draws: nextDraws as Record<string, number>,
+            receiptKeys: ['receipt:2', 'receipt:3', ...(sequence ? ['receipt:4'] : [])],
+            receiptRows: [prior, { ordinal: 3, kind: 'arc0-land', witness: JSON.stringify(factsFor()) },
+              ...(sequence ? [{ ordinal: 4, kind: 'arc9-progression-refresh-v1', witness: 'progression:4' }] : [])] },
+          state: afterState },
+      };
+    };
+    type Fixture = ReturnType<typeof fixture>;
+    const assess = (value: Fixture, sequence = false) => sequence
+      ? assessF4ActionCommitSequence({ ...value, state: value.afterAuthority.state,
+        expectedKinds: ['arc0-land', 'arc9-progression-refresh-v1'],
+        expectedPersistenceLastOutcome: 'arc9-progression-committed:9' })
+      : assessSingleF4ActionCommit({ ...value, state: value.afterAuthority.state,
+        expectedKind: 'arc0-land', expectedPersistenceLastOutcome: 'arc0-land-committed:8' });
+    const rewrite = (value: Fixture, mutate: (facts: Record<string, any>) => void) => {
+      const row = value.afterAuthority.raw.receiptRows[1]!;
+      const facts = JSON.parse(row.witness); mutate(facts); row.witness = JSON.stringify(facts);
+    };
+    const counters = (value: Fixture, draws: Record<string, number>) => {
+      value.afterAuthority.raw.draws = structuredClone(draws);
+      value.afterAuthority.state.persistence.runtime.sessionDraws = structuredClone(draws);
+    };
+    for (const sequence of [false, true]) {
+      expect(assess(fixture(sequence), sequence)).toEqual({ ok: true, reasons: [] });
+      for (const reason of ['training', 'revisit', 'earth']) {
+        const value = fixture(sequence);
+        rewrite(value, (facts) => {
+          const policy = facts.descent.policy;
+          policy.safeReason = reason; policy.successPercent = 100; policy.requiredDomains = [];
+          facts.descent.drawsConsumed = 0;
+          if (reason === 'training') {
+            facts.training = true; facts.permanentLanding = false;
+            facts.descent.persistenceOutcome = 'unchanged';
+          } else if (reason === 'revisit') facts.landing = 'repeat';
+          else {
+            facts.worldKey = 'CF1|g:999@90,-60|s:424242@560,170|p:133#2';
+            facts.planetSeed = 133; facts.planetOrdinal = 2;
+            policy.key = facts.worldKey; policy.address.key = facts.worldKey;
+            policy.address.planet = { seed: 133, ordinal: 2 };
+            policy.opportunityIdentity = `cf-v2-world-opportunity/v3:${facts.worldKey}`;
+          }
+        });
+        counters(value, { terrain: 4 });
+        expect(assess(value, sequence), reason).toEqual({ ok: true, reasons: [] });
+        counters(value, { terrain: 4, 'descent.success': 1, 'descent.damage': 1 });
+        expect(assess(value, sequence).ok, `${reason} burned draws`).toBe(false);
+      }
+      const waveOff = fixture(sequence);
+      waveOff.beforeAuthority.raw.seed = 10;
+      waveOff.afterAuthority.raw.seed = 10;
+      waveOff.beforeAuthority.state.persistence.runtime.sessionSeed = 10;
+      waveOff.afterAuthority.state.persistence.runtime.sessionSeed = 10;
+      rewrite(waveOff, (facts) => {
+        facts.permanentLanding = false; facts.arc2LootSuccessorSeal = null;
+        facts.waveOffProtectedStateSeal = 'f'.repeat(64); facts.sample = null;
+        Object.assign(facts.descent, { kind: 'wave-off', navigation: 'orbit',
+          hpAfter: 53, rawDamage: 2, gearAdjustedDamage: 2, damage: 2,
+          waveOffCountAfter: 1, persistenceOutcome: 'failure' });
+      });
+      /* Seed10 independently gives success .9993766504 and damage .5748063517. */
+      expect(assess(waveOff, sequence)).toEqual({ ok: true, reasons: [] });
+      rewrite(waveOff, (facts) => { facts.descent.hpAfter = 0; });
+      expect(assess(waveOff, sequence).ok).toBe(false);
+
+      const resumed = fixture(sequence);
+      resumed.beforeAuthority.raw.seed = 10; resumed.afterAuthority.raw.seed = 10;
+      resumed.beforeAuthority.state.persistence.runtime.sessionSeed = 10;
+      resumed.afterAuthority.state.persistence.runtime.sessionSeed = 10;
+      resumed.beforeAuthority.raw.draws = { terrain: 4, 'descent.success': 1, 'descent.damage': 1 };
+      resumed.beforeAuthority.state.persistence.runtime.sessionDraws = structuredClone(resumed.beforeAuthority.raw.draws);
+      counters(resumed, { terrain: 4, 'descent.success': 2, 'descent.damage': 2 });
+      /* At counter1 the same seed gives .7803765372 and lands: replaying
+         counter0 instead would report the opposite result. */
+      expect(assess(resumed, sequence)).toEqual({ ok: true, reasons: [] });
+
+      const variableDamage = fixture(sequence);
+      variableDamage.beforeAuthority.raw.seed = 10; variableDamage.afterAuthority.raw.seed = 10;
+      variableDamage.beforeAuthority.state.persistence.runtime.sessionSeed = 10;
+      variableDamage.afterAuthority.state.persistence.runtime.sessionSeed = 10;
+      rewrite(variableDamage, (facts) => {
+        const key = 'CF1|g:999@90,-60|s:1347060996@414.31,168.49|p:546621068#3';
+        facts.worldKey = key; facts.planetSeed = 546621068; facts.planetOrdinal = 3;
+        facts.permanentLanding = false; facts.descentWeather = 'rain'; facts.sample = null;
+        facts.arc2LootSuccessorSeal = null; facts.waveOffProtectedStateSeal = 'f'.repeat(64);
+        Object.assign(facts.descent.policy, { key,
+          address: { format: 'CF1', key, galaxy: { seed: 999, x: 90, y: -60 },
+            star: { seed: 1347060996, x: 414.31, y: 168.49 }, planet: { seed: 546621068, ordinal: 3 } },
+          opportunityIdentity: `cf-v2-world-opportunity/v3:${key}`,
+          planetType: 'ocean', biomeKey: 'volcisle', baseSuccessPercent: 70,
+          stormActive: true, stormAdjustedPercent: 65, successPercent: 65, damageMin: 4, damageMax: 6 });
+        Object.assign(facts.descent, { kind: 'wave-off', navigation: 'orbit',
+          hpBefore: 4, hpAfter: 1, rawDamage: 5, gearAdjustedDamage: 5, damage: 3,
+          waveOffCountAfter: 1, persistenceOutcome: 'failure' });
+      });
+      expect(assess(variableDamage, sequence)).toEqual({ ok: true, reasons: [] });
+      rewrite(variableDamage, (facts) => { facts.descent.rawDamage = 4; });
+      expect(assess(variableDamage, sequence).ok).toBe(false);
+
+      const drawMutants: Array<Record<string, number>> = [
+        { terrain: 4 }, { terrain: 4, 'descent.success': 1 },
+        { terrain: 4, 'descent.success': 2, 'descent.damage': 1 },
+        { terrain: 4, 'descent.success': 1, 'descent.damage': 2 },
+        { terrain: 5, 'descent.success': 1, 'descent.damage': 1 },
+        { terrain: 4, 'descent.success': 1, 'descent.damage': 1, invented: 0 },
+      ];
+      for (const draws of drawMutants) {
+        const value = fixture(sequence); counters(value, draws);
+        expect(assess(value, sequence).ok, JSON.stringify(draws)).toBe(false);
+      }
+      const witnessMutants: Array<(facts: Record<string, any>) => void> = [
+        (facts) => { delete facts.descentWeather; }, (facts) => { facts.extra = true; },
+        (facts) => { facts.schema = 'old-schema'; }, (facts) => { facts.receiptOrdinal++; },
+        (facts) => { facts.descent.drawsConsumed = 0; },
+        (facts) => { facts.descent.policy.requiredDomains = ['invented', 'descent.damage']; },
+        (facts) => { facts.descent.policy.requiredDomains.reverse(); },
+        (facts) => { facts.descent.policy.requiredDomains = ['descent.success', 'descent.success']; },
+        (facts) => { facts.descent.policy.safeReason = 'revisit'; },
+        (facts) => { facts.descent.policy.successPercent = 100; },
+        (facts) => { facts.descent.policy.damageMax = 99; },
+        (facts) => { facts.descent.policy.key = 'forged'; },
+        (facts) => { facts.descent.hpAfter = 54; },
+        (facts) => { facts.descent.navigation = 'orbit'; },
+        (facts) => { facts.descent.rawDamage = 2; },
+      ];
+      for (const mutate of witnessMutants) {
+        const value = fixture(sequence); rewrite(value, mutate);
+        expect(assess(value, sequence).ok).toBe(false);
+      }
+      const refused = fixture(sequence);
+      refused.afterAuthority.state.landing.lastOutcome = 'refused:storage-error';
+      expect(assess(refused, sequence).reasons).toContain('exact committed Land outcome');
+      const ordinal = fixture(sequence);
+      ordinal.afterAuthority.raw.ordinal++;
+      ordinal.afterAuthority.state.persistence.runtime.sessionOrdinal++;
+      expect(assess(ordinal, sequence).ok).toBe(false);
+      const shiftedReceipt = fixture(sequence);
+      shiftedReceipt.afterAuthority.raw.receiptRows[1]!.ordinal++;
+      expect(assess(shiftedReceipt, sequence).ok).toBe(false);
+      expect(assess(fixture(sequence), sequence)).toEqual({ ok: true, reasons: [] });
+    }
+  });
   it('binds Charter Land to one exact receipt topology and trusted pointer order', () => {
     const galaxyKey = 'CF1|g:999@90,-60';
     const starKey = `${galaxyKey}|s:424242@560,170`;
@@ -2538,7 +2858,73 @@ describe('sixth Slice red contract repairs', () => {
       star: { x: 560, y: 170, seed: 424242 },
       pseed: 131,
     };
-    const landWitness = (chapter: 0 | 3, stage: 0 | 3, ordinal: number) => JSON.stringify({
+    // Synthetic contract fixture: seals and fingerprint are placeholders;
+    // Mercury's biome, chance, damage and domain counters are independent literals.
+    const mercuryPolicy = {
+      "schema": "cf-v2-descent-policy/v1",
+      "key": "CF1|g:999@90,-60|s:424242@560,170|p:131#0",
+      "address": {
+        "format": "CF1",
+        "key": "CF1|g:999@90,-60|s:424242@560,170|p:131#0",
+        "galaxy": {
+          "seed": 999,
+          "x": 90,
+          "y": -60,
+          "size": 78,
+          "sp": 0,
+          "tilt": 0.62,
+          "rot": 0.5,
+          "home": true,
+          "quasar": false,
+          "dwarf": false,
+          "parentCell": {
+            "x": 0,
+            "y": -1
+          }
+        },
+        "star": {
+          "seed": 424242,
+          "x": 560,
+          "y": 170,
+          "layer": "coarse",
+          "parentCell": {
+            "x": 12,
+            "y": 4
+          }
+        },
+        "planet": {
+          "seed": 131,
+          "ordinal": 0
+        }
+      },
+      "opportunityIdentity": "cf-v2-world-opportunity/v3:CF1|g:999@90,-60|s:424242@560,170|p:131#0",
+      "capabilityFingerprint": "ec1:0:test-fixture",
+      "planetType": "rocky",
+      "biomeKey": "cratered",
+      "typeBase": {
+        "successPercent": 90,
+        "damageMin": 2,
+        "damageMax": 2
+      },
+      "baseSuccessPercent": 95,
+      "stormActive": false,
+      "stormAdjustedPercent": 95,
+      "waveOffCount": 0,
+      "learnedApproachBonus": 0,
+      "globalGearBonus": 0,
+      "familyGearBonus": 0,
+      "landingGuaranteed": false,
+      "successPercent": 95,
+      "damageMin": 2,
+      "damageMax": 2,
+      "waveOffDamageReduction": 0,
+      "safeReason": null,
+      "requiredDomains": [
+        "descent.success",
+        "descent.damage"
+      ]
+    };
+    const landWitness = (chapter: 0 | 3, stage: 0 | 3, ordinal: number, learned = false) => JSON.stringify({
       schema: 'cf-v2-arc0-landing-witness/v1',
       worldKey,
       planetSeed: 131,
@@ -2562,6 +2948,16 @@ describe('sixth Slice red contract repairs', () => {
         nextBestRankIndex: 0,
       },
       achievement: null,
+      descentWeather: null,
+      descent: { kind: 'landed', navigation: 'surface',
+        policy: { ...mercuryPolicy, waveOffCount: learned ? 1 : 0,
+          learnedApproachBonus: learned ? 20 : 0, successPercent: learned ? 100 : 95 },
+        drawsConsumed: 2, hpBefore: learned ? 53 : 55, hpAfter: learned ? 53 : 55, damage: 0,
+        waveOffCountBefore: learned ? 1 : 0, waveOffCountAfter: 0, persistenceOutcome: 'success' },
+      waveOffStateSuccessorSeal: 'd'.repeat(64),
+      waveOffLegacySuccessorSeal: 'e'.repeat(64),
+      arc2LootSuccessorSeal: 'f'.repeat(64),
+      waveOffProtectedStateSeal: null,
       stateSuccessorSeal: 'b'.repeat(64),
       worldIdentitySuccessorSeal: 'c'.repeat(64),
       receiptOrdinal: ordinal,
@@ -2592,7 +2988,8 @@ describe('sixth Slice red contract repairs', () => {
     };
     const afterAuthority = {
       raw: {
-        revision: 36, revisionRaw: '36', seed: 1314635406, ordinal: 5, draws: {},
+        revision: 36, revisionRaw: '36', seed: 1314635406, ordinal: 5,
+        draws: { 'descent.success': 1, 'descent.damage': 1 },
         receiptKeys: ['receipt:0', 'receipt:1', 'receipt:2', 'receipt:3', 'receipt:4'],
         receiptRows: [
           ...prefixRows,
@@ -2658,6 +3055,36 @@ describe('sixth Slice red contract repairs', () => {
     const rng = structuredClone(afterAuthority);
     rng.raw.ordinal = 6;
     expect(assess(rng).reasons).toContain('exact SessionRNG receipt span');
+    for (const domain of ['descent.success', 'descent.damage'] as const) {
+      const wrongDraw = structuredClone(afterAuthority);
+      wrongDraw.raw.draws[domain] = 0;
+      expect(assess(wrongDraw).reasons).toContain('exact SessionRNG receipt span');
+    }
+    for (const change of [
+      (facts: any) => { facts.descent.policy.successPercent = 100; },
+      (facts: any) => { facts.descent.policy.biomeKey = 'glacier'; },
+      (facts: any) => { facts.descent.policy.globalGearBonus = 5; },
+      (facts: any) => { facts.descent.policy.safeReason = 'revisit'; },
+      (facts: any) => { facts.descent.kind = 'wave-off'; },
+      (facts: any) => { facts.descent.hpAfter -= 1; },
+      (facts: any) => { facts.waveOffProtectedStateSeal = 'a'.repeat(64); },
+    ]) {
+      const wrongDescent = structuredClone(afterAuthority);
+      const facts = JSON.parse(wrongDescent.raw.receiptRows[3]!.witness);
+      change(facts);
+      wrongDescent.raw.receiptRows[3]!.witness = JSON.stringify(facts);
+      expect(assess(wrongDescent).ok).toBe(false);
+    }
+    expect(assess()).toEqual({ ok: true, reasons: [] });
+    const learnedBefore = structuredClone(beforeAuthority);
+    learnedBefore.raw.draws = { 'descent.success': 1, 'descent.damage': 1 };
+    const learnedAfter = structuredClone(afterAuthority);
+    learnedAfter.raw.draws = { 'descent.success': 2, 'descent.damage': 2 };
+    learnedAfter.raw.receiptRows[3]!.witness = landWitness(3, 3, 3, true);
+    expect(assessCharterLandSettlementTopology({
+      beforeAuthority: learnedBefore, afterAuthority: learnedAfter, state,
+      expectedChapter: 3, expectedStage: 3,
+    })).toEqual({ ok: true, reasons: [] });
     const runtime = structuredClone(afterAuthority);
     runtime.state.persistence.runtime.commits = 5;
     expect(assess(runtime).reasons).toContain('exact live runtime settlement');
@@ -2673,7 +3100,8 @@ describe('sixth Slice red contract repairs', () => {
 
     const noAdvanceAfter = {
       raw: {
-        revision: 35, revisionRaw: '35', seed: 1314635406, ordinal: 4, draws: {},
+        revision: 35, revisionRaw: '35', seed: 1314635406, ordinal: 4,
+        draws: { 'descent.success': 1, 'descent.damage': 1 },
         receiptKeys: [...beforeAuthority.raw.receiptKeys, 'receipt:3'],
         receiptRows: [
           ...prefixRows,

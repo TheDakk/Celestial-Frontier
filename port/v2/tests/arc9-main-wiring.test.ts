@@ -173,11 +173,19 @@ function arc9MainErrors(source: string): string[] {
   const directTravelAction = section(
     source,
     'async function settleArc9DirectTravel(',
-    '\nasync function runArc9AtlasFavoriteChange(',
+    '\nfunction arc9AtlasRowActionBlocked(',
   );
+  const atlasHomeAction = section(source, 'async function runArc9AtlasHomeChange(', '\nasync function runArc9AtlasRemove(');
+  const atlasRemoveAction = section(source, 'async function runArc9AtlasRemove(', '\nasync function runArc9AtlasUndo(');
+  const atlasUndoAction = section(source, 'async function runArc9AtlasUndo(', '\nasync function runArc9AtlasFavoriteChange(');
   const atlasFavoriteAction = section(
     source,
     'async function runArc9AtlasFavoriteChange(',
+    '\nfunction freshCurrentBioscanReady(',
+  );
+  const bioscanAction = section(
+    source,
+    'async function runArc9Bioscan(',
     '\nasync function settleArc9Survey(',
   );
   const followAction = section(
@@ -190,7 +198,7 @@ function arc9MainErrors(source: string): string[] {
     'async function commitArc0WorldNameForSearch(',
     '\nfunction publishAcceptedSearchNavigation(',
   );
-  /* Starter Charter, Binder, Survey, Travel, Atlas Favorite, and accepted
+  /* Starter Charter, Binder, Bioscan/Survey, Travel, Atlas Favorite, and accepted
      Follow atomically include their event joins, aggregate refresh, and rank
      fixed point in the same receipt. World name is the composite predecessor
      of Search Travel/Follow: its adapter queues a catch-up only after a joined
@@ -201,9 +209,13 @@ function arc9MainErrors(source: string): string[] {
     ['world-name composite predecessor', worldNameAction],
     ['Starter Charter', starterCharterAction],
     ['Binder', binderAction],
+    ['Bioscan', bioscanAction],
     ['Survey', surveyAction],
     ['direct Travel', directTravelAction],
     ['Atlas Favorite', atlasFavoriteAction],
+    ['Atlas Home', atlasHomeAction],
+    ['Atlas Remove', atlasRemoveAction],
+    ['Atlas Undo', atlasUndoAction],
     ['accepted Follow', followAction],
     ['Frontier ending', frontierEndingAction],
   ] as const) {
@@ -212,21 +224,33 @@ function arc9MainErrors(source: string): string[] {
       errors.push(`${label} queues a second progression refresh`);
     }
   }
+  const landingAction = section(source, 'async function doLand(', '\nlet lastArc0AtlasOutcome:');
+  const landingFollowUp = /actionClaim\.settle\(durable\);\n\s+if \(durable && durableResult === 'landed'\) \{\n\s+queueArc9ProgressionRefresh\(actionClaim\.operation\);\n\s+\}/u;
+  if (!landingFollowUp.test(landingAction)
+    || landingAction.split('queueArc9ProgressionRefresh(').length !== 2
+    || landingAction.split('actionClaim.settle(durable);').length !== 2) {
+    errors.push('landing progression catch-up is not restricted to one durable landed result');
+  }
   const progressionOwnerSource = source
+    .replace(landingAction, '')
     .replace(explorerNameAction, '')
     .replace(frontierEndingAction, '')
     .replace(starterCharterAction, '')
     .replace(binderAction, '')
+    .replace(bioscanAction, '')
     .replace(surveyAction, '')
     .replace(directTravelAction, '')
     .replace(atlasFavoriteAction, '')
+    .replace(atlasHomeAction, '')
+    .replace(atlasRemoveAction, '')
+    .replace(atlasUndoAction, '')
     .replace(followAction, '')
     .replace(worldNameAction, '');
   const settleMatches = [...progressionOwnerSource.matchAll(
     /actionClaim\.settle\(durable\);\n\s+if \(durable\) queueArc9ProgressionRefresh\(actionClaim\.operation\);/gu,
   )].length;
   const rawSettles = [...progressionOwnerSource.matchAll(/actionClaim\.settle\(durable\);/gu)].length;
-  if (settleMatches !== rawSettles || rawSettles < 10) {
+  if (settleMatches !== rawSettles || rawSettles + 1 < 10) {
     errors.push('one or more durable product owners do not schedule progression catch-up');
   }
 
@@ -362,7 +386,7 @@ describe('Arc 9 Main/Records integration', () => {
     expect(arc9MainErrors(replaceInSectionExact(
       mainSource,
       'async function runArc9AtlasFavoriteChange(',
-      '\nasync function settleArc9Survey(',
+      '\nfunction freshCurrentBioscanReady(',
       '    actionClaim.settle(durable);',
       '    actionClaim.settle(durable);\n    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);',
     ))).toContain('Atlas Favorite queues a second progression refresh');
@@ -390,6 +414,22 @@ describe('Arc 9 Main/Records integration', () => {
       '    actionClaim.settle(durable);',
       '    actionClaim.settle(durable);\n    if (durable) queueArc9ProgressionRefresh(actionClaim.operation);',
     ))).toContain('Frontier ending queues a second progression refresh');
+
+    for (const replacement of [
+      'if (durable) {',
+      "if (durable && durableResult === 'wave-off') {",
+      "if (durableResult === 'landed') {",
+    ]) {
+      expect(arc9MainErrors(replaceInSectionExact(
+        mainSource, 'async function doLand(', '\nlet lastArc0AtlasOutcome:',
+        "if (durable && durableResult === 'landed') {", replacement,
+      ))).toContain('landing progression catch-up is not restricted to one durable landed result');
+    }
+    expect(arc9MainErrors(replaceInSectionExact(
+      mainSource, 'async function doLand(', '\nlet lastArc0AtlasOutcome:',
+      '      queueArc9ProgressionRefresh(actionClaim.operation);',
+      '      // mutation omits the landed successor refresh',
+    ))).toContain('landing progression catch-up is not restricted to one durable landed result');
 
     expect(arc9MainErrors(replaceInSectionExact(
       mainSource,

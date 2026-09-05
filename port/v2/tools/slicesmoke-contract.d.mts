@@ -230,7 +230,7 @@ export function arc0LandingSurveyRouteIsExact(input?: Readonly<{
 
 export function arc0LandingCoordinatorIsIdle(
   state: unknown,
-  options?: Readonly<{ readonly clearFault?: boolean }>,
+  options?: Readonly<{ readonly clearFault?: boolean; readonly expectedReleasedHold?: unknown }>,
 ): boolean;
 
 export interface EarlyCoreFlowActionFixedPointAssessment {
@@ -267,9 +267,18 @@ export function assessEarlyCoreFlowActionFixedPoint(
       readonly actionOk: true;
       readonly actionLabel: string;
     }> | null;
-    readonly settlement?: 'commit' | 'current' | 'either';
+    readonly settlement?: 'commit' | 'current' | 'either' | 'inspection';
   }>,
 ): EarlyCoreFlowActionFixedPointAssessment;
+
+export function assessSingleF4ActionCommit(input?: Readonly<{
+  readonly beforeAuthority?: unknown;
+  readonly afterAuthority?: unknown;
+  readonly state?: unknown;
+  readonly expectedKind?: string;
+  readonly expectedPersistenceLastOutcome?: string;
+  readonly expectedReleasedHold?: unknown;
+}>): SliceContractAssessment;
 
 export function assessF4ActionCommitSequence(input?: Readonly<{
   readonly beforeAuthority?: unknown;

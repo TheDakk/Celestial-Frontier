@@ -16,6 +16,8 @@ import {
   OWNERSHIP_STATE_VERSION_V2,
   canonicalJson,
   canonicalizeData,
+  isCaptureCapacityScenariosV1,
+  isOwnershipStateV2,
   migrateOwnershipStateV1ToV2,
   ownershipSourceStateV1,
   ownershipStateDigestV1,
@@ -23,6 +25,7 @@ import {
   sha256Hex,
   utf8ByteLength,
   type CanonicalJson,
+  type CaptureCapacityScenariosV1,
   type OwnershipAddressResolver,
   type OwnershipStateV1,
   type OwnershipStateV2,
@@ -32,6 +35,7 @@ import {
   OWNERSHIP_DELTA_SCHEMA_V2,
   OWNERSHIP_DELTA_VERSION_V2,
   applyOwnershipDeltaV2,
+  createCaptureOwnershipSourceProjectionSuccessorV2,
   createOwnershipSourceProjectionSuccessorV2,
   decodeOwnershipDeltaV2,
   deriveOwnershipDeltaSuccessorV2,
@@ -39,6 +43,7 @@ import {
   encodeOwnershipDeltaV2,
   ownershipDeltaDigestV2,
   ownershipDeltaMirrorV2,
+  isOwnershipSuccessorV2,
   type OwnershipDeltaRowV2,
   type OwnershipDeltaV2,
 } from '@cf/domain-acquisition/ownership-v2-internal';
@@ -331,6 +336,19 @@ interface CapturedSuccessorPreparationInput {
   readonly resolver: OwnershipAddressResolver;
 }
 
+interface CapturedCaptureSuccessorPreparationInput {
+  readonly baseExtensions: unknown;
+  readonly parent: OwnershipStateV2;
+  readonly successorExtensions: unknown;
+  readonly scenarios: CaptureCapacityScenariosV1;
+  readonly scenarioIndex: number;
+  readonly resolver: OwnershipAddressResolver;
+}
+
+interface CapturedCompositeSuccessorPreparationInput extends CapturedSuccessorPreparationInput {
+  readonly successorV2: OwnershipStateV2;
+}
+
 interface CapturedV2SuccessorPreparationInput {
   readonly baseExtensions: unknown;
   readonly parent: OwnershipStateV2;
@@ -398,6 +416,46 @@ function captureSuccessorPreparationInput(value: unknown): CapturedSuccessorPrep
     parent: captured.parent as OwnershipStateV2,
     successorExtensions: captured.successorExtensions,
     successor: captured.successor as OwnershipStateV1,
+    resolver: captured.resolver as OwnershipAddressResolver,
+  });
+}
+
+function captureCaptureSuccessorPreparationInput(
+  value: unknown,
+): CapturedCaptureSuccessorPreparationInput | null {
+  const captured = capturePlainInput(value, [
+    'baseExtensions', 'parent', 'successorExtensions', 'scenarios', 'scenarioIndex', 'resolver',
+  ]);
+  if (captured === null || !isOwnershipStateV2(captured.parent)
+    || !isCaptureCapacityScenariosV1(captured.scenarios)
+    || !Number.isSafeInteger(captured.scenarioIndex) || (captured.scenarioIndex as number) < 0
+    || captured.resolver === null || typeof captured.resolver !== 'object') return null;
+  return Object.freeze({
+    baseExtensions: captured.baseExtensions,
+    parent: captured.parent as OwnershipStateV2,
+    successorExtensions: captured.successorExtensions,
+    scenarios: captured.scenarios,
+    scenarioIndex: captured.scenarioIndex as number,
+    resolver: captured.resolver as OwnershipAddressResolver,
+  });
+}
+
+function captureCompositeSuccessorPreparationInput(
+  value: unknown,
+): CapturedCompositeSuccessorPreparationInput | null {
+  const captured = capturePlainInput(value, [
+    'baseExtensions', 'parent', 'successorExtensions', 'successor', 'successorV2', 'resolver',
+  ]);
+  if (captured === null || !isOwnershipStateV2(captured.parent)
+    || !isOwnershipStateV2(captured.successorV2)
+    || captured.successor === null || typeof captured.successor !== 'object'
+    || captured.resolver === null || typeof captured.resolver !== 'object') return null;
+  return Object.freeze({
+    baseExtensions: captured.baseExtensions,
+    parent: captured.parent,
+    successorExtensions: captured.successorExtensions,
+    successor: captured.successor as OwnershipStateV1,
+    successorV2: captured.successorV2,
     resolver: captured.resolver as OwnershipAddressResolver,
   });
 }
@@ -1096,13 +1154,18 @@ function applyEncoded(
 /** Replace a current compact Arc 5 carrier beside an already-staged exact
  * Arc 4 +1. The four delta shards are re-derived against the new source, so a
  * source row that absorbs a former delta row clears its old tail bytes. */
-export function prepareArc5OwnershipMigrationSuccessor(input: Readonly<{
+function prepareArc5OwnershipMigrationSuccessorChecked(input: Readonly<{
   baseExtensions: unknown;
   parent: OwnershipStateV2;
   successorExtensions: unknown;
   successor: OwnershipStateV1;
   resolver: OwnershipAddressResolver;
-}>): Arc5OwnershipMigrationSuccessorPreparation {
+}>, capture: Readonly<{
+  scenarios: CaptureCapacityScenariosV1;
+  scenarioIndex: number;
+}> | null, composite: Readonly<{
+  successor: OwnershipStateV2;
+}> | null): Arc5OwnershipMigrationSuccessorPreparation {
   const captured = captureSuccessorPreparationInput(input);
   if (captured === null) return successorProtected('base-corrupt');
   const base = strictExtensions(captured.baseExtensions);
@@ -1176,10 +1239,27 @@ export function prepareArc5OwnershipMigrationSuccessor(input: Readonly<{
   let directState: OwnershipStateV2;
   let encoded: EncodedCurrentV2;
   try {
-    directState = createOwnershipSourceProjectionSuccessorV2(
-      captured.parent,
-      captured.successor,
-    );
+    if (composite !== null) {
+      if (!isOwnershipSuccessorV2(composite.successor, captured.parent)
+        || ownershipSourceStateV1(composite.successor) !== captured.successor) {
+        return successorProtected('successor-conflict', {
+          expectedRevision: expectedSourceRevision,
+          actualRevision: captured.successor.revision,
+        });
+      }
+      directState = composite.successor;
+    } else if (capture === null) {
+      directState = createOwnershipSourceProjectionSuccessorV2(
+        captured.parent,
+        captured.successor,
+      );
+    } else {
+      directState = createCaptureOwnershipSourceProjectionSuccessorV2(
+        captured.parent,
+        capture.scenarios,
+        capture.scenarioIndex,
+      );
+    }
     const directSource = ownershipSourceStateV1(directState);
     if (ownershipStateDigestV1(directSource) !== stagedDigest
       || directState.revision !== captured.parent.revision + 1) {
@@ -1217,6 +1297,69 @@ export function prepareArc5OwnershipMigrationSuccessor(input: Readonly<{
     writes: applied.writes,
     extensions: applied.extensions,
   });
+}
+
+/** Generic Arc 4 source advancement retains every V2-only delta unchanged. */
+export function prepareArc5OwnershipMigrationSuccessor(input: Readonly<{
+  baseExtensions: unknown;
+  parent: OwnershipStateV2;
+  successorExtensions: unknown;
+  successor: OwnershipStateV1;
+  resolver: OwnershipAddressResolver;
+}>): Arc5OwnershipMigrationSuccessorPreparation {
+  return prepareArc5OwnershipMigrationSuccessorChecked(input, null, null);
+}
+
+/** Source-changing Arc 4 + V2 consequence in one exact +1. The supplied V2
+ * successor must be the registered direct child of `parent` and own the exact
+ * registered Arc 4 successor supplied beside it. */
+export function prepareArc5CompositeOwnershipMigrationSuccessor(input: Readonly<{
+  baseExtensions: unknown;
+  parent: OwnershipStateV2;
+  successorExtensions: unknown;
+  successor: OwnershipStateV1;
+  successorV2: OwnershipStateV2;
+  resolver: OwnershipAddressResolver;
+}>): Arc5OwnershipMigrationSuccessorPreparation {
+  const captured = captureCompositeSuccessorPreparationInput(input);
+  if (captured === null) return successorProtected('base-corrupt');
+  return prepareArc5OwnershipMigrationSuccessorChecked({
+    baseExtensions: captured.baseExtensions,
+    parent: captured.parent,
+    successorExtensions: captured.successorExtensions,
+    successor: captured.successor,
+    resolver: captured.resolver,
+  }, null, Object.freeze({ successor: captured.successorV2 }));
+}
+
+/** Capture-only source advancement binds the planner's registered
+ * first-species decision to the same-revision Field Scout XP projection. */
+export function prepareArc5CaptureOwnershipMigrationSuccessor(input: Readonly<{
+  baseExtensions: unknown;
+  parent: OwnershipStateV2;
+  successorExtensions: unknown;
+  scenarios: CaptureCapacityScenariosV1;
+  scenarioIndex: number;
+  resolver: OwnershipAddressResolver;
+}>): Arc5OwnershipMigrationSuccessorPreparation {
+  const captured = captureCaptureSuccessorPreparationInput(input);
+  if (captured === null) return successorProtected('base-corrupt');
+  const scenario = captured.scenarios.scenarios[captured.scenarioIndex];
+  if (scenario === undefined
+    || captured.scenarios.ownershipDigest
+      !== ownershipStateDigestV1(ownershipSourceStateV1(captured.parent))) {
+    return successorProtected('successor-conflict');
+  }
+  return prepareArc5OwnershipMigrationSuccessorChecked({
+    baseExtensions: captured.baseExtensions,
+    parent: captured.parent,
+    successorExtensions: captured.successorExtensions,
+    successor: scenario.successor,
+    resolver: captured.resolver,
+  }, Object.freeze({
+    scenarios: captured.scenarios,
+    scenarioIndex: captured.scenarioIndex,
+  }), null);
 }
 
 /** Prepare one exact V2-only +1. The domain boundary proves `successor` is

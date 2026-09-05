@@ -1,5 +1,74 @@
 # Celestial Frontier — Player Progression
 
+## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
+
+Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
+`5377069` is joined to fresh-start develop `9ea0104`: authored Research effects, explicit
+Discover Life/one Survey-hazard receipt, nonlethal Flora meal, pre-action Scout +2 XP capped at
+486 in capture's receipt, read-only Chronicle/Museum and analytical economy scenarios.
+The accepted Discover Life Starter Charter completes only on a later explicit Bioscan for its
+established 15 Stardust and Earpiece in the same F4 receipt/CAS; no earlier Survey or Capture
+backfill. Exact gear publication, empty-slot equip, capacity and stale/storage refusals remain.
+Landing now uses the authored terrain/biome and seeded-weather descent policy with shown chance
+and HP risk. Earth, Training and proven canonical revisits roll nothing; ordinary attempts own
+two SessionRNG draws and one receipt/CAS. A wave-off leaves the ship in orbit, with HP at least 1 and canonical
+learning (+20 percentage points per failure, capped at five), without landing rewards. Success
+clears that world's learning. Landing gear and struts apply; Reinforced Hull remains hostile
+Discover Life only. Legacy seed-only learning binds once on its first source-verified encounter;
+fresh v2 games start empty. All possible outcomes are preflighted before RNG/publication.
+The Fifty Paragons now use their authored fixed genomes and exact home worlds. Explicit Discover
+Life at an eligible home adds only its catalogue record in that same Bioscan receipt; it creates
+no companion/specimen, spends no Yield and grants no capture or extra discovery award. Binder
+shows all fifty: found entries Inspect the exact existing Compendium record; missing entries use
+existing reach-checked travel. Ten records unlock the separate authored +120 Stardust Claim.
+New Paragon provenance binds index to its exact genome; Binder pair keys must match record IDs.
+Pre-feature development saves with an already-scanned home retain their recorded refusal; no
+backfill or repeated hazard is invented. Static portraits remain unchanged. Exact-instance progression now displays each individual's
+XP, level, class, innate arts, wounds and active-play Recovery, with distinct twins and retained
+tombstone history. The established curve caps XP at486, unlocks innate slots at levels3/6 and
+preserves valid fractional XP without rewriting ownership. Passive refill preserves semantic
+focus without scrolling or stealing focus; a lost/disabled action falls back to its owning Close.
+No new XP source, Feed stat/Power growth, injury healing, care or bond is added. Atlas now owns
+List/Chart with All/Favorites/Visited/Conquered/Life filters, canonical coordinates, Home, Remove
+and one-level eight-second Undo. Remove/Undo use one exact receipt/CAS and preserve route
+ownership, original row order and originally absent routes; stale sidecars refuse. Bounded
+44px chart clusters open the exact existing List actions and return focus to the owning chart
+control. Travel durability, reach, speed/motion and Favorite behavior remain with existing owners.
+Weekly Charters stay parked. Existing tables and eighteen Arc 4 namespaces/v5 topology govern.
+V2 has no legacy player import door; codec/evidence importBlob remains. The draft has 79 bullets
+at this checkpoint. Real-device v2 persistence and combined Arc 4.5 / separate Arc 5.5 HUMAN
+reviews stay open. `ROADMAP.md` owns exact checkpoint outcomes and unattended decisions.
+
+> **2026-09-04 current beta research-consequence and explorer-meal overlay (matches local v2 code
+> as of 2026-09-04; supersedes older research-availability claims while preserving their dated
+> history):** all six Engineering research rows now have live consequences. **Deep Scanners** reveal
+> bounded orbital mineral veins; **Reinforced Hull** reduces hostile bioscan wounds by 25% before
+> worn wound reduction; **Xenobotany Lab** gives a safe Flora meal +1 additional stat nourishment;
+> and **Fusion Drive**, **Antimatter Drive** and **Warp Fold** supply the established 2×, 4× and 8×
+> travel-speed bases, with registered worn speed added to the selected base.
+>
+> Explorer Flora meals are now player-reachable from an exact Flora Compendium detail. The card
+> selects the one canonical matching owned lot and previews heal, poison and the deterministic
+> nourished stat before one **Eat 1** press. Every outcome consumes one exact specimen. Safe meals apply worn heal
+> gear, restore HP and raise the seeded stat by `1 + floraTier + (lab1 ? 1 : 0)` up to 330; a toxic
+> meal grants neither healing nor stat growth, ignores heal gear for its damage ruler, and remains
+> nonlethal. Vitality growth recomputes maximum HP and tops up the increase. The exact ownership lot,
+> explorer physiology, receipt and F4 authority commit atomically without retry or precommit copy.
+> Safe healing joins `fieldmedic`; surviving a safe meal above 40% poison risk also joins `gambler`.
+> Explicit hostile Discover Life joins `survivor` whether its nonlethal wound lands on the Field Scout
+> or explorer. These share their owning action's receipt/CAS; only `daily` and `decade` remain
+> event-owner blocked, for **26 exact event joins / 2 blocked**.
+>
+> A successful Tame, Scavenge, or Sample that catalogues a genuinely fresh species gives the Field
+> Scout standing before that attempt up to +2 XP in the same capture receipt/CAS, capped at 486.
+> A 485-XP Scout gains 1; a capped Scout gains 0; no standing Scout, miss, or repeat species grants
+> Scout XP. This changes no genome, lineage, role selection, or capture pool.
+>
+> The Records board also presents a read-only **Expedition Chronicle & Museum** from already-owned
+> facts: at most 60 rows each for latest-receipt battles, canonical first-species discoveries,
+> Signature-ordered Prime victories without invented dates, and latest-first Legacy Journal entries.
+> It adds no writer, reward, RNG, mission, share card, save field, or global cross-gallery timeline.
+
 > **2026-09-02 current PR #35 battery-ownership overlay (supersedes every older “current” label;
 > all dated progression/evidence blocks below remain immutable):** hosted run `33584052508` tested
 > exact head `18c088de4388edf58eda2c192b71cb94156e26e7` against base
@@ -707,7 +776,7 @@
 > replay may still receive its lesson event without receiving progression credit.
 
 **STATUS:** legacy sections match `main.js` as of 2026-07-30; the current dated v2 overlays
-match the local `port/v2` candidate as of 2026-08-30, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
+match the local `port/v2` candidate as of 2026-09-04, while older overlays preserve their historical boundaries. See the 2026-07-30 addendum at the end —
 three advertised XP awards were dead until then.
 **Purpose:** How the explorer and their creatures grow over a run — creature XP/leveling, the player character sheet (`pstats`/paperdoll), the standing-rank milestone ladder, and the Compendium collection track.
 **Source of truth:** this doc is the DESIGN spec; `main.js` implements the legacy
@@ -721,18 +790,40 @@ Progression runs on three parallel tracks, none of which touch world/creature *g
 3. **Standing rank (milestones).** A lifetime score over everything you've done climbs the rank ladder (Cadet → Eternal Frontier → infinite ✦ levels), unlocking nameplate colors and gating nothing — pure prestige.
 
 A fourth, collection-side track is the **Compendium** (the species catalogue) and its **Binder**.
-Current v2 pays the seven non-Paragon set bounties once; the legacy Fifty Paragons remain visible
-protected content until their deterministic discovery owner is ported.
+Current v2 exposes eight one-time Set claims, including `para10`, **Seeker of Legends**: ten
+exact Paragon catalogue records unlock a separate **Claim** for 120 current/lifetime Stardust.
+The Fifty are fixed legends shared by every explorer; an explicit Discover Life Bioscan at a
+source-proven home can add only its exact catalogue record. A sighting creates no owned companion
+or specimen, spends no Yield, grants no Capture credit and never pays that Set reward automatically.
 
 Depth (frontier region / world tier) is the master difficulty dial: farther worlds grant more XP, hide rarer finds, and tax your wounds harder.
 
 ## 2. Rules & mechanics
 
 ### Creature XP & leveling
-- XP lives on the creature's genome as `g.xp`. Level is a pure function of it (`levelOf`):
+
+**Current v2 presentation (Step 2d, 2026-09-05):** a real fauna Compendium detail shows at most
+24 exact companion/history rows per page. Each stable individual retains its own XP, level, class
+and class group, named innate arts/effects, wounds and current assignment/active-play Recovery
+status. Same-species twins never collapse into one progression row. Existing Arc 5 tombstone
+snapshots are labelled retired history, never restored as active ownership.
+
+The existing `levelOf` owner remains `min(9, floor(sqrt(xp / 6)))`, capped at level 9 / 486 XP.
+The registered individual carrier accepts every finite value in 0–486, including fractional XP;
+presentation preserves that exact value and derives level thresholds from CombatCore without
+rounding the stored owner. At 24.5 XP the display is L2, 0.5 of the 30-XP span toward 54. Additional
+innate slots awaken at levels 3 and 6 (54 and 216 XP). Class names and arts come from the existing
+private CombatCore tables through a frozen read projection, not new combat or stat rules.
+
+Opening, paging and refreshing this section writes no XP, genome, ownership or clock. Recovery
+status reads active-play time; reaching its deadline does not clear the stored assignment until
+an existing companion action owns that mutation. Companion Feed remains one exact Meal and
+provides no stat/Power growth or injury care. This display adds no care, bond, mission or XP faucet.
+
+- **Legacy v1.8.9 storage:** XP lives on the creature's genome as `g.xp`. Level is a pure function of it (`levelOf`):
   `level = min(9, floor(sqrt(xp / 6)))` — i.e. **level L requires 6·L² XP**. Cap **L9**.
   - **Retune confirmed:** the curve is **6·l²** (halved from the old **12·l²** — same shape, half the XP per level, so leveling comes twice as fast).
-- Only catalogued **Fauna** earn XP (`awardXP` bails on non-Fauna). `g.xp` is hard-capped at 1e6.
+- **Legacy v1.8.9:** only catalogued **Fauna** earn XP (`awardXP` bails on non-Fauna). `g.xp` is hard-capped at 1e6.
 - **XP faucets — victories AND care.** (v1.8 broadened this; this doc still said "victories only" until v1.8.3.)
   - Friendly **duel** win: **+8**
   - **Conquest** win: **+20 + world tier**
@@ -744,8 +835,10 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
     loss/near-brink awards in its combat CAS. Arc 5 Breed now pays union XP in its own CAS: new pair
     firsts are 64-character SHA-256 digests over sorted canonical parent `SpeciesId`s, while an
     imported v1 `pair|<FNV32-base36>` key derived from `_earthName || speciesName(seed)` remains
-    read-only already-paid evidence in either `xpf` or the archive. Other advertised care/duel/Scout
-    faucets still await their true v2 owners.
+    read-only already-paid evidence in either `xpf` or the archive. A genuinely fresh successful
+    capture gives the exact Scout standing before that attempt up to +2 XP in the same receipt,
+    capped at 486; no Scout, miss or repeat species gives Scout XP. Other advertised care/duel
+    faucets still await their true v2 owners. `arc4-capture-capacity.ts` owns the joined Scout facts.
   - **Union (v1.8, CORRECTED in v1.8.3):** a successful breed pays **+2** to the **newborn**, plus **+5** the first time a given *species pair* is crossed (`awardXPPair`). Until v1.8.3 both awards landed on `aEntry` — which the union consumes moments later, so the XP was destroyed as it was earned. The lineage key was also `[a.kind,b.kind]`, and breeding is always Fauna×Fauna, so it could only ever read `'Fauna+Fauna'`: a once-per-parent payout wearing a lineage's name. It now keys on the two parent **species**, FNV-hashed short so it survives the ledger's 64-char load truncation.
     V2 preserves that imported key only as a compatibility alias; every new V2 first uses the
     collision-resistant canonical SpeciesId digest and both awards land directly on the child in
@@ -758,6 +851,12 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
   - **Vitality** → HP pool, **Ferocity** → attack, **Resilience** → defense, **Agility** → initiative, **Insight** → crit.
 - `HP_MAX = max(20, round(vit·2))`; `recomputeHPMax` tops you up when Vitality grows.
 - **Growth = eating flora.** `healExplorer` mends HP *and* raises one stat: `floraStat(g)` picks 1 of the 5 deterministically from the plant's genome seed; the gain is `1 + floraTier + (Xenobotany Lab ? 1 : 0)`. A toxic meal (poison roll) heals nothing and can gut you to the brink but **never kills** the explorer.
+- **Current v2 meal owner:** one exact owned specimen lot is selected from its verified Flora
+  Compendium page and consumed whether the outcome is safe or toxic. The preview and commit share
+  the same heal, risk and seeded-stat facts. Safe healing includes registered worn `heal`; poison
+  damage does not, grants no stat, and stops at 1 HP. Stats cap at 330, and a Vitality increase
+  recomputes maximum HP and tops up only the increase. Physiology and Flora ownership share one
+  receipt-bearing F4 commit with no retry or optimistic result.
 - **Player battle profile** (`playerBattleStats`): tier = `clamp(floor((total−250)/130), 0..TIER_MAX)`; fixed ability **Frontier Resolve** (regen 0.04, taken ×0.9). Power = sum of the five stats.
 - **The paperdoll.** `paperdollAvatar()` renders the full-body explorer figure; the nine gear sockets pin to it via `DOLL_ANCHORS` (fractional x,y). `playerAvatar()` is the gold-helmeted battler portrait used in duels. `playerCombatant()` fields you with genome `{seed: PLAYER_SEED}`.
 - **`PLAYER_SEED = 0x50A1E5`** — a stable seed so *duels against you* are deterministic and reproducible on every device (your avatar/genome never drift).
@@ -792,16 +891,20 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
   and explicit Atlas Favorite `curator`. Accepted Follow composes route, Jumps, galaxy visit,
   `wayfarer`, and any proved galaxy-kind event in its one existing receipt. They preserve unknown
   ids, protect the 146-row bound and independently verify the committed projection without
-  inferring any other event. Exactly `daily`, `decade`, `survivor`, `fieldmedic`, and `gambler`
+  inferring any other event. Explicit hostile Discover Life joins `survivor`; safe explorer Flora
+  healing joins `fieldmedic`, and safe healing above 40% poison risk also joins `gambler`, each in
+  its owning receipt (`bioscan-action.ts`, `explorer-meal-action.ts`). Only `daily` and `decade`
   still require their absent gameplay transactions. Explorer self-rename is a separate identity-only
   receipt/CAS and cannot unlock `namer`.
 
 ### Compendium collection progression
 - The species catalogue is the **Compendium** (`codex`, keyed by species id; `_storeSpecies` dedupes — only a genuinely *new* species is "fresh").
 - **Rare-find ☄ Stardust:** on the **first** catalogue of a Legendary+ specimen (`grade.tier ≥ 5`) you earn **`tier − 3`** Stardust, a ✦ Rare Find cinematic, and a rarity sting. Tier ≥ 4 throws a color burst. (Never re-paid — dedupe gates it.)
-- **Binder** sets pay a **one-time** ☄ bounty on completion. Current v2 exposes exactly the seven
-  non-Paragon claims and preserves any imported Paragon-set evidence; **The Fifty Paragons** remains
-  visible but unavailable until its deterministic fixed-world discovery owner is ported.
+- **Binder** sets expose a separate **one-time Claim** when complete. Current v2 keeps six type
+  pages and eight Set claims; `para10` pays 120 current/lifetime Stardust after ten exact Paragons.
+  All fifty missing silhouettes can plot their source-proven homes through existing ship/Prime
+  reach checks; found entries **Inspect** the exact existing Compendium record without travel.
+  Prior claims stay claimed and cannot pay twice. Paragon portraits retain the existing static art.
 - **First Arrival:** reaching a system no record precedes you in pays **+2 ☄**.
 
 ### How depth affects progression
@@ -847,7 +950,10 @@ Depth (frontier region / world tier) is the master difficulty dial: farther worl
 First catalogue of tier ≥ 5 → **`tier − 3`** ☄ (Legendary=5→+2, up through the summit grades). First Arrival → +2 ☄. Harvest (settled world, hourly) → `6 + tier·4` ☄.
 
 ## 4. Data / save fields
-- **Creature XP:** stored *inside* each Compendium entry's genome — `codex` saves as `{g, f, w}` (genome / from / where), so `g.xp` rides along. No separate xp field.
+- **Legacy v1.8.9 creature XP:** stored *inside* each Compendium entry's genome — `codex` saves as `{g, f, w}` (genome / from / where), so `g.xp` rides along. No separate xp field in that legacy carrier.
+- **Current v2 creature XP:** the registered exact `CreatureInstance` carries its own finite `xp`
+  in 0–486 independently of the shared species genome. The progression display preserves
+  fractional values and retired snapshots; it neither rounds ownership nor writes the catalogue.
 - **`pstats`** — saved verbatim as `pstats` (each key coerced/clamped 1..330 on load).
 - **`me`** — explorer name; **`nh`** — nameplate hue.
 - **`essence`** (current ☄) + **`essenceEarned`** (lifetime, drives breeding-odds bonus and Stockpiler ach); **`harvests`**, **`guardians`**, **`paragons`**, **`br`** (best rank).
@@ -919,10 +1025,11 @@ First catalogue of tier ≥ 5 → **`tier − 3`** ☄ (Legendary=5→+2, up thr
   saved choice now has a live Settings selector for Auto/current-rank or every permanently earned
   color, and Settings also owns the identity-only Explorer name editor. These ceremonies are
   notifications only; no separate item/currency reward is implied.
-- Exactly **five event IDs are explicitly blocked, not inferred**: `daily` and `decade` belong to
-  dormant Beacon/Cosmic Events; `survivor`, `fieldmedic`, and `gambler` need the unavailable hostile-
-  field and explorer-flora-care actions. Their future owners must use the same postcommit-only
-  ceremony seam; combat retains its separate bounded post-settlement cue path.
+- Exactly **two event IDs remain explicitly blocked, not inferred**: `daily` and `decade` belong to
+  dormant Beacon/Cosmic Events. Hostile explicit Bioscan now owns `survivor`; safe explorer Flora
+  healing owns `fieldmedic`; and a safe above-40%-risk meal owns `gambler`, each in its true action's
+  transaction and postcommit ceremony seam. Combat retains its separate bounded
+  post-settlement cue path.
 - Field Scout XP path (+2) requires a scout to be *set* and to be a different fauna than the fresh catch; a run with no scout set banks nothing from cataloguing — intended.
 - XP has a 1e6 hard cap but L9 is reached at 486; everything above 486 is inert. Fine today; note if a soft "prestige past 9" is ever wanted.
 - Depth Tax tops out at ×2.5 (Frontier). No open balance flag, but it's the main survivability knob — watch alongside gear scut/hull.
