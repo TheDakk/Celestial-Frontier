@@ -17,16 +17,17 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-05 · DEVELOP SYNC AND AUDIOVISUAL PILOT BATCH A
+## SESSION HANDOFF — 2026-09-05 · SYNC PUSHED; AUDIO SOURCE PRESERVED · BACKUP PENDING
 
 ### Exact source and authority
 
 OpenAI/Codex on macOS, `/Users/nick/Projects/celestial-frontier-openai-mac`, branch `openai/mac`,
 tracking `origin/openai/mac`. The checkout was clean at
 `3ffee05113904cf5cc8d45a90a6d2704ddf1b1eb` before the requested real merge of
-`origin/develop` **`9ea01041dcdc711190bbf909ea8bb743cd993734`**. These are the two merge parents;
-no rebase or signed-history rewrite. Exact resulting SHA and terminal check results are reported
-at Git handoff, after committing the source so the checks can bind that unchanged commit.
+`origin/develop` **`9ea01041dcdc711190bbf909ea8bb743cd993734`**. The real merge is **`241572365716a3436e2055410b6130a43d46af23`**;
+these are its two parents. It passed exact-source checks and was pushed/read-back verified at
+origin/openai/mac. No rebase or signed-history rewrite. This subsequent documentation-only
+checkpoint records its results and Batch A preservation; runtime inputs remain byte-identical.
 SSH origin `git@github.com:TheDakk/Celestial-Frontier.git`; established authentication as `TheDakk`
 and this batch's repository fetch passed.
 
@@ -66,13 +67,15 @@ The develop profile's existing producer-authority check rebuilds and verifies th
 there is no duplicate standalone printer run. Measurement authority, calibration and ceilings
 remain byte-identical to develop.
 
-Required next checks on the clean committed merge, once and stop on red:
-`node port/v2/tools/tracked-input-preflight.mjs --profile=develop` (isolated exact-source
-browser-free profile) and `node tools/actions-budget-policy.js --selftest` (81 controls).
-Do not present earlier PR #37 / Claude results as evidence for this new merge. No local browser
-chain or hosted certificate is requested by this sync. Root `node tools/validate.js` passed after
-resolution: 1,010 renders, zero boot/render errors and all 50 v1 fingerprints unchanged. Push
-only the tested merge after both remaining checks pass.
+Both requested checks ran once on clean committed merge `2415723` and passed:
+`node port/v2/tools/tracked-input-preflight.mjs --profile=develop`: **274 files, 2,886 passed / one
+skipped**, all three TypeScript programs, art/routes/spec; **45.322s** wrapper.
+`node tools/actions-budget-policy.js --selftest`: **81 controls**, **0.090s**.
+HEAD/index remained clean and unchanged. Root `node tools/validate.js` passed after resolution:
+1,010 renders, zero errors, all 50 v1 fingerprints unchanged. No local browser chain or hosted
+certificate is claimed. Full source identities, log hashes and source preservation results are in
+`audits/AAA_BATCH_A_SYNC_20260905.md` and its linked JSON. Do not rerun unchanged checks merely
+because this evidence-recording successor changes documentation.
 
 ### Audiovisual Batch A and policies
 
@@ -97,9 +100,12 @@ replacement or accepted eight-body-plan coverage.
 
 Editable `.blend`, `.rpp`, patches and WAV masters remain outside public Git, SHA-256 indexed;
 optimized outputs only, no Git LFS. **Independent backup destination is still unselected and
-unverified.** Local copies on this Mac do not close that prerequisite. Next bounded Batch A task,
-after sync/push: preserve the complete existing audio project/recipe/output relative layout in
-the private source store and verify its manifest. No rerender or source upload is required.
+unverified.** Local copies on this Mac do not close that prerequisite. After sync/push, Batch A preserved
+the complete existing audio bundle under logical source ID
+`cf-reaper-surge-audio-readiness-20260904`: **9/9 unchanged files**, **5/5 original manifest
+references valid**, 1,345,968 bytes including private inventory. No rerender, app launch or upload.
+Original scratch output paths remain unchanged; portable replay is not claimed. Next: verify an
+independent backup at Nick's chosen destination before closing the source-backup prerequisite.
 
 Batches B–D retain one ship/biome treatment plus quadruped, biped, avian, serpentine, arthropod,
 tentacled, aquatic and flora/fungus at actual 132/300/440, static and animated. Unfaithful families
@@ -108,9 +114,10 @@ mockups and actual-game integration lead to Nick's pilot approval stop.
 
 ### Paired handoff
 
-- **OpenAI/Codex:** finish the committed-merge checks and authorized `openai/mac` push, report
-  exact SHA/results, then continue only the bounded Batch A source preservation above. Preserve
-  both parked/review refs. No new Batch 4 PR is requested by this sync.
+- **OpenAI/Codex:** merge/checks/push and bounded Batch A local source preservation are complete.
+  Keep independent backup pending until Nick chooses a destination and its copied bytes are
+  verified. Preserve both parked/review refs; do not launch another test/art loop to fill the wait.
+  No new Batch 4 PR is requested by this sync. This evidence-recording successor is docs only.
 - **Anthropic/Claude Code:** may continue unrelated work in its own owned folder. At its next
   coding batch, fetch and merge latest `origin/develop` into its own clean branch. Codex's
   audiovisual documentation is on `openai/mac`, not integrated into develop; do not copy files
