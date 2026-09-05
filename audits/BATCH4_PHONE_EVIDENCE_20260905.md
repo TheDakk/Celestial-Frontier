@@ -1,3 +1,79 @@
+# P2 phone — Batch 4 current analysis and retained history
+
+## Step 3d — current phone evidence and incomplete performance measurement (2026-09-05)
+
+Matches the retained Step 3c/3d evidence below. **The two phone diagnostics passed; the separate performance measurement is incomplete.** This analysis reads existing artifacts only. It introduces no measurement, retry, instrument repair, optimization or acceptance claim for later source.
+
+The accepted Step 3c Slice/two-phone sequence used exact source **`b76b69aa7099f3d7db99380e6687be18be7ead51`**, branch `openai/review-batch4-gameplay-20260905`. Both Glass reports record clean committed source unchanged at start/end. Their working-tree SHA256 is `f0af1e1d86a1c7d87a6741fb76deb2ceb20d27ded2019e53949ede9d907c758a`. The once-only profiler used the distinct clean reporting successor **`4fa82d0c9fd648fcb05497552e244d594b1a959f`**; its runner records the same ending source and `unchanged: true`. These results must retain their separate source identities.
+
+### Current retained phone diagnostics
+
+| Existing measurement | Small phone | Large phone |
+| --- | ---: | ---: |
+| Viewport, CSS pixels | 320 × 568 | 412 × 915 |
+| Emulated DPR / actual renderer DPR | 2 / 2 | 3 / 2 |
+| Glass command duration | 16.742 s | 16.167 s |
+| Report / viewport duration | 14,755 / 11,561 ms | 14,234 / 11,355 ms |
+| Replacement app-init complete | 129.0 ms | 106.5 ms |
+| Replacement save-load complete | 170.4 ms | 141.3 ms |
+| Replacement scene-rendered | 232.9 ms | 192.9 ms |
+| Replacement first tick | 345.9 ms | 334.4 ms |
+| Replacement ready-emitted | 684.1 ms | 620.7 ms |
+| Recorded reload elapsed | 714 ms | 661 ms |
+| App / backdrop backing dimensions, each | 640 × 1136 | 824 × 1830 |
+| Combined backing pixels | 1,454,080 | 3,015,840 |
+
+Both ready witnesses have complete document readiness, save/view/renderer/stage readiness and three ticker ticks. Both enforce a declared 8,388,608-pixel ceiling per canvas. At release, renderer/stage release and view detachment are true, each canvas becomes 1 × 1, and the recorded status is `released` with no error. Backing pixels and release witnesses are not measured heap or GPU allocations.
+
+Both reports are `targeted-diagnostic`, `certifying: false`, with null predecessors, zero findings, zero instrument failures, zero blocked controls and zero automatic retries. Small records 93 selected / 9 omitted controls; large records 94 / 8, each from 102 planned. This is the two-row phone evidence, not a full 12-row Glass certificate. The retained Slice passed in **374.555 s** and printed **galaxy rebuild: 29 ms**. Its identity here is the terminal log plus runner association; no separate immutable Slice certificate ID is invented.
+
+These runs used desktop macOS headless Edge `Edg/152.0.4191.62`, revision `@98614824c284c7a332f949435bc56c0107ee732f`, JS `15.2.23.8`, CDP `1.3`, and zero emulated safe-area insets. Ready timestamps belong to `reloadEvidence[0].bootPhases[*].validation.witness.performanceNow` / the ready witness in the **replacement document after the evidence save-import seam**. They are not initial cold-boot TTI. Harness durations and retained CDP command timings are not player latency; one sample per viewport supplies no variance or percentile estimate.
+
+### Audio/cache limits and once-only profiler result
+
+Both release audio snapshots are disposed and muted, with null context state and context generation 0. Cache active/peak/evictions are **0/0/0**, budget 32; nodes active/peak are **0/0**, budget 96; voices active/peak/started/completed/stopped/stolen are all **0**, budget 24; emitters active/peak are **0/0**, budget 8. Source-stop, node-disconnect, cache-release failures and total faults are all **0**. These empty release snapshots establish neither a populated audio workload nor cache eviction quality. No populated species/biome cache series, cache bytes, native heap/GPU peaks or leaks, installed offline bytes/eviction, physical iPhone/Safari/PWA, thermal or battery proof is retained.
+
+On source `4fa82d0c9fd648fcb05497552e244d594b1a959f`, `npm run perf -- 4` ran once using the recorded Edge executable at **4× CPU**, phone **390 × 844 @ 3×**. It exited **1 after 28.472 s**, printing:
+
+```text
+painted: 1292ms
+answerable: NEVER
+galaxy rebuild (throttled): -1ms
+SLICE PERF: measurement incomplete — painted, answerable, and galaxy rebuild must all resolve
+```
+
+`NEVER` means the bounded run obtained no answerable measurement; `-1` is an unresolved result, not a negative elapsed time. The existing profiler waits for `mode === 'universe'` and `trail === 'Cosmos'` before its answerability path. That assumption is a possible compatibility consideration, **not a demonstrated cause**: this result alone cannot distinguish unmet setup from a product or profiler fault. No retry or instrument repair followed. The valid paint observation does not establish answerability, and the separate Slice 29-ms rebuild is a different observation from this unresolved throttled result.
+
+The profiler's retained evidence-build log reports 989 modules and the existing >500-kB chunk warning. Selected Vite sizes are below; these are output sizes, not bytes loaded at boot, runtime memory or the complete shipped/offline pack.
+
+| Output | Vite size | Vite gzip |
+| --- | ---: | ---: |
+| Main JS | 1,782.05 kB | 469.18 kB |
+| Species-art worker | 1,312.28 kB | Not printed |
+| Species-art lazy JS | 1,265.97 kB | 353.61 kB |
+| Biome-vista worker | 220.68 kB | Not printed |
+| Guide / release JS | 130.92 / 146.93 kB | 44.31 / 56.49 kB |
+| Index HTML | 77.42 kB | 17.13 kB |
+
+### Exact retained artifact identities
+
+SHA256 values below identify the retained bytes, not a new certification. The historical Step 2a section following this addition remains historical and is not substituted for these sources.
+
+| Artifact | Bytes | SHA256 |
+| --- | ---: | --- |
+| [Step3d extraction](/private/tmp/cf-overnight-batch4-20260905/step3d-phone-evidence.json) | 19,904 | `a4aa575f496ab974b9c0a041467a80ef9c677dbe6b8c91d42f75d23463aba237` |
+| [Step3c runner result](/private/tmp/cf-overnight-batch4-20260905/step3c-browser/result.json) | 769 | `b7ca6c4f4cc5ed662236305564c12a67344cb943a70ff2f8c814fa8a5025a453` |
+| [Step3c Slice log](/private/tmp/cf-overnight-batch4-20260905/step3c-browser/1-node.log) | 6,736 | `93e2c6f6ba9f2b812a6e71b9e331534e7051fbc3fa30ae7a4fb3c58e021153e3` |
+| [Small-phone immutable 20260905130448827-82289-0980a0b3326f](/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/glassmatrix-20260905130448827-82289-0980a0b3326f.json) | 101,066 | `e076f1e7fd9a0cfd09c78854d35b5cc5c8ef8077e4392b44d6dc9c7626f068ca` |
+| [Small-phone runner log](/private/tmp/cf-overnight-batch4-20260905/step3c-browser/2-node.log) | 3,745 | `8913784be6cf06900dfd526332f9a3d764c153a62a1e1086b8710ff14cfe33f3` |
+| [Large-phone immutable 20260905130505505-82440-b058674b0097](/Users/nick/Projects/celestial-frontier-openai-mac/port/v2/apps/game/smoke/glassmatrix-20260905130505505-82440-b058674b0097.json) | 105,618 | `8bea992efd6777c819c359457601fcec3ee5bffa1403d856977668d30dc3cf1e` |
+| [Large-phone runner log](/private/tmp/cf-overnight-batch4-20260905/step3c-browser/3-node.log) | 3,745 | `1e0ed3d37387a5503f3de6477e9c71936f3154bfdfa895f27b452a80d44d0e77` |
+| [Step3d measurement result](/private/tmp/cf-overnight-batch4-20260905/step3d-measurement/result.json) | 519 | `62994b90b36d1999cba26cf4dfaca58f8c7cfaca8cdf54f143284570cb06933c` |
+| [Step3d sliceperf log](/private/tmp/cf-overnight-batch4-20260905/step3d-measurement/sliceperf.log) | 3,663 | `dd989f243a7d69411cb4cd4e452061c6e84becfed3221b4c14936641dd2f2c60` |
+
+
+---
+
 # P2 phone: existing accepted Step 2a evidence
 
 Read-only extraction prepared 2026-09-05. No browser, build, test, or new measurement was run for this report. This is historical evidence for accepted Step 2a only; it supplies no browser proof for the current uncommitted Step 2b corrections.

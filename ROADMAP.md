@@ -17,17 +17,17 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-05 · UNATTENDED BATCH 4 · CHECKPOINT 3c GREEN
+## SESSION HANDOFF — 2026-09-05 · BATCH 4 · STEP 3d FAST GREEN
 
 ### Morning report
 
-OpenAI/Codex on macOS, physical checkout `/Users/nick/Projects/celestial-frontier-openai-mac`,
-branch `openai/review-batch4-gameplay-20260905`, matching origin tracking branch.
-Base develop `9ea01041dcdc711190bbf909ea8bb743cd993734`; untouched clean `openai/mac` stays `84b6f22`.
-Signed core `5377069` joined through real merge `e77e5e0`; no signed history rewritten.
-Current accepted implementation source `b76b69aa7099f3d7db99380e6687be18be7ead51`. This documentation successor is being
-committed/pushed; the next step records its actual pushed SHA/time. Full exact evidence and every
-red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS JSON.
+OpenAI/Codex on macOS, physical root /Users/nick/Projects/celestial-frontier-openai-mac,
+branch openai/review-batch4-gameplay-20260905, matching origin tracking branch.
+Base develop9ea01041dcdc711190bbf909ea8bb743cd993734; clean openai/mac stays84b6f22.
+Step3d is implemented; full fast301files/3100tests/1skip passes.
+Commit the implementation, then run clean-source Slice→small→large, stopping at first red.
+Accept/push before the final review-only morning report and push. The committed overnight instructions own the full ordered scope;
+the overnight report and REDS JSON retain all exact evidence and historical failures.
 
 | Step | Commit SHA | Pushed UTC | Fast gates | Browser gates |
 | --- | --- | --- | --- | --- |
@@ -39,57 +39,35 @@ red remain in `audits/BATCH4_OVERNIGHT_REPORT_20260905.md` and the sibling REDS 
 | 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
 | 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
 | 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
-| 3c bounded extraction | Accepted source `b76b69aa7099f3d7db99380e6687be18be7ead51`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures |
-| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+| 3c bounded extraction | Accepted source `b76b69aa7099f3d7db99380e6687be18be7ead51`; documentation successor follows | `4fa82d0c9fd648fcb05497552e244d594b1a959f` pushed 2026-09-05 13:05:48 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures |
+| 3d phone analysis | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
 
-### Latest completed outcome and decisions made unattended
+### Decisions made unattended and current implementation
 
-# Stretch 3c — Landing presentation extraction
+The first P2-phone analytical pass is complete using existing tools only. Exact-source Slice and phone diagnostics on b76b69aa7099f3d7db99380e6687be18be7ead51 provide replacement readiness of 684.1 ms (small) and 620.7 ms (large), actual renderer DPR 2, combined app/backdrop backing pixels of 1,454,080 and 3,015,840, and released canvases of 1×1. Both audio snapshots are disposed, unused and empty; their zeros do not prove a populated-cache workload. Slice reports one 29 ms galaxy rebuild.
 
-Prepared patch: `/private/tmp/cf-step3c-landing-presentation-extraction/step3c-landing-presentation.patch`.
-SHA256: `55ea989a4bef26ae323b867a485ee52fad6dca6a6a8a8750973b6a5877a1010b`.
-Applied at its separate ordered checkpoint after primary and 3b acceptance. Exact execution results are recorded with this checkpoint.
+The existing 4× CPU profiler ran once on clean reporting successor 4fa82d0c9fd648fcb05497552e244d594b1a959f. It observed first paint at 1,292 ms, then ended incomplete: answerable NEVER and throttled galaxy rebuild -1. Those unresolved timings are parked with their exact output. No product or instrument change and no retry is made in this measure-only step. Physical iPhone/Safari persistence, native heap/GPU allocation, populated art/audio cache behavior, installed offline bytes, thermal/battery and response-time percentiles remain unmeasured.
 
-The three-file delta moves step-2 Landing presentation into the existing `port/v2/apps/game/src/landing-card.ts`: the exported ready/unavailable `LandingCardStateV1` union is at prepared-after lines 29–40 and `landingCardActionHtml` at 110–118. Main imports both and passes its existing `esc` function at the same single card callsite. The moved state fields and renderer body were compared as text again during this review and are identical apart from the new export/signature location and supplied escape argument.
+The current phone evidence report preserves source/report/log identities and the historical Step 2a samples. The final required validation runs on this signed documentation successor; this step changes no product source, authority, control, ruler or performance threshold. All primary work and stretch 3a–3c are already accepted and pushed. After the final required checks, Codex publishes the review-only morning report; Claude reviews through Git before Nick authorizes one exact hosted attempt.
 
-Main still owns `projectCurrentLandingCardState`, exact world/save/gear authority, navigation and action wiring. `descent-policy.ts` and `arc0-landing-action.ts` still own policy and one-receipt settlement. Their source, all RNG/HP/learning rules, action token, HTML, visible risk disclosure, accessible names, style and escaping behavior are unchanged. No generic coordinator, new state owner or blanket Main rewrite is introduced.
+Current bulletin79 outcomes; SHA256351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042.
+Current Compendium producerc1e784b7f32016066b0a41a81b5917b63c0712ef876a35d7ff3d7a90fe9acce4.
+Measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12,
+ruler, ceilings and samples unchanged. SceneMemory native heap stays quarantined.
+Full local Vitest uses four workers with unchanged selection/timeouts.
 
-The existing `landing-card-main-wiring.test.ts` follows the renderer to its new file and keeps independently authored exact data attributes, `aria-describedby`, visible disclosure literal/removal control, no-write check and single exact Main callsite. It additionally refuses a missing renderer source span. `landing-card.test.ts` is unchanged, including its literal safe labels, +20 learning, nonlethal floor, 100%-guaranteed zero-risk disclosure and clone-policy refusal (`:56–96` in current source). Expected output is not generated from the renderer under test.
+### Parked scope and paired handoff
 
-The final current-reference review also corrected the shared wave-off sentence in all eight overlays: a wave-off leaves the ship in orbit. This matches the existing behavior and changes no rule.
+Weekly lifecycle/joins, Forge Training, living portrait preview and unrelated bulk WIP stay
+parked. No care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities,
+conquest-imbue coexistence or extra Guardian cache. Audio-source backup is outside this batch.
+No legacy player-import door; v1 codec, evidence importBlob and planned Glass ledgers remain.
+Combined Arc4.5, separate Arc5.5 HUMAN and real-device Gate C remain open.
+Protected portraits, CI/policy and release are untouched. Prior reds/signing outage remain
+history; no unchanged-source browser retry. Edge phones are targeted diagnostics only.
 
-- Nick's committed `audits/BATCH4_OVERNIGHT_INSTRUCTIONS_20260905.md` owns scope and order:
-  checkpoint/push after every completed step and approximately two hours; no PR/hosted attempt.
-- Current draft: 79 outcomes; rendered ordered-li SHA-256 `351c1279d7b36fa795a414f4d56a6237d57c0575675b80f69fcbc5471c6ae042`.
-- Current Compendium producer: `c1e784b7f32016066b0a41a81b5917b63c0712ef876a35d7ff3d7a90fe9acce4`. Measurement authority
-  `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler, ceilings and
-  samples unchanged. SceneMemory native heap remains quarantined from develop.
-- Local Vitest uses four workers after recorded CPU contention; full selection and original
-  timeouts remain. Existing strict consumers/copy controls follow the approved product;
-  no new collector, ruler, timeout, workflow or policy change.
-- Fresh v2 has no legacy player import door; v1.8.9 codec, evidence-only importBlob and planned
-  Glass ledgers remain. Canonical identity and one lease-fenced receipt/CAS govern every write.
-
-### Blocked / reverted and parked work
-
-Core's eight browser reds were corrected on new commits and retained verbatim; Step2a's missing
-import and five stale copy checks were corrected before its green browser run. No unchanged
-source browser retry. See the report for all subsequent exact failures and dispositions.
-No product step has been reverted unless explicitly recorded in the table/report.
-Remaining `cf1b9a7` WIP is parked until individually completed. Weekly lifecycle/joins, Forge
-Training, living portrait preview and unrelated bulk copy remain excluded. No companion
-care/bond/missions, random loot/affix/socket/vendor tables, achievement quantities, conquest-imbue
-coexistence or extra Guardian first-victory cache. Audio-source backup destination is outside
-this batch. Protected portraits, CI/policy, main and the live release remain untouched.
-Combined post-Arc-5 Arc4.5 review, separate Arc5.5 HUMAN combat review and Gate C real-device v2
-persistence remain open. Phone checks here are local Edge targeted diagnostics, not full matrix
-certification or Chrome named-verifier proof; actual source/report IDs remain in the full report.
-
-### Paired handoff and next action
-
-Codex pushes this completed checkpoint, then proceeds to **3d phone analysis and final gate set** in the authorized order.
-Claude reads the pushed branch through Git for morning review; no copying or integration before
-Nick's exact hosted authorization. Nick need not open another app overnight. Proposed PR base
-`develop`, source `openai/review-batch4-gameplay-20260905`; final title/body follows at completion.
-Budget UNFROZEN, PUBLIC, private fallback 3,000, zero hosted attempts authorized. Branch pushes
-trigger no workflow. Established SSH origin/account checks passed as `TheDakk`; no auth change.
+Codex completes this acceptance/push and continues the ordered scope. Claude reviews pushed
+checkpoints later; Nick need not open another app now. Proposed PR base develop, source
+openai/review-batch4-gameplay-20260905; final title/body at completion. BudgetUNFROZEN/PUBLIC,
+private fallback3,000, zero hosted attempts authorized. Branch pushes trigger no workflow.
+No PR, label, hosted attempt, merge, purchase or release is authorized.

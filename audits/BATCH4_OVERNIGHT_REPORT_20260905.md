@@ -1,6 +1,6 @@
 # Batch 4 overnight report — 2026-09-05
 
-**Checkpoint 3c implemented, full fast green — 2026-09-05.** Clean-source browser acceptance is next. Prior acceptance and all exact failures remain below. Base develop:
+**Checkpoint 3d implemented, full fast green — 2026-09-05.** Clean-source browser acceptance is next. Prior acceptance and all exact failures remain below. Base develop:
 `9ea01041dcdc711190bbf909ea8bb743cd993734`; owned review branch:
 `openai/review-batch4-gameplay-20260905` (OpenAI/Codex, macOS,
 `/Users/nick/Projects/celestial-frontier-openai-mac`). Clean `openai/mac` remains `84b6f22`.
@@ -15,8 +15,8 @@
 | 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
 | 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | `07965ee86256929529a9f6207922eef97bd5e5a9` pushed 2026-09-05 12:45:59 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
 | 3b same-owner lists | Accepted source `34ecd3ab57d7af9b592c87874a4ee9683e3506d9`; documentation successor follows | `7ebed5c4caaaa1396766dd2192352647efb17489` pushed 2026-09-05 12:55:50 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 384.468s; small/large phone 16.319s / 16.557s PASS; zero findings/instrument failures |
-| 3c bounded extraction | Accepted source `b76b69aa7099f3d7db99380e6687be18be7ead51`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures |
-| 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
+| 3c bounded extraction | Accepted source `b76b69aa7099f3d7db99380e6687be18be7ead51`; documentation successor follows | `4fa82d0c9fd648fcb05497552e244d594b1a959f` pushed 2026-09-05 13:05:48 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 374.555s; small/large phone 16.742s / 16.167s PASS; zero findings/instrument failures |
+| 3d phone analysis | Implemented; signed source follows | Acceptance/push pending | Typecheck/artunused PASS; 301 files / 3100 passed / 1 skipped | Pending clean-source Slice and both phones |
 
 ## Decisions made unattended
 
@@ -3840,3 +3840,78 @@ verifier proof. No hosted attempt occurred.
   ]
 }
 ```
+
+## Step 3d — existing phone profiler measurement incomplete
+
+The clean reporting successor 4fa82d0c9fd648fcb05497552e244d594b1a959f was measured once, unchanged, under the develop profile with Edge and 4× CPU throttling. First paint resolved to 1,292 ms. Answerability did not resolve and throttled galaxy rebuild returned -1; neither is a valid timing. The tool assumes an available universe/Cosmos action path, but the retained output does not identify why it was unavailable. This is incomplete measurement evidence, not a newly diagnosed gameplay failure. Per the measure-only scope, no tool/product change or retry is made. The unresolved metrics are parked, while the current accepted phone reports support the remaining bounded analysis.
+
+```json
+{
+  "kind": "measurement-incomplete",
+  "source": "4fa82d0c9fd648fcb05497552e244d594b1a959f",
+  "command": [
+    "npm",
+    "run",
+    "perf",
+    "--",
+    "4"
+  ],
+  "exitCode": 1,
+  "seconds": 28.472,
+  "logSha256": "dd989f243a7d69411cb4cd4e452061c6e84becfed3221b4c14936641dd2f2c60",
+  "failureLines": [
+    "SLICE PERF @ 4\u00d7 CPU (phone 390\u00d7844@3x):",
+    "  painted:    1292ms",
+    "  answerable: NEVER",
+    "  galaxy rebuild (throttled): -1ms",
+    "  (v1.8.5 law: painted \u2260 answerable \u2014 budgets land with plan \u00a720)",
+    "SLICE PERF: measurement incomplete \u2014 painted, answerable, and galaxy rebuild must all resolve"
+  ],
+  "disposition": "Park answerability and throttled galaxy measurement; measure-only step permits no product/instrument change. No retry. Final required validation remains independent."
+}
+```
+
+## Step3d implementation/full-fast PASS
+
+The first P2-phone analytical pass is complete using existing tools only. Exact-source Slice and phone diagnostics on b76b69aa7099f3d7db99380e6687be18be7ead51 provide replacement readiness of 684.1 ms (small) and 620.7 ms (large), actual renderer DPR 2, combined app/backdrop backing pixels of 1,454,080 and 3,015,840, and released canvases of 1×1. Both audio snapshots are disposed, unused and empty; their zeros do not prove a populated-cache workload. Slice reports one 29 ms galaxy rebuild.
+
+The existing 4× CPU profiler ran once on clean reporting successor 4fa82d0c9fd648fcb05497552e244d594b1a959f. It observed first paint at 1,292 ms, then ended incomplete: answerable NEVER and throttled galaxy rebuild -1. Those unresolved timings are parked with their exact output. No product or instrument change and no retry is made in this measure-only step. Physical iPhone/Safari persistence, native heap/GPU allocation, populated art/audio cache behavior, installed offline bytes, thermal/battery and response-time percentiles remain unmeasured.
+
+The current phone evidence report preserves source/report/log identities and the historical Step 2a samples. The final required validation runs on this signed documentation successor; this step changes no product source, authority, control, ruler or performance threshold. All primary work and stretch 3a–3c are already accepted and pushed. After the final required checks, Codex publishes the review-only morning report; Claude reviews through Git before Nick authorizes one exact hosted attempt.
+
+[
+  {
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "exitCode": 0,
+    "seconds": 2.857,
+    "log": "1-npm.log",
+    "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "artunused"
+    ],
+    "exitCode": 0,
+    "seconds": 1.646,
+    "log": "2-npm.log",
+    "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+  },
+  {
+    "command": [
+      "npx",
+      "vitest",
+      "run",
+      "--maxWorkers=4"
+    ],
+    "exitCode": 0,
+    "seconds": 66.239,
+    "log": "3-npx.log",
+    "sha256": "a57b1ac0298e2543889c39eba591fb3bb61e6dbf5670f336ec8cfe173add4c1d"
+  }
+]

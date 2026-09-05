@@ -1,5 +1,28 @@
 [
   {
+    "kind": "measurement-incomplete",
+    "source": "4fa82d0c9fd648fcb05497552e244d594b1a959f",
+    "command": [
+      "npm",
+      "run",
+      "perf",
+      "--",
+      "4"
+    ],
+    "exitCode": 1,
+    "seconds": 28.472,
+    "logSha256": "dd989f243a7d69411cb4cd4e452061c6e84becfed3221b4c14936641dd2f2c60",
+    "failureLines": [
+      "SLICE PERF @ 4\u00d7 CPU (phone 390\u00d7844@3x):",
+      "  painted:    1292ms",
+      "  answerable: NEVER",
+      "  galaxy rebuild (throttled): -1ms",
+      "  (v1.8.5 law: painted \u2260 answerable \u2014 budgets land with plan \u00a720)",
+      "SLICE PERF: measurement incomplete \u2014 painted, answerable, and galaxy rebuild must all resolve"
+    ],
+    "disposition": "Park answerability and throttled galaxy measurement; measure-only step permits no product/instrument change. No retry. Final required validation remains independent."
+  },
+  {
     "source": "23866bf7da878d8610afe2b28672cc0ee8041c7b",
     "command": [
       "node",
