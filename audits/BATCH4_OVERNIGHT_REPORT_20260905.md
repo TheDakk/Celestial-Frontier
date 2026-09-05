@@ -1,6 +1,6 @@
 # Batch 4 overnight report — 2026-09-05
 
-**Checkpoint 2e implemented, full fast green — 2026-09-05.** Clean-source browser acceptance is next. Prior acceptance and all exact failures remain below. Base develop:
+**Primary checkpoints 2a–2e accepted and pushed — 2026-09-05.** Ordered stretch checkpoint 3a verifies the existing narrow authority controls. Base develop:
 `9ea01041dcdc711190bbf909ea8bb743cd993734`; owned review branch:
 `openai/review-batch4-gameplay-20260905` (OpenAI/Codex, macOS,
 `/Users/nick/Projects/celestial-frontier-openai-mac`). Clean `openai/mac` remains `84b6f22`.
@@ -12,8 +12,8 @@
 | 2b descent/wave-offs | Accepted source `879cad4e58b2d8d6cb924964f9a592e346e36dce`; documentation successor follows | `8546ad225d485541b377bef62db50c6c841256d6` pushed 2026-09-05 10:33:35 | Typecheck/artunused PASS; 290 files / 3,019 passed / 1 skipped; four workers | Slice 373.47s; small/large phone 15.576s / 16.338s PASS; zero findings/instrument failures |
 | 2c 50-Paragon hunt | Accepted source `16cb949f2caa0398708f195f39c43822df336780`; documentation successor follows | `4647b21cca897f34095daa5b4f5ef12ab3f3ba5c` pushed 2026-09-05 11:58:07 UTC | Typecheck/artunused PASS; 292 files / 3,047 passed / 1 skipped; four workers | Slice 370.62s; small/large phone 15.875s / 16.029s PASS; zero findings/instrument failures |
 | 2d exact-instance progression | Accepted source `a6c5b4ac8d6c02337dd0b45a6b1cf667c191b303`; documentation successor follows | `63685b8a6378d423db9fccf4211100403964bddd` pushed 2026-09-05 12:09:41 UTC | Typecheck/artunused PASS; 297 files / 3,071 passed / 1 skipped; four workers | Slice 371.504s; small/large phone 16.058s / 16.1s PASS; zero findings/instrument failures |
-| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
-| 3a authority controls | Already implemented in signed core and verified by all full suites | Pending ordered stretch checkpoint | Malformed/shallow mint, public clone refusal and three WorldConfig controls present | No UI change; no extra browser run |
+| 2e mature Atlas | Accepted source `890ab26a02a332327228e73eb7986e62b10e281b`; documentation successor follows | `f21feed5881b478bb2aeec4c1af7e93b076a870a` pushed 2026-09-05 12:44:13 UTC | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | Slice 375.248s; small/large phone 16.533s / 15.995s PASS; zero findings/instrument failures |
+| 3a authority controls | Accepted source `f21feed5881b478bb2aeec4c1af7e93b076a870a`; documentation successor follows | Push follows; actual SHA/time recorded by next checkpoint | Typecheck/artunused PASS; 301 files / 3,100 passed / 1 skipped; four workers | No app-source changes; browser not repeated at this checkpoint |
 | 3b same-owner lists | One bounded Research-ID alias patch prepared; not integrated | Pending ordered checkpoint | Independently authored browser lists retained | Not run |
 | 3c bounded extraction | Not started; narrow landing-card presentation owner identified | Pending ordered checkpoint | No code extraction claimed | Not run |
 | 3d phone analysis | Existing accepted2a evidence analyzed; fresh profile still pending | Pending final clean-source measurement | Interim measured diagnostics only; limits below | Existing two-row results only; no new run |
@@ -3361,5 +3361,92 @@ verifier proof. No hosted attempt occurred.
       "artifactPath": "apps/game/smoke/glassmatrix-20260905124328367-77025-b5841ec396fa.json"
     }
   ]
+}
+```
+
+
+<!-- Prepared report supplement. Replace the report's initial “WIP still parked” paragraph only after all five primary checkpoints have passed their required gates. Exact checkpoint commits and evidence remain owned by the main report. Preparation is not acceptance evidence. -->
+
+## Signed WIP disposition
+
+The signed WIP `cf1b9a7843200ecc281c5113b4139909dc0e3a29` remains preserved as provenance. Its primary items were recovered individually onto the current core; the whole WIP was not applied.
+
+| WIP item | Final primary disposition |
+| --- | --- |
+| Accepted Starter bioscan Charter | Recovered in 2a: acceptance followed by a later explicit Bioscan, the authored 15 Stardust and exact Earpiece reward; no earlier Survey/Capture backfill and no weekly lifecycle. |
+| Descent and wave-offs | Recovered in 2b: deterministic descent, the authored descent gear effects, canonical failure learning at +20 percentage points per failure capped at five, and canonical first binding for unresolved legacy seed-only history. No Hull descent reduction was introduced. |
+| Fifty-Paragon hunt | Recovered in 2c: the authored 50 exact-home catalogue discoveries, source-validated identities, found-entry Inspect versus missing-entry travel, and a separate `para10` Claim for +120 Stardust after ten finds. Protected static portraits are unchanged; pre-feature saves with an already-Bioscanned home retain the explicit refusal, with no backfill. |
+| Exact-instance progression | Recovered in 2d: individual XP, level, class, innates, wounds and recovery display; exact twins and retired snapshots; finite fractional XP preservation; the existing 486 cap and additional innate unlocks at levels 3 and 6. No care, bond, mission or new XP mechanic was added. |
+| Mature Atlas | Recovered in 2e: List/Chart, filters, Home, exact-row Remove and one-level eight-second Undo, strict route/receipt/CAS ownership, restoration of an originally absent route as absent, and bounded chart clusters that open existing List actions with focus return. |
+
+| Remaining parked WIP | Reason |
+| --- | --- |
+| Weekly Charter lifecycle and joins | Weekly generation, acceptance, rollover and reward joins are separate from the accepted Starter bioscan recovery. The primary instructions did not authorize recovering them. |
+| Forge Training | The additional Forge lesson work is outside the existing fifteen-card curriculum and the ordered primary scope. Existing Training copy was reconciled only for the recovered mechanics. |
+| Living portrait preview | The preview remains outside the gameplay recovery and subject to the separate graphics pilot approval boundary. No protected-portrait or Phase 2 art work is included. |
+| Unrelated bulk copy and whole-file WIP replacements | Only copy belonging to the recovered primary owners was carried forward. Bulk Main/Guide/ROADMAP changes cannot replace the current core, independent measurement expectations, current lane policy or dated evidence. |
+
+The WIP's legacy Settings import door, “awaits Nick's real save export” claim and blanket 78-bullet assumption are superseded, rather than future features awaiting recovery. Fresh-start policy, the retained evidence-only codec/import helpers and planned-ledger matching, and independently fixed per-checkpoint release inventories remain authoritative.
+
+Companion care/bond/missions, random loot/affix/socket/vendor tables, achievement reward quantities, conquest–imbue coexistence and an extra first-victory Guardian cache remain reserved product decisions; this is not a claim that each has an implemented WIP owner. Audio-source backup still needs Nick's external destination and remains outside this gameplay batch. Stretch work has its own disposition below and is not implied complete by recovery of the five primary items.
+
+## Checkpoint 3a accepted — source f21feed5881b478bb2aeec4c1af7e93b076a870a
+
+# Stretch 3a — existing focused authority controls
+
+Source coverage matches the narrow overnight request. This checkpoint needs no new test suite or product change; the controls are already in core. The full fast suite at this ordered checkpoint exercises these existing tests; no duplicate suite is added.
+
+- `port/v2/packages/domain/worldidentity/test/authority.test.ts:16–26`: the internal mint rejects a frozen outer address with a mutable galaxy child and a deeply frozen address with malformed negative planet ordinal. Both expect the specific “deeply frozen canonical address” refusal; the untouched valid object remains unregistered.
+- The same file, `:29–36`: registration returns the identical object and the public predicate accepts it; a separately constructed deeply frozen structural clone and `structuredClone(valid)` both remain unregistered. These controls exercise the public exact-object registry, not a second test-local registry.
+- `port/v2/packages/domain/starcatalog/test/parity.test.ts:18–21`: the three direct assertions pin `GCELL === 42`, `SOL_POS === { x: 560, y: 170 }`, and `Object.isFrozen` on both `HOME_POS` and `SOL_POS`. The existing independent baseline anchor probe remains at `:14–16`.
+
+The production boundaries are `worldidentity/src/authority.ts:45–62` (public WeakMap identity check and internal shape/deep-freeze admission) and `worldconfig/src/index.ts:8–12` (the literal constants and frozen coordinate records). No mint policy or generator baseline is changed. Coverage is the requested malformed/shallow case and exact-object clone distinction, not an exhaustive malformed-input matrix.
+
+Fast PASS: **301 files / 3,100 passed / 1 skipped**. No app-source changes; browser not repeated at this checkpoint. This reporting successor changes only
+documentation; source-bound browser evidence names the preceding implementation commit exactly.
+Phone reports are local Edge targeted diagnostics, not a twelve-row certificate or named Chrome
+verifier proof. No hosted attempt occurred.
+
+```json
+{
+  "source": "f21feed5881b478bb2aeec4c1af7e93b076a870a",
+  "fast": [
+    {
+      "command": [
+        "npm",
+        "run",
+        "typecheck"
+      ],
+      "exitCode": 0,
+      "seconds": 2.633,
+      "log": "1-npm.log",
+      "sha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+    },
+    {
+      "command": [
+        "npm",
+        "run",
+        "artunused"
+      ],
+      "exitCode": 0,
+      "seconds": 1.424,
+      "log": "2-npm.log",
+      "sha256": "0a00203248d2bce2fe82d1f427c268b10884560f6e7d3187b224c0c8cc2c028b"
+    },
+    {
+      "command": [
+        "npx",
+        "vitest",
+        "run",
+        "--maxWorkers=4"
+      ],
+      "exitCode": 0,
+      "seconds": 63.683,
+      "log": "3-npx.log",
+      "sha256": "7a5861888f6b19c8ff041e7489ecab8335d73b56db6c32c3a744cea1f90f6861"
+    }
+  ],
+  "browser": [],
+  "phones": []
 }
 ```
