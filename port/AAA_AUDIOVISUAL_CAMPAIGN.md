@@ -1,4 +1,45 @@
 # Celestial Frontier v2 — Complete Graphics, Audio & Polish Production Plan
+## Audiovisual pilot implementation — 2026-09-05 local
+
+Nick authorized B–D production under the integrated-pilot approval stop. Develop `c1791e2`
+(PR #41 included) is the merged foundation. `audiovisual-pilot.html` is the isolated direction,
+48-condition portrait comparison, eight-cue listening set and three component mockups.
+The real game accepts `?avpilot=1` after answerable boot for a bounded Scout/temperate-light
+comparison and gesture-started audio. Normal navigation does not link to the study. This is
+candidate media, not a released upgrade or accepted artistic direction.
+
+Three Blender Scout exports and one transparent atmosphere layer total 233,094 bytes. They
+retain the exact starter stage/livery/absent-hardpoint eligibility and existing canonical vista.
+The rejected coarse landscape is kept privately, excluded from the game. Eight body plans use
+unchanged canonical portraits at 132/300/440; 300 displays the existing 440 source. Anatomical
+animation remains INCOMPLETE for all eight. A CSS accent outside the frame demonstrates motion
+policy only; it is never counted as creature animation. Existing painter/artlock inputs remain.
+
+Eight original PCM16/48 kHz distribution cues total 9,752,032 bytes; 24-bit masters, MIDI, Surge
+patches and REAPER projects remain private. The existing shared Tame/creature audio owner
+admits at most four decorative pilot voices, one per category, with finite lifetimes and the
+existing mute/hide/route/teardown guards. The pilot's separate decoded-data cache is bounded at
+19,503,360 bytes; native playing AudioBuffers are additional allocations, not included in that
+cache figure. No second audio context is created inside the real game. Legacy sting compatibility
+ownership is unchanged. Music/bed return to silence after 24 seconds; no automatic resume loop.
+After explicit pilot activation, existing Shipyard/Inventory/Compendium navigation clicks may
+add a short UI cue. Ship/combat/settlement sounds are listening candidates; they are not yet
+mapped to durable game outcomes. Canonical creature synthesis stays unchanged.
+
+Eight rights rows, real file/header/hash checks and sanitized processing/rights evidence now
+replace the empty audio intake. Human matched-level A/B, anatomy/art direction, comfort and
+physical iPhone/Safari/PWA evidence remain open. Build-time complete-pack admission enforces
+128 MiB. The 256 MiB aggregate retained-update policy is still reserved, not runtime enforcement.
+See `../audits/AAA_PILOT_BCD_20260905.md`, `AAA_GAP_AUDIT.md` and `AAA_COVERAGE_LEDGER.md`.
+
+Work stays command-line only: no desktop screenshots, existing-window inspection or user REAPER
+configuration. File inspection and isolated headless captures cover only generated game assets.
+REAPER's renderer launches its desktop process; `open -j -g` supports hidden/background startup
+for future authorized renders but does not establish a true headless or dialog-free mode.
+No further REAPER render is needed for this checkpoint. No Phase 2/chrome migration, hosted
+attempt, PR, label, merge, purchase or release is authorized.
+
+
 
 ## Current standing — command-line audio replay recorded, 2026-09-05
 

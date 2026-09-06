@@ -1,7 +1,10 @@
 # Audiovisual pilot — asset and source policy
 
 Policy set **2026-09-04, before pilot rendering or measurement**. This is a campaign
-delivery policy, not a claim that the current PWA enforces these limits.
+delivery policy. The 2026-09-05 pilot adds a build-time 128 MiB complete-pack admission check
+against finalized runtime outputs plus the final service worker. The existing worker still
+pins client builds; 256 MiB aggregate retained-update enforcement/device proof remains OPEN.
+This pilot is not a release-ready offline-storage certification.
 
 ## Offline ceilings
 

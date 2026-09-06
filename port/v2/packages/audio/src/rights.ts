@@ -1,11 +1,13 @@
-/* Empty-first Arc 7/8 recorded-audio rights authority.
-
-   The current project has no recorded assets. This pure validator makes that
-   empty state explicit and gives a future asset intake one fail-closed seam.
-   Filesystem hashing remains a caller/tool responsibility: observations carry
-   SHA-256 facts into this package, and a pinned bundle digest binds licence
-   snapshots/proof as well as the media hashes. Non-empty intake is refused
-   until that batch supplies an explicit measured technical policy. */
+/* Arc 7/8 recorded-audio rights authority. Batch C supplies eight original
+   pilot cues and an explicit measured technical policy. This pure validator
+   retains the empty-bundle behavior for callers, but the current authority is
+   non-empty. Filesystem intake independently hashes optimized media and public
+   evidence; private masters are retained source hashes, not public files. */
+import {
+  PILOT_AUDIO_REFERENCED_IDS, PILOT_AUDIO_RIGHTS_EVIDENCE,
+  PILOT_AUDIO_RIGHTS_OBSERVATIONS, PILOT_AUDIO_RIGHTS_ROWS,
+  PILOT_AUDIO_TECHNICAL_POLICY,
+} from './pilot-rights-data.js';
 
 export const AUDIO_ASSET_RIGHTS_MANIFEST_VERSION = 1 as const;
 
@@ -68,8 +70,8 @@ export interface AudioRightsEvidenceObservation {
   readonly sha256: string;
 }
 
-/** A future media batch supplies this measured policy. No byte or decode cap
- * is selected by the empty foundation. */
+/** Every non-empty intake supplies its measured media policy. Complete-pack
+ * byte and decoded-cache ceilings remain separate asset/runtime owners. */
 export interface AudioAssetTechnicalPolicy {
   readonly allowedCodecs: readonly string[];
   readonly allowedSampleRates: readonly number[];
@@ -582,23 +584,23 @@ export function auditAudioAssetRightsManifest(
   });
 }
 
-export const AUDIO_ASSET_RIGHTS_MANIFEST: readonly AudioAssetRightsRow[] = Object.freeze([]);
+export const AUDIO_ASSET_RIGHTS_MANIFEST: readonly AudioAssetRightsRow[] = PILOT_AUDIO_RIGHTS_ROWS;
 
-const EMPTY_RIGHTS_BUNDLE: AudioAssetRightsBundle = Object.freeze({
+const CURRENT_RIGHTS_BUNDLE: AudioAssetRightsBundle = Object.freeze({
   rows: AUDIO_ASSET_RIGHTS_MANIFEST,
-  observations: Object.freeze([]),
-  evidence: Object.freeze([]),
-  referencedAssetIds: Object.freeze([]),
-  technicalPolicy: null,
+  observations: PILOT_AUDIO_RIGHTS_OBSERVATIONS,
+  evidence: PILOT_AUDIO_RIGHTS_EVIDENCE,
+  referencedAssetIds: PILOT_AUDIO_REFERENCED_IDS,
+  technicalPolicy: PILOT_AUDIO_TECHNICAL_POLICY,
 });
 
-/** Literal source pin: changing the empty authority or digest algorithm cannot
- * redefine both sides of its own check. The first recorded-asset batch must
- * deliberately advance this value together with its reviewed evidence. */
+/** Literal intake pin binds rows, independent render observations, optimized
+ * media hashes, both public evidence hashes and the explicit technical policy.
+ * Changing that authority requires a deliberate evidence-backed intake update. */
 export const AUDIO_ASSET_RIGHTS_MANIFEST_DIGEST =
-  'arm1-0931a076c139bc332b012b5a235476e9' as const;
+  'arm1-d8353ea7165fd424a6c58e3eb71a2a50' as const;
 
 export const AUDIO_ASSET_RIGHTS_MANIFEST_AUDIT = auditAudioAssetRightsManifest({
-  ...EMPTY_RIGHTS_BUNDLE,
+  ...CURRENT_RIGHTS_BUNDLE,
   expectedDigest: AUDIO_ASSET_RIGHTS_MANIFEST_DIGEST,
 });

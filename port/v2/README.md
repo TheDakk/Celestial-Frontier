@@ -1,5 +1,21 @@
 # Celestial Frontier v2 — the TypeScript port (playable Phase-4 slice)
 
+## Opt-in audiovisual pilot — 2026-09-05 local
+
+From `port/v2`: `npm run build --workspace=@cf/game`, then
+`npm run preview --workspace=@cf/game -- --host 127.0.0.1`.
+On that local origin, open `/audiovisual-pilot.html` for the isolated direction/listening study,
+`/?avpilot=1` for the playable comparison, or `/` for the current game. Use an isolated review
+origin/save. The distributable preview has no evidence-only API. Nothing is released or hosted.
+
+The CLI-only diagnostic is `node tools/audiovisual-pilot-review.mjs BUILD_DIR OUTPUT_DIR [BASELINE_DIR]`.
+It launches its own headless browser/profile, never an existing browser or desktop; on macOS use
+approved out-of-sandbox execution. It records exact build bytes, 48 unchanged-portrait conditions,
+external-marker/reduced-motion checks, and representative layouts. This is non-certifying and
+cannot replace physical iPhone, human art/listening, or the established admission battery.
+See the root `AAA_COVERAGE_LEDGER.md`, `AAA_GAP_AUDIT.md` and backup/pilot audits for limitations.
+
+
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
@@ -3069,8 +3085,13 @@ Replay, refusal, stale/converging state, lost detail/route/counterpart and disab
 silent.
 
 The 1,014-route/1,010-identity coarse taxonomy witness, distant-ecology and other settled-expression
-plans, lab audit and empty rights validator remain package foundations. The app now exposes six
-explicit surfaces through that authority: exact durable Tame greeting, committed Feed
+plans and lab audit remain package foundations. The rights authority now contains eight original
+opt-in pilot cues: exploration music, temperate wind/rustle, navigation/refusal/settlement, Scout
+approach/landing and combat contact. Its explicit technical policy and filesystem intake bind the
+optimized WAV bytes and PCM shape, native loudness evidence and both public proof hashes. Canonical
+creature synthesis remains unchanged; integrated-pilot HUMAN listening, physical-device proof and
+broader authored coverage remain pending, so this intake does not complete Arc 7/8 or Gate G.
+The app retains six explicit surfaces through the existing authority: exact durable Tame greeting, committed Feed
 acknowledgement, exact-owned-fauna Compendium Listen, pre-landing orbital Survey **Listen to
 biosphere**, visible inhabited-world Planetside **Listen to biosphere**, and the post-settlement
 Combat Chronicle. The ecology join derives distinct approach/roster

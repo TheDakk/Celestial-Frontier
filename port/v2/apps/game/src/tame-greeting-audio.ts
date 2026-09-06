@@ -17,6 +17,7 @@ import {
   type AudioRuntime,
   type AudioRuntimeDiagnostics,
   type AudioVoiceDeadlineScheduler,
+  type AudioVoiceRequest,
   type AudioVoiceStartResult,
   type CombatCuePlanV1,
   type CombatCueV1,
@@ -212,6 +213,11 @@ export interface TameGreetingAudioOwner {
     cue: CombatCueV1,
     counterpart: AudioCounterpartReceipt,
   ): Promise<TameGreetingPlayResult>;
+  /** Called only inside an explicit native audiovisual-pilot Listen click.
+   * This authorizes decorative previews, never a durable gameplay outcome. */
+  armNativePilotGesture(): boolean;
+  playPilotVoice(request: AudioVoiceRequest): Promise<TameGreetingPlayResult>;
+  cancelPilotPlayback(): void;
   /** Chronicle Skip/Close/replace owns this synchronous stop seam. */
   cancelCombatPlayback(reason: string): void;
   cancelTameAttempt(reason: string): void;
@@ -366,6 +372,8 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
   readonly #activeCombatVoiceIds = new Set<string>();
   #ephemeralClaimCount = 0;
   #arm: ArmedGesture | null = null;
+  #pilotArm: Readonly<{ routeKey: string; activation: Promise<AudioActivationResult> }> | null = null;
+  readonly #pilotVoiceIds = new Set<string>();
   #pendingClaim:
     | TameGreetingClaim
     | FeedExpressionClaim
@@ -421,8 +429,108 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     return this.#armNativeGesture('combat');
   }
 
+  armNativePilotGesture(): boolean {
+    this.cancelPilotPlayback();
+    if (this.#disposed) return false;
+    const policy = safePolicy(this.#readPolicy);
+    if (!enabledMasterPolicy(policy) || !this.#answerable || this.#hidden) return false;
+    this.#runtime.setMasterGain(policy.masterGain);
+    this.#runtime.setCategoryGain('creature', policy.creatureVoicesOn ? 1 : 0);
+    void this.#runtime.setMuted(false);
+    this.#pilotArm = Object.freeze({
+      routeKey: policy.routeKey,
+      activation: this.#runtime.activate(),
+    });
+    return true;
+  }
+
+  async playPilotVoice(request: AudioVoiceRequest): Promise<TameGreetingPlayResult> {
+    const arm = this.#pilotArm;
+    const silent = (reason: string): TameGreetingPlayResult => Object.freeze({ kind: 'silent', reason });
+    if (this.#disposed || arm === null) return silent('pilot-unarmed');
+    let preview: AudioVoiceRequest;
+    try {
+      // Snapshot the restricted authority fields once, before any await. The
+      // existing runtime still owns complete request and graph validation.
+      const key = request.key;
+      const category = request.category;
+      const meaning = request.meaning;
+      const cooldownGroup = request.cooldownGroup;
+      const concurrencyGroup = request.concurrencyGroup;
+      const maxDurationMs = request.maxDurationMs;
+      if (typeof key !== 'string' || !key.startsWith('cf-pilot-')
+        || !['music', 'ambience', 'ui', 'combat-gameplay'].includes(category)
+        || meaning?.kind !== 'decorative'
+        || typeof cooldownGroup !== 'string' || !cooldownGroup.startsWith('cf-pilot-')
+        || typeof concurrencyGroup !== 'string' || !concurrencyGroup.startsWith('cf-pilot-')
+        || typeof maxDurationMs !== 'number' || !Number.isSafeInteger(maxDurationMs)
+        || maxDurationMs < 1 || maxDurationMs > 120_000) {
+        return silent('pilot-request-invalid');
+      }
+      preview = Object.freeze({
+        key, category, cooldownGroup, concurrencyGroup, maxDurationMs,
+        meaning: Object.freeze({ kind: 'decorative' as const }),
+        priority: request.priority, cooldownMs: request.cooldownMs,
+        maxConcurrent: request.maxConcurrent, nodeCount: request.nodeCount,
+        mixIntent: request.mixIntent, create: request.create,
+      });
+    } catch { return silent('pilot-request-invalid'); }
+    let activation: AudioActivationResult;
+    try { activation = await arm.activation; }
+    catch {
+      if (this.#pilotArm === arm) this.cancelPilotPlayback();
+      return silent('pilot-activation-fault');
+    }
+    if (!this.#pilotEligible(arm)) {
+      if (this.#pilotArm === arm) this.cancelPilotPlayback();
+      return silent('pilot-policy-changed');
+    }
+    if (activation.kind !== 'running') {
+      this.cancelPilotPlayback();
+      return silent(`pilot-activation-${activation.kind}`);
+    }
+    this.#reconcilePilotVoices();
+    if (this.#pilotVoiceIds.size >= 4) return silent('pilot-voice-limit');
+    let started: AudioVoiceStartResult;
+    try { started = this.#runtime.playVoice(preview); }
+    catch { return silent('pilot-request-fault'); }
+    if (started.kind !== 'started') {
+      if (started.kind === 'rejected'
+        && ['muted', 'not-running', 'disposed'].includes(started.reason)) this.cancelPilotPlayback();
+      return silent(`pilot-runtime-${started.kind}:${started.reason}`);
+    }
+    // A factory may synchronously close the preview or change route. Never
+    // retain a source admitted after that authorization was withdrawn.
+    if (!this.#pilotEligible(arm)) {
+      if (this.#pilotArm === arm) this.cancelPilotPlayback();
+      this.#runtime.stopVoice(started.voiceId);
+      return silent('pilot-policy-changed');
+    }
+    this.#pilotVoiceIds.add(started.voiceId);
+    return Object.freeze({ kind: 'started', voiceId: started.voiceId });
+  }
+
+  cancelPilotPlayback(): void {
+    this.#pilotArm = null;
+    for (const voiceId of this.#pilotVoiceIds) this.#runtime.stopVoice(voiceId);
+    this.#pilotVoiceIds.clear();
+  }
+
+  #pilotEligible(arm: Readonly<{ routeKey: string; activation: Promise<AudioActivationResult> }>): boolean {
+    const policy = safePolicy(this.#readPolicy);
+    return !this.#disposed && this.#pilotArm === arm && !this.#hidden && this.#answerable
+      && enabledMasterPolicy(policy) && policy.routeKey === arm.routeKey;
+  }
+
+  #reconcilePilotVoices(runtime = this.#runtime.diagnostics()): void {
+    for (const voiceId of this.#pilotVoiceIds) {
+      if (!runtime.voices.ids.includes(voiceId)) this.#pilotVoiceIds.delete(voiceId);
+    }
+  }
+
   #armNativeGesture(kind: ArmedGesture['kind']): boolean {
     if (this.#disposed) return false;
+    this.cancelPilotPlayback();
     const policy = safePolicy(this.#readPolicy);
     if (!enabledMasterPolicy(policy)
       || (kind !== 'distant-ecology' && kind !== 'combat' && !policy.creatureVoicesOn)
@@ -988,6 +1096,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
 
   cancelTameAttempt(reason: string): void {
     if (this.#disposed) return;
+    this.cancelPilotPlayback();
     this.#arm = null;
     this.#discardPendingClaim();
     this.#stopActiveVoice();
@@ -1056,6 +1165,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     this.#runtime.setCategoryGain('creature', policy?.creatureVoicesOn ? 1 : 0);
     this.#runtime.setCategoryGain('combat-gameplay', 1);
     if (!enabledMasterPolicy(policy) || !this.#answerable || this.#hidden) {
+      this.cancelPilotPlayback();
       this.#arm = null;
       this.#discardPendingClaim();
       this.#stopActiveVoice();
@@ -1079,6 +1189,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     if (this.#disposed) return;
     this.#hidden = hidden === true;
     if (this.#hidden) {
+      this.cancelPilotPlayback();
       this.#arm = null;
       this.#discardPendingClaim();
       this.#stopActiveVoice();
@@ -1093,6 +1204,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
     if (this.#disposed) return;
     this.#answerable = answerable === true;
     if (!this.#answerable) {
+      this.cancelPilotPlayback();
       this.#arm = null;
       this.#discardPendingClaim();
       this.#stopActiveVoice();
@@ -1104,6 +1216,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
 
   syncRoute(routeKey: string | null): void {
     if (this.#disposed) return;
+    if (this.#pilotArm !== null && this.#pilotArm.routeKey !== routeKey) this.cancelPilotPlayback();
     const armMismatch = this.#arm !== null && this.#arm.routeKey !== routeKey;
     const pending = this.#pendingClaim === null ? undefined : this.#claims.get(this.#pendingClaim);
     const claimMismatch = pending !== undefined && pending.worldKey !== routeKey;
@@ -1126,6 +1239,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
 
   diagnostics(): TameGreetingAudioDiagnostics {
     const runtime = this.#runtime.diagnostics();
+    this.#reconcilePilotVoices(runtime);
     if (this.#activeVoiceId !== null && !runtime.voices.ids.includes(this.#activeVoiceId)) {
       this.#activeVoiceId = null;
       this.#activeWorldKey = null;
@@ -1162,6 +1276,7 @@ class BrowserTameGreetingAudioOwner implements TameGreetingAudioOwner {
 
   dispose(): Promise<void> {
     if (!this.#disposed) {
+      this.cancelPilotPlayback();
       this.#disposed = true;
       this.#arm = null;
       this.#discardPendingClaim();

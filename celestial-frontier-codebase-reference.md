@@ -1,5 +1,45 @@
 # Celestial Frontier — Codebase Reference (legacy v1 + current v2 reset overlay)
 
+## Audiovisual pilot implementation — 2026-09-05 local
+
+Nick authorized B–D production under the integrated-pilot approval stop. Develop `c1791e2`
+(PR #41 included) is the merged foundation. `audiovisual-pilot.html` is the isolated direction,
+48-condition portrait comparison, eight-cue listening set and three component mockups.
+The real game accepts `?avpilot=1` after answerable boot for a bounded Scout/temperate-light
+comparison and gesture-started audio. Normal navigation does not link to the study. This is
+candidate media, not a released upgrade or accepted artistic direction.
+
+Three Blender Scout exports and one transparent atmosphere layer total 233,094 bytes. They
+retain the exact starter stage/livery/absent-hardpoint eligibility and existing canonical vista.
+The rejected coarse landscape is kept privately, excluded from the game. Eight body plans use
+unchanged canonical portraits at 132/300/440; 300 displays the existing 440 source. Anatomical
+animation remains INCOMPLETE for all eight. A CSS accent outside the frame demonstrates motion
+policy only; it is never counted as creature animation. Existing painter/artlock inputs remain.
+
+Eight original PCM16/48 kHz distribution cues total 9,752,032 bytes; 24-bit masters, MIDI, Surge
+patches and REAPER projects remain private. The existing shared Tame/creature audio owner
+admits at most four decorative pilot voices, one per category, with finite lifetimes and the
+existing mute/hide/route/teardown guards. The pilot's separate decoded-data cache is bounded at
+19,503,360 bytes; native playing AudioBuffers are additional allocations, not included in that
+cache figure. No second audio context is created inside the real game. Legacy sting compatibility
+ownership is unchanged. Music/bed return to silence after 24 seconds; no automatic resume loop.
+After explicit pilot activation, existing Shipyard/Inventory/Compendium navigation clicks may
+add a short UI cue. Ship/combat/settlement sounds are listening candidates; they are not yet
+mapped to durable game outcomes. Canonical creature synthesis stays unchanged.
+
+Eight rights rows, real file/header/hash checks and sanitized processing/rights evidence now
+replace the empty audio intake. Human matched-level A/B, anatomy/art direction, comfort and
+physical iPhone/Safari/PWA evidence remain open. Build-time complete-pack admission enforces
+128 MiB. The 256 MiB aggregate retained-update policy is still reserved, not runtime enforcement.
+See `audits/AAA_PILOT_BCD_20260905.md`, `AAA_GAP_AUDIT.md` and `AAA_COVERAGE_LEDGER.md`.
+
+Work stays command-line only: no desktop screenshots, existing-window inspection or user REAPER
+configuration. File inspection and isolated headless captures cover only generated game assets.
+REAPER's renderer launches its desktop process; `open -j -g` supports hidden/background startup
+for future authorized renders but does not establish a true headless or dialog-free mode.
+No further REAPER render is needed for this checkpoint. No Phase 2/chrome migration, hosted
+attempt, PR, label, merge, purchase or release is authorized.
+
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
 Matches the current recovered implementation; `ROADMAP.md` owns gate acceptance. Signed core
@@ -175,10 +215,10 @@ Nick permits Blender-authored assets and REAPER/Surge audio alongside existing p
 painters/runtime. Canvas-only asset origin is relaxed; painterly identity, protected static
 portraits, deterministic game state and runtime budgets remain. Phase 0/1 pilot only: eight body
 plans at 132/300/440, static/animated. See `port/AAA_AUDIOVISUAL_CAMPAIGN.md` and
-`port/AAA_ASSET_POLICY.md`. This records policy, not implemented media. Product baseline is
-landed develop `9ea0104` (PRs #36/#38/#39/#40); Batch 4 and WIP remain parked. V2 starts fresh:
-no player import door; the existing codec/evidence seam stays. Claude owns CI/budget policy.
-No Phase 2/release. This reference was reconciled against code on 2026-09-05.
+`port/AAA_ASSET_POLICY.md`. The pilot implementation above owns current media status. Product
+baseline is landed develop `c1791e2`, including Batch 4/PR #41. WIP remains parked. V2 starts
+fresh: no player import door; existing codec/evidence seam stays. Claude owns CI/budget policy.
+No Phase 2/release. This reference was reconciled against code on 2026-09-05 local.
 
 > **2026-09-04 UTC current PR #35 forensic-prevention architecture overlay (matches current local
 > code):** `.github/workflows/test.yml` retains one two-minute authorization job and one battery
@@ -2143,7 +2183,7 @@ No Phase 2/release. This reference was reconciled against code on 2026-09-05.
 > deterministic contented expression with no replay. The newer current Arc 5 overlay above
 > supersedes this checkpoint's former absence of Breed/Recovery, Rename and Field Scout; missions,
 > tastes, growth, care/healing, poison, bond, explorer-eating and friendly duels remain open.
-> Arc 7 has pure identity/taxonomy/ecology/expression, an injected runtime, lab and empty-rights
+> Arc 7 has pure identity/taxonomy/ecology/expression, an injected runtime, lab and eight-cue pilot rights
 > validator, plus exact app-owned Tame, Feed and explicit owned-fauna Compendium audition. The same
 > shared owner also accepts one generic current-world biosphere pulse after an exact visible
 > Planetside counterpart; its app join and renderer bind canonical Survey roster, schema/digest and

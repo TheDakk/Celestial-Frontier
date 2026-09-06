@@ -1,10 +1,13 @@
 # Celestial Frontier — Audio Asset Rights Ledger
 
-**STATUS:** authoritative empty ledger and intake contract as of **2026-08-24**.
-The repository currently contains no committed `.wav`, `.ogg`, `.mp3`, `.m4a`, `.aac`,
-`.flac` or `.webm` audio assets; current audible behavior is synthesized at runtime.
-`port/v2/packages/audio/src/rights.ts` pins the matching empty version-1 machine authority and a
-pure validator; it does not inspect repository files or media bytes and approves no asset.
+**STATUS:** eight original opt-in pilot cues and their intake contract, **2026-09-05 local**.
+The distribution contains eight PCM16/48 kHz WAVs totaling 9,752,032 bytes. Canonical creature
+voices remain synthesized. `port/v2/packages/audio/src/rights.ts` pins machine authority
+`arm1-d8353ea7165fd424a6c58e3eb71a2a50`; the pure validator checks supplied joins/bounds and
+`packages/audio/test/rights.test.ts` independently reads the actual WAV/header/rights bytes.
+Source, processing and measured native REAPER LUFS/true-peak evidence is in
+`port/v2/audio-rights/CF_PILOT_C_20260905.md` and JSON. Masters and editable sources remain
+private, hashed and backed up. Human listening acceptance remains open.
 Adding an entry here does not make an asset player-visible. `AUDIO.md` owns runtime design,
 and `EXPLORATION_SHIPS_LOOT_AND_COMPANIONS.md` owns the staged product boundary.
 
@@ -28,8 +31,8 @@ without written consent, and a runtime dependency on remote TTS, generative audi
 
 ## 2. Machine-readable manifest contract
 
-The package now owns a validated **empty** machine-readable manifest. Before the first media asset
-lands, populate that authority with rows containing:
+The package owns the eight-row original pilot manifest. Every future intake must supply rows
+containing:
 
 ```ts
 type AudioAssetRightsRow = {
@@ -69,9 +72,10 @@ silently replace the evidence for an older published build.
 
 The current pure validator proves exact row/observation/evidence/reachability joins, hashes and
 technical-policy bounds for supplied data, with independent missing-row, hash-drift, license-drift
-and orphan controls. A first nonempty batch must also add the concrete filesystem/media observer
-that supplies real file, codec, duration, loudness, peak and proof observations; the empty authority
-alone is not CI evidence for bytes that do not yet exist.
+and orphan controls. The pilot adds concrete filesystem/WAV-header/hash observations and
+measured REAPER loudness/peak records. In-memory byte corruption, truncation, proof drift and
+restoration controls prevent a self-consistent manifest from substituting for real asset bytes.
+No hosted CI acceptance or human listening approval is implied by the local intake checks.
 
 ## 3. Catalogue language
 
