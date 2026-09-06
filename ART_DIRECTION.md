@@ -2,43 +2,58 @@
 
 ## Audiovisual pilot implementation — 2026-09-05 local
 
-Nick authorized B–D production under the integrated-pilot approval stop. Develop `c1791e2`
-(PR #41 included) is the merged foundation. `audiovisual-pilot.html` is the isolated direction,
-48-condition portrait comparison, eight-cue listening set and three component mockups.
-The real game accepts `?avpilot=1` after answerable boot for a bounded Scout/temperate-light
-comparison and gesture-started audio. Normal navigation does not link to the study. This is
-candidate media, not a released upgrade or accepted artistic direction.
+Matches the scoped Phase 1 implementation as of **2026-09-05 local**. Nick authorized B–D
+production under the integrated-pilot approval stop; develop `c1791e2` (including PR #41) is
+its merged foundation. `audiovisual-pilot.html` is the compact Earth/Scout direction study,
+48-condition portrait comparison and eight-cue listening set. It links separately to the
+playable `?avpilot=1` comparison, current v2 without the pilot and production v1.8.9. The real
+game activates the pilot after answerable boot. Scene assets remain under active authoring;
+this candidate direction still awaits human acceptance.
 
-Three Blender Scout exports and one transparent atmosphere layer total 233,094 bytes. They
-retain the exact starter stage/livery/absent-hardpoint eligibility and existing canonical vista.
-The rejected coarse landscape is kept privately, excluded from the game. Eight body plans use
-unchanged canonical portraits at 132/300/440; 300 displays the existing 440 source. Anatomical
-animation remains INCOMPLETE for all eight. A CSS accent outside the frame demonstrates motion
-policy only; it is never counted as creature animation. Existing painter/artlock inputs remain.
+The study and opt-in native windows share navy glass, restrained gold accents, locally bundled
+Inter under SIL Open Font License 1.1, compact spacing and the shared token hierarchy. The
+study exposes the bundled license in its provenance disclosure. Panels retain their distinct
+Inventory, Shipyard and Atlas layouts; 8px panels and 6px controls preserve 44px input targets
+and visible focus. Canonical rarity, resource and status color owners retain their meanings.
+The real game honors the existing Settings font, text-size and tone preferences. Compact review
+controls yield to native windows, Training and modal ownership; decorative layers are pointer
+transparent. The top bar, dock and rails retain their existing structure.
 
-Eight original PCM16/48 kHz distribution cues total 9,752,032 bytes; 24-bit masters, MIDI, Surge
-patches and REAPER projects remain private. The existing shared Tame/creature audio owner
-admits at most four decorative pilot voices, one per category, with finite lifetimes and the
-existing mute/hide/route/teardown guards. The pilot's separate decoded-data cache is bounded at
-19,503,360 bytes; native playing AudioBuffers are additional allocations, not included in that
-cache figure. No second audio context is created inside the real game. Legacy sting compatibility
-ownership is unchanged. Music/bed return to silence after 24 seconds; no automatic resume loop.
+The material-rendered Scout appears inside the existing native Shipyard preview only for the
+exact eligible starter stage/livery with no installed systems or hardpoints. Other loadouts
+and unavailable images retain the native loadout preview. The rainy Earth landscape candidate
+is bound to the exact canonical render request, including world identity, roster, environment
+and weather. It becomes visible only when the canonical vista is ready and every candidate
+image has loaded successfully. Until then, or for another world/request, the native globe/vista
+remains the fallback. Galaxy art and canonical flora/fauna generation are unchanged.
+
+All eight body plans retain protected static portraits at 132/300/440; 300 displays the existing
+440 source. Anatomical animation remains INCOMPLETE for every family. The optional accent
+outside the frame demonstrates motion policy only. Existing painter/artlock inputs remain.
+Supporting component mockups and review provenance are secondary accessible disclosures.
+
+The same eight original PCM16/48 kHz audio cues remain listening candidates; masters, MIDI,
+Surge patches and REAPER projects stay private. The shared Tame/creature audio owner admits at
+most four decorative pilot voices, one per category, with finite lifetimes and existing
+mute/hide/route/teardown guards. The separate decoded-data cache remains bounded at 19,503,360
+bytes; native playing AudioBuffers are additional allocations. The real game creates no second
+audio context. Music/bed return to silence after 24 seconds without an automatic resume loop.
 After explicit pilot activation, existing Shipyard/Inventory/Compendium navigation clicks may
-add a short UI cue. Ship/combat/settlement sounds are listening candidates; they are not yet
-mapped to durable game outcomes. Canonical creature synthesis stays unchanged.
+add a short UI cue. Ship/combat/settlement recordings still have no durable outcome mapping.
+Canonical creature synthesis and legacy sting compatibility ownership remain unchanged.
 
-Eight rights rows, real file/header/hash checks and sanitized processing/rights evidence now
-replace the empty audio intake. Human matched-level A/B, anatomy/art direction, comfort and
+Eight authoritative rights rows, file/header/hash checks and sanitized processing evidence
+remain the audio intake. Matched-level human listening, anatomy/art direction, comfort and
 physical iPhone/Safari/PWA evidence remain open. Build-time complete-pack admission enforces
-128 MiB. The 256 MiB aggregate retained-update policy is still reserved, not runtime enforcement.
-See `audits/AAA_PILOT_BCD_20260905.md`, `AAA_GAP_AUDIT.md` and `AAA_COVERAGE_LEDGER.md`.
+128 MiB; the 256 MiB retained-update ceiling remains policy rather than runtime enforcement.
+Current media inventories, backup status and exact-source checks belong to
+`audits/AAA_PILOT_BCD_20260905.md`, `AAA_GAP_AUDIT.md` and `AAA_COVERAGE_LEDGER.md`.
 
-Work stays command-line only: no desktop screenshots, existing-window inspection or user REAPER
-configuration. File inspection and isolated headless captures cover only generated game assets.
-REAPER's renderer launches its desktop process; `open -j -g` supports hidden/background startup
-for future authorized renders but does not establish a true headless or dialog-free mode.
-No further REAPER render is needed for this checkpoint. No Phase 2/chrome migration, hosted
-attempt, PR, label, merge, purchase or release is authorized.
+Work stays command-line only. Isolated headless review may inspect generated game pages and
+assets; it never inspects the desktop, an existing browser/profile or user REAPER settings.
+Those diagnostics do not establish human visual/listening acceptance or a new certificate.
+No further audio render, Phase 2/chrome migration, hosted attempt, purchase or release is part
+of this refinement.
 
 **Current implementation reference — matches code as of 2026-09-05 local.** Static creature/genome,
 hybrid and biome painters are preserved. The art workspace explicitly declares its existing

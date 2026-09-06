@@ -26,6 +26,7 @@ export function createPilotVista(document: Document, layers: readonly string[]):
   layers.forEach((url, index) => {
     const image = document.createElement('img');
     image.alt = ''; image.decoding = 'async'; image.src = url;
+    image.setAttribute('aria-hidden', 'true'); image.setAttribute('draggable', 'false');
     image.dataset.depth = index === 0 ? 'far' : index === 1 ? 'middle' : 'near';
     scene.append(image);
   });
@@ -44,6 +45,7 @@ export function mountPilotPortrait(
   if (![132, 300, 440].includes(size)) throw new RangeError('Unsupported pilot portrait size');
   const document = mount.ownerDocument;
   const frame = pilotElement(document, 'div', 'p-portrait-wrap');
+  frame.dataset.pilotAnatomy = 'static-fallback-incomplete';
   const image = pilotElement(document, 'img', 'p-portrait');
   image.width = size; image.height = size; image.alt = specimen.label;
   image.dataset.pilotSpecimen = specimen.id;

@@ -1,6 +1,11 @@
 import { readFileSync } from 'node:fs';
+import { createRequire } from 'node:module';
+const { JSDOM } = createRequire(import.meta.url)('jsdom') as {
+  JSDOM: new (html: string, options: unknown) => { window: Window & { Event: typeof Event } };
+};
 import { describe, expect, it, vi } from 'vitest';
-import { mountPilotPortrait, installPilotStyle } from '../apps/game/src/pilot-components.js';
+import { mountPilotPortrait, installPilotStyle, createPilotVista } from '../apps/game/src/pilot-components.js';
+import { PILOT_TOKENS } from '../apps/game/src/pilot-tokens.js';
 import { PILOT_SPECIMENS_V1 } from '../apps/game/src/pilot-specimens.js';
 import type { SpeciesArtLoader } from '../apps/game/src/species-art-loader.js';
 
@@ -47,7 +52,9 @@ describe('selected canonical portrait mounts', () => {
     expect(f.mount.children[1]!.textContent).toContain(size === 300 ? 'unchanged 440 px' : `${size} px native`);
     expect(f.mount.children[1]!.textContent).toContain('Anatomical animation incomplete');
     expect(f.image().style.transform).toBe(''); expect(f.image().style.filter).toBe('');
-    expect(f.accent().attributes['aria-hidden']).toBe('true'); expect(JSON.stringify(specimen.genome)).toBe(before);
+    expect(f.accent().attributes['aria-hidden']).toBe('true');
+    expect(f.mount.children[0]!.dataset.pilotAnatomy).toBe('static-fallback-incomplete');
+    expect(JSON.stringify(specimen.genome)).toBe(before);
     const image = f.image(); dispose(); dispose();
     expect(f.mount.children).toHaveLength(0);
     expect(size === 132 ? f.release : f.cancel).toHaveBeenCalledTimes(1);
@@ -85,5 +92,101 @@ describe('selected canonical portrait mounts', () => {
     const code = readFileSync(new URL('../apps/game/src/pilot-components.ts', import.meta.url), 'utf8');
     expect(code).not.toMatch(/requestAnimationFrame|cancelAnimationFrame|performance\.now|setInterval/);
     expect(code).not.toMatch(/image\.style\.(?:transform|filter|opacity)|drawImage|renderSpecies/);
+  });
+});
+
+
+describe('compact pilot direction review', () => {
+  it('keeps scene layers decorative under one named image and uses shared compact typography', () => {
+    const f = fixture();
+    const scene = createPilotVista(f.document as unknown as Document,
+      ['local-far.webp', 'local-middle.webp', 'local-near.webp']) as unknown as Element;
+    expect(scene.attributes.role).toBe('img');
+    expect(scene.attributes['aria-label']).toContain('temperate woodland');
+    expect(scene.children.map((image) => image.dataset.depth)).toEqual(['far', 'middle', 'near']);
+    for (const image of scene.children) {
+      expect(image.alt).toBe('');
+      expect(image.attributes['aria-hidden']).toBe('true');
+      expect(image.attributes.draggable).toBe('false');
+    }
+    expect(PILOT_TOKENS.fontBody).toBe(PILOT_TOKENS.fontDisplay);
+    expect(PILOT_TOKENS.fontBody).toMatch(/^Inter, system-ui,/u);
+    expect(PILOT_TOKENS.fontSize).toEqual({ caption: 12, body: 14, section: 16, title: 22 });
+    expect(PILOT_TOKENS.fontWeight).toEqual({ regular: 400, medium: 500, heading: 600 });
+    expect(PILOT_TOKENS.radius).toBe(8);
+  });
+
+  it('builds the actual Earth-first study with honest version/listening links, full family selectors and native disclosures', async () => {
+    const dom = new JSDOM('<!doctype html><html><head></head><body><main id="pilot-review"></main></body></html>',
+      { url: 'https://example.invalid/audiovisual-pilot.html', pretendToBeVisual: true });
+    const play = vi.fn(async () => true);
+    const disposeLoader = vi.fn();
+    vi.doMock('../apps/game/src/species-art-loader.js', () => ({
+      SpeciesArtLoader: class { activate(): void {} dispose(): void { disposeLoader(); } },
+    }));
+    vi.doMock('../apps/game/src/tame-greeting-audio.js', () => ({
+      createTameGreetingAudioOwner: () => ({
+        armNativePilotGesture: vi.fn(() => true), setHidden: vi.fn(), dispose: vi.fn(async () => {}),
+      }),
+    }));
+    vi.doMock('../apps/game/src/pilot-sound-player.js', () => ({
+      PilotSoundPlayer: class { play = play; stop(): void {} dispose(): void {} },
+    }));
+    vi.stubGlobal('document', dom.window.document);
+    vi.stubGlobal('addEventListener', dom.window.addEventListener.bind(dom.window));
+    // Deferred art remains covered by the existing broker/portrait/vista tests;
+    // this assertion uses the actual shipped study builder, without a worker or device.
+    vi.stubGlobal('requestAnimationFrame', vi.fn(() => 1));
+    try {
+      await import('../apps/game/src/pilot-review.js');
+      const document = dom.window.document;
+      expect(document.querySelector('h1')!.textContent).toBe('Audiovisual pilot');
+      expect([...document.querySelectorAll('#pilot-review>section')].slice(0, 2).map((node) => node.id))
+        .toEqual(['pilot-earth', 'pilot-ship']);
+      expect([...document.querySelectorAll('header nav a')].map((node) =>
+        [node.textContent, node.getAttribute('href')])).toEqual([
+        ['Open playable pilot', './?avpilot=1'],
+        ['Current v2 · without pilot', './'],
+        ['Production v1.8.9', 'https://celestialfrontier.github.io/'],
+      ]);
+      expect(document.querySelectorAll('#pilot-earth canvas')).toHaveLength(2);
+      expect(document.querySelector('[data-pilot-study-vista="candidate"] img')).not.toBeNull();
+      const family = document.querySelector<HTMLSelectElement>('select[aria-label="Body plan specimen"]')!;
+      expect([...family.options].map((option) => option.value))
+        .toEqual(PILOT_SPECIMENS_V1.map((row) => row.id));
+      expect(family.options).toHaveLength(8);
+      expect([...document.querySelector<HTMLSelectElement>('select[aria-label="Actual portrait size"]')!.options]
+        .map((option) => option.value)).toEqual(['132', '300', '440']);
+      expect(document.querySelector('#pilot-specimens .p-rule')!.textContent)
+        .toContain('Anatomical animation remains incomplete');
+      expect(document.querySelector('#pilot-specimens [role=region]')!.getAttribute('tabindex')).toBe('0');
+      expect(document.querySelectorAll('button[data-pilot-cue]')).toHaveLength(8);
+      expect(document.querySelector('#pilot-audio')!.textContent).toContain('Match the listening level manually');
+      expect(document.querySelector('#pilot-audio')!.textContent).toContain('Play music + woodland');
+      expect(document.querySelector('#pilot-audio')!.textContent).not.toContain('Play complete scene');
+      const cue = document.querySelector<HTMLButtonElement>('button[data-pilot-cue]')!;
+      cue.click(); expect(play).not.toHaveBeenCalled();
+      expect(dom.window.getComputedStyle(cue).minHeight).toBe('44px');
+      expect(dom.window.getComputedStyle(cue).borderRadius).toBe('6px');
+      expect(dom.window.getComputedStyle(document.querySelector('h1')!).fontSize).toBe('22px');
+      for (const code of document.querySelectorAll('.p-code')) expect(code.closest('details')).not.toBeNull();
+      const disclosures = document.querySelectorAll<HTMLDetailsElement>('details');
+      expect(disclosures).toHaveLength(4);
+      for (const disclosure of disclosures) {
+        expect(disclosure.open).toBe(false);
+        const summary = disclosure.querySelector('summary')!;
+        expect(dom.window.getComputedStyle(summary).minHeight).toBe('44px');
+      }
+      expect(document.querySelector('#pilot-provenance')!.textContent).toContain('Phase 2 top bar, dock and rails still wait for approval');
+      dom.window.dispatchEvent(new dom.window.Event('pagehide'));
+      expect(disposeLoader).toHaveBeenCalledOnce();
+    } finally {
+      dom.window.close();
+      vi.unstubAllGlobals();
+      vi.doUnmock('../apps/game/src/species-art-loader.js');
+      vi.doUnmock('../apps/game/src/tame-greeting-audio.js');
+      vi.doUnmock('../apps/game/src/pilot-sound-player.js');
+      vi.resetModules();
+    }
   });
 });

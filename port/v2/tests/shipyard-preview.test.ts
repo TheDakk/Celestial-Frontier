@@ -5,6 +5,7 @@ import {
   ShipyardPreviewOwner,
   shipPreviewAriaLabel,
   shipVisualStateKey,
+  starterScoutPreviewEligible,
 } from '../apps/game/src/shipyard-preview.js';
 
 interface TestWindow extends Window { close(): void }
@@ -43,6 +44,88 @@ beforeEach(() => {
 afterEach(() => dom.window.close());
 
 describe('Shipyard SVG preview', () => {
+  it('uses candidate art only for the exact unmodified owned Scout and leaves all other ships native', () => {
+    const owner = new ShipyardPreviewOwner(mount, { starterScoutImageUrl: '/assets/scout.webp' });
+    const starter = state(0);
+    const exclusions: ShipVisualState[] = [
+      ...([1, 2, 3] as const).map((stage) => state(stage)),
+      { ...starter, liverySeed: 133 },
+      { ...starter, provenance: 'legacy-charter-refit' },
+      { ...starter, installedSystemIds: ['jumpdrive'] },
+      ...(['array', 'autoext', 'cscoop'] as const).map((id) => ({
+        ...starter, hardpoints: { ...starter.hardpoints, [id]: true },
+      })),
+    ];
+    for (const excluded of exclusions) {
+      expect(starterScoutPreviewEligible(excluded)).toBe(false);
+      const preview = owner.open(excluded);
+      expect(preview.querySelector('[data-shipyard-candidate]')).toBeNull();
+      expect(preview.getAttribute('data-visual-treatment')).toBe('polished-v1');
+      expect(preview.getAttribute('data-state-key')).toBe(shipVisualStateKey(excluded));
+      if (excluded.provenance === 'legacy-charter-refit') {
+        expect(preview.querySelector('[data-marking="legacy-charter-refit"]')).not.toBeNull();
+      }
+    }
+    expect(starterScoutPreviewEligible(starter)).toBe(true);
+    const candidate = owner.open(starter);
+    expect(candidate.querySelector('[data-shipyard-candidate]')?.getAttribute('href')).toBe('/assets/scout.webp');
+    owner.dispose();
+    const current = new ShipyardPreviewOwner(mount).open(starter);
+    expect(current.querySelector('[data-shipyard-candidate]')).toBeNull();
+  });
+
+  it('keeps the native fallback until the exact candidate loads, restores it on failure and cleans late events', () => {
+    const owner = new ShipyardPreviewOwner(mount, { starterScoutImageUrl: '/assets/scout.webp' });
+    const starter = state(0);
+    const preview = owner.open(starter);
+    const image = preview.querySelector<SVGImageElement>('[data-shipyard-candidate]')!;
+    const native = preview.querySelector<SVGGElement>('[data-layer="chassis"]')!;
+    const event = (name: string): Event => {
+      const result = mount.ownerDocument.createEvent('Event'); result.initEvent(name, false, false); return result;
+    };
+    expect(image.style.display).toBe('none');
+    expect(image.style.pointerEvents).toBe('none');
+    expect(image.getAttribute('aria-hidden')).toBe('true');
+    expect(native.style.display).toBe('');
+    image.setAttribute('href', '/assets/wrong-ship.webp');
+    image.dispatchEvent(event('load'));
+    expect(native.style.display).toBe('');
+    expect(image.style.display).toBe('none');
+    image.setAttribute('href', '/assets/scout.webp');
+    image.dispatchEvent(event('load'));
+    expect(image.style.display).toBe('');
+    expect(native.style.display).toBe('none');
+    expect(preview.dataset.visualTreatment).toBe('pilot-scout');
+    expect(preview.getAttribute('aria-label')).toBe(shipPreviewAriaLabel(starter));
+    expect(preview.dataset.stateKey).toBe(shipVisualStateKey(starter));
+    expect(mount.querySelectorAll('[role="img"]')).toHaveLength(1);
+    expect(owner.open(starter)).toBe(preview);
+    image.dispatchEvent(event('error'));
+    expect(native.style.display).toBe('');
+    expect(image.style.display).toBe('none');
+    expect(preview.dataset.visualTreatment).toBe('polished-v1');
+    owner.dispose();
+    expect(image.hasAttribute('href')).toBe(false);
+    image.dispatchEvent(event('load'));
+    expect(native.style.display).toBe('');
+    expect(owner.diagnostics()).toMatchObject({ activePreviewCount: 0, domPreviewCount: 0, retainedPreviewCount: 0, faultCount: 0 });
+  });
+
+  it('releases candidate listeners when external removal breaks the exact owner pair', () => {
+    const owner = new ShipyardPreviewOwner(mount, { starterScoutImageUrl: '/assets/scout.webp' });
+    const removed = owner.open(state(0));
+    const image = removed.querySelector<SVGImageElement>('[data-shipyard-candidate]')!;
+    removed.remove();
+    expect(owner.diagnostics().faultCount).toBe(1);
+    const replacement = owner.open(state(0));
+    expect(replacement).not.toBe(removed);
+    expect(image.hasAttribute('href')).toBe(false);
+    expect(removed.querySelector('[data-shipyard-candidate]')).toBeNull();
+    expect(owner.diagnostics()).toMatchObject({ activePreviewCount: 1, createdPreviewCount: 2, disposedPreviewCount: 1, retainedPreviewCount: 0, faultCount: 1 });
+    owner.dispose();
+  });
+
+
   it('renders four distinct, honestly labelled chassis through one img role', () => {
     const owner = new ShipyardPreviewOwner(mount);
     const expected = [

@@ -1,9 +1,10 @@
 /* Explicit local-review enhancement over real, already-rendered game routes.
    No navigation, persistence, rewards, species selection or settings writes. */
-import { biomeVistaMountLayoutV1 } from './biome-vista-surface.js';
+import { PILOT_EARTH_VISTA_BINDING } from './pilot-earth-binding.js';
+import { PILOT_RUNTIME_CSS } from './pilot-runtime-style.js';
 import type { ShipVisualState } from '@cf/scene';
 import type { TameGreetingAudioOwner } from './tame-greeting-audio.js';
-import { PILOT_SHIP_IMAGES, PILOT_VISTA_ATMOSPHERE } from './pilot-assets.js';
+import { PILOT_SHIP_IMAGES, PILOT_VISTA_LAYERS, PILOT_VISTA_PHONE } from './pilot-assets.js';
 import { createPilotVista, installPilotStyle, pilotElement } from './pilot-components.js';
 import { PilotSoundPlayer } from './pilot-sound-player.js';
 
@@ -12,6 +13,7 @@ export interface PilotSceneSnapshot {
   readonly routeKey: string | null;
   readonly biomeKey: string | null;
   readonly vistaReady: boolean;
+  readonly vistaBinding?: string | null;
   readonly ship: ShipVisualState;
   readonly motion: boolean;
   readonly effects: boolean;
@@ -21,7 +23,7 @@ export interface AudiovisualPilot {
   dispose(): void;
 }
 export function pilotShipEligible(ship: ShipVisualState): boolean {
-  return ship.chassisStage === 0 && ship.liverySeed === 0x5111
+  return ship.provenance === 'owned-items' && ship.chassisStage === 0 && ship.liverySeed === 0x5111
     && ship.installedSystemIds.length === 0
     && !ship.hardpoints.array && !ship.hardpoints.autoext && !ship.hardpoints.cscoop;
 }
@@ -30,45 +32,36 @@ export function mountAudiovisualPilot(options: Readonly<{
   document: Document;
   initial: PilotSceneSnapshot;
   audio: TameGreetingAudioOwner;
+  onPresentationChange?: (state: { enhanced: boolean; surfaceVisible: boolean; starterScoutImageUrl: string | null }) => void;
 }>): AudiovisualPilot {
   const { document, audio } = options;
   const removeStyle = installPilotStyle(document);
   const root = pilotElement(document, 'div', 'cf-pilot');
   root.dataset.cfAudiovisualPilot = 'v1';
   const style = document.createElement('style');
-  style.textContent = `
-    [data-cf-audiovisual-pilot]{pointer-events:none}
-    [data-cf-pilot-scene]{position:fixed;z-index:1;pointer-events:none;overflow:hidden;opacity:.5}
-    [data-cf-pilot-scene] .p-vista{width:100%;height:100%;aspect-ratio:auto}
-    [data-cf-pilot-scene] .p-vista img{object-fit:fill}
-    [data-cf-pilot-ship]{position:fixed;left:18px;bottom:calc(var(--dock-h,68px) + 16px);width:100px;height:100px;object-fit:contain;z-index:2;pointer-events:none}
-    [data-cf-pilot-controls]{position:fixed;right:12px;bottom:calc(var(--dock-h,68px) + 16px);z-index:80;pointer-events:auto;max-width:min(290px,calc(100vw - 24px));background:#10252bf5;border:1px solid #617e7e;border-radius:12px;padding:8px 12px}
-    [data-cf-pilot-controls] summary{min-height:44px;display:flex;align-items:center;cursor:pointer;color:#dcc38d}
-    [data-cf-pilot-controls] p{font-size:12px;margin:8px 0}
-    [data-cf-pilot-controls] label{min-height:44px;display:flex;gap:8px;align-items:center}
-    body.card-open [data-cf-pilot-scene]{opacity:.3}
-    body.card-open [data-cf-pilot-controls],body.panel-open [data-cf-pilot-controls],body.training [data-cf-pilot-controls],
-    body:has(#tutcard:not([hidden]):not([aria-hidden="true"]):not([style*="display:none"]):not([style*="display: none"])) [data-cf-pilot-controls],
-    body:has(#importsheet:not([hidden]):not([aria-hidden="true"]):not([style*="display:none"]):not([style*="display: none"])) [data-cf-pilot-controls],
-    body:has(#inventorysheet:not([hidden]):not([aria-hidden="true"]):not([style*="display:none"]):not([style*="display: none"])) [data-cf-pilot-controls]{display:none!important;pointer-events:none!important}
-    @media(max-width:600px){[data-cf-pilot-ship]{width:72px;height:72px}}
-  `;
+  style.textContent = PILOT_RUNTIME_CSS;
   const scene = pilotElement(document, 'div'); scene.dataset.cfPilotScene = '';
-  const vista = createPilotVista(document, [PILOT_VISTA_ATMOSPHERE]);
-  vista.style.background = 'transparent';
-  vista.setAttribute('aria-label', 'Candidate atmospheric light over the existing temperate vista');
+  const vista = createPilotVista(document, PILOT_VISTA_LAYERS);
+  vista.setAttribute('aria-label', 'Earth: a candidate rainy landscape with the unchanged canonical vista residents');
   scene.append(vista);
-  const shipImage = document.createElement('img');
-  shipImage.dataset.cfPilotShip = ''; shipImage.src = PILOT_SHIP_IMAGES[132];
-  shipImage.alt = ''; shipImage.setAttribute('aria-hidden', 'true');
+  const landscapeImages = [...vista.querySelectorAll('img')];
+  // Two authored compositions preserve the residents; neither is cover-cropped.
+  const selectComposition = (): void => {
+    const image = landscapeImages[0];
+    if (!image) return;
+    const url = (document.defaultView?.innerWidth ?? 1024) <= 600 ? PILOT_VISTA_PHONE : PILOT_VISTA_LAYERS[0]!;
+    if (image.dataset.presentationSrc === url) return;
+    image.dataset.presentationSrc = url; image.dataset.ready = 'false'; image.src = url;
+  };
+  selectComposition();
   const controls = pilotElement(document, 'details'); controls.dataset.cfPilotControls = '';
   controls.dataset.panelBoundary = '';
-  const summary = pilotElement(document, 'summary', '', 'Audiovisual pilot');
+  const summary = pilotElement(document, 'summary', '', 'Pilot controls');
   const compare = pilotElement(document, 'button', '', 'Show current look');
   compare.setAttribute('aria-pressed', 'false');
   const listen = pilotElement(document, 'button', '', 'Play pilot sound');
   const stop = pilotElement(document, 'button', '', 'Stop sound');
-  const note = pilotElement(document, 'p', '', 'Candidate art and sound. Game controls and creature voices retain their existing behavior.');
+  const note = pilotElement(document, 'p', '', 'Earth landscape, Scout materials and shared UI styling. Other worlds and creature portraits retain their current art.');
   const status = pilotElement(document, 'p', '', 'Sound starts only after you choose Play.');
   status.setAttribute('role', 'status');
   const mono = document.createElement('input'); mono.type = 'checkbox';
@@ -77,22 +70,40 @@ export function mountAudiovisualPilot(options: Readonly<{
     const label = pilotElement(document, 'label', '', text); label.prepend(input); controls.append(label);
   }
   controls.prepend(summary, note, compare, listen, stop); controls.append(status);
-  root.append(style, scene, shipImage, controls); document.body.append(root);
+  root.append(style, scene, controls); document.body.append(root);
   const sound = new PilotSoundPlayer(audio);
   let snapshot = options.initial, enhanced = true, generation = 0, disposed = false, pilotSoundEnabled = false;
   const audioOptions = (): { mono: boolean; reducedIntensity: boolean } => ({ mono: mono.checked, reducedIntensity: soft.checked });
-  const paint = (): void => {
-    root.dataset.motion = snapshot.motion && snapshot.effects && document.visibilityState === 'visible' ? 'animated' : 'static';
-    scene.hidden = !enhanced || !snapshot.effects || !snapshot.vistaReady || snapshot.mode !== 'surface' || snapshot.biomeKey !== 'temperate';
-    if (!scene.hidden) {
-      const view = document.defaultView!;
-      const layout = biomeVistaMountLayoutV1(view.innerWidth, view.innerHeight);
-      scene.style.left = `${layout.centerX - layout.displayWidth / 2}px`;
-      scene.style.top = `${layout.centerY - layout.displayHeight / 2}px`;
-      scene.style.width = `${layout.displayWidth}px`; scene.style.height = `${layout.displayHeight}px`;
-    }
-    shipImage.hidden = !enhanced || !snapshot.effects || snapshot.mode === 'universe' || !pilotShipEligible(snapshot.ship);
+  let lastPresentation = '';
+  const publish = (surfaceVisible: boolean): void => {
+    const state = { enhanced: enhanced && !disposed, surfaceVisible,
+      starterScoutImageUrl: !disposed && enhanced && snapshot.effects && pilotShipEligible(snapshot.ship) ? PILOT_SHIP_IMAGES[300] : null };
+    const key = JSON.stringify(state);
+    if (key === lastPresentation) return;
+    lastPresentation = key;
+    options.onPresentationChange?.(state);
   };
+  const paint = (): void => {
+    if (disposed) return;
+    selectComposition();
+    // Static scene: anatomical motion is not implemented by this candidate.
+    root.dataset.motion = 'static';
+    if (enhanced) document.body.dataset.cfPilotLook = '';
+    else delete document.body.dataset.cfPilotLook;
+    const imagesReady = landscapeImages.length > 0 && landscapeImages.every(image => image.dataset.ready === 'true');
+    scene.hidden = !enhanced || !snapshot.effects || !snapshot.vistaReady || snapshot.mode !== 'surface'
+      || snapshot.biomeKey !== 'temperate' || snapshot.vistaBinding !== PILOT_EARTH_VISTA_BINDING || !imagesReady;
+    publish(!scene.hidden);
+  };
+  const loaded = (event: Event): void => {
+    const image = event.currentTarget as HTMLImageElement;
+    image.dataset.ready = String(event.type === 'load' && image.naturalWidth > 0);
+    paint();
+  };
+  landscapeImages.forEach(image => {
+    image.addEventListener('load', loaded); image.addEventListener('error', loaded);
+    image.dataset.ready = String(image.complete && image.naturalWidth > 0);
+  });
   const play = async (event: MouseEvent): Promise<void> => {
     if (!event.isTrusted || disposed) return;
     sound.stop();
@@ -137,7 +148,9 @@ export function mountAudiovisualPilot(options: Readonly<{
       mono.removeEventListener('change', stopSound); soft.removeEventListener('change', stopSound);
       document.removeEventListener('visibilitychange', visibility);
       document.removeEventListener('click', navigationCue);
-      document.defaultView?.removeEventListener('resize', paint); root.remove(); removeStyle();
+      document.defaultView?.removeEventListener('resize', paint);
+      landscapeImages.forEach(image => { image.removeEventListener('load', loaded); image.removeEventListener('error', loaded); image.removeAttribute('src'); });
+      delete document.body.dataset.cfPilotLook; publish(false); root.remove(); removeStyle();
     },
   };
 }

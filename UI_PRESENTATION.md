@@ -1,5 +1,27 @@
 # Celestial Frontier — UI / Presentation System
 
+## Opt-in audiovisual presentation — 2026-09-05 local
+
+Matches code as of **2026-09-05 local**. The Phase 1 `?avpilot=1` candidate uses shared navy/glass
+and gold tokens with locally licensed Inter, compact spacing, 8px panels and 6px controls.
+Inventory, Shipyard and Atlas keep their purpose-specific layouts, native action/focus owners
+and 44px targets. Settings font, text-size and tone choices remain authoritative; canonical
+rarity/resource/status colors are preserved. Galaxy art and top bar/dock/rail structure remain.
+
+The exact eligible starter Scout material render occupies the native Shipyard preview; other
+loadouts or unavailable images retain native rendering. The rainy Earth landscape is visible
+only for its exact canonical world/roster/environment/weather request after both the native
+vista and candidate images are ready. The native globe/vista remains the fallback. Decorative
+layers do not intercept input, and bounded review controls yield to windows, Training and
+modals. The separate study leads with Earth and Scout, then full family/size and listening
+controls; source details and supporting mockups sit in accessible disclosures.
+
+All eight anatomical families remain incomplete and use protected static portraits. The eight
+audio cues and canonical creature synthesis are unchanged; human listening and visual direction
+acceptance remain pending while scene assets are authored. This is no Phase 2 chrome migration
+or release. `ART_DIRECTION.md` owns the shared pilot implementation reference; `ROADMAP.md`
+and the named review audits own exact-source verification, backup and human review status.
+
 ## Current v2 panel-refill focus
 
 Matches code as of **2026-09-04** (`main.ts` and `panel-refill-focus.ts` in

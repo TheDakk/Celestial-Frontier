@@ -2,19 +2,37 @@
 
 ## Opt-in audiovisual pilot — 2026-09-05 local
 
-From `port/v2`: `npm run build --workspace=@cf/game`, then
+Matches the scoped Phase 1 implementation as of **2026-09-05 local**. From `port/v2`:
+`npm run build --workspace=@cf/game`, then
 `npm run preview --workspace=@cf/game -- --host 127.0.0.1`.
-On that local origin, open `/audiovisual-pilot.html` for the isolated direction/listening study,
-`/?avpilot=1` for the playable comparison, or `/` for the current game. Use an isolated review
-origin/save. The distributable preview has no evidence-only API. Nothing is released or hosted.
+On that local origin, open `/audiovisual-pilot.html` for the compact Earth/Scout direction and
+listening study, `/?avpilot=1` for the playable comparison, or `/` for current v2 without the
+pilot. The study labels production v1.8.9 separately. Use an isolated review origin/save.
+The distributable preview has no evidence-only API. Scene assets are still being authored;
+visual direction and human listening acceptance remain pending.
+
+Shared navy/gold tokens, locally bundled Inter and its linked SIL Open Font License 1.1 support
+compact native Inventory/Shipyard/Atlas layouts. Existing semantic rarity/resource/status colors,
+Settings font/text-size/tone choices, input/focus owners and 44px controls remain authoritative.
+The exact eligible starter Scout material render lives inside the native Shipyard preview, with
+a native loadout fallback. The rainy Earth candidate requires the exact canonical world/roster/
+environment/weather request, a ready native vista and fully loaded candidate images; otherwise
+the native globe/vista remains. Decorative layers are pointer transparent. Bounded review
+controls yield to native windows, Training and modals. Galaxy art stays unchanged.
+
+All eight protected portrait families remain anatomically incomplete at 132/300/440; frame
+motion is not anatomical animation. The eight audio cues and canonical creature synthesis are
+unchanged, with manual matched-level listening still open. No Phase 2 top bar/dock/rails
+migration, release, new backup completion or new certification is implied by this reference.
 
 The CLI-only diagnostic is `node tools/audiovisual-pilot-review.mjs BUILD_DIR OUTPUT_DIR [BASELINE_DIR]`.
-It launches its own headless browser/profile, never an existing browser or desktop; on macOS use
-approved out-of-sandbox execution. It records exact build bytes, 48 unchanged-portrait conditions,
-external-marker/reduced-motion checks, and representative layouts. This is non-certifying and
-cannot replace physical iPhone, human art/listening, or the established admission battery.
-See the root `AAA_COVERAGE_LEDGER.md`, `AAA_GAP_AUDIT.md` and backup/pilot audits for limitations.
-
+It uses its own headless browser/profile and generated game pages, never an existing browser or
+the desktop; on macOS use approved out-of-sandbox execution. Its build identities, portrait/motion
+checks and layout captures describe only the exact source and run recorded. A diagnostic pass
+cannot establish artistic improvement or replace physical iPhone, human art/listening review,
+or the established admission battery. Current new browser-review outcomes belong to the named
+root audits and `../../ROADMAP.md`. See `../../ART_DIRECTION.md`, `../../UI_PRESENTATION.md`,
+`../../AAA_COVERAGE_LEDGER.md` and `../../AAA_GAP_AUDIT.md` for current scope and remaining gaps.
 
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 

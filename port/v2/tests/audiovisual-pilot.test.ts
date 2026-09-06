@@ -6,6 +6,15 @@ const { JSDOM } = createRequire(import.meta.url)('jsdom') as {
 import { shipVisualStateOf } from '@cf/scene';
 import { mountAudiovisualPilot, pilotShipEligible, type PilotSceneSnapshot } from '../apps/game/src/audiovisual-pilot.js';
 import type { TameGreetingAudioOwner } from '../apps/game/src/tame-greeting-audio.js';
+import { PILOT_EARTH_VISTA_BINDING } from '../apps/game/src/pilot-earth-binding.js';
+import { PILOT_SHIP_IMAGES } from '../apps/game/src/pilot-assets.js';
+
+// Two independent layers keep the all-loaded condition non-vacuous even when
+// the current asset pack happens to contain a single flattened image.
+vi.mock('../apps/game/src/pilot-assets.js', async (importOriginal) => ({
+  ...await importOriginal<typeof import('../apps/game/src/pilot-assets.js')>(),
+  PILOT_VISTA_LAYERS: Object.freeze(['/test/candidate-landscape.webp', '/test/candidate-residents.webp']),
+}));
 
 const starter = shipVisualStateOf({ items: [], ascCh: 0, liverySeed: 0x5111 });
 function setup() {
@@ -13,37 +22,153 @@ function setup() {
   const document = dom.window.document;
   const cancelPilotPlayback = vi.fn(), armNativePilotGesture = vi.fn(() => true);
   const audio = { cancelPilotPlayback, armNativePilotGesture, playPilotVoice: vi.fn() } as unknown as TameGreetingAudioOwner;
-  const initial: PilotSceneSnapshot = { mode: 'surface', routeKey: 'earth', biomeKey: 'temperate', vistaReady: true, ship: starter, motion: true, effects: true };
-  const pilot = mountAudiovisualPilot({ document, initial, audio });
+  const initial: PilotSceneSnapshot = { mode: 'surface', routeKey: 'earth', biomeKey: 'temperate', vistaReady: true,
+    vistaBinding: PILOT_EARTH_VISTA_BINDING, ship: starter, motion: true, effects: true };
+  const onPresentationChange = vi.fn();
+  const pilot = mountAudiovisualPilot({ document, initial, audio, onPresentationChange });
   const scene = document.querySelector<HTMLElement>('[data-cf-pilot-scene]')!;
-  const ship = document.querySelector<HTMLImageElement>('[data-cf-pilot-ship]')!;
-  return { dom, document, initial, pilot, scene, ship, cancelPilotPlayback, armNativePilotGesture };
+  const images = [...scene.querySelectorAll('img')];
+  const load = (image: HTMLImageElement, width = 960, type = 'load'): void => {
+    Object.defineProperty(image, 'naturalWidth', { configurable: true, value: width });
+    const event = document.createEvent('Event'); event.initEvent(type, false, false);
+    image.dispatchEvent(event);
+  };
+  return { dom, document, initial, pilot, scene, images, load, onPresentationChange, cancelPilotPlayback, armNativePilotGesture };
 }
 describe('opt-in audiovisual presentation', () => {
   it('uses the starter hull only for its exact unmodified visual loadout', () => {
     expect(pilotShipEligible(starter)).toBe(true);
     expect(pilotShipEligible({ ...starter, liverySeed: 123 })).toBe(false);
+    expect(pilotShipEligible({ ...starter, provenance: 'legacy-charter-refit' })).toBe(false);
     expect(pilotShipEligible({ ...starter, chassisStage: 1 })).toBe(false);
     expect(pilotShipEligible({ ...starter, installedSystemIds: ['array'] })).toBe(false);
     expect(pilotShipEligible({ ...starter, hardpoints: { ...starter.hardpoints, array: true } })).toBe(false);
   });
-  it('cannot substitute atmosphere for an absent or different canonical vista', () => {
+  it('publishes the eligible Shipyard image without a floating ship and waits for every decoded landscape layer', () => {
     const s = setup();
     try {
+      expect(s.document.querySelector('[data-cf-pilot-ship]')).toBeNull();
+      expect(s.images).toHaveLength(2);
+      expect(s.scene.hidden).toBe(true);
+      expect(s.onPresentationChange).toHaveBeenCalledExactlyOnceWith({
+        enhanced: true, surfaceVisible: false, starterScoutImageUrl: PILOT_SHIP_IMAGES[300],
+      });
+      s.load(s.images[0]!, 0);
+      expect(s.scene.hidden).toBe(true);
+      expect(s.onPresentationChange).toHaveBeenCalledTimes(1);
+      s.load(s.images[0]!);
+      expect(s.scene.hidden).toBe(true);
+      expect(s.onPresentationChange).toHaveBeenCalledTimes(1);
+      s.load(s.images[1]!);
       expect(s.scene.hidden).toBe(false);
-      for (const change of [{ vistaReady: false }, { biomeKey: 'desert' }, { effects: false }, { mode: 'system' as const }]) {
-        s.pilot.sync({ ...s.initial, ...change }); expect(s.scene.hidden).toBe(true);
-      }
-      s.pilot.sync(s.initial); expect(s.scene.hidden).toBe(false);
+      expect(s.onPresentationChange).toHaveBeenLastCalledWith({
+        enhanced: true, surfaceVisible: true, starterScoutImageUrl: PILOT_SHIP_IMAGES[300],
+      });
+      expect(s.onPresentationChange).toHaveBeenCalledTimes(2);
+      s.pilot.sync({ ...s.initial }); s.load(s.images[0]!); s.load(s.images[1]!);
+      expect(s.onPresentationChange).toHaveBeenCalledTimes(2);
+      s.load(s.images[1]!, 960, 'error');
+      expect(s.scene.hidden).toBe(true);
+      expect(s.onPresentationChange).toHaveBeenLastCalledWith({
+        enhanced: true, surfaceVisible: false, starterScoutImageUrl: PILOT_SHIP_IMAGES[300],
+      });
+      expect(s.onPresentationChange).toHaveBeenCalledTimes(3);
+      s.load(s.images[1]!, 960, 'error');
+      expect(s.onPresentationChange).toHaveBeenCalledTimes(3);
+      s.load(s.images[1]!);
+      expect(s.scene.hidden).toBe(false);
+      expect(s.onPresentationChange).toHaveBeenCalledTimes(4);
+      s.pilot.sync({ ...s.initial, ship: { ...starter, provenance: 'legacy-charter-refit' } });
+      expect(s.onPresentationChange).toHaveBeenLastCalledWith({ enhanced: true, surfaceVisible: true, starterScoutImageUrl: null });
+      expect(s.armNativePilotGesture).not.toHaveBeenCalled();
     } finally { s.pilot.dispose(); s.dom.window.close(); }
   });
-  it('keeps comparison local and restores the same candidate without changing its route input', () => {
+
+  it('restores native art while a newly selected phone composition loads after resize', () => {
     const s = setup();
     try {
+      s.images.forEach(image => s.load(image)); expect(s.scene.hidden).toBe(false);
+      const wide = s.images[0]!.src;
+      Object.defineProperty(s.dom.window, 'innerWidth', { configurable: true, value: 390 });
+      const resize = s.document.createEvent('Event'); resize.initEvent('resize', false, false);
+      s.dom.window.dispatchEvent(resize);
+      expect(s.images[0]!.src).not.toBe(wide); expect(s.scene.hidden).toBe(true);
+      expect(s.onPresentationChange).toHaveBeenLastCalledWith(expect.objectContaining({ surfaceVisible: false }));
+      s.load(s.images[0]!); expect(s.scene.hidden).toBe(false);
+    } finally { s.pilot.dispose(); s.dom.window.close(); }
+  });
+  it('cannot substitute a loaded candidate for an absent or changed canonical world, weather, roster or profile request', () => {
+    const s = setup();
+    try {
+      s.images.forEach(image => s.load(image));
+      expect(s.scene.hidden).toBe(false);
+      const binding = JSON.parse(PILOT_EARTH_VISTA_BINDING) as {
+        worldKey: string; environmentFingerprint: string; profileDigest: string;
+        options: { wx: string; genes: unknown[] };
+      };
+      const changedWeather = JSON.stringify({ ...binding, options: { ...binding.options, wx: 'clear' } });
+      const changedRoster = JSON.stringify({ ...binding, options: { ...binding.options, genes: binding.options.genes.slice(1) } });
+      expect(changedWeather).not.toBe(PILOT_EARTH_VISTA_BINDING);
+      expect(changedRoster).not.toBe(PILOT_EARTH_VISTA_BINDING);
+      for (const change of [
+        { vistaReady: false }, { biomeKey: 'desert' }, { effects: false }, { mode: 'system' as const },
+        { vistaBinding: undefined }, { vistaBinding: null },
+        { vistaBinding: changedWeather }, { vistaBinding: changedRoster },
+        { vistaBinding: JSON.stringify({ ...binding, worldKey: 'different-world' }) },
+        { vistaBinding: JSON.stringify({ ...binding, environmentFingerprint: 'different-environment' }) },
+        { vistaBinding: JSON.stringify({ ...binding, profileDigest: 'different-profile' }) },
+      ]) {
+        s.pilot.sync({ ...s.initial, ...change });
+        expect(s.scene.hidden, JSON.stringify(change)).toBe(true);
+        expect(s.onPresentationChange).toHaveBeenLastCalledWith(expect.objectContaining({ surfaceVisible: false }));
+        s.pilot.sync(s.initial);
+        expect(s.scene.hidden).toBe(false);
+        expect(s.onPresentationChange).toHaveBeenLastCalledWith(expect.objectContaining({ surfaceVisible: true }));
+      }
+    } finally { s.pilot.dispose(); s.dom.window.close(); }
+  });
+
+  it('keeps comparison local and restores the same candidate and shared styling without changing route inputs', () => {
+    const s = setup();
+    try {
+      s.images.forEach(image => s.load(image));
       const compare = s.document.querySelector<HTMLButtonElement>('[aria-pressed]')!;
-      compare.click(); expect(s.scene.hidden).toBe(true); expect(s.ship.hidden).toBe(true);
-      compare.click(); expect(s.scene.hidden).toBe(false); expect(s.ship.hidden).toBe(false);
-      expect(s.initial.routeKey).toBe('earth'); expect(s.armNativePilotGesture).not.toHaveBeenCalled();
+      expect(s.document.body.dataset.cfPilotLook).toBe('');
+      compare.click();
+      expect(s.scene.hidden).toBe(true);
+      expect(s.document.body.dataset.cfPilotLook).toBeUndefined();
+      expect(compare.getAttribute('aria-pressed')).toBe('true');
+      expect(compare.textContent).toBe('Show pilot look');
+      expect(s.onPresentationChange).toHaveBeenLastCalledWith({ enhanced: false, surfaceVisible: false, starterScoutImageUrl: null });
+      compare.click();
+      expect(s.scene.hidden).toBe(false);
+      expect(s.document.body.dataset.cfPilotLook).toBe('');
+      expect(compare.getAttribute('aria-pressed')).toBe('false');
+      expect(compare.textContent).toBe('Show current look');
+      expect(s.onPresentationChange).toHaveBeenLastCalledWith({ enhanced: true, surfaceVisible: true, starterScoutImageUrl: PILOT_SHIP_IMAGES[300] });
+      expect(s.initial.routeKey).toBe('earth');
+      expect(s.initial.vistaBinding).toBe(PILOT_EARTH_VISTA_BINDING);
+      expect(s.armNativePilotGesture).not.toHaveBeenCalled();
+    } finally { s.pilot.dispose(); s.dom.window.close(); }
+  });
+
+  it('restores presentation and removes media/style ownership once on disposal, rejecting retained load/sync events', () => {
+    const s = setup();
+    try {
+      s.images.forEach(image => s.load(image));
+      const before = s.onPresentationChange.mock.calls.length;
+      s.pilot.dispose();
+      expect(s.onPresentationChange).toHaveBeenCalledTimes(before + 1);
+      expect(s.onPresentationChange).toHaveBeenLastCalledWith({ enhanced: false, surfaceVisible: false, starterScoutImageUrl: null });
+      expect(s.document.body.dataset.cfPilotLook).toBeUndefined();
+      expect(s.document.querySelector('[data-cf-audiovisual-pilot]')).toBeNull();
+      expect(s.document.querySelector('[data-cf-pilot-style]')).toBeNull();
+      expect(s.images.every(image => !image.hasAttribute('src'))).toBe(true);
+      s.pilot.dispose(); s.pilot.sync(s.initial);
+      s.images.forEach(image => s.load(image));
+      expect(s.onPresentationChange).toHaveBeenCalledTimes(before + 1);
+      expect(s.cancelPilotPlayback).toHaveBeenCalledOnce();
+      expect(s.document.body.dataset.cfPilotLook).toBeUndefined();
     } finally { s.pilot.dispose(); s.dom.window.close(); }
   });
   it.each(['card-open', 'panel-open', 'training'])('removes expanded pilot controls from hit testing under %s ownership', (state) => {
