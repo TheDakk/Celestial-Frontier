@@ -106,13 +106,19 @@ describe('opt-in audiovisual presentation', () => {
         worldKey: string; environmentFingerprint: string; profileDigest: string;
         options: { wx: string; genes: unknown[] };
       };
+      const absentBinding: PilotSceneSnapshot = { ...s.initial };
+      delete (absentBinding as { vistaBinding?: string | null }).vistaBinding;
+      s.pilot.sync(absentBinding);
+      expect(s.scene.hidden).toBe(true);
+      expect(s.onPresentationChange).toHaveBeenLastCalledWith(expect.objectContaining({ surfaceVisible: false }));
+      s.pilot.sync(s.initial); expect(s.scene.hidden).toBe(false);
       const changedWeather = JSON.stringify({ ...binding, options: { ...binding.options, wx: 'clear' } });
       const changedRoster = JSON.stringify({ ...binding, options: { ...binding.options, genes: binding.options.genes.slice(1) } });
       expect(changedWeather).not.toBe(PILOT_EARTH_VISTA_BINDING);
       expect(changedRoster).not.toBe(PILOT_EARTH_VISTA_BINDING);
       for (const change of [
         { vistaReady: false }, { biomeKey: 'desert' }, { effects: false }, { mode: 'system' as const },
-        { vistaBinding: undefined }, { vistaBinding: null },
+        { vistaBinding: null },
         { vistaBinding: changedWeather }, { vistaBinding: changedRoster },
         { vistaBinding: JSON.stringify({ ...binding, worldKey: 'different-world' }) },
         { vistaBinding: JSON.stringify({ ...binding, environmentFingerprint: 'different-environment' }) },
