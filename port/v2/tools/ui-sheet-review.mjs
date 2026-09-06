@@ -26,7 +26,7 @@ export function readSheetGeometry() {
     return { x: r.x, y: r.y, left: r.left, top: r.top, right: r.right, bottom: r.bottom,
       width: r.width, height: r.height, visible: s.display !== 'none' && s.visibility !== 'hidden'
         && Number(s.opacity) > 0 && r.width > 0 && r.height > 0,
-      position: s.position, z: Number(s.zIndex), scrollTop: node.scrollTop,
+      position: s.position, z: Number(s.zIndex), maxHeight: parseFloat(s.maxHeight), scrollTop: node.scrollTop,
       scrollHeight: node.scrollHeight, clientHeight: node.clientHeight, overflowY: s.overflowY };
   };
   const ids = ['setpanel', 'survey', 'planetside', 'toast', 'hintpill', 'ctxbar', 'dock', 'tutcard', 'topbar'];
@@ -37,7 +37,7 @@ export function readSheetGeometry() {
   const intersection = a && b ? { left: Math.max(a.left,b.left), top: Math.max(a.top,b.top), right: Math.min(a.right,b.right), bottom: Math.min(a.bottom,b.bottom) } : null;
   const trainingOverlap = intersection && intersection.right > intersection.left && intersection.bottom > intersection.top
     ? { ...intersection, owner: document.elementFromPoint((intersection.left+intersection.right)/2,(intersection.top+intersection.bottom)/2)?.closest('#setpanel,#tutcard')?.id ?? null } : null;
-  return { viewport: { width: innerWidth, height: innerHeight }, roots, trainingOverlap, header: rect(header), close: c,
+  return { viewport: { width: innerWidth, height: innerHeight }, safe: Object.fromEntries(['top','right','bottom','left'].map(k => [k, parseFloat(root.getPropertyValue('--safe-'+k)) || 0])), roots, trainingOverlap, header: rect(header), close: c,
     closeCount: panel.querySelectorAll('[data-pnx]').length, closeNative: close?.tagName === 'BUTTON' && !close.disabled,
     closeHit: !!hit && (hit === close || close.contains(hit)), closeName: close?.getAttribute('aria-label'),
     sheetFloor: parseFloat(root.getPropertyValue('--cf-sheet-floor')), lowerTop: parseFloat(root.getPropertyValue('--cf-lower-top')),
@@ -62,6 +62,11 @@ export function assessSheetGeometry(state, { panel = false, training = false, fi
   if (panel) {
     if (!inside(r.setpanel) || !inside(state.header) || state.header.position !== 'sticky'
       || state.header.top < r.setpanel.top - 1 || state.header.bottom > r.setpanel.bottom + 1) errors.push('panel-header');
+    if (v.width <= 900 && v.width > v.height) {
+      const safe = state.safe, expected = { left: safe.left + 8, top: safe.top + 6,
+        width: (v.width - safe.left - safe.right - 36) / 2, maxHeight: v.height - safe.top - safe.bottom - 30 };
+      if (Object.entries(expected).some(([k, n]) => !Number.isFinite(r.setpanel[k]) || Math.abs(r.setpanel[k] - n) > 1)) errors.push('landscape-sheet-workspace');
+    }
     if (!state.close?.visible || state.close.position !== 'sticky' || state.close.width < 44 || state.close.height < 44
       || state.closeCount !== 1 || !state.closeNative || !state.closeHit || !state.closeName) errors.push('panel-close');
   }
@@ -103,8 +108,20 @@ export function readNativeTarget(selector) {
     left: r.left, right: r.right, width: r.width, height: r.height }, hit: describe(hit), clips };
 }
 
+/** A Surface presentation fixture must use the Surface owner's copy/markup,
+ * not accidentally combine its biosphere with the prior Sol route's captions. */
+export function surfaceFixtureCopy(mainSource, chromeSource) {
+  const marker = "} else if (nav.mode === 'surface' && nav.gal && nav.star && nav.planet) {";
+  const parts = mainSource.split(marker);
+  if (parts.length !== 2) throw new Error('Surface copy owner is not unique');
+  const hint = parts[1].match(/setHint\('([^'\n]*)'\);/), context = parts[1].match(/setCtx\('([^'\n]*)'\);/);
+  const keyword = chromeSource.match(/^const HINT_KEYWORD = \/(.*)\/([a-z]*);$/m);
+  if (!hint || !context || !keyword || !chromeSource.includes("hint.innerHTML = text.replace(HINT_KEYWORD, '<b class=\"kw\">$1</b>');")) throw new Error('Surface chrome formatting owner changed');
+  return { hintText: hint[1], contextText: context[1], hintHtml: hint[1].replace(new RegExp(keyword[1], keyword[2]), '<b class="kw">$1</b>') };
+}
+
 /** Fixtures populate existing nodes only; preserve child identity and all original attributes. */
-export function sheetFixture(restore = false) {
+export function sheetFixture(restore = false, copy = null) {
   const snapshot = node => ({ node, attributes: [...node.attributes].map(a => [a.name, a.value]), children: node === document.body ? null : [...node.childNodes] });
   const attributes = node => [...node.attributes].map(a => [a.name, a.value]);
   if (restore) {
@@ -120,15 +137,17 @@ export function sheetFixture(restore = false) {
     delete window.__cfU2Fixture; return rows;
   }
   if (window.__cfU2Fixture) throw new Error('fixture already active');
-  const side = document.getElementById('planetside'), toast = document.getElementById('toast');
-  window.__cfU2Fixture = [document.body, side, toast].map(snapshot);
+  const side = document.getElementById('planetside'), toast = document.getElementById('toast'), hint = document.getElementById('hintpill'), context = document.getElementById('ctxbar');
+  if (!copy?.hintHtml || !copy?.contextText || !hint || !context) throw new Error('missing source-owned Surface fixture copy');
+  window.__cfU2Fixture = [document.body, side, toast, hint, context].map(snapshot);
+  hint.innerHTML = copy.hintHtml; context.textContent = copy.contextText;
   document.body.classList.add('surface-mode');
   side.dataset.u2Fixture = 'presentation-only'; side.style.display = 'block';
   const rows = Array.from({ length: 12 }, (_, i) => { const line = document.createElement('div');
     line.textContent = `Presentation fixture — biosphere row ${i + 1}`; return line; });
   side.replaceChildren(...rows);
   toast.dataset.u2Fixture = 'presentation-only'; toast.textContent = 'Homecoming — presentation fixture, no reward or saved event'; toast.style.opacity = '1';
-  return { scope: 'presentation-only: native containers, synthetic text; no gameplay outcome', ids: [side.id, toast.id] };
+  return { scope: 'presentation-only: native containers, synthetic text; no gameplay outcome', ids: [side.id, toast.id, hint.id, context.id], surfaceCopy: copy };
 }
 export function sheetFault(kind, restore = false) {
   if (restore) {
@@ -146,6 +165,12 @@ export function sheetFault(kind, restore = false) {
     const node = document.getElementById('setpanel'), card = document.getElementById('tutcard'), r = card.getBoundingClientRect();
     saved.node = node; saved.attribute = node.getAttribute('style');
     for (const [k,v] of Object.entries({top:r.top+'px',left:r.left+'px',right:'auto',bottom:'auto',transform:'none',width:r.width+'px',height:r.height+'px','max-height':r.height+'px','z-index':String(Number(getComputedStyle(card).zIndex)-1)})) node.style.setProperty(k,v,'important');
+  } else if (kind === 'landscape-sheet-anchor') {
+    const node = document.getElementById('setpanel'), root = getComputedStyle(document.documentElement);
+    const top = parseFloat(root.getPropertyValue('--topbar-h')) + 8;
+    saved.node = node; saved.attribute = node.getAttribute('style');
+    node.style.setProperty('top', top + 'px', 'important');
+    node.style.setProperty('max-height', Math.max(44, parseFloat(root.getPropertyValue('--cf-sheet-floor')) - top) + 'px', 'important');
   } else if (kind === 'toast-over-biosphere') {
     const node = document.getElementById('toast'), r = document.getElementById('planetside').getBoundingClientRect();
     saved.node = node; saved.attribute = node.getAttribute('style');
@@ -165,6 +190,8 @@ export async function runUiSheetReview(buildDir, outDir) {
   const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
   const git = args => execFileSync('git', args, { cwd: repo, encoding: 'utf8' }).trim();
   const build = fs.realpathSync(buildDir), output = path.resolve(outDir), source = git(['rev-parse', 'HEAD']);
+  const fixtureMain = fs.readFileSync(path.join(repo,'port/v2/apps/game/src/main.ts'),'utf8'), fixtureChrome = fs.readFileSync(path.join(repo,'port/v2/apps/game/src/app-chrome.ts'),'utf8');
+  const surfaceCopy = surfaceFixtureCopy(fixtureMain, fixtureChrome);
   assert.equal(git(['status', '--porcelain', '--untracked-files=all']), '', 'requires clean committed candidate');
   assert(!fs.existsSync(output), 'output must be new: previous/red evidence is immutable');
   const index = fs.readFileSync(path.join(build, 'index.html')), worker = fs.readFileSync(path.join(build, 'service-worker.js'));
@@ -175,6 +202,7 @@ export async function runUiSheetReview(buildDir, outDir) {
   fs.mkdirSync(output, { recursive: true });
   const report = { schema: 'cf-u2-sheet-review/v1', certification: false, source, startedAt: new Date().toISOString(), status: 'RUNNING',
     selection: U2_VIEWPORTS, omittedViewports: GLASS_MATRIX_VIEWPORTS.slice(10).map(v => v.label), preferences: U2_PREFERENCES,
+    fixtureCopy: { mainSha256: sha(fixtureMain), chromeSha256: sha(fixtureChrome), ...surfaceCopy },
     build: { path: build, indexSha256: sha(index), workerSha256: sha(worker), assets }, rows: [], nativeInputs: [], wheels: [],
     frames: [], evaluations: {}, images: [], errors: [], limitations: ['Not U4, full Glass, device UAT or visual acceptance.',
       'Planetside/toast fixtures are geometry only, with exact native node/attribute restoration; no capture, reward, persistence or gameplay evidence.',
@@ -234,7 +262,7 @@ export async function runUiSheetReview(buildDir, outDir) {
       let primary;
       try { faultActive = true; await evaluate(`(${sheetFault.toString()})(${JSON.stringify(kind)})`, 'fault.' + kind); await frames('fault.frames');
         proof.broken = await state(); proof.verdict = assessSheetGeometry(proof.broken, options);
-        const expected = kind === 'toast-over-biosphere' ? 'toast-planetside' : kind === 'settings-below-training' ? 'settings-training-order' : 'panel-header';
+        const expected = kind === 'toast-over-biosphere' ? 'toast-planetside' : kind === 'settings-below-training' ? 'settings-training-order' : kind === 'landscape-sheet-anchor' ? 'landscape-sheet-workspace' : 'panel-header';
         proof.detected = proof.verdict.errors.includes(expected); assert(proof.detected, 'fault did not produce its exact expected result');
         if (kind === 'settings-below-training') assert.equal(proof.broken.trainingOverlap?.owner, 'tutcard', 'layer fault must cover the actual shared point');
         if (kind === 'earlier-equal-specificity') { await evaluate(`(${sheetFault.toString()})('earlier-fix-last')`, 'earlier-fix.move-last'); await frames('earlier-fix.frames');
@@ -265,6 +293,7 @@ export async function runUiSheetReview(buildDir, outDir) {
       await click('#setpanel [data-pnx]'); await reveal('[data-sel=tutskip]', '#tutcard'); await click('[data-sel=tutskip]'); await wait(`!document.body.classList.contains('training')&&!document.querySelector('[data-sel=tutskip]')`, 'skip-complete');
       await evaluate(`document.body.classList.add(...${JSON.stringify(preference.split(' ').filter(v => v !== 'default'))});true`, 'presentation.preference-after-skip');
       await click('#docksets'); await check('Settings native open', { panel: true });
+      if (viewport.width > viewport.height && viewport.width <= 900) await control('landscape-sheet-anchor', { panel: true });
       await control('earlier-equal-specificity', { panel: true }); await control('header-not-sticky', { panel: true });
       const before = await state(); const movement = await wheel('#setpanel', 10000); const scrolled = await check('Settings scrolled', { panel: true });
       assert(before.roots.setpanel.scrollHeight <= before.roots.setpanel.clientHeight + 1 || movement.scroll > movement.before, 'scrollable Settings did not move');
@@ -280,7 +309,7 @@ export async function runUiSheetReview(buildDir, outDir) {
       if (row.survey.available && !row.survey.visible) await click('#docksurvey');
       row.survey.status = row.survey.available ? 'MEASURED' : 'NOT RUN: no current-route card';
       await wait(`document.getElementById('toast').style.opacity!=='1'&&Number(getComputedStyle(document.getElementById('toast')).opacity)===0`, 'native-toast-finished-before-fixture');
-      fixtureActive = true; row.fixture = await evaluate(`(${sheetFixture.toString()})()`, 'presentation.fixture'); await frames('fixture.frames');
+      fixtureActive = true; row.fixture = await evaluate(`(${sheetFixture.toString()})(false,${JSON.stringify(surfaceCopy)})`, 'presentation.fixture'); await frames('fixture.frames');
       await check('populated lower lanes', { fixture: true }); await capture('lower-lanes'); await control('toast-over-biosphere', { fixture: true });
       row.fixtureRestoration = await evaluate(`(${sheetFixture.toString()})(true)`, 'presentation.fixture.restore'); fixtureActive = false;
       assert(row.fixtureRestoration.every(v => v.attributesExact && v.childrenExact)); await frames('fixture.restore.frames'); await check('restored native layout');
@@ -291,7 +320,14 @@ export async function runUiSheetReview(buildDir, outDir) {
       assert.equal(report.errors.length, 0, 'runtime errors');
     }
     assert.equal(git(['rev-parse', 'HEAD']), source); assert.equal(git(['status', '--porcelain', '--untracked-files=all']), ''); report.status = 'PASS';
-  } catch (error) { report.status = 'FAIL'; report.failure = String(error); if (row) row.status = 'FAIL'; }
+  } catch (error) {
+    report.status = 'FAIL'; report.failure = String(error); if (row) row.status = 'FAIL';
+    if (send && row) try {
+      const { data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: false });
+      const bytes = Buffer.from(data, 'base64'), file = row.id + '-failure.png';
+      fs.writeFileSync(path.join(output, file), bytes, { flag: 'wx' }); report.images.push({ file, sha256: sha(bytes), bytes: bytes.length });
+    } catch (captureError) { report.failureCaptureError = String(captureError); }
+  }
   finally {
     for (const [active, expression, label] of [[faultActive, `(${sheetFault.toString()})('',true)`, 'fault'], [fixtureActive, `(${sheetFixture.toString()})(true)`, 'fixture']]) if (active) {
       try { report[label + 'EmergencyRestoration'] = await evaluate(expression, label + '.emergency-restoration'); } catch (error) { report.errors.push({ cleanup: label, error: String(error) }); }

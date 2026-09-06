@@ -2,7 +2,7 @@
  * panel scrolling and Compendium's virtual scrollport retain their owners. */
 const SHEETS = ":is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#shipyardpanel,#inventorypanel,#combatpanel,#setpanel,#guidepanel,#notificationpanel)";
 export const UI_SHEET_CSS = `
-:root{--cf-lower-top:calc(100dvh - var(--safe-bottom) - 164px);--cf-sheet-floor:calc(var(--cf-lower-top) - 8px);--cf-sheet-bottom:calc(100dvh - var(--cf-sheet-floor));--cf-toast-bottom:calc(100dvh - var(--cf-lower-top) + 8px);--cf-toast-height:0px}
+:root{--cf-lower-top:calc(100dvh - var(--safe-bottom) - 164px);--cf-sheet-floor:calc(var(--cf-lower-top) - 8px);--cf-sheet-bottom:calc(100dvh - var(--cf-sheet-floor));--cf-toast-bottom:calc(100dvh - var(--cf-lower-top) + 8px);--cf-toast-height:0px;--cf-planetside-floor:var(--cf-sheet-floor)}
 ${SHEETS},#survey{--cf-sheet-start:calc(var(--topbar-h) + 8px);top:var(--cf-sheet-start);bottom:auto;min-height:0;max-height:max(44px,calc(var(--cf-sheet-floor) - var(--cf-sheet-start)));overflow-y:auto;overscroll-behavior:contain;scrollbar-color:var(--cf-color-border) transparent;border-radius:var(--cf-radius-panel);border-color:var(--cf-color-border)}
 .panel{z-index:var(--cf-layer-sheet)}
 #codexpanel .compendium-scroll{height:min(560px,max(44px,calc(var(--cf-sheet-floor) - var(--topbar-h) - 116px)))}
@@ -44,8 +44,8 @@ body.training #setpanel{z-index:var(--cf-layer-training-settings)}
  #setpanel{left:auto;right:calc(var(--safe-right) + 16px);top:calc((var(--topbar-h) + var(--cf-sheet-floor)) / 2);bottom:auto;transform:translateY(-50%);max-height:max(44px,calc(var(--cf-sheet-floor) - var(--topbar-h) - 16px))}
 }
 @media(max-width:900px) and (orientation:landscape){
- body.panel-open .panel,body.panel-open #notificationpanel{--cf-sheet-start:calc(var(--safe-top) + 6px);top:var(--cf-sheet-start);bottom:auto;left:calc(var(--safe-left) + 8px);right:auto;transform:none;width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);max-height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 30px)}
- body.surface-mode #planetside{top:calc(var(--topbar-h) + 6px);bottom:auto;min-height:0;max-height:max(44px,calc(var(--cf-sheet-floor) - var(--topbar-h) - 6px))}
+ body.panel-open ${SHEETS}{--cf-sheet-start:calc(var(--safe-top) + 6px);top:var(--cf-sheet-start);bottom:auto;left:calc(var(--safe-left) + 8px);right:auto;transform:none;width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);max-height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 30px)}
+ body.surface-mode #planetside{top:calc(var(--topbar-h) + 6px);bottom:auto;min-height:0;max-height:max(44px,calc(var(--cf-planetside-floor) - var(--topbar-h) - 6px))}
  body.panel-open #toast{width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);right:calc(var(--safe-right) + 12px)}
 }
 @media(prefers-reduced-motion:reduce){:is(.panel,#survey,#toast,#tutspot,#dock,#topbar,#sceneactions,#raillft,#railrgt),:is(.panel,#survey,#dock,#topbar,#sceneactions,#raillft,#railrgt) *{transition:none!important;animation:none!important}}

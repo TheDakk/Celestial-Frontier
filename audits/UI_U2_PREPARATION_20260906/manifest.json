@@ -94,6 +94,34 @@
       "rawSha256": "cae1ad6d07a7e6a082b1ebfcf65c0ddfe6b38032315e1a4ddd4b60495f39fa1b",
       "bytes": 827,
       "sha256": "bf9dd79d917edc195026b2860e2b4669b9400b6e7ee181561e863b98cff5a007"
+    },
+    {
+      "file": "cf-u2-landscape-spacing-correction-20260906.log.gz",
+      "rawBytes": 792,
+      "rawSha256": "9c2e3a34723d81c5edf1b3a0f6983ea0365711f4bf0349e8dae3dabf2cf3b907",
+      "bytes": 426,
+      "sha256": "01976780f97d50a462001f110435d0f2646a8d431e6d9c69de95dc363175a3f5"
+    },
+    {
+      "file": "cf-u2-landscape-spacing-corrected-fixture-20260906.log.gz",
+      "rawBytes": 6766,
+      "rawSha256": "ffb53b9680cbc6aaa9a06d832ac0096ae5c42f987899c56f3961fb50f362cdd8",
+      "bytes": 2707,
+      "sha256": "652ddaf1d46da1884e3189dad77900176f76a8a7746acbf194ae0d30ce6c7a9c"
+    },
+    {
+      "file": "cf-u2-landscape-producer-20260906.json.gz",
+      "rawBytes": 1277,
+      "rawSha256": "0c517c3ad4617702f2060346ad2e2650b7d751e490c06a6e32f44c89d4332116",
+      "bytes": 596,
+      "sha256": "7238ab560d47b25f93d665cb23040f481d4445d03881ecb20a2ae51dc7eef179"
+    },
+    {
+      "file": "cf-u2-landscape-producer-pins-20260906.log.gz",
+      "rawBytes": 245,
+      "rawSha256": "382eb11029b43be7ffd8ffc1242b82c04f9965b6bde7fcc0e57d28fb69c6b79f",
+      "bytes": 200,
+      "sha256": "39d4165fb0c560184a980b75af021f68ec04f82ec8fe455d7994c67732b6cbe9"
     }
   ]
 }
