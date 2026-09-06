@@ -2,6 +2,25 @@
 
 Nick supplied this brief on 2026-09-05. The quoted program below is retained verbatim.
 
+### Latest screenshot amendment — Nick, 2026-09-06
+
+Use actual production v1.8.9 layout code as the foundation. Phone boards have no visible
+labels; keep Prime N/9. Desktop/tablet restore left Charters/Compendium, top-center Prime,
+upper-right Search → Objective → Star Atlas → Shipyard, bottom-right Records/Notifications/
+Guide/Settings, and bottom-center plain guidance. Phone Search stays toward center with
+Objective upper-right. Nameplate shows the full name only and opens Inventory. Health keeps
+its caption, red heart and numeric ratio without HP. Rounded pills replace square top chrome;
+remove the visible Cosmos/Current view label and the hint pill. U3 will refine presentation
+inside the approved layout, not relocate these controls.
+
+Actual live and tracked production CSS match. Its60px phone boards supersede the brief's 58px;
+64px centers remain. Preserve 44px targets and 8px owned rail gaps; wide utilities use 52px pitch
+rather than copy overlapping legacy coarse-pointer anchors. The existing >=701 tablet/wide
+boundary and <=900 short-landscape safe-column exception remain explicit v2 adaptations.
+This is bounded U1 under the existing visual approval stop. No U2–U4 or Phase2 execution.
+
+### Superseded amendments below (preserved verbatim)
+
 Latest amendment — Nick's top/left refinement, 2026-09-06: keep the approved bottom
 launcher, align the top and left controls, stack and space the left actions consistently,
 and improve the health gauge. Cosmos belongs at the top; no floating button belongs in the

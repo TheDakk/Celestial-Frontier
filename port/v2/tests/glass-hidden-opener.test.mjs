@@ -12,18 +12,17 @@ const nativeInput = (id, pointerType = 'mouse') => ({
   receipt: { buttonId: id, trusted: true, pointerType },
 });
 const visibleAtlas = () => ({
-  panel: 'atlas', cardOpen: false, openerId: 'dockatlas', openerRendered: true, openerDisplay: 'flex',
-  openerVisibility: 'visible', dockRendered: true, closeFocused: true,
+  panel: 'atlas', cardOpen: false, openerId: 'railatlas', openerRendered: true, openerDisplay: 'flex',
+  openerVisibility: 'visible', dockRendered: true, railRendered: true, railDisplay: 'flex', closeFocused: true,
+  openerSameNode: true, style: { present: false, value: null },
 });
 const hiddenAtlas = () => ({
-  ...visibleAtlas(), cardOpen: true, openerRendered: false, openerDisplay: 'none',
+  ...visibleAtlas(), cardOpen: true, openerRendered: false, railRendered: false, railDisplay: 'none',
   closeFocused: false, surveyRendered: true, focus: 'docksurvey',
 });
 const journey = (pointerType = 'mouse') => ({
-  pointerType, opening: nativeInput('dockatlas', pointerType), baseline: visibleAtlas(),
-  hiding: nativeInput('docksurvey', pointerType), surveyBaseline: { ...visibleAtlas(), cardOpen: true },
-  mutation: { kind: 'owned-dock-opener-display-none', selector: '#dockatlas', sameNode: true,
-    prior: { present: false, value: null }, applied: { display: 'none', priority: 'important' } },
+  pointerType, opening: nativeInput('railatlas', pointerType), baseline: visibleAtlas(),
+  hiding: nativeInput('docksurvey', pointerType),
   hidden: hiddenAtlas(),
 });
 const closed = () => ({ ...hiddenAtlas(), panel: null });
@@ -58,13 +57,13 @@ describe('Glass visible-to-hidden native panel opener proof', () => {
     ['Survey did not open', (row) => { row.hidden.cardOpen = false; }],
     ['opener did not hide', (row) => { row.hidden.openerRendered = true; }],
     ['launcher was hidden', (row) => { row.hidden.dockRendered = false; }],
-    ['Survey unexpectedly hid the opener', (row) => { row.surveyBaseline.openerRendered = false; }],
-    ['missing owned injection', (row) => { row.mutation = null; }],
-    ['wrong injection owner', (row) => { row.mutation.selector = '#railatlas'; }],
-    ['replaced injected node', (row) => { row.mutation.sameNode = false; }],
-    ['unapplied hiding declaration', (row) => { row.mutation.applied.display = 'flex'; }],
-    ['lost declaration priority', (row) => { row.mutation.applied.priority = ''; }],
-    ['unknown prior style presence', (row) => { row.mutation.prior = {}; }],
+    ['Survey left the rail visible', (row) => { row.hidden.railRendered = true; }],
+    ['rail was not CSS-yielded', (row) => { row.hidden.railDisplay = 'flex'; }],
+    ['missing native owner identity', (row) => { row.baseline.openerSameNode = false; }],
+    ['replaced hidden owner', (row) => { row.hidden.openerSameNode = false; }],
+    ['injected hiding declaration', (row) => { row.hidden.style = { present: true, value: 'display:none!important' }; }],
+    ['lost prior style bytes', (row) => { row.baseline.style = { present: true, value: 'color:gold' }; }],
+    ['unknown prior style presence', (row) => { row.baseline.style = {}; }],
   ])('rejects %s before judging fallback focus', (_label, mutate) => {
     const row = journey();
     mutate(row);
@@ -96,8 +95,8 @@ describe('Glass visible-to-hidden native panel opener proof', () => {
     expect(hiddenPanelOpenerFocusOutcome(row).ok).toBe(true);
   });
 
-  it('requires exact style presence/bytes, native target identity and focus preservation after the owned hide', () => {
-    const restored = (prior) => ({ ...visibleAtlas(), panel: null, cardOpen: true, focus: 'docksurvey',
+  it('requires exact style presence/bytes, native target identity and focus preservation after native Survey Close restores the rail', () => {
+    const restored = (prior) => ({ ...visibleAtlas(), panel: null, cardOpen: false, focus: 'docksurvey',
       sameNode: true, centreOwned: true, focusUnchanged: true, ...prior });
     for (const prior of [{ present: false, value: null }, { present: true, value: '' },
       { present: true, value: 'color: gold !important;' }]) {
@@ -127,15 +126,15 @@ describe('Glass visible-to-hidden native panel opener proof', () => {
     expect(block).not.toContain('.click()');
     expect(block).not.toContain('railrecords');
     for (const marker of [
-      "activateRealControl('#dockatlas'",
+      "activateRealControl('#railatlas'",
       'const baseline = await evalIn(hiddenOpenerSnapshot);',
       "activateRealControl('#docksurvey', 'hidden-opener Survey transition')",
       'const hidden = await evalIn(hiddenOpenerSnapshot);',
-      'hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, surveyBaseline, mutation, hidden, pointerType })',
-      "kind:'owned-dock-opener-display-none',selector:'#dockatlas'",
-      "opener.setAttribute('style','');opener.removeAttribute('style');",
-      "if(prior.present)opener.setAttribute('style',prior.value);",
-      'hiddenPanelOpenerRestorationOutcome(mutation.prior, restored)',
+      'hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, hidden, pointerType })',
+      "openerSameNode:opener===window.__cfGlassHiddenNativeOpener",
+      "activateRealControl('#docksurvey', 'hidden-opener native Survey close restores rail')",
+      'hiddenPanelOpenerRestorationOutcome(baseline.style, restored)',
+      "delete window.__cfGlassHiddenNativeOpener",
       'if (!setup.ok) stopInstrumentControl(',
       `activateRealControl('#atlaspanel [data-pnx="atlas"]'`,
       'hiddenPanelOpenerFocusOutcome({ setup, closing, fallback, pointerType })',
@@ -151,13 +150,14 @@ describe('Glass visible-to-hidden native panel opener proof', () => {
 });
 
 
-describe('Glass uniform launcher ownership', () => {
+describe('Glass responsive native control ownership', () => {
   const source = fs.readFileSync(new URL('../tools/glassmatrix.mjs', import.meta.url), 'utf8');
-  it('selects native dock openers and all nine entries while retaining planned historical compositions', () => {
+  it('selects visible rails or compact dock while retaining planned historical compositions', () => {
     const ordinary = source.slice(source.indexOf('        const ordinaryPanels = ['),
       source.indexOf('          const cardBeforePanel ='));
-    expect(ordinary).toContain('const opener = item.dock;');
-    expect(ordinary).not.toMatch(/#rail(?:codex|atlas|charters|shipyard)/);
+    expect(ordinary).toContain('const opener = wideChrome && item.rail ? item.rail : item.dock;');
+    for(const id of ['codex','atlas','charters','shipyard'])expect(ordinary).toContain("rail: '#rail"+id+"'");
+    expect(ordinary).toContain('vp.width > 700 && !(vp.width <= 900 && vp.width > vp.height)');
     expect(ordinary).toContain("vp.width > 900 && (item.id === 'rec' || item.id === 'inventory')");
     expect(ordinary).toContain("vp.width > 700 && (item.id === 'atlas' || item.id === 'shipyard')");
     const nonmodal = source.slice(source.indexOf('              const nonModalChrome ='),
@@ -167,12 +167,12 @@ describe('Glass uniform launcher ownership', () => {
     expect(nonmodal).not.toContain("innerWidth>700\n");
     expect(nonmodal).toContain("expectedIds=['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets']");
     expect(nonmodal).toContain('hiddenShelfRejected');
-    expect(nonmodal).toContain("shelfActions=['dockinventory','shelfnotifications']");
+    expect(nonmodal).toContain("shelfActions=['dockinventory']");
     expect(nonmodal).toContain("shelf.getAttribute('style')===shelfStyle");
-    expect(source).toContain("preferenceOutcome('#dock','#dockcharters .lbl','var(--ink)')");
+    expect(source).toContain("preferenceOutcome('#raillft','#railcharters','var(--ink)')");
   });
 
-  it('anchors above the measured centered launcher and rejects old viewport-edge or matching off-center anchors', () => {
+  it('anchors above the measured right-bottom utility tray and rejects displaced or matching off-anchor trays', () => {
     const owner = source.slice(source.indexOf('  const rightBottomAnchorOutcome ='),
       source.indexOf('  const panelCloseOutcome ='));
     const box = (left, top, right, bottom) => ({ left, top, right, bottom, width: right-left, height: bottom-top });
@@ -186,12 +186,13 @@ describe('Glass uniform launcher ownership', () => {
         owner + "\nreturn rightBottomAnchorOutcome('#panel');");
       return outcome(document, () => style, width, height, () => true, number => Math.round(number*100)/100);
     };
-    const dock = box(344, 800, 1096, 888), panel = box(796, 400, 1096, 788);
+    const dock = box(1224, 844, 1424, 888), panel = box(1124, 400, 1424, 832);
     expect(observe(1440, 900, dock, panel).ok).toBe(true);
-    expect(observe(1024, 768, box(176, 684, 848, 756), box(548, 300, 848, 672)).ok).toBe(true);
-    expect(observe(1440, 900, dock, box(1128, 400, 1428, 788)).ok).toBe(false);
-    expect(observe(1440, 900, dock, box(796, 400, 1096, 800)).ok).toBe(false);
-    expect(observe(1440, 900, box(444, 800, 1196, 888), box(896, 400, 1196, 788)).ok).toBe(false);
-    expect(observe(1440, 900, dock, box(12, 400, 312, 788)).ok).toBe(false);
+    expect(observe(1024, 768, box(808, 712, 1008, 756), box(708, 300, 1008, 700)).ok).toBe(true);
+    expect(observe(1440, 900, dock, box(1128, 400, 1428, 832)).ok).toBe(false);
+    expect(observe(1440, 900, dock, box(1124, 400, 1424, 844)).ok).toBe(false);
+    expect(observe(1440, 900, box(1124, 844, 1324, 888), box(1024, 400, 1324, 832)).ok).toBe(false);
+    expect(observe(1440, 900, dock, box(12, 400, 312, 832)).ok).toBe(false);
+
   });
 });

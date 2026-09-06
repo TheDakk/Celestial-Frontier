@@ -1,0 +1,47 @@
+{
+  "schema": "cf-u1-production-layout-preparation/v1",
+  "scope": "Mutable preparation only; exact-source candidate checks recorded separately.",
+  "records": [
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-name-hp-chrome-prep.log.gz",
+      "sha256": "c3cb3012b5eecb03b2b2e65dca26f4724443cbb2d0eb03f00a57c6fd339e7136",
+      "originalSha256": "71a2705816ec4ef6be323c6d582160d018820b9db00d14e66788b5184ed445e3"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-name-hp-wiring-prep.log.gz",
+      "sha256": "e0c1698b485304c36ec0abf9c20c09d0c3b02b2b94842fbb46704adff11908d4",
+      "originalSha256": "88e2ed571e401211093be9838f7a7c5405e48a95ed6c1dc8d63d0b5017051232"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-production-rail-slice-prep.log.gz",
+      "sha256": "3e50837db745c726ada52a1f42c443f56a62403ca4268337ae752a3850667ce1",
+      "originalSha256": "fc409d07bb5be923428b2f1470c83ea52673527cb3e3c9fb11402f3f55a1c8e8"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-production-rail-feed-prep.log.gz",
+      "sha256": "08f209d457074983e54008c59f5a459e801a1da733d0a1e83943c5e21403dccf",
+      "originalSha256": "f56da5190819a7ce3166c88a8f70f6bf0da0e82c600a23bd5f2385471e454fb4"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-review-static-check.mjs.gz",
+      "sha256": "27f62224118a5867f25d8769e45efa5ae69088f5c2d117793045b264e0bf7dac",
+      "originalSha256": "83db620805e347c30102d6a9cdad8940d3ae27b2d9c86a40fb0c48d7f21d45e4"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-screenshot-instruments-20260906.log.gz",
+      "sha256": "bec076fa86f57b5c9eb1e3f46923e9151bc69fc65bae49d87fa8b46ce7d56bcf",
+      "originalSha256": "0ebc384ed0f3538e81978965eff267d2f7457048ad656f027474a35ec87dff4c"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-screenshot-instruments-fixed-20260906.log.gz",
+      "sha256": "c449eed7418fef98cfb2f86f7045801e8bf47c11a2f71248a27b41b64b7afa97",
+      "originalSha256": "901cb7020aa2dcb8ea561e549088bdac9ac0d0a19daf06ba4433d6312a8c711e"
+    }
+  ],
+  "observations": [
+    "Name/HP initial stale wiring contract failed; changed safe textContent contract then2files/11PASS.",
+    "Rail focus prep4files/36PASS and Feed one stale inverse-selector assertion RED; corrected Feed-only15PASS. Combined5files/51PASS.",
+    "Normal-review static fixture:36 malformed outcomes rejected;45 generated expression shapes compiled; trusted delivery assessor unchanged. No browser evidence claimed.",
+    "Instrument prep initially rejected two stale fixture literals (compact dock Atlas and old Guide utility wording). Corrected syntax,4suites/113tests and Glass selftest PASS. Three final diagnostic descriptions then changed wording only; exact-source chain follows."
+  ]
+}

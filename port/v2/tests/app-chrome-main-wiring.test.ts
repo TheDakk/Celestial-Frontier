@@ -157,7 +157,7 @@ function wiringErrors(main: string, owner: string): string[] {
   }
 
   for (const contract of [
-    "escapeHtml(view.explorerName || 'Explorer')",
+    "playerChip.textContent = view.explorerName || 'Explorer';",
     'escapeHtml(view.objective.text)',
     'escapeHtml(view.objective.name)',
     "Math.max(0, Math.min(100, (view.hp / Math.max(1, view.hpMax)) * 100)) + '%'",
@@ -293,12 +293,12 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
       expect(wiringErrors(mutated, ownerSource), needle).toContain('status-projection');
     }
 
-    const unescapedExplorer = replaceOnce(
+    const unsafeExplorerHtml = replaceOnce(
       ownerSource,
-      "escapeHtml(view.explorerName || 'Explorer')",
-      "view.explorerName || 'Explorer'",
+      "playerChip.textContent = view.explorerName || 'Explorer';",
+      "playerChip.innerHTML = view.explorerName || 'Explorer';",
     );
-    expect(wiringErrors(mainSource, unescapedExplorer)).toContain('render-contract');
+    expect(wiringErrors(mainSource, unsafeExplorerHtml)).toContain('render-contract');
     const unescapedPrimeCount = replaceOnce(ownerSource, '${escapeHtml(view.primeCount)}/9</span>', '${view.primeCount}/9</span>');
     expect(wiringErrors(mainSource, unescapedPrimeCount)).toContain('render-contract');
     const guessedRowOne = replaceOnce(ownerSource, "Math.max(40, searchbox.getBoundingClientRect().bottom) + 'px'", "'40px'");

@@ -592,9 +592,9 @@ function recordRenderedGuideIngressResult({
 }
 
 /* A hidden-opener focus result is meaningful only after a trusted press on
-   a visible opener and baseline Close focus. U1 keeps its launcher visible,
-   so the hidden-opener lifecycle now owns an explicit temporary display:none
-   injection after native Survey input, with exact style restoration. */
+   a visible opener and baseline Close focus. Native Survey input yields the
+   wide Atlas rail; prove its natural visibility transition and unchanged
+   style bytes before judging fallback focus. */
 function hiddenOpenerNativeInput(input, id, pointerType) {
   const rect = input?.target?.rect;
   return input?.ok === true && input.inputDispatched === true
@@ -606,25 +606,21 @@ function hiddenOpenerNativeInput(input, id, pointerType) {
     && input.receipt.pointerType === pointerType;
 }
 
-export function hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, surveyBaseline, mutation, hidden, pointerType } = {}) {
-  const rendered = (row) => row?.openerId === 'dockatlas' && row.openerRendered === true
-    && row.openerDisplay !== 'none' && row.openerVisibility === 'visible' && row.dockRendered === true;
+export function hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, hidden, pointerType } = {}) {
   const checks = {
-    nativeVisibleOpener: hiddenOpenerNativeInput(opening, 'dockatlas', pointerType),
+    nativeVisibleOpener: hiddenOpenerNativeInput(opening, 'railatlas', pointerType),
     baselinePanel: baseline?.panel === 'atlas' && baseline.cardOpen === false,
-    baselineVisibleOpener: rendered(baseline),
+    baselineVisibleOpener: baseline?.openerId === 'railatlas' && baseline.openerRendered === true
+      && baseline.openerVisibility === 'visible' && baseline.railRendered === true && baseline.railDisplay !== 'none',
     baselineCloseFocus: baseline?.closeFocused === true,
     nativeSurveyTransition: hiddenOpenerNativeInput(hiding, 'docksurvey', pointerType),
-    surveyPreservesVisibleOpener: rendered(surveyBaseline) && surveyBaseline.panel === 'atlas'
-      && surveyBaseline.cardOpen === true,
-    explicitOwnedMutation: mutation?.kind === 'owned-dock-opener-display-none'
-      && mutation.selector === '#dockatlas' && mutation.sameNode === true
-      && typeof mutation.prior?.present === 'boolean'
-      && (mutation.prior.present ? typeof mutation.prior.value === 'string' : mutation.prior.value === null)
-      && mutation.applied?.display === 'none' && mutation.applied?.priority === 'important',
     panelPreserved: hidden?.panel === 'atlas' && hidden.cardOpen === true,
-    openerBecameHidden: hidden?.openerId === 'dockatlas' && hidden.openerRendered === false
-      && hidden.openerDisplay === 'none' && hidden.dockRendered === true,
+    openerBecameHidden: hidden?.openerId === 'railatlas' && hidden.openerRendered === false
+      && hidden.railRendered === false && hidden.railDisplay === 'none' && hidden.dockRendered === true,
+    sameNativeOpener: baseline?.openerSameNode === true && hidden?.openerSameNode === true,
+    unchangedStylePresenceAndBytes: typeof baseline?.style?.present === 'boolean'
+      && (baseline.style.present ? typeof baseline.style.value === 'string' : baseline.style.value === null)
+      && hidden?.style?.present === baseline.style.present && hidden?.style?.value === baseline.style.value,
   };
   return { ok: Object.values(checks).every((value) => value === true), checks };
 }
@@ -634,8 +630,8 @@ export function hiddenPanelOpenerFocusOutcome({ setup, closing, fallback, pointe
     provenSetup: setup?.ok === true,
     nativeClose: hiddenOpenerNativeInput(closing, null, pointerType),
     panelClosed: fallback?.panel === null,
-    openerHidden: fallback?.openerId === 'dockatlas' && fallback.openerRendered === false
-      && fallback.openerDisplay === 'none' && fallback.dockRendered === true,
+    openerHidden: fallback?.openerId === 'railatlas' && fallback.openerRendered === false
+      && fallback.railRendered === false && fallback.railDisplay === 'none' && fallback.dockRendered === true,
     visibleSurveyFocus: fallback?.surveyRendered === true && fallback.focus === 'docksurvey',
     surveyPreserved: fallback?.cardOpen === true,
   };
@@ -648,7 +644,7 @@ export function hiddenPanelOpenerRestorationOutcome(prior, restored) {
     exactStylePresenceAndBytes: typeof prior?.present === 'boolean'
       && (prior.present ? typeof prior.value === 'string' : prior.value === null)
       && restored?.present === prior.present && restored?.value === prior.value,
-    sameNativeOpener: restored?.sameNode === true && restored.openerId === 'dockatlas',
+    sameNativeOpener: restored?.sameNode === true && restored.openerId === 'railatlas',
     visibleNativeTarget: restored?.openerRendered === true && restored.openerVisibility === 'visible'
       && restored.openerDisplay !== 'none' && restored.centreOwned === true,
     focusPreserved: restored?.focusUnchanged === true,
@@ -6702,7 +6698,17 @@ async function reportSelftest() {
         property: { value: '', priority: 'important' } },
     }),
   };
+  const floatingFixture = {
+      kind: 'injected-floating-trail-regression', error: null,
+      nativeBaseline: { ...hiddenPortraitBaseline, canonicalHidden: true, fixedChromeBottom: 52, surfaceBottom: 52 },
+      originalStyle: { present: false, value: null }, originalRect: [0, 0, 0, 0],
+      injectedTop: 60, injectedRect: [10, 60, 100, 76], injectedStyle: 'position: fixed; top: 60px;',
+      injectedBaseline: { ...visiblePortraitBaseline, headerContained: false }, observedOutsideHeader: true,
+      restoredStyle: { present: false, value: null }, nativeRestored: { ...hiddenPortraitBaseline, canonicalHidden: true, surfaceBottom: 52 },
+      cleanup: { kind: 'temporary-header-contained-edge-reset', headerContained: true },
+  };
   const bandControl = {
+    error: null, fixture: structuredClone(floatingFixture),
     baseline: visiblePortraitBaseline,
     prior: { value: '', priority: '', computed: 'none' },
     mutation: {
@@ -6718,6 +6724,7 @@ async function reportSelftest() {
   };
   const bandControls = {
     positive: portraitBandControlOutcome(bandControl),
+    unlabelledFixture: portraitBandControlOutcome({ ...structuredClone(bandControl), fixture: undefined }),
     noOp: portraitBandControlOutcome({
       ...structuredClone(bandControl),
       mutation: { ...bandControl.mutation, computed: 'none' },
@@ -6733,14 +6740,7 @@ async function reportSelftest() {
   };
   const fallbackControl = {
     error: null,
-    fixture: {
-      kind: 'injected-floating-trail-regression', error: null,
-      nativeBaseline: { ...visiblePortraitBaseline, headerContained: true, fixedChromeBottom: 52 },
-      originalStyle: { present: false, value: null }, originalRect: [10, 20, 100, 36],
-      injectedTop: 60, injectedRect: [10, 60, 100, 76], injectedStyle: 'position: fixed; top: 60px;',
-      injectedBaseline: { ...visiblePortraitBaseline, headerContained: false }, observedOutsideHeader: true,
-      restoredStyle: { present: false, value: null }, nativeRestored: { ...visiblePortraitBaseline, headerContained: true },
-    },
+    fixture: structuredClone(floatingFixture),
     baseline: visiblePortraitBaseline,
     prior: { value: '', priority: '', computed: '0px' },
     mutation: {
@@ -6770,7 +6770,9 @@ async function reportSelftest() {
     falseFloatingFixture: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
       fixture: { ...structuredClone(fallbackControl.fixture), observedOutsideHeader: false } }),
     missingNativeRestoration: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
-      fixture: { ...structuredClone(fallbackControl.fixture), nativeRestored: { ok: true, headerContained: false } } }),
+      fixture: { ...structuredClone(fallbackControl.fixture), nativeRestored: { ok: true, canonicalHidden: false } } }),
+    staleMeasuredEdge: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
+      fixture: { ...structuredClone(fallbackControl.fixture), nativeRestored: { ...fallbackControl.fixture.nativeRestored, surfaceBottom: 70 } } }),
     lostStylePresence: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
       fixture: { ...structuredClone(fallbackControl.fixture), restoredStyle: { present: true, value: '' } } }),
     noOp: portraitFallbackControlOutcome({
@@ -6935,11 +6937,11 @@ async function reportSelftest() {
     || !portraitControlBaselineEligible(visiblePortraitBaseline)
     || portraitControlBaselineEligible(hiddenPortraitBaseline)
     || portraitControlBaselineEligible({ ...visiblePortraitBaseline, ok: false })
-    || !bandControls.positive.ok || bandControls.noOp.ok || bandControls.ineligible.ok
+    || !bandControls.positive.ok || bandControls.unlabelledFixture.ok || bandControls.noOp.ok || bandControls.ineligible.ok
     || bandControls.wrongRestoration.ok
     || !fallbackControls.positive.ok || fallbackControls.noOp.ok || fallbackControls.ineligible.ok
     || fallbackControls.unlabelledFixture.ok || fallbackControls.falseFloatingFixture.ok
-    || fallbackControls.missingNativeRestoration.ok || fallbackControls.lostStylePresence.ok
+    || fallbackControls.missingNativeRestoration.ok || fallbackControls.staleMeasuredEdge.ok || fallbackControls.lostStylePresence.ok
     || fallbackControls.wrongRestoration.ok || fallbackControls.collapsedStrip.ok
     || fallbackControls.inaccessibleScroll.ok || fallbackControls.fixedRowOverlap.ok
     || !portraitCampaignControls.positive.ok || portraitCampaignControls.noEligible.ok
@@ -8106,16 +8108,18 @@ function installAuditHarness() {
     const bottomGap = a ? innerHeight - a.bottom : null;
     const expectedRight = d ? innerWidth - d.right : null;
     const expectedBottom = d ? innerHeight - d.top + 12 : null;
-    const dockCentered = !!d && Math.abs((d.left + d.right) / 2 - (innerWidth + safeLeft - safeRight) / 2) <= 2;
+    const safeBottom = parseFloat(root.getPropertyValue('--safe-bottom')) || 0;
+    const dockAnchored = !!d && Math.abs(innerWidth-d.right-safeRight-16)<=2
+      && Math.abs(innerHeight-d.bottom-safeBottom-12)<=2 && Math.abs(d.width-200)<=2 && Math.abs(d.height-44)<=2;
     const dockClearance = a && d ? d.top - a.bottom : null;
     return {
-      ok: innerWidth > 900 && !!el && visible(el) && !!dock && visible(dock) && dockCentered
+      ok: innerWidth > 900 && !!el && visible(el) && !!dock && visible(dock) && dockAnchored
         && rightGap !== null && Math.abs(rightGap - expectedRight) <= 2
         && bottomGap !== null && Math.abs(bottomGap - expectedBottom) <= 2
         && dockClearance !== null && dockClearance >= 8,
       rightGap: rightGap === null ? null : round(rightGap), expectedRight: expectedRight === null ? null : round(expectedRight),
       bottomGap: bottomGap === null ? null : round(bottomGap), expectedBottom: expectedBottom === null ? null : round(expectedBottom),
-      dockCentered,
+      dockAnchored,
       dockClearance: dockClearance === null ? null : round(dockClearance),
       rect: a ? [round(a.left), round(a.top), round(a.right), round(a.bottom)] : null,
       dock: d ? [round(d.left), round(d.top), round(d.right), round(d.bottom)] : null,
@@ -9259,6 +9263,7 @@ function trailRestorationControlOutcome(control) {
 
 function portraitBandControlOutcome(control) {
   const checks = Object.freeze({
+    ...portraitFloatingFixtureOutcome(control),
     eligibleBaseline: portraitControlBaselineEligible(control?.baseline),
     mutationApplied: typeof control?.mutation?.requested === 'string'
       && control.mutation.requested.length > 0
@@ -9280,15 +9285,15 @@ function portraitBandControlOutcome(control) {
   return { ok: Object.values(checks).every(Boolean), checks };
 }
 
-function portraitFallbackControlOutcome(control) {
+function portraitFloatingFixtureOutcome(control) {
   const fixture = control?.fixture;
   const nativeRect = fixture?.originalRect, injectedRect = fixture?.injectedRect;
   const finiteRect = (rect) => Array.isArray(rect) && rect.length === 4
     && rect.every(Number.isFinite) && rect[2] > rect[0] && rect[3] > rect[1];
   const labelledFaultFixture = fixture?.kind === 'injected-floating-trail-regression'
     && fixture?.error === null && control?.error === null
-    && fixture?.nativeBaseline?.ok === true && fixture?.nativeBaseline?.headerContained === true
-    && finiteRect(nativeRect) && finiteRect(injectedRect)
+    && fixture?.nativeBaseline?.ok === true && fixture?.nativeBaseline?.canonicalHidden === true
+    && Array.isArray(nativeRect) && nativeRect.length === 4 && nativeRect.every(Number.isFinite) && finiteRect(injectedRect)
     && Number.isFinite(fixture?.nativeBaseline?.fixedChromeBottom)
     && injectedRect[1] >= fixture.nativeBaseline.fixedChromeBottom + 7.5
     && fixture?.observedOutsideHeader === true
@@ -9299,7 +9304,16 @@ function portraitFallbackControlOutcome(control) {
     && fixture?.restoredStyle?.present === fixture.originalStyle.present
     && fixture?.restoredStyle?.value === fixture.originalStyle.value
     && (fixture.originalStyle.present ? typeof fixture.originalStyle.value === 'string' : fixture.originalStyle.value === null)
-    && fixture?.nativeRestored?.ok === true && fixture?.nativeRestored?.headerContained === true;
+    && fixture?.nativeRestored?.ok === true && fixture?.nativeRestored?.canonicalHidden === true
+    && fixture?.cleanup?.kind === 'temporary-header-contained-edge-reset' && fixture.cleanup.headerContained === true
+    && Number.isFinite(fixture?.nativeBaseline?.surfaceBottom) && Number.isFinite(fixture?.nativeRestored?.surfaceBottom)
+    && Math.abs(fixture.nativeRestored.surfaceBottom-fixture.nativeBaseline.surfaceBottom)<=1;
+  return {labelledFaultFixture,fixtureRestored};
+}
+
+function portraitFallbackControlOutcome(control) {
+  const {labelledFaultFixture,fixtureRestored}=portraitFloatingFixtureOutcome(control);
+
   const baseSafe = Number(control?.mutation?.baseSafe);
   const forcedSafe = Number(control?.mutation?.forcedSafe);
   const computedSafe = Number.parseFloat(control?.mutation?.computed);
@@ -10797,7 +10811,7 @@ async function main() {
           ...common, surface: 'hud', root: 'body', textMin: 20,
           required: [{ selector: '#dock', min: 1 }, { selector: '#searchbox', min: 1 }, { selector: '#hintpill', min: 1, textMin: 8 }],
           interactiveRoots: ['#dock', '#searchbox', '#topbar', '#sceneactions'],
-          contrastSelectors: ['#playerchip', '#hpbar', '#searchbox', '#trail', '#objchip', '#ctxbar', '#hintpill', '#dock button'],
+          contrastSelectors: ['#playerchip', '#hpbar', '#searchbox', '#trail', '#objchip', '#ctxbar', '#hintpill', '#dock button', '#raillft button', '#railrgt button'],
           placeholderSelectors: ['#searchbox'], maxContrastReports: 24,
           focusSelectors: vp.label === 'primary-phone' || vp.label === 'desktop' ? ['#searchbox', '#dockguide', '#docksets'] : [],
           canvas: true, expectedDpr, maxBackingPixels,
@@ -10958,7 +10972,7 @@ async function main() {
         if (vp.width > 900) {
           addOutcome(vp.label, 'toast', 'DESKTOP_UTILITY_ANCHOR', '#toast',
             await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#toast')`),
-            'desktop toast aligns with the measured centered launcher\'s right edge, 12px above it');
+            'desktop toast aligns with the measured bottom-right utility tray\'s right edge, 12px above it');
           if (!toastAnchorControlRun) {
             toastAnchorControlRun = true;
             const leftToastControl = await evalIn(`(()=>{ const toast=document.getElementById('toast'),prior=toast.getAttribute('style'),
@@ -11289,9 +11303,9 @@ async function main() {
         addOutcome(vp.label, 'top-chrome-preferences', 'PREFERENCE_SURFACE_INERT', '#hintpill', chromePreference,
           'top chrome computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
         if (vp.width > 900) {
-          const railPreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#dock','#dockcharters .lbl','var(--ink)')`);
-          addOutcome(vp.label, 'rail-preferences', 'PREFERENCE_SURFACE_INERT', '#dockcharters', railPreference,
-            'desktop launcher label computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
+          const railPreference = await evalIn(`window.__CF_GLASS_AUDIT__.preferenceOutcome('#raillft','#railcharters','var(--ink)')`);
+          addOutcome(vp.label, 'rail-preferences', 'PREFERENCE_SURFACE_INERT', '#railcharters', railPreference,
+            'desktop native rail label computes A++ size, Max tone, and Mono font without shrinking text or flattening hierarchy');
         }
 
         /* Arc 4 capture remains a pure presentation/geometry audit here.
@@ -11497,19 +11511,20 @@ async function main() {
 
         /* Every ordinary panel uses its visible launcher/shelf control with
            populated real data. Retain the planned over/instead-of-Survey
-           compositions while U1 presents every launcher action at every width. */
+           compositions while U1 selects the visible native owner at each width. */
         const ordinaryPanels = [
-          { id: 'codex', name: 'compendium', dock: '#dockcodex', panel: '#codexpanel', required: '[data-sel=codex-entry]', min: 1, textMin: 80 },
+          { id: 'codex', name: 'compendium', dock: '#dockcodex', rail: '#railcodex', panel: '#codexpanel', required: '[data-sel=codex-entry]', min: 1, textMin: 80 },
           { id: 'rec', name: 'records', dock: '#dockrecords', panel: '#recpanel', required: '#recpanel .row', min: 6, textMin: 80 },
-          { id: 'atlas', name: 'atlas', dock: '#dockatlas', panel: '#atlaspanel', required: '[data-sel=atlas-entry]', min: 1, textMin: 25 },
-          { id: 'shipyard', name: 'shipyard', dock: '#dockshipyard', panel: '#shipyardpanel', required: '[data-cf-shipyard-preview="v1"]', min: 1, textMin: 80, shipyard: true },
+          { id: 'atlas', name: 'atlas', dock: '#dockatlas', rail: '#railatlas', panel: '#atlaspanel', required: '[data-sel=atlas-entry]', min: 1, textMin: 25 },
+          { id: 'shipyard', name: 'shipyard', dock: '#dockshipyard', rail: '#railshipyard', panel: '#shipyardpanel', required: '[data-cf-shipyard-preview="v1"]', min: 1, textMin: 80, shipyard: true },
           { id: 'inventory', name: 'inventory', dock: '#dockinventory', panel: '#inventorypanel', required: '[data-inventory-row="exact"]', min: 3, textMin: 120, inventory: true },
-          { id: 'ch', name: 'charters', dock: '#dockcharters', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
+          { id: 'ch', name: 'charters', dock: '#dockcharters', rail: '#railcharters', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
         ];
         for (const item of ordinaryPanels) {
-          const opener = item.dock;
+          const wideChrome = vp.width > 700 && !(vp.width <= 900 && vp.width > vp.height);
+          const opener = wideChrome && item.rail ? item.rail : item.dock;
           /* Preserve the already-planned historical Survey compositions;
-             the current launcher opener no longer depends on a visible rail. */
+             the right rail yields to Survey, while compact phone uses its dock. */
           const overSurvey = !((vp.width > 900 && (item.id === 'rec' || item.id === 'inventory'))
             || (vp.width > 700 && (item.id === 'atlas' || item.id === 'shipyard')));
           const cardBeforePanel = await evalIn('window.__CF_SLICE__.api.state().cardOpen');
@@ -11983,7 +11998,7 @@ async function main() {
             recordsAnchorObserved = true;
             addOutcome(vp.label, composition, 'DESKTOP_UTILITY_PANEL_ANCHOR', item.panel,
               await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome(${JSON.stringify(item.panel)})`),
-              'desktop Records aligns with the measured centered launcher\'s right edge, 12px above it');
+              'desktop Records aligns with the measured bottom-right utility tray\'s right edge, 12px above it');
           }
           const ordinaryPanelAuditOptions = {
             ...common, surface: composition, root: item.panel, textMin: item.textMin,
@@ -12069,14 +12084,14 @@ async function main() {
                 'the A++ Compendium owns the safe-height left workspace while Search, dock, and Survey remain separate usable right-column surfaces');
 
               const nonModalChrome = await evalIn(`(()=>{const search=document.getElementById('searchbox'),dock=document.getElementById('dock'),shelf=document.getElementById('topbar'),
-                shelfActions=['dockinventory','shelfnotifications'].map(id=>document.getElementById(id)),
+                shelfActions=['dockinventory'].map(id=>document.getElementById(id)),
                 dockButton=document.getElementById('dockcodex'),
                 buttons=dock?[...dock.querySelectorAll(':scope > button')].filter(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;}):[],panel=document.getElementById('codexpanel');
                 if(!(search instanceof HTMLInputElement)||!dock||!dockButton||!panel||!shelf||shelfActions.some(el=>!el))return {ok:false,why:'Search/dock/shelf/Compendium missing'};
                 const rendered=(el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return style.display!=='none'&&style.visibility==='visible'
                     &&style.pointerEvents!=='none'&&r.width>0&&r.height>0;},ownsCentre=(el)=>{const r=el.getBoundingClientRect(),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
                     return !!hit&&(hit===el||el.contains(hit));},named=(el)=>!!(el.getAttribute('aria-label')||el.textContent||'').trim(),
-                  exposed=(el)=>!el.inert&&!el.closest('[inert],[aria-hidden="true"]'),positiveVisibility=rendered(search)&&rendered(dock)&&rendered(shelf)&&exposed(search)&&exposed(dock)&&exposed(shelf),
+                  exposed=(el)=>!el.inert&&!el.closest('[inert],[aria-hidden="true"]'),positiveVisibility=rendered(search)&&rendered(dock)&&getComputedStyle(shelf).visibility==='visible'&&shelf.getBoundingClientRect().height>0&&exposed(search)&&exposed(dock)&&exposed(shelf),
                   searchStyle=search.getAttribute('style'),dockStyle=dock.getAttribute('style'),shelfStyle=shelf.getAttribute('style'),dockAriaHidden=dock.getAttribute('aria-hidden');
                 let hiddenSearchRejected=false,hiddenShelfRejected=false,blockedDockRejected=false,hiddenDockA11yRejected=false;
                 try{shelf.style.setProperty('visibility','hidden','important');hiddenShelfRejected=!rendered(shelf);}
@@ -12113,7 +12128,7 @@ async function main() {
                   dockName:dock.getAttribute('aria-label'),dockFocused,dockHits,filteredCount:filtered.panel.filteredCount,
                   clearedCount:cleared.panel.filteredCount,closedPanel:closed.panelOpen,reopenedPanel:reopened.panelOpen,focusEntered};})()`);
               addOutcome(vp.label, 'compendium-nonmodal-chrome', 'NONMODAL_CHROME_UNUSABLE', '#searchbox,#dock', nonModalChrome,
-                'non-modal shelf Inventory/bell, Search and all nine launcher actions remain rendered, named, focusable, hit-testable, and usable while the Compendium is open');
+                'non-modal shelf Inventory, Search and all nine compact launcher actions remain rendered, named, focusable, hit-testable, and usable while the Compendium is open');
               await waitFor('non-modal Compendium reopen', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();return d.panel.mode==='list'
                 &&d.panel.sourceCount===${hostileCompendiumRows.length}&&d.panel.filteredCount===${hostileCompendiumRows.length}
                 &&document.querySelector('#codexpanel [data-ci="0"]');})()`);
@@ -13106,18 +13121,19 @@ async function main() {
         }
 
         if (vp.width > 900 && !hiddenOpenerControlRun) {
-          /* The uniform launcher stays available with Survey open. Preserve
-             the hidden-opener lifecycle using a declared, owned temporary
-             dockatlas hide after native Atlas/Survey input, never a hidden rail. */
+          /* Atlas starts from its genuinely visible native rail. Opening
+             Survey naturally yields that rail; no hidden-state style is
+             injected. Close must choose the still-visible Survey control. */
           const pointerType = vp.mobile ? 'touch' : 'mouse';
-          const hiddenOpenerSnapshot = `(()=>{const opener=document.getElementById('dockatlas'),dock=document.getElementById('dock'),
+          const hiddenOpenerSnapshot = `(()=>{const opener=document.getElementById('railatlas'),dock=document.getElementById('dock'),rail=document.getElementById('railrgt'),
             survey=document.getElementById('docksurvey'),panel=document.getElementById('atlaspanel'),
             close=panel?.querySelector('[data-pnx="atlas"]'),s=window.__CF_SLICE__.api.state(),
             openerStyle=opener?getComputedStyle(opener):null,surveyStyle=survey?getComputedStyle(survey):null;
             return {panel:s.panelOpen,cardOpen:s.cardOpen,cardTitle:s.cardTitle,bodyClass:document.body.className,
               openerId:opener?.id??null,openerRendered:!!opener&&opener.getClientRects().length>0,
               openerDisplay:openerStyle?.display??null,openerVisibility:openerStyle?.visibility??null,
-              dockRendered:!!dock&&dock.getClientRects().length>0,
+              dockRendered:!!dock&&dock.getClientRects().length>0,railRendered:!!rail&&rail.getClientRects().length>0,railDisplay:rail?getComputedStyle(rail).display:null,
+              openerSameNode:opener===window.__cfGlassHiddenNativeOpener,style:{present:opener?.hasAttribute('style')??null,value:opener?.getAttribute('style')??null},
               closeFocused:!!close&&document.activeElement===close,
               surveyRendered:!!survey&&survey.getClientRects().length>0
                 &&surveyStyle?.display!=='none'&&surveyStyle?.visibility==='visible',
@@ -13127,35 +13143,28 @@ async function main() {
             if (!setupClose.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native Survey input (${JSON.stringify(setupClose)})`);
             await waitFor('hidden-opener setup survey closed', `!window.__CF_SLICE__.api.state().cardOpen`);
           }
-          const opening = await activateRealControl('#dockatlas', 'hidden-opener visible Atlas opener');
+          await evalIn(`window.__cfGlassHiddenNativeOpener=document.getElementById('railatlas')`);
+          const opening = await activateRealControl('#railatlas', 'hidden-opener visible Atlas opener');
           if (!opening.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native visible Atlas input (${JSON.stringify(opening)})`);
           await waitFor('hidden-opener Atlas open', `window.__CF_SLICE__.api.state().panelOpen==='atlas'`);
           const baseline = await evalIn(hiddenOpenerSnapshot);
           const hiding = await activateRealControl('#docksurvey', 'hidden-opener Survey transition');
           if (!hiding.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native Survey transition (${JSON.stringify(hiding)})`);
           await waitFor('hidden-opener Survey reopened', `window.__CF_SLICE__.api.state().cardOpen`);
-          const surveyBaseline = await evalIn(hiddenOpenerSnapshot);
-          const mutation = await evalIn(`(()=>{const opener=document.getElementById('dockatlas');
-            if(!opener||window.__cfGlassHiddenOpenerControl)throw new Error('hidden-opener mutation owner unavailable');
-            const prior={present:opener.hasAttribute('style'),value:opener.getAttribute('style')};
-            window.__cfGlassHiddenOpenerControl={opener,prior};
-            opener.style.setProperty('display','none','important');return {
-              kind:'owned-dock-opener-display-none',selector:'#dockatlas',sameNode:document.getElementById('dockatlas')===opener,prior,
-              applied:{display:opener.style.getPropertyValue('display'),priority:opener.style.getPropertyPriority('display')}};})()`);
           try {
             const hidden = await evalIn(hiddenOpenerSnapshot);
-            const setup = hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, surveyBaseline, mutation, hidden, pointerType });
-            if (!setup.ok) stopInstrumentControl(`${vp.label}: could not prove injected visible-to-hidden panel opener (${JSON.stringify({ setup, opening, baseline, hiding, surveyBaseline, mutation, hidden })})`);
+            const setup = hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, hidden, pointerType });
+            if (!setup.ok) stopInstrumentControl(`${vp.label}: could not prove natural visible-to-hidden panel opener (${JSON.stringify({ setup, opening, baseline, hiding, hidden })})`);
             const closing = await activateRealControl('#atlaspanel [data-pnx="atlas"]', 'hidden-opener Atlas Close');
             if (!closing.ok) stopInstrumentControl(`${vp.label}: hidden-opener Close lacked native input (${JSON.stringify(closing)})`);
             await waitFor('hidden-opener panel close', `window.__CF_SLICE__.api.state().panelOpen===null`);
             const fallback = await evalIn(hiddenOpenerSnapshot);
             const fallbackOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback, pointerType });
             addOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST', '#docksurvey',
-              { ...fallbackOutcome, diagnostics: { setup, opening, baseline, hiding, surveyBaseline, mutation, hidden, closing, fallback } },
-              'closing Atlas with its native launcher opener temporarily hidden restores focus to the visible Survey control');
+              { ...fallbackOutcome, diagnostics: { setup, opening, baseline, hiding, hidden, closing, fallback } },
+              'closing Atlas with its native rail opener naturally yielded to Survey restores focus to the visible Survey control');
             stopAfterRecordedProductOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST',
-              '#docksurvey', fallbackOutcome, 'injected hidden-opener Close restores visible Survey focus');
+              '#docksurvey', fallbackOutcome, 'naturally hidden-opener Close restores visible Survey focus');
             await evalIn(`document.querySelector('canvas')?.focus()`);
             const wrongFocus = await evalIn(hiddenOpenerSnapshot);
             const fallbackControl = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: wrongFocus, pointerType });
@@ -13163,22 +13172,25 @@ async function main() {
               stopInstrumentControl(`${vp.label}: wrong hidden-opener fallback focus was not rejected (${JSON.stringify({ wrongFocus, fallbackControl })})`);
             }
             await evalIn(`document.getElementById('docksurvey')?.focus()`);
-            const restored = await evalIn(hiddenOpenerSnapshot);
-            const restoredOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: restored, pointerType });
-            if (!restoredOutcome.ok) stopInstrumentControl(`${vp.label}: hidden-opener fallback restoration failed (${JSON.stringify({ restored, restoredOutcome })})`);
-          } finally {
-            const restored = await evalIn(`(()=>{const owned=window.__cfGlassHiddenOpenerControl;
-              if(!owned)return {sameNode:false};const opener=owned.opener,prior=owned.prior,focusBefore=document.activeElement;
-              opener.setAttribute('style','');opener.removeAttribute('style');
-              if(prior.present)opener.setAttribute('style',prior.value);
-              delete window.__cfGlassHiddenOpenerControl;
-              const r=opener.getBoundingClientRect(),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
-              return {...${hiddenOpenerSnapshot},sameNode:document.getElementById('dockatlas')===opener,
-                present:opener.hasAttribute('style'),value:opener.getAttribute('style'),focusUnchanged:document.activeElement===focusBefore,
+            const restoredFocus = await evalIn(hiddenOpenerSnapshot);
+            const restoredOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: restoredFocus, pointerType });
+            if (!restoredOutcome.ok) stopInstrumentControl(`${vp.label}: hidden-opener fallback restoration failed (${JSON.stringify({ restored: restoredFocus, restoredOutcome })})`);
+            const showing = await activateRealControl('#docksurvey', 'hidden-opener native Survey close restores rail');
+            if (!showing.ok) stopInstrumentControl(`${vp.label}: hidden-opener restoration lacked native Survey Close (${JSON.stringify(showing)})`);
+            await waitFor('hidden-opener restored rail', `!window.__CF_SLICE__.api.state().cardOpen`);
+            const restored = await evalIn(`(()=>{const opener=document.getElementById('railatlas'),r=opener.getBoundingClientRect(),
+              hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2),snapshot=${hiddenOpenerSnapshot};
+              return {...snapshot,...snapshot.style,sameNode:snapshot.openerSameNode,focusUnchanged:document.activeElement?.id==='docksurvey',
                 centreOwned:!!hit&&(hit===opener||opener.contains(hit))};})()`);
-            const restoration = hiddenPanelOpenerRestorationOutcome(mutation.prior, restored);
-            if (!restoration.ok) stopInstrumentControl(`${vp.label}: injected hidden-opener style/target restoration failed (${JSON.stringify({ mutation, restored, restoration })})`);
-          }
+            const restoration = hiddenPanelOpenerRestorationOutcome(baseline.style, restored);
+            if (!restoration.ok) stopInstrumentControl(`${vp.label}: natural hidden-opener style/target restoration failed (${JSON.stringify({ baseline, restored, restoration })})`);
+            const reopened = await activateRealControl('#docksurvey', 'hidden-opener restore Survey predecessor');
+            if (!reopened.ok) stopInstrumentControl(`${vp.label}: hidden-opener could not restore native Survey predecessor (${JSON.stringify(reopened)})`);
+            await waitFor('hidden-opener Survey predecessor restored', `window.__CF_SLICE__.api.state().cardOpen`);
+            const hiddenAgain = await evalIn(hiddenOpenerSnapshot);
+            if (!hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: hiddenAgain, pointerType }).ok)
+              stopInstrumentControl(`${vp.label}: natural hidden-opener predecessor restoration failed (${JSON.stringify(hiddenAgain)})`);
+          } finally { await evalIn(`delete window.__cfGlassHiddenNativeOpener`); }
           hiddenOpenerControlRun = true;
           recordControls('hidden-panel-opener-focus-fallback');
         }
@@ -13197,13 +13209,11 @@ async function main() {
         const landscapeSurfaceYieldsTrail = vp.width <= 900 && vp.width > vp.height;
         const portraitSurface = vp.width <= 900 && vp.width <= vp.height;
         const chromeRestoreCheck = `(()=>{ const fallback=document.body.classList.contains('surface-trail-yield'),rows=['trail','objchip'].map(id=>{const el=document.getElementById(id);return {id,text:(el?.textContent||'').trim(),display:el?getComputedStyle(el).display:'missing'};});
-          return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?${landscapeSurfaceYieldsTrail ? "r.display==='none'" : portraitSurface ? "r.display===(fallback?'none':'flex')" : "r.display!=='none'"}:${mobileSurfaceYieldsObjective ? "r.display==='none'" : "r.display!=='none'"})),rows,fallback};})()`;
+          return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?r.display==='none':${mobileSurfaceYieldsObjective ? "r.display==='none'" : "r.display!=='none'"})),rows,fallback};})()`;
         const chromeRestoreBaseline = await evalIn(chromeRestoreCheck);
-        const chromeRestoreExpected = landscapeSurfaceYieldsTrail
-          ? 'short-landscape surface mode keeps populated trail/objective rows yielded to Planetside'
-          : mobileSurfaceYieldsObjective
-            ? 'landed portrait restores the trail when a useful band fits, otherwise marks the bounded trail-yield fallback; the objective yields throughout'
-            : 'closing the last card restores every populated desktop trail/objective surface';
+        const chromeRestoreExpected = mobileSurfaceYieldsObjective
+          ? 'populated canonical trail remains visually hidden and the landed mobile objective yields to Planetside'
+          : 'populated canonical trail remains visually hidden while the desktop objective returns after the last card closes';
         addOutcome(vp.label, 'survey-chrome-restore', 'MOBILE_CHROME_NOT_RESTORED', '#trail,#objchip', chromeRestoreBaseline,
           chromeRestoreExpected);
         stopAfterRecordedProductOutcome(vp.label, 'survey-chrome-restore',
@@ -13262,29 +13272,44 @@ async function main() {
             const clipped=side.scrollHeight>side.clientHeight+1,maxScroll=Math.max(0,side.scrollHeight-side.clientHeight);
             side.scrollTop=side.scrollHeight;const observedScroll=side.scrollTop,specimenAfterScroll=specimen.getBoundingClientRect(),specimenReachable=specimenVisible||inside(specimenAfterScroll);side.scrollTop=prior;
             const scrollContract=!clipped||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&maxScroll>0&&observedScroll>0&&specimenReachable),
-              meaningful=a.height>=71&&side.clientHeight>=68,clear=trailVisible?gap>=5.5:document.body.classList.contains('surface-trail-yield'),
-              policy=trailVisible?!document.body.classList.contains('surface-trail-yield'):document.body.classList.contains('surface-trail-yield');
-            return {ok:meaningful&&clear&&policy&&headVisible&&specimenReachable&&scrollContract,meaningful,clear,policy,headVisible,specimenVisible,specimenReachable,scrollContract,
+              meaningful=a.height>=71&&side.clientHeight>=68,fixedClear=a.top-fixedChromeBottom>=5.5,
+              clear=trailVisible?gap>=5.5:fixedClear,policy=trailVisible?!document.body.classList.contains('surface-trail-yield'):true,
+              canonicalHidden=header?.contains(trail)&&!!trail.querySelector('.seg.cur')&&!!trail.textContent.trim()&&ts.display==='none';
+            return {ok:meaningful&&clear&&policy&&fixedClear&&headVisible&&specimenReachable&&scrollContract,meaningful,clear,policy,fixedClear,canonicalHidden,headVisible,specimenVisible,specimenReachable,scrollContract,
               trailVisible,gap,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,
               overflowY:ss.overflowY,maxScroll,observedScroll,surfaceChromeBottom:getComputedStyle(document.documentElement).getPropertyValue('--surface-chrome-bottom').trim(),
               fallback:document.body.classList.contains('surface-trail-yield'),headerContained,header:h?[h.left,h.top,h.right,h.bottom]:null,
-              fixedChromeBottom,fixedRows}; })()`;
-          const portraitNativeCheck = `(()=>{const outcome=${portraitBandCheck};return {...outcome,ok:outcome.ok&&outcome.headerContained};})()`;
+              fixedChromeBottom,fixedRows,surfaceBottom:parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--surface-chrome-bottom'))}; })()`;
+          const portraitNativeCheck = `(()=>{const outcome=${portraitBandCheck};return {...outcome,ok:outcome.ok&&outcome.canonicalHidden};})()`;
           const portraitBaseline = await evalIn(portraitNativeCheck);
           portraitBaselineCount += 1;
-          const portraitEligible = portraitControlBaselineEligible(portraitBaseline);
-          if (portraitEligible) portraitEligibleBaselineCount += 1;
-          const portraitBaselineExpected = 'post-close Planetside keeps at least a useful 72px band, 6px trail clearance, a visible heading, and a visible or vertically reachable specimen; the normal trail remains inside the header';
-          addOutcome(vp.label, 'planetside-portrait-band', 'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline,
-            portraitBaselineExpected);
-          stopAfterRecordedProductOutcome(vp.label, 'planetside-portrait-band',
-            'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline,
-            portraitBaselineExpected);
-          if (portraitEligible && !portraitBandControlRun) {
-            /* Reproduce the reported geometry directly. Removing a cap and
-               appending arbitrary content only collided on the shortest
-               portrait and went green in a targeted primary-phone run. */
-            const bandControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
+          const portraitBaselineExpected = 'post-close Planetside keeps a useful 72px band, a visible heading, a reachable specimen and 6px clearance from visible fixed owners; the populated canonical trail stays hidden';
+          addOutcome(vp.label, 'planetside-portrait-band', 'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline, portraitBaselineExpected);
+          stopAfterRecordedProductOutcome(vp.label, 'planetside-portrait-band', 'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline, portraitBaselineExpected);
+          if (!portraitBandControlRun && !portraitFallbackControlRun) {
+            /* Explicitly inject the former floating-trail regression. Both
+               controls share this labelled visible predecessor; no outcome
+               claims that the normally hidden trail occupies a native lane. */
+            const portraitControls = await evalIn(`(()=>{const trail=document.getElementById('trail'),header=document.getElementById('topbar'),
+              nativeBaseline=${portraitNativeCheck},originalStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},
+              originalRect=trail.getBoundingClientRect();let fixture=null,band=null,fallback=null,cleanup=null,error=null;
+              try{
+                if(!nativeBaseline.ok||!nativeBaseline.canonicalHidden)throw new Error('native hidden-trail portrait predecessor is not green');
+                const rootStyle=getComputedStyle(document.documentElement),left=(parseFloat(rootStyle.getPropertyValue('--safe-left'))||0)+10,
+                  right=(parseFloat(rootStyle.getPropertyValue('--safe-right'))||0)+10,injectedTop=nativeBaseline.fixedChromeBottom+8;
+                trail.style.setProperty('display','flex');trail.style.setProperty('position','fixed','important');
+                trail.style.setProperty('left',left+'px','important');trail.style.setProperty('top',injectedTop+'px','important');
+                trail.style.setProperty('right','auto','important');trail.style.setProperty('bottom','auto','important');
+                trail.style.setProperty('width',(innerWidth-left-right)+'px','important');trail.style.setProperty('transform','none','important');
+                window.dispatchEvent(new Event('resize'));
+                const injectedBaseline=${portraitBandCheck},injectedRect=trail.getBoundingClientRect();
+                fixture={kind:'injected-floating-trail-regression',nativeBaseline,originalStyle,
+                  originalRect:[originalRect.left,originalRect.top,originalRect.right,originalRect.bottom],injectedTop,
+                  injectedRect:[injectedRect.left,injectedRect.top,injectedRect.right,injectedRect.bottom],injectedStyle:trail.getAttribute('style'),
+                  injectedBaseline,observedOutsideHeader:!injectedBaseline.headerContained&&injectedRect.top>=nativeBaseline.fixedChromeBottom+7.5};
+                if(!fixture.observedOutsideHeader||!injectedBaseline.ok||!injectedBaseline.trailVisible||injectedBaseline.fallback)
+                  throw new Error('labelled floating-trail fixture did not establish a usable visible predecessor');
+                band=(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
                 value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform'),computed:getComputedStyle(side).transform},
                 a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),dy=t.bottom-1-a.top,requested='translateY('+dy+'px)';let mutation;
               try{side.style.setProperty('transform',requested,'important');mutation={requested,
@@ -13293,40 +13318,8 @@ async function main() {
               finally{if(prior.value===''&&prior.priority==='')side.style.removeProperty('transform');else side.style.setProperty('transform',prior.value,prior.priority);}
               const restored={property:{value:side.style.getPropertyValue('transform'),priority:side.style.getPropertyPriority('transform')},
                 computed:getComputedStyle(side).transform,outcome:${portraitBandCheck}};
-              return {baseline,prior,mutation,restored};})()`);
-            const bandControlAssessment = portraitBandControlOutcome(bandControl);
-            if (!bandControlAssessment.ok) {
-              stopInstrumentControl(`${vp.label}: eligible portrait-band collision control did not change, turn red, and restore exactly (${JSON.stringify({ bandControl, bandControlAssessment })})`);
-            }
-            portraitBandControlRun = true;
-            portraitBandControlCount += 1;
-            recordControls('planetside-portrait-band-viability');
-          }
-          if (portraitEligible && !portraitFallbackControlRun) {
-            /* The normal breadcrumb is header-contained. Explicitly inject
-               the former floating-trail fault before the existing safe-bottom
-               challenge; never call this a natural header layout. Native
-               display rules must remain free to yield the injected trail. */
-            const fallbackControl = await evalIn(`(()=>{const trail=document.getElementById('trail'),nativeBaseline=${portraitNativeCheck},
-              originalStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},originalRect=trail.getBoundingClientRect();
-              let fixture=null,control=null,error=null;
-              try{
-                if(!nativeBaseline.ok||!nativeBaseline.headerContained)throw new Error('native header-contained portrait predecessor is not green');
-                const injectedTop=nativeBaseline.fixedChromeBottom+8;
-                trail.style.setProperty('position','fixed','important');trail.style.setProperty('left',originalRect.left+'px','important');
-                trail.style.setProperty('top',injectedTop+'px','important');trail.style.setProperty('right','auto','important');
-                trail.style.setProperty('bottom','auto','important');trail.style.setProperty('width',originalRect.width+'px','important');
-                trail.style.setProperty('transform','none','important');
-                window.dispatchEvent(new Event('resize'));
-                const injectedBaseline=${portraitBandCheck},injectedRect=trail.getBoundingClientRect();
-                fixture={kind:'injected-floating-trail-regression',nativeBaseline,originalStyle,
-                  originalRect:[originalRect.left,originalRect.top,originalRect.right,originalRect.bottom],
-                  injectedTop,injectedRect:[injectedRect.left,injectedRect.top,injectedRect.right,injectedRect.bottom],
-                  injectedStyle:trail.getAttribute('style'),injectedBaseline,
-                  observedOutsideHeader:!injectedBaseline.headerContained&&injectedRect.top>=nativeBaseline.fixedChromeBottom+7.5};
-                if(!fixture.observedOutsideHeader||!injectedBaseline.ok||!injectedBaseline.trailVisible||injectedBaseline.fallback)
-                  throw new Error('injected floating-trail regression did not establish its labelled usable predecessor');
-                control=(()=>{ const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
+              return {baseline,prior,mutation,restored};})();
+                fallback=(()=>{ const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
                 value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom'),computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim()},
                 beforeSide=side.getBoundingClientRect(),beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(prior.computed)||0,
                 forcedSafe=baseSafe+Math.max(8,beforeSide.bottom-beforeTrail.bottom-6-64),requested=forcedSafe+'px';let mutation;
@@ -13342,17 +13335,30 @@ async function main() {
                 computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),outcome:${portraitBandCheck}};
               return {baseline,prior,mutation,restored};})();
               }catch(cause){error=String(cause?.message||cause);}
-              finally{trail.setAttribute('style','');trail.removeAttribute('style');if(originalStyle.present)trail.setAttribute('style',originalStyle.value);
-                window.dispatchEvent(new Event('resize'));}
-              const restoredStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},nativeRestored=${portraitNativeCheck};
-              return {...control,fixture:{...fixture,restoredStyle,nativeRestored,error},error};})()`);
-            const fallbackControlAssessment = portraitFallbackControlOutcome(fallbackControl);
-            if (!fallbackControlAssessment.ok) {
-              stopInstrumentControl(`${vp.label}: eligible forced-tight portrait did not change policy and restore exactly (${JSON.stringify({ fallbackControl, fallbackControlAssessment })})`);
-            }
-            portraitFallbackControlRun = true;
-            portraitFallbackControlCount += 1;
-            recordControls('planetside-portrait-trail-fallback');
+              finally{
+                /* AppChrome deliberately remembers the last visible trail
+                   edge. Reset only the fixture's remembered edge through a
+                   measured temporary rect inside the existing header before
+                   restoring the hidden node's exact style presence/bytes. */
+                const h=header.getBoundingClientRect();trail.style.setProperty('display','flex');
+                trail.style.setProperty('top',h.top+'px','important');trail.style.setProperty('left',h.left+'px','important');
+                trail.style.setProperty('width',h.width+'px','important');trail.style.setProperty('height',Math.min(16,h.height)+'px','important');
+                window.dispatchEvent(new Event('resize'));const c=trail.getBoundingClientRect();
+                cleanup={kind:'temporary-header-contained-edge-reset',rect:[c.left,c.top,c.right,c.bottom],
+                  header:[h.left,h.top,h.right,h.bottom],headerContained:getComputedStyle(trail).display!=='none'&&c.width>0&&c.height>0
+                    &&c.left>=h.left-1&&c.right<=h.right+1&&c.top>=h.top-1&&c.bottom<=h.bottom+1};
+                trail.setAttribute('style','');trail.removeAttribute('style');if(originalStyle.present)trail.setAttribute('style',originalStyle.value);
+                window.dispatchEvent(new Event('resize'));
+              }
+              const restoredStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},nativeRestored=${portraitNativeCheck},
+                witness={...fixture,restoredStyle,nativeRestored,cleanup,error};
+              return {band:{...band,fixture:witness,error},fallback:{...fallback,fixture:witness,error}};})()`);
+            const bandControlAssessment=portraitBandControlOutcome(portraitControls.band),fallbackControlAssessment=portraitFallbackControlOutcome(portraitControls.fallback);
+            if(!bandControlAssessment.ok||!fallbackControlAssessment.ok)
+              stopInstrumentControl(`${vp.label}: labelled floating-trail collision/fallback did not turn red/yield and restore the hidden native baseline (${JSON.stringify({portraitControls,bandControlAssessment,fallbackControlAssessment})})`);
+            portraitEligibleBaselineCount += 1;
+            portraitBandControlRun=true;portraitBandControlCount+=1;recordControls('planetside-portrait-band-viability');
+            portraitFallbackControlRun=true;portraitFallbackControlCount+=1;recordControls('planetside-portrait-trail-fallback');
           }
           if (portraitBaselineCount === portraitViewportCount) {
             const portraitCampaign = portraitControlCampaignOutcome({
@@ -14170,12 +14176,12 @@ async function main() {
             &&ingressPlacement&&worldCodeContract&&atlasRouteContract&&captureContract&&scoutContract&&recordsContract&&audioContract&&mealContract&&breedContract&&renameContract&&lessonContract&&trainingContract&&artContract
             &&workspaceContract&&coldArtContract&&workerContract&&shipyardContract&&hdSurfaceContract&&publishingContract
             &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
-            &&/ONE COMMAND DECK ON EVERY SCREEN: Five labelled boards and four utility controls share a centered bottom launcher across phone, tablet and desktop/.test(text)
-            &&/ONE GLASS LANGUAGE: The v2 command deck unifies the top bar, objective, breadcrumbs, Survey, panels, contextual hints, bottom launcher on every device/.test(text)
-            &&/UTILITIES FOLLOW THE LAUNCHER: Desktop notices and utility panels clear the measured bottom launcher and share its right edge/.test(text)
-            &&/PRIME STAYS WITH YOUR BOARDS: Prime Codex keeps its icon, label and Signature count in the bottom launcher on every device/.test(text)
+            &&/FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only boards and four utility controls in compact bottom rows/.test(text)
+            &&/ONE GLASS LANGUAGE: Rounded name, health, objective and navigation controls carry the production layout forward/.test(text)
+            &&/UTILITIES STAY TOGETHER: Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge/.test(text)
+            &&/PRIME KEEPS YOUR PROGRESS: Prime Codex retains its Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill/.test(text)
             &&/exactly one 44-pixel top-right Close action/.test(text)
-            &&/Spacing inside the wide bottom launcher belongs to that command deck and leaves the active panel open/.test(text)
+            &&/Spacing inside the side navigation belongs to its controls and leaves the active panel open/.test(text)
             &&/a genuine empty-sky press still dismisses it/.test(text)
             &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
             &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
@@ -14775,7 +14781,7 @@ async function main() {
         if (vp.width > 900) {
           addOutcome(vp.label, 'settings', 'DESKTOP_UTILITY_PANEL_ANCHOR', '#setpanel',
             await evalIn(`window.__CF_GLASS_AUDIT__.rightBottomAnchorOutcome('#setpanel')`),
-            'desktop Settings aligns with the measured centered launcher\'s right edge, 12px above it');
+            'desktop Settings aligns with the measured bottom-right utility tray\'s right edge, 12px above it');
           if (!settingsAnchorControlRun) {
             settingsAnchorControlRun = true;
             const leftSettingsControl = await evalIn(`(()=>{ const panel=document.getElementById('setpanel'),prior=panel.getAttribute('style');

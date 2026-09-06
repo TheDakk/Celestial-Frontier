@@ -2,7 +2,7 @@
 
 ## UI parity program — U1 checkpoint, 2026-09-06
 
-U1 implements the normal-game shared tokens, uniform responsive bottom launcher/lane layout and Nick's saved
+U1 implements normal-game shared tokens, production-based phone/wide layout and Nick's saved
 notification history amendment. See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program,
 explicit geometry differences and review boundaries. U2 sheet/stack work, U3 per-panel work
 and U4 ten-viewport/28-screen gate remain unstarted. Phase4 presentation parity is not closed;

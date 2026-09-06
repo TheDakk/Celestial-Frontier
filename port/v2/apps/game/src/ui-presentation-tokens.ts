@@ -16,7 +16,7 @@ export const UI_PRESENTATION_TOKENS = Object.freeze({
   'color-faint': 'var(--faint)', 'color-accent-gold': '#ffd96a',
   'color-accent-teal': '#7ec8f0', 'color-success': '#7fe6a0',
   'color-warn': '#ffd96a', 'color-danger': '#ff806f',
-  'dock-chip-width': '58px', 'dock-pitch': '64px', 'dock-half-pitch': '32px',
+  'dock-chip-width': '60px', 'dock-pitch': '64px', 'dock-half-pitch': '32px',
   'touch-target': '44px', 'utility-face': '36px', 'dock-row-gap': '4px',
   'launcher-pitch': '72px', 'launcher-target': '48px', 'launcher-face': '40px',
   'launcher-padding': '12px', 'launcher-label': '9.5px', 'launcher-count': '9px',

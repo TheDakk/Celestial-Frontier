@@ -3,8 +3,8 @@
 ## U1 presentation checkpoint — 2026-09-06
 
 The normal `/` game (without `avpilot`) uses the shared token/shell owners, local Inter,
-an aligned top/current-view/health header and upper-left context stack, the approved uniform
-bottom launcher across phone/tablet/desktop, and saved notification read state described in
+the production layout adapted to icon-only phone rows and wide side controls/top-center Prime/
+bottom-right utilities, right Objective under Search, and saved notification read state described in
 `../../UI_PRESENTATION.md`. The accepted brief and amendments are in
 `../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved.
 
@@ -13,14 +13,14 @@ It owns an isolated headless browser and creates three golden comparison sheets 
 CSS geometry deltas, plus numeric larger-text and narrow-landscape panel probes. On macOS
 request approved out-of-sandbox execution before browser spawn.
 This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2; no CI/profile
-lane was changed. `ROADMAP.md` and `../../audits/UI_U1_TOP_LEFT_REVISION_20260906.md` own current exact-source
+lane was changed. `ROADMAP.md` and `../../audits/UI_U1_PRODUCTION_LAYOUT_20260906.md` own current exact-source
 results; `../../audits/UI_U1_LAUNCHER_REVISION_20260906.md` and
 `../../audits/UI_U1_CHECKPOINT_20260906.md` preserve the earlier U1 checkpoints.
 
 ## UI tool setup — 2026-09-05 local
 
-`@cf/game` now pins GSAP 3.15.0 for future approved UI animation. It is installed but not imported
-into the current pilot. Inkscape 1.4.4 is available on the Codex Mac through its CLI. Setup commands,
+GSAP 3.15.0 is isolated in `tools/ui-motion` for future approved UI animation. It is not a
+game dependency or imported into the current pilot; the game manifests retain their sealed bytes. Inkscape 1.4.4 is available on the Codex Mac through its CLI. Setup commands,
 headless limitations, verification, costs and browser/Steam direction live in [UI_TOOLCHAIN.md](../../UI_TOOLCHAIN.md).
 
 

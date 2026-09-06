@@ -1785,13 +1785,13 @@ const assessArc3SurveyClosedRailLifecycle = ({
     exactRoute: canonicalJson(arc3SurveyRouteProjection(beforeState))
       === canonicalJson(arc3SurveyRouteProjection(afterState)),
     durableReadOnly: readOnly.ok === true,
-    /* Historical rightRailReady names the current launcher readiness outcome. */
-    rightRailReady: surface?.rightRail?.id === 'dock'
-      && surface?.rightRail?.display === 'grid'
+    /* Closing Survey restores the actual wide right-rail control. */
+    rightRailReady: surface?.rightRail?.id === 'railrgt'
+      && surface?.rightRail?.display === 'flex'
       && surface?.rightRail?.visibility !== 'hidden'
       && surface?.rightRail?.rectCount === 1
       && surface?.rightRail?.width >= 44 && surface?.rightRail?.height >= 44
-      && surface?.shipyard?.id === 'dockshipyard'
+      && surface?.shipyard?.id === 'railshipyard'
       && surface?.shipyard?.tag === 'BUTTON'
       && surface?.shipyard?.ariaControls === 'shipyardpanel'
       && surface?.shipyard?.ariaExpanded === 'false'
@@ -1799,7 +1799,7 @@ const assessArc3SurveyClosedRailLifecycle = ({
       && surface?.shipyard?.visibility !== 'hidden'
       && surface?.shipyard?.rectCount === 1
       && surface?.shipyard?.width >= 44 && surface?.shipyard?.height >= 44
-      && surface?.shipyard?.buttonId === 'dockshipyard'
+      && surface?.shipyard?.buttonId === 'railshipyard'
       && surface?.shipyard?.buttonTag === 'BUTTON',
   });
   return { ok: Object.values(checks).every((value) => value === true), checks, readOnly };
@@ -2446,13 +2446,13 @@ const assessArc2InventoryReload = ({ committed, reloaded, committedState, reload
       && row.pending === false && row.equipped === false)
     || surface.inventoryRows.some((row) => row.instanceId === removedInstanceId)
     || !assessInventoryPanelClose(surface?.inventoryClose).ok
-    || surface?.atlasPreClick?.ok !== true || surface?.atlasPreClick?.buttonId !== 'dockatlas'
+    || surface?.atlasPreClick?.ok !== true || surface?.atlasPreClick?.buttonId !== 'railatlas'
     || surface?.atlasPreClick?.buttonTag !== 'BUTTON'
     || !Number.isFinite(surface?.atlasPreClick?.x) || !Number.isFinite(surface?.atlasPreClick?.y)
     || surface?.panelOpen !== 'atlas' || surface?.inventoryHidden !== true
     || surface?.inventoryExpanded !== 'false'
     || !assessAtlasTravelTarget(surface?.atlasTarget, { atlasId: 'p133' }).ok
-    || surface?.atlasPointer?.buttonId !== 'dockatlas' || surface?.atlasPointer?.buttonTag !== 'BUTTON'
+    || surface?.atlasPointer?.buttonId !== 'railatlas' || surface?.atlasPointer?.buttonTag !== 'BUTTON'
     || surface?.atlasPointer?.trusted !== true
     || surface?.atlasPointer?.pointerType !== 'mouse'
     || !Number.isFinite(surface?.atlasPointer?.x) || !Number.isFinite(surface?.atlasPointer?.y)
@@ -3125,7 +3125,7 @@ const assessArc3PendingLifecycle = ({
     reasons.push('held rendered/durable no-optimism and native main single-flight');
   }
   const closedEng = closed?.diagnostics?.engineering;
-  if (closed?.panelOpen !== null || closed?.focusId !== 'dockshipyard'
+  if (closed?.panelOpen !== null || closed?.focusId !== 'railshipyard'
     || closed?.expanded !== 'false' || closed?.bodyChildren !== 0
     || closed?.diagnostics?.schema !== 'cf-v2-shipyard-diagnostics/v1'
     || closed?.diagnostics?.status !== 'closed' || closed?.diagnostics?.stateKey !== null
@@ -5922,18 +5922,18 @@ try {
   /* 1d. THE GOLDEN-LAYOUT GEOMETRY CONTRACT (ui-main-desktop.png positions;
      uilayout.js discipline: measure the REAL boxes, then prove the checker
      can catch a moved element before trusting its pass). */
-  const geoCheck = `(()=>{ const W=innerWidth, H=innerHeight;
+  const geoCheck = `(()=>{ const W=innerWidth, H=innerHeight,compact=W<=700||(W<=900&&W>H);
     const r=(id)=>{ const el=typeof id==='string'?document.getElementById(id):id; if(!el) return null;
       const b=el.getBoundingClientRect(),cs=getComputedStyle(el); return { l:b.left, t:b.top, r:b.right, b:b.bottom,
         cx:(b.left+b.right)/2,cy:(b.top+b.bottom)/2,w:b.width,h:b.height,
         vis:b.width>0&&b.height>0&&cs.display!=='none'&&cs.visibility!=='hidden'&&Number(cs.opacity)>0 }; };
-    const overlaps=(a,b)=>a&&b&&a.l<b.r-.5&&a.r>b.l+.5&&a.t<b.b-.5&&a.b>b.t+.5;
-    const pc=r('playerchip'), hp=r('hpbar'), pr=r('primechip'), obj=r('objchip'),
-      hint=r('hintpill'), ctx=r('ctxbar'), dock=r('dock'), rail=r('raillft'), rightRail=r('railrgt'),
-      srch=r('searchbox'),bell=r('shelfnotifications'),topbar=r('topbar'),inventory=r('dockinventory'),
-      scene=r('sceneactions'),survey=r('docksurvey'),charts=r('dockcharts'),trail=r('trail');
+    const overlaps=(a,b)=>a?.vis&&b?.vis&&a.l<b.r-.5&&a.r>b.l+.5&&a.t<b.b-.5&&a.b>b.t+.5;
+    const pc=r('playerchip'),hp=r('hpbar'),pr=r('primechip'),obj=r('objchip'),hint=r('hintpill'),ctx=r('ctxbar'),
+      dock=r('dock'),rail=r('raillft'),rightRail=r('railrgt'),srch=r('searchbox'),topbar=r('topbar'),inventory=r('dockinventory'),
+      scene=r('sceneactions'),survey=r('docksurvey'),charts=r('dockcharts'),trailNode=document.getElementById('trail');
     const rootStyle=getComputedStyle(document.documentElement),safeLeft=parseFloat(rootStyle.getPropertyValue('--safe-left'))||0,
-      expectedLeft=safeLeft+(W<=700?10:18),expectedColumn=W<=700?Math.max(128,Math.min(176,W*.4)):Math.max(176,Math.min(240,W*.2)),
+      safeRight=parseFloat(rootStyle.getPropertyValue('--safe-right'))||0,safeBottom=parseFloat(rootStyle.getPropertyValue('--safe-bottom'))||0,
+      expectedLeft=safeLeft+(compact?10:18),expectedColumn=compact?Math.max(128,Math.min(176,W*.36)):Math.max(176,Math.min(240,W*.2)),
       inside=(outer,inner)=>!!outer?.vis&&!!inner?.vis&&inner.l>=outer.l-1&&inner.r<=outer.r+1&&inner.t>=outer.t-1&&inner.b<=outer.b+1,
       inViewport=(box)=>!!box?.vis&&box.l>=-1&&box.r<=W+1&&box.t>=-1&&box.b<=H+1,
       aligned=(box)=>!!box?.vis&&Math.abs(box.l-expectedLeft)<=1&&Math.abs(box.w-expectedColumn)<=1,
@@ -5945,70 +5945,64 @@ try {
       bad.push('playerchip not in its reachable aligned top-left Inventory owner: '+JSON.stringify({pc,inventory,topbar,expectedLeft,expectedColumn}));
     if(!aligned(hp)||!inside(topbar,hp)||!pc||Math.abs(hp.t-pc.b-8)>1||hp.h<44)
       bad.push('HP bar not aligned 8px under the player chip inside topbar: '+JSON.stringify({hp,pc,topbar}));
-    const trailNode=document.getElementById('trail'),location=trailNode?.closest('.location-readout'),locationBox=r(location),
-      locationLabel=location?.querySelector(':scope > .location-label');
-    if(!inside(topbar,locationBox)||!inside(locationBox,trail)||!hp||Math.abs(locationBox.cy-hp.cy)>1
-      ||locationLabel?.parentElement!==location||!locationLabel?.textContent.trim()||trailNode.contains(locationLabel)
-      ||!trailNode.querySelector('.seg.cur')||!inViewport(trail))
-      bad.push('current view trail is not contained beside Health with a separate label: '+JSON.stringify({trail,location:locationBox,hp}));
-    const bellNode=document.getElementById('shelfnotifications'),searchNode=document.getElementById('searchbox'),
-      safeRight=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--safe-right'))||0,
-      expectedBellRight=safeRight+(W<=700?10:18),bellHit=bell?document.elementFromPoint(bell.cx,bell.cy):null,
-      searchHit=srch?document.elementFromPoint(srch.cx,srch.cy):null;
-    if(!srch||!srch.vis||srch.t>60||!bell||!bell.vis||bell.w<44||bell.h<44
-      ||Math.abs(W-bell.r-expectedBellRight)>1||Math.abs(bell.l-srch.r-8)>1||Math.abs(bell.cy-srch.cy)>1
-      ||!bellHit||!(bellHit===bellNode||bellNode?.contains(bellHit))||searchHit!==searchNode)
-      bad.push('search is not beside its reachable shelf bell at the approved 8px gap: '+JSON.stringify({srch,bell,
-        expectedBellRight,bellHit:bellHit?.id||null,searchHit:searchHit?.id||null}));
-    if(srch && pc && pc.r > srch.l+4) bad.push('player chip overlaps the search bar');
-    if(W<=700){
-      const prime=document.getElementById('primechip'),hit=pr?document.elementFromPoint(pr.cx,pr.cy):null;
-      if(!pr||!pr.vis||prime?.tagName!=='BUTTON'||prime?.type!=='button'||pr.h<44
-        ||Math.abs(pr.cx-W/2)>60||!hit||!prime.contains(hit))
-        bad.push('Prime pill is not a visible reachable phone button in the centered first dock row: '+JSON.stringify({pr,hit:hit?.id||null}));
-      for(const [name,box] of [['playerchip',pc],['hpbar',hp],['searchbox',srch],['trail',r('trail')]])
-        if(overlaps(pr,box))bad.push('primechip overlaps '+name);
-    }
-    const sceneNode=document.getElementById('sceneactions'),sceneOrder=sceneNode?[...sceneNode.children].map(el=>el.id):[];
-    if(!aligned(scene)||!topbar||Math.abs(scene.t-topbar.b-8)>1
-      ||!inside(scene,survey)||!inside(scene,charts)||!aligned(survey)||!aligned(charts)
+    if(!trailNode||trailNode.parentElement!==document.getElementById('topbar')||getComputedStyle(trailNode).display!=='none'
+      ||!trailNode.querySelector('.seg.cur')||!trailNode.textContent.trim()||document.querySelector('.location-readout,.location-label'))
+      bad.push('canonical trail is not populated and visually absent from the header');
+    const searchNode=document.getElementById('searchbox'),searchHit=srch?.vis?document.elementFromPoint(srch.cx,srch.cy):null,
+      expectedSearchLeft=expectedLeft+expectedColumn+10,expectedRight=W-safeRight-(compact?10:18);
+    if(!inside(topbar,srch)||!inViewport(srch)||srch.h<44||srch.w<44||!pc||Math.abs(srch.t-pc.t)>1
+      ||(compact?Math.abs(srch.l-expectedSearchLeft)>1||srch.w>W*.37+1:Math.abs(srch.r-expectedRight)>1||Math.abs(srch.w-236)>1)
+      ||searchHit!==searchNode)
+      bad.push('search is not a reachable 44px control in its approved upper-right header column: '+JSON.stringify({srch,topbar,expectedSearchLeft,expectedRight,searchHit:searchHit?.id||null}));
+    if(overlaps(pc,srch))bad.push('player chip overlaps the search bar');
+    const prime=document.getElementById('primechip');
+    if(!nativeAvailable('primechip',pr)||Math.abs(pr.cx-W/2)>1||(!compact&&Math.abs(pr.t-pc.t)>1))
+      bad.push('Prime pill is not a visible reachable native button at the approved centered position: '+JSON.stringify({pr,pc,compact}));
+    for(const [name,box] of [['playerchip',pc],['hpbar',hp],['searchbox',srch],['objective',obj]])
+      if(overlaps(pr,box))bad.push('primechip overlaps '+name);
+    const sceneNode=document.getElementById('sceneactions'),sceneOrder=sceneNode?[...sceneNode.children].map(el=>el.id):[],
+      expectedSceneTop=compact?topbar?.b+8:rail?.b+8;
+    if(!aligned(scene)||Math.abs(scene.t-expectedSceneTop)>1||!inside(scene,survey)||!inside(scene,charts)||!aligned(survey)||!aligned(charts)
       ||Math.abs(survey.t-scene.t)>1||Math.abs(charts.t-survey.b-8)>1
       ||!nativeAvailable('docksurvey',survey)||!nativeAvailable('dockcharts',charts)
-      ||JSON.stringify(sceneOrder)!==JSON.stringify(['docksurvey','dockcharts','objchip']))
-      bad.push('scene actions are not the aligned native 44px vertical stack below topbar: '+JSON.stringify({scene,survey,charts,topbar,sceneOrder}));
-    if(!aligned(obj)||!inside(scene,obj)||!inViewport(obj)||!charts||Math.abs(obj.t-charts.b-8)>1
-      ||overlaps(obj,charts)||overlaps(obj,survey)||document.getElementById('objchip')?.parentElement!==sceneNode)
-      bad.push('objective chip is not contained and aligned 8px below Charts: '+JSON.stringify({obj,charts,scene}));
-    if(!hint || Math.abs(hint.cx-W/2)>90 || hint.b<H-160) bad.push('hint pill not bottom-center');
-    if(ctx && hint && ctx.b>hint.t+6) bad.push('caption not ABOVE the hint pill');
-    if(rail?.vis||rightRail?.vis)bad.push('legacy rail root remains visible beside the unified launcher');
-    const compact=W<=700||(W<=900&&W>H);
+      ||JSON.stringify(sceneOrder)!==JSON.stringify(['docksurvey','dockcharts']))
+      bad.push('scene actions are not the aligned native 44px vertical stack below their measured top owner: '+JSON.stringify({scene,survey,charts,topbar,rail,sceneOrder,expectedSceneTop}));
+    if(!inside(topbar,obj)||!inViewport(obj)||!srch||Math.abs(obj.t-srch.b-8)>1||Math.abs(obj.r-expectedRight)>1
+      ||(compact?Math.abs(obj.l-srch.l)>1:Math.abs(obj.w-srch.w)>1)||overlaps(obj,srch)||overlaps(obj,hp)
+      ||document.getElementById('objchip')?.parentElement!==document.getElementById('topbar'))
+      bad.push('objective chip is not contained in the right header column 8px below Search: '+JSON.stringify({obj,srch,topbar,hp,expectedRight}));
+    if(!hint||Math.abs(hint.cx-W/2)>90||hint.b<H-160)bad.push('hint pill not bottom-center');
+    if(ctx&&hint&&ctx.b>hint.t+6)bad.push('caption not ABOVE the hint pill');
     if(!compact){
-      const ids=['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'],
-        pitch=W>=1100?80:72,expectedWidth=W>=1100?752:672,rows=ids.map(id=>({id,box:r(id)})),
-        actual=[...document.querySelectorAll('#dock > button')].filter(el=>r(el.id)?.vis).map(el=>el.id),
-        safeBottom=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--safe-bottom'))||0;
-      if(!dock||!dock.vis||Math.abs(dock.cx-W/2)>1||Math.abs(dock.w-expectedWidth)>1
-        ||Math.abs(H-dock.b-safeBottom-12)>1||JSON.stringify(actual)!==JSON.stringify(ids)
-        ||rows.some((row,index)=>!row.box?.vis||row.box.h<44||row.box.w<44
-          ||row.box.l<dock.l||row.box.r>dock.r||row.box.t<dock.t||row.box.b>dock.b
-          ||(index>0&&(Math.abs(row.box.cx-rows[index-1].box.cx-pitch)>1
-            ||Math.abs(row.box.cy-rows[0].box.cy)>1))
-          ||(()=>{const el=document.getElementById(row.id),hit=document.elementFromPoint(row.box.cx,row.box.cy);
-            return !hit||!(hit===el||el.contains(hit));})()))
-        bad.push('unified launcher does not retain nine reachable native controls at its centered scaled pitch: '+JSON.stringify({dock,rows,actual,pitch,expectedWidth}));
-    }else if(!dock||Math.abs(dock.cx-W/2)>60)bad.push('compact dock not bottom-center');
+      for(const [owner,box,ids] of [['raillft',rail,['railcharters','railcodex']],['railrgt',rightRail,['railatlas','railshipyard']]]){
+        const rows=ids.map(id=>({id,box:r(id)}));
+        if(!box?.vis||Math.abs(box.t-topbar.b-8)>1||(owner==='raillft'?!aligned(box):Math.abs(box.r-expectedRight)>1||Math.abs(box.w-236)>1)
+          ||rows.some((row,index)=>!inside(box,row.box)||!nativeAvailable(row.id,row.box)
+            ||Math.abs(row.box.l-box.l)>1||Math.abs(row.box.r-box.r)>1
+            ||Math.abs(row.box.t-(index?rows[index-1].box.b+8:box.t))>1))
+          bad.push('native rail lost its reachable 44px targets and real 8px gaps: '+JSON.stringify({owner,box,rows,topbar}));
+      }
+      const ids=['dockrecords','docknotifications','dockguide','docksets'],rows=ids.map(id=>({id,box:r(id)})),
+        actual=[...document.querySelectorAll('#dock > button')].filter(el=>r(el.id)?.vis&&el.id!=='primechip').map(el=>el.id);
+      if(!dock?.vis||Math.abs(W-dock.r-safeRight-16)>1||Math.abs(H-dock.b-safeBottom-12)>1||Math.abs(dock.w-200)>1||Math.abs(dock.h-44)>1
+        ||JSON.stringify(actual)!==JSON.stringify(ids)||rows.some((row,index)=>!inside(dock,row.box)||!nativeAvailable(row.id,row.box)
+          ||Math.abs(row.box.w-44)>1||Math.abs(row.box.h-44)>1||(index>0&&(Math.abs(row.box.cx-rows[index-1].box.cx-52)>1||Math.abs(row.box.cy-rows[0].box.cy)>1))))
+        bad.push('wide utility tray does not retain four reachable 44px controls at its right-bottom 52px pitch: '+JSON.stringify({dock,rows,actual}));
+    }else{
+      if(rail?.vis||rightRail?.vis)bad.push('wide rail remains visible beside the compact phone dock');
+      if(!dock||Math.abs(dock.cx-W/2)>1)bad.push('compact dock not bottom-center');
+    }
     return bad; })()`;
   const geo = await evalIn(geoCheck);
   if (geo.length) fails.push('GOLDEN LAYOUT drift: ' + geo.join(' · '));
-  /* The objective now flows inside the scene column. Translate its actual
-     rectangle outside the viewport and onto Charts; a static-position left
+  /* The objective now flows inside the right header column. Translate its actual
+     rectangle outside the viewport and onto Search; a static-position left
      declaration cannot recreate either defect. Restore the exact owned node. */
   if (geo.length === 0) {
-    const geoCtl = await evalIn(`(()=>{const o=document.getElementById('objchip'),charts=document.getElementById('dockcharts'),
+    const geoCtl = await evalIn(`(()=>{const o=document.getElementById('objchip'),charts=document.getElementById('searchbox'),
       prior=o.getAttribute('style'),results=[];let error=null;
       const restore=()=>{o.setAttribute('style','');o.removeAttribute('style');if(prior!==null)o.setAttribute('style',prior);};
-      try{for(const name of ['outside viewport','overlaps Charts']){const a=o.getBoundingClientRect(),c=charts.getBoundingClientRect(),
+      try{for(const name of ['outside viewport','overlaps Search']){const a=o.getBoundingClientRect(),c=charts.getBoundingClientRect(),
         dx=name==='outside viewport'?innerWidth+20-a.left:c.left-a.left,dy=name==='outside viewport'?0:c.top-a.top;
         o.style.setProperty('transform','translate('+dx+'px,'+dy+'px)','important');const bad=${geoCheck},moved=o.getBoundingClientRect(),
           reproduced=name==='outside viewport'?moved.left>innerWidth:moved.left<c.right&&moved.right>c.left&&moved.top<c.bottom&&moved.bottom>c.top;
@@ -6019,24 +6013,24 @@ try {
     if (!geoCtl.ok) failSliceWithoutCascade('GEOMETRY CHECKER CONTROL FAILED — objective displacement/overlap was not rejected and restored: '+JSON.stringify(geoCtl));
   }
 
-  /* The notification bell owns the shelf's right slot. Translate its live
+  /* Search owns the header's upper-right column. Translate its live
      target, remove it, and reduce its touch floor independently; the same
      geometry oracle must reject each mutation and restore the exact source. */
   const searchBellGeometryControl = `(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
-    const bell=document.getElementById('shelfnotifications');if(!bell)return {ok:false,why:'bell missing'};
+    const bell=document.getElementById('searchbox');if(!bell)return {ok:false,why:'search missing'};
     const prior=captureInlineStyleProperties(bell.style,['transform','display','height','min-height']);
     const mutations=[['gap',()=>bell.style.setProperty('transform','translateX(12px)','important')],
       ['presence',()=>bell.style.setProperty('display','none','important')],
       ['touch floor',()=>{bell.style.setProperty('min-height','43px','important');bell.style.setProperty('height','43px','important');}]];
     const results=[];let error=null;try{for(const [name,mutate] of mutations){mutate();const broken=${geoCheck};
       restoreInlineStyleProperties(bell.style,prior);const restored=${geoCheck},restoration=inspectInlineStyleProperties(bell.style,prior);
-      results.push({name,broken,restored,restoration,ok:broken.some(row=>row.startsWith('search is not beside its reachable shelf bell'))
+      results.push({name,broken,restored,restoration,ok:broken.some(row=>row.startsWith('search is not a reachable 44px control'))
         &&restored.length===0&&restoration.ok});}}
     catch(cause){error=String(cause?.message||cause);}finally{restoreInlineStyleProperties(bell.style,prior);}
     return {ok:error===null&&results.length===3&&results.every(row=>row.ok),results,error};})()`;
   if (geo.length === 0) {
     const searchBellControl = await evalIn(searchBellGeometryControl);
-    if (!searchBellControl.ok) failSliceWithoutCascade('SHELF SEARCH/BELL CONTROL FAILED: ' + JSON.stringify(searchBellControl));
+    if (!searchBellControl.ok) failSliceWithoutCascade('SHELF SEARCH GEOMETRY CONTROL FAILED: ' + JSON.stringify(searchBellControl));
   }
 
   /* The HP number is an overlay owned by the track, not a flex sibling that
@@ -6351,7 +6345,7 @@ try {
   const law = await evalIn(`(async()=>{ const S=window.__CF_SLICE__; const st=()=>S.api.state();
     document.getElementById('docksets').click();
     const a = st().panelOpen;
-    document.getElementById('dockcodex').click();
+    document.getElementById('railcodex').click();
     const b = st().panelOpen;
     const setsHidden = document.getElementById('setpanel').style.display === 'none';
     document.getElementById('docksets').click();
@@ -6441,10 +6435,10 @@ try {
       + JSON.stringify(panelSwitchFocus));
   }
 
-  /* UI-P1: launcher spacing belongs to the visible tray, not the sky behind
-     it. Historical LEFT/RIGHT RAIL GAP outcome labels now name two separate
-     measured 6px board gaps in #dock. Only trusted browser input on that exact
-     root, plus independent boundary-removal controls, proves dismissal law. */
+  /* UI-P1: painted desktop rail spacing belongs to its own root, not the
+     sky behind it. LEFT/RIGHT RAIL GAP measure the real vertical 8px gaps
+     between each rail's native controls. Trusted input on each exact root,
+     plus independent boundary-removal controls, proves dismissal law. */
   const panelBoundarySetup = await evalIn(`(()=>{ const S=window.__CF_SLICE__,before=S.api.state();
     if(before.cardOpen)document.querySelector('#survey [data-survey-close]')?.click();
     if(S.api.state().panelOpen){const panel=[...document.querySelectorAll('.panel')]
@@ -6462,11 +6456,13 @@ try {
     rail=document.getElementById(${JSON.stringify(railId)}),upper=document.getElementById(${JSON.stringify(upperId)}),
     lower=document.getElementById(${JSON.stringify(lowerId)}),rr=rail?.getBoundingClientRect(),
     ur=upper?.getBoundingClientRect(),lr=lower?.getBoundingClientRect();
-    if(!rail||!upper||!lower||!rr||!ur||!lr)return {geometry:false,why:'missing launcher gap fixture'};
-    const gap=lr.left-ur.right,point={x:(ur.right+lr.left)/2,y:(ur.top+ur.bottom)/2},hit=document.elementFromPoint(point.x,point.y),
+    if(!rail||!upper||!lower||!rr||!ur||!lr)return {geometry:false,why:'missing desktop rail gap fixture'};
+    const gap=lr.top-ur.bottom,point={x:(ur.left+ur.right)/2,y:(ur.bottom+lr.top)/2},hit=document.elementFromPoint(point.x,point.y),
       state=S.api.state(),style=getComputedStyle(rail);
-    return {geometry:innerWidth===1280&&innerHeight===800&&style.display==='grid'&&style.pointerEvents==='auto'
-        &&rail.id==='dock'&&rr.width>0&&rr.height>0&&Math.abs(gap-6)<=0.5&&Math.abs(ur.top-lr.top)<=0.5
+    return {geometry:innerWidth===1280&&innerHeight===800&&style.display==='flex'&&style.pointerEvents==='auto'
+        &&['raillft','railrgt'].includes(rail.id)&&rr.width>=44&&rr.height>0
+        &&ur.width>=44&&ur.height>=44&&lr.width>=44&&lr.height>=44
+        &&Math.abs(gap-8)<=0.5&&Math.abs(ur.left-lr.left)<=0.5&&Math.abs(ur.right-lr.right)<=0.5
         &&point.x>rr.left&&point.x<rr.right&&point.y>rr.top&&point.y<rr.bottom&&hit===rail,
       ownerId:rail.id,upperId:upper.id,lowerId:lower.id,gap,point,targetId:hit?.id||null,
       boundary:rail.hasAttribute('data-panel-boundary'),panelOpen:state.panelOpen,cardOpen:state.cardOpen};})()`;
@@ -6492,8 +6488,8 @@ try {
       panel?.querySelector('[data-pnx]')?.click();return window.__CF_SLICE__.api.state().panelOpen;})()`);
     await sleep(40);
   };
-  const rightGap = railGapProbe('dock', 'dockshipyard', 'dockatlas');
-  const leftGap = railGapProbe('dock', 'dockcharters', 'dockcodex');
+  const rightGap = railGapProbe('railrgt', 'railatlas', 'railshipyard');
+  const leftGap = railGapProbe('raillft', 'railcharters', 'railcodex');
 
   /* ARC 3 ENGINEERING: exercise the real desktop launcher route before the
      generic gap probes. Browser pointer opens the registered panel, native
@@ -6501,7 +6497,7 @@ try {
      inventory—not the DOM's own count—judges the six research rows, five
      groups, 62 recipes and 70 authored actions. */
   const shipyardOpenCheck = `(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),ship=state?.shipVisual,
-    panel=document.getElementById('shipyardpanel'),opener=document.getElementById('dockshipyard'),
+    panel=document.getElementById('shipyardpanel'),opener=document.getElementById('railshipyard'),
     body=panel?.querySelector('[data-engineering-panel-body]'),close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),
     diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,
     previews=panel?[...panel.querySelectorAll('[data-cf-shipyard-preview="v1"]')]:[],preview=previews[0]||null,
@@ -6573,9 +6569,9 @@ try {
       diag,diagKeys,expectedDiagKeys,engKeys,expectedEngKeys,panelRect:pr?[pr.left,pr.top,pr.right,pr.bottom]:null,
       bodyWidth:br?.width??null,bodyScrollWidth:body?.scrollWidth??null,closeRect:cr?[cr.left,cr.top,cr.right,cr.bottom]:null};})()`;
   await armDesktopPointerReceipt();
-  const shipyardOpened = await openDesktopRailPanel('dockshipyard', 'shipyard', 'SHIPYARD');
+  const shipyardOpened = await openDesktopRailPanel('railshipyard', 'shipyard', 'SHIPYARD');
   const shipyardOpenReceipt = await takeDesktopPointerReceipt();
-  if (!shipyardOpened || shipyardOpenReceipt?.buttonId !== 'dockshipyard'
+  if (!shipyardOpened || shipyardOpenReceipt?.buttonId !== 'railshipyard'
     || shipyardOpenReceipt?.buttonTag !== 'BUTTON' || shipyardOpenReceipt?.trusted !== true
     || shipyardOpenReceipt?.pointerType !== 'mouse') {
     fails.push('SHIPYARD: visible launcher opener did not receive trusted browser-mouse input: '
@@ -6647,7 +6643,7 @@ try {
       fails.push('ENGINEERING STATE CONTROL FAILED — state/research/recipe mismatch stayed green or failed to restore: '
         + JSON.stringify(parityShipyardCtl));
     }
-    const openerShipyardCtl = await evalIn(`(()=>{const opener=document.getElementById('dockshipyard'),
+    const openerShipyardCtl = await evalIn(`(()=>{const opener=document.getElementById('railshipyard'),
       priorStyle=opener?.getAttribute('style')??null,priorExpanded=opener?.getAttribute('aria-expanded')??null;
       opener?.style.setProperty('display','none','important');opener?.setAttribute('aria-expanded','false');
       const broken=${shipyardOpenCheck};if(priorStyle===null)opener?.removeAttribute('style');else opener?.setAttribute('style',priorStyle);
@@ -6658,7 +6654,7 @@ try {
         + JSON.stringify(openerShipyardCtl));
     }
     const geometryShipyardCtl = await evalIn(`(()=>{const panel=document.getElementById('shipyardpanel'),
-      close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),opener=document.getElementById('dockshipyard'),
+      close=panel?.querySelector(':scope > [data-pnx="shipyard"]'),opener=document.getElementById('railshipyard'),
       summary=panel?.querySelector('details[data-engineering-section] > summary'),action=panel?.querySelector('button[data-engineering-action]'),
       priorStyle=close?.getAttribute('style')??null,priorSummary=summary?.getAttribute('style')??null,
       priorAction=action?.getAttribute('style')??null;close?.style.setProperty('min-width','0','important');
@@ -6687,7 +6683,7 @@ try {
     if (shipyardClosePoint.ok) await clickDesktopPoint(shipyardClosePoint);
     const shipyardCloseReceipt = await takeDesktopPointerReceipt();
     const shipyardClosedCheck = `(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
-      opener=document.getElementById('dockshipyard'),diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,
+      opener=document.getElementById('railshipyard'),diag=S?.api?.shipyardDiagnostics?.(),eng=diag?.engineering,
       body=panel?.querySelector('[data-engineering-panel-body]'),style=panel?getComputedStyle(panel):null,
       previews=panel?.querySelectorAll('[data-cf-shipyard-preview="v1"]').length??-1,
       keys=diag?Object.keys(diag).sort():[],expected=['activePreviewCount','engineering','pendingPreviewWork','retainedPreviewCount','schema','stateKey','status'].sort();
@@ -6722,18 +6718,18 @@ try {
     }
   }
 
-  if (await openDesktopRailPanel('dockcodex', 'codex', 'RIGHT RAIL GAP')) {
+  if (await openDesktopRailPanel('railcodex', 'codex', 'RIGHT RAIL GAP')) {
     const before = await evalIn(rightGap);
     if (!before.geometry || before.cardOpen || before.panelOpen !== 'codex') {
-      fails.push('RIGHT RAIL GAP: current launcher right 6px root-owned geometry was not established: ' + JSON.stringify(before));
+      fails.push('RIGHT RAIL GAP: right rail 8px root-owned geometry was not established: ' + JSON.stringify(before));
     } else {
       await armDesktopPointerReceipt();
       await clickDesktopPoint(before.point);
       const receipt = await takeDesktopPointerReceipt();
-      const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('dockcodex'),
+      const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('railcodex'),
         panel=document.getElementById('codexpanel');return {panelOpen:s.panelOpen,expanded:button?.getAttribute('aria-expanded'),
           hidden:panel?.getAttribute('aria-hidden')};})()`);
-      if (!before.boundary || receipt?.targetId !== 'dock' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'codex'
+      if (!before.boundary || receipt?.targetId !== 'railrgt' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'codex'
         || after.expanded !== 'true' || after.hidden !== 'false') {
         fails.push('RIGHT RAIL GAP: real root-gap pointer dismissed or desynchronized the active panel: '
           + JSON.stringify({ before, receipt, after }));
@@ -6744,7 +6740,7 @@ try {
   if (await openDesktopRailPanel('dockrecords', 'rec', 'LEFT RAIL GAP')) {
     const before = await evalIn(leftGap);
     if (!before.geometry || before.cardOpen || before.panelOpen !== 'rec') {
-      fails.push('LEFT RAIL GAP: current launcher left 6px root-owned geometry was not established: ' + JSON.stringify(before));
+      fails.push('LEFT RAIL GAP: left rail 8px root-owned geometry was not established: ' + JSON.stringify(before));
     } else {
       await armDesktopPointerReceipt();
       await clickDesktopPoint(before.point);
@@ -6752,7 +6748,7 @@ try {
       const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('dockrecords'),
         panel=document.getElementById('recpanel');return {panelOpen:s.panelOpen,expanded:button?.getAttribute('aria-expanded'),
           hidden:panel?.getAttribute('aria-hidden')};})()`);
-      if (!before.boundary || receipt?.targetId !== 'dock' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'rec'
+      if (!before.boundary || receipt?.targetId !== 'raillft' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'rec'
         || after.expanded !== 'true' || after.hidden !== 'false') {
         fails.push('LEFT RAIL GAP: real root-gap pointer dismissed or desynchronized the active panel: '
           + JSON.stringify({ before, receipt, after }));
@@ -6783,10 +6779,10 @@ try {
     if (after !== null) await closeDesktopPanel();
   };
   await railBoundaryRemovalControl({
-    railId: 'dock', gapCheck: rightGap, buttonId: 'dockcodex', panelId: 'codex', label: 'RIGHT RAIL BOUNDARY',
+    railId: 'railrgt', gapCheck: rightGap, buttonId: 'railcodex', panelId: 'codex', label: 'RIGHT RAIL BOUNDARY',
   });
   await railBoundaryRemovalControl({
-    railId: 'dock', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY',
+    railId: 'raillft', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY',
   });
 
   /* Delegated document listeners are public event boundaries: a synthetic
@@ -6809,7 +6805,7 @@ try {
      repair. It is interactive glass, but it is not one of the declared panel
      boundaries: a broad `.glass` or top-chrome exemption would silently
      change focus/Escape behavior while fixing the rail. */
-  if (await openDesktopRailPanel('dockcodex', 'codex', 'SEARCH OUTSIDE DISMISS')) {
+  if (await openDesktopRailPanel('railcodex', 'codex', 'SEARCH OUTSIDE DISMISS')) {
     const searchPoint = await evalIn(`(()=>{ const input=document.getElementById('searchbox'),rect=input?.getBoundingClientRect(),
       x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,hit=rect?document.elementFromPoint(x,y):null;
       return {ok:!!input&&!!rect&&rect.width>0&&rect.height>0&&hit===input&&input.closest('[data-panel-boundary]')===null,x,y};})()`);
@@ -6867,7 +6863,7 @@ try {
   });
   const GUIDE_DRAFT_BULLET_AUTHORITY = Object.freeze({
     count: 81,
-    sha256: 'f395fc3218fe2a5edbc2c6d52aadcbddde3c5da1e4d179854a97b601605b68ec',
+    sha256: '073e0c972fb6e544b30cd3cc1c8fb1daebcb9216788c763681f380c1723195cb',
   });
   const assessGuideOrderedAuthority = (rows, authority) => {
     const values = Array.isArray(rows) ? rows : [];
@@ -8226,13 +8222,13 @@ try {
         &&shipyardContract&&captureContract&&liveProgressionContract&&audioContract&&mealContract&&breedContract&&renameContract&&hdSurfaceContract&&publishingContract
         &&/NEW FOUNDATION/.test(text)&&/ONE SURFACE, ONE CLOSE/.test(text)
         &&/exactly one 44-pixel top-right Close action/.test(text)
-        &&/ONE COMMAND DECK ON EVERY SCREEN/.test(text)
-        &&/centered bottom launcher across phone, tablet and desktop/.test(text)
-        &&/UTILITIES FOLLOW THE LAUNCHER/.test(text)
-        &&/Desktop notices and utility panels clear the measured bottom launcher and share its right edge/.test(text)
-        &&/PRIME STAYS WITH YOUR BOARDS/.test(text)
-        &&/Signature count in the bottom launcher on every device/.test(text)
-        &&/Spacing inside the wide bottom launcher belongs to that command deck and leaves the active panel open/.test(text)
+        &&/FAMILIAR CONTROLS ON EVERY SCREEN/.test(text)
+        &&/Phones keep five icon-only boards and four utility controls in compact bottom rows/.test(text)
+        &&/UTILITIES STAY TOGETHER/.test(text)
+        &&/Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge/.test(text)
+        &&/PRIME KEEPS YOUR PROGRESS/.test(text)
+        &&/Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill/.test(text)
+        &&/Spacing inside the side navigation belongs to its controls and leaves the active panel open/.test(text)
         &&/a genuine empty-sky press still dismisses it/.test(text)
         &&/FIRST PLANETFALL COUNTS/.test(text)&&/Only a world’s first landing banks the live landfall objective/.test(text)
         &&/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(text)&&/incomplete or unpowered records stay put/.test(text)
@@ -10449,7 +10445,7 @@ try {
     fails.push('SAVED ROUTE AUTHORIZATION: persisted repair changed more than the view/normal export projection: '
       + JSON.stringify(outerAuthRepairedRaw));
   }
-  await evalIn(`document.getElementById('dockatlas')?.click()`);
+  await evalIn(`document.getElementById('railatlas')?.click()`);
   const outerAtlasSetup = {
     target: await evalIn(atlasTravelTargetExpression('outer-galaxy')),
     before: await evalIn(`window.__CF_SLICE__.api.state()`),
@@ -11126,7 +11122,7 @@ try {
     return defs.map((def)=>{const beforeState=api.state(),before=beforeState[def.field],countBefore=beforeState.persistence.mutationBlockCount,
       targetFound=def.act(before),afterState=api.state();return {id:def.id,before,after:afterState[def.field],targetFound,
         countBefore,countAfter:afterState.persistence.mutationBlockCount,witness:afterState.persistence.mutationBlockWitness};});})()`);
-  await evalIn(`document.getElementById('dockcodex').click()`);
+  await evalIn(`document.getElementById('railcodex').click()`);
   const readOnlyAfter = await evalIn(`window.__CF_SLICE__.api.state()`);
   const readOnlyRawAfter = await evalIn(READ_PRIMARY_EXPRESSION);
   await evalIn(`window.__CF_SLICE__.api.__smokeForceReadOnly(false)`);
@@ -12294,7 +12290,7 @@ try {
           { alreadyReported: true });
       }
 
-      const atlasPreClick = await evalIn(railButtonPoint('dockatlas'));
+      const atlasPreClick = await evalIn(railButtonPoint('railatlas'));
       await armDesktopPointerReceipt();
       if (atlasPreClick.ok) await clickDesktopPoint(atlasPreClick);
       const atlasOpened = atlasPreClick.ok
@@ -12590,7 +12586,7 @@ try {
   };
   const openEngineeringPanel = async (label) => {
     await armDesktopPointerReceipt();
-    const opened = await openDesktopRailPanel('dockshipyard', 'shipyard', label);
+    const opened = await openDesktopRailPanel('railshipyard', 'shipyard', label);
     const pointer = await takeDesktopPointerReceipt();
     return { opened, pointer };
   };
@@ -12607,7 +12603,7 @@ try {
   };
   const arc3SurveyLifecycleSurface = async () => evalIn(`(()=>{const S=window.__CF_SLICE__,state=S?.api?.state?.(),
     survey=document.getElementById('survey'),dock=document.getElementById('docksurvey'),
-    rail=document.getElementById('dock'),shipyard=document.getElementById('dockshipyard'),
+    rail=document.getElementById('railrgt'),shipyard=document.getElementById('railshipyard'),
     surveyStyle=survey?getComputedStyle(survey):null,railStyle=rail?getComputedStyle(rail):null,
     shipyardStyle=shipyard?getComputedStyle(shipyard):null,railRect=rail?.getBoundingClientRect(),
     shipyardRect=shipyard?.getBoundingClientRect(),x=shipyardRect?(shipyardRect.left+shipyardRect.right)/2:NaN,
@@ -12684,7 +12680,7 @@ try {
       plate:{enabled:!button('fabricate','plate')?.disabled,model:button('fabricate','plate')?.getAttribute('data-model-enabled')},
       focus:document.activeElement===close?'close':document.activeElement?.getAttribute?.('data-focus-key')||null,diag}})()`);
   const engineeringSurfacePasses = (opening, surface) => opening?.opened === true
-    && opening?.pointer?.buttonId === 'dockshipyard' && opening?.pointer?.buttonTag === 'BUTTON'
+    && opening?.pointer?.buttonId === 'railshipyard' && opening?.pointer?.buttonTag === 'BUTTON'
     && opening?.pointer?.trusted === true
     && opening?.pointer?.pointerType === 'mouse' && surface?.panelOpen === 'shipyard'
     && canonicalJson(surface?.research) === canonicalJson(ENGINEERING_RESEARCH_IDS)
@@ -12749,7 +12745,7 @@ try {
   const minePendingUi = await evalIn(READ_ARC3_ENGINEERING_UI_EXPRESSION);
   const pendingClose = await closeEngineeringPanel('Arc 3 held Mine');
   const mineClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,panel=document.getElementById('shipyardpanel'),
-    opener=document.getElementById('dockshipyard'),diag=S.api.shipyardDiagnostics();return {panelOpen:S.api.state().panelOpen,
+    opener=document.getElementById('railshipyard'),diag=S.api.shipyardDiagnostics();return {panelOpen:S.api.state().panelOpen,
       focusId:document.activeElement?.id||null,expanded:opener?.getAttribute('aria-expanded')||null,
       bodyChildren:panel?.querySelector('[data-engineering-panel-body]')?.childElementCount??-1,diagnostics:diag}})()`);
   const pendingReopen = await openEngineeringPanel('ARC 3 HELD MINE REOPEN');
@@ -13446,7 +13442,7 @@ try {
     omittedDock: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle, dock: null }),
     wrongDock: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
       dock: { ...biomeOwnedDockReopen,
-        target: { ...biomeOwnedDockReopen.target, id: 'dockatlas' } } }),
+        target: { ...biomeOwnedDockReopen.target, id: 'railatlas' } } }),
     staleCard: assessArc3SurveyDockReopenLifecycle({ ...biomeOwnedDockBundle,
       afterState: { ...biomeOwnedDockAfterState, cardOpen: false },
       surface: { ...biomeOwnedDockSurface,
@@ -18909,7 +18905,7 @@ try {
   ) => {
     const state = await driver.evaluate('window.__CF_SLICE__.api.state()');
     if (state.panelOpen !== 'codex') {
-      await arc5FeedClick('#dockcodex', `${label} Compendium opener`, driver);
+      await arc5FeedClick('#railcodex', `${label} Compendium opener`, driver);
     } else {
       const diagnostics = await driver.evaluate(
         'window.__CF_SLICE__.api.compendiumDiagnostics()',
@@ -22761,7 +22757,7 @@ try {
      non-null ordinal/key receipt. */
   const atlasBefore = await evalIn(`window.__CF_SLICE__.api.state()`);
   const dtrainAtlasId = `w|${ARC3_OTHER_WORLD_CONTROL_ADDRESS.key}`;
-  await evalIn(`document.getElementById('dockatlas')?.click()`);
+  await evalIn(`document.getElementById('railatlas')?.click()`);
   const atlasSetup = await evalIn(atlasTravelTargetExpression(dtrainAtlasId, { focus: true }));
   const atlasSetupAssessment = assessAtlasTravelTarget(atlasSetup, {
     atlasId: dtrainAtlasId, focus: true,
@@ -23151,7 +23147,7 @@ try {
     fails.push('COMPENDIUM RARITY FIXTURE: transient rows did not install exactly: '
       + JSON.stringify(rarityFixtureInstall));
   }
-  await evalIn(`(()=>{const S=window.__CF_SLICE__;if(S.api.state().panelOpen!=='codex')document.getElementById('dockcodex')?.click();return true;})()`);
+  await evalIn(`(()=>{const S=window.__CF_SLICE__;if(S.api.state().panelOpen!=='codex')document.getElementById('railcodex')?.click();return true;})()`);
   await waitDesktopValue('Compendium rarity fixture list', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics();
     return d.panel.mode==='list'&&d.panel.sourceCount===${RARITY_COMPENDIUM_FIXTURE.length}
       &&document.querySelectorAll('#codexpanel [data-sel="codex-entry"]').length===${RARITY_COMPENDIUM_FIXTURE.length};})()`);
@@ -23275,7 +23271,7 @@ try {
     fails.push('COMPENDIUM QUERY CLEAR CONTROL FAILED — injected retained filter stayed green: '
       + JSON.stringify(codexClearCtl));
   }
-  await evalIn(`(()=>{ document.querySelector('#codexpanel [data-pnx]')?.click(); const opener=document.getElementById('dockcodex');
+  await evalIn(`(()=>{ document.querySelector('#codexpanel [data-pnx]')?.click(); const opener=document.getElementById('railcodex');
     opener.focus(); opener.click(); return true; })()`);
   const codexFullCheck = `(()=>{ const rows=[...document.querySelectorAll('#codexpanel [data-ci]')],heading=document.querySelector('#codexpanel h3');
     const text=heading?.textContent||''; return {count:rows.length,queryAbsent:!/Toruneeus|[“”]/.test(text),heading:text}; })()`;
@@ -23293,7 +23289,7 @@ try {
      actions. Drive a REAL Enter, retain the exact row identity across the
      refill, and make both a pointer-only row and undersized Back fail before
      restoring the production DOM. */
-  const codexRow = await evalIn(`(()=>{ document.getElementById('dockcodex').click();
+  const codexRow = await evalIn(`(()=>{ document.getElementById('railcodex').click();
     const row=document.querySelector('#codexpanel [data-ci]'),r=row?.getBoundingClientRect();
     row?.focus(); return {ok:row?.tagName==='BUTTON'&&row?.type==='button'&&!!r&&r.height>=44,
       index:row?.getAttribute('data-ci')||null,logicalId:row?.getAttribute('data-cid')||null,
@@ -23435,7 +23431,7 @@ try {
      the canvas. The row is intentionally a non-interactive DIV; a focusable
      span substituted for its exact Travel button and a 20px Travel button are
      deliberate controls. */
-  await evalIn(`(()=>{const opener=document.getElementById('dockatlas');opener?.focus();opener?.click();return true})()`);
+  await evalIn(`(()=>{const opener=document.getElementById('railatlas');opener?.focus();opener?.click();return true})()`);
   const atlasRow = await evalIn(atlasTravelTargetExpression('p133', { focus: true }));
   const atlasRowAssessment = assessAtlasTravelTarget(atlasRow, { atlasId: 'p133', focus: true });
   if (!atlasRowAssessment.ok) {
@@ -23559,7 +23555,31 @@ try {
       alreadyReported: true,
     });
   }
-  await evalIn(`(()=>{const opener=document.getElementById('dockatlas');opener?.focus();opener?.click();return true})()`);
+  // Space travel leaves the real Survey card open, which owns the right rail.
+  // Close it through trusted native input before the next visible Atlas opener.
+  const atlasSpaceSurveyCloseToken = await sliceToken(sess);
+  const atlasSpaceSurveyClose = await pressArc3SurveyLifecyclePointer('close');
+  const atlasSpaceAfterClose = await evalIn(`window.__CF_SLICE__.api.state()`);
+  if (atlasSpaceSurveyClose?.target?.ok !== true
+    || atlasSpaceSurveyClose?.interaction?.trusted !== true
+    || atlasSpaceSurveyClose?.interaction?.pressCount !== 1
+    || atlasSpaceAfterClose.cardOpen !== false || atlasSpaceAfterClose.panelOpen !== null
+    || canonicalJson(arc3SurveyRouteProjection(atlasSpaceAfterClose))
+      !== canonicalJson(arc3SurveyRouteProjection(atlasSpace))
+    || await sliceToken(sess) !== atlasSpaceSurveyCloseToken) {
+    failSliceWithoutCascade('ATLAS ENTER REOPEN: trusted Survey Close did not preserve the exact document and selected route: '
+      + JSON.stringify({ close: atlasSpaceSurveyClose,
+        before: arc3SurveyRouteProjection(atlasSpace), after: arc3SurveyRouteProjection(atlasSpaceAfterClose) }));
+  }
+  await armDesktopPointerReceipt();
+  const atlasEnterOpened = await openDesktopRailPanel('railatlas', 'atlas', 'ATLAS ENTER REOPEN');
+  const atlasEnterOpenerReceipt = await takeDesktopPointerReceipt();
+  if (!atlasEnterOpened || atlasEnterOpenerReceipt?.buttonId !== 'railatlas'
+    || atlasEnterOpenerReceipt?.buttonTag !== 'BUTTON' || atlasEnterOpenerReceipt?.trusted !== true
+    || atlasEnterOpenerReceipt?.pointerType !== 'mouse') {
+    failSliceWithoutCascade('ATLAS ENTER REOPEN: the visible rail opener did not receive trusted native input: '
+      + JSON.stringify(atlasEnterOpenerReceipt));
+  }
   const atlasEnterSetup = await evalIn(atlasTravelTargetExpression('p133', { focus: true }));
   const atlasEnterSetupAssessment = assessAtlasTravelTarget(atlasEnterSetup, {
     atlasId: 'p133', focus: true,
@@ -23646,7 +23666,7 @@ try {
      first-world bioscan, or successful-Breed writer. Reject only genuinely
      unavailable conquest and mature accepted/weekly directives; Engineering,
      Chapter-2 life-discovery, and Chapter-3 breeding copy are current truth. */
-  const chp = await evalIn(`(()=>{ document.getElementById('dockcharters').click();
+  const chp = await evalIn(`(()=>{ document.getElementById('railcharters').click();
     const chs=[...document.querySelectorAll('#chpanel [data-sel=charter-ch]')];
     const cur=chs.find(c=>c.dataset.chstate==='actionable'||c.dataset.chstate==='boundary'||c.dataset.chstate==='complete');
     const goals=document.querySelectorAll('#chpanel [data-sel=charter-goal]').length;
@@ -24175,7 +24195,7 @@ try {
     }
     throw new Error(`${label} did not reach its lazy-art outcome within ${timeoutMs}ms (last ${JSON.stringify(last)})`);
   };
-  await evalLazy(`(()=>{ const opener=document.getElementById('dockcodex'); opener.focus(); return true; })()`);
+  await evalLazy(`(()=>{ const opener=document.getElementById('railcodex'); opener.focus(); return true; })()`);
   await dispatchKeyPress(lazy, 'Enter', 'Enter');
   const lazyBefore = await waitLazy('slow Compendium keyboard open', `(()=>{ const S=window.__CF_SLICE__,d=S.api.compendiumDiagnostics(),
     close=document.querySelector('#codexpanel [data-pnx]'),scroller=document.querySelector('#codexpanel [data-sel="codex-scroll"]'),
@@ -24302,7 +24322,7 @@ try {
     lazyForegroundOwner = attachment;
     return Object.freeze({ expected, observation: last });
   };
-  await evalLazyClosed(`(()=>{const opener=document.getElementById('dockcodex');opener.focus();return true})()`);
+  await evalLazyClosed(`(()=>{const opener=document.getElementById('railcodex');opener.focus();return true})()`);
   await dispatchKeyPress(lazyClosed, 'Enter', 'Enter');
   const lazyClosedBefore = await waitLazyClosed('slow Compendium closed-owner open', `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),
     close=document.querySelector('#codexpanel [data-pnx]'),images=[...document.querySelectorAll('#codexpanel [data-ci] img')];
@@ -24343,7 +24363,7 @@ try {
   if (!slowRequestObserved || !lazyBefore.placeholders || !lazyBefore.focus || !lazyBefore.group
     || !lazyBefore.nativePositions || lazyBefore.closeLabel !== 'Close Compendium'
     || !lazyClosedBefore.focus || lazyClosedArmed.mode !== 'closed' || lazyClosedArmed.listImages !== 0
-    || lazyClosedArmed.focus !== 'dockcodex'
+    || lazyClosedArmed.focus !== 'railcodex'
     || lazyClosedArmed.closedCompletionCommits !== lazyClosedBefore.closedCompletionCommits
     || lazyClosedArmed.renderCommits !== lazyClosedBefore.renderCommits) {
     fails.push('COMPENDIUM LAZY PLACEHOLDER/CLOSED OWNER: held chunk did not establish both exact owner states: '
@@ -24411,7 +24431,7 @@ try {
     fails.push('COMPENDIUM LAZY IN-PLACE READY: placeholder publication replaced identity/focus or missed exact 132px commits: '
       + JSON.stringify({ before: lazyBefore, after: lazyAfter }));
   }
-  const lazyFocusCtl = await evalLazy(`(()=>{ const close=document.querySelector('#codexpanel [data-pnx]'),other=document.getElementById('dockcodex');
+  const lazyFocusCtl = await evalLazy(`(()=>{ const close=document.querySelector('#codexpanel [data-pnx]'),other=document.getElementById('railcodex');
     other.focus(); const failed=document.activeElement!==close; close?.focus(); return {failed,restored:document.activeElement===close}; })()`);
   if (!lazyFocusCtl.failed || !lazyFocusCtl.restored) {
     fails.push('COMPENDIUM LAZY FOCUS CONTROL FAILED — moving focus off the refilled close stayed green: '
@@ -24452,7 +24472,7 @@ try {
     &&d.panel.renderCommits===${lazyClosedBefore.renderCommits}
     &&d.surfaces.list.imageCount===0&&d.lazyArt.state==='ready'
     &&d.art&&d.art.live.queuedJobs===0&&d.art.live.activeJobs===0
-    &&document.activeElement?.id==='dockcodex'`;
+    &&document.activeElement?.id==='railcodex'`;
   const lazyClosedSettlementTimeoutMs = 30000;
   const lazyClosedSettlementDeadline = performance.now() + lazyClosedSettlementTimeoutMs;
   const lazyClosedSettlementExpression = `(()=>{const d=window.__CF_SLICE__.api.compendiumDiagnostics(),
@@ -24754,7 +24774,7 @@ try {
      both old contacts, their movement paths and the actual objective paint
      now pass through; do not hide the regression by choosing different sky. */
   const phonePinchPlanExpression = `(()=>{const canvas=window.__CF_SLICE__?.app?.canvas,objective=document.getElementById('objchip'),
-    nav=document.getElementById('sceneactions'),c=canvas?.getBoundingClientRect(),o=objective?.getBoundingClientRect(),
+    nav=document.getElementById('topbar'),c=canvas?.getBoundingClientRect(),o=objective?.getBoundingClientRect(),
     os=objective?getComputedStyle(objective):null,point=(x,y)=>{const hit=document.elementFromPoint(x,y);
       return {x,y,tag:hit?.tagName||null,id:hit?.id||null,rootCanvas:hit===canvas,
         owned:!!hit?.closest('[data-panel-boundary],.panel,#importsheet'),
@@ -24775,17 +24795,17 @@ try {
   const phonePinchPlan = await evalPh(phonePinchPlanExpression);
   if (!phonePinchPlan.ok) failSliceWithoutCascade('PHONE PINCH INPUT: original contacts or the passive objective do not expose the root canvas: '+JSON.stringify(phonePinchPlan));
   const phonePinchControl = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
-    const nav=document.getElementById('sceneactions'),prior=captureInlineStyleProperties(nav.style,['pointer-events']);let broken=null,error=null;
+    const nav=document.getElementById('topbar'),prior=captureInlineStyleProperties(nav.style,['pointer-events']);let broken=null,error=null;
     try{nav.style.setProperty('pointer-events','auto','important');broken=${phonePinchPlanExpression};}
     catch(cause){error=String(cause?.message||cause);}finally{restoreInlineStyleProperties(nav.style,prior);}
     const restoration=inspectInlineStyleProperties(nav.style,prior),restored=${phonePinchPlanExpression};
     return {broken,error,restoration,restored};})()`);
   if (phonePinchControl.error !== null || phonePinchControl.broken?.ok !== false
     || phonePinchControl.broken?.objectivePoint?.rootCanvas !== false
-    || phonePinchControl.broken?.objectivePoint?.id !== 'sceneactions'
+    || phonePinchControl.broken?.objectivePoint?.id !== 'topbar'
     || (phonePinchPlan.firstStartInsideObjective && phonePinchControl.broken?.frames?.[0]?.[0]?.rootCanvas !== false)
     || !phonePinchControl.restoration?.ok || !phonePinchControl.restored?.ok) {
-    failSliceWithoutCascade('PHONE PINCH INPUT CONTROL FAILED — auto-hit scene wrapper was not reproduced, rejected and restored: '+JSON.stringify(phonePinchControl));
+    failSliceWithoutCascade('PHONE PINCH INPUT CONTROL FAILED — auto-hit objective header was not reproduced, rejected and restored: '+JSON.stringify(phonePinchControl));
   }
   await evalPh(`(()=>{window.__cfPhonePinchAbort?.abort();const controller=new AbortController();window.__cfPhonePinchAbort=controller;
     window.__cfPhonePinchReceipts=[];document.addEventListener('pointerdown',event=>{const target=event.target instanceof Element?event.target:null;
@@ -26349,11 +26369,11 @@ try {
     previousToken: panelImportToken,
   });
   await waitPanelValue('CHARTER PANEL REFRESH system + rail restore', `(()=>{ const s=window.__CF_SLICE__.api.state(),
-    rail=document.getElementById('dockcharters'),r=rail?.getBoundingClientRect(),
+    rail=document.getElementById('railcharters'),r=rail?.getBoundingClientRect(),
     x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null;
     return innerWidth===1280&&innerHeight===800&&s.mode==='system'&&s.star===424242&&s.panelOpen===null&&rail&&r.width>0&&r.height>=44
       &&getComputedStyle(rail).display!=='none'&&(hit===rail||rail.contains(hit))?{x,y,state:s}:null;})()`);
-  const railAction = await evalPanel(`(()=>{ const rail=document.getElementById('dockcharters'),r=rail.getBoundingClientRect();
+  const railAction = await evalPanel(`(()=>{ const rail=document.getElementById('railcharters'),r=rail.getBoundingClientRect();
     return {x:(r.left+r.right)/2,y:(r.top+r.bottom)/2};})()`);
   await send('Input.dispatchMouseEvent', {
     type: 'mousePressed', x: railAction.x, y: railAction.y, button: 'left', clickCount: 1,

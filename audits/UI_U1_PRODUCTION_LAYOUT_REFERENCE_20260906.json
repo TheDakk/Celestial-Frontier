@@ -1,0 +1,13 @@
+{
+  "schema": "cf-u1-production-layout-reference/v1",
+  "recordedAt": "2026-09-06T14:56:06.777032+00:00",
+  "url": "https://celestialfrontier.github.io/",
+  "retrieval": "curl --fail --location --max-time 25 (read-only; no personal browser)",
+  "liveHtmlSha256": "52e68a7514565f2aa776a3c3690cfd6bc7b031a114f5e173bad2c24c5a69c82a",
+  "trackedHtmlSha256": "5d0844c45efa29ef0bd4d9f8254daeb1662d6f9e0934ceb6e30219d04e477746",
+  "styleBlocksMatchExactly": true,
+  "layoutStyleSha256": "113b5fc4ff4dee44b0a914f1f46f0f6de5e950379d35ed0fbb1a0ffd61d2e3ee",
+  "fontStyleSha256": "1cd633dd9ebc4a1d046b0ee1d55458e4f34c37a1ae8b2496ccc7aebef6c39a36",
+  "sourceDisposition": "Reference read only; no legacy HTML/main.js changes",
+  "verification": "New-source checkpoint pending"
+}

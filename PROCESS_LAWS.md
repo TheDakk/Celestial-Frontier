@@ -1,5 +1,13 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **DISTINGUISH NATIVE HIDDEN CHROME FROM AN INJECTED VISIBLE FAULT** (U1, 2026-09-06).
+> Nick restored production's hidden breadcrumb. Preserve the canonical location text for
+> diagnostics, but never call its zero-sized native state a visible-trail PASS. Historical
+> portrait-band/fallback controls must label their injected visible floating state, verify
+> the intended collision, restore exact style presence/bytes, and re-prove the native hidden
+> baseline plus usable roster clearance. Keep the existing72px band and negative-control
+> ledgers; a layout change cannot justify an omitted control or fake visible geometry.
+
 > **REPRODUCE THE PAINTED COLLISION, INCLUDING ITS CONTAINING BLOCK** (U1, 2026-09-06).
 > A transformed dock changes fixed-position child coordinates. A negative control that assigns
 > viewport offsets can miss the panel it claims to obstruct. Translate from measured live

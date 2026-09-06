@@ -1,49 +1,23 @@
 # DEVIATIONS.md — the port's improvement ledger
 
-## U1 top/left refinement — 2026-09-06
+## U1 production-layout amendment — 2026-09-06
 
-Nick approved the bottom launcher and requested aligned top/left controls, stacked actions,
-a graphical HP upgrade, and Cosmos at the top with no floating central buttons. The header
-now holds the noninteractive Current view trail and the framed HP meter in aligned second
-rows; the left action/objective stack shares Inventory/HP width and8px gaps. This supersedes
-U1's floating breadcrumb/objective offsets. Landed portrait uses a compact top action row
-for roster clearance; the measured72px rule remains. Existing controls, canonical trail,
-health math, panel/Training owners and bottom launcher are unchanged. The Glass fallback
-fixture explicitly injects a floating-trail regression and restores native containment.
-Candidate0067512 exposed a phone pinch regression: the passive objective had been moved
-inside an auto-hit navigation rectangle. The successor makes that layout wrapper transparent
-and opts its native buttons back into input; the original pinch coordinates/outcome remain,
-with an actual objective-owner negative control. Open panels also clear the hidden location
-backing. See UI_PRESENTATION.md and audits/UI_U1_TOP_LEFT_REVISION_20260906.md. U1 review gates U2.
+Nick's latest screenshot instructions supersede the earlier unified wide launcher and visible
+Current view. Verified live production CSS is the reference; only adapted v2 shell owners are
+edited. Phone uses icon-only 60px boards/64px centers with visible Prime N/9. Wide controls use
+actual native rails, top-center Prime, right Search/Objective/Atlas/Shipyard and corner utilities.
+Name-only Inventory wraps fully; Health keeps its caption/red heart/ratio. Hint is plain text.
+Canonical trail remains populated but hidden, as in production; historical visible-trail faults
+are injected and restored explicitly. No test may call that injected state the native baseline.
 
-## U1 uniform launcher amendment — 2026-09-06
-
-Nick's visual review supersedes desktop/tablet side rails and the bottom-right-only utility
-cluster: all devices retain the phone's navigation layout and visual language. Controls stay
-compact; tablet/desktop use capped72/80px pitch with66/74px boards,48/56px targets and40/44px
-faces. Phone geometry is unchanged. The wide tray is centered, contains all nine controls,
-and owns its actual gaps. Larger windows get more usable scene/panel room. Narrow landscape
-keeps the compact two-row arrangement. Exact metrics and current native proofs live in
-UI_PRESENTATION.md and the U1 revision evidence. This is a user-directed supersession of the
-first-review numerical choices below, not a changed measurement ruler or U2/Phase2 approval.
-
-## U1 layout authority reconciliation — 2026-09-06
-
-Nick's explicit58px chips/36px faces/701px desktop breakpoint/visible labels take precedence
-over differing shipped golden details (60pxchips,44pxfaces,901pxbreakpoint,hidden phone labels).
-Touch targets remain44px. Nick selected bottom-right desktop utilities over the earlier
-bookends prose. Desktop utilities use44pxpitch, a proposed2px exception to the42px diagram.
-Rails require the earned8pxroot-owned clickable gap as well, so their target pitch is52px
-(10px above that diagram); awaiting his visual judgment. The shelf has a measured, content-derived
-height, not an invented fixed v1 value. V2's compact trail remains visible where v1 hides it.
-The caption has an independent dark translucent backing to meet bright-art contrast and
-uses capped available width. Its zero padding/border/radius remain; the phone bottom offset
-keeps164px as a minimum and rises above the existing measured hint height by8px for larger text.
-
-Nick additionally authorized persistent notification history/readstate, narrowly extending the
-existing UI checkpoint overlay with bounded notifications. No schema or product receipt changes.
-U1 precedes Phase2 audiovisual chrome; it does not approve the pilot or close the U4 layout gate.
-See `../UI_PARITY_PROGRAM_U1_U4.md`; the pasted U2 stack-order conflict must be resolved beforeU2.
+Safety adaptations remain 44px targets,8px owned gaps/52px wide utility pitch, measured header
+height, >=701 tablet layout and the <=900 short-landscape safe-column exception. The old bell
+misalignment and 44px coarse targets at 42px anchors are not copied. The caption's flat contrast
+backing and72px roster band remain. U1 stops for Nick's review before U2; no Phase2 approval.
+Saved notification history retains its narrow existing-schema/persistence authorization.
+Current metrics live in UI_PRESENTATION.md and the new production-layout audit. Prior accepted
+amendments and implementation/red history remain in UI_PARITY_PROGRAM_U1_U4.md, existing audits
+and ROADMAP_ARCHIVE.md. The pasted U2 Training/Settings order still needs reconciliation.
 
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 

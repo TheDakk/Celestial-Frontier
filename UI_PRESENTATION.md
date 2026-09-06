@@ -2,101 +2,73 @@
 
 ## V2 presentation system — U1, matches code as of 2026-09-06
 
-The normal v2 game now owns presentation values in `ui-presentation-tokens.ts`, emitted once
-as CSS custom properties before `app-chrome.ts` measures the shell. `ui-shell-style.ts` owns
-shelf, bottom launcher and objective/trail/caption/hint placement. Compatibility rails remain hidden. Inter is
-local OFL type; existing Settings font/text/tone preferences take precedence. Semantic
-rarity/resource/Atlas/protected colors retain their owners. Emoji remain the icon system.
+The normal v2 shell uses the actual production v1.8.9 CSS as its layout reference, adapted
+through `ui-presentation-tokens.ts`, `ui-shell-style.ts` and the existing native controls.
+The live site's two style blocks match the tracked HTML byte for byte; provenance is in
+`audits/UI_U1_PRODUCTION_LAYOUT_20260906.md`. Nick's latest screenshot instructions supersede
+the earlier all-device bottom launcher and visible Current view experiments.
 
-Phone (<=700px): five labelled 58px chips at 64px centers, then four 36px visual utility
-circles inside 44px targets at 64px centers. Board order is Charters, Compendium, Prime N/9,
-Shipyard, Atlas; utility order Records, Notifications, Guide, Settings. Bottom utilities sit
-12px above the safe area, board 60px above it; caption164px and hint124px preserve separate
-lanes. Caption text has an independent rgba(10,16,30,.94) backing for bright-art contrast,
-with zero padding/border/radius. Long captions use the available90vw/620px width. The phone
-caption keeps164px as its minimum bottom offset and rises above the measured hint height
-with8px clearance when larger text needs more room. The existing app-chrome hint observer
-owns that measurement. Inventory opens from the nameplate in the measured two-row shelf; Survey/Charts retain
-their IDs and actions in the upper-left context stack. Selection adds gold without growing a target.
-`--topbar-h` measures rendered content; `--row1-h` measures the Search bottom, at least40px.
-There is no sealed fixed shelf-height number: font and text-size choices may increase it.
+Phone (<=700px) has five icon-only 60px board pills at 64px centers, then four 36px utility
+faces inside 44px targets at 64px centers. Prime retains its visible N/9 count and accessible
+name. Order is Charters, Compendium, Prime, Shipyard, Atlas; then Records, Notifications,
+Guide, Settings. Utilities are 12px above the safe bottom; boards start at 60px. The default
+dock is 92px high and may grow for text preferences. Labels remain accessible without visible
+phone captions. Production's 60px board width supersedes the brief's older 58px metric.
+The old phone bell's inconsistent center is corrected to the same 64px rhythm.
 
-Phone boards use `padding-inline:0`, leaving 56px of label space inside the unchanged 58px
-face and borders. Default Inter's Compendium label measures 54.338px: it fits on one line
-without shrinking the font. The default dock is therefore 92px tall (44px board row + 4px gap
-+ 44px utility row). This is the default Inter content baseline, not a fixed height for all
-Settings text preferences; the board row retains `minmax(44px,auto)` and grows for larger text.
-The bounded native diagnosis compares the original 1px horizontal padding with zero, then
-restores the original exact styles and reproduces the wrapped label and 93.6875px dock. Chip widths, 64px
-pitch, vertical padding and text sizes are unchanged.
+Tablet and desktop (>=701px) restore the actual native left Charters/Compendium and right
+Star Atlas/Shipyard controls. Prime Codex is centered at the top with its full label and N/9.
+Search is upper-right, followed by the Objective, then Atlas and Shipyard. The four utilities
+sit bottom-right, 16px from the safe right and 12px from the safe bottom. Their 44px targets
+have 8px gaps (52px pitch) around 36px faces. These preserve earned touch/spacing protections
+instead of copying production's 42px anchors with overlapping 44px coarse-pointer targets.
+Controls cap their size while the scene benefits from additional screen space. The retained
+<=900px short-landscape exception uses compact phone navigation and existing panel-safe columns.
 
-All devices retain one navigation layout: the same five boards and four utilities in a
-centered bottom launcher. Nick's latest visual feedback supersedes the initial side rails
-and bottom-right utility-only arrangement. Tablet701–1099 uses72px pitch,66px boards,
-48px targets/40px utility faces and12px tray padding (672px wide,72px default height).
-Desktop>=1100 uses80px pitch,74px boards,56px targets/44px utility faces and16px padding
-(752px wide,88px default height). Sizes cap at that desktop scale; larger windows benefit
-from more scene/panel space. Fonts grow modestly to9.5/10.5px board labels, with existing
-larger-text choices still authoritative. Prime's icon/label/count remain inside the launcher.
+Nameplate and Health share the upper-left column; only the explorer name is visible and it
+wraps without truncation. Rank color metadata and the Inventory action remain. Health keeps
+its caption, a red heart, its exact numeric ratio without an HP suffix, accessible meter
+values and the unchanged fill calculation. Number contrast uses its independent dark backing.
+Rounded pills carry production's surface language. Inter remains local OFL type; Settings
+font, size and tone preferences take precedence. Rarity/resource/Atlas/protected colors retain
+their owners. Emoji remain the approved product icon system.
 
-The visible wide tray owns its real inter-button gaps as a panel boundary. Hidden compatibility
-rail roots retain IDs/wiring but contribute no painted controls or tab stops. Native input
-proofs observe the actual closest button through icon/label children. The previous rail-gap
-control labels remain historical aliases for measured launcher-gap ownership, without
-inventing an offscreen rail as a positive control. Narrow landscape<=900 uses the phone's
-compact320px two-row geometry; open panels retain the existing right safe-column placement.
+The two-row header is measured by AppChrome, never assigned a fixed height. Name/Search are
+in the first row and Health/Objective in the second. On phones Search sits toward the center
+(max 37vw) and the objective occupies the upper-right; wide Search/Objective are 236px. The
+header and passive Objective remain pointer-transparent; only native controls receive presses.
+The canonical #trail remains populated for diagnostics but is visually hidden, as in production.
+There is no visible Cosmos/Current view label. Actual rail wrappers own their 8px internal gaps,
+so those gaps keep a panel open; empty sky still dismisses it. Survey/Charts retain their native
+owners below the left controls and compact into one row on landed portraits. AppChrome observes
+that owner for the unchanged 72px roster reading-band rule. Overlays yield Objective/right rail
+as before; panel/Training focus, Close and Escape owners remain authoritative.
 
-Wider-screen hint bottom is max(96px, measured dock height+28px); caption bottom is
-max(136px, measured dock height+28px+measured hint height+8px). This preserves separate lanes
-when text grows. Existing bottom-anchored utility panels/toasts above900px align to the
-launcher's right edge and stay12px above it; panel interiors and Training stack are unchanged.
-Nick's next U1 refinement aligns Inventory, health and the context stack in one left column:
-10px inset and clamp(128px,40vw,176px) width on phones; 18px inset and
-clamp(176px,20vw,240px) width on wider screens. The measured topbar has two rows with44px
-minimums,8px gaps and safe-area-aware padding (112px with default text/no safe inset).
-Search/bell occupy the opposite first row; a labelled Current view readout occupies the
-second. Cosmos is the current map scale, not a button. The canonical breadcrumb remains
-inside #trail, now static within the header, single-line with ancestor ellipsis and current
-location priority. It has no click, tab-stop or navigation owner. The original v1 source
-hides its trail, so no visible golden parity is claimed for this v2 addition.
+Bottom guidance is plain text with no pill, border, padding or backdrop blur. Wide hint starts
+18px above safe bottom and context 64px; phone hint 124px and context 164px. Context rises when
+needed to clear measured hint height by 8px. Context retains its independent translucent contrast
+backing with zero padding/border/radius; guidance uses readable color and text shadow. Wide
+bottom-anchored utility panels and notices align with the corner controls and clear their
+measured height. U2 owns later sheet interiors and stacking refinements.
 
-The framed health module retains the real track/fill/text and exact HP count. Its green
-fill, inset quarter ticks, heart badge and HEALTH label are decorative; the existing
-renderStatus writer also projects accessible meter min/max/current/text. Health math is
-unchanged. The number has an independent dark translucent backing and forced-colors support.
-Rows grow for larger text. Survey, Charts and the wrapping Objective readout share the left
-column with8px gaps immediately below the header; no floating action occupies the center.
-A landed portrait<=900 keeps Survey/Charts in one compact row beneath the header and hides
-the objective to preserve the creature roster. AppChrome observes this real action owner
-as well as the shelf; the existing72px safe reading-band rule remains unchanged. Narrow
-landscape's open-panel right safe-column exception still yields health/current-view chrome.
-The context stack is a transparent layout wrapper, like the topbar, not a painted interactive
-tray: its passive Objective and empty space let input reach the canvas, while Survey/Charts
-explicitly retain pointer events and their ancestor panel-boundary attribute. The bottom
-launcher's owned gaps are unchanged. Open overlays clear the hidden location readout's
-background/border without shifting header dimensions. Later panel work still waits at U1 review.
+Notifications retains saved read/unread history and clearly labelled session-only notices
+while save writes are held. Opening does not mark read; explicit Mark read uses the existing
+checkpoint path with pending/failed status and rollback. The existing 50-entry new-history
+capacity and 60-entry import allowance remain. Passive history never joins an in-flight product
+snapshot; no new timer, schema, import door or competing persistence writer is introduced.
+The bottom bell reads this history; its old duplicate shelf button is hidden.
 
-Notifications shows saved history plus clearly labelled session-only notices while save
-writes are held. Opening the panel does not mark messages read; explicit Mark read persists
-through the existing checkpoint path, with pending/failed status and rollback on refusal.
-New history retains50 entries, matching existing export capacity; the importer still accepts60.
-Messages emitted while a product action settles wait in a private presentation buffer;
-only the next admitted existing checkpoint promotes them after settlement. Notices create no
-new save timer or competing write. Training/read-only notices remain session-only. Both bell badges
-read the same history. Panel manager and Training keep native focus/Close/Escape/inert owners.
-
-U1 is a scoped parity checkpoint, not completion of the sheet system or U4 layout gate.
-`ui-shell-review.mjs` captures normal-game comparison grids and measured deltas against
-v1's three main goldens. CSS geometry has a1px tolerance; raster differences remain human
-review, never portable PNG-hash equality. Existing Slice/Glass phone outcomes retain negative
-controls adapted to the approved layout. Header/stack containment, exact native input ownership,
-health contrast and roster clearance are measured. Glass's existing floating-trail fallback
-negative control now explicitly injects that regression below measured fixed owners, records
-native/injected/restored styles and geometry, and restores normal header containment; it is
-not represented as naturally floating chrome. Normal review also probes phone fs-xl and an
-844×390 open Settings panel numerically. U2 sheet/stack work and U3 panel reskins are pending.
-The pasted U2 Training/Settings ordering must be reconciled with THE TRAINING STACK LAW first.
-The integrated audiovisual pilot remains unapproved; U1 does not authorize Phase2.
+U1 remains a visual approval checkpoint. Normal review pairs three v1 goldens with v2 and
+exercises real visible native opener/Close/focus journeys. Numeric checks observe actual rails,
+phone icon/count state, Search/Objective alignment, full name, meter contrast and plain hint.
+Slice/Glass preserve their ledgers and original pinch gestures. A normally hidden canonical
+trail is described honestly: the historical visible-trail collision/fallback controls explicitly
+inject a visible floating fault, restore styles exactly and re-prove the hidden native baseline.
+No injected state is called native visible chrome; the roster still needs 72px and usable scroll.
+Phone larger-text and 844×390 Settings-open checks retain their actual viewport geometry.
+U2 sheet/stack work and U3 panel reskins/icon study remain pending. Resolve the pasted U2
+Training/Settings order against the earned Settings-above-Training law before implementing U2.
+No integrated-pilot approval or Phase2 work is implied.
 
 ## Opt-in audiovisual presentation — 2026-09-05 local
 

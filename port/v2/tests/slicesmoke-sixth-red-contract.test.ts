@@ -384,11 +384,11 @@ describe('sixth Slice red contract repairs', () => {
     });
     const releaseRowsBefore = [...releaseDom.window.document.querySelectorAll('li')].map(row => row.textContent);
     for (const [current, stale] of [
-      ['centered bottom launcher across phone, tablet and desktop', 'desktop rails and a phone-only dock'],
-      ['Desktop notices and utility panels clear the measured bottom launcher and share its right edge',
+      ['Phones keep five icon-only boards and four utility controls in compact bottom rows', 'five labelled controls in one centered desktop deck'],
+      ['Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge',
         'Desktop utilities stay in the old viewport corner'],
-      ['Signature count in the bottom launcher on every device', 'Signature count in a desktop top-center pill'],
-      ['Spacing inside the wide bottom launcher belongs to that command deck and leaves the active panel open',
+      ['Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill', 'Signature count is removed on phones'],
+      ['Spacing inside the side navigation belongs to its controls and leaves the active panel open',
         'Spacing inside either desktop rail belongs to that command deck and leaves the active panel open'],
     ] as const) {
       const row = [...releaseDom.window.document.querySelectorAll('li')].find(item => item.textContent?.includes(current));
@@ -3320,10 +3320,10 @@ describe('sixth Slice red contract repairs', () => {
   it('requires canvas exposure at the unchanged pinch path and actual passive objective', () => {
     const start = '  const phonePinchPlanExpression = `';
     const expression = section(sliceSource, start, '`;\n  const phonePinchPointerMatches =').slice(start.length);
-    const dom = new JSDOM('<!doctype html><nav id="sceneactions" style="pointer-events:none"><span id="objchip">Chapter 3 boundary objective</span></nav><canvas id="root"></canvas><canvas id="foreign"></canvas><div id="cover"></div>', { runScripts: 'outside-only' });
+    const dom = new JSDOM('<!doctype html><header id="topbar" style="pointer-events:none"><span id="objchip">Chapter 3 boundary objective</span></header><canvas id="root"></canvas><canvas id="foreign"></canvas><div id="cover"></div>', { runScripts: 'outside-only' });
     const win = dom.window as unknown as Window & typeof globalThis & { __CF_SLICE__: { app: { canvas: HTMLCanvasElement | null } } };
     const document = win.document, canvas = document.getElementById('root') as HTMLCanvasElement;
-    const nav = document.getElementById('sceneactions')!, objective = document.getElementById('objchip')!;
+    const nav = document.getElementById('topbar')!, objective = document.getElementById('objchip')!;
     win.__CF_SLICE__ = { app: { canvas } };
     Object.defineProperties(win, { innerWidth: { value: 390 }, innerHeight: { value: 844 } });
     const rect = (left: number, top: number, right: number, bottom: number) => ({ left, top, right, bottom, width: right - left, height: bottom - top });
@@ -3347,7 +3347,7 @@ describe('sixth Slice red contract repairs', () => {
       nav.style.pointerEvents = 'auto';
       const blocked = run();
       expect(blocked.ok).toBe(false);
-      expect(blocked.objectivePoint).toMatchObject({ id: 'sceneactions', rootCanvas: false });
+      expect(blocked.objectivePoint).toMatchObject({ id: 'topbar', rootCanvas: false });
       expect(blocked.frames[0]?.[0]?.rootCanvas).toBe(false);
       nav.style.pointerEvents = 'none';
       expect(run().ok).toBe(true);
@@ -3386,7 +3386,7 @@ describe('sixth Slice red contract repairs', () => {
     const owner = section(sliceSource, '  /* Keep the original pinch path.', "  const shotPh = await send('Page.captureScreenshot'");
     proveEachMarkerRequired(owner, [
       ['old wrapper fault injection', "nav.style.setProperty('pointer-events','auto','important')"],
-      ['actual objective interception', "phonePinchControl.broken?.objectivePoint?.id !== 'sceneactions'"],
+      ['actual objective interception', "phonePinchControl.broken?.objectivePoint?.id !== 'topbar'"],
       ['same formerly blocked contact', 'phonePinchPlan.firstStartInsideObjective && phonePinchControl.broken?.frames?.[0]?.[0]?.rootCanvas !== false'],
       ['exact property restoration', 'finally{restoreInlineStyleProperties(nav.style,prior);}'],
       ['restored path recheck', '!phonePinchControl.restoration?.ok || !phonePinchControl.restored?.ok'],
@@ -3402,11 +3402,11 @@ describe('sixth Slice red contract repairs', () => {
   it('rejects clipped and overlapping U1 top-stack rectangles without moving the launcher contract', () => {
     const start = '  const geoCheck = `';
     const expression = section(sliceSource, start, '`;\n  const geo =').slice(start.length);
-    const dom = new JSDOM(`<!doctype html><style>*{opacity:1;visibility:visible}#raillft,#railrgt{display:none}</style>
+    const dom = new JSDOM(`<!doctype html><style>*{opacity:1;visibility:visible}#raillft,#railrgt,#trail{display:none}</style>
       <header id="topbar"><button id="dockinventory" type="button" aria-label="Inventory"><span id="playerchip">Explorer</span></button>
-        <div id="hpbar">100/100 HP</div><input id="searchbox"><button id="shelfnotifications" type="button" aria-label="Notifications">Bell</button>
-        <div class="location-readout"><span class="location-label">Current view</span><div id="trail"><span class="seg cur">Cosmos</span></div></div></header>
-      <nav id="sceneactions"><button id="docksurvey" type="button">Survey</button><button id="dockcharts" type="button">Charts</button><span id="objchip">Objective</span></nav>
+        <div id="hpbar">100/100</div><input id="searchbox"><span id="objchip">Objective</span>
+        <div id="trail"><span class="seg cur">Cosmos</span></div></header>
+      <nav id="sceneactions"><button id="docksurvey" type="button">Survey</button><button id="dockcharts" type="button">Charts</button></nav>
       <div id="ctxbar">Context</div><div id="hintpill">Hint</div><nav id="dock"><button id="primechip" type="button">Prime</button></nav>
       <nav id="raillft"></nav><nav id="railrgt"></nav>`, { runScripts: 'outside-only' });
     const win = dom.window as unknown as Window & typeof globalThis;
@@ -3415,31 +3415,29 @@ describe('sixth Slice red contract repairs', () => {
     type Box = { left: number; top: number; width: number; height: number };
     const boxes = new Map<string, Box>([
       ['topbar', { left: 0, top: 0, width: 390, height: 112 }],
-      ['dockinventory', { left: 10, top: 8, width: 156, height: 44 }],
-      ['playerchip', { left: 10, top: 8, width: 156, height: 44 }],
-      ['hpbar', { left: 10, top: 60, width: 156, height: 44 }],
-      ['searchbox', { left: 174, top: 8, width: 154, height: 44 }],
-      ['shelfnotifications', { left: 336, top: 8, width: 44, height: 44 }],
-      ['location-readout', { left: 174, top: 60, width: 206, height: 44 }],
-      ['trail', { left: 184, top: 78, width: 186, height: 16 }],
-      ['sceneactions', { left: 10, top: 120, width: 156, height: 180 }],
-      ['docksurvey', { left: 10, top: 120, width: 156, height: 44 }],
-      ['dockcharts', { left: 10, top: 172, width: 156, height: 44 }],
-      ['objchip', { left: 10, top: 224, width: 156, height: 76 }],
+      ['dockinventory', { left: 10, top: 8, width: 140.4, height: 44 }],
+      ['playerchip', { left: 10, top: 8, width: 140.4, height: 44 }],
+      ['hpbar', { left: 10, top: 60, width: 140.4, height: 44 }],
+      ['searchbox', { left: 160.4, top: 8, width: 144.3, height: 44 }],
+      ['trail', { left: 0, top: 0, width: 0, height: 0 }],
+      ['sceneactions', { left: 10, top: 120, width: 140.4, height: 96 }],
+      ['docksurvey', { left: 10, top: 120, width: 140.4, height: 44 }],
+      ['dockcharts', { left: 10, top: 172, width: 140.4, height: 44 }],
+      ['objchip', { left: 160.4, top: 60, width: 219.6, height: 44 }],
       ['ctxbar', { left: 100, top: 650, width: 190, height: 28 }],
       ['hintpill', { left: 130, top: 696, width: 130, height: 24 }],
       ['dock', { left: 35, top: 740, width: 320, height: 92 }],
-      ['primechip', { left: 166, top: 740, width: 58, height: 44 }],
+      ['primechip', { left: 165, top: 740, width: 60, height: 44 }],
     ]);
     for (const [id] of boxes) {
-      const node = id === 'location-readout' ? document.querySelector('.location-readout')! : document.getElementById(id)!;
+      const node = document.getElementById(id)!;
       Object.defineProperty(node, 'getBoundingClientRect', { value: () => {
         const b = boxes.get(id)!;
         return { ...b, x: b.left, y: b.top, right: b.left + b.width, bottom: b.top + b.height };
       } });
     }
     document.elementFromPoint = ((x: number, y: number) => {
-      for (const id of ['dockinventory', 'searchbox', 'shelfnotifications', 'docksurvey', 'dockcharts', 'primechip']) {
+      for (const id of ['dockinventory', 'searchbox', 'docksurvey', 'dockcharts', 'primechip']) {
         const b = boxes.get(id)!;
         if (x >= b.left && x <= b.left + b.width && y >= b.top && y <= b.top + b.height) return document.getElementById(id);
       }
@@ -3450,12 +3448,12 @@ describe('sixth Slice red contract repairs', () => {
       expect(run()).toEqual([]);
       const mutations: ReadonlyArray<readonly [string, string, Partial<Box>, string]> = [
         ['objective outside viewport', 'objchip', { left: 410 }, 'objective chip'],
-        ['objective overlaps Charts', 'objchip', { top: 172 }, 'objective chip'],
+        ['objective overlaps Search', 'objchip', { top: 8 }, 'objective chip'],
         ['objective vertically clipped', 'objchip', { height: 700 }, 'objective chip'],
         ['HP overlaps nameplate', 'hpbar', { top: 40 }, 'HP bar'],
         ['scene stack detached from topbar', 'sceneactions', { top: 140 }, 'scene actions'],
         ['Survey target below 44px', 'docksurvey', { height: 43 }, 'scene actions'],
-        ['trail outside header', 'trail', { top: 140 }, 'current view trail'],
+        ['Search is undersized', 'searchbox', { height: 43 }, 'search is not'],
       ];
       for (const [name, id, changes, prefix] of mutations) {
         const prior = boxes.get(id)!;
@@ -3465,9 +3463,14 @@ describe('sixth Slice red contract repairs', () => {
         } finally { boxes.set(id, prior); }
         expect(run(), `${name} restoration`).toEqual([]);
       }
-      const geometryOwner = section(sliceSource, '  /* The objective now flows', '  /* The notification bell owns');
+      const trail=document.getElementById('trail')!;
+      trail.style.display='flex';
+      expect(run().some(finding=>finding.startsWith('canonical trail'))).toBe(true);
+      trail.style.removeProperty('display');
+      expect(run()).toEqual([]);
+      const geometryOwner = section(sliceSource, '  /* The objective now flows', '  /* Search owns');
       proveEachMarkerRequired(geometryOwner, [
-        ['real out-of-viewport and Charts mutations', "for(const name of ['outside viewport','overlaps Charts'])"],
+        ['real out-of-viewport and Search mutations', "for(const name of ['outside viewport','overlaps Search'])"],
         ['actual objective and Charts rectangles', 'const a=o.getBoundingClientRect(),c=charts.getBoundingClientRect()'],
         ['static-flow transform mutation', "o.style.setProperty('transform','translate('+dx+'px,'+dy+'px)','important')"],
         ['observed geometry reproduction', 'ok:reproduced&&bad.some'],
