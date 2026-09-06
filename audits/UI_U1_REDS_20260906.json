@@ -339,6 +339,38 @@
         "focusedTestsPassed": 9
       },
       "remainingChecks": "Both phone canaries and normal visual review not run after red."
+    },
+    {
+      "source": "42c080580cdcbab3f999e5c2aadced6f3174aa8a",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "fresh typecheck, artunused, full Vitest and Glass selftest PASS",
+      "runId": "20260906072756242-69973-291c6db9e4ef",
+      "durationMs": 368650,
+      "failures": [
+        "WORLD IDENTITY COLLISION ATLAS REOPEN 1: exact native opener receipt was red before Travel: {\"press\":{\"target\":null,\"pointer\":null},\"assessment\":{\"ok\":false,\"checks\":{\"target\":false,\"geometry\":false,\"pointer\":false,\"coordinates\":false}}}"
+      ],
+      "diagnosis": "Style attribute correction passed. Later collision Atlas loop tries to reopen after its first Travel leaves Survey open; Survey hides right rail and U1 desktop hides the dock Atlas duplicate. Native helper correctly reports no visible target.",
+      "correction": "Both collision Atlas openings first close an open Survey through native #docksurvey, prove its exact trusted input and closed DOM/ARIA state, and retain the same document plus all 14 route/selected-world/panel fields. Existing Atlas and Travel assertions remain unchanged.",
+      "carriers": [
+        {
+          "file": "UI_U1_SLICE_RED_42c0805_20260906.log.gz",
+          "sha256": "b18e29e28c651129077efd6709b04ffaf583394103d58d04a91c31afdfbe5308",
+          "uncompressedSha256": "248120f19209f237fe42530bf792939b19a66c3c6788f37949d7eb539990e9df"
+        },
+        {
+          "file": "UI_U1_SLICE_RED_42c0805_20260906.json.gz",
+          "sha256": "deccae46434f73dcd20b698d5cafe4e3024117bd0603d11194b4c54801d42079",
+          "uncompressedSha256": "cc93cbef7718630436b4174af1048fe20d267e2eff5a21ce51a868b797483927"
+        }
+      ],
+      "remainingChecks": "Both phone canaries and visual review not run after red.",
+      "preparation": {
+        "result": "Typecheck and 10 focused Atlas contract tests PASS",
+        "file": "UI_U1_COLLISION_SURVEY_CLOSE_PREP_20260906.log.gz",
+        "sha256": "5b6608eecd8bb638fe28ed11340cfb744998736782f9962c19bc0e2a5fc6dfc4",
+        "uncompressedSha256": "bb37434b5ae665c45ad4aa9700e9eaa13f0d71ab0671cc9dceff59c00e4a9fe8"
+      }
     }
   ]
 }

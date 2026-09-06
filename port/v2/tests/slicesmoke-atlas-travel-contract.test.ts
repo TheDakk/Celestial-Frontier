@@ -267,6 +267,61 @@ describe('Slice Atlas native Travel contract', () => {
     }
   });
 
+  it('requires a native Survey close with unchanged document and selected route before each collision Atlas open', () => {
+    const closeOwner = section(sliceSource, '  const assessCollisionSurveyClosure =',
+      '  const collisionSurveyStateExpression =');
+    const assess = Function('assessAtlasOpenerPress', `${closeOwner};return assessCollisionSurveyClosure;`)(
+      assessAtlasOpenerPress) as (evidence: unknown) => boolean;
+    const before = { documentToken: 'collision-document', cardOpen: true, display: 'block',
+      ariaHidden: 'false', expanded: 'true', route: { mode: 'system', gal: 3, star: 4, planet: null,
+        planetOrdinal: null, navGalaxyKey: 'galaxy-3', navStarKey: 'exact-star-4', navWorldKey: null,
+        galX: 90, galY: -60, starX: 100, starY: 200, cardTitle: 'Alpha world', panelOpen: null } };
+    const after = { ...before, cardOpen: false, display: 'none', ariaHidden: 'true', expanded: 'false' };
+    const press = { target: { settled: true, tag: 'BUTTON', type: 'button', id: 'docksurvey',
+      hit: true, width: 82, height: 44, x: 520, y: 270 },
+    pointer: { trusted: true, pointerType: 'mouse', tag: 'BUTTON', id: 'docksurvey',
+      atlasTravelId: null, atlasRowId: null, x: 520, y: 270 } };
+    const evidence = { before, after, press };
+    expect(assess(evidence)).toBe(true);
+    expect(assess({ before: after, after, press: null })).toBe(true);
+    expect(assess({ before: after, after, press })).toBe(false);
+    expect(assess({ ...evidence, press: null })).toBe(false);
+    expect(assess({ ...evidence, press: { ...press,
+      pointer: { ...press.pointer, trusted: false } } })).toBe(false);
+    expect(assess({ ...evidence, press: { ...press,
+      target: { ...press.target, hit: false } } })).toBe(false);
+    expect(assess({ ...evidence, press: { ...press,
+      pointer: { ...press.pointer, id: 'dockcharts' } } })).toBe(false);
+    expect(assess({ ...evidence, press: { ...press,
+      pointer: { ...press.pointer, x: press.pointer.x + 2 } } })).toBe(false);
+    expect(assess({ ...evidence, after: { ...after, documentToken: 'replacement-document' } })).toBe(false);
+    expect(assess({ ...evidence, after: { ...after, cardOpen: true } })).toBe(false);
+    expect(assess({ ...evidence, after: { ...after, display: 'block' } })).toBe(false);
+    expect(assess({ ...evidence, after: { ...after, expanded: 'true' } })).toBe(false);
+    expect(assess({ ...evidence, after: { ...after, ariaHidden: 'false' } })).toBe(false);
+    for (const key of Object.keys(before.route)) {
+      expect(assess({ ...evidence, after: { ...after, route: { ...after.route, [key]: 'changed' } } }), key).toBe(false);
+    }
+    expect(assess({ ...evidence, before: { ...before, route: {} }, after: { ...after, route: {} } })).toBe(false);
+    expect(assess(evidence)).toBe(true);
+    const owner = section(sliceSource, '  const collisionAtlasOpeners = [];',
+      '  const collisionReloadSearches = [];');
+    expect(owner).toContain("nativeControlClick(collisionTarget.session, '#docksurvey')");
+    expect(owner).toContain("assessAtlasOpenerPress(press, { ids: ['docksurvey'] })");
+    expect(owner).toContain('if (before.cardOpen === true)');
+    expect(owner).toContain('if (!assessment.ok)');
+    expect(owner).toContain('if (!assessCollisionSurveyClosure(evidence))');
+    expect(owner).toContain('collisionSurveyCloses.push(evidence)');
+    expect(owner).not.toContain('.click()');
+    expect(owner.indexOf("await closeCollisionSurveyForAtlas('initial open')"))
+      .toBeLessThan(owner.indexOf('const collisionAtlasOpening = await nativeControlClick('));
+    expect(owner.indexOf('await closeCollisionSurveyForAtlas(`reopen ${index}`)'))
+      .toBeLessThan(owner.indexOf('const reopen = await nativeControlClick('));
+    expect(owner.indexOf('const reopenAssessment = assessAtlasOpenerPress(reopen)'))
+      .toBeLessThan(owner.indexOf('const pressAssessment = assessAtlasPointerPress(press, { atlasId })'));
+    expect(sliceSource).toContain('surveyCloses: collisionSurveyCloses');
+  });
+
   it('declares both native Atlas openers as non-submit buttons', () => {
     const markupErrors = (source: string): string[] => ['railatlas', 'dockatlas'].filter((id) => (
       source.split(`<button id="${id}" type="button"`).length - 1 !== 1

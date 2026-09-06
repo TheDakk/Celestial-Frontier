@@ -28736,6 +28736,51 @@ try {
     `(()=>{const panel=document.getElementById('recpanel'),row=[...panel?.querySelectorAll('.row')??[]].find((entry)=>
       entry.querySelector('label')?.textContent==='worlds landed');if(!row)return null;return {worldsLanded:Number(row.querySelector('span')?.textContent)};})()`);
   const collisionAtlasOpeners = [];
+  const assessCollisionSurveyClosure = ({ before, after, press }) => {
+    const routeKeys = ['mode', 'gal', 'star', 'planet', 'planetOrdinal', 'navGalaxyKey', 'navStarKey',
+      'navWorldKey', 'galX', 'galY', 'starX', 'starY', 'cardTitle', 'panelOpen'];
+    const sameRoute = before?.route && after?.route && routeKeys.every((key) => (
+      Object.hasOwn(before.route, key) && Object.hasOwn(after.route, key)
+      && before.route[key] === after.route[key]
+    ));
+    return typeof before?.documentToken === 'string' && before.documentToken.length > 0
+      && before.documentToken === after?.documentToken && sameRoute === true
+      && after.cardOpen === false && after.display === 'none' && after.ariaHidden === 'true'
+      && after.expanded === 'false'
+      && (before.cardOpen === true
+        ? before.display !== 'none' && before.ariaHidden === 'false' && before.expanded === 'true'
+          && assessAtlasOpenerPress(press, { ids: ['docksurvey'] }).ok
+        : before.cardOpen === false && before.display === 'none' && before.ariaHidden === 'true'
+          && before.expanded === 'false' && press === null);
+  };
+  const collisionSurveyStateExpression = `(()=>{const S=window.__CF_SLICE__,state=S.api.state(),
+    survey=document.getElementById('survey'),button=document.getElementById('docksurvey');return {
+      documentToken:S.documentToken,cardOpen:state.cardOpen,display:survey?getComputedStyle(survey).display:null,
+      ariaHidden:survey?.getAttribute('aria-hidden')??null,expanded:button?.getAttribute('aria-expanded')??null,
+      route:Object.fromEntries(['mode','gal','star','planet','planetOrdinal','navGalaxyKey','navStarKey',
+        'navWorldKey','galX','galY','starX','starY','cardTitle','panelOpen'].map((key)=>[key,state[key]]))};})()`;
+  const collisionSurveyCloses = [];
+  const closeCollisionSurveyForAtlas = async (label) => {
+    const before = await evalF4Control(collisionTarget.session, collisionSurveyStateExpression);
+    let press = null, after = before;
+    if (before.cardOpen === true) {
+      press = await nativeControlClick(collisionTarget.session, '#docksurvey');
+      const assessment = assessAtlasOpenerPress(press, { ids: ['docksurvey'] });
+      if (!assessment.ok) {
+        failSliceWithoutCascade(`WORLD IDENTITY COLLISION SURVEY CLOSE ${label}: native scene control was red before Atlas: `
+          + JSON.stringify({ before, press, assessment }));
+      }
+      after = await waitControlValue(collisionTarget.session, `collision Survey close ${label}`,
+        collisionSurveyStateExpression, 8000, (value) => value?.cardOpen === false);
+    }
+    const evidence = { label, before, after, press };
+    if (!assessCollisionSurveyClosure(evidence)) {
+      failSliceWithoutCascade(`WORLD IDENTITY COLLISION SURVEY CLOSE ${label}: Survey did not close without changing document, route or selected world: `
+        + JSON.stringify(evidence));
+    }
+    collisionSurveyCloses.push(evidence);
+  };
+  await closeCollisionSurveyForAtlas('initial open');
   const collisionAtlasOpening = await nativeControlClick(
     collisionTarget.session, '#railatlas,#dockatlas',
   );
@@ -28759,6 +28804,7 @@ try {
   for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
     const world = COLLISION_REACH_WORLDS[index];
     if (index > 0) {
+      await closeCollisionSurveyForAtlas(`reopen ${index}`);
       const reopen = await nativeControlClick(collisionTarget.session, '#railatlas,#dockatlas');
       const reopenAssessment = assessAtlasOpenerPress(reopen);
       if (!reopenAssessment.ok) {
@@ -28848,6 +28894,7 @@ try {
     hiddenRailCopies: { baseline: collisionRailBaseline, controls: collisionRailControls },
     actions: collisionActions, reloaded: collisionReloaded,
     atlas: collisionAtlas, records: collisionRecords, atlasOpeners: collisionAtlasOpeners,
+    surveyCloses: collisionSurveyCloses,
     atlasTravel: collisionAtlasTravel, searches: collisionReloadSearches,
   };
   const collisionAssessment = assessCollisionWorldOutcome(collisionBundle);
