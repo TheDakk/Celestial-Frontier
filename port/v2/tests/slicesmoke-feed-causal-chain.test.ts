@@ -2700,9 +2700,9 @@ describe('Slice Arc 5 Feed causal-chain evidence', () => {
       "waitForF4Writable('Arc 5 Feed pre-action writable authority')",
     ]) expect(source).toContain(binding);
     expect(detailOwner).toContain(
-      "arc5FeedClick('#dockcodex', `${label} Compendium opener`, driver)",
+      "arc5FeedClick('#railcodex', `${label} Compendium opener`, driver)",
     );
-    expect(detailOwner).not.toContain("arc5FeedClick('#railcodex'");
+    expect(detailOwner).not.toContain("arc5FeedClick('#dockcodex'");
     expect(detailOwner).toContain('${fixture.sourceIndex}/(count-1)');
     expect(detailOwner).toContain("route:'scan'");
     expect(detailOwner).toContain('visits<256');

@@ -234,18 +234,16 @@ export function createAppChromeController(
       playerChip.dataset.rankName = rank.name;
       playerChip.title = `Explorer rank: ${rank.name}`;
     }
-    playerChip.innerHTML = `⚙ ${escapeHtml(view.explorerName || 'Explorer')}`
-      + (rank === null ? '' : ` <span class="player-rank">· ${escapeHtml(rank.name)}</span>`)
-      + ` <span class="dim">— ✦ ${view.essence}<span class="player-worlds"> · ${view.landedWorlds} worlds</span></span>`;
+    playerChip.textContent = view.explorerName || 'Explorer';
     hpFill.style.width = Math.max(0, Math.min(100, (view.hp / Math.max(1, view.hpMax)) * 100)) + '%';
-    hpText.textContent = `${view.hp}/${view.hpMax} HP`;
+    hpText.textContent = `${view.hp}/${view.hpMax}`;
     const meterMax = Math.max(1, view.hpMax);
     hpBar.setAttribute('role', 'meter');
     hpBar.setAttribute('aria-label', 'Explorer health');
     hpBar.setAttribute('aria-valuemin', '0');
     hpBar.setAttribute('aria-valuemax', String(meterMax));
     hpBar.setAttribute('aria-valuenow', String(Math.max(0, Math.min(meterMax, view.hp))));
-    hpBar.setAttribute('aria-valuetext', hpText.textContent);
+    hpBar.setAttribute('aria-valuetext', `${view.hp}/${view.hpMax} HP`);
     primeChip.innerHTML = '<span class="ico" aria-hidden="true">✦</span> '
       + '<span class="lbl">Prime<span class="prime-full-label"> Codex</span></span> '
       + `<span class="prime-count">${escapeHtml(view.primeCount)}/9</span>`;

@@ -272,11 +272,11 @@ async function replayRenderedReleaseControls(source: string) {
       } finally { shipyard.innerHTML = original; }
     });
     const launcherClaims = [
-      'ONE COMMAND DECK ON EVERY SCREEN: Five labelled boards and four utility controls share a centered bottom launcher across phone, tablet and desktop',
-      'ONE GLASS LANGUAGE: The v2 command deck unifies the top bar, objective, breadcrumbs, Survey, panels, contextual hints, bottom launcher on every device',
-      'UTILITIES FOLLOW THE LAUNCHER: Desktop notices and utility panels clear the measured bottom launcher and share its right edge',
-      'PRIME STAYS WITH YOUR BOARDS: Prime Codex keeps its icon, label and Signature count in the bottom launcher on every device',
-      'Spacing inside the wide bottom launcher belongs to that command deck and leaves the active panel open',
+      'FAMILIAR CONTROLS ON EVERY SCREEN: Phones keep five icon-only boards and four utility controls in compact bottom rows',
+      'ONE GLASS LANGUAGE: Rounded name, health, objective and navigation controls carry the production layout forward',
+      'UTILITIES STAY TOGETHER: Desktop notices and utility panels clear the measured bottom-right utility controls and share their right edge',
+      'PRIME KEEPS YOUR PROGRESS: Prime Codex retains its Signature count out of nine in the phone bottom row and the tablet or desktop top-center pill',
+      'Spacing inside the side navigation belongs to its controls and leaves the active panel open',
     ].map((copy) => {
       const item = [...panel.querySelectorAll('li')].find((row) => row.textContent?.includes(copy));
       if (!item) throw new Error(`Release replay launcher clause missing: ${copy}`);

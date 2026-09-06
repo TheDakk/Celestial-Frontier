@@ -42,11 +42,17 @@ export function readU1PhoneShell(training = false) {
       const r = box(button); let row = rows.find(candidate => Math.abs(candidate.top - r.top) < 2);
       if (!row) { row = { top: r.top, height: r.height, ids: [], centres: [] }; rows.push(row); }
       row.height = Math.max(row.height, r.height); row.ids.push(button.id); row.centres.push(r.cx);
-      const board = expected.indexOf(button.id) < 5 && expected.includes(button.id), width = board ? 58 : 44;
+      const board = expected.indexOf(button.id) < 5 && expected.includes(button.id), width = board ? 60 : 44;
       if (Math.abs(r.width - width) > 1 || r.height < 44 || (!board && Math.abs(r.height - 44) > 1))
         errors.push(button.id + ' does not retain its ' + width + 'px width and 44px touch floor');
       if (!centres[index].hit) errors.push(button.id + ' is not hit-testable at its centre');
       if (!centres[index].named) errors.push(button.id + ' is unnamed');
+      for (const label of button.querySelectorAll('.lbl')) if (box(label)?.visible)
+        errors.push(button.id + ' retains a visible label in the icon-only phone dock');
+      if (button.id === 'primechip') {
+        const count = button.querySelector('.prime-count');
+        if (!box(count)?.visible || !/^\d+\/9$/.test(count.textContent.trim())) errors.push('Prime count is missing or hidden');
+      }
       if (!board) {
         const face = button.querySelector('.utility-face'), f = box(face);
         if (!f || Math.abs(f.width - 36) > 1 || Math.abs(f.height - 36) > 1)
@@ -79,142 +85,141 @@ export function readU1PhoneShell(training = false) {
 }
 
 function shellGeometry() {
-  const selectors = { location: '.location-readout', locationLabel: '.location-label' };
+  const selectors = { hpLabel: '#hpbar .hp-label', hpText: '#hpbar .txt', hpIcon: '#hpbar .hp-icon', primeCount: '#primechip .prime-count' };
   const r = id => { const node = selectors[id] ? document.querySelector(selectors[id]) : document.getElementById(id); if (!node) return null;
     const b = node.getBoundingClientRect(), s = getComputedStyle(node);
     return { id, left: b.left, top: b.top, right: b.right, bottom: b.bottom, width: b.width, height: b.height,
       visible: s.display !== 'none' && s.visibility !== 'hidden' && b.width > 0 && b.height > 0,
       overflowX: node.scrollWidth > node.clientWidth + 1, overflowY: node.scrollHeight > node.clientHeight + 1 }; };
-  const styles = getComputedStyle(document.documentElement), ids = ['topbar', 'playerchip', 'hpbar', 'searchbox',
-    'dock', 'primechip', 'objchip', 'trail', 'ctxbar', 'hintpill', 'sceneactions', 'dockinventory', 'shelfnotifications', 'raillft', 'railrgt', 'location', 'locationLabel', 'docksurvey', 'dockcharts', 'setpanel'];
-  const dockNode = document.getElementById('dock'), first = r('dockcharters'), second = r('dockcodex');
-  const gapPoint = first?.visible && second?.visible ? { x: (first.right + second.left) / 2, y: first.top + first.height / 2 } : null;
+  const compact = innerWidth <= 700 || (innerWidth <= 900 && innerWidth > innerHeight);
+  const ids = ['topbar', 'playerchip', 'hpbar', 'searchbox', 'dock', 'primechip', 'objchip', 'trail', 'ctxbar', 'hintpill',
+    'sceneactions', 'dockinventory', 'shelfnotifications', 'raillft', 'railrgt', 'docksurvey', 'dockcharts', 'setpanel',
+    'railcharters', 'railcodex', 'railatlas', 'railshipyard', 'railinventory', 'railrecords', 'hpLabel', 'hpText', 'hpIcon', 'primeCount'];
+  const styles = getComputedStyle(document.documentElement), trail = document.getElementById('trail'), player = document.getElementById('playerchip');
+  const available = id => {
+    const node = document.getElementById(id), rect = r(id), face = node?.querySelector('.utility-face'), f = face?.getBoundingClientRect();
+    const hit = rect?.visible ? document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2) : null;
+    return { ...rect, id, native: node?.tagName === 'BUTTON' && !node.disabled && !node.closest('[inert]'),
+      named: !!(node?.getAttribute('aria-label') || node?.textContent || '').trim(),
+      hit: !!hit && (hit === node || node.contains(hit)), face: f ? { width: f.width, height: f.height } : null,
+      labelsVisible: [...(node?.querySelectorAll('.lbl') ?? [])].some(label => { const b = label.getBoundingClientRect(), s = getComputedStyle(label); return s.display !== 'none' && s.visibility !== 'hidden' && b.width > 0 && b.height > 0; }) };
+  };
+  const logical = ['dockcharters', 'dockcodex', 'primechip', 'dockshipyard', 'dockatlas', 'dockrecords', 'docknotifications', 'dockguide', 'docksets'];
+  const railMap = { dockcharters: 'railcharters', dockcodex: 'railcodex', dockshipyard: 'railshipyard', dockatlas: 'railatlas' };
+  const openers = logical.map(id => ({ ...available(compact ? id : railMap[id] ?? id), logicalId: id }));
+  const dock = [...document.querySelectorAll('#dock > button')].map(node => available(node.id)).filter(button => button.visible && (compact || button.id !== 'primechip'));
+  const first = dock[0], second = dock[1], gapPoint = first && second ? { x: (first.right + second.left) / 2, y: first.top + first.height / 2 } : null;
   const gapHit = gapPoint ? document.elementFromPoint(gapPoint.x, gapPoint.y) : null;
-  const location = document.querySelector('.location-readout'), label = document.querySelector('.location-label'), trail = document.getElementById('trail');
-  const stack = r('sceneactions'), centralPoint = { x: innerWidth / 2, y: stack.top + 22 };
-  const centralHit = document.elementFromPoint(centralPoint.x, centralPoint.y);
-  const topLeftActions = ['dockinventory', 'shelfnotifications', 'docksurvey', 'dockcharts'].map(id => {
-    const node = document.getElementById(id), rect = r(id), hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
-    return { ...rect, native: node.tagName === 'BUTTON' && !node.disabled && !node.closest('[inert]'),
-      named: !!(node.getAttribute('aria-label') || node.textContent || '').trim(), hit: hit === node || node.contains(hit) };
-  });
-  return { viewport: { width: innerWidth, height: innerHeight }, rects: Object.fromEntries(ids.map(id => [id, r(id)])),
-    dockGap: { point: gapPoint, owned: gapHit === dockNode, hit: gapHit?.id || gapHit?.tagName || null },
-    topLeftActions, currentView: { inHeader: !!location?.closest('#topbar') && !!location.contains(trail),
-      labelOutsideTrail: !!label && !!location?.contains(label) && !trail.contains(label), label: label?.textContent?.trim() ?? null,
-      interactiveCount: location?.querySelectorAll('button,input,a[href],[role="button"],[tabindex]:not([tabindex="-1"])').length ?? -1,
-      selfInteractive: !!location?.matches('button,input,a[href],[role="button"]') || !!trail?.matches('button,input,a[href],[role="button"]'),
-      readoutTabIndex: location?.tabIndex, trailTabIndex: trail?.tabIndex,
-      pointerTransparent: !!location && getComputedStyle(location).pointerEvents === 'none' && getComputedStyle(trail).pointerEvents === 'none' },
+  const stack = r('sceneactions'), centralPoint = { x: innerWidth / 2, y: Math.min(innerHeight - 1, stack.top + 22) };
+  const centralHit = document.elementFromPoint(centralPoint.x, centralPoint.y), hp = document.getElementById('hpbar');
+  const paint = id => { const s = getComputedStyle(document.getElementById(id)); return { background: s.backgroundColor, backgroundImage: s.backgroundImage,
+    border: ['Top','Right','Bottom','Left'].map(side => parseFloat(s['border' + side + 'Width'])), padding: ['Top','Right','Bottom','Left'].map(side => parseFloat(s['padding' + side])),
+    pointerEvents: s.pointerEvents, radius: parseFloat(s.borderTopLeftRadius) }; };
+  return { viewport: { width: innerWidth, height: innerHeight }, compact, rects: Object.fromEntries(ids.map(id => [id, r(id)])),
+    dockGap: { point: gapPoint, owned: gapHit === document.getElementById('dock'), hit: gapHit?.id || gapHit?.tagName || null },
+    topLeftActions: ['dockinventory', 'docksurvey', 'dockcharts'].map(available), openers, dock,
+    canonicalTrail: { parentId: trail?.parentElement?.id, display: getComputedStyle(trail).display, tabIndex: trail?.tabIndex,
+      interactive: !!trail?.matches('button,input,a[href],[role="button"]'), text: [...trail.querySelectorAll('.seg')].map(node => node.textContent) },
+    playerName: { text: player.textContent.trim(), textOverflow: getComputedStyle(player).textOverflow,
+      visibleMetadata: [...player.querySelectorAll('.player-rank,.player-worlds')].some(node => { const b=node.getBoundingClientRect(); return b.width > 0 && b.height > 0; }) },
+    health: { label: hp.querySelector('.hp-label')?.textContent.trim(), text: hp.querySelector('.txt')?.textContent.trim(),
+      icon: hp.querySelector('.hp-icon')?.textContent.trim(), value: hp.getAttribute('aria-valuenow'), max: hp.getAttribute('aria-valuemax') },
+    paint: Object.fromEntries(['hintpill','ctxbar','playerchip','hpbar'].map(id => [id, paint(id)])),
     centralSpace: { point: centralPoint, canvas: centralHit === document.querySelector('canvas'), hit: centralHit?.id || centralHit?.tagName || null },
     font: getComputedStyle(document.body).fontFamily, fontSize: getComputedStyle(document.body).fontSize,
     topbarPublished: parseFloat(styles.getPropertyValue('--topbar-h')), row1Published: parseFloat(styles.getPropertyValue('--row1-h')),
-    safeBottom: parseFloat(styles.getPropertyValue('--safe-bottom')) || 0,
-    safeRight: parseFloat(styles.getPropertyValue('--safe-right')) || 0,
+    safeBottom: parseFloat(styles.getPropertyValue('--safe-bottom')) || 0, safeRight: parseFloat(styles.getPropertyValue('--safe-right')) || 0,
+    safeLeft: parseFloat(styles.getPropertyValue('--safe-left')) || 0, safeTop: parseFloat(styles.getPropertyValue('--safe-top')) || 0,
     hintHeight: document.getElementById('hintpill')?.offsetHeight ?? 0,
     dockDisplay: getComputedStyle(document.getElementById('dock')).display,
     dockPointerEvents: getComputedStyle(document.getElementById('dock')).pointerEvents,
-    dock: [...document.querySelectorAll('#dock > button')].map(node => {
-      const rect = r(node.id), face = node.querySelector('.utility-face'), f = face?.getBoundingClientRect();
-      const hit = rect?.visible ? document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2) : null;
-      return { ...rect, named: !!(node.getAttribute('aria-label') || node.textContent || '').trim(),
-        native: node.tagName === 'BUTTON' && !node.disabled && !node.closest('[inert]'),
-        hit: !!hit && (hit === node || node.contains(hit)),
-        face: f ? { width: f.width, height: f.height } : null };
-    }).filter(row => row.visible),
     bodyClasses: document.body.className, horizontalOverflow: document.documentElement.scrollWidth > innerWidth };
 }
 function metricDeltas(state) {
-  const { rects: r, viewport: v, safeBottom, safeRight } = state, phone = v.width <= 700, rows = [];
-  const add = (name, actual, expected, scope = 'v1 law', tolerance = 1) => rows.push({ name, actual, expected, delta: actual - expected,
+  const { rects: r, viewport: v, safeBottom, safeRight, safeLeft, compact } = state, rows = [];
+  const add = (name, actual, expected, scope = 'production layout with explicit v2 amendments', tolerance = 1) => rows.push({ name, actual, expected, delta: actual - expected,
     pass: Number.isFinite(actual) && Math.abs(actual - expected) <= tolerance, scope, tolerance });
   add('topbar published height', state.topbarPublished, r.topbar.height, 'measured sync');
-  for (const id of ['raillft', 'railrgt']) add(id + ' hidden', r[id]?.visible ? 1 : 0, 0, 'centered launcher has no visible side rails', 0);
-  add('Search/bell gap', r.shelfnotifications.left - r.searchbox.right, 8);
-  add('shelf bell right inset', v.width - r.shelfnotifications.right - safeRight, phone ? 10 : 18);
-  add('Search/bell centre alignment', r.searchbox.top + r.searchbox.height / 2
-    - r.shelfnotifications.top - r.shelfnotifications.height / 2, 0);
-  add('header height (default text)', r.topbar.height, 112, 'two aligned rows; larger Settings text may grow');
-  add('header first-row alignment', r.dockinventory.top - r.searchbox.top, 0, 'uniform header');
-  add('header second-row alignment', r.hpbar.top - r.location.top, 0, 'uniform header');
-  add('header row gap', r.hpbar.top - r.dockinventory.bottom, 8, 'uniform header');
-  add('health/nameplate left alignment', r.hpbar.left - r.dockinventory.left, 0, 'uniform header');
-  add('health/nameplate width alignment', r.hpbar.width - r.dockinventory.width, 0, 'uniform header');
-  add('Current view/Search left alignment', r.location.left - r.searchbox.left, 0, 'uniform header');
-  add('Current view/bell right alignment', r.location.right - r.shelfnotifications.right, 0, 'uniform header');
-  add('left stack top gap', r.sceneactions.top - r.topbar.bottom, 8, 'uniform left stack');
-  for (const id of ['docksurvey', 'dockcharts', 'objchip']) {
-    add(id + ' left alignment', r[id].left - r.dockinventory.left, 0, 'uniform left stack');
-    add(id + ' width alignment', r[id].width - r.dockinventory.width, 0, 'uniform left stack');
+  add('hidden canonical trail', r.trail.visible ? 1 : 0, 0, 'retained scene text, no visible Cosmos control', 0);
+  add('header first-row alignment', r.dockinventory.top - r.searchbox.top, 0);
+  add('header second-row alignment', r.hpbar.top - r.objchip.top, 0);
+  add('health/nameplate left alignment', r.hpbar.left - r.dockinventory.left, 0);
+  add('Objective/Search alignment', compact ? r.objchip.left - r.searchbox.left : r.objchip.right - r.searchbox.right, 0, compact ? 'shared column start; Objective fills its right lane' : 'shared right edge');
+  add('header row gap', r.hpbar.top - r.dockinventory.bottom, 8);
+  add('clear central scene', state.centralSpace.canvas ? 1 : 0, 1, 'actual canvas beside context actions', 0);
+  add('scene action left alignment', r.sceneactions.left - r.dockinventory.left, 0);
+  add('Survey/Charts gap', r.dockcharts.top - r.docksurvey.bottom, 8);
+  for (const id of ['railinventory','railrecords']) add(id + ' duplicate hidden', r[id].visible ? 1 : 0, 0, 'no duplicate visible owner', 0);
+  for (const id of ['hintpill','ctxbar']) {
+    const p=state.paint[id], transparent = p.background === 'transparent' || /rgba\([^)]*,\s*0\s*\)$/.test(p.background);
+    add(id === 'hintpill' ? 'hintpill plain text chrome' : 'ctxbar flat caption chrome', (id !== 'hintpill' || transparent) && p.backgroundImage === 'none' && p.border.every(n=>n===0) && p.padding.every(n=>n===0) && p.radius === 0 ? 1 : 0, 1, id === 'hintpill' ? 'plain hint without pill paint' : 'flat caption retains its contrast backing', 0);
   }
-  add('Survey/Charts gap', r.dockcharts.top - r.docksurvey.bottom, 8, 'uniform left stack');
-  add('Charts/Objective gap', r.objchip.top - r.dockcharts.bottom, 8, 'uniform left stack');
-  add('clear central scene', state.centralSpace.canvas ? 1 : 0, 1, 'native canvas beside left stack', 0);
-  if (phone) {
+  if (compact) {
+    for (const id of ['raillft','railrgt']) add(id + ' hidden', r[id].visible ? 1 : 0, 0, 'compact phone layout', 0);
+    add('left stack top gap', r.sceneactions.top - r.topbar.bottom, 8);
     add('phone dock bottom', v.height - r.dock.bottom - safeBottom, 12);
-    add('phone dock width', r.dock.width, 320);
-    add('phone dock height (default text)', r.dock.height, 92, 'U1 default Inter content baseline; larger text may grow');
+    add('phone dock width', r.dock.width, 320, 'grid envelope around production60px faces/64px centers');
+    add('phone dock height (default text)', r.dock.height, 92, '44px rows plus4px gap; count text may grow with preferences');
     add('phone hint bottom', v.height - r.hintpill.bottom - safeBottom, 124);
-    add('phone caption bottom', v.height - r.ctxbar.bottom - safeBottom, 164);
-    const boards = state.dock.slice(0, 5), utilities = state.dock.slice(5);
-    for (const [group, buttons] of [['boards', boards], ['utilities', utilities]])
-      for (let i = 1; i < buttons.length; i++) add(group + ' centre pitch ' + i,
-        buttons[i].left + buttons[i].width / 2 - buttons[i - 1].left - buttons[i - 1].width / 2, 64);
+    add('phone caption bottom', v.height - r.ctxbar.bottom - safeBottom, Math.max(164,124+state.hintHeight+8));
+    add('phone Search width', r.searchbox.width, Math.min(v.width * .37, v.width - safeLeft - safeRight - 30 - Math.min(176,Math.max(128,v.width*.36))));
+    for (const [group, buttons] of [['boards', state.dock.slice(0,5)],['utilities',state.dock.slice(5)]])
+      for (let i=1;i<buttons.length;i++) add(group + ' centre pitch ' + i, buttons[i].left+buttons[i].width/2-buttons[i-1].left-buttons[i-1].width/2,64);
   } else {
-    const desktop = v.width >= 1100, pitch = desktop ? 80 : 72, target = desktop ? 56 : 48;
-    const boardWidth = desktop ? 74 : 66, face = desktop ? 44 : 40;
-    add('launcher tray gap owner', state.dockGap?.owned ? 1 : 0, 1, 'visible tray owns empty launcher gaps', 0);
-    add('launcher centre', r.dock.left + r.dock.width / 2, v.width / 2, 'centered launcher');
-    add('launcher bottom', v.height - r.dock.bottom - safeBottom, 12, 'centered launcher');
-    add('launcher width', r.dock.width, desktop ? 752 : 672, 'nine scaled tracks and symmetric padding');
-    add('launcher height (default text)', r.dock.height, desktop ? 88 : 72, 'default Inter content baseline; larger text may grow');
-    add('launcher hint bottom', v.height - r.hintpill.bottom - safeBottom, Math.max(96, r.dock.height + 28), 'measured launcher clearance');
-    add('launcher caption bottom', v.height - r.ctxbar.bottom - safeBottom,
-      Math.max(136, r.dock.height + 28 + state.hintHeight + 8), 'measured launcher and hint clearance');
-    for (const [index, button] of state.dock.entries()) {
-      add(button.id + ' launcher width', button.width, index < 5 ? boardWidth : target, 'scaled native launcher');
-      add(button.id + ' launcher height', button.height, target, 'default Inter target baseline; board text may grow');
-      add(button.id + ' launcher row centre', button.top + button.height / 2, r.dock.top + r.dock.height / 2, 'single centered row');
-      if (index >= 5) {
-        add(button.id + ' utility face width', button.face?.width, face, 'scaled painted face');
-        add(button.id + ' utility face height', button.face?.height, face, 'scaled painted face');
-      }
-      if (index > 0) add('launcher centre pitch ' + index,
-        button.left + button.width / 2 - state.dock[index - 1].left - state.dock[index - 1].width / 2, pitch, 'scaled launcher rhythm');
+    for (const id of ['raillft','railrgt']) add(id + ' visible', r[id].visible ? 1 : 0, 1, 'production side-control arrangement', 0);
+    add('left rail top gap', r.raillft.top-r.topbar.bottom,8);
+    add('right rail top gap', r.railrgt.top-r.topbar.bottom,8);
+    add('left rail inset',r.raillft.left-safeLeft,18);
+    add('right rail inset',v.width-r.railrgt.right-safeRight,18);
+    add('Charters/Compendium gap',r.railcodex.top-r.railcharters.bottom,8,'44px native targets plus8px gap');
+    add('Atlas/Shipyard gap',r.railshipyard.top-r.railatlas.bottom,8,'44px native targets plus8px gap');
+    add('left stack below rail gap',r.sceneactions.top-r.raillft.bottom,8);
+    add('Prime top centre',r.primechip.left+r.primechip.width/2,v.width/2);
+    add('Prime top',r.primechip.top,Math.max(10,state.safeTop));
+    add('Search width',r.searchbox.width,236);
+    add('utility dock width',r.dock.width,200,'four44px targets plus three8px gaps');
+    add('utility dock height',r.dock.height,44);
+    add('utility dock right inset',v.width-r.dock.right-safeRight,16);
+    add('utility dock bottom',v.height-r.dock.bottom-safeBottom,12);
+    add('utility dock gap owner',state.dockGap.owned?1:0,1,'dock retains native ownership of internal gaps',0);
+    add('wide hint bottom',v.height-r.hintpill.bottom-safeBottom,18);
+    add('wide caption bottom',v.height-r.ctxbar.bottom-safeBottom,Math.max(64,18+state.hintHeight+8));
+    for (const [i,button] of state.dock.entries()) {
+      add(button.id+' utility width',button.width,44);add(button.id+' utility height',button.height,44);
+      add(button.id+' utility face width',button.face?.width,36);add(button.id+' utility face height',button.face?.height,36);
+      if(i)add('utility centre pitch '+i,button.left+button.width/2-state.dock[i-1].left-state.dock[i-1].width/2,52);
     }
   }
   return rows;
 }
 function topLeftOutcome(state, narrowPanel = false) {
-  const r = state.rects, v = state.viewport, view = state.currentView, errors = [];
-  const viewport = { left: 0, top: 0, right: v.width, bottom: v.height };
-  const inside = (box, parent) => box?.visible && box.left >= parent.left - 1 && box.top >= parent.top - 1
-    && box.right <= parent.right + 1 && box.bottom <= parent.bottom + 1;
-  if (!inside(r.topbar, viewport) || !inside(r.sceneactions, viewport)) errors.push('header or left controls leave the viewport');
-  if (Math.abs(state.topbarPublished - r.topbar.height) > 1) errors.push('published header height does not match rendered content');
-  for (const action of state.topLeftActions) {
-    if (!inside(action, viewport) || !action.native || !action.named || !action.hit || action.width < 44 || action.height < 44)
-      errors.push(action.id + ' is not a bounded named native44px action');
-    if (narrowPanel && action.left < v.width / 2) errors.push(action.id + ' is outside the panel-safe right column');
+  const r=state.rects,v=state.viewport,errors=[],viewport={left:0,top:0,right:v.width,bottom:v.height};
+  const inside=(box,parent)=>box?.visible&&box.left>=parent.left-1&&box.top>=parent.top-1&&box.right<=parent.right+1&&box.bottom<=parent.bottom+1;
+  if(!inside(r.topbar,viewport)||!inside(r.sceneactions,viewport))errors.push('header or context actions leave the viewport');
+  if(Math.abs(state.topbarPublished-r.topbar.height)>1)errors.push('published header height does not match rendered content');
+  for(const action of state.topLeftActions){
+    if(!inside(action,viewport)||!action.native||!action.named||!action.hit||action.width<44||action.height<44)errors.push(action.id+' is not a bounded named native44px action');
+    if(narrowPanel&&action.left<v.width/2)errors.push(action.id+' is outside the panel-safe right column');
   }
-  for (const id of ['dockinventory', 'searchbox', 'shelfnotifications']) if (!inside(r[id], r.topbar)) errors.push(id + ' leaves the header');
-  if (r.searchbox.width < 44 || r.searchbox.height < 44) errors.push('Search loses its44px floor');
-  if (narrowPanel) {
-    if (r.hpbar.visible || r.location.visible || r.objchip.visible) errors.push('noninteractive status did not yield to the narrow panel');
-    if (r.searchbox.left < v.width / 2 || r.sceneactions.bottom > r.dock.top - 8) errors.push('narrow right-column controls collide with the launcher');
-  } else {
-    for (const id of ['hpbar', 'location', 'locationLabel', 'trail']) if (!inside(r[id], r.topbar)) errors.push(id + ' is not contained in the header');
-    if (Math.abs(r.sceneactions.top - r.topbar.bottom - 8) > 1) errors.push('left stack does not clear the measured header by8px');
-    for (const id of ['hpbar', 'docksurvey', 'dockcharts', 'objchip']) if (Math.abs(r[id].left - r.dockinventory.left) > 1 || Math.abs(r[id].width - r.dockinventory.width) > 1) errors.push(id + ' loses the shared left edge or width');
-    if (!view.inHeader || !view.labelOutsideTrail || view.label !== 'Current view' || view.interactiveCount !== 0
-      || view.selfInteractive || view.readoutTabIndex >= 0 || view.trailTabIndex >= 0 || !view.pointerTransparent)
-      errors.push('Current view is not a labelled, noninteractive header readout separate from canonical trail');
-    if (!inside(r.trail, r.location) || r.trail.overflowX || r.trail.overflowY) errors.push('Current view text clips its readout');
-    if (!inside(r.objchip, r.sceneactions) || r.objchip.overflowX || r.objchip.overflowY) errors.push('Objective clips its aligned stack');
-    if (r.sceneactions.right >= v.width / 2 || !state.centralSpace.canvas) errors.push('left controls obstruct the central scene');
-    if (r.sceneactions.bottom > Math.min(r.ctxbar.top, r.hintpill.top, r.dock.top) - 8) errors.push('left stack collides with a bottom lane');
+  for(const id of ['dockinventory','searchbox'])if(!inside(r[id],r.topbar))errors.push(id+' leaves the header');
+  if(r.searchbox.width<44||r.searchbox.height<44)errors.push('Search loses its44px floor');
+  const trail=state.canonicalTrail;
+  if(r.trail.visible||trail.display!=='none'||trail.parentId!=='topbar'||trail.interactive||trail.tabIndex>=0)errors.push('canonical trail must remain a hidden noninteractive direct header child');
+  if(!state.playerName.text||state.playerName.visibleMetadata||r.playerchip.overflowX||r.playerchip.overflowY)errors.push('name-only Inventory nameplate is empty or truncates');
+  if(!inside(r.playerchip,r.dockinventory))errors.push('nameplate paint leaves its native Inventory target');
+  if(narrowPanel){
+    if(r.hpbar.visible||r.objchip.visible)errors.push('status chrome did not yield to the narrow panel');
+    if(r.searchbox.left<v.width/2||r.sceneactions.bottom>r.dock.top-8)errors.push('right-column controls collide with the launcher');
+  }else{
+    for(const id of ['hpbar','objchip'])if(!inside(r[id],r.topbar))errors.push(id+' is not contained in the header');
+    if(r.objchip.overflowX||r.objchip.overflowY)errors.push('Objective clips its header lane');
+    for(const id of ['hpLabel','hpText','hpIcon'])if(!inside(r[id],r.hpbar))errors.push(id+' clips its health gauge');
+    if(state.health.label!=='Health'||state.health.icon?.replace(/\uFE0F/g,'')!=='❤'||state.health.text!==state.health.value+'/'+state.health.max)errors.push('Health does not retain its heart, caption and exact numeric meter');
+    if(Math.abs(r.hpbar.left-r.dockinventory.left)>1||Math.abs(r.hpbar.top-r.objchip.top)>1)errors.push('name/Health/Objective header lanes lost alignment');
+    if(r.sceneactions.right>=v.width/2||!state.centralSpace.canvas)errors.push('context actions obstruct the central scene');
+    if(r.sceneactions.bottom>Math.min(r.ctxbar.top,r.hintpill.top,r.dock.top)-8)errors.push('context actions collide with a bottom lane');
   }
-  return { pass: errors.length === 0, errors };
+  return{pass:errors.length===0,errors};
 }
 const LAUNCHER_PANELS = [
   ['dockcharters', 'chpanel'], ['dockcodex', 'codexpanel'], ['primechip', 'primepanel'],
@@ -222,20 +227,26 @@ const LAUNCHER_PANELS = [
   ['docknotifications', 'notificationpanel'], ['dockguide', 'guidepanel'], ['docksets', 'setpanel'],
 ];
 function launcherOutcome(state) {
-  const expected = LAUNCHER_PANELS.map(([id]) => id), ids = state.dock.map(button => button.id), errors = [];
-  if (JSON.stringify(ids) !== JSON.stringify(expected)) errors.push('native launcher identity/order drifted: ' + JSON.stringify(ids));
-  for (const button of state.dock) if (!button.native || !button.named || !button.hit)
-    errors.push(button.id + ' is not a named, native, center-hit-testable opener');
-  if (state.dockDisplay !== 'grid') errors.push('launcher is not a grid');
-  if (state.viewport.width > 700 && (state.dockPointerEvents !== 'auto' || !state.dockGap?.owned)) errors.push('visible launcher tray does not own its measured empty gap');
-  return { pass: errors.length === 0, ids, expected, errors };
+  const expected=state.compact?['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets']:
+    ['railcharters','railcodex','primechip','railshipyard','railatlas','dockrecords','docknotifications','dockguide','docksets'];
+  const ids=state.openers.map(button=>button.id),errors=[];
+  if(JSON.stringify(ids)!==JSON.stringify(expected))errors.push('visible native opener identity/order drifted: '+JSON.stringify(ids));
+  for(const button of state.openers)if(!button.visible||!button.native||!button.named||!button.hit||button.width<44||button.height<44)errors.push(button.id+' is not a named native44px center-hit-testable opener');
+  const dockExpected=state.compact?expected:['dockrecords','docknotifications','dockguide','docksets'];
+  if(JSON.stringify(state.dock.map(button=>button.id))!==JSON.stringify(dockExpected))errors.push('visible dock membership drifted');
+  if(state.dockDisplay!==(state.compact?'grid':'flex'))errors.push('dock display does not match compact grid / wide utility flex layout');
+  if(!state.compact&&(state.dockPointerEvents!=='auto'||!state.dockGap.owned))errors.push('wide utility dock loses native ownership of its internal gaps');
+  if(state.compact&&state.dock.some(button=>button.labelsVisible))errors.push('phone dock retains visible board labels');
+  if(!state.rects.primeCount?.visible)errors.push('Prime count is hidden');
+  return{pass:errors.length===0,ids,expected,errors};
 }
 /** Passive review-owned observations of public DOM/input only. No product
  * evidence hook, navigation write, event cancellation or recovery action. */
 function installNativeReviewTrace(viewport) {
   const snapshot = () => ({ at: performance.now(), trail: [...document.querySelectorAll('#trail .seg')].map(node => node.textContent),
     context: document.getElementById('ctxbar')?.textContent ?? null, focusedId: document.activeElement?.id ?? null,
-    bodyClasses: document.body.className, viewport: { width: innerWidth, height: innerHeight } });
+    bodyClasses: document.body.className, viewport: { width: innerWidth, height: innerHeight },
+    trailVisible: (() => { const t=document.getElementById('trail'),r=t.getBoundingClientRect(),s=getComputedStyle(t);return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0; })() });
   const describe = node => node instanceof Element ? { tag: node.tagName, id: node.id || null,
     sel: node.getAttribute('data-sel'), close: node.getAttribute('data-pnx') } : { tag: node === document ? '#document' : '#window' };
   const trace = { viewport, events: [], changes: [], active: null, nextId: 0, overflow: false, snapshot };
@@ -289,9 +300,9 @@ export async function runUiShellReview(buildArgument, outputArgument) {
     status: 'RUNNING', rows: [], journeys: [], nativeInputs: [], nativeTraces: [], images: [], errors: [], limitations: [
       'U1 geometry diagnostic only, not U4, full Glass, real iPhone or HUMAN visual acceptance.',
       'Golden raster differences reflect scene/save/browser/font differences as well as design; no pixel-equality verdict.',
-      'New game uses native Skip then bounded Escape ascent to the visible Cosmos breadcrumb, not a legacy import; camera, progression and save differences remain visible in the comparison.',
+      'New game uses native Skip then bounded Escape ascent to Cosmos, read from retained hidden canonical trail DOM. The trace records its visibility honestly; no visible breadcrumb or legacy import is claimed. Camera, progression and save differences remain in comparisons.',
       'Notification screenshots use only naturally available messages; this diagnostic does not certify cross-session persistence.',
-      'Tablet and desktop now use a centered nine-button launcher at 72px and 80px pitch respectively; golden rasters retain the earlier layout for human comparison.',
+      'Phone uses production60px board faces/64px centers and an icon-only5+4 dock. Wide views use existing side rails, top-centerPrime and four bottom-right utilities with44px targets/8px gaps. Breakpoint701 and44px targets are explicit v2 amendments; production goldens remain human comparison data.',
       'Three default-text screenshot views are supplemented by one numeric phone fs-xl probe and one844x390 Settings-open probe; these remain bounded diagnostics, not a U4 matrix.',
     ] };
   const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
@@ -323,7 +334,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       const bytes = Buffer.from(data, 'base64'); fs.writeFileSync(path.join(output, file), bytes);
       report.images.push({ file, bytes: bytes.length, sha256: sha(bytes) }); return bytes; };
     const frames = () => evaluate(`document.fonts.ready.then(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true)))))`);
-    const scene = () => evaluate(`({trail:[...document.querySelectorAll('#trail .seg')].map(node=>node.textContent),context:document.getElementById('ctxbar')?.textContent,bodyClasses:document.body.className})`);
+    const scene = () => evaluate(`({trail:[...document.querySelectorAll('#trail .seg')].map(node=>node.textContent),trailVisible:window.__cfU1ReviewNativeTrace.snapshot().trailVisible,context:document.getElementById('ctxbar')?.textContent,bodyClasses:document.body.className})`);
     collectNativeTrace = async () => {
       const trace = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace;return t?{viewport:t.viewport,events:t.events,changes:t.changes,overflow:t.overflow,final:t.snapshot()}:null;})()`);
       if (trace) {
@@ -382,8 +393,8 @@ export async function runUiShellReview(buildArgument, outputArgument) {
         pass: deltas.every(delta => delta.pass) && launcher.pass && topLeft.pass && !state.horizontalOverflow && (!phone || phone.ok), controls: [] };
       report.rows.push(row); writeReport();
       assert(row.pass, name + ' U1 geometry: ' + JSON.stringify({ deltas: deltas.filter(d => !d.pass), phone: phone?.errors, launcher: launcher.errors, topLeft: topLeft.errors }));
-      // Open and close the real shelf bell without seeding history or modifying panel styling.
-      await clickNative('#shelfnotifications');
+      // Open and close the visible production-positioned bell, retaining the same native journey.
+      await clickNative('#docknotifications');
       await wait(`getComputedStyle(document.getElementById('notificationpanel')).display !== 'none'`);
       await frames();
       const notification = await evaluate(`(()=>{const panel=document.getElementById('notificationpanel'),close=panel.querySelector('[data-pnx]');
@@ -415,15 +426,16 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       notification.closed = { focusedId: await evaluate(`document.activeElement?.id`), scene: await scene(),
         deltas: metricDeltas(restoredState), phone: width <= 700 ? await evaluate(`(${readU1PhoneShell.toString()})(false)`) : null };
       writeReport();
-      assert.equal(notification.closed.focusedId, 'shelfnotifications', name + ' Notifications Close did not restore its exact native opener');
+      assert.equal(notification.closed.focusedId, 'docknotifications', name + ' Notifications Close did not restore its exact native opener');
       assert.deepEqual(notification.closed.scene.trail, ['Cosmos']);
       assert(notification.closed.deltas.every(delta => delta.pass) && launcherOutcome(restoredState).pass && topLeftOutcome(restoredState).pass && !restoredState.horizontalOverflow
         && (!notification.closed.phone || notification.closed.phone.ok), name + ' main shell did not restore after Notifications Close');
       // Every launcher owner must reach its own real panel and return focus to
       // that same button. This is shell reachability, not a U2 panel redesign.
       row.launcherJourneys = [];
-      for (const [openerId, panelId] of LAUNCHER_PANELS) {
-        const action = { openerId, panelId }; row.launcherJourneys.push(action); writeReport();
+      for (const [logicalId, panelId] of LAUNCHER_PANELS) {
+        const openerId = state.openers.find(button => button.logicalId === logicalId).id;
+        const action = { logicalId, openerId, panelId }; row.launcherJourneys.push(action); writeReport();
         assert.equal(await evaluate(`document.getElementById(${JSON.stringify(openerId)})?.getAttribute('aria-controls')`),
           panelId, name + ' launcher opener is wired to a different panel: ' + openerId);
         await clickNative('#' + openerId);
@@ -456,49 +468,57 @@ export async function runUiShellReview(buildArgument, outputArgument) {
         let broken;try{e.style.setProperty('transform','translateX(100px)','important');broken=(${shellGeometry.toString()})();}
         finally{e.setAttribute('style','');e.removeAttribute('style');if(prior.present)e.setAttribute('style',prior.value);}
         return{broken,restored:(${shellGeometry.toString()})(),styleRestored:e.hasAttribute('style')===prior.present&&e.getAttribute('style')===prior.value};})()`);
-      assert(metricDeltas(control.broken).some(d => d.name === 'objchip left alignment' && !d.pass));
+      assert(metricDeltas(control.broken).some(d => d.name === 'Objective/Search alignment' && !d.pass));
       assert(control.styleRestored && metricDeltas(control.restored).every(d => d.pass) && launcherOutcome(control.restored).pass);
       row.controls.push({ name: 'live objective displaced100px; exact style restored', brokenDeltas: metricDeltas(control.broken), styleRestored: control.styleRestored, restored: true });
       const metricMutations = [
-        ['raillft hidden', '#raillft', 'display', 'flex'],
-        ['railrgt hidden', '#railrgt', 'display', 'flex'],
         ['topbar published height', ':root', '--topbar-h', '321px'],
-        ['Search/bell gap', '#searchbox', 'transform', 'translateX(10px)'],
-        ['shelf bell right inset', '#shelfnotifications', 'transform', 'translateX(10px)'],
-        ['Search/bell centre alignment', '#searchbox', 'transform', 'translateY(10px)'],
-        ['header height (default text)', '#topbar', 'min-height', '188px'],
+        ['hidden canonical trail', '#trail', 'display', 'block'],
         ['header first-row alignment', '#dockinventory', 'transform', 'translateY(10px)'],
-        ['header second-row alignment', '.location-readout', 'transform', 'translateY(10px)'],
+        ['header second-row alignment', '#hpbar', 'transform', 'translateY(10px)'],
+        ['health/nameplate left alignment', '#hpbar', 'transform', 'translateX(10px)'],
+        ['Objective/Search alignment', '#objchip', 'transform', 'translateX(10px)'],
         ['header row gap', '#hpbar', 'transform', 'translateY(10px)'],
-        ['Current view/Search left alignment', '.location-readout', 'transform', 'translateX(10px)'],
-        ['left stack top gap', '#sceneactions', 'transform', 'translateY(10px)'],
+        ['scene action left alignment', '#sceneactions', 'transform', 'translateX(10px)'],
         ['Survey/Charts gap', '#dockcharts', 'transform', 'translateY(10px)'],
-        ['Charts/Objective gap', '#objchip', 'transform', 'translateY(10px)'],
-        ['docksurvey width alignment', '#docksurvey', 'width', '90%'],
         ['clear central scene', '#sceneactions', 'left', '50%'],
-        ...(width <= 700 ? [
+        ['hintpill plain text chrome', '#hintpill', 'background-color', 'rgb(0,0,0)'],
+        ['ctxbar flat caption chrome', '#ctxbar', 'border', '1px solid white'],
+        ...(state.compact ? [
+          ['raillft hidden', '#raillft', 'display', 'flex'],
+          ['railrgt hidden', '#railrgt', 'display', 'flex'],
+          ['left stack top gap', '#sceneactions', 'transform', 'translateY(10px)'],
           ['phone dock bottom', '#dock', 'bottom', '1px'],
           ['phone dock width', '#dock', 'width', '280px'],
           ['phone dock height (default text)', '#dock', 'height', '120px'],
           ['phone hint bottom', '#hintpill', 'bottom', '1px'],
           ['phone caption bottom', '#ctxbar', 'bottom', '1px'],
+          ['phone Search width', '#searchbox', 'width', '100px'],
           ...state.dock.slice(1, 5).map((button, i) => ['boards centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
           ...state.dock.slice(6).map((button, i) => ['utilities centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
         ] : [
-          ['launcher tray gap owner', '#dock', 'pointer-events', 'none'],
-          ['launcher centre', '#dock', 'transform', 'translateX(-40%)'],
-          ['launcher bottom', '#dock', 'bottom', '1px'],
-          ['launcher width', '#dock', 'width', '620px'],
-          ['launcher height (default text)', '#dock', 'height', '120px'],
-          ['launcher hint bottom', '#hintpill', 'bottom', '1px'],
-          ['launcher caption bottom', '#ctxbar', 'bottom', '1px'],
-          ['launcher centre pitch 1', '#dock', 'grid-template-columns', 'repeat(9,52px)'],
-          ...state.dock.slice(1).map((button, i) => ['launcher centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
-          ['dockcharters launcher width', '#dockcharters', 'width', '100px'],
-          ['dockcharters launcher height', '#dockcharters', 'height', '100px'],
-          ['dockcharters launcher row centre', '#dockcharters', 'transform', 'translateY(10px)'],
-          ['dockrecords launcher width', '#dockrecords', 'width', '100px'],
-          ['dockrecords launcher height', '#dockrecords', 'height', '100px'],
+          ['raillft visible', '#raillft', 'display', 'none'],
+          ['railrgt visible', '#railrgt', 'display', 'none'],
+          ['left rail top gap', '#raillft', 'transform', 'translateY(10px)'],
+          ['right rail top gap', '#railrgt', 'transform', 'translateY(10px)'],
+          ['left rail inset', '#raillft', 'transform', 'translateX(10px)'],
+          ['right rail inset', '#railrgt', 'transform', 'translateX(10px)'],
+          ['Charters/Compendium gap', '#railcodex', 'transform', 'translateY(10px)'],
+          ['Atlas/Shipyard gap', '#railshipyard', 'transform', 'translateY(10px)'],
+          ['left stack below rail gap', '#sceneactions', 'transform', 'translateY(10px)'],
+          ['Prime top centre', '#primechip', 'transform', 'translateX(-40%)'],
+          ['Prime top', '#primechip', 'top', '80px'],
+          ['Search width', '#searchbox', 'width', '100px'],
+          ['utility dock width', '#dock', 'width', '260px'],
+          ['utility dock height', '#dock', 'height', '100px'],
+          ['utility dock right inset', '#dock', 'right', '1px'],
+          ['utility dock bottom', '#dock', 'bottom', '1px'],
+          ['utility dock gap owner', '#dock', 'pointer-events', 'none'],
+          ['wide hint bottom', '#hintpill', 'bottom', '1px'],
+          ['wide caption bottom', '#ctxbar', 'bottom', '1px'],
+          ...state.dock.slice(1).map((button, i) => ['utility centre pitch ' + (i + 1), '#' + button.id, 'transform', 'translateX(10px)']),
+          ['dockrecords utility width', '#dockrecords', 'width', '100px'],
+          ['dockrecords utility height', '#dockrecords', 'height', '100px'],
           ['dockrecords utility face width', '#dockrecords .utility-face', 'width', '30px'],
           ['dockrecords utility face height', '#dockrecords .utility-face', 'height', '30px'],
         ]),
@@ -534,14 +554,14 @@ export async function runUiShellReview(buildArgument, outputArgument) {
           name + ' native launcher control failed: ' + JSON.stringify(row.controls.at(-1)));
       }
       for (const [attribute, value] of [['tabindex', '0'], ['role', 'button']]) {
-        const proof = await evaluate(`(()=>{const n=document.querySelector('.location-readout'),attribute=${JSON.stringify(attribute)},prior={present:n.hasAttribute(attribute),value:n.getAttribute(attribute)};let broken;
+        const proof = await evaluate(`(()=>{const n=document.getElementById('trail'),attribute=${JSON.stringify(attribute)},prior={present:n.hasAttribute(attribute),value:n.getAttribute(attribute)};let broken;
           try{n.setAttribute(attribute,${JSON.stringify(value)});broken=(${shellGeometry.toString()})();}
           finally{n.removeAttribute(attribute);if(prior.present)n.setAttribute(attribute,prior.value);}
           return{broken,restored:(${shellGeometry.toString()})(),attributeRestored:n.hasAttribute(attribute)===prior.present&&n.getAttribute(attribute)===prior.value};})()`);
         const broken = topLeftOutcome(proof.broken), restored = topLeftOutcome(proof.restored);
-        row.controls.push({ name: 'Current view rejects ' + attribute + '=' + value, broken, brokenObservation: proof.broken,
+        row.controls.push({ name: 'hidden canonical trail rejects ' + attribute + '=' + value, broken, brokenObservation: proof.broken,
           attributeRestored: proof.attributeRestored, restoredObservation: proof.restored, restored: proof.attributeRestored && restored.pass });
-        writeReport(); assert(!broken.pass && row.controls.at(-1).restored, 'Current view accepted an interactive affordance');
+        writeReport(); assert(!broken.pass && row.controls.at(-1).restored, 'hidden canonical trail accepted interactive metadata');
       }
       // Keep the enlarged-text/short-landscape check bounded to two numeric
       // observations in this same document; no fourth screenshot or save write.

@@ -1,0 +1,7 @@
+{
+  "sourceFile": "port/v2/apps/game/src/release-content.ts",
+  "sourceSha256": "6eab93721f3393c72f4ff786b93ad465addca6996957353dfa3d06d0c7c35a90",
+  "count": 81,
+  "orderedJsonSha256": "073e0c972fb6e544b30cd3cc1c8fb1daebcb9216788c763681f380c1723195cb",
+  "method": "Exact tracked V2_DRAFT_RELEASE initializer via Node TypeScript stripping and AST extraction; real development version from version.json; SHA256 of ordered bullet JSON."
+}

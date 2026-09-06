@@ -2,34 +2,19 @@
 
 ## Current v2 U1 shell overlay — matches code as of 2026-09-06
 
-`port/v2/apps/game/src/ui-presentation-tokens.ts` emits shared Inter/spacing/type/color-role/
-layer variables; `ui-shell-style.ts` owns the normal-game shelf/dock/rail/lane geometry.
-Caption text retains a dark translucent backing independent of the artwork, uses capped
-available width, and clears the existing measured hint height by8px on phones while keeping
-the nominal164px minimum bottom offset.
-Phone<=700 uses5 labelled boards +4 utilities at64px centers. Phone board `padding-inline:0`
-provides 56px of label space inside each 58px face: the measured 54.338px Inter Compendium
-label stays on one line. The default Inter dock height is 92px (44 + 4 + 44), a content
-baseline rather than a universal fixed height; larger Settings text retains automatic board
-row growth with the 44px floor. Phone font sizes and64px pitch are unchanged. Tablet/desktop keep the same bottom launcher
-with capped72/80px pitch,66/74px boards and48/56px targets; hidden compatibility rails retain
-wiring only. Narrow landscape<=900 uses the phone arrangement and the existing panel-safe
-right column. Caption/hint offsets follow measured launcher height. UI_PRESENTATION.md owns
-exact values and native-gap evidence. Inventory opens through the nameplate. AppChrome still measures the
-shelf and projects Prime count; panel/Training owners retain focus and locked controls.
-The second U1 visual refinement places the noninteractive Current view/#trail inside the
-header opposite the framed health meter. Inventory/HP/Survey/Charts/Objective share one
-measured left column with8px gaps; larger screens keep capped controls and usable scene space.
-The existing status writer supplies meter accessibility values without changing health math.
-A landed portrait<=900 compacts the same context actions into a top row. AppChrome observes
-#sceneactions for roster clearance while retaining the72px band rule. The approved bottom
-launcher is unchanged. The context wrapper is pointer-transparent while its native buttons
-remain interactive; passive objective text cannot capture a canvas pinch. UI_PRESENTATION.md
-owns exact values and the labelled floating-trail
-fault fixture used by the existing fallback control.
-`notification-history.ts` adds explicit saved Mark read using the existing notification shape
-and receipt-free UI checkpoint whitelist. See UI_PRESENTATION.md and SAVE_SYSTEM.md for bounds,
-read-only behavior and review deviations. U2–U4 and integrated-pilot approval remain open.
+`port/v2/apps/game/src/ui-presentation-tokens.ts` supplies Inter/spacing/type/color/layer
+variables; `ui-shell-style.ts` adapts verified production v1.8.9 placement to existing v2
+native controls. Phone icon-only 60px boards and 44px utility targets use64px centers; Prime
+keeps N/9. Wide native left/right rails return, Prime is top-center and utilities bottom-right.
+The objective sits below Search at upper-right; name-only Inventory and Health stay upper-left.
+The red heart, exact numeric ratio, meter accessibility and wrapping name preserve native
+writers/actions. The canonical trail is populated but hidden; there is no Current view label.
+Bottom guidance is plain text. Caption/hint geometry, compact short-landscape exception and
+72px roster band retain live measurements. UI_PRESENTATION.md owns exact values, the accepted
+safety deviations from production and the honest injected floating-trail negative control.
+Native panel/Training action/focus owners remain; passive layout wrappers pass canvas input.
+`notification-history.ts` retains explicit saved Mark read on the existing notification shape
+and UI checkpoint whitelist. U2–U4 and integrated-pilot approval remain open.
 
 ## Audiovisual pilot implementation — 2026-09-05 local
 

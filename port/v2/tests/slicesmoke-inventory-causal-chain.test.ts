@@ -444,61 +444,71 @@ describe('Slice Arc 2 Inventory causal interaction chain', () => {
     expect(assessInventoryPanelClose(fixture)).toEqual({ ok: true, reasons: [] });
   });
 
-  it('measures both real launcher gaps and rejects background hits, collapsed spacing and missing pointer ownership', () => {
+  it('measures both real vertical rail gaps and rejects background hits, collapsed spacing and missing pointer ownership', () => {
     const owner = exactSection(source, '  const railGapProbe =', '  const railButtonPoint =');
-    const probe = Function(`${owner};return railGapProbe;`)() as (root: string, left: string, right: string) => string;
-    const make = (id: string, left: number, width: number) => ({ id,
-      getBoundingClientRect: () => ({ left, right: left + width, top: 712, bottom: 768, width, height: 56 }),
+    const probe = Function(`${owner};return railGapProbe;`)() as (root: string, upper: string, lower: string) => string;
+    const make = (id: string, left: number, top: number, width = 140, height = 44) => ({ id,
+      getBoundingClientRect: () => ({ left, right: left + width, top, bottom: top + height, width, height }),
       hasAttribute: () => true });
-    const dock = { ...make('dock', 264, 752),
-      getBoundingClientRect: () => ({ left: 264, right: 1016, top: 700, bottom: 788, width: 752, height: 88 }) };
-    const nodes = new Map([dock, make('dockcharters', 283, 74), make('dockcodex', 363, 74),
-      make('dockshipyard', 523, 74), make('dockatlas', 603, 74)].map(node => [node.id, node]));
-    let hit: unknown = dock;
+    const leftRail = make('raillft', 18, 130, 140, 96);
+    const rightRail = make('railrgt', 1122, 130, 140, 96);
+    const nodes = new Map([leftRail, rightRail,
+      make('railcharters', 18, 130), make('railcodex', 18, 182),
+      make('railatlas', 1122, 130), make('railshipyard', 1122, 182)].map(node => [node.id, node]));
+    let hit: unknown = leftRail;
     let pointerEvents = 'auto';
     const document = { getElementById: (id: string) => nodes.get(id) ?? null, elementFromPoint: () => hit };
-    const sample = (left: string, right: string) => Function('document', 'getComputedStyle', 'innerWidth', 'innerHeight', 'window',
-      `return ${probe('dock', left, right)};`)(document, () => ({ display: 'grid', pointerEvents }), 1280, 800,
+    const sample = (root: string, upper: string, lower: string) => Function('document', 'getComputedStyle', 'innerWidth', 'innerHeight', 'window',
+      `return ${probe(root, upper, lower)};`)(document, () => ({ display: 'flex', pointerEvents }), 1280, 800,
       { __CF_SLICE__: { api: { state: () => ({ panelOpen: 'codex', cardOpen: false }) } } }) as {
         geometry: boolean; ownerId: string; gap: number; targetId: string | null; point: { x: number; y: number } };
-    const pairs = [['dockcharters', 'dockcodex'], ['dockshipyard', 'dockatlas']] as const;
-    for (const [left, right] of pairs) {
-      expect(sample(left, right)).toMatchObject({ geometry: true, ownerId: 'dock', gap: 6, targetId: 'dock' });
+    const pairs = [['raillft', 'railcharters', 'railcodex'], ['railrgt', 'railatlas', 'railshipyard']] as const;
+    for (const [root, upper, lower] of pairs) {
+      hit = nodes.get(root);
+      expect(sample(root, upper, lower)).toMatchObject({ geometry: true, ownerId: root, gap: 8, targetId: root });
       hit = { id: 'game-canvas' };
-      expect(sample(left, right).geometry).toBe(false);
-      hit = dock; pointerEvents = 'none';
-      expect(sample(left, right).geometry).toBe(false);
+      expect(sample(root, upper, lower).geometry).toBe(false);
+      hit = nodes.get(root); pointerEvents = 'none';
+      expect(sample(root, upper, lower).geometry).toBe(false);
       pointerEvents = 'auto';
-      const original = nodes.get(right)!;
-      nodes.set(right, make(right, original.getBoundingClientRect().left - 6, 74));
-      expect(sample(left, right).geometry).toBe(false);
-      nodes.set(right, original);
-      expect(sample(left, right).geometry).toBe(true);
+      const original = nodes.get(lower)!;
+      const rect = original.getBoundingClientRect();
+      for (const mutant of [make(lower, rect.left, rect.top - 8),
+        make(lower, rect.left + 8, rect.top), make(lower, rect.left, rect.top, rect.width, 43)]) {
+        nodes.set(lower, mutant);
+        expect(sample(root, upper, lower).geometry).toBe(false);
+      }
+      nodes.set(lower, original);
+      expect(sample(root, upper, lower).geometry).toBe(true);
     }
-    expect(sample(...pairs[0]).point.x).toBeLessThan(sample(...pairs[1]).point.x);
+    hit = leftRail;
+    const leftPoint = sample(...pairs[0]).point;
+    hit = rightRail;
+    expect(leftPoint.x).toBeLessThan(sample(...pairs[1]).point.x);
   });
 
-  it('opens the actual launcher controls while keeping two measured tray gaps and removed-owner controls', () => {
-    const gapOwner = exactSection(source, "  if (await openDesktopRailPanel('dockcodex', 'codex', 'RIGHT RAIL GAP')) {",
+  it('opens the actual wide controls while keeping two measured rail gaps and removed-owner controls', () => {
+    const gapOwner = exactSection(source, "  if (await openDesktopRailPanel('railcodex', 'codex', 'RIGHT RAIL GAP')) {",
       '  /* Search keeps its established outside-dismiss policy');
     expect(gapOwner).not.toContain("'railrecords'");
     expect(gapOwner).toContain("openDesktopRailPanel('dockrecords', 'rec', 'LEFT RAIL GAP')");
     expect(gapOwner).toContain("button=document.getElementById('dockrecords')");
-    expect(gapOwner).toContain("railId: 'dock', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec'");
+    expect(gapOwner).toContain("railId: 'raillft', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec'");
     expect(gapOwner).toContain("openDesktopRailPanel('dockrecords', 'rec', 'PANEL NON-ELEMENT TARGET')");
-    expect(gapOwner.split("receipt?.targetId !== 'dock' || receipt?.trusted !== true")).toHaveLength(3);
+    expect(gapOwner).toContain("receipt?.targetId !== 'raillft' || receipt?.trusted !== true");
+    expect(gapOwner).toContain("receipt?.targetId !== 'railrgt' || receipt?.trusted !== true");
     expect(gapOwner).toContain("receipt?.targetId !== railId || receipt?.trusted !== true");
     expect(gapOwner).toContain("?.removeAttribute('data-panel-boundary')");
     expect(gapOwner).toContain("rail?.setAttribute('data-panel-boundary',prior)");
     expect(gapOwner).toContain('await clickDesktopPoint(before.point)');
-    expect(source).toContain("const rightGap = railGapProbe('dock', 'dockshipyard', 'dockatlas')");
-    expect(source).toContain("const leftGap = railGapProbe('dock', 'dockcharters', 'dockcodex')");
-    expect(source).toContain('Math.abs(gap-6)<=0.5');
+    expect(source).toContain("const rightGap = railGapProbe('railrgt', 'railatlas', 'railshipyard')");
+    expect(source).toContain("const leftGap = railGapProbe('raillft', 'railcharters', 'railcodex')");
+    expect(source).toContain('Math.abs(gap-8)<=0.5');
     expect(source).toContain("style.pointerEvents==='auto'");
-    expect(source).toContain("rail.id==='dock'");
+    expect(source).toContain("['raillft','railrgt'].includes(rail.id)");
     expect(source).toContain('&&hit===rail');
-    expect(reloadAssessor).toContain("surface?.atlasPreClick?.buttonId !== 'dockatlas'");
-    expect(reloadAssessor).toContain("surface?.atlasPointer?.buttonId !== 'dockatlas'");
+    expect(reloadAssessor).toContain("surface?.atlasPreClick?.buttonId !== 'railatlas'");
+    expect(reloadAssessor).toContain("surface?.atlasPointer?.buttonId !== 'railatlas'");
     expect(reloadAssessor).toContain("surface?.atlasPointer?.buttonTag !== 'BUTTON'");
     expect(source).toContain("surface.atlasPreClick.buttonId = 'inventorypanel'");
     expect(source).toContain("surface.atlasPointer.buttonId = 'inventorypanel'");

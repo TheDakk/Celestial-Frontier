@@ -39,7 +39,7 @@ function chromeMarkup(): string {
   return `<!doctype html><html><body>
     <div id="topbar">
       <div class="location-readout"><span aria-hidden="true">CURRENT VIEW</span><div id="trail"></div></div>
-      <div id="playerchip"></div>
+      <button id="dockinventory" type="button" aria-label="Inventory" aria-controls="inventorypanel" data-panel-boundary><span id="playerchip"></span></button>
       <button id="primechip" type="button"></button>
       <div id="hpbar"><span aria-hidden="true">❤</span><span class="hp-label">HEALTH</span><span class="track"><span class="fill"></span><span class="txt"></span></span></div>
       <div id="objchip"></div>
@@ -74,7 +74,6 @@ function createHarness(includeSceneActions = false) {
     const sceneActions = document.createElement('nav');
     sceneActions.id = 'sceneactions';
     sceneActions.innerHTML = '<button id="docksurvey">Survey</button><button id="dockcharts">Charts</button>';
-    sceneActions.appendChild(document.getElementById('objchip')!);
     document.body.appendChild(sceneActions);
   }
   const bottoms = new Map<string, number>([
@@ -204,12 +203,15 @@ function renderProgress(controller: AppChromeController): void {
 describe('application chrome DOM owner', () => {
   it('renders every status branch, clamps health, escapes projected names, and remeasures', () => {
     const h = createHarness();
+    const inventory = h.element('dockinventory');
+    inventory.focus();
     renderProgress(h.controller);
-    expect(h.element('playerchip').innerHTML).toBe(
-      '⚙ Nova <span class="dim">— ✦ 13<span class="player-worlds"> · 4 worlds</span></span>',
-    );
+    expect(h.element('playerchip').textContent).toBe('Nova');
+    expect(h.element('playerchip').childElementCount).toBe(0);
+    expect(h.element('playerchip').parentElement).toBe(inventory);
+    expect(h.document.activeElement).toBe(inventory);
     expect(h.document.querySelector<HTMLElement>('#hpbar .fill')!.style.width).toBe('75%');
-    expect(h.document.querySelector('#hpbar .txt')!.textContent).toBe('75/100 HP');
+    expect(h.document.querySelector('#hpbar .txt')!.textContent).toBe('75/100');
     const health = h.element('hpbar');
     expect(health.getAttribute('role')).toBe('meter');
     expect(health.getAttribute('aria-label')).toBe('Explorer health');
@@ -255,9 +257,9 @@ describe('application chrome DOM owner', () => {
       objective: { kind: 'boundary', name: '<b>First Light</b> & beyond' },
     });
     expect(h.element('playerchip').querySelector('img')).toBeNull();
-    expect(h.element('playerchip').textContent).toContain('<img src=x onerror=1>&"\'');
+    expect(h.element('playerchip').textContent).toBe('<img src=x onerror=1>&"\'');
     expect(h.element('playerchip').querySelector('b')).toBeNull();
-    expect(h.element('playerchip').textContent).toContain('<b>Eternal Frontier</b>');
+    expect(h.element('playerchip').childElementCount).toBe(0);
     expect(h.element('playerchip').classList.contains('rank-iridescent')).toBe(true);
     expect(h.element('playerchip').style.borderColor).toBe('rgb(199, 216, 255)');
     expect(h.element('playerchip').dataset.rankName).toBe('<b>Eternal Frontier</b>');
@@ -270,6 +272,7 @@ describe('application chrome DOM owner', () => {
     expect(health.getAttribute('aria-valuenow')).toBe('100');
     expect(health.getAttribute('aria-valuemax')).toBe('100');
     expect(health.getAttribute('aria-valuetext')).toBe('150/100 HP');
+    expect(h.document.querySelector('#hpbar .txt')!.textContent).toBe('150/100');
     expect(h.document.documentElement.style.getPropertyValue('--topbar-h')).toBe('68px');
 
     h.controller.renderStatus({
@@ -282,15 +285,28 @@ describe('application chrome DOM owner', () => {
       rank: { name: 'Scout', nameplateHue: '#7fe6a0', nameplateIridescent: false },
       objective: null,
     });
-    expect(h.element('playerchip').textContent).toContain('Explorer');
+    expect(h.element('playerchip').textContent).toBe('Explorer');
     expect(h.element('playerchip').classList.contains('rank-iridescent')).toBe(false);
     expect(h.element('playerchip').style.borderColor).toBe('rgb(127, 230, 160)');
-    expect(h.element('playerchip').textContent).toContain('Scout');
+    expect(h.element('playerchip').dataset.rankName).toBe('Scout');
+    expect(h.element('playerchip').title).toBe('Explorer rank: Scout');
     expect(h.document.querySelector<HTMLElement>('#hpbar .fill')!.style.width).toBe('0%');
     expect(health.getAttribute('aria-valuenow')).toBe('0');
     expect(health.getAttribute('aria-valuemax')).toBe('1');
     expect(health.getAttribute('aria-valuetext')).toBe('-5/0 HP');
+    expect(h.document.querySelector('#hpbar .txt')!.textContent).toBe('-5/0');
     expect(h.element('objchip').innerHTML).toBe('');
+
+    renderProgress(h.controller);
+    expect(h.element('playerchip').textContent).toBe('Nova');
+    expect(h.element('playerchip').hasAttribute('data-rank-name')).toBe(false);
+    expect(h.element('playerchip').hasAttribute('title')).toBe(false);
+    expect(h.element('playerchip').style.borderColor).toBe('');
+    expect(h.element('dockinventory')).toBe(inventory);
+    expect(inventory.getAttribute('aria-label')).toBe('Inventory');
+    expect(inventory.getAttribute('aria-controls')).toBe('inventorypanel');
+    expect(inventory.hasAttribute('data-panel-boundary')).toBe(true);
+    expect(inventory.textContent).toBe('Nova');
   });
 
   it('owns escaped trails, trusted hint emphasis, deduplicated text, and live diagnostics', async () => {
@@ -409,7 +425,7 @@ describe('application chrome DOM owner', () => {
     h.bottoms.set('sceneactions', 180);
     h.bottoms.set('planetside', 300);
     const scene = h.element('sceneactions');
-    expect(h.element('objchip').parentElement).toBe(scene);
+    expect(h.element('objchip').parentElement).toBe(h.element('topbar'));
     const observer = h.resizeObservers.find(record => record.observed.includes(scene));
     expect(observer).toBeDefined();
     if (!observer) throw new Error('scene-action ResizeObserver missing');
@@ -435,6 +451,20 @@ describe('application chrome DOM owner', () => {
     observer.listener();
     expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('220.00px');
     expect(h.document.body.classList.contains('surface-trail-yield')).toBe(true);
+    // A wrapping Objective keeps its independent measured owner after moving
+    // into the header; the taller visible edge still protects the reading band.
+    const objective = h.element('objchip');
+    const objectiveObserver = h.resizeObservers.find(record => record.observed.includes(objective));
+    if (!objectiveObserver) throw new Error('objective ResizeObserver missing');
+    h.bottoms.set('objchip', 250);
+    objectiveObserver.listener();
+    expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('250.00px');
+    h.styles.set('objchip', { display: 'none', visibility: 'visible', opacity: '1' });
+    objectiveObserver.listener();
+    expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('220.00px');
+    h.styles.delete('objchip');
+    objectiveObserver.listener();
+    expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('250.00px');
     h.controller.dispose();
     h.controller.dispose();
     expect(h.resizeObservers).toHaveLength(8);

@@ -504,7 +504,7 @@ describe('Slice Atlas native Travel contract', () => {
 
     const authorization = section(
       sliceSource,
-      "  await evalIn(`document.getElementById('dockatlas')?.click()`);",
+      "  await evalIn(`document.getElementById('railatlas')?.click()`);",
       '  if (outerAtlasAfter.panelOpen === \'atlas\') await closeDesktopPanel();',
     );
     expect(authorization).toContain("atlasTravelTargetExpression('outer-galaxy')");
@@ -518,7 +518,7 @@ describe('Slice Atlas native Travel contract', () => {
 
     const inventoryReload = section(
       sliceSource,
-      "      const atlasPreClick = await evalIn(railButtonPoint('dockatlas'));",
+      "      const atlasPreClick = await evalIn(railButtonPoint('railatlas'));",
       '  const inventorySuccessorBoundary = assessArc2InventorySuccessorBoundary({',
     );
     expect(inventoryReload).toContain("atlasTarget: await evalIn(atlasTravelTargetExpression('p133'))");
@@ -578,7 +578,16 @@ describe('Slice Atlas native Travel contract', () => {
     const spaceTakeAt = keyboard.indexOf('const atlasSpaceKeyReceipt = await takeDesktopAtlasKeyReceipt();');
     const spaceWaitAt = keyboard.indexOf("waitDesktopValue('Atlas Space travel'");
     const spaceOutcomeGuardAt = keyboard.indexOf('ATLAS SPACE TRAVEL: red exact key receipt/outcome stopped dependent Enter');
-    const enterReopenAt = keyboard.indexOf("const opener=document.getElementById('dockatlas')", spaceOutcomeGuardAt);
+    const surveyCloseAt = keyboard.indexOf("await pressArc3SurveyLifecyclePointer('close')", spaceOutcomeGuardAt);
+    const enterReopenAt = keyboard.indexOf("await openDesktopRailPanel('railatlas', 'atlas', 'ATLAS ENTER REOPEN')", spaceOutcomeGuardAt);
+    expect(surveyCloseAt).toBeGreaterThan(spaceOutcomeGuardAt);
+    expect(surveyCloseAt).toBeLessThan(enterReopenAt);
+    expect(keyboard).toContain('atlasSpaceSurveyClose?.interaction?.trusted !== true');
+    expect(keyboard).toContain('atlasSpaceAfterClose.cardOpen !== false');
+    expect(keyboard).toContain('canonicalJson(arc3SurveyRouteProjection(atlasSpaceAfterClose))');
+    expect(keyboard).toContain('await sliceToken(sess) !== atlasSpaceSurveyCloseToken');
+    expect(keyboard).toContain("atlasEnterOpenerReceipt?.buttonId !== 'railatlas'");
+    expect(keyboard).toContain('atlasEnterOpenerReceipt?.trusted !== true');
     const enterSetupGuardAt = keyboard.indexOf('ATLAS ENTER SETUP: red restored Travel target stopped key dispatch');
     const enterArmAt = keyboard.indexOf('await armDesktopAtlasKeyReceipt();', spaceArmAt + 1);
     const enterDispatchAt = keyboard.indexOf("await keyIn('Enter', 'Enter');", enterArmAt);
