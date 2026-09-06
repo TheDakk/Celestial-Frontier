@@ -1,0 +1,14 @@
+{
+  "schema": "cf-u1-production-layout-reds/v1",
+  "runs": [
+    {
+      "source": "852c4964c9cfca61aec1005e82fce05e6eb65706",
+      "stage": "vitest",
+      "result": "1file/2tests failed;310files/3315tests passed;1skipped",
+      "cause": "Prime source contract requires the shared touch-target token; CSS rewrite used identical44px literal.",
+      "correction": "Restore min-height:var(--cf-touch-target) in the board base rule. No metric or assertion change.",
+      "laterStages": "Not run; stopped at first red",
+      "evidence": "audits/UI_U1_PRODUCTION_LAYOUT_852c496_20260906/manifest.json"
+    }
+  ]
+}
