@@ -136,3 +136,18 @@ reload, with explicit cleanup. The15-second cap, loader/new-token and exact writ
 checks remain unchanged. Focused contract24testsPASS; successor full checks are pending.
 Both phone canaries and visual review were not run. The original red log
 is preserved as `UI_U1_SLICE_RED_2deec82_20260906.log.gz`.
+
+## Records collision-close stop —40aad54
+
+Fresh typecheck, artunused,310 Vitest files/3,259tests/1skip and Glass selftest PASS.
+The corrected transient canvas activation passed. Slice advanced through Training, then
+stopped on the Records collision baseline Close outcome after8seconds. Diagnosis is
+resolved a real selector-specificity defect: shared rail button styling overrode the hide
+rule for relocated Inventory/Records. Stronger owned selectors hide both duplicates. Live
+show-one/red/restore controls and exact trusted dock Records receipts now guard the outcome;
+the old failing800px press did not retain its exact hit and is not retroactively claimed.
+The existing8-second close cap remains. Focused Atlas contract8testsPASS. Producer-only
+pins are60562956b771f572e3481075e78fdf95c764589c05ec6b6146a8f8db273c517c; measurement,
+ruler, ceilings and historical samples are unchanged. Successor verification is pending;
+phone canaries and visual review were not run. Original red evidence is retained
+in `UI_U1_SLICE_RED_40aad54_20260906.log.gz`.

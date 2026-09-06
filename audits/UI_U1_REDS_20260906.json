@@ -135,6 +135,26 @@
       "remainingChecks": "Phone canaries and visual review not run after red.",
       "correction": "Select an observed unobstructed root-canvas point; dispatch native press/release; require a matching trusted pointerdown receipt across reload and clean its owned listener/session marker. Keep15s cap, new document token, zero pre-click writes and exact final revision/write assertions.",
       "focusedVerification": "Existing sixth-red contract24testsPASS, including wrong-target, missing/untrusted/stale receipt and invalid coordinates."
+    },
+    {
+      "source": "40aad54a17c87d5c4b2e5398608afb9d3902a5e6",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3259passed/1skipped, Glass selftest PASS",
+      "failures": [
+        "harness: collision baseline Records close did not reach its isolated browser outcome within8000ms (last false)"
+      ],
+      "diagnosis": "U1 hide rule #railinventory,#railrecords loses specificity to #railrgt button. Retained screenshot confirms duplicate rail controls still painted. Collision helper chooses first painted Records match and discarded its press receipt; the exact failed800x600 click hit was not retained.",
+      "logSha256": "1964c445573f7f5cc7d42dfb1b2f6501db2e3a80d5814fe93d1d40ae7d03add8",
+      "gzipFile": "UI_U1_SLICE_RED_40aad54_20260906.log.gz",
+      "gzipSha256": "21c47a0b0006f45fd41c996c4c5d8cffe90bbab1e969d32c9cdf61e105395a03",
+      "remainingChecks": "Phone canaries and visual review not run after red.",
+      "correction": "Strengthen the owned hide selector; require allthree Records native press receipts for the intended dock control; add live visibility/mutation/restoration checks for duplicate rail controls. No timeout increase or closure assertion relaxation.",
+      "screenshot": {
+        "file": "UI_U1_DUPLICATE_RAILS_40aad54_20260906.png",
+        "sha256": "8aa5ad771a71700ef417d81ba1460080bf5991e9c0165d73ff5dd7440a1385e2",
+        "scope": "Same-source retained universe view proves painted duplicates; not the failed800x600 collision frame."
+      }
     }
   ]
 }

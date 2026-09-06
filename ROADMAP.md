@@ -33,13 +33,17 @@ product-action notices remain privately buffered until settlement, protected/Tra
 notices session-only. No save schema, action receipt, RNG or legacy import door changes.
 References: UI_PRESENTATION.md, SAVE_SYSTEM.md and celestial-frontier-codebase-reference.md.
 
-Exact source 2deec82580e9f812caf3a5984ff602706b464369 passed fresh typecheck, artunused,
-310 Vitest files /3,258 tests /1skip and Glass selftest with root main.js absent. Slice
-stopped at a transient-storage reload wait. The old fixed canvas click overlaps U1's
-relocated Survey button. The instrument now targets an observed canvas hit and retains a
-trusted click receipt; its focused contract24tests pass. Successor full checks are pending. Its15-second cap and product checks remain unchanged. Earlier
-Guide collision finding did not recur. No phone canaries or comparison capture ran after
-red. `audits/UI_U1_CHECKPOINT_20260906.md` and `UI_U1_REDS_20260906.json` retain all attempts.
+Exact source40aad54a17c87d5c4b2e5398608afb9d3902a5e6 passed fresh typecheck, artunused,
+310 Vitest files/3,259 tests/1skip and Glass selftest with root main.js absent. The earlier
+transient canvas activation correction passed. Slice then stopped on Records toggle-close.
+The old rail copies were still visible because their hide selector lost specificity; the
+fixture selected an unintended rail opener and discarded its native receipt. Stronger
+owned CSS selectors now hide both duplicates. Slice requires live show/reject/restore
+controls and exact trusted #dockrecords receipts; the8-second cap is unchanged. Focused
+Atlas contract8testsPASS. New producer60562956b771f572e3481075e78fdf95c764589c05ec6b6146a8f8db273c517c;
+measurement/ruler/ceilings/history untouched. Successor full verification is pending.
+No phone canaries or comparison capture ran after red. `audits/UI_U1_CHECKPOINT_20260906.md`
+and `UI_U1_REDS_20260906.json` retain every attempt, including the same-source duplicate screenshot.
 
 Geometry decisions remain human review:44px utility targets imply44px desktop utility
 pitch (+2 from legacy);44px rail targets plus the retained8px gap give52px rail pitch

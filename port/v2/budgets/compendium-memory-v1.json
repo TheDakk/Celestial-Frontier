@@ -44,11 +44,11 @@
   },
   "producerAuthority": {
     "schema": "cf-v2-compendium-producer-authority/v2",
-    "sha256": "6b9f100f4502f6a371f1c670cf98dac686bc5d6b69ef0f273027ffbf26f6cbd1",
+    "sha256": "60562956b771f572e3481075e78fdf95c764589c05ec6b6146a8f8db273c517c",
     "inputs": {
       "index": {
         "relativePath": "index.html",
-        "sha256": "613948d664554717e6f0b5844c90e900b5e555ea4f285ded01dbc4944e086346"
+        "sha256": "0164cefe4dec4f524ec4e167aeafe94ab6b8404abf27da6ad5e401bd8d0eef89"
       },
       "owner": {
         "relativePath": "assets/tame-greeting-audio-CXTlH-t_.js",
@@ -64,7 +64,7 @@
       },
       "serviceWorker": {
         "relativePath": "service-worker.js",
-        "sha256": "161a4818b113312201f78aa642a1c0d879c8abbf2f26b443ee0d3e0b3dc87222"
+        "sha256": "5c922d852818770c0faa35c8cb4b7d876b8e71369f7b399f3f733760e519af49"
       }
     }
   },

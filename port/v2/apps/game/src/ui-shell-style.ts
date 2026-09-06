@@ -82,7 +82,7 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #dock #primechip .lbl,#dock #primechip .prime-count{font-size:11px;white-space:nowrap;line-height:1.2}
   /* Compatibility ids retain their native wiring. The visible shelf Inventory
      and utility Records owners replace these duplicates without extra tab stops. */
-  #railinventory,#railrecords{display:none}
+  #railrgt #railinventory,#railrgt #railrecords{display:none}
 }
 /* Native short-landscape panels keep the full-height left workspace. The
    interactive shelf and every board opener occupy the right safe column;
