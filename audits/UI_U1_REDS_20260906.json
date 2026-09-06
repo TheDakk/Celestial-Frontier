@@ -547,6 +547,54 @@
       ],
       "remainingChecks": "large-phone/normal-build/review not run after red.",
       "preparation": "Independent bounded implementation and root diff review; syntax/diff checks pass. Existing browser contrast selftest now covers readable nested faces, distinct owners, glyph-only red, badge-only red, hidden badge exclusion, direct text red and restoration. These native cases await the required fresh sequence."
+    },
+    {
+      "source": "0b247a230612bac55e4f2204c70428c9ae262609",
+      "kind": "local-glass-small-phone",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck/artunused/full Vitest/Glass selftest and immutable Slice PASS",
+      "slice": {
+        "runId": "20260906084151354-80399-f342cc20fd0b",
+        "durationMs": 374600,
+        "evidenceDirectory": "UI_U1_SLICE_0b247a2_20260906"
+      },
+      "runId": "20260906084807830-80700-fc3dd8792bc3",
+      "findings": [
+        {
+          "viewport": "small-phone",
+          "surface": "inventory-over-survey",
+          "code": "TEXT_CONTRAST_LOW",
+          "element": "#dockinventory",
+          "actual": {
+            "ratio": 1,
+            "threshold": 4.5,
+            "color": "rgb(255, 255, 255)",
+            "background": [
+              255,
+              255,
+              255,
+              1
+            ],
+            "sample": "\u2699 Dakk \u00b7 Pathfinder \u2014 \u2726 5000 \u00b7 5 worlds"
+          },
+          "expected": "WCAG contrast against bright artwork beneath glass"
+        }
+      ],
+      "instrumentFailures": [],
+      "correction": "Prepared bounded Inventory mapping: sample the direct painted #playerchip when selected via button#dockinventory, retaining #dockinventory owner metadata; direct HUD #playerchip selections keep their identity. Direct outer text remains sampled. Native selftest cases cover readable backing, white-on-white failures, both identities, direct text and exact restoration. Syntax/diff checks pass; native execution awaits the signed successor. No product, compositor, threshold or input-owner change.",
+      "carriers": [
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_0b247a2_20260906.json.gz",
+          "sha256": "8fd7532532e6b76b5a648a4fb25dd338ae241c74d61f2e1070583a29abb73ea3",
+          "originalSha256": "96e5bd9d9fa3801cadba89b62992ac3297146566f2cbb184ef983d5b390136ce"
+        },
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_0b247a2_20260906.log.gz",
+          "sha256": "88a1f8b9c5b0f5ddbf7cb4e861ff633c2e129f5984e1814f566fe880ca768f11",
+          "originalSha256": "8eca8992b15002cf72eae6cb536aed117143e80b8e190ccbc38dc0c2108d63b5"
+        }
+      ],
+      "remainingChecks": "large-phone/normal-build/review not run after red."
     }
   ]
 }
