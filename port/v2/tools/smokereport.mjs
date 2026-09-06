@@ -1315,7 +1315,7 @@ function runSelftest() {
     }),
     settled: Object.freeze({
       panelPresent: true, display: 'none', ariaHidden: 'true', openerPresent: true,
-      panelOpen: null, inventoryExpanded: 'false', focusId: 'railinventory',
+      panelOpen: null, inventoryExpanded: 'false', focusId: 'dockinventory',
       diagnostics: Object.freeze({
         activeCount: 0, retainedCount: 0, pendingWork: 0, selectedInstanceId: null,
       }),

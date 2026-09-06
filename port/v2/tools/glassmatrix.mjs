@@ -591,6 +591,47 @@ function recordRenderedGuideIngressResult({
   return { productFindings: findings.length, instrumentFailures: instrumentFailures.length };
 }
 
+/* A hidden-opener focus result is meaningful only after a trusted press on
+   a visible opener, baseline Close focus, and a real Survey transition that
+   hides that same rail. Hidden-from-start legacy copies cannot establish it. */
+function hiddenOpenerNativeInput(input, id, pointerType) {
+  const rect = input?.target?.rect;
+  return input?.ok === true && input.inputDispatched === true
+    && input.target?.ok === true && input.target.id === id && input.target.visible === true
+    && Array.isArray(rect) && rect.length === 4 && rect.every(Number.isFinite)
+    && rect[2] - rect[0] >= 44 && rect[3] - rect[1] >= 44
+    && input.receipt?.buttonId === id && input.receipt.trusted === true
+    && (pointerType === 'mouse' || pointerType === 'touch')
+    && input.receipt.pointerType === pointerType;
+}
+
+export function hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, hidden, pointerType } = {}) {
+  const checks = {
+    nativeVisibleOpener: hiddenOpenerNativeInput(opening, 'railatlas', pointerType),
+    baselinePanel: baseline?.panel === 'atlas' && baseline.cardOpen === false,
+    baselineVisibleRail: baseline?.railRendered === true && baseline.railDisplay !== 'none'
+      && baseline.railVisibility === 'visible' && baseline.railRootDisplay !== 'none',
+    baselineCloseFocus: baseline?.closeFocused === true,
+    nativeSurveyTransition: hiddenOpenerNativeInput(hiding, 'docksurvey', pointerType),
+    panelPreserved: hidden?.panel === 'atlas' && hidden.cardOpen === true,
+    openerBecameHidden: hidden?.railRendered === false && hidden.railRootDisplay === 'none',
+  };
+  return { ok: Object.values(checks).every((value) => value === true), checks };
+}
+
+export function hiddenPanelOpenerFocusOutcome({ setup, closing, fallback, pointerType } = {}) {
+  const checks = {
+    provenSetup: setup?.ok === true,
+    nativeClose: hiddenOpenerNativeInput(closing, null, pointerType),
+    panelClosed: fallback?.panel === null,
+    railHidden: fallback?.railRendered === false && fallback.railRootDisplay === 'none',
+    visibleSurveyFocus: fallback?.surveyRendered === true && fallback.focus === 'docksurvey',
+    surveyPreserved: fallback?.cardOpen === true,
+  };
+  return { ok: Object.values(checks).every((value) => value === true), checks,
+    railRendered: fallback?.railRendered, focus: fallback?.focus, cardOpen: fallback?.cardOpen };
+}
+
 export function stopAfterRecordedProductOutcome(viewport, surface, code, element, outcome, expected) {
   if (outcome?.ok === true) return;
   throw new ProductAnswerabilityFinding(
@@ -11288,20 +11329,20 @@ async function main() {
            card yields it. Both compositions prove geometry and focus. */
         const ordinaryPanels = [
           { id: 'codex', name: 'compendium', dock: '#dockcodex', rail: '#railcodex', panel: '#codexpanel', required: '[data-sel=codex-entry]', min: 1, textMin: 80 },
-          { id: 'rec', name: 'records', dock: '#dockrecords', rail: '#railrecords', panel: '#recpanel', required: '#recpanel .row', min: 6, textMin: 80 },
+          { id: 'rec', name: 'records', dock: '#dockrecords', rail: '#dockrecords', panel: '#recpanel', required: '#recpanel .row', min: 6, textMin: 80 },
           { id: 'atlas', name: 'atlas', dock: '#dockatlas', rail: '#railatlas', panel: '#atlaspanel', required: '[data-sel=atlas-entry]', min: 1, textMin: 25 },
           { id: 'shipyard', name: 'shipyard', dock: '#dockshipyard', rail: '#railshipyard', panel: '#shipyardpanel', required: '[data-cf-shipyard-preview="v1"]', min: 1, textMin: 80, shipyard: true },
-          { id: 'inventory', name: 'inventory', dock: '#dockinventory', rail: '#railinventory', panel: '#inventorypanel', required: '[data-inventory-row="exact"]', min: 3, textMin: 120, inventory: true },
+          { id: 'inventory', name: 'inventory', dock: '#dockinventory', rail: '#dockinventory', panel: '#inventorypanel', required: '[data-inventory-row="exact"]', min: 3, textMin: 120, inventory: true },
           { id: 'ch', name: 'charters', dock: '#dockcharters', rail: '#railcharters', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
         ];
         for (const item of ordinaryPanels) {
           const opener = vp.width > 700 ? item.rail : item.dock;
-          /* A populated desktop survey deliberately yields the right rail,
-             so Records/Atlas/Shipyard/Inventory are reached *instead of* the
-             card, while the left rail and every phone dock panel remain
-             operable over it. */
-          const overSurvey = !(vp.width > 900 && (item.id === 'rec' || item.id === 'atlas'
-            || item.id === 'shipyard' || item.id === 'inventory'));
+          /* U1 Records and Inventory use their visible utility/shelf controls
+             at every width; keep their existing planned Survey compositions.
+             Atlas/Shipyard yield Survey whenever the 701px rail is selected,
+             including tablet portrait and phone landscape. */
+          const overSurvey = !((vp.width > 900 && (item.id === 'rec' || item.id === 'inventory'))
+            || (vp.width > 700 && (item.id === 'atlas' || item.id === 'shipyard')));
           const cardBeforePanel = await evalIn('window.__CF_SLICE__.api.state().cardOpen');
           if (cardBeforePanel !== overSurvey) {
             await evalIn(`document.getElementById('docksurvey')?.click()`);
@@ -12870,31 +12911,57 @@ async function main() {
         }
 
         if (vp.width > 900 && !hiddenOpenerControlRun) {
-          /* Reach the real focus edge: open Records from its visible right
-             rail, reopen Survey (which hides that rail), then close Records.
-             Focus must choose the visible Survey dock fallback. */
+          /* Atlas remains a visible right-rail opener in U1. Native Atlas ->
+             Survey -> Close proves the same hidden-opener focus lifecycle;
+             permanently hidden Inventory/Records copies cannot establish it. */
+          const pointerType = vp.mobile ? 'touch' : 'mouse';
+          const hiddenOpenerSnapshot = `(()=>{const rail=document.getElementById('railatlas'),
+            survey=document.getElementById('docksurvey'),panel=document.getElementById('atlaspanel'),
+            close=panel?.querySelector('[data-pnx="atlas"]'),s=window.__CF_SLICE__.api.state(),
+            railStyle=rail?getComputedStyle(rail):null,surveyStyle=survey?getComputedStyle(survey):null;
+            return {panel:s.panelOpen,cardOpen:s.cardOpen,cardTitle:s.cardTitle,bodyClass:document.body.className,
+              railRendered:!!rail&&rail.getClientRects().length>0,railDisplay:railStyle?.display??null,
+              railVisibility:railStyle?.visibility??null,
+              railRootDisplay:getComputedStyle(document.getElementById('railrgt')).display,
+              closeFocused:!!close&&document.activeElement===close,
+              surveyRendered:!!survey&&survey.getClientRects().length>0
+                &&surveyStyle?.display!=='none'&&surveyStyle?.visibility==='visible',
+              focus:document.activeElement?.id||null};})()`;
           if ((await evalIn('window.__CF_SLICE__.api.state().cardOpen'))) {
-            await evalIn(`document.getElementById('docksurvey')?.click()`);
+            const setupClose = await activateRealControl('#docksurvey', 'hidden-opener setup Survey close');
+            if (!setupClose.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native Survey input (${JSON.stringify(setupClose)})`);
             await waitFor('hidden-opener setup survey closed', `!window.__CF_SLICE__.api.state().cardOpen`);
           }
-          await evalIn(`document.getElementById('railrecords')?.click()`);
-          await waitFor('hidden-opener Records open', `window.__CF_SLICE__.api.state().panelOpen==='rec'`);
-          const hiddenOpenerSetup = await evalIn(`(()=>{ document.getElementById('docksurvey')?.click();const s=window.__CF_SLICE__.api.state();return {
-            panel:s.panelOpen,cardOpen:s.cardOpen,cardTitle:s.cardTitle,bodyClass:document.body.className,
-            railDisplay:getComputedStyle(document.getElementById('railrecords')).display,railRootDisplay:getComputedStyle(document.getElementById('railrgt')).display};})()`);
-          if (hiddenOpenerSetup.panel !== 'rec' || !hiddenOpenerSetup.cardOpen || hiddenOpenerSetup.railRootDisplay !== 'none') {
-            recordInstrumentFailure(`${vp.label}: could not construct hidden panel-opener focus state (${JSON.stringify(hiddenOpenerSetup)})`);
-          }
-          await evalIn(`document.querySelector('#recpanel [data-pnx]')?.click()`);
+          const opening = await activateRealControl('#railatlas', 'hidden-opener visible Atlas opener');
+          if (!opening.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native visible Atlas input (${JSON.stringify(opening)})`);
+          await waitFor('hidden-opener Atlas open', `window.__CF_SLICE__.api.state().panelOpen==='atlas'`);
+          const baseline = await evalIn(hiddenOpenerSnapshot);
+          const hiding = await activateRealControl('#docksurvey', 'hidden-opener Survey transition');
+          if (!hiding.ok) stopInstrumentControl(`${vp.label}: hidden-opener setup lacked native Survey transition (${JSON.stringify(hiding)})`);
+          await waitFor('hidden-opener Survey reopened', `window.__CF_SLICE__.api.state().cardOpen`);
+          const hidden = await evalIn(hiddenOpenerSnapshot);
+          const setup = hiddenPanelOpenerSetupOutcome({ opening, baseline, hiding, hidden, pointerType });
+          if (!setup.ok) stopInstrumentControl(`${vp.label}: could not prove visible-to-hidden panel opener (${JSON.stringify({ setup, opening, baseline, hiding, hidden })})`);
+          const closing = await activateRealControl('#atlaspanel [data-pnx="atlas"]', 'hidden-opener Atlas Close');
+          if (!closing.ok) stopInstrumentControl(`${vp.label}: hidden-opener Close lacked native input (${JSON.stringify(closing)})`);
           await waitFor('hidden-opener panel close', `window.__CF_SLICE__.api.state().panelOpen===null`);
-          const fallbackCheck = `(()=>{ const rail=document.getElementById('railrecords'),survey=document.getElementById('docksurvey');return {
-            ok:rail.getClientRects().length===0&&document.activeElement===survey&&window.__CF_SLICE__.api.state().cardOpen,
-            railRendered:rail.getClientRects().length>0,focus:document.activeElement?.id||null,cardOpen:window.__CF_SLICE__.api.state().cardOpen};})()`;
-          addOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST', '#docksurvey', await evalIn(fallbackCheck),
+          const fallback = await evalIn(hiddenOpenerSnapshot);
+          const fallbackOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback, pointerType });
+          addOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST', '#docksurvey',
+            { ...fallbackOutcome, diagnostics: { setup, opening, baseline, hiding, hidden, closing, fallback } },
             'closing a panel whose rail opener became hidden restores focus to the visible Survey control');
-          const fallbackControl = await evalIn(`(()=>{ document.querySelector('canvas')?.focus();return ${fallbackCheck};})()`);
-          if (fallbackControl.ok) recordInstrumentFailure(`${vp.label}: wrong hidden-opener fallback focus stayed green (${JSON.stringify(fallbackControl)})`);
+          stopAfterRecordedProductOutcome(vp.label, 'hidden-panel-opener-focus', 'PANEL_HIDDEN_OPENER_FOCUS_LOST',
+            '#docksurvey', fallbackOutcome, 'hidden-opener Close restores visible Survey focus');
+          await evalIn(`document.querySelector('canvas')?.focus()`);
+          const wrongFocus = await evalIn(hiddenOpenerSnapshot);
+          const fallbackControl = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: wrongFocus, pointerType });
+          if (wrongFocus.focus === 'docksurvey' || fallbackControl.ok) {
+            stopInstrumentControl(`${vp.label}: wrong hidden-opener fallback focus was not rejected (${JSON.stringify({ wrongFocus, fallbackControl })})`);
+          }
           await evalIn(`document.getElementById('docksurvey')?.focus()`);
+          const restored = await evalIn(hiddenOpenerSnapshot);
+          const restoredOutcome = hiddenPanelOpenerFocusOutcome({ setup, closing, fallback: restored, pointerType });
+          if (!restoredOutcome.ok) stopInstrumentControl(`${vp.label}: hidden-opener fallback restoration failed (${JSON.stringify({ restored, restoredOutcome })})`);
           hiddenOpenerControlRun = true;
           recordControls('hidden-panel-opener-focus-fallback');
         }

@@ -1874,7 +1874,7 @@ export function assessInventoryPanelClose(observation) {
   if (!settled || settled.panelPresent !== true || settled.display !== 'none'
     || settled.ariaHidden !== 'true' || settled.openerPresent !== true
     || settled.panelOpen !== null || settled.inventoryExpanded !== 'false'
-    || settled.focusId !== 'railinventory' || settled.diagnostics?.activeCount !== 0
+    || settled.focusId !== 'dockinventory' || settled.diagnostics?.activeCount !== 0
     || settled.diagnostics?.retainedCount !== 0 || settled.diagnostics?.pendingWork !== 0
     || settled.diagnostics?.selectedInstanceId !== null) {
     reasons.push('closed panel/focus/zero ownership');

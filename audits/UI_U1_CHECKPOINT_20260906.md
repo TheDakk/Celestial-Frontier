@@ -166,3 +166,26 @@ Typecheck/artunused PASS. Vitest stopped on the required current-producer narrat
 still ended at the earlier producer. The successor and all five component hashes are now
 appended, preserving every prior narrative byte and all samples, measurement, ruler and
 ceilings. This is a record correction; product bytes are unchanged. Later gates were not run.
+
+## Relocated opener instrument stop —4af8073
+
+Fresh typecheck, artunused,310 Vitest files/3,261tests/1skip and Glass selftest PASS.
+Slice reported five findings: three remaining rail-boundary fixtures still selected the
+now-hidden compatibility Records button, and Inventory selected the hidden compatibility
+opener, leaving its dependent ledger sequence incomplete. The actual visible owners are
+`#dockrecords` and topbar `#dockinventory`. The bounded correction updates native opener,
+receipt and restored-focus identities; both real rail-gap mutations and all Inventory
+outcomes remain required. Product and producer pins are unchanged. Phone canaries and
+visual review did not run after red. Original output is retained in
+`UI_U1_SLICE_RED_4af8073_20260906.log.gz`; successor verification is pending.
+
+Relocated-opener preparation: Slice typecheck,3files/20focused tests and smoke-report selftest
+PASS; Glass native hidden-opener32tests and syntax checks PASS. An initial partial-declaration
+TS2305 repeated once after a failed edit path; final corrected import passes. Preparation
+outputs were retained only in the agent turn, not as filesystem logs; this limitation and
+the mistaken unchanged typecheck repetition are recorded in the REDS JSON. Independent
+Slice diff review is clear. The fresh successor uses the existing smoke-report wrapper
+for the same single Slice execution plus immutable report/terminal verification. Glass
+callers now follow the visible controls; Atlas/Shipyard yield Survey when rails begin at701px.
+The hidden-opener focus control starts with visible Atlas and uses native input through
+Survey/Close, retaining its original outcome/control identities and historical ledgers.

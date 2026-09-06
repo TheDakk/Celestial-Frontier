@@ -2149,11 +2149,11 @@ const assessArc2InventorySurface = ({ state, raw, surface, detail, closed, selec
     || canonicalJson(surface?.rows) !== canonicalJson(rows)) reasons.push('exact bounded DOM rows');
   const openerPoint = surface?.opener?.preClick;
   const openerPointer = surface?.opener?.pointer;
-  if (surface?.opener?.id !== 'railinventory' || surface?.opener?.tag !== 'BUTTON'
+  if (surface?.opener?.id !== 'dockinventory' || surface?.opener?.tag !== 'BUTTON'
     || surface?.opener?.visible !== true || openerPoint?.ok !== true
-    || openerPoint?.targetId !== 'railinventory'
+    || openerPoint?.buttonId !== 'dockinventory' || openerPoint?.buttonTag !== 'BUTTON'
     || !Number.isFinite(openerPoint?.x) || !Number.isFinite(openerPoint?.y)
-    || surface?.opener?.pointer?.targetId !== 'railinventory'
+    || openerPointer?.buttonId !== 'dockinventory' || openerPointer?.buttonTag !== 'BUTTON'
     || surface?.opener?.pointer?.pointerType !== 'mouse' || surface?.opener?.pointer?.trusted !== true
     || !Number.isFinite(openerPointer?.x) || !Number.isFinite(openerPointer?.y)
     || Math.abs(openerPointer.x - openerPoint.x) > 0.75
@@ -2435,7 +2435,8 @@ const assessArc2InventoryReload = ({ committed, reloaded, committedState, reload
   }
   if (!reloadDurability.ok) reasons.push(...reloadDurability.reasons);
   if (projection(reloadedState) !== projection(committedState)
-    || surface?.inventoryPointer?.targetId !== 'railinventory' || surface?.inventoryPointer?.trusted !== true
+    || surface?.inventoryPointer?.buttonId !== 'dockinventory' || surface?.inventoryPointer?.buttonTag !== 'BUTTON'
+    || surface?.inventoryPointer?.trusted !== true
     || surface?.inventoryPointer?.pointerType !== 'mouse'
     || surface?.inventoryRows?.length < 1 || surface.inventoryRows.length > 48
     || canonicalJson(surface.inventoryRows) !== canonicalJson(arc2InventoryRows(reloaded.arc2))
@@ -5408,8 +5409,10 @@ try {
     document.addEventListener('pointerdown',(event)=>{ const target=event.target instanceof Element?event.target:null,
       close=target?.closest('#inventorysheet [data-inventory-sheet-close]'),
       panelClose=target?.closest('.panel > [data-pnx]'),
-      atlasTravel=target?.closest('[data-atlas-travel]'),atlasRow=atlasTravel?.closest('[data-aid]');
+      atlasTravel=target?.closest('[data-atlas-travel]'),atlasRow=atlasTravel?.closest('[data-aid]'),
+      button=target?.closest('button');
       window.__cfPanelPointer={targetId:target?.id||null,tag:target?.tagName||null,
+        buttonId:button?.id||null,buttonTag:button?.tagName||null,
         closeOwner:close?.closest('#inventorysheet')?.id==='inventorysheet'?'inventory-sheet':null,
         panelCloseOwner:panelClose?.getAttribute('data-pnx')||null,
         atlasTravelId:atlasTravel?.getAttribute('data-atlas-travel')||null,
@@ -6421,17 +6424,18 @@ try {
   const railButtonPoint = (id) => `(()=>{ const button=document.getElementById(${JSON.stringify(id)}),
     rect=button?.getBoundingClientRect(),x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,
     hit=rect?document.elementFromPoint(x,y):null;return {ok:!!button&&!!rect&&rect.width>0&&rect.height>=44
-      &&getComputedStyle(button).display!=='none'&&!!hit&&(hit===button||button.contains(hit)),x,y,targetId:hit?.id||null};})()`;
+      &&getComputedStyle(button).display!=='none'&&!!hit&&(hit===button||button.contains(hit)),x,y,targetId:hit?.id||null,
+      buttonId:hit?.closest('button')?.id||null,buttonTag:hit?.closest('button')?.tagName||null};})()`;
   const openDesktopRailPanel = async (buttonId, panelId, label) => {
     const point = await evalIn(railButtonPoint(buttonId));
     if (!point.ok) {
-      fails.push(`${label}: visible rail opener was not browser-mouse hittable: ${JSON.stringify(point)}`);
+      fails.push(`${label}: visible panel opener was not browser-mouse hittable: ${JSON.stringify(point)}`);
       return false;
     }
     await clickDesktopPoint(point);
     const opened = await waitDesktopValue(`${label} open`, `window.__CF_SLICE__.api.state().panelOpen===${JSON.stringify(panelId)}`)
       .catch(() => false);
-    if (!opened) fails.push(`${label}: browser-mouse rail opener did not open ${panelId}`);
+    if (!opened) fails.push(`${label}: browser-mouse panel opener did not open ${panelId}`);
     return !!opened;
   };
   const closeDesktopPanel = async () => {
@@ -6679,7 +6683,7 @@ try {
       const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('railcodex'),
         panel=document.getElementById('codexpanel');return {panelOpen:s.panelOpen,expanded:button?.getAttribute('aria-expanded'),
           hidden:panel?.getAttribute('aria-hidden')};})()`);
-      if (!before.boundary || receipt?.targetId !== 'railrgt' || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'codex'
+      if (!before.boundary || receipt?.targetId !== 'railrgt' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'codex'
         || after.expanded !== 'true' || after.hidden !== 'false') {
         fails.push('RIGHT RAIL GAP: real root-gap pointer dismissed or desynchronized the active panel: '
           + JSON.stringify({ before, receipt, after }));
@@ -6687,7 +6691,7 @@ try {
     }
     await closeDesktopPanel();
   }
-  if (await openDesktopRailPanel('railrecords', 'rec', 'LEFT RAIL GAP')) {
+  if (await openDesktopRailPanel('dockrecords', 'rec', 'LEFT RAIL GAP')) {
     const before = await evalIn(leftGap);
     if (!before.geometry || before.cardOpen || before.panelOpen !== 'rec') {
       fails.push('LEFT RAIL GAP: symmetric 8px root-owned geometry was not established: ' + JSON.stringify(before));
@@ -6695,10 +6699,10 @@ try {
       await armDesktopPointerReceipt();
       await clickDesktopPoint(before.point);
       const receipt = await takeDesktopPointerReceipt();
-      const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('railrecords'),
+      const after = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),button=document.getElementById('dockrecords'),
         panel=document.getElementById('recpanel');return {panelOpen:s.panelOpen,expanded:button?.getAttribute('aria-expanded'),
           hidden:panel?.getAttribute('aria-hidden')};})()`);
-      if (!before.boundary || receipt?.targetId !== 'raillft' || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'rec'
+      if (!before.boundary || receipt?.targetId !== 'raillft' || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after.panelOpen !== 'rec'
         || after.expanded !== 'true' || after.hidden !== 'false') {
         fails.push('LEFT RAIL GAP: real root-gap pointer dismissed or desynchronized the active panel: '
           + JSON.stringify({ before, receipt, after }));
@@ -6722,7 +6726,7 @@ try {
     }
     const after = await evalIn(`window.__CF_SLICE__.api.state().panelOpen`);
     if (prior === null || !before?.geometry || before.boundary || before.panelOpen !== panelId
-      || receipt?.targetId !== railId || receipt?.pointerType !== 'mouse' || after !== null) {
+      || receipt?.targetId !== railId || receipt?.trusted !== true || receipt?.pointerType !== 'mouse' || after !== null) {
       fails.push(`${label} CONTROL FAILED — removing only the rail boundary did not recreate dismissal: `
         + JSON.stringify({ prior, before, receipt, after }));
     }
@@ -6732,14 +6736,14 @@ try {
     railId: 'railrgt', gapCheck: rightGap, buttonId: 'railcodex', panelId: 'codex', label: 'RIGHT RAIL BOUNDARY',
   });
   await railBoundaryRemovalControl({
-    railId: 'raillft', gapCheck: leftGap, buttonId: 'railrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY',
+    railId: 'raillft', gapCheck: leftGap, buttonId: 'dockrecords', panelId: 'rec', label: 'LEFT RAIL BOUNDARY',
   });
 
   /* Delegated document listeners are public event boundaries: a synthetic
      or retargeted non-Element target must be ignored, never allowed to throw
      before it can preserve the current panel. This restores the legacy guard
      for both pointerdown dismissal and the delegated Close click. */
-  if (await openDesktopRailPanel('railrecords', 'rec', 'PANEL NON-ELEMENT TARGET')) {
+  if (await openDesktopRailPanel('dockrecords', 'rec', 'PANEL NON-ELEMENT TARGET')) {
     const nonElementTarget = await evalIn(`new Promise((resolve)=>{ const errors=[];
       const onError=(event)=>{errors.push(String(event.error?.message||event.message||'window error'));event.preventDefault();};
       addEventListener('error',onError);document.dispatchEvent(new Event('pointerdown',{bubbles:true}));
@@ -11458,11 +11462,11 @@ try {
       return { pressCount: presses.length, presses };
     };
 
-    const inventoryOpenerPoint = await evalIn(railButtonPoint('railinventory'));
+    const inventoryOpenerPoint = await evalIn(railButtonPoint('dockinventory'));
     await armDesktopPointerReceipt();
-    const inventoryOpened = await openDesktopRailPanel('railinventory', 'inventory', 'ARC 2 INVENTORY');
+    const inventoryOpened = await openDesktopRailPanel('dockinventory', 'inventory', 'ARC 2 INVENTORY');
     const inventoryOpenPointer = await takeDesktopPointerReceipt();
-    const inventorySurfaceBase = await evalIn(`(()=>{const S=window.__CF_SLICE__,opener=document.getElementById('railinventory'),
+    const inventorySurfaceBase = await evalIn(`(()=>{const S=window.__CF_SLICE__,opener=document.getElementById('dockinventory'),
       panel=document.getElementById('inventorypanel'),style=opener?getComputedStyle(opener):null,r=opener?.getBoundingClientRect(),
       x=r?(r.left+r.right)/2:0,y=r?(r.top+r.bottom)/2:0,hit=r?document.elementFromPoint(x,y):null,rows=${captureInventoryRows};
       return {opener:{id:opener?.id||null,tag:opener?.tagName||null,visible:!!r&&r.width>0&&r.height>=44
@@ -11508,7 +11512,7 @@ try {
         const closePointer = await takeDesktopPointerReceipt();
         inventoryClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
           body=sheet?.querySelector('[data-inventory-sheet-body]'),panel=document.getElementById('inventorypanel'),
-          opener=document.getElementById('railinventory');return {
+          opener=document.getElementById('dockinventory');return {
             sheetPresent:!!sheet,open:!!sheet&&!sheet.hidden,hidden:sheet?.hidden,ariaHidden:sheet?.getAttribute('aria-hidden')??null,
             bodyChildren:body?.childElementCount??-1,focusInstanceId:document.activeElement?.getAttribute?.('data-instance-id')||null,
             panelPresent:!!panel,panelDisplay:panel?.style.display??null,
@@ -11579,7 +11583,7 @@ try {
         openerTarget: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
           ...inventorySurface, opener: {
             ...inventorySurface.opener,
-            preClick: { ...inventorySurface.opener.preClick, targetId: 'railatlas' },
+            preClick: { ...inventorySurface.opener.preClick, buttonId: 'railatlas' },
           },
         } }),
         openerReceiptPoint: assessArc2InventorySurface({ ...inventorySurfaceBundle, surface: {
@@ -11867,7 +11871,7 @@ try {
       if (actionClosePoint.ok) await clickDesktopPoint(actionClosePoint);
       const actionClosePointer = await takeDesktopPointerReceipt();
       const actionClosed = await evalIn(`(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
-        panel=document.getElementById('inventorypanel'),opener=document.getElementById('railinventory'),
+        panel=document.getElementById('inventorypanel'),opener=document.getElementById('dockinventory'),
         diagnostics=S?.api?.inventoryDiagnostics?.();return {
           sheetPresent:!!sheet,open:!!sheet&&!sheet.hidden,hidden:sheet?.hidden,ariaHidden:sheet?.getAttribute('aria-hidden')??null,
           bodyChildren:sheet?.querySelector('[data-inventory-sheet-body]')?.childElementCount??-1,
@@ -11940,7 +11944,7 @@ try {
       if (point.ok) await clickDesktopPoint(point);
       const pointer = await takeDesktopPointerReceipt();
       const closedExpression = `(()=>{const S=window.__CF_SLICE__,sheet=document.getElementById('inventorysheet'),
-        panel=document.getElementById('inventorypanel'),opener=document.getElementById('railinventory'),
+        panel=document.getElementById('inventorypanel'),opener=document.getElementById('dockinventory'),
         diagnostics=S?.api?.inventoryDiagnostics?.();return {
           sheetPresent:!!sheet,open:!!sheet&&!sheet.hidden,hidden:sheet?.hidden,ariaHidden:sheet?.getAttribute('aria-hidden')??null,
           bodyChildren:sheet?.querySelector('[data-inventory-sheet-body]')?.childElementCount??-1,
@@ -12169,7 +12173,7 @@ try {
       const inventoryReloadState = await evalIn(`window.__CF_SLICE__.api.state()`);
       const inventoryReloadRaw = await evalIn(READ_ARC2_INVENTORY_EVIDENCE_EXPRESSION);
       await armDesktopPointerReceipt();
-      const inventoryReloadOpened = await openDesktopRailPanel('railinventory', 'inventory', 'ARC 2 INVENTORY RELOAD');
+      const inventoryReloadOpened = await openDesktopRailPanel('dockinventory', 'inventory', 'ARC 2 INVENTORY RELOAD');
       const inventoryReloadPointer = await takeDesktopPointerReceipt();
       const inventoryReloadRows = await evalIn(captureInventoryRows);
       if (!inventoryReloadOpened) {
@@ -12189,7 +12193,7 @@ try {
       if (inventoryClosePoint.ok) await clickDesktopPoint(inventoryClosePoint);
       const inventoryClosePointer = await takeDesktopPointerReceipt();
       const inventoryPanelCloseStateExpression = `(()=>{const S=window.__CF_SLICE__,
-        panel=document.getElementById('inventorypanel'),opener=document.getElementById('railinventory'),
+        panel=document.getElementById('inventorypanel'),opener=document.getElementById('dockinventory'),
         diagnostics=S?.api?.inventoryDiagnostics?.();return {panelPresent:!!panel,display:panel?.style.display??null,
           ariaHidden:panel?.getAttribute('aria-hidden')??null,openerPresent:!!opener,
           panelOpen:S?.api?.state?.().panelOpen??null,inventoryExpanded:opener?.getAttribute('aria-expanded')??null,
@@ -12229,7 +12233,7 @@ try {
           { alreadyReported: true });
       }
       const reloadSurface = await evalIn(`(()=>{const S=window.__CF_SLICE__,inventory=document.getElementById('inventorypanel'),
-        inventoryOpener=document.getElementById('railinventory');return {panelOpen:S?.api?.state?.().panelOpen??null,
+        inventoryOpener=document.getElementById('dockinventory');return {panelOpen:S?.api?.state?.().panelOpen??null,
           inventoryHidden:inventory?.style.display==='none'&&inventory?.getAttribute('aria-hidden')==='true',
           inventoryExpanded:inventoryOpener?.getAttribute('aria-expanded')||null,
           inventoryDiagnostics:S?.api?.inventoryDiagnostics?.()||null};})()`);
@@ -29194,7 +29198,7 @@ if (OUTCOME_CONTROLS_ONLY) {
   console.log('SLICE OUTCOME CONTROLS: PASS — two source-generated leaf-seed-colliding worlds retain distinct Search/name/Atlas/Land/save-reload/share identity, and F4 heartbeat lease-storage plus revision-read failures stop answerability/accrual/audio/heartbeat without automatic reacquisition before a read-only convergence reload.');
   process.exit(0);
 }
-console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact ' + V2_DRAFT_BULLET_COUNT + '-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT absent; Training recovery reload-only · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real rail/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
+console.log('SLICE SMOKE: PASS — the GATE D core loop: booted · painted · CANONICAL GUIDE (9 categories / 43 authored / 41 legacy-live topics, capability boundaries, search, exact ' + V2_DRAFT_BULLET_COUNT + '-outcome development bulletin with same-save Breed Charter credit and exact-companion/visible-world Listen ownership, full release history, persisted seen state) · one-time shipped-bulletin fixture + Training queue · GENUINE TRAINING RESTART transaction (Skip + full Finish, rescue/quarantine/retry/races, canonical Earth) · SETTINGS IMPORT absent; Training recovery reload-only · REGISTERED PANEL CHROME (both real rail gaps stay open; removed ownership closes; true sky closes; non-Element targets fail closed) · ARC 3 ENGINEERING/SHIPYARD (real open/Close, native disclosures, exact six research rows + 62 grouped recipes + 70 honest actions, 320px/44px matrix geometry, one owned preview, zero retained work) · ARC 3 ACTION COORDINATOR (native Mine/Skim/Research/Fixed Fabrication, no optimism, shared single-flight, Close/reopen pending, focus restoration, carrier↔legacy↔receipt↔reload parity, Charter ticks, storage/stale/publication convergence) · ARC 2 INVENTORY (real nameplate/row/detail, native Equip/Unequip/confirmed Salvage/Pending Claim, no optimism or retry, authority-refused pre-durable control, exact carrier↔legacy items/equip/cargo↔DOM parity, unchanged RNG draws, four receipts, fresh reload + Atlas continuity, rejected-bootstrap rollback) · COMPLETE KEYBOARD canvas → galaxy → system → Land → Leave/Escape journey · ADVANCING EPOCH SNAPSHOT → RAW IDB → RELOAD · NATIVE F3 IDB v1→v2 upgrade + v4→v5 migration + two-backend CAS + rollback + v3 versionchange + cleanup · native Compendium query/detail/Back, network-gated lazy-art focus retention, and Atlas Space/Enter travel · rendered Reduced/Full motion outcomes · SURVEY-FIRST (one tap = card; explicit Enter = dive; real 390×844 touch) · early-Land Training locks + exact final Earth action · CHARTER stage-0 gate · Milky Way · Sol · EARTH planetfall · REAL SAVE reload · ZOOM LADDER + empty-space control · Sun marker + fine stars · GATE C veteran/protected-save rehearsal · PHONE Land → Leave round-trip, paint, pinch, responsive chrome · honest clipboard denial/success · zero console errors.');
 console.log(`SLICE SMOKE ARC 4 LEDGER: ${JSON.stringify(arc4SliceLedger)}`);
 console.log(ARC4_SLICE_PASS_MARKER);
 console.log(sliceScreenshotInventoryLine());
