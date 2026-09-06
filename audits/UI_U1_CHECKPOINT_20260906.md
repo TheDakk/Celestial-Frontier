@@ -38,3 +38,14 @@ quarantined SceneMemory drift, and a pre-existing Compendium measurement mismatc
 `inputs.appPackage` / `inputs.packageLock` introduced by the prior GSAP setup. This batch
 preserves those dependencies and the sealed measurement authority; it does not claim a
 current Compendium certificate or silently update the ruler. Required U1 gates remain pending.
+
+## Preparation instrument result — source35ded10
+
+The first fresh clone had no main.js and matched35ded10f3d052ab5603e781ee06d2a25448397f5.
+Sandbox npm ci could not resolve registry.npmjs.org for lockedGSAP3.15.0 (ENOTFOUND).
+A prematurely submitted typecheck returned127 (tsc unavailable) before dependency setup
+completed; no TypeScript/product test ran. The remaining checks were not submitted.
+Correction: dependency installation must report exit0 before launching any check; network
+access for the unchanged locked install was granted through sandbox escalation. This is a
+local setup/instrument failure, not a product or hosted result. It is retained before the
+successor verification source; no unchanged product-red test is retried.
