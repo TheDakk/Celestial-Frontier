@@ -22,7 +22,11 @@ Prime remains centered above the scene and left/right boards use rails. Utilitie
 44px pitch (2px above the legacy diagram); rails preserve the earned8px empty root-owned gap
 plus44px targets, yielding52px pitch (10px above the old42px diagram). Both differences are
 listed for review; the real gap dismissal/retention controls remain unchanged. Duplicate hidden Inventory/Records rail IDs retain compatibility; their
-visible shelf/utility owners provide access. The breadcrumb trail is a compact v2 lane;
+visible shelf/utility owners provide access. Their explicit rail-owner selectors outrank
+the shared button display rule. Slice observes both copies hidden, forces each visible and
+requires rejection, then restores the exact styles and hidden state. Records collision
+proofs retain the trusted native dock press rather than selecting an unintended rail copy.
+The breadcrumb trail is a compact v2 lane;
 v1's final source hides it, so it is not claimed to match a visible golden trail.
 
 Notifications shows saved history plus clearly labelled session-only notices while save

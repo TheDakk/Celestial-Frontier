@@ -1,0 +1,76 @@
+{
+  "schema": "cf-u1-producer-successor/v1",
+  "cause": "U1 duplicate rail visibility selector correction changes emitted index and service worker",
+  "command": "node tools/print-producer-authorities.mjs",
+  "derivationExitCode": 2,
+  "derivationStatus": "Expected mismatch before current producer pins refreshed; not a certificate",
+  "previousProducer": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "6b9f100f4502f6a371f1c670cf98dac686bc5d6b69ef0f273027ffbf26f6cbd1",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "613948d664554717e6f0b5844c90e900b5e555ea4f285ded01dbc4944e086346"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-CXTlH-t_.js",
+        "sha256": "d9344cdb8bf52a904f4bbd6461771e22116a8c2d6ae06b88395b6825aff60fdd"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "161a4818b113312201f78aa642a1c0d879c8abbf2f26b443ee0d3e0b3dc87222"
+      }
+    }
+  },
+  "nextProducer": {
+    "schema": "cf-v2-compendium-producer-authority/v2",
+    "sha256": "60562956b771f572e3481075e78fdf95c764589c05ec6b6146a8f8db273c517c",
+    "inputs": {
+      "index": {
+        "relativePath": "index.html",
+        "sha256": "0164cefe4dec4f524ec4e167aeafe94ab6b8404abf27da6ad5e401bd8d0eef89"
+      },
+      "owner": {
+        "relativePath": "assets/tame-greeting-audio-CXTlH-t_.js",
+        "sha256": "d9344cdb8bf52a904f4bbd6461771e22116a8c2d6ae06b88395b6825aff60fdd"
+      },
+      "worker": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "painter": {
+        "relativePath": "assets/species-art.worker-DnnSDKMy.js",
+        "sha256": "25519cabdf0963bdc722b591855e7c7fdaaecbead63fdfa2d499bf35382f7172"
+      },
+      "serviceWorker": {
+        "relativePath": "service-worker.js",
+        "sha256": "5c922d852818770c0faa35c8cb4b7d876b8e71369f7b399f3f733760e519af49"
+      }
+    }
+  },
+  "measurementUnchanged": true,
+  "measurementSha256": "4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12",
+  "numericCeilingsSha256": "a5f05be521eb127f3e74306bd69538bdb6d3b564875ed921f2c7f3c0904def83",
+  "rulerUnchanged": {
+    "schema": "cf-v2-compendium-fixed-ruler-authority/v1",
+    "calibrationStatus": "sealed-exact-input",
+    "ceilingScope": "numeric-ceilings-only",
+    "measurementAuthoritySha256": "cd1586e200daa0c984b4cfd398e9238f732383eda3815b86b2f8085ce292fa78",
+    "producerAuthoritySha256": "d97370c081e9431170e7b796264015e8784cc2914719785e1f9ba41c56ea8271",
+    "currentCertification": "fresh-exact-producer-required"
+  },
+  "calibrationNarrativeAndHistoricalSamples": "unchanged",
+  "sceneMemory": "quarantined, untouched",
+  "logSha256": "cd4769685b4dbba8b367ef062f5b6b67877367fb7eb04f69d7007aceb5bb0585",
+  "preparationNote": "Initial unique-match guard stopped before edits because previous producer also appears in historical narrative; then scoped replacement to the current producerAuthority object. A premature focused budget test passed28tests on old pins and is not successor verification.",
+  "gzipFile": "UI_U1_RAIL_PRODUCER_20260906.log.gz",
+  "gzipSha256": "f87d0fba41d69790d5f8171c795ffeaad3cb5cfee0a38cc7eea4e0b0513828f4"
+}

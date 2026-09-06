@@ -28381,6 +28381,17 @@ try {
     (value) => typeof value === 'string' && value.startsWith('CF1-'),
   );
 
+  const collisionRailCopiesHidden = (rows) => Array.isArray(rows) && rows.length === 2
+    && rows.every((row, index) => row?.id === ['railinventory', 'railrecords'][index]
+      && row.exists === true && row.parentId === 'railrgt' && row.display === 'none'
+      && row.rectCount === 0 && row.width === 0 && row.height === 0 && row.painted === false);
+  const collisionRailCopiesExpression = `(()=>['railinventory','railrecords'].map((id)=>{
+    const element=document.getElementById(id),style=element?getComputedStyle(element):null,
+      rect=element?.getBoundingClientRect();return {id,exists:element instanceof HTMLButtonElement,
+        parentId:element?.parentElement?.id??null,display:style?.display??null,
+        rectCount:element?.getClientRects().length??null,width:rect?.width??null,height:rect?.height??null,
+        painted:!!element&&style.display!=='none'&&style.visibility!=='hidden'&&rect.width>0&&rect.height>0};}))()`;
+
   /* Outcome-level collision proof. The setup fixture changes only reach and
      clears prior location ledgers; every identity mutation below is a real
      Search/Survey control. The two source-proven worlds share both leaf seeds,
@@ -28409,13 +28420,52 @@ try {
     collisionTarget.session, 'collision identity fixture authority', { previousToken: collisionImportToken },
   );
   const collisionSetup = collisionFixtureReady.state;
-  await nativeControlClick(collisionTarget.session, '#railrecords,#dockrecords');
+  const collisionRailBaseline = await evalF4Control(collisionTarget.session, collisionRailCopiesExpression);
+  if (!collisionRailCopiesHidden(collisionRailBaseline)) {
+    failSliceWithoutCascade('U1 RAIL DUPLICATES: relocated Inventory/Records copies remain painted: '
+      + JSON.stringify(collisionRailBaseline));
+  }
+  const collisionRailControls = [];
+  for (const id of ['railinventory', 'railrecords']) {
+    const control = await evalF4Control(collisionTarget.session, `(()=>{
+      const element=document.getElementById(${JSON.stringify(id)}),prior=element.getAttribute('style');let shown;
+      try{element.style.setProperty('display','flex','important');shown=${collisionRailCopiesExpression};}
+      finally{if(prior===null)element.removeAttribute('style');else element.setAttribute('style',prior);}
+      return {id:${JSON.stringify(id)},shown,restored:${collisionRailCopiesExpression},
+        styleRestored:element.getAttribute('style')===prior};})()`);
+    const shown = control.shown.find((row) => row.id === id);
+    const other = control.shown.find((row) => row.id !== id);
+    if (collisionRailCopiesHidden(control.shown) || shown?.painted !== true || shown.display !== 'flex'
+      || JSON.stringify(other) !== JSON.stringify(collisionRailBaseline.find((row) => row.id !== id))
+      || control.styleRestored !== true || !collisionRailCopiesHidden(control.restored)
+      || JSON.stringify(control.restored) !== JSON.stringify(collisionRailBaseline)) {
+      failSliceWithoutCascade('U1 RAIL DUPLICATES CONTROL: showing one copy was not rejected or exact restoration failed: '
+        + JSON.stringify(control));
+    }
+    collisionRailControls.push(control);
+  }
+  const collisionRecordsPresses = [];
+  const pressCollisionRecords = async (label) => {
+    const press = await nativeControlClick(collisionTarget.session, '#dockrecords');
+    const assessment = assessAtlasOpenerPress(press, { ids: ['dockrecords'] });
+    collisionRecordsPresses.push({ label, ...press });
+    if (!assessment.ok) {
+      failSliceWithoutCascade(`WORLD IDENTITY COLLISION RECORDS ${label}: exact native dock receipt was red before panel observation: `
+        + JSON.stringify({ press, assessment }));
+    }
+    return press;
+  };
+  await pressCollisionRecords('baseline open');
   const collisionBaselineRecords = await waitControlValue(collisionTarget.session, 'collision baseline Records landing count',
     `(()=>{const panel=document.getElementById('recpanel'),row=[...panel?.querySelectorAll('.row')??[]].find((entry)=>
       entry.querySelector('label')?.textContent==='worlds landed');if(!row)return null;return {worldsLanded:Number(row.querySelector('span')?.textContent)};})()`);
-  await nativeControlClick(collisionTarget.session, '#railrecords,#dockrecords');
-  await waitControlValue(collisionTarget.session, 'collision baseline Records close',
-    `window.__CF_SLICE__.api.state().panelOpen===null`);
+  const collisionRecordsClosePress = await pressCollisionRecords('baseline close');
+  try {
+    await waitControlValue(collisionTarget.session, 'collision baseline Records close',
+      `window.__CF_SLICE__.api.state().panelOpen===null`);
+  } catch (error) {
+    throw new Error(`${error.message}; native Records close ${JSON.stringify(collisionRecordsClosePress)}`);
+  }
   const collisionActions = [];
   for (let index = 0; index < COLLISION_REACH_WORLDS.length; index++) {
     const world = COLLISION_REACH_WORLDS[index];
@@ -28543,7 +28593,7 @@ try {
     collisionTarget.session, 'collision identity reload authority', { previousToken: collisionBeforeReloadToken },
   );
   const collisionReloaded = collisionReloadReady.state;
-  await nativeControlClick(collisionTarget.session, '#railrecords,#dockrecords');
+  await pressCollisionRecords('reload open');
   const collisionRecords = await waitControlValue(collisionTarget.session, 'collision Records landing count',
     `(()=>{const panel=document.getElementById('recpanel'),row=[...panel?.querySelectorAll('.row')??[]].find((entry)=>
       entry.querySelector('label')?.textContent==='worlds landed');if(!row)return null;return {worldsLanded:Number(row.querySelector('span')?.textContent)};})()`);
@@ -28656,6 +28706,8 @@ try {
   await send('Target.closeTarget', { targetId: collisionTarget.targetId });
   const collisionBundle = {
     setup: collisionSetup, baselineRecords: collisionBaselineRecords,
+    recordsPresses: collisionRecordsPresses,
+    hiddenRailCopies: { baseline: collisionRailBaseline, controls: collisionRailControls },
     actions: collisionActions, reloaded: collisionReloaded,
     atlas: collisionAtlas, records: collisionRecords, atlasOpeners: collisionAtlasOpeners,
     atlasTravel: collisionAtlasTravel, searches: collisionReloadSearches,

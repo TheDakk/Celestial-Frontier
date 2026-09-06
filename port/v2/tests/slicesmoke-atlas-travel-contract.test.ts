@@ -153,6 +153,75 @@ function greenAtlasTravelObservation(): AtlasTravelObservation {
 }
 
 describe('Slice Atlas native Travel contract', () => {
+  it('requires the intended native Records control at all three collision panel boundaries', () => {
+    const press = {
+      target: { settled: true, tag: 'BUTTON', type: 'button', id: 'dockrecords', hit: true,
+        width: 44, height: 44, x: 634, y: 566 },
+      pointer: { trusted: true, pointerType: 'mouse', tag: 'BUTTON', id: 'dockrecords',
+        atlasTravelId: null, atlasRowId: null, x: 634, y: 566 },
+    };
+    const assess = (value: typeof press | null) => assessAtlasOpenerPress(value, { ids: ['dockrecords'] }).ok;
+    expect(assess(press)).toBe(true);
+    expect(assess(null)).toBe(false);
+    expect(assess({ ...press, target: { ...press.target, id: 'railrecords' },
+      pointer: { ...press.pointer, id: 'railrecords' } })).toBe(false);
+    expect(assess({ ...press, target: { ...press.target, hit: false } })).toBe(false);
+    expect(assess({ ...press, pointer: { ...press.pointer, trusted: false } })).toBe(false);
+    expect(assess({ ...press, pointer: { ...press.pointer, id: 'docksets' } })).toBe(false);
+    expect(assess({ ...press, pointer: { ...press.pointer, x: 650 } })).toBe(false);
+    expect(assess(press)).toBe(true);
+    const owner = section(sliceSource, '  const collisionSetup = collisionFixtureReady.state;',
+      '  const collisionAssessment = assessCollisionWorldOutcome(collisionBundle);');
+    expect(owner).toContain("nativeControlClick(collisionTarget.session, '#dockrecords')");
+    expect(owner).toContain("assessAtlasOpenerPress(press, { ids: ['dockrecords'] })");
+    expect(owner).toContain('if (!assessment.ok)');
+    expect(owner).toContain('collisionRecordsPresses.push({ label, ...press })');
+    for (const label of ['baseline open', 'baseline close', 'reload open']) {
+      expect(owner.split(`pressCollisionRecords('${label}')`)).toHaveLength(2);
+    }
+    expect(owner).toContain('window.__CF_SLICE__.api.state().panelOpen===null');
+    expect(owner).toContain('native Records close ${JSON.stringify(collisionRecordsClosePress)}');
+    expect(owner).toContain('recordsPresses: collisionRecordsPresses');
+    expect(owner).not.toContain("'#railrecords,#dockrecords'");
+  });
+
+  it('observes hidden duplicate rail copies and rejects each painted copy before exact restoration', () => {
+    const assess = executableDeclaration<(rows: unknown) => boolean>(
+      'collisionRailCopiesHidden', '  const collisionRailCopiesExpression =');
+    const baseline = ['railinventory', 'railrecords'].map((id) => ({ id, exists: true,
+      parentId: 'railrgt', display: 'none', rectCount: 0, width: 0, height: 0, painted: false }));
+    expect(assess(baseline)).toBe(true);
+    expect(assess([])).toBe(false);
+    expect(assess(null)).toBe(false);
+    expect(assess([baseline[0], baseline[0]])).toBe(false);
+    for (const index of [0, 1]) {
+      const exposed = structuredClone(baseline);
+      exposed[index] = { ...exposed[index], display: 'flex', rectCount: 1, width: 92, height: 44, painted: true };
+      expect(assess(exposed)).toBe(false);
+      expect(assess(baseline)).toBe(true);
+      for (const [key, value] of [['exists', false], ['parentId', 'dock'], ['width', 44],
+        ['rectCount', 1], ['painted', true]] as const) {
+        const mutant = structuredClone(baseline);
+        Object.assign(mutant[index], { [key]: value });
+        expect(assess(mutant), `${index}/${key}`).toBe(false);
+      }
+    }
+    const read = section(sliceSource, '  const collisionRailCopiesExpression =',
+      '  /* Outcome-level collision proof.');
+    expect(read).toContain('getComputedStyle(element)');
+    expect(read).toContain('element?.getBoundingClientRect()');
+    expect(read).toContain('element?.getClientRects().length');
+    const control = section(sliceSource, '  const collisionRailBaseline =',
+      '  const collisionRecordsPresses = [];');
+    expect(control).toContain('if (!collisionRailCopiesHidden(collisionRailBaseline))');
+    expect(control).toContain("for (const id of ['railinventory', 'railrecords'])");
+    expect(control).toContain("element.style.setProperty('display','flex','important')");
+    expect(control).toContain("finally{if(prior===null)element.removeAttribute('style');else element.setAttribute('style',prior);}");
+    expect(control).toContain("shown?.painted !== true || shown.display !== 'flex'");
+    expect(control).toContain('!collisionRailCopiesHidden(control.restored)');
+    expect(control).toContain('JSON.stringify(control.restored) !== JSON.stringify(collisionRailBaseline)');
+  });
+
   it('declares both native Atlas openers as non-submit buttons', () => {
     const markupErrors = (source: string): string[] => ['railatlas', 'dockatlas'].filter((id) => (
       source.split(`<button id="${id}" type="button"`).length - 1 !== 1
