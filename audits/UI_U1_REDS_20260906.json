@@ -498,6 +498,55 @@
       ],
       "remainingChecks": "large-phone/normal-build/review not run after red.",
       "preparation": "Independent bounded diff plus root review; node syntax and diff checks; no mirrored test added. The native corrected control will run in the fresh required sequence."
+    },
+    {
+      "source": "06c6db3de3722e98788c2e5cc2e9a5ffd5a29c69",
+      "kind": "local-glass-small-phone",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck/artunused/full Vitest/Glass selftest and immutable Slice PASS",
+      "slice": {
+        "runId": "20260906081806742-78145-ba27abe04ef9",
+        "durationMs": 374536,
+        "evidenceDirectory": "UI_U1_SLICE_06c6db3_20260906"
+      },
+      "runId": "20260906082423040-78387-ac3e5c4b06d1",
+      "findings": [
+        {
+          "viewport": "small-phone",
+          "surface": "records-over-survey",
+          "code": "TEXT_CONTRAST_LOW",
+          "element": "#dockrecords",
+          "actual": {
+            "ratio": 1.1,
+            "threshold": 4.5,
+            "color": "rgb(240, 244, 255)",
+            "background": [
+              255,
+              255,
+              255,
+              1
+            ],
+            "sample": "\ud83c\udfc6"
+          },
+          "expected": "WCAG contrast against bright artwork beneath glass"
+        }
+      ],
+      "instrumentFailures": [],
+      "correction": "Narrow button.dock-utility contrast mapping samples the actual glyph, visible unread badge and direct outer text separately while keeping native owner IDs. Related nonmodal control requires exact visible phone9/desktop5 membership, corrupts actual painted foreground/backing, compares complete owner/sample coverage and restores exact styles. Existing compositor, thresholds and control IDs remain.",
+      "carriers": [
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_06c6db3_20260906.json.gz",
+          "sha256": "0475cf79f20da422f050f79dc311dae0c9feaaeeef0191639e7b51e259885239",
+          "originalSha256": "82190e0ea90e5864ceb0c48b23a89679ac700cd77049342975042d796cb17728"
+        },
+        {
+          "file": "UI_U1_SMALL_PHONE_RED_06c6db3_20260906.log.gz",
+          "sha256": "33d0e6a92cece6d23d0c5aa730787d43beaa4c14f38f8c2cea0f67919bc4f403",
+          "originalSha256": "391fe382ac9f79a093e39741a73204944f8e14777616b451c480d021228d1d53"
+        }
+      ],
+      "remainingChecks": "large-phone/normal-build/review not run after red.",
+      "preparation": "Independent bounded implementation and root diff review; syntax/diff checks pass. Existing browser contrast selftest now covers readable nested faces, distinct owners, glyph-only red, badge-only red, hidden badge exclusion, direct text red and restoration. These native cases await the required fresh sequence."
     }
   ]
 }
