@@ -4,7 +4,7 @@
 
 The normal v2 game now owns presentation values in `ui-presentation-tokens.ts`, emitted once
 as CSS custom properties before `app-chrome.ts` measures the shell. `ui-shell-style.ts` owns
-shelf, board/utility dock, desktop rails and objective/trail/caption/hint placement. Inter is
+shelf, bottom launcher and objective/trail/caption/hint placement. Compatibility rails remain hidden. Inter is
 local OFL type; existing Settings font/text/tone preferences take precedence. Semantic
 rarity/resource/Atlas/protected colors retain their owners. Emoji remain the icon system.
 
@@ -17,7 +17,7 @@ with zero padding/border/radius. Long captions use the available90vw/620px width
 caption keeps164px as its minimum bottom offset and rises above the measured hint height
 with8px clearance when larger text needs more room. The existing app-chrome hint observer
 owns that measurement. Inventory opens from the nameplate in the measured two-row shelf; Survey/Charts retain
-their IDs and actions in a separate contextual rail. Selection adds gold without growing a target.
+their IDs and actions in the upper-left context stack. Selection adds gold without growing a target.
 `--topbar-h` measures rendered content; `--row1-h` measures the Search bottom, at least40px.
 There is no sealed fixed shelf-height number: font and text-size choices may increase it.
 
@@ -50,9 +50,27 @@ Wider-screen hint bottom is max(96px, measured dock height+28px); caption bottom
 max(136px, measured dock height+28px+measured hint height+8px). This preserves separate lanes
 when text grows. Existing bottom-anchored utility panels/toasts above900px align to the
 launcher's right edge and stay12px above it; panel interiors and Training stack are unchanged.
-The breadcrumb trail remains a compact v2 lane; v1's final source hides it, so it is not
-claimed as a visible golden match. The same visual-system requirement governs later panel
-work, which still waits at the U1 visual approval stop.
+Nick's next U1 refinement aligns Inventory, health and the context stack in one left column:
+10px inset and clamp(128px,40vw,176px) width on phones; 18px inset and
+clamp(176px,20vw,240px) width on wider screens. The measured topbar has two rows with44px
+minimums,8px gaps and safe-area-aware padding (112px with default text/no safe inset).
+Search/bell occupy the opposite first row; a labelled Current view readout occupies the
+second. Cosmos is the current map scale, not a button. The canonical breadcrumb remains
+inside #trail, now static within the header, single-line with ancestor ellipsis and current
+location priority. It has no click, tab-stop or navigation owner. The original v1 source
+hides its trail, so no visible golden parity is claimed for this v2 addition.
+
+The framed health module retains the real track/fill/text and exact HP count. Its green
+fill, inset quarter ticks, heart badge and HEALTH label are decorative; the existing
+renderStatus writer also projects accessible meter min/max/current/text. Health math is
+unchanged. The number has an independent dark translucent backing and forced-colors support.
+Rows grow for larger text. Survey, Charts and the wrapping Objective readout share the left
+column with8px gaps immediately below the header; no floating action occupies the center.
+A landed portrait<=900 keeps Survey/Charts in one compact row beneath the header and hides
+the objective to preserve the creature roster. AppChrome observes this real action owner
+as well as the shelf; the existing72px safe reading-band rule remains unchanged. Narrow
+landscape's open-panel right safe-column exception still yields health/current-view chrome.
+The bottom launcher is unchanged by this refinement. Later panel work still waits at U1 review.
 
 Notifications shows saved history plus clearly labelled session-only notices while save
 writes are held. Opening the panel does not mark messages read; explicit Mark read persists
@@ -67,7 +85,12 @@ U1 is a scoped parity checkpoint, not completion of the sheet system or U4 layou
 `ui-shell-review.mjs` captures normal-game comparison grids and measured deltas against
 v1's three main goldens. CSS geometry has a1px tolerance; raster differences remain human
 review, never portable PNG-hash equality. Existing Slice/Glass phone outcomes retain negative
-controls adapted to the approved layout. U2 sheet/stack work and U3 panel reskins are pending.
+controls adapted to the approved layout. Header/stack containment, exact native input ownership,
+health contrast and roster clearance are measured. Glass's existing floating-trail fallback
+negative control now explicitly injects that regression below measured fixed owners, records
+native/injected/restored styles and geometry, and restores normal header containment; it is
+not represented as naturally floating chrome. Normal review also probes phone fs-xl and an
+844×390 open Settings panel numerically. U2 sheet/stack work and U3 panel reskins are pending.
 The pasted U2 Training/Settings ordering must be reconciled with THE TRAINING STACK LAW first.
 The integrated audiovisual pilot remains unapproved; U1 does not authorize Phase2.
 

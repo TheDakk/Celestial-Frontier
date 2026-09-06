@@ -134,6 +134,7 @@ export function createAppChromeController(
   const trail = requiredById(chromeDocument, 'trail');
   const playerChip = requiredById(chromeDocument, 'playerchip');
   const primeChip = requiredById(chromeDocument, 'primechip');
+  const hpBar = requiredById(chromeDocument, 'hpbar');
   const hpFill = requiredElement(chromeDocument, '#hpbar .fill');
   const hpText = requiredElement(chromeDocument, '#hpbar .txt');
   const objectiveChip = requiredById(chromeDocument, 'objchip');
@@ -142,7 +143,8 @@ export function createAppChromeController(
   const topbar = requiredById(chromeDocument, 'topbar');
   const dock = requiredById(chromeDocument, 'dock');
   const searchbox = requiredById(chromeDocument, 'searchbox');
-  const surfaceTopChrome = [topbar, searchbox, objectiveChip];
+  const sceneActions = chromeDocument.getElementById('sceneactions');
+  const surfaceTopChrome = [topbar, searchbox, objectiveChip, ...(sceneActions ? [sceneActions] : [])];
   const rootStyle = chromeDocument.documentElement.style;
   let lastSurfaceTrailBottom = 0;
   let contextText = '';
@@ -237,6 +239,13 @@ export function createAppChromeController(
       + ` <span class="dim">— ✦ ${view.essence}<span class="player-worlds"> · ${view.landedWorlds} worlds</span></span>`;
     hpFill.style.width = Math.max(0, Math.min(100, (view.hp / Math.max(1, view.hpMax)) * 100)) + '%';
     hpText.textContent = `${view.hp}/${view.hpMax} HP`;
+    const meterMax = Math.max(1, view.hpMax);
+    hpBar.setAttribute('role', 'meter');
+    hpBar.setAttribute('aria-label', 'Explorer health');
+    hpBar.setAttribute('aria-valuemin', '0');
+    hpBar.setAttribute('aria-valuemax', String(meterMax));
+    hpBar.setAttribute('aria-valuenow', String(Math.max(0, Math.min(meterMax, view.hp))));
+    hpBar.setAttribute('aria-valuetext', hpText.textContent);
     primeChip.innerHTML = '<span class="ico" aria-hidden="true">✦</span> '
       + '<span class="lbl">Prime<span class="prime-full-label"> Codex</span></span> '
       + `<span class="prime-count">${escapeHtml(view.primeCount)}/9</span>`;

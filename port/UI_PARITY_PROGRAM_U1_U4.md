@@ -1,6 +1,19 @@
 # UI parity and presentation program — accepted brief
 
 Nick supplied this brief on 2026-09-05. The quoted program below is retained verbatim.
+
+Latest amendment — Nick's top/left refinement, 2026-09-06: keep the approved bottom
+launcher, align the top and left controls, stack and space the left actions consistently,
+and improve the health gauge. Cosmos belongs at the top; no floating button belongs in the
+middle of the scene. Cosmos is a read-only current-view label, so it now lives inside the
+header opposite health. Inventory/HP/context actions share a width and left edge;8px gaps
+and44px targets remain. Landed portrait actions use a compact top row to protect roster
+space. HP retains exact values and health math with an accessible meter and framed paint.
+This is another bounded U1 revision under the same visual-review stop, with no U2–U4,
+Phase2, art/audio asset, domain/save, workflow or hosted authorization.
+
+### Uniform launcher amendment (still applicable)
+
 Current amendment — Nick's U1 visual review, 2026-09-06: the whole UI must remain uniform
 across devices. Desktop/tablet reflect the phone's layout and visual language, with compact,
 readable controls and useful screen space rather than wholesale magnification. Keep the same

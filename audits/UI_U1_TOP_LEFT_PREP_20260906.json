@@ -1,0 +1,18 @@
+{
+  "scope": "Pre-commit focused preparation only, not exact-source browser certification",
+  "logs": [
+    {
+      "file": "UI_U1_TOP_LEFT_PREP_app-chrome_20260906.log.gz",
+      "sha256": "0dafc7d60a3f20bcd807215689d5f831d2967f38c53d7d4c373dd1397e4825ad",
+      "sourceSha256": "a8ef095da9aee9f6c1b4d9ffefd1bfe05770b2e262332613aeb34125f0dab5fd"
+    },
+    {
+      "file": "UI_U1_TOP_LEFT_PREP_instruments_20260906.log.gz",
+      "sha256": "bf95d1fef56cbccd614648254c95e9fb337de324d59e5f109065b6a55ed7aa6d",
+      "sourceSha256": "d2679f7f110a4d715f65ae3a55041a9ccb72594c7fa48e7cc76514fc7e2942ee"
+    }
+  ],
+  "appChrome": "typecheck and 2 suites / 11 tests pass",
+  "instruments": "syntax and 26 focused tests and Glass selftest pass",
+  "reviewInstrument": "agent reports syntax/diff, 15 fit mutants, 5 geometry mutants/restoration, 45 expressions compile; expected 63 native deliveries; browser verification pending"
+}

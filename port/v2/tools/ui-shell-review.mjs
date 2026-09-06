@@ -79,17 +79,34 @@ export function readU1PhoneShell(training = false) {
 }
 
 function shellGeometry() {
-  const r = id => { const node = document.getElementById(id); if (!node) return null;
+  const selectors = { location: '.location-readout', locationLabel: '.location-label' };
+  const r = id => { const node = selectors[id] ? document.querySelector(selectors[id]) : document.getElementById(id); if (!node) return null;
     const b = node.getBoundingClientRect(), s = getComputedStyle(node);
     return { id, left: b.left, top: b.top, right: b.right, bottom: b.bottom, width: b.width, height: b.height,
-      visible: s.display !== 'none' && s.visibility !== 'hidden' && b.width > 0 && b.height > 0 }; };
+      visible: s.display !== 'none' && s.visibility !== 'hidden' && b.width > 0 && b.height > 0,
+      overflowX: node.scrollWidth > node.clientWidth + 1, overflowY: node.scrollHeight > node.clientHeight + 1 }; };
   const styles = getComputedStyle(document.documentElement), ids = ['topbar', 'playerchip', 'hpbar', 'searchbox',
-    'dock', 'primechip', 'objchip', 'trail', 'ctxbar', 'hintpill', 'sceneactions', 'dockinventory', 'shelfnotifications', 'raillft', 'railrgt'];
+    'dock', 'primechip', 'objchip', 'trail', 'ctxbar', 'hintpill', 'sceneactions', 'dockinventory', 'shelfnotifications', 'raillft', 'railrgt', 'location', 'locationLabel', 'docksurvey', 'dockcharts', 'setpanel'];
   const dockNode = document.getElementById('dock'), first = r('dockcharters'), second = r('dockcodex');
   const gapPoint = first?.visible && second?.visible ? { x: (first.right + second.left) / 2, y: first.top + first.height / 2 } : null;
   const gapHit = gapPoint ? document.elementFromPoint(gapPoint.x, gapPoint.y) : null;
+  const location = document.querySelector('.location-readout'), label = document.querySelector('.location-label'), trail = document.getElementById('trail');
+  const stack = r('sceneactions'), centralPoint = { x: innerWidth / 2, y: stack.top + 22 };
+  const centralHit = document.elementFromPoint(centralPoint.x, centralPoint.y);
+  const topLeftActions = ['dockinventory', 'shelfnotifications', 'docksurvey', 'dockcharts'].map(id => {
+    const node = document.getElementById(id), rect = r(id), hit = document.elementFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2);
+    return { ...rect, native: node.tagName === 'BUTTON' && !node.disabled && !node.closest('[inert]'),
+      named: !!(node.getAttribute('aria-label') || node.textContent || '').trim(), hit: hit === node || node.contains(hit) };
+  });
   return { viewport: { width: innerWidth, height: innerHeight }, rects: Object.fromEntries(ids.map(id => [id, r(id)])),
     dockGap: { point: gapPoint, owned: gapHit === dockNode, hit: gapHit?.id || gapHit?.tagName || null },
+    topLeftActions, currentView: { inHeader: !!location?.closest('#topbar') && !!location.contains(trail),
+      labelOutsideTrail: !!label && !!location?.contains(label) && !trail.contains(label), label: label?.textContent?.trim() ?? null,
+      interactiveCount: location?.querySelectorAll('button,input,a[href],[role="button"],[tabindex]:not([tabindex="-1"])').length ?? -1,
+      selfInteractive: !!location?.matches('button,input,a[href],[role="button"]') || !!trail?.matches('button,input,a[href],[role="button"]'),
+      readoutTabIndex: location?.tabIndex, trailTabIndex: trail?.tabIndex,
+      pointerTransparent: !!location && getComputedStyle(location).pointerEvents === 'none' && getComputedStyle(trail).pointerEvents === 'none' },
+    centralSpace: { point: centralPoint, canvas: centralHit === document.querySelector('canvas'), hit: centralHit?.id || centralHit?.tagName || null },
     font: getComputedStyle(document.body).fontFamily, fontSize: getComputedStyle(document.body).fontSize,
     topbarPublished: parseFloat(styles.getPropertyValue('--topbar-h')), row1Published: parseFloat(styles.getPropertyValue('--row1-h')),
     safeBottom: parseFloat(styles.getPropertyValue('--safe-bottom')) || 0,
@@ -117,11 +134,23 @@ function metricDeltas(state) {
   add('shelf bell right inset', v.width - r.shelfnotifications.right - safeRight, phone ? 10 : 18);
   add('Search/bell centre alignment', r.searchbox.top + r.searchbox.height / 2
     - r.shelfnotifications.top - r.shelfnotifications.height / 2, 0);
-  add('objective left inset', r.objchip.left, 18);
-  add('objective top offset', r.objchip.top - r.topbar.height, 128);
-  if (r.trail.visible) add('trail top offset', r.trail.top - r.topbar.height, 8, 'v2 continuation in reserved lane');
+  add('header height (default text)', r.topbar.height, 112, 'two aligned rows; larger Settings text may grow');
+  add('header first-row alignment', r.dockinventory.top - r.searchbox.top, 0, 'uniform header');
+  add('header second-row alignment', r.hpbar.top - r.location.top, 0, 'uniform header');
+  add('header row gap', r.hpbar.top - r.dockinventory.bottom, 8, 'uniform header');
+  add('health/nameplate left alignment', r.hpbar.left - r.dockinventory.left, 0, 'uniform header');
+  add('health/nameplate width alignment', r.hpbar.width - r.dockinventory.width, 0, 'uniform header');
+  add('Current view/Search left alignment', r.location.left - r.searchbox.left, 0, 'uniform header');
+  add('Current view/bell right alignment', r.location.right - r.shelfnotifications.right, 0, 'uniform header');
+  add('left stack top gap', r.sceneactions.top - r.topbar.bottom, 8, 'uniform left stack');
+  for (const id of ['docksurvey', 'dockcharts', 'objchip']) {
+    add(id + ' left alignment', r[id].left - r.dockinventory.left, 0, 'uniform left stack');
+    add(id + ' width alignment', r[id].width - r.dockinventory.width, 0, 'uniform left stack');
+  }
+  add('Survey/Charts gap', r.dockcharts.top - r.docksurvey.bottom, 8, 'uniform left stack');
+  add('Charts/Objective gap', r.objchip.top - r.dockcharts.bottom, 8, 'uniform left stack');
+  add('clear central scene', state.centralSpace.canvas ? 1 : 0, 1, 'native canvas beside left stack', 0);
   if (phone) {
-    add('phone shelf height', r.topbar.height, 88, 'U1 default content height; v1 has no fixed shelf-height law');
     add('phone dock bottom', v.height - r.dock.bottom - safeBottom, 12);
     add('phone dock width', r.dock.width, 320);
     add('phone dock height (default text)', r.dock.height, 92, 'U1 default Inter content baseline; larger text may grow');
@@ -156,6 +185,37 @@ function metricDeltas(state) {
   }
   return rows;
 }
+function topLeftOutcome(state, narrowPanel = false) {
+  const r = state.rects, v = state.viewport, view = state.currentView, errors = [];
+  const viewport = { left: 0, top: 0, right: v.width, bottom: v.height };
+  const inside = (box, parent) => box?.visible && box.left >= parent.left - 1 && box.top >= parent.top - 1
+    && box.right <= parent.right + 1 && box.bottom <= parent.bottom + 1;
+  if (!inside(r.topbar, viewport) || !inside(r.sceneactions, viewport)) errors.push('header or left controls leave the viewport');
+  if (Math.abs(state.topbarPublished - r.topbar.height) > 1) errors.push('published header height does not match rendered content');
+  for (const action of state.topLeftActions) {
+    if (!inside(action, viewport) || !action.native || !action.named || !action.hit || action.width < 44 || action.height < 44)
+      errors.push(action.id + ' is not a bounded named native44px action');
+    if (narrowPanel && action.left < v.width / 2) errors.push(action.id + ' is outside the panel-safe right column');
+  }
+  for (const id of ['dockinventory', 'searchbox', 'shelfnotifications']) if (!inside(r[id], r.topbar)) errors.push(id + ' leaves the header');
+  if (r.searchbox.width < 44 || r.searchbox.height < 44) errors.push('Search loses its44px floor');
+  if (narrowPanel) {
+    if (r.hpbar.visible || r.location.visible || r.objchip.visible) errors.push('noninteractive status did not yield to the narrow panel');
+    if (r.searchbox.left < v.width / 2 || r.sceneactions.bottom > r.dock.top - 8) errors.push('narrow right-column controls collide with the launcher');
+  } else {
+    for (const id of ['hpbar', 'location', 'locationLabel', 'trail']) if (!inside(r[id], r.topbar)) errors.push(id + ' is not contained in the header');
+    if (Math.abs(r.sceneactions.top - r.topbar.bottom - 8) > 1) errors.push('left stack does not clear the measured header by8px');
+    for (const id of ['hpbar', 'docksurvey', 'dockcharts', 'objchip']) if (Math.abs(r[id].left - r.dockinventory.left) > 1 || Math.abs(r[id].width - r.dockinventory.width) > 1) errors.push(id + ' loses the shared left edge or width');
+    if (!view.inHeader || !view.labelOutsideTrail || view.label !== 'Current view' || view.interactiveCount !== 0
+      || view.selfInteractive || view.readoutTabIndex >= 0 || view.trailTabIndex >= 0 || !view.pointerTransparent)
+      errors.push('Current view is not a labelled, noninteractive header readout separate from canonical trail');
+    if (!inside(r.trail, r.location) || r.trail.overflowX || r.trail.overflowY) errors.push('Current view text clips its readout');
+    if (!inside(r.objchip, r.sceneactions) || r.objchip.overflowX || r.objchip.overflowY) errors.push('Objective clips its aligned stack');
+    if (r.sceneactions.right >= v.width / 2 || !state.centralSpace.canvas) errors.push('left controls obstruct the central scene');
+    if (r.sceneactions.bottom > Math.min(r.ctxbar.top, r.hintpill.top, r.dock.top) - 8) errors.push('left stack collides with a bottom lane');
+  }
+  return { pass: errors.length === 0, errors };
+}
 const LAUNCHER_PANELS = [
   ['dockcharters', 'chpanel'], ['dockcodex', 'codexpanel'], ['primechip', 'primepanel'],
   ['dockshipyard', 'shipyardpanel'], ['dockatlas', 'atlaspanel'], ['dockrecords', 'recpanel'],
@@ -175,7 +235,7 @@ function launcherOutcome(state) {
 function installNativeReviewTrace(viewport) {
   const snapshot = () => ({ at: performance.now(), trail: [...document.querySelectorAll('#trail .seg')].map(node => node.textContent),
     context: document.getElementById('ctxbar')?.textContent ?? null, focusedId: document.activeElement?.id ?? null,
-    bodyClasses: document.body.className });
+    bodyClasses: document.body.className, viewport: { width: innerWidth, height: innerHeight } });
   const describe = node => node instanceof Element ? { tag: node.tagName, id: node.id || null,
     sel: node.getAttribute('data-sel'), close: node.getAttribute('data-pnx') } : { tag: node === document ? '#document' : '#window' };
   const trace = { viewport, events: [], changes: [], active: null, nextId: 0, overflow: false, snapshot };
@@ -232,7 +292,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       'New game uses native Skip then bounded Escape ascent to the visible Cosmos breadcrumb, not a legacy import; camera, progression and save differences remain visible in the comparison.',
       'Notification screenshots use only naturally available messages; this diagnostic does not certify cross-session persistence.',
       'Tablet and desktop now use a centered nine-button launcher at 72px and 80px pitch respectively; golden rasters retain the earlier layout for human comparison.',
-      'The three default-text viewports do not certify the separate short-landscape panel-open placement or enlarged Settings text.',
+      'Three default-text screenshot views are supplemented by one numeric phone fs-xl probe and one844x390 Settings-open probe; these remain bounded diagnostics, not a U4 matrix.',
     ] };
   const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
     '.webp': 'image/webp', '.wav': 'audio/wav', '.svg': 'image/svg+xml', '.woff2': 'font/woff2', '.png': 'image/png' };
@@ -317,11 +377,11 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       const candidate = await capture(`u1-main-${name}.png`);
       const goldenFile = `ui-main-${name}.png`, golden = fs.readFileSync(path.join(goldenRoot, goldenFile));
       assert.equal(sha(golden), goldenManifest.find(row => row.file === goldenFile)?.sha256, 'golden integrity');
-      const launcher = launcherOutcome(state);
-      const row = { name, scene: currentScene, state, deltas, phone, launcher, golden: { file: goldenFile, sha256: sha(golden) },
-        pass: deltas.every(delta => delta.pass) && launcher.pass && !state.horizontalOverflow && (!phone || phone.ok), controls: [] };
+      const launcher = launcherOutcome(state), topLeft = topLeftOutcome(state);
+      const row = { name, scene: currentScene, state, deltas, phone, launcher, topLeft, golden: { file: goldenFile, sha256: sha(golden) },
+        pass: deltas.every(delta => delta.pass) && launcher.pass && topLeft.pass && !state.horizontalOverflow && (!phone || phone.ok), controls: [] };
       report.rows.push(row); writeReport();
-      assert(row.pass, name + ' U1 geometry: ' + JSON.stringify({ deltas: deltas.filter(d => !d.pass), phone: phone?.errors, launcher: launcher.errors }));
+      assert(row.pass, name + ' U1 geometry: ' + JSON.stringify({ deltas: deltas.filter(d => !d.pass), phone: phone?.errors, launcher: launcher.errors, topLeft: topLeft.errors }));
       // Open and close the real shelf bell without seeding history or modifying panel styling.
       await clickNative('#shelfnotifications');
       await wait(`getComputedStyle(document.getElementById('notificationpanel')).display !== 'none'`);
@@ -357,7 +417,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       writeReport();
       assert.equal(notification.closed.focusedId, 'shelfnotifications', name + ' Notifications Close did not restore its exact native opener');
       assert.deepEqual(notification.closed.scene.trail, ['Cosmos']);
-      assert(notification.closed.deltas.every(delta => delta.pass) && launcherOutcome(restoredState).pass && !restoredState.horizontalOverflow
+      assert(notification.closed.deltas.every(delta => delta.pass) && launcherOutcome(restoredState).pass && topLeftOutcome(restoredState).pass && !restoredState.horizontalOverflow
         && (!notification.closed.phone || notification.closed.phone.ok), name + ' main shell did not restore after Notifications Close');
       // Every launcher owner must reach its own real panel and return focus to
       // that same button. This is shell reachability, not a U2 panel redesign.
@@ -388,15 +448,15 @@ export async function runUiShellReview(buildArgument, outputArgument) {
           phone: width <= 700 ? await evaluate(`(${readU1PhoneShell.toString()})(false)`) : null };
         action.closePass = action.closed.focusedId === openerId && action.closed.expanded === 'false'
           && JSON.stringify(action.closed.scene.trail) === '["Cosmos"]' && action.closed.deltas.every(delta => delta.pass)
-          && action.closed.launcher.pass && !closedState.horizontalOverflow && (!action.closed.phone || action.closed.phone.ok);
+          && action.closed.launcher.pass && topLeftOutcome(closedState).pass && !closedState.horizontalOverflow && (!action.closed.phone || action.closed.phone.ok);
         writeReport(); assert(action.closePass, name + ' native launcher Close did not restore its exact opener and shell: ' + JSON.stringify(action));
       }
       // Break a measured anchor in the live document, require red, restore and re-observe green.
       const control = await evaluate(`(()=>{const e=document.getElementById('objchip'),prior={present:e.hasAttribute('style'),value:e.getAttribute('style')};
-        let broken;try{e.style.setProperty('left','118px','important');broken=(${shellGeometry.toString()})();}
+        let broken;try{e.style.setProperty('transform','translateX(100px)','important');broken=(${shellGeometry.toString()})();}
         finally{e.setAttribute('style','');e.removeAttribute('style');if(prior.present)e.setAttribute('style',prior.value);}
         return{broken,restored:(${shellGeometry.toString()})(),styleRestored:e.hasAttribute('style')===prior.present&&e.getAttribute('style')===prior.value};})()`);
-      assert(metricDeltas(control.broken).some(d => d.name === 'objective left inset' && !d.pass));
+      assert(metricDeltas(control.broken).some(d => d.name === 'objchip left alignment' && !d.pass));
       assert(control.styleRestored && metricDeltas(control.restored).every(d => d.pass) && launcherOutcome(control.restored).pass);
       row.controls.push({ name: 'live objective displaced100px; exact style restored', brokenDeltas: metricDeltas(control.broken), styleRestored: control.styleRestored, restored: true });
       const metricMutations = [
@@ -406,10 +466,17 @@ export async function runUiShellReview(buildArgument, outputArgument) {
         ['Search/bell gap', '#searchbox', 'transform', 'translateX(10px)'],
         ['shelf bell right inset', '#shelfnotifications', 'transform', 'translateX(10px)'],
         ['Search/bell centre alignment', '#searchbox', 'transform', 'translateY(10px)'],
-        ['objective top offset', '#objchip', 'top', '1px'],
-        ...(state.rects.trail.visible ? [['trail top offset', '#trail', 'top', '1px']] : []),
+        ['header height (default text)', '#topbar', 'min-height', '188px'],
+        ['header first-row alignment', '#dockinventory', 'transform', 'translateY(10px)'],
+        ['header second-row alignment', '.location-readout', 'transform', 'translateY(10px)'],
+        ['header row gap', '#hpbar', 'transform', 'translateY(10px)'],
+        ['Current view/Search left alignment', '.location-readout', 'transform', 'translateX(10px)'],
+        ['left stack top gap', '#sceneactions', 'transform', 'translateY(10px)'],
+        ['Survey/Charts gap', '#dockcharts', 'transform', 'translateY(10px)'],
+        ['Charts/Objective gap', '#objchip', 'transform', 'translateY(10px)'],
+        ['docksurvey width alignment', '#docksurvey', 'width', '90%'],
+        ['clear central scene', '#sceneactions', 'left', '50%'],
         ...(width <= 700 ? [
-          ['phone shelf height', '#topbar', 'min-height', '188px'],
           ['phone dock bottom', '#dock', 'bottom', '1px'],
           ['phone dock width', '#dock', 'width', '280px'],
           ['phone dock height (default text)', '#dock', 'height', '120px'],
@@ -465,6 +532,56 @@ export async function runUiShellReview(buildArgument, outputArgument) {
         writeReport();
         assert(!broken.pass && proof.styleRestored && row.controls.at(-1).restored,
           name + ' native launcher control failed: ' + JSON.stringify(row.controls.at(-1)));
+      }
+      for (const [attribute, value] of [['tabindex', '0'], ['role', 'button']]) {
+        const proof = await evaluate(`(()=>{const n=document.querySelector('.location-readout'),attribute=${JSON.stringify(attribute)},prior={present:n.hasAttribute(attribute),value:n.getAttribute(attribute)};let broken;
+          try{n.setAttribute(attribute,${JSON.stringify(value)});broken=(${shellGeometry.toString()})();}
+          finally{n.removeAttribute(attribute);if(prior.present)n.setAttribute(attribute,prior.value);}
+          return{broken,restored:(${shellGeometry.toString()})(),attributeRestored:n.hasAttribute(attribute)===prior.present&&n.getAttribute(attribute)===prior.value};})()`);
+        const broken = topLeftOutcome(proof.broken), restored = topLeftOutcome(proof.restored);
+        row.controls.push({ name: 'Current view rejects ' + attribute + '=' + value, broken, brokenObservation: proof.broken,
+          attributeRestored: proof.attributeRestored, restoredObservation: proof.restored, restored: proof.attributeRestored && restored.pass });
+        writeReport(); assert(!broken.pass && row.controls.at(-1).restored, 'Current view accepted an interactive affordance');
+      }
+      // Keep the enlarged-text/short-landscape check bounded to two numeric
+      // observations in this same document; no fourth screenshot or save write.
+      if (name === 'phone') {
+        row.extraProbes = [];
+        const priorClass = await evaluate(`({present:document.body.hasAttribute('class'),value:document.body.getAttribute('class')})`);
+        const enlarged = { name: 'phone fs-xl top/left fit' }; row.extraProbes.push(enlarged);
+        try {
+          await evaluate(`(()=>{document.body.classList.remove('fs-lg');document.body.classList.add('fs-xl');return true;})()`); await frames();
+          enlarged.state = await evaluate(`(${shellGeometry.toString()})()`);
+          enlarged.topLeft = topLeftOutcome(enlarged.state);
+          enlarged.phone = await evaluate(`(${readU1PhoneShell.toString()})(false)`);
+          enlarged.pass = enlarged.topLeft.pass && enlarged.phone.ok && !enlarged.state.horizontalOverflow;
+          writeReport(); assert(enlarged.pass, 'phone fs-xl top/left fit: ' + JSON.stringify(enlarged));
+        } finally {
+          enlarged.classRestored = await evaluate(`(()=>{const p=${JSON.stringify(priorClass)};document.body.removeAttribute('class');if(p.present)document.body.setAttribute('class',p.value);
+            return document.body.hasAttribute('class')===p.present&&document.body.getAttribute('class')===p.value;})()`); await frames();
+          writeReport();
+        }
+        const normal = await evaluate(`(${shellGeometry.toString()})()`);
+        assert(enlarged.classRestored && topLeftOutcome(normal).pass && metricDeltas(normal).every(delta => delta.pass), 'phone fs-xl probe did not restore exact classes and default geometry');
+        const narrow = { name: '844x390 native Settings-open top/left fit' }; row.extraProbes.push(narrow);
+        try {
+          await send('Emulation.setDeviceMetricsOverride', { width: 844, height: 390, deviceScaleFactor: 1, mobile: true }); await frames();
+          await clickNative('#docksets'); await wait(`getComputedStyle(document.getElementById('setpanel')).display !== 'none'`); await frames();
+          narrow.state = await evaluate(`(${shellGeometry.toString()})()`);
+          narrow.topLeft = topLeftOutcome(narrow.state, true);
+          narrow.phone = await evaluate(`(${readU1PhoneShell.toString()})(false)`);
+          narrow.pass = narrow.topLeft.pass && narrow.phone.ok && !narrow.state.horizontalOverflow;
+          writeReport(); assert(narrow.pass, 'narrow panel-open top/left fit: ' + JSON.stringify(narrow));
+          await clickNative('#setpanel [data-pnx]'); await wait(`getComputedStyle(document.getElementById('setpanel')).display === 'none'`); await frames();
+          narrow.closed = { focusedId: await evaluate('document.activeElement?.id'), scene: await scene() }; writeReport();
+          assert.equal(narrow.closed.focusedId, 'docksets'); assert.deepEqual(narrow.closed.scene.trail, ['Cosmos']);
+        } finally {
+          await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile }); await frames(); writeReport();
+        }
+        const restored = await evaluate(`(${shellGeometry.toString()})()`);
+        narrow.restored = restored.viewport.width === width && restored.viewport.height === height
+          && topLeftOutcome(restored).pass && metricDeltas(restored).every(delta => delta.pass) && launcherOutcome(restored).pass;
+        writeReport(); assert(narrow.restored, 'narrow Settings probe did not restore the original viewport and shell');
       }
       await collectNativeTrace();
       // Use an isolated generated proof page for exact-sized originals, raster difference and contact sheet.

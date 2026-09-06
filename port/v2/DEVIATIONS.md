@@ -1,5 +1,17 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U1 top/left refinement — 2026-09-06
+
+Nick approved the bottom launcher and requested aligned top/left controls, stacked actions,
+a graphical HP upgrade, and Cosmos at the top with no floating central buttons. The header
+now holds the noninteractive Current view trail and the framed HP meter in aligned second
+rows; the left action/objective stack shares Inventory/HP width and8px gaps. This supersedes
+U1's floating breadcrumb/objective offsets. Landed portrait uses a compact top action row
+for roster clearance; the measured72px rule remains. Existing controls, canonical trail,
+health math, panel/Training owners and bottom launcher are unchanged. The Glass fallback
+fixture explicitly injects a floating-trail regression and restores native containment.
+See UI_PRESENTATION.md and audits/UI_U1_TOP_LEFT_REVISION_20260906.md. U1 review still gates U2.
+
 ## U1 uniform launcher amendment — 2026-09-06
 
 Nick's visual review supersedes desktop/tablet side rails and the bottom-right-only utility

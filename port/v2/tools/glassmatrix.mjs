@@ -6732,6 +6732,15 @@ async function reportSelftest() {
     }),
   };
   const fallbackControl = {
+    error: null,
+    fixture: {
+      kind: 'injected-floating-trail-regression', error: null,
+      nativeBaseline: { ...visiblePortraitBaseline, headerContained: true, fixedChromeBottom: 52 },
+      originalStyle: { present: false, value: null }, originalRect: [10, 20, 100, 36],
+      injectedTop: 60, injectedRect: [10, 60, 100, 76], injectedStyle: 'position: fixed; top: 60px;',
+      injectedBaseline: { ...visiblePortraitBaseline, headerContained: false }, observedOutsideHeader: true,
+      restoredStyle: { present: false, value: null }, nativeRestored: { ...visiblePortraitBaseline, headerContained: true },
+    },
     baseline: visiblePortraitBaseline,
     prior: { value: '', priority: '', computed: '0px' },
     mutation: {
@@ -6746,6 +6755,7 @@ async function reportSelftest() {
           { id: 'hpbar', visible: true, gap: 8 },
           { id: 'searchbox', visible: true, gap: 8 },
           { id: 'objchip', visible: false, gap: -40 },
+          { id: 'sceneactions', visible: true, gap: 8 },
         ],
       },
     },
@@ -6756,6 +6766,13 @@ async function reportSelftest() {
   };
   const fallbackControls = {
     positive: portraitFallbackControlOutcome(fallbackControl),
+    unlabelledFixture: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl), fixture: undefined }),
+    falseFloatingFixture: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
+      fixture: { ...structuredClone(fallbackControl.fixture), observedOutsideHeader: false } }),
+    missingNativeRestoration: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
+      fixture: { ...structuredClone(fallbackControl.fixture), nativeRestored: { ok: true, headerContained: false } } }),
+    lostStylePresence: portraitFallbackControlOutcome({ ...structuredClone(fallbackControl),
+      fixture: { ...structuredClone(fallbackControl.fixture), restoredStyle: { present: true, value: '' } } }),
     noOp: portraitFallbackControlOutcome({
       ...structuredClone(fallbackControl),
       mutation: { ...fallbackControl.mutation, requested: '0px',
@@ -6921,6 +6938,8 @@ async function reportSelftest() {
     || !bandControls.positive.ok || bandControls.noOp.ok || bandControls.ineligible.ok
     || bandControls.wrongRestoration.ok
     || !fallbackControls.positive.ok || fallbackControls.noOp.ok || fallbackControls.ineligible.ok
+    || fallbackControls.unlabelledFixture.ok || fallbackControls.falseFloatingFixture.ok
+    || fallbackControls.missingNativeRestoration.ok || fallbackControls.lostStylePresence.ok
     || fallbackControls.wrongRestoration.ok || fallbackControls.collapsedStrip.ok
     || fallbackControls.inaccessibleScroll.ok || fallbackControls.fixedRowOverlap.ok
     || !portraitCampaignControls.positive.ok || portraitCampaignControls.noEligible.ok
@@ -9262,6 +9281,25 @@ function portraitBandControlOutcome(control) {
 }
 
 function portraitFallbackControlOutcome(control) {
+  const fixture = control?.fixture;
+  const nativeRect = fixture?.originalRect, injectedRect = fixture?.injectedRect;
+  const finiteRect = (rect) => Array.isArray(rect) && rect.length === 4
+    && rect.every(Number.isFinite) && rect[2] > rect[0] && rect[3] > rect[1];
+  const labelledFaultFixture = fixture?.kind === 'injected-floating-trail-regression'
+    && fixture?.error === null && control?.error === null
+    && fixture?.nativeBaseline?.ok === true && fixture?.nativeBaseline?.headerContained === true
+    && finiteRect(nativeRect) && finiteRect(injectedRect)
+    && Number.isFinite(fixture?.nativeBaseline?.fixedChromeBottom)
+    && injectedRect[1] >= fixture.nativeBaseline.fixedChromeBottom + 7.5
+    && fixture?.observedOutsideHeader === true
+    && fixture?.injectedBaseline?.ok === true && fixture?.injectedBaseline?.headerContained === false
+    && fixture?.injectedBaseline?.trailVisible === true && fixture?.injectedBaseline?.fallback === false
+    && typeof fixture?.injectedStyle === 'string' && fixture.injectedStyle.length > 0;
+  const fixtureRestored = typeof fixture?.originalStyle?.present === 'boolean'
+    && fixture?.restoredStyle?.present === fixture.originalStyle.present
+    && fixture?.restoredStyle?.value === fixture.originalStyle.value
+    && (fixture.originalStyle.present ? typeof fixture.originalStyle.value === 'string' : fixture.originalStyle.value === null)
+    && fixture?.nativeRestored?.ok === true && fixture?.nativeRestored?.headerContained === true;
   const baseSafe = Number(control?.mutation?.baseSafe);
   const forcedSafe = Number(control?.mutation?.forcedSafe);
   const computedSafe = Number.parseFloat(control?.mutation?.computed);
@@ -9278,12 +9316,14 @@ function portraitFallbackControlOutcome(control) {
         && outcome.scrollHeight > outcome.clientHeight));
   const fixedRows = outcome?.fixedRows;
   const fixedClearance = outcome?.fixedClear === true
-    && Array.isArray(fixedRows) && fixedRows.length === 4
-    && ['playerchip', 'hpbar', 'searchbox', 'objchip']
+    && Array.isArray(fixedRows) && fixedRows.length === 5
+    && ['playerchip', 'hpbar', 'searchbox', 'objchip', 'sceneactions']
       .every((id) => fixedRows.some((row) => row?.id === id))
     && fixedRows.every((row) => row?.visible === false
       || (Number.isFinite(row?.gap) && row.gap >= 5.5));
   const checks = Object.freeze({
+    labelledFaultFixture,
+    fixtureRestored,
     eligibleBaseline: portraitControlBaselineEligible(control?.baseline),
     mutationApplied: typeof control?.mutation?.requested === 'string'
       && typeof control?.mutation?.property?.value === 'string'
@@ -13149,7 +13189,7 @@ async function main() {
            HP/search/trail/objective despite clearing the dock. */
         await evalIn(`document.getElementById('docksurvey')?.click()`);
         await waitFor('survey closed for top-chrome clearance', `!window.__CF_SLICE__.api.state().cardOpen`);
-        await waitFor('deferred lower/top chrome measurement after survey close', `(()=>{ const root=getComputedStyle(document.documentElement),ctx=document.getElementById('ctxbar'),dock=document.getElementById('dock'),trail=document.getElementById('trail'),fixed=['topbar','searchbox','objchip'].map(id=>document.getElementById(id)),fallback=document.body.classList.contains('surface-trail-yield');
+        await waitFor('deferred lower/top chrome measurement after survey close', `(()=>{ const root=getComputedStyle(document.documentElement),ctx=document.getElementById('ctxbar'),dock=document.getElementById('dock'),trail=document.getElementById('trail'),fixed=['topbar','searchbox','objchip','sceneactions'].map(id=>document.getElementById(id)),fallback=document.body.classList.contains('surface-trail-yield');
           const visibleBottom=(el)=>{const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0?r.bottom:0;},
             expectedTop=Math.max(...fixed.map(visibleBottom),fallback?0:visibleBottom(trail));
           return Math.abs(parseFloat(root.getPropertyValue('--ctx-h'))-ctx.offsetHeight)<0.6&&Math.abs(parseFloat(root.getPropertyValue('--dock-h'))-dock.offsetHeight)<0.6&&Math.abs(parseFloat(root.getPropertyValue('--surface-chrome-bottom'))-expectedTop)<0.6;})()`);
@@ -13157,7 +13197,7 @@ async function main() {
         const landscapeSurfaceYieldsTrail = vp.width <= 900 && vp.width > vp.height;
         const portraitSurface = vp.width <= 900 && vp.width <= vp.height;
         const chromeRestoreCheck = `(()=>{ const fallback=document.body.classList.contains('surface-trail-yield'),rows=['trail','objchip'].map(id=>{const el=document.getElementById(id);return {id,text:(el?.textContent||'').trim(),display:el?getComputedStyle(el).display:'missing'};});
-          return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?${landscapeSurfaceYieldsTrail ? "r.display==='none'" : portraitSurface ? "r.display===(fallback?'none':'block')" : "r.display!=='none'"}:${mobileSurfaceYieldsObjective ? "r.display==='none'" : "r.display!=='none'"})),rows,fallback};})()`;
+          return {ok:rows.every(r=>r.text.length>0&&(r.id==='trail'?${landscapeSurfaceYieldsTrail ? "r.display==='none'" : portraitSurface ? "r.display===(fallback?'none':'flex')" : "r.display!=='none'"}:${mobileSurfaceYieldsObjective ? "r.display==='none'" : "r.display!=='none'"})),rows,fallback};})()`;
         const chromeRestoreBaseline = await evalIn(chromeRestoreCheck);
         const chromeRestoreExpected = landscapeSurfaceYieldsTrail
           ? 'short-landscape surface mode keeps populated trail/objective rows yielded to Planetside'
@@ -13210,7 +13250,12 @@ async function main() {
           const portraitBandCheck = `(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),
             head=side?.firstElementChild,specimen=side?.querySelector('[data-sel="planetside-sp"]');
             if(!side||!trail||!head||!specimen)return {ok:false,why:'missing populated band surface'};
-            const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ts=getComputedStyle(trail),ss=getComputedStyle(side),prior=side.scrollTop;
+            const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ts=getComputedStyle(trail),ss=getComputedStyle(side),prior=side.scrollTop,
+              header=document.getElementById('topbar'),h=header?.getBoundingClientRect(),
+              fixedRows=['topbar','searchbox','objchip','sceneactions'].map(id=>{const el=document.getElementById(id),r=el?.getBoundingClientRect(),s=el?getComputedStyle(el):null;
+                return {id,visible:!!r&&s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0,bottom:r?.bottom??null};}),
+              fixedChromeBottom=Math.max(0,...fixedRows.filter(row=>row.visible).map(row=>row.bottom)),
+              headerContained=!!h&&header.contains(trail)&&t.left>=h.left-1&&t.right<=h.right+1&&t.top>=h.top-1&&t.bottom<=h.bottom+1;
             const trailVisible=ts.display!=='none'&&ts.visibility!=='hidden'&&t.width>0&&t.height>0,
               gap=trailVisible?a.top-t.bottom:null,inside=(r)=>r.bottom>a.top+1&&r.top<a.bottom-1;
             const headAtRest=head.getBoundingClientRect(),specimenAtRest=specimen.getBoundingClientRect(),headVisible=inside(headAtRest),specimenVisible=inside(specimenAtRest);
@@ -13222,12 +13267,14 @@ async function main() {
             return {ok:meaningful&&clear&&policy&&headVisible&&specimenReachable&&scrollContract,meaningful,clear,policy,headVisible,specimenVisible,specimenReachable,scrollContract,
               trailVisible,gap,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,
               overflowY:ss.overflowY,maxScroll,observedScroll,surfaceChromeBottom:getComputedStyle(document.documentElement).getPropertyValue('--surface-chrome-bottom').trim(),
-              fallback:document.body.classList.contains('surface-trail-yield')}; })()`;
-          const portraitBaseline = await evalIn(portraitBandCheck);
+              fallback:document.body.classList.contains('surface-trail-yield'),headerContained,header:h?[h.left,h.top,h.right,h.bottom]:null,
+              fixedChromeBottom,fixedRows}; })()`;
+          const portraitNativeCheck = `(()=>{const outcome=${portraitBandCheck};return {...outcome,ok:outcome.ok&&outcome.headerContained};})()`;
+          const portraitBaseline = await evalIn(portraitNativeCheck);
           portraitBaselineCount += 1;
           const portraitEligible = portraitControlBaselineEligible(portraitBaseline);
           if (portraitEligible) portraitEligibleBaselineCount += 1;
-          const portraitBaselineExpected = 'post-close Planetside keeps at least a useful 72px band, 6px trail clearance, a visible heading, and a visible or vertically reachable specimen';
+          const portraitBaselineExpected = 'post-close Planetside keeps at least a useful 72px band, 6px trail clearance, a visible heading, and a visible or vertically reachable specimen; the normal trail remains inside the header';
           addOutcome(vp.label, 'planetside-portrait-band', 'PLANETSIDE_PORTRAIT_BAND_UNUSABLE', '#planetside', portraitBaseline,
             portraitBaselineExpected);
           stopAfterRecordedProductOutcome(vp.label, 'planetside-portrait-band',
@@ -13256,24 +13303,49 @@ async function main() {
             recordControls('planetside-portrait-band-viability');
           }
           if (portraitEligible && !portraitFallbackControlRun) {
-            /* Tighten the lower safe rectangle through the same CSS variable
-               the product reads. The fallback must be an observable policy,
-               not a one-way class toggle that leaves the strip collapsed. */
-            const fallbackControl = await evalIn(`(()=>{ const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
+            /* The normal breadcrumb is header-contained. Explicitly inject
+               the former floating-trail fault before the existing safe-bottom
+               challenge; never call this a natural header layout. Native
+               display rules must remain free to yield the injected trail. */
+            const fallbackControl = await evalIn(`(()=>{const trail=document.getElementById('trail'),nativeBaseline=${portraitNativeCheck},
+              originalStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},originalRect=trail.getBoundingClientRect();
+              let fixture=null,control=null,error=null;
+              try{
+                if(!nativeBaseline.ok||!nativeBaseline.headerContained)throw new Error('native header-contained portrait predecessor is not green');
+                const injectedTop=nativeBaseline.fixedChromeBottom+8;
+                trail.style.setProperty('position','fixed','important');trail.style.setProperty('left',originalRect.left+'px','important');
+                trail.style.setProperty('top',injectedTop+'px','important');trail.style.setProperty('right','auto','important');
+                trail.style.setProperty('bottom','auto','important');trail.style.setProperty('width',originalRect.width+'px','important');
+                trail.style.setProperty('transform','none','important');
+                window.dispatchEvent(new Event('resize'));
+                const injectedBaseline=${portraitBandCheck},injectedRect=trail.getBoundingClientRect();
+                fixture={kind:'injected-floating-trail-regression',nativeBaseline,originalStyle,
+                  originalRect:[originalRect.left,originalRect.top,originalRect.right,originalRect.bottom],
+                  injectedTop,injectedRect:[injectedRect.left,injectedRect.top,injectedRect.right,injectedRect.bottom],
+                  injectedStyle:trail.getAttribute('style'),injectedBaseline,
+                  observedOutsideHeader:!injectedBaseline.headerContained&&injectedRect.top>=nativeBaseline.fixedChromeBottom+7.5};
+                if(!fixture.observedOutsideHeader||!injectedBaseline.ok||!injectedBaseline.trailVisible||injectedBaseline.fallback)
+                  throw new Error('injected floating-trail regression did not establish its labelled usable predecessor');
+                control=(()=>{ const root=document.documentElement,side=document.getElementById('planetside'),trail=document.getElementById('trail'),baseline=${portraitBandCheck},prior={
                 value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom'),computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim()},
                 beforeSide=side.getBoundingClientRect(),beforeTrail=trail.getBoundingClientRect(),baseSafe=parseFloat(prior.computed)||0,
                 forcedSafe=baseSafe+Math.max(8,beforeSide.bottom-beforeTrail.bottom-6-64),requested=forcedSafe+'px';let mutation;
               try{root.style.setProperty('--safe-bottom',requested,'important');window.dispatchEvent(new Event('resize'));
                 const a=side.getBoundingClientRect(),t=trail.getBoundingClientRect(),ss=getComputedStyle(side),ts=getComputedStyle(trail),fallback=document.body.classList.contains('surface-trail-yield'),
                   meaningful=a.height>=71&&side.clientHeight>=68,scrollOk=side.scrollHeight<=side.clientHeight+1||((ss.overflowY==='auto'||ss.overflowY==='scroll')&&side.scrollHeight>side.clientHeight),
-                  fixedRows=['playerchip','hpbar','searchbox','objchip'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect(),visible=s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;return {id,visible,gap:a.top-r.bottom};}),
+                  fixedRows=['playerchip','hpbar','searchbox','objchip','sceneactions'].map(id=>{const el=document.getElementById(id),s=getComputedStyle(el),r=el.getBoundingClientRect(),visible=s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;return {id,visible,gap:a.top-r.bottom};}),
                   fixedClear=fixedRows.every(row=>!row.visible||row.gap>=5.5),outcome={ok:fallback&&ts.display==='none'&&meaningful&&scrollOk&&fixedClear,fallback,trailDisplay:ts.display,meaningful,scrollOk,side:[a.left,a.top,a.right,a.bottom],trail:[t.left,t.top,t.right,t.bottom],clientHeight:side.clientHeight,scrollHeight:side.scrollHeight,overflowY:ss.overflowY,fixedClear,fixedRows,baseSafe,forcedSafe};
                 mutation={requested,property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
                   computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),baseSafe,forcedSafe,outcome};}
               finally{if(prior.value===''&&prior.priority==='')root.style.removeProperty('--safe-bottom');else root.style.setProperty('--safe-bottom',prior.value,prior.priority);window.dispatchEvent(new Event('resize'));}
               const restored={property:{value:root.style.getPropertyValue('--safe-bottom'),priority:root.style.getPropertyPriority('--safe-bottom')},
                 computed:getComputedStyle(root).getPropertyValue('--safe-bottom').trim(),outcome:${portraitBandCheck}};
-              return {baseline,prior,mutation,restored};})()`);
+              return {baseline,prior,mutation,restored};})();
+              }catch(cause){error=String(cause?.message||cause);}
+              finally{trail.setAttribute('style','');trail.removeAttribute('style');if(originalStyle.present)trail.setAttribute('style',originalStyle.value);
+                window.dispatchEvent(new Event('resize'));}
+              const restoredStyle={present:trail.hasAttribute('style'),value:trail.getAttribute('style')},nativeRestored=${portraitNativeCheck};
+              return {...control,fixture:{...fixture,restoredStyle,nativeRestored,error},error};})()`);
             const fallbackControlAssessment = portraitFallbackControlOutcome(fallbackControl);
             if (!fallbackControlAssessment.ok) {
               stopInstrumentControl(`${vp.label}: eligible forced-tight portrait did not change policy and restore exactly (${JSON.stringify({ fallbackControl, fallbackControlAssessment })})`);
@@ -13297,16 +13369,16 @@ async function main() {
           }
         }
         const topChromeCheck = `(()=>{ const side=document.getElementById('planetside'),a=side?.getBoundingClientRect();if(!side||!a)return {ok:false,why:'missing'};
-          const rows=['playerchip','hpbar','searchbox','trail','objchip'].map(id=>{const el=document.getElementById(id),s=el?getComputedStyle(el):null,r=el?.getBoundingClientRect();
+          const rows=['playerchip','hpbar','searchbox','trail','objchip','sceneactions'].map(id=>{const el=document.getElementById(id),s=el?getComputedStyle(el):null,r=el?.getBoundingClientRect();
             const visible=!!el&&s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;
             const overlap=visible&&a.left<r.right-1&&a.right>r.left+1&&a.top<r.bottom-1&&a.bottom>r.top+1;
             return {id,visible,overlap,rect:r?[r.left,r.top,r.right,r.bottom]:null};});return {ok:rows.every(r=>!r.overlap),side:[a.left,a.top,a.right,a.bottom],rows};})()`;
         addOutcome(vp.label, 'planetside-top-clearance', 'PLANETSIDE_TOP_CHROME_OVERLAP', '#planetside', await evalIn(topChromeCheck),
-          'Planetside clears every visible player/HP/search/trail/objective surface');
+          'Planetside clears every visible player/HP/search/trail/objective/scene-action surface');
         if (!topChromeControlRun) {
           topChromeControlRun = true;
           const topControl = await evalIn(`(()=>{ const side=document.getElementById('planetside'),trail=document.getElementById('trail'),visible=(el)=>{if(!el)return false;const s=getComputedStyle(el),r=el.getBoundingClientRect();return s.display!=='none'&&r.width>0&&r.height>0;},
-            target=visible(trail)?trail:['playerchip','hpbar','searchbox','objchip'].map(id=>document.getElementById(id)).find(visible),
+            target=visible(trail)?trail:['sceneactions','playerchip','hpbar','searchbox','objchip'].map(id=>document.getElementById(id)).find(visible),
             a=side.getBoundingClientRect(),b=target.getBoundingClientRect(),prior=side.style.transform;
             side.style.setProperty('transform','translate('+(b.left-a.left)+'px,'+(b.top-a.top)+'px)','important');const result=${topChromeCheck};side.style.transform=prior;return result;})()`);
           if (topControl.ok) recordInstrumentFailure(`${vp.label}: Planetside/top-chrome overlap injection stayed green (${JSON.stringify(topControl)})`);

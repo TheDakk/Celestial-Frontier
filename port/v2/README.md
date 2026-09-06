@@ -3,16 +3,19 @@
 ## U1 presentation checkpoint — 2026-09-06
 
 The normal `/` game (without `avpilot`) uses the shared token/shell owners, local Inter,
-a uniform bottom launcher across phone/tablet/desktop and saved notification read state described in
+an aligned top/current-view/health header and upper-left context stack, the approved uniform
+bottom launcher across phone/tablet/desktop, and saved notification read state described in
 `../../UI_PRESENTATION.md`. The accepted brief and amendments are in
 `../UI_PARITY_PROGRAM_U1_U4.md`. The pilot study remains separately unapproved.
 
 U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options before use).
 It owns an isolated headless browser and creates three golden comparison sheets plus numeric
-CSS geometry deltas. On macOS request approved out-of-sandbox execution before browser spawn.
+CSS geometry deltas, plus numeric larger-text and narrow-landscape panel probes. On macOS
+request approved out-of-sandbox execution before browser spawn.
 This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2; no CI/profile
-lane was changed. `ROADMAP.md` and `../../audits/UI_U1_LAUNCHER_REVISION_20260906.md` own
-current exact-source results; `../../audits/UI_U1_CHECKPOINT_20260906.md` preserves the earlier U1 checkpoint.
+lane was changed. `ROADMAP.md` and `../../audits/UI_U1_TOP_LEFT_REVISION_20260906.md` own current exact-source
+results; `../../audits/UI_U1_LAUNCHER_REVISION_20260906.md` and
+`../../audits/UI_U1_CHECKPOINT_20260906.md` preserve the earlier U1 checkpoints.
 
 ## UI tool setup — 2026-09-05 local
 

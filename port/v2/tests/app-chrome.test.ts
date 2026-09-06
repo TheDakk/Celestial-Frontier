@@ -38,10 +38,10 @@ type ObserverRecord<T> = {
 function chromeMarkup(): string {
   return `<!doctype html><html><body>
     <div id="topbar">
-      <div id="trail"></div>
+      <div class="location-readout"><span aria-hidden="true">CURRENT VIEW</span><div id="trail"></div></div>
       <div id="playerchip"></div>
       <button id="primechip" type="button"></button>
-      <div id="hpbar"><span class="fill"></span><span class="txt"></span></div>
+      <div id="hpbar"><span aria-hidden="true">❤</span><span class="hp-label">HEALTH</span><span class="track"><span class="fill"></span><span class="txt"></span></span></div>
       <div id="objchip"></div>
     </div>
     <input id="searchbox">
@@ -66,15 +66,23 @@ function rect(bottom: number, width = 100, height = 20): DOMRect {
   } as DOMRect;
 }
 
-function createHarness() {
+function createHarness(includeSceneActions = false) {
   const dom = new JSDOM(chromeMarkup(), { url: 'https://example.test/' });
   openDoms.push(dom);
   const document = dom.window.document;
+  if (includeSceneActions) {
+    const sceneActions = document.createElement('nav');
+    sceneActions.id = 'sceneactions';
+    sceneActions.innerHTML = '<button id="docksurvey">Survey</button><button id="dockcharts">Charts</button>';
+    sceneActions.appendChild(document.getElementById('objchip')!);
+    document.body.appendChild(sceneActions);
+  }
   const bottoms = new Map<string, number>([
     ['topbar', 52],
     ['playerchip', 44],
     ['searchbox', 70],
     ['objchip', 80],
+    ['sceneactions', 80],
     ['trail', 110],
     ['planetside', 300],
   ]);
@@ -87,7 +95,7 @@ function createHarness() {
   ]);
   const styles = new Map<string, ElementStyle>();
   const element = (id: string): HTMLElement => document.getElementById(id)!;
-  for (const id of ['topbar', 'playerchip', 'searchbox', 'objchip', 'trail', 'planetside']) {
+  for (const id of ['topbar', 'playerchip', 'searchbox', 'objchip', 'trail', 'planetside', ...(includeSceneActions ? ['sceneactions'] : [])]) {
     const target = element(id);
     target.getBoundingClientRect = () => rect(
       bottoms.get(id) ?? 0,
@@ -202,6 +210,19 @@ describe('application chrome DOM owner', () => {
     );
     expect(h.document.querySelector<HTMLElement>('#hpbar .fill')!.style.width).toBe('75%');
     expect(h.document.querySelector('#hpbar .txt')!.textContent).toBe('75/100 HP');
+    const health = h.element('hpbar');
+    expect(health.getAttribute('role')).toBe('meter');
+    expect(health.getAttribute('aria-label')).toBe('Explorer health');
+    expect(health.getAttribute('aria-valuemin')).toBe('0');
+    expect(health.getAttribute('aria-valuemax')).toBe('100');
+    expect(health.getAttribute('aria-valuenow')).toBe('75');
+    expect(health.getAttribute('aria-valuetext')).toBe('75/100 HP');
+    expect(health.hasAttribute('tabindex')).toBe(false);
+    expect(health.tabIndex).toBe(-1);
+    health.focus();
+    expect(h.document.activeElement).not.toBe(health);
+    expect(health.querySelector(':scope > .track > .fill')).not.toBeNull();
+    expect(health.querySelector(':scope > .track > .txt')).not.toBeNull();
     expect(h.element('primechip').textContent).toBe('✦ Prime Codex 3/9');
     expect(h.element('primechip').querySelector('.ico')?.getAttribute('aria-hidden')).toBe('true');
     expect(h.element('primechip').querySelector('.lbl')?.textContent).toBe('Prime Codex');
@@ -246,6 +267,9 @@ describe('application chrome DOM owner', () => {
       '⬆ <b>First Light</b> & beyond is recorded — the next Charter action is not available in this development slice',
     );
     expect(h.document.querySelector<HTMLElement>('#hpbar .fill')!.style.width).toBe('100%');
+    expect(health.getAttribute('aria-valuenow')).toBe('100');
+    expect(health.getAttribute('aria-valuemax')).toBe('100');
+    expect(health.getAttribute('aria-valuetext')).toBe('150/100 HP');
     expect(h.document.documentElement.style.getPropertyValue('--topbar-h')).toBe('68px');
 
     h.controller.renderStatus({
@@ -263,6 +287,9 @@ describe('application chrome DOM owner', () => {
     expect(h.element('playerchip').style.borderColor).toBe('rgb(127, 230, 160)');
     expect(h.element('playerchip').textContent).toContain('Scout');
     expect(h.document.querySelector<HTMLElement>('#hpbar .fill')!.style.width).toBe('0%');
+    expect(health.getAttribute('aria-valuenow')).toBe('0');
+    expect(health.getAttribute('aria-valuemax')).toBe('1');
+    expect(health.getAttribute('aria-valuetext')).toBe('-5/0 HP');
     expect(h.element('objchip').innerHTML).toBe('');
   });
 
@@ -374,6 +401,45 @@ describe('application chrome DOM owner', () => {
     h.widths.set('topbar', 0);
     h.controller.syncSurfaceChromeBottom();
     expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('110.00px');
+  });
+
+  it('measures the actual scene-action stack, preserves the 72px rule and disposes its observer', () => {
+    const h = createHarness(true);
+    h.document.body.classList.add('surface-mode');
+    h.bottoms.set('sceneactions', 180);
+    h.bottoms.set('planetside', 300);
+    const scene = h.element('sceneactions');
+    expect(h.element('objchip').parentElement).toBe(scene);
+    const observer = h.resizeObservers.find(record => record.observed.includes(scene));
+    expect(observer).toBeDefined();
+    if (!observer) throw new Error('scene-action ResizeObserver missing');
+    observer.listener();
+    expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('180.00px');
+    expect(h.document.body.classList.contains('surface-trail-yield')).toBe(false);
+    h.bottoms.set('sceneactions', 220);
+    observer.listener();
+    expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('220.00px');
+    h.bottoms.set('planetside', 220 + 6 + 72);
+    observer.listener();
+    expect(h.document.body.classList.contains('surface-trail-yield')).toBe(false);
+    h.bottoms.set('planetside', 220 + 6 + 71);
+    observer.listener();
+    expect(h.document.body.classList.contains('surface-trail-yield')).toBe(true);
+    // Hidden status chrome must cease reserving space, then regain its exact
+    // measured edge when restored; no fixed-height substitute is accepted.
+    h.styles.set('sceneactions', { display: 'none', visibility: 'visible', opacity: '1' });
+    observer.listener();
+    expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('110.00px');
+    expect(h.document.body.classList.contains('surface-trail-yield')).toBe(false);
+    h.styles.delete('sceneactions');
+    observer.listener();
+    expect(h.document.documentElement.style.getPropertyValue('--surface-chrome-bottom')).toBe('220.00px');
+    expect(h.document.body.classList.contains('surface-trail-yield')).toBe(true);
+    h.controller.dispose();
+    h.controller.dispose();
+    expect(h.resizeObservers).toHaveLength(8);
+    for (const item of h.resizeObservers) expect(item.disconnect).toHaveBeenCalledOnce();
+    expect(h.mutationObservers[0]!.disconnect).toHaveBeenCalledOnce();
   });
 
   it('owns exact observer targets, resize ordering, and one idempotent teardown', () => {

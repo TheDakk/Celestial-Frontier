@@ -4,24 +4,31 @@ import { UI_PRESENTATION_DESKTOP_MIN, UI_PRESENTATION_PHONE_MAX } from './ui-pre
  * colors remain outside this file. Phone geometry follows Nick's explicit
  * 58/64/36/44 metrics; the visible v2 trail is an additional reserved lane. */
 export const UI_SHELL_CSS = `
-#topbar{position:fixed;inset:0 0 auto;z-index:var(--cf-layer-shell);pointer-events:none;display:grid;grid-template-columns:minmax(0,1fr) minmax(56px,300px) 44px;align-items:center;gap:6px 8px;padding:max(8px,var(--safe-top)) calc(var(--safe-right) + 18px) 8px calc(var(--safe-left) + 18px);background:linear-gradient(180deg,rgba(4,4,12,.55),transparent);border:0;box-sizing:border-box}
+#topbar{position:fixed;inset:0 0 auto;z-index:var(--cf-layer-shell);pointer-events:none;display:grid;grid-template-columns:var(--cf-hud-column) minmax(0,1fr) 44px;grid-template-rows:minmax(44px,auto) minmax(44px,auto);align-items:center;gap:8px;padding:max(8px,var(--safe-top)) calc(var(--safe-right) + var(--cf-hud-inset)) 8px calc(var(--safe-left) + var(--cf-hud-inset));background:linear-gradient(180deg,rgba(4,4,12,.7),transparent);border:0;box-sizing:border-box}
 #topbar>button,#searchbox{pointer-events:auto}
-#dockinventory{display:flex;align-items:center;justify-content:flex-start;min-height:var(--cf-touch-target);min-width:var(--cf-touch-target);width:max-content;max-width:100%;padding:0;background:none;border:0;border-radius:var(--cf-radius-pill);color:var(--ink);font:inherit;cursor:pointer}
-#playerchip{display:block;box-sizing:border-box;min-width:0;max-width:100%;padding:7px 15px;font-size:11px;line-height:1.25;letter-spacing:.08em;text-transform:uppercase;color:#dbe7f8;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#dockinventory{grid-column:1;grid-row:1;display:flex;align-items:stretch;justify-content:flex-start;min-height:var(--cf-touch-target);min-width:var(--cf-touch-target);width:100%;max-width:100%;padding:0;background:none;border:0;border-radius:10px;color:var(--ink);font:inherit;cursor:pointer}
+#playerchip{display:block;box-sizing:border-box;min-width:0;min-height:44px;width:100%;max-width:100%;padding:13px 10px;border-radius:10px;font-size:11px;line-height:16px;letter-spacing:.06em;text-transform:uppercase;color:#dbe7f8;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #playerchip .dim{color:var(--dim)}#playerchip .player-rank{color:inherit}
 #playerchip.rank-iridescent{color:#f4f7ff;background:linear-gradient(110deg,rgba(70,194,178,.34),rgba(176,108,255,.34),rgba(255,217,106,.34))}
-#hpbar{grid-column:1/-1;display:flex;align-items:center;gap:7px;margin:0;padding:4px 11px 4px 9px;width:max-content;max-width:100%;box-sizing:border-box;line-height:12px}
-#hpbar>.track{display:block;width:158px;height:12px;border-radius:var(--cf-radius-pill);background:#16202f;overflow:hidden;border:0;position:relative;box-shadow:inset 0 1px 2px #0008}
-#hpbar>.track::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 calc(25% - 1px),#ffffff17 calc(25% - 1px) 25%)}
-#hpbar .fill{display:block;height:100%;background:linear-gradient(180deg,#a9f0a0,#3fae52);border-radius:var(--cf-radius-pill)}
-#hpbar .txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;color:#f4fff6;text-shadow:0 1px 2px #000;line-height:12px;background:rgba(5,12,8,.78)}
-#searchbox{position:static;min-width:0;width:100%;min-height:var(--cf-touch-target);box-sizing:border-box;padding:5px 11px;font:12px var(--ui);color:var(--ink)}
+#hpbar{grid-column:1;grid-row:2;display:grid;grid-template-columns:24px minmax(0,1fr);grid-template-rows:minmax(10px,auto) minmax(18px,auto);align-items:center;gap:2px 8px;margin:0;padding:6px 8px;width:100%;min-height:44px;max-width:100%;box-sizing:border-box;border:1px solid #335951;border-radius:10px;background:linear-gradient(120deg,rgba(30,78,63,.25),transparent 70%),rgba(9,20,27,.96);box-shadow:inset 0 1px 0 #bfffe116,0 2px 8px #0003}
+#hpbar>.hp-icon{grid-column:1;grid-row:1/3;display:flex;align-items:center;justify-content:center;width:24px;height:28px;border-radius:7px;background:rgba(93,220,157,.1);color:#9bf2c1;font-size:16px;line-height:1;text-shadow:0 0 8px #67e3a54d}
+#hpbar>.hp-label{grid-column:2;grid-row:1;color:#b7daca;font-size:8px;line-height:1.25;font-weight:600;letter-spacing:.13em;text-transform:uppercase}
+#hpbar>.track{grid-column:2;grid-row:2;display:block;width:100%;min-width:0;height:18px;border-radius:5px;background:#102521;overflow:hidden;border:1px solid #3f6957;box-sizing:border-box;position:relative;box-shadow:inset 0 1px 3px #0008}
+#hpbar>.track::after{content:'';position:absolute;inset:auto 0 0;height:3px;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 calc(25% - 1px),#ffffff45 calc(25% - 1px) 25%)}
+#hpbar .fill{display:block;height:100%;background:linear-gradient(180deg,#9ef4ca 0%,#48c78c 40%,#27976a 100%);border-radius:4px;box-shadow:inset 0 1px 0 #e1ffee80}
+#hpbar .txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;font-variant-numeric:tabular-nums;color:#f4fff6;text-shadow:0 1px 2px #000;line-height:1;background:rgba(5,12,8,.62)}
+#searchbox{grid-column:2;grid-row:1;position:static;min-width:0;width:100%;min-height:var(--cf-touch-target);box-sizing:border-box;padding:5px 11px;border-radius:10px;font:12px var(--ui);color:var(--ink)}
+#shelfnotifications{grid-column:3;grid-row:1}
 #searchbox::placeholder,#guidesearch::placeholder{color:var(--dim);opacity:1}
-#trail{position:fixed;top:calc(var(--topbar-h) + 8px);left:50%;transform:translateX(-50%);z-index:var(--cf-layer-trail);pointer-events:none;font-size:10.5px;letter-spacing:.06em;color:var(--dim);white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis;background:rgba(10,16,30,.94);border:1px solid var(--cf-color-border);border-radius:var(--cf-radius-pill);padding:2px 12px}
-#trail .cur{color:#c8ebff}#trail .sep{color:var(--dim);padding:0 5px;font-size:9px}
-#objchip{position:fixed;left:calc(var(--safe-left) + 18px);top:calc(var(--topbar-h) + var(--cf-objective-offset));z-index:var(--cf-layer-objective);padding:6px 11px;font-size:10.5px;letter-spacing:.04em;line-height:1.35;color:#f0cf8a;max-width:min(62vw,340px);box-sizing:border-box;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-color:rgba(255,207,138,.35)}
-#objchip:empty{display:none}#objchip .prog{color:#7ec8f0;font-weight:600}
+.location-readout{grid-column:2/-1;grid-row:2;min-width:0;min-height:44px;box-sizing:border-box;padding:5px 10px;display:flex;flex-direction:column;justify-content:center;gap:3px;border-left:1px solid #40547780;border-radius:0;background:rgba(10,16,30,.7);pointer-events:none}
+.location-label{font-size:8px;line-height:1.35;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+#trail{position:static;inset:auto;transform:none;z-index:auto;pointer-events:none;display:flex;align-items:center;min-width:0;font-size:11px;line-height:1.45;letter-spacing:.02em;color:var(--dim);white-space:nowrap;max-width:100%;overflow:hidden;background:none;border:0;border-radius:0;padding:0}
+#trail .seg{min-width:0;overflow:hidden;text-overflow:ellipsis}#trail .cur{flex:0 1 auto;color:#c8ebff;font-weight:600}#trail .seg:not(.cur){flex:0 10 auto}#trail .sep{flex:0 0 auto;color:var(--dim);padding:0 4px;font-size:9px}
+#objchip{position:static;inset:auto;z-index:auto;display:block;margin:0;padding:9px 10px;font-size:10.5px;letter-spacing:.01em;line-height:1.45;color:#f0cf8a;width:100%;max-width:100%;box-sizing:border-box;white-space:normal;overflow-wrap:anywhere;border:1px solid rgba(255,207,138,.28);border-left:2px solid #c7a663;border-radius:8px;background:rgba(10,16,30,.94);pointer-events:none}
+#objchip::before{content:'Objective';display:block;margin-bottom:4px;font-size:8px;line-height:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#d4be97}
+#objchip:empty{display:none}#objchip .prog{color:#7ec8f0;font-weight:600;white-space:nowrap}
 body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
+body:is(.card-open,.panel-open) .location-label{visibility:hidden}
 #ctxbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 64px);width:max-content;max-width:min(620px,90vw);text-align:center;pointer-events:none;z-index:var(--cf-layer-caption);box-sizing:border-box;padding:0;border:0;background:rgba(10,16,30,.94);border-radius:0;font-size:12.5px;line-height:1.5;color:var(--dim);text-shadow:0 1px 12px #000c}
 #hintpill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 18px);z-index:var(--cf-layer-caption);pointer-events:none;font-size:11px;letter-spacing:.04em;color:var(--faint);padding:7px 16px;white-space:nowrap;max-width:94vw;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis}
 #hintpill .kw{color:#7ec8f0;font-weight:600}
@@ -38,17 +45,19 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
 .dock-utility .ico{display:block;font-size:14px;line-height:1}
 .dock-utility:is(.sel,.on) .utility-face{background:linear-gradient(135deg,rgba(255,217,106,.22),rgba(255,190,80,.12)),rgba(14,22,40,.88);border-color:rgba(255,217,106,.8);box-shadow:0 0 14px rgba(255,217,106,.25)}
 :is(#dock,#topbar,#sceneactions,#raillft,#railrgt) button:focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}
-#sceneactions{position:fixed;left:calc(var(--safe-left) + 18px);top:calc(var(--topbar-h) + 172px);z-index:var(--cf-layer-shell);display:flex;gap:8px;max-width:calc(100vw - var(--safe-left) - var(--safe-right) - 36px)}
-#sceneactions button{display:flex;align-items:center;gap:6px;min-height:var(--cf-touch-target);min-width:var(--cf-touch-target);padding:6px 12px;border:1px solid #2a3c5e;border-radius:var(--cf-radius-pill);background:rgba(10,16,30,.94);color:var(--dim);font:11px var(--ui);cursor:pointer;touch-action:manipulation}
+#sceneactions{position:fixed;left:calc(var(--safe-left) + var(--cf-hud-inset));top:calc(var(--topbar-h) + var(--cf-hud-stack-gap));z-index:var(--cf-layer-shell);display:flex;flex-direction:column;align-items:stretch;gap:var(--cf-hud-stack-gap);width:var(--cf-hud-column);max-width:calc(100vw - var(--safe-left) - var(--safe-right) - 2 * var(--cf-hud-inset))}
+#sceneactions button{display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;min-height:var(--cf-touch-target);min-width:var(--cf-touch-target);box-sizing:border-box;padding:8px 12px;border:1px solid #344968;border-radius:8px;background:rgba(10,16,30,.94);box-shadow:inset 0 1px 0 #d5e6ff0c;color:var(--dim);font:11px var(--ui);text-align:left;cursor:pointer;touch-action:manipulation}
+#sceneactions button>.ico{width:20px;flex:0 0 20px;text-align:center;font-size:14px}
+body.fs-lg #hpbar>.hp-icon{font-size:18px!important}body.fs-xl #hpbar>.hp-icon{font-size:20px!important}
+body.fs-lg #objchip::before{font-size:10px}body.fs-xl #objchip::before{font-size:11px}
 #sceneactions button[aria-pressed="true"],#sceneactions button.on{border-color:var(--cf-color-accent-gold);color:#ffe3a8}
 /* Compatibility rails keep their ids/wiring but no longer create a second
    navigation system at larger breakpoints. The launcher is the visible owner. */
 #raillft,#railrgt{display:none}
 @media(max-width:${UI_PRESENTATION_PHONE_MAX}px){
-  #topbar{grid-template-columns:minmax(0,1fr) minmax(56px,.85fr) 44px;padding-right:calc(var(--safe-right) + 10px);padding-left:calc(var(--safe-left) + 10px)}
-  #playerchip{padding:4px 9px;font-size:10px;letter-spacing:.06em}
+  :root{--cf-hud-inset:10px;--cf-hud-column:clamp(128px,40vw,176px)}
+  #playerchip{padding:13px 9px;font-size:10px;letter-spacing:.06em}
   #searchbox{font-size:16px}
-  #hpbar>.track{width:clamp(110px,33vw,188px)}
   #dock{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + var(--cf-phone-dock-bottom));display:grid;grid-template-columns:repeat(10,var(--cf-dock-half-pitch));grid-template-rows:minmax(44px,auto) 44px;column-gap:0;row-gap:var(--cf-dock-row-gap);width:320px;max-width:none;justify-items:center;align-items:center}
   #dock .dock-board{grid-row:1;align-self:stretch;position:static;transform:none;max-width:none;padding-inline:0}
   #dockcharters{grid-column:1/3}#dockcodex{grid-column:3/5}#primechip{grid-column:5/7}#dockshipyard{grid-column:7/9}#dockatlas{grid-column:9/11}
@@ -58,17 +67,16 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #primechip .prime-full-label{display:none}
   #hintpill{bottom:calc(var(--safe-bottom) + var(--cf-phone-hint-bottom))}
   #ctxbar{bottom:calc(var(--safe-bottom) + max(var(--cf-phone-caption-bottom), var(--cf-phone-hint-bottom) + var(--hint-h) + 8px))}
-  #sceneactions{top:calc(var(--topbar-h) + 40px)}
   body.surface-mode #objchip{display:none}
   body.fs-lg #dock .dock-board .lbl{font-size:10px!important}body.fs-xl #dock .dock-board .lbl{font-size:11.5px!important}
   body.fs-lg #dock .prime-count{font-size:9px!important}body.fs-xl #dock .prime-count{font-size:10px!important}
 }
 @media(max-width:480px){#playerchip :is(.player-worlds,.player-rank){display:none}}
 @media(min-width:${UI_PRESENTATION_DESKTOP_MIN}px){
-  #topbar{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,1fr) 44px}
-  #dockinventory{grid-column:1;max-width:min(28vw,340px)}
-  #searchbox{grid-column:3;justify-self:end;width:min(300px,calc(33vw - 62px))}
+  #topbar{grid-template-columns:var(--cf-hud-column) minmax(0,1fr) minmax(160px,300px) 44px}
+  #searchbox{grid-column:3;justify-self:end;width:100%}
   #shelfnotifications{grid-column:4}
+  .location-readout{grid-column:3/5}
   #dock{left:50%;right:auto;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 12px);display:grid;grid-template-columns:repeat(9,var(--cf-launcher-pitch));grid-template-rows:minmax(var(--cf-launcher-target),auto);justify-items:center;align-items:center;gap:0;width:var(--cf-launcher-width);max-width:none;padding:var(--cf-launcher-padding);border:0;border-radius:20px;background:rgba(10,16,30,.78);box-shadow:0 10px 30px #0006,inset 0 0 0 1px rgba(126,160,210,.22);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);pointer-events:auto}
   #dock .dock-board{display:flex;align-self:stretch;width:calc(var(--cf-launcher-pitch) - 6px);min-width:calc(var(--cf-launcher-pitch) - 6px);min-height:var(--cf-launcher-target);padding-inline:0}
   #dock .dock-board .ico{font-size:var(--cf-launcher-icon);line-height:var(--cf-launcher-icon-line)}
@@ -82,7 +90,6 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #primechip .prime-full-label{display:none}
   #hintpill{bottom:calc(var(--safe-bottom) + max(96px,var(--dock-h) + 28px))}
   #ctxbar{bottom:calc(var(--safe-bottom) + max(136px,var(--dock-h) + 28px + var(--hint-h) + 8px))}
-  #sceneactions{top:calc(var(--topbar-h) + 40px)}
   body.fs-lg #dock .dock-board .lbl{font-size:max(11px,var(--cf-launcher-label))!important}body.fs-xl #dock .dock-board .lbl{font-size:max(12.5px,var(--cf-launcher-label))!important}
   body.fs-lg #dock .prime-count{font-size:10px!important}body.fs-xl #dock .prime-count{font-size:11px!important}
 
@@ -92,14 +99,15 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
    only status chrome yields. This is an open-panel exception, not a second
    default breakpoint or a change to the panel's internal scroll/focus owner. */
 @media(max-width:900px) and (orientation:landscape){
-  body.panel-open #topbar{top:calc(var(--safe-top) + 6px);left:auto;right:calc(var(--safe-right) + 12px);bottom:auto;width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);padding:0;grid-template-columns:minmax(0,1fr) 44px;gap:6px 8px;background:none;visibility:visible}
+  body.panel-open #topbar{top:calc(var(--safe-top) + 6px);left:auto;right:calc(var(--safe-right) + 12px);bottom:auto;width:calc((100vw - var(--safe-left) - var(--safe-right) - 36px) / 2);padding:0;grid-template-columns:minmax(0,1fr) 44px;grid-template-rows:auto auto;gap:6px 8px;background:none;visibility:visible}
   body.panel-open #dockinventory{grid-column:1;grid-row:1;width:100%;max-width:100%}
   body.panel-open #playerchip{max-width:100%}
   body.panel-open #shelfnotifications{grid-column:2;grid-row:1}
   body.panel-open #searchbox{grid-column:1/-1;grid-row:2;justify-self:stretch;width:100%;max-width:none}
-  body.panel-open #hpbar{display:none}
+  body.panel-open #hpbar,body.panel-open .location-readout{display:none}
   body.panel-open #dock{left:auto;right:calc(var(--safe-right) + 12px);transform:none}
-  body.panel-open #sceneactions{left:calc((100vw + var(--safe-left) - var(--safe-right) + 12px) / 2);right:calc(var(--safe-right) + 12px);top:calc(var(--safe-top) + var(--topbar-h) + 12px);justify-content:center}
+  body.panel-open #sceneactions{left:calc((100vw + var(--safe-left) - var(--safe-right) + 12px) / 2);right:calc(var(--safe-right) + 12px);top:calc(var(--safe-top) + var(--topbar-h) + 12px);width:auto;flex-direction:row;justify-content:center}
+  body.panel-open #sceneactions button{width:auto;flex:1;justify-content:center}
 }
 /* Narrow landscape keeps the phone arrangement. When a panel opens, the
    existing rule above places that compact launcher in its right safe column. */
@@ -120,6 +128,14 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #setpanel,#recpanel,#shipyardpanel,#inventorypanel,#combatpanel,#toast{right:calc((100vw - var(--cf-launcher-width)) / 2);bottom:calc(var(--safe-bottom) + var(--dock-h) + 24px)}
 }
 @media(max-width:${UI_PRESENTATION_PHONE_MAX}px),(pointer:coarse){#searchbox,body.fs-lg #searchbox{font-size:16px!important}body.fs-xl #searchbox{font-size:17px!important}}
+/* A landed phone gives the living-world roster a viable reading band.
+   The same two context actions share one top row while its objective yields. */
+@media(max-width:900px) and (orientation:portrait){
+  body.surface-mode #sceneactions{flex-direction:row;width:auto;right:calc(var(--safe-right) + var(--cf-hud-inset))}
+  body.surface-mode #sceneactions button{flex:1;width:auto;justify-content:center}
+  body.surface-mode #objchip{display:none}
+}
+body.fs-lg #sceneactions button{font-size:13px}body.fs-xl #sceneactions button{font-size:15px}
 @media(prefers-reduced-motion:reduce){#dock *,#topbar *,#sceneactions *{transition:none!important;animation:none!important}}
-@media(forced-colors:active){#dock .dock-board,.dock-utility .utility-face,#sceneactions button,#raillft button::before,#railrgt button::before{background:Canvas;color:CanvasText;border-color:ButtonText}#dock .dock-board:is(.sel,.on),.dock-utility:is(.sel,.on) .utility-face{border-color:Highlight;color:Highlight}#dockinventory,#playerchip{color:CanvasText}}
+@media(forced-colors:active){#dock .dock-board,.dock-utility .utility-face,#sceneactions button,#raillft button::before,#railrgt button::before{background:Canvas;color:CanvasText;border-color:ButtonText}#dock .dock-board:is(.sel,.on),.dock-utility:is(.sel,.on) .utility-face{border-color:Highlight;color:Highlight}#dockinventory,#playerchip{color:CanvasText}#hpbar{background:Canvas;border-color:CanvasText}#hpbar>.track{background:Canvas;border-color:CanvasText}#hpbar .fill{background:Highlight}#hpbar .txt{background:Canvas;color:CanvasText}#hpbar>.hp-icon,#hpbar>.hp-label{background:none;color:CanvasText}}
 `;
