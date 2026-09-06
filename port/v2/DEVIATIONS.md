@@ -1,5 +1,16 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## Local U1 validation stopped at Slice — 2026-09-06
+
+On unchanged `ce8912864fabbe5624651e76c06b94f95b734f39`, the tracked-input develop profile and
+normal three-view review passed. Slice retained two instrument findings: the left-gap mutant
+left its ancestor dock boundary active, and the right-rail hidden-copy inventory expected two
+controls instead of four. Both phone canaries were not run. Its ambient .DS_Store was preserved,
+so Slice correctly labelled the source dirty-diagnostic and noncertifying despite clean tracked
+bytes. [The checkpoint audit](../../audits/UI_U1_LOCAL_CHECKPOINT_20260906.md) owns evidence and
+the next bounded correction. No product changes, retry, U2–U4, Phase2 or hosted work. Physical UAT
+and the two older unknown failure causes remain open. Prior ledger entries remain verbatim.
+
 ## U1 accepted for UAT; verification diagnosis — 2026-09-06
 
 Nick accepted the Survey/Charters layout for UAT at product053ef439774520577071f0ca50887337dd938755,

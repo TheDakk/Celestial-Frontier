@@ -2,6 +2,16 @@
 
 Nick supplied this brief on 2026-09-05. The quoted program below is retained verbatim.
 
+### Local U1 checkpoint — 2026-09-06, stopped at Slice
+
+Nick's “Proceed” selected the remaining local U1 checks. Source
+`ce8912864fabbe5624651e76c06b94f95b734f39` passed hermetic static validation and the normal
+three-view review, then stopped on two Slice instrument findings. Neither phone canary ran.
+[The checkpoint audit](../audits/UI_U1_LOCAL_CHECKPOINT_20260906.md) owns the retained RED,
+source qualification and next bounded correction. Accepted product layout is unchanged; physical
+UAT and both older causes remain open. Compendium/full Glass were outside this local checkpoint.
+No U2–U4, Phase2 or hosted work. The earlier amendments below remain verbatim.
+
 ### U1 layout accepted for UAT — Nick, 2026-09-06
 
 Nick accepted the current U1 layout for UAT at product

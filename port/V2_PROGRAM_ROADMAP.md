@@ -22,7 +22,7 @@ keyboard-instrument red. The portable-key correction changes only the probe, wit
 The previous six-board scoped
 PASS and instrument red remain in `../audits/UI_U1_SURVEY_TOP_ROW_20260906.md` as predecessor evidence.
 The prior portrait-restoration instrument stop remains OPEN beside the unattributed navigation
-blocker; full normal review, Slice, phone Glass and the full chain were NOT RUN.
+blocker; at that earlier checkpoint, full normal review, Slice, phone Glass and the full chain were NOT RUN.
 See `UI_PARITY_PROGRAM_U1_U4.md` for the accepted program, explicit geometry differences and review
 boundaries. U2 sheet/stack work, U3 per-panel work and U4 ten-viewport/28-screen gate remain unstarted. Phase4 presentation parity is not closed;
 the U1 layout is accepted for UAT, while integrated audiovisual-pilot approval remains OPEN.
@@ -32,9 +32,12 @@ predecessors, 15000ms transport, fonts → two animation frames and debugger tim
 font/frame evaluation 283, geometry evaluation 284 and ordered receipt 33 establish current
 390×844 completion; `../audits/UI_U1_UAT_RESTORATION_20260906.md` owns evidence. Both older
 blockers stay historical OPEN: the old cause is unknown and nonrecurrence is not repair.
-The bounded batch ends; remaining local U1 checkpoint validation precedes U2, without further
-restoration retries or implementation/refinement. No full three-view review, Slice, Glass,
-full-chain or hosted run. UAT layout acceptance remains separate from completed device UAT.
+Current checkpoint `ce8912864fabbe5624651e76c06b94f95b734f39` passed static validation and the
+normal three-view review, then stopped on two Slice instrument findings. Both phone canaries were
+not run. [The checkpoint audit](../audits/UI_U1_LOCAL_CHECKPOINT_20260906.md) owns the noncertifying
+RED and the next bounded correction: nested boundary ownership, the four right-rail hidden copies
+and a clean test snapshot. Accepted layout is unchanged; physical UAT remains open. No U2–U4,
+Phase2 or hosted work followed.
 Exact source and local evidence are recorded in the live ROADMAP handoff.
 The instrument-only navigation successor is scoped in
 `../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`; the retained navigation blocker stays OPEN.
