@@ -1,5 +1,13 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **AUTO-RESUME A DIAGNOSTIC PAUSE FROM THE SESSION EVENT HANDLER** (U1,2026-09-06).
+> A DOM breakpoint suspends the document; Runtime.evaluate cannot recover it. Dispatch resume
+> immediately from the exact-session paused event, retain raw sync/async frames, and drain
+> resume errors before another evaluation or intentional input. Remove the breakpoint before
+> controls/navigation and preserve cleanup failures separately. Calibrate a named async initiator,
+> not merely a non-null stack: an async function after await can still be a synchronous frame.
+> Debugger timing perturbation means a nonrecurrence never repairs a retained product red.
+
 > **MEASURE THE FINAL STATE OF A COALESCED OVERLAY TRANSITION** (U1, 2026-09-06).
 > A same-task open → preference change → close can publish an intermediate header height,
 > then restore the last observed size without another ResizeObserver delivery. Waiting for

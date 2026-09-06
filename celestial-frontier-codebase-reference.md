@@ -21,6 +21,11 @@ Native panel/Training action/focus owners remain; passive layout wrappers pass c
 `notification-history.ts` retains explicit saved Mark read on the existing notification shape
 and UI checkpoint whitelist. U2–U4 and integrated-pilot approval remain open.
 
+U1 review instrumentation (2026-09-06) now records public viewport/resize facts and
+auto-resumed trail-writer stacks between intentional controls. It does not read camera/travel
+authority or repair navigation; nonrecurrence cannot close the retained blocker. Exact source
+and results: `audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`.
+
 ## Audiovisual pilot implementation — 2026-09-05 local
 
 Matches the scoped Phase 1 implementation as of **2026-09-05 local**. Nick authorized B–D

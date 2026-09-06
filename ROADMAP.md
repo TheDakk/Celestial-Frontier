@@ -17,78 +17,75 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-06 · U1 IMPLEMENTED / VERIFICATION STOPPED / REVIEW HANDOFF
+## SESSION HANDOFF — 2026-09-06 · U1 NAVIGATION INSTRUMENT / REVIEW PENDING
 
-OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`, branch
-openai/mac, upstream origin/openai/mac. SSH origin git@github.com:TheDakk/Celestial-Frontier.git;
-TheDakk authentication/read/fetch passed in this uninterrupted session. Develop c1791e2 is an
-ancestor. Signed source `08cd97d79b67cab4b8d19bfd493293e997dec528`; product last changed at `7bff7967fef6b6d6f6b99480098a92c8501da994`.
-The signed records successor carries this handoff for an authorized normal branch push; exact
-pushed SHA is reported separately. Root main.js absent; ambient .DS_Store untracked/untouched.
-No other worktree edited. Develop/main/live unchanged by this revision.
+OpenAI/Codex on macOS | openai/mac | /Users/nick/Projects/celestial-frontier-openai-mac |
+origin/openai/mac. Physical root/branch/upstream verified; SSH origin
+ git@github.com:TheDakk/Celestial-Frontier.git authenticated as TheDakk; read/fetch passed.
+Initial HEAD0a6ee0fdb6656361106ab6540169225669c64e0e matched upstream; develop c1791e2 is
+an ancestor. Root main.js absent; ambient untracked .DS_Store untouched. No other worktree edited.
+This local instrument successor has no push/PR/hosted/release authority; develop/main/live unchanged.
 
-### Result and exact blocker
+### Exact saved blocker and current work
 
-Fresh checkout: typecheck/artunused PASS; Vitest 311 files / 3,319 passed / 1 skipped; Glass
-selftest and normal build PASS. Normal UI review RED before the first phone Notifications press:
-Training Skip at 785ms, native Escape ascent to Cosmos at 1313ms, then spontaneous Milky Way at 3930ms
-without an intervening recorded pointer event. The press was never dispatched. The earlier
-6a88f85 navigation observation has recurred; cause is not repaired. Slice and both phone rows
-were NOT RUN after that red. The new Settings browser probe was not reached. No unchanged retry.
+Prior tested source08cd97d79b67cab4b8d19bfd493293e997dec528; product last changed at
+7bff7967fef6b6d6f6b99480098a92c8501da994. Saved checkpoint0a6ee0f is records only.
+08cd97d typecheck/artunused, Vitest311 files/3319 passed/1 skipped, Glass selftest and build
+passed; normal review RED before the first phone Notifications press. Skip785ms → Escape
+ascent Cosmos1313ms → unsolicited Cosmos/Milky Way3930ms. Notifications was not dispatched.
+Slice and both phone Glass rows NOT RUN; Settings browser probe not reached. No cause repaired.
+All10 retained carrier hashes and manifest SHA25670beb0cd37953e2c5b4e6f53069843caa5800406564d5ca72bbdc7dd09285129
+were reverified. Previous9c869c3 nine-image set remains historical, not current approval.
 
-Exact manifest `audits/UI_U1_PRODUCTION_LAYOUT_08cd97d_20260906/manifest.json`;
-SHA256 `70beb0cd37953e2c5b4e6f53069843caa5800406564d5ca72bbdc7dd09285129`. All retained carrier hashes verified.
-Report: audits/UI_U1_PRODUCTION_LAYOUT_20260906.md. This is not a complete U1 PASS, certification,
-physical-device result or human acceptance. Claude should inspect this source and trace first.
-Earlier nine-image 9c869c3 review is labelled previous-source visual evidence, not current proof.
-The current phone capture may span the scene transition. All failed sources remain retained.
+Nick supplied Claude's review; exact paste is audits/UI_U1_CLAUDE_REVIEW_20260906.txt.
+Its scratch reproduction receipts were not supplied. Current bounded correction is instrument
+only: layout/visual viewport resize facts plus auto-resumed, exact-session #trail stacks between
+intentional inputs. No camera/nav/travel/save/layout code changed. Native predecessor assertions,
+readiness deadlines and63 trusted inputs remain. Retain the blocker even if the run does not recur.
 
-### Current implementation and remaining program
+Current audit: audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md. Focused controls10/10 then revised
+actual native-input admission controls2/2 pass. The synthetic calibration's weak async assertion
+was tightened, exposed a fixture mistake, and was corrected to a timer-scheduled writer. All
+carriers retained; final4-control calibration PASS. One committed-source normal review is pending;
+stop after any red, no unchanged retry or automatic expansion into product guards. The new exact
+source/result will be recorded at completion. No Slice/Glass chain is claimed by this diagnosis.
 
-Production CSS is verified against live v1.8.9. Phone icon-only boards retain Prime N/9; wide
-screens have native side controls, Prime top-center, right Search/Objective/Atlas/Shipyard and
-bottom-right utilities. Name-only Inventory wraps, Health keeps red heart/caption/ratio, top
-chrome is rounded, hint plain text and canonical trail hidden. Targets/gaps, native action/focus,
-original pinch and 72px roster protections remain. The body-class observer corrects final header
-height after same-task Settings changes; real-MutationObserver/disposal tests pass. Three visible
-rail button types are explicit. No main.ts/navigation/save/domain or art/audio changes in this
-screenshot revision. Existing saved-notification state was implemented earlier in U1.
+### Product/program boundaries
 
-Current references: UI_PRESENTATION.md, celestial-frontier-codebase-reference.md,
-port/UI_PARITY_PROGRAM_U1_U4.md and port/V2_PROGRAM_ROADMAP.md. U1 visual acceptance remains with
-Nick; U2–U4 and Phase 2 remain unstarted. U2 must reconcile Settings-above-Training with the pasted
-opposite ordering before implementation. U3 refines panel presentation and provides an emoji/SVG
-study within the approved layout; no icon swap until approved. Wide pill widths and the earlier
-2px phone sheet-edge exposure remain visual review items.
+U1 production-based phone/wide layout, saved notification state, body-class header measurement,
+44px targets,8px gaps,72px roster band and original pinch remain. Name-only Inventory is Nick's
+latest explicit instruction; Claude's proposed rank restoration conflicts and is not applied.
+Phone shelf density and wide pill widths remain Nick's visual decisions;2px phone sheet-edge
+exposure stays a U2 review item. U1 visual acceptance is OPEN. No U2–U4 or Phase2; U2 must resolve
+its pasted Training/Settings order against Settings-above-Training. U3 icon study stays a study.
+Current owners: UI_PRESENTATION.md, celestial-frontier-codebase-reference.md,
+port/UI_PARITY_PROGRAM_U1_U4.md, port/V2_PROGRAM_ROADMAP.md and port/v2/README.md.
 
-Batches B–D already have audiovisual candidates; do not restart Batch A. Latest refinement
-source preservation CLOSED, integrated pilot UNAPPROVED, all eight anatomical animations
-INCOMPLETE with protected static fallbacks. Matched listening, physical iPhone/Safari/PWA proof
-and 256 MiB retained-update enforcement remain open; the 128 MiB single-pack admission exists.
-Read audits/AAA_PILOT_REFINEMENT_20260905.md, AAA_GAP_AUDIT.md, AAA_COVERAGE_LEDGER.md and
-port/AAA_ASSET_POLICY.md when resuming that lane. No new backup/device/art acceptance here.
+Audiovisual B–D candidates exist; do not restart BatchA. Latest source preservation CLOSED;
+integrated pilot UNAPPROVED, eight anatomical animations INCOMPLETE with protected static
+fallbacks. Matched listening, physical iPhone/Safari/PWA and256MiB retained-update enforcement
+remain open;128MiB single-pack admission exists. Resume that separate lane through
+ audits/AAA_PILOT_REFINEMENT_20260905.md, AAA_GAP_AUDIT.md, AAA_COVERAGE_LEDGER.md and
+port/AAA_ASSET_POLICY.md. No new art, audio, backup or device acceptance.
+Producer891dd62c0bd5bf4aa30cd9d1d2ddce4a7076ee20dfb04cc1eb8ce4eb22026fcf
+is unchanged (authoritative full identity remains in the production-layout audit); measurement
+4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 and all rulers/ceilings/history unchanged.
+Draft81 bullets/authority073e0c972fb6e544b30cd3cc1c8fb1daebcb9216788c763681f380c1723195cb unchanged.
 
-Producer `891dd62c0bd5bf4aa30cd9d1d2ddce4a7076ee20dfb04cc1eb8ce4eb22026fcf`;
-measurement `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12`, ruler/ceilings/history unchanged.
-Draft 81 bullets, authority 073e0c972fb6e544b30cd3cc1c8fb1daebcb9216788c763681f380c1723195cb.
+### Paired next steps
 
-### Paired next steps and boundaries
+- Codex: commit the calibrated instrument, run one fresh normal-review diagnostic, retain exact
+  source/result/stacks and update this handoff. Do not repair navigation without attribution.
+- Claude: no need to open the app during this preparation. Once evidence is ready, review it
+  read-only from the owned anthropic checkout, preserving local/unmerged173c806. No merge/copy
+  or duplicate full battery. Its branch has not received this unintegrated work.
+- Nick: visual choices remain pending; no GitHub step or PR now. Future integration is a scoped
+  openai/mac → develop PR with exact hosted authorization; no main/release authority implied.
 
-- Codex: sign/push the records checkpoint through the normal openai/mac branch path, then
-  resume from audits/UI_U1_NEW_CODEX_SESSION_20260906.md with Claude's review and Nick's feedback.
-  No automatic broad navigation rework or U2 start; diagnose the exact recorded blocker first.
-- Claude: Nick can open Claude now and paste audits/UI_U1_CLAUDE_REVIEW_PROMPT_20260906.md.
-  Read-only review from its own anthropic checkout, preserve its local work, fetch/read the
-  openai/mac checkpoint without merging/copying. No duplicate full battery by default.
-- Nick: obtain Claude's findings, then paste them alongside the resume prompt in a new Codex
-  session. No PR or GitHub action now. Future integration needs a scoped agent PR into develop
-  and exact hosted authorization; no main/release approval is implied.
-
-Budget UNFROZEN, PUBLIC per last verification, private fallback 3000. Zero hosted attempts,
-labels, PRs, merges, purchases, releases or deployments authorized. Normal openai/mac branch
-push triggers nothing (0 hosted minutes). Workflows/Actions policy, packages, sealed measurement,
-artlock/protected portraits and legacy import boundary unchanged. Preserve anthropic/mac and
-its unmerged 173c806. Terminal-only privacy and isolated owned headless browser rule persist.
-Maintenance receipt reused during this uninterrupted session; a fresh coding session checks
-approved tooling anew under UI_TOOLCHAIN.md and nick-game-toolchain skill before code/build work.
-Artlock CI lane, ITP save protection and DECISIONS row 19 wording stay open.
+Budget UNFROZEN; PUBLIC per last verification; private fallback3000. Zero hosted attempts,
+labels, PRs, merges, purchases, releases/deployments. No workflow/policy/package/measurement/
+protected-art changes; no legacy import door. Artlock CI lane, ITP protection and DECISIONS row19
+wording remain open. Terminal-only privacy and isolated owned headless browsers persist.
+Fresh-session maintenance check PASS2026-09-06T16:28:25.659Z; Node26.8.1 update deferred because
+five active processes use26.7.0; all other approved tools current (REAPER suffix checked with brew).
+Full receipt in the diagnostic audit. Reuse it only in this uninterrupted coding session.

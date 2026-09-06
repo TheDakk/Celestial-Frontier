@@ -12,6 +12,12 @@ U1 review tool: `node tools/ui-shell-review.mjs` (read its CLI help/options befo
 It owns an isolated headless browser and creates three golden comparison sheets plus numeric
 CSS geometry deltas, plus numeric larger-text and narrow-landscape panel probes. On macOS
 request approved out-of-sandbox execution before browser spawn.
+As of2026-09-06 its navigation trace includes layout/visual viewport resize facts and an
+auto-resuming, session-owned trail breakpoint between intentional controls. The isolated
+calibration command is `node tools/ui-review-navigation-selftest.mjs NEW_REPORT_JSON`;
+focused controls use `node --test tools/ui-review-trail-debugger.test.mjs tools/ui-shell-review-trace.test.mjs`.
+Debugger stacks perturb timing and cannot close the retained navigation blocker on nonrecurrence.
+See `../../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md` for current evidence and limits.
 This diagnostic is not a U4 gate or a hosted battery. Nick judges U1 before U2; no CI/profile
 lane was changed. `ROADMAP.md` and `../../audits/UI_U1_PRODUCTION_LAYOUT_20260906.md` own current exact-source
 results; `../../audits/UI_U1_LAUNCHER_REVISION_20260906.md` and

@@ -8,6 +8,9 @@ explicit geometry differences and review boundaries. U2 sheet/stack work, U3 per
 and U4 ten-viewport/28-screen gate remain unstarted. Phase4 presentation parity is not closed;
 normal-game U1 and integrated audiovisual-pilot approvals both remain with Nick. No Phase2.
 Exact source and local evidence are recorded in the live ROADMAP handoff.
+The instrument-only navigation successor is scoped in
+`../audits/UI_U1_NAVIGATION_DIAGNOSTIC_20260906.md`; the retained blocker stays open.
+
 
 ## Overnight Batch 4 — checkpoint 2e implementation, 2026-09-05
 
