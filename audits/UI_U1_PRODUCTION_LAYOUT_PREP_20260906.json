@@ -36,12 +36,18 @@
       "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-screenshot-instruments-fixed-20260906.log.gz",
       "sha256": "c449eed7418fef98cfb2f86f7045801e8bf47c11a2f71248a27b41b64b7afa97",
       "originalSha256": "901cb7020aa2dcb8ea561e549088bdac9ac0d0a19daf06ba4433d6312a8c711e"
+    },
+    {
+      "file": "audits/UI_U1_PRODUCTION_LAYOUT_PREP_cf-u1-shelf-control-focused-20260906.log.gz",
+      "sha256": "31cfbe8b16131fa1de6d7ff2684f7d8d4ebb4a6a86583778dcb5caa0d7bfceb3",
+      "originalSha256": "ffbf383c647a60475713fd705fd4948a4d6babdc5b6da1bc2687f8e0f4f40076"
     }
   ],
   "observations": [
     "Name/HP initial stale wiring contract failed; changed safe textContent contract then2files/11PASS.",
     "Rail focus prep4files/36PASS and Feed one stale inverse-selector assertion RED; corrected Feed-only15PASS. Combined5files/51PASS.",
     "Normal-review static fixture:36 malformed outcomes rejected;45 generated expression shapes compiled; trusted delivery assessor unchanged. No browser evidence claimed.",
-    "Instrument prep initially rejected two stale fixture literals (compact dock Atlas and old Guide utility wording). Corrected syntax,4suites/113tests and Glass selftest PASS. Three final diagnostic descriptions then changed wording only; exact-source chain follows."
+    "Instrument prep initially rejected two stale fixture literals (compact dock Atlas and old Guide utility wording). Corrected syntax,4suites/113tests and Glass selftest PASS. Three final diagnostic descriptions then changed wording only; exact-source chain follows.",
+    "After signed d8f40ca but before any candidate run, final instrument review found the transparent-header hidden mutant needed the positive visibility predicate. Signed successor binds both to shelfVisible; focused43/43PASS. d8f40ca had no candidate attempt."
   ]
 }
