@@ -66,6 +66,20 @@
       "rawSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
       "bytes": 708,
       "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736"
+    },
+    {
+      "file": "cf-u2-scroll-correction-20260906.log.gz",
+      "rawBytes": 1326,
+      "rawSha256": "58e9445128c63d749f2f14ab5e4608a79c202989c42fdd177f0dad8c3b3eac8f",
+      "bytes": 822,
+      "sha256": "3750644059567afaf416abdf9f09345466a8bb3d46a4084b9bc22d65f2b52f58"
+    },
+    {
+      "file": "cf-u2-scroll-correction-final-20260906.log.gz",
+      "rawBytes": 1334,
+      "rawSha256": "37367ccfd86f94807f23e5de37848726781beaa7a8b482871846754930d702db",
+      "bytes": 826,
+      "sha256": "99e44f4b63b920b20f59e9b184f65871467bd37806e82ccfbbd1bb6a37815566"
     }
   ]
 }

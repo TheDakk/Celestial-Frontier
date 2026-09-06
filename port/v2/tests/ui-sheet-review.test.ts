@@ -78,6 +78,25 @@ describe('U2 diagnostic executes its retained source owners', () => {
     expect(w.sheetFault('', true).stylesheetRemoved).toBe(true); expect(head.querySelectorAll('style')).toHaveLength(0);
     dom.window.close();
   });
+  it('reveals both sides of the retained 568↔808 scroll oscillation with one measured wheel displacement', () => {
+    const dom = domOwners(), w = dom.window, panel = w.document.getElementById('setpanel');
+    const target = w.document.createElement('button'); target.id = 'setcharts'; panel.append(target);
+    panel.getBoundingClientRect = () => rect(8, 120, 304, 256.25);
+    panel.querySelector('.sheet-header').getBoundingClientRect = () => rect(23, 135, 182, 44);
+    for (const top of [130, 370]) {
+      let actualTop = top;
+      target.getBoundingClientRect = () => rect(80, actualTop, 44, 44);
+      const before = w.readSettingsReveal('#setcharts'); expect(before.inside).toBe(false);
+      actualTop -= before.delta;
+      const after = w.readSettingsReveal('#setcharts');
+      expect(after.inside).toBe(true); expect(after.delta).toBe(0);
+      expect(after.target.top).toBeGreaterThanOrEqual(187);
+      expect(after.target.bottom).toBeLessThanOrEqual(368.25);
+    }
+    target.getBoundingClientRect = () => rect(80, 180, 44, 200);
+    expect(() => w.readSettingsReveal('#setcharts')).toThrow('cannot fit');
+    dom.window.close();
+  });
   it('keeps the first fault failure when exact restoration also fails', async () => {
     const begin = '    const control = async (kind, options) => {', finish = '    for (const viewport of U2_VIEWPORTS)';
     expect(source.split(begin)).toHaveLength(2); expect(source.split(finish)).toHaveLength(2);
