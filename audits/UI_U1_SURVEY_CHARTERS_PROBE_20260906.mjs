@@ -80,6 +80,14 @@ function installKeyboardTrace() {
   window.__cfU1SurveyCharterKeys=trace;
   return true;
 }
+function assessKeyboardSequence(trace) {
+  const expected=[['keydown','Enter','Enter'],['keyup','Enter','Enter'],
+    ['keydown','Escape','Escape'],['keyup','Escape','Escape'],['keydown',' ','Space'],['keyup',' ','Space']];
+  const keys=trace.events.filter(e=>e.type==='keydown'||e.type==='keyup');
+  return {pass:!trace.overflow&&keys.every(e=>e.trusted)
+    &&JSON.stringify(keys.map(e=>[e.type,e.key,e.code]))===JSON.stringify(expected),expected,
+    actual:keys.map(e=>[e.type,e.key,e.code])};
+}
 const git=args=>execFileSync('git',args,{encoding:'utf8'}).trim(),source=git(['rev-parse','HEAD']),
   build=fs.realpathSync(process.argv[2]),out=path.resolve(process.argv[3]),
   sha=b=>crypto.createHash('sha256').update(b).digest('hex');
@@ -170,7 +178,8 @@ try {
             close:active?.getAttribute('data-pnx')??null};})()`);
         assert(expectedFocus==='objchip'?receipt.focusId==='objchip':receipt.close==='ch','wrong native keyboard origin');
         row.keyboard.push(receipt);write();
-        const params={key:keyValue,code,windowsVirtualKeyCode:virtualKey,nativeVirtualKeyCode:virtualKey};
+        // Match Slice's portable key helper: nativeVirtualKeyCode is platform-specific.
+        const params={key:keyValue,code,windowsVirtualKeyCode:virtualKey};
         await send('Input.dispatchKeyEvent',{type:'keyDown',...params,...(code==='Enter'?{text:'\r',unmodifiedText:'\r'}:code==='Space'?{text:' ',unmodifiedText:' '}:{})});
         await send('Input.dispatchKeyEvent',{type:'keyUp',...params});
         Object.assign(receipt,await evaluate('native keyboard receipt '+code,`(()=>{const k=window.__cfU1SurveyCharterKeys;return{events:k.events.slice(${receipt.start}),overflow:k.overflow};})()`));
@@ -240,7 +249,8 @@ try {
         await frames();row.settingsClosed=await read('Settings restored in same viewport');
         assert(row.settingsClosed.ok&&row.settingsClosed.focusId==='docksets');assert.deepEqual(row.settingsClosed.trail,row.baseline.trail);
       }
-      await saveTrace();assert(!row.trace.native.overflow&&!row.trace.keyboard.overflow);
+      await saveTrace();row.keyboardSequence=assessKeyboardSequence(row.trace.keyboard);write();
+      assert(!row.trace.native.overflow&&row.keyboardSequence.pass,JSON.stringify(row.keyboardSequence));
       row.phase='complete';row.pass=true;write();
     }catch(error){
       row.failurePhase=row.phase;row.failure=String(error);row.pass=false;write();

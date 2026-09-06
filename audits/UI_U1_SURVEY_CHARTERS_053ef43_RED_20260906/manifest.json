@@ -1,0 +1,44 @@
+{
+  "schema": "cf-u1-survey-charters-evidence/v1",
+  "source": "053ef439774520577071f0ca50887337dd938755",
+  "status": "FAIL",
+  "certification": false,
+  "summary": "390px layout, native Charters actions, six negatives and large text passed; final keyboard trace overflowed with unexpected trusted Unidentified/Minus events. Later viewports not run. Both prior blockers remain open.",
+  "files": [
+    {
+      "path": "report.json.gz",
+      "bytes": 18281,
+      "sha256": "acba44b8a193696f46ba2ed249f20eecec332a3c093c954f899f7ae1bd598341",
+      "rawBytes": 523282,
+      "rawSha256": "dc990d801b096741120822509f017057a1377f12b8f9ccb4925ec66df8d45dd8"
+    },
+    {
+      "path": "survey-charters-390x844-baseline.png",
+      "bytes": 112241,
+      "sha256": "19ffb0cf83a0f8dfc02642ea2e5d13f36920505063995c513fb19dfd2ec0c914",
+      "rawBytes": 112241,
+      "rawSha256": "19ffb0cf83a0f8dfc02642ea2e5d13f36920505063995c513fb19dfd2ec0c914"
+    },
+    {
+      "path": "survey-charters-390x844-charters.png",
+      "bytes": 103031,
+      "sha256": "aa57cf5c5d253360133eccce49ff43230f9527a96f5e0d0bbdbeae9777c55142",
+      "rawBytes": 103031,
+      "rawSha256": "aa57cf5c5d253360133eccce49ff43230f9527a96f5e0d0bbdbeae9777c55142"
+    },
+    {
+      "path": "cf-u1-survey-charters-build-20260906.log.gz",
+      "bytes": 1875,
+      "sha256": "bc11ae94ee18e25ee7f40cd86ea07c03ac9c812d481178648cc18775236bf7e4",
+      "rawBytes": 5281,
+      "rawSha256": "7a7d0932fbe56bfb1dad75887dddd1526f53ffa873c4f971b2a8a15c7c42bad5"
+    },
+    {
+      "path": "cf-u1-survey-charters-browser-053ef43-20260906.log.gz",
+      "bytes": 364,
+      "sha256": "8d6327d9a4766dda2e40d97f9bd15a4ef7e1594aa83941244bb01aeb95bba761",
+      "rawBytes": 478,
+      "rawSha256": "ffddb48dcdb7076dd20100d415c69fe358a55e083d93760fcdc450b9d8ffa206"
+    }
+  ]
+}
