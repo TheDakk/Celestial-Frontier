@@ -1,5 +1,17 @@
 # UI parity and presentation program — accepted brief
 
+### U1 visual acceptance retained; proposed U2 boundary — 2026-09-06
+
+Clean b457a7a passed static315/3376/1skip, then small-phone retained a real22.5px
+Planetside/hint overlap (one product finding, zero instrument failures). Large-phone, Slice and
+later native Charts Settings execution did not run. The U1 technical gate remains OPEN.
+Sheet/lane spacing is U2 scope. [The proposed next checkpoint](../audits/UI_U2_PROPOSED_SCOPE_20260906.md)
+requires Nick's scope decision before U2 begins; it preserves Settings-above-Training and carries
+the failed gate honestly. No further U1 rework, U2–U4 execution or hosted action started.
+[Current evidence](../audits/UI_U1_HINT_CONTRAST_20260906.md) preserves every prior stop.
+Earlier entries/amendments below remain verbatim.
+
+
 ### Final bounded U1 guidance correction — 2026-09-06
 
 Clean1609cf3 passed develop static (312 files/3333 passed/1 skipped), Slice and exact named

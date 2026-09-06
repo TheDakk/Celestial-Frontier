@@ -22,7 +22,10 @@ and [six-test correction preparation](UI_U1_DOCK_VERDICT_PREPARATION_20260906/ma
 retain that stop and the instrument-only successor. The [bb9ebe4 checkpoint](UI_U1_LOCAL_CHECKPOINT_bb9ebe4_20260906/manifest.json)
 passed static/dock/outline checks then found the intentionally hidden phone Charts shortcut;
 the instrument correction uses compact Settings→Star charts. [Route preparation](UI_U1_CHARTS_ROUTE_PREPARATION_20260906/manifest.json)
-passed 12 tests, TypeScript and root validate; fresh committed browser completion is pending.
+passed 12 tests, TypeScript and root validate. [Final b457a7a checkpoint](UI_U1_LOCAL_CHECKPOINT_b457a7a_20260906/manifest.json)
+passed static315/3376/1skip then retained a real22.5px Planetside/hint overlap on small-phone.
+The U1 gate is OPEN; [the proposed U2 scope](UI_U2_PROPOSED_SCOPE_20260906.md) needs Nick's phase
+boundary decision. No U2 implementation or further U1 rework has started.
 [Rail correction](UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) retains its prior controls and the
 [7c20246 static declaration RED](UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json).
 

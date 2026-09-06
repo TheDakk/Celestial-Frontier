@@ -52,7 +52,16 @@ without changing the product. Its successor bb9ebe4 passed static (314 files, 33
 skipped) and the dock/outline controls, then stopped because Charts is intentionally hidden on
 phones. The current instrument correction audits Settings → Star charts on compact layouts
 and retains the visible wide-screen Charts route. Twelve source-executing route tests, root
-TypeScript and validate passed. Fresh committed browser completion remains pending. The development draft
+TypeScript and validate passed.
+
+Latest local validation on signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322`: develop static
+PASS (315 files, 3376 passed, one skipped). Small-phone stopped PRODUCT RED with a real 22.5px
+Planetside/hint overlap at 320×568, zero instrument failures. Its later native Charts Settings
+phase, large-phone and Slice were NOT RUN. [The final U1 audit](../audits/UI_U1_HINT_CONTRAST_20260906.md)
+retains the nine-carrier checkpoint. U1 visual acceptance stands; the technical gate remains OPEN.
+Sheet/hint lane separation is explicitly U2 scope. [The proposed U2 checkpoint](../audits/UI_U2_PROPOSED_SCOPE_20260906.md)
+asks Nick to carry this known blocker into U2 without calling U1 green. No U2 implementation or
+further U1 rework is underway; the original no-U2 boundary remains until that scope change is approved. The development draft
 still has 81 bullets and mentions the outline. Compendium producer authority is now
 `6e6f000fe26753119327831b96fa8c4454d35952197286b16dc367a5ff658d90`; measurement
 `4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12` is unchanged.

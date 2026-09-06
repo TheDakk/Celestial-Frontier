@@ -112,3 +112,27 @@ related-anchor review found Charters already uses the accepted sole objective op
 Preparation passed 12 source-executing route tests, root TypeScript and root validate/fingerprint.
 The three logs are retained in UI_U1_CHARTS_ROUTE_PREPARATION_20260906/manifest.json. Native
 Charts receipts and fresh committed completion remain pending; no unchanged-source retry.
+
+## Terminal batch boundary — sheet spacing belongs to U2
+
+Signed `b457a7a81ee26ea3fb4a94d1f82bcf6e02b78322` passed develop static: 315 files, 3376 tests,
+one skip. Small-phone `local-u1-b457a7a-20260906-small-phone` stopped PRODUCT RED after 5497ms
+with one SURFACE_OVERLAP, zero instrument failures. Planetside spans y210–390; the hint spans
+y367.5–444, giving a 22.5px overlap at 320×568@2. This is a real rendered geometry failure.
+It precedes the newly retargeted native Charts Settings phase; that path, large-phone and Slice
+did not run on this source. The outline and responsive-dock controls passed in this run.
+
+Nine exact carriers, including all six execution-stage logs, are retained in
+`UI_U1_LOCAL_CHECKPOINT_b457a7a_20260906/manifest.json`, SHA-256
+`e59a612c1bf505e94a4dfad541584e71c2f21a7ac7f01bbc4da71de0afd90013`. The immutable Glass report
+passed generic terminal/Edge authority verification as a RED report. The source stayed clean,
+committed and unchanged; the owned workspace's ambient file stayed byte-identical. No retry,
+large-phone run, Slice run, hosted action or U2 implementation followed the failure.
+
+This ends the authorized local U1 work batch, NOT its technical gate. Nick already accepted the
+U1 design for UAT. The remaining real sheet/caption overlap belongs to the accepted U2 sheet and
+lane scope. `UI_U2_PROPOSED_SCOPE_20260906.md` is a concrete proposed checkpoint and asks for an
+explicit change to the original no-U2 boundary and checkpoint ordering. Do not infer approval or
+mark the failed phone gate green. The two older unknown causes and physical-device UAT stay OPEN.
+Codex's next implementation should be U2 after that scope decision; Claude need not open or run
+anything now. No PR is needed for this local handoff; all integration/hosted authority stays separate.
