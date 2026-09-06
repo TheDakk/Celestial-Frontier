@@ -49,6 +49,25 @@
         "Restore native dockatlas markup attribute ordering."
       ],
       "remainingChecks": "Glass selftest, Slice, phone canaries and visual review not run after red."
+    },
+    {
+      "source": "4e6047b",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3255passed/1skipped, Glassselftest PASS",
+      "failures": [
+        "GOLDEN LAYOUT drift: search bar not top-right",
+        "HP TOPBAR: nested label geometry or independent dark backing is broken",
+        "RIGHT RAIL GAP: reported 8px root-owned geometry was not established",
+        "LEFT RAIL GAP: symmetric 8px root-owned geometry was not established",
+        "RIGHT RAIL BOUNDARY CONTROL FAILED \u2014 removing only the rail boundary did not recreate dismissal",
+        "LEFT RAIL BOUNDARY CONTROL FAILED \u2014 removing only the rail boundary did not recreate dismissal",
+        "SEARCH OUTSIDE DISMISS: bounded rail ownership changed established Search dismissal/focus",
+        "ARC 5 FEED COMMIT: two native same-parent Use 1 actions did not resolve to one exact durable companion/flora winner, one real stale loser, visible settled acknowledgement, and reload fixed point",
+        "PHONE GOLDEN LAYOUT drift: search bar not top-right"
+      ],
+      "logSha256": "5854c0931719d59f80a1a543a1f3869e442f2f663d626d6dbb28bcbabb740579",
+      "remainingChecks": "phonecanaries andvisualreview notrunafterred"
     }
   ]
 }

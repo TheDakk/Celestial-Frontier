@@ -18,9 +18,10 @@ their IDs and actions in a separate contextual rail. Selection adds gold without
 There is no sealed fixed shelf-height number: font and text-size choices may increase it.
 
 Desktop/tablet begins at701px. Nick chose the FINAL LAYOUT bottom-right utility cluster;
-Prime remains centered above the scene and left/right boards use rails. Utilities/rails use
-44px pitch to preserve non-overlapping44px targets (2px above the legacy diagram, explicitly
-listed for review). Duplicate hidden Inventory/Records rail IDs retain compatibility; their
+Prime remains centered above the scene and left/right boards use rails. Utilities use
+44px pitch (2px above the legacy diagram); rails preserve the earned8px empty root-owned gap
+plus44px targets, yielding52px pitch (10px above the old42px diagram). Both differences are
+listed for review; the real gap dismissal/retention controls remain unchanged. Duplicate hidden Inventory/Records rail IDs retain compatibility; their
 visible shelf/utility owners provide access. The breadcrumb trail is a compact v2 lane;
 v1's final source hides it, so it is not claimed to match a visible golden trail.
 

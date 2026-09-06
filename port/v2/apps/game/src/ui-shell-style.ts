@@ -14,7 +14,7 @@ export const UI_SHELL_CSS = `
 #hpbar>.track{display:block;width:158px;height:12px;border-radius:var(--cf-radius-pill);background:#16202f;overflow:hidden;border:0;position:relative;box-shadow:inset 0 1px 2px #0008}
 #hpbar>.track::after{content:'';position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(90deg,transparent 0 calc(25% - 1px),#ffffff17 calc(25% - 1px) 25%)}
 #hpbar .fill{display:block;height:100%;background:linear-gradient(180deg,#a9f0a0,#3fae52);border-radius:var(--cf-radius-pill)}
-#hpbar .txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;color:#f4fff6;text-shadow:0 1px 2px #000;line-height:12px;background:transparent}
+#hpbar .txt{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:9.5px;font-weight:700;color:#f4fff6;text-shadow:0 1px 2px #000;line-height:12px;background:rgba(5,12,8,.78)}
 #searchbox{position:static;min-width:0;width:100%;min-height:var(--cf-touch-target);box-sizing:border-box;padding:5px 11px;font:12px var(--ui);color:var(--ink)}
 #searchbox::placeholder,#guidesearch::placeholder{color:var(--dim);opacity:1}
 #trail{position:fixed;top:calc(var(--topbar-h) + 8px);left:50%;transform:translateX(-50%);z-index:var(--cf-layer-trail);pointer-events:none;font-size:10.5px;letter-spacing:.06em;color:var(--dim);white-space:nowrap;max-width:92vw;overflow:hidden;text-overflow:ellipsis;background:rgba(10,16,30,.94);border:1px solid var(--cf-color-border);border-radius:var(--cf-radius-pill);padding:2px 12px}
@@ -43,7 +43,7 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
 #sceneactions button[aria-pressed="true"],#sceneactions button.on{border-color:var(--cf-color-accent-gold);color:#ffe3a8}
 /* The 32px rail face starts at shelf + 8px. Its 44px target extends 6px
    above/below; 44px centers leave no overlapping interactive rectangles. */
-#raillft,#railrgt{position:fixed;top:calc(var(--topbar-h) + 2px);z-index:var(--cf-layer-shell);display:none;flex-direction:column;gap:0}
+#raillft,#railrgt{position:fixed;top:calc(var(--topbar-h) + 2px);z-index:var(--cf-layer-shell);display:none;flex-direction:column;gap:8px}
 #raillft{left:calc(var(--safe-left) + 18px);align-items:flex-start}#railrgt{right:calc(var(--safe-right) + 18px);align-items:flex-end}
 #raillft button,#railrgt button{position:relative;display:flex;align-items:center;gap:8px;min-height:var(--cf-touch-target);padding:8px 13px;border:0;border-radius:var(--cf-radius-pill);background:none;color:var(--ink);cursor:pointer;font:11px var(--ui);isolation:isolate;box-sizing:border-box}
 #raillft button::before,#railrgt button::before{content:'';position:absolute;inset:6px 0;z-index:-1;border:1px solid #2a3c5e;border-radius:var(--cf-radius-pill);background:rgba(10,16,30,.94)}
@@ -57,6 +57,8 @@ body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
   #dock .dock-board{grid-row:1;align-self:stretch;position:static;transform:none;max-width:none}
   #dockcharters{grid-column:1/3}#dockcodex{grid-column:3/5}#primechip{grid-column:5/7}#dockshipyard{grid-column:7/9}#dockatlas{grid-column:9/11}
   #dock .dock-utility{grid-row:2}#dockrecords{grid-column:2/4}#docknotifications{grid-column:4/6}#dockguide{grid-column:6/8}#docksets{grid-column:8/10}
+  #dock #primechip{display:grid;grid-template-columns:auto auto;grid-template-rows:16px auto;align-content:center;justify-content:center;column-gap:2px;row-gap:1px}
+  #primechip>.ico{grid-column:1/-1;grid-row:1}#primechip>.lbl{grid-column:1;grid-row:2}#primechip>.prime-count{grid-column:2;grid-row:2}
   #primechip .prime-full-label{display:none}
   #hintpill{bottom:calc(var(--safe-bottom) + var(--cf-phone-hint-bottom))}
   #ctxbar{bottom:calc(var(--safe-bottom) + var(--cf-phone-caption-bottom))}

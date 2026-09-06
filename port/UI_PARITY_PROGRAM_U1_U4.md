@@ -7,8 +7,9 @@ saved notification history with persistent read/unread state; this is a narrow e
 the original no-persistence-change boundary, using the existing notification schema and F4
 checkpoint protections. No schema, product receipt, RNG or import-door change.
 
-Desktop utilities/rails use 44px pitch to keep the required 44px targets non-overlapping,
-a proposed 2px deviation from the old 42px diagram. Codex stated this assumption after asking
+Desktop utilities use 44px pitch to keep the required 44px targets non-overlapping,
+a proposed 2px deviation from the old 42px diagram. The earned8px root-owned rail gap must
+also survive; with44px targets, rails use52px pitch (+10px against the older diagram). Codex stated this assumption after asking
 for a preference; Nick has not explicitly confirmed that numerical deviation. Phone pitch
 remains exactly 64px. U1 stops for Nick's visual review before U2. U2's pasted stacking order
 conflicts with the earned Settings-above-Training-card law; resolve it before implementing U2.

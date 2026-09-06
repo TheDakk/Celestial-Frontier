@@ -5922,11 +5922,19 @@ try {
     const overlaps=(a,b)=>a&&b&&a.l<b.r-.5&&a.r>b.l+.5&&a.t<b.b-.5&&a.b>b.t+.5;
     const pc=r('playerchip'), hp=r('hpbar'), pr=r('primechip'), obj=r('objchip'),
       hint=r('hintpill'), ctx=r('ctxbar'), dock=r('dock'), rail=r('raillft'), dcx=r('dockcodex'),
-      srch=r('searchbox');
+      srch=r('searchbox'),bell=r('shelfnotifications');
     const bad=[];
     if(!pc || pc.l>80 || pc.t>60) bad.push('playerchip not top-left');
     if(!hp || !pc || hp.t < pc.b-4) bad.push('HP bar not under the player chip');
-    if(!srch || !srch.vis || W-srch.r>40 || srch.t>60) bad.push('search bar not top-right');
+    const bellNode=document.getElementById('shelfnotifications'),searchNode=document.getElementById('searchbox'),
+      safeRight=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--safe-right'))||0,
+      expectedBellRight=safeRight+(W<=700?10:18),bellHit=bell?document.elementFromPoint(bell.cx,bell.cy):null,
+      searchHit=srch?document.elementFromPoint(srch.cx,srch.cy):null;
+    if(!srch||!srch.vis||srch.t>60||!bell||!bell.vis||bell.w<44||bell.h<44
+      ||Math.abs(W-bell.r-expectedBellRight)>1||Math.abs(bell.l-srch.r-8)>1||Math.abs(bell.cy-srch.cy)>1
+      ||!bellHit||!(bellHit===bellNode||bellNode?.contains(bellHit))||searchHit!==searchNode)
+      bad.push('search is not beside its reachable shelf bell at the approved 8px gap: '+JSON.stringify({srch,bell,
+        expectedBellRight,bellHit:bellHit?.id||null,searchHit:searchHit?.id||null}));
     if(srch && pc && pc.r > srch.l+4) bad.push('player chip overlaps the search bar');
     if(W>700 && (!pr || Math.abs(pr.cx-W/2)>70 || pr.t>60)) bad.push('Prime Codex pill not top-center');
     if(W<=700){
@@ -5956,6 +5964,26 @@ try {
   const geoCtl = await evalIn(`(()=>{ const o=document.getElementById('objchip'); o.style.left='900px';
     const bad=${geoCheck}; o.style.left=''; return bad; })()`);
   if (!geoCtl.some((b) => b.includes('objective chip'))) fails.push('GEOMETRY CHECKER CONTROL FAILED — a moved objective chip went unseen');
+
+  /* The notification bell owns the shelf's right slot. Translate its live
+     target, remove it, and reduce its touch floor independently; the same
+     geometry oracle must reject each mutation and restore the exact source. */
+  const searchBellGeometryControl = `(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
+    const bell=document.getElementById('shelfnotifications');if(!bell)return {ok:false,why:'bell missing'};
+    const prior=captureInlineStyleProperties(bell.style,['transform','display','height','min-height']);
+    const mutations=[['gap',()=>bell.style.setProperty('transform','translateX(12px)','important')],
+      ['presence',()=>bell.style.setProperty('display','none','important')],
+      ['touch floor',()=>{bell.style.setProperty('min-height','43px','important');bell.style.setProperty('height','43px','important');}]];
+    const results=[];let error=null;try{for(const [name,mutate] of mutations){mutate();const broken=${geoCheck};
+      restoreInlineStyleProperties(bell.style,prior);const restored=${geoCheck},restoration=inspectInlineStyleProperties(bell.style,prior);
+      results.push({name,broken,restored,restoration,ok:broken.some(row=>row.startsWith('search is not beside its reachable shelf bell'))
+        &&restored.length===0&&restoration.ok});}}
+    catch(cause){error=String(cause?.message||cause);}finally{restoreInlineStyleProperties(bell.style,prior);}
+    return {ok:error===null&&results.length===3&&results.every(row=>row.ok),results,error};})()`;
+  if (geo.length === 0) {
+    const searchBellControl = await evalIn(searchBellGeometryControl);
+    if (!searchBellControl.ok) failSliceWithoutCascade('SHELF SEARCH/BELL CONTROL FAILED: ' + JSON.stringify(searchBellControl));
+  }
 
   /* The HP number is an overlay owned by the track, not a flex sibling that
      can drift beside it. Its translucent dark backing is independent from
@@ -6369,11 +6397,12 @@ try {
     if(before.cardOpen)document.querySelector('#survey [data-survey-close]')?.click();
     if(S.api.state().panelOpen){const panel=[...document.querySelectorAll('.panel')]
       .find((node)=>node.style.display!=='none');panel?.querySelector('[data-pnx]')?.click();}
-    const ids=['topbar','raillft','railrgt','dock','survey'];
+    const ids=['dockinventory','shelfnotifications','raillft','railrgt','dock','sceneactions','survey'];
     const boundaries=ids.map((id)=>({id,present:document.getElementById(id)?.hasAttribute('data-panel-boundary')===true}));
-    const state=S.api.state();return {panelOpen:state.panelOpen,cardOpen:state.cardOpen,boundaries};})()`);
+    const search=document.getElementById('searchbox'),searchOutside=!!search&&search.closest('[data-panel-boundary]')===null;
+    const state=S.api.state();return {panelOpen:state.panelOpen,cardOpen:state.cardOpen,boundaries,searchOutside};})()`);
   if (panelBoundarySetup.panelOpen !== null || panelBoundarySetup.cardOpen
-    || panelBoundarySetup.boundaries.some((row) => !row.present)) {
+    || panelBoundarySetup.boundaries.some((row) => !row.present) || !panelBoundarySetup.searchOutside) {
     fails.push('PANEL BOUNDARY INVENTORY: setup or declared chrome ownership is incomplete: '
       + JSON.stringify(panelBoundarySetup));
   }
@@ -6729,7 +6758,7 @@ try {
   if (await openDesktopRailPanel('railcodex', 'codex', 'SEARCH OUTSIDE DISMISS')) {
     const searchPoint = await evalIn(`(()=>{ const input=document.getElementById('searchbox'),rect=input?.getBoundingClientRect(),
       x=rect?(rect.left+rect.right)/2:0,y=rect?(rect.top+rect.bottom)/2:0,hit=rect?document.elementFromPoint(x,y):null;
-      return {ok:!!input&&!!rect&&rect.width>0&&rect.height>0&&hit===input&&!input.hasAttribute('data-panel-boundary'),x,y};})()`);
+      return {ok:!!input&&!!rect&&rect.width>0&&rect.height>0&&hit===input&&input.closest('[data-panel-boundary]')===null,x,y};})()`);
     let receipt = null;
     if (searchPoint.ok) {
       await armDesktopPointerReceipt();
@@ -6737,7 +6766,7 @@ try {
       receipt = await takeDesktopPointerReceipt();
     }
     const outcome = await evalIn(`(()=>{ const s=window.__CF_SLICE__.api.state(),input=document.getElementById('searchbox');
-      const result={panelOpen:s.panelOpen,focused:document.activeElement===input,boundary:input?.hasAttribute('data-panel-boundary')===true};
+      const result={panelOpen:s.panelOpen,focused:document.activeElement===input,boundary:input?.closest('[data-panel-boundary]')!==null};
       input?.blur();return result;})()`);
     if (!searchPoint.ok || receipt?.targetId !== 'searchbox' || receipt?.pointerType !== 'mouse'
       || outcome.panelOpen !== null || !outcome.focused || outcome.boundary) {
@@ -18552,6 +18581,33 @@ try {
       [key, key === 'at' ? '__codec-now__' : entry]
     )));
   };
+  const arc5FeedUnrelatedData = (raw, omitNotifications = false) => {
+    const codecRecord = (value) => {
+      const stable = arc5FeedCodecStableRecord(value);
+      return omitNotifications && stable !== null && typeof stable === 'object'
+        && !Array.isArray(stable)
+        ? Object.fromEntries(Object.entries(stable).filter(([key]) => key !== 'notifs'))
+        : stable;
+    };
+    const extensions = (row) => Object.fromEntries(
+      Object.entries(row?.extensions ?? {}).filter(([namespace]) => (
+        namespace !== 'f4.authority' && !namespace.startsWith('arc5.ownership.')
+      )),
+    );
+    return {
+      legacyData: codecRecord(raw?.legacy),
+      playerData: codecRecord(raw?.playerRow?.data),
+      creaturesData: raw?.creaturesRow?.data,
+      catalogData: raw?.catalogRow?.data,
+      inventoryData: raw?.inventoryRow?.data,
+      settingsData: raw?.settingsRow?.data,
+      playerExtensions: extensions(raw?.playerRow),
+      creaturesExtensions: extensions(raw?.creaturesRow),
+      catalogExtensions: extensions(raw?.catalogRow),
+      inventoryExtensions: extensions(raw?.inventoryRow),
+      settingsExtensions: extensions(raw?.settingsRow),
+    };
+  };
   const arc5FeedFixture = (() => {
     const source = arc4BurnRaw?.captureState;
     const creature = source?.creatures?.find((row) => (
@@ -18627,11 +18683,6 @@ try {
       const carrier = row?.extensions?.[namespace] ?? null;
       return { segment, namespace, version: carrier?.version ?? null, json: carrier?.json ?? null };
     });
-    const unrelatedExtensions = (row) => Object.fromEntries(
-      Object.entries(row?.extensions ?? {}).filter(([namespace]) => (
-        namespace !== 'f4.authority' && !namespace.startsWith('arc5.ownership.')
-      )),
-    );
     const addedReceiptKeys = raw?.receiptKeys ?? [];
     return Object.freeze({
       globalRevision: raw?.revision,
@@ -18661,19 +18712,13 @@ try {
       rawPersistenceFingerprint: arc5FeedRawPersistenceFingerprint(raw),
       durableFingerprint: arc5FeedHash(carriers),
       arc4Fingerprint: arc5FeedHash(raw?.captureState),
-      unrelatedFingerprint: arc5FeedHash({
-        legacyData: arc5FeedCodecStableRecord(raw?.legacy),
-        playerData: arc5FeedCodecStableRecord(raw?.playerRow?.data),
-        creaturesData: raw?.creaturesRow?.data,
-        catalogData: raw?.catalogRow?.data,
-        inventoryData: raw?.inventoryRow?.data,
-        settingsData: raw?.settingsRow?.data,
-        playerExtensions: unrelatedExtensions(raw?.playerRow),
-        creaturesExtensions: unrelatedExtensions(raw?.creaturesRow),
-        catalogExtensions: unrelatedExtensions(raw?.catalogRow),
-        inventoryExtensions: unrelatedExtensions(raw?.inventoryRow),
-        settingsExtensions: unrelatedExtensions(raw?.settingsRow),
-      }),
+      // Full fingerprint still owns the pending/immediate/stale-loser checks.
+      unrelatedFingerprint: arc5FeedHash(arc5FeedUnrelatedData(raw)),
+      unrelatedExceptNotificationsFingerprint: arc5FeedHash(arc5FeedUnrelatedData(raw, true)),
+      notificationHistory: {
+        legacy: raw?.legacy?.notifs ?? null,
+        player: raw?.playerRow?.data?.notifs ?? null,
+      },
       fixedCarrierCount: carriers.filter((carrier) => (
         carrier.version === 2 && typeof carrier.json === 'string'
       )).length,
@@ -19584,6 +19629,18 @@ try {
       );
       afterRaw = await winnerDriver.evaluate(ARC4_DURABLE_READ_EXPRESSION);
       afterProjection = arc5FeedCarrierProjection(afterRaw, arc5FeedFixture);
+      const notificationToast = await winnerDriver.wait(
+        'Arc 5 Feed native notification paint', `(()=>{
+        const toast=document.getElementById('toast'),title=toast?.querySelector('[data-sel="toast-title"]'),
+          style=toast?getComputedStyle(toast):null,rect=toast?.getBoundingClientRect(),
+          observed={title:title?.textContent??null,
+          message:toast?[...toast.childNodes].filter(node=>node.nodeType===Node.TEXT_NODE)
+            .map(node=>node.textContent??'').join(''):null,
+          visible:!!rect&&rect.width>0&&rect.height>0&&style?.display!=='none'
+            &&style?.visibility==='visible'&&Number(style?.opacity)===1,
+          serial:window.__CF_SLICE__.api.state().toastSerial,observedAt:Date.now()};
+        return observed.visible?observed:null;})()`, 1_500,
+      );
       const newReceiptKeys = afterRaw.receiptKeys.filter(
         (key) => !winnerBeforeActionRaw.receiptKeys.includes(key),
       );
@@ -19646,6 +19703,7 @@ try {
         lastOutcome: settledState.ownershipV2.feed.lastOutcome,
         toastSerial: settledState.toastSerial,
         toastText: settledState.toastText,
+        notificationToast,
       };
       await arc5FeedOpenDetail(
         arc5FeedFixture, 'Arc 5 Feed winner same-document reopen', winnerDriver,
@@ -19994,7 +20052,54 @@ try {
       node.contextId = 'cross-context-negative-control';
       crossContextAudioChangeCount += 1;
     }
+    const notificationControl = (mutate) => {
+      const control = structuredClone(committedBundle);
+      mutate(control);
+      return assessCompendiumFeedCommittedOutcome(control);
+    };
+    const mutateReloadNotices = (control, mutate) => {
+      for (const rows of Object.values(control.reloaded.notificationHistory)) mutate(rows);
+    };
     const committedControls = committedAssessment.ok === true ? [
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        control.reloaded.notificationHistory = null;
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        control.reloaded.notificationHistory = structuredClone(control.after.notificationHistory);
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows[0].read = true; });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows[0].ms += ' altered'; });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows[0].id = (rows[0].id + 1) | 0; });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows[0].t = control.after.codecAt - 1; });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows[0].t = control.settled.notificationToast.observedAt + 1; });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => {
+          if (rows.length > 1) rows[1].read = !rows[1].read;
+          else rows.push({ ...rows[0], id: (rows[0].id + 1) | 0 });
+        });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        mutateReloadNotices(control, (rows) => { rows.splice(1, 0, { ...rows[0] }); });
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        control.reloaded.notificationHistory.player[0].tt = 'Wrong codec owner';
+      })],
+      ['exact post-Feed notification checkpoint', notificationControl((control) => {
+        control.settled.notificationToast.visible = false;
+      })],
+      ['full-reload durable fixed point', notificationControl((control) => {
+        control.reloaded.unrelatedExceptNotificationsFingerprint = 'f'.repeat(64);
+      })],
       ['one global revision, ownership successor, and Feed receipt',
         assessCompendiumFeedCommittedOutcome({
           ...committedBundle,
@@ -24403,6 +24508,8 @@ try {
     failSliceWithoutCascade('PHONE GOLDEN LAYOUT drift: ' + phGeo.join(' · '));
   }
   if (phGeo.length === 0) {
+    const phoneSearchBellControl = await evalPh(searchBellGeometryControl);
+    if (!phoneSearchBellControl.ok) failSliceWithoutCascade('PHONE SHELF SEARCH/BELL CONTROL FAILED: ' + JSON.stringify(phoneSearchBellControl));
     const phonePrimeControls = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
       const prime=document.getElementById('primechip'),hp=document.getElementById('hpbar'),
       prior=captureInlineStyleProperties(prime.style,['display','top','left','transform','position','bottom']);

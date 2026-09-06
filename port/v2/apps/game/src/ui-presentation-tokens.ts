@@ -7,7 +7,7 @@ export const UI_PRESENTATION_TOKENS = Object.freeze({
   'type-section': '16px', 'type-title': '20px',
   'radius-small': '6px', 'radius-panel': '14px', 'radius-pill': '999px',
   'layer-caption': '6', 'layer-objective': '9', 'layer-trail': '19',
-  'layer-shell': '20', 'layer-sheet': '22', 'layer-survey': '23',
+  'layer-shell': '20', 'layer-sheet': '22', 'layer-survey': '23', 'layer-utility-panel': '24',
   'layer-toast': '30', 'layer-training': '50', 'layer-training-surface': '58',
   'layer-training-settings': '60',
   'color-surface': 'rgba(10,16,30,var(--glass-a))',

@@ -84,19 +84,24 @@ function shellGeometry() {
     return { id, left: b.left, top: b.top, right: b.right, bottom: b.bottom, width: b.width, height: b.height,
       visible: s.display !== 'none' && s.visibility !== 'hidden' && b.width > 0 && b.height > 0 }; };
   const styles = getComputedStyle(document.documentElement), ids = ['topbar', 'playerchip', 'hpbar', 'searchbox',
-    'dock', 'primechip', 'objchip', 'trail', 'ctxbar', 'hintpill', 'sceneactions', 'dockinventory'];
+    'dock', 'primechip', 'objchip', 'trail', 'ctxbar', 'hintpill', 'sceneactions', 'dockinventory', 'shelfnotifications'];
   return { viewport: { width: innerWidth, height: innerHeight }, rects: Object.fromEntries(ids.map(id => [id, r(id)])),
     font: getComputedStyle(document.body).fontFamily, fontSize: getComputedStyle(document.body).fontSize,
     topbarPublished: parseFloat(styles.getPropertyValue('--topbar-h')), row1Published: parseFloat(styles.getPropertyValue('--row1-h')),
     safeBottom: parseFloat(styles.getPropertyValue('--safe-bottom')) || 0,
+    safeRight: parseFloat(styles.getPropertyValue('--safe-right')) || 0,
     dock: [...document.querySelectorAll(innerWidth <= 700 ? '#dock > button' : '#dock > .dock-utility')].map(node => r(node.id)).filter(row => row?.visible),
     bodyClasses: document.body.className, horizontalOverflow: document.documentElement.scrollWidth > innerWidth };
 }
 function metricDeltas(state) {
-  const { rects: r, viewport: v, safeBottom } = state, phone = v.width <= 700, rows = [];
+  const { rects: r, viewport: v, safeBottom, safeRight } = state, phone = v.width <= 700, rows = [];
   const add = (name, actual, expected, scope = 'v1 law') => rows.push({ name, actual, expected, delta: actual - expected,
     pass: Number.isFinite(actual) && Math.abs(actual - expected) <= 1, scope });
   add('topbar published height', state.topbarPublished, r.topbar.height, 'measured sync');
+  add('Search/bell gap', r.shelfnotifications.left - r.searchbox.right, 8);
+  add('shelf bell right inset', v.width - r.shelfnotifications.right - safeRight, phone ? 10 : 18);
+  add('Search/bell centre alignment', r.searchbox.top + r.searchbox.height / 2
+    - r.shelfnotifications.top - r.shelfnotifications.height / 2, 0);
   add('objective left inset', r.objchip.left, 18);
   add('objective top offset', r.objchip.top - r.topbar.height, 128);
   if (r.trail.visible) add('trail top offset', r.trail.top - r.topbar.height, 8, 'v2 continuation in reserved lane');
@@ -142,10 +147,11 @@ export async function runUiShellReview(buildArgument, outputArgument) {
   const cases = [['phone', 390, 844, true], ['desktop', 1440, 900, false], ['tablet', 834, 1112, true]];
   const report = { schema: 'cf-u1-shell-review/v1', certification: false, source, startedAt: new Date().toISOString(),
     build: { indexSha256: sha(Buffer.from(index)), serviceWorkerSha256: sha(workerBytes), assets },
-    status: 'RUNNING', rows: [], images: [], errors: [], limitations: [
+    status: 'RUNNING', rows: [], journeys: [], images: [], errors: [], limitations: [
       'U1 geometry diagnostic only, not U4, full Glass, real iPhone or HUMAN visual acceptance.',
       'Golden raster differences reflect scene/save/browser/font differences as well as design; no pixel-equality verdict.',
-      'New game uses its native Skip journey, not a legacy import; named scene differences remain visible in the comparison.',
+      'New game uses native Skip then bounded Escape ascent to the visible Cosmos breadcrumb, not a legacy import; camera, progression and save differences remain visible in the comparison.',
+      'Notification screenshots use only naturally available messages; this diagnostic does not certify cross-session persistence.',
       'Desktop utility pitch is 44px for the retained touch floor, +2px against legacy 42px intention.',
     ] };
   const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json',
@@ -176,6 +182,13 @@ export async function runUiShellReview(buildArgument, outputArgument) {
     const capture = async (file, clip) => { const { data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, ...(clip ? { clip } : {}) });
       const bytes = Buffer.from(data, 'base64'); fs.writeFileSync(path.join(output, file), bytes);
       report.images.push({ file, bytes: bytes.length, sha256: sha(bytes) }); return bytes; };
+    const frames = () => evaluate(`document.fonts.ready.then(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true)))))`);
+    const scene = () => evaluate(`({trail:[...document.querySelectorAll('#trail .seg')].map(node=>node.textContent),context:document.getElementById('ctxbar')?.textContent,bodyClasses:document.body.className})`);
+    const clickNative = async selector => {
+      const point = await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});if(!e)throw new Error('Native control missing');const r=e.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2,h=document.elementFromPoint(x,y);if(e.disabled||e.closest('[inert]')||r.width<=0||r.height<=0||!(h===e||e.contains(h)))throw new Error('Native control unavailable: '+${JSON.stringify(selector)});return{x,y}})()`);
+      await send('Input.dispatchMouseEvent', { type: 'mousePressed', ...point, button: 'left', clickCount: 1 });
+      await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...point, button: 'left', clickCount: 1 });
+    };
     for (const [name, width, height, mobile] of cases) {
       await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile });
       await send('Emulation.setTouchEmulationEnabled', { enabled: mobile, maxTouchPoints: 5 });
@@ -187,16 +200,63 @@ export async function runUiShellReview(buildArgument, outputArgument) {
         await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...point, button: 'left', clickCount: 1 });
       }
       await wait(`!document.body.classList.contains('training') && !document.querySelector('[data-sel=tutskip]')`);
-      await evaluate(`document.fonts.ready.then(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true)))))`);
+      await frames();
+      const journey = { name, before: await scene(), steps: [], after: null };
+      report.journeys.push(journey); writeReport();
+      let currentScene = journey.before;
+      for (let presses = 0; JSON.stringify(currentScene.trail) !== '["Cosmos"]' && presses < 6; presses++) {
+        await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27, nativeVirtualKeyCode: 27 });
+        await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27, nativeVirtualKeyCode: 27 });
+        await frames(); currentScene = await scene(); journey.steps.push({ input: 'Escape', after: currentScene }); writeReport();
+      }
+      journey.after = currentScene; writeReport();
+      assert.deepEqual(currentScene.trail, ['Cosmos'], name + ' native ascent did not reach Cosmos within six Escape presses');
       const state = await evaluate(`(${shellGeometry.toString()})()`), deltas = metricDeltas(state);
       const phone = width <= 700 ? await evaluate(`(${readU1PhoneShell.toString()})(false)`) : null;
       const candidate = await capture(`u1-main-${name}.png`);
       const goldenFile = `ui-main-${name}.png`, golden = fs.readFileSync(path.join(goldenRoot, goldenFile));
       assert.equal(sha(golden), goldenManifest.find(row => row.file === goldenFile)?.sha256, 'golden integrity');
-      const row = { name, state, deltas, phone, golden: { file: goldenFile, sha256: sha(golden) },
+      const row = { name, scene: currentScene, state, deltas, phone, golden: { file: goldenFile, sha256: sha(golden) },
         pass: deltas.every(delta => delta.pass) && !state.horizontalOverflow && (!phone || phone.ok), controls: [] };
       report.rows.push(row); writeReport();
       assert(row.pass, name + ' U1 geometry: ' + JSON.stringify({ deltas: deltas.filter(d => !d.pass), phone: phone?.errors }));
+      // Open and close the real shelf bell without seeding history or modifying panel styling.
+      await clickNative('#shelfnotifications');
+      await wait(`getComputedStyle(document.getElementById('notificationpanel')).display !== 'none'`);
+      await frames();
+      const notification = await evaluate(`(()=>{const panel=document.getElementById('notificationpanel'),close=panel.querySelector('[data-pnx]');
+        const box=node=>{if(!node)return null;const r=node.getBoundingClientRect();return{left:r.left,top:r.top,right:r.right,bottom:r.bottom,width:r.width,height:r.height}};
+        const p=box(panel),c=box(close),hit=c?document.elementFromPoint(c.left+c.width/2,c.top+c.height/2):null;
+        return{panel:p,close:c,closeNamed:!!close?.getAttribute('aria-label'),closeNative:close?.tagName==='BUTTON'&&!close.disabled&&!close.closest('[inert]'),closeHit:!!hit&&(hit===close||close.contains(hit)),historyRows:panel.querySelectorAll('.notification-entry').length,emptyState:!!panel.querySelector('.notification-empty'),viewport:{width:innerWidth,height:innerHeight}};})()`);
+      row.notifications = notification;
+      await capture(`u1-notifications-${name}.png`); writeReport();
+      const notificationBoundsPass = proof => !!proof.panel && !!proof.close
+        && proof.panel.left >= -1 && proof.panel.top >= -1
+        && proof.panel.right <= proof.viewport.width + 1 && proof.panel.bottom <= proof.viewport.height + 1
+        && proof.close.left >= Math.max(0, proof.panel.left) - 1 && proof.close.top >= Math.max(0, proof.panel.top) - 1
+        && proof.close.right <= Math.min(proof.viewport.width, proof.panel.right) + 1
+        && proof.close.bottom <= Math.min(proof.viewport.height, proof.panel.bottom) + 1
+        && proof.close.width >= 44 && proof.close.height >= 44 && proof.closeNamed && proof.closeNative && proof.closeHit;
+      notification.pass = notificationBoundsPass(notification); writeReport();
+      assert(notification.pass, name + ' native Notifications panel/Close is not bounded and actionable: ' + JSON.stringify(notification));
+      notification.controls = [
+        ['panel outside viewport', { ...notification, panel: { ...notification.panel, left: -2 } }],
+        ['Close below touch floor', { ...notification, close: { ...notification.close, height: 43 } }],
+        ['Close covered', { ...notification, closeHit: false }],
+        ['Close unnamed', { ...notification, closeNamed: false }],
+      ].map(([controlName, proof]) => ({ name: controlName, rejected: !notificationBoundsPass(proof) }));
+      assert(notification.controls.every(control => control.rejected), 'Notifications geometry oracle accepted a malformed observation');
+      await clickNative('#notificationpanel [data-pnx]');
+      await wait(`getComputedStyle(document.getElementById('notificationpanel')).display === 'none'`);
+      await frames();
+      const restoredState = await evaluate(`(${shellGeometry.toString()})()`);
+      notification.closed = { focusedId: await evaluate(`document.activeElement?.id`), scene: await scene(),
+        deltas: metricDeltas(restoredState), phone: width <= 700 ? await evaluate(`(${readU1PhoneShell.toString()})(false)`) : null };
+      writeReport();
+      assert.equal(notification.closed.focusedId, 'shelfnotifications', name + ' Notifications Close did not restore its exact native opener');
+      assert.deepEqual(notification.closed.scene.trail, ['Cosmos']);
+      assert(notification.closed.deltas.every(delta => delta.pass) && !restoredState.horizontalOverflow
+        && (!notification.closed.phone || notification.closed.phone.ok), name + ' main shell did not restore after Notifications Close');
       // Break a measured anchor in the live document, require red, restore and re-observe green.
       const control = await evaluate(`(()=>{const e=document.getElementById('objchip'),p=e.style.getPropertyValue('left'),priority=e.style.getPropertyPriority('left');
         let broken;try{e.style.setProperty('left','118px','important');broken=(${shellGeometry.toString()})();}finally{if(p)e.style.setProperty('left',p,priority);else e.style.removeProperty('left');}
@@ -206,6 +266,9 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       row.controls.push({ name: 'live objective displaced100px; exact style restored', brokenDeltas: metricDeltas(control.broken), restored: true });
       const metricMutations = [
         ['topbar published height', ':root', '--topbar-h', '321px'],
+        ['Search/bell gap', '#searchbox', 'transform', 'translateX(10px)'],
+        ['shelf bell right inset', '#shelfnotifications', 'transform', 'translateX(10px)'],
+        ['Search/bell centre alignment', '#searchbox', 'transform', 'translateY(10px)'],
         ['objective top offset', '#objchip', 'top', '1px'],
         ...(state.rects.trail.visible ? [['trail top offset', '#trail', 'top', '1px']] : []),
         ...(width <= 700 ? [

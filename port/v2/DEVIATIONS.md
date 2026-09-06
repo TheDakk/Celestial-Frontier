@@ -5,8 +5,9 @@
 Nick's explicit58px chips/36px faces/701px desktop breakpoint/visible labels take precedence
 over differing shipped golden details (60pxchips,44pxfaces,901pxbreakpoint,hidden phone labels).
 Touch targets remain44px. Nick selected bottom-right desktop utilities over the earlier
-bookends prose. Desktop44pxpitch is a proposed2px exception to the42px diagram to avoid
-intersecting targets; awaiting his visual judgment. The shelf has a measured, content-derived
+bookends prose. Desktop utilities use44pxpitch, a proposed2px exception to the42px diagram.
+Rails require the earned8pxroot-owned clickable gap as well, so their target pitch is52px
+(10px above that diagram); awaiting his visual judgment. The shelf has a measured, content-derived
 height, not an invented fixed v1 value. V2's compact trail remains visible where v1 hides it.
 
 Nick additionally authorized persistent notification history/readstate, narrowly extending the
