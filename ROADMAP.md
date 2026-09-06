@@ -17,81 +17,77 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-05 local · B–D FIRST PILOT CHECKPOINT VERIFIED
+## SESSION HANDOFF — 2026-09-05 local · PRODUCTION COMPARISON / PILOT REFINEMENT
 
 OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`, branch
-`openai/mac`, upstream `origin/openai/mac`. The existing real sync `bc211bef1f4def92a27933b7c79a090d8913fae4`
-contains develop `c1791e210158de864fdd475323c3091d9ecbae58` / PR #41. This batch began clean
-at `fbf7d953284a04db56b4fe53f444becf710928ff`; fetch passed and develop was already an ancestor.
-No additional merge, rebase or other-agent change. The former handoff is archived verbatim.
+`openai/mac`, upstream `origin/openai/mac`. Review began clean and synchronized at
+`7a1f3848f0d7571fd9d06956cd6910650c95b87e`. SSH origin remains
+`git@github.com:TheDakk/Celestial-Frontier.git`, previously authenticated as TheDakk;
+this batch’s fetch passed. `origin/develop` remains
+`c1791e210158de864fdd475323c3091d9ecbae58`, included by real sync
+`bc211bef1f4def92a27933b7c79a090d8913fae4`. No merge or other-agent changes.
+The superseded handoff is archived verbatim. This batch changes review records/captures only.
 
-Nick lifted the B–D status-only bound: **Start B–D production under the existing pilot approval
-stop.** This production checkpoint adds12 optimized files (9,985,126 bytes), isolated review
-entry `audiovisual-pilot.html`, and lazy real-game `?avpilot=1` integration. Existing system →
-Survey → Earth landing → biosphere remains the journey owner. No gameplay is invented to stage art.
+### Nick’s direction and current judgment
 
-### Production and verification state
+Nick says live production looks substantially better than the pilot and wants the existing
+game upgraded. He specifically reaffirmed the hard-won clickable/accessible window behavior
+after overlay defects. Preserve those outcomes throughout art integration; do not replace them
+with screenshot-only acceptance. Existing PROCESS_LAWS, Slice and Glass remain the owners.
 
-- B: canonical starter Scout at132/300/512; one transparent Blender atmosphere layer over the
-  exact existing Earth temperate vista. Coarse first landscape rejected and retained privately.
-- Eight body plans at132/300/440 in static/animated presentation are selectable in the study.
-  Protected portrait pixels remain; 300 uses the440 source. **All anatomical animation remains
-  INCOMPLETE.** Only an external frame marker animates, respecting reduced motion/visibility.
-- C: eight original REAPER/Surge PCM16/48kHz cues, finite24-second phrase/bed plus UI/ship/combat
-  candidates. Existing audio runtime/lifetime owner; at most4 pilot voices/one per category;
-  decoded-data cache19,503,360B, with native playing buffers additional. Canonical creature voices
-  remain. Short navigation audio is tied to trusted existing controls after explicit activation;
-  other short cues remain audition-only. Human/matched-current listening remains open.
-- D: reusable scoped tokens and three isolated Survey/Compendium/Inventory studies. The optional
-  playable controls yield to existing cards/panels/Training/modals; ship eligibility refreshes on
-  committed loadout publication. No Phase2 chrome edit. Build admission enforces128MiB complete
-  pack. Aggregate256MiB retained-update enforcement and physical Safari/PWA proof remain open.
-- Sources: new durable196-file B/C bundle224,632,891B; independent iCloud package198files,
-  uploaded → all evicted → all downloaded/current →197/197 checksums plus SHA256SUMS verified.
-  Scratch truncation rejected. Verified2026-09-06 00:37:00UTC (September5 local). Tar SHA
-  `3e319afc9e35991a99aebc9a6940662d8c6f01e41fbbda0b35d2db6ae61bf38f`.
-  `audits/AAA_PILOT_BCD_BACKUP_20260905.md`/JSON own evidence; no private paths in public records.
-  BatchA originals/backup remain immutable; OneDrive copied/unverified status unchanged.
-- Exact clean source `ab91d59ad0ff6badefa19fdc134c3f395241da57` passes browser-free develop:
- 308 files /3,224 passed /1 skip, root main.js absent. Root validate passes50 deterministic
- probes and1,010 Earth renders; policy selftest81/81. Initial local red and bounded fixture/
- producer-history correction are retained. Final pack15,607,722B; initial-JS gzip delta+6,905B.
- The full record is `audits/AAA_PILOT_BCD_20260905.md`/JSON and inspected proof sheets beside it.
- This is a first direction checkpoint, not closure of every B–D prerequisite. Human/device
- approval, matched-current A/B, authored motion capture, anatomical animation and256MiB
- aggregate retained-update enforcement remain open. The final response identifies the exact
- pushed documentation successor; product/test inputs remain the verified source above.
-  Only Compendium producer authority/live test pins were derived anew; measurement authority,
-  numeric ceilings, artlock references and quarantined SceneMemory authorities are unchanged.
+`audits/AAA_PRODUCTION_PILOT_REVIEW_20260905.md`/JSON contain the actual public-site comparison,
+captures, limitations and suggested next pass. Live footer: v1.8.9 / build92098e9. Local pilot:
+the 7a1f384 source and existing built delivery at `http://127.0.0.1:4179/`.
+Use `/audiovisual-pilot.html` for the study or `/?avpilot=1` for the playable pilot; opening
+the checked-in source HTML with `file://` is not a usable delivery path. Local preview hosting
+is a developer task, not something players must run.
 
-Current ledgers: `AAA_GAP_AUDIT.md`, `AAA_COVERAGE_LEDGER.md`, `AUDIO_LICENSES.md`,
-`port/AAA_ASSET_POLICY.md`. Human art/anatomy/listening/iPhone acceptance is not an automated PASS.
-No Phase2/top bar/dock/rails before Nick's integrated-pilot approval.
+The pilot does not yet demonstrate the requested graphical upgrade. The main observed issue
+is composition: a large orbital globe competes with the landed landscape; the phone splits
+attention among vista, globe, biosphere and notices. The study’s sparse layout and green Scout
+are preliminary. Production supplies useful world framing, material readability and interface
+hierarchy. Some differences predate B–D; no claim that every issue was introduced by the pilot.
 
-### Privacy and tools
+Recommended bounded Phase1 refinement: one coherent Earth arrival → ecosystem → Shipyard
+sequence, with richer terrain/material/light and the existing native interaction owners.
+This does not replace the full eight-family132/300/440 static/animated sweep. All anatomical
+animation remains INCOMPLETE; protected portraits stay unchanged. Matched audio listening,
+real iPhone evidence and human direction acceptance remain open. No Phase2/chrome migration.
 
-Command-line only. No desktop capture, existing-window/browser inspection, accessibility or
-Computer Use. Inspect only generated files and isolated headless game renders. Normal REAPER
-settings/projects are untouched. REAPER CLI starts the desktop process; `-nosplash` only hides
-its splash. Future authorized renders can use macOS `open -j -g` to request hidden/background
-startup, but dialog-free/headless operation is not proven. No further audio render in this batch.
+The old `audits/aaa-pilot-bcd-20260905/temperate-comparison.png` has empty landscape panes and
+cannot establish ecology preservation or improvement. History remains intact; the new review
+includes a fresh populated capture. The actual difference there is subtle, not an accepted
+graphics upgrade. The source/technical results below do not establish aesthetic quality.
+
+### Existing checkpoint and this review’s limits
+
+B–D product/source verification remains at `ab91d59ad0ff6badefa19fdc134c3f395241da57`:
+browser-free develop308files/3,224passed/1skip, root main.js absent, root validate50probes and
+1,010Earth renders, policy81controls. Prior local red/correction and producer-only derivation
+remain recorded. Pack15,607,722B;128MiB admission exists,256MiB retained-update enforcement open.
+The independent B/C iCloud backup remains verified; immutable BatchA originals and OneDrive
+status unchanged. See `audits/AAA_PILOT_BCD_20260905.md`, backup records and current gap ledger.
+
+This review loaded only owned isolated headless game pages at1440×1000 and390×844,DPR1.
+One v2 Shipyard path preserved the44×44Close center hit, pilot-control suppression, native
+Close outcome and focus return to dockshipyard. This is not a complete input/accessibility
+certificate or physical iPhone/Safari/PWA proof. No full battery or audio render repeated.
+No desktop, existing browser/profile, accessibility automation or normal REAPER access.
 
 ### Paired next steps
 
-- **Codex:** first production checkpoint is verified and recorded for normal branch push.
- Retain Phase0/1 and the integrated-pilot stop; do not scale unfinished families or claim full
- pilot completion. Continue the listed Phase1 technical gaps under existing authority, using
- Nick's direction feedback before a materially larger art rework. Close256MiB retained-update
- admission before claiming release-ready offline storage. No hosted authority.
-- **Claude:** may independently review the pushed pilot source/proofs/rights when Nick requests;
-  no sync, PR, label or hosted run is implied. Leave anthropic/mac c860f57 and173c806 alone.
-- **Nick:** review the local direction/listening package and decide whether to refine or retain
-  static creature fallbacks. Real iPhone/Safari/PWA and listening feedback remain needed. No need
-  to open Claude or authorize GitHub now. Artlock CI lane, ITP save protection and confirmation
-  of DECISIONS row19 wording remain open. Phase2 requires the separate pilot approval.
+- **Codex:** carry Nick’s production-quality reference and overlay constraints into the next
+  bounded Phase1 refinement. Use the review before a materially larger art rework. Preserve
+  scene/ship pointer transparency, window/Training/modal ownership, Close/focus/scroll/contrast
+  and phone geometry. No Phase2 until Nick accepts the integrated pilot. No hosted authority.
+- **Claude:** can review the pushed comparison and existing owners if Nick requests. No app
+  switch, sync, PR, label, hosted run or merge is needed now. Leave anthropic/mac c860f57 and
+  its unmerged173c806 negative control alone.
+- **Nick:** respond to the suggested visual direction in the current task; the next artwork
+  should improve the real playable scene. Artlock CI lane, ITP save protection and DECISIONS
+  row19 wording remain open. The integrated-pilot approval stop stands.
 
-Budget UNFROZEN, PUBLIC, private fallback3,000; zero hosted authority. Established SSH origin
-`git@github.com:TheDakk/Celestial-Frontier.git`, authenticated TheDakk; batch fetch passed.
-Only normal `openai/mac` branch pushes are authorized and trigger no workflow. No PR, hosted
-attempt, label, merge, purchase, release or deployment. No legacy import door or changes to
-Settings/Guide/Training code, workflows, Actions policy or protected portrait/artlock references.
+Budget UNFROZEN, repository PUBLIC, private fallback3,000. Only a normal openai/mac branch
+push is authorized; it triggers no workflow. Zero hosted runs, labels, PRs, merges, purchases,
+releases or deployments. No Settings/Guide/Training code work without re-sync, no legacy import
+door, workflow/policy edits, protected portrait changes or artlock-reference edits.

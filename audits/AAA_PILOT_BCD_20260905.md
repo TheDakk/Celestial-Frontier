@@ -1,5 +1,12 @@
 # B–D audiovisual pilot — first production checkpoint
 
+**Later visual-review correction (2026-09-05 local):** the temperate proof linked below has
+empty landscape panes and cannot support an ecology/improvement claim. It remains historical;
+the fresh populated capture and live-production comparison are in
+[AAA_PRODUCTION_PILOT_REVIEW_20260905.md](AAA_PRODUCTION_PILOT_REVIEW_20260905.md). Nick finds
+production substantially stronger; Phase1 art/presentation needs refinement. The technical
+results below remain their original checkpoint, not visual approval.
+
 **Verified source:** `ab91d59ad0ff6badefa19fdc134c3f395241da57` on `openai/mac`.
 This is a reviewable first direction, with explicit unfinished Phase1 work. It is not approval,
 a release, or a claim that all B–D acceptance criteria are closed. No Phase2 expansion.
