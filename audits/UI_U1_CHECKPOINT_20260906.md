@@ -212,3 +212,11 @@ Receipts, RNG, gameplay and prior history remain exact; the adjacent toast and q
 ceremony must survive before Land is armed. Seven live cloned controls reject corrupt
 evidence. The original full wave-off evaluator is byte-identical (SHA in REDS JSON).
 Focused logs are retained; the next clean signed-source sequence remains pending.
+
+## Share source-contract marker correction —19f8366
+
+Fresh typecheck/artunused PASS. Vitest310files/3,298tests passed; one test failed and one
+was skipped. The six-site Share contract still ended its Charter source section at the
+old pre-checkpoint baseline assignment. Its one endpoint now names `beforeLand = shareNoticeState`;
+all existing assertions remain. The focused Share file passes31tests. Original red output
+is retained; Glass selftest and browser stages did not run after red.

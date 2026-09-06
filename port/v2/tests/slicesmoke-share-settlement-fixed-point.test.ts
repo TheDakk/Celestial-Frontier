@@ -708,7 +708,7 @@ describe('Slice Share settlement fixed point', () => {
     const charter = section(
       sliceSmokeSource,
       '    if (expectedChapter === 3) {',
-      '      beforeLand = adjacentShare.state;',
+      '      beforeLand = shareNoticeState;',
     );
     const collision = section(
       sliceSmokeSource,

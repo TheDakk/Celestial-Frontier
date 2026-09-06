@@ -280,6 +280,30 @@
         "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
         "uncompressedSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
       }
+    },
+    {
+      "source": "19f83664442323687222e35bbbd97028161d4712",
+      "kind": "local-vitest-contract",
+      "rootMainAbsent": true,
+      "precedingChecks": "fresh install, typecheck and artunused PASS",
+      "testFiles": {
+        "failed": 1,
+        "passed": 310
+      },
+      "tests": {
+        "failed": 1,
+        "passed": 3298,
+        "skipped": 1
+      },
+      "failures": [
+        "Share settlement six-site source contract still ends its Charter section at beforeLand = adjacentShare.state after that baseline moved behind the proved passive checkpoint."
+      ],
+      "correction": "One section endpoint now names beforeLand = shareNoticeState; all six existing Share expectation and waiter assertions unchanged.",
+      "logSha256": "a72a29e421f3443cd99018e87e8b2a880138ac3b9d3d5c6e5adf8479c9094368",
+      "gzipFile": "UI_U1_VITEST_RED_19f8366_20260906.log.gz",
+      "gzipSha256": "b6bf82efae88b882450312973331b935e78c618c68d91ca96970aca9abec0a3c",
+      "focusedVerification": "Share settlement contract31testsPASS",
+      "remainingChecks": "Glass selftest and every browser stage not run after red."
     }
   ]
 }
