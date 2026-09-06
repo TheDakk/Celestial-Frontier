@@ -40,7 +40,7 @@ for future authorized renders but does not establish a true headless or dialog-f
 No further REAPER render is needed for this checkpoint. No Phase 2/chrome migration, hosted
 attempt, PR, label, merge, purchase or release is authorized.
 
-**Current implementation reference — matches code as of 2026-09-04.** Static creature/genome,
+**Current implementation reference — matches code as of 2026-09-05 local.** Static creature/genome,
 hybrid and biome painters are preserved. The art workspace explicitly declares its existing
 Genome and PlanetGen imports; this is dependency metadata, not a painter or visual change.
 Evidence-build separation leaves the species worker/painter byte-identical at its batch-2
