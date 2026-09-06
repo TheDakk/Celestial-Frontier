@@ -1,5 +1,22 @@
 # DEVIATIONS.md — the port's improvement ledger
 
+## U2 compact notifications by measured space — 2026-09-06
+
+Nick explicitly chose “Use compact notifications when space is tight.” Portrait layouts compare
+the full toast with the sheet's measured header/edges plus 44px body room; Planetside preserves
+72px total from `--surface-chrome-bottom + 8px`. Compact mode retains the full-size headline and
+reserves its actual height. The full message remains in a visually hidden span, preserving DOM/AT,
+history, timer and Tame/Feed announcement roles. Survey's unchanged subtitle/badge now scroll below
+the sticky title and native Close. Guidance, text preferences and touch floors are unchanged.
+
+Signed `489d780` passed develop static (318 files, 3402 passed, 1 skipped), then small-phone
+retained one product RED and zero instrument failures: the same 180px live toast and identical
+before/after settlement left Survey 44px high with Close protruding 15px. This resolves the stale
+geometry hypothesis for that case; large-phone and Slice were NOT RUN. The compact correction's
+tests and native verification are pending. [The U2 audit](../../audits/UI_U2_SHEETS_20260906.md)
+retains all failed receipts. The older 08cd97d navigation and c57aaaeb restoration causes remain
+OPEN/unattributed; physical UAT and technical gates are not closed. Earlier entries remain verbatim.
+
 ## U2 short-landscape spacing correction — 2026-09-06
 
 Nick flagged the cramped Settings/Training screenshot. The common ID sheet rule overrode a

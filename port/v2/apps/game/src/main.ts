@@ -2364,9 +2364,9 @@ function showSurvey(
     : '';
   card.innerHTML =
     '<div class="survey-head">' +
-    `<div><h2 data-sel="title">${esc(d.title)}</h2>` +
-    `<div data-sel="sub">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div></div>` +
+    `<h2 data-sel="title">${esc(d.title)}</h2>` +
     '<button type="button" class="surface-close" data-survey-close aria-label="Close Survey card">✕</button></div>' +
+    `<div data-sel="sub">${esc(d.sub)}${d.badge ? ` · <b data-sel="badge">${esc(d.badge)}</b>` : ''}</div>` +
     travelHtml +
     (actionsHtml || '') +   /* the card's ACTION ROW (Land · +Atlas · share) — buttons are trusted markup, never save text */
     approachEcologyHtml + combatHtml + captureHtml + rarity + rows.map(([k, v, cls]) =>
@@ -4955,9 +4955,11 @@ let compendiumFeedStatusCounterpart: Readonly<{
 const TOAST_DEDUP_MS = 1800;
 function toastDetailText(): string | null {
   const title = toastEl.querySelector<HTMLElement>('[data-sel="toast-title"]');
-  const lineBreak = title?.nextSibling;
+  const message = title?.nextSibling;
+  const lineBreak = message?.firstChild;
   const detail = lineBreak?.nextSibling;
-  return title && lineBreak?.nodeName === 'BR' && detail?.nodeType === Node.TEXT_NODE
+  return title && message instanceof HTMLElement && message.matches('span[data-sel="toast-message"]')
+    && lineBreak?.nodeName === 'BR' && detail?.nodeType === Node.TEXT_NODE && detail.nextSibling === null
     ? detail.textContent : null;
 }
 function tameToastCounterpartIsCurrent(receipt: AudioCounterpartReceipt): boolean {
@@ -5072,7 +5074,7 @@ function showToast(title: string, msg: string, assertive: boolean): void {
   toastEl.setAttribute('role', 'status');
   toastEl.setAttribute('aria-live', assertive ? 'assertive' : 'polite');
   toastEl.removeAttribute('aria-hidden');
-  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;   /* every sink escapes (audit #6) */
+  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><span data-sel="toast-message"><br>${esc(msg)}</span>`;   /* every sink escapes (audit #6) */
   _toastSerial++;
   toastEl.style.opacity = '1';
   clearTimeout(_toastHide);
@@ -5090,7 +5092,7 @@ function showCompendiumFeedVisualToast(title: string, msg: string): void {
   toastEl.setAttribute('role', 'presentation');
   toastEl.setAttribute('aria-live', 'off');
   toastEl.setAttribute('aria-hidden', 'true');
-  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><br>${esc(msg)}`;
+  toastEl.innerHTML = `<b data-sel="toast-title">${esc(title)}</b><span data-sel="toast-message"><br>${esc(msg)}</span>`;
   _toastT = performance.now();
   _toastSerial++;
   toastEl.style.opacity = '1';

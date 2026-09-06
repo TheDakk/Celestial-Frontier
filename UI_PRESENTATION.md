@@ -10,7 +10,11 @@ controls declare their native button type explicitly.
 Nick explicitly authorized U2–U4 on 2026-09-06. U2 is implemented and awaiting native and
 checkpoint verification; the U1 layout remains accepted for UAT with its technical gate open.
 The [program authorization](port/UI_PARITY_PROGRAM_U1_U4.md) resolves Settings above Training
-and permits the subsequent ordered U3/U4 checkpoints. Product icons remain emoji.
+and permits the subsequent ordered U3/U4 checkpoints. Nick then chose “Use compact notifications
+when space is tight.” Product icons remain emoji. The unchanged before/after geometry at
+`489d780` confirms a real space shortage with the same live toast, not stale layout: Survey
+remained 44px high and Close protruded 15px. The compact correction's tests and native verification
+are pending; [the U2 audit](audits/UI_U2_SHEETS_20260906.md) retains that RED and earlier evidence.
 
 The normal v2 shell uses the actual production v1.8.9 CSS as its layout reference, adapted
 through `ui-presentation-tokens.ts`, `ui-shell-style.ts` and the existing native controls.
@@ -81,15 +85,24 @@ needed to clear measured hint height by 8px. Context retains its independent tra
 backing with zero padding/border/radius. Guidance now paints a 2px opaque black glyph stroke
 behind its fill (`paint-order:stroke fill`), leaving at least 1px outside each glyph for contrast
 against bright artwork. The outline adds no pill or box and changes no layout measurements.
-U2's `sheet-layout.ts` measures the visible hint, context and dock rectangles plus the toast's
-painted height, retaining its reservation until the fade ends. `ui-sheet-style.ts` uses that
-lower lane to bound sheets with 8px gaps. Planetside uses the measured sheet floor; wide Settings
-centers vertically in its available right-side workspace. Short-landscape sheet overrides carry
+U2's `sheet-layout.ts` measures visible hint, context and dock rectangles plus the toast's
+painted height, retaining its reservation until the fade ends. In portrait layouts up to 900px,
+it compares the full toast against the active sheet's measured header, edges and 44px body room.
+Planetside instead preserves a 72px total reading band from `--surface-chrome-bottom + 8px`.
+When that room is exhausted, the toast keeps its full headline at the selected text size and
+reserves the actual compact height. Its message remains in a visually hidden span with the same
+DOM text, existing assistive-technology announcement role, history and timer. Tame/Feed announcement
+ownership remains distinct. The full presentation returns when space permits. `ui-sheet-style.ts`
+uses the measured lower lane to bound sheets with 8px gaps. Survey keeps only its title and native
+Close sticky; the unchanged subtitle and badge follow in the scrolling body. Planetside uses the
+measured sheet floor; wide Settings centers vertically in its available right-side workspace.
+Short-landscape sheet overrides carry
 the same ID specificity as their common owner: start safe-top+6, left safe-left+8, half safe
 width and maximum height viewport−safe-top−safe-bottom−30. The earlier class-only override
 was inert and squeezed large-text Settings to155px. Planetside keeps a separate landscape floor:
-a toast in the disjoint right column does not consume its left-column height. Global and
-portrait reservations, caption/hint lanes and44px floors stay intact. Native verification pending.
+a toast in the disjoint right column does not consume its left-column height. Other sheet lanes
+reserve the actual painted toast, retaining caption/hint gaps and 44px floors. Native verification
+is pending.
 
 The shared panel owner keeps the first direct native Close and existing first h2/h3 title as
 sticky siblings. Refills retain the same Close node and restore its focus only when it owned

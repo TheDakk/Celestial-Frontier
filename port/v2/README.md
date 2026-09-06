@@ -2,14 +2,16 @@
 
 ## U1 shell / U2 sheet checkpoint — matches code as of 2026-09-06
 
-Nick explicitly authorized U2–U4. U2's measured lower lane, shared sticky title/Close, internal
-panel scrolling and Training stack are implemented; native and checkpoint verification remain
-pending. The short-landscape selector now matches its common ID owner so Settings can use the
-full safe-height column. Planetside reserves a toast only across its own column. The scoped
-fixture derives Surface hint/context markup from the actual source and restores native children;
-its old mixed Sol/Surface stress RED remains retained. U1's accepted layout and open technical
-gate are retained. Follow the
+Nick explicitly authorized U2–U4 and chose compact notifications when space is tight. U2 now
+uses the measured portrait budget to show a full-size headline when the full toast would crowd
+a sheet; its visually hidden message retains DOM/AT, history, timer and Tame/Feed ownership.
+Survey's unchanged subtitle/badge scroll below the sticky title and native Close. The compact
+correction's tests and native checkpoint are pending. `489d780` retained the same live-toast
+44px Survey/15px Close protrusion before and after settlement; large-phone and Slice did not run.
+The short-landscape Settings workspace and Planetside column rule remain. Follow the
+[U2 audit](../../audits/UI_U2_SHEETS_20260906.md),
 [program authorization](../UI_PARITY_PROGRAM_U1_U4.md) and [live handoff](../../ROADMAP.md).
+U1's accepted layout, open technical gate and earlier failed receipts remain distinct.
 
 The normal `/` game (without `avpilot`) uses the shared token/shell owners, local Inter,
 the production layout adapted to icon-only phone rows and wide side controls/top-center Prime/

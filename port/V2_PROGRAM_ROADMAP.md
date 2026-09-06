@@ -2,14 +2,15 @@
 
 ## UI parity program — U1 shell / U2 sheet checkpoint, matches code as of 2026-09-06
 
-Nick explicitly authorized U2–U4. U2's measured lower-lane, shared sheet header/Close and
-Settings-above-Training implementation awaits native/checkpoint verification. Nick's cramped
-large-text landscape screenshot exposed an inert class-only sheet override; its successor uses
-ID-qualified anchors and measures Planetside toast reservation per intersecting column. The
-mixed-route fixture is corrected to source-owned Surface captions, with its old RED retained.
-Ordered U3
-panel checkpoints and U4 follow under the [accepted program](UI_PARITY_PROGRAM_U1_U4.md);
-emoji remain in product until Nick chooses otherwise after the icon study.
+Nick explicitly authorized U2–U4, then chose compact notifications when space is tight. The
+measured portrait budget now selects the full-size toast headline while preserving the full
+message in DOM/AT/history and existing timer/announcement owners. Survey's subtitle/badge scroll
+below its sticky title and native Close. Tests and native verification of this compact correction
+are pending. `489d780` confirmed identical settled geometry with the same 180px live toast and
+retained the 44px Survey/15px Close protrusion as product RED; large-phone and Slice did not run.
+[The U2 audit](../audits/UI_U2_SHEETS_20260906.md) preserves that result and the earlier landscape
+and fixture failures. Ordered U3 panel checkpoints and U4 follow under the
+[accepted program](UI_PARITY_PROGRAM_U1_U4.md); emoji remain in product.
 
 U1 implements normal-game shared tokens, production-based phone/wide layout and Nick's saved
 notification history amendment. Nick replaces Charters with Survey on all platforms: compact

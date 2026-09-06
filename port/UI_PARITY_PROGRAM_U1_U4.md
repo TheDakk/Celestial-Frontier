@@ -1,5 +1,20 @@
 # UI parity and presentation program — accepted brief
 
+### U2 compact notification choice — 2026-09-06
+
+Nick: “Use compact notifications when space is tight.” U2 portrait layouts compare full toast
+height with measured sheet header/edges and 44px body room (Planetside: 72px total from
+`--surface-chrome-bottom + 8px`). Compact mode keeps a full-size headline, reserves its actual
+height and preserves the full message in a visually hidden span with existing DOM/AT, history,
+timer and Tame/Feed announcement ownership. Survey's unchanged subtitle/badge scroll below its
+sticky title and native Close. Tests and native verification of this correction are pending.
+
+The `489d780` same-live-toast settlement retained the real 44px Survey/15px Close protrusion;
+[the U2 audit](../audits/UI_U2_SHEETS_20260906.md) owns that RED and previous evidence. This
+amendment preserves the ordered U3/U4 scope, emoji, guidance, text preferences and 44px targets.
+Both older unknown causes remain OPEN; no Phase2, pilot, hosted or technical-gate closure is added.
+The approved amendments below remain verbatim.
+
 ### U2–U4 execution authorized — 2026-09-06
 
 Nick: “Please proceed with U2-U4.” U2’s proposed scope is approved, including the earned

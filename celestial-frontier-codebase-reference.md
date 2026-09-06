@@ -7,9 +7,12 @@ controls declare their native button type explicitly.
 
 ## Current v2 U1 shell and U2 sheets — matches code as of 2026-09-06
 
-Nick explicitly authorized U2–U4. U2 is implemented and awaits native/checkpoint verification;
-U1's accepted layout and open technical gate remain distinct. The current authority is the
-[UI program](port/UI_PARITY_PROGRAM_U1_U4.md); emoji remain the product icon system.
+Nick explicitly authorized U2–U4 and chose compact notifications when space is tight. U2's
+compact correction awaits tests and native/checkpoint verification; U1's accepted layout and open
+technical gate remain distinct. The same live-toast geometry stayed unchanged through settlement
+at `489d780`, retaining the 44px Survey/15px Close protrusion as product RED. The
+[U2 audit](audits/UI_U2_SHEETS_20260906.md) owns evidence; the
+[UI program](port/UI_PARITY_PROGRAM_U1_U4.md) owns scope. Emoji remain the product icon system.
 
 `port/v2/apps/game/src/ui-presentation-tokens.ts` supplies Inter/spacing/type/color/layer
 variables; `ui-shell-style.ts` adapts verified production v1.8.9 placement to existing v2
@@ -42,12 +45,20 @@ UI_PRESENTATION.md owns exact values, the accepted
 safety deviations from production and the honest injected floating-trail negative control.
 `sheet-layout.ts#createSheetLayoutController` observes visible hint/context/dock rectangles,
 toast size/style and header/body changes, publishing the lower-lane, toast and sheet-floor CSS
-properties through its own coalesced measurement observer, installed by `main.ts`. The toast reserves its full height
-through its exit fade. `ui-sheet-style.ts` owns sheet bounds, sticky header/Close styling, stack
-layers and shared motion/control states. Its ID-qualified short-landscape override preserves
+properties through its own coalesced measurement observer, installed by `main.ts`. Portrait
+layouts up to 900px compare the full toast with measured sheet header/edges plus 44px body room;
+Planetside uses a 72px total band from `--surface-chrome-bottom + 8px`. When space is tight,
+compact mode reserves the actual full-headline height at the selected text size through the fade.
+The visually hidden `[data-sel="toast-message"]` span retains full message text, AT/history and
+timer ownership; `toastDetailText()` reads that structure while Tame and Feed retain their distinct
+announcement roles. Full presentation returns when room permits. `ui-sheet-style.ts` owns sheet
+bounds, sticky header/Close styling, stack layers and shared motion/control states. Survey's
+unchanged subtitle/badge now follow its sticky title/Close in the scrolling body. The ID-qualified
+short-landscape sheet override preserves
 the full safe-height left workspace rather than losing to the common sheet selector. Planetside
 consumes a separate measured floor in landscape that reserves toast height only across an
-intersecting horizontal column; global/portrait reservation is unchanged. Its width is observed.
+intersecting horizontal column; other sheet lanes reserve the actual painted toast. Planetside
+width is observed.
 The panel is still its scroll owner, and Compendium keeps its virtual scrollport.
 `panels.ts#seatPnx` tags the original direct h2/h3 `.sheet-header` and keeps a direct first
 `.sheet-close`; `fillPanel` retains that Close node and any Close-owned focus. Training admits

@@ -8,6 +8,8 @@ export function createSheetLayoutController(document: Document = window.document
   const lower = ['hintpill', 'ctxbar', 'dock'].map(id => document.getElementById(id)!);
   const toast = document.getElementById('toast')!;
   const planetside = document.getElementById('planetside');
+  const sheets = [...document.querySelectorAll<HTMLElement>('#survey,.panel,#planetside')];
+  const observedHeaders = new Set<HTMLElement>();
   let disposed = false;
   let frame = 0;
   const set = (name: string, value: number): void => {
@@ -27,9 +29,37 @@ export function createSheetLayoutController(document: Document = window.document
       ...lower.map(el => visibleRect(el)?.top ?? height));
     set('--cf-lower-top', lowerTop);
     set('--cf-toast-bottom', height - lowerTop + 8);
-    // Reserve the full painted toast until its fade finishes. The inline target
-    // catches the first frame of entry; computed opacity catches exit frames.
+    const headers = sheets.flatMap(sheet => [...sheet.querySelectorAll<HTMLElement>('.survey-head,.sheet-header')]);
+    for (const header of observedHeaders) if (!headers.includes(header)) { resize.unobserve(header); observedHeaders.delete(header); }
+    for (const header of headers) if (!observedHeaders.has(header)) { resize.observe(header); observedHeaders.add(header); }
+    // Measure the full message every time so compact geometry cannot keep itself
+    // selected after space returns. Only this presentation class belongs here.
+    if (toast.classList.contains('toast-compact')) toast.classList.remove('toast-compact');
     const toastVisible = toast.style.opacity === '1' || Number(view.getComputedStyle(toast).opacity) > 0;
+    const fullToast = toastVisible ? visibleRect(toast) : null;
+    const fullFloor = lowerTop - 8 - (fullToast ? fullToast.height + 8 : 0);
+    const compact = view.innerWidth <= 900 && height >= view.innerWidth && fullToast !== null
+      && !!toast.querySelector('[data-sel="toast-title"]') && !!toast.querySelector('[data-sel="toast-message"]')
+      && sheets.some(sheet => {
+        const rect = visibleRect(sheet);
+        if (!rect || Math.min(rect.right, fullToast.right) <= Math.max(rect.left, fullToast.left)) return false;
+        if (sheet === planetside) {
+          // Its bottom-anchored top moves with the last floor; use the native
+          // portrait capacity start so that movement cannot sustain compaction.
+          const start = (parseFloat(view.getComputedStyle(root).getPropertyValue('--surface-chrome-bottom')) || 0) + 8;
+          return fullFloor - start < 72;
+        }
+        const header = sheet.querySelector<HTMLElement>('.survey-head,.sheet-header');
+        const style = view.getComputedStyle(sheet), headerStyle = header ? view.getComputedStyle(header) : null;
+        const pixels = (value: string | undefined): number => parseFloat(value ?? '') || 0;
+        const headerHeight = Math.max(44, header ? visibleRect(header)?.height ?? 0 : 0)
+          + pixels(headerStyle?.marginTop) + pixels(headerStyle?.marginBottom);
+        const edges = pixels(style.paddingTop) + pixels(style.paddingBottom) + pixels(style.borderTopWidth) + pixels(style.borderBottomWidth);
+        return fullFloor - rect.top < headerHeight + edges + 44;
+      });
+    if (compact) toast.classList.add('toast-compact');
+    // Reserve the actual painted presentation through the fade. Inline target
+    // catches the first entry frame; computed opacity catches exit frames.
     const toastRect = toastVisible ? visibleRect(toast) : null;
     const toastHeight = toastRect?.height ?? 0;
     const floor = lowerTop - 8 - (toastHeight > 0 ? toastHeight + 8 : 0);
@@ -48,10 +78,12 @@ export function createSheetLayoutController(document: Document = window.document
   };
   const resize = new view.ResizeObserver(schedule);
   for (const el of [...lower, toast, document.getElementById('topbar')!]) resize.observe(el);
-  if (planetside) resize.observe(planetside);
+  for (const sheet of sheets) resize.observe(sheet);
   const mutation = new view.MutationObserver(schedule);
   mutation.observe(document.body, { attributes: true, attributeFilter: ['class'] });
   mutation.observe(toast, { attributes: true, attributeFilter: ['style'], childList: true, subtree: true, characterData: true });
+  for (const sheet of sheets) mutation.observe(sheet, { attributes: true, attributeFilter: ['class', 'style', 'hidden', 'aria-hidden'],
+    childList: true, subtree: true, characterData: true });
   toast.addEventListener('transitionend', schedule);
   view.addEventListener('resize', schedule, { passive: true });
   sync();
