@@ -146,7 +146,7 @@ export function sheetFixture(restore = false, copy = null) {
   const rows = Array.from({ length: 12 }, (_, i) => { const line = document.createElement('div');
     line.textContent = `Presentation fixture — biosphere row ${i + 1}`; return line; });
   side.replaceChildren(...rows);
-  toast.dataset.u2Fixture = 'presentation-only'; toast.textContent = 'Homecoming — presentation fixture, no reward or saved event'; toast.style.opacity = '1';
+  toast.dataset.u2Fixture = 'presentation-only'; toast.innerHTML = '<b data-sel="toast-title">Homecoming</b><span data-sel="toast-message"><br>Presentation fixture, no reward or saved event</span>'; toast.style.opacity = '1';
   return { scope: 'presentation-only: native containers, synthetic text; no gameplay outcome', ids: [side.id, toast.id, hint.id, context.id], surfaceCopy: copy };
 }
 export function sheetFault(kind, restore = false) {

@@ -22,6 +22,9 @@ body:not(.training) :is(#codexpanel,#recpanel,#atlaspanel,#chpanel,#primepanel,#
 .panel [data-sheet-kind="notifications"]::before{content:'🔔'}
 .panel .sheet-close{position:sticky;top:0;z-index:3;margin:0 -4px 0 8px;transform:translateX(44px)}
 .survey-head{position:sticky;top:0;z-index:3;background:var(--cf-color-surface)}
+#survey > [data-sel="sub"]{color:var(--dim);margin:0 0 10px}
+#toast > span[data-sel="toast-message"]{font-size:inherit!important}
+#toast.toast-compact [data-sel="toast-message"]{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
 #planetside{position:fixed;left:calc(var(--safe-left) + 12px);bottom:var(--cf-sheet-bottom);max-width:min(560px,calc(100vw - var(--safe-left) - var(--safe-right) - 24px));box-sizing:border-box;z-index:var(--cf-layer-sheet);border-radius:var(--cf-radius-panel);padding:8px 10px;overflow:auto;white-space:nowrap;scrollbar-width:thin}
 #toast{bottom:var(--cf-toast-bottom);z-index:var(--cf-layer-toast);transition:opacity var(--cf-duration-exit) var(--cf-ease-standard)}
 #tutcard{z-index:var(--cf-layer-training)}#tutspot{z-index:calc(var(--cf-layer-training) - 1)}
