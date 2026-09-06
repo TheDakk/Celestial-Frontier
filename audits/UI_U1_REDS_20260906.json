@@ -192,6 +192,38 @@
       "gzipFile": "UI_U1_VITEST_RED_2c26ee7_20260906.log.gz",
       "gzipSha256": "af8ca0dee5dd03a078d11e91fc624222228bbbdef578235789c274b093129cb5",
       "remainingChecks": "Glass selftest and all browser checks not run after red."
+    },
+    {
+      "source": "4af8073531613859c318af84a1df61ae6d37735b",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "typecheck, artunused, Vitest310files/3261passed/1skipped, Glass selftest PASS",
+      "failures": [
+        "LEFT RAIL GAP: hidden railrecords was not browser-mouse hittable",
+        "LEFT RAIL BOUNDARY CONTROL: hidden railrecords was not browser-mouse hittable",
+        "PANEL NON-ELEMENT TARGET: hidden railrecords was not browser-mouse hittable",
+        "ARC 2 INVENTORY: hidden railinventory was not browser-mouse hittable",
+        "ARC 2 INVENTORY LEDGER: prerequisite native sequence incomplete"
+      ],
+      "diagnosis": "After correcting duplicate-rail visibility, remaining instrument callers still target the now-hidden compatibility controls. Inventory is owned by the visible topbar dockinventory; Records by dockrecords. The missing ledger follows the failed opener prerequisite.",
+      "logSha256": "72771ce8109b07b15dd7211b1d8960f46beec99f909226346a56b5d7f0b45f24",
+      "gzipFile": "UI_U1_SLICE_RED_4af8073_20260906.log.gz",
+      "gzipSha256": "c96855071c5b190098027307529e68ab78deb48fb9519fa8874693bbfc70b525",
+      "remainingChecks": "Phone canaries, normal build and visual review not run after red.",
+      "correction": "Visible dockrecords/dockinventory native opener and exact focus contracts; observed closest-button identity alongside raw nested targets; both real 8px rail-gap mutations and all Inventory outcomes retained. Glass uses the visible controls, Atlas/Shipyard yield Survey from701px, and the hidden-opener proof uses native Atlas/Survey/Close with baseline, rejection and restoration. Historical Glass ledgers unchanged.",
+      "focusedVerification": {
+        "slice": "typecheck, 3 focused files/20tests and smokereport selftest PASS",
+        "glass": "new focused Glass journey32tests and syntax checks PASS",
+        "review": "Independent bounded Slice diff review clear; full successor chain pending."
+      },
+      "preparation": {
+        "sourceKind": "working tree, not an exact-source candidate",
+        "reportedBy": "bounded Slice agent",
+        "initialFailure": "TS2305: partial declaration shim does not include existing assessInventoryPanelClose export. No downstream tests ran.",
+        "failedEdit": "A repo-relative edit path was used from port/v2 and raised FileNotFoundError. Typecheck was mistakenly repeated before the actual absolute-path fix and returned the same error.",
+        "correction": "Import of the real existing JavaScript export carries a narrowly documented ts-expect-error for the partial shim; no new declaration or product change. Final typecheck/20tests/selftest passed.",
+        "evidenceLimitation": "No filesystem logs retained for these preparation calls; agent tool outputs only (c35c04,59058b,537812). The next fresh signed-source chain supplies independently retained logs."
+      }
     }
   ]
 }

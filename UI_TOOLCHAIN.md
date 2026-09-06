@@ -15,6 +15,15 @@ connect the command-line workflows. Verification tools check the actual game and
 No tool automatically supplies a professional art direction; coherence, readable layout,
 interaction, animation, mixing and mobile performance remain implementation work.
 
+Actual design-use status: Blender has produced pilot ship, creature and environment art;
+Surge and REAPER have produced pilot audio. Inkscape has passed CLI readiness but has not
+yet produced finished game UI artwork. Its first planned production use is the U3 SVG icon
+and emblem study, after U1 visual approval and U2 panel work. U1–U2 use HTML/CSS/TypeScript
+for layout, typography, spacing and interaction, with existing emoji retained. GSAP is staged
+and verified, but not integrated. ImageMagick is ready for asset preparation and comparison
+work; FFmpeg is verified for the next audio export and loudness checks. This sequence does not advance
+past either the U1 review stop or the integrated audiovisual pilot approval stop.
+
 GPU rendering (audit 2026-09-06): prior pilot B and refined ship/ecosystem recipes explicitly
 used Cycles CPU with four render threads. Future asset working copies should select **Metal
 on the M4 Pro** and **OptiX on Nick's Windows RTX 4080**, following Blender's
