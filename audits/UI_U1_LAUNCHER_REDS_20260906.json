@@ -72,5 +72,11 @@
         "result": "Exact native-delivery baseline PASS,10 rejected mutants and restoration PASS,32 generated expression shapes compile; phone oracle unchanged; module syntax and diffcheck exit0."
       }
     }
-  ]
+  ],
+  "currentCheckpoint": {
+    "source": "88e9216ec869280900ac55df69c54238c260ea83",
+    "evidenceDirectory": "UI_U1_LAUNCHER_88e9216_20260906",
+    "status": "PASS on selected local checks",
+    "unresolvedReviewConcern": "6a88f85 scene change after Notifications Close remains unexplained. The new native-input trace passed61deliveries, but this does not prove a product repair or explain that red. U1 human approval remains open."
+  }
 }
