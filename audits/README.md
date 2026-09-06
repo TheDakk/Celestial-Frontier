@@ -19,7 +19,10 @@ retains the bounded glyph-outline correction's 25 stroke tests, 72 release/budge
 TypeScript, build and root validate results. Sourcea528791 passed static/native outline controls
 then retained a stale dock-fault wording RED with zero product findings. [Its manifest](UI_U1_LOCAL_CHECKPOINT_a528791_20260906/manifest.json)
 and [six-test correction preparation](UI_U1_DOCK_VERDICT_PREPARATION_20260906/manifest.json)
-retain that stop and the instrument-only successor. Fresh committed completion is pending.
+retain that stop and the instrument-only successor. The [bb9ebe4 checkpoint](UI_U1_LOCAL_CHECKPOINT_bb9ebe4_20260906/manifest.json)
+passed static/dock/outline checks then found the intentionally hidden phone Charts shortcut;
+the instrument correction uses compact Settings→Star charts. [Route preparation](UI_U1_CHARTS_ROUTE_PREPARATION_20260906/manifest.json)
+passed 12 tests, TypeScript and root validate; fresh committed browser completion is pending.
 [Rail correction](UI_U1_RAIL_CONTROL_CORRECTION_20260906.md) retains its prior controls and the
 [7c20246 static declaration RED](UI_U1_RAIL_STATIC_7c20246_RED_20260906/manifest.json).
 

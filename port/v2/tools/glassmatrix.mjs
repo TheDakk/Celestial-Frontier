@@ -10936,34 +10936,70 @@ async function main() {
           if (hpControl.ok) recordInstrumentFailure(`${vp.label}: HP dual-background contrast injection stayed green (${JSON.stringify(hpControl)})`);
           recordControls('hp-label-dual-background');
         }
-        const hudState = await evalIn('window.__CF_SLICE__.api.state()');
-        addOutcome(vp.label, 'hud-controls', 'DOCK_CHARTS_PRESSED_STATE', '#dockcharts',
-          await evalIn(`window.__CF_GLASS_AUDIT__.pressedOutcome('#dockcharts',${JSON.stringify(hudState.chartsOn)})`),
-          'aria-pressed exactly mirrors the real star-chart state');
+        const compactCharts = vp.width <= 700 || (vp.width <= 900 && vp.width > vp.height);
+        const auditChartsControl = async (selector, activate) => {
+          if (selector !== (compactCharts ? '#setcharts' : '#dockcharts')) throw new Error('Charts audit selected the hidden route');
+          const initial = await evalIn('window.__CF_SLICE__.api.state().chartsOn');
+          const prior = compactCharts ? await evalIn(`(()=>{const panel=document.getElementById('setpanel');
+            if(!panel)throw new Error('Charts Settings panel missing');
+            return {left:panel.scrollLeft,top:panel.scrollTop,docLeft:scrollX,docTop:scrollY};})()`) : null;
+          const evidence = { selector, initial, states: [], activations: [], restoration: null };
+          const readPressed = expected => evalIn(`(()=>{const selectors=${JSON.stringify(compactCharts ? [selector, '#dockcharts'] : [selector])},
+                  mirrors=selectors.map(selector=>window.__CF_GLASS_AUDIT__.pressedOutcome(selector,${JSON.stringify(expected)})),
+                  dock=document.getElementById('dockcharts'),hiddenDock=!${compactCharts}||(!!dock&&getComputedStyle(dock).display==='none'&&dock.getClientRects().length===0);
+                  return {ok:mirrors.every(row=>row.ok)&&hiddenDock,mirrors,hiddenDock};})()`);
+          let primaryError = null;
+          try {
+            for (const expected of [initial, !initial]) {
+              if (compactCharts) await evalIn(`(async()=>{document.querySelector(${JSON.stringify(selector)})?.scrollIntoView({block:'nearest',inline:'nearest',behavior:'instant'});
+                await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));return true;})()`);
+              const surface = `${selector.slice(1)}-${expected ? 'on' : 'off'}`;
+              const pressed = await readPressed(expected);
+              evidence.states.push({ expected, pressed });
+              addOutcome(vp.label, 'hud-controls', 'DOCK_CHARTS_PRESSED_STATE', selector, pressed,
+                'selected Charts control and its compact hidden dock mirror the current chart state');
+              add(vp.label, surface, await audit({ surface, root: selector, textMin: 1, targetFloor,
+                safe: vp.safe || {}, safeExpected: vp.safe || undefined,
+                viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr }, fitSelectors: [selector],
+                interactiveRoots: [selector], contrastSelectors: [selector], overlapPairs: [],
+              }));
+              const activation = await activate(selector, 'Star charts');
+              evidence.activations.push(activation);
+              if (compactCharts && !activation?.instrumentOk) throw new Error('Charts native activation or scroll restoration failed: ' + JSON.stringify(activation));
+              if (compactCharts && !activation?.productOk) throw new ProductAnswerabilityFinding(
+                `${vp.label}: Charts native control did not receive its trusted activation`, activation,
+                { code: 'CHARTS_NATIVE_ACTIVATION', surface, element: selector, expected: 'visible 44px Settings Charts control receives trusted input' });
+              await waitFor(expected === initial ? 'chart toggle' : 'chart toggle restore',
+                `window.__CF_SLICE__.api.state().chartsOn===${JSON.stringify(!expected)}`);
+            }
+            evidence.restoredPressed = await readPressed(initial);
+            addOutcome(vp.label, 'hud-controls', 'DOCK_CHARTS_PRESSED_STATE', selector, evidence.restoredPressed,
+              'selected Charts control and hidden dock restore their exact original pressed state');
+          } catch (error) { primaryError = error; throw error; }
+          finally {
+            if (prior) {
+              try {
+                const restoration = await evalIn(`(async()=>{const panel=document.getElementById('setpanel'),prior=${JSON.stringify(prior)};
+                  if(!panel)return {ok:false,prior,actual:null};
+                  panel.scrollLeft=prior.left;panel.scrollTop=prior.top;scrollTo(prior.docLeft,prior.docTop);
+                  await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+                  const actual={left:panel.scrollLeft,top:panel.scrollTop,docLeft:scrollX,docTop:scrollY};
+                  return {ok:Object.keys(prior).every(key=>actual[key]===prior[key]),prior,actual};})()`);
+                evidence.restoration = restoration;
+                if (!restoration.ok) throw new Error('Charts outer scroll restoration failed: ' + JSON.stringify(restoration));
+              } catch (error) {
+                if (primaryError) primaryError.message += `; Charts cleanup also failed: ${error.message}`;
+                else throw error;
+              }
+            }
+          }
+          console.log(`GLASS CHARTS CONTROL — ${vp.label}: ${JSON.stringify(evidence)}`);
+          recordControls('control-on-off-contrast');
+        };
         addOutcome(vp.label, 'hud-controls', 'SURVEY_DISCLOSURE_STATE', '#docksurvey',
           await evalIn(`window.__CF_GLASS_AUDIT__.openerOutcome('#docksurvey','#survey',false)`),
           'aria-controls names the real survey and aria-expanded is false while it is closed');
-        add(vp.label, `dockcharts-${hudState.chartsOn ? 'on' : 'off'}`, await audit({
-          surface: `dockcharts-${hudState.chartsOn ? 'on' : 'off'}`, root: '#dockcharts', textMin: 1, targetFloor,
-          safe: vp.safe || {}, safeExpected: vp.safe || undefined,
-          viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr }, fitSelectors: ['#dockcharts'],
-          interactiveRoots: ['#dockcharts'], contrastSelectors: ['#dockcharts'], overlapPairs: [],
-        }));
-        const toggledCharts = !hudState.chartsOn;
-        await evalIn(`document.getElementById('dockcharts')?.click()`);
-        await waitFor('chart toggle', `window.__CF_SLICE__.api.state().chartsOn===${JSON.stringify(toggledCharts)}`);
-        addOutcome(vp.label, 'hud-controls', 'DOCK_CHARTS_PRESSED_STATE', '#dockcharts',
-          await evalIn(`window.__CF_GLASS_AUDIT__.pressedOutcome('#dockcharts',${JSON.stringify(toggledCharts)})`),
-          'aria-pressed updates after the real star-chart toggle');
-        add(vp.label, `dockcharts-${toggledCharts ? 'on' : 'off'}`, await audit({
-          surface: `dockcharts-${toggledCharts ? 'on' : 'off'}`, root: '#dockcharts', textMin: 1, targetFloor,
-          safe: vp.safe || {}, safeExpected: vp.safe || undefined,
-          viewportExpected: { width: vp.width, height: vp.height, dpr: vp.dpr }, fitSelectors: ['#dockcharts'],
-          interactiveRoots: ['#dockcharts'], contrastSelectors: ['#dockcharts'], overlapPairs: [],
-        }));
-        await evalIn(`document.getElementById('dockcharts')?.click()`);
-        await waitFor('chart toggle restore', `window.__CF_SLICE__.api.state().chartsOn===${JSON.stringify(hudState.chartsOn)}`);
-        recordControls('control-on-off-contrast');
+        if (!compactCharts) await auditChartsControl('#dockcharts', async selector => evalIn(`document.querySelector(${JSON.stringify(selector)})?.click()`));
 
         if (vp.label === 'primary-phone' || vp.label === 'desktop') {
           const keyboardStart = await evalIn(`(()=>{ const canvas=document.querySelector('canvas'); canvas.focus(); const ev=(key)=>canvas.dispatchEvent(new KeyboardEvent('keydown',{key,bubbles:true,cancelable:true})); ev('ArrowRight'); const S=window.__CF_SLICE__,ring=document.getElementById('cosmosfocus'),live=document.getElementById('cosmoslive'); return {focused:document.activeElement===canvas,target:S.api.state().keyboardTarget,ringDisplay:getComputedStyle(ring).display,ringText:ring.textContent,live:live.textContent}; })()`);
@@ -14914,6 +14950,7 @@ async function main() {
           if (settingsWidthControl.ok) recordInstrumentFailure(`${vp.label}: Settings horizontal-overflow injection stayed green (${JSON.stringify(settingsWidthControl)})`);
           recordControls('settings-horizontal-overflow');
         }
+        if (compactCharts) await auditChartsControl('#setcharts', activateRealSettingsControl);
         const recordSettingsAudioPhase = async (surface, expected, activation = null) => {
           const evidence = await evalIn(SETTINGS_AUDIO_EVIDENCE_EXPRESSION);
           evidence.activation = activation;

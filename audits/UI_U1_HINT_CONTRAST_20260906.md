@@ -91,3 +91,24 @@ or changed styles. All six focused replay tests and root TypeScript/validate/fin
 the three logs are retained in UI_U1_DOCK_VERDICT_PREPARATION_20260906/manifest.json.
 This is an instrument-only successor: the outlined product and producer remain
 byte-identical to a528791. No layout refinement or unchanged-source retry.
+
+## Accepted compact Charts route — bb9ebe4 follow-up
+
+Clean signed bb9ebe461a716de04806430693c9dba4694059ec passed the develop profile: 314 files,
+3364 tests, one skip. Small-phone passed the outline and responsive-dock controls, then stopped
+PRODUCT RED with one SURFACE_NOT_VISIBLE for #dockcharts/dockcharts-on and zero instrument
+failures. Large-phone and Slice did not run. Nine carriers are retained in
+UI_U1_LOCAL_CHECKPOINT_bb9ebe4_20260906/manifest.json, SHA-256
+`a20c9ab899ed2296f5b2f796b71dd0e277bb20627d1cf89c651d10b7f3540b33`.
+
+That shortcut is intentionally hidden by the accepted U1 layout; compact players use Settings
+→ Star charts. The correction retargets existing on/off contrast and activation checks to the
+visible Settings control on compact layouts, including the <=900px short-landscape exception.
+Wide layouts retain the visible Charts shortcut. The compact flow runs in the existing Settings
+phase, uses its native activation/scroll machinery, keeps exact on/off/restored pressed state,
+44px targets and 4.5 contrast, and records the existing control only when executed. It changes no
+product, release bullet, producer pin, viewport, threshold or planned-control count. The bounded
+related-anchor review found Charters already uses the accepted sole objective opener.
+Preparation passed 12 source-executing route tests, root TypeScript and root validate/fingerprint.
+The three logs are retained in UI_U1_CHARTS_ROUTE_PREPARATION_20260906/manifest.json. Native
+Charts receipts and fresh committed completion remain pending; no unchanged-source retry.
