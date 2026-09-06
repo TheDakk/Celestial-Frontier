@@ -1,0 +1,58 @@
+{
+  "schema": "cf-ui-toolchain-setup/v1",
+  "date_local": "2026-09-05",
+  "recorded_utc": "2026-09-06T03:45:06.594669+00:00",
+  "starting_head": "79b2e52ff40f834f4d5bf610c4a3ef55e81a82b6",
+  "branch": "openai/mac",
+  "setup": {
+    "inkscape": {
+      "version": "1.4.4 (dcaf3e7, 2026-05-05)",
+      "manager": "Homebrew cask",
+      "command": "inkscape",
+      "export_dimensions": [
+        132,
+        132
+      ],
+      "png_bytes": 1944,
+      "png_sha256": "4b360abc65df25edceb3d51be75af867222bcf9a50865b7a3516feeeb514c3b3",
+      "exit_code": 0
+    },
+    "gsap": {
+      "version": "3.15.0",
+      "workspace": "@cf/game",
+      "integrity": "sha512-dMW4CWBTUK1AEEDeZc1g4xpPGIrSf9fJF960qbTZmN/QwZIWY5wgliS6JWl9/25fpTGJrMRtSjGtOmPnfjZB+A==",
+      "install_scripts": false,
+      "paused_tween_samples": [
+        0,
+        50,
+        100
+      ],
+      "ticker_stopped": true,
+      "runtime_imported": false,
+      "build_sourcemaps_checked": 29,
+      "gsap_sources_emitted": 0
+    }
+  },
+  "verification": {
+    "typecheck": "PASS",
+    "artunused": "PASS",
+    "normal_build": "PASS",
+    "root_validate": {
+      "status": "PASS",
+      "renders": 1010,
+      "boot_errors": 0,
+      "deterministic_probes": 50
+    },
+    "main_js_absent": true,
+    "full_admission_battery": "NOT_RUN - unactivated dependency/setup only",
+    "physical_device": "NOT_RUN"
+  },
+  "limits": [
+    "Visual pilot not accepted; no Phase2 work",
+    "Prior Blender/REAPER/Surge readiness retained, not rerun",
+    "Windowless offline audio workflow remains open",
+    "Steam/Unity/Unreal assessment is advisory, no port proof"
+  ],
+  "hosted_attempts": 0,
+  "purchases": 0
+}

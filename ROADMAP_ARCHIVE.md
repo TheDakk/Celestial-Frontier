@@ -1,3 +1,67 @@
+## ARCHIVED 2026-09-05 — before the authorized UI tool setup
+
+## SESSION HANDOFF — 2026-09-05 local · PHASE1 PILOT REFINEMENT
+
+OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`, branch
+`openai/mac`, upstream `origin/openai/mac`. This batch began clean at
+`46115d678faf31d2b53134e96000c17f6fe9d183`. SSH origin is
+`git@github.com:TheDakk/Celestial-Frontier.git` (TheDakk); fetch passed. Develop remains
+`c1791e210158de864fdd475323c3091d9ecbae58`, already included by real sync
+`bc211bef1f4def92a27933b7c79a090d8913fae4`. No merge or other-agent checkout change.
+The superseded handoff is archived verbatim.
+
+Nick authorized the production-review refinements and stressed tighter, uniform font/spacing,
+meaningful color coding and accessible clickable windows. Current candidate: compact Inter
+study and native window styling; improved eligible Scout inside Shipyard; exact-request-bound
+rainy Earth landscape with current-art fallback; bounded pilot controls. Native action/focus/
+Close/scroll owners remain. The bottom dock keeps its existing structure. No Phase 2 chrome work.
+
+`audits/AAA_PILOT_REFINEMENT_20260905.md` and companion JSON own source, hashes, results and
+limitations. Current references agree in ART_DIRECTION, UI_PRESENTATION, codebase-reference,
+FONT-LICENSES and port/v2/README. Source masters stay private, hashed and independently backed
+up only after a forced cloud evict/download read-back; earlier bundles stay immutable.
+
+Final verified source `1b208c7fe5b47aefee811ad84b486d5ef7fa106a`: exact tracked-input develop PASS: 308 files/3,239 tests/1 skipped;
+root main.js absent. Root validator50 deterministic probes/1,010 renders; policy81 controls PASS.
+The local test-fixture typing red and signed correction are retained in the REDS JSON. Later
+Atlas count/heading spacing corrections were verified on their changed signed sources.
+Full browser diagnostic:48 protected conditions,9 native panel paths,3 short-control layouts;
+final source also passes live Atlas spacing negative control, mono/max-contrast and Close/focus.
+No physical-phone or complete Glass certificate is implied. Final runtime pack17,004,117B/128 MiB.
+Source preservation CLOSED:102 iCloud files forced-evicted/downloaded and hash-verified; originals
+immutable. Current private backup destination mapping/receipts are durable; see backupJSON.
+
+Delivery: `http://127.0.0.1:4183/?avpilot=1` (playable) and
+`http://127.0.0.1:4183/audiovisual-pilot.html` (study). The serving build is this verified source;
+final documentation-only successors do not change its product bytes. Branch publication is
+recorded by the final documentation commit and remote branch head, avoiding a self-referentialSHA.
+
+Galaxy graphics remain unchanged in this audiovisual pass. All eight anatomical families remain
+INCOMPLETE at132/300/440; protected static portraits and their actual identity remain intact.
+Earth uses unchanged simplified native vista residents, not completed creature anatomy.
+Eight existing audio candidates are retained; no new REAPER/UI run. Human visual/listening,
+physical iPhone/Safari/PWA and256 MiB retained-update enforcement remain open. The Scout has a
+disclosed0.238 px base-bevel outline limit; the strict asset diagnostic is retained red. No claim
+of visual approval follows from technical checks. See AAA_GAP_AUDIT/AAA_COVERAGE_LEDGER.
+
+### Paired next steps
+
+- **Codex:** present this bounded pilot and stop for Nick's integrated direction review. No
+  Phase 2 or galaxy/creature production expansion follows without that decision. Later review
+  integration is a separately authorized bounded openai/review-* branch to develop, never main.
+- **Claude:** if Nick requests, review the pushed exact source, diagnostic captures and open
+  limits. No app switch, synchronization, PR/label/hosted attempt or merge is required now.
+  Leave anthropic/mac c860f57 and its unmerged173c806 negative control alone.
+- **Nick:** review the local HTTP playable pilot and study; opening source through file:// is
+  not the delivery path. Judge scene/Scout materials, spacing and typography, then listening.
+  The integrated-pilot stop and artlock CI lane, ITP save protection, DECISIONS row19 remain open.
+
+Budget UNFROZEN, repository PUBLIC, private fallback3,000. Only the matching openai/mac branch
+push is authorized and triggers no workflow (zero hosted cost). No hosted run, label, PR, merge,
+purchase, release or deployment. No workflows/policy/protected portrait/artlock-reference edits,
+legacy import door or Settings/Guide/Training owner rewrite. CLI-only work and isolated headless
+game captures; no desktop, existing profile/tab, accessibility automation or normal REAPER use.
+
 ## ARCHIVED 2026-09-05 — before the authorized Phase1 pilot refinement
 
 ## SESSION HANDOFF — 2026-09-05 local · PRODUCTION COMPARISON / PILOT REFINEMENT
