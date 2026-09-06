@@ -232,3 +232,17 @@ is applied to the existing control with its9focused tests passing. Original immu
 log/report plus the9-case native probe/script/output are retained. No game/browser-profile
 or personal desktop access was part of the synthetic diagnostic. Phone canaries and review
 were not run after red; the corrected source requires its fresh sequence.
+
+## Atlas collision re-open stop —42c0805
+
+Fresh static sequence and Glass selftest PASS. Native exact-style restoration passed.
+Slice then found one later interaction mismatch: the first Atlas trip leaves Survey open;
+its right-rail Atlas opener is hidden and the old desktop dock duplicate is also hidden
+under U1. The native helper correctly retained a null target/receipt for reopen1. The
+successor must close Survey through its visible native action before reopening Atlas,
+prove unchanged route/selection, and retain all exact Atlas/Travel input assertions.
+Original immutable red log/report are retained. Phone canaries and review did not run.
+
+Successor preparation closes Survey natively before both collision Atlas openings, records
+closed DOM/ARIA state and unchanged document plus14 route/selected-world/panel fields, and
+retains both Atlas/Travel receipt gates. Typecheck and10focused tests PASS; log retained.
