@@ -1,0 +1,41 @@
+{
+  "schema": "cf-u1-uat-restoration-prep/v1",
+  "entrySource": "b08c9521c90f806e42496361127c542d206628f5",
+  "sourceNote": "Working-source checks of the diagnostic candidate in the commit carrying these files; no app or budget input changed.",
+  "results": {
+    "controls": "14/14 PASS",
+    "rootValidate": "PASS, 50-probe fingerprint",
+    "finalControls": "15/15 PASS after independent review added missing-final-trace rejection",
+    "finalRootValidate": "PASS, 50-probe fingerprint"
+  },
+  "files": [
+    {
+      "path": "controls.log.gz",
+      "sha256": "ba94e5b3d60d73e17bac624b4421ca68d85196ea04c4bdda530e2840c66b04e7",
+      "rawSha256": "d94e5f557fd37d8c2572bbc41ca3b6007714f4371b4ad1c800de9db0a43e33f6",
+      "bytes": 807,
+      "rawBytes": 1520
+    },
+    {
+      "path": "validate.log.gz",
+      "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736",
+      "rawSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+      "bytes": 708,
+      "rawBytes": 1093
+    },
+    {
+      "path": "controls-final.log.gz",
+      "sha256": "e143cb36cd6dce6ee87d0e89fb98a7e53917cb51e849c87dc73a1a062a3c6544",
+      "rawSha256": "070b4cf2aaf7e8790569afdf0e0eafd73f5baf2fc44330deda26c6edfd8ecc22",
+      "bytes": 861,
+      "rawBytes": 1637
+    },
+    {
+      "path": "validate-final.log.gz",
+      "sha256": "43bd4e37ca1a845a2acbabeb499b0fa0a7d46abf2eb244bebaab9507415e4736",
+      "rawSha256": "b42bcd44c3d5fac96c028abf7550ecac0af5c3922fe2a51b2d40b1eb36b352c3",
+      "bytes": 708,
+      "rawBytes": 1093
+    }
+  ]
+}

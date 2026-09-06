@@ -1,5 +1,19 @@
 # Celestial Frontier — PROCESS LAWS
 
+> **NAME THE PENDING EXPRESSION BEFORE DISPATCH; CLEANUP DOES NOT REPLACE A FAILURE**
+> (U1, 2026-09-06). A Runtime.evaluate timeout names a protocol method, not the awaited
+> expression. Persist its invocation ID, exact expression/hash, debugger-ready and dispatch
+> phases before awaiting. Retain browser-side font-ready/first-frame/second-frame timestamps
+> inside the original single promise, without another wait or deadline. An answered cleanup
+> read cannot erase the failed invocation or authorize resuming the chain. Require the named
+> completed frame receipt independently of the resolved promise; a nonrecurrence is not repair.
+>
+> **CDP NATIVE KEY CODES ARE PLATFORM-SPECIFIC** (U1, 2026-09-06). Do not pass Windows key
+> numbers as nativeVirtualKeyCode on macOS. Follow the existing Slice renderer-key helper:
+> semantic key/code, Windows VK and renderer text when required. Retain exact trusted down/up
+> edges and reject extra, unowned or repeating keys. A correct panel outcome can coexist with
+> an invalid instrument trace; keep that red and correct the helper on new committed source.
+
 > **AUTO-RESUME A DIAGNOSTIC PAUSE FROM THE SESSION EVENT HANDLER** (U1,2026-09-06).
 > A DOM breakpoint suspends the document; Runtime.evaluate cannot recover it. Dispatch resume
 > immediately from the exact-session paused event, retain raw sync/async frames, and drain

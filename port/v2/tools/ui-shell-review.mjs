@@ -11,6 +11,7 @@ import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
 import { createReviewTrailDebugger } from './ui-review-trail-debugger.mjs';
+import { createReviewEvaluator, reviewFrameSettlement, readReviewFrameSettlements, assessReviewFrameSettlement } from './ui-review-evaluation.mjs';
 
 /** Serialized into the owned document by Slice, Glass and U1 review. This
  * independent oracle intentionally names the approved metrics, not product
@@ -274,7 +275,7 @@ export function installNativeReviewTrace(viewport) {
     trailVisible: (() => { const t=document.getElementById('trail'),r=t.getBoundingClientRect(),s=getComputedStyle(t);return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0; })() });
   const describe = node => node instanceof Element ? { tag: node.tagName, id: node.id || null,
     sel: node.getAttribute('data-sel'), close: node.getAttribute('data-pnx') } : { tag: node === document ? '#document' : '#window' };
-  const trace = { viewport, events: [], changes: [], active: null, nextId: 0, overflow: false, snapshot };
+  const trace = { viewport, events: [], keys: [], changes: [], active: null, activeKey: null, nextId: 0, nextKeyId: 0, overflow: false, snapshot };
   const append = (list, entry) => { if (list.length >= 1000) trace.overflow = true; else list.push(entry); };
   for (const type of ['pointerdown', 'pointerup', 'click']) document.addEventListener(type, event => {
     const path = event.composedPath(), requested = trace.active;
@@ -287,6 +288,11 @@ export function installNativeReviewTrace(viewport) {
   const visualResize = () => append(trace.changes, { ...snapshot(), kind: 'visual-viewport-resize', pressId: trace.active?.id ?? null });
   window.addEventListener('resize', windowResize, { passive: true });
   window.visualViewport?.addEventListener('resize', visualResize, { passive: true });
+  for (const type of ['keydown', 'keyup']) document.addEventListener(type, event => {
+    append(trace.keys, { type, key: event.key, code: event.code, trusted: event.isTrusted, repeat: event.repeat,
+      at: performance.now(), eventTime: event.timeStamp, keyId: trace.activeKey?.id ?? null,
+      target: describe(event.target), viewport: trace.viewport });
+  }, { capture: true, passive: true });
   let priorTrail = JSON.stringify(snapshot().trail);
   const observer = new MutationObserver(() => {
     const next = snapshot(), serialized = JSON.stringify(next.trail);
@@ -304,6 +310,13 @@ export function assessNativeReviewDelivery(proof) {
     && event.trusted === true && event.requestedControlInPath === true && event.requestedControlConnected === true);
   return { pass: !proof.dispatchError && !proof.overflow && exactTypes && exactOwner, exactTypes, exactOwner };
 }
+export function assessNativeReviewKeyboardDelivery(proof) {
+  const events = proof.events ?? [], expectedTypes = ['keydown', 'keyup'];
+  const exactTypes = JSON.stringify(events.map(event => event.type)) === JSON.stringify(expectedTypes);
+  const exactKeys = events.every(event => event.keyId === proof.id && event.key === 'Escape' && event.code === 'Escape'
+    && event.trusted === true && event.repeat === false);
+  return { pass: !proof.dispatchError && !proof.overflow && exactTypes && exactKeys, exactTypes, exactKeys };
+}
 function assessProgrammaticSettingsDelivery(receipts) {
   const expected = ['#docksets', '#setpanel [data-motion="-1"]', '#setpanel [data-pnx]'];
   const exactCount = Array.isArray(receipts) && receipts.length === 3;
@@ -314,7 +327,9 @@ function assessProgrammaticSettingsDelivery(receipts) {
   return { pass: exactCount && exactOwners, exactCount, exactOwners, expected, receipts };
 }
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
-export async function runUiShellReview(buildArgument, outputArgument) {
+export async function runUiShellReview(buildArgument, outputArgument, options = {}) {
+  assert(options.scope === undefined || options.scope === 'phone-restoration', 'unknown U1 review scope');
+  const phoneRestorationOnly = options.scope === 'phone-restoration';
   assert(buildArgument && outputArgument, 'usage: node tools/ui-shell-review.mjs BUILD_DIRECTORY NEW_OUTPUT_DIRECTORY');
   const repo = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../../..');
   const git = args => execFileSync('git', args, { cwd: repo, encoding: 'utf8' }).trim();
@@ -332,10 +347,11 @@ export async function runUiShellReview(buildArgument, outputArgument) {
     const bytes = fs.readFileSync(file); assert.equal(sha(bytes), row.sha256, 'build asset digest'); return { ...row, bytes: bytes.length }; });
   const goldenRoot = path.join(repo, 'port/baseline-v1.8.9/screens');
   const goldenManifest = JSON.parse(fs.readFileSync(path.join(goldenRoot, 'MANIFEST.json'))).shots;
-  const cases = [['phone', 390, 844, true], ['desktop', 1440, 900, false], ['tablet', 834, 1112, true]];
-  const report = { schema: 'cf-u1-shell-review/v1', certification: false, source, startedAt: new Date().toISOString(),
+  const cases = phoneRestorationOnly ? [['phone', 390, 844, true]] : [['phone', 390, 844, true], ['desktop', 1440, 900, false], ['tablet', 834, 1112, true]];
+  const report = { schema: 'cf-u1-shell-review/v1', certification: false, scope: phoneRestorationOnly ? 'phone-restoration' : 'full', source, startedAt: new Date().toISOString(),
     build: { indexSha256: sha(Buffer.from(index)), serviceWorkerSha256: sha(workerBytes), assets },
-    status: 'RUNNING', rows: [], journeys: [], nativeInputs: [], nativeTraces: [], navigationDebug: {}, images: [], errors: [], limitations: [
+    status: 'RUNNING', rows: [], journeys: [], nativeInputs: [], nativeKeys: [], nativeTraces: [], evaluationEvidence: {}, frameSettlements: [], navigationDebug: {}, images: [], errors: [], limitations: [
+      'Phone-restoration scope retains the complete original phone predecessor and stops after its viewport restoration and trace. It omits comparison sheets, tablet/desktop and all downstream certificates. UAT layout acceptance is separate from technical gate completion.',
       'Auto-resuming DOM breakpoints capture trail writers between intentional controls. Debugger instrumentation perturbs scheduling; a nonrecurrence cannot close the retained navigation blocker. Same-text rebuild stacks are not navigation, and public DOM readiness does not prove travel settlement.',
       'U1 geometry diagnostic only, not U4, full Glass, real iPhone or HUMAN visual acceptance.',
       'Golden raster differences reflect scene/save/browser/font differences as well as design; no pixel-equality verdict.',
@@ -355,7 +371,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       fs.createReadStream(file).pipe(response);
     } catch { response.writeHead(404); response.end('Not found'); }
   });
-  let browser, collectNativeTrace, trailDebugger;
+  let browser, collectNativeTrace, collectFrameSettlements, trailDebugger;
   const writeReport = () => fs.writeFileSync(path.join(output, 'review.json'), JSON.stringify(report, null, 2) + '\n');
   try {
     await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
@@ -368,21 +384,53 @@ export async function runUiShellReview(buildArgument, outputArgument) {
     const send = (method, params = {}) => browser.send(method, params, sessionId);
     await send('Runtime.enable'); await send('Page.enable');
     trailDebugger = createReviewTrailDebugger({ send, sessionId, evidence: report.navigationDebug, onRecord: writeReport });
-    const evaluate = async expression => { await trailDebugger.ready(); const answer = await send('Runtime.evaluate', { expression, returnByValue: true, awaitPromise: true });
-      assert(!answer.exceptionDetails, answer.exceptionDetails?.exception?.description ?? answer.exceptionDetails?.text); return answer.result.value; };
+    const evaluate = createReviewEvaluator({ send, ready: () => trailDebugger.ready(), evidence: report.evaluationEvidence, onRecord: writeReport });
     const wait = condition => evaluate(`new Promise((resolve,reject)=>{const end=performance.now()+25000;const tick=()=>{if(${condition})resolve(true);else if(performance.now()>end)reject(new Error('U1 readiness deadline'));else setTimeout(tick,50)};tick()})`);
     const capture = async (file, clip) => { const { data } = await send('Page.captureScreenshot', { format: 'png', captureBeyondViewport: true, ...(clip ? { clip } : {}) });
       const bytes = Buffer.from(data, 'base64'); fs.writeFileSync(path.join(output, file), bytes);
       report.images.push({ file, bytes: bytes.length, sha256: sha(bytes) }); return bytes; };
-    const frames = () => evaluate(`document.fonts.ready.then(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true)))))`);
+    const frames = (label = 'review.fonts-two-frames') => evaluate(`(${reviewFrameSettlement.toString()})(${JSON.stringify(label)})`, label);
     const scene = () => evaluate(`({trail:[...document.querySelectorAll('#trail .seg')].map(node=>node.textContent),trailVisible:window.__cfU1ReviewNativeTrace.snapshot().trailVisible,context:document.getElementById('ctxbar')?.textContent,bodyClasses:document.body.className})`);
+    collectFrameSettlements = async (verifyPortrait = false) => {
+      const state = await evaluate(`(${readReviewFrameSettlements.toString()})()`, 'cleanup.read-frame-settlements');
+      if (state) { report.frameSettlements.push(state); writeReport(); }
+      if (verifyPortrait) {
+        const matches = state?.invocations?.filter(row => row.label === 'phone.portrait-restore.fonts-two-frames') ?? [];
+        const assessment = assessReviewFrameSettlement(matches[0], { width: 390, height: 844 });
+        report.restorationSettlement = { count: matches.length, overflow: state?.overflow ?? true, assessment,
+          pass: matches.length === 1 && state?.overflow === false && assessment.pass };
+        writeReport(); assert(report.restorationSettlement.pass, 'portrait frame settlement is absent or incomplete: ' + JSON.stringify(report.restorationSettlement));
+      }
+    };
     collectNativeTrace = async () => {
-      const trace = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace;return t?{viewport:t.viewport,events:t.events,changes:t.changes,overflow:t.overflow,final:t.snapshot()}:null;})()`);
+      const trace = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace;return t?{viewport:t.viewport,events:t.events,keys:t.keys,changes:t.changes,overflow:t.overflow,final:t.snapshot()}:null;})()`);
+      assert(trace && Array.isArray(trace.keys) && Array.isArray(trace.events) && Array.isArray(trace.changes),
+        'native review trace is missing or malformed');
       if (trace) {
         const previous = report.nativeTraces.findIndex(row => row.viewport === trace.viewport);
         if (previous < 0) report.nativeTraces.push(trace); else report.nativeTraces[previous] = trace;
+        const expectedKeys = report.nativeKeys.filter(proof => proof.viewport === trace.viewport).flatMap(proof => proof.events ?? []);
+        trace.keyboardComplete = !trace.overflow && JSON.stringify(trace.keys) === JSON.stringify(expectedKeys)
+          && report.nativeKeys.filter(proof => proof.viewport === trace.viewport).every(proof => proof.delivery?.pass);
         writeReport();
+        assert(trace.keyboardComplete, 'native keyboard trace contains missing, unowned or unexpected key events');
       }
+    };
+    const escapeNative = async () => {
+      const proof = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace,id=++t.nextKeyId;t.activeKey={id};
+        return{id,viewport:t.viewport,eventStart:t.keys.length,before:t.snapshot()};})()`, 'ascent.prepare-native-Escape');
+      report.nativeKeys.push(proof); writeReport();
+      let dispatchError;
+      try {
+        // Windows VK is portable; nativeVirtualKeyCode is host-specific (see Slice's key owner).
+        await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+        await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27 });
+      } catch (error) { dispatchError = error; proof.dispatchError = String(error); }
+      Object.assign(proof, await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace;t.activeKey=null;
+        return{events:t.keys.slice(${proof.eventStart}),overflow:t.overflow,after:t.snapshot()};})()`, 'ascent.native-Escape-receipt'));
+      proof.delivery = assessNativeReviewKeyboardDelivery(proof); writeReport();
+      if (dispatchError) throw dispatchError;
+      assert(proof.delivery.pass, 'native Escape did not receive exactly two trusted key edges');
     };
     const clickNative = async (selector, expectedTrail = ['Cosmos']) => {
       const traceWasArmed = await trailDebugger.disarm();
@@ -420,8 +468,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       report.journeys.push(journey); writeReport();
       let currentScene = journey.before;
       for (let presses = 0; JSON.stringify(currentScene.trail) !== '["Cosmos"]' && presses < 6; presses++) {
-        await send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27, nativeVirtualKeyCode: 27 });
-        await send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Escape', code: 'Escape', windowsVirtualKeyCode: 27, nativeVirtualKeyCode: 27 });
+        await escapeNative();
         await frames(); currentScene = await scene(); journey.steps.push({ input: 'Escape', after: currentScene }); writeReport();
       }
       journey.after = currentScene; writeReport();
@@ -714,15 +761,23 @@ export async function runUiShellReview(buildArgument, outputArgument) {
           narrow.closed = { focusedId: await evaluate('document.activeElement?.id'), scene: await scene() }; writeReport();
           assert.equal(narrow.closed.focusedId, 'docksets'); assert.deepEqual(narrow.closed.scene.trail, ['Cosmos']);
         } finally {
-          await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile }); await frames(); writeReport();
+          narrow.portraitRestore = { requestedViewport: { width, height, mobile }, phase: 'metrics-override-pending', startedAt: new Date().toISOString() };
+          writeReport();
+          await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile });
+          Object.assign(narrow.portraitRestore, { phase: 'metrics-acknowledged', acknowledgedAt: new Date().toISOString() }); writeReport();
+          await frames('phone.portrait-restore.fonts-two-frames');
+          narrow.portraitRestore.phase = 'frames-settled'; writeReport();
         }
-        const restored = await evaluate(`(${shellGeometry.toString()})()`);
+        const restored = await evaluate(`(${shellGeometry.toString()})()`, 'phone.portrait-restore.shell-geometry');
+        narrow.portraitRestore.phase = 'geometry-read'; writeReport();
         narrow.restored = restored.viewport.width === width && restored.viewport.height === height
           && topLeftOutcome(restored).pass && metricDeltas(restored).every(delta => delta.pass) && launcherOutcome(restored).pass;
         writeReport(); assert(narrow.restored, 'narrow Settings probe did not restore the original viewport and shell');
       }
       await trailDebugger.disarm();
+      await collectFrameSettlements(name === 'phone');
       await collectNativeTrace();
+      if (phoneRestorationOnly) continue;
       // Use an isolated generated proof page for exact-sized originals, raster difference and contact sheet.
       const imageData = [golden, candidate].map(bytes => 'data:image/png;base64,' + bytes.toString('base64'));
       await send('Page.navigate', { url: 'about:blank' });
@@ -745,6 +800,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
   } catch (error) {
     report.status = 'FAIL'; report.failure = String(error);
     try { await trailDebugger?.disarm(); } catch (debugError) { report.navigationDebugCleanupError = String(debugError); }
+    try { await collectFrameSettlements?.(); } catch (settlementError) { report.frameSettlementCollectionError = String(settlementError); }
     try { await collectNativeTrace?.(); } catch (traceError) { report.nativeTraceCollectionError = String(traceError); }
     throw error;
   } finally {
@@ -752,9 +808,10 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       report.status = 'FAIL'; report.navigationDebugCleanupError = String(debugError);
     }
     await browser?.close(); if (server.listening) await new Promise(resolve => server.close(resolve)); report.endedAt = new Date().toISOString(); writeReport(); }
-  console.log(`U1 REVIEW PASS: ${report.rows.length} scoped viewports; ${report.images.length} PNGs; ${source}`);
+  console.log(`U1 ${phoneRestorationOnly ? 'PHONE RESTORATION' : 'REVIEW'} PASS: ${report.rows.length} scoped viewports; ${report.images.length} PNGs; ${source}`);
   return report;
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  await runUiShellReview(process.argv[2], process.argv[3]);
+  assert(process.argv.length <= 5 && (process.argv[4] === undefined || process.argv[4] === '--phone-restoration-only'), 'usage: ui-shell-review.mjs BUILD NEW_OUTPUT [--phone-restoration-only]');
+  await runUiShellReview(process.argv[2], process.argv[3], { scope: process.argv[4] ? 'phone-restoration' : undefined });
 }
