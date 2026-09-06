@@ -2828,7 +2828,7 @@ describe('legacy and v2 release channels', () => {
       return {
         categories: JSON.stringify(categories) === JSON.stringify(expectedCategories),
         canonical: categories.every((category) => V2_RELEASE_CATEGORIES.includes(category as never)),
-        inventory: bullets.length === 79,
+        inventory: bullets.length === 81,
         populated: sections.every((section) => section.bullets.length > 0)
           && bullets.every((bullet) => bullet.length > 0 && bullet === bullet.trim())
           && new Set(bullets).size === bullets.length,

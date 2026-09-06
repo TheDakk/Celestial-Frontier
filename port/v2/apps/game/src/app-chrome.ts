@@ -141,7 +141,8 @@ export function createAppChromeController(
   const hint = requiredById(chromeDocument, 'hintpill');
   const topbar = requiredById(chromeDocument, 'topbar');
   const dock = requiredById(chromeDocument, 'dock');
-  const surfaceTopChrome = [topbar, requiredById(chromeDocument, 'searchbox'), objectiveChip];
+  const searchbox = requiredById(chromeDocument, 'searchbox');
+  const surfaceTopChrome = [topbar, searchbox, objectiveChip];
   const rootStyle = chromeDocument.documentElement.style;
   let lastSurfaceTrailBottom = 0;
   let contextText = '';
@@ -192,6 +193,7 @@ export function createAppChromeController(
   const syncTopbarH = (): void => {
     /* the game's height-sync law: MEASURED, never guessed */
     rootStyle.setProperty('--topbar-h', topbar.offsetHeight + 'px');
+    rootStyle.setProperty('--row1-h', Math.max(40, searchbox.getBoundingClientRect().bottom) + 'px');
   };
   const syncDockH = (): void => {
     rootStyle.setProperty('--dock-h', dock.offsetHeight + 'px');
@@ -235,7 +237,10 @@ export function createAppChromeController(
       + ` <span class="dim">— ✦ ${view.essence}<span class="player-worlds"> · ${view.landedWorlds} worlds</span></span>`;
     hpFill.style.width = Math.max(0, Math.min(100, (view.hp / Math.max(1, view.hpMax)) * 100)) + '%';
     hpText.textContent = `${view.hp}/${view.hpMax} HP`;
-    primeChip.textContent = `✦ Prime Codex ${view.primeCount} / 9`;
+    primeChip.innerHTML = '<span class="ico" aria-hidden="true">✦</span> '
+      + '<span class="lbl">Prime<span class="prime-full-label"> Codex</span></span> '
+      + `<span class="prime-count">${escapeHtml(view.primeCount)}/9</span>`;
+    primeChip.setAttribute('aria-label', `Open Prime Codex, ${view.primeCount} of 9 signatures`);
     objectiveChip.innerHTML = view.objective?.kind === 'progress'
       ? `⬆ ${escapeHtml(view.objective.text)} · <span class="prog" data-sel="objprog">${view.objective.have} / ${view.objective.need}</span>`
       : view.objective?.kind === 'boundary'

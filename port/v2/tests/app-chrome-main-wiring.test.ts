@@ -161,7 +161,10 @@ function wiringErrors(main: string, owner: string): string[] {
     'escapeHtml(view.objective.text)',
     'escapeHtml(view.objective.name)',
     "Math.max(0, Math.min(100, (view.hp / Math.max(1, view.hpMax)) * 100)) + '%'",
-    "primeChip.textContent = `✦ Prime Codex ${view.primeCount} / 9`;",
+    '<span class="ico" aria-hidden="true">✦</span>',
+    '<span class="lbl">Prime<span class="prime-full-label"> Codex</span></span>',
+    '<span class="prime-count">${escapeHtml(view.primeCount)}/9</span>',
+    "primeChip.setAttribute('aria-label', `Open Prime Codex, ${view.primeCount} of 9 signatures`);",
     'syncTopbarH();',
   ]) if (!renderStatus.includes(contract)) errors.push('render-contract');
   if (!owner.includes('${escapeHtml(segment)}</span>')
@@ -198,6 +201,9 @@ function wiringErrors(main: string, owner: string): string[] {
     errors.push('owner-resize-order');
   }
   if (!resizeLifecycle.includes('addResizeListener(onResize);')) errors.push('resize-listener');
+  if (!owner.includes("rootStyle.setProperty('--row1-h', Math.max(40, searchbox.getBoundingClientRect().bottom) + 'px');")) {
+    errors.push('row-one-measurement');
+  }
   if (!dispose.includes('if (disposed) return;')
     || !dispose.includes('removeResizeListener(onResize);')
     || !dispose.includes('for (const observer of resizeObservers) observer.disconnect();')
@@ -293,6 +299,11 @@ describe('MAIN-1 / CHROME-1 application chrome extraction wiring', () => {
       "view.explorerName || 'Explorer'",
     );
     expect(wiringErrors(mainSource, unescapedExplorer)).toContain('render-contract');
+    const unescapedPrimeCount = replaceOnce(ownerSource, '${escapeHtml(view.primeCount)}/9</span>', '${view.primeCount}/9</span>');
+    expect(wiringErrors(mainSource, unescapedPrimeCount)).toContain('render-contract');
+    const guessedRowOne = replaceOnce(ownerSource, "Math.max(40, searchbox.getBoundingClientRect().bottom) + 'px'", "'40px'");
+    expect(wiringErrors(mainSource, guessedRowOne)).toContain('row-one-measurement');
+    expect(wiringErrors(mainSource, ownerSource)).toEqual([]);
     const unescapedTrail = replaceOnce(ownerSource, '${escapeHtml(segment)}</span>', '${segment}</span>');
     expect(wiringErrors(mainSource, unescapedTrail)).toContain('trail-escaping');
     const unescapedContext = replaceOnce(

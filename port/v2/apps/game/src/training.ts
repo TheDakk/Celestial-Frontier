@@ -143,6 +143,7 @@ let redirectingFocus = false;
 let finishing = false;
 
 const CHROME = [
+  '#topbar', '#sceneactions', '#notificationpanel',
   '#dock', '#raillft', '#railrgt', '#searchbox', '#setpanel', '#guidepanel',
   '#codexpanel', '#recpanel', '#atlaspanel', '#chpanel', '#shipyardpanel',
   '#inventorypanel', '#combatpanel', '#survey', '#importsheet',

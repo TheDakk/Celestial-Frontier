@@ -595,8 +595,15 @@ import {
   f4AuthorityConvergenceWitnessErrors,
   latchF4AuthorityConvergenceReload,
 } from './f4-convergence-latch.js';
+import { UI_PRESENTATION_CSS } from './ui-presentation-tokens.js';
+import { UI_SHELL_CSS } from './ui-shell-style.js';
+import { createNotificationHistory, NOTIFICATION_HISTORY_CSS } from './notification-history.js';
 import REGISTRY_JSON from '../../../../baseline-v1.8.9/content-registry.json';
 
+const uiPresentationStyle = document.createElement('style');
+uiPresentationStyle.id = 'cf-ui-presentation';
+uiPresentationStyle.textContent = UI_PRESENTATION_CSS + UI_SHELL_CSS + NOTIFICATION_HISTORY_CSS;
+document.head.append(uiPresentationStyle);
 installBatchTextureArrayUidCompaction(BatchTextureArray);
 document.title = `Celestial Frontier v${V2_DEVELOPMENT_VERSION} — Development`;
 installCaptureHooks();   /* GAL_SPRITES etc. until GalaxyArt fully replaces the hooks */
@@ -4267,6 +4274,29 @@ registerPanel({
 registerPanel({ id: 'atlas', el: document.getElementById('atlaspanel')!, btns: [document.getElementById('dockatlas'), document.getElementById('railatlas')], onOpen: () => { fillAtlas(); gameEvent('atlas-open', { open: true }); } });
 registerPanel({ id: 'set', el: document.getElementById('setpanel')!, btns: [document.getElementById('docksets')], onOpen: fillSettings });
 registerPanel({ id: 'guide', el: document.getElementById('guidepanel')!, btns: [document.getElementById('dockguide')], onOpen: fillGuide });
+const notificationPanel = document.getElementById('notificationpanel')!;
+const notificationButtons = ['shelfnotifications', 'docknotifications']
+  .map((id) => document.getElementById(id)!);
+const notificationHistory = createNotificationHistory({
+  panel: notificationPanel,
+  buttons: notificationButtons,
+  history: () => save?.notifications ?? [],
+  replace: (history) => { save.notifications = history; },
+  mayWrite: () => !!save && !playerMutationsBlocked() && !trainingActive()
+    && activePersist === null && !namedSearchPersistenceHeld
+    && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
+    && !importWriteInFlight && !persistHold,
+  mayRecord: () => !!save && !playerMutationsBlocked() && !trainingActive()
+    && !trainingCheckpointWriteHeld && !replacementTransaction && !replacementReloadPending
+    && !importWriteInFlight && !persistHold,
+  deferRecord: () => !!save && productActionInFlight && f4RuntimeMayMutate() && !smokeForceReadOnly
+    && !trainingActive() && !trainingCheckpointWriteHeld && !replacementTransaction
+    && !replacementReloadPending && !importWriteInFlight && !persistHold,
+  persist: () => persistView(),
+  fill: (html) => fillPanel('notifications', html),
+});
+registerPanel({ id: 'notifications', el: notificationPanel,
+  btns: notificationButtons, onOpen: () => notificationHistory.render() });
 const codexOpenController = createPanelOpenController({
   id: 'codex',
   defaultRequest: () => '',
@@ -5032,6 +5062,7 @@ async function runCompendiumAudition(
   compendiumAuditionController.settle(request, result);
 }
 function showToast(title: string, msg: string, assertive: boolean): void {
+  notificationHistory.record(title, msg, Date.now());
   invalidateTameToastCounterpart();
   /* A prior Feed may have used this visible carrier in AT-excluded mode.
      Restore the complete accessible status contract before changing text so
@@ -5049,6 +5080,7 @@ function showToast(title: string, msg: string, assertive: boolean): void {
   }, 3600);
 }
 function showCompendiumFeedVisualToast(title: string, msg: string): void {
+  notificationHistory.record(title, msg, Date.now());
   invalidateTameToastCounterpart();
   /* Feed's inline polite role=status is its sole accessible result. Configure
      this supplemental visible carrier as presentation-only before mutating
@@ -5430,6 +5462,7 @@ function refreshEngineeringPanelState(): void {
 }
 
 function updateChips(): void {
+  notificationHistory.refreshBadge();
   syncAudiovisualPilot();
   const stage = ascStage();
   const objective = currentV2Objective(save.ascCh, save.ascProg, stage);
@@ -9190,6 +9223,10 @@ async function persistView(
         return false;
       }
       epochStage = staged.stage;
+      /* Notification presentation waits until a product receipt releases its
+         exact source snapshot. It joins this existing checkpoint, never a new
+         timer or competing write. */
+      if (!productActionInFlight) notificationHistory.flushPending();
       /* Route + epoch are detached checkpoint fields. Neither may become live
          merely because a CAS was attempted; durable publication follows the
          exact committed stage below. */

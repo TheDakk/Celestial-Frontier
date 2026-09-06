@@ -147,20 +147,24 @@ afterEach(() => {
 });
 
 describe('Arc 2 Inventory presentation', () => {
-  it('seats ten exact phone-dock controls in two 5×44px rows and one accessible dialog shell', () => {
+  it('keeps nine exact production dock controls, relocated Inventory, and one accessible dialog shell', () => {
     const index = fs.readFileSync(path.join(here, '../apps/game/index.html'), 'utf8');
     const main = fs.readFileSync(path.join(here, '../apps/game/src/main.ts'), 'utf8');
     const parsed = new JSDOM(index);
     const document = parsed.window.document;
-    expect(document.querySelectorAll('#dock > button')).toHaveLength(10);
+    expect([...document.querySelectorAll('#dock > button')].map(button => button.id)).toEqual([
+      'dockcharters', 'dockcodex', 'primechip', 'dockshipyard', 'dockatlas',
+      'dockrecords', 'docknotifications', 'dockguide', 'docksets',
+    ]);
+    expect(document.querySelector('#topbar #dockinventory')).not.toBeNull();
+    expect([...document.querySelectorAll('#sceneactions > button')].map(button => button.id))
+      .toEqual(['docksurvey', 'dockcharts']);
     expect(document.querySelector('#dockinventory')).toMatchObject({
       id: 'dockinventory',
     });
     expect(document.querySelector('#railinventory')).not.toBeNull();
     expect(document.querySelector('#dockinventory')?.getAttribute('aria-controls')).toBe('inventorypanel');
     expect(document.querySelector('#railinventory')?.getAttribute('aria-controls')).toBe('inventorypanel');
-    expect(index).toMatch(/#dock\s*\{[^}]*display:\s*grid;[^}]*grid-template-columns:\s*repeat\(5,\s*44px\);[^}]*grid-auto-rows:\s*44px;/s);
-    expect(index).toMatch(/#dock button\s*\{[^}]*width:\s*44px;[^}]*height:\s*44px;/s);
     expect(index).toMatch(/#inventorypanel \.inventory-pager button:disabled\s*\{[^}]*opacity:\s*\.56;/s);
     expect(document.querySelectorAll('#inventorypanel')).toHaveLength(1);
     const sheet = document.querySelector('#inventorysheet');

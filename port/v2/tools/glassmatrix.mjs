@@ -21,6 +21,7 @@ import crypto from 'node:crypto';
 import { execFileSync, execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { openChromiumCdp } from './browsercdp.mjs';
+import { readU1PhoneShell } from './ui-shell-review.mjs';
 import { buildCompendiumFixture } from './compendiummem-fixture.mjs';
 import {
   GLASS_VETERAN_CAPTURE_ORACLE,
@@ -10587,46 +10588,32 @@ async function main() {
         add(vp.label, 'hud', await audit({
           ...common, surface: 'hud', root: 'body', textMin: 20,
           required: [{ selector: '#dock', min: 1 }, { selector: '#searchbox', min: 1 }, { selector: '#hintpill', min: 1, textMin: 8 }],
-          interactiveRoots: ['#dock', '#raillft', '#railrgt', '#searchbox'],
+          interactiveRoots: ['#dock', '#raillft', '#railrgt', '#searchbox', '#topbar', '#sceneactions'],
           contrastSelectors: ['#playerchip', '#hpbar', '#searchbox', '#trail', '#objchip', '#ctxbar', '#hintpill', '#raillft button', '#railrgt button'],
           placeholderSelectors: ['#searchbox'], maxContrastReports: 24,
           focusSelectors: vp.label === 'primary-phone' || vp.label === 'desktop' ? ['#searchbox', '#dockguide', '#docksets'] : [],
           canvas: true, expectedDpr, maxBackingPixels,
         }));
-        if (vp.width <= 900) {
-          const phoneDockCheck = `(()=>{const dock=document.getElementById('dock'),style=dock?getComputedStyle(dock):null,
-            rect=dock?.getBoundingClientRect(),expected=['docksurvey','dockcodex','dockrecords','dockcharters','dockatlas','dockcharts','dockshipyard','dockinventory','docksets','dockguide'],
-            buttons=dock?[...dock.querySelectorAll(':scope > button')].filter(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();
-              return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;}):[],rows=[];
-            for(const button of buttons){const r=button.getBoundingClientRect();let row=rows.find(candidate=>Math.abs(candidate.top-r.top)<2);
-              if(!row){row={top:r.top,ids:[]};rows.push(row);}row.ids.push(button.id);}
-            rows.sort((a,b)=>a.top-b.top);const ids=buttons.map(button=>button.id),centres=buttons.map(button=>{const r=button.getBoundingClientRect(),
-              hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);return {id:button.id,width:r.width,height:r.height,
-                hit:!!hit&&(hit===button||button.contains(hit))};});
-            return {ok:style?.display==='grid'&&buttons.length===10&&JSON.stringify(ids)===JSON.stringify(expected)
-              &&rows.length===2&&rows[0].ids.length===5&&rows[1].ids.length===5
-              &&!!rect&&Math.abs(rect.width-260)<=1&&Math.abs(rect.height-98)<=1
-              &&centres.every(row=>Math.abs(row.width-44)<=1&&Math.abs(row.height-44)<=1&&row.hit),
-              display:style?.display||null,ids,expected,rows:rows.map(row=>row.ids),
-              rect:rect?[rect.left,rect.top,rect.right,rect.bottom]:null,centres};})()`;
+        if (vp.width <= 700) {
+          const phoneDockCheck = `(${readU1PhoneShell.toString()})(false)`;
           addOutcome(vp.label, 'phone-dock', 'PHONE_DOCK_INVENTORY', '#dock', await evalIn(phoneDockCheck),
-            'the exact ten visible named controls occupy one 260x98 five-by-two grid of centre-owned 44px targets');
+            'five labelled 58px board faces and four 44px utility targets retain 64px pitch; relocated Inventory and scene actions stay centre-owned');
           if (!phoneDockControlRun) {
             phoneDockControlRun = true;
             const dockControl = await evalIn(`(()=>{const dock=document.getElementById('dock'),prior=dock?.getAttribute('style')??null;
-              dock?.style.setProperty('grid-template-columns','repeat(4,44px)','important');const broken=${phoneDockCheck};
+              dock?.style.setProperty('grid-template-columns','repeat(8,32px)','important');const broken=${phoneDockCheck};
               if(prior===null)dock?.removeAttribute('style');else dock?.setAttribute('style',prior);
-              return {ok:broken.ok===false&&broken.rows.length===3&&${phoneDockCheck}.ok,broken};})()`);
+              return {ok:broken.ok===false&&broken.errors.length>0&&${phoneDockCheck}.ok,broken};})()`);
             if (!dockControl.ok) {
-              recordInstrumentFailure(`${vp.label}: phone dock 4-column control stayed green or failed to restore (${JSON.stringify(dockControl)})`);
+              recordInstrumentFailure(`${vp.label}: phone dock eight-track control stayed green or failed to restore (${JSON.stringify(dockControl)})`);
             }
             recordControls('phone-dock-inventory');
             const membershipControl = await evalIn(`(()=>{const button=document.getElementById('dockinventory'),prior=button?.id||null;
               if(button)button.id='dockinventory-substitution';const broken=${phoneDockCheck};if(button&&prior)button.id=prior;
-              const restored=${phoneDockCheck};return {ok:broken.ok===false&&broken.ids.length===10
-                &&broken.ids.includes('dockinventory-substitution')&&!broken.ids.includes('dockinventory')&&restored.ok,broken,restored};})()`);
+              const restored=${phoneDockCheck};return {ok:broken.ok===false&&broken.ids.length===9
+                &&broken.relocatedInventory.id===null&&restored.ok,broken,restored};})()`);
             if (!membershipControl.ok) {
-              recordInstrumentFailure(`${vp.label}: substituted Inventory dock member stayed green or failed to restore (${JSON.stringify(membershipControl)})`);
+              recordInstrumentFailure(`${vp.label}: substituted relocated Inventory stayed green or failed to restore (${JSON.stringify(membershipControl)})`);
             }
             recordControls('phone-dock-exact-membership');
           }
@@ -11308,7 +11295,7 @@ async function main() {
           { id: 'ch', name: 'charters', dock: '#dockcharters', rail: '#railcharters', panel: '#chpanel', required: '[data-sel=charter-ch]', min: 1, textMin: 120 },
         ];
         for (const item of ordinaryPanels) {
-          const opener = vp.width > 900 ? item.rail : item.dock;
+          const opener = vp.width > 700 ? item.rail : item.dock;
           /* A populated desktop survey deliberately yields the right rail,
              so Records/Atlas/Shipyard/Inventory are reached *instead of* the
              card, while the left rail and every phone dock panel remain
@@ -11872,7 +11859,8 @@ async function main() {
                 'the A++ Compendium owns the safe-height left workspace while Search, dock, and Survey remain separate usable right-column surfaces');
 
               const nonModalChrome = await evalIn(`(()=>{const search=document.getElementById('searchbox'),dock=document.getElementById('dock'),
-                dockButton=document.getElementById('dockcodex'),buttons=dock?[...dock.querySelectorAll('button')]:[],panel=document.getElementById('codexpanel');
+                dockButton=document.getElementById(innerWidth>700?'railcodex':'dockcodex'),
+                buttons=dock?[...dock.querySelectorAll(':scope > button')].filter(button=>{const s=getComputedStyle(button),r=button.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;}):[],panel=document.getElementById('codexpanel');
                 if(!(search instanceof HTMLInputElement)||!dock||!dockButton||!panel)return {ok:false,why:'Search/dock/Compendium missing'};
                 const rendered=(el)=>{const style=getComputedStyle(el),r=el.getBoundingClientRect();return style.display!=='none'&&style.visibility==='visible'
                     &&style.pointerEvents!=='none'&&r.width>0&&r.height>0;},ownsCentre=(el)=>{const r=el.getBoundingClientRect(),hit=document.elementFromPoint((r.left+r.right)/2,(r.top+r.bottom)/2);
@@ -11898,7 +11886,10 @@ async function main() {
                   close=panel.querySelector('[data-pnx]'),focusEntered=!!close&&document.activeElement===close;
                 return {ok:positiveVisibility&&hiddenSearchRejected&&blockedDockRejected&&hiddenDockA11yRejected&&searchHit&&searchFocused
                     &&search.getAttribute('aria-label')?.trim().length>0&&exposed(search)&&search.tabIndex>=0&&!search.disabled&&!search.readOnly
-                    &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused&&dockHits.length===10
+                    &&dock.getAttribute('aria-label')?.trim().length>0&&dockFocused
+                    &&JSON.stringify(dockHits.map(row=>row.id))===JSON.stringify(innerWidth>700
+                      ?['primechip','dockrecords','docknotifications','dockguide','docksets']
+                      :['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'])
                     &&dockHits.every(row=>row.hit&&row.named&&row.exposed&&row.tabIndex>=0&&!row.disabled)
                     &&filtered.panel.mode==='list'&&filtered.panel.filteredCount===1
                     &&cleared.panel.mode==='list'&&cleared.panel.filteredCount===${hostileCompendiumRows.length}
@@ -13473,7 +13464,7 @@ async function main() {
           headings=article?[...article.querySelectorAll('h5')].map((node)=>(node.textContent||'').trim()):[],
           bulletNodes=article?[...article.querySelectorAll('li')]:[],bullets=bulletNodes.map((node)=>(node.textContent||'').trim()),text=article?.textContent||'',lower=text.toLowerCase(),state=S.api.state(),
           title=article?.querySelector('[data-guide-heading]')?.textContent||'';
-          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=79;
+          const expected=['New Features & Systems','UI Enhancements','Gameplay','Bug Fixes','Under the Hood'],expectedBulletCount=81;
           const unnegated=${hasUnnegatedSentenceClaim};
           const first=bulletNodes.find((item)=>/FIRST PLANETFALL COUNTS/.test(item.textContent||'')),
             recovery=bulletNodes.find((item)=>/COMPLETE IMPORTED CHAPTERS MOVE AGAIN/.test(item.textContent||'')),
@@ -13878,7 +13869,7 @@ async function main() {
             releasePending:state.releasePending};})()`;
         const developmentDetail = await evalIn(developmentDetailCheck);
         addOutcome(vp.label, 'release-detail', 'GUIDE_DEVELOPMENT_RELEASE_INVENTORY', '#guidepanel .guide-topic', developmentDetail,
-          'A New Foundation renders the exact five-section, 79-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
+          'A New Foundation renders the exact five-section, 81-outcome development inventory, including truthful Arc 2 authority, Arc 3 Engineering/Shipyard, Arc 4 capture limits and post-progression readiness, narrow real-fauna Compendium Feed, nonlethal Breed/Recovery with same-save Charter credit, identity-only Rename, explicit exact-companion and visible-world Listen ownership, and named HD-surface ownership, without changing shipped-release state');
         if (!releaseDetailControlRun) {
           releaseDetailControlRun = true;
           const detailControls = await evalIn(`(()=>{ const S=window.__CF_SLICE__,article=document.querySelector('#guidepanel .guide-topic'),
@@ -15037,7 +15028,7 @@ async function main() {
   if (!arc4CaptureControlRun && !targetedProductBlocked) {
     recordInstrumentFailure('Arc 4 capture presentation/geometry/native-return controls never ran');
   }
-  if (!phoneDockControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 900)) {
+  if (!phoneDockControlRun && !targetedProductBlocked && MATRIX_VIEWPORTS.some((vp) => vp.width <= 700)) {
     recordInstrumentFailure('exact ten-control 5x2 phone dock control never ran');
   }
   if (!reloadBindingControlRun && !targetedProductBlocked) recordInstrumentFailure('live slice-ready binding controls never ran');

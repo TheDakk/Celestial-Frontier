@@ -33,6 +33,12 @@ function installDom(): void {
   for (const key of GLOBAL_KEYS) originalGlobals.set(key, Object.getOwnPropertyDescriptor(globalThis, key));
   dom = new JSDOM(`<!doctype html><html><body>
     <button id="prior">Prior focus</button>
+    <header id="topbar">
+      <button id="dockinventory"><span id="playerchip">Ada</span></button>
+      <button id="shelfnotifications">Notifications</button>
+    </header>
+    <nav id="sceneactions"><button id="docksurvey">Survey</button><button id="dockcharts">Charts</button></nav>
+    <aside id="notificationpanel"><button data-notification-action>Saved notification</button></aside>
     <div id="dock">
       <button id="dockatlas">Atlas dock</button>
       <button id="dockshipyard">Shipyard dock</button>
@@ -407,6 +413,41 @@ describe('Field Training completion transaction UI', () => {
       expect(curriculumCopyIsTruthful(changeCompendium(compendiumCopy + ' ' + contradiction)), contradiction)
         .toBe(false);
       expect(curriculumCopyIsTruthful(steps), contradiction + ' restored').toBe(true);
+    }
+  });
+
+  it('keeps relocated shelf and scene controls locked through Training and restores their prior states', async () => {
+    const complete = vi.fn<TrainingDeps['complete']>(async () => ({ kind: 'completed' }));
+    const { training } = await boot(complete);
+    const roots = ['topbar', 'sceneactions', 'notificationpanel'].map((id) => document.getElementById(id)!);
+    const controls = ['dockinventory', 'shelfnotifications', 'docksurvey', 'dockcharts']
+      .map((id) => document.getElementById(id)!);
+    const locked = (): boolean => roots.every((root) => root.hasAttribute('inert')
+      && root.style.pointerEvents === 'none')
+      && controls.every((control) => control.closest('[inert]') !== null);
+    expect(training.trainingStepId()).toBe('welcome');
+    expect(locked()).toBe(true);
+    for (const control of controls) {
+      control.focus();
+      expect(document.getElementById('tutcard')!.contains(document.activeElement)).toBe(true);
+    }
+    // Removing each actual newly locked root must be observable before restore.
+    for (const root of roots) {
+      root.removeAttribute('inert');
+      root.style.pointerEvents = '';
+      expect(locked(), root.id + ' missing lock').toBe(false);
+      root.setAttribute('inert', '');
+      root.style.pointerEvents = 'none';
+      expect(locked(), root.id + ' restored lock').toBe(true);
+    }
+    document.querySelector<HTMLButtonElement>('[data-sel="tutskip"]')!.click();
+    await turn();
+    expect(complete).toHaveBeenCalledWith('skip');
+    expect(training.trainingActive()).toBe(false);
+    expect(roots.every((root) => !root.hasAttribute('inert') && root.style.pointerEvents === '')).toBe(true);
+    for (const control of controls) {
+      control.focus();
+      expect(document.activeElement).toBe(control);
     }
   });
 
