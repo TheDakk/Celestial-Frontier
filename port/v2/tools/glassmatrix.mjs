@@ -8591,19 +8591,30 @@ function installAuditHarness() {
       else if (!evidence.visible) out.push(issue('FOCUS_INVISIBLE', surface, sel, evidence, 'rendered focus indicator'));
     }
     const contrastNodes = new Set();
+    const directText = (el) => [...el.childNodes].filter(node => node.nodeType === Node.TEXT_NODE)
+      .map(node => node.textContent || '').join('').replace(/\s+/g, ' ').trim();
+    const addContrastSubject = (el) => {
+      if (!el.matches('button.dock-utility')) { contrastNodes.add(el); return; }
+      // The native target is transparent; its glyph and badge have distinct painted backings.
+      for (const leaf of el.querySelectorAll(':scope > .utility-face > .ico,:scope > [data-notification-count]'))
+        if (visible(leaf)) contrastNodes.add(leaf);
+      if (directText(el)) contrastNodes.add(el);
+    };
     for (const sel of opts.contrastSelectors || []) {
       for (const el of document.querySelectorAll(sel)) if (visible(el)) {
-        contrastNodes.add(el);
+        addContrastSubject(el);
         for (const child of el.querySelectorAll('p,li,small,b,label,button,h1,h2,h3,h4,h5,h6,.sub,.cur,.sep,.guide-status,[role="status"],[style*="color"]')) {
-          if (visible(child)) contrastNodes.add(child);
+          if (visible(child)) addContrastSubject(child);
         }
       }
     }
     let contrastReports = 0;
     for (const el of contrastNodes) {
       if (contrastReports >= Number(opts.maxContrastReports || 4)) break;
-      const sample = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      const sample = el.matches('button.dock-utility') ? directText(el)
+        : (el.textContent || '').replace(/\s+/g, ' ').trim();
       if (!sample) continue;
+      const utilityOwner = el.matches('.ico,[data-notification-count]') ? el.closest('button.dock-utility') : null;
       const s = getComputedStyle(el), fg0 = parseColor(s.color);
       if (!fg0) continue;
       fg0[3] *= cumulativeOpacity(el);
@@ -8612,7 +8623,10 @@ function installAuditHarness() {
       const large = size >= 24 || (size >= 18.66 && weight >= 700), threshold = large ? 3 : 4.5;
       if (ratio + 0.01 < threshold) {
         contrastReports++;
-        out.push(issue('TEXT_CONTRAST_LOW', surface, selectorName(el), { ratio: round(ratio), threshold, color: s.color, background: bg.map(round), sample: sample.slice(0, 80) }, 'WCAG contrast against bright artwork beneath glass'));
+        out.push(issue('TEXT_CONTRAST_LOW', surface, selectorName(utilityOwner || el), {
+          ratio: round(ratio), threshold, color: s.color, background: bg.map(round), sample: sample.slice(0, 80),
+          ...(utilityOwner ? { sampleElement: selectorName(el), sampleKind: el.hasAttribute('data-notification-count') ? 'notification-count' : 'utility-glyph' } : {}),
+        }, 'WCAG contrast against bright artwork beneath glass'));
       }
     }
     for (const sel of opts.placeholderSelectors || []) {
@@ -8763,6 +8777,48 @@ function installAuditHarness() {
     list = audit({ surface: 'selftest-nonglass', root: '#cf-control-nonglass', textMin: 4, interactiveRoots: [], contrastSelectors: ['#cf-control-nonglass-copy'] });
     expect('non-glass translucent-chain injection', list, 'TEXT_CONTRAST_LOW', '#cf-control-nonglass-copy');
     nonGlass.remove();
+    const utilityRoot = document.createElement('section');
+    utilityRoot.id = 'cf-control-utility-root';
+    utilityRoot.style.cssText = 'position:fixed;left:8px;top:8px;width:240px;height:64px;background:#fff;z-index:1000';
+    utilityRoot.innerHTML = ['a','b'].map(id => `<button id="cf-control-utility-${id}" class="dock-utility" aria-label="utility ${id}" style="display:inline-flex;position:relative;width:64px;height:44px;background:none;color:#fff!important"><span class="utility-face" style="display:flex;width:36px;height:36px;background:rgb(14,22,40)"><span class="ico" style="display:block;color:#fff!important">?</span></span></button>`).join('');
+    document.body.appendChild(utilityRoot);
+    const utilityA = utilityRoot.querySelector('#cf-control-utility-a'), utilityB = utilityRoot.querySelector('#cf-control-utility-b'),
+      utilityFace = utilityA.querySelector('.utility-face'), utilityGlyph = utilityA.querySelector('.ico');
+    const badge = document.createElement('span'); badge.setAttribute('data-notification-count',''); badge.textContent = '2';
+    badge.style.cssText = 'position:absolute;top:0;right:0;background:#ffd96a!important;color:#131b28!important';
+    utilityA.appendChild(badge);
+    const utilityOptions = { surface: 'selftest-utility-contrast', root: '#cf-control-utility-root', textMin: 1,
+      interactiveRoots: [], contrastSelectors: ['#cf-control-utility-root button'], maxContrastReports: 12 };
+    const utilityLow = rows => rows.filter(row => row.code === 'TEXT_CONTRAST_LOW');
+    const utilityClean = () => { const rows = audit(utilityOptions);
+      if (utilityLow(rows).length) failures.push('readable nested utility backing rejected: ' + JSON.stringify(rows)); };
+    const restoreUtilityStyle = (node, prior) => { node.setAttribute('style',''); node.removeAttribute('style');
+      if (prior !== null) node.setAttribute('style',prior);
+      if (node.getAttribute('style') !== prior) failures.push('utility contrast exact style restoration failed'); };
+    utilityClean();
+    const faceStyle = utilityFace.getAttribute('style'), glyphStyle = utilityGlyph.getAttribute('style');
+    try {
+      utilityFace.style.setProperty('background','#fff','important'); utilityGlyph.style.setProperty('color','#fff','important');
+      const rows = utilityLow(audit(utilityOptions));
+      if (rows.length !== 1 || rows[0].element !== '#cf-control-utility-a' || rows[0].actual.sampleKind !== 'utility-glyph')
+        failures.push('nested utility glyph mutation lost its native owner or distinct readable neighbor: ' + JSON.stringify(rows));
+    } finally { restoreUtilityStyle(utilityFace,faceStyle); restoreUtilityStyle(utilityGlyph,glyphStyle); }
+    utilityClean();
+    const badgeStyle = badge.getAttribute('style');
+    try {
+      badge.style.setProperty('background','#fff','important'); badge.style.setProperty('color','#fff','important');
+      const rows = utilityLow(audit(utilityOptions));
+      if (rows.length !== 1 || rows[0].element !== '#cf-control-utility-a' || rows[0].actual.sampleKind !== 'notification-count')
+        failures.push('independent unread badge contrast mutation was not isolated: ' + JSON.stringify(rows));
+      badge.hidden = true;
+      if (utilityLow(audit(utilityOptions)).length) failures.push('hidden unread badge was sampled as painted');
+    } finally { badge.hidden = false; restoreUtilityStyle(badge,badgeStyle); }
+    utilityClean();
+    const directUtilityText = document.createTextNode('Direct'); utilityB.appendChild(directUtilityText);
+    list = utilityLow(audit(utilityOptions));
+    if (list.length !== 1 || list[0].element !== '#cf-control-utility-b' || list[0].actual.sample !== 'Direct')
+      failures.push('utility direct outer text escaped its actual transparent backing: ' + JSON.stringify(list));
+    directUtilityText.remove(); utilityClean(); utilityRoot.remove();
     const placeholderStyle = document.createElement('style');
     placeholderStyle.id = 'cf-control-placeholder-style';
     placeholderStyle.textContent = '#cf-control-placeholder::placeholder{color:#fff;opacity:1}';
@@ -11960,23 +12016,45 @@ async function main() {
               };
               const nonModalAuditRows = await audit(nonModalAuditOptions);
               add(vp.label, 'compendium-nonmodal-chrome', nonModalAuditRows);
-              const dockContrastControl = await evalIn(`(()=>{const buttons=[...document.querySelectorAll('#dock button')];
-                if(buttons.length!==10||buttons.some(button=>!(button instanceof HTMLButtonElement)||!button.id))
-                  return {ok:false,why:'exact ten named dock buttons missing',count:buttons.length};
-                const expected=buttons.map(button=>'#'+CSS.escape(button.id)).sort(),prior=buttons.map(button=>button.getAttribute('style')),
-                  baseline=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)});let injected=[];
-                try{for(const button of buttons){button.style.setProperty('color','#fff','important');button.style.setProperty('background','#fff','important');}
-                  injected=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)});
-                }finally{buttons.forEach((button,index)=>{if(prior[index]===null)button.removeAttribute('style');else button.setAttribute('style',prior[index]);});}
-                const restored=buttons.map(button=>button.getAttribute('style')),clean=window.__CF_GLASS_AUDIT__.audit(${JSON.stringify(nonModalAuditOptions)}),
-                  contrastIds=(rows)=>rows.filter(row=>row.code==='TEXT_CONTRAST_LOW'&&expected.includes(row.element)).map(row=>row.element).sort(),
-                  baselineIds=contrastIds(baseline),injectedIds=contrastIds(injected),cleanIds=contrastIds(clean),
+              const dockContrastControl = await evalIn(`(()=>{const visible=node=>{const s=getComputedStyle(node),r=node.getBoundingClientRect();
+                  return s.display!=='none'&&s.visibility!=='hidden'&&r.width>0&&r.height>0;},
+                buttons=[...document.querySelectorAll('#dock > button')].filter(visible),
+                expectedIds=innerWidth>700?['primechip','dockrecords','docknotifications','dockguide','docksets']
+                  :['dockcharters','dockcodex','primechip','dockshipyard','dockatlas','dockrecords','docknotifications','dockguide','docksets'];
+                if(JSON.stringify(buttons.map(button=>button.id))!==JSON.stringify(expectedIds)
+                  ||buttons.some(button=>!(button instanceof HTMLButtonElement)))
+                  return {ok:false,why:'exact visible U1 native dock membership missing',expectedIds,actual:buttons.map(button=>button.id)};
+                const expected=expectedIds.map(id=>'#'+CSS.escape(id)).sort(),targets=[],expectedSamples=[];
+                for(const button of buttons){const owner='#'+CSS.escape(button.id);targets.push(button);
+                  if(button.matches('.dock-utility')){const face=button.querySelector(':scope > .utility-face'),glyph=face?.querySelector(':scope > .ico');
+                    if(!face||!glyph||!visible(glyph)||!glyph.textContent.trim())return {ok:false,why:'visible utility glyph missing',owner};
+                    targets.push(face,glyph);expectedSamples.push(owner+'|utility-glyph');
+                    for(const badge of button.querySelectorAll(':scope > [data-notification-count]'))if(visible(badge)&&badge.textContent.trim()){
+                      targets.push(badge);expectedSamples.push(owner+'|notification-count');}
+                    if([...button.childNodes].some(node=>node.nodeType===Node.TEXT_NODE&&node.textContent.trim()))expectedSamples.push(owner+'|button');
+                  }else expectedSamples.push(owner+'|button');}
+                expectedSamples.sort();const controlOptions={...${JSON.stringify(nonModalAuditOptions)},
+                    maxContrastReports:Math.max(${nonModalAuditOptions.maxContrastReports},expectedSamples.length+1)},
+                  prior=targets.map(node=>({present:node.hasAttribute('style'),value:node.getAttribute('style')})),
+                  baseline=window.__CF_GLASS_AUDIT__.audit(controlOptions);let injected=[];
+                try{for(const node of targets){if(!node.matches('.utility-face'))node.style.setProperty('color','#fff','important');
+                    if(!node.matches('button.dock-utility'))node.style.setProperty('background','#fff','important');}
+                  injected=window.__CF_GLASS_AUDIT__.audit(controlOptions);
+                }finally{targets.forEach((node,index)=>{node.setAttribute('style','');node.removeAttribute('style');
+                  if(prior[index].present)node.setAttribute('style',prior[index].value);});}
+                const restored=targets.map(node=>({present:node.hasAttribute('style'),value:node.getAttribute('style')})),
+                  clean=window.__CF_GLASS_AUDIT__.audit(controlOptions),
+                  samples=rows=>[...new Set(rows.filter(row=>row.code==='TEXT_CONTRAST_LOW'&&expected.includes(row.element))
+                    .map(row=>row.element+'|'+(row.actual?.sampleKind||'button')))].sort(),
+                  baselineSamples=samples(baseline),injectedSamples=samples(injected),cleanSamples=samples(clean),
                   bare=[...baseline,...injected,...clean].some(row=>row.code==='TEXT_CONTRAST_LOW'&&row.element==='#dock'),
-                  restoredExact=restored.every((value,index)=>(${sameInlineStyleAttribute.toString()})(prior[index],value));
-                return {ok:JSON.stringify(injectedIds)===JSON.stringify(expected)&&JSON.stringify(cleanIds)===JSON.stringify(baselineIds)
-                    &&!bare&&restoredExact,expected,baselineIds,injectedIds,cleanIds,bare,restoredExact,prior,restored};})()`);
+                  restoredExact=restored.every((value,index)=>value.present===prior[index].present&&value.value===prior[index].value);
+                return {ok:baselineSamples.length===0&&JSON.stringify(injectedSamples)===JSON.stringify(expectedSamples)
+                    &&cleanSamples.length===0&&!bare&&restoredExact,expected,expectedSamples,baselineSamples,injectedSamples,
+                  cleanSamples,bare,restoredExact,prior,restored,baseline,injected,clean};})()`);
+              console.log(`GLASS NONMODAL DOCK CONTRAST CONTROL — ${vp.label}: ${JSON.stringify(dockContrastControl)}`);
               if (!dockContrastControl?.ok || nonModalAuditRows.some(row=>row.code==='TEXT_CONTRAST_LOW'&&row.element==='#dock')) {
-                recordInstrumentFailure(`${vp.label}: non-modal dock contrast control did not isolate the painted buttons from the transparent layout wrapper (${JSON.stringify(dockContrastControl)})`);
+                recordInstrumentFailure(`${vp.label}: non-modal dock contrast control did not isolate every visible board, utility glyph and badge from transparent wrappers (${JSON.stringify(dockContrastControl)})`);
               }
               recordControls('nonmodal-dock-button-contrast');
               await evalIn(`document.querySelector('#codexpanel [data-pnx]')?.focus()`);

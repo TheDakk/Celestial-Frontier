@@ -286,3 +286,20 @@ still allowed placed children to create two implicit32px tracks, preserving ever
 The successor compresses the ten explicit widths to26px, keeps the64px positive oracle intact
 and retains both broken and restored geometry. No product/producer changes. Larger phone and
 normal visual review did not run after the instrument red.
+
+## Slice PASS; utility contrast sampling stop —06c6db3
+
+Fresh static sequence and Glass selftest PASS; immutable Slice PASS with original artifacts
+retained under `UI_U1_SLICE_06c6db3_20260906/`. The native compressed-grid control rejects
+52px centres, restores64px centres, and preserves exact styles. Small-phone then reports
+contrast on the transparent outer Records button although its visible emoji sits on the
+nested dark utility face. The directly related contrast selectors/control are under bounded
+review. No larger-phone or normal review run followed this red.
+
+Prepared instrument correction samples the actual utility glyph, visible unread badge and
+direct button text independently, retaining the native button ID for every finding. The
+nonmodal mutant now covers exact visible phone9/desktop5 membership and all owner/sample
+pairs, with exact style restoration. Existing native contrast selftests add readable nested
+backing and deliberate glyph/badge/direct-text failures. Compositing, thresholds, historical
+control IDs and input ownership are unchanged. Syntax/diff review passes; native execution
+remains pending on the signed successor.
