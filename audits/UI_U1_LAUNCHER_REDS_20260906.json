@@ -52,6 +52,25 @@
           "sha256": "b8e022ca2daef5d4c094dc515d2f277e5b4a65ee1eb50998327da043fbbed4e8"
         }
       ]
+    },
+    {
+      "source": "6a88f859fac6df638956411974b1a8098e8e5195",
+      "stage": "ui-review",
+      "evidenceDirectory": "UI_U1_LAUNCHER_6a88f85_20260906",
+      "result": {
+        "status": "fail",
+        "passedFiles": 311,
+        "passedTests": 3312,
+        "skippedTests": 1,
+        "failure": "Notifications Close restored its shelf opener focus but scene trail was Cosmos,Milky Way instead of Cosmos. Phone geometry and Notifications bounds/Close checks passed."
+      },
+      "cause": "Unresolved. The prior captures show Cosmos before Close, which restores shelf focus but later observes Cosmos/Milky Way. Read-only product trace found no direct Close-to-navigation call or removed target: Close hides its existing panel; canvas handlers are canvas-scoped. Ticker checkTransitions can asynchronously publish a galaxy, but current evidence does not prove that it caused this observation.",
+      "laterStages": "Slice and both phone canaries not run after red.",
+      "correction": "The signed instrument-only successor requires delivered trusted pointerdown/up/click ownership through the exact requested control, records public trail before press/after down/after up plus passive changes, and writes those raw traces on red. Every Cosmos/geometry/focus assertion remains. This improves diagnosis, not a proven product fix.",
+      "focusedResults": {
+        "source": "Agent terminal output chunk386896; no on-disk raw log",
+        "result": "Exact native-delivery baseline PASS,10 rejected mutants and restoration PASS,32 generated expression shapes compile; phone oracle unchanged; module syntax and diffcheck exit0."
+      }
     }
   ]
 }

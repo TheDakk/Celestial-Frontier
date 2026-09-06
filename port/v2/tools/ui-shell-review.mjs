@@ -170,6 +170,40 @@ function launcherOutcome(state) {
   if (state.viewport.width > 700 && (state.dockPointerEvents !== 'auto' || !state.dockGap?.owned)) errors.push('visible launcher tray does not own its measured empty gap');
   return { pass: errors.length === 0, ids, expected, errors };
 }
+/** Passive review-owned observations of public DOM/input only. No product
+ * evidence hook, navigation write, event cancellation or recovery action. */
+function installNativeReviewTrace(viewport) {
+  const snapshot = () => ({ at: performance.now(), trail: [...document.querySelectorAll('#trail .seg')].map(node => node.textContent),
+    context: document.getElementById('ctxbar')?.textContent ?? null, focusedId: document.activeElement?.id ?? null,
+    bodyClasses: document.body.className });
+  const describe = node => node instanceof Element ? { tag: node.tagName, id: node.id || null,
+    sel: node.getAttribute('data-sel'), close: node.getAttribute('data-pnx') } : { tag: node === document ? '#document' : '#window' };
+  const trace = { viewport, events: [], changes: [], active: null, nextId: 0, overflow: false, snapshot };
+  const append = (list, entry) => { if (list.length >= 1000) trace.overflow = true; else list.push(entry); };
+  for (const type of ['pointerdown', 'pointerup', 'click']) document.addEventListener(type, event => {
+    const path = event.composedPath(), requested = trace.active;
+    append(trace.events, { ...snapshot(), type, eventTime: event.timeStamp, trusted: event.isTrusted,
+      x: event.clientX, y: event.clientY, pointerType: event.pointerType || null, pressId: requested?.id ?? null,
+      selector: requested?.selector ?? null, requestedControlInPath: !!requested && path.includes(requested.node),
+      requestedControlConnected: requested?.node.isConnected ?? false, target: describe(event.target), path: path.map(describe) });
+  }, { capture: true, passive: true });
+  let priorTrail = JSON.stringify(snapshot().trail);
+  const observer = new MutationObserver(() => {
+    const next = snapshot(), serialized = JSON.stringify(next.trail);
+    if (serialized !== priorTrail) { append(trace.changes, { ...next, pressId: trace.active?.id ?? null }); priorTrail = serialized; }
+  });
+  observer.observe(document.getElementById('trail'), { childList: true, subtree: true, characterData: true });
+  trace.changes.push({ ...snapshot(), pressId: null, initial: true });
+  Object.defineProperty(window, '__cfU1ReviewNativeTrace', { value: trace, configurable: true });
+  return snapshot();
+}
+function assessNativeReviewDelivery(proof) {
+  const expectedTypes = ['pointerdown', 'pointerup', 'click'], events = proof.events ?? [];
+  const exactTypes = JSON.stringify(events.map(event => event.type)) === JSON.stringify(expectedTypes);
+  const exactOwner = events.every(event => event.pressId === proof.id && event.selector === proof.selector
+    && event.trusted === true && event.requestedControlInPath === true && event.requestedControlConnected === true);
+  return { pass: !proof.dispatchError && !proof.overflow && exactTypes && exactOwner, exactTypes, exactOwner };
+}
 const sha = bytes => crypto.createHash('sha256').update(bytes).digest('hex');
 export async function runUiShellReview(buildArgument, outputArgument) {
   assert(buildArgument && outputArgument, 'usage: node tools/ui-shell-review.mjs BUILD_DIRECTORY NEW_OUTPUT_DIRECTORY');
@@ -192,7 +226,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
   const cases = [['phone', 390, 844, true], ['desktop', 1440, 900, false], ['tablet', 834, 1112, true]];
   const report = { schema: 'cf-u1-shell-review/v1', certification: false, source, startedAt: new Date().toISOString(),
     build: { indexSha256: sha(Buffer.from(index)), serviceWorkerSha256: sha(workerBytes), assets },
-    status: 'RUNNING', rows: [], journeys: [], images: [], errors: [], limitations: [
+    status: 'RUNNING', rows: [], journeys: [], nativeInputs: [], nativeTraces: [], images: [], errors: [], limitations: [
       'U1 geometry diagnostic only, not U4, full Glass, real iPhone or HUMAN visual acceptance.',
       'Golden raster differences reflect scene/save/browser/font differences as well as design; no pixel-equality verdict.',
       'New game uses native Skip then bounded Escape ascent to the visible Cosmos breadcrumb, not a legacy import; camera, progression and save differences remain visible in the comparison.',
@@ -210,7 +244,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       fs.createReadStream(file).pipe(response);
     } catch { response.writeHead(404); response.end('Not found'); }
   });
-  let browser;
+  let browser, collectNativeTrace;
   const writeReport = () => fs.writeFileSync(path.join(output, 'review.json'), JSON.stringify(report, null, 2) + '\n');
   try {
     await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, '127.0.0.1', resolve); });
@@ -230,21 +264,42 @@ export async function runUiShellReview(buildArgument, outputArgument) {
       report.images.push({ file, bytes: bytes.length, sha256: sha(bytes) }); return bytes; };
     const frames = () => evaluate(`document.fonts.ready.then(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(()=>resolve(true)))))`);
     const scene = () => evaluate(`({trail:[...document.querySelectorAll('#trail .seg')].map(node=>node.textContent),context:document.getElementById('ctxbar')?.textContent,bodyClasses:document.body.className})`);
-    const clickNative = async selector => {
-      const point = await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});if(!e)throw new Error('Native control missing');const r=e.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2,h=document.elementFromPoint(x,y);if(e.disabled||e.closest('[inert]')||r.width<=0||r.height<=0||!(h===e||e.contains(h)))throw new Error('Native control unavailable: '+${JSON.stringify(selector)});return{x,y}})()`);
-      await send('Input.dispatchMouseEvent', { type: 'mousePressed', ...point, button: 'left', clickCount: 1 });
-      await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...point, button: 'left', clickCount: 1 });
+    collectNativeTrace = async () => {
+      const trace = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace;return t?{viewport:t.viewport,events:t.events,changes:t.changes,overflow:t.overflow,final:t.snapshot()}:null;})()`);
+      if (trace) {
+        const previous = report.nativeTraces.findIndex(row => row.viewport === trace.viewport);
+        if (previous < 0) report.nativeTraces.push(trace); else report.nativeTraces[previous] = trace;
+        writeReport();
+      }
+    };
+    const clickNative = async (selector, expectedTrail = ['Cosmos']) => {
+      const proof = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace,e=document.querySelector(${JSON.stringify(selector)});if(!t||!e)throw new Error('Native control/trace missing');
+        const r=e.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2,h=document.elementFromPoint(x,y);
+        if(e.tagName!=='BUTTON'||e.disabled||e.closest('[inert]')||r.width<=0||r.height<=0||!(h===e||e.contains(h)))throw new Error('Native control unavailable: '+${JSON.stringify(selector)});
+        const id=++t.nextId;t.active={id,selector:${JSON.stringify(selector)},node:e};
+        return{id,selector:${JSON.stringify(selector)},viewport:t.viewport,point:{x,y},eventStart:t.events.length,changeStart:t.changes.length,beforePress:t.snapshot()};})()`);
+      report.nativeInputs.push(proof); writeReport();
+      if (expectedTrail) assert.deepEqual(proof.beforePress.trail, expectedTrail, selector + ' native input predecessor changed scope');
+      let dispatchError;
+      try {
+        await send('Input.dispatchMouseEvent', { type: 'mousePressed', ...proof.point, button: 'left', clickCount: 1 });
+        proof.afterDown = await evaluate('window.__cfU1ReviewNativeTrace.snapshot()');
+        await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...proof.point, button: 'left', clickCount: 1 });
+        proof.afterUp = await evaluate('window.__cfU1ReviewNativeTrace.snapshot()');
+      } catch (error) { dispatchError = error; proof.dispatchError = String(error); }
+      const observed = await evaluate(`(()=>{const t=window.__cfU1ReviewNativeTrace,events=t.events.slice(${proof.eventStart}),changes=t.changes.slice(${proof.changeStart});
+        t.active=null;return{events,changes,overflow:t.overflow};})()`);
+      Object.assign(proof, observed); proof.delivery = assessNativeReviewDelivery(proof); writeReport();
+      if (dispatchError) throw dispatchError;
+      assert(proof.delivery.pass, selector + ' did not receive the exact trusted native pointer sequence: ' + JSON.stringify(proof));
     };
     for (const [name, width, height, mobile] of cases) {
       await send('Emulation.setDeviceMetricsOverride', { width, height, deviceScaleFactor: 1, mobile });
       await send('Emulation.setTouchEmulationEnabled', { enabled: mobile, maxTouchPoints: 5 });
       await send('Page.navigate', { url: origin + '/' });
       await wait(`document.querySelector('canvas') && document.getElementById('primechip')?.textContent.includes('/9')`);
-      if (await evaluate(`!!document.querySelector('[data-sel=tutskip]')`)) {
-        const point = await evaluate(`(()=>{const e=document.querySelector('[data-sel=tutskip]'),r=e.getBoundingClientRect(),x=r.x+r.width/2,y=r.y+r.height/2,h=document.elementFromPoint(x,y);if(!(h===e||e.contains(h)))throw new Error('Skip center covered');return{x,y}})()`);
-        await send('Input.dispatchMouseEvent', { type: 'mousePressed', ...point, button: 'left', clickCount: 1 });
-        await send('Input.dispatchMouseEvent', { type: 'mouseReleased', ...point, button: 'left', clickCount: 1 });
-      }
+      await evaluate(`(${installNativeReviewTrace.toString()})(${JSON.stringify(name)})`);
+      if (await evaluate(`!!document.querySelector('[data-sel=tutskip]')`)) await clickNative('[data-sel=tutskip]', null);
       await wait(`!document.body.classList.contains('training') && !document.querySelector('[data-sel=tutskip]')`);
       await frames();
       const journey = { name, before: await scene(), steps: [], after: null };
@@ -411,6 +466,7 @@ export async function runUiShellReview(buildArgument, outputArgument) {
         assert(!broken.pass && proof.styleRestored && row.controls.at(-1).restored,
           name + ' native launcher control failed: ' + JSON.stringify(row.controls.at(-1)));
       }
+      await collectNativeTrace();
       // Use an isolated generated proof page for exact-sized originals, raster difference and contact sheet.
       const imageData = [golden, candidate].map(bytes => 'data:image/png;base64,' + bytes.toString('base64'));
       await send('Page.navigate', { url: 'about:blank' });
@@ -429,7 +485,10 @@ export async function runUiShellReview(buildArgument, outputArgument) {
     assert.equal(git(['rev-parse', 'HEAD']), source, 'source changed during review');
     assert.equal(git(['diff', '--name-only', 'HEAD']), '', 'source became dirty during review');
     report.status = 'PASS';
-  } catch (error) { report.status = 'FAIL'; report.failure = String(error); throw error;
+  } catch (error) {
+    report.status = 'FAIL'; report.failure = String(error);
+    try { await collectNativeTrace?.(); } catch (traceError) { report.nativeTraceCollectionError = String(traceError); }
+    throw error;
   } finally { await browser?.close(); if (server.listening) await new Promise(resolve => server.close(resolve)); report.endedAt = new Date().toISOString(); writeReport(); }
   console.log(`U1 REVIEW PASS: ${report.rows.length} scoped viewports; ${report.images.length} PNGs; ${source}`);
   return report;
