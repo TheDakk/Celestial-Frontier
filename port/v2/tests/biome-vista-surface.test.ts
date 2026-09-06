@@ -380,6 +380,29 @@ describe('surface biome-vista projection', () => {
     expect(code).toMatch(/mulberry32/u);
   });
 
+  it('binds pilot presentation before a cached native mount and reapplies visibility at existing lifecycle boundaries', () => {
+    const source = readFileSync(fileURLToPath(new URL('../apps/game/src/main.ts', import.meta.url)), 'utf8');
+    const bindingBeforeCache = (input: string): boolean => {
+      const start = input.indexOf('function requestSurfaceVista(');
+      const end = input.indexOf('\nfunction clearWorld(', start);
+      const owner = input.slice(start, end);
+      const binding = owner.indexOf('audiovisualPilotVistaBinding = JSON.stringify(request);');
+      const cache = owner.indexOf('const cachedOutcome = mountCachedBiomeVistaV1(');
+      return start >= 0 && end > start && binding >= 0 && cache > binding;
+    };
+    expect(bindingBeforeCache(source)).toBe(true);
+    const withoutBinding = source.replace('audiovisualPilotVistaBinding = JSON.stringify(request);', '/* removed binding */');
+    expect(bindingBeforeCache(withoutBinding)).toBe(false);
+    expect(bindingBeforeCache(withoutBinding.replace('  if (cachedOutcome !== \'miss\') {',
+      '  audiovisualPilotVistaBinding = JSON.stringify(request);\n  if (cachedOutcome !== \'miss\') {'))).toBe(false);
+    const clear = source.slice(source.indexOf('function clearWorld('), source.indexOf('/* ---- draw passes ---- */'));
+    expect(clear).toContain('releaseSurfaceVistaOwner();\n  applyAudiovisualPilotSceneVisibility();');
+    const mount = source.slice(source.indexOf('function mountSurfaceVistaCanvas('), source.indexOf('function requestSurfaceVista('));
+    expect(mount).toContain('surfaceVistaSprite = sprite;\n  audiovisualPilotVistaReady = true; syncAudiovisualPilot();');
+    const sync = source.slice(source.indexOf('function syncAudiovisualPilot('), source.indexOf('function startAudiovisualPilot('));
+    expect(sync).toContain('audiovisualPilot?.sync(pilotSceneSnapshot());\n  applyAudiovisualPilotSceneVisibility();');
+  });
+
   it('wires the roster resolved during ordinary landing into the live vista request', () => {
     const source = readFileSync(fileURLToPath(new URL('../apps/game/src/main.ts', import.meta.url)), 'utf8');
     expect(source).toContain('const currentSurfaceRoster = fillPlanetside(state, preparedRoster);');

@@ -40,6 +40,78 @@ async function awaitTrace(operation: () => Promise<void>): Promise<string[]> {
 }
 
 describe('explicit evidence-build runtime isolation', () => {
+  it('applies the real pilot callback only to presentation, restores native layers on route/fallback and keeps ordinary sync lazy', () => {
+    const setPresentation = vi.fn();
+    const currentShipVisualState = vi.fn(() => ({ chassisStage: 0 }));
+    const env = {
+      nav: { mode: 'surface' }, world: { visible: true },
+      surfaceVistaSprite: { visible: true } as { visible: boolean } | null,
+      engineeringPanelReleased: false, engineeringPanelController: { setPresentation },
+      currentShipVisualState, currentTameGreetingRouteKey: () => 'earth',
+      motionOK: () => true, save: { fxOn: true },
+    };
+    type Presentation = { enhanced: boolean; surfaceVisible: boolean; starterScoutImageUrl: string | null };
+    type Api = { present(state: Presentation): void; apply(): void; sync(): void; reset(): void };
+    const api = appSection<Api>('let audiovisualPilot: AudiovisualPilot | null = null;', '\nconst cam =',
+      '{ present: applyAudiovisualPilotPresentation, apply: applyAudiovisualPilotSceneVisibility, sync: syncAudiovisualPilot, reset: resetAudiovisualPilotPresentation }', false, env);
+    api.sync();
+    expect(currentShipVisualState).not.toHaveBeenCalled();
+    expect(setPresentation).not.toHaveBeenCalled();
+    const candidate = { enhanced: true, surfaceVisible: true, starterScoutImageUrl: '/assets/scout.webp' };
+    api.present(candidate);
+    expect(env.world.visible).toBe(false); expect(env.surfaceVistaSprite!.visible).toBe(false);
+    expect(setPresentation).toHaveBeenLastCalledWith({ mode: 'audiovisual-pilot', starterScoutImageUrl: '/assets/scout.webp' });
+    env.surfaceVistaSprite = { visible: true }; api.apply();
+    expect(env.surfaceVistaSprite.visible).toBe(false);
+    for (const mode of ['system', 'galaxy', 'universe']) {
+      env.nav.mode = mode; api.apply();
+      expect(env.world.visible, mode).toBe(true); expect(env.surfaceVistaSprite.visible, mode).toBe(true);
+    }
+    env.nav.mode = 'surface'; api.apply();
+    expect(env.world.visible).toBe(false);
+    for (const fallback of [
+      { ...candidate, surfaceVisible: false },
+      { ...candidate, enhanced: false },
+      { enhanced: false, surfaceVisible: false, starterScoutImageUrl: null },
+    ]) {
+      api.present(fallback);
+      expect(env.world.visible).toBe(true); expect(env.surfaceVistaSprite.visible).toBe(true);
+      api.present(candidate);
+    }
+    api.present({ ...candidate, starterScoutImageUrl: null });
+    expect(setPresentation).toHaveBeenLastCalledWith({ mode: 'audiovisual-pilot' });
+    expect(setPresentation.mock.lastCall![0]).not.toHaveProperty('starterScoutImageUrl');
+    api.reset();
+    expect(env.world.visible).toBe(true); expect(env.surfaceVistaSprite.visible).toBe(true);
+    expect(setPresentation).toHaveBeenLastCalledWith(null);
+    const calls = setPresentation.mock.calls.length;
+    env.engineeringPanelReleased = true; env.surfaceVistaSprite = null;
+    api.reset();
+    expect(setPresentation).toHaveBeenCalledTimes(calls);
+    expect(env.world.visible).toBe(true);
+  });
+
+  it('resets the exact vista request binding at the real rendered-scene boundary', () => {
+    const env = {
+      nav: { mode: 'surface', gal: {}, star: {}, planet: {} }, world: { visible: true },
+      surfaceVistaSprite: null,
+      currentShipVisualState: () => ({ chassisStage: 0 }), currentTameGreetingRouteKey: () => 'earth',
+      motionOK: () => true, save: { fxOn: true },
+      renderedSceneReceipt: { serial: 8 }, currentEcologyEpoch: () => 2,
+      getProvenGalaxyKey: () => 'galaxy', getProvenStarKey: () => 'star', getProvenPlanetKey: () => 'earth',
+    };
+    type Api = { bind(binding: string): void; snapshot(): { vistaBinding: string | null; vistaReady: boolean; biomeKey: string | null }; record(state: unknown): void };
+    const api = appSection<Api>('let audiovisualPilot: AudiovisualPilot | null = null;', '\nconst cam =',
+      '{ bind(binding) { audiovisualPilotVistaBinding = binding; audiovisualPilotVistaReady = true; audiovisualPilotBiomeKey = "temperate"; }, snapshot: pilotSceneSnapshot, record: recordRenderedScene }', false, env);
+    const binding = JSON.stringify({ worldKey: 'earth', environmentFingerprint: 'environment', profileDigest: 'profile', scene: 'biome', options: { water: 'liquid' } });
+    api.bind(binding);
+    expect(api.snapshot()).toMatchObject({ vistaBinding: binding, vistaReady: true, biomeKey: 'temperate' });
+    api.record(env.nav);
+    expect(api.snapshot()).toMatchObject({ vistaBinding: null, vistaReady: false, biomeKey: null });
+    expect(env.renderedSceneReceipt).toMatchObject({ serial: 9, mode: 'surface', worldKey: 'earth', ecologyEpoch: 2 });
+  });
+
+
   it('eliminates external hooks and destructive implementations only from ordinary output', () => {
     const ordinary = minifySync('main.js', compile(main, false)).code;
     const evidence = minifySync('main.js', compile(main, true)).code;

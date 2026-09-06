@@ -5,7 +5,10 @@ export const PILOT_SHIP_IMAGES = Object.freeze({
   300: new URL('../assets/pilot/ship/scout-chemical-300.webp', import.meta.url).href,
   512: new URL('../assets/pilot/ship/scout-chemical-512.webp', import.meta.url).href,
 });
-export const PILOT_VISTA_ATMOSPHERE = new URL('../assets/pilot/biome/temperate-atmosphere-512.webp', import.meta.url).href;
+export const PILOT_VISTA_LAYERS: readonly string[] = Object.freeze([new URL('../assets/pilot/biome/earth-rainy-landscape.webp', import.meta.url).href]);
+export const PILOT_VISTA_PHONE = new URL('../assets/pilot/biome/earth-rainy-phone.webp', import.meta.url).href;
+export const PILOT_FONT_URL = new URL('../assets/pilot/fonts/InterVariable.woff2', import.meta.url).href;
+export const PILOT_FONT_LICENSE_URL = new URL('../assets/pilot/fonts/Inter-LICENSE.txt', import.meta.url).href;
 
 export interface PilotCueDefinition {
   readonly id: string;

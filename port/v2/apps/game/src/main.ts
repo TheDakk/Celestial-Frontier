@@ -1499,6 +1499,7 @@ addEventListener('pagehide', (event) => {
   tameGreetingAudioOwner?.setHidden(true);
   if (!event.persisted) {
     audiovisualPilotClosed = true; audiovisualPilot?.dispose(); audiovisualPilot = null;
+    resetAudiovisualPilotPresentation();
     void tameGreetingAudioOwner?.dispose();
   }
   stopF4Heartbeat();
@@ -2050,23 +2051,54 @@ let audiovisualPilot: AudiovisualPilot | null = null;
 let audiovisualPilotClosed = false;
 let audiovisualPilotBiomeKey: string | null = null;
 let audiovisualPilotVistaReady = false;
+let audiovisualPilotVistaBinding: string | null = null;
+let audiovisualPilotSurfaceVisible = false;
+type AudiovisualPilotPresentationState = Readonly<{
+  enhanced: boolean;
+  surfaceVisible: boolean;
+  starterScoutImageUrl: string | null;
+}>;
+function applyAudiovisualPilotSceneVisibility(): void {
+  const hidden = nav.mode === 'surface' && audiovisualPilotSurfaceVisible;
+  world.visible = !hidden;
+  if (surfaceVistaSprite !== null) surfaceVistaSprite.visible = !hidden;
+}
+function applyAudiovisualPilotPresentation(state: AudiovisualPilotPresentationState): void {
+  audiovisualPilotSurfaceVisible = state.enhanced && state.surfaceVisible;
+  applyAudiovisualPilotSceneVisibility();
+  if (!engineeringPanelReleased) {
+    engineeringPanelController.setPresentation(state.enhanced
+      ? { mode: 'audiovisual-pilot', ...(state.starterScoutImageUrl === null
+        ? {} : { starterScoutImageUrl: state.starterScoutImageUrl }) }
+      : null);
+  }
+}
+function resetAudiovisualPilotPresentation(): void {
+  applyAudiovisualPilotPresentation({ enhanced: false, surfaceVisible: false, starterScoutImageUrl: null });
+}
 function pilotSceneSnapshot(): PilotSceneSnapshot {
   return { mode: nav.mode, routeKey: currentTameGreetingRouteKey(),
-    biomeKey: audiovisualPilotBiomeKey, vistaReady: audiovisualPilotVistaReady, ship: currentShipVisualState(),
+    biomeKey: audiovisualPilotBiomeKey, vistaReady: audiovisualPilotVistaReady,
+    vistaBinding: audiovisualPilotVistaBinding, ship: currentShipVisualState(),
     motion: motionOK(), effects: save.fxOn };
 }
 function syncAudiovisualPilot(): void {
   audiovisualPilot?.sync(pilotSceneSnapshot());
+  applyAudiovisualPilotSceneVisibility();
 }
 function startAudiovisualPilot(): void {
   if (new URLSearchParams(location.search).get('avpilot') !== '1' || audiovisualPilotClosed) return;
   void import('./audiovisual-pilot.js').then(({ mountAudiovisualPilot }) => {
     if (audiovisualPilotClosed || !tameGreetingAudioOwner) return;
-    audiovisualPilot = mountAudiovisualPilot({ document, initial: pilotSceneSnapshot(), audio: tameGreetingAudioOwner });
-  }).catch(() => { /* Candidate media failure cannot block ordinary play. */ });
+    audiovisualPilot = mountAudiovisualPilot({ document, initial: pilotSceneSnapshot(), audio: tameGreetingAudioOwner,
+      onPresentationChange: applyAudiovisualPilotPresentation });
+  }).catch(() => {
+    if (!audiovisualPilotClosed) resetAudiovisualPilotPresentation();
+    /* Candidate media failure cannot block ordinary play. */
+  });
 }
 function recordRenderedScene(state: NavState): void {
-  audiovisualPilotBiomeKey = null; audiovisualPilotVistaReady = false;
+  audiovisualPilotBiomeKey = null; audiovisualPilotVistaReady = false; audiovisualPilotVistaBinding = null;
   renderedSceneReceipt = Object.freeze({
     serial: renderedSceneReceipt.serial + 1,
     mode: state.mode,
@@ -5832,6 +5864,7 @@ function requestSurfaceVista(
     return;
   }
   audiovisualPilotBiomeKey = request.biomeKey;
+  audiovisualPilotVistaBinding = JSON.stringify(request);
   const cacheKey = `vista-v1|${request.environmentFingerprint}|${roster.fullRosterFingerprint}|${request.scene}|${request.biomeKey}`;
   const cachedOutcome = mountCachedBiomeVistaV1(surfaceVistaCacheOwner, cacheKey);
   if (cachedOutcome !== 'miss') {
@@ -5997,6 +6030,7 @@ function clearWorld(openNextScope = true): void {
      reuse, but Pixi must not keep their evicted GPU sources reachable. */
   const previousSurfacePlanetTextureOwner = releaseSurfacePlanetTextureOwner();
   releaseSurfaceVistaOwner();
+  applyAudiovisualPilotSceneVisibility();
   if (systemPlanetTextureRefreshTimer !== null) {
     clearTimeout(systemPlanetTextureRefreshTimer);
     systemPlanetTextureRefreshTimer = null;
@@ -8730,10 +8764,11 @@ function drawSurface(
   preparedRoster: CanonicalWorldRoster | null = null,
 ): void {
   if (p.seed !== state.planet.seed || p.ordinal !== state.planet.ordinal) return;
-  /* Surface mode keeps the painterly globe as its usable interaction owner
-     while the deterministic 960x430 biome vista renders behind it. The globe
-     remains the fail-soft fallback if the optional worker cannot answer; the
-     survey card carries the roster — every species row is real Ecology output.
+  /* Surface mode retains the painterly globe and deterministic 960x430 biome
+     vista as its native presentation. A fully loaded, exact-bound opt-in pilot
+     may hide these decorative layers; fallback restores both. Native DOM
+     Survey, roster and Leave controls keep their existing interaction owners;
+     every species row remains real Ecology output.
      FIT the globe to the viewport (phone catch: at z=1 the 420px master
      overfilled a 390px screen as blur; the globe should present itself) */
   document.body.classList.add('surface-mode');
@@ -17494,6 +17529,7 @@ async function loadSave(): Promise<void> {
     audiovisualPilotClosed = true;
     audiovisualPilot?.dispose();
     audiovisualPilot = null;
+    resetAudiovisualPilotPresentation();
     engineeringPanelReleased = true;
     engineeringPanelController.dispose();
     captureCardController.dispose();
