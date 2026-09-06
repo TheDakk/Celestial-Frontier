@@ -224,6 +224,62 @@
         "correction": "Import of the real existing JavaScript export carries a narrowly documented ts-expect-error for the partial shim; no new declaration or product change. Final typecheck/20tests/selftest passed.",
         "evidenceLimitation": "No filesystem logs retained for these preparation calls; agent tool outputs only (c35c04,59058b,537812). The next fresh signed-source chain supplies independently retained logs."
       }
+    },
+    {
+      "source": "62a601c4381d2367f17732e2bf10df6a003ab3ac",
+      "kind": "local-slice-develop",
+      "rootMainAbsent": true,
+      "precedingChecks": "fresh typecheck, artunused, Vitest311files/3296passed/1skipped and Glass selftest PASS",
+      "runId": "20260906065155741-65134-c940284a4ef9",
+      "status": "fail",
+      "startedAt": "2026-09-06T06:51:55.741Z",
+      "endedAt": "2026-09-06T06:57:33.497Z",
+      "durationMs": 337756,
+      "failures": [
+        "SATURATED CHARTER RECOVERY: first Land was not an exact durable wave-off; no second touch was issued",
+        "SATURATED CHARTER RECOVERY: browser-touch re-land did not reach its durable fixed point",
+        "U1 RAIL DUPLICATES CONTROL: showing one copy was not rejected or exact restoration failed"
+      ],
+      "diagnosis": [
+        "Wave-off:13of14checks pass. Prior Share-success notification is newly admitted with Land; before/after legacy and player notifs differ by exactly that one known unread entry. Full unrelated-state equality correctly rejects this baseline mismatch.",
+        "Duplicate-rail mutant is painted/rejected and both controls return hidden, but strict styleRestored is false. Original evidence does not include prior/current attribute bytes; exact absence-versus-empty cause is not proven from this artifact."
+      ],
+      "correction": "Fixture-local existing __smokePersistNow checkpoint after accepted Share: require one receipt-free revision, exact known unread notice/codec history, full expected raw successor with codec timer normalization, unchanged receipts/RNG/product data and intact adjacent toast/queued ceremony. Reacquire Land authority only after proof; seven live cloned controls. Wave-off assessor unchanged. Rail mutation restores exact style presence/value and records prior/restored carriers; absent/empty/nonempty cases tested.",
+      "carriers": [
+        {
+          "file": "UI_U1_SLICE_RED_62a601c_20260906.log.gz",
+          "sha256": "373b205639121a8ae1dc806a81e6b8a41dbe531c285476cbf492388c7fa323fe",
+          "uncompressedSha256": "e87a455a84d07d61dbcf1243771aa93668715ec7fa95d8ff951e71eeba9ad3a5",
+          "uncompressedBytes": 605945
+        },
+        {
+          "file": "UI_U1_SLICE_RED_62a601c_20260906.json.gz",
+          "sha256": "b0a960cd2ecb08ba37d639aa39a949c847da0335ba9e4be3ccbc36d1a0941dea",
+          "uncompressedSha256": "36bb1d4fbc31bbe448dd3dc9377d120860908fa496cce390fce4ad549fbd6d21",
+          "uncompressedBytes": 1519558
+        }
+      ],
+      "remainingChecks": "Both phone canaries, normal build and visual review not run after red.",
+      "railStylePreparation": {
+        "result": "typecheck and9focused Atlas tests PASS",
+        "file": "UI_U1_RAIL_STYLE_PREP_20260906.log.gz",
+        "sha256": "a69321f789bde81a4c77578a76f947918d28e7bcd451d87d9e1ce77ba215195d",
+        "uncompressedSha256": "9fd34b8c95b6d0b0c8c0a3849416b5adc23d1ea5d003b4b8d9bd19305a9f91e1"
+      },
+      "shareCheckpointPreparation": {
+        "result": "17focused Arc0 tests, syntax and diff checks PASS",
+        "file": "UI_U1_SHARE_CHECKPOINT_PREP_20260906.log.gz",
+        "sha256": "3396fe3b57a0d6442515436d3f2ebf049959d52c329a6dac919b5d617586ceb0",
+        "uncompressedSha256": "9b49178534e81a7168b5e6c86e7c668257d75c444c472df2ea321d898ac19d50"
+      },
+      "waveOffEvaluatorUnchangedSha256": "4da3759c5c2eef42036c421ca0b16cdb91fa212dc9d352bedbed44c29c75690b",
+      "finalPreparation": {
+        "typecheck": "PASS after both corrections",
+        "review": "Independent bounded checkpoint diff review clear",
+        "file": "UI_U1_SUCCESSOR_TYPECHECK_20260906.log.gz",
+        "sha256": "105817915165cb6dbf0b1ea09c40e622ba93a0b6facea18e2e368450cd7316a8",
+        "uncompressedSha256": "4ce11e8b8a14cc6283afc2585afaca07e681322648d1555920619e16fda9399e"
+      }
     }
   ]
 }

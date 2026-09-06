@@ -33,18 +33,22 @@ product-action notices remain privately buffered until settlement, protected/Tra
 notices session-only. No save schema, action receipt, RNG or legacy import door changes.
 References: UI_PRESENTATION.md, SAVE_SYSTEM.md and celestial-frontier-codebase-reference.md.
 
-Exact source4af8073531613859c318af84a1df61ae6d37735b passed fresh typecheck, artunused,
-310 Vitest files/3,261 tests/1skip and Glass selftest with root main.js absent. Slice then
-reported five dependent findings: three old Records rail-opener calls and one Inventory
-rail-opener call now hit the intentionally hidden compatibility controls; the Inventory
-ledger sequence consequently did not run. The bounded successor moves instrument callers,
-native pointer receipts and restored-focus contracts to visible dockrecords and topbar
-dockinventory, retaining both actual rail-gap mutations and all Inventory outcomes. The
-same relocation is being applied to directly dependent Glass callers. No product changes
-or producer re-derivation in this correction. Producer remains60562956b771f572e3481075e78fdf95c764589c05ec6b6146a8f8db273c517c;
-measurement/ruler/ceilings/history unchanged. Successor full verification is pending.
-No phone canaries or comparison capture ran after red. `audits/UI_U1_CHECKPOINT_20260906.md`
-and `UI_U1_REDS_20260906.json` retain every attempt and original red output.
+Exact source62a601c4381d2367f17732e2bf10df6a003ab3ac passed fresh typecheck, artunused,
+311 Vitest files/3,296tests/1skip and Glass selftest with root main.js absent. Immutable
+Slice run20260906065155741-65134-c940284a4ef9 stopped after337,756ms with three findings
+from two causes. A prior Share-success notice entered the next Land checkpoint, so the
+wave-off verifier correctly rejected its unmatched predecessor. The successor will prove
+an existing receipt-free checkpoint for that one notice before capturing Land authority,
+preserving all wave-off equality and Share/ceremony-race assertions. A duplicate-rail
+mutation restored visibility but failed exact style-attribute equality; the prepared
+correction restores presence/value and records both original/restored carriers. Typecheck
+and9focused style tests pass. Further successor preparation/full verification is pending.
+No product or producer changes in these instrument corrections. Producer remains
+60562956b771f572e3481075e78fdf95c764589c05ec6b6146a8f8db273c517c; measurement/ruler/ceilings
+and historical Glass ledgers unchanged. Phone canaries and visual review did not run after red.
+`audits/UI_U1_CHECKPOINT_20260906.md` and `UI_U1_REDS_20260906.json` retain every attempt;
+62a601c has compressed original immutable report and raw log. Earlier raw runs remain
+diagnostics; none is claimed as a successful U1 checkpoint or full Glass certificate.
 
 Geometry decisions remain human review:44px utility targets imply44px desktop utility
 pitch (+2 from legacy);44px rail targets plus the retained8px gap give52px rail pitch
