@@ -29,6 +29,7 @@ export const UI_SHELL_CSS = `
 #objchip:empty{display:none}#objchip .prog{color:#7ec8f0;font-weight:600;white-space:nowrap}
 body:is(.card-open,.panel-open) :is(#trail,#objchip){display:none}
 body:is(.card-open,.panel-open) .location-label{visibility:hidden}
+body:is(.card-open,.panel-open) .location-readout{background:none;border-color:transparent}
 #ctxbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 64px);width:max-content;max-width:min(620px,90vw);text-align:center;pointer-events:none;z-index:var(--cf-layer-caption);box-sizing:border-box;padding:0;border:0;background:rgba(10,16,30,.94);border-radius:0;font-size:12.5px;line-height:1.5;color:var(--dim);text-shadow:0 1px 12px #000c}
 #hintpill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--safe-bottom) + 18px);z-index:var(--cf-layer-caption);pointer-events:none;font-size:11px;letter-spacing:.04em;color:var(--faint);padding:7px 16px;white-space:nowrap;max-width:94vw;box-sizing:border-box;overflow:hidden;text-overflow:ellipsis}
 #hintpill .kw{color:#7ec8f0;font-weight:600}
@@ -45,8 +46,8 @@ body:is(.card-open,.panel-open) .location-label{visibility:hidden}
 .dock-utility .ico{display:block;font-size:14px;line-height:1}
 .dock-utility:is(.sel,.on) .utility-face{background:linear-gradient(135deg,rgba(255,217,106,.22),rgba(255,190,80,.12)),rgba(14,22,40,.88);border-color:rgba(255,217,106,.8);box-shadow:0 0 14px rgba(255,217,106,.25)}
 :is(#dock,#topbar,#sceneactions,#raillft,#railrgt) button:focus-visible{outline:2px solid var(--cf-color-accent-gold);outline-offset:2px}
-#sceneactions{position:fixed;left:calc(var(--safe-left) + var(--cf-hud-inset));top:calc(var(--topbar-h) + var(--cf-hud-stack-gap));z-index:var(--cf-layer-shell);display:flex;flex-direction:column;align-items:stretch;gap:var(--cf-hud-stack-gap);width:var(--cf-hud-column);max-width:calc(100vw - var(--safe-left) - var(--safe-right) - 2 * var(--cf-hud-inset))}
-#sceneactions button{display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;min-height:var(--cf-touch-target);min-width:var(--cf-touch-target);box-sizing:border-box;padding:8px 12px;border:1px solid #344968;border-radius:8px;background:rgba(10,16,30,.94);box-shadow:inset 0 1px 0 #d5e6ff0c;color:var(--dim);font:11px var(--ui);text-align:left;cursor:pointer;touch-action:manipulation}
+#sceneactions{position:fixed;left:calc(var(--safe-left) + var(--cf-hud-inset));top:calc(var(--topbar-h) + var(--cf-hud-stack-gap));z-index:var(--cf-layer-shell);pointer-events:none;display:flex;flex-direction:column;align-items:stretch;gap:var(--cf-hud-stack-gap);width:var(--cf-hud-column);max-width:calc(100vw - var(--safe-left) - var(--safe-right) - 2 * var(--cf-hud-inset))}
+#sceneactions button{pointer-events:auto;display:flex;align-items:center;justify-content:flex-start;gap:10px;width:100%;min-height:var(--cf-touch-target);min-width:var(--cf-touch-target);box-sizing:border-box;padding:8px 12px;border:1px solid #344968;border-radius:8px;background:rgba(10,16,30,.94);box-shadow:inset 0 1px 0 #d5e6ff0c;color:var(--dim);font:11px var(--ui);text-align:left;cursor:pointer;touch-action:manipulation}
 #sceneactions button>.ico{width:20px;flex:0 0 20px;text-align:center;font-size:14px}
 body.fs-lg #hpbar>.hp-icon{font-size:18px!important}body.fs-xl #hpbar>.hp-icon{font-size:20px!important}
 body.fs-lg #objchip::before{font-size:10px}body.fs-xl #objchip::before{font-size:11px}

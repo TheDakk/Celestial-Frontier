@@ -23,7 +23,9 @@ measured left column with8px gaps; larger screens keep capped controls and usabl
 The existing status writer supplies meter accessibility values without changing health math.
 A landed portrait<=900 compacts the same context actions into a top row. AppChrome observes
 #sceneactions for roster clearance while retaining the72px band rule. The approved bottom
-launcher is unchanged. UI_PRESENTATION.md owns exact values and the labelled floating-trail
+launcher is unchanged. The context wrapper is pointer-transparent while its native buttons
+remain interactive; passive objective text cannot capture a canvas pinch. UI_PRESENTATION.md
+owns exact values and the labelled floating-trail
 fault fixture used by the existing fallback control.
 `notification-history.ts` adds explicit saved Mark read using the existing notification shape
 and receipt-free UI checkpoint whitelist. See UI_PRESENTATION.md and SAVE_SYSTEM.md for bounds,

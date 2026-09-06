@@ -70,7 +70,11 @@ A landed portrait<=900 keeps Survey/Charts in one compact row beneath the header
 the objective to preserve the creature roster. AppChrome observes this real action owner
 as well as the shelf; the existing72px safe reading-band rule remains unchanged. Narrow
 landscape's open-panel right safe-column exception still yields health/current-view chrome.
-The bottom launcher is unchanged by this refinement. Later panel work still waits at U1 review.
+The context stack is a transparent layout wrapper, like the topbar, not a painted interactive
+tray: its passive Objective and empty space let input reach the canvas, while Survey/Charts
+explicitly retain pointer events and their ancestor panel-boundary attribute. The bottom
+launcher's owned gaps are unchanged. Open overlays clear the hidden location readout's
+background/border without shifting header dimensions. Later panel work still waits at U1 review.
 
 Notifications shows saved history plus clearly labelled session-only notices while save
 writes are held. Opening the panel does not mark messages read; explicit Mark read persists

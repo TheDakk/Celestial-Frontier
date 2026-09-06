@@ -2561,6 +2561,15 @@ such as Search remain outside until their coexistence policy changes. Delegated 
 must also reject non-`Element` targets before calling `closest`; a type assertion is not a runtime
 guard. True modals remain a separate lifecycle and are not claimed by this boundary law.
 
+A transparent layout wrapper is distinct from a painted interactive tray. U1 source0067512
+moved a passive Objective under the auto-hit #sceneactions wrapper; despite the child's
+pointer-events:none, its parent caught the original phone pinch contact150,400 at A++/mono.
+Keep transparent wrappers pointer-events:none and opt their actual buttons into auto; retain
+the boundary marker in button ancestry. The bottom launcher's painted gaps still own input.
+Prove the passive objective area hits the real canvas, deliberately restore the faulty parent
+hit ownership and observe rejection, restore exactly, then drive the original two-finger
+coordinates and zoom outcome. Moving the gesture away would hide the product regression.
+
 ⚠⚠ **IMMUTABLE AUTHORITY MUST NOT DOUBLE AS A MUTABLE PRESENTATION CACHE.** F2's first
 real-browser ingress attempt reached an accepted galaxy, then failed because the deeply frozen
 `ProvenGalaxy` was handed to lifted `galaxyStats()`, whose legacy memoizer assigns `_stats` to its

@@ -24749,16 +24749,70 @@ try {
     const px=await S.app.renderer.extract.pixels({ target: S.app.stage, frame: S.app.renderer.screen });
     const d=px.pixels||px; let lit=0; for(let i=0;i<d.length;i+=4){ if(d[i]+d[i+1]+d[i+2]>60) lit++; } return lit; })()`);
   if (!(phPainted > 300)) fails.push('PHONE: stage nearly blank — ' + phPainted);
-  /* pinch: two fingers spread → camT.z must grow (the touch input path, live) */
-  const z0 = await evalPh(`window.__CF_SLICE__.camT.z`);
-  await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: 150, y: 400, id: 1 }, { x: 240, y: 400, id: 2 }] }, ph);
-  for (let s = 1; s <= 4; s++) {
-    await send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: 150 - s * 15, y: 400, id: 1 }, { x: 240 + s * 15, y: 400, id: 2 }] }, ph);
-    await sleep(40);
+  /* Keep the original pinch path. U1 once moved the passive objective into
+     an auto-hit nav, so its first contact silently missed the canvas. Prove
+     both old contacts, their movement paths and the actual objective paint
+     now pass through; do not hide the regression by choosing different sky. */
+  const phonePinchPlanExpression = `(()=>{const canvas=window.__CF_SLICE__?.app?.canvas,objective=document.getElementById('objchip'),
+    nav=document.getElementById('sceneactions'),c=canvas?.getBoundingClientRect(),o=objective?.getBoundingClientRect(),
+    os=objective?getComputedStyle(objective):null,point=(x,y)=>{const hit=document.elementFromPoint(x,y);
+      return {x,y,tag:hit?.tagName||null,id:hit?.id||null,rootCanvas:hit===canvas,
+        owned:!!hit?.closest('[data-panel-boundary],.panel,#importsheet'),
+        inside:!!c&&x>=Math.max(0,c.left)&&x<Math.min(innerWidth,c.right)&&y>=Math.max(0,c.top)&&y<Math.min(innerHeight,c.bottom)};},
+    frames=Array.from({length:5},(_,step)=>[point(150-step*15,400),point(240+step*15,400)]),
+    objectiveVisible=!!o&&os.display!=='none'&&os.visibility!=='hidden'&&o.width>0&&o.height>0,
+    objectivePoint=objectiveVisible?point(o.left+o.width/2,o.top+o.height/2):null,
+    exposed=(p)=>!!p&&p.inside&&p.rootCanvas&&!p.owned,
+    firstStartInsideObjective=objectiveVisible&&150>=o.left&&150<o.right&&400>=o.top&&400<o.bottom;
+    return {ok:canvas instanceof HTMLCanvasElement&&objective?.parentElement===nav&&objectiveVisible
+        &&exposed(objectivePoint)&&frames.every(frame=>frame.every(exposed)),frames,objectivePoint,firstStartInsideObjective,
+      objectiveRect:o?[o.left,o.top,o.right,o.bottom]:null,navPointerEvents:nav?getComputedStyle(nav).pointerEvents:null};})()`;
+  const phonePinchPointerMatches = (receipts, plan) => plan?.ok === true && Array.isArray(receipts) && receipts.length === 2
+    && new Set(receipts.map(row=>row?.pointerId)).size === 2
+    && receipts.every(row=>Number.isFinite(row?.pointerId)&&row?.rootCanvas===true&&row?.tag==='CANVAS'
+      &&row?.trusted===true&&row?.pointerType==='touch'&&Number.isFinite(row?.x)&&Number.isFinite(row?.y))
+    && plan.frames[0].every(point=>receipts.filter(row=>Math.abs(row.x-point.x)<=.75&&Math.abs(row.y-point.y)<=.75).length===1);
+  const phonePinchPlan = await evalPh(phonePinchPlanExpression);
+  if (!phonePinchPlan.ok) failSliceWithoutCascade('PHONE PINCH INPUT: original contacts or the passive objective do not expose the root canvas: '+JSON.stringify(phonePinchPlan));
+  const phonePinchControl = await evalPh(`(()=>{${INLINE_STYLE_PROPERTY_CARRIER_RUNTIME_SOURCE}
+    const nav=document.getElementById('sceneactions'),prior=captureInlineStyleProperties(nav.style,['pointer-events']);let broken=null,error=null;
+    try{nav.style.setProperty('pointer-events','auto','important');broken=${phonePinchPlanExpression};}
+    catch(cause){error=String(cause?.message||cause);}finally{restoreInlineStyleProperties(nav.style,prior);}
+    const restoration=inspectInlineStyleProperties(nav.style,prior),restored=${phonePinchPlanExpression};
+    return {broken,error,restoration,restored};})()`);
+  if (phonePinchControl.error !== null || phonePinchControl.broken?.ok !== false
+    || phonePinchControl.broken?.objectivePoint?.rootCanvas !== false
+    || phonePinchControl.broken?.objectivePoint?.id !== 'sceneactions'
+    || (phonePinchPlan.firstStartInsideObjective && phonePinchControl.broken?.frames?.[0]?.[0]?.rootCanvas !== false)
+    || !phonePinchControl.restoration?.ok || !phonePinchControl.restored?.ok) {
+    failSliceWithoutCascade('PHONE PINCH INPUT CONTROL FAILED — auto-hit scene wrapper was not reproduced, rejected and restored: '+JSON.stringify(phonePinchControl));
   }
-  await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }, ph);
+  await evalPh(`(()=>{window.__cfPhonePinchAbort?.abort();const controller=new AbortController();window.__cfPhonePinchAbort=controller;
+    window.__cfPhonePinchReceipts=[];document.addEventListener('pointerdown',event=>{const target=event.target instanceof Element?event.target:null;
+      window.__cfPhonePinchReceipts.push({pointerId:event.pointerId,x:event.clientX,y:event.clientY,pointerType:event.pointerType,
+        trusted:event.isTrusted===true,rootCanvas:target===window.__CF_SLICE__?.app?.canvas,tag:target?.tagName||null,id:target?.id||null});},
+      {capture:true,signal:controller.signal});return true;})()`);
+  const z0 = await evalPh(`window.__CF_SLICE__.camT.z`);
+  let phonePinchReceipts = null;
+  try {
+    await send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: 150, y: 400, id: 1 }, { x: 240, y: 400, id: 2 }] }, ph);
+    for (let s = 1; s <= 4; s++) {
+      await send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: 150 - s * 15, y: 400, id: 1 }, { x: 240 + s * 15, y: 400, id: 2 }] }, ph);
+      await sleep(40);
+    }
+    await send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] }, ph);
+  } finally {
+    phonePinchReceipts = await evalPh(`(()=>{const receipts=window.__cfPhonePinchReceipts||null;window.__cfPhonePinchAbort?.abort();
+      delete window.__cfPhonePinchAbort;delete window.__cfPhonePinchReceipts;return receipts;})()`);
+  }
+  if (!phonePinchPointerMatches(phonePinchReceipts, phonePinchControl.restored)) {
+    failSliceWithoutCascade('PHONE PINCH INPUT: two original contacts were not delivered as trusted root-canvas touch pointers: '+JSON.stringify({phonePinchReceipts,phonePinchPlan}));
+  }
   await sleep(300);
   const z1 = await evalPh(`window.__CF_SLICE__.camT.z`);
+  console.log('PHONE PINCH INPUT: '+JSON.stringify({originalStart:phonePinchPlan.frames[0],objectivePoint:phonePinchPlan.objectivePoint,
+    firstStartInsideObjective:phonePinchPlan.firstStartInsideObjective,objectiveRect:phonePinchPlan.objectiveRect,
+    autoHitControl:phonePinchControl.broken.objectivePoint,restoration:phonePinchControl.restoration,receipts:phonePinchReceipts,z0,z1}));
   if (!(z1 > z0 * 1.15)) fails.push('PHONE: pinch-out did not zoom (z ' + z0 + ' → ' + z1 + ')');
   const shotPh = await send('Page.captureScreenshot', { format: 'png' }, ph);
   fs.writeFileSync(screenshotPath('phone'), Buffer.from(shotPh.data, 'base64'));

@@ -17,7 +17,7 @@ Completed batch logs and superseded handoffs live in `ROADMAP_ARCHIVE.md`, newes
 nothing deleted. At the end of an Arc, or when this file approaches 400 lines, move aged blocks to
 the archive verbatim and refresh this handoff in place.
 
-## SESSION HANDOFF — 2026-09-06 · U1 TOP/LEFT REFINEMENT / VERIFYING
+## SESSION HANDOFF — 2026-09-06 · U1 TOP/LEFT PINCH CORRECTION / VERIFYING
 
 OpenAI/Codex on macOS owns `/Users/nick/Projects/celestial-frontier-openai-mac`,
 branch openai/mac, upstream origin/openai/mac. Last pushed aa8513bee308cb1c380ae0bf9377a7c4e48087f7.
@@ -38,11 +38,17 @@ native action/navigation/save/Training owners, semantic colors and font choices 
 Current refs/accepted amendment and the existing ONE GLASS LANGUAGE release bullet agree.
 
 Preparation: AppChrome typecheck and two focused suites (11 tests) pass. Producer-only
-rederivation efb5b18aeb152d775604c1e3e8d953c8779835043a374d242e5cb06396433d20 is pinned;
+rederivation a036cc94ef6a8caf1bd50d32780afa005117b8bb62dc5570ed9d3118f5f70c60 is pinned;
 measurement4a93479b62b032155a4825bde6425ebd430ccb286979dc69e90064bb3c7f5e12 and fixed ruler/
 ceilings/history unchanged. Draft81-bullet authority now
 f395fc3218fe2a5edbc2c6d52aadcbddde3c5da1e4d179854a97b601605b68ec.
-Exact-source browser verification has not yet run; do not claim PASS for this source.
+Candidate0067512 passed static and normal review but Slice stopped on phone pinch after376433ms;
+no Glass rows ran. Retained red: audits/UI_U1_TOP_LEFT_REDS_20260906.json and the0067512 evidence.
+The passive objective's new nav parent intercepted the original first finger150,400 at A++/mono.
+The successor restores transparent wrapper input and opts native buttons back in; it retains
+original touch coordinates/zoom threshold with actual owner rejection/restoration proof.
+Empty Current view backing is also cleared under overlays without geometry changes.
+Exact-source verification of this successor is pending; do not claim PASS yet.
 Next: signed candidate, fresh separate main.js-free checkout; typecheck/artunused/full Vitest,
 Glass selftest, normal three-view review plus larger-text/narrow-landscape numeric probes,
 then unchanged-source Slice develop and both existing phone Glass diagnostics, once each.

@@ -10,7 +10,11 @@ U1's floating breadcrumb/objective offsets. Landed portrait uses a compact top a
 for roster clearance; the measured72px rule remains. Existing controls, canonical trail,
 health math, panel/Training owners and bottom launcher are unchanged. The Glass fallback
 fixture explicitly injects a floating-trail regression and restores native containment.
-See UI_PRESENTATION.md and audits/UI_U1_TOP_LEFT_REVISION_20260906.md. U1 review still gates U2.
+Candidate0067512 exposed a phone pinch regression: the passive objective had been moved
+inside an auto-hit navigation rectangle. The successor makes that layout wrapper transparent
+and opts its native buttons back into input; the original pinch coordinates/outcome remain,
+with an actual objective-owner negative control. Open panels also clear the hidden location
+backing. See UI_PRESENTATION.md and audits/UI_U1_TOP_LEFT_REVISION_20260906.md. U1 review gates U2.
 
 ## U1 uniform launcher amendment — 2026-09-06
 
